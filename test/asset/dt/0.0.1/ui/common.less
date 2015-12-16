@@ -1,0 +1,216 @@
+// Override this variable when less compilation if you want to use another theme.
+@theme: "ec";
+
+@import "./theme/@{theme}.less";
+
+// clearfix via http://h5bp.com/q
+.clearfix() {
+    *zoom: 1;
+    &:before,
+    &:after {
+        display: table;
+        content: "";
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+// 不支持IE 6/7
+.box-sizing(@boxmodel) {
+    -webkit-box-sizing: @boxmodel;
+       -moz-box-sizing: @boxmodel;
+            box-sizing: @boxmodel;
+}
+
+.inline-block() {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+
+.user-select(@type) {
+    -webkit-user-select: @type;
+       -moz-user-select: @type;
+        -ms-user-select: @type;
+            user-select: @type;
+}
+
+.border-radius(@radius: @default-border-radius) {
+    -webkit-border-radius: @radius;
+       -moz-border-radius: @radius;
+            border-radius: @radius;
+}
+
+.border-radius(@radius-x, @radius-y) {
+    .border-radius(@radius-x ~`"/"` @radius-y);
+}
+
+// top left
+.border-top-left-radius(@radius) {
+    -webkit-border-top-left-radius: @radius;
+        -moz-border-radius-topleft: @radius;
+            border-top-left-radius: @radius;
+}
+.border-top-left-radius(@radius-x, @radius-y) {
+    .border-top-left-radius(@radius-x ~"/" @radius-y);
+}
+
+// top right
+.border-top-right-radius(@radius) {
+    -webkit-border-top-right-radius: @radius;
+        -moz-border-radius-topright: @radius;
+            border-top-right-radius: @radius;
+}
+.border-top-right-radius(@radius-x, @radius-y) {
+    .border-top-right-radius(@radius-x ~"/" @radius-y)
+}
+
+// bottom right
+.border-bottom-right-radius(@radius) {
+    -webkit-border-bottom-right-radius: @radius;
+        -moz-border-radius-bottomright: @radius;
+            border-bottom-right-radius: @radius;
+}
+.border-bottom-right-radius(@radius-x, @radius-y) {
+    .border-bottom-right-radius(@radius-x ~"/" @radius-y)
+}
+
+// bottom left
+.border-bottom-left-radius(@radius) {
+    -webkit-border-bottom-left-radius: @radius;
+        -moz-border-radius-bottomleft: @radius;
+            border-bottom-left-radius: @radius;
+}
+.border-bottom-left-radius(@radius-x, @radius-y) {
+    .border-bottom-left-radius(@radius-x ~"/" @radius-y);
+}
+
+// top
+.border-top-radius(@radius) {
+    .border-top-left-radius(@radius);
+    .border-top-right-radius(@radius);
+}
+.border-top-radius(@radius-x, @radius-y) {
+    .border-top-radius(@radius-x ~"/" @radius-y);
+}
+
+// right
+.border-right-radius(@radius) {
+    .border-top-right-radius(@radius);
+    .border-bottom-right-radius(@radius);
+}
+.border-right-radius(@radius-x, @radius-y) {
+    .border-right-radius(@radius-x ~"/" @radius-y);
+}
+
+// bottom
+.border-bottom-radius(@radius) {
+    .border-bottom-right-radius(@radius);
+    .border-bottom-left-radius(@radius);
+}
+.border-bottom-radius(@radius-x, @radius-y) {
+    .border-bottom-radius(@radius-x ~"/" @radius-y);
+}
+
+// left
+.border-left-radius(@radius) {
+    .border-top-left-radius(@radius);
+    .border-bottom-left-radius(@radius);
+}
+.border-left-radius(@radius-x, @radius-y) {
+    .border-left-radius(@radius-x ~"/" @radius-y);
+}
+
+.box-shadow(@shadow: @default-box-shadow, ...) {
+    // @shadows:  ~`"@{arguments}"`;
+    // @shadows: ~`"@{arguments}".replace(/[\[\]]/g, "")`;
+    @shadows: ~`(function() { var args = "@{arguments}".replace(/[[\]]/g, ""); if(!args.match(/[^,]\s+[^,]/)) { args = args.replace(/,(?=[^()]*\))/g, "%est%").replace(/,/g, "").replace(/%est%/g, ","); } return args;})()`;
+    -webkit-box-shadow: @shadows;
+       -moz-box-shadow: @shadows;
+            box-shadow: @shadows;
+}
+
+.dtui-mixin-panel0() {
+    position: fixed;
+    background: @dtui-panel-background-color;
+    color: @dtui-panel-color;
+    padding: 5px 10px;
+    line-height: 25px;
+    z-index: 9999;
+    .border-radius(4px);
+    .box-shadow(
+        rgba(0, 0, 0, 0.6) 0px 1px 3px,
+        rgba(255, 255, 255, 0.1) 0px 1px 0px inset,
+        rgba(0, 0, 0, 0.2) 0px -1px 0px inset
+    );
+    & a,
+    & a:visited {
+        color: @dtui-panel-a-color;
+    }
+}
+
+.transition(@transition, ...) {
+    @transitions: ~`(function() { var args = "@{arguments}".replace(/[[\]]/g, ""); if(!args.match(/[^,]\s+[^,]/)) { args = args.replace(/,(?=[^()]*\))/g, "%est%").replace(/,/g, "").replace(/%est%/g, ","); } return args;})()`;
+    @webkit-transitions: ~`"@{transitions}".replace(/(transform|perspective)/g, "-webkit-$1")`;
+    @moz-transitions: ~`"@{transitions}".replace(/(transform|perspective)/g, "-moz-$1")`;
+    @ms-transitions: ~`"@{transitions}".replace(/(transform|perspective)/g, "-ms-$1")`;
+    @o-transitions: ~`"@{transitions}".replace(/(transform|perspective)/g, "-o-$1")`;
+    -webkit-transition: @webkit-transitions;
+       -moz-transition: @moz-transitions;
+        -ms-transition: @ms-transitions;
+         -o-transition: @o-transitions;
+            transition: @transitions;
+}
+
+/**
+ * Close cross
+ */
+.dtui-close-cross {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    .border-radius(4px);
+    position: absolute;
+    text-align: center;
+    font-family: Arial;
+    font-size: 15px;
+    top: -15px;
+    right: -15px;
+    cursor: pointer;
+    color: @dtui-close-cross-color;
+    background: @dtui-close-cross-background-color;
+
+    &:hover {
+        color: @dtui-close-cross-hover-color;
+        background: @dtui-close-cross-hover-background-color;
+    }
+}
+
+/**
+ * dialog panel
+ */
+.dtui-dlg {
+    min-width: 200px;
+    max-width: 600px;
+
+    .dtui-con {
+        padding: 10px;
+        font-size: 14px;
+    }
+    .dtui-btns {
+        text-align: right;
+        margin-top: 10px;
+    }
+    .dtui-btn {
+        margin: 0 2px;
+    }
+    .dtui-dlg-btn-confirm,
+    .dtui-dlg-btn-yes {
+        // background: blue; //??
+    }
+    .dtui-dlg-btn-cancel,
+    .dtui-dlg-btn-no {
+        // background: #AAA; //??
+    }
+}

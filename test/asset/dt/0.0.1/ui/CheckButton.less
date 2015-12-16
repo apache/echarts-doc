@@ -1,0 +1,63 @@
+@import "./common.less";
+
+.dtui-chkbtn {
+    .inline-block();
+    vertical-align: middle;
+    .clearfix();
+
+    // &:before {
+    //     // 用于垂直居中对齐。
+    //     // 提供此块作为诸inline-block块的最高高度，提供vertical-align:middle的对齐标准。
+    //     // 否则，所有inline-block块高度都小于父时，
+    //     // 并且没有额外的文字以“half-leading相关规则”居中从而作为对齐标准时，不易做到完全垂直居中。
+    //     content: " ";
+    //     width: 0;
+    //     height: 100%;
+    //     float: left;
+    //     display: block;
+    //     // .inline-block();
+    //     // vertical-align: middle;
+    // }
+}
+.dtui-chkbtn-i {
+    // .inline-block();
+    // vertical-align: middle;
+    // inline block 在多层嵌套时不易精确做到不同层级的垂直居中对齐，所以使用float方式。
+    float: left;
+
+    height: 18px;
+    line-height: 18px;
+    .user-select(none);
+    text-align: center;
+    cursor: pointer;
+    margin: 3px 5px;
+    padding: 0 5px;
+    font-size: 12px;
+    .border-radius(@dtui-checkbutton-item-border-radius);
+    border: @dtui-checkbutton-item-text-border;
+    background: @dtui-checkbutton-item-text-background;
+    color: @dtui-checkbutton-item-text-color;
+}
+.dtui-chkbtn-i-hover {
+    border: @dtui-checkbutton-item-text-hover-border;
+    color: @dtui-checkbutton-item-text-hover-color;
+    background: @dtui-checkbutton-item-text-hover-background;
+}
+.dtui-chkbtn-i-active {
+    border: @dtui-checkbutton-item-text-active-border;
+    color: @dtui-checkbutton-item-text-active-color;
+    background: @dtui-checkbutton-item-text-active-background;
+}
+.dtui-chkbtn-disabled {
+    .dtui-chkbtn-i {
+        border: @dtui-checkbutton-item-text-disabled-border;
+        color: @dtui-checkbutton-item-text-disabled-color;
+        background: @dtui-checkbutton-item-text-disabled-background;
+        cursor: default;
+    }
+    .dtui-chkbtn-i-active {
+        border: @dtui-checkbutton-item-text-disabled-active-border;
+        color: @dtui-checkbutton-item-text-disabled-active-color;
+        background: @dtui-checkbutton-item-text-disabled-active-background;
+    }
+}

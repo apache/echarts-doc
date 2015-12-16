@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ECharts">
+    <meta name="author" content="kener.linfeng@gmail.com">
+    <title>ECharts · Option</title>
+
+    <link rel="shortcut icon" href="./asset/ico/favicon.png">
+
+    <link href="./asset/ecOption/main.css?_v_=3.0.0" rel="stylesheet"/>
+
+    <script src="./asset/esl/1.8.2/esl.js"></script>
+    <script src="./asset/jquery/1.11.0/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <div class="ecdoc-apidoc"></div>
+
+    <script type="text/javascript">
+        require.config({
+            baseUrl: './asset/ecOption',
+            paths: {
+                jquery: '../jquery/1.11.0/jquery.min',
+                dt: '../dt/0.0.1',
+                tpl: '../dt/0.0.1/tplLoader',
+                etpl: '../etpl/3.0.0/etpl.min'
+            },
+            urlArgs: '_v_=3.0.0'
+        });
+
+        require(['main'], function (main) {
+            main.init();
+        });
+    </script>
+</body>
+</html>
+

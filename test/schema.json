@@ -1,0 +1,215 @@
+{
+  "$schema": "http://echarts.baidu.com/doc/json-schem",
+  "option": {
+    "type": "Object",
+    "properties": {
+      "title": {
+        "type": [
+          "Object"
+        ],
+        "properties": {
+          "z": {
+            "type": [
+              "number"
+            ],
+            "default": 2,
+            "descriptionCN": "<p>组件的所有图形的 z 值</p>\n"
+          },
+          "zlevel": {
+            "type": [
+              "number"
+            ],
+            "default": 0,
+            "descriptionCN": "<p>组件的所有图形的 zlevel 值</p>\n"
+          },
+          "show": {
+            "type": [
+              "boolean"
+            ],
+            "default": true,
+            "descriptionCN": "<p>组件是否显示，需要注意的是该属性只会影响组件是否展现，如果组件带有影响图表展示的功能，例如 dataRange 组件，show 的开关并不会影响组件的功能。</p>\n"
+          },
+          "x": {
+            "type": [
+              "string",
+              "number"
+            ],
+            "descriptionCN": "<p>组件离容器左侧的距离，x 的值可以是像 <code>20</code> 这样的具体像素值，可以是像 <code>&#39;20%&#39;</code> 这样相对于容器高宽的百分比，也可以是 <code>&#39;left&#39;</code>, <code>&#39;center&#39;</code>, <code>&#39;right&#39;</code>。</p>\n<p>如果 x 的值为<code>&#39;left&#39;</code>, <code>&#39;center&#39;</code>, <code>&#39;right&#39;</code>，组件会根据相应的位置自动对齐。</p>\n"
+          },
+          "y": {
+            "type": [
+              "string",
+              "number"
+            ],
+            "descriptionCN": "<p>组件离容器上侧的距离，y 的值可以是像 <code>20</code> 这样的具体像素值，可以是像 <code>&#39;20%&#39;</code> 这样相对于容器高宽的百分比，也可以是 <code>&#39;top&#39;</code>, <code>&#39;middle&#39;</code>, <code>&#39;bottom&#39;</code>。</p>\n<p>如果 x 的值为<code>&#39;top&#39;</code>, <code>&#39;middle&#39;</code>, <code>&#39;bottom&#39;</code>，组件会根据相应的位置自动对齐。</p>\n"
+          },
+          "x2": {
+            "type": [
+              "string",
+              "number"
+            ],
+            "descriptionCN": "<p>组件离容器右侧的距离，x2 的值可以是像 <code>20</code> 这样的具体像素值，可以是像 <code>&#39;20%&#39;</code> 这样相对于容器高宽的百分比，也可以是 <code>&#39;left&#39;</code>, <code>&#39;center&#39;</code>, <code>&#39;right&#39;</code>。</p>\n<p>如果 x2 的值为<code>&#39;left&#39;</code>, <code>&#39;center&#39;</code>, <code>&#39;right&#39;</code>，组件会根据相应的位置自动对齐。</p>\n"
+          },
+          "y2": {
+            "type": [
+              "string",
+              "number"
+            ],
+            "descriptionCN": "<p>组件离容器下侧的距离，y2 的值可以是像 <code>20</code> 这样的具体像素值，可以是像 <code>&#39;20%&#39;</code> 这样相对于容器高宽的百分比，也可以是 <code>&#39;top&#39;</code>, <code>&#39;middle&#39;</code>, <code>&#39;bottom&#39;</code>。</p>\n<p>如果 y2 的值为<code>&#39;top&#39;</code>, <code>&#39;middle&#39;</code>, <code>&#39;bottom&#39;</code>，组件会根据相应的位置自动对齐。</p>\n<p>标题组件，提供标题和副标题的文本绘制</p>\n"
+          },
+          "text": {
+            "type": [
+              "string"
+            ],
+            "descriptionCN": "<p>标题内容，只支持纯文本，可以使用 <code>\\n</code> 换行。</p>\n"
+          },
+          "subtext": {
+            "type": [
+              "string"
+            ],
+            "descriptionCN": "<p>副标题内容，只支持纯文本，可以使用 <code>\\n</code> 换行。</p>\n"
+          },
+          "link": {
+            "type": [
+              "string"
+            ],
+            "descriptionCN": "<p>标题链接</p>\n"
+          },
+          "sublink": {
+            "type": [
+              "string"
+            ],
+            "descriptionCN": "<p>副标题链接</p>\n"
+          },
+          "textAlign": {
+            "type": [
+              "string"
+            ],
+            "descriptionCN": "<p>文字对齐方式，默认根据 x 的位置判断是左对齐还是右对齐</p>\n"
+          },
+          "backgroundColor": {
+            "type": [
+              "string"
+            ],
+            "descriptionCN": "<p>标题背景色</p>\n"
+          },
+          "borderColor": {
+            "type": [
+              "string"
+            ],
+            "descriptionCN": "<p>标题的边框颜色</p>\n<p>#scatterItemStyle</p>\n"
+          }
+        }
+      },
+      "series": {
+        "type": "Array",
+        "items": {
+          "anyOf": [
+            {
+              "type": [
+                "Object"
+              ],
+              "properties": {
+                "z": {
+                  "type": [
+                    "number"
+                  ],
+                  "default": 2,
+                  "descriptionCN": "<p>组件的所有图形的 z 值</p>\n"
+                },
+                "zlevel": {
+                  "type": [
+                    "number"
+                  ],
+                  "default": 0,
+                  "descriptionCN": "<p>组件的所有图形的 zlevel 值</p>\n"
+                },
+                "show": {
+                  "type": [
+                    "boolean"
+                  ],
+                  "default": true,
+                  "descriptionCN": "<p>组件是否显示，需要注意的是该属性只会影响组件是否展现，如果组件带有影响图表展示的功能，例如 dataRange 组件，show 的开关并不会影响组件的功能。</p>\n"
+                },
+                "x": {
+                  "type": [
+                    "string",
+                    "number"
+                  ],
+                  "descriptionCN": "<p>组件离容器左侧的距离，x 的值可以是像 <code>20</code> 这样的具体像素值，可以是像 <code>&#39;20%&#39;</code> 这样相对于容器高宽的百分比，也可以是 <code>&#39;left&#39;</code>, <code>&#39;center&#39;</code>, <code>&#39;right&#39;</code>。</p>\n<p>如果 x 的值为<code>&#39;left&#39;</code>, <code>&#39;center&#39;</code>, <code>&#39;right&#39;</code>，组件会根据相应的位置自动对齐。</p>\n"
+                },
+                "y": {
+                  "type": [
+                    "string",
+                    "number"
+                  ],
+                  "descriptionCN": "<p>组件离容器上侧的距离，y 的值可以是像 <code>20</code> 这样的具体像素值，可以是像 <code>&#39;20%&#39;</code> 这样相对于容器高宽的百分比，也可以是 <code>&#39;top&#39;</code>, <code>&#39;middle&#39;</code>, <code>&#39;bottom&#39;</code>。</p>\n<p>如果 x 的值为<code>&#39;top&#39;</code>, <code>&#39;middle&#39;</code>, <code>&#39;bottom&#39;</code>，组件会根据相应的位置自动对齐。</p>\n"
+                },
+                "x2": {
+                  "type": [
+                    "string",
+                    "number"
+                  ],
+                  "descriptionCN": "<p>组件离容器右侧的距离，x2 的值可以是像 <code>20</code> 这样的具体像素值，可以是像 <code>&#39;20%&#39;</code> 这样相对于容器高宽的百分比，也可以是 <code>&#39;left&#39;</code>, <code>&#39;center&#39;</code>, <code>&#39;right&#39;</code>。</p>\n<p>如果 x2 的值为<code>&#39;left&#39;</code>, <code>&#39;center&#39;</code>, <code>&#39;right&#39;</code>，组件会根据相应的位置自动对齐。</p>\n"
+                },
+                "y2": {
+                  "type": [
+                    "string",
+                    "number"
+                  ],
+                  "descriptionCN": "<p>组件离容器下侧的距离，y2 的值可以是像 <code>20</code> 这样的具体像素值，可以是像 <code>&#39;20%&#39;</code> 这样相对于容器高宽的百分比，也可以是 <code>&#39;top&#39;</code>, <code>&#39;middle&#39;</code>, <code>&#39;bottom&#39;</code>。</p>\n<p>如果 y2 的值为<code>&#39;top&#39;</code>, <code>&#39;middle&#39;</code>, <code>&#39;bottom&#39;</code>，组件会根据相应的位置自动对齐。</p>\n"
+                },
+                "width": {
+                  "type": [
+                    "number"
+                  ],
+                  "descriptionCN": "<p>该系列视图的高度</p>\n"
+                },
+                "height": {
+                  "type": [
+                    "number"
+                  ],
+                  "descriptionCN": "<p>该系列视图的宽度</p>\n"
+                },
+                "coordinateSystem": {
+                  "type": [
+                    "string"
+                  ],
+                  "default": "cartesian2d",
+                  "descriptionCN": "<p>该系列使用的坐标系，可选：</p>\n<li>cartesian2d\n  使用二维的笛卡尔坐标系，通过 <code>xAxisIndex</code>, <code>yAxisIndex</code> 指定相应的坐标轴组件。</li>\n<ul>\nundefined</ul>\n<li>polar\n  使用极坐标系，通过 <code>polarIndex</code> 指定相应的极坐标组件</li>\n<ul>\nundefined</ul>\n<li>geo\n  使用地理坐标系，通过 <code>geoIndex</code> 指定相应的地理坐标系组件</li>\n<ul>\nundefined</ul>\n"
+                },
+                "xAxisIndex": {
+                  "type": [
+                    "number"
+                  ],
+                  "default": 0,
+                  "descriptionCN": "<p>使用的 x 轴(xAxis)的 index，在单个图表实例中存在多个 x 轴的时候有用</p>\n"
+                },
+                "yAxisIndex": {
+                  "type": [
+                    "number"
+                  ],
+                  "default": 0,
+                  "descriptionCN": "<p>使用的 y 轴(yAxis)的 index，在单个图表实例中存在多个 y轴的时候有用</p>\n"
+                },
+                "polarIndex": {
+                  "type": [
+                    "number"
+                  ],
+                  "default": 0,
+                  "descriptionCN": "<p>使用的极坐标系(polar)的 index，在单个图表实例中存在多个极坐标系的时候有用</p>\n"
+                },
+                "geoIndex": {
+                  "type": [
+                    "number"
+                  ],
+                  "default": 0
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
