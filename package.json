@@ -4,9 +4,7 @@
   "description": "Documentation of ECharts",
   "dependencies": {
     "marked": "^0.3.5",
-    "boutique": "^0.1.7",
-    "etpl": "^3.0.1",
-    "protagonist": "^1.2.1"
+    "etpl": "^3.0.1"
   },
   "devDependencies": {},
   "repository": {
