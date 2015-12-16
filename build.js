@@ -22,7 +22,7 @@ glob('src/**/*.md', function (err, files) {
     // Markdown to JSON
     var schema = mdToJsonSchema(mdStr);
 
-    var topLevel = schema.definitions.option.properties;
+    var topLevel = schema.option.properties;
     var newProperties = {
     };
     for (var name in topLevel) {
@@ -39,7 +39,7 @@ glob('src/**/*.md', function (err, files) {
             newProperties[name] = topLevel[name];
         }
     }
-    schema.definitions.option.properties = newProperties;
+    schema.option.properties = newProperties;
 
     console.log(JSON.stringify(schema, null, 2));
 });
@@ -51,15 +51,13 @@ function mdToJsonSchema(mdStr) {
     var currentLevel = 0;
     var result = {
         '$schema': 'http://echarts.baidu.com/doc/json-schem',
-        'definitions': {
-            'option': {
-                'type': 'Object',
-                'properties': {
-                },
-            }
+        'option': {
+            'type': 'Object',
+            'properties': {
+            },
         }
     };
-    var current = result.definitions.option;
+    var current = result.option;
     var stacks = [current];
 
     var blocks = [
