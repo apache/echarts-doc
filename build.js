@@ -20,7 +20,28 @@ glob('src/**/*.md', function (err, files) {
     var mdStr = etpl.getRenderer('echarts')();
 
     // Markdown to JSON
-    console.log(JSON.stringify(mdToJsonSchema(mdStr), null, 2));
+    var schema = mdToJsonSchema(mdStr);
+
+    var topLevel = schema.definitions.option.properties;
+    var newProperties = {
+    };
+    for (var name in topLevel) {
+        if (name.indexOf('series.') >= 0) {
+            newProperties.series = newProperties.series || {
+                'type': 'Array',
+                'items': {
+                    'anyOf': []
+                }
+            };
+            newProperties.series.items.anyOf.push(topLevel[name]);
+        }
+        else {
+            newProperties[name] = topLevel[name];
+        }
+    }
+    schema.definitions.option.properties = newProperties;
+
+    console.log(JSON.stringify(schema, null, 2));
 });
 
 function mdToJsonSchema(mdStr) {
@@ -34,12 +55,6 @@ function mdToJsonSchema(mdStr) {
             'option': {
                 'type': 'Object',
                 'properties': {
-                    'series': {
-                        'type': 'Array',
-                        'items': {
-                            'anyOf': []
-                        }
-                    }
                 },
             }
         }
