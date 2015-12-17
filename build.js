@@ -23,8 +23,7 @@ glob('src/**/*.md', function (err, files) {
     var schema = mdToJsonSchema(mdStr);
 
     var topLevel = schema.option.properties;
-    var newProperties = {
-    };
+    var newProperties = {};
     for (var name in topLevel) {
         if (name.indexOf('series.') >= 0) {
             newProperties.series = newProperties.series || {
@@ -60,21 +59,25 @@ function mdToJsonSchema(mdStr) {
     var current = result.option;
     var stacks = [current];
 
-    var blocks = [
-        'blockquote', 'code', 'html', 'hr', 'list', 'listitem', 'paragraph', 'table', 'tablerow', 'tablecell'
-    ];
-    var inlines = [
-        'strong', 'em', 'codespan', 'br', 'del', 'link', 'image'
-    ];
-
-    var descriptionHTML = '';
-
     function top() {
         return stacks[stacks.length - 1];
     }
 
+    function _unescape(html) {
+        return html.replace(/&([#\w]+);/g, function(_, n) {
+            n = n.toLowerCase();
+            if (n === 'colon') return ':';
+            if (n.charAt(0) === '#') {
+                return n.charAt(1) === 'x'
+                    ? String.fromCharCode(parseInt(n.substring(2), 16))
+                    : String.fromCharCode(+n.substring(1));
+            }
+            return '';
+        });
+    }
+
     function convertType(val) {
-        val = val.trim();
+        val = _unescape(val.trim());
         switch (val) {
             case 'null':
                 return null;
@@ -89,68 +92,90 @@ function mdToJsonSchema(mdStr) {
         return val;
     }
 
-    renderer.heading = function (text, level) {
+    function appendProperty(name, property) {
+        var parent = top();
+        var types = parent.type;
+        var target = types[0] === 'Array' ? 'items' : 'properties';
+        top()[target] = top()[target] || {};
+        top()[target][name] = property;
+    }
 
-        if (top() && descriptionHTML) {
-            top().descriptionCN = descriptionHTML;
+    function repeat(str, count) {
+        var res = '';
+        for (var i = 0; i < count; i++) {
+            res += str;
         }
+        return res;
+    }
 
-        descriptionHTML = '';
 
+    var headers = [];
+
+    mdStr.replace(/(#+) *([^\n]+?) *#* *(?:\n+|$)/g, function (header, headerPrefix, text) {
+        headers.push({
+            text: text,
+            level: headerPrefix.length
+        });
+    });
+
+    mdStr.split(/(?:#+) *(?:[^\n]+?) *#* *(?:\n+|$)/).slice(1).forEach(move);
+
+    function move(section, idx) {
+        var text = headers[idx].text;
         var parts = /(.*)\(([\w\|\*]*)\)(\s*=\s*(.*))*/.exec(text);
-        var title;
+        var key;
         var type = '*';
         var defaultValue = null;
+        var level = headers[idx].level;
         if (parts === null) {
-            title = text;
+            key = text;
         }
         else {
-            title = parts[1];
+            key = parts[1];
             type = parts[2];
             defaultValue = parts[4] || null;
         }
+        var types = type.split('|').map(function (item) {
+            return item.trim();
+        });
         var property = {
-            "type": type.split('|').map(function (item) {
-                return item.trim();
+            "type": types,
+            "descriptionCN": marked(section, {
+                renderer: renderer
             })
         };
+
         if (defaultValue != null) {
             property['default'] = convertType(defaultValue);
         }
         if (level < currentLevel) {
-            stacks.pop();
-            stacks.pop();
-            top().properties[title] = property;
+            var diff = currentLevel - level;
+            var count = 0;
+            while (count <= diff) {
+                stacks.pop();
+                count++;
+            }
+            appendProperty(key, property);
             current = property;
             stacks.push(current);
         }
         else if (level > currentLevel) {
+            if (level - currentLevel > 1) {
+                throw new Error(
+                    '标题层级 "' + repeat('#', level) + '" 不能直接跟在标题层级 "' + repeat('#', currentLevel) + '"后'
+                );
+            }
             current = property;
-            top().properties = top().properties || {};
-            top().properties[title] = property;
+            appendProperty(key, property);
             stacks.push(current);
         }
         else {
             stacks.pop();
-            top().properties[title] = property;
+            appendProperty(key, property);
             stacks.push(property);
         }
         currentLevel = level;
-    };
-
-    if (top() && descriptionHTML) {
-        top().descriptionCN = descriptionHTML;
     }
 
-    blocks.forEach(function (methodName) {
-        var oldMethod = renderer[methodName];
-        renderer[methodName] = function () {
-            descriptionHTML += oldMethod.apply(this, arguments);
-        };
-    });
-
-    marked(mdStr, {
-        renderer: renderer
-    });
     return result;
 }
