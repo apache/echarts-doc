@@ -9,6 +9,7 @@ define(function (require) {
     var dtLib = require('dt/lib');
     var docUtil = require('./docUtil');
     var lang = require('./lang');
+    var hashHelper = require('./hashHelper');
 
     require('dt/componentConfig');
 
@@ -72,6 +73,21 @@ define(function (require) {
             return lang;
         },
 
+        _initHash: function () {
+            var that = this;
+            hashHelper.initHash(parseHash);
+
+            function parseHash(newHash) {
+                if (newHash) {
+                    var hashInfo = hashHelper.parseHash(newHash);
+
+                    if (hashInfo.queryString) {
+                        that._handleHashQuery(hashInfo.queryString);
+                    }
+                }
+            }
+        },
+
         _prepare: function () {
             $.getJSON(docUtil.addVersionArg(SCHEMA_URL)).done($.proxy(onLoaded, this));
 
@@ -85,6 +101,8 @@ define(function (require) {
                 // After render page
                 this._initDoc();
                 this._initResize();
+
+                this._initHash();
             }
         },
 
@@ -129,9 +147,9 @@ define(function (require) {
                 this._updateDesc(persistent, nextValue, treeItem);
 
                 // 更新hash
-                // if (persistent && treeItem.optionPathForHash) {
-                //     helper.hashRoute({queryString: treeItem.optionPathForHash});
-                // }
+                if (persistent && treeItem.optionPathForHash) {
+                    hashHelper.hashRoute({queryString: treeItem.optionPathForHash});
+                }
             }
         },
 
