@@ -4,28 +4,34 @@
 
 ## width(number)
 
-该系列视图的高度
+该系列视图的宽度
 
 ## height(number)
 
-该系列视图的宽度
+该系列视图的高度
 
 ## coordinateSystem(string) = ${coordSysDefault}
 
 该系列使用的坐标系，可选：
 
 {{if: ${cartesian2d} }}
+
 + cartesian2d
+
     使用二维的笛卡尔坐标系，通过 `xAxisIndex`, `yAxisIndex` 指定相应的坐标轴组件。
 {{/if}}
 
 {{if: ${polar} }}
+
 + polar
+
     使用极坐标系，通过 `polarIndex` 指定相应的极坐标组件
 {{/if}}
 
 {{if: ${geo} }}
+
 + geo
+
     使用地理坐标系，通过 `geoIndex` 指定相应的地理坐标系组件
 {{/if}}
 
