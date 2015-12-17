@@ -9,6 +9,8 @@ html {
     background-color: #f7f7f7; // override bg color in echartsHome.css
 }
 
+@ec-doc-line-highlight-color: #bfe3ec;
+
 .ecdocmixin-panel() {
     background: #f5f5f5;
     border: 1px solid #ccc;
@@ -134,7 +136,44 @@ html {
             }
         }
     }
+}
 
+.ecdoc-api-doc-group-area {
+    position: fixed;
+    left: 400px;
+    right: 35px;
+    top: 65px;
+    bottom: 20px;
+    overflow: auto;
+    padding-left: 0;
+    padding-right: 0;
+
+    .ecdoc-api-doc-group-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    .ecdoc-api-doc-group-line {
+        padding: 20px 15px;
+        border-bottom: 1px solid #ccc;
+    }
+    .ecdoc-api-doc-line-label {
+        color: #1160A5;
+        padding-right: 20px;
+
+        strong {
+            padding-left: 5px;
+        }
+    }
+    .ecdoc-api-doc-group-line-highlight {
+        background-color: @ec-doc-line-highlight-color;
+    }
+    .ecdoc-api-doc-group-title {
+        font-size: 22px;
+    }
 }
 
 .ecdoc-api-chart-query-area {
@@ -158,10 +197,12 @@ html {
 
 .ecdoc-api-desc-area {
     position: fixed;
-    left: 400px;
-    right: 35px;
+    left: 390px;
+    right: 25px;
     height: 175px;
-    bottom: 15px;
+    bottom: 20px;
+    background-color: @ec-doc-line-highlight-color;
+    .box-shadow(0 0 8px #555);
 
     label {
     }

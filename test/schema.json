@@ -110,6 +110,12 @@
                 "Object"
               ],
               "properties": {
+                "type": {
+                  "type": [
+                    "string"
+                  ],
+                  "default": "&#39;scatter&#39;"
+                },
                 "z": {
                   "type": [
                     "number"

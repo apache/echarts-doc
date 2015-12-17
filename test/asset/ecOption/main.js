@@ -23,10 +23,13 @@ define(function (require) {
     var SELECTOR_QUERY_RESULT_INFO = '.query-result-info';
     var SELECTOR_CHART_CLOSE_BUTTON = '.api-chart-close-btn';
     var SELECTOR_CHART_AREA = '.ecdoc-api-chart-query-area';
+    var SELECTOR_DESC_GROUP_AREA = '.ecdoc-api-doc-group-area';
+    var SELECTOR_DESC_GROUP_CONTENT = '.ecdoc-api-doc-group-content';
     var CSS_CHART_AREA_CLOSE = 'ecdoc-api-chart-query-area-close';
     var CSS_DESC_AREA_FULL = 'ecdoc-api-desc-area-full';
     var CSS_CLOSE_BUTTON = 'glyphicon glyphicon-resize-small';
     var CSS_OPEN_BUTTON = 'glyphicon glyphicon-resize-full';
+    var CSS_DESC_GROUP_HIGHLIGHT = 'ecdoc-api-doc-group-line-highlight';
 
     /**
      * @public
@@ -97,7 +100,10 @@ define(function (require) {
                 childrenPost: '}',
                 childrenBrief: ' ... ',
                 children: renderBase.children[0].children,
-                expanded: true
+                expanded: true,
+                optionPathHTML: 'option',
+                type: 'Object',
+                hasObjectProperties: true
             };
 
             this._viewModel().apiTreeDatasource = [this._docTree];
@@ -170,36 +176,98 @@ define(function (require) {
         },
 
         _updateDesc: function (persistent, nextValue, treeItem) {
+            this._showHoverTargetDesc(treeItem ? treeItem : false);
+
+            if (treeItem && persistent) {
+                this._showDescGroup(treeItem);
+            }
+        },
+
+        _wrapDesc: function (treeItem) {
+            var type = treeItem.type || '';
+
+            if ($.isArray(type)) {
+                type = type.join(', ');
+            }
+
+            return {
+                type: dtLib.encodeHTML(type),
+                descText: lang.langCode === 'en' // 不需要encodeHTML，本身就是html
+                    ? (treeItem.descriptionEN || '')
+                    : (treeItem.descriptionCN || ''),
+                defaultValueText: dtLib.encodeHTML(treeItem.defaultValueText),
+                optionPath: treeItem.optionPathHTML
+            };
+        },
+
+        _showHoverTargetDesc: function (treeItem) {
             var $el = this.$el();
-            if (treeItem) {
-                var type = treeItem.type || '';
-                if ($.isArray(type)) {
-                    type = type.join(', ');
-                }
-                var desc = {
-                    type: dtLib.encodeHTML(type),
-                    descText: lang.langCode === 'en' // 不需要encodeHTML，本身就是html
-                        ? (treeItem.descriptionEN || '')
-                        : (treeItem.descriptionCN || ''),
-                    defaultValueText: dtLib.encodeHTML(treeItem.defaultValueText),
-                    optionPath: dtLib.encodeHTML(treeItem.optionPath || '')
-                };
+            var $descArea = $el.find(SELECTOR_DESC_AREA);
 
-                if (persistent) {
-                    this._desc = desc;
-                }
-
-                renderDesc(desc);
-            }
-            else if (this._desc) { // nothing hovered. restore
-                renderDesc(this._desc);
+            if (treeItem === false) {
+                $descArea.stop().fadeOut();
+                return;
             }
 
-            function renderDesc(desc) {
-                $el.find(SELECTOR_TYPE)[0].innerHTML = desc.type;
-                $el.find(SELECTOR_DESC)[0].innerHTML = desc.descText;
-                $el.find(SELECTOR_DEFAULT)[0].innerHTML = desc.defaultValueText;
-                $el.find(SELECTOR_OPTION_PATH)[0].innerHTML = desc.optionPath;
+            $descArea.stop().css('opacity', 1).show();
+
+            var desc = this._wrapDesc(treeItem);
+
+            $el.find(SELECTOR_TYPE)[0].innerHTML = desc.type;
+            $el.find(SELECTOR_DESC)[0].innerHTML = desc.descText;
+            $el.find(SELECTOR_DEFAULT)[0].innerHTML = desc.defaultValueText;
+            $el.find(SELECTOR_OPTION_PATH)[0].innerHTML = desc.optionPath;
+        },
+
+        _showDescGroup: function (treeItem) {
+            var $el = this.$el();
+
+            // treeItem
+            var base = treeItem.hasObjectProperties
+                ? treeItem
+                : treeItem.parent;
+
+            var baseDesc = this._wrapDesc(base);
+            var descList = [''
+                + '<div class="ecdoc-api-doc-group-line ' + getHighlightCss(base) + '">'
+                + '<span class="ecdoc-api-doc-group-title">' + baseDesc.optionPath + ' '
+                + '{ ' + baseDesc.type + ' } '
+                + getDefaultHTML(baseDesc) + '<br>'
+                + baseDesc.descText
+                + '</div>'
+            ];
+            var children = base.children;
+            if (children) {
+                for (var i = 0; i < children.length; i++) {
+                    var descItem = this._wrapDesc(children[i]);
+                    descList.push(''
+                        + '<div class="ecdoc-api-doc-group-line ' + getHighlightCss(children[i]) + '">'
+                        + '<span class="ecdoc-api-doc-line-label">' + descItem.optionPath + '</span>'
+                        + '{ ' + descItem.type + ' }&nbsp;&nbsp;&nbsp;'
+                        + getDefaultHTML(descItem) + '<br>'
+                        + descItem.descText
+                        + '</div>'
+                    );
+                }
+            }
+
+            var $content = $el.find(SELECTOR_DESC_GROUP_CONTENT);
+            $content[0].innerHTML = descList.join('');
+
+            // Set highlight
+            var highlighted = $content.find('.' + CSS_DESC_GROUP_HIGHLIGHT)[0];
+            if (highlighted) {
+                $el.find(SELECTOR_DESC_GROUP_AREA)[0].scrollTop = highlighted.offsetTop;
+            }
+
+            function getHighlightCss(item) {
+                return item === treeItem ? CSS_DESC_GROUP_HIGHLIGHT : '';
+            }
+
+            function getDefaultHTML(descItem) {
+                return descItem.defaultValueText
+                    ? '[ default=' + descItem.defaultValueText + ' ]'
+                    : '';
             }
         },
 

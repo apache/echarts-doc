@@ -294,7 +294,7 @@ define(function (require) {
                 var $item = $(this);
                 $item.addClass(textHoverCss);
                 var dataItem = that._findDataItemByPath(
-                    viewModel.datasource, $item.attr(PATH_ATTR), true
+                    viewModel.datasource, $item.attr(PATH_ATTR)
                 );
                 viewModel.hovered(dataItem.value, {dataItem: dataItem});
             }
@@ -313,7 +313,7 @@ define(function (require) {
                 }
                 var obType = lib.obTypeOf(viewModel.selected);
                 var dataItem = that._findDataItemByPath(
-                    viewModel.datasource, $(this).attr(PATH_ATTR), true
+                    viewModel.datasource, $(this).attr(PATH_ATTR)
                 );
                 var value = dataItem.value;
 
@@ -727,7 +727,7 @@ define(function (require) {
 
             function visitItem(dataItem) {
                 if (lib.arrayIndexOf(values, dataItem.value) >= 0) {
-                    result.push(lib.assign({}, dataItem));
+                    result.push(dataItem);
                 }
             }
 
@@ -789,10 +789,9 @@ define(function (require) {
          * @private
          * @param {Array.<Object>} treeList 在这里面find。
          * @param {string} path 节点的位置信息, 形如'4,1,5'。
-         * @param {boolean} forOutput true则去除children。
          * @return {Object=} 找到的节点对象，没找到返回空。
          */
-        _findDataItemByPath: function (treeList, path, forOutput) {
+        _findDataItemByPath: function (treeList, path) {
             path = path.split(',');
             treeList = treeList || [];
             var dataItem;
@@ -802,9 +801,7 @@ define(function (require) {
                 treeList = (dataItem || {}).children;
             }
 
-            return forOutput
-                ? lib.assign({}, dataItem, null, ['children'])
-                : dataItem;
+            return dataItem;
         },
 
         /**

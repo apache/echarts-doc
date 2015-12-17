@@ -9,23 +9,32 @@ var fs = require('fs');
 var docSrcDir = path.join(__dirname, '/src');
 var cssPath = path.join(__dirname, '/test/asset/ecOption/main.less');
 
-fs.watch(docSrcDir, function (event) {
-    if (event === 'change') {
-        console.log(docSrcDir + ' changed, auto compile ...');
-        setTimeout(function () {
-            execBuild(); // Writing may be not finished yet.
-        }, 1000);
-    }
+var watchDirs = [];
+getAllDirs(docSrcDir, watchDirs);
+watchDirs.push(cssPath);
+
+watchDirs.forEach(function (p) {
+    fs.watch(p, onChange);
 });
 
-fs.watch(cssPath, function (event) {
+function getAllDirs(rootDir, result) {
+    if (fs.statSync(rootDir).isDirectory()) {
+        result.push(rootDir);
+
+        fs.readdirSync(rootDir).forEach(function(file, index) {
+            getAllDirs(path.join(rootDir, file), result);
+        });
+    }
+}
+
+function onChange(event) {
     if (event === 'change') {
-        console.log(cssPath + ' changed, auto compile ...');
+        console.log('File changed, auto compile ...');
         setTimeout(function () {
             execBuild(); // Writing may be not finished yet.
         }, 1000);
     }
-});
+}
 
 function execBuild() {
     require('child_process').exec(

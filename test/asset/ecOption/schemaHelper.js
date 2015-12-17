@@ -206,9 +206,10 @@ define(function (require) {
     /**
      * @see schemaHelper.parseOptionPath
      * @public
-     * @param {string} optionsPathArr
+     * @param {Array.<Object>} optionsPathArr
      * @param {Object} options
-     * @param {boolean} [options.useSquareBrackets] default false, using '-' to indicate array item.
+     * @param {boolean} [options.useSquareBrackets=false] default using '-' to indicate array item.
+     * @param {boolean} [options.html=false]
      */
     schemaHelper.stringifyOptionPath = function (optionPathArr, options) {
         options = options || {};
@@ -222,9 +223,15 @@ define(function (require) {
             }
             var itemStr = item.propertyName || arrayName;
 
-            var applicable = docUtil.normalizeToArray(item.applicable);
-            if (applicable.length) {
-                itemStr += '(' + applicable.join(',') + ')';
+            if (item.typeEnum) {
+                itemStr += '(' + item.typeEnum + ')';
+            }
+
+            if (options.html) {
+                itemStr = dtLib.encodeHTML(itemStr || '');
+                if (i === optionPathArr.length - 1) {
+                    itemStr = '<strong>' + itemStr + '</strong>';
+                }
             }
             strArr.push(itemStr);
         }
@@ -469,7 +476,7 @@ define(function (require) {
                 if (context.optionPath) {
                     subOptionPath = dtLib.clone(context.optionPath);
                     var optionPathItem = getLastOptionPathItem(subOptionPath);
-                    optionPathItem.applicable = anyOf[j].type;
+                    optionPathItem.typeEnum = getTypeEnum(anyOf[j]);
                 }
 
                 buildRecursively(
@@ -627,7 +634,7 @@ define(function (require) {
             }
         }
         else {
-            childrenBrief = ' type: \'' + encodeHTML(schemaItem.type) + '\', ... ';
+            childrenBrief = ' type: \'' + encodeHTML(getTypeEnum(schemaItem)) + '\', ... ';
         }
 
         // Make tree item text and children.
@@ -664,21 +671,24 @@ define(function (require) {
 
         function makeSubRenderBase(schemaItem, context) {
             var result = mergeByRef(schemaItem, context);
+            var hasObjectProperties = context.selfInfo === BuildDocInfo.HAS_OBJECT_PROPERTIES;
             var isEnumParent = context.enumInfo === BuildDocInfo.IS_ENUM_PARENT;
             var isEnumItem = context.enumInfo === BuildDocInfo.IS_ENUM_ITEM;
             var sub = {
                 value: 'ecapidocid-' + dtLib.localUID(),
+                hasObjectProperties: hasObjectProperties,
                 isEnumParent: isEnumParent,
                 // enumerateBy: isEnumParent ? schemaItem.enumerateBy.slice() : UNDEFINED,
                 type: schemaItem.type,
+                parent: renderBase,
                 descriptionCN: result.descriptionCN,
                 descriptionEN: result.descriptionEN,
                 defau: result.defau,
                 optionPathForHash: schemaHelper.stringifyOptionPath(
                     context.optionPath, {useSquareBrackets: false}
                 ),
-                optionPath: schemaHelper.stringifyOptionPath(
-                    context.optionPath, {useSquareBrackets: true}
+                optionPathHTML: schemaHelper.stringifyOptionPath(
+                    context.optionPath, {useSquareBrackets: true, html: true}
                 ),
                 defaultValueText: schemaHelper.getDefaultValueText(result.defau),
                 itemEncodeHTML: false,
@@ -813,6 +823,14 @@ define(function (require) {
             }
         }
     };
+
+    /**
+     * @inner
+     */
+    function getTypeEnum(schemaItem) {
+        // 这里是硬编码：anyOf的子节点必须有properties，必须有type属性。
+        return schemaItem.properties.type['default'];
+    }
 
     /**
      * @inner
