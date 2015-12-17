@@ -70,6 +70,8 @@ define(function (require) {
     // Inner constants
     var UNDEFINED;
     var DEFAULT_VALUE_BRIEF_LENGTH = 20;
+    var QUOTATION_REG_SINGLE = /^\s*'(.*)'\s*$/; // 中间也含有引号，因为贪婪，所以可以不管。
+    var QUOTATION_REG_DOUBLE = /^\s*"(.*)"\s*$/; // 中间也含有引号，因为贪婪，所以可以不管。
 
     /**
      * @public
@@ -85,12 +87,14 @@ define(function (require) {
     schemaHelper.EC_OPTION_TYPE = [
         'Array', 'Object', 'string', 'number', 'boolean', 'color', 'Function', 'Date'
     ];
+
     /**
      * ec option axis的适用类型枚举
      *
      * @public
      */
     schemaHelper.EC_AXIS_APPLICABLE = ['category', 'value', 'time', 'log'];
+
     /**
      * ec option series的适用类型枚举
      *
@@ -100,6 +104,7 @@ define(function (require) {
         'line', 'bar', 'scatter', 'k', 'pie', 'radar', 'chord', 'force', 'map', 'gauge',
         'funnel', 'eventRiver', 'venn', 'treemap', 'tree', 'wordCloud', 'heatmap'
     ];
+
     /**
      * ec option itemStyle的适用类型枚举
      *
@@ -673,7 +678,6 @@ define(function (require) {
             var result = mergeByRef(schemaItem, context);
             var hasObjectProperties = context.selfInfo === BuildDocInfo.HAS_OBJECT_PROPERTIES;
             var isEnumParent = context.enumInfo === BuildDocInfo.IS_ENUM_PARENT;
-            var isEnumItem = context.enumInfo === BuildDocInfo.IS_ENUM_ITEM;
             var sub = {
                 value: 'ecapidocid-' + dtLib.localUID(),
                 hasObjectProperties: hasObjectProperties,
@@ -783,11 +787,11 @@ define(function (require) {
                 return defaultValue + '';
             }
             else if (type === 'string') {
-                return '\'' + (
+                return (
                     options.getBrief
                         ? cutString(defaultValue, DEFAULT_VALUE_BRIEF_LENGTH)
                         : defaultValue
-                ) + '\'';
+                );
             }
             else {
                 if (options.getBrief) {
@@ -804,12 +808,6 @@ define(function (require) {
                     }
                 }
             }
-        }
-        else if (defau.hasOwnProperty('defaultExplanation') && defau.defaultExplanation) {
-            var exp = defau.defaultExplanation ? defau.defaultExplanation : '';
-            return options.getBrief
-                ? ('<' + cutString(exp, DEFAULT_VALUE_BRIEF_LENGTH) + '>')
-                : exp;
         }
         else {
             if (options.getBrief) {
@@ -834,9 +832,25 @@ define(function (require) {
 
     /**
      * @inner
+     * @param {string} value 包含引号
+     * @param {number} length
      */
-    function cutString(str, length) {
-        return str.length > length ? (str.slice(0, length) + '...') : str;
+    function cutString(value, length) {
+        var matchResult = value.match(QUOTATION_REG_SINGLE);
+        if (matchResult) {
+            return '\'' + cut(matchResult[1]) + '\'';
+        }
+
+        var matchResult = value.match(QUOTATION_REG_DOUBLE);
+        if (matchResult) {
+            return '"' + cut(matchResult[1]) + '"';
+        }
+
+        return cut(value);
+
+        function cut(str) {
+            return str.length > length ? (str.slice(0, length) + '...') : str;
+        }
     }
 
     return schemaHelper;

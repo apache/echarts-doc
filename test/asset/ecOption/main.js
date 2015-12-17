@@ -95,7 +95,7 @@ define(function (require) {
 
             this._docTree = {
                 value: 'root',
-                text: 'var echartsOption = ',
+                text: 'var option = ',
                 childrenPre: '{',
                 childrenPost: '}',
                 childrenBrief: ' ... ',
