@@ -302,7 +302,7 @@ define(function (require) {
             }
 
             var pathItem = (context.optionPath || context.fuzzyPath)[pathIndex];
-            var lastPathItem = (context.optionPath || context.fuzzyPath)[pathIndex - 1]
+            var lastPathItem = (context.optionPath || context.fuzzyPath)[pathIndex - 1];
 
             if (!pathItem) {
                 context.result.push(docTree);
@@ -638,6 +638,7 @@ define(function (require) {
         }
         else {
             childrenBrief = ' type: \'' + encodeHTML(getTypeEnum(schemaItem)) + '\', ... ';
+console.log(encodeHTML(getTypeEnum(schemaItem)), getTypeEnum(schemaItem));
         }
 
         // Make tree item text and children.
@@ -827,7 +828,20 @@ define(function (require) {
      */
     function getTypeEnum(schemaItem) {
         // 这里是硬编码：anyOf的子节点必须有properties，必须有type属性。
-        return schemaItem.properties.type['default'];
+        var typeEnum = schemaItem.properties.type['default'];
+        return removeQuotation(typeEnum);
+    }
+
+    /**
+     * @inner
+     */
+    function removeQuotation(value, noQuotationReturnNull) {
+        var matchResult = value.match(QUOTATION_REG_SINGLE)
+            || value.match(QUOTATION_REG_DOUBLE);
+        if (matchResult) {
+            return matchResult[1];
+        }
+        return noQuotationReturnNull ? null : value;
     }
 
     /**
@@ -836,17 +850,11 @@ define(function (require) {
      * @param {number} length
      */
     function cutString(value, length) {
-        var matchResult = value.match(QUOTATION_REG_SINGLE);
-        if (matchResult) {
-            return '\'' + cut(matchResult[1]) + '\'';
-        }
+        var removed = removeQuotation(value, true);
 
-        var matchResult = value.match(QUOTATION_REG_DOUBLE);
-        if (matchResult) {
-            return '"' + cut(matchResult[1]) + '"';
-        }
-
-        return cut(value);
+        return removed != null
+            ? '\'' + cut(removed) + '\''
+            : cut(value);
 
         function cut(str) {
             return str.length > length ? (str.slice(0, length) + '...') : str;
