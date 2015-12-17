@@ -216,7 +216,8 @@ define(function (require) {
      * @public
      * @param {Array.<Object>} optionsPathArr
      * @param {Object} options
-     * @param {boolean} [options.useSquareBrackets=false] default using '-' to indicate array item.
+     * @param {boolean} [options.useSquareBrackets] default false,
+     *                                              ignore square brackets for array item.
      * @param {boolean} [options.html=false]
      */
     schemaHelper.stringifyOptionPath = function (optionPathArr, options) {
@@ -227,7 +228,7 @@ define(function (require) {
             var item = optionPathArr[i];
             var arrayName = item.arrayName;
             if (arrayName != null && !options.useSquareBrackets) {
-                arrayName = arrayName.replace(/\[/g, '-').replace(/\]/, '');
+                arrayName = arrayName.replace(/\[i\]/g, '');
             }
             var itemStr = item.propertyName || arrayName;
 
