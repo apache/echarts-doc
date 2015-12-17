@@ -852,10 +852,10 @@ html {
   right: 25px;
   height: 175px;
   bottom: 20px;
-  background-color: #bfe3ec;
-  -webkit-box-shadow: 0 0 8px #555555;
-  -moz-box-shadow: 0 0 8px #555555;
-  box-shadow: 0 0 8px #555555;
+  background-color: white;
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 .ecdoc-api-desc-area pre {
   word-break: break-all;

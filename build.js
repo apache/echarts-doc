@@ -8,6 +8,10 @@ etpl.config({
     commandClose: '}}'
 });
 
+etpl.addFilter('default', function (source, defaultVal) {
+    return (source === '' || source == null) ? defaultVal : source;
+});
+
 glob('src/**/*.md', function (err, files) {
     var mdTpl = files.filter(function (fileName) {
         return fileName.indexOf('__') !== 0;
@@ -18,7 +22,6 @@ glob('src/**/*.md', function (err, files) {
     // Render tpl
     etpl.compile(mdTpl.join('\n'));
     var mdStr = etpl.getRenderer('echarts')();
-
     // Markdown to JSON
     var schema = mdToJsonSchema(mdStr);
 
@@ -111,14 +114,15 @@ function mdToJsonSchema(mdStr) {
 
     var headers = [];
 
-    mdStr.replace(/(#+) *([^\n]+?) *#* *(?:\n+|$)/g, function (header, headerPrefix, text) {
+    // FIXME
+    mdStr.replace(/(?:^|\n) *(#+) *([^\n]+)/g, function (header, headerPrefix, text) {
         headers.push({
             text: text,
             level: headerPrefix.length
         });
     });
 
-    mdStr.split(/(?:#+) *(?:[^\n]+?) *#* *(?:\n+|$)/).slice(1).forEach(move);
+    mdStr.split(/(?:^|\n) *(?:#+) *(?:[^\n]+)/).slice(1).forEach(move);
 
     function move(section, idx) {
         var text = headers[idx].text;
@@ -162,7 +166,7 @@ function mdToJsonSchema(mdStr) {
         else if (level > currentLevel) {
             if (level - currentLevel > 1) {
                 throw new Error(
-                    '标题层级 "' + repeat('#', level) + '" 不能直接跟在标题层级 "' + repeat('#', currentLevel) + '"后'
+                    text + '\n标题层级 "' + repeat('#', level) + '" 不能直接跟在标题层级 "' + repeat('#', currentLevel) + '"后'
                 );
             }
             current = property;
