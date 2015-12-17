@@ -72,6 +72,48 @@
   color: #999;
   cursor: default;
 }
+/**
+ * Close cross
+ */
+.dtui-close-cross {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  position: absolute;
+  text-align: center;
+  font-family: Arial;
+  font-size: 15px;
+  top: -15px;
+  right: -15px;
+  cursor: pointer;
+  color: #333333;
+  background: #dddddd;
+}
+.dtui-close-cross:hover {
+  color: #ffffff;
+  background: #3498db;
+}
+/**
+ * dialog panel
+ */
+.dtui-dlg {
+  min-width: 200px;
+  max-width: 600px;
+}
+.dtui-dlg .dtui-con {
+  padding: 10px;
+  font-size: 14px;
+}
+.dtui-dlg .dtui-btns {
+  text-align: right;
+  margin-top: 10px;
+}
+.dtui-dlg .dtui-btn {
+  margin: 0 2px;
+}
 .dtui-txipt {
   display: inline-block;
   *display: inline;
@@ -158,17 +200,141 @@
   background: #eeeeee;
   color: #333;
 }
+/**
+ * Close cross
+ */
+.dtui-close-cross {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  position: absolute;
+  text-align: center;
+  font-family: Arial;
+  font-size: 15px;
+  top: -15px;
+  right: -15px;
+  cursor: pointer;
+  color: #333333;
+  background: #dddddd;
+}
+.dtui-close-cross:hover {
+  color: #ffffff;
+  background: #3498db;
+}
+/**
+ * dialog panel
+ */
+.dtui-dlg {
+  min-width: 200px;
+  max-width: 600px;
+}
+.dtui-dlg .dtui-con {
+  padding: 10px;
+  font-size: 14px;
+}
+.dtui-dlg .dtui-btns {
+  text-align: right;
+  margin-top: 10px;
+}
+.dtui-dlg .dtui-btn {
+  margin: 0 2px;
+}
 .dtui-tx {
   display: inline-block;
   *display: inline;
   *zoom: 1;
   vertical-align: middle;
 }
+/**
+ * Close cross
+ */
+.dtui-close-cross {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  position: absolute;
+  text-align: center;
+  font-family: Arial;
+  font-size: 15px;
+  top: -15px;
+  right: -15px;
+  cursor: pointer;
+  color: #333333;
+  background: #dddddd;
+}
+.dtui-close-cross:hover {
+  color: #ffffff;
+  background: #3498db;
+}
+/**
+ * dialog panel
+ */
+.dtui-dlg {
+  min-width: 200px;
+  max-width: 600px;
+}
+.dtui-dlg .dtui-con {
+  padding: 10px;
+  font-size: 14px;
+}
+.dtui-dlg .dtui-btns {
+  text-align: right;
+  margin-top: 10px;
+}
+.dtui-dlg .dtui-btn {
+  margin: 0 2px;
+}
 .dtui-chkbtn {
   display: inline-block;
   *display: inline;
   vertical-align: middle;
   *zoom: 1;
+}
+.dtui-chkbtn:before,
+.dtui-chkbtn:after {
+  display: table;
+  content: "";
+}
+.dtui-chkbtn:after {
+  clear: both;
+}
+.dtui-chkbtn:before,
+.dtui-chkbtn:after {
+  display: table;
+  content: "";
+}
+.dtui-chkbtn:after {
+  clear: both;
+}
+.dtui-chkbtn:before,
+.dtui-chkbtn:after {
+  display: table;
+  content: "";
+}
+.dtui-chkbtn:after {
+  clear: both;
+}
+.dtui-chkbtn:before,
+.dtui-chkbtn:after {
+  display: table;
+  content: "";
+}
+.dtui-chkbtn:after {
+  clear: both;
+}
+.dtui-chkbtn:before,
+.dtui-chkbtn:after {
+  display: table;
+  content: "";
+}
+.dtui-chkbtn:after {
+  clear: both;
 }
 .dtui-chkbtn:before,
 .dtui-chkbtn:after {
@@ -218,6 +384,48 @@
   border: 0 solid #828599;
   color: #828599;
   background: #dddddd;
+}
+/**
+ * Close cross
+ */
+.dtui-close-cross {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  position: absolute;
+  text-align: center;
+  font-family: Arial;
+  font-size: 15px;
+  top: -15px;
+  right: -15px;
+  cursor: pointer;
+  color: #333333;
+  background: #dddddd;
+}
+.dtui-close-cross:hover {
+  color: #ffffff;
+  background: #3498db;
+}
+/**
+ * dialog panel
+ */
+.dtui-dlg {
+  min-width: 200px;
+  max-width: 600px;
+}
+.dtui-dlg .dtui-con {
+  padding: 10px;
+  font-size: 14px;
+}
+.dtui-dlg .dtui-btns {
+  text-align: right;
+  margin-top: 10px;
+}
+.dtui-dlg .dtui-btn {
+  margin: 0 2px;
 }
 .dtui-treelist-i {
   position: relative;
@@ -272,6 +480,48 @@
   background: transparent;
   color: #828599;
 }
+/**
+ * Close cross
+ */
+.dtui-close-cross {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  position: absolute;
+  text-align: center;
+  font-family: Arial;
+  font-size: 15px;
+  top: -15px;
+  right: -15px;
+  cursor: pointer;
+  color: #333333;
+  background: #dddddd;
+}
+.dtui-close-cross:hover {
+  color: #ffffff;
+  background: #3498db;
+}
+/**
+ * dialog panel
+ */
+.dtui-dlg {
+  min-width: 200px;
+  max-width: 600px;
+}
+.dtui-dlg .dtui-con {
+  padding: 10px;
+  font-size: 14px;
+}
+.dtui-dlg .dtui-btns {
+  text-align: right;
+  margin-top: 10px;
+}
+.dtui-dlg .dtui-btn {
+  margin: 0 2px;
+}
 .dtui-winpn {
   background: #f5f5f5;
   color: #222222;
@@ -291,6 +541,26 @@
   margin-left: -50%;
   overflow: visible;
   padding: 10px;
+}
+.dtui-winpn a,
+.dtui-winpn a:visited {
+  color: #99d0ff;
+}
+.dtui-winpn a,
+.dtui-winpn a:visited {
+  color: #99d0ff;
+}
+.dtui-winpn a,
+.dtui-winpn a:visited {
+  color: #99d0ff;
+}
+.dtui-winpn a,
+.dtui-winpn a:visited {
+  color: #99d0ff;
+}
+.dtui-winpn a,
+.dtui-winpn a:visited {
+  color: #99d0ff;
 }
 .dtui-winpn a,
 .dtui-winpn a:visited {
@@ -409,6 +679,46 @@ html {
 }
 .ecdoc-api-query-box:before,
 .ecdoc-api-query-box:after {
+  display: table;
+  content: "";
+}
+.ecdoc-api-query-box:after {
+  clear: both;
+}
+.ecdoc-api-query-box:before,
+.ecdoc-api-query-box:after {
+  display: table;
+  content: "";
+}
+.ecdoc-api-query-box:after {
+  clear: both;
+}
+.ecdoc-api-query-box:before,
+.ecdoc-api-query-box:after {
+  display: table;
+  content: "";
+}
+.ecdoc-api-query-box:after {
+  clear: both;
+}
+.ecdoc-api-query-box:before,
+.ecdoc-api-query-box:after {
+  display: table;
+  content: "";
+}
+.ecdoc-api-query-box:after {
+  clear: both;
+}
+.ecdoc-api-query-box:before,
+.ecdoc-api-query-box:after {
+  display: table;
+  content: "";
+}
+.ecdoc-api-query-box:after {
+  clear: both;
+}
+.ecdoc-api-query-box:before,
+.ecdoc-api-query-box:after {
   content: ' ';
   display: block;
   position: absolute;
@@ -504,7 +814,7 @@ html {
 .ecdoc-api-doc-group-area .ecdoc-api-doc-group-line {
   padding: 20px 15px;
   background: #FFF;
-  margin: 5px 0px;
+  margin: 10px 0px;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
 }
 .ecdoc-api-doc-group-area .ecdoc-api-doc-line-label {
