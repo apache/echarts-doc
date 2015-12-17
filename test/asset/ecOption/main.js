@@ -297,9 +297,7 @@ define(function (require) {
             try {
                 var args = {};
                 args[queryArgName] = queryStr;
-                result = schemaHelper.queryDocTree(
-                    this._docTree, this._schemaStatistic.universal, args
-                );
+                result = schemaHelper.queryDocTree(this._docTree, args);
             }
             catch (e) {
                 alert(e);

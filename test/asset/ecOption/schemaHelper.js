@@ -184,7 +184,10 @@ define(function (require) {
             }
 
             if (ctxVar) {
-                pa.applicable = new dtLib.Set(ctxVarValue);
+                // FIXME
+                // 暂时只支持  series(line),  不支持 series(line,bar,pie)，好像没啥用？
+                // pa.applicable = new dtLib.Set(ctxVarValue);
+                pa.typeEnum = ctxVarValue;
             }
             retArr.push(pa);
         }
@@ -252,7 +255,6 @@ define(function (require) {
      * @public
      * @param {Object} docTree
      * @param {Object} args
-     * @param {Object} universal see schemaHelper.statisticSchema
      * @param {string=} [args.fuzzyPath] Like 'bbb(line,pie).ccc',
      *                                   using fuzzy mode, case insensitive.
      *                                   i.e. The query string above matches the result 'mm.zbbbx.yyy.cccl'.
@@ -264,9 +266,7 @@ define(function (require) {
      * @return {Array.<Object>} result
      * @throws {Error}
      */
-    schemaHelper.queryDocTree = function (docTree, universal, args) {
-        dtLib.assert(universal);
-
+    schemaHelper.queryDocTree = function (docTree, args) {
         args = args || {};
         var context = {
             originalDocTree: docTree,
@@ -287,7 +287,7 @@ define(function (require) {
         );
 
         if (context.optionPath || context.fuzzyPath) {
-            queryRecursivelyByPath(docTree, context, 0, new dtLib.Set());
+            queryRecursivelyByPath(docTree, context, 0);
         }
         else {
             queryRecursivelyByContent(docTree, context);
@@ -295,12 +295,13 @@ define(function (require) {
 
         return context.result;
 
-        function queryRecursivelyByPath(docTree, context, pathIndex, applicable) {
+        function queryRecursivelyByPath(docTree, context, pathIndex) {
             if (!dtLib.isObject(docTree)) {
                 return;
             }
 
             var pathItem = (context.optionPath || context.fuzzyPath)[pathIndex];
+            var lastPathItem = (context.optionPath || context.fuzzyPath)[pathIndex - 1]
 
             if (!pathItem) {
                 context.result.push(docTree);
@@ -311,22 +312,18 @@ define(function (require) {
                 }
             }
 
-            var subApplicable = applicable;
-            if (pathItem && pathItem.applicable) {
-                var newSet = new dtLib.Set(pathItem.applicable);
-                if (newSet.count() > 0) {
-                    subApplicable = newSet;
-                }
-            }
-
             for (var i = 0, len = (docTree.children || []).length; i < len; i++) {
                 var child = docTree.children[i];
                 var nextPathIndex = null;
 
                 if (docTree.isEnumParent) {
                     // if (isApplicableLoosely(child.applicable, subApplicable)) {
-                        // nextPathIndex = pathIndex;
-                    // }
+                    if (!lastPathItem
+                        || !lastPathItem.typeEnum
+                        || child.typeEnum === lastPathItem.typeEnum
+                    ) {
+                        nextPathIndex = pathIndex;
+                    }
                     // else do nothing.
                 }
                 else if (context.optionPath
@@ -344,7 +341,7 @@ define(function (require) {
                 }
 
                 if (nextPathIndex != null) {
-                    queryRecursivelyByPath(child, context, nextPathIndex, subApplicable);
+                    queryRecursivelyByPath(child, context, nextPathIndex);
                 }
             }
         }
@@ -678,12 +675,14 @@ define(function (require) {
             var result = mergeByRef(schemaItem, context);
             var hasObjectProperties = context.selfInfo === BuildDocInfo.HAS_OBJECT_PROPERTIES;
             var isEnumParent = context.enumInfo === BuildDocInfo.IS_ENUM_PARENT;
+            var isEnumItem = context.enumInfo === BuildDocInfo.IS_ENUM_ITEM;
             var sub = {
                 value: 'ecapidocid-' + dtLib.localUID(),
                 hasObjectProperties: hasObjectProperties,
                 isEnumParent: isEnumParent,
                 // enumerateBy: isEnumParent ? schemaItem.enumerateBy.slice() : UNDEFINED,
                 type: schemaItem.type,
+                typeEnum: isEnumItem ? getTypeEnum(schemaItem) : null,
                 parent: renderBase,
                 descriptionCN: result.descriptionCN,
                 descriptionEN: result.descriptionEN,
