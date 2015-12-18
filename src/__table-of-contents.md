@@ -1,9 +1,11 @@
 + 入门教程
     + 获取和引入 ECharts
     + 使用 ECharts 画出你的第一个图表
+    + ECharts 介绍
 
 + 高级教程
     + 在图表中加入交互组件（图例，dataZoom）
+    + ECharts 各组件的布局
     + 异步数据和动态数据
     + 通过 JS API 自定义交互
     + ECharts 中的坐标系

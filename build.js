@@ -22,6 +22,7 @@ glob('src/**/*.md', function (err, files) {
     // Render tpl
     etpl.compile(mdTpl.join('\n'));
     var mdStr = etpl.getRenderer('echarts')();
+
     // Markdown to JSON
     var schema = mdToJsonSchema(mdStr);
 

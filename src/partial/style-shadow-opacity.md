@@ -1,7 +1,7 @@
 {{target:partial-style-shadow-opacity}}
 #${prefix} shadowBlur(number) = ${defaultShadowBlur}
 
-图形阴影的大小。该属性配合 `shadowColor`,`shadowOffsetX`, `shadowOffsetY` 一起设置图形的阴影效果。
+图形阴影的模糊大小。该属性配合 `shadowColor`,`shadowOffsetX`, `shadowOffsetY` 一起设置图形的阴影效果。
 
 示例：
 ```js

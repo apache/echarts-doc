@@ -1,12 +1,14 @@
 {{target: component-common}}
 
+## zlevel(number) = 0
+
+组件的所有图形的 zlevel 值。
+
+zlevel 是 ECharts 底层图形库 ZRender 的
+
 ## z(number) = 2
 
 组件的所有图形的 z 值
-
-## zlevel(number) = 0
-
-组件的所有图形的 zlevel 值
 
 ## show(boolean) = true
 
