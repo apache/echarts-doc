@@ -15,12 +15,12 @@
   top: -15px;
   right: -15px;
   cursor: pointer;
-  color: #333333;
-  background: #dddddd;
+  color: #333;
+  background: #ddd;
 }
 .dtui-close-cross:hover {
-  color: #ffffff;
-  background: #3498db;
+  color: #fff;
+  background: #3498DB;
 }
 /**
  * dialog panel
@@ -71,48 +71,6 @@
   background: #ddd;
   color: #999;
   cursor: default;
-}
-/**
- * Close cross
- */
-.dtui-close-cross {
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  position: absolute;
-  text-align: center;
-  font-family: Arial;
-  font-size: 15px;
-  top: -15px;
-  right: -15px;
-  cursor: pointer;
-  color: #333333;
-  background: #dddddd;
-}
-.dtui-close-cross:hover {
-  color: #ffffff;
-  background: #3498db;
-}
-/**
- * dialog panel
- */
-.dtui-dlg {
-  min-width: 200px;
-  max-width: 600px;
-}
-.dtui-dlg .dtui-con {
-  padding: 10px;
-  font-size: 14px;
-}
-.dtui-dlg .dtui-btns {
-  text-align: right;
-  margin-top: 10px;
-}
-.dtui-dlg .dtui-btn {
-  margin: 0 2px;
 }
 .dtui-txipt {
   display: inline-block;
@@ -193,54 +151,12 @@
   resize: none;
 }
 .dtui-txipt-disabled {
-  background: #eeeeee;
+  background: #eee;
 }
 .dtui-txipt-disabled textarea,
 .dtui-txipt-disabled input {
-  background: #eeeeee;
+  background: #eee;
   color: #333;
-}
-/**
- * Close cross
- */
-.dtui-close-cross {
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  position: absolute;
-  text-align: center;
-  font-family: Arial;
-  font-size: 15px;
-  top: -15px;
-  right: -15px;
-  cursor: pointer;
-  color: #333333;
-  background: #dddddd;
-}
-.dtui-close-cross:hover {
-  color: #ffffff;
-  background: #3498db;
-}
-/**
- * dialog panel
- */
-.dtui-dlg {
-  min-width: 200px;
-  max-width: 600px;
-}
-.dtui-dlg .dtui-con {
-  padding: 10px;
-  font-size: 14px;
-}
-.dtui-dlg .dtui-btns {
-  text-align: right;
-  margin-top: 10px;
-}
-.dtui-dlg .dtui-btn {
-  margin: 0 2px;
 }
 .dtui-tx {
   display: inline-block;
@@ -248,93 +164,11 @@
   *zoom: 1;
   vertical-align: middle;
 }
-/**
- * Close cross
- */
-.dtui-close-cross {
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  position: absolute;
-  text-align: center;
-  font-family: Arial;
-  font-size: 15px;
-  top: -15px;
-  right: -15px;
-  cursor: pointer;
-  color: #333333;
-  background: #dddddd;
-}
-.dtui-close-cross:hover {
-  color: #ffffff;
-  background: #3498db;
-}
-/**
- * dialog panel
- */
-.dtui-dlg {
-  min-width: 200px;
-  max-width: 600px;
-}
-.dtui-dlg .dtui-con {
-  padding: 10px;
-  font-size: 14px;
-}
-.dtui-dlg .dtui-btns {
-  text-align: right;
-  margin-top: 10px;
-}
-.dtui-dlg .dtui-btn {
-  margin: 0 2px;
-}
 .dtui-chkbtn {
   display: inline-block;
   *display: inline;
   vertical-align: middle;
   *zoom: 1;
-}
-.dtui-chkbtn:before,
-.dtui-chkbtn:after {
-  display: table;
-  content: "";
-}
-.dtui-chkbtn:after {
-  clear: both;
-}
-.dtui-chkbtn:before,
-.dtui-chkbtn:after {
-  display: table;
-  content: "";
-}
-.dtui-chkbtn:after {
-  clear: both;
-}
-.dtui-chkbtn:before,
-.dtui-chkbtn:after {
-  display: table;
-  content: "";
-}
-.dtui-chkbtn:after {
-  clear: both;
-}
-.dtui-chkbtn:before,
-.dtui-chkbtn:after {
-  display: table;
-  content: "";
-}
-.dtui-chkbtn:after {
-  clear: both;
-}
-.dtui-chkbtn:before,
-.dtui-chkbtn:after {
-  display: table;
-  content: "";
-}
-.dtui-chkbtn:after {
-  clear: both;
 }
 .dtui-chkbtn:before,
 .dtui-chkbtn:after {
@@ -362,11 +196,11 @@
   border-radius: 2px;
   border: 0 solid #828599;
   background: transparent;
-  color: #777777;
+  color: #777;
 }
 .dtui-chkbtn-i-hover {
   border: 0 solid #828599;
-  color: #333333;
+  color: #333;
   background: #e0e0e0;
 }
 .dtui-chkbtn-i-active {
@@ -383,49 +217,7 @@
 .dtui-chkbtn-disabled .dtui-chkbtn-i-active {
   border: 0 solid #828599;
   color: #828599;
-  background: #dddddd;
-}
-/**
- * Close cross
- */
-.dtui-close-cross {
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  position: absolute;
-  text-align: center;
-  font-family: Arial;
-  font-size: 15px;
-  top: -15px;
-  right: -15px;
-  cursor: pointer;
-  color: #333333;
-  background: #dddddd;
-}
-.dtui-close-cross:hover {
-  color: #ffffff;
-  background: #3498db;
-}
-/**
- * dialog panel
- */
-.dtui-dlg {
-  min-width: 200px;
-  max-width: 600px;
-}
-.dtui-dlg .dtui-con {
-  padding: 10px;
-  font-size: 14px;
-}
-.dtui-dlg .dtui-btns {
-  text-align: right;
-  margin-top: 10px;
-}
-.dtui-dlg .dtui-btn {
-  margin: 0 2px;
+  background: #ddd;
 }
 .dtui-treelist-i {
   position: relative;
@@ -458,19 +250,19 @@
   display: block;
   padding: 0 0.5em;
   text-decoration: none;
-  color: #333333;
+  color: #333;
 }
 .dtui-treelist-text-highlight {
   background: #efd689;
-  color: #000000;
+  color: #000;
 }
 .dtui-treelist-text-active {
   background: #428bca;
-  color: #ffffff;
+  color: #fff;
 }
 .dtui-treelist-text-hover {
   background: #a2d0f7;
-  color: #000000;
+  color: #000;
 }
 .dtui-treelist-post {
   display: block;
@@ -480,51 +272,9 @@
   background: transparent;
   color: #828599;
 }
-/**
- * Close cross
- */
-.dtui-close-cross {
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  position: absolute;
-  text-align: center;
-  font-family: Arial;
-  font-size: 15px;
-  top: -15px;
-  right: -15px;
-  cursor: pointer;
-  color: #333333;
-  background: #dddddd;
-}
-.dtui-close-cross:hover {
-  color: #ffffff;
-  background: #3498db;
-}
-/**
- * dialog panel
- */
-.dtui-dlg {
-  min-width: 200px;
-  max-width: 600px;
-}
-.dtui-dlg .dtui-con {
-  padding: 10px;
-  font-size: 14px;
-}
-.dtui-dlg .dtui-btns {
-  text-align: right;
-  margin-top: 10px;
-}
-.dtui-dlg .dtui-btn {
-  margin: 0 2px;
-}
 .dtui-winpn {
   background: #f5f5f5;
-  color: #222222;
+  color: #222;
   padding: 5px 10px;
   line-height: 25px;
   z-index: 9999;
@@ -544,27 +294,7 @@
 }
 .dtui-winpn a,
 .dtui-winpn a:visited {
-  color: #99d0ff;
-}
-.dtui-winpn a,
-.dtui-winpn a:visited {
-  color: #99d0ff;
-}
-.dtui-winpn a,
-.dtui-winpn a:visited {
-  color: #99d0ff;
-}
-.dtui-winpn a,
-.dtui-winpn a:visited {
-  color: #99d0ff;
-}
-.dtui-winpn a,
-.dtui-winpn a:visited {
-  color: #99d0ff;
-}
-.dtui-winpn a,
-.dtui-winpn a:visited {
-  color: #99d0ff;
+  color: #99D0FF;
 }
 .dtui-winpn-con {
   overflow: hidden;
@@ -572,9 +302,9 @@
 .dtui-global-tooltip {
   position: absolute;
   max-width: 200px;
-  background: #ffffff;
-  border: 1px solid #bbbbbb;
-  color: #111111;
+  background: #fff;
+  border: 1px solid #bbb;
+  color: #111;
   padding: 5px 10px;
   line-height: 25px;
   z-index: 99999;
@@ -668,46 +398,6 @@ html {
   padding: 10px 10px 5px 10px;
   z-index: 1020;
   *zoom: 1;
-}
-.ecdoc-api-query-box:before,
-.ecdoc-api-query-box:after {
-  display: table;
-  content: "";
-}
-.ecdoc-api-query-box:after {
-  clear: both;
-}
-.ecdoc-api-query-box:before,
-.ecdoc-api-query-box:after {
-  display: table;
-  content: "";
-}
-.ecdoc-api-query-box:after {
-  clear: both;
-}
-.ecdoc-api-query-box:before,
-.ecdoc-api-query-box:after {
-  display: table;
-  content: "";
-}
-.ecdoc-api-query-box:after {
-  clear: both;
-}
-.ecdoc-api-query-box:before,
-.ecdoc-api-query-box:after {
-  display: table;
-  content: "";
-}
-.ecdoc-api-query-box:after {
-  clear: both;
-}
-.ecdoc-api-query-box:before,
-.ecdoc-api-query-box:after {
-  display: table;
-  content: "";
-}
-.ecdoc-api-query-box:after {
-  clear: both;
 }
 .ecdoc-api-query-box:before,
 .ecdoc-api-query-box:after {
