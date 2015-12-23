@@ -2078,11 +2078,133 @@
                   ],
                   "descriptionCN": "<p>该系列使用的坐标系，可选：</p>\n"
                 },
+                "label": {
+                  "type": [
+                    "Object"
+                  ],
+                  "descriptionCN": "<p>图形上的文本标签，课用于说明图形的一些数据信息，比如值，名称等，<code>label</code>选项在 ECharts 2.x 中放置于<code>itemStyle.normal</code>下，在 ECharts 3 中为了让整个配置项结构更扁平合理，<code>label</code>被拿出来跟 <code>itemStyle</code> 平级，并且跟 <code>itemStyle</code> 一样拥有 <code>normal</code>, <code>emphasis</code> 两个状态。当然老的写法也依旧是兼容的</p>\n",
+                  "properties": {
+                    "normal": {
+                      "type": [
+                        "Object"
+                      ],
+                      "descriptionCN": "",
+                      "properties": {
+                        "textStyle": {
+                          "type": [
+                            "*"
+                          ],
+                          "descriptionCN": "<p>标签的字体样式</p>\n",
+                          "properties": {
+                            "color": {
+                              "type": [
+                                "string"
+                              ],
+                              "descriptionCN": "<p>文字的颜色。</p>\n",
+                              "default": "\"#fff\""
+                            },
+                            "fontStyle": {
+                              "type": [
+                                "string"
+                              ],
+                              "descriptionCN": "<p>文字字体的风格</p>\n<p>可选：</p>\n<ul>\n<li>normal</li>\n<li>italic</li>\n<li>oblique</li>\n</ul>\n",
+                              "default": "\"normal\""
+                            },
+                            "fontWeight": {
+                              "type": [
+                                "string"
+                              ],
+                              "descriptionCN": "<p>文字字体的粗细</p>\n<p>可选：</p>\n<ul>\n<li>normal</li>\n<li>bold</li>\n<li>bolder</li>\n<li>lighter</li>\n<li>100 | 200 | 300 | 400...</li>\n</ul>\n",
+                              "default": "\"normal\""
+                            },
+                            "fontFamily": {
+                              "type": [
+                                "string"
+                              ],
+                              "descriptionCN": "<p>文字的字体系列</p>\n",
+                              "default": "\"sans-serief\""
+                            },
+                            "fontSize": {
+                              "type": [
+                                "number"
+                              ],
+                              "descriptionCN": "<p>文字的字体大小</p>\n",
+                              "default": 12
+                            }
+                          }
+                        },
+                        "position(string|Array.<string>)": {
+                          "type": [
+                            "*"
+                          ],
+                          "descriptionCN": "<p>可选：</p>\n<ul>\n<li><p>[percentage, percentage]</p>\n<p>  通过百分比表示标签相对于图形包围盒左上角的位置。</p>\n</li>\n<li><p>&quot;top&quot;</p>\n</li>\n<li><p>&quot;left&quot;</p>\n</li>\n<li><p>&quot;right&quot;</p>\n</li>\n<li><p>&quot;bottom&quot;</p>\n</li>\n<li><p>&#39;inside&#39;</p>\n</li>\n<li>&#39;insideLeft&#39;</li>\n<li>&#39;insideRight&#39;</li>\n<li>&#39;insideTop&#39;</li>\n<li>&#39;insideBottom&#39;</li>\n<li>&#39;insideLeftTop&#39;</li>\n<li>&#39;insideLeftBottom&#39;</li>\n<li>&#39;insideRightTop&#39;</li>\n<li>&#39;insideRightBottom&#39;</li>\n</ul>\n"
+                        }
+                      }
+                    },
+                    "emphasis": {
+                      "type": [
+                        "Object"
+                      ],
+                      "descriptionCN": "",
+                      "properties": {
+                        "textStyle": {
+                          "type": [
+                            "*"
+                          ],
+                          "descriptionCN": "<p>标签的字体样式</p>\n",
+                          "properties": {
+                            "color": {
+                              "type": [
+                                "string"
+                              ],
+                              "descriptionCN": "<p>文字的颜色。</p>\n",
+                              "default": "\"#fff\""
+                            },
+                            "fontStyle": {
+                              "type": [
+                                "string"
+                              ],
+                              "descriptionCN": "<p>文字字体的风格</p>\n<p>可选：</p>\n<ul>\n<li>normal</li>\n<li>italic</li>\n<li>oblique</li>\n</ul>\n",
+                              "default": "\"normal\""
+                            },
+                            "fontWeight": {
+                              "type": [
+                                "string"
+                              ],
+                              "descriptionCN": "<p>文字字体的粗细</p>\n<p>可选：</p>\n<ul>\n<li>normal</li>\n<li>bold</li>\n<li>bolder</li>\n<li>lighter</li>\n<li>100 | 200 | 300 | 400...</li>\n</ul>\n",
+                              "default": "\"normal\""
+                            },
+                            "fontFamily": {
+                              "type": [
+                                "string"
+                              ],
+                              "descriptionCN": "<p>文字的字体系列</p>\n",
+                              "default": "\"sans-serief\""
+                            },
+                            "fontSize": {
+                              "type": [
+                                "number"
+                              ],
+                              "descriptionCN": "<p>文字的字体大小</p>\n",
+                              "default": 12
+                            }
+                          }
+                        },
+                        "position(string|Array.<string>)": {
+                          "type": [
+                            "*"
+                          ],
+                          "descriptionCN": "<p>可选：</p>\n<ul>\n<li><p>[percentage, percentage]</p>\n<p>  通过百分比表示标签相对于图形包围盒左上角的位置。</p>\n</li>\n<li><p>&quot;top&quot;</p>\n</li>\n<li><p>&quot;left&quot;</p>\n</li>\n<li><p>&quot;right&quot;</p>\n</li>\n<li><p>&quot;bottom&quot;</p>\n</li>\n<li><p>&#39;inside&#39;</p>\n</li>\n<li>&#39;insideLeft&#39;</li>\n<li>&#39;insideRight&#39;</li>\n<li>&#39;insideTop&#39;</li>\n<li>&#39;insideBottom&#39;</li>\n<li>&#39;insideLeftTop&#39;</li>\n<li>&#39;insideLeftBottom&#39;</li>\n<li>&#39;insideRightTop&#39;</li>\n<li>&#39;insideRightBottom&#39;</li>\n</ul>\n"
+                        }
+                      }
+                    }
+                  }
+                },
                 "itemStyle": {
                   "type": [
                     "Object"
                   ],
-                  "descriptionCN": "<p>饼图的扇形样式</p>\n",
+                  "descriptionCN": "<p>图形的样式，图形有 <code>normal</code> 和 <code>emphasis</code> 两个状态，<code>normal</code> 是图形正常的样式，<code>emphasis</code> 是图形高亮的样式，比如鼠标悬浮或者图例联动高亮的时候会使用 <code>emphasis</code> 作为图形的样式</p>\n",
                   "properties": {
                     "normal": {
                       "type": [
@@ -2094,7 +2216,7 @@
                           "type": [
                             "string"
                           ],
-                          "descriptionCN": "<p>图形的颜色。</p>\n<p>颜色可以使用 RGB 表示，比如 <code>&#39;rgb(128, 128, 128)&#39;</code>，如果想要加上 alpha 通道，可以使用 RGBA，比如 <code>&#39;rgba(128, 128, 128, 0.5)&#39;</code>，也可以使用十六进制格式，比如 <code>&#39;#ccc&#39;</code></p>\n",
+                          "descriptionCN": "<p>图形的颜色。 默认从全局调色盘 <a href=\"~color\">option.color</a> 获取颜色 </p>\n<p>颜色可以使用 RGB 表示，比如 <code>&#39;rgb(128, 128, 128)&#39;</code>，如果想要加上 alpha 通道，可以使用 RGBA，比如 <code>&#39;rgba(128, 128, 128, 0.5)&#39;</code>，也可以使用十六进制格式，比如 <code>&#39;#ccc&#39;</code></p>\n",
                           "default": "\"#000\""
                         },
                         "borderColor": {
@@ -2218,7 +2340,7 @@
                   "type": [
                     "Array"
                   ],
-                  "descriptionCN": "<p>内外两个同心圆的半径数组，如[40, 55]</p>\n<p>显示画布左上角的横向、纵向位置，如[&#39;10%&#39;, &#39;30%&#39;]</p>\n"
+                  "descriptionCN": "<p>内外两个同心圆的半径数组，如[40, 55]</p>\n"
                 },
                 "selectedMode(boolean | string)": {
                   "type": [
@@ -2238,11 +2360,23 @@
                   ],
                   "descriptionCN": "<p>是否顺时针显示</p>\n"
                 },
+                "startAngle": {
+                  "type": [
+                    "number"
+                  ],
+                  "descriptionCN": "<p>开始角度，支持范围[0, 360]，默认90度即时钟12点的位置</p>\n"
+                },
+                "minAngle": {
+                  "type": [
+                    "number"
+                  ],
+                  "descriptionCN": "<p>最小角度，默认为0</p>\n"
+                },
                 "data": {
                   "type": [
                     "Array"
                   ],
-                  "descriptionCN": "",
+                  "descriptionCN": "<p>数组数据</p>\n",
                   "items": {
                     "name": {
                       "type": [
@@ -2255,50 +2389,138 @@
                         "number"
                       ],
                       "descriptionCN": "<p>数据值</p>\n"
-                    }
-                  }
-                },
-                "label": {
-                  "type": [
-                    "Object"
-                  ],
-                  "descriptionCN": "<p>标注文字</p>\n",
-                  "properties": {
-                    "normal": {
+                    },
+                    "selected": {
+                      "type": [
+                        "boolean"
+                      ],
+                      "descriptionCN": "<p>当前选中</p>\n"
+                    },
+                    "itemStyle": {
                       "type": [
                         "Object"
                       ],
-                      "descriptionCN": "",
+                      "descriptionCN": "<p>图形的样式，图形有 <code>normal</code> 和 <code>emphasis</code> 两个状态，<code>normal</code> 是图形正常的样式，<code>emphasis</code> 是图形高亮的样式，比如鼠标悬浮或者图例联动高亮的时候会使用 <code>emphasis</code> 作为图形的样式</p>\n",
                       "properties": {
-                        "show": {
-                          "type": [
-                            "boolean"
-                          ],
-                          "descriptionCN": "<p>是否展示</p>\n"
-                        },
-                        "position": {
-                          "type": [
-                            "string"
-                          ],
-                          "descriptionCN": "<p>文字显示在扇形内部还是外部，可选inside、outside，默认outside</p>\n"
-                        },
-                        "formatter": {
-                          "type": [
-                            "string"
-                          ],
-                          "descriptionCN": ""
-                        },
-                        "textStyle": {
+                        "normal": {
                           "type": [
                             "Object"
                           ],
                           "descriptionCN": "",
                           "properties": {
-                            "baseline": {
+                            "color": {
                               "type": [
                                 "string"
                               ],
-                              "descriptionCN": "<p>可选top、center、bottom</p>\n"
+                              "descriptionCN": "<p>图形的颜色。 默认从全局调色盘 <a href=\"~color\">option.color</a> 获取颜色 </p>\n<p>颜色可以使用 RGB 表示，比如 <code>&#39;rgb(128, 128, 128)&#39;</code>，如果想要加上 alpha 通道，可以使用 RGBA，比如 <code>&#39;rgba(128, 128, 128, 0.5)&#39;</code>，也可以使用十六进制格式，比如 <code>&#39;#ccc&#39;</code></p>\n",
+                              "default": "\"#000\""
+                            },
+                            "borderColor": {
+                              "type": [
+                                "string"
+                              ],
+                              "descriptionCN": "<p>图形的描边颜色。支持的格式同<code>color</code>。</p>\n",
+                              "default": "\"#000\""
+                            },
+                            "borderWidth": {
+                              "type": [
+                                "number"
+                              ],
+                              "descriptionCN": "<p>描边线宽。为 0 时无描边。</p>\n",
+                              "default": 0
+                            },
+                            "shadowBlur": {
+                              "type": [
+                                "number"
+                              ],
+                              "descriptionCN": "<p>图形阴影的模糊大小。该属性配合 <code>shadowColor</code>,<code>shadowOffsetX</code>, <code>shadowOffsetY</code> 一起设置图形的阴影效果。</p>\n<p>示例：</p>\n<pre><code class=\"lang-js\">itemStyle: {\n    normal: {\n        shadowColor: &#39;rgba(0, 0, 0, 0.5)&#39;,\n        shadowBlur: 10\n    }\n}\n</code></pre>\n"
+                            },
+                            "shadowColor": {
+                              "type": [
+                                "string"
+                              ],
+                              "descriptionCN": "<p>阴影颜色。支持的格式同<code>color</code>。</p>\n"
+                            },
+                            "shadowOffsetX": {
+                              "type": [
+                                "number"
+                              ],
+                              "descriptionCN": "<p>阴影水平方向上的偏移距离。</p>\n",
+                              "default": 0
+                            },
+                            "shadowOffsetY": {
+                              "type": [
+                                "number"
+                              ],
+                              "descriptionCN": "<p>阴影垂直方向上的偏移距离。</p>\n",
+                              "default": 0
+                            },
+                            "opacity": {
+                              "type": [
+                                "number"
+                              ],
+                              "descriptionCN": "<p>图形透明度。支持从 0 到 1 的数字，为 0 时绘制该图形。</p>\n"
+                            }
+                          }
+                        },
+                        "emphasis": {
+                          "type": [
+                            "Object"
+                          ],
+                          "descriptionCN": "",
+                          "properties": {
+                            "color": {
+                              "type": [
+                                "string"
+                              ],
+                              "descriptionCN": "<p>图形的颜色。</p>\n<p>颜色可以使用 RGB 表示，比如 <code>&#39;rgb(128, 128, 128)&#39;</code>，如果想要加上 alpha 通道，可以使用 RGBA，比如 <code>&#39;rgba(128, 128, 128, 0.5)&#39;</code>，也可以使用十六进制格式，比如 <code>&#39;#ccc&#39;</code></p>\n",
+                              "default": "\"#000\""
+                            },
+                            "borderColor": {
+                              "type": [
+                                "string"
+                              ],
+                              "descriptionCN": "<p>图形的描边颜色。支持的格式同<code>color</code>。</p>\n",
+                              "default": "\"#000\""
+                            },
+                            "borderWidth": {
+                              "type": [
+                                "number"
+                              ],
+                              "descriptionCN": "<p>描边线宽。为 0 时无描边。</p>\n",
+                              "default": 0
+                            },
+                            "shadowBlur": {
+                              "type": [
+                                "number"
+                              ],
+                              "descriptionCN": "<p>图形阴影的模糊大小。该属性配合 <code>shadowColor</code>,<code>shadowOffsetX</code>, <code>shadowOffsetY</code> 一起设置图形的阴影效果。</p>\n<p>示例：</p>\n<pre><code class=\"lang-js\">itemStyle: {\n    normal: {\n        shadowColor: &#39;rgba(0, 0, 0, 0.5)&#39;,\n        shadowBlur: 10\n    }\n}\n</code></pre>\n"
+                            },
+                            "shadowColor": {
+                              "type": [
+                                "string"
+                              ],
+                              "descriptionCN": "<p>阴影颜色。支持的格式同<code>color</code>。</p>\n"
+                            },
+                            "shadowOffsetX": {
+                              "type": [
+                                "number"
+                              ],
+                              "descriptionCN": "<p>阴影水平方向上的偏移距离。</p>\n",
+                              "default": 0
+                            },
+                            "shadowOffsetY": {
+                              "type": [
+                                "number"
+                              ],
+                              "descriptionCN": "<p>阴影垂直方向上的偏移距离。</p>\n",
+                              "default": 0
+                            },
+                            "opacity": {
+                              "type": [
+                                "number"
+                              ],
+                              "descriptionCN": "<p>图形透明度。支持从 0 到 1 的数字，为 0 时绘制该图形。</p>\n"
                             }
                           }
                         }
@@ -2329,6 +2551,60 @@
                             "number"
                           ],
                           "descriptionCN": "<p>外部折线长度</p>\n"
+                        },
+                        "lineStyle": {
+                          "type": [
+                            "Object"
+                          ],
+                          "descriptionCN": "",
+                          "properties": {
+                            "color": {
+                              "type": [
+                                "string"
+                              ],
+                              "descriptionCN": "<p>线的颜色。</p>\n<p>颜色可以使用 RGB 表示，比如 <code>&#39;rgb(128, 128, 128)&#39;</code>，如果想要加上 alpha 通道，可以使用 RGBA，比如 <code>&#39;rgba(128, 128, 128, 0.5)&#39;</code>，也可以使用十六进制格式，比如 <code>&#39;#ccc&#39;</code></p>\n",
+                              "default": "\"#000\""
+                            },
+                            "width": {
+                              "type": [
+                                "number"
+                              ],
+                              "descriptionCN": "<p>线宽。</p>\n",
+                              "default": 0
+                            },
+                            "shadowBlur": {
+                              "type": [
+                                "number"
+                              ],
+                              "descriptionCN": "<p>图形阴影的模糊大小。该属性配合 <code>shadowColor</code>,<code>shadowOffsetX</code>, <code>shadowOffsetY</code> 一起设置图形的阴影效果。</p>\n<p>示例：</p>\n<pre><code class=\"lang-js\">itemStyle: {\n    normal: {\n        shadowColor: &#39;rgba(0, 0, 0, 0.5)&#39;,\n        shadowBlur: 10\n    }\n}\n</code></pre>\n"
+                            },
+                            "shadowColor": {
+                              "type": [
+                                "string"
+                              ],
+                              "descriptionCN": "<p>阴影颜色。支持的格式同<code>color</code>。</p>\n"
+                            },
+                            "shadowOffsetX": {
+                              "type": [
+                                "number"
+                              ],
+                              "descriptionCN": "<p>阴影水平方向上的偏移距离。</p>\n",
+                              "default": 0
+                            },
+                            "shadowOffsetY": {
+                              "type": [
+                                "number"
+                              ],
+                              "descriptionCN": "<p>阴影垂直方向上的偏移距离。</p>\n",
+                              "default": 0
+                            },
+                            "opacity": {
+                              "type": [
+                                "number"
+                              ],
+                              "descriptionCN": "<p>图形透明度。支持从 0 到 1 的数字，为 0 时绘制该图形。</p>\n"
+                            }
+                          }
                         }
                       }
                     }
@@ -2414,7 +2690,401 @@
                   "type": [
                     "string"
                   ],
-                  "descriptionCN": "<p>该系列使用的坐标系，可选：</p>\n"
+                  "descriptionCN": "<p>该系列使用的坐标系，可选：</p>\n",
+                  "properties": {
+                    "emptyItemWidth": {
+                      "type": [
+                        "number"
+                      ],
+                      "descriptionCN": "<p>空节点宽度</p>\n"
+                    }
+                  }
+                },
+                "label": {
+                  "type": [
+                    "Object"
+                  ],
+                  "descriptionCN": "<p>图形上的文本标签，课用于说明图形的一些数据信息，比如值，名称等，<code>label</code>选项在 ECharts 2.x 中放置于<code>itemStyle.normal</code>下，在 ECharts 3 中为了让整个配置项结构更扁平合理，<code>label</code>被拿出来跟 <code>itemStyle</code> 平级，并且跟 <code>itemStyle</code> 一样拥有 <code>normal</code>, <code>emphasis</code> 两个状态。当然老的写法也依旧是兼容的</p>\n",
+                  "properties": {
+                    "normal": {
+                      "type": [
+                        "Object"
+                      ],
+                      "descriptionCN": "",
+                      "properties": {
+                        "textStyle": {
+                          "type": [
+                            "*"
+                          ],
+                          "descriptionCN": "<p>标签的字体样式</p>\n",
+                          "properties": {
+                            "color": {
+                              "type": [
+                                "string"
+                              ],
+                              "descriptionCN": "<p>文字的颜色。</p>\n",
+                              "default": "\"#fff\""
+                            },
+                            "fontStyle": {
+                              "type": [
+                                "string"
+                              ],
+                              "descriptionCN": "<p>文字字体的风格</p>\n<p>可选：</p>\n<ul>\n<li>normal</li>\n<li>italic</li>\n<li>oblique</li>\n</ul>\n",
+                              "default": "\"normal\""
+                            },
+                            "fontWeight": {
+                              "type": [
+                                "string"
+                              ],
+                              "descriptionCN": "<p>文字字体的粗细</p>\n<p>可选：</p>\n<ul>\n<li>normal</li>\n<li>bold</li>\n<li>bolder</li>\n<li>lighter</li>\n<li>100 | 200 | 300 | 400...</li>\n</ul>\n",
+                              "default": "\"normal\""
+                            },
+                            "fontFamily": {
+                              "type": [
+                                "string"
+                              ],
+                              "descriptionCN": "<p>文字的字体系列</p>\n",
+                              "default": "\"sans-serief\""
+                            },
+                            "fontSize": {
+                              "type": [
+                                "number"
+                              ],
+                              "descriptionCN": "<p>文字的字体大小</p>\n",
+                              "default": 12
+                            }
+                          }
+                        },
+                        "position(string|Array.<string>)": {
+                          "type": [
+                            "*"
+                          ],
+                          "descriptionCN": "<p>可选：</p>\n<ul>\n<li><p>[percentage, percentage]</p>\n<p>  通过百分比表示标签相对于图形包围盒左上角的位置。</p>\n</li>\n<li><p>&quot;top&quot;</p>\n</li>\n<li><p>&quot;left&quot;</p>\n</li>\n<li><p>&quot;right&quot;</p>\n</li>\n<li><p>&quot;bottom&quot;</p>\n</li>\n<li><p>&#39;inside&#39;</p>\n</li>\n<li>&#39;insideLeft&#39;</li>\n<li>&#39;insideRight&#39;</li>\n<li>&#39;insideTop&#39;</li>\n<li>&#39;insideBottom&#39;</li>\n<li>&#39;insideLeftTop&#39;</li>\n<li>&#39;insideLeftBottom&#39;</li>\n<li>&#39;insideRightTop&#39;</li>\n<li>&#39;insideRightBottom&#39;</li>\n</ul>\n"
+                        }
+                      }
+                    },
+                    "emphasis": {
+                      "type": [
+                        "Object"
+                      ],
+                      "descriptionCN": "",
+                      "properties": {
+                        "textStyle": {
+                          "type": [
+                            "*"
+                          ],
+                          "descriptionCN": "<p>标签的字体样式</p>\n",
+                          "properties": {
+                            "color": {
+                              "type": [
+                                "string"
+                              ],
+                              "descriptionCN": "<p>文字的颜色。</p>\n",
+                              "default": "\"#fff\""
+                            },
+                            "fontStyle": {
+                              "type": [
+                                "string"
+                              ],
+                              "descriptionCN": "<p>文字字体的风格</p>\n<p>可选：</p>\n<ul>\n<li>normal</li>\n<li>italic</li>\n<li>oblique</li>\n</ul>\n",
+                              "default": "\"normal\""
+                            },
+                            "fontWeight": {
+                              "type": [
+                                "string"
+                              ],
+                              "descriptionCN": "<p>文字字体的粗细</p>\n<p>可选：</p>\n<ul>\n<li>normal</li>\n<li>bold</li>\n<li>bolder</li>\n<li>lighter</li>\n<li>100 | 200 | 300 | 400...</li>\n</ul>\n",
+                              "default": "\"normal\""
+                            },
+                            "fontFamily": {
+                              "type": [
+                                "string"
+                              ],
+                              "descriptionCN": "<p>文字的字体系列</p>\n",
+                              "default": "\"sans-serief\""
+                            },
+                            "fontSize": {
+                              "type": [
+                                "number"
+                              ],
+                              "descriptionCN": "<p>文字的字体大小</p>\n",
+                              "default": 12
+                            }
+                          }
+                        },
+                        "position(string|Array.<string>)": {
+                          "type": [
+                            "*"
+                          ],
+                          "descriptionCN": "<p>可选：</p>\n<ul>\n<li><p>[percentage, percentage]</p>\n<p>  通过百分比表示标签相对于图形包围盒左上角的位置。</p>\n</li>\n<li><p>&quot;top&quot;</p>\n</li>\n<li><p>&quot;left&quot;</p>\n</li>\n<li><p>&quot;right&quot;</p>\n</li>\n<li><p>&quot;bottom&quot;</p>\n</li>\n<li><p>&#39;inside&#39;</p>\n</li>\n<li>&#39;insideLeft&#39;</li>\n<li>&#39;insideRight&#39;</li>\n<li>&#39;insideTop&#39;</li>\n<li>&#39;insideBottom&#39;</li>\n<li>&#39;insideLeftTop&#39;</li>\n<li>&#39;insideLeftBottom&#39;</li>\n<li>&#39;insideRightTop&#39;</li>\n<li>&#39;insideRightBottom&#39;</li>\n</ul>\n"
+                        }
+                      }
+                    }
+                  }
+                },
+                "itemStyle": {
+                  "type": [
+                    "Object"
+                  ],
+                  "descriptionCN": "<p>图形的样式，图形有 <code>normal</code> 和 <code>emphasis</code> 两个状态，<code>normal</code> 是图形正常的样式，<code>emphasis</code> 是图形高亮的样式，比如鼠标悬浮或者图例联动高亮的时候会使用 <code>emphasis</code> 作为图形的样式</p>\n",
+                  "properties": {
+                    "normal": {
+                      "type": [
+                        "Object"
+                      ],
+                      "descriptionCN": "",
+                      "properties": {
+                        "color": {
+                          "type": [
+                            "string"
+                          ],
+                          "descriptionCN": "<p>图形的颜色。 默认从全局调色盘 <a href=\"~color\">option.color</a> 获取颜色 </p>\n<p>颜色可以使用 RGB 表示，比如 <code>&#39;rgb(128, 128, 128)&#39;</code>，如果想要加上 alpha 通道，可以使用 RGBA，比如 <code>&#39;rgba(128, 128, 128, 0.5)&#39;</code>，也可以使用十六进制格式，比如 <code>&#39;#ccc&#39;</code></p>\n",
+                          "default": "\"#000\""
+                        },
+                        "borderColor": {
+                          "type": [
+                            "string"
+                          ],
+                          "descriptionCN": "<p>图形的描边颜色。支持的格式同<code>color</code>。</p>\n",
+                          "default": "\"#000\""
+                        },
+                        "borderWidth": {
+                          "type": [
+                            "number"
+                          ],
+                          "descriptionCN": "<p>描边线宽。为 0 时无描边。</p>\n",
+                          "default": 0
+                        },
+                        "shadowBlur": {
+                          "type": [
+                            "number"
+                          ],
+                          "descriptionCN": "<p>图形阴影的模糊大小。该属性配合 <code>shadowColor</code>,<code>shadowOffsetX</code>, <code>shadowOffsetY</code> 一起设置图形的阴影效果。</p>\n<p>示例：</p>\n<pre><code class=\"lang-js\">itemStyle: {\n    normal: {\n        shadowColor: &#39;rgba(0, 0, 0, 0.5)&#39;,\n        shadowBlur: 10\n    }\n}\n</code></pre>\n"
+                        },
+                        "shadowColor": {
+                          "type": [
+                            "string"
+                          ],
+                          "descriptionCN": "<p>阴影颜色。支持的格式同<code>color</code>。</p>\n"
+                        },
+                        "shadowOffsetX": {
+                          "type": [
+                            "number"
+                          ],
+                          "descriptionCN": "<p>阴影水平方向上的偏移距离。</p>\n",
+                          "default": 0
+                        },
+                        "shadowOffsetY": {
+                          "type": [
+                            "number"
+                          ],
+                          "descriptionCN": "<p>阴影垂直方向上的偏移距离。</p>\n",
+                          "default": 0
+                        },
+                        "opacity": {
+                          "type": [
+                            "number"
+                          ],
+                          "descriptionCN": "<p>图形透明度。支持从 0 到 1 的数字，为 0 时绘制该图形。</p>\n"
+                        }
+                      }
+                    },
+                    "emphasis": {
+                      "type": [
+                        "Object"
+                      ],
+                      "descriptionCN": "",
+                      "properties": {
+                        "color": {
+                          "type": [
+                            "string"
+                          ],
+                          "descriptionCN": "<p>图形的颜色。</p>\n<p>颜色可以使用 RGB 表示，比如 <code>&#39;rgb(128, 128, 128)&#39;</code>，如果想要加上 alpha 通道，可以使用 RGBA，比如 <code>&#39;rgba(128, 128, 128, 0.5)&#39;</code>，也可以使用十六进制格式，比如 <code>&#39;#ccc&#39;</code></p>\n",
+                          "default": "\"#000\""
+                        },
+                        "borderColor": {
+                          "type": [
+                            "string"
+                          ],
+                          "descriptionCN": "<p>图形的描边颜色。支持的格式同<code>color</code>。</p>\n",
+                          "default": "\"#000\""
+                        },
+                        "borderWidth": {
+                          "type": [
+                            "number"
+                          ],
+                          "descriptionCN": "<p>描边线宽。为 0 时无描边。</p>\n",
+                          "default": 0
+                        },
+                        "shadowBlur": {
+                          "type": [
+                            "number"
+                          ],
+                          "descriptionCN": "<p>图形阴影的模糊大小。该属性配合 <code>shadowColor</code>,<code>shadowOffsetX</code>, <code>shadowOffsetY</code> 一起设置图形的阴影效果。</p>\n<p>示例：</p>\n<pre><code class=\"lang-js\">itemStyle: {\n    normal: {\n        shadowColor: &#39;rgba(0, 0, 0, 0.5)&#39;,\n        shadowBlur: 10\n    }\n}\n</code></pre>\n"
+                        },
+                        "shadowColor": {
+                          "type": [
+                            "string"
+                          ],
+                          "descriptionCN": "<p>阴影颜色。支持的格式同<code>color</code>。</p>\n"
+                        },
+                        "shadowOffsetX": {
+                          "type": [
+                            "number"
+                          ],
+                          "descriptionCN": "<p>阴影水平方向上的偏移距离。</p>\n",
+                          "default": 0
+                        },
+                        "shadowOffsetY": {
+                          "type": [
+                            "number"
+                          ],
+                          "descriptionCN": "<p>阴影垂直方向上的偏移距离。</p>\n",
+                          "default": 0
+                        },
+                        "opacity": {
+                          "type": [
+                            "number"
+                          ],
+                          "descriptionCN": "<p>图形透明度。支持从 0 到 1 的数字，为 0 时绘制该图形。</p>\n"
+                        }
+                      }
+                    }
+                  }
+                },
+                "clickable": {
+                  "type": [
+                    "boolean"
+                  ],
+                  "descriptionCN": "<p>是否支持点击</p>\n"
+                },
+                "roam": {
+                  "type": [
+                    "boolean"
+                  ],
+                  "descriptionCN": "<p>是否开启拖拽漫游，默认为false（关闭），其他有效输入为true（开启）</p>\n"
+                },
+                "squareRatio": {
+                  "type": [
+                    "number"
+                  ],
+                  "descriptionCN": "<p>单个矩形展示时期望达到的长宽比，默认是黄金分割</p>\n"
+                },
+                "root": {
+                  "type": [
+                    "string"
+                  ],
+                  "descriptionCN": "<p>设置根树节点，仅在节点id存在时有效</p>\n"
+                },
+                "visualDimension": {
+                  "type": [
+                    ""
+                  ],
+                  "descriptionCN": "<p>默认第一个维度。</p>\n"
+                },
+                "zoomToNodeRatio": {
+                  "type": [
+                    "number"
+                  ],
+                  "descriptionCN": "<p>缩放至节点时，节点占可视区域的面积比例</p>\n"
+                },
+                "animation": {
+                  "type": [
+                    "boolean"
+                  ],
+                  "descriptionCN": ""
+                },
+                "animationDurationUpdate": {
+                  "type": [
+                    "number"
+                  ],
+                  "descriptionCN": "<p>默认1500</p>\n"
+                },
+                "animationEasing": {
+                  "type": [
+                    "string"
+                  ],
+                  "descriptionCN": "<p>可选</p>\n"
+                },
+                "childrenVisibleMin": {
+                  "type": [
+                    "number"
+                  ],
+                  "descriptionCN": ""
+                },
+                "levels": {
+                  "type": [
+                    "Object"
+                  ],
+                  "descriptionCN": "",
+                  "properties": {
+                    "color": {
+                      "type": [
+                        "Array"
+                      ],
+                      "descriptionCN": "<p>颜色数组，默认[&#39;#d14a61&#39;]</p>\n"
+                    },
+                    "itemStyle": {
+                      "type": [
+                        "Object"
+                      ],
+                      "descriptionCN": ""
+                    },
+                    "visibleMin": {
+                      "type": [
+                        "*"
+                      ],
+                      "descriptionCN": ""
+                    },
+                    "visualDimension": {
+                      "type": [
+                        "*"
+                      ],
+                      "descriptionCN": ""
+                    },
+                    "label": {
+                      "type": [
+                        "*"
+                      ],
+                      "descriptionCN": ""
+                    }
+                  }
+                },
+                "breadcrumb": {
+                  "type": [
+                    "Object"
+                  ],
+                  "descriptionCN": ""
+                },
+                "color": {
+                  "type": [
+                    "Array"
+                  ],
+                  "descriptionCN": "<p>表示同一level的color选取列表，默认为空时选取系统color列表</p>\n"
+                },
+                "colorAlpha": {
+                  "type": [
+                    "Array"
+                  ],
+                  "descriptionCN": "<p>表示同一level的color alpha 选取范围</p>\n"
+                },
+                "colorSaturation": {
+                  "type": [
+                    "number"
+                  ],
+                  "descriptionCN": ""
+                },
+                "colorMappingBy": {
+                  "type": [
+                    "string"
+                  ],
+                  "descriptionCN": "<p>可选value、index、id</p>\n"
+                },
+                "visibleMin": {
+                  "type": [
+                    "number"
+                  ],
+                  "descriptionCN": "<p>仅在sort取值asc或者desc时有效</p>\n"
                 }
               }
             },
@@ -3434,13 +4104,13 @@
                       "type": [
                         "string"
                       ],
-                      "descriptionCN": ""
+                      "descriptionCN": "<p>城市名</p>\n"
                     },
                     "value": {
                       "type": [
                         "number"
                       ],
-                      "descriptionCN": ""
+                      "descriptionCN": "<p>数据值</p>\n"
                     }
                   }
                 },
@@ -3551,7 +4221,7 @@
                   "type": [
                     "string"
                   ],
-                  "descriptionCN": "<p>坐标轴名称</p>\n<p>图例名称</p>\n"
+                  "descriptionCN": "<p>坐标轴名称</p>\n"
                 },
                 "lineStyle": {
                   "type": [
