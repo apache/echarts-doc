@@ -16,7 +16,7 @@ local.properties
 .classpath
 .settings/
 .loadpath
-schema.json
+
 
 # External tool builders
 .externalToolBuilders/
@@ -162,5 +162,6 @@ pip-log.txt
 
 # Mac crap
 .DS_Store
+schema.json
 
 node_modules
