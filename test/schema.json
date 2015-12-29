@@ -1149,7 +1149,29 @@
                   "type": [
                     "string"
                   ],
-                  "descriptionCN": "<p>该系列使用的坐标系，可选：</p>\n"
+                  "descriptionCN": "<p>该系列使用的坐标系，可选：</p>\n<ul>\n<li><p>cartesian2d</p>\n<p>  使用二维的笛卡尔坐标系，通过 <code>xAxisIndex</code>, <code>yAxisIndex</code> 指定相应的坐标轴组件。</p>\n</li>\n</ul>\n<ul>\n<li><p>polar</p>\n<p>  使用极坐标系，通过 <code>polarIndex</code> 指定相应的极坐标组件</p>\n</li>\n</ul>\n",
+                  "default": "cartesian2d"
+                },
+                "xAxisIndex": {
+                  "type": [
+                    "number"
+                  ],
+                  "descriptionCN": "<p>使用的 x 轴(xAxis)的 index，在单个图表实例中存在多个 x 轴的时候有用</p>\n",
+                  "default": 0
+                },
+                "yAxisIndex": {
+                  "type": [
+                    "number"
+                  ],
+                  "descriptionCN": "<p>使用的 y 轴(yAxis)的 index，在单个图表实例中存在多个 y轴的时候有用</p>\n",
+                  "default": 0
+                },
+                "polarIndex": {
+                  "type": [
+                    "number"
+                  ],
+                  "descriptionCN": "<p>使用的极坐标系(polar)的 index，在单个图表实例中存在多个极坐标系的时候有用</p>\n",
+                  "default": 0
                 },
                 "itemStyle": {
                   "type": [
@@ -1281,12 +1303,77 @@
                     }
                   }
                 },
+                "symbol": {
+                  "type": [
+                    "string"
+                  ],
+                  "descriptionCN": "<p>标记的图形，可选自带的图形类型， 有 <code>&#39;circle&#39;</code>, <code>&#39;rect&#39;</code>, <code>&#39;roundRect&#39;</code>, <code>&#39;triangle&#39;</code>, <code>&#39;diamond&#39;</code>, <code>&#39;pin&#39;</code>, <code>&#39;arrow&#39;</code></p>\n<p>也可以通过 <code>&#39;image://url&#39;</code> 设置为图片，其中 url 为图片的链接。</p>\n<p>在 ECharts 3 里还可以通过 <code>&#39;path://&#39;</code> 设置为任意的矢量路径，这种方式相比于图片来说不用担心因为缩放而产生锯齿或模糊，而且可以设置为任意颜色。路径图形会自适应调整为 symbolSize 设置的大小。</p>\n"
+                },
+                "symbolSize": {
+                  "type": [
+                    "number",
+                    "Array"
+                  ],
+                  "descriptionCN": "<p>标记的大小，可以设置成诸如 <code>10</code> 这样单一的数字，也可以用数组分开表示高和宽，例如 <code>[20, 10]</code> 表示标记宽为<code>20</code>，高为<code>10</code></p>\n"
+                },
+                "symbolRotate": {
+                  "type": [
+                    "number"
+                  ],
+                  "descriptionCN": "<p>标记的旋转角度。注意在 <code>markLine</code> 中当 <code>symbol</code> 为 <code>arrow</code> 时会忽略 <code>symbolRotate</code> 强制设置为切线的角度。</p>\n"
+                },
                 "lineStyle": {
                   "type": [
                     "Object"
                   ],
-                  "descriptionCN": "<p>折线的样式</p>\n",
+                  "descriptionCN": "",
                   "properties": {
+                    "color": {
+                      "type": [
+                        "string"
+                      ],
+                      "descriptionCN": "<p>线的颜色。</p>\n<p>颜色可以使用 RGB 表示，比如 <code>&#39;rgb(128, 128, 128)&#39;</code>，如果想要加上 alpha 通道，可以使用 RGBA，比如 <code>&#39;rgba(128, 128, 128, 0.5)&#39;</code>，也可以使用十六进制格式，比如 <code>&#39;#ccc&#39;</code></p>\n",
+                      "default": "\"#000\""
+                    },
+                    "width": {
+                      "type": [
+                        "number"
+                      ],
+                      "descriptionCN": "<p>线宽。</p>\n",
+                      "default": 0
+                    },
+                    "shadowBlur": {
+                      "type": [
+                        "number"
+                      ],
+                      "descriptionCN": "<p>图形阴影的模糊大小。该属性配合 <code>shadowColor</code>,<code>shadowOffsetX</code>, <code>shadowOffsetY</code> 一起设置图形的阴影效果。</p>\n<p>示例：</p>\n<pre><code class=\"lang-js\">itemStyle: {\n    normal: {\n        shadowColor: &#39;rgba(0, 0, 0, 0.5)&#39;,\n        shadowBlur: 10\n    }\n}\n</code></pre>\n"
+                    },
+                    "shadowColor": {
+                      "type": [
+                        "string"
+                      ],
+                      "descriptionCN": "<p>阴影颜色。支持的格式同<code>color</code>。</p>\n"
+                    },
+                    "shadowOffsetX": {
+                      "type": [
+                        "number"
+                      ],
+                      "descriptionCN": "<p>阴影水平方向上的偏移距离。</p>\n",
+                      "default": 0
+                    },
+                    "shadowOffsetY": {
+                      "type": [
+                        "number"
+                      ],
+                      "descriptionCN": "<p>阴影垂直方向上的偏移距离。</p>\n",
+                      "default": 0
+                    },
+                    "opacity": {
+                      "type": [
+                        "number"
+                      ],
+                      "descriptionCN": "<p>图形透明度。支持从 0 到 1 的数字，为 0 时绘制该图形。</p>\n"
+                    },
                     "normal": {
                       "type": [
                         "Object"
@@ -1397,11 +1484,94 @@
                     }
                   }
                 },
+                "hoverAnimation": {
+                  "type": [
+                    "boolean"
+                  ],
+                  "descriptionCN": "<p>鼠标浮动在拐点上时是否显示动画效果</p>\n",
+                  "default": true
+                },
+                "legendHoverLink": {
+                  "type": [
+                    "boolean"
+                  ],
+                  "descriptionCN": "<p>是否启用图例（legend）hover时的联动响应（高亮显示）</p>\n",
+                  "default": true
+                },
+                "stack": {
+                  "type": [
+                    "string"
+                  ],
+                  "descriptionCN": "<p>组合名称，双数值轴时无效，多组数据的堆积图时使用，eg：stack:&#39;group1&#39;，则series数组中stack值等于&#39;group1&#39;的数据做堆积计算</p>\n",
+                  "default": null
+                },
                 "areaStyle": {
                   "type": [
                     "Object"
                   ],
                   "descriptionCN": "",
+                  "properties": {
+                    "color": {
+                      "type": [
+                        "string"
+                      ],
+                      "descriptionCN": "<p>填充的颜色。</p>\n<p>颜色可以使用 RGB 表示，比如 <code>&#39;rgb(128, 128, 128)&#39;</code>，如果想要加上 alpha 通道，可以使用 RGBA，比如 <code>&#39;rgba(128, 128, 128, 0.5)&#39;</code>，也可以使用十六进制格式，比如 <code>&#39;#ccc&#39;</code></p>\n",
+                      "default": "\"#000\""
+                    },
+                    "shadowBlur": {
+                      "type": [
+                        "number"
+                      ],
+                      "descriptionCN": "<p>图形阴影的模糊大小。该属性配合 <code>shadowColor</code>,<code>shadowOffsetX</code>, <code>shadowOffsetY</code> 一起设置图形的阴影效果。</p>\n<p>示例：</p>\n<pre><code class=\"lang-js\">itemStyle: {\n    normal: {\n        shadowColor: &#39;rgba(0, 0, 0, 0.5)&#39;,\n        shadowBlur: 10\n    }\n}\n</code></pre>\n"
+                    },
+                    "shadowColor": {
+                      "type": [
+                        "string"
+                      ],
+                      "descriptionCN": "<p>阴影颜色。支持的格式同<code>color</code>。</p>\n"
+                    },
+                    "shadowOffsetX": {
+                      "type": [
+                        "number"
+                      ],
+                      "descriptionCN": "<p>阴影水平方向上的偏移距离。</p>\n",
+                      "default": 0
+                    },
+                    "shadowOffsetY": {
+                      "type": [
+                        "number"
+                      ],
+                      "descriptionCN": "<p>阴影垂直方向上的偏移距离。</p>\n",
+                      "default": 0
+                    },
+                    "opacity": {
+                      "type": [
+                        "number"
+                      ],
+                      "descriptionCN": "<p>图形透明度。支持从 0 到 1 的数字，为 0 时绘制该图形。</p>\n"
+                    }
+                  }
+                },
+                "showSymbol": {
+                  "type": [
+                    "boolean"
+                  ],
+                  "descriptionCN": "<p>是否显示 symbol, 只有在 tooltip hover 的时候显示</p>\n",
+                  "default": true
+                },
+                "showAllSymbol": {
+                  "type": [
+                    "boolean"
+                  ],
+                  "descriptionCN": "<p>标志图形默认只有主轴显示（随主轴标签间隔隐藏策略），如需全部显示可把showAllSymbol设为true</p>\n",
+                  "default": false
+                },
+                "smooth": {
+                  "type": [
+                    "false"
+                  ],
+                  "descriptionCN": "<p>平滑曲线显示，smooth为true时lineStyle不支持虚线</p>\n",
+                  "default": false,
                   "properties": {
                     "normal": {
                       "type": [
@@ -1498,6 +1668,41 @@
                       }
                     }
                   }
+                },
+                "animation": {
+                  "type": [
+                    "boolean"
+                  ],
+                  "descriptionCN": "<p>是否开启动画，默认开启</p>\n",
+                  "default": true
+                },
+                "animationDuration": {
+                  "type": [
+                    "number"
+                  ],
+                  "descriptionCN": "<p>初始动画的时长。</p>\n",
+                  "default": 1000
+                },
+                "animationEasing": {
+                  "type": [
+                    "string"
+                  ],
+                  "descriptionCN": "<p>初始动画的缓动效果。不同的缓动效果可以参考 <a href=\"line-easing\">缓动示例</a></p>\n",
+                  "default": "cubicOut"
+                },
+                "animationDurationUpdate": {
+                  "type": [
+                    "number"
+                  ],
+                  "descriptionCN": "<p>数据更新动画的时长。</p>\n",
+                  "default": 300
+                },
+                "animationEasingUpdate": {
+                  "type": [
+                    "string"
+                  ],
+                  "descriptionCN": "<p>数据更新动画的缓动效果。</p>\n",
+                  "default": "cubicOut"
                 }
               }
             },

@@ -16,6 +16,7 @@ local.properties
 .classpath
 .settings/
 .loadpath
+schema.json
 
 # External tool builders
 .externalToolBuilders/
