@@ -10,9 +10,8 @@
 
 ## itemStyle(Object)
 折线拐点标记的样式
-
 ### normal(Object)
-{{use:partial-item-style(prefix="###")}}
+{{use:partial-item-style(prefix="###",useColorPalatte=true)}}
 ### emphasis(Object)
 {{use:partial-item-style(prefix="###")}}
 
@@ -36,7 +35,11 @@
 组合名称，双数值轴时无效，多组数据的堆积图时使用，eg：stack:'group1'，则series数组中stack值等于'group1'的数据做堆积计算
 
 ## areaStyle(Object)
-{{use:partial-area-style(prefix="##")}}
+区域填充样式
+### normal(Object)
+{{use:partial-area-style(prefix="###",useColorPalatte=true)}}
+### emphasis(Object)
+{{use:partial-area-style(prefix="###")}}
 
 ## showSymbol(boolean) = true
 是否显示 symbol, 只有在 tooltip hover 的时候显示

@@ -1189,7 +1189,7 @@
                           "type": [
                             "string"
                           ],
-                          "descriptionCN": "<p>图形的颜色。</p>\n<p>颜色可以使用 RGB 表示，比如 <code>&#39;rgb(128, 128, 128)&#39;</code>，如果想要加上 alpha 通道，可以使用 RGBA，比如 <code>&#39;rgba(128, 128, 128, 0.5)&#39;</code>，也可以使用十六进制格式，比如 <code>&#39;#ccc&#39;</code></p>\n",
+                          "descriptionCN": "<p>图形的颜色。 默认从全局调色盘 <a href=\"~color\">option.color</a> 获取颜色 </p>\n<p>颜色可以使用 RGB 表示，比如 <code>&#39;rgb(128, 128, 128)&#39;</code>，如果想要加上 alpha 通道，可以使用 RGBA，比如 <code>&#39;rgba(128, 128, 128, 0.5)&#39;</code>，也可以使用十六进制格式，比如 <code>&#39;#ccc&#39;</code></p>\n",
                           "default": "\"#000\""
                         },
                         "borderColor": {
@@ -1509,46 +1509,101 @@
                   "type": [
                     "Object"
                   ],
-                  "descriptionCN": "",
+                  "descriptionCN": "<p>区域填充样式</p>\n",
                   "properties": {
-                    "color": {
+                    "normal": {
                       "type": [
-                        "string"
+                        "Object"
                       ],
-                      "descriptionCN": "<p>填充的颜色。</p>\n<p>颜色可以使用 RGB 表示，比如 <code>&#39;rgb(128, 128, 128)&#39;</code>，如果想要加上 alpha 通道，可以使用 RGBA，比如 <code>&#39;rgba(128, 128, 128, 0.5)&#39;</code>，也可以使用十六进制格式，比如 <code>&#39;#ccc&#39;</code></p>\n",
-                      "default": "\"#000\""
+                      "descriptionCN": "",
+                      "properties": {
+                        "color": {
+                          "type": [
+                            "string"
+                          ],
+                          "descriptionCN": "<p>填充的颜色。 默认从<a href=\"~color\">option.color 调色盘</a> 获取颜色 </p>\n<p>颜色可以使用 RGB 表示，比如 <code>&#39;rgb(128, 128, 128)&#39;</code>，如果想要加上 alpha 通道，可以使用 RGBA，比如 <code>&#39;rgba(128, 128, 128, 0.5)&#39;</code>，也可以使用十六进制格式，比如 <code>&#39;#ccc&#39;</code></p>\n",
+                          "default": "\"#000\""
+                        },
+                        "shadowBlur": {
+                          "type": [
+                            "number"
+                          ],
+                          "descriptionCN": "<p>图形阴影的模糊大小。该属性配合 <code>shadowColor</code>,<code>shadowOffsetX</code>, <code>shadowOffsetY</code> 一起设置图形的阴影效果。</p>\n<p>示例：</p>\n<pre><code class=\"lang-js\">itemStyle: {\n    normal: {\n        shadowColor: &#39;rgba(0, 0, 0, 0.5)&#39;,\n        shadowBlur: 10\n    }\n}\n</code></pre>\n"
+                        },
+                        "shadowColor": {
+                          "type": [
+                            "string"
+                          ],
+                          "descriptionCN": "<p>阴影颜色。支持的格式同<code>color</code>。</p>\n"
+                        },
+                        "shadowOffsetX": {
+                          "type": [
+                            "number"
+                          ],
+                          "descriptionCN": "<p>阴影水平方向上的偏移距离。</p>\n",
+                          "default": 0
+                        },
+                        "shadowOffsetY": {
+                          "type": [
+                            "number"
+                          ],
+                          "descriptionCN": "<p>阴影垂直方向上的偏移距离。</p>\n",
+                          "default": 0
+                        },
+                        "opacity": {
+                          "type": [
+                            "number"
+                          ],
+                          "descriptionCN": "<p>图形透明度。支持从 0 到 1 的数字，为 0 时绘制该图形。</p>\n"
+                        }
+                      }
                     },
-                    "shadowBlur": {
+                    "emphasis": {
                       "type": [
-                        "number"
+                        "Object"
                       ],
-                      "descriptionCN": "<p>图形阴影的模糊大小。该属性配合 <code>shadowColor</code>,<code>shadowOffsetX</code>, <code>shadowOffsetY</code> 一起设置图形的阴影效果。</p>\n<p>示例：</p>\n<pre><code class=\"lang-js\">itemStyle: {\n    normal: {\n        shadowColor: &#39;rgba(0, 0, 0, 0.5)&#39;,\n        shadowBlur: 10\n    }\n}\n</code></pre>\n"
-                    },
-                    "shadowColor": {
-                      "type": [
-                        "string"
-                      ],
-                      "descriptionCN": "<p>阴影颜色。支持的格式同<code>color</code>。</p>\n"
-                    },
-                    "shadowOffsetX": {
-                      "type": [
-                        "number"
-                      ],
-                      "descriptionCN": "<p>阴影水平方向上的偏移距离。</p>\n",
-                      "default": 0
-                    },
-                    "shadowOffsetY": {
-                      "type": [
-                        "number"
-                      ],
-                      "descriptionCN": "<p>阴影垂直方向上的偏移距离。</p>\n",
-                      "default": 0
-                    },
-                    "opacity": {
-                      "type": [
-                        "number"
-                      ],
-                      "descriptionCN": "<p>图形透明度。支持从 0 到 1 的数字，为 0 时绘制该图形。</p>\n"
+                      "descriptionCN": "",
+                      "properties": {
+                        "color": {
+                          "type": [
+                            "string"
+                          ],
+                          "descriptionCN": "<p>填充的颜色。</p>\n<p>颜色可以使用 RGB 表示，比如 <code>&#39;rgb(128, 128, 128)&#39;</code>，如果想要加上 alpha 通道，可以使用 RGBA，比如 <code>&#39;rgba(128, 128, 128, 0.5)&#39;</code>，也可以使用十六进制格式，比如 <code>&#39;#ccc&#39;</code></p>\n",
+                          "default": "\"#000\""
+                        },
+                        "shadowBlur": {
+                          "type": [
+                            "number"
+                          ],
+                          "descriptionCN": "<p>图形阴影的模糊大小。该属性配合 <code>shadowColor</code>,<code>shadowOffsetX</code>, <code>shadowOffsetY</code> 一起设置图形的阴影效果。</p>\n<p>示例：</p>\n<pre><code class=\"lang-js\">itemStyle: {\n    normal: {\n        shadowColor: &#39;rgba(0, 0, 0, 0.5)&#39;,\n        shadowBlur: 10\n    }\n}\n</code></pre>\n"
+                        },
+                        "shadowColor": {
+                          "type": [
+                            "string"
+                          ],
+                          "descriptionCN": "<p>阴影颜色。支持的格式同<code>color</code>。</p>\n"
+                        },
+                        "shadowOffsetX": {
+                          "type": [
+                            "number"
+                          ],
+                          "descriptionCN": "<p>阴影水平方向上的偏移距离。</p>\n",
+                          "default": 0
+                        },
+                        "shadowOffsetY": {
+                          "type": [
+                            "number"
+                          ],
+                          "descriptionCN": "<p>阴影垂直方向上的偏移距离。</p>\n",
+                          "default": 0
+                        },
+                        "opacity": {
+                          "type": [
+                            "number"
+                          ],
+                          "descriptionCN": "<p>图形透明度。支持从 0 到 1 的数字，为 0 时绘制该图形。</p>\n"
+                        }
+                      }
                     }
                   }
                 },
