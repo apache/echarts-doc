@@ -4,4 +4,3 @@
 # grid(Object)
 
 {{use: component-common}}
-    

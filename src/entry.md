@@ -1,5 +1,7 @@
 {{target: echarts}}
 
+{{import: partial-animation }}
+
 {{import: component-title}}
 {{import: component-grid}}
 {{import: component-polar}}

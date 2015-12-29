@@ -4,4 +4,3 @@
 # xAxis(Object)
 
 {{use: component-common}}
-    
