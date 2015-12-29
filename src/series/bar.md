@@ -29,6 +29,15 @@
 ## clickable(boolean) = true
 数据图形是否可点击，默认开启，如果没有click事件响应可以关闭
 
+## stack(string) = null
+组合名称，双数值轴时无效，多组数据的堆积图时使用，eg：stack:'group1'，则series数组中stack值等于'group1'的数据做堆积计算
+
+## barWidth(number) = 自适应
+柱条的宽度，不设时自适应
+
+## barMaxWidth(number) = 自适应
+柱条的最大宽度，不设时自适应
+
 ## legendHoverLink(boolean) = true
 是否启用图例（legend）hover时的联动响应（高亮显示）
 

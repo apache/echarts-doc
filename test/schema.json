@@ -1854,6 +1854,27 @@
                   "descriptionCN": "<p>数据图形是否可点击，默认开启，如果没有click事件响应可以关闭</p>\n",
                   "default": true
                 },
+                "stack": {
+                  "type": [
+                    "string"
+                  ],
+                  "descriptionCN": "<p>组合名称，双数值轴时无效，多组数据的堆积图时使用，eg：stack:&#39;group1&#39;，则series数组中stack值等于&#39;group1&#39;的数据做堆积计算</p>\n",
+                  "default": null
+                },
+                "barWidth": {
+                  "type": [
+                    "number"
+                  ],
+                  "descriptionCN": "<p>柱条的宽度，不设时自适应</p>\n",
+                  "default": "自适应"
+                },
+                "barMaxWidth": {
+                  "type": [
+                    "number"
+                  ],
+                  "descriptionCN": "<p>柱条的最大宽度，不设时自适应</p>\n",
+                  "default": "自适应"
+                },
                 "legendHoverLink": {
                   "type": [
                     "boolean"
