@@ -3,7 +3,7 @@
 
 {{target:partial-item-style}}
 
-#${prefix} color(string)=${defaultColor|default('"#000"')}
+#${prefix} color(string)=${defaultColor|default('自适应')}
 
 图形的颜色。{{ if: ${useColorPalatte} }} 默认从全局调色盘 [option.color](~color) 获取颜色 {{/if}}
 
