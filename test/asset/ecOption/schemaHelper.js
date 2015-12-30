@@ -157,8 +157,10 @@ define(function (require) {
         dtLib.assert(
             optionPath && (optionPath = $.trim(optionPath)), errorInfo
         );
-        optionPath = optionPath.replace(/\-i/g, '-i]'); // 兼容 series-i表示数组的情况。
-        var pathArr = optionPath.split(/\.|\[|\-/);
+        // 因为mark down的url中不支持小括号（marked实现太简单了），所以小括号改用减号，数组不再用减号。
+        // URL中的数组，不写[i]。
+        // optionPath = optionPath.replace(/\-i/g, '-i]'); // 兼容 series-i表示数组的情况。
+        var pathArr = optionPath.split(/\.|\[/);
         var retArr = [];
 
         for (var i = 0, len = pathArr.length; i < len; i++) {
@@ -166,9 +168,9 @@ define(function (require) {
             if (options.ignoreEmptyItem && itemStr === '') {
                 continue;
             }
-            // match: 'asdf(bb,cc,ee/ff/gg)' 'i](bb)' 'xx()' 'asdf' 'i]'
-            var regResult = /^(\w+|i\])(\(([a-zA-Z_ \/,]*)\))?$/.exec(itemStr) || [];
-            dtLib.assert(regResult, errorInfo);
+            // 因为mark down的url中不支持小括号（marked实现太简单了），所以不用小括号，改用减号表示type。
+            // match: 'asdf-bb' 'asdf-' 'i]-bb' 'i]-' 'asdf' 'i]'
+            var regResult = itemStr.match(/^(\w+|i\])(\-([a-zA-Z_ \/,]*))?$/) || [];
 
             var propertyName = regResult[1];
             var ctxVar = regResult[2];
@@ -233,7 +235,7 @@ define(function (require) {
             var itemStr = item.propertyName || arrayName;
 
             if (item.typeEnum) {
-                itemStr += '(' + item.typeEnum + ')';
+                itemStr += '-' + item.typeEnum;
             }
 
             if (options.html) {
@@ -638,7 +640,6 @@ define(function (require) {
         }
         else {
             childrenBrief = ' type: \'' + encodeHTML(getTypeEnum(schemaItem)) + '\', ... ';
-console.log(encodeHTML(getTypeEnum(schemaItem)), getTypeEnum(schemaItem));
         }
 
         // Make tree item text and children.
