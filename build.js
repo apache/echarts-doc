@@ -21,8 +21,7 @@ glob('src/**/*.md', function (err, files) {
 
     // Render tpl
     etpl.compile(mdTpl.join('\n'));
-    var mdStr = etpl.getRenderer('echarts')();
-
+    var mdStr = etpl.getRenderer('echarts')(require('./config'));
     // Markdown to JSON
     var schema = mdToJsonSchema(mdStr);
 
@@ -56,8 +55,7 @@ function mdToJsonSchema(mdStr) {
         '$schema': 'http://echarts.baidu.com/doc/json-schem',
         'option': {
             'type': 'Object',
-            'properties': {
-            },
+            'properties': {},
         }
     };
     var current = result.option;

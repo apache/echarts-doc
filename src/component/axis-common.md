@@ -46,15 +46,33 @@
 
 #${prefix} min(number|string) = 'auto'
 
-坐标轴刻度最小值，只在数值轴中（[type](~${componentType}.type): 'value'）有效。
+坐标轴刻度最小值，在非类目轴中有效。
+
+可以设置成特殊值 `'dataMin'`，此时取数据在该轴上的最小值作为最小刻度。在使用 [dataZoom](~dataZoom) 的数值轴上比较有用。
 
 不设置时会自动计算最小值保证坐标轴刻度的均匀分布。
 
 #${prefix} max(number|string) = 'auto'
 
-坐标轴刻度最大值，只在数值轴中（[type](~${componentType}.type): 'value'）有效。
+坐标轴刻度最大值，在非类目轴中有效。
+
+可以设置成特殊值 `'dataMax'`，此时取数据在该轴上的最大值作为最大刻度。在使用 [dataZoom](~dataZoom) 的数值轴上比较有用。
 
 不设置时会自动计算最大值保证坐标轴刻度的均匀分布。
+
+#${prefix} scale(boolean) = false
+
+只在数值轴中（[type](~${componentType}.type): 'value'）有效。
+
+是否是脱离 0 值比例。设置成 `true` 后坐标刻度不会强制包含零刻度。在双数值轴的散点图中比较有用。
+
+在设置 [min](~${componentType}.min) 和 [max](~${componentType}.max) 之后该配置项无效。
+
+#${prefix} splitNumber(number) = 6
+
+坐标轴的分割段数，需要注意的是这个分割段数只是个预估值，最后实际显示的段数会在这个基础上根据分割后坐标轴刻度显示的易读程度作调整。
+
+只在数值轴中（[type](~${componentType}.type): 'value'）有效。
 
 
 
@@ -155,12 +173,87 @@ formatter: function (value, index) {
 defaultColor="'#333'"
 )}}
 
-#${prefix} splitLine
-#${prefix} splitArea
+
+
+
+#${prefix} splitLine(Object)
+
+坐标轴在 [grid](~grid) 区域中的分隔线，默认不显示。
+
+##${prefix} show(boolean) = false
+
+是否显示分隔线。
+
+##${prefix} lineTyle(Object)
+
+{{ use: partial-line-style(prefix='##' + ${prefix}, defaultColor="'#333'", defaultWidth=1, defaultType="'solid'", name="分隔线") }}
+
+<!-- overwrite color -->
+###${prefix} color(Array|string) = ['#ccc']
+
+分隔线颜色，可以设置成单个颜色。
+
+也可以设置成颜色数组，分隔线会按数组中颜色的顺序依次循环设置颜色。
+
+示例
+```
+splitLine: {
+    lineStyle: {
+        // 使用深浅的间隔色
+        color: ['#aaa', '#ddd']
+    }
+}
+```
+
+
+
+#${prefix} splitArea(Object)
+
+坐标轴在 [grid](~grid) 区域中的分隔区域，默认不显示。
+
+##${prefix} show(boolean) = false
+
+是否显示分隔区域。
+
+##${prefix} areaStyle(Object)
+
+分隔区域的样式设置。
+
+###${prefix} color(Array) = ['rgba(250,250,250,0.3)','rgba(200,200,200,0.3)']
+
+分隔区域颜色。分隔区域会按数组中颜色的顺序依次循环设置颜色。默认是一个深浅的间隔色。
+
+{{ use:partial-style-shadow-opacity(prefix='##' + ${prefix}) }}
+
+
+
 
 #${prefix} data(Array)
 
-在类目轴（[type](~${componentType}.type): 'category'）中有效，坐标轴数据数组，只支持字符串类型。如：
+类目数据，在类目轴（[type](~${componentType}.type): 'category'）中有效。
+
+示例：
+
 ```js
-['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+// 所有类目名称列表
+data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+// 每一项也可以是具体的配置项，此时取配置项中的 `value` 为类目名
+data: [{
+    value: '周一',
+    // 突出周一
+    textStyle: {
+        fontSize: 20,
+        color: 'red'
+    }
+}, '周二', '周三', '周四', '周五', '周六', '周日']
 ```
+
+##${prefix} value(string)
+
+单个类目名称。
+
+##${prefix} textStyle(Object)
+
+类目标签的文字样式。
+
+{{ use:partial-text-style(prefix='##' + ${prefix}) }}
