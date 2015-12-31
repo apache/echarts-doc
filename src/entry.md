@@ -5,17 +5,17 @@
 {{import: component-title}}
 {{import: component-grid}}
 {{import: component-polar}}
-{{import: component-xAxis}}
-{{import: component-yAxis}}
-{{import: component-radiusAxis}}
-{{import: component-angleAxis}}
+{{import: component-x-axis}}
+{{import: component-y-axis}}
+{{import: component-radius-axis}}
+{{import: component-angle-axis}}
 {{import: component-legend}}
 {{import: component-title}}
-{{import: component-dataZoom}}
-{{import: component-dataRange}}
+{{import: component-data-zoom}}
+{{import: component-visual-map}}
 {{import: component-tooltip}}
 {{import: component-parallel}}
-{{import: component-parallelAxis}}
+{{import: component-parallel-axis}}
 
 
 {{import: series-line}}

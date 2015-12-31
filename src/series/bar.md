@@ -115,3 +115,6 @@
 #### emphasis(Object)
 {{use:partial-bar-item-style(prefix="####")}}
 
+
+
+{{use:partial-animation(prefix="#")}}

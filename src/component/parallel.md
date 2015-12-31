@@ -3,7 +3,7 @@
 
 # parallel(Object)
 
-{{use: component-common}}
+{{use: component-rect-layout}}
 
 ## parallelAxisDefault(Object)
 

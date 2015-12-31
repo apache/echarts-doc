@@ -1,6 +1,6 @@
 {{target: series-common}}
 
-{{use: component-common}}
+{{use: component-rect-layout}}
 
 ## width(number)
 

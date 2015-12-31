@@ -20,11 +20,8 @@
 
 + "top"
 + "left"
-
 + "right"
-
 + "bottom"
-
 + 'inside'
 + 'insideLeft'
 + 'insideRight'

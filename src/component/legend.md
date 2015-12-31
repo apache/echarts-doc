@@ -3,5 +3,4 @@
 
 # legend(Object)
 
-{{use: component-common}}
-    
+{{use: component-rect-layout}}

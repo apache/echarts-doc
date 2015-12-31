@@ -1,4 +1,5 @@
-{{target:partial-style-shadow-opacity}}
+{{target:partial-style-shadow}}
+
 #${prefix} shadowBlur(number) = ${defaultShadowBlur}
 
 图形阴影的模糊大小。该属性配合 `shadowColor`,`shadowOffsetX`, `shadowOffsetY` 一起设置图形的阴影效果。
@@ -26,6 +27,17 @@ itemStyle: {
 
 阴影垂直方向上的偏移距离。
 
+
+{{target:partial-style-opacity}}
+
 #${prefix} opacity(number) = ${defaultOpacity}
 
 图形透明度。支持从 0 到 1 的数字，为 0 时不绘制该图形。
+
+
+
+
+{{target:partial-style-shadow-opacity}}
+
+{{use: partial-style-shadow(prefix=${prefix})}}
+{{use: partial-style-opacity(prefix=${prefix})}}

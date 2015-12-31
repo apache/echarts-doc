@@ -3,5 +3,4 @@
 
 # polar(Object)
 
-{{use: component-common}}
-    
+{{use: component-circular-layout}}
