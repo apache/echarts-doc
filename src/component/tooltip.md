@@ -11,7 +11,7 @@
 
 ## showContent(boolean) = true
 
-是否显示提示框浮层，默认显示。
+是否显示提示框浮层，默认显示。只需tooltip触发事件或显示axisPointer而不需要显示内容时可配置该项为`false`。
 
 ## trigger(string) = 'item'
 
@@ -24,7 +24,9 @@
 
 + 'axis'
 
-    坐标轴触发，主要在柱状图，折线图等会使用类目轴的图表中使用。只支持[直角坐标系](~grid)和[极坐标系](~polar)中的图表。
+    坐标轴触发，主要在柱状图，折线图等会使用类目轴的图表中使用。
+
+    在 ECharts 2.x 中只支持类目轴上使用 axis trigger，在 ECharts 3 中支持在[直角坐标系](~grid)和[极坐标系](~polar)上的所有类型的轴。并且可以通过 [axisPointer.axis](~tooltip.axisPointer.axis) 指定坐标轴。
 
 ## triggerOn(string) = 'mousemove'
 
@@ -46,15 +48,23 @@
 
 该属性为 ECharts 3.0 中新加。
 
+## hideDelay(number) = 100
+
+浮层隐藏的延迟，单位为 ms，在 [alwaysShowContent](~tooltip.alwaysShowContent) 为 `true` 的时候无效。
+
+## enterable(boolean) = true
+
+鼠标是否可进入提示框浮层中，默认为false，如需详情内交互，如添加链接，按钮，可设置为 `true`。
+
 ## position(string|Array)
 
-浮层的位置，默认不设置时位置会跟随鼠标的位置。
+提示框浮层的位置，默认不设置时位置会跟随鼠标的位置。
 
 可选：
 
 + Array
 
-    通过数组表示浮层的位置，支持数字设置绝对位置，百分比设置相对位置。
+    通过数组表示提示框浮层的位置，支持数字设置绝对位置，百分比设置相对位置。
 
     示例:
 
@@ -121,13 +131,79 @@ formatter: '{b0}: {c0}<br />{b1}: {c1}'
 
 第一个参数 `params` 是 formatter 需要的数据集。格式如下：
 
-{{ use: partial-formatter-params-structure(extra={
+{{ use: partial-formatter-params-structure(extra = {
     percent: {
         desc: '饼图的百分比',
         type: 'number'
     }
 }) }}
 
-在 [trigger](~tooltip.trigger) 为 `'axis'` 的时候是多个系列的数据数组。
+在 [trigger](~tooltip.trigger) 为 `'axis'` 的时候 `params` 是多个系列的数据数组。
 
-{{use: component-rect-layout }}
+第二个参数 `ticket` 是异步回调标识，配合第三个参数 `callback` 使用。
+第三个参数 `callback` 是异步回调，在提示框浮层内容是异步获取的时候，可以通过 callback 传入上述的 `ticket` 和 `html` 更新提示框浮层内容。
+
+示例：
+```js
+formatter: function (params, ticket, callback) {
+    $.get('detail?name=' + params.name, function (content) {
+        callback(ticket, toHTML(content));
+    });
+    return 'Loading';
+}
+```
+
+## backgroundColor(string) = 'rgba(50,50,50,0.7)'
+
+提示框浮层的背景颜色。
+
+## borderColor(string) = '#333'
+
+提示框浮层的边框颜色。
+
+## borderWidth(number) = 0
+
+提示框浮层的边框宽。
+
+## padding(number) = 5
+
+{{ use: partial-padding(componentName='提示框浮层') }}
+
+## axisPointer(Object)
+
+坐标轴指示器配置项，在 [trigger](~tooltip.trigger) 为 `'axis'` 时有效。
+
+### type(string) = 'line'
+
+指示器类型。
+
+可选
++ 'line' 直线指示器
+
++ 'cross' 十字准星指示器
+
++ 'shadow' 阴影指示器
+
+TODO 截图示例
+
+### axis(string) = 'auto'
+
+指示器的坐标轴。可以是 `'x'`, `'y'`, `'radius'`, `'angle'`。默认取类目轴或者时间轴。
+
+{{ use: partial-animation(prefix="##") }}
+
+### lineStyle(Object)
+
+{{ use: partial-line-style(prefix="###", defaultColor="#555", defaultWidth=1, defaultType='solid') }}
+
+### crossStyle(Object)
+
+{{ use: partial-line-style(prefix="###", defaultColor="#555", defaultWidth=1, defaultType="dashed") }}
+
+#### textStyle(Object)
+
+{{ use: partial-text-style(prefix="####") }}
+
+### shadowStyle(Object)
+
+{{ use: partial-area-style(prefix="###", defaultColor="'rgba(150,150,150,0.3)") }}
