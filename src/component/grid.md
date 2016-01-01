@@ -17,4 +17,4 @@
 
 {{ use:partial-component-common-style(componentName="网格", prefix='#') }}
 
-{{use: component-rect-layout(componentName="grid ")}}
+{{ use: component-rect-layout(componentName="grid ") }}

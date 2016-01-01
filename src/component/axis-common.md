@@ -137,17 +137,20 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 
 刻度标签是否朝内，默认朝外。
 
+{{ if: ${componentType} !== 'angleAxis' }}
 ##${prefix} rotate(number) = 0
 
 刻度标签旋转的角度，在类目轴的类目标签显示不下的时候可以通过旋转防止标签之间重叠。
 
 旋转的角度从 -90 度到 90 度。
 
+{{ /if }}
+
 ##${prefix} margin(number) = 8
 
 刻度标签与轴线之间的距离。
 
-##${prefix} formatter(string|Function)
+##${prefix} formatter(string|Function) = null
 
 刻度标签的内容格式器，支持字符串模板和回调函数两种形式。
 
