@@ -10,6 +10,7 @@
     + 通过 JS API 自定义交互
     + ECharts 中的坐标系
     + ECharts 中的数据和视觉编码（dataRange）
+    + 移动端自适应
     + 使用主题
 
 + Option 参考手册

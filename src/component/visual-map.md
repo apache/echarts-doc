@@ -1,6 +1,6 @@
 
 {{target: component-visual-map}}
 
-# dataRange(Object)
+# visualMap(Object)
 
 {{use: component-rect-layout}}
