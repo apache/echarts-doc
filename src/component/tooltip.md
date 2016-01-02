@@ -95,6 +95,10 @@
 
     鼠标所在图形底侧，只在 [trigger](~tooltip.trigger) 为`'item'`的时候有效。
 
+## transitionDuration(number) = 0.4
+
+提示框浮层的移动动画过渡时间，单位是 s，设置为 0 的时候会紧跟着鼠标移动。
+
 ## formatter(string|Function)
 
 提示框浮层内容格式器，支持字符串模板和回调函数两种形式。
@@ -169,6 +173,12 @@ formatter: function (params, ticket, callback) {
 
 {{ use: partial-padding(componentName='提示框浮层') }}
 
+## textStyle(Object)
+
+提示框浮层的文本样式。
+
+{{ use: partial-text-style(prefix="##", defaultColor="'#fff'", defaultFontSize=14) }}
+
 ## axisPointer(Object)
 
 坐标轴指示器配置项，在 [trigger](~tooltip.trigger) 为 `'axis'` 时有效。
@@ -194,16 +204,24 @@ TODO 截图示例
 
 ### lineStyle(Object)
 
+[axisPointer.type](~tooltip.axisPointer.type) 为 `'line'` 时有效。
+
 {{ use: partial-line-style(prefix="###", defaultColor="#555", defaultWidth=1, defaultType='solid') }}
 
 ### crossStyle(Object)
+
+[axisPointer.type](~tooltip.axisPointer.type) 为 `'cross'` 时有效。
 
 {{ use: partial-line-style(prefix="###", defaultColor="#555", defaultWidth=1, defaultType="dashed") }}
 
 #### textStyle(Object)
 
+十字准星准星上的文字样式。
+
 {{ use: partial-text-style(prefix="####") }}
 
 ### shadowStyle(Object)
+
+[axisPointer.type](~tooltip.axisPointer.type) 为 `'shadow'` 时有效。
 
 {{ use: partial-area-style(prefix="###", defaultColor="'rgba(150,150,150,0.3)") }}
