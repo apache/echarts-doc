@@ -7,9 +7,9 @@
 
 在 ECharts 2.x 里单个 echarts 实例中最多只能存在一个 grid 组件，在 ECharts 3 中可以存在任意个 grid 组件。
 
-例如下面这个 Anscombe Quartet 的示例：
+**例如下面这个 Anscombe Quartet 的示例：**
 
-~[600x500](${galleryViewPath}scatter-anscombe-quartet&edit=1&reset=1)
+~[600x400](${galleryViewPath}scatter-anscombe-quartet&edit=1&reset=1)
 
 ## show(boolean) = false
 

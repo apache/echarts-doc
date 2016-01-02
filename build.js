@@ -24,7 +24,7 @@ glob('src/**/*.md', function (err, files) {
     var mdStr = etpl.getRenderer('echarts')(require('./config'));
     // Markdown to JSON
     var schema = mdToJsonSchema(mdStr);
-
+    // console.log(mdStr);
     var topLevel = schema.option.properties;
     var newProperties = {};
     for (var name in topLevel) {
@@ -46,9 +46,18 @@ glob('src/**/*.md', function (err, files) {
     console.log(JSON.stringify(schema, null, 2));
 });
 
-function mdToJsonSchema(mdStr) {
+var renderer = new marked.Renderer();
+renderer.link = function (href, title, text) {
+    if (href.match(/^~/)) { // Property link
+        return '<a href="#' + href.slice(1) + '">' + text + '</a>';
+    }
+    else {
+        // All other links are opened in new page
+        return '<a href="' + href + '" target="_blank">' + text + '</a>';
+    }
+};
 
-    var renderer = new marked.Renderer();
+function mdToJsonSchema(mdStr) {
 
     var currentLevel = 0;
     var result = {
@@ -140,6 +149,18 @@ function mdToJsonSchema(mdStr) {
         }
         var types = type.split('|').map(function (item) {
             return item.trim();
+        });
+
+        section = section.replace(/~\[(.*)\]\((.*)\)/g, function (text, size, href) {
+            size = size.split('x');
+            var width = +size[0];
+            var height = +size[1];
+            var iframe = ['<iframe src="', href, '"'];
+            if (!isNaN(width) && !isNaN(height)) {
+                iframe.push(' width=', width, ' height=', height);
+            }
+            iframe.push(' ></iframe>\n');
+            return iframe.join('');
         });
         var property = {
             "type": types,
