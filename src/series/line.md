@@ -2,11 +2,28 @@
 
 # series.line(Object)
 
-折线图
+折线图。
 
 ## type(string) = 'line'
 
-{{use: series-common(coordSysDefault="cartesian2d",cartesian2d=true,polar=true,geo=false)}}
+{{use: partial-coord-sys(
+    seriesType="bar",
+    coordSysDefault="'cartesian2d'",
+    cartesian2d=true,
+    polar=true,
+    geo=false
+)}}
+
+{{ use:partial-symbol(
+    defaultSymbol="'circle'",
+    defaultSymbolSize=4
+) }}
+
+## showSymbol(boolean) = true
+是否显示 symbol, 只有在 tooltip hover 的时候显示
+
+## showAllSymbol(boolean) = false
+标志图形默认只有主轴显示（随主轴标签间隔隐藏策略），如需全部显示可把showAllSymbol设为true
 
 ## itemStyle(Object)
 折线拐点标记的样式
@@ -14,8 +31,6 @@
 {{use:partial-item-style(prefix="###",useColorPalatte=true)}}
 ### emphasis(Object)
 {{use:partial-item-style(prefix="###")}}
-
-{{use:partial-symbol()}}
 
 ## lineStyle(Object)
 {{use:partial-line-style(prefix="##")}}
@@ -37,21 +52,12 @@
 ## areaStyle(Object)
 区域填充样式
 ### normal(Object)
-{{use:partial-area-style(prefix="###",useColorPalatte=true)}}
+{{use:partial-area-style(prefix="###")}}
 ### emphasis(Object)
 {{use:partial-area-style(prefix="###")}}
-
-## showSymbol(boolean) = true
-是否显示 symbol, 只有在 tooltip hover 的时候显示
-
-## showAllSymbol(boolean) = false
-标志图形默认只有主轴显示（随主轴标签间隔隐藏策略），如需全部显示可把showAllSymbol设为true
 
 ## smooth(false) = false
-平滑曲线显示，smooth为true时lineStyle不支持虚线
-### normal(Object)
-{{use:partial-area-style(prefix="###")}}
-### emphasis(Object)
-{{use:partial-area-style(prefix="###")}}
+平滑曲线显示。
+
 
 {{use:partial-animation(prefix="#")}}

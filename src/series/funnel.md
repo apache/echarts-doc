@@ -7,8 +7,6 @@
 
 ## type(string) = 'funnel'
 
-{{use: series-common}}
-
 ## min(number) = 0
 指定的最小值
 
