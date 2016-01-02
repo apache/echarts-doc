@@ -1,4 +1,4 @@
-{{target: component-rect-layout}}
+{{target: partial-rect-layout}}
 
 {{use: partial-z-zlevel}}
 

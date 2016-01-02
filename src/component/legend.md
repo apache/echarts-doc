@@ -11,7 +11,7 @@ ECharts 3 中单个 echarts 实例中可以存在多个图例组件，会方便�
 
 ## show(boolean) = true
 
-{{use: component-rect-layout}}
+{{use: partial-rect-layout}}
 
 ## orient(string) = 'horizontal'
 

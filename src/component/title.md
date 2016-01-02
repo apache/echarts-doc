@@ -54,13 +54,9 @@
 
 指定窗口打开副标题超链接，可选：
 
-+ 'self'
++ 'self' 当前窗口打开
 
-    当前窗口打开
-
-+ 'blank'
-
-    新窗口打开
++ 'blank' 新窗口打开
 
 ## subtextStyle
 
@@ -76,7 +72,7 @@
 
 {{ use: partial-component-common-style(componentName="标题", prefix='#') }}
 
-{{use: component-rect-layout(componentName="grid ")}}
+{{use: partial-rect-layout(componentName="grid ")}}
 
 
 

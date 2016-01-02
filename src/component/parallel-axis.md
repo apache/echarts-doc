@@ -9,3 +9,5 @@
 ## dim(number)
 
 单个坐标系纬度标示
+
+{{ use: axis-common(prefix="#") }}
