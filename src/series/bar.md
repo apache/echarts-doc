@@ -73,33 +73,12 @@
 
 ## data(Array)
 
-系列中的数据内容数组，数组长度等于所使用类目轴文本标签数组 [xAxis.data](~xAxis.data) 的长度，并且他们间是一一对应的。数组项通常为数值，如:
-
-```js
-[12, 34, 56, ..., 10, 23]
-```
-
-当某类目对应数据不存在时（ps：'不存在' 不代表值为 0），可用'-'表示，无数据在柱状图中表现为该点无柱形，如：
-
-```js
-[12, '-', 56, ..., 10, 23]
-```
-
-当需要对个别柱条进行个性化定义时，数组项可用对象，如：
-```js
-[
-    12, 34,
-    {
-        value : 56,
-        label: {},
-        itemStyle:{}
-    },
-    ..., 10, 23
-]
-```
+{{ use: partial-list-data-desc(
+    galleryEditorPath = ${galleryEditorPath}
+) }}
 
 ### value(number)
-数据项的数值。
+单个数据项的数值。
 
 ### label(Object)
 #### normal(Object)

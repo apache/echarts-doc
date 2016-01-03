@@ -20,7 +20,8 @@
 
 {{ use:partial-symbol(
     defaultSymbol="'circle'",
-    defaultSymbolSize=4
+    defaultSymbolSize=4,
+    prefix="#"
 ) }}
 
 ## showSymbol(boolean) = true
@@ -28,6 +29,18 @@
 
 ## showAllSymbol(boolean) = false
 标志图形默认只有主轴显示（随主轴标签间隔隐藏策略），如需全部显示可把 showAllSymbol 设为 `true`。
+
+### label(Object)
+{{use:partial-label-desc}}
+#### normal(Object)
+{{use:partial-label(prefix="###")}}
+##### position(string|Array) = 'top'
+{{use:partial-optional-label-position}}
+#### emphasis(Object)
+{{use:partial-label(prefix="###")}}
+##### position(string|Array)
+{{use:partial-optional-label-position}}
+
 
 ## itemStyle(Object)
 折线拐点标志的样式。
@@ -67,18 +80,29 @@
 
 ## data(Array)
 
-{{ use: partial-list-data-desc() }}
+{{ use: partial-list-data-desc(
+    galleryEditorPath = ${galleryEditorPath}
+) }}
 
 ### value(number)
-数据项的数值。
+单个数据项的数值。
+
+{{ use:partial-symbol(
+    defaultSymbol="'circle'",
+    defaultSymbolSize=4,
+    prefix="##"
+) }}
 
 ### label(Object)
 单个拐点文本的样式设置。
 #### normal(Object)
-##### position(string|Array) = 'inside'
+##### position(string|Array) = 'top'
 {{ use:partial-optional-label-position }}
 {{ use:partial-label(prefix="####") }}
 #### emphasis(Object)
+{{ use:partial-label(prefix="####") }}
+##### position(string|Array)
+{{ use:partial-optional-label-position }}
 {{ use:partial-label(prefix="####") }}
 
 ### itemStyle(Object)
@@ -87,7 +111,6 @@
 {{use:partial-bar-item-style(prefix="####")}}
 #### emphasis(Object)
 {{use:partial-bar-item-style(prefix="####")}}
-
 
 
 {{use:partial-animation(prefix="#")}}
