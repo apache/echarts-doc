@@ -106,9 +106,19 @@ function mdToJsonSchema(mdStr) {
     function appendProperty(name, property) {
         var parent = top();
         var types = parent.type;
-        var target = types[0] === 'Array' ? 'items' : 'properties';
-        top()[target] = top()[target] || {};
-        top()[target][name] = property;
+        var properties;
+        if (types[0] === 'Array') {
+            top().items = top().items || {
+                type: 'Object',
+                properties: {}
+            };
+            properties = top().items.properties;
+        }
+        else {
+            top().properties = top().properties || {};
+            properties = top().properties;
+        }
+        properties[name] = property;
     }
 
     function repeat(str, count) {
