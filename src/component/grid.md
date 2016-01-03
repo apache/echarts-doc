@@ -3,7 +3,7 @@
 
 # grid(Object)
 
-直角坐标系内绘图网格，单个 grid 内最多可以放置上下两个 X 轴，左右两个 Y 轴。
+直角坐标系内绘图网格，单个 grid 内最多可以放置上下两个 X 轴，左右两个 Y 轴。可以在网格上绘制[折线图](~series-line)，[柱状图](~series-bar)，[散点图（气泡图）](~series-scatter)。
 
 在 ECharts 2.x 里单个 echarts 实例中最多只能存在一个 grid 组件，在 ECharts 3 中可以存在任意个 grid 组件。
 

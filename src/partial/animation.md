@@ -2,7 +2,7 @@
 
 #${prefix} animation(boolean) = true
 
-是否开启动画，默认开启
+是否开启动画，默认开启。
 
 #${prefix} animationDuration(number) = ${defaultAnimationDuration|default(1000)}
 
@@ -10,7 +10,7 @@
 
 #${prefix} animationEasing(string) = ${defaultAnimationEasing|default('cubicOut')}
 
-初始动画的缓动效果。不同的缓动效果可以参考 [缓动示例](${galleryViewPath}line-easing)
+初始动画的缓动效果。不同的缓动效果可以参考 [缓动示例](${galleryViewPath}line-easing)。
 
 
 #${prefix} animationDurationUpdate(number) = ${defaultAnimationDurationUpdate|default(300)}

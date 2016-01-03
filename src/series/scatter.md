@@ -50,7 +50,7 @@ data 的每个数组项可以是用数组表示的`[x, y, value]`数据，也可
 数据项名称。
 
 ### value(Array)
-数据项值，
+数据项值。
 
 ### label(Object)
 {{use:partial-label-desc}}

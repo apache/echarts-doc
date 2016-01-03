@@ -63,7 +63,7 @@
 是否启用图例（legend）hover时的联动响应（高亮显示）
 
 ## barMinHeight(number) = 0
-柱条最小高度，可用于防止某item的值过小而影响交互
+柱条最小高度，可用于防止某数据项的值过小而影响交互
 
 ## barGap(string) = '30%'
 柱间距离，默认为柱形宽度的30%，可设固定值
@@ -85,7 +85,7 @@
 [12, '-', 56, ..., 10, 23]
 ```
 
-当需要对个别内容进行个性化定义时，数组项可用对象，如：
+当需要对个别柱条进行个性化定义时，数组项可用对象，如：
 ```js
 [
     12, 34,
@@ -102,15 +102,12 @@
 数据项的数值。
 
 ### label(Object)
-{{use:partial-label-desc(name="单个柱条")}}
 #### normal(Object)
 ##### position(string|Array) = 'inside'
 {{ use:partial-optional-label-position }}
 {{ use:partial-label(prefix="####") }}
 #### emphasis(Object)
 {{ use:partial-label(prefix="####") }}
-
-
 
 ### itemStyle(Object)
 #### normal(Object)

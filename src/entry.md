@@ -14,6 +14,7 @@
 {{import: component-data-zoom}}
 {{import: component-visual-map}}
 {{import: component-tooltip}}
+{{import: component-toolbox}}
 {{import: component-geo}}
 {{import: component-parallel}}
 {{import: component-parallel-axis}}

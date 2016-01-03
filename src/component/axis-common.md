@@ -1,5 +1,7 @@
 {{target: axis-common}}
 
+
+{{ if: ${componentType} !== 'angleAxis' }}
 #${prefix} name(string)
 
 坐标轴名称。
@@ -9,9 +11,9 @@
 坐标轴名称显示位置。
 
 **可选：**
-+ 'start'
-+ 'middle'
-+ 'end'
++ `'start'`
++ `'middle'`
++ `'end'`
 
 #${prefix} nameTextStyle(Object)
 
@@ -26,6 +28,8 @@
 #${prefix} inverse(boolean) = false
 
 是否是反向坐标轴。
+
+{{/if}}
 
 #${prefix} type(string) = ${axisTypeDefault|default('value')}
 
@@ -46,17 +50,17 @@
 
 #${prefix} min(number|string) = 'auto'
 
-坐标轴刻度最小值，在非类目轴中有效。
+坐标轴刻度最小值，在类目轴中无效。
 
-可以设置成特殊值 `'dataMin'`，此时取数据在该轴上的最小值作为最小刻度。在使用 [dataZoom](~dataZoom) 的数值轴上比较有用。
+可以设置成特殊值 `'dataMin'`，此时取数据在该轴上的最小值作为最小刻度。
 
 不设置时会自动计算最小值保证坐标轴刻度的均匀分布。
 
 #${prefix} max(number|string) = 'auto'
 
-坐标轴刻度最大值，在非类目轴中有效。
+坐标轴刻度最大值，在类目轴中无效。
 
-可以设置成特殊值 `'dataMax'`，此时取数据在该轴上的最大值作为最大刻度。在使用 [dataZoom](~dataZoom) 的数值轴上比较有用。
+可以设置成特殊值 `'dataMax'`，此时取数据在该轴上的最大值作为最大刻度。
 
 不设置时会自动计算最大值保证坐标轴刻度的均匀分布。
 
@@ -72,10 +76,15 @@
 
 坐标轴的分割段数，需要注意的是这个分割段数只是个预估值，最后实际显示的段数会在这个基础上根据分割后坐标轴刻度显示的易读程度作调整。
 
-只在数值轴中（[type](~${componentType}.type): 'value'）有效。
+在类目轴中无效。
 
+#${prefix} interval(number)
 
+坐标轴分割间隔。
 
+因为 [splitNumber](~${componentType}.splitNumber) 是预估的值，实际根据策略计算出来的刻度可能无法达到想要的效果，这时候可以使用 interval 配合 [min](~${componentType}.min), [max](~${componentType}.max) 强制设定刻度划分，一般不建议使用。
+
+无法在类目轴中使用。在时间轴（[type](~${componentType}.type): 'time'）中需要传时间戳，在对数轴（[type](~${componentType}.type): 'log'）中需要传指数值。
 
 #${prefix} axisLine(Object)
 
