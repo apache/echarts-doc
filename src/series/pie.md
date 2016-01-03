@@ -6,8 +6,6 @@
 
 ## type(string) = 'pie'
 
-{{use: series-common(cartesian2d=false,polar=false,geo=false)}}
-
 ## label(Object)
 {{use:partial-label-desc}}
 ### normal(Object)

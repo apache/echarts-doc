@@ -7,14 +7,24 @@
 
 在 ECharts 2.x 里单个 echarts 实例中最多只能存在一个 grid 组件，在 ECharts 3 中可以存在任意个 grid 组件。
 
-例如下面这个 Anscombe Quartet 的示例：
+**例如下面这个 Anscombe Quartet 的示例：**
 
-~[600x500](${galleryViewPath}scatter-anscombe-quartet&edit=1&reset=1)
+~[600x400](${galleryViewPath}scatter-anscombe-quartet&edit=1&reset=1)
 
 ## show(boolean) = false
 
 是否显示直角坐标系网格。
 
-{{ use:partial-component-common-style(componentName="网格", prefix='#') }}
+{{ use: partial-rect-layout-width-height(
+    componentName="grid ",
+    defaultLeft='10%',
+    defaultTop=60,
+    defaultRight='10%',
+    defaultBottom=60
+) }}
 
-{{ use: component-rect-layout(componentName="grid ") }}
+## containLabel(boolean) = false
+
+grid 区域是否包含坐标轴的[刻度标签](~yAxis.axisLabel)，在无法确定坐标轴标签的宽度，容器有比较小无法预留较多空间的时候，可以设为 `true` 防止标签溢出容器。
+
+{{ use:partial-component-common-style(componentName="网格", prefix='#') }}

@@ -1,4 +1,4 @@
-{{target:partial-bar-item-style}}
+{{ target:partial-bar-item-style }}
 
 #${prefix} color(string) = 自适应
 
@@ -15,7 +15,6 @@
 {{ use:partial-style-shadow-opacity(prefix=${prefix}) }}
 
 
-
 {{target:series-bar}}
 
 # series.bar(Object)
@@ -24,13 +23,19 @@
 
 ## type(string) = 'bar'
 
-{{use: series-common(cartesian2d=true,polar=false,geo=false)}}
+{{use: partial-coord-sys(
+    seriesType="bar",
+    coordSysDefault="'cartesian2d'",
+    cartesian2d=true,
+    polar=false,
+    geo=false
+)}}
 
 ## label(Object)
 {{use:partial-label-desc}}
 ### normal(Object)
 {{use:partial-label(prefix="###")}}
-#### position(string|Array.<string>)
+#### position(string|Array) = 'inside'
 {{use:partial-optional-label-position}}
 ### emphasis(Object)
 {{use:partial-label(prefix="###")}}
@@ -44,8 +49,6 @@
 ### emphasis(Object)
 {{use:partial-bar-item-style(prefix="###")}}
 
-## clickable(boolean) = true
-数据图形是否可点击，默认开启，如果没有click事件响应可以关闭
 
 ## stack(string) = null
 组合名称，双数值轴时无效，多组数据的堆积图时使用，eg：stack:'group1'，则series数组中stack值等于'group1'的数据做堆积计算
@@ -95,23 +98,23 @@
 ]
 ```
 
+### value(number)
+数据项的数值。
+
 ### label(Object)
-{{use:partial-label-desc}}
+{{use:partial-label-desc(name="单个柱条")}}
 #### normal(Object)
-{{use:partial-label(prefix="####")}}
-##### position(string|Array.<string>)
-{{use:partial-optional-label-position}}
+##### position(string|Array) = 'inside'
+{{ use:partial-optional-label-position }}
+{{ use:partial-label(prefix="####") }}
 #### emphasis(Object)
-{{use:partial-label(prefix="####")}}
-##### position(string|Array.<string>)
-{{use:partial-optional-label-position}}
+{{ use:partial-label(prefix="####") }}
+
+
 
 ### itemStyle(Object)
-
-柱条的样式
-
 #### normal(Object)
-{{use:partial-bar-item-style(prefix="####", useColorPalatte=true)}}
+{{use:partial-bar-item-style(prefix="####")}}
 #### emphasis(Object)
 {{use:partial-bar-item-style(prefix="####")}}
 

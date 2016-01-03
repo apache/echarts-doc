@@ -3,4 +3,4 @@
 
 # dataZoom(Object)
 
-{{use: component-rect-layout}}
+{{use: partial-rect-layout}}

@@ -7,8 +7,8 @@
 
 在 ECharts 2.x 中单个 ECharts 实例最多只能拥有一个标题组件。但是在 ECharts 3 中可以存在任意多个标题组件，这在需要标题进行排版，或者单个实例中的多个图表都需要标题时会比较有用。
 
-例如下面不同缓动函数效果的示例：
-~[600x500](${galleryViewPath}line-easing&edit=1&reset=1)
+**例如下面不同缓动函数效果的示例：**
+~[600x400](${galleryViewPath}line-easing&edit=1&reset=1)
 
 ## show(boolean) = false
 
@@ -54,13 +54,9 @@
 
 指定窗口打开副标题超链接，可选：
 
-+ 'self'
++ 'self' 当前窗口打开
 
-    当前窗口打开
-
-+ 'blank'
-
-    新窗口打开
++ 'blank' 新窗口打开
 
 ## subtextStyle
 
@@ -74,9 +70,9 @@
 
 主副标题之间的间距。
 
-{{ use: partial-component-common-style(componentName="标题", prefix='#') }}
+{{use: partial-rect-layout(componentName="grid ")}}
 
-{{use: component-rect-layout(componentName="grid ")}}
+{{ use: partial-component-common-style(componentName="标题", prefix='#') }}
 
 
 

@@ -21,4 +21,4 @@ TODO 配图（示例）说明
 
 TODO 配图（示例）说明
 
-{{use: axis-common(prefix='#', componentType='angleAxis')}}
+{{use: axis-common(prefix='#', componentType='angleAxis', axisTypeDefault="'category'") }}
