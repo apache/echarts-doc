@@ -30,6 +30,19 @@
 ## showAllSymbol(boolean) = false
 标志图形默认只有主轴显示（随主轴标签间隔隐藏策略），如需全部显示可把 showAllSymbol 设为 `true`。
 
+## hoverAnimation(boolean) = true
+是否显示 hover 在拐点标志上的放大动画效果。
+
+## legendHoverLink(boolean) = true
+是否启用[图例](~legend) hover时的联动高亮。
+
+## stack(string) = null
+数据堆叠，同个类目轴上系列配置相同的`stack`值可以堆叠放置。
+
+下面示例可以通过右上角 [toolbox](~toolbox) 中的堆叠切换看效果：
+
+~[600x400](${galleryViewPath}doc-example/line-stack-tiled&edit=1&reset=1)
+
 ### label(Object)
 {{use:partial-label-desc}}
 #### normal(Object)
@@ -40,7 +53,6 @@
 {{use:partial-label(prefix="###")}}
 ##### position(string|Array)
 {{use:partial-optional-label-position}}
-
 
 ## itemStyle(Object)
 折线拐点标志的样式。
@@ -54,19 +66,6 @@
 {{use:partial-line-style(prefix="###")}}
 ### emphasis(Object)
 {{use:partial-line-style(prefix="###")}}
-
-## hoverAnimation(boolean) = true
-是否显示 hover 在拐点标志上的放大动画效果。
-
-## legendHoverLink(boolean) = true
-是否启用[图例](~legend) hover时的联动高亮。
-
-## stack(string) = null
-数据堆叠，同个类目轴上系列配置相同的`stack`值可以堆叠放置。
-
-下面示例可以通过右上角 [toolbox](~toolbox) 中的堆叠切换看效果：
-
-~[600x400](${galleryViewPath}doc-example/line-stack-tiled&edit=1&reset=1)
 
 ## areaStyle(Object)
 区域填充样式。

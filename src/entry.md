@@ -31,7 +31,7 @@
 {{import: series-effectScatter}}
 {{import: series-funnel}}
 {{import: series-gauge}}
-{{import: series-geoLine}}
+{{import: series-lines}}
 {{import: series-graph}}
 {{import: series-heatmap}}
 {{import: series-map}}
