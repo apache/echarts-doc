@@ -2,7 +2,7 @@
 
 # series.line(Object)
 
-折线图。
+**折线图**
 
 折线图是用折线将各个数据点[标志](~series-line.symbol)连接起来的图表，用于展现数据的变化趋势。可用于[直角坐标系](~grid)和[极坐标系](~polar)上。
 
@@ -15,10 +15,12 @@
     coordSysDefault="'cartesian2d'",
     cartesian2d=true,
     polar=true,
-    geo=false
+    geo=false,
+    enableCallback=true
 ) }}
 
 {{ use:partial-symbol(
+    seriesType="scatter",
     defaultSymbol="'circle'",
     defaultSymbolSize=4,
     prefix="#"
@@ -31,10 +33,9 @@
 标志图形默认只有主轴显示（随主轴标签间隔隐藏策略），如需全部显示可把 showAllSymbol 设为 `true`。
 
 ## hoverAnimation(boolean) = true
-是否显示 hover 在拐点标志上的放大动画效果。
+是否开启 hover 在拐点标志上的放大动画效果。
 
-## legendHoverLink(boolean) = true
-是否启用[图例](~legend) hover时的联动高亮。
+{{ use: partial-legend-hover-link }}
 
 ## stack(string) = null
 数据堆叠，同个类目轴上系列配置相同的`stack`值可以堆叠放置。
@@ -43,16 +44,19 @@
 
 ~[600x400](${galleryViewPath}doc-example/line-stack-tiled&edit=1&reset=1)
 
-### label(Object)
+## label(Object)
 {{use:partial-label-desc}}
-#### normal(Object)
-{{use:partial-label(prefix="###")}}
-##### position(string|Array) = 'top'
-{{use:partial-optional-label-position}}
-#### emphasis(Object)
-{{use:partial-label(prefix="###")}}
-##### position(string|Array)
-{{use:partial-optional-label-position}}
+### normal(Object)
+{{use:partial-label(
+    prefix="###",
+    defaultPosition="'top'",
+    formatter=true
+)}}
+### emphasis(Object)
+{{use:partial-label(
+    prefix="###",
+    formatter=true
+)}}
 
 ## itemStyle(Object)
 折线拐点标志的样式。
@@ -89,19 +93,18 @@
 {{ use:partial-symbol(
     defaultSymbol="'circle'",
     defaultSymbolSize=4,
-    prefix="##"
+    prefix="##",
+    name="单个数据"
 ) }}
 
 ### label(Object)
 单个拐点文本的样式设置。
 #### normal(Object)
-##### position(string|Array) = 'top'
-{{ use:partial-optional-label-position }}
-{{ use:partial-label(prefix="####") }}
+{{ use:partial-label(
+    prefix="####",
+    defaultPosition="top"
+) }}
 #### emphasis(Object)
-{{ use:partial-label(prefix="####") }}
-##### position(string|Array)
-{{ use:partial-optional-label-position }}
 {{ use:partial-label(prefix="####") }}
 
 ### itemStyle(Object)

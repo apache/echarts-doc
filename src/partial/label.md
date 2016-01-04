@@ -4,18 +4,23 @@ ${name}图形上的文本标签，课用于说明图形的一些数据信息，�
 
 
 {{target:partial-label}}
-
+#${prefix} show(boolean) = ${defaultShowLabel|default("false")}
+是否显示标签。
+#${prefix} position(string|Array) = ${defaultPosition}
+{{use:partial-label-position}}
+{{ if: ${formatter} }}
+#${prefix} formatter(string|Function)
+{{use:partial-list-data-label-formatter}}
+{{ /if }}
 #${prefix} textStyle(Object)
-
-标签的字体样式
-
+标签的字体样式。
 {{ use:partial-text-style(prefix=${prefix} + '#') }}
 
 
+{{ target:partial-label-position }}
+标签的位置。
 
-{{ target:partial-optional-label-position }}
-
-** 可选：**
+**可选：**
 
 + [x, y]
 

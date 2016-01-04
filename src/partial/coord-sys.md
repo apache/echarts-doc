@@ -6,21 +6,21 @@
 
 {{if: ${cartesian2d} }}
 
-+ 'cartesian2d'
++ `'cartesian2d'`
 
-    使用二维的笛卡尔坐标系，通过 [xAxisIndex](~series-${seriesType}.xAxisIndex), [yAxisIndex](~series-${seriesType}.yAxisIndex)指定相应的坐标轴组件。
+    使用二维的直角坐标系（也称笛卡尔坐标系），通过 [xAxisIndex](~series-${seriesType}.xAxisIndex), [yAxisIndex](~series-${seriesType}.yAxisIndex)指定相应的坐标轴组件。
 {{/if}}
 
 {{if: ${polar} }}
 
-+ 'polar'
++ `'polar'`
 
     使用极坐标系，通过 [polarIndex](~series-${seriesType}.polarIndex) 指定相应的极坐标组件
 {{/if}}
 
 {{if: ${geo} }}
 
-+ 'geo'
++ `'geo'`
 
     使用地理坐标系，通过 [geoIndex](~series-${seriesType}.geoIndex) 指定相应的地理坐标系组件
 {{/if}}

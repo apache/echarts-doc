@@ -1,46 +1,34 @@
-{{ target:partial-bar-item-style }}
-
-#${prefix} color(string) = 自适应
-
-柱条的颜色。{{ if: ${useColorPalatte} }} 默认从全局调色盘 [option.color](~color) 获取颜色 {{/if}}
-
-#${prefix} barBorderColor(string) = '#000'
-
-柱条的描边颜色。
-
-#${prefix} barBorderWidth(number) = 0
-
-柱条的描边宽度，默认不描边。
-
-{{ use:partial-style-shadow-opacity(prefix=${prefix}) }}
-
-
 {{target:series-bar}}
 
 # series.bar(Object)
 
-柱状图
+**柱状图**
+
+柱状图通过柱形的高度来表现数据的大小，用于有至少一个类目轴的[直角坐标系](~grid)上。
 
 ## type(string) = 'bar'
 
-{{use: partial-coord-sys(
+{{ use: partial-coord-sys(
     seriesType="bar",
     coordSysDefault="'cartesian2d'",
     cartesian2d=true,
     polar=false,
     geo=false
-)}}
+) }}
 
 ## label(Object)
 {{use:partial-label-desc}}
 ### normal(Object)
-{{use:partial-label(prefix="###")}}
-#### position(string|Array) = 'inside'
-{{use:partial-optional-label-position}}
+{{use:partial-label(
+    prefix="###",
+    defaultPosition="'inside'",
+    formatter=true
+)}}
 ### emphasis(Object)
-{{use:partial-label(prefix="###")}}
-#### position(string|Array.<string>)
-{{use:partial-optional-label-position}}
+{{use:partial-label(
+    prefix="###",
+    formatter=true
+)}}
 
 ## itemStyle(Object)
 {{use:partial-bar-item-style-desc}}
@@ -81,10 +69,12 @@
 单个数据项的数值。
 
 ### label(Object)
+单个柱条文本的样式设置。
 #### normal(Object)
-##### position(string|Array) = 'inside'
-{{ use:partial-optional-label-position }}
-{{ use:partial-label(prefix="####") }}
+{{ use:partial-label(
+    prefix="####",
+    defaultPosition="inside"
+) }}
 #### emphasis(Object)
 {{ use:partial-label(prefix="####") }}
 
@@ -94,6 +84,25 @@
 #### emphasis(Object)
 {{use:partial-bar-item-style(prefix="####")}}
 
-
-
 {{use:partial-animation(prefix="#")}}
+
+
+
+
+{{ target:partial-bar-item-style }}
+
+#${prefix} color(string) = 自适应
+
+柱条的颜色。{{ if: ${useColorPalatte} }} 默认从全局调色盘 [option.color](~color) 获取颜色 {{/if}}
+
+#${prefix} barBorderColor(string) = '#000'
+
+柱条的描边颜色。
+
+#${prefix} barBorderWidth(number) = 0
+
+柱条的描边宽度，默认不描边。
+
+{{ use:partial-style-shadow-opacity(prefix=${prefix}) }}
+
+

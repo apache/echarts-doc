@@ -1,5 +1,21 @@
 {{target: axis-common}}
 
+#${prefix} type(string) = ${axisTypeDefault|default('value')}
+
+坐标轴类型。
+
+可选：
++ `'value'`
+    数值轴，适用于连续数据。
+
++ `'category'`
+    类目轴，适用于离散的类目数据，为该类型时必须通过 [data](~${componentType}.data) 设置类目数据。
+
++ `'time'`
+    时间轴，适用于连续的时序数据，与数值轴相比时间轴带有时间的格式化，在刻度计算上也有所不同，例如会根据跨度的范围来决定使用月，星期，日还是小时范围的刻度。
+
++ `'log'`
+    对数轴。适用于对数数据。
 
 {{ if: ${componentType} !== 'angleAxis' }}
 #${prefix} name(string)
@@ -27,26 +43,19 @@
 
 #${prefix} inverse(boolean) = false
 
-是否是反向坐标轴。
+是否是反向坐标轴。ECharts 3 中新加。
 
 {{/if}}
 
-#${prefix} type(string) = ${axisTypeDefault|default('value')}
+#${prefix} boundaryGap(boolean|Array)
+坐标轴两边留白策略，类目轴和非类目轴的设置和表现不一样。
 
-坐标轴类型。
+类目轴中 `boundaryGap` 可以配置为 `true` 和 `false`。默认为 `true`，这时候[刻度](~${componentType}.axisTick)只是作为分隔线，标签和数据点都会在两个[刻度](~${componentType}.axisTick)之间的带(band)中间。
 
-可选：
-+ `'value'`
-    数值轴，适用于连续数据。
-
-+ `'category'`
-    类目轴，适用于离散的类目数据，为该类型时必须通过 [data](~${componentType}.data) 设置类目数据。
-
-+ `'time'`
-    时间轴，适用于连续的时序数据，与数值轴相比时间轴带有时间的格式化，在刻度计算上也有所不同，例如会根据跨度的范围来决定使用月，星期，日还是小时范围的刻度。
-
-+ `'log'`
-    对数轴。适用于对数数据。
+非类目轴，包括时间，数值，对数轴，`boundaryGap`是一个两个值的数组，分别表示数据最小值和最大值的延伸范围，可以直接设置数值或者相对的百分比，在设置 [min](~${componentType}.min) 和 [max](~${componentType}.max) 后无效。**示例：**
+```js
+boundaryGap: ['20%', '20%']
+```
 
 #${prefix} min(number|string) = 'auto'
 
