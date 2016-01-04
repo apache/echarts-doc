@@ -1,32 +1,5 @@
 {{target: axis-common}}
 
-#${prefix} name(string)
-
-坐标轴名称。
-
-#${prefix} nameLocation(string) = 'start'
-
-坐标轴名称显示位置。
-
-**可选：**
-+ 'start'
-+ 'middle'
-+ 'end'
-
-#${prefix} nameTextStyle(Object)
-
-坐标轴名称的文字样式。
-
-{{use: partial-text-style(prefix='#' + ${prefix}, name="坐标轴名称")}}
-
-#${prefix} nameGap(number) = 15
-
-坐标轴名称与轴线之间的距离。
-
-#${prefix} inverse(boolean) = false
-
-是否是反向坐标轴。
-
 #${prefix} type(string) = ${axisTypeDefault|default('value')}
 
 坐标轴类型。
@@ -44,19 +17,59 @@
 + `'log'`
     对数轴。适用于对数数据。
 
+{{ if: ${componentType} !== 'angleAxis' }}
+#${prefix} name(string)
+
+坐标轴名称。
+
+#${prefix} nameLocation(string) = 'start'
+
+坐标轴名称显示位置。
+
+**可选：**
++ `'start'`
++ `'middle'`
++ `'end'`
+
+#${prefix} nameTextStyle(Object)
+
+坐标轴名称的文字样式。
+
+{{use: partial-text-style(prefix='#' + ${prefix}, name="坐标轴名称")}}
+
+#${prefix} nameGap(number) = 15
+
+坐标轴名称与轴线之间的距离。
+
+#${prefix} inverse(boolean) = false
+
+是否是反向坐标轴。ECharts 3 中新加。
+
+{{/if}}
+
+#${prefix} boundaryGap(boolean|Array)
+坐标轴两边留白策略，类目轴和非类目轴的设置和表现不一样。
+
+类目轴中 `boundaryGap` 可以配置为 `true` 和 `false`。默认为 `true`，这时候[刻度](~${componentType}.axisTick)只是作为分隔线，标签和数据点都会在两个[刻度](~${componentType}.axisTick)之间的带(band)中间。
+
+非类目轴，包括时间，数值，对数轴，`boundaryGap`是一个两个值的数组，分别表示数据最小值和最大值的延伸范围，可以直接设置数值或者相对的百分比，在设置 [min](~${componentType}.min) 和 [max](~${componentType}.max) 后无效。**示例：**
+```js
+boundaryGap: ['20%', '20%']
+```
+
 #${prefix} min(number|string) = 'auto'
 
-坐标轴刻度最小值，在非类目轴中有效。
+坐标轴刻度最小值，在类目轴中无效。
 
-可以设置成特殊值 `'dataMin'`，此时取数据在该轴上的最小值作为最小刻度。在使用 [dataZoom](~dataZoom) 的数值轴上比较有用。
+可以设置成特殊值 `'dataMin'`，此时取数据在该轴上的最小值作为最小刻度。
 
 不设置时会自动计算最小值保证坐标轴刻度的均匀分布。
 
 #${prefix} max(number|string) = 'auto'
 
-坐标轴刻度最大值，在非类目轴中有效。
+坐标轴刻度最大值，在类目轴中无效。
 
-可以设置成特殊值 `'dataMax'`，此时取数据在该轴上的最大值作为最大刻度。在使用 [dataZoom](~dataZoom) 的数值轴上比较有用。
+可以设置成特殊值 `'dataMax'`，此时取数据在该轴上的最大值作为最大刻度。
 
 不设置时会自动计算最大值保证坐标轴刻度的均匀分布。
 
@@ -72,10 +85,15 @@
 
 坐标轴的分割段数，需要注意的是这个分割段数只是个预估值，最后实际显示的段数会在这个基础上根据分割后坐标轴刻度显示的易读程度作调整。
 
-只在数值轴中（[type](~${componentType}.type): 'value'）有效。
+在类目轴中无效。
 
+#${prefix} interval(number)
 
+坐标轴分割间隔。
 
+因为 [splitNumber](~${componentType}.splitNumber) 是预估的值，实际根据策略计算出来的刻度可能无法达到想要的效果，这时候可以使用 interval 配合 [min](~${componentType}.min), [max](~${componentType}.max) 强制设定刻度划分，一般不建议使用。
+
+无法在类目轴中使用。在时间轴（[type](~${componentType}.type): 'time'）中需要传时间戳，在对数轴（[type](~${componentType}.type): 'log'）中需要传指数值。
 
 #${prefix} axisLine(Object)
 

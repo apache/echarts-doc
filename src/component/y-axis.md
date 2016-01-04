@@ -14,8 +14,8 @@ y 轴所在的 grid 的索引，默认位于第一个 grid。
 y 轴的位置。
 
 可选：
-+ 'left'
-+ 'right'
++ `'left'`
++ `'right'`
 
 默认 grid 中的第一个 y 轴在 grid 的左侧（`'left'`），第二个 y 轴视第一个 y 轴的位置放在另一侧。
 

@@ -1,5 +1,5 @@
 
-{{target: partial-component-common-style}}
+{{ target: partial-component-common-style }}
 
 #${prefix} backgroundColor(string) = 'transparent'
 

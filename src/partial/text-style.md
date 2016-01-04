@@ -4,29 +4,29 @@
 
 ${name}文字的颜色。
 
-#${prefix} fontStyle(string)="normal"
+#${prefix} fontStyle(string)='normal'
 
 ${name}文字字体的风格
 
 可选：
-+ normal
-+ italic
-+ oblique
++ `'normal'`
++ `'italic'`
++ `'oblique'`
 
 
-#${prefix} fontWeight(string)="normal"
+#${prefix} fontWeight(string)='normal'
 
 ${name}文字字体的粗细
 
 可选：
-+ normal
-+ bold
-+ bolder
-+ lighter
++ `'normal'`
++ `'bold'`
++ `'bolder'`
++ `'lighter'`
 + 100 | 200 | 300 | 400...
 
 
-#${prefix} fontFamily(string)="sans-serief"
+#${prefix} fontFamily(string)='sans-serief'
 
 ${name}文字的字体系列
 
