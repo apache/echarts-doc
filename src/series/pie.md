@@ -108,9 +108,13 @@
 ### itemStyle(Object)
 {{use:partial-item-style-desc}}
 #### normal(Object)
-{{use:partial-item-style(prefix="####", useColorPalatte=true)}}
+{{use:partial-item-style(prefix="####")}}
 #### emphasis(Object)
 {{use:partial-item-style(prefix="####")}}
+
+{{use:partial-animation(prefix="#")}}
+
+
 
 
 {{ target: partial-pie-label }}
@@ -136,6 +140,7 @@
 {{ /if }}
 {{ if: ${formatter} }}
 #${prefix} formatter(string|Function)
+{{ use: partial-1d-data-label-formatter() }}
 {{ /if }}
 #${prefix} textStyle(Object)
 标签的字体样式。
@@ -163,6 +168,4 @@
 是否显示视觉引导线。
 ##${prefix} lineStyle(Object)
 {{use:partial-line-style(prefix="##" + ${prefix})}}
-
-
 

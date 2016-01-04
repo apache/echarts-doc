@@ -1,3 +1,33 @@
+{{ target: partial-1d-data-label-formatter }}
+
+标签内容格式器，支持字符串模板和回调函数两种形式。
+1. 字符串模板。
+
+    模板变量有 `{a}`, `{b}`，`{c}`, `{d}`，分别表示系列名，数据名，数据值，百分比。
+
+    **示例：**
+    ```js
+    formatter: '{b}: {d}'
+    ```
+
+2. 回调函数。
+
+    回调函数格式：
+    ```js
+    (params: Object|Array) => string
+    ```
+    参数 `params` 是 formatter 需要的单个数据集。格式如下：
+    {{ use: partial-formatter-params-structor(extra = {
+        percent: {
+            desc: '百分比',
+            type: 'number'
+        }
+    }) }}。
+
+formatter 返回的字符串支持用 `\n` 换行。
+
+
+
 {{ target: partial-1d-data-desc }}
 
 系列中的数据内容数组。数组项可以为单个数值，如：
