@@ -72,7 +72,7 @@
 
 ## data(Array)
 
-{{ use: partial-list-data-desc(
+{{ use: partial-2d-data-desc(
     galleryEditorPath = ${galleryEditorPath}
 ) }}
 

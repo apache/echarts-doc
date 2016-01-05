@@ -1,4 +1,4 @@
-{{ target: partial-list-data-label-formatter }}
+{{ target: partial-2d-data-label-formatter }}
 
 标签内容格式器，支持字符串模板和回调函数两种形式。
 1. 字符串模板。
@@ -24,13 +24,13 @@ formatter 返回的字符串支持用 `\n` 换行。
 
 
 
-{{ target: partial-list-data-desc }}
+{{ target: partial-2d-data-desc }}
 
 系列中的数据内容数组。数组项通常为具体的数据项。数据格式有下面几种情况
 
 1. 在坐标系一个轴为类目轴的时候，数据可以是一维的数值，数组长度等于所使用类目轴文本标签数组 [xAxis.data](~xAxis.data) 的长度，并且他们间是一一对应的，如下：
     ```js
-    [12, 34, 56, ..., 10, 23]
+    [12, 34, 56, 10, 23]
     ```
 
 2. 在坐标系两个轴都为数值轴的时候，每个数据项需要是一个数组，并且至少有两个值表示直角坐标系上的 `x`， `y` 或者极坐标系上的 `radius`，`angle`，如下：
@@ -58,7 +58,7 @@ formatter 返回的字符串支持用 `\n` 换行。
         //自定义特殊 itemStyle，仅对该数据项有效
         itemStyle:{}
     },
-    ..., 10, 23
+    10, 23
 ]
 ```
 

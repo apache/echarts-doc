@@ -12,7 +12,7 @@
         // 传入的原始数据项
         data: Object,
         // 传入的数据值
-        value: number,
+        value: number|Array,
     {{ for: ${extra} as ${obj}, ${name} }}
         // ${obj.desc}
         ${name}: ${obj.type},

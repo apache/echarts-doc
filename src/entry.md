@@ -34,7 +34,6 @@
 {{import: series-heatmap}}
 {{import: series-map}}
 {{import: series-parallel}}
-{{import: series-radar}}
 
 # color(Array)
 

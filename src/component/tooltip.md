@@ -18,11 +18,11 @@
 触发类型。
 
 可选：
-+ 'item'
++ `'item'`
 
     数据项图形触发，主要在散点图，饼图等无类目轴的图表中使用。
 
-+ 'axis'
++ `'axis'`
 
     坐标轴触发，主要在柱状图，折线图等会使用类目轴的图表中使用。
 
@@ -32,11 +32,11 @@
 
 提示框触发的条件，可选：
 
-+ 'mousemove'
++ `'mousemove'`
 
     鼠标移动时触发。
 
-+ 'click'
++ `'click'`
 
     鼠标点击时触发。
 
@@ -62,7 +62,7 @@
 
 可选：
 
-+ Array
++ `Array`
 
     通过数组表示提示框浮层的位置，支持数字设置绝对位置，百分比设置相对位置。
 
@@ -75,23 +75,23 @@
     position: ['50%', '50%']
     ```
 
-+ 'inside'
++ `'inside'`
 
     鼠标所在图形的内部中心位置，只在 [trigger](~tooltip.trigger) 为`'item'`的时候有效。
 
-+ 'top'
++ `'top'`
 
     鼠标所在图形上侧，只在 [trigger](~tooltip.trigger) 为`'item'`的时候有效。
 
-+ 'left'
++ `'left'`
 
     鼠标所在图形左侧，只在 [trigger](~tooltip.trigger) 为`'item'`的时候有效。
 
-+ 'right'
++ `'right'`
 
     鼠标所在图形右侧，只在 [trigger](~tooltip.trigger) 为`'item'`的时候有效。
 
-+ 'bottom'
++ `'bottom'`
 
     鼠标所在图形底侧，只在 [trigger](~tooltip.trigger) 为`'item'`的时候有效。
 
@@ -186,11 +186,11 @@
 指示器类型。
 
 可选
-+ 'line' 直线指示器
++ `'line'` 直线指示器
 
-+ 'cross' 十字准星指示器
++ `'cross'` 十字准星指示器
 
-+ 'shadow' 阴影指示器
++ `'shadow'` 阴影指示器
 
 TODO 截图示例
 
