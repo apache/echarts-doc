@@ -1,2 +1,0 @@
-{{ target: partial-color-palette }}
-

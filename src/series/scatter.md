@@ -19,6 +19,9 @@
     geo=true
 )}}
 
+## hoverAnimation(boolean)
+是否开启鼠标 hover 的提示动画效果。
+
 {{ use:partial-symbol(
     seriesType="scatter",
     defaultSymbol="'circle'",

@@ -39,7 +39,7 @@
 
 
 ## stack(string) = null
-组合名称，双数值轴时无效，多组数据的堆积图时使用，eg：stack:'group1'，则series数组中stack值等于'group1'的数据做堆积计算
+数据堆叠，同个类目轴上系列配置相同的`stack`值可以堆叠放置。
 
 ## barWidth(number) = 自适应
 柱条的宽度，不设时自适应

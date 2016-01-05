@@ -12,6 +12,7 @@ etpl.addFilter('default', function (source, defaultVal) {
     return (source === '' || source == null) ? defaultVal : source;
 });
 
+var componentsHasType = ['visualMap', 'dataZoom', 'series'];
 glob('src/**/*.md', function (err, files) {
     var mdTpl = files.filter(function (fileName) {
         return fileName.indexOf('__') !== 0;
@@ -26,22 +27,30 @@ glob('src/**/*.md', function (err, files) {
     var schema = mdToJsonSchema(mdStr);
     // console.log(mdStr);
     var topLevel = schema.option.properties;
-    var newProperties = {};
-    for (var name in topLevel) {
-        if (name.indexOf('series.') >= 0) {
-            newProperties.series = newProperties.series || {
-                'type': 'Array',
-                'items': {
-                    'anyOf': []
+    componentsHasType.forEach(function (componentName) {
+        var newProperties = schema.option.properties = {};
+        for (var name in topLevel) {
+            if (name.indexOf(componentName) >= 0) {
+                newProperties[componentName] = newProperties[componentName] || {
+                    'type': 'Array',
+                    'items': {
+                        'anyOf': []
+                    }
+                };
+                // Use description in excatly #series
+                if (componentName === name) {
+                    newProperties[componentName].descriptionCN = topLevel[name].descriptionCN;
                 }
-            };
-            newProperties.series.items.anyOf.push(topLevel[name]);
+                else {
+                    newProperties[componentName].items.anyOf.push(topLevel[name]);
+                }
+            }
+            else {
+                newProperties[name] = topLevel[name];
+            }
         }
-        else {
-            newProperties[name] = topLevel[name];
-        }
-    }
-    schema.option.properties = newProperties;
+        topLevel = newProperties;
+    });
 
     console.log(JSON.stringify(schema, null, 2));
 });

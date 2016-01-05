@@ -3,7 +3,10 @@
 
 # series.funnel(Object)
 
-漏斗图。
+**漏斗图**
+
+**示例：**
+~[600x400](${galleryViewPath}funnel)
 
 ## type(string) = 'funnel'
 
