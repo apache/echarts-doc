@@ -7,8 +7,7 @@ ${name} 图形样式，有 `normal` 和 `emphasis` 两个状态，`normal` 是�
 
 ${name}图形的颜色。{{ if: ${useColorPalatte} }} 默认从全局调色盘 [option.color](~color) 获取颜色 {{/if}}
 
-> 颜色可以使用 RGB 表示，比如 `'rgb(128, 128, 128)'`，如果想要加上 alpha 通道，可以使用 RGBA，比如 `'rgba(128, 128, 128, 0.5)'`，也可以使用十六进制格式，比如 `'#ccc'`
-
+{{ use: partial-color-desc }}
 
 #${prefix} borderColor(string) = ${defaultBorderColor|default('"#000"')}
 

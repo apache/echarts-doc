@@ -33,7 +33,7 @@
 标志图形默认只有主轴显示（随主轴标签间隔隐藏策略），如需全部显示可把 showAllSymbol 设为 `true`。
 
 ## hoverAnimation(boolean) = true
-是否开启 hover 在拐点标志上的放大动画效果。
+是否开启 hover 在拐点标志上的提示动画效果。
 
 {{ use: partial-legend-hover-link }}
 

@@ -36,5 +36,26 @@
 {{import: series-parallel}}
 {{import: series-radar}}
 
+# color(Array)
+
+调色盘颜色列表。如果系列没有设置颜色，则会依次循环从该列表中取颜色作为系列颜色。
+
+默认为：
+```js
+['#c23531', '#314656', '#61a0a8', '#dd8668', '#91c7ae', '#6e7074', '#61a0a8', '#bda29a', '#44525d', '#c4ccd3']
+```
+
+# backgroundColor(string)
+背景色，默认无背景。
+
+{{ use: partial-color-desc() }}
+
+
+# textStyle(Object)
+全局的字体样式。
+{{ use: partial-text-style(
+    prefix: '#',
+    defaultFontSize: 12
+) }}
 
 {{import: partial-animation }}
