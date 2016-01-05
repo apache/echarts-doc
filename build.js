@@ -30,14 +30,20 @@ glob('src/**/*.md', function (err, files) {
     componentsHasType.forEach(function (componentName) {
         var newProperties = schema.option.properties = {};
         for (var name in topLevel) {
-            if (name.indexOf(componentName + '.') >= 0) {
+            if (name.indexOf(componentName) >= 0) {
                 newProperties[componentName] = newProperties[componentName] || {
                     'type': 'Array',
                     'items': {
                         'anyOf': []
                     }
                 };
-                newProperties[componentName].items.anyOf.push(topLevel[name]);
+                // Use description in excatly #series
+                if (componentName === name) {
+                    newProperties[componentName].descriptionCN = topLevel[name].descriptionCN;
+                }
+                else {
+                    newProperties[componentName].items.anyOf.push(topLevel[name]);
+                }
             }
             else {
                 newProperties[name] = topLevel[name];
