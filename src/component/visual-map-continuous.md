@@ -8,20 +8,23 @@
 （参考[视觉映射组件（visualMap）的介绍](~visualMap)）
 
 展现形式如下图：
-~[600x400](${galleryViewPath}doc-example/map-visualMap-continouse&edit=1&reset=1)
+~[600x400](${galleryViewPath}doc-example/map-visualMap-continuous&edit=1&reset=1)
 
 `visualMapContinuous`中，可以通过 [visualMap.calculable](~visualMap.calculable) 来开启或关闭『值域漫游』（即手柄拖拽改变值域的功能）。
 
 <br>
 <br>
 
+
 ## type(string) = continuous
 
 类型为连续型。
 
+
 ## min(number)
 
 指定 visualMapContinuous 组件的最小值。`min` 必须用户指定。
+
 
 ## max(number)
 
@@ -37,14 +40,61 @@
 
 ## realtime(boolean) = true
 
+拖拽时，是否实时更新。
+
+* 如果为`ture`则拖拽手柄过程中实时更新图表视图。
+* 如果为`false`则拖拽结束时，才更新视图。
+
+
+## inverse(boolean) = false
+
+是否反转。
+
+当`inverse`为`false`时，数据大小的位置规则，和直角坐标系相同，即：
+
+* 当 [visualMap.orient](~visualMap.orient) 为`vertical`时，数据上大下小。
+* 当 [visualMap.orient](~visualMap.orient) 为`horizontal`时，数据右大左小。
+
+当`inverse`为`true`时，相反。
+
+
+## precision(number) = 0
+
+数据展示的小数精度，默认为0，无小数点。
+
+
+## itemWidth(number) = 20
+
+图形的宽度，即长条的宽度。
+
+
+## itemHeight(number) = 140
+
+图形的高度，即长条的高度。
+
+
+## text(Array) = null
+
+两端的文本，如['High', 'Low']。[参见例子](${galleryEditorPath}doc-example/map-visualMap-continuous-text&edit=1&reset=1)。
+
+`text`中的顺序，其实试试就知道。若要看详细的规则，参见 [visualMap.inverse](~visualMap.inverse)。
+
+
 ## textGap(Array) = 10
+
+两端文字主体之间的距离，单位为px。参见 [visualMap-continuous.text](~visualMap-continuous.text)
+
 
 ## handlePosition(string) = 'auto'
 
-,     // 'auto', 'left', 'right', 'top', 'bottom'
+`handle`指『拖拽手柄』。`handlePosition`指定了手柄的位置。可选值：
 
-{{ use: component-visual-map-common(
-    itemWidth: 20,
-    itemHeight: 140
+* 'auto'：自动决定。
+* 'left' 或 'right'：当[visualMap-continuous.orient](~visualMap-continuous.orient) 为`horizontal`时，有效。
+* 'top' 或 'bottom'：当[visualMap-continuous.orient](~visualMap-continuous.orient) 为`vertical`时，有效。
+
+{{ use: partial-visual-map-common(
+    visualMapName: 'visualMap-continuous',
+    galleryEditorPath: ${galleryEditorPath}
 ) }}
 
