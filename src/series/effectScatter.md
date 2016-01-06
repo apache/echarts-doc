@@ -3,7 +3,7 @@
 
 # series.effectScatter(Object)
 
-带有涟漪特效动画的散点（气泡）图。
+带有涟漪特效动画的散点（气泡）图。利用动画特效可以将某些想要突出的数据进行视觉突出。
 
 **Tip:** ECharts 2.x 中在地图上通过 markPoint 实现地图特效在 ECharts 3 中建议通过地理坐标系上的 effectScatter 实现。
 

@@ -27,13 +27,13 @@
 {{import: series-treemap}}
 {{import: series-boxplot}}
 {{import: series-candlestick}}
-{{import: series-funnel}}
-{{import: series-gauge}}
-{{import: series-lines}}
-{{import: series-graph}}
 {{import: series-heatmap}}
 {{import: series-map}}
 {{import: series-parallel}}
+{{import: series-lines}}
+{{import: series-funnel}}
+{{import: series-gauge}}
+{{import: series-graph}}
 
 # color(Array)
 

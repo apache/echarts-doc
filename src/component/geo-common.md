@@ -41,7 +41,7 @@ $.get('map/json/china.json', function (chinaJson) {
 });
 ```
 
-{{ use: partial-rect-layout(prefix="#" + ${prefix}) }}
+ECharts 使用 [geoJSON](http://geojson.org/) 格式的数据作为地图的轮廓，除了上述数据，你也可以通过其它手段获取地图的 [geoJSON](http://geojson.org/) 数据注册到 ECharts 中。参见示例 [USA Population Estimates](${galleryViewPath}map-usa)
 
 #${prefix} roam(boolean) = false
 {{ use: partial-roam }}
@@ -80,9 +80,15 @@ $.get('map/json/china.json', function (chinaJson) {
 
 {{ use: partial-item-style-desc(name= '地图区域的多边形') }}
 
+
 ##${prefix} normal(Object)
 
 普通状态下的多边形样式。
+
+{{ if: ${inMap} }}
+###${prefix} areaColor(string) = '#eee'
+地图区域的颜色。
+{{ /if }}
 
 {{ use: partial-item-style(prefix=${prefix} + '##') }}
 
@@ -91,3 +97,5 @@ $.get('map/json/china.json', function (chinaJson) {
 高亮状态下的多边形样式。
 
 {{ use: partial-item-style(prefix=${prefix} + '##') }}
+
+{{ use: partial-rect-layout(prefix="#" + ${prefix}) }}

@@ -15,15 +15,15 @@
     coordSysDefault="'cartesian2d'",
     cartesian2d=true,
     polar=true,
-    geo=false,
-    enableCallback=true
+    geo=false
 ) }}
 
 {{ use:partial-symbol(
     seriesType="scatter",
     defaultSymbol="'circle'",
     defaultSymbolSize=4,
-    prefix="#"
+    prefix="#",
+    enableCallback=true
 ) }}
 
 ## showSymbol(boolean) = true
@@ -45,15 +45,15 @@
 ~[600x400](${galleryViewPath}doc-example/line-stack-tiled&edit=1&reset=1)
 
 ## label(Object)
-{{use:partial-label-desc}}
+{{use: partial-label-desc}}
 ### normal(Object)
-{{use:partial-label(
+{{use: partial-label(
     prefix="###",
     defaultPosition="'top'",
     formatter=true
 )}}
 ### emphasis(Object)
-{{use:partial-label(
+{{use: partial-label(
     prefix="###",
     formatter=true
 )}}
@@ -61,22 +61,22 @@
 ## itemStyle(Object)
 折线拐点标志的样式。
 ### normal(Object)
-{{use:partial-item-style(prefix="###",useColorPalatte=true)}}
+{{use: partial-item-style(prefix="###",useColorPalatte=true)}}
 ### emphasis(Object)
-{{use:partial-item-style(prefix="###")}}
+{{use: partial-item-style(prefix="###")}}
 
 ## lineStyle(Object)
 ### normal(Object)
 {{use:partial-line-style(prefix="###")}}
 ### emphasis(Object)
-{{use:partial-line-style(prefix="###")}}
+{{use: partial-line-style(prefix="###")}}
 
 ## areaStyle(Object)
 区域填充样式。
 ### normal(Object)
-{{use:partial-area-style(prefix="###")}}
+{{use: partial-area-style(prefix="###")}}
 ### emphasis(Object)
-{{use:partial-area-style(prefix="###")}}
+{{use: partial-area-style(prefix="###")}}
 
 ## smooth(false) = false
 是否平滑曲线显示。
@@ -100,19 +100,19 @@
 ### label(Object)
 单个拐点文本的样式设置。
 #### normal(Object)
-{{ use:partial-label(
+{{ use: partial-label(
     prefix="####",
     defaultPosition="top"
 ) }}
 #### emphasis(Object)
-{{ use:partial-label(prefix="####") }}
+{{ use: partial-label(prefix="####") }}
 
 ### itemStyle(Object)
 单个拐点标志的样式设置。
 #### normal(Object)
-{{use:partial-bar-item-style(prefix="####")}}
+{{use: partial-bar-item-style(prefix="####")}}
 #### emphasis(Object)
-{{use:partial-bar-item-style(prefix="####")}}
+{{use: partial-bar-item-style(prefix="####")}}
 
 
-{{use:partial-animation(prefix="#")}}
+{{use: partial-animation(prefix="#")}}
