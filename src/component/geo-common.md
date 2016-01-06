@@ -41,8 +41,6 @@ $.get('map/json/china.json', function (chinaJson) {
 });
 ```
 
-{{ use: partial-rect-layout(prefix="#" + ${prefix}) }}
-
 #${prefix} roam(boolean) = false
 {{ use: partial-roam }}
 
@@ -91,3 +89,5 @@ $.get('map/json/china.json', function (chinaJson) {
 高亮状态下的多边形样式。
 
 {{ use: partial-item-style(prefix=${prefix} + '##') }}
+
+{{ use: partial-rect-layout(prefix="#" + ${prefix}) }}

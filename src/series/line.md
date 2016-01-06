@@ -15,15 +15,15 @@
     coordSysDefault="'cartesian2d'",
     cartesian2d=true,
     polar=true,
-    geo=false,
-    enableCallback=true
+    geo=false
 ) }}
 
 {{ use:partial-symbol(
     seriesType="scatter",
     defaultSymbol="'circle'",
     defaultSymbolSize=4,
-    prefix="#"
+    prefix="#",
+    enableCallback=true
 ) }}
 
 ## showSymbol(boolean) = true
