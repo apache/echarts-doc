@@ -16,7 +16,7 @@
 
 ## show(boolean) = true
 
-是否显示 ${dataZoomName} 组件。如果设置为`false`，不会显示，但是数据过滤的功能还存在。
+是否显示 ${dataZoomName} 组件。如果设置为 `false`，不会显示，但是数据过滤的功能还存在。
 
 
 ## backgroundColor(color) = 'rgba(47,69,84,0)'
@@ -53,9 +53,9 @@
 
 显示的label的格式化器。
 
-* 如果为 `string`，表示模板，例如：`aaaa{value}bbbb`，其中`{value}`会被替换为实际的数值。
++ 如果为 `string`，表示模板，例如：`aaaa{value}bbbb`，其中`{value}`会被替换为实际的数值。
 
-* 如果为 `Function`，表示回调函数，例如：
++ 如果为 `Function`，表示回调函数，例如：
 
 ```javascript
 labelFormatter: function (value) {
@@ -89,9 +89,9 @@ labelFormatter: function (value) {
 ## textStyle
 
 {{ use:partial-text-style(
-    prefix: '##',
-    name: 'dataZoom ',
-    defaultColor: '#333'
+    prefix='##',
+    name='dataZoom ',
+    defaultColor='#333'
 ) }}
 
 
@@ -99,9 +99,11 @@ labelFormatter: function (value) {
 
 
 {{ use: partial-data-zoom-common(
-    dataZoomName: 'dataZoom-slider',
-    galleryEditorPath: ${galleryEditorPath},
-    galleryViewPath: ${galleryViewPath}
+    dataZoomName='dataZoom-slider',
+    galleryEditorPath=${galleryEditorPath},
+    galleryViewPath=${galleryViewPath}
 ) }}
 
-{{use: partial-rect-layout}}
+{{ use: partial-rect-layout(
+    componentName='dataZoom-slider'
+) }}

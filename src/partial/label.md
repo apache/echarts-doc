@@ -36,10 +36,10 @@ ${name}图形上的文本标签，课用于说明图形的一些数据信息，�
     position: ['50%', '50%']
     ```
 
-+ "top"
-+ "left"
-+ "right"
-+ "bottom"
++ 'top'
++ 'left'
++ 'right'
++ 'bottom'
 + 'inside'
 + 'insideLeft'
 + 'insideRight'

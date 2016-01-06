@@ -8,13 +8,13 @@
 
 所谓『内置』，即内置在坐标系中。
 
-* 平移：在坐标系中滑动拖拽进行数据区域平移。
++ 平移：在坐标系中滑动拖拽进行数据区域平移。
 
-* 缩放：
++ 缩放：
 
-    * PC端：鼠标在坐标系范围内滚轮滚动（MAC触控板类同）
+    + PC端：鼠标在坐标系范围内滚轮滚动（MAC触控板类同）
 
-    * 移动端：在移动端触屏上，支持两指滑动缩放。
+    + 移动端：在移动端触屏上，支持两指滑动缩放。
 
 
 <br>
@@ -25,8 +25,8 @@
 
 
 {{ use: partial-data-zoom-common(
-    dataZoomName: 'dataZoom-inside',
-    galleryEditorPath: ${galleryEditorPath},
-    galleryViewPath: ${galleryViewPath}
+    dataZoomName='dataZoom-inside',
+    galleryEditorPath=${galleryEditorPath},
+    galleryViewPath=${galleryViewPath}
 ) }}
 

@@ -1,19 +1,19 @@
 
 {{target: component-data-zoom}}
 
-# dataZoom(Object)
+# dataZoom(Array|Object)
 
 
-`dataZoomx`组件 用于对数据进行区域缩放，从而能自由关注细节的数据信息，或者概览数据整体。
+`dataZoomx` 组件 用于对数据进行区域缩放，从而能自由关注细节的数据信息，或者概览数据整体。
 
 
 现在支持几种子组件：
 
-* [内置型数据区域缩放组件（dataZoomInside）](~dataZoom-inside)：内置于坐标系中。
++ [内置型数据区域缩放组件（dataZoomInside）](~dataZoom-inside)：内置于坐标系中。
 
-* [滑动条型数据区域缩放组件（dataZoomSlider）](~dataZoom-slider)：有单独的滑动条操作。
++ [滑动条型数据区域缩放组件（dataZoomSlider）](~dataZoom-slider)：有单独的滑动条操作。
 
-* [框选型数据区域缩放组件（dataZoomSelect）](~toolbox.feature.dataZoom)：全屏的选框进行数据区域缩放。入口和配置项均在 `toolbox`中。
++ [框选型数据区域缩放组件（dataZoomSelect）](~toolbox.feature.dataZoom)：全屏的选框进行数据区域缩放。入口和配置项均在 `toolbox`中。
 
 
 如下例子：
@@ -23,21 +23,21 @@
 
 **使用注意：**
 
-* `dataZoom`主要是对`数轴（axis）`进行操作。
++ `dataZoom` 主要是对 `数轴（axis）` 进行操作。
 
     可以通过 [dataZoom.xAxisIndex](~dataZoom.xAxisIndex) 或 [dataZoom.yAxisIndex](~dataZoom.yAxisIndex) 或 [dataZoom.radiusAxisIndex](~dataZoom.radiusAxisIndex) 或 [dataZoom.angleAxisIndex](~dataZoom.angleAxisIndex) 来指定 `dataZoom` 控制哪个或哪些数轴。
 
-* `dataZoom`组件可 **同时存在多个**，起到共同控制的作用。控制同一个数轴的组件，会自动联动。
++ `dataZoom` 组件可 **同时存在多个**，起到共同控制的作用。控制同一个数轴的组件，会自动联动。
 
-* `dataZoom` 的运行原理是通过 `数据过滤` 来达到 `数据窗口缩放` 的效果。
++ `dataZoom` 的运行原理是通过 `数据过滤` 来达到 `数据窗口缩放` 的效果。
 
     数据过滤模式的设置不同，效果也不同，参见：[dataZoom.filterMode](~dataZoom.filterMode)。
 
-* `dataZoom` 的数据窗口范围的设置，目前支持两种形式：
++ `dataZoom` 的数据窗口范围的设置，目前支持两种形式：
 
-    * 百分比形式：参见 [dataZoom.start](~dataZoom.start) 和 [dataZoom.end](~dataZoom.end)。
+    + 百分比形式：参见 [dataZoom.start](~dataZoom.start) 和 [dataZoom.end](~dataZoom.end)。
 
-    * 绝对数值形式：参见 [dataZoom.startValue](~dataZoom.startValue) 和 [dataZoom.endValue](~dataZoom.endValue)。
+    + 绝对数值形式：参见 [dataZoom.startValue](~dataZoom.startValue) 和 [dataZoom.endValue](~dataZoom.endValue)。
 
 
 <br>
@@ -91,10 +91,10 @@ option: {
 
 设置 `${dataZoomName}` 组件控制的 `x轴`（即[xAxis](~xAxis)，是直角坐标系中的概念，参见 [grid](~grid)）。
 
-不指定时，当 [${dataZoomName}.orient](~${dataZoomName}.orient) 为 `horizontal`时，默认控制所有 `xAxis`。
+不指定时，当 [${dataZoomName}.orient](~${dataZoomName}.orient) 为 `'horizontal'`时，默认控制所有 `xAxis`。
 
 {{use: partial-data-zoom-axis-example(
-    axisName: 'xAxis'
+    axisName='xAxis'
 )}}
 
 
@@ -102,10 +102,10 @@ option: {
 
 设置 `${dataZoomName}` 组件控制的 `y轴`（即[yAxis](~yAxis)，是直角坐标系中的概念，参见 [grid](~grid)）。
 
-不指定时，当 [${dataZoomName}.orient](~${dataZoomName}.orient) 为 `vertical`时，默认控制所有 `yAxis`。
+不指定时，当 [${dataZoomName}.orient](~${dataZoomName}.orient) 为 `'vertical'`时，默认控制所有 `yAxis`。
 
 {{use: partial-data-zoom-axis-example(
-    axisName: 'yAxis'
+    axisName='yAxis'
 )}}
 
 
@@ -117,7 +117,7 @@ option: {
 不指定时，默认控制所有 `angleAxis`。
 
 {{use: partial-data-zoom-axis-example(
-    axisName: 'angleAxis'
+    axisName='angleAxis'
 )}}
 
 
@@ -128,7 +128,7 @@ option: {
 不指定时，默认控制所有 `radiusAxis`。
 
 {{use: partial-data-zoom-axis-example(
-    axisName: 'radiusAxis'
+    axisName='radiusAxis'
 )}}
 
 
@@ -140,16 +140,16 @@ option: {
 
 可选值为：
 
-* 'filter'
++ 'filter'
 
     数据窗口外的数据，被 **过滤掉**。这个配置项是最常用的。
 
-* 'empty'
++ 'empty'
 
     数据窗口外的数据，被 **设置为空**。
     与『过滤掉』的区别是，『设置为空』的数据当空数据展示，也就是说还会占有位置。
 
-如下面的例子，y轴 的 `filter` 被设置为 `empty`，x轴的 `filter`被设置为 'filter'。当进行对 y轴 进行dataZoom时，尺寸超出 y轴 窗口的柱形，会被『设置为空』，从而柱形在x轴还有占位，只是不显示出来。这样的效果，对于离群点（outlier）过滤功能，比较清晰。
+如下面的例子，y轴 的 `filter` 被设置为 `'empty'`，x轴的 `filter`被设置为 `'filter'`。当进行对 y轴 进行dataZoom时，尺寸超出 y轴 窗口的柱形，会被『设置为空』，从而柱形在x轴还有占位，只是不显示出来。这样的效果，对于离群点（outlier）过滤功能，比较清晰。
 
 ~[600x400](${galleryViewPath}doc-example/bar-dataZoom-filterMode&edit=1&reset=1)
 
@@ -188,9 +188,9 @@ option: {
 
 可选值为：
 
-* 'horizontal'：水平。
++ `'horizontal'`：水平。
 
-* 'vertical'：竖直。
++ `'vertical'`：竖直。
 
 
 ## throttle(number) = 100

@@ -170,24 +170,8 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 
 ##${prefix} formatter(string|Function) = null
 
-刻度标签的内容格式器，支持字符串模板和回调函数两种形式。
+{{use: axis-common-formatter-desc}}
 
-示例:
-```js
-// 使用字符串模板，模板变量为刻度默认标签 {value}
-formatter: '{value} kg'
-
-// 使用函数模板，函数参数分别为刻度数值（类目），刻度的索引
-formatter: function (value, index) {
-    // 格式化成月/日，只在第一个刻度显示年份
-    var date = new Date(value);
-    var texts = [(date.getMonth() + 1), date.getDate()];
-    if (idx === 0) {
-        texts.unshift(date.getYear());
-    }
-    return texts.join('/');
-}
-```
 ##${prefix} textStyle(Object)
 
 {{ use: partial-text-style(prefix='##' + ${prefix},
@@ -278,3 +262,27 @@ data: [{
 类目标签的文字样式。
 
 {{ use:partial-text-style(prefix='##' + ${prefix}) }}
+
+
+
+
+{{target: axis-common-formatter-desc}}
+
+刻度标签的内容格式器，支持字符串模板和回调函数两种形式。
+
+示例:
+```js
+// 使用字符串模板，模板变量为刻度默认标签 {value}
+formatter: '{value} kg'
+
+// 使用函数模板，函数参数分别为刻度数值（类目），刻度的索引
+formatter: function (value, index) {
+    // 格式化成月/日，只在第一个刻度显示年份
+    var date = new Date(value);
+    var texts = [(date.getMonth() + 1), date.getDate()];
+    if (idx === 0) {
+        texts.unshift(date.getYear());
+    }
+    return texts.join('/');
+}
+```

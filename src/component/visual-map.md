@@ -45,6 +45,7 @@ option = {
 <br>
 <br>
 
+
 {{import: component-visual-map-continuous}}
 {{import: component-visual-map-piecewise}}
 
@@ -106,25 +107,25 @@ controller: { // 表示 ${visualMapName} 本身的视觉样式，会覆盖共有
 
 **关于视觉类型**
 
-* ${rangeType} 中，可以有任意几个的『视觉类型』定义（如 `color`、`symbolSize` 等）。这些视觉类型，会被同时采用。
++ ${rangeType} 中，可以有任意几个的『视觉类型』定义（如 `color`、`symbolSize` 等）。这些视觉类型，会被同时采用。
 
-* 每个视觉类型的值，都以 `Array` 形式表示（只有在 [visualMap-piecewise.categories](~visualMap-piecewise.categories) 下会以 `Object` 形式表示，下面阐述）。如果写成 `number` 或 `string`，会转成 `Array`。
++ 每个视觉类型的值，都以 `Array` 形式表示（只有在 [visualMap-piecewise.categories](~visualMap-piecewise.categories) 下会以 `Object` 形式表示，下面阐述）。如果写成 `number` 或 `string`，会转成 `Array`。
 
-* `Array`的内容：
++ `Array` 的内容：
 
-    * 对于 `图形大小（symbolSize）`、`颜色透明度（colorAlpha）`、`颜色明暗度（colorLightness）`、`颜色饱和度（colorSaturation）`、`色调（colorHue）`：
+    + 对于 `图形大小（symbolSize）`、`颜色透明度（colorAlpha）`、`颜色明暗度（colorLightness）`、`颜色饱和度（colorSaturation）`、`色调（colorHue）`：
 
     `Array` 总是：`[最小数据值对应的视觉值, 最大数据值对应的视觉值]`。
 
     比如：colorLightness: [0.8, 0.2]，表示所有数据值中，`最小数据值` 映射到 `颜色明暗` 的 `0.8`，`最大数据值` 映射到 `颜色明暗` 的 `0.2`，中间其他数据值，按照线性计算出映射结果。
 
-    * 对于 `颜色（color）` 或 `图形类别（symbol）`：
+    + 对于 `颜色（color）` 或 `图形类别（symbol）`：
 
     `Array` 例如：`['color0', 'color1', 'color2', ...]` 或 `['circle', 'rect', 'diamond', ...]`。
 
     表示，最小数据值，映射到 `Array` 的第一项，最大数据值映射到 `Array` 的最后一项。其他值，按照线性计算得到结果。
 
-* 在 [visualMap-piecewise.categories](~visualMap-piecewise.categories) 模式下，视觉定义采用 `Object`。例如（[参见示例](${galleryEditorPath}doc-example/scatter-visualMap-categories&edit=1&reset=1)）：
++ 在 [visualMap-piecewise.categories](~visualMap-piecewise.categories) 模式下，视觉定义采用 `Object`。例如（[参见示例](${galleryEditorPath}doc-example/scatter-visualMap-categories&edit=1&reset=1)）：
 
 ```javascript
 ${rangeType}: {
@@ -144,7 +145,7 @@ ${rangeType}: {
 
 ## show(boolean) = true
 
-是否显示 ${visualMapName} 组件。如果设置为`false`，不会显示，但是数据映射的功能还存在。
+是否显示 ${visualMapName} 组件。如果设置为 `false`，不会显示，但是数据映射的功能还存在。
 
 
 ## dimension(string) = 0
@@ -161,8 +162,8 @@ ${rangeType}: {
 ]
 ```
 
-其中每个列是一个维度，即`dimension`。
-例如`dimension`为1时，取第二列，映射到视觉元素上。
+其中每个列是一个维度，即 `dimension`。
+例如 `dimension` 为1时，取第二列，映射到视觉元素上。
 
 
 ## seriesIndex(number) = 0
@@ -176,9 +177,9 @@ ${rangeType}: {
 {{use: partial-visual-map-visual-type}}
 
 {{use: partial-visual-map-range(
-    rangeType: 'inRange',
-    visualMapName: ${visualMapName},
-    galleryEditorPath: ${galleryEditorPath}
+    rangeType='inRange',
+    visualMapName=${visualMapName},
+    galleryEditorPath=${galleryEditorPath}
 )}}
 
 
@@ -188,9 +189,9 @@ ${rangeType}: {
 {{use: partial-visual-map-visual-type}}
 
 {{use: partial-visual-map-range(
-    rangeType: 'outOfRange',
-    visualMapName: ${visualMapName},
-    galleryEditorPath: ${galleryEditorPath}
+    rangeType='outOfRange',
+    visualMapName=${visualMapName},
+    galleryEditorPath=${galleryEditorPath}
 )}}
 
 
@@ -207,12 +208,12 @@ ${rangeType}: {
 
 ## orient(string) = 'vertical'
 
-水平（`horizontal`）或者竖直（`vertical`）。
+水平（`'horizontal'`）或者竖直（`'vertical'`）。
 
 
 ## padding(number|Array) = 5
 
-四周的边距。可以是`number`，如：5，或者是`Array`，如：[5,15,5,15]，类同css。
+{{ use: partial-padding(componentName=${visualMapName})}}
 
 
 ## backgroundColor(color) = 'rgba(0,0,0,0)'
@@ -234,8 +235,8 @@ ${rangeType}: {
 
 标签的格式化工具。
 
-* 如果为`string`，表示模板，例如：aaaa{value}bbbb{value2}。其中{value}和{value2}是当前的范围大小。
-* 如果为`Function`，表示回调函数，形如：
++ 如果为`string`，表示模板，例如：`aaaa{value}bbbb{value2}`。其中 `{value}` 和 `{value2}` 是当前的范围大小。
++ 如果为 `Function`，表示回调函数，形如：
 
 ```javascript
 formatter: function (value, value2) {
@@ -253,7 +254,7 @@ formatter: function (value, value2) {
 ## textStyle
 
 {{ use:partial-text-style(
-    prefix: '##',
-    name: 'visualMap ',
-    defaultColor: '#333'
+    prefix='##',
+    name='visualMap ',
+    defaultColor='#333'
 ) }}
