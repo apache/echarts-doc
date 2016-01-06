@@ -140,7 +140,12 @@
 {{ /if }}
 {{ if: ${formatter} }}
 #${prefix} formatter(string|Function)
-{{ use: partial-1d-data-label-formatter() }}
+{{ use: partial-1d-data-label-formatter(extra = {
+    percent: {
+        desc: '百分比',
+        type: 'number'
+    }
+}) }}
 {{ /if }}
 #${prefix} textStyle(Object)
 标签的字体样式。

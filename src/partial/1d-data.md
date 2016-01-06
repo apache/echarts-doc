@@ -17,12 +17,7 @@
     (params: Object|Array) => string
     ```
     参数 `params` 是 formatter 需要的单个数据集。格式如下：
-    {{ use: partial-formatter-params-structor(extra = {
-        percent: {
-            desc: '百分比',
-            type: 'number'
-        }
-    }) }}。
+    {{ use: partial-formatter-params-structure(extra = ${extra}) }}
 
 formatter 返回的字符串支持用 `\n` 换行。
 
@@ -32,8 +27,16 @@ formatter 返回的字符串支持用 `\n` 换行。
 
 系列中的数据内容数组。数组项可以为单个数值，如：
 ```js
-[12, 34, 56, ..., 10, 23]
+[12, 34, 56, 10, 23]
 ```
+
+如果需要在数据中加入其它维度给 [visualMap](~visualMap) 组件用来映射到颜色等其它图形属性。每个数据项也可以是数组，如：
+```js
+[[12, 14], [34, 50], [56, 30], [10, 15], [23, 10]]
+```
+
+这时候可以将每项数组中的第二个值指定给 [visualMap](~visualMap) 组件。
+
 
 更多时候我们需要指定每个数据项的名称，这时候需要每个项为一个对象：
 ```js

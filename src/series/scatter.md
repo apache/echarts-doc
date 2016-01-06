@@ -65,7 +65,7 @@
 
 ## data(Array)
 
-{{ use: partial-list-data-desc(
+{{ use: partial-2d-data-desc(
     galleryEditorPath = ${galleryEditorPath}
 ) }}
 
@@ -76,8 +76,6 @@
 数据项值。
 
 {{ use:partial-symbol(
-    defaultSymbol="'circle'",
-    defaultSymbolSize=4,
     prefix="##",
     name="单个数据"
 ) }}
