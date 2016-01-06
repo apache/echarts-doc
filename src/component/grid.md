@@ -17,9 +17,9 @@
 
 {{ use: partial-rect-layout-width-height(
     componentName="grid ",
-    defaultLeft='10%',
+    defaultLeft="'10%'",
     defaultTop=60,
-    defaultRight='10%',
+    defaultRight="'10%'",
     defaultBottom=60
 ) }}
 

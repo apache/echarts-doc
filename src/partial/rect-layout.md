@@ -1,6 +1,9 @@
 {{target: partial-rect-layout}}
 
-{{use: partial-z-zlevel}}
+{{ use: partial-z-zlevel(
+    defaultZLevel=${defaultZLevel},
+    defaultZ=${defaultZ}
+) }}
 
 ## left(string|number) = ${defaultLeft|default("'auto'")}
 
