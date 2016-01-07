@@ -53,7 +53,7 @@ box 的宽度的上下限。数组的意思是：`[min, max]`。
 
 ## itemStyle(Object)
 
-单个 box 的样式设置。
+{{use:partial-item-style-desc(name="boxplot")}}
 
 
 ### normal(Object)
@@ -73,6 +73,7 @@ box 的宽度的上下限。数组的意思是：`[min, max]`。
     prefix="###",
     useColorPalatte=true,
     name="boxplot",
+    defaultColor="#fff",
     defaultBorderWidth=2,
     defaultShadowBlur=5,
     defaultShadowOffsetX=2,

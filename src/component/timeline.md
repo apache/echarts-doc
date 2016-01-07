@@ -273,7 +273,8 @@ myChart.setOption(
 {{ use:partial-item-style(
     prefix="###",
     name="timeline ",
-    defaultColor="'#c23531'"
+    defaultColor="'#c23531'",
+    defaultBorderWidth=1
 ) }}
 
 
