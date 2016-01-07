@@ -3,9 +3,31 @@
 
 # series.treemap(Object)
 
+[Treemap](https://en.wikipedia.org/wiki/Treemapping) 是一种常见的表达『层级数据』『树状数据』的可视化形式。它主要用面积的方式，便于突出展现出『树』的各层级中重要的节点。
+
+**示例：**
+
+~[700x580](${galleryViewPath}treemap-obama&edit=1&reset=1)
+
+<br>
+注：treemap 的配置项 和 ECharts2 相比有一些变化，一些不太成熟的配置方式不再支持或不再兼容：
+
++ `center/size` 方式的定位不再支持，而是统一使用 `left/top/bottom/right/width/height` 方式定位。
+
++ `breadcrumb` 的配置被移动到了 `itemStyle.normal/itemStyle.emphasis` 外部，和 `itemStyle` 平级。
+
++ `root` 的设置暂时不支持。目前可以使用 `zoom` 的方式来查看树更下层次的细节。
+
++ `label` 的配置被移动到了 `itemStyle.normal/itemStyle.emphasis` 外部，和 `itemStyle` 平级。
+
++ `itemStyle.normal.childBorderWidth`、`itemStyle.normal.childBorderColor`不再支持（因为这个配置方式只能定义两层的treemap）。统一使用 [treemap.levels](~treemap.levels) 来进行各层级的定义。
+
+<br>
+<br>
+
 ## type(string) = 'treemap'
 
-{{use: series-common}}
+
 
 ## label(Object)
 {{use:partial-label-desc}}
@@ -25,9 +47,6 @@
 ### emphasis(Object)
 {{use:partial-item-style(prefix="###")}}
 
-
-## clickable(boolean)
-是否支持点击
 
 ## roam(boolean)
 是否开启拖拽漫游，默认为false（关闭），其他有效输入为true（开启）
