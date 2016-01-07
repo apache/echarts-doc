@@ -104,3 +104,19 @@
 #### emphasis(Object)
 {{use:partial-item-style(prefix="####")}}
 
+
+{{use: partial-mark-point(
+    prefix="#",
+    seriesType="effectScatter",
+    hasCoord=true,
+    hasType=true
+)}}prefix
+{{use: partial-mark-line(
+    prefix="#",
+    seriesType="effectScatter",
+    hasCoord=true,
+    hasType=true
+)}}
+
+{{use: partial-animation(prefix="#")}}
+

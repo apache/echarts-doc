@@ -122,4 +122,13 @@ ${name}的坐标，可以是[直角坐标系](~grid)上的`[x, y]`，[地理坐�
 #${prefix} formatter(string|Function)
 {{ use: partial-1d-data-label-formatter }}
 
+{{use: partial-mark-point(
+    prefix="#",
+    seriesType="lines"
+)}}
+{{use: partial-mark-line(
+    prefix="#",
+    seriesType="lines"
+)}}
+
 {{use: partial-animation(prefix="#")}}

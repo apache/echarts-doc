@@ -111,6 +111,15 @@
 #### emphasis(Object)
 {{use:partial-item-style(prefix="####")}}
 
+{{use: partial-mark-point(
+    prefix="#",
+    seriesType="funnel"
+)}}
+{{use: partial-mark-line(
+    prefix="#",
+    seriesType="funnel"
+)}}
+
 {{use:partial-animation(prefix="#")}}
 
 
