@@ -264,7 +264,7 @@ myChart.setOption(
     prefix="###",
     name="timeline ",
     defaultColor="'#304654'",
-    defaultBordereWidth=1
+    defaultBorderWidth=1
 ) }}
 
 

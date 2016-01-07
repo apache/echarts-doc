@@ -19,11 +19,11 @@ itemStyle: {
 阴影颜色。支持的格式同`color`。
 
 
-#${prefix} shadowOffsetX(number) = 0
+#${prefix} shadowOffsetX(number) = ${defaultShadowOffsetX|default(0)}
 
 阴影水平方向上的偏移距离。
 
-#${prefix} shadowOffsetY(number) = 0
+#${prefix} shadowOffsetY(number) = ${defaultShadowOffsetY|default(0)}
 
 阴影垂直方向上的偏移距离。
 
@@ -43,11 +43,15 @@ itemStyle: {
     prefix=${prefix},
     defaultOpacity=${defaultOpacity},
     defaultShadowColor=${defaultShadowColor},
-    defaultShadowBlur=${defaultShadowBlur}
+    defaultShadowBlur=${defaultShadowBlur},
+    defaultShadowOffsetX=${defaultShadowOffsetX},
+    defaultShadowOffsetY=${defaultShadowOffsetY}
 )}}
 {{use: partial-style-opacity(
     prefix=${prefix},
     defaultOpacity=${defaultOpacity},
     defaultShadowColor=${defaultShadowColor},
-    defaultShadowBlur=${defaultShadowBlur}
+    defaultShadowBlur=${defaultShadowBlur},
+    defaultShadowOffsetX=${defaultShadowOffsetX},
+    defaultShadowOffsetY=${defaultShadowOffsetY}
 )}}

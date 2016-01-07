@@ -22,7 +22,7 @@ ${name}图形的颜色。{{ if: ${useColorPalatte} }} 默认从全局调色盘 [
 ${name}图形的描边颜色。支持的格式同`color`。
 
 
-#${prefix} borderWidth(number) = ${defaultBordereWidth|default(0)}
+#${prefix} borderWidth(number) = ${defaultBorderWidth|default(0)}
 
 ${name}描边线宽。为 0 时无描边。
 
@@ -30,5 +30,7 @@ ${name}描边线宽。为 0 时无描边。
     prefix=${prefix},
     defaultOpacity=${defaultOpacity},
     defaultShadowBlur=${defaultShadowBlur},
-    defaultShadowColor=${defaultShadowColor}
+    defaultShadowColor=${defaultShadowColor},
+    defaultShadowOffsetX=${defaultShadowOffsetX},
+    defaultShadowOffsetY=${defaultShadowOffsetY}
 ) }}

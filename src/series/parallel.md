@@ -56,7 +56,7 @@
 
 
 
-{{use: partial-animation(
+{{use: partial-animation-init(
     prefix="#",
     defaultAnimationEasing='linear'
 )}}
