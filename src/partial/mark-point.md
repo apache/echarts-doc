@@ -34,7 +34,7 @@
 {{use:partial-item-style(prefix="###" + ${prefix})}}
 
 ##${prefix} data(Array)
-标注的数据数组。每个数组项是一个对象，有下面三种方式指定标注的位置。
+标注的数据数组。每个数组项是一个对象，有下面几种方式指定标注的位置。
 1. 通过 [x](~series-${seriesType}.markPoint.data.x), [y](~series-${seriesType}.markPoint.data.y) 属性指定相对容器的屏幕坐标，单位像素。
 {{ if: ${hasCoord} }}
 2. 用 [coord](~series-${seriesType}.markPoint.data.coord) 属性指定数据在相应坐标系上的坐标位置。

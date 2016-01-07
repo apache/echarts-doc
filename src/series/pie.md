@@ -118,6 +118,15 @@
 #### emphasis(Object)
 {{use:partial-item-style(prefix="####")}}
 
+{{use: partial-mark-point(
+    prefix="#",
+    seriesType="pie"
+)}}
+{{use: partial-mark-line(
+    prefix="#",
+    seriesType="pie"
+)}}
+
 {{use:partial-animation(prefix="#")}}
 
 

@@ -164,4 +164,13 @@ formatter: function (value) {
 #### color(Color) = 'auto'
 文本颜色，默认取数值所在的[区间的颜色](~series-gauge.axisLine.lineStyle.color)
 
+{{use: partial-mark-point(
+    prefix="#",
+    seriesType="gauge"
+)}}
+{{use: partial-mark-line(
+    prefix="#",
+    seriesType="gauge"
+)}}
 
+{{use:partial-animation(prefix="#")}}

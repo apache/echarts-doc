@@ -89,6 +89,19 @@
 #### emphasis(Object)
 {{use:partial-bar-item-style(prefix="####")}}
 
+{{use: partial-mark-point(
+    prefix="#",
+    seriesType="bar",
+    hasCoord=true,
+    hasType=true
+)}}prefix
+{{use: partial-mark-line(
+    prefix="#",
+    seriesType="bar",
+    hasCoord=true,
+    hasType=true
+)}}
+
 {{use:partial-animation(prefix="#")}}
 
 

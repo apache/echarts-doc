@@ -83,13 +83,6 @@ box 的宽度的上下限。数组的意思是：`[min, max]`。
 
 
 
-{{use: partial-animation-init(
-    prefix="#",
-    defaultAnimationEasing='elasticOut',
-    defaultAnimationDuration=800
-)}}
-
-
 ## data(Array)
 
 数据格式是如下的二维数组。
@@ -116,3 +109,20 @@ ECharts 并不内置对原始数据的处理，输入给 `boxplot` 的数据须�
 
 但是 ECharts 也额外提供了简单的 [原始数据处理函数](https://github.com/ecomfe/echarts/tree/dev-3.0.0/extension/dataTool)，如这个 [例子](${galleryEditorPath}boxplot-light-velocity&edit=1&reset=1) 使用了`echarts.dataTool.prepareBoxplotData` 来进行简单的数据统计。
 
+
+{{use: partial-mark-point(
+    prefix="#",
+    seriesType="scatter",
+    hasCoord=true
+)}}
+{{use: partial-mark-line(
+    prefix="#",
+    seriesType="scatter",
+    hasCoord=true
+)}}
+
+{{use: partial-animation-init(
+    prefix="#",
+    defaultAnimationEasing='elasticOut',
+    defaultAnimationDuration=800
+)}}

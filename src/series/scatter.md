@@ -24,6 +24,8 @@
 ## hoverAnimation(boolean)
 是否开启鼠标 hover 的提示动画效果。
 
+{{ use: partial-legend-hover-link }}
+
 {{ use:partial-symbol(
     seriesType="scatter",
     defaultSymbol="'circle'",
@@ -102,4 +104,18 @@
 {{use:partial-item-style(prefix="####")}}
 #### emphasis(Object)
 {{use:partial-item-style(prefix="####")}}
+
+{{use: partial-mark-point(
+    prefix="#",
+    seriesType="scatter",
+    hasCoord=true,
+    hasType=true
+)}}
+{{use: partial-mark-line(
+    prefix="#",
+    seriesType="scatter",
+    hasCoord=true,
+    hasType=true
+)}}
+{{use: partial-animation(prefix="#")}}
 

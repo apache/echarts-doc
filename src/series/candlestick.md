@@ -91,6 +91,17 @@
 
 
 
+{{use: partial-mark-point(
+    prefix="#",
+    seriesType="scatter",
+    hasCoord=true
+)}}
+{{use: partial-mark-line(
+    prefix="#",
+    seriesType="scatter",
+    hasCoord=true
+)}}
+
 {{use: partial-animation-init(
     prefix="#",
     defaultAnimationEasing='linear',

@@ -56,12 +56,12 @@
 
 
 
-{{use: partial-animation-init(
-    prefix="#",
-    defaultAnimationEasing='linear'
-)}}
-
-
 ## data(Array)
 
 {{use: partial-parallel-data-example}}
+
+
+{{use: partial-animation(
+    prefix="#",
+    defaultAnimationEasing='linear'
+)}}
