@@ -42,7 +42,7 @@
 3. 直接用 [type](~series-${seriesType}.markPoint.data.type) 属性标注系列中的最大值，最小值。这时候可以使用 [valueIndex](~series-${seriesType}.markPoint.data.valueIndex) 指定是在哪个维度上的最大值，最小值。
 {{ /if }}
 
-当多个属性同时存在事，优先级按上述的顺序。
+当多个属性同时存在时，优先级按上述的顺序。
 
 **示例：**
 ```js
@@ -86,6 +86,27 @@ data: [{{if: ${hasType} }}{
 
 ###${prefix} value(number)
 标注值，可以不设。
+
+{{ use:partial-symbol(
+    prefix="##" + ${prefix}
+) }}
+
+###${prefix} itemStyle(Object)
+该标注的样式。
+####${prefix} normal(Object)
+{{ use: partial-item-style(prefix="####" + ${prefix}) }}
+####${prefix} emphasis(Object)
+{{ use: partial-item-style(prefix="####" + ${prefix}) }}
+
+###${prefix} label(Object)
+####${prefix} normal(Object)
+{{ use: partial-label(
+    prefix=${prefix} + '####'
+) }}
+####${prefix} emphasis(Object)
+{{ use: partial-label(
+    prefix=${prefix} + '####'
+) }}
 
 
 {{ use: partial-animation(

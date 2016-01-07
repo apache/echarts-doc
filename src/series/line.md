@@ -125,6 +125,12 @@
     seriesType="line",
     hasCoord=true,
     hasType=true
+)}}prefix
+{{use: partial-mark-line(
+    prefix="#",
+    seriesType="line",
+    hasCoord=true,
+    hasType=true
 )}}
 
 {{use: partial-animation(

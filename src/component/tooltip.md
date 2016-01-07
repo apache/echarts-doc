@@ -142,6 +142,8 @@
     }) }}
     在 [trigger](~tooltip.trigger) 为 `'axis'` 的时候 `params` 是多个系列的数据数组。
 
+    **注：** ECharts 2.x 使用数组表示各参数的方式不再支持。
+
     第二个参数 `ticket` 是异步回调标识，配合第三个参数 `callback` 使用。
     第三个参数 `callback` 是异步回调，在提示框浮层内容是异步获取的时候，可以通过 callback 传入上述的 `ticket` 和 `html` 更新提示框浮层内容。
 
