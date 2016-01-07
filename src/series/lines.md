@@ -43,7 +43,7 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 ### symbolSize(Array|number) = 3
 特效标记的大小，可以设置成诸如 `10` 这样单一的数字，也可以用数组分开表示高和宽，例如 `[20, 10]` 表示标记宽为`20`，高为`10`。
 
-### color(string)
+### color(Color)
 特效标记的颜色，默认取 [lineStyle.normal.color](~series-lines.lineStyle.normal.color)。
 
 ### trailLength(number) = 0.2

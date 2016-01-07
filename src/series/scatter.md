@@ -27,7 +27,7 @@
     defaultSymbol="'circle'",
     defaultSymbolSize=10,
     prefix="#",
-    enableCallback=true
+    hasCallback=true
 ) }}
 
 ## large(boolean) = true

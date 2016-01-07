@@ -62,7 +62,8 @@
     prefix='#',
     defaultSymbol="'circle'",
     defaultSymbolSize=10,
-    name='关系图节点'
+    name='关系图节点',
+    hasCallback=true
 ) }}
 
 ## itemStyle(Object)

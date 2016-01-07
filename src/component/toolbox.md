@@ -71,7 +71,7 @@ Icon 的 path 字符串，ECharts 3 中支持使用自定义的 svg path 作为 
 保存为图片。
 #### type(string) = 'png'
 保存的图片格式。支持 `'png'` 和 `'jpeg'`。
-#### backgroundColor(string) = 'auto'
+#### backgroundColor(Color) = 'auto'
 保存的图片背景色，默认使用 [option.backgroundColor](~backgroundColor)，如果`backgroundColor`不存在的话会取白色。
 #### excludeComponents(Array) = ['toolbox']
 保存为图片时忽略的组件列表，默认忽略工具栏。

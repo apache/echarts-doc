@@ -7,7 +7,7 @@
     defaultSymbol="'pin'",
     defaultSymbolSize=50,
     prefix="#" + ${prefix},
-    enableCallback=true
+    hasCallback=true
 ) }}
 
 ##${prefix} label(Object)

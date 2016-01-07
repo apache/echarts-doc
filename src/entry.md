@@ -44,7 +44,7 @@
 ['#c23531', '#314656', '#61a0a8', '#dd8668', '#91c7ae', '#6e7074', '#61a0a8', '#bda29a', '#44525d', '#c4ccd3']
 ```
 
-# backgroundColor(string)
+# backgroundColor(Color)
 背景色，默认无背景。
 
 {{ use: partial-color-desc() }}

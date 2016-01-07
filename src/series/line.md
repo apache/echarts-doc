@@ -23,7 +23,7 @@
     defaultSymbol="'circle'",
     defaultSymbolSize=4,
     prefix="#",
-    enableCallback=true
+    hasCallback=true
 ) }}
 
 ## showSymbol(boolean) = true

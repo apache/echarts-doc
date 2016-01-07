@@ -91,11 +91,11 @@
 
 {{ target:partial-bar-item-style }}
 
-#${prefix} color(string) = 自适应
+#${prefix} color(Color) = 自适应
 
 柱条的颜色。{{ if: ${useColorPalatte} }} 默认从全局调色盘 [option.color](~color) 获取颜色 {{/if}}
 
-#${prefix} barBorderColor(string) = '#000'
+#${prefix} barBorderColor(Color) = '#000'
 
 柱条的描边颜色。
 

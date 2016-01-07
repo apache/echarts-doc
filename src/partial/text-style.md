@@ -1,6 +1,6 @@
 {{target:partial-text-style}}
 
-#${prefix} color(string)=${defaultColor|default('"#fff"')}
+#${prefix} color(Color)=${defaultColor|default('"#fff"')}
 
 ${name}文字的颜色。
 

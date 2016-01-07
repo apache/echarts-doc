@@ -86,7 +86,7 @@ ECharts 使用 [geoJSON](http://geojson.org/) 格式的数据作为地图的轮�
 普通状态下的多边形样式。
 
 {{ if: ${inMap} }}
-###${prefix} areaColor(string) = '#eee'
+###${prefix} areaColor(Color) = '#eee'
 地图区域的颜色。
 {{ /if }}
 
