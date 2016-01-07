@@ -15,6 +15,9 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 
 ## type(string) = 'lines'
 
+{{ use: partial-series-name() }}
+
+
 {{ use: partial-coord-sys(
     seriesType="lines",
     coordSysDefault="'geo'",
@@ -54,7 +57,8 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 {{ use: partial-line-style(
     prefix= '###',
     useColorPalatte=true,
-    defaultOpacity=0.5
+    defaultOpacity=0.5,
+    hasCallback=true
 ) }}
 ### emphasis(Object)
 {{ use: partial-line-style(

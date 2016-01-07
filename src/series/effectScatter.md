@@ -12,8 +12,9 @@
 
 ## type(string) = 'effectScatter'
 
-## legendHoverLink(boolean) = true
-是否启用[图例](~legend) hover时的联动高亮。
+{{ use: partial-series-name() }}
+
+{{ use: partial-legend-hover-link() }}
 
 ## effectType(string) = 'ripple'
 特效类型，目前只支持涟漪特效`'ripple'`。
@@ -65,7 +66,11 @@
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
 ### normal(Object)
-{{use:partial-item-style(prefix="###", useColorPalatte=true)}}
+{{use:partial-item-style(
+    prefix="###",
+    useColorPalatte=true,
+    hasCallback=true
+)}}
 ### emphasis(Object)
 {{use:partial-item-style(prefix="###")}}
 

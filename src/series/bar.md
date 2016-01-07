@@ -8,6 +8,10 @@
 
 ## type(string) = 'bar'
 
+{{ use: partial-series-name() }}
+
+{{ use: partial-legend-hover-link() }}
+
 {{ use: partial-coord-sys(
     seriesType="bar",
     coordSysDefault="'cartesian2d'",
@@ -33,7 +37,11 @@
 ## itemStyle(Object)
 {{use:partial-bar-item-style-desc}}
 ### normal(Object)
-{{use:partial-bar-item-style(prefix="###", useColorPalatte=true)}}
+{{use:partial-bar-item-style(
+    prefix="###",
+    useColorPalatte=true,
+    hasCallback=true
+)}}
 ### emphasis(Object)
 {{use:partial-bar-item-style(prefix="###")}}
 
@@ -47,11 +55,8 @@
 ## barMaxWidth(number) = 自适应
 柱条的最大宽度，不设时自适应
 
-## legendHoverLink(boolean) = true
-是否启用图例（legend）hover时的联动响应（高亮显示）
-
 ## barMinHeight(number) = 0
-柱条最小高度，可用于防止某数据项的值过小而影响交互
+柱条最小高度，可用于防止某数据项的值过小而影响交互。
 
 ## barGap(string) = '30%'
 柱间距离，默认为柱形宽度的30%，可设固定值

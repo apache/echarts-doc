@@ -17,6 +17,8 @@
 
 ## type(string) = 'map'
 
+{{ use: partial-series-name() }}
+
 {{ use: geo-common(
     prefix='#',
     inMap=true

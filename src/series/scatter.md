@@ -11,6 +11,8 @@
 
 ## type(string) = 'scatter'
 
+{{ use: partial-series-name() }}
+
 {{use: partial-coord-sys(
     seriesType="bar",
     coordSysDefault="'cartesian2d'",
@@ -58,7 +60,11 @@
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
 ### normal(Object)
-{{use:partial-item-style(prefix="###", useColorPalatte=true)}}
+{{use:partial-item-style(
+    prefix="###",
+    useColorPalatte=true,
+    hasCallback=true
+)}}
 ### emphasis(Object)
 {{use:partial-item-style(prefix="###")}}
 

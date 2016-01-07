@@ -13,6 +13,8 @@
 
 ## type(string) = 'graph'
 
+{{ use: partial-series-name() }}
+
 {{ use: partial-legend-hover-link() }}
 
 ## hoverAnimation(boolean)
@@ -69,7 +71,11 @@
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
 ### normal(Object)
-{{use:partial-item-style(prefix="###", useColorPalatte=true)}}
+{{use:partial-item-style(
+    prefix="###",
+    useColorPalatte=true,
+    hasCallback=true
+)}}
 ### emphasis(Object)
 {{use:partial-item-style(prefix="###")}}
 
