@@ -3,6 +3,13 @@
 #${prefix} markLine
 图表标线。
 
+##${prefix} symbol(string|Array)
+标线两端的标记类型，可以是一个数组分别指定两端，也可以是单个统一指定，具体格式见 (~series-${seriesType}.markLine.data.0.symbol)。
+##${prefix} symbolSize(number|Array)
+标线两端的标记大小，可以是一个数组分别指定两端，也可以是单个统一指定。
+
+**注意：** 这里无法像一般的 symbolSize 那样通过数组分别指定高宽。
+
 ##${prefix} label(Object)
 标线文本。
 ###${prefix} normal(Object)
@@ -29,11 +36,11 @@
 
 ##${prefix} data
 标线的数据数组。每个数组项可以是一个两个值的数组，分别表示线的起点和终点，每一项是一个对象，有下面两种方式指定起点或终点的位置。
-1. 通过 [x](~series-${seriesType}.markPoint.data.x), [y](~series-${seriesType}.markPoint.data.y) 属性指定相对容器的屏幕坐标，单位像素。
+1. 通过 [x](~series-${seriesType}.markLine.data.0.x), [y](~series-${seriesType}.markLine.data.0.y) 属性指定相对容器的屏幕坐标，单位像素。
 {{ if: ${hasCoord} }}
-2. 用 [coord](~series-${seriesType}.markPoint.data.coord) 属性指定数据在相应坐标系上的坐标位置。
+2. 用 [coord](~series-${seriesType}.markLine.data.0.coord) 属性指定数据在相应坐标系上的坐标位置。
 {{ /if }}{{ if: ${hasType} }}
-3. 直接用 [type](~series-${seriesType}.markPoint.data.type) 属性标注系列中的最大值，最小值。这时候可以使用 [valueIndex](~series-${seriesType}.markPoint.data.valueIndex) 指定是在哪个维度上的最大值，最小值。
+3. 直接用 [type](~series-${seriesType}.markLine.data.0.type) 属性标注系列中的最大值，最小值。这时候可以使用 [valueIndex](~series-${seriesType}.markLine.data.0.valueIndex) 指定是在哪个维度上的最大值，最小值。
 {{ /if }}
 当多个属性同时存在时，优先级按上述的顺序。
 
@@ -77,7 +84,8 @@ data: [
     name="起点",
     prefix="###"+${prefix},
     hasCoord=${hasCoord},
-    hasType=${hasType}
+    hasType=${hasType},
+    index=0
 ) }}
 
 ###${prefix} 1(Object)
@@ -86,7 +94,8 @@ data: [
     name="终点",
     prefix="###"+${prefix},
     hasCoord=${hasCoord},
-    hasType=${hasType}
+    hasType=${hasType},
+    index=1
 ) }}
 
 {{ use: partial-animation(
@@ -133,6 +142,11 @@ data: [
 
 #${prefix} value(number)
 标注值，可以不设。
+
+{{ use:partial-symbol(
+    prefix=${prefix},
+    name=${index} === 0 ? '起点' : '终点'
+) }}
 
 #${prefix} lineStyle(Object)
 该数据项线的样式，起点和终点项的`lineStyle`会合并到一起。

@@ -87,6 +87,10 @@ data: [{{if: ${hasType} }}{
 ###${prefix} value(number)
 标注值，可以不设。
 
+{{ use:partial-symbol(
+    prefix="##" + ${prefix}
+) }}
+
 ###${prefix} itemStyle(Object)
 该标注的样式。
 ####${prefix} normal(Object)
