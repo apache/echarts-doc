@@ -39,5 +39,15 @@ itemStyle: {
 
 {{target:partial-style-shadow-opacity}}
 
-{{use: partial-style-shadow(prefix=${prefix})}}
-{{use: partial-style-opacity(prefix=${prefix})}}
+{{use: partial-style-shadow(
+    prefix=${prefix},
+    defaultOpacity=${defaultOpacity},
+    defaultShadowColor=${defaultShadowColor},
+    defaultShadowBlur=${defaultShadowBlur}
+)}}
+{{use: partial-style-opacity(
+    prefix=${prefix},
+    defaultOpacity=${defaultOpacity},
+    defaultShadowColor=${defaultShadowColor},
+    defaultShadowBlur=${defaultShadowBlur}
+)}}

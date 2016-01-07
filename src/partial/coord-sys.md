@@ -25,6 +25,12 @@
     使用地理坐标系，通过 [geoIndex](~series-${seriesType}.geoIndex) 指定相应的地理坐标系组件
 {{/if}}
 
+{{if: ${parallel} }}
+
++ `'parallel'`
+
+    使用平行坐标系，通过 [parallelIndex](~series-${seriesType}.parallelIndex) 指定相应的平行坐标系组件
+{{/if}}
 
 
 {{if: ${cartesian2d} }}
@@ -52,5 +58,14 @@
 ## geoIndex(number) = 0
 
 使用的[地理坐标系](~geo)的 index，在单个图表实例中存在多个地理坐标系的时候有用。
+
+{{/if}}
+
+
+
+{{if: ${parallel} }}
+## parallelIndex(number) = 0
+
+使用的[平行坐标系](~parallel)的 index，在单个图表实例中存在多个平行坐标系的时候有用。
 
 {{/if}}

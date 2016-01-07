@@ -30,7 +30,13 @@
 
 ## parallelAxisDefault(Object)
 
+{{use: partial-parallel-axis-default}}
+
+[参见示例](${galleryEditorPath}doc-example/parallel-all&edit=1&reset=1)
+
+<br>
+
 {{ use: axis-common(
-    prefix='#',
+    prefix='##',
     componentType='parallelAxis'
 ) }}

@@ -2,19 +2,9 @@
 
 **平行坐标系介绍**
 
-[平行坐标系（Parallel Coordinates）](https://en.wikipedia.org/wiki/Parallel_coordinates) 是一种常用的可视化高维数据的图表。例如有如下数据：
+[平行坐标系（Parallel Coordinates）](https://en.wikipedia.org/wiki/Parallel_coordinates) 是一种常用的可视化高维数据的图表。
 
-```javascript
-[
-    [1,  55,  9,   56,  0.46,  18,  6,  '良'],
-    [2,  25,  11,  21,  0.65,  34,  9,  '优'],
-    [3,  56,  7,   63,  0.3,   14,  5,  '良'],
-    [4,  33,  7,   29,  0.33,  16,  6,  '优'],
-    [5,  42,  24,  44,  0.76,  40,  16, '优'],
-    ...
-]
-```
-数据中，每一行是一个『数据项』，每一列属于一个『维度』。（例如上面数据每一列的含义分别是：『日期』,『AQI指数』, 『PM2.5』, 『PM10』, 『一氧化碳值』, 『二氧化氮值』, 『二氧化硫值』）。
+{{use: partial-parallel-data-example}}
 
 平行坐标系适于对这种多维数据进行可视化分析。每一个维度（每一列）对应一个坐标轴，每一个『数据项』是一条线，贯穿多个坐标轴。在坐标轴上，可以进行数据选取等操作。如下：
 
@@ -29,9 +19,9 @@
 ```javascript
 option = {
     parallelAxis: [                     // 这是一个个『坐标轴』的定义
-        {dim: 0, name: schema[0].text}, // 每个『坐标轴』有个 'dim' 属性，
-        {dim: 1, name: schema[1].text}, // 表示该『坐标轴』对应的 'series.data' 的维度。
-        {dim: 2, name: schema[2].text}, // 坐标轴的顺序可以任意调整。
+        {dim: 0, name: schema[0].text}, // 每个『坐标轴』有个 'dim' 属性，表示坐标轴的维度号。
+        {dim: 1, name: schema[1].text},
+        {dim: 2, name: schema[2].text},
         {dim: 3, name: schema[3].text},
         {dim: 4, name: schema[4].text},
         {dim: 5, name: schema[5].text},
@@ -107,6 +97,33 @@ option = {
     其中有 [series-parallel.parallelIndex](~series-parallel.parallelIndex) 属性，指定使用哪个『坐标系』。默认使用第一个『坐标系』。
 
 **配置注意和最佳实践**
+
+{{use: partial-parallel-axis-default}}
+
+
+
+
+
+{{target: partial-parallel-data-example}}
+例如 [series-parallel.data](~series-parallel.data) 中有如下数据：
+
+```javascript
+[
+    [1,  55,  9,   56,  0.46,  18,  6,  '良'],
+    [2,  25,  11,  21,  0.65,  34,  9,  '优'],
+    [3,  56,  7,   63,  0.3,   14,  5,  '良'],
+    [4,  33,  7,   29,  0.33,  16,  6,  '优'],
+    [5,  42,  24,  44,  0.76,  40,  16, '优'],
+    ...
+]
+```
+数据中，每一行是一个『数据项』，每一列属于一个『维度』。（例如上面数据每一列的含义分别是：『日期』,『AQI指数』, 『PM2.5』, 『PM10』, 『一氧化碳值』, 『二氧化氮值』, 『二氧化硫值』）。
+
+
+
+
+
+{{target: partial-parallel-axis-default}}
 
 配置多个 [parallelAxis](~parallelAxis) 时，有些值一样的属性，如果书写多遍则比较繁琐，那么可以放置在 [parallel.parallelAxisDefault](~parallel.parallelAxisDefault) 里。在坐标轴初始化前，`parallelAxisDefault` 里的配置项，会分别融合进 [parallelAxis](~parallelAxis)，形成最终的坐标轴的配置。
 
