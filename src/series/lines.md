@@ -15,6 +15,9 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 
 ## type(string) = 'lines'
 
+{{ use: partial-series-name() }}
+
+
 {{ use: partial-coord-sys(
     seriesType="lines",
     coordSysDefault="'geo'",
@@ -43,7 +46,7 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 ### symbolSize(Array|number) = 3
 特效标记的大小，可以设置成诸如 `10` 这样单一的数字，也可以用数组分开表示高和宽，例如 `[20, 10]` 表示标记宽为`20`，高为`10`。
 
-### color(string)
+### color(Color)
 特效标记的颜色，默认取 [lineStyle.normal.color](~series-lines.lineStyle.normal.color)。
 
 ### trailLength(number) = 0.2
@@ -54,7 +57,8 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 {{ use: partial-line-style(
     prefix= '###',
     useColorPalatte=true,
-    defaultOpacity=0.5
+    defaultOpacity=0.5,
+    hasCallback=true
 ) }}
 ### emphasis(Object)
 {{ use: partial-line-style(
@@ -64,15 +68,11 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 ## label(Object)
 标签相关配置。
 ### normal(Object)
-{{ use: partial-label(
-    prefix="###",
-    formatter1d=true
+{{ use: lines-label(
+    prefix="###"
 )}}
 ### emphasis(Object)
-{{ use: partial-label(
-    prefix="###",
-    formatter1d=true
-) }}
+{{ use: lines-label(prefix="###") }}
 
 ## data(Array)
 线数据集。
@@ -102,16 +102,18 @@ ${name}的坐标，可以是[直角坐标系](~grid)上的`[x, y]`，[地理坐�
 该数据项线的样式，起点和终点的`lineStyle`会合并到一起。
 ##### normal(Object)
 {{ use: partial-line-style(
-    prefix="#####"
+    prefix="#####",
+    hasCurveness=true
 ) }}
 ##### emphasis(Object)
 {{ use: partial-line-style(
-    prefix="#####"
+    prefix="#####",
+    hasCurveness=true
 ) }}
 
 
 {{ target: lines-label }}
-#${prefix} show(boolean) = ${defaultShowLabel|default("false")}
+#${prefix} show(boolean) = ${defaultShowLabel|default(false)}
 是否显示标签。
 #${prefix} position(string) = 'end'
 标签位置，可选：

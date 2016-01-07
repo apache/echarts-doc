@@ -10,6 +10,8 @@
 
 ## type(string) = 'line'
 
+{{ use: partial-series-name() }}
+
 {{ use: partial-coord-sys(
     seriesType="bar",
     coordSysDefault="'cartesian2d'",
@@ -23,7 +25,7 @@
     defaultSymbol="'circle'",
     defaultSymbolSize=4,
     prefix="#",
-    enableCallback=true
+    hasCallback=true
 ) }}
 
 ## showSymbol(boolean) = true
@@ -61,7 +63,11 @@
 ## itemStyle(Object)
 折线拐点标志的样式。
 ### normal(Object)
-{{use: partial-item-style(prefix="###",useColorPalatte=true)}}
+{{use: partial-item-style(
+    prefix="###",
+    useColorPalatte=true,
+    hasCallback=true
+)}}
 ### emphasis(Object)
 {{use: partial-item-style(prefix="###")}}
 
@@ -114,6 +120,12 @@
 #### emphasis(Object)
 {{use: partial-bar-item-style(prefix="####")}}
 
+{{use: partial-mark-point(
+    prefix="#",
+    seriesType="line",
+    hasCoord=true,
+    hasType=true
+)}}
 
 {{use: partial-animation(
     prefix="#",

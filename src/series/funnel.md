@@ -6,9 +6,11 @@
 **漏斗图**
 
 **示例：**
-~[600x400](${galleryViewPath}funnel)
+~[600x400](${galleryViewPath}funnel&reset=1&edit=1)
 
 ## type(string) = 'funnel'
+
+{{ use: partial-series-name() }}
 
 ## min(number) = 0
 指定的数据最小值。
@@ -59,7 +61,11 @@
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
 ### normal(Object)
-{{use:partial-item-style(prefix="###", useColorPalatte=true)}}
+{{use:partial-item-style(
+    prefix="###",
+    useColorPalatte=true,
+    hasCallback=true
+)}}
 ### emphasis(Object)
 {{use:partial-item-style(prefix="###")}}
 

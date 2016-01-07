@@ -6,16 +6,16 @@ ${name}标记的图形。
 
 {{ use: partial-icon }}
 
-#${prefix} symbolSize(number|Array{{ if: ${enableCallback} }}|Function{{ /if}}) = ${defaultSymbolSize}
+#${prefix} symbolSize(number|Array{{ if: ${hasCallback} }}|Function{{ /if}}) = ${defaultSymbolSize}
 
 ${name}标记的大小，可以设置成诸如 `10` 这样单一的数字，也可以用数组分开表示高和宽，例如 `[20, 10]` 表示标记宽为`20`，高为`10`。
 
-{{ if: ${enableCallback} }}
+{{ if: ${hasCallback} }}
 如果需要每个数据的图形大小不一样，可以设置为如下格式的回调函数：
 ```js
 (value: Array|number, params: Object) => number|Array
 ```
-其中第一个参数 `value` 为 [data](~${seriesType}.data) 中的数据值。第二个参数`params` 是其它的数据项参数。
+其中第一个参数 `value` 为 [data](~series-${seriesType}.data) 中的数据值。第二个参数`params` 是其它的数据项参数。
 {{ /if }}
 
 #${prefix} symbolRotate(number)

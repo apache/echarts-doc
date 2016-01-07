@@ -13,6 +13,8 @@
 
 ## type(string) = 'graph'
 
+{{ use: partial-series-name() }}
+
 {{ use: partial-legend-hover-link() }}
 
 ## hoverAnimation(boolean)
@@ -62,13 +64,18 @@
     prefix='#',
     defaultSymbol="'circle'",
     defaultSymbolSize=10,
-    name='关系图节点'
+    name='关系图节点',
+    hasCallback=true
 ) }}
 
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
 ### normal(Object)
-{{use:partial-item-style(prefix="###", useColorPalatte=true)}}
+{{use:partial-item-style(
+    prefix="###",
+    useColorPalatte=true,
+    hasCallback=true
+)}}
 ### emphasis(Object)
 {{use:partial-item-style(prefix="###")}}
 
@@ -79,10 +86,9 @@
     prefix="###",
     defaultColor="'#aaa'",
     defaultWidth=1,
-    defaultOpacity=0.5
+    defaultOpacity=0.5,
+    hasCurveness=true
 )}}
-### curveness(number) = 0
-边的曲度，支持从 0 到 1 的值，值越大曲度越大。
 ### emphasis(Object)
 {{ use:partial-line-style(
     prefix="###"

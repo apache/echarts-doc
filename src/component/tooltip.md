@@ -155,11 +155,11 @@
     }
     ```
 
-## backgroundColor(string) = 'rgba(50,50,50,0.7)'
+## backgroundColor(Color) = 'rgba(50,50,50,0.7)'
 
 提示框浮层的背景颜色。
 
-## borderColor(string) = '#333'
+## borderColor(Color) = '#333'
 
 提示框浮层的边框颜色。
 

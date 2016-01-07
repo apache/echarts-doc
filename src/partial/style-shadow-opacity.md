@@ -14,7 +14,7 @@ itemStyle: {
 }
 ```
 
-#${prefix} shadowColor(string) = ${defaultShadowColor}
+#${prefix} shadowColor(Color) = ${defaultShadowColor}
 
 阴影颜色。支持的格式同`color`。
 

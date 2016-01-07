@@ -10,6 +10,8 @@
 
 ## type(string) = 'gauge'
 
+{{ use: partial-series-name() }}
+
 {{ use: partial-circular-layout }}
 <!-- overwrite radius -->
 ## radius(number|string) = '75%'
@@ -100,7 +102,7 @@ formatter: function (value) {
 ```
 ### textStyle(Object)
 {{ use: partial-text-style(prefix="###") }}
-### color(string) = 'auto'
+### color(Color) = 'auto'
 刻度颜色
 
 
@@ -118,7 +120,7 @@ formatter: function (value) {
 ### normal(Object)
 {{ use: partial-item-style(prefix="###") }}
 <!-- overwrite color -->
-#### color(string) = 'auto'
+#### color(Color) = 'auto'
 指针颜色，默认取数值所在的[区间的颜色](~series-gauge.axisLine.lineStyle.color)
 ### emphasis(Object)
 {{ use: partial-item-style(prefix="###") }}
@@ -144,11 +146,11 @@ formatter: function (value) {
 详情宽度。
 ### height(number) = 40
 详情高度。
-### backgroundColor(string) = 'transparent'
+### backgroundColor(Color) = 'transparent'
 详情背景色。
 ### borderWidth(number) = 0
 详情边框宽度。
-### borderColor(string) = '#ccc'
+### borderColor(Color) = '#ccc'
 详情边框颜色。
 ### offsetCenter(Array) = [0, '40%']
 相对于仪表盘中心的偏移位置，数组第一项是水平方向的偏移，第二项是垂直方向的偏移。可以是绝对的数值，也可以是相对于仪表盘半径的百分比。
@@ -159,7 +161,7 @@ formatter: function (value) {
     defaultFontSize = 15
 ) }}
 <!-- overwrite color -->
-#### color(string) = 'auto'
+#### color(Color) = 'auto'
 文本颜色，默认取数值所在的[区间的颜色](~series-gauge.axisLine.lineStyle.color)
 
 
