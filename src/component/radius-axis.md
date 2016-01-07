@@ -9,4 +9,9 @@
 
 半径轴所在的极坐标系的索引，默认使用第一个极坐标系。
 
-{{use: axis-common(prefix='#', componentType='radiusAxis', axisTypeDefault="'value'")}}
+{{ use: axis-common(
+    prefix='#',
+    componentType='radiusAxis',
+    axisTypeDefault="'value'",
+    hasSplitLineAndArea=true
+)}}
