@@ -1,10 +1,11 @@
-{{ target: partial-icon}}
+{{ target: partial-icon }}
 
-可选自带的图形类型， 有 {{ import: partial-icon-buildin}}
+可选自带的标记类型， 有 {{ import: partial-icon-buildin}}
 
 也可以通过 `'image://url'` 设置为图片，其中 url 为图片的链接。
 
 {{ use: partial-icon-path }}
+
 
 {{ target: partial-icon-buildin}}
 `'circle'`, `'rect'`, `'roundRect'`, `'triangle'`, `'diamond'`, `'pin'`, `'arrow'`

@@ -25,4 +25,9 @@
 
 ~[400x400](${galleryViewPath}doc-example/polar-anticlockwise&edit=1&reset=1)
 
-{{use: axis-common(prefix='#', componentType='angleAxis', axisTypeDefault="'category'") }}
+{{ use: axis-common(
+    prefix='#',
+    componentType='angleAxis',
+    axisTypeDefault="'category'",
+    hasSplitLineAndArea=true
+)}}
