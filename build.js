@@ -117,11 +117,23 @@ function mdToJsonSchema(mdStr) {
         var types = parent.type;
         var properties;
         if (types[0] === 'Array') {
-            top().items = top().items || {
-                type: 'Object',
-                properties: {}
-            };
-            properties = top().items.properties;
+            // Name is index
+            // if (name == +name) {
+            //     if (top().items && !(top().items instanceof Array)) {
+            //         throw new Error('Can\'t mix number indices with string properties');
+            //     }
+            //     properties = top().items = top().items || [];
+            // }
+            // else {
+                top().items = top().items || {
+                    type: 'Object',
+                    properties: {}
+                };
+                if (top().items instanceof Array) {
+                    throw new Error('Can\'t mix number indices with string properties');
+                }
+                properties = top().items.properties;
+            // }
         }
         else {
             top().properties = top().properties || {};
@@ -174,7 +186,7 @@ function mdToJsonSchema(mdStr) {
             size = size.split('x');
             var width = +size[0];
             var height = +size[1];
-            var iframe = ['<iframe src="', href, '"'];
+            var iframe = ['<iframe data-src="', href, '"'];
             if (!isNaN(width) && !isNaN(height)) {
                 iframe.push(' width=', width, ' height=', height);
             }

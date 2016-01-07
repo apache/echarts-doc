@@ -35,11 +35,11 @@
 
 ##${prefix} data(Array)
 标注的数据数组。每个数组项是一个对象，有下面三种方式指定标注的位置。
-1. 通过 [x](~${seriesType}.markPoint.data.x), [y](~${seriesType}.markPoint.data.y) 属性指定相对容器的屏幕坐标，单位像素。
+1. 通过 [x](~series-${seriesType}.markPoint.data.x), [y](~series-${seriesType}.markPoint.data.y) 属性指定相对容器的屏幕坐标，单位像素。
 {{ if: ${hasCoord} }}
-2. 用 [coord](~${seriesType}.markPoint.data.coord) 属性指定数据在相应坐标系上的坐标位置。
+2. 用 [coord](~series-${seriesType}.markPoint.data.coord) 属性指定数据在相应坐标系上的坐标位置。
 {{ /if }}{{ if: ${hasType} }}
-3. 直接用 [type](~${seriesType}.markPoint.data.type) 属性标注系列中的最大值，最小值。这时候可以使用 [valueIndex](~${seriesType}.markPoint.data.valueIndex) 指定是在哪个维度上的最大值，最小值。
+3. 直接用 [type](~series-${seriesType}.markPoint.data.type) 属性标注系列中的最大值，最小值。这时候可以使用 [valueIndex](~series-${seriesType}.markPoint.data.valueIndex) 指定是在哪个维度上的最大值，最小值。
 {{ /if }}
 
 当多个属性同时存在事，优先级按上述的顺序。
@@ -71,7 +71,7 @@ data: [{{if: ${hasType} }}{
 {{ /if }}
 {{ if: ${hasCoord} }}
 ###${prefix} valueIndex(number)
-在使用 [type](~${seriesType}.markPoint.data.type) 时有效，用于指定在哪个维度上指定最大值最小值，可以是 `0`（xAxis, radiusAxis），`1`（yAxis, angleAxis），默认使用第一个数值轴所在的维度。
+在使用 [type](~series-${seriesType}.markPoint.data.type) 时有效，用于指定在哪个维度上指定最大值最小值，可以是 `0`（xAxis, radiusAxis），`1`（yAxis, angleAxis），默认使用第一个数值轴所在的维度。
 
 ###${prefix} coord(Array)
 标注的坐标。坐标格式视系列的坐标系而定，可以是[直角坐标系](~grid)上的 `x`, `y`，也可以是[极坐标系](~polar)上的 `radius`, `angle`。
@@ -86,4 +86,9 @@ data: [{{if: ${hasType} }}{
 
 ###${prefix} value(number)
 标注值，可以不设。
+
+
+{{ use: partial-animation(
+    prefix="#" + ${prefix}
+) }}
 

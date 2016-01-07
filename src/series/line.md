@@ -114,6 +114,12 @@
 #### emphasis(Object)
 {{use: partial-bar-item-style(prefix="####")}}
 
+{{use: partial-mark-point(
+    prefix="#",
+    seriesType="line",
+    hasCoord=true,
+    hasType=true
+)}}
 
 {{use: partial-animation(
     prefix="#",

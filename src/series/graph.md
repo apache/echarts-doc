@@ -79,10 +79,9 @@
     prefix="###",
     defaultColor="'#aaa'",
     defaultWidth=1,
-    defaultOpacity=0.5
+    defaultOpacity=0.5,
+    hasCurveness=true
 )}}
-### curveness(number) = 0
-边的曲度，支持从 0 到 1 的值，值越大曲度越大。
 ### emphasis(Object)
 {{ use:partial-line-style(
     prefix="###"
