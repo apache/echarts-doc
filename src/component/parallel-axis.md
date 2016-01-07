@@ -66,12 +66,12 @@ myChart.setOption({
 选框的边框宽度。
 
 
-### borderColor(color) = 'rgba(160,197,232)'
+### borderColor(Color) = 'rgba(160,197,232)'
 
 选框的边框颜色。
 
 
-### color(color) = 'rgba(160,197,232)'
+### color(Color) = 'rgba(160,197,232)'
 
 选框的填充色。
 

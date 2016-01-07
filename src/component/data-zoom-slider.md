@@ -19,22 +19,22 @@
 是否显示 ${dataZoomName} 组件。如果设置为 `false`，不会显示，但是数据过滤的功能还存在。
 
 
-## backgroundColor(color) = 'rgba(47,69,84,0)'
+## backgroundColor(Color) = 'rgba(47,69,84,0)'
 
 组件的背景颜色。
 
 
-## dataBackgroundColor(color) = '#ddd'
+## dataBackgroundColor(Color) = '#ddd'
 
 数据阴影的背景颜色。
 
 
-## fillerColor(color) = 'rgba(47,69,84,0.25)'
+## fillerColor(Color) = 'rgba(47,69,84,0.25)'
 
 选中范围的填充颜色。
 
 
-## handleColor(color) = 'rgba(47,69,84,0.65)'
+## handleColor(Color) = 'rgba(47,69,84,0.65)'
 
 控制手柄的颜色。
 

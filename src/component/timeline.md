@@ -289,7 +289,7 @@ myChart.setOption(
 ) }}
 
 
-### color(color) = '#c23531'
+### color(Color) = '#c23531'
 
 `timeline`组件中『当前项』（`checkpoint`）的颜色。
 
@@ -299,7 +299,7 @@ myChart.setOption(
 `timeline`组件中『当前项』（`checkpoint`）的边框宽度。
 
 
-### borderColor(color) = 'rgba(194,53,49, 0.5)'
+### borderColor(Color) = 'rgba(194,53,49, 0.5)'
 
 `timeline`组件中『当前项』（`checkpoint`）的边框颜色。
 
@@ -392,12 +392,12 @@ myChart.setOption(
 控制按钮的『正常状态』的样式。
 
 
-#### color(color) = '#304654'
+#### color(Color) = '#304654'
 
 按钮颜色。
 
 
-#### borderColor(color) = '#304654'
+#### borderColor(Color) = '#304654'
 
 按钮边框颜色。
 
@@ -412,12 +412,12 @@ myChart.setOption(
 控制按钮的『高亮状态』的样式（hover时）。
 
 
-#### color(color) = '#c23531'
+#### color(Color) = '#c23531'
 
 按钮颜色。
 
 
-#### borderColor(color) = '#c23531'
+#### borderColor(Color) = '#c23531'
 
 按钮边框颜色。
 

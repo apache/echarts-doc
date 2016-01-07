@@ -216,12 +216,12 @@ ${rangeType}: {
 {{ use: partial-padding(componentName=${visualMapName})}}
 
 
-## backgroundColor(color) = 'rgba(0,0,0,0)'
+## backgroundColor(Color) = 'rgba(0,0,0,0)'
 
 背景色。
 
 
-## borderColor(color) = '#ccc'
+## borderColor(Color) = '#ccc'
 
 边框颜色。
 
