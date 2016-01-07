@@ -20,9 +20,7 @@
 )}}
 
 
-{{ use: series-name(
-    prefix="#"
-) }}
+{{ use: partial-series-name }}
 
 
 
