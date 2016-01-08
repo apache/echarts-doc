@@ -6,7 +6,7 @@
 var path = require('path');
 var fs = require('fs');
 
-var docSrcDir = path.join(__dirname, '/src');
+var docSrcDir = path.join(__dirname, '/cn');
 var cssPath = path.join(__dirname, '/test/asset/ecOption/main.less');
 
 var watchDirs = [];

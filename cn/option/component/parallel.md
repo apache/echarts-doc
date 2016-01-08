@@ -10,7 +10,7 @@
 <br>
 <br>
 
-{{ use: partial-rect-layout(
+{{ use: partial-rect-layout-width-height(
     componentName='parallel ',
     defaultLeft: 80,
     defaultRight: 80,

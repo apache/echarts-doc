@@ -13,7 +13,7 @@ etpl.addFilter('default', function (source, defaultVal) {
 });
 
 var componentsHasType = ['visualMap', 'dataZoom', 'series'];
-glob('src/**/*.md', function (err, files) {
+glob('cn/option/**/*.md', function (err, files) {
     var mdTpl = files.filter(function (fileName) {
         return fileName.indexOf('__') !== 0;
     }).map(function (fileName) {

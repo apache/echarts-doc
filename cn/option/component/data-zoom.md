@@ -149,7 +149,7 @@ option: {
     数据窗口外的数据，被 **设置为空**。
     与『过滤掉』的区别是，『设置为空』的数据当空数据展示，也就是说还会占有位置。
 
-如下面的例子，y轴 的 `filter` 被设置为 `'empty'`，x轴的 `filter`被设置为 `'filter'`。当进行对 y轴 进行dataZoom时，尺寸超出 y轴 窗口的柱形，会被『设置为空』，从而柱形在x轴还有占位，只是不显示出来。这样的效果，对于离群点（outlier）过滤功能，比较清晰。
+如下面的例子，y轴 的 `filterMode` 被设置为 `'empty'`，x轴的 `filterMode` 被设置为 `'filter'`。当进行对 y轴 进行dataZoom时，尺寸超出 y轴 窗口的柱形，会被『设置为空』，从而柱形在x轴还有占位，只是不显示出来。这样的效果，对于离群点（outlier）过滤功能，比较清晰。
 
 ~[600x400](${galleryViewPath}doc-example/bar-dataZoom-filterMode&edit=1&reset=1)
 
