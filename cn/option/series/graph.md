@@ -212,6 +212,15 @@ links: [{
 ## edges(Array)
 同 [links](~series-graph.links)
 
+{{use: partial-mark-point(
+    prefix="#",
+    seriesType="graph"
+)}}
+{{use: partial-mark-line(
+    prefix="#",
+    seriesType="graph"
+)}}
+
 {{ use: partial-rect-layout-width-height(
     defaultLeft="'center'",
     defaultTop="'center'",
@@ -229,13 +238,4 @@ links: [{
 ```
 
 
-{{use: partial-mark-point(
-    prefix="#",
-    seriesType="graph"
-)}}
-{{use: partial-mark-line(
-    prefix="#",
-    seriesType="graph"
-)}}
-
-{{ use: partial-animation() }}
+{{ use: partial-animation(prefix="#") }}

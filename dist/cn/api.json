@@ -1,0 +1,138 @@
+{
+  "$schema": "http://echarts.baidu.com/doc/json-schem",
+  "option": {
+    "type": "Object",
+    "properties": {
+      "echarts": {
+        "type": [
+          "*"
+        ],
+        "descriptionCN": "",
+        "properties": {
+          "init": {
+            "type": [
+              "*"
+            ],
+            "descriptionCN": ""
+          },
+          "connect": {
+            "type": [
+              "*"
+            ],
+            "descriptionCN": ""
+          },
+          "disConnect": {
+            "type": [
+              "*"
+            ],
+            "descriptionCN": ""
+          },
+          "dispose": {
+            "type": [
+              "*"
+            ],
+            "descriptionCN": ""
+          },
+          "getInstanceByDom": {
+            "type": [
+              "*"
+            ],
+            "descriptionCN": ""
+          },
+          "getInstanceById": {
+            "type": [
+              "*"
+            ],
+            "descriptionCN": ""
+          }
+        }
+      },
+      "EChartsInstance": {
+        "type": [
+          "Object"
+        ],
+        "descriptionCN": "<p>通过 <a href=\"#echarts.init\">echarts.init</a> 创建的实例。</p>\n",
+        "properties": {
+          "setOption": {
+            "type": [
+              "Function"
+            ],
+            "descriptionCN": "<pre><code class=\"lang-js\">(option: Object, notMerge:boolean, notRefreshImmediately:boolean)\n</code></pre>\n<p>设置图表示例的配置项以及数据，</p>\n<p><strong>参数：</strong></p>\n<ul>\n<li><p>option</p>\n<p>  图表的配置项和数据，具体见<a href=\"ecOption.html\" target=\"_blank\">配置项手册</a>。</p>\n</li>\n<li><p>notMerge</p>\n<p>  可选，是否不跟之前设置的<code>option</code>进行合并，默认为<code>false</code>，即合并。</p>\n</li>\n<li><p>notRefreshImmediately</p>\n<p>  可选，在设置完<code>option</code>后是否不立即刷新画布，默认为<code>false</code>，即立即刷新。</p>\n</li>\n</ul>\n"
+          },
+          "getWidth": {
+            "type": [
+              "Function"
+            ],
+            "descriptionCN": "<pre><code class=\"lang-js\">() =&gt; number\n</code></pre>\n<p>获取 ECharts 实例容器的宽度。</p>\n"
+          },
+          "getHeight": {
+            "type": [
+              "Function"
+            ],
+            "descriptionCN": "<pre><code class=\"lang-js\">() =&gt; number\n</code></pre>\n<p>获取 ECharts 实例容器的高度。</p>\n"
+          },
+          "getDom": {
+            "type": [
+              "Function"
+            ],
+            "descriptionCN": "<pre><code class=\"lang-js\">() =&gt; HTMLElement\n</code></pre>\n<p>获取 ECharts 示例容器的 dom 节点。</p>\n"
+          },
+          "resize": {
+            "type": [
+              "Function"
+            ],
+            "descriptionCN": "<p> 在容器大小发生改变时需要手动调用。</p>\n"
+          },
+          "dispatchAction": {
+            "type": [
+              "Function"
+            ],
+            "descriptionCN": ""
+          },
+          "on": {
+            "type": [
+              "*"
+            ],
+            "descriptionCN": "<pre><code class=\"lang-js\">(eventName: string, handler: Function, context?: Object)\n</code></pre>\n<p>在实例上添加事件处理函数。</p>\n<p>ECharts 中的事件有两种，一种是鼠标事件，在鼠标点击某个图形上会触发，还有一种是 调用 <a href=\"#EChartsInstance.dispatchAction\">dispatchAction</a> 后触发的事件。每个 action 都会有对应的事件，具体见 <a href=\"#events\">action 和 events 的文档</a></p>\n"
+          },
+          "off": {
+            "type": [
+              "Function"
+            ],
+            "descriptionCN": "<pre><code class=\"lang-js\">(eventName: string, handler?: Function)\n</code></pre>\n"
+          },
+          "showLoading": {
+            "type": [
+              "Function"
+            ],
+            "descriptionCN": "<pre><code class=\"lang-js\">(name?: string, opts: Object)\n</code></pre>\n<p>显示加载动画效果。可以在加载数据前手动调用改接口显示加载动画，在动画加载完成后调用 <a href=\"#EChartsInstance.hideLoading\">hideLoading</a> 隐藏加载动画。</p>\n<p><strong>参数：</strong></p>\n"
+          },
+          "hideLoading": {
+            "type": [
+              "Function"
+            ],
+            "descriptionCN": "<p>隐藏动画加载效果。</p>\n"
+          },
+          "getDataURL": {
+            "type": [
+              "Function"
+            ],
+            "descriptionCN": "<pre><code class=\"lang-js\">(opts: {\n    type: string,\n    pixelRatio: number,\n    backgroundColor: string\n}) =&gt; string\n</code></pre>\n"
+          },
+          "getConnectedDataURL": {
+            "type": [
+              "*"
+            ],
+            "descriptionCN": "<pre><code class=\"lang-js\">(opts: {\n    type: string,\n    pixelRatio: number,\n    backgroundColor: string\n}) =&gt; string\n</code></pre>\n"
+          }
+        }
+      },
+      "events": {
+        "type": [
+          "*"
+        ],
+        "descriptionCN": ""
+      }
+    }
+  }
+}
