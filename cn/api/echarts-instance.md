@@ -1,12 +1,12 @@
 {{ target: echarts-instance }}
 
-# EChartsInstance(Object)
+# echartsInstance(Object)
 
 通过 [echarts.init](~echarts.init) 创建的实例。
 
 ## setOption(Function)
 ```js
-(option: Object, notMerge:boolean, notRefreshImmediately:boolean)
+(option: Object, notMerge: boolean, notRefreshImmediately: boolean)
 ```
 
 设置图表示例的配置项以及数据，
@@ -14,7 +14,7 @@
 **参数：**
 + option
 
-    图表的配置项和数据，具体见[配置项手册](ecOption.html)。
+    图表的配置项和数据，具体见[配置项手册](option.html)。
 
 + notMerge
 

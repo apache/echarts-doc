@@ -1,2 +1,2 @@
-node build.js > test/schema.json
-cp test/schema.json ../echarts-home/js/ecOption
+node build.js
+cp -R dist/cn/ ../echarts-home/doc/cn/
