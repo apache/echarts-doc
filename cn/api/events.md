@@ -1,0 +1,2 @@
+{{ target: events }}
+# events

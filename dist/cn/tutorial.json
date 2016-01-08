@@ -1,0 +1,7 @@
+{
+  "$schema": "http://echarts.baidu.com/doc/json-schem",
+  "option": {
+    "type": "Object",
+    "properties": {}
+  }
+}
