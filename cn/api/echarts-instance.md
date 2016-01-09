@@ -64,7 +64,7 @@
 ```js
 (action: Object)
 ```
-触发图表行为，例如图例开关`legendToggleSelect`, 数据区域缩放`dataZoom`，显示提示框`showTip`等等，更多见 [action 和 events 的文档](~events)
+触发图表行为，例如图例开关`legendToggleSelect`, 数据区域缩放`dataZoom`，显示提示框`showTip`等等，更多见 [action](~action) 和 [events](~events) 的文档。
 
 **注：**在 ECharts 2.x 是通过 `myChart.component.tooltip.showTip` 这种形式调用相应的接口触发图表行为，入口很深，而且涉及到内部组件的组织。因此在 ECharts 里统一改为 `dispatchAction` 的形式。
 
@@ -84,7 +84,7 @@ myChart.dispatchAction({
 
 绑定事件处理函数。
 
-ECharts 中的事件有两种，一种是鼠标事件，在鼠标点击某个图形上会触发，还有一种是 调用 [dispatchAction](~EChartsInstance.dispatchAction) 后触发的事件。每个 action 都会有对应的事件，具体见 [action 和 events 的文档](~events)
+ECharts 中的事件有两种，一种是鼠标事件，在鼠标点击某个图形上会触发，还有一种是 调用 [dispatchAction](~EChartsInstance.dispatchAction) 后触发的事件。每个 action 都会有对应的事件，具体见 [action](~action) 和 [events](~events) 的文档。
 
 
 **参数：**
