@@ -13,4 +13,8 @@
 
 是否显示地理坐标系组件。
 
-{{ use: geo-common(prefix='#') }}
+{{ use: geo-common(
+    prefix='#',
+    galleryEditorPath=${galleryEditorPath},
+    galleryViewPath=${galleryViewPath}
+) }}

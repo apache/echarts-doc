@@ -5,10 +5,10 @@
 
 ## init(Function)
 ```js
-(dom: HTMLDivElement|HTMLCanvasElement, theme?: Object, opts?: {
+(dom: HTMLDivElement|HTMLCanvasElement, theme?: Object|string, opts?: {
     devicePixelRatio?: number
     renderer?: string
-}) => echartsInstance
+}) => ECharts
 ```
 创建一个 ECharts 示例，返回 [echartsInstance](~echartsInstance)，不能再单个容器上初始化多个 ECharts 实例。
 
@@ -23,7 +23,7 @@
 
 + `theme`
 
-    主题对象。TODO
+    应用的主题。可以是一个主题的配置对象，也可以是使用已经通过 [echarts.registerMap](~echarts.registerMap) 注册的主题名称。
 
 + `opts`
 
@@ -64,15 +64,75 @@ echarts.connect([chart1, chart2]);
 ```
 解除图表实例的联动，如果只需要移除单个实例，可以将通过将该图表实例 `group` 设为空。
 
-**参数**
+**参数：**
 + `group`
 
     group 的 id。
 
 ## dispose(Function)
+```js
+(target: ECharts|HTMLDivElement|HTMLCanvasElement)
+```
+销毁实例，实例销毁后无法再被使用。
 
 ## getInstanceByDom(Function)
+```js
+(target: HTMLDivElement|HTMLCanvasElement) => ECharts
+```
+获取 dom 容器上的示例。
 
 ## registerMap(Function)
+```js
+(mapName: string, geoJson: Object, specialAreas?: Object)
+```
+注册可用的地图，必须在包括 [geo](option.html#geo) 组件或者 [map](option.html#series-map) 图表类型的时候才能使用。
 
-## registerTheme()
+使用方法见 [option.geo](option.html#geo.map)。
+
+**参数：**
++ `mapName`
+
+    地图名称，在 [geo](option.html#geo) 组件或者 [map](option.html#series-map) 图表类型中设置的 `map` 对应的就是该值。
+
++ `geoJson`
+
+    GeoJson 格式的数据，具体格式见 [http://geojson.org/](http://geojson.org/)。
+
++ `specialAreas`
+
+    可选。将地图中的部分区域缩放到合适的位置，可以使得整个地图的显示更加好看。
+
+    **示例 [USA Population Estimates](${galleryEditorPath}map-usa)：**
+    ```js
+echarts.registerMap('USA', usaJson, {
+    // 把阿拉斯加移到美国主大陆左下方
+    Alaska: {
+        // 左上角经度
+        left: -131,
+        // 左上角纬度
+        top: 25,
+        // 经度横跨的范围
+        width: 15
+    },
+    // 夏威夷
+    Hawaii: {
+        left: -110,
+        top: 28,
+        width: 5
+    },
+    // 波多黎各
+    'Puerto Rico': {
+        left: -76,
+        top: 26,
+        width: 2
+    }
+});
+    ```
+
+
+## registerTheme(Function)
+```js
+(themeName: string, theme: Object)
+```
+
+注册主题，用于[初始化示例](~echarts.init)的时候指定。

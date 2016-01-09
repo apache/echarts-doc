@@ -21,7 +21,9 @@
 
 {{ use: geo-common(
     prefix='#',
-    inMap=true
+    inMap=true,
+    galleryEditorPath=${galleryEditorPath},
+    galleryViewPath=${galleryViewPath}
 ) }}
 
 ## mapValueCalculation(string) = 'sum'
