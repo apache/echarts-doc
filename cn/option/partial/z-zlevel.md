@@ -1,6 +1,6 @@
 {{target: partial-z-zlevel}}
 
-## zlevel(number) = ${defaultZLevel|default(0)}
+#${prefix|default("#")} zlevel(number) = ${defaultZLevel|default(0)}
 
 ${componentName}组件的所有图形的 zlevel 值。
 
@@ -8,7 +8,7 @@ ${componentName}组件的所有图形的 zlevel 值。
 
 zlevel 大的 Canvas 会放在 zlevel 小的 Canvas 的上面。
 
-## z(number) = ${defaultZ|default(2)}
+#${prefix|default("#")} z(number) = ${defaultZ|default(2)}
 
 ${componentName}组件的所有图形的`z`值。控制图形的前后顺序。`z`值小的图形会被`z`值大的图形覆盖。
 

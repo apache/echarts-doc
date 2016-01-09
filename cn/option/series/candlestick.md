@@ -58,35 +58,7 @@
 
 
 
-## itemStyle(Object)
-
-{{use:partial-item-style-desc(name="candlestick")}}
-
-
-### normal(Object)
-
-{{use: partial-candlestick-item-style(
-    prefix="###",
-    defaultColor="#c23531",
-    defaultColor0="#314656",
-    defaultBorderColor="#c23531",
-    defaultBorderColor0="#314656",
-    defaultBorderWidth=1
-)}}
-
-#### color="#c23531",
-#### borderColor="#c23531",
-
-### emphasis(Object)
-
-{{use: partial-item-style(
-    prefix="###",
-    defaultColor="#c23531",
-    defaultColor0="#314656",
-    defaultBorderColor="#c23531",
-    defaultBorderColor0="#314656",
-    defaultBorderWidth=2
-)}}
+{{use:partial-candlestick-item-style(prefix="#")}}
 
 
 ## data(Array)
@@ -97,6 +69,10 @@
 [
     [2320.26, 2320.26, 2287.3,  2362.94],
     [2300,    2291.3,  2288.26, 2308.38],
+    { // 数据项也可以是 Object，从而里面能含有对此数据项的特殊设置。
+        value: [2300,    2291.3,  2288.26, 2308.38],
+        itemStyle: {...}
+    },
     ...
 ]
 ```
@@ -106,6 +82,22 @@
 ```javascript
 [open, close, lowest, highest] （即：[开盘值, 收盘值, 最低值, 最高值]）
 ```
+
+### name(string)
+
+数据项名称。
+
+### value(Array)
+
+数据项值。
+
+
+```javascript
+[open, close, lowest, highest] （即：[开盘值, 收盘值, 最低值, 最高值]）
+```
+
+
+{{use:partial-candlestick-item-style(prefix="##")}}
 
 
 
@@ -133,7 +125,7 @@
 
 
 
-{{target: partial-candlestick-item-style}}
+{{target: partial-candlestick-item-style-detail}}
 
 #${prefix} color(Color)=${defaultColor}
 
@@ -170,4 +162,40 @@ candlestick 描边线宽。为 0 时无描边。
 ) }}
 
 
+
+
+
+
+
+
+
+{{target:partial-candlestick-item-style}}
+
+
+#${prefix} itemStyle(Object)
+
+{{use:partial-item-style-desc(name="candlestick")}}
+
+
+##${prefix} normal(Object)
+
+{{use: partial-candlestick-item-style-detail(
+    prefix="###",
+    defaultColor="#c23531",
+    defaultColor0="#314656",
+    defaultBorderColor="#c23531",
+    defaultBorderColor0="#314656",
+    defaultBorderWidth=1
+)}}
+
+##${prefix} emphasis(Object)
+
+{{use: partial-candlestick-item-style-detail(
+    prefix="###",
+    defaultColor="#c23531",
+    defaultColor0="#314656",
+    defaultBorderColor="#c23531",
+    defaultBorderColor0="#314656",
+    defaultBorderWidth=2
+)}}
 

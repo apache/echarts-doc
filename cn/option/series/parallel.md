@@ -23,26 +23,7 @@
 {{ use: partial-series-name }}
 
 
-
-## lineStyle(Object)
-
-线条样式。
-
-### normal(Object)
-
-{{use:partial-line-style(
-    prefix="###",
-    defaultWidth=2,
-    defaultOpacity=0.45
-)}}
-
-### emphasis(Object)
-
-{{use:partial-line-style(
-    prefix="###",
-    defaultWidth=2,
-    defaultOpacity=0.45
-)}}
+{{use: partial-parallel-line-style(prefix="#")}}
 
 
 ## inactiveOpacity(number) = 0.05
@@ -60,8 +41,47 @@
 
 {{use: partial-parallel-data-example}}
 
+### name(string)
+
+数据项名称。
+
+### value(Array)
+
+数据项值。
+
+{{use: partial-parallel-line-style(prefix="##")}}
+
 
 {{use: partial-animation(
     prefix="#",
     defaultAnimationEasing='linear'
 )}}
+
+
+
+
+
+{{target: partial-parallel-line-style}}
+
+#${prefix} lineStyle(Object)
+
+线条样式。
+
+##${prefix} normal(Object)
+
+{{use:partial-line-style(
+    prefix="###",
+    defaultWidth=2,
+    defaultOpacity=0.45
+)}}
+
+##${prefix} emphasis(Object)
+
+{{use:partial-line-style(
+    prefix="###",
+    defaultWidth=2,
+    defaultOpacity=0.45
+)}}
+
+
+
