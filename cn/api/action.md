@@ -139,7 +139,7 @@ dispatchAction({
 
 [数据区域缩放组件](option.html#dataZoom)相关的行为，必须引入[数据区域缩放组件](option.html#dataZoom)后才能使用。
 
-### dataZoom
+### dataZoom(Action)
 
 数据区域缩放。
 
@@ -166,7 +166,7 @@ dispatchAction({
 
 [视觉映射组件](option.html#visualMap)相关的行为，必须引入[视觉映射组件](option.html#visualMap)后才能使用。
 
-### selectDataRange
+### selectDataRange(Action)
 
 选取映射范围。
 
@@ -203,7 +203,7 @@ myChart.dispatchAction({
 
 [时间轴组件](option.html#timeline)相关的行为，必须引入[时间轴组件](option.html#timeline)后才能使用。
 
-### timelineChange
+### timelineChange(Action)
 
 设置当前的时间点。
 
@@ -217,7 +217,7 @@ dispatchAction({
 
 **EVENT:** [timelinechanged](~events.timelinechanged)
 
-### timelinePlayChange
+### timelinePlayChange(Action)
 
 ```js
 dispatchAction({
@@ -234,7 +234,7 @@ dispatchAction({
 
 [工具栏组件](option.html#toolbox)相关的行为，必须引入[工具栏组件](option.html#toolbox)后才能使用。
 
-### restore
+### restore(Action)
 重置 option。
 
 ```js
@@ -265,7 +265,7 @@ dispatchAction({
 
 
 {{ target: action-select }}
-### ${componentType}Select
+### ${componentType}Select(Action)
 选中指定的${name}。
 
 ```js
@@ -278,7 +278,7 @@ dispatchAction({
 
 **EVENT:** [${componentType}selected](~events.${componentType}selected)
 
-### ${componentType}UnSelect
+### ${componentType}UnSelect(Action)
 取消选中指定的${name}。
 
 ```js
@@ -290,7 +290,7 @@ dispatchAction({
 ```
 **EVENT:** [${componentType}unselected](~events.${componentType}unselected)
 
-### ${componentType}ToggleSelect
+### ${componentType}ToggleSelect(Action)
 切换指定的${name}选中状态。
 
 ```js
