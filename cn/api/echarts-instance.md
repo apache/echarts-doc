@@ -75,6 +75,20 @@ myChart.dispatchAction({
     start: 20,
     end: 30
 });
+// 可以通过 batch 参数批量分发多个 action
+myChart.dispatchAction({
+    type: 'dataZoom',
+    batch: [{
+        // 第一个 dataZoom 组件
+        start: 20,
+        end: 30
+    }, {
+        // 第二个 dataZoom 组件
+        dataZoomIndex: 1,
+        start: 10,
+        end: 20
+    }]
+})
 ```
 
 ## on(Function)
@@ -90,7 +104,7 @@ ECharts 中的事件有两种，一种是鼠标事件，在鼠标点击某个图
 **参数：**
 + `eventName`
 
-    事件名称，例如`'click'`，`'mousemove'`, `'legendselected'`
+    事件名称，全小写，例如`'click'`，`'mousemove'`, `'legendselected'`
 
     **注：** ECharts 2.x 中会使用 `config` 对象中的 `CLICK` 等属性作为事件名称。在 ECharts 3 中统一使用跟 dom 事件一样的全小写字符串作为事件名。
 

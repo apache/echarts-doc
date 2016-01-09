@@ -46,6 +46,9 @@
 
 ~[600x400](${galleryViewPath}doc-example/line-stack-tiled&edit=1&reset=1)
 
+## clipOverflow(boolean) = true
+是否对超出部分裁剪，默认裁剪。
+
 ## label(Object)
 {{use: partial-label-desc}}
 ### normal(Object)
