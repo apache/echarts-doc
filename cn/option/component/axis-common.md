@@ -81,7 +81,7 @@ boundaryGap: ['20%', '20%']
 
 在设置 [min](~${componentType}.min) 和 [max](~${componentType}.max) 之后该配置项无效。
 
-#${prefix} splitNumber(number) = 6
+#${prefix} splitNumber(number) = 5
 
 坐标轴的分割段数，需要注意的是这个分割段数只是个预估值，最后实际显示的段数会在这个基础上根据分割后坐标轴刻度显示的易读程度作调整。
 

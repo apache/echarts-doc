@@ -12,6 +12,7 @@
     + ECharts 中的数据和视觉编码（dataRange）
     + 移动端自适应
     + 使用主题
+    + 在 node 端使用 ECharts
 
 + Option 参考手册
     + Option 的组织方式
