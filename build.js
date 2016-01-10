@@ -2,7 +2,10 @@ var md2json = require('./md2json');
 var fs = require('fs');
 
 var languages = ['cn'];
-var config = require('./config');
+
+var configName = './config' + (process.argv[2] || '');
+
+var config = require(configName);
 languages.forEach(function (language) {
     if (!fs.existsSync('dist')) {
         fs.mkdirSync('dist');

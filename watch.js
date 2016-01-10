@@ -38,7 +38,7 @@ function onChange(event) {
 
 function execBuild() {
     require('child_process').exec(
-        'sh build.sh',
+        'sh build.sh ' + (process.argv[2] || ''),
         function (error, stdout, stderr) {
             if (error !== null) {
                 console.log('exec error: ' + error);
