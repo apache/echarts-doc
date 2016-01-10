@@ -168,7 +168,7 @@ dispatchAction({
 
 ### selectDataRange(Action)
 
-选取映射范围。
+选取映射的数值范围。
 
 ```js
 dispatchAction({
@@ -181,7 +181,7 @@ dispatchAction({
     selected: Object|Array
 })
 ```
-
+å
 **示例：**
 ```js
 myChart.dispatchAction({
@@ -209,7 +209,7 @@ myChart.dispatchAction({
 
 ```js
 dispatchAction({
-    type: 'timelinePlayChange',
+    type: 'timelineChange',
     // 时间点的 index
     currentIndex: number
 })
@@ -218,6 +218,8 @@ dispatchAction({
 **EVENT:** [timelinechanged](~events.timelinechanged)
 
 ### timelinePlayChange(Action)
+
+切换时间轴的播放状态。
 
 ```js
 dispatchAction({

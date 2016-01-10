@@ -66,6 +66,8 @@
 ```
 触发图表行为，例如图例开关`legendToggleSelect`, 数据区域缩放`dataZoom`，显示提示框`showTip`等等，更多见 [action](~action) 和 [events](~events) 的文档。
 
+`action` 参数可以通过`batch`属性同时触发多个行为。
+
 **注：**在 ECharts 2.x 是通过 `myChart.component.tooltip.showTip` 这种形式调用相应的接口触发图表行为，入口很深，而且涉及到内部组件的组织。因此在 ECharts 里统一改为 `dispatchAction` 的形式。
 
 **示例**
@@ -100,6 +102,7 @@ myChart.dispatchAction({
 
 ECharts 中的事件有两种，一种是鼠标事件，在鼠标点击某个图形上会触发，还有一种是 调用 [dispatchAction](~EChartsInstance.dispatchAction) 后触发的事件。每个 action 都会有对应的事件，具体见 [action](~action) 和 [events](~events) 的文档。
 
+如果事件是外部 [dispatchAction](~EChartsInstance.dispatchAction) 后触发，并且 action 中有 batch 属性触发批量的行为，则相应的响应事件参数里也会把属性都放在 batch 属性中。
 
 **参数：**
 + `eventName`
