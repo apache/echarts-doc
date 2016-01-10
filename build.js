@@ -10,8 +10,12 @@ languages.forEach(function (language) {
     if (!fs.existsSync('dist/' + language)) {
         fs.mkdirSync('dist/' + language);
     }
-    md2json(
-        language + '/option/**/*.md', ['visualMap', 'dataZoom', 'series'], 'option', config,
+    md2json({
+            path: language + '/option/**/*.md',
+            sectionsAnyOf: ['visualMap', 'dataZoom', 'series'],
+            entry: 'option',
+            tplEnv: config
+        },
         function (optionSchema) {
             fs.writeFileSync(
                 'dist/' + language + '/option.json',
@@ -20,8 +24,12 @@ languages.forEach(function (language) {
             );
         }
     );
-    md2json(
-        language + '/tutorial/**/*.md', null, 'tutorial', config,
+    md2json({
+            path: language + '/tutorial/**/*.md',
+            entry: 'tutorial',
+            tplEnv: config,
+            maxDepth: 1
+        },
         function (tutorialSchema) {
             fs.writeFileSync(
                 'dist/' + language + '/tutorial.json',
@@ -30,8 +38,11 @@ languages.forEach(function (language) {
             );
         }
     );
-    md2json(
-        language + '/api/**/*.md', null, 'api', config,
+    md2json({
+            path: language + '/api/**/*.md',
+            entry: 'api',
+            tplEnv: config
+        },
         function (apiSchema) {
             fs.writeFileSync(
                 'dist/' + language + '/api.json',
@@ -40,5 +51,4 @@ languages.forEach(function (language) {
             );
         }
     );
-
 });

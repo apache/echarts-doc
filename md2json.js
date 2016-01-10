@@ -4,7 +4,12 @@ var etpl = require('etpl');
 var glob = require('glob');
 
 
-function convert(mdPattern, sectionsOfAnyOf, entry, config, cb) {
+function convert(opts, cb) {
+    var mdPath = opts.path;
+    var sectionsAnyOf = opts.sectionsAnyOf;
+    var entry = opts.entry;
+    var tplEnv = opts.tplEnv;
+    var maxDepth = opts.maxDepth || 10;
     var etplEngine = new etpl.Engine({
         commandOpen: '{{',
         commandClose: '}}'
@@ -12,7 +17,7 @@ function convert(mdPattern, sectionsOfAnyOf, entry, config, cb) {
     etplEngine.addFilter('default', function (source, defaultVal) {
         return (source === '' || source == null) ? defaultVal : source;
     });
-    glob(mdPattern, function (err, files) {
+    glob(mdPath, function (err, files) {
         var mdTpl = files.filter(function (fileName) {
             return fileName.indexOf('__') !== 0;
         }).map(function (fileName) {
@@ -21,12 +26,12 @@ function convert(mdPattern, sectionsOfAnyOf, entry, config, cb) {
 
         // Render tpl
         etplEngine.compile(mdTpl.join('\n'));
-        var mdStr = etplEngine.getRenderer(entry)(config);
+        var mdStr = etplEngine.getRenderer(entry)(tplEnv);
         // Markdown to JSON
-        var schema = mdToJsonSchema(mdStr);
+        var schema = mdToJsonSchema(mdStr, maxDepth);
         // console.log(mdStr);
         var topLevel = schema.option.properties;
-        (sectionsOfAnyOf || []).forEach(function (componentName) {
+        (sectionsAnyOf || []).forEach(function (componentName) {
             var newProperties = schema.option.properties = {};
             for (var name in topLevel) {
                 if (name.indexOf(componentName) >= 0) {
@@ -67,7 +72,7 @@ renderer.link = function (href, title, text) {
     }
 };
 
-function mdToJsonSchema(mdStr) {
+function mdToJsonSchema(mdStr, maxDepth) {
 
     var currentLevel = 0;
     var result = {
@@ -155,14 +160,18 @@ function mdToJsonSchema(mdStr) {
     var headers = [];
 
     // FIXME
-    mdStr.replace(/(?:^|\n) *(#+) *([^\n]+)/g, function (header, headerPrefix, text) {
-        headers.push({
-            text: text,
-            level: headerPrefix.length
-        });
-    });
+    mdStr.replace(
+        new RegExp('(?:^|\n) *(#{1,' + maxDepth + '}) *([^#][^\n]+)', 'g'),
+        function (header, headerPrefix, text) {
+            headers.push({
+                text: text,
+                level: headerPrefix.length
+            });
+        }
+    );
 
-    mdStr.split(/(?:^|\n) *(?:#+) *(?:[^\n]+)/).slice(1).forEach(move);
+    mdStr.split(new RegExp('(?:^|\n) *(?:#{1,' + maxDepth + '}) *(?:[^#][^\n]+)','g'))
+        .slice(1).forEach(move);
 
     function move(section, idx) {
         var text = headers[idx].text;

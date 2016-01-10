@@ -62,11 +62,11 @@
 
 ## dispatchAction(Function)
 ```js
-(action: Object)
+(payload: Object)
 ```
 触发图表行为，例如图例开关`legendToggleSelect`, 数据区域缩放`dataZoom`，显示提示框`showTip`等等，更多见 [action](~action) 和 [events](~events) 的文档。
 
-`action` 参数可以通过`batch`属性同时触发多个行为。
+`payload` 参数可以通过`batch`属性同时触发多个行为。
 
 **注：**在 ECharts 2.x 是通过 `myChart.component.tooltip.showTip` 这种形式调用相应的接口触发图表行为，入口很深，而且涉及到内部组件的组织。因此在 ECharts 里统一改为 `dispatchAction` 的形式。
 
