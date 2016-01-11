@@ -197,8 +197,11 @@ function mdToJsonSchema(mdStr, maxDepth) {
             var width = +size[0];
             var height = +size[1];
             var iframe = ['<iframe data-src="', href, '"'];
-            if (!isNaN(width) && !isNaN(height)) {
-                iframe.push(' width=', width, ' height=', height);
+            if (size[0].match(/[0-9%]/)) {
+                iframe.push(' width="', size[0], '"');
+            }
+            if (size[1].match(/[0-9%]/)) {
+                iframe.push(' height="', size[1], '"');
             }
             iframe.push(' ></iframe>\n');
             return iframe.join('');
