@@ -39,7 +39,7 @@ ECharts 3 开始不再强制使用 AMD 的方式按需引入，代码里也不�
 </body>
 ```
 
-然后就可以初始化一个 echarts 实例并通过`setOption`方法生成一个简单的柱状图，下面是完整代码。
+然后就可以通过 [echarts.init](api.html#echarts.init) 方法初始化一个 echarts 实例并通过 [setOption](api.html#echartsInstance.setOption) 方法生成一个简单的柱状图，下面是完整代码。
 
 
 ```html
