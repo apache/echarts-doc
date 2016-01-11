@@ -85,7 +85,7 @@ ECharts2 中的 `x/x2/y/y2` 的命名方式仍被兼容，对应于 `left/right/
 
 [Media Query](http://www.w3.org/TR/css3-mediaqueries/#media1) 提供了『随着容器尺寸改变而改变』的能力。
 
-如下例子，可尝试拖动右下角的圆点，随着尺寸变化，legend 和 系列 会自动改变布局位置和方式。
+如下例子，可尝试拖动**右下角的圆点**，随着尺寸变化，legend 和 系列 会自动改变布局位置和方式。
 ~[750x600](${galleryViewPath}doc-example/pie-media&edit=1&reset=1)
 
 要在 option 中设置 Media Query 须遵循如下框架格式：
@@ -217,4 +217,4 @@ media: [
 <br>
 最后看一个和时间轴结合的例子：
 
-~[750x700](${galleryViewPath}bar-media-timeline&edit=1&reset=1)
+~[750x700](${galleryViewPath}doc-example/bar-media-timeline&edit=1&reset=1)
