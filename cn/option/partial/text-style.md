@@ -4,6 +4,28 @@
 
 ${name}文字的颜色。
 
+{{ if: ${hasAlign} }}
+#${prefix} align(string)=${defaultAlign}
+
+文字水平对齐方式，默认自动。
+
+可选：
++ `'left'`
++ `'center'`
++ `'right'`
+{{ /if }}
+
+{{ if: ${hasBaseline} }}
+#${prefix} baseline(string)=${defaultAlign}
+
+文字基线对齐方式，默认自动。
+
+可选：
++ `'top'`
++ `'middle'`
++ `'bottom'`
+{{ /if }}
+
 #${prefix} fontStyle(string)='normal'
 
 ${name}文字字体的风格
