@@ -158,7 +158,9 @@ ECharts 中的事件有两种，一种是鼠标事件，在鼠标点击某个图
 default: {
     text: 'loading',
     color: '#c23531',
-    textColor: '#000'
+    textColor: '#000',
+    maskColor: 'rgba(255, 255, 255, 0.8)',
+    zlevel: 0
 }
     ```
 

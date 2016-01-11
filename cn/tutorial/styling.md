@@ -1,13 +1,13 @@
 {{ target: styling }}
 # 个性化图表的样式
 
-ECharts 提供了丰富的自定义配置选项，并且能够从全局，系列，数据三个层级去设置数据图形的样式，下面我们来看如何使用 ECharts 实现下面这个南丁格尔图。
+ECharts 提供了丰富的自定义配置选项，并且能够从全局、系列、数据三个层级去设置数据图形的样式。下面我们来看如何使用 ECharts 实现下面这个南丁格尔图：
 
 ~[500x400](${galleryViewPath}doc-example/tutorial-styling-step5&edit=1&reset=1)
 
 ## 绘制南丁格尔图
 
-[上一篇中](~getting-started)讲了如何绘制一个简单的柱状图，这次要画的是饼图，饼图主要是通过扇形的弧度表现不同类目的数据在总和中的占比，它的数据格式比柱状图更简单，只有一维的数值，不需要给类目，因为不在直角坐标系上，所以也不需要`xAxis`，`yAxis`。
+[上一篇中](~getting-started)讲了如何绘制一个简单的柱状图，这次要画的是饼图，饼图主要是通过扇形的弧度表现不同类目的数据在总和中的占比，它的数据格式比柱状图更简单，只有一维的数值，不需要给类目。因为不在直角坐标系上，所以也不需要`xAxis`，`yAxis`。
 
 ```js
 myChart.setOption({
@@ -32,7 +32,7 @@ myChart.setOption({
 
 ~[400x300](${galleryViewPath}doc-example/tutorial-styling-step0&edit=1&reset=1)
 
-这里`data`属性值不像入门教程里那样每一项都是单个数值，而是一个包含 `name` 和 `value` 属性的对象，ECharts 中的数据项都是既可以只设成数值，也可以设成一个包含名称，该数据图形的样式配置，标签配置的对象，具体见 [data](option.html#series-pie.data) 文档。
+这里`data`属性值不像入门教程里那样每一项都是单个数值，而是一个包含 `name` 和 `value` 属性的对象，ECharts 中的数据项都是既可以只设成数值，也可以设成一个包含有名称、该数据图形的样式配置、标签配置的对象，具体见 [data](option.html#series-pie.data) 文档。
 
 
 ECharts 中的[饼图](option.html#series-pie)也支持通过设置 [roseType](option.html#series-pie.roseType) 显示成南丁格尔图。
@@ -47,7 +47,7 @@ roseType: 'angle'
 
 ## 阴影的配置
 
-ECharts 中有一些通用的样式，诸如阴影，透明度，颜色，边框颜色，边框宽度等，这些样式一般都会在系列的 [itemStyle](~series-pie.itemStyle) 里设置。例如阴影的样式可以通过下面几个配置项设置：
+ECharts 中有一些通用的样式，诸如阴影、透明度、颜色、边框颜色、边框宽度等，这些样式一般都会在系列的 [itemStyle](~series-pie.itemStyle) 里设置。例如阴影的样式可以通过下面几个配置项设置：
 
 ```js
 itemStyle: {
@@ -68,7 +68,7 @@ itemStyle: {
 
 ~[400x300](${galleryViewPath}doc-example/tutorial-styling-step2&edit=1&reset=1)
 
-`itemStyle`都会有`normal`和`emphasis`两个选项，`normal`选项是正常展示下的样式，`emphasis`是鼠标 hover 时候的高亮样式。这个示例里是正常的样式请款下加阴影，但是可能更多的时候是 hover 的时候通过阴影突出。
+`itemStyle`都会有`normal`和`emphasis`两个选项，`normal`选项是正常展示下的样式，`emphasis`是鼠标 hover 时候的高亮样式。这个示例里是正常的样式下加阴影，但是可能更多的时候是 hover 的时候通过阴影突出。
 ```js
 itemStyle: {
     emphasis: {
