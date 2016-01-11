@@ -1,7 +1,7 @@
 {{ target: events }}
 # events
 
-ECharts 中的事件列表，分为两种，一种是鼠标事件，在鼠标点击某个图形上会触发，还有一种是 调用 [dispatchAction](~EChartsInstance.dispatchAction) 后触发的事件。
+ECharts 中的事件列表，分为两种，一种是鼠标事件，在鼠标点击某个图形上会触发，还有一种是 调用 [dispatchAction](~echartsInstance.dispatchAction) 后触发的事件。
 
 ## 鼠标事件
 

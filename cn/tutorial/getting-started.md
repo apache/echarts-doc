@@ -3,7 +3,13 @@
 
 ## 获取 ECharts
 
-你可以直接从[官网下载界面](http://echarts.baidu.com/download.html)选择你需要的版本下载，根据开发者功能和体积上的需求，我们提供了不同打包的下载，如果你在体积上没有要求，可以直接[下载完整版本](http://echarts.baidu.com/dist/echarts.min.js)。
+你可以通过以下几种方式获取 ECharts。
+
+1. 从[官网下载界面](http://echarts.baidu.com/download.html)选择你需要的版本下载，根据开发者功能和体积上的需求，我们提供了不同打包的下载，如果你在体积上没有要求，可以直接[下载完整版本](http://echarts.baidu.com/build/echarts.min.js) TODO。
+
+2. 在 ECharts 的 [github](https://github.com/echarts) 上下载最新的 [release](TODO)，解压出来的文件夹里的 `dist` 目录里可以找到最新版本的 echarts 库。
+
+3. 使用 NPM 安装 TODO
 
 ## 引入 ECharts
 

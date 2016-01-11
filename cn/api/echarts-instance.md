@@ -100,9 +100,9 @@ myChart.dispatchAction({
 
 绑定事件处理函数。
 
-ECharts 中的事件有两种，一种是鼠标事件，在鼠标点击某个图形上会触发，还有一种是 调用 [dispatchAction](~EChartsInstance.dispatchAction) 后触发的事件。每个 action 都会有对应的事件，具体见 [action](~action) 和 [events](~events) 的文档。
+ECharts 中的事件有两种，一种是鼠标事件，在鼠标点击某个图形上会触发，还有一种是 调用 [dispatchAction](~echartsInstance.dispatchAction) 后触发的事件。每个 action 都会有对应的事件，具体见 [action](~action) 和 [events](~events) 的文档。
 
-如果事件是外部 [dispatchAction](~EChartsInstance.dispatchAction) 后触发，并且 action 中有 batch 属性触发批量的行为，则相应的响应事件参数里也会把属性都放在 batch 属性中。
+如果事件是外部 [dispatchAction](~echartsInstance.dispatchAction) 后触发，并且 action 中有 batch 属性触发批量的行为，则相应的响应事件参数里也会把属性都放在 batch 属性中。
 
 **参数：**
 + `eventName`
@@ -143,7 +143,7 @@ ECharts 中的事件有两种，一种是鼠标事件，在鼠标点击某个图
 ```js
 (type?: string, opts?: Object)
 ```
-显示加载动画效果。可以在加载数据前手动调用改接口显示加载动画，在动画加载完成后调用 [hideLoading](~EChartsInstance.hideLoading) 隐藏加载动画。
+显示加载动画效果。可以在加载数据前手动调用改接口显示加载动画，在动画加载完成后调用 [hideLoading](~echartsInstance.hideLoading) 隐藏加载动画。
 
 **参数：**
 + `type`
