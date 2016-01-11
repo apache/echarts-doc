@@ -160,8 +160,9 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 
 ##${prefix} textStyle(Object)
 
-{{ use: partial-text-style(prefix='##' + ${prefix},
-defaultColor="'#333'"
+{{ use: partial-text-style(
+    prefix='##' + ${prefix},
+    defaultColor="'#333'"
 )}}
 
 
@@ -246,7 +247,11 @@ data: [{
 
 类目标签的文字样式。
 
-{{ use:partial-text-style(prefix='##' + ${prefix}) }}
+{{ use:partial-text-style(
+    prefix='##' + ${prefix},
+    hasAlign=true,
+    hasBaseline=true
+) }}
 
 
 {{ target: partial-axis-interval }}
