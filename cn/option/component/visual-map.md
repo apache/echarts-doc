@@ -70,39 +70,54 @@ option = {
 定义方式，例如：
 
 ```javascript
-${rangeType}: {
-    color: ['#121122', 'rgba(3,4,5,0.4)', 'red'],
-    symbolSize: [30, 100]
-}
+visualMap: [
+    {
+        ...,
+        ${rangeType}: {
+            color: ['#121122', 'rgba(3,4,5,0.4)', 'red'],
+            symbolSize: [30, 100]
+        }
+    }
+]
 ```
 
 如果想分别定义 `${visualMapName}` 本身的视觉样式和 `目标系列` 的视觉样式，则这样定义：
 
 ```javascript
-target: { // 表示 目标系列 的视觉样式。
-    ${rangeType}: {
-        color: ['#121122', 'rgba(3,4,5,0.4)', 'red'],
-        symbolSize: [60, 200]
+visualMap: [
+    {
+        ...,
+        target: { // 表示 目标系列 的视觉样式。
+            ${rangeType}: {
+                color: ['#121122', 'rgba(3,4,5,0.4)', 'red'],
+                symbolSize: [60, 200]
+            }
+        },
+        controller: { // 表示 ${visualMapName} 本身的视觉样式。
+            ${rangeType}: {
+                symbolSize: [30, 100]
+            }
+        }
     }
-},
-controller: { // 表示 ${visualMapName} 本身的视觉样式。
-    ${rangeType}: {
-        symbolSize: [30, 100]
-    }
-}
+]
 ```
 
 或者这样定义：
 ```javascript
-${rangeType}: { // 表示 目标系列 的视觉样式 和 ${visualMapName} 共有的视觉样式。
-    color: ['#121122', 'rgba(3,4,5,0.4)', 'red'],
-    symbolSize: [60, 200]
-},
-controller: { // 表示 ${visualMapName} 本身的视觉样式，会覆盖共有的视觉样式。
-    ${rangeType}: {
-        symbolSize: [30, 100]
+visualMap: [
+    {
+        ...,
+        ${rangeType}: { // 表示 目标系列 的视觉样式 和 ${visualMapName} 共有的视觉样式。
+            color: ['#121122', 'rgba(3,4,5,0.4)', 'red'],
+            symbolSize: [60, 200]
+        },
+        controller: { // 表示 ${visualMapName} 本身的视觉样式，会覆盖共有的视觉样式。
+            ${rangeType}: {
+                symbolSize: [30, 100]
+            }
+        }
     }
-}
+]
 ```
 
 **关于视觉类型**

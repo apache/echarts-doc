@@ -5,3 +5,4 @@
 {{ import: styling }}
 {{ import: data-zoom }}
 {{ import: media-query }}
+{{ import: visual-map }}
