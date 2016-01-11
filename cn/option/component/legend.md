@@ -9,8 +9,6 @@
 
 ECharts 3 中单个 echarts 实例中可以存在多个图例组件，会方便多个图例的布局。
 
-TODO 示例。
-
 ## show(boolean) = true
 
 {{use: partial-rect-layout}}

@@ -194,7 +194,6 @@
 
 + `'shadow'` 阴影指示器
 
-TODO 截图示例
 
 ### axis(string) = 'auto'
 
