@@ -73,6 +73,17 @@
 图形的高度，即长条的高度。
 
 
+## align: 'auto'
+
+指定组件中手柄和文字的摆放关系，可选值为：
+
++ `'auto'` 自动决定。
++ `'left'` 手柄和label在右，orient 为 horizontal 时有效。
++ `'right'` 手柄和label在左，orient 为 horizontal 时有效。
++ `'top'` 手柄和label在下，orient 为 vertical 时有效。
++ `'bottom'` 手柄和label在上，orient 为 vertical 时有效。
+
+
 ## text(Array) = null
 
 两端的文本，如 `['High', 'Low']`。[参见例子](${galleryEditorPath}doc-example/map-visualMap-continuous-text&edit=1&reset=1)。
