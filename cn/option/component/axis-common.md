@@ -169,7 +169,7 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 
 {{ if: ${hasSplitLineAndArea} }}
 #${prefix} splitLine(Object)
-坐标轴在 [grid](~grid) 区域中的分隔线，默认不显示。
+坐标轴在 [grid](~grid) 区域中的分隔线，默认显示。
 ##${prefix} show(boolean) = false
 是否显示分隔线。
 ##${prefix} interval(number|Function) = 'auto'
