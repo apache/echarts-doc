@@ -102,8 +102,13 @@ Icon 的 path 字符串，ECharts 3 中支持使用自定义的 svg path 作为 
 按钮文本颜色。
 
 ### dataZoom(Object)
-数据区域缩放
+数据区域缩放。目前只支持直角坐标系的缩放。
 {{ use: feature-common(title="数据区域缩放") }}
+
+#### xAxisIndex(number|Array)
+指定 哪些 [xAxis](~xAxis) 被控制。如果缺省则控制所有的x轴。
+#### yAxisIndex(number|Array)
+指定 哪些 [yAxis](~yAxis) 被控制。如果缺省则控制所有的y轴。
 #### icon(Object)
 缩放和还原的 icon path。
 ##### zoom(string)
