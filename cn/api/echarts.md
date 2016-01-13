@@ -23,7 +23,7 @@
 
 + `theme`
 
-    应用的主题。可以是一个主题的配置对象，也可以是使用已经通过 [echarts.registerMap](~echarts.registerMap) 注册的主题名称。
+    应用的主题。可以是一个主题的配置对象，也可以是使用已经通过 [echarts.registerTheme](~echarts.registerTheme) 注册的主题名称。
 
 + `opts`
 
