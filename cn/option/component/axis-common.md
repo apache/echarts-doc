@@ -177,7 +177,7 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
     name="坐标轴分隔线",
     componentType=${componentType}
 ) }}
-##${prefix} lineTyle(Object)
+##${prefix} lineStyle(Object)
 
 {{ use: partial-line-style(prefix='##' + ${prefix}, defaultColor="'#333'", defaultWidth=1, defaultType="'solid'", name="分隔线") }}
 
