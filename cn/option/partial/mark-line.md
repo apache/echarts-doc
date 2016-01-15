@@ -10,6 +10,9 @@
 
 **注意：** 这里无法像一般的 symbolSize 那样通过数组分别指定高宽。
 
+##${prefix} precision(number) = 2
+标线数值的精度，在显示平均值线的时候有用。
+
 ##${prefix} label(Object)
 标线文本。
 ###${prefix} normal(Object)
