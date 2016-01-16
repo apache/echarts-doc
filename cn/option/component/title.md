@@ -39,7 +39,14 @@
 
 ## textStyle
 
-{{ use: partial-text-style(prefix="##", name="主标题") }}
+{{ use: partial-text-style(
+    prefix="##",
+    name="主标题",
+    defaultFontSize=18,
+    defaultFontWeight="'border'",
+    defaultColor="'#333'"
+) }}
+
 
 ## subtext(string) = ''
 
@@ -61,7 +68,11 @@
 
 ## subtextStyle
 
-{{ use: partial-text-style(prefix='##', name="副标题") }}
+{{ use: partial-text-style(
+    prefix='##',
+    name="副标题",
+    defaultColor="'#aaa'"
+) }}
 
 ## padding(number) = 5
 
