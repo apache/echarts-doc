@@ -1,5 +1,6 @@
 var md2json = require('./md2json');
 var fs = require('fs');
+var marked = require('marked');
 
 var languages = ['cn'];
 
@@ -53,5 +54,11 @@ languages.forEach(function (language) {
                 'utf-8'
             );
         }
+    );
+
+    fs.writeFileSync(
+        'dist/' + language + '/changelog.html',
+        marked(fs.readFileSync(language + '/changelog.md', 'utf-8')),
+        'utf-8'
     );
 });
