@@ -25,9 +25,17 @@
 
 + [^] 修复多个图表示例联动问题。Fix [#2391](https://github.com/ecomfe/echarts/issues/2391)
 
-+ [^] 饼图数据项都为 0 时改为均匀分布。
-
 + [^] 修复饼图的颜色是回调函数时 legend 上的颜色无法正确显示的问题。Fix [#2372](https://github.com/ecomfe/echarts/issues/2372)
+
++ [^] 修复饼图数据为 0 时候鼠标的 hover 错误。
+
++ [^] 饼图数据项都为 0 时扇区改为均匀分布。
+
++ [^] 修复 IE 8 下背景色设置的错误。
+
++ [^] 修复 tooltip 组件 dispose 中释放事件不正确的错误。
+
+
 
 ## v3.0.0
 <div class="time">2016-01-12</div>
