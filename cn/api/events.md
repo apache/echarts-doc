@@ -29,6 +29,8 @@ ECharts 中的事件列表，分为两种，一种是鼠标事件，在鼠标点
 }
 ```
 
+**注：** ECharts 2.x 中用户开关图例对应的事件从 `legendselected` 改为 [legendselectchanged](~events.legendselectchanged)。
+
 ## legendunselected(Event)
 **ACTION:** [legendUnSelect](~action.legend.legendUnSelect)
 图例取消选中后的事件。
@@ -44,7 +46,9 @@ ECharts 中的事件列表，分为两种，一种是鼠标事件，在鼠标点
 ```
 ## legendselectchanged(Event)
 **ACTION:** [legendToggleSelect](~action.legend.legendToggleSelect)
-切换图例选中状态后的事件
+切换图例选中状态后的事件。
+
+图例组件用户切换图例开关会触发该事件。
 
 ```js
 {
@@ -57,6 +61,7 @@ ECharts 中的事件列表，分为两种，一种是鼠标事件，在鼠标点
 ```
 ## datazoom(Event)
 **ACTION:** [dataZoom](~action.dataZoom.dataZoom)
+
 数据区域缩放后的事件。
 
 ```js
@@ -151,13 +156,13 @@ ECharts 中的事件列表，分为两种，一种是鼠标事件，在鼠标点
 
 
 {{ target: event-select }}
-## ${componentType}select(Event)
+## ${componentType}selected(Event)
 **ACTION:** [${componentType}Select](~action.${componentType}.${componentType}Select)
 
 ${name}选中后的事件。
 ```js
 {
-    type: '${componentType}select',
+    type: '${componentType}selected',
     // 系列 ID，可以在 option 中传入
     seriesId: string
     // 数据名称
@@ -167,14 +172,15 @@ ${name}选中后的事件。
 }
 ```
 
+**注：** ECharts 2.x 中用户开关图例对应的事件从 `${componentType}selected` 改为 [${componentType}selectchanged](~events.${componentType}selectchanged)。
 
-## ${componentType}unselect(Event)
+## ${componentType}unselected(Event)
 **ACTION:** [${componentType}UnSelect](~action.${componentType}.${componentType}UnSelect)
 
 ${name}取消选中后的事件。
 ```js
 {
-    type: '${componentType}unselect',
+    type: '${componentType}unselected',
     // 系列 ID，可以在 option 中传入
     seriesId: string
     // 数据名称
@@ -188,6 +194,9 @@ ${name}取消选中后的事件。
 **ACTION:** [${componentType}ToggleSelect](~action.${componentType}.${componentType}ToggleSelect)
 
 ${name}切换选中状态的事件。
+
+用户点击选中会触发该事件。
+
 ```js
 {
     type: '${componentType}selectchanged',
