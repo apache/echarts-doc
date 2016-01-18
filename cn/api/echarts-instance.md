@@ -54,6 +54,15 @@
 
 获取 ECharts 实例容器的 dom 节点。
 
+## getOption(Function)
+```js
+() => Object
+```
+
+获取当前实例中维护的`option`对象，返回的`option`对象中包含了用户多次`setOption`合并得到的配置项和数据，也记录了用户交互的状态，例如图例的开关，数据区域缩放选择的范围等等。所以从这份 option 可以恢复或者得到一个新的一模一样的实例。
+
+**注意：**返回的 option 每个组件的属性值都会是一个数组，不管传进来的时候是单个组件的对象还是多个组件的数组。
+
 ## resize(Function)
 
 改变图表尺寸，在容器大小发生改变时需要手动调用。
@@ -204,6 +213,16 @@ img.src = myChart.getDataURL({
 ```
 
 导出联动的图表图片，返回一个 base64 的 url，可以设置为`Image`的`src`。导出图片中每个图表的相对位置跟器容器的相对位置有关。
+
+## clear
+
+清空当前实例，会移除实例中所有的组件和图表。清空后调用 [getOption](~echartsInstance.getOption) 方法返回一个`{}`空对象。
+
+## isDisposed
+```js
+() => boolean
+```
+当前实例是否已经被释放。
 
 ## dispose
 
