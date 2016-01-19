@@ -79,13 +79,6 @@ labelFormatter: function (value) {
 拖动时，是否实时更新系列的视图。如果设置为 `false`，则只在拖拽结束的时候更新。
 
 
-## zoomLock(boolean) = false
-
-是否锁定选择区域（或叫做数据窗口）的大小。
-
-如果设置为 `true` 则锁定选择区域的大小，也就是说，只能平移，不能缩放。
-
-
 ## textStyle
 
 {{ use:partial-text-style(
