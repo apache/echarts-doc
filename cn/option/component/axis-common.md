@@ -257,6 +257,8 @@ data: [{
 {{ target: partial-axis-interval }}
 ${name}的显示间隔，在类目轴中有效。{{ if: !${isAxisLabel} }}默认同 [axisLabel.interval](~${componentType}.axisLabel.interval) 一样。{{ /if }}
 
+默认会采用标签不重叠的策略间隔显示标签，可以设置成 0 强制显示所有标签。
+
 可以用数值表示间隔的数据，也可以通过回调函数控制。回调函数格式如下：
 ```js
 (index:number, value: string) => boolean
