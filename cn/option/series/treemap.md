@@ -73,7 +73,8 @@ treemap 首先是把数值映射到『面积』这种视觉元素上。
 
 + `false`：节点点击无反应。
 + `'zoomToNode'`：点击节点后缩放到节点。
-+ `'link'`：如果节点数据中有 `link` 点击节点后会进行链接跳转。
++ `'link'`：如果节点数据中有 [link](~series-treemap.data.link) 点击节点后会进行超链接跳转。
+
 
 
 ## zoomToNodeRatio(number) = 0.32*0.32
@@ -311,6 +312,16 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
     galleryEditorPath=${galleryEditorPath},
     galleryViewPath=${galleryViewPath}
 )}}
+
+### link(string)
+
+点击此节点可跳转的超链接。须 [series-treemap.nodeClick](~series-treemap.nodeClick) 值为 `'link'` 时才生效。
+
+参见 [series-treemap.data.target](~series-treemap.data.target)。
+
+### target(string) = 'blank'
+
+意义同 `html` `<a>` 标签中的 `target`，参见 [series-treemap.data.link](~series-treemap.data.link)。可选值为：`'blank'` 或 `'self'`。
 
 ### children(Array)
 
