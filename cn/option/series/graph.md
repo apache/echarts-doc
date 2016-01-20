@@ -142,7 +142,7 @@
 
 
 ## data(Array)
-{{ use: partial-1d-data-label-formatter() }}
+{{ use: partial-1d-data-desc() }}
 ### name(string)
 数据项名称。
 ### value(number|Array)
@@ -156,14 +156,14 @@
 ) }}
 
 ### itemStyle(Object)
-该类目节点的样式。
+该节点的样式。
 #### normal(Object)
 {{use:partial-item-style(prefix="####", useColorPalatte=true)}}
 #### emphasis(Object)
 {{use:partial-item-style(prefix="####")}}
 
 ### label(Object)
-该类目节点标签的样式。
+该节点标签的样式。
 #### normal(Object)
 {{ use:partial-label(
     prefix="####"
@@ -196,10 +196,7 @@ links: [{
 关系边的线条样式。
 #### normal(Object)
 {{use:partial-line-style(
-    prefix="####",
-    defaultColor="'#aaa'",
-    defaultWidth=1,
-    defaultOpacity=0.5
+    prefix="####"
 )}}
 ##### curveness(number) = 0
 边的曲度，支持从 0 到 1 的值，值越大曲度越大。

@@ -32,9 +32,10 @@
 {{import: series-map}}
 {{import: series-parallel}}
 {{import: series-lines}}
+{{import: series-graph}}
+{{import: series-sankey}}
 {{import: series-funnel}}
 {{import: series-gauge}}
-{{import: series-graph}}
 
 # color(Array)
 
