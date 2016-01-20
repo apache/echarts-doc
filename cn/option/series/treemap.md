@@ -57,9 +57,23 @@ treemap 首先是把数值映射到『面积』这种视觉元素上。
 默认为黄金比：`0.5 * (1 + Math.sqrt(5))`。
 
 
-## roam(boolean)
+## roam(boolean|string) = true
 
-是否开启拖拽漫游（移动和缩放），默认为false（关闭），其他有效输入为true（开启）。
+是否开启拖拽漫游（移动和缩放）。可取值有：
+
++ `false`：关闭。
++ `'scale'` 或 `'zoom'`：只能够缩放。
++ `'move'`：只能够平移。
++ `true`：缩放和平移均可。
+
+
+## nodeClick(boolean|string) = 'zoomToNode'
+
+可取值为：
+
++ `false`：节点点击无反应。
++ `'zoomToNode'`：点击节点后缩放到节点。
++ `'link'`：如果节点数据中有 `link` 点击节点后会进行链接跳转。
 
 
 ## zoomToNodeRatio(number) = 0.32*0.32
