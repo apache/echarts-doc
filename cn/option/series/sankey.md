@@ -152,7 +152,7 @@ links: [{
 
 {{use: partial-animation(
     prefix="#",
-    defaultAnimationEasing='linear',
+    defaultAnimationEasing="'linear'",
     defaultAnimationDuration=1000
 )}}
 
