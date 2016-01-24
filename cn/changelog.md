@@ -17,7 +17,9 @@
 
 + [^] 修复 0 数据在 tooltip 中显示 undefined 的问题，Fix [#2463](https://github.com/ecomfe/echarts/issues/2463)
 
-+ [^] 修复 dataZoom 缩略图显示不正确的问题，Fix [2462](https://github.com/ecomfe/echarts/issues/2462)
++ [^] 修复 dataZoom 缩略图显示不正确的问题，Fix [#2462](https://github.com/ecomfe/echarts/issues/2462)
+
++ [^] 修复坐标轴 `min` `max` 是字符串的问题，PR [#2481](https://github.com/ecomfe/echarts/pull/2481)
 
 
 ## v3.0.1
