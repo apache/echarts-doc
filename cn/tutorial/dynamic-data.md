@@ -59,7 +59,7 @@ myChart.setOption({
 $.get('data.json').done(function (data) {
     // 填入数据
     myChart.setOption({
-        xAixs: {
+        xAxis: {
             data: data.categories
         },
         series: [{
