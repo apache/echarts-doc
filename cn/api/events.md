@@ -136,7 +136,7 @@ ECharts 中的事件列表，分为两种，一种是鼠标事件，在鼠标点
 [工具栏中动态类型切换](option.html#toolbox.feature.magicType)的切换事件。
 ```js
 {
-    type: 'dataviewchanged',
+    type: 'magictypechanged',
     // 点击切换的当前类型，同 echarts 2.x 中的 type 属性
     currentType: string
 }
