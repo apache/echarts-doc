@@ -156,40 +156,6 @@ ECharts 中的事件列表，分为两种，一种是鼠标事件，在鼠标点
 
 
 {{ target: event-select }}
-## ${componentType}selected(Event)
-**ACTION:** [${componentType}Select](~action.${componentType}.${componentType}Select)
-
-${name}选中后的事件。
-```js
-{
-    type: '${componentType}selected',
-    // 系列 ID，可以在 option 中传入
-    seriesId: string
-    // 数据名称
-    name: name,
-    // 所有数据的选中状态表。
-    selected: Object
-}
-```
-
-**注：** ECharts 2.x 中用户开关图例对应的事件从 `${componentType}selected` 改为 [${componentType}selectchanged](~events.${componentType}selectchanged)。
-
-## ${componentType}unselected(Event)
-**ACTION:** [${componentType}UnSelect](~action.${componentType}.${componentType}UnSelect)
-
-${name}取消选中后的事件。
-```js
-{
-    type: '${componentType}unselected',
-    // 系列 ID，可以在 option 中传入
-    seriesId: string
-    // 数据名称
-    name: name,
-    // 所有数据的选中状态表。
-    selected: Object
-}
-```
-
 ## ${componentType}selectchanged(Event)
 **ACTION:** [${componentType}ToggleSelect](~action.${componentType}.${componentType}ToggleSelect)
 
@@ -209,3 +175,44 @@ ${name}切换选中状态的事件。
 }
 ```
 **注：** 该事件同 ECharts 2 中的 `${componentType}Selected` 事件相同。
+
+## ${componentType}selected(Event)
+**ACTION:** [${componentType}Select](~action.${componentType}.${componentType}Select)
+
+${name}选中后的事件。
+
+使用`dispatchAction`可触发此事件，用户点击不会触发此事件（用户点击事件请使用 [${componentType}selectchanged](~events.${componentType}selectchanged)）。
+
+```js
+{
+    type: '${componentType}selected',
+    // 系列 ID，可以在 option 中传入
+    seriesId: string
+    // 数据名称
+    name: name,
+    // 所有数据的选中状态表。
+    selected: Object
+}
+```
+
+**注：** ECharts 2.x 中用户开关图例对应的事件从 `${componentType}selected` 改为 [${componentType}selectchanged](~events.${componentType}selectchanged)。
+
+## ${componentType}unselected(Event)
+**ACTION:** [${componentType}UnSelect](~action.${componentType}.${componentType}UnSelect)
+
+${name}取消选中后的事件。
+
+使用`dispatchAction`可触发此事件，用户点击不会触发此事件（用户点击事件请使用 [${componentType}selectchanged](~events.${componentType}selectchanged)）。
+
+```js
+{
+    type: '${componentType}unselected',
+    // 系列 ID，可以在 option 中传入
+    seriesId: string
+    // 数据名称
+    name: name,
+    // 所有数据的选中状态表。
+    selected: Object
+}
+```
+
