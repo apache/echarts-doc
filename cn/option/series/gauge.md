@@ -52,7 +52,7 @@
 ```
 #### width(number) = 30
 轴线宽度。
-{{ use: partial-style-shadow-opacity(prefix="####") }}
+{{ use: partial-style-shadow-opacity(prefix="###") }}
 
 ## splitLine(Object)
 分隔线样式。
