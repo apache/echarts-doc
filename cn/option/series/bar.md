@@ -40,7 +40,8 @@
 {{use:partial-bar-item-style(
     prefix="###",
     useColorPalatte=true,
-    hasCallback=true
+    hasCallback=true,
+    barBorderRadius=true
 )}}
 ### emphasis(Object)
 {{use:partial-bar-item-style(prefix="###")}}
@@ -85,7 +86,10 @@
 
 ### itemStyle(Object)
 #### normal(Object)
-{{use:partial-bar-item-style(prefix="####")}}
+{{use:partial-bar-item-style(
+    prefix="####",
+    barBorderRadius=true
+)}}
 #### emphasis(Object)
 {{use:partial-bar-item-style(prefix="####")}}
 
@@ -120,6 +124,16 @@
 #${prefix} barBorderWidth(number) = 0
 
 柱条的描边宽度，默认不描边。
+
+{{ if: ${barBorderRadius} }}
+#${prefix} barBorderRadius(number|Array) = 0
+柱形边框圆角，单位px，支持传入数组分别指定柱形4个圆角半径。
+如:
+```
+barBorderRadius: 5, // 统一设置四个角的圆角大小
+barBorderRadius: [5, 5, 0, 0] //（顺时针左上，右上，右下，左下）
+```
+{{ /if }}
 
 {{ use:partial-style-shadow-opacity(prefix=${prefix}) }}
 
