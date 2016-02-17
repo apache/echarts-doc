@@ -46,17 +46,21 @@
 
 **示例：**
 ```js
-data: [{{if: ${hasType} }}{
-    name: '最大值',
-    type: 'max'
-}, {{/if}}{{if: ${hasCoord} }}{
-    name: '某个坐标',
-    coord: [10, 20]
-}, {{/if}}{
-    name: '某个屏幕坐标',
-    x: 100,
-    y: 100
-}]
+data: [{{if: ${hasType} }}
+    {
+        name: '最大值',
+        type: 'max'
+    }, {{/if}}{{if: ${hasCoord} }}
+    {
+        name: '某个坐标',
+        coord: [10, 20]
+    }, {{/if}}
+    {
+        name: '某个屏幕坐标',
+        x: 100,
+        y: 100
+    }
+]
 ```
 ###${prefix} name(string) = ''
 标注名称。
