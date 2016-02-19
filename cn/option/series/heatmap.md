@@ -59,3 +59,16 @@
 #### emphasis(Object)
 {{use:partial-item-style(prefix="####")}}
 
+{{use: partial-mark-point(
+    prefix="#",
+    seriesType="heatmap"
+)}}
+{{use: partial-mark-line(
+    prefix="#",
+    seriesType="heatmap"
+)}}
+
+{{use:partial-z-zlevel(
+    prefix="#",
+    componentName="热力图"
+) }}

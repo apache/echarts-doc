@@ -136,6 +136,11 @@
     hasType=true
 )}}
 
+{{use:partial-z-zlevel(
+    prefix="#",
+    componentName="折线图"
+) }}
+
 {{use: partial-animation(
     prefix="#",
     defaultAnimationEasing='linear'
