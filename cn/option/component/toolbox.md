@@ -180,4 +180,4 @@ feature: {
 ### emphasis(Object)
 {{ use: partial-item-style(prefix="###") }}
 
-{{ use: partial-rect-layout(componentName="工具栏") }}
+{{ use: partial-rect-layout-width-height(componentName="工具栏") }}
