@@ -141,7 +141,7 @@ data: [
 #${prefix} valueIndex(number)
 在使用 [type](~series-${seriesType}.markLine.data.type) 时有效，用于指定在哪个维度上指定最大值最小值，可以是 `0`（xAxis, radiusAxis），`1`（yAxis, angleAxis），默认使用第一个数值轴所在的维度。
 
-###${prefix} valueDim(string)
+#${prefix} valueDim(string)
 在使用 [type](~series-${seriesType}.markLine.data.type) 时有效，用于指定在哪个维度上指定最大值最小值。这可以是维度的直接名称，例如折线图时可以是`x`、`angle`等、candlestick 图时可以是`open`、`close`等维度名称。
 
 #${prefix} coord(Array)

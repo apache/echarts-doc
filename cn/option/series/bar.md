@@ -106,9 +106,12 @@
     hasType=true
 )}}
 
+{{use:partial-z-zlevel(
+    prefix="#",
+    componentName="柱状图"
+) }}
+
 {{use:partial-animation(prefix="#")}}
-
-
 
 
 {{ target:partial-bar-item-style }}
@@ -136,5 +139,4 @@ barBorderRadius: [5, 5, 0, 0] //（顺时针左上，右上，右下，左下）
 {{ /if }}
 
 {{ use:partial-style-shadow-opacity(prefix=${prefix}) }}
-
 

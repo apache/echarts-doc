@@ -112,12 +112,16 @@
     hasCoord=true
 )}}
 
+{{use:partial-z-zlevel(
+    prefix="#",
+    componentName="K线图"
+) }}
+
 {{use: partial-animation-init(
     prefix="#",
     defaultAnimationEasing='linear',
     defaultAnimationDuration=300
 )}}
-
 
 
 

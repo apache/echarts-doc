@@ -117,5 +117,11 @@
     hasCoord=true,
     hasType=true
 )}}
+
+{{use:partial-z-zlevel(
+    prefix="#",
+    componentName="散点图"
+) }}
+
 {{use: partial-animation(prefix="#")}}
 

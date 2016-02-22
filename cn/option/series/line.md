@@ -90,6 +90,22 @@
 ## smooth(false) = false
 是否平滑曲线显示。
 
+## smoothMonotone(string)
+折线平滑后是否在一个维度上保持单调性，可以设置成`'x'`, `'y'`来指明是在 x 轴或者 y 轴上保持单调性。
+
+通常在双数值轴上使用。
+
+下面两张图分别是双数值轴中的折线图`smoothMonotone`不设置以及设置为`'x'`的区别。
+
++ 不设置`smoothMonotone`:
+
+![300xauto](~smooth-monotone-none.png)
+
++ 设置为 `'x'`:
+
+![300xauto](~smooth-monotone-x.png)
+
+
 ## data(Array)
 
 {{ use: partial-2d-data-desc(
@@ -135,6 +151,11 @@
     hasCoord=true,
     hasType=true
 )}}
+
+{{use:partial-z-zlevel(
+    prefix="#",
+    componentName="折线图"
+) }}
 
 {{use: partial-animation(
     prefix="#",

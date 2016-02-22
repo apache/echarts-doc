@@ -98,4 +98,4 @@ ECharts 使用 [geoJSON](http://geojson.org/) 格式的数据作为地图的轮�
 
 {{ use: partial-item-style(prefix=${prefix} + '##') }}
 
-{{ use: partial-rect-layout(prefix="#" + ${prefix}) }}
+{{ use: partial-rect-layout(prefix=${prefix}) }}

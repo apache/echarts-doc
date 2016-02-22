@@ -52,6 +52,11 @@
 {{use: partial-parallel-line-style(prefix="##")}}
 
 
+{{use:partial-z-zlevel(
+    prefix="#",
+    componentName="平行坐标"
+) }}
+
 {{use: partial-animation(
     prefix="#",
     defaultAnimationEasing='linear'
