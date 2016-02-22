@@ -1,4 +1,4 @@
-## v3.1.0
+## v3.1.1
 <div class="time">2016-02-22</div>
 
 + 【\+】新加入 npm 渠道获取 echarts，详细见 [webpack + echarts 教程](http://echarts.baidu.com/tutorial.html#%E5%9C%A8%20webpack%20%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts)
