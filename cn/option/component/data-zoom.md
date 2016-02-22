@@ -168,18 +168,24 @@ option: {
 [${dataZoomName}.start](~${dataZoomName}.start) 和 [${dataZoomName}.end](~${dataZoomName}.end) 共同用 **百分比** 的形式定义了数据窗口范围。
 
 
-## startValue(number) = null
+## startValue(number|string|Date) = null
 
-数据窗口范围的起始数值。定义了 `startValue` 时，则 [${dataZoomName}.start](~${dataZoomName}.start) 失效。
+数据窗口范围的起始数值。如果设置了 [${dataZoomName}.start](~${dataZoomName}.start) 则 `startValue` 失效。
+
+[${dataZoomName}.startValue](~${dataZoomName}.startValue) 和 [${dataZoomName}.endValue](~${dataZoomName}.endValue) 共同用 **绝对数值** 的形式定义了数据窗口范围。
+
+注意，如果轴的类型为 `category`，则 `startValue` 即可以设置为 `axis.data` 数组的 `index`，也可以设置为数组值本身。
+但是如果设置为数组值本身，会在内部自动转化为数组的 index。
+
+
+## endValue(number|string|Date) = null
+
+数据窗口范围的结束数值。如果设置了 [${dataZoomName}.end](~${dataZoomName}.end) 则 `endValue` 失效。
 
 [${dataZoomName}.startValue](~${dataZoomName}.startValue) 和 [${dataZoomName}.endValue](~${dataZoomName}.endValue) 共同用 **绝对数值** 的形式定义了数据窗口范围。
 
-
-## endValue(number) = null
-
-数据窗口范围的结束数值。定义了 `endValue` 时，则 [${dataZoomName}.end](~${dataZoomName}.end) 失效。
-
-[${dataZoomName}.startValue](~${dataZoomName}.startValue) 和 [${dataZoomName}.endValue](~${dataZoomName}.endValue) 共同用 **绝对数值** 的形式定义了数据窗口范围。
+注意，如果轴的类型为 `category`，则 `endValue` 即可以设置为 `axis.data` 数组的 `index`，也可以设置为数组值本身。
+但是如果设置为数组值本身，会在内部自动转化为数组的 index。
 
 
 ## orient(string) = null
