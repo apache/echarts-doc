@@ -95,7 +95,7 @@
 
 通常在双数值轴上使用。
 
-下面图分别是`smoothMonotone`不设置以及设置为`'x'`的区别。
+下面两张图分别是双数值轴中的折线图`smoothMonotone`不设置以及设置为`'x'`的区别。
 
 + 不设置`smoothMonotone`:
 
