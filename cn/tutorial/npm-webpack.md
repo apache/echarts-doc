@@ -7,11 +7,11 @@
 
 ## npm 安装 ECharts
 
-在 3.1.0 版本之前 echarts 在 npm 上的 package 是非官方维护的，从 3.1.0 开始由官方 [ecomfe](https://github.com/ecomfe/) 维护 npm 上 echarts 和 zrender 的 package。
+在 `3.1.0` 版本之前 echarts 在 npm 上的 package 是非官方维护的，从 `3.1.0` 开始由官方 [EFE](https://github.com/ecomfe/) 维护 npm 上 echarts 和 zrender 的 package。
 
 你可以使用如下命令通过 npm 安装 echarts
 
-```js
+```shell
 npm install echarts --save
 ```
 
