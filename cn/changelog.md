@@ -1,7 +1,7 @@
 ## v3.1.0
 <div class="time">2016-02-22</div>
 
-+【+】新加入 npm 渠道获取 echarts，详细见 [webpack + echarts 教程](./tutorial.html#%E5%9C%A8%20webpack%20%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts)
++ 【\+】新加入 npm 渠道获取 echarts，详细见 [webpack + echarts 教程](./tutorial.html#%E5%9C%A8%20webpack%20%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts)
 
 + [^] 修复动态 markPoint 和 markLine 异常的 bug。Fix [#2522](https://github.com/ecomfe/echarts/issues/2522)
 
@@ -61,6 +61,7 @@
 + [^] 修复 dataZoom 缩略图显示不正确的问题，Fix [#2462](https://github.com/ecomfe/echarts/issues/2462)
 
 + [^] 修复坐标轴 `min` `max` 是字符串的问题，PR [#2481](https://github.com/ecomfe/echarts/pull/2481)
+
 
 ## v3.0.1
 <div class="time">2016-01-18</div>
