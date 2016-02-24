@@ -13,9 +13,8 @@ ${name} icon 样式设置。
 {{ use: partial-item-style(prefix="#####") }}
 
 
-{{ target: feature-icon }}
+{{ target: feature-icon-desc }}
 
-#### icon
 Icon 的 path 字符串，ECharts 3 中支持使用自定义的 svg path 作为 icon，格式参见 [SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData)。可以从 Adobe Illustrator 等工具编辑导出。
 
 {{ target: feature-common}}
@@ -25,7 +24,9 @@ Icon 的 path 字符串，ECharts 3 中支持使用自定义的 svg path 作为 
 
 #### title(boolean) = '${title}'
 
-{{ use: feature-icon }}
+#### icon
+{{ use: feature-icon-desc }}
+
 {{ use: feature-icon-style(name=${title}) }}
 
 
@@ -116,7 +117,9 @@ Icon 的 path 字符串，ECharts 3 中支持使用自定义的 svg path 作为 
 #### icon(Object)
 缩放和还原的 icon path。
 ##### zoom(string)
+{{ use: feature-icon-desc }}
 ##### back(string)
+{{ use: feature-icon-desc }}
 #### title(Object)
 缩放和还原的标题文本。
 ##### zoom(string) = '区域缩放'
@@ -141,9 +144,13 @@ feature: {
 #### icon(Object)
 各个类型的 icon path，可以分别配置。
 ##### line(string)
+{{ use: feature-icon-desc }}
 ##### bar(string)
+{{ use: feature-icon-desc }}
 ##### stack(string)
+{{ use: feature-icon-desc }}
 ##### tiled(string)
+{{ use: feature-icon-desc }}
 #### title(Object)
 各个类型的标题文本，可以分别配置。
 ##### line(string) = '切换为折线图'
