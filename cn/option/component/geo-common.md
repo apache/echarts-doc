@@ -46,6 +46,14 @@ ECharts 使用 [geoJSON](http://geojson.org/) 格式的数据作为地图的轮�
 #${prefix} roam(boolean) = false
 {{ use: partial-roam }}
 
+#${prefix} nameMap(Object)
+
+自定义地区的名称映射，如：
+```js
+{
+    'China' : '中国'
+}
+```
 
 #${prefix} label(Object)
 
