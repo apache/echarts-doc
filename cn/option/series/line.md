@@ -112,6 +112,9 @@
     galleryEditorPath = ${galleryEditorPath}
 ) }}
 
+### name(string)
+数据项名称。
+
 ### value(number)
 单个数据项的数值。
 
