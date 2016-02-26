@@ -121,18 +121,18 @@ Icon 的 path 字符串，ECharts 3 中支持使用自定义的 svg path 作为 
 #### readOnly(boolean) = false
 是否不可编辑（只读）。
 #### lang(Array) = ['数据视图', '关闭', '刷新']
-数据视图上有三个话术，默认是['数据视图', '关闭', '刷新']。
-#### backgroundColor = '#fff'
+数据视图上有三个话术，默认是`['数据视图', '关闭', '刷新']`。
+#### backgroundColor(string) = '#fff'
 数据视图浮层背景色。
-#### textareaColor = '#fff'
+#### textareaColor(string) = '#fff'
 数据视图浮层文本输入区背景色。
-#### textareaBorderColor = '#333'
+#### textareaBorderColor(string) = '#333'
 数据视图浮层文本输入区边框颜色。
-#### textColor = '#000'
+#### textColor(string) = '#000'
 文本颜色。
-#### buttonColor = '#c23531'
+#### buttonColor(string) = '#c23531'
 按钮颜色。
-#### buttonTextColor = '#fff'
+#### buttonTextColor(string) = '#fff'
 按钮文本颜色。
 
 ### dataZoom(Object)
