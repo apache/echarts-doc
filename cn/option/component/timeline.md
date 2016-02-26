@@ -146,7 +146,7 @@ myChart.setOption(
 表示播放的速度（跳动的间隔），单位毫秒（ms）。
 
 
-## realtime: true,
+## realtime(boolean) = true,
 
 拖动圆点的时候，是否实时更新视图。
 
