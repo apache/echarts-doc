@@ -315,7 +315,7 @@ myChart.setOption(
 `timeline`组件中『当前项』（`checkpoint`）的动画时长。
 
 
-### animationEasing: 'quinticInOut'
+### animationEasing(string) = 'quinticInOut'
 
 `timeline`组件中『当前项』（`checkpoint`）的动画的缓动效果。不同的缓动效果可以参考 [缓动示例](${galleryViewPath}line-easing)。
 
