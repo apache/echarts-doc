@@ -39,6 +39,23 @@
 
     + 绝对数值形式：参见 [dataZoom.startValue](~dataZoom.startValue) 和 [dataZoom.endValue](~dataZoom.endValue)。
 
++ 当使用百分比形式指定 `dataZoom` 范围时（且轴的 `min`/`max`/`scale`没有设置时），`dataZoom` 的结果是和其定义顺序相关的。例如，我们有这样一组定义：
+
+    ```javascript
+    {
+        dataZoom: [
+             {xAxisIndex: 0, start: 30, end: 70},
+             {yAxisIndex: 0, start: 20, end: 80}
+        ]
+    }
+    ```
+    x 轴的 dataZoom 组件定义在 y 轴的 dataZoom 组件之前，那么，x 轴的 [30, 70] 表示全部数据的 30% 到 70%，
+    而 y 轴的 dataZoom 组件的 [20, 80] 表示经过 x 轴的 [30, 70] 过滤处理后，所得数据集的 20% 到 80%。所以在这种设置下，y 轴的 dataZoom 组件拖动时，只会改变 y 方向的数据范围，而 x 轴的 dataZoom 组件拖动时，可能会同时改变 x 轴和 y 轴方向的数据范围（即 y 轴方向自动随 x 轴窗口变化而缩放）。
+
+    如果需要改变这种处理顺序，那么改变 dataZoom 中各项的顺序即可。
+
+    当然，如果 y 轴的 min/max 进行了设置，那么 [20, 80] 表示 min / max 的 20% 到 80%，x 轴的 dataZoom 组件不再能影响 y 轴方向的数据范围。
+
 
 <br>
 <br>
