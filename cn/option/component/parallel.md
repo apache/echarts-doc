@@ -19,7 +19,7 @@
 ) }}
 
 
-## layout: 'horizontal'
+## layout(string) = 'horizontal'
 
 布局方式，可选值为：
 

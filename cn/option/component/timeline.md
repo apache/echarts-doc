@@ -146,7 +146,7 @@ myChart.setOption(
 表示播放的速度（跳动的间隔），单位毫秒（ms）。
 
 
-## realtime: true,
+## realtime(boolean) = true,
 
 拖动圆点的时候，是否实时更新视图。
 
@@ -315,7 +315,7 @@ myChart.setOption(
 `timeline`组件中『当前项』（`checkpoint`）的动画时长。
 
 
-### animationEasing: 'quinticInOut'
+### animationEasing(string) = 'quinticInOut'
 
 `timeline`组件中『当前项』（`checkpoint`）的动画的缓动效果。不同的缓动效果可以参考 [缓动示例](${galleryViewPath}line-easing)。
 
