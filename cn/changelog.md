@@ -1,3 +1,39 @@
+## v3.1.2
+<div class="time">2016-02-22</div>
+
++ 【\+】提供主题下载，详细见 [http://echarts.baidu.com/download-theme.html](http://echarts.baidu.com/download-theme.html)
+
++ [^] 修复 v3.1.1 中折线图空数据后 `setOption` 更新数据无法显示的 bug。
+
++ [^] 修复 `setOption(chart.getOption())` 有可能报`id duplicates`的错误。Fix [#2635](https://github.com/ecomfe/echarts/issues/2635)
+
++ [^] 允许自定义 toolbox 工具栏。详见 [toolbox.feature](http://echarts.baidu.com/option.html#toolbox.feature)
+
++ [^] `'time'` 类型的坐标轴在大跨度时间范围的刻度优化。
+
++ [^] 修复 label 的 formatter 返回 0 不显示的 bug。Fix [#2659](https://github.com/ecomfe/echarts/issues/2659)
+
++ [^] 修复纵轴为类目轴的图表中 markPoint 标签显示错误的问题。Fix [#2641](https://github.com/ecomfe/echarts/issues/2641)
+
++ [^] 优化 `dataZoom，修复有 dataZoom 的图表中动态数据更新错误的问题。Fix [#2667](https://github.com/ecomfe/echarts/issues/2667)
+
++ [^] 饼图所有数据为 0 是百分比取 0 而非 NaN。Fix [#2690](https://github.com/ecomfe/echarts/issues/2667)
+
++ [^] 标题对齐优化。
+
++ [^] 图表刷新时保持 tooltip 显示。Fix [#2478](https://github.com/ecomfe/echarts/issues/2478)
+
++ [^] 仪表盘 `splitLine.length`, `axisTick.length` 支持百分比。
+
++ [^] 折线动画性能优化。
+
++ [^] 大数据量的类目轴性能优化。
+
++ [^] 修复 IE8 下 markPoint 和 markLine 报错的 bug。
+
++ [^] 修复 `'use strict'` 模式下报错的 bug。Fix [#2643](https://github.com/ecomfe/echarts/issues/2643)
+
+
 ## v3.1.1
 <div class="time">2016-02-22</div>
 
@@ -61,7 +97,6 @@
 + [^] 修复 dataZoom 缩略图显示不正确的问题，Fix [#2462](https://github.com/ecomfe/echarts/issues/2462)
 
 + [^] 修复坐标轴 `min` `max` 是字符串的问题，PR [#2481](https://github.com/ecomfe/echarts/pull/2481)
-
 
 ## v3.0.1
 <div class="time">2016-01-18</div>
