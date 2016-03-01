@@ -58,8 +58,8 @@
 分隔线样式。
 ### show(boolean) = true
 是否显示分隔线。
-### length(number) = 30
-分隔线线长。
+### length(number|string) = 30
+分隔线线长。支持相对半径的百分比。
 ### lineStyle(Object)
 {{ use: partial-line-style(
     prefix='###',
@@ -74,8 +74,8 @@
 是否显示刻度。
 ### splitNumber(number) = 5
 分隔线之间分割的刻度数。
-### length(number) = 8
-刻度线长。
+### length(number|string) = 8
+刻度线长。支持相对半径的百分比。
 ### lineStyle(Object)
 {{ use: partial-line-style(
     prefix='###',
