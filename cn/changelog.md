@@ -1,5 +1,5 @@
 ## v3.1.2
-<div class="time">2016-02-22</div>
+<div class="time">2016-03-01</div>
 
 + 【\+】提供主题下载，详细见 [http://echarts.baidu.com/download-theme.html](http://echarts.baidu.com/download-theme.html)
 
