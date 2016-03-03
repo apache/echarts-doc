@@ -181,9 +181,11 @@ ${rangeType}: {
 例如 `dimension` 为1时，取第二列，映射到视觉元素上。
 
 
-## seriesIndex(number) = 0
+## seriesIndex(number|Array.<number>)
 
 指定取哪个系列的数据，即哪个系列的 [series.data](~series.data)。
+
+默认取所有系列。
 
 
 ## inRange
