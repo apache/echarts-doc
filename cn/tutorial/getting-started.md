@@ -9,6 +9,8 @@
 
 2. 在 ECharts 的 [github](https://github.com/echarts) 上下载最新的 `release`，解压出来的文件夹里的 `dist` 目录里可以找到最新版本的 echarts 库。
 
+3. 通过 npm 获取 echarts，`npm install echarts --save-dev`，详见“[在 webpack 中使用 echarts]”(http://echarts.baidu.com/tutorial.html#%E5%9C%A8%20webpack%20%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts)
+
 ## 引入 ECharts
 
 ECharts 3 开始不再强制使用 AMD 的方式按需引入，代码里也不再内置 AMD 加载器。因此引入方式简单了很多，只需要像普通的 JavaScript 库一样用 script 标签引入。
