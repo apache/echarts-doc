@@ -60,6 +60,10 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
     defaultOpacity=0.5,
     hasCallback=true
 ) }}
+
+#### curveness(number) = 0
+边的曲度，支持从 0 到 1 的值，值越大曲度越大。
+
 ### emphasis(Object)
 {{ use: partial-line-style(
     prefix='###'
@@ -105,6 +109,8 @@ ${name}的坐标，可以是[直角坐标系](~grid)上的`[x, y]`，[地理坐�
     prefix="#####",
     hasCurveness=true
 ) }}
+###### curveness(number) = 0
+边的曲度，支持从 0 到 1 的值，值越大曲度越大。
 ##### emphasis(Object)
 {{ use: partial-line-style(
     prefix="#####",
