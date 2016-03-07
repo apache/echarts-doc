@@ -22,6 +22,13 @@
 
 ## type(string) = 'sankey'
 
+## color(Array.<string>)
+
+桑基图使用单独的调色盘。默认为：
+```js
+['#9e0142', '#d53e4f', '#f46d43', '#fdae61', '#fee08b','#ffffbf', '#e6f598', '#abdda4', '#66c2a5', '#3288bd', '#5e4fa2']
+```
+
 {{ use: partial-rect-layout-width-height(
     componentName='sankey',
     defaultLeft: '5%',
@@ -31,6 +38,7 @@
     defaultWidth: 'null',
     defaultHeight: 'null'
 ) }}
+
 
 ## nodeWidth(number) = 20
 
