@@ -1,3 +1,152 @@
+{{target: partial-axis-common-axis-line}}
+#${prefix} axisLine(Object)
+坐标轴轴线相关设置。
+##${prefix} show(boolean) = ${defaultShow|default(true)}
+是否显示坐标轴轴线。
+
+{{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
+##${prefix} onZero(boolean) = true
+X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一个轴为数值轴且包含 0 刻度时有效。
+{{ /if }}
+
+##${prefix} lineStyle(Object)
+{{ use: partial-line-style(prefix='##' + ${prefix}, defaultColor="'#333'", defaultWidth=1, defaultType="'solid'", name="坐标轴线") }}
+
+
+
+
+
+
+{{target: partial-axis-common-axis-label}}
+#${prefix} axisLabel(Object)
+坐标轴刻度标签的相关设置。
+##${prefix} show(boolean) = ${defaultShow|default(true)}
+是否显示刻度标签。
+
+{{ if: ${hasLabelInterval|default(true)} }}
+##${prefix} interval(number|Function) = 'auto'
+{{ use: partial-axis-interval(
+    name="坐标轴刻度标签",
+    isAxisLabel=true,
+    componentType=${componentType}
+) }}
+{{ /if }}
+
+##${prefix} inside(boolean) = false
+刻度标签是否朝内，默认朝外。
+
+{{ if: ${componentType} !== 'angleAxis' }}
+##${prefix} rotate(number) = 0
+刻度标签旋转的角度，在类目轴的类目标签显示不下的时候可以通过旋转防止标签之间重叠。
+
+旋转的角度从 -90 度到 90 度。
+{{ /if }}
+
+##${prefix} margin(number) = 8
+刻度标签与轴线之间的距离。
+##${prefix} formatter(string|Function) = null
+
+{{use: axis-common-formatter-desc}}
+
+##${prefix} textStyle(Object)
+
+{{ use: partial-text-style(
+    prefix='##' + ${prefix},
+    defaultColor="'#333'"
+)}}
+
+
+
+
+
+{{target: partial-axis-common-axis-tick}}
+
+#${prefix} axisTick(Object)
+坐标轴刻度相关设置。
+##${prefix} show(boolean) = ${defaultShow|default(true)}
+是否显示坐标轴刻度。
+
+{{ if: ${hasLabelInterval|default(true)} }}
+##${prefix} interval(number|Function) = 'auto'
+{{ use: partial-axis-interval(
+    name="坐标轴刻度",
+    componentType=${componentType}
+) }}
+{{ /if }}
+##${prefix} inside(boolean) = false
+坐标轴刻度是否朝内，默认朝外。
+##${prefix} length(number) = 5
+坐标轴刻度的长度。
+##${prefix} lineStyle(Object)
+{{ use: partial-line-style(prefix='##' + ${prefix}, defaultColor="'#333'", defaultWidth=1, defaultType="'solid'", name="坐标轴刻度") }}
+
+
+
+
+
+
+{{target: partial-axis-common-split-line}}
+
+#${prefix} splitLine(Object)
+坐标轴在 [grid](~grid) 区域中的分隔线，默认显示。
+##${prefix} show(boolean) = ${defaultShow|default(true)}
+是否显示分隔线。
+
+{{ if: ${hasLabelInterval|default(true)} }}
+##${prefix} interval(number|Function) = 'auto'
+{{ use: partial-axis-interval(
+    name="坐标轴分隔线",
+    componentType=${componentType}
+) }}
+##${prefix} lineStyle(Object)
+{{ /if }}
+
+{{ use: partial-line-style(prefix='##' + ${prefix}, defaultColor="'#333'", defaultWidth=1, defaultType="'solid'", name="分隔线") }}
+
+<!-- overwrite color -->
+###${prefix} color(Array|string) = ['#ccc']
+分隔线颜色，可以设置成单个颜色。
+
+也可以设置成颜色数组，分隔线会按数组中颜色的顺序依次循环设置颜色。
+
+示例
+```
+splitLine: {
+    lineStyle: {
+        // 使用深浅的间隔色
+        color: ['#aaa', '#ddd']
+    }
+}
+```
+
+
+
+
+
+{{target: partial-axis-common-split-area}}
+
+#${prefix} splitArea(Object)
+坐标轴在 [grid](~grid) 区域中的分隔区域，默认不显示。
+
+
+{{ if: ${hasLabelInterval|default(true)} }}
+##${prefix} interval(number|Function) = 'auto'
+{{ use: partial-axis-interval(
+    name="坐标轴分隔区域",
+    componentType=${componentType}
+) }}
+{{ /if }}
+
+##${prefix} show(boolean) = ${defaultShow|default(true)}
+是否显示分隔区域。
+##${prefix} areaStyle(Object)
+分隔区域的样式设置。
+###${prefix} color(Array) = ['rgba(250,250,250,0.3)','rgba(200,200,200,0.3)']
+分隔区域颜色。分隔区域会按数组中颜色的顺序依次循环设置颜色。默认是一个深浅的间隔色。
+{{ use:partial-style-shadow-opacity(prefix='##' + ${prefix}) }}
+
+
+
 {{target: axis-common}}
 
 #${prefix} type(string) = ${axisTypeDefault|default('value')}
@@ -95,125 +244,32 @@ boundaryGap: ['20%', '20%']
 
 无法在类目轴中使用。在时间轴（[type](~${componentType}.type): 'time'）中需要传时间戳，在对数轴（[type](~${componentType}.type): 'log'）中需要传指数值。
 
-#${prefix} axisLine(Object)
-
-坐标轴轴线相关设置。
-
-##${prefix} show(boolean) = true
-是否显示坐标轴轴线。
-
-{{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
-##${prefix} onZero(boolean) = true
-X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一个轴为数值轴且包含 0 刻度时有效。
-{{ /if }}
-
-##${prefix} lineStyle(Object)
-{{ use: partial-line-style(prefix='##' + ${prefix}, defaultColor="'#333'", defaultWidth=1, defaultType="'solid'", name="坐标轴线") }}
-
-
-
-
-#${prefix} axisTick(Object)
-坐标轴刻度相关设置。
-##${prefix} show(boolean) = true
-是否显示坐标轴刻度。
-##${prefix} interval(number|Function) = 'auto'
-{{ use: partial-axis-interval(
-    name="坐标轴刻度",
+{{ use: partial-axis-common-axis-line(
+    prefix=${prefix},
     componentType=${componentType}
 ) }}
-##${prefix} inside(boolean) = false
-坐标轴刻度是否朝内，默认朝外。
-##${prefix} length(number) = 5
-坐标轴刻度的长度。
-##${prefix} lineStyle(Object)
-{{ use: partial-line-style(prefix='##' + ${prefix}, defaultColor="'#333'", defaultWidth=1, defaultType="'solid'", name="坐标轴刻度") }}
 
-
-
-
-#${prefix} axisLabel(Object)
-坐标轴刻度标签的相关设置。
-##${prefix} show(boolean) = true
-是否显示刻度标签。
-##${prefix} interval(number|Function) = 'auto'
-{{ use: partial-axis-interval(
-    name="坐标轴刻度标签",
-    isAxisLabel=true,
+{{ use: partial-axis-common-axis-tick(
+    prefix=${prefix},
     componentType=${componentType}
 ) }}
-##${prefix} inside(boolean) = false
-刻度标签是否朝内，默认朝外。
 
-{{ if: ${componentType} !== 'angleAxis' }}
-##${prefix} rotate(number) = 0
-刻度标签旋转的角度，在类目轴的类目标签显示不下的时候可以通过旋转防止标签之间重叠。
-
-旋转的角度从 -90 度到 90 度。
-{{ /if }}
-
-##${prefix} margin(number) = 8
-刻度标签与轴线之间的距离。
-##${prefix} formatter(string|Function) = null
-
-{{use: axis-common-formatter-desc}}
-
-##${prefix} textStyle(Object)
-
-{{ use: partial-text-style(
-    prefix='##' + ${prefix},
-    defaultColor="'#333'"
-)}}
-
-
+{{ use: partial-axis-common-axis-label(
+    prefix=${prefix},
+    componentType=${componentType}
+) }}
 
 {{ if: ${hasSplitLineAndArea} }}
-#${prefix} splitLine(Object)
-坐标轴在 [grid](~grid) 区域中的分隔线，默认显示。
-##${prefix} show(boolean) = false
-是否显示分隔线。
-##${prefix} interval(number|Function) = 'auto'
-{{ use: partial-axis-interval(
-    name="坐标轴分隔线",
+
+{{ use: partial-axis-common-split-line(
+    prefix=${prefix},
     componentType=${componentType}
 ) }}
-##${prefix} lineStyle(Object)
 
-{{ use: partial-line-style(prefix='##' + ${prefix}, defaultColor="'#333'", defaultWidth=1, defaultType="'solid'", name="分隔线") }}
-
-<!-- overwrite color -->
-###${prefix} color(Array|string) = ['#ccc']
-分隔线颜色，可以设置成单个颜色。
-
-也可以设置成颜色数组，分隔线会按数组中颜色的顺序依次循环设置颜色。
-
-示例
-```
-splitLine: {
-    lineStyle: {
-        // 使用深浅的间隔色
-        color: ['#aaa', '#ddd']
-    }
-}
-```
-
-
-
-#${prefix} splitArea(Object)
-坐标轴在 [grid](~grid) 区域中的分隔区域，默认不显示。
-##${prefix} interval(number|Function) = 'auto'
-{{ use: partial-axis-interval(
-    name="坐标轴分隔区域",
+{{ use: partial-axis-common-split-area(
+    prefix=${prefix},
     componentType=${componentType}
 ) }}
-##${prefix} show(boolean) = false
-是否显示分隔区域。
-##${prefix} areaStyle(Object)
-分隔区域的样式设置。
-###${prefix} color(Array) = ['rgba(250,250,250,0.3)','rgba(200,200,200,0.3)']
-分隔区域颜色。分隔区域会按数组中颜色的顺序依次循环设置颜色。默认是一个深浅的间隔色。
-
-{{ use:partial-style-shadow-opacity(prefix='##' + ${prefix}) }}
 
 {{ /if }}
 

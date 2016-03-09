@@ -17,7 +17,7 @@ center: [400, 300]
 center: ['50%', '50%']
 ```
 
-## radius(Array) = ${defaultRadius}
+## radius(${defaultRadiusType|default("Array")}) = ${defaultRadius}
 
 ${componentName}的半径，数组的第一项是内半径，第二项是外半径。
 

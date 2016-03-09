@@ -51,8 +51,6 @@ myChart.setOption({
 var echarts = require('echarts/lib/echarts');
 // 引入柱状图
 require('echarts/lib/chart/bar');
-// 引入绘制直角坐标系需要的 Grid 组件
-require('echarts/lib/component/grid');
 // 引入提示框和标题组件
 require('echarts/lib/component/tooltip');
 require('echarts/lib/component/title');

@@ -1,14 +1,14 @@
 {{target: option}}
 
 {{import: component-title}}
+{{import: component-legend}}
 {{import: component-grid}}
-{{import: component-polar}}
 {{import: component-x-axis}}
 {{import: component-y-axis}}
+{{import: component-polar}}
 {{import: component-radius-axis}}
 {{import: component-angle-axis}}
-{{import: component-legend}}
-{{import: component-title}}
+{{import: component-radar}}
 {{import: component-data-zoom}}
 {{import: component-visual-map}}
 {{import: component-tooltip}}
@@ -25,6 +25,7 @@
 {{import: series-scatter}}
 {{import: series-effectScatter}}
 
+{{import: series-radar}}
 {{import: series-treemap}}
 {{import: series-boxplot}}
 {{import: series-candlestick}}
@@ -43,7 +44,7 @@
 
 默认为：
 ```js
-['#c23531', '#314656', '#61a0a8', '#dd8668', '#91c7ae', '#6e7074', '#61a0a8', '#bda29a', '#44525d', '#c4ccd3']
+['#c23531','#2f4554', '#61a0a8', '#d48265', '#91c7ae','#749f83',  '#ca8622', '#bda29a','#6e7074', '#546570', '#c4ccd3']
 ```
 
 # backgroundColor(Color)

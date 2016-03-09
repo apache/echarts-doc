@@ -21,7 +21,7 @@
 ) }}
 
 {{ use:partial-symbol(
-    seriesType="scatter",
+    seriesType="line",
     defaultSymbol="'circle'",
     defaultSymbolSize=4,
     prefix="#",
@@ -75,6 +75,7 @@
 {{use: partial-item-style(prefix="###")}}
 
 ## lineStyle(Object)
+线条样式。
 ### normal(Object)
 {{use:partial-line-style(prefix="###")}}
 ### emphasis(Object)
