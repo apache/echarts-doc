@@ -14,7 +14,7 @@
 
 ECharts 中支持的图表行为，通过 [dispatchAction](~echartsInstance.dispatchAction) 触发。
 
-**注：** 代码中的 `?:` 表示该属性是可选的。
+**注：** 代码中的 `?:` 表示该属性是可选的。*EVENT:* 是 action 对应触发的事件。
 
 ## highlight(Action)
 
