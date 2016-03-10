@@ -1,10 +1,13 @@
 ## v3.1.3
 <div class="time">2016-03-10</div>
-+【\+】加入雷达图，见 [http://echarts.baidu.com/option.html#series-radar](http://echarts.baidu.com/option.html#series-radar)
+
++ 【\+】加入雷达图，见 [http://echarts.baidu.com/option.html#series-radar](http://echarts.baidu.com/option.html#series-radar)
 
 + [^] 平均值，最小值，最大值 markLine 起点和终点位置优化。Fix [#2762](https://github.com/ecomfe/echarts/issues/2762)，[#2688](https://github.com/ecomfe/echarts/issues/2688)。
 
 + [^] 修复 markLine 的 symbol 只有一个配置为 `'none'` 的 bug。见 [#2733](https://github.com/ecomfe/echarts/issues/2733)
+
++ [^] 多行文本的垂直居中优化。
 
 + [^] 饼图等数据项中 label 的 emphasis 配置项默认取 normal 中的值。
 
@@ -16,9 +19,12 @@
 
 + [^] 修复 3.1.1 中 media query 中 dataZoom 位置失效的 bug。Fix [#2710](https://github.com/ecomfe/echarts/issues/2710)
 
++ [^] 修复 3.1.1 中 firefox 无法触发滚轮事件的 bug，Fix [#2730](https://github.com/ecomfe/echarts/issues/2730)
+
 + [^] IE8 优化。
 
 + [^] 代码改用 webpack 构建。
+
 
 ## v3.1.2
 <div class="time">2016-03-01</div>
