@@ -84,7 +84,7 @@
 
 `payload` 参数可以通过`batch`属性同时触发多个行为。
 
-**注：**在 ECharts 2.x 是通过 `myChart.component.tooltip.showTip` 这种形式调用相应的接口触发图表行为，入口很深，而且涉及到内部组件的组织。因此在 ECharts 里统一改为 `dispatchAction` 的形式。
+**注：**在 ECharts 2.x 是通过 `myChart.component.tooltip.showTip` 这种形式调用相应的接口触发图表行为，入口很深，而且涉及到内部组件的组织。因此在 ECharts 3 里统一改为 `dispatchAction` 的形式。
 
 **示例**
 ```js
