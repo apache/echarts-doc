@@ -10,7 +10,7 @@
     renderer?: string
 }) => ECharts
 ```
-创建一个 ECharts 示例，返回 [echartsInstance](~echartsInstance)，不能再单个容器上初始化多个 ECharts 实例。
+创建一个 ECharts 实例，返回 [echartsInstance](~echartsInstance)，不能再单个容器上初始化多个 ECharts 实例。
 
 **参数**
 + `dom`
@@ -79,7 +79,7 @@ echarts.connect([chart1, chart2]);
 ```js
 (target: HTMLDivElement|HTMLCanvasElement) => ECharts
 ```
-获取 dom 容器上的示例。
+获取 dom 容器上的实例。
 
 ## registerMap(Function)
 ```js
@@ -135,4 +135,4 @@ echarts.registerMap('USA', usaJson, {
 (themeName: string, theme: Object)
 ```
 
-注册主题，用于[初始化示例](~echarts.init)的时候指定。
+注册主题，用于[初始化实例](~echarts.init)的时候指定。
