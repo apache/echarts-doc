@@ -17,6 +17,21 @@ ECharts 中的事件列表分为两种，一种是鼠标事件，在鼠标点击
 ### mouseover(Event)
 ### mouseout(Event)
 
+## legendselectchanged(Event)
+**ACTION:** [legendToggleSelect](~action.legend.legendToggleSelect)
+切换图例选中状态后的事件。
+
+**注：**图例组件用户切换图例开关会触发该事件。
+
+```js
+{
+    type: 'legendselectchanged',
+    // 切换的图例名称
+    name: string
+    // 所有图例的选中状态表。
+    selected: Object
+}
+```
 ## legendselected(Event)
 **ACTION:** [legendSelect](~action.legend.legendSelect)
 图例选中后的事件。
@@ -41,21 +56,6 @@ ECharts 中的事件列表分为两种，一种是鼠标事件，在鼠标点击
 {
     type: 'legendunselected',
     // 取消选中的图例名称
-    name: string
-    // 所有图例的选中状态表。
-    selected: Object
-}
-```
-## legendselectchanged(Event)
-**ACTION:** [legendToggleSelect](~action.legend.legendToggleSelect)
-切换图例选中状态后的事件。
-
-图例组件用户切换图例开关会触发该事件。
-
-```js
-{
-    type: 'legendselectchanged',
-    // 切换的图例名称
     name: string
     // 所有图例的选中状态表。
     selected: Object
