@@ -7,11 +7,9 @@ var path = require('path');
 var fs = require('fs');
 
 var docSrcDir = path.join(__dirname, '/cn');
-var cssPath = path.join(__dirname, '/test/asset/ecOption/main.less');
 
 var watchDirs = [];
 getAllDirs(docSrcDir, watchDirs);
-watchDirs.push(cssPath);
 
 watchDirs.forEach(function (p) {
     fs.watch(p, onChange);
