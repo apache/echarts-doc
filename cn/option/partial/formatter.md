@@ -13,6 +13,8 @@
         data: Object,
         // 传入的数据值
         value: number|Array,
+        // 数据图形的颜色
+        color: string,
     {{ for: ${extra} as ${obj}, ${name} }}
         // ${obj.desc}
         ${name}: ${obj.type},

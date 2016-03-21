@@ -179,6 +179,14 @@
 
 {{ use: partial-text-style(prefix="##", defaultColor="'#fff'", defaultFontSize=14) }}
 
+## extraCssText(string)
+
+额外附加到浮层的 css 样式。如下为浮层添加阴影的示例：
+
+```js
+extraCssText: 'box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);'
+```
+
 ## axisPointer(Object)
 
 坐标轴指示器配置项，在 [trigger](~tooltip.trigger) 为 `'axis'` 时有效。
