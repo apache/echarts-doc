@@ -1,3 +1,25 @@
+## v3.1.4
+<div class="time">2016-03-21</div>
++ [^] 优化默认的 tooltip，加入图形的颜色提示，回调加入 color 参数。
+
++ [^] 修复 dataZoom 无法 resize 的 bug。
+
++ [^] 修复多次执行`showLoading`导致的 bug。Fix [#2821](https://github.com/ecomfe/echarts/issues/2821)
+
++ [^] 饼图，地图等非笛卡尔坐标系和极坐标系的图表支持 markPoint 和 markLine。
+
++ [^] 饼图标签布局优化。
+
++ [^] tooltip 加入 extraCssText 配置项用于配置浮层样式，见 [http://echarts.baidu.com/option.html#tooltip.extraCssText](http://echarts.baidu.com/option.html#tooltip.extraCssText)
+
++ [^] 修复 3.1.3 中 dataZoom 不设置坐标轴 min， max 的 bug。
+
++ [^] 修复当纵轴为类目轴且 series 的 data 为二维数组时，tooltip 里无法取到正确的 name 的bug。Fix [#2822](https://github.com/ecomfe/echarts/issues/2822)
+
++ [^] 修复圆角的柱形图 hover 错误的 bug，Fix [#2806](https://github.com/ecomfe/echarts/issues/2806)
+
++ [^] 雷达图 indicator 配置项默认值策略优化。
+
 ## v3.1.3
 <div class="time">2016-03-10</div>
 
