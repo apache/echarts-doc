@@ -1,5 +1,6 @@
 ## v3.1.4
 <div class="time">2016-03-21</div>
+
 + [^] 优化默认的 tooltip，加入图形的颜色提示，回调加入 color 参数。
 
 + [^] 修复 dataZoom 无法 resize 的 bug。
