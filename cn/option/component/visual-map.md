@@ -181,14 +181,14 @@ ${rangeType}: {
 例如 `dimension` 为1时，取第二列，映射到视觉元素上。
 
 
-## seriesIndex(number|Array.<number>)
+## seriesIndex(number|Array)
 
 指定取哪个系列的数据，即哪个系列的 [series.data](~series.data)。
 
 默认取所有系列。
 
 
-## inRange
+## inRange(Object)
 
 定义 **在选中范围中** 的视觉元素。可选的视觉元素有：
 {{use: partial-visual-map-visual-type}}
@@ -200,7 +200,7 @@ ${rangeType}: {
 )}}
 
 
-## outOfRange
+## outOfRange(Object)
 
 定义 **在选中范围外** 的视觉元素。可选的视觉元素有：
 {{use: partial-visual-map-visual-type}}
@@ -268,7 +268,7 @@ formatter: function (value, value2) {
 如果要使用，则须注意，`color`属性中的顺序是由数值 `大` 到 `小`，但是 [${visualMapName}.inRange](~${visualMapName}.inRange) 或 [${visualMapName}.outOfRange](~${visualMapName}.outOfRange) 中 `color` 的顺序，总是由数值 `小` 到 `大`。二者不一致。
 
 
-## textStyle
+## textStyle(Object)
 
 {{ use:partial-text-style(
     prefix='##',
