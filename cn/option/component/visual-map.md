@@ -154,6 +154,36 @@ ${rangeType}: {
 
 
 
+{{target: partial-visual-map-merge}}
+
+如果想修改visualMap中的各种 `视觉编码`，按照惯例使用 `setOption({...})` 即可。但是请注意：
+
++ visualMap option 中的这几个属性在 setOption 时不支持 merge：`inRange`, `outOfRange`, `target`, `controller`。否则会带来过于复杂的 merge 逻辑。
+
++ 如果想使用 `getOption` 方式来进行 `视觉编码` 的修改，请注意：
+
+```javascript
+var option = chart.getOption(); // 获取所有option。
+option.visualMap.inRange.color = ['red', 'blue']; // 改动color。
+
+// 如下两处也要进行同步改动，否则可能达不到期望效果。
+option.visualMap.target.inRange.color = ['red', 'blue'];
+option.visualMap.controller.inRange.color = ['red', 'blue'];
+
+chart.setOption(option); // option设置回visualMap
+```
+
+其实：更推荐的方式是，不使用 `getOption`，而是直接用 `setOption` 设置改动的部分：
+
+```javascript
+chart.setOption({
+    visual: {
+        inRange: {color: ['red', 'blue']}
+    }
+});
+```
+
+
 
 {{target: partial-visual-map-common}}
 
@@ -199,6 +229,7 @@ ${rangeType}: {
     galleryEditorPath=${galleryEditorPath}
 )}}
 
+{{use: partial-visual-map-merge}}
 
 ## outOfRange
 
@@ -211,6 +242,7 @@ ${rangeType}: {
     galleryEditorPath=${galleryEditorPath}
 )}}
 
+{{use: partial-visual-map-merge}}
 
 
 {{ use: partial-rect-layout(
