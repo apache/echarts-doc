@@ -12,10 +12,10 @@ ECharts 中的事件列表分为两种，一种是鼠标事件，在鼠标点击
 ### click(Event)
 ### dblclick(Event)
 ### mousedown(Event)
-### mousemove(Event)
 ### mouseup(Event)
 ### mouseover(Event)
 ### mouseout(Event)
+### globalout(Event)
 
 ## legendselectchanged(Event)
 **ACTION:** [legendToggleSelect](~action.legend.legendToggleSelect)
