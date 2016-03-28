@@ -22,7 +22,7 @@
 
 {{ use:partial-symbol(
     seriesType="line",
-    defaultSymbol="'circle'",
+    defaultSymbol="'emptyCircle'",
     defaultSymbolSize=4,
     prefix="#",
     hasCallback=true
