@@ -70,6 +70,26 @@
 }
 ```
 
+另外**不推荐**下面这种写法：
+```js
+var option = myChart.getOption();
+option.visualMap[0].inRange.color = ...;
+myChart.setOption(option);
+```
+
+因为  getOption 获取的是已经合并过默认值了的，所以在修改了某些配置项后会导致原本是根据这些配置项值去设置的默认值失效。
+
+因此我们更**推荐**通过 setOption 去修改部分配置。
+```js
+myChart.setOption({
+    visualMap: {
+        inRange: {
+            color: ...
+        }
+    }
+})
+```
+
 ## resize(Function)
 
 改变图表尺寸，在容器大小发生改变时需要手动调用。
