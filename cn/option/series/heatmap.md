@@ -28,7 +28,13 @@
 )}}
 
 ## blurSize(number) = 20
-在地理坐标系([coordinateSystem](~series-heatmap.coordinateSystem): 'geo')上有效。
+每个点模糊的大小，在地理坐标系([coordinateSystem](~series-heatmap.coordinateSystem): 'geo')上有效。
+
+## minOpacity(number) = 0
+最小的透明度，在地理坐标系([coordinateSystem](~series-heatmap.coordinateSystem): 'geo')上有效。
+
+## maxOpacity(number) = 1
+最大的透明度，在地理坐标系([coordinateSystem](~series-heatmap.coordinateSystem): 'geo')上有效。
 
 ## data(Array)
 
