@@ -1,3 +1,28 @@
+## v3.1.5
+<div class="time">2016-03-29</div>
+
++ [\+] heatmap 加入配置项 [minOpacity](http://echarts.baidu.com/option.html#series-heatmap.minOpacity), [maxOpacity](http://echarts.baidu.com/option.html#series-heatmap.maxOpacity)。
+
++ [\+] `toolbox.feature.dataView` 加入配置项 [optionToContent](http://echarts.baidu.com/option.html#toolbox.feature.dataView.optionToContent), [contentToOption](http://echarts.baidu.com/option.html#toolbox.feature.dataView.contentToOption)。
+
++ [\+] map 图表和 geo 组件加入配置项 [scaleLimit](http://echarts.baidu.com/option.html#geo.scaleLimit)
+
++ [^] 修复 `toolbox.feature.magicType` 中 option 和 seriesIndex 不起作用的问题。Fix [#2855](https://github.com/ecomfe/echarts/issues/2855)
+
++ [^] 工具栏中折柱切换的时候自动调整类目轴的 boundaryGap。
+
++ [^] 修复 3.1.4 中 timeline 节点 hover 报错的 bug。Fix [#2897](https://github.com/ecomfe/echarts/issues/2897)
+
++ [^] 修复 inside 类型的 dataZoom 无法作用于多个直角坐标系中的坐标轴的 bug。Fix [#2752](https://github.com/ecomfe/echarts/issues/2752)
+
++ [^] 修复 3.1.4 中南丁格尔图标签布局的问题。Fix [#2910](https://github.com/ecomfe/echarts/issues/2910)
+
++ [^] 修复 connect 调用已经释放的图表实例报错的问题。Fix [#2908](https://github.com/ecomfe/echarts/issues/2908)
+
++ [^] 修复 3.1.4 中地图上的 markPoint 无法跟随地图漫游的问题。
+
++ [^] 修复 visualMap 组件中 color 无法被动态修改的问题。
+
 ## v3.1.4
 <div class="time">2016-03-21</div>
 
