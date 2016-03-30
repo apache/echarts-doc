@@ -157,6 +157,24 @@ ECharts 中的事件列表分为两种，一种是鼠标事件，在鼠标点击
 
 
 
+## axisAreaSelected(Event)
+[平行坐标轴 (Parallel)](option.html#parallelAxis) 范围选取事件。
+
+当进行坐标轴范围选区时，可以用如下方式获取当前高亮的线所对应的 data indices
+（即 `series` 的 `data` 中的序号列表）。
+
+```javascript
+chart.on('axisAreaSelected', function () {
+    var series1 = chart.getModel().getSeries()[0];
+    var series2 = chart.getModel().getSeries()[0];
+    var indices1 = series1.getRawIndicesByActiveState('active');
+    var indices2 = series2.getRawIndicesByActiveState('active');
+    console.log(indices1);
+    console.log(indices2);
+});
+```
+
+
 {{ target: event-select }}
 ## ${componentType}selectchanged(Event)
 **ACTION:** [${componentType}ToggleSelect](~action.${componentType}.${componentType}ToggleSelect)
