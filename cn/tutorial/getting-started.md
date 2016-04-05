@@ -47,7 +47,7 @@ ECharts 3 开始不再强制使用 AMD 的方式按需引入，代码里也不�
     <meta charset="utf-8">
     <title>ECharts</title>
     <!-- 引入 echarts.js -->
-    <script src="echarts.js"></script>
+    <script src="echarts.min.js"></script>
 </head>
 <body>
     <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
