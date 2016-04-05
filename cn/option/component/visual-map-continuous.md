@@ -31,6 +31,22 @@
 指定 visualMapContinuous 组件的最大值。`'max'` 必须用户指定。
 
 
+## range(Array)
+
+指定手柄对应数值的位置。`range` 须在 `min` `max` 范围内。例如：
+
+```javascript
+chart.setOption({
+    visualMap: {
+        min: 0,
+        max: 100,
+        range: [4, 15],
+        ...
+    }
+});
+```
+
+
 ## calculable(boolean) = false
 
 是否启用值域漫游，即是否有拖拽用的手柄，以及用手柄调整选中范围。
