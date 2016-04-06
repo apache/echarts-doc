@@ -78,14 +78,10 @@
 线条样式。
 ### normal(Object)
 {{use:partial-line-style(prefix="###")}}
-### emphasis(Object)
-{{use: partial-line-style(prefix="###")}}
 
 ## areaStyle(Object)
 区域填充样式。
 ### normal(Object)
-{{use: partial-area-style(prefix="###")}}
-### emphasis(Object)
 {{use: partial-area-style(prefix="###")}}
 
 ## smooth(false) = false
