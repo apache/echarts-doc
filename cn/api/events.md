@@ -144,7 +144,6 @@ ECharts 中的事件列表分为两种，一种是鼠标事件，在鼠标点击
 }
 ```
 
-
 {{ use: event-select(
     componentType='pie',
     name='饼图扇形'
