@@ -5,7 +5,7 @@
 
 + [^] 修复 IE8 下单个数据的饼图无法显示的 bug。Fix [#2961](https://github.com/ecomfe/echarts/issues/2961)
 
-+ [^] 修复 `emphasis.barBorderWidth` 不生效的 bug。
++ [^] 修复柱状图 `itemStyle.emphasis.barBorderWidth` 不生效的 bug。
 
 + [^] 修复工具栏堆叠和平铺切换导致类目轴 boundaryGap 错误设置的 bug。
 
