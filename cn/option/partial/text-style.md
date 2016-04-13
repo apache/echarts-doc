@@ -48,7 +48,7 @@ ${name}文字字体的粗细
 + 100 | 200 | 300 | 400...
 
 
-#${prefix} fontFamily(string)='sans-serief'
+#${prefix} fontFamily(string)='sans-serif'
 
 ${name}文字的字体系列
 
