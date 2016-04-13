@@ -57,7 +57,7 @@ option = {
 
 {{target: partial-visual-map-visual-type}}
 `图形类别（symbol）`、`图形大小（symbolSize）`<br>
-`颜色（color）`、`颜色透明度（colorAlpha）`、<br>
+`颜色（color）`、`透明度（opacity）`、`颜色透明度（colorAlpha）`、<br>
 `颜色明暗度（colorLightness）`、`颜色饱和度（colorSaturation）`、`色调（colorHue）`
 
 
@@ -128,11 +128,15 @@ visualMap: [
 
 + `Array` 的内容：
 
-    + 对于 `图形大小（symbolSize）`、`颜色透明度（colorAlpha）`、`颜色明暗度（colorLightness）`、`颜色饱和度（colorSaturation）`、`色调（colorHue）`：
+    + 对于 `图形大小（symbolSize）`、`透明度（opacity）`、`颜色透明度（colorAlpha）`、`颜色明暗度（colorLightness）`、`颜色饱和度（colorSaturation）`、`色调（colorHue）`：
 
     `Array` 总是：`[最小数据值对应的视觉值, 最大数据值对应的视觉值]`。
 
     比如：colorLightness: [0.8, 0.2]，表示所有数据值中，`最小数据值` 映射到 `颜色明暗` 的 `0.8`，`最大数据值` 映射到 `颜色明暗` 的 `0.2`，中间其他数据值，按照线性计算出映射结果。
+
+    其中，`透明度（opacity）`、`颜色透明度（colorAlpha）`、`颜色明暗度（colorLightness）`、`颜色饱和度（colorSaturation）`、`色调（colorHue）` 的值域范围都在 `0` - `1` 之间。
+
+    一般来说，建议使用 `透明度（opacity）` ，而非 `颜色透明度（colorAlpha）` （他们细微的差异在于，前者能也同时控制 symbol 的 label 的透明度，而后者不能）。
 
     + 对于 `颜色（color）` 或 `图形类别（symbol）`：
 
