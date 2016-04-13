@@ -112,14 +112,6 @@ chart.setOption({
 两端文字主体之间的距离，单位为px。参见 [visualMap-continuous.text](~visualMap-continuous.text)
 
 
-## handlePosition(string) = 'auto'
-
-`handle` 指『拖拽手柄』。`handlePosition` 指定了手柄的位置。可选值：
-
-+ `'auto'`：自动决定。
-+ `'left'` 或 `'right'`：当[visualMap-continuous.orient](~visualMap-continuous.orient) 为`'horizontal'`时，有效。
-+ `'top'` 或 `'bottom'`：当[visualMap-continuous.orient](~visualMap-continuous.orient) 为`'vertical'`时，有效。
-
 {{ use: partial-visual-map-common(
     visualMapName='visualMap-continuous',
     galleryEditorPath=${galleryEditorPath}
