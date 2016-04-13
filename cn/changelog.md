@@ -1,11 +1,11 @@
 ## v3.1.6
 <div class="time">2016-04-11</div>
 
-+ [^] 环形内标签 inside 位置优化。见 [#2949](https://github.com/ecomfe/echarts/issues/2949)
++ [^] 环形图内标签 inside 位置优化。见 [#2949](https://github.com/ecomfe/echarts/issues/2949)
 
 + [^] 修复 IE8 下单个数据的饼图无法显示的 bug。Fix [#2961](https://github.com/ecomfe/echarts/issues/2961)
 
-+ [^] 修复 `emphasis.barBorderWidth` 不生效的 bug。
++ [^] 修复柱状图 `itemStyle.emphasis.barBorderWidth` 不生效的 bug。
 
 + [^] 修复工具栏堆叠和平铺切换导致类目轴 boundaryGap 错误设置的 bug。
 
