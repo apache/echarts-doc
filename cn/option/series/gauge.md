@@ -173,4 +173,7 @@ formatter: function (value) {
     seriesType="gauge"
 )}}
 
+{{ use:partial-silent(
+    prefix="#"
+) }}
 {{use:partial-animation(prefix="#")}}

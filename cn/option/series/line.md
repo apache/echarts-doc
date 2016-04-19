@@ -166,6 +166,10 @@
     componentName="折线图"
 ) }}
 
+{{ use:partial-silent(
+    prefix="#"
+) }}
+
 {{use: partial-animation(
     prefix="#",
     defaultAnimationEasing='linear'

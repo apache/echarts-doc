@@ -113,6 +113,9 @@
     prefix="#",
     componentName="柱状图"
 ) }}
+{{ use:partial-silent(
+    prefix="#"
+) }}
 
 {{use:partial-animation(prefix="#")}}
 

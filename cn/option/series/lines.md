@@ -142,4 +142,8 @@ ${name}的坐标，可以是[直角坐标系](~grid)上的`[x, y]`，[地理坐�
     componentName="线图"
 ) }}
 
+{{ use:partial-silent(
+    prefix="#"
+) }}
+
 {{use: partial-animation(prefix="#")}}

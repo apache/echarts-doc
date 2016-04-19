@@ -57,13 +57,14 @@
     componentName="平行坐标"
 ) }}
 
+{{ use:partial-silent(
+    prefix="#"
+) }}
+
 {{use: partial-animation(
     prefix="#",
     defaultAnimationEasing='linear'
 )}}
-
-
-
 
 
 {{target: partial-parallel-line-style}}

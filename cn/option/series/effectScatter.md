@@ -122,5 +122,9 @@
     prefix="#"
 ) }}
 
+{{ use:partial-silent(
+    prefix="#"
+) }}
+
 {{use: partial-animation(prefix="#")}}
 

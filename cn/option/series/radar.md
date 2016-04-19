@@ -136,6 +136,10 @@ data : [
     componentName="雷达图"
 ) }}
 
+{{ use:partial-silent(
+    prefix="#"
+) }}
+
 {{use: partial-animation(
     prefix="#"
 )}}

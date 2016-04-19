@@ -52,4 +52,8 @@
 ### value(number)
 该区域的数据值。
 
+{{ use:partial-silent(
+    prefix="#"
+) }}
+
 

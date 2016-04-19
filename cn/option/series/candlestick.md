@@ -117,6 +117,10 @@
     componentName="K线图"
 ) }}
 
+{{ use:partial-silent(
+    prefix="#"
+) }}
+
 {{use: partial-animation-init(
     prefix="#",
     defaultAnimationEasing='linear',

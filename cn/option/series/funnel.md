@@ -120,6 +120,10 @@
     seriesType="funnel"
 )}}
 
+{{ use:partial-silent(
+    prefix="#"
+) }}
+
 {{use:partial-animation(prefix="#")}}
 
 

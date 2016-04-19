@@ -78,3 +78,7 @@
     prefix="#",
     componentName="热力图"
 ) }}
+
+{{ use:partial-silent(
+    prefix="#"
+) }}

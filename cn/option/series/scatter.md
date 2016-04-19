@@ -123,5 +123,9 @@
     componentName="散点图"
 ) }}
 
+{{ use:partial-silent(
+    prefix="#"
+) }}
+
 {{use: partial-animation(prefix="#")}}
 

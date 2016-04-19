@@ -1,4 +1,7 @@
 {{target: partial-axis-common-axis-line}}
+#${prefix} silent(boolean) = true
+坐标轴的标签是否响应和触发鼠标事件，默认不响应。
+
 #${prefix} axisLine(Object)
 坐标轴轴线相关设置。
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
@@ -11,10 +14,6 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 
 ##${prefix} lineStyle(Object)
 {{ use: partial-line-style(prefix='##' + ${prefix}, defaultColor="'#333'", defaultWidth=1, defaultType="'solid'", name="坐标轴线") }}
-
-
-
-
 
 
 {{target: partial-axis-common-axis-label}}

@@ -127,6 +127,10 @@
     seriesType="pie"
 )}}
 
+{{ use:partial-silent(
+    prefix="#"
+) }}
+
 {{use:partial-animation(prefix="#")}}
 
 

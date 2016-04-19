@@ -158,6 +158,10 @@ links: [{
 ## edges(Array)
 同 [links](~series-sankey.links)
 
+{{ use:partial-silent(
+    prefix="#"
+) }}
+
 {{use: partial-animation(
     prefix="#",
     defaultAnimationEasing="'linear'",

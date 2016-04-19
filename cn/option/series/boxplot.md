@@ -116,6 +116,10 @@ ECharts 并不内置对原始数据的处理，输入给 `boxplot` 的数据须�
     componentName="盒须图"
 ) }}
 
+{{ use:partial-silent(
+    prefix="#"
+) }}
+
 {{use: partial-animation-init(
     prefix="#",
     defaultAnimationEasing='elasticOut',
