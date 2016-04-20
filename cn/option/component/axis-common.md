@@ -53,10 +53,24 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
     prefix='##' + ${prefix},
     defaultColor="'#333'"
 )}}
+<!-- Overwrite color -->
+###${prefix} color(Color|Function)='#333'
 
+刻度标签文字的颜色，支持回调函数，格式如下
 
+```js
+(val: string) => Color
+```
 
+参数是标签的文本，返回颜色值，如下示例：
 
+```js
+textStyle: {
+    color: function (val) {
+        return val >= 0 ? 'green' : 'red';
+    }
+}
+```
 
 {{target: partial-axis-common-axis-tick}}
 
