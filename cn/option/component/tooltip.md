@@ -48,6 +48,10 @@
 
 该属性为 ECharts 3.0 中新加。
 
+## showDelay(number) = 0
+
+浮层显示的延迟，单位为 ms，默认没有延迟，也不建议设置。在 [triggerOn](~tooltip.triggerOn) 为 `'mousemove'` 时有效。
+
 ## hideDelay(number) = 100
 
 浮层隐藏的延迟，单位为 ms，在 [alwaysShowContent](~tooltip.alwaysShowContent) 为 `true` 的时候无效。
