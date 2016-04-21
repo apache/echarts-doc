@@ -1,3 +1,24 @@
+## v3.1.7
+<div class="time">2016-04-21</div>
+
++ [+] visualMap 组件新加入 [align](http://echarts.baidu.com/option.html#visualMap-continuous.align) 属性。
+
++ [+] 坐标轴刻度标签支持可点击的配置，见 [xAxis.silent](http://echarts.baidu.com/option.html#xAxis.silent)。
+
++ [+] tooltip 加入 [showDelay](http://echarts.baidu.com/option.html#tooltip.showDelay)。
+
++ [^] 修复数据精度很高时 dataZoom 会产生错误的截断的 bug。
+
++ [^] 修复 k 线图联动的 bug。Fix [#2992](https://github.com/ecomfe/echarts/issues/2992)
+
++ [^] 修复 resize 会错误的触发 tooltip 的 bug。 Fix [#2988](https://github.com/ecomfe/echarts/issues/2988)
+
++ [^] `axisLabel.textStyle.color` 支持回调函数，见 [#2796](https://github.com/ecomfe/echarts/issues/2796)
+
++ [^] 修复 IE8 下 dataZoom 区间缩小后折线图会错误绘制的 bug。
+
++ [^] 优化饼图，漏斗图的图例绘制，支持`''`, `'\n'`换行，见 [#3039](https://github.com/ecomfe/echarts/issues/3039)
+
 ## v3.1.6
 <div class="time">2016-04-11</div>
 
