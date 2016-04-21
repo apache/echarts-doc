@@ -52,8 +52,19 @@
 ### value(number)
 该区域的数据值。
 
+### itemStyle()
+
+单个数据的多边形样式设置
+
+#### normal(Object)
+##### areaColor(Color)
+地图区域的颜色。
+{{ use: partial-item-style(prefix='####') }}
+#### emphasis(Object)
+##### areaColor(Color)
+地图区域的颜色。
+{{ use: partial-item-style(prefix='####') }}
+
 {{ use:partial-silent(
     prefix="#"
 ) }}
-
-
