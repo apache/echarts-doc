@@ -2,6 +2,20 @@
 #${prefix} silent(boolean) = true
 坐标轴的标签是否响应和触发鼠标事件，默认不响应。
 
+事件参数如下：
+
+```js
+{
+    // 组件类型，xAxis, yAxis, radiusAxis, angleAxis
+    // 对应组件类型都会有一个属性表示组件的 index，例如 xAxis 就是 xAxisIndex
+    componentType: string,
+    // 点击刻度有效，未格式化过的刻度值
+    value: '',
+    // 点击坐标轴名称有效，坐标轴名称
+    name: ''
+}
+```
+
 #${prefix} axisLine(Object)
 坐标轴轴线相关设置。
 ##${prefix} show(boolean) = ${defaultShow|default(true)}

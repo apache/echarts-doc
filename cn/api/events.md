@@ -7,7 +7,33 @@ ECharts 中的事件列表分为两种，一种是鼠标事件，在鼠标点击
 
 ## 鼠标事件
 
-事件参数是事件对象的数据的各个属性，具体见各个图表类型的 label formatter 回调函数的 params 参数。
+鼠标事件的事件参数是事件对象的数据的各个属性，对于图表的点击事件，基本参数如下，其它图表诸如饼图可能会有部分附加参数。例如饼图会有`percent`属性表示百分比，具体见各个图表类型的 label formatter 回调函数的 params。
+
+```js
+{
+    componentType: 'series',
+    // 系列类型
+    seriesType: string,
+    // 系列在传入的 option.series 中的 index
+    seriesIndex: number,
+    // 系列名称
+    seriesName: string,
+    // 数据名，类目名
+    name: string,
+    // 数据在传入的 data 数组中的 index
+    dataIndex: number,
+    // 传入的原始数据项
+    data: Object,
+    // 传入的数据值
+    value: number|Array,
+    // 数据图形的颜色
+    color: string
+}
+```
+
+鼠标事件包括`'click'`，`'dblclick'`，`'mousedown'`，`'mouseup'`，`'mouseover'`，`'mouseout'`，`'globalout'`
+
+
 
 ### click(Event)
 ### dblclick(Event)

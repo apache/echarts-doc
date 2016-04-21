@@ -1,6 +1,9 @@
 {{ target: partial-formatter-params-structure }}
     ```js
     {
+        componentType: 'series',
+        // 系列类型
+        seriesType: string,
         // 系列在传入的 option.series 中的 index
         seriesIndex: number,
         // 系列名称
