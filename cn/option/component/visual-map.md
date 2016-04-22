@@ -144,15 +144,20 @@ visualMap: [
 
     表示，最小数据值，映射到 `Array` 的第一项，最大数据值映射到 `Array` 的最后一项。其他值，按照线性计算得到结果。
 
-+ 在 [visualMap-piecewise.categories](~visualMap-piecewise.categories) 模式下，视觉定义采用 `Object`。例如（[参见示例](${galleryEditorPath}doc-example/scatter-visualMap-categories&edit=1&reset=1)）：
++ 在 [visualMap-piecewise.categories](~visualMap-piecewise.categories) 模式下，视觉定义可采用 `Object`。例如（[参见示例](${galleryEditorPath}doc-example/scatter-visualMap-categories&edit=1&reset=1)）：
 
 ```javascript
 ${rangeType}: {
+    // categories 时配成 Object：
     color: {
         '优': 'red',
         '良': 'black',
-        '': 'green' // 空字串，表示其他都是 'green'。
-    }
+        '': 'green' // 空字串，表示除了'优'、'良'外，都对应到 'green'。
+    },
+    // categories 时也可以只配一个单值：
+    // color: 'green',
+    // categories 时也可以配成数组，每个数组项对应一个category：
+    // color: ['red', 'black', 'green', 'yellow', ...]
 }
 ```
 
