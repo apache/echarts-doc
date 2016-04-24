@@ -134,7 +134,9 @@ visualMap: [
 
     比如：colorLightness: [0.8, 0.2]，表示所有数据值中，`最小数据值` 映射到 `颜色明暗` 的 `0.8`，`最大数据值` 映射到 `颜色明暗` 的 `0.2`，中间其他数据值，按照线性计算出映射结果。
 
-    其中，`透明度（opacity）`、`颜色透明度（colorAlpha）`、`颜色明暗度（colorLightness）`、`颜色饱和度（colorSaturation）`、`色调（colorHue）` 的值域范围都在 `0` - `1` 之间。
+    其中，`透明度（opacity）`、`颜色透明度（colorAlpha）`、`颜色明暗度（colorLightness）`、`颜色饱和度（colorSaturation）` 的值域范围都在 `0` - `1` 之间。
+
+    `色调（colorHue）` 的值域范围是 `0` - `360`。
 
     一般来说，建议使用 `透明度（opacity）` ，而非 `颜色透明度（colorAlpha）` （他们细微的差异在于，前者能也同时控制 symbol 的 label 的透明度，而后者不能）。
 
