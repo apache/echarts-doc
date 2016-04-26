@@ -181,7 +181,7 @@ chart.setOption({
 
 但请注意：
 
-+ visualMap option 中的这几个属性在 setOption 时不支持 merge：`inRange`, `outOfRange`, `target`, `controller`。否则会带来过于复杂的 merge 逻辑。
++ visualMap option 中的这几个属性在 setOption 时不支持 merge：`inRange`, `outOfRange`, `target`, `controller`。否则会带来过于复杂的 merge 逻辑。也就是说，`setOption` 时，一旦修改了以上几个属性中的一项，其他项也会被清空，而非保留当前状态。所以，设置 visual 值时，请一次性全部设置，而非只设置一部分。
 
 + **不推荐使用 `getOption -> 修改option -> setOption` 的方式：**
 
@@ -196,6 +196,36 @@ option.visualMap.controller.inRange.color = ['red', 'blue'];
 
 chart.setOption(option); // option设置回visualMap
 ```
+
+
+{{target: partial-visual-map-inRange-outOfRange}}
+
+##${prefix} inRange(Object)
+
+定义 **在选中范围中** 的视觉元素。可选的视觉元素有：
+{{use: partial-visual-map-visual-type}}
+
+{{use: partial-visual-map-range(
+    rangeType='inRange',
+    visualMapName=${visualMapName},
+    galleryEditorPath=${galleryEditorPath}
+)}}
+
+{{use: partial-visual-map-merge}}
+
+##${prefix} outOfRange(Object)
+
+定义 **在选中范围外** 的视觉元素。可选的视觉元素有：
+{{use: partial-visual-map-visual-type}}
+
+{{use: partial-visual-map-range(
+    rangeType='outOfRange',
+    visualMapName=${visualMapName},
+    galleryEditorPath=${galleryEditorPath}
+)}}
+
+{{use: partial-visual-map-merge}}
+
 
 
 
@@ -232,31 +262,16 @@ chart.setOption(option); // option设置回visualMap
 默认取所有系列。
 
 
-## inRange(Object)
 
-定义 **在选中范围中** 的视觉元素。可选的视觉元素有：
-{{use: partial-visual-map-visual-type}}
+{{use: partial-visual-map-inRange-outOfRange(prefix="")}}
 
-{{use: partial-visual-map-range(
-    rangeType='inRange',
-    visualMapName=${visualMapName},
-    galleryEditorPath=${galleryEditorPath}
-)}}
 
-{{use: partial-visual-map-merge}}
+## contoller(Object)
 
-## outOfRange(Object)
+visualMap 组件中，`控制器` 的 `inRange` `outOfRange` 设置。如果没有这个 `controller` 设置，`控制器` 会使用外层的 `inRange` `outOfRange` 设置；如果有这个 `controller` 设置，则会采用这个设置。适用于一些控制器视觉效果需要特殊定制或调整的场景。
 
-定义 **在选中范围外** 的视觉元素。可选的视觉元素有：
-{{use: partial-visual-map-visual-type}}
+{{use: partial-visual-map-inRange-outOfRange(prefix="#")}}
 
-{{use: partial-visual-map-range(
-    rangeType='outOfRange',
-    visualMapName=${visualMapName},
-    galleryEditorPath=${galleryEditorPath}
-)}}
-
-{{use: partial-visual-map-merge}}
 
 
 {{ use: partial-rect-layout(
@@ -267,6 +282,8 @@ chart.setOption(option); // option设置回visualMap
     defaultTop="auto",
     defaultBottom="0"
 ) }}
+
+
 
 
 ## orient(string) = 'vertical'
