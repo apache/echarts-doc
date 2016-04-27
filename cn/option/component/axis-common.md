@@ -9,9 +9,9 @@
     // 组件类型，xAxis, yAxis, radiusAxis, angleAxis
     // 对应组件类型都会有一个属性表示组件的 index，例如 xAxis 就是 xAxisIndex
     componentType: string,
-    // 点击刻度有效，未格式化过的刻度值
+    // 未格式化过的刻度值, 点击刻度标签有效
     value: '',
-    // 点击坐标轴名称有效，坐标轴名称
+    // 坐标轴名称, 点击坐标轴名称有效
     name: ''
 }
 ```

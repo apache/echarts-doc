@@ -6,11 +6,9 @@
 
 示例：
 ```js
-itemStyle: {
-    normal: {
-        shadowColor: 'rgba(0, 0, 0, 0.5)',
-        shadowBlur: 10
-    }
+{
+    shadowColor: 'rgba(0, 0, 0, 0.5)',
+    shadowBlur: 10
 }
 ```
 
