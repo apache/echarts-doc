@@ -49,6 +49,9 @@ pieces: [
 ]
 ```
 
+在每个 piece 中支持的visualMap属性有：
+{{use: partial-visual-map-visual-type}}
+
 [参见示例](${galleryEditorPath}doc-example/map-visualMap-pieces&edit=1&reset=1)
 
 （注：在 ECharts2 中，`pieces` 叫做 `splitList`。现在后者仍兼容，但推荐使用 `pieces`）

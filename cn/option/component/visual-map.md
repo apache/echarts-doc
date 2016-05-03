@@ -237,7 +237,7 @@ chart.setOption(option); // option设置回visualMap
 是否显示 ${visualMapName} 组件。如果设置为 `false`，不会显示，但是数据映射的功能还存在。
 
 
-## dimension(string) = 0
+## dimension(number) = 0
 
 指定用数据的『哪个维度』，映射到视觉元素上。『数据』即 [series.data](~series.data)。
 可以把 [series.data](~series.data) 理解成一个二维数组，例如：

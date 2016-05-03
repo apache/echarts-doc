@@ -150,6 +150,13 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 <br>
 {{ use: partial-treemap-borderColor-setting(galleryEditorPath=${galleryEditorPath}) }}
 
+
+<br>
+**borderWidth, gapWidth, borderColor 的解释**
+
+![500xauto](~treemap-border-gap.png)
+
+
 {{use: partial-treemap-level-props(
     prefix="##",
     galleryEditorPath=${galleryEditorPath},
@@ -509,17 +516,19 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 #${prefix} borderWidth(number) = 0
 
-矩形边框线宽。为 0 时无边框。
+矩形边框线宽。为 0 时无边框。而矩形的内部子矩形（子节点）的间隔距离是由 [gapWidth](~series-treemap.levels.gapWidth) 指定的。
 
 
 #${prefix} gapWidth(number) = 0
 
-矩形内部子矩形的间隔距离。
+矩形内部子矩形（子节点）的间隔距离。
+
+![700xauto](~treemap-border-gap.png)
 
 
 #${prefix} borderColor(Color) = '#fff',
 
-矩形边框的颜色。支持的格式同`color`。
+矩形边框 和 矩形间隔（gap）的颜色。支持的格式同`color`。
 
 
 #${prefix} borderColorSaturation(Color) = null
@@ -542,9 +551,9 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 
 {{ target: partial-treemap-borderColor-setting }}
-**矩形边框/缝隙设置如何避免混淆**
+**矩形边框（border）/缝隙（gap）设置如何避免混淆**
 
-如果统一用一种颜色设置矩形的缝隙，那么当不同层级的矩形同时展示时可能会出现混淆。
+如果统一用一种颜色设置矩形的缝隙（gap），那么当不同层级的矩形同时展示时可能会出现混淆。
 
 参见 [例子](${galleryEditorPath}doc-example/treemap-borderColor&edit=1&reset=1)，注意其中红色的区块中的子矩形其实是更深层级，和其他用白色缝隙区分的矩形不是在一个层级。所以，红色区块中矩形的分割线的颜色，我们在 `borderColorSaturation` 中设置为『加了饱和度变化的红颜色』，以示区别。
 
