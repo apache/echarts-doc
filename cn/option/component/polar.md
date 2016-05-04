@@ -9,4 +9,6 @@
 
 ~[600x400](${galleryViewPath}scatter-polar-punchCard&edit=1&reset=1)
 
-{{use: component-circular-layout}}
+{{use: component-circular-layout(
+    componentName="极坐标系"
+)}}
