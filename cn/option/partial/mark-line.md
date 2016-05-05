@@ -121,6 +121,7 @@ data: [
 #${prefix} position(string) = 'end'
 标签位置，可选：
 + `'start'` 线的起始点。
++ `'middle'` 线的中点。
 + `'end'`   线的结束点。
 #${prefix} formatter(string|Function)
 {{ use: partial-1d-data-label-formatter }}

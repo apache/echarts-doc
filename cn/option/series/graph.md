@@ -60,6 +60,9 @@
 ## nodeScaleRatio(number) = 0.6
 鼠标漫游缩放时节点的相应缩放比例，当设为`0`时节点不随着鼠标的缩放而缩放
 
+## draggable(boolean) = false
+节点是否可拖拽，只在使用力引导布局的时候有用。
+
 {{ use: partial-symbol(
     prefix='#',
     defaultSymbol="'circle'",
