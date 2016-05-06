@@ -18,7 +18,6 @@
 {{import: component-parallel-axis}}
 {{import: component-timeline}}
 
-<!-- {{import: series}} -->
 {{import: series-line}}
 {{import: series-bar}}
 {{import: series-pie}}
