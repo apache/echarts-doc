@@ -1,5 +1,5 @@
 {{target:partial-item-style-desc}}
-${name} graphic pattern，There are two status, `normal` and `emphasis`, `normal` is the normal pattern of a graphic, `emphasis` is the highlight pattern of a graphic, like the graphic pattern of `emphasis` when mouse hovers over or legend linkage highlights. 
+${name} graphic pattern, There are two status, `normal` and `emphasis`, `normal` is the normal pattern of a graphic, `emphasis` is the highlight pattern of a graphic, like the graphic pattern of `emphasis` when mouse hovers over or legend linkage highlights. 
 
 {{target:partial-item-style}}
 

@@ -23,7 +23,7 @@ In the six measures, each one can be 『absolute value』or『percentage』or『
 
 + Absolute value
 
-    unit is browser pixels（px），write with `number`（no unit）, such as `{left: 23, height: 400}`。
+    unit is browser pixels（px）, write with `number`（no unit）, such as `{left: 23, height: 400}`。
 
 + percentage
 
@@ -31,8 +31,8 @@ In the six measures, each one can be 『absolute value』or『percentage』or『
 
 + location description
 
-    + capable to set `left: 'center'`，stands for centered horizontally.
-    + capable to set `top: 'middle'`，stands for centered vertically.
+    + capable to set `left: 'center'`, stands for centered horizontally.
+    + capable to set `top: 'middle'`, stands for centered vertically.
 
 
 The concept of these six measures is similar to the six ones in css：
@@ -52,11 +52,11 @@ Three vertical measures of`top`,`bottom` and `height` are same as the horizontal
 
 + `center`
 
-    is an array, representing `[x, y]`，among which x、y can be『absolute value』or『percentage』, meaning is the same as described before.
+    is an array, representing `[x, y]`, among which x、y can be『absolute value』or『percentage』, meaning is the same as described before.
 
 + `radius`
 
-    is an array, representing `[inner radius, outer radius]`，，among which inner and outer radius can be『absolute value』or『percentage』, meaning is the same as described before.
+    is an array, representing `[inner radius, outer radius]`, , among which inner and outer radius can be『absolute value』or『percentage』, meaning is the same as described before.
 
     When adapting to container size, perventage setting turns out to be very useful.
 
@@ -65,7 +65,7 @@ Three vertical measures of`top`,`bottom` and `height` are same as the horizontal
 <br>
 **Horizontal（horizontal）and vertical（vertical）**
 
-『narrow appearance』ECharts component（such as `legend`,`visualMap`,`dataZoom`,`timeline` and so on），mostly provide options like『horizontal layout』『vertical layout』.For example, on a narrow and long screen of mobile end,『vertical layout』may be more appropriate；『horizontal layout』may be more appropriate on PC wide screen.
+『narrow appearance』ECharts component（such as `legend`,`visualMap`,`dataZoom`,`timeline` and so on）, mostly provide options like『horizontal layout』『vertical layout』.For example, on a narrow and long screen of mobile end,『vertical layout』may be more appropriate；『horizontal layout』may be more appropriate on PC wide screen.
 
 Settings of horizontal and vertical layout are usually located in『component』or `orient` or `layout` configuration of『series』, set to `'horizontal'` or `'vertical'`.
 
@@ -75,7 +75,7 @@ Settings of horizontal and vertical layout are usually located in『component』
 
 Naming of `x/x2/y/y2` in ECharts2 is still compatible, corresponding to `left/right/top/bottom`. But `left/right/top/bottom` is recommended.
 
-In the position description is compatible  ECharts2，some weirdly-looking setting is also  supported: `left: 'right'`,`left: 'left'`,`top: 'bottom'`,`top: 'top'`. These words equal to: `right: 0`、`left: 0`、`bottom: 0`、`top: 0`，when written in the later way, it is not weird.
+In the position description is compatible  ECharts2, some weirdly-looking setting is also  supported: `left: 'right'`,`left: 'left'`,`top: 'bottom'`,`top: 'top'`. These words equal to: `right: 0`、`left: 0`、`bottom: 0`、`top: 0`, when written in the later way, it is not weird.
 
 
 
@@ -122,7 +122,7 @@ option = {
 };
 ```
 
-In the exemplary framework, `baseOption` and every option in `media` is『atom option』，namely normal option that includes all components and series definition. `baseOption` must be used, besides when certain `query` is met, corresponding option will be merged by using chart.mergeOption().
+In the exemplary framework, `baseOption` and every option in `media` is『atom option』, namely normal option that includes all components and series definition. `baseOption` must be used, besides when certain `query` is met, corresponding option will be merged by using chart.mergeOption().
 
 
 **query：**
@@ -203,7 +203,7 @@ Attention: When multiple `query` are being satisfied at the same time, all will 
 
 **query by default：**
 
-If certain item in `media` is not `query`，then it means『default value』, namely when all the rules are not met,  dapot this option.
+If certain item in `media` is not `query`, then it means『default value』, namely when all the rules are not met,  dapot this option.
 
 
 **Pay attention when container size changes with time：**

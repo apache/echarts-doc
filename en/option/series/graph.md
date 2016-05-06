@@ -5,7 +5,7 @@
 
 It is used to show node and the relational data between nodes. 
 
-**Tips：** In ECharts 2.x , the diagrams of `force` type would not be valid in ECharts 3 any more，which is changed to use  `graph` to show relational data. If you want to use force to lead the layout, you can set the  [layout](~series-graph.layout) configuration item as `'force'`. 
+**Tips：** In ECharts 2.x , the diagrams of `force` type would not be valid in ECharts 3 any more, which is changed to use  `graph` to show relational data. If you want to use force to lead the layout, you can set the  [layout](~series-graph.layout) configuration item as `'force'`. 
 
 **Sample：**
 
@@ -24,11 +24,11 @@ Whether to enable the reminding animation effect of mousr hover node.
 graph layout.
 
 **Options：**
-+ `'none'` no any layout，use  [x](~series-graph.data.x)， [y](~series-graph.data.y) provided in [node](~series-graph.data) as the position of node.
++ `'none'` no any layout, use  [x](~series-graph.data.x),  [y](~series-graph.data.y) provided in [node](~series-graph.data) as the position of node.
 
-+ `'circular'` adopt circular layout，see the example [Les Miserables](${galleryEditorPath}graph-circular-layout)。
++ `'circular'` adopt circular layout, see the example [Les Miserables](${galleryEditorPath}graph-circular-layout)。
 
-+ `'force'` adopt force to lead the layout, see the example [Force](${galleryEditorPath}graph-force)，the detail about configurtion item of layout are in [graph.force](~series-graph.force)
++ `'force'` adopt force to lead the layout, see the example [Force](${galleryEditorPath}graph-force), the detail about configurtion item of layout are in [graph.force](~series-graph.force)
 
 ## force(Object)
 Force lead the related configuration items about layout. Force leading layout similates the following situation: spring charge model add a repulsion between 2 nodes and add a gravitation between 2 nodes of each edge. Every time, the iteration node would move under the effect of repulsion and gravitation. After several iterations, the node would be static in a balanced position. As a result, the energy minimization of this whole model would be realized.     
@@ -38,7 +38,7 @@ The result of force leading layout has a perfect symmety and partial polymerism,
 ### initLayout(string)
 The init layout before force leading layout, which would influence on the effect of force leading layout.  
 
-It defaults not to make any layout. use  [x](~series-graph.data.x)， [y](~series-graph.data.y) provided in [node](~series-graph.data) as the position of node. If it doesn't exist, the position would be generated randomly.
+It defaults not to make any layout. use  [x](~series-graph.data.x),  [y](~series-graph.data.y) provided in [node](~series-graph.data) as the position of node. If it doesn't exist, the position would be generated randomly.
 
 You can also use circular layout `'circular'`.
 
@@ -110,11 +110,11 @@ the shared line style of relational border.
 )}}
 
 ## categories(Array)
-the category of node classification，which is optional.
+the category of node classification, which is optional.
 If there is a classification of nodes, the category of each node could be assigned through [data[i].category](~series-graph.data.category). And the style of category would also be applied in the style of nodes. [legend](~legend) could be shown and flltered based on `categories`.
 
 ### name(string)
-name of category，which is used to correspond with [legend](~legend) and format the content of [tooltip](~tooltip).
+name of category, which is used to correspond with [legend](~legend) and format the content of [tooltip](~tooltip).
 
 {{ use: partial-symbol(
     prefix='##',
@@ -198,7 +198,7 @@ line style of relational edges.
     prefix="####"
 )}}
 ##### curveness(number) = 0
-the curveness od edge，supporting values from 0 to 1. The curveness would be larger as the value becomes lager.  
+the curveness od edge, supporting values from 0 to 1. The curveness would be larger as the value becomes lager.  
 #### emphasis(Object)
 {{ use:partial-line-style(
     prefix="####"

@@ -22,7 +22,7 @@ Echarts and zrender installed through npm will be placed under `node_modules`. Y
 ```js
 var echarts = require('echarts');
 
-// based on prepared dom，initialize echarts example
+// based on prepared dom, initialize echarts example
 var myChart = echarts.init(document.getElementById('main'));
 // draw chart
 myChart.setOption({
@@ -55,7 +55,7 @@ require('echarts/lib/chart/bar');
 require('echarts/lib/component/tooltip');
 require('echarts/lib/component/title');
 
-// based on prepared dom，initialize echarts example
+// based on prepared dom, initialize echarts example
 var myChart = echarts.init(document.getElementById('main'));
 // Draw chart
 myChart.setOption({

@@ -75,7 +75,7 @@ special label types are used to label maximum value, minimum value and so on.
 {{ /if }}
 {{ if: ${hasCoord} }}
 ###${prefix} valueIndex(number)
-Available when using [type](~series-${seriesType}.markPoint.data.type) it is used to assign maximum value and minimum value in dimensions, it could be `0`（xAxis, radiusAxis），`1`（yAxis, angleAxis）, and use the first value axis dimension by default.
+Available when using [type](~series-${seriesType}.markPoint.data.type) it is used to assign maximum value and minimum value in dimensions, it could be `0`（xAxis, radiusAxis）, `1`（yAxis, angleAxis）, and use the first value axis dimension by default.
 
 
 ###${prefix} valueDim(string)

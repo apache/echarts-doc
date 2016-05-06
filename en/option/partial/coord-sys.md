@@ -2,13 +2,13 @@
 
 ## coordinateSystem(string) = ${coordSysDefault}
 
-The coordinate system used in the series， options are:
+The coordinate system used in the series,  options are:
 
 {{if: ${cartesian2d} }}
 
 + `'cartesian2d'`
 
-    Using a two-dimensional Cartesian coordinate system（also known as Cartesian coordinate system），through [xAxisIndex](~series-${seriesType}.xAxisIndex), [yAxisIndex](~series-${seriesType}.yAxisIndex) to assign the corresponding axis component.
+    Using a two-dimensional Cartesian coordinate system（also known as Cartesian coordinate system）, through [xAxisIndex](~series-${seriesType}.xAxisIndex), [yAxisIndex](~series-${seriesType}.yAxisIndex) to assign the corresponding axis component.
 {{/if}}
 
 {{if: ${polar} }}
@@ -29,7 +29,7 @@ The coordinate system used in the series， options are:
 
 + `'parallel'`
 
-    Using parallel coordinates，through [parallelIndex](~series-${seriesType}.parallelIndex) to assign the corresponding parallel coordinate system components.
+    Using parallel coordinates, through [parallelIndex](~series-${seriesType}.parallelIndex) to assign the corresponding parallel coordinate system components.
 {{/if}}
 
 

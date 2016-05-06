@@ -1,4 +1,4 @@
-{{ target: action-series-query }}// Series index can be chosen，this can be an array specifying multiple series.
+{{ target: action-series-query }}// Series index can be chosen, this can be an array specifying multiple series.
     seriesIndex?: number|Array,
     // Series names can be chosen, this can be an array assigning multiple series.
     seriesName?: string|Array,{{/target}}
@@ -118,7 +118,7 @@ dispatchAction({
 ```js
 dispatchAction({
     type: 'showTip',
-    // index of series，which is optional when trigger of tooltip is axis.
+    // index of series, which is optional when trigger of tooltip is axis.
     seriesIndex?: number,
     {{ use: action-data-query }}
 })
@@ -146,11 +146,11 @@ Zoom data region.
 ```js
 dispatchAction({
     type: 'dataZoom',
-    // Options are open，index of dataZoom component, available when there are multiple dataZoom components，it is 0 by default.
+    // Options are open, index of dataZoom component, available when there are multiple dataZoom components, it is 0 by default.
     dataZoomIndex: number,
-    // data value at starting location，0 - 100
+    // data value at starting location, 0 - 100
     start: number,
-    // data value at finishing location，0 - 100
+    // data value at finishing location, 0 - 100
     end: number,
     // data value at starting location
     startValue: number,
@@ -173,7 +173,7 @@ Select data value range of map.
 ```js
 dispatchAction({
     type: 'selectDataRange',
-    // Options are open，index of visualMap component, available when there are multiple visualMap components，it is 0 by default.
+    // Options are open, index of visualMap component, available when there are multiple visualMap components, it is 0 by default.
     visualMapIndex: number,
     // Continuous visualMap is different from discrete visualMap 
     // Continuous visualMap is an array that representing data value range.
@@ -224,7 +224,7 @@ Switch timeline to play status.
 ```js
 dispatchAction({
     type: 'timelinePlayChange',
-    // state of play，true is auto-play
+    // state of play, true is auto-play
     playState: boolean
 })
 ```

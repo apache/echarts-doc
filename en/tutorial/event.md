@@ -13,14 +13,14 @@ myChart.on('click', function (params) {
 });
 ```
 
-Events in ECharts are divided into two types，one is events triggered by user's mouse clicking or hovering chart graphic, another is action events triggered by user's using of interactive component, such as  ['legendselectchanged'](api.html#events.legendselectchanged) event （attention: change legend switch will not trigger `'legendselected'` event） triggered by changing legend switch，['datazoom'](api.html#events.legendselectchanged) event triggered by zooming data area and so on.
+Events in ECharts are divided into two types, one is events triggered by user's mouse clicking or hovering chart graphic, another is action events triggered by user's using of interactive component, such as  ['legendselectchanged'](api.html#events.legendselectchanged) event （attention: change legend switch will not trigger `'legendselected'` event） triggered by changing legend switch, ['datazoom'](api.html#events.legendselectchanged) event triggered by zooming data area and so on.
 
 ## Handling of mouse event 
 
-ECharts support normal mouse event type including `'click'`, `'dblclick'`, `'mousedown'`, `'mousemove'`, `'mouseup'`, `'mouseover'`, `'mouseout'` event，next let's see an example of Baidu search page after opening a simple click bar chart.
+ECharts support normal mouse event type including `'click'`, `'dblclick'`, `'mousedown'`, `'mousemove'`, `'mouseup'`, `'mouseover'`, `'mouseout'` event, next let's see an example of Baidu search page after opening a simple click bar chart.
 
 ```js
-// Based on prepared dom，initialize ECharts example
+// Based on prepared dom, initialize ECharts example
 var myChart = echarts.init(document.getElementById('main'));
 
 // data and configuration item of specified chart
@@ -50,7 +50,7 @@ myChart.on('click', function (params) {
     seriesIndex: number,
     // series name
     seriesName: string,
-    // data name，category name
+    // data name, category name
     name: string,
     // data index in incoming data array
     dataIndex: number,
@@ -78,7 +78,7 @@ myChart.on('click', function (parmas) {
 
 ## component interaction event
 
-Basically all component interaction in ECharts trigger corresponding event，frequently used events and corresponding parameters are listed in [events](api.html#events).
+Basically all component interaction in ECharts trigger corresponding event, frequently used events and corresponding parameters are listed in [events](api.html#events).
 
 Below is example that monitors a legend switch:
 

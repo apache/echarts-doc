@@ -1,7 +1,7 @@
 {{ target: echarts }}
 # echarts(Object)
 
-Global echarts bject，can be obtained by introducing `echarts.js` in script label or through  `require('echarts')` in AMD environment.
+Global echarts object, can be obtained by introducing `echarts.js` in script label or through  `require('echarts')` in AMD environment.
 
 ## init(Function)
 ```js
@@ -10,7 +10,7 @@ Global echarts bject，can be obtained by introducing `echarts.js` in script lab
     renderer?: string
 }) => ECharts
 ```
-Create a ECharts example，go back to [echartsInstance](~echartsInstance)，but you can not initialize multiple ECharts examples on a single container.
+Create a ECharts example, go back to [echartsInstance](~echartsInstance), but you can not initialize multiple ECharts examples on a single container.
 
 **parameter**
 + `dom`
@@ -46,7 +46,7 @@ Multiple examples of the graph realize linkage.
 
 **parameter：**
 + `group`
-    group id，or array of chart example.
+    group id, or array of chart example.
 
 **For example：**
 ```js
@@ -92,11 +92,11 @@ Ways of usage can refer to [option.geo](option.html#geo.map)。
 **parameter：**
 + `mapName`
 
-    Map name， `map` set in [geo](option.html#geo) component or [map](option.html#series-map)chart category is value concerned.
+    Map name,  `map` set in [geo](option.html#geo) component or [map](option.html#series-map)chart category is value concerned.
 
 + `geoJson`
 
-    Data if GeoJson format，specific format can refer to [http://geojson.org/](http://geojson.org/).
+    Data if GeoJson format, specific format can refer to [http://geojson.org/](http://geojson.org/).
 
 + `specialAreas`
 

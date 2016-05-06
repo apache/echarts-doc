@@ -1,6 +1,6 @@
 {{target:partial-label-desc}}
 
-${name}text label on the graphic can be used to explain some data information of the graphic, for example, value, name and so on.`label` is placed in ECharts 2.x under `itemStyle.normal`. In ECharts 3, in order to make the whole configuration structure more reasonable and flat，`label`is taked to the same level as `itemStyle` and possesses rwo status `normal` and `emphasis` like `itemStyle`.
+${name}text label on the graphic can be used to explain some data information of the graphic, for example, value, name and so on.`label` is placed in ECharts 2.x under `itemStyle.normal`. In ECharts 3, in order to make the whole configuration structure more reasonable and flat, `label`is taked to the same level as `itemStyle` and possesses rwo status `normal` and `emphasis` like `itemStyle`.
 
 
 {{target:partial-label}}

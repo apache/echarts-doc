@@ -4,7 +4,7 @@
 
 Legend component.
 
-Legend component shows the symbol(symbol)， color and name of different series. You can click legend to specify which serise could not be shown. 
+Legend component shows the symbol(symbol),  color and name of different series. You can click legend to specify which serise could not be shown. 
 
 In a single echarts instance of ECharts 3, multiple legend components could exist at the same time, which would be convinient for the layout of multiple legend components.
 
@@ -51,7 +51,7 @@ Content formatter of legend text, which supports string template and callback fu
 
 Example：
 ```js
-// using string template，the template variable is legend name {name}
+// using string template, the template variable is legend name {name}
 formatter: 'Legend {name}'
 // using callback function
 formatter: function (name) {
@@ -87,7 +87,7 @@ Public text style of legend.
 
 ## data(Array)
 
-Data array of legend. An array item is usually a string and every item represents the `name`（if it is[pie chart](~series-pie)，it would also be the `name` of a single data in the pie chart） of a series . Legend component would automatically acquire the color of the corresponding series. As the automatically drawn color and symbol, special string `''`（null string）or `'\n'` (line feed string), diagram symbol（symbol）is used in lind feedof legend.
+Data array of legend. An array item is usually a string and every item represents the `name`（if it is[pie chart](~series-pie), it would also be the `name` of a single data in the pie chart） of a series . Legend component would automatically acquire the color of the corresponding series. As the automatically drawn color and symbol, special string `''`（null string）or `'\n'` (line feed string), diagram symbol（symbol）is used in lind feedof legend.
 
 If you want to set the style of a single item, this item could be written as the object to the configuration item. At this time, you must use the `name`  property to correspond with the `name` of series.   
 
@@ -105,7 +105,7 @@ data: [{
 ```
 
 ### name(string)
-Name of legend item，corresponding with the `name`of series（if it was pie diagram, it could be the `name` of singel data in the pie diagram）.
+Name of legend item, corresponding with the `name`of series（if it was pie diagram, it could be the `name` of singel data in the pie diagram）.
 
 ### icon(string)
 

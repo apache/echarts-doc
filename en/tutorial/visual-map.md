@@ -46,7 +46,7 @@ series: {
         },
         [1212, 5454, 'Vatican'],   //  it can also be value of dataItem, which is more common.
         [2323, 3223, 'Nauru'],     // each value is『three-dimensional』, each column is a dimension.
-        [4343, 23,   'Tuvalu']    // if it is『bubble chart』，mapping the first dimension to x axis is very common,
+        [4343, 23,   'Tuvalu']    // if it is『bubble chart』, mapping the first dimension to x axis is very common,
                                  // map the second dimension to y axis,
                                  // map the third dimension to bubble radius（symbolSize）
     ]
@@ -65,7 +65,7 @@ In chart, first two dimensions of value are always mapped by default, such as ma
 
 visualMap component defines map『which dimension』of data to『what visual element』.
 
-Now there are two types of visualMap component below，which can be distinguished through [visualMap.type](option.html#visualMap.type) .
+Now there are two types of visualMap component below, which can be distinguished through [visualMap.type](option.html#visualMap.type) .
 
 Here is the example of definition structure:
 
@@ -119,12 +119,12 @@ option = {
             seriesIndex: 4,     // map the fourth series.
             inRange: {          // visual configuration within selected range
                 color: ['blue', '#121122', 'red'], // define color list of graphic color mapping,
-                                                    // map the minimum data value to 'blue'，
-                                                    // map the maximum data value to'red'，
+                                                    // map the minimum data value to 'blue', 
+                                                    // map the maximum data value to'red', 
                                                     // the rest will be linear calculated automatically.
                 symbolSize: [30, 100]               // define map range of graphic size,
-                                                    // map the minimum data value to 30，
-                                                    // map the maximum data value to 100，
+                                                    // map the minimum data value to 30, 
+                                                    // map the maximum data value to 100, 
                                                     //  the rest will be linear calculated automatically.
             },
             outOfRange: {       // visual configuration outside selected range

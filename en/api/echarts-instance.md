@@ -27,11 +27,11 @@ set the configuration item, data and universal interface of chart example, all p
 
 + `notMerge`
 
-    Option. Specifies whether not to merge with `option` set before，set to`false` by defualt，namely merge.
+    Option. Specifies whether not to merge with `option` set before, set to`false` by defualt, namely merge.
 
 + `notRefreshImmediately`
 
-    Option.Specifies whether not to refresh cavas immediately,set to`false` by defualt，namely refresh immediately.
+    Option.Specifies whether not to refresh cavas immediately,set to`false` by defualt, namely refresh immediately.
 
 ## getWidth(Function)
 ```js
@@ -119,14 +119,14 @@ myChart.dispatchAction({
 
 Bind event-handling function.
 
-There are two kinds of events in ECharts, one is mouse event, which will trigger when mouse click certain picture，another kind triggers event after dispatches [dispatchAction](~echartsInstance.dispatchAction). Every action has cooresponding event, details can be referred to in [action](~action) and[events](~events) document.
+There are two kinds of events in ECharts, one is mouse event, which will trigger when mouse click certain picture, another kind triggers event after dispatches [dispatchAction](~echartsInstance.dispatchAction). Every action has cooresponding event, details can be referred to in [action](~action) and[events](~events) document.
 
 If event is triggered by [dispatchAction](~echartsInstance.dispatchAction), and there are bulk actions triggered by batch attribute in action, then related event parameter will also put all attribute in batch.
 
 **parameter：**
 + `eventName`
 
-    Event names are all in lowecase, for example `'click'`，`'mousemove'`, `'legendselected'`
+    Event names are all in lowecase, for example `'click'`, `'mousemove'`, `'legendselected'`
 
     **Attention：** In ECharts 2.x `CLICK` attribut in `config` object can be used as event name. In ECharts 3,use the same lowercase string as dom event as event name.
 
@@ -199,7 +199,7 @@ Hide animation loading effect.
 }) => string
 ```
 
-Exporting picture chart , return a base64 url，can set to `src` in `Image`.
+Exporting picture chart , return a base64 url, can set to `src` in `Image`.
 
 **For example：**
 ```js
@@ -222,7 +222,7 @@ img.src = myChart.getDataURL({
 }) => string
 ```
 
-Exporting linked chart picture, return a base64 url，you can set to `src` in `Image`.Relative location of each chart in exporting picture is related to that of container.
+Exporting linked chart picture, return a base64 url, you can set to `src` in `Image`.Relative location of each chart in exporting picture is related to that of container.
 
 ## clear
 

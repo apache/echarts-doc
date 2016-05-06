@@ -163,7 +163,7 @@ But because this time there is only a change in shading, so the faster way to ma
 
 ```js
 visualMap: {
-    // does not show visualMap component，only used to map shading
+    // does not show visualMap component, only used to map shading
     show: false,
     // minimum value of map 80
     min: 80,

@@ -111,7 +111,7 @@ Switch event of play state in timeline.
 ```js
 {
     type: 'timelineplaychanged',
-    // play state，true is auto play
+    // play state, true is auto play
     playState: boolean
 }
 ```
@@ -167,7 +167,7 @@ User will trigger this event by clicking select.
 ```js
 {
     type: '${componentType}selectchanged',
-    // series ID，can incoming in option
+    // series ID, can incoming in option
     seriesId: string
     // data name
     name: name,
@@ -187,7 +187,7 @@ Use `dispatchAction` can trigger this event, but user clicking this event won't 
 ```js
 {
     type: '${componentType}selected',
-    // series ID，can incoming in option
+    // series ID, can incoming in option
     seriesId: string
     // data name
     name: name,
@@ -208,7 +208,7 @@ Use `dispatchAction` can trigger this event, but user clicking this event won't 
 ```js
 {
     type: '${componentType}unselected',
-    // series ID，can incoming in option
+    // series ID, can incoming in option
     seriesId: string
     // data name
     name: name,

@@ -14,14 +14,14 @@ ${componentName} distance of component  from the left side of the container.
 
 left value can be specific pixel value like`20` , it can also be relative percentage  to the container width like `'20%'` , and also  `'left'`, `'center'`, `'right'`.
 
-if the left value is`'left'`, `'center'`, `'right'`，component will align automatically based on cooresponding position.
+if the left value is`'left'`, `'center'`, `'right'`, component will align automatically based on cooresponding position.
 
 #${prefix|default("#")} top(string|number) = ${defaultTop|default("'auto'")}
 
 ${componentName} distance of component  from the upper side of the container.
 
-top value can be specific pixel value like `20` , it can also be relative percentage  to the container height and width like `'20%'`， and also `'top'`, `'middle'`, `'bottom'`.
-if the  top value is`'top'`, `'middle'`, `'bottom'`，component will align automatically based on cooresponding position.
+top value can be specific pixel value like `20` , it can also be relative percentage  to the container height and width like `'20%'`,  and also `'top'`, `'middle'`, `'bottom'`.
+if the  top value is`'top'`, `'middle'`, `'bottom'`, component will align automatically based on cooresponding position.
 
 #${prefix|default("#")} right(string|number) = ${defaultRight|default("'auto'")}
 

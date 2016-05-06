@@ -3,7 +3,7 @@
 
 + 【\+】add in radar chart, see [http://echarts.baidu.com/option.html#series-radar](http://echarts.baidu.com/option.html#series-radar)
 
-+ [^] position optimization of average, minimum and maximum value starting point and finishing point. Fix [#2762](https://github.com/ecomfe/echarts/issues/2762)，[#2688](https://github.com/ecomfe/echarts/issues/2688).
++ [^] position optimization of average, minimum and maximum value starting point and finishing point. Fix [#2762](https://github.com/ecomfe/echarts/issues/2762), [#2688](https://github.com/ecomfe/echarts/issues/2688).
 
 + [^] fix the only one configuration for ''none'' bug in markLine symbol. See [#2733](https://github.com/ecomfe/echarts/issues/2733)
 
@@ -43,7 +43,7 @@
 
 + [^] fix markPoint label display error in charts with vertical axis as category axis.Fix [#2641](https://github.com/ecomfe/echarts/issues/2641)
 
-+ [^] optimize dataZoom，fix dynamic data update problem in dataZoom chart. Fix [#2667](https://github.com/ecomfe/echarts/issues/2667)
++ [^] optimize dataZoom, fix dynamic data update problem in dataZoom chart. Fix [#2667](https://github.com/ecomfe/echarts/issues/2667)
 
 + [^] percentage is 0 rather than NaN when all pie chart data are zero. Fix [#2690](https://github.com/ecomfe/echarts/issues/2667)
 
@@ -65,7 +65,7 @@
 ## v3.1.1
 <div class="time">2016-02-22</div>
 
-+ 【\+】newly add npm channel to obtain echarts，see details in [webpack + echarts tutorial](http://echarts.baidu.com/tutorial.html#%E5%9C%A8%20webpack%20%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts)
++ 【\+】newly add npm channel to obtain echarts, see details in [webpack + echarts tutorial](http://echarts.baidu.com/tutorial.html#%E5%9C%A8%20webpack%20%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts)
 
 + [^] fix abnormal indynamic markPoint and markLine . Fix [#2522](https://github.com/ecomfe/echarts/issues/2522)
 
@@ -99,7 +99,7 @@
 
 + [^] legend and toolbox support setting height and width and wrap automatically through width and height.Fix [#2621](https://github.com/ecomfe/echarts/issues/2621)
 
-+ [^] optimization of line chart smooth，add in`smoothMonotone` configuration item，see details in [option.html#series-line.smoothMonotone](http://echarts.baidu.com/option.html#series-line.smoothMonotone)，Fix [#2612](https://github.com/ecomfe/echarts/issues/2612)
++ [^] optimization of line chart smooth, add in`smoothMonotone` configuration item, see details in [option.html#series-line.smoothMonotone](http://echarts.baidu.com/option.html#series-line.smoothMonotone), Fix [#2612](https://github.com/ecomfe/echarts/issues/2612)
 
 + [^] fix incapability to trigger mouse events on computers with touch screen like Surface and so on. Fix [#2569](https://github.com/ecomfe/echarts/issues/2569)
 
@@ -139,7 +139,7 @@
 
 + [^] map type can choose data attribute.
 
-+ [^] fix average mark and mark calculation errors，Fix [#2367](https://github.com/ecomfe/echarts/issues/2367)
++ [^] fix average mark and mark calculation errors, Fix [#2367](https://github.com/ecomfe/echarts/issues/2367)
 
 + [^] animation optimization when line chart change from `'-'` no data to data.
 

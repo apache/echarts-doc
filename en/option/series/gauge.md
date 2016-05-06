@@ -20,7 +20,7 @@ the radius of gauge board. It could be the half percentage of the smaller item c
 {{ use partial-legend-hover-link }}
 
 ## startAngle(number) = 225
-the start angle of gauge board. The direct right side of [circle center](~series-gauge.center) is `0` degree，the right above it is `90` degree，the direct left side of it is `180` degree.
+the start angle of gauge board. The direct right side of [circle center](~series-gauge.center) is `0` degree, the right above it is `90` degree, the direct left side of it is `180` degree.
 
 ## endAngle(number) = -45
 the end angle of gauge board.

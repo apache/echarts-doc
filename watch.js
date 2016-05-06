@@ -6,7 +6,7 @@
 var path = require('path');
 var fs = require('fs');
 
-var docSrcDir = path.join(__dirname, '/cn');
+var docSrcDir = path.join(__dirname, '/en');
 
 var watchDirs = [];
 getAllDirs(docSrcDir, watchDirs);

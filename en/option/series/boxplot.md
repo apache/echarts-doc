@@ -35,7 +35,7 @@ Whether to enable the motion effect of hover on box.
 
 ## layout(string) = null
 
-layout methods，optional values：
+layout methods, optional values：
 
 + `'horizontal'`：horizontal layout of all boxes.
 
@@ -64,7 +64,7 @@ Data format is double dimensional array which is shown in the following example.
     [672.5, 800, 845, 885, 1012.5],
     [780, 840, 855, 880, 940],
     [621.25, 767.5, 815, 865, 1011.25],
-    { // the data item could also be Object，so it could contains special setting values for this data item.
+    { // the data item could also be Object, so it could contains special setting values for this data item.
 
         value: [713.75, 807.5, 810, 870, 963.75],
         itemStyle: {...}

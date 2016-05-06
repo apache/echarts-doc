@@ -55,7 +55,7 @@ the hyper link of subtitle text.
 
 ## subtarget(string) = 'blank'
 
- open the hyper link of main heading text in specified window，options：
+ open the hyper link of main heading text in specified window, options：
 
 + `'self'` opening the current window
 

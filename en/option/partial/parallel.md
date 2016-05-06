@@ -19,7 +19,7 @@ basic configurations of `option` in『parallel coordinates』are as followed：
 ```javascript
 option = {
     parallelAxis: [                     // These are definitions of numerous 『axis』
-        {dim: 0, name: schema[0].text}, // Every『axis』has a 'dim' attribute，representing dimension number of axis.
+        {dim: 0, name: schema[0].text}, // Every『axis』has a 'dim' attribute, representing dimension number of axis.
         {dim: 1, name: schema[1].text},
         {dim: 2, name: schema[2].text},
         {dim: 3, name: schema[3].text},
@@ -113,14 +113,14 @@ For example, following data are in [series-parallel.data](~series-parallel.data)
     [2,  25,  11,  21,  0.65,  34,  9,  'excellent'],
     [3,  56,  7,   63,  0.3,   14,  5,  'good'],
     [4,  33,  7,   29,  0.33,  16,  6,  'excellent'],
-    { // data item can also be Object，therefore special setting of lines can be included.
+    { // data item can also be Object, therefore special setting of lines can be included.
         value: [5,  42,  24,  44,  0.76,  40,  16, 'excellent']
         lineStyle: {...},
     }
     ...
 ]
 ```
-In data, every line is a 『data item』，every row belongs to a『dimension』.（like every row of data above means：『date』,『AQI index』, 『PM2.5』, 『PM10』, 『carbon monoxide value』, 『nitrogen dioxide value』, 『sulfur dioxide value』）。
+In data, every line is a 『data item』, every row belongs to a『dimension』.（like every row of data above means：『date』,『AQI index』, 『PM2.5』, 『PM10』, 『carbon monoxide value』, 『nitrogen dioxide value』, 『sulfur dioxide value』）。
 
 
 

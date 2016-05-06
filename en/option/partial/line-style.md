@@ -35,6 +35,6 @@ Options are as followed：
 ) }}
 {{ if: ${hasCurveness} }}
 #${prefix} curveness(number) = 0
-Edge curvature supports the value from 0 to 1，the bigger the value, the greater the curvature.
+Edge curvature supports the value from 0 to 1, the bigger the value, the greater the curvature.
 {{ /if }}
 

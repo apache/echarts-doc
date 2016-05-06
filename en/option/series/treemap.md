@@ -29,11 +29,11 @@ Tip：Compared with ECharts2, Treemap configuration items have changed. Some  im
 
 + `center/size` locate mode is no longer supported, and the locate mode of `left/top/bottom/right/width/height` would be used uniformly.
 
-+ the configuration of `breadcrumb` is moved outside the `itemStyle.normal/itemStyle.emphasis`，which is in the same level with `itemStyle`.
++ the configuration of `breadcrumb` is moved outside the `itemStyle.normal/itemStyle.emphasis`, which is in the same level with `itemStyle`.
 
 + `root` setting is not avaliable temporarily.At present, `zoom` could be used to see the details in the subordinate levels.  
 
-+ the configuration of `label` is moved outside the `itemStyle.normal/itemStyle.emphasis`，which is in the same level with `itemStyle`.
++ the configuration of `label` is moved outside the `itemStyle.normal/itemStyle.emphasis`, which is in the same level with `itemStyle`.
 
 + `itemStyle.normal.childBorderWidth`、`itemStyle.normal.childBorderColor` are not avaliable anymore（because this configuration can only define 2 levels of treemap）.[series-treemap.levels](~series-treemap.levels) is used uniformly to define all levels.
 
@@ -92,7 +92,7 @@ treemap adopts『3-level configuration』such as『series』--『each level』--
 
 Otherwise, we can configurate each node and also can configurate each level of the tree, or set a overall configuration on the series.
 
-The most frequently used one is『configurate each level』， the configuration item of `levels` is the configuration of each level.  For example：
+The most frequently used one is『configurate each level』,  the configuration item of `levels` is the configuration of each level.  For example：
 
 ```javascript
 levels: [
@@ -106,7 +106,7 @@ levels: [
 <br>
 **The rules for visual mapping**
 
-Treemap primarily focus on how to visually distinguish 『different levels』 from 『different categories in the same level』, which require to properly set 『rectangular color』,『border thickness』，『border color』and even『color saturation of rectangular』 and so on on each level.
+Treemap primarily focus on how to visually distinguish 『different levels』 from 『different categories in the same level』, which require to properly set 『rectangular color』,『border thickness』, 『border color』and even『color saturation of rectangular』 and so on on each level.
 
 Reference to [example](${galleryEditorPath}treemap-disk&edit=1&reset=1). The top level is divided by colors into several parts respectively in 『red』『green』『blue』and etc.. Each color block is the next level, using color saturation to distinguish (reference to `colorSaturation`). The border of the outermost level of Rectangle is 『white』. The border of the next level rectangular is the processed result of current block color added with saturation（See `borderColorSaturation`）.
 
@@ -119,7 +119,7 @@ Therefore, what can be done is the following: the parent level configurates `col
 <br>
 **dimensions and『extra visual mapping』**
 
-Example：every `value` field is an Array，in which every item corresponds with a dimension（dimension）.
+Example：every `value` field is an Array, in which every item corresponds with a dimension（dimension）.
 
 ```javascript
 [
@@ -261,10 +261,10 @@ the the data format of [series-treemap.data](~series-treemap.data) is tree. For 
         children: [
             {
                 value: 2323,    // the value of value field, corresponding to area size.
-                                // it could also be array, such as [2323, 43, 55]，in which the first item of array corresponds to the area size. 
+                                // it could also be array, such as [2323, 43, 55], in which the first item of array corresponds to the area size. 
                                 // array is used for extra visual mapping. See details in series-treemp.levels。
                 id: 'someid-1', // id is not something have to be set.
-                                // If some node need to be changed by API，it need id to locate. 
+                                // If some node need to be changed by API, it need id to locate. 
                 name: 'description of this node', // show the description text in rectangle.
                 children: [...],
                 label: {        // the special label definition of this node(if necessary)
@@ -292,7 +292,7 @@ the the data format of [series-treemap.data](~series-treemap.data) is tree. For 
     },
     {
         value: [23, 59, 12]
-        // if there is no children，here could be nothing. 
+        // if there is no children, here could be nothing. 
     },
     ...
 ]
@@ -304,7 +304,7 @@ The value of nodes in each tree, which corresponds to area size. It could be num
 
 ### id(string)
 
-the id of each tree node. id is not necessarily to be set. If some node need to be changed by API，it needs id to locate.  
+the id of each tree node. id is not necessarily to be set. If some node need to be changed by API, it needs id to locate.  
 
 ### name(string)
 
@@ -325,11 +325,11 @@ See [series-treemap.data.target](~series-treemap.data.target).
 
 ### target(string) = 'blank'
 
-The same meaning with `target` in `html` `<a>` label，referring to [series-treemap.data.link](~series-treemap.data.link). Option values are：`'blank'` or `'self'`.
+The same meaning with `target` in `html` `<a>` label, referring to [series-treemap.data.link](~series-treemap.data.link). Option values are：`'blank'` or `'self'`.
 
 ### children(Array)
 
-children node，recursive definition，its format is the same with [series-treemap.data](~series-treemap.data).
+children node, recursive definition, its format is the same with [series-treemap.data](~series-treemap.data).
 
 
 
@@ -474,11 +474,11 @@ This can hide the details of nodes when the rectangular area is not large enough
 <br>
 > Tps：In treemap, `${name}` attribute could exist in much places：
 
-> * It could exist under [sereis-treemap](~series-treemap) root，indicating the unified setting of this overall series.
+> * It could exist under [sereis-treemap](~series-treemap) root, indicating the unified setting of this overall series.
 
-> * It could exist in every array element of  [series-treemap.levels](~series-treemap.levels)，indicating the unified setting of every level of tree. 
+> * It could exist in every array element of  [series-treemap.levels](~series-treemap.levels), indicating the unified setting of every level of tree. 
 
-> * It could exist n every node of [series-treemap.data](~series-treemap.data)，indicating the particular setting of each node.
+> * It could exist n every node of [series-treemap.data](~series-treemap.data), indicating the particular setting of each node.
 
 
 
@@ -486,7 +486,7 @@ This can hide the details of nodes when the rectangular area is not large enough
 
 {{target: partial-treemap-visual-detial}}
 
-About the visual setting，see details in [series-treemap.levels](~series-treemap.levels).
+About the visual setting, see details in [series-treemap.levels](~series-treemap.levels).
 
 
 
@@ -585,7 +585,7 @@ horizontal alignment. Optional values are `'center'`、`'right` and `'left'`.
 
 ##${prefix} baseline(string) = 'middle'
 
-vertical alignment，Optional values are  `'middle'`、`'right` and `'left'`.
+vertical alignment, Optional values are  `'middle'`、`'right` and `'left'`.
 
 
 

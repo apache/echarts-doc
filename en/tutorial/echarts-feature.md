@@ -1,19 +1,19 @@
 {{ target: echarts-feature }}
 # Introduction of ECharts features
 
-ECharts is a chart bank with pure Javascript, it can run smoothly on PC and mobile devices, compatible with most of current browser（IE8/9/10/11，Chrome，Firefox，Safari and so on）, it relies on underlying lightweight  Canvas bank [ZRender](https://github.com/ecomfe/zrender) and provides data visualization map that is Direct, vivid, interactive, highly personalized.
+ECharts is a chart bank with pure Javascript, it can run smoothly on PC and mobile devices, compatible with most of current browser（IE8/9/10/11, Chrome, Firefox, Safari and so on）, it relies on underlying lightweight  Canvas bank [ZRender](https://github.com/ecomfe/zrender) and provides data visualization map that is Direct, vivid, interactive, highly personalized.
 
 ECharts 3 adds even richer interactive function, visualization effects and optimizes deeper on mobile end.
 
 ## Rich chart types
 
-ECharts provides routine [line chart](option.html#series-line)，[bar chart](option.html#series-line)，[scatter chart](option.html#series-scatter)，[pie chart](~option.html#series-pie)，[K line chart](option.html#series-candlestick), [box chart](option.html#series-boxplot) used for calculation, [map] (option.html#series-map)used for geo-data visualization，[thermal map](option.html#series-heatmap)，[line chart](option.html#series-lines)，[relationship map](option.html#series-graph) used for connect data visualization，[treemap](option.html#series-treemap)，[parallel coordinates](option.html#series-parallel) of multi-dimensional data visualization，[funnel map](option.html#series-funnel) used for BI，[dashboard](option.html#series-gauge)，and supports mix between graphics.
+ECharts provides routine [line chart](option.html#series-line), [bar chart](option.html#series-line), [scatter chart](option.html#series-scatter), [pie chart](~option.html#series-pie), [K line chart](option.html#series-candlestick), [box chart](option.html#series-boxplot) used for calculation, [map] (option.html#series-map)used for geo-data visualization, [thermal map](option.html#series-heatmap), [line chart](option.html#series-lines), [relationship map](option.html#series-graph) used for connect data visualization, [treemap](option.html#series-treemap), [parallel coordinates](option.html#series-parallel) of multi-dimensional data visualization, [funnel map](option.html#series-funnel) used for BI, [dashboard](option.html#series-gauge), and supports mix between graphics.
 
 You can download build files of all charts in the dowbload interface, if you only need one or two charts and think the build files of all charts are too large, you can also choose needed chart types in the online building and build customerized. 
 
 ## Support of multiple coordinate system
 
-ECharts 3 starts to seperate “coordinate system” concept，supporting right angle coordinate system（catesian，same as grid）、polar coordinate system（polar）、geographical coordinate system（geo）. Charts supports cross coordinate system, such as line chart, bar chart and scatter chart can be placed in right angle coordinate system or polar  coordinate system or even geographical coordinate system.
+ECharts 3 starts to seperate “coordinate system” concept, supporting right angle coordinate system（catesian, same as grid）、polar coordinate system（polar）、geographical coordinate system（geo）. Charts supports cross coordinate system, such as line chart, bar chart and scatter chart can be placed in right angle coordinate system or polar  coordinate system or even geographical coordinate system.
 
 Below is an example that a line chart in polar coordinate system：
 

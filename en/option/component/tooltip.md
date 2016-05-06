@@ -7,7 +7,7 @@ Tooltip component.
 
 ## show(boolean) = true
 
-Whether to show the tooltip component，including tooltip floating layer and [axisPointer](~tooltip.axisPointer).
+Whether to show the tooltip component, including tooltip floating layer and [axisPointer](~tooltip.axisPointer).
 
 ## showContent(boolean) = true
 
@@ -71,7 +71,7 @@ Options：
     ```js
     // absolute position, which is 10px to the left side and 10px to the upward side of the container
     position: [10, 10]
-    // relative position，in the exact center of the container
+    // relative position, in the exact center of the container
     position: ['50%', '50%']
     ```
 
@@ -105,19 +105,19 @@ The content formatter of tooltip's floating layer which supports character strin
 
 1. character string template
 
-    The template variables are `{a}`, `{b}`，`{c}`，`{d}` and `{e}` which individually refers to series name, data name and numberical value and ect.. 
+    The template variables are `{a}`, `{b}`, `{c}`, `{d}` and `{e}` which individually refers to series name, data name and numberical value and ect.. 
 
-    When [trigger](~tooltip.trigger) is `'axis'`，there would be multiple series of data. At this point, the index of these series could be expressed by the method of adding the index backward, such as `{a0}`, `{a1}`, `{a2}`.
-    In differnt types of diagrams, the meanings of `{a}`，`{b}`，`{c}`，`{d}` are different.
+    When [trigger](~tooltip.trigger) is `'axis'`, there would be multiple series of data. At this point, the index of these series could be expressed by the method of adding the index backward, such as `{a0}`, `{a1}`, `{a2}`.
+    In differnt types of diagrams, the meanings of `{a}`, `{b}`, `{c}`, `{d}` are different.
     In different types of diagrams, the meanings of the variables including `{a}`, `{b}`, `{c}`, `{d}` represent the data meaning below: 
 
-    + broken line（area）diagram、bar（bar type）diagram、K-line diagram : `{a}`（series name），`{b}`（category value），`{c}`（numerical value）, `{d}`（none）
+    + broken line（area）diagram、bar（bar type）diagram、K-line diagram : `{a}`（series name）, `{b}`（category value）, `{c}`（numerical value）, `{d}`（none）
 
-    + scatter diagram（bubble）diagram : `{a}`（series name），`{b}`（data name），`{c}`（numerical value array）, `{d}`（none）
+    + scatter diagram（bubble）diagram : `{a}`（series name）, `{b}`（data name）, `{c}`（numerical value array）, `{d}`（none）
 
-    + map : `{a}`（series name），`{b}`（area name），`{c}`（merge numerical value）, `{d}`（none）
+    + map : `{a}`（series name）, `{b}`（area name）, `{c}`（merge numerical value）, `{d}`（none）
 
-    + pie chart、instrument panel、funnel plot: `{a}`（series name），`{b}`（data item name），`{c}`（numerical value）, `{d}`（percentage）
+    + pie chart、instrument panel、funnel plot: `{a}`（series name）, `{b}`（data item name）, `{c}`（numerical value）, `{d}`（percentage）
 
    See more meanings about other variables of diagram template in label.normal.formatter configuration item in corresponding diagram. 
 
@@ -184,7 +184,7 @@ The text syle of tooltip's floating layer.
 
 ## axisPointer(Object)
 
-The indicator configuration item of coordinate axis，which is valid when [trigger](~tooltip.trigger) is `'axis'`.
+The indicator configuration item of coordinate axis, which is valid when [trigger](~tooltip.trigger) is `'axis'`.
 
 ### type(string) = 'line'
 

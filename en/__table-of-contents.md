@@ -5,7 +5,7 @@
     + ECharts introduction
 
 + Advanced tutorial
-    + add interactive component in the chart（legend，dataZoom）
+    + add interactive component in the chart（legend, dataZoom）
     + each component layout in ECharts 
     + asynchronous data and dynamic data
     + customized interactions through JS API 

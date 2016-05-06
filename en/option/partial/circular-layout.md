@@ -19,6 +19,6 @@ center: ['50%', '50%']
 
 ## radius(${defaultRadiusType|default("Array")}) = ${defaultRadius}
 
-the radius of ${componentName}，the first item of array is inner radius,the second item is outer radius.
+the radius of ${componentName}, the first item of array is inner radius,the second item is outer radius.
 
 Support set to percentage, equal to half of the smaller item between height and width of the container. 

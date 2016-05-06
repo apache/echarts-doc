@@ -1,6 +1,6 @@
 {{target: partial-padding}}
 
-${componentName} internal margin，unit as px,set internal margin of each directions to 5 by default, set the internal margin of four directions of accepting array.
+${componentName} internal margin, unit as px,set internal margin of each directions to 5 by default, set the internal margin of four directions of accepting array.
 
 Examples：
 ```js

@@ -1,0 +1,179 @@
+<h2 id="v3-1-3">v3.1.3</h2>
+<div class="time">2016-03-10</div>
+
+<ul>
+<li><p>【+】add in radar chart, see <a href="http://echarts.baidu.com/option.html#series-radar">http://echarts.baidu.com/option.html#series-radar</a></p>
+</li>
+<li><p>[^] position optimization of average, minimum and maximum value starting point and finishing point. Fix <a href="https://github.com/ecomfe/echarts/issues/2762">#2762</a>, <a href="https://github.com/ecomfe/echarts/issues/2688">#2688</a>.</p>
+</li>
+<li><p>[^] fix the only one configuration for &#39;&#39;none&#39;&#39; bug in markLine symbol. See <a href="https://github.com/ecomfe/echarts/issues/2733">#2733</a></p>
+</li>
+<li><p>[^]optimization of vertically centered multiple yext lines.</p>
+</li>
+<li><p>[^] emphasis configuration item of label in data item as pie chart is normal value by dafualt.</p>
+</li>
+<li><p>[^] when introdcued on need, line chart, pie chart and scatter chart introduce grid component by dafault to avoid problems in<a href="https://github.com/ecomfe/echarts/issues/2758">#2758</a> .</p>
+</li>
+<li><p>[^] fix floating point precision bug in dataZoom component. Fix <a href="https://github.com/ecomfe/echarts/issues/2757">#2757</a></p>
+</li>
+<li><p>[^] unselected legend chart is grey. See <a href="https://github.com/ecomfe/echarts/issues/2615">#2615</a></p>
+</li>
+<li><p>[^] fix  dataZoom position failure bug in media query of 3.1.1. Fix <a href="https://github.com/ecomfe/echarts/issues/2710">#2710</a></p>
+</li>
+<li><p>[^] fix firefox&#39;s incapability of triggering wheel events bug in 3.1.1 中. Fix <a href="https://github.com/ecomfe/echarts/issues/2730">#2730</a></p>
+</li>
+<li><p>[^] IE8 optimization.</p>
+</li>
+<li><p>[^] change to webpack to build code.</p>
+</li>
+</ul>
+<h2 id="v3-1-2">v3.1.2</h2>
+<div class="time">2016-03-01</div>
+
+<ul>
+<li><p>【+】provide theme download,see details in <a href="http://echarts.baidu.com/download-theme.html">http://echarts.baidu.com/download-theme.html</a></p>
+</li>
+<li><p>[^] fix <code>the bug that update data can not be shown in</code>setOption` after emptying line chart data in v3.1.1.</p>
+</li>
+<li><p>[^] fix possiblity of reporting <code>id duplicates</code> error in <code>setOption(chart.getOption())</code> . Fix <a href="https://github.com/ecomfe/echarts/issues/2635">#2635</a></p>
+</li>
+<li><p>[^] allow to customize toolbox toobar. See details in <a href="http://echarts.baidu.com/option.html#toolbox.feature">toolbox.feature</a></p>
+</li>
+<li><p>[^] scale optimization of <code>&#39;time&#39;</code> type axis in large-span time range.</p>
+</li>
+<li><p>[^] fix no show of label formatter return to  0.Fix <a href="https://github.com/ecomfe/echarts/issues/2659">#2659</a></p>
+</li>
+<li><p>[^] fix markPoint label display error in charts with vertical axis as category axis.Fix <a href="https://github.com/ecomfe/echarts/issues/2641">#2641</a></p>
+</li>
+<li><p>[^] optimize dataZoom, fix dynamic data update problem in dataZoom chart. Fix <a href="https://github.com/ecomfe/echarts/issues/2667">#2667</a></p>
+</li>
+<li><p>[^] percentage is 0 rather than NaN when all pie chart data are zero. Fix <a href="https://github.com/ecomfe/echarts/issues/2667">#2690</a></p>
+</li>
+<li><p>[^] title alignment optimization.</p>
+</li>
+<li><p>[^] support display of tooltip when charts update. Fix <a href="https://github.com/ecomfe/echarts/issues/2478">#2478</a></p>
+</li>
+<li><p>[^] dashboard <code>splitLine.length</code>, <code>axisTick.length</code> supports percentage.</p>
+</li>
+<li><p>[^] optimization of line animation feature.</p>
+</li>
+<li><p>[^] optimization of category axis feature of large data amount .</p>
+</li>
+<li><p>[^] fix error reporting bug of markPoint and markLine in IE8.</p>
+</li>
+<li><p>[^] fix error reporting bug under <code>&#39;use strict&#39;</code>model. Fix <a href="https://github.com/ecomfe/echarts/issues/2643">#2643</a></p>
+</li>
+</ul>
+<h2 id="v3-1-1">v3.1.1</h2>
+<div class="time">2016-02-22</div>
+
+<ul>
+<li><p>【+】newly add npm channel to obtain echarts, see details in <a href="http://echarts.baidu.com/tutorial.html#%E5%9C%A8%20webpack%20%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts">webpack + echarts tutorial</a></p>
+</li>
+<li><p>[^] fix abnormal indynamic markPoint and markLine . Fix <a href="https://github.com/ecomfe/echarts/issues/2522">#2522</a></p>
+</li>
+<li><p>[^] fix parameter error in axis interval callback. Fix <a href="https://github.com/ecomfe/echarts/issues/2470">#2470</a></p>
+</li>
+<li><p>[^] fix failure in customizing lineStyle of every edge in graph. Fix <a href="https://github.com/ecomfe/echarts/issues/2558">#2558</a></p>
+</li>
+<li><p>[^] saveAsImage supports IE9+ and FireFox in toolbox.</p>
+</li>
+<li><p>[^] support cylindrical corner configuration. <a href="https://github.com/ecomfe/echarts/issues/2550">#2550</a></p>
+</li>
+<li><p>[^] fix error in dataZoom location configuration item. Fix <a href="https://github.com/ecomfe/echarts/issues/2619">#2619</a></p>
+</li>
+<li><p>[^] fix possible <code>id duplicate</code> error when fix <code>setOption</code> for too many times.Fix <a href="https://github.com/ecomfe/echarts/issues/2452">#2452</a></p>
+</li>
+<li><p>[^] candlestick and boxplot chart support markPoint and markLine.Fix <a href="https://github.com/ecomfe/echarts/issues/2566">#2566</a></p>
+</li>
+<li><p>[^] fix reset error in toolbox after use <code>setOption</code> in non-merge model.Fix <a href="https://github.com/ecomfe/echarts/issues/2596">#2596</a></p>
+</li>
+<li><p>[^] scatter chart and markPoint support configurating <code>label</code> <code>formatter</code> in <code>emphasis</code>. Fix <a href="https://github.com/ecomfe/echarts/issues/2596">#2596</a></p>
+</li>
+<li><p>[^] Treemap supports <code>roam</code> configuration item.</p>
+</li>
+<li><p>[^] axis of time type support time data of string format.</p>
+</li>
+<li><p>[^] fix switch problem in Line and area charts. Fix <a href="https://github.com/ecomfe/echarts/issues/2625">#2625</a></p>
+</li>
+<li><p>[^] location optimization of multiple series of bar chart markPoint. Fix <a href="https://github.com/ecomfe/echarts/issues/2623">#2623</a></p>
+</li>
+<li><p>[^] fix error reporting in init when theme is string and has dataZoom component. Fix <a href="https://github.com/ecomfe/echarts/issues/2619">#2619</a></p>
+</li>
+<li><p>[^] legend and toolbox support setting height and width and wrap automatically through width and height.Fix <a href="https://github.com/ecomfe/echarts/issues/2621">#2621</a></p>
+</li>
+<li><p>[^] optimization of line chart smooth, add in<code>smoothMonotone</code> configuration item, see details in <a href="http://echarts.baidu.com/option.html#series-line.smoothMonotone">option.html#series-line.smoothMonotone</a>, Fix <a href="https://github.com/ecomfe/echarts/issues/2612">#2612</a></p>
+</li>
+<li><p>[^] fix incapability to trigger mouse events on computers with touch screen like Surface and so on. Fix <a href="https://github.com/ecomfe/echarts/issues/2569">#2569</a></p>
+</li>
+</ul>
+<h2 id="v3-0-2">v3.0.2</h2>
+<div class="time">2016-01-23</div>
+
+<ul>
+<li><p>[^] fix highlight failture in scatter chart.</p>
+</li>
+<li><p>[^] optimize tooltip linkage. Fix <a href="https://github.com/ecomfe/echarts/issues/2445">#2445</a></p>
+</li>
+<li><p>[^] dataZoom of inside type support zoomLock.</p>
+</li>
+<li><p>[^] add error alert of non-exist map type.</p>
+</li>
+<li><p>[^] optimize legend switch animation of line chart. </p>
+</li>
+<li><p>[^] fix problem about Legends cannot be added dynamically. Fix <a href="https://github.com/ecomfe/echarts/issues/2457">#2457</a></p>
+</li>
+<li><p>[^] fix timeline&#39;s incapability to configutate show.</p>
+</li>
+<li><p>[^] fix 0 data shown as undefined in tooltip .Fix <a href="https://github.com/ecomfe/echarts/issues/2463">#2463</a></p>
+</li>
+<li><p>[^] fix incorrect display of dataZoom zoom graphic. Fix <a href="https://github.com/ecomfe/echarts/issues/2462">#2462</a></p>
+</li>
+<li><p>[^] fix the problem of axis <code>min</code> <code>max</code> as string, PR <a href="https://github.com/ecomfe/echarts/pull/2481">#2481</a></p>
+</li>
+</ul>
+<h2 id="v3-0-1">v3.0.1</h2>
+<div class="time">2016-01-18</div>
+
+<ul>
+<li><p>[+] add <a href="http://echarts.baidu.com/api.html#echartsInstance.getOption">getOption</a> and <a href="http://echarts.baidu.com/api.html#echartsInstance.clear">clear</a> method</p>
+</li>
+<li><p>[^] fix average value, maximum value and minimum vaule label and the incapability to show correct value of tooltip. Fix <a href="https://github.com/ecomfe/echarts/issues/2393">#2393</a></p>
+</li>
+<li><p>[^] fix drawing incorrectness when bar chart  has bigger width than height, Fix <a href="https://github.com/ecomfe/echarts/issues/2343">#2343</a></p>
+</li>
+<li><p>[^] fix the function problem of legend <code>show</code> configuration item. Fix <a href="https://github.com/ecomfe/echarts/issues/2371">#2371</a></p>
+</li>
+<li><p>[^] map type can choose data attribute.</p>
+</li>
+<li><p>[^] fix average mark and mark calculation errors, Fix <a href="https://github.com/ecomfe/echarts/issues/2367">#2367</a></p>
+</li>
+<li><p>[^] animation optimization when line chart change from <code>&#39;-&#39;</code> no data to data.</p>
+</li>
+<li><p>[^] mouse wheel zoom direction change to ommonly used one.</p>
+</li>
+<li><p>[^] data area zoom tool in toolbar support specified axis, see detail in<a href="http://echarts.baidu.com/option.html#toolbox.feature.dataZoom.yAxisIndex">toolbox document</a></p>
+</li>
+<li><p>[^] fix no data error on timeline, scale change from <code>[-1, 1]</code> to <code>[0, 1]</code> when data value axis has no data.</p>
+</li>
+<li><p>[^] fix drawing error of axis splitArea.</p>
+</li>
+<li><p>[^] fix multiple chart example linkage problem. Fix <a href="https://github.com/ecomfe/echarts/issues/2391">#2391</a></p>
+</li>
+<li><p>[^] fix the problem that color on legend cannot display correctly with pie chart color being callback function. Fix <a href="https://github.com/ecomfe/echarts/issues/2372">#2372</a></p>
+</li>
+<li><p>[^] fix mouse hover errors when pie chart data is 0.</p>
+</li>
+<li><p>[^] when all pie chart data are 0, secotrs changed to uniform distribution.</p>
+</li>
+<li><p>[^] fix errors in background seeting under IE 8.</p>
+</li>
+<li><p>[^] fix incorrect release event in tooltip component dispose.</p>
+</li>
+</ul>
+<h2 id="v3-0-0">v3.0.0</h2>
+<div class="time">2016-01-12</div>
+
+<ul>
+<li>The new echarts</li>
+</ul>

@@ -74,7 +74,7 @@ For example：
 
 ~[400x300](${galleryViewPath}doc-example/tutorial-async&edit=1&reset=1)
 
-In ECharts, updating data need to correspond to the corresponding series through `name`. In the above example, normal update can be carried out according to series order if `name` doesn't exist，but adding series `name`data when updating data is recommended more often. 
+In ECharts, updating data need to correspond to the corresponding series through `name`. In the above example, normal update can be carried out according to series order if `name` doesn't exist, but adding series `name`data when updating data is recommended more often. 
 
 ## loading animation
 

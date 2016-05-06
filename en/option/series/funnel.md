@@ -30,7 +30,7 @@ It could be absolut pixel and also the percentage of relative [layout width](~se
 It could be absolut pixel and also the percentage of relative [layout width](~series-funnel.width).
 
 ## sort(string) = 'descending'
-data sorting， which could adopt `'ascending'`, `'descending'`.
+data sorting,  which could adopt `'ascending'`, `'descending'`.
 
 ## gap(number) = 0
 data graph gap.

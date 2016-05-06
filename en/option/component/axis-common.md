@@ -183,7 +183,7 @@ Type of axis
 
 Option：
 + `'value'`
-    numerical axis，suitable for continuous data.
+    numerical axis, suitable for continuous data.
 
 + `'category'`
     category axis, suitable for discrete category data, only can set category data through [data](~${componentType}.data). 
@@ -336,7 +336,7 @@ Text style of the category label.
 
 
 The display interval of {{ target: partial-axis-interval }}
-${name}，available in category axis.{{ if: !${isAxisLabel} }} defaults to be the same as [axisLabel.interval](~${componentType}.axisLabel.interval).{{ /if }}
+${name}, available in category axis.{{ if: !${isAxisLabel} }} defaults to be the same as [axisLabel.interval](~${componentType}.axisLabel.interval).{{ /if }}
 
 It defaults to adopt strategic interval to show the labels in case labels repeat, which could be set as 0 to compulsorily display all the labels.
 
@@ -344,7 +344,7 @@ The interval data not only could be presented by numerical value, but also could
 ```js
 (index:number, value: string) => boolean
 ```
-The first parameter is the index of category，and the second value is the name of the category. If it is skipped, it would be back to `false`.
+The first parameter is the index of category, and the second value is the name of the category. If it is skipped, it would be back to `false`.
 
 
 

@@ -68,7 +68,7 @@ area filling style.
 
 ## data(Array)
 
-The data in radar chart is multivariable（dimension），here is the example：
+The data in radar chart is multivariable（dimension）, here is the example：
 
 ```js
 data : [

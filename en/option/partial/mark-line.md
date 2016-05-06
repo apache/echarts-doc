@@ -139,7 +139,7 @@ special label types are used to label maximum value, minimum value and so on.
 {{ /if }}
 {{ if: ${hasCoord} }}
 #${prefix} valueIndex(number)
-Available when using [type](~series-${seriesType}.markLine.data.type), it is used to assign maximum value and minimum value in dimensions, it could be `0`（xAxis, radiusAxis），`1`（yAxis, angleAxis） and use the first value axis dimension by default.
+Available when using [type](~series-${seriesType}.markLine.data.type), it is used to assign maximum value and minimum value in dimensions, it could be `0`（xAxis, radiusAxis）, `1`（yAxis, angleAxis） and use the first value axis dimension by default.
 
 #${prefix} valueDim(string)
 Available when using [type](~series-${seriesType}.markLine.data.type) ,it is used to assign maximum value and minimum value in dimensions, it could be the direct name of the dimension, for example, names could be `x`、`angle`in line chart、`open`、`close`in candlestick chart.

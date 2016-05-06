@@ -101,7 +101,7 @@ the data of the end point.
 #### name(string)
 the name of ${name}.
 #### coord(Array)
-the coordinate of ${name}，which could be the `[x, y]` in [rectangular coordinate system](~grid) and `[lng, lat]` in [geographic coordinate system](~geo).
+the coordinate of ${name}, which could be the `[x, y]` in [rectangular coordinate system](~grid) and `[lng, lat]` in [geographic coordinate system](~geo).
 
 #### lineStyle(Object)
 the line style of this data item. the `lineStyle` of both the start and end points would be combined together.
@@ -123,7 +123,7 @@ the curveness of edge. The values from 0 to 1 could be set. The curveness would 
 #${prefix} show(boolean) = ${defaultShowLabel|default(false)}
 whether to show label.
 #${prefix} position(string) = 'end'
-the position of label，options：
+the position of label, options：
 + `'start'` the start point of lines.
 + `'end'`   the end point of lines.
 #${prefix} formatter(string|Function)

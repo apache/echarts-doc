@@ -3,7 +3,7 @@
 
 # timeline(Object)
 
-`timeline` component，which provides different operational functions such as switch function between multiple `ECharts option` and play function.  
+`timeline` component, which provides different operational functions such as switch function between multiple `ECharts option` and play function.  
 
 Here is the example：
 
@@ -13,7 +13,7 @@ Different from other components, `timeline` component need to operate 『multipl
 Assume that a traditional ECharts option was called `atom option`. When `timeline` is used, the option which is introduced into ECharts becomes a `compound option`, a collection of multiple `atom option`.  As shown in the following example：
 
 ```javascript
-// as follows，baseOption is a 『atom option』，and every item in options array is also a 『atom option』.
+// as follows, baseOption is a 『atom option』, and every item in options array is also a 『atom option』.
 // each『atom option』is a type of configuration items described in this document.
 myChart.setOption(
     {
@@ -94,7 +94,7 @@ In the previous examples, every item in `timeline.data` corresponds to every `op
 
 + ECharts3 doesn't support timeline.notMerge parameter, which implies notMerge mode would not be supported any more. If this scene was needed, the option management could be conducted outside with a notMerge setting like setOption(option, true). 
 
-+ Comparing ECharts3 with ECharts2，the define locations of their timeline attributes are different. The one in ECharts3 is moved to  `baseOption` and is regarded as a common component, which is also compatible with the timeline difine location of ECharts2. It is just not recommended to be written anymore.  
++ Comparing ECharts3 with ECharts2, the define locations of their timeline attributes are different. The one in ECharts3 is moved to  `baseOption` and is regarded as a common component, which is also compatible with the timeline difine location of ECharts2. It is just not recommended to be written anymore.  
 
 
 ## show(boolean) = true
@@ -122,7 +122,7 @@ types of axis. optional values：
 
 ## currentIndex(number) = 0
 
-Indicating which is the currently selected item. For instance,if `currentIndex` is `0`，it indicates that the currently selected item is `timeline.data[0]`（namely, using `options[0]`）。
+Indicating which is the currently selected item. For instance,if `currentIndex` is `0`, it indicates that the currently selected item is `timeline.data[0]`（namely, using `options[0]`）。
 
 
 ## autoPlay(boolean) = false
@@ -167,7 +167,7 @@ Refer to the location of『play』buttom. optional values：`'left'`、`'right'`
 
 ## orient(string) = 'horizontal'
 
-format of layout，optional values are：
+format of layout, optional values are：
 
 + `'vertical'`：vertical layout.
 + `'horizontal'`：horizontal layout.
@@ -345,21 +345,21 @@ Whether to show 『next button』.
 
 ### itemSize(number) = 22
 
-the size of『control button』，and its unit is pixel（px）.
+the size of『control button』, and its unit is pixel（px）.
 
 
 ### itemGap(number) = 12
 
-the interval between『control button』，and its unit is pixel（px）.
+the interval between『control button』, and its unit is pixel（px）.
 
 
 ### position(string) = 'left'
 
 the location of 『control button』.
 
-+ As [timeline.orient](~timeline.orient) is set as `'horizontal'`，`'left'`、`'right'`are valid.
++ As [timeline.orient](~timeline.orient) is set as `'horizontal'`, `'left'`、`'right'`are valid.
 
-+ As [timeline.orient](~timeline.orient) is set as `'vertical'`，`'top'`、`'bottom'`are valid.
++ As [timeline.orient](~timeline.orient) is set as `'vertical'`, `'top'`、`'bottom'`are valid.
 
 
 ### playIcon(string)

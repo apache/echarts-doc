@@ -46,7 +46,7 @@ Whether to show as Nightingale chart, which distinguishs data through radius. Th
 ## avoidLabelOverlap(boolean) = true
 Whether to enable the strategy to avoid labels overlap. It defaults to be enabled to move the label positions in the case of crowded labels overlap to avoid labels overlap.
 
-If this strategy is unnecessary to be enabled，such as in [pie-doughnut](${galleryEditorPath}pie-doughnut), all the labels are compulsoried to be put in the center and the value should be set as `false`. 
+If this strategy is unnecessary to be enabled, such as in [pie-doughnut](${galleryEditorPath}pie-doughnut), all the labels are compulsoried to be put in the center and the value should be set as `false`. 
 
 ## label(Object)
 {{use:partial-label-desc(name="pie chart")}}

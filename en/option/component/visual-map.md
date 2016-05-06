@@ -10,7 +10,7 @@ visual element could be：<br>
 
 `visualMap` could be multiply defined. Therefore, multiple dimensions of data could be mapped in the meanwhile. 
 
-`visualMap` could be defined as [Piecewise type（visualMapPiecewise）](~visualMap-piecewise) or [Continuous type（visualMapContinuous）](~visualMap-continuous)，or distinguished by `type`. For instance：
+`visualMap` could be defined as [Piecewise type（visualMapPiecewise）](~visualMap-piecewise) or [Continuous type（visualMapContinuous）](~visualMap-continuous), or distinguished by `type`. For instance：
 
 ```javascript
 option = {
@@ -31,13 +31,13 @@ option = {
 <br>
 **The configuration of visual mapping mode**
 
-Since it is the mapping from『data』 to 『visual element』，『specific dimension』（Reference to [visualMap.dimension](~visualMap.dimension)） could be assigned to map into some selected『visual elements』（Reference to [visualMap.inRange](~visualMap.inRange) and [visualMap.outOfRange](~visualMap.outOfRange)） in `visualMap`.
+Since it is the mapping from『data』 to 『visual element』, 『specific dimension』（Reference to [visualMap.dimension](~visualMap.dimension)） could be assigned to map into some selected『visual elements』（Reference to [visualMap.inRange](~visualMap.inRange) and [visualMap.outOfRange](~visualMap.outOfRange)） in `visualMap`.
 
 
 <br>
 **The relation with dataRange in ECharts2**
 
-`visualMap` is renamed and extended from the  `dataRange` component in ECharts2 . In ECharts3,  the configuration item of `dataRange` from `option` is till compatible，which would automatically transfer to `visualMap` configuration item. We recommend you to write  `visualMap` instead of `dataRange` in option。
+`visualMap` is renamed and extended from the  `dataRange` component in ECharts2 . In ECharts3,  the configuration item of `dataRange` from `option` is till compatible, which would automatically transfer to `visualMap` configuration item. We recommend you to write  `visualMap` instead of `dataRange` in option。
 
 <br>
 **Here is the detailed introduction to all configurations of visualMap.**
@@ -65,9 +65,9 @@ Since it is the mapping from『data』 to 『visual element』，『specific dim
 
 
 {{target: partial-visual-map-range}}
-`${rangeType}` could customize target series（reference to [${visualMapName}.seriesIndex](~${visualMapName}.seriesIndex)）visual form，and also customizes visual form of `${visualMapName}` itself. Generally speaking, if `${visualMapName}` controlled scatter diagram，then `${rangeType}` would define its `color`、`size` and so on. Both of them correspond with each other.
+`${rangeType}` could customize target series（reference to [${visualMapName}.seriesIndex](~${visualMapName}.seriesIndex)）visual form, and also customizes visual form of `${visualMapName}` itself. Generally speaking, if `${visualMapName}` controlled scatter diagram, then `${rangeType}` would define its `color`、`size` and so on. Both of them correspond with each other.
 
-Definition mode，for instance：
+Definition mode, for instance：
 
 ```javascript
 visualMap: [
@@ -81,7 +81,7 @@ visualMap: [
 ]
 ```
 
-If you want to respectively define the visual style of `${visualMapName}` itself and `target series`，you should define as follows：
+If you want to respectively define the visual style of `${visualMapName}` itself and `target series`, you should define as follows：
 
 ```javascript
 visualMap: [
@@ -122,9 +122,9 @@ visualMap: [
 
 **About visual type**
 
-+ In ${rangeType}，there could be any definitions of 『visual type』（such as `color`、`symbolSize` and ect.）. These visual types can be adopted in the meanwhile.
++ In ${rangeType}, there could be any definitions of 『visual type』（such as `color`、`symbolSize` and ect.）. These visual types can be adopted in the meanwhile.
 
-+The values of every visual type，all of which are expressed by the form of `Array` （they are expressed by the form of `Object`  only in [visualMap-piecewise.categories](~visualMap-piecewise.categories). If it was written as `number` or `string`，it would turn to `Array`.
++The values of every visual type, all of which are expressed by the form of `Array` （they are expressed by the form of `Object`  only in [visualMap-piecewise.categories](~visualMap-piecewise.categories). If it was written as `number` or `string`, it would turn to `Array`.
 
 +The content of `Array`：
 
@@ -132,7 +132,7 @@ visualMap: [
 
     `Array` is always：`[the visual value with which the minimum and maximum data values correspond]`.
 
-    For example：colorLightness: [0.8, 0.2]，which refers to that the `minimum data value` among all datas map to the `0.8` of `color intensity` , the `maximum data value` map to the `0.2` of `color intensity`. The mapping results of other data values between the minimum and the maximum would be acquired according to linear calculation.
+    For example：colorLightness: [0.8, 0.2], which refers to that the `minimum data value` among all datas map to the `0.8` of `color intensity` , the `maximum data value` map to the `0.2` of `color intensity`. The mapping results of other data values between the minimum and the maximum would be acquired according to linear calculation.
 
     + For `color（color）` or `figure type（symbol）`：
 
@@ -140,14 +140,14 @@ visualMap: [
 
     Referring to the minimum data value which maps to the first item of  `Array` and the maximum value which maps to the last item of  `Array`. Other values between the minimum and the maximum would be gained according to linear calculation. 
 
-+ Under [visualMap-piecewise.categories](~visualMap-piecewise.categories) mode，visual definition adopts `Object`. For example（[See the sample](${galleryEditorPath}doc-example/scatter-visualMap-categories&edit=1&reset=1)）：
++ Under [visualMap-piecewise.categories](~visualMap-piecewise.categories) mode, visual definition adopts `Object`. For example（[See the sample](${galleryEditorPath}doc-example/scatter-visualMap-categories&edit=1&reset=1)）：
 
 ```javascript
 ${rangeType}: {
     color: {
         'excellent': 'red',
         'good': 'black',
-        '': 'green' // empty word string，indicating that others are all 'green'.
+        '': 'green' // empty word string, indicating that others are all 'green'.
     }
 }
 ```
@@ -160,7 +160,7 @@ ${rangeType}: {
 
 ## show(boolean) = true
 
-Whether to show ${visualMapName} component. If it was set as `false`，it would not show. However, the data mapping function still remains. 
+Whether to show ${visualMapName} component. If it was set as `false`, it would not show. However, the data mapping function still remains. 
 
 
 ## dimension(string) = 0
@@ -178,7 +178,7 @@ The [series.data](~series.data) could be understood as a double dimensional arra
 ```
 
 Among them, each row is a dimension which equals with `dimension`. 
-For example, when `dimension` is 1，the second row is selected to map to visual element.
+For example, when `dimension` is 1, the second row is selected to map to visual element.
 
 
 ## seriesIndex(number|Array.<number>)
@@ -244,16 +244,16 @@ border color.
 
 ## borderWidth(number) = 0
 
-border width，its unit is px.
+border width, its unit is px.
 
 
 ## formatter(string|Function)
 
 the formatter tool of label.
 
-+ If it was set as `string`，it refers to template，for instance：`aaaa{value}bbbb{value2}`. Among them, `{value}` and `{value2}` are the range at present.
++ If it was set as `string`, it refers to template, for instance：`aaaa{value}bbbb{value2}`. Among them, `{value}` and `{value2}` are the range at present.
 
-+ If it was set as `Function`，it refers to callback function，for instance：
++ If it was set as `Function`, it refers to callback function, for instance：
 
 ```javascript
 formatter: function (value, value2) {
@@ -263,7 +263,7 @@ formatter: function (value, value2) {
 
 ## color(Array) = ['#bf444c', '#d88273', '#f6efa6']
 
-This configuration item is created to be compatible with ECharts2，which is not recommended in ECharts3. Its function has been transfered into [${visualMapName}.inRange](~${visualMapName}.inRange) and [${visualMapName}.outOfRange](~${visualMapName}.outOfRange).
+This configuration item is created to be compatible with ECharts2, which is not recommended in ECharts3. Its function has been transfered into [${visualMapName}.inRange](~${visualMapName}.inRange) and [${visualMapName}.outOfRange](~${visualMapName}.outOfRange).
 
 If you want to use it, the following rules should be noticed: the sequence of `color` attribute is from `large` to `small`; but the sequence of `color` in [${visualMapName}.inRange](~${visualMapName}.inRange) or [${visualMapName}.outOfRange](~${visualMapName}.outOfRange) is always from `small` to `large`, which is different from the previous situation.  
 

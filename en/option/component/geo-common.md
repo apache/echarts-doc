@@ -48,7 +48,7 @@ ECharts uses [geoJSON](http://geojson.org/) format as map outline. Except for th
 
 #${prefix} nameMap(Object)
 
-Name map with custom region，for instance：
+Name map with custom region, for instance：
 ```js
 {
     'China' : 'China'

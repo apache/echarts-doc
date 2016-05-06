@@ -35,7 +35,7 @@ Whether to show the tool.
 
 # toolbox(Object)
 
-toolbox. It is internally installed with 5 tools including [export pictures](~toolbox.feature.saveAsImage)，[data view](~toolbox.feature.dataView)，[dynamic type switching](~toolbox.feature.magicType)，[data area zooming](~toolbox.feature.dataZoom) and [reset](~toolbox.feature.reset).
+toolbox. It is internally installed with 5 tools including [export pictures](~toolbox.feature.saveAsImage), [data view](~toolbox.feature.dataView), [dynamic type switching](~toolbox.feature.magicType), [data area zooming](~toolbox.feature.dataZoom) and [reset](~toolbox.feature.reset).
 
 **Example：**
 
@@ -110,14 +110,14 @@ The component list ignored during saving as image, which defaults to ignore tool
 
 {{ use: feature-common(title="save as image") }}
 #### pixelRatio(number) = 1
-The resolution ratio of saving as image，which defaults to be the same with the container. If the image is necessary to be saved with higher  resolution ratio,  a value greater than 1 could be set up, such as 2.
+The resolution ratio of saving as image, which defaults to be the same with the container. If the image is necessary to be saved with higher  resolution ratio,  a value greater than 1 could be set up, such as 2.
 
 ### restore(Object)
 Restore configuration item.
 {{ use: feature-common(title="restore") }}
 
 ### dataView(Object)
-data view tool，which could display adopted data in current diagram and updates after being edited.
+data view tool, which could display adopted data in current diagram and updates after being edited.
 {{ use: feature-common(title="data view") }}
 #### readOnly(boolean) = false
 Whether it couldn't be edited（read-only）。
@@ -172,10 +172,10 @@ feature: {
 #### show(boolean) = true
 Whether to show the magic type switching.
 #### type(Array)
-Enabled magic type，including `'line'`（switch to broken line chart）, `'bar'`（switch to bar chart）, `'stack'`（switch to stack mode）, `'tiled'`（switch to tiled mode）.
+Enabled magic type, including `'line'`（switch to broken line chart）, `'bar'`（switch to bar chart）, `'stack'`（switch to stack mode）, `'tiled'`（switch to tiled mode）.
 {{ use: feature-common(title="magic type switching") }}
 #### icon(Object)
-the different types of icon path ，which could be configurated individually.
+the different types of icon path , which could be configurated individually.
 ##### line(string)
 {{ use: feature-icon-desc }}
 ##### bar(string)
@@ -185,7 +185,7 @@ the different types of icon path ，which could be configurated individually.
 ##### tiled(string)
 {{ use: feature-icon-desc }}
 #### title(Object)
-the different types of title text ，which could be configurated individually.
+the different types of title text , which could be configurated individually.
 ##### line(string) = 'switch to broken line chart'
 ##### bar(string) = 'switch to bar chart'
 ##### stack(string) = 'switch to stack mode'

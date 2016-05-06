@@ -4,7 +4,7 @@ Data label formatter supoports string template and callback function.
 
 1. string template.
 
-    Model variation includes `{a}`, `{b}`，`{c}`, `{d}`，representing series name, data name, data value and percent respectively.
+    Model variation includes `{a}`, `{b}`, `{c}`, `{d}`, representing series name, data name, data value and percent respectively.
     **example：**
     ```js
     formatter: '{b}: {d}'
@@ -25,7 +25,7 @@ formatter return string supports line feed with`\n` .
 
 {{ target: partial-1d-data-desc }}
 
-${name} data content and array in the series.Array item can be a single data value，for example：
+${name} data content and array in the series.Array item can be a single data value, for example：
 ```js
 [12, 34, 56, 10, 23]
 ```
@@ -61,9 +61,9 @@ When personalized definition needs to be conducted to  sepcific content：
     // name of data item
     name: 'data2',
     value : 56,
-    //special self-define tooltip，only valid for this data item
+    //special self-define tooltip, only valid for this data item
     tooltip:{},
-    //special self-define itemStyle，only valid for this data item
+    //special self-define itemStyle, only valid for this data item
     itemStyle:{}
 }]
 ```

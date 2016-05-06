@@ -8,7 +8,7 @@ ${name}Labelled graphic.
 
 #${prefix} symbolSize(number|Array{{ if: ${hasCallback} }}|Function{{ /if}}) = ${defaultSymbolSize}
 
-${name}Label size can set to single number as `10`, or use array to represent height and width, such as `[20, 10]` meaning labelled width is`20`，height is`10`.
+${name}Label size can set to single number as `10`, or use array to represent height and width, such as `[20, 10]` meaning labelled width is`20`, height is`10`.
 
 {{ if: ${hasCallback} }}
 If graphic size of every data needs to be different, you can set to the callback function in the following format: 

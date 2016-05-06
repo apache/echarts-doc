@@ -26,11 +26,11 @@ Example：
 
     Using [dataZoom.xAxisIndex](~dataZoom.xAxisIndex) or [dataZoom.yAxisIndex](~dataZoom.yAxisIndex) or [dataZoom.radiusAxisIndex](~dataZoom.radiusAxisIndex) or [dataZoom.angleAxisIndex](~dataZoom.angleAxisIndex) to assign a axis or  some axis which should be controlled by `dataZoom` .
 
-+ `dataZoom` component can **exist in multiple**，which could all control at the same time. The components which control the same data axis would automatically link to take effect. 
++ `dataZoom` component can **exist in multiple**, which could all control at the same time. The components which control the same data axis would automatically link to take effect. 
 
 + the operational principle of `dataZoom` is to achieve the effect of `screen data zooming` through `data filtering`.
 
-    The result varies as the data filtering mode changes，reference：[dataZoom.filterMode](~dataZoom.filterMode)。
+    The result varies as the data filtering mode changes, reference：[dataZoom.filterMode](~dataZoom.filterMode)。
 
 + There are 2 kinds of valid setting about the range of data window in `dataZoom` at present：
 
@@ -38,7 +38,7 @@ Example：
 
     + absolute figure：reference to [dataZoom.startValue](~dataZoom.startValue) and [dataZoom.endValue](~dataZoom.endValue)。
 
-+ If the range of `dataZoom` was assigned by percentage(and there is no setting about the `min`/`max`/`scale`)，the result of `dataZoom` relates to its order in which the `dataZoom` is defined. For instance, there is a defined group: 
++ If the range of `dataZoom` was assigned by percentage(and there is no setting about the `min`/`max`/`scale`), the result of `dataZoom` relates to its order in which the `dataZoom` is defined. For instance, there is a defined group: 
 
     ```javascript
     {
@@ -104,9 +104,9 @@ option: {
 
 ## xAxisIndex(number|Array) = null
 
-Setting up `x axis` which is controlled by `${dataZoomName}` （namely,[xAxis](~xAxis)，which is a concept in rectangular coordinate system，reference to [grid](~grid)）。
+Setting up `x axis` which is controlled by `${dataZoomName}` （namely,[xAxis](~xAxis), which is a concept in rectangular coordinate system, reference to [grid](~grid)）。
 
-without assignment，as [${dataZoomName}.orient](~${dataZoomName}.orient) is `'horizontal'`, it defaults to control all the `xAxis`.
+without assignment, as [${dataZoomName}.orient](~${dataZoomName}.orient) is `'horizontal'`, it defaults to control all the `xAxis`.
 
 {{use: partial-data-zoom-axis-example(
     axisName='xAxis'
@@ -115,9 +115,9 @@ without assignment，as [${dataZoomName}.orient](~${dataZoomName}.orient) is `'h
 
 ## yAxisIndex(number|Array) = null
 
-Setting up `y axis` which is controlled by `${dataZoomName}` （namely, [yAxis](~yAxis)，which is a concept in rectangular coordinate system，reference to [grid](~grid)）。
+Setting up `y axis` which is controlled by `${dataZoomName}` （namely, [yAxis](~yAxis), which is a concept in rectangular coordinate system, reference to [grid](~grid)）。
 
-without assignment，as [${dataZoomName}.orient](~${dataZoomName}.orient) is `'vertical'`，it defaults to control all the `yAxis`.
+without assignment, as [${dataZoomName}.orient](~${dataZoomName}.orient) is `'vertical'`, it defaults to control all the `yAxis`.
 
 {{use: partial-data-zoom-axis-example(
     axisName='yAxis'
@@ -127,9 +127,9 @@ without assignment，as [${dataZoomName}.orient](~${dataZoomName}.orient) is `'v
 ## angleAxisIndex(number|Array) = null
 
 
-Setting up angleAxis which is controlled by `${dataZoomName}`（namely, [angleAxis](~angleAxis)，which is a concept in polar coordinate system，reference to [polar](~polar)）。
+Setting up angleAxis which is controlled by `${dataZoomName}`（namely, [angleAxis](~angleAxis), which is a concept in polar coordinate system, reference to [polar](~polar)）。
 
-Without assignment，it defaults to control all the `angleAxis`.
+Without assignment, it defaults to control all the `angleAxis`.
 
 {{use: partial-data-zoom-axis-example(
     axisName='angleAxis'
@@ -138,9 +138,9 @@ Without assignment，it defaults to control all the `angleAxis`.
 
 ## radiusAxisIndex(number|Array) = null
 
-Setting up radiusAxis which is controlled by `${dataZoomName}`（namely,[radiusAxis](~radiusAxis)，which is a concept in polar coordinate system，reference to [polar](~polar)）。
+Setting up radiusAxis which is controlled by `${dataZoomName}`（namely,[radiusAxis](~radiusAxis), which is a concept in polar coordinate system, reference to [polar](~polar)）。
 
-Without assignment，it defaults to control all the  `radiusAxis`.
+Without assignment, it defaults to control all the  `radiusAxis`.
 
 {{use: partial-data-zoom-axis-example(
     axisName='radiusAxis'
@@ -157,12 +157,12 @@ Valid values：
 
 + 'filter'
 
-    The data outside the data window，being **filtered out**. This is the most frequently used configuration item.
+    The data outside the data window, being **filtered out**. This is the most frequently used configuration item.
 
 + 'empty'
 
-    The data outside the data window，being  **set as empty**.
-    compared with『being filtered out』，the data of『being set as empty』would be shown as empty data, which would still occupies position.
+    The data outside the data window, being  **set as empty**.
+    compared with『being filtered out』, the data of『being set as empty』would be shown as empty data, which would still occupies position.
 
 As the following example, the `filterMode` on y axis is set as `'empty'`, and the `filterMode` on x axis is set as  `'filter'`. When datazoom is processing  on y axis, the part of column beyond the y axis would be 『set as empty』,  which would still occupies a position on x axis but not be shown. This effect is more clear for the filtering setting about outlier.  
 
@@ -189,7 +189,7 @@ the start numerical value of the scope of data window. If it [${dataZoomName}.st
 
 [${dataZoomName}.startValue](~${dataZoomName}.startValue) and [${dataZoomName}.endValue](~${dataZoomName}.endValue) both define the scope of data window through **absolute numerical value**.
 
-Notice，if an axis was set as `category`, `startValue` could be set as `index` of `axis.data` array or as the array value itself.   
+Notice, if an axis was set as `category`, `startValue` could be set as `index` of `axis.data` array or as the array value itself.   
 Under the latter condition, it would internally and automatically translate to the index of array. 
 
 
@@ -199,7 +199,7 @@ The end value of the scope of data window. If  [${dataZoomName}.end](~${dataZoom
 
 [${dataZoomName}.startValue](~${dataZoomName}.startValue) and [${dataZoomName}.endValue](~${dataZoomName}.endValue) both define the scope of data window through **absolute value**.
 
-Notice，if an axis was set as `category`, `endValue` could be set as `index` of `axis.data` array or as the array value itself.  
+Notice, if an axis was set as `category`, `endValue` could be set as `index` of `axis.data` array or as the array value itself.  
 Under the latter condition, it would internally and automatically translate to the index of array. 
 
 ## orient(string) = null

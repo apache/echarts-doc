@@ -13,7 +13,7 @@ The polarIndex of angle Axis defaults to use the first Polar coordinate system.
 
 The default angle of the start of scale is 90 degrees, directly above the circle center.  0 degeree refers to the directly right to the circle center.
 
-As the startAngle(number) = 45，the result is shown in following: 
+As the startAngle(number) = 45, the result is shown in following: 
 
 
 ~[400x400](${galleryViewPath}doc-example/polar-start-angle&edit=1&reset=1)

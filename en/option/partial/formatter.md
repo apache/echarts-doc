@@ -5,7 +5,7 @@
         seriesIndex: number,
         // Series name
         seriesName: string,
-        // data name，category name
+        // data name, category name
         name: string,
         // index of data in the incoming data array
         dataIndex: number,

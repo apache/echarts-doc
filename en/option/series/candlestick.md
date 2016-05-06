@@ -70,7 +70,7 @@ Data format is double dimensional array which is shown in the following example.
 [
     [2320.26, 2320.26, 2287.3,  2362.94],
     [2300,    2291.3,  2288.26, 2308.38],
-    { // the data item could also be Object，so it could contains special setting values for this data item.
+    { // the data item could also be Object, so it could contains special setting values for this data item.
         value: [2300,    2291.3,  2288.26, 2308.38],
         itemStyle: {...}
     },
