@@ -18,7 +18,7 @@
 {{import: component-parallel-axis}}
 {{import: component-timeline}}
 
-
+<!-- {{import: series}} -->
 {{import: series-line}}
 {{import: series-bar}}
 {{import: series-pie}}
@@ -40,7 +40,7 @@
 
 # color(Array)
 
-The color list of palette. If no color is set in this series, the colors would be adopted successively and circularly from this list as the colors of this series. 
+The color list of palette. If no color is set in this series, the colors would be adopted successively and circularly from this list as the colors of this series.
 
 Defaults：
 ```js
