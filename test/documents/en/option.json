@@ -8569,7 +8569,7 @@
             "type": [
               "Array"
             ],
-            "descriptionCN": "<p><code>timeline</code> data. Every item of <code>Array</code>, it could be a direct numerical. If you need to individually endow each data item with a style definition, the data item should be written as <code>Object</code>. In <code>Object</code>, the attribute of <code>value</code> is numerical value. Other attributes, such as the examples below, could cover the attribute configuration in  <code>timeline</code>.  </p>\n<p>as follows：</p>\n<pre><code class=\"lang-javascript\">[\n    &#39;2002-01-01&#39;,\n    &#39;2003-01-01&#39;,\n    &#39;2004-01-01&#39;,\n    {\n        value: &#39;2005-01-01&#39;,\n        tooltip: {          // Let `tooltip` to be displayed as mouse hovering to this item.\n            formatter: &#39;{b} xxxx&#39;\n        },\n        symbol: &#39;diamond&#39;,  // the special setting of this item&#39;s figure.\n        symbolSize: 16      // the special setting of this item&#39;s size.\n    },\n    &#39;2006-01-01&#39;,\n    &#39;2007-01-01&#39;,\n    &#39;2008-01-01&#39;,\n    &#39;2009-01-01&#39;,\n    &#39;2010-01-01&#39;,\n    {\n        value: &#39;2011-01-01&#39;,\n        tooltip: {          // Let `tooltip` to be displayed as mouse hovering to this item.\n            formatter: function (params) {\n                return params.name + &#39;xxxx&#39;;\n            }\n        },\n        symbol: &#39;diamond&#39;,\n        symbolSize: 18\n    },\n]\n</code></pre>\n<p>&lt;!-- </p>\n"
+            "descriptionCN": "<p><code>timeline</code> data. Every item of <code>Array</code>, it could be a direct numerical. If you need to individually endow each data item with a style definition, the data item should be written as <code>Object</code>. In <code>Object</code>, the attribute of <code>value</code> is numerical value. Other attributes, such as the examples below, could cover the attribute configuration in  <code>timeline</code>.  </p>\n<p>as follows：</p>\n<pre><code class=\"lang-javascript\">[\n    &#39;2002-01-01&#39;,\n    &#39;2003-01-01&#39;,\n    &#39;2004-01-01&#39;,\n    {\n        value: &#39;2005-01-01&#39;,\n        tooltip: {          // Let `tooltip` to be displayed as mouse hovering to this item.\n            formatter: &#39;{b} xxxx&#39;\n        },\n        symbol: &#39;diamond&#39;,  // the special setting of this item&#39;s figure.\n        symbolSize: 16      // the special setting of this item&#39;s size.\n    },\n    &#39;2006-01-01&#39;,\n    &#39;2007-01-01&#39;,\n    &#39;2008-01-01&#39;,\n    &#39;2009-01-01&#39;,\n    &#39;2010-01-01&#39;,\n    {\n        value: &#39;2011-01-01&#39;,\n        tooltip: {          // Let `tooltip` to be displayed as mouse hovering to this item.\n            formatter: function (params) {\n                return params.name + &#39;xxxx&#39;;\n            }\n        },\n        symbol: &#39;diamond&#39;,\n        symbolSize: 18\n    },\n]\n</code></pre>\n"
           }
         }
       },
@@ -8577,12 +8577,6 @@
         "type": "Array",
         "items": {
           "anyOf": [
-            {
-              "type": [
-                "*"
-              ],
-              "descriptionCN": "<p>Series list. Each series decides its diagram type through <code>type</code>.</p>\n<p> --&gt;</p>\n"
-            },
             {
               "type": [
                 "Object"
