@@ -67,7 +67,7 @@
     prefix="###",
     defaultShowLabel=true,
     defaultPosition="'right'",
-    formatter1d=true
+    formatter2d=true
 )}}
 ### emphasis(Object)
 {{use:partial-label(

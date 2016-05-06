@@ -71,6 +71,16 @@
     hasCallback=true
 ) }}
 
+## edgeSymbol(Array|string) = ['none', 'none']
+边两端的标记类型，可以是一个数组分别指定两端，也可以是单个统一指定。默认不显示标记，常见的可以设置为箭头，如下：
+
+```js
+edgeSymbol: ['circle', 'arrow']
+```
+
+## edgeSymbolSize(Array|string) = 10
+边两端的标记大小，可以是一个数组分别指定两端，也可以是单个统一指定。
+
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
 ### normal(Object)
@@ -103,14 +113,25 @@
 {{use:partial-label(
     prefix="###",
     defaultPosition="'inside'",
-    formatter1d=true
+    formatter2d=true
 )}}
 ### emphasis(Object)
 {{use:partial-label(
     prefix="###",
     defaultShow=true,
-    formatter1d=true
+    formatter2d=true
 )}}
+
+## edgeLabel(Object)
+### normal(Object)
+{{use: graph-edge-label(
+    prefix="###"
+)}}
+### emphasis(Object)
+{{use: graph-edge-label(
+    prefix="###"
+)}}
+
 
 ## categories(Array)
 节点分类的类目，可选。
@@ -138,7 +159,7 @@
 {{ use:partial-label(
     prefix="####",
     defaultPosition="inside",
-    formatter1d=true
+    formatter2d=true
 ) }}
 #### emphasis(Object)
 {{ use:partial-label(prefix="####") }}
@@ -177,7 +198,7 @@
 ) }}
 
 ## nodes(Array)
-同 [data](~series-graph.data)
+别名，同 [data](~series-graph.data)
 
 ## links(Array)
 节点间的关系数据。示例：
@@ -190,7 +211,6 @@ links: [{
     target: 'n3'
 }]
 ```
-
 ### source(string)
 边的[源节点名称](~series-graph.data.name)
 ### target(string)
@@ -208,9 +228,24 @@ links: [{
     prefix="####"
 ) }}
 
+### edgeLabel(Object)
+#### normal(Object)
+{{use: graph-edge-label(
+    prefix="####"
+)}}
+#### emphasis(Object)
+{{use: graph-edge-label(
+    prefix="####"
+)}}
+
+### edgeSymbol(Array|string)
+边两端的标记类型，可以是一个数组分别指定两端，也可以是单个统一指定。
+
+### edgeSymbolSize(Array|string)
+边两端的标记大小，可以是一个数组分别指定两端，也可以是单个统一指定。
 
 ## edges(Array)
-同 [links](~series-graph.links)
+别名，同 [links](~series-graph.links)
 
 {{use: partial-mark-point(
     prefix="#",
@@ -241,3 +276,19 @@ links: [{
     prefix="#"
 ) }}
 {{ use: partial-animation(prefix="#") }}
+
+
+{{ target: graph-edge-label }}
+
+#${prefix} show(boolean) = ${defaultShowLabel|default(false)}
+是否显示标签。
+#${prefix} position(string) = 'end'
+标签位置，可选：
++ `'start'` 线的起始点。
++ `'middle'` 线的中点。
++ `'end'`   线的结束点。
+#${prefix} formatter(string|Function)
+{{ use: partial-2d-data-label-formatter }}
+
+#${prefix} textStyle(Object)
+{{ use: partial-text-style(prefix=${prefix} + '#') }}

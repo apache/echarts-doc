@@ -72,9 +72,7 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 ## label(Object)
 标签相关配置。
 ### normal(Object)
-{{ use: lines-label(
-    prefix="###"
-)}}
+{{ use: lines-label(prefix="###")}}
 ### emphasis(Object)
 {{ use: lines-label(prefix="###") }}
 
@@ -97,6 +95,26 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 ) }}
 
 
+{{use: partial-mark-point(
+    prefix="#",
+    seriesType="lines"
+)}}
+{{use: partial-mark-line(
+    prefix="#",
+    seriesType="lines"
+)}}
+
+{{use:partial-z-zlevel(
+    prefix="#",
+    componentName="线图"
+) }}
+
+{{ use:partial-silent(
+    prefix="#"
+) }}
+
+{{ use: partial-animation(prefix="#") }}
+
 {{ target: lines-data-item-item }}
 #### name(string)
 ${name}的名称。
@@ -117,7 +135,6 @@ ${name}的坐标，可以是[直角坐标系](~grid)上的`[x, y]`，[地理坐�
     hasCurveness=true
 ) }}
 
-
 {{ target: lines-label }}
 #${prefix} show(boolean) = ${defaultShowLabel|default(false)}
 是否显示标签。
@@ -127,24 +144,7 @@ ${name}的坐标，可以是[直角坐标系](~grid)上的`[x, y]`，[地理坐�
 + `'middle'` 线的中点。
 + `'end'`   线的结束点。
 #${prefix} formatter(string|Function)
-{{ use: partial-1d-data-label-formatter }}
+{{ use: partial-2d-data-label-formatter }}
 
-{{use: partial-mark-point(
-    prefix="#",
-    seriesType="lines"
-)}}
-{{use: partial-mark-line(
-    prefix="#",
-    seriesType="lines"
-)}}
-
-{{use:partial-z-zlevel(
-    prefix="#",
-    componentName="线图"
-) }}
-
-{{ use:partial-silent(
-    prefix="#"
-) }}
-
-{{use: partial-animation(prefix="#")}}
+#${prefix} textStyle(Object)
+{{ use: partial-text-style(prefix=${prefix} + '#') }}
