@@ -60,7 +60,7 @@
 
 鼠标是否可进入提示框浮层中，默认为false，如需详情内交互，如添加链接，按钮，可设置为 `true`。
 
-## position(string|Array)
+## position(string|Array|Function)
 
 提示框浮层的位置，默认不设置时位置会跟随鼠标的位置。
 
@@ -77,6 +77,23 @@
     position: [10, 10]
     // 相对位置，放置在容器正中间
     position: ['50%', '50%']
+    ```
+
++ `Function`
+
+    回调函数，格式如下
+    ```js
+    (point: Array, params: Object|Array.<Object>, dom: HTMLDomElement, rect: Object) => Array
+    ```
+
+    第一个参数是鼠标位置，第二个参数同 formatter 的参数相同，第三个参数是 tooltip 的 dom 对象， 第四个参数只有鼠标在图形上时有效，是一个用`x`, `y`, `width`, `height` 四个属性表达的图形包围盒。返回值是一个表示 tooltip 位置的数组，数组值可以是绝对的像素值，也可以是相对的百分比。
+
+    如下示例：
+    ```js
+    position: function (point, params, dom) {
+        // 固定在顶部
+        return [point[0], '10%'];
+    }
     ```
 
 + `'inside'`
