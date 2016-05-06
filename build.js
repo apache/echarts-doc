@@ -2,7 +2,7 @@ var md2json = require('./md2json');
 var fs = require('fs');
 var marked = require('marked');
 
-var languages = ['cn'];
+var languages = ['cn', 'en'];
 
 var configName = './config' + (process.argv[2] || '');
 
