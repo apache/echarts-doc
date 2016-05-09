@@ -8,7 +8,7 @@ Because the accuracy of maps in ECharts 3 have been improved, the map data for e
 
 2 formats of map data are provided in ECharts, the one is js document which could directly improt script label and then automatically register the map name and data; the other is JSON document which need to be registered manually after being async-loaded by jquery.
 
-There are practical examples of these 2 types：
+There are practical examples of these 2 types: 
 
 ** JavaScript importing example **
 
@@ -48,7 +48,7 @@ ECharts uses [geoJSON](http://geojson.org/) format as map outline. Except for th
 
 #${prefix} nameMap(Object)
 
-Name map with custom region, for instance：
+Name map with custom region, for instance: 
 ```js
 {
     'China' : 'China'

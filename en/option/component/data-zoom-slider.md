@@ -53,9 +53,9 @@ the pecision of the label's decimals. It defaults to be automatically decided by
 
 the Formatter of label. 
 
-+  `string`, indicating the template, for instance：in `aaaa{value}bbbb`, `{value}` would be substituted by the practical numerical values.
++  `string`, indicating the template, for instance: in `aaaa{value}bbbb`, `{value}` would be substituted by the practical numerical values.
 
-+  `Function`, indicating callback function, for example：
++  `Function`, indicating callback function, for example: 
 
 ```javascript
 labelFormatter: function (value) {

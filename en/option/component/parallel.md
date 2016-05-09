@@ -21,11 +21,11 @@
 
 ## layout(string) = 'horizontal'
 
-layout modes, optional values are：
+layout modes, optional values are: 
 
-+ `'horizontal'`：horizontally configurate every coordinate axis.
++ `'horizontal'`: horizontally configurate every coordinate axis.
 
-+ `'vertical'`：vertically configurate every coordinate axis.
++ `'vertical'`: vertically configurate every coordinate axis.
 
 
 ## parallelAxisDefault(Object)

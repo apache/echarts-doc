@@ -5,18 +5,18 @@ Data label formatter supoports string template and callback function.
 1. string template.
 
     Model variation includes `{a}`, `{b}`, `{c}`, `{d}`, representing series name, data name, data value and percent respectively.
-    **example：**
+    **example: **
     ```js
     formatter: '{b}: {d}'
     ```
 
 2. callback function.
 
-    Format of callback function：
+    Format of callback function: 
     ```js
     (params: Object|Array) => string
     ```
-    parameter `params` is the single dataset that formatter needs.Format is as followed：
+    parameter `params` is the single dataset that formatter needs.Format is as followed: 
     {{ use: partial-formatter-params-structure(extra = ${extra}) }}
 
 formatter return string supports line feed with`\n` .
@@ -25,12 +25,12 @@ formatter return string supports line feed with`\n` .
 
 {{ target: partial-1d-data-desc }}
 
-${name} data content and array in the series.Array item can be a single data value, for example：
+${name} data content and array in the series.Array item can be a single data value, for example: 
 ```js
 [12, 34, 56, 10, 23]
 ```
 
-If other dimensions need to be added to data  [visualMap](~visualMap) component to map color and other graphic properties.Each data item can also be an array, for example：
+If other dimensions need to be added to data  [visualMap](~visualMap) component to map color and other graphic properties.Each data item can also be an array, for example: 
 ```js
 [[12, 14], [34, 50], [56, 30], [10, 15], [23, 10]]
 ```
@@ -38,7 +38,7 @@ If other dimensions need to be added to data  [visualMap](~visualMap) component 
 Now second value in each arrary can be assigned to [visualMap](~visualMap) component.
 
 
-In most situation, we need to assign name to each data item,so each item need to be one subject：
+In most situation, we need to assign name to each data item,so each item need to be one subject: 
 ```js
 [{
     // name of date item
@@ -51,7 +51,7 @@ In most situation, we need to assign name to each data item,so each item need to
 }]
 ```
 
-When personalized definition needs to be conducted to  sepcific content：
+When personalized definition needs to be conducted to  sepcific content: 
 
 ```js
 [{

@@ -37,7 +37,7 @@ Whether to show the tool.
 
 toolbox. It is internally installed with 5 tools including [export pictures](~toolbox.feature.saveAsImage), [data view](~toolbox.feature.dataView), [dynamic type switching](~toolbox.feature.magicType), [data area zooming](~toolbox.feature.dataZoom) and [reset](~toolbox.feature.reset).
 
-**Example：**
+**Example: **
 
 ~[600x400](${galleryViewPath}line-marker&reset=1&edit=1)
 
@@ -49,7 +49,7 @@ Whether to show tool box component.
 
 The layout orientation of tool box's icon.
 
-Options：
+Options: 
 + 'horizontal'
 + 'vertical'
 
@@ -70,7 +70,7 @@ The configuration item of each tool.
 
 Besides all the internally installed tool buttons, tool button still can be user-defined. 
 
-Notes: the user-defined tool name could only starts with  `my`. See the `myTool1` and `myTool2` in the below example：
+Notes: the user-defined tool name could only starts with  `my`. See the `myTool1` and `myTool2` in the below example: 
 
 ```javascript
 {
@@ -120,7 +120,7 @@ Restore configuration item.
 data view tool, which could display adopted data in current diagram and updates after being edited.
 {{ use: feature-common(title="data view") }}
 #### readOnly(boolean) = false
-Whether it couldn't be edited（read-only）。
+Whether it couldn't be edited（read-only）. 
 #### lang(Array) = ['data view', 'turn off', 'refresh']
 There are 3 langs in data view, which defaults to be `['data view', 'turn off' and 'refresh']`.
 #### backgroundColor(string) = '#fff'
@@ -161,7 +161,7 @@ Restored and zoomed title text.
 
 ### magicType(Object)
 magic type switching
-**示例：**
+**示例: **
 ```js
 feature: {
     magicType: {

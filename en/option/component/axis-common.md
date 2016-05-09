@@ -181,7 +181,7 @@ The color of split area would circularly set their colors according to the color
 
 Type of axis
 
-Option：
+Option: 
 + `'value'`
     numerical axis, suitable for continuous data.
 
@@ -203,7 +203,7 @@ The name of coordinate axis.
 
 The name's location of coordinate axis.
 
-**Option：**
+**Option: **
 + `'start'`
 + `'middle'`
 + `'end'`
@@ -229,7 +229,7 @@ The boundary gap on both sides of the coordinate axis. The setting and performan
 
 The `boundaryGap` of category axis can be allocated as `true` and `false`, which defauts to be allocated as `true`.  Meanwhile,  [axisTick](~${componentType}.axisTick)can be used only as splitline. Both the label and data marker exist on the band between 2 [axis tick](~${componentType}.axisTick). 
 
-non-category axis includes time, numerical value, log axis. `boundaryGap` is an array consisting of 2 values which individually refer to the span range between the maximun and minimum value. The value and the percentage can be directly set. `boundaryGap` is not available after the [min](~${componentType}.min) and [max](~${componentType}.max) being set. **example：**
+non-category axis includes time, numerical value, log axis. `boundaryGap` is an array consisting of 2 values which individually refer to the span range between the maximun and minimum value. The value and the percentage can be directly set. `boundaryGap` is not available after the [min](~${componentType}.min) and [max](~${componentType}.max) being set. **example: **
 ```js
 boundaryGap: ['20%', '20%']
 ```
@@ -304,7 +304,7 @@ Unavailable in category axis. The timestamp need to be transmitted in timeaxis�
 
 Category data, available in category axis（[type](~${componentType}.type): 'category'）.
 
-Example：
+Example: 
 
 ```js
 //Name list of all categories
@@ -340,7 +340,7 @@ ${name}, available in category axis.{{ if: !${isAxisLabel} }} defaults to be the
 
 It defaults to adopt strategic interval to show the labels in case labels repeat, which could be set as 0 to compulsorily display all the labels.
 
-The interval data not only could be presented by numerical value, but also could be controled through callback function.The format of callback function is shown as follow：
+The interval data not only could be presented by numerical value, but also could be controled through callback function.The format of callback function is shown as follow: 
 ```js
 (index:number, value: string) => boolean
 ```

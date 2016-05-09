@@ -32,5 +32,5 @@ The initial length of the animation.
 
 #${prefix} animationEasing(string) = ${defaultAnimationEasing|default('cubicOut')}
 
-Easing effect of initial animation.Different easing effects can refer to [easing effect](${galleryViewPath}line-easing)。
+Easing effect of initial animation.Different easing effects can refer to [easing effect](${galleryViewPath}line-easing). 
 

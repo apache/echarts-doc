@@ -7,7 +7,7 @@ Drawing grid in rectangular coordinate system. In a single grid, 2 x axis above 
 
 In ECharts 2.x , there is one grid component at most in a single echarts example; while in ECharts 3, there is no limitation about the quantity of grid component in a single echarts example.
 
-**see the below example of Anscombe Quartet：**
+**see the below example of Anscombe Quartet: **
 
 ~[600x400](${galleryViewPath}scatter-anscombe-quartet&edit=1&reset=1)
 

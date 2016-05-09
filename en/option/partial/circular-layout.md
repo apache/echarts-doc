@@ -9,7 +9,7 @@ The center coordinates of ${componentName}, the first item of array is the absci
 
 Support set to percentage, the first item when setting to percentage is the width relative to the container, the second item is the height.
 
-**Example：**
+**Example: **
 ```
 // Set to absolute pixel values
 center: [400, 300]

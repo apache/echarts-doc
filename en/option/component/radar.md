@@ -30,7 +30,7 @@ Specify whether to show the indicator's name.
 
 ### formatter(string|Function)
 
-The formatter of showing indicator's name, in which the string and callback function are valid. See the following example：
+The formatter of showing indicator's name, in which the string and callback function are valid. See the following example: 
 
 ```js
 // using string template, the template variable should be the indicator's name {value}

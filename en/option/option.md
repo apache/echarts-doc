@@ -41,7 +41,7 @@
 
 The color list of palette. If no color is set in this series, the colors would be adopted successively and circularly from this list as the colors of this series.
 
-Defaults：
+Defaults: 
 ```js
 ['#c23531','#2f4554', '#61a0a8', '#d48265', '#91c7ae','#749f83',  '#ca8622', '#bda29a','#6e7074', '#546570', '#c4ccd3']
 ```

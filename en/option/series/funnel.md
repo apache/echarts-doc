@@ -5,7 +5,7 @@
 
 **funnel plot**
 
-**sample：**
+**sample: **
 ~[600x400](${galleryViewPath}funnel&reset=1&edit=1)
 
 ## type(string) = 'funnel'
@@ -38,7 +38,7 @@ data graph gap.
 {{ use: partial-legend-hover-link }}
 
 ## funnelAlign(string) = 'center'
-horizontal align layout. It defaults to align center. Optional items are：'left' | 'right' | 'center'
+horizontal align layout. It defaults to align center. Optional items are: 'left' | 'right' | 'center'
 
 ## label(Object)
 {{use:partial-label-desc(name="funnel plot")}}
@@ -132,7 +132,7 @@ the label configuration of single data.
 #${prefix} position(string) = 'outside'
 label position.
 
-**Options：**
+**Options: **
 + `'left'`
 
     left side of funnel plot. The corresponding trapezoid would be related to through [visual guide line](~series-funnel.labelLine).
@@ -145,8 +145,8 @@ label position.
 
     the inside part of trapezoid in funnel plot. 
 
-+ `'inner'` equals to `'inside'`。
-+ `'center'` equals to `'inside'`。
++ `'inner'` equals to `'inside'`. 
++ `'center'` equals to `'inside'`. 
 
 {{ /if }}
 {{ if: ${formatter} }}

@@ -16,7 +16,7 @@ In a single echarts instance of ECharts 3, multiple legend components could exis
 
 The layout orientation of legend. 
 
-Option：
+Option: 
 + 'horizontal'
 + 'vertical'
 
@@ -24,7 +24,7 @@ Option：
 
 Legend mrker and text aligning. It defaults to align automatically, which is decided by the component location and orient. as the [left](~legend.left) value of this component is 'right' , and the vertical layout（[orient](~legend.orient) is  'vertical'）, it would be right align,'right'.
 
-Option：
+Option: 
 + 'auto'
 + 'left'
 + 'right'
@@ -49,7 +49,7 @@ Image height of legend symbol.
 
 Content formatter of legend text, which supports string template and callback function.
 
-Example：
+Example: 
 ```js
 // using string template, the template variable is legend name {name}
 formatter: 'Legend {name}'
@@ -69,7 +69,7 @@ Beyond that, it could be set also as  `'single'` or `'multiple'` which refer to 
 
 State table of selected legend.
 
-example：
+example: 
 ```
 selected: {
     // selected'series 1'

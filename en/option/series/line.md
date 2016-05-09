@@ -110,7 +110,7 @@ Here are 2 examples of broken line graph in double-value axis, showing the diffe
 
 the dowmsampling strategy used when the data size is much larger than piex dot. It could optimize the drawing efficiency when it is turned on. And it defaults to be turned off, indicating that all the drawing would not filter data point.  
 
-Options：
+Options: 
 + `'average'` average the value of filter points
 + `'max'` maximize the value of filter points
 + `'min'` minimize the value of filter points

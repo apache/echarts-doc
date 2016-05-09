@@ -5,12 +5,12 @@
 
 `timeline` component, which provides different operational functions such as switch function between multiple `ECharts option` and play function.  
 
-Here is the example：
+Here is the example: 
 
 ~[600x400](${galleryViewPath}doc-example/mix-timeline-all&edit=1&reset=1)
 
 Different from other components, `timeline` component need to operate 『multiple options』  `timeline` .
-Assume that a traditional ECharts option was called `atom option`. When `timeline` is used, the option which is introduced into ECharts becomes a `compound option`, a collection of multiple `atom option`.  As shown in the following example：
+Assume that a traditional ECharts option was called `atom option`. When `timeline` is used, the option which is introduced into ECharts becomes a `compound option`, a collection of multiple `atom option`.  As shown in the following example: 
 
 ```javascript
 // as follows, baseOption is a 『atom option』, and every item in options array is also a 『atom option』.
@@ -82,7 +82,7 @@ myChart.setOption(
 In the previous examples, every item in `timeline.data` corresponds to every `option` of `options` array. 
 
 <br>
-**precautions for use and the best practice：**
+**precautions for use and the best practice: **
 
 + communal configuration item, which is recommended to be allocated in  `baseOption`. As `timeline` switching and playing, the corresponding  `option` in `option` array would merge with `baseOption` to become the final `option`.
 
@@ -90,7 +90,7 @@ In the previous examples, every item in `timeline.data` corresponds to every `op
 
 
 <br>
-**Its compatibility with ECharts2：**
+**Its compatibility with ECharts2: **
 
 + ECharts3 doesn't support timeline.notMerge parameter, which implies notMerge mode would not be supported any more. If this scene was needed, the option management could be conducted outside with a notMerge setting like setOption(option, true). 
 
@@ -109,7 +109,7 @@ At present, this attribute would be valid only if it is set as `slider`. It's un
 
 ## axisType(string) = 'time'
 
-types of axis. optional values：
+types of axis. optional values: 
 
 + `'value'`
     value axis, applied to continuous data.
@@ -122,7 +122,7 @@ types of axis. optional values：
 
 ## currentIndex(number) = 0
 
-Indicating which is the currently selected item. For instance,if `currentIndex` is `0`, it indicates that the currently selected item is `timeline.data[0]`（namely, using `options[0]`）。
+Indicating which is the currently selected item. For instance,if `currentIndex` is `0`, it indicates that the currently selected item is `timeline.data[0]`（namely, using `options[0]`）. 
 
 
 ## autoPlay(boolean) = false
@@ -152,7 +152,7 @@ Whether the view updates in real time during dragging a dot.
 
 ## controlPosition(string) = 'left'
 
-Refer to the location of『play』buttom. optional values：`'left'`、`'right'`。
+Refer to the location of『play』buttom. optional values: `'left'`、`'right'`. 
 
 
 {{ use: partial-rect-layout(
@@ -167,10 +167,10 @@ Refer to the location of『play』buttom. optional values：`'left'`、`'right'`
 
 ## orient(string) = 'horizontal'
 
-format of layout, optional values are：
+format of layout, optional values are: 
 
-+ `'vertical'`：vertical layout.
-+ `'horizontal'`：horizontal layout.
++ `'vertical'`: vertical layout.
++ `'horizontal'`: horizontal layout.
 
 
 ## inverse(boolean) = false
@@ -210,26 +210,26 @@ There are 2 status text labels of axis, which are `normal` and `emphasis`. `norm
 
 the optional methods of configuration:
 
-+ `'auto'`：
++ `'auto'`: 
     completely automatical deciding.
 
-+ `'left'`：
++ `'left'`: 
     Put it along the left margin.
     It is valid as [timline.orient](~timeline.orient) is set as `'horizontal'` .
 
-+ `'right'`：It is valid as [timline.orient](~timeline.orient) is set as `'horizontal'`.
++ `'right'`: It is valid as [timline.orient](~timeline.orient) is set as `'horizontal'`.
     Put it along the right margin.
 
-+ `'top'`：
++ `'top'`: 
     Put it along the margin of the top.
 
     It is valid as [timline.orient](~timeline.orient) is set as `'vertical'`.
 
-+ `'bottom'`：
++ `'bottom'`: 
     Put it along the margin of the bottom.
     It is valid as [timline.orient](~timeline.orient) is set as `'vertical'`.
 
-+ `number`：
++ `number`: 
     When it is assigned with a value, it indicates the distance between  `label` and axis. If it was `0` , `label` would be coincident with axis. It can be both positive and negtive value, deciding on which side of the axis the location of `label` would be.   
 
 
@@ -322,7 +322,7 @@ The easing effect of animation of『current item』（`checkpoint`） in `timeli
 
 ## controlStyle(Object)
 
-The style of『control button』.『control button』includes：『play button』、『previous button』、『next button』.
+The style of『control button』.『control button』includes: 『play button』、『previous button』、『next button』.
 
 ### show(boolean) = true
 
@@ -432,7 +432,7 @@ the width of button border.
 
 
 
-as follows：
+as follows: 
 
 ```javascript
 [

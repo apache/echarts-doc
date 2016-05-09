@@ -13,7 +13,7 @@ The index of grid which the y axis belongs to defaults to be in the first grid.
 
 the position of y axis.
 
-options：
+options: 
 + `'left'`
 + `'right'`
 

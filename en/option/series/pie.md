@@ -9,7 +9,7 @@ The pie chart is mainly used for showing data proportion in the total in differe
 
 **Tip:** The pie chart is more suitable for presenting the relations such as the percentage of data relative to the total. If you just want to present the different data of various categories, the [bar graph](bar) is more suggested. Compared to tiny length difference,  people is less sensitive to the minor radian difference. Otherwise, it could also be shown as Nightingale chart by allocating the [roseType](~series-pie.roseType), distinguishing different data through radius. 
 
-** The below example is the custom Nightingale chart：**
+** The below example is the custom Nightingale chart: **
 ~[500x400](${galleryViewPath}pie-custom&edit=1&reset=1)
 
 ## type(string) = 'pie'
@@ -38,7 +38,7 @@ the start angle, which supports the scale of[0, 360].
 the minimum angel of sector. It prevents some sector from being too small bacause the some value is too small, which would influence on interaction. 
 
 ## roseType(boolean|string) = false
-Whether to show as Nightingale chart, which distinguishs data through radius. There are 2 optional modes：
+Whether to show as Nightingale chart, which distinguishs data through radius. There are 2 optional modes: 
 
 + `'radius'` area shows the percentage of data, radius shows data size. 
 + `'area'` when all the sectors share the same area, the data size is shown only through radiuses.
@@ -142,7 +142,7 @@ the label configuration of a single sector.
 #${prefix} position(string) = 'outside'
 the position of lable.
 
-**Options：**
+**Options: **
 + `'outside'`
 
     the outside of sectors of pie chart, which relates to corresponding sector through [visual guide line](~series-pie.labelLine).
@@ -151,7 +151,7 @@ the position of lable.
 
     the inside of sectors of pie chart.
 
-+ `'inner'` is the same with `'inside'`。
++ `'inner'` is the same with `'inside'`. 
 + `'center'`
 
     In the center of pie chart. Reference to[pie-doughnut example](${galleryEditorPath}pie-doughnut)

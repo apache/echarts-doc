@@ -7,7 +7,7 @@ Data visualization is the mapping process from  **data** to **visual element**�
 
 Each chart in ECharts has this mapping process in itself, such as line chart maps data to『line』and bar chart maps data to『length』.Some more complicated charts, such as `graph`, `event river map` and `treemap` all does inner mapping.
 
-Besides, ECharts also uses [viusalMap component](option.html#visualMap) to provide universal visual mapping. Visual elements available in `visualMap` component are：<br>
+Besides, ECharts also uses [viusalMap component](option.html#visualMap) to provide universal visual mapping. Visual elements available in `visualMap` component are: <br>
 `graphic category（symbol）`,`graphic size（symbolSize）`<br>
 `color（color）`,`color transparency（colorAlpha）`,<br>
 `color lightness（colorLightness）`,`color saturation（colorSaturation）` and `hue（colorHue）`
@@ -86,10 +86,10 @@ option = {
 ```
 
 <br>
-[Continuous（visualMapContinuous）](option.html#visualMap-continuous)：
+[Continuous（visualMapContinuous）](option.html#visualMap-continuous): 
 ~[600x400](${galleryViewPath}doc-example/map-visualMap-continuous&edit=1&reset=1)
 
-[Segmented（visualMapPiecewise）](option.html#visualMap-piecewise)：
+[Segmented（visualMapPiecewise）](option.html#visualMap-piecewise): 
 ~[600x400](${galleryViewPath}doc-example/scatter-visualMap-piecewise&edit=1&reset=1)
 
 <br>
@@ -106,7 +106,7 @@ There are three pattern of segmented visual map component（visualMapPiecewise�
 Since it is the map from『data』to『visual element』,so in`visualMap` data of『which dimension』can be assigned（see [visualMap.dimension](~visualMap.dimension)）can map to which『visual element』（please see in [visualMap.inRange](option.html#visualMap.inRange) and [visualMap.outOfRange](option.html#visualMap.outOfRange)）.
 
 
-Example 1：
+Example 1: 
 
 ```javascript
 option = {
@@ -136,7 +136,7 @@ option = {
 };
 ```
 
-Example 2：
+Example 2: 
 ```javascript
 option = {
     visualMap: [

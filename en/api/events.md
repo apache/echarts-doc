@@ -21,7 +21,7 @@ Event parameter is each attribute of event data, See label formatter callback fu
 **ACTION:** [legendToggleSelect](~action.legend.legendToggleSelect)
 Change event after selecting legend.
 
-**Attention：** This event will be triggered when legend component users change legend switch.
+**Attention: ** This event will be triggered when legend component users change legend switch.
 ```js
 {
     type: 'legendselectchanged',
@@ -45,7 +45,7 @@ Event after selecting legend.
 }
 ```
 
-**Attention：** In ECharts 2.x, event related to user switch lengend changes from  `legendselected` to [legendselectchanged](~events.legendselectchanged)。
+**Attention: ** In ECharts 2.x, event related to user switch lengend changes from  `legendselected` to [legendselectchanged](~events.legendselectchanged). 
 
 ## legendunselected(Event)
 **ACTION:** [legendUnSelect](~action.legend.legendUnSelect)
@@ -175,7 +175,7 @@ User will trigger this event by clicking select.
     selected: Object
 }
 ```
-**Attention：** This event is the same as event `${componentType}Selected` in ECharts 2.
+**Attention: ** This event is the same as event `${componentType}Selected` in ECharts 2.
 
 ## ${componentType}selected(Event)
 **ACTION:** [${componentType}Select](~action.${componentType}.${componentType}Select)
@@ -196,7 +196,7 @@ Use `dispatchAction` can trigger this event, but user clicking this event won't 
 }
 ```
 
-**Attention：**Events corresponding to user switch legend in ECharts 2.x change from `${componentType}selected` to [${componentType}selectchanged](~events.${componentType}selectchanged).
+**Attention: **Events corresponding to user switch legend in ECharts 2.x change from `${componentType}selected` to [${componentType}selectchanged](~events.${componentType}selectchanged).
 
 ## ${componentType}unselected(Event)
 **ACTION:** [${componentType}UnSelect](~action.${componentType}.${componentType}UnSelect)

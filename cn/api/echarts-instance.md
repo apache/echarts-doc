@@ -179,7 +179,7 @@ ECharts 中的事件有两种，一种是鼠标事件，在鼠标点击某个图
 ```js
 (type?: string, opts?: Object)
 ```
-显示加载动画效果。可以在加载数据前手动调用改接口显示加载动画，在动画加载完成后调用 [hideLoading](~echartsInstance.hideLoading) 隐藏加载动画。
+显示加载动画效果。可以在加载数据前手动调用改接口显示加载动画，在数据加载完成后调用 [hideLoading](~echartsInstance.hideLoading) 隐藏加载动画。
 
 **参数：**
 + `type`
@@ -216,7 +216,7 @@ default: {
 }) => string
 ```
 
-导出图表图片，返回一个 base64 的 url，可以设置为`Image`的`src`。
+导出图表图片，返回一个 base64 的 URL，可以设置为`Image`的`src`。
 
 **示例：**
 ```js
@@ -231,15 +231,15 @@ img.src = myChart.getDataURL({
 ```js
 (opts: {
     // 导出的格式，可选 png, jpeg
-    type: string,
+    type?: string,
     // 导出的图片分辨率比例，默认为 1。
-    pixelRatio: number,
+    pixelRatio?: number,
     // 导出的图片背景色，默认使用 option 里的 backgroundColor
-    backgroundColor: string
+    backgroundColor?: string
 }) => string
 ```
 
-导出联动的图表图片，返回一个 base64 的 url，可以设置为`Image`的`src`。导出图片中每个图表的相对位置跟器容器的相对位置有关。
+导出联动的图表图片，返回一个 base64 的 url，可以设置为`Image`的`src`。导出图片中每个图表的相对位置跟容器的相对位置有关。
 
 ## clear
 

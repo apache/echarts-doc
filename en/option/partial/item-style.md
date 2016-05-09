@@ -10,7 +10,7 @@ ${name}color of the graphic.{{ if: ${useColorPalatte} }} Get color from the glob
 {{ use: partial-color-desc }}
 
 {{ if: ${hasCallback} }}
-Support the use of callback functions. Callback function takes the following forms：
+Support the use of callback functions. Callback function takes the following forms: 
 ```js
 (params: Object) => Color
 ```

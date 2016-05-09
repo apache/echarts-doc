@@ -70,7 +70,7 @@ $.get('data.json').done(function (data) {
 });
 ```
 
-For example：
+For example: 
 
 ~[400x300](${galleryViewPath}doc-example/tutorial-async&edit=1&reset=1)
 
@@ -89,7 +89,7 @@ $.get('data.json').done(function (data) {
 });
 ```
 
-Effects are as followed：
+Effects are as followed: 
 
 ~[400x300](${galleryViewPath}doc-example/tutorial-loading&edit=1&reset=1)
 

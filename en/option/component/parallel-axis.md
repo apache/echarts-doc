@@ -28,7 +28,7 @@ Count from  `0`. For example, the `dim` of coordinate axis is `1`, indicating th
 
 It is used to define which 『coordinate system』the『coordinate axis』should correspond to.
 
-For example, there is the following configuration：
+For example, there is the following configuration: 
 
 ```javascript
 myChart.setOption({

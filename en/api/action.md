@@ -14,7 +14,7 @@
 
 Charts supported in ECharts are triggered through [dispatchAction](~echartsInstance.dispatchAction) .
 
-**Attention：**  `?:`in code representing that  this attribute is optional. *EVENT:* is the event that action triggers accordingly. 
+**Attention: **  `?:`in code representing that  this attribute is optional. *EVENT:* is the event that action triggers accordingly. 
 
 ## highlight(Action)
 
@@ -182,7 +182,7 @@ dispatchAction({
 })
 ```
 ?
-**For example：**
+**For example: **
 ```js
 myChart.dispatchAction({
     type: 'selectDataRange',
@@ -205,7 +205,7 @@ myChart.dispatchAction({
 
 ### timelineChange(Action)
 
-Set the current time point.。
+Set the current time point.. 
 
 ```js
 dispatchAction({
