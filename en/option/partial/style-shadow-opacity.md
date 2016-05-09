@@ -4,7 +4,7 @@
 
 Size of blurriness of graphic shadow. This attribute sets graphic shadow effect together with `shadowColor`,`shadowOffsetX`, `shadowOffsetY`.
 
-for example：
+for example: 
 ```js
 itemStyle: {
     normal: {

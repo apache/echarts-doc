@@ -7,13 +7,13 @@
 
 It is a special flow graph which is mainly used to present the changes of an event or theme during a period.
 
-**Sample：**
+**Sample: **
 
 ~[700x580](${galleryViewPath}sankey-energy&edit=1&reset=1)
 
 
 <br>
-**visual encoding：**
+**visual encoding: **
 
 The ribbon-shape river branches in different colors in theme river encode variable events or themes. The width of river branches encode the value of the original dataset.  
 
@@ -32,7 +32,7 @@ What's more, the time attribute of the orinigal dataset would map to a single ti
     defaultHeight: 'null'
 ) }}
 
-** Notes：**
+** Notes: **
 The positional information of the whole theme river view reuses the positional information of a single time axis, which are left, top, right and bottom. 
 
 
@@ -133,7 +133,7 @@ data: [
     ["2015/11/13",10,"QG"],
 ]
 ```
-**data specification：**
+**data specification: **
 
 As what is shown above, the data format of theme river is double dimensional array. Each item of the inner array consists of the time attribute , the value at a time point and the name of an event or theme. It needs to be noticed that you should provide an event or theme with a complete time quantum as main river. Other events and themes are based on the main river. The default value of time point should be set as 0. That is to say other events or themes are included in the main river. Once they are beyond the main river, the layout would be wrong. That is because a baseline should be calculated to draw each event as ribbon shape when the whole diagram layout is calculated. As the example above, the event "SS" is a main river. After dispose, we would complete these 3 default time points with the format of ["2015/11/08",0,"DQ"], ["2015/11/12",0,"DQ"], ［"2015/11/13",0,"DQ"］, making it align with the main river. From what is mentioned, we could set default value on any position of a complete time period.
 

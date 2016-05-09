@@ -7,7 +7,7 @@ the scatter (bubble) graph with ripple animation. The special animation effect c
 
 **Tip:**  The special effects of map could be achieved through markPoint in ECharts 2.x. However, in  ECharts 3, effectScatter on geographic coordinate system is recommended for achieving that special effects of map.  
 
-**Here is the example：**
+**Here is the example: **
 ~[600x400](${galleryViewPath}effectScatter-map&edit=1&reset=1)
 
 ## type(string) = 'effectScatter'
@@ -22,7 +22,7 @@ Type of special effect. Only ripple effect of `'ripple'` is supported at present
 ## showEffectOn(string) = 'render'
 Configurate the time to show the special effect.
 
-**Options：**
+**Options: **
 + `'render'` show the special effect when drawing is done. 
 + `'emphasis'` show the special effect when it is highlight（hover）.
 
@@ -35,7 +35,7 @@ the duration of animation.
 ### scale(number) = 2.5
 the maximum zooming scale of ripples in animation.
 ### brushType(string) = 'fill'
-the filling method for ripples. options: `'stroke'` and `'fill'`。
+the filling method for ripples. options: `'stroke'` and `'fill'`. 
 
 {{use: partial-coord-sys(
     seriesType="bar",

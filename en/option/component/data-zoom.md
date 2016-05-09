@@ -6,21 +6,21 @@
 `dataZoomx` component is used in zooming the data in or out in a specific area, which would be helpful to pay more attention to detailed information or scan the data overall. 
 
 
-several valid subcomponent at present：
+several valid subcomponent at present: 
 
-+ [Inside data zoom component（dataZoomInside）](~dataZoom-inside)：installed inside the coordinate axis system.
++ [Inside data zoom component（dataZoomInside）](~dataZoom-inside): installed inside the coordinate axis system.
 
-+ [Slider data Zoom component（dataZoomSlider）](~dataZoom-slider)：operation through an individual slider.
++ [Slider data Zoom component（dataZoomSlider）](~dataZoom-slider): operation through an individual slider.
 
-+ [Selected toolbox data Zoom component（dataZoomSelect）](~toolbox.feature.dataZoom)：zooming in or out date through selected full-screen in a specific area. All the accesses and configuration items are in `toolbox`.
++ [Selected toolbox data Zoom component（dataZoomSelect）](~toolbox.feature.dataZoom): zooming in or out date through selected full-screen in a specific area. All the accesses and configuration items are in `toolbox`.
 
 
-Example：
+Example: 
 ~[600x400](${galleryViewPath}doc-example/scatter-dataZoom-all&edit=1&reset=1)
 
 
 
-**Tips：**
+**Tips: **
 
 + `dataZoom` mainly deals with `axis（axis）`. 
 
@@ -30,13 +30,13 @@ Example：
 
 + the operational principle of `dataZoom` is to achieve the effect of `screen data zooming` through `data filtering`.
 
-    The result varies as the data filtering mode changes, reference：[dataZoom.filterMode](~dataZoom.filterMode)。
+    The result varies as the data filtering mode changes, reference: [dataZoom.filterMode](~dataZoom.filterMode). 
 
-+ There are 2 kinds of valid setting about the range of data window in `dataZoom` at present：
++ There are 2 kinds of valid setting about the range of data window in `dataZoom` at present: 
 
-    + percentage：reference to [dataZoom.start](~dataZoom.start) and [dataZoom.end](~dataZoom.end)。
+    + percentage: reference to [dataZoom.start](~dataZoom.start) and [dataZoom.end](~dataZoom.end). 
 
-    + absolute figure：reference to [dataZoom.startValue](~dataZoom.startValue) and [dataZoom.endValue](~dataZoom.endValue)。
+    + absolute figure: reference to [dataZoom.startValue](~dataZoom.startValue) and [dataZoom.endValue](~dataZoom.endValue). 
 
 + If the range of `dataZoom` was assigned by percentage(and there is no setting about the `min`/`max`/`scale`), the result of `dataZoom` relates to its order in which the `dataZoom` is defined. For instance, there is a defined group: 
 
@@ -59,7 +59,7 @@ Example：
 <br>
 
 
-Below is the detailed introduction：
+Below is the detailed introduction: 
 
 
 
@@ -74,7 +74,7 @@ Below is the detailed introduction：
 {{target: partial-data-zoom-axis-example}}
  `number` indicates controlling one axis, while `Array` indicates controlling more than one axis.
 
-If there is the following ECharts option：
+If there is the following ECharts option: 
 
 ```javascript
 option: {
@@ -104,7 +104,7 @@ option: {
 
 ## xAxisIndex(number|Array) = null
 
-Setting up `x axis` which is controlled by `${dataZoomName}` （namely,[xAxis](~xAxis), which is a concept in rectangular coordinate system, reference to [grid](~grid)）。
+Setting up `x axis` which is controlled by `${dataZoomName}` （namely,[xAxis](~xAxis), which is a concept in rectangular coordinate system, reference to [grid](~grid)）. 
 
 without assignment, as [${dataZoomName}.orient](~${dataZoomName}.orient) is `'horizontal'`, it defaults to control all the `xAxis`.
 
@@ -115,7 +115,7 @@ without assignment, as [${dataZoomName}.orient](~${dataZoomName}.orient) is `'ho
 
 ## yAxisIndex(number|Array) = null
 
-Setting up `y axis` which is controlled by `${dataZoomName}` （namely, [yAxis](~yAxis), which is a concept in rectangular coordinate system, reference to [grid](~grid)）。
+Setting up `y axis` which is controlled by `${dataZoomName}` （namely, [yAxis](~yAxis), which is a concept in rectangular coordinate system, reference to [grid](~grid)）. 
 
 without assignment, as [${dataZoomName}.orient](~${dataZoomName}.orient) is `'vertical'`, it defaults to control all the `yAxis`.
 
@@ -127,7 +127,7 @@ without assignment, as [${dataZoomName}.orient](~${dataZoomName}.orient) is `'ve
 ## angleAxisIndex(number|Array) = null
 
 
-Setting up angleAxis which is controlled by `${dataZoomName}`（namely, [angleAxis](~angleAxis), which is a concept in polar coordinate system, reference to [polar](~polar)）。
+Setting up angleAxis which is controlled by `${dataZoomName}`（namely, [angleAxis](~angleAxis), which is a concept in polar coordinate system, reference to [polar](~polar)）. 
 
 Without assignment, it defaults to control all the `angleAxis`.
 
@@ -138,7 +138,7 @@ Without assignment, it defaults to control all the `angleAxis`.
 
 ## radiusAxisIndex(number|Array) = null
 
-Setting up radiusAxis which is controlled by `${dataZoomName}`（namely,[radiusAxis](~radiusAxis), which is a concept in polar coordinate system, reference to [polar](~polar)）。
+Setting up radiusAxis which is controlled by `${dataZoomName}`（namely,[radiusAxis](~radiusAxis), which is a concept in polar coordinate system, reference to [polar](~polar)）. 
 
 Without assignment, it defaults to control all the  `radiusAxis`.
 
@@ -153,7 +153,7 @@ The operational principle of `dataZoom` is to achieve the effect of `data window
 
 The result varies as the setting of data filtering mode changes.
 
-Valid values：
+Valid values: 
 
 + 'filter'
 
@@ -171,14 +171,14 @@ As the following example, the `filterMode` on y axis is set as `'empty'`, and th
 
 ## start(number) = 0
 
-The start percentage of the scope of data window. The scope：0 ~ 100。
+The start percentage of the scope of data window. The scope: 0 ~ 100. 
 
 [${dataZoomName}.start](~${dataZoomName}.start) and [${dataZoomName}.end](~${dataZoomName}.end) both define the scope of data window through **percentage**.
 
 
 ## end(number) = 100
 
-The end percentage of the scope of data window. The scope：0 ~ 100。
+The end percentage of the scope of data window. The scope: 0 ~ 100. 
 
 [${dataZoomName}.start](~${dataZoomName}.start) and [${dataZoomName}.end](~${dataZoomName}.end) both define the scope of data window through  **percentage**.
 
@@ -195,7 +195,7 @@ Under the latter condition, it would internally and automatically translate to t
 
 ## endValue(number|string|Date) = null
 
-The end value of the scope of data window. If  [${dataZoomName}.end](~${dataZoomName}.end) was set up,  `endValue` would becomes invalid。
+The end value of the scope of data window. If  [${dataZoomName}.end](~${dataZoomName}.end) was set up,  `endValue` would becomes invalid. 
 
 [${dataZoomName}.startValue](~${dataZoomName}.startValue) and [${dataZoomName}.endValue](~${dataZoomName}.endValue) both define the scope of data window through **absolute value**.
 
@@ -206,11 +206,11 @@ Under the latter condition, it would internally and automatically translate to t
 
 specify whether the layout is horizontal or vertical. What's more, in terms of rectangular coordinate system, it decides whether the horizontal axis or vertical axis is controlled under default condition. 
 
-Valid values：
+Valid values: 
 
-+ `'horizontal'`：horizontal.
++ `'horizontal'`: horizontal.
 
-+ `'vertical'`：vertical.
++ `'vertical'`: vertical.
 
 
 ## zoomLock(boolean) = false

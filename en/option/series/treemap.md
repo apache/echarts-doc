@@ -7,13 +7,13 @@
 
 
 
-**Example：**
+**Example: **
 
 ~[700x580](${galleryViewPath}treemap-obama&edit=1&reset=1)
 
 
 <br>
-**visual mapping：**
+**visual mapping: **
 
 treemap firstly map the numberical values to the visual element 『area』.  
 
@@ -25,7 +25,7 @@ Moreover, it also map other dimensions of data to colors, lightness of colors an
 <br>
 <br>
 <br>
-Tip：Compared with ECharts2, Treemap configuration items have changed. Some  immature configuration modes are no longer supported or compatible：
+Tip: Compared with ECharts2, Treemap configuration items have changed. Some  immature configuration modes are no longer supported or compatible: 
 
 + `center/size` locate mode is no longer supported, and the locate mode of `left/top/bottom/right/width/height` would be used uniformly.
 
@@ -56,26 +56,26 @@ Tip：Compared with ECharts2, Treemap configuration items have changed. Some  im
 
 expected square ratio. The layout would approach the ratio as close as possible.  
 
-It defaults to be the golden ratio：`0.5 * (1 + Math.sqrt(5))`.
+It defaults to be the golden ratio: `0.5 * (1 + Math.sqrt(5))`.
 
 
 ## roam(boolean|string) = true
 
-Whether to enable dragging roam（move and zoom）。Optional values are：
+Whether to enable dragging roam（move and zoom）. Optional values are: 
 
-+ `false`：close.
-+ `'scale'` or  `'zoom'`：zoom only.
-+ `'move'` or `'pan'`：translation only.
-+ `true`：both zoom and translation are avaliable.
++ `false`: close.
++ `'scale'` or  `'zoom'`: zoom only.
++ `'move'` or `'pan'`: translation only.
++ `true`: both zoom and translation are avaliable.
 
 
 ## nodeClick(boolean|string) = 'zoomToNode'
 
-Optional values are：
+Optional values are: 
 
-+ `false`：no response after node clicking.
-+ `'zoomToNode'`：zooming to node after clicking the node.
-+ `'link'`：if there is [link](~series-treemap.data.link) in node data, hyperlink jump would happen after clickong the node. 
++ `false`: no response after node clicking.
++ `'zoomToNode'`: zooming to node after clicking the node.
++ `'link'`: if there is [link](~series-treemap.data.link) in node data, hyperlink jump would happen after clickong the node. 
 
 
 
@@ -92,7 +92,7 @@ treemap adopts『3-level configuration』such as『series』--『each level』--
 
 Otherwise, we can configurate each node and also can configurate each level of the tree, or set a overall configuration on the series.
 
-The most frequently used one is『configurate each level』,  the configuration item of `levels` is the configuration of each level.  For example：
+The most frequently used one is『configurate each level』,  the configuration item of `levels` is the configuration of each level.  For example: 
 
 ```javascript
 levels: [
@@ -119,7 +119,7 @@ Therefore, what can be done is the following: the parent level configurates `col
 <br>
 **dimensions and『extra visual mapping』**
 
-Example：every `value` field is an Array, in which every item corresponds with a dimension（dimension）.
+Example: every `value` field is an Array, in which every item corresponds with a dimension（dimension）.
 
 ```javascript
 [
@@ -252,7 +252,7 @@ When is no content in breadcrumb, this minimun width need to be set up.
 
 ## data(Array)
 
-the the data format of [series-treemap.data](~series-treemap.data) is tree. For example：
+the the data format of [series-treemap.data](~series-treemap.data) is tree. For example: 
 
 ```javascript
 [ // tips, the outmost level is an array. It is unnecessary to start from a root node. 
@@ -262,7 +262,7 @@ the the data format of [series-treemap.data](~series-treemap.data) is tree. For 
             {
                 value: 2323,    // the value of value field, corresponding to area size.
                                 // it could also be array, such as [2323, 43, 55], in which the first item of array corresponds to the area size. 
-                                // array is used for extra visual mapping. See details in series-treemp.levels。
+                                // array is used for extra visual mapping. See details in series-treemp.levels. 
                 id: 'someid-1', // id is not something have to be set.
                                 // If some node need to be changed by API, it need id to locate. 
                 name: 'description of this node', // show the description text in rectangle.
@@ -325,7 +325,7 @@ See [series-treemap.data.target](~series-treemap.data.target).
 
 ### target(string) = 'blank'
 
-The same meaning with `target` in `html` `<a>` label, referring to [series-treemap.data.link](~series-treemap.data.link). Option values are：`'blank'` or `'self'`.
+The same meaning with `target` in `html` `<a>` label, referring to [series-treemap.data.link](~series-treemap.data.link). Option values are: `'blank'` or `'self'`.
 
 ### children(Array)
 
@@ -383,20 +383,20 @@ It Indicates the selecting range of color thickness for nodes at the same level.
 
 #${prefix} colorMappingBy(string) = 'index'
 
-It indicates that what should be based on When the nodes at the same level select from the color list（See the `color` attribute）. Optional values are：
+It indicates that what should be based on When the nodes at the same level select from the color list（See the `color` attribute）. Optional values are: 
 
-* `'value'`：
+* `'value'`: 
 
 Map the value of nodes（the [series-treemap.data.value](~series-treemap.data.value)） to the color list. The color obtained through this way reflects values of nodes. It could be set with `visualDimension` attribute and map with that latitudinal value of data. 
 
-* `'index'`：
+* `'index'`: 
 
 Map the `index`(serial number) of nodes to the color list. Namely, in the same level, the first node select the first color from the color list,and the second node gets the second color.  The color obtained through this way could distinguish 2 adjacent nodes easily.
 
 
-* `'id'`：
+* `'id'`: 
 
-Map the `id`（namely [series-treemap.data.id](~series-treemap.data.id)） of nodes to the color list. `id` is assigned by users. It could make sure the consistency that the same `id` maps to the same color when treemap pass the variable value of  setOption. See the [example](${galleryEditorPath}treemap-obama&edit=1&reset=1)。
+Map the `id`（namely [series-treemap.data.id](~series-treemap.data.id)） of nodes to the color list. `id` is assigned by users. It could make sure the consistency that the same `id` maps to the same color when treemap pass the variable value of  setOption. See the [example](${galleryEditorPath}treemap-obama&edit=1&reset=1). 
 
 {{ use: partial-treemap-visual-detial }}
 {{use: partial-treemap-prop-location-desc(name="colorMappingBy")}}
@@ -472,7 +472,7 @@ This can hide the details of nodes when the rectangular area is not large enough
 
 {{target: partial-treemap-prop-location-desc}}
 <br>
-> Tps：In treemap, `${name}` attribute could exist in much places：
+> Tps: In treemap, `${name}` attribute could exist in much places: 
 
 > * It could exist under [sereis-treemap](~series-treemap) root, indicating the unified setting of this overall series.
 
@@ -528,7 +528,7 @@ the border color of rectangle, supporting `color` with different formats.
 
 the color saturation of rectangle border. The value range is floating-point number between 0 ~ 1.
 
-Tips：
+Tips: 
 
 If this property is set,  the `borderColor` setting is invalid. Instead, the color (such as the color inherited from the parent node) calculated by the current node. The final color would be get when the `borderColorSaturation` is set on this color value. In this way, 『different sections have rectangular interval lines with different colors』effect could be produced, easily to distinguish levels.
 

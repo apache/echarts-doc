@@ -13,7 +13,7 @@ The index of grid which the x axis belongs to defaults to be in the first grid.
 
 the position of x axis.
 
-options：
+options: 
 + `'top'`
 + `'bottom'`
 

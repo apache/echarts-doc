@@ -7,7 +7,7 @@
 
 （Reference to [the introduction to visual Map component（visualMap）](~visualMap)）
 
-Its present form is shown in the below figure：
+Its present form is shown in the below figure: 
 ~[600x400](${galleryViewPath}doc-example/map-visualMap-continuous&edit=1&reset=1)
 
 In `visualMapContinuous`, you can turn on or off the 『Range roaming』（namely, a function of dragging handle to change the range） through  [visualMap.calculable](~visualMap.calculable) .
@@ -35,7 +35,7 @@ Assign the visualMapContinuous component with a maximum which should be assigned
 
 Whether to enable the range roaming, refering to that whether you have a handle for dragging and adjusting the seleted range.
 
-（Notes：in order to be compatible with ECharts2, when [visualMap.type](~visualMap.type) is not assigned, if `'calculable'` was set correctly, `type` would be automatically set as `'continuous'`, ingnoring the settings such as  [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber). Therefore, users are not adviced to not assign the [visualMap.type](~visualMap.type), which would lead to ambiguous expressing.  
+（Notes: in order to be compatible with ECharts2, when [visualMap.type](~visualMap.type) is not assigned, if `'calculable'` was set correctly, `type` would be automatically set as `'continuous'`, ingnoring the settings such as  [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber). Therefore, users are not adviced to not assign the [visualMap.type](~visualMap.type), which would lead to ambiguous expressing.  
 
 
 ## realtime(boolean) = true
@@ -84,9 +84,9 @@ the align relationship between appointed component and words. The optional value
 
 ## text(Array) = null
 
-The texts on both ends, such as `['High', 'Low']`。[sample](${galleryEditorPath}doc-example/map-visualMap-continuous-text&edit=1&reset=1)。
+The texts on both ends, such as `['High', 'Low']`. [sample](${galleryEditorPath}doc-example/map-visualMap-continuous-text&edit=1&reset=1). 
 
-The order in `text`. You'll see it as you have a try. For detailed principles, see [visualMap.inverse](~visualMap.inverse)。
+The order in `text`. You'll see it as you have a try. For detailed principles, see [visualMap.inverse](~visualMap.inverse). 
 
 
 ## textGap(Array) = 10
@@ -96,11 +96,11 @@ The distance between the main words on both ends. Its unit is px. See [visualMap
 
 ## handlePosition(string) = 'auto'
 
-`handle` refers to『dragging handle』. `handlePosition` assigns a position to the handle. Optional values：
+`handle` refers to『dragging handle』. `handlePosition` assigns a position to the handle. Optional values: 
 
-+ `'auto'`：automatical decision.
-+ `'left'` or `'right'`：it is valid when [visualMap-continuous.orient](~visualMap-continuous.orient) is set as `'horizontal'`.
-+ `'top'` or `'bottom'`：it is valid when[visualMap-continuous.orient](~visualMap-continuous.orient) is set as `'vertical'`.
++ `'auto'`: automatical decision.
++ `'left'` or `'right'`: it is valid when [visualMap-continuous.orient](~visualMap-continuous.orient) is set as `'horizontal'`.
++ `'top'` or `'bottom'`: it is valid when[visualMap-continuous.orient](~visualMap-continuous.orient) is set as `'vertical'`.
 
 {{ use: partial-visual-map-common(
     visualMapName='visualMap-continuous',

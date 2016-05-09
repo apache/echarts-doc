@@ -5,7 +5,7 @@
 
 You can obtain ECharts through the following ways.
 
-1. Choose the version you need to download from [Official download page](http://echarts.baidu.com/download.html), based on developer's need of function and volume, we provide different download packages. If you have no need on volume, you can [download full version] directly(http://echarts.baidu.com/dist/echarts.min.js)。
+1. Choose the version you need to download from [Official download page](http://echarts.baidu.com/download.html), based on developer's need of function and volume, we provide different download packages. If you have no need on volume, you can [download full version] directly(http://echarts.baidu.com/dist/echarts.min.js). 
 
 2. Download the lattest `release`in ECharts [github](https://github.com/echarts) , you can find the lattest version of  echarts in the  `dist` catalog of the decompressing folder.
 

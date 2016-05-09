@@ -5,7 +5,7 @@
 ${name}line color.{{ if: ${useColorPalatte} }} get color from [option.color palette](~color) by default{{/if}}
 
 {{ if: ${hasCallback} }}
-Support the use of callback functions. Callback function takes the following forms：
+Support the use of callback functions. Callback function takes the following forms: 
 ```js
 (params: Object) => Color
 ```
@@ -22,7 +22,7 @@ ${name}line width.
 
 ${name}line type.
 
-Options are as followed：
+Options are as followed: 
 + `'solid'`
 + `'dashed'`
 + `'dotted'`

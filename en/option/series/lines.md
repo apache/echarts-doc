@@ -9,7 +9,7 @@ It is used to draw the line data with the information about "from" and "to"; and
 
 ECharts 2.x uses the `markLine` from map to draw the migrating effect; while in ECharts 3, the `lines` graph is recommended to be used individually.
 
-**migrating example：**
+**migrating example: **
 ~[700x500](${galleryViewPath}geo-lines&edit=1&reset=1)
 
 
@@ -29,7 +29,7 @@ ECharts 2.x uses the `markLine` from map to draw the migrating effect; while in 
 ## effect(Object)
 the setting about special effect of lines.
 
-**Tips：**All the graphs with contrail effect should be individually put on one layer. It indicates that [zlevel](~series-lines.zlevel) need to be individually set up and the animation（[animation](~series-lines.animation): false） of this layer is suggested to turn off at the meanwhile. Otherwise, other graphic elements in other series and the [label](~series-lines.label) of animation would produce unnecessary shadows.  
+**Tips: **All the graphs with contrail effect should be individually put on one layer. It indicates that [zlevel](~series-lines.zlevel) need to be individually set up and the animation（[animation](~series-lines.animation): false） of this layer is suggested to turn off at the meanwhile. Otherwise, other graphic elements in other series and the [label](~series-lines.label) of animation would produce unnecessary shadows.  
 
 ### show(boolean) = false
 Whether to show special effect.
@@ -123,7 +123,7 @@ the curveness of edge. The values from 0 to 1 could be set. The curveness would 
 #${prefix} show(boolean) = ${defaultShowLabel|default(false)}
 whether to show label.
 #${prefix} position(string) = 'end'
-the position of label, options：
+the position of label, options: 
 + `'start'` the start point of lines.
 + `'end'`   the end point of lines.
 #${prefix} formatter(string|Function)

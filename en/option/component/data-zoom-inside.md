@@ -8,13 +8,13 @@
 
 The so called『inside』refers to installed inside the coordinate system.
 
-+ translation：slid or drag to achieve data region translation in coordinate axis system. 
++ translation: slid or drag to achieve data region translation in coordinate axis system. 
 
-+ zoom：
++ zoom: 
 
-    + PC terminal：mouse wheel rolls in the area of axis coordinate(similar when it comes to Mac touchpad).
+    + PC terminal: mouse wheel rolls in the area of axis coordinate(similar when it comes to Mac touchpad).
 
-    + moblie terminal：2 fingers' sliding is available to zoom on mobile touch screen.
+    + moblie terminal: 2 fingers' sliding is available to zoom on mobile touch screen.
 
 
 <br>

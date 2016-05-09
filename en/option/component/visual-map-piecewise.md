@@ -11,7 +11,7 @@ Its is shown as follow:
 ~[600x400](${galleryViewPath}doc-example/scatter-visualMap-piecewise&edit=1&reset=1)
 
 
-There are 3 modes of Piecewise visual Map Component：
+There are 3 modes of Piecewise visual Map Component: 
 
 + split the continuous data averagely: Saveral pieces are automatically and averagely split according to [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber) .
 + Custom split of continuous data: define the range of each piece according to [visualMap-piecewise.pieces](~visualMap-piecewise.pieces) .
@@ -35,7 +35,7 @@ If [visualMap-piecewise.pieces](~visualMap-piecewise.pieces) or [visualMap-piece
 
 ## pieces(Array)
 
-The range, text and special styles of each piece in Custom『Piecewise visual Map Component（visualMapPiecewise）』. For instance：
+The range, text and special styles of each piece in Custom『Piecewise visual Map Component（visualMapPiecewise）』. For instance: 
 
 ```javascript
 pieces: [
@@ -51,7 +51,7 @@ pieces: [
 
 [Sample](${galleryEditorPath}doc-example/map-visualMap-pieces&edit=1&reset=1)
 
-（Notes：In ECharts2, `pieces` is called `splitList` which is still compatible in this version. But `pieces` is recommended.）
+（Notes: In ECharts2, `pieces` is called `splitList` which is still compatible in this version. But `pieces` is recommended.）
 
 You would realize the sequence in `pieces` only if you have a try. See more detailed rules in [visualMap.inverse](~visualMap.inverse).
 
@@ -60,7 +60,7 @@ You would realize the sequence in `pieces` only if you have a try. See more deta
 
 It is used to present discrete data（or it could be called as category data and enumerated data）.
 
-As the data of assigned dimension（[visualMap-piecewise.dimension](~visualMap-piecewise.dimension)）is discrete data, such as data value『excellent』、『good』and so on, then configuration would be：
+As the data of assigned dimension（[visualMap-piecewise.dimension](~visualMap-piecewise.dimension)）is discrete data, such as data value『excellent』、『good』and so on, then configuration would be: 
 
 ```javascript
 categories: ['severe pollution', 'severe pollution', ' Moderate Pollution', 'Light Pollution', 'good', 'excellent'],
@@ -68,7 +68,7 @@ categories: ['severe pollution', 'severe pollution', ' Moderate Pollution', 'Lig
 
 [Sample](${galleryEditorPath}doc-example/scatter-visualMap-categories&edit=1&reset=1)
 
-You would realize the sequence in `categories` only if you have a try.See more detailed rules in [visualMap.inverse](~visualMap.inverse)。
+You would realize the sequence in `categories` only if you have a try.See more detailed rules in [visualMap.inverse](~visualMap.inverse). 
 
 
 ## min(number)
@@ -88,21 +88,21 @@ As [visualMap-piecewise.pieces](~visualMap-piecewise.pieces) or [visualMap-piece
 
 ## selectedMode(string) = 'multiple'
 
-Selected Mode could be：
+Selected Mode could be: 
 
-+ `'multiple'`（multiple selected）。
-+ `'single'`（single selected）。
++ `'multiple'`（multiple selected）. 
++ `'single'`（single selected）. 
 
 
 ## inverse(boolean) = false
 
-Whether to inverse.。
+Whether to inverse.. 
 
 + As the mode is [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber), the rule about data size is the same with [visualMap-continuous.inverse](~visualMap-continuous.inverse).
 
-+ As the mode is [visualMap-piecewise.pieces](~visualMap-piecewise.pieces) or [visualMap-piecewise.categories](~visualMap-piecewise.categories), the configurating position of each piece is decided by the define order of `pieces` or `categories` list, namely：
++ As the mode is [visualMap-piecewise.pieces](~visualMap-piecewise.pieces) or [visualMap-piecewise.categories](~visualMap-piecewise.categories), the configurating position of each piece is decided by the define order of `pieces` or `categories` list, namely: 
 
-    + When `inverse` is `false`：
+    + When `inverse` is `false`: 
 
         * When [visualMap.orient](~visualMap.orient) is `'vertical'`, `pieces[0]` or `categories[0]` correspond with『upward side』.
 
@@ -134,7 +134,7 @@ The height of diagram, which refers to the height of each item.
 
 ## align(string) = 'auto'
 
-The aligning relation between figure（such as a small square）and text in an assigned component. The optional values are：
+The aligning relation between figure（such as a small square）and text in an assigned component. The optional values are: 
 
 + `'auto'` automatical decision.
 + `'left'` the figure is on the left and the text is on the right.
@@ -143,7 +143,7 @@ The aligning relation between figure（such as a small square）and text in an a
 
 ## text(Array) = null
 
-The text of both ends, for example['High', 'Low']。[Sample](${galleryEditorPath}doc-example/map-visualMap-piecewise-text&edit=1&reset=1)。
+The text of both ends, for example['High', 'Low']. [Sample](${galleryEditorPath}doc-example/map-visualMap-piecewise-text&edit=1&reset=1). 
 
 You would realize the sequence in `text` only if you have a try.See more detailed rules in [visualMap.inverse](~visualMap.inverse).
 
@@ -161,7 +161,7 @@ Its the interval distance between every item. The unit is px.
 
 ## itemSymbol(string) = 'roundRect'
 
-Default figure. Optional values are：{{ import: partial-icon-buildin}}。
+Default figure. Optional values are: {{ import: partial-icon-buildin}}. 
 
 The setting of symbol could refers to [visualMap-piecewise.inRange](~visualMap-piecewise.inRange) and [visualMap-piecewise.outOfRange](~visualMap-piecewise.outOfRange).
 

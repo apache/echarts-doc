@@ -7,13 +7,13 @@
 
 It is a kind of special flow graph, which is mainly used to present how raw materials, energy and so on from the initial status to the final form after processing and transformation. 
 
-**Example：**
+**Example: **
 
 ~[700x580](${galleryViewPath}sankey-energy&edit=1&reset=1)
 
 
 <br>
-**visible coding：**
+**visible coding: **
 
 The sankey graph encodes each `node` of the original data into a small rectangular. And different nodes are presented in different colors. The `label` coding next to the small rectangular is the name of the node.
 
@@ -25,7 +25,7 @@ In addition, the edge coding between two small rectangulars in the graph is the 
 
 ## color(Array.<string>)
 
-sankey graph individually uses a palette which defaults to be：
+sankey graph individually uses a palette which defaults to be: 
 ```js
 ['#9e0142', '#d53e4f', '#f46d43', '#fdae61', '#fee08b','#ffffbf', '#e6f598', '#abdda4', '#66c2a5', '#3288bd', '#5e4fa2']
 ```
@@ -55,7 +55,7 @@ the gap between any 2 regtangles in each row from the graph.
 
 the iterations of layout, which is used to continuously optimize the nodes' positions in graph, decreasing the overlapping between nodes and edges. 
 
-the default iterations of layout：`32`。
+the default iterations of layout: `32`. 
 
 The test shows that iterations of layout could not be less than the default value. 
 
@@ -129,7 +129,7 @@ the lable style of this node.
 equals to [data](~series-sankey.data)
 
 ## links(Array)
-the relational data of nodes. Example：
+the relational data of nodes. Example: 
 ```js
 links: [{
     source: 'n1',

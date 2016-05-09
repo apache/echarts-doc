@@ -11,7 +11,7 @@ The same series of multiple [map type](~series-map.map) would show in one map. A
 
 **Tip: **`markLine` and `markPoint` are not recommended any more in ECharts 3.  If you want to realize the visulization of punctual data and line data, you could use the [scatter diagram](~series-scatter)和[line graph](~series-lines) in [geographic coordinate system component](~geo).
 
-**Sample：**
+**Sample: **
 ~[600x400](${galleryViewPath}doc-example/map-example&reset=1&edit=1)
 
 

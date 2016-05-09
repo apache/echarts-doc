@@ -15,11 +15,11 @@ You can download build files of all charts in the dowbload interface, if you onl
 
 ECharts 3 starts to seperate “coordinate system” concept, supporting right angle coordinate system（catesian, same as grid）、polar coordinate system（polar）、geographical coordinate system（geo）. Charts supports cross coordinate system, such as line chart, bar chart and scatter chart can be placed in right angle coordinate system or polar  coordinate system or even geographical coordinate system.
 
-Below is an example that a line chart in polar coordinate system：
+Below is an example that a line chart in polar coordinate system: 
 
 ~[60%x400](${galleryViewPath}line-polar2&reset=1&edit=1)
 
-Below is an example that a scatter chart in geographic coordinate system：
+Below is an example that a scatter chart in geographic coordinate system: 
 
 ~[60%x400](${galleryViewPath}scatter-map&reset=1&edit=1)
 

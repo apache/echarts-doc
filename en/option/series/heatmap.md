@@ -8,11 +8,11 @@ Heat map mainly shows the numerical values through colors, which have to coordin
 
 It could be applied in both [rectangular coordinate system](~grid) and [geographic coordinate system](~geo). The patterns of manifestation in these 2 coordinat system are totally different. There must be 2 category axes used in rectangular coordinate system.
 
-Here are the examples applied respectively in rectangular coordinate system and geographic coordinate system：
+Here are the examples applied respectively in rectangular coordinate system and geographic coordinate system: 
 
-**rectangular coordinate system：**
+**rectangular coordinate system: **
 ~[600x400](${galleryViewPath}heatmap-cartesian&edit=1&reset=1)
-**geographic coordinate system：**
+**geographic coordinate system: **
 ~[600x400](${galleryViewPath}heatmap-map&edit=1&reset=1)
 
 ## type(string) = 'heatmap'

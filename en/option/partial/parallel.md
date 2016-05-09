@@ -14,7 +14,7 @@ Parallel coordinate system is suited to conduct visualization analysis on multid
 
 **brief introduction of configuration mode**
 
-basic configurations of `option` in『parallel coordinates』are as followed：
+basic configurations of `option` in『parallel coordinates』are as followed: 
 
 ```javascript
 option = {
@@ -74,7 +74,7 @@ option = {
 };
 ```
 
-Three concerned components：[parallel](~parallel)、[parallelAxis](~parallelAxis)、[series-parallel](~series-parallel)
+Three concerned components: [parallel](~parallel)、[parallelAxis](~parallelAxis)、[series-parallel](~series-parallel)
 
 + [parallel](~parallel)
 
@@ -105,7 +105,7 @@ Three concerned components：[parallel](~parallel)、[parallelAxis](~parallelAxi
 
 
 {{target: partial-parallel-data-example}}
-For example, following data are in [series-parallel.data](~series-parallel.data) ：
+For example, following data are in [series-parallel.data](~series-parallel.data) : 
 
 ```javascript
 [
@@ -120,7 +120,7 @@ For example, following data are in [series-parallel.data](~series-parallel.data)
     ...
 ]
 ```
-In data, every line is a 『data item』, every row belongs to a『dimension』.（like every row of data above means：『date』,『AQI index』, 『PM2.5』, 『PM10』, 『carbon monoxide value』, 『nitrogen dioxide value』, 『sulfur dioxide value』）。
+In data, every line is a 『data item』, every row belongs to a『dimension』.（like every row of data above means: 『date』,『AQI index』, 『PM2.5』, 『PM10』, 『carbon monoxide value』, 『nitrogen dioxide value』, 『sulfur dioxide value』）. 
 
 
 

@@ -5,7 +5,7 @@
 
 **gauge board**
 
-**sample：**
+**sample: **
 ~[600x500](${galleryViewPath}gauge-car)
 
 ## type(string) = 'gauge'
@@ -46,7 +46,7 @@ the style of the axis line of gauge board.
 #### color(Array)
 the axis line of gauge board could be divided to a lot of segments in different colors. The end position and color of each segment could be expressed by an array.
 
-Default value：
+Default value: 
 ```js
 [[0.2, '#91c7ae'], [0.8, '#63869e'], [1, '#c23531']]
 ```

@@ -17,7 +17,7 @@ Whether to show the tooltip floating layer which defaults to be shown.It should 
 
 Type of triggering.
 
-Options：
+Options: 
 + `'item'`
 
     Data item figure triggring, which is mainly used in non-category axis diagram such as scatter diagram and pie chart. 
@@ -30,7 +30,7 @@ Options：
 
 ## triggerOn(string) = 'mousemove'
 
-The conditions for tooltip triggering. Options：
+The conditions for tooltip triggering. Options: 
 
 + `'mousemove'`
 
@@ -60,7 +60,7 @@ Whether mouse could be allowed to the floating layer of tooltip, which defaults 
 
 The position of the tooltip's floating layer, which would follow the position of mouse when it defaults to have no setting.
 
-Options：
+Options: 
 
 + `Array`
 
@@ -121,7 +121,7 @@ The content formatter of tooltip's floating layer which supports character strin
 
    See more meanings about other variables of diagram template in label.normal.formatter configuration item in corresponding diagram. 
 
-    **sample：**
+    **sample: **
     ```js
     formatter: '{b0}: {c0}<br />{b1}: {c1}'
     ```
@@ -134,7 +134,7 @@ The content formatter of tooltip's floating layer which supports character strin
     (params: Object|Array, ticket: string, callback: (ticket: string, html: string)) => string
     ```
 
-    The first parameter `params` is the data set the formatter needs. Its format is shown as follows：
+    The first parameter `params` is the data set the formatter needs. Its format is shown as follows: 
     {{ use: partial-formatter-params-structure(extra = {
         percent: {
             desc: 'the percentage of pie chart',
@@ -143,13 +143,13 @@ The content formatter of tooltip's floating layer which supports character strin
     }) }}
     When [trigger](~tooltip.trigger) is `'axis'` , `params` is the data array of multiple series.
 
-    **Note：**Using array to express all the parameters in ECharts 2.x is not supported anymore.
+    **Note: **Using array to express all the parameters in ECharts 2.x is not supported anymore.
 
     The second parameter `ticket` is the asynchronous callback identity which should coordinate with the third parameter `callback` when it is used. 
 
     The third parameter `callback` is asynchronous callback. When the content of tooltip's floating layer is acquired asynchronously, you can introduce the mentioned `ticket` and `html` to update the content of tooltip's floating layer.
 
-    Sample：
+    Sample: 
     ```js
     formatter: function (params, ticket, callback) {
         $.get('detail?name=' + params.name, function (content) {

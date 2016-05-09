@@ -44,7 +44,7 @@ Label data array. Every array is an object, followings are several ways to assig
 
 When multiple attributes exist simultaneously, the order of priority is as described above.
 
-**For example：**
+**For example: **
 ```js
 data: [{{if: ${hasType} }}
     {
@@ -84,7 +84,7 @@ Available when using  [type](~series-${seriesType}.markPoint.data.type) ,it is u
 ###${prefix} coord(Array)
 Coordinate of the label.Coordinates format depends on the coordinate system of the series.It could be `x`, `y` in [grid coordinates](~grid), or  `radius`, `angle`in [polar coordinates](~polar).
 
-**Attention：**In ECharts 2.x , `xAxis` and `yAxis` will be used to label position in grid coordinates,ECharts 3 is no longer recommended.
+**Attention: **In ECharts 2.x , `xAxis` and `yAxis` will be used to label position in grid coordinates,ECharts 3 is no longer recommended.
 {{ /if }}
 ###${prefix} x(number)
 screen x coordinate of relative container, per pixel.

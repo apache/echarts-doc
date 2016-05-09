@@ -4,11 +4,11 @@
 mark line of the chart.
 
 ##${prefix} symbol(string|Array)
-Marking the ends of the tag type, it can be one array referring to both ends respectively or in a unified way, specific format can refer to (~series-${seriesType}.markLine.data.0.symbol)。
+Marking the ends of the tag type, it can be one array referring to both ends respectively or in a unified way, specific format can refer to (~series-${seriesType}.markLine.data.0.symbol). 
 ##${prefix} symbolSize(number|Array)
 Marking the ends of the tag size, it can be one array referring to both ends respectively or in a unified way.
 
-**Attention：** In here, you can not assign height and width through array like the usual symbolSize.
+**Attention: ** In here, you can not assign height and width through array like the usual symbolSize.
 
 ##${prefix} precision(number) = 2
 Numerical precison of marking line is useful when presenting average value line.
@@ -119,7 +119,7 @@ Data of the finishing point.
 #${prefix} show(boolean) = ${defaultShowLabel|default(true)}
 Whether presnet label or not.
 #${prefix} position(string) = 'end'
-position of label can be：
+position of label can be: 
 + `'start'` starting point of the line.
 + `'end'`   finishing point of the line.
 #${prefix} formatter(string|Function)
@@ -147,7 +147,7 @@ Available when using [type](~series-${seriesType}.markLine.data.type) ,it is use
 #${prefix} coord(Array)
 Coordinates of the starting point or finishing point.Coordinates format depends on the coordinate system of the series.It could be `x`, `y` in [grid coordinates](~grid), or  `radius`, `angle`in [polar coordinates](~polar).
 
-**Attention：**In ECharts 2.x , `xAxis` and `yAxis` will be used to label position in grid coordinates,ECharts 3 is no longer recommended.
+**Attention: **In ECharts 2.x , `xAxis` and `yAxis` will be used to label position in grid coordinates,ECharts 3 is no longer recommended.
 {{ /if }}
 #${prefix} x(number)
 screen x coordinate of relative container, per pixel.

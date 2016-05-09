@@ -14,16 +14,16 @@ To solve this problem, ECharts has improved location setting of component and re
 <h2>Location and layout of ECharts component</h2>
 
 
-Most『component』and『series』follow two locating methods：
+Most『component』and『series』follow two locating methods: 
 
 <br>
-**left/right/top/bottom/width/height locating method：**
+**left/right/top/bottom/width/height locating method: **
 
 In the six measures, each one can be 『absolute value』or『percentage』or『location description』.
 
 + Absolute value
 
-    unit is browser pixels（px）, write with `number`（no unit）, such as `{left: 23, height: 400}`。
+    unit is browser pixels（px）, write with `number`（no unit）, such as `{left: 23, height: 400}`. 
 
 + percentage
 
@@ -35,20 +35,20 @@ In the six measures, each one can be 『absolute value』or『percentage』or『
     + capable to set `top: 'middle'`, stands for centered vertically.
 
 
-The concept of these six measures is similar to the six ones in css：
+The concept of these six measures is similar to the six ones in css: 
 
-+ left：distance to left border of dom container.
-+ right：distance to right border of dom container.
-+ top：distance to top border of dom container.
-+ bottom：distance to bottom border of dom container.
-+ width：width.
-+ height：height.
++ left: distance to left border of dom container.
++ right: distance to right border of dom container.
++ top: distance to top border of dom container.
++ bottom: distance to bottom border of dom container.
++ width: width.
++ height: height.
 
 In the three horizontal measures of `left`、`right`、`width` , two is enough, because any two values can determine component location and size, such as `left` and `right` or `right` and `width` can all determine component location and size.
 Three vertical measures of`top`,`bottom` and `height` are same as the horizontal one, details will not be elaborated here.
 
 <br>
-**Locating method of center/radius ：**
+**Locating method of center/radius : **
 
 + `center`
 
@@ -71,7 +71,7 @@ Settings of horizontal and vertical layout are usually located in『component』
 
 
 <br>
-**About ECharts2 compatibility：**
+**About ECharts2 compatibility: **
 
 Naming of `x/x2/y/y2` in ECharts2 is still compatible, corresponding to `left/right/top/bottom`. But `left/right/top/bottom` is recommended.
 
@@ -87,7 +87,7 @@ In the position description is compatible  ECharts2, some weirdly-looking settin
 In the example below you can try to drag **point in the lower right corner**, along with the size change, legend and series will change layout position and method automatically. 
 ~[750x600](${galleryViewPath}doc-example/pie-media&edit=1&reset=1)
 
-If you want to set Media Query in option, the framework below must be followed：
+If you want to set Media Query in option, the framework below must be followed: 
 
 ```javascript
 option = {
@@ -125,9 +125,9 @@ option = {
 In the exemplary framework, `baseOption` and every option in `media` is『atom option』, namely normal option that includes all components and series definition. `baseOption` must be used, besides when certain `query` is met, corresponding option will be merged by using chart.mergeOption().
 
 
-**query：**
+**query: **
 
-Each `query` is like this to some extend：
+Each `query` is like this to some extend: 
 
 ```javascript
 {
@@ -137,12 +137,12 @@ Each `query` is like this to some extend：
 }
 ```
 
-By now three attributes are supported:`width`、`height`、`aspectRatio`（lenght-to-width ratio）. Every attribute can add prefix of `min` or `max`, such as `minWidth: 200` stands for『greater than or equal to 200px width』.When two attributes are written together means『and』, for example：`{minWidth: 200, maxHeight: 300}` stands for『greater than or equal to 200px width and smaller than or equal to 300px height』.
+By now three attributes are supported:`width`、`height`、`aspectRatio`（lenght-to-width ratio）. Every attribute can add prefix of `min` or `max`, such as `minWidth: 200` stands for『greater than or equal to 200px width』.When two attributes are written together means『and』, for example: `{minWidth: 200, maxHeight: 300}` stands for『greater than or equal to 200px width and smaller than or equal to 300px height』.
 
 
-**option：**
+**option: **
 
-Since option in `media` is『atom option』, theoratically configuration item of any optioncan be written. But usually we only write those related to layout, such as intercepting part of query option in the example above：
+Since option in `media` is『atom option』, theoratically configuration item of any optioncan be written. But usually we only write those related to layout, such as intercepting part of query option in the example above: 
 
 ```javascript
 media: [
@@ -196,17 +196,17 @@ media: [
 ```
 
 
-**Priority when multiple query are satisfied：**
+**Priority when multiple query are satisfied: **
 
 Attention: When multiple `query` are being satisfied at the same time, all will be defined by mergeOption and those are difined later will be merged（those with higher priority）.
 
 
-**query by default：**
+**query by default: **
 
 If certain item in `media` is not `query`, then it means『default value』, namely when all the rules are not met,  dapot this option.
 
 
-**Pay attention when container size changes with time：**
+**Pay attention when container size changes with time: **
 
 In many circumstances, the container DOM node doesn't need to change size with dragging, but only need to set several classic size based on different end.
 

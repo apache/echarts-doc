@@ -43,7 +43,7 @@ myChart.on('click', function (params) {
 });
 ```
 
-`params` of all mouse events is an object that contains data information of charts, format is as followed：
+`params` of all mouse events is an object that contains data information of charts, format is as followed: 
 ```js
 {
     // series index in incoming option.series 
@@ -60,7 +60,7 @@ myChart.on('click', function (params) {
     value: number|Array
 }
 ```
-After getting data name and series name of this object in callback function, and other information in the data index, you can update charts, show floating layer and so on, Sample code is as followed：
+After getting data name and series name of this object in callback function, and other information in the data index, you can update charts, show floating layer and so on, Sample code is as followed: 
 
 ```js
 myChart.on('click', function (parmas) {

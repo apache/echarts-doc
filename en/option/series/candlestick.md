@@ -3,27 +3,27 @@
 
 # series.candlestick(Object)
 
-[Candlestick](https://en.wikipedia.org/wiki/Candlestick_chart) is what we usually call `K line graph`。
+[Candlestick](https://en.wikipedia.org/wiki/Candlestick_chart) is what we usually call `K line graph`. 
 
 ECharts3  supports both `'candlestick'` and `'k'` which are 2 kinds of `'series.type'`（`'k'` would automatically turns into `'candlestick'`）.
 
-**Here is the example：**
+**Here is the example: **
 
 ~[600x400](${galleryViewPath}candlestick-sh&edit=1&reset=1)
 
 
 <br>
-**about the colors of『rise』『fall』：**
+**about the colors of『rise』『fall』: **
 
 Different countries or areas define the colors of K line graph differently. It may be 『red for rise and green for fall』or『red for rise and blue for fall』（such as Mainland China, Taiwan, Japan, Korea and etc.）; and it may be 『green for rise and red for fall』（such as western countries, Hongkong, Singapore and etc.）. It is not necessary to use red and blue, red and green to show rise and fall. Other methods such as 『colorful/colorless』are also available.
 
 
-Thre default configuration item is『red for rise and blue for fall』. If you want to change this color configuration, it should be changed in these configuration items：
+Thre default configuration item is『red for rise and blue for fall』. If you want to change this color configuration, it should be changed in these configuration items: 
 
-+ [series-candlestick.itemStyle.normal.color](~series-candlestick.itemStyle.normal.color)：positive filling color（namely『rise』）
-+ [series-candlestick.itemStyle.normal.color0](~series-candlestick.itemStyle.normal.color0)：negtive filling color（namely『fall』）
-+ [series-candlestick.itemStyle.normal.borderColor](~series-candlestick.itemStyle.normal.borderColor)：positive border color（namely『rise』）
-+ [series-candlestick.itemStyle.normal.borderColor0](series-candlestick.itemStyle.normal.borderColor0)：negtive border color（namely『fall』）
++ [series-candlestick.itemStyle.normal.color](~series-candlestick.itemStyle.normal.color): positive filling color（namely『rise』）
++ [series-candlestick.itemStyle.normal.color0](~series-candlestick.itemStyle.normal.color0): negtive filling color（namely『fall』）
++ [series-candlestick.itemStyle.normal.borderColor](~series-candlestick.itemStyle.normal.borderColor): positive border color（namely『rise』）
++ [series-candlestick.itemStyle.normal.borderColor0](series-candlestick.itemStyle.normal.borderColor0): negtive border color（namely『fall』）
 
 
 <br>
@@ -49,11 +49,11 @@ Whether to enable the hover animitation on box.
 
 ## layout(string) = null
 
-layout method, optional values：
+layout method, optional values: 
 
-+ `'horizontal'`：horizontal layout of all boxs.
++ `'horizontal'`: horizontal layout of all boxs.
 
-+ `'vertical'`：vertical layout of all boxs.
++ `'vertical'`: vertical layout of all boxs.
 
 The default value is decided by the current situation of coordinate axis: if `category` is horizontal axis, there would be horizontal layout; otherwise, there would be vertical layout; if there is no `category` axis, it would be horizontal layout. 
 
@@ -78,10 +78,10 @@ Data format is double dimensional array which is shown in the following example.
 ]
 ```
 
-Every data item（each line in the example above） in double dimensional array renders a box, which contains 5 values. They are：
+Every data item（each line in the example above） in double dimensional array renders a box, which contains 5 values. They are: 
 
 ```javascript
-[open, close, lowest, highest] （namely：[opening value, closing value, lowest value, highest value]）
+[open, close, lowest, highest] （namely: [opening value, closing value, lowest value, highest value]）
 ```
 
 ### name(string)
@@ -94,7 +94,7 @@ The value of data item.
 
 
 ```javascript
-[open, close, lowest, highest] （namely：[opening value, closing value, lowest value, highest value]）
+[open, close, lowest, highest] （namely: [opening value, closing value, lowest value, highest value]）
 ```
 
 

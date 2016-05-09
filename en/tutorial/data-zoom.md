@@ -19,7 +19,7 @@ Following is an example of `datazoom component` [dataZoom](option.html#dataZoom)
 『overview data and pay close attention yo details according to need』is a basic interaction need of data visualization. `dataZoom` component can realize this function in rectangular coordinate system（[grid](option.html#grid)）and polar coordinate system（[polar](option.html#polar)）.
 
 
-**For example：**
+**For example: **
 ~[600x400](${galleryViewPath}doc-example/scatter-dataZoom-all&edit=1&reset=1)
 
 <br>
@@ -32,23 +32,23 @@ Following is an example of `datazoom component` [dataZoom](option.html#dataZoom)
 
 + Operation principle of `dataZoom` achieves 『data window zoom』through『data filtering』.
 
-    Different settings of data filtering modes can achieve different effects, please see：[dataZoom.filterMode](option.html#dataZoom.filterMode)。
+    Different settings of data filtering modes can achieve different effects, please see: [dataZoom.filterMode](option.html#dataZoom.filterMode). 
 
-+Setting of `dataZoom` data zoom range only supports two formats：
++Setting of `dataZoom` data zoom range only supports two formats: 
 
-    + Percentage：see [dataZoom.start](option.html#dataZoom.start) and [dataZoom.end](option.html#dataZoom.end)。
+    + Percentage: see [dataZoom.start](option.html#dataZoom.start) and [dataZoom.end](option.html#dataZoom.end). 
 
-    + Absolute value：see [dataZoom.startValue](option.html#dataZoom.startValue) and [dataZoom.endValue](option.html#dataZoom.endValue)。
+    + Absolute value: see [dataZoom.startValue](option.html#dataZoom.startValue) and [dataZoom.endValue](option.html#dataZoom.endValue). 
 
 
 
-**dataZoom component supports several seed components：**
+**dataZoom component supports several seed components: **
 
-+ [Inside data zoom component（dataZoomInside）](option.html#dataZoom-inside)：inside coordinates.
++ [Inside data zoom component（dataZoomInside）](option.html#dataZoom-inside): inside coordinates.
 
-+ [Slider data zoom component（dataZoomSlider）](option.html#dataZoom-slider)：has seperate slide option.
++ [Slider data zoom component（dataZoomSlider）](option.html#dataZoom-slider): has seperate slide option.
 
-+ [Select data zoom component（dataZoomSelect）](option.html#toolbox.feature.dataZoom)：full-screen box to zoom data area. Entrance and configuration item are in `toolbox`.
++ [Select data zoom component（dataZoomSelect）](option.html#toolbox.feature.dataZoom): full-screen box to zoom data area. Entrance and configuration item are in `toolbox`.
 
 
 
@@ -91,12 +91,12 @@ option = {
 }
 ```
 
-Following results can be seen：
+Following results can be seen: 
 ~[600x300](${galleryViewPath}doc-example/scatter-tutorial-dataZoom-1&edit=1&reset=1)
 
 <br>
 
-The grahpics above can only change window by dragging dataZoom component. If you want to drag in coordinate system, use wheel(or move two fingers on a touch screen slide ) to zoom, then another dataZoom component of inside needs to be added. You can just add in the `option.dataZoom` above：
+The grahpics above can only change window by dragging dataZoom component. If you want to drag in coordinate system, use wheel(or move two fingers on a touch screen slide ) to zoom, then another dataZoom component of inside needs to be added. You can just add in the `option.dataZoom` above: 
 
 ```javascript
 option = {
@@ -117,7 +117,7 @@ option = {
 }
 ```
 
-Following results can be seen（you can carry out slide and wheel zoom in coordinate system）：
+Following results can be seen（you can carry out slide and wheel zoom in coordinate system）: 
 ~[600x300](${galleryViewPath}doc-example/scatter-tutorial-dataZoom-2&edit=1&reset=1)
 
 
@@ -158,7 +158,7 @@ option = {
 }
 ```
 
-Following results can be seen：
+Following results can be seen: 
 ~[600x300](${galleryViewPath}doc-example/scatter-tutorial-dataZoom-3&edit=1&reset=1)
 
 

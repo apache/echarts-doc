@@ -3,9 +3,9 @@
 
 # polar(Object)
 
-polar coordinate system, applied in scatter diagram and line chart. Every polar coordinate has a [angleAxis](~angleAxis) and [radiusAxis](~radiusAxis)。
+polar coordinate system, applied in scatter diagram and line chart. Every polar coordinate has a [angleAxis](~angleAxis) and [radiusAxis](~radiusAxis). 
 
-**Sample：**
+**Sample: **
 
 ~[600x400](${galleryViewPath}scatter-polar-punchCard&edit=1&reset=1)
 

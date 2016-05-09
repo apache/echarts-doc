@@ -12,12 +12,12 @@ Global echarts object, can be obtained by including `echarts.js` in script tag o
 ```
 Creates an ECharts instance, and returns an [echartsInstance](~echartsInstance). You can not initialize multiple ECharts instances on a single container.
 
-**parameter**
+**Parameters**
 + `dom`
 
     Instance container, usually is a `div` element with height and width defined. 
 
-    **Attention：**If `div` is hidden, ECharts initialization tends to fail due to the lack of width and height information. In this case, you can explicitly specify `style.width` and `style.height` of `div`, or manually call [echartsInstance.resize](echartsInstance.resize) after showing `div`.
+    **Attention: **If `div` is hidden, ECharts initialization tends to fail due to the lack of width and height information. In this case, you can explicitly specify `style.width` and `style.height` of `div`, or manually call [echartsInstance.resize](echartsInstance.resize) after showing `div`.
 
     ECharts 3 supports using `canvas` element as container directly, thus the canvas can be used somewhere else as image directly after rendering the chart. For example, canvas can be used as a texture in WebGL, which enables updating charts in real-time, as compared to using images generated with [echartsInstance.getDataURL](~echartsInstance.getDataURL).
 
@@ -27,7 +27,7 @@ Creates an ECharts instance, and returns an [echartsInstance](~echartsInstance).
 
 + `opts`
 
-    Optional parameters, which contains:
+    Optional; which may contain:
 
     + `devicePixelRatio`
 
@@ -44,11 +44,11 @@ Creates an ECharts instance, and returns an [echartsInstance](~echartsInstance).
 
 Connects interaction of multiple chart series.
 
-**parameter：**
+**Parameters**
 + `group`
     group id, or array of chart instance.
 
-**For example：**
+**For example: **
 ```js
 // set group id of each instance respectively.
 chart1.group = 'group1';
@@ -64,7 +64,7 @@ echarts.connect([chart1, chart2]);
 ```
 Disconnects interaction of multiple chart series. To have one single instance to be removed, you can set `group` of chart instance to be null.
 
-**parameter：**
+**Parameters**
 + `group`
 
     group id.
@@ -89,10 +89,10 @@ Registers available maps. This can only be used after including [geo](option.htm
 
 Please refer to [option.geo](option.html#geo.map) for usage.
 
-**parameters：**
+**Parameters**
 + `mapName`
 
-    Map name, refering to `map` value set in [geo](option.html#geo) component or [map](option.html#series-map).
+    Map name, referring to `map` value set in [geo](option.html#geo) component or [map](option.html#series-map).
 
 + `geoJson`
 
@@ -100,11 +100,9 @@ Please refer to [option.geo](option.html#geo.map) for usage.
 
 + `specialAreas`
 
-    Optional.
+    Optional; zoomed part of a specific area in the map for better visual effect. 
 
-    Zoomed part of a specific area in the map for better visual effect. 
-
-    **For example [USA Population Estimates](${galleryEditorPath}map-usa)：**
+    **For example [USA Population Estimates](${galleryEditorPath}map-usa): **
     ```js
 echarts.registerMap('USA', usaJson, {
     // Move Alaska to the bottom left of United States 

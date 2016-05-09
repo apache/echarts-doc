@@ -5,12 +5,12 @@
 
 `visualMap` is a visual map component. It is used to do『visual coding』, which refers to mapping the data to the visual elements（visual channel）.
 
-visual element could be：<br>
+visual element could be: <br>
 {{use: partial-visual-map-visual-type}}
 
 `visualMap` could be multiply defined. Therefore, multiple dimensions of data could be mapped in the meanwhile. 
 
-`visualMap` could be defined as [Piecewise type（visualMapPiecewise）](~visualMap-piecewise) or [Continuous type（visualMapContinuous）](~visualMap-continuous), or distinguished by `type`. For instance：
+`visualMap` could be defined as [Piecewise type（visualMapPiecewise）](~visualMap-piecewise) or [Continuous type（visualMapContinuous）](~visualMap-continuous), or distinguished by `type`. For instance: 
 
 ```javascript
 option = {
@@ -37,7 +37,7 @@ Since it is the mapping from『data』 to 『visual element』, 『specific dime
 <br>
 **The relation with dataRange in ECharts2**
 
-`visualMap` is renamed and extended from the  `dataRange` component in ECharts2 . In ECharts3,  the configuration item of `dataRange` from `option` is till compatible, which would automatically transfer to `visualMap` configuration item. We recommend you to write  `visualMap` instead of `dataRange` in option。
+`visualMap` is renamed and extended from the  `dataRange` component in ECharts2 . In ECharts3,  the configuration item of `dataRange` from `option` is till compatible, which would automatically transfer to `visualMap` configuration item. We recommend you to write  `visualMap` instead of `dataRange` in option. 
 
 <br>
 **Here is the detailed introduction to all configurations of visualMap.**
@@ -67,7 +67,7 @@ Since it is the mapping from『data』 to 『visual element』, 『specific dime
 {{target: partial-visual-map-range}}
 `${rangeType}` could customize target series（reference to [${visualMapName}.seriesIndex](~${visualMapName}.seriesIndex)）visual form, and also customizes visual form of `${visualMapName}` itself. Generally speaking, if `${visualMapName}` controlled scatter diagram, then `${rangeType}` would define its `color`、`size` and so on. Both of them correspond with each other.
 
-Definition mode, for instance：
+Definition mode, for instance: 
 
 ```javascript
 visualMap: [
@@ -81,7 +81,7 @@ visualMap: [
 ]
 ```
 
-If you want to respectively define the visual style of `${visualMapName}` itself and `target series`, you should define as follows：
+If you want to respectively define the visual style of `${visualMapName}` itself and `target series`, you should define as follows: 
 
 ```javascript
 visualMap: [
@@ -102,7 +102,7 @@ visualMap: [
 ]
 ```
 
-Or define as follows：
+Or define as follows: 
 ```javascript
 visualMap: [
     {
@@ -126,21 +126,21 @@ visualMap: [
 
 +The values of every visual type, all of which are expressed by the form of `Array` （they are expressed by the form of `Object`  only in [visualMap-piecewise.categories](~visualMap-piecewise.categories). If it was written as `number` or `string`, it would turn to `Array`.
 
-+The content of `Array`：
++The content of `Array`: 
 
-    + For `figure size（symbolSize）`、`the transpatency of color（colorAlpha）`、`the intensity of color（colorLightness）`、the saturation of color（colorSaturation）`、`color hue（colorHue）`：
+    + For `figure size（symbolSize）`、`the transpatency of color（colorAlpha）`、`the intensity of color（colorLightness）`、the saturation of color（colorSaturation）`、`color hue（colorHue）`: 
 
-    `Array` is always：`[the visual value with which the minimum and maximum data values correspond]`.
+    `Array` is always: `[the visual value with which the minimum and maximum data values correspond]`.
 
-    For example：colorLightness: [0.8, 0.2], which refers to that the `minimum data value` among all datas map to the `0.8` of `color intensity` , the `maximum data value` map to the `0.2` of `color intensity`. The mapping results of other data values between the minimum and the maximum would be acquired according to linear calculation.
+    For example: colorLightness: [0.8, 0.2], which refers to that the `minimum data value` among all datas map to the `0.8` of `color intensity` , the `maximum data value` map to the `0.2` of `color intensity`. The mapping results of other data values between the minimum and the maximum would be acquired according to linear calculation.
 
-    + For `color（color）` or `figure type（symbol）`：
+    + For `color（color）` or `figure type（symbol）`: 
 
-    `Array` for instance：`['color0', 'color1', 'color2', ...]` or `['circle', 'rect', 'diamond', ...]`.
+    `Array` for instance: `['color0', 'color1', 'color2', ...]` or `['circle', 'rect', 'diamond', ...]`.
 
     Referring to the minimum data value which maps to the first item of  `Array` and the maximum value which maps to the last item of  `Array`. Other values between the minimum and the maximum would be gained according to linear calculation. 
 
-+ Under [visualMap-piecewise.categories](~visualMap-piecewise.categories) mode, visual definition adopts `Object`. For example（[See the sample](${galleryEditorPath}doc-example/scatter-visualMap-categories&edit=1&reset=1)）：
++ Under [visualMap-piecewise.categories](~visualMap-piecewise.categories) mode, visual definition adopts `Object`. For example（[See the sample](${galleryEditorPath}doc-example/scatter-visualMap-categories&edit=1&reset=1)）: 
 
 ```javascript
 ${rangeType}: {
@@ -166,7 +166,7 @@ Whether to show ${visualMapName} component. If it was set as `false`, it would n
 ## dimension(string) = 0
 
 Assign a『specific dimension』of data to map tp visual element.『data』is [series.data](~series.data).
-The [series.data](~series.data) could be understood as a double dimensional array, for instance：
+The [series.data](~series.data) could be understood as a double dimensional array, for instance: 
 
 ```javascript
 [
@@ -189,7 +189,7 @@ It defaults to select all series.
 
 ## inRange
 
-Define the visual element in **selected area** . Optional visual elements are：
+Define the visual element in **selected area** . Optional visual elements are: 
 {{use: partial-visual-map-visual-type}}
 
 {{use: partial-visual-map-range(
@@ -201,7 +201,7 @@ Define the visual element in **selected area** . Optional visual elements are：
 
 ## outOfRange
 
-Define the visual element outside **selected area** . Optional visual elements are：
+Define the visual element outside **selected area** . Optional visual elements are: 
 {{use: partial-visual-map-visual-type}}
 
 {{use: partial-visual-map-range(
@@ -224,7 +224,7 @@ Define the visual element outside **selected area** . Optional visual elements a
 
 ## orient(string) = 'vertical'
 
-horizontal（`'horizontal'`）or vertical（`'vertical'`）。
+horizontal（`'horizontal'`）or vertical（`'vertical'`）. 
 
 
 ## padding(number|Array) = 5
@@ -251,9 +251,9 @@ border width, its unit is px.
 
 the formatter tool of label.
 
-+ If it was set as `string`, it refers to template, for instance：`aaaa{value}bbbb{value2}`. Among them, `{value}` and `{value2}` are the range at present.
++ If it was set as `string`, it refers to template, for instance: `aaaa{value}bbbb{value2}`. Among them, `{value}` and `{value2}` are the range at present.
 
-+ If it was set as `Function`, it refers to callback function, for instance：
++ If it was set as `Function`, it refers to callback function, for instance: 
 
 ```javascript
 formatter: function (value, value2) {

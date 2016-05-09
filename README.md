@@ -32,3 +32,10 @@ API 文档使用 markdown 编写，一些公用文档用 etpl 写成了模板。
 每个组件和系列文档的架子已经都在了，需要填充的是具体每个组件和系列的配置项，相应的配置项源代码在 `https://github.com/ecomfe/echarts/tree/dev-3.0.0/src` 的 `chart` 和 `component`  目录下，找 `XXXXSeries` 和 `XXXXModel` 的文件，然后里面的 `defaultOption` 就是默认配置项。
 
 具体例子可以参考散点图 `src/series/scatter.md`
+
+
+## 术语列表
+
+- 配置项：configuration item
+- 图表联动：chart connection
+- 图例开关：switching of legend

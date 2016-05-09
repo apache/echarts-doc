@@ -23,12 +23,12 @@ Label of font style.
 {{ target:partial-label-position }}
 Label position.
 
-**Followings are the options：**
+**Followings are the options: **
 
 + [x, y]
 
     Represent label relative to the graphics on the left corner of bounding box by relative percentage or absolute pixel value.
-    For example：
+    For example: 
     ```js
     // Absolute pixel values
     position: [10, 10],

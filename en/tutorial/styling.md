@@ -89,7 +89,7 @@ setOption({
 })
 ```
 
-text format can set overall [textStyle](option.html#textStyle)。
+text format can set overall [textStyle](option.html#textStyle). 
 ```js
 setOption({
     textStyle: {
@@ -98,7 +98,7 @@ setOption({
 })
 ```
 
-You can also set each series respectively, text of each series is located in[label.normal.textStyle](option.html#series-pie.label.normal.textStyle)。
+You can also set each series respectively, text of each series is located in[label.normal.textStyle](option.html#series-pie.label.normal.textStyle). 
 ```js
 label: {
     normal: {
@@ -120,7 +120,7 @@ labelLine: {
 }
 ```
 
-For example：
+For example: 
 
 ~[400x300](${galleryViewPath}doc-example/tutorial-styling-step3&edit=1&reset=1)
 
@@ -129,7 +129,7 @@ Same as `itemStyle`, formats of `label` and `labelLine` also have two status as 
 
 ## set color of sector
 
-sector color is also set in itemStyle：
+sector color is also set in itemStyle: 
 
 ```js
 itemStyle: {
@@ -176,7 +176,7 @@ visualMap: {
 }
 ```
 
-final effect：
+final effect: 
 
 ~[500x400](${galleryViewPath}doc-example/tutorial-styling-step5&edit=1&reset=1)
 

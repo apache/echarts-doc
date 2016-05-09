@@ -7,7 +7,7 @@ title component, including main heading and subtitle.
 
 In ECharts 2.x, a single example of ECharts could contains one title component at most. However, in ECharts 3, there could be one or more than one title components which needs layout. It is more useful when multiple diagrams in one example all need titles. 
 
-**Here are some examples of different slow-motion functions, among which every slow-motion function has a title component：**
+**Here are some examples of different slow-motion functions, among which every slow-motion function has a title component: **
 ~[700x400](${galleryViewPath}line-easing&edit=1&reset=1)
 
 
@@ -26,7 +26,7 @@ the hyper link of main heading text.
 
 open the hyper link of main heading text in specified window.
 
-**options：**
+**options: **
 
 + `'self'` opening the current window
 
@@ -55,7 +55,7 @@ the hyper link of subtitle text.
 
 ## subtarget(string) = 'blank'
 
- open the hyper link of main heading text in specified window, options：
+ open the hyper link of main heading text in specified window, options: 
 
 + `'self'` opening the current window
 

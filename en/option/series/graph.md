@@ -5,9 +5,9 @@
 
 It is used to show node and the relational data between nodes. 
 
-**Tips：** In ECharts 2.x , the diagrams of `force` type would not be valid in ECharts 3 any more, which is changed to use  `graph` to show relational data. If you want to use force to lead the layout, you can set the  [layout](~series-graph.layout) configuration item as `'force'`. 
+**Tips: ** In ECharts 2.x , the diagrams of `force` type would not be valid in ECharts 3 any more, which is changed to use  `graph` to show relational data. If you want to use force to lead the layout, you can set the  [layout](~series-graph.layout) configuration item as `'force'`. 
 
-**Sample：**
+**Sample: **
 
 ~[600x400](${galleryViewPath}graph&reset=1&edit=1)
 
@@ -23,10 +23,10 @@ Whether to enable the reminding animation effect of mousr hover node.
 ## layout(string) = 'none'
 graph layout.
 
-**Options：**
+**Options: **
 + `'none'` no any layout, use  [x](~series-graph.data.x),  [y](~series-graph.data.y) provided in [node](~series-graph.data) as the position of node.
 
-+ `'circular'` adopt circular layout, see the example [Les Miserables](${galleryEditorPath}graph-circular-layout)。
++ `'circular'` adopt circular layout, see the example [Les Miserables](${galleryEditorPath}graph-circular-layout). 
 
 + `'force'` adopt force to lead the layout, see the example [Force](${galleryEditorPath}graph-force), the detail about configurtion item of layout are in [graph.force](~series-graph.force)
 
@@ -176,7 +176,7 @@ the label style of this node.
 the same as [data](~series-graph.data)
 
 ## links(Array)
-relational data between nodes.Example：
+relational data between nodes.Example: 
 ```js
 links: [{
     source: 'n1',
@@ -228,7 +228,7 @@ the same as [links](~series-graph.links)
 
 color list of palette. If there is no color setting for [node type](~series-graph.categories), it would adopt colors successively and cyclically from this list.  
 
-Defaults：
+Defaults: 
 ```js
 ['#c23531', '#314656', '#61a0a8', '#dd8668', '#91c7ae', '#6e7074', '#61a0a8', '#bda29a', '#44525d', '#c4ccd3']
 ```
