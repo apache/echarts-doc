@@ -3,11 +3,11 @@
 
 在 ECharts 中主要通过 [on](~echartsInstance.on) 方法添加事件处理函数，该文档描述了所有 ECharts 的事件列表。
 
-ECharts 中的事件列表分为两种，一种是鼠标事件，在鼠标点击某个图形上会触发，还有一种是 调用 [dispatchAction](~echartsInstance.dispatchAction) 后触发的事件。
+ECharts 中的事件分为两种，一种是鼠标事件，在鼠标点击某个图形上会触发，还有一种是 调用 [dispatchAction](~echartsInstance.dispatchAction) 后触发的事件。
 
 ## 鼠标事件
 
-鼠标事件的事件参数是事件对象的数据的各个属性，对于图表的点击事件，基本参数如下，其它图表诸如饼图可能会有部分附加参数。例如饼图会有`percent`属性表示百分比，具体见各个图表类型的 label formatter 回调函数的 params。
+鼠标事件的事件参数是事件对象的数据的各个属性，对于图表的点击事件，基本参数如下，其它图表诸如饼图可能会有部分附加参数。例如饼图会有`percent`属性表示百分比，具体见各个图表类型的 label formatter 回调函数的 `params`。
 
 ```js
 {
@@ -31,7 +31,7 @@ ECharts 中的事件列表分为两种，一种是鼠标事件，在鼠标点击
 }
 ```
 
-鼠标事件包括`'click'`，`'dblclick'`，`'mousedown'`，`'mouseup'`，`'mouseover'`，`'mouseout'`，`'globalout'`
+鼠标事件包括`'click'`，`'dblclick'`，`'mousedown'`，`'mouseup'`，`'mouseover'`，`'mouseout'`，`'globalout'`。
 
 
 
@@ -54,7 +54,7 @@ ECharts 中的事件列表分为两种，一种是鼠标事件，在鼠标点击
     type: 'legendselectchanged',
     // 切换的图例名称
     name: string
-    // 所有图例的选中状态表。
+    // 所有图例的选中状态表
     selected: Object
 }
 ```
@@ -67,7 +67,7 @@ ECharts 中的事件列表分为两种，一种是鼠标事件，在鼠标点击
     type: 'legendselected',
     // 选中的图例名称
     name: string
-    // 所有图例的选中状态表。
+    // 所有图例的选中状态表
     selected: Object
 }
 ```
@@ -107,14 +107,14 @@ ECharts 中的事件列表分为两种，一种是鼠标事件，在鼠标点击
 ```
 ## datarangeselected(Event)
 **ACTION:** [selectDataRange](~action.dataRange.selectDataRange)
-视觉映射组件中映射的数值范围的选取事件。
+视觉映射组件中，`range` 值改变后触发的事件。
 
 ```js
 {
     type: 'datarangeselected',
     // 连续型 visualMap 和 离散型 visualMap 不一样
     // 连续型的是一个表示数值范围的数组。
-    // 离散型的是一个对象，键值是类目或者分段的索引。值是 `true`, `false`
+    // 离散型的是一个对象，键值是类目或者分段的索引。值是`true`或`false`
     selected: Object|Array
 }
 ```
@@ -185,7 +185,7 @@ ECharts 中的事件列表分为两种，一种是鼠标事件，在鼠标点击
 ## axisareaselected(Event)
 [平行坐标轴 (Parallel)](option.html#parallelAxis) 范围选取事件。
 
-当进行坐标轴范围选区时，可以用如下方式获取当前高亮的线所对应的 data indices
+当进行坐标轴范围选取时，可以用如下方式获取当前高亮的线所对应的 data indices
 （即 `series` 的 `data` 中的序号列表）。
 
 ```javascript
