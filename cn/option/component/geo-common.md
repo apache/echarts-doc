@@ -46,6 +46,17 @@ ECharts 使用 [geoJSON](http://geojson.org/) 格式的数据作为地图的轮�
 #${prefix} roam(boolean) = false
 {{ use: partial-roam }}
 
+#${prefix} center(Array)
+当前视角的中心点，用经纬度表示
+
+例如：
+```js
+center: [115.97, 29.71]
+```
+
+#${prefix} zoom(number) = 1
+当前视角的缩放比例。
+
 #${prefix} scaleLimit(Object)
 {{ use: partial-scale-limit(prefix="#" + ${prefix}) }}
 
