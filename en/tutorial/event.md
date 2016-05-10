@@ -15,7 +15,7 @@ myChart.on('click', function (params) {
 
 Events in ECharts are divided into two types, one is events triggered by user's mouse clicking or hovering chart graphic, another is action events triggered by user's using of interactive component, such as  ['legendselectchanged'](api.html#events.legendselectchanged) event （attention: change legend switch will not trigger `'legendselected'` event） triggered by changing legend switch, ['datazoom'](api.html#events.legendselectchanged) event triggered by zooming data area and so on.
 
-## Handling of mouse event 
+## Handling of mouse event
 
 ECharts support normal mouse event type including `'click'`, `'dblclick'`, `'mousedown'`, `'mousemove'`, `'mouseup'`, `'mouseover'`, `'mouseout'` event, next let's see an example of Baidu search page after opening a simple click bar chart.
 
@@ -43,12 +43,18 @@ myChart.on('click', function (params) {
 });
 ```
 
-`params` of all mouse events is an object that contains data information of charts, format is as followed: 
+`params` of all mouse events is an object that contains data information of charts, format is as followed:
 ```js
 {
-    // series index in incoming option.series 
+    // type of the component to which the clicked glyph belongs
+    // i.e., 'series', 'markLine', 'markPoint', 'timeLine'
+    componentType: string,
+    // series type (make sense when componentType is 'series')
+    // i.e., 'line', 'bar', 'pie'
+    seriesType: string,
+    // series index in incoming option.series (make sense when componentType is 'series')
     seriesIndex: number,
-    // series name
+    // series name (make sense when componentType is 'series')
     seriesName: string,
     // data name, category name
     name: string,
@@ -56,11 +62,44 @@ myChart.on('click', function (params) {
     dataIndex: number,
     // incoming rwa data item
     data: Object,
+    // Some series, such as sankey or graph, maintains more than
+    // one types of data (nodeData and edgeData), which can be
+    // distinguished from each other by dataType with its value
+    // 'node' and 'edge'.
+    // On the other hand, most series has only one type of data,
+    // where dataType is not needed.
+    dataType: string,
     // incoming data value
     value: number|Array
+    // color of component (make sense when componentType is 'series')
+    color: string
 }
 ```
-After getting data name and series name of this object in callback function, and other information in the data index, you can update charts, show floating layer and so on, Sample code is as followed: 
+
+How to discriminate elements that can be clicked:
+```js
+myChart.on('click', function (params) {
+    if (params.componentType === 'markPoint') {
+        // Clicked on markPoint.
+        if (params.seriesIndex === 5) {
+            // Clicked on a markPoint which belongs to a series indexed with 5.
+        }
+    }
+    else if (params.componentType === 'series') {
+        if (params.seriesType === 'graph') {
+            if (params.dataType === 'edge') {
+                // Clicked on an edge of the graph.
+            }
+            else {
+                // Clicked on a node of the graph.
+            }
+        }
+    }
+
+});
+```
+
+After getting data name and series name of this object in callback function, and other information in the data index, you can update charts, show floating layer and so on, Sample code is as followed:
 
 ```js
 myChart.on('click', function (parmas) {
@@ -68,7 +107,7 @@ myChart.on('click', function (parmas) {
         myChart.setOption({
             series: [{
                 name: 'pie',
-                // display data distribution in single post through pie chart 
+                // display data distribution in single post through pie chart
                 data: [detail.data]
             }]
         });
@@ -97,7 +136,7 @@ myChart.on('legendselectchanged', function (params) {
 
 Events like`'legendselectchanged'` mentioned above wil be triggered by component interaction, except user's interaction operation, sometimes methods needed to be called to trigger chart, such as show tooltipand select legend.
 
-ECharts 2.x uses corresponding interface to trigger chart through  `myChart.component.tooltip.showTip`, entrance is deep and involves organization of inner component. So ECharts 3 triggers chart through `myChart.dispatchAction({ type: '' })` , by that, ECharts 3 can not only manage all actions but also record user paths based on needs. 
+ECharts 2.x uses corresponding interface to trigger chart through  `myChart.component.tooltip.showTip`, entrance is deep and involves organization of inner component. So ECharts 3 triggers chart through `myChart.dispatchAction({ type: '' })` , by that, ECharts 3 can not only manage all actions but also record user paths based on needs.
 Frequently used actions and the parameters of actions are listed in [action](api.html#action).
 
 Below display how to take turns to highlight each sector of pie chart through`dispatchAction`.

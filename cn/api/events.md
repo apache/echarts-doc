@@ -11,12 +11,14 @@ ECharts 中的事件分为两种，一种是鼠标事件，在鼠标点击某个
 
 ```js
 {
-    componentType: 'series',
-    // 系列类型
+    // 当前点击的图形元素所属的组件名称，
+    // 其值如 'series'、'markLine'、'markPoint'、'timeLine' 等。
+    componentType: string,
+    // 系列类型。值可能为：'line'、'bar'、'pie' 等。当 componentType 为 'series' 时有意义。
     seriesType: string,
-    // 系列在传入的 option.series 中的 index
+    // 系列在传入的 option.series 中的 index。当 componentType 为 'series' 时有意义。
     seriesIndex: number,
-    // 系列名称
+    // 系列名称。当 componentType 为 'series' 时有意义。
     seriesName: string,
     // 数据名，类目名
     name: string,
@@ -24,15 +26,21 @@ ECharts 中的事件分为两种，一种是鼠标事件，在鼠标点击某个
     dataIndex: number,
     // 传入的原始数据项
     data: Object,
+    // sankey、graph 等图表同时含有 nodeData 和 edgeData 两种 data，
+    // dataType 的值会是 'node' 或者 'edge'，表示当前点击在 node 还是 edge 上。
+    // 其他大部分图表中只有一种 data，dataType 无意义。
+    dataType: string,
     // 传入的数据值
-    value: number|Array,
-    // 数据图形的颜色
+    value: number|Array
+    // 数据图形的颜色。当 componentType 为 'series' 时有意义。
     color: string
 }
 ```
 
 鼠标事件包括`'click'`，`'dblclick'`，`'mousedown'`，`'mouseup'`，`'mouseover'`，`'mouseout'`，`'globalout'`。
 
+
+参见 [ECharts 中的事件和行为](http://echarts.baidu.com/tutorial.html#ECharts%20%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%92%8C%E8%A1%8C%E4%B8%BA)
 
 
 ### click(Event)

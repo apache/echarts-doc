@@ -11,28 +11,39 @@ Event parameters of mouse events are attributes of event object. The following s
 
 ```js
 {
-    componentType: 'series',
-    // series type
+    // type of the component to which the clicked glyph belongs
+    // i.e., 'series', 'markLine', 'markPoint', 'timeLine'
+    componentType: string,
+    // series type (make sense when componentType is 'series')
+    // i.e., 'line', 'bar', 'pie'
     seriesType: string,
-    // index passed by option.series
+    // series index in incoming option.series (make sense when componentType is 'series')
     seriesIndex: number,
-    // series name
+    // series name (make sense when componentType is 'series')
     seriesName: string,
     // data name, category name
     name: string,
-    // index passed in data array
+    // data index in incoming data array
     dataIndex: number,
-    // original input data
+    // incoming rwa data item
     data: Object,
-    // input data value
-    value: number|Array,
-    // color of component
+    // Some series, such as sankey or graph, maintains more than
+    // one types of data (nodeData and edgeData), which can be
+    // distinguished from each other by dataType with its value
+    // 'node' and 'edge'.
+    // On the other hand, most series has only one type of data,
+    // where dataType is not needed.
+    dataType: string,
+    // incoming data value
+    value: number|Array
+    // color of component (make sense when componentType is 'series')
     color: string
 }
 ```
 
 Mouse events contain `'click'`, `'dblclick'`, `'mousedown'`, `'mouseup'`, `'mouseover'`, `'mouseout'`, `'globalout'`.
 
+See [Events and actions in ECharts](http://echarts.baidu.com/tutorial.html#Events%20and%20actions%20in%20ECharts%0D)
 
 ### click(Event)
 ### dblclick(Event)
@@ -70,7 +81,7 @@ Event emitted after legend is selected.
 }
 ```
 
-**Attention: ** In ECharts 2.x, event related to user switching lengend is now changed from  `legendselected` to [legendselectchanged](~events.legendselectchanged). 
+**Attention: ** In ECharts 2.x, event related to user switching lengend is now changed from  `legendselected` to [legendselectchanged](~events.legendselectchanged).
 
 ## legendunselected(Event)
 **ACTION:** [legendUnSelect](~action.legend.legendUnSelect)
@@ -110,7 +121,7 @@ Event emitted after range is changed in visualMap.
 ```js
 {
     type: 'datarangeselected',
-    // continuous visualMap is different from discrete one 
+    // continuous visualMap is different from discrete one
     // continuous visualMap is an array representing range of data values.
     // discrete visualMap is an object, whose key is category or piece index; value is `true` or `false`
     selected: Object|Array
@@ -119,7 +130,7 @@ Event emitted after range is changed in visualMap.
 
 ## timelinechanged(Event)
 **ACTION:** [timelineChange](~action.timeline.timelineChange)
-Event emitted after time point in timeline is changed. 
+Event emitted after time point in timeline is changed.
 
 ```js
 {
@@ -159,11 +170,11 @@ Changing event of [data view tool in toolbox](option.html#toolbox.feature.dataVi
 ```
 
 ## magictypechanged(Event)
-Switching event of [magic type tool in toolbox](option.html#toolbox.feature.magicType). 
+Switching event of [magic type tool in toolbox](option.html#toolbox.feature.magicType).
 ```js
 {
     type: 'magictypechanged',
-    // click to change current type; same as type attribute in echarts 2.x 
+    // click to change current type; same as type attribute in echarts 2.x
     currentType: string
 }
 ```
