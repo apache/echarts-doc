@@ -1,3 +1,25 @@
+## v3.1.8
+<div class="time">2016-05-11</div>
+
++ 【^】 Graph 优化
+    + [+] 支持通过 [edgeLabel](http://echarts.baidu.com/option.html#series-graph.edgeLabel) 配置边标签，见示例 [graph-simple.html](http://echarts.baidu.com/gallery/editor.html?c=graph-simple)
+    + [+] 支持通过 [edgeSymbol](http://echarts.baidu.com/option.html#series-graph.edgeSymbol) 配置边两端的图形，见示例 [graph-simple.html](http://echarts.baidu.com/gallery/editor.html?c=graph-simple)
+    + [^] 支持笛卡尔坐标系，极坐标与地理坐标系，见示例 [graph-grid.html](http://echarts.baidu.com/gallery/editor.html?c=graph-grid)
++ 【^】 地图优化
+    + [^] 绘制性能优化
+    + [^] 修复 `scaleLimit.min` 大于 1 时可能导致散点图布局错误的 bug。
+    + [+] 加入 [zoom](http://echarts.baidu.com/option.html#series-map.zoom) 和 [center](http://echarts.baidu.com/option.html#series-map.center) 配置项用于定位
+
++ [+] 折线图加入 [connectNulls](http://echarts.baidu.com/option.html#series-line.connectNulls) 配置项，见 [#2579](https://github.com/ecomfe/echarts/issues/2579)
+
++ [+] 加入 [animationDelay](http://echarts.baidu.com/option.html#animationDelay) 和 [animationDelayUpdate]((http://echarts.baidu.com/option.html#animationDelayUpdate) 配置项用于展现更丰富和戏剧性的动画效果，参见示例 [bar-animation-delay.html](http://echarts.baidu.com/gallery/editor.html?c=bar-animation-delay)
+
++ [^] 仪表盘优化超出范围的数据的展现。见 [#3067](https://github.com/ecomfe/echarts/issues/3067)
+
++ [^] 修复 3.1.7 中多系列饼图图例绘制错误的 bug。
+
++ [^] 修复 treemap 中事件参数不正确的 bug。见 [#3063](https://github.com/ecomfe/echarts/issues/3063)
+
 ## v3.1.7
 <div class="time">2016-04-21</div>
 
