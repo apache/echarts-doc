@@ -17,6 +17,15 @@
 
 {{ use: partial-legend-hover-link() }}
 
+{{ use: partial-coord-sys(
+    seriesType="graph",
+    coordSysDefault="null",
+    none=true,
+    cartesian2d=true,
+    polar=true,
+    geo=true
+) }}
+
 ## hoverAnimation(boolean)
 是否开启鼠标 hover 节点的提示动画效果。
 
