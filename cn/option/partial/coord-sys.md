@@ -4,6 +4,11 @@
 
 该系列使用的坐标系，可选：
 
+{{if: ${none} }}
++ `null`
+
+    无坐标系。
+{{/if}}
 {{if: ${cartesian2d} }}
 
 + `'cartesian2d'`
