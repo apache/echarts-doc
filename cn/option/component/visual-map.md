@@ -262,6 +262,12 @@ chart.setOption(option); // option设置回visualMap
 默认取所有系列。
 
 
+## hoverLink(boolean) = true
+
+打开 `hoverLink` 功能时，鼠标悬浮到 `visualMap` 组件上时，鼠标位置对应的数值 在 图表中对应的图形元素，会高亮。
+
+反之，鼠标悬浮到图表中的图形元素上时，在 `visualMap` 组件的相应位置会有三角提示其所对应的数值。
+
 
 {{use: partial-visual-map-inRange-outOfRange(prefix="")}}
 

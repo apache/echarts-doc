@@ -454,14 +454,16 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 {{use: partial-treemap-item-style(
     prefix=${prefix} + "##",
-    galleryEditorPath=${galleryEditorPath}
+    galleryEditorPath=${galleryEditorPath},
+    itemStyleType='normal'
 )}}
 
 ##${prefix} emphasis(Object)
 
 {{use: partial-treemap-item-style(
     prefix=${prefix} + "##",
-    galleryEditorPath=${galleryEditorPath}
+    galleryEditorPath=${galleryEditorPath},
+    itemStyleType='emphasis'
 )}}
 
 {{ use:partial-silent(
@@ -503,6 +505,7 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 矩形的颜色。默认从全局调色盘 [option.color](~color) 获取颜色。
 
+{{if: ${itemStyleType} === 'normal' }}
 
 #${prefix} colorAlpha(number) = null
 
@@ -542,7 +545,7 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 <br>
 {{ use: partial-treemap-borderColor-setting(galleryEditorPath=${galleryEditorPath}) }}
 
-
+{{/if }}
 
 
 
@@ -570,7 +573,7 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 是否显示文本标签。
 
 
-#${prefix} position(string|Array) = ['50%', '50%']
+#${prefix} position(string|Array) = 'inside'
 
 {{ use:partial-label-position }}
 
@@ -589,12 +592,12 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 )}}
 
 
-##${prefix} align(string) = 'center'
+##${prefix} align(string) = undefined
 
 文字水平对齐方式，可选值 `'center'`、`'right`、`'left'`
 
 
-##${prefix} baseline(string) = 'middle'
+##${prefix} baseline(string) = undefined
 
 文字竖直对齐方式，可选值 `'middle'`、`'right`、`'left'`
 
