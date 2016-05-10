@@ -46,9 +46,14 @@ myChart.on('click', function (params) {
 所有的鼠标事件的参数 `params` 是一个包含点击图形的数据信息的对象，如下格式：
 ```js
 {
-    // 系列在传入的 option.series 中的 index
+    // 当前点击的图形元素所属的组件名称，
+    // 其值如 'series'、'markLine'、'markPoint'、'timeLine' 等。
+    componentType: string,
+    // 系列类型。值可能为：'line'、'bar'、'pie' 等。当 componentType 为 'series' 时有意义。
+    seriesType: string,
+    // 系列在传入的 option.series 中的 index。当 componentType 为 'series' 时有意义。
     seriesIndex: number,
-    // 系列名称
+    // 系列名称。当 componentType 为 'series' 时有意义。
     seriesName: string,
     // 数据名，类目名
     name: string,
@@ -56,10 +61,40 @@ myChart.on('click', function (params) {
     dataIndex: number,
     // 传入的原始数据项
     data: Object,
+    // sankey、graph 等图表同时含有 nodeData 和 edgeData 两种 data，
+    // dataType 的值会是 'node' 或者 'edge'，表示当前点击在 node 还是 edge 上。
+    // 其他大部分图表中只有一种 data，dataType 无意义。
+    dataType: string,
     // 传入的数据值
     value: number|Array
+    // 数据图形的颜色。当 componentType 为 'series' 时有意义。
+    color: string
 }
 ```
+
+如何区分鼠标点击到了哪里：
+```js
+myChart.on('click', function (params) {
+    if (params.componentType === 'markPoint') {
+        // 点击到了 markPoint 上
+        if (params.seriesIndex === 5) {
+            // 点击到了 index 为 5 的 series 的 markPoint 上。
+        }
+    }
+    else if (params.componentType === 'series') {
+        if (params.seriesType === 'graph') {
+            if (params.dataType === 'edge') {
+                // 点击到了 graph 的 edge（边）上。
+            }
+            else {
+                // 点击到了 graph 的 node（节点）上。
+            }
+        }
+    }
+
+});
+```
+
 你可以在回调函数中获得这个对象中的数据名，系列名称后在自己的数据仓库中索引得到其它的信息候更新图表，显示浮层等等，如下示例代码：
 
 ```js
