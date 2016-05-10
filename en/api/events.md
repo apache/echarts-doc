@@ -1,13 +1,38 @@
 {{ target: events }}
 # events
 
-ECharts mainly adds event-handling function through [on](~echartsInstance.on), this document describes all event list in ECharts.
+Event-handling functions are mainly added through [on](~echartsInstance.on) in ECharts. This document describes all event list in ECharts.
 
-Event list in ECharts can be divided in two kinds, one is mouse event, which is triggered when mouse clicking certain graphic, another is event triggered after dispatches[dispatchAction](~echartsInstance.dispatchAction).
+Event in ECharts can be divided in two kinds. One is mouse event, which is triggered when mouse clicks on certain component, the other is triggered after dispatches [dispatchAction](~echartsInstance.dispatchAction).
 
-## Mouse event
+## Mouse events
 
-Event parameter is each attribute of event data, See label formatter callback function for each chart type params parameters.
+Event parameters of mouse events are attributes of event object. The following shows basic parameters for chart click events. Other charts, like pie charts, may have additional parameters like `percent`. Please refer to callback `params` of each chart's label formatter.
+
+```js
+{
+    componentType: 'series',
+    // series type
+    seriesType: string,
+    // index passed by option.series
+    seriesIndex: number,
+    // series name
+    seriesName: string,
+    // data name, category name
+    name: string,
+    // index passed in data array
+    dataIndex: number,
+    // original input data
+    data: Object,
+    // input data value
+    value: number|Array,
+    // color of component
+    color: string
+}
+```
+
+Mouse events contain `'click'`, `'dblclick'`, `'mousedown'`, `'mouseup'`, `'mouseover'`, `'mouseout'`, `'globalout'`.
+
 
 ### click(Event)
 ### dblclick(Event)
@@ -19,82 +44,82 @@ Event parameter is each attribute of event data, See label formatter callback fu
 
 ## legendselectchanged(Event)
 **ACTION:** [legendToggleSelect](~action.legend.legendToggleSelect)
-Change event after selecting legend.
+Event emitted after legend selecting state changes.
 
-**Attention: ** This event will be triggered when legend component users change legend switch.
+**Attention: ** This event will be emitted when users toggle legend button in legend component.
 ```js
 {
     type: 'legendselectchanged',
     // change legend name
     name: string
-    // Table of all selected legend.
+    // table of all legend selecting states
     selected: Object
 }
 ```
 ## legendselected(Event)
 **ACTION:** [legendSelect](~action.legend.legendSelect)
-Event after selecting legend.
+Event emitted after legend is selected.
 
 ```js
 {
     type: 'legendselected',
-    // Name of selected legend
+    // name of selected legend
     name: string
-    // Table of all selected legend
+    // table of all legend selecting states
     selected: Object
 }
 ```
 
-**Attention: ** In ECharts 2.x, event related to user switch lengend changes from  `legendselected` to [legendselectchanged](~events.legendselectchanged). 
+**Attention: ** In ECharts 2.x, event related to user switching lengend is now changed from  `legendselected` to [legendselectchanged](~events.legendselectchanged). 
 
 ## legendunselected(Event)
 **ACTION:** [legendUnSelect](~action.legend.legendUnSelect)
-Event after unselecting legend.
+Event emitted after unselecting legend.
 
 ```js
 {
     type: 'legendunselected',
-    // Name of unselected legend
+    // name of unselected legend
     name: string
-    // Table of all selected legend
+    // table of all legend selecting states
     selected: Object
 }
 ```
 ## datazoom(Event)
 **ACTION:** [dataZoom](~action.dataZoom.dataZoom)
 
-Event after data area zoom.
+Event emitted after zooming data area.
 
 ```js
 {
     type: 'datazoom',
-    // Percentage of zoom of start position, 0 - 100
+    // percentage of zoom start position, 0 - 100
     start: number
-    //Percentage of zoom of finish position, 0 - 100
+    // percentage of zoom finish position, 0 - 100
     end: number
-    // Data value of zoom of start position, only exist in event of zooming toolbar.
+    // data value of zoom start position; only exists in zoom event of triggered by toolbar
     startValue?: number
-    // Data value of zoom of finish position, only exist in event of zooming toolbar.
+    // data value of zoom finish position; only exists in zoom event of triggered by toolbar
     endValue?: number
 }
 ```
 ## datarangeselected(Event)
 **ACTION:** [selectDataRange](~action.dataRange.selectDataRange)
-Selected event of data value range of map in visual map component.
+Event emitted after range is changed in visualMap.
 
 ```js
 {
     type: 'datarangeselected',
-    // Continuous visualMap is different from discrete visualMap 
-    // Continuous visualMap is an array representing range of data value.
-    // Discrete visualMap is an object, key value is the index of category or subparagraph. Value is `true`, `false`
+    // continuous visualMap is different from discrete one 
+    // continuous visualMap is an array representing range of data values.
+    // discrete visualMap is an object, whose key is category or piece index; value is `true` or `false`
     selected: Object|Array
 }
 ```
 
 ## timelinechanged(Event)
 **ACTION:** [timelineChange](~action.timeline.timelineChange)
-Event after time point in timeline changes. 
+Event emitted after time point in timeline is changed. 
 
 ```js
 {
@@ -106,19 +131,19 @@ Event after time point in timeline changes.
 
 ## timelineplaychanged(Event)
 **ACTION:** [timelinePlayChange](~action.timeline.timelinePlayChange)
-Switch event of play state in timeline.
+Switching event of play state in timeline.
 
 ```js
 {
     type: 'timelineplaychanged',
-    // play state, true is auto play
+    // play state, true for auto play
     playState: boolean
 }
 ```
 
 ## restore(Event)
 **ACTION:** [restore](~action.toolbox.restore)
-Reset option event.
+Resets option event.
 ```js
 {
     type: 'restore'
@@ -126,7 +151,7 @@ Reset option event.
 ```
 
 ## dataviewchanged(Event)
-[Data view in toolbox](option.html#toolbox.feature.dataView) change event.
+Changing event of [data view tool in toolbox](option.html#toolbox.feature.dataView).
 ```js
 {
     type: 'dataviewchanged'
@@ -134,11 +159,11 @@ Reset option event.
 ```
 
 ## magictypechanged(Event)
-[magic type in toolbox](option.html#toolbox.feature.magicType) change event. 
+Switching event of [magic type tool in toolbox](option.html#toolbox.feature.magicType). 
 ```js
 {
     type: 'magictypechanged',
-    // click to change current type, same as type attribute in echarts 2.x 
+    // click to change current type; same as type attribute in echarts 2.x 
     currentType: string
 }
 ```
@@ -155,19 +180,36 @@ Reset option event.
 ) }}
 
 
+## axisareaselected(Event)
+Selecting event of range of [parallel axis](option.html#parallelAxis).
+
+When selecting axis range, the following method can be used to get data indices of currently highlight lines, which is the list of indices in `data` of `series`.
+
+```javascript
+chart.on('axisareaselected', function () {
+    var series1 = chart.getModel().getSeries()[0];
+    var series2 = chart.getModel().getSeries()[0];
+    var indices1 = series1.getRawIndicesByActiveState('active');
+    var indices2 = series2.getRawIndicesByActiveState('active');
+    console.log(indices1);
+    console.log(indices2);
+});
+```
+
+
 
 {{ target: event-select }}
 ## ${componentType}selectchanged(Event)
 **ACTION:** [${componentType}ToggleSelect](~action.${componentType}.${componentType}ToggleSelect)
 
-${name}change selected event.
+Event emitted after ${name} selecting state changes.
 
-User will trigger this event by clicking select.
+It will be triggered when user clicks to select.
 
 ```js
 {
     type: '${componentType}selectchanged',
-    // series ID, can incoming in option
+    // series ID, can be passed in option
     seriesId: string
     // data name
     name: name,
@@ -191,19 +233,19 @@ Use `dispatchAction` can trigger this event, but user clicking this event won't 
     seriesId: string
     // data name
     name: name,
-    // table of all selected data.
+    // table of all legend selecting states
     selected: Object
 }
 ```
 
-**Attention: **Events corresponding to user switch legend in ECharts 2.x change from `${componentType}selected` to [${componentType}selectchanged](~events.${componentType}selectchanged).
+**Attention: **Event triggered by user switching legend in ECharts 2.x is changed from `${componentType}selected` to [${componentType}selectchanged](~events.${componentType}selectchanged).
 
 ## ${componentType}unselected(Event)
 **ACTION:** [${componentType}UnSelect](~action.${componentType}.${componentType}UnSelect)
 
-${name}Cancel selected event.
+${name} cancels selected event.
 
-Use `dispatchAction` can trigger this event, but user clicking this event won't trigger this（User clicking event please use [${componentType}selectchanged](~events.${componentType}selectchanged)）.
+Use `dispatchAction` will trigger this event, but user clicking won't trigger it. (For user clicking event, please refer to [${componentType}selectchanged](~events.${componentType}selectchanged)）.
 
 ```js
 {
@@ -212,7 +254,7 @@ Use `dispatchAction` can trigger this event, but user clicking this event won't 
     seriesId: string
     // data name
     name: name,
-    // table of all selected data.
+    // table of all legend selecting states
     selected: Object
 }
 ```
