@@ -282,7 +282,7 @@ links: [{
 
 #${prefix} show(boolean) = ${defaultShowLabel|default(false)}
 是否显示标签。
-#${prefix} position(string) = 'end'
+#${prefix} position(string) = 'middle'
 标签位置，可选：
 + `'start'` 线的起始点。
 + `'middle'` 线的中点。
