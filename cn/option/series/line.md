@@ -46,7 +46,7 @@
 
 ~[600x400](${galleryViewPath}doc-example/line-stack-tiled&edit=1&reset=1)
 
-## connectNulls = false
+## connectNulls(boolean) = false
 是否连接空数据。
 
 ## clipOverflow(boolean) = true
