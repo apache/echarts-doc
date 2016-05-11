@@ -27,11 +27,11 @@
 
 + [+] markLine 标签位置支持配置为中间 `'middle'`。
 
++ [+] 加入 [animationDelay](http://echarts.baidu.com/option.html#animationDelay) 和 [animationDelayUpdate]((http://echarts.baidu.com/option.html#animationDelayUpdate) 配置项用于展现更丰富和戏剧性的动画效果，参见示例 [bar-animation-delay.html](http://echarts.baidu.com/gallery/editor.html?c=bar-animation-delay)
+
 + [^] 修正 markPoint 、markLine、timeLine 鼠标事件参数中的`componentType`属性，可以通过该判断鼠标事件的触发对象。
 
 + [^] 修正了 [tooltip.show](http://echarts.baidu.com/option.html#tooltip.show) 功能,同时控制`提示框浮层`和`axisPointer`的隐藏和显示。[tooltip.showContent](http://echarts.baidu.com/option.html#tooltip.showContent) 仅控制`提示框浮层`的隐藏和显示。
-
-+ [+] 加入 [animationDelay](http://echarts.baidu.com/option.html#animationDelay) 和 [animationDelayUpdate]((http://echarts.baidu.com/option.html#animationDelayUpdate) 配置项用于展现更丰富和戏剧性的动画效果，参见示例 [bar-animation-delay.html](http://echarts.baidu.com/gallery/editor.html?c=bar-animation-delay)
 
 + [^] 仪表盘优化超出范围的数据的展现。见 [#3067](https://github.com/ecomfe/echarts/issues/3067)
 
@@ -47,9 +47,12 @@
 
 + [^] 修复桑基图中关闭动画会导致右侧标签显示不全的 bug。
 
++ [^] 优化折线图中可能会裁剪掉一半最顶端水平线，使得顶端水平线看起来更细的情况。
+
 + [^] 修复 IE8 中饼图 0 数据显示为圆形的 bug。见 [#3128](https://github.com/ecomfe/echarts/issues/3128)
 
 + [^] 修复 IE8 只有高亮显示标签可能会无效的 bug。
+
 
 ## v3.1.7
 <div class="time">2016-04-21</div>
