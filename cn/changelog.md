@@ -43,6 +43,8 @@
 
 + [^] 修复柱状图中渐变色无法正确显示的 bug，见 [#3065](https://github.com/ecomfe/echarts/issues/3065)
 
++ [^] 修复桑基图中关闭动画会导致右侧标签显示不全的 bug。
+
 + [^] 修复 IE8 中饼图 0 数据显示为圆形的 bug。见 [#3128](https://github.com/ecomfe/echarts/issues/3128)
 
 + [^] 修复 IE8 只有高亮显示标签可能会无效的 bug。
