@@ -45,6 +45,8 @@
 
 + [^] 修复 IE8 中饼图 0 数据显示为圆形的 bug。见 [#3128](https://github.com/ecomfe/echarts/issues/3128)
 
++ [^] 修复 IE8 只有高亮显示标签可能会无效的 bug。
+
 ## v3.1.7
 <div class="time">2016-04-21</div>
 
