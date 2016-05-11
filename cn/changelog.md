@@ -1,3 +1,10 @@
+## v3.1.9
+<div class="time">2016-05-12</div>
+
++ [^] 修复 3.1.8 中`image://`类型的 symbol 无法显示的 bug。
+
++ [^] 修复使用笛卡尔坐标系的 graph 第二次 setOption 会报错的 bug。
+
 ## v3.1.8
 <div class="time">2016-05-11</div>
 
