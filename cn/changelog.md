@@ -1,16 +1,33 @@
 ## v3.1.8
 <div class="time">2016-05-11</div>
 
-+ 【^】 Graph 优化
++ **[^] Graph 优化**
     + [+] 支持通过 [edgeLabel](http://echarts.baidu.com/option.html#series-graph.edgeLabel) 配置边标签，见示例 [graph-simple.html](http://echarts.baidu.com/gallery/editor.html?c=graph-simple)
     + [+] 支持通过 [edgeSymbol](http://echarts.baidu.com/option.html#series-graph.edgeSymbol) 配置边两端的图形，见示例 [graph-simple.html](http://echarts.baidu.com/gallery/editor.html?c=graph-simple)
     + [^] 支持笛卡尔坐标系，极坐标与地理坐标系，见示例 [graph-grid.html](http://echarts.baidu.com/gallery/editor.html?c=graph-grid)
-+ 【^】 地图优化
-    + [^] 绘制性能优化
+    + [^] 鼠标事件参数新加`dataType`参数用于判断是`'node'`还是`'edge'`
+
++ **[^] 地图优化**
+    + [+] 加入 [zoom](http://echarts.baidu.com/option.html#series-map.zoom) 和 [center](http://echarts.baidu.com/option.html#series-map.center) 配置项用于定位，参见示例 [map-locate.html](http://echarts.baidu.com/gallery/editor.html?c=map-locate)
     + [^] 修复 `scaleLimit.min` 大于 1 时可能导致散点图布局错误的 bug。
-    + [+] 加入 [zoom](http://echarts.baidu.com/option.html#series-map.zoom) 和 [center](http://echarts.baidu.com/option.html#series-map.center) 配置项用于定位
+    + [^] 绘制性能优化
+
++ **[^] treemap 优化**
+    + [^] 修复无法只在高亮的时候显示 label 的问题。Fix [#2975](https://github.com/ecomfe/echarts/issues/2975)
+    + [^] 修复中事件参数不正确的 bug。见 [#3063](https://github.com/ecomfe/echarts/issues/3063)
+
++ **[^] visualMap 组件优化**
+    + [+] 支持映射到 `opacity`。见 [visualMap.inRange](http://echarts.baidu.com/option.html#visualMap-continuous.inRange)。
+    + [+] 加入配置项 [visualMap.hoverLink](http://echarts.baidu.com/option.html#visualMap-continuous.hoverLink)，支持 visualMap 组件与图表图形的联动。
+    + [^] visual 的值之前支持设置为单个数字，例如 `0.2`。
+    + [^] 修复使用 merge 模式第二次 setOption 时，viusal 配置无法保持的 bug。
+    + [^] 修复使用 `colorHue` 时，visualMap 控制条颜色渐变不对的 bug。
 
 + [+] 折线图加入 [connectNulls](http://echarts.baidu.com/option.html#series-line.connectNulls) 配置项，见 [#2579](https://github.com/ecomfe/echarts/issues/2579)
+
++ [^] 修正 markPoint 、markLine、timeLine 鼠标事件参数中的`componentType`属性，可以通过该判断鼠标事件的触发对象。
+
++ [^] 修正了 [tooltip.show](http://echarts.baidu.com/option.html#tooltip.show) 功能,同时控制`提示框浮层`和`axisPointer`的隐藏和显示。[tooltip.showContent](http://echarts.baidu.com/option.html#tooltip.showContent) 仅控制`提示框浮层`的隐藏和显示。
 
 + [+] 加入 [animationDelay](http://echarts.baidu.com/option.html#animationDelay) 和 [animationDelayUpdate]((http://echarts.baidu.com/option.html#animationDelayUpdate) 配置项用于展现更丰富和戏剧性的动画效果，参见示例 [bar-animation-delay.html](http://echarts.baidu.com/gallery/editor.html?c=bar-animation-delay)
 
@@ -18,7 +35,15 @@
 
 + [^] 修复 3.1.7 中多系列饼图图例绘制错误的 bug。
 
-+ [^] 修复 treemap 中事件参数不正确的 bug。见 [#3063](https://github.com/ecomfe/echarts/issues/3063)
++ [^] markPoint 和 markLine 的位置属性`x`, `y`支持百分比。
+
++ [^] 修复图形高亮时刷新整个图表会导致高亮图形样式错误的 bug。
+
++ [^] 修复 setOption 无法清除之前设置的阴影样式的 bug。
+
++ [^] 修复柱状图中渐变色无法正确显示的 bug，见 [#3065](https://github.com/ecomfe/echarts/issues/3065)
+
++ [^] 修复 IE8 中饼图 0 数据显示为圆形的 bug。见 [#3128](https://github.com/ecomfe/echarts/issues/3128)
 
 ## v3.1.7
 <div class="time">2016-04-21</div>
@@ -105,7 +130,7 @@
 ## v3.1.3
 <div class="time">2016-03-10</div>
 
-+ 【\+】加入雷达图，见 [http://echarts.baidu.com/option.html#series-radar](http://echarts.baidu.com/option.html#series-radar)
++ **[+]加入雷达图，见 [http://echarts.baidu.com/option.html#series-radar](http://echarts.baidu.com/option.html#series-radar)**
 
 + [^] 平均值，最小值，最大值 markLine 起点和终点位置优化。Fix [#2762](https://github.com/ecomfe/echarts/issues/2762)，[#2688](https://github.com/ecomfe/echarts/issues/2688)。
 
@@ -133,7 +158,7 @@
 ## v3.1.2
 <div class="time">2016-03-01</div>
 
-+ 【\+】提供主题下载，详细见 [http://echarts.baidu.com/download-theme.html](http://echarts.baidu.com/download-theme.html)
++ **[+]提供主题下载，详细见 [http://echarts.baidu.com/download-theme.html](http://echarts.baidu.com/download-theme.html)**
 
 + [^] 修复 v3.1.1 中折线图空数据后 `setOption` 更新数据无法显示的 bug。
 
@@ -169,7 +194,7 @@
 ## v3.1.1
 <div class="time">2016-02-22</div>
 
-+ 【\+】新加入 npm 渠道获取 echarts，详细见 [webpack + echarts 教程](http://echarts.baidu.com/tutorial.html#%E5%9C%A8%20webpack%20%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts)
++ **[+]新加入 npm 渠道获取 echarts，详细见 [webpack + echarts 教程](http://echarts.baidu.com/tutorial.html#%E5%9C%A8%20webpack%20%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts)**
 
 + [^] 修复动态 markPoint 和 markLine 异常的 bug。Fix [#2522](https://github.com/ecomfe/echarts/issues/2522)
 
