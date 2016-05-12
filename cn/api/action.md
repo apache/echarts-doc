@@ -5,7 +5,7 @@
 
 {{ target: action-data-query }}// 数据的 index，如果不指定也可以通过 name 属性根据名称指定数据
     dataIndex?: number,
-    // 数据名称，可选，在有 dataIndex 的时候忽略
+    // 可选，数据名称，在有 dataIndex 的时候忽略
     name?: string{{/target}}
 
 
