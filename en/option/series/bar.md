@@ -4,7 +4,7 @@
 
 **bar graph**
 
-Bar graph shows different datas through the height of a bar, which is used in [rectangular coordinate system](~grid) with at least 1 category axis.
+Bar graph shows different data through the height of a bar, which is used in [rectangular coordinate system](~grid) with at least 1 category axis.
 
 ## type(string) = 'bar'
 
@@ -48,22 +48,22 @@ Bar graph shows different datas through the height of a bar, which is used in [r
 
 
 ## stack(string) = null
-data stack. On the same category axis, the `stack` values with the same series configuration could stack.
+Name of stack. On the same category axis, the series with the same `stack` name would stack.
 
-## barWidth(number) = self-adaptation
-the bar width would adapt by itself when it is not set up. 
+## barWidth(number) = null
+The width of the bar. Adaptive when not specified.
 
-## barMaxWidth(number) = self-adaptation
-the maximum  width of bar would adapt by itself when it is not set up. 
+## barMaxWidth(number) = null
+The maximum width of the bar. Adaptive when not specified.
 
 ## barMinHeight(number) = 0
-the minimum width of bar. It could be used to avoid the following situation: the interaction would be affected when the value of some data item is too small. 
+The minimum width of bar. It could be used to avoid the following situation: the interaction would be affected when the value of some data item is too small.
 
 ## barGap(string) = '30%'
-the gap between bars, which defaults to be 30% of the bar width and also could be set as a fixed value.    
+The gap between bars, defaults to be `30%` of the bar width, can be set as a fixed value like `20`.
 
 ## barCategoryGap(string) = '20%'
-The bar gap between categories, which defaults to be 20% of the category gap and also could be set as a fixed value.    
+The bar gap between each category of bar, defaults to be `20%` of the category gap, can be set as a fixed value.
 
 ## data(Array)
 
@@ -75,10 +75,10 @@ The bar gap between categories, which defaults to be 20% of the category gap and
 The name of data item.
 
 ### value(number)
-The numeriacal value of a single data item.
+The value of a single data item.
 
 ### label(Object)
-the style setting of the text in a single bar.
+The style setting of the text label in a single bar.
 
 #### normal(Object)
 {{ use:partial-label(
@@ -120,9 +120,9 @@ the style setting of the text in a single bar.
 
 {{ target:partial-bar-item-style }}
 
-#${prefix} color(Color) = self-adaptation
+#${prefix} color(Color) = 'auto'
 
-bar color.{{ if: ${useColorPalatte} }} defaults to acquire colors {{/if}} from overall palette [option.color](~color).
+Bar color.{{ if: ${useColorPalatte} }} defaults to acquire colors from global palette [option.color](~color) {{/if}}.
 
 #${prefix} barBorderColor(Color) = '#000'
 
@@ -130,11 +130,11 @@ The bodrder color of bar.
 
 #${prefix} barBorderWidth(number) = 0
 
-The bodrder width of bar. It defaults to have no border. 
+The bodrder width of bar. defaults to have no border.
 
 {{ if: ${barBorderRadius} }}
 #${prefix} barBorderRadius(number|Array) = 0
-the  rounded corner of bar border. Its unit is px. And it supports introducing array to respectively assign the 4 corner radiuses of the bar. 
+The radius of rounded corner of bar border. Its unit is px. And it supports use array to respectively specify the 4 corner radiuses of the bar.
 
 For example:
 ```
