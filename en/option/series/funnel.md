@@ -3,7 +3,7 @@
 
 # series.funnel(Object)
 
-**funnel plot**
+**Funnel chart**
 
 **sample: **
 ~[600x400](${galleryViewPath}funnel&reset=1&edit=1)
@@ -13,35 +13,34 @@
 {{ use: partial-series-name() }}
 
 ## min(number) = 0
-Assigned minimum data value.
+The specified minimum value.
 
 ## max(number) = 100
-Assigned maximum data value.
+The specified maximum value.
 
 ## minSize(string) = '0%'
- the width of minimum data value [min](~series-funnel.min) map.
+The mapped width from minimum data value [min](~series-funnel.min).
 
-It could be absolut pixel and also the percentage of relative [layout width](~series-funnel.width). If you don't want the graph with minimum value to be triangle with sharp tips, you can set up this attribute to realize it. 
+It can be absolute pixel and also the percentage of [layout width](~series-funnel.width). If you don't want the graph of minimum value to be a triangle, you can set up this property larger than 0.
 
 ## maxSize(string) = '100%'
- the width of maximum data value [max](~series-funnel.max) map.
+The mapped width from maximum data value [max](~series-funnel.max).
 
-
-It could be absolut pixel and also the percentage of relative [layout width](~series-funnel.width).
+It can be absolute pixel and also the percentage of [layout width](~series-funnel.width).
 
 ## sort(string) = 'descending'
-data sorting,  which could adopt `'ascending'`, `'descending'`.
+Data sorting, which can be whether `'ascending'` or `'descending'`.
 
 ## gap(number) = 0
-data graph gap.
+Gap between each trapezoid.
 
 {{ use: partial-legend-hover-link }}
 
 ## funnelAlign(string) = 'center'
-horizontal align layout. It defaults to align center. Optional items are: 'left' | 'right' | 'center'
+Horizontal align. Defaults to align center. Can be 'left', 'right', 'center'.
 
 ## label(Object)
-{{use:partial-label-desc(name="funnel plot")}}
+{{use:partial-label-desc(name="funnel chart")}}
 ### normal(Object)
 {{use:partial-funnel-label(
     prefix="###",
@@ -56,7 +55,7 @@ horizontal align layout. It defaults to align center. Optional items are: 'left'
 )}}
 
 ## labelLine(Object)
-the visual guide line style of label. When [label position](~series-funnel.label.normal.position) is set as `'left'`or`'right'`, the visual guide line would show.
+The visual guide line style of label. When [label position](~series-funnel.label.normal.position) is set as `'left'`or`'right'`, the visual guide line will show.
 {{ use: partial-funnel-label-line(prefix='##') }}
 
 ## itemStyle(Object)
@@ -72,7 +71,7 @@ the visual guide line style of label. When [label position](~series-funnel.label
 
 
 {{ use: component-rect-layout-width-height(
-    componentName="funnel plot",
+    componentName="funnel chart",
     defaultLeft=80,
     defaultTop=60,
     defaultRight=80,
@@ -88,7 +87,7 @@ the name of data item.
 data value.
 
 ### label(Object)
-the label configuration of single data.
+The label configuration of a single data item.
 #### normal(Object)
 {{use:partial-funnel-label(
     prefix="####",
@@ -130,23 +129,23 @@ the label configuration of single data.
 #${prefix} show(boolean) = false
 {{ if: ${position} }}
 #${prefix} position(string) = 'outside'
-label position.
+Label position.
 
 **Options: **
 + `'left'`
 
-    left side of funnel plot. The corresponding trapezoid would be related to through [visual guide line](~series-funnel.labelLine).
+    Left side of funnel chart. The corresponding trapezoid would be related to through [visual guide line](~series-funnel.labelLine).
 
 + `'right'`
 
-   right side of funnel plot. The corresponding trapezoid would be related to through [visual guide line](~series-funnel.labelLine).
+   Right side of funnel chart. The corresponding trapezoid would be related to through [visual guide line](~series-funnel.labelLine).
 
 + `'inside'`
 
-    the inside part of trapezoid in funnel plot. 
+    Inside the trapezoid of funnel chart.
 
-+ `'inner'` equals to `'inside'`. 
-+ `'center'` equals to `'inside'`. 
++ `'inner'` equals to `'inside'`.
++ `'center'` equals to `'inside'`.
 
 {{ /if }}
 {{ if: ${formatter} }}
@@ -165,15 +164,15 @@ the font style of lable.
 
 {{ target: partial-funnel-label-line }}
 #${prefix} normal(Object)
-the style of visual guide line in normal status.
+The style of visual guide line in normal status.
 ##${prefix} show(boolean)
 Whether to show visual guide line.
 ##${prefix} length(number)
-the length of the first part from visual guide line.
+The length of the first part from visual guide line.
 ##${prefix} lineStyle(Object)
 {{use:partial-line-style(prefix="##" + ${prefix})}}
 #${prefix} emphasis(Object)
-the style of visual guide line in emphasis status.
+The style of visual guide line in emphasis status.
 ##${prefix} show(boolean)
 Whether to show visual guide line.
 ##${prefix} lineStyle(Object)
