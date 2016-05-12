@@ -3,9 +3,9 @@
 
 # series.effectScatter(Object)
 
-the scatter (bubble) graph with ripple animation. The special animation effect could visually highlights some data.
+The scatter (bubble) graph with ripple animation. The special animation effect can visually highlights some data.
 
-**Tip:**  The special effects of map could be achieved through markPoint in ECharts 2.x. However, in  ECharts 3, effectScatter on geographic coordinate system is recommended for achieving that special effects of map.  
+**Tip:**  The effects of map was achieved through markPoint in ECharts 2.x. However, in  ECharts 3, effectScatter on geographic coordinate system is recommended for achieving that effects of map.
 
 **Here is the example: **
 ~[600x400](${galleryViewPath}effectScatter-map&edit=1&reset=1)
@@ -17,25 +17,25 @@ the scatter (bubble) graph with ripple animation. The special animation effect c
 {{ use: partial-legend-hover-link() }}
 
 ## effectType(string) = 'ripple'
-Type of special effect. Only ripple effect of `'ripple'` is supported at present.
+Type of effect. Only ripple effect of `'ripple'` is supported currently.
 
 ## showEffectOn(string) = 'render'
-Configurate the time to show the special effect.
+When to show the effect.
 
 **Options: **
-+ `'render'` show the special effect when drawing is done. 
-+ `'emphasis'` show the special effect when it is highlight（hover）.
++ `'render'` Show the effect when rendering is done.
++ `'emphasis'` Show the effect when it is highlight（hover）.
 
 ## rippleEffect(Object)
-related configurations about ripple effect.
+Related configurations about ripple effect.
 
 ### period(number) = 4
-the duration of animation.
+The duration of animation.
 
 ### scale(number) = 2.5
-the maximum zooming scale of ripples in animation.
+The maximum zooming scale of ripples in animation.
 ### brushType(string) = 'fill'
-the filling method for ripples. options: `'stroke'` and `'fill'`. 
+The brush type for ripples. options: `'stroke'` and `'fill'`.
 
 {{use: partial-coord-sys(
     seriesType="bar",
