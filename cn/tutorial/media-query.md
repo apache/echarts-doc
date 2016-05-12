@@ -123,7 +123,7 @@ option = {
 };
 ```
 
-上面的例子框架中，`baseOption`、以及 `media` 每个 option 都是『原子option』，即普通的含有各组件、系列定义的option。`baseOption` 是必然被使用的，此外，满足了某个 `query` 条件时，对应的 option 会被使用 chart.mergeOption() 来 merge 进去。
+上面的例子框架中，`baseOption`、以及 `media` 每个 option 都是『原子 option』，即普通的含有各组件、系列定义的option。而由『原子option』组合成的整个 option，我们称为『复合 option』。`baseOption` 是必然被使用的，此外，满足了某个 `query` 条件时，对应的 option 会被使用 chart.mergeOption() 来 merge 进去。
 
 
 **query：**
@@ -212,6 +212,14 @@ media: [
 在不少情况下，并不需要容器dom节点任意随着拖拽变化大小，而是只是根据不同终端设置几个典型尺寸。
 
 但是如果容器dom节点需要能任意随着拖拽变化大小，那么目前使用时需要注意这件事：某个配置项，如果在某一个 `query option` 中出现，那么在其他 `query option` 中也必须出现，否则不能够回归到原来的状态。（`left/right/top/bottom/width/height` 不受这个限制。）
+
+
+**『复合 option』 中的 `media` 不支持 merge**
+
+也就是说，当第二（或三、四、五 ...）次 `chart.setOption(rawOption)` 时，如果 `rawOption` 是 `复合option`（即包含 `media` 列表），那么新的 `rawOption.media` 列表不会和老的 `media` 列表进行 merge，而是简单替代。当然，`rawOption.baseOption` 仍然会正常和老的 option 进行merge。
+
+其实，很少有场景需要使用『复合 option』来多次 `setOption`，而我们推荐的做法是，使用 mediaQuery 时，第一次setOption使用『复合 option』，后面 `setOption` 时仅使用 『原子 option』，也就是仅仅用 setOption 来改变 `baseOption`。
+
 
 
 <br>
