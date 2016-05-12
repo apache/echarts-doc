@@ -1,26 +1,26 @@
-{{ target: action-series-query }}// Series index can be chosen, this can be an array specifying multiple series.
+{{ target: action-series-query }}// optional; series index; could be an array of multiple series
     seriesIndex?: number|Array,
-    // Series names can be chosen, this can be an array assigning multiple series.
+    // optional; series name; could be an array of multiple series
     seriesName?: string|Array,{{/target}}
 
-{{ target: action-data-query }}//If index of data is not specified, data can also be specified through name attribute based on name. 
+{{ target: action-data-query }}// data index; could assign by name attribute when not defined 
     dataIndex?: number,
-    // Data names can be chosen, but can be ingored when dataIndex exists.
+    // optional; data name; ignored when dataIndex is defined
     name?: string{{/target}}
 
 
 {{ target: action }}
 # action
 
-Charts supported in ECharts are triggered through [dispatchAction](~echartsInstance.dispatchAction) .
+Chart actions supported by ECharts are triggered through [dispatchAction](~echartsInstance.dispatchAction).
 
-**Attention: **  `?:`in code representing that  this attribute is optional. *EVENT:* is the event that action triggers accordingly. 
+**Attention: ** The `?:` note in the code shows that this attribute is optional. *EVENT:* stands for the event that triggers action. 
 
 ## highlight(Action)
 
-Data graphics assigned by highlight.
+Highlights the given graphic element.
 
-Specify series through `seriesName` or `seriesIndex`. If another data needs to be specified, then assign another `dataIndex`or`name`.
+Series is specified through `seriesName` or `seriesIndex`. If another data needs to be specified, then use `dataIndex` or `name`.
 ```js
 dispatchAction({
     type: 'highlight',
@@ -34,9 +34,9 @@ dispatchAction({
 
 ## downplay(Action)
 
-Cancel data garphic assigned by highlight. 
+Cancels highlighting graphic element. 
 
-Specify series through `seriesName`or`seriesIndex`.If another data needs to be assigned , then assign another `dataIndex`or`name`.
+Series is specified through `seriesName` or `seriesIndex`. If another data needs to be specified, then use `dataIndex` or `name`.
 ```js
 dispatchAction({
     type: 'downplay',
@@ -52,15 +52,15 @@ dispatchAction({
 <!--============= legend ==========-->
 ## legend
 
-[legend component](option.html#legend) related acts can not be used before introducing [legend component](option.html#legend).
+Actions related to [legend component](option.html#legend), which should include [legend component](option.html#legend) before use.
 
 ### legendSelect(Action)
-Select legend.
+Selects legend.
 
 ```js
 dispatchAction({
     type: 'legendSelect',
-    // Legend name
+    // legend name
     name: string
 })
 ```
@@ -68,7 +68,7 @@ dispatchAction({
 **EVENT:** [legendselected](~events.legendselected)
 
 ### legendUnSelect(Action)
-Uncheck the legend.
+Unselects the legend.
 
 ```js
 dispatchAction({
@@ -81,7 +81,7 @@ dispatchAction({
 **EVENT:** [legendunselected](~events.legendunselected)
 
 ### legendToggleSelect(Action)
-Change the legend selected.
+Toggles legend selecting state.
 ```js
 dispatchAction({
     type: 'legendToggleSelect',
@@ -95,15 +95,15 @@ dispatchAction({
 <!--============= tooltip ==========-->
 ## tooltip
 
-[tooltip component](option.html#tooltip)related acts can not be used before introducing [tooltip component](option.html#tooltip).
+Actions related to [tooltip component](option.html#tooltip), which should include [tooltip component](option.html#tooltip) before use.
 
 ### showTip(Action)
 
-Show tip.
+Shows tooltip.
 
-There are two ways as followed. 
+There are two usages as followed. 
 
-1 Display a tooltip at the specified location  in the relative container, if it cannot be displayed at the specified location,then it  is not valid.
+1 Display tooltip at certain position relative to container. If it cannot be displayed at the specified location, then it is invalid.
 ```js
 dispatchAction({
     type: 'showTip',
@@ -114,11 +114,11 @@ dispatchAction({
 })
 ```
 
-2 Specifying the data graphics, display a tooltip according to the tooltip configuration items.
+2 Specify graphic element, and display tooltip according to the tooltip configuration item.
 ```js
 dispatchAction({
     type: 'showTip',
-    // index of series, which is optional when trigger of tooltip is axis.
+    // index of series, which is optional when trigger of tooltip is axis
     seriesIndex?: number,
     {{ use: action-data-query }}
 })
@@ -126,7 +126,7 @@ dispatchAction({
 
 ### hideTip(Action)
 
-Hide tip.
+Hides tooltip.
 
 ```js
 dispatchAction({
@@ -137,7 +137,7 @@ dispatchAction({
 <!--============= dataZoom ==========-->
 ## dataZoom
 
-[data region zoom component](option.html#dataZoom)related acts can not be used before introducing [data region zoom component](option.html#dataZoom).
+Actions related to [data region zoom component](option.html#dataZoom), which should include [data region zoom component](option.html#dataZoom) before use.
 
 ### dataZoom(Action)
 
@@ -146,15 +146,15 @@ Zoom data region.
 ```js
 dispatchAction({
     type: 'dataZoom',
-    // Options are open, index of dataZoom component, available when there are multiple dataZoom components, it is 0 by default.
+    // optional; index of dataZoom component; useful for are multiple dataZoom components; 0 by default
     dataZoomIndex: number,
-    // data value at starting location, 0 - 100
+    // percentage of starting position; 0 - 100
     start: number,
-    // data value at finishing location, 0 - 100
+    // percentage of ending position; 0 - 100
     end: number,
     // data value at starting location
     startValue: number,
-    // data value at finishing location
+    // data value at ending location
     endValue: number
 })
 ```
@@ -164,20 +164,20 @@ dispatchAction({
 <!--============= visualMap ==========-->
 ## visualMap
 
-[visual mapping component](option.html#visualMap)related acts can not be used before introducing[visual mapping component](option.html#visualMap).
+Actions related to [visual mapping component](option.html#visualMap), which should include [visual mapping component](option.html#visualMap) before use.
 
 ### selectDataRange(Action)
 
-Select data value range of map.
+Selects data range of visual mapping.
 
 ```js
 dispatchAction({
     type: 'selectDataRange',
-    // Options are open, index of visualMap component, available when there are multiple visualMap components, it is 0 by default.
+    // optional; index of visualMap component; useful for are multiple visualMap components; 0 by default
     visualMapIndex: number,
-    // Continuous visualMap is different from discrete visualMap 
-    // Continuous visualMap is an array that representing data value range.
-    // Discrete visualMap is an object, the key value is the index of the category or section.Value is `true`, `false`
+    // continuous visualMap is different from discrete one
+    // continuous visualMap is an array representing range of data values.
+    // discrete visualMap is an object, whose key is category or piece index; value is `true` or `false`
     selected: Object|Array
 })
 ```
@@ -186,11 +186,11 @@ dispatchAction({
 ```js
 myChart.dispatchAction({
     type: 'selectDataRange',
-    // Select a value range between 20 and 40 
+    // select a value range between 20 and 40 
     selected: [20, 40],
-    // Cancel selecting second paragraph
+    // cancel selecting the second range
     selected: { 1: false },
-    // Cancel the selected category `excellent`
+    // cancel selecting `excellent` category
     selected: { 'excellent': false }
 });
 
@@ -201,11 +201,11 @@ myChart.dispatchAction({
 <!--============= timeline ==========-->
 ## timeline
 
-[timeline component](option.html#timeline)related acts can not be used before introducing[timeline component](option.html#timeline).
+Actions related to [timeline component](option.html#timeline), which should include [timeline component](option.html#timeline) before use.
 
 ### timelineChange(Action)
 
-Set the current time point.. 
+Sets the current time point.
 
 ```js
 dispatchAction({
@@ -219,12 +219,12 @@ dispatchAction({
 
 ### timelinePlayChange(Action)
 
-Switch timeline to play status.
+Toggles playing status of timeline.
 
 ```js
 dispatchAction({
     type: 'timelinePlayChange',
-    // state of play, true is auto-play
+    // laying status; true for auto-play
     playState: boolean
 })
 ```
@@ -234,9 +234,10 @@ dispatchAction({
 <!--============= toolbox ==========-->
 ## toolbox
 
-[toolbar component](option.html#toolbox)related acts can not be used before introducing[toolbar component](option.html#toolbox).
+Actions related to [toolbox component](option.html#toolbox), which should include [toolbox component](option.html#toolbox) before use.
+
 ### restore(Action)
-Reset option.
+Resets option.
 
 ```js
 dispatchAction({
@@ -248,7 +249,7 @@ dispatchAction({
 <!--============= pie ==========-->
 ## pie
 
-[pie chart](option.html#series-pie)related acts can not be used before introducing[pie chart](option.html#series-pie).
+Actions related to [pie chart](option.html#series-pie), which should include [pie chart](option.html#series-pie) before use.
 
 {{ use: action-select(
     componentType='pie',
@@ -257,7 +258,7 @@ dispatchAction({
 
 <!--============= map ==========-->
 ## map
-[map](option.html#series-map)related acts can not be used before introducing [map](option.html#series-map).
+Actions related to [map](option.html#series-map), which should include [map](option.html#series-map) before use.
 {{ use: action-select(
     componentType='map',
     name='map area'
@@ -266,7 +267,7 @@ dispatchAction({
 
 {{ target: action-select }}
 ### ${componentType}Select(Action)
-Select the specified ${name}.
+Selects the specified ${name}.
 
 ```js
 dispatchAction({
@@ -279,7 +280,7 @@ dispatchAction({
 **EVENT:** [${componentType}selected](~events.${componentType}selected)
 
 ### ${componentType}UnSelect(Action)
-Cancel the selected specified ${name}.
+Cancels selecting specified ${name}.
 
 ```js
 dispatchAction({
@@ -291,7 +292,7 @@ dispatchAction({
 **EVENT:** [${componentType}unselected](~events.${componentType}unselected)
 
 ### ${componentType}ToggleSelect(Action)
-Change the selected status of specified ${name}.
+Toggles selecting status of specified ${name}.
 
 ```js
 dispatchAction({
