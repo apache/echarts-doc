@@ -33,7 +33,7 @@
 ### scale(number) = 2.5
 动画中波纹的最大缩放比例。
 ### brushType(string) = 'fill'
-波纹的填充方式，可选 `'stroke'` 和 `'fill'`。
+波纹的绘制方式，可选 `'stroke'` 和 `'fill'`。
 
 {{use: partial-coord-sys(
     seriesType="bar",
