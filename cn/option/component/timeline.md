@@ -88,6 +88,10 @@ myChart.setOption(
 
 + `options` 数组中，如果某一数组项中配置了某个属性，那么其他数组项中也必须配置某个属性，而不能缺省。否则这个属性的执行效果会遗留。
 
++ `复合 option` 中的 `options` 不支持 merge。
+
+    也就是说，当第二（或三、四、五 ...）次 `chart.setOption(rawOption)` 时，如果 `rawOption` 是 `复合 option`（即包含 `options` 列表），那么新的 `rawOption.options` 列表不会和老的 `options` 列表进行 merge，而是简单替代。当然，`rawOption.baseOption` 仍然会正常和老的 option 进行merge。
+
 
 <br>
 **与 ECharts2 的兼容性：**
