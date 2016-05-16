@@ -117,3 +117,16 @@ chart.setOption({
     galleryEditorPath=${galleryEditorPath}
 ) }}
 
+
+## formatter(string|Function)
+
+标签的格式化工具。
+
++ 如果为`string`，表示模板，例如：`aaaa{value}`。其中 `{value}` 是当前的范围大小。
++ 如果为 `Function`，表示回调函数，形如：
+
+```javascript
+formatter: function (value) {
+    return 'aaaa' + value; // 范围标签显示内容。
+}
+```
