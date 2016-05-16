@@ -27,11 +27,11 @@ The series of parallel coordinate system.
 
 ## inactiveOpacity(number) = 0.05
 
-In box selection, the unselected line would be set as this『transparency』（which could lead to melanized effect）.
+In box selection, the unselected line would be set as this『transparency』 (which could lead to melanized effect).
 
 ## activeOpacity(number) = 1
 
-In box selection, the selected line would be set as this『opacity』（which could lead to highlighted effect）.
+In box selection, the selected line would be set as this『opacity』 (which could lead to highlighted effect).
 
 
 

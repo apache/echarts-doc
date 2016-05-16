@@ -29,7 +29,7 @@ formatter return string supports line feed with`\n` .
 
 Array of data content in series.Array item usually is specific data item. Followings are three data formats 
 
-1. When an axis in the coordinate system is category axis, data can be the value of one dimension, the length of array equals to the length of [xAxis.data](~xAxis.data) ,which is the label array of category axis content.And there is a  one-to-one correspondence between them, for example: 
+1. When an axis in the coordinate system is category axis, data can be the value of one dimension, the length of array equals to the length of [xAxis.data](~xAxis.data),which is the label array of category axis content.And there is a  one-to-one correspondence between them, for example: 
     ```js
     [12, 34, 56, 10, 23]
     ```
@@ -47,7 +47,7 @@ Array of data content in series.Array item usually is specific data item. Follow
     Every array of data value is able to present other data dimensions from the third one, using [visualMap](~visualMap) component can map one or more assigned dimensions to color, size and other graphic properties.
 
 
-    Examples of double category axis can refer to [Github Punchcard](${galleryEditorPath}scatter-punchCard) .
+    Examples of double category axis can refer to [Github Punchcard](${galleryEditorPath}scatter-punchCard).
 
 When it needs to customize certain data label, array item can be treated as subject, among which`value` stands for specific value, for example: 
 ```js
@@ -64,5 +64,5 @@ When it needs to customize certain data label, array item can be treated as subj
 ]
 ```
 
-**Tip: **When data to certain category does not exist（ps: 'inexistence' doesn't mean the value is 0）, can use'-'to represent, when there is no data, it should be disconnected in  line chart, and no graph in other graphics.
+**Tip: **When data to certain category does not exist (ps: 'inexistence' doesn't mean the value is 0), can use'-'to represent, when there is no data, it should be disconnected in  line chart, and no graph in other graphics.
 

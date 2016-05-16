@@ -17,7 +17,7 @@ options:
 + `'left'`
 + `'right'`
 
-The first y axis in grid defaults to be the left（`'left'`） of the grid, and the second y axis is on the other side against the first y axis. 
+The first y axis in grid defaults to be the left (`'left'`)  of the grid, and the second y axis is on the other side against the first y axis. 
 
 {{ use: axis-common(
     prefix='#',

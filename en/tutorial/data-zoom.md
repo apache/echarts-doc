@@ -3,20 +3,20 @@
 
 # Add interaction to the chart component
 
-Except charts, Echarts provide many interaction components, For example:
+Echarts provides many interaction components besides chart. For example:
 
 `legend component` [legend](option.html#legend)、`title component` [title](option.html#title)、`visualmap component` [visualMap](option.html#visualMap)、`datazoom component` [dataZoom](option.html#dataZoom)、`dataline component` [timeline](option.html#timeline)
 
-Following is an example of `datazoom component` [dataZoom](option.html#dataZoom) as an introduction of how to add this component.
+Following is an example of `datazoom component` [dataZoom](option.html#dataZoom) as an introduction of how to add this kind of component.
 
 
 
 
 
 <br>
-<h2>Introduction of data zoom component（dataZoom）</h2>
+<h2>Introduction of data zoom component (dataZoom)</h2>
 
-『overview data and pay close attention yo details according to need』is a basic interaction need of data visualization. `dataZoom` component can realize this function in rectangular coordinate system（[grid](option.html#grid)）and polar coordinate system（[polar](option.html#polar)）.
+Data overview by default, and detail by requirement is a basic interaction need of data visualization. `dataZoom` component can implement this function in rectangular coordinate system ([grid](option.html#grid)) and polar coordinate system ([polar](option.html#polar).
 
 
 **For example: **
@@ -24,17 +24,17 @@ Following is an example of `datazoom component` [dataZoom](option.html#dataZoom)
 
 <br>
 
-+ `dataZoom` operate『data window zoom』『data window tanslate』on `axis（axis）`.
++ `dataZoom` component operates *data window zoom* and *data window translation* on `axis`.
 
-> Specifies which axis `dataZoom`controls through [dataZoom.xAxisIndex](option.html#dataZoom.xAxisIndex) or [dataZoom.yAxisIndex](option.html#dataZoom.yAxisIndex) or [dataZoom.radiusAxisIndex](option.html#dataZoom.radiusAxisIndex) or [dataZoom.angleAxisIndex](option.html#dataZoom.angleAxisIndex)  
+> Use [dataZoom.xAxisIndex](option.html#dataZoom.xAxisIndex), [dataZoom.yAxisIndex](option.html#dataZoom.yAxisIndex), [dataZoom.radiusAxisIndex](option.html#dataZoom.radiusAxisIndex), or [dataZoom.angleAxisIndex](option.html#dataZoom.angleAxisIndex) to specify which axis `dataZoom` controls.
 
-+ Multiple `dataZoom` components can exist at the same time as a jointly control function. Components controling the same axis will be linked automatically. The example below will explain in detail.
++ Multiple `dataZoom` components can exist at the same time to control function together. Components controling the same axis will be connected automatically. The example below explains in detail.
 
-+ Operation principle of `dataZoom` achieves 『data window zoom』through『data filtering』.
++ Operation principle of `dataZoom` achieves *data window zooming* through *data filtering*.
 
-    Different settings of data filtering modes can achieve different effects, please see: [dataZoom.filterMode](option.html#dataZoom.filterMode). 
+    Different settings of data filtering modes lead to different data window zooming effects, please see: [dataZoom.filterMode](option.html#dataZoom.filterMode). 
 
-+Setting of `dataZoom` data zoom range only supports two formats: 
++ Setting of `dataZoom` data window range supports two formats currently: 
 
     + Percentage: see [dataZoom.start](option.html#dataZoom.start) and [dataZoom.end](option.html#dataZoom.end). 
 
@@ -42,21 +42,21 @@ Following is an example of `datazoom component` [dataZoom](option.html#dataZoom)
 
 
 
-**dataZoom component supports several seed components: **
+**dataZoom component supports several child components: **
 
-+ [Inside data zoom component（dataZoomInside）](option.html#dataZoom-inside): inside coordinates.
++ [Inside data zoom component (dataZoomInside)](option.html#dataZoom-inside): inside coordinates.
 
-+ [Slider data zoom component（dataZoomSlider）](option.html#dataZoom-slider): has seperate slide option.
++ [Slider data zoom component (dataZoomSlider)](option.html#dataZoom-slider): has seperate slide option.
 
-+ [Select data zoom component（dataZoomSelect）](option.html#toolbox.feature.dataZoom): full-screen box to zoom data area. Entrance and configuration item are in `toolbox`.
++ [Select data zoom component (dataZoomSelect)](option.html#toolbox.feature.dataZoom): full-screen box for zoom data area. Entrance and configuration item are both in `toolbox`.
 
 
 
 
 <br>
-<h2>Add dataZoom component in code</h2>
+<h2>Adding dataZoom component</h2>
 
-First, only add dataZoom component to a horizontal axis, code is as followed:
+First, only add dataZoom component to x-axis. Following examples shows the code.
 
 ```javascript
 
@@ -68,15 +68,15 @@ option = {
         type: 'value'
     },
     dataZoom: [
-        {   // This dataZoom component controls X axis by dafault.
-            type: 'slider', // This dataZoom component is dataZoom component of slider
-            start: 10,      // The left is located at 10%.
-            end: 60         // The right is located at 60%.
+        {   // This dataZoom component controls x-axis by dafault
+            type: 'slider', // this dataZoom component is dataZoom component of slider
+            start: 10,      // the left is located at 10%
+            end: 60         // the right is located at 60%
         }
     ],
     series: [
         {
-            type: 'scatter', // This is『scatter chart』
+            type: 'scatter', // this is scatter chart
             itemStyle: {
                 normal: {
                     opacity: 0.8
@@ -91,39 +91,39 @@ option = {
 }
 ```
 
-Following results can be seen: 
+which will show the following result: 
 ~[600x300](${galleryViewPath}doc-example/scatter-tutorial-dataZoom-1&edit=1&reset=1)
 
 <br>
 
-The grahpics above can only change window by dragging dataZoom component. If you want to drag in coordinate system, use wheel(or move two fingers on a touch screen slide ) to zoom, then another dataZoom component of inside needs to be added. You can just add in the `option.dataZoom` above: 
+The chart above can only change window by dragging dataZoom component. If you want to drag in coordinate system, or use mouse wheel (or slides with two fingers on mobile) to zoom, then another inside dataZoom component needs to be added. You can just add in the `option.dataZoom` above: 
 
 ```javascript
 option = {
     ...,
     dataZoom: [
-        {   // This dataZoom component controls X axis by dafault.
-            type: 'slider', // This dataZoom component is dataZoom component of slider
-            start: 10,      // The left is located at 10%.
-            end: 60         //  The right is located at 60%.
+        {   // this dataZoom component controls x-axis by dafault
+            type: 'slider', // this dataZoom component is dataZoom component of slider
+            start: 10,      // the left is located at 10%
+            end: 60         // the right is located at 60%
         },
-        {   // This dataZoom component controls X axis by dafault.
-            type: 'inside', // This dataZoom component is dataZoom component of inside 
-            start: 10,      // The left is located at 10%.
-            end: 60         //  The right is located at 60%.
+        {   // This dataZoom component controls x-axis by dafault
+            type: 'inside', // this dataZoom component is dataZoom component of inside 
+            start: 10,      // the left is located at 10%
+            end: 60         // the right is located at 60%
         }
     ],
     ...
 }
 ```
 
-Following results can be seen（you can carry out slide and wheel zoom in coordinate system）: 
+Following results can be seen (you can now slide or use mouse wheel to zoom in coordinate system) : 
 ~[600x300](${galleryViewPath}doc-example/scatter-tutorial-dataZoom-2&edit=1&reset=1)
 
 
 <br>
 
-If you want y axis to zoom too, then you need to add dataZoom componet on y axis:
+If you want to enable zooming on y-axis, then you need to add dataZoom componet on y-axis:
 
 ```javascript
 option = {
@@ -158,7 +158,7 @@ option = {
 }
 ```
 
-Following results can be seen: 
+Following result can be seen: 
 ~[600x300](${galleryViewPath}doc-example/scatter-tutorial-dataZoom-3&edit=1&reset=1)
 
 

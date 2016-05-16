@@ -19,7 +19,7 @@ The dimension number of coordinate axis.
 
 {{use: partial-parallel-data-example}}
 
-`dim` defines which dimension（which『row』）of data would correspond to this coordinate axis. 
+`dim` defines which dimension (which『row』) of data would correspond to this coordinate axis. 
 
 Count from  `0`. For example, the `dim` of coordinate axis is `1`, indicating that the second row of data would correspond to this coordinate axis.
 

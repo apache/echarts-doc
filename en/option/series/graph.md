@@ -52,7 +52,7 @@ the gravity factor enforcing nodes approach to the center. The nodes would be cl
 the distance between 2 nodes on edge. This distance is affected by [repulsion](~series-graph.force.repulsion).
 
 ### layoutAnimation(boolean) = true
-Because the force guiding layout would be steady after several iterations, this parameter would be decide whether to show the iteration animation of layout. It is not recommended to be close when there are a lot of tip node datas（>100） of browser as the layout process would lead to fake crash of browser. 
+Because the force guiding layout would be steady after several iterations, this parameter would be decide whether to show the iteration animation of layout. It is not recommended to be close when there are a lot of tip node datas (>100)  of browser as the layout process would lead to fake crash of browser. 
 
 ## roam(boolean) = false
 {{ use: partial-roam }}

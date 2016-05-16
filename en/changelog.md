@@ -11,7 +11,7 @@
 
 + [^] emphasis configuration item of label in data item as pie chart is normal value by dafualt.
 
-+ [^] when introdcued on need, line chart, pie chart and scatter chart introduce grid component by dafault to avoid problems in[#2758](https://github.com/ecomfe/echarts/issues/2758) .
++ [^] when introdcued on need, line chart, pie chart and scatter chart introduce grid component by dafault to avoid problems in[#2758](https://github.com/ecomfe/echarts/issues/2758).
 
 + [^] fix floating point precision bug in dataZoom component. Fix [#2757](https://github.com/ecomfe/echarts/issues/2757)
 

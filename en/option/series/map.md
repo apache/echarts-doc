@@ -38,7 +38,7 @@ Multiple series containing the same [map type](~series-map.map) would use the sa
 selected mode indicating whether to support multiple selected targets, which defaults to be turned off and support boolean value and character string. The value of character string could be `'single'` or `'multiple'`.
 
 ## showLegendSymbol(boolean)
-Show the color symbol of legend in related area（dot of series symbol）. Is valid when [legend](~legend) component exists.
+Show the color symbol of legend in related area (dot of series symbol). Is valid when [legend](~legend) component exists.
 
 ## roam(boolean|string) = false
 {{ use: partial-roam }}
