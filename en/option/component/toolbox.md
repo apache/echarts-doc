@@ -120,7 +120,7 @@ Restore configuration item.
 data view tool, which could display adopted data in current diagram and updates after being edited.
 {{ use: feature-common(title="data view") }}
 #### readOnly(boolean) = false
-Whether it couldn't be edited（read-only）. 
+Whether it couldn't be edited (read-only). 
 #### lang(Array) = ['data view', 'turn off', 'refresh']
 There are 3 langs in data view, which defaults to be `['data view', 'turn off' and 'refresh']`.
 #### backgroundColor(string) = '#fff'
@@ -172,7 +172,7 @@ feature: {
 #### show(boolean) = true
 Whether to show the magic type switching.
 #### type(Array)
-Enabled magic type, including `'line'`（switch to broken line chart）, `'bar'`（switch to bar chart）, `'stack'`（switch to stack mode）, `'tiled'`（switch to tiled mode）.
+Enabled magic type, including `'line'` (switch to broken line chart), `'bar'` (switch to bar chart), `'stack'` (switch to stack mode), `'tiled'` (switch to tiled mode).
 {{ use: feature-common(title="magic type switching") }}
 #### icon(Object)
 the different types of icon path , which could be configurated individually.

@@ -35,7 +35,7 @@ Tip: Compared with ECharts2, Treemap configuration items have changed. Some  imm
 
 + the configuration of `label` is moved outside the `itemStyle.normal/itemStyle.emphasis`, which is in the same level with `itemStyle`.
 
-+ `itemStyle.normal.childBorderWidth`、`itemStyle.normal.childBorderColor` are not avaliable anymore（because this configuration can only define 2 levels of treemap）.[series-treemap.levels](~series-treemap.levels) is used uniformly to define all levels.
++ `itemStyle.normal.childBorderWidth`、`itemStyle.normal.childBorderColor` are not avaliable anymore (because this configuration can only define 2 levels of treemap).[series-treemap.levels](~series-treemap.levels) is used uniformly to define all levels.
 
 <br>
 <br>
@@ -61,7 +61,7 @@ It defaults to be the golden ratio: `0.5 * (1 + Math.sqrt(5))`.
 
 ## roam(boolean|string) = true
 
-Whether to enable dragging roam（move and zoom）. Optional values are: 
+Whether to enable dragging roam (move and zoom). Optional values are: 
 
 + `false`: close.
 + `'scale'` or  `'zoom'`: zoom only.
@@ -108,9 +108,9 @@ levels: [
 
 Treemap primarily focus on how to visually distinguish 『different levels』 from 『different categories in the same level』, which require to properly set 『rectangular color』,『border thickness』, 『border color』and even『color saturation of rectangular』 and so on on each level.
 
-Reference to [example](${galleryEditorPath}treemap-disk&edit=1&reset=1). The top level is divided by colors into several parts respectively in 『red』『green』『blue』and etc.. Each color block is the next level, using color saturation to distinguish (reference to `colorSaturation`). The border of the outermost level of Rectangle is 『white』. The border of the next level rectangular is the processed result of current block color added with saturation（See `borderColorSaturation`）.
+Reference to [example](${galleryEditorPath}treemap-disk&edit=1&reset=1). The top level is divided by colors into several parts respectively in 『red』『green』『blue』and etc.. Each color block is the next level, using color saturation to distinguish (reference to `colorSaturation`). The border of the outermost level of Rectangle is 『white』. The border of the next level rectangular is the processed result of current block color added with saturation (See `borderColorSaturation`).
 
-Treemap supports this configuration through the following rule: each level computes visual information（the configuration in levels） of  user configuration such as`color`、`colorSaturation`、`borderColor`、`colorSaturation`, then pass them to the child node (sublevel). If there is no configuration of child node, the configuration of the parent node would be inherited, or its own configuration would be used.
+Treemap supports this configuration through the following rule: each level computes visual information (the configuration in levels)  of  user configuration such as`color`、`colorSaturation`、`borderColor`、`colorSaturation`, then pass them to the child node (sublevel). If there is no configuration of child node, the configuration of the parent node would be inherited, or its own configuration would be used.
 
 Therefore, what can be done is the following: the parent level configurates `color` list, the child level configurates `colorSaturation`. Each node of parent level would obtain a color from the `color` list; and the node of child level would obtain a color from `colorSaturation` and compound it with the color inherited from the parent node to get its final color.
 
@@ -119,7 +119,7 @@ Therefore, what can be done is the following: the parent level configurates `col
 <br>
 **dimensions and『extra visual mapping』**
 
-Example: every `value` field is an Array, in which every item corresponds with a dimension（dimension）.
+Example: every `value` field is an Array, in which every item corresponds with a dimension (dimension).
 
 ```javascript
 [
@@ -149,7 +149,7 @@ Example: every `value` field is an Array, in which every item corresponds with a
 ]
 ```
 
-treemap defalts to map the first dimension（the first item of Array） to 『area』. If users want to express more information, users could map another dimension（[series-treemap.visualDimension](~series-treemap.viusalDimension)） to another 『visual element』, such as color lightness and so on.  See the status when `Growth` is selected in legend in the [example](${galleryEditorPath}treemap-obama&edit=1&reset=1).
+treemap defalts to map the first dimension (the first item of Array)  to 『area』. If users want to express more information, users could map another dimension ([series-treemap.visualDimension](~series-treemap.viusalDimension))  to another 『visual element』, such as color lightness and so on.  See the status when `Growth` is selected in legend in the [example](${galleryEditorPath}treemap-obama&edit=1&reset=1).
 
 <br>
 {{ use: partial-treemap-borderColor-setting(galleryEditorPath=${galleryEditorPath}) }}
@@ -351,7 +351,7 @@ children node, recursive definition, its format is the same with [series-treemap
 
 `treemap` supports visual mapping of other dimensions of data.
 
-First of all, in data format（See [series-treemap.data](~series-treemap.data)） of treemap, the `value` of every node could be an array. And every item of an array is a『dimension』（dimension）. `visualDimension` assigns which item would be used in extra『visual mapping』. It defaults to be the `0` item.   
+First of all, in data format (See [series-treemap.data](~series-treemap.data))  of treemap, the `value` of every node could be an array. And every item of an array is a『dimension』 (dimension). `visualDimension` assigns which item would be used in extra『visual mapping』. It defaults to be the `0` item.   
 
 {{ use: partial-treemap-visual-detial }}
 {{use: partial-treemap-prop-location-desc(name="visualDimension")}}
@@ -383,11 +383,11 @@ It Indicates the selecting range of color thickness for nodes at the same level.
 
 #${prefix} colorMappingBy(string) = 'index'
 
-It indicates that what should be based on When the nodes at the same level select from the color list（See the `color` attribute）. Optional values are: 
+It indicates that what should be based on When the nodes at the same level select from the color list (See the `color` attribute). Optional values are: 
 
 * `'value'`: 
 
-Map the value of nodes（the [series-treemap.data.value](~series-treemap.data.value)） to the color list. The color obtained through this way reflects values of nodes. It could be set with `visualDimension` attribute and map with that latitudinal value of data. 
+Map the value of nodes (the [series-treemap.data.value](~series-treemap.data.value))  to the color list. The color obtained through this way reflects values of nodes. It could be set with `visualDimension` attribute and map with that latitudinal value of data. 
 
 * `'index'`: 
 
@@ -396,7 +396,7 @@ Map the `index`(serial number) of nodes to the color list. Namely, in the same l
 
 * `'id'`: 
 
-Map the `id`（namely [series-treemap.data.id](~series-treemap.data.id)） of nodes to the color list. `id` is assigned by users. It could make sure the consistency that the same `id` maps to the same color when treemap pass the variable value of  setOption. See the [example](${galleryEditorPath}treemap-obama&edit=1&reset=1). 
+Map the `id` (namely [series-treemap.data.id](~series-treemap.data.id))  of nodes to the color list. `id` is assigned by users. It could make sure the consistency that the same `id` maps to the same color when treemap pass the variable value of  setOption. See the [example](${galleryEditorPath}treemap-obama&edit=1&reset=1). 
 
 {{ use: partial-treemap-visual-detial }}
 {{use: partial-treemap-prop-location-desc(name="colorMappingBy")}}

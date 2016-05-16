@@ -2,9 +2,9 @@
 
 # dataZoom.slider(Object)
 
-**Slide rdata Zoom component（dataZoomSlider）**
+**Slide rdata Zoom component (dataZoomSlider) **
 
-（reference to [the introduction to data region zoom component（dataZoom）](~dataZoom)）
+ (reference to [the introduction to data region zoom component (dataZoom)](~dataZoom)) 
 
 
 <br>

@@ -4,7 +4,7 @@
 
 User's operation all trigger corresponding event in ECharts, developer can monitor these events and handle accordingly through callback function, such as jump to an address or pop up dialog box, or drill down data and so on.
 
-Bind events in ECharts 3 and 2 all use [on](api.html#EChartsInstance.on) ,  but event name is much simpler than it is in 2, events that are same as dom events all use string of lowercase, below is an example of binding click operation.
+Bind events in ECharts 3 and 2 all use [on](api.html#EChartsInstance.on),  but event name is much simpler than it is in 2, events that are same as dom events all use string of lowercase, below is an example of binding click operation.
 
 ```js
 myChart.on('click', function (params) {
@@ -13,7 +13,7 @@ myChart.on('click', function (params) {
 });
 ```
 
-Events in ECharts are divided into two types, one is events triggered by user's mouse clicking or hovering chart graphic, another is action events triggered by user's using of interactive component, such as  ['legendselectchanged'](api.html#events.legendselectchanged) event （attention: change legend switch will not trigger `'legendselected'` event） triggered by changing legend switch, ['datazoom'](api.html#events.legendselectchanged) event triggered by zooming data area and so on.
+Events in ECharts are divided into two types, one is events triggered by user's mouse clicking or hovering chart graphic, another is action events triggered by user's using of interactive component, such as  ['legendselectchanged'](api.html#events.legendselectchanged) event  (attention: change legend switch will not trigger `'legendselected'` event)  triggered by changing legend switch, ['datazoom'](api.html#events.legendselectchanged) event triggered by zooming data area and so on.
 
 ## Handling of mouse event
 

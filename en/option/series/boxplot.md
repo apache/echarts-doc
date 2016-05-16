@@ -73,7 +73,7 @@ Data format is double dimensional array which is shown in the following example.
 ]
 ```
 
-Every data item（each line in the example above） in double dimensional array renders a box, which contains 5 values. They are:
+Every data item (each line in the example above)  in double dimensional array renders a box, which contains 5 values. They are:
 
 ```javascript
 [min,  Q1,  median (or Q2),  Q3,  max]
