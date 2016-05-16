@@ -57,6 +57,15 @@ treemap 首先是把数值映射到『面积』这种视觉元素上。
 默认为黄金比：`0.5 * (1 + Math.sqrt(5))`。
 
 
+## leafDepth(number) = null
+
+设置了 `leafDepth` 后，下钻（`drillDown`）功能开启。
+
+`leafDepth` 表示『展示几层』，层次更深的节点则被隐藏起来。点击则可下钻看到层次更深的节点。
+
+例如，`leafDepth` 设置为 `1`，表示展示一层节点。
+
+
 ## roam(boolean|string) = true
 
 是否开启拖拽漫游（移动和缩放）。可取值有：
