@@ -1,7 +1,7 @@
 {{ target: echarts }}
 # echarts(Object)
 
-Global echarts object, can be obtained by including `echarts.js` in script tag or through `require('echarts')` in AMD environment.
+Global echarts object, which can be accessed after including `echarts.js` in script tag or through `require('echarts')` in AMD environment.
 
 ## init(Function)
 ```js

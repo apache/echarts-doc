@@ -3,14 +3,14 @@
 
 # visualMap(Array|Object)
 
-`visualMap` is a visual map component. It is used to do『visual coding』, which refers to mapping the data to the visual elements（visual channel）.
+`visualMap` is a visual map component. It is used to do『visual coding』, which refers to mapping the data to the visual elements (visual channel).
 
 visual element could be: <br>
 {{use: partial-visual-map-visual-type}}
 
 `visualMap` could be multiply defined. Therefore, multiple dimensions of data could be mapped in the meanwhile. 
 
-`visualMap` could be defined as [Piecewise type（visualMapPiecewise）](~visualMap-piecewise) or [Continuous type（visualMapContinuous）](~visualMap-continuous), or distinguished by `type`. For instance: 
+`visualMap` could be defined as [Piecewise type (visualMapPiecewise)](~visualMap-piecewise) or [Continuous type (visualMapContinuous)](~visualMap-continuous), or distinguished by `type`. For instance: 
 
 ```javascript
 option = {
@@ -31,7 +31,7 @@ option = {
 <br>
 **The configuration of visual mapping mode**
 
-Since it is the mapping from『data』 to 『visual element』, 『specific dimension』（Reference to [visualMap.dimension](~visualMap.dimension)） could be assigned to map into some selected『visual elements』（Reference to [visualMap.inRange](~visualMap.inRange) and [visualMap.outOfRange](~visualMap.outOfRange)） in `visualMap`.
+Since it is the mapping from『data』 to 『visual element』, 『specific dimension』 (Reference to [visualMap.dimension](~visualMap.dimension))  could be assigned to map into some selected『visual elements』 (Reference to [visualMap.inRange](~visualMap.inRange) and [visualMap.outOfRange](~visualMap.outOfRange))  in `visualMap`.
 
 
 <br>
@@ -56,16 +56,16 @@ Since it is the mapping from『data』 to 『visual element』, 『specific dime
 
 
 {{target: partial-visual-map-visual-type}}
-`figure type（symbol）`、`figure size（symbolSize）`<br>
-`color（color）`、`the transparency of color（colorAlpha）`、<br>
-`the intensity of color（colorLightness）`、`the Saturation of color（colorSaturation）`、`color hue（colorHue）`
+`figure type (symbol)`、`figure size (symbolSize)`<br>
+`color (color)`、`the transparency of color (colorAlpha)`、<br>
+`the intensity of color (colorLightness)`、`the Saturation of color (colorSaturation)`、`color hue (colorHue)`
 
 
 
 
 
 {{target: partial-visual-map-range}}
-`${rangeType}` could customize target series（reference to [${visualMapName}.seriesIndex](~${visualMapName}.seriesIndex)）visual form, and also customizes visual form of `${visualMapName}` itself. Generally speaking, if `${visualMapName}` controlled scatter diagram, then `${rangeType}` would define its `color`、`size` and so on. Both of them correspond with each other.
+`${rangeType}` could customize target series (reference to [${visualMapName}.seriesIndex](~${visualMapName}.seriesIndex)) visual form, and also customizes visual form of `${visualMapName}` itself. Generally speaking, if `${visualMapName}` controlled scatter diagram, then `${rangeType}` would define its `color`、`size` and so on. Both of them correspond with each other.
 
 Definition mode, for instance: 
 
@@ -122,25 +122,25 @@ visualMap: [
 
 **About visual type**
 
-+ In ${rangeType}, there could be any definitions of 『visual type』（such as `color`、`symbolSize` and ect.）. These visual types can be adopted in the meanwhile.
++ In ${rangeType}, there could be any definitions of 『visual type』 (such as `color`、`symbolSize` and ect.). These visual types can be adopted in the meanwhile.
 
-+The values of every visual type, all of which are expressed by the form of `Array` （they are expressed by the form of `Object`  only in [visualMap-piecewise.categories](~visualMap-piecewise.categories). If it was written as `number` or `string`, it would turn to `Array`.
++The values of every visual type, all of which are expressed by the form of `Array`  (they are expressed by the form of `Object`  only in [visualMap-piecewise.categories](~visualMap-piecewise.categories). If it was written as `number` or `string`, it would turn to `Array`.
 
 +The content of `Array`: 
 
-    + For `figure size（symbolSize）`、`the transpatency of color（colorAlpha）`、`the intensity of color（colorLightness）`、the saturation of color（colorSaturation）`、`color hue（colorHue）`: 
+    + For `figure size (symbolSize)`、`the transpatency of color (colorAlpha)`、`the intensity of color (colorLightness)`、the saturation of color (colorSaturation)`、`color hue (colorHue)`: 
 
     `Array` is always: `[the visual value with which the minimum and maximum data values correspond]`.
 
     For example: colorLightness: [0.8, 0.2], which refers to that the `minimum data value` among all datas map to the `0.8` of `color intensity` , the `maximum data value` map to the `0.2` of `color intensity`. The mapping results of other data values between the minimum and the maximum would be acquired according to linear calculation.
 
-    + For `color（color）` or `figure type（symbol）`: 
+    + For `color (color)` or `figure type (symbol)`: 
 
     `Array` for instance: `['color0', 'color1', 'color2', ...]` or `['circle', 'rect', 'diamond', ...]`.
 
     Referring to the minimum data value which maps to the first item of  `Array` and the maximum value which maps to the last item of  `Array`. Other values between the minimum and the maximum would be gained according to linear calculation. 
 
-+ Under [visualMap-piecewise.categories](~visualMap-piecewise.categories) mode, visual definition adopts `Object`. For example（[See the sample](${galleryEditorPath}doc-example/scatter-visualMap-categories&edit=1&reset=1)）: 
++ Under [visualMap-piecewise.categories](~visualMap-piecewise.categories) mode, visual definition adopts `Object`. For example ([See the sample](${galleryEditorPath}doc-example/scatter-visualMap-categories&edit=1&reset=1)) : 
 
 ```javascript
 ${rangeType}: {
@@ -224,7 +224,7 @@ Define the visual element outside **selected area** . Optional visual elements a
 
 ## orient(string) = 'vertical'
 
-horizontal（`'horizontal'`）or vertical（`'vertical'`）. 
+horizontal (`'horizontal'`) or vertical (`'vertical'`). 
 
 
 ## padding(number|Array) = 5

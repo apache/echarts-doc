@@ -8,11 +8,11 @@
 
 several valid subcomponent at present: 
 
-+ [Inside data zoom component（dataZoomInside）](~dataZoom-inside): installed inside the coordinate axis system.
++ [Inside data zoom component (dataZoomInside)](~dataZoom-inside): installed inside the coordinate axis system.
 
-+ [Slider data Zoom component（dataZoomSlider）](~dataZoom-slider): operation through an individual slider.
++ [Slider data Zoom component (dataZoomSlider)](~dataZoom-slider): operation through an individual slider.
 
-+ [Selected toolbox data Zoom component（dataZoomSelect）](~toolbox.feature.dataZoom): zooming in or out date through selected full-screen in a specific area. All the accesses and configuration items are in `toolbox`.
++ [Selected toolbox data Zoom component (dataZoomSelect)](~toolbox.feature.dataZoom): zooming in or out date through selected full-screen in a specific area. All the accesses and configuration items are in `toolbox`.
 
 
 Example: 
@@ -22,7 +22,7 @@ Example:
 
 **Tips: **
 
-+ `dataZoom` mainly deals with `axis（axis）`. 
++ `dataZoom` mainly deals with `axis (axis)`. 
 
     Using [dataZoom.xAxisIndex](~dataZoom.xAxisIndex) or [dataZoom.yAxisIndex](~dataZoom.yAxisIndex) or [dataZoom.radiusAxisIndex](~dataZoom.radiusAxisIndex) or [dataZoom.angleAxisIndex](~dataZoom.angleAxisIndex) to assign a axis or  some axis which should be controlled by `dataZoom` .
 
@@ -104,7 +104,7 @@ option: {
 
 ## xAxisIndex(number|Array) = null
 
-Setting up `x axis` which is controlled by `${dataZoomName}` （namely,[xAxis](~xAxis), which is a concept in rectangular coordinate system, reference to [grid](~grid)）. 
+Setting up `x axis` which is controlled by `${dataZoomName}`  (namely,[xAxis](~xAxis), which is a concept in rectangular coordinate system, reference to [grid](~grid)). 
 
 without assignment, as [${dataZoomName}.orient](~${dataZoomName}.orient) is `'horizontal'`, it defaults to control all the `xAxis`.
 
@@ -115,7 +115,7 @@ without assignment, as [${dataZoomName}.orient](~${dataZoomName}.orient) is `'ho
 
 ## yAxisIndex(number|Array) = null
 
-Setting up `y axis` which is controlled by `${dataZoomName}` （namely, [yAxis](~yAxis), which is a concept in rectangular coordinate system, reference to [grid](~grid)）. 
+Setting up `y axis` which is controlled by `${dataZoomName}`  (namely, [yAxis](~yAxis), which is a concept in rectangular coordinate system, reference to [grid](~grid)). 
 
 without assignment, as [${dataZoomName}.orient](~${dataZoomName}.orient) is `'vertical'`, it defaults to control all the `yAxis`.
 
@@ -127,7 +127,7 @@ without assignment, as [${dataZoomName}.orient](~${dataZoomName}.orient) is `'ve
 ## angleAxisIndex(number|Array) = null
 
 
-Setting up angleAxis which is controlled by `${dataZoomName}`（namely, [angleAxis](~angleAxis), which is a concept in polar coordinate system, reference to [polar](~polar)）. 
+Setting up angleAxis which is controlled by `${dataZoomName}` (namely, [angleAxis](~angleAxis), which is a concept in polar coordinate system, reference to [polar](~polar)). 
 
 Without assignment, it defaults to control all the `angleAxis`.
 
@@ -138,7 +138,7 @@ Without assignment, it defaults to control all the `angleAxis`.
 
 ## radiusAxisIndex(number|Array) = null
 
-Setting up radiusAxis which is controlled by `${dataZoomName}`（namely,[radiusAxis](~radiusAxis), which is a concept in polar coordinate system, reference to [polar](~polar)）. 
+Setting up radiusAxis which is controlled by `${dataZoomName}` (namely,[radiusAxis](~radiusAxis), which is a concept in polar coordinate system, reference to [polar](~polar)). 
 
 Without assignment, it defaults to control all the  `radiusAxis`.
 
@@ -222,5 +222,5 @@ With the setting of `true` , the size of selected area  is locked, indicating th
 
 ## throttle(number) = 100
 
-Setting up the frequency which triggers views updating. Its unit is milli second（ms）, which is unnecessary to be changed.
+Setting up the frequency which triggers views updating. Its unit is milli second (ms), which is unnecessary to be changed.
 

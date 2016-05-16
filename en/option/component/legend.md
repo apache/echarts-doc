@@ -22,7 +22,7 @@ Option:
 
 ## align(string) = 'auto'
 
-Legend mrker and text aligning. It defaults to align automatically, which is decided by the component location and orient. as the [left](~legend.left) value of this component is 'right' , and the vertical layout（[orient](~legend.orient) is  'vertical'）, it would be right align,'right'.
+Legend mrker and text aligning. It defaults to align automatically, which is decided by the component location and orient. as the [left](~legend.left) value of this component is 'right' , and the vertical layout ([orient](~legend.orient) is  'vertical'), it would be right align,'right'.
 
 Option: 
 + 'auto'
@@ -87,7 +87,7 @@ Public text style of legend.
 
 ## data(Array)
 
-Data array of legend. An array item is usually a string and every item represents the `name`（if it is[pie chart](~series-pie), it would also be the `name` of a single data in the pie chart） of a series . Legend component would automatically acquire the color of the corresponding series. As the automatically drawn color and symbol, special string `''`（null string）or `'\n'` (line feed string), diagram symbol（symbol）is used in lind feedof legend.
+Data array of legend. An array item is usually a string and every item represents the `name` (if it is[pie chart](~series-pie), it would also be the `name` of a single data in the pie chart)  of a series . Legend component would automatically acquire the color of the corresponding series. As the automatically drawn color and symbol, special string `''` (null string) or `'\n'` (line feed string), diagram symbol (symbol) is used in lind feedof legend.
 
 If you want to set the style of a single item, this item could be written as the object to the configuration item. At this time, you must use the `name`  property to correspond with the `name` of series.   
 
@@ -105,7 +105,7 @@ data: [{
 ```
 
 ### name(string)
-Name of legend item, corresponding with the `name`of series（if it was pie diagram, it could be the `name` of singel data in the pie diagram）.
+Name of legend item, corresponding with the `name`of series (if it was pie diagram, it could be the `name` of singel data in the pie diagram).
 
 ### icon(string)
 

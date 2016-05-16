@@ -5,12 +5,12 @@
     + ECharts introduction
 
 + Advanced tutorial
-    + add interactive component in the chart（legend, dataZoom）
+    + add interactive component in the chart (legend, dataZoom) 
     + each component layout in ECharts 
     + asynchronous data and dynamic data
     + customized interactions through JS API 
     + coordinate system in ECharts
-    + data and visual coding（dataRange） in ECharts 
+    + data and visual coding (dataRange)  in ECharts 
     + self-adaptive on mobile end
     + use theme
     + use ECharts in node end

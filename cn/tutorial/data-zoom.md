@@ -123,7 +123,7 @@ option = {
 
 <br>
 
-如果想 y轴 也能够缩放，那么在y轴上也加上 dataZoom组件：
+如果想 y 轴也能够缩放，那么在 y 轴上也加上 dataZoom 组件：
 
 ```javascript
 option = {

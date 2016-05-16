@@ -250,7 +250,7 @@ without a particular setting, the maximum value would be caculated automatically
 
 #${prefix} scale(boolean) = false
 
-It is available only in numerical axis（[type](~${componentType}.type): 'value'）. 
+It is available only in numerical axis ([type](~${componentType}.type): 'value'). 
 
 specify whether to get rid of 0 value porpotion. As it is set as `true`, the axis tick would not compulsorily contains 0 scale, which is more useful in the scatter diagram of double-numerical axis.
 
@@ -267,7 +267,7 @@ The segmented interval of coordinate axis.
 
 As [splitNumber](~${componentType}.splitNumber)  is a predicted value, the scale caculated through pratical strategy may not achieve the desired effect. Under such condition, interval can be set with [min](~${componentType}.min), [max](~${componentType}.max) to compulsorily divide the scale, which is generally not recommended.   
 
-Unavailable in category axis. The timestamp need to be transmitted in timeaxis（[type](~${componentType}.type): 'time'）, and the index value need to be transmitted in logaxis.（[type](~${componentType}.type): 'log'）.
+Unavailable in category axis. The timestamp need to be transmitted in timeaxis ([type](~${componentType}.type): 'time'), and the index value need to be transmitted in logaxis. ([type](~${componentType}.type): 'log').
 
 {{ use: partial-axis-common-axis-line(
     prefix=${prefix},
@@ -302,7 +302,7 @@ Unavailable in category axis. The timestamp need to be transmitted in timeaxis�
 
 #${prefix} data(Array)
 
-Category data, available in category axis（[type](~${componentType}.type): 'category'）.
+Category data, available in category axis ([type](~${componentType}.type): 'category').
 
 Example: 
 

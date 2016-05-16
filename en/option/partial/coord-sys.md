@@ -8,7 +8,7 @@ The coordinate system used in the series,  options are:
 
 + `'cartesian2d'`
 
-    Using a two-dimensional Cartesian coordinate system（also known as Cartesian coordinate system）, through [xAxisIndex](~series-${seriesType}.xAxisIndex), [yAxisIndex](~series-${seriesType}.yAxisIndex) to assign the corresponding axis component.
+    Using a two-dimensional Cartesian coordinate system (also known as Cartesian coordinate system), through [xAxisIndex](~series-${seriesType}.xAxisIndex), [yAxisIndex](~series-${seriesType}.yAxisIndex) to assign the corresponding axis component.
 {{/if}}
 
 {{if: ${polar} }}

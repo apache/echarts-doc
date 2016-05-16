@@ -235,7 +235,7 @@ It will be triggered when user clicks to select.
 
 ${name}Event after selecting.
 
-Use `dispatchAction` can trigger this event, but user clicking this event won't trigger this（User clicking event please use [${componentType}selectchanged](~events.${componentType}selectchanged)）.
+Use `dispatchAction` can trigger this event, but user clicking this event won't trigger this (User clicking event please use [${componentType}selectchanged](~events.${componentType}selectchanged)).
 
 ```js
 {
@@ -256,7 +256,7 @@ Use `dispatchAction` can trigger this event, but user clicking this event won't 
 
 ${name} cancels selected event.
 
-Use `dispatchAction` will trigger this event, but user clicking won't trigger it. (For user clicking event, please refer to [${componentType}selectchanged](~events.${componentType}selectchanged)）.
+Use `dispatchAction` will trigger this event, but user clicking won't trigger it. (For user clicking event, please refer to [${componentType}selectchanged](~events.${componentType}selectchanged)).
 
 ```js
 {

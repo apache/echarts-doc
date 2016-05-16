@@ -4,7 +4,7 @@
 
 Radar chart coordinate system component, only suitable for [radar chart](~series-radar). This component is equal to the polar component in ECharts 2. Because the polar in the echarts 3 is reconstructed to be the standard polar coordinate system component, in order to avoid mixing up, radar chart adopts radar component as its coordinate system. 
 
-Compared with polar coordinate system, every axis（indicator） of the radar chart coordinate system is a individual dimension. The style of indicator coordinate axis could be allocated through the following configuration items, including [name](~radar.name)、[axisLine](~radar.axisLine)、[axisTick](~radar.axisTick)、[axisLabel](~radar.axisLabel)、[splitLine](~radar.splitLine)、 [splitArea](~radar.splitArea).
+Compared with polar coordinate system, every axis (indicator)  of the radar chart coordinate system is a individual dimension. The style of indicator coordinate axis could be allocated through the following configuration items, including [name](~radar.name)、[axisLine](~radar.axisLine)、[axisTick](~radar.axisTick)、[axisLabel](~radar.axisLabel)、[splitLine](~radar.splitLine)、 [splitArea](~radar.splitArea).
 
 
 Here is a custom example of radar component.
@@ -95,12 +95,12 @@ the indicator of radar chart, which refers to multiple variables(dimensions) in 
 
 ```js
 indicator: [
-   { name: 'sales（sales）', max: 6500},
-   { name: 'administration（Administration）', max: 16000},
-   { name: 'Information Techology（Information Techology）', max: 30000},
-   { name: 'Customer Support（Customer Support）', max: 38000},
-   { name: 'Development（Development）', max: 52000},
-   { name: 'Marketing（Marketing）', max: 25000}
+   { name: 'sales (sales) ', max: 6500},
+   { name: 'administration (Administration) ', max: 16000},
+   { name: 'Information Techology (Information Techology) ', max: 30000},
+   { name: 'Customer Support (Customer Support) ', max: 38000},
+   { name: 'Development (Development) ', max: 52000},
+   { name: 'Marketing (Marketing) ', max: 25000}
 ]
 ```
 

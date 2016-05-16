@@ -3,7 +3,7 @@
 
 # grid(Object)
 
-Drawing grid in rectangular coordinate system. In a single grid, 2 x axis above and below and 2 y axis righ and left could be placed at most.  [broken line chart](~series-line), [bar chart](~series-bar), [scatter diagram（bubble diagram）](~series-scatter) could be drawn in grid.
+Drawing grid in rectangular coordinate system. In a single grid, 2 x axis above and below and 2 y axis righ and left could be placed at most.  [broken line chart](~series-line), [bar chart](~series-bar), [scatter diagram (bubble diagram)](~series-scatter) could be drawn in grid.
 
 In ECharts 2.x , there is one grid component at most in a single echarts example; while in ECharts 3, there is no limitation about the quantity of grid component in a single echarts example.
 

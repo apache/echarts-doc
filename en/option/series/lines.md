@@ -29,7 +29,7 @@ ECharts 2.x uses the `markLine` from map to draw the migrating effect; while in 
 ## effect(Object)
 the setting about special effect of lines.
 
-**Tips: **All the graphs with contrail effect should be individually put on one layer. It indicates that [zlevel](~series-lines.zlevel) need to be individually set up and the animation（[animation](~series-lines.animation): false） of this layer is suggested to turn off at the meanwhile. Otherwise, other graphic elements in other series and the [label](~series-lines.label) of animation would produce unnecessary shadows.  
+**Tips: **All the graphs with contrail effect should be individually put on one layer. It indicates that [zlevel](~series-lines.zlevel) need to be individually set up and the animation ([animation](~series-lines.animation): false)  of this layer is suggested to turn off at the meanwhile. Otherwise, other graphic elements in other series and the [label](~series-lines.label) of animation would produce unnecessary shadows.  
 
 ### show(boolean) = false
 Whether to show special effect.

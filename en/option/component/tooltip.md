@@ -111,13 +111,13 @@ The content formatter of tooltip's floating layer which supports character strin
     In differnt types of diagrams, the meanings of `{a}`, `{b}`, `{c}`, `{d}` are different.
     In different types of diagrams, the meanings of the variables including `{a}`, `{b}`, `{c}`, `{d}` represent the data meaning below: 
 
-    + broken line（area）diagram、bar（bar type）diagram、K-line diagram : `{a}`（series name）, `{b}`（category value）, `{c}`（numerical value）, `{d}`（none）
+    + broken line (area) diagram、bar (bar type) diagram、K-line diagram : `{a}` (series name), `{b}` (category value), `{c}` (numerical value), `{d}` (none) 
 
-    + scatter diagram（bubble）diagram : `{a}`（series name）, `{b}`（data name）, `{c}`（numerical value array）, `{d}`（none）
+    + scatter diagram (bubble) diagram : `{a}` (series name), `{b}` (data name), `{c}` (numerical value array), `{d}` (none) 
 
-    + map : `{a}`（series name）, `{b}`（area name）, `{c}`（merge numerical value）, `{d}`（none）
+    + map : `{a}` (series name), `{b}` (area name), `{c}` (merge numerical value), `{d}` (none) 
 
-    + pie chart、instrument panel、funnel plot: `{a}`（series name）, `{b}`（data item name）, `{c}`（numerical value）, `{d}`（percentage）
+    + pie chart、instrument panel、funnel plot: `{a}` (series name), `{b}` (data item name), `{c}` (numerical value), `{d}` (percentage) 
 
    See more meanings about other variables of diagram template in label.normal.formatter configuration item in corresponding diagram. 
 

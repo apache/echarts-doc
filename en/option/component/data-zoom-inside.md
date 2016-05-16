@@ -2,9 +2,9 @@
 
 # dataZoom.inside(Object)
 
-**inside data zoom component（dataZoomInside）**
+**inside data zoom component (dataZoomInside) **
 
-（Refer to[The introduction to data zoom component（dataZoom）](~dataZoom)）
+ (Refer to[The introduction to data zoom component (dataZoom)](~dataZoom)) 
 
 The so called『inside』refers to installed inside the coordinate system.
 

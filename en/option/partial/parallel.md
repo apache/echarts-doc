@@ -2,7 +2,7 @@
 
 **Introduction of parallel coordinates**
 
-[parallel coordinates（Parallel Coordinates）](https://en.wikipedia.org/wiki/Parallel_coordinates) is a frequently used data chart of  high-dimensional visualization.
+[parallel coordinates (Parallel Coordinates)](https://en.wikipedia.org/wiki/Parallel_coordinates) is a frequently used data chart of  high-dimensional visualization.
 
 {{use: partial-parallel-data-example}}
 
@@ -78,7 +78,7 @@ Three concerned components: [parallel](~parallel)、[parallelAxis](~parallelAxis
 
 + [parallel](~parallel)
 
-    The configuration item of this parallel coordinate system is『coordinate system』itsel.one series（`series`）or many series（like 『Beijing』、『Shanghai』、『Guangzhou』in the above picture is a series respectively.）They can share thi『coordinate system』
+    The configuration item of this parallel coordinate system is『coordinate system』itsel.one series (`series`) or many series (like 『Beijing』、『Shanghai』、『Guangzhou』in the above picture is a series respectively.) They can share thi『coordinate system』
 
     The same as other coordinate systems, multiple coordinate systems can be created.
 
@@ -88,13 +88,13 @@ Three concerned components: [parallel](~parallel)、[parallelAxis](~parallelAxis
 
     This is axis configuration of 『coordinate system』. Naturally, multiple axes are needed.
 
-    Among which are attributes of  [parallelAxis.parallelIndex](~parallelAxis.parallelIndex) , assigning this『axis』in which『coordinate system』. Use the first 『coordinate system』by default.
+    Among which are attributes of  [parallelAxis.parallelIndex](~parallelAxis.parallelIndex), assigning this『axis』in which『coordinate system』. Use the first 『coordinate system』by default.
 
 + [series-parallel](~series-parallel)
 
     This is the definition of『series』. Series will be drawn to『coordinate system』.
 
-    Among which are attributes of [series-parallel.parallelIndex](~series-parallel.parallelIndex) , assigning usage of which『coordinate system』.Use the first 『coordinate system』by default.
+    Among which are attributes of [series-parallel.parallelIndex](~series-parallel.parallelIndex), assigning usage of which『coordinate system』.Use the first 『coordinate system』by default.
 
 **Configuration note and best practices**
 
@@ -120,7 +120,7 @@ For example, following data are in [series-parallel.data](~series-parallel.data)
     ...
 ]
 ```
-In data, every line is a 『data item』, every row belongs to a『dimension』.（like every row of data above means: 『date』,『AQI index』, 『PM2.5』, 『PM10』, 『carbon monoxide value』, 『nitrogen dioxide value』, 『sulfur dioxide value』）. 
+In data, every line is a 『data item』, every row belongs to a『dimension』. (like every row of data above means: 『date』,『AQI index』, 『PM2.5』, 『PM10』, 『carbon monoxide value』, 『nitrogen dioxide value』, 『sulfur dioxide value』). 
 
 
 

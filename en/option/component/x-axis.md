@@ -17,7 +17,7 @@ options:
 + `'top'`
 + `'bottom'`
 
-The first x axis in grid defaults to be under（`'bottom'`） the grid, and the second x axis is on the other side against the first x axis. 
+The first x axis in grid defaults to be under (`'bottom'`)  the grid, and the second x axis is on the other side against the first x axis. 
 
 {{ use: axis-common(
     prefix='#',

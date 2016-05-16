@@ -24,7 +24,7 @@ When to show the effect.
 
 **Options: **
 + `'render'` Show the effect when rendering is done.
-+ `'emphasis'` Show the effect when it is highlight（hover）.
++ `'emphasis'` Show the effect when it is highlight (hover).
 
 ## rippleEffect(Object)
 Related configurations about ripple effect.

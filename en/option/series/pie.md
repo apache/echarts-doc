@@ -84,7 +84,7 @@ the style of visual guide line. When [label position](~series-pie.label.normal.p
     componentName="pie chart",
     defaultRadius="[0, '75%']"
 )}}
-You can set a large inside radius for a Donut chart（Donut chart）.  
+You can set a large inside radius for a Donut chart (Donut chart).  
 
 ## data(Array)
 {{ use: partial-1d-data-desc }}
