@@ -3,9 +3,9 @@
 
 # series.gauge(Object)
 
-**gauge board**
+**Gauge chart**
 
-**sample: **
+**Example: **
 ~[600x500](${galleryViewPath}gauge-car)
 
 ## type(string) = 'gauge'
@@ -15,51 +15,51 @@
 {{ use: partial-circular-layout }}
 <!-- overwrite radius -->
 ## radius(number|string) = '75%'
-the radius of gauge board. It could be the half percentage of the smaller item compared with the height and width of container and also could be absolute value. 
+The radius of gauge chart. It can be a percentage value of the smaller of container half width and half height, also can be an absolute value.
 
 {{ use partial-legend-hover-link }}
 
 ## startAngle(number) = 225
-the start angle of gauge board. The direct right side of [circle center](~series-gauge.center) is `0` degree, the right above it is `90` degree, the direct left side of it is `180` degree.
+The start angle of gauge chart. The direct right side of [circle center](~series-gauge.center) is `0` degree, the right above it is `90` degree, the direct left side of it is `180` degree.
 
 ## endAngle(number) = -45
-the end angle of gauge board.
+The end angle of gauge chart.
 
 ## clockwise(boolean) = true
-Whether the scale in gauge board increases clockwise.
+Whether the scale in gauge chart increases clockwise.
 
 ## min(number) = 0
-the minimum data value which map to [minAngle](~series-gauge.minAngle).
+The minimum data value which map to [minAngle](~series-gauge.minAngle).
 
 ## max(number) = 100
-the maximum data value which map to  [maxAngle](~series-gauge.maxAngle).
+The maximum data value which map to  [maxAngle](~series-gauge.maxAngle).
 
 ## splitNumber(number) = 10
-the number about split segments of gauge board scale.
+The number of split segments of gauge chart scale.
 
 ## axisLine(Object)
-the related configuration about the axis line of gauge board.
+The related configuration about the axis line of gauge chart.
 ### show(boolean) = true
-Whether to show the axis line of gauge board.
+Whether to show the axis line of gauge chart.
 ### lineStyle(Object)
-the style of the axis line of gauge board.
+The style of the axis line of gauge chart.
 #### color(Array)
-the axis line of gauge board could be divided to a lot of segments in different colors. The end position and color of each segment could be expressed by an array.
+The axis line of gauge chart can be divided to several segments in different colors. The end position and color of each segment can be expressed by an array.
 
-Default value: 
+Default value:
 ```js
 [[0.2, '#91c7ae'], [0.8, '#63869e'], [1, '#c23531']]
 ```
 #### width(number) = 30
-the width of axis line.
+The width of axis line.
 {{ use: partial-style-shadow-opacity(prefix="###") }}
 
 ## splitLine(Object)
-the style of split line.
+The style of split line.
 ### show(boolean) = true
 Whether to show the split line.
 ### length(number|string) = 30
-the length of split line which supports the pecentage of relative radius.
+The length of split line, can be a pecentage value relative to radius.
 ### lineStyle(Object)
 {{ use: partial-line-style(
     prefix='###',
@@ -69,13 +69,13 @@ the length of split line which supports the pecentage of relative radius.
 ) }}
 
 ## axisTick(Object)
-the scale style.
+The tick line style.
 ### show(boolean) = true
 Whether to show the scale.
 ### splitNumber(number) = 5
-the split scale number between split line.
+The split scale number between split line.
 ### length(number|string) = 8
-the length of scale line which supports the pecentage of relative radius. 
+The length of tick line, can be a pecentage value relative to radius.
 ### lineStyle(Object)
 {{ use: partial-line-style(
     prefix='###',
@@ -85,17 +85,17 @@ the length of scale line which supports the pecentage of relative radius.
 ) }}
 
 ## axisLabel(Object)
-scale label.
+Axis tick label.
 ### show(boolean) = true
 Whether to show the label.
 ### formatter(string|Function)
-the content formatter of scale label, which supports both character string template and callback function.
+The content formatter of scale label, which supports both string template and callback function.
 Example:
 ```js
-// use character string template. the template variable defaults to be label {value}
+// use string template. the template variable {value} represent the default label text
 formatter: '{value} kg'
 
-// use function template. the function parameters are respectively scale values.  
+// use function callback. the function parameters are scale values.
 formatter: function (value) {
     return value + 'km/h';
 }
@@ -103,34 +103,34 @@ formatter: function (value) {
 ### textStyle(Object)
 {{ use: partial-text-style(prefix="###") }}
 ### color(Color) = 'auto'
-scale color
+The scale color
 
 
 ## pointer(Object)
-gauge board pointer.
+Gauge chart pointer.
 ### show(boolean) = true
 Whether to show the pointer.
 ### length(string|number) = '80%'
-the length of pointer which could be absolute value and also the percentage relative to [radius](~series-gauge.radius).
+The length of pointer which could be absolute value and also the percentage relative to [radius](~series-gauge.radius).
 ### width(number) = 8
-the width of pointer.
+The width of pointer.
 
 ## itemStyle(Object)
-the style of gauge board.
+The style of gauge chart.
 ### normal(Object)
 {{ use: partial-item-style(prefix="###") }}
 <!-- overwrite color -->
 #### color(Color) = 'auto'
-the color of pointer which defaults to adopt [the color of interzone](~series-gauge.axisLine.lineStyle.color) where the numerical value belongs to.
+The color of pointer. Defaults to use [the color of section](~series-gauge.axisLine.lineStyle.color) where the numerical value belongs to.
 ### emphasis(Object)
 {{ use: partial-item-style(prefix="###") }}
 
 ## title(Object)
-the title of gauge board.
+The title of gauge chart.
 ### show(boolean) = true
 Whether to show the title.
 ### offsetCenter(Array) = [0, '-40%']
-the offset position relative to the center of gauge board. The first item of array is the horizontal offset; the second item of array is the vertical offset. It could be absolute value and also the percentage relative to the radius of gauge board. 
+The offset position relative to the center of gauge chart. The first item of array is the horizontal offset; the second item of array is the vertical offset. It could be absolute value and also the percentage relative to the radius of gauge chart.
 ### textStyle(Object)
 {{ use: partial-text-style(
     prefix="###",
@@ -139,21 +139,21 @@ the offset position relative to the center of gauge board. The first item of arr
 ) }}
 
 ## detail(Object)
-the detail about gauge board which is used to show data.
+The detail about gauge chart which is used to show data.
 ### show(boolean) = true
 Whether to show the details.
 ### width(number) = 100
-the width of detail.
+The width of detail.
 ### height(number) = 40
-the height of detail.
+The height of detail.
 ### backgroundColor(Color) = 'transparent'
-the background color of detail.
+The background color of detail.
 ### borderWidth(number) = 0
-the border width of detail.
+The border width of detail.
 ### borderColor(Color) = '#ccc'
-the border color of detail.
+The border color of detail.
 ### offsetCenter(Array) = [0, '40%']
-the offset position relative to the center of gauge board. The first item of array is the horizontal offset; the second item of array is the vertical offset. It could be absolute value and also the percentage relative to the radius of gauge board. 
+The offset position relative to the center of gauge chart. The first item of array is the horizontal offset; the second item of array is the vertical offset. It could be absolute value and also the percentage relative to the radius of gauge chart.
 ### textStyle(Object)
 {{ use: partial-text-style(
     prefix="###",
@@ -162,7 +162,7 @@ the offset position relative to the center of gauge board. The first item of arr
 ) }}
 <!-- overwrite color -->
 #### color(Color) = 'auto'
-the text color, which defaults to adopt [the color of interzone](~series-gauge.axisLine.lineStyle.color) where the numerical value belongs to.
+The text color. Defaults to use [the color of section](~series-gauge.axisLine.lineStyle.color) where the numerical value belongs to.
 
 {{use: partial-mark-point(
     prefix="#",
