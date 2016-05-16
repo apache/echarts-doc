@@ -3,14 +3,14 @@
 
 # visualMap.continuous(Object)
 
-**Continuous visual Map component（visualMapContinuous）**
+**Continuous visual Map component (visualMapContinuous) **
 
-（Reference to [the introduction to visual Map component（visualMap）](~visualMap)）
+ (Reference to [the introduction to visual Map component (visualMap)](~visualMap)) 
 
 Its present form is shown in the below figure: 
 ~[600x400](${galleryViewPath}doc-example/map-visualMap-continuous&edit=1&reset=1)
 
-In `visualMapContinuous`, you can turn on or off the 『Range roaming』（namely, a function of dragging handle to change the range） through  [visualMap.calculable](~visualMap.calculable) .
+In `visualMapContinuous`, you can turn on or off the 『Range roaming』 (namely, a function of dragging handle to change the range)  through  [visualMap.calculable](~visualMap.calculable).
 
 <br>
 <br>
@@ -35,7 +35,7 @@ Assign the visualMapContinuous component with a maximum which should be assigned
 
 Whether to enable the range roaming, refering to that whether you have a handle for dragging and adjusting the seleted range.
 
-（Notes: in order to be compatible with ECharts2, when [visualMap.type](~visualMap.type) is not assigned, if `'calculable'` was set correctly, `type` would be automatically set as `'continuous'`, ingnoring the settings such as  [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber). Therefore, users are not adviced to not assign the [visualMap.type](~visualMap.type), which would lead to ambiguous expressing.  
+ (Notes: in order to be compatible with ECharts2, when [visualMap.type](~visualMap.type) is not assigned, if `'calculable'` was set correctly, `type` would be automatically set as `'continuous'`, ingnoring the settings such as  [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber). Therefore, users are not adviced to not assign the [visualMap.type](~visualMap.type), which would lead to ambiguous expressing.  
 
 
 ## realtime(boolean) = true

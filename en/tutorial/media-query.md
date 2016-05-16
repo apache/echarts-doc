@@ -23,7 +23,7 @@ In the six measures, each one can be 『absolute value』or『percentage』or『
 
 + Absolute value
 
-    unit is browser pixels（px）, write with `number`（no unit）, such as `{left: 23, height: 400}`. 
+    unit is browser pixels (px), write with `number` (no unit), such as `{left: 23, height: 400}`. 
 
 + percentage
 
@@ -63,9 +63,9 @@ Three vertical measures of`top`,`bottom` and `height` are same as the horizontal
 
 
 <br>
-**Horizontal（horizontal）and vertical（vertical）**
+**Horizontal (horizontal) and vertical (vertical) **
 
-『narrow appearance』ECharts component（such as `legend`,`visualMap`,`dataZoom`,`timeline` and so on）, mostly provide options like『horizontal layout』『vertical layout』.For example, on a narrow and long screen of mobile end,『vertical layout』may be more appropriate；『horizontal layout』may be more appropriate on PC wide screen.
+『narrow appearance』ECharts component (such as `legend`,`visualMap`,`dataZoom`,`timeline` and so on), mostly provide options like『horizontal layout』『vertical layout』.For example, on a narrow and long screen of mobile end,『vertical layout』may be more appropriate；『horizontal layout』may be more appropriate on PC wide screen.
 
 Settings of horizontal and vertical layout are usually located in『component』or `orient` or `layout` configuration of『series』, set to `'horizontal'` or `'vertical'`.
 
@@ -137,7 +137,7 @@ Each `query` is like this to some extend:
 }
 ```
 
-By now three attributes are supported:`width`、`height`、`aspectRatio`（lenght-to-width ratio）. Every attribute can add prefix of `min` or `max`, such as `minWidth: 200` stands for『greater than or equal to 200px width』.When two attributes are written together means『and』, for example: `{minWidth: 200, maxHeight: 300}` stands for『greater than or equal to 200px width and smaller than or equal to 300px height』.
+By now three attributes are supported:`width`、`height`、`aspectRatio` (lenght-to-width ratio). Every attribute can add prefix of `min` or `max`, such as `minWidth: 200` stands for『greater than or equal to 200px width』.When two attributes are written together means『and』, for example: `{minWidth: 200, maxHeight: 300}` stands for『greater than or equal to 200px width and smaller than or equal to 300px height』.
 
 
 **option: **
@@ -198,7 +198,7 @@ media: [
 
 **Priority when multiple query are satisfied: **
 
-Attention: When multiple `query` are being satisfied at the same time, all will be defined by mergeOption and those are difined later will be merged（those with higher priority）.
+Attention: When multiple `query` are being satisfied at the same time, all will be defined by mergeOption and those are difined later will be merged (those with higher priority).
 
 
 **query by default: **
@@ -210,7 +210,7 @@ If certain item in `media` is not `query`, then it means『default value』, nam
 
 In many circumstances, the container DOM node doesn't need to change size with dragging, but only need to set several classic size based on different end.
 
-But if the container DOM node needs to change size with dragging, attention needs to be paied to this: if certain configuration item appears in certain `query option`, then it should also appeared in other `query option`, or it would not return to the original state.（`left/right/top/bottom/width/height` does not subject to the restrictions）
+But if the container DOM node needs to change size with dragging, attention needs to be paied to this: if certain configuration item appears in certain `query option`, then it should also appeared in other `query option`, or it would not return to the original state. (`left/right/top/bottom/width/height` does not subject to the restrictions) 
 
 
 <br>

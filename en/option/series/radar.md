@@ -68,17 +68,17 @@ area filling style.
 
 ## data(Array)
 
-The data in radar chart is multivariable（dimension）, here is the example: 
+The data in radar chart is multivariable (dimension), here is the example: 
 
 ```js
 data : [
     {
         value : [4300, 10000, 28000, 35000, 50000, 19000],
-        name : 'budget allocation（Allocated Budget）'
+        name : 'budget allocation (Allocated Budget) '
     },
      {
         value : [5000, 14000, 28000, 31000, 42000, 21000],
-        name : 'Actual Spending（Actual Spending）'
+        name : 'Actual Spending (Actual Spending) '
     }
 ]
 ```

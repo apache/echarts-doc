@@ -7,7 +7,7 @@ You can obtain ECharts through the following ways.
 
 1. Choose the version you need to download from [Official download page](http://echarts.baidu.com/download.html), based on developer's need of function and volume, we provide different download packages. If you have no need on volume, you can [download full version] directly(http://echarts.baidu.com/dist/echarts.min.js). 
 
-2. Download the lattest `release`in ECharts [github](https://github.com/echarts) , you can find the lattest version of  echarts in the  `dist` catalog of the decompressing folder.
+2. Download the lattest `release`in ECharts [github](https://github.com/echarts), you can find the lattest version of  echarts in the  `dist` catalog of the decompressing folder.
 
 3. Obtain echarts through npm, `npm install echarts --save`, see details in “[use echarts in webpack]”(http://echarts.baidu.com/tutorial.html#%E5%9C%A8%20webpack%20%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts)
 
@@ -37,7 +37,7 @@ Before drawing, we need to prepare a Dom with size(height and width) for ECharts
 </body>
 ```
 
-Then through [echarts.init](api.html#echarts.init) , we can initialize an echarts example and create a simple bar chart through [setOption](api.html#echartsInstance.setOption), below is the complete code.
+Then through [echarts.init](api.html#echarts.init), we can initialize an echarts example and create a simple bar chart through [setOption](api.html#echartsInstance.setOption), below is the complete code.
 
 
 ```html

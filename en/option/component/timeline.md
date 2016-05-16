@@ -122,7 +122,7 @@ types of axis. optional values:
 
 ## currentIndex(number) = 0
 
-Indicating which is the currently selected item. For instance,if `currentIndex` is `0`, it indicates that the currently selected item is `timeline.data[0]`（namely, using `options[0]`）. 
+Indicating which is the currently selected item. For instance,if `currentIndex` is `0`, it indicates that the currently selected item is `timeline.data[0]` (namely, using `options[0]`). 
 
 
 ## autoPlay(boolean) = false
@@ -280,7 +280,7 @@ the optional methods of configuration:
 
 ## checkpointStyle(Object)
 
-The Graphic Styles of『current item』（`checkpoint`）.
+The Graphic Styles of『current item』 (`checkpoint`).
 
 {{ use: partial-symbol(
     prefix='##',
@@ -292,32 +292,32 @@ The Graphic Styles of『current item』（`checkpoint`）.
 
 ### color(Color) = '#c23531'
 
-The color of『current item』（`checkpoint`） in `timeline` component.
+The color of『current item』 (`checkpoint`)  in `timeline` component.
 
 ### borderWidth(number) = 5
 
 
-The border-width of『current item』（`checkpoint`） in `timeline` component. 
+The border-width of『current item』 (`checkpoint`)  in `timeline` component. 
 
 
 ### borderColor(Color) = 'rgba(194,53,49, 0.5)'
 
-The border-color of『current item』（`checkpoint`） in `timeline` component. 
+The border-color of『current item』 (`checkpoint`)  in `timeline` component. 
 
 
 ### animation(boolean) = true
 
-In `timeline` component, whether there is animation in 『current item』（`checkpoint`） moving during the process of `timeline` playing and switching. 
+In `timeline` component, whether there is animation in 『current item』 (`checkpoint`)  moving during the process of `timeline` playing and switching. 
 
 
 ### animationDuration(number) = 300
 
-The animation duration of『current item』（`checkpoint`） in `timeline` component. 
+The animation duration of『current item』 (`checkpoint`)  in `timeline` component. 
 
 
 ### animationEasing(string) = 'quinticInOut'
 
-The easing effect of animation of『current item』（`checkpoint`） in `timeline` component. Different easing effect could refers to [easing sample](${galleryViewPath}line-easing). 
+The easing effect of animation of『current item』 (`checkpoint`)  in `timeline` component. Different easing effect could refers to [easing sample](${galleryViewPath}line-easing). 
 
 
 ## controlStyle(Object)
@@ -345,12 +345,12 @@ Whether to show 『next button』.
 
 ### itemSize(number) = 22
 
-the size of『control button』, and its unit is pixel（px）.
+the size of『control button』, and its unit is pixel (px).
 
 
 ### itemGap(number) = 12
 
-the interval between『control button』, and its unit is pixel（px）.
+the interval between『control button』, and its unit is pixel (px).
 
 
 ### position(string) = 'left'
@@ -408,7 +408,7 @@ the border width of button.
 
 ### emphasis(Object)
 
-the button style in 『highlighted status』（during its hover）.
+the button style in 『highlighted status』 (during its hover).
 
 
 #### color(Color) = '#c23531'

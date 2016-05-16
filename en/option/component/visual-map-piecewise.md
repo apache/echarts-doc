@@ -3,9 +3,9 @@
 
 # visualMap.piecewise(Object)
 
-**Piecewise visual Map Component（visualMapPiecewise）**
+**Piecewise visual Map Component (visualMapPiecewise) **
 
-（Reference to [the introduction of visual Map component（visualMap）](~visualMap)）
+ (Reference to [the introduction of visual Map component (visualMap)](~visualMap)) 
 
 Its is shown as follow:
 ~[600x400](${galleryViewPath}doc-example/scatter-visualMap-piecewise&edit=1&reset=1)
@@ -13,9 +13,9 @@ Its is shown as follow:
 
 There are 3 modes of Piecewise visual Map Component: 
 
-+ split the continuous data averagely: Saveral pieces are automatically and averagely split according to [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber) .
-+ Custom split of continuous data: define the range of each piece according to [visualMap-piecewise.pieces](~visualMap-piecewise.pieces) .
-+ discrete data（category data）: category defnition in [visualMap-piecewise.categories](~visualMap-piecewise.categories).
++ split the continuous data averagely: Saveral pieces are automatically and averagely split according to [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber).
++ Custom split of continuous data: define the range of each piece according to [visualMap-piecewise.pieces](~visualMap-piecewise.pieces).
++ discrete data (category data) : category defnition in [visualMap-piecewise.categories](~visualMap-piecewise.categories).
 
 
 <br>
@@ -35,7 +35,7 @@ If [visualMap-piecewise.pieces](~visualMap-piecewise.pieces) or [visualMap-piece
 
 ## pieces(Array)
 
-The range, text and special styles of each piece in Custom『Piecewise visual Map Component（visualMapPiecewise）』. For instance: 
+The range, text and special styles of each piece in Custom『Piecewise visual Map Component (visualMapPiecewise) 』. For instance: 
 
 ```javascript
 pieces: [
@@ -43,24 +43,24 @@ pieces: [
     {min: 900, max: 1500},
     {min: 310, max: 1000},
     {min: 200, max: 300},
-    {min: 10, max: 200, label: '10 to 200（custom label）'},
-    {value: 123, label: '123（custom special color）', color: 'grey'},
+    {min: 10, max: 200, label: '10 to 200 (custom label) '},
+    {value: 123, label: '123 (custom special color) ', color: 'grey'},
     {max: 5}
 ]
 ```
 
 [Sample](${galleryEditorPath}doc-example/map-visualMap-pieces&edit=1&reset=1)
 
-（Notes: In ECharts2, `pieces` is called `splitList` which is still compatible in this version. But `pieces` is recommended.）
+ (Notes: In ECharts2, `pieces` is called `splitList` which is still compatible in this version. But `pieces` is recommended.) 
 
 You would realize the sequence in `pieces` only if you have a try. See more detailed rules in [visualMap.inverse](~visualMap.inverse).
 
 
 ## categories(Array)
 
-It is used to present discrete data（or it could be called as category data and enumerated data）.
+It is used to present discrete data (or it could be called as category data and enumerated data).
 
-As the data of assigned dimension（[visualMap-piecewise.dimension](~visualMap-piecewise.dimension)）is discrete data, such as data value『excellent』、『good』and so on, then configuration would be: 
+As the data of assigned dimension ([visualMap-piecewise.dimension](~visualMap-piecewise.dimension)) is discrete data, such as data value『excellent』、『good』and so on, then configuration would be: 
 
 ```javascript
 categories: ['severe pollution', 'severe pollution', ' Moderate Pollution', 'Light Pollution', 'good', 'excellent'],
@@ -90,8 +90,8 @@ As [visualMap-piecewise.pieces](~visualMap-piecewise.pieces) or [visualMap-piece
 
 Selected Mode could be: 
 
-+ `'multiple'`（multiple selected）. 
-+ `'single'`（single selected）. 
++ `'multiple'` (multiple selected). 
++ `'single'` (single selected). 
 
 
 ## inverse(boolean) = false
@@ -119,7 +119,7 @@ The decimal precision of data display.
 
 + When the mode is [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber), the precision would automatically adapts to the related condition according to data.
 
-+ When the mode is [visualMap-piecewise.pieces](~visualMap-piecewise.pieces) or [visualMap-piecewise.categories](~visualMap-piecewise.categories) , the precision defaults to be 0.
++ When the mode is [visualMap-piecewise.pieces](~visualMap-piecewise.pieces) or [visualMap-piecewise.categories](~visualMap-piecewise.categories), the precision defaults to be 0.
 
 
 ## itemWidth(number) = 20
@@ -134,7 +134,7 @@ The height of diagram, which refers to the height of each item.
 
 ## align(string) = 'auto'
 
-The aligning relation between figure（such as a small square）and text in an assigned component. The optional values are: 
+The aligning relation between figure (such as a small square) and text in an assigned component. The optional values are: 
 
 + `'auto'` automatical decision.
 + `'left'` the figure is on the left and the text is on the right.
