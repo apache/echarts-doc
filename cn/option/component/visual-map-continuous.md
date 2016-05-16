@@ -33,7 +33,7 @@
 
 ## range(Array)
 
-指定手柄对应数值的位置。`range` 须在 `min` `max` 范围内。例如：
+指定手柄对应数值的位置。`range` 应在 `min` `max` 范围内。例如：
 
 ```javascript
 chart.setOption({
@@ -45,6 +45,33 @@ chart.setOption({
     }
 });
 ```
+**setOption 改变 min、max 时 range 的自适应**
+
++ 如果 `range` 不设置（或设置为 null）
+
+```javascript
+例如：
+chart.setOption({visualMap: {min: 10, max: 300}}); // 不设置 range，则 range 默认为 [min, max]，即 [10, 300]。
+
+chart.setOption({visualMap: {min: 0, max: 400}}); // 再次使用 setOption 改变 min、max。
+// 此时 range 也自然会更新成改变过后的 [min, max]，即 [0, 400]。
+```
+
++ 如果 `range` 被以具体值设置了（例如设置为 [10, 300]）
+
+```javascript
+例如：
+chart.setOption({visualMap: {min: 10, max: 300, range: [20, 80]}}); // 设置了 range
+
+chart.setOption({visualMap: {min: 0, max: 400}}); // 再次使用 setOption 改变 min、max。
+// 此时 range 不会改变而仍维持本来的数值，仍为 [20, 80]。
+
+chart.setOption({visualMap: {range: null}}); // 再把 range 设为 null。
+// 则 range 恢复为 [min, max]，即 [0, 400]，同时也恢复了自动随 min max 而改变的能力。
+
+```
+
+`getOption` 得到的 `range` 总是 `Array`，不会为 `null/undefined`。
 
 
 ## calculable(boolean) = false
