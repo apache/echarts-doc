@@ -176,4 +176,7 @@ formatter: function (value) {
 {{ use:partial-silent(
     prefix="#"
 ) }}
-{{use:partial-animation(prefix="#")}}
+{{use:partial-animation(
+    prefix="#",
+    galleryEditorPath=${galleryEditorPath}
+)}}

@@ -165,7 +165,8 @@ links: [{
 {{use: partial-animation(
     prefix="#",
     defaultAnimationEasing="'linear'",
-    defaultAnimationDuration=1000
+    defaultAnimationDuration=1000,
+    galleryEditorPath=${galleryEditorPath}
 )}}
 
 

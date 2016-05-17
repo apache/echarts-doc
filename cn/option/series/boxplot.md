@@ -123,7 +123,8 @@ ECharts 并不内置对原始数据的处理，输入给 `boxplot` 的数据须�
 {{use: partial-animation-init(
     prefix="#",
     defaultAnimationEasing='elasticOut',
-    defaultAnimationDuration=800
+    defaultAnimationDuration=800,
+    galleryEditorPath=${galleryEditorPath}
 )}}
 
 

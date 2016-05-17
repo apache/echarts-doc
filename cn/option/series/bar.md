@@ -117,7 +117,10 @@
     prefix="#"
 ) }}
 
-{{use:partial-animation(prefix="#")}}
+{{use:partial-animation(
+    prefix="#",
+    galleryEditorPath=${galleryEditorPath}
+)}}
 
 
 {{ target:partial-bar-item-style }}

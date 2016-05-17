@@ -7,6 +7,7 @@
 
 {{ use: partial-animation-init(
     prefix=${prefix},
+    galleryEditorPath=${galleryEditorPath},
     defaultAnimationDuration=${defaultAnimationDuration},
     defaultAnimationEasing=${defaultAnimationEasing}
 ) }}

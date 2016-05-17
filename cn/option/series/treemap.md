@@ -348,7 +348,8 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 {{use: partial-animation-init(
     prefix="#",
     defaultAnimationEasing='quinticInOut',
-    defaultAnimationDuration=1500
+    defaultAnimationDuration=1500,
+    galleryEditorPath=${galleryEditorPath}
 )}}
 
 
