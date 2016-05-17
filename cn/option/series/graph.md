@@ -284,7 +284,10 @@ links: [{
 {{ use:partial-silent(
     prefix="#"
 ) }}
-{{ use: partial-animation(prefix="#") }}
+{{ use: partial-animation(
+    prefix="#",
+    galleryEditorPath=${galleryEditorPath}
+) }}
 
 
 {{ target: graph-edge-label }}

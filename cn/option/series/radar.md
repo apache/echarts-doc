@@ -141,5 +141,6 @@ data : [
 ) }}
 
 {{use: partial-animation(
-    prefix="#"
+    prefix="#",
+    galleryEditorPath=${galleryEditorPath}
 )}}

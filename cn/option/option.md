@@ -56,8 +56,8 @@
 # textStyle(Object)
 全局的字体样式。
 {{ use: partial-text-style(
-    prefix: '#',
-    defaultFontSize: 12
+    prefix='#',
+    defaultFontSize=12
 ) }}
 
 {{import: partial-animation }}

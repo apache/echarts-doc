@@ -113,7 +113,10 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
     prefix="#"
 ) }}
 
-{{ use: partial-animation(prefix="#") }}
+{{ use: partial-animation(
+    prefix="#",
+    galleryEditorPath=${galleryEditorPath}
+) }}
 
 {{ target: lines-data-item-item }}
 #### name(string)

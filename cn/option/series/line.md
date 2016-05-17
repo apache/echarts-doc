@@ -175,5 +175,6 @@
 
 {{use: partial-animation(
     prefix="#",
-    defaultAnimationEasing='linear'
+    defaultAnimationEasing='linear',
+    galleryEditorPath=${galleryEditorPath}
 )}}

@@ -124,7 +124,8 @@
 {{use: partial-animation-init(
     prefix="#",
     defaultAnimationEasing='linear',
-    defaultAnimationDuration=300
+    defaultAnimationDuration=300,
+    galleryEditorPath=${galleryEditorPath}
 )}}
 
 
