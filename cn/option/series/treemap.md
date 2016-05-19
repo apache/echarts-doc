@@ -21,6 +21,16 @@ treemap 首先是把数值映射到『面积』这种视觉元素上。
 
 
 <br>
+**下钻（drill down）：**
+
+`drill down` 功能即点击后才展示子层级。
+设置了 [leafDepth](~series-treemap.leafDepth) 后，下钻（`drill down`）功能开启。
+
+**如下是 drill down 的例子：**
+~[800x500](${galleryViewPath}treemap-drill-down&edit=1&reset=1)
+
+
+<br>
 <br>
 <br>
 注：treemap 的配置项 和 ECharts2 相比有一些变化，一些不太成熟的配置方式不再支持或不再兼容：
@@ -59,11 +69,13 @@ treemap 首先是把数值映射到『面积』这种视觉元素上。
 
 ## leafDepth(number) = null
 
-设置了 `leafDepth` 后，下钻（`drillDown`）功能开启。
+设置了 `leafDepth` 后，下钻（`drill down`）功能开启。`drill down` 功能即点击后才展示子层级。
 
 `leafDepth` 表示『展示几层』，层次更深的节点则被隐藏起来。点击则可下钻看到层次更深的节点。
 
 例如，`leafDepth` 设置为 `1`，表示展示一层节点。
+
+默认没有开启 `drill down`（即 `leafDepth` 为 `null` 或 `undefined`）。
 
 
 ## roam(boolean|string) = true
