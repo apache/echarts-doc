@@ -2,7 +2,7 @@
 <div class="time">2016-05-19</div>
 
 + **[^] [geo](http://echarts.baidu.com/option.html#geo) 优化**
-    + [+] 支持监听点击事件，见 [geo](http://echarts.baidu.com/option.html#geo)
+    + [+] 支持监听鼠标事件，见 [geo](http://echarts.baidu.com/option.html#geo)
     + [+] 支持通过 [regions](http://echarts.baidu.com/option.html#geo.regions) 配置每个区域的样式
     + [+] 支持通过 [selectedMode](http://echarts.baidu.com/option.html#geo.selectedMode) 配置是否区域可选，区域的选择会抛出 [geoselectchanged](http://echarts.baidu.com/echarts-home/api.html#events.geoselectchanged) 事件
 
@@ -12,7 +12,7 @@
 
 + [+] 数值轴新加 [minInterval](http://echarts.baidu.com/option.html#xAxis.minInterval)，见 [#3115](https://github.com/ecomfe/echarts/issues/3115)
 
-+ [+] treeMap 新增下钻功能，参见 [leafDepth](http://echarts.baidu.com/option.html#series-treemap.leafDepth)，和示例 [treemap-drill-down](http://echarts.baidu.com/gallery/editor.html?c=treemap-drill-down)
++ [+] treemap 新增下钻功能，参见 [leafDepth](http://echarts.baidu.com/option.html#series-treemap.leafDepth)，和示例 [treemap-drill-down](http://echarts.baidu.com/gallery/editor.html?c=treemap-drill-down)
 
 + [^] markLine 优化，支持在直角坐标系中如下设置成水平线或者垂直线。
 
