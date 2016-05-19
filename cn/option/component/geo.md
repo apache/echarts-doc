@@ -10,7 +10,7 @@
 ~[600x400](${galleryViewPath}scatter-map&edit=1&reset=1)
 
 
-3.1.10 开始 geo 组件也支持鼠标事件。事件参数为
+`3.1.10` 开始 geo 组件也支持鼠标事件。事件参数为
 ```js
 {
     componentType: 'geo',
