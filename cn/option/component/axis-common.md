@@ -263,9 +263,23 @@ boundaryGap: ['20%', '20%']
 
 在类目轴中无效。
 
+#${prefix} minInterval(number) = 0
+
+自动计算的坐标轴最小间隔大小。
+
+例如可以设置成`1`保证坐标轴分割刻度显示成整数。
+
+```js
+{
+    minInterval: 1
+}
+```
+
+只在数值轴中（[type](~${componentType}.type): 'value'）有效。
+
 #${prefix} interval(number)
 
-坐标轴分割间隔。
+强制设置坐标轴分割间隔。
 
 因为 [splitNumber](~${componentType}.splitNumber) 是预估的值，实际根据策略计算出来的刻度可能无法达到想要的效果，这时候可以使用 interval 配合 [min](~${componentType}.min), [max](~${componentType}.max) 强制设定刻度划分，一般不建议使用。
 

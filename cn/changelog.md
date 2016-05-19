@@ -1,3 +1,38 @@
+## v3.1.10
+<div class="time">2016-05-19</div>
+
++ **[^] [geo](http://echarts.baidu.com/option.html#geo) 优化**
+    + [+] 支持监听点击事件，见 [geo](http://echarts.baidu.com/option.html#geo)
+    + [+] 支持通过 [regions](http://echarts.baidu.com/option.html#geo.regions) 配置每个区域的样式
+    + [+] 支持通过 [selectedMode](http://echarts.baidu.com/option.html#geo.selectedMode) 配置是否区域可选，区域的选择会抛出 [geoselectchanged](http://echarts.baidu.com/echarts-home/api.html#events.geoselectchanged) 事件
+
++ [+] 数值轴新加 [minInterval](http://echarts.baidu.com/option.html#xAxis.minInterval)，见 [#3115](https://github.com/ecomfe/echarts/issues/3115)
+
++ [^] graph 动画优化，见示例 [graph-life-expectancy](http://echarts.baidu.com/gallery/editor.html?c=graph-life-expectancy)
+
++ [^] markLine 优化，支持在直角坐标系中如下设置成水平线或者垂直线。
+
+    ```js
+    data: [{
+        // Y 轴值为 100 的水平线
+        yAxis: 100
+    }]
+    ```
+
+    方便柱状图只有单个值的时候能够正确设置显示成某个值的水平标线。
+
++ [^] 桑基图支持单个节点自定义样式。
+
++ [^] 修复单个 echarts 实例中有多个 geo 组件并且都没有指定 name 时可能会导致单个组件在拖拽时影响其它组件散点图位置的问题。
+
++ [^] dataZoom 精度问题优化，见 [#3228](https://github.com/ecomfe/echarts/issues/3228)
+
++ [^] 修复 3.1.8 中雷达图点显示为黑色的 bug。
+
++ [^] 修复 3.1.8 中 graph 会在 safari 下报错的 bug。见 [#3220](https://github.com/ecomfe/echarts/issues/3220)
+
++ [^] 修复 [effectScatter](http://echarts.baidu.com/option.html#series-effectScatter) 中特效图形不能设置旋转的问题。
+
 ## v3.1.9
 <div class="time">2016-05-12</div>
 
@@ -9,13 +44,13 @@
 <div class="time">2016-05-11</div>
 
 + **[^] Graph 优化**
-    + [+] 支持通过 [edgeLabel](http://echarts.baidu.com/option.html#series-graph.edgeLabel) 配置边标签，见示例 [graph-simple.html](http://echarts.baidu.com/gallery/editor.html?c=graph-simple)
-    + [+] 支持通过 [edgeSymbol](http://echarts.baidu.com/option.html#series-graph.edgeSymbol) 配置边两端的图形，见示例 [graph-simple.html](http://echarts.baidu.com/gallery/editor.html?c=graph-simple)
-    + [^] 支持笛卡尔坐标系，极坐标与地理坐标系，见示例 [graph-grid.html](http://echarts.baidu.com/gallery/editor.html?c=graph-grid)
+    + [+] 支持通过 [edgeLabel](http://echarts.baidu.com/option.html#series-graph.edgeLabel) 配置边标签，见示例 [graph-simple](http://echarts.baidu.com/gallery/editor.html?c=graph-simple)
+    + [+] 支持通过 [edgeSymbol](http://echarts.baidu.com/option.html#series-graph.edgeSymbol) 配置边两端的图形，见示例 [graph-simple](http://echarts.baidu.com/gallery/editor.html?c=graph-simple)
+    + [^] 支持笛卡尔坐标系，极坐标与地理坐标系，见示例 [graph-grid](http://echarts.baidu.com/gallery/editor.html?c=graph-grid)
     + [^] 鼠标事件参数新加`dataType`参数用于判断是`'node'`还是`'edge'`
 
 + **[^] 地图优化**
-    + [+] 加入 [zoom](http://echarts.baidu.com/option.html#series-map.zoom) 和 [center](http://echarts.baidu.com/option.html#series-map.center) 配置项用于定位，参见示例 [map-locate.html](http://echarts.baidu.com/gallery/editor.html?c=map-locate)
+    + [+] 加入 [zoom](http://echarts.baidu.com/option.html#series-map.zoom) 和 [center](http://echarts.baidu.com/option.html#series-map.center) 配置项用于定位，参见示例 [map-locate](http://echarts.baidu.com/gallery/editor.html?c=map-locate)
     + [^] 修复 `scaleLimit.min` 大于 1 时可能导致散点图布局错误的 bug。
     + [^] 绘制性能优化
 
@@ -34,7 +69,7 @@
 
 + [+] markLine 标签位置支持配置为中间 `'middle'`。
 
-+ [+] 加入 [animationDelay](http://echarts.baidu.com/option.html#animationDelay) 和 [animationDelayUpdate]((http://echarts.baidu.com/option.html#animationDelayUpdate) 配置项用于展现更丰富和戏剧性的动画效果，参见示例 [bar-animation-delay.html](http://echarts.baidu.com/gallery/editor.html?c=bar-animation-delay)
++ [+] 加入 [animationDelay](http://echarts.baidu.com/option.html#animationDelay) 和 [animationDelayUpdate]((http://echarts.baidu.com/option.html#animationDelayUpdate) 配置项用于展现更丰富和戏剧性的动画效果，参见示例 [bar-animation-delay](http://echarts.baidu.com/gallery/editor.html?c=bar-animation-delay)
 
 + [^] 修正 markPoint 、markLine、timeLine 鼠标事件参数中的`componentType`属性，可以通过该判断鼠标事件的触发对象。
 
