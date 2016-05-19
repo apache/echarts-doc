@@ -256,9 +256,19 @@ dispatchAction({
     name='饼图扇形'
 ) }}
 
+<!--============= geo ==========-->
+## geo
+[地图组件](option.html#series-geo)相关的行为，必须引入[地图组件](option.html#geo)后才能使用。
+
+{{ use: action-select(
+    componentType='geo',
+    name='地图区域'
+) }}
+
+
 <!--============= map ==========-->
 ## map
-[地图](option.html#series-map)相关的行为，必须引入[地图](option.html#series-map)后才能使用。
+[地图图表](option.html#series-map)相关的行为，必须引入[地图图表](option.html#series-map)后才能使用。
 
 {{ use: action-select(
     componentType='map',
