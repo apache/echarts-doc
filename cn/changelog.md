@@ -4,7 +4,7 @@
 + **[^] [geo](http://echarts.baidu.com/option.html#geo) 优化**
     + [+] 支持监听鼠标事件，见 [geo](http://echarts.baidu.com/option.html#geo)
     + [+] 支持通过 [regions](http://echarts.baidu.com/option.html#geo.regions) 配置每个区域的样式
-    + [+] 支持通过 [selectedMode](http://echarts.baidu.com/option.html#geo.selectedMode) 配置是否区域可选，区域的选择会抛出 [geoselectchanged](http://echarts.baidu.com/echarts-home/api.html#events.geoselectchanged) 事件
+    + [+] 支持通过 [selectedMode](http://echarts.baidu.com/option.html#geo.selectedMode) 配置是否区域可选，区域的选择会抛出 [geoselectchanged](http://echarts.baidu.com/api.html#events.geoselectchanged) 事件
 
 + [^] 优化部分字体，例如微软雅黑的垂直对齐，见 [#2983](https://github.com/ecomfe/echarts/issues/2983)
 
