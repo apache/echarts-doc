@@ -43,7 +43,9 @@
 {{ if: ${hasCoord} }}
 2. 用 [coord](~series-${seriesType}.markLine.data.0.coord) 属性指定数据在相应坐标系上的坐标位置。
 {{ /if }}{{ if: ${hasType} }}
-3. 直接用 [type](~series-${seriesType}.markLine.data.0.type) 属性标注系列中的最大值，最小值。这时候可以使用 [valueIndex](~series-${seriesType}.markLine.data.0.valueIndex) 指定是在哪个维度上的最大值、最小值、平均值。或者可以使用 [valueDim](~series-${seriesType}.markPoint.data.valueDim) 指定在哪个维度上的最大值、最小值、平均值。
+3. 直接用 [type](~series-${seriesType}.markLine.data.0.type) 属性标注系列中的最大值，最小值。这时候可以使用 [valueIndex](~series-${seriesType}.markLine.data.0.valueIndex) 或者 [valueDim](~series-${seriesType}.markPoint.data.0.valueDim) 指定是在哪个维度上的最大值、最小值、平均值。
+
+4. 如果是笛卡尔坐标系的话，也可以通过只指定 `xAxis` 或者 `yAxis` 来实现 X 轴或者 Y 轴为某值的标线，见示例 [scatter-weight](${galleryEditorPath}scatter-weight)
 {{ /if }}
 当多个属性同时存在时，优先级按上述的顺序。
 
@@ -56,6 +58,10 @@ data: [
         name: '平均线',
         // 支持 'average', 'min', 'max'
         type: 'average'
+    },
+    {
+        name: 'Y 轴值为 100 的水平线',
+        yAxis: 100
     },
     [
         {
@@ -148,7 +154,6 @@ data: [
 #${prefix} coord(Array)
 起点或终点的坐标。坐标格式视系列的坐标系而定，可以是[直角坐标系](~grid)上的 `x`, `y`，也可以是[极坐标系](~polar)上的 `radius`, `angle`。
 
-**注：**在 ECharts 2.x 中会使用 `xAxis`，`yAxis` 标注直角坐标系上的位置，ECharts 3 中不再推荐使用。
 {{ /if }}
 #${prefix} x(number)
 相对容器的屏幕 x 坐标，单位像素。
