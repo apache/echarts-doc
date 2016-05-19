@@ -6,9 +6,11 @@
     + [+] 支持通过 [regions](http://echarts.baidu.com/option.html#geo.regions) 配置每个区域的样式
     + [+] 支持通过 [selectedMode](http://echarts.baidu.com/option.html#geo.selectedMode) 配置是否区域可选，区域的选择会抛出 [geoselectchanged](http://echarts.baidu.com/echarts-home/api.html#events.geoselectchanged) 事件
 
-+ [+] 数值轴新加 [minInterval](http://echarts.baidu.com/option.html#xAxis.minInterval)，见 [#3115](https://github.com/ecomfe/echarts/issues/3115)
++ [^] 优化部分字体，例如微软雅黑的垂直对齐，见 [#2983](https://github.com/ecomfe/echarts/issues/2983)
 
 + [^] graph 动画优化，见示例 [graph-life-expectancy](http://echarts.baidu.com/gallery/editor.html?c=graph-life-expectancy)
+
++ [+] 数值轴新加 [minInterval](http://echarts.baidu.com/option.html#xAxis.minInterval)，见 [#3115](https://github.com/ecomfe/echarts/issues/3115)
 
 + [^] markLine 优化，支持在直角坐标系中如下设置成水平线或者垂直线。
 
