@@ -41,25 +41,25 @@ formatter: function (value, indicator) {
 }
 ```
 
-## nameGap(number) = 15
-
-指示器名称和指示器轴的距离。
-
 ### textStyle(Object)
 {{ use: partial-text-style(
     prefix='###',
     defaultColor="'#333'"
 )}}
 
-### splitNumber(number) = 5
+## nameGap(number) = 15
+
+指示器名称和指示器轴的距离。
+
+## splitNumber(number) = 5
 
 指示器轴的分割段数。
 
-### shape(string) = 'polygon'
+## shape(string) = 'polygon'
 
 雷达图绘制类型，支持 `'polygon'` 和 `'circle'`。
 
-### scale(boolean) = false
+## scale(boolean) = false
 
 是否是脱离 0 值比例。设置成 `true` 后坐标刻度不会强制包含零刻度。在双数值轴的散点图中比较有用。
 
