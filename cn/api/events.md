@@ -179,12 +179,20 @@ ECharts 中的事件分为两种，一种是鼠标事件，在鼠标点击某个
 ```
 
 {{ use: event-select(
+    componentType='geo',
+    componentTypeFull='geo',
+    name='地图区域'
+) }}
+
+{{ use: event-select(
     componentType='pie',
+    componentTypeFull='series-pie',
     name='饼图扇形'
 ) }}
 
 {{ use: event-select(
     componentType='map',
+    componentTypeFull='series-map',
     name='地图区域'
 ) }}
 
@@ -212,7 +220,7 @@ chart.on('axisareaselected', function () {
 ## ${componentType}selectchanged(Event)
 **ACTION:** [${componentType}ToggleSelect](~action.${componentType}.${componentType}ToggleSelect)
 
-${name}切换选中状态的事件。
+[${componentTypeFull}](option.html#${componentTypeFull}) 中${name}切换选中状态的事件。
 
 用户点击选中会触发该事件。
 
@@ -227,12 +235,14 @@ ${name}切换选中状态的事件。
     selected: Object
 }
 ```
+{{ if: ${componentType} !== 'geo' }}
 **注：** 该事件同 ECharts 2 中的 `${componentType}Selected` 事件相同。
+{{ /if }}
 
 ## ${componentType}selected(Event)
 **ACTION:** [${componentType}Select](~action.${componentType}.${componentType}Select)
 
-${name}选中后的事件。
+[${componentTypeFull}](option.html#{componentTypeFull}) 中${name}选中后的事件。
 
 使用`dispatchAction`可触发此事件，用户点击不会触发此事件（用户点击事件请使用 [${componentType}selectchanged](~events.${componentType}selectchanged)）。
 
@@ -248,12 +258,14 @@ ${name}选中后的事件。
 }
 ```
 
+{{ if: ${componentType} !== 'geo' }}
 **注：** ECharts 2.x 中用户开关图例对应的事件从 `${componentType}selected` 改为 [${componentType}selectchanged](~events.${componentType}selectchanged)。
+{{ /if }}
 
 ## ${componentType}unselected(Event)
 **ACTION:** [${componentType}UnSelect](~action.${componentType}.${componentType}UnSelect)
 
-${name}取消选中后的事件。
+[${componentTypeFull}](option.html#${componentTypeFull}) 中${name}取消选中后的事件。
 
 使用`dispatchAction`可触发此事件，用户点击不会触发此事件（用户点击事件请使用 [${componentType}selectchanged](~events.${componentType}selectchanged)）。
 

@@ -34,9 +34,6 @@
 + `'max'`   取最大值。
 + `'min'`   取最小值。
 
-## selectedMode(boolean|string) = false
-选中模式，表示是否支持多个选中，默认关闭，支持布尔值和字符串，字符串取值可选 `'single'`，`'multiple'`。
-
 ## showLegendSymbol(boolean)
 在图例相应区域显示图例的颜色标识（系列标识的小圆点），存在 [legend](~legend) 组件时生效。
 
@@ -52,10 +49,11 @@
 ### value(number)
 该区域的数据值。
 
-### itemStyle()
+### selected(boolean) = false
+该区域是否选中。
 
-单个数据的多边形样式设置
-
+### itemStyle(Object)
+该数据所在区域的多边形样式设置
 #### normal(Object)
 ##### areaColor(Color)
 地图区域的颜色。
@@ -64,6 +62,23 @@
 ##### areaColor(Color)
 地图区域的颜色。
 {{ use: partial-item-style(prefix='####') }}
+
+### label(Object)
+该数据所在区域的标签样式设置
+#### normal(Object)
+##### show(boolean) = false
+是否在普通状态下显示标签。
+##### textStyle(Object)
+普通状态下的标签文本样式。
+{{ use: partial-text-style(prefix='#####') }}
+#### emphasis(Object)
+##### show(boolean) = false
+是否在高亮状态下显示标签。
+##### textStyle(Object)
+高亮状态下的标签文本样式。
+{{ use: partial-text-style(prefix='#####') }}
+
+
 
 {{ use:partial-silent(
     prefix="#"
