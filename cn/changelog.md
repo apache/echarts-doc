@@ -12,6 +12,8 @@
 
 + [+] 数值轴新加 [minInterval](http://echarts.baidu.com/option.html#xAxis.minInterval)，见 [#3115](https://github.com/ecomfe/echarts/issues/3115)
 
++ [+] treeMap 新增下钻功能，参见 [leafDepth](http://echarts.baidu.com/option.html#series-treemap.leafDepth)，和示例 [treemap-drill-down](http://echarts.baidu.com/gallery/editor.html?c=treemap-drill-down)
+
 + [^] markLine 优化，支持在直角坐标系中如下设置成水平线或者垂直线。
 
     ```js
@@ -34,6 +36,9 @@
 + [^] 修复 3.1.8 中 graph 会在 safari 下报错的 bug。见 [#3220](https://github.com/ecomfe/echarts/issues/3220)
 
 + [^] 修复 [effectScatter](http://echarts.baidu.com/option.html#series-effectScatter) 中特效图形不能设置旋转的问题。
+
++ [^] 修复 timeline、mediaQuery 在进行第二次 setOption 时会失效的 bug。
+
 
 ## v3.1.9
 <div class="time">2016-05-12</div>
