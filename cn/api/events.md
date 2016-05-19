@@ -5,6 +5,17 @@
 
 ECharts 中的事件分为两种，一种是鼠标事件，在鼠标点击某个图形上会触发，还有一种是 调用 [dispatchAction](~echartsInstance.dispatchAction) 后触发的事件。
 
+**示例：**
+```js
+myChart.on('click', function (params) {
+    console.log(params);
+});
+
+myChart.on('legendselectchanged', function (params) {
+    console.log(params);
+});
+```
+
 ## 鼠标事件
 
 鼠标事件的事件参数是事件对象的数据的各个属性，对于图表的点击事件，基本参数如下，其它图表诸如饼图可能会有部分附加参数。例如饼图会有`percent`属性表示百分比，具体见各个图表类型的 label formatter 回调函数的 `params`。
