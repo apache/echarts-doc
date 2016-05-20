@@ -16,7 +16,7 @@ ECharts 中提供了两种格式的地图数据，一种是可以直接 script �
 <script src="echarts.js"></script>
 <script src="map/js/china.js"></script>
 <script>
-var chart = echarts.init(document.getElmentById('main'));
+var chart = echarts.init(document.getElementById('main'));
 chart.setOption({
     series: [{
         type: 'map',
@@ -31,7 +31,7 @@ chart.setOption({
 ```js
 $.get('map/json/china.json', function (chinaJson) {
     echarts.registerMap('china', chinaJson);
-    var chart = echarts.init(document.getElmentById('main'));
+    var chart = echarts.init(document.getElementById('main'));
     chart.setOption({
         series: [{
             type: 'map',
