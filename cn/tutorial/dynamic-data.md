@@ -75,7 +75,7 @@ $.get('data.json').done(function (data) {
 
 ~[400x300](${galleryViewPath}doc-example/tutorial-async&edit=1&reset=1)
 
-ECharts 中在更新数据的时候需要通过`name`属性对应到相应的系列，上面示例中如果 `name`不存在也可以根据系列的顺序正常更新，但是更多时候推荐更新数据的时候加上系列的`name`数据。
+ECharts 中在更新数据的时候需要通过`name`属性对应到相应的系列，上面示例中如果`name`不存在也可以根据系列的顺序正常更新，但是更多时候推荐更新数据的时候加上系列的`name`数据。
 
 ## loading 动画
 
