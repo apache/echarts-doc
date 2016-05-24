@@ -10,7 +10,7 @@
 展现形式如下图：
 ~[600x400](${galleryViewPath}doc-example/map-visualMap-continuous&edit=1&reset=1)
 
-`visualMapContinuous`中，可以通过 [visualMap.calculable](~visualMap.calculable) 来开启或关闭『值域漫游』（即手柄拖拽改变值域的功能）。
+`visualMapContinuous`中，可以通过 [visualMap.calculable](~visualMap.calculable) 来显示或隐藏手柄（手柄能拖拽改变值域）。
 
 <br>
 <br>
@@ -23,12 +23,12 @@
 
 ## min(number)
 
-指定 visualMapContinuous 组件的最小值。`'min'` 必须用户指定。
+指定 visualMapContinuous 组件的允许的最小值。`'min'` 必须用户指定。`[visualMap.min, visualMax.max]` 形成了视觉映射的『定义域』。
 
 
 ## max(number)
 
-指定 visualMapContinuous 组件的最大值。`'max'` 必须用户指定。
+指定 visualMapContinuous 组件的允许的最大值。`'max'` 必须用户指定。`[visualMap.min, visualMax.max]` 形成了视觉映射的『定义域』。
 
 
 ## range(Array)
@@ -40,11 +40,13 @@ chart.setOption({
     visualMap: {
         min: 0,
         max: 100,
+        // 两个手柄对应的数值是 4 和 15
         range: [4, 15],
         ...
     }
 });
 ```
+
 **setOption 改变 min、max 时 range 的自适应**
 
 + 如果 `range` 不设置（或设置为 null）
@@ -71,12 +73,12 @@ chart.setOption({visualMap: {range: null}}); // 再把 range 设为 null。
 
 ```
 
-`getOption` 得到的 `range` 总是 `Array`，不会为 `null/undefined`。
+`getOption` 得到的 `range` 总是 `Array`，不会为 `null` 或 `undefined`。
 
 
 ## calculable(boolean) = false
 
-是否启用值域漫游，即是否有拖拽用的手柄，以及用手柄调整选中范围。
+是否显示拖拽用的手柄（手柄能拖拽调整选中范围）。
 
 （注：为兼容 ECharts2，当 [visualMap.type](~visualMap.type) 未指定时，假如设置了 `'calculable'`，则`type`自动被设置为`'continuous'`，无视 [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber) 等设置。所以，建议使用者不要不指定 [visualMap.type](~visualMap.type)，否则表意不清晰。）
 
@@ -86,12 +88,13 @@ chart.setOption({visualMap: {range: null}}); // 再把 range 设为 null。
 拖拽时，是否实时更新。
 
 + 如果为`ture`则拖拽手柄过程中实时更新图表视图。
+
 + 如果为`false`则拖拽结束时，才更新视图。
 
 
 ## inverse(boolean) = false
 
-是否反转。
+是否反转 visualMap 组件。
 
 当`inverse`为`false`时，数据大小的位置规则，和直角坐标系相同，即：
 
@@ -118,7 +121,7 @@ chart.setOption({visualMap: {range: null}}); // 再把 range 设为 null。
 
 ## align(string) = 'auto'
 
-指定组件中手柄和文字的摆放关系，可选值为：
+指定组件中手柄和文字的摆放位置，可选值为：
 
 + `'auto'` 自动决定。
 + `'left'` 手柄和label在右，orient 为 horizontal 时有效。
@@ -149,7 +152,7 @@ chart.setOption({visualMap: {range: null}}); // 再把 range 设为 null。
 
 标签的格式化工具。
 
-+ 如果为`string`，表示模板，例如：`aaaa{value}`。其中 `{value}` 是当前的范围大小。
++ 如果为`string`，表示模板，例如：`aaaa{value}`。其中 `{value}` 是当前的范围边界值。
 + 如果为 `Function`，表示回调函数，形如：
 
 ```javascript
