@@ -13,9 +13,9 @@
 
 分段型视觉映射组件，有三种模式：
 
-+ 连续型数据平均分段: 依据 [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber) 来自动平均分割成若干块。
-+ 连续型数据自定义分段: 依据 [visualMap-piecewise.pieces](~visualMap-piecewise.pieces) 来定义每块范围。
-+ 离散数据（类别性数据）: 类别定义在 [visualMap-piecewise.categories](~visualMap-piecewise.categories) 中。
++ **连续型数据平均分段**: 依据 [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber) 来自动平均分割成若干块。
++ **连续型数据自定义分段**: 依据 [visualMap-piecewise.pieces](~visualMap-piecewise.pieces) 来定义每块范围。
++ **离散数据根据类别分段**: 类别定义在 [visualMap-piecewise.categories](~visualMap-piecewise.categories) 中。
 
 
 <br>
@@ -49,7 +49,8 @@ pieces: [
 ]
 ```
 
-在每个 piece 中支持的visualMap属性有：
+在每个 piece 中支持的 visualMap 属性有：
+
 {{use: partial-visual-map-visual-type}}
 
 [参见示例](${galleryEditorPath}doc-example/map-visualMap-pieces&edit=1&reset=1)
@@ -61,7 +62,7 @@ pieces: [
 
 ## categories(Array)
 
-用于表示离散型数据（或可以称为类别型数据、枚举型数据）。
+用于表示离散型数据（或可以称为类别型数据、枚举型数据）的全集。
 
 当所指定的维度（[visualMap-piecewise.dimension](~visualMap-piecewise.dimension)）的数据为离散型数据时，例如数据值为『优』、『良』等，那么可如下配置：
 
@@ -76,16 +77,21 @@ categories: ['严重污染', '重度污染', '中度污染', '轻度污染', '�
 
 ## min(number)
 
-指定 visualMapPiecewise 组件的最小值。参见 [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber)
+指定 visualMapPiecewise 组件的最小值。
 
-指定了 [visualMap-piecewise.pieces](~visualMap-piecewise.pieces) 或 [visualMap-piecewise.categories](~visualMap-piecewise.categories) 时，`'min'` 不需指定。
+在 **连续型数据自定义分段** 模式（即 [visualMap-piecewise.pieces](~visualMap-piecewise.pieces) 被使用）或 **离散数据根据类别分段** 模式（即 [visualMap-piecewise.categories](~visualMap-piecewise.categories) 被使用）时，`max` 和 `min` 不需指定。
 
+在 **连续型数据平均分段** 模式（即 (that is, when [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber) 被使用时）需指定 `min`、`max`，如果不指定，则默认为 `[0, 200]`（注意并不是默认为
+series.data 的 `dataMin` 和 `dataMax`）。
 
 ## max(number)
 
 指定 visualMapPiecewise 组件的最大值。参见 [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber)
 
-指定了 [visualMap-piecewise.pieces](~visualMap-piecewise.pieces) 或 [visualMap-piecewise.categories](~visualMap-piecewise.categories) 时，`'max'`不需指定。
+**连续型数据自定义分段** 模式（即 [visualMap-piecewise.pieces](~visualMap-piecewise.pieces) 被使用）或 **离散数据根据类别分段** 模式（即 [visualMap-piecewise.categories](~visualMap-piecewise.categories) 被使用），`max` 和 `min` 不需指定。
+
+**连续型数据平均分段** 模式（即 (that is, when [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber) 被使用时）需指定 `min`、`max`，如果不指定，则默认为 `[0, 200]`（注意并不是默认为
+series.data 的 `dataMin` 和 `dataMax`）。
 
 
 ## selectedMode(string) = 'multiple'
@@ -100,9 +106,9 @@ categories: ['严重污染', '重度污染', '中度污染', '轻度污染', '�
 
 是否反转。
 
-+ 当 [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber) 模式时，数据大小规则，同 [visualMap-continuous.inverse](~visualMap-continuous.inverse)。
++ **连续型数据平均分段** 模式（即 (that is, when [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber) 被使用时），数据排布规则，同 [visualMap-continuous.inverse](~visualMap-continuous.inverse)。
 
-+ 当 [visualMap-piecewise.pieces](~visualMap-piecewise.pieces) 或者 [visualMap-piecewise.categories](~visualMap-piecewise.categories) 模式时，每个块的排布位置，取决于 `pieces` 或 `categories` 列表的定义顺序，即：
++ **连续型数据自定义分段** 模式（即 [visualMap-piecewise.pieces](~visualMap-piecewise.pieces) 被使用）或 **离散数据根据类别分段** 模式（即 [visualMap-piecewise.categories](~visualMap-piecewise.categories) 被使用），每个块的排布位置，取决于 `pieces` 或 `categories` 列表的定义顺序，即：
 
     + 当`inverse`为`false`时：
 
@@ -119,9 +125,9 @@ categories: ['严重污染', '重度污染', '中度污染', '轻度污染', '�
 
 数据展示的小数精度。
 
-+ 当 [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber) 模式时，精度根据数据自动适应。
++ **连续型数据平均分段** 模式（即 (that is, when [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber) 被使用时），精度根据数据自动适应。
 
-+ 当 [visualMap-piecewise.pieces](~visualMap-piecewise.pieces) 或者 [visualMap-piecewise.categories](~visualMap-piecewise.categories) 模式时，精度默认为0。
++ **连续型数据自定义分段** 模式（即 [visualMap-piecewise.pieces](~visualMap-piecewise.pieces) 被使用）或 **离散数据根据类别分段** 模式（即 [visualMap-piecewise.categories](~visualMap-piecewise.categories) 被使用），精度默认为0（没有小数）。
 
 
 ## itemWidth(number) = 20
@@ -158,7 +164,7 @@ categories: ['严重污染', '重度污染', '中度污染', '轻度污染', '�
 
 ## itemGap(number) = 10
 
-每一项之间的间隔距离，单位为px。
+每两个图元之间的间隔距离，单位为px。
 
 
 ## itemSymbol(string) = 'roundRect'
@@ -167,7 +173,8 @@ categories: ['严重污染', '重度污染', '中度污染', '轻度污染', '�
 
 symbol的设置参见 [visualMap-piecewise.inRange](~visualMap-piecewise.inRange) 和 [visualMap-piecewise.outOfRange](~visualMap-piecewise.outOfRange)。
 
-当他们没有进行指定时，取此 `itemSymbol` 为默认值。
+当他们没有进行指定时，取此 `itemSymbol` 为默认值（但是只在 visualMap 组件上使用，不在 chart 中使用）。
+
 
 {{ use: partial-visual-map-common(
     visualMapName='visualMap-piecewise',

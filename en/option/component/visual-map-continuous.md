@@ -25,14 +25,14 @@ Used to determine that it is a continuous visualMap component.
 
 Specify the min dataValue for the visualMap component. `[visualMap.min, visualMax.max]` make up the domain of viusul mapping.
 
-Notice that `min` and `max` should be specified explicitly, and be `[0, 100]` by default, but not `dataMin` and `dataMax` in series.data.
+Notice that `min` and `max` should be specified explicitly, and be `[0, 200]` by default, but not `dataMin` and `dataMax` in series.data.
 
 
 ## max(number)
 
 Specify the max dataValue for the visualMap component. `[visualMap.min, visualMax.max]` make up the domain of viusul mapping.
 
-Notice that `min` and `max` should be specified explicitly, and be `[0, 100]` by default, but not `dataMin` and `dataMax` in series.data.
+Notice that `min` and `max` should be specified explicitly, and be `[0, 200]` by default, but not `dataMin` and `dataMax` in series.data.
 
 
 ## range(Array)
@@ -70,7 +70,7 @@ For instance:
 chart.setOption({visualMap: {min: 10, max: 300, range: [20, 80]}}); // range is set to [20, 80].
 
 chart.setOption({visualMap: {min: 0, max: 400}}); // min and max are modifies using setOption.
-// Then range remains the original value ([20, 80]) but will not do auto-adaption。
+// Then range keep the original value ([20, 80]) but will not do auto-adaption。
 
 chart.setOption({visualMap: {range: null}}); // Set range to null then.
 // Then auto-adaption of range turns on and range is auto modified to [min, max], that is, [0, 400].
@@ -86,7 +86,7 @@ chart.setOption({visualMap: {range: null}}); // Set range to null then.
 
 Whether show handles, which can be dragged to adjust "selected range".
 
-Notes: In order to be compatible with ECharts2, the rule, which seems to be a little odd, remains: when [visualMap.type](~visualMap.type) is not set, and [visualMap.calculable](~visualMap-continuous.calculable) was set to be `true`, [visualMap.type](~visualMap.type) will be automatically set as `'continuous'`, regardless of some settings such as [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber). Therefore, it is recommended to set [visualMap.type](~visualMap.type) explicitly, which avoids ambiguity.
+Notes: In order to be compatible with ECharts2, the rule, which seems to be a little odd, is retained: when [visualMap.type](~visualMap.type) is not set, and [visualMap.calculable](~visualMap-continuous.calculable) was set to be `true`, [visualMap.type](~visualMap.type) will be automatically set as `'continuous'`, regardless of some settings such as [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber). Therefore, it is recommended to set [visualMap.type](~visualMap.type) explicitly, which avoids ambiguity.
 
 
 ## realtime(boolean) = true
@@ -140,7 +140,7 @@ Specify the position of handles and labels, against the main bar. The possible v
 
 The label text on both ends, such as `['High', 'Low']`. [sample](${galleryEditorPath}doc-example/map-visualMap-continuous-text&edit=1&reset=1).
 
-You can understand the order of items in `text` array just by simple trial. See [visualMap.inverse](~visualMap.inverse).
+You can understand the order of items in `text` array just by a simple trial. See [visualMap.inverse](~visualMap.inverse).
 
 
 ## textGap(Array) = 10

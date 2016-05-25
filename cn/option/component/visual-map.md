@@ -245,7 +245,7 @@ chart.setOption({
 + **不推荐使用 `getOption -> 修改option -> setOption` 的方式：**
 
 ```javascript
-// 不推荐这样做（尽管也能达到和上面的例子想用的结果）：
+// 不推荐这样做（尽管也能达到和上面的例子相同的结果）：
 var option = chart.getOption(); // 获取所有option。
 option.visualMap.inRange.color = ['red', 'blue']; // 改动color（我想要改变 color）。
 
