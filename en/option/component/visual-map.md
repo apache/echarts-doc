@@ -119,7 +119,10 @@ visualMap: [
             color: ['#121122', 'rgba(3,4,5,0.4)', 'red'],
             symbolSize: [60, 200]
         },
-        // Define visual channels only for ${visualMapName} component, which will overlap the properties with the same name in the above common definition. (symbolSize is overlapped by [30, 100] while color remains the original value)
+        // Define visual channels only for ${visualMapName} component, which
+        // will overlap the properties with the same name in the above common
+        // definition. (symbolSize is overlapped by [30, 100] while color
+        // keeps the original value)
         controller: {
             ${rangeType}: {
                 symbolSize: [30, 100]
@@ -194,7 +197,7 @@ About the possible value range of visualValue:
 
 **Table Mapping to visual channel**
 
-`Table Mapping` could be used when dataValue (values of series.data) is enumerable and we intend to map them to visualValue by looking up a given table.
+`Table Mapping` could be used when dataValue (values in series.data, specified by [visualMap.dimension](~visualMap.dimension)) is enumerable and we intend to map them to visualValue by looking up a given table.
 
 For instance, in a [visualMap-piecewise](~visualMap-piecewise) component, [visualMap-piecewise.categories](~visualMap-piecewise.categories) is set to `['Demon Hunter', 'Blademaster', 'Death Knight', 'Warden', 'Paladin']`. And there is series.data: `['Demon Hunter', 'Death Knight', 'Warden', 'Paladin']`. Then we can establish the lookup rule for color: `color: {'Warden': 'red', 'Demon Hunter': 'black'}`, by which the `visualMap` component will map `dataValue` to `color`.
 
@@ -252,9 +255,9 @@ chart.setOption({
 
 Notice:
 
-+ These visualMap properties (i.e. `inRange`, `outOfRange`, `target`, `controller`) do not support "merge", that is, anyone among them is modified when use `setOption` again, all of the original values of them will not be remained but erased. The "merge" brings complication in implemnentation and understanding, whereas "erase all" normalize the practise: once you want to modify some visualValues, you should pass all of them to `setOption`, no matter they are to be changed.
++ These visualMap properties (i.e. `inRange`, `outOfRange`, `target`, `controller`) do not support "merge", that is, anyone among them is modified when use `setOption` again, all of the original values of them will not be kept but erased. The "merge" brings complication in implemnentation and understanding, whereas "erase all" normalize the practise: once you want to modify some visualValues, you should pass all of them to `setOption`, no matter they are to be changed.
 
-+ **This way, `getOption() -> modify the gotten option -> setOption(modified option)`, is strongly not recommended**, for instance:
++ This way, `getOption() -> modify the gotten option -> setOption(modified option)`, is strongly **not recommended**, for instance:
 
 ```javascript
 // Not recommended approach, regardless of its correctness:
