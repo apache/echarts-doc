@@ -25,6 +25,6 @@ Specify whether to show the grid in rectangular coordinate system.
 
 ## containLabel(boolean) = false
 
-Specify whether the grid region contains [tick label](~yAxis.axisLabel) of coordinate axis. When the width of coordinate axis label can not be confirmed and there is no space could be left in a small container, you can set it as  `true` to prevent the label from overflowing the container.  
+Specify whether the grid region contains [tick label](~yAxis.axisLabel) of coordinate axis. When the width of coordinate axis label can not be confirmed and there is no space could be left in a small container, you can set it as  `true` to prevent the label from overflowing the container.
 
-{{ use:partial-component-common-style(componentName="grid", prefix='#') }}
+{{ use:partial-component-common-style(componentName="grid", prefix='#', needShow=true) }}
