@@ -4,7 +4,7 @@
 
 Size of blurriness of graphic shadow. This attribute sets graphic shadow effect together with `shadowColor`,`shadowOffsetX`, `shadowOffsetY`.
 
-for example: 
+for example:
 ```js
 itemStyle: {
     normal: {
@@ -14,18 +14,36 @@ itemStyle: {
 }
 ```
 
+{{if: ${needShow} }}
+**Caution**: This property works only if `show: true` configured.
+{{/if}}
+
+
 #${prefix} shadowColor(Color) = ${defaultShadowColor}
 
 Shadow color. Support same format as `color`.
+
+{{if: ${needShow} }}
+**Caution**: This property works only if `show: true` configured.
+{{/if}}
 
 
 #${prefix} shadowOffsetX(number) = ${defaultShadowOffsetX|default(0)}
 
 Offset distance on the horizontal direction of the shade.
 
+{{if: ${needShow} }}
+**Caution**: This property works only if `show: true` configured.
+{{/if}}
+
+
 #${prefix} shadowOffsetY(number) = ${defaultShadowOffsetY|default(0)}
 
-Offset distance on the vertical direction of the shade. 
+Offset distance on the vertical direction of the shade.
+
+{{if: ${needShow} }}
+**Caution**: This property works only if `show: true` configured.
+{{/if}}
 
 
 {{target:partial-style-opacity}}
