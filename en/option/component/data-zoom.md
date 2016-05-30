@@ -104,7 +104,7 @@ option: {
 
 ## xAxisIndex(number|Array) = null
 
-Setting up `x axis` which is controlled by `${dataZoomName}`  (namely,[xAxis](~xAxis), which is a concept in rectangular coordinate system, reference to [grid](~grid)). 
+Setting up `x axis` which is controlled by `${dataZoomName}`  (namely,[xAxis](~xAxis), which is a concept in rectangular coordinate, reference to [grid](~grid)). 
 
 without assignment, as [${dataZoomName}.orient](~${dataZoomName}.orient) is `'horizontal'`, it defaults to control all the `xAxis`.
 
@@ -115,7 +115,7 @@ without assignment, as [${dataZoomName}.orient](~${dataZoomName}.orient) is `'ho
 
 ## yAxisIndex(number|Array) = null
 
-Setting up `y axis` which is controlled by `${dataZoomName}`  (namely, [yAxis](~yAxis), which is a concept in rectangular coordinate system, reference to [grid](~grid)). 
+Setting up `y axis` which is controlled by `${dataZoomName}`  (namely, [yAxis](~yAxis), which is a concept in rectangular coordinate, reference to [grid](~grid)). 
 
 without assignment, as [${dataZoomName}.orient](~${dataZoomName}.orient) is `'vertical'`, it defaults to control all the `yAxis`.
 
@@ -127,7 +127,7 @@ without assignment, as [${dataZoomName}.orient](~${dataZoomName}.orient) is `'ve
 ## angleAxisIndex(number|Array) = null
 
 
-Setting up angleAxis which is controlled by `${dataZoomName}` (namely, [angleAxis](~angleAxis), which is a concept in polar coordinate system, reference to [polar](~polar)). 
+Setting up angleAxis which is controlled by `${dataZoomName}` (namely, [angleAxis](~angleAxis), which is a concept in polar coordinate, reference to [polar](~polar)). 
 
 Without assignment, it defaults to control all the `angleAxis`.
 
@@ -138,7 +138,7 @@ Without assignment, it defaults to control all the `angleAxis`.
 
 ## radiusAxisIndex(number|Array) = null
 
-Setting up radiusAxis which is controlled by `${dataZoomName}` (namely,[radiusAxis](~radiusAxis), which is a concept in polar coordinate system, reference to [polar](~polar)). 
+Setting up radiusAxis which is controlled by `${dataZoomName}` (namely,[radiusAxis](~radiusAxis), which is a concept in polar coordinate, reference to [polar](~polar)). 
 
 Without assignment, it defaults to control all the  `radiusAxis`.
 
@@ -204,7 +204,7 @@ Under the latter condition, it would internally and automatically translate to t
 
 ## orient(string) = null
 
-specify whether the layout is horizontal or vertical. What's more, in terms of rectangular coordinate system, it decides whether the horizontal axis or vertical axis is controlled under default condition. 
+specify whether the layout is horizontal or vertical. What's more, in terms of rectangular coordinate, it decides whether the horizontal axis or vertical axis is controlled under default condition. 
 
 Valid values: 
 

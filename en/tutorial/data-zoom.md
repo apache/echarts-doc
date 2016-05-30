@@ -16,7 +16,7 @@ Following is an example of `datazoom component` [dataZoom](option.html#dataZoom)
 <br>
 <h2>Introduction of data zoom component (dataZoom)</h2>
 
-Data overview by default, and detail by requirement is a basic interaction need of data visualization. `dataZoom` component can implement this function in rectangular coordinate system ([grid](option.html#grid)) and polar coordinate system ([polar](option.html#polar).
+Data overview by default, and detail by requirement is a basic interaction need of data visualization. `dataZoom` component can implement this function in rectangular coordinate ([grid](option.html#grid)) and polar coordinate ([polar](option.html#polar).
 
 
 **For example: **
@@ -96,7 +96,7 @@ which will show the following result:
 
 <br>
 
-The chart above can only change window by dragging dataZoom component. If you want to drag in coordinate system, or use mouse wheel (or slides with two fingers on mobile) to zoom, then another inside dataZoom component needs to be added. You can just add in the `option.dataZoom` above: 
+The chart above can only change window by dragging dataZoom component. If you want to drag in coordinate, or use mouse wheel (or slides with two fingers on mobile) to zoom, then another inside dataZoom component needs to be added. You can just add in the `option.dataZoom` above: 
 
 ```javascript
 option = {
@@ -117,7 +117,7 @@ option = {
 }
 ```
 
-Following results can be seen (you can now slide or use mouse wheel to zoom in coordinate system) : 
+Following results can be seen (you can now slide or use mouse wheel to zoom in coordinate) : 
 ~[600x300](${galleryViewPath}doc-example/scatter-tutorial-dataZoom-2&edit=1&reset=1)
 
 

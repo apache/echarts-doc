@@ -7,7 +7,7 @@ ECharts provides rich custom configuration options and you can set data graphic 
 
 ## Draw Nightingale chart
 
-[In the previous chapter](~getting-started) we learnt to draw a simple bar chart, this time we learn the pie chart. Pie chart mainly displays percentage of different categories data to the total sum through sector arc, its format is easier than bar chart with one-dimensional data value and no category. Since it is not in right angle coordinate system, so there is no need for `xAxis` and `yAxis`.
+[In the previous chapter](~getting-started) we learnt to draw a simple bar chart, this time we learn the pie chart. Pie chart mainly displays percentage of different categories data to the total sum through sector arc, its format is easier than bar chart with one-dimensional data value and no category. Since it is not in right angle coordinate, so there is no need for `xAxis` and `yAxis`.
 
 ```js
 myChart.setOption({

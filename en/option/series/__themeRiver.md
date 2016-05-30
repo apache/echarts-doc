@@ -38,7 +38,7 @@ The positional information of the whole theme river view reuses the positional i
 
 ## coordinateSystem(string) = "single"
 
-coordinate system. The theme river adopts sinle time axis. 
+coordinate. The theme river adopts sinle time axis. 
 
 ## boundaryGap(Array) = ["10%", "10%"]
 

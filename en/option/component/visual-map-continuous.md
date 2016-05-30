@@ -50,7 +50,7 @@ Whether to update in real time during dragging.
 
 Whether to inverse.
 
-As `inverse` is `false`, the position rule of data size is the same as retangular coordinate system. That is to say: 
+As `inverse` is `false`, the position rule of data size is the same as retangular coordinate. That is to say: 
 
 + As [visualMap.orient](~visualMap.orient) is `'vertical'`, data is large at the top while small in the bottom.
 + As [visualMap.orient](~visualMap.orient) is `'horizontal'`,  data is large on the right while small on the left.

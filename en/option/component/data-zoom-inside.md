@@ -6,7 +6,7 @@
 
  (Refer to[The introduction to data zoom component (dataZoom)](~dataZoom)) 
 
-The so called『inside』refers to installed inside the coordinate system.
+The so called『inside』refers to installed inside the coordinate.
 
 + translation: slid or drag to achieve data region translation in coordinate axis system. 
 
