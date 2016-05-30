@@ -12,18 +12,37 @@
 }
 ```
 
+{{if: ${needShow} }}
+**注意**：此配置项生效的前提是，设置了 `show: true`。
+{{/if}}
+
+
 #${prefix} shadowColor(Color) = ${defaultShadowColor}
 
 阴影颜色。支持的格式同`color`。
+
+{{if: ${needShow} }}
+**注意**：此配置项生效的前提是，设置了 `show: true`。
+{{/if}}
 
 
 #${prefix} shadowOffsetX(number) = ${defaultShadowOffsetX|default(0)}
 
 阴影水平方向上的偏移距离。
 
+{{if: ${needShow} }}
+**注意**：此配置项生效的前提是，设置了 `show: true`。
+{{/if}}
+
+
 #${prefix} shadowOffsetY(number) = ${defaultShadowOffsetY|default(0)}
 
 阴影垂直方向上的偏移距离。
+
+{{if: ${needShow} }}
+**注意**：此配置项生效的前提是，设置了 `show: true`。
+{{/if}}
+
 
 
 {{target:partial-style-opacity}}

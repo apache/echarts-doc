@@ -3,19 +3,19 @@
 
 # visualMap.piecewise(Object)
 
-**Piecewise visual Map Component (visualMapPiecewise) **
+**Piecewise visualMap component (visualMapPiecewise) **
 
- (Reference to [the introduction of visual Map component (visualMap)](~visualMap)) 
+ (Reference to [the introduction of visual Map component (visualMap)](~visualMap))
 
-Its is shown as follow:
+Sample:
 ~[600x400](${galleryViewPath}doc-example/scatter-visualMap-piecewise&edit=1&reset=1)
 
 
-There are 3 modes of Piecewise visual Map Component: 
+Piecewise visualMap component works in one of the three modes:
 
-+ split the continuous data averagely: Saveral pieces are automatically and averagely split according to [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber).
-+ Custom split of continuous data: define the range of each piece according to [visualMap-piecewise.pieces](~visualMap-piecewise.pieces).
-+ discrete data (category data) : category defnition in [visualMap-piecewise.categories](~visualMap-piecewise.categories).
++ **CONTINUOUS-AVERAGE**: The series.data is continuous and is divided into pieces averagely according to [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber).
++ **CONTINUOUS-CUSTOMIZED**: The series.data is continuous and is divided into pieces according to the given rule defined in [visualMap-piecewise.pieces](~visualMap-piecewise.pieces).
++ **CATEGORY**: The series.data is discrete and is categorized according to [visualMap-piecewise.categories](~visualMap-piecewise.categories).
 
 
 <br>
@@ -23,152 +23,186 @@ There are 3 modes of Piecewise visual Map Component:
 
 ## type(string) = piecewise
 
-It belongs to piecewise type.
+Used to determine it is a piecewise visualMap component.
 
 ## splitNumber(number) = 5
 
-For continuous data, it is automatically and averagely split several pieces which defaults to be 5 pieces. 
-The range of continuous data needs to be assigned by [max](~visualMap-piecewise.max) 和 [min](~visualMap-piecewise.min).
+Continuous data can be divide into pieces averagely according to splitNumber, that is, if splitNumber is 5, data will be sliced into 5 pieces.
 
-If [visualMap-piecewise.pieces](~visualMap-piecewise.pieces) or [visualMap-piecewise.categories](~visualMap-piecewise.categories) was set up, the `splitNumber` would be invalid.
+The range of continuous data should be defined by [max](~visualMap-piecewise.max) and [min](~visualMap-piecewise.min).
+
+If [visualMap-piecewise.pieces](~visualMap-piecewise.pieces) or [visualMap-piecewise.categories](~visualMap-piecewise.categories) is set up, the `splitNumber` will not be used any more.
 
 
 ## pieces(Array)
 
-The range, text and special styles of each piece in Custom『Piecewise visual Map Component (visualMapPiecewise) 』. For instance: 
+Used to customize how to slice continuous data, and some specific view style for some pieces. For instance:
 
 ```javascript
 pieces: [
+    // Range of a piece can be specified by property min and max,
+    // where min will be set as -Infinity if ignored,
+    // and max will be set as Infinity if ignored.
     {min: 1500},
     {min: 900, max: 1500},
     {min: 310, max: 1000},
     {min: 200, max: 300},
+    // Label of the piece can be specified.
     {min: 10, max: 200, label: '10 to 200 (custom label) '},
+    // Color of the piece can be specified.
     {value: 123, label: '123 (custom special color) ', color: 'grey'},
     {max: 5}
 ]
 ```
 
+These visual channel can be customized in each piece:
+
+{{use: partial-visual-map-visual-type}}
+
+
 [Sample](${galleryEditorPath}doc-example/map-visualMap-pieces&edit=1&reset=1)
 
- (Notes: In ECharts2, `pieces` is called `splitList` which is still compatible in this version. But `pieces` is recommended.) 
+ (Notes: In ECharts2, `pieces` is called `splitList`, which is retained in ECharts3 for compatibility. But `pieces` is recommended.)
 
-You would realize the sequence in `pieces` only if you have a try. See more detailed rules in [visualMap.inverse](~visualMap.inverse).
+You would realize the sequence in `pieces` by a simple trial. See more detailed rules in [visualMap.inverse](~visualMap.inverse).
 
 
 ## categories(Array)
 
-It is used to present discrete data (or it could be called as category data and enumerated data).
-
-As the data of assigned dimension ([visualMap-piecewise.dimension](~visualMap-piecewise.dimension)) is discrete data, such as data value『excellent』、『good』and so on, then configuration would be: 
+When dataValues in series.data (specified by [visualMap-piecewise.dimension](~visualMap-piecewise.dimension)) are discrete (or also known as category data or enumerable data), and we intend to perform **Table Mapping** from dataVale to visual channels, `categories` is used to describe the entire enumeration of data. For instance:
 
 ```javascript
-categories: ['severe pollution', 'severe pollution', ' Moderate Pollution', 'Light Pollution', 'good', 'excellent'],
+categories: [
+    'Demon Hunter', 'Blademaster', 'Death Knight', 'Warden', 'Paladin'
+],
 ```
 
 [Sample](${galleryEditorPath}doc-example/scatter-visualMap-categories&edit=1&reset=1)
 
-You would realize the sequence in `categories` only if you have a try.See more detailed rules in [visualMap.inverse](~visualMap.inverse). 
+You would realize the sequence in `categories` by a simple trial. See more detailed rules in [visualMap.inverse](~visualMap.inverse).
 
 
 ## min(number)
 
-Assign visualMapPiecewise component with the minimum value. Reference to [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber)
+Specify the min dataValue for the visualMap component. `[visualMap.min, visualMax.max]` make up the domain of viusul mapping.
 
-As [visualMap-piecewise.pieces](~visualMap-piecewise.pieces) or [visualMap-piecewise.categories](~visualMap-piecewise.categories) is assigned, `'min'` doesn't need to be assigned.
+In **CONTINUOUS-CUSTOMIZED** mode (i.e., [visualMap-piecewise.pieces](~visualMap-piecewise.pieces) is used) or **CATEGORY** mode (i.e., [visualMap-piecewise.categories](~visualMap-piecewise.categories) is used), `max` and `min` doesn't need to be specified.
+
+In **CONTINUOUS-AVERAGE** mode (i.e., [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber) is used), they should be specified explicitly, and be `[0, 200]` by default, but not `dataMin` and `dataMax` in series.data.
 
 
 ## max(number)
 
-Assign visualMapPiecewise component with the maximum value. Reference to [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber)
+Specify the max dataValue for the visualMap component. `[visualMap.min, visualMax.max]` make up the domain of viusul mapping.
 
-As [visualMap-piecewise.pieces](~visualMap-piecewise.pieces) or [visualMap-piecewise.categories](~visualMap-piecewise.categories) is assigned, `'max'` doesn't need to be assigned.
+In **CONTINUOUS-CUSTOMIZED** mode (i.e., [visualMap-piecewise.pieces](~visualMap-piecewise.pieces) is used) or **CATEGORY** mode (i.e., [visualMap-piecewise.categories](~visualMap-piecewise.categories) is used), `max` and `min` doesn't need to be specified.
 
+In **CONTINUOUS-AVERAGE** mode (i.e., [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber) is used), they should be specified explicitly, and be `[0, 200]` by default, but not `dataMin` and `dataMax` in series.data.
 
 
 ## selectedMode(string) = 'multiple'
 
-Selected Mode could be: 
+Selected Mode could be:
 
-+ `'multiple'` (multiple selected). 
-+ `'single'` (single selected). 
++ `'multiple'` (multiple selection).
++ `'single'` (single selection).
 
 
 ## inverse(boolean) = false
 
-Whether to inverse.. 
+Whether to inverse the layout of visualMap component.
 
-+ As the mode is [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber), the rule about data size is the same with [visualMap-continuous.inverse](~visualMap-continuous.inverse).
++ In **CONTINUOUS-AVERAGE** mode (i.e., [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber) is used), the rule of data layout is the same as [visualMap-continuous.inverse](~visualMap-continuous.inverse).
 
-+ As the mode is [visualMap-piecewise.pieces](~visualMap-piecewise.pieces) or [visualMap-piecewise.categories](~visualMap-piecewise.categories), the configurating position of each piece is decided by the define order of `pieces` or `categories` list, namely: 
++ In **CONTINUOUS-CUSTOMIZED** mode (i.e., [visualMap-piecewise.pieces](~visualMap-piecewise.pieces) is used) or **CATEGORY** mode (i.e., [visualMap-piecewise.categories](~visualMap-piecewise.categories) is used), the layout of each piece is determined by the their order in the definition of `pieces` or `categories`, namely:
 
-    + When `inverse` is `false`: 
+    + When `inverse` is `false`:
 
-        * When [visualMap.orient](~visualMap.orient) is `'vertical'`, `pieces[0]` or `categories[0]` correspond with『upward side』.
+        * When [visualMap.orient](~visualMap.orient) is `'vertical'`, pieces[0] or categories[0] correspond to upward side.
 
-        * When [visualMap.orient](~visualMap.orient) is `'horizontal'`, `pieces[0]` or `categories[0]` correspond with 『left side』.
+        * When [visualMap.orient](~visualMap.orient) is `'horizontal'`, pieces[0] or categories[0] correspond to left side.
 
-    + When `inverse` is `true`, the results are opposite to the above situations. 
+    + When `inverse` is `true`, the results are opposite to above.
 
 If you just have a try, you'll know it is not so complicated.
 
 
 ## precision(number) = null
 
-The decimal precision of data display.
+The decimal precision of label, defaults to be 0 (no decimals).
 
-+ When the mode is [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber), the precision would automatically adapts to the related condition according to data.
++ In **CONTINUOUS-AVERAGE** mode (i.e., [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber) is used), the rule of data layout is the same as [visualMap-continuous.inverse](~visualMap-continuous.inverse), decimal percision auto adapts to series.data.
 
-+ When the mode is [visualMap-piecewise.pieces](~visualMap-piecewise.pieces) or [visualMap-piecewise.categories](~visualMap-piecewise.categories), the precision defaults to be 0.
++ In **CONTINUOUS-CUSTOMIZED** mode (i.e., [visualMap-piecewise.pieces](~visualMap-piecewise.pieces) is used) or **CATEGORY** mode (i.e., [visualMap-piecewise.categories](~visualMap-piecewise.categories) is used), decimal percision defaults to be 0 (no decimals):
 
 
 ## itemWidth(number) = 20
 
-The width of diagram, which refers to the width of each item.
+The width of each graphical element that represents a piece.
 
 
 ## itemHeight(number) = 14
 
-The height of diagram, which refers to the height of each item.
+The height of each graphical element that represents a piece.
 
 
 ## align(string) = 'auto'
 
-The aligning relation between figure (such as a small square) and text in an assigned component. The optional values are: 
+The layout relationship between the graphical elements for pieces and their labels. Possible values are:
 
-+ `'auto'` automatical decision.
-+ `'left'` the figure is on the left and the text is on the right.
-+ `'right'` the figure is on the right and the text is on the left.
++ `'auto'` Decide automatically.
++ `'left'` The graphical elements for pieces are on the left and their labels are on the right.
++ `'right'` The graphical elements for pieces are on the right and their labels are on the left.
 
 
 ## text(Array) = null
 
-The text of both ends, for example['High', 'Low']. [Sample](${galleryEditorPath}doc-example/map-visualMap-piecewise-text&edit=1&reset=1). 
+The label text on both ends, such as `['High', 'Low']`. [Sample](${galleryEditorPath}doc-example/map-visualMap-piecewise-text&edit=1&reset=1).
 
-You would realize the sequence in `text` only if you have a try.See more detailed rules in [visualMap.inverse](~visualMap.inverse).
+You can understand the order of items in `text` array just by a simple trial. See [visualMap.inverse](~visualMap.inverse).
 
-It is compatible with ECharts2, in which lable would not show as there is `text`.
+The rule, that labels will not show when `text` is use, is retained for compatibility with ECharts2.
+
 
 ## textGap(Array) = 10
 
-The distance between2 textsubjects on both sides. Its unit is px. Reference to [visualMap-piecewise.text](~visualMap-piecewise.text)
+The distance between the ends of the graphical elements for pieces and the labels, with unit px. See [visualMap-piecewise.text](~visualMap-piecewise.text)
 
 
 ## itemGap = 10
 
-Its the interval distance between every item. The unit is px.
+Its the distance between each two graphical elements for pieces. The unit is px.
 
 
 ## itemSymbol(string) = 'roundRect'
 
-Default figure. Optional values are: {{ import: partial-icon-buildin}}. 
+Default symbol (the shape of graphical element). Possible values are:
 
-The setting of symbol could refers to [visualMap-piecewise.inRange](~visualMap-piecewise.inRange) and [visualMap-piecewise.outOfRange](~visualMap-piecewise.outOfRange).
+{{ import: partial-icon-buildin}}
 
-When they are not assigned,  `itemSymbol` should be adopted as default value.
+The setting of visual channel `symbol` can refers to [visualMap-piecewise.inRange](~visualMap-piecewise.inRange) and [visualMap-piecewise.outOfRange](~visualMap-piecewise.outOfRange).
+
+When they are not specified, `itemSymbol` is adopted as the default value (but just used in visualMap component itself, not in chart).
+
 
 {{ use: partial-visual-map-common(
     visualMapName='visualMap-piecewise',
     galleryEditorPath=${galleryEditorPath}
 ) }}
+
+
+
+## formatter(string|Function)
+
+the formatter tool for label.
+
++ If it was set as a `string`, it refers to a template, for instance: `aaaa{value}bbbb{value2}`, where `{value}` and `{value2}` represents the current seleted range of dataValues.
+
++ If it was set as a `Function`, it refers to a callback function, for instance:
+
+```javascript
+formatter: function (value, value2) {
+    return 'aaaa' + value + 'bbbb' + value2;
+}
+```
 
