@@ -3,11 +3,11 @@
 
 # angleAxis(Object)
 
-The angle Axis of Polar coordinate system.
+The angle Axis of Polar coordinate.
 
 ## polarIndex(number) = 0
 
-The polarIndex of angle Axis defaults to use the first Polar coordinate system.
+The polarIndex of angle Axis defaults to use the first Polar coordinate.
 
 ## startAngle(number) = 90
 

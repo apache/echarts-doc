@@ -2,13 +2,13 @@
 
 # series.scatter(Object)
 
-Scatter (bubble) diagram . The scatter diagram in [rectangular coordinate system](~grid) could be used to present the relation between  `x` and `y`. If there are multiple dimensions of a data item, the values of the other dimensions can be displayed as bubble diagram through [symbol](~series-scatter.symbol) with various sizes and colors. These can be completed by cooperating with [visualMap](~visualMap) component.
+Scatter (bubble) diagram . The scatter diagram in [rectangular coordinate](~grid) could be used to present the relation between  `x` and `y`. If there are multiple dimensions of a data item, the values of the other dimensions can be displayed as bubble diagram through [symbol](~series-scatter.symbol) with various sizes and colors. These can be completed by cooperating with [visualMap](~visualMap) component.
 
 
-It could be applied in [rectangular coordinate system](~grid) and [polar coordinate system](~polar) and [geographical coordinate system](~geo).
+It could be applied in [rectangular coordinate](~grid) and [polar coordinate](~polar) and [geographical coordinate](~geo).
 
 
-**Tip:** Instead of marking a large number of data points through markPoint in ECharts 2.x, the scatter on [geographical coordinate system](~geo) is suggested to achieve the same effect in ECharts 3. The following example shows the distribution of air quality is with a scatter diagram on the map of China. What's more, the [visualMap](~visualMap) component is used to map PM2.5 to colors. 
+**Tip:** Instead of marking a large number of data points through markPoint in ECharts 2.x, the scatter on [geographical coordinate](~geo) is suggested to achieve the same effect in ECharts 3. The following example shows the distribution of air quality is with a scatter diagram on the map of China. What's more, the [visualMap](~visualMap) component is used to map PM2.5 to colors. 
 
 ~[600x400](${galleryViewPath}scatter-map&edit=1&reset=1)
 

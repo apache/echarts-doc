@@ -6,7 +6,7 @@
 
 {{use: partial-parallel-data-example}}
 
-Parallel coordinate system is suited to conduct visualization analysis on multidimensional data. Every dimension (row) corresponds to an axis, every『data item』is a line, going through multiple axes. In this axis, data selection and other operations can be carried out, as following:
+Parallel coordinate is suited to conduct visualization analysis on multidimensional data. Every dimension (row) corresponds to an axis, every『data item』is a line, going through multiple axes. In this axis, data selection and other operations can be carried out, as following:
 
 ~[600x400](${galleryViewPath}doc-example/parallel-all&edit=1&reset=1)
 
@@ -31,8 +31,8 @@ option = {
             data: ['Excellent', 'good', 'light pollution', 'moderate pollution', 'heavy pollution', 'severe pollution']
         }
     ],
-    parallel: {                         // This is the definition of『coordinate system』
-        left: '5%',                     // Location setting of parallel coordinate system
+    parallel: {                         // This is the definition of『coordinate』
+        left: '5%',                     // Location setting of parallel coordinate
         right: '13%',
         bottom: '10%',
         top: '20%',
@@ -42,7 +42,7 @@ option = {
             nameGap: 20
         }
     },
-    series: [                           // These three series share one parallel coordinate system
+    series: [                           // These three series share one parallel coordinate
         {
             name: 'Beijing',
             type: 'parallel',           // The type of this series is 'parallel'
@@ -78,23 +78,23 @@ Three concerned components: [parallel](~parallel)、[parallelAxis](~parallelAxis
 
 + [parallel](~parallel)
 
-    The configuration item of this parallel coordinate system is『coordinate system』itsel.one series (`series`) or many series (like 『Beijing』、『Shanghai』、『Guangzhou』in the above picture is a series respectively.) They can share thi『coordinate system』
+    The configuration item of this parallel coordinate is『coordinate』itsel.one series (`series`) or many series (like 『Beijing』、『Shanghai』、『Guangzhou』in the above picture is a series respectively.) They can share thi『coordinate』
 
-    The same as other coordinate systems, multiple coordinate systems can be created.
+    The same as other coordinates, multiple coordinates can be created.
 
     Location setting is also carried out here.
 
 + [parallelAxis](~parallelAxis)
 
-    This is axis configuration of 『coordinate system』. Naturally, multiple axes are needed.
+    This is axis configuration of 『coordinate』. Naturally, multiple axes are needed.
 
-    Among which are attributes of  [parallelAxis.parallelIndex](~parallelAxis.parallelIndex), assigning this『axis』in which『coordinate system』. Use the first 『coordinate system』by default.
+    Among which are attributes of  [parallelAxis.parallelIndex](~parallelAxis.parallelIndex), assigning this『axis』in which『coordinate』. Use the first 『coordinate』by default.
 
 + [series-parallel](~series-parallel)
 
-    This is the definition of『series』. Series will be drawn to『coordinate system』.
+    This is the definition of『series』. Series will be drawn to『coordinate』.
 
-    Among which are attributes of [series-parallel.parallelIndex](~series-parallel.parallelIndex), assigning usage of which『coordinate system』.Use the first 『coordinate system』by default.
+    Among which are attributes of [series-parallel.parallelIndex](~series-parallel.parallelIndex), assigning usage of which『coordinate』.Use the first 『coordinate』by default.
 
 **Configuration note and best practices**
 

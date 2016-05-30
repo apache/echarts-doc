@@ -41,7 +41,7 @@ Mark line text.
 Data array of marking line. Every array can be  one with one or two value, representing starting point and finishing point of the line, and every item is an object, followings are several ways to assign the positions of starting point and finishing point.
 1. Through [x](~series-${seriesType}.markLine.data.0.x), [y](~series-${seriesType}.markLine.data.0.y) attribute assigns screen coorditaes and per pixel of relative container. 
 {{ if: ${hasCoord} }}
-2. Use [coord](~series-${seriesType}.markLine.data.0.coord) attribute assigns coordinates position of data in the corresponding coordinate system. 
+2. Use [coord](~series-${seriesType}.markLine.data.0.coord) attribute assigns coordinates position of data in the corresponding coordinate. 
 {{ /if }}{{ if: ${hasType} }}
 3. Use [type](~series-${seriesType}.markLine.data.0.type) attribute to label the maximum value and minimum value in the series directly. This is when you can use  [valueIndex](~series-${seriesType}.markLine.data.0.valueIndex) to assign the maximum value, minimum value and average value in any dimensions. Or you can use [valueDim](~series-${seriesType}.markPoint.data.valueDim) to assign the maximum value, minimum value and average value in any dimensions.
 {{ /if }}
@@ -145,7 +145,7 @@ Available when using [type](~series-${seriesType}.markLine.data.type), it is use
 Available when using [type](~series-${seriesType}.markLine.data.type),it is used to assign maximum value and minimum value in dimensions, it could be the direct name of the dimension, for example, names could be `x`、`angle`in line chart、`open`、`close`in candlestick chart.
 
 #${prefix} coord(Array)
-Coordinates of the starting point or finishing point.Coordinates format depends on the coordinate system of the series.It could be `x`, `y` in [grid coordinates](~grid), or  `radius`, `angle`in [polar coordinates](~polar).
+Coordinates of the starting point or finishing point.Coordinates format depends on the coordinate of the series.It could be `x`, `y` in [grid coordinates](~grid), or  `radius`, `angle`in [polar coordinates](~polar).
 
 **Attention: **In ECharts 2.x , `xAxis` and `yAxis` will be used to label position in grid coordinates,ECharts 3 is no longer recommended.
 {{ /if }}

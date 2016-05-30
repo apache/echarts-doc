@@ -3,7 +3,7 @@
 
 # parallelAxis(Object)
 
-This component is the coordinate axis in parallel coordinate system. 
+This component is the coordinate axis in parallel coordinate. 
 
 {{ use: partial-parallel-introduce(
     galleryViewPath=${galleryViewPath}
@@ -26,27 +26,27 @@ Count from  `0`. For example, the `dim` of coordinate axis is `1`, indicating th
 
 ## parallelIndex(number) = 0
 
-It is used to define which 『coordinate system』the『coordinate axis』should correspond to.
+It is used to define which 『coordinate』the『coordinate axis』should correspond to.
 
 For example, there is the following configuration: 
 
 ```javascript
 myChart.setOption({
     parallel: [
-        {...},                      // the first parallel coordinate system
-        {...}                       //  the second parallel coordinate system
+        {...},                      // the first parallel coordinate
+        {...}                       //  the second parallel coordinate
     ],
     parallelAxis: [
-        {parallelIndex: 1, ...},    // the first coordinate axis, corresponding to the second parallel coordinate system
-        {parallelIndex: 0, ...},    //  the second coordinate axis, corresponding to the first parallel coordinate system
-        {parallelIndex: 1, ...},    //  the third coordinate axis, corresponding to the second parallel coordinate system
-        {parallelIndex: 0, ...}     //  the fourth coordinate axis, corresponding to the first parallel coordinate system
+        {parallelIndex: 1, ...},    // the first coordinate axis, corresponding to the second parallel coordinate
+        {parallelIndex: 0, ...},    //  the second coordinate axis, corresponding to the first parallel coordinate
+        {parallelIndex: 1, ...},    //  the third coordinate axis, corresponding to the second parallel coordinate
+        {parallelIndex: 0, ...}     //  the fourth coordinate axis, corresponding to the first parallel coordinate
     ],
     ...
 });
 ```
 
-If there is only one parallel coordinate system, the setting could be ignored, which defaults to be `0`.
+If there is only one parallel coordinate, the setting could be ignored, which defaults to be `0`.
 
 ## areaSelectStyle(Object)
 

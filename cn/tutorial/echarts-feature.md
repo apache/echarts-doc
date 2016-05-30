@@ -35,9 +35,9 @@ ECharts 3 开始独立出了“坐标系”的概念，支持了直角坐标系�
 
 ## 深度的交互式数据探索
 
-交互是从数据中发掘信息的重要手段。总览为先 缩放过滤 按需查看细节是数据可视化交互的基本需求。
+交互是从数据中发掘信息的重要手段。“总览为先，缩放过滤按需查看细节”是数据可视化交互的基本需求。
 
-ECharts 一直在“交互”的路上前进，[legend](option.html#legend) [visualMap](option.html#visualMap) [dataZoom](option.html#dataZoom) [tooltip](option.html#tooltip)等组件以及图表附带的漫游，选取等操作提供了数据筛取、视图缩放、展示细节等能力。
+ECharts 一直在*交互*的路上前进，我们提供了 [legend](option.html#legend) [visualMap](option.html#visualMap) [dataZoom](option.html#dataZoom) [tooltip](option.html#tooltip)等组件以及图表附带的漫游，选取等操作提供了数据筛取、视图缩放、展示细节等能力。
 
 ECharts 3 中，对这些组件进行了广泛增强，例如支持在数据的各种坐标轴、维度进行数据过滤、缩放，以及在更多的图中采用这些组件。比如下面这个例子
 

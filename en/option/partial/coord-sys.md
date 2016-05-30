@@ -2,13 +2,13 @@
 
 ## coordinateSystem(string) = ${coordSysDefault}
 
-The coordinate system used in the series,  options are:
+The coordinate used in the series,  options are:
 
 {{if: ${cartesian2d} }}
 
 + `'cartesian2d'`
 
-    Using a two-dimensional Cartesian coordinate system (also known as Cartesian coordinate system), through [xAxisIndex](~series-${seriesType}.xAxisIndex), [yAxisIndex](~series-${seriesType}.yAxisIndex) to assign the corresponding axis component.
+    Using a two-dimensional Cartesian coordinate (also known as Cartesian coordinate), through [xAxisIndex](~series-${seriesType}.xAxisIndex), [yAxisIndex](~series-${seriesType}.yAxisIndex) to assign the corresponding axis component.
 {{/if}}
 
 {{if: ${polar} }}
@@ -22,14 +22,14 @@ The coordinate system used in the series,  options are:
 
 + `'geo'`
 
-    Using geographic coordinate system, through [geoIndex](~series-${seriesType}.geoIndex) to assign the corresponding geographic coordinate system components.
+    Using geographic coordinate, through [geoIndex](~series-${seriesType}.geoIndex) to assign the corresponding geographic coordinate components.
 {{/if}}
 
 {{if: ${parallel} }}
 
 + `'parallel'`
 
-    Using parallel coordinates, through [parallelIndex](~series-${seriesType}.parallelIndex) to assign the corresponding parallel coordinate system components.
+    Using parallel coordinates, through [parallelIndex](~series-${seriesType}.parallelIndex) to assign the corresponding parallel coordinate components.
 {{/if}}
 
 
@@ -48,7 +48,7 @@ Using the index of [y axis](~yAxis), which is  useful when there are multiple y 
 {{if: ${polar} }}
 ## polarIndex(number) = 0
 
-Using the index of [Polar coordinate system](~polar), which is  useful when there are multiple polar coordinate systems in one graphic chart.
+Using the index of [Polar coordinate](~polar), which is  useful when there are multiple polar coordinates in one graphic chart.
 
 {{/if}}
 
@@ -57,7 +57,7 @@ Using the index of [Polar coordinate system](~polar), which is  useful when ther
 {{if: ${geo} }}
 ## geoIndex(number) = 0
 
-Using the index of [geographic coordinate system](~geo), which is  useful when there are multiple geographic coordinate systems in one graphic chart.
+Using the index of [geographic coordinate](~geo), which is  useful when there are multiple geographic coordinates in one graphic chart.
 
 {{/if}}
 

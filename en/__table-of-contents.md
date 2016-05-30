@@ -9,7 +9,7 @@
     + each component layout in ECharts 
     + asynchronous data and dynamic data
     + customized interactions through JS API 
-    + coordinate system in ECharts
+    + coordinate in ECharts
     + data and visual coding (dataRange)  in ECharts 
     + self-adaptive on mobile end
     + use theme
