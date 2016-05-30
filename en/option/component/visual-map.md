@@ -3,14 +3,13 @@
 
 # visualMap(Array|Object)
 
-`visualMap` is a visual map component. It is used to do『visual coding』, which refers to mapping the data to the visual elements (visual channel).
+`visualMap` is a type of component for visual encoding, which maps the data to visual channels, including:
 
-visual element could be: <br>
 {{use: partial-visual-map-visual-type}}
 
-`visualMap` could be multiply defined. Therefore, multiple dimensions of data could be mapped in the meanwhile. 
+Myltiple `visualMap` component could be defined in a chart instance, which enable that different dimensions of a series data are mapped to different visual channels.
 
-`visualMap` could be defined as [Piecewise type (visualMapPiecewise)](~visualMap-piecewise) or [Continuous type (visualMapContinuous)](~visualMap-continuous), or distinguished by `type`. For instance: 
+`visualMap` could be defined as [Piecewise (visualMapPiecewise)](~visualMap-piecewise) or [Continuous (visualMapContinuous)](~visualMap-continuous), which is distinguished by the property `type`. For instance:
 
 ```javascript
 option = {
@@ -29,18 +28,18 @@ option = {
 ```
 
 <br>
-**The configuration of visual mapping mode**
+**Configurate how to map**
 
-Since it is the mapping from『data』 to 『visual element』, 『specific dimension』 (Reference to [visualMap.dimension](~visualMap.dimension))  could be assigned to map into some selected『visual elements』 (Reference to [visualMap.inRange](~visualMap.inRange) and [visualMap.outOfRange](~visualMap.outOfRange))  in `visualMap`.
+The dimension of [series.data](~series.data) can be specified by [visualMap.dimension](~visualMap.dimension), from which the value can be retrieved and mapped onto visual channels, which can be defined in [visualMap.inRange](~visualMap.inRange) and [visualMap.outOfRange](~visualMap.outOfRange).
 
-
-<br>
-**The relation with dataRange in ECharts2**
-
-`visualMap` is renamed and extended from the  `dataRange` component in ECharts2 . In ECharts3,  the configuration item of `dataRange` from `option` is till compatible, which would automatically transfer to `visualMap` configuration item. We recommend you to write  `visualMap` instead of `dataRange` in option. 
 
 <br>
-**Here is the detailed introduction to all configurations of visualMap.**
+**The relationship between visualMap of ECharts3 and dataRange of ECharts2**
+
+`visualMap` is renamed from the `dataRange` of ECharts2, and the scope of functionalities are extended a lot. The configurations of `dataRange` are still compatible in ECharts3, which automatically convert them to `visualMap`. It is recommended to use `visualMap` instead of `dataRange` in ECharts3.
+
+<br>
+**The detailed configurations of visualMap are elaborated as follows.**
 
 <br>
 <br>
@@ -56,23 +55,29 @@ Since it is the mapping from『data』 to 『visual element』, 『specific dime
 
 
 {{target: partial-visual-map-visual-type}}
-`figure type (symbol)`、`figure size (symbolSize)`<br>
-`color (color)`、`the transparency of color (colorAlpha)`、<br>
-`the intensity of color (colorLightness)`、`the Saturation of color (colorSaturation)`、`color hue (colorHue)`
++ `symbol`: The type (or shape) of graphical elements.
++ `symbolSize`: The size of a graphical elements.
++ `color`: The color of a graphical elements.
++ `colorAlpha`: The transparency of a single `color`.
++ `opacity`: The transparency of both a graphical element and its attachments (like label).
++ `colorLightness`: The lightness in [HSL](https://en.wikipedia.org/wiki/HSL_and_HSV) of a `color`.
++ `colorSaturation`: The saturation in [HSL](https://en.wikipedia.org/wiki/HSL_and_HSV) of a `color`.
++ `colorHue`: The hue in [HSL](https://en.wikipedia.org/wiki/HSL_and_HSV) of a `color`.
 
 
 
 
 
 {{target: partial-visual-map-range}}
-`${rangeType}` could customize target series (reference to [${visualMapName}.seriesIndex](~${visualMapName}.seriesIndex)) visual form, and also customizes visual form of `${visualMapName}` itself. Generally speaking, if `${visualMapName}` controlled scatter diagram, then `${rangeType}` would define its `color`、`size` and so on. Both of them correspond with each other.
+`${rangeType}` could customize visual channels both in series (by [${visualMapName}.seriesIndex](~${visualMapName}.seriesIndex)) and in `${visualMapName}` itself.
 
-Definition mode, for instance: 
+For instance, if a `${visualMapName}` component is used on a scatter chart, the mapping approach from data to `color` (or `symbol`, `size`, ...) can be both customized in the scatter chart and `${visualMapName}` component itself. See the code as following:
 
 ```javascript
 visualMap: [
     {
         ...,
+        // Define visual channels both in target series and ${visualMapName} component itself:
         ${rangeType}: {
             color: ['#121122', 'rgba(3,4,5,0.4)', 'red'],
             symbolSize: [30, 100]
@@ -81,19 +86,21 @@ visualMap: [
 ]
 ```
 
-If you want to respectively define the visual style of `${visualMapName}` itself and `target series`, you should define as follows: 
+If you want to define visual channels for target series and ${visualMapName} component separately, you should do as follows:
 
 ```javascript
 visualMap: [
     {
         ...,
-        target: { // refers to the visual style of target series.
+        // Define visual channels only for target series.
+        target: {
             ${rangeType}: {
                 color: ['#121122', 'rgba(3,4,5,0.4)', 'red'],
                 symbolSize: [60, 200]
             }
         },
-        controller: { // refers to the visual style of ${visualMapName} itself.
+        // Define visual channels only for ${visualMapName} component.
+        controller: {
             ${rangeType}: {
                 symbolSize: [30, 100]
             }
@@ -102,16 +109,21 @@ visualMap: [
 ]
 ```
 
-Or define as follows: 
+Or define as follows:
 ```javascript
 visualMap: [
     {
         ...,
-        ${rangeType}: { // refers to the shared visual style of target series and${visualMapName}.
+        // Define visual channels for both target series and ${visualMapName} component.
+        ${rangeType}: {
             color: ['#121122', 'rgba(3,4,5,0.4)', 'red'],
             symbolSize: [60, 200]
         },
-        controller: { // refers to the visual style of ${visualMapName} itself, which would cover the shared one.
+        // Define visual channels only for ${visualMapName} component, which
+        // will overlap the properties with the same name in the above common
+        // definition. (symbolSize is overlapped by [30, 100] while color
+        // keeps the original value)
+        controller: {
             ${rangeType}: {
                 symbolSize: [30, 100]
             }
@@ -120,37 +132,194 @@ visualMap: [
 ]
 ```
 
-**About visual type**
+---
 
-+ In ${rangeType}, there could be any definitions of 『visual type』 (such as `color`、`symbolSize` and ect.). These visual types can be adopted in the meanwhile.
+**About visual channels**
 
-+The values of every visual type, all of which are expressed by the form of `Array`  (they are expressed by the form of `Object`  only in [visualMap-piecewise.categories](~visualMap-piecewise.categories). If it was written as `number` or `string`, it would turn to `Array`.
++ Various visual channels (such as `color`、`symbolSize` and ect.) can be defined in ${rangeType} at the same time and all of them will be apopted.
 
-+The content of `Array`: 
++ Basically visual channels `opacity` is recommended, rather than `colorAlpha`. The former controls the transparency of both graphical element and its attachments (like label), whereas the latter only controls the transparency of graphical element.
 
-    + For `figure size (symbolSize)`、`the transpatency of color (colorAlpha)`、`the intensity of color (colorLightness)`、the saturation of color (colorSaturation)`、`color hue (colorHue)`: 
++ There are two approaches of visual mapping supported: 'Linear Mapping' and 'Table Mapping'.
 
-    `Array` is always: `[the visual value with which the minimum and maximum data values correspond]`.
+---
 
-    For example: colorLightness: [0.8, 0.2], which refers to that the `minimum data value` among all datas map to the `0.8` of `color intensity` , the `maximum data value` map to the `0.2` of `color intensity`. The mapping results of other data values between the minimum and the maximum would be acquired according to linear calculation.
+**Linear Mapping to visual channel**
 
-    + For `color (color)` or `figure type (symbol)`: 
+`Linear Mapping` means that linear calculation will be performed on each dataValue (value of series.data), mapping them from the domain of `[visaulMap.min, visualMap.max]` to a given range of `[visualValue1, visualValue2]` and obtaining a final value (say visualValue) for visual channel rendering.
 
-    `Array` for instance: `['color0', 'color1', 'color2', ...]` or `['circle', 'rect', 'diamond', ...]`.
+For instance, `[visualMap.min, visualMap.max]` is set to be `[0, 100]`, and there is series.data: `[50, 10, 100]`. We intend to map them to an `opacity` range `[0.4, 1]`, by which the size of value can be demostrated by the transparency of graphical elements. visualMap component will then linear calculate them and get opacity values `[0.7, 0.44, 1]`, cooresponding to each dataValue.
 
-    Referring to the minimum data value which maps to the first item of  `Array` and the maximum value which maps to the last item of  `Array`. Other values between the minimum and the maximum would be gained according to linear calculation. 
+We can also set the visual range inversely, such as `opacity: [1, 0.4]`, and the final mapping result for the given series.data above will be `[0.7, 0.96, 0.4]`.
 
-+ Under [visualMap-piecewise.categories](~visualMap-piecewise.categories) mode, visual definition adopts `Object`. For example ([See the sample](${galleryEditorPath}doc-example/scatter-visualMap-categories&edit=1&reset=1)) : 
+Notice: [visualMap.min, visualMap.max] should be set manually and is [0, 100] by defualt, but not `dataMin` and `dataMax` in series.data。
+
+
+How to configurate visualMap component to do Linear Mapping?
+
++ When use [visualMap-continuous](~visualMap-continuous), or
+
++ When use [visualMap-piecewise](~visualMap-piecewise) and [visualMap-piecewise.categories](~visualMap-piecewise.categories) is not used.
+
+
+About the value of visual channel (visualValue):
+
++ Basically `Array` is used to express the range of visualValue, e.g., `color: ['#333', '#777']`.
+
++ Single `number` or single `string` can also be used, which will be converted to an `Array` by visualMap component. e.g.:  `opacity: 0.4` will be converted to `opacity: [0.4, 0.4]`, `color: '#333'` will be converted to `color: ['#333', '#333']`.
+
++ For visual channel `symbolSize`, `opacity`, `colorAlpha`, `colorLightness`, `colorSaturation`, `colorHue`, the range of visualValue is always in the form of: `[visualValue of visualMap.min, visualValue of visualMap.max]`. For example, `colorLightness: [0.8, 0.2]` means that the dataValue in series.data that equals to `visualMap.min` (if any) will be mapped to lightness `0.8`, and the dataValue that equals to `visualMap.max` (if any) will be mapped to lightness `0.2`, and other dataValues will be mapped by the linear calculateion based on the domain of `[visualMap.min, visualMap.max]` and the range of `[0.8, 0.2]`.
+
++ For visual channel `color`, array is used, like: `['#333', '#78ab23', 'blue']`, which means a color ribbon is formed based on the three color stops, and dataValues will be mapped to the ribbon. Specifically, the dataValue that equals to `visualMap.min` will be mapped onto `'#333'`, the dataValue that equals to `visualMap.max` will be mapped onto `'blue'`, and other dataValues will be piecewisely interpolated to get the final color.
+
++ For visual channel `symbol`, array is used, like: `['circle', 'rect', 'diamond']`, where the dataValue that equals to `visualMap.min` will be mapped onto `'circle'`, the dataValue that equals to `visualMap.max` will be mapped onto `'diamond'`, and other dataValues will be caculated based on the numerical distance to `visualMax.min` and to `visualMap.max`, and mapped onto one of `'circle'`, `'rect'`, `'diamond'`.
+
+
+About the possible value range of visualValue:
+
++ `opacity`、`colorAlpha`、`colorLightness`、`colorSaturation`，`visualValue`
+
+    possible value range is `[0, 1]`。
+
++ `colorHue`
+
+    possible value range is `[0, 360]`。
+
++ `color`：
+
+    color can use RGB expression, like `'rgb(128, 128, 128)'`, or RGBA expression, like `'rgba(128, 128, 128, 0.5)'`, or Hex expression, like '#ccc'.
+
++ `symbol`：
+
+    {{ use: partial-icon }}
+
+---
+
+**Table Mapping to visual channel**
+
+`Table Mapping` could be used when dataValue (values in series.data, specified by [visualMap.dimension](~visualMap.dimension)) is enumerable and we intend to map them to visualValue by looking up a given table.
+
+For instance, in a [visualMap-piecewise](~visualMap-piecewise) component, [visualMap-piecewise.categories](~visualMap-piecewise.categories) is set to `['Demon Hunter', 'Blademaster', 'Death Knight', 'Warden', 'Paladin']`. And there is series.data: `['Demon Hunter', 'Death Knight', 'Warden', 'Paladin']`. Then we can establish the lookup rule for color: `color: {'Warden': 'red', 'Demon Hunter': 'black'}`, by which the `visualMap` component will map `dataValue` to `color`.
+
+How to configurate `visualMap` component to do `Table Mapping`?
+
+When use [visualMap-piecewise](~visualMap-piecewise) and [visualMap-piecewise.categories](~visualMap-piecewise.categories)is set.
+
+About the value of visual channel (visualValue):
+
+Generally `Object` or `Array` is used, for instance:
 
 ```javascript
-${rangeType}: {
-    color: {
-        'excellent': 'red',
-        'good': 'black',
-        '': 'green' // empty word string, indicating that others are all 'green'.
+visualMap: {
+    type: 'piecewise',
+    // categories defines the items that to be displayed in visualMap-piecewise component.
+    categories: [
+        'Demon Hunter', 'Blademaster', 'Death Knight', 'Warden', 'Paladin'
+    ],
+    ${rangeType}: {
+        // visualValue can be an Object：
+        color: {
+            'Warden': 'red',
+            'Demon Hunter': 'black',
+            '': 'green' // Blank string means that except 'Warden' and 'Demon Hunter',
+                        // all other dataValues should be mapped to 'green'.
+        }
+        // visualValue can also be a single value,
+        // means that all dataValues should be mapped to the value.
+        color: 'green',
+        // visualValue can also be a array, with the same length
+        // as the array of categories and one-one mapping onto it.
+        color: ['red', 'black', 'green', 'yellow', 'white']
     }
 }
 ```
+
+[Example](${galleryEditorPath}doc-example/scatter-visualMap-categories&edit=1&reset=1)
+
+
+
+
+{{target: partial-visual-map-merge}}
+
+**How to modity configurations of vsiual encoding?**
+
+If you want to modify the configurations of visual encoding after chart been rendered (by invoke `setOption` to set the initial `option`), `setOption` can be used again to modify configurations of visual encoding. For instance:
+
+```javascript
+chart.setOption({
+    visualMap: {
+        inRange: {color: ['red', 'blue']}
+    }
+});
+```
+
+Notice:
+
++ These visualMap properties (i.e. `inRange`, `outOfRange`, `target`, `controller`) do not support "merge", that is, anyone among them is modified when use `setOption` again, all of the original values of them will not be kept but erased. The "merge" brings complication in implemnentation and understanding, whereas "erase all" normalize the practise: once you want to modify some visualValues, you should pass all of them to `setOption`, no matter they are to be changed.
+
++ This way, `getOption() -> modify the gotten option -> setOption(modified option)`, is strongly **not recommended**, for instance:
+
+```javascript
+// Not recommended approach, regardless of its correctness:
+
+var option = chart.getOption(); // Get the entire option.
+option.visualMap.inRange.color = ['red', 'blue']; // modify color, which is what you want.
+
+// You have to modify those two properties, otherwise you will not get what you want.
+option.visualMap.target.inRange.color = ['red', 'blue'];
+option.visualMap.controller.inRange.color = ['red', 'blue'];
+
+chart.setOption(option); // set the modified option back.
+// You should not use this approach, but use the
+// approach demostrated before this example.
+```
+
+
+
+
+
+{{target: partial-visual-map-inRange-outOfRange}}
+
+##${prefix} inRange(Object)
+
+Define visual channels that will mapped from dataValues that are **in selected range**. (User can interact with visualMap component and make a seleced range by mouse or touch.)
+
+Possiable visual channels includes:
+
+{{use: partial-visual-map-visual-type}}
+
+---
+
+{{use: partial-visual-map-range(
+    rangeType='inRange',
+    visualMapName=${visualMapName},
+    galleryEditorPath=${galleryEditorPath}
+)}}
+
+---
+
+{{use: partial-visual-map-merge}}
+
+##${prefix} outOfRange(Object)
+
+Define visual channels that will mapped from dataValues that are **out of selected range**. (User can interact with visualMap component and make a seleced range by mouse or touch.)
+
+Possiable visual channels includes:
+
+{{use: partial-visual-map-visual-type}}
+
+{{use: partial-visual-map-range(
+    rangeType='outOfRange',
+    visualMapName=${visualMapName},
+    galleryEditorPath=${galleryEditorPath}
+)}}
+
+---
+
+{{use: partial-visual-map-merge}}
+
+
+
 
 
 
@@ -160,13 +329,14 @@ ${rangeType}: {
 
 ## show(boolean) = true
 
-Whether to show ${visualMapName} component. If it was set as `false`, it would not show. However, the data mapping function still remains. 
+Whether to show ${visualMapName} component. If set as `false`, ${visualMapName} component will not show, but it can still perform visual mapping from dataValue to visual channel in chart.
 
 
 ## dimension(string) = 0
 
-Assign a『specific dimension』of data to map tp visual element.『data』is [series.data](~series.data).
-The [series.data](~series.data) could be understood as a double dimensional array, for instance: 
+Specify which dimension should be used to fetch dataValue from [series.data](~series.data), and then map them to visual channel.
+
+[series.data](~series.data) can be regarded as a two-dimensional array, for instance:
 
 ```javascript
 [
@@ -177,37 +347,38 @@ The [series.data](~series.data) could be understood as a double dimensional arra
 ]
 ```
 
-Among them, each row is a dimension which equals with `dimension`. 
-For example, when `dimension` is 1, the second row is selected to map to visual element.
+Each column of the above array is regarded as a `dimension`. For example, when property `dimension` is set to 1, the second column (i.e., 23, 23, 545, 23) is chosen to perform visual mapping.
 
 
 ## seriesIndex(number|Array.<number>)
 
-Assign the data of which series should be adopted, namely the [series.data](~series.data) of which series.
+Specify visual mapping should be performed on which series, from which
+[series.data](~series.data) is fetched.
 
-It defaults to select all series.
+All series are used by defualt.
 
-## inRange
 
-Define the visual element in **selected area** . Optional visual elements are: 
-{{use: partial-visual-map-visual-type}}
+## hoverLink(boolean) = true
 
-{{use: partial-visual-map-range(
-    rangeType='inRange',
-    visualMapName=${visualMapName},
-    galleryEditorPath=${galleryEditorPath}
+`hoverLink` enable highlight certain graphical elements of chart when mouse hovers on some place of `visualMap` component that is coresponding to those graphical elements by visual mapping.
+
+Inversely, when mouse hovers a graphical element of chart, its value label will be displayed on its corresponding position in `visualMap`.
+
+
+{{use: partial-visual-map-inRange-outOfRange(
+    prefix="",
+    visualMapName=${visualMapName}
 )}}
 
 
-## outOfRange
+## controller(Object)
 
-Define the visual element outside **selected area** . Optional visual elements are: 
-{{use: partial-visual-map-visual-type}}
+Property `inRange` and `outOfRange` can be set within property `controller`, which means those `inRange` and `outOfRange` are only used on the controller (`visualMap` component itself), but are not used on chart (series). This property is useful in some scenario that the view of controller need to be customized in detail.
 
-{{use: partial-visual-map-range(
-    rangeType='outOfRange',
-    visualMapName=${visualMapName},
-    galleryEditorPath=${galleryEditorPath}
+
+{{use: partial-visual-map-inRange-outOfRange(
+    prefix="#",
+    visualMapName=${visualMapName}
 )}}
 
 
@@ -224,7 +395,7 @@ Define the visual element outside **selected area** . Optional visual elements a
 
 ## orient(string) = 'vertical'
 
-horizontal (`'horizontal'`) or vertical (`'vertical'`). 
+How to layout the visualMap component, `'horizontal'` or `'vertical'`.
 
 
 ## padding(number|Array) = 5
@@ -234,38 +405,24 @@ horizontal (`'horizontal'`) or vertical (`'vertical'`).
 
 ## backgroundColor(Color) = 'rgba(0,0,0,0)'
 
-background color.
+background color of visualMap component.
 
 
 ## borderColor(Color) = '#ccc'
 
-border color. 
+border color of visualMap component.
 
 
 ## borderWidth(number) = 0
 
-border width, its unit is px.
+border width of visualMap component, with unit: px.
 
-
-## formatter(string|Function)
-
-the formatter tool of label.
-
-+ If it was set as `string`, it refers to template, for instance: `aaaa{value}bbbb{value2}`. Among them, `{value}` and `{value2}` are the range at present.
-
-+ If it was set as `Function`, it refers to callback function, for instance: 
-
-```javascript
-formatter: function (value, value2) {
-    return 'aaaa' + value + 'bbbb' + value2; // displayed content of range label.
-}
-```
 
 ## color(Array) = ['#bf444c', '#d88273', '#f6efa6']
 
-This configuration item is created to be compatible with ECharts2, which is not recommended in ECharts3. Its function has been transfered into [${visualMapName}.inRange](~${visualMapName}.inRange) and [${visualMapName}.outOfRange](~${visualMapName}.outOfRange).
+This property is remained only for compatibility with ECharts2, and is not recommended in ECharts3. It is recommended to configurate color in [${visualMapName}.inRange](~${visualMapName}.inRange), or [${visualMapName}.outOfRange](~${visualMapName}.outOfRange) if needed.
 
-If you want to use it, the following rules should be noticed: the sequence of `color` attribute is from `large` to `small`; but the sequence of `color` in [${visualMapName}.inRange](~${visualMapName}.inRange) or [${visualMapName}.outOfRange](~${visualMapName}.outOfRange) is always from `small` to `large`, which is different from the previous situation.  
+If you persist in using it, the following issue should be noticed: the sequence of dataValues that are mapped to colorValues in property `color` is from `large` to `small`, whereas that in [${visualMapName}.inRange](~${visualMapName}.inRange) or [${visualMapName}.outOfRange](~${visualMapName}.outOfRange) is from `small` to `large`.
 
 
 ## textStyle
