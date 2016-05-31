@@ -3,7 +3,7 @@
 
 # yAxis(Object)
 
-The y axis in cartesian(rectangular) coordinate system. A single grid component could place 2 y axis right and left at most. 
+The y axis in cartesian(rectangular) coordinate. A single grid component could place 2 y axis right and left at most. 
 
 ## gridIndex(number) = 0
 

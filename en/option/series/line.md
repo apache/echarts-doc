@@ -4,7 +4,7 @@
 
 **broken line graph**
 
-Broken line graph relates all the data points [symbol](~series-line.symbol) by broken lines, which is used to show the trend of data changing. It could be used in both [rectangular coordinate system](~grid) and[polar coordinate system](~polar).
+Broken line graph relates all the data points [symbol](~series-line.symbol) by broken lines, which is used to show the trend of data changing. It could be used in both [rectangular coordinate](~grid) and[polar coordinate](~polar).
 
 **Tip:** When [areaStyle](~series-line.areaStyle) is set, area graph could be drew.
 
