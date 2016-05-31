@@ -3,63 +3,132 @@
 # dataZoom(Array|Object)
 
 
-`dataZoomx` component is used in zooming the data in or out in a specific area, which would be helpful to pay more attention to detailed information or scan the data overall. 
+`dataZoom` component is used for zooming a specific area, which enable user to investigate data in detail, or get an overview of the data, or get rid of outlier points.
+
+These types of `dataZoom` component are supported:
+
++ [dataZoomInside](~dataZoom-inside): Data zoom functionalities is embeded inside coordinate systems, enable user to zoom or roam coordinate system by mouse dragging, mouse move or finger touch (in touch screen).
+
++ [dataZoomSlider](~dataZoom-slider): A special slider bar is provided, on which coordinate systems can be zoomed or roamed by mouse dragging or finger touch (in touch screen).
+
++ [dataZoomSelect](~toolbox.feature.dataZoom): A marquee tool is provided for zooming or roaming coordinate system. That is [toolbox.feature.dataZoom](~toolbox.feature.dataZoom), which can only be configured in toolbox.
 
 
-several valid subcomponent at present: 
-
-+ [Inside data zoom component (dataZoomInside)](~dataZoom-inside): installed inside the coordinate axis system.
-
-+ [Slider data Zoom component (dataZoomSlider)](~dataZoom-slider): operation through an individual slider.
-
-+ [Selected toolbox data Zoom component (dataZoomSelect)](~toolbox.feature.dataZoom): zooming in or out date through selected full-screen in a specific area. All the accesses and configuration items are in `toolbox`.
-
-
-Example: 
+Example:
 ~[600x400](${galleryViewPath}doc-example/scatter-dataZoom-all&edit=1&reset=1)
 
+<br>
+
+---
 
 
-**Tips: **
+**✦ Relationship between dataZoom and axis ✦**
 
-+ `dataZoom` mainly deals with `axis (axis)`. 
+Basically `dataZoom` component operates "window" on axis to zoom or roam coordinate system.
 
-    Using [dataZoom.xAxisIndex](~dataZoom.xAxisIndex) or [dataZoom.yAxisIndex](~dataZoom.yAxisIndex) or [dataZoom.radiusAxisIndex](~dataZoom.radiusAxisIndex) or [dataZoom.angleAxisIndex](~dataZoom.angleAxisIndex) to assign a axis or  some axis which should be controlled by `dataZoom` .
+> Use [dataZoom.xAxisIndex](~dataZoom.xAxisIndex) or [dataZoom.yAxisIndex](~dataZoom.yAxisIndex) or [dataZoom.radiusAxisIndex](~dataZoom.radiusAxisIndex) or [dataZoom.angleAxisIndex](~dataZoom.angleAxisIndex) to specify which axes are operated by `dataZoom`.
 
-+ `dataZoom` component can **exist in multiple**, which could all control at the same time. The components which control the same data axis would automatically link to take effect. 
+A single chart instance can contains several `dataZoom` components, each of which controls different axes. The `dataZoom` components that control the same axis will be automatically linked (i.e., all of them will be updated when one of them is updated by user action or API call).
 
-+ the operational principle of `dataZoom` is to achieve the effect of `screen data zooming` through `data filtering`.
+<br>
 
-    The result varies as the data filtering mode changes, reference: [dataZoom.filterMode](~dataZoom.filterMode). 
+---
 
-+ There are 2 kinds of valid setting about the range of data window in `dataZoom` at present: 
 
-    + percentage: reference to [dataZoom.start](~dataZoom.start) and [dataZoom.end](~dataZoom.end). 
+**✦ How dataZoom componets operates axes and data ✦**
 
-    + absolute figure: reference to [dataZoom.startValue](~dataZoom.startValue) and [dataZoom.endValue](~dataZoom.endValue). 
+Generally `dataZoom` component zoom or roam coordinate system through data filtering and set the windows of axes internally.
 
-+ If the range of `dataZoom` was assigned by percentage(and there is no setting about the `min`/`max`/`scale`), the result of `dataZoom` relates to its order in which the `dataZoom` is defined. For instance, there is a defined group: 
+Its behaviours vary according to filtering mode settings ([dataZoom.filterMode](~dataZoom.filterMode)).
 
-    ```javascript
-    {
-        dataZoom: [
-             {xAxisIndex: 0, start: 30, end: 70},
-             {yAxisIndex: 0, start: 20, end: 80}
+{{use: partial-data-zoom-filterMode}}
+
+Moreover, when `min`, `max` of an axis is set (e.g., `yAxis: {min: 0, max: 400}`), this extent of the axis will not be modified by the behaviour of dataZoom of other axis any more.
+
+<br>
+
+---
+
+**✦ How to set window ✦**
+
+You can set the current window in two forms:
+
++ percent value: see [dataZoom.start](~dataZoom.start) and [dataZoom.end](~dataZoom.end).
+
++ absolute value: see [dataZoom.startValue](~dataZoom.startValue) and [dataZoom.endValue](~dataZoom.endValue).
+
+Notice: If use percent value form, and it is in the senario below, the result of dataZoom depends on the sequence of dataZoom definitions appearing in `option`.
+
+
+```javascript
+option = {
+    dataZoom: [
+        {
+            id: 'dataZoomX',
+            type: 'slider',
+            xAxisIndex: [0],
+            filterMode: 'filter',   // Set as 'filter' so that the modification
+                                    // of window of xAxis willl effect the
+                                    // window of yAxis.
+            start: 30,
+            end: 70
+        },
+        {
+            id: 'dataZoomY',
+            type: 'slider',
+            yAxisIndex: [0],
+            filterMode: 'empty',
+            start: 20,
+            end: 80
+        }
+    ],
+    xAxis: {
+        type: 'value'
+    },
+    yAxis: {
+        type: 'value'
+        // Notice there is no min or max set to
+        // restrict the view extent of yAxis.
+    },
+    series{
+        type: 'bar',
+        data: [
+            // The first column corresponds to xAxis,
+            // and the second column corresponds to yAxis.
+            [12, 24, 36],
+            [90, 80, 70],
+            [3, 9, 27],
+            [1, 11, 111]
         ]
     }
-    ```
-    As the definition of dataZoom component on x aixs is before it is on y axis, [30, 70] of x axis indicates the 30% ~70% portion of all the data.  
-    However, [20, 80] of dataZoom in y axis refers to the 20%~80% dataset which is filtered by [30, 70] on x axis. With such a setting, when the dataZoom component on y axis is dragged, only the data scope on y axis would be changed; while as the the dataZoom component on x axis is dragged, both the data scopes on x axis and y axis would be changed at the same time(namely, y axis zooming in or out as the x axis window change.) 
+}
+```
 
-    If you want to change this processing sequence, you only need to change the orders of different items in datazoom.
-    Certainly, if the min/max on y axis is set, [20, 80] indicates the 20%~80% min / max, and the datazoom component on x axis would not influence the data scope on y axis any more.  
+What is the exact meaning of `start: 20, end: 80` in `dataZoomY` in the example above?
 
++ If `yAxis.min` and `yAxis.max` are set:
+
+    `start: 20, end: 80` of `dataZoomY` means: from `20%` to `80%` out of `[yAxis.min, yAxis.max]`.
+
+    If one of `yAxis.min` and `yAxis.max` is not set, the corresponding edge of the full extend also follow rule as follows.
+
++ If `yAxis.min` and `yAxis.max` are not set:
+
+    + If `dataZoomX` is set to be `filterMode: 'empty'`:
+
+        `start: 20, end: 80` of `dataZoomY` means: from `20%` to `80%` out of `[dataMinY to dataMaxY]` of series.data (i.e., `[9, 80]` in the example above).
+
+    + If `dataZoomX` is set to `filterMode: 'filter'`:
+
+        Since `dataZoomX` is defined before `dataZoomY`, `start: 30, end: 70` of `dataZoomX` means: from `30%` to `70%` out of full series.data, whereas `start: 20, end: 80` of `dataZoomY` means: from `20%` to `80%` out of the series.data having been filtered by `dataZoomX`.
+
+        If you want to change the process sequence, you can just change the sequence of the definitions apearing in `option`.
 
 <br>
 <br>
 
 
-Below is the detailed introduction: 
+Detailed configurations are listed as follows.
 
 
 
@@ -72,24 +141,26 @@ Below is the detailed introduction:
 
 
 {{target: partial-data-zoom-axis-example}}
- `number` indicates controlling one axis, while `Array` indicates controlling more than one axis.
+If it is set as a single `number`, one axis is controlled, while if it is set as an `Array` , multiple axes are controlled.
 
-If there is the following ECharts option: 
+For example:
 
 ```javascript
 option: {
     ${axisName}: [
-        {...}, // first ${axisName}
-        {...}, // second ${axisName}
-        {...}, // third ${axisName}
-        {...}  // fourth ${axisName}
+        {...}, // The first ${axisName}
+        {...}, // The second ${axisName}
+        {...}, // The third ${axisName}
+        {...}  // The fourth ${axisName}
     ],
     dataZoom: [
-        { // first dataZoom component
-            ${axisName}Index: [0, 2] // indicating that this dataZoom component controls the first and the third ${axisName}
+        { // The first dataZoom component
+            ${axisName}Index: [0, 2] // Indicates that this dataZoom component
+                                     // controls the first and the third ${axisName}
         },
-        { // the second dataZoom component
-            ${axisName}Index: 3      // indicating this data component controls the fourth ${axisName}
+        { // The second dataZoom component
+            ${axisName}Index: 3      // indicates that this dataZoom component
+                                     // controls the fourth ${axisName}
         }
     ]
 }
@@ -104,9 +175,9 @@ option: {
 
 ## xAxisIndex(number|Array) = null
 
-Setting up `x axis` which is controlled by `${dataZoomName}`  (namely,[xAxis](~xAxis), which is a concept in rectangular coordinate system, reference to [grid](~grid)). 
+Specify which [xAxis](~xAxis) is/are controlled by the `${dataZoomName}` when [catesian coordinate system](~grid) is used.
 
-without assignment, as [${dataZoomName}.orient](~${dataZoomName}.orient) is `'horizontal'`, it defaults to control all the `xAxis`.
+By default all the `xAxis`s are controlled when [${dataZoomName}.orient](~${dataZoomName}.orient) is set as `'horizontal'`. But it is recommended to specify it explicitly but not use default value.
 
 {{use: partial-data-zoom-axis-example(
     axisName='xAxis'
@@ -115,9 +186,9 @@ without assignment, as [${dataZoomName}.orient](~${dataZoomName}.orient) is `'ho
 
 ## yAxisIndex(number|Array) = null
 
-Setting up `y axis` which is controlled by `${dataZoomName}`  (namely, [yAxis](~yAxis), which is a concept in rectangular coordinate system, reference to [grid](~grid)). 
+Specify which [yAxis](~yAxis) is/are controlled by the `${dataZoomName}` when [catesian coordinate system](~grid) is used.
 
-without assignment, as [${dataZoomName}.orient](~${dataZoomName}.orient) is `'vertical'`, it defaults to control all the `yAxis`.
+By default all the `yAxis`s are controlled when [${dataZoomName}.orient](~${dataZoomName}.orient) is set as `'vertical'`. But it is recommended to specify it explicitly but not use default value.
 
 {{use: partial-data-zoom-axis-example(
     axisName='yAxis'
@@ -126,10 +197,9 @@ without assignment, as [${dataZoomName}.orient](~${dataZoomName}.orient) is `'ve
 
 ## angleAxisIndex(number|Array) = null
 
+Specify which [angleAxis](~angleAxis) is/are controlled by the `${dataZoomName}` when [polar coordinate system](~polar) is used.
 
-Setting up angleAxis which is controlled by `${dataZoomName}` (namely, [angleAxis](~angleAxis), which is a concept in polar coordinate system, reference to [polar](~polar)). 
-
-Without assignment, it defaults to control all the `angleAxis`.
+By default all the `angleAxis`s are controlled. But it is recommended to specify it explicitly but not use default value.
 
 {{use: partial-data-zoom-axis-example(
     axisName='angleAxis'
@@ -138,9 +208,9 @@ Without assignment, it defaults to control all the `angleAxis`.
 
 ## radiusAxisIndex(number|Array) = null
 
-Setting up radiusAxis which is controlled by `${dataZoomName}` (namely,[radiusAxis](~radiusAxis), which is a concept in polar coordinate system, reference to [polar](~polar)). 
+Specify which [radiusAxis](~radiusAxis) is/are controlled by the `${dataZoomName}` when [polar coordinate system](~polar) is used.
 
-Without assignment, it defaults to control all the  `radiusAxis`.
+By default all the `radiusAxis`s are controlled. But it is recommended to specify it explicitly but not use default value.
 
 {{use: partial-data-zoom-axis-example(
     axisName='radiusAxis'
@@ -149,64 +219,50 @@ Without assignment, it defaults to control all the  `radiusAxis`.
 
 ## filterMode(string) = 'filter'
 
-The operational principle of `dataZoom` is to achieve the effect of `data window zooming` through `data filtering`.
+Generally `dataZoom` component zoom or roam coordinate system through data filtering and set the windows of axes internally.
 
-The result varies as the setting of data filtering mode changes.
+Its behaviours vary according to filtering mode settings ([dataZoom.filterMode](~dataZoom.filterMode)).
 
-Valid values: 
-
-+ 'filter'
-
-    The data outside the data window, being **filtered out**. This is the most frequently used configuration item.
-
-+ 'empty'
-
-    The data outside the data window, being  **set as empty**.
-    compared with『being filtered out』, the data of『being set as empty』would be shown as empty data, which would still occupies position.
-
-As the following example, the `filterMode` on y axis is set as `'empty'`, and the `filterMode` on x axis is set as  `'filter'`. When datazoom is processing  on y axis, the part of column beyond the y axis would be 『set as empty』,  which would still occupies a position on x axis but not be shown. This effect is more clear for the filtering setting about outlier.  
-
-~[600x400](${galleryViewPath}doc-example/bar-dataZoom-filterMode&edit=1&reset=1)
+{{use: partial-data-zoom-filterMode}}
 
 
 ## start(number) = 0
 
-The start percentage of the scope of data window. The scope: 0 ~ 100. 
+The start percentage of the window out of the data extent, in the range of 0 ~ 100.
 
-[${dataZoomName}.start](~${dataZoomName}.start) and [${dataZoomName}.end](~${dataZoomName}.end) both define the scope of data window through **percentage**.
+[${dataZoomName}.start](~${dataZoomName}.start) and [${dataZoomName}.end](~${dataZoomName}.end) define the window of the data in **percent** form.
 
 
 ## end(number) = 100
 
-The end percentage of the scope of data window. The scope: 0 ~ 100. 
+The end percentage of the window out of the data extent, in the range of 0 ~ 100.
 
-[${dataZoomName}.start](~${dataZoomName}.start) and [${dataZoomName}.end](~${dataZoomName}.end) both define the scope of data window through  **percentage**.
+[${dataZoomName}.start](~${dataZoomName}.start) and [${dataZoomName}.end](~${dataZoomName}.end) define the window of the data in **percent** form.
 
 
 ## startValue(number|string|Date) = null
 
-the start numerical value of the scope of data window. If it [${dataZoomName}.start](~${dataZoomName}.start) was set up, `startValue` becomes invalid.
+The start absolute value of the window, not works when [${dataZoomName}.start](~${dataZoomName}.start) is set.
 
-[${dataZoomName}.startValue](~${dataZoomName}.startValue) and [${dataZoomName}.endValue](~${dataZoomName}.endValue) both define the scope of data window through **absolute numerical value**.
+[${dataZoomName}.startValue](~${dataZoomName}.startValue) and [${dataZoomName}.endValue](~${dataZoomName}.endValue) define the window of the data window in **absolute value** form.
 
-Notice, if an axis was set as `category`, `startValue` could be set as `index` of `axis.data` array or as the array value itself.   
-Under the latter condition, it would internally and automatically translate to the index of array. 
+Notice, if an axis is set to be `category`, `startValue` could be set as `index` of the array of `axis.data` or as the array value itself. In the latter case, it will internally and automatically translate to the index of array.
 
 
 ## endValue(number|string|Date) = null
 
-The end value of the scope of data window. If  [${dataZoomName}.end](~${dataZoomName}.end) was set up,  `endValue` would becomes invalid. 
+The end absolute value of the window, not works when [${dataZoomName}.end](~${dataZoomName}.end) is set.
 
-[${dataZoomName}.startValue](~${dataZoomName}.startValue) and [${dataZoomName}.endValue](~${dataZoomName}.endValue) both define the scope of data window through **absolute value**.
+[${dataZoomName}.startValue](~${dataZoomName}.startValue) and [${dataZoomName}.endValue](~${dataZoomName}.endValue) define the window of the data window in **absolute value** form.
 
-Notice, if an axis was set as `category`, `endValue` could be set as `index` of `axis.data` array or as the array value itself.  
-Under the latter condition, it would internally and automatically translate to the index of array. 
+Notice, if an axis is set to be `category`, `startValue` could be set as `index` of the array of `axis.data` or as the array value itself. In the latter case, it will internally and automatically translate to the index of array.
+
 
 ## orient(string) = null
 
-specify whether the layout is horizontal or vertical. What's more, in terms of rectangular coordinate system, it decides whether the horizontal axis or vertical axis is controlled under default condition. 
+Specify whether the layout of `dataZoom` component is horizontal or vertical. What's more, it indicates whether the horizontal axis or vertical axis is controlled by default in catesian coordinate system.
 
-Valid values: 
+Valid values:
 
 + `'horizontal'`: horizontal.
 
@@ -215,12 +271,97 @@ Valid values:
 
 ## zoomLock(boolean) = false
 
-specify whether to lock the size of selected area(or data window).
+Specify whether to lock the size of window (selected area).
 
-With the setting of `true` , the size of selected area  is locked, indicating that translation is avialable while zoom is not.
+When set as `true`, the size of window is locked, that is, only the translation (by mouse drag or touch drag) is avialable but zoom is not.
 
 
 ## throttle(number) = 100
 
-Setting up the frequency which triggers views updating. Its unit is milli second (ms), which is unnecessary to be changed.
+Specify the frame rate of views refreshing, with unit millisecond (ms). Normally it is not necessary to change this property.
 
+
+
+
+{{target: partial-data-zoom-filterMode}}
+
+Possible values:
+
++ 'filter': data that outside the window will be **filtered**, which may lead to some changes of windows of other axes.
+
++ 'empty': data that outside the window will be **set to NaN**, which will not lead to changes of windows of other axes.
+
+How to set `filterMode` is up to users, depending on the requirments and scenarios. Expirically:
+
++ If only `xAxis` or only `yAxis` is controlled by `dataZoom`, `filterMode: 'filter'` is typically used, which enable the other axis auto adapte its window to the extent of the filtered data.
+
++ If both `xAxis` and `yAxis` are operated by `dataZoom`:
+
+    + If `xAxis` and `yAxis` should not effect mutually (e.g. a scatter chart with both axes on the type of `'value'`), they should be set to be `filterMode: 'empty'`.
+
+    + If `xAxis` is the main axis and `yAxis` is the auxiliary axis (or vise versa) (e.g., in a bar chart, when dragging `dataZoomX` to change the window of xAxis, we need the yAxis to adapt to the clipped data, but when dragging `dataZoomY` to change the window of yAxis, we need the xAxis not to be changed), in this case, `xAxis` should be set to be `fiterMode: 'filter'`, while `yAxis` shoule be set to be `fiterMode: 'empty'`.
+
+It can be demostrated by the sample:
+
+```javascript
+option = {
+    dataZoom: [
+        {
+            id: 'dataZoomX',
+            type: 'slider',
+            xAxisIndex: [0],
+            filterMode: 'filter'
+        },
+        {
+            id: 'dataZoomY',
+            type: 'slider',
+            yAxisIndex: [0],
+            filterMode: 'empty'
+        }
+    ],
+    xAxis: {type: 'value'},
+    yAxis: {type: 'value'},
+    series{
+        type: 'bar',
+        data: [
+            // The first column corresponds to xAxis,
+            // and the second coloum corresponds to yAxis.
+            [12, 24, 36],
+            [90, 80, 70],
+            [3, 9, 27],
+            [1, 11, 111]
+        ]
+    }
+}
+```
+
+In the sample above, `dataZoomX` is set as `filterMode: 'filter'`. When use drags `dataZoomX` (do not touch `dataZoomY`) and the valueWindow of `xAxis` is changed to `[2, 50]` consequently, `dataZoomX` travel the first column of series.data and filter items that out of the window. The series.data turns out to be:
+
+```javascript
+[
+    [12, 24, 36],
+    // [90, 80, 70] This item is filtered, as 90 is out of the window.
+    [3, 9, 27]
+    // [1, 11, 111] This item is filtered, as 1 is out of the window.
+]
+```
+
+Before filtering, the second column, which corresponds to yAxis, has values `24`, `80`, `9`, `11`. After filtering, only `24` and `9` are left. Then the extent of `yAxis` is adjusted to adapt the two values (if `yAxis.min` and `yAxis.man` are not set).
+
+So `filterMode: 'filter'` can be used to enable the other axis to auto adapt the filtered data.
+
+Then let's review the sample from the beginning, `dataZoomY` is set as `filterMode: 'empty'`. So if user drags `dataZoomY` (do not touch `dataZoomX`) and its window is changed to `[10, 60]` consequently, `dataZoomY` travels the second column of series.data and set NaN to all of the values that outside the window (NaN cause the graphical elements, i.e., bar elements, do not show, but sill hold the place). The series.data turns out to be:
+
+```javascript
+[
+    [12, 24, 36],
+    [90, NaN, 70], // Set to NaN
+    [3, NaN, 27],  // Set to NaN
+    [1, 11, 111]
+]
+```
+
+In this case, the first colum (i.e., `12`, `90`, `3`, `1`, which corresponds to `xAxis`), will not be changed at all. So dragging `yAxis` will not change extent of `xAxis`, which is good for requirements like outlier filtering.
+
+See this example:
+~[600x400](${galleryViewPath}doc-example/bar-dataZoom-filterMode&edit=1&reset=1)

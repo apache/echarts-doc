@@ -29,18 +29,18 @@ option = {
 ```
 
 <br>
-**视觉映射方式的配置**
+**✦ 视觉映射方式的配置 ✦**
 
 既然是『数据』到『视觉元素』的映射，`visualMap` 中可以指定数据的『哪个维度』（参见[visualMap.dimension](~visualMap.dimension)）映射到哪些『视觉元素』（参见[visualMap.inRange](~visualMap.inRange) 和 [visualMap.outOfRange](~visualMap.outOfRange)）中。
 
 
 <br>
-**与 ECharts2 中 dataRange 的关系**
+**✦ 与 ECharts2 中 dataRange 的关系 ✦**
 
 `visualMap` 是由 ECharts2 中的 `dataRange` 组件改名以及扩展而来。ECharts3里 `option` 中的 `dataRange` 配置项仍然被兼容，会自动转换成 `visualMap` 配置项。在option中推荐写 `visualMap` 而非 `dataRange`。
 
 <br>
-**以下是visualMap各组件的详细介绍**
+**✦ 以下是visualMap各组件的详细介绍 ✦**
 
 <br>
 <br>
@@ -129,7 +129,7 @@ visualMap: [
 ]
 ```
 
-**关于视觉通道**
+**✦ 关于视觉通道 ✦**
 
 + ${rangeType} 中，可以有任意几个的『视觉通道』定义（如 `color`、`symbolSize` 等）。这些视觉通道，会被同时采用。
 
@@ -138,7 +138,7 @@ visualMap: [
 + 视觉映射的方式：支持两种方式：线性映射、查表映射。
 
 
-**视觉通道 -- 线性映射**
+**✦ 视觉通道 -- 线性映射 ✦**
 
 `线性映射` 表示 series.data 中的每一个值（dataValue）会经过线性映射计算，从 `[visualMap.min, visualMap.max]` 映射到设定的 `[visualValue1, visualValue2]` 区间中的某一个视觉的值（下称 visualValue）。
 
@@ -187,7 +187,7 @@ visualValue 的取值范围：
     {{ use: partial-icon }}
 
 
-**视觉通道 -- 查表映射**
+**✦ 视觉通道 -- 查表映射 ✦**
 
 `查表映射` 表示 series.data 中的所有值（dataValue）是可枚举的，会根据给定的映射表查表得到映射结果。
 
@@ -226,7 +226,7 @@ visualMap: {
 
 {{target: partial-visual-map-merge}}
 
-**修改视觉编码**
+**✦ 修改视觉编码 ✦**
 
 如果在图表被渲染后（即已经使用 `setOption` 设置了初始 `option` 之后），想修改visualMap中的各种 `视觉编码`，按照惯例，再次使用 `setOption` 即可。例如：
 

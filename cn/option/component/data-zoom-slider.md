@@ -44,7 +44,7 @@
 控制手柄的尺寸。
 
 
-## labelPrecision(string) = 'auto'
+## labelPrecision(number) = 'auto'
 
 显示label的小数精度。默认根据数据自动决定。
 
