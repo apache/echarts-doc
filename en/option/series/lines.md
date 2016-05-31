@@ -101,7 +101,7 @@ the data of the end point.
 #### name(string)
 the name of ${name}.
 #### coord(Array)
-the coordinate of ${name}, which could be the `[x, y]` in [rectangular coordinate system](~grid) and `[lng, lat]` in [geographic coordinate system](~geo).
+the coordinate of ${name}, which could be the `[x, y]` in [rectangular coordinate](~grid) and `[lng, lat]` in [geographic coordinate](~geo).
 
 #### lineStyle(Object)
 the line style of this data item. the `lineStyle` of both the start and end points would be combined together.

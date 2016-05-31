@@ -3,7 +3,7 @@
 
 # series.parallel(Object)
 
-The series of parallel coordinate system.
+The series of parallel coordinate.
 {{ use: partial-parallel-introduce(
     galleryViewPath=${galleryViewPath}
 )}}

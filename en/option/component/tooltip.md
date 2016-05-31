@@ -26,7 +26,7 @@ Options:
 
     Axis triggering which is mainly used in diagrams with category axis such as bar graph and broken line graph. 
 
-   ECharts 2.x only adopts axis triggering in category axis. While in ECharts 3, axis triggering is valid in all axes of [rectangular coordinate system](~grid) and [polar coordinate system](~polar). What's more, the coordinate axis could be assigned through  [axisPointer.axis](~tooltip.axisPointer.axis). 
+   ECharts 2.x only adopts axis triggering in category axis. While in ECharts 3, axis triggering is valid in all axes of [rectangular coordinate](~grid) and [polar coordinate](~polar). What's more, the coordinate axis could be assigned through  [axisPointer.axis](~tooltip.axisPointer.axis). 
 
 ## triggerOn(string) = 'mousemove'
 

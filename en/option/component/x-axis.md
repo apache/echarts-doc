@@ -3,7 +3,7 @@
 
 # xAxis(Object)
 
-the x axis in cartesian(rectangular) coordinate system. A single grid component could place 2 x axis above and below at most. 
+the x axis in cartesian(rectangular) coordinate. A single grid component could place 2 x axis above and below at most. 
 
 ## gridIndex(number) = 0
 

@@ -2,9 +2,9 @@
 
 # radar(Object)
 
-Radar chart coordinate system component, only suitable for [radar chart](~series-radar). This component is equal to the polar component in ECharts 2. Because the polar in the echarts 3 is reconstructed to be the standard polar coordinate system component, in order to avoid mixing up, radar chart adopts radar component as its coordinate system. 
+Radar chart coordinate component, only suitable for [radar chart](~series-radar). This component is equal to the polar component in ECharts 2. Because the polar in the echarts 3 is reconstructed to be the standard polar coordinate component, in order to avoid mixing up, radar chart adopts radar component as its coordinate. 
 
-Compared with polar coordinate system, every axis (indicator)  of the radar chart coordinate system is a individual dimension. The style of indicator coordinate axis could be allocated through the following configuration items, including [name](~radar.name)、[axisLine](~radar.axisLine)、[axisTick](~radar.axisTick)、[axisLabel](~radar.axisLabel)、[splitLine](~radar.splitLine)、 [splitArea](~radar.splitArea).
+Compared with polar coordinate, every axis (indicator)  of the radar chart coordinate is a individual dimension. The style of indicator coordinate axis could be allocated through the following configuration items, including [name](~radar.name)、[axisLine](~radar.axisLine)、[axisTick](~radar.axisTick)、[axisLabel](~radar.axisLabel)、[splitLine](~radar.splitLine)、 [splitArea](~radar.splitArea).
 
 
 Here is a custom example of radar component.
@@ -18,7 +18,7 @@ Here is a custom example of radar component.
 
 ## startAngle(number) = 90
 
-The start angle of coordinate system, which is the angle of the first indicator axis.
+The start angle of coordinate, which is the angle of the first indicator axis.
 
 ## name(Object)
 

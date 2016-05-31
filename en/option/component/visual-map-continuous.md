@@ -102,7 +102,7 @@ Whether to update view in real time when dragging a handle.
 
 Whether to inverse the layout of visualMap component.
 
-As `inverse` is `false`, the layout direction is the same as [catesian coordinate system](~grid). That is:
+As `inverse` is `false`, the layout direction is the same as [catesian coordinate](~grid). That is:
 
 + As [visualMap.orient](~visualMap.orient) is `'vertical'`, large data are placed at the top while small at the bottom.
 + As [visualMap.orient](~visualMap.orient) is `'horizontal'`,  large data are placed on the right while small on the left.
