@@ -2,9 +2,9 @@
 
 # dataZoom.slider(Object)
 
-**Slide rdata Zoom component (dataZoomSlider) **
+**dataZoomSlider**
 
- (reference to [the introduction to data region zoom component (dataZoom)](~dataZoom)) 
+A special slider bar is provided, on which coordinate systems can be zoomed or roamed by mouse dragging or finger touch (in touch screen). See [dataZoom](~dataZoom).
 
 
 <br>
@@ -16,67 +16,70 @@
 
 ## show(boolean) = true
 
-Specify whether to show the ${dataZoomName} module. with the setting of `false`, it would not be displayed, but the data filtering function still remains.
+Specify whether to show the ${dataZoomName} component. If set as `false`, it will not show, but it still do its job.
 
 
 ## backgroundColor(Color) = 'rgba(47,69,84,0)'
 
-The background color of modules.
+The background color of the component.
 
 
 ## dataBackgroundColor(Color) = '#ddd'
 
-The background color of the data shadow.
+The background color of the data shadow in the component.
 
 
 ## fillerColor(Color) = 'rgba(47,69,84,0.25)'
 
-The fill color of selected area.
+The color of selected area (or called window).
 
 
 ## handleColor(Color) = 'rgba(47,69,84,0.65)'
 
-The color of controlling handle.
+The color of control handle.
 
 
 ## handleSize(number) = 10
 
-The size of controlling handle.
+The size of control handle.
 
 
-## labelPrecision(string) = 'auto'
+## labelPrecision(number) = 'auto'
 
-the pecision of the label's decimals. It defaults to be automatically decided by data.
+Specify the decimal places of the value shown in label. automatically determined by default. Possible value: 0, 1, 2, ...
 
 
 ## labelFormatter(string|Function) = null
 
-the Formatter of label. 
+The formatter tool for the label.
 
-+  `string`, indicating the template, for instance: in `aaaa{value}bbbb`, `{value}` would be substituted by the practical numerical values.
++ If it is set as `string`, it is a template, for instance: `aaaa{value}bbbb`, where `{value}` will be substituted by the value of the edge of the window.
 
-+  `Function`, indicating callback function, for example: 
++ If it is set as `Function`, it is a callback function, for example:
 
 ```javascript
 labelFormatter: function (value) {
-    return 'aaa' + value + 'bbb'; // reverse to the final label content
+    // Finally return the content text of the label.
+    return 'aaa' + value + 'bbb';
 }
 ```
 
 
 ## showDetail(boolean) = true
 
-Specify whether to show label, namely show detailed  information of numerical values during dragging.
+Specify whether to show labels, that is, show the extent of the window when dragging.
 
 
 ## showDataShadow(string) = 'auto'
 
-Specify whether to show data shadow in  `dataZoom-silder` module. Data shadow could generally reflect the data tendency. 
+Specify whether to show data shadow, which could indicate the data tendency generally.
+
+Works only in `dataZoom-silder`. See [dataBackgroundColor](~dataZoom-slider.dataBackgroundColor).
 
 
 ## realtime(boolean) = true
 
-Specify whether to real-time update the views of series during dragging. If it was set up as `false`, the updates only occur at the end of dragging. 
+Specify whether to real-time update the view while dragging. If it was set as `false`, the view will be updated only at the end of dragging.
 
 
 ## textStyle

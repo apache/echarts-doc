@@ -2,19 +2,15 @@
 
 # dataZoom.inside(Object)
 
-**inside data zoom component (dataZoomInside) **
+**dataZoomInside**
 
- (Refer to[The introduction to data zoom component (dataZoom)](~dataZoom)) 
+Data zoom functionalities is embeded inside coordinate systems, enable user to zoom or roam coordinate system by mouse dragging, mouse move or finger touch (in touch screen). See [dataZoom](~dataZoom).
 
-The so called『inside』refers to installed inside the coordinate system.
+Possible interactions:
 
-+ translation: slid or drag to achieve data region translation in coordinate axis system. 
++ translation: slide (by mouse or finger touch) in coordinate system to translate view window.
 
-+ zoom: 
-
-    + PC terminal: mouse wheel rolls in the area of axis coordinate(similar when it comes to Mac touchpad).
-
-    + moblie terminal: 2 fingers' sliding is available to zoom on mobile touch screen.
++ zoom: roll mouse wheel or pinch (on touch screen or touch pad) within coordinate system to zoom view window.
 
 
 <br>

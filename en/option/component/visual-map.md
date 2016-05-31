@@ -28,18 +28,18 @@ option = {
 ```
 
 <br>
-**Configurate how to map**
+**✦ Configure how to map ✦**
 
 The dimension of [series.data](~series.data) can be specified by [visualMap.dimension](~visualMap.dimension), from which the value can be retrieved and mapped onto visual channels, which can be defined in [visualMap.inRange](~visualMap.inRange) and [visualMap.outOfRange](~visualMap.outOfRange).
 
 
 <br>
-**The relationship between visualMap of ECharts3 and dataRange of ECharts2**
+**✦ The relationship between visualMap of ECharts3 and dataRange of ECharts2 ✦**
 
 `visualMap` is renamed from the `dataRange` of ECharts2, and the scope of functionalities are extended a lot. The configurations of `dataRange` are still compatible in ECharts3, which automatically convert them to `visualMap`. It is recommended to use `visualMap` instead of `dataRange` in ECharts3.
 
 <br>
-**The detailed configurations of visualMap are elaborated as follows.**
+**✦ The detailed configurations of visualMap are elaborated as follows. ✦**
 
 <br>
 <br>
@@ -132,9 +132,11 @@ visualMap: [
 ]
 ```
 
+<br>
+
 ---
 
-**About visual channels**
+**✦ About visual channels ✦**
 
 + Various visual channels (such as `color`、`symbolSize` and ect.) can be defined in ${rangeType} at the same time and all of them will be apopted.
 
@@ -142,9 +144,11 @@ visualMap: [
 
 + There are two approaches of visual mapping supported: 'Linear Mapping' and 'Table Mapping'.
 
+<br>
+
 ---
 
-**Linear Mapping to visual channel**
+**✦ Linear Mapping to visual channel ✦**
 
 `Linear Mapping` means that linear calculation will be performed on each dataValue (value of series.data), mapping them from the domain of `[visaulMap.min, visualMap.max]` to a given range of `[visualValue1, visualValue2]` and obtaining a final value (say visualValue) for visual channel rendering.
 
@@ -155,7 +159,7 @@ We can also set the visual range inversely, such as `opacity: [1, 0.4]`, and the
 Notice: [visualMap.min, visualMap.max] should be set manually and is [0, 100] by defualt, but not `dataMin` and `dataMax` in series.data。
 
 
-How to configurate visualMap component to do Linear Mapping?
+How to configure visualMap component to do Linear Mapping?
 
 + When use [visualMap-continuous](~visualMap-continuous), or
 
@@ -193,15 +197,17 @@ About the possible value range of visualValue:
 
     {{ use: partial-icon }}
 
+<br>
+
 ---
 
-**Table Mapping to visual channel**
+**✦ Table Mapping to visual channel ✦**
 
 `Table Mapping` could be used when dataValue (values in series.data, specified by [visualMap.dimension](~visualMap.dimension)) is enumerable and we intend to map them to visualValue by looking up a given table.
 
 For instance, in a [visualMap-piecewise](~visualMap-piecewise) component, [visualMap-piecewise.categories](~visualMap-piecewise.categories) is set to `['Demon Hunter', 'Blademaster', 'Death Knight', 'Warden', 'Paladin']`. And there is series.data: `['Demon Hunter', 'Death Knight', 'Warden', 'Paladin']`. Then we can establish the lookup rule for color: `color: {'Warden': 'red', 'Demon Hunter': 'black'}`, by which the `visualMap` component will map `dataValue` to `color`.
 
-How to configurate `visualMap` component to do `Table Mapping`?
+How to configure `visualMap` component to do `Table Mapping`?
 
 When use [visualMap-piecewise](~visualMap-piecewise) and [visualMap-piecewise.categories](~visualMap-piecewise.categories)is set.
 
@@ -241,7 +247,7 @@ visualMap: {
 
 {{target: partial-visual-map-merge}}
 
-**How to modity configurations of vsiual encoding?**
+**✦ How to modity configurations of vsiual encoding? ✦**
 
 If you want to modify the configurations of visual encoding after chart been rendered (by invoke `setOption` to set the initial `option`), `setOption` can be used again to modify configurations of visual encoding. For instance:
 
@@ -420,7 +426,7 @@ border width of visualMap component, with unit: px.
 
 ## color(Array) = ['#bf444c', '#d88273', '#f6efa6']
 
-This property is remained only for compatibility with ECharts2, and is not recommended in ECharts3. It is recommended to configurate color in [${visualMapName}.inRange](~${visualMapName}.inRange), or [${visualMapName}.outOfRange](~${visualMapName}.outOfRange) if needed.
+This property is remained only for compatibility with ECharts2, and is not recommended in ECharts3. It is recommended to configure color in [${visualMapName}.inRange](~${visualMapName}.inRange), or [${visualMapName}.outOfRange](~${visualMapName}.outOfRange) if needed.
 
 If you persist in using it, the following issue should be noticed: the sequence of dataValues that are mapped to colorValues in property `color` is from `large` to `small`, whereas that in [${visualMapName}.inRange](~${visualMapName}.inRange) or [${visualMapName}.outOfRange](~${visualMapName}.outOfRange) is from `small` to `large`.
 
