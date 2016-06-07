@@ -2,9 +2,9 @@
 
 # ECharts 中的事件和行为
 
-在 ECharts 的图表中用户的操作都会有相应的事件，开发者可以监听这些事件然后通过回调函数做相应的处理，比如跳转到一个地址，或者弹出对话框，或者做数据下钻等等。
+在 ECharts 的图表中用户的操作将会触发相应的事件。开发者可以监听这些事件，然后通过回调函数做相应的处理，比如跳转到一个地址，或者弹出对话框，或者做数据下钻等等。
 
-在 ECharts 3 中绑定事件跟 2 一样都是通过 [on](api.html#EChartsInstance.on) 方法，但是事件名称比 2 更加简单了，跟 dom 事件一样事件名就是全小写的字符串，如下是一个绑定点击操作的示例。
+在 ECharts 3 中绑定事件跟 2 一样都是通过 [on](api.html#EChartsInstance.on) 方法，但是事件名称比 2 更加简单了。ECharts 3 中，事件名称对应 DOM 事件名称，均为小写的字符串，如下是一个绑定点击操作的示例。
 
 ```js
 myChart.on('click', function (params) {
@@ -17,7 +17,7 @@ myChart.on('click', function (params) {
 
 ## 鼠标事件的处理
 
-ECharts 支持常规的鼠标事件类型，包括 `'click'`, `'dblclick'`, `'mousedown'`, `'mousemove'`, `'mouseup'`, `'mouseover'`, `'mouseout'` 事件，下面先来看一个简单的点击柱状图后打开相应的百度搜索页面的示例。
+ECharts 支持常规的鼠标事件类型，包括 `'click'`、`'dblclick'`、`'mousedown'`、`'mousemove'`、`'mouseup'`、`'mouseover'`、`'mouseout'` 事件。下面先来看一个简单的点击柱状图后打开相应的百度搜索页面的示例。
 
 ```js
 // 基于准备好的dom，初始化ECharts实例
@@ -37,13 +37,13 @@ var option = {
 };
 // 使用刚指定的配置项和数据显示图表。
 myChart.setOption(option);
-// 处理点击事件并且条状到相应的百度搜索页面
+// 处理点击事件并且跳转到相应的百度搜索页面
 myChart.on('click', function (params) {
     window.open('https://www.baidu.com/s?wd=' + encodeURIComponent(params.name));
 });
 ```
 
-所有的鼠标事件的参数 `params` 是一个包含点击图形的数据信息的对象，如下格式：
+所有的鼠标事件包含参数 `params`，这是一个包含点击图形的数据信息的对象，如下格式：
 ```js
 {
     // 当前点击的图形元素所属的组件名称，
@@ -95,7 +95,7 @@ myChart.on('click', function (params) {
 });
 ```
 
-你可以在回调函数中获得这个对象中的数据名，系列名称后在自己的数据仓库中索引得到其它的信息候更新图表，显示浮层等等，如下示例代码：
+你可以在回调函数中获得这个对象中的数据名、系列名称后在自己的数据仓库中索引得到其它的信息候更新图表，显示浮层等等，如下示例代码：
 
 ```js
 myChart.on('click', function (parmas) {
@@ -133,7 +133,7 @@ myChart.on('legendselectchanged', function (params) {
 
 上面提到诸如`'legendselectchanged'`事件会由组件交互的行为触发，那除了用户的交互操作，有时候也会有需要在程序里调用方法触发图表的行为，诸如显示 tooltip，选中图例。
 
-在 ECharts 2.x 是通过 `myChart.component.tooltip.showTip` 这种形式调用相应的接口触发图表行为，入口很深，而且涉及到内部组件的组织。因此在 ECharts 3 里改为通过调用 `myChart.dispatchAction({ type: '' })` 触发图表行为，统一管理了所有动作，也可以方便的根据需要去记录用户的行为路径。
+在 ECharts 2.x 是通过 `myChart.component.tooltip.showTip` 这种形式调用相应的接口触发图表行为，入口很深，而且涉及到内部组件的组织。相对地，在 ECharts 3 里改为通过调用 `myChart.dispatchAction({ type: '' })` 触发图表行为，统一管理了所有动作，也可以方便地根据需要去记录用户的行为路径。
 
 常用的动作和动作对应参数在 [action](api.html#action) 文档中有列出。
 
