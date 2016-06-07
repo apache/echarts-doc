@@ -1,26 +1,26 @@
 {{ target: getting-started }}
-# Master ECharts in 5 minutes
+# Get Started with ECharts in 5 minutes
 
-## Obtain ECharts
+## Get ECharts
 
-You can obtain ECharts through the following ways.
+You can get ECharts through the following ways.
 
-1. Choose the version you need to download from [Official download page](http://echarts.baidu.com/download.html), based on developer's need of function and volume, we provide different download packages. If you have no need on volume, you can [download full version] directly(http://echarts.baidu.com/dist/echarts.min.js). 
+1. Choose the version you need and download from [official download page](http://echarts.baidu.com/download.html). Based on developer's varied need of function and package size, we provide different download packages. If you have concern about package size, you can download [full version](http://echarts.baidu.com/dist/echarts.min.js) directly. 
 
-2. Download the lattest `release`in ECharts [github](https://github.com/echarts), you can find the lattest version of  echarts in the  `dist` catalog of the decompressing folder.
+2. Download the latest `release` version in ECharts [GitHub](https://github.com/echarts), and you can find the latest version of echarts in `dist` directory of the unzipped files.
 
-3. Obtain echarts through npm, `npm install echarts --save`, see details in “[use echarts in webpack]”(http://echarts.baidu.com/tutorial.html#%E5%9C%A8%20webpack%20%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts)
+3. Alternatively, you may get echarts through npm by `npm install echarts --save`. See detail in [use echarts in webpack](http://echarts.baidu.com/tutorial.html#%E5%9C%A8%20webpack%20%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts)
 
-## introduce ECharts
+## Including ECharts
 
-ECharts 3 no longer uses AMD as means of introducing mandatory, AMD loader is no longer placed in code. Therefore, it is much easier to introduce and you only need to introduce script label like normal JavaScript bank.
+ECharts 3 no longer emphysis on using AMD to load packages on need, and AMD loader is no longer included in ECharts. Therefore, it is much easier to include ECharts, in that you only need to include ECharts in script label like most other JavaScript libraries require.
 
 ```html
 <!DOCTYPE html>
 <html>
 <header>
     <meta charset="utf-8">
-    <!-- incoming ECharts document -->
+    <!-- including ECharts file -->
     <script src="echarts.min.js"></script>
 </header>
 </html>
@@ -28,16 +28,16 @@ ECharts 3 no longer uses AMD as means of introducing mandatory, AMD loader is no
 
 ## Draw a simple chart
 
-Before drawing, we need to prepare a Dom with size(height and width) for ECharts.
+Before drawing charts, we need to prepare a DOM container with width and height for ECharts.
 
 ```
 <body>
-    <!-- preparing a Dom with size(height and width) for ECharts -->
+    <!-- preparing a DOM with width and height for ECharts -->
     <div id="main" style="width: 600px;height:400px;"></div>
 </body>
 ```
 
-Then through [echarts.init](api.html#echarts.init), we can initialize an echarts example and create a simple bar chart through [setOption](api.html#echartsInstance.setOption), below is the complete code.
+Then we can initialize an echarts instance through [echarts.init](api.html#echarts.init), and create a simple bar chart through [setOption](api.html#echartsInstance.setOption). Below is the complete code.
 
 
 ```html
@@ -46,17 +46,17 @@ Then through [echarts.init](api.html#echarts.init), we can initialize an echarts
 <head>
     <meta charset="utf-8">
     <title>ECharts</title>
-    <!-- 引入 echarts.js -->
+    <!-- including ECharts file -->
     <script src="echarts.js"></script>
 </head>
 <body>
-    <!--preparing a Dom with size(height and width) for ECharts -->
+    <!-- prepare a DOM container with width and height -->
     <div id="main" style="width: 600px;height:400px;"></div>
     <script type="text/javascript">
-        // based on prepared dom, initialize echarts example
+        // based on prepared DOM, initialize echarts instance
         var myChart = echarts.init(document.getElementById('main'));
 
-        // Specifies chart configuration item and data
+        // specify chart configuration item and data
         var option = {
             title: {
                 text: 'ECharts entry example'
@@ -66,7 +66,7 @@ Then through [echarts.init](api.html#echarts.init), we can initialize an echarts
                 data:['Sales']
             },
             xAxis: {
-                data: ["shirt",cardign","chiffon shirt","pants","heels","socks"]
+                data: ["shirt","cardign","chiffon shirt","pants","heels","socks"]
             },
             yAxis: {},
             series: [{
@@ -76,7 +76,7 @@ Then through [echarts.init](api.html#echarts.init), we can initialize an echarts
             }]
         };
 
-        // Use configuration item and data specified just now to show chart.
+        // use configuration item and data specified to show chart
         myChart.setOption(option);
     </script>
 </body>
@@ -87,4 +87,4 @@ Here is your first chart!
 
 ~[600x300](${galleryViewPath}doc-example/getting-started&reset=1&edit=1)
 
-You can also enter [ECharts Gallery](${galleryEditorPath}doc-example/getting-started) directly to view editing samples.
+You can also go to [ECharts Gallery](${galleryEditorPath}doc-example/getting-started) to view examples.
