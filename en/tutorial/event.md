@@ -1,29 +1,29 @@
 {{ target: event }}
 
-# Events and actions in ECharts
+# Events and Actions in ECharts
 
-User's operation all trigger corresponding event in ECharts, developer can monitor these events and handle accordingly through callback function, such as jump to an address or pop up dialog box, or drill down data and so on.
+User interactions trigger corresponding events in ECharts. Developers can listen to these events and handle accordingly through callback functions, e.g., redirecting to an address, popping out a dialog box, or drilling down data and so on.
 
-Bind events in ECharts 3 and 2 all use [on](api.html#EChartsInstance.on),  but event name is much simpler than it is in 2, events that are same as dom events all use string of lowercase, below is an example of binding click operation.
+Binding events in ECharts 3 is though [on](api.html#EChartsInstance.on) method, same as in ECharts 2. But event names are much simpler than it is in 2. Event names in ECharts 3 are the same as DOM event names, in lowercases. Below is an example of binding clicking operation.
 
 ```js
 myChart.on('click', function (params) {
-    // data name console prints
+    // printing data name in console
     console.log(params.name);
 });
 ```
 
-Events in ECharts are divided into two types, one is events triggered by user's mouse clicking or hovering chart graphic, another is action events triggered by user's using of interactive component, such as  ['legendselectchanged'](api.html#events.legendselectchanged) event  (attention: change legend switch will not trigger `'legendselected'` event)  triggered by changing legend switch, ['datazoom'](api.html#events.legendselectchanged) event triggered by zooming data area and so on.
+Event in ECharts can be divided in two kinds. One is mouse event, which is triggered when mouse clicks on certain component, the other is triggered with interaction components, such as triggering ['legendselectchanged'](api.html#events.legendselectchanged) event when toggling legend (Notice here, that `'legendselected'` event will not be triggered when toggling legend), triggering ['datazoom'](api.html#events.legendselectchanged) event when data zooming in some area.
 
-## Handling of mouse event
+## Mouse Events Handling
 
-ECharts support normal mouse event type including `'click'`, `'dblclick'`, `'mousedown'`, `'mousemove'`, `'mouseup'`, `'mouseover'`, `'mouseout'` event, next let's see an example of Baidu search page after opening a simple click bar chart.
+ECharts support regular mouse events, which includes `'click'`, `'dblclick'`, `'mousedown'`, `'mousemove'`, `'mouseup'`, `'mouseover'`, `'mouseout'`. Next let's see an example of opening Baidu search page when clicks a bar chart.
 
 ```js
-// Based on prepared dom, initialize ECharts example
+// initialize ECharts instance based on prepared dom
 var myChart = echarts.init(document.getElementById('main'));
 
-// data and configuration item of specified chart
+// data and configuration item of specific chart
 var option = {
     xAxis: {
         data: ["shirt","cardign","chiffon shirt","pants","heels","socks"]
@@ -35,63 +35,61 @@ var option = {
         data: [5, 20, 36, 10, 10, 20]
     }]
 };
-// Use specified configuration item and data to show chart.
+// use specified configuration item and data to show chart
 myChart.setOption(option);
-// handle click event and adjust to corresponding Baidu search page
+// handle click event and redirect to corresponding Baidu search page
 myChart.on('click', function (params) {
     window.open('https://www.baidu.com/s?wd=' + encodeURIComponent(params.name));
 });
 ```
 
-`params` of all mouse events is an object that contains data information of charts, format is as followed:
+All types of mouse events have a common parameter called `params`, which is an object that contains data information of the clicked chart, whose format is as followed:
 ```js
 {
-    // type of the component to which the clicked glyph belongs
-    // i.e., 'series', 'markLine', 'markPoint', 'timeLine'
+    // component name of clicked component
+    // e.g., 'series', 'markLine', 'markPoint', 'timeLine'
     componentType: string,
-    // series type (make sense when componentType is 'series')
-    // i.e., 'line', 'bar', 'pie'
+    // series type (useful when componentType is 'series')
+    // e.g., 'line', 'bar', 'pie'
     seriesType: string,
-    // series index in incoming option.series (make sense when componentType is 'series')
+    // series index in option.series (useful when componentType is 'series')
     seriesIndex: number,
-    // series name (make sense when componentType is 'series')
+    // series name (useful when componentType is 'series')
     seriesName: string,
-    // data name, category name
+    // data name, or category name
     name: string,
-    // data index in incoming data array
+    // data index in input data array
     dataIndex: number,
-    // incoming rwa data item
+    // raw input data item
     data: Object,
-    // Some series, such as sankey or graph, maintains more than
-    // one types of data (nodeData and edgeData), which can be
-    // distinguished from each other by dataType with its value
-    // 'node' and 'edge'.
-    // On the other hand, most series has only one type of data,
+    // Some series, such as sankey or graph, maintains both nodeData and edgeData,
+    // in which case, dataType is set to be 'node' or 'edge' to identify.
+    // On the other hand, most other series have only one type of data,
     // where dataType is not needed.
     dataType: string,
-    // incoming data value
+    // input data value
     value: number|Array
-    // color of component (make sense when componentType is 'series')
+    // color of component (useful when componentType is 'series')
     color: string
 }
 ```
 
-How to discriminate elements that can be clicked:
+How to know where the mouse clicked:
 ```js
 myChart.on('click', function (params) {
     if (params.componentType === 'markPoint') {
-        // Clicked on markPoint.
+        // clicked on markPoint
         if (params.seriesIndex === 5) {
-            // Clicked on a markPoint which belongs to a series indexed with 5.
+            // clicked on a markPoint which belongs to a series indexed with 5
         }
     }
     else if (params.componentType === 'series') {
         if (params.seriesType === 'graph') {
             if (params.dataType === 'edge') {
-                // Clicked on an edge of the graph.
+                // clicked on an edge of the graph
             }
             else {
-                // Clicked on a node of the graph.
+                // clicked on a node of the graph
             }
         }
     }
@@ -99,7 +97,7 @@ myChart.on('click', function (params) {
 });
 ```
 
-After getting data name and series name of this object in callback function, and other information in the data index, you can update charts, show floating layer and so on, Sample code is as followed:
+You may update chart or show customized layer with information got from your own data warehouse, indexed from data name or series name of an object received from a callback function. Sample code is shown as followed:
 
 ```js
 myChart.on('click', function (parmas) {
@@ -107,7 +105,7 @@ myChart.on('click', function (parmas) {
         myChart.setOption({
             series: [{
                 name: 'pie',
-                // display data distribution in single post through pie chart
+                // present data distribution  of a single bar through pie chart
                 data: [detail.data]
             }]
         });
@@ -115,30 +113,32 @@ myChart.on('click', function (parmas) {
 });
 ```
 
-## component interaction event
+## Interaction Events with Components
 
-Basically all component interaction in ECharts trigger corresponding event, frequently used events and corresponding parameters are listed in [events](api.html#events).
+Basically all component interactions in ECharts trigger corresponding events. Frequently used events and corresponding parameters are listed in [events](api.html#events).
 
-Below is example that monitors a legend switch:
+Below is example that listens to a legend toggling:
 
 ```js
-// Action of legend switch only trigger legendselectchanged event
+// legend toggling triggers legendselectchanged event only
 myChart.on('legendselectchanged', function (params) {
-    // obtain selected status of clicked legend
+    // obtain selecting status of clicked legend
     var isSelected = params.selected[params.name];
-    // print console.log((isSelected ? 'select' : 'unselect') + 'legend' + params.name);
+    // print in console
+    console.log((isSelected ? 'select' : 'unselect') + 'legend' + params.name);
     // print all legend status
     console.log(params.selected);
 });
 ```
 
-## Actions of code triggering components in ECharts
+## Triggering Component Actions through Code in ECharts
 
-Events like`'legendselectchanged'` mentioned above wil be triggered by component interaction, except user's interaction operation, sometimes methods needed to be called to trigger chart, such as show tooltipand select legend.
+Actions like `'legendselectchanged'` mentioned above will be triggered by component interaction. Besides that, sometimes we need to trigger certain actions in our program, such as showing tooltip, or selecting legend.
 
-ECharts 2.x uses corresponding interface to trigger chart through  `myChart.component.tooltip.showTip`, entrance is deep and involves organization of inner component. So ECharts 3 triggers chart through `myChart.dispatchAction({ type: '' })` , by that, ECharts 3 can not only manage all actions but also record user paths based on needs.
-Frequently used actions and the parameters of actions are listed in [action](api.html#action).
+ECharts 2.x triggers actions through `myChart.component.tooltip.showTip`, whose entrance is deep and involves organization of inner components. On the other hand, ECharts 3 triggers actions through `myChart.dispatchAction({ type: '' })`, which manages all actions in a uniformed way, and may record user's event path when need.
 
-Below display how to take turns to highlight each sector of pie chart through`dispatchAction`.
+Frequently used actions and the parameters are listed in [action](api.html#action).
+
+Below displays how to highlight each sector of pie chart in turn through `dispatchAction`.
 
 ~[600x400](${galleryViewPath}doc-example/pie-highlight&edit=1&reset=1)
