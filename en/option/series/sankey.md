@@ -5,7 +5,7 @@
 
 ** sankey graph **
 
-It is a kind of special flow graph, which is mainly used to present how raw materials, energy and so on from the initial status to the final form after processing and transformation. 
+It is a kind of special flow graph, which is mainly used to present how raw materials, energy and so on from the initial status to the final form after processing and transformation.
 
 **Example: **
 
@@ -23,12 +23,6 @@ In addition, the edge coding between two small rectangulars in the graph is the 
 
 ## type(string) = 'sankey'
 
-## color(Array.<string>)
-
-sankey graph individually uses a palette which defaults to be: 
-```js
-['#9e0142', '#d53e4f', '#f46d43', '#fdae61', '#fee08b','#ffffbf', '#e6f598', '#abdda4', '#66c2a5', '#3288bd', '#5e4fa2']
-```
 
 {{ use: partial-rect-layout-width-height(
     componentName='sankey',
@@ -53,11 +47,11 @@ the gap between any 2 regtangles in each row from the graph.
 
 ## layoutIterations(number) = 32
 
-the iterations of layout, which is used to continuously optimize the nodes' positions in graph, decreasing the overlapping between nodes and edges. 
+the iterations of layout, which is used to continuously optimize the nodes' positions in graph, decreasing the overlapping between nodes and edges.
 
-the default iterations of layout: `32`. 
+the default iterations of layout: `32`.
 
-The test shows that iterations of layout could not be less than the default value. 
+The test shows that iterations of layout could not be less than the default value.
 
 ## label(Object)
 
@@ -129,7 +123,7 @@ the lable style of this node.
 equals to [data](~series-sankey.data)
 
 ## links(Array)
-the relational data of nodes. Example: 
+the relational data of nodes. Example:
 ```js
 links: [{
     source: 'n1',
