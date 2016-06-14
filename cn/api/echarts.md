@@ -130,6 +130,21 @@ echarts.registerMap('USA', usaJson, {
     ```
 
 
+## getMap(Function)
+```js
+(mapName: string) => Object
+```
+获取已注册的地图，返回的对象类型如下
+
+```js
+{
+    // 地图的 geoJson 数据
+    geoJson: Object,
+    // 地图的特殊区域，见 registerMap
+    specialAreas: Object
+}
+```
+
 ## registerTheme(Function)
 ```js
 (themeName: string, theme: Object)
