@@ -111,7 +111,7 @@ symbolSize: 10
 {{use:partial-item-style(prefix="###")}}
 
 ## lineStyle(Object)
-the shared line style of relational border.
+The style of edge line.
 ### normal(Object)
 {{use:partial-line-style(
     prefix="###",
@@ -152,7 +152,7 @@ the shared line style of relational border.
 
 ## categories(Array)
 The categories of node, which is optional.
-If there is a classification of nodes, the category of each node can be assigned through [data[i].category](~series-graph.data.category). And the style of category will also be applied in the style of nodes. [legend](~legend) can be shown and flltered based on `categories`.
+If there is a classification of nodes, the category of each node can be assigned through [data[i].category](~series-graph.data.category). And the style of category will also be applied in the style of nodes. `categories` can also be used to show in [legend](~legend).
 
 ### name(string)
 Name of category, which is used to correspond with [legend](~legend) and format the content of [tooltip](~tooltip).
