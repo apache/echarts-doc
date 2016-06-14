@@ -4,7 +4,7 @@
 图表标线。
 
 ##${prefix} symbol(string|Array)
-标线两端的标记类型，可以是一个数组分别指定两端，也可以是单个统一指定，具体格式见 (~series-${seriesType}.markLine.data.0.symbol)。
+标线两端的标记类型，可以是一个数组分别指定两端，也可以是单个统一指定，具体格式见 [data.symbol](~series-${seriesType}.markLine.data.0.symbol)。
 ##${prefix} symbolSize(number|Array)
 标线两端的标记大小，可以是一个数组分别指定两端，也可以是单个统一指定。
 
