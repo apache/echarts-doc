@@ -150,9 +150,9 @@
 ### itemStyle(Object)
 单个拐点标志的样式设置。
 #### normal(Object)
-{{use: partial-bar-item-style(prefix="####")}}
+{{use: partial-item-style(prefix="####")}}
 #### emphasis(Object)
-{{use: partial-bar-item-style(prefix="####")}}
+{{use: partial-item-style(prefix="####")}}
 
 {{use: partial-mark-point(
     prefix="#",
