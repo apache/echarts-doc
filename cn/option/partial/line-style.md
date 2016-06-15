@@ -14,7 +14,7 @@ ${name}线的颜色。{{ if: ${useColorPalatte} }} 默认从[option.color 调色
 
 {{ use: partial-color-desc }}
 
-#${prefix} width(number) = ${defaultWidth|default(0)}
+#${prefix} width(number) = ${defaultWidth|default(1)}
 
 ${name}线宽。
 

@@ -83,12 +83,14 @@
 **注：** 修改 `lineStyle` 中的颜色不会影响图例颜色，如果需要图例颜色和折线图颜色一致，需修改 [itemStyle.normal.color](~series-line.itemStyle.normal.color)，线条颜色默认也会取改颜色。
 
 ### normal(Object)
-{{use:partial-line-style(prefix="###")}}
+{{use:partial-line-style(
+    prefix="###"
+)}}
 
 ## areaStyle(Object)
 区域填充样式。
 ### normal(Object)
-{{use: partial-area-style(prefix="###")}}
+{{use: partial-area-style(prefix="###", defaultWidth=2)}}
 
 ## smooth(false) = false
 是否平滑曲线显示。
