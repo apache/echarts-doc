@@ -274,9 +274,9 @@ option: {
 
 设置触发视图刷新的频率。单位为毫秒（ms）。
 
-一般不需要更改这个值。
+如果 [animation](~animation) 设为 `true` 且 [animationDurationUpdate](~animationDurationUpdate) 大于 `0`，可以保持 `throttle` 为默认值 `100`（或者设置为大于 `0` 的值），否则拖拽时有可能画面感觉卡顿。
 
-如果 [animationDurationUpdate](~animationDurationUpdate) 设为 `0`，或者 [animation](~animation) 设为 `false`，且在数据量不大时，拖拽时画面感觉卡顿，可以把尝试把 `throttle` 设为 `0` 来改善。
+如果 [animation](~animation) 设为 `false` 或者 [animationDurationUpdate](~animationDurationUpdate) 设为 `0`，且在数据量不大时，拖拽时画面感觉卡顿，可以把尝试把 `throttle` 设为 `0` 来改善。
 
 
 
