@@ -278,8 +278,11 @@ When set as `true`, the size of window is locked, that is, only the translation 
 
 ## throttle(number) = 100
 
-Specify the frame rate of views refreshing, with unit millisecond (ms). Normally it is not necessary to change this property.
+Specify the frame rate of views refreshing, with unit millisecond (ms).
 
+Normally it is not necessary to change this property.
+
+If [animationDurationUpdate](~animationDurationUpdate) set as `0`, or [animation](~animation) set as  `false`, and data size is not very large, and it seems to be not smooth when dragging, you can set `throttle` as `0` to improve that.
 
 
 

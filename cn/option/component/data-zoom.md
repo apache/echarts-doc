@@ -272,7 +272,11 @@ option: {
 
 ## throttle(number) = 100
 
-设置触发视图刷新的频率。单位为毫秒（ms）。一般不需要更改这个值。
+设置触发视图刷新的频率。单位为毫秒（ms）。
+
+一般不需要更改这个值。
+
+如果 [animationDurationUpdate](~animationDurationUpdate) 设为 `0`，或者 [animation](~animation) 设为 `false`，且在数据量不大时，拖拽时画面感觉卡顿，可以把尝试把 `throttle` 设为 `0` 来改善。
 
 
 
