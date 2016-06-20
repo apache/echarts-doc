@@ -3,6 +3,8 @@
 #${prefix} markLine
 图表标线。
 
+{{ use: partial-silent(prefix="#" + ${prefix}) }}
+
 ##${prefix} symbol(string|Array)
 标线两端的标记类型，可以是一个数组分别指定两端，也可以是单个统一指定，具体格式见 [data.symbol](~series-${seriesType}.markLine.data.0.symbol)。
 ##${prefix} symbolSize(number|Array)
@@ -81,7 +83,13 @@ data: [
         {
             coord: [20, 30]
         }
-    ],
+    ], [{
+        // 固定起点的 x 像素位置，用于模拟一条指向最大值的水平线
+        yAxis: 'max',
+        x: '90%'
+    }, {
+        type: 'max'
+    }],
     {{/if}}[
         {
             name: '两个屏幕坐标之间的标线',
