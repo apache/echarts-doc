@@ -10,6 +10,8 @@
     hasCallback=true
 ) }}
 
+{{ use: partial-silent(prefix="#" + ${prefix}) }}
+
 ##${prefix} label(Object)
 标注的文本。
 ###${prefix} normal(Object)
@@ -54,6 +56,10 @@ data: [{{if: ${hasType} }}
     {
         name: '某个坐标',
         coord: [10, 20]
+    }, {
+        name: '固定 x 像素位置',
+        yAxis: 10,
+        x: '90%'
     }, {{/if}}
     {
         name: '某个屏幕坐标',
