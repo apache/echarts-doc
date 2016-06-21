@@ -123,13 +123,17 @@
 
 柱条的颜色。{{ if: ${useColorPalatte} }} 默认从全局调色盘 [option.color](~color) 获取颜色 {{/if}}
 
-#${prefix} barBorderColor(Color) = '#000'
+#${prefix} borderColor(Color) = '#000'
 
 柱条的描边颜色。
 
-#${prefix} barBorderWidth(number) = 0
+#${prefix} borderWidth(number) = 0
 
 柱条的描边宽度，默认不描边。
+
+#${prefix} borderType(string) = 'solid'
+
+柱条的描边类型，默认为实线，支持 `'dashed'`, `'dotted'`。
 
 {{ if: ${barBorderRadius} }}
 #${prefix} barBorderRadius(number|Array) = 0

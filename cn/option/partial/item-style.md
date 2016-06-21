@@ -26,6 +26,10 @@ ${name}图形的描边颜色。支持的格式同`color`。
 
 ${name}描边线宽。为 0 时无描边。
 
+#${prefix} borderType(string) = 'solid'
+
+柱条的描边类型，默认为实线，支持 `'dashed'`, `'dotted'`。
+
 {{ use:partial-style-shadow-opacity(
     prefix=${prefix},
     defaultOpacity=${defaultOpacity},
