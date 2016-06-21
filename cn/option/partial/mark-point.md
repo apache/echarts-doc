@@ -37,9 +37,9 @@
 
 ##${prefix} data(Array)
 标注的数据数组。每个数组项是一个对象，有下面几种方式指定标注的位置。
-1. 通过 [x](~series-${seriesType}.markPoint.data.x), [y](~series-${seriesType}.markPoint.data.y) 属性指定相对容器的屏幕坐标，单位像素。
+1. 通过 [x](~series-${seriesType}.markPoint.data.x), [y](~series-${seriesType}.markPoint.data.y) 属性指定相对容器的屏幕坐标，单位像素，支持百分比。
 {{ if: ${hasCoord} }}
-2. 用 [coord](~series-${seriesType}.markPoint.data.coord) 属性指定数据在相应坐标系上的坐标位置。
+2. 用 [coord](~series-${seriesType}.markPoint.data.coord) 属性指定数据在相应坐标系上的坐标位置，单个维度支持设置 `'min'`, `'max'`, `'average'`。
 {{ /if }}{{ if: ${hasType} }}
 3. 直接用 [type](~series-${seriesType}.markPoint.data.type) 属性标注系列中的最大值，最小值。这时候可以使用 [valueIndex](~series-${seriesType}.markPoint.data.valueIndex) 指定是在哪个维度上的最大值、最小值、平均值。或者可以使用 [valueDim](~series-${seriesType}.markPoint.data.valueDim) 指定在哪个维度上的最大值、最小值、平均值。
 {{ /if }}

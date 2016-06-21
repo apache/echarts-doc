@@ -105,13 +105,7 @@
 #### emphasis(Object)
 {{use:partial-item-style(prefix="####")}}
 
-{{use: partial-mark-point(
-    prefix="#",
-    seriesType="scatter",
-    hasCoord=true,
-    hasType=true
-)}}
-{{use: partial-mark-line(
+{{use: partial-marker(
     prefix="#",
     seriesType="scatter",
     hasCoord=true,

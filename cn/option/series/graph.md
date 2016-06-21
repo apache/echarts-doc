@@ -256,14 +256,13 @@ links: [{
 ## edges(Array)
 别名，同 [links](~series-graph.links)
 
-{{use: partial-mark-point(
+{{use: partial-marker(
     prefix="#",
-    seriesType="graph"
+    seriesType="graph",
+    hasType=true,
+    hasCoord=true
 )}}
-{{use: partial-mark-line(
-    prefix="#",
-    seriesType="graph"
-)}}
+
 
 {{ use: partial-rect-layout-width-height(
     defaultLeft="'center'",

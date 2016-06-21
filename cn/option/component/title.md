@@ -43,6 +43,10 @@
     defaultColor="'#333'"
 ) }}
 
+## textAlign
+
+标题文本对齐
+
 
 ## subtext(string) = ''
 
