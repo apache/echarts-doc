@@ -84,13 +84,14 @@
 
 ### normal(Object)
 {{use:partial-line-style(
-    prefix="###"
+    prefix="###",
+    defaultWidth=2
 )}}
 
 ## areaStyle(Object)
 区域填充样式。
 ### normal(Object)
-{{use: partial-area-style(prefix="###", defaultWidth=2)}}
+{{use: partial-area-style(prefix="###")}}
 
 ## smooth(false) = false
 是否平滑曲线显示。
