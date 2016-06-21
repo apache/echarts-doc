@@ -118,11 +118,7 @@
 #### emphasis(Object)
 {{use:partial-item-style(prefix="####")}}
 
-{{use: partial-mark-point(
-    prefix="#",
-    seriesType="pie"
-)}}
-{{use: partial-mark-line(
+{{use: partial-marker(
     prefix="#",
     seriesType="pie"
 )}}

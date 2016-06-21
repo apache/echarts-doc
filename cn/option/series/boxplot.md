@@ -100,15 +100,11 @@ ECharts 并不内置对原始数据的处理，输入给 `boxplot` 的数据须�
 {{use:partial-boxplot-item-style(prefix="##")}}
 
 
-{{use: partial-mark-point(
+{{use: partial-marker(
     prefix="#",
-    seriesType="scatter",
-    hasCoord=true
-)}}
-{{use: partial-mark-line(
-    prefix="#",
-    seriesType="scatter",
-    hasCoord=true
+    seriesType="boxplot",
+    hasCoord=true,
+    hasType=true
 )}}
 
 {{use:partial-z-zlevel(

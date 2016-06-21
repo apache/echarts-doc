@@ -101,15 +101,11 @@
 
 
 
-{{use: partial-mark-point(
+{{use: partial-marker(
     prefix="#",
-    seriesType="scatter",
-    hasCoord=true
-)}}
-{{use: partial-mark-line(
-    prefix="#",
-    seriesType="scatter",
-    hasCoord=true
+    seriesType="candlestick",
+    hasCoord=true,
+    hasType=true
 )}}
 
 {{use:partial-z-zlevel(
