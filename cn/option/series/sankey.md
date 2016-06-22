@@ -83,7 +83,8 @@
 
 
 ## lineStyle(Object)
-桑基图边的样式。
+桑基图边的样式，其中 [lineStyle.normal.color](~series-sankey.lineStyle.normal.color) 支持设置为`'source'`或者`'target'`特殊值，此时边会自动取源节点或目标节点的颜色作为自己的颜色。
+
 ### normal(Object)
 {{use: partial-sankey-line-style(prefix="###")}}
 ### emphasis(Object)

@@ -102,7 +102,8 @@ edgeSymbol: ['circle', 'arrow']
 {{use:partial-item-style(prefix="###")}}
 
 ## lineStyle(Object)
-关系边的公用线条样式。
+关系边的公用线条样式。其中 [lineStyle.normal.color](~series-graph.lineStyle.normal.color) 支持设置为`'source'`或者`'target'`特殊值，此时边会自动取源节点或目标节点的颜色作为自己的颜色。
+
 ### normal(Object)
 {{use:partial-line-style(
     prefix="###",
