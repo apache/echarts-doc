@@ -117,7 +117,7 @@ textStyle: {
 #${prefix} splitLine(Object)
 坐标轴在 [grid](~grid) 区域中的分隔线，默认显示。
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
-是否显示分隔线。
+是否显示分隔线。默认数值轴显示，类目轴不显示。
 
 {{ if: ${hasLabelInterval|default(true)} }}
 ##${prefix} interval(number|Function) = 'auto'

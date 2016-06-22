@@ -24,24 +24,62 @@
 组件的背景颜色。
 
 
-## dataBackgroundColor(Color) = '#ddd'
+## dataBackground(Object)
 
-数据阴影的背景颜色。
+数据阴影的样式。
+
+### lineStyle(Object)
+
+阴影的线条样式
+
+{{use:partial-line-style(
+    prefix="###",
+    defaultWidth=0.5,
+    defaultOpacity=0.3,
+    defaultColor='#2f4554'
+)}}
+
+### areaStyle(Object)
+
+阴影的填充样式
+
+{{use:partial-area-style(
+    prefix="###",
+    defaultOpacity=0.3,
+    defaultColor='rgba(47,69,84,0.3)'
+)}}
 
 
-## fillerColor(Color) = 'rgba(47,69,84,0.25)'
+## fillerColor(Color) = 'rgba(167,183,204,0.4)'
 
 选中范围的填充颜色。
 
+## borderColor(Color) = '#ddd'
 
-## handleColor(Color) = 'rgba(47,69,84,0.65)'
-
-控制手柄的颜色。
+边框颜色。
 
 
-## handleSize(number) = 10
+## handleIcon(string)
 
-控制手柄的尺寸。
+手柄的 icon 形状，支持路径字符串，默认为：
+```js
+'M8.2,13.6V3.9H6.3v9.7H3.1v14.9h3.3v9.7h1.8v-9.7h3.3V13.6H8.2z M9.7,24.4H4.8v-1.4h4.9V24.4z M9.7,19.1H4.8v-1.4h4.9V19.1z'
+```
+
+自定义 icon 见 [示例 area-simple](${galleryEditorPath}area-simple)
+
+## handleSize(number) = '100%'
+
+控制手柄的尺寸，可以是像素大小，也可以是相对于 dataZoom 组件宽度的百分比，默认跟 dataZoom 宽度相同。
+
+## handleStyle(Object)
+
+手柄的样式配置，见 [示例 area-simple](${galleryEditorPath}area-simple)
+
+{{use: partial-item-style(
+    prefix="##",
+    defaultColor="#a7b7cc"
+)}}
 
 
 ## labelPrecision(number) = 'auto'
