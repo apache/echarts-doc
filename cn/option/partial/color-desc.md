@@ -4,9 +4,9 @@
 > ```js
 > // 线性渐变，前四个参数分别是 x0, y0, x1, y1, 范围从 0 - 1，相当于在图形包围盒中的百分比，如果最后一个参数传 true，则该四个值是绝对的像素位置
 > color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
->   offset: 0, color: 'red' // offset 处的颜色
+>   offset: 0, color: 'red' // 0% 处的颜色
 > }, {
->   offset: 1, color: 'blue' // offset 处的颜色
+>   offset: 1, color: 'blue' // 100% 处的颜色
 > }], false)
 > // 径向渐变，前三个参数分别是圆心 x, y 和半径，取值同线性渐变
 > color: new echarts.graphic.RadianGradient(0.5, 0.5, 0.5, [...], false)
