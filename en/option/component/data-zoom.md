@@ -177,7 +177,7 @@ option: {
 
 Specify which [xAxis](~xAxis) is/are controlled by the `${dataZoomName}` when [catesian coordinate system](~grid) is used.
 
-By default all the `xAxis`s are controlled when [${dataZoomName}.orient](~${dataZoomName}.orient) is set as `'horizontal'`. But it is recommended to specify it explicitly but not use default value.
+By default the first `xAxis` that parallel to `dataZoom` are controlled when [${dataZoomName}.orient](~${dataZoomName}.orient) is set as `'horizontal'`. But it is recommended to specify it explicitly but not use default value.
 
 {{use: partial-data-zoom-axis-example(
     axisName='xAxis'
@@ -188,7 +188,7 @@ By default all the `xAxis`s are controlled when [${dataZoomName}.orient](~${data
 
 Specify which [yAxis](~yAxis) is/are controlled by the `${dataZoomName}` when [catesian coordinate system](~grid) is used.
 
-By default all the `yAxis`s are controlled when [${dataZoomName}.orient](~${dataZoomName}.orient) is set as `'vertical'`. But it is recommended to specify it explicitly but not use default value.
+By default the first `yAxis` that parallel to `dataZoom` are controlled when [${dataZoomName}.orient](~${dataZoomName}.orient) is set as `'vertical'`. But it is recommended to specify it explicitly but not use default value.
 
 {{use: partial-data-zoom-axis-example(
     axisName='yAxis'
