@@ -52,6 +52,14 @@
 ## clipOverflow(boolean) = true
 是否对超出部分裁剪，默认裁剪。
 
+## step(string|boolean) = false
+
+是否是阶梯线图。可以设置为 `true` 显示成阶梯线图，也支持设置成 `'start'`, `'middle'`, `'end'` 分别配置在当前点，当前点与下个点的中间点，下个点拐弯。
+
+不同的配置效果如下：
+
+~[600x400](${galleryViewPath}line-step&edit=1&reset=1)
+
 ## label(Object)
 {{use: partial-label-desc}}
 ### normal(Object)

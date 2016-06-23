@@ -72,6 +72,9 @@
 ## draggable(boolean) = false
 节点是否可拖拽，只在使用力引导布局的时候有用。
 
+## focusNodeAdjacency(boolean) = false
+是否在鼠标移到节点上的时候突出显示节点以及节点的边和邻接节点。
+
 {{ use: partial-symbol(
     prefix='#',
     defaultSymbol="'circle'",
