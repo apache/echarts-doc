@@ -16,6 +16,7 @@
 {{import: component-geo}}
 {{import: component-parallel}}
 {{import: component-parallel-axis}}
+{{import: component-single-axis}}
 {{import: component-timeline}}
 
 
