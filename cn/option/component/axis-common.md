@@ -68,9 +68,9 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
     defaultColor="'#333'"
 )}}
 <!-- Overwrite color -->
-###${prefix} color(Color|Function)='#333'
+###${prefix} color(Color|Function)
 
-刻度标签文字的颜色，支持回调函数，格式如下
+刻度标签文字的颜色，默认取 [axisLine.lineStyle.color](~${componentType}.axisLine.lineStyle.color)。支持回调函数，格式如下
 
 ```js
 (val: string) => Color
@@ -106,7 +106,10 @@ textStyle: {
 坐标轴刻度的长度。
 ##${prefix} lineStyle(Object)
 {{ use: partial-line-style(prefix='##' + ${prefix}, defaultColor="'#333'", defaultWidth=1, defaultType="'solid'", name="坐标轴刻度") }}
+<!-- Overwrite color -->
+###${prefix} color(Color)
 
+刻度线的颜色，默认取 [axisLine.lineStyle.color](~${componentType}.axisLine.lineStyle.color)。
 
 
 
