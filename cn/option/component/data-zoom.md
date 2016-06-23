@@ -169,7 +169,7 @@ option: {
 
 设置 `${dataZoomName}` 组件控制的 `x轴`（即[xAxis](~xAxis)，是直角坐标系中的概念，参见 [grid](~grid)）。
 
-不指定时，当 [${dataZoomName}.orient](~${dataZoomName}.orient) 为 `'horizontal'`时，默认控制所有 `xAxis`。但是不建议使用默认值，建议显式指定。
+不指定时，当 [${dataZoomName}.orient](~${dataZoomName}.orient) 为 `'horizontal'`时，默认控制和 dataZoom 平行的第一个 `xAxis`。但是不建议使用默认值，建议显式指定。
 
 {{use: partial-data-zoom-axis-example(
     axisName='xAxis'
@@ -180,7 +180,7 @@ option: {
 
 设置 `${dataZoomName}` 组件控制的 `y轴`（即[yAxis](~yAxis)，是直角坐标系中的概念，参见 [grid](~grid)）。
 
-不指定时，当 [${dataZoomName}.orient](~${dataZoomName}.orient) 为 `'vertical'`时，默认控制所有 `yAxis`。但是不建议使用默认值，建议显式指定。
+不指定时，当 [${dataZoomName}.orient](~${dataZoomName}.orient) 为 `'vertical'`时，默认控制和 dataZoom 平行的第一个 `yAxis`。但是不建议使用默认值，建议显式指定。
 
 {{use: partial-data-zoom-axis-example(
     axisName='yAxis'
