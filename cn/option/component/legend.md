@@ -66,6 +66,10 @@ formatter: function (name) {
 
 除此之外也可以设成 `'single'` 或者  `'multiple'` 使用单选或者多选模式。
 
+## inactiveColor(Color) = '#ccc'
+
+图例关闭时的颜色。
+
 ## selected(Object)
 
 图例选中状态表。

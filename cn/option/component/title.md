@@ -43,9 +43,13 @@
     defaultColor="'#333'"
 ) }}
 
-## textAlign
+## textAlign(string)
 
-标题文本对齐
+标题文本水平对齐，支持 'left', 'center', 'right'，默认根据标题位置决定。
+
+## textBaseline(string)
+
+标题文本垂直对齐，支持 'top', 'middle', 'bottom'，默认根据标题位置决定。
 
 
 ## subtext(string) = ''

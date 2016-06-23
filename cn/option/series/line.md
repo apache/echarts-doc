@@ -2,11 +2,15 @@
 
 # series.line(Object)
 
-**折线图**
+**折线/面积图**
 
 折线图是用折线将各个数据点[标志](~series-line.symbol)连接起来的图表，用于展现数据的变化趋势。可用于[直角坐标系](~grid)和[极坐标系](~polar)上。
 
 **Tip:** 设置 [areaStyle](~series-line.areaStyle) 后可以绘制面积图。
+
+**Tip:** 配合分段型 [visualMap](~visualMap-piecewise) 组件可以将折线/面积图通过不同颜色分区间。如下示例
+
+~[600x400](${galleryViewPath}line-aqi&edit=1&reset=1)
 
 ## type(string) = 'line'
 
