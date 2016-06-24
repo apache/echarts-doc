@@ -26,8 +26,15 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
     geo=true
 ) }}
 
+## polyline(boolean) = false
+是否是多段线。
+
+默认为 `false`，只能用于绘制只有两个端点的线段，线段可以通过 [lineStyle.normal.curveness](~series-lines.lineStyle.normal.curveness) 配置为曲线。
+
+如果该配置项为 `true`，则可以在 [data.coords](~series-lines.data.coords) 中设置多于 2 个的顶点用来绘制多段线，在绘制路线轨迹的时候比较有用，见示例 [北京公交路线](${galleryEditorPath}lines-bmap-bus)，设置为多段线后 [lineStyle.normal.curveness](~series-lines.lineStyle.normal.curveness) 无效。
+
 ## effect(Object)
-线特效的配置。
+线特效的配置，见示例 [模拟迁徙](${galleryEditorPath}geo-lines) 和 [北京公交路线](${galleryEditorPath}lines-bmap-effect)
 
 **注意：** 所有带有尾迹特效的图表需要单独放在一个层，也就是需要单独设置 [zlevel](~series-lines.zlevel)，同时建议关闭该层的动画（[animation](~series-lines.animation): false）。不然位于同个层的其它系列的图形，和动画的[标签](~series-lines.label)也会产生不必要的残影。
 
@@ -35,6 +42,10 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 是否显示特效。
 ### period(number) = 4
 特效动画的时间，单位为 s。
+
+### constantSpeed(number) = 0
+配置特效图形的移动动画是否是固定速度，单位`像素/秒`，设置为大于 0 的值后会忽略 [period](~series-lines.effect.period) 配置项。
+
 ### symbol(string) = 'circle'
 特效图形的标记。
 {{ use: partial-icon }}
@@ -51,6 +62,9 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 
 ### trailLength(number) = 0.2
 特效尾迹的长度。取从 0 到 1 的值，数值越大尾迹越长。
+
+### loop(boolean) = true
+是否循环显示特效。
 
 ## lineStyle(Object)
 ### normal(Object)
@@ -70,7 +84,7 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 ) }}
 
 ## label(Object)
-标签相关配置。
+标签相关配置。在 [polyline](series-lines.polyline) 设置为 `true` 时无效。
 ### normal(Object)
 {{ use: lines-label(prefix="###")}}
 ### emphasis(Object)
@@ -78,28 +92,66 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 
 ## data(Array)
 线数据集。
-{{ use: partial-line-data-desc() }}
 
-### 0(Object)
-起点的数据。
-{{ use: lines-data-item-item(
-    name="起点"
+**注：** 为了更好点支持多段线的配置，线数据的格式在 3.2.0 做了一定调整，如下：
+```js
+// 3.2.0 之前
+// [{
+//    // 起点坐标
+//    coord: [120, 66],
+//    lineStyle: { normal: {} }
+// }, {
+//    // 终点坐标
+//    coord: [122, 67]
+// }]
+
+// 从 3.2.0 起改为如下配置
+{
+    coords: [
+        [120, 66],  // 起点
+        [122, 67]   // 终点
+        ...         // 如果 polyline 为 true 还可以设置更多的点
+    ],
+    // 统一的样式设置
+    lineStyle: {
+        normal: {}
+    }
+}
+```
+
+### name(string)
+数据名称
+
+### coords(Array)
+一个包含两个到多个二维坐标的数组。在 [polyline](series-lines.polyline) 设置为 `true` 时支持多于两个的坐标。
+
+### lineStyle(Object)
+单个数据（单条线）的样式设置。
+#### normal(Object)
+{{ use: partial-line-style(
+    prefix="####",
+    hasCurveness=true
 ) }}
-#### value(number)
-数据值。
-
-### 1(Object)
-终点的数据。
-{{ use: lines-data-item-item(
-    name="终点"
+#### emphasis(Object)
+{{ use: partial-line-style(
+    prefix="####",
+    hasCurveness=true
 ) }}
 
 
-{{use: partial-mark-point(
-    prefix="#",
-    seriesType="lines"
-)}}
-{{use: partial-mark-line(
+### label(Object)
+单个数据（单条线）的标签设置。在 [polyline](series-lines.polyline) 设置为 `true` 时无效。
+#### normal(Object)
+{{ use: lines-label(
+    prefix="####"
+) }}
+#### emphasis(Object)
+{{ use: lines-label(
+    prefix="####"
+) }}
+
+
+{{use: partial-marker(
     prefix="#",
     seriesType="lines"
 )}}
@@ -118,25 +170,6 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
     galleryEditorPath=${galleryEditorPath}
 ) }}
 
-{{ target: lines-data-item-item }}
-#### name(string)
-${name}的名称。
-#### coord(Array)
-${name}的坐标，可以是[直角坐标系](~grid)上的`[x, y]`，[地理坐标系](~geo)上的`[lng, lat]`。
-#### lineStyle(Object)
-该数据项线的样式，起点和终点的`lineStyle`会合并到一起。
-##### normal(Object)
-{{ use: partial-line-style(
-    prefix="#####",
-    hasCurveness=true
-) }}
-###### curveness(number) = 0
-边的曲度，支持从 0 到 1 的值，值越大曲度越大。
-##### emphasis(Object)
-{{ use: partial-line-style(
-    prefix="#####",
-    hasCurveness=true
-) }}
 
 {{ target: lines-label }}
 #${prefix} show(boolean) = ${defaultShowLabel|default(false)}

@@ -66,6 +66,10 @@ formatter: function (name) {
 
 除此之外也可以设成 `'single'` 或者  `'multiple'` 使用单选或者多选模式。
 
+## inactiveColor(Color) = '#ccc'
+
+图例关闭时的颜色。
+
 ## selected(Object)
 
 图例选中状态表。
@@ -84,7 +88,7 @@ selected: {
 
 图例的公用文本样式。
 
-{{ use: partial-text-style(componentName='图例', prefix='##') }}
+{{ use: partial-text-style(componentName='图例', prefix='##', defaultColor="#333") }}
 
 ## data(Array)
 

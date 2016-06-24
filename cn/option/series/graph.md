@@ -72,6 +72,9 @@
 ## draggable(boolean) = false
 节点是否可拖拽，只在使用力引导布局的时候有用。
 
+## focusNodeAdjacency(boolean) = false
+是否在鼠标移到节点上的时候突出显示节点以及节点的边和邻接节点。
+
 {{ use: partial-symbol(
     prefix='#',
     defaultSymbol="'circle'",
@@ -102,7 +105,8 @@ edgeSymbol: ['circle', 'arrow']
 {{use:partial-item-style(prefix="###")}}
 
 ## lineStyle(Object)
-关系边的公用线条样式。
+关系边的公用线条样式。其中 [lineStyle.normal.color](~series-graph.lineStyle.normal.color) 支持设置为`'source'`或者`'target'`特殊值，此时边会自动取源节点或目标节点的颜色作为自己的颜色。
+
 ### normal(Object)
 {{use:partial-line-style(
     prefix="###",
@@ -256,14 +260,13 @@ links: [{
 ## edges(Array)
 别名，同 [links](~series-graph.links)
 
-{{use: partial-mark-point(
+{{use: partial-marker(
     prefix="#",
-    seriesType="graph"
+    seriesType="graph",
+    hasType=true,
+    hasCoord=true
 )}}
-{{use: partial-mark-line(
-    prefix="#",
-    seriesType="graph"
-)}}
+
 
 {{ use: partial-rect-layout-width-height(
     defaultLeft="'center'",

@@ -105,13 +105,7 @@
 {{use:partial-item-style(prefix="####")}}
 
 
-{{use: partial-mark-point(
-    prefix="#",
-    seriesType="effectScatter",
-    hasCoord=true,
-    hasType=true
-)}}prefix
-{{use: partial-mark-line(
+{{use: partial-marker(
     prefix="#",
     seriesType="effectScatter",
     hasCoord=true,

@@ -2,11 +2,15 @@
 
 # series.line(Object)
 
-**折线图**
+**折线/面积图**
 
 折线图是用折线将各个数据点[标志](~series-line.symbol)连接起来的图表，用于展现数据的变化趋势。可用于[直角坐标系](~grid)和[极坐标系](~polar)上。
 
 **Tip:** 设置 [areaStyle](~series-line.areaStyle) 后可以绘制面积图。
+
+**Tip:** 配合分段型 [visualMap](~visualMap-piecewise) 组件可以将折线/面积图通过不同颜色分区间。如下示例
+
+~[600x400](${galleryViewPath}line-aqi&edit=1&reset=1)
 
 ## type(string) = 'line'
 
@@ -52,6 +56,14 @@
 ## clipOverflow(boolean) = true
 是否对超出部分裁剪，默认裁剪。
 
+## step(string|boolean) = false
+
+是否是阶梯线图。可以设置为 `true` 显示成阶梯线图，也支持设置成 `'start'`, `'middle'`, `'end'` 分别配置在当前点，当前点与下个点的中间点，下个点拐弯。
+
+不同的配置效果如下：
+
+~[600x400](${galleryViewPath}line-step&edit=1&reset=1)
+
 ## label(Object)
 {{use: partial-label-desc}}
 ### normal(Object)
@@ -84,13 +96,14 @@
 
 ### normal(Object)
 {{use:partial-line-style(
-    prefix="###"
+    prefix="###",
+    defaultWidth=2
 )}}
 
 ## areaStyle(Object)
 区域填充样式。
 ### normal(Object)
-{{use: partial-area-style(prefix="###", defaultWidth=2)}}
+{{use: partial-area-style(prefix="###")}}
 
 ## smooth(false) = false
 是否平滑曲线显示。
@@ -156,13 +169,7 @@
 #### emphasis(Object)
 {{use: partial-item-style(prefix="####")}}
 
-{{use: partial-mark-point(
-    prefix="#",
-    seriesType="line",
-    hasCoord=true,
-    hasType=true
-)}}
-{{use: partial-mark-line(
+{{use: partial-marker(
     prefix="#",
     seriesType="line",
     hasCoord=true,

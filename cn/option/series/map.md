@@ -79,6 +79,11 @@
 {{ use: partial-text-style(prefix='#####') }}
 
 
+{{use: partial-marker(
+    prefix="#",
+    seriesType="map",
+    hasCoord=true
+)}}
 
 {{ use:partial-silent(
     prefix="#"
