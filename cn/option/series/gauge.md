@@ -88,6 +88,8 @@
 刻度标签。
 ### show(boolean) = true
 是否显示标签。
+### distance(number) = 5
+标签与刻度线的距离。
 ### formatter(string|Function)
 刻度标签的内容格式器，支持字符串模板和回调函数两种形式。
 示例:
@@ -164,11 +166,7 @@ formatter: function (value) {
 #### color(Color) = 'auto'
 文本颜色，默认取数值所在的[区间的颜色](~series-gauge.axisLine.lineStyle.color)
 
-{{use: partial-mark-point(
-    prefix="#",
-    seriesType="gauge"
-)}}
-{{use: partial-mark-line(
+{{use: partial-marker(
     prefix="#",
     seriesType="gauge"
 )}}

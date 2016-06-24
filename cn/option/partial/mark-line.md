@@ -3,6 +3,8 @@
 #${prefix} markLine
 图表标线。
 
+{{ use: partial-silent(prefix="#" + ${prefix}) }}
+
 ##${prefix} symbol(string|Array)
 标线两端的标记类型，可以是一个数组分别指定两端，也可以是单个统一指定，具体格式见 [data.symbol](~series-${seriesType}.markLine.data.0.symbol)。
 ##${prefix} symbolSize(number|Array)
@@ -14,7 +16,7 @@
 标线数值的精度，在显示平均值线的时候有用。
 
 ##${prefix} label(Object)
-标线文本。
+标线的文本。
 ###${prefix} normal(Object)
 {{ use: mark-line-label(
     prefix=${prefix} + '###'
@@ -25,6 +27,7 @@
 ) }}
 
 ##${prefix} lineStyle(Object)
+标线的样式
 ###${prefix} normal(Object)
 {{ use: partial-line-style(
     prefix="###" + ${prefix},
@@ -39,9 +42,9 @@
 
 ##${prefix} data
 标线的数据数组。每个数组项可以是一个两个值的数组，分别表示线的起点和终点，每一项是一个对象，有下面几种方式指定起点或终点的位置。
-1. 通过 [x](~series-${seriesType}.markLine.data.0.x), [y](~series-${seriesType}.markLine.data.0.y) 属性指定相对容器的屏幕坐标，单位像素。
+1. 通过 [x](~series-${seriesType}.markLine.data.0.x), [y](~series-${seriesType}.markLine.data.0.y) 属性指定相对容器的屏幕坐标，单位像素，支持百分比。
 {{ if: ${hasCoord} }}
-2. 用 [coord](~series-${seriesType}.markLine.data.0.coord) 属性指定数据在相应坐标系上的坐标位置。
+2. 用 [coord](~series-${seriesType}.markLine.data.0.coord) 属性指定数据在相应坐标系上的坐标位置，单个维度支持设置 `'min'`, `'max'`, `'average'`。
 {{ /if }}{{ if: ${hasType} }}
 3. 直接用 [type](~series-${seriesType}.markLine.data.0.type) 属性标注系列中的最大值，最小值。这时候可以使用 [valueIndex](~series-${seriesType}.markLine.data.0.valueIndex) 或者 [valueDim](~series-${seriesType}.markPoint.data.0.valueDim) 指定是在哪个维度上的最大值、最小值、平均值。
 
@@ -81,7 +84,13 @@ data: [
         {
             coord: [20, 30]
         }
-    ],
+    ], [{
+        // 固定起点的 x 像素位置，用于模拟一条指向最大值的水平线
+        yAxis: 'max',
+        x: '90%'
+    }, {
+        type: 'max'
+    }],
     {{/if}}[
         {
             name: '两个屏幕坐标之间的标线',
