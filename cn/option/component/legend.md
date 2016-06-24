@@ -88,7 +88,7 @@ selected: {
 
 图例的公用文本样式。
 
-{{ use: partial-text-style(componentName='图例', prefix='##') }}
+{{ use: partial-text-style(componentName='图例', prefix='##', defaultColor="#333") }}
 
 ## data(Array)
 
