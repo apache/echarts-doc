@@ -44,7 +44,7 @@
 {{ use: partial-legend-hover-link }}
 
 ## stack(string) = null
-数据堆叠，同个类目轴上系列配置相同的`stack`值可以堆叠放置。
+数据堆叠，同个类目轴上系列配置相同的`stack`值后，后一个系列的值会在前一个系列的值上相加。
 
 下面示例可以通过右上角 [toolbox](~toolbox) 中的堆叠切换看效果：
 
