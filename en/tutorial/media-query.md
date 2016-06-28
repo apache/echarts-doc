@@ -1,119 +1,118 @@
 
 {{target: media-query}}
 
-# Adaptive mobile end
+# Responsive Mobile-End
 
-ECharts works in dom node with user assigned height and width, ECharts『component』and『series』are all in this dom node, location of every node can be assigned by user. Dom document flow may not be used for layout inside chart bank, but similar and simole absolute layout can be realized. Sometimes when container size are extreme, this method can not avoid overlapping component automatically, especially on small screens of mobile end.
+ECharts works in DOM nodes with user defined width and height. ECharts *component* and *series* are both in this DOM node, whose location can be assigned by user seperately. Inner components of charts are not suitable for implementing DOM flow layout. Instead, we use a simpler and more understandable layout similar to absolute layout. But sometimes when container is of extreme size, this method cannot avoid component overlapping automatically, especially on small screens on mobile-end.
 
-Besides, sometimes one chart may need to be displayed on PC and mobile end at the same time, this needs inner components of ECharts to change along with container size.
+Besides, sometimes one chart may need to be displayed on both PC and mobile-end, which involves the ability of ECharts inner components to be responsive with different container sizes.
 
-To solve this problem, ECharts has improved location setting of component and realized self-adaptive ability similiar to [CSS Media Query](http://www.w3.org/TR/css3-mediaqueries/).
+To solve this problem, ECharts improved component location algorithm, and implemented responsive ability similar to [CSS Media Query](http://www.w3.org/TR/css3-mediaqueries/).
 
 
 <br>
-<h2>Location and layout of ECharts component</h2>
+<h2>Location and layout of ECharts components</h2>
 
 
-Most『component』and『series』follow two locating methods: 
+Most *component* and *series* follow two locating methods: 
 
 <br>
-**left/right/top/bottom/width/height locating method: **
+**left/right/top/bottom/width/height locating method:**
 
-In the six measures, each one can be 『absolute value』or『percentage』or『location description』.
+Each of those six parameters can be *absolute value* or *percentage* or *location description*.
 
 + Absolute value
 
-    unit is browser pixels (px), write with `number` (no unit), such as `{left: 23, height: 400}`. 
+    in browser pixels (px); in form of `number` (no unit); e.g.: `{left: 23, height: 400}`.
 
-+ percentage
++ Percentage
 
-    representing the percentage of height and width of dom container, write with `string`, such as `{right: '30%', bottom: '40%'}`.
+    to the width and height of DOM container; in form of `string`; e.g.: `{right: '30%', bottom: '40%'}`.
 
-+ location description
++ Location Description
 
-    + capable to set `left: 'center'`, stands for centered horizontally.
-    + capable to set `top: 'middle'`, stands for centered vertically.
+    + can be set to `left: 'center'`, for horizontally centering.
+    + can be set to `top: 'middle'`, for vertically centering.
 
 
-The concept of these six measures is similar to the six ones in css: 
+The concept of these six parameters is similar to that in CSS: 
 
-+ left: distance to left border of dom container.
-+ right: distance to right border of dom container.
-+ top: distance to top border of dom container.
-+ bottom: distance to bottom border of dom container.
++ left: distance to left border of DOM container.
++ right: distance to right border of DOM container.
++ top: distance to top border of DOM container.
++ bottom: distance to bottom border of DOM container.
 + width: width.
 + height: height.
 
-In the three horizontal measures of `left`、`right`、`width` , two is enough, because any two values can determine component location and size, such as `left` and `right` or `right` and `width` can all determine component location and size.
-Three vertical measures of`top`,`bottom` and `height` are same as the horizontal one, details will not be elaborated here.
+Two out of the three horizontal parameters, `left`, `right`, `width`, are enough to determine the component location. For example, `left` and `right`, or `right` and `width` can both determine component location and size.
+The same goes for vertical paramters `top`, `bottom` and `height`.
 
 <br>
-**Locating method of center/radius : **
+**Locating method of `center` / `radius`: **
 
 + `center`
 
-    is an array, representing `[x, y]`, among which x、y can be『absolute value』or『percentage』, meaning is the same as described before.
+    an array in form of `[x, y]`, in which `x` and `y` can either be *absolute value* or *percentage*, as described above.
 
 + `radius`
 
-    is an array, representing `[inner radius, outer radius]`, , among which inner and outer radius can be『absolute value』or『percentage』, meaning is the same as described before.
+    an array in form of `[innerRadius, outerRadius]`, in which `innerRadius` and `outerRadius` can either be *absolute value* or *percentage*, as described above.
 
-    When adapting to container size, perventage setting turns out to be very useful.
-
-
-
-<br>
-**Horizontal (horizontal) and vertical (vertical) **
-
-『narrow appearance』ECharts component (such as `legend`,`visualMap`,`dataZoom`,`timeline` and so on), mostly provide options like『horizontal layout』『vertical layout』.For example, on a narrow and long screen of mobile end,『vertical layout』may be more appropriate；『horizontal layout』may be more appropriate on PC wide screen.
-
-Settings of horizontal and vertical layout are usually located in『component』or `orient` or `layout` configuration of『series』, set to `'horizontal'` or `'vertical'`.
+    Percentage location turns out to be very useful for responsive positioning.
 
 
 <br>
-**About ECharts2 compatibility: **
+**Horizontal and vertical**
 
-Naming of `x/x2/y/y2` in ECharts2 is still compatible, corresponding to `left/right/top/bottom`. But `left/right/top/bottom` is recommended.
+Most of ECharts's long and narrow components (such as `legend`,`visualMap`,`dataZoom`,`timeline` and so on), provide option to set them to be horizontal or vertical. For example, long and narrow screen of mobile-end, vertical layout may be a more suitable choice, while horizontal may more suit for PC's wide screen.
 
-In the position description is compatible  ECharts2, some weirdly-looking setting is also  supported: `left: 'right'`,`left: 'left'`,`top: 'bottom'`,`top: 'top'`. These words equal to: `right: 0`、`left: 0`、`bottom: 0`、`top: 0`, when written in the later way, it is not weird.
+Setting of horizontal or vertical layout is usually with component or series's `orient` or `layout` option, which can be set to `'horizontal'` or `'vertical'`.
+
+
+<br>
+**Compatibility with ECharts2: **
+
+Naming of `x/x2/y/y2` in ECharts2 is still compatible, as well as the newly added `left/right/top/bottom`. But `left/right/top/bottom` is recommended.
+
+To be compatible with ECharts2, there may be settings that seems to be odd, e.g.: `left: 'right'`, `left: 'left'`, `top: 'bottom'`, `top: 'top'`, which are equal to: `right: 0`, `left: 0`, `bottom: 0`, `top: 0`, in a more normal expression.
 
 
 
 <br>
 <h2>Media Query</h2>
 
-[Media Query](http://www.w3.org/TR/css3-mediaqueries/#media1) provides the ability『change along with container size』
+[Media Query](http://www.w3.org/TR/css3-mediaqueries/#media1) provides the ability to be responsive with container size.
 
-In the example below you can try to drag **point in the lower right corner**, along with the size change, legend and series will change layout position and method automatically. 
+As shown in the following example, you may drag **the circle in bottom-right corner** to see the legend and series change layout position and method with container size. 
 ~[750x600](${galleryViewPath}doc-example/pie-media&edit=1&reset=1)
 
-If you want to set Media Query in option, the framework below must be followed: 
+The following format should be followed if you need to set Media Query in option:
 
 ```javascript
 option = {
-    baseOption: { // Here is the basic『atom option』.
+    baseOption: { // here defines base option
         title: {...},
         legend: {...},
         series: [{...}, {...}, ...],
         ...
     },
-    media: [ // every rule of media query is defined here.
+    media: [ // each rule of media query is defined here
         {
-            query: {...},   // write rule here.
-            option: {       // write options met this rule here.
+            query: {...},   // write rule here
+            option: {       // write options accordingly
                 legend: {...},
                 ...
             }
         },
         {
-            query: {...},   // second rule.
-            option: {       // corresponding option of the second rule.
+            query: {...},   // the second rule
+            option: {       // the second option
                 legend: {...},
                 ...
             }
         },
-        {                   // There is no rule written here, meaning『by default』,
-            option: {       // when all rules are not met, adopt this option.
+        {                   // default with no rules,
+            option: {       // when all rules fail, use this option
                 legend: {...},
                 ...
             }
@@ -122,12 +121,12 @@ option = {
 };
 ```
 
-In the exemplary framework, `baseOption` and every option in `media` is『atom option』, namely normal option that includes all components and series definition. `baseOption` must be used, besides when certain `query` is met, corresponding option will be merged by using chart.mergeOption().
+In the above example, `baseOption` and every option in `media` are all *simple options*, which are regular options containing components and series. `baseOption` is always be used, while options of every will be merged with `chart.mergeOption()` when given `query` condition is satisfied with.
 
 
 **query: **
 
-Each `query` is like this to some extend: 
+A `query` is in the following format: 
 
 ```javascript
 {
@@ -137,27 +136,27 @@ Each `query` is like this to some extend:
 }
 ```
 
-By now three attributes are supported:`width`、`height`、`aspectRatio` (lenght-to-width ratio). Every attribute can add prefix of `min` or `max`, such as `minWidth: 200` stands for『greater than or equal to 200px width』.When two attributes are written together means『and』, for example: `{minWidth: 200, maxHeight: 300}` stands for『greater than or equal to 200px width and smaller than or equal to 300px height』.
+Currently there are three supported attributes:`width`, `height`, `aspectRatio` (length-to-width ratio), each of which can add `min` or `max` as prefix. E.g., `minWidth: 200` stands for when width is greater than or equal to 200px. When two attributes are written together, it means *and* in Bool logic. For example, `{minWidth: 200, maxHeight: 300}` stands for when width is greater than or equal to 200px and height is smaller than or equal to 300px.
 
 
 **option: **
 
-Since option in `media` is『atom option』, theoratically configuration item of any optioncan be written. But usually we only write those related to layout, such as intercepting part of query option in the example above: 
+Since option in `media` is *simple option*, technically speaking, you can write every option configuration item. But usually we only write those related to layout. Take part of the above query option as example:
 
 ```javascript
 media: [
     ...,
     {
         query: {
-            maxAspectRatio: 1           // when length-to-width ratio is less than 1.
+            maxAspectRatio: 1           // when length-to-width ratio is less than 1
         },
         option: {
-            legend: {                   // legend is placed in the middle of the bottom.
+            legend: {                   // legend is placed in middle-bottom
                 right: 'center',
                 bottom: 0,
-                orient: 'horizontal'    // horizontal layout of legend.
+                orient: 'horizontal'    // horizontal layout of legend
             },
-            series: [                   // left and right layout of two pie charts.
+            series: [                   // left and right layout of two pie charts
                 {
                     radius: [20, '50%'],
                     center: ['50%', '30%']
@@ -171,15 +170,15 @@ media: [
     },
     {
         query: {
-            maxWidth: 500               // when container width is less than 500.
+            maxWidth: 500               // when container width is smaller than 500
         },
         option: {
             legend: {
-                right: 10,              // legend is placed in the middle of the right.
+                right: 10,              // legend is placed in middle-right
                 top: '15%',
-                orient: 'vertical'      // vertical layout.
+                orient: 'vertical'      // vertical layout
             },
-            series: [                   // up and down layout of two pie charts.
+            series: [                   // top and bottom layout of two pie charts
                 {
                     radius: [20, '50%'],
                     center: ['50%', '30%']
@@ -196,24 +195,28 @@ media: [
 ```
 
 
-**Priority when multiple query are satisfied: **
+**Priority when multiple queries are satisfied: **
 
-Attention: When multiple `query` are being satisfied at the same time, all will be defined by mergeOption and those are difined later will be merged (those with higher priority).
-
-
-**query by default: **
-
-If certain item in `media` is not `query`, then it means『default value』, namely when all the rules are not met,  dapot this option.
+Attention: When multiple `query` are satisfied at the same time, all of them will be merged with `mergeOption` and those are defined later will be merged later, thus provides them with higher priority.
 
 
-**Pay attention when container size changes with time: **
+**Query by default: **
 
-In many circumstances, the container DOM node doesn't need to change size with dragging, but only need to set several classic size based on different end.
+If an item in `media` has no not `query`, then it means *default value*, which will be used when all other rules fail.
 
-But if the container DOM node needs to change size with dragging, attention needs to be paied to this: if certain configuration item appears in certain `query option`, then it should also appeared in other `query option`, or it would not return to the original state. (`left/right/top/bottom/width/height` does not subject to the restrictions) 
 
+**Pay attention when container size changes:**
+
+In many cases, container DOM node doesn't need to change size with user dragging. Instead, it may set to several sizes on varied ends.
+
+But if the container DOM node needs to change size with dragging, you need to pay attention to this: if certain configuration item appears in one `query option`, then it should also appeared in other `query option`, or it will not be able to return to the original state. (`left/right/top/bottom/width/height` are not restricted to this rule.)
+
+
+**`media` in *composite option* does not support merge**
+
+When `chart.setOption(rawOption)` for the second, third, fourth, fifth, and etc. times, if `rawOption` is `composite option` (which means it contains `media` list), then, the new `rawOption.media` list will not merge with the old `media`. instead, it will simply replace the option. Of course, `rawOption.baseOption` will still merge with the old option normally.
 
 <br>
-Last let's see an example combined with time:
+Finally, let's see an example combining with timeline:
 
 ~[750x700](${galleryViewPath}doc-example/bar-media-timeline&edit=1&reset=1)
