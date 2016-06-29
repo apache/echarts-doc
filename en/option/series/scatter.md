@@ -38,7 +38,7 @@ Whether to enable the reminding animation effect mouse hover.
 ) }}
 
 ## large(boolean) = true
-Whether to enable the optimization of large-scale scatter diagram. The (>=2k)  could be enabled when there is a particularly large number of data graphic elements. 
+Whether to enable the optimization of large-scale scatter diagram. The (>=5k)  could be enabled when there is a particularly large number of data graphic elements. 
 
 After being enabled, it should coordinate with [largeThreshold](~series-scatter.largeThreshold) to optimize the draw when the data volume is greater than specified threshold value.
 
