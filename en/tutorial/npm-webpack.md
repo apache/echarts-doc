@@ -1,35 +1,35 @@
 
 {{target: npm-webpack}}
 
-# Use ECharts  in webpack 
+# Use ECharts with webpack 
 
-[Webpack](https://webpack.github.io/) is a relatively popular module packing tool, you can easily introduce and pack echarts while using webpack project on the assumption that you already have certain understanding and have used webpack in your project.
+[Webpack](https://webpack.github.io/) is a popular module packaging tool, which can be used easily to import and packaging ECharts. Here we assume you already have certain understanding about webpack and used it in your project.
 
-## npm installs ECharts
+## Use npm to install ECharts
 
-Before `3.1.1` version,  echarts on npm package is maintained unoffically, from `3.1.1` echarts on npm and zrender package are maintained officially by [EFE](https://github.com/ecomfe/). 
+Before `3.1.1` version, ECharts package on npm was maintained by third-party. Since `3.1.1`, ECharts and zrender on npm are maintained officially by [EFE](https://github.com/ecomfe/) team. 
 
-You can use the following order to install echarts through npm 
+You can use the following command to install ECharts with npm.
 
 ```shell
 npm install echarts --save
 ```
 
-## introduce ECharts
+## Include ECharts
 
-Echarts and zrender installed through npm will be placed under `node_modules`. You can obtain echarts directly in project code `require('echarts')`.
+ECharts and zrender installed by npm will be placed under `node_modules`. You can obtain echarts directly in project with `require('echarts')`.
 
 ```js
 var echarts = require('echarts');
 
-// based on prepared dom, initialize echarts example
+// initialize echarts instance with prepared DOM
 var myChart = echarts.init(document.getElementById('main'));
 // draw chart
 myChart.setOption({
     title: { text: 'ECharts entry example' },
     tooltip: {},
     xAxis: {
-        data: ["shirt",cardign","chiffon shirt","pants","heels","socks"]
+        data: ["shirt","cardign","chiffon shirt","pants","heels","socks"]
     },
     yAxis: {},
     series: [{
@@ -40,29 +40,29 @@ myChart.setOption({
 });
 ```
 
-## introduce ECharts chart and component based on need
+## Include ECharts charts and components on demand
 
-Use `require('echarts')` by default, you will get echarts bag loaded with all charts and component. so the volume will be large. If volume requirement is strict in project, you can also introduce needed module.
+By default, `require('echarts')` returns the whole ECharts package including all charts and components, so the package size is a bit large. If you have a strict demand of package size, you may include packages on demand.
 
-For example, the code above only uses bar chart, tooltip and title component, so you only need to introduce these modules to minimize package from more than 400 KB to 170 KB or some effectively.
+For example, the code above only uses bar chart, tooltip and title component, so you only need to include these modules, effectively making the package size from more than 400 KB to about 170 KB.
 
 ```js
-// introduce ECharts main module
+// include ECharts main module
 var echarts = require('echarts/lib/echarts');
-// introduce bar chart
+// include bar chart
 require('echarts/lib/chart/bar');
-// introduce tooltip and title component
+// include tooltip and title component
 require('echarts/lib/component/tooltip');
 require('echarts/lib/component/title');
 
-// based on prepared dom, initialize echarts example
+// initialize echarts instance with prepared DOM
 var myChart = echarts.init(document.getElementById('main'));
-// Draw chart
+// draw chart
 myChart.setOption({
     title: { text: 'ECharts introductory example' },
     tooltip: {},
     xAxis: {
-        data: ["shirt",cardign","chiffon shirt","pants","heels","socks"]
+        data: ["shirt","cardign","chiffon shirt","pants","heels","socks"]
     },
     yAxis: {},
     series: [{
@@ -74,4 +74,4 @@ myChart.setOption({
 ```
 
 
-Same method is used on another popular module packaging tools [browserify](http://browserify.org/), so details will not be elaborated here.
+The same goes for another popular packaging tool [browserify](http://browserify.org/), which will not be introduced again here.
