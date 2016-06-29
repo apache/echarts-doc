@@ -66,6 +66,16 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 ### loop(boolean) = true
 是否循环显示特效。
 
+## large(boolean) = false
+是否启用大规模线图的优化，在数据图形特别多的时候（>=5k）可以开启。
+
+开启后配合 [largeThreshold](~series-lines.largeThreshold) 在数据量大于指定阈值的时候对绘制进行优化。
+
+缺点：优化后不能自定义设置单个数据项的样式，不能启用 [effect](~series-lines.effect)。
+
+## largeThreshold(number) = 2000
+开启绘制优化的阈值。
+
 ## lineStyle(Object)
 ### normal(Object)
 {{ use: partial-line-style(
