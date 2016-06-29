@@ -74,7 +74,7 @@ the hyper link of subtitle text.
 
 {{ use: partial-padding(componentName="title")}}
 
-## itemGap(number) = 5
+## itemGap(number) = 10
 
 the gap between the main heading and subtitle. 
 

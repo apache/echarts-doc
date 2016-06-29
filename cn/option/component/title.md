@@ -83,7 +83,7 @@
 
 {{ use: partial-padding(componentName="标题")}}
 
-## itemGap(number) = 5
+## itemGap(number) = 10
 
 主副标题之间的间距。
 
