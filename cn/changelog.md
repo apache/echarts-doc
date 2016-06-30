@@ -1,27 +1,27 @@
 ## v3.2.0
 <div class="time">2016-06-30</div>
 
-详细的变动介绍见 [ECharts 3.2.0](http://efe.baidu.com/blog/echarts-3.2.0/)
+详细的变动介绍见 [ECharts 3.2.0 变动介绍](http://efe.baidu.com/blog/echarts-3.2.0/)
 
-+ **[+] 新加刷选 [brush](http://echarts.baidu.com/option.html#brush) 组件。** 见下面几个 Brushing and Linking 的例子。
++ **[+] 新加刷选 [brush](http://echarts.baidu.com/option.html#brush) 组件。** 见下面几个 Brushing and Linking 的例子：
 
-    [地图与平行坐标](http://echarts.baidu.com/gallery/editor.html?c=map-parallel-prices)，[K线图与柱状图](http://echarts.baidu.com/gallery/editor.html?c=candlestick-brush)，[散点矩阵与平行坐标](http://echarts.baidu.com/gallery/editor.html?c=scatter-matrix)
+    + [地图与平行坐标](http://echarts.baidu.com/gallery/editor.html?c=map-parallel-prices)，[K线图与柱状图](http://echarts.baidu.com/gallery/editor.html?c=candlestick-brush)，[散点矩阵与平行坐标](http://echarts.baidu.com/gallery/editor.html?c=scatter-matrix)
 
 + **[+] 新加标域 [markArea](http://echarts.baidu.com/option.html#markArea) 组件。** 见示例 [用电量分布](http://echarts.baidu.com/gallery/editor.html?c=line-sections)，[男女身高体重分布](http://echarts.baidu.com/gallery/editor.html?c=scatter-weight)
 
 + **[+] 新加单轴 [singleAxis](http://echarts.baidu.com/option.html#singleAxis) 组件。** 见示例 [单轴散点图](http://echarts.baidu.com/gallery/editor.html?c=scatter-single-axis)
 
 + **[^] 折线图优化**
-    + [+] 新增 step 属性显示成 step line。见示例 [Step Line](http://echarts.baidu.com/gallery/editor.html?c=line-step)
+    + [+] 新增 [step](http://echarts.baidu.com/option#series-line.step) 属性显示成阶梯线图。见示例 [Step Line](http://echarts.baidu.com/gallery/editor.html?c=line-step)
     + [^] 优化与 visualMap 的结合，支持分段显示不同颜色。见示例 [北京 AQI](http://echarts.baidu.com/gallery/editor.html?c=line-aqi)，[用电量分布](http://echarts.baidu.com/gallery/editor.html?c=line-sections)
 
 + **[^] 线图优化**
 
     + [+] 新增 `polyline` 属性，支持显示多段的轨迹路线。见示例 [北京公交路线图](http://echarts.baidu.com/gallery/editor.html?c=lines-bmap-bus)，以及 [带有特效的北京公交路线图](http://echarts.baidu.com/gallery/editor.html?c=lines-bmap-effect)
 
-    + [+] 新增 [large](http://echarts.baidu.com/gallery/option.html?c=series-lines.large) 和 [largeThreshold](http://echarts.baidu.com/gallery/option.html?c=series-lines.largeThreshold) 配置项支持大规模线图的绘制。见示例 [65k 条飞机航线的可视化](http://echarts.baidu.com/gallery/editor.html?c=lines-airline)
+    + [+] 新增 [large](http://echarts.baidu.com/gallery/editor.html?c=series-lines.large) 和 [largeThreshold](http://echarts.baidu.com/gallery/editor.html?c=series-lines.largeThreshold) 配置项支持大规模线图的绘制。见示例 [65k 条飞机航线的可视化](http://echarts.baidu.com/gallery/editor.html?c=lines-airline)
 
-    + [+] [effect](http://echarts.baidu.com/gallery/option.html?c=series-lines.effect) 新增 [constantSpeed](http://echarts.baidu.com/gallery/option.html?c=series-lines.effect.constantSpeed) 和 [loop](http://echarts.baidu.com/gallery/option.html?c=series-lines.effect.loop)
+    + [+] [effect](http://echarts.baidu.com/gallery/editor.html?c=series-lines.effect) 新增 [constantSpeed](http://echarts.baidu.com/gallery/editor.html?c=series-lines.effect.constantSpeed) 和 [loop](http://echarts.baidu.com/gallery/editor.html?c=series-lines.effect.loop)
 
     + [^] 数据格式变动，从原先的 `data: [ [{ coord: [lng, lat] }, { coord: [lng, lat]}] ]` 改为 `data: [ { coords: [[lng, lat], [lng, lat]] } ]`。统一在一个属性里存放坐标点是为了更好的支持 `polyline` 为 true 的时候配置多个坐标点。原先的方式也兼容，但是不建议继续使用。
 
