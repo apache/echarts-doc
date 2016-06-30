@@ -6,10 +6,12 @@
 var path = require('path');
 var fs = require('fs');
 
-var docSrcDir = path.join(__dirname, '/en');
+var docSrcDirCN = path.join(__dirname, '/cn');
+var docSrcDirEN = path.join(__dirname, '/en');
 
 var watchDirs = [];
-getAllDirs(docSrcDir, watchDirs);
+getAllDirs(docSrcDirCN, watchDirs);
+getAllDirs(docSrcDirEN, watchDirs);
 
 watchDirs.forEach(function (p) {
     fs.watch(p, onChange);
