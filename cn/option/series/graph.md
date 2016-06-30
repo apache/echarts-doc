@@ -224,10 +224,10 @@ links: [{
     target: 'n3'
 }]
 ```
-### source(string)
-边的[源节点名称](~series-graph.data.name)
-### target(string)
-边的[目标节点名称](~series-graph.data.name)
+### source(string|number)
+边的[源节点名称](~series-graph.data.name)的字符串，也支持使用数字表示源节点的索引。
+### target(string|number)
+边的[目标节点名称](~series-graph.data.name)的字符串，也支持使用数字表示源节点的索引。
 ### lineStyle(Object)
 关系边的线条样式。
 #### normal(Object)

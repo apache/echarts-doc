@@ -56,7 +56,7 @@
 
 浮层隐藏的延迟，单位为 ms，在 [alwaysShowContent](~tooltip.alwaysShowContent) 为 `true` 的时候无效。
 
-## enterable(boolean) = true
+## enterable(boolean) = false
 
 鼠标是否可进入提示框浮层中，默认为false，如需详情内交互，如添加链接，按钮，可设置为 `true`。
 
