@@ -217,14 +217,94 @@ myChart.on('legendselectchanged', function (params) {
 
 ```javascript
 chart.on('axisareaselected', function () {
-    var series1 = chart.getModel().getSeries()[0];
-    var series2 = chart.getModel().getSeries()[0];
+    var series0 = chart.getModel().getSeries()[0];
+    var series1 = chart.getModel().getSeries()[1];
+    var indices0 = series0.getRawIndicesByActiveState('active');
     var indices1 = series1.getRawIndicesByActiveState('active');
-    var indices2 = series2.getRawIndicesByActiveState('active');
-    console.log(indices1);
-    console.log(indices2);
+    console.log(indices0, indices1);
 });
 ```
+
+## brush(Event)
+
+选框添加事件。即发出 [brush](~action.brush) action 得到的事件。
+
+## brushselected(Event)
+
+对外通知当前选中了什么。
+
+参见 [区域选择](option.html#brush)。
+
+这个事件，在 `setOption` 时不会发出，在其他的 dispatchAction 时，或者用户在界面中创建、删除、修改选框时会发出。
+
+事件参数内容为：
+```javascript
+{
+    type: 'brushselected',
+    batch: [
+        {
+            brushIndex: number // brush 组件的id，大多数情况只使用一个 brush 组件，所以不必理会。
+            selected: [ // 每个系列被选中的项。
+                        // 注意，如果某个系列不支持 brush，但是还是会在这里出现对应的项。
+                        // 也就是说，selected 可以使用 seriesIndex 来直接找到对应的项。
+                { // series 0 被选中的项
+                    seriesIndex: number,
+                    dataIndex: [ 3, 6, 12, 23 ] // 用这些 dataIndex，可以去原始数据中找到真正的值。
+                },
+                { // series 1 被选中的项
+                    seriesIndex: number,
+                    dataIndex: []
+                },
+                ...
+            ]
+        },
+        ...
+    ]
+}
+```
+
+事件使用方式例如：
+
+```javascript
+var dataBySeries = [
+    [ 12, 23, 54, 6 ], // series 0 的数据
+    [ 34, 34433, 2223, 21122, 1232, 34 ] // series 1 的数据
+];
+
+chart.setOption({
+    ...,
+    brush: {
+        ...
+    },
+    series: [
+        { // series 0
+            data: dataBySeries[0]
+        },
+        { // series 1
+            data: dataBySeries[1]
+        }
+    ]
+});
+
+chart.on('brushSelected', function (params) {
+    var brushComponent = params.batch[0];
+
+    var sum = 0; // 统计选中项的数据值的和
+
+    for (var sIdx = 0; sIdx < brushComponent.selected.length; sIdx++) {
+        // 对于每个 series：
+        var dataIndices = brushComponent.selected[sIdx].dataIndex;
+
+        for (var i = 0; i < dataIndices.length; i++) {
+            var dataIndex = dataIndices[i];
+            sum += dataBySeries[sIdx][dataIndex];
+        }
+    }
+    console.log(sum); // 用某种方式输出统计值。
+});
+```
+
+如果想**避免此事件频繁触发**，可以使用 [brush.throttleType](option.html#brush.throttleType)。
 
 
 {{ target: event-select }}
