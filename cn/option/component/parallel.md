@@ -41,7 +41,7 @@
 
 参见 [parallel.axisExpandable](parallel.axisExpandable)
 
-## axisExpandCount(number) = 10
+## axisExpandCount(number) = 0
 
 初始时，有多少个轴会处于展开状态。建议根据你的维度个数而手动指定。
 
