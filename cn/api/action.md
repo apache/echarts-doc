@@ -276,6 +276,37 @@ dispatchAction({
 ) }}
 
 
+<!--============= brush ==========-->
+## brush
+[区域选择](option.html#brush)相关的行为。
+
+### brush
+触发此 action 可选中一个区域，例如：
+
+```javascript
+myChart.dispatchAction({
+    type: 'brush',
+    areas: [ // areas 表示选框的集合，可以指定多个选框。
+        { // 选框一：
+            geoIndex: 0, // 指定此选框属于 index 为 0 的 geo 坐标系。
+                         // 也可以通过 xAxisIndex 或 yAxisIndex 来指定此选框属于直角坐标系。
+                         // 如果没有指定，则此选框属于『全局选框』。不属于任何坐标系。
+                         // 属于『坐标系选框』，可以随坐标系一起缩放平移。属于全局的选框不行。
+            brushType: 'polygon', // 指定选框的类型。还可以为 'rect', 'lineX', 'lineY'
+            range: [ // 如果是『全局选框』，则使用 range 来描述选框的范围
+                ...
+            ],
+            coordRange: [ // 如果是『坐标系选框』，则使用 coordRange 来指定选框的范围。
+                [119.72,34.85],[119.68,34.85],[119.5,34.84],[119.19,34.77]
+            ]
+        },
+        ... // 选框二、三、四、...
+    ]
+});
+```
+
+
+
 {{ target: action-select }}
 ### ${componentType}Select(Action)
 选中指定的${name}。

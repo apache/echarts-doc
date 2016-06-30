@@ -39,15 +39,32 @@
 
 ```javascript
 pieces: [
-    {min: 1500},
+    {min: 1500}, // 不指定 max，表示 max 为无限大（Infinity）。
     {min: 900, max: 1500},
     {min: 310, max: 1000},
     {min: 200, max: 300},
     {min: 10, max: 200, label: '10 到 200（自定义label）'},
-    {value: 123, label: '123（自定义特殊颜色）', color: 'grey'},
-    {max: 5}
+    {value: 123, label: '123（自定义特殊颜色）', color: 'grey'}, // 表示 value 等于 123 的情况。
+    {max: 5}     // 不指定 min，表示 min 为无限大（-Infinity）。
 ]
 ```
+
+或者，更精确得，可以使用 `lt`（小于，little than），`gt`（大于，greater than），`lte`（小于等于 lettle than or equals），`gte`（大于等于，greater than or equals）来表达边界：
+
+```javascript
+pieces: [
+    {gt: 1500},            // (1500, Infinity]
+    {gt: 900, lte: 1500},  // (900, 1500]
+    {gt: 310, lte: 1000},  // (310, 1000]
+    {gt: 200, lte: 300},   // (200, 300]
+    {gt: 10, lte: 200, label: '10 到 200（自定义label）'},       // (10, 200]
+    {value: 123, label: '123（自定义特殊颜色）', color: 'grey'},  // [123, 123]
+    {lt: 5}                 // (-Infinity, 5)
+]
+```
+
+注意，如果两个 piece 的区间重叠，则会自动进行去重。
+
 
 在每个 piece 中支持的 visualMap 属性有：
 
