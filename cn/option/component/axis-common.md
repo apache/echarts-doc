@@ -128,8 +128,8 @@ textStyle: {
     name="坐标轴分隔线",
     componentType=${componentType}
 ) }}
-##${prefix} lineStyle(Object)
 {{ /if }}
+##${prefix} lineStyle(Object)
 
 {{ use: partial-line-style(prefix='##' + ${prefix}, defaultColor="'#333'", defaultWidth=1, defaultType="'solid'", name="分隔线") }}
 
