@@ -35,6 +35,9 @@
 
 框选时，选中的条线会设置成这个『透明度』（从而可以达到高亮的效果）。
 
+## realtime(boolean) = true
+
+是否
 
 
 ## data(Array)
