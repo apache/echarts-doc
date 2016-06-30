@@ -55,17 +55,6 @@ option = {
 
 
 
-{{target: partial-visual-map-visual-type}}
-+ `symbol`: 图元的图形类别。
-+ `symbolSize`: 图元的大小。
-+ `color`: 图元的颜色。
-+ `colorAlpha`: 图元的颜色的透明度。
-+ `opacity`: 图元以及其附属物（如文字标签）的透明度。
-+ `colorLightness`: 颜色的明暗度，参见 [HSL](https://en.wikipedia.org/wiki/HSL_and_HSV)。
-+ `colorSaturation`: 颜色的饱和度，参见 [HSL](https://en.wikipedia.org/wiki/HSL_and_HSV)。
-+ `colorHue`: 颜色的色调，参见 [HSL](https://en.wikipedia.org/wiki/HSL_and_HSV)。
-
-
 
 
 
@@ -140,7 +129,7 @@ visualMap: [
 
 **✦ 视觉通道 -- 线性映射 ✦**
 
-`线性映射` 表示 series.data 中的每一个值（dataValue）会经过线性映射计算，从 `[visualMap.min, visualMap.max]` 映射到设定的 `[visualValue1, visualValue2]` 区间中的某一个视觉的值（下称 visualValue）。
+`线性映射` 表示 series.data 中的每一个值（dataValue）会经过线性映射计算，从 `[visualMap.min, visualMap.max]` 映射到设定的 `[visual value 1, visual value 2]` 区间中的某一个视觉的值（下称 visual value）。
 
 例如，我们设置了 `[visualMap.min, visualMap.max] 为 [0, 100]`，并且我们有 `series.data: [50, 10, 100]`。我们想将其映射到范围为 `[0.4, 1]` 的 `opacity` 上，从而达到用透明度表达数值大小的目的。那么 visualMap 组件会对 series.data 中的每一个 dataValue 做线性映射计算，得到一个 opacityValue。最终得到的 opacityValues 为 `[0.7, 0.44, 1]`。
 
@@ -155,7 +144,7 @@ visual 范围也可以反向，例如上例，可以设定 `opacity` 范围为 `
 
 + 当 `visualMap` 为 [visualMap-piecewise](~visualMap-piecewise) 且 未设置 [visualMap-piecewise.categories](~visualMap-piecewise.categories) 时。
 
-视觉通道的值（visualValue）：
+视觉通道的值（visual value）：
 
 + 视觉通道的值一般都以 `Array` 形式表示，例如：`color: ['#333', '#777']`。
 
@@ -168,9 +157,9 @@ visual 范围也可以反向，例如上例，可以设定 `opacity` 范围为 `
 + 对于 `图形类别（symbol）`：使用数据表示例如：`['circle', 'rect', 'diamond']`。与 `visualMap.min` 相等的值会映射到 `'circle'`，与 `visualMap.max` 相等的值会映射到 `'diamond'`。对于 中间的其他点，会根据他们和 `visualMap.min` 和 `visualMap.max` 的数值距离，映射到 `'circle'`, `'rect'`, `'diamond'` 中某个值上。
 
 
-visualValue 的取值范围：
+visual value 的取值范围：
 
-+ `透明度（opacity）`、`颜色透明度（colorAlpha）`、`颜色明暗度（colorLightness）`、`颜色饱和度（colorSaturation）`，`visualValue`
++ `透明度（opacity）`、`颜色透明度（colorAlpha）`、`颜色明暗度（colorLightness）`、`颜色饱和度（colorSaturation）`，`visual value`
 
     取值范围是 `[0, 1]`。
 
@@ -195,7 +184,7 @@ visualValue 的取值范围：
 
 如何设定为查表映射？当 `visualMap` 为 [visualMap-piecewise](~visualMap-piecewise) 且 设置了 [visualMap-piecewise.categories](~visualMap-piecewise.categories) 时，会进行查表映射。
 
-视觉通道的值（visualValue）：一般使用 `Object` 或 `Array` 来表示，例如：
+视觉通道的值（visual value）：一般使用 `Object` 或 `Array` 来表示，例如：
 
 ```javascript
 visualMap: {
@@ -205,15 +194,15 @@ visualMap: {
         'Demon Hunter', 'Blademaster', 'Death Knight', 'Warden', 'Paladin'
     ],
     ${rangeType}: {
-        // visualValue 可以配成 Object：
+        // visual value 可以配成 Object：
         color: {
             'Warden': 'red',
             'Demon Hunter': 'black',
             '': 'green' // 空字串，表示除了'Warden'、'Demon Hunter'外，都对应到 'green'。
         }
-        // visualValue 也可以只配一个单值，表示所有都映射到一个值，如：
+        // visual value 也可以只配一个单值，表示所有都映射到一个值，如：
         color: 'green',
-        // visualValue 也可以配成数组，这个数组须和 categories 数组等长，
+        // visual value 也可以配成数组，这个数组须和 categories 数组等长，
         // 每个数组项和 categories 数组项一一对应：
         color: ['red', 'black', 'green', 'yellow', 'white']
     }
@@ -224,15 +213,17 @@ visualMap: {
 
 
 
+
+
 {{target: partial-visual-map-merge}}
 
 **✦ 修改视觉编码 ✦**
 
-如果在图表被渲染后（即已经使用 `setOption` 设置了初始 `option` 之后），想修改visualMap中的各种 `视觉编码`，按照惯例，再次使用 `setOption` 即可。例如：
+如果在图表被渲染后（即已经使用 `setOption` 设置了初始 `option` 之后），想修改 ${componentMainType} 的各种 `视觉编码`，按照惯例，再次使用 `setOption` 即可。例如：
 
 ```javascript
 chart.setOption({
-    visualMap: {
+    ${componentMainType}: {
         inRange: {color: ['red', 'blue']}
     }
 });
@@ -240,21 +231,25 @@ chart.setOption({
 
 但请注意：
 
-+ visualMap option 中的这几个属性，`inRange`, `outOfRange`, `target`, `controller`，在 setOption 时不支持 merge。否则会带来过于复杂的 merge 逻辑。也就是说，`setOption` 时，一旦修改了以上几个属性中的一项，其他项也会被清空，而非保留当前状态。所以，设置 visual 值时，请一次性全部设置，而非只设置一部分。
++ ${componentMainType} option 中的这几个属性，`inRange`, `outOfRange`, `target`, `controller`，在 setOption 时不支持 merge。否则会带来过于复杂的 merge 逻辑。也就是说，`setOption` 时，一旦修改了以上几个属性中的一项，其他项也会被清空，而非保留当前状态。所以，设置 visual 值时，请一次性全部设置，而非只设置一部分。
 
 + **不推荐使用 `getOption -> 修改option -> setOption` 的方式：**
 
 ```javascript
 // 不推荐这样做（尽管也能达到和上面的例子相同的结果）：
 var option = chart.getOption(); // 获取所有option。
-option.visualMap.inRange.color = ['red', 'blue']; // 改动color（我想要改变 color）。
+option.${componentMainType}.inRange.color = ['red', 'blue']; // 改动color（我想要改变 color）。
 
 // 如下两处也要进行同步改动，否则可能达不到期望效果。
-option.visualMap.target.inRange.color = ['red', 'blue'];
-option.visualMap.controller.inRange.color = ['red', 'blue'];
+option.${componentMainType}.target.inRange.color = ['red', 'blue'];
+option.${componentMainType}.controller.inRange.color = ['red', 'blue'];
 
-chart.setOption(option); // option设置回visualMap
+chart.setOption(option); // option设置回 ${componentMainType}
 ```
+
+
+
+
 
 
 {{target: partial-visual-map-inRange-outOfRange}}
@@ -267,13 +262,23 @@ chart.setOption(option); // option设置回visualMap
 
 {{use: partial-visual-map-visual-type}}
 
+---
+
 {{use: partial-visual-map-range(
     rangeType='inRange',
     visualMapName=${visualMapName},
     galleryEditorPath=${galleryEditorPath}
 )}}
 
-{{use: partial-visual-map-merge}}
+---
+
+{{use: partial-visual-map-merge(
+    componentMainType='visualMap'
+)}}
+
+**注意**，inRange 没有指定，则会默认会设置 color: `['#f6efa6', '#d88273', '#bf444c']`，如果你不想要这个color，可以
+`inRange: {color: null}` 来去除。
+
 
 ##${prefix} outOfRange(Object)
 
@@ -283,13 +288,19 @@ chart.setOption(option); // option设置回visualMap
 
 {{use: partial-visual-map-visual-type}}
 
+---
+
 {{use: partial-visual-map-range(
     rangeType='outOfRange',
     visualMapName=${visualMapName},
     galleryEditorPath=${galleryEditorPath}
 )}}
 
-{{use: partial-visual-map-merge}}
+---
+
+{{use: partial-visual-map-merge(
+    componentMainType='visualMap'
+)}}
 
 
 

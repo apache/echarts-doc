@@ -13,6 +13,7 @@
 {{import: component-visual-map}}
 {{import: component-tooltip}}
 {{import: component-toolbox}}
+{{import: component-brush}}
 {{import: component-geo}}
 {{import: component-parallel}}
 {{import: component-parallel-axis}}

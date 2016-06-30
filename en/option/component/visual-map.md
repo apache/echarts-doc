@@ -54,17 +54,6 @@ The dimension of [series.data](~series.data) can be specified by [visualMap.dime
 
 
 
-{{target: partial-visual-map-visual-type}}
-+ `symbol`: The type (or shape) of graphical elements.
-+ `symbolSize`: The size of a graphical elements.
-+ `color`: The color of a graphical elements.
-+ `colorAlpha`: The transparency of a single `color`.
-+ `opacity`: The transparency of both a graphical element and its attachments (like label).
-+ `colorLightness`: The lightness in [HSL](https://en.wikipedia.org/wiki/HSL_and_HSV) of a `color`.
-+ `colorSaturation`: The saturation in [HSL](https://en.wikipedia.org/wiki/HSL_and_HSV) of a `color`.
-+ `colorHue`: The hue in [HSL](https://en.wikipedia.org/wiki/HSL_and_HSV) of a `color`.
-
-
 
 
 
@@ -150,7 +139,7 @@ visualMap: [
 
 **✦ Linear Mapping to visual channel ✦**
 
-`Linear Mapping` means that linear calculation will be performed on each dataValue (value of series.data), mapping them from the domain of `[visaulMap.min, visualMap.max]` to a given range of `[visualValue1, visualValue2]` and obtaining a final value (say visualValue) for visual channel rendering.
+`Linear Mapping` means that linear calculation will be performed on each dataValue (value of series.data), mapping them from the domain of `[visaulMap.min, visualMap.max]` to a given range of `[visual value 1, visual value 2]` and obtaining a final value (say visual value) for visual channel rendering.
 
 For instance, `[visualMap.min, visualMap.max]` is set to be `[0, 100]`, and there is series.data: `[50, 10, 100]`. We intend to map them to an `opacity` range `[0.4, 1]`, by which the size of value can be demostrated by the transparency of graphical elements. visualMap component will then linear calculate them and get opacity values `[0.7, 0.44, 1]`, cooresponding to each dataValue.
 
@@ -166,22 +155,22 @@ How to configure visualMap component to do Linear Mapping?
 + When use [visualMap-piecewise](~visualMap-piecewise) and [visualMap-piecewise.categories](~visualMap-piecewise.categories) is not used.
 
 
-About the value of visual channel (visualValue):
+About the value of visual channel (visual value):
 
-+ Basically `Array` is used to express the range of visualValue, e.g., `color: ['#333', '#777']`.
++ Basically `Array` is used to express the range of visual value, e.g., `color: ['#333', '#777']`.
 
 + Single `number` or single `string` can also be used, which will be converted to an `Array` by visualMap component. e.g.:  `opacity: 0.4` will be converted to `opacity: [0.4, 0.4]`, `color: '#333'` will be converted to `color: ['#333', '#333']`.
 
-+ For visual channel `symbolSize`, `opacity`, `colorAlpha`, `colorLightness`, `colorSaturation`, `colorHue`, the range of visualValue is always in the form of: `[visualValue of visualMap.min, visualValue of visualMap.max]`. For example, `colorLightness: [0.8, 0.2]` means that the dataValue in series.data that equals to `visualMap.min` (if any) will be mapped to lightness `0.8`, and the dataValue that equals to `visualMap.max` (if any) will be mapped to lightness `0.2`, and other dataValues will be mapped by the linear calculateion based on the domain of `[visualMap.min, visualMap.max]` and the range of `[0.8, 0.2]`.
++ For visual channel `symbolSize`, `opacity`, `colorAlpha`, `colorLightness`, `colorSaturation`, `colorHue`, the range of visual value is always in the form of: `[visual value of visualMap.min, visual value of visualMap.max]`. For example, `colorLightness: [0.8, 0.2]` means that the dataValue in series.data that equals to `visualMap.min` (if any) will be mapped to lightness `0.8`, and the dataValue that equals to `visualMap.max` (if any) will be mapped to lightness `0.2`, and other dataValues will be mapped by the linear calculateion based on the domain of `[visualMap.min, visualMap.max]` and the range of `[0.8, 0.2]`.
 
 + For visual channel `color`, array is used, like: `['#333', '#78ab23', 'blue']`, which means a color ribbon is formed based on the three color stops, and dataValues will be mapped to the ribbon. Specifically, the dataValue that equals to `visualMap.min` will be mapped onto `'#333'`, the dataValue that equals to `visualMap.max` will be mapped onto `'blue'`, and other dataValues will be piecewisely interpolated to get the final color.
 
 + For visual channel `symbol`, array is used, like: `['circle', 'rect', 'diamond']`, where the dataValue that equals to `visualMap.min` will be mapped onto `'circle'`, the dataValue that equals to `visualMap.max` will be mapped onto `'diamond'`, and other dataValues will be caculated based on the numerical distance to `visualMax.min` and to `visualMap.max`, and mapped onto one of `'circle'`, `'rect'`, `'diamond'`.
 
 
-About the possible value range of visualValue:
+About the possible value range of visual value:
 
-+ `opacity`、`colorAlpha`、`colorLightness`、`colorSaturation`，`visualValue`
++ `opacity`、`colorAlpha`、`colorLightness`、`colorSaturation`，`visual value`
 
     possible value range is `[0, 1]`。
 
@@ -203,7 +192,7 @@ About the possible value range of visualValue:
 
 **✦ Table Mapping to visual channel ✦**
 
-`Table Mapping` could be used when dataValue (values in series.data, specified by [visualMap.dimension](~visualMap.dimension)) is enumerable and we intend to map them to visualValue by looking up a given table.
+`Table Mapping` could be used when dataValue (values in series.data, specified by [visualMap.dimension](~visualMap.dimension)) is enumerable and we intend to map them to visual value by looking up a given table.
 
 For instance, in a [visualMap-piecewise](~visualMap-piecewise) component, [visualMap-piecewise.categories](~visualMap-piecewise.categories) is set to `['Demon Hunter', 'Blademaster', 'Death Knight', 'Warden', 'Paladin']`. And there is series.data: `['Demon Hunter', 'Death Knight', 'Warden', 'Paladin']`. Then we can establish the lookup rule for color: `color: {'Warden': 'red', 'Demon Hunter': 'black'}`, by which the `visualMap` component will map `dataValue` to `color`.
 
@@ -211,7 +200,7 @@ How to configure `visualMap` component to do `Table Mapping`?
 
 When use [visualMap-piecewise](~visualMap-piecewise) and [visualMap-piecewise.categories](~visualMap-piecewise.categories)is set.
 
-About the value of visual channel (visualValue):
+About the value of visual channel (visual value):
 
 Generally `Object` or `Array` is used, for instance:
 
@@ -223,17 +212,17 @@ visualMap: {
         'Demon Hunter', 'Blademaster', 'Death Knight', 'Warden', 'Paladin'
     ],
     ${rangeType}: {
-        // visualValue can be an Object：
+        // visual value can be an Object：
         color: {
             'Warden': 'red',
             'Demon Hunter': 'black',
             '': 'green' // Blank string means that except 'Warden' and 'Demon Hunter',
                         // all other dataValues should be mapped to 'green'.
         }
-        // visualValue can also be a single value,
+        // visual value can also be a single value,
         // means that all dataValues should be mapped to the value.
         color: 'green',
-        // visualValue can also be a array, with the same length
+        // visual value can also be a array, with the same length
         // as the array of categories and one-one mapping onto it.
         color: ['red', 'black', 'green', 'yellow', 'white']
     }
@@ -241,6 +230,10 @@ visualMap: {
 ```
 
 [Example](${galleryEditorPath}doc-example/scatter-visualMap-categories&edit=1&reset=1)
+
+
+
+
 
 
 
@@ -253,7 +246,7 @@ If you want to modify the configurations of visual encoding after chart been ren
 
 ```javascript
 chart.setOption({
-    visualMap: {
+    ${componentMainType}: {
         inRange: {color: ['red', 'blue']}
     }
 });
@@ -261,7 +254,7 @@ chart.setOption({
 
 Notice:
 
-+ These visualMap properties (i.e. `inRange`, `outOfRange`, `target`, `controller`) do not support "merge", that is, anyone among them is modified when use `setOption` again, all of the original values of them will not be kept but erased. The "merge" brings complication in implemnentation and understanding, whereas "erase all" normalize the practise: once you want to modify some visualValues, you should pass all of them to `setOption`, no matter they are to be changed.
++ These ${componentMainType} properties (i.e. `inRange`, `outOfRange`, `target`, `controller`) do not support "merge", that is, anyone among them is modified when use `setOption` again, all of the original values of them will not be kept but erased. The "merge" brings complication in implemnentation and understanding, whereas "erase all" normalize the practise: once you want to modify some visual values, you should pass all of them to `setOption`, no matter they are to be changed.
 
 + This way, `getOption() -> modify the gotten option -> setOption(modified option)`, is strongly **not recommended**, for instance:
 
@@ -269,16 +262,19 @@ Notice:
 // Not recommended approach, regardless of its correctness:
 
 var option = chart.getOption(); // Get the entire option.
-option.visualMap.inRange.color = ['red', 'blue']; // modify color, which is what you want.
+option.${componentMainType}.inRange.color = ['red', 'blue']; // modify color, which is what you want.
 
 // You have to modify those two properties, otherwise you will not get what you want.
-option.visualMap.target.inRange.color = ['red', 'blue'];
-option.visualMap.controller.inRange.color = ['red', 'blue'];
+option.${componentMainType}.target.inRange.color = ['red', 'blue'];
+option.${componentMainType}.controller.inRange.color = ['red', 'blue'];
 
 chart.setOption(option); // set the modified option back.
 // You should not use this approach, but use the
 // approach demostrated before this example.
 ```
+
+
+
 
 
 
@@ -304,7 +300,12 @@ Possiable visual channels includes:
 
 ---
 
-{{use: partial-visual-map-merge}}
+{{use: partial-visual-map-merge(
+    componentMainType='visualMap'
+)}}
+
+**Notice:** There is default color `['#f6efa6', '#d88273', '#bf444c']` in `inRange` if you not set `inRange`. If you dont want it, set `inRange: {color: null}` to disable it.
+
 
 ##${prefix} outOfRange(Object)
 
@@ -322,7 +323,9 @@ Possiable visual channels includes:
 
 ---
 
-{{use: partial-visual-map-merge}}
+{{use: partial-visual-map-merge(
+    componentMainType='visualMap'
+)}}
 
 
 
