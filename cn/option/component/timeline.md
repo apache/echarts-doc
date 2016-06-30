@@ -220,18 +220,18 @@ myChart.setOption(
 
 + `'left'`：
     贴左边界放置。
-    当 [timline.orient](~timeline.orient) 为 `'horizontal'` 时有效。
+    当 [timline.orient](~timeline.orient) 为 `'vertical'` 时有效。
 
-+ `'right'`：当 [timline.orient](~timeline.orient) 为 `'horizontal'` 时有效。
++ `'right'`：当 [timline.orient](~timeline.orient) 为 `'vertical'` 时有效。
     贴右边界放置。
 
 + `'top'`：
     贴上边界放置。
-    当 [timline.orient](~timeline.orient) 为 `'vertical'` 时有效。
+    当 [timline.orient](~timeline.orient) 为 `'horizontal'` 时有效。
 
 + `'bottom'`：
     贴下边界放置。
-    当 [timline.orient](~timeline.orient) 为 `'vertical'` 时有效。
+    当 [timline.orient](~timeline.orient) 为 `'horizontal'` 时有效。
 
 + `number`：
     指定某个数值时，表示 `label` 和轴的距离。为 `0` 时则和坐标轴重合，可以为正负值，决定 `label` 在坐标轴的哪一边。
