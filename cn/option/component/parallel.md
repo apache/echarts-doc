@@ -27,6 +27,33 @@
 
 + `'vertical'`：竖直排布各个坐标轴。
 
+## axisExpandable(boolean) = false
+
+{{use: partial-parallel-high-dim (
+    galleryViewPath=${galleryViewPath}
+)}}
+
+此变量设为 `true` 则开启这个功能，即点击可以展开折叠 axis。
+
+## axisExpandCenter(number) = null
+
+初始时，以哪个轴为中心展开，这里给出轴的 index。没有默认值，需要手动指定。
+
+参见 [parallel.axisExpandable](parallel.axisExpandable)
+
+## axisExpandCount(number) = 10
+
+初始时，有多少个轴会处于展开状态。建议根据你的维度个数而手动指定。
+
+参见 [parallel.axisExpandCenter](parallel.axisExpandCenter)
+参见 [parallel.axisExpandable](parallel.axisExpandable)
+
+## axisExpandWidth(number) = 50
+
+在展开状态，轴的间距是多少，单位为像素。
+
+参见 [parallel.axisExpandable](parallel.axisExpandable)
+
 
 ## parallelAxisDefault(Object)
 

@@ -48,6 +48,12 @@ myChart.setOption({
 
 只有一个平行坐标系时可不用设置，自动取默认值 `0`。
 
+## realtime(boolean) = true
+
+是否坐标轴刷选的时候，实时刷新视图。如果设为 `false`，则在刷选动作结束时候，才刷新视图。
+
+大数据量时，建议设置成 `false`，从而避免卡顿。
+
 
 ## areaSelectStyle(Object)
 

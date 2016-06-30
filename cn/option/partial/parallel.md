@@ -1,6 +1,10 @@
 {{target: partial-parallel-introduce}}
 
-**平行坐标系介绍**
+<br>
+
+---
+
+**✦ 平行坐标系介绍 ✦**
 
 [平行坐标系（Parallel Coordinates）](https://en.wikipedia.org/wiki/Parallel_coordinates) 是一种常用的可视化高维数据的图表。
 
@@ -10,9 +14,11 @@
 
 ~[600x400](${galleryViewPath}doc-example/parallel-all&edit=1&reset=1)
 
+<br>
 
+---
 
-**配置方式概要**
+**✦ 配置方式概要 ✦**
 
 『平行坐标系』的 `option` 基本配置如下例：
 
@@ -96,11 +102,26 @@ option = {
 
     其中有 [series-parallel.parallelIndex](~series-parallel.parallelIndex) 属性，指定使用哪个『坐标系』。默认使用第一个『坐标系』。
 
-**配置注意和最佳实践**
+<br>
+
+---
+
+**✦ 配置注意和最佳实践 ✦**
 
 {{use: partial-parallel-axis-default}}
 
+**如果数据量很大并且发生卡顿**
 
+建议把 [series-parallel.lineStyle.normal.width](~series-parallel.lineStyle.normal.width) 设为 `0.5`，
+可能显著改善性能。
+
+<br>
+
+---
+
+**✦ 高维数据的显示 ✦**
+
+{{use: partial-parallel-high-dim (galleryViewPath=${galleryViewPath})}}
 
 
 
@@ -128,4 +149,15 @@ option = {
 {{target: partial-parallel-axis-default}}
 
 配置多个 [parallelAxis](~parallelAxis) 时，有些值一样的属性，如果书写多遍则比较繁琐，那么可以放置在 [parallel.parallelAxisDefault](~parallel.parallelAxisDefault) 里。在坐标轴初始化前，`parallelAxisDefault` 里的配置项，会分别融合进 [parallelAxis](~parallelAxis)，形成最终的坐标轴的配置。
+
+
+
+{{target: partial-parallel-high-dim}}
+
+维度比较多时，比如有 50+ 的维度，那么就会有 50+ 个轴。那么可能会页面显示不下。
+
+可以通过 [parallel.axisExpandable](~parallel.axisExpandable) 来改善显示效果，如下例子：
+
+~[600x460](${galleryViewPath}map-parallel-prices&edit=1&reset=1)
+
 
