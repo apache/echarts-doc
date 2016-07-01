@@ -381,7 +381,7 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 {{ use: partial-treemap-visual-detial }}
 {{use: partial-treemap-prop-location-desc(name="visualDimension")}}
 
-
+{{ if: ${prefix} !== '#' }}
 #${prefix} color(Array)
 
 表示同一层级的节点的 颜色 选取列表。默认为空时，选取系统color列表。
@@ -389,10 +389,11 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 {{ use: partial-treemap-visual-detial }}
 {{use: partial-treemap-prop-location-desc(name="color")}}
 
-
+{{ /if }}
 #${prefix} colorAlpha(Array) = null
 
-表示同一层级的节点的 颜色透明度 选取范围。数值范围 0 ~ 1。
+{{ if: ${prefix} !== '#' }}表示同一层级的节点的{{ else }}本系列默认的{{ /if }} 颜色透明度 选取范围。数值范围 0 ~ 1。
+
 
 {{ use: partial-treemap-visual-detial }}
 {{use: partial-treemap-prop-location-desc(name="colorAlpha")}}
@@ -400,7 +401,7 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 #${prefix} colorSaturation(number) = null
 
-表示同一层级的节点的 颜色饱和度 选取范围。数值范围 0 ~ 1。
+{{ if: ${prefix} !== '#' }}表示同一层级的节点的{{ else }}本系列默认的{{ /if }} 颜色饱和度 选取范围。数值范围 0 ~ 1。
 
 {{ use: partial-treemap-visual-detial }}
 {{use: partial-treemap-prop-location-desc(name="colorSaturation")}}
@@ -502,8 +503,10 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 <br>
 > 注：treemap中 `${name}` 属性可能在多处地方存在：
 
+{{ if: ${name} !== 'color' }}
 > * 可以存在于 [sereis-treemap](~series-treemap) 根下，表示本系列全局的统一设置。
 
+{{ /if }}
 > * 可以存在于 [series-treemap.levels](~series-treemap.levels) 的每个数组元素中，表示树每个层级的统一设置。
 
 > * 存在于 [series-treemap.data](~series-treemap.data) 的每个节点中，表示每个节点的特定设置。
