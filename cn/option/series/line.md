@@ -172,6 +172,7 @@
 {{use: partial-marker(
     prefix="#",
     seriesType="line",
+    galleryEditorPath=${galleryEditorPath},
     hasCoord=true,
     hasType=true
 )}}

@@ -163,6 +163,7 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 
 {{use: partial-marker(
     prefix="#",
+    galleryEditorPath=${galleryEditorPath},
     seriesType="lines"
 )}}
 

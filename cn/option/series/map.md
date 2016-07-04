@@ -82,6 +82,7 @@
 {{use: partial-marker(
     prefix="#",
     seriesType="map",
+    galleryEditorPath=${galleryEditorPath},
     hasCoord=true
 )}}
 

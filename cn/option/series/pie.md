@@ -120,6 +120,7 @@
 
 {{use: partial-marker(
     prefix="#",
+    galleryEditorPath=${galleryEditorPath},
     seriesType="pie"
 )}}
 

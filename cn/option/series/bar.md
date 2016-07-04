@@ -99,6 +99,7 @@
 {{use: partial-marker(
     prefix="#",
     seriesType="bar",
+    galleryEditorPath=${galleryEditorPath},
     hasCoord=true,
     hasType=true
 )}}

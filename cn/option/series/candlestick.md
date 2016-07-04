@@ -104,6 +104,7 @@
 {{use: partial-marker(
     prefix="#",
     seriesType="candlestick",
+    galleryEditorPath=${galleryEditorPath},
     hasCoord=true,
     hasType=true
 )}}
