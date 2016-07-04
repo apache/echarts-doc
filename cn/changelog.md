@@ -1,3 +1,14 @@
+## v3.2.1
+<div class="time">2016-07-04</div>
+
++ [^] 修复 `brushAction` 文件名大小写错误导致 linux 和 windows 环境下无法正确引用模块的 bug。
+
++ [^] 修复散点图 `large` 为 `true` 时可能导致圆形绘制错误的问题。
+
++ [^] 移除默认柱状图边框样式。
+
++ [^] dataZoom 对 xAxisIndex 的处理更鲁棒。
+
 ## v3.2.0
 <div class="time">2016-06-30</div>
 
@@ -19,9 +30,9 @@
 
     + [+] 新增 `polyline` 属性，支持显示多段的轨迹路线。见示例 [北京公交路线图](http://echarts.baidu.com/gallery/editor.html?c=lines-bmap-bus)，以及 [带有特效的北京公交路线图](http://echarts.baidu.com/gallery/editor.html?c=lines-bmap-effect)
 
-    + [+] 新增 [large](http://echarts.baidu.com/gallery/editor.html?c=series-lines.large) 和 [largeThreshold](http://echarts.baidu.com/gallery/editor.html?c=series-lines.largeThreshold) 配置项支持大规模线图的绘制。见示例 [65k 条飞机航线的可视化](http://echarts.baidu.com/gallery/editor.html?c=lines-airline)
+    + [+] 新增 [large](http://echarts.baidu.com/option.html#series-lines.large) 和 [largeThreshold](http://echarts.baidu.com/option.html#series-lines.largeThreshold) 配置项支持大规模线图的绘制。见示例 [65k 条飞机航线的可视化](http://echarts.baidu.com/gallery/editor.html?c=lines-airline)
 
-    + [+] [effect](http://echarts.baidu.com/gallery/editor.html?c=series-lines.effect) 新增 [constantSpeed](http://echarts.baidu.com/gallery/editor.html?c=series-lines.effect.constantSpeed) 和 [loop](http://echarts.baidu.com/gallery/editor.html?c=series-lines.effect.loop)
+    + [+] [effect](http://echarts.baidu.com/option.html#series-lines.effect) 新增 [constantSpeed](http://echarts.baidu.com/option.html#series-lines.effect.constantSpeed) 和 [loop](http://echarts.baidu.com/option.html#series-lines.effect.loop)
 
     + [^] 数据格式变动，从原先的 `data: [ [{ coord: [lng, lat] }, { coord: [lng, lat]}] ]` 改为 `data: [ { coords: [[lng, lat], [lng, lat]] } ]`。统一在一个属性里存放坐标点是为了更好的支持 `polyline` 为 true 的时候配置多个坐标点。原先的方式也兼容，但是不建议继续使用。
 
@@ -103,6 +114,8 @@
 + [^] 修复 splitArea 会覆盖 splitLine 的问题。
 
 + [^] 修复雷达图不能修改线条颜色的 bug。见 [#3441](https://github.com/ecomfe/echarts/issues/3441)
+
++ [^] 修复数据刷新可能会导致事件绑定的内存泄露。见 [#3500](https://github.com/ecomfe/echarts/issues/3500)
 
 + [^] ZRender 性能优化，重绘性能为原先的 2x ~ 3x。
 
