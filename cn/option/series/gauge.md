@@ -168,6 +168,7 @@ formatter: function (value) {
 
 {{use: partial-marker(
     prefix="#",
+    galleryEditorPath=${galleryEditorPath},
     seriesType="gauge"
 )}}
 

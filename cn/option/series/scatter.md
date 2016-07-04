@@ -108,6 +108,7 @@
 {{use: partial-marker(
     prefix="#",
     seriesType="scatter",
+    galleryEditorPath=${galleryEditorPath},
     hasCoord=true,
     hasType=true
 )}}

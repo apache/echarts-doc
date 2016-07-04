@@ -113,6 +113,7 @@
 
 {{use: partial-marker(
     prefix="#",
+    galleryEditorPath=${galleryEditorPath},
     seriesType="funnel"
 )}}
 

@@ -263,6 +263,7 @@ links: [{
 {{use: partial-marker(
     prefix="#",
     seriesType="graph",
+    galleryEditorPath=${galleryEditorPath},
     hasType=true,
     hasCoord=true
 )}}

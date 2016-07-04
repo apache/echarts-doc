@@ -103,6 +103,7 @@ ECharts 并不内置对原始数据的处理，输入给 `boxplot` 的数据须�
 {{use: partial-marker(
     prefix="#",
     seriesType="boxplot",
+    galleryEditorPath=${galleryEditorPath},
     hasCoord=true,
     hasType=true
 )}}
