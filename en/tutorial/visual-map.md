@@ -1,36 +1,35 @@
 
 {{target: visual-map}}
 
-# Data visual map
+# Visual Map of Data
 
-Data visualization is the mapping process from  **data** to **visual element** (this process can also be called visual code, visual element can also be called visual tunnel).
+Data visualization is a procedure of mapping data into visual elements. This procedure can also be called visual coding, and visual elements can also be called visual tunnels.
 
-Each chart in ECharts has this mapping process in itself, such as line chart maps data to『line』and bar chart maps data to『length』.Some more complicated charts, such as `graph`, `event river map` and `treemap` all does inner mapping.
+Every type of charts in ECharts has this built-in mapping procedure. For example, line charts map data into *lines*, bar charts map data into *length*. Some more complicated charts, like `graph`, `themeRiver`, and `treemap` have their own built-in mapping.
 
-Besides, ECharts also uses [viusalMap component](option.html#visualMap) to provide universal visual mapping. Visual elements available in `visualMap` component are: <br>
-`graphic category (symbol)`,`graphic size (symbolSize)`<br>
-`color (color)`,`color transparency (colorAlpha)`,<br>
-`color lightness (colorLightness)`,`color saturation (colorSaturation)` and `hue (colorHue)`
+Besides, ECharts provides [viusalMap component](option.html#visualMap) for general visual mapping. Visual elements allowed in `visualMap` component are:<br>
+`symbol`, `symbolSize`<br>
+`color`, `opacity`, `colorAlpha`, <br>
+`colorLightness`, `colorSaturation`, `colorHue`
 
-Below is a brief introduction of how to use `visualMap` component.
-
+Next, we are going to introduce how to use `visualMap` component.
 
 <br>
-<h2>Data and dimension</h2>
+<h2>Data and Dimension</h2>
 
-Data in ECharts are usually stored in[series.data](option.html#series.data). Specific format of data may differ based on different chart type, such as『line chart』,『tree』,『chart』 and so on. But they all something in common: they are all collection of 『data item (dataItem) 』. Every data item has『data value (value) 』and other information (if needed). Every data value can be a single value (one-dimensional) or an array (multi-dimensional).
+Data are usually stored in [series.data](option.html#series.data) in ECharts. Depending on chart types, like list, tree, graph, and so on, the form of data may vary somehow. But they have one common feature, that they are a collection of `dataItem`s. Every data item contains data value, and other information if needed. Every data value can be a single value (one dimension) or an array (multiple dimensions).
 
-For example, [series.data](option.html#series.data) is the most common format ,『line chart』, namely a common array:
+For example, [series.data](option.html#series.data) is the most common form, which is a `list`, a common array:
 
 ```javascript
 series: {
     data: [
-        {       // every item here is a data item (dataItem) 
-            value: 2323, // this is data value (value)  of data item
+        {       // every item here is a dataItem
+            value: 2323, // this is data value
             itemStyle: {...}
         },
-        1212,   // it can also be value of dataItem, which is more common.
-        2323,   // each value is『one-dimensional』
+        1212,   // it can also be a value of dataItem, which is a more common case
+        2323,   // every data value here is one dimension
         4343,
         3434
     ]
@@ -40,20 +39,21 @@ series: {
 ```javascript
 series: {
     data: [
-        {                        // every item here is a data item (dataItem) 
-            value: [3434, 129,  'San Marino'], // this is data value (value)  of data item
+        {                        // every item here is a dataItem
+            value: [3434, 129,  'San Marino'], // this is data value
             itemStyle: {...}
         },
-        [1212, 5454, 'Vatican'],   //  it can also be value of dataItem, which is more common.
-        [2323, 3223, 'Nauru'],     // each value is『three-dimensional』, each column is a dimension.
-        [4343, 23,   'Tuvalu']    // if it is『bubble chart』, mapping the first dimension to x axis is very common,
-                                 // map the second dimension to y axis,
-                                 // map the third dimension to bubble radius (symbolSize) 
+        [1212, 5454, 'Vatican'],   // it can also be a value of dataItem, which is a more common case
+        [2323, 3223, 'Nauru'],     // every data value here is three dimension
+        [4343, 23,   'Tuvalu']    // If is scatter chart, usually map the first dimension to x axis,
+                                 // the second dimension to y axis,
+                                 // and the third dimension to symbolSize
     ]
 }
 ```
 
-In chart, first two dimensions of value are always mapped by default, such as map the first dimension to x axis and map the second dimension to y axis. If you want to display more dimensions, can use `visualMap` to help. The most common situation is [bubble chart (scatter)](option.html#scatter) using radius to display the third dimension.
+Usually the first one or two dimensions are used for mapping. For example, map the first dimension to x axis, and the second dimension to y axis. If you want to represent more dimensions, `visualMap` is what you need. Most likely, [scatter charts](option.html#scatter) use radius to represent the third dimension.
+
 
 
 
@@ -61,23 +61,23 @@ In chart, first two dimensions of value are always mapped by default, such as ma
 
 
 <br>
-<h2>visualMap component</h2>
+<h2>visualMap Component</h2>
 
-visualMap component defines map『which dimension』of data to『what visual element』.
+visualMap component defines the mapping from *which dimension of data* to *what visual elements*.
 
-Now there are two types of visualMap component below, which can be distinguished through [visualMap.type](option.html#visualMap.type).
+The following two types of visualMap components are supported, identified with [visualMap.type](option.html#visualMap.type).
 
-Here is the example of definition structure:
+Its structure is defined as:
 
 ```javascript
 option = {
-    visualMap: [ // capable of defining multiple visualMap component at the same time.
-        { // first visualMap component
-            type: 'continuous', // define as continuous viusalMap
+    visualMap: [ // can define multiple visualMap components at the same time
+        { // the first visualMap component
+            type: 'continuous', // defined as continuous viusalMap
             ...
         },
-        { // second visualMap component
-            type: 'piecewise', // define as segmented visualMap
+        { // the second visualMap component
+            type: 'piecewise', // defined as discrete visualMap
             ...
         }
     ],
@@ -86,27 +86,31 @@ option = {
 ```
 
 <br>
-[Continuous (visualMapContinuous)](option.html#visualMap-continuous): 
+[visualMapContinuous](option.html#visualMap-continuous)：
 ~[600x400](${galleryViewPath}doc-example/map-visualMap-continuous&edit=1&reset=1)
 
-[Segmented (visualMapPiecewise)](option.html#visualMap-piecewise): 
+[visualMapPiecewise](option.html#visualMap-piecewise)：
 ~[600x400](${galleryViewPath}doc-example/scatter-visualMap-piecewise&edit=1&reset=1)
 
 <br>
-There are three pattern of segmented visual map component (visualMapPiecewise) :
 
-+ Average segment of continuous data : based on [visualMap-piecewise.splitNumber](option.html#visualMap-piecewise.splitNumber) to segment into several pieces automatically.
-+ Customizedsegment of continuous data: based on [visualMap-piecewise.pieces](option.html#visualMap-piecewise.pieces) to define range of each piece. 
-+ Discrete data (category data) : category is defined in [visualMap-piecewise.categories](option.html#visualMap-piecewise.categories).
+Piecewise visual map component has three types:
+
+
+分段型视觉映射组件（visualMapPiecewise），有三种模式：
+
++ Equal division of continuous data: divide equally based on [visualMap-piecewise.splitNumber](option.html#visualMap-piecewise.splitNumber);
++ User-defined division of continuous data: divide with range in [visualMap-piecewise.pieces](option.html#visualMap-piecewise.pieces);
++ Discrete data (data in category type): divide with [visualMap-piecewise.categories](option.html#visualMap-piecewise.categories).
 
 
 <br>
-**configuration of visual mapping method**
+**Configuration of visualMap mapping method**
 
-Since it is the map from『data』to『visual element』,so in`visualMap` data of『which dimension』can be assigned (see [visualMap.dimension](~visualMap.dimension)) can map to which『visual element』 (please see in [visualMap.inRange](option.html#visualMap.inRange) and [visualMap.outOfRange](option.html#visualMap.outOfRange)).
+As we have introduced above, `visualMap` maps a certain dimension to a certain visual element, we can configure which dimension of the data (see in [visualMap.dimension](~visualMap.dimension)) to be mapped to which visual elements (see in [visualMap.inRange](option.html#visualMap.inRange) and [visualMap.outOfRange](option.html#visualMap.outOfRange)).
 
 
-Example 1: 
+Example A:
 
 ```javascript
 option = {
@@ -115,19 +119,17 @@ option = {
             type: 'piecewise'
             min: 0,
             max: 5000,
-            dimension: 3,       // the fourth dimension ( value[3])  of series.data is mapped
-            seriesIndex: 4,     // map the fourth series.
-            inRange: {          // visual configuration within selected range
-                color: ['blue', '#121122', 'red'], // define color list of graphic color mapping,
-                                                    // map the minimum data value to 'blue', 
-                                                    // map the maximum data value to'red', 
-                                                    // the rest will be linear calculated automatically.
-                symbolSize: [30, 100]               // define map range of graphic size,
-                                                    // map the minimum data value to 30, 
-                                                    // map the maximum data value to 100, 
-                                                    //  the rest will be linear calculated automatically.
+            dimension: 3,       // the fourth dimension of series.data, or value[3], is mapped
+            seriesIndex: 4,     // map with the fourth series
+            inRange: {          // visual configuration items in selected range
+                color: ['blue', '#121122', 'red'], // defines color list of mapping
+                                                   // The largest value will be mapped to 'red',
+                                                   // and others will be interpolated
+                symbolSize: [30, 100]              // the smallest value will be mapped to size of 30,
+                                                   // the largest to 100,
+                                                   // and others will be interpolated
             },
-            outOfRange: {       // visual configuration outside selected range
+            outOfRange: {       // visual configuration items out of selected range
                 symbolSize: [30, 100]
             }
         },
@@ -136,15 +138,17 @@ option = {
 };
 ```
 
-Example 2: 
+Example B:
+
 ```javascript
 option = {
     visualMap: [
         {
             ...,
-            inRange: {          // visual configuration within selected range
-                colorLightness: [0.2, 1], // map to transparency, which manages intensity of the original color.
-                                          // Original color may be chosen from global swatch, which has nothing to do with visualMap component.
+            inRange: {          // visual configuration items in selected range
+                colorLightness: [0.2, 1], // map to lightness, which will process lightness based on original color
+                                          // original color may be selected from global color palette,
+                                          // which is not concerned by visualMap component
                 symbolSize: [30, 100]
             },
             ...
@@ -154,4 +158,4 @@ option = {
 };
 ```
 
-For more details, please see[visualMap.inRange](option.html#visualMap.inRange) and[visualMap.outOfRange](option.html#visualMap.outOfRange).
+For more information, please refer to [visualMap.inRange](option.html#visualMap.inRange) and [visualMap.outOfRange](option.html#visualMap.outOfRange).
