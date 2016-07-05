@@ -1,62 +1,61 @@
 {{ target: styling }}
-# Customized chart format
+# Customerized Chart Styles
 
-ECharts provides rich custom configuration options and you can set data graphic format from three layers, namely, global, series and data.Next we are going to learn how to use ECharts to realize the following Nightingale chart:
+ECharts provides a rich amount of configurable items, which can be set in global, series, and data three different levels. Next, let's see an example of how to use ECharts to implement the following Nightingale rose chart:
 
 ~[500x400](${galleryViewPath}doc-example/tutorial-styling-step5&edit=1&reset=1)
 
-## Draw Nightingale chart
+## Drawing Nightingale Rose Chart
 
-[In the previous chapter](~getting-started) we learnt to draw a simple bar chart, this time we learn the pie chart. Pie chart mainly displays percentage of different categories data to the total sum through sector arc, its format is easier than bar chart with one-dimensional data value and no category. Since it is not in right angle coordinate, so there is no need for `xAxis` and `yAxis`.
+[Getting started tutorial](~getting-started) introduced how to make a simple bar chart. This time, we are going to make a pie chart. Pie charts use arc length of fans to represent ratio of a certain series in total share. It's data format is simpler than bar chart, because it only contains one dimension without category. Besides, since it's not in rectangular system, it doesn't need `xAxis`，`yAxis` either.
 
 ```js
 myChart.setOption({
     series : [
         {
-            name: 'access source ',
+            name: 'Reference Page',
             type: 'pie',
             radius: '55%',
             data:[
-                {value:400, name:'search engine'},
-                {value:335, name:'direct access'},
-                {value:310, name:'email marketing'},
-                {value:274, name:'Affiliate advertisement'},
-                {value:235, name:'video advertisement'}
+                {value:400, name:'Searching Engine'},
+                {value:335, name:'Direct'},
+                {value:310, name:'Email'},
+                {value:274, name:'Alliance Advertisement'},
+                {value:235, name:'Video Advertisement'}
             ]
         }
     ]
 })
 ```
 
-code above can draw a simple pie chart:
+With the above code, we can create a simple pie chart:
 
 ~[400x300](${galleryViewPath}doc-example/tutorial-styling-step0&edit=1&reset=1)
 
-Attribute value of `data` here is not the single data value for each item as it showd in introductory tutorial, but an object including attributes of `name` and `value`. Data item in ECharts can all be set to data value as well as an object including name, format configuration of the data chart and label configuration object, see details in [data](option.html#series-pie.data).
+Here, the value of `data` is not a single value, as that of the example in get started. Instead, it's an object containing `name` and `value`. Data in ECharts can always be a single value, or a configurable object with name, style and label. You may refer to [data](option.html#series-pie.data) for more information.
 
-
-[pie chart](option.html#series-pie) in ECharts  also supports to display Nightingale chart through setting [roseType](option.html#series-pie.roseType).
+[Pie charts](option.html#series-pie) of EChart can be made into Nightingale rose charts with [roseType](option.html#series-pie.roseType) field.
 
 ```js
 roseType: 'angle'
 ```
 
-Nightingale chart show data size through radius.
+Nightingale rose charts use radius to represent data value.
 
 ~[400x300](${galleryViewPath}doc-example/tutorial-styling-step1&edit=1&reset=1)
 
-## shadow configuration
+## Configuring Shadow
 
-There are some universal formats in ECharts such as shadow, transparency, color, border color, border width and so on, these formats are usually set in [itemStyle](~series-pie.itemStyle) of series. For example, shadow format can be set through the following configuration items: 
+Commonly used styles of ECharts, like shadow, opacity, color, border-color, border-width, and etc., are set by [itemStyle](~series-pie.itemStyle) in series.
 
 ```js
 itemStyle: {
     normal: {
         // shadow size
         shadowBlur: 200,
-        // Shadow is offset horizontally
+        // horizontal offset of shadow
         shadowOffsetX: 0,
-        // Shadow is offset vertically
+        // vertical offset of shadow
         shadowOffsetY: 0,
         // shadow color
         shadowColor: 'rgba(0, 0, 0, 0.5)'
@@ -64,11 +63,12 @@ itemStyle: {
 }
 ```
 
-Effect after adding shadow:
+The effect after added shadow is:
 
 ~[400x300](${galleryViewPath}doc-example/tutorial-styling-step2&edit=1&reset=1)
 
-`itemStyle` has two options as `normal` and `emphasis`, `normal` is format of normal display, `emphasis` is the highlight format when mouse hovers. This example is normal format adds shadow, but more often it stands out through shadow when hovering. 
+Each `itemStyle` has two children, `normal` and `emphasis`. `normal` is the style by default, while `emphasis` is the highlighted style when mouse hovered. The last example shows the effect of adding shadow by default. But in most situations, we may probably need to add shadow to emphasis when mouse is hovered.
+
 ```js
 itemStyle: {
     emphasis: {
@@ -78,18 +78,20 @@ itemStyle: {
 }
 ```
 
-## Dark background and light label
+## Dark Background and Light Text
 
-Now we need change the whole theme into the dark one as in the example, this needs to change background color and text color.
+Now, we need to change the whole theme as that shown in the example at the beginning of this tutorial. This can be achieved by changing background color and text color.
 
-Background color is universal, so you can directly set [backgroundColor] under option.(option.html#backgroundColor)
+Background is a global configurable object, so we can set it directly with [backgroundColor](option.html#backgroundColor) of option.
+
 ```js
 setOption({
     backgroundColor: '#2c343c'
 })
 ```
 
-text format can set overall [textStyle](option.html#textStyle). 
+Text style can also be set globally in [textStyle](option.html#textStyle).
+
 ```js
 setOption({
     textStyle: {
@@ -98,7 +100,8 @@ setOption({
 })
 ```
 
-You can also set each series respectively, text of each series is located in[label.normal.textStyle](option.html#series-pie.label.normal.textStyle). 
+On the other hand, we can also set them in [label.normal.textStyle](option.html#series-pie.label.normal.textStyle) of each series.
+
 ```js
 label: {
     normal: {
@@ -109,7 +112,8 @@ label: {
 }
 ```
 
-Pie charts need to set the color of visual guides to light color.
+We also need to set line color of pie chart to be lighter.
+
 ```js
 labelLine: {
     normal: {
@@ -120,21 +124,21 @@ labelLine: {
 }
 ```
 
-For example: 
+Thus, we can get the following effect.
 
 ~[400x300](${galleryViewPath}doc-example/tutorial-styling-step3&edit=1&reset=1)
 
-Same as `itemStyle`, formats of `label` and `labelLine` also have two status as `normal` and `emphasis`.
+Similar to `itemStyle`, `label` and `labelLine` also have `normal` and `emphasis` children.
 
 
-## set color of sector
+## Setting Fan Colors
 
-sector color is also set in itemStyle: 
+Fan colors can be set in `itemStyle`:
 
 ```js
 itemStyle: {
     normal: {
-        // set color of sector
+        // 设置扇形的颜色
         color: '#c23531',
         shadowBlur: 200,
         shadowColor: 'rgba(0, 0, 0, 0.5)'
@@ -144,13 +148,14 @@ itemStyle: {
 
 ~[400x300](${galleryViewPath}doc-example/tutorial-styling-step4&edit=1&reset=1)
 
-This is very close to the effect we want, apart from color of each sector, sectors under  shading have darker color as light is being blocked to display layer and space. 
+This is quite similar to our expect effect, except that fan colors should be made darker within shadow area, so as to make a sense of layering and space with blocked light.
 
-Color of each sector in ECharts can be reakized through setting data item under data respectively. 
+Each fan's color can be set under `data`:
+
 ```js
 data: [{
     value:400,
-    name:'search engine',
+    name:'搜索引擎',
     itemStyle: {
         normal: {
             color: 'c23531'
@@ -159,24 +164,23 @@ data: [{
 }, ...]
 ```
 
-But because this time there is only a change in shading, so the faster way to map data value to shading is through [visualMap](~option.html#visualMap) component.
+But since we only need the variation of color in this example, there's a simpler way to map data value to lightness through [visualMap](~option.html#visualMap).
 
 ```js
 visualMap: {
-    // does not show visualMap component, only used to map shading
+    // hide visualMap component; use lightness mapping only
     show: false,
-    // minimum value of map 80
+    // mapping with min value at 80
     min: 80,
-    // Maximum value of map is 600
+    // mapping with max value at 600
     max: 600,
     inRange: {
-        // shading range from 0 to 1
+        // mapping lightness from 0 to 1
         colorLightness: [0, 1]
     }
 }
 ```
 
-final effect: 
+The final effect is:
 
 ~[500x400](${galleryViewPath}doc-example/tutorial-styling-step5&edit=1&reset=1)
-
