@@ -154,4 +154,4 @@ option = {
 };
 ```
 
-更多详情，参见 参见[visualMap.inRange](option.html#visualMap.inRange) 和 [visualMap.outOfRange](option.html#visualMap.outOfRange)。
+更多详情，参见 [visualMap.inRange](option.html#visualMap.inRange) 和 [visualMap.outOfRange](option.html#visualMap.outOfRange)。
