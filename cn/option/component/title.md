@@ -89,7 +89,7 @@
 
 {{use: partial-rect-layout(componentName="grid ")}}
 
-{{ use: partial-component-common-style(componentName="标题", prefix='#') }}
+{{ use: partial-component-common-style(componentName="标题", prefix='#', defaultBorderWidth="0") }}
 
 
 
