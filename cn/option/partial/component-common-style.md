@@ -19,7 +19,7 @@ ${componentName}的边框颜色。支持的颜色格式同 backgroundColor。
 **注意**：此配置项生效的前提是，设置了 `show: true`。
 {{/if}}
 
-#${prefix} borderWidth(number) = 1
+#${prefix} borderWidth(number) = ${defaultBorderWidth|default(1)}
 
 ${componentName}的边框线宽。
 
