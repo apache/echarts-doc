@@ -22,6 +22,6 @@
 npm install
 # Build
 node build.js
-# Run a static server server
+# Run a static server
 node server.js
 ```
