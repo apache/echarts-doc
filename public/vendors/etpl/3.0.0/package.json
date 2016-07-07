@@ -1,0 +1,19 @@
+{
+    "name": "etpl",
+    "version": "3.0.0",
+    "contributors": [
+        { "name": "erik", "email": "errorrik@gmail.com" },
+        { "name": "otakustay", "email": "otakustay@gmail.com" },
+        { "name": "firede", "email": "firede@firede.us" }
+    ],
+    "main": "main",
+    "homepage": "http://ecomfe.github.io/etpl/",
+    "repository": "git://github.com/ecomfe/etpl",
+    "description": "ETPL是一个强复用、灵活、高性能的JavaScript模板引擎，适用于浏览器端或Node环境中视图的生成。",
+    "scripts": {
+        "test": "jasmine-node test/spec"
+    },
+    "devDependencies": {
+        "jasmine-node": "1.14.2"
+    }
+}
