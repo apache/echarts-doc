@@ -1,4 +1,4 @@
-var md2json = require('./md2json');
+var md2json = require('./tool/md2json');
 var fs = require('fs');
 var marked = require('marked');
 
@@ -8,11 +8,11 @@ var configName = './config' + (process.argv[2] || '');
 
 var config = require(configName);
 languages.forEach(function (language) {
-    if (!fs.existsSync('test/documents')) {
-        fs.mkdirSync('test/documents');
+    if (!fs.existsSync('public/documents')) {
+        fs.mkdirSync('public/documents');
     }
-    if (!fs.existsSync('test/documents/' + language)) {
-        fs.mkdirSync('test/documents/' + language);
+    if (!fs.existsSync('public/documents/' + language)) {
+        fs.mkdirSync('public/documents/' + language);
     }
     md2json({
             path: language + '/option/**/*.md',
@@ -22,7 +22,7 @@ languages.forEach(function (language) {
         },
         function (optionSchema) {
             fs.writeFileSync(
-                'test/documents/' + language + '/option.json',
+                'public/documents/' + language + '/option.json',
                 JSON.stringify(optionSchema, null, 2),
                 'utf-8'
             );
@@ -36,7 +36,7 @@ languages.forEach(function (language) {
         },
         function (tutorialSchema) {
             fs.writeFileSync(
-                'test/documents/' + language + '/tutorial.json',
+                'public/documents/' + language + '/tutorial.json',
                 JSON.stringify(tutorialSchema, null, 2),
                 'utf-8'
             );
@@ -49,7 +49,7 @@ languages.forEach(function (language) {
         },
         function (apiSchema) {
             fs.writeFileSync(
-                'test/documents/' + language + '/api.json',
+                'public/documents/' + language + '/api.json',
                 JSON.stringify(apiSchema, null, 2),
                 'utf-8'
             );
@@ -57,7 +57,7 @@ languages.forEach(function (language) {
     );
 
     fs.writeFileSync(
-        'test/documents/' + language + '/changelog.html',
+        'public/documents/' + language + '/changelog.html',
         marked(fs.readFileSync(language + '/changelog.md', 'utf-8')),
         'utf-8'
     );

@@ -162,6 +162,6 @@ pip-log.txt
 
 # Mac crap
 .DS_Store
-schema.json
 
 node_modules
+configshenyi.js

@@ -1,0 +1,19 @@
+{{ target: winPanel }}
+<div class="dtui-winpn">
+    <div class="dtui-close-cross">X</div>
+    <div class="dtui-winpn-con"></div>
+</div>
+{{ /target }}
+
+{{ target: dialogPanel }}
+<div class="dtui-dlg">
+    <div class="dtui-con">&nbsp;</div>
+    <div class="dtui-btns">
+        {{ for: ${viewModel.btnViewModels} as ${vm}, ${index} }}
+        <div data-cpt="
+            type: 'Button',
+            name: 'btns[${index}]',
+            viewModelGet: 'btnViewModels[${index}]'"></div>
+        {{ /for }}
+    </div>
+</div>

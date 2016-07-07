@@ -1,0 +1,524 @@
+<h2 id="v3-2-1">v3.2.1</h2>
+<div class="time">2016-07-04</div>
+
+<ul>
+<li><p>[^] 修复 <code>brushAction</code> 文件名大小写错误导致 linux 和 windows 环境下无法正确引用模块的 bug。</p>
+</li>
+<li><p>[^] 修复散点图 <code>large</code> 为 <code>true</code> 时可能导致圆形绘制错误的问题。</p>
+</li>
+<li><p>[^] 移除默认柱状图边框样式。</p>
+</li>
+<li><p>[^] dataZoom 对 xAxisIndex 的处理更鲁棒。</p>
+</li>
+</ul>
+<h2 id="v3-2-0">v3.2.0</h2>
+<div class="time">2016-06-30</div>
+
+<p>详细的变动介绍见 <a href="http://efe.baidu.com/blog/echarts-3.2.0/">ECharts 3.2.0 变动介绍</a></p>
+<ul>
+<li><p><strong>[+] 新加刷选 <a href="http://echarts.baidu.com/option.html#brush">brush</a> 组件。</strong> 见下面几个 Brushing and Linking 的例子：</p>
+<ul>
+<li><a href="http://echarts.baidu.com/gallery/editor.html?c=map-parallel-prices">地图与平行坐标</a>，<a href="http://echarts.baidu.com/gallery/editor.html?c=candlestick-brush">K线图与柱状图</a>，<a href="http://echarts.baidu.com/gallery/editor.html?c=scatter-matrix">散点矩阵与平行坐标</a></li>
+</ul>
+</li>
+<li><p><strong>[+] 新加标域 <a href="http://echarts.baidu.com/option.html#markArea">markArea</a> 组件。</strong> 见示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=line-sections">用电量分布</a>，<a href="http://echarts.baidu.com/gallery/editor.html?c=scatter-weight">男女身高体重分布</a></p>
+</li>
+<li><p><strong>[+] 新加单轴 <a href="http://echarts.baidu.com/option.html#singleAxis">singleAxis</a> 组件。</strong> 见示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=scatter-single-axis">单轴散点图</a></p>
+</li>
+<li><p>[^] 折线图优化</p>
+<ul>
+<li>[+] 新增 <a href="http://echarts.baidu.com/option#series-line.step">step</a> 属性显示成阶梯线图。见示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=line-step">Step Line</a></li>
+<li>[^] 优化与 visualMap 的结合，支持分段显示不同颜色。见示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=line-aqi">北京 AQI</a>，<a href="http://echarts.baidu.com/gallery/editor.html?c=line-sections">用电量分布</a></li>
+</ul>
+</li>
+<li><p>[^] 线图优化</p>
+<ul>
+<li><p>[+] 新增 <code>polyline</code> 属性，支持显示多段的轨迹路线。见示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=lines-bmap-bus">北京公交路线图</a>，以及 <a href="http://echarts.baidu.com/gallery/editor.html?c=lines-bmap-effect">带有特效的北京公交路线图</a></p>
+</li>
+<li><p>[+] 新增 <a href="http://echarts.baidu.com/option.html#series-lines.large">large</a> 和 <a href="http://echarts.baidu.com/option.html#series-lines.largeThreshold">largeThreshold</a> 配置项支持大规模线图的绘制。见示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=lines-airline">65k 条飞机航线的可视化</a></p>
+</li>
+<li><p>[+] <a href="http://echarts.baidu.com/option.html#series-lines.effect">effect</a> 新增 <a href="http://echarts.baidu.com/option.html#series-lines.effect.constantSpeed">constantSpeed</a> 和 <a href="http://echarts.baidu.com/option.html#series-lines.effect.loop">loop</a></p>
+</li>
+<li><p>[^] 数据格式变动，从原先的 <code>data: [ [{ coord: [lng, lat] }, { coord: [lng, lat]}] ]</code> 改为 <code>data: [ { coords: [[lng, lat], [lng, lat]] } ]</code>。统一在一个属性里存放坐标点是为了更好的支持 <code>polyline</code> 为 true 的时候配置多个坐标点。原先的方式也兼容，但是不建议继续使用。</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>[^] Graph 优化</p>
+<ul>
+<li>[+] 新加 <a href="http://echarts.baidu.com/option.html#series-graph.focusNodeAdjacency">focusNodeAdjacency</a> 配置项用于开启鼠标 hover 高亮节点及相邻边和节点的效果。</li>
+<li>[+] 边颜色 <a href="http://echarts.baidu.com/option.html#series-graph.lineStyle.normal.color">lineStyle.normal.color</a> 支持配置为 <code>&#39;source&#39;</code> 或者 <code>&#39;target&#39;</code> 取源节点和目标节点的颜色。见示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=graph">Les Miserables</a></li>
+<li>[+] 改为使用默认取全局的调色盘</li>
+<li>修复 <a href="http://echarts.baidu.com/option.html#series-graph.edgeSymbolSize">edgeSymbolSize</a> 为数组时边无法显示的 bug。</li>
+<li>修复同时配置 <a href="http://echarts.baidu.com/option.html#series-graph.edgeSymbol">edgeSymbol</a> 和 <a href="http://echarts.baidu.com/option.html#series-graph.layout">force layout</a> 时会导致布局抽搐的 bug。</li>
+</ul>
+</li>
+<li><p>[^] dataZoom 优化</p>
+<ul>
+<li><p>[+] 新增 <a href="http://echarts.baidu.com/option.html#dataZoom-slider.handleIcon">handleIcon</a> 配置项用于配置手柄形状。<a href="http://echarts.baidu.com/option.html#dataZoom-slider.handleIcon">handleSize</a> 修改为相对于 dataZoom 高度的百分比大小。见示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=candlestick-sh-2015">2015 年上证指数</a></p>
+</li>
+<li><p>[+] 新增 <a href="http://echarts.baidu.com/option.html#dataZoom-slider.handleStyle">handleStyle</a> 配置项用于配置更丰富的手柄细节样式。取代原先的 <code>handleColor</code> 配置项。</p>
+</li>
+<li><p>[+] 新增 <a href="http://echarts.baidu.com/option.html#dataZoom-slider.dataBackground">dataBackground</a> 配置项用于配置更丰富的数据预览样式。取代原先的 <code>dataBackgroundColor</code> 配置项。</p>
+</li>
+</ul>
+</li>
+<li><p>[^] 平行坐标优化</p>
+<ul>
+<li><p>[^] 新增 <a href="http://echarts.baidu.com/option.html#parallel.axisExpandable">parallel.axisExpandable</a>，改善高维数据（大量坐标轴）的展示。参见例子 [<a href="http://echarts.baidu.com/gallery/editor.html?c=map-parallel-prices">http://echarts.baidu.com/gallery/editor.html?c=map-parallel-prices</a>]</p>
+</li>
+<li><p>[^] 新增 <a href="http://echarts.baidu.com/option.html#parallelAxis.realtime">parallelAxis.realtime</a></p>
+</li>
+</ul>
+</li>
+<li><p>[^] 坐标轴优化</p>
+<ul>
+<li>[^] 坐标轴支持过渡动画。见示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=dynamic-data2">动态数据</a></li>
+<li>[^] 优化坐标轴轴线和刻度线的绘制效果。</li>
+<li>[^] 类目轴默认不显示分隔线 splitLine。</li>
+<li>[^] 类目轴自动间隔的计算优化。修复类目轴在数据很多的时候有可能出现标签重叠的问题。</li>
+<li>[^] <a href="http://echarts.baidu.com/option.html#xAxis.axisTick">axisTick</a>, <a href="http://echarts.baidu.com/option.html#xAxis.axisLabel">axisLabel</a> 默认取 <a href="http://echarts.baidu.com/option.html#xAxis.axisLine">axisLine</a> 的颜色。</li>
+<li>[^] 修复双类目轴时数据无法使用类目值的 bug。见 <a href="https://github.com/ecomfe/echarts/issues/3494">#3494</a></li>
+</ul>
+</li>
+<li><p>[^] 桑基图 优化</p>
+<ul>
+<li>[+] 边颜色 <a href="http://echarts.baidu.com/option.html#series-sankey.lineStyle.normal.color">lineStyle.normal.color</a> 支持配置为 <code>&#39;source&#39;</code> 或者 <code>&#39;target&#39;</code> 取源节点和目标节点的颜色。</li>
+</ul>
+</li>
+<li><p>[^] visualMap 组件优化</p>
+<ul>
+<li>[+] 新增 <a href="http://echarts.baidu.com/option.html#visualMap-continuous.realtime">realtime</a> 配置项。</li>
+<li>[^] 分段区间配置 <a href="http://echarts.baidu.com/option.html#visualMap-piecewise.pieces">pieces</a> 改为通过 <code>lt</code>, <code>lte</code>, <code>gt</code>, <code>gte</code> 更细致的配置区间和区间的开闭。</li>
+</ul>
+</li>
+<li><p>[^] markPoint 和 markLine 优化</p>
+<ul>
+<li>[+] 新增 <code>silent</code> 配置项用于关闭交互。</li>
+<li>[^] 数据配置更加灵活，支持每个维度 (xAxis, yAxis) 配置为<code>&#39;min&#39;</code>, <code>&#39;max&#39;</code>, <code>&#39;average&#39;</code>。</li>
+<li>[^] 平均值计算忽略控制。见 <a href="https://github.com/ecomfe/echarts/issues/3367">#3367</a></li>
+</ul>
+</li>
+<li><p>[^] 散点图在 <a href="http://echarts.baidu.com/option.html#series-scatter.large">large</a> 模式下也支持 tooltip 和鼠标事件触发。</p>
+</li>
+<li><p>[^] 工具栏组件的 <a href="http://echarts.baidu.com/option.html#toolbox.feature.dataZoom">dataZoom</a> 支持通过配置 <code>yAxisIndex: &#39;none&#39;</code> 或者 <code>yAxisIndex: &#39;none&#39;</code> 设置单轴上的框选。</p>
+</li>
+<li><p>[+] 图例新增 <a href="http://echarts.baidu.com/option.html#legend.inactiveColor">inactiveColor</a> 配置图例关闭时的颜色。</p>
+</li>
+<li><p>[+] 标题组件新增 <a href="http://echarts.baidu.com/option.html#title.textBaseline">textBaseline</a> 用于配置标题文字的垂直对齐。</p>
+</li>
+<li><p>[+] 新增 <a href="http://echarts.baidu.com/option.html#hoverLayerThreshold">hoverLayerThreshold</a> 配置项</p>
+</li>
+<li><p>[+] 新增 <a href="http://echarts.baidu.com/option.html#progressive">progressive</a> 和 <a href="http://echarts.baidu.com/option.html#progressiveThreshold">progressiveThreshold</a> 配置用于配置渐进式渲染。见示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=parallel-nutrients">parallel-nutrients</a></p>
+</li>
+<li><p>[+] 新增 <a href="http://echarts.baidu.com/option.html#blendMode">blendMode</a> 配置图形的混合模式。</p>
+</li>
+<li><p>[+] <code>itemStyle</code> 新增 <a href="http://echarts.baidu.com/option.html#series-bar.itemStyle.normal.borderType">borderType</a> 配置边框类型。</p>
+</li>
+<li><p>[+] 调色盘取色优化，相同名称的数据默认取相同的颜色。</p>
+</li>
+<li><p>[+] 仪表盘新增 <a href="http://echarts.baidu.com/option.html#xAxis.axisLabel.distance">axisLabel.distance</a> 配置项。</p>
+</li>
+<li><p>[^] 颜色支持配置为渐变色和纹理。见 <a href="http://echarts.baidu.com/option.html#series-pie.itemStyle.normal.color">itemStyle.normal.color</a>。示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=bubble-gradient">渐变</a>，<a href="http://echarts.baidu.com/gallery/editor.html?c=pie-pattern">纹理</a></p>
+</li>
+<li><p>[^] 修复多个系列的地图 tooltip 和 symbol 显示不正确的 bug。见 <a href="https://github.com/ecomfe/echarts/issues/3436">#3436</a> <a href="https://github.com/ecomfe/echarts/issues/3320">#3320</a></p>
+</li>
+<li><p>[^] 优化 effectScatter 在 setOption 更新数据时动画不连贯的问题。见 <a href="https://github.com/ecomfe/echarts/issues/3439">#3439</a></p>
+</li>
+<li><p>[^] 优化 tooltip，返回空字符串的话不显示浮层。</p>
+</li>
+<li><p>[^] 修复 splitArea 会覆盖 splitLine 的问题。</p>
+</li>
+<li><p>[^] 修复雷达图不能修改线条颜色的 bug。见 <a href="https://github.com/ecomfe/echarts/issues/3441">#3441</a></p>
+</li>
+<li><p>[^] 修复数据刷新可能会导致事件绑定的内存泄露。见 <a href="https://github.com/ecomfe/echarts/issues/3500">#3500</a></p>
+</li>
+<li><p>[^] ZRender 性能优化，重绘性能为原先的 2x ~ 3x。</p>
+</li>
+<li><p>[^] 构建文件调整，压缩前的<a href="http://echarts.baidu.com/dist/echarts.js">开发版本</a>加入了更细致的错误提示和警告，压缩后的<a href="http://echarts.baidu.com/dist/echarts.min.js">生产版本</a>去掉了这些错误提示和警告。因此建议开发环境中使用<a href="http://echarts.baidu.com/dist/echarts.js">开发版本</a></p>
+</li>
+</ul>
+<h2 id="v3-1-10">v3.1.10</h2>
+<div class="time">2016-05-19</div>
+
+<ul>
+<li><p><strong>[^] <a href="http://echarts.baidu.com/option.html#geo">geo</a> 优化</strong></p>
+<ul>
+<li>[+] 支持监听鼠标事件，见 <a href="http://echarts.baidu.com/option.html#geo">geo</a></li>
+<li>[+] 支持通过 <a href="http://echarts.baidu.com/option.html#geo.regions">regions</a> 配置每个区域的样式</li>
+<li>[+] 支持通过 <a href="http://echarts.baidu.com/option.html#geo.selectedMode">selectedMode</a> 配置是否区域可选，区域的选择会抛出 <a href="http://echarts.baidu.com/api.html#events.geoselectchanged">geoselectchanged</a> 事件</li>
+</ul>
+</li>
+<li><p>[^] 优化部分字体，例如微软雅黑的垂直对齐，见 <a href="https://github.com/ecomfe/echarts/issues/2983">#2983</a></p>
+</li>
+<li><p>[^] graph 动画优化，见示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=graph-life-expectancy">graph-life-expectancy</a></p>
+</li>
+<li><p>[+] 数值轴新加 <a href="http://echarts.baidu.com/option.html#xAxis.minInterval">minInterval</a>，见 <a href="https://github.com/ecomfe/echarts/issues/3115">#3115</a></p>
+</li>
+<li><p>[+] treemap 新增下钻功能，参见 <a href="http://echarts.baidu.com/option.html#series-treemap.leafDepth">leafDepth</a>，和示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=treemap-drill-down">treemap-drill-down</a></p>
+</li>
+<li><p>[^] markLine 优化，支持在直角坐标系中如下设置成水平线或者垂直线。</p>
+<pre><code class="lang-js">  data: [{
+      // Y 轴值为 100 的水平线
+      yAxis: 100
+  }]
+</code></pre>
+<p>  方便柱状图只有单个值的时候能够正确设置显示成某个值的水平标线。</p>
+</li>
+<li><p>[^] 桑基图支持单个节点自定义样式。</p>
+</li>
+<li><p>[^] 修复单个 echarts 实例中有多个 geo 组件并且都没有指定 name 时可能会导致单个组件在拖拽时影响其它组件散点图位置的问题。</p>
+</li>
+<li><p>[^] dataZoom 精度问题优化，见 <a href="https://github.com/ecomfe/echarts/issues/3228">#3228</a></p>
+</li>
+<li><p>[^] 修复 3.1.8 中雷达图点显示为黑色的 bug。</p>
+</li>
+<li><p>[^] 修复 3.1.8 中 graph 会在 safari 下报错的 bug。见 <a href="https://github.com/ecomfe/echarts/issues/3220">#3220</a></p>
+</li>
+<li><p>[^] 修复 <a href="http://echarts.baidu.com/option.html#series-effectScatter">effectScatter</a> 中特效图形不能设置旋转的问题。</p>
+</li>
+<li><p>[^] 修复 timeline、mediaQuery 在进行第二次 setOption 时会失效的 bug。</p>
+</li>
+</ul>
+<h2 id="v3-1-9">v3.1.9</h2>
+<div class="time">2016-05-12</div>
+
+<ul>
+<li><p>[^] 修复 3.1.8 中<code>image://</code>类型的 symbol 无法显示的 bug。</p>
+</li>
+<li><p>[^] 修复使用笛卡尔坐标系的 graph 第二次 setOption 会报错的 bug。</p>
+</li>
+</ul>
+<h2 id="v3-1-8">v3.1.8</h2>
+<div class="time">2016-05-11</div>
+
+<ul>
+<li><p><strong>[^] Graph 优化</strong></p>
+<ul>
+<li>[+] 支持通过 <a href="http://echarts.baidu.com/option.html#series-graph.edgeLabel">edgeLabel</a> 配置边标签，见示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=graph-simple">graph-simple</a></li>
+<li>[+] 支持通过 <a href="http://echarts.baidu.com/option.html#series-graph.edgeSymbol">edgeSymbol</a> 配置边两端的图形，见示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=graph-simple">graph-simple</a></li>
+<li>[^] 支持笛卡尔坐标系，极坐标与地理坐标系，见示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=graph-grid">graph-grid</a></li>
+<li>[^] 鼠标事件参数新加<code>dataType</code>参数用于判断是<code>&#39;node&#39;</code>还是<code>&#39;edge&#39;</code></li>
+</ul>
+</li>
+<li><p><strong>[^] 地图优化</strong></p>
+<ul>
+<li>[+] 加入 <a href="http://echarts.baidu.com/option.html#series-map.zoom">zoom</a> 和 <a href="http://echarts.baidu.com/option.html#series-map.center">center</a> 配置项用于定位，参见示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=map-locate">map-locate</a></li>
+<li>[^] 修复 <code>scaleLimit.min</code> 大于 1 时可能导致散点图布局错误的 bug。</li>
+<li>[^] 绘制性能优化</li>
+</ul>
+</li>
+<li><p><strong>[^] treemap 优化</strong></p>
+<ul>
+<li>[^] 修复无法只在高亮的时候显示 label 的问题。Fix <a href="https://github.com/ecomfe/echarts/issues/2975">#2975</a></li>
+<li>[^] 修复中事件参数不正确的 bug。见 <a href="https://github.com/ecomfe/echarts/issues/3063">#3063</a></li>
+</ul>
+</li>
+<li><p><strong>[^] visualMap 组件优化</strong></p>
+<ul>
+<li>[+] 支持映射到 <code>opacity</code>。见 <a href="http://echarts.baidu.com/option.html#visualMap-continuous.inRange">visualMap.inRange</a>。</li>
+<li>[+] 加入配置项 <a href="http://echarts.baidu.com/option.html#visualMap-continuous.hoverLink">visualMap.hoverLink</a>，支持 visualMap 组件与图表图形的联动。</li>
+<li>[^] visual 的值之前支持设置为单个数字，例如 <code>0.2</code>。</li>
+<li>[^] 修复使用 merge 模式第二次 setOption 时，viusal 配置无法保持的 bug。</li>
+<li>[^] 修复使用 <code>colorHue</code> 时，visualMap 控制条颜色渐变不对的 bug。</li>
+</ul>
+</li>
+<li><p>[+] 折线图加入 <a href="http://echarts.baidu.com/option.html#series-line.connectNulls">connectNulls</a> 配置项，见 <a href="https://github.com/ecomfe/echarts/issues/2579">#2579</a></p>
+</li>
+<li><p>[+] markLine 标签位置支持配置为中间 <code>&#39;middle&#39;</code>。</p>
+</li>
+<li><p>[+] 加入 <a href="http://echarts.baidu.com/option.html#animationDelay">animationDelay</a> 和 <a href="(http://echarts.baidu.com/option.html#animationDelayUpdate">animationDelayUpdate</a> 配置项用于展现更丰富和戏剧性的动画效果，参见示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=bar-animation-delay">bar-animation-delay</a></p>
+</li>
+<li><p>[^] 修正 markPoint 、markLine、timeLine 鼠标事件参数中的<code>componentType</code>属性，可以通过该判断鼠标事件的触发对象。</p>
+</li>
+<li><p>[^] 修正了 <a href="http://echarts.baidu.com/option.html#tooltip.show">tooltip.show</a> 功能,同时控制<code>提示框浮层</code>和<code>axisPointer</code>的隐藏和显示。<a href="http://echarts.baidu.com/option.html#tooltip.showContent">tooltip.showContent</a> 仅控制<code>提示框浮层</code>的隐藏和显示。</p>
+</li>
+<li><p>[^] 仪表盘优化超出范围的数据的展现。见 <a href="https://github.com/ecomfe/echarts/issues/3067">#3067</a></p>
+</li>
+<li><p>[^] 修复 3.1.7 中多系列饼图图例绘制错误的 bug。</p>
+</li>
+<li><p>[^] markPoint 和 markLine 的位置属性<code>x</code>, <code>y</code>支持百分比。</p>
+</li>
+<li><p>[^] 修复图形高亮时刷新整个图表会导致高亮图形样式错误的 bug。</p>
+</li>
+<li><p>[^] 修复 setOption 无法清除之前设置的阴影样式的 bug。</p>
+</li>
+<li><p>[^] 修复柱状图中渐变色无法正确显示的 bug，见 <a href="https://github.com/ecomfe/echarts/issues/3065">#3065</a></p>
+</li>
+<li><p>[^] 修复桑基图中关闭动画会导致右侧标签显示不全的 bug。</p>
+</li>
+<li><p>[^] 优化折线图中可能会裁剪掉一半最顶端水平线，使得顶端水平线看起来更细的情况。</p>
+</li>
+<li><p>[^] 修复 IE8 中饼图 0 数据显示为圆形的 bug。见 <a href="https://github.com/ecomfe/echarts/issues/3128">#3128</a></p>
+</li>
+<li><p>[^] 修复 IE8 只有高亮显示标签可能会无效的 bug。</p>
+</li>
+</ul>
+<h2 id="v3-1-7">v3.1.7</h2>
+<div class="time">2016-04-21</div>
+
+<ul>
+<li><p>[+] visualMap 组件新加入 <a href="http://echarts.baidu.com/option.html#visualMap-continuous.align">align</a> 属性。</p>
+</li>
+<li><p>[+] 坐标轴刻度标签支持可点击的配置，见 <a href="http://echarts.baidu.com/option.html#xAxis.silent">xAxis.silent</a>。</p>
+</li>
+<li><p>[+] tooltip 加入 <a href="http://echarts.baidu.com/option.html#tooltip.showDelay">showDelay</a>。</p>
+</li>
+<li><p>[^] 修复数据精度很高时 dataZoom 会产生错误的截断的 bug。</p>
+</li>
+<li><p>[^] 修复 k 线图联动的 bug。Fix <a href="https://github.com/ecomfe/echarts/issues/2992">#2992</a></p>
+</li>
+<li><p>[^] 修复 resize 会错误的触发 tooltip 的 bug。 Fix <a href="https://github.com/ecomfe/echarts/issues/2988">#2988</a></p>
+</li>
+<li><p>[^] <code>axisLabel.textStyle.color</code> 支持回调函数，见 <a href="https://github.com/ecomfe/echarts/issues/2796">#2796</a></p>
+</li>
+<li><p>[^] 修复 IE8 下 dataZoom 区间缩小后折线图会错误绘制的 bug。</p>
+</li>
+<li><p>[^] 优化饼图，漏斗图的图例绘制，支持<code>&#39;&#39;</code>, <code>&#39;\n&#39;</code>换行，见 <a href="https://github.com/ecomfe/echarts/issues/3039">#3039</a></p>
+</li>
+</ul>
+<h2 id="v3-1-6">v3.1.6</h2>
+<div class="time">2016-04-11</div>
+
+<ul>
+<li><p>[^] 环形图内标签 inside 位置优化。见 <a href="https://github.com/ecomfe/echarts/issues/2949">#2949</a></p>
+</li>
+<li><p>[^] 修复 IE8 下单个数据的饼图无法显示的 bug。Fix <a href="https://github.com/ecomfe/echarts/issues/2961">#2961</a></p>
+</li>
+<li><p>[^] 修复柱状图 <code>itemStyle.emphasis.barBorderWidth</code> 不生效的 bug。</p>
+</li>
+<li><p>[^] 修复工具栏堆叠和平铺切换导致类目轴 boundaryGap 错误设置的 bug。</p>
+</li>
+</ul>
+<h2 id="v3-1-5">v3.1.5</h2>
+<div class="time">2016-03-29</div>
+
+<ul>
+<li><p>[+] heatmap 加入配置项 <a href="http://echarts.baidu.com/option.html#series-heatmap.minOpacity">minOpacity</a>, <a href="http://echarts.baidu.com/option.html#series-heatmap.maxOpacity">maxOpacity</a>。</p>
+</li>
+<li><p>[+] <code>toolbox.feature.dataView</code> 加入配置项 <a href="http://echarts.baidu.com/option.html#toolbox.feature.dataView.optionToContent">optionToContent</a>, <a href="http://echarts.baidu.com/option.html#toolbox.feature.dataView.contentToOption">contentToOption</a>。</p>
+</li>
+<li><p>[+] map 图表和 geo 组件加入配置项 <a href="http://echarts.baidu.com/option.html#geo.scaleLimit">scaleLimit</a></p>
+</li>
+<li><p>[^] 修复 <code>toolbox.feature.magicType</code> 中 option 和 seriesIndex 不起作用的问题。Fix <a href="https://github.com/ecomfe/echarts/issues/2855">#2855</a></p>
+</li>
+<li><p>[^] 工具栏中折柱切换的时候自动调整类目轴的 boundaryGap。</p>
+</li>
+<li><p>[^] 修复 3.1.4 中 timeline 节点 hover 报错的 bug。Fix <a href="https://github.com/ecomfe/echarts/issues/2897">#2897</a></p>
+</li>
+<li><p>[^] 修复 inside 类型的 dataZoom 无法作用于多个直角坐标系中的坐标轴的 bug。Fix <a href="https://github.com/ecomfe/echarts/issues/2752">#2752</a></p>
+</li>
+<li><p>[^] 修复 3.1.4 中南丁格尔图标签布局的问题。Fix <a href="https://github.com/ecomfe/echarts/issues/2910">#2910</a></p>
+</li>
+<li><p>[^] 修复 connect 调用已经释放的图表实例报错的问题。Fix <a href="https://github.com/ecomfe/echarts/issues/2908">#2908</a></p>
+</li>
+<li><p>[^] 修复 3.1.4 中地图上的 markPoint 无法跟随地图漫游的问题。</p>
+</li>
+<li><p>[^] 修复 visualMap 组件中 color 无法被动态修改的问题。</p>
+</li>
+</ul>
+<h2 id="v3-1-4">v3.1.4</h2>
+<div class="time">2016-03-21</div>
+
+<ul>
+<li><p>[^] 优化默认的 tooltip，加入图形的颜色提示，回调加入 color 参数。</p>
+</li>
+<li><p>[^] 修复 dataZoom 无法 resize 的 bug。</p>
+</li>
+<li><p>[^] 修复多次执行<code>showLoading</code>导致的 bug。Fix <a href="https://github.com/ecomfe/echarts/issues/2821">#2821</a></p>
+</li>
+<li><p>[^] 饼图，地图等非笛卡尔坐标系和极坐标系的图表支持 markPoint 和 markLine。</p>
+</li>
+<li><p>[^] 饼图标签布局优化。</p>
+</li>
+<li><p>[^] tooltip 加入 extraCssText 配置项用于配置浮层样式，见 <a href="http://echarts.baidu.com/option.html#tooltip.extraCssText">http://echarts.baidu.com/option.html#tooltip.extraCssText</a></p>
+</li>
+<li><p>[^] 修复 3.1.3 中 dataZoom 不设置坐标轴 min， max 的 bug。</p>
+</li>
+<li><p>[^] 修复当纵轴为类目轴且 series 的 data 为二维数组时，tooltip 里无法取到正确的 name 的bug。Fix <a href="https://github.com/ecomfe/echarts/issues/2822">#2822</a></p>
+</li>
+<li><p>[^] 修复圆角的柱形图 hover 错误的 bug，Fix <a href="https://github.com/ecomfe/echarts/issues/2806">#2806</a></p>
+</li>
+<li><p>[^] 雷达图 indicator 配置项默认值策略优化。</p>
+</li>
+</ul>
+<h2 id="v3-1-3">v3.1.3</h2>
+<div class="time">2016-03-10</div>
+
+<ul>
+<li><p><strong>[+]加入雷达图，见 <a href="http://echarts.baidu.com/option.html#series-radar">http://echarts.baidu.com/option.html#series-radar</a></strong></p>
+</li>
+<li><p>[^] 平均值，最小值，最大值 markLine 起点和终点位置优化。Fix <a href="https://github.com/ecomfe/echarts/issues/2762">#2762</a>，<a href="https://github.com/ecomfe/echarts/issues/2688">#2688</a>。</p>
+</li>
+<li><p>[^] 修复 markLine 的 symbol 只有一个配置为 <code>&#39;none&#39;</code> 的 bug。见 <a href="https://github.com/ecomfe/echarts/issues/2733">#2733</a></p>
+</li>
+<li><p>[^] 多行文本的垂直居中优化。</p>
+</li>
+<li><p>[^] 饼图等数据项中 label 的 emphasis 配置项默认取 normal 中的值。</p>
+</li>
+<li><p>[^] 按需引入时，折线图，饼图，散点图默认引入 grid 组件。避免 <a href="https://github.com/ecomfe/echarts/issues/2758">#2758</a> 中的问题。</p>
+</li>
+<li><p>[^] 修复 dataZoom 组件浮点精度的 bug。Fix <a href="https://github.com/ecomfe/echarts/issues/2757">#2757</a></p>
+</li>
+<li><p>[^] 未选中的图例文本显示为灰色。见 <a href="https://github.com/ecomfe/echarts/issues/2615">#2615</a></p>
+</li>
+<li><p>[^] 修复 3.1.1 中 media query 中 dataZoom 位置失效的 bug。Fix <a href="https://github.com/ecomfe/echarts/issues/2710">#2710</a></p>
+</li>
+<li><p>[^] 修复 3.1.1 中 firefox 无法触发滚轮事件的 bug，Fix <a href="https://github.com/ecomfe/echarts/issues/2730">#2730</a></p>
+</li>
+<li><p>[^] IE8 优化。</p>
+</li>
+<li><p>[^] 代码改用 webpack 构建。</p>
+</li>
+</ul>
+<h2 id="v3-1-2">v3.1.2</h2>
+<div class="time">2016-03-01</div>
+
+<ul>
+<li><p><strong>[+]提供主题下载，详细见 <a href="http://echarts.baidu.com/download-theme.html">http://echarts.baidu.com/download-theme.html</a></strong></p>
+</li>
+<li><p>[^] 修复 v3.1.1 中折线图空数据后 <code>setOption</code> 更新数据无法显示的 bug。</p>
+</li>
+<li><p>[^] 修复 <code>setOption(chart.getOption())</code> 有可能报<code>id duplicates</code>的错误。Fix <a href="https://github.com/ecomfe/echarts/issues/2635">#2635</a></p>
+</li>
+<li><p>[^] 允许自定义 toolbox 工具栏。详见 <a href="http://echarts.baidu.com/option.html#toolbox.feature">toolbox.feature</a></p>
+</li>
+<li><p>[^] <code>&#39;time&#39;</code> 类型的坐标轴在大跨度时间范围的刻度优化。</p>
+</li>
+<li><p>[^] 修复 label 的 formatter 返回 0 不显示的 bug。Fix <a href="https://github.com/ecomfe/echarts/issues/2659">#2659</a></p>
+</li>
+<li><p>[^] 修复纵轴为类目轴的图表中 markPoint 标签显示错误的问题。Fix <a href="https://github.com/ecomfe/echarts/issues/2641">#2641</a></p>
+</li>
+<li><p>[^] 优化 dataZoom，修复有 dataZoom 的图表中动态数据更新错误的问题。Fix <a href="https://github.com/ecomfe/echarts/issues/2667">#2667</a></p>
+</li>
+<li><p>[^] 饼图所有数据为 0 时百分比取 0 而非 NaN。Fix <a href="https://github.com/ecomfe/echarts/issues/2667">#2690</a></p>
+</li>
+<li><p>[^] 标题对齐优化。</p>
+</li>
+<li><p>[^] 图表刷新时保持 tooltip 显示。Fix <a href="https://github.com/ecomfe/echarts/issues/2478">#2478</a></p>
+</li>
+<li><p>[^] 仪表盘 <code>splitLine.length</code>, <code>axisTick.length</code> 支持百分比。</p>
+</li>
+<li><p>[^] 折线动画性能优化。</p>
+</li>
+<li><p>[^] 大数据量的类目轴性能优化。</p>
+</li>
+<li><p>[^] 修复 IE8 下 markPoint 和 markLine 报错的 bug。</p>
+</li>
+<li><p>[^] 修复 <code>&#39;use strict&#39;</code> 模式下报错的 bug。Fix <a href="https://github.com/ecomfe/echarts/issues/2643">#2643</a></p>
+</li>
+</ul>
+<h2 id="v3-1-1">v3.1.1</h2>
+<div class="time">2016-02-22</div>
+
+<ul>
+<li><p><strong>[+]新加入 npm 渠道获取 echarts，详细见 <a href="http://echarts.baidu.com/tutorial.html#%E5%9C%A8%20webpack%20%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts">webpack + echarts 教程</a></strong></p>
+</li>
+<li><p>[^] 修复动态 markPoint 和 markLine 异常的 bug。Fix <a href="https://github.com/ecomfe/echarts/issues/2522">#2522</a></p>
+</li>
+<li><p>[^] 修复 axis interval 回调参数错误的 bug。Fix <a href="https://github.com/ecomfe/echarts/issues/2470">#2470</a></p>
+</li>
+<li><p>[^] 修复 graph 中无法自定义每条边的 lineStyle 的 bug。Fix <a href="https://github.com/ecomfe/echarts/issues/2558">#2558</a></p>
+</li>
+<li><p>[^] toolbox 中 saveAsImage 支持 IE9+ 和 FireFox。</p>
+</li>
+<li><p>[^] 支持柱形圆角配置。<a href="https://github.com/ecomfe/echarts/issues/2550">#2550</a></p>
+</li>
+<li><p>[^] 修复 dataZoom 定位配置项错误的 bug。Fix <a href="https://github.com/ecomfe/echarts/issues/2619">#2619</a></p>
+</li>
+<li><p>[^] 修复多次<code>setOption</code>有可能出现<code>id duplicate</code>的错误。Fix <a href="https://github.com/ecomfe/echarts/issues/2452">#2452</a></p>
+</li>
+<li><p>[^] candlestick 和 boxplot 图支持 markPoint 和 markLine。Fix <a href="https://github.com/ecomfe/echarts/issues/2566">#2566</a></p>
+</li>
+<li><p>[^] 修复在非 merge 模式<code>setOption</code>之后再使用 toolbox 中的 reset 功能出错的 bug。Fix <a href="https://github.com/ecomfe/echarts/issues/2596">#2596</a></p>
+</li>
+<li><p>[^] 散点图以及 markPoint 支持在<code>emphasis</code>中配置<code>label</code>的<code>formatter</code>。Fix <a href="https://github.com/ecomfe/echarts/issues/2596">#2596</a></p>
+</li>
+<li><p>[^] Treemap 支持<code>roam</code>配置项。</p>
+</li>
+<li><p>[^] time 类型的坐标轴支持使用字符串格式的时间数据。</p>
+</li>
+<li><p>[^] 修复折线图和区域图无法切换的 bug 修复。Fix <a href="https://github.com/ecomfe/echarts/issues/2625">#2625</a></p>
+</li>
+<li><p>[^] 多系列柱状图 markPoint 的位置优化。Fix <a href="https://github.com/ecomfe/echarts/issues/2623">#2623</a></p>
+</li>
+<li><p>[^] 修复 init 时 theme 为字符串并且有 dataZoom 组件时的报错。Fix <a href="https://github.com/ecomfe/echarts/issues/2619">#2619</a></p>
+</li>
+<li><p>[^] legend 和 toolbox 支持通过 width 和 height 设置高宽并且自动换行。Fix <a href="https://github.com/ecomfe/echarts/issues/2621">#2621</a></p>
+</li>
+<li><p>[^] 折线图平滑优化，加入<code>smoothMonotone</code>配置项，详见 <a href="http://echarts.baidu.com/option.html#series-line.smoothMonotone">option.html#series-line.smoothMonotone</a>，Fix <a href="https://github.com/ecomfe/echarts/issues/2612">#2612</a></p>
+</li>
+<li><p>[^] 修复 Surface 等带有触屏的电脑上无法触发鼠标事件的 bug，Fix <a href="https://github.com/ecomfe/echarts/issues/2569">#2569</a></p>
+</li>
+</ul>
+<h2 id="v3-0-2">v3.0.2</h2>
+<div class="time">2016-01-23</div>
+
+<ul>
+<li><p>[^] 修复散点图无法高亮的问题。</p>
+</li>
+<li><p>[^] 优化 tooltip 联动，Fix <a href="https://github.com/ecomfe/echarts/issues/2445">#2445</a></p>
+</li>
+<li><p>[^] inside 类型的 dataZoom 支持 zoomLock。</p>
+</li>
+<li><p>[^] 添加地图类型不存在的错误提示。</p>
+</li>
+<li><p>[^] 折线图图例开关的动画优化</p>
+</li>
+<li><p>[^] 修复图例无法动态添加的问题，Fix <a href="https://github.com/ecomfe/echarts/issues/2457">#2457</a></p>
+</li>
+<li><p>[^] 修复 timeline 无法配置 show 的问题。</p>
+</li>
+<li><p>[^] 修复 0 数据在 tooltip 中显示 undefined 的问题，Fix <a href="https://github.com/ecomfe/echarts/issues/2463">#2463</a></p>
+</li>
+<li><p>[^] 修复 dataZoom 缩略图显示不正确的问题，Fix <a href="https://github.com/ecomfe/echarts/issues/2462">#2462</a></p>
+</li>
+<li><p>[^] 修复坐标轴 <code>min</code> <code>max</code> 是字符串的问题，PR <a href="https://github.com/ecomfe/echarts/pull/2481">#2481</a></p>
+</li>
+</ul>
+<h2 id="v3-0-1">v3.0.1</h2>
+<div class="time">2016-01-18</div>
+
+<ul>
+<li><p>[+] 添加回 <a href="http://echarts.baidu.com/api.html#echartsInstance.getOption">getOption</a> 和 <a href="http://echarts.baidu.com/api.html#echartsInstance.clear">clear</a> 方法</p>
+</li>
+<li><p>[^] 修复平均值，最大值，最小值标注和标线的标签和 tooltip 无法显示正确值的问题，Fix <a href="https://github.com/ecomfe/echarts/issues/2393">#2393</a></p>
+</li>
+<li><p>[^] 修复柱状图在边框宽度大于高度的时候绘制不正确的问题，Fix <a href="https://github.com/ecomfe/echarts/issues/2343">#2343</a></p>
+</li>
+<li><p>[^] 修复图例的<code>show</code>配置项无法起作用的问题，Fix <a href="https://github.com/ecomfe/echarts/issues/2371">#2371</a></p>
+</li>
+<li><p>[^] 地图类型可选 data 属性。</p>
+</li>
+<li><p>[^] 修复平均值标线和标注计算错误，Fix <a href="https://github.com/ecomfe/echarts/issues/2367">#2367</a></p>
+</li>
+<li><p>[^] 折线图从<code>&#39;-&#39;</code>空数据变成有数据时的动画优化。</p>
+</li>
+<li><p>[^] 鼠标滚轮缩放方向改为常用的习惯方向。</p>
+</li>
+<li><p>[^] 工具栏中的数据区域缩放工具支持指定坐标轴，详见<a href="http://echarts.baidu.com/option.html#toolbox.feature.dataZoom.yAxisIndex"> toolbox 文档</a></p>
+</li>
+<li><p>[^] 时间轴上无数据的错误修复，数值轴无数据时的刻度从<code>[-1, 1]</code>改为<code>[0, 1]</code></p>
+</li>
+<li><p>[^] 坐标轴 splitArea 绘制错误修复。</p>
+</li>
+<li><p>[^] 修复多个图表示例联动问题。Fix <a href="https://github.com/ecomfe/echarts/issues/2391">#2391</a></p>
+</li>
+<li><p>[^] 修复饼图的颜色是回调函数时 legend 上的颜色无法正确显示的问题。Fix <a href="https://github.com/ecomfe/echarts/issues/2372">#2372</a></p>
+</li>
+<li><p>[^] 修复饼图数据为 0 时候鼠标的 hover 错误。</p>
+</li>
+<li><p>[^] 饼图数据项都为 0 时扇区改为均匀分布。</p>
+</li>
+<li><p>[^] 修复 IE 8 下背景色设置的错误。</p>
+</li>
+<li><p>[^] 修复 tooltip 组件 dispose 中释放事件不正确的错误。</p>
+</li>
+</ul>
+<h2 id="v3-0-0">v3.0.0</h2>
+<div class="time">2016-01-12</div>
+
+<ul>
+<li>The new echarts</li>
+</ul>
