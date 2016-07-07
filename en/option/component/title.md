@@ -11,7 +11,7 @@ In ECharts 2.x, a single example of ECharts could contains one title component a
 ~[700x400](${galleryViewPath}line-easing&edit=1&reset=1)
 
 
-## show(boolean) = false
+## show(boolean) = true
 
 Secifies whether to show the title component.
 

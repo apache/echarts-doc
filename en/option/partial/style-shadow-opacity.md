@@ -15,7 +15,7 @@ itemStyle: {
 ```
 
 {{if: ${needShow} }}
-**Caution**: This property works only if `show: true` configured.
+**Caution**: This property works only if `show: true` is configured and `backgroundColor` is defined other than `transparent`.
 {{/if}}
 
 

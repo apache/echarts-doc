@@ -11,7 +11,7 @@
 ~[700x400](${galleryViewPath}line-easing&edit=1&reset=1)
 
 
-## show(boolean) = false
+## show(boolean) = true
 
 是否显示标题组件。
 
