@@ -51,19 +51,32 @@ data: [
             type: 'max'
         }
     ],
-    {{/if}}{{if: ${hasCoord} }}[
+    {{/if}}{{if: ${hasCoord} }}
+    [
         {
             name: '两个坐标之间的标域',
             coord: [10, 20]
-        }, {
+        },
+        {
             coord: [20, 30]
         }
-    ], [{
-        name: '所有数据范围区间'
-        coord: ['min', 'min']
-    }, {
-        coord: ['max', 'max']
-    }],
+    ], [
+        {
+            name: '60分到80分',
+            yAxis: 60
+        },
+        {
+            yAxis: 80
+        }
+    ], [
+        {
+            name: '所有数据范围区间'
+            coord: ['min', 'min']
+        },
+        {
+            coord: ['max', 'max']
+        }
+    ],
     {{/if}}[
         {
             name: '两个屏幕坐标之间的标域',
