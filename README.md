@@ -15,7 +15,7 @@
     + English (Under reviewing)
 
 
-## Build and run locally
+## Build and Run Locally
 
 ```shell
 # Install depedencies
