@@ -45,6 +45,12 @@
             ],
             "descriptionCN": "<pre><code class=\"lang-js\">(mapName: string, geoJson: Object, specialAreas?: Object)\n</code></pre>\n<p>注册可用的地图，必须在包括 <a href=\"option.html#geo\" target=\"_blank\">geo</a> 组件或者 <a href=\"option.html#series-map\" target=\"_blank\">map</a> 图表类型的时候才能使用。</p>\n<p>使用方法见 <a href=\"option.html#geo.map\" target=\"_blank\">option.geo</a>。</p>\n<p><strong>参数：</strong></p>\n<ul>\n<li><p><code>mapName</code></p>\n<p>  地图名称，在 <a href=\"option.html#geo\" target=\"_blank\">geo</a> 组件或者 <a href=\"option.html#series-map\" target=\"_blank\">map</a> 图表类型中设置的 <code>map</code> 对应的就是该值。</p>\n</li>\n<li><p><code>geoJson</code></p>\n<p>  GeoJson 格式的数据，具体格式见 <a href=\"http://geojson.org/\" target=\"_blank\">http://geojson.org/</a>。</p>\n</li>\n<li><p><code>specialAreas</code></p>\n<p>  可选。将地图中的部分区域缩放到合适的位置，可以使得整个地图的显示更加好看。</p>\n<p>  <strong>示例 <a href=\"http://echarts.baidu.com/gallery/editor.html?c=map-usa\" target=\"_blank\">USA Population Estimates</a>：</strong></p>\n<pre><code class=\"lang-js\">echarts.registerMap(&#39;USA&#39;, usaJson, {\n  // 把阿拉斯加移到美国主大陆左下方\n  Alaska: {\n      // 左上角经度\n      left: -131,\n      // 左上角纬度\n      top: 25,\n      // 经度横跨的范围\n      width: 15\n  },\n  // 夏威夷\n  Hawaii: {\n      left: -110,\n      top: 28,\n      width: 5\n  },\n  // 波多黎各\n  &#39;Puerto Rico&#39;: {\n      left: -76,\n      top: 26,\n      width: 2\n  }\n});\n</code></pre>\n</li>\n</ul>\n"
           },
+          "getMap": {
+            "type": [
+              "Function"
+            ],
+            "descriptionCN": "<pre><code class=\"lang-js\">(mapName: string) =&gt; Object\n</code></pre>\n<p>获取已注册的地图，返回的对象类型如下</p>\n<pre><code class=\"lang-js\">{\n    // 地图的 geoJson 数据\n    geoJson: Object,\n    // 地图的特殊区域，见 registerMap\n    specialAreas: Object\n}\n</code></pre>\n"
+          },
           "registerTheme": {
             "type": [
               "Function"
@@ -124,7 +130,7 @@
             "type": [
               "Function"
             ],
-            "descriptionCN": "<pre><code class=\"lang-js\">(type?: string, opts?: Object)\n</code></pre>\n<p>显示加载动画效果。可以在加载数据前手动调用改接口显示加载动画，在动画加载完成后调用 <a href=\"#echartsInstance.hideLoading\">hideLoading</a> 隐藏加载动画。</p>\n<p><strong>参数：</strong></p>\n<ul>\n<li><p><code>type</code></p>\n<p>  可选，加载动画类型，目前只有一种<code>&#39;default&#39;</code></p>\n</li>\n<li><p><code>opts</code></p>\n<p>  可选，加载动画配置项，跟<code>type</code>有关，下面是默认配置项：</p>\n<pre><code class=\"lang-js\">default: {\n  text: &#39;loading&#39;,\n  color: &#39;#c23531&#39;,\n  textColor: &#39;#000&#39;,\n  maskColor: &#39;rgba(255, 255, 255, 0.8)&#39;,\n  zlevel: 0\n}\n</code></pre>\n</li>\n</ul>\n"
+            "descriptionCN": "<pre><code class=\"lang-js\">(type?: string, opts?: Object)\n</code></pre>\n<p>显示加载动画效果。可以在加载数据前手动调用改接口显示加载动画，在数据加载完成后调用 <a href=\"#echartsInstance.hideLoading\">hideLoading</a> 隐藏加载动画。</p>\n<p><strong>参数：</strong></p>\n<ul>\n<li><p><code>type</code></p>\n<p>  可选，加载动画类型，目前只有一种<code>&#39;default&#39;</code></p>\n</li>\n<li><p><code>opts</code></p>\n<p>  可选，加载动画配置项，跟<code>type</code>有关，下面是默认配置项：</p>\n<pre><code class=\"lang-js\">default: {\n  text: &#39;loading&#39;,\n  color: &#39;#c23531&#39;,\n  textColor: &#39;#000&#39;,\n  maskColor: &#39;rgba(255, 255, 255, 0.8)&#39;,\n  zlevel: 0\n}\n</code></pre>\n</li>\n</ul>\n"
           },
           "hideLoading": {
             "type": [
@@ -136,13 +142,13 @@
             "type": [
               "Function"
             ],
-            "descriptionCN": "<pre><code class=\"lang-js\">(opts: {\n    // 导出的格式，可选 png, jpeg\n    type?: string,\n    // 导出的图片分辨率比例，默认为 1。\n    pixelRatio?: number,\n    // 导出的图片背景色，默认使用 option 里的 backgroundColor\n    backgroundColor?: string\n}) =&gt; string\n</code></pre>\n<p>导出图表图片，返回一个 base64 的 url，可以设置为<code>Image</code>的<code>src</code>。</p>\n<p><strong>示例：</strong></p>\n<pre><code class=\"lang-js\">var img = new Image();\nimg.src = myChart.getDataURL({\n    pixelRatio: 2,\n    backgroundColor: &#39;#fff&#39;\n});\n</code></pre>\n"
+            "descriptionCN": "<pre><code class=\"lang-js\">(opts: {\n    // 导出的格式，可选 png, jpeg\n    type?: string,\n    // 导出的图片分辨率比例，默认为 1。\n    pixelRatio?: number,\n    // 导出的图片背景色，默认使用 option 里的 backgroundColor\n    backgroundColor?: string\n}) =&gt; string\n</code></pre>\n<p>导出图表图片，返回一个 base64 的 URL，可以设置为<code>Image</code>的<code>src</code>。</p>\n<p><strong>示例：</strong></p>\n<pre><code class=\"lang-js\">var img = new Image();\nimg.src = myChart.getDataURL({\n    pixelRatio: 2,\n    backgroundColor: &#39;#fff&#39;\n});\n</code></pre>\n"
           },
           "getConnectedDataURL": {
             "type": [
               "*"
             ],
-            "descriptionCN": "<pre><code class=\"lang-js\">(opts: {\n    // 导出的格式，可选 png, jpeg\n    type: string,\n    // 导出的图片分辨率比例，默认为 1。\n    pixelRatio: number,\n    // 导出的图片背景色，默认使用 option 里的 backgroundColor\n    backgroundColor: string\n}) =&gt; string\n</code></pre>\n<p>导出联动的图表图片，返回一个 base64 的 url，可以设置为<code>Image</code>的<code>src</code>。导出图片中每个图表的相对位置跟器容器的相对位置有关。</p>\n"
+            "descriptionCN": "<pre><code class=\"lang-js\">(opts: {\n    // 导出的格式，可选 png, jpeg\n    type?: string,\n    // 导出的图片分辨率比例，默认为 1。\n    pixelRatio?: number,\n    // 导出的图片背景色，默认使用 option 里的 backgroundColor\n    backgroundColor?: string\n}) =&gt; string\n</code></pre>\n<p>导出联动的图表图片，返回一个 base64 的 url，可以设置为<code>Image</code>的<code>src</code>。导出图片中每个图表的相对位置跟容器的相对位置有关。</p>\n"
           },
           "clear": {
             "type": [
@@ -218,7 +224,7 @@
                 "type": [
                   "Action"
                 ],
-                "descriptionCN": "<p>显示提示框。</p>\n<p>有下面两种使用方式。</p>\n<p>1 指定在相对容器的位置处显示提示框，如果指定的位置无法显示则无效。</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;showTip&#39;,\n    // 屏幕上的 x 坐标\n    x: number,\n    // 屏幕上的 y 坐标\n    y: number\n})\n</code></pre>\n<p>2 指定数据图形，根据 tooltip 的配置项显示提示框。</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;showTip&#39;,\n    // 系列的 index，在 tooltip 的 trigger 为 axis 的时候可选。\n    seriesIndex?: number,\n    // 数据的 index，如果不指定也可以通过 name 属性根据名称指定数据\n    dataIndex?: number,\n    // 数据名称，可选，在有 dataIndex 的时候忽略\n    name?: string\n})\n</code></pre>\n"
+                "descriptionCN": "<p>显示提示框。</p>\n<p>有下面两种使用方式。</p>\n<p>1 指定在相对容器的位置处显示提示框，如果指定的位置无法显示则无效。</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;showTip&#39;,\n    // 屏幕上的 x 坐标\n    x: number,\n    // 屏幕上的 y 坐标\n    y: number\n})\n</code></pre>\n<p>2 指定数据图形，根据 tooltip 的配置项显示提示框。</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;showTip&#39;,\n    // 系列的 index，在 tooltip 的 trigger 为 axis 的时候可选。\n    seriesIndex?: number,\n    // 数据的 index，如果不指定也可以通过 name 属性根据名称指定数据\n    dataIndex?: number,\n    // 可选，数据名称，在有 dataIndex 的时候忽略\n    name?: string\n})\n</code></pre>\n"
               },
               "hideTip": {
                 "type": [
@@ -300,19 +306,45 @@
                 "type": [
                   "Action"
                 ],
-                "descriptionCN": "<p>选中指定的饼图扇形。</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;pieSelect&#39;,\n    // 可选，系列 index，可以是一个数组指定多个系列\n    seriesIndex?: number|Array,\n    // 可选，系列名称，可以是一个数组指定多个系列\n    seriesName?: string|Array,\n    // 数据的 index，如果不指定也可以通过 name 属性根据名称指定数据\n    dataIndex?: number,\n    // 数据名称，可选，在有 dataIndex 的时候忽略\n    name?: string\n})\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.pieselected\">pieselected</a></p>\n"
+                "descriptionCN": "<p>选中指定的饼图扇形。</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;pieSelect&#39;,\n    // 可选，系列 index，可以是一个数组指定多个系列\n    seriesIndex?: number|Array,\n    // 可选，系列名称，可以是一个数组指定多个系列\n    seriesName?: string|Array,\n    // 数据的 index，如果不指定也可以通过 name 属性根据名称指定数据\n    dataIndex?: number,\n    // 可选，数据名称，在有 dataIndex 的时候忽略\n    name?: string\n})\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.pieselected\">pieselected</a></p>\n"
               },
               "pieUnSelect": {
                 "type": [
                   "Action"
                 ],
-                "descriptionCN": "<p>取消选中指定的饼图扇形。</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;pieUnSelect&#39;,\n    // 可选，系列 index，可以是一个数组指定多个系列\n    seriesIndex?: number|Array,\n    // 可选，系列名称，可以是一个数组指定多个系列\n    seriesName?: string|Array,\n    // 数据的 index，如果不指定也可以通过 name 属性根据名称指定数据\n    dataIndex?: number,\n    // 数据名称，可选，在有 dataIndex 的时候忽略\n    name?: string\n})\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.pieunselected\">pieunselected</a></p>\n"
+                "descriptionCN": "<p>取消选中指定的饼图扇形。</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;pieUnSelect&#39;,\n    // 可选，系列 index，可以是一个数组指定多个系列\n    seriesIndex?: number|Array,\n    // 可选，系列名称，可以是一个数组指定多个系列\n    seriesName?: string|Array,\n    // 数据的 index，如果不指定也可以通过 name 属性根据名称指定数据\n    dataIndex?: number,\n    // 可选，数据名称，在有 dataIndex 的时候忽略\n    name?: string\n})\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.pieunselected\">pieunselected</a></p>\n"
               },
               "pieToggleSelect": {
                 "type": [
                   "Action"
                 ],
-                "descriptionCN": "<p>切换指定的饼图扇形选中状态。</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;pieToggleSelect&#39;,\n    // 可选，系列 index，可以是一个数组指定多个系列\n    seriesIndex?: number|Array,\n    // 可选，系列名称，可以是一个数组指定多个系列\n    seriesName?: string|Array,\n    // 数据的 index，如果不指定也可以通过 name 属性根据名称指定数据\n    dataIndex?: number,\n    // 数据名称，可选，在有 dataIndex 的时候忽略\n    name?: string\n})\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.pieselectchanged\">pieselectchanged</a></p>\n<!--============= map ==========-->"
+                "descriptionCN": "<p>切换指定的饼图扇形选中状态。</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;pieToggleSelect&#39;,\n    // 可选，系列 index，可以是一个数组指定多个系列\n    seriesIndex?: number|Array,\n    // 可选，系列名称，可以是一个数组指定多个系列\n    seriesName?: string|Array,\n    // 数据的 index，如果不指定也可以通过 name 属性根据名称指定数据\n    dataIndex?: number,\n    // 可选，数据名称，在有 dataIndex 的时候忽略\n    name?: string\n})\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.pieselectchanged\">pieselectchanged</a></p>\n<!--============= geo ==========-->"
+              }
+            }
+          },
+          "geo": {
+            "type": [
+              "*"
+            ],
+            "descriptionCN": "<p><a href=\"option.html#series-geo\" target=\"_blank\">地图组件</a>相关的行为，必须引入<a href=\"option.html#geo\" target=\"_blank\">地图组件</a>后才能使用。</p>\n",
+            "properties": {
+              "geoSelect": {
+                "type": [
+                  "Action"
+                ],
+                "descriptionCN": "<p>选中指定的地图区域。</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;geoSelect&#39;,\n    // 可选，系列 index，可以是一个数组指定多个系列\n    seriesIndex?: number|Array,\n    // 可选，系列名称，可以是一个数组指定多个系列\n    seriesName?: string|Array,\n    // 数据的 index，如果不指定也可以通过 name 属性根据名称指定数据\n    dataIndex?: number,\n    // 可选，数据名称，在有 dataIndex 的时候忽略\n    name?: string\n})\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.geoselected\">geoselected</a></p>\n"
+              },
+              "geoUnSelect": {
+                "type": [
+                  "Action"
+                ],
+                "descriptionCN": "<p>取消选中指定的地图区域。</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;geoUnSelect&#39;,\n    // 可选，系列 index，可以是一个数组指定多个系列\n    seriesIndex?: number|Array,\n    // 可选，系列名称，可以是一个数组指定多个系列\n    seriesName?: string|Array,\n    // 数据的 index，如果不指定也可以通过 name 属性根据名称指定数据\n    dataIndex?: number,\n    // 可选，数据名称，在有 dataIndex 的时候忽略\n    name?: string\n})\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.geounselected\">geounselected</a></p>\n"
+              },
+              "geoToggleSelect": {
+                "type": [
+                  "Action"
+                ],
+                "descriptionCN": "<p>切换指定的地图区域选中状态。</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;geoToggleSelect&#39;,\n    // 可选，系列 index，可以是一个数组指定多个系列\n    seriesIndex?: number|Array,\n    // 可选，系列名称，可以是一个数组指定多个系列\n    seriesName?: string|Array,\n    // 数据的 index，如果不指定也可以通过 name 属性根据名称指定数据\n    dataIndex?: number,\n    // 可选，数据名称，在有 dataIndex 的时候忽略\n    name?: string\n})\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.geoselectchanged\">geoselectchanged</a></p>\n<!--============= map ==========-->"
               }
             }
           },
@@ -320,25 +352,39 @@
             "type": [
               "*"
             ],
-            "descriptionCN": "<p><a href=\"option.html#series-map\" target=\"_blank\">地图</a>相关的行为，必须引入<a href=\"option.html#series-map\" target=\"_blank\">地图</a>后才能使用。</p>\n",
+            "descriptionCN": "<p><a href=\"option.html#series-map\" target=\"_blank\">地图图表</a>相关的行为，必须引入<a href=\"option.html#series-map\" target=\"_blank\">地图图表</a>后才能使用。</p>\n",
             "properties": {
               "mapSelect": {
                 "type": [
                   "Action"
                 ],
-                "descriptionCN": "<p>选中指定的地图区域。</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;mapSelect&#39;,\n    // 可选，系列 index，可以是一个数组指定多个系列\n    seriesIndex?: number|Array,\n    // 可选，系列名称，可以是一个数组指定多个系列\n    seriesName?: string|Array,\n    // 数据的 index，如果不指定也可以通过 name 属性根据名称指定数据\n    dataIndex?: number,\n    // 数据名称，可选，在有 dataIndex 的时候忽略\n    name?: string\n})\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.mapselected\">mapselected</a></p>\n"
+                "descriptionCN": "<p>选中指定的地图区域。</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;mapSelect&#39;,\n    // 可选，系列 index，可以是一个数组指定多个系列\n    seriesIndex?: number|Array,\n    // 可选，系列名称，可以是一个数组指定多个系列\n    seriesName?: string|Array,\n    // 数据的 index，如果不指定也可以通过 name 属性根据名称指定数据\n    dataIndex?: number,\n    // 可选，数据名称，在有 dataIndex 的时候忽略\n    name?: string\n})\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.mapselected\">mapselected</a></p>\n"
               },
               "mapUnSelect": {
                 "type": [
                   "Action"
                 ],
-                "descriptionCN": "<p>取消选中指定的地图区域。</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;mapUnSelect&#39;,\n    // 可选，系列 index，可以是一个数组指定多个系列\n    seriesIndex?: number|Array,\n    // 可选，系列名称，可以是一个数组指定多个系列\n    seriesName?: string|Array,\n    // 数据的 index，如果不指定也可以通过 name 属性根据名称指定数据\n    dataIndex?: number,\n    // 数据名称，可选，在有 dataIndex 的时候忽略\n    name?: string\n})\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.mapunselected\">mapunselected</a></p>\n"
+                "descriptionCN": "<p>取消选中指定的地图区域。</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;mapUnSelect&#39;,\n    // 可选，系列 index，可以是一个数组指定多个系列\n    seriesIndex?: number|Array,\n    // 可选，系列名称，可以是一个数组指定多个系列\n    seriesName?: string|Array,\n    // 数据的 index，如果不指定也可以通过 name 属性根据名称指定数据\n    dataIndex?: number,\n    // 可选，数据名称，在有 dataIndex 的时候忽略\n    name?: string\n})\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.mapunselected\">mapunselected</a></p>\n"
               },
               "mapToggleSelect": {
                 "type": [
                   "Action"
                 ],
-                "descriptionCN": "<p>切换指定的地图区域选中状态。</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;mapToggleSelect&#39;,\n    // 可选，系列 index，可以是一个数组指定多个系列\n    seriesIndex?: number|Array,\n    // 可选，系列名称，可以是一个数组指定多个系列\n    seriesName?: string|Array,\n    // 数据的 index，如果不指定也可以通过 name 属性根据名称指定数据\n    dataIndex?: number,\n    // 数据名称，可选，在有 dataIndex 的时候忽略\n    name?: string\n})\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.mapselectchanged\">mapselectchanged</a></p>\n"
+                "descriptionCN": "<p>切换指定的地图区域选中状态。</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;mapToggleSelect&#39;,\n    // 可选，系列 index，可以是一个数组指定多个系列\n    seriesIndex?: number|Array,\n    // 可选，系列名称，可以是一个数组指定多个系列\n    seriesName?: string|Array,\n    // 数据的 index，如果不指定也可以通过 name 属性根据名称指定数据\n    dataIndex?: number,\n    // 可选，数据名称，在有 dataIndex 的时候忽略\n    name?: string\n})\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.mapselectchanged\">mapselectchanged</a></p>\n<!--============= brush ==========-->"
+              }
+            }
+          },
+          "brush": {
+            "type": [
+              "*"
+            ],
+            "descriptionCN": "<p><a href=\"option.html#brush\" target=\"_blank\">区域选择</a>相关的行为。</p>\n",
+            "properties": {
+              "brush": {
+                "type": [
+                  "*"
+                ],
+                "descriptionCN": "<p>触发此 action 可向 echarts 中添加一个或多个选框，例如：</p>\n<pre><code class=\"lang-javascript\">myChart.dispatchAction({\n    type: &#39;brush&#39;,\n    areas: [ // areas 表示选框的集合，可以指定多个选框。\n        { // 选框一：\n            geoIndex: 0, // 指定此选框属于 index 为 0 的 geo 坐标系。\n                         // 也可以通过 xAxisIndex 或 yAxisIndex 来指定此选框属于直角坐标系。\n                         // 如果没有指定，则此选框属于『全局选框』。不属于任何坐标系。\n                         // 属于『坐标系选框』，可以随坐标系一起缩放平移。属于全局的选框不行。\n            brushType: &#39;polygon&#39;, // 指定选框的类型。还可以为 &#39;rect&#39;, &#39;lineX&#39;, &#39;lineY&#39;\n            range: [ // 如果是『全局选框』，则使用 range 来描述选框的范围。\n                ...\n            ],\n            coordRange: [ // 如果是『坐标系选框』，则使用 coordRange 来指定选框的范围。\n                [119.72,34.85],[119.68,34.85],[119.5,34.84],[119.19,34.77]\n                // 这个例子中，因为指定了 geoIndex，所以 coordRange 里单位是经纬度。\n            ]\n        },\n        ... // 选框二、三、四、...\n    ]\n});\n</code></pre>\n<p>其中，<code>areas</code> 中的 <code>range</code> 和 <code>coordRange</code> 的格式，根据 brushType 不同而不同：</p>\n<ul>\n<li>brushType 为 &#39;rect&#39;\n  <code>range</code> 和 <code>coordRange</code> 的格式为：<code>[[minX, maxX], [minY, maxY]]</code></li>\n<li>brushType 为 &#39;lineX&#39; 或 &#39;lineY&#39;\n  <code>range</code> 和 <code>coordRange</code> 的格式为：[min, maxX]</li>\n<li>brushType 为 &#39;polygon&#39;\n  <code>range</code> 和 <code>coordRange</code> 的格式为：[[point1X, point1X], [point2X, point2X], ...]</li>\n</ul>\n<p><code>range</code> 和 <code>coordRange</code> 的区别是：</p>\n<ul>\n<li>当此选框为『全局选框』时，使用 <code>range</code>。</li>\n<li>当此选框为『坐标系选框』时（即指定了 <code>geoIndex</code> 或 <code>xAxisIndex</code> 或 <code>yAxisIndex</code> 时），使用 <code>coordRange</code>。</li>\n<li><code>range</code> 的单位为 <em>像素</em>，<code>coordRange</code> 的单位为 <em>坐标系单位</em>，比如 geo 中，<code>coordRange</code> 单位为经纬度，直角坐标系中，coordRange 单位为对应轴的数据的单位。</li>\n</ul>\n"
               }
             }
           }
@@ -348,13 +394,13 @@
         "type": [
           "*"
         ],
-        "descriptionCN": "<p>在 ECharts 中主要通过 <a href=\"#echartsInstance.on\">on</a> 方法添加事件处理函数，该文档描述了所有 ECharts 的事件列表。</p>\n<p>ECharts 中的事件列表分为两种，一种是鼠标事件，在鼠标点击某个图形上会触发，还有一种是 调用 <a href=\"#echartsInstance.dispatchAction\">dispatchAction</a> 后触发的事件。</p>\n",
+        "descriptionCN": "<p>在 ECharts 中主要通过 <a href=\"#echartsInstance.on\">on</a> 方法添加事件处理函数，该文档描述了所有 ECharts 的事件列表。</p>\n<p>ECharts 中的事件分为两种，一种是鼠标事件，在鼠标点击某个图形上会触发，还有一种是 调用 <a href=\"#echartsInstance.dispatchAction\">dispatchAction</a> 后触发的事件。</p>\n<p><strong>示例：</strong></p>\n<pre><code class=\"lang-js\">myChart.on(&#39;click&#39;, function (params) {\n    console.log(params);\n});\n\nmyChart.on(&#39;legendselectchanged&#39;, function (params) {\n    console.log(params);\n});\n</code></pre>\n",
         "properties": {
           "鼠标事件": {
             "type": [
               "*"
             ],
-            "descriptionCN": "<p>鼠标事件的事件参数是事件对象的数据的各个属性，对于图表的点击事件，基本参数如下，其它图表诸如饼图可能会有部分附加参数。例如饼图会有<code>percent</code>属性表示百分比，具体见各个图表类型的 label formatter 回调函数的 params。</p>\n<pre><code class=\"lang-js\">{\n    componentType: &#39;series&#39;,\n    // 系列类型\n    seriesType: string,\n    // 系列在传入的 option.series 中的 index\n    seriesIndex: number,\n    // 系列名称\n    seriesName: string,\n    // 数据名，类目名\n    name: string,\n    // 数据在传入的 data 数组中的 index\n    dataIndex: number,\n    // 传入的原始数据项\n    data: Object,\n    // 传入的数据值\n    value: number|Array,\n    // 数据图形的颜色\n    color: string\n}\n</code></pre>\n<p>鼠标事件包括<code>&#39;click&#39;</code>，<code>&#39;dblclick&#39;</code>，<code>&#39;mousedown&#39;</code>，<code>&#39;mouseup&#39;</code>，<code>&#39;mouseover&#39;</code>，<code>&#39;mouseout&#39;</code>，<code>&#39;globalout&#39;</code></p>\n",
+            "descriptionCN": "<p>鼠标事件的事件参数是事件对象的数据的各个属性，对于图表的点击事件，基本参数如下，其它图表诸如饼图可能会有部分附加参数。例如饼图会有<code>percent</code>属性表示百分比，具体见各个图表类型的 label formatter 回调函数的 <code>params</code>。</p>\n<pre><code class=\"lang-js\">{\n    // 当前点击的图形元素所属的组件名称，\n    // 其值如 &#39;series&#39;、&#39;markLine&#39;、&#39;markPoint&#39;、&#39;timeLine&#39; 等。\n    componentType: string,\n    // 系列类型。值可能为：&#39;line&#39;、&#39;bar&#39;、&#39;pie&#39; 等。当 componentType 为 &#39;series&#39; 时有意义。\n    seriesType: string,\n    // 系列在传入的 option.series 中的 index。当 componentType 为 &#39;series&#39; 时有意义。\n    seriesIndex: number,\n    // 系列名称。当 componentType 为 &#39;series&#39; 时有意义。\n    seriesName: string,\n    // 数据名，类目名\n    name: string,\n    // 数据在传入的 data 数组中的 index\n    dataIndex: number,\n    // 传入的原始数据项\n    data: Object,\n    // sankey、graph 等图表同时含有 nodeData 和 edgeData 两种 data，\n    // dataType 的值会是 &#39;node&#39; 或者 &#39;edge&#39;，表示当前点击在 node 还是 edge 上。\n    // 其他大部分图表中只有一种 data，dataType 无意义。\n    dataType: string,\n    // 传入的数据值\n    value: number|Array\n    // 数据图形的颜色。当 componentType 为 &#39;series&#39; 时有意义。\n    color: string\n}\n</code></pre>\n<p>鼠标事件包括<code>&#39;click&#39;</code>，<code>&#39;dblclick&#39;</code>，<code>&#39;mousedown&#39;</code>，<code>&#39;mouseup&#39;</code>，<code>&#39;mouseover&#39;</code>，<code>&#39;mouseout&#39;</code>，<code>&#39;globalout&#39;</code>。</p>\n<p>参见 <a href=\"http://echarts.baidu.com/tutorial.html#ECharts%20%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%92%8C%E8%A1%8C%E4%B8%BA\" target=\"_blank\">ECharts 中的事件和行为</a></p>\n",
             "properties": {
               "click": {
                 "type": [
@@ -404,13 +450,13 @@
             "type": [
               "Event"
             ],
-            "descriptionCN": "<p><strong>ACTION:</strong> <a href=\"#action.legend.legendToggleSelect\">legendToggleSelect</a>\n切换图例选中状态后的事件。</p>\n<p><strong>注：</strong>图例组件用户切换图例开关会触发该事件。</p>\n<pre><code class=\"lang-js\">{\n    type: &#39;legendselectchanged&#39;,\n    // 切换的图例名称\n    name: string\n    // 所有图例的选中状态表。\n    selected: Object\n}\n</code></pre>\n"
+            "descriptionCN": "<p><strong>ACTION:</strong> <a href=\"#action.legend.legendToggleSelect\">legendToggleSelect</a>\n切换图例选中状态后的事件。</p>\n<p><strong>注：</strong>图例组件用户切换图例开关会触发该事件。</p>\n<pre><code class=\"lang-js\">{\n    type: &#39;legendselectchanged&#39;,\n    // 切换的图例名称\n    name: string\n    // 所有图例的选中状态表\n    selected: Object\n}\n</code></pre>\n"
           },
           "legendselected": {
             "type": [
               "Event"
             ],
-            "descriptionCN": "<p><strong>ACTION:</strong> <a href=\"#action.legend.legendSelect\">legendSelect</a>\n图例选中后的事件。</p>\n<pre><code class=\"lang-js\">{\n    type: &#39;legendselected&#39;,\n    // 选中的图例名称\n    name: string\n    // 所有图例的选中状态表。\n    selected: Object\n}\n</code></pre>\n<p><strong>注：</strong> ECharts 2.x 中用户开关图例对应的事件从 <code>legendselected</code> 改为 <a href=\"#events.legendselectchanged\">legendselectchanged</a>。</p>\n"
+            "descriptionCN": "<p><strong>ACTION:</strong> <a href=\"#action.legend.legendSelect\">legendSelect</a>\n图例选中后的事件。</p>\n<pre><code class=\"lang-js\">{\n    type: &#39;legendselected&#39;,\n    // 选中的图例名称\n    name: string\n    // 所有图例的选中状态表\n    selected: Object\n}\n</code></pre>\n<p><strong>注：</strong> ECharts 2.x 中用户开关图例对应的事件从 <code>legendselected</code> 改为 <a href=\"#events.legendselectchanged\">legendselectchanged</a>。</p>\n"
           },
           "legendunselected": {
             "type": [
@@ -428,7 +474,7 @@
             "type": [
               "Event"
             ],
-            "descriptionCN": "<p><strong>ACTION:</strong> <a href=\"#action.dataRange.selectDataRange\">selectDataRange</a>\n视觉映射组件中映射的数值范围的选取事件。</p>\n<pre><code class=\"lang-js\">{\n    type: &#39;datarangeselected&#39;,\n    // 连续型 visualMap 和 离散型 visualMap 不一样\n    // 连续型的是一个表示数值范围的数组。\n    // 离散型的是一个对象，键值是类目或者分段的索引。值是 `true`, `false`\n    selected: Object|Array\n}\n</code></pre>\n"
+            "descriptionCN": "<p><strong>ACTION:</strong> <a href=\"#action.dataRange.selectDataRange\">selectDataRange</a>\n视觉映射组件中，<code>range</code> 值改变后触发的事件。</p>\n<pre><code class=\"lang-js\">{\n    type: &#39;datarangeselected&#39;,\n    // 连续型 visualMap 和 离散型 visualMap 不一样\n    // 连续型的是一个表示数值范围的数组。\n    // 离散型的是一个对象，键值是类目或者分段的索引。值是`true`或`false`\n    selected: Object|Array\n}\n</code></pre>\n"
           },
           "timelinechanged": {
             "type": [
@@ -460,47 +506,77 @@
             ],
             "descriptionCN": "<p><a href=\"option.html#toolbox.feature.magicType\" target=\"_blank\">工具栏中动态类型切换</a>的切换事件。</p>\n<pre><code class=\"lang-js\">{\n    type: &#39;magictypechanged&#39;,\n    // 点击切换的当前类型，同 echarts 2.x 中的 type 属性\n    currentType: string\n}\n</code></pre>\n"
           },
+          "geoselectchanged": {
+            "type": [
+              "Event"
+            ],
+            "descriptionCN": "<p><strong>ACTION:</strong> <a href=\"#action.geo.geoToggleSelect\">geoToggleSelect</a></p>\n<p><a href=\"option.html#geo\" target=\"_blank\">geo</a> 中地图区域切换选中状态的事件。</p>\n<p>用户点击选中会触发该事件。</p>\n<pre><code class=\"lang-js\">{\n    type: &#39;geoselectchanged&#39;,\n    // 系列 ID，可以在 option 中传入\n    seriesId: string\n    // 数据名称\n    name: name,\n    // 所有数据的选中状态表。\n    selected: Object\n}\n</code></pre>\n"
+          },
+          "geoselected": {
+            "type": [
+              "Event"
+            ],
+            "descriptionCN": "<p><strong>ACTION:</strong> <a href=\"#action.geo.geoSelect\">geoSelect</a></p>\n<p><a href=\"option.html#{componentTypeFull}\" target=\"_blank\">geo</a> 中地图区域选中后的事件。</p>\n<p>使用<code>dispatchAction</code>可触发此事件，用户点击不会触发此事件（用户点击事件请使用 <a href=\"#events.geoselectchanged\">geoselectchanged</a>）。</p>\n<pre><code class=\"lang-js\">{\n    type: &#39;geoselected&#39;,\n    // 系列 ID，可以在 option 中传入\n    seriesId: string\n    // 数据名称\n    name: name,\n    // 所有数据的选中状态表。\n    selected: Object\n}\n</code></pre>\n"
+          },
+          "geounselected": {
+            "type": [
+              "Event"
+            ],
+            "descriptionCN": "<p><strong>ACTION:</strong> <a href=\"#action.geo.geoUnSelect\">geoUnSelect</a></p>\n<p><a href=\"option.html#geo\" target=\"_blank\">geo</a> 中地图区域取消选中后的事件。</p>\n<p>使用<code>dispatchAction</code>可触发此事件，用户点击不会触发此事件（用户点击事件请使用 <a href=\"#events.geoselectchanged\">geoselectchanged</a>）。</p>\n<pre><code class=\"lang-js\">{\n    type: &#39;geounselected&#39;,\n    // 系列 ID，可以在 option 中传入\n    seriesId: string\n    // 数据名称\n    name: name,\n    // 所有数据的选中状态表。\n    selected: Object\n}\n</code></pre>\n"
+          },
           "pieselectchanged": {
             "type": [
               "Event"
             ],
-            "descriptionCN": "<p><strong>ACTION:</strong> <a href=\"#action.pie.pieToggleSelect\">pieToggleSelect</a></p>\n<p>饼图扇形切换选中状态的事件。</p>\n<p>用户点击选中会触发该事件。</p>\n<pre><code class=\"lang-js\">{\n    type: &#39;pieselectchanged&#39;,\n    // 系列 ID，可以在 option 中传入\n    seriesId: string\n    // 数据名称\n    name: name,\n    // 所有数据的选中状态表。\n    selected: Object\n}\n</code></pre>\n<p><strong>注：</strong> 该事件同 ECharts 2 中的 <code>pieSelected</code> 事件相同。</p>\n"
+            "descriptionCN": "<p><strong>ACTION:</strong> <a href=\"#action.pie.pieToggleSelect\">pieToggleSelect</a></p>\n<p><a href=\"option.html#series-pie\" target=\"_blank\">series-pie</a> 中饼图扇形切换选中状态的事件。</p>\n<p>用户点击选中会触发该事件。</p>\n<pre><code class=\"lang-js\">{\n    type: &#39;pieselectchanged&#39;,\n    // 系列 ID，可以在 option 中传入\n    seriesId: string\n    // 数据名称\n    name: name,\n    // 所有数据的选中状态表。\n    selected: Object\n}\n</code></pre>\n<p><strong>注：</strong> 该事件同 ECharts 2 中的 <code>pieSelected</code> 事件相同。</p>\n"
           },
           "pieselected": {
             "type": [
               "Event"
             ],
-            "descriptionCN": "<p><strong>ACTION:</strong> <a href=\"#action.pie.pieSelect\">pieSelect</a></p>\n<p>饼图扇形选中后的事件。</p>\n<p>使用<code>dispatchAction</code>可触发此事件，用户点击不会触发此事件（用户点击事件请使用 <a href=\"#events.pieselectchanged\">pieselectchanged</a>）。</p>\n<pre><code class=\"lang-js\">{\n    type: &#39;pieselected&#39;,\n    // 系列 ID，可以在 option 中传入\n    seriesId: string\n    // 数据名称\n    name: name,\n    // 所有数据的选中状态表。\n    selected: Object\n}\n</code></pre>\n<p><strong>注：</strong> ECharts 2.x 中用户开关图例对应的事件从 <code>pieselected</code> 改为 <a href=\"#events.pieselectchanged\">pieselectchanged</a>。</p>\n"
+            "descriptionCN": "<p><strong>ACTION:</strong> <a href=\"#action.pie.pieSelect\">pieSelect</a></p>\n<p><a href=\"option.html#{componentTypeFull}\" target=\"_blank\">series-pie</a> 中饼图扇形选中后的事件。</p>\n<p>使用<code>dispatchAction</code>可触发此事件，用户点击不会触发此事件（用户点击事件请使用 <a href=\"#events.pieselectchanged\">pieselectchanged</a>）。</p>\n<pre><code class=\"lang-js\">{\n    type: &#39;pieselected&#39;,\n    // 系列 ID，可以在 option 中传入\n    seriesId: string\n    // 数据名称\n    name: name,\n    // 所有数据的选中状态表。\n    selected: Object\n}\n</code></pre>\n<p><strong>注：</strong> ECharts 2.x 中用户开关图例对应的事件从 <code>pieselected</code> 改为 <a href=\"#events.pieselectchanged\">pieselectchanged</a>。</p>\n"
           },
           "pieunselected": {
             "type": [
               "Event"
             ],
-            "descriptionCN": "<p><strong>ACTION:</strong> <a href=\"#action.pie.pieUnSelect\">pieUnSelect</a></p>\n<p>饼图扇形取消选中后的事件。</p>\n<p>使用<code>dispatchAction</code>可触发此事件，用户点击不会触发此事件（用户点击事件请使用 <a href=\"#events.pieselectchanged\">pieselectchanged</a>）。</p>\n<pre><code class=\"lang-js\">{\n    type: &#39;pieunselected&#39;,\n    // 系列 ID，可以在 option 中传入\n    seriesId: string\n    // 数据名称\n    name: name,\n    // 所有数据的选中状态表。\n    selected: Object\n}\n</code></pre>\n"
+            "descriptionCN": "<p><strong>ACTION:</strong> <a href=\"#action.pie.pieUnSelect\">pieUnSelect</a></p>\n<p><a href=\"option.html#series-pie\" target=\"_blank\">series-pie</a> 中饼图扇形取消选中后的事件。</p>\n<p>使用<code>dispatchAction</code>可触发此事件，用户点击不会触发此事件（用户点击事件请使用 <a href=\"#events.pieselectchanged\">pieselectchanged</a>）。</p>\n<pre><code class=\"lang-js\">{\n    type: &#39;pieunselected&#39;,\n    // 系列 ID，可以在 option 中传入\n    seriesId: string\n    // 数据名称\n    name: name,\n    // 所有数据的选中状态表。\n    selected: Object\n}\n</code></pre>\n"
           },
           "mapselectchanged": {
             "type": [
               "Event"
             ],
-            "descriptionCN": "<p><strong>ACTION:</strong> <a href=\"#action.map.mapToggleSelect\">mapToggleSelect</a></p>\n<p>地图区域切换选中状态的事件。</p>\n<p>用户点击选中会触发该事件。</p>\n<pre><code class=\"lang-js\">{\n    type: &#39;mapselectchanged&#39;,\n    // 系列 ID，可以在 option 中传入\n    seriesId: string\n    // 数据名称\n    name: name,\n    // 所有数据的选中状态表。\n    selected: Object\n}\n</code></pre>\n<p><strong>注：</strong> 该事件同 ECharts 2 中的 <code>mapSelected</code> 事件相同。</p>\n"
+            "descriptionCN": "<p><strong>ACTION:</strong> <a href=\"#action.map.mapToggleSelect\">mapToggleSelect</a></p>\n<p><a href=\"option.html#series-map\" target=\"_blank\">series-map</a> 中地图区域切换选中状态的事件。</p>\n<p>用户点击选中会触发该事件。</p>\n<pre><code class=\"lang-js\">{\n    type: &#39;mapselectchanged&#39;,\n    // 系列 ID，可以在 option 中传入\n    seriesId: string\n    // 数据名称\n    name: name,\n    // 所有数据的选中状态表。\n    selected: Object\n}\n</code></pre>\n<p><strong>注：</strong> 该事件同 ECharts 2 中的 <code>mapSelected</code> 事件相同。</p>\n"
           },
           "mapselected": {
             "type": [
               "Event"
             ],
-            "descriptionCN": "<p><strong>ACTION:</strong> <a href=\"#action.map.mapSelect\">mapSelect</a></p>\n<p>地图区域选中后的事件。</p>\n<p>使用<code>dispatchAction</code>可触发此事件，用户点击不会触发此事件（用户点击事件请使用 <a href=\"#events.mapselectchanged\">mapselectchanged</a>）。</p>\n<pre><code class=\"lang-js\">{\n    type: &#39;mapselected&#39;,\n    // 系列 ID，可以在 option 中传入\n    seriesId: string\n    // 数据名称\n    name: name,\n    // 所有数据的选中状态表。\n    selected: Object\n}\n</code></pre>\n<p><strong>注：</strong> ECharts 2.x 中用户开关图例对应的事件从 <code>mapselected</code> 改为 <a href=\"#events.mapselectchanged\">mapselectchanged</a>。</p>\n"
+            "descriptionCN": "<p><strong>ACTION:</strong> <a href=\"#action.map.mapSelect\">mapSelect</a></p>\n<p><a href=\"option.html#{componentTypeFull}\" target=\"_blank\">series-map</a> 中地图区域选中后的事件。</p>\n<p>使用<code>dispatchAction</code>可触发此事件，用户点击不会触发此事件（用户点击事件请使用 <a href=\"#events.mapselectchanged\">mapselectchanged</a>）。</p>\n<pre><code class=\"lang-js\">{\n    type: &#39;mapselected&#39;,\n    // 系列 ID，可以在 option 中传入\n    seriesId: string\n    // 数据名称\n    name: name,\n    // 所有数据的选中状态表。\n    selected: Object\n}\n</code></pre>\n<p><strong>注：</strong> ECharts 2.x 中用户开关图例对应的事件从 <code>mapselected</code> 改为 <a href=\"#events.mapselectchanged\">mapselectchanged</a>。</p>\n"
           },
           "mapunselected": {
             "type": [
               "Event"
             ],
-            "descriptionCN": "<p><strong>ACTION:</strong> <a href=\"#action.map.mapUnSelect\">mapUnSelect</a></p>\n<p>地图区域取消选中后的事件。</p>\n<p>使用<code>dispatchAction</code>可触发此事件，用户点击不会触发此事件（用户点击事件请使用 <a href=\"#events.mapselectchanged\">mapselectchanged</a>）。</p>\n<pre><code class=\"lang-js\">{\n    type: &#39;mapunselected&#39;,\n    // 系列 ID，可以在 option 中传入\n    seriesId: string\n    // 数据名称\n    name: name,\n    // 所有数据的选中状态表。\n    selected: Object\n}\n</code></pre>\n"
+            "descriptionCN": "<p><strong>ACTION:</strong> <a href=\"#action.map.mapUnSelect\">mapUnSelect</a></p>\n<p><a href=\"option.html#series-map\" target=\"_blank\">series-map</a> 中地图区域取消选中后的事件。</p>\n<p>使用<code>dispatchAction</code>可触发此事件，用户点击不会触发此事件（用户点击事件请使用 <a href=\"#events.mapselectchanged\">mapselectchanged</a>）。</p>\n<pre><code class=\"lang-js\">{\n    type: &#39;mapunselected&#39;,\n    // 系列 ID，可以在 option 中传入\n    seriesId: string\n    // 数据名称\n    name: name,\n    // 所有数据的选中状态表。\n    selected: Object\n}\n</code></pre>\n"
           },
           "axisareaselected": {
             "type": [
               "Event"
             ],
-            "descriptionCN": "<p><a href=\"option.html#parallelAxis\" target=\"_blank\">平行坐标轴 (Parallel)</a> 范围选取事件。</p>\n<p>当进行坐标轴范围选区时，可以用如下方式获取当前高亮的线所对应的 data indices\n（即 <code>series</code> 的 <code>data</code> 中的序号列表）。</p>\n<pre><code class=\"lang-javascript\">chart.on(&#39;axisareaselected&#39;, function () {\n    var series1 = chart.getModel().getSeries()[0];\n    var series2 = chart.getModel().getSeries()[0];\n    var indices1 = series1.getRawIndicesByActiveState(&#39;active&#39;);\n    var indices2 = series2.getRawIndicesByActiveState(&#39;active&#39;);\n    console.log(indices1);\n    console.log(indices2);\n});\n</code></pre>\n"
+            "descriptionCN": "<p><a href=\"option.html#parallelAxis\" target=\"_blank\">平行坐标轴 (Parallel)</a> 范围选取事件。</p>\n<p>当进行坐标轴范围选取时，可以用如下方式获取当前高亮的线所对应的 data indices\n（即 <code>series</code> 的 <code>data</code> 中的序号列表）。</p>\n<pre><code class=\"lang-javascript\">chart.on(&#39;axisareaselected&#39;, function () {\n    var series0 = chart.getModel().getSeries()[0];\n    var series1 = chart.getModel().getSeries()[1];\n    var indices0 = series0.getRawIndicesByActiveState(&#39;active&#39;);\n    var indices1 = series1.getRawIndicesByActiveState(&#39;active&#39;);\n    console.log(indices0, indices1);\n});\n</code></pre>\n"
+          },
+          "brush": {
+            "type": [
+              "Event"
+            ],
+            "descriptionCN": "<p>选框添加事件。即发出 <a href=\"#action.brush\">brush</a> action 得到的事件。</p>\n"
+          },
+          "brushselected": {
+            "type": [
+              "Event"
+            ],
+            "descriptionCN": "<p>对外通知当前选中了什么。</p>\n<p>参见 <a href=\"option.html#brush\" target=\"_blank\">区域选择</a>。</p>\n<p>这个事件，在 <code>setOption</code> 时不会发出，在其他的 dispatchAction 时，或者用户在界面中创建、删除、修改选框时会发出。</p>\n<p>事件参数内容为：</p>\n<pre><code class=\"lang-javascript\">{\n    type: &#39;brushselected&#39;,\n    batch: [\n        {\n            brushIndex: number // brush 组件的id，大多数情况只使用一个 brush 组件，所以不必理会。\n            selected: [ // 每个系列被选中的项。\n                        // 注意，如果某个系列不支持 brush，但是还是会在这里出现对应的项。\n                        // 也就是说，selected 可以使用 seriesIndex 来直接找到对应的项。\n                { // series 0 被选中的项\n                    seriesIndex: number,\n                    dataIndex: [ 3, 6, 12, 23 ] // 用这些 dataIndex，可以去原始数据中找到真正的值。\n                },\n                { // series 1 被选中的项\n                    seriesIndex: number,\n                    dataIndex: []\n                },\n                ...\n            ]\n        },\n        ...\n    ]\n}\n</code></pre>\n<p>事件使用方式例如：</p>\n<pre><code class=\"lang-javascript\">var dataBySeries = [\n    [ 12, 23, 54, 6 ], // series 0 的数据\n    [ 34, 34433, 2223, 21122, 1232, 34 ] // series 1 的数据\n];\n\nchart.setOption({\n    ...,\n    brush: {\n        ...\n    },\n    series: [\n        { // series 0\n            data: dataBySeries[0]\n        },\n        { // series 1\n            data: dataBySeries[1]\n        }\n    ]\n});\n\nchart.on(&#39;brushSelected&#39;, function (params) {\n    var brushComponent = params.batch[0];\n\n    var sum = 0; // 统计选中项的数据值的和\n\n    for (var sIdx = 0; sIdx &lt; brushComponent.selected.length; sIdx++) {\n        // 对于每个 series：\n        var dataIndices = brushComponent.selected[sIdx].dataIndex;\n\n        for (var i = 0; i &lt; dataIndices.length; i++) {\n            var dataIndex = dataIndices[i];\n            sum += dataBySeries[sIdx][dataIndex];\n        }\n    }\n    console.log(sum); // 用某种方式输出统计值。\n});\n</code></pre>\n<p>如果想<strong>避免此事件频繁触发</strong>，可以使用 <a href=\"option.html#brush.throttleType\" target=\"_blank\">brush.throttleType</a>。</p>\n"
           }
         }
       }
