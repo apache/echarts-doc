@@ -241,7 +241,7 @@ links: [{
     prefix="####"
 ) }}
 
-### edgeLabel(Object)
+### label(Object)
 #### normal(Object)
 {{use: graph-edge-label(
     prefix="####"
