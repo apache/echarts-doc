@@ -1,22 +1,22 @@
 {{ target: partial-1d-data-label-formatter }}
 
-Data label formatter supoports string template and callback function.
+Data label formatter, which supoports string template and callback function. In either form, `\n` is supported to represent a new line.
 
-1. string template.
+- String template
 
-    Model variation includes `{a}`, `{b}`, `{c}`, `{d}`, representing series name, data name, data value and percent respectively.
+    Template variables includes `{a}`, `{b}`, `{c}`, `{d}`, representing series name, data name, data value, and percent respectively.
     **example: **
     ```js
     formatter: '{b}: {d}'
     ```
 
-2. callback function.
+- Callback function
 
-    Format of callback function: 
+    Callback function is in form of: 
     ```js
     (params: Object|Array) => string
     ```
-    parameter `params` is the single dataset that formatter needs.Format is as followed: 
+    where `params` is the single dataset needed by formatter, which is formed as: 
     {{ use: partial-formatter-params-structure(extra = ${extra}) }}
 
 formatter return string supports line feed with`\n` .
@@ -25,20 +25,20 @@ formatter return string supports line feed with`\n` .
 
 {{ target: partial-1d-data-desc }}
 
-${name} data content and array in the series.Array item can be a single data value, for example: 
+Data array of ${name} series, which can be a single data value, like: 
 ```js
 [12, 34, 56, 10, 23]
 ```
 
-If other dimensions need to be added to data  [visualMap](~visualMap) component to map color and other graphic properties.Each data item can also be an array, for example: 
+Or, if need extra dimensions for components like [visualMap](~visualMap) to map to graphic attributes like color, it can also be in the form of array. For example: 
 ```js
 [[12, 14], [34, 50], [56, 30], [10, 15], [23, 10]]
 ```
 
-Now second value in each arrary can be assigned to [visualMap](~visualMap) component.
+In this case, we can assgin the second value in each arrary item to [visualMap](~visualMap) component.
 
 
-In most situation, we need to assign name to each data item,so each item need to be one subject: 
+More likely, we need to assign name to each data item, in which case each item should be an object: 
 ```js
 [{
     // name of date item
@@ -51,7 +51,7 @@ In most situation, we need to assign name to each data item,so each item need to
 }]
 ```
 
-When personalized definition needs to be conducted to  sepcific content: 
+Each data item can be further custerized: 
 
 ```js
 [{
