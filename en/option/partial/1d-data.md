@@ -19,8 +19,6 @@ Data label formatter, which supoports string template and callback function. In 
     where `params` is the single dataset needed by formatter, which is formed as: 
     {{ use: partial-formatter-params-structure(extra = ${extra}) }}
 
-formatter return string supports line feed with`\n` .
-
 
 
 {{ target: partial-1d-data-desc }}
@@ -61,9 +59,9 @@ Each data item can be further custerized:
     // name of data item
     name: 'data2',
     value : 56,
-    //special self-define tooltip, only valid for this data item
-    tooltip:{},
-    //special self-define itemStyle, only valid for this data item
+    // user-defined label format that only useful for this data item
+    label: {},
+    // user-defined special itemStyle that only useful for this data item
     itemStyle:{}
 }]
 ```
