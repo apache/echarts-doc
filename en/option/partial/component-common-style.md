@@ -3,28 +3,28 @@
 
 #${prefix} backgroundColor(Color) = 'transparent'
 
-${componentName} background color, transparent by default.
+Background color of ${componentName}, which is transparent by default.
 
->color can be represented by RGB, for example `'rgb(128, 128, 128)'`   , if you want to add alpha channel, you can use RGBA, for example `'rgba(128, 128, 128, 0.5)'`, you can also use hexadecimal format, for example `'#ccc'`
+>Color can be represented in RGB, for example `'rgb(128, 128, 128)'`. RGBA can be used when you need alpha channel, for example `'rgba(128, 128, 128, 0.5)'`. You may also use hexadecimal format, for example `'#ccc'`.
 
 {{if: ${needShow} }}
-**Caution**: This property works only if `show: true` configured.
+**Attention**: Works only if `show: true` is set.
 {{/if}}
 
 #${prefix} borderColor(Color) = '#ccc'
 
-border color of ${componentName}. Support the same color format as backgroundColor.
+Border color of ${componentName}. Support the same color format as backgroundColor.
 
 {{if: ${needShow} }}
-**Caution**: This property works only if `show: true` configured.
+**Attention**: Works only if `show: true` is set.
 {{/if}}
 
 #${prefix} borderWidth(number) = 1
 
-border line width of ${componentName}.
+Border width of ${componentName}.
 
 {{if: ${needShow} }}
-**Caution**: This property works only if `show: true` configured.
+**Attention**: Works only if `show: true` is set.
 {{/if}}
 
 {{ use:partial-style-shadow(prefix=${prefix}, needShow=true) }}

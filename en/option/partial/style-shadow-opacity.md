@@ -15,7 +15,7 @@ itemStyle: {
 ```
 
 {{if: ${needShow} }}
-**Caution**: This property works only if `show: true` is configured and `backgroundColor` is defined other than `transparent`.
+**Attention**: This property works only if `show: true` is configured and `backgroundColor` is defined other than `transparent`.
 {{/if}}
 
 
@@ -24,7 +24,7 @@ itemStyle: {
 Shadow color. Support same format as `color`.
 
 {{if: ${needShow} }}
-**Caution**: This property works only if `show: true` configured.
+**Attention**: This property works only if `show: true` configured.
 {{/if}}
 
 
@@ -33,7 +33,7 @@ Shadow color. Support same format as `color`.
 Offset distance on the horizontal direction of the shade.
 
 {{if: ${needShow} }}
-**Caution**: This property works only if `show: true` configured.
+**Attention**: This property works only if `show: true` configured.
 {{/if}}
 
 
@@ -42,7 +42,7 @@ Offset distance on the horizontal direction of the shade.
 Offset distance on the vertical direction of the shade.
 
 {{if: ${needShow} }}
-**Caution**: This property works only if `show: true` configured.
+**Attention**: This property works only if `show: true` configured.
 {{/if}}
 
 

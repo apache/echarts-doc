@@ -5,9 +5,9 @@
 
 ## center(Array) = ${defaultCenter|default("['50%', '50%']")}
 
-The center coordinates of ${componentName}, the first item of array is the abscissa, the second item is ordinate.
+Center position of ${componentName}, the first of which is the horizontal position, and the second is the vertical position.
 
-Support set to percentage, the first item when setting to percentage is the width relative to the container, the second item is the height.
+Percentage is supported. When set in percentage, the item is relative to the container width, and the second item to the height.
 
 **Example: **
 ```
@@ -19,6 +19,6 @@ center: ['50%', '50%']
 
 ## radius(${defaultRadiusType|default("Array")}) = ${defaultRadius}
 
-the radius of ${componentName}, the first item of array is inner radius,the second item is outer radius.
+Radius of ${componentName}, the first of which is inner radius, and the second is outer radius.
 
-Support set to percentage, equal to half of the smaller item between height and width of the container. 
+Percentage is supported. When set in percentage, it's relative to the smaller size between height and width of the container. 
