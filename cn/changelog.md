@@ -1,3 +1,42 @@
+## v3.2.2
+<div class="time">2016-07-11</div>
+
++ [+] [xAxis](http://echarts.baidu.com/option.html#xAxis) 和 yAxis(http://echarts.baidu.com/option.html#yAxis) 新增 [offset](http://echarts.baidu.com/option.html#yAxis.offset) 属性用于多 Y 轴场景。见 [多 Y 轴示例](http://echarts.baidu.com/gallery/editor.html?c=multiple-y-axis)
+
++ [+] 类目轴新增 [axisTick.alignWithLabel](http://echarts.baidu.com/option.html#xAxis.axisTick.alignWithLabel) 属性保证刻度线与刻度标签的对齐。见 [坐标轴刻度与标签对齐示例](http://echarts.baidu.com/gallery/editor.html?c=bar-tick-align)
+
++ [+] [geo](http://echarts.baidu.com/option.html#geo) 组件和 [map](http://echarts.baidu.com/option.html#series-map) 系列新增 [layoutCenter](http://echarts.baidu.com/option.html#geo.layoutCenter) 和 [layoutSize](http://echarts.baidu.com/option.html#geo.layoutSize) 属性用于布局。
+
++ [+] [legend](http://echarts.baidu.com/option.html#legend) 支持显示 [tooltip](http://echarts.baidu.com/option.html#legend.tooltip)。
+
++ [^] 支持在`time`类型的坐标轴上显示柱状图。
+
++ [^] 修复系列数据和坐标轴类目数量不一致时 tooltip 显示错误的 bug。
+
++ [^] 修复折线图和地图混搭时再使用多个 visualMap 组件可能会报错的 bug。见 [#3544](https://github.com/ecomfe/echarts/issues/3544)
+
++ [^] 修复坐标轴轴线设置渐变色报错的 bug。见 [#3577](https://github.com/ecomfe/echarts/issues/3577)
+
++ [^] 修复数据都相同的折线图中使用 visualMap 时可能会报错的 bug。见 [#3582](https://github.com/ecomfe/echarts/issues/3582)
+
++ [^] 优化坐标轴刻度的划分。
+
++ [^] 修复当字符串类型数据 tooltip 默认显示为 `'-'` 的问题。见 [#3307](https://github.com/ecomfe/echarts/issues/3307)。优化时间类型数据的默认 tooltip。
+
++ [^] 数据项支持 tooltip 配置为字符串。如下示例
+
+    ```js
+    data: [{
+        name: 'First',
+        tooltip: 'First tooltip',
+        value: 0
+    }]
+    ```
+
++ [^] 保证图形的绘制顺序与数据数组的顺序相同。
+
++ [^] 修复 3.2.1 中散点图边框无法设置的 bug。
+
 ## v3.2.1
 <div class="time">2016-07-04</div>
 
