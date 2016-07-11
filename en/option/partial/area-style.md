@@ -2,16 +2,16 @@
 
 #${prefix} color(Color)={{ if: !${useColorPalatte} }} ${defaultColor|default('"#000"')} {{ else }}'adaptive'{{ /if }}
 
-Fill color.{{ if: ${useColorPalatte} }} get color from [option.color Palette](~color) by default {{/if}}
+Fill color. {{ if: ${useColorPalatte} }} Color is taken from [option.color Palette](~color) by default. {{/if}}
 
 {{ use: partial-color-desc }}
 
 {{ if: ${hasCallback} }}
-Supports the use of callback functions.Format of callback function is as followed:
+Supports callback functions, in the form of:
 ```js
 (params: Object) => Color
 ```
-Incoming data are data item `seriesIndex`, `dataIndex`, `data`, `value` and other parameters.
+Input parameters are `seriesIndex`, `dataIndex`, `data`, `value`, and etc. of data item.
 {{ /if}}
 
 
