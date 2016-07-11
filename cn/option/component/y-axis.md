@@ -19,6 +19,10 @@ y 轴的位置。
 
 默认 grid 中的第一个 y 轴在 grid 的左侧（`'left'`），第二个 y 轴视第一个 y 轴的位置放在另一侧。
 
+## offset(number) = 0
+
+Y 轴相对于默认位置的偏移，在相同的 `position` 上有多个 Y 轴的时候有用。
+
 {{ use: axis-common(
     prefix='#',
     componentType='yAxis',

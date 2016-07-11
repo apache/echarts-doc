@@ -129,3 +129,23 @@ center: [115.97, 29.71]
 {{ use: partial-item-style(prefix=${prefix} + '##') }}
 
 {{ use: partial-rect-layout(prefix=${prefix}) }}
+
+
+#${prefix} layoutCenter(Array) = null
+
+`layoutCenter` 和 `layoutSize` 提供了除了 `left/right/top/bottom/width/height` 之外的布局手段。
+
+在使用 `left/right/top/bottom/width/height` 的时候，可能很难在保持地图高宽比的情况下把地图放在某个盒形区域的正中间，并且保证不超出盒形的范围。此时可以通过 `layoutCenter` 属性定义地图中心在屏幕中的位置，`layoutSize` 定义地图的大小。如下示例
+
+```js
+layoutCenter: ['30%', '30%'],
+// 如果宽高比大于 1 则宽度为 100，如果小于 1 则高度为 100，保证了不超过 100x100 的区域
+layoutSize: 100
+```
+
+设置这两个值后 `left/right/top/bottom/width/height` 无效。
+
+#${prefix} layoutSize(number|string)
+
+地图的大小，见 `layoutCenter`。支持相对于屏幕宽高的百分比或者绝对的像素大小。
+

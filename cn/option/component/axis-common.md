@@ -93,6 +93,11 @@ textStyle: {
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
 是否显示坐标轴刻度。
 
+##${prefix} alignWithLabel(boolean) = false
+类目轴中在 `boundaryGap` 为 `true` 的时候有效，可以保证刻度线和标签对齐。如下图：
+
+![600xauto](~axis-align-with-label.png)
+
 {{ if: ${hasLabelInterval|default(true)} }}
 ##${prefix} interval(number|Function) = 'auto'
 {{ use: partial-axis-interval(
@@ -215,6 +220,11 @@ splitLine: {
 坐标轴名称的文字样式。
 
 {{use: partial-text-style(prefix='#' + ${prefix}, name="坐标轴名称")}}
+<!-- Overwrite color -->
+##${prefix} color(Color)
+
+坐标轴名称的颜色，默认取 [axisLine.lineStyle.color](~${componentType}.axisLine.lineStyle.color)。
+
 
 #${prefix} nameGap(number) = 15
 
