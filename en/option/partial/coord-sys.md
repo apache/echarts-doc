@@ -2,45 +2,51 @@
 
 ## coordinateSystem(string) = ${coordSysDefault}
 
-The coordinate used in the series,  options are:
+The coordinate used in the series, whose options are:
+
+{{if: ${none} }}
++ `null`
+
+    No coordinate.
+{{/if}}
 
 {{if: ${cartesian2d} }}
 
 + `'cartesian2d'`
 
-    Using a two-dimensional Cartesian coordinate (also known as Cartesian coordinate), through [xAxisIndex](~series-${seriesType}.xAxisIndex), [yAxisIndex](~series-${seriesType}.yAxisIndex) to assign the corresponding axis component.
+    Use a two-dimensional rectangular coordinate (also known as Cartesian coordinate), with [xAxisIndex](~series-${seriesType}.xAxisIndex) and [yAxisIndex](~series-${seriesType}.yAxisIndex) to assign the corresponding axis component.
 {{/if}}
 
 {{if: ${polar} }}
 
 + `'polar'`
 
-    Using polar coordinates, through [polarIndex](~series-${seriesType}.polarIndex) to assign the corresponding polar coordinate component.
+    Use polar coordinates, with [polarIndex](~series-${seriesType}.polarIndex) to assign the corresponding polar coordinate component.
 {{/if}}
 
 {{if: ${geo} }}
 
 + `'geo'`
 
-    Using geographic coordinate, through [geoIndex](~series-${seriesType}.geoIndex) to assign the corresponding geographic coordinate components.
+    Use geographic coordinate, with [geoIndex](~series-${seriesType}.geoIndex) to assign the corresponding geographic coordinate components.
 {{/if}}
 
 {{if: ${parallel} }}
 
 + `'parallel'`
 
-    Using parallel coordinates, through [parallelIndex](~series-${seriesType}.parallelIndex) to assign the corresponding parallel coordinate components.
+    Use parallel coordinates, with [parallelIndex](~series-${seriesType}.parallelIndex) to assign the corresponding parallel coordinate components.
 {{/if}}
 
 
 {{if: ${cartesian2d} }}
 ## xAxisIndex(number) = 0
 
-Using the index of  [x axis](~xAxis), which is  useful when there are multiple x axes in one graphic chart.
+Index of [x axis](~xAxis) to combine with, which is  useful for multiple x axes in one chart.
 
 ## yAxisIndex(number) = 0
 
-Using the index of [y axis](~yAxis), which is  useful when there are multiple y axes in one graphic chart.
+Index of [y axis](~yAxis) to combine with, which is  useful for multiple y axes in one chart.
 {{/if}}
 
 
@@ -48,7 +54,7 @@ Using the index of [y axis](~yAxis), which is  useful when there are multiple y 
 {{if: ${polar} }}
 ## polarIndex(number) = 0
 
-Using the index of [Polar coordinate](~polar), which is  useful when there are multiple polar coordinates in one graphic chart.
+Index of [polar coordinate](~polar) to combine with, which is useful for multiple polar axes in one chart.
 
 {{/if}}
 
@@ -57,7 +63,7 @@ Using the index of [Polar coordinate](~polar), which is  useful when there are m
 {{if: ${geo} }}
 ## geoIndex(number) = 0
 
-Using the index of [geographic coordinate](~geo), which is  useful when there are multiple geographic coordinates in one graphic chart.
+Index of [geographic coordinate](~geo) to combine with, which is useful for multiple geographic axes in one chart.
 
 {{/if}}
 
@@ -66,6 +72,6 @@ Using the index of [geographic coordinate](~geo), which is  useful when there ar
 {{if: ${parallel} }}
 ## parallelIndex(number) = 0
 
-Using the index of [parallel coordinates](~parallel), which is  useful when there are multiple parallel coordinates in one graphic chart.
+Index of [parallel coordinates](~parallel) to combine with, which is useful for multiple parallel axes in one chart.
 
 {{/if}}

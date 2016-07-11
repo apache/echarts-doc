@@ -1,30 +1,34 @@
 {{target:partial-item-style-desc}}
-${name} graphic pattern, There are two status, `normal` and `emphasis`, `normal` is the normal pattern of a graphic, `emphasis` is the highlight pattern of a graphic, like the graphic pattern of `emphasis` when mouse hovers over or legend linkage highlights. 
+Graphic style of ${name}, which has `normal` and `emphasis` two styles. `normal` is the style by default, while `emphasis` is the style when it is highlighted, like being hovered by mouse, or highlighted via legend connect. 
 
 {{target:partial-item-style}}
 
-#${prefix} color(Color{{if: ${hasCallback} }}|Function{{/if}})=${defaultColor|default('self-adaptive')}
+#${prefix} color(Color{{if: ${hasCallback} }}|Function{{/if}})=${defaultColor|default(null)}
 
-${name}color of the graphic.{{ if: ${useColorPalatte} }} Get color from the global palette [option.color](~color) by default.  {{/if}}
+${name} color. {{ if: ${useColorPalatte} }} Color is taken from [option.color Palette](~color) by default. {{/if}}
 
 {{ use: partial-color-desc }}
 
 {{ if: ${hasCallback} }}
-Support the use of callback functions. Callback function takes the following forms: 
+Supports callback functions, in the form of:
 ```js
 (params: Object) => Color
 ```
-Incoming are the data item `seriesIndex`, `dataIndex`, `data`, `value` and other parameters.
+Input parameters are `seriesIndex`, `dataIndex`, `data`, `value`, and etc. of data item.
 {{ /if}}
 
 #${prefix} borderColor(Color) = ${defaultBorderColor|default('"#000"')}
 
-${name} stroke color of graphic. Support the same format as `color`
+${name} border color, whose format is similar to that of `color`.
 
 
 #${prefix} borderWidth(number) = ${defaultBorderWidth|default(0)}
 
-${name}Width of stroke. No stroke when it is 0 .
+${name} border width. No border when it is set to be 0.
+
+#${prefix} borderType(string) = 'solid'
+
+Border type, which can be `'solid'`, `'dashed'`, or `'dotted'`. `'solid'` by default.
 
 {{ use:partial-style-shadow-opacity(
     prefix=${prefix},

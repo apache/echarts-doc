@@ -1,8 +1,8 @@
 {{ target: partial-icon }}
 
-You can choose the marking type, there are {{ import: partial-icon-buildin}}
+Icon types provided by ECharts includes {{ import: partial-icon-buildin}}
 
-you can also set to picture through `'image://url'` , in which url is the link to a picture.
+It can also be set to an image with `'image://url'` , in which url is the link to a picture.
 
 {{ use: partial-icon-path }}
 
@@ -12,4 +12,4 @@ you can also set to picture through `'image://url'` , in which url is the link t
 
 
 {{ target: partial-icon-path }}
-In ECharts 3, you can set to any vector paths through `'path://'` , and you need not to worry about the serrate or blurriness cause the zoom comparing to the pictures, what's more you can set to any color.Path graphics will adjust to appropriate size automatically ( symbol as in symbolSize). Path format can refer to [SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData). You can also edit and extract it from tools such as Adobe Illustrator.
+Icons can be set to arbitrary vector path via `'path://'` in ECharts. As compared with raster image, vector paths prevent from jagging and blurring when scaled, and have a better control over changing colors. Size of vectoer icon will be adapted automatically. It will be set to be `symbolSize` if it's a `symbol`. Refer to [SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData) for more information about format of path. You may export vector paths from tools like Adobe Illustrator.

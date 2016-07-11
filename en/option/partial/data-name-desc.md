@@ -1,3 +1,3 @@
 {{ target: partial-data-name-desc }}
 
-The name of the data item, will be shown in  tooltip or label. Even when id does not exis, id would also be used as name.
+Name of the data item, shown in tooltip or label. It can also be used as id when id doesn't exist.

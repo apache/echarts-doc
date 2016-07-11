@@ -1,5 +1,5 @@
 {{target:partial-item-style-desc}}
-${name} 图形样式，有 `normal` 和 `emphasis` 两个状态，`normal` 是图形正常的样式，`emphasis` 是图形高亮的样式，比如鼠标悬浮或者图例联动高亮的时候会使用 `emphasis` 作为图形的样式。
+${name} 图形样式，有 `normal` 和 `emphasis` 两个状态。`normal` 是图形在默认状态下的样式；`emphasis` 是图形在高亮状态下的样式，比如在鼠标悬浮或者图例联动高亮时。
 
 {{target:partial-item-style}}
 
@@ -19,7 +19,7 @@ ${name}图形的颜色。{{ if: ${useColorPalatte} }} 默认从全局调色盘 [
 
 #${prefix} borderColor(Color) = ${defaultBorderColor|default('"#000"')}
 
-${name}图形的描边颜色。支持的格式同`color`。
+${name}图形的描边颜色。支持的格式同 `color`。
 
 
 #${prefix} borderWidth(number) = ${defaultBorderWidth|default(0)}
@@ -28,7 +28,7 @@ ${name}描边线宽。为 0 时无描边。
 
 #${prefix} borderType(string) = 'solid'
 
-柱条的描边类型，默认为实线，支持 `'dashed'`, `'dotted'`。
+柱条的描边类型，默认为实线，支持 `'solid'`, `'dashed'`, `'dotted'`。
 
 {{ use:partial-style-shadow-opacity(
     prefix=${prefix},

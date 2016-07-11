@@ -1,18 +1,23 @@
 {{ target: partial-formatter-params-structure }}
     ```js
     {
-        // series in the incoming option.index in series
+        componentType: 'series',
+        // Series type
+        seriesType: string,
+        // Series index in option.series
         seriesIndex: number,
         // Series name
         seriesName: string,
-        // data name, category name
+        // Data name, or category name
         name: string,
-        // index of data in the incoming data array
+        // Data index in input data array
         dataIndex: number,
-        // Incoming raw data
+        // Original data as input
         data: Object,
-        // Incoming data values
+        // Value of data
         value: number|Array,
+        // Color of data
+        color: string,
     {{ for: ${extra} as ${obj}, ${name} }}
         // ${obj.desc}
         ${name}: ${obj.type},

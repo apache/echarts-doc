@@ -2,27 +2,27 @@
 
 #${prefix} color(Color)={{ if: !${useColorPalatte} }} ${defaultColor|default('"#000"')} {{ else }}'self-adaptive'{{ /if }}
 
-${name}line color.{{ if: ${useColorPalatte} }} get color from [option.color palette](~color) by default{{/if}}
+${name}Line color. {{ if: ${useColorPalatte} }} Color is taken from [option.color Palette](~color) by default. {{/if}}
 
 {{ if: ${hasCallback} }}
-Support the use of callback functions. Callback function takes the following forms: 
+Supports callback functions, in the form of:
 ```js
 (params: Object) => Color
 ```
-Incoming are data item `seriesIndex`, `dataIndex`, `data`, `value` and other parameters.
-{{ /if }}
+Input parameters are `seriesIndex`, `dataIndex`, `data`, `value`, and etc. of data item.
+{{ /if}}
 
 {{ use: partial-color-desc }}
 
 #${prefix} width(number) = ${defaultWidth|default(0)}
 
-${name}line width.
+${name} line width.
 
 #${prefix} type(string) = ${defaultType|default('solid')}
 
-${name}line type.
+${name} line type.
 
-Options are as followed: 
+Options are: 
 + `'solid'`
 + `'dashed'`
 + `'dotted'`
@@ -35,6 +35,5 @@ Options are as followed:
 ) }}
 {{ if: ${hasCurveness} }}
 #${prefix} curveness(number) = 0
-Edge curvature supports the value from 0 to 1, the bigger the value, the greater the curvature.
+Edge curvature, which supports value from 0 to 1. The larger the value, the greater the curvature.
 {{ /if }}
-

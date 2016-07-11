@@ -1,17 +1,16 @@
 {{ target: partial-line-data-desc }}
 
-Every data item is an array, the first item in the array is starting position,  the second is finishing position. Through attribute `coord` you can assign position in the corresponding coordinate.
+Every data item is an array, the first item of which states the starting position, and the second the ending position. Position is assigned via `coord` attribute to the corresponding coordinate.
 
 **For example: **
 ```js
 data: [
     [{
         coord: [10, 20],
-        // numerical magnitude
+        // data value
         value: 10
     }, {
         coord: [20, 30]
     }]
 ]
 ```
-

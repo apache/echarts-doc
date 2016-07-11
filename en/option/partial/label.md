@@ -1,11 +1,11 @@
 {{target:partial-label-desc}}
 
-${name}text label on the graphic can be used to explain some data information of the graphic, for example, value, name and so on.`label` is placed in ECharts 2.x under `itemStyle.normal`. In ECharts 3, in order to make the whole configuration structure more reasonable and flat, `label`is taked to the same level as `itemStyle` and possesses rwo status `normal` and `emphasis` like `itemStyle`.
+Text label of ${name}, to explain some data information about graphic item like value, name and so on. `label` is placed under `itemStyle.normal` in ECharts 2.x. In ECharts 3, to make the configuration structure flatter, `label`is taken to be at the same level with `itemStyle`, and has two status `normal` and `emphasis` as `itemStyle` does.
 
 
 {{target:partial-label}}
 #${prefix} show(boolean) = ${defaultShowLabel|default("false")}
-Wheteher shows tag.
+Whether to show label.
 #${prefix} position(string|Array) = ${defaultPosition}
 {{use:partial-label-position}}
 {{ if: ${formatter} }}
@@ -16,7 +16,7 @@ Wheteher shows tag.
 {{use:partial-1d-data-label-formatter}}
 {{ /if }}
 #${prefix} textStyle(Object)
-Label of font style.
+Label font style.
 {{ use:partial-text-style(prefix=${prefix} + '#') }}
 
 
@@ -27,12 +27,12 @@ Label position.
 
 + [x, y]
 
-    Represent label relative to the graphics on the left corner of bounding box by relative percentage or absolute pixel value.
+    Use relative percentage, or absolute pixel values to represent position of label relative to top-left corner of bounding box.
     For example: 
     ```js
     // Absolute pixel values
     position: [10, 10],
-    // Relative percent
+    // Relative percentage
     position: ['50%', '50%']
     ```
 

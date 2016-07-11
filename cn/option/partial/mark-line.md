@@ -10,7 +10,7 @@
 ##${prefix} symbolSize(number|Array)
 标线两端的标记大小，可以是一个数组分别指定两端，也可以是单个统一指定。
 
-**注意：** 这里无法像一般的 symbolSize 那样通过数组分别指定高宽。
+**注意：** 这里无法像一般的 `symbolSize` 那样通过数组分别指定高宽。
 
 ##${prefix} precision(number) = 2
 标线数值的精度，在显示平均值线的时候有用。
