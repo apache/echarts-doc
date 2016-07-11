@@ -9,7 +9,7 @@
 >   offset: 1, color: 'blue' // 100% 处的颜色
 > }], false)
 > // 径向渐变，前三个参数分别是圆心 x, y 和半径，取值同线性渐变
-> color: new echarts.graphic.RadianGradient(0.5, 0.5, 0.5, [...], false)
+> color: new echarts.graphic.RadialGradient(0.5, 0.5, 0.5, [...], false)
 > // 纹理填充
 > color: new echarts.graphic.Pattern(
 >   imageDom, // 支持为 HTMLImageElement, HTMLCanvasElement，不支持路径字符串
