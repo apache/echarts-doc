@@ -12,7 +12,8 @@ function convert(opts, cb) {
     var maxDepth = opts.maxDepth || 10;
     var etplEngine = new etpl.Engine({
         commandOpen: '{{',
-        commandClose: '}}'
+        commandClose: '}}',
+        missTarget: 'error'
     });
     etplEngine.addFilter('default', function (source, defaultVal) {
         return (source === '' || source == null) ? defaultVal : source;
