@@ -1,5 +1,9 @@
 {{target: partial-axis-common-axis-line}}
-#${prefix} silent(boolean) = true
+#${prefix} silent(boolean) = false
+坐标轴是否是静态无法交互。
+
+#${prefix} triggerEvent(boolean) = false
+
 坐标轴的标签是否响应和触发鼠标事件，默认不响应。
 
 事件参数如下：
