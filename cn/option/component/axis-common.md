@@ -238,16 +238,6 @@ splitLine: {
 
 坐标轴名字旋转，角度值。
 
-#${prefix} nameTruncateLength(number) = null
-
-坐标轴名字的截取。如果名字太长，可以用此值指定显示多少个字符。
-
-注意，非 ASCII 字符，算作两个单位。如『图』的 `length` 为 `2`。
-
-#${prefix} nameTruncateEllipsis(string) = '...'
-
-坐标轴名字截取后，是否显示省略号。
-
 #${prefix} inverse(boolean) = false
 
 是否是反向坐标轴。ECharts 3 中新加。
