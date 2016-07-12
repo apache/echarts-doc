@@ -90,6 +90,21 @@ selected: {
 
 {{ use: partial-text-style(componentName='图例', prefix='##', defaultColor="#333") }}
 
+## tooltip(Object)
+
+图例的 tooltip 配置，配置项同 [tooltip](http://localhost/echarts-doc/public/option.html#tooltip)。默认不显示，可以在 legend 文字很多的时候对文字做裁剪并且开启 tooltip，如下示例：
+
+```js
+legend: {
+    formatter: function (name) {
+        return echarts.format.truncateText(name, 40, '14px Microsoft Yahei', '…');
+    },
+    tooltip: {
+        show: true
+    }
+}
+```
+
 ## data(Array)
 
 图例的数据数组。数组项通常为一个字符串，每一项代表一个系列的 `name`（如果是[饼图](~series-pie)，也可以是饼图单个数据的 `name`）。图例组件会自动获取对应系列的颜色，图形标记（symbol）作为自己绘制的颜色和标记，特殊字符串 `''`（空字符串）或者 `'\n'` (换行字符串)用于图例的换行。
