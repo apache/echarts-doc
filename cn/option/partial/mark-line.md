@@ -179,7 +179,7 @@ data: [
 ) }}
 
 #${prefix} lineStyle(Object)
-该数据项线的样式，起点和终点项的`lineStyle`会合并到一起。
+该数据项线的样式，起点和终点项的 `lineStyle`会合并到一起。
 ##${prefix} normal(Object)
 {{ use: partial-line-style(
     prefix="##"+${prefix},
@@ -192,7 +192,7 @@ data: [
 ) }}
 
 #${prefix} label(Object)
-该数据项标签的样式，起点和终点项的`label`会合并到一起。
+该数据项标签的样式，起点和终点项的 `label`会合并到一起。
 ##${prefix} normal(Object)
 {{ use: mark-line-label(
     prefix='##'+${prefix}

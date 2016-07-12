@@ -1,17 +1,19 @@
 {{ target: partial-mark-line }}
 
 #${prefix} markLine
-mark line of the chart.
+Use a line in the chart to illustrate.
+
+{{ use: partial-silent(prefix="#" + ${prefix}) }}
 
 ##${prefix} symbol(string|Array)
-Marking the ends of the tag type, it can be one array referring to both ends respectively or in a unified way, specific format can refer to (~series-${seriesType}.markLine.data.0.symbol). 
+Symbol type at the two ends of the mark line. It can be an arrary for two ends, or assigned seperately. See [data.symbol](~series-${seriesType}.markLine.data.0.symbol) for more format information.
 ##${prefix} symbolSize(number|Array)
-Marking the ends of the tag size, it can be one array referring to both ends respectively or in a unified way.
+Symbol size at the two ends of the mark line. It can be an arrary for two ends, or assigned seperately.
 
-**Attention: ** In here, you can not assign height and width through array like the usual symbolSize.
+**Attention: ** You cannot assgin width and height seperately as normal `symbolSize`.
 
 ##${prefix} precision(number) = 2
-Numerical precison of marking line is useful when presenting average value line.
+Precison of marking line value, which is useful when displaying average value mark line.
 
 ##${prefix} label(Object)
 Mark line text.
@@ -25,10 +27,11 @@ Mark line text.
 ) }}
 
 ##${prefix} lineStyle(Object)
+Mark line style.
 ###${prefix} normal(Object)
 {{ use: partial-line-style(
     prefix="###" + ${prefix},
-    defaultColor='self-adaptive',
+    defaultColor=null,
     defaultLineType='dashed',
     hasCurveness=true
 ) }}
@@ -38,29 +41,36 @@ Mark line text.
 ) }}
 
 ##${prefix} data
-Data array of marking line. Every array can be  one with one or two value, representing starting point and finishing point of the line, and every item is an object, followings are several ways to assign the positions of starting point and finishing point.
-1. Through [x](~series-${seriesType}.markLine.data.0.x), [y](~series-${seriesType}.markLine.data.0.y) attribute assigns screen coorditaes and per pixel of relative container. 
+Data array of marking line. Every array item can be an array of one or two values, representing starting and ending point of the line, and every item is an object. Here are several ways to assign the positions of starting and ending point.
+
+1. Assign coordinate according to container with [x](~series-${seriesType}.markLine.data.0.x), [y](~series-${seriesType}.markLine.data.0.y) attribute, in which pixel values and percentage are supported. 
 {{ if: ${hasCoord} }}
-2. Use [coord](~series-${seriesType}.markLine.data.0.coord) attribute assigns coordinates position of data in the corresponding coordinate. 
+2. Assign coordinate position with [coord](~series-${seriesType}.markLine.data.0.coord) attribute, in which `'min'`, `'max'`, `'average'` are supported for each dimension. 
 {{ /if }}{{ if: ${hasType} }}
-3. Use [type](~series-${seriesType}.markLine.data.0.type) attribute to label the maximum value and minimum value in the series directly. This is when you can use  [valueIndex](~series-${seriesType}.markLine.data.0.valueIndex) to assign the maximum value, minimum value and average value in any dimensions. Or you can use [valueDim](~series-${seriesType}.markPoint.data.valueDim) to assign the maximum value, minimum value and average value in any dimensions.
+3. Use [type](~series-${seriesType}.markLine.data.0.type) attribute to mark the maximum and minimum values in the series, in which [valueIndex](~series-${seriesType}.markLine.data.0.valueIndex) or [valueDim](~series-${seriesType}.markPoint.data.valueDim) can be used to assign the dimension.
+
+4. You may also create a mark line in Cartesian coordinate at a specific position in X or Y axis by assigning `xAxis` or `yAxis`. See [scatter-weight](${galleryEditorPath}scatter-weight) for example.
 {{ /if }}
-When multiple attributes exist simultaneously, the order of priority is as described above.
+When multiple attributes exist, priority is as the above order.
 
 {{if: ${hasType} }}
-You can also set the type of the marking line through `type` , whether it is the maximum value or average value. Likewise, dimensions can be assigned through `valueIndex`.
+You may also set the type of mark line through `type`, stating whether it is for the maximum value or average value. Likewise, dimensions can be assigned through `valueIndex`.
 {{ /if }}
 ```
 data: [
     {{if: ${hasType} }}{
-        name: 'Average',
-        // Support 'average', 'min', 'max'
+        name: 'average line',
+        // 'average', 'min', and 'max' are supported
         type: 'average'
+    },
+    {
+        name: 'Horizontal line with Y value at 100',
+        yAxis: 100
     },
     [
         {
-            // Items of starting point and finishing point share one name
-            name: 'Minimum value to maximum value',
+            // Use the same name with starting and ending point
+            name: 'Minimum to Maximum',
             type: 'min'
         },
         {
@@ -69,16 +79,22 @@ data: [
     ],
     {{/if}}{{if: ${hasCoord} }}[
         {
-            name: 'Marking line between two coordinates',
+            name: 'Markline between two points',
             coord: [10, 20]
         },
         {
             coord: [20, 30]
         }
-    ],
+    ], [{
+        // Mark line with a fixed X position in starting point. This is used to generate an arrow pointing to maximum line.
+        yAxis: 'max',
+        x: '90%'
+    }, {
+        type: 'max'
+    }],
     {{/if}}[
         {
-            name: 'Marking line between two screen coordinates',
+            name: 'Mark line between two points',
             x: 100,
             y: 100
         },
@@ -101,9 +117,9 @@ Data of the starting point.
 ) }}
 
 ###${prefix} 1(Object)
-Data of the finishing point.
+Data of the ending point.
 {{ use: mark-line-data-item-item(
-    name="finishing point",
+    name="ending point",
     prefix="###"+${prefix},
     hasCoord=${hasCoord},
     hasType=${hasType},
@@ -117,11 +133,12 @@ Data of the finishing point.
 
 {{ target: mark-line-label }}
 #${prefix} show(boolean) = ${defaultShowLabel|default(true)}
-Whether presnet label or not.
+Whether show label or not.
 #${prefix} position(string) = 'end'
-position of label can be: 
+Positions of labels can be: 
 + `'start'` starting point of the line.
-+ `'end'`   finishing point of the line.
++ `'middle'` middle point of the line.
++ `'end'` ending point of the line.
 #${prefix} formatter(string|Function)
 {{ use: partial-1d-data-label-formatter }}
 
@@ -130,41 +147,40 @@ position of label can be:
 {{ target: mark-line-data-item-item }}
 {{ if: ${hasType} }}
 #${prefix} type(string)
-special label types are used to label maximum value, minimum value and so on. 
+Special label types, are used to label maximum value, minimum value and so on. 
 
 **Options are:**
 + `'min'` maximum value.
 + `'max'` minimum value.
-+ `'average'` average value
++ `'average'` average value.
 {{ /if }}
 {{ if: ${hasCoord} }}
 #${prefix} valueIndex(number)
-Available when using [type](~series-${seriesType}.markLine.data.type), it is used to assign maximum value and minimum value in dimensions, it could be `0` (xAxis, radiusAxis), `1` (yAxis, angleAxis)  and use the first value axis dimension by default.
+Works only when [type](~series-${seriesType}.markLine.data.type) is assigned. It is used to state the dimension used to calculate maximum value or minimum value. It may be `0` (for xAxis, or radiusAxis), or `1` (for yAxis, or angleAxis). Dimension of the first numeric axis is used by default.
 
 #${prefix} valueDim(string)
-Available when using [type](~series-${seriesType}.markLine.data.type),it is used to assign maximum value and minimum value in dimensions, it could be the direct name of the dimension, for example, names could be `x`、`angle`in line chart、`open`、`close`in candlestick chart.
+Works only when [type](~series-${seriesType}.markLine.data.type) is assigned. It is used to state the dimension used to calculate maximum value or minimum value. It may be the direct name of a dimension, like `x`, or `angle` for line charts, or `open`, or `close` for candlestick charts.
 
 #${prefix} coord(Array)
-Coordinates of the starting point or finishing point.Coordinates format depends on the coordinate of the series.It could be `x`, `y` in [grid coordinates](~grid), or  `radius`, `angle`in [polar coordinates](~polar).
+Coordinates of the starting point or ending point, whose format depends on the coordinate of the series. It can be `x`, and `y` for [rectangular coordinates](~grid), or `radius`, and `angle` for [polar coordinates](~polar).
 
-**Attention: **In ECharts 2.x , `xAxis` and `yAxis` will be used to label position in grid coordinates,ECharts 3 is no longer recommended.
 {{ /if }}
 #${prefix} x(number)
-screen x coordinate of relative container, per pixel.
+X position according to container, in pixel.
 
 #${prefix} y(number)
-screen y coordinate of relative container, per pixel.
+Y position according to container, in pixel.
 
 #${prefix} value(number)
-Label value can be  unset.
+Label value, which can be ignored.
 
 {{ use:partial-symbol(
     prefix=${prefix},
-    name=${index} === 0 ? 'starting point' : 'finishing point'
+    name=${index} === 0 ? 'starting point' : 'ending point'
 ) }}
 
 #${prefix} lineStyle(Object)
-Format of this data line, `lineStyle` of starting point and finishing point item will be merged together.
+Line style of this data item, which will be merged with `lineStyle` of starting point and ending point.
 ##${prefix} normal(Object)
 {{ use: partial-line-style(
     prefix="##"+${prefix},
@@ -177,7 +193,7 @@ Format of this data line, `lineStyle` of starting point and finishing point item
 ) }}
 
 #${prefix} label(Object)
-Format of this data label,`label` of starting point and finishing point item will be merged together.
+Label of this data item, which will be merged with `label` of starting point and ending point.
 ##${prefix} normal(Object)
 {{ use: mark-line-label(
     prefix='##'+${prefix}
