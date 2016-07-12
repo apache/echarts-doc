@@ -38,6 +38,8 @@
 
 + [^] 修复 3.2.1 中散点图边框无法设置的 bug。
 
++ [^] 坐标轴鼠标事件触发改为通过 [triggerEvent](http://echarts.baidu.com/option.html#xAxis.triggerEvent) 配置
+
 ## v3.2.1
 <div class="time">2016-07-04</div>
 
