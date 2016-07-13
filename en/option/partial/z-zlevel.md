@@ -2,14 +2,14 @@
 
 #${prefix|default("#")} zlevel(number) = ${defaultZLevel|default(0)}
 
-${componentName} zlevel value of all graphic elements.
+`zlevel` value of all graghical elements in ${componentName}.
 
-`zlevel`is used to layer Canvas, graphic elements of different `zlevel` values will be placed in different Canvas, layering Canvas is a common optimization technique. We can set configurations of some frequently changed graphic elements(like animations) to a single `zlevel`. Please noted that too much Canvas will increase greater memory overhead, and this needs to be used carefully on mobile phones to avoid bread down.
+`zlevel` is used to make layers with Canvas. Graphical elements with different `zlevel` values will be placed in different Canvases, which is a common optimization technique. We can put those frequently changed elements (like those with animations) to a seperate `zlevel`. Notice that too many Canvases will increase memory cost, and should be used carefully on mobile phones to avoid crash.
 
-Canvas with bigger zlevel will be placed in Canvas with smaller zlevel.
+Canvases with bigger `zlevel` will be placed on Canvases with smaller `zlevel`.
 
 #${prefix|default("#")} z(number) = ${defaultZ|default(2)}
 
-${componentName} all graphic elements `z` value of components. Control graphic elements sequence. Graphic elements with smaller `z` value will be overrided by ones with bigger `z` value.
+`z` value of all graghical elements in ${componentName}, which controls order of drawing graphical components. Components with smaller `z` values may be overwritten by those with larger `z` values.
 
-Compared to `zlevel`, `z` has lower priority,and it will not create new Canvas.
+`z` has a lower priority to `zlevel`, and will not create new Canvas.

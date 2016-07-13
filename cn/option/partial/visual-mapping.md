@@ -1,5 +1,3 @@
-
-
 {{target: partial-visual-map-visual-type}}
 + `symbol`: 图元的图形类别。
 + `symbolSize`: 图元的大小。
@@ -9,16 +7,3 @@
 + `colorLightness`: 颜色的明暗度，参见 [HSL](https://en.wikipedia.org/wiki/HSL_and_HSV)。
 + `colorSaturation`: 颜色的饱和度，参见 [HSL](https://en.wikipedia.org/wiki/HSL_and_HSV)。
 + `colorHue`: 颜色的色调，参见 [HSL](https://en.wikipedia.org/wiki/HSL_and_HSV)。
-
-
-
-
-
-
-
-
-
-
-
-
-

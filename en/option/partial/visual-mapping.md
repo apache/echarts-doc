@@ -2,28 +2,11 @@
 
 
 {{target: partial-visual-map-visual-type}}
-+ `symbol`: The type (or shape) of graphical elements.
-+ `symbolSize`: The size of a graphical elements.
-+ `color`: The color of a graphical elements.
-+ `colorAlpha`: The transparency of a single `color`.
-+ `opacity`: The transparency of both a graphical element and its attachments (like label).
-+ `colorLightness`: The lightness in [HSL](https://en.wikipedia.org/wiki/HSL_and_HSV) of a `color`.
-+ `colorSaturation`: The saturation in [HSL](https://en.wikipedia.org/wiki/HSL_and_HSV) of a `color`.
-+ `colorHue`: The hue in [HSL](https://en.wikipedia.org/wiki/HSL_and_HSV) of a `color`.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
++ `symbol`: Type of symbol.
++ `symbolSize`: Symbol size.
++ `color`: Symbol color.
++ `colorAlpha`: Symbol alpha channel.
++ `opacity`: Opacity of symbol and others (like labels).
++ `colorLightness`: Lightness in [HSL](https://en.wikipedia.org/wiki/HSL_and_HSV).
++ `colorSaturation`: Saturation in [HSL](https://en.wikipedia.org/wiki/HSL_and_HSV).
++ `colorHue`: Hue in [HSL](https://en.wikipedia.org/wiki/HSL_and_HSV).

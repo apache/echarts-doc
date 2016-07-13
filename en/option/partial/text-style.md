@@ -2,12 +2,12 @@
 
 #${prefix} color(Color)=${defaultColor|default('"#fff"')}
 
-${name}text color.
+${name} text color.
 
 {{ if: ${hasAlign} }}
 #${prefix} align(string)=${defaultAlign}
 
-Horizontal Alignment of text, automatic by default.
+Horizontal alignment of text, automatic by default.
 
 Options are: 
 + `'left'`
@@ -18,7 +18,7 @@ Options are:
 {{ if: ${hasBaseline} }}
 #${prefix} baseline(string)=${defaultAlign}
 
-Baseline Alignment of text, automatic by default.
+Baseline alignment of text, automatic by default.
 Options are: 
 + `'top'`
 + `'middle'`
@@ -27,7 +27,7 @@ Options are:
 
 #${prefix} fontStyle(string)='normal'
 
-${name}Font style
+${name} font style
 
 Options are: 
 + `'normal'`
@@ -37,7 +37,7 @@ Options are:
 
 #${prefix} fontWeight(string)=${defaultFontWeight|default('normal')}
 
-${name}Font thickness
+${name} font thick weight
 
 Options are: 
 + `'normal'`
@@ -49,8 +49,8 @@ Options are:
 
 #${prefix} fontFamily(string)='sans-serief'
 
-${name}Font series
+${name} font family
 
 #${prefix} fontSize(number)=${defaultFontSize|default(12)}
 
-${name}Font size
+${name} font size

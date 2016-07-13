@@ -2,15 +2,13 @@
 
 #${prefix} shadowBlur(number) = ${defaultShadowBlur}
 
-Size of blurriness of graphic shadow. This attribute sets graphic shadow effect together with `shadowColor`,`shadowOffsetX`, `shadowOffsetY`.
+Size of shadow blur. This attribute should be used along with `shadowColor`,`shadowOffsetX`, `shadowOffsetY` to set shadow to component.
 
-for example:
+For example:
 ```js
-itemStyle: {
-    normal: {
-        shadowColor: 'rgba(0, 0, 0, 0.5)',
-        shadowBlur: 10
-    }
+{
+    shadowColor: 'rgba(0, 0, 0, 0.5)',
+    shadowBlur: 10
 }
 ```
 
@@ -30,7 +28,7 @@ Shadow color. Support same format as `color`.
 
 #${prefix} shadowOffsetX(number) = ${defaultShadowOffsetX|default(0)}
 
-Offset distance on the horizontal direction of the shade.
+Offset distance on the horizontal direction of shadow.
 
 {{if: ${needShow} }}
 **Attention**: This property works only if `show: true` configured.
@@ -39,7 +37,7 @@ Offset distance on the horizontal direction of the shade.
 
 #${prefix} shadowOffsetY(number) = ${defaultShadowOffsetY|default(0)}
 
-Offset distance on the vertical direction of the shade.
+Offset distance on the vertical direction of shadow.
 
 {{if: ${needShow} }}
 **Attention**: This property works only if `show: true` configured.
@@ -50,7 +48,7 @@ Offset distance on the vertical direction of the shade.
 
 #${prefix} opacity(number) = ${defaultOpacity}
 
-Graphic transparency. Support number from 0 to 1, and this graphic will not be drawn when transparency is 0.6
+Opacity of the component. Supports value from 0 to 1, and the component will not be drawn when set to 0.
 
 
 
