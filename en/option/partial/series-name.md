@@ -1,3 +1,3 @@
 {{ target: partial-series-name }}
 ## name(string)
-series name is used to present [tooltip](~tooltip) and legend filter of [legend](~legend). When updating data and configuration item of `setOption`,series name is used to assign corresponding series.
+Series name used for displaying in [tooltip](~tooltip) and filtering with [legend](~legend), or updaing data and configuration with `setOption`.
