@@ -46,7 +46,7 @@
 {{ if: ${hasCoord} }}
 2. 用 [coord](~series-${seriesType}.markLine.data.0.coord) 属性指定数据在相应坐标系上的坐标位置，单个维度支持设置 `'min'`, `'max'`, `'average'`。
 {{ /if }}{{ if: ${hasType} }}
-3. 直接用 [type](~series-${seriesType}.markLine.data.0.type) 属性标注系列中的最大值，最小值。这时候可以使用 [valueIndex](~series-${seriesType}.markLine.data.0.valueIndex) 或者 [valueDim](~series-${seriesType}.markPoint.data.0.valueDim) 指定是在哪个维度上的最大值、最小值、平均值。
+3. 直接用 [type](~series-${seriesType}.markLine.data.0.type) 属性标注系列中的最大值，最小值。这时候可以使用 [valueIndex](~series-${seriesType}.markLine.data.0.valueIndex) 或者 [valueDim](~series-${seriesType}.markLine.data.0.valueDim) 指定是在哪个维度上的最大值、最小值、平均值。
 
 4. 如果是笛卡尔坐标系的话，也可以通过只指定 `xAxis` 或者 `yAxis` 来实现 X 轴或者 Y 轴为某值的标线，见示例 [scatter-weight](${galleryEditorPath}scatter-weight)
 {{ /if }}

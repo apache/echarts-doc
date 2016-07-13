@@ -47,7 +47,7 @@ Data array of marking line. Every array item can be an array of one or two value
 {{ if: ${hasCoord} }}
 2. Assign coordinate position with [coord](~series-${seriesType}.markLine.data.0.coord) attribute, in which `'min'`, `'max'`, `'average'` are supported for each dimension. 
 {{ /if }}{{ if: ${hasType} }}
-3. Use [type](~series-${seriesType}.markLine.data.0.type) attribute to mark the maximum and minimum values in the series, in which [valueIndex](~series-${seriesType}.markLine.data.0.valueIndex) or [valueDim](~series-${seriesType}.markPoint.data.valueDim) can be used to assign the dimension.
+3. Use [type](~series-${seriesType}.markLine.data.0.type) attribute to mark the maximum and minimum values in the series, in which [valueIndex](~series-${seriesType}.markLine.data.0.valueIndex) or [valueDim](~series-${seriesType}.markLine.data.0.valueDim) can be used to assign the dimension.
 
 4. You may also create a mark line in Cartesian coordinate at a specific position in X or Y axis by assigning `xAxis` or `yAxis`. See [scatter-weight](${galleryEditorPath}scatter-weight) for example.
 {{ /if }}
@@ -147,7 +147,7 @@ Positions of labels can be:
 {{ target: mark-line-data-item-item }}
 {{ if: ${hasType} }}
 #${prefix} type(string)
-Special label types, are used to label maximum value, minimum value and so on. 
+Special label types, are used to label maximum value, minimum value and so on.
 
 **Options are:**
 + `'min'` maximum value.
