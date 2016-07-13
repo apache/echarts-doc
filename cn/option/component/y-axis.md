@@ -29,3 +29,9 @@ Y 轴相对于默认位置的偏移，在相同的 `position` 上有多个 Y 轴
     axisTypeDefault="'value'",
     hasSplitLineAndArea=true
 )}}
+
+{{use:partial-z-zlevel(
+    prefix="#",
+    componentName="Y 轴",
+    defaultZ=0
+) }}
