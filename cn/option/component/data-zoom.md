@@ -41,7 +41,7 @@
 
 数据过滤模式（[dataZoom.filterMode](~dataZoom.filterMode)）的设置不同，效果也不同。
 
-{{use: partial-data-zoom-filterMode}}
+{{use: partial-data-zoom-filterMode (galleryViewPath=${galleryViewPath})}}
 
 另外，如果在任一个数轴上设置了 `min`、`max`（如设置 `yAxis: {min: 0, max: 400}`），那么这个数轴无论如何也不会被其他数轴的 dataZoom 行为影响了。
 
@@ -214,7 +214,7 @@ option: {
 
 `dataZoom` 的运行原理是通过 `数据过滤` 来达到 `数据窗口缩放` 的效果。数据过滤模式的设置不同，效果也不同。
 
-{{use: partial-data-zoom-filterMode}}
+{{use: partial-data-zoom-filterMode (galleryViewPath=${galleryViewPath})}}
 
 
 
