@@ -31,3 +31,10 @@
     axisTypeDefault="'category'",
     hasSplitLineAndArea=true
 )}}
+
+
+{{use:partial-z-zlevel(
+    prefix="#",
+    componentName="角度轴",
+    defaultZ=0
+) }}
