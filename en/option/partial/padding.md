@@ -1,14 +1,14 @@
 {{target: partial-padding}}
 
-${componentName} internal margin, unit as px,set internal margin of each directions to 5 by default, set the internal margin of four directions of accepting array.
+${componentName} space around content. The unit is px. Default values for each position are 5. And they can be set to different values with left, right, top, and bottom.
 
 Examples: 
 ```js
-// Set internal margin to 5
+// Set padding to be 5
 padding: 5
-// Set the upper and lower margins to 5, left and right margins to 10
+// Set the top and bottom paddings to be 5, and left and right paddings to be 10
 padding: [5, 10]
-// Set each of the four margins as the followings
+// Set each of the four paddings seperately
 padding: [
     5,  // up
     10, // right

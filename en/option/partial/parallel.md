@@ -1,25 +1,29 @@
 {{target: partial-parallel-introduce}}
 
-**Introduction of parallel coordinates**
+<br>
 
-[parallel coordinates (Parallel Coordinates)](https://en.wikipedia.org/wiki/Parallel_coordinates) is a frequently used data chart of  high-dimensional visualization.
+---
+
+**Introduction to Parallel Coordinates**
+
+[Parallel coordinates](https://en.wikipedia.org/wiki/Parallel_coordinates) are charts frequently used for visualizating data in high-dimensions.
 
 {{use: partial-parallel-data-example}}
 
-Parallel coordinate is suited to conduct visualization analysis on multidimensional data. Every dimension (row) corresponds to an axis, every『data item』is a line, going through multiple axes. In this axis, data selection and other operations can be carried out, as following:
+Parallel coordinates are used for visualizating this kind of multi-dimension data. Each dimension (or each column) maps to one axis, and each data item is a line crossing multiple axes. Data can be selected on axes. For example:
 
 ~[600x400](${galleryViewPath}doc-example/parallel-all&edit=1&reset=1)
 
+---
 
+**Brief Introduction about Configuration Method**
 
-**brief introduction of configuration mode**
-
-basic configurations of `option` in『parallel coordinates』are as followed: 
+Basic configuration of `option` of parallel coordinates is as followed: 
 
 ```javascript
 option = {
-    parallelAxis: [                     // These are definitions of numerous 『axis』
-        {dim: 0, name: schema[0].text}, // Every『axis』has a 'dim' attribute, representing dimension number of axis.
+    parallelAxis: [                     // Definition of one axis
+        {dim: 0, name: schema[0].text}, // Each axis has a 'dim' attribute, representing dimension number of axis.
         {dim: 1, name: schema[1].text},
         {dim: 2, name: schema[2].text},
         {dim: 3, name: schema[3].text},
@@ -27,22 +31,22 @@ option = {
         {dim: 5, name: schema[5].text},
         {dim: 6, name: schema[6].text},
         {dim: 7, name: schema[7].text,
-            type: 'category',           //Axis also support category data 
+            type: 'category',           //Also supports category data 
             data: ['Excellent', 'good', 'light pollution', 'moderate pollution', 'heavy pollution', 'severe pollution']
         }
     ],
-    parallel: {                         // This is the definition of『coordinate』
-        left: '5%',                     // Location setting of parallel coordinate
+    parallel: {                         // Definition of one coordinate
+        left: '5%',                     // Location in parallel coordinate
         right: '13%',
         bottom: '10%',
         top: '20%',
-        parallelAxisDefault: {          // Public attribute of 『axis』can be set here to aviod repeated writing.
+        parallelAxisDefault: {          // Public attributes of axes can be set here to avoid repeating.
             type: 'value',
             nameLocation: 'end',
             nameGap: 20
         }
     },
-    series: [                           // These three series share one parallel coordinate
+    series: [                           // These are three series sharing the same parallel coordinate
         {
             name: 'Beijing',
             type: 'parallel',           // The type of this series is 'parallel'
@@ -74,38 +78,51 @@ option = {
 };
 ```
 
-Three concerned components: [parallel](~parallel)、[parallelAxis](~parallelAxis)、[series-parallel](~series-parallel)
+Three involved components are: [parallel](~parallel)、[parallelAxis](~parallelAxis)、[series-parallel](~series-parallel)
 
 + [parallel](~parallel)
 
-    The configuration item of this parallel coordinate is『coordinate』itsel.one series (`series`) or many series (like 『Beijing』、『Shanghai』、『Guangzhou』in the above picture is a series respectively.) They can share thi『coordinate』
+    This configuration item is the *axis* of parallel coordinate itself. One or more series (like *Beijing*, *Shanghai*, and Guangzhou* in the above example are of one series each) may share this *coordinate*.
 
-    The same as other coordinates, multiple coordinates can be created.
+    Like other coordinates, multiple parallel coordinates can be used.
 
-    Location setting is also carried out here.
+    Position setting is also carried out here.
 
 + [parallelAxis](~parallelAxis)
 
-    This is axis configuration of 『coordinate』. Naturally, multiple axes are needed.
+    This is axis configuration for axis in *coordinate*. Of course, multiple axes are needed.
 
-    Among which are attributes of  [parallelAxis.parallelIndex](~parallelAxis.parallelIndex), assigning this『axis』in which『coordinate』. Use the first 『coordinate』by default.
+    Among them, there is a [parallelAxis.parallelIndex](~parallelAxis.parallelIndex) attribute, assigning which *coordinate* this *axis* belongs to. The first *coordinate* is used by default.
 
 + [series-parallel](~series-parallel)
 
-    This is the definition of『series』. Series will be drawn to『coordinate』.
+    This is the definition of *series*, which are drawn to *coordinate*.
 
-    Among which are attributes of [series-parallel.parallelIndex](~series-parallel.parallelIndex), assigning usage of which『coordinate』.Use the first 『coordinate』by default.
+    Among them, there is an attribute of [series-parallel.parallelIndex](~series-parallel.parallelIndex), assigning which *coordinate* to use. The first *coordinate* is used by default.
 
-**Configuration note and best practices**
+<br>
+
+---
+
+**Notes and Best Practices**
 
 {{use: partial-parallel-axis-default}}
 
+**If data amount is too large, and have a severe influence on performance**
 
+It is advised to set [series-parallel.lineStyle.normal.width](~series-parallel.lineStyle.normal.width) to be 0.5, which can increase performance largely.
 
+<br>
+
+---
+
+**Displaying Data in High-Dimensions**
+
+{{use: partial-parallel-high-dim (galleryViewPath=${galleryViewPath})}}
 
 
 {{target: partial-parallel-data-example}}
-For example, following data are in [series-parallel.data](~series-parallel.data) : 
+For example, [series-parallel.data](~series-parallel.data) contains following data:
 
 ```javascript
 [
@@ -113,19 +130,28 @@ For example, following data are in [series-parallel.data](~series-parallel.data)
     [2,  25,  11,  21,  0.65,  34,  9,  'excellent'],
     [3,  56,  7,   63,  0.3,   14,  5,  'good'],
     [4,  33,  7,   29,  0.33,  16,  6,  'excellent'],
-    { // data item can also be Object, therefore special setting of lines can be included.
+    { // data item can also be Object, so that special setting of lines can be set here.
         value: [5,  42,  24,  44,  0.76,  40,  16, 'excellent']
         lineStyle: {...},
     }
     ...
 ]
 ```
-In data, every line is a 『data item』, every row belongs to a『dimension』. (like every row of data above means: 『date』,『AQI index』, 『PM2.5』, 『PM10』, 『carbon monoxide value』, 『nitrogen dioxide value』, 『sulfur dioxide value』). 
+In the above data, each line is an *data item*, and each row belongs to a *dimension*. (For example, the meanings of each column above are: *data*, *AQI*, *PM2.5*, *PM10*, *carbon monoxide level*, *nitrogen dioxide level*, and *sulfur dioxide level*.)
 
 
 
 
 {{target: partial-parallel-axis-default}}
 
-When configure multiple [parallelAxis](~parallelAxis), there are some value share the same attribute, If write them multiple times is complicated, then they could be placed in [parallel.parallelAxisDefault](~parallel.parallelAxisDefault). Before initializing axis, configuration item in `parallelAxisDefault` will integrate into [parallelAxis](~parallelAxis) respectively, and finally form the configuration of axis.
+When configure multiple [parallelAxis](~parallelAxis), if there are some shared attributes, to avoid writing for multiple times, they can be put under [parallel.parallelAxisDefault](~parallel.parallelAxisDefault). Before initializing axis, configurations in `parallelAxisDefault` will be merged into [parallelAxis](~parallelAxis) to get the final axis configuration.
 
+
+
+{{target: partial-parallel-high-dim}}
+
+When dimension is extremely large, say, more than 50 dimensions, then there will be more than 50 axes, which may hardly display in a page.
+
+In this case, you may use [parallel.axisExpandable](~parallel.axisExpandable) to improve display result. See this example:
+
+~[600x460](${galleryViewPath}map-parallel-prices&edit=1&reset=1)

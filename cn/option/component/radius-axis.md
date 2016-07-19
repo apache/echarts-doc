@@ -15,3 +15,10 @@
     axisTypeDefault="'value'",
     hasSplitLineAndArea=true
 )}}
+
+
+{{use:partial-z-zlevel(
+    prefix="#",
+    componentName="半径轴",
+    defaultZ=0
+) }}

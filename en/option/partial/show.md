@@ -1,3 +1,3 @@
 {{target: partial-show}}
 
-${componentName} whether to show component. what needs to be noted is that this attribute only affects the component shown. If component comes with features that affect chart display, such as dataRange component, switch of show will not affect component function.
+Whether to display ${componentName}. Notice that this attribute affects only the display of this component. If the component affects the display of the chart, like `dataRange` component, toggling `show` will not interfere with the display of chart.

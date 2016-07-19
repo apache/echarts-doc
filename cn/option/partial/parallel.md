@@ -4,13 +4,13 @@
 
 ---
 
-**✦ 平行坐标系介绍 ✦**
+**平行坐标系介绍**
 
 [平行坐标系（Parallel Coordinates）](https://en.wikipedia.org/wiki/Parallel_coordinates) 是一种常用的可视化高维数据的图表。
 
 {{use: partial-parallel-data-example}}
 
-平行坐标系适于对这种多维数据进行可视化分析。每一个维度（每一列）对应一个坐标轴，每一个『数据项』是一条线，贯穿多个坐标轴。在坐标轴上，可以进行数据选取等操作。如下：
+平行坐标系适用于对这种多维数据进行可视化分析。每一个维度（每一列）对应一个坐标轴，每一个『数据项』是一条线，贯穿多个坐标轴。在坐标轴上，可以进行数据选取等操作。如下：
 
 ~[600x400](${galleryViewPath}doc-example/parallel-all&edit=1&reset=1)
 
@@ -18,7 +18,7 @@
 
 ---
 
-**✦ 配置方式概要 ✦**
+**配置方式概要**
 
 『平行坐标系』的 `option` 基本配置如下例：
 
@@ -106,7 +106,7 @@ option = {
 
 ---
 
-**✦ 配置注意和最佳实践 ✦**
+**配置注意和最佳实践**
 
 {{use: partial-parallel-axis-default}}
 
@@ -119,7 +119,7 @@ option = {
 
 ---
 
-**✦ 高维数据的显示 ✦**
+**高维数据的显示**
 
 {{use: partial-parallel-high-dim (galleryViewPath=${galleryViewPath})}}
 
@@ -159,5 +159,3 @@ option = {
 可以通过 [parallel.axisExpandable](~parallel.axisExpandable) 来改善显示效果，如下例子：
 
 ~[600x460](${galleryViewPath}map-parallel-prices&edit=1&reset=1)
-
-

@@ -9,8 +9,8 @@
 
 ## width(string|number) = ${defaultWidth|default("'auto'")}
 
-${componentName} width of component.{{ if: !${defaultWidth} }}self-adaptive by default.{{ /if }}
+Width of ${componentName} component. {{ if: !${defaultWidth} }}Adaptive by default.{{ /if }}
 
 ## height(string|number) = ${defaultHeight|default("'auto'")}
 
-${componentName} height of component.{{ if: !${defaultHeight} }}self-adaptive by default.{{ /if }}
+Height of ${componentName} component. {{ if: !${defaultHeight} }}Adaptive by default.{{ /if }}
