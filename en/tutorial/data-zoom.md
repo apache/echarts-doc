@@ -26,19 +26,19 @@ Data overview by default, and detail by requirement is a basic interaction need 
 
 + `dataZoom` component operates *data window zoom* and *data window translation* on `axis`.
 
-> Use [dataZoom.xAxisIndex](option.html#dataZoom.xAxisIndex), [dataZoom.yAxisIndex](option.html#dataZoom.yAxisIndex), [dataZoom.radiusAxisIndex](option.html#dataZoom.radiusAxisIndex), or [dataZoom.angleAxisIndex](option.html#dataZoom.angleAxisIndex) to specify which axis `dataZoom` controls.
+> Use [dataZoom.xAxisIndex](option.html#dataZoom.xAxisIndex), [dataZoom.yAxisIndex](option.html#dataZoom.yAxisIndex) to specify which axis `dataZoom` controls.
 
 + Multiple `dataZoom` components can exist at the same time to control function together. Components controling the same axis will be connected automatically. The example below explains in detail.
 
 + Operation principle of `dataZoom` achieves *data window zooming* through *data filtering*.
 
-    Different settings of data filtering modes lead to different data window zooming effects, please see: [dataZoom.filterMode](option.html#dataZoom.filterMode). 
+    Different settings of data filtering modes lead to different data window zooming effects, please see: [dataZoom.filterMode](option.html#dataZoom.filterMode).
 
-+ Setting of `dataZoom` data window range supports two formats currently: 
++ Setting of `dataZoom` data window range supports two formats currently:
 
-    + Percentage: see [dataZoom.start](option.html#dataZoom.start) and [dataZoom.end](option.html#dataZoom.end). 
+    + Percentage: see [dataZoom.start](option.html#dataZoom.start) and [dataZoom.end](option.html#dataZoom.end).
 
-    + Absolute value: see [dataZoom.startValue](option.html#dataZoom.startValue) and [dataZoom.endValue](option.html#dataZoom.endValue). 
+    + Absolute value: see [dataZoom.startValue](option.html#dataZoom.startValue) and [dataZoom.endValue](option.html#dataZoom.endValue).
 
 
 
@@ -91,12 +91,12 @@ option = {
 }
 ```
 
-which will show the following result: 
+which will show the following result:
 ~[600x300](${galleryViewPath}doc-example/scatter-tutorial-dataZoom-1&edit=1&reset=1)
 
 <br>
 
-The chart above can only change window by dragging dataZoom component. If you want to drag in coordinate, or use mouse wheel (or slides with two fingers on mobile) to zoom, then another inside dataZoom component needs to be added. You can just add in the `option.dataZoom` above: 
+The chart above can only change window by dragging dataZoom component. If you want to drag in coordinate, or use mouse wheel (or slides with two fingers on mobile) to zoom, then another inside dataZoom component needs to be added. You can just add in the `option.dataZoom` above:
 
 ```javascript
 option = {
@@ -108,7 +108,7 @@ option = {
             end: 60         // the right is located at 60%
         },
         {   // This dataZoom component controls x-axis by dafault
-            type: 'inside', // this dataZoom component is dataZoom component of inside 
+            type: 'inside', // this dataZoom component is dataZoom component of inside
             start: 10,      // the left is located at 10%
             end: 60         // the right is located at 60%
         }
@@ -117,7 +117,7 @@ option = {
 }
 ```
 
-Following results can be seen (you can now slide or use mouse wheel to zoom in coordinate) : 
+Following results can be seen (you can now slide or use mouse wheel to zoom in coordinate) :
 ~[600x300](${galleryViewPath}doc-example/scatter-tutorial-dataZoom-2&edit=1&reset=1)
 
 
@@ -158,7 +158,7 @@ option = {
 }
 ```
 
-Following result can be seen: 
+Following result can be seen:
 ~[600x300](${galleryViewPath}doc-example/scatter-tutorial-dataZoom-3&edit=1&reset=1)
 
 

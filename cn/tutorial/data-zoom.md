@@ -26,7 +26,7 @@
 
 + `dataZoom` 组件是对 `数轴（axis）` 进行『数据窗口缩放』『数据窗口平移』操作。
 
-> 可以通过 [dataZoom.xAxisIndex](option.html#dataZoom.xAxisIndex) 或 [dataZoom.yAxisIndex](option.html#dataZoom.yAxisIndex) 或 [dataZoom.radiusAxisIndex](option.html#dataZoom.radiusAxisIndex) 或 [dataZoom.angleAxisIndex](option.html#dataZoom.angleAxisIndex) 来指定 `dataZoom` 控制哪个或哪些数轴。
+> 可以通过 [dataZoom.xAxisIndex](option.html#dataZoom.xAxisIndex) 或 [dataZoom.yAxisIndex](option.html#dataZoom.yAxisIndex) 来指定 `dataZoom` 控制哪个或哪些数轴。
 
 + `dataZoom` 组件可同时存在多个，起到共同控制的作用。控制同一个数轴的组件，会自动联动。下面例子中会详细说明。
 

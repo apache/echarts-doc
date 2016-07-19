@@ -26,7 +26,7 @@ Example:
 
 Basically `dataZoom` component operates "window" on axis to zoom or roam coordinate system.
 
-> Use [dataZoom.xAxisIndex](~dataZoom.xAxisIndex) or [dataZoom.yAxisIndex](~dataZoom.yAxisIndex) or [dataZoom.radiusAxisIndex](~dataZoom.radiusAxisIndex) or [dataZoom.angleAxisIndex](~dataZoom.angleAxisIndex) to specify which axes are operated by `dataZoom`.
+> Use [dataZoom.xAxisIndex](~dataZoom.xAxisIndex) or [dataZoom.yAxisIndex](~dataZoom.yAxisIndex) to specify which axes are operated by `dataZoom`.
 
 A single chart instance can contains several `dataZoom` components, each of which controls different axes. The `dataZoom` components that control the same axis will be automatically linked (i.e., all of them will be updated when one of them is updated by user action or API call).
 
@@ -192,28 +192,6 @@ By default the first `yAxis` that parallel to `dataZoom` are controlled when [${
 
 {{use: partial-data-zoom-axis-example(
     axisName='yAxis'
-)}}
-
-
-## angleAxisIndex(number|Array) = null
-
-Specify which [angleAxis](~angleAxis) is/are controlled by the `${dataZoomName}` when [polar coordinate system](~polar) is used.
-
-By default all the `angleAxis`s are controlled. But it is recommended to specify it explicitly but not use default value.
-
-{{use: partial-data-zoom-axis-example(
-    axisName='angleAxis'
-)}}
-
-
-## radiusAxisIndex(number|Array) = null
-
-Specify which [radiusAxis](~radiusAxis) is/are controlled by the `${dataZoomName}` when [polar coordinate system](~polar) is used.
-
-By default all the `radiusAxis`s are controlled. But it is recommended to specify it explicitly but not use default value.
-
-{{use: partial-data-zoom-axis-example(
-    axisName='radiusAxis'
 )}}
 
 
