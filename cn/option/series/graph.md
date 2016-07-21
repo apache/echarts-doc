@@ -251,10 +251,10 @@ links: [{
     prefix="####"
 )}}
 
-### edgeSymbol(Array|string)
+### symbol(Array|string)
 边两端的标记类型，可以是一个数组分别指定两端，也可以是单个统一指定。
 
-### edgeSymbolSize(Array|string)
+### symbolSize(Array|string)
 边两端的标记大小，可以是一个数组分别指定两端，也可以是单个统一指定。
 
 ## edges(Array)
