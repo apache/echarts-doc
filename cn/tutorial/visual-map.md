@@ -7,7 +7,7 @@
 
 ECharts 的每种图表本身就内置了这种映射过程，比如折线图把数据映射到『线』，柱状图把数据映射到『长度』。一些更复杂的图表，如 `graph`、`事件河流图`、`treemap` 也都会做出他们内置的映射。
 
-此外，ECharts 还提供了 [viusalMap 组件](option.html#visualMap) 来提供通用的视觉映射。`visualMap` 组件中可以使用的视觉元素有：<br>
+此外，ECharts 还提供了 [visualMap 组件](option.html#visualMap) 来提供通用的视觉映射。`visualMap` 组件中可以使用的视觉元素有：<br>
 `图形类别（symbol）`、`图形大小（symbolSize）`<br>
 `颜色（color）`、`透明度（opacity）`、`颜色透明度（colorAlpha）`、<br>
 `颜色明暗度（colorLightness）`、`颜色饱和度（colorSaturation）`、`色调（colorHue）`
