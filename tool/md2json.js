@@ -210,6 +210,8 @@ function mdToJsonSchema(mdStr, maxDepth) {
             return item.trim();
         });
 
+        key = key.trim();
+
         section = section.replace(/~\[(.*)\]\((.*)\)/g, function (text, size, href) {
             size = size.split('x');
             var width = +size[0];
@@ -225,8 +227,8 @@ function mdToJsonSchema(mdStr, maxDepth) {
             return iframe.join('');
         });
         var property = {
-            "type": types,
-            "descriptionCN": marked(section, {
+            'type': types,
+            'descriptionCN': marked(section, {
                 renderer: renderer
             })
         };

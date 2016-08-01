@@ -3,7 +3,7 @@
     // optional; series name; could be an array of multiple series
     seriesName?: string|Array,{{/target}}
 
-{{ target: action-data-query }}// data index; could assign by name attribute when not defined 
+{{ target: action-data-query }}// data index; could assign by name attribute when not defined
     dataIndex?: number,
     // optional; data name; ignored when dataIndex is defined
     name?: string{{/target}}
@@ -14,7 +14,7 @@
 
 Chart actions supported by ECharts are triggered through [dispatchAction](~echartsInstance.dispatchAction).
 
-**Attention: ** The `?:` note in the code shows that this attribute is optional. *EVENT:* stands for the event that triggers action. 
+**Attention: ** The `?:` note in the code shows that this attribute is optional. *EVENT:* stands for the event that triggers action.
 
 ## highlight(Action)
 
@@ -34,7 +34,7 @@ dispatchAction({
 
 ## downplay(Action)
 
-Cancels highlighting graphic element. 
+Cancels highlighting graphic element.
 
 Series is specified through `seriesName` or `seriesIndex`. If another data needs to be specified, then use `dataIndex` or `name`.
 ```js
@@ -101,7 +101,7 @@ Actions related to [tooltip component](option.html#tooltip), which should includ
 
 Shows tooltip.
 
-There are two usages as followed. 
+There are two usages as followed.
 
 1 Display tooltip at certain position relative to container. If it cannot be displayed at the specified location, then it is invalid.
 ```js
@@ -186,7 +186,7 @@ dispatchAction({
 ```js
 myChart.dispatchAction({
     type: 'selectDataRange',
-    // select a value range between 20 and 40 
+    // select a value range between 20 and 40
     selected: [20, 40],
     // cancel selecting the second range
     selected: { 1: false },
