@@ -43,9 +43,9 @@ Mark line style.
 ##${prefix} data
 Data array of marking line. Every array item can be an array of one or two values, representing starting and ending point of the line, and every item is an object. Here are several ways to assign the positions of starting and ending point.
 
-1. Assign coordinate according to container with [x](~series-${seriesType}.markLine.data.0.x), [y](~series-${seriesType}.markLine.data.0.y) attribute, in which pixel values and percentage are supported. 
+1. Assign coordinate according to container with [x](~series-${seriesType}.markLine.data.0.x), [y](~series-${seriesType}.markLine.data.0.y) attribute, in which pixel values and percentage are supported.
 {{ if: ${hasCoord} }}
-2. Assign coordinate position with [coord](~series-${seriesType}.markLine.data.0.coord) attribute, in which `'min'`, `'max'`, `'average'` are supported for each dimension. 
+2. Assign coordinate position with [coord](~series-${seriesType}.markLine.data.0.coord) attribute, in which `'min'`, `'max'`, `'average'` are supported for each dimension.
 {{ /if }}{{ if: ${hasType} }}
 3. Use [type](~series-${seriesType}.markLine.data.0.type) attribute to mark the maximum and minimum values in the series, in which [valueIndex](~series-${seriesType}.markLine.data.0.valueIndex) or [valueDim](~series-${seriesType}.markLine.data.0.valueDim) can be used to assign the dimension.
 
@@ -135,7 +135,7 @@ Data of the ending point.
 #${prefix} show(boolean) = ${defaultShowLabel|default(true)}
 Whether show label or not.
 #${prefix} position(string) = 'end'
-Positions of labels can be: 
+Positions of labels can be:
 + `'start'` starting point of the line.
 + `'middle'` middle point of the line.
 + `'end'` ending point of the line.
@@ -163,6 +163,8 @@ Works only when [type](~series-${seriesType}.markLine.data.type) is assigned. It
 
 #${prefix} coord(Array)
 Coordinates of the starting point or ending point, whose format depends on the coordinate of the series. It can be `x`, and `y` for [rectangular coordinates](~grid), or `radius`, and `angle` for [polar coordinates](~polar).
+
+{{ use: marker-coord-explain }}
 
 {{ /if }}
 #${prefix} x(number)

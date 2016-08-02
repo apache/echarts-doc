@@ -87,7 +87,9 @@ data: [{{if: ${hasType} }}
 在使用 [type](~series-${seriesType}.markPoint.data.type) 时有效，用于指定在哪个维度上指定最大值最小值。这可以是维度的直接名称，例如折线图时可以是`x`、`angle`等、candlestick 图时可以是`open`、`close`等维度名称。
 
 ###${prefix} coord(Array)
-标注的坐标。坐标格式视系列的坐标系而定，可以是[直角坐标系](~grid)上的 `x`, `y`，也可以是[极坐标系](~polar)上的 `radius`, `angle`。
+标注的坐标。坐标格式视系列的坐标系而定，可以是[直角坐标系](~grid)上的 `x`, `y`，也可以是[极坐标系](~polar)上的 `radius`, `angle`。例如 [121, 2323]、['aa', 998]。
+
+{{ use: marker-coord-explain }}
 
 **注：**在 ECharts 2.x 中会使用 `xAxis`，`yAxis` 标注直角坐标系上的位置，ECharts 3 中不再推荐使用。
 {{ /if }}
