@@ -164,12 +164,9 @@ The offset position relative to the center of gauge chart. The first item of arr
 #### color(Color) = 'auto'
 The text color. Defaults to use [the color of section](~series-gauge.axisLine.lineStyle.color) where the numerical value belongs to.
 
-{{use: partial-mark-point(
+{{use: partial-marker(
     prefix="#",
-    seriesType="gauge"
-)}}
-{{use: partial-mark-line(
-    prefix="#",
+    galleryEditorPath=${galleryEditorPath},
     seriesType="gauge"
 )}}
 

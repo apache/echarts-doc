@@ -107,18 +107,13 @@ The brush type for ripples. options: `'stroke'` and `'fill'`.
 {{use:partial-item-style(prefix="####")}}
 
 
-{{use: partial-mark-point(
-    prefix="#",
-    seriesType="effectScatter",
-    hasCoord=true,
-    hasType=true
-)}}prefix
-{{use: partial-mark-line(
+{{use: partial-marker(
     prefix="#",
     seriesType="effectScatter",
     hasCoord=true,
     hasType=true
 )}}
+
 
 {{use:partial-z-zlevel(
     prefix="#"

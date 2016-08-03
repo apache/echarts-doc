@@ -249,12 +249,9 @@ The curveness od edge, supporting values from 0 to 1. The curveness will be larg
 ## edges(Array)
 the same as [links](~series-graph.links)
 
-{{use: partial-mark-point(
+{{use: partial-marker(
     prefix="#",
-    seriesType="graph"
-)}}
-{{use: partial-mark-line(
-    prefix="#",
+    galleryEditorPath=${galleryEditorPath},
     seriesType="graph"
 )}}
 

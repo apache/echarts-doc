@@ -101,13 +101,9 @@ the value of data item.
 {{use:partial-boxplot-item-style(prefix="##")}}
 
 
-{{use: partial-mark-point(
+{{use: partial-marker(
     prefix="#",
-    seriesType="scatter",
-    hasCoord=true
-)}}
-{{use: partial-mark-line(
-    prefix="#",
+    galleryEditorPath=${galleryEditorPath},
     seriesType="scatter",
     hasCoord=true
 )}}

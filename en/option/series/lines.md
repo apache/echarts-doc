@@ -29,7 +29,7 @@ ECharts 2.x uses the `markLine` from map to draw the migrating effect; while in 
 ## effect(Object)
 the setting about special effect of lines.
 
-**Tips: **All the graphs with contrail effect should be individually put on one layer. It indicates that [zlevel](~series-lines.zlevel) need to be individually set up and the animation ([animation](~series-lines.animation): false)  of this layer is suggested to turn off at the meanwhile. Otherwise, other graphic elements in other series and the [label](~series-lines.label) of animation would produce unnecessary shadows.  
+**Tips: **All the graphs with contrail effect should be individually put on one layer. It indicates that [zlevel](~series-lines.zlevel) need to be individually set up and the animation ([animation](~series-lines.animation): false)  of this layer is suggested to turn off at the meanwhile. Otherwise, other graphic elements in other series and the [label](~series-lines.label) of animation would produce unnecessary shadows.
 
 ### show(boolean) = false
 Whether to show special effect.
@@ -39,18 +39,18 @@ the duration of special effect, which unit is s.
 the symbol of special graph.
 {{ use: partial-icon }}
 
-The above example is the graphic elements which present plane by default the symbol of path. 
+The above example is the graphic elements which present plane by default the symbol of path.
 
-**Tip:** the angle of symbol changes as the tangent line of track changes. If you use the symbol of default path, you should make sure that the path graphic elements are upward oriented. It would ensure that the graphic elements always move toward the right moving direction when the symbol moves along the track. 
+**Tip:** the angle of symbol changes as the tangent line of track changes. If you use the symbol of default path, you should make sure that the path graphic elements are upward oriented. It would ensure that the graphic elements always move toward the right moving direction when the symbol moves along the track.
 
 ### symbolSize(Array|number) = 3
-the symbol size of special effect, which could be set as single number such as `10`. What's more, arrays could be used to decribe the height and width respectively. For instance, `[20, 10]` indicates `20` for width and  `10` for height.  
+the symbol size of special effect, which could be set as single number such as `10`. What's more, arrays could be used to decribe the height and width respectively. For instance, `[20, 10]` indicates `20` for width and  `10` for height.
 
 ### color(Color)
 the color of special effect symbol, which defaults to be [lineStyle.normal.color](~series-lines.lineStyle.normal.color).
 
 ### trailLength(number) = 0.2
-the length of contrails of special effect.  The values from 0 to 1 could be set. It would be longer as the the value becomes larger. 
+the length of contrails of special effect.  The values from 0 to 1 could be set. It would be longer as the the value becomes larger.
 
 ## lineStyle(Object)
 ### normal(Object)
@@ -62,7 +62,7 @@ the length of contrails of special effect.  The values from 0 to 1 could be set.
 ) }}
 
 #### curveness(number) = 0
-the curveness of edge. The values from 0 to 1 could be set. The curveness would be larger as the the value becomes larger. 
+the curveness of edge. The values from 0 to 1 could be set. The curveness would be larger as the the value becomes larger.
 
 ### emphasis(Object)
 {{ use: partial-line-style(
@@ -111,7 +111,7 @@ the line style of this data item. the `lineStyle` of both the start and end poin
     hasCurveness=true
 ) }}
 ###### curveness(number) = 0
-the curveness of edge. The values from 0 to 1 could be set. The curveness would be larger as the the value becomes larger. 
+the curveness of edge. The values from 0 to 1 could be set. The curveness would be larger as the the value becomes larger.
 ##### emphasis(Object)
 {{ use: partial-line-style(
     prefix="#####",
@@ -123,18 +123,15 @@ the curveness of edge. The values from 0 to 1 could be set. The curveness would 
 #${prefix} show(boolean) = ${defaultShowLabel|default(false)}
 whether to show label.
 #${prefix} position(string) = 'end'
-the position of label, options: 
+the position of label, options:
 + `'start'` the start point of lines.
 + `'end'`   the end point of lines.
 #${prefix} formatter(string|Function)
 {{ use: partial-1d-data-label-formatter }}
 
-{{use: partial-mark-point(
+{{use: partial-marker(
     prefix="#",
-    seriesType="lines"
-)}}
-{{use: partial-mark-line(
-    prefix="#",
+    galleryEditorPath=${galleryEditorPath},
     seriesType="lines"
 )}}
 

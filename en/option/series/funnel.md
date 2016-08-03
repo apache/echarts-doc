@@ -111,12 +111,9 @@ The label configuration of a single data item.
 #### emphasis(Object)
 {{use:partial-item-style(prefix="####")}}
 
-{{use: partial-mark-point(
+{{use: partial-marker(
     prefix="#",
-    seriesType="funnel"
-)}}
-{{use: partial-mark-line(
-    prefix="#",
+    galleryEditorPath=${galleryEditorPath},
     seriesType="funnel"
 )}}
 

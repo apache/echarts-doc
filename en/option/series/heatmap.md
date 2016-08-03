@@ -4,11 +4,11 @@
 # series.heatmap(Object)
 **heat map**
 
-Heat map mainly shows the numerical values through colors, which have to coordinate with [visualMap](~visualMap) component. 
+Heat map mainly shows the numerical values through colors, which have to coordinate with [visualMap](~visualMap) component.
 
 It could be applied in both [rectangular coordinate](~grid) and [geographic coordinate](~geo). The patterns of manifestation in these 2 coordinat system are totally different. There must be 2 category axes used in rectangular coordinate.
 
-Here are the examples applied respectively in rectangular coordinate and geographic coordinate: 
+Here are the examples applied respectively in rectangular coordinate and geographic coordinate:
 
 **rectangular coordinate: **
 ~[600x400](${galleryViewPath}heatmap-cartesian&edit=1&reset=1)
@@ -59,12 +59,9 @@ the style setting of single data point. It is valid in rectangular coordinate([c
 #### emphasis(Object)
 {{use:partial-item-style(prefix="####")}}
 
-{{use: partial-mark-point(
+{{use: partial-marker(
     prefix="#",
-    seriesType="heatmap"
-)}}
-{{use: partial-mark-line(
-    prefix="#",
+    galleryEditorPath=${galleryEditorPath},
     seriesType="heatmap"
 )}}
 

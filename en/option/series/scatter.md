@@ -8,7 +8,7 @@ Scatter (bubble) diagram . The scatter diagram in [rectangular coordinate](~grid
 It could be applied in [rectangular coordinate](~grid) and [polar coordinate](~polar) and [geographical coordinate](~geo).
 
 
-**Tip:** Instead of marking a large number of data points through markPoint in ECharts 2.x, the scatter on [geographical coordinate](~geo) is suggested to achieve the same effect in ECharts 3. The following example shows the distribution of air quality is with a scatter diagram on the map of China. What's more, the [visualMap](~visualMap) component is used to map PM2.5 to colors. 
+**Tip:** Instead of marking a large number of data points through markPoint in ECharts 2.x, the scatter on [geographical coordinate](~geo) is suggested to achieve the same effect in ECharts 3. The following example shows the distribution of air quality is with a scatter diagram on the map of China. What's more, the [visualMap](~visualMap) component is used to map PM2.5 to colors.
 
 ~[600x400](${galleryViewPath}scatter-map&edit=1&reset=1)
 
@@ -38,11 +38,11 @@ Whether to enable the reminding animation effect mouse hover.
 ) }}
 
 ## large(boolean) = true
-Whether to enable the optimization of large-scale scatter diagram. The (>=5k)  could be enabled when there is a particularly large number of data graphic elements. 
+Whether to enable the optimization of large-scale scatter diagram. The (>=5k)  could be enabled when there is a particularly large number of data graphic elements.
 
 After being enabled, it should coordinate with [largeThreshold](~series-scatter.largeThreshold) to optimize the draw when the data volume is greater than specified threshold value.
 
-The style of a single data item can't be custom set and can't interact after optimization. 
+The style of a single data item can't be custom set and can't interact after optimization.
 
 ## largeThreshold(number) = 2000
 the threshold enabling the drawing optimization.
@@ -108,14 +108,9 @@ the style setting about single data point(bubble).
 #### emphasis(Object)
 {{use:partial-item-style(prefix="####")}}
 
-{{use: partial-mark-point(
+{{use: partial-marker(
     prefix="#",
-    seriesType="scatter",
-    hasCoord=true,
-    hasType=true
-)}}
-{{use: partial-mark-line(
-    prefix="#",
+    galleryEditorPath=${galleryEditorPath},
     seriesType="scatter",
     hasCoord=true,
     hasType=true

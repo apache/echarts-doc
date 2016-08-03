@@ -152,14 +152,9 @@ the style setting about the symbol of single inflection point.
 #### emphasis(Object)
 {{use: partial-bar-item-style(prefix="####")}}
 
-{{use: partial-mark-point(
+{{use: partial-marker(
     prefix="#",
-    seriesType="line",
-    hasCoord=true,
-    hasType=true
-)}}
-{{use: partial-mark-line(
-    prefix="#",
+    galleryEditorPath=${galleryEditorPath},
     seriesType="line",
     hasCoord=true,
     hasType=true

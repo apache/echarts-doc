@@ -97,14 +97,9 @@ The style setting of the text label in a single bar.
 #### emphasis(Object)
 {{use:partial-bar-item-style(prefix="####")}}
 
-{{use: partial-mark-point(
+{{use: partial-marker(
     prefix="#",
-    seriesType="bar",
-    hasCoord=true,
-    hasType=true
-)}}prefix
-{{use: partial-mark-line(
-    prefix="#",
+    galleryEditorPath=${galleryEditorPath},
     seriesType="bar",
     hasCoord=true,
     hasType=true
@@ -139,7 +134,7 @@ The radius of rounded corner of bar border. Its unit is px. And it supports use 
 For example:
 ```
 barBorderRadius: 5, // consistently set the size of 4 rounded corners
-barBorderRadius: [5, 5, 0, 0] // (clockwise upper left, upper right, bottom right and bottom left) 
+barBorderRadius: [5, 5, 0, 0] // (clockwise upper left, upper right, bottom right and bottom left)
 ```
 {{ /if }}
 
