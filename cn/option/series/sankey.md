@@ -19,6 +19,10 @@
 
 此外，图中每两个小矩形之间的边编码的是原数据中的`link`，边的粗细编码的是`link`中的`value`。
 
+<br>
+**排序：**
+如果想指定结果的纵向顺序，那么可以把 [layoutIterations](~series-sankey.layoutIterations) 设为 `0`，此时纵向的顺序依照数据在 [links](~series-sankey.links) 中出现的顺序。
+
 
 ## type(string) = 'sankey'
 
