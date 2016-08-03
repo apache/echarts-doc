@@ -210,7 +210,7 @@ splitLine: {
 
 坐标轴名称。
 
-#${prefix} nameLocation(string) = 'start'
+#${prefix} nameLocation(string) = 'end'
 
 坐标轴名称显示位置。
 
