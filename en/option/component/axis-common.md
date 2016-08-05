@@ -1,60 +1,78 @@
 {{target: partial-axis-common-axis-line}}
+#${prefix} silent(boolean) = false
+True for axis that cannot be interacted with.
+
+#${prefix} triggerEvent(boolean) = false
+
+Whether the labels of axis triggers and reacts to mouse events.
+
+Parameters of event includes:
+
+```js
+{
+    // Component type: xAxis, yAxis, radiusAxis, angleAxis
+    // Each of which has an attribute for index, e.g., xAxisIndex for xAxis
+    componentType: string,
+    // Value on axis before being formatted.
+    // Click on value label to trigger event.
+    value: '',
+    // Name of axis.
+    // Click on laben name to trigger event.
+    name: ''
+}
+```
+
+
 #${prefix} axisLine(Object)
 
-The related settings about axis line.
+Settings related to axis line.
 
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
 
-To show the axis line or not.
+Whether to show the axis line or not.
 
 
 {{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
 ##${prefix} onZero(boolean) = true
-
-specify whether x axis or y axis are in the scale of 0 degree. Only available if another one is numerical axis and contains scale of 0 degree.   
+Specifies whether X or Y axis lies on the other's origin position, where value is 0 on axis. Valid only if the other axis is of value type, and contains 0 value.
 {{ /if }}
 
 ##${prefix} lineStyle(Object)
-{{ use: partial-line-style(prefix='##' + ${prefix}, defaultColor="'#333'", defaultWidth=1, defaultType="'solid'", name="axisLine") }}
-
-
-
-
+{{ use: partial-line-style(prefix='##' + ${prefix}, defaultColor="'#333'", defaultWidth=1, defaultType="'solid'", name="line style") }}
 
 
 {{target: partial-axis-common-axis-label}}
 #${prefix} axisLabel(Object)
 
-The related settings about the axistick lable
+Settings related to axis label.
 
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
 
-To show the label of axis tick label or not. 
+Whether to show the label of axis label or not. 
 
 {{ if: ${hasLabelInterval|default(true)} }}
 ##${prefix} interval(number|Function) = 'auto'
 {{ use: partial-axis-interval(
-    name="axisTick label",
+    name="Axis label",
     isAxisLabel=true,
     componentType=${componentType}
 ) }}
 {{ /if }}
 
 ##${prefix} inside(boolean) = false
-Specify whether the axisTick label is inside oriented. It defaults to be outside oriented.
+Specifies whether the axis label faces Inside. False by default.
 
 {{ if: ${componentType} !== 'angleAxis' }}
 ##${prefix} rotate(number) = 0
+Rotation degree of axis label, which is especially useful when there is no enough space for category axis.
 
-The rotation angle of the tick label. As the category labels in the category axis cannot be shown completely, you can rotate the tick labels to prevent them from overlapping each other.   
-
-The rotation angle is from -90 degree to 90 degree.
+Rotation degree is from -90 to 90.
 
 {{ /if }}
 
 ##${prefix} margin(number) = 8
 
-The margin between the tick lable and the axis.
+The margin between the axis label and the axis line.
 
 ##${prefix} formatter(string|Function) = null
 
@@ -66,21 +84,39 @@ The margin between the tick lable and the axis.
     prefix='##' + ${prefix},
     defaultColor="'#333'"
 )}}
+<!-- Overwrite color -->
+###${prefix} color(Color|Function)
 
+Color of axis label is set to be [axisLine.lineStyle.color](~${componentType}.axisLine.lineStyle.color) by default. Callback function is supported, in the following format:
 
+```js
+(val: string) => Color
+```
+
+Parameter is the text of label, and return value is the color. See the following example:
+
+```js
+textStyle: {
+    color: function (val) {
+        return val >= 0 ? 'green' : 'red';
+    }
+}
+```
 
 
 
 {{target: partial-axis-common-axis-tick}}
 
 #${prefix} axisTick(Object)
-
-The related settings about the axis tick 
+Settings related to axis tick.
 
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
+Whether to show the axis tick.
 
-Specify whether to show the axis tick.
+##${prefix} alignWithLabel(boolean) = false
+Align axis tick with label, which is available only when `boundaryGap` is set to be `true` in category axis. See the following picture:
 
+![600xauto](~axis-align-with-label.png)
 
 {{ if: ${hasLabelInterval|default(true)} }}
 ##${prefix} interval(number|Function) = 'auto'
@@ -90,16 +126,16 @@ Specify whether to show the axis tick.
 ) }}
 {{ /if }}
 ##${prefix} inside(boolean) = false
-
-specify the axis tick are inside oriented. It defauts to be outside oriented.
-
+Specifies whether the axis label faces Inside. False by default.
 ##${prefix} length(number) = 5
-The length of the axis tick 
+The length of the axis tick.
 
 ##${prefix} lineStyle(Object)
 {{ use: partial-line-style(prefix='##' + ${prefix}, defaultColor="'#333'", defaultWidth=1, defaultType="'solid'", name="axisTick") }}
+<!-- Overwrite color -->
+###${prefix} color(Color)
 
-
+Color of axis label is set to be [axisLine.lineStyle.color](~${componentType}.axisLine.lineStyle.color) by default.
 
 
 
@@ -107,16 +143,16 @@ The length of the axis tick
 {{target: partial-axis-common-split-line}}
 
 #${prefix} splitLine(Object)
-The splitLine of coordinate axis in [grid](~grid) area defaults to show.
+SplitLine of axis in [grid](~grid) area.
 
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
 
-Specify whether to show the splitLine.
+Whether to show the splitLine. Value axes are shown by default, while category axes are not.
 
 {{ if: ${hasLabelInterval|default(true)} }}
 ##${prefix} interval(number|Function) = 'auto'
 {{ use: partial-axis-interval(
-    name="axis splitLine",
+    name="Axis splitLine",
     componentType=${componentType}
 ) }}
 ##${prefix} lineStyle(Object)
@@ -126,16 +162,15 @@ Specify whether to show the splitLine.
 
 <!-- overwrite color -->
 ###${prefix} color(Array|string) = ['#ccc']
-The color of the splitLine, which could be set as single color. 
+The color of the splitLine, which could be set separately. 
 
-The splitLines color could also be set as color array, from which the split lines would circularly set their colors according to the color order in the array. 
+SplitLine color could also be set in color array, which the split lines would take as their colors in turns. 
 
-
-example
+Example:
 ```
 splitLine: {
     lineStyle: {
-        // adopt interval color between deep and light
+        // Dark and light colors will be used in turns
         color: ['#aaa', '#ddd']
     }
 }
@@ -149,28 +184,24 @@ splitLine: {
 
 #${prefix} splitArea(Object)
 
-The split area of coordinate axis in [grid](~grid) area defaults not to show.
-
+Split area of axis in [grid](~grid) area, not shown by default.
 
 
 {{ if: ${hasLabelInterval|default(true)} }}
 ##${prefix} interval(number|Function) = 'auto'
 {{ use: partial-axis-interval(
-    name="splitArea of coordinate axis",
+    name="Axis splitArea",
     componentType=${componentType}
 ) }}
 {{ /if }}
 
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
-specify whether to show the splitArea.
+Whether to show the splitArea.
 ##${prefix} areaStyle(Object)
-
-The style settings about split area
-
+Split area style.
 ###${prefix} color(Array) = ['rgba(250,250,250,0.3)','rgba(200,200,200,0.3)']
-The color of split area. 
-The color of split area would circularly set their colors according to the color order in the array, which defaults to adopt a interval color between the deep and light one.
-
+Color of split area. 
+SplitArea color could also be set in color array, which the split lines would take as their colors in turns. Dark and light colors in turns are used by default.
 {{ use:partial-style-shadow-opacity(prefix='##' + ${prefix}) }}
 
 
@@ -183,91 +214,115 @@ Type of axis
 
 Option: 
 + `'value'`
-    numerical axis, suitable for continuous data.
+    Numerical axis, suitable for continuous data.
 
 + `'category'`
-    category axis, suitable for discrete category data, only can set category data through [data](~${componentType}.data). 
+    Category axis, suitable for discrete category data. Data should only be set via [data](~${componentType}.data) for this type. 
 
 + `'time'`
-    timeaxis, suitable for continuous time series data, has a feature of time formatting  and a different tick calculation method when compared with numerical axis.For instance, it would decide to adopt month, week, day or hour to be the tick unit in terms of the range of span.  
+    Time axis, suitable for continuous time series data. As compared to value axis, it has a better formatting for time and a different tick calculation method. For example, it decides to use month, week, day or hour for tick based on the range of span.  
 
 + `'log'`
-    log axis,suitable for log data.
+    Log axis, suitable for log data.
 
 {{ if: ${componentType} !== 'angleAxis' }}
 #${prefix} name(string)
 
-The name of coordinate axis.
+Name of axis.
 
 #${prefix} nameLocation(string) = 'start'
 
-The name's location of coordinate axis.
+Location of axis name.
 
-**Option: **
+**Options: **
 + `'start'`
 + `'middle'`
 + `'end'`
 
 #${prefix} nameTextStyle(Object)
 
-The text style of the name for coordinate axis.
+Text style of axis name.
 
-{{use: partial-text-style(prefix='#' + ${prefix}, name="the name of coordinate axis")}}
+{{use: partial-text-style(prefix='#' + ${prefix}, name="axis name")}}
+<!-- Overwrite color -->
+##${prefix} color(Color)
+Color of axis name uses [axisLine.lineStyle.color](~${componentType}.axisLine.lineStyle.color) by default.
 
 #${prefix} nameGap(number) = 15
 
-The distance between the name of coordinate axis and axis line. 
+Gap between axis name and axis line. 
+
+#${prefix} nameRotate(number) = null
+
+Rotation of axis name.
 
 #${prefix} inverse(boolean) = false
 
-Specify whether it is inverse coordinate axis. New option in ECharts 3. 
+Whether axis is inversed. New option from ECharts 3. 
 
 {{/if}}
 
 #${prefix} boundaryGap(boolean|Array)
-The boundary gap on both sides of the coordinate axis. The setting and performance of category axis and non-category axis are different.
+The boundary gap on both sides of a coordinate axis. The setting and behavior of category axes and non-category axes are different.
 
-The `boundaryGap` of category axis can be allocated as `true` and `false`, which defauts to be allocated as `true`.  Meanwhile,  [axisTick](~${componentType}.axisTick)can be used only as splitline. Both the label and data marker exist on the band between 2 [axis tick](~${componentType}.axisTick). 
+The `boundaryGap` of category axis can be set to either `true` or `false`. Default value is set to be `true`, in which case [axisTick](~${componentType}.axisTick) is served only as a separation line, and labels and data appear only in the center part of two [axis ticks](~${componentType}.axisTick), which is called *band*. 
 
-non-category axis includes time, numerical value, log axis. `boundaryGap` is an array consisting of 2 values which individually refer to the span range between the maximun and minimum value. The value and the percentage can be directly set. `boundaryGap` is not available after the [min](~${componentType}.min) and [max](~${componentType}.max) being set. **example: **
+For non-category axis, including time, numerical value, and log axes, `boundaryGap` is an array of two values, representing the spanning range between minimum and maximum value. The value can be set in numeric value or relative percentage, which becomes invalid after setting [min](~${componentType}.min) and [max](~${componentType}.max).
+**Example: **
 ```js
 boundaryGap: ['20%', '20%']
 ```
 
 #${prefix} min(number|string) = 'auto'
 
-The minimun value of axistick is unavailable in category axis. 
+The minimun value of axis, unavailable in category axis. 
 
-It can be set as particular value `'dataMin'`. Meanwhile, the minmum value in this axis is fetched as the minmun tick.
+It can be set to a special value `'dataMin'` so that the minimum value on this axis is set to be the minimum label.
 
 #${prefix} max(number|string) = 'auto'
 
-The maximum value of axistick is unavailable in category axis. 
+The maximum value of axis, unavailable in category axis. 
 
-It can be set as particular value `'dataMax'`. Meanwhile, the maximum value in this axis is fetched as the maximum tick.
+It can be set to a special value `'dataMax'` so that the minimum value on this axis is set to be the maximum label.
 
-without a particular setting, the maximum value would be caculated automatically to make sure the uniform distribution of axis ticks.
+It will be automatically computed to make sure axis tick is equally distributed when not set.
 
 #${prefix} scale(boolean) = false
 
-It is available only in numerical axis ([type](~${componentType}.type): 'value'). 
+It is available only in numerical axis, i.e., [type](~${componentType}.type): 'value'. 
 
-specify whether to get rid of 0 value porpotion. As it is set as `true`, the axis tick would not compulsorily contains 0 scale, which is more useful in the scatter diagram of double-numerical axis.
+It specifies whether not to contain zero position of axis compulsively. When it is set to be `true`, the axis may not contain zero position, which is useful in the scatter chart for both value axes.
 
-This configuration item is unavailable as the [min](~${componentType}.min) and [max](~${componentType}.max) are set.
+This configuration item is unavailable when the [min](~${componentType}.min) and [max](~${componentType}.max) are set.
 
 #${prefix} splitNumber(number) = 5
 
-SplitNumber. It should be noticed that this splitNumber is just a predicted value. The finally displayed split number results from the adjustment based on the readability of axis tick which is shown after being segmented.   
-unavailable in category axis.
+Number of segments that the axis is split into. Note that this number serves only as a recommendation, and the true segments may be adjusted based on readability.
+
+This is unavailable for category axis.
+
+#${prefix} minInterval(number) = 0
+
+Minimum gap between split lines.
+
+For example, it can be set to be `1` to make sure axis label is show as integer.
+
+```js
+{
+    minInterval: 1
+}
+```
+
+It is available only for axis of [type](~${componentType}.type) 'value'.
 
 #${prefix} interval(number)
 
-The segmented interval of coordinate axis. 
+Compulsively set segmentation interval for axis. 
 
-As [splitNumber](~${componentType}.splitNumber)  is a predicted value, the scale caculated through pratical strategy may not achieve the desired effect. Under such condition, interval can be set with [min](~${componentType}.min), [max](~${componentType}.max) to compulsorily divide the scale, which is generally not recommended.   
+As [splitNumber](~${componentType}.splitNumber) is a recommendation value, the calculated tick may not be the same as expected. In this case, interval should be used along with [min](~${componentType}.min) and [max](~${componentType}.max) to compulsively set tickings. But in most cases, we do not suggest using this, out automatic calculation is enough for most situations.
 
-Unavailable in category axis. The timestamp need to be transmitted in timeaxis ([type](~${componentType}.type): 'time'), and the index value need to be transmitted in logaxis. ([type](~${componentType}.type): 'log').
+This is unavailable for category axis. Timestamp should be passed for [type](~${componentType}.type): 'time' axis. Logged value should be passed for [type](~${componentType}.type): 'log' axis.
+
 
 {{ use: partial-axis-common-axis-line(
     prefix=${prefix},
@@ -302,17 +357,18 @@ Unavailable in category axis. The timestamp need to be transmitted in timeaxis (
 
 #${prefix} data(Array)
 
-Category data, available in category axis ([type](~${componentType}.type): 'category').
+Category data, available in [type](~${componentType}.type): 'category' axis.
 
 Example: 
 
 ```js
-//Name list of all categories
+// Name list of all categories
 data: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-// Each item could also be a specific configuration item. Under this condition, `value` in the configuration should be adopted as the category name 
+// Each item could also be a specific configuration item.
+// In this case, `value` is used as the category name.
 data: [{
     value: 'Monday',
-    // highlight Monday
+    // Highlight Monday
     textStyle: {
         fontSize: 20,
         color: 'red'
@@ -322,11 +378,11 @@ data: [{
 
 ##${prefix} value(string)
 
-Single category name
+Name of a category.
 
 ##${prefix} textStyle(Object)
 
-Text style of the category label.
+Text style of the category.
 
 {{ use:partial-text-style(
     prefix='##' + ${prefix},
@@ -334,35 +390,34 @@ Text style of the category label.
     hasBaseline=true
 ) }}
 
+{ target: partial-axis-interval }}
+Interval of ${name}, which is available in category axis. {{ if: !${isAxisLabel} }} is set to be the same as [axisLabel.interval](~${componentType}.axisLabel.interval) by default.{{ /if }}
 
-The display interval of {{ target: partial-axis-interval }}
-${name}, available in category axis.{{ if: !${isAxisLabel} }} defaults to be the same as [axisLabel.interval](~${componentType}.axisLabel.interval).{{ /if }}
+It uses a strategy that labels do not overlap by default.
 
-It defaults to adopt strategic interval to show the labels in case labels repeat, which could be set as 0 to compulsorily display all the labels.
+You may set it to be 0 to display all labels compulsively.
 
-The interval data not only could be presented by numerical value, but also could be controled through callback function.The format of callback function is shown as follow: 
+If it is set to be 1, it means that labels are shown once after one label. And if it is set to be 2, it means labels are shown once after two labels, and so on. 
+
+On the other hand, you can control by callback function, whose format is shown below:
 ```js
 (index:number, value: string) => boolean
 ```
-The first parameter is the index of category, and the second value is the name of the category. If it is skipped, it would be back to `false`.
-
-
-
-
+The first parameter is index of category, and the second parameter is the name of category. The return values decides whether to display label.
 
 
 {{target: axis-common-formatter-desc}}
 
-The formatter of axi stick label, supporting both string template and callback fuction.
+Formatter of axis label, which supports string template and callback function.
 
 Example:
 ```js
-//using string template, the template variable is the default label of axistick  {value}
+// Use string template; template variable is the default label of axis {value}
 formatter: '{value} kg'
 
-// using callback function template, function parameters are individually
+// Use callback function; function parameters are axis index
 formatter: function (value, index) {
-    // formatting to be Month/day, the particular year display only in the first scale
+    // Formatted to be month/day; display year only in the first label
     var date = new Date(value);
     var texts = [(date.getMonth() + 1), date.getDate()];
     if (idx === 0) {

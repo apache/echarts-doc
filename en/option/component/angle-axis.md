@@ -3,27 +3,25 @@
 
 # angleAxis(Object)
 
-The angle Axis of Polar coordinate.
+The angle axis in Polar Coordinate.
 
 ## polarIndex(number) = 0
 
-The polarIndex of angle Axis defaults to use the first Polar coordinate.
+The index of angle axis in Polar Coordinate. The first axis is used by default.
 
 ## startAngle(number) = 90
 
-The default angle of the start of scale is 90 degrees, directly above the circle center.  0 degeree refers to the directly right to the circle center.
+Starting angle of axis. 90 degrees by default, standing for top position of center. 0 degree stands for right position of center.
 
-As the startAngle(number) = 45, the result is shown in following: 
-
+The following shows an example with startAngle of 45 deg.
 
 ~[400x400](${galleryViewPath}doc-example/polar-start-angle&edit=1&reset=1)
 
 ## clockwise(boolean) = true
 
-whether the scale clockwise increases, it defaults to increase clockwise.
+Whether the positive position of axis is in clockwise. True for clockwise by default.
 
-As clockwise(boolean) = false, the result is shown as the following example:
-
+The following shows an example with clockwise as `false`.
 
 ~[400x400](${galleryViewPath}doc-example/polar-anticlockwise&edit=1&reset=1)
 
@@ -33,3 +31,10 @@ As clockwise(boolean) = false, the result is shown as the following example:
     axisTypeDefault="'category'",
     hasSplitLineAndArea=true
 )}}
+
+
+{{use:partial-z-zlevel(
+    prefix="#",
+    componentName="Angle Axis",
+    defaultZ=0
+) }}

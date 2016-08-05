@@ -127,7 +127,7 @@ textStyle: {
 {{target: partial-axis-common-split-line}}
 
 #${prefix} splitLine(Object)
-坐标轴在 [grid](~grid) 区域中的分隔线，默认显示。
+坐标轴在 [grid](~grid) 区域中的分隔线。
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
 是否显示分隔线。默认数值轴显示，类目轴不显示。
 
@@ -249,7 +249,8 @@ splitLine: {
 
 类目轴中 `boundaryGap` 可以配置为 `true` 和 `false`。默认为 `true`，这时候[刻度](~${componentType}.axisTick)只是作为分隔线，标签和数据点都会在两个[刻度](~${componentType}.axisTick)之间的带(band)中间。
 
-非类目轴，包括时间，数值，对数轴，`boundaryGap`是一个两个值的数组，分别表示数据最小值和最大值的延伸范围，可以直接设置数值或者相对的百分比，在设置 [min](~${componentType}.min) 和 [max](~${componentType}.max) 后无效。**示例：**
+非类目轴，包括时间，数值，对数轴，`boundaryGap`是一个两个值的数组，分别表示数据最小值和最大值的延伸范围，可以直接设置数值或者相对的百分比，在设置 [min](~${componentType}.min) 和 [max](~${componentType}.max) 后无效。
+**示例：**
 ```js
 boundaryGap: ['20%', '20%']
 ```
@@ -302,7 +303,7 @@ boundaryGap: ['20%', '20%']
 
 强制设置坐标轴分割间隔。
 
-因为 [splitNumber](~${componentType}.splitNumber) 是预估的值，实际根据策略计算出来的刻度可能无法达到想要的效果，这时候可以使用 interval 配合 [min](~${componentType}.min), [max](~${componentType}.max) 强制设定刻度划分，一般不建议使用。
+因为 [splitNumber](~${componentType}.splitNumber) 是预估的值，实际根据策略计算出来的刻度可能无法达到想要的效果，这时候可以使用 interval 配合 [min](~${componentType}.min)、[max](~${componentType}.max) 强制设定刻度划分，一般不建议使用。
 
 无法在类目轴中使用。在时间轴（[type](~${componentType}.type): 'time'）中需要传时间戳，在对数轴（[type](~${componentType}.type): 'log'）中需要传指数值。
 
@@ -386,9 +387,6 @@ ${name}的显示间隔，在类目轴中有效。{{ if: !${isAxisLabel} }}默认
 (index:number, value: string) => boolean
 ```
 第一个参数是类目的 index，第二个值是类目名称，如果跳过则返回 `false`。
-
-
-
 
 
 
