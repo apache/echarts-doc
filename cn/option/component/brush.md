@@ -14,7 +14,7 @@
 
 ---
 
-**✦ 刷子的类型和启动按钮 ✦**
+**刷子的类型和启动按钮**
 
 目前 `brush` 组件支持的图表类型：`scatter`、`bar`、`candlestick`（`parallel` 本身自带刷选功能，但并非由 brush 组件来提供）。
 
@@ -42,7 +42,7 @@
 
 ---
 
-**✦ 刷选和坐标系的关系 ✦**
+**刷选和坐标系的关系**
 
 {{use: partial-brush-coord}}
 
@@ -50,7 +50,7 @@
 
 ---
 
-**✦ 使用 API 控制选框 ✦**
+** 使用 API 控制选框 **
 
 可以通过调用 `dispatchAction` 来用程序主动渲染选框，例如：
 
@@ -74,7 +74,7 @@ myChart.dispatchAction({
 
 ---
 
-**✦ brushLink ✦**
+** brushLink **
 
 {{use: partial-brush-brushLink (galleryViewPath=${galleryViewPath})}}
 
@@ -86,7 +86,7 @@ myChart.dispatchAction({
 
 ---
 
-**✦ throttle / debounce / 事件延迟 ✦**
+** throttle / debounce / 事件延迟 **
 
 {{use: partial-brush-throttle (galleryViewPath=${galleryViewPath})}}
 
@@ -95,7 +95,7 @@ myChart.dispatchAction({
 
 ---
 
-**✦ 被选中项和未被选中项的视觉设置 ✦**
+** 被选中项和未被选中项的视觉设置 **
 
 参见 [brush.inBrush](~brush.inBrush) 和 [brush.outOfBrush](~brush.outOfBrush)。
 
@@ -123,7 +123,6 @@ myChart.dispatchAction({
 {{use: partial-brush-brushLink (galleryViewPath=${galleryViewPath})}}
 
 
-                        // or 'all', which means all series. 'none' or null means no series.
 ## seriesIndex(Array|number|string) = 'all'
 
 指定哪些 series 可以被刷选，可取值为：
@@ -346,7 +345,7 @@ option = {
 
 {{target: partial-brush-throttle}}
 
-默认情况，刷选或者移动选区的时候，会不断得发 `brushSelected` 时间，从而告诉外界选中的内容。
+默认情况，刷选或者移动选区的时候，会不断得发 `brushSelected` 事件，从而告诉外界选中的内容。
 
 但是频繁的事件可能导致性能问题，或者动画效果很差。所以 brush 组件提供了 [brush.throttleType](~brush.throttleType)，[brush.throttleDelay](~brush.throttleDelay) 来解决这个问题。
 

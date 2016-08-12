@@ -4,14 +4,16 @@
 
 **dataZoomInside**
 
-Data zoom functionalities is embeded inside coordinate systems, enable user to zoom or roam coordinate system by mouse dragging, mouse move or finger touch (in touch screen). See [dataZoom](~dataZoom).
+Data zoom component of *inside* type.
 
-Possible interactions:
+Refer to [dataZoom](~dataZoom) for more information.
 
-+ translation: slide (by mouse or finger touch) in coordinate system to translate view window.
+The *inside* means it's inside the coordinates.
 
-+ zoom: roll mouse wheel or pinch (on touch screen or touch pad) within coordinate system to zoom view window.
-
++ Translation: data area can be translated when moving in coordinates.
++ Scaling:
+    + PC: when mouse rolls (similar with touch pad) in coordinates.
+    + Mobile: when touches and moved with two fingers in coordinates on touch screens.
 
 <br>
 <br>
