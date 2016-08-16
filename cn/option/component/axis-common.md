@@ -307,6 +307,11 @@ boundaryGap: ['20%', '20%']
 
 无法在类目轴中使用。在时间轴（[type](~${componentType}.type): 'time'）中需要传时间戳，在对数轴（[type](~${componentType}.type): 'log'）中需要传指数值。
 
+#${prefix} logBase(number) = 10
+
+对数轴的底数，只在对数轴中（[type](~${componentType}.type): 'log'）有效。
+
+
 {{ use: partial-axis-common-axis-line(
     prefix=${prefix},
     componentType=${componentType}

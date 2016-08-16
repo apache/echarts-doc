@@ -23,7 +23,7 @@ Configuration item, data, universal interface, all parameters and data can all b
 **Parameters**
 + `option`
 
-    Configuration item and data. Please refer to [configuration item manual](option.html) for more information. 
+    Configuration item and data. Please refer to [configuration item manual](option.html) for more information.
 
 + `notMerge`
 
@@ -31,7 +31,7 @@ Configuration item, data, universal interface, all parameters and data can all b
 
 + `notRefreshImmediately`
 
-    Optional; states whether not to refresh cavas immediately; `false` by defualt, stating refresh immediately.
+    Optional; states whether not to update chart immediately; `false` by defualt, stating update immediately.
 
 ## getWidth(Function)
 ```js
@@ -64,7 +64,7 @@ Gets DOM element of ECharts instance container.
 Gets `option` object maintained in current instance, which contains configuration item and data merged from previous `setOption` operations by users, along with user interaction states. For example, switching of legend, zooming area of data zoom, and so on. Therefore, a new instance that is exactly the same can be recovered from this option.
 
 **Attention: **Attribute values in each component of the returned option are all in the form of an array, no matter it's single object or array of object when passed by `setOption`.
-For example: 
+For example:
 ```js
 {
     title: [{...}],
@@ -190,7 +190,7 @@ Shows loading animation. You can call this interface manually before data is loa
 
 + `opts`
 
-    Optional; configuration item of loading animation, which is related to `type`. Following shows the default configuration item : 
+    Optional; configuration item of loading animation, which is related to `type`. Following shows the default configuration item :
 
     ```js
 default: {

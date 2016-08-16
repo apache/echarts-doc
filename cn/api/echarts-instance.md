@@ -9,7 +9,7 @@
 
 ## setOption(Function)
 ```js
-(option: Object, notMerge: boolean, notRefreshImmediately: boolean)
+(option: Object, notMerge: boolean, lazyUpdate: boolean)
 ```
 
 设置图表实例的配置项以及数据，万能接口，所有参数和数据的修改都可以通过`setOption`完成，ECharts 会合并新的参数和数据，然后刷新图表。如果开启[动画](~option.animation)的话，ECharts 找到两组数据之间的差异然后通过合适的动画去表现数据的变化。
@@ -29,9 +29,9 @@
 
     可选，是否不跟之前设置的`option`进行合并，默认为`false`，即合并。
 
-+ `notRefreshImmediately`
++ `lazyUpdate`
 
-    可选，在设置完`option`后是否不立即刷新画布，默认为`false`，即立即刷新。
+    可选，在设置完`option`后是否不立即更新图表，默认为`false`，即立即更新。
 
 ## getWidth(Function)
 ```js

@@ -35,9 +35,15 @@
 **可选：**
 + `'none'` 不采用任何布局，使用[节点](~series-graph.data)中提供的 [x](~series-graph.data.x)， [y](~series-graph.data.y) 作为节点的位置。
 
-+ `'circular'` 采用环形布局，见示例 [Les Miserables](${galleryEditorPath}graph-circular-layout)。
++ `'circular'` 采用环形布局，见示例 [Les Miserables](${galleryEditorPath}graph-circular-layout)，布局相关的配置项见 [graph.circular](~series-graph.circular)
 
 + `'force'` 采用力引导布局，见示例 [Force](${galleryEditorPath}graph-force)，布局相关的配置项见 [graph.force](~series-graph.force)
+
+## circular(Object)
+环形布局相关配置
+
+### rotateLabel(boolean) = false
+是否旋转标签，默认不旋转
 
 ## force(Object)
 力引导布局相关的配置项，力引导布局是模拟弹簧电荷模型在每两个节点之间添加一个斥力，每条边的两个节点之间添加一个引力，每次迭代节点会在各个斥力和引力的作用下移动位置，多次迭代后节点会静止在一个受力平衡的位置，达到整个模型的能量最小化。
@@ -51,14 +57,23 @@
 
 也可以选择使用环形布局 `'circular'`。
 
-### repulsion(number) = 50
-节点之间的斥力因子。该值越大节点之间的斥力越大，两个节点间的距离也会越远。
+### repulsion(Array|number) = 50
+节点之间的斥力因子。
+
+支持设置成数组表达斥力的范围，此时不同大小的值会线性映射到不同的斥力。值越大则斥力越大
 
 ### gravity(number) = 0.1
 节点受到的向中心的引力因子。该值越大节点越往中心点靠拢。
 
-### edgeLength(number) = 30
+### edgeLength(Array|number) = 30
 边的两个节点之间的距离，这个距离也会受 [repulsion](~series-graph.force.repulsion)。
+
+支持设置成数组表达边长的范围，此时不同大小的值会线性映射到不同的长度。值越小则长度越长。如下示例
+
+```js
+// 值最大的边长度会趋向于 10，值最小的边长度会趋向于 50
+edgeLength: [10, 50]
+```
 
 ### layoutAnimation(boolean) = true
 因为力引导布局会在多次迭代后才会稳定，这个参数决定是否显示布局的迭代动画，在浏览器端节点数据较多（>100）的时候不建议关闭，布局过程会造成浏览器假死。
@@ -228,6 +243,9 @@ links: [{
 边的[源节点名称](~series-graph.data.name)的字符串，也支持使用数字表示源节点的索引。
 ### target(string|number)
 边的[目标节点名称](~series-graph.data.name)的字符串，也支持使用数字表示源节点的索引。
+### value(number)
+边的数值，可以在力引导布局中用于映射到边的长度。
+
 ### lineStyle(Object)
 关系边的线条样式。
 #### normal(Object)
