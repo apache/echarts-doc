@@ -323,6 +323,8 @@ As [splitNumber](~${componentType}.splitNumber) is a recommendation value, the c
 
 This is unavailable for category axis. Timestamp should be passed for [type](~${componentType}.type): 'time' axis. Logged value should be passed for [type](~${componentType}.type): 'log' axis.
 
+#${prefix} logBase(number) = 10
+Base of logarithm, which is valid only for numeric axes with [type](~${componentType}.type): 'log'.
 
 {{ use: partial-axis-common-axis-line(
     prefix=${prefix},
