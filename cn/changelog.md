@@ -7,11 +7,11 @@
 
 + [^] 修复关闭动画时阶梯线图刷新会变成普通折线图的 bug。见 [#3645](https://github.com/ecomfe/echarts/issues/3645)
 
-+ [^] [setOption](http://echarts.baidu.com/api.html#echartsInstance.setOption) 第三个参数调整为 lazyUpdate, 从原先的不立即重绘画布改为为不立即更新图表，从而优化在多处地方 setOption 设置同一个图表会产生的性能问题。
++ [^] [setOption](http://echarts.baidu.com/api.html#echartsInstance.setOption) 第三个参数调整为 lazyUpdate, 从原先的不立即重绘画布改为不立即更新图表，从而优化在多处地方多次 setOption 设置同一个图表会产生的性能问题。
 
-+ [^] 修复 [graph](http://echarts.baidu.com/option.html#series-graph) 中曲线两边的 symbol 有可能无法对齐节点的 bug。
++ [^] 修复 [graph](http://echarts.baidu.com/option.html#series-graph) 中曲线两边的 [edgeSymbol](http://echarts.baidu.com/option.html#series-graph.edgeSymbol) 有可能无法对齐节点的 bug。
 
-+ [^] 修复 [graph](http://echarts.baidu.com/option.html#series-graph) 中 [symbolSize](http://echarts.baidu.com/option.html#series-graph.symbolSize) 为数组时无法绘制带有 [symbol](http://echarts.baidu.com/option.html#series-graph.edgeSymbol) 的直线的 bug。
++ [^] 修复 [graph](http://echarts.baidu.com/option.html#series-graph) 中 [symbolSize](http://echarts.baidu.com/option.html#series-graph.symbolSize) 为数组时无法绘制带有 [edgeSymbol](http://echarts.baidu.com/option.html#series-graph.edgeSymbol) 的直线的 bug。
 
 + [^] 修复饼图中关闭图例会导致颜色显示不一致的 bug。见 [#3735](https://github.com/ecomfe/echarts/issues/3735)
 
