@@ -104,12 +104,12 @@ labelFormatter: function (value) {
 
 ## showDetail(boolean) = true
 
-是否显示label，即拖拽时候显示详细数值信息。
+是否显示detail，即拖拽时候显示详细数值信息。
 
 
 ## showDataShadow(string) = 'auto'
 
-是否在 `dataZoom-silder` 组件中显示数据阴影。数据阴影可以简单得反应数据走势。
+是否在 `dataZoom-silder` 组件中显示数据阴影。数据阴影可以简单地反应数据走势。
 
 
 ## realtime(boolean) = true

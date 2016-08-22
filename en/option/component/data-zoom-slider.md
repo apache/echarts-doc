@@ -4,7 +4,7 @@
 
 **dataZoomSlider**
 
-A special slider bar is provided, on which coordinate systems can be zoomed or roamed by mouse dragging or finger touch (in touch screen). See [dataZoom](~dataZoom).
+(Please refer to the [introduction of dataZoom](~dataZoom).)
 
 
 <br>
@@ -16,50 +16,85 @@ A special slider bar is provided, on which coordinate systems can be zoomed or r
 
 ## show(boolean) = true
 
-Specify whether to show the ${dataZoomName} component. If set as `false`, it will not show, but it still do its job.
+Whether to show the ${dataZoomName} component. If is set to be `false`, it will not show, but its data filtering function still works.
 
 
 ## backgroundColor(Color) = 'rgba(47,69,84,0)'
 
 The background color of the component.
 
+## dataBackground(Object)
 
-## dataBackgroundColor(Color) = '#ddd'
+The style of data shadow.
 
-The background color of the data shadow in the component.
+### lineStyle(Object)
 
+Line style of shadow
+
+{{use:partial-line-style(
+    prefix="###",
+    defaultWidth=0.5,
+    defaultOpacity=0.3,
+    defaultColor='#2f4554'
+)}}
+
+### areaStyle(Object)
+
+Area style of shadow
+
+{{use:partial-area-style(
+    prefix="###",
+    defaultOpacity=0.3,
+    defaultColor='rgba(47,69,84,0.3)'
+)}}
 
 ## fillerColor(Color) = 'rgba(47,69,84,0.25)'
 
-The color of selected area (or called window).
+The color to fill selected area.
+
+## borderColor(Color) = '#ddd'
+
+The color of border.
+
+## handleIcon(string)
+
+Icon shape of handle, which supports path string. Its default value is:
+```js
+'M8.2,13.6V3.9H6.3v9.7H3.1v14.9h3.3v9.7h1.8v-9.7h3.3V13.6H8.2z M9.7,24.4H4.8v-1.4h4.9V24.4z M9.7,19.1H4.8v-1.4h4.9V19.1z'
+```
+
+Refer to [area-simple example](${galleryEditorPath}area-simple) for customized icon.
 
 
-## handleColor(Color) = 'rgba(47,69,84,0.65)'
+## handleSize(number) = '100%'
 
-The color of control handle.
+The size of control handle. It can be in pixels, or in percentage relative to the width of dataZoom component. By default, it's the same as the width of dataZoom component.
 
+## handleStyle(Object)
 
-## handleSize(number) = 10
+Style of handle. Please refer to [area-simple example](${galleryEditorPath}area-simple).
 
-The size of control handle.
-
+{{use: partial-item-style(
+    prefix="##",
+    defaultColor="#a7b7cc"
+)}}
 
 ## labelPrecision(number) = 'auto'
 
-Specify the decimal places of the value shown in label. automatically determined by default. Possible value: 0, 1, 2, ...
+Precision of label if in number form. By default, it is decided based on the number of data.
 
 
 ## labelFormatter(string|Function) = null
 
 The formatter tool for the label.
 
-+ If it is set as `string`, it is a template, for instance: `aaaa{value}bbbb`, where `{value}` will be substituted by the value of the edge of the window.
++ It is a template if in `string`. For instance, `aaaa{value}bbbb`, where `{value}` will be replaced by the value of actual data value.
 
-+ If it is set as `Function`, it is a callback function, for example:
++ It is a callback function if in `Function`. For example:
 
 ```javascript
 labelFormatter: function (value) {
-    // Finally return the content text of the label.
+    // returns the label calculated
     return 'aaa' + value + 'bbb';
 }
 ```
@@ -67,19 +102,16 @@ labelFormatter: function (value) {
 
 ## showDetail(boolean) = true
 
-Specify whether to show labels, that is, show the extent of the window when dragging.
+Whether to show detail, that is, show the detailed data information when dragging.
 
 
 ## showDataShadow(string) = 'auto'
 
-Specify whether to show data shadow, which could indicate the data tendency generally.
-
-Works only in `dataZoom-silder`. See [dataBackgroundColor](~dataZoom-slider.dataBackgroundColor).
-
+Whether to show data shadow in `dataZoom-silder` component, to indicate the data tendency in brief.
 
 ## realtime(boolean) = true
 
-Specify whether to real-time update the view while dragging. If it was set as `false`, the view will be updated only at the end of dragging.
+Whether to update view while dragging. If it is set as `false`, the view will be updated only at the end of dragging.
 
 
 ## textStyle
