@@ -6,7 +6,7 @@
 
 ECharts 3 中因为地图精度的提高，不再内置地图数据增大代码体积，你可以在[地图下载界面](http://ecomfe.github.io/echarts-builder-web/map3.html)下载到需要的地图文件引入并注册到 ECharts 中。
 
-ECharts 中提供了两种格式的地图数据，一种是可以直接 script 标签引入的 js 文件，引入后会自动注册地图名字和数据。还有一种是 JSON 文件，需要通过 jquery 等工具异步加载后手动注册。
+ECharts 中提供了两种格式的地图数据，一种是可以直接 script 标签引入的 js 文件，引入后会自动注册地图名字和数据。还有一种是 JSON 文件，需要通过 AJAX 异步加载后手动注册。
 
 下面是两种类型的使用示例：
 
@@ -70,7 +70,7 @@ center: [115.97, 29.71]
 ```
 
 ## selectedMode(boolean|string) = false
-选中模式，表示是否支持多个选中，默认关闭，支持布尔值和字符串，字符串取值可选 `'single'`，`'multiple'`。
+选中模式，表示是否支持多个选中，默认关闭，支持布尔值和字符串，字符串取值可选`'single'`表示单选，或者`'multiple'`表示多选。
 
 #${prefix} label(Object)
 

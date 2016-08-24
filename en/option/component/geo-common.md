@@ -2,13 +2,14 @@
 
 #${prefix} map(string) = ''
 
-Types of maps.
+Map charts.
 
-Because the accuracy of maps in ECharts 3 have been improved, the map data for enlarging javascript volume would not been internally installed anymore, you can download the map docs you need from [Map download page](http://ecomfe.github.io/echarts-builder-web/map3.html) and then import and register them in ECharts. 
+Due to the increase of fineness of map, ECharts 3 doesn't include map data by default for package size consideration. You may find map files you need on [map download page](http://ecomfe.github.io/echarts-builder-web/map3.html) and then include and register them in ECharts. 
 
-2 formats of map data are provided in ECharts, the one is js document which could directly improt script label and then automatically register the map name and data; the other is JSON document which need to be registered manually after being async-loaded by jquery.
+Two formats of map data are provided in ECharts, one of which can be included in `<script>` tag as JavaScript file, and the other of is in JSON format and should be loaded using AJAX. Map name and data will be loaded automatically once the JavaScript file is loaded, while in the JSON form, you have to assign name explicitly.
 
-There are practical examples of these 2 types: 
+
+Here are examples of these two types: 
 
 ** JavaScript importing example **
 
@@ -41,19 +42,36 @@ $.get('map/json/china.json', function (chinaJson) {
 });
 ```
 
-ECharts uses [geoJSON](http://geojson.org/) format as map outline. Except for the above-mentioned data, you can also gain  [geoJSON](http://geojson.org/) data through other methods and register it in ECharts. Reference to [USA Population Estimates](${galleryEditorPath}map-usa)
+ECharts uses [geoJSON](http://geojson.org/) format as map outline. Besides the methods introduced above, you can also get [geoJSON](http://geojson.org/) data through in other methods if you like and register it in ECharts. Reference to [USA Population Estimates](${galleryEditorPath}map-usa) for more information.
 
 #${prefix} roam(boolean) = false
 {{ use: partial-roam }}
 
+#${prefix} center(Array)
+Center of current view-port, in longitude and latitude.
+
+Example:
+```js
+center: [115.97, 29.71]
+```
+
+#${prefix} zoom(number) = 1
+Zoom rate of current view-port.
+
+#${prefix} scaleLimit(Object)
+{{ use: partial-scale-limit(prefix="#" + ${prefix}) }}
+
 #${prefix} nameMap(Object)
 
-Name map with custom region, for instance: 
+Name mapping for customized areas. For example:
 ```js
 {
-    'China' : 'China'
+    'China' : '中国'
 }
 ```
+
+## selectedMode(boolean|string) = false
+Selected mode decides whether multiple selecting is supported. By default, `false` is used for disabling selection. Its value can also be `'single'` for selecting single area, or `'multiple'` for selecting multiple areas.
 
 #${prefix} label(Object)
 
@@ -63,11 +81,11 @@ Name map with custom region, for instance:
 
 ###${prefix} show(boolean) = false
 
-Specify whether to show label in usual status.
+Whether to show label in normal state.
 
 ###${prefix} textStyle(Object)
 
-The label style in usual status.
+Style of text in normal state.
 
 {{ use: partial-text-style(prefix=${prefix} + '###') }}
 
@@ -75,35 +93,62 @@ The label style in usual status.
 
 ###${prefix} show(boolean) = false
 
-Specify whether to show label in highlight status.
+Whether to show label in highlighted state.
 
 ###${prefix} textStyle(Object)
 
-The label style in highlight status.
+Style of text in highlighted state.
 
 {{ use: partial-text-style(prefix=${prefix} + '###') }}
 
 
 #${prefix} itemStyle(Object)
 
-{{ use: partial-item-style-desc(name= 'polygon in map area') }}
+{{ use: partial-item-style-desc(name='Map Area Border') }}
 
 
 ##${prefix} normal(Object)
 
-The polygon style in usual status.
+Map area style in normal state.
 
 {{ if: ${inMap} }}
 ###${prefix} areaColor(Color) = '#eee'
-The color in map area.
+Area filling color.
 {{ /if }}
 
 {{ use: partial-item-style(prefix=${prefix} + '##') }}
 
 ##${prefix} emphasis(Object)
 
-The polygon style in highlight status.
+Map area style in highlighted state.
+
+{{ if: ${inMap} }}
+###${prefix} areaColor(Color) = '#eee'
+Area filling color.
+{{ /if }}
 
 {{ use: partial-item-style(prefix=${prefix} + '##') }}
 
 {{ use: partial-rect-layout(prefix=${prefix}) }}
+
+
+#${prefix} layoutCenter(Array) = null
+
+`layoutCenter` and `layoutSize` provides layout strategy other than `left/right/top/bottom/width/height`.
+
+When using `left/right/top/bottom/width/height`, it is hard to put the map inside a box area with a fixed width-height ratio. In this case, `layoutCenter` attribute can be used to define the center position of map, and `layoutSize` can be used to define the size of map. For example:
+
+```js
+layoutCenter: ['30%', '30%'],
+// If width-height ratio is larger than 1, then width is set to be 100. 
+// Otherwise, height is set to be 100.
+// This makes sure that it will not exceed the area of 100x100
+layoutSize: 100
+```
+
+After setting these two values, `left/right/top/bottom/width/height` becomes invalid.
+
+#${prefix} layoutSize(number|string)
+
+Size of map, see `layoutCenter` for more information. Percentage relative to screen width, and absolute pixel values are supported.
+
