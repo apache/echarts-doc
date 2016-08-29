@@ -3,17 +3,17 @@
 
 # grid(Object)
 
-Drawing grid in rectangular coordinate. In a single grid, 2 x axis above and below and 2 y axis righ and left could be placed at most.  [broken line chart](~series-line), [bar chart](~series-bar), [scatter diagram (bubble diagram)](~series-scatter) could be drawn in grid.
+Drawing grid in rectangular coordinate. In a single grid, at most two X and Y axes each is allowed. [Line chart](~series-line), [bar chart](~series-bar), and [scatter chart (bubble chart)](~series-scatter) can be drawn in grid.
 
-In ECharts 2.x , there is one grid component at most in a single echarts example; while in ECharts 3, there is no limitation about the quantity of grid component in a single echarts example.
+In ECharts 2.x, there could only be one single grid component at most in a single echarts instance. But in ECharts 3, there is no limitation.
 
-**see the below example of Anscombe Quartet: **
+**Following is an example of Anscombe Quartet:**
 
 ~[600x400](${galleryViewPath}scatter-anscombe-quartet&edit=1&reset=1)
 
 ## show(boolean) = false
 
-Specify whether to show the grid in rectangular coordinate.
+Whether to show the grid in rectangular coordinate.
 
 {{ use: partial-rect-layout-width-height(
     componentName="grid ",
@@ -25,6 +25,6 @@ Specify whether to show the grid in rectangular coordinate.
 
 ## containLabel(boolean) = false
 
-Specify whether the grid region contains [tick label](~yAxis.axisLabel) of coordinate axis. When the width of coordinate axis label can not be confirmed and there is no space could be left in a small container, you can set it as  `true` to prevent the label from overflowing the container.
+Whether the grid region contains [axis tick label](~yAxis.axisLabel) of axis. When the width of coordinate axis label is unknown, and there may not be enough space for a small container, you can set it to be `true` to prevent the label from overflowing the container.
 
 {{ use:partial-component-common-style(componentName="grid", prefix='#', needShow=true) }}

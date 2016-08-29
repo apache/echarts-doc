@@ -25,6 +25,6 @@
 
 ## containLabel(boolean) = false
 
-grid 区域是否包含坐标轴的[刻度标签](~yAxis.axisLabel)，在无法确定坐标轴标签的宽度，容器有比较小无法预留较多空间的时候，可以设为 `true` 防止标签溢出容器。
+grid 区域是否包含坐标轴的[刻度标签](~yAxis.axisLabel)，在无法确定坐标轴标签的宽度，容器又比较小无法预留较多空间的时候，可以设为 `true` 防止标签溢出容器。
 
 {{ use:partial-component-common-style(componentName="网格", prefix='#', needShow=true) }}

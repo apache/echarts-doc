@@ -3,7 +3,7 @@
 # dataZoom(Array|Object)
 
 
-`dataZoom` component is used for zooming a specific area, which enable user to investigate data in detail, or get an overview of the data, or get rid of outlier points.
+`dataZoom` component is used for zooming a specific area, which enables user to investigate data in detail, or get an overview of the data, or get rid of outlier points.
 
 These types of `dataZoom` component are supported:
 
