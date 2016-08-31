@@ -92,7 +92,7 @@ selected: {
 
 ## tooltip(Object)
 
-图例的 tooltip 配置，配置项同 [tooltip](http://localhost/echarts-doc/public/option.html#tooltip)。默认不显示，可以在 legend 文字很多的时候对文字做裁剪并且开启 tooltip，如下示例：
+图例的 tooltip 配置，配置项同 [tooltip](~tooltip)。默认不显示，可以在 legend 文字很多的时候对文字做裁剪并且开启 tooltip，如下示例：
 
 ```js
 legend: {
