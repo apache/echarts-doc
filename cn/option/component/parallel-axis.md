@@ -15,7 +15,7 @@
 
 ## dim(number)
 
-坐标轴的维度号。
+坐标轴的维度序号。
 
 {{use: partial-parallel-data-example}}
 

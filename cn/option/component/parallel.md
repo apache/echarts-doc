@@ -33,7 +33,7 @@
     galleryViewPath=${galleryViewPath}
 )}}
 
-此变量设为 `true` 则开启这个功能，即点击可以展开折叠 axis。
+是否允许点击展开折叠 axis。
 
 ## axisExpandCenter(number) = null
 

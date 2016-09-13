@@ -3,7 +3,7 @@
 
 # parallelAxis(Object)
 
-This component is the coordinate axis in parallel coordinate. 
+This component is the coordinate axis for parallel coordinate. 
 
 {{ use: partial-parallel-introduce(
     galleryViewPath=${galleryViewPath}
@@ -15,70 +15,76 @@ This component is the coordinate axis in parallel coordinate.
 
 ## dim(number)
 
-The dimension number of coordinate axis.
+Dimension index of coordinate axis.
 
 {{use: partial-parallel-data-example}}
 
-`dim` defines which dimension (which『row』) of data would correspond to this coordinate axis. 
+`dim` defines which dimension (which *row*) of data would map to this axis.
 
-Count from  `0`. For example, the `dim` of coordinate axis is `1`, indicating that the second row of data would correspond to this coordinate axis.
+Started from `0`. For example, if the `dim` of coordinate axis is `1`, it indicates that the second row of data would map to this axis.
 
 
 ## parallelIndex(number) = 0
 
-It is used to define which 『coordinate』the『coordinate axis』should correspond to.
+It is used to define which *coordinate* the *axis* should map to.
 
-For example, there is the following configuration: 
+For example: 
 
 ```javascript
 myChart.setOption({
     parallel: [
         {...},                      // the first parallel coordinate
-        {...}                       //  the second parallel coordinate
+        {...}                       // the second parallel coordinate
     ],
     parallelAxis: [
-        {parallelIndex: 1, ...},    // the first coordinate axis, corresponding to the second parallel coordinate
-        {parallelIndex: 0, ...},    //  the second coordinate axis, corresponding to the first parallel coordinate
-        {parallelIndex: 1, ...},    //  the third coordinate axis, corresponding to the second parallel coordinate
-        {parallelIndex: 0, ...}     //  the fourth coordinate axis, corresponding to the first parallel coordinate
+        {parallelIndex: 1, ...},    // the first coordinate axis, mapping to the second parallel coordinate
+        {parallelIndex: 0, ...},    //  the second coordinate axis, mapping to the first parallel coordinate
+        {parallelIndex: 1, ...},    //  the third coordinate axis, mapping to the second parallel coordinate
+        {parallelIndex: 0, ...}     //  the fourth coordinate axis, mapping to the first parallel coordinate
     ],
     ...
 });
 ```
 
-If there is only one parallel coordinate, the setting could be ignored, which defaults to be `0`.
+If there is only one parallel coordinate, you don't have to configure it, whose default value is `0`.
+
+## realtime(boolean) = true
+
+Whether to refresh view when brush-selecting axis. If is set to be `false`, view is updated after brush-selecting action ends.
+
+When data amount is large, it is suggested to set to be `false` to avoid efficiency problems.
 
 ## areaSelectStyle(Object)
 
-Area selecting is available on coordinate axis. Here is some settings about area selecting.
+Area selecting is available on axes. Here is some configurations.
 
 <br>
 
 
 ### width(number) = 20
 
-The width of the range of area selecting.
+Width of selecting box.
 
 
 ### borderWidth(number) = 1
 
 
-The border width of the marquee.
+Border width of the select box.
 
 
 ### borderColor(Color) = 'rgba(160,197,232)'
 
-The border color of the marquee.
+Border color of the select box.
 
 
 ### color(Color) = 'rgba(160,197,232)'
 
-The border fill color of the marquee.
+Border fill color of the select box.
 
 
 ### opacity(number) = 0.3
 
-The transparency of the marquee.
+Opacity of the select box.
 
 
 
