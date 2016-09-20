@@ -20,11 +20,11 @@ ECharts 3 开始不再强制使用 AMD 的方式按需引入，代码里也不�
 ```html
 <!DOCTYPE html>
 <html>
-<header>
+<head>
     <meta charset="utf-8">
     <!-- 引入 ECharts 文件 -->
     <script src="echarts.min.js"></script>
-</header>
+</head>
 </html>
 ```
 
