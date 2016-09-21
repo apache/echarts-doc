@@ -5,7 +5,7 @@
 
 You can get ECharts through the following ways.
 
-1. Choose the version you need and download from [official download page](http://echarts.baidu.com/download.html). Based on developer's varied need of function and package size, we provide different download packages. If you have concern about package size, you can download [full version](http://echarts.baidu.com/dist/echarts.min.js) directly. 
+1. Choose the version you need and download from [official download page](http://echarts.baidu.com/download.html). Based on developer's varied need of function and package size, we provide different download packages. If you have concern about package size, you can download [full version](http://echarts.baidu.com/dist/echarts.min.js) directly.
 
 2. Download the latest `release` version in ECharts [GitHub](https://github.com/echarts), and you can find the latest version of echarts in `dist` directory of the unzipped files.
 
@@ -18,11 +18,11 @@ ECharts 3 no longer emphysis on using AMD to load packages on need, and AMD load
 ```html
 <!DOCTYPE html>
 <html>
-<header>
+<head>
     <meta charset="utf-8">
     <!-- including ECharts file -->
     <script src="echarts.min.js"></script>
-</header>
+</head>
 </html>
 ```
 
