@@ -27,7 +27,7 @@
 
 `dataZoom` 主要是对 `数轴（axis）` 进行操作（控制数轴的显示范围，或称窗口（window））。
 
-> 可以通过 [dataZoom.xAxisIndex](~dataZoom.xAxisIndex) 或 [dataZoom.yAxisIndex](~dataZoom.yAxisIndex) 来指定 `dataZoom` 控制哪个或哪些数轴。
+> 可以通过 [dataZoom.xAxisIndex](~dataZoom.xAxisIndex) 或 [dataZoom.yAxisIndex](~dataZoom.yAxisIndex) 或 [dataZoom.radiusAxisIndex](~dataZoom.radiusAxisIndex) 或 [dataZoom.angleAxisIndex](~dataZoom.angleAxisIndex) 来指定 `dataZoom` 控制哪个或哪些数轴。
 
 `dataZoom` 组件可 **同时存在多个**，起到共同控制的作用。如果多个 `dataZoom` 组件共同控制同一个数轴，他们会自动联动。
 
@@ -184,6 +184,24 @@ option: {
 
 {{use: partial-data-zoom-axis-example(
     axisName='yAxis'
+)}}
+
+
+## radiusAxisIndex(number|Array) = null
+
+设置 `${dataZoomName}` 组件控制的 `radius 轴`（即[radiusAxis](~radiusAxis)，是直角坐标系中的概念，参见 [polar](~polar)）。
+
+{{use: partial-data-zoom-axis-example(
+    axisName='radiusAxis'
+)}}
+
+
+## angleAxisIndex(number|Array) = null
+
+设置 `${dataZoomName}` 组件控制的 `angle 轴`（即[angleAxis](~angleAxis)，是直角坐标系中的概念，参见 [polar](~polar)）。
+
+{{use: partial-data-zoom-axis-example(
+    axisName='angleAxis'
 )}}
 
 

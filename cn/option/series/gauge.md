@@ -156,6 +156,15 @@ formatter: function (value) {
 详情边框颜色。
 ### offsetCenter(Array) = [0, '40%']
 相对于仪表盘中心的偏移位置，数组第一项是水平方向的偏移，第二项是垂直方向的偏移。可以是绝对的数值，也可以是相对于仪表盘半径的百分比。
+### formatter(Function)
+格式化函数或者字符串
+
+```js
+formatter: function (value) {
+    return value.toFixed(0);
+}
+```
+
 ### textStyle(Object)
 {{ use: partial-text-style(
     prefix="###",
