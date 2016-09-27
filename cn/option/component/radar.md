@@ -26,7 +26,7 @@
 
 ### show(boolean) = true
 
-是否显示指示器名称
+是否显示指示器名称。
 
 ### formatter(string|Function)
 
@@ -115,4 +115,3 @@ indicator: [
 ### min(number)
 
 指示器的最小值，可选，默认为 0。
-

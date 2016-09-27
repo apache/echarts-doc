@@ -3,11 +3,11 @@
 
 # radiusAxis(Object)
 
-The radius Axis of polar coordinate.
+Radial axis of polar coordinate.
 
 ## polarIndex(number) = 0
 
-The index of polar coordinate which the radius Axis belongs to defaults to use the first polar coordinate. 
+Index of radial axis in polor coordinate. It's the first axis by default.
 
 {{ use: axis-common(
     prefix='#',
@@ -15,3 +15,10 @@ The index of polar coordinate which the radius Axis belongs to defaults to use t
     axisTypeDefault="'value'",
     hasSplitLineAndArea=true
 )}}
+
+
+{{use:partial-z-zlevel(
+    prefix="#",
+    componentName="Radial axis",
+    defaultZ=0
+) }}
