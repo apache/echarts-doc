@@ -2,9 +2,9 @@
 
 # radar(Object)
 
-Radar chart coordinate component, only suitable for [radar chart](~series-radar). This component is equal to the polar component in ECharts 2. Because the polar in the echarts 3 is reconstructed to be the standard polar coordinate component, in order to avoid mixing up, radar chart adopts radar component as its coordinate. 
+Coordinate for [radar charts](~series-radar). This component is equal to the polar component in ECharts 2. Because the polar component in the echarts 3 is reconstructed to be the standard polar coordinate component, this component is renamed to be radar to avoid confusion. 
 
-Compared with polar coordinate, every axis (indicator)  of the radar chart coordinate is a individual dimension. The style of indicator coordinate axis could be allocated through the following configuration items, including [name](~radar.name)、[axisLine](~radar.axisLine)、[axisTick](~radar.axisTick)、[axisLabel](~radar.axisLabel)、[splitLine](~radar.splitLine)、 [splitArea](~radar.splitArea).
+Radar chart coordinate is different from polar coordinate, in that every axis indicator of the radar chart coordinate is an individual dimension. The style of indicator coordinate axis could be configured through the following configuration items, including [name](~radar.name), [axisLine](~radar.axisLine), [axisTick](~radar.axisTick), [axisLabel](~radar.axisLabel), [splitLine](~radar.splitLine), [splitArea](~radar.splitArea).
 
 
 Here is a custom example of radar component.
@@ -22,15 +22,15 @@ The start angle of coordinate, which is the angle of the first indicator axis.
 
 ## name(Object)
 
-The configuration items of every indicator's name in radar chart.
+Name of radar chart.
 
 ### show(boolean) = true
 
-Specify whether to show the indicator's name.
+Whether to display the indicator's name.
 
 ### formatter(string|Function)
 
-The formatter of showing indicator's name, in which the string and callback function are valid. See the following example: 
+The formatter of indicator's name, in which the string and callback function are supported. See the following example: 
 
 ```js
 // using string template, the template variable should be the indicator's name {value}
@@ -41,27 +41,27 @@ formatter: function (value, indicator) {
 }
 ```
 
-## nameGap(number) = 15
-
-the distance between the indicator's name and axis.
-
 ### textStyle(Object)
 {{ use: partial-text-style(
     prefix='###',
     defaultColor="'#333'"
 )}}
 
-### splitNumber(number) = 5
+## nameGap(number) = 15
 
-the split number of indicator axis.
+Distance between the indicator's name and axis.
 
-### shape(string) = 'polygon'
+## splitNumber(number) = 5
 
-The categories of radar chart drawing, in which the `'polygon'` and `'circle'` is valid.
+Segments of indicator axis.
 
-### scale(boolean) = false
+## shape(string) = 'polygon'
 
-Specifies whether to get rid of the propotion of 0. with the setting of `true`, the coordinate tick would not compulsorily contains zero tick, which is more useful in scatter diagram of double numerical values axis. 
+Radar render type, in which `'polygon'` and `'circle'` are supported.
+
+## scale(boolean) = false
+
+Whether to prevent calculating the scaling relative to zero. If it is set to be `true`, the coordinate tick would not compulsorily contain zero value, which is usually useful in scatter diagram of double numerical values axis.
 
 {{ use: partial-axis-common-axis-line(
     prefix="#"
@@ -91,13 +91,13 @@ Specifies whether to get rid of the propotion of 0. with the setting of `true`, 
 
 ## indicator(Array)
 
-the indicator of radar chart, which refers to multiple variables(dimensions) in radar chart. Here is the example. 
+Indicator of radar chart, which is used to assign multiple variables(dimensions) in radar chart. Here is the example. 
 
 ```js
 indicator: [
-   { name: 'sales (sales) ', max: 6500},
-   { name: 'administration (Administration) ', max: 16000},
-   { name: 'Information Techology (Information Techology) ', max: 30000},
+   { name: 'Sales (sales) ', max: 6500},
+   { name: 'Administration (Administration) ', max: 16000},
+   { name: 'Information Technology (Information Technology) ', max: 30000},
    { name: 'Customer Support (Customer Support) ', max: 38000},
    { name: 'Development (Development) ', max: 52000},
    { name: 'Marketing (Marketing) ', max: 25000}
@@ -110,11 +110,8 @@ Indicator's name.
 
 ### max(number)
 
-The maximum of indicator, optional, recommond to set 
+The maximum value of indicator. It is an optional configuration, but we recommend to set it manually.
 
 ### min(number)
 
-The minimum of indicator, optional, default to be 0.
-
-
-
+The minimum value of indicator. It it an optional configuration, with default value of 0.

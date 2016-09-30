@@ -146,7 +146,7 @@ Refers to the play speed(interval between beats ), unit is millisecond(ms)  .
 
 
 
-## realtime(boolean) = true,
+## realtime(boolean) = true
 
 Whether the view updates in real time during dragging a dot. 
 
