@@ -12,7 +12,7 @@
 (option: Object, notMerge: boolean, lazyUpdate: boolean)
 ```
 
-设置图表实例的配置项以及数据，万能接口，所有参数和数据的修改都可以通过`setOption`完成，ECharts 会合并新的参数和数据，然后刷新图表。如果开启[动画](~option.animation)的话，ECharts 找到两组数据之间的差异然后通过合适的动画去表现数据的变化。
+设置图表实例的配置项以及数据，万能接口，所有参数和数据的修改都可以通过`setOption`完成，ECharts 会合并新的参数和数据，然后刷新图表。如果开启[动画](~option.html#option.animation)的话，ECharts 找到两组数据之间的差异然后通过合适的动画去表现数据的变化。
 
 **如下示例：**
 
@@ -174,6 +174,80 @@ ECharts 中的事件有两种，一种是鼠标事件，在鼠标点击某个图
 + `handler`
 
     可选，可以传入需要解绑的处理函数，不传的话解绑所有该类型的事件函数。
+
+
+## convertToPixel(Function)
+```js
+(
+    // finder 用于指示『使用哪个坐标系进行转换』。
+    // 通常地，可以使用 index 或者 id 来定位。
+    finder: {
+        seriesIndex?: number,
+        seriesId?: string,
+        geoIndex?: number,
+        geoId?: string,
+        xAxisIndex?: number,
+        xAxisId?: string,
+        yAxisIndex?: number,
+        yAxisId?: string,
+        gridIndex?: number,
+        gridId?: string
+    },
+    // 要被转换的值。
+    value: Array|string
+    // 转换的结果为像素坐标值，以 echarts 实例的 dom 节点的左上角为坐标 [0, 0] 点。
+) => Array|string
+```
+
+转换坐标系上的点到像素坐标值。
+
+
+例：
+
+在地理坐标系（[geo](option.html#geo)）上，把某个点的经纬度坐标转换成为像素坐标：
+```js
+// [128.3324, 89.5344] 表示 [经度，纬度]。
+// 使用第一个 geo 坐标系进行转换：
+chart.convertToPixel('geo', [128.3324, 89.5344]); // 参数 'geo' 等同于 {geoIndex: 0}
+// 使用第二个 geo 坐标系进行转换：
+chart.convertToPixel({geoIndex: 1}, [128.3324, 89.5344]);
+// 使用 id 为 'bb' 的 geo 坐标系进行转换：
+chart.convertToPixel({geoId: 'bb'}, [128.3324, 89.5344]);
+```
+
+在直角坐标系（cartesian，[grid](option.html#grid)）上，把某个点的坐标转换成为像素坐标：
+```js
+// [300, 900] 表示该点 x 轴上对应刻度值 300，y 轴上对应刻度值 900。
+// 注意，一个 grid 可能含有多个 xAxis 和多个 yAxis，任何一对 xAxis-yAxis 形成一个 cartesian。
+// 使用第三个 xAxis 和 id 为 'y1' 的 yAxis 形成的 cartesian 进行转换：
+chart.convertToPixel({xAxisIndex: 2, yAxisId: 'y1'}, [300, 900]);
+// 使用 id 为 'g1' 的 grid 的第一个 cartesian 进行转换：
+chart.convertToPixel({gridId: 'g1'}, [300, 900]);
+```
+
+把某个坐标轴的点转换成像素坐标：
+```js
+// id 为 'x0' 的 xAxis 的刻度 3000 位置所对应的横向像素位置：
+chart.convertToPixel({xAxisId: 'x0'}, 3000); // 返回一个 number。
+// 第二个 yAxis 的刻度 600 位置所对应的纵向像素位置：
+chart.convertToPixel({yAxisIndex: 1}, 600); // 返回一个 number。
+```
+
+把关系图（[graph](option.html#series-graph)）的点转换成像素坐标：
+```js
+// 因为每个 graph series 自己持有一个坐标系，所以我们直接在 finder 中指定 series：
+chart.convertToPixel({seriesIndex: 0}, [2000, 3500]);
+chart.convertToPixel({seriesId: 'k2'}, [100, 500]);
+```
+
+在某个系列所在的坐标系（无论是 cartesian、geo、graph 等）中，转换某点成像素坐标：
+```js
+// 使用第一个系列对应的坐标系：
+chart.convertToPixel({seriesIndex: 0}, [128.3324, 89.5344]);
+// 使用 id 为 'k2' 的系列所对应的坐标系：
+chart.convertToPixel({seriesId: 'k2'}, [128.3324, 89.5344]);
+```
+
 
 ## showLoading(Function)
 ```js

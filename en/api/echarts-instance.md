@@ -12,7 +12,7 @@ Group name to be used in chart [connection](~echarts.connect).
 (option: Object, notMerge: boolean, notRefreshImmediately: boolean)
 ```
 
-Configuration item, data, universal interface, all parameters and data can all be modified through `setOption`. ECharts will merge new parameters and data, and then refresh chart. If [animation](~option.animation) is enabled, ECharts will find the difference between two groups of data and present data changes through proper animation.
+Configuration item, data, universal interface, all parameters and data can all be modified through `setOption`. ECharts will merge new parameters and data, and then refresh chart. If [animation](option.html#animation) is enabled, ECharts will find the difference between two groups of data and present data changes through proper animation.
 
 **For example: **
 
@@ -176,6 +176,86 @@ Unbind event-handler function.
 + `handler`
 
     Optional. The function to be unbound could be passed. Otherwise, all event functions of this type will be unbound.
+
+
+
+## convertToPixel(Function)
+```js
+(
+    // finder is used to indicate in which coordinate system conversion is performed.
+    // Generally, index or id can be used to specify coordinate system.
+    finder: {
+        seriesIndex?: number,
+        seriesId?: string,
+        geoIndex?: number,
+        geoId?: string,
+        xAxisIndex?: number,
+        xAxisId?: string,
+        yAxisIndex?: number,
+        yAxisId?: string,
+        gridIndex?: number,
+        gridId?: string
+    },
+    // The value to be converted.
+    value: Array|string
+    // Conversion result, in pixel coordinate system, where the origin ([0, 0])
+    // is on the left-top of the main dom of echarts instance.
+) => Array|string
+```
+
+Convert a point from logical coordinate (e.g., in geo, cartesian, graph, ...) to
+pixel coordinate.
+
+
+For example:
+
+In [geo](option.html#geo) coordinate system, convert a point from latlong to pixel coordinate:
+```js
+// [128.3324, 89.5344] represents [longitude, latitude].
+// Perform conversion in the first geo coordinate system:
+chart.convertToPixel('geo', [128.3324, 89.5344]); // The parameter 'geo' means {geoIndex: 0}.
+// Perform conversion in the second geo coordinate system:
+chart.convertToPixel({geoIndex: 1}, [128.3324, 89.5344]);
+// Perform conversion in the geo coordinate system with id 'bb':
+chart.convertToPixel({geoId: 'bb'}, [128.3324, 89.5344]);
+```
+
+In cartesian (see [grid](option.html#grid)), convert a point to pixel coordinate:
+```js
+// [300, 900] means [value on xAxis, value on yAxis].
+// Notice, there might be more than one xAxis or yAxis in a grid, and each a pair of
+// xAxis-yAxis constitudes a cartesian.
+// Perform conversion in the cartesian consist of the third xAxis and the yAxis with id 'y1'.
+chart.convertToPixel({xAxisIndex: 2, yAxisId: 'y1'}, [300, 900]);
+// 使用 id 为 'g1' 的 grid 的第一个 cartesian 进行转换：
+// Perform conversion in the first cartesian of the grid with id 'g1'.
+chart.convertToPixel({gridId: 'g1'}, [300, 900]);
+```
+
+Convert a axis value to pixel value:
+```js
+// In the xAxis with id 'x0', convert value 3000 to the horizontal pixel coordinate:
+chart.convertToPixel({xAxisId: 'x0'}, 3000); // A number will be returned.
+// In the second yAxis, convert value 600 to the vertical pixel coordinate:
+chart.convertToPixel({yAxisIndex: 1}, 600); // A number will be returned.
+```
+
+In [graph](option.html#series-graph), convert a point to pixel coordinate:
+```js
+// Since every graph series maintains a coordinate system for itself, we
+// specify the graph series in finder.
+chart.convertToPixel({seriesIndex: 0}, [2000, 3500]);
+chart.convertToPixel({seriesId: 'k2'}, [100, 500]);
+```
+
+In a cooridinate system (cartesian, geo, graph, ...) that contains the given series, convert a point to pixel coordinate:
+```js
+// Perform convert in the coordinate system that contains the first series.
+chart.convertToPixel({seriesIndex: 0}, [128.3324, 89.5344]);
+// Perform convert in the coordinate system that contains the series with id 'k2'.
+chart.convertToPixel({seriesId: 'k2'}, [128.3324, 89.5344]);
+```
+
 
 ## showLoading(Function)
 ```js
