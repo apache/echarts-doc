@@ -40,6 +40,10 @@
 
     鼠标点击时触发。
 
++ `'none'`
+
+    不触发，用户可以通过 [action.tooltip.showTip](api.html#action.tooltip.showTip) 和 [action.tooltip.hideTip](api.html#action.tooltip.hideTip) 来手动触发和隐藏。
+
 该属性为 ECharts 3.0 中新加。
 
 ## alwaysShowContent(boolean) = false
