@@ -3,14 +3,14 @@
 
 # timeline(Object)
 
-`timeline` 组件，提供了在多个 `ECharts option` 间进行切换、播放等操作的功能。
+`timeline` 组件，提供了在多个 ECharts `option` 间进行切换、播放等操作的功能。
 
 示例效果如下：
 
 ~[600x400](${galleryViewPath}doc-example/mix-timeline-all&edit=1&reset=1)
 
 `timeline` 和其他组件有些不同，它需要操作『多个option』。
-假设，我们把 ECharts 的传统的option称为 `原子option`，那么使用 `timeline` 时，传入 ECharts 的 option 就成为了一个集合多个 `原子option` 的 `复合option`。如下示例：
+假设，我们把 ECharts 的传统的 option 称为*原子option*，那么使用 `timeline` 时，传入 ECharts 的 option 就成为了一个集合多个原子option的*复合option*。如下示例：
 
 ```javascript
 // 如下，baseOption 是一个 『原子option』，options 数组中的每一项也是一个 『原子option』。
@@ -88,17 +88,17 @@ myChart.setOption(
 
 + `options` 数组中，如果某一数组项中配置了某个属性，那么其他数组项中也必须配置某个属性，而不能缺省。否则这个属性的执行效果会遗留。
 
-+ `复合 option` 中的 `options` 不支持 merge。
++ *复合 option* 中的 `options` 不支持 merge。
 
-    也就是说，当第二（或三、四、五 ...）次 `chart.setOption(rawOption)` 时，如果 `rawOption` 是 `复合 option`（即包含 `options` 列表），那么新的 `rawOption.options` 列表不会和老的 `options` 列表进行 merge，而是简单替代。当然，`rawOption.baseOption` 仍然会正常和老的 option 进行merge。
+    也就是说，当第二（或三、四、五 ...）次 `chart.setOption(rawOption)` 时，如果 `rawOption` 是*复合 option*（即包含 `options` 列表），那么新的 `rawOption.options` 列表不会和老的 `options` 列表进行 merge，而是简单替代。当然，`rawOption.baseOption` 仍然会正常和老的 option 进行merge。
 
 
 <br>
-**与 ECharts2 的兼容性：**
+**与 ECharts 2 的兼容性：**
 
-+ ECharts3 中不再支持 timeline.notMerge 参数，也就是不支持 notMerge 模式。如果遇到这种场景需要使用，可在外部进行option管理，并用 setOption(option, true) 这样的notMerge方式设置。
++ ECharts 3 中不再支持 timeline.notMerge 参数，也就是不支持 notMerge 模式。如果遇到这种场景需要使用，可在外部进行option管理，并用 setOption(option, true) 这样的notMerge方式设置。
 
-+ ECharts3 和 ECharts2 相比，timeline 属性的定义位置有所不同，移到了 `baseOption` 中，统一作为一个普通的组件看待。但是，仍然兼容 ECharts2 的 timeline 定义位置，只是不再推荐这样写。
++ ECharts 3 和 ECharts 2 相比，timeline 属性的定义位置有所不同，移到了 `baseOption` 中，统一作为一个普通的组件看待。但是，仍然兼容 ECharts2 的 timeline 定义位置，只是不再推荐这样写。
 
 
 ## show(boolean) = true

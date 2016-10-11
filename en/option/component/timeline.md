@@ -3,18 +3,17 @@
 
 # timeline(Object)
 
-`timeline` component, which provides different operational functions such as switch function between multiple `ECharts option` and play function.  
+`timeline` component, which provides functions like switching and playing between multiple ECharts `options`.  
 
-Here is the example: 
+Here is an example: 
 
 ~[600x400](${galleryViewPath}doc-example/mix-timeline-all&edit=1&reset=1)
 
-Different from other components, `timeline` component need to operate 『multiple options』  `timeline` .
-Assume that a traditional ECharts option was called `atom option`. When `timeline` is used, the option which is introduced into ECharts becomes a `compound option`, a collection of multiple `atom option`.  As shown in the following example: 
+Different from other components, `timeline` component requires multiple options. If the traditional way of ECharts option is called *atomic option*, then, the option used along with timeline should be call a *compound option* composed with multiple atomic options. For example:
 
 ```javascript
-// as follows, baseOption is a 『atom option』, and every item in options array is also a 『atom option』.
-// each『atom option』is a type of configuration items described in this document.
+// In the following example, baseOption is an *atomic option*, so as each item in options array.
+// Each of the atomic option follows configuration introduced in this document.
 myChart.setOption(
     {
         baseOption: {
@@ -23,7 +22,7 @@ myChart.setOption(
                 data: ['2002-01-01', '2003-01-01', '2004-01-01']
             },
             title: {
-                subtext: ' the data is from National Bureau of Statistics '
+                subtext: ' Data is from National Bureau of Statistics '
             },
             grid: {...},
             xAxis: [...],
@@ -79,80 +78,83 @@ myChart.setOption(
 );
 ```
 
-In the previous examples, every item in `timeline.data` corresponds to every `option` of `options` array. 
+In the above example, each item in `timeline.data` corresponds to each `option` of `options` array. 
 
 <br>
-**precautions for use and the best practice: **
+**Attention and Best Practice: **
 
-+ communal configuration item, which is recommended to be allocated in  `baseOption`. As `timeline` switching and playing, the corresponding  `option` in `option` array would merge with `baseOption` to become the final `option`.
++ Shared configuration items are recommended to be set in `baseOption`. When switching in `timeline`, `option` in corresponding `options` array will be merged with `baseOption` to form the final `option`.
 
-+ In `options` array, if an array item was allocated with an attribute, every other array item must be allocated with a `options`, no defaults, or this attribute's operational effect would be left over. 
++ In `options` array, if an attribute is configured in one of the options, then, it should also be configured in other options. Otherwise, this attribute will be ignored.
+
++ `options` in *compound option* doesn't support merge.
+
+    That is to say, when calling `chart.setOption(rawOption)` after the first time, if `rawOption` is a *compound option* (meaning that it contains an array of `options`), then the new `rawOption.options` will replace the old one, instead of merging with it. Of course, `rawOption.baseOption` will be merged with that of old option normally.
 
 
 <br>
-**Its compatibility with ECharts2: **
+**Compatibility with ECharts 2: **
 
-+ ECharts3 doesn't support timeline.notMerge parameter, which implies notMerge mode would not be supported any more. If this scene was needed, the option management could be conducted outside with a notMerge setting like setOption(option, true). 
++ ECharts3 doesn't support `timeline.notMerge` parameter any more, which implies *notMerge mode* is no longer supported. If you need this function, you may manage the option in your own program before passing to `setOption(option, true)`.
 
-+ Comparing ECharts3 with ECharts2, the define locations of their timeline attributes are different. The one in ECharts3 is moved to  `baseOption` and is regarded as a common component, which is also compatible with the timeline difine location of ECharts2. It is just not recommended to be written anymore.  
++ Comparing ECharts 3 with ECharts 2, the definition location of timeline attributes are different. The one in ECharts 3 is moved to  `baseOption` and is regarded as a seperate component, which is also compatible with the timeline definition location of ECharts 2. But it is not recommended to do so. 
 
 
 ## show(boolean) = true
 
-Specify whether to show the `timeline` component. It would not show under a setting of `false`, but its function still remains.  
+Whether to show the `timeline` component. It would not show with a setting of `false`, but its functions still remain.
 
 
 ## type(string) = 'slider'
 
-At present, this attribute would be valid only if it is set as `slider`. It's unnecessary to change it.  
+This attribute has only one valid value as `slider` by now. You don't have to change it.
 
 
 ## axisType(string) = 'time'
 
-types of axis. optional values: 
+Type of axis, whose values may be: 
 
 + `'value'`
-    value axis, applied to continuous data.
+    Numeric axis, which is suitable for continuous data.
 + `'category'`
-    category axis, applied to discrete category data.
-
+    Category axis, which is suitable for category data.
 + `'time'`
-    time axis, applied to continuous time. Compared with value axis, time axis is equiped with time formatting series data and calculate the scale differently. For example, for time axis, the span range decide whether month, week or day would be the minimum scale.   
+    Time axis, which is suitable for continuous time data. Compared with value axis, time axis is equipped with time formatting function and has a different method when calculating axis ticks. For example, for time axis, axis ticks may vary in choosing unit as month, week, date, or hour based on the range of data.   
 
 
 ## currentIndex(number) = 0
 
-Indicating which is the currently selected item. For instance,if `currentIndex` is `0`, it indicates that the currently selected item is `timeline.data[0]` (namely, using `options[0]`). 
+Indicates which is the currently selected item. For instance, if `currentIndex` is `0`, it indicates that the currently selected item is `timeline.data[0]` (namely, using `options[0]`). 
 
 
 ## autoPlay(boolean) = false
 
-Specify whether to play automatically.
+Whether to play automatically.
 
 
 ## rewind(boolean) = false
 
-Indicates whether to play reversely.
+Whether supports playing reversely.
 
 
 ## loop(boolean) = true
 
-Indicates whether to loop playback.
+Whether to loop playing.
 
 
 ## playInterval(number) = 2000
 
-Refers to the play speed(interval between beats ), unit is millisecond(ms)  .
-
+Indicates play speed (gap time between two state), whose unit is millisecond.
 
 
 ## realtime(boolean) = true
 
-Whether the view updates in real time during dragging a dot. 
+Whether the view updates in real time during dragging the control dot. 
+
 
 ## controlPosition(string) = 'left'
 
-Refer to the location of『play』buttom. optional values: `'left'`、`'right'`. 
+Position of the play button, whose valid values are `'left'` and `'right'`. 
 
 
 {{ use: partial-rect-layout(
@@ -167,7 +169,7 @@ Refer to the location of『play』buttom. optional values: `'left'`、`'right'`.
 
 ## orient(string) = 'horizontal'
 
-format of layout, optional values are: 
+Orientation of the component, whose valid values are:
 
 + `'vertical'`: vertical layout.
 + `'horizontal'`: horizontal layout.
@@ -175,7 +177,7 @@ format of layout, optional values are:
 
 ## inverse(boolean) = false
 
-+ Whether to reversely put the `timeline`, which means put it upside and down.
++ Whether to put the `timeline` component reversely, which makes the elements in the front to be at the end.
 
 
 {{ use: partial-symbol(
@@ -191,7 +193,7 @@ format of layout, optional values are:
 
 ### show(boolean) = true
 
-Whether to show the axis. It could be set as `false` to not show the axis. It could also be endowed with various styles.  
+Whether to show the axis. It can be set to be `false` to hide the axis line to make a different style.
 
 {{ use:partial-line-style(
     prefix="##",
@@ -203,34 +205,34 @@ Whether to show the axis. It could be set as `false` to not show the axis. It co
 
 ## label(Object)
 
-There are 2 status text labels of axis, which are `normal` and `emphasis`. `normal` refers to the normal style of text, while `emphasis` is the highlighted style of text. For instance, `emphasis` would be adopted as text style for mouse hover and highlighted legend linkage.
+Label axis, which has `normal` and `emphasis` status. `normal` refers to the normal style of text, while `emphasis` is the highlighted style of text. For instance, text style in `emphasis` would be used when mouse hovers or legend connects.
 
 
 ### position(string|number) = 'auto'
 
-the optional methods of configuration:
+Configurations:
 
 + `'auto'`: 
-    completely automatical deciding.
+    Automatic layout.
 
 + `'left'`: 
     Put it along the left margin.
-    It is valid as [timline.orient](~timeline.orient) is set as `'horizontal'` .
+    It is valid when [timline.orient](~timeline.orient) is set as `'horizontal'` .
 
-+ `'right'`: It is valid as [timline.orient](~timeline.orient) is set as `'horizontal'`.
++ `'right'`: 
     Put it along the right margin.
+    It is valid when [timline.orient](~timeline.orient) is set as `'horizontal'`.
 
 + `'top'`: 
     Put it along the margin of the top.
-
-    It is valid as [timline.orient](~timeline.orient) is set as `'vertical'`.
+    It is valid when [timline.orient](~timeline.orient) is set as `'vertical'`.
 
 + `'bottom'`: 
     Put it along the margin of the bottom.
-    It is valid as [timline.orient](~timeline.orient) is set as `'vertical'`.
+    It is valid when [timline.orient](~timeline.orient) is set as `'vertical'`.
 
 + `number`: 
-    When it is assigned with a value, it indicates the distance between  `label` and axis. If it was `0` , `label` would be coincident with axis. It can be both positive and negtive value, deciding on which side of the axis the location of `label` would be.   
+    When it is assigned to be a a number value, it indicates the distance between `label` and axis. If it is set to be `0` , `label` would be at the same position with axis. Negative value is valid for the other side of the axis.   
 
 
 ### normal(Object)
@@ -280,7 +282,7 @@ the optional methods of configuration:
 
 ## checkpointStyle(Object)
 
-The Graphic Styles of『current item』 (`checkpoint`).
+Style of the selected item (`checkpoint`).
 
 {{ use: partial-symbol(
     prefix='##',
@@ -292,143 +294,143 @@ The Graphic Styles of『current item』 (`checkpoint`).
 
 ### color(Color) = '#c23531'
 
-The color of『current item』 (`checkpoint`)  in `timeline` component.
+Color of `checkpoint` in `timeline` component.
 
 ### borderWidth(number) = 5
 
 
-The border-width of『current item』 (`checkpoint`)  in `timeline` component. 
+The border-width of `checkpoint` in `timeline` component. 
 
 
 ### borderColor(Color) = 'rgba(194,53,49, 0.5)'
 
-The border-color of『current item』 (`checkpoint`)  in `timeline` component. 
+The border-color of `checkpoint` in `timeline` component. 
 
 
 ### animation(boolean) = true
 
-In `timeline` component, whether there is animation in 『current item』 (`checkpoint`)  moving during the process of `timeline` playing and switching. 
+In `timeline` component, whether there is animation in `checkpoint` moving during the process of `timeline` playing and switching. 
 
 
 ### animationDuration(number) = 300
 
-The animation duration of『current item』 (`checkpoint`)  in `timeline` component. 
+The animation duration of `checkpoint` in `timeline` component. 
 
 
 ### animationEasing(string) = 'quinticInOut'
 
-The easing effect of animation of『current item』 (`checkpoint`)  in `timeline` component. Different easing effect could refers to [easing sample](${galleryViewPath}line-easing). 
+The easing effect of animation of `checkpoint` in `timeline` component. Refers to [easing sample](${galleryViewPath}line-easing) for different easing effects.
 
 
 ## controlStyle(Object)
 
-The style of『control button』.『control button』includes: 『play button』、『previous button』、『next button』.
+The style of *control button*, which includes: *play button*, *previous button*, and *next button*.
 
 ### show(boolean) = true
 
-Whether to show 『control button』. When it is set as, it would not show at all. 
+Whether to show control button. `false` for hide all.
 
 ### showPlayBtn(boolean) = true
 
-Whether to show 『play button』.
+Whether to show play button.
 
 
 ### showPrevBtn(boolean) = true
 
-Whether to show 『previous button』.
+Whether to show previous button.
 
 
 ### showNextBtn(boolean) = true
 
-Whether to show 『next button』.
+Whether to show next button.
 
 
 ### itemSize(number) = 22
 
-the size of『control button』, and its unit is pixel (px).
+Size of *control button*, in pixels (px).
 
 
 ### itemGap(number) = 12
 
-the interval between『control button』, and its unit is pixel (px).
+Interval between *control button*, in pixels (px).
 
 
 ### position(string) = 'left'
 
-the location of 『control button』.
+the location of *control button*.
 
-+ As [timeline.orient](~timeline.orient) is set as `'horizontal'`, `'left'`、`'right'`are valid.
++ When [timeline.orient](~timeline.orient) is set to be `'horizontal'`, `'left'` and `'right'`are valid.
 
-+ As [timeline.orient](~timeline.orient) is set as `'vertical'`, `'top'`、`'bottom'`are valid.
++ When [timeline.orient](~timeline.orient) is set to be `'vertical'`, `'top'` and `'bottom'`are valid.
 
 
 ### playIcon(string)
 
-the icon of 『play status』for『play button』.
+Icon of *play status* for *play button*.
 {{ use: partial-icon-path }}
 
 
 ### stopIcon(string)
 
-the icon of 『stop status』for『play button』.
+Icon of *stop status* for *play button*.
 {{ use: partial-icon-path }}
 
 
 ### prevIcon(string)
 
-the icon of 『previous button』
+Icon of *previous button*.
 {{ use: partial-icon-path }}
 
 
 ### nextIcon(string)
 
-the icon of 『next button』
+Icon of *next button*.
 {{ use: partial-icon-path }}
 
 
 ### normal(Object)
 
-the style of 『normal status』for control button.
+Style of *normal* state for control button.
 
 
 #### color(Color) = '#304654'
 
-button color.
+Button color.
 
 
 #### borderColor(Color) = '#304654'
 
-the color of button border.
+Color of button border.
 
 
 #### borderWidth(number) = 1
 
-the border width of button.
+Border width of button.
 
 
 ### emphasis(Object)
 
-the button style in 『highlighted status』 (during its hover).
+Button style in *highlighted state* (when it's hovered by mouse).
 
 
 #### color(Color) = '#c23531'
 
-button color.
+Button color.
 
 
 #### borderColor(Color) = '#c23531'
 
-the color of button border.
+Color of button border.
 
 
 #### borderWidth(number) = 2
 
-the width of button border.
+Width of button border.
 
 
 ## data(Array)
 
-`timeline` data. Every item of `Array`, it could be a direct numerical. If you need to individually endow each data item with a style definition, the data item should be written as `Object`. In `Object`, the attribute of `value` is numerical value. Other attributes, such as the examples below, could cover the attribute configuration in  `timeline`.  
+`timeline` data. Each item of `Array` can be a instant value. If you need to set style individually for a data item, the `data` item should be written as `Object`. In then `Object`, the attribute of `value` is numerical value. Other attributes, such as shown the examples below, could cover the attribute configurations in `timeline`.  
 
 
 
@@ -441,10 +443,10 @@ as follows:
     '2004-01-01',
     {
         value: '2005-01-01',
-        tooltip: {          // Let `tooltip` to be displayed as mouse hovering to this item.
+        tooltip: {          // enables `tooltip` to be displayed as mouse hovering to this item.
             formatter: '{b} xxxx'
         },
-        symbol: 'diamond',  // the special setting of this item's figure.
+        symbol: 'diamond',  // the special setting of this item's symbol.
         symbolSize: 16      // the special setting of this item's size.
     },
     '2006-01-01',
@@ -454,7 +456,7 @@ as follows:
     '2010-01-01',
     {
         value: '2011-01-01',
-        tooltip: {          // Let `tooltip` to be displayed as mouse hovering to this item.
+        tooltip: {          // enables `tooltip` to be displayed as mouse hovering to this item.
             formatter: function (params) {
                 return params.name + 'xxxx';
             }
@@ -478,12 +480,12 @@ Whether to show the label.
 
 #${prefix} interval(string|number) = 'auto'
 
-The interval of `label`. When it is assigned with a numerical value, such as  `2`, a label would show every 2 items.
+Interval of `label`. When it is assigned with a numerical value, such as  `2`, a label would show every 2 items.
 
 
 #${prefix} rotate(prefix) = 0
 
-the rotation angle of `label` . Positive values refer to counter clockwise rotation. 
+Rotation angle of `label`, in which positive values refer to counter clockwise rotation. 
 
 #${prefix} formatter(string|Function) = null
 
