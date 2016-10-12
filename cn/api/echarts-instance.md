@@ -180,18 +180,23 @@ ECharts 中的事件有两种，一种是鼠标事件，在鼠标点击某个图
 ```js
 (
     // finder 用于指示『使用哪个坐标系进行转换』。
-    // 通常地，可以使用 index 或者 id 来定位。
+    // 通常地，可以使用 index 或者 id 或者 name 来定位。
     finder: {
         seriesIndex?: number,
         seriesId?: string,
+        seriesName?: string,
         geoIndex?: number,
         geoId?: string,
+        geoName?: string,
         xAxisIndex?: number,
         xAxisId?: string,
+        xAxisName?: string,
         yAxisIndex?: number,
         yAxisId?: string,
+        yAxisName?: string,
         gridIndex?: number,
         gridId?: string
+        gridName?: string
     },
     // 要被转换的值。
     value: Array|string
@@ -247,6 +252,100 @@ chart.convertToPixel({seriesIndex: 0}, [128.3324, 89.5344]);
 // 使用 id 为 'k2' 的系列所对应的坐标系：
 chart.convertToPixel({seriesId: 'k2'}, [128.3324, 89.5344]);
 ```
+
+## convertFromPixel(Function)
+```js
+(
+    // finder 用于指示『使用哪个坐标系进行转换』。
+    // 通常地，可以使用 index 或者 id 或者 name 来定位。
+    finder: {
+        seriesIndex?: number,
+        seriesId?: string,
+        seriesName?: string,
+        geoIndex?: number,
+        geoId?: string,
+        geoName?: string,
+        xAxisIndex?: number,
+        xAxisId?: string,
+        xAxisName?: string,
+        yAxisIndex?: number,
+        yAxisId?: string,
+        yAxisName?: string,
+        gridIndex?: number,
+        gridId?: string
+        gridName?: string
+    },
+    // 要被转换的值，为像素坐标值，以 echarts 实例的 dom 节点的左上角为坐标 [0, 0] 点。
+    value: Array|string
+    // 转换的结果，为逻辑坐标值。
+) => Array|string
+```
+
+转换像素坐标值到逻辑坐标系上的点。是 [convertToPixel](~echartsInstance.convertToPixel) 的逆运算。
+具体实例可参考 [convertToPixel](~echartsInstance.convertToPixel)。
+
+
+## getComponentLayout(Function)
+```js
+(
+    // finder 用于指定 component。
+    // 通常地，可以使用 index 或者 id 或者 name 来定位。
+    finder: {
+        seriesIndex?: number,
+        seriesId?: string,
+        seriesName?: string,
+        geoIndex?: number,
+        geoId?: string,
+        geoName?: string,
+        gridIndex?: number,
+        gridId?: string
+        gridName?: string
+    }
+) => Object
+```
+
+得到指定 component 的位置信息，基于像素坐标，即以 echarts 实例的 dom 节点的左上角为坐标 [0, 0] 点。
+
+如果指定的 component 未被使用，返回 `undefined/null`。
+
+否则返回 `Object`，其内容根据不同 component 而不同。
+
+例：
+
+在地理坐标系（[geo](option.html#geo)）上：
+```js
+// 得到第一个 geo component 的信息（参数 'geo' 等同于 {geoIndex: 0}）：
+chart.getComponentLayout('geo');
+// 或者
+chart.getComponentLayout({geoIndex: 0});
+// 得到 {x: 10, y: 100, width: 300, height: 400};
+```
+
+在直角坐标系（cartesian，[grid](option.html#grid)）上，：
+```js
+chart.getComponentLayout({gridId: 'a'});
+// 得到 {x: 10, y: 100, width: 300, height: 400};
+```
+
+在地图系列 [map](option.html#series-map) 上：
+```js
+chart.getComponentLayout({seriesIndex: 0});
+// 得到 {x: 10, y: 100, width: 300, height: 400};
+```
+
+在饼图系列 [pie](option.html#series-pie) 上：
+```js
+chart.getComponentLayout({seriesIndex: 0});
+// 得到 {cx: 10, cy: 100, r: 50, r0: 20};
+// cx 和 cy 表示圆心坐标，r 表示外半径，r0 表示内半径。
+```
+
+在关系图系列 [graph](option.html#series-graph) 上：
+```js
+chart.getComponentLayout({seriesIndex: 0});
+// 得到 {x: 10, y: 100, width: 300, height: 400};
+```
+
 
 
 ## showLoading(Function)

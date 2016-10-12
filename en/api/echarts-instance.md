@@ -183,18 +183,23 @@ Unbind event-handler function.
 ```js
 (
     // finder is used to indicate in which coordinate system conversion is performed.
-    // Generally, index or id can be used to specify coordinate system.
+    // Generally, index or id or name can be used to specify coordinate system.
     finder: {
         seriesIndex?: number,
         seriesId?: string,
+        seriesName?: string,
         geoIndex?: number,
         geoId?: string,
+        geoName?: string,
         xAxisIndex?: number,
         xAxisId?: string,
+        xAxisName?: string,
         yAxisIndex?: number,
         yAxisId?: string,
+        yAxisName?: string,
         gridIndex?: number,
         gridId?: string
+        gridName?: string
     },
     // The value to be converted.
     value: Array|string
@@ -254,6 +259,103 @@ In a cooridinate system (cartesian, geo, graph, ...) that contains the given ser
 chart.convertToPixel({seriesIndex: 0}, [128.3324, 89.5344]);
 // Perform convert in the coordinate system that contains the series with id 'k2'.
 chart.convertToPixel({seriesId: 'k2'}, [128.3324, 89.5344]);
+```
+
+
+## convertFromPixel(Function)
+```js
+(
+    // finder is used to indicate in which coordinate system conversion is performed.
+    // Generally, index or id or name can be used to specify coordinate system.
+    finder: {
+        seriesIndex?: number,
+        seriesId?: string,
+        seriesName?: string,
+        geoIndex?: number,
+        geoId?: string,
+        geoName?: string,
+        xAxisIndex?: number,
+        xAxisId?: string,
+        xAxisName?: string,
+        yAxisIndex?: number,
+        yAxisId?: string,
+        yAxisName?: string,
+        gridIndex?: number,
+        gridId?: string
+        gridName?: string
+    },
+    // The value to be converted, in pixel coordinate system, where the origin ([0, 0])
+    // is on the left-top of the main dom of echarts instance.
+    value: Array|string
+    // Conversion result
+) => Array|string
+```
+
+Convert a point from pixel coordinate to logical coordinate (e.g., in geo, cartesian, graph, ...). This method is the inverse operation of [convertToPixel](~echartsInstance.convertToPixel), where the examples can be referred.
+
+
+## getComponentLayout(Function)
+```js
+(
+    // finder is used to specify component.
+    // Generally, index or id or name can be used.
+    finder: {
+        seriesIndex?: number,
+        seriesId?: string,
+        seriesName?: string,
+        geoIndex?: number,
+        geoId?: string,
+        geoName?: string,
+        gridIndex?: number,
+        gridId?: string
+        gridName?: string
+    }
+) => Object
+```
+
+The result is the position info about the specified component.
+The position info is based on pixel coordinate system, where the origin ([0, 0]) is on the left-top of the main dom of echarts instance.
+
+If the specified component is not used currently in echarts instance, `undefined/null` will be returned.
+
+Otherwise an `Object` will be returned, the content of which have varied according to different components.
+
+For example:
+
+In [geo](option.html#geo):
+```js
+// Get info of the first geo component (parameter 'geo' means {geoIndex: 0}):
+chart.getComponentLayout('geo');
+// or
+chart.getComponentLayout({geoIndex: 0});
+// The result can be {x: 10, y: 100, width: 300, height: 400};
+```
+
+In cartesian, [grid](option.html#grid):
+```js
+chart.getComponentLayout({gridId: 'a'});
+// The result can be {x: 10, y: 100, width: 300, height: 400};
+```
+
+In [series-map](option.html#series-map):
+```js
+chart.getComponentLayout({seriesIndex: 0});
+// The result can be  {x: 10, y: 100, width: 300, height: 400};
+```
+
+In [series-pie](option.html#series-pie):
+```js
+chart.getComponentLayout({seriesIndex: 0});
+// The result can be {cx: 10, cy: 100, r: 50, r0: 20};
+// cx and cy represents coordinate of center of the circle;
+// r represents outer radius;
+// r0 represents inner radius;
+```
+
+In [series-graph](option.html#series-graph):
+```js
+chart.getComponentLayout({seriesIndex: 0});
+// The result can be {x: 10, y: 100, width: 300, height: 400};
 ```
 
 
