@@ -294,6 +294,54 @@ chart.convertToPixel({seriesId: 'k2'}, [128.3324, 89.5344]);
 Convert a point from pixel coordinate to logical coordinate (e.g., in geo, cartesian, graph, ...). This method is the inverse operation of [convertToPixel](~echartsInstance.convertToPixel), where the examples can be referred.
 
 
+## containPixel(Function)
+```js
+(
+    // finder is used to specify coordinate systems or series on which the judgement performed.
+    // Generally
+    // 通常地，可以使用 index 或者 id 或者 name 来定位。
+    finder: {
+        seriesIndex?: number,
+        seriesId?: string,
+        seriesName?: string,
+        geoIndex?: number,
+        geoId?: string,
+        geoName?: string,
+        xAxisIndex?: number,
+        xAxisId?: string,
+        xAxisName?: string,
+        yAxisIndex?: number,
+        yAxisId?: string,
+        yAxisName?: string,
+        gridIndex?: number,
+        gridId?: string
+        gridName?: string
+    },
+    // The value to be judged, in pixel coordinate system, where the origin ([0, 0])
+    // is on the left-top of the main dom of echarts instance.
+    value: Array
+) => boolean
+```
+
+Determine whether the given point is in the given coordinate systems or series.
+
+These coordinate systems or series are supported currently: [grid](option.html#grid), [polar](option.html#polar), [geo](option.html#geo), [series-map](option.html#series-map), [series-graph](option.html#series-graph), [series-pie](option.html#series-pie).
+
+For example:
+
+```js
+// Determine whether point [23, 44] is in the geo whose geoIndex 0.
+chart.containPixel('geo', [23, 44]); // Parameter 'geo' means {geoIndex: 0}
+// Determine whether point [23, 44] is in the grid whose gridId is 'z'.
+chart.containPixel({gridId: 'z'}, [23, 44]);
+// Determine whether point [23, 44] is in series whose index are 1, 4 or 5.
+chart.containPixel({seriesIndex: [1, 4, 5]}, [23, 44]);
+// Determine whether point [23, 44] is in series whose index are 1, 4 or 5,
+// or is in grid whose name is 'a'.
+chart.containPixel({seriesIndex: [1, 4, 5], gridName: 'a'}, [23, 44]);
+```
+
+
 ## showLoading(Function)
 ```js
 (type?: string, opts?: Object)

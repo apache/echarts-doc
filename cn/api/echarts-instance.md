@@ -285,6 +285,50 @@ chart.convertToPixel({seriesId: 'k2'}, [128.3324, 89.5344]);
 具体实例可参考 [convertToPixel](~echartsInstance.convertToPixel)。
 
 
+## containPixel(Function)
+```js
+(
+    // finder 用于指示『在哪个坐标系或者系列上判断』。
+    // 通常地，可以使用 index 或者 id 或者 name 来定位。
+    finder: {
+        seriesIndex?: number,
+        seriesId?: string,
+        seriesName?: string,
+        geoIndex?: number,
+        geoId?: string,
+        geoName?: string,
+        xAxisIndex?: number,
+        xAxisId?: string,
+        xAxisName?: string,
+        yAxisIndex?: number,
+        yAxisId?: string,
+        yAxisName?: string,
+        gridIndex?: number,
+        gridId?: string
+        gridName?: string
+    },
+    // 要被判断的点，为像素坐标值，以 echarts 实例的 dom 节点的左上角为坐标 [0, 0] 点。
+    value: Array
+) => boolean
+```
+
+判断给定的点是否在指定的坐标系或者系列上。
+
+目前支持在这些坐标系和系列上进行判断：[grid](option.html#grid), [polar](option.html#polar), [geo](option.html#geo), [series-map](option.html#series-map), [series-graph](option.html#series-graph), [series-pie](option.html#series-pie)。
+
+例：
+
+```js
+// 判断 [23, 44] 点是否在 geoIndex 为 0 的 geo 坐标系上。
+chart.containPixel('geo', [23, 44]); // 'geo' 等同于 {geoIndex: 0}
+// 判断 [23, 44] 点是否在 gridId 为 'z' 的 grid 上。
+chart.containPixel({gridId: 'z'}, [23, 44]);
+// 判断 [23, 44] 点是否在 index 为 1，4，5 的系列上。
+chart.containPixel({seriesIndex: [1, 4, 5]}, [23, 44]);
+// 判断 [23, 44] 点是否在 index 为 1，4，5 的系列或者 gridName 为 'a' 的 grid 上。
+chart.containPixel({seriesIndex: [1, 4, 5], gridName: 'a'}, [23, 44]);
+```
+
 ## showLoading(Function)
 ```js
 (type?: string, opts?: Object)
