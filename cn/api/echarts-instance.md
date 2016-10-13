@@ -285,69 +285,6 @@ chart.convertToPixel({seriesId: 'k2'}, [128.3324, 89.5344]);
 具体实例可参考 [convertToPixel](~echartsInstance.convertToPixel)。
 
 
-## getComponentLayout(Function)
-```js
-(
-    // finder 用于指定 component。
-    // 通常地，可以使用 index 或者 id 或者 name 来定位。
-    finder: {
-        seriesIndex?: number,
-        seriesId?: string,
-        seriesName?: string,
-        geoIndex?: number,
-        geoId?: string,
-        geoName?: string,
-        gridIndex?: number,
-        gridId?: string
-        gridName?: string
-    }
-) => Object
-```
-
-得到指定 component 的位置信息，基于像素坐标，即以 echarts 实例的 dom 节点的左上角为坐标 [0, 0] 点。
-
-如果指定的 component 未被使用，返回 `undefined/null`。
-
-否则返回 `Object`，其内容根据不同 component 而不同。
-
-例：
-
-在地理坐标系（[geo](option.html#geo)）上：
-```js
-// 得到第一个 geo component 的信息（参数 'geo' 等同于 {geoIndex: 0}）：
-chart.getComponentLayout('geo');
-// 或者
-chart.getComponentLayout({geoIndex: 0});
-// 得到 {x: 10, y: 100, width: 300, height: 400};
-```
-
-在直角坐标系（cartesian，[grid](option.html#grid)）上，：
-```js
-chart.getComponentLayout({gridId: 'a'});
-// 得到 {x: 10, y: 100, width: 300, height: 400};
-```
-
-在地图系列 [map](option.html#series-map) 上：
-```js
-chart.getComponentLayout({seriesIndex: 0});
-// 得到 {x: 10, y: 100, width: 300, height: 400};
-```
-
-在饼图系列 [pie](option.html#series-pie) 上：
-```js
-chart.getComponentLayout({seriesIndex: 0});
-// 得到 {cx: 10, cy: 100, r: 50, r0: 20};
-// cx 和 cy 表示圆心坐标，r 表示外半径，r0 表示内半径。
-```
-
-在关系图系列 [graph](option.html#series-graph) 上：
-```js
-chart.getComponentLayout({seriesIndex: 0});
-// 得到 {x: 10, y: 100, width: 300, height: 400};
-```
-
-
-
 ## showLoading(Function)
 ```js
 (type?: string, opts?: Object)
