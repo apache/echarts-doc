@@ -93,10 +93,29 @@ myChart.setOption({
 
 
 ## resize(Function)
+```js
+(opts?: {
+    width?: number|string
+    height? number|string
+}) => ECharts
+```
 
 Resizes chart, which should be called manually when container size changes.
 
-**Tip:** Sometimes charts may be placed in multiple tabs. Those in hidden labels may fail to initialize due to the ignorance of container width and height. So `resize` should be called manually to get the correct width and height when switching to the corresponding tabs.
+**Parameters**
++ `opts`
+
+    Optional; which may contain:
+
+    + `width`
+
+        Specify width explicitly, in pixel. If setting to `null`/`undefined`/`'auto'`, width of `dom` (instance container) will be used.
+
+    + `height`
+
+        Specify height explicitly, in pixel. If setting to `null`/`undefined`/`'auto'`, height of `dom` (instance container) will be used.
+
+**Tip:** Sometimes charts may be placed in multiple tabs. Those in hidden labels may fail to initialize due to the ignorance of container width and height. So `resize` should be called manually to get the correct width and height when switching to the corresponding tabs, or specify width/heigth in `opts` explicitly.
 
 ## dispatchAction(Function)
 ```js
