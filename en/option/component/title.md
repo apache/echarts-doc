@@ -3,63 +3,72 @@
 
 # title(Object)
 
-title component, including main heading and subtitle. 
+Title component, including main title and subtitle.
 
-In ECharts 2.x, a single example of ECharts could contains one title component at most. However, in ECharts 3, there could be one or more than one title components which needs layout. It is more useful when multiple diagrams in one example all need titles. 
+In ECharts 2.x, a single instance of ECharts could contains one title component at most. However, in ECharts 3, there could be one or more than one title components. It is more useful when multiple diagrams in one instance all need titles.
 
-**Here are some examples of different slow-motion functions, among which every slow-motion function has a title component: **
+**Here are some instances of different animation easing functions, among which every instance has a title component: **
 ~[700x400](${galleryViewPath}line-easing&edit=1&reset=1)
 
 
 ## show(boolean) = true
 
-Secifies whether to show the title component.
+It specifies whether to show the title component.
 
 ## text(string) = ''
 
-the main heading text, supporting `\n` to line feed. 
+The main title text, supporting for `\n` for newlines.
+
 ## link(string) = ''
 
-the hyper link of main heading text.
+The hyper link of main title text.
 
 ## target(string) = 'blank'
 
-open the hyper link of main heading text in specified window.
+Open the hyper link of main title in specified tab.
 
 **options: **
 
-+ `'self'` opening the current window
++ `'self'` opening it in current tab
 
-+ `'blank'` opening a new window
++ `'blank'` opening it in a new tab
 
 ## textStyle
 
 {{ use: partial-text-style(
     prefix="##",
-    name="main heading",
+    name="main title",
     defaultFontSize=18,
     defaultFontWeight="'border'",
     defaultColor="'#333'"
 ) }}
 
+## textAlign(string)
+
+Setting the title text align horizontally, supporting 'left','center','right', the default value is based on the title position.
+
+## textBaseline(string)
+
+Setting the title text align vertically, supporting 'top','middle','bottom', the default value is based on the title position.
+
 
 ## subtext(string) = ''
 
-subtitle text, supporting `\n` to line feed.
+Subtitle text, supporting for `\n` for newlines.
 
 
 ## sublink(string) = ''
 
-the hyper link of subtitle text.
+The hyper link of subtitle text.
 
 
 ## subtarget(string) = 'blank'
 
- open the hyper link of main heading text in specified window, options: 
+ Open the hyper link of subtitle in specified tab, options:
 
-+ `'self'` opening the current window
++ `'self'` opening it in current tab
 
-+ `'blank'` opening a new window
++ `'blank'` opening it in a new tab
 
 
 ## subtextStyle
@@ -76,11 +85,11 @@ the hyper link of subtitle text.
 
 ## itemGap(number) = 10
 
-the gap between the main heading and subtitle. 
+The gap between the main title and subtitle.
 
 {{use: partial-rect-layout(componentName="grid ")}}
 
-{{ use: partial-component-common-style(componentName="title", prefix='#') }}
+{{ use: partial-component-common-style(componentName="title", prefix='#', defaultBorderWidth="0")}}
 
 
 
