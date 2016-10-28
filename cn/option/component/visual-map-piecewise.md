@@ -110,6 +110,13 @@ series.data 的 `dataMin` 和 `dataMax`）。
 **连续型数据平均分段** 模式（即 (that is, when [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber) 被使用时）需指定 `min`、`max`，如果不指定，则默认为 `[0, 200]`（注意并不是默认为
 series.data 的 `dataMin` 和 `dataMax`）。
 
+## minOpen(boolean)
+
+当 `type` 为 `piecewise` 且使用 `min`/`max`/`splitNumber` 时，此参数有效。当值为 `true` 时，界面上会额外多出一个『< min』的选块。
+
+## maxOpen(boolean)
+
+当 `type` 为 `piecewise` 且使用 `min`/`max`/`splitNumber` 时，此参数有效。当值为 `true` 时，界面上会额外多出一个『> max』的选块。
 
 ## selectedMode(string) = 'multiple'
 
