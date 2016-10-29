@@ -93,8 +93,13 @@ The formatter tool for the label.
 + It is a callback function if in `Function`. For example:
 
 ```javascript
-labelFormatter: function (value) {
-    // returns the label calculated
+/**
+ * @param {*} value If axis.type is 'category', `value` is the index of axis.data.
+ *                  else `value` is current value.
+ * @param {strign} valueStr Inner formatted string.
+ * @return {string} Returns the label formatted.
+ */
+labelFormatter: function (value, valueStr) {
     return 'aaa' + value + 'bbb';
 }
 ```
