@@ -15,7 +15,7 @@ The style setting of ${name} icon.
 
 {{ target: feature-icon-desc }}
 
-The character string of Icon's path. In ECharts 3, the user-difined svg path is supported to be use as icon, the format of which could be refered to [SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData). It could be edited and exported from some tools such as Adobe Illustrator.
+Path string for icon. In ECharts 3, user-defined svg path is supported to be used as icon, whose format could be refered at [SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData). It could be edited and exported from some graphic tools such as Adobe Illustrator.
 
 {{ target: feature-common}}
 
@@ -35,7 +35,7 @@ Whether to show the tool.
 
 # toolbox(Object)
 
-toolbox. It is internally installed with 5 tools including [export pictures](~toolbox.feature.saveAsImage), [data view](~toolbox.feature.dataView), [dynamic type switching](~toolbox.feature.magicType), [data area zooming](~toolbox.feature.dataZoom) and [reset](~toolbox.feature.reset).
+A group of utility tools, which includes [export](~toolbox.feature.saveAsImage), [data view](~toolbox.feature.dataView), [dynamic type switching](~toolbox.feature.magicType), [data area zooming](~toolbox.feature.dataZoom), and [reset](~toolbox.feature.reset).
 
 **Example: **
 
@@ -43,34 +43,34 @@ toolbox. It is internally installed with 5 tools including [export pictures](~to
 
 ## show(boolean) = true
 
-Whether to show tool box component.
+Whether to show toolbox component.
 
 ## orient(string) = 'horizontal'
 
-The layout orientation of tool box's icon.
+The layout orientation of toolbox's icon.
 
-Options: 
+Options:
 + 'horizontal'
 + 'vertical'
 
 ## itemSize(number) = 15
 
-The size of tool box's icon.
+The size of toolbox's icon.
 
 ## itemGap(number) = 10
 
-The gap between each icon of tool box. There is horizontal gap in horizontal layout, while vertical gap in vertical layout.
+The gap between each icon of toolbox. It is horizontal gap in horizontal layout, while vertical gap in vertical layout.
 
 ## showTitle(boolean) = true
 
 Whether to show the title of each tool icon when mouse hovers.
 
 ## feature(Object)
-The configuration item of each tool.
+The configuration item for each tool.
 
-Besides all the internally installed tool buttons, tool button still can be user-defined. 
+Besides the tools we provide, user-defined toolbox is also supported.
 
-Notes: the user-defined tool name could only starts with  `my`. See the `myTool1` and `myTool2` in the below example: 
+Notes: User-defined tool name could only start with `my`, like `myTool1` and `myTool2` in the below example:
 
 ```javascript
 {
@@ -98,57 +98,93 @@ Notes: the user-defined tool name could only starts with  `my`. See the `myTool1
 ```
 
 ### saveAsImage(Object)
-save as image.
+Save as image.
 #### type(string) = 'png'
-the format of saved image, which supports`'png'` and `'jpeg'`.
+Format to save the image in, which supports`'png'` and `'jpeg'`.
 #### name(string)
-the name of saved document, which defaults to use [title.text](~title.text).
+Name to save the image, whose default value is [title.text](~title.text).
 #### backgroundColor(Color) = 'auto'
-the background color of saved image, which defaults to use [backgroundColor](~backgroundColor). If `backgroundColor` doesn't exist, it defaults to adopt white color.
+Background color to save the image, whose default value is [backgroundColor](~backgroundColor). If `backgroundColor` is not set, white color is used.
 #### excludeComponents(Array) = ['toolbox']
-The component list ignored during saving as image, which defaults to ignore tool box.
-
+Components to be excluded when export. By default, toolbox is excluded.
 {{ use: feature-common(title="save as image") }}
 #### pixelRatio(number) = 1
-The resolution ratio of saving as image, which defaults to be the same with the container. If the image is necessary to be saved with higher  resolution ratio,  a value greater than 1 could be set up, such as 2.
+Resolution ratio to save image, whose default value is that of the container. Values larger than 1 (e.g.: 2) is supported when you need higher resolution.
 
 ### restore(Object)
 Restore configuration item.
 {{ use: feature-common(title="restore") }}
 
 ### dataView(Object)
-data view tool, which could display adopted data in current diagram and updates after being edited.
+Data view tool, which could display data in current chart and updates chart after being edited.
 {{ use: feature-common(title="data view") }}
 #### readOnly(boolean) = false
-Whether it couldn't be edited (read-only). 
+Whether it is read-only.
+
+#### optionToContent(Function)
+```js
+(option:Object) => HTMLDomElement|string
+```
+
+Define a function to present dataView. It is used to replace default textarea for richer data editing. It can return a DOM object, or an HTML string.
+
+For example:
+```js
+optionToContent: function(opt) {
+    var axisData = opt.xAxis[0].data;
+    var series = opt.series;
+    var table = '<table style="width:100%;text-align:center"><tbody><tr>'
+                 + '<td>Time:</td>'
+                 + '<td>' + series[0].name + '</td>'
+                 + '<td>' + series[1].name + '</td>'
+                 + '</tr>';
+    for (var i = 0, l = axisData.length; i < l; i++) {
+        table += '<tr>'
+                 + '<td>' + axisData[i] + '</td>'
+                 + '<td>' + series[0].data[i] + '</td>'
+                 + '<td>' + series[1].data[i] + '</td>'
+                 + '</tr>';
+    }
+    table += '</tbody></table>';
+    return table;
+}
+```
+
+#### contentToOption(Function)
+```js
+(container:HTMLDomElement, option:Object) => Object
+```
+
+When optionToContent is used, if you want to support refreshing chart after data changes, you need to implement the logic to merge options in this function.
+
 #### lang(Array) = ['data view', 'turn off', 'refresh']
-There are 3 langs in data view, which defaults to be `['data view', 'turn off' and 'refresh']`.
+There are 3 names in data view, which are `['data view', 'turn off' and 'refresh']`.
 #### backgroundColor(string) = '#fff'
-The background color of the floating layer in data view.
+Background color of the floating layer in data view.
 #### textareaColor(string) = '#fff'
-The background color of input area of the floating layer in data view.
+Background color of input area of the floating layer in data view.
 #### textareaBorderColor(string) = '#333'
-The border color of input area of the floating layer in data view.
+Border color of input area of the floating layer in data view.
 
 #### textColor(string) = '#000'
-text color.
+Text color.
 #### buttonColor(string) = '#c23531'
-button color.
+Button color.
 #### buttonTextColor(string) = '#fff'
-the color of button text.
+Color of button text.
 
 ### dataZoom(Object)
-data area zooming, which only supports rectangular coordinate axis zooming at present.
+Data area zooming, which only supports rectangular coordinate by now.
 {{ use: feature-common(title="data area zooming") }}
 
 #### xAxisIndex(number|Array|boolean)
-Assign which [xAxis](~xAxis) should be controlled. With default setting, it controls all x axis. If it was set as `false`, it would not control any x axis. If it was set as 3, it would control the x axes of which the axisIndex is set as `3`. If it was set as `[0, 3]`, it would control the x axes of which the axisIndex is set as `0` and `3`.  
+Defines which [xAxis](~xAxis) should be controlled. By default, it controls all x axes. If it is set to be `false`, then no x axis is controlled. If it is set to be then it controls axis with axisIndex of `3`. If it is set to be `[0, 3]`, it controls the x-axes with axisIndex of `0` and `3`.
 
 #### yAxisIndex(number|Array|boolean)
-Assign which [yAxis](~yAxis) should be controlled. With default setting, it controls all y axis. If it was set as `false`, it would not control any y axis. If it was set as 3, it would control the y axes of which the axisIndex is set as `3`. If it was set as `[0, 3]`, it would control the y axes of which the axisIndex is set as `0` and `3`.  
+Defines which [yAxis](~yAxis) should be controlled. By default, it controls all y axes. If it is set to be `false`, then no y axis is controlled. If it is set to be then it controls axis with axisIndex of `3`. If it is set to be `[0, 3]`, it controls the x-axes with axisIndex of `0` and `3`.
 
 #### icon(Object)
-Restored and zoomed icon path.
+Zooming and restore icon path.
 ##### zoom(string)
 {{ use: feature-icon-desc }}
 ##### back(string)
@@ -160,7 +196,7 @@ Restored and zoomed title text.
 
 
 ### magicType(Object)
-magic type switching
+Magic type switching.
 **示例: **
 ```js
 feature: {
@@ -172,7 +208,7 @@ feature: {
 #### show(boolean) = true
 Whether to show the magic type switching.
 #### type(Array)
-Enabled magic type, including `'line'` (switch to broken line chart), `'bar'` (switch to bar chart), `'stack'` (switch to stack mode), `'tiled'` (switch to tiled mode).
+Enabled magic types, including `'line'` (for line charts), `'bar'` (for bar charts), `'stack'` (for stacked charts), and `'tiled'` (for tiled charts).
 {{ use: feature-common(title="magic type switching") }}
 #### icon(Object)
 the different types of icon path , which could be configurated individually.
@@ -185,28 +221,68 @@ the different types of icon path , which could be configurated individually.
 ##### tiled(string)
 {{ use: feature-icon-desc }}
 #### title(Object)
-the different types of title text , which could be configurated individually.
-##### line(string) = 'switch to broken line chart'
-##### bar(string) = 'switch to bar chart'
-##### stack(string) = 'switch to stack mode'
-##### tiled(string) = 'switch to tiled mode'
+Title for different types, can be configured seperately.
+##### line(string) = 'for line charts'
+##### bar(string) = 'for bar charts'
+##### stack(string) = 'for stacked charts'
+##### tiled(string) = 'for tiled charts'
 #### option(Object)
-Different types of exclusicve configuration item. The relevant configuration items would be combined during switching to a specific type.  
+Configuration item for each type, which will be used when switching to certain type.
 ##### line(Object)
 ##### bar(Object)
 ##### stack(Object)
 ##### tiled(Object)
 #### seriesIndex(Object)
-The series lists with which each type corresponds with.
+Series list for each type.
 ##### line(Array)
 ##### bar(Array)
 ##### stack(Array)
 ##### tiled(Array)
 
 
+### brush(Object)
+Brush-selecting icon.
+
+It can also be configured at [brush.toolbox](~brush.toolbox).
+
+#### type(Array)
+
+Icons used, whose values are:
+
++ `'rect'`: Enabling selecting with rectangle area.
++ `'polygon'`: Enabling selecting with any shape.
++ `'lineX'`: Enabling horizontal selecting.
++ `'lineY'`: Enabling vertical selecting.
++ `'keep'`: Switching between *single selecting* and *multiple selecting*. The latter one can select multiple areas, while the former one cancels previous selection.
++ `'clear'`: Clearing all selection.
+
+
+#### icon(Object)
+Icon path for each icon.
+##### rect(string)
+{{ use: feature-icon-desc }}
+##### polygon(string)
+{{ use: feature-icon-desc }}
+##### lineX(string)
+{{ use: feature-icon-desc }}
+##### lineY(string)
+{{ use: feature-icon-desc }}
+##### keep(string)
+{{ use: feature-icon-desc }}
+##### clear(string)
+{{ use: feature-icon-desc }}
+#### title(Object)
+Title.
+##### rect(string) = 'Rectangle selection'
+##### polygon(string) = 'Polygon selection'
+##### lineX(string) = 'Horizontal selection'
+##### lineY(string) = 'Vertical selection'
+##### keep(string) = 'Keep previous selection'
+##### clear(string) = 'Clear selection'
+
 ## iconStyle(Object)
 
-The normal style setting of icon.
+Shared icon style.
 
 ### normal(Object)
 
@@ -220,4 +296,4 @@ The normal style setting of icon.
 ### emphasis(Object)
 {{ use: partial-item-style(prefix="###") }}
 
-{{ use: partial-rect-layout-width-height(componentName="tool box") }}
+{{ use: partial-rect-layout-width-height(componentName="toolbox") }}
