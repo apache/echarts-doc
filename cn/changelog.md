@@ -11,7 +11,7 @@
 
 + [+] 在 [toolbox](http://echarts.baidu.com/option.html#toolbox) 中加入了 [textPosition](http://echarts.baidu.com/option.html#toolbox.iconStyle.normal.textPosition) 和 [textAlign](http://echarts.baidu.com/option.html#toolbox.iconStyle.normal.textAlign) 的设置。参见 [#4104](https://github.com/ecomfe/echarts/issues/4104)。
 
-+ [+] 支持设置 [visualMap-piecewise.minOpen](http://echarts.baidu.com/option.html#visualMap-piecewise.minOpen) 和 [visualMap-piecewise.maxOpen](http://echarts.baidu.com/option.html#visualMap-piecewise.maxOpen)。
++ [+] visualMap 新加配置 [visualMap-piecewise.minOpen](http://echarts.baidu.com/option.html#visualMap-piecewise.minOpen) 和 [visualMap-piecewise.maxOpen](http://echarts.baidu.com/option.html#visualMap-piecewise.maxOpen)。
 
 + [^] 修复 setOption 时 series.name 不更新的问题。参见 [#4033](https://github.com/ecomfe/echarts/issues/4033)。
 
@@ -51,6 +51,9 @@
 
 + [^] 修正了事件参数中的 dataIndex 的含义，统一均为原始数据的 index。参见 [#2920](https://github.com/ecomfe/echarts/issues/2920)。
 
++ [^] 修复 IE8 中调用 resize 无效的 bug。参见 [#3923](https://github.com/ecomfe/echarts/issues/3923)
+
++ [^] 修复 IE8 中调用 dispose 报错的 bug。参见 [#3874](https://github.com/ecomfe/echarts/issues/3874)
 
 ## v3.2.3
 <div class="time">2016-08-16</div>
