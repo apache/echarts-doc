@@ -1,16 +1,21 @@
 {{ target: feature-icon-style }}
 
-#### iconStyle(Object)
+#${prefix} iconStyle(Object)
 The style setting of ${name} icon.
-##### normal(Object)
+##${prefix} normal(Object)
 {{ use: partial-item-style(
     defaultBorderColor = '#666',
     defualtColor = 'none',
     defaultBorderWidth = 1,
-    prefix="#####"
+    prefix="##" + ${prefix}
 ) }}
-##### emphasis(Object)
-{{ use: partial-item-style(prefix="#####") }}
+###${prefix} textPosition(string)
+Position of label: `'left'` / `'right'` / `'top'` / `'bottom'`.
+###${prefix} textAlign(string)
+Align of label text: `'left'` / `'right'`.
+##${prefix} emphasis(Object)
+{{ use: partial-item-style(prefix="##" + ${prefix}) }}
+
 
 
 {{ target: feature-icon-desc }}
@@ -27,7 +32,7 @@ Whether to show the tool.
 #### icon
 {{ use: feature-icon-desc }}
 
-{{ use: feature-icon-style(name=${title}) }}
+{{ use: feature-icon-style(name=${title}, prefix="###") }}
 
 
 
@@ -49,7 +54,7 @@ Whether to show tool box component.
 
 The layout orientation of tool box's icon.
 
-Options: 
+Options:
 + 'horizontal'
 + 'vertical'
 
@@ -68,9 +73,9 @@ Whether to show the title of each tool icon when mouse hovers.
 ## feature(Object)
 The configuration item of each tool.
 
-Besides all the internally installed tool buttons, tool button still can be user-defined. 
+Besides all the internally installed tool buttons, tool button still can be user-defined.
 
-Notes: the user-defined tool name could only starts with  `my`. See the `myTool1` and `myTool2` in the below example: 
+Notes: the user-defined tool name could only starts with  `my`. See the `myTool1` and `myTool2` in the below example:
 
 ```javascript
 {
@@ -120,7 +125,7 @@ Restore configuration item.
 data view tool, which could display adopted data in current diagram and updates after being edited.
 {{ use: feature-common(title="data view") }}
 #### readOnly(boolean) = false
-Whether it couldn't be edited (read-only). 
+Whether it couldn't be edited (read-only).
 #### lang(Array) = ['data view', 'turn off', 'refresh']
 There are 3 langs in data view, which defaults to be `['data view', 'turn off' and 'refresh']`.
 #### backgroundColor(string) = '#fff'
@@ -142,10 +147,10 @@ data area zooming, which only supports rectangular coordinate axis zooming at pr
 {{ use: feature-common(title="data area zooming") }}
 
 #### xAxisIndex(number|Array|boolean)
-Assign which [xAxis](~xAxis) should be controlled. With default setting, it controls all x axis. If it was set as `false`, it would not control any x axis. If it was set as 3, it would control the x axes of which the axisIndex is set as `3`. If it was set as `[0, 3]`, it would control the x axes of which the axisIndex is set as `0` and `3`.  
+Assign which [xAxis](~xAxis) should be controlled. With default setting, it controls all x axis. If it was set as `false`, it would not control any x axis. If it was set as 3, it would control the x axes of which the axisIndex is set as `3`. If it was set as `[0, 3]`, it would control the x axes of which the axisIndex is set as `0` and `3`.
 
 #### yAxisIndex(number|Array|boolean)
-Assign which [yAxis](~yAxis) should be controlled. With default setting, it controls all y axis. If it was set as `false`, it would not control any y axis. If it was set as 3, it would control the y axes of which the axisIndex is set as `3`. If it was set as `[0, 3]`, it would control the y axes of which the axisIndex is set as `0` and `3`.  
+Assign which [yAxis](~yAxis) should be controlled. With default setting, it controls all y axis. If it was set as `false`, it would not control any y axis. If it was set as 3, it would control the y axes of which the axisIndex is set as `3`. If it was set as `[0, 3]`, it would control the y axes of which the axisIndex is set as `0` and `3`.
 
 #### icon(Object)
 Restored and zoomed icon path.
@@ -191,7 +196,7 @@ the different types of title text , which could be configurated individually.
 ##### stack(string) = 'switch to stack mode'
 ##### tiled(string) = 'switch to tiled mode'
 #### option(Object)
-Different types of exclusicve configuration item. The relevant configuration items would be combined during switching to a specific type.  
+Different types of exclusicve configuration item. The relevant configuration items would be combined during switching to a specific type.
 ##### line(Object)
 ##### bar(Object)
 ##### stack(Object)
@@ -204,20 +209,6 @@ The series lists with which each type corresponds with.
 ##### tiled(Array)
 
 
-## iconStyle(Object)
-
-The normal style setting of icon.
-
-### normal(Object)
-
-{{ use: partial-item-style(
-    defaultBorderColor = '#666',
-    defualtColor = 'none',
-    defaultBorderWidth = 1,
-    prefix="###"
-) }}
-
-### emphasis(Object)
-{{ use: partial-item-style(prefix="###") }}
+{{ use: feature-icon-style(name="Common", prefix="#") }}
 
 {{ use: partial-rect-layout-width-height(componentName="tool box") }}
