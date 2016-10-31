@@ -1,13 +1,13 @@
-## v3.2.4
+## v3.3
 <div class="time">2016-10-31</div>
 
-+ [+] 开放坐标转换 API：[convertToPixel](http://echarts.baidu.com/api.html#echartsInstance.convertToPixel) 和 [convertFromPixel](http://echarts.baidu.com/api.html#echartsInstance.convertFromPixel)。
++ [+] 开放坐标转换 API：[convertToPixel](http://echarts.baidu.com/api.html#echartsInstance.convertToPixel) 和 [convertFromPixel](http://echarts.baidu.com/api.html#echartsInstance.convertFromPixel)。参见例子 [http://echarts.baidu.com/gallery/editor.html?c=line-draggable] 和 [http://echarts.baidu.com/gallery/editor.html?c=line-pen]
 
 + [+] 开放坐标判断 API：[containPixel](http://echarts.baidu.com/api.html#echartsInstance.containPixel)。
 
 + [+] [polar](http://echarts.baidu.com/option.html#polar) 支持了 [dataZoom](http://echarts.baidu.com/option.html#dataZoom)。参见 [#4090](https://github.com/ecomfe/echarts/issues/4090)。
 
-+ [+] 支持在 echarts 初始化时直接显式指定 `width`/`height`，参见 [polar](http://echarts.baidu.com/api.html#echarts.init)。这可以方便某些『在 container dom 渲染之前就需要初始化 echarts』的场景。
++ [+] 支持在 echarts 初始化时直接显式指定 `width`/`height`，参见 [echarts.init](http://echarts.baidu.com/api.html#echarts.init)。这可以方便某些『在 container dom 渲染之前就需要初始化 echarts』的场景。
 
 + [+] 在 [toolbox]() 中加入了 [textPosition](http://echarts.baidu.com/option.html#toolbox.iconStyle.normal.textPosition) 和 [textAlign](http://echarts.baidu.com/option.html#toolbox.iconStyle.normal.textAlign) 的设置。参见 [#4104](https://github.com/ecomfe/echarts/issues/4104)。
 
