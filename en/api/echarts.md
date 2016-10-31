@@ -8,6 +8,8 @@ Global echarts object, which can be accessed after including `echarts.js` in scr
 (dom: HTMLDivElement|HTMLCanvasElement, theme?: Object|string, opts?: {
     devicePixelRatio?: number
     renderer?: string
+    width?: number|string
+    height? number|string
 }) => ECharts
 ```
 Creates an ECharts instance, and returns an [echartsInstance](~echartsInstance). You can not initialize multiple ECharts instances on a single container.
@@ -15,7 +17,7 @@ Creates an ECharts instance, and returns an [echartsInstance](~echartsInstance).
 **Parameters**
 + `dom`
 
-    Instance container, usually is a `div` element with height and width defined. 
+    Instance container, usually is a `div` element with height and width defined.
 
     **Attention: **If `div` is hidden, ECharts initialization tends to fail due to the lack of width and height information. In this case, you can explicitly specify `style.width` and `style.height` of `div`, or manually call [echartsInstance.resize](echartsInstance.resize) after showing `div`.
 
@@ -35,7 +37,16 @@ Creates an ECharts instance, and returns an [echartsInstance](~echartsInstance).
 
     + `renderer`
 
-    The renderer only supports `'canvas'` by now.
+        The renderer only supports `'canvas'` by now.
+
+    + `width`
+
+        Specify width explicitly, in pixel. If setting to `null`/`undefined`/`'auto'`, width of `dom` (instance container) will be used.
+
+    + `height`
+
+        Specify height explicitly, in pixel. If setting to `null`/`undefined`/`'auto'`, height of `dom` (instance container) will be used.
+
 
 ## connect(Function)
 ```js
@@ -100,18 +111,18 @@ Please refer to [option.geo](option.html#geo.map) for usage.
 
 + `specialAreas`
 
-    Optional; zoomed part of a specific area in the map for better visual effect. 
+    Optional; zoomed part of a specific area in the map for better visual effect.
 
     **For example [USA Population Estimates](${galleryEditorPath}map-usa): **
     ```js
 echarts.registerMap('USA', usaJson, {
-    // Move Alaska to the bottom left of United States 
+    // Move Alaska to the bottom left of United States
     Alaska: {
         // Upper left longitude
         left: -131,
         // Upper left latitude
         top: 25,
-        // Range of longitude 
+        // Range of longitude
         width: 15
     },
     // Hawaii

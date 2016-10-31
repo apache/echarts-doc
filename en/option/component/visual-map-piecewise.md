@@ -100,6 +100,19 @@ In **CONTINUOUS-CUSTOMIZED** mode (i.e., [visualMap-piecewise.pieces](~visualMap
 In **CONTINUOUS-AVERAGE** mode (i.e., [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber) is used), they should be specified explicitly, and be `[0, 200]` by default, but not `dataMin` and `dataMax` in series.data.
 
 
+## minOpen(boolean)
+
+This option works when `type` is `piecewise` and `min`/`max`/`splitNumber` are set.
+
+If it is set as `true`, an extra piece labeled with "< min" will show.
+
+## maxOpen(boolean)
+
+This option works when `type` is `piecewise` and `min`/`max`/`splitNumber` are set.
+
+If it is set as `true`, an extra piece labeled with "> max" will show.
+
+
 ## selectedMode(string) = 'multiple'
 
 Selected Mode could be:

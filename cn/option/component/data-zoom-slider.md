@@ -96,8 +96,14 @@
 + 如果为 `Function`，表示回调函数，例如：
 
 ```javascript
+/**
+ * @param {*} value 如果 axis.type 为 'category'，则 `value` 为 axis.data 的 index。
+ *                  否则 `value` 是当前值。
+ * @param {strign} valueStr 内部格式化的结果。
+ * @return {string} 返回最终的label内容。
+ */
 labelFormatter: function (value) {
-    return 'aaa' + value + 'bbb'; // 返回最终的label内容。
+    return 'aaa' + value + 'bbb';
 }
 ```
 

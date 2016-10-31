@@ -110,7 +110,10 @@ dispatchAction({
     // x coordinate on screen
     x: number,
     // y coordinate on screen
-    y: number
+    y: number,
+    // Position of tooltip. Only works in this action.
+    // Use tooltip.position in option by default.
+    position: Array.<number>|string|Function
 })
 ```
 
@@ -120,9 +123,15 @@ dispatchAction({
     type: 'showTip',
     // index of series, which is optional when trigger of tooltip is axis
     seriesIndex?: number,
-    {{ use: action-data-query }}
+    {{ use: action-data-query }},
+    // Position of tooltip. Only works in this action.
+    // Use tooltip.position in option by default.
+    position: Array.<number>|string|Function
 })
 ```
+
+Parameter `position` is the same as [tooltip.position](option.html#tooltip.position).
+
 
 ### hideTip(Action)
 

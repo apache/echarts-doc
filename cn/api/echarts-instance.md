@@ -91,10 +91,29 @@ myChart.setOption({
 ```
 
 ## resize(Function)
+```js
+(opts?: {
+    width?: number|string
+    height? number|string
+}) => ECharts
+```
 
 改变图表尺寸，在容器大小发生改变时需要手动调用。
 
-**Tip:** 有时候图表会放在多个标签页里，那些初始隐藏的标签在初始化图表的时候应为获取不到容器的实际高宽，可能会绘制失败，因此在切换到该标签页时需要手动调用 `resize` 方法获取正确的高宽并且刷新画布。
+**参数**
++ `opts`
+
+    opts 可缺省。有下面几个可选项：
+
+    + `width`
+
+        可显式指定实例宽度，单位为像素。如果传入值为 `null`/`undefined`/`'auto'`，则表示自动取 `dom`（实例容器）的宽度。
+
+    + `height`
+
+        可显式指定实例高度，单位为像素。如果传入值为 `null`/`undefined`/`'auto'`，则表示自动取 `dom`（实例容器）的高度。
+
+**Tip:** 有时候图表会放在多个标签页里，那些初始隐藏的标签在初始化图表的时候应为获取不到容器的实际高宽，可能会绘制失败，因此在切换到该标签页时需要手动调用 `resize` 方法获取正确的高宽并且刷新画布，或者在 `opts` 中显示指定图表高宽。
 
 ## dispatchAction(Function)
 ```js
@@ -285,10 +304,10 @@ chart.convertToPixel({seriesId: 'k2'}, [128.3324, 89.5344]);
 具体实例可参考 [convertToPixel](~echartsInstance.convertToPixel)。
 
 
-## getComponentLayout(Function)
+## containPixel(Function)
 ```js
 (
-    // finder 用于指定 component。
+    // finder 用于指示『在哪个坐标系或者系列上判断』。
     // 通常地，可以使用 index 或者 id 或者 name 来定位。
     finder: {
         seriesIndex?: number,
@@ -297,56 +316,37 @@ chart.convertToPixel({seriesId: 'k2'}, [128.3324, 89.5344]);
         geoIndex?: number,
         geoId?: string,
         geoName?: string,
+        xAxisIndex?: number,
+        xAxisId?: string,
+        xAxisName?: string,
+        yAxisIndex?: number,
+        yAxisId?: string,
+        yAxisName?: string,
         gridIndex?: number,
         gridId?: string
         gridName?: string
-    }
-) => Object
+    },
+    // 要被判断的点，为像素坐标值，以 echarts 实例的 dom 节点的左上角为坐标 [0, 0] 点。
+    value: Array
+) => boolean
 ```
 
-得到指定 component 的位置信息，基于像素坐标，即以 echarts 实例的 dom 节点的左上角为坐标 [0, 0] 点。
+判断给定的点是否在指定的坐标系或者系列上。
 
-如果指定的 component 未被使用，返回 `undefined/null`。
-
-否则返回 `Object`，其内容根据不同 component 而不同。
+目前支持在这些坐标系和系列上进行判断：[grid](option.html#grid), [polar](option.html#polar), [geo](option.html#geo), [series-map](option.html#series-map), [series-graph](option.html#series-graph), [series-pie](option.html#series-pie)。
 
 例：
 
-在地理坐标系（[geo](option.html#geo)）上：
 ```js
-// 得到第一个 geo component 的信息（参数 'geo' 等同于 {geoIndex: 0}）：
-chart.getComponentLayout('geo');
-// 或者
-chart.getComponentLayout({geoIndex: 0});
-// 得到 {x: 10, y: 100, width: 300, height: 400};
+// 判断 [23, 44] 点是否在 geoIndex 为 0 的 geo 坐标系上。
+chart.containPixel('geo', [23, 44]); // 'geo' 等同于 {geoIndex: 0}
+// 判断 [23, 44] 点是否在 gridId 为 'z' 的 grid 上。
+chart.containPixel({gridId: 'z'}, [23, 44]);
+// 判断 [23, 44] 点是否在 index 为 1，4，5 的系列上。
+chart.containPixel({seriesIndex: [1, 4, 5]}, [23, 44]);
+// 判断 [23, 44] 点是否在 index 为 1，4，5 的系列或者 gridName 为 'a' 的 grid 上。
+chart.containPixel({seriesIndex: [1, 4, 5], gridName: 'a'}, [23, 44]);
 ```
-
-在直角坐标系（cartesian，[grid](option.html#grid)）上，：
-```js
-chart.getComponentLayout({gridId: 'a'});
-// 得到 {x: 10, y: 100, width: 300, height: 400};
-```
-
-在地图系列 [map](option.html#series-map) 上：
-```js
-chart.getComponentLayout({seriesIndex: 0});
-// 得到 {x: 10, y: 100, width: 300, height: 400};
-```
-
-在饼图系列 [pie](option.html#series-pie) 上：
-```js
-chart.getComponentLayout({seriesIndex: 0});
-// 得到 {cx: 10, cy: 100, r: 50, r0: 20};
-// cx 和 cy 表示圆心坐标，r 表示外半径，r0 表示内半径。
-```
-
-在关系图系列 [graph](option.html#series-graph) 上：
-```js
-chart.getComponentLayout({seriesIndex: 0});
-// 得到 {x: 10, y: 100, width: 300, height: 400};
-```
-
-
 
 ## showLoading(Function)
 ```js

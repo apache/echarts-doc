@@ -1,16 +1,20 @@
 {{ target: feature-icon-style }}
 
-#### iconStyle(Object)
+#${prefix} iconStyle(Object)
 ${name} icon 样式设置。
-##### normal(Object)
+##${prefix} normal(Object)
 {{ use: partial-item-style(
     defaultBorderColor = '#666',
     defualtColor = 'none',
     defaultBorderWidth = 1,
-    prefix="#####"
+    prefix="##" + ${prefix}
 ) }}
-##### emphasis(Object)
-{{ use: partial-item-style(prefix="#####") }}
+###${prefix} textPosition(string)
+文本位置，`'left'` / `'right'` / `'top'` / `'bottom'`。
+###${prefix} textAlign(string)
+文本对齐方式，`'left'` / `'right'`。
+##${prefix} emphasis(Object)
+{{ use: partial-item-style(prefix="##" + ${prefix}) }}
 
 
 {{ target: feature-icon-desc }}
@@ -27,7 +31,7 @@ Icon 的 path 字符串，ECharts 3 中支持使用自定义的 svg path 作为 
 #### icon
 {{ use: feature-icon-desc }}
 
-{{ use: feature-icon-style(name=${title}) }}
+{{ use: feature-icon-style(name=${title}, prefix="###") }}
 
 
 
@@ -276,20 +280,6 @@ feature: {
 ##### clear(string) = '清除选择'
 
 
-## iconStyle(Object)
-
-公用的 icon 样式设置。
-
-### normal(Object)
-
-{{ use: partial-item-style(
-    defaultBorderColor = '#666',
-    defualtColor = 'none',
-    defaultBorderWidth = 1,
-    prefix="###"
-) }}
-
-### emphasis(Object)
-{{ use: partial-item-style(prefix="###") }}
+{{ use: feature-icon-style(name="公用的", prefix="#") }}
 
 {{ use: partial-rect-layout-width-height(componentName="工具栏") }}

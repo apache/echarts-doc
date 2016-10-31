@@ -3,9 +3,9 @@
 
 # series.sankey(Object)
 
-** sankey graph **
+** Sankey Graphs **
 
-It is a kind of special flow graph, which is mainly used to present how raw materials, energy and so on from the initial status to the final form after processing and transformation.
+Sankey graphs are a specific type of streamgraphs, in which the width of each branch is shown proportionally to the flow quantity. These graphs are typically used to visualize energy or material or cost transfers between processes. They can also visualize the energy accounts, material flow accounts on a regional or national level, and also the breakdown of cost of item or services.
 
 **Example: **
 
@@ -13,16 +13,15 @@ It is a kind of special flow graph, which is mainly used to present how raw mate
 
 
 <br>
-**visible coding: **
+**Visual Encoding: **
 
-The sankey graph encodes each `node` of the original data into a small rectangular. And different nodes are presented in different colors. The `label` coding next to the small rectangular is the name of the node.
+The sankey graphs encodes each `node` of the raw data into a small rectangular. And different nodes are presented in different colors as far as possible. The `label` next to the small rectangular, which encoding the name of the node.
 
-In addition, the edge coding between two small rectangulars in the graph is the `link` of the original data. The thickness coding of edge is the `value`of `link`.
+In addition, the edge between two small rectangulars in the graph encoding the `link` of the raw data. The width of edge is shown proportionally to the `value` of `link`.
 
 
 
 ## type(string) = 'sankey'
-
 
 {{ use: partial-rect-layout-width-height(
     componentName='sankey',
@@ -37,25 +36,25 @@ In addition, the edge coding between two small rectangulars in the graph is the 
 
 ## nodeWidth(number) = 20
 
-the node width of rectangle in graph.
+The node width of rectangle in graph.
 
 
 ## nodeGap(number) = 8
 
-the gap between any 2 regtangles in each row from the graph.
+The gap between any two regtangles in each column from the graph.
 
 
 ## layoutIterations(number) = 32
 
-the iterations of layout, which is used to continuously optimize the nodes' positions in graph, decreasing the overlapping between nodes and edges.
+The iterations of layout, which is used to continuously optimize the positions of nodes in graph, decreasing the overlapping between nodes and edges.
 
-the default iterations of layout: `32`.
+The default iterations of layout: `32`.
 
 The test shows that iterations of layout could not be less than the default value.
 
 ## label(Object)
 
-`label` describes the text style in each rectangular node.
+`label` describes the text label style in each rectangular node.
 
 ### normal(Object)
 {{use:partial-label(
@@ -71,7 +70,7 @@ The test shows that iterations of layout could not be less than the default valu
 
 ## itemStyle(Object)
 
-the style of node rectangle in sankey graph.
+The style of node rectangle in sankey graphs.
 
 ### normal(Object)
 {{use: partial-item-style(
@@ -85,7 +84,8 @@ the style of node rectangle in sankey graph.
 
 
 ## lineStyle(Object)
-the line style of sankey graph.
+The line style of sankey graph, in which [lineStyle.normal.color](~series-sankey.lineStyle.normal.color) can be assigned to the value of `'source'` of `'target'`, then the edge will automatically take the source node or target node color as its own color.
+
 ### normal(Object)
 {{use: partial-sankey-line-style(prefix="###")}}
 ### emphasis(Object)
@@ -98,18 +98,18 @@ the line style of sankey graph.
 
 {{ use: partial-1d-data-desc() }}
 ### name(string)
-the data item.
+The name of data item.
 ### value(number|Array)
-the value of data item.
+The value of data item.
 ### itemStyle(Object)
-the style of this node.
+The style of this node.
 #### normal(Object)
 {{use:partial-item-style(prefix="####", useColorPalatte=true)}}
 #### emphasis(Object)
 {{use:partial-item-style(prefix="####")}}
 
 ### label(Object)
-the lable style of this node.
+The lable style of this node.
 #### normal(Object)
 {{ use:partial-label(
     prefix="####"
@@ -120,10 +120,10 @@ the lable style of this node.
 ) }}
 
 ## nodes(Array)
-equals to [data](~series-sankey.data)
+Equals to [data](~series-sankey.data)
 
 ## links(Array)
-the relational data of nodes. Example:
+The links data between nodes. For instance:
 ```js
 links: [{
     source: 'n1',
@@ -134,13 +134,13 @@ links: [{
 }]
 ```
 ### source(string)
-the [name of source node](~series-graph.data.name) of edge
+The [name of source node](~series-graph.data.name) of edge
 ### target(string)
-the [name of target node](~series-graph.data.name)
-### value(number) of edge
-the value of edge, which decides the width of edge.
+The [name of target node](~series-graph.data.name) of edge
+### value(number)
+The value of edge, which decides the width of edge.
 ### lineStyle(Object)
-the line stlye of  relational edge.
+The line stlye of edge.
 #### normal(Object)
 {{use:partial-sankey-line-style(
     prefix="####"
@@ -151,24 +151,29 @@ the line stlye of  relational edge.
 ) }}
 
 ## edges(Array)
-equals to [links](~series-sankey.links)
+Equals to [links](~series-sankey.links)
+
+{{ use:partial-silent(
+    prefix="#"
+)}}
 
 {{use: partial-animation(
     prefix="#",
     defaultAnimationEasing="'linear'",
-    defaultAnimationDuration=1000
+    defaultAnimationDuration=1000,
+    galleryEditorPath=${galleryEditorPath}
 )}}
 
 
 {{target: partial-sankey-line-style}}
 
 #${prefix} color(Color) = "'#314656'"
-the color of the edge in snakey graph.
+The color of the edge in sankey graphs.
 
 #${prefix} opacity(number) = 0.2
-the opacity of the edge in snakey graph.
+The opacity of the edge in sankey graph.
 
 #${prefix} curveness(number) = 0.5
-the curveness of the edge in snakey graph.
+The curveness of the edge in sankey graph.
 
 {{use: partial-style-shadow(prefix=${prefix})}}

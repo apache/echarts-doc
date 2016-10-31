@@ -8,6 +8,8 @@
 (dom: HTMLDivElement|HTMLCanvasElement, theme?: Object|string, opts?: {
     devicePixelRatio?: number
     renderer?: string
+    width?: number|string
+    height? number|string
 }) => ECharts
 ```
 创建一个 ECharts 实例，返回 [echartsInstance](~echartsInstance)，不能再单个容器上初始化多个 ECharts 实例。
@@ -36,6 +38,14 @@
     + `renderer`
 
         渲染器，目前仅支持`'canvas'`。
+
+    + `width`
+
+        可显式指定实例宽度，单位为像素。如果传入值为 `null`/`undefined`/`'auto'`，则表示自动取 `dom`（实例容器）的宽度。
+
+    + `height`
+
+        可显式指定实例高度，单位为像素。如果传入值为 `null`/`undefined`/`'auto'`，则表示自动取 `dom`（实例容器）的高度。
 
 ## connect(Function)
 ```js

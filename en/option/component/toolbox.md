@@ -1,16 +1,21 @@
 {{ target: feature-icon-style }}
 
-#### iconStyle(Object)
+#${prefix} iconStyle(Object)
 The style setting of ${name} icon.
-##### normal(Object)
+##${prefix} normal(Object)
 {{ use: partial-item-style(
     defaultBorderColor = '#666',
     defualtColor = 'none',
     defaultBorderWidth = 1,
-    prefix="#####"
+    prefix="##" + ${prefix}
 ) }}
-##### emphasis(Object)
-{{ use: partial-item-style(prefix="#####") }}
+###${prefix} textPosition(string)
+Position of label: `'left'` / `'right'` / `'top'` / `'bottom'`.
+###${prefix} textAlign(string)
+Align of label text: `'left'` / `'right'`.
+##${prefix} emphasis(Object)
+{{ use: partial-item-style(prefix="##" + ${prefix}) }}
+
 
 
 {{ target: feature-icon-desc }}
@@ -27,7 +32,7 @@ Whether to show the tool.
 #### icon
 {{ use: feature-icon-desc }}
 
-{{ use: feature-icon-style(name=${title}) }}
+{{ use: feature-icon-style(name=${title}, prefix="###") }}
 
 
 
@@ -280,20 +285,6 @@ Title.
 ##### keep(string) = 'Keep previous selection'
 ##### clear(string) = 'Clear selection'
 
-## iconStyle(Object)
-
-Shared icon style.
-
-### normal(Object)
-
-{{ use: partial-item-style(
-    defaultBorderColor = '#666',
-    defualtColor = 'none',
-    defaultBorderWidth = 1,
-    prefix="###"
-) }}
-
-### emphasis(Object)
-{{ use: partial-item-style(prefix="###") }}
+{{ use: feature-icon-style(name="Shared", prefix="#") }}
 
 {{ use: partial-rect-layout-width-height(componentName="toolbox") }}

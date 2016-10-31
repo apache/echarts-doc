@@ -110,7 +110,10 @@ dispatchAction({
     // 屏幕上的 x 坐标
     x: number,
     // 屏幕上的 y 坐标
-    y: number
+    y: number,
+    // 本次显示 tooltip 的位置。只在本次 action 中生效。
+    // 缺省则使用 option 中定义的 tooltip 位置。
+    position: Array.<number>|string|Function
 })
 ```
 
@@ -120,9 +123,16 @@ dispatchAction({
     type: 'showTip',
     // 系列的 index，在 tooltip 的 trigger 为 axis 的时候可选。
     seriesIndex?: number,
-    {{ use: action-data-query }}
+    {{ use: action-data-query }},
+    // 本次显示 tooltip 的位置。只在本次 action 中生效。
+    // 缺省则使用 option 中定义的 tooltip 位置。
+    position: Array.<number>|string|Function,
 })
 ```
+
+参数 `position` 同 [tooltip.position](option.html#tooltip.position) 相同。
+
+
 
 ### hideTip(Action)
 

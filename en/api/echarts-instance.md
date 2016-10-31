@@ -93,10 +93,29 @@ myChart.setOption({
 
 
 ## resize(Function)
+```js
+(opts?: {
+    width?: number|string
+    height? number|string
+}) => ECharts
+```
 
 Resizes chart, which should be called manually when container size changes.
 
-**Tip:** Sometimes charts may be placed in multiple tabs. Those in hidden labels may fail to initialize due to the ignorance of container width and height. So `resize` should be called manually to get the correct width and height when switching to the corresponding tabs.
+**Parameters**
++ `opts`
+
+    Optional; which may contain:
+
+    + `width`
+
+        Specify width explicitly, in pixel. If setting to `null`/`undefined`/`'auto'`, width of `dom` (instance container) will be used.
+
+    + `height`
+
+        Specify height explicitly, in pixel. If setting to `null`/`undefined`/`'auto'`, height of `dom` (instance container) will be used.
+
+**Tip:** Sometimes charts may be placed in multiple tabs. Those in hidden labels may fail to initialize due to the ignorance of container width and height. So `resize` should be called manually to get the correct width and height when switching to the corresponding tabs, or specify width/heigth in `opts` explicitly.
 
 ## dispatchAction(Function)
 ```js
@@ -294,11 +313,12 @@ chart.convertToPixel({seriesId: 'k2'}, [128.3324, 89.5344]);
 Convert a point from pixel coordinate to logical coordinate (e.g., in geo, cartesian, graph, ...). This method is the inverse operation of [convertToPixel](~echartsInstance.convertToPixel), where the examples can be referred.
 
 
-## getComponentLayout(Function)
+## containPixel(Function)
 ```js
 (
-    // finder is used to specify component.
-    // Generally, index or id or name can be used.
+    // finder is used to specify coordinate systems or series on which the judgement performed.
+    // Generally
+    // 通常地，可以使用 index 或者 id 或者 name 来定位。
     finder: {
         seriesIndex?: number,
         seriesId?: string,
@@ -306,56 +326,38 @@ Convert a point from pixel coordinate to logical coordinate (e.g., in geo, carte
         geoIndex?: number,
         geoId?: string,
         geoName?: string,
+        xAxisIndex?: number,
+        xAxisId?: string,
+        xAxisName?: string,
+        yAxisIndex?: number,
+        yAxisId?: string,
+        yAxisName?: string,
         gridIndex?: number,
         gridId?: string
         gridName?: string
-    }
-) => Object
+    },
+    // The value to be judged, in pixel coordinate system, where the origin ([0, 0])
+    // is on the left-top of the main dom of echarts instance.
+    value: Array
+) => boolean
 ```
 
-The result is the position info about the specified component.
-The position info is based on pixel coordinate system, where the origin ([0, 0]) is on the left-top of the main dom of echarts instance.
+Determine whether the given point is in the given coordinate systems or series.
 
-If the specified component is not used currently in echarts instance, `undefined/null` will be returned.
-
-Otherwise an `Object` will be returned, the content of which have varied according to different components.
+These coordinate systems or series are supported currently: [grid](option.html#grid), [polar](option.html#polar), [geo](option.html#geo), [series-map](option.html#series-map), [series-graph](option.html#series-graph), [series-pie](option.html#series-pie).
 
 For example:
 
-In [geo](option.html#geo):
 ```js
-// Get info of the first geo component (parameter 'geo' means {geoIndex: 0}):
-chart.getComponentLayout('geo');
-// or
-chart.getComponentLayout({geoIndex: 0});
-// The result can be {x: 10, y: 100, width: 300, height: 400};
-```
-
-In cartesian, [grid](option.html#grid):
-```js
-chart.getComponentLayout({gridId: 'a'});
-// The result can be {x: 10, y: 100, width: 300, height: 400};
-```
-
-In [series-map](option.html#series-map):
-```js
-chart.getComponentLayout({seriesIndex: 0});
-// The result can be  {x: 10, y: 100, width: 300, height: 400};
-```
-
-In [series-pie](option.html#series-pie):
-```js
-chart.getComponentLayout({seriesIndex: 0});
-// The result can be {cx: 10, cy: 100, r: 50, r0: 20};
-// cx and cy represents coordinate of center of the circle;
-// r represents outer radius;
-// r0 represents inner radius;
-```
-
-In [series-graph](option.html#series-graph):
-```js
-chart.getComponentLayout({seriesIndex: 0});
-// The result can be {x: 10, y: 100, width: 300, height: 400};
+// Determine whether point [23, 44] is in the geo whose geoIndex 0.
+chart.containPixel('geo', [23, 44]); // Parameter 'geo' means {geoIndex: 0}
+// Determine whether point [23, 44] is in the grid whose gridId is 'z'.
+chart.containPixel({gridId: 'z'}, [23, 44]);
+// Determine whether point [23, 44] is in series whose index are 1, 4 or 5.
+chart.containPixel({seriesIndex: [1, 4, 5]}, [23, 44]);
+// Determine whether point [23, 44] is in series whose index are 1, 4 or 5,
+// or is in grid whose name is 'a'.
+chart.containPixel({seriesIndex: [1, 4, 5], gridName: 'a'}, [23, 44]);
 ```
 
 
