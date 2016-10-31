@@ -13,11 +13,11 @@
 
 + [+] visualMap 新加配置 [visualMap-piecewise.minOpen](http://echarts.baidu.com/option.html#visualMap-piecewise.minOpen) 和 [visualMap-piecewise.maxOpen](http://echarts.baidu.com/option.html#visualMap-piecewise.maxOpen)。
 
-+ [^] 修复 setOption 时 series.name 不更新的问题。参见 [#4033](https://github.com/ecomfe/echarts/issues/4033)。
++ [^] 修复 setOption 时 `series.name` 不更新的问题。参见 [#4033](https://github.com/ecomfe/echarts/issues/4033)。
 
 + [^] 修复了对 echarts 使用 css-transform 后，鼠标响应位置错误的问题。
 
-+ [^] 修复了 JavaScript 的 Object.prototype 被扩展后，会出错的问题。参见 [#4129](https://github.com/ecomfe/echarts/issues/4129)。
++ [^] 修复了 JavaScript 的 `Object.prototype` 被扩展后，会出错的问题。参见 [#4129](https://github.com/ecomfe/echarts/issues/4129)。
 
 + [^] 修复了 ios10、macOS 上圆形 emptySymbol 被绘制为方形的问题。参见 [#4136](https://github.com/ecomfe/echarts/issues/4136) 和 [#4150](https://github.com/ecomfe/echarts/issues/4150)。
 
@@ -49,7 +49,9 @@
 
 + [^] 修复了 [radar](http://echarts.baidu.com/option.html#series-radar) 的问题：[#4249](https://github.com/ecomfe/echarts/issues/4249) 和 [#3934](https://github.com/ecomfe/echarts/issues/3934)。
 
-+ [^] 修正了事件参数中的 dataIndex 的含义，统一均为原始数据的 index。参见 [#2920](https://github.com/ecomfe/echarts/issues/2920)。
++ [^] 修正了事件参数中的`dataIndex`的含义，统一均为原始数据的 index。参见 [#2920](https://github.com/ecomfe/echarts/issues/2920)。
+
++ [^] 修复部分数据可能会抛出`RangeError`的异常。参见 [#4164](https://github.com/ecomfe/echarts/issues/4164)
 
 + [^] 修复 IE8 中调用 resize 无效的 bug。参见 [#3923](https://github.com/ecomfe/echarts/issues/3923)
 
