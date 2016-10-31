@@ -180,9 +180,9 @@ optionToContent: function(opt) {
 {{ use: feature-common(title="数据区域缩放") }}
 
 #### xAxisIndex(number|Array|boolean)
-指定 哪些 [xAxis](~xAxis) 被控制。如果缺省则控制所有的x轴。如果设置为 `false` 则不控制任何x轴。如果设置成 `3` 则控制 axisIndex 为 `3` 的x轴。如果设置为 `[0, 3]` 则控制 axisIndex 为 `0` 和 `3` 的x轴。
+指定哪些 [xAxis](~xAxis) 被控制。如果缺省则控制所有的x轴。如果设置为 `false` 则不控制任何x轴。如果设置成 `3` 则控制 axisIndex 为 `3` 的x轴。如果设置为 `[0, 3]` 则控制 axisIndex 为 `0` 和 `3` 的x轴。
 #### yAxisIndex(number|Array|boolean)
-指定 哪些 [yAxis](~yAxis) 被控制。如果缺省则控制所有的y轴。如果设置为 `false` 则不控制任何y轴。如果设置成 `3` 则控制 axisIndex 为 `3` 的y轴。如果设置为 `[0, 3]` 则控制 axisIndex 为 `0` 和 `3` 的y轴。
+指定哪些 [yAxis](~yAxis) 被控制。如果缺省则控制所有的y轴。如果设置为 `false` 则不控制任何y轴。如果设置成 `3` 则控制 axisIndex 为 `3` 的y轴。如果设置为 `[0, 3]` 则控制 axisIndex 为 `0` 和 `3` 的y轴。
 #### icon(Object)
 缩放和还原的 icon path。
 ##### zoom(string)
