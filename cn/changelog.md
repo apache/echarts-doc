@@ -1,5 +1,13 @@
-## v3.3
-<div class="time">2016-10-31</div>
+## v3.3.1
+<div class="time">2016-11-03</div>
+
+Recovery Build
+
++ [^] 修复移动端 touch 事件出错的问题，参见 [#4384](https://github.com/ecomfe/echarts/issues/4384)。
+
+
+## v3.3.0
+<div class="time">2016-11-01</div>
 
 + [+] 开放坐标转换 API：[convertToPixel](http://echarts.baidu.com/api.html#echartsInstance.convertToPixel) 和 [convertFromPixel](http://echarts.baidu.com/api.html#echartsInstance.convertFromPixel)。参见例子 [http://echarts.baidu.com/gallery/editor.html?c=line-draggable] 和 [http://echarts.baidu.com/gallery/editor.html?c=line-pen]
 
