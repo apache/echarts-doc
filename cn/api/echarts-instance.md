@@ -385,7 +385,9 @@ default: {
     // 导出的图片分辨率比例，默认为 1。
     pixelRatio?: number,
     // 导出的图片背景色，默认使用 option 里的 backgroundColor
-    backgroundColor?: string
+    backgroundColor?: string,
+    // 忽略组件的列表，例如要忽略 toolbox 就是 ['toolbox']
+    excludeComponents?: Array.<string>
 }) => string
 ```
 
@@ -408,7 +410,9 @@ img.src = myChart.getDataURL({
     // 导出的图片分辨率比例，默认为 1。
     pixelRatio?: number,
     // 导出的图片背景色，默认使用 option 里的 backgroundColor
-    backgroundColor?: string
+    backgroundColor?: string,
+    // 忽略组件的列表，例如要忽略 toolbox 就是 ['toolbox']
+    excludeComponents?: Array.<string>
 }) => string
 ```
 
