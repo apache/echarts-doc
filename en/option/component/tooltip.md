@@ -11,7 +11,7 @@ Whether to show the tooltip component, including tooltip floating layer and [axi
 
 ## showContent(boolean) = true
 
-Whether to show the tooltip floating layer which defaults to be shown.It should be configurated with `false`, if you only need tooltip to trigger the event or show the axisPointer without content.
+Whether to show the tooltip floating layer, whose default value is true. It should be configurated to be `false`, if you only need tooltip to trigger the event or show the axisPointer without content.
 
 ## trigger(string) = 'item'
 
@@ -20,17 +20,17 @@ Type of triggering.
 Options:
 + `'item'`
 
-    Data item figure triggring, which is mainly used in non-category axis diagram such as scatter diagram and pie chart.
+    Triggering by data item, which is mainly used for charts that don't have a category axis like scatter charts or pie charts.
 
 + `'axis'`
 
-    Axis triggering which is mainly used in diagrams with category axis such as bar graph and broken line graph.
+    Triggering by axes, which is mainly used for charts that have category axes, like bar charts or line charts.
 
-   ECharts 2.x only adopts axis triggering in category axis. While in ECharts 3, axis triggering is valid in all axes of [rectangular coordinate](~grid) and [polar coordinate](~polar). What's more, the coordinate axis could be assigned through  [axisPointer.axis](~tooltip.axisPointer.axis).
+   ECharts 2.x only supports axis trigger for category axis. In ECharts 3, it is supported for all types of axes in [grid](~grid) or [polar](~polar). Also, you may assign axis with [axisPointer.axis](~tooltip.axisPointer.axis).
 
 ## triggerOn(string) = 'mousemove'
 
-The conditions for tooltip triggering. Options:
+Conditions to trigger tooltip. Options:
 
 + `'mousemove'`
 
@@ -42,90 +42,107 @@ The conditions for tooltip triggering. Options:
 
 + `'none'`
 
-    Do Not trigger by default, which enable user to trigger and hide tooltip manually by [action.tooltip.showTip](api.html#action.tooltip.showTip) and [action.tooltip.hideTip](api.html#action.tooltip.hideTip).
+    No triggering. Tooltip can be triggered and hidden manually by calling [action.tooltip.showTip](api.html#action.tooltip.showTip) and [action.tooltip.hideTip](api.html#action.tooltip.hideTip).
 
-This attribute is newly added to ECharts 3.0.
+This attribute is new to ECharts 3.0.
 
 ## alwaysShowContent(boolean) = false
 
-Whether to show the content of tooltip permanently. Under default condition, when it is moved out of the the tooltip area[during specific period](~tooltip.hideDelay) which could be triggered, the content would be hidden. It could be set up as `true` to guarantee that the content of tooltip always show.
+Whether to show tooltip content all the time. By default, it will be hidden [after some time](~tooltip.hideDelay). It can be set to be `true` to preserve displaying.
 
 This attribute is newly added to ECharts 3.0.
 
+## showDelay(number) = 0
+
+Delay time for showing tooltip, in ms. No delay by default, and it is not recommended to set. Only valid when [triggerOn](~tooltip.triggerOn) is set to be `'mousemove'`.
+
 ## hideDelay(number) = 100
 
-The hide-delay of floating layer. Its unit is ms. When [alwaysShowContent](~tooltip.alwaysShowContent) is set as `true`, it is invalid.
+Delay time for hiding tooltip, in ms. It will be invalid when [alwaysShowContent](~tooltip.alwaysShowContent) is `true`.
 
 ## enterable(boolean) = true
 
-Whether mouse could be allowed to the floating layer of tooltip, which defaults to be false. If the interaction in details is needed, such as adding a link or button, it could be set as `true`.
+Whether mouse is allowed to enter the floating layer of tooltip, whose default value is false. If you need to interact in the tooltip like with links or buttons, it can be set as `true`.
 
 ## position(string|Array)
 
-The position of the tooltip's floating layer, which would follow the position of mouse when it defaults to have no setting.
+The position of the tooltip's floating layer, which would follow the position of mouse by default.
 
 Options:
 
 + `Array`
 
-    Display the position of tooltip's floating layer through array, which is valid when number is set with absolute position and the percentage is set with relative position.
+    Display the position of tooltip's floating layer through array, which supports absolute position and relative percentage.
 
     Example:
 
     ```js
-    // absolute position, which is 10px to the left side and 10px to the upward side of the container
+    // absolute position, which is 10px to the left side and 10px to the top side of the container
     position: [10, 10]
     // relative position, in the exact center of the container
     position: ['50%', '50%']
     ```
 
++ `Function`
+
+    Callback function in the following form:
+    ```js
+    (point: Array, params: Object|Array.<Object>, dom: HTMLDomElement, rect: Object) => Array
+    ```
+
+    The first parameter is mouse position, the second parameter is the same as formatter, the third parameter is DOM object of tooltip, the fourth parameter is valid only when mouse is on graphic elements, which stands for a bounding box with `x`, `y`, `width`, and `height`. Return value is an array standing for tooltip position, which can be absolute pixels, or relative percentage.
+
+    For example:
+    ```js
+    position: function (point, params, dom) {
+        // fixed at top
+        return [point[0], '10%'];
+    }
+    ```
+
 + `'inside'`
 
-   The center inside the figure in which the mouse locates, which is only valid when [trigger](~tooltip.trigger) is `'item'`.
+   Center position of the graphic element where the mouse is in, which is only valid when [trigger](~tooltip.trigger) is `'item'`.
 
 + `'top'`
 
-    The top of the figure in which the mouse locates, which is only valid when [trigger](~tooltip.trigger) is `'item'`.
+    Top position of the graphic element where the mouse is in, which is only valid when [trigger](~tooltip.trigger) is `'item'`.
 
 + `'left'`
 
-    The left of the figure in which the mouse locates, which is only valid when [trigger](~tooltip.trigger) is `'item'`.
+    Left position of the graphic element where the mouse is in, which is only valid when [trigger](~tooltip.trigger) is `'item'`.
 
 + `'right'`
 
-    The right of the figure in which the mouse locates, which is only valid when [trigger](~tooltip.trigger) is `'item'`.
+    Right position of the graphic element where the mouse is in, which is only valid when [trigger](~tooltip.trigger) is `'item'`.
 
 + `'bottom'`
 
-    The bottom of the figure in which the mouse locates, which is only valid when [trigger](~tooltip.trigger) is `'item'`.
+    Bottom position of the graphic element where the mouse is in, which is only valid when [trigger](~tooltip.trigger) is `'item'`.
 
 ## transitionDuration(number) = 0.4
 
-The transition duration of motion in tooltip's floating layer. Its unit is s. When it is set as 0, it would move closely with the mouse.
+The transition duration of tooltip's animation, in seconds. When it is set to be 0, it would move closely with the mouse.
 
 ## formatter(string|Function)
 
-The content formatter of tooltip's floating layer which supports character string template and callback function.
+The content formatter of tooltip's floating layer which supports string template and callback function.
 
-1. character string template
+1. String template
 
-    The template variables are `{a}`, `{b}`, `{c}`, `{d}` and `{e}` which individually refers to series name, data name and numberical value and ect..
+    The template variables are `{a}`, `{b}`, `{c}`, `{d}` and `{e}`, which stands for series name, data name and data value and ect. When [trigger](~tooltip.trigger) is set to be `'axis'`, there may be data from multiple series. In this time, series index can be refered as `{a0}`, `{a1}`, or `{a2}`.
 
-    When [trigger](~tooltip.trigger) is `'axis'`, there would be multiple series of data. At this point, the index of these series could be expressed by the method of adding the index backward, such as `{a0}`, `{a1}`, `{a2}`.
-    In differnt types of diagrams, the meanings of `{a}`, `{b}`, `{c}`, `{d}` are different.
-    In different types of diagrams, the meanings of the variables including `{a}`, `{b}`, `{c}`, `{d}` represent the data meaning below:
+    `{a}`, `{b}`, `{c}`, `{d}` have different meanings for different series types:
 
-    + broken line (area) diagram、bar (bar type) diagram、K-line diagram : `{a}` (series name), `{b}` (category value), `{c}` (numerical value), `{d}` (none)
+    + Line (area) charts, bar (column) charts, K charts: `{a}` for series name, `{b}` for category name, `{c}` for data value, `{d}` for none;
 
-    + scatter diagram (bubble) diagram : `{a}` (series name), `{b}` (data name), `{c}` (numerical value array), `{d}` (none)
+    + Scatter (bubble) charts: `{a}` for series name, `{b}` for data name, `{c}` for data value, `{d}` for none;
 
-    + map : `{a}` (series name), `{b}` (area name), `{c}` (merge numerical value), `{d}` (none)
+    + Map: `{a}` for series name, `{b}` for area name, `{c}` for merging data, `{d}` for none;
 
-    + pie chart、instrument panel、funnel plot: `{a}` (series name), `{b}` (data item name), `{c}` (numerical value), `{d}` (percentage)
+    + Pie charts, gauge charts, funnel charts: `{a}` for series name, `{b}` for data item name, `{c}` for data value, `{d}` for percentage.
 
-   See more meanings about other variables of diagram template in label.normal.formatter configuration item in corresponding diagram.
-
-    **sample: **
+    **Example: **
     ```js
     formatter: '{b0}: {c0}<br />{b1}: {c1}'
     ```
@@ -138,7 +155,7 @@ The content formatter of tooltip's floating layer which supports character strin
     (params: Object|Array, ticket: string, callback: (ticket: string, html: string)) => string
     ```
 
-    The first parameter `params` is the data set the formatter needs. Its format is shown as follows:
+    The first parameter `params` is the data that the formatter needs. Its format is shown as follows:
     {{ use: partial-formatter-params-structure(extra = {
         percent: {
             desc: 'the percentage of pie chart',
@@ -147,13 +164,13 @@ The content formatter of tooltip's floating layer which supports character strin
     }) }}
     When [trigger](~tooltip.trigger) is `'axis'` , `params` is the data array of multiple series.
 
-    **Note: **Using array to express all the parameters in ECharts 2.x is not supported anymore.
+    **Note: **Using array to present all the parameters in ECharts 2.x is not supported anymore.
 
-    The second parameter `ticket` is the asynchronous callback identity which should coordinate with the third parameter `callback` when it is used.
+    The second parameter `ticket` is the asynchronous callback flag which should be used along with the third parameter `callback` when it is used.
 
-    The third parameter `callback` is asynchronous callback. When the content of tooltip's floating layer is acquired asynchronously, you can introduce the mentioned `ticket` and `html` to update the content of tooltip's floating layer.
+    The third parameter `callback` is asynchronous callback. When the content of tooltip is acquired asynchronously, `ticket` and `htm` as introduced above can be used to update tooltip with callback.
 
-    Sample:
+    Example:
     ```js
     formatter: function (params, ticket, callback) {
         $.get('detail?name=' + params.name, function (content) {
@@ -186,25 +203,33 @@ The text syle of tooltip's floating layer.
 
 {{ use: partial-text-style(prefix="##", defaultColor="'#fff'", defaultFontSize=14) }}
 
+## extraCssText(string)
+
+Extra CSS style for floating layer. The following is an example for adding shadow.
+
+```js
+extraCssText: 'box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);'
+```
+
 ## axisPointer(Object)
 
-The indicator configuration item of coordinate axis, which is valid when [trigger](~tooltip.trigger) is `'axis'`.
+Configuration item for axis indicator, which is valid when [trigger](~tooltip.trigger) is `'axis'`.
 
 ### type(string) = 'line'
 
-the type of indicator.
+Indicator type.
 
 Options:
 + `'line'` line indicator
 
-+ `'cross'`  crosshair indicator
++ `'cross'` crosshair indicator
 
-+ `'shadow'` shadow  crosshair
++ `'shadow'` shadow crosshair indicator
 
 
 ### axis(string) = 'auto'
 
-The coordinate axis, which could be `'x'`, `'y'`, `'radius'`, `'angle'` and defaults to adopt category axis and time axis.
+The coordinate axis, which could be `'x'`, `'y'`, `'radius'`, or `'angle'`. By default, category axis or time axis is used.
 
 {{ use: partial-animation(prefix="##") }}
 
