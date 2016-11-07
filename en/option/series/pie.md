@@ -35,7 +35,7 @@ Whether the layout of sectors of pie chart is clockwise.
 the start angle, which supports the scale of[0, 360].
 
 ## minAngle(number) = 0
-the minimum angel of sector. It prevents some sector from being too small bacause the some value is too small, which would influence on interaction.
+the minimum angel of sector (0 ~ 360). It prevents some sector from being too small bacause the some value is too small, which would influence on interaction.
 
 ## roseType(boolean|string) = false
 Whether to show as Nightingale chart, which distinguishs data through radius. There are 2 optional modes:
