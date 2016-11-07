@@ -398,7 +398,9 @@ Hides animation loading effect.
     // Resolution ratio of exporting image, 1 by default.
     pixelRatio?: number,
     // Background color of exporting image, use backgroundColor in option by default.
-    backgroundColor?: string
+    backgroundColor?: string,
+    // Excluded components list. e.g. ['toolbox']
+    excludeComponents?: Array.<string>
 }) => string
 ```
 
@@ -421,7 +423,9 @@ img.src = myChart.getDataURL({
     // Resolution ratio of exporting image, 1 by default.
     pixelRatio?: number,
     // Background color of exporting image, use backgroundColor in option by default.
-    backgroundColor?: string
+    backgroundColor?: string,
+    // Excluded components list. e.g. ['toolbox']
+    excludeComponents?: Array.<string>
 }) => string
 ```
 
