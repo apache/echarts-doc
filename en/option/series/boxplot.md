@@ -10,7 +10,7 @@
 ~[600x400](${galleryViewPath}boxplot-light-velocity&edit=1&reset=1)
 
 <br>
-Multiple `series` are allow to be in the same coordinate axis. Reference to [sample](${galleryEditorPath}boxplot-multi&edit=1&reset=1).
+Multiple `series` are allowed to be in the same coordinate axis. Please refer to [this example](${galleryEditorPath}boxplot-multi&edit=1&reset=1).
 
 <br>
 <br>
@@ -30,25 +30,25 @@ Multiple `series` are allow to be in the same coordinate axis. Reference to [sam
 
 ## hoverAnimation(boolean) = true
 
-Whether to enable the motion effect of hover on box.
+Whether to enable the animation when hovering on box.
 
 
 ## layout(string) = null
 
-layout methods, optional values:
+Layout methods, whose optional values are:
 
 + `'horizontal'`: horizontal layout of all boxes.
 
 + `'vertical'`: vertical layout of all boxes.
 
-The default value is decided by the current situation of coordinate axis: if `category` is horizontal axis, there would be horizontal layout; otherwise, there would be vertical layout; if there is no `category` axis, it would be horizontal layout.
+Default value is decided by the current coordinate axis so that if `category` is the horizontal axis, it would be horizontal layout; otherwise, it would be vertical layout; if there is no `category` axis, it would be horizontal layout.
 
 
 ## boxWidth(Array) = [7, 50]
 
-the limitation of box width. the array means: `[min, max]`.
+Up and bottom boundary of box width. The array is in the form of `[min, max]`.
 
-It could be absolute value, such as `[7, 50]`, and also could be percentage, such as `['40%', '90%']`. The percentage means the percentage of the maximum possible width.
+It could be absolute value in pixel, such as `[7, 50]`, or percentage, such as `['40%', '90%']`. The percentage means the percentage to the maximum possible width.
 
 
 {{use:partial-boxplot-item-style(prefix="#")}}
@@ -56,7 +56,7 @@ It could be absolute value, such as `[7, 50]`, and also could be percentage, suc
 
 ## data(Array)
 
-Data format is double dimensional array which is shown in the following example.
+Data is in the following format as a two-dimensional array.
 
 ```javascript
 [
@@ -73,26 +73,26 @@ Data format is double dimensional array which is shown in the following example.
 ]
 ```
 
-Every data item (each line in the example above)  in double dimensional array renders a box, which contains 5 values. They are:
+Every data item (each line in the example above) in the two-dimensional array will be rendered into a box, and each line have five values as:
 
 ```javascript
 [min,  Q1,  median (or Q2),  Q3,  max]
 ```
 
-**data processing**
+**Data processing**
 
-the original data processing is not internally installed in ECharts. The data input to `boxplot` should be the values as above from the 5 statistical results.
+ECharts doesn't contain data processing modules, so the five statistic values should be calculated by yourself and then passes into `boxplot`.
 
-However, ECharts also provide extra and simple [original data manipulation function](https://github.com/ecomfe/echarts/tree/dev-3.0.0/extension/dataTool). For example, this [sample](${galleryEditorPath}boxplot-light-velocity&edit=1&reset=1) uses `echarts.dataTool.prepareBoxplotData` to proceed simple data statistics.
+However, ECharts also provide some simple [row data processing tools](https://github.com/ecomfe/echarts/tree/dev-3.0.0/extension/dataTool). For example, this [example](${galleryEditorPath}boxplot-light-velocity&edit=1&reset=1) uses `echarts.dataTool.prepareBoxplotData` to proceed simple data statistics.
 
 
 ### name(string)
 
-the name of data item.
+Name of data item.
 
 ### value(Array)
 
-the value of data item.
+Value of data item.
 
 ```javascript
 [min,  Q1,  median (or Q2),  Q3,  max]
