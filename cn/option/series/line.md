@@ -33,7 +33,7 @@
 ) }}
 
 ## showSymbol(boolean) = true
-是否显示 symbol, 只有在 tooltip hover 的时候显示。
+是否显示 symbol, 如果 `false` 则只有在 tooltip hover 的时候显示。
 
 ## showAllSymbol(boolean) = false
 标志图形默认只有主轴显示（随主轴标签间隔隐藏策略），如需全部显示可把 showAllSymbol 设为 `true`。
