@@ -21,6 +21,9 @@ The *inside* means it's inside the coordinates.
 
 ## type(string) = 'inside'
 
+## disabled(boolean) = false
+
+Whether disable inside zoom.
 
 {{ use: partial-data-zoom-common(
     dataZoomName='dataZoom-inside',
