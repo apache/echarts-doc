@@ -3,21 +3,27 @@
 
 # xAxis(Object)
 
-the x axis in cartesian(rectangular) coordinate. A single grid component could place 2 x axis above and below at most. 
+The x axis in cartesian(rectangular) coordinate. Usually a single grid component can place at most 2 x axis, one on the bottom and another on the top. [offset](~xAxis.offset) can be used to avoid overlap when you need to put more than two x axis.
 
 ## gridIndex(number) = 0
 
-The index of grid which the x axis belongs to defaults to be in the first grid.
+The index of grid which the x axis belongs to. Defaults to be in the first grid.
 
 ## position(string)
 
-the position of x axis.
+The position of x axis.
 
-options: 
+options:
 + `'top'`
 + `'bottom'`
 
-The first x axis in grid defaults to be under (`'bottom'`)  the grid, and the second x axis is on the other side against the first x axis. 
+The first x axis in grid defaults to be on the bottom of the grid, and the second x axis is on the other side against the first x axis.
+
+
+## offset(number) = 0
+
+Offset of x axis relative to default position. Useful when multiple x axis has same [position](~xAxis.position) value.
+
 
 {{ use: axis-common(
     prefix='#',
@@ -25,3 +31,10 @@ The first x axis in grid defaults to be under (`'bottom'`)  the grid, and the se
     axisTypeDefault="'category'",
     hasSplitLineAndArea=true
 )}}
+
+
+{{use:partial-z-zlevel(
+    prefix="#",
+    componentName="x axis",
+    defaultZ=0
+) }}

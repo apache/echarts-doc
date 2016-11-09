@@ -2,11 +2,15 @@
 
 # series.line(Object)
 
-**broken line graph**
+**broken line chart**
 
-Broken line graph relates all the data points [symbol](~series-line.symbol) by broken lines, which is used to show the trend of data changing. It could be used in both [rectangular coordinate](~grid) and[polar coordinate](~polar).
+Broken line chart relates all the data points [symbol](~series-line.symbol) by broken lines, which is used to show the trend of data changing. It could be used in both [rectangular coordinate](~grid) and[polar coordinate](~polar).
 
-**Tip:** When [areaStyle](~series-line.areaStyle) is set, area graph could be drew.
+**Tip:** When [areaStyle](~series-line.areaStyle) is set, area chart will be drew.
+
+**Tip:** With [visualMap](~visualMap-piecewise) component, Broken line / area chart can have different colors on different sections, as below:
+
+~[600x400](${galleryViewPath}line-aqi&edit=1&reset=1)
 
 ## type(string) = 'line'
 
@@ -32,15 +36,17 @@ Broken line graph relates all the data points [symbol](~series-line.symbol) by b
 Whether to show symbol. It would be shown during tooltip hover.
 
 ## showAllSymbol(boolean) = false
-symbol graphic element defaults to be shown on main axis(following the label gap of main axis to hide the strategies). If you want to show them all, set showAllSymbol as `true`.
+Symbols are shown when label of main axis is shown. Which means it has same interval strategy with [axisLabel.interval](~xAxis.axisLabel.interval).
+
+If you want to show them all, set this property as `true`.
 
 ## hoverAnimation(boolean) = true
-Whether to enable the reminding animation effect of hover on inflection point symbol.
+Whether to enable the animation effect when mouse is on the symbol.
 
 {{ use: partial-legend-hover-link }}
 
 ## stack(string) = null
-If stack the value. On the same category axis, the series with the same `stack` name could stack.
+If stack the value. On the same category axis, the series with the same `stack` name would be put on top of each other.
 
 The effect of the below example could be seen through stack switching of [toolbox](~toolbox) on the top right corner:
 
@@ -48,6 +54,17 @@ The effect of the below example could be seen through stack switching of [toolbo
 
 ## clipOverflow(boolean) = true
 Whether to clip the overflowing part, which defaults to clip.
+
+## connectNulls(boolean) = false
+Whether to connect the line across null points.
+
+## step(string|boolean) = false
+Whether to show as a step line. It can be `true`, `false`. Or `'start'`, `'middle'`, `'end'`. Which will configure the turn point of step line.
+
+See the example using different `step` options:
+
+~[600x400](${galleryViewPath}line-step&edit=1&reset=1)
+
 
 ## label(Object)
 {{use: partial-label-desc}}
@@ -64,7 +81,7 @@ Whether to clip the overflowing part, which defaults to clip.
 )}}
 
 ## itemStyle(Object)
-the style of the inflection point of broken line.
+The style of the symbol point of broken line.
 ### normal(Object)
 {{use: partial-item-style(
     prefix="###",
@@ -75,14 +92,14 @@ the style of the inflection point of broken line.
 {{use: partial-item-style(prefix="###")}}
 
 ## lineStyle(Object)
-line style.
+Line style.
 ### normal(Object)
 {{use:partial-line-style(prefix="###")}}
 ### emphasis(Object)
 {{use: partial-line-style(prefix="###")}}
 
 ## areaStyle(Object)
-the style of area filling.
+The style of area.
 ### normal(Object)
 {{use: partial-area-style(prefix="###")}}
 ### emphasis(Object)
@@ -92,29 +109,29 @@ the style of area filling.
 Whether to show as smooth curve.
 
 ## smoothMonotone(string)
-Whether the broken line could maintain the monotonicity when it becomes smooth. It could be set as `'x'`, `'y'` to confirm that whether it maintains the monotonicity on x axis or y axis.
+Whether the broken line keep the monotonicity when it is smoothed. It can be set as `'x'`, `'y'` to keep the monotonicity on x axis or y axis.
 
-It is usually used on double-value axis.
+It is usually used on dual value axis.
 
-Here are 2 examples of broken line graph in double-value axis, showing the differences when `smoothMonotone` is without any setting, and `smoothMonotone` is set as `'x'`.
+Here are 2 examples of broken line chart with dual value axis, showing the differences when `smoothMonotone` is without any setting, and `smoothMonotone` is set as `'x'`.
 
-+ no setting about `smoothMonotone`:
++ No setting about `smoothMonotone`:
 
 ![300xauto](~smooth-monotone-none.png)
 
-+ it is set as `'x'`:
++ It is set as `'x'`:
 
 ![300xauto](~smooth-monotone-x.png)
 
 ## sampling(string)
 
-the dowmsampling strategy used when the data size is much larger than piex dot. It could optimize the drawing efficiency when it is turned on. And it defaults to be turned off, indicating that all the drawing would not filter data point.
+The dowmsampling strategy used when the data size is much larger than pixel size. It will improve the performance when turned on. Defaults to be turned off, indicating that all the data points will be drawn.
 
 Options:
-+ `'average'` average the value of filter points
-+ `'max'` maximize the value of filter points
-+ `'min'` minimize the value of filter points
-+ `'sum'` sum the values of filter points
++ `'average'` Use average value of filter points
++ `'max'` Use maximum value of filter points
++ `'min'` Use minimum value of filter points
++ `'sum'` Use sum of filter points
 
 ## data(Array)
 
@@ -123,10 +140,10 @@ Options:
 ) }}
 
 ### name(string)
-the name of data item.
+The name of data item.
 
 ### value(number)
-the value of a single data item.
+The value of a single data item.
 
 {{ use:partial-symbol(
     defaultSymbol="'circle'",
@@ -136,7 +153,7 @@ the value of a single data item.
 ) }}
 
 ### label(Object)
-the style setting about the text of single inflection point.
+The style of the text of single data point.
 #### normal(Object)
 {{ use: partial-label(
     prefix="####",
@@ -146,7 +163,7 @@ the style setting about the text of single inflection point.
 {{ use: partial-label(prefix="####") }}
 
 ### itemStyle(Object)
-the style setting about the symbol of single inflection point.
+The style of the symbol of single data point.
 #### normal(Object)
 {{use: partial-bar-item-style(prefix="####")}}
 #### emphasis(Object)

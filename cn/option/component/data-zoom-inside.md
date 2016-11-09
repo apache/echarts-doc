@@ -20,6 +20,9 @@
 
 ## type(string) = 'inside'
 
+## disabled(boolean) = false
+
+是否停止组件的功能。
 
 {{ use: partial-data-zoom-common(
     dataZoomName='dataZoom-inside',

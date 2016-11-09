@@ -3,7 +3,7 @@
 
 # xAxis(Object)
 
-直角坐标系 grid 中的 x 轴，单个 grid 组件最多只能放上下两个 x 轴。
+直角坐标系 grid 中的 x 轴，一般情况下单个 grid 组件最多只能放左右两个 x 轴，多于两个 x 轴需要通过配置 [offset](~xAxis.offset) 属性防止同个位置多个 x 轴的重叠。
 
 ## gridIndex(number) = 0
 
