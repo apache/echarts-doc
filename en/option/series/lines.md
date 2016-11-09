@@ -69,9 +69,12 @@ Whether to loop the special effect animation.
 ## large(boolean) = true
 Whether to enable the optimization of large-scale lines graph. It could be enabled when there is a particularly large number of data(>=5k) .
 
-After being enabled, [largeThreshold](~series-scatter.largeThreshold) can be used to indicate the minimum number for turning on the optimization.
+After being enabled, [largeThreshold](~series-lines.largeThreshold) can be used to indicate the minimum number for turning on the optimization.
 
-The style of a single data item can't be custom set and can't interact after optimization.
+The style of a single data item can't be customized
+
+## largeThreshold(number) = 2000
+The threshold enabling the drawing optimization.
 
 ## lineStyle(Object)
 ### normal(Object)
