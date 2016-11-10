@@ -5,7 +5,7 @@
 
 [Candlestick](https://en.wikipedia.org/wiki/Candlestick_chart) is what we usually call `K line graph`.
 
-ECharts3  supports both `'candlestick'` and `'k'` which are 2 kinds of `'series.type'` (`'k'` would automatically turns into `'candlestick'`).
+ECharts3 supports both `'candlestick'` and `'k'` which are the same `'series.type'` (`'k'` would automatically turns into `'candlestick'`).
 
 **Here is the example: **
 
@@ -13,17 +13,16 @@ ECharts3  supports both `'candlestick'` and `'k'` which are 2 kinds of `'series.
 
 
 <br>
-**about the colors of『rise』『fall』: **
+**About color of *ups* and *downs* **
 
-Different countries or areas define the colors of K line graph differently. It may be 『red for rise and green for fall』or『red for rise and blue for fall』 (such as Mainland China, Taiwan, Japan, Korea and etc.) ; and it may be 『green for rise and red for fall』 (such as western countries, Hongkong, Singapore and etc.). It is not necessary to use red and blue, red and green to show rise and fall. Other methods such as 『colorful/colorless』are also available.
+Different countries or regions have different implications on the color of candle stick chart. It may use red to imply increasing with red and decreasing with blue (in China mainland, Taiwan, Japan, Koera, and so on), or to imply increasing with green and decreasing with red (in Western countries, Hong Kong, Singapore, and so on). Besides color, the ups and downs of stock may also be represented with candle stick with or without filling colors.
 
+We use red to represent increasing and blue decreasing by default. If you want to change the configuration, you may change the following parameters.
 
-Thre default configuration item is『red for rise and blue for fall』. If you want to change this color configuration, it should be changed in these configuration items:
-
-+ [series-candlestick.itemStyle.normal.color](~series-candlestick.itemStyle.normal.color): positive filling color (namely『rise』)
-+ [series-candlestick.itemStyle.normal.color0](~series-candlestick.itemStyle.normal.color0): negtive filling color (namely『fall』)
-+ [series-candlestick.itemStyle.normal.borderColor](~series-candlestick.itemStyle.normal.borderColor): positive border color (namely『rise』)
-+ [series-candlestick.itemStyle.normal.borderColor0](series-candlestick.itemStyle.normal.borderColor0): negtive border color (namely『fall』)
++ [series-candlestick.itemStyle.normal.color](~series-candlestick.itemStyle.normal.color): filling color for positive values (or, *ups*)
++ [series-candlestick.itemStyle.normal.color0](~series-candlestick.itemStyle.normal.color0): filling color for negtive values (or, *downs*)
++ [series-candlestick.itemStyle.normal.borderColor](~series-candlestick.itemStyle.normal.borderColor): border color for positive values (or, *ups*)
++ [series-candlestick.itemStyle.normal.borderColor0](series-candlestick.itemStyle.normal.borderColor0): border color for negtive values (or, *downs*)
 
 
 <br>
@@ -49,11 +48,11 @@ Whether to enable the hover animitation on box.
 
 ## layout(string) = null
 
-layout method, optional values:
+Layout method, whose values may be:
 
-+ `'horizontal'`: horizontal layout of all boxs.
++ `'horizontal'`: horizontally layout all boxs.
 
-+ `'vertical'`: vertical layout of all boxs.
++ `'vertical'`: vertically layout all boxs.
 
 The default value is decided by the current situation of coordinate axis: if `category` is horizontal axis, there would be horizontal layout; otherwise, there would be vertical layout; if there is no `category` axis, it would be horizontal layout.
 
@@ -64,7 +63,7 @@ The default value is decided by the current situation of coordinate axis: if `ca
 
 ## data(Array)
 
-Data format is double dimensional array which is shown in the following example.
+Data format is in a two dimensional array:
 
 ```javascript
 [
@@ -78,7 +77,7 @@ Data format is double dimensional array which is shown in the following example.
 ]
 ```
 
-Every data item (each line in the example above)  in double dimensional array renders a box, which contains 5 values. They are:
+Each data item of the two dimensional array (each line in the example above) is rendered into a box, which contains 4 values. They are:
 
 ```javascript
 [open, close, lowest, highest]  (namely: [opening value, closing value, lowest value, highest value])
@@ -86,11 +85,11 @@ Every data item (each line in the example above)  in double dimensional array re
 
 ### name(string)
 
-the name of data item.
+Name of data item.
 
 ### value(Array)
 
-The value of data item.
+Value of data item.
 
 
 ```javascript
@@ -114,6 +113,10 @@ The value of data item.
     componentName="K line graph"
 ) }}
 
+{{ use:partial-silent(
+    prefix="#"
+) }}
+
 {{use: partial-animation-init(
     prefix="#",
     defaultAnimationEasing='linear',
@@ -130,28 +133,28 @@ The value of data item.
 
 #${prefix} color(Color)=${defaultColor}
 
-color of `positive line` .
+Filling color for positive data.
 
 {{ use: partial-color-desc }}
 
 #${prefix} color0(Color)=${defaultColor0}
 
-color of `negtive line` . It supports the same format of `color`.
+Filling color for negtive data. It supports the same format of `color`.
 
 
 #${prefix} borderColor(Color) = ${defaultBorderColor}
 
-border color of `positive line` in graph.  It supports the same format of `color`.
+Border color for positive data. It supports the same format of `color`.
 
 
 #${prefix} borderColor0(Color) = ${defaultBorderColor0}
 
-border color of `negtive line` in graph.  It supports the same format of `color`.
+Border color for negtive data. It supports the same format of `color`.
 
 
 #${prefix} borderWidth(number) = ${defaultBorderWidth}
 
-border width of candlestick. There is no border when it is 0.
+Border width of candlestick. No border when it is 0.
 
 {{ use:partial-style-shadow-opacity(
     prefix=${prefix},
