@@ -4,9 +4,9 @@
 
 **radar chart**
 
-Radar chart is mainly used to show multivariable data, such as the analysis of football player's each attribute. It relies on [radar](~radar) component.
+Radar chart is mainly used to show multi-variable data, such as the analysis of a football player's varied attributes. It relies [radar](~radar) component.
 
-Here is the sample of AQI which is showed in radar chart.
+Here is the example of AQI data which is presented in radar chart.
 
 ~[600x500](${galleryViewPath}radar-aqi&edit=1&reset=1)
 
@@ -16,7 +16,7 @@ Here is the sample of AQI which is showed in radar chart.
 
 ## radarIndex(number)
 
-The index of [radar](~radar) component used in radar chart. 
+Index of [radar](~radar) component that radar chart uses.
 
 {{ use:partial-symbol(
     seriesType="radar",
@@ -41,7 +41,7 @@ The index of [radar](~radar) component used in radar chart.
 )}}
 
 ## itemStyle(Object)
-The item style of the inflection point of broken line. 
+Item style of the inflection point of the lines.
 ### normal(Object)
 {{use: partial-item-style(
     prefix="###",
@@ -52,14 +52,14 @@ The item style of the inflection point of broken line.
 {{use: partial-item-style(prefix="###")}}
 
 ## lineStyle(Object)
-line style.
+Line style.
 ### normal(Object)
 {{use:partial-line-style(prefix="###")}}
 ### emphasis(Object)
 {{use: partial-line-style(prefix="###")}}
 
 ## areaStyle(Object)
-area filling style.
+Area filling style.
 ### normal(Object)
 {{use: partial-area-style(prefix="###")}}
 ### emphasis(Object)
@@ -68,28 +68,28 @@ area filling style.
 
 ## data(Array)
 
-The data in radar chart is multivariable (dimension), here is the example: 
+The data in radar chart is multi-variable (dimension). Here is an example:
 
 ```js
 data : [
     {
         value : [4300, 10000, 28000, 35000, 50000, 19000],
-        name : 'budget allocation (Allocated Budget) '
+        name : 'Allocated Budget'
     },
-     {
+    {
         value : [5000, 14000, 28000, 31000, 42000, 21000],
-        name : 'Actual Spending (Actual Spending) '
+        name : 'Actual Spending'
     }
 ]
 ```
 
-Among them, `value` item array are specific datas, of which all the values correspond with [radar.indicator](~radar.indicator) one by one.   
+Among them, `value` item array contains data that is corresponding to [radar.indicator](~radar.indicator).
 
 ### name(string)
-data item name
+Data item name
 
 ### value(number)
-the numerical value of single data item.     
+Numerical value of a single data item.
 
 {{ use:partial-symbol(
     defaultSymbol="'circle'",
@@ -99,7 +99,7 @@ the numerical value of single data item.
 ) }}
 
 ### label(Object)
-The style setting about the text of single inflection point.
+Style setting of the text on single inflection point.
 #### normal(Object)
 {{ use: partial-label(
     prefix="####",
@@ -109,21 +109,21 @@ The style setting about the text of single inflection point.
 {{ use: partial-label(prefix="####") }}
 
 ### itemStyle(Object)
-The style setting about the symbol of single inflection point.
+Style setting of the symbol on single inflection point.
 #### normal(Object)
 {{use: partial-bar-item-style(prefix="####")}}
 #### emphasis(Object)
 {{use: partial-bar-item-style(prefix="####")}}
 
 ### lineStyle(Object)
-the line style of single item.
+Line style of a single item.
 #### normal(Object)
 {{use:partial-line-style(prefix="####")}}
 #### emphasis(Object)
 {{use: partial-line-style(prefix="####")}}
 
 ### areaStyle(Object)
-The area filling style of single item. 
+Area filling style of a single item.
 #### normal(Object)
 {{use: partial-area-style(prefix="####")}}
 #### emphasis(Object)
@@ -137,4 +137,9 @@ The area filling style of single item.
 
 {{use: partial-animation(
     prefix="#"
+)}}
+
+{{use: partial-animation(
+    prefix="#",
+    galleryEditorPath=${galleryEditorPath}
 )}}
