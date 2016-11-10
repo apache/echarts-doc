@@ -25,7 +25,7 @@ Series of same [map type](~series-map.map) will show in one map. At this point, 
 ) }}
 
 ## mapValueCalculation(string) = 'sum'
-Value of ultiple series with the same [map type](~series-map.map) can use this option to get a statistical value.
+Value of multiple series with the same [map type](~series-map.map) can use this option to get a statistical value.
 
 Supported statistical methods:
 
