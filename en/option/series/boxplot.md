@@ -5,12 +5,12 @@
 
 [Boxplot](https://en.wikipedia.org/wiki/Box_plot) is a convenient way of graphically depicting groups of numerical data through their quartiles.
 
-**Example: **
+**Example:**
 
 ~[600x400](${galleryViewPath}boxplot-light-velocity&edit=1&reset=1)
 
 <br>
-Multiple `series` are allow to be in the same coordinate axis. Reference to [sample](${galleryEditorPath}boxplot-multi&edit=1&reset=1).
+Multiple `series` can be displayed in the same coordinate system. See [sample](${galleryEditorPath}boxplot-multi&edit=1&reset=1).
 
 <br>
 <br>
@@ -30,23 +30,28 @@ Multiple `series` are allow to be in the same coordinate axis. Reference to [sam
 
 ## hoverAnimation(boolean) = true
 
-Whether to enable the motion effect of hover on box.
+Whether to enable the motion effect when hovering on box.
 
 
 ## layout(string) = null
 
-layout methods, optional values:
+Layout modes, optional values:
 
-+ `'horizontal'`: horizontal layout of all boxes.
++ `'horizontal'`: horizontally layout all boxes.
 
-+ `'vertical'`: vertical layout of all boxes.
++ `'vertical'`: vertically layout all boxes.
 
-The default value is decided by the current situation of coordinate axis: if `category` is horizontal axis, there would be horizontal layout; otherwise, there would be vertical layout; if there is no `category` axis, it would be horizontal layout.
+The default value is decided by:
+
++ if there is a `category` axis:
+    + if it is horizontal, use `'horizontal'`;
+    + otherwise use `'vertical'`;
++ otherwise use `'horizontal'`.
 
 
 ## boxWidth(Array) = [7, 50]
 
-the limitation of box width. the array means: `[min, max]`.
+The extent of box width. The array means: `[min, max]`.
 
 It could be absolute value, such as `[7, 50]`, and also could be percentage, such as `['40%', '90%']`. The percentage means the percentage of the maximum possible width.
 
@@ -56,7 +61,7 @@ It could be absolute value, such as `[7, 50]`, and also could be percentage, suc
 
 ## data(Array)
 
-Data format is double dimensional array which is shown in the following example.
+Data should be the two-dimensional array shown as follow.
 
 ```javascript
 [
@@ -64,8 +69,7 @@ Data format is double dimensional array which is shown in the following example.
     [672.5, 800, 845, 885, 1012.5],
     [780, 840, 855, 880, 940],
     [621.25, 767.5, 815, 865, 1011.25],
-    { // the data item could also be Object, so it could contains special setting values for this data item.
-
+    { // the data item could also be an Object, so that it could contains special settings for this data item.
         value: [713.75, 807.5, 810, 870, 963.75],
         itemStyle: {...}
     },
@@ -73,26 +77,26 @@ Data format is double dimensional array which is shown in the following example.
 ]
 ```
 
-Every data item (each line in the example above)  in double dimensional array renders a box, which contains 5 values. They are:
+Every data item (each line in the example above) represents a box, which contains 5 values. They are:
 
 ```javascript
 [min,  Q1,  median (or Q2),  Q3,  max]
 ```
 
-**data processing**
+**Data Processing**
 
-the original data processing is not internally installed in ECharts. The data input to `boxplot` should be the values as above from the 5 statistical results.
+ECharts is not responsible for converting original data. So the data input to `boxplot` should be the 5 statistical results as above.
 
-However, ECharts also provide extra and simple [original data manipulation function](https://github.com/ecomfe/echarts/tree/dev-3.0.0/extension/dataTool). For example, this [sample](${galleryEditorPath}boxplot-light-velocity&edit=1&reset=1) uses `echarts.dataTool.prepareBoxplotData` to proceed simple data statistics.
+However, ECharts also provide some extra simple [original data manipulation functions](https://github.com/ecomfe/echarts/tree/dev-3.0.0/extension/dataTool). For example, this [sample](${galleryEditorPath}boxplot-light-velocity&edit=1&reset=1) uses `echarts.dataTool.prepareBoxplotData` to perform simple data statistics.
 
 
 ### name(string)
 
-the name of data item.
+The name of a data item.
 
 ### value(Array)
 
-the value of data item.
+The value of a data item.
 
 ```javascript
 [min,  Q1,  median (or Q2),  Q3,  max]
@@ -103,9 +107,10 @@ the value of data item.
 
 {{use: partial-marker(
     prefix="#",
+    seriesType="boxplot",
     galleryEditorPath=${galleryEditorPath},
-    seriesType="scatter",
-    hasCoord=true
+    hasCoord=true,
+    hasType=true
 )}}
 
 {{use:partial-z-zlevel(
@@ -113,10 +118,15 @@ the value of data item.
     componentName="Box plot"
 ) }}
 
+{{ use:partial-silent(
+    prefix="#"
+) }}
+
 {{use: partial-animation-init(
     prefix="#",
     defaultAnimationEasing='elasticOut',
-    defaultAnimationDuration=800
+    defaultAnimationDuration=800,
+    galleryEditorPath=${galleryEditorPath}
 )}}
 
 

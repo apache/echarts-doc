@@ -1,6 +1,3 @@
-
-
-
 {{target: partial-visual-map-visual-type}}
 + `symbol`: Type of symbol.
 + `symbolSize`: Symbol size.

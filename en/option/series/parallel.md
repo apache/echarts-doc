@@ -3,7 +3,8 @@
 
 # series.parallel(Object)
 
-The series of parallel coordinate.
+The series in parallel coordinate system.
+
 {{ use: partial-parallel-introduce(
     galleryViewPath=${galleryViewPath}
 )}}
@@ -27,12 +28,16 @@ The series of parallel coordinate.
 
 ## inactiveOpacity(number) = 0.05
 
-In box selection, the unselected line would be set as this『transparency』 (which could lead to melanized effect).
+When perform brush selection, the unselected lines will be set as this transparency rate (which could darken those lines).
 
 ## activeOpacity(number) = 1
 
-In box selection, the selected line would be set as this『opacity』 (which could lead to highlighted effect).
+When perform brush selection, the selected lines will be set as this transparency rate (which could highlight those lines).
 
+
+## realtime(boolean) = true
+
+Whether to update view in realtime.
 
 
 ## data(Array)
@@ -41,23 +46,28 @@ In box selection, the selected line would be set as this『opacity』 (which cou
 
 ### name(string)
 
-the name of configuration item.
+The name of a data item.
 
 ### value(Array)
 
-the value of data item.
+The value of a data item.
 
 {{use: partial-parallel-line-style(prefix="##")}}
 
 
 {{use:partial-z-zlevel(
     prefix="#",
-    componentName="parallel coordinate"
+    componentName="parallel"
+) }}
+
+{{ use:partial-silent(
+    prefix="#"
 ) }}
 
 {{use: partial-animation(
     prefix="#",
-    defaultAnimationEasing='linear'
+    defaultAnimationEasing='linear',
+    galleryEditorPath=${galleryEditorPath}
 )}}
 
 
@@ -68,7 +78,7 @@ the value of data item.
 
 #${prefix} lineStyle(Object)
 
-line style.
+Line style.
 
 ##${prefix} normal(Object)
 

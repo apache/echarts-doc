@@ -39,7 +39,7 @@ treemap 首先是把数值映射到『面积』这种视觉元素上。
 
 + `breadcrumb` 的配置被移动到了 `itemStyle.normal/itemStyle.emphasis` 外部，和 `itemStyle` 平级。
 
-+ `root` 的设置暂时不支持。目前可以使用 `zoom` 的方式来查看树更下层次的细节。
++ `root` 的设置暂时不支持。目前可以使用 `zoom` 的方式来查看树更下层次的细节，或者使用 [leafDepth](~series-treemap.leafDepth) 开启 "drill down" 功能。
 
 + `label` 的配置被移动到了 `itemStyle.normal/itemStyle.emphasis` 外部，和 `itemStyle` 平级。
 
@@ -77,6 +77,9 @@ treemap 首先是把数值映射到『面积』这种视觉元素上。
 
 默认没有开启 `drill down`（即 `leafDepth` 为 `null` 或 `undefined`）。
 
+**drill down 的例子：**
+~[800x500](${galleryViewPath}treemap-drill-down&edit=1&reset=1)
+
 
 ## roam(boolean|string) = true
 
@@ -90,7 +93,7 @@ treemap 首先是把数值映射到『面积』这种视觉元素上。
 
 ## nodeClick(boolean|string) = 'zoomToNode'
 
-可取值为：
+点击节点后的行为。可取值为：
 
 + `false`：节点点击无反应。
 + `'zoomToNode'`：点击节点后缩放到节点。
@@ -107,16 +110,38 @@ treemap 首先是把数值映射到『面积』这种视觉元素上。
 
 **多层配置**
 
-treemap 中采用『series』--『每个层级』--『每个节点』这样的『三级配置』。
-即我们可以对每个节点进行配置，也可以对树的每个层级进行配置，也可以 series 上设置全局配置。
+treemap 中采用『三级配置』：
+
+```
+『每个节点』->『每个层级』->『每个系列』。
+```
+
+即我们可以对每个节点进行配置，也可以对树的每个层级进行配置，也可以 series 上设置全局配置。节点上的设置，优先级最高。
 
 最常用的是『每个层级进行配置』，`levels` 配置项就是每个层级的配置。例如：
 
 ```javascript
+// Notice that in fact the data structure is not "tree", but is "forest".
+// 注意，这个数据结构实际不是『树』而是『森林』
+data: [
+    {
+        name: 'nodeA',
+        children: [
+            {name: 'nodeAA'},
+            {name: 'nodeAB'},
+        ]
+    },
+    {
+        name: 'nodeB',
+        children: [
+            {name: 'nodeBA'}
+        ]
+    }
+],
 levels: [
-    {...}, // 顶层配置
-    {...}, // 下一层配置
-    {...}, // 再下一层配置
+    {...}, // 『森林』的顶层配置。即含有 'nodeA', 'nodeB' 的这层。
+    {...}, // 下一层配置，即含有 'nodeAA', 'nodeAB', 'nodeBA' 的这层。
+    {...}, // 再下一层配置。
     ...
 ]
 ```
@@ -128,9 +153,9 @@ treemap中首要关注的是如何在视觉上较好得区分『不同层级』�
 
 参见这个[例子](${galleryEditorPath}treemap-disk&edit=1&reset=1)，最顶层级用颜色区分，分成了『红』『绿』『蓝』等大块。每个颜色块中是下一个层级，使用颜色的饱和度来区分（参见 `colorSaturation`）。最外层的矩形边界是『白色』，下层级的矩形边界是当前区块颜色加上饱和度处理（参见 `borderColorSaturation`）。
 
-treemap是通过这样的规则来支持这种配置的：每个层级计算用户配置的 `color`、`colorSaturation`、`borderColor`、`colorSaturation`等视觉信息（在levels中配置），然后传递给子节点（子层级）。如果子节点没有配置，则继承父的配置，否则使用自己的配置）。
+`treemap` 是通过这样的规则来支持这种配置的：每个层级计算用户配置的 `color`、`colorSaturation`、`borderColor`、`colorSaturation`等视觉信息（在levels中配置）。如果子节点没有配置，则继承父的配置，否则使用自己的配置）。
 
-这样，可以做到：父层级配置 `color` 列表，子层级配置 `colorSaturation`。父层级的每个节点会从 `color` 列表中得到一个颜色，子层级的节点会从 `colorSaturation` 中得到一个颜色，并且继承父节点得到的颜色，合成得到自己的最终颜色。
+这样，可以做到：父层级配置 `color` 列表，子层级配置 `colorSaturation`。父层级的每个节点会从 `color` 列表中得到一个颜色，子层级的节点会从 `colorSaturation` 中得到一个值，并且继承父节点得到的颜色，合成得到自己的最终颜色。
 
 
 <br>
@@ -214,7 +239,7 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 ### height(number) = 22
 
-面包屑的高度。.asdf `series-treemap.breadcrumb`撒地方撒地方阿斯顿发斯蒂芬阿萨德f分
+面包屑的高度。
 
 
 ### emptyItemWidth(number) = 25
@@ -286,7 +311,7 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
             {
                 value: 2323,    // value字段的值，对应到面积大小。
                                 // 也可以是数组，如 [2323, 43, 55]，则数组第一项对应到面积大小。
-                                // 数组用于进行额外的视觉映射，详情参见 series-treemp.levels。
+                                // 数组其他项可以用于额外的视觉映射，详情参见 series-treemp.levels。
                 id: 'someid-1', // id 不是必须设置的。
                                 // 但是如果想使用 API 来改变某个节点，需要用 id 来定位。
                 name: 'description of this node', // 显示在矩形中的描述文字。
@@ -381,10 +406,22 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 {{ use: partial-treemap-visual-detial }}
 {{use: partial-treemap-prop-location-desc(name="visualDimension")}}
 
+#${prefix} visualMin(number) = null
+
+当前层级的最小 value 值。如果不设置则自动统计。
+
+手动指定 `visualMin`、`visualMax` ，即手动控制了 visual mapping 的值域（当 [colorMappingBy](~series-treemap.levels.colorMappingBy) 为 `'value'` 时有意义）。
+
+#${prefix} visualMax(number) = null
+
+当前层级的最大 value 值。如果不设置则自动统计。
+
+手动指定 `visualMin`、`visualMax` ，即手动控制了 visual mapping 的值域（当 [colorMappingBy](~series-treemap.levels.colorMappingBy) 为 `'value'` 时有意义）。
+
 {{ if: ${prefix} !== '#' }}
 #${prefix} color(Array)
 
-表示同一层级的节点的 颜色 选取列表。默认为空时，选取系统color列表。
+表示同一层级的节点的 颜色 选取列表（选择规则见 [colorMappingBy](~series-treemap.colorMappingBy)）。默认为空时，选取系统color列表。
 
 {{ use: partial-treemap-visual-detial }}
 {{use: partial-treemap-prop-location-desc(name="color")}}
@@ -394,6 +431,7 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 {{ if: ${prefix} !== '#' }}表示同一层级的节点的{{ else }}本系列默认的{{ /if }} 颜色透明度 选取范围。数值范围 0 ~ 1。
 
+例如, `colorAlpha` 可以是 `[0.3, 1]`.
 
 {{ use: partial-treemap-visual-detial }}
 {{use: partial-treemap-prop-location-desc(name="colorAlpha")}}
@@ -402,6 +440,8 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 #${prefix} colorSaturation(number) = null
 
 {{ if: ${prefix} !== '#' }}表示同一层级的节点的{{ else }}本系列默认的{{ /if }} 颜色饱和度 选取范围。数值范围 0 ~ 1。
+
+例如, `colorSaturation` 可以是 `[0.3, 1]`.
 
 {{ use: partial-treemap-visual-detial }}
 {{use: partial-treemap-prop-location-desc(name="colorSaturation")}}
@@ -413,12 +453,17 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 * `'value'`：
 
-将节点的值（即 [series-treemap.data.value](~series-treemap.data.value)）映射到颜色列表中。这样得到的颜色，反应了节点值的大小。
-可以使用 `visualDimension` 属性来设置，用 `data` 中那个纬度的值来映射。
+将节点的值（即 [series-treemap.data.value](~series-treemap.data.value)）映射到颜色列表中。
+
+这样得到的颜色，反应了节点值的大小。
+
+可以使用 [visualDimension](~series-treemap.levels.visualDimension) 属性来设置，用 [data](~series-treemap.data) 中哪个纬度的值来映射。
 
 * `'index'`：
 
-将节点的 `index`（序号）映射到颜色列表中。即同一层级中，第一个节点取颜色列表中第一个颜色，第二个节点取第二个。这样得到的颜色，便于区分相邻节点。
+将节点的 `index`（序号）映射到颜色列表中。即同一层级中，第一个节点取颜色列表中第一个颜色，第二个节点取第二个。
+
+这样得到的颜色，便于区分相邻节点。
 
 * `'id'`：
 
@@ -556,7 +601,7 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 #${prefix} borderColor(Color) = '#fff',
 
-矩形边框 和 矩形间隔（gap）的颜色。支持的格式同`color`。
+矩形边框 和 矩形间隔（gap）的颜色。
 
 
 #${prefix} borderColorSaturation(Color) = null

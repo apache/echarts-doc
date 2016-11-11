@@ -141,18 +141,21 @@
 
 #${prefix} color0(Color)=${defaultColor0}
 
-`阴线` 图形的颜色。支持的格式同 `color`。
+`阴线` 图形的颜色。
 
+{{ use: partial-color-desc }}
 
 #${prefix} borderColor(Color) = ${defaultBorderColor}
 
-`阳线` 图形的描边颜色。支持的格式同 `color`。
+`阳线` 图形的描边颜色。
 
+{{ use: partial-color-desc }}
 
 #${prefix} borderColor0(Color) = ${defaultBorderColor0}
 
-`阴线` 图形的描边颜色。支持的格式同 `color`。
+`阴线` 图形的描边颜色。
 
+{{ use: partial-color-desc }}
 
 #${prefix} borderWidth(number) = ${defaultBorderWidth}
 

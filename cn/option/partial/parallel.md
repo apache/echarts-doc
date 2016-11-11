@@ -112,7 +112,7 @@ option = {
 
 **如果数据量很大并且发生卡顿**
 
-建议把 [series-parallel.lineStyle.normal.width](~series-parallel.lineStyle.normal.width) 设为 `0.5`，
+建议把 [series-parallel.lineStyle.normal.width](~series-parallel.lineStyle.normal.width) 设为 `0.5`（或更小），
 可能显著改善性能。
 
 <br>
@@ -148,7 +148,7 @@ option = {
 
 {{target: partial-parallel-axis-default}}
 
-配置多个 [parallelAxis](~parallelAxis) 时，有些值一样的属性，如果书写多遍则比较繁琐，那么可以放置在 [parallel.parallelAxisDefault](~parallel.parallelAxisDefault) 里。在坐标轴初始化前，`parallelAxisDefault` 里的配置项，会分别融合进 [parallelAxis](~parallelAxis)，形成最终的坐标轴的配置。
+配置多个 [parallelAxis](~parallelAxis) 时，有些值一样的属性，如果书写多遍则比较繁琐，那么可以放置在 [parallel.parallelAxisDefault](~parallel.parallelAxisDefault) 里。在坐标轴初始化前，[parallel.parallelAxisDefault](~parallel.parallelAxisDefault) 里的配置项，会分别融合进 [parallelAxis](~parallelAxis)，形成最终的坐标轴的配置。
 
 
 
