@@ -15,11 +15,11 @@ You can download a whole package of all chart components, or you may select the 
 
 ECharts started to seperate the concept of "coordinate" from 3.0, supporting rectangular coordinate (containing catesian, as well as grid), polar coordinate (polar), geographic coordinate (geo). Charts can cross coordinate. For example, line chart, bar chart and scatter chart can be placed in the same rectangular coordinate or polar  coordinate or even geographic coordinate.
 
-Below is an example that a line chart is in polar coordinate: 
+Below is an example that a line chart is in polar coordinate:
 
 ~[60%x400](${galleryViewPath}line-polar2&reset=1&edit=1)
 
-Below is an example that a scatter chart is in geographic coordinate: 
+Below is an example that a scatter chart is in geographic coordinate:
 
 ~[60%x400](${galleryViewPath}scatter-map&reset=1&edit=1)
 
@@ -68,3 +68,4 @@ ECharts is data-driven, in that the change of data changes the presentation of c
 ECharts provides eye-catching special effects for visualization of line data, point data and geo-data, and so on.
 
 ~[60%x400](${galleryViewPath}geo-lines&reset=1&edit=1)
+~[60%x400](${galleryViewPath}lines-bmap-effect&reset=1&edit=1)
