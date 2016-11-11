@@ -68,3 +68,4 @@ ECharts 由数据驱动，数据的改变驱动图表展现的改变。因此动
 ECharts 针对线数据，点数据等地理数据的可视化提供了吸引眼球的特效。
 
 ~[60%x400](${galleryViewPath}geo-lines&reset=1&edit=1)
+~[60%x400](${galleryViewPath}lines-bmap-effect&reset=1&edit=1)
