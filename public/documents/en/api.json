@@ -13,7 +13,7 @@
             "type": [
               "Function"
             ],
-            "descriptionCN": "<pre><code class=\"lang-js\">(dom: HTMLDivElement|HTMLCanvasElement, theme?: Object|string, opts?: {\n    devicePixelRatio?: number\n    renderer?: string\n}) =&gt; ECharts\n</code></pre>\n<p>Creates an ECharts instance, and returns an <a href=\"#echartsInstance\">echartsInstance</a>. You can not initialize multiple ECharts instances on a single container.</p>\n<p><strong>Parameters</strong></p>\n<ul>\n<li><p><code>dom</code></p>\n<p>  Instance container, usually is a <code>div</code> element with height and width defined. </p>\n<p>  <strong>Attention: </strong>If <code>div</code> is hidden, ECharts initialization tends to fail due to the lack of width and height information. In this case, you can explicitly specify <code>style.width</code> and <code>style.height</code> of <code>div</code>, or manually call <a href=\"echartsInstance.resize\" target=\"_blank\">echartsInstance.resize</a> after showing <code>div</code>.</p>\n<p>  ECharts 3 supports using <code>canvas</code> element as container directly, thus the canvas can be used somewhere else as image directly after rendering the chart. For example, canvas can be used as a texture in WebGL, which enables updating charts in real-time, as compared to using images generated with <a href=\"#echartsInstance.getDataURL\">echartsInstance.getDataURL</a>.</p>\n</li>\n<li><p><code>theme</code></p>\n<p>  Theme to be applied. This can be a configuring object of a theme, or a theme name registered through <a href=\"#echarts.registerTheme\">echarts.registerTheme</a>.</p>\n</li>\n<li><p><code>opts</code></p>\n<p>  Optional; which may contain:</p>\n<ul>\n<li><p><code>devicePixelRatio</code></p>\n<p> Ratio of one physical pixel to the size of one device independent pixels. Browser&#39;s <code>window.devicePixelRatio</code> is used by default.</p>\n</li>\n<li><p><code>renderer</code></p>\n<p>The renderer only supports <code>&#39;canvas&#39;</code> by now.</p>\n</li>\n</ul>\n</li>\n</ul>\n"
+            "descriptionCN": "<pre><code class=\"lang-js\">(dom: HTMLDivElement|HTMLCanvasElement, theme?: Object|string, opts?: {\n    devicePixelRatio?: number\n    renderer?: string\n    width?: number|string\n    height? number|string\n}) =&gt; ECharts\n</code></pre>\n<p>Creates an ECharts instance, and returns an <a href=\"#echartsInstance\">echartsInstance</a>. You can not initialize multiple ECharts instances on a single container.</p>\n<p><strong>Parameters</strong></p>\n<ul>\n<li><p><code>dom</code></p>\n<p>  Instance container, usually is a <code>div</code> element with height and width defined.</p>\n<p>  <strong>Attention: </strong>If <code>div</code> is hidden, ECharts initialization tends to fail due to the lack of width and height information. In this case, you can explicitly specify <code>style.width</code> and <code>style.height</code> of <code>div</code>, or manually call <a href=\"echartsInstance.resize\" target=\"_blank\">echartsInstance.resize</a> after showing <code>div</code>.</p>\n<p>  ECharts 3 supports using <code>canvas</code> element as container directly, thus the canvas can be used somewhere else as image directly after rendering the chart. For example, canvas can be used as a texture in WebGL, which enables updating charts in real-time, as compared to using images generated with <a href=\"#echartsInstance.getDataURL\">echartsInstance.getDataURL</a>.</p>\n</li>\n<li><p><code>theme</code></p>\n<p>  Theme to be applied. This can be a configuring object of a theme, or a theme name registered through <a href=\"#echarts.registerTheme\">echarts.registerTheme</a>.</p>\n</li>\n<li><p><code>opts</code></p>\n<p>  Optional; which may contain:</p>\n<ul>\n<li><p><code>devicePixelRatio</code></p>\n<p> Ratio of one physical pixel to the size of one device independent pixels. Browser&#39;s <code>window.devicePixelRatio</code> is used by default.</p>\n</li>\n<li><p><code>renderer</code></p>\n<p>  The renderer only supports <code>&#39;canvas&#39;</code> by now.</p>\n</li>\n<li><p><code>width</code></p>\n<p>  Specify width explicitly, in pixel. If setting to <code>null</code>/<code>undefined</code>/<code>&#39;auto&#39;</code>, width of <code>dom</code> (instance container) will be used.</p>\n</li>\n<li><p><code>height</code></p>\n<p>  Specify height explicitly, in pixel. If setting to <code>null</code>/<code>undefined</code>/<code>&#39;auto&#39;</code>, height of <code>dom</code> (instance container) will be used.</p>\n</li>\n</ul>\n</li>\n</ul>\n"
           },
           "connect": {
             "type": [
@@ -43,7 +43,7 @@
             "type": [
               "Function"
             ],
-            "descriptionCN": "<pre><code class=\"lang-js\">(mapName: string, geoJson: Object, specialAreas?: Object)\n</code></pre>\n<p>Registers available maps. This can only be used after including <a href=\"option.html#geo\" target=\"_blank\">geo</a> component or chart series of <a href=\"option.html#series-map\" target=\"_blank\">map</a>.</p>\n<p>Please refer to <a href=\"option.html#geo.map\" target=\"_blank\">option.geo</a> for usage.</p>\n<p><strong>Parameters</strong></p>\n<ul>\n<li><p><code>mapName</code></p>\n<p>  Map name, referring to <code>map</code> value set in <a href=\"option.html#geo\" target=\"_blank\">geo</a> component or <a href=\"option.html#series-map\" target=\"_blank\">map</a>.</p>\n</li>\n<li><p><code>geoJson</code></p>\n<p>  Data in GeoJson format. See <a href=\"http://geojson.org/\" target=\"_blank\">http://geojson.org/</a> for more format information.</p>\n</li>\n<li><p><code>specialAreas</code></p>\n<p>  Optional; zoomed part of a specific area in the map for better visual effect. </p>\n<p>  <strong>For example <a href=\"http://echarts.baidu.com/gallery/editor.html?c=map-usa\" target=\"_blank\">USA Population Estimates</a>: </strong></p>\n<pre><code class=\"lang-js\">echarts.registerMap(&#39;USA&#39;, usaJson, {\n  // Move Alaska to the bottom left of United States \n  Alaska: {\n      // Upper left longitude\n      left: -131,\n      // Upper left latitude\n      top: 25,\n      // Range of longitude \n      width: 15\n  },\n  // Hawaii\n  Hawaii: {\n      left: -110,\n      top: 28,\n      width: 5\n  },\n  // Puerto Rico\n  &#39;Puerto Rico&#39;: {\n      left: -76,\n      top: 26,\n      width: 2\n  }\n});\n</code></pre>\n</li>\n</ul>\n"
+            "descriptionCN": "<pre><code class=\"lang-js\">(mapName: string, geoJson: Object, specialAreas?: Object)\n</code></pre>\n<p>Registers available maps. This can only be used after including <a href=\"option.html#geo\" target=\"_blank\">geo</a> component or chart series of <a href=\"option.html#series-map\" target=\"_blank\">map</a>.</p>\n<p>Please refer to <a href=\"option.html#geo.map\" target=\"_blank\">option.geo</a> for usage.</p>\n<p><strong>Parameters</strong></p>\n<ul>\n<li><p><code>mapName</code></p>\n<p>  Map name, referring to <code>map</code> value set in <a href=\"option.html#geo\" target=\"_blank\">geo</a> component or <a href=\"option.html#series-map\" target=\"_blank\">map</a>.</p>\n</li>\n<li><p><code>geoJson</code></p>\n<p>  Data in GeoJson format. See <a href=\"http://geojson.org/\" target=\"_blank\">http://geojson.org/</a> for more format information.</p>\n</li>\n<li><p><code>specialAreas</code></p>\n<p>  Optional; zoomed part of a specific area in the map for better visual effect.</p>\n<p>  <strong>For example <a href=\"http://echarts.baidu.com/gallery/editor.html?c=map-usa\" target=\"_blank\">USA Population Estimates</a>: </strong></p>\n<pre><code class=\"lang-js\">echarts.registerMap(&#39;USA&#39;, usaJson, {\n  // Move Alaska to the bottom left of United States\n  Alaska: {\n      // Upper left longitude\n      left: -131,\n      // Upper left latitude\n      top: 25,\n      // Range of longitude\n      width: 15\n  },\n  // Hawaii\n  Hawaii: {\n      left: -110,\n      top: 28,\n      width: 5\n  },\n  // Puerto Rico\n  &#39;Puerto Rico&#39;: {\n      left: -76,\n      top: 26,\n      width: 2\n  }\n});\n</code></pre>\n</li>\n</ul>\n"
           },
           "registerTheme": {
             "type": [
@@ -70,7 +70,7 @@
             "type": [
               "Function"
             ],
-            "descriptionCN": "<pre><code class=\"lang-js\">(option: Object, notMerge: boolean, notRefreshImmediately: boolean)\n</code></pre>\n<p>Configuration item, data, universal interface, all parameters and data can all be modified through <code>setOption</code>. ECharts will merge new parameters and data, and then refresh chart. If <a href=\"#option.animation\">animation</a> is enabled, ECharts will find the difference between two groups of data and present data changes through proper animation.</p>\n<p><strong>For example: </strong></p>\n<iframe data-src=\"http://echarts.baidu.com/gallery/view.html?c=dynamic-data&reset=1&edit=1\" width=\"500\" height=\"400\" ></iframe>\n\n\n<p><strong>Attention: </strong> Setting configuration item using <code>addData</code> and <code>setSeries</code> of ECharts 2.x are no longer supported. <code>setOption</code> is used for all these cases in ECharts 3. Please refer to the above example.</p>\n<p><strong>Parameters</strong></p>\n<ul>\n<li><p><code>option</code></p>\n<p>  Configuration item and data. Please refer to <a href=\"option.html\" target=\"_blank\">configuration item manual</a> for more information. </p>\n</li>\n<li><p><code>notMerge</code></p>\n<p>  Optional; states whether not to merge with previous <code>option</code>; <code>false</code> by defualt, stating merging.</p>\n</li>\n<li><p><code>notRefreshImmediately</code></p>\n<p>  Optional; states whether not to refresh cavas immediately; <code>false</code> by defualt, stating refresh immediately.</p>\n</li>\n</ul>\n"
+            "descriptionCN": "<pre><code class=\"lang-js\">(option: Object, notMerge: boolean, notRefreshImmediately: boolean)\n</code></pre>\n<p>Configuration item, data, universal interface, all parameters and data can all be modified through <code>setOption</code>. ECharts will merge new parameters and data, and then refresh chart. If <a href=\"option.html#animation\" target=\"_blank\">animation</a> is enabled, ECharts will find the difference between two groups of data and present data changes through proper animation.</p>\n<p><strong>For example: </strong></p>\n<iframe data-src=\"http://echarts.baidu.com/gallery/view.html?c=dynamic-data&reset=1&edit=1\" width=\"500\" height=\"400\" ></iframe>\n\n\n<p><strong>Attention: </strong> Setting configuration item using <code>addData</code> and <code>setSeries</code> of ECharts 2.x are no longer supported. <code>setOption</code> is used for all these cases in ECharts 3. Please refer to the above example.</p>\n<p><strong>Parameters</strong></p>\n<ul>\n<li><p><code>option</code></p>\n<p>  Configuration item and data. Please refer to <a href=\"option.html\" target=\"_blank\">configuration item manual</a> for more information.</p>\n</li>\n<li><p><code>notMerge</code></p>\n<p>  Optional; states whether not to merge with previous <code>option</code>; <code>false</code> by defualt, stating merging.</p>\n</li>\n<li><p><code>notRefreshImmediately</code></p>\n<p>  Optional; states whether not to update chart immediately; <code>false</code> by defualt, stating update immediately.</p>\n</li>\n</ul>\n"
           },
           "getWidth": {
             "type": [
@@ -94,13 +94,13 @@
             "type": [
               "Function"
             ],
-            "descriptionCN": "<pre><code class=\"lang-js\">() =&gt; Object\n</code></pre>\n<p>Gets <code>option</code> object maintained in current instance, which contains configuration item and data merged from previous <code>setOption</code> operations by users, along with user interaction states. For example, switching of legend, zooming area of data zoom, and so on. Therefore, a new instance that is exactly the same can be recovered from this option.</p>\n<p><strong>Attention: </strong>Attribute values in each component of the returned option are all in the form of an array, no matter it&#39;s single object or array of object when passed by <code>setOption</code>.\nFor example: </p>\n<pre><code class=\"lang-js\">{\n    title: [{...}],\n    legend: [{...}],\n    grid: [{...}]\n}\n</code></pre>\n<p>Besides, the following style is <strong>not recommended</strong>:</p>\n<pre><code class=\"lang-js\">var option = myChart.getOption();\noption.visualMap[0].inRange.color = ...;\nmyChart.setOption(option);\n</code></pre>\n<p>This is because <code>getOption</code> contains merged values which could be default values, and may overlaps future values. So, we <strong>recommend</strong> the following style when update part of configuration.</p>\n<pre><code class=\"lang-js\">myChart.setOption({\n    visualMap: {\n        inRange: {\n            color: ...\n        }\n    }\n})\n</code></pre>\n"
+            "descriptionCN": "<pre><code class=\"lang-js\">() =&gt; Object\n</code></pre>\n<p>Gets <code>option</code> object maintained in current instance, which contains configuration item and data merged from previous <code>setOption</code> operations by users, along with user interaction states. For example, switching of legend, zooming area of data zoom, and so on. Therefore, a new instance that is exactly the same can be recovered from this option.</p>\n<p><strong>Attention: </strong>Attribute values in each component of the returned option are all in the form of an array, no matter it&#39;s single object or array of object when passed by <code>setOption</code>.\nFor example:</p>\n<pre><code class=\"lang-js\">{\n    title: [{...}],\n    legend: [{...}],\n    grid: [{...}]\n}\n</code></pre>\n<p>Besides, the following style is <strong>not recommended</strong>:</p>\n<pre><code class=\"lang-js\">var option = myChart.getOption();\noption.visualMap[0].inRange.color = ...;\nmyChart.setOption(option);\n</code></pre>\n<p>This is because <code>getOption</code> contains merged values which could be default values, and may overlaps future values. So, we <strong>recommend</strong> the following style when update part of configuration.</p>\n<pre><code class=\"lang-js\">myChart.setOption({\n    visualMap: {\n        inRange: {\n            color: ...\n        }\n    }\n})\n</code></pre>\n"
           },
           "resize": {
             "type": [
               "Function"
             ],
-            "descriptionCN": "<p>Resizes chart, which should be called manually when container size changes.</p>\n<p><strong>Tip:</strong> Sometimes charts may be placed in multiple tabs. Those in hidden labels may fail to initialize due to the ignorance of container width and height. So <code>resize</code> should be called manually to get the correct width and height when switching to the corresponding tabs.</p>\n"
+            "descriptionCN": "<pre><code class=\"lang-js\">(opts?: {\n    width?: number|string\n    height? number|string\n}) =&gt; ECharts\n</code></pre>\n<p>Resizes chart, which should be called manually when container size changes.</p>\n<p><strong>Parameters</strong></p>\n<ul>\n<li><p><code>opts</code></p>\n<p>  Optional; which may contain:</p>\n<ul>\n<li><p><code>width</code></p>\n<p>  Specify width explicitly, in pixel. If setting to <code>null</code>/<code>undefined</code>/<code>&#39;auto&#39;</code>, width of <code>dom</code> (instance container) will be used.</p>\n</li>\n<li><p><code>height</code></p>\n<p>  Specify height explicitly, in pixel. If setting to <code>null</code>/<code>undefined</code>/<code>&#39;auto&#39;</code>, height of <code>dom</code> (instance container) will be used.</p>\n</li>\n</ul>\n</li>\n</ul>\n<p><strong>Tip:</strong> Sometimes charts may be placed in multiple tabs. Those in hidden labels may fail to initialize due to the ignorance of container width and height. So <code>resize</code> should be called manually to get the correct width and height when switching to the corresponding tabs, or specify width/heigth in <code>opts</code> explicitly.</p>\n"
           },
           "dispatchAction": {
             "type": [
@@ -120,11 +120,29 @@
             ],
             "descriptionCN": "<pre><code class=\"lang-js\">(eventName: string, handler?: Function)\n</code></pre>\n<p>Unbind event-handler function.</p>\n<p><strong>parameter: </strong></p>\n<ul>\n<li><p><code>eventName</code></p>\n<p>  Event name.</p>\n</li>\n<li><p><code>handler</code></p>\n<p>  Optional. The function to be unbound could be passed. Otherwise, all event functions of this type will be unbound.</p>\n</li>\n</ul>\n"
           },
+          "convertToPixel": {
+            "type": [
+              "Function"
+            ],
+            "descriptionCN": "<pre><code class=\"lang-js\">(\n    // finder is used to indicate in which coordinate system conversion is performed.\n    // Generally, index or id or name can be used to specify coordinate system.\n    finder: {\n        seriesIndex?: number,\n        seriesId?: string,\n        seriesName?: string,\n        geoIndex?: number,\n        geoId?: string,\n        geoName?: string,\n        xAxisIndex?: number,\n        xAxisId?: string,\n        xAxisName?: string,\n        yAxisIndex?: number,\n        yAxisId?: string,\n        yAxisName?: string,\n        gridIndex?: number,\n        gridId?: string\n        gridName?: string\n    },\n    // The value to be converted.\n    value: Array|string\n    // Conversion result, in pixel coordinate system, where the origin ([0, 0])\n    // is on the left-top of the main dom of echarts instance.\n) =&gt; Array|string\n</code></pre>\n<p>Convert a point from logical coordinate (e.g., in geo, cartesian, graph, ...) to\npixel coordinate.</p>\n<p>For example:</p>\n<p>In <a href=\"option.html#geo\" target=\"_blank\">geo</a> coordinate system, convert a point from latlong to pixel coordinate:</p>\n<pre><code class=\"lang-js\">// [128.3324, 89.5344] represents [longitude, latitude].\n// Perform conversion in the first geo coordinate system:\nchart.convertToPixel(&#39;geo&#39;, [128.3324, 89.5344]); // The parameter &#39;geo&#39; means {geoIndex: 0}.\n// Perform conversion in the second geo coordinate system:\nchart.convertToPixel({geoIndex: 1}, [128.3324, 89.5344]);\n// Perform conversion in the geo coordinate system with id &#39;bb&#39;:\nchart.convertToPixel({geoId: &#39;bb&#39;}, [128.3324, 89.5344]);\n</code></pre>\n<p>In cartesian (see <a href=\"option.html#grid\" target=\"_blank\">grid</a>), convert a point to pixel coordinate:</p>\n<pre><code class=\"lang-js\">// [300, 900] means [value on xAxis, value on yAxis].\n// Notice, there might be more than one xAxis or yAxis in a grid, and each a pair of\n// xAxis-yAxis constitudes a cartesian.\n// Perform conversion in the cartesian consist of the third xAxis and the yAxis with id &#39;y1&#39;.\nchart.convertToPixel({xAxisIndex: 2, yAxisId: &#39;y1&#39;}, [300, 900]);\n// 使用 id 为 &#39;g1&#39; 的 grid 的第一个 cartesian 进行转换：\n// Perform conversion in the first cartesian of the grid with id &#39;g1&#39;.\nchart.convertToPixel({gridId: &#39;g1&#39;}, [300, 900]);\n</code></pre>\n<p>Convert a axis value to pixel value:</p>\n<pre><code class=\"lang-js\">// In the xAxis with id &#39;x0&#39;, convert value 3000 to the horizontal pixel coordinate:\nchart.convertToPixel({xAxisId: &#39;x0&#39;}, 3000); // A number will be returned.\n// In the second yAxis, convert value 600 to the vertical pixel coordinate:\nchart.convertToPixel({yAxisIndex: 1}, 600); // A number will be returned.\n</code></pre>\n<p>In <a href=\"option.html#series-graph\" target=\"_blank\">graph</a>, convert a point to pixel coordinate:</p>\n<pre><code class=\"lang-js\">// Since every graph series maintains a coordinate system for itself, we\n// specify the graph series in finder.\nchart.convertToPixel({seriesIndex: 0}, [2000, 3500]);\nchart.convertToPixel({seriesId: &#39;k2&#39;}, [100, 500]);\n</code></pre>\n<p>In a cooridinate system (cartesian, geo, graph, ...) that contains the given series, convert a point to pixel coordinate:</p>\n<pre><code class=\"lang-js\">// Perform convert in the coordinate system that contains the first series.\nchart.convertToPixel({seriesIndex: 0}, [128.3324, 89.5344]);\n// Perform convert in the coordinate system that contains the series with id &#39;k2&#39;.\nchart.convertToPixel({seriesId: &#39;k2&#39;}, [128.3324, 89.5344]);\n</code></pre>\n"
+          },
+          "convertFromPixel": {
+            "type": [
+              "Function"
+            ],
+            "descriptionCN": "<pre><code class=\"lang-js\">(\n    // finder is used to indicate in which coordinate system conversion is performed.\n    // Generally, index or id or name can be used to specify coordinate system.\n    finder: {\n        seriesIndex?: number,\n        seriesId?: string,\n        seriesName?: string,\n        geoIndex?: number,\n        geoId?: string,\n        geoName?: string,\n        xAxisIndex?: number,\n        xAxisId?: string,\n        xAxisName?: string,\n        yAxisIndex?: number,\n        yAxisId?: string,\n        yAxisName?: string,\n        gridIndex?: number,\n        gridId?: string\n        gridName?: string\n    },\n    // The value to be converted, in pixel coordinate system, where the origin ([0, 0])\n    // is on the left-top of the main dom of echarts instance.\n    value: Array|string\n    // Conversion result\n) =&gt; Array|string\n</code></pre>\n<p>Convert a point from pixel coordinate to logical coordinate (e.g., in geo, cartesian, graph, ...). This method is the inverse operation of <a href=\"#echartsInstance.convertToPixel\">convertToPixel</a>, where the examples can be referred.</p>\n"
+          },
+          "containPixel": {
+            "type": [
+              "Function"
+            ],
+            "descriptionCN": "<pre><code class=\"lang-js\">(\n    // finder is used to specify coordinate systems or series on which the judgement performed.\n    // Generally\n    // 通常地，可以使用 index 或者 id 或者 name 来定位。\n    finder: {\n        seriesIndex?: number,\n        seriesId?: string,\n        seriesName?: string,\n        geoIndex?: number,\n        geoId?: string,\n        geoName?: string,\n        xAxisIndex?: number,\n        xAxisId?: string,\n        xAxisName?: string,\n        yAxisIndex?: number,\n        yAxisId?: string,\n        yAxisName?: string,\n        gridIndex?: number,\n        gridId?: string\n        gridName?: string\n    },\n    // The value to be judged, in pixel coordinate system, where the origin ([0, 0])\n    // is on the left-top of the main dom of echarts instance.\n    value: Array\n) =&gt; boolean\n</code></pre>\n<p>Determine whether the given point is in the given coordinate systems or series.</p>\n<p>These coordinate systems or series are supported currently: <a href=\"option.html#grid\" target=\"_blank\">grid</a>, <a href=\"option.html#polar\" target=\"_blank\">polar</a>, <a href=\"option.html#geo\" target=\"_blank\">geo</a>, <a href=\"option.html#series-map\" target=\"_blank\">series-map</a>, <a href=\"option.html#series-graph\" target=\"_blank\">series-graph</a>, <a href=\"option.html#series-pie\" target=\"_blank\">series-pie</a>.</p>\n<p>For example:</p>\n<pre><code class=\"lang-js\">// Determine whether point [23, 44] is in the geo whose geoIndex 0.\nchart.containPixel(&#39;geo&#39;, [23, 44]); // Parameter &#39;geo&#39; means {geoIndex: 0}\n// Determine whether point [23, 44] is in the grid whose gridId is &#39;z&#39;.\nchart.containPixel({gridId: &#39;z&#39;}, [23, 44]);\n// Determine whether point [23, 44] is in series whose index are 1, 4 or 5.\nchart.containPixel({seriesIndex: [1, 4, 5]}, [23, 44]);\n// Determine whether point [23, 44] is in series whose index are 1, 4 or 5,\n// or is in grid whose name is &#39;a&#39;.\nchart.containPixel({seriesIndex: [1, 4, 5], gridName: &#39;a&#39;}, [23, 44]);\n</code></pre>\n"
+          },
           "showLoading": {
             "type": [
               "Function"
             ],
-            "descriptionCN": "<pre><code class=\"lang-js\">(type?: string, opts?: Object)\n</code></pre>\n<p>Shows loading animation. You can call this interface manually before data is loaded, and call <a href=\"#echartsInstance.hideLoading\">hideLoading</a> to hide loading animation after data is loaded.</p>\n<p><strong>parameter: </strong></p>\n<ul>\n<li><p><code>type</code></p>\n<p>  Optional; type of loading animation; only <code>&#39;default&#39;</code> is supported by far.</p>\n</li>\n<li><p><code>opts</code></p>\n<p>  Optional; configuration item of loading animation, which is related to <code>type</code>. Following shows the default configuration item : </p>\n<pre><code class=\"lang-js\">default: {\n  text: &#39;loading&#39;,\n  color: &#39;#c23531&#39;,\n  textColor: &#39;#000&#39;,\n  maskColor: &#39;rgba(255, 255, 255, 0.8)&#39;,\n  zlevel: 0\n}\n</code></pre>\n</li>\n</ul>\n"
+            "descriptionCN": "<pre><code class=\"lang-js\">(type?: string, opts?: Object)\n</code></pre>\n<p>Shows loading animation. You can call this interface manually before data is loaded, and call <a href=\"#echartsInstance.hideLoading\">hideLoading</a> to hide loading animation after data is loaded.</p>\n<p><strong>parameter: </strong></p>\n<ul>\n<li><p><code>type</code></p>\n<p>  Optional; type of loading animation; only <code>&#39;default&#39;</code> is supported by far.</p>\n</li>\n<li><p><code>opts</code></p>\n<p>  Optional; configuration item of loading animation, which is related to <code>type</code>. Following shows the default configuration item :</p>\n<pre><code class=\"lang-js\">default: {\n  text: &#39;loading&#39;,\n  color: &#39;#c23531&#39;,\n  textColor: &#39;#000&#39;,\n  maskColor: &#39;rgba(255, 255, 255, 0.8)&#39;,\n  zlevel: 0\n}\n</code></pre>\n</li>\n</ul>\n"
           },
           "hideLoading": {
             "type": [
@@ -136,27 +154,27 @@
             "type": [
               "Function"
             ],
-            "descriptionCN": "<pre><code class=\"lang-js\">(opts: {\n    // Exporting format, can be either png, or jpeg\n    type?: string,\n    // Resolution ratio of exporting image, 1 by default.\n    pixelRatio?: number,\n    // Background color of exporting image, use backgroundColor in option by default.\n    backgroundColor?: string\n}) =&gt; string\n</code></pre>\n<p>Exports chart image; returns a base64 URL; can be set to <code>src</code> of <code>Image</code>.</p>\n<p><strong>For example: </strong></p>\n<pre><code class=\"lang-js\">var img = new Image();\nimg.src = myChart.getDataURL({\n    pixelRatio: 2,\n    backgroundColor: &#39;#fff&#39;\n});\n</code></pre>\n"
+            "descriptionCN": "<pre><code class=\"lang-js\">(opts: {\n    // Exporting format, can be either png, or jpeg\n    type?: string,\n    // Resolution ratio of exporting image, 1 by default.\n    pixelRatio?: number,\n    // Background color of exporting image, use backgroundColor in option by default.\n    backgroundColor?: string,\n    // Excluded components list. e.g. [&#39;toolbox&#39;]\n    excludeComponents?: Array.&lt;string&gt;\n}) =&gt; string\n</code></pre>\n<p>Exports chart image; returns a base64 URL; can be set to <code>src</code> of <code>Image</code>.</p>\n<p><strong>For example: </strong></p>\n<pre><code class=\"lang-js\">var img = new Image();\nimg.src = myChart.getDataURL({\n    pixelRatio: 2,\n    backgroundColor: &#39;#fff&#39;\n});\n</code></pre>\n"
           },
-          "getConnectedDataURL\r": {
+          "getConnectedDataURL": {
             "type": [
               "*"
             ],
-            "descriptionCN": "<pre><code class=\"lang-js\">(opts: {\n    // Exporting format, can be either png, or jpeg\n    type?: string,\n    // Resolution ratio of exporting image, 1 by default.\n    pixelRatio?: number,\n    // Background color of exporting image, use backgroundColor in option by default.\n    backgroundColor?: string\n}) =&gt; string\n</code></pre>\n<p>Exports connected chart image; returns a base64 url; can be set to <code>src</code> of <code>Image</code>. Position of charts in exported image are related to that of the container.</p>\n"
+            "descriptionCN": "<pre><code class=\"lang-js\">(opts: {\n    // Exporting format, can be either png, or jpeg\n    type?: string,\n    // Resolution ratio of exporting image, 1 by default.\n    pixelRatio?: number,\n    // Background color of exporting image, use backgroundColor in option by default.\n    backgroundColor?: string,\n    // Excluded components list. e.g. [&#39;toolbox&#39;]\n    excludeComponents?: Array.&lt;string&gt;\n}) =&gt; string\n</code></pre>\n<p>Exports connected chart image; returns a base64 url; can be set to <code>src</code> of <code>Image</code>. Position of charts in exported image are related to that of the container.</p>\n"
           },
-          "clear\r": {
+          "clear": {
             "type": [
               "*"
             ],
             "descriptionCN": "<p>Clears current instance; removes all components and charts in current instance. After clearing, <a href=\"#echartsInstance.getOption\">getOption</a> returns an empty object <code>{}</code>.</p>\n"
           },
-          "isDisposed\r": {
+          "isDisposed": {
             "type": [
               "*"
             ],
             "descriptionCN": "<pre><code class=\"lang-js\">() =&gt; boolean\n</code></pre>\n<p>Returns whether current instance has been disposed.</p>\n"
           },
-          "dispose\r": {
+          "dispose": {
             "type": [
               "*"
             ],
@@ -164,11 +182,11 @@
           }
         }
       },
-      "action\r": {
+      "action": {
         "type": [
           "*"
         ],
-        "descriptionCN": "<p>Chart actions supported by ECharts are triggered through <a href=\"#echartsInstance.dispatchAction\">dispatchAction</a>.</p>\n<p><strong>Attention: </strong> The <code>?:</code> note in the code shows that this attribute is optional. <em>EVENT:</em> stands for the event that triggers action. </p>\n",
+        "descriptionCN": "<p>Chart actions supported by ECharts are triggered through <a href=\"#echartsInstance.dispatchAction\">dispatchAction</a>.</p>\n<p><strong>Attention: </strong> The <code>?:</code> note in the code shows that this attribute is optional. <em>EVENT:</em> stands for the event that triggers action.</p>\n",
         "properties": {
           "highlight": {
             "type": [
@@ -180,9 +198,9 @@
             "type": [
               "Action"
             ],
-            "descriptionCN": "<p>Cancels highlighting graphic element. </p>\n<p>Series is specified through <code>seriesName</code> or <code>seriesIndex</code>. If another data needs to be specified, then use <code>dataIndex</code> or <code>name</code>.</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;downplay&#39;,\n    // optional; series index; could be an array of multiple series\n    seriesIndex?: number|Array,\n    // optional; series name; could be an array of multiple series\n    seriesName?: string|Array,\n    // options are index of data\n    dataIndex?: number,\n    // options are data name\n    name?: string\n})\n</code></pre>\n<!--============= legend ==========-->\n"
+            "descriptionCN": "<p>Cancels highlighting graphic element.</p>\n<p>Series is specified through <code>seriesName</code> or <code>seriesIndex</code>. If another data needs to be specified, then use <code>dataIndex</code> or <code>name</code>.</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;downplay&#39;,\n    // optional; series index; could be an array of multiple series\n    seriesIndex?: number|Array,\n    // optional; series name; could be an array of multiple series\n    seriesName?: string|Array,\n    // options are index of data\n    dataIndex?: number,\n    // options are data name\n    name?: string\n})\n</code></pre>\n<!--============= legend ==========-->\n"
           },
-          "legend\r": {
+          "legend": {
             "type": [
               "*"
             ],
@@ -208,7 +226,7 @@
               }
             }
           },
-          "tooltip\r": {
+          "tooltip": {
             "type": [
               "*"
             ],
@@ -218,7 +236,7 @@
                 "type": [
                   "Action"
                 ],
-                "descriptionCN": "<p>Shows tooltip.</p>\n<p>There are two usages as followed. </p>\n<p>1 Display tooltip at certain position relative to container. If it cannot be displayed at the specified location, then it is invalid.</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;showTip&#39;,\n    // x coordinate on screen\n    x: number,\n    // y coordinate on screen\n    y: number\n})\n</code></pre>\n<p>2 Specify graphic element, and display tooltip according to the tooltip configuration item.</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;showTip&#39;,\n    // index of series, which is optional when trigger of tooltip is axis\n    seriesIndex?: number,\n    // data index; could assign by name attribute when not defined \n    dataIndex?: number,\n    // optional; data name; ignored when dataIndex is defined\n    name?: string\n})\n</code></pre>\n"
+                "descriptionCN": "<p>Shows tooltip.</p>\n<p>There are two usages as followed.</p>\n<p>1 Display tooltip at certain position relative to container. If it cannot be displayed at the specified location, then it is invalid.</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;showTip&#39;,\n    // x coordinate on screen\n    x: number,\n    // y coordinate on screen\n    y: number,\n    // Position of tooltip. Only works in this action.\n    // Use tooltip.position in option by default.\n    position: Array.&lt;number&gt;|string|Function\n})\n</code></pre>\n<p>2 Specify graphic element, and display tooltip according to the tooltip configuration item.</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;showTip&#39;,\n    // index of series, which is optional when trigger of tooltip is axis\n    seriesIndex?: number,\n    // data index; could assign by name attribute when not defined\n    dataIndex?: number,\n    // optional; data name; ignored when dataIndex is defined\n    name?: string,\n    // Position of tooltip. Only works in this action.\n    // Use tooltip.position in option by default.\n    position: Array.&lt;number&gt;|string|Function\n})\n</code></pre>\n<p>Parameter <code>position</code> is the same as <a href=\"option.html#tooltip.position\" target=\"_blank\">tooltip.position</a>.</p>\n"
               },
               "hideTip": {
                 "type": [
@@ -228,7 +246,7 @@
               }
             }
           },
-          "dataZoom\r": {
+          "dataZoom": {
             "type": [
               "*"
             ],
@@ -242,7 +260,7 @@
               }
             }
           },
-          "visualMap\r": {
+          "visualMap": {
             "type": [
               "*"
             ],
@@ -252,11 +270,11 @@
                 "type": [
                   "Action"
                 ],
-                "descriptionCN": "<p>Selects data range of visual mapping.</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;selectDataRange&#39;,\n    // optional; index of visualMap component; useful for are multiple visualMap components; 0 by default\n    visualMapIndex: number,\n    // continuous visualMap is different from discrete one\n    // continuous visualMap is an array representing range of data values.\n    // discrete visualMap is an object, whose key is category or piece index; value is `true` or `false`\n    selected: Object|Array\n})\n</code></pre>\n<p>?\n<strong>For example: </strong></p>\n<pre><code class=\"lang-js\">myChart.dispatchAction({\n    type: &#39;selectDataRange&#39;,\n    // select a value range between 20 and 40 \n    selected: [20, 40],\n    // cancel selecting the second range\n    selected: { 1: false },\n    // cancel selecting `excellent` category\n    selected: { &#39;excellent&#39;: false }\n});\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.datarangeselected\">datarangeselected</a></p>\n<!--============= timeline ==========-->\n"
+                "descriptionCN": "<p>Selects data range of visual mapping.</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;selectDataRange&#39;,\n    // optional; index of visualMap component; useful for are multiple visualMap components; 0 by default\n    visualMapIndex: number,\n    // continuous visualMap is different from discrete one\n    // continuous visualMap is an array representing range of data values.\n    // discrete visualMap is an object, whose key is category or piece index; value is `true` or `false`\n    selected: Object|Array\n})\n</code></pre>\n<p>?\n<strong>For example: </strong></p>\n<pre><code class=\"lang-js\">myChart.dispatchAction({\n    type: &#39;selectDataRange&#39;,\n    // select a value range between 20 and 40\n    selected: [20, 40],\n    // cancel selecting the second range\n    selected: { 1: false },\n    // cancel selecting `excellent` category\n    selected: { &#39;excellent&#39;: false }\n});\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.datarangeselected\">datarangeselected</a></p>\n<!--============= timeline ==========-->\n"
               }
             }
           },
-          "timeline\r": {
+          "timeline": {
             "type": [
               "*"
             ],
@@ -276,7 +294,7 @@
               }
             }
           },
-          "toolbox\r": {
+          "toolbox": {
             "type": [
               "*"
             ],
@@ -290,7 +308,7 @@
               }
             }
           },
-          "pie\r": {
+          "pie": {
             "type": [
               "*"
             ],
@@ -300,23 +318,23 @@
                 "type": [
                   "Action"
                 ],
-                "descriptionCN": "<p>Selects the specified pie chart.</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;pieSelect&#39;,\n    // optional; series index; could be an array of multiple series\n    seriesIndex?: number|Array,\n    // optional; series name; could be an array of multiple series\n    seriesName?: string|Array,\n    // data index; could assign by name attribute when not defined \n    dataIndex?: number,\n    // optional; data name; ignored when dataIndex is defined\n    name?: string\n})\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.pieselected\">pieselected</a></p>\n"
+                "descriptionCN": "<p>Selects the specified pie chart.</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;pieSelect&#39;,\n    // optional; series index; could be an array of multiple series\n    seriesIndex?: number|Array,\n    // optional; series name; could be an array of multiple series\n    seriesName?: string|Array,\n    // data index; could assign by name attribute when not defined\n    dataIndex?: number,\n    // optional; data name; ignored when dataIndex is defined\n    name?: string\n})\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.pieselected\">pieselected</a></p>\n"
               },
               "pieUnSelect": {
                 "type": [
                   "Action"
                 ],
-                "descriptionCN": "<p>Cancels selecting specified pie chart.</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;pieUnSelect&#39;,\n    // optional; series index; could be an array of multiple series\n    seriesIndex?: number|Array,\n    // optional; series name; could be an array of multiple series\n    seriesName?: string|Array,\n    // data index; could assign by name attribute when not defined \n    dataIndex?: number,\n    // optional; data name; ignored when dataIndex is defined\n    name?: string\n})\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.pieunselected\">pieunselected</a></p>\n"
+                "descriptionCN": "<p>Cancels selecting specified pie chart.</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;pieUnSelect&#39;,\n    // optional; series index; could be an array of multiple series\n    seriesIndex?: number|Array,\n    // optional; series name; could be an array of multiple series\n    seriesName?: string|Array,\n    // data index; could assign by name attribute when not defined\n    dataIndex?: number,\n    // optional; data name; ignored when dataIndex is defined\n    name?: string\n})\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.pieunselected\">pieunselected</a></p>\n"
               },
               "pieToggleSelect": {
                 "type": [
                   "Action"
                 ],
-                "descriptionCN": "<p>Toggles selecting status of specified pie chart.</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;pieToggleSelect&#39;,\n    // optional; series index; could be an array of multiple series\n    seriesIndex?: number|Array,\n    // optional; series name; could be an array of multiple series\n    seriesName?: string|Array,\n    // data index; could assign by name attribute when not defined \n    dataIndex?: number,\n    // optional; data name; ignored when dataIndex is defined\n    name?: string\n})\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.pieselectchanged\">pieselectchanged</a></p>\n<!--============= map ==========-->\n"
+                "descriptionCN": "<p>Toggles selecting status of specified pie chart.</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;pieToggleSelect&#39;,\n    // optional; series index; could be an array of multiple series\n    seriesIndex?: number|Array,\n    // optional; series name; could be an array of multiple series\n    seriesName?: string|Array,\n    // data index; could assign by name attribute when not defined\n    dataIndex?: number,\n    // optional; data name; ignored when dataIndex is defined\n    name?: string\n})\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.pieselectchanged\">pieselectchanged</a></p>\n<!--============= map ==========-->\n"
               }
             }
           },
-          "map\r": {
+          "map": {
             "type": [
               "*"
             ],
@@ -326,35 +344,35 @@
                 "type": [
                   "Action"
                 ],
-                "descriptionCN": "<p>Selects the specified map area.</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;mapSelect&#39;,\n    // optional; series index; could be an array of multiple series\n    seriesIndex?: number|Array,\n    // optional; series name; could be an array of multiple series\n    seriesName?: string|Array,\n    // data index; could assign by name attribute when not defined \n    dataIndex?: number,\n    // optional; data name; ignored when dataIndex is defined\n    name?: string\n})\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.mapselected\">mapselected</a></p>\n"
+                "descriptionCN": "<p>Selects the specified map area.</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;mapSelect&#39;,\n    // optional; series index; could be an array of multiple series\n    seriesIndex?: number|Array,\n    // optional; series name; could be an array of multiple series\n    seriesName?: string|Array,\n    // data index; could assign by name attribute when not defined\n    dataIndex?: number,\n    // optional; data name; ignored when dataIndex is defined\n    name?: string\n})\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.mapselected\">mapselected</a></p>\n"
               },
               "mapUnSelect": {
                 "type": [
                   "Action"
                 ],
-                "descriptionCN": "<p>Cancels selecting specified map area.</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;mapUnSelect&#39;,\n    // optional; series index; could be an array of multiple series\n    seriesIndex?: number|Array,\n    // optional; series name; could be an array of multiple series\n    seriesName?: string|Array,\n    // data index; could assign by name attribute when not defined \n    dataIndex?: number,\n    // optional; data name; ignored when dataIndex is defined\n    name?: string\n})\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.mapunselected\">mapunselected</a></p>\n"
+                "descriptionCN": "<p>Cancels selecting specified map area.</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;mapUnSelect&#39;,\n    // optional; series index; could be an array of multiple series\n    seriesIndex?: number|Array,\n    // optional; series name; could be an array of multiple series\n    seriesName?: string|Array,\n    // data index; could assign by name attribute when not defined\n    dataIndex?: number,\n    // optional; data name; ignored when dataIndex is defined\n    name?: string\n})\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.mapunselected\">mapunselected</a></p>\n"
               },
               "mapToggleSelect": {
                 "type": [
                   "Action"
                 ],
-                "descriptionCN": "<p>Toggles selecting status of specified map area.</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;mapToggleSelect&#39;,\n    // optional; series index; could be an array of multiple series\n    seriesIndex?: number|Array,\n    // optional; series name; could be an array of multiple series\n    seriesName?: string|Array,\n    // data index; could assign by name attribute when not defined \n    dataIndex?: number,\n    // optional; data name; ignored when dataIndex is defined\n    name?: string\n})\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.mapselectchanged\">mapselectchanged</a></p>\n"
+                "descriptionCN": "<p>Toggles selecting status of specified map area.</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;mapToggleSelect&#39;,\n    // optional; series index; could be an array of multiple series\n    seriesIndex?: number|Array,\n    // optional; series name; could be an array of multiple series\n    seriesName?: string|Array,\n    // data index; could assign by name attribute when not defined\n    dataIndex?: number,\n    // optional; data name; ignored when dataIndex is defined\n    name?: string\n})\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.mapselectchanged\">mapselectchanged</a></p>\n"
               }
             }
           }
         }
       },
-      "events\r": {
+      "events": {
         "type": [
           "*"
         ],
         "descriptionCN": "<p>Event-handling functions are mainly added through <a href=\"#echartsInstance.on\">on</a> in ECharts. This document describes all event list in ECharts.</p>\n<p>Event in ECharts can be divided in two kinds. One is mouse event, which is triggered when mouse clicks on certain component, the other is triggered after dispatches <a href=\"#echartsInstance.dispatchAction\">dispatchAction</a>.</p>\n",
         "properties": {
-          "Mouse events\r": {
+          "Mouse events": {
             "type": [
               "*"
             ],
-            "descriptionCN": "<p>Event parameters of mouse events are attributes of event object. The following shows basic parameters for chart click events. Other charts, like pie charts, may have additional parameters like <code>percent</code>. Please refer to callback <code>params</code> of each chart&#39;s label formatter.</p>\n<pre><code class=\"lang-js\">{\n    // type of the component to which the clicked glyph belongs\n    // i.e., &#39;series&#39;, &#39;markLine&#39;, &#39;markPoint&#39;, &#39;timeLine&#39;\n    componentType: string,\n    // series type (make sense when componentType is &#39;series&#39;)\n    // i.e., &#39;line&#39;, &#39;bar&#39;, &#39;pie&#39;\n    seriesType: string,\n    // series index in incoming option.series (make sense when componentType is &#39;series&#39;)\n    seriesIndex: number,\n    // series name (make sense when componentType is &#39;series&#39;)\n    seriesName: string,\n    // data name, category name\n    name: string,\n    // data index in incoming data array\n    dataIndex: number,\n    // incoming rwa data item\n    data: Object,\n    // Some series, such as sankey or graph, maintains more than\n    // one types of data (nodeData and edgeData), which can be\n    // distinguished from each other by dataType with its value\n    // &#39;node&#39; and &#39;edge&#39;.\n    // On the other hand, most series has only one type of data,\n    // where dataType is not needed.\n    dataType: string,\n    // incoming data value\n    value: number|Array\n    // color of component (make sense when componentType is &#39;series&#39;)\n    color: string\n}\n</code></pre>\n<p>Mouse events contain <code>&#39;click&#39;</code>, <code>&#39;dblclick&#39;</code>, <code>&#39;mousedown&#39;</code>, <code>&#39;mouseup&#39;</code>, <code>&#39;mouseover&#39;</code>, <code>&#39;mouseout&#39;</code>, <code>&#39;globalout&#39;</code>.</p>\n<p>See <a href=\"http://echarts.baidu.com/tutorial.html#Events%20and%20actions%20in%20ECharts%0D\" target=\"_blank\">Events and actions in ECharts</a></p>\n",
+            "descriptionCN": "<p>Event parameters of mouse events are attributes of event object. The following shows basic parameters for chart click events. Other charts, like pie charts, may have additional parameters like <code>percent</code>. Please refer to callback <code>params</code> of each chart&#39;s label formatter.</p>\n<pre><code class=\"lang-js\">{\n    // type of the component to which the clicked glyph belongs\n    // i.e., &#39;series&#39;, &#39;markLine&#39;, &#39;markPoint&#39;, &#39;timeLine&#39;\n    componentType: string,\n    // series type (make sense when componentType is &#39;series&#39;)\n    // i.e., &#39;line&#39;, &#39;bar&#39;, &#39;pie&#39;\n    seriesType: string,\n    // series index in incoming option.series (make sense when componentType is &#39;series&#39;)\n    seriesIndex: number,\n    // series name (make sense when componentType is &#39;series&#39;)\n    seriesName: string,\n    // data name, category name\n    name: string,\n    // data index in incoming data array\n    dataIndex: number,\n    // incoming rwa data item\n    data: Object,\n    // Some series, such as sankey or graph, maintains more than\n    // one types of data (nodeData and edgeData), which can be\n    // distinguished from each other by dataType with its value\n    // &#39;node&#39; and &#39;edge&#39;.\n    // On the other hand, most series has only one type of data,\n    // where dataType is not needed.\n    dataType: string,\n    // incoming data value\n    value: number|Array\n    // color of component (make sense when componentType is &#39;series&#39;)\n    color: string\n}\n</code></pre>\n<p>Mouse events contain <code>&#39;click&#39;</code>, <code>&#39;dblclick&#39;</code>, <code>&#39;mousedown&#39;</code>, <code>&#39;mouseup&#39;</code>, <code>&#39;mouseover&#39;</code>, <code>&#39;mouseout&#39;</code>, <code>&#39;globalout&#39;</code>, <code>&#39;contextmenu&#39;</code>.</p>\n<p>See <a href=\"http://echarts.baidu.com/tutorial.html#Events%20and%20actions%20in%20ECharts%0D\" target=\"_blank\">Events and actions in ECharts</a></p>\n",
             "properties": {
               "click": {
                 "type": [

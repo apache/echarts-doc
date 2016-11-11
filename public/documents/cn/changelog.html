@@ -1,3 +1,137 @@
+<h2 id="v3-3-1">v3.3.1</h2>
+<div class="time">2016-11-03</div>
+
+<p>Recovery Build</p>
+<ul>
+<li>[^] 修复移动端 touch 事件出错的问题，参见 <a href="https://github.com/ecomfe/echarts/issues/4384">#4384</a>。</li>
+</ul>
+<h2 id="v3-3-0">v3.3.0</h2>
+<div class="time">2016-11-01</div>
+
+<ul>
+<li><p>[+] 开放坐标转换 API：<a href="http://echarts.baidu.com/api.html#echartsInstance.convertToPixel">convertToPixel</a> 和 <a href="http://echarts.baidu.com/api.html#echartsInstance.convertFromPixel">convertFromPixel</a>。参见例子 [<a href="http://echarts.baidu.com/gallery/editor.html?c=line-draggable">http://echarts.baidu.com/gallery/editor.html?c=line-draggable</a>] 和 [<a href="http://echarts.baidu.com/gallery/editor.html?c=line-pen">http://echarts.baidu.com/gallery/editor.html?c=line-pen</a>]</p>
+</li>
+<li><p>[+] 开放坐标判断 API：<a href="http://echarts.baidu.com/api.html#echartsInstance.containPixel">containPixel</a>。</p>
+</li>
+<li><p>[+] <a href="http://echarts.baidu.com/option.html#polar">polar</a> 支持了 <a href="http://echarts.baidu.com/option.html#dataZoom">dataZoom</a>。参见 <a href="https://github.com/ecomfe/echarts/issues/4090">#4090</a>。</p>
+</li>
+<li><p>[+] 支持在 echarts 初始化时直接显式指定 <code>width</code>/<code>height</code>，参见 <a href="http://echarts.baidu.com/api.html#echarts.init">echarts.init</a>。这可以方便某些『在 container dom 渲染之前就需要初始化 echarts』的场景。</p>
+</li>
+<li><p>[+] 在 <a href="http://echarts.baidu.com/option.html#toolbox">toolbox</a> 中加入了 <a href="http://echarts.baidu.com/option.html#toolbox.iconStyle.normal.textPosition">textPosition</a> 和 <a href="http://echarts.baidu.com/option.html#toolbox.iconStyle.normal.textAlign">textAlign</a> 的设置。参见 <a href="https://github.com/ecomfe/echarts/issues/4104">#4104</a>。</p>
+</li>
+<li><p>[+] visualMap 新加配置 <a href="http://echarts.baidu.com/option.html#visualMap-piecewise.minOpen">visualMap-piecewise.minOpen</a> 和 <a href="http://echarts.baidu.com/option.html#visualMap-piecewise.maxOpen">visualMap-piecewise.maxOpen</a>。</p>
+</li>
+<li><p>[^] 修复 setOption 时 <code>series.name</code> 不更新的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/4033">#4033</a>。</p>
+</li>
+<li><p>[^] 修复了对 echarts 使用 css-transform 后，鼠标响应位置错误的问题。</p>
+</li>
+<li><p>[^] 修复了 JavaScript 的 <code>Object.prototype</code> 被扩展后，会出错的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/4129">#4129</a>。</p>
+</li>
+<li><p>[^] 修复了 ios10、macOS 上圆形 emptySymbol 被绘制为方形的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/4136">#4136</a> 和 <a href="https://github.com/ecomfe/echarts/issues/4150">#4150</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#series-lines">lines</a> 图中，使用 <a href="http://echarts.baidu.com/option.html#series-lines.polyline">polyLine</a> 时图标不能朝向运行方向的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/4060">#4060</a>。以及其他小问题 <a href="https://github.com/ecomfe/echarts/issues/4346">#4346</a>。</p>
+</li>
+<li><p>[^] 修复了 对 <a href="http://echarts.baidu.com/option.html#series-line">line</a> 释以 <a href="http://echarts.baidu.com/option.html#visualMap">visualMap</a> 时区间过小导致线消失的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/4221">#4221</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#tooltip">tooltip</a> 在触屏上不灵便的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/3900">#3900</a>。</p>
+</li>
+<li><p>[^] 修复了开启动画时区域图更细问题。参见 <a href="https://github.com/ecomfe/echarts/issues/3956">#3956</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/api.html#events.timelinechanged">timelinechanged</a> 事件中 currentIndex 不一致问题。参见 <a href="https://github.com/ecomfe/echarts/issues/4161">#4161</a>。</p>
+</li>
+<li><p>[^] 修复了某些图中使用 <a href="http://echarts.baidu.com/api.html#echartsInstance.clear">clear</a> 时内存不能释放的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/4105">#4105</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/api.html#events.%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6.globalout">globalout</a> 事件无效的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/4169">#4169</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#graph">graph</a> 在环形布局时可能节点重叠的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/4084">#4084</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#xAxis.type">对数轴</a> 的 label 的显示精度问题。参见 <a href="https://github.com/ecomfe/echarts/issues/4158">#4158</a>。</p>
+</li>
+<li><p>[^] 当 <a href="http://echarts.baidu.com/option.html#xAxis.type">axis.type</a> 为 <code>&#39;time&#39;</code> 时，支持 <a href="http://echarts.baidu.com/option.html#xAxis.min">axis.min</a> / <a href="http://echarts.baidu.com/option.html#xAxis.max">axis.max</a> 设置为 Date 类型。参见 <a href="https://github.com/ecomfe/echarts/issues/4097">#4097</a>。</p>
+</li>
+<li><p>[^] 修复了使用 <a href="http://echarts.baidu.com/option.html#xAxis.minInterval">minInterval</a> 时轴的错误。参见 <a href="https://github.com/ecomfe/echarts/issues/4162">#4162</a>。</p>
+</li>
+<li><p>[^] 优化 <a href="http://echarts.baidu.com/option.html#series-treemap.breadcrumb">treemap.breadcrumb</a>。参见 <a href="https://github.com/ecomfe/echarts/issues/4209">#4209</a> 和 <a href="https://github.com/ecomfe/echarts/issues/4256">#4256</a> 和 <a href="https://github.com/ecomfe/echarts/issues/4291">#4291</a>。</p>
+</li>
+<li><p>[^] 修复了在 <a href="http://echarts.baidu.com/option.html#series-map">map</a> 上使用 <a href="http://echarts.baidu.com/api.html#action.tooltip.showTip">showTip</a> 时 tooltip 位置不正确的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/3490">#3490</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#series-radar">radar</a> 的问题：<a href="https://github.com/ecomfe/echarts/issues/4249">#4249</a> 和 <a href="https://github.com/ecomfe/echarts/issues/3934">#3934</a>。</p>
+</li>
+<li><p>[^] 修正了事件参数中的<code>dataIndex</code>的含义，统一均为原始数据的 index。参见 <a href="https://github.com/ecomfe/echarts/issues/2920">#2920</a>。</p>
+</li>
+<li><p>[^] 修复部分数据可能会抛出<code>RangeError</code>的异常。参见 <a href="https://github.com/ecomfe/echarts/issues/4164">#4164</a></p>
+</li>
+<li><p>[^] 修复 IE8 中调用 resize 无效的 bug。参见 <a href="https://github.com/ecomfe/echarts/issues/3923">#3923</a></p>
+</li>
+<li><p>[^] 修复 IE8 中调用 dispose 报错的 bug。参见 <a href="https://github.com/ecomfe/echarts/issues/3874">#3874</a></p>
+</li>
+</ul>
+<h2 id="v3-2-3">v3.2.3</h2>
+<div class="time">2016-08-16</div>
+
+<ul>
+<li><p>[^] <a href="http://echarts.baidu.com/option.html#series-graph">Graph</a> 环形布局支持设置 <a href="http://echarts.baidu.com/option.html#series-graph.circular.rotateLabel">rotateLabel</a> 旋转标签，见示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=graph-circular-layout">graph-circular-layout</a></p>
+</li>
+<li><p>[^] 修复雷达图中 indicator 无法同时设置 <a href="http://echarts.baidu.com/option.html#radar.indicator.min">min</a>, <a href="http://echarts.baidu.com/option.html#radar.indicator.max">max</a> 的 bug。见 <a href="https://github.com/ecomfe/echarts/issues/3628">#3628</a></p>
+</li>
+<li><p>[^] 修复关闭动画时阶梯线图刷新会变成普通折线图的 bug。见 <a href="https://github.com/ecomfe/echarts/issues/3645">#3645</a></p>
+</li>
+<li><p>[^] <a href="http://echarts.baidu.com/api.html#echartsInstance.setOption">setOption</a> 第三个参数调整为 lazyUpdate, 从原先的不立即重绘画布改为不立即更新图表，从而优化在多处地方多次 setOption 设置同一个图表会产生的性能问题。</p>
+</li>
+<li><p>[^] 修复 <a href="http://echarts.baidu.com/option.html#series-graph">graph</a> 中曲线两边的 <a href="http://echarts.baidu.com/option.html#series-graph.edgeSymbol">edgeSymbol</a> 有可能无法对齐节点的 bug。</p>
+</li>
+<li><p>[^] 修复 <a href="http://echarts.baidu.com/option.html#series-graph">graph</a> 中 <a href="http://echarts.baidu.com/option.html#series-graph.symbolSize">symbolSize</a> 为数组时无法绘制带有 <a href="http://echarts.baidu.com/option.html#series-graph.edgeSymbol">edgeSymbol</a> 的直线的 bug。</p>
+</li>
+<li><p>[^] 修复饼图中关闭图例会导致颜色显示不一致的 bug。见 <a href="https://github.com/ecomfe/echarts/issues/3735">#3735</a></p>
+</li>
+<li><p>[^] 优化对数轴，新加参数 <a href="http://echarts.baidu.com/option.html#yAxis.logBase">logBase</a>。见 <a href="https://github.com/ecomfe/echarts/issues/3749">#3749</a></p>
+</li>
+<li><p>[^] 地图拖拽性能优化。</p>
+</li>
+</ul>
+<h2 id="v3-2-2">v3.2.2</h2>
+<div class="time">2016-07-11</div>
+
+<ul>
+<li><p>[+] <a href="http://echarts.baidu.com/option.html#xAxis">xAxis</a> 和 <a href="http://echarts.baidu.com/option.html#yAxis">yAxis</a> 新增 <a href="http://echarts.baidu.com/option.html#yAxis.offset">offset</a> 属性用于多 Y 轴场景。见 <a href="http://echarts.baidu.com/gallery/editor.html?c=multiple-y-axis">多 Y 轴示例</a></p>
+</li>
+<li><p>[+] 类目轴新增 <a href="http://echarts.baidu.com/option.html#xAxis.axisTick.alignWithLabel">axisTick.alignWithLabel</a> 属性保证刻度线与刻度标签的对齐。见 <a href="http://echarts.baidu.com/gallery/editor.html?c=bar-tick-align">坐标轴刻度与标签对齐示例</a></p>
+</li>
+<li><p>[+] <a href="http://echarts.baidu.com/option.html#legend">legend</a> 支持显示 <a href="http://echarts.baidu.com/option.html#legend.tooltip">tooltip</a>。</p>
+</li>
+</ul>
+<ul>
+<li><p>[+] <a href="http://echarts.baidu.com/option.html#geo">geo</a> 组件和 <a href="http://echarts.baidu.com/option.html#series-map">map</a> 系列新增 <a href="http://echarts.baidu.com/option.html#geo.layoutCenter">layoutCenter</a> 和 <a href="http://echarts.baidu.com/option.html#geo.layoutSize">layoutSize</a> 属性用于基于中心位置的布局。</p>
+</li>
+<li><p>[^] 支持在<code>time</code>类型的坐标轴上显示柱状图。</p>
+</li>
+<li><p>[^] 修复系列数据和坐标轴类目数量不一致时 tooltip 显示错误的 bug。</p>
+</li>
+<li><p>[^] 修复折线图和地图混搭时再使用多个 visualMap 组件可能会报错的 bug。见 <a href="https://github.com/ecomfe/echarts/issues/3544">#3544</a></p>
+</li>
+<li><p>[^] 修复坐标轴轴线设置渐变色报错的 bug。见 <a href="https://github.com/ecomfe/echarts/issues/3577">#3577</a></p>
+</li>
+<li><p>[^] 修复数据都相同的折线图中使用 visualMap 时可能会报错的 bug。见 <a href="https://github.com/ecomfe/echarts/issues/3582">#3582</a></p>
+</li>
+<li><p>[^] 优化坐标轴刻度的划分。</p>
+</li>
+<li><p>[^] 修复当字符串类型数据 tooltip 默认显示为 <code>&#39;-&#39;</code> 的问题。见 <a href="https://github.com/ecomfe/echarts/issues/3307">#3307</a>。优化时间类型数据的默认 tooltip。</p>
+</li>
+<li><p>[^] 数据项支持 tooltip 配置为字符串。如下示例</p>
+<pre><code class="lang-js">  data: [{
+      name: &#39;First&#39;,
+      tooltip: &#39;First tooltip&#39;,
+      value: 0
+  }]
+</code></pre>
+</li>
+<li><p>[^] 保证图形的绘制顺序与数据数组的顺序相同。</p>
+</li>
+<li><p>[^] 修复 3.2.1 中散点图边框无法设置的 bug。</p>
+</li>
+<li><p>[^] 坐标轴鼠标事件触发改为通过 <a href="http://echarts.baidu.com/option.html#xAxis.triggerEvent">triggerEvent</a> 配置</p>
+</li>
+</ul>
 <h2 id="v3-2-1">v3.2.1</h2>
 <div class="time">2016-07-04</div>
 
