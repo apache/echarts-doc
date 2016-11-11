@@ -3,26 +3,26 @@
 
 # series.candlestick(Object)
 
-[Candlestick](https://en.wikipedia.org/wiki/Candlestick_chart) is what we usually call `K line graph`.
+A [candlestick](https://en.wikipedia.org/wiki/Candlestick_chart) chart (also called Japanese candlestick chart) is a style of financial chart used to describe price movements of a security, derivative, or currency.
 
-ECharts3 supports both `'candlestick'` and `'k'` which are the same `'series.type'` (`'k'` would automatically turns into `'candlestick'`).
+ECharts3 supports both `'candlestick'` and `'k'` in [series.type](~(series.type) (`'k'` would automatically turns into `'candlestick'`).
 
-**Here is the example: **
+**An example:**
 
 ~[600x400](${galleryViewPath}candlestick-sh&edit=1&reset=1)
 
 
 <br>
-**About color of *ups* and *downs* **
+**About color of increase and decrease**
 
-Different countries or regions have different implications on the color of candle stick chart. It may use red to imply increasing with red and decreasing with blue (in China mainland, Taiwan, Japan, Koera, and so on), or to imply increasing with green and decreasing with red (in Western countries, Hong Kong, Singapore, and so on). Besides color, the ups and downs of stock may also be represented with candle stick with or without filling colors.
+Different countries or regions have different implications on the color of candle stick chart. It may use red to imply increasing with red and decreasing with blue (in China mainland, Taiwan, Japan, Koera, and so on), or to imply increasing with green and decreasing with red (in Europ, North America, Hong Kong, Singapore, and so on). Besides color, the increase and decrease of stock may also be represented with candle stick with or without filling colors.
 
 We use red to represent increasing and blue decreasing by default. If you want to change the configuration, you may change the following parameters.
 
-+ [series-candlestick.itemStyle.normal.color](~series-candlestick.itemStyle.normal.color): filling color for positive values (or, *ups*)
-+ [series-candlestick.itemStyle.normal.color0](~series-candlestick.itemStyle.normal.color0): filling color for negtive values (or, *downs*)
-+ [series-candlestick.itemStyle.normal.borderColor](~series-candlestick.itemStyle.normal.borderColor): border color for positive values (or, *ups*)
-+ [series-candlestick.itemStyle.normal.borderColor0](series-candlestick.itemStyle.normal.borderColor0): border color for negtive values (or, *downs*)
++ [series-candlestick.itemStyle.normal.color](~series-candlestick.itemStyle.normal.color): fill color for bullish candle stick (namely, increase)
++ [series-candlestick.itemStyle.normal.color0](~series-candlestick.itemStyle.normal.color0): fill color for bearish candle stick (namely, decrease)
++ [series-candlestick.itemStyle.normal.borderColor](~series-candlestick.itemStyle.normal.borderColor): border color for bullish candle stick (namely, increase)
++ [series-candlestick.itemStyle.normal.borderColor0](series-candlestick.itemStyle.normal.borderColor0): border color for bearish candle stick (namely, decrease)
 
 
 <br>
@@ -43,7 +43,7 @@ We use red to represent increasing and blue decreasing by default. If you want t
 
 ## hoverAnimation(boolean) = true
 
-Whether to enable the hover animitation on box.
+Whether to enable animitation when hovering on box.
 
 
 ## layout(string) = null
@@ -54,7 +54,12 @@ Layout method, whose values may be:
 
 + `'vertical'`: vertically layout all boxs.
 
-The default value is decided by the current situation of coordinate axis: if `category` is horizontal axis, there would be horizontal layout; otherwise, there would be vertical layout; if there is no `category` axis, it would be horizontal layout.
+The default value is decided by:
+
++ if there is a `category` axis:
+    + if it is horizontal, use `'horizontal'`;
+    + otherwise use `'vertical'`;
++ otherwise use `'horizontal'`.
 
 
 
@@ -63,13 +68,13 @@ The default value is decided by the current situation of coordinate axis: if `ca
 
 ## data(Array)
 
-Data format is in a two dimensional array:
+Data should be the two-dimensional array shown as follow.
 
 ```javascript
 [
     [2320.26, 2320.26, 2287.3,  2362.94],
     [2300,    2291.3,  2288.26, 2308.38],
-    { // the data item could also be Object, so it could contains special setting values for this data item.
+    { // the data item could also be an Object, so that it could contains special settings for this data item.
         value: [2300,    2291.3,  2288.26, 2308.38],
         itemStyle: {...}
     },
@@ -77,7 +82,7 @@ Data format is in a two dimensional array:
 ]
 ```
 
-Each data item of the two dimensional array (each line in the example above) is rendered into a box, which contains 4 values. They are:
+Every data item (each line in the example above) represents a box, which contains 4 values. They are:
 
 ```javascript
 [open, close, lowest, highest]  (namely: [opening value, closing value, lowest value, highest value])
@@ -91,7 +96,6 @@ Name of data item.
 
 Value of data item.
 
-
 ```javascript
 [open, close, lowest, highest]  (namely: [opening value, closing value, lowest value, highest value])
 ```
@@ -103,14 +107,19 @@ Value of data item.
 
 {{use: partial-marker(
     prefix="#",
+    seriesType="candlestick",
     galleryEditorPath=${galleryEditorPath},
-    seriesType="scatter",
-    hasCoord=true
+    hasCoord=true,
+    hasType=true
 )}}
 
 {{use:partial-z-zlevel(
     prefix="#",
-    componentName="K line graph"
+    componentName="candlestick"
+) }}
+
+{{ use:partial-silent(
+    prefix="#"
 ) }}
 
 {{ use:partial-silent(
@@ -120,7 +129,8 @@ Value of data item.
 {{use: partial-animation-init(
     prefix="#",
     defaultAnimationEasing='linear',
-    defaultAnimationDuration=300
+    defaultAnimationDuration=300,
+    galleryEditorPath=${galleryEditorPath}
 )}}
 
 
@@ -133,28 +143,31 @@ Value of data item.
 
 #${prefix} color(Color)=${defaultColor}
 
-Filling color for positive data.
+Fill color of bullish candle stick.
 
 {{ use: partial-color-desc }}
 
 #${prefix} color0(Color)=${defaultColor0}
 
-Filling color for negtive data. It supports the same format of `color`.
+Fill color of bearish candle stick.
 
+{{ use: partial-color-desc }}
 
 #${prefix} borderColor(Color) = ${defaultBorderColor}
 
-Border color for positive data. It supports the same format of `color`.
+Border color of bullish candle stick.
 
+{{ use: partial-color-desc }}
 
 #${prefix} borderColor0(Color) = ${defaultBorderColor0}
 
-Border color for negtive data. It supports the same format of `color`.
+Border color of bearish candle stick.
 
+{{ use: partial-color-desc }}
 
 #${prefix} borderWidth(number) = ${defaultBorderWidth}
 
-Border width of candlestick. No border when it is 0.
+Border width of candlestick. There is no border when it is `0`.
 
 {{ use:partial-style-shadow-opacity(
     prefix=${prefix},

@@ -5,12 +5,12 @@
 
 [Boxplot](https://en.wikipedia.org/wiki/Box_plot) is a convenient way of graphically depicting groups of numerical data through their quartiles.
 
-**Example: **
+**Example:**
 
 ~[600x400](${galleryViewPath}boxplot-light-velocity&edit=1&reset=1)
 
 <br>
-Multiple `series` are allowed to be in the same coordinate axis. Please refer to [this example](${galleryEditorPath}boxplot-multi&edit=1&reset=1).
+Multiple `series` can be displayed in the same coordinate system. Please refer to [this example](${galleryEditorPath}boxplot-multi&edit=1&reset=1).
 
 <br>
 <br>
@@ -37,11 +37,16 @@ Whether to enable the animation when hovering on box.
 
 Layout methods, whose optional values are:
 
-+ `'horizontal'`: horizontal layout of all boxes.
++ `'horizontal'`: horizontally layout all boxes.
 
-+ `'vertical'`: vertical layout of all boxes.
++ `'vertical'`: vertically layout all boxes.
 
-Default value is decided by the current coordinate axis so that if `category` is the horizontal axis, it would be horizontal layout; otherwise, it would be vertical layout; if there is no `category` axis, it would be horizontal layout.
+The default value is decided by:
+
++ if there is a `category` axis:
+    + if it is horizontal, use `'horizontal'`;
+    + otherwise use `'vertical'`;
++ otherwise use `'horizontal'`.
 
 
 ## boxWidth(Array) = [7, 50]
@@ -56,7 +61,7 @@ It could be absolute value in pixel, such as `[7, 50]`, or percentage, such as `
 
 ## data(Array)
 
-Data is in the following format as a two-dimensional array.
+Data should be the two-dimensional array shown as follow.
 
 ```javascript
 [
@@ -64,8 +69,7 @@ Data is in the following format as a two-dimensional array.
     [672.5, 800, 845, 885, 1012.5],
     [780, 840, 855, 880, 940],
     [621.25, 767.5, 815, 865, 1011.25],
-    { // the data item could also be Object, so it could contains special setting values for this data item.
-
+    { // the data item could also be an Object, so that it could contains special settings for this data item.
         value: [713.75, 807.5, 810, 870, 963.75],
         itemStyle: {...}
     },
@@ -79,11 +83,11 @@ Every data item (each line in the example above) in the two-dimensional array wi
 [min,  Q1,  median (or Q2),  Q3,  max]
 ```
 
-**Data processing**
+**Data Processing**
 
 ECharts doesn't contain data processing modules, so the five statistic values should be calculated by yourself and then passes into `boxplot`.
 
-However, ECharts also provide some simple [row data processing tools](https://github.com/ecomfe/echarts/tree/dev-3.0.0/extension/dataTool). For example, this [example](${galleryEditorPath}boxplot-light-velocity&edit=1&reset=1) uses `echarts.dataTool.prepareBoxplotData` to proceed simple data statistics.
+However, ECharts also provide some simple [raw data processing tools](https://github.com/ecomfe/echarts/tree/dev-3.0.0/extension/dataTool). For example, this [example](${galleryEditorPath}boxplot-light-velocity&edit=1&reset=1) uses `echarts.dataTool.prepareBoxplotData` to proceed simple data statistics.
 
 
 ### name(string)
@@ -103,9 +107,10 @@ Value of data item.
 
 {{use: partial-marker(
     prefix="#",
+    seriesType="boxplot",
     galleryEditorPath=${galleryEditorPath},
-    seriesType="scatter",
-    hasCoord=true
+    hasCoord=true,
+    hasType=true
 )}}
 
 {{use:partial-z-zlevel(
@@ -113,10 +118,15 @@ Value of data item.
     componentName="Box plot"
 ) }}
 
+{{ use:partial-silent(
+    prefix="#"
+) }}
+
 {{use: partial-animation-init(
     prefix="#",
     defaultAnimationEasing='elasticOut',
-    defaultAnimationDuration=800
+    defaultAnimationDuration=800,
+    galleryEditorPath=${galleryEditorPath}
 )}}
 
 
