@@ -294,11 +294,6 @@ links: [{
     defaultHeight='自适应'
 ) }}
 
-##color(Array)
-
-调色盘颜色列表。如果[节点类型](~series-graph.categories)没有设置颜色，则会依次循环从该列表中取颜色作为系列颜色。
-
-
 {{ use:partial-silent(
     prefix="#"
 ) }}

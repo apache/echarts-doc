@@ -5,13 +5,11 @@
 
 **Map.**
 
-Map is maily used in the visulization of geographic area data, which coordinates with [visualMap](~visualMap) component to show the datas such as population distribution density in diffrent areas.     
+Map is maily used in the visulization of geographic area data, which can be used with [visualMap](~visualMap) component to visualize the datas such as population distribution density in diffrent areas.
 
-The same series of multiple [map type](~series-map.map) would show in one map. At this point, the configuration item of the first series should be used as the configuration for map drawing. 
+Series of same [map type](~series-map.map) will show in one map. At this point, the configuration of the first series will be used for the map configuration.
 
-**Tip: **`markLine` and `markPoint` are not recommended any more in ECharts 3.  If you want to realize the visulization of punctual data and line data, you could use the [scatter diagram](~series-scatter)和[line graph](~series-lines) in [geographic coordinate component](~geo).
-
-**Sample: **
+**Example: **
 ~[600x400](${galleryViewPath}doc-example/map-example&reset=1&edit=1)
 
 
@@ -27,18 +25,24 @@ The same series of multiple [map type](~series-map.map) would show in one map. A
 ) }}
 
 ## mapValueCalculation(string) = 'sum'
-Multiple series containing the same [map type](~series-map.map) would use the same map to shoe. If several series have values in the same area, ECharts would gather the statistics of these values and then get a data. This configuration item refers to the methods applied in configuration statistics, including:   
+Value of multiple series with the same [map type](~series-map.map) can use this option to get a statistical value.
 
-+ `'sum'`   sum.
-+ `'average'` averaging.
-+ `'max'`   maximum value.
-+ `'min'`   minimum value.
+Supported statistical methods:
+
++ `'sum'`
++ `'average'`
++ `'max'`
++ `'min'`
 
 ## selectedMode(boolean|string) = false
-selected mode indicating whether to support multiple selected targets, which defaults to be turned off and support boolean value and character string. The value of character string could be `'single'` or `'multiple'`.
+
+Selected mode of map. It is enabled by default, and you may set it to be `false` to disabled it.
+
+Besides, it can be set to `'single'` or `'multiple'`, for single selection and multiple selection.
+
 
 ## showLegendSymbol(boolean)
-Show the color symbol of legend in related area (dot of series symbol). Is valid when [legend](~legend) component exists.
+Show the symbol in related area (dot of series symbol). Available when [legend](~legend) component exists.
 
 ## roam(boolean|string) = false
 {{ use: partial-roam }}
@@ -47,7 +51,7 @@ Show the color symbol of legend in related area (dot of series symbol). Is valid
 {{ use: partial-1d-data-desc(name="map") }}
 
 ### name(string)
-The name of the map area where the data belongs to, such as `'Guangdong'` or `'Zhejiang'` .
+The name of the map area where the data belongs to, such as `'China'` or `'United Kingdom'` .
 
 ### value(number)
 The numerical value of this area.

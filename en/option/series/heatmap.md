@@ -4,11 +4,11 @@
 # series.heatmap(Object)
 **heat map**
 
-Heat map mainly shows the numerical values through colors, which have to coordinate with [visualMap](~visualMap) component.
+Heat map mainly use colors to represent values, which must be used along with [visualMap](~visualMap) component.
 
-It could be applied in both [rectangular coordinate](~grid) and [geographic coordinate](~geo). The patterns of manifestation in these 2 coordinat system are totally different. There must be 2 category axes used in rectangular coordinate.
+It can be used in either [rectangular coordinate](~grid) or [geographic coordinate](~geo). But the behaviour on them are quite different. Rectangular coordinate must have two catagories to use it.
 
-Here are the examples applied respectively in rectangular coordinate and geographic coordinate:
+Here are the examples using it in rectangular coordinate and geographic coordinate:
 
 **rectangular coordinate: **
 ~[600x400](${galleryViewPath}heatmap-cartesian&edit=1&reset=1)
@@ -28,7 +28,15 @@ Here are the examples applied respectively in rectangular coordinate and geograp
 )}}
 
 ## blurSize(number) = 20
-It is valid in geographic coordinate([coordinateSystem](~series-heatmap.coordinateSystem): 'geo').
+Blur size of each data point. It is valid with [coordinateSystem](~series-heatmap.coordinateSystem) of 'geo' value.
+
+## minOpacity(number) = 0
+
+Minimum opacity. It is valid with [coordinateSystem](~series-heatmap.coordinateSystem) of 'geo' value.
+
+## maxOpacity(number) = 1
+
+Maximum opacity. It is valid with [coordinateSystem](~series-heatmap.coordinateSystem) of 'geo' value.
 
 ## data(Array)
 
@@ -37,13 +45,14 @@ It is valid in geographic coordinate([coordinateSystem](~series-heatmap.coordina
 ) }}
 
 ### name(string)
-name of data item.
+Name of data item.
 
 ### value(Array)
-value of data item.
+Value of data item.
 
 ### label(Object)
-It is valid in rectangular coordinate([coordinateSystem](~series-heatmap.coordinateSystem): 'cartesian2d').
+It is valid with [coordinateSystem](~series-heatmap.coordinateSystem) of 'cartesian2d' value.
+
 #### normal(Object)
 {{ use:partial-label(
     prefix="####",
@@ -53,7 +62,7 @@ It is valid in rectangular coordinate([coordinateSystem](~series-heatmap.coordin
 {{ use:partial-label(prefix="####") }}
 
 ### itemStyle(Object)
-the style setting of single data point. It is valid in rectangular coordinate([coordinateSystem](~series-heatmap.coordinateSystem): 'cartesian2d').
+Style of a single data point. It is valid with [coordinateSystem](~series-heatmap.coordinateSystem) of 'cartesian2d' value.
 #### normal(Object)
 {{use:partial-item-style(prefix="####")}}
 #### emphasis(Object)
@@ -67,5 +76,9 @@ the style setting of single data point. It is valid in rectangular coordinate([c
 
 {{use:partial-z-zlevel(
     prefix="#",
-    componentName="heat map"
+    componentName="heatmap"
+) }}
+
+{{ use:partial-silent(
+    prefix="#"
 ) }}

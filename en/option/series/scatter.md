@@ -2,13 +2,11 @@
 
 # series.scatter(Object)
 
-Scatter (bubble) diagram . The scatter diagram in [rectangular coordinate](~grid) could be used to present the relation between  `x` and `y`. If there are multiple dimensions of a data item, the values of the other dimensions can be displayed as bubble diagram through [symbol](~series-scatter.symbol) with various sizes and colors. These can be completed by cooperating with [visualMap](~visualMap) component.
+Scatter (bubble) chart . The scatter chart in [rectangular coordinate](~grid) could be used to present the relation between  `x` and `y`. If data have multiple dimensions, the values of the other dimensions can be visualized through [symbol](~series-scatter.symbol) with various sizes and colors, which becomes a bubble chart. These can be done by using with [visualMap](~visualMap) component.
 
 
-It could be applied in [rectangular coordinate](~grid) and [polar coordinate](~polar) and [geographical coordinate](~geo).
+It could be used with [rectangular coordinate](~grid) and [polar coordinate](~polar) and [geographical coordinate](~geo).
 
-
-**Tip:** Instead of marking a large number of data points through markPoint in ECharts 2.x, the scatter on [geographical coordinate](~geo) is suggested to achieve the same effect in ECharts 3. The following example shows the distribution of air quality is with a scatter diagram on the map of China. What's more, the [visualMap](~visualMap) component is used to map PM2.5 to colors.
 
 ~[600x400](${galleryViewPath}scatter-map&edit=1&reset=1)
 
@@ -25,7 +23,7 @@ It could be applied in [rectangular coordinate](~grid) and [polar coordinate](~p
 )}}
 
 ## hoverAnimation(boolean)
-Whether to enable the reminding animation effect mouse hover.
+Whether to enable the animation effect when mouse is on the symbol.
 
 {{ use: partial-legend-hover-link }}
 
@@ -38,14 +36,14 @@ Whether to enable the reminding animation effect mouse hover.
 ) }}
 
 ## large(boolean) = true
-Whether to enable the optimization of large-scale scatter diagram. The (>=5k)  could be enabled when there is a particularly large number of data graphic elements.
+Whether to enable the optimization of large-scale scatter graph. It could be enabled when there is a particularly large number of data(>=5k) .
 
-After being enabled, it should coordinate with [largeThreshold](~series-scatter.largeThreshold) to optimize the draw when the data volume is greater than specified threshold value.
+After being enabled, [largeThreshold](~series-scatter.largeThreshold) can be used to indicate the minimum number for turning on the optimization.
 
-The style of a single data item can't be custom set and can't interact after optimization.
+The style of a single data item can't be customided.
 
 ## largeThreshold(number) = 2000
-the threshold enabling the drawing optimization.
+The threshold enabling the drawing optimization.
 
 ## label(Object)
 {{use:partial-label-desc}}
@@ -118,8 +116,15 @@ the style setting about single data point(bubble).
 
 {{use:partial-z-zlevel(
     prefix="#",
-    componentName="scatter diagram"
+    componentName="scatter chart"
 ) }}
 
-{{use: partial-animation(prefix="#")}}
+{{ use:partial-silent(
+    prefix="#"
+) }}
+
+{{use: partial-animation(
+    prefix="#",
+    galleryEditorPath=${galleryEditorPath}
+)}}
 

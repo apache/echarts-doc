@@ -10,7 +10,7 @@
 ~[600x400](${galleryViewPath}boxplot-light-velocity&edit=1&reset=1)
 
 <br>
-Multiple `series` can be displayed in the same coordinate system. See [sample](${galleryEditorPath}boxplot-multi&edit=1&reset=1).
+Multiple `series` can be displayed in the same coordinate system. Please refer to [this example](${galleryEditorPath}boxplot-multi&edit=1&reset=1).
 
 <br>
 <br>
@@ -30,12 +30,12 @@ Multiple `series` can be displayed in the same coordinate system. See [sample]($
 
 ## hoverAnimation(boolean) = true
 
-Whether to enable the motion effect when hovering on box.
+Whether to enable the animation when hovering on box.
 
 
 ## layout(string) = null
 
-Layout modes, optional values:
+Layout methods, whose optional values are:
 
 + `'horizontal'`: horizontally layout all boxes.
 
@@ -51,9 +51,9 @@ The default value is decided by:
 
 ## boxWidth(Array) = [7, 50]
 
-The extent of box width. The array means: `[min, max]`.
+Up and bottom boundary of box width. The array is in the form of `[min, max]`.
 
-It could be absolute value, such as `[7, 50]`, and also could be percentage, such as `['40%', '90%']`. The percentage means the percentage of the maximum possible width.
+It could be absolute value in pixel, such as `[7, 50]`, or percentage, such as `['40%', '90%']`. The percentage means the percentage to the maximum possible width.
 
 
 {{use:partial-boxplot-item-style(prefix="#")}}
@@ -77,7 +77,7 @@ Data should be the two-dimensional array shown as follow.
 ]
 ```
 
-Every data item (each line in the example above) represents a box, which contains 5 values. They are:
+Every data item (each line in the example above) in the two-dimensional array will be rendered into a box, and each line have five values as:
 
 ```javascript
 [min,  Q1,  median (or Q2),  Q3,  max]
@@ -85,18 +85,18 @@ Every data item (each line in the example above) represents a box, which contain
 
 **Data Processing**
 
-ECharts is not responsible for converting original data. So the data input to `boxplot` should be the 5 statistical results as above.
+ECharts doesn't contain data processing modules, so the five statistic values should be calculated by yourself and then passes into `boxplot`.
 
-However, ECharts also provide some extra simple [original data manipulation functions](https://github.com/ecomfe/echarts/tree/dev-3.0.0/extension/dataTool). For example, this [sample](${galleryEditorPath}boxplot-light-velocity&edit=1&reset=1) uses `echarts.dataTool.prepareBoxplotData` to perform simple data statistics.
+However, ECharts also provide some simple [raw data processing tools](https://github.com/ecomfe/echarts/tree/dev-3.0.0/extension/dataTool). For example, this [example](${galleryEditorPath}boxplot-light-velocity&edit=1&reset=1) uses `echarts.dataTool.prepareBoxplotData` to proceed simple data statistics.
 
 
 ### name(string)
 
-The name of a data item.
+Name of data item.
 
 ### value(Array)
 
-The value of a data item.
+Value of data item.
 
 ```javascript
 [min,  Q1,  median (or Q2),  Q3,  max]

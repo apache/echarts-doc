@@ -39,6 +39,12 @@ Graph layout.
 
 + `'force'` Adopt force-directed layout, see the example [Force](${galleryEditorPath}graph-force), the detail about configrations of layout are in [graph.force](~series-graph.force)
 
+## circular(Object)
+Configuration about circular layout.
+
+### rotateLabel(boolean) = false
+Whether to rotate the label automatically.
+
 ## force(Object)
 Configuration items about force-directed layout. Force-directed layout simulates spring/charge model, which will add a repulsion between 2 nodes and add a attraction between 2 nodes of each edge. In each iteration nodes will move under the effect of repulsion and attraction. After several iterations, the nodes will be static in a balanced position. As a result, the energy local minimum of this whole model will be realized.
 
@@ -51,17 +57,21 @@ It defaults not to do any layout and use [x](~series-graph.data.x), [y](~series-
 
 You can also use circular layout `'circular'`.
 
-### repulsion(number) = 50
+### repulsion(Array|number) = 50
 The repulsion factor between nodes. The repulsion will be stronger and the distance between 2 nodes becomes further as this value becomes larger.
+
+It can be an array to represent the range of repulsion. In this case larger value have larger repulsion and smaller value will have smaller repulsion.
 
 ### gravity(number) = 0.1
 The gravity factor enforcing nodes approach to the center. The nodes will be closer to the center as the value becomes larger.
 
-### edgeLength(number) = 30
+### edgeLength(Array|number) = 30
 The distance between 2 nodes on edge. This distance is also affected by [repulsion](~series-graph.force.repulsion).
 
+It can be an array to represent the range of edge length. In this case edge with larger value will be shorter, which means two nodes are closer. And edge with smaller value will be longer.
+
 ### layoutAnimation(boolean) = true
-Because the force-directed layout will be steady after several iterations, this parameter will be decide whether to show the iteration animation of layout. It is not recommended to be close on browser when there are a lot of node data (>100) as the layout process will cause browser to hang.
+Because the force-directed layout will be steady after several iterations, this parameter will be decide whether to show the iteration animation of layout. It is not recommended to be closed on browser when there are a lot of node data (>100) as the layout process will cause browser to hang.
 
 ## roam(boolean) = false
 {{ use: partial-roam }}
@@ -70,7 +80,7 @@ Because the force-directed layout will be steady after several iterations, this 
 Related zooming ratio of nodes when mouse zooming in or out. When it is set as 0, the node will not zoom as the mouse zooms.
 
 ## draggable(boolean) = false
-If node is draggable. Only available in force-directed layout.
+If node is draggable. Only available when using force-directed layout.
 
 {{ use: partial-symbol(
     prefix='#',
@@ -79,6 +89,9 @@ If node is draggable. Only available in force-directed layout.
     name='node of relation graph',
     hasCallback=true
 ) }}
+
+## focusNodeAdjacency(boolean) = false
+Whether to focus/highlight the hover node and it's adjacencies.
 
 ## edgeSymbol(Array|string) = ['none', 'none']
 Symbol of two ends of edge line.
@@ -111,7 +124,8 @@ symbolSize: 10
 {{use:partial-item-style(prefix="###")}}
 
 ## lineStyle(Object)
-The style of edge line.
+The style of edge line. [lineStyle.normal.color](~series-graph.lineStyle.normal.color) can be `'source'` or `'target'`, which will use the color of source node or target node.
+
 ### normal(Object)
 {{use:partial-line-style(
     prefix="###",
@@ -152,10 +166,10 @@ The style of edge line.
 
 ## categories(Array)
 The categories of node, which is optional.
-If there is a classification of nodes, the category of each node can be assigned through [data[i].category](~series-graph.data.category). And the style of category will also be applied in the style of nodes. `categories` can also be used to show in [legend](~legend).
+If there is a classification of nodes, the category of each node can be assigned through [data[i].category](~series-graph.data.category). And the style of category will also be applied to the style of nodes. `categories` can also be used in [legend](~legend).
 
 ### name(string)
-Name of category, which is used to correspond with [legend](~legend) and format the content of [tooltip](~tooltip).
+Name of category, which is used to correspond with [legend](~legend) and the content of [tooltip](~tooltip).
 
 {{ use: partial-symbol(
     prefix='##',
@@ -214,7 +228,7 @@ The label style of this node.
 ) }}
 
 ## nodes(Array)
-the same as [data](~series-graph.data)
+Alias of [data](~series-graph.data)
 
 ## links(Array)
 Relational data between nodes. Example:
@@ -233,13 +247,13 @@ links: [{
 ### target(string)
 [name of target node](~series-graph.data.name) on edge
 ### lineStyle(Object)
-Line style of relational edges.
+Line style of edges.
 #### normal(Object)
 {{use:partial-line-style(
     prefix="####"
 )}}
 ##### curveness(number) = 0
-The curveness od edge, supporting values from 0 to 1. The curveness will be larger as the value becomes lager.
+The curveness of edge, supporting values from 0 to 1. The curveness will be larger as the value becomes lager.
 #### emphasis(Object)
 {{ use:partial-line-style(
     prefix="####"
@@ -247,7 +261,7 @@ The curveness od edge, supporting values from 0 to 1. The curveness will be larg
 
 
 ## edges(Array)
-the same as [links](~series-graph.links)
+Alias of [links](~series-graph.links)
 
 {{use: partial-marker(
     prefix="#",
@@ -258,18 +272,10 @@ the same as [links](~series-graph.links)
 {{ use: partial-rect-layout-width-height(
     defaultLeft="'center'",
     defaultTop="'center'",
-    defaultWidth='self-adaptation',
-    defaultHeight='self-adaptation'
+    defaultWidth='auto',
+    defaultHeight='auto'
 ) }}
 
-##color(Array)
-
-Color list of palette. If there is no color setting for [node type](~series-graph.categories), it will adopt colors sequentially and circularly from this list.
-
-Defaults:
-```js
-['#c23531', '#314656', '#61a0a8', '#dd8668', '#91c7ae', '#6e7074', '#61a0a8', '#bda29a', '#44525d', '#c4ccd3']
-```
 
 {{ use:partial-silent(
     prefix="#"

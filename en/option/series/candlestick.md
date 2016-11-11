@@ -13,11 +13,11 @@ ECharts3 supports both `'candlestick'` and `'k'` in [series.type](~(series.type)
 
 
 <br>
-**About the colors for "increase" and "decrease":**
+**About color of increase and decrease**
 
-Different countries or areas use different the color style respectively in candlestick. It may be "red for increase and green/blue for decrease" (such as in mainland China, Taiwan, Japan, Korea and etc.); and it also may be "green for increase and red for decrease" (such as in Europ, North America, Hongkong, Singapore and etc.). Moreover, it is not necessary to use red and blue/green. Other methods like "colorful/colorless" can also be used to represent increase and decrease.
+Different countries or regions have different implications on the color of candle stick chart. It may use red to imply increasing with red and decreasing with blue (in China mainland, Taiwan, Japan, Koera, and so on), or to imply increasing with green and decreasing with red (in Europ, North America, Hong Kong, Singapore, and so on). Besides color, the increase and decrease of stock may also be represented with candle stick with or without filling colors.
 
-By default "red for increase and blue for decrease" is used. If you want to change this setting, see configuration items below:
+We use red to represent increasing and blue decreasing by default. If you want to change the configuration, you may change the following parameters.
 
 + [series-candlestick.itemStyle.normal.color](~series-candlestick.itemStyle.normal.color): fill color for bullish candle stick (namely, increase)
 + [series-candlestick.itemStyle.normal.color0](~series-candlestick.itemStyle.normal.color0): fill color for bearish candle stick (namely, decrease)
@@ -48,7 +48,7 @@ Whether to enable animitation when hovering on box.
 
 ## layout(string) = null
 
-Layout mode, optional values:
+Layout method, whose values may be:
 
 + `'horizontal'`: horizontally layout all boxs.
 
@@ -90,12 +90,11 @@ Every data item (each line in the example above) represents a box, which contain
 
 ### name(string)
 
-The name of a data item.
+Name of data item.
 
 ### value(Array)
 
-The value of a data item.
-
+Value of data item.
 
 ```javascript
 [open, close, lowest, highest]  (namely: [opening value, closing value, lowest value, highest value])
@@ -117,6 +116,10 @@ The value of a data item.
 {{use:partial-z-zlevel(
     prefix="#",
     componentName="candlestick"
+) }}
+
+{{ use:partial-silent(
+    prefix="#"
 ) }}
 
 {{ use:partial-silent(
