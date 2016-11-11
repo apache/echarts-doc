@@ -436,8 +436,6 @@ A color list for a level. Each node in the level will obtain a color from the co
 {{ /if }}
 #${prefix} colorAlpha(Array) = null
 
-{{ if: ${prefix} !== '#' }}
-
 It indicates the range of tranparent rate (color alpha) {{ if: ${prefix} !== '#' }}for nodes in a level {{ else }} of the series{{ /if }}. The range of values is 0 ~ 1.
 
 For example, `colorAlpha` can be `[0.3, 1]`.
