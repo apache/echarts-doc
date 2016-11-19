@@ -120,6 +120,12 @@ Options:
 
     Bottom position of the graphic element where the mouse is in, which is only valid when [trigger](~tooltip.trigger) is `'item'`.
 
+## confine(boolean) = false
+
+Whether confine tooltip content in the view rect of chart instance.
+
+Useful when tooltip is cut because of `'overflow: hidden'` set on outer dom of chart instance, or because of narrow screen on mobile.
+
 ## transitionDuration(number) = 0.4
 
 The transition duration of tooltip's animation, in seconds. When it is set to be 0, it would move closely with the mouse.

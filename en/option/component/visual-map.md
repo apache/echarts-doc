@@ -341,7 +341,7 @@ Possiable visual channels includes:
 Whether to show ${visualMapName} component. If set as `false`, ${visualMapName} component will not show, but it can still perform visual mapping from dataValue to visual channel in chart.
 
 
-## dimension(string) = 0
+## dimension(string)
 
 Specify which dimension should be used to fetch dataValue from [series.data](~series.data), and then map them to visual channel.
 
@@ -358,6 +358,7 @@ Specify which dimension should be used to fetch dataValue from [series.data](~se
 
 Each column of the above array is regarded as a `dimension`. For example, when property `dimension` is set to 1, the second column (i.e., 23, 23, 545, 23) is chosen to perform visual mapping.
 
+Use the last dimension of `data` by default.
 
 ## seriesIndex(number|Array.<number>)
 
