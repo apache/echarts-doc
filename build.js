@@ -8,21 +8,18 @@ var configName = './config' + (process.argv[2] || '');
 
 var config = require(configName);
 languages.forEach(function (language) {
-    if (!fs.existsSync('public/documents')) {
-        fs.mkdirSync('public/documents');
-    }
-    if (!fs.existsSync('public/documents/' + language)) {
-        fs.mkdirSync('public/documents/' + language);
+    if (!fs.existsSync('public/' + language + '/documents/' + language)) {
+        fs.mkdirSync('public/' + language + '/documents/' + language);
     }
     md2json({
             path: language + '/option/**/*.md',
-            sectionsAnyOf: ['visualMap', 'dataZoom', 'series'],
+            sectionsAnyOf: ['visualMap', 'dataZoom', 'series', 'graphic'],
             entry: 'option',
             tplEnv: config
         },
         function (optionSchema) {
             fs.writeFileSync(
-                'public/documents/' + language + '/option.json',
+                'public/' + language + '/documents/' + language + '/option.json',
                 JSON.stringify(optionSchema, null, 2),
                 'utf-8'
             );
@@ -36,7 +33,7 @@ languages.forEach(function (language) {
         },
         function (tutorialSchema) {
             fs.writeFileSync(
-                'public/documents/' + language + '/tutorial.json',
+                'public/' + language + '/documents/' + language + '/tutorial.json',
                 JSON.stringify(tutorialSchema, null, 2),
                 'utf-8'
             );
@@ -49,7 +46,7 @@ languages.forEach(function (language) {
         },
         function (apiSchema) {
             fs.writeFileSync(
-                'public/documents/' + language + '/api.json',
+                'public/' + language + '/documents/' + language + '/api.json',
                 JSON.stringify(apiSchema, null, 2),
                 'utf-8'
             );
@@ -57,7 +54,7 @@ languages.forEach(function (language) {
     );
 
     fs.writeFileSync(
-        'public/documents/' + language + '/changelog.html',
+        'public/' + language + '/documents/' + language + '/changelog.html',
         marked(fs.readFileSync(language + '/changelog.md', 'utf-8')),
         'utf-8'
     );
