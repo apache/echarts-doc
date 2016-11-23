@@ -73,5 +73,7 @@ myChart.setOption({
 });
 ```
 
+可以按需引入的模块列表见 [https://github.com/ecomfe/echarts/blob/master/index.js](https://github.com/ecomfe/echarts/blob/master/index.js)
+
 
 对于另一个流行的模块打包工具 [browserify](http://browserify.org/) 也是同样的用法，这里就不赘述了。
