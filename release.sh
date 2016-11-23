@@ -9,3 +9,7 @@ cp -R ${basepath}/public/documents/cn/ ${basepath}/../echarts-home/documents/cn/
 # asset
 rm -r ${basepath}/../echarts-home/documents/asset/*
 cp -R ${basepath}/asset/ ${basepath}/../echarts-home/documents/asset/
+
+
+# github
+node ${basepath}/build.js github
