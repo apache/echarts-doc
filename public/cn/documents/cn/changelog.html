@@ -1,3 +1,42 @@
+<h2 id="v3-3-2">v3.3.2</h2>
+<div class="time">2016-11-24</div>
+
+<ul>
+<li><p><strong>[+] 开放图形元素设置：<a href="http://echarts.baidu.com/option.html#graphic">graphic</a>。参见<a href="http://echarts.baidu.com/gallery/editor.html?c=line-y-category">http://echarts.baidu.com/gallery/editor.html?c=line-y-category</a> 和 <a href="http://echarts.baidu.com/gallery/editor.html?c=line-draggable">http://echarts.baidu.com/gallery/editor.html?c=line-draggable</a> 和 <a href="http://echarts.baidu.com/gallery/editor.html?c=map-province">http://echarts.baidu.com/gallery/editor.html?c=map-province</a>。</strong></p>
+</li>
+<li><p>[+] 增加了 <a href="http://echarts.baidu.com/option.html#series-treemap.visualMin">visualMin</a> 和 <a href="http://echarts.baidu.com/option.html#series-treemap.visualMax">visualMax</a>，增强了 <a href="http://echarts.baidu.com/option.html#series-treemap">treemap</a> 的颜色映射能力。参见 <a href="https://github.com/ecomfe/echarts/issues/2509">#2509</a>。</p>
+</li>
+<li><p>[+] 增加了 <a href="http://echarts.baidu.com/option.html#tooltip.confine">tooltip.confine</a>，可以把 tooltip 限制在 chart 主容器范围中。这对于小屏、以及外层 dom 有设 <code>overflow:hidden</code> 的场景比较有用。</p>
+</li>
+<li><p>[^] 改善了 <a href="http://echarts.baidu.com/option.html#geo">geo</a> / <a href="http://echarts.baidu.com/option.html#series-map">map</a> 在触屏上的选择和 roam 体验。</p>
+</li>
+<li><p>[^] 修复 <a href="http://echarts.baidu.com/api.html#echartsInstance.containPixel">containPixel</a> 在 <a href="http://echarts.baidu.com/option.html#geo">geo</a> / <a href="http://echarts.baidu.com/option.html#series-graph">graph</a> 中的判断错误。参见 <a href="https://github.com/ecomfe/echarts/issues/4405">#4405</a>。</p>
+</li>
+<li><p>[^] 增强了 <a href="http://echarts.baidu.com/option.html#visualMap">visualMap</a> 对 <a href="http://echarts.baidu.com/option.html#series-line">line</a> 图的映射。</p>
+</li>
+<li><p>[^] 修正了 <a href="http://echarts.baidu.com/option.html#visualMap">visualMap</a> 对于 symbol 的映射问题。</p>
+</li>
+<li><p>[^] 使 <a href="http://echarts.baidu.com/option.html#dataZoom">dataZoom</a> 的 label 在非 <a href="http://echarts.baidu.com/option.html#dataZoom.realtime">realtime</a> 情况下实时更新。参见 <a href="https://github.com/ecomfe/echarts/issues/4434">#4434</a>。</p>
+</li>
+<li><p>[^] 修复 <a href="http://echarts.baidu.com/option.html#dataZoom">dataZoom</a> 缩放时高亮不正确问题。参见 <a href="https://github.com/ecomfe/echarts/issues/4475">#4475</a>。</p>
+</li>
+<li><p>[^] 修复了移动端禁止了浏览器默认滑动的错误。参见 <a href="https://github.com/ecomfe/echarts/issues/4393">#4393</a>。</p>
+</li>
+<li><p>[^] 修复 MS Edge 浏览器中不能保存为图片的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/2451">#2451</a> 和 <a href="https://github.com/ecomfe/echarts/issues/3586">#3586</a>。</p>
+</li>
+<li><p>[^] 修复 <a href="http://echarts.baidu.com/option.html#tooltip">tooltip</a> 中对 <code>&#39;time&#39;</code> 类型的轴的格式化问题。参见 <a href="https://github.com/ecomfe/echarts/issues/4398">#4398</a>。</p>
+</li>
+<li><p>[^] 修复第一个系列为空数据的时候多系列 <a href="http://echarts.baidu.com/option.html#tooltip">tooltip</a> 可能不显示的 bug。</p>
+</li>
+<li><p>[^] 修复 <a href="http://echarts.baidu.com/option.html#grid.containLabel">grid.containLabel</a> 对大 fontSize 无效的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/3805">#3805</a>。</p>
+</li>
+<li><p>[^] 修复 <code>echarts.extendSeriesModel</code> 错误。参见 <a href="https://github.com/ecomfe/echarts/issues/4397">#4397</a>。</p>
+</li>
+<li><p>[^] 修复 <a href="http://echarts.baidu.com/option.html#series-pie">pie</a> 中 <code>clockwise</code> 设置为 <code>false</code> 并且使用了 <code>minAngle</code> 时的渲染错误。参见 <a href="https://github.com/ecomfe/echarts/issues/4414">#4414</a>。</p>
+</li>
+<li><p>[^] 修复使用 gradient color 时 <a href="http://echarts.baidu.com/option.html#tooltip">tooltip</a> 中圆点颜色错误，参见 <a href="https://github.com/ecomfe/echarts/issues/3994">#3994</a>。</p>
+</li>
+</ul>
 <h2 id="v3-3-1">v3.3.1</h2>
 <div class="time">2016-11-03</div>
 
