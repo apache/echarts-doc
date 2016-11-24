@@ -9,7 +9,7 @@
 
 
 下面示例中，使用图形元素做了水印，和文本块：
-~[600x400](${galleryViewPath}line-y-category&edit=1&reset=1)
+~[600x400](${galleryViewPath}line-graphic&edit=1&reset=1)
 
 下面示例中，使用隐藏的图形元素实现了拖拽：
 ~[600x400](${galleryViewPath}line-draggable&edit=1&reset=1)
