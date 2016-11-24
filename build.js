@@ -13,7 +13,7 @@ languages.forEach(function (language) {
     }
     md2json({
             path: language + '/option/**/*.md',
-            sectionsAnyOf: ['visualMap', 'dataZoom', 'series', 'graphic'],
+            sectionsAnyOf: ['visualMap', 'dataZoom', 'series', 'graphic.elements'],
             entry: 'option',
             tplEnv: config
         },
