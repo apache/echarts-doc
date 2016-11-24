@@ -1074,18 +1074,18 @@ z 方向的高度，决定层叠关系。
 
 {{ target: graphic-cpt-type-list }}
 
-[image](~graphic.elements~graphic.elements-image),
-[text](~graphic.elements~graphic.elements-text),
-[circle](~graphic.elements~graphic.elements-circle),
-[sector](~graphic.elements~graphic.elements-sector),
-[ring](~graphic.elements~graphic.elements-ring),
-[polygon](~graphic.elements~graphic.elements-polygon),
-[polyline](~graphic.elements~graphic.elements-polyline),
-[rect](~graphic.elements~graphic.elements-rect),
-[line](~graphic.elements~graphic.elements-line),
-[bezierCurve](~graphic.elements~graphic.elements-bezierCurve),
-[arc](~graphic.elements~graphic.elements-arc),
-[group](~graphic.elements~graphic.elements-group),
+[image](~graphic.elements-image),
+[text](~graphic.elements-text),
+[circle](~graphic.elements-circle),
+[sector](~graphic.elements-sector),
+[ring](~graphic.elements-ring),
+[polygon](~graphic.elements-polygon),
+[polyline](~graphic.elements-polyline),
+[rect](~graphic.elements-rect),
+[line](~graphic.elements-line),
+[bezierCurve](~graphic.elements-bezierCurve),
+[arc](~graphic.elements-arc),
+[group](~graphic.elements-group),
 
 
 
