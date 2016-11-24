@@ -9,13 +9,13 @@ It is a special flow graph which is mainly used to present the changes of an eve
 
 **Sample: **
 
-~[700x580](${galleryViewPath}sankey-energy&edit=1&reset=1)
+~[700x580](${galleryViewPath}themeRiver-lastfm&edit=1&reset=1)
 
 
 <br>
 **visual encoding: **
 
-The ribbon-shape river branches in different colors in theme river encode variable events or themes. The width of river branches encode the value of the original dataset.  
+The ribbon-shape river branches in different colors in theme river encode variable events or themes. The width of river branches encode the value of the original dataset.
 
 What's more, the time attribute of the orinigal dataset would map to a single time axis.
 
@@ -33,16 +33,16 @@ What's more, the time attribute of the orinigal dataset would map to a single ti
 ) }}
 
 ** Notes: **
-The positional information of the whole theme river view reuses the positional information of a single time axis, which are left, top, right and bottom. 
+The positional information of the whole theme river view reuses the positional information of a single time axis, which are left, top, right and bottom.
 
 
 ## coordinateSystem(string) = "single"
 
-coordinate. The theme river adopts sinle time axis. 
+coordinate. The theme river adopts sinle time axis.
 
 ## boundaryGap(Array) = ["10%", "10%"]
 
-The boundary gap of the direction orthogonal with coordinate axis in diagram, which is set to adjust the diagram position, keeping it on the screen center instead of the upside or downside of the screen.  
+The boundary gap of the direction orthogonal with coordinate axis in diagram, which is set to adjust the diagram position, keeping it on the screen center instead of the upside or downside of the screen.
 
 
 ## singleAxisIndex(number) = 0
@@ -51,7 +51,7 @@ The index of single time axis, which defaults to be 0 because it contains only o
 
 ## label(Object)
 
-`label` describes style of text labels with which each ribbon-shape river branch corresponds in theme river. 
+`label` describes style of text labels with which each ribbon-shape river branch corresponds in theme river.
 
 ### normal(Object)
 {{use:partial-label(

@@ -1,3 +1,91 @@
+## v3.3.2
+<div class="time">2016-11-24</div>
+
++ [+] Add [graphic](http://echarts.baidu.com/option.html#graphic) in option, enable graphic configuration in option. See examples: <http://echarts.baidu.com/gallery/editor.html?c=line-y-category>, <http://echarts.baidu.com/gallery/editor.html?c=line-draggable> and <http://echarts.baidu.com/gallery/editor.html?c=map-province>.
+
++ [+] Add [visualMin](http://echarts.baidu.com/option.html#series-treemap.visualMin) and [visualMax](http://echarts.baidu.com/option.html#series-treemap.visualMax), and enhance capability of visual mapping in [treemap](http://echarts.baidu.com/option.html#series-treemap). See [#2509](https://github.com/ecomfe/echarts/issues/2509).
+
++ [+] Add [tooltip.confine](http://echarts.baidu.com/option.html#tooltip.confine), which can confine tooltip within contianer of echarts instance. It helps a lot in small screen, or in the situation that outer dom is set to be `overflow:hidden`.
+
++ [^] Fix that erroneously forbiden default pan behavior in touch device. See [#4393](https://github.com/ecomfe/echarts/issues/4393).
+
++ [^] Enhance user experience for [geo](http://echarts.baidu.com/option.html#geo) / [map](http://echarts.baidu.com/option.html#series-map) in touche device。
+
++ [^] Fix calculation error of [containPixel](http://echarts.baidu.com/api.html#echartsInstance.containPixel) in [geo](http://echarts.baidu.com/option.html#geo) / [graph](http://echarts.baidu.com/option.html#series-graph). See [#4405](https://github.com/ecomfe/echarts/issues/4405).
+
++ [^] Enhance gradient [visualMap](http://echarts.baidu.com/option.html#visualMap) for [line](http://echarts.baidu.com/option.html#series-line).
+
++ [^] Fix symbol mapping in [visualMap](http://echarts.baidu.com/option.html#visualMap).
+
++ [^] Enable [realtime](http://echarts.baidu.com/option.html#dataZoom.realtime) upating of label in [dataZoom](http://echarts.baidu.com/option.html#dataZoom). See [#4434](https://github.com/ecomfe/echarts/issues/4434).
+
++ [^] Fix highlight error in [dataZoom](http://echarts.baidu.com/option.html#dataZoom). See [#4475](https://github.com/ecomfe/echarts/issues/4475).
+
++ [^] Fix that can not save as image in MS Edge browser. See [#2451](https://github.com/ecomfe/echarts/issues/2451) and [#3586](https://github.com/ecomfe/echarts/issues/3586).
+
++ [^] Fix format problem for `'time'` axis in [tooltip](http://echarts.baidu.com/option.html#tooltip). See [#4398](https://github.com/ecomfe/echarts/issues/4398).
+
++ [^] Fix [grid.containLabel](http://echarts.baidu.com/option.html#grid.containLabel) not works for large fontSize. See [#3805](https://github.com/ecomfe/echarts/issues/3805).
+
++ [^] Fix `echarts.extendSeriesModel` error. See [#4397](https://github.com/ecomfe/echarts/issues/4397).
+
++ [^] Fix render error when `clockwise` is `false` and `minAngle` is used in [pie](http://echarts.baidu.com/option.html#series-pie). See [#4414](https://github.com/ecomfe/echarts/issues/4414).
+
++ [^] Fix erroneously rendering dot in [tooltip](http://echarts.baidu.com/option.html#tooltip) when using gradient color. See [#3994](https://github.com/ecomfe/echarts/issues/3994).
+
+
+## v3.3.1
+<div class="time">2016-11-03</div>
+
+
+## v3.3.0
+<div class="time">2016-11-01</div>
+
+
+## v3.2.3
+<div class="time">2016-08-16</div>
+
+
+## v3.2.2
+<div class="time">2016-07-11</div>
+
+
+## v3.2.1
+<div class="time">2016-07-04</div>
+
+
+## v3.2.0
+<div class="time">2016-06-30</div>
+
+
+## v3.1.10
+<div class="time">2016-05-19</div>
+
+
+## v3.1.9
+<div class="time">2016-05-12</div>
+
+
+## v3.1.8
+<div class="time">2016-05-11</div>
+
+
+## v3.1.7
+<div class="time">2016-04-21</div>
+
+
+## v3.1.6
+<div class="time">2016-04-11</div>
+
+
+## v3.1.5
+<div class="time">2016-03-29</div>
+
+
+## v3.1.4
+<div class="time">2016-03-21</div>
+
+
 ## v3.1.3
 <div class="time">2016-03-10</div>
 
@@ -114,7 +202,7 @@
 
 + [^] add error alert of non-exist map type.
 
-+ [^] optimize legend switch animation of line chart. 
++ [^] optimize legend switch animation of line chart.
 
 + [^] fix problem about Legends cannot be added dynamically. Fix [#2457](https://github.com/ecomfe/echarts/issues/2457)
 

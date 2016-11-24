@@ -5,14 +5,14 @@
 
 `graphic` 是原生图形元素组件。可以支持的图形元素包括：
 
-{{ use: graphic-type-list }}
+{{ use: graphic-cpt-type-list }}
 
 
 下面示例中，使用图形元素做了水印，和文本块：
-~[800x400](${galleryViewPath}line-y-category&edit=1&reset=1)
+~[600x400](${galleryViewPath}line-y-category&edit=1&reset=1)
 
 下面示例中，使用隐藏的图形元素实现了拖拽：
-~[800x400](${galleryViewPath}line-draggable&edit=1&reset=1)
+~[600x400](${galleryViewPath}line-draggable&edit=1&reset=1)
 
 
 
@@ -155,6 +155,160 @@ myChart.setOption({
 
 
 
+
+<br>
+
+---
+
+**图形元素的基本形状设置**
+
+每个图形元素本身有自己的图形基本的位置和尺寸设置，例如：
+
+```javascript
+{
+    type: 'rect',
+    shape: {
+        x: 10,
+        y: 10,
+        width: 100,
+        height: 200
+    }
+},
+{
+    type: 'circle',
+    shape: {
+        cx: 20,
+        cy: 30,
+        r: 100
+    }
+},
+{
+    type: 'image',
+    style: {
+        image: 'http://xxx.xxx.xxx/a.png',
+        x: 100,
+        y: 200,
+        width: 230,
+        height: 400
+    }
+},
+{
+    type: 'text',
+    style: {
+        text: 'This text',
+        x: 100,
+        y: 200
+    }
+
+}
+```
+
+
+
+
+<br>
+
+---
+
+**图形元素的定位和 transfrom**
+
+
+除此以外，可以以 transform 的方式对图形进行平移、旋转、缩放，
+
+```javascript
+{
+    type: 'rect',
+    position: [100, 200], // 平移，默认值为 [0, 0]。
+    scale: [2, 4], // 缩放，默认值为 [1, 1]。表示缩放的倍数。
+    rotation: Math.PI / 4, // 旋转，默认值为 0。表示旋转的弧度值。正值表示逆时针旋转。
+    origin: [10, 20], // 旋转和缩放的中心点，默认值为 [0, 0]。
+    shape: {
+        // ...
+    }
+}
+```
+
++ 每个图形元素在父节点的坐标系中进行 transform，也就是说父子节点的 transform 能『叠加』。
++ 每个图形元素进行 transform 顺序是：
+    1. 平移 [-el.origin[0], -el.origin[1]]。
+    2. 根据 el.scale 缩放。
+    3. 根据 el.rotation 旋转。
+    4. 平移 el.origin。
+    5. 根据 el.position 平移。
++ 也就是说先缩放旋转后平移，这样平移不会影响缩放旋转的 origin。
+
+
+
+
+
+<br>
+
+---
+
+**图形元素相对定位和布局**
+
+
+
+以上两者是基本的绝对定位，除此之外，在实际应用中，容器尺寸常常是不确定甚至动态变化的，所以需要提供相对定位的机制。graphic 组件使用 [left](~graphic.elements.left) / [right](~graphic.elements.right) / [top](~graphic.elements.top) / [bottom](~graphic.elements.bottom) / [width](~graphic.elements.width) / [height](~graphic.elements.height) 提供了相对定位的机制。
+
+例如：
+```javascript
+{ // 将图片定位到最下方的中间：
+    type: 'image',
+    left: 'center', // 水平定位到中间
+    bottom: '10%',  // 定位到距离下边界 10% 处
+    style: {
+        image: 'http://xxx.xxx.xxx/a.png',
+        width: 45,
+        height: 45
+    }
+},
+{ // 将旋转过的 group 整体定位右下角：
+    type: 'group',
+    right: 0,  // 定位到右下角
+    bottom: 0, // 定位到右下角
+    rotation: Math.PI / 4,
+    children: [
+        {
+            type: 'rect',
+            left: 'center', // 相对父元素居中
+            top: 'middle',  // 相对父元素居中
+            shape: {
+                width: 190,
+                height: 90
+            },
+            style: {
+                fill: '#fff',
+                stroke: '#999',
+                lineWidth: 2,
+                shadowBlur: 8,
+                shadowOffsetX: 3,
+                shadowOffsetY: 3,
+                shadowColor: 'rgba(0,0,0,0.3)'
+            }
+        },
+        {
+            type: 'text',
+            left: 'center', // 相对父元素居中
+            top: 'middle',  // 相对父元素居中
+            style: {
+                fill: '#777',
+                text: [
+                    'This is text',
+                    '这是一段文字',
+                    'Print some text'
+                ].join('\n'),
+                font: '14px Microsoft YaHei'
+            }
+        }
+    ]
+}
+```
+
+注意，可以用 [bounding](graphic.elements.bounding) 来设置是否整体限制在父节点包围盒中。
+
+
+
 <br>
 
 ---
@@ -164,121 +318,430 @@ myChart.setOption({
 
 
 
+## elements(Array)
 
-# graphic.group(Object)
+里面是所有图形元素的集合。
 
-{{ use: graphic-common-props(
+注意：graphic 的标准写法是：
+
+```javascript
+{
+    graphic: {
+        elements: [
+            {type: 'rect', ...}, {type: 'circle', ...}, ...
+        ]
+    }
+}
+```
+
+但是我们常常可以用简写：
+
+```javascript
+{
+    graphic: {
+        type: 'rect',
+        ...
+    }
+}
+```
+
+或者：
+```javascript
+{
+    graphic: [
+        {type: 'rect', ...}, {type: 'circle', ...}, ...
+    ]
+}
+```
+
+
+
+
+
+
+
+## elements.group(Object)
+
+group 是唯一的可以有子节点的容器。group 可以用来整体定位一组图形元素。
+
+{{ use: graphic-cpt-common-props(
     type='group',
     galleryViewPath=${galleryViewPath}
 ) }}
 
-## width(number) = undefined
+### width(number) = 0
 
-用于描述此 `group` 的高宽。默认为 undefined 表示此 group 没有高宽。
+用于描述此 `group` 的宽。
 
-这个高宽只用于给子节点一个
+这个宽只用于给子节点定位。
 
-## height(number) = undefined
+即便当宽度为零的时候，子节点也可以使用 `left: 'center'` 相对于父节点水平居中。
+
+
+### height(number) = 0
+
+用于描述此 `group` 的高。
+
+这个高只用于给子节点定位。
+
+即便当高度为零的时候，子节点也可以使用 `top: 'middle'` 相对于父节点垂直居中。
+
+
+### children(Array)
+
+子节点列表，其中项都是一个图形元素定义。
+
+{{ use: graphic-cpt-common-props(
+    type='group',
+    galleryViewPath=${galleryViewPath}
+) }}
+
+{{ use: graphic-cpt-event-handlers }}
 
 
 
-# graphic.image(Object)
 
-{{ use: graphic-common-props(
+## elements.image(Object)
+
+{{ use: graphic-cpt-common-props(
     type='image',
     galleryViewPath=${galleryViewPath}
 ) }}
 
+### style(Object)
+
+#### image(string)
+
+图片的内容，可以是图片的 URL，也可以是 [dataURI](https://tools.ietf.org/html/rfc2397).
+
+{{ use: graphic-cpt-sub-prop-xy }}
+{{ use: graphic-cpt-sub-prop-wh }}
+{{ use: graphic-cpt-style-prop-common }}
+
+{{ use: graphic-cpt-event-handlers }}
 
 
-# graphic.text(Object)
 
-{{ use: graphic-common-props(
+
+
+## elements.text(Object)
+
+文本块。
+
+{{ use: graphic-cpt-common-props(
     type='text',
     galleryViewPath=${galleryViewPath}
 ) }}
 
+### style(Object)
+
+#### text(string) = ''
+
+文本块文字。可以使用 `\n` 来换行。
+
+{{ use: graphic-cpt-sub-prop-xy }}
+
+#### font(string)
+
+字体大小、字体类型、粗细、字体样式。格式参见 [css font](https://developer.mozilla.org/en-US/docs/Web/CSS/font)。
+
+例如：
+```
+// size | family
+font: '2em "STHeiti", sans-serif'
+
+// style | weight | size | family
+font: 'italic bolder 16px cursive'
+
+// weight | size | family
+font: 'bolder 2em "Microsoft YaHei", sans-serif'
+```
+
+#### textAlign(string) = 'left'
+
+水平对齐方式，取值：`'left'`, `'center'`, `'right'`。
+
+如果为 `'left'`，表示文本最左端在 `x` 值上。如果为 `'right'`，表示文本最右端在 `x` 值上。
+
+#### textVeticalAlign(string)
+
+垂直对齐方式，取值：`'top'`, `'middle'`, `'bottom'`。
+
+{{ use: graphic-cpt-style-prop-common }}
+
+{{ use: graphic-cpt-event-handlers }}
 
 
-# graphic.rect(Object)
 
-{{ use: graphic-common-props(
+
+
+
+## elements.rect(Object)
+
+矩形。
+
+{{ use: graphic-cpt-common-props(
     type='rect',
     galleryViewPath=${galleryViewPath}
 ) }}
 
+### shape(Object)
+
+{{ use: graphic-cpt-sub-prop-xy }}
+{{ use: graphic-cpt-sub-prop-wh }}
+
+### style(Object)
+
+{{ use: graphic-cpt-style-prop-common }}
+
+{{ use: graphic-cpt-event-handlers }}
 
 
-# graphic.circle(Object)
 
-{{ use: graphic-common-props(
+
+## elements.circle(Object)
+
+圆。
+
+{{ use: graphic-cpt-common-props(
     type='circle',
     galleryViewPath=${galleryViewPath}
 ) }}
 
+### shape(Object)
+
+{{ use: graphic-cpt-sub-prop-cxy }}
+{{ use: graphic-cpt-sub-prop-r }}
+
+### style(Object)
+
+{{ use: graphic-cpt-style-prop-common }}
+
+{{ use: graphic-cpt-event-handlers }}
 
 
-# graphic.ring(Object)
 
-{{ use: graphic-common-props(
+
+
+
+## elements.ring(Object)
+
+圆环。
+
+{{ use: graphic-cpt-common-props(
     type='ring',
     galleryViewPath=${galleryViewPath}
 ) }}
 
 
+### shape(Object)
 
-# graphic.polygon(Object)
-
-{{ use: graphic-common-props(
-    type='polygon',
-    galleryViewPath=${galleryViewPath}
-) }}
+{{ use: graphic-cpt-sub-prop-cxy }}
+{{ use: graphic-cpt-sub-prop-rr0 }}
 
 
+### style(Object)
 
-# graphic.polyline(Object)
+{{ use: graphic-cpt-style-prop-common }}
 
-{{ use: graphic-common-props(
-    type='polyline',
-    galleryViewPath=${galleryViewPath}
-) }}
+{{ use: graphic-cpt-event-handlers }}
 
 
 
-# graphic.sector(Object)
 
-{{ use: graphic-common-props(
+
+
+
+## elements.sector(Object)
+
+扇形。
+
+{{ use: graphic-cpt-common-props(
     type='sector',
     galleryViewPath=${galleryViewPath}
 ) }}
 
+### shape(Object)
 
+{{ use: graphic-cpt-sub-prop-cxy }}
+{{ use: graphic-cpt-sub-prop-rr0 }}
+{{ use: graphic-cpt-sub-prop-angle }}
 
-# graphic.line(Object)
+### style(Object)
 
-{{ use: graphic-common-props(
-    type='line',
-    galleryViewPath=${galleryViewPath}
-) }}
+{{ use: graphic-cpt-style-prop-common }}
 
-
-
-# graphic.curve(Object)
-
-{{ use: graphic-common-props(
-    type='curve',
-    galleryViewPath=${galleryViewPath}
-) }}
+{{ use: graphic-cpt-event-handlers }}
 
 
 
-# graphic.arc(Object)
 
-{{ use: graphic-common-props(
+
+
+
+
+## elements.arc(Object)
+
+圆弧。
+
+{{ use: graphic-cpt-common-props(
     type='arc',
     galleryViewPath=${galleryViewPath}
 ) }}
 
+### shape(Object)
+
+{{ use: graphic-cpt-sub-prop-cxy }}
+{{ use: graphic-cpt-sub-prop-rr0 }}
+{{ use: graphic-cpt-sub-prop-angle }}
+
+### style(Object)
+
+{{ use: graphic-cpt-style-prop-common(
+    fill = 'null',
+    stroke = '"#000"',
+    lineWidth = 5
+) }}
+
+{{ use: graphic-cpt-event-handlers }}
+
+
+
+
+
+
+
+
+
+
+## elements.polygon(Object)
+
+多边形。
+
+{{ use: graphic-cpt-common-props(
+    type='polygon',
+    galleryViewPath=${galleryViewPath}
+) }}
+
+### shape(Object)
+
+{{ use: graphic-cpt-path-common }}
+
+### style(Object)
+
+{{ use: graphic-cpt-style-prop-common }}
+
+{{ use: graphic-cpt-event-handlers }}
+
+
+
+
+
+
+
+## elements.polyline(Object)
+
+折线。
+
+{{ use: graphic-cpt-common-props(
+    type='polyline',
+    galleryViewPath=${galleryViewPath}
+) }}
+
+### shape(Object)
+
+{{ use: graphic-cpt-path-common }}
+
+### style(Object)
+
+{{ use: graphic-cpt-style-prop-common(
+    fill = 'null',
+    stroke = '"#000"',
+    lineWidth = 5
+) }}
+
+{{ use: graphic-cpt-event-handlers }}
+
+
+
+
+
+
+
+
+
+## elements.line(Object)
+
+直线。
+
+{{ use: graphic-cpt-common-props(
+    type='line',
+    galleryViewPath=${galleryViewPath}
+) }}
+
+### shape(Object)
+
+{{ use: graphic-cpt-sub-prop-x1y1x2y2 }}
+
+#### percent(number) = 1
+
+线画到百分之多少就不画了。
+
+### style(Object)
+
+{{ use: graphic-cpt-style-prop-common(
+    fill = 'null',
+    stroke = '"#000"',
+    lineWidth = 5
+) }}
+
+{{ use: graphic-cpt-event-handlers }}
+
+
+
+
+
+
+
+
+## elements.bezierCurve(Object)
+
+二次或三次贝塞尔曲线。
+
+{{ use: graphic-cpt-common-props(
+    type='bezierCurve',
+    galleryViewPath=${galleryViewPath}
+) }}
+
+### shape(Object)
+
+{{ use: graphic-cpt-sub-prop-x1y1x2y2 }}
+
+#### cpx1(number) = 0
+
+控制点 x 值。
+
+#### cpy1(number) = 0
+
+控制点 y 值。
+
+#### cpx2(number) = null
+
+第二个控制点 x 值。如果设置则开启三阶贝塞尔曲线。
+
+#### cpy2(number) = null
+
+第二个控制点 y 值。如果设置则开启三阶贝塞尔曲线。
+
+#### percent(number) = 1
+
+画到百分之多少就不画了。
+
+### style(Object)
+
+{{ use: graphic-cpt-style-prop-common }}
+
+{{ use: graphic-cpt-event-handlers }}
 
 
 
@@ -292,20 +755,21 @@ myChart.setOption({
 
 
 
-{{ target: graphic-common-props }}
 
-## type(string) = ${type}
+{{ target: graphic-cpt-common-props }}
+
+### type(string) = ${type}
 
 用 setOption 首次设定图形元素时必须指定。
 可取值：
 
-{{ use: graphic-type-list }}
+{{ use: graphic-cpt-type-list }}
 
-## id(string) = undefined
+### id(string) = undefined
 
 id 用于在更新或删除图形元素时指定更新哪个图形元素，如果不需要用可以忽略。
 
-## $action(string) = 'merge'
+### $action(string) = 'merge'
 
 setOption 时指定本次对该图形元素的操作行为。
 
@@ -315,21 +779,95 @@ setOption 时指定本次对该图形元素的操作行为。
 + `'remove'`：删除元素。
 
 
-## left(number|string) = undefined
+### left(number|string) = undefined
 
-{{ use: graphic-location-prop-desc-common (hv = 'h') }}
+{{ use: graphic-cpt-location-prop-desc-common (hv = 'h') }}
 
-## right(number|string) = undefined
+### right(number|string) = undefined
 
-{{ use: graphic-location-prop-desc-common (hv = 'h') }}
+{{ use: graphic-cpt-location-prop-desc-common (hv = 'h') }}
 
-## top(number|string) = undefined
+### top(number|string) = undefined
 
-{{ use: graphic-location-prop-desc-common (hv = 'v') }}
+{{ use: graphic-cpt-location-prop-desc-common (hv = 'v') }}
 
-## bottom(number|string) = undefined
+### bottom(number|string) = undefined
 
-{{ use: graphic-location-prop-desc-common (hv = 'v') }}
+{{ use: graphic-cpt-location-prop-desc-common (hv = 'v') }}
+
+### bounding(strin) = 'all'
+
+决定此图形元素在定位时，对自身的包围盒计算方式。
+
+参见例子：
+~[500x500](${galleryViewPath}doc-example/graphic-bounding&edit=1&reset=1)
+
+可取值：
+
++ `'all'`：（默认）
+    表示用自身以及子节点整体的经过 transform 后的包围盒进行定位。
+    这种方式易于使整体都限制在父元素范围中。
+
++ `'raw'`：
+    表示仅仅用自身（不包括子节点）的没经过 tranform 的包围盒进行定位。
+    这种方式易于内容超出父元素范围的定位方式。
+
+
+### z(number) = 0
+
+z 方向的高度，决定层叠关系。
+
+### zlevel(number) = 0
+
+决定此元素绘制在哪个 canvas 层中。注意，越多 canvas 层会占用越多资源。
+
+### silent(boolean) = false
+
+是否不响应鼠标以及触摸事件。
+
+### cursor(string) = 'pointer'
+
+鼠标悬浮时鼠标的样式是什么。同 CSS 的 `cursor`。
+
+### draggable(boolean) = false
+
+图形元素是否可以被拖拽。
+
+### progressive(boolean) = false
+
+是否渐进式渲染。当图形元素过多时才使用。
+
+
+
+{{ target: graphic-cpt-style-prop-common }}
+
+#### fill(string) = ${fill|default("'#000'")}
+
+填充色。
+
+#### stroke(string) = ${stroke|default("null")}
+
+笔画颜色。
+
+#### lineWidth(number) = ${lineWidth|default("0")}
+
+笔画宽度。
+
+#### shadowBlur(number) = undefined
+
+阴影宽度。
+
+#### shadowOffsetX(number) = undefined
+
+阴影 X 方向偏移。
+
+#### shadowOffsetY(number) = undefined
+
+阴影 Y 方向偏移。
+
+#### shadowColor(number) = undefined
+
+阴影颜色。
 
 
 
@@ -337,11 +875,37 @@ setOption 时指定本次对该图形元素的操作行为。
 
 
 
-{{ target: graphic-location-prop-desc-common }}
+
+{{ target: graphic-cpt-path-common }}
+
+#### points(Array)
+
+点列表，如 `[[22, 44], [44, 55], [11, 44], ...]`
+
+#### smooth(number|string) = undefined
+
+是否平滑曲线。
+
++ 如果为 number：表示贝塞尔 (bezier) 差值平滑，smooth 指定了平滑等级，范围 `[0, 1]`。
++ 如果为 `'spline'`：表示 Catmull-Rom spline 差值平滑。
+
+#### smoothConstraint(boolean) = false
+
+是否将平滑曲线约束在包围盒中。`smooth` 为 `number`（bezier）时生效。
+
+
+
+
+
+
+
+
+
+{{ target: graphic-cpt-location-prop-desc-common }}
 
 描述怎么根据父元素进行定位。
 
-{{ use: graphic-parent-desc }}
+{{ use: graphic-cpt-parent-desc }}
 
 值的类型可以是：
 
@@ -363,7 +927,126 @@ setOption 时指定本次对该图形元素的操作行为。
 
 
 
-{{ target: graphic-location-group-wh-common }}
+{{ target: graphic-cpt-sub-prop-xy }}
+
+#### x(number) = 0
+
+图形元素的左上角在父节点坐标系（以父节点左上角为原点）中的横坐标值。
+
+#### y(numbr) = 0
+
+图形元素的左上角在父节点坐标系（以父节点左上角为原点）中的纵坐标值。
+
+
+{{ target: graphic-cpt-sub-prop-cxy }}
+
+#### cx(number) = 0
+
+图形元素的中心在父节点坐标系（以父节点左上角为原点）中的横坐标值。
+
+#### cy(numbr) = 0
+
+图形元素的中心在父节点坐标系（以父节点左上角为原点）中的纵坐标值。
+
+
+{{ target: graphic-cpt-sub-prop-wh }}
+
+#### width(number) = 0
+
+图形元素的宽度。
+
+#### height(numbr) = 0
+
+图形元素的高度。
+
+
+{{ target: graphic-cpt-sub-prop-r }}
+
+#### r(number) = 0
+
+外半径。
+
+{{ target: graphic-cpt-sub-prop-rr0 }}
+
+{{ use: graphic-cpt-sub-prop-r }}
+
+#### r0(number) = 0
+
+内半径。
+
+{{ target: graphic-cpt-sub-prop-x1y1x2y2 }}
+
+#### x1(number) = 0
+
+开始点的 x 值。
+
+#### y1(number) = 0
+
+开始点的 y 值。
+
+#### x2(number) = 0
+
+结束点的 x 值。
+
+#### y2(number) = 0
+
+结束点的 y 值。
+
+{{ target: graphic-cpt-sub-prop-angle }}
+
+#### startAngle(number) = 0
+
+开始弧度。
+
+#### endAngle(number) = Math.PI * 2
+
+结束弧度。
+
+#### clockwise(boolean) = true
+
+是否顺时针。
+
+
+
+
+
+
+
+{{ target: graphic-cpt-event-handlers }}
+
+### onclick(Function)
+
+### onmouseover(Function)
+
+### onmouseout(Function)
+
+### onmousemove(Function)
+
+### onmousewheel(Function)
+
+### onmousedown(Function)
+
+### onmouseup(Function)
+
+### ondrag(Function)
+
+### ondragstart(Function)
+
+### ondragend(Function)
+
+### ondragenter(Function)
+
+### ondragleave(Function)
+
+### ondragover(Function)
+
+### ondrop(Function)
+
+
+
+
+
+{{ target: graphic-cpt-location-group-wh-common }}
 
 用于描述此 `group` 的高宽。默认为 undefined 表示此 group 没有高宽。
 
@@ -373,7 +1056,11 @@ setOption 时指定本次对该图形元素的操作行为。
 
 
 
-{{ target: graphic-parent-desc }}
+
+
+
+
+{{ target: graphic-cpt-parent-desc }}
 
 『父元素』是指：如果是顶层元素，父元素是 echarts 图表容器。如果是 `group` 的子元素，父元素就是 `group` 元素。
 
@@ -383,9 +1070,11 @@ setOption 时指定本次对该图形元素的操作行为。
 
 
 
-{{ target: graphic-type-list }}
 
-`image`, `text`, `circle`, `sector`, `ring`, `polygon`, `polyline`, `rect`, `line`, `curve`, `arc`, `group`
+
+{{ target: graphic-cpt-type-list }}
+
+`image`, `text`, `circle`, `sector`, `ring`, `polygon`, `polyline`, `rect`, `line`, `bezierCurve`, `arc`, `group`
 
 
 
