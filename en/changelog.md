@@ -1,7 +1,7 @@
 ## v3.3.2
 <div class="time">2016-11-24</div>
 
-+ [+] Add [graphic](http://echarts.baidu.com/option.html#graphic) in option, enable graphic configuration in option. See examples: <http://echarts.baidu.com/gallery/editor.html?c=line-y-category>, <http://echarts.baidu.com/gallery/editor.html?c=line-draggable> and <http://echarts.baidu.com/gallery/editor.html?c=map-province>.
++ [+] **Add [graphic](http://echarts.baidu.com/option.html#graphic) in option, enable graphic configuration in option. See examples: <http://echarts.baidu.com/gallery/editor.html?c=line-y-category>, <http://echarts.baidu.com/gallery/editor.html?c=line-draggable> and <http://echarts.baidu.com/gallery/editor.html?c=map-province>.**
 
 + [+] Add [visualMin](http://echarts.baidu.com/option.html#series-treemap.visualMin) and [visualMax](http://echarts.baidu.com/option.html#series-treemap.visualMax), and enhance capability of visual mapping in [treemap](http://echarts.baidu.com/option.html#series-treemap). See [#2509](https://github.com/ecomfe/echarts/issues/2509).
 
