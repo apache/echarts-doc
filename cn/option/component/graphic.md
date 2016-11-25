@@ -88,7 +88,8 @@ myChart.setOption({
     ]
 });
 ```
-注意，如果没有指定 id，第二次 setOption 时会按照元素在 option 中出现的顺序和已有的图形元素进行匹配。
+注意，如果没有指定 id，第二次 setOption 时会按照元素在 option 中出现的顺序和已有的图形元素进行匹配。这有时会产生不易理解的效果。
+所以，一般来说，更新 elements 时推荐使用 id 进行准确的指定，而非省略 id。
 
 
 
@@ -104,8 +105,12 @@ myChart.setOption({
 
 ```javascript
 {
-    id: 'xxx', // id 用于在更新图形元素时指定更新哪个图形元素，如果不需要用可以忽略。
-    type: 'image', // 这个字段在第一次设置时不能忽略，取值见上方『支持的图形元素』。
+    // id 用于在更新图形元素时指定更新哪个图形元素，如果不需要用可以忽略。
+    id: 'xxx',
+
+    // 这个字段在第一次设置时不能忽略，取值见上方『支持的图形元素』。
+    type: 'image',
+
     // 下面的各个属性如果不需要设置都可以忽略，忽略则取默认值。
 
     // 指定本次 setOption 对此图形元素进行的操作。默认是 'merge'，还可以 'replace' 或 'remove'。
@@ -126,9 +131,16 @@ myChart.setOption({
         // 样式相关的设置，如 fill, stroke, lineWidth, shadowBlur 等。
     },
 
-    z: 10 // 表示 z 高度，从而指定了图形元素的覆盖关系。
-    silent: true, // 表示不响应事件。
-    onclick: function () {...} 事件的监听器，还可以是 onmousemove, ondrag 等。支持的事件参见下。
+    // 表示 z 高度，从而指定了图形元素的覆盖关系。
+    z: 10,
+    // 表示不响应事件。
+    silent: true,
+    // 设置是否整体限制在父节点范围内。可选值：'raw', 'all'。
+    bouding: 'raw',
+    // 是否可以被拖拽。
+    draggable: false,
+    // 事件的监听器，还可以是 onmousemove, ondrag 等。支持的事件参见下。
+    onclick: function () {...}
 }
 ```
 
@@ -140,7 +152,7 @@ myChart.setOption({
 **图形元素的事件**
 
 支持这些事件配置：
-`onclick`, `onmouseover`, `onmouseout`, `onmousemove`, `onmousewheel`, `onmousedown`, `onmouseup`, `ondrag`, `ondragstart`, `ondragend`, `ondragenter`, `ondragleave`, `ondragover`, `ondrop`
+`onclick`, `onmouseover`, `onmouseout`, `onmousemove`, `onmousewheel`, `onmousedown`, `onmouseup`, `ondrag`, `ondragstart`, `ondragend`, `ondragenter`, `ondragleave`, `ondragover`, `ondrop`。
 
 
 
@@ -233,7 +245,7 @@ myChart.setOption({
     1. 平移 [-el.origin[0], -el.origin[1]]。
     2. 根据 el.scale 缩放。
     3. 根据 el.rotation 旋转。
-    4. 平移 el.origin。
+    4. 根据 el.origin 平移。
     5. 根据 el.position 平移。
 + 也就是说先缩放旋转后平移，这样平移不会影响缩放旋转的 origin。
 
@@ -245,7 +257,7 @@ myChart.setOption({
 
 ---
 
-**图形元素相对定位和布局**
+**图形元素相对定位**
 
 
 
@@ -305,7 +317,7 @@ myChart.setOption({
 }
 ```
 
-注意，可以用 [bounding](graphic.elements.bounding) 来设置是否整体限制在父节点包围盒中。
+注意，可以用 [bounding](graphic.elements.bounding) 来设置是否整体限制在父节点范围内。
 
 
 
@@ -685,7 +697,7 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
 
 #### percent(number) = 1
 
-线画到百分之多少就不画了。
+线画到百分之多少就不画了。值的范围：[0, 1]。
 
 ### style(Object)
 
@@ -735,7 +747,7 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
 
 #### percent(number) = 1
 
-画到百分之多少就不画了。
+画到百分之多少就不画了。值的范围：[0, 1]。
 
 ### style(Object)
 
@@ -880,7 +892,7 @@ z 方向的高度，决定层叠关系。
 
 #### points(Array)
 
-点列表，如 `[[22, 44], [44, 55], [11, 44], ...]`
+点列表，用于定义形状，如 `[[22, 44], [44, 55], [11, 44], ...]`
 
 #### smooth(number|string) = undefined
 
@@ -1048,7 +1060,7 @@ z 方向的高度，决定层叠关系。
 
 {{ target: graphic-cpt-location-group-wh-common }}
 
-用于描述此 `group` 的高宽。默认为 undefined 表示此 group 没有高宽。
+用于描述此 `group` 的高宽。默认为 0。
 
 这个高宽只用于给子节点定义一个布局的容器，从而子节点的 `left`/`right`/`top`/`bottom` 可以根据此高宽来定位。
 
