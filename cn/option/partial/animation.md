@@ -5,7 +5,7 @@
 是否开启动画，默认开启。
 
 
-#${prefix} animationThreshold = ${defaultAnimationThreshold|default(2000)}
+#${prefix} animationThreshold(number) = ${defaultAnimationThreshold|default(2000)}
 
 是否开启动画的阈值，当单个系列显示的图形数量大于这个阈值时会关闭动画。
 
