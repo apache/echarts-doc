@@ -54,6 +54,12 @@ ECharts 使用 [geoJSON](http://geojson.org/) 格式的数据作为地图的轮�
 center: [115.97, 29.71]
 ```
 
+#${prefix} aspectScale(number) = 0.75
+
+这个参数用于 scale 地图的长宽比。
+
+最终的 `aspect` 的计算方式是：`geoBoundingRect.width / geoBoundingRect.height * aspectScale`
+
 #${prefix} zoom(number) = 1
 当前视角的缩放比例。
 
