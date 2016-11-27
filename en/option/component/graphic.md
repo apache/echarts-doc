@@ -149,6 +149,8 @@ Different types of graphic elements has their own configuration respectively, bu
     z: 10,
     // Whether response to mouse events / touch events.
     silent: true,
+    // Whether the element is visible.
+    invisible: false,
     // Used to specify whether the entire transformed element (containing children if is group)
     // is confined in its container. Optional values: 'raw', 'all'.
     bounding: 'raw',
@@ -873,6 +875,10 @@ Notice: Multiple canvas layer may affect performance.
 ### silent(boolean) = false
 
 Whether response to mouse events / touch events.
+
+### invisible(boolean) = false
+
+Whether the element is visible.
 
 ### cursor(string) = 'pointer'
 
