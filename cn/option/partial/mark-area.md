@@ -112,7 +112,8 @@ data: [
 
 {{ use: partial-animation(
     prefix="#" + ${prefix},
-    defaultAnimation='false'
+    defaultAnimation='false',
+    galleryEditorPath=${galleryEditorPath},
 ) }}
 
 

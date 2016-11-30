@@ -2,7 +2,7 @@
 
 #${prefix} animation(boolean) = true
 
-Whether to enable animation; true by default.
+Whether to enable animation.
 
 
 #${prefix} animationThreshold(number) = ${defaultAnimationThreshold|default(2000)}

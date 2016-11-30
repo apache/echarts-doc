@@ -125,6 +125,7 @@ data: [{{if: ${hasType} }}
 
 
 {{ use: partial-animation(
-    prefix="#" + ${prefix}
+    prefix="#" + ${prefix},
+    galleryEditorPath=${galleryEditorPath},
 ) }}
 

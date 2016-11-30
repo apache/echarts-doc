@@ -2,7 +2,7 @@
 
 #${prefix} animation(boolean) = ${defaultAnimation|default(true)}
 
-是否开启动画，默认开启。
+是否开启动画。
 
 
 #${prefix} animationThreshold(number) = ${defaultAnimationThreshold|default(2000)}
