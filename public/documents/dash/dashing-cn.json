@@ -1,0 +1,18 @@
+{
+    "name": "ECharts Documentation",
+    "package": "echarts",
+    "index": "./cn/option.html",
+    "selectors": {
+        ".prop": "Property",
+        ".opt": "Option",
+        ".guide": "Guide",
+        ".event": "Event",
+        ".action": "Command",
+        ".method": "Method",
+        ".inst": "Instance"
+    },
+    "ignore": [],
+    "icon32x32": "./cn/asset/icon.png",
+    "allowJS": true,
+    "ExternalURL": ""
+}
