@@ -14,7 +14,8 @@ require('jsdom').env('', (err, window) => {
 
     var lang = ['cn', 'en'];
     for (var l = 0; l < lang.length; ++l) {
-        var inBase = process.cwd() + '/' + lang[l] + '/';
+        var inBase = path.join(__dirname,
+            '../' + lang[l] + '/documents/' + lang[l] + '/');
         var outBase = process.cwd() + '/dash/' + lang[l] + '/';
         if (!fs.existsSync(outBase)) {
             fs.mkdirSync(outBase);

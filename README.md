@@ -28,9 +28,11 @@ node server.js
 
 ## Build Dash Docset
 
-1. `cd public/documents/dash`
+1. `cd public/documents`
 
-2. `node ../dashing.js`
+2. `node dashing.js`
+
+3. `cd dash`
 
 3. Build
   - To build Docset in English: `./dashing build echarts -f dashing-en.json -s ./en`
