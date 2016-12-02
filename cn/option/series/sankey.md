@@ -64,11 +64,12 @@
     prefix="###",
     defaultShowLabel=true,
     defaultPosition="'right'",
-    formatter2d=true
+    formatter1d=true
 )}}
 ### emphasis(Object)
 {{use:partial-label(
-    prefix="###"
+    prefix="###",
+    formatter1d=true
 )}}
 
 ## itemStyle(Object)

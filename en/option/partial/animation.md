@@ -2,10 +2,10 @@
 
 #${prefix} animation(boolean) = true
 
-Whether to enable animation; true by default.
+Whether to enable animation.
 
 
-#${prefix} animationThreshold = ${defaultAnimationThreshold|default(2000)}
+#${prefix} animationThreshold(number) = ${defaultAnimationThreshold|default(2000)}
 
 Whether to set graphic number threshold to animation. Animation will be disabled when graphic number is larger than threshold.
 
@@ -49,7 +49,7 @@ Duration of the first animation.
 
 #${prefix} animationEasing(string) = ${defaultAnimationEasing|default('cubicOut')}
 
-Easing method used for the first animation. Varied easing effects can be found at [easing effect example](${galleryViewPath}line-easing). 
+Easing method used for the first animation. Varied easing effects can be found at [easing effect example](${galleryViewPath}line-easing).
 
 
 #${prefix} animationDelay(number|Function) = 0

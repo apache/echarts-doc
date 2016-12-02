@@ -49,6 +49,9 @@ Whether to show as Nightingale chart, which distinguishs data through radius. Th
 ## avoidLabelOverlap(boolean) = true
 Whether to enable the strategy to avoid labels overlap. Defaults to be enabled, which will move the label positions in the case of labels overlapping
 
+## stillShowZeroSum(boolean) = true
+Whether to show sector when all data are zero.
+
 ## label(Object)
 {{use:partial-label-desc(name="pie chart")}}
 ### normal(Object)

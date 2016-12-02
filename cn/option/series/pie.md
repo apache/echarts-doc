@@ -46,6 +46,9 @@
 
 如果不需要开启该策略，例如[圆环图](${galleryEditorPath}pie-doughnut)这个例子中需要强制所有标签放在中心位置，可以将该值设为 `false`。
 
+## stillShowZeroSum(boolean) = true
+是否在数据和为`0`（一般情况下所有数据为`0`） 的时候不显示扇区。
+
 ## label(Object)
 {{use:partial-label-desc(name="饼图")}}
 ### normal(Object)

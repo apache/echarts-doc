@@ -120,6 +120,12 @@
 
     鼠标所在图形底侧，只在 [trigger](~tooltip.trigger) 为`'item'`的时候有效。
 
+## confine(boolean) = false
+
+是否将 tooltip 框限制在图表的区域内。
+
+当图表外层的 dom 被设置为 `'overflow: hidden'`，或者移动端窄屏，导致 tooltip 超出外界被截断时，此配置比较有用。
+
 ## transitionDuration(number) = 0.4
 
 提示框浮层的移动动画过渡时间，单位是 s，设置为 0 的时候会紧跟着鼠标移动。

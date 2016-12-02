@@ -1,0 +1,313 @@
+
+@import "dt/0.0.1/ui/all.less";
+
+@middle-percent: 55%;
+
+body {
+    background: #FAFAFC;
+    font-family: "Helvetica Neue","Segoe UI",Tahoma,Arial,"Hiragino Sans GB",STHeiti,"Microsoft Yahei","WenQuanYi Micro Hei",sans-serif;
+    font-size: 12px;
+}
+
+.dtui-chkbtn-i {
+    border: 1px solid transparent;
+    height: 20px;
+    line-height: 20px;
+    .border-radius(2px);
+    color: #555;
+
+    &-hover {
+        // border: 1px solid #ccc;
+        // color: #555;
+        // background-color: transparent;
+
+        background-color: #b03a5b;
+        color: #eee;
+    }
+    &-active {
+        // border: 1px solid #bfbfbf;
+        // color: #555;
+        // background-color: transparent;
+        background-color: #b03a5b;
+        color: #eee;
+    }
+}
+.dtui-txipt {
+    .border-radius(4px);
+    background-color: #FAFAFC;
+    width: 100px;
+    input {
+        background-color: #FAFAFC;
+    }
+}
+.dtui-btn {
+    background: #b03a5b;
+    font-size: 12px;
+
+    &-hover {
+        background: #612133;
+    }
+    &-active {
+        background: #612133;
+    }
+}
+
+
+.ecdoc-sprsht {
+    margin-top: 70px;
+}
+.ecdoc-sprsht-main {
+    position: relative;
+}
+.ecdoc-sprsht-panel {
+    background: #fff;
+    border: 1px solid #ccc;
+    color: #333;
+    padding: 5px 10px;
+    line-height: 25px;
+    .border-radius(4px);
+}
+.ecdoc-sprsht-datatable-to-codeinputs {
+
+}
+
+.ecdoc-sprsht-datatable-ctrl {
+    position: fixed;
+    left: 0;
+    top: 53px;
+    height: 38px;
+    width: @middle-percent;
+    padding-left: 5px;
+    text-align: center;
+
+    .dtui-btn {
+        // background: #b03a5b;
+        color: #b03a5b;
+        background: transparent;
+        min-width: 40px;
+        font-size: 14px;
+        box-shadow: none;
+    }
+}
+
+.ecdoc-sprsht-datatable {
+    position: fixed;
+    left: 0;
+    top: 81px;
+    width: @middle-percent;
+    bottom: 0;
+    overflow: hidden;
+    border-right: 1px solid #ccc;
+
+    .handsontable {
+        color: #333;
+        font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif; // 只有Verdana是居中的
+        font-size: 12px;
+
+        .dragdealer .handle {
+            .border-radius(4px);
+        }
+
+        table.htCore {
+            td.area {
+                background-color: #EEF4FF !important;
+            }
+            th {
+                cursor: pointer;
+            }
+            th.rchead-highlight {
+                background: #D1D5DA;
+            }
+        }
+    }
+}
+.ecdoc-sprsht-right {
+    margin: 0 0 0 @middle-percent;
+}
+.ecdoc-sprsht-ctrl-area {
+    margin: 0 35px 0 20px;
+    padding: 5px 0;
+    position: relative;
+    border: 1px solid #ccc;
+    .border-radius(4px);
+
+    h1 {
+        margin: 10px 0 10px 0;
+        font-size: 26px;
+        padding: 0 15px;
+    }
+    .ecdoc-sprsht-desc {
+        margin: 15px 0 10px 0;
+        padding: 2px 15px;
+        color: #a94442;
+        background: #f2dede;
+        border-top: 1px solid #ebccd1;
+        border-bottom: 1px solid #ebccd1;
+        // .border-radius(3px);
+
+        strong {
+            color: #333;
+            font-weight: 700;
+            margin: auto 4px auto 4px;
+        }
+    }
+
+    .ecdoc-sprsht-line {
+        margin-bottom: 6px;
+        padding: 6px 15px 0 15px;
+
+        label {
+            vertical-align: middle;
+            margin-bottom: 0;
+        }
+    }
+
+    .ecdoc-attr-info {
+        font-size: 12px;
+        line-height: 32px;
+    }
+    .ecdoc-sprsht-attr-change {
+        margin: -26px 0 0 100px;
+
+        .dtui-btn {
+            width: 22px;
+            min-width: 22px;
+            height: 22px;
+            line-height: 22px;
+            font-size: 20px;
+            font-family: Arial;
+            .border-radius(11px);
+            padding: 0;
+            // border: 1px solid #293c55;
+            background-color: #b03a5b;
+            // color: #293c55;
+            margin-left: 5px;
+        }
+    }
+    .ecdoc-attr-item {
+        line-height: 32px;
+    }
+    .ecdoc-attr-block {
+        .inline-block();
+        vertical-align: middle;
+        margin: 0 3px;
+
+        label {
+            font-weight: normal;
+            vertical-align: middle;
+            margin-bottom: 0;
+        }
+        .dtui-txipt {
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+    .ecdoc-attr-title {
+        font-family: "Andale Mono", Monospace; // 等宽字体，从而字母纵向对齐
+    }
+    .ecdoc-attr-data-type {
+
+        .dtui-chkbtn-i {
+            margin: 0 2px 0 0;
+        }
+    }
+
+    .cpt-tab {
+        position: relative;
+    }
+    .ctrl-tab {
+        position: relative;
+        margin-bottom: 0;
+
+        & > label {
+            position: relative;
+            height: 30px;
+            line-height: 30px;
+            vertical-align: bottom;
+            bottom: -1px;
+        }
+    }
+    .ctrl-tab-hi {
+        position: relative;
+        display: inline-block;
+        vertical-align: bottom;
+        text-align: center;
+        // height: @wave-op-pannel-vertical-tab-height;
+        // line-height: @wave-op-pannel-vertical-tab-height;
+        cursor: pointer;
+        font-size: 12px;
+        height: 30px;
+        line-height: 30px;
+        padding: 0 10px;
+        background: transparent;
+        border: 1px solid transparent;
+        border-bottom-width: 0;
+        bottom: -1px;
+        .border-top-left-radius(4px);
+        .border-top-right-radius(4px);
+
+        &:hover {
+            background: #fff;
+            border: 1px solid #ccc;
+            border-bottom-width: 0;
+        }
+    }
+    .ctrl-tab-hi-curr {
+        background: #fff;
+        border: 1px solid #ccc;
+        border-bottom-width: 0;
+    }
+    .ctrl-tab-coni {
+        // left: @wave-add-panel-tab0-width;
+        // .border-radius(@wave-blk-border-radius);
+        // background: @wave-chart-configurer-tab0-active-color;
+        margin-top: 0;
+        background: #fff;
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .ctrl-con-item {
+        margin: 10px;
+        display: inline-block;
+        width: 186px;
+        cursor: pointer;
+    }
+}
+.ecdoc-sprsht-codeinputs-area {
+    margin: 20px 35px 0 20px;
+
+    .dtui-txipt-type-textarea {
+        border: 1px solid #ccc;
+    }
+
+    label {
+        margin-left: 10px;
+        margin-bottom: 0;
+    }
+    .ecdoc-sprsht-title {
+        height: 25px;
+        line-height: 25px;
+        font-size: 12px;
+        padding-left: 10px;
+    }
+    .ecdoc-sprsht-codeinput {
+        position: relative;
+        height: 205px;
+    }
+    .dtui-txipt-type-textarea {
+        display: block;
+        position: absolute;
+        width: auto;
+        top: 25px;
+        left: 0;
+        bottom: 0;
+        right: 30px;
+        margin: 0;
+        height: auto;
+    }
+    .ecdoc-sprsht-codeinputs {
+        margin-top: 20px;
+    }
+}

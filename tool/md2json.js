@@ -32,33 +32,55 @@ function convert(opts, cb) {
         var schema = mdToJsonSchema(mdStr, maxDepth);
         // console.log(mdStr);
         var topLevel = schema.option.properties;
+
         (sectionsAnyOf || []).forEach(function (componentName) {
             var newProperties = schema.option.properties = {};
+            var componentNameParsed = componentName.split('.');
+            componentName = componentNameParsed[0];
+
             for (var name in topLevel) {
-                if (name.indexOf(componentName) >= 0) {
-                    newProperties[componentName] = newProperties[componentName] || {
+                if (componentNameParsed.length > 1) {
+                    newProperties[name] = topLevel[name];
+                    var secondLevel = topLevel[name].properties;
+                    var secondNewProps = topLevel[name].properties = {};
+                    for (var secondName in secondLevel) {
+                        makeOptionArr(
+                            secondName, componentNameParsed[1], secondNewProps, secondLevel
+                        );
+                    }
+                }
+                else {
+                    makeOptionArr(name, componentName, newProperties, topLevel);
+                }
+            }
+            topLevel = newProperties;
+
+            function makeOptionArr(nm, cptName, newProps, level) {
+                var nmParsed = nm.split('.');
+                if (nmParsed[0] === cptName) {
+                    newProps[cptName] = newProps[cptName] || {
                         'type': 'Array',
                         'items': {
                             'anyOf': []
                         }
                     };
                     // Use description in excatly #series
-                    if (componentName === name) {
-                        newProperties[componentName].descriptionCN = topLevel[name].descriptionCN;
+                    if (cptName === nm) {
+                        newProps[cptName].descriptionCN = level[nm].descriptionCN;
                     }
                     else {
-                        newProperties[componentName].items.anyOf.push(topLevel[name]);
+                        newProps[cptName].items.anyOf.push(level[nm]);
                     }
                 }
                 else {
-                    newProperties[name] = topLevel[name];
+                    newProps[nm] = level[nm];
                 }
             }
-            topLevel = newProperties;
         });
 
         cb && cb(schema);
         // console.log(JSON.stringify(schema, null, 2));
+
     });
 
 }

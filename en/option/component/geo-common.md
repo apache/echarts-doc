@@ -4,12 +4,12 @@
 
 Map charts.
 
-Due to the increase of fineness of map, ECharts 3 doesn't include map data by default for package size consideration. You may find map files you need on [map download page](http://ecomfe.github.io/echarts-builder-web/map3.html) and then include and register them in ECharts. 
+Due to the increase of fineness of map, ECharts 3 doesn't include map data by default for package size consideration. You may find map files you need on [map download page](http://ecomfe.github.io/echarts-builder-web/map3.html) and then include and register them in ECharts.
 
 Two formats of map data are provided in ECharts, one of which can be included in `<script>` tag as JavaScript file, and the other of is in JSON format and should be loaded using AJAX. Map name and data will be loaded automatically once the JavaScript file is loaded, while in the JSON form, you have to assign name explicitly.
 
 
-Here are examples of these two types: 
+Here are examples of these two types:
 
 ** JavaScript importing example **
 
@@ -54,6 +54,12 @@ Example:
 ```js
 center: [115.97, 29.71]
 ```
+
+#${prefix} aspectScale(number) = 0.75
+
+Used to scale aspect of geo.
+
+The final aspect is calculated by: `geoBoundingRect.width / geoBoundingRect.height * aspectScale`.
 
 #${prefix} zoom(number) = 1
 Zoom rate of current view-port.
@@ -140,7 +146,7 @@ When using `left/right/top/bottom/width/height`, it is hard to put the map insid
 
 ```js
 layoutCenter: ['30%', '30%'],
-// If width-height ratio is larger than 1, then width is set to be 100. 
+// If width-height ratio is larger than 1, then width is set to be 100.
 // Otherwise, height is set to be 100.
 // This makes sure that it will not exceed the area of 100x100
 layoutSize: 100

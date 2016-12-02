@@ -1,0 +1,12 @@
+@font-face {
+    font-family: "Noto Sans CJK SC Light";
+    src: url("NotoSansCJKsc-Light.eot"); /* IE9 */
+    src: url("NotoSansCJKsc-Light.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("NotoSansCJKsc-Light.woff") format("woff"), /* chrome, firefox */
+    url("NotoSansCJKsc-Light.ttf") format("truetype"), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+    url("NotoSansCJKsc-Light.svg#Noto Sans CJK SC Light") format("svg"); /* iOS 4.1- */
+    font-style: normal;
+    font-weight: normal;
+}
+
+

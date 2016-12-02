@@ -313,7 +313,7 @@ chart.setOption(option); // option设置回 ${componentMainType}
 是否显示 ${visualMapName} 组件。如果设置为 `false`，不会显示，但是数据映射的功能还存在。
 
 
-## dimension(number) = 0
+## dimension(number)
 
 指定用数据的『哪个维度』，映射到视觉元素上。『数据』即 [series.data](~series.data)。
 可以把 [series.data](~series.data) 理解成一个二维数组，例如：
@@ -329,6 +329,8 @@ chart.setOption(option); // option设置回 ${componentMainType}
 
 其中每个列是一个维度，即 `dimension`。
 例如 `dimension` 为 1 时，取第二列（即 23，23，545，23），映射到视觉元素上。
+
+默认取 `data` 中最后一个维度。
 
 
 ## seriesIndex(number|Array)

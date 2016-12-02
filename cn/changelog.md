@@ -1,3 +1,42 @@
+## v3.3.2
+<div class="time">2016-11-24</div>
+
++ **[+] 开放图形元素设置：[graphic](http://echarts.baidu.com/option.html#graphic)。参见<http://echarts.baidu.com/gallery/editor.html?c=line-y-category> 和 <http://echarts.baidu.com/gallery/editor.html?c=line-draggable> 和 <http://echarts.baidu.com/gallery/editor.html?c=map-province>。**
+
++ [+] 增加了 [visualMin](http://echarts.baidu.com/option.html#series-treemap.visualMin) 和 [visualMax](http://echarts.baidu.com/option.html#series-treemap.visualMax)，增强了 [treemap](http://echarts.baidu.com/option.html#series-treemap) 的颜色映射能力。参见 [#2509](https://github.com/ecomfe/echarts/issues/2509)。
+
++ [+] 增加了 [tooltip.confine](http://echarts.baidu.com/option.html#tooltip.confine)，可以把 tooltip 限制在 chart 主容器范围中。这对于小屏、以及外层 dom 有设 `overflow:hidden` 的场景比较有用。
+
++ [^] 改善了 [geo](http://echarts.baidu.com/option.html#geo) / [map](http://echarts.baidu.com/option.html#series-map) 在触屏上的选择和 roam 体验。
+
++ [^] 修复 [containPixel](http://echarts.baidu.com/api.html#echartsInstance.containPixel) 在 [geo](http://echarts.baidu.com/option.html#geo) / [graph](http://echarts.baidu.com/option.html#series-graph) 中的判断错误。参见 [#4405](https://github.com/ecomfe/echarts/issues/4405)。
+
++ [^] 增强了 [visualMap](http://echarts.baidu.com/option.html#visualMap) 对 [line](http://echarts.baidu.com/option.html#series-line) 图的映射。
+
++ [^] 修正了 [visualMap](http://echarts.baidu.com/option.html#visualMap) 对于 symbol 的映射问题。
+
++ [^] 使 [dataZoom](http://echarts.baidu.com/option.html#dataZoom) 的 label 在非 [realtime](http://echarts.baidu.com/option.html#dataZoom.realtime) 情况下实时更新。参见 [#4434](https://github.com/ecomfe/echarts/issues/4434)。
+
++ [^] 修复 [dataZoom](http://echarts.baidu.com/option.html#dataZoom) 缩放时高亮不正确问题。参见 [#4475](https://github.com/ecomfe/echarts/issues/4475)。
+
++ [^] 修复了移动端禁止了浏览器默认滑动的错误。参见 [#4393](https://github.com/ecomfe/echarts/issues/4393)。
+
++ [^] 修复 MS Edge 浏览器中不能保存为图片的问题。参见 [#2451](https://github.com/ecomfe/echarts/issues/2451) 和 [#3586](https://github.com/ecomfe/echarts/issues/3586)。
+
++ [^] 修复 [tooltip](http://echarts.baidu.com/option.html#tooltip) 中对 `'time'` 类型的轴的格式化问题。参见 [#4398](https://github.com/ecomfe/echarts/issues/4398)。
+
++ [^] 修复第一个系列为空数据的时候多系列 [tooltip](http://echarts.baidu.com/option.html#tooltip) 可能不显示的 bug。
+
++ [^] 修复 [grid.containLabel](http://echarts.baidu.com/option.html#grid.containLabel) 对大 fontSize 无效的问题。参见 [#3805](https://github.com/ecomfe/echarts/issues/3805)。
+
++ [^] 修复 `echarts.extendSeriesModel` 错误。参见 [#4397](https://github.com/ecomfe/echarts/issues/4397)。
+
++ [^] 修复 [pie](http://echarts.baidu.com/option.html#series-pie) 中 `clockwise` 设置为 `false` 并且使用了 `minAngle` 时的渲染错误。参见 [#4414](https://github.com/ecomfe/echarts/issues/4414)。
+
++ [^] 修复使用 gradient color 时 [tooltip](http://echarts.baidu.com/option.html#tooltip) 中圆点颜色错误，参见 [#3994](https://github.com/ecomfe/echarts/issues/3994)。
+
+
+
 ## v3.3.1
 <div class="time">2016-11-03</div>
 

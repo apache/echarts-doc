@@ -1,0 +1,4 @@
+.tmp*
+.project
+.settings
+.idea
