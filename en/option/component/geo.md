@@ -4,7 +4,7 @@
 
 Geographic coorinate system component.
 
-Geographic coorinate system component is used to draw maps, which also supports [scatter series](~series-scatter), and [line series](~series-lines). 
+Geographic coorinate system component is used to draw maps, which also supports [scatter series](~series-scatter), and [line series](~series-lines).
 
 **Example of using scatter series in geographic coordinate:**
 ~[600x400](${galleryViewPath}scatter-map&edit=1&reset=1)
@@ -24,6 +24,10 @@ From `3.1.10`, geo component also supports mouse events, whose parameters are:
 }
 ```
 
+**Tip:**
+The region color can also be controlled by map series. See [series-map.geoIndex](~series-map.geoIndex).
+
+
 ## show(boolean) = true
 
 Whether to show the geo component.
@@ -42,11 +46,14 @@ regions: [{
     name: 'Guangdong',
     itemStyle: {
         normal: {
-            color: 'red'
+            areaColor: 'red'
         }
     }
 }]
 ```
+
+The region color can also be controlled by map series. See [series-map.geoIndex](~series-map.geoIndex).
+
 
 ### name(string)
 Name of area in map, like `'Guangdong'`, or `'Zhejiang'`.
