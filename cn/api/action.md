@@ -130,7 +130,7 @@ dispatchAction({
 })
 ```
 
-参数 `position` 同 [tooltip.position](option.html#tooltip.position) 相同。
+参数`position`同[tooltip.position](option.html#tooltip.position)相同。
 
 
 
@@ -284,6 +284,49 @@ dispatchAction({
     componentType='map',
     name='地图区域'
 ) }}
+
+
+<!--============= graph ==========-->
+## graph
+[关系图](option.html#series-graph) 相关的行为，必须引入 [关系图](option.html#series-graph) 后才能使用。
+
+### focusNodeAdjacency(Action)
+
+将指定的节点以及其所有邻接节点高亮。
+
+```js
+dispatchAction({
+    type: 'focusNodeAdjacency',
+
+    // 使用 seriesId 或 seriesIndex 或 seriesName 来定位 series.
+    seriesId: 'xxx',
+    seriesIndex: 0,
+    seriesName: 'nnn',
+
+    // 使用 dataIndex 来定位节点。
+    dataIndex: 12
+})
+```
+
+最后会抛出 [focusNodeAdjacency](~event.focusNodeAdjacency) 事件。
+
+### unfocusNodeAdjacency(Action)
+
+将指定的节点以及其所有邻接节点高亮。
+
+```js
+dispatchAction({
+    type: 'unfocusNodeAdjacency',
+
+    // 使用 seriesId 或 seriesIndex 或 seriesName 来定位 series.
+    seriesId: 'xxx',
+    seriesIndex: 0,
+    seriesName: 'nnn'
+})
+```
+
+最后会抛出 [unfocusNodeAdjacency](~event.unfocusNodeAdjacency) 事件。
+
 
 
 <!--============= brush ==========-->

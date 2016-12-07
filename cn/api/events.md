@@ -210,7 +210,7 @@ myChart.on('legendselectchanged', function (params) {
 
 
 ## axisareaselected(Event)
-[平行坐标轴 (Parallel)](option.html#parallelAxis) 范围选取事件。
+[平行坐标轴 (Parallel)](option.html#parallelAxis)范围选取事件。
 
 当进行坐标轴范围选取时，可以用如下方式获取当前高亮的线所对应的 data indices
 （即 `series` 的 `data` 中的序号列表）。
@@ -224,6 +224,18 @@ chart.on('axisareaselected', function () {
     console.log(indices0, indices1);
 });
 ```
+
+## focusNodeAdjacency(Event)
+[graph](option.html#graph)的邻接节点高亮事件。
+
+参见[focusNodeAdjacency](~action.graph.focusNodeAdjacency)。
+
+
+## unfocusNodeAdjacency(Event)
+[graph](option.html#graph)的邻接节点取消高亮事件。
+
+参见[unfocusNodeAdjacency](~action.graph.unfocusNodeAdjacency)。
+
 
 ## brush(Event)
 

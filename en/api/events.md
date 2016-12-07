@@ -208,6 +208,105 @@ chart.on('axisareaselected', function () {
 ```
 
 
+## focusNodeAdjacency(Event)
+Adjacent nodes highlight event in [graph](option.html#graph).
+
+See [focusNodeAdjacency](~action.graph.focusNodeAdjacency).
+
+
+## unfocusNodeAdjacency(Event)
+Adjacent nodes reverse-highlight event in [graph](option.html#graph).
+
+See [unfocusNodeAdjacency](~action.graph.unfocusNodeAdjacency).
+
+
+## brush(Event)
+
+Event triggered after action [brush](~action.brush) dispatched.
+
+
+## brushselected(Event)
+
+Notice what are selected.
+
+See [brush component](option.html#brush)。
+
+This event will be triggered when `dispatchAction` called, or use do brush behavior.
+But this event will not be triggered in `setOption`.
+
+Properties in this event.
+```javascript
+{
+    type: 'brushselected',
+    batch: [
+        {
+            // id of brush component. In most case, only one brush component is used, so do not care about this property.
+            brushIndex: number.
+
+            // The selected items in each series.
+            // Notice, if a series do not support `brush`, its cooresponding item still appear in this array. Namely, the index this array is the same as `seriesIndex`.
+            selected: [
+                { // The selected items in series 0.
+                    seriesIndex: number,
+                    // dataIndex can be used to find value in original data.
+                    dataIndex: [ 3, 6, 12, 23 ]
+                },
+                { // The selected items in series 0.
+                    seriesIndex: number,
+                    dataIndex: []
+                },
+                ...
+            ]
+        },
+        ...
+    ]
+}
+```
+
+Usage example of this event:
+
+```javascript
+var dataBySeries = [
+    [ 12, 23, 54, 6 ], // Data of series 0.
+    [ 34, 34433, 2223, 21122, 1232, 34 ] // Data of series 1.
+];
+
+chart.setOption({
+    ...,
+    brush: {
+        ...
+    },
+    series: [
+        { // series 0
+            data: dataBySeries[0]
+        },
+        { // series 1
+            data: dataBySeries[1]
+        }
+    ]
+});
+
+chart.on('brushSelected', function (params) {
+    var brushComponent = params.batch[0];
+
+    var sum = 0; // The sum of all selected values.
+
+    for (var sIdx = 0; sIdx < brushComponent.selected.length; sIdx++) {
+        var dataIndices = brushComponent.selected[sIdx].dataIndex;
+
+        for (var i = 0; i < dataIndices.length; i++) {
+            var dataIndex = dataIndices[i];
+            sum += dataBySeries[sIdx][dataIndex];
+        }
+    }
+    console.log(sum);
+});
+```
+
+**Tip: **
+[brush.throttleType](option.html#brush.throttleType) can be used to avoid triggering this event too frequently.
+
+
 
 {{ target: event-select }}
 ## ${componentType}selectchanged(Event)
