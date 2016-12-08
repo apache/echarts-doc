@@ -48,7 +48,8 @@ regions: [{
     name: '广东',
     itemStyle: {
         normal: {
-            areaColor: 'red'
+            areaColor: 'red',
+            color: 'red'
         }
     }
 }]

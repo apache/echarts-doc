@@ -46,7 +46,8 @@ regions: [{
     name: 'Guangdong',
     itemStyle: {
         normal: {
-            areaColor: 'red'
+            areaColor: 'red',
+            color: 'red'
         }
     }
 }]
