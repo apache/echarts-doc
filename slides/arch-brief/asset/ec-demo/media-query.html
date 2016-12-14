@@ -1,0 +1,197 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="../common/jquery.min.js"></script>
+        <script src="../common/echarts.min.js"></script>
+        <script src="../common/draggable.js"></script>
+        <link rel="stylesheet" href="../common/reset.css">
+    </head>
+    <body class="has-code">
+        <style>
+        </style>
+        <div id="main"></div>
+        <div id="code-box"><textarea id="code-area">
+(function () {
+
+draggable.init(
+    $('div[_echarts_instance_]')[0],
+    myChart,
+    {
+        width: 516,
+        height: 400,
+        throttle: 70
+    }
+);
+
+var outerRadius = '45%';
+
+option = {
+    baseOption: {
+        title : {
+            text: '南丁格尔玫瑰图',
+            x:'center'
+        },
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+            data:['rose1','rose2','rose3','rose4','rose5','rose6','rose7','rose8']
+        },
+        series : [
+            {
+                type:'pie',
+                roseType : 'radius',
+                label: {
+                    normal: {
+                        show: false
+                    },
+                    emphasis: {
+                        show: true
+                    }
+                },
+                lableLine: {
+                    normal: {
+                        show: false
+                    },
+                    emphasis: {
+                        show: true
+                    }
+                },
+                data:[
+                    {value:10, name:'rose1'},
+                    {value:5, name:'rose2'},
+                    {value:15, name:'rose3'},
+                    {value:25, name:'rose4'},
+                    {value:20, name:'rose5'},
+                    {value:35, name:'rose6'},
+                    {value:30, name:'rose7'},
+                    {value:40, name:'rose8'}
+                ]
+            },
+            {
+                type:'pie',
+                roseType : 'area',
+                labelLine: {
+                    normal: {
+                        show: true,
+                        length: 5,
+                        length2: 5
+                    }
+                },
+                data:[
+                    {value:10, name:'rose1'},
+                    {value:5, name:'rose2'},
+                    {value:15, name:'rose3'},
+                    {value:25, name:'rose4'},
+                    {value:20, name:'rose5'},
+                    {value:35, name:'rose6'},
+                    {value:30, name:'rose7'},
+                    {value:40, name:'rose8'}
+                ]
+            }
+        ]
+    },
+    media: [
+        {
+            option: {
+                legend: {
+                    right: 'center',
+                    bottom: 0,
+                    orient: 'horizontal'
+                },
+                series: [
+                    {
+                        radius: [20, '50%'],
+                        center: ['25%', '50%']
+                    },
+                    {
+                        radius: [30, '50%'],
+                        center: ['75%', '50%']
+                    }
+                ]
+            }
+        },
+        {
+            query: {
+                minAspectRatio: 1
+            },
+            option: {
+                legend: {
+                    right: 'center',
+                    bottom: 0,
+                    orient: 'horizontal'
+                },
+                series: [
+                    {
+                        radius: [20, outerRadius],
+                        center: ['25%', '50%']
+                    },
+                    {
+                        radius: [30, outerRadius],
+                        center: ['75%', '50%']
+                    }
+                ]
+            }
+        },
+        {
+            query: {
+                maxAspectRatio: 1
+            },
+            option: {
+                legend: {
+                    right: 'center',
+                    bottom: 0,
+                    orient: 'horizontal'
+                },
+                series: [
+                    {
+                        radius: [20, outerRadius],
+                        center: ['50%', '30%']
+                    },
+                    {
+                        radius: [30, outerRadius],
+                        center: ['50%', '70%']
+                    }
+                ]
+            }
+        },
+        {
+            query: {
+                maxWidth: 500
+            },
+            option: {
+                legend: {
+                    right: 10,
+                    top: '15%',
+                    orient: 'vertical'
+                },
+                series: [
+                    {
+                        radius: [20, outerRadius],
+                        center: ['50%', '30%']
+                    },
+                    {
+                        radius: [30, outerRadius],
+                        center: ['50%', '75%']
+                    }
+                ]
+            }
+        }
+    ]
+};
+
+
+})();
+        </textarea></div>
+        <script>
+
+        var myChart = echarts.init(document.getElementById('main'));
+        var code = document.getElementById('code-area');
+        var html = code.value;
+        eval(html);
+        myChart.setOption(option);
+
+        </script>
+    </body>
+</html>
