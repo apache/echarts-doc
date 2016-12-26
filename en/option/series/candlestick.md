@@ -61,6 +61,17 @@ The default value is decided by:
     + otherwise use `'vertical'`;
 + otherwise use `'horizontal'`.
 
+## barWidth(number)
+
+Specify bar width. Absolute value (like `10`) or percentage (like `'20%'`, according to band width) can be used. Auto adapt by default.
+
+## barMinWidth(number)
+
+Specify bar min width. Absolute value (like `10`) or percentage (like `'20%'`, according to band width) can be used. Auto adapt by default.
+
+## barMaxWidth(number)
+
+Specify bar max width. Absolute value (like `10`) or percentage (like `'20%'`, according to band width) can be used. Auto adapt by default.
 
 
 {{use:partial-candlestick-item-style(prefix="#")}}
