@@ -40,6 +40,7 @@
 {{import: series-sankey}}
 {{import: series-funnel}}
 {{import: series-gauge}}
+{{import: series-pictorialBar}}
 
 # color(Array)
 
