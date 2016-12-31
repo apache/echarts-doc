@@ -39,7 +39,7 @@
     prefix="##",
     name="主标题",
     defaultFontSize=18,
-    defaultFontWeight="'border'",
+    defaultFontWeight="'bolder'",
     defaultColor="'#333'"
 ) }}
 
