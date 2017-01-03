@@ -76,6 +76,15 @@ The style of a single data item can't be customized
 ## largeThreshold(number) = 2000
 The threshold enabling the drawing optimization.
 
+## symbol(string|Array) = 'none'
+
+Symbol type at the two ends of the line. It can be an array for two ends, or assigned seperately. See [data.symbol](~series-line.markLine.data.0.symbol) for more format information.
+
+## symbolSize(number|Array) = 10
+Symbol size at the two ends of the line. It can be an array for two ends, or assigned seperately.
+
+**Attention: ** You cannot assgin width and height seperately as normal `symbolSize`.
+
 ## lineStyle(Object)
 ### normal(Object)
 {{ use: partial-line-style(
