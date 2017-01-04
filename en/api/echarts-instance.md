@@ -9,7 +9,9 @@ Group name to be used in chart [connection](~echarts.connect).
 
 ## setOption(Function)
 ```js
-(option: Object, notMerge: boolean, notRefreshImmediately: boolean)
+(option: Object, notMerge?: boolean, lazyUpdate?: boolean)
+or
+(option: Object, opts?: Object)
 ```
 
 Configuration item, data, universal interface, all parameters and data can all be modified through `setOption`. ECharts will merge new parameters and data, and then refresh chart. If [animation](option.html#animation) is enabled, ECharts will find the difference between two groups of data and present data changes through proper animation.
@@ -21,6 +23,20 @@ Configuration item, data, universal interface, all parameters and data can all b
 **Attention: ** Setting configuration item using `addData` and `setSeries` of ECharts 2.x are no longer supported. `setOption` is used for all these cases in ECharts 3. Please refer to the above example.
 
 **Parameters**
+
+Invoke approaches:
+```js
+chart.setOption(option, notMerge, lazyUpdate);
+```
+or
+```js
+chart.setOption(option, {
+    notMerge: ...,
+    lazyUpdate: ...,
+    silent: ...
+});
+```
+
 + `option`
 
     Configuration item and data. Please refer to [configuration item manual](option.html) for more information.
@@ -29,9 +45,14 @@ Configuration item, data, universal interface, all parameters and data can all b
 
     Optional; states whether not to merge with previous `option`; `false` by defualt, stating merging.
 
-+ `notRefreshImmediately`
++ `lazyUpdate`
 
     Optional; states whether not to update chart immediately; `false` by defualt, stating update immediately.
+
++ `silent`
+
+    Optional; states whether not to prevent triggering events when calling `setOption`; `false` by defualt, stating trigger events.
+
 
 ## getWidth(Function)
 ```js
@@ -95,8 +116,9 @@ myChart.setOption({
 ## resize(Function)
 ```js
 (opts?: {
-    width?: number|string
-    height? number|string
+    width?: number|string,
+    height?: number|string,
+    silent?: boolean
 }) => ECharts
 ```
 
@@ -114,6 +136,10 @@ Resizes chart, which should be called manually when container size changes.
     + `height`
 
         Specify height explicitly, in pixel. If setting to `null`/`undefined`/`'auto'`, height of `dom` (instance container) will be used.
+
+    + `silent`
+
+        Specify whether or not to prevent triggering events.
 
 **Tip:** Sometimes charts may be placed in multiple tabs. Those in hidden labels may fail to initialize due to the ignorance of container width and height. So `resize` should be called manually to get the correct width and height when switching to the corresponding tabs, or specify width/heigth in `opts` explicitly.
 
