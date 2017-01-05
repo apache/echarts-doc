@@ -12,8 +12,10 @@ Whether to set graphic number threshold to animation. Animation will be disabled
 
 {{ use: partial-animation-init(
     prefix=${prefix},
+    galleryEditorPath=${galleryEditorPath},
     defaultAnimationDuration=${defaultAnimationDuration},
-    defaultAnimationEasing=${defaultAnimationEasing}
+    defaultAnimationEasing=${defaultAnimationEasing},
+    noAnimationDelay=${noAnimationDelay}
 ) }}
 
 
@@ -26,7 +28,7 @@ Time for animation to complete.
 
 Easing method used for animation.
 
-
+{{ if: !${noAnimationDelay} }}
 #${prefix} animationDelayUpdate(number|Function) = 0
 
 Delay before updating animation, which supports callback function for different data to have different animation effect.
@@ -40,6 +42,7 @@ animationDelayUpdate: function (idx) {
 ```
 
 See [this example](${galleryEditorPath}bar-animation-delay) for more information.
+{{ /if }}
 
 {{ target: partial-animation-init}}
 
@@ -49,9 +52,10 @@ Duration of the first animation.
 
 #${prefix} animationEasing(string) = ${defaultAnimationEasing|default('cubicOut')}
 
-Easing method used for the first animation. Varied easing effects can be found at [easing effect example](${galleryViewPath}line-easing).
+Easing method used for the first animation. Varied easing effects can be found at [easing effect example](${galleryEditorPath}line-easing).
 
 
+{{ if: !${noAnimationDelay} }}
 #${prefix} animationDelay(number|Function) = 0
 
 Delay before updating the first animation, which supports callback function for different data to have different animation effect.
@@ -65,3 +69,4 @@ animationDelayUpdate: function (idx) {
 ```
 
 See [this example](${galleryEditorPath}bar-animation-delay) for more information.
+{{ /if }}
