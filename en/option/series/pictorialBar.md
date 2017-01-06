@@ -284,11 +284,13 @@ For example:
 
 #${prefix} symbolMargin(number|string)
 
-Specify margin of both sides of a graphic element. ("both sides" means the two sides in the direction of its value axis)
+Specify margin of both sides of a graphic element. ("both sides" means the two sides in the direction of its value axis). It works only when [symbolRepeat](~series-pictorialBar.symbolRepeat) is used.
 
 Absolute value can be used (like `20`), or percent value can be used (like `'-30%'`), which is based on its [symbolSize](~series-pictorialBar.symbolSize).
 
 `symbolMargin` can be positive value or negative value, which enables overlap of graphic elements when [symbolRepeat](~series-pictorialBar.symbolRepeat) is used.
+
+A `"!"` can be appended on the end of the value, like `"30%!"` or `25!`, which means a extra blank will be added on the both ends, otherwise the graphic elements on both ends will reach the boundary by default.
 
 Notice:
 

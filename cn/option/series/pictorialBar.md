@@ -2,9 +2,9 @@
 
 # series.pictoialBar(Object)
 
-**异变柱状图**
+**象形柱图**
 
-异变柱状图是可以设置各种具象图形元素（如图片、[SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData) 等）的柱状图。往往用在信息图中。用于有至少一个类目轴或时间轴的[直角坐标系](~grid)上。
+象形柱图是可以设置各种具象图形元素（如图片、[SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData) 等）的柱状图。往往用在信息图中。用于有至少一个类目轴或时间轴的[直角坐标系](~grid)上。
 
 **示例：**
 ~[800x400](${galleryViewPath}pictorialBar-hill&reset=1&edit=1)
@@ -12,9 +12,9 @@
 
 **布局**
 
-异变柱状图可以被想象为：它首先是个柱状图，但是柱状图的柱子并不显示。这些柱子我们称为『基准柱（reference bar）』，根据基准柱来定位和显示各种异变图形（包括图片）。
+象形柱图可以被想象为：它首先是个柱状图，但是柱状图的柱子并不显示。这些柱子我们称为『基准柱（reference bar）』，根据基准柱来定位和显示各种象形图形（包括图片）。
 
-每个异变图形根据基准柱的定位，是通过 [symbolPosition](~series-pictorialBar.symbolPosition)、[symbolOffset](~series-pictorialBar.symbolOffset) 来调整其于基准柱的相对位置。
+每个象形图形根据基准柱的定位，是通过 [symbolPosition](~series-pictorialBar.symbolPosition)、[symbolOffset](~series-pictorialBar.symbolOffset) 来调整其于基准柱的相对位置。
 
 参见例子：
 ~[800x600](${galleryViewPath}doc-example/pictorialBar-position&reset=1&edit=1)
@@ -25,7 +25,7 @@
 ~[800x600](${galleryViewPath}doc-example/pictorialBar-symbolSize&reset=1&edit=1)
 
 
-**异变图形类型**
+**象形图形类型**
 
 每个图形可以配置成『单独』和『重复』两种类型，即通过 [symbolRepeat](~series-pictorialBar.symbolRepeat) 来设置。
 
@@ -35,7 +35,7 @@
 参见例子：
 ~[800x400](${galleryViewPath}doc-example/pictorialBar-repeat&reset=1&edit=1)
 
-每个异变图形可以是基本图形（如 `'circle'`, `'rect'`, ...）、[SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData)、图片，参见：[symbolType](~series-pictorialBar.symbolType)。
+每个象形图形可以是基本图形（如 `'circle'`, `'rect'`, ...）、[SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData)、图片，参见：[symbolType](~series-pictorialBar.symbolType)。
 
 参见例子：
 ~[800x400](${galleryViewPath}doc-example/pictorialBar-graphicType&reset=1&edit=1)
@@ -148,7 +148,7 @@
 
 {{use:partial-z-zlevel(
     prefix="#",
-    componentName="异变柱状图"
+    componentName="象形柱图"
 ) }}
 {{ use:partial-silent(
     prefix="#"
@@ -282,9 +282,11 @@
 
 #${prefix} symbolMargin(number|string)
 
-图形的两边间隔（『两边』是指其数值轴方向的两边）。可以是绝对数值（如 `20`），或者百分比值（如 `'-30%'`），表示相对于自身尺寸 [symbolSize](~series-pictorialBar.symbolSize) 的百分比。
+图形的两边间隔（『两边』是指其数值轴方向的两边）。可以是绝对数值（如 `20`），或者百分比值（如 `'-30%'`），表示相对于自身尺寸 [symbolSize](~series-pictorialBar.symbolSize) 的百分比。只有当 [symbolRepeat](~series-pictorialBar.symbolRepeat) 被使用时有意义。
 
 可以是正值，表示间隔大；也可以是负数。当 [symbolRepeat](~series-pictorialBar.symbolRepeat) 被使用时，负数时能使图形重叠。
+
+可以在其值结尾处加一个 `"!"`，如 `"30%!"` 或 `25!`，表示第一个图形的开始和最后一个图形结尾留白，不紧贴边界。默认会紧贴边界。
 
 注意：
 
