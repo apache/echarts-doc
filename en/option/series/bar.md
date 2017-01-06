@@ -51,6 +51,7 @@ Bar chart shows different data through the height of a bar, which is used in [re
 Name of stack. On the same category axis, the series with the same `stack` name would be put on top of each other.
 
 {{use: partial-barGrid(
+    seriesType='bar',
     galleryViewPath=${galleryViewPath}
 )}}
 

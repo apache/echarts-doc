@@ -92,6 +92,7 @@ See the example below:
 )}}
 
 {{use: partial-barGrid(
+    seriesType='bar',
     galleryViewPath=${galleryViewPath},
     barGapDefault="-100%"
 )}}
