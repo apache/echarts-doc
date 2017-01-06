@@ -87,7 +87,10 @@
     prefix="###"
 )}}
 
-{{use: partial-barGrid}}
+{{use: partial-barGrid(
+    galleryViewPath=${galleryViewPath},
+    barGapDefault="-100%"
+)}}
 
 {{use: pictorialBar-symbol-attrs(
     prefix="#",
@@ -309,7 +312,6 @@
 
 在这个例子中：
 
-+ 使用了 `barGap: '-100%'` 使『背景系列』和『当前值系列』重合。
 + 『背景系列』和『当前值系列』使用相同的 [symbolBoundingData](~series.pictorialBar.symbolBoundingData)，使得绘制出的图形的大小是一样的。
 + 『当前值系列』设置了比『背景系列』更高的 [z](~series.pictorialBar.z)，使得其覆盖在『背景系列』上。
 

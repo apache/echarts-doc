@@ -91,7 +91,10 @@ See the example below:
     prefix="###"
 )}}
 
-{{use: partial-barGrid}}
+{{use: partial-barGrid(
+    galleryViewPath=${galleryViewPath},
+    barGapDefault="-100%"
+)}}
 
 {{use: pictorialBar-symbol-attrs(
     prefix="#",
@@ -313,7 +316,6 @@ For example:
 
 Notice, in the example above,
 
-+ `barGap: '-100%'` is used to overlap "background series" and "current value series".
 + The same [symbolBoundingData](~series.pictorialBar.symbolBoundingData) is used in "background series" and "current value seires", which makes their graphic elements are the same size.
 + A bigger [z](~series.pictorialBar.z) is set on "current value series", which makes it is over "background series".
 
