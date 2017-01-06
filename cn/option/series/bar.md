@@ -51,6 +51,7 @@
 数据堆叠，同个类目轴上系列配置相同的`stack`值可以堆叠放置。
 
 {{use: partial-barGrid(
+    seriesType='bar',
     galleryViewPath=${galleryViewPath}
 )}}
 

@@ -88,6 +88,7 @@
 )}}
 
 {{use: partial-barGrid(
+    seriesType='pictorialBar',
     galleryViewPath=${galleryViewPath},
     barGapDefault="-100%"
 )}}
