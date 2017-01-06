@@ -76,6 +76,14 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 ## largeThreshold(number) = 2000
 开启绘制优化的阈值。
 
+## symbol(string|Array) = 'none'
+线两端的标记类型，可以是一个数组分别指定两端，也可以是单个统一指定。
+具体支持的格式可以参考 [标线的 symbol](~series-line.markLine.data.0.symbol)
+
+## symbolSize(number|Array) = 10
+线两端的标记大小，可以是一个数组分别指定两端，也可以是单个统一指定。
+**注意：** 这里无法像一般的 `symbolSize` 那样通过数组分别指定高宽。
+
 ## lineStyle(Object)
 ### normal(Object)
 {{ use: partial-line-style(
