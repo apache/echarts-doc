@@ -41,6 +41,7 @@
 {{import: series-funnel}}
 {{import: series-gauge}}
 {{import: series-pictorialBar}}
+{{import: series-themeRiver}}
 
 # color(Array)
 
