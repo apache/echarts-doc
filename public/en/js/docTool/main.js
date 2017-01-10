@@ -162,9 +162,9 @@ define(function (require) {
 
         _initQuickLink: function () {
             var defs = [
-                ['tutorial', '教程'],
+                ['tutorial', 'Tutorial'],
                 ['api', 'API'],
-                ['option', '配置项手册']
+                ['option', 'Option']
             ];
 
             var html = [];
