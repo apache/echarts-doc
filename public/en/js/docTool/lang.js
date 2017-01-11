@@ -11,7 +11,6 @@ define(function (require) {
      * @type {Object}
      */
     var cn = {
-        langCode: 'cn',
         queryBoxPlaceholderFuzzyPath: '配置项模糊搜索（快捷键\'/\'）',
         queryBoxPlaceholderAnyText: '全文搜索（快捷键\'/\'）',
         queryBoxTextFuzzyPath: '配置项搜索',
@@ -31,7 +30,6 @@ define(function (require) {
      * @type {Object}
      */
     var en = {
-        langCode: 'en',
         queryBoxPlaceholderFuzzyPath: 'Search (Short cut:\'/\'). Try input: ser(line).border',
         queryBoxPlaceholderAnyText: 'Search (Short cut:\'/\'). Try input: style',
         queryBoxTextFuzzyPath: 'In properties',
