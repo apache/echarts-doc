@@ -39,7 +39,7 @@ Open the hyper link of main title in specified tab.
     prefix="##",
     name="main title",
     defaultFontSize=18,
-    defaultFontWeight="'border'",
+    defaultFontWeight="'bolder'",
     defaultColor="'#333'"
 ) }}
 

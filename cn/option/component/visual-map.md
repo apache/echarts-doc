@@ -33,6 +33,18 @@ option = {
 
 既然是『数据』到『视觉元素』的映射，`visualMap` 中可以指定数据的『哪个维度』（参见[visualMap.dimension](~visualMap.dimension)）映射到哪些『视觉元素』（参见[visualMap.inRange](~visualMap.inRange) 和 [visualMap.outOfRange](~visualMap.outOfRange)）中。
 
+<br>
+> 如果 series 中某个数据项不需要进行 visualMap 映射，可以这么配置：
+> ```
+> series : [
+>     {name: 'Beijing', value: 821, visualMap: false}, // visualMap 不对此项进行控制
+>     {name: 'Shanghai', value: 251},
+>     {name: 'Haikou', value: 21},
+>     ...
+> ]
+> ```
+
+
 
 <br>
 **✦ 与 ECharts2 中 dataRange 的关系 ✦**

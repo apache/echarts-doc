@@ -35,7 +35,7 @@ Bar chart shows different data through the height of a bar, which is used in [re
 )}}
 
 ## itemStyle(Object)
-{{use:partial-bar-item-style-desc}}
+{{use:partial-item-style-desc}}
 ### normal(Object)
 {{use:partial-bar-item-style(
     prefix="###",
@@ -50,20 +50,11 @@ Bar chart shows different data through the height of a bar, which is used in [re
 ## stack(string) = null
 Name of stack. On the same category axis, the series with the same `stack` name would be put on top of each other.
 
-## barWidth(number) = null
-The width of the bar. Adaptive when not specified.
+{{use: partial-barGrid(
+    seriesType='bar',
+    galleryViewPath=${galleryViewPath}
+)}}
 
-## barMaxWidth(number) = null
-The maximum width of the bar. Adaptive when not specified.
-
-## barMinHeight(number) = 0
-The minimum width of bar. It could be used to avoid the following situation: the interaction would be affected when the value of some data item is too small.
-
-## barGap(string) = '30%'
-The gap between bars, defaults to be `30%` of the bar width, can be set as a fixed value like `20`.
-
-## barCategoryGap(string) = '20%'
-The bar gap between each category of bar, defaults to be `20%` of the category gap, can be set as a fixed value.
 
 ## data(Array)
 
@@ -107,10 +98,13 @@ The style setting of the text label in a single bar.
 
 {{use:partial-z-zlevel(
     prefix="#",
-    componentName="bar graph"
+    componentName="bar chart"
 ) }}
 
-{{use:partial-animation(prefix="#")}}
+{{use:partial-animation(
+    prefix="#",
+    galleryEditorPath=${galleryEditorPath}
+)}}
 
 
 {{ target:partial-bar-item-style }}

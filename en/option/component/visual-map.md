@@ -32,6 +32,17 @@ option = {
 
 The dimension of [series.data](~series.data) can be specified by [visualMap.dimension](~visualMap.dimension), from which the value can be retrieved and mapped onto visual channels, which can be defined in [visualMap.inRange](~visualMap.inRange) and [visualMap.outOfRange](~visualMap.outOfRange).
 
+<br>
+> If a data item in series do not need to be controlled by visualMap, you can set like this:
+> ```
+> series : [
+>     {name: 'Beijing', value: 821, visualMap: false}, // do not controlled by visualMap.
+>     {name: 'Shanghai', value: 251},
+>     {name: 'Haikou', value: 21},
+>     ...
+> ]
+> ```
+
 
 <br>
 **✦ The relationship between visualMap of ECharts3 and dataRange of ECharts2 ✦**

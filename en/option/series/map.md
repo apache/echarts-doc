@@ -24,6 +24,15 @@ Series of same [map type](~series-map.map) will show in one map. At this point, 
     galleryViewPath=${galleryViewPath}
 ) }}
 
+## geoIndex(number) = null
+
+In default case, map series create exclusive `geo` component for themselves. But `geoIndex` can be used to specify an outer [geo component](~geo), which can be shared with other series like [pie](~series-pie). Moreover, the region color of the outer [geo component](~geo) can be controlled by the map series (via [visualMap](~visualMap)).
+
+When `geoIndex` specified, [series-map.map](~series-map.map) other style configurations like [series-map.itemStyle](~series-map.itemStyle) will not work, but cooresponding configurations in [geo component](~geo) will be used.
+
+For example:
+~[600x400](${galleryViewPath}doc-example/geo-map-scatter&reset=1&edit=1)
+
 ## mapValueCalculation(string) = 'sum'
 Value of multiple series with the same [map type](~series-map.map) can use this option to get a statistical value.
 

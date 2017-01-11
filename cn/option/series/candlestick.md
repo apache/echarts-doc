@@ -57,6 +57,18 @@
 默认值根据当前坐标系状况决定：如果 `category` 轴为横轴，则水平排布；否则竖直排布；如果没有 `category` 轴则水平排布。
 
 
+## barWidth(number)
+
+指定柱宽度。可以使用绝对数值（如 `10`）或百分比（如 `'20%'`，表示 band width 的百分之多少）。默认自适应。
+
+## barMinWidth(number)
+
+指定柱最大宽度。可以使用绝对数值（如 `10`）或百分比（如 `'20%'`，表示 band width 的百分之多少）。默认自适应。
+
+## barMaxWidth(number)
+
+指定柱最小宽度。可以使用绝对数值（如 `10`）或百分比（如 `'20%'`，表示 band width 的百分之多少）。默认自适应。
+
 
 {{use:partial-candlestick-item-style(prefix="#")}}
 

@@ -274,6 +274,49 @@ Actions related to [map](option.html#series-map), which should include [map](opt
 ) }}
 
 
+<!--============= graph ==========-->
+## graph
+Actions related to [graph](option.html#series-graph), which should include [graph](option.html#series-graph) before use.
+
+### focusNodeAdjacency(Action)
+
+Highlight the specified node and all of its adjacent nodes.
+
+```js
+dispatchAction({
+    type: 'focusNodeAdjacency',
+
+    // Use seriesId or seriesIndex or seriesName to location the series.
+    seriesId: 'xxx',
+    seriesIndex: 0,
+    seriesName: 'nnn',
+
+    // Use dataIndex to location the node.
+    dataIndex: 12
+})
+```
+
+Event [focusNodeAdjacency](~event.focusNodeAdjacency) will be thrown finally.
+
+### unfocusNodeAdjacency(Action)
+
+Reverse highlight the specified node and all of its adjacent nodes.
+
+```js
+dispatchAction({
+    type: 'unfocusNodeAdjacency',
+
+    // Use seriesId or seriesIndex or seriesName to location the series.
+    seriesId: 'xxx',
+    seriesIndex: 0,
+    seriesName: 'nnn'
+})
+```
+
+Event [unfocusNodeAdjacency](~event.unfocusNodeAdjacency) will be thrown finally.
+
+
+
 {{ target: action-select }}
 ### ${componentType}Select(Action)
 Selects the specified ${name}.

@@ -35,7 +35,7 @@
 )}}
 
 ## itemStyle(Object)
-{{use:partial-bar-item-style-desc}}
+{{use:partial-item-style-desc}}
 ### normal(Object)
 {{use:partial-bar-item-style(
     prefix="###",
@@ -50,20 +50,10 @@
 ## stack(string) = null
 数据堆叠，同个类目轴上系列配置相同的`stack`值可以堆叠放置。
 
-## barWidth(number|string) = 自适应
-柱条的宽度，不设时自适应。支持设置成相对于类目宽度的百分比。
-
-## barMaxWidth(number|string) = 自适应
-柱条的最大宽度，不设时自适应。支持设置成相对于类目宽度的百分比。
-
-## barMinHeight(number) = 0
-柱条最小高度，可用于防止某数据项的值过小而影响交互。
-
-## barGap(string) = '30%'
-柱间距离，默认为柱形宽度的30%，可设固定值
-
-## barCategoryGap(string) = '20%'
-类目间柱形距离，默认为类目间距的20%，可设固定值
+{{use: partial-barGrid(
+    seriesType='bar',
+    galleryViewPath=${galleryViewPath}
+)}}
 
 ## data(Array)
 

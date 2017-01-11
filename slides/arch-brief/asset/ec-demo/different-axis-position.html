@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="../common/echarts.min.js"></script>
+        <script src="../common/jquery.min.js"></script>
+        <link rel="stylesheet" href="../common/reset.css">
+    </head>
+    <body>
+        <style>
+        </style>
+        <div id="main"></div>
+        <script>
+
+        var myChart = echarts.init(document.getElementById('main'));
+        var xAxisData = [
+            'Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra',
+            'Scorpio', 'Sagittarius', 'Capricornus', 'Aquarius', 'Pisces'
+        ];
+        var data1 = [];
+
+        for (var i = 0; i < xAxisData.length; i++) {
+            data1.push((Math.random() * 2 + 1).toFixed(3));
+        }
+
+        myChart.setOption({
+            backgroundColor: '#fff',
+            legend: {
+                data: ['line', 'line2', 'line3']
+            },
+            polar: {
+                radius: '65%'
+            },
+            angleAxis: {
+                data: xAxisData
+            },
+            radiusAxis: {
+                splitNumber: 4
+            },
+            series: [{
+                coordinateSystem: 'polar',
+                name: 'line',
+                stack: 'all',
+                type: 'line',
+                symbol: 'none',
+                areaStyle: {
+                    normal: {
+                        opacity: 0.1
+                    }
+                },
+                lineStyle: {
+                    normal: {
+                        opacity: 0.2
+                    }
+                },
+                data: data1
+            }]
+        });
+
+
+        var startAngle = 0;
+        var step = 0.4;
+        setInterval(function () {
+            startAngle = (startAngle + step) % 360;
+            myChart.setOption({
+                angleAxis: {
+                    startAngle: startAngle
+                }
+            });
+        }, 20);
+        </script>
+    </body>
+</html>

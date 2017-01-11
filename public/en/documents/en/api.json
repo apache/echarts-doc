@@ -70,7 +70,7 @@
             "type": [
               "Function"
             ],
-            "descriptionCN": "<pre><code class=\"lang-js\">(option: Object, notMerge: boolean, notRefreshImmediately: boolean)\n</code></pre>\n<p>Configuration item, data, universal interface, all parameters and data can all be modified through <code>setOption</code>. ECharts will merge new parameters and data, and then refresh chart. If <a href=\"option.html#animation\" target=\"_blank\">animation</a> is enabled, ECharts will find the difference between two groups of data and present data changes through proper animation.</p>\n<p><strong>For example: </strong></p>\n<iframe data-src=\"http://echarts.baidu.com/gallery/view.html?c=dynamic-data&reset=1&edit=1\" width=\"500\" height=\"400\" ></iframe>\n\n\n<p><strong>Attention: </strong> Setting configuration item using <code>addData</code> and <code>setSeries</code> of ECharts 2.x are no longer supported. <code>setOption</code> is used for all these cases in ECharts 3. Please refer to the above example.</p>\n<p><strong>Parameters</strong></p>\n<ul>\n<li><p><code>option</code></p>\n<p>  Configuration item and data. Please refer to <a href=\"option.html\" target=\"_blank\">configuration item manual</a> for more information.</p>\n</li>\n<li><p><code>notMerge</code></p>\n<p>  Optional; states whether not to merge with previous <code>option</code>; <code>false</code> by defualt, stating merging.</p>\n</li>\n<li><p><code>notRefreshImmediately</code></p>\n<p>  Optional; states whether not to update chart immediately; <code>false</code> by defualt, stating update immediately.</p>\n</li>\n</ul>\n"
+            "descriptionCN": "<pre><code class=\"lang-js\">(option: Object, notMerge?: boolean, lazyUpdate?: boolean)\nor\n(option: Object, opts?: Object)\n</code></pre>\n<p>Configuration item, data, universal interface, all parameters and data can all be modified through <code>setOption</code>. ECharts will merge new parameters and data, and then refresh chart. If <a href=\"option.html#animation\" target=\"_blank\">animation</a> is enabled, ECharts will find the difference between two groups of data and present data changes through proper animation.</p>\n<p><strong>For example: </strong></p>\n<iframe data-src=\"http://echarts.baidu.com/gallery/view.html?c=dynamic-data&reset=1&edit=1\" width=\"500\" height=\"400\" ></iframe>\n\n\n<p><strong>Attention: </strong> Setting configuration item using <code>addData</code> and <code>setSeries</code> of ECharts 2.x are no longer supported. <code>setOption</code> is used for all these cases in ECharts 3. Please refer to the above example.</p>\n<p><strong>Parameters</strong></p>\n<p>Invoke approaches:</p>\n<pre><code class=\"lang-js\">chart.setOption(option, notMerge, lazyUpdate);\n</code></pre>\n<p>or</p>\n<pre><code class=\"lang-js\">chart.setOption(option, {\n    notMerge: ...,\n    lazyUpdate: ...,\n    silent: ...\n});\n</code></pre>\n<ul>\n<li><p><code>option</code></p>\n<p>  Configuration item and data. Please refer to <a href=\"option.html\" target=\"_blank\">configuration item manual</a> for more information.</p>\n</li>\n<li><p><code>notMerge</code></p>\n<p>  Optional; states whether not to merge with previous <code>option</code>; <code>false</code> by defualt, stating merging.</p>\n</li>\n<li><p><code>lazyUpdate</code></p>\n<p>  Optional; states whether not to update chart immediately; <code>false</code> by defualt, stating update immediately.</p>\n</li>\n<li><p><code>silent</code></p>\n<p>  Optional; states whether not to prevent triggering events when calling <code>setOption</code>; <code>false</code> by defualt, stating trigger events.</p>\n</li>\n</ul>\n"
           },
           "getWidth": {
             "type": [
@@ -100,7 +100,7 @@
             "type": [
               "Function"
             ],
-            "descriptionCN": "<pre><code class=\"lang-js\">(opts?: {\n    width?: number|string\n    height? number|string\n}) =&gt; ECharts\n</code></pre>\n<p>Resizes chart, which should be called manually when container size changes.</p>\n<p><strong>Parameters</strong></p>\n<ul>\n<li><p><code>opts</code></p>\n<p>  Optional; which may contain:</p>\n<ul>\n<li><p><code>width</code></p>\n<p>  Specify width explicitly, in pixel. If setting to <code>null</code>/<code>undefined</code>/<code>&#39;auto&#39;</code>, width of <code>dom</code> (instance container) will be used.</p>\n</li>\n<li><p><code>height</code></p>\n<p>  Specify height explicitly, in pixel. If setting to <code>null</code>/<code>undefined</code>/<code>&#39;auto&#39;</code>, height of <code>dom</code> (instance container) will be used.</p>\n</li>\n</ul>\n</li>\n</ul>\n<p><strong>Tip:</strong> Sometimes charts may be placed in multiple tabs. Those in hidden labels may fail to initialize due to the ignorance of container width and height. So <code>resize</code> should be called manually to get the correct width and height when switching to the corresponding tabs, or specify width/heigth in <code>opts</code> explicitly.</p>\n"
+            "descriptionCN": "<pre><code class=\"lang-js\">(opts?: {\n    width?: number|string,\n    height?: number|string,\n    silent?: boolean\n}) =&gt; ECharts\n</code></pre>\n<p>Resizes chart, which should be called manually when container size changes.</p>\n<p><strong>Parameters</strong></p>\n<ul>\n<li><p><code>opts</code></p>\n<p>  Optional; which may contain:</p>\n<ul>\n<li><p><code>width</code></p>\n<p>  Specify width explicitly, in pixel. If setting to <code>null</code>/<code>undefined</code>/<code>&#39;auto&#39;</code>, width of <code>dom</code> (instance container) will be used.</p>\n</li>\n<li><p><code>height</code></p>\n<p>  Specify height explicitly, in pixel. If setting to <code>null</code>/<code>undefined</code>/<code>&#39;auto&#39;</code>, height of <code>dom</code> (instance container) will be used.</p>\n</li>\n<li><p><code>silent</code></p>\n<p>  Specify whether or not to prevent triggering events.</p>\n</li>\n</ul>\n</li>\n</ul>\n<p><strong>Tip:</strong> Sometimes charts may be placed in multiple tabs. Those in hidden labels may fail to initialize due to the ignorance of container width and height. So <code>resize</code> should be called manually to get the correct width and height when switching to the corresponding tabs, or specify width/heigth in <code>opts</code> explicitly.</p>\n"
           },
           "dispatchAction": {
             "type": [
@@ -356,7 +356,27 @@
                 "type": [
                   "Action"
                 ],
-                "descriptionCN": "<p>Toggles selecting status of specified map area.</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;mapToggleSelect&#39;,\n    // optional; series index; could be an array of multiple series\n    seriesIndex?: number|Array,\n    // optional; series name; could be an array of multiple series\n    seriesName?: string|Array,\n    // data index; could assign by name attribute when not defined\n    dataIndex?: number,\n    // optional; data name; ignored when dataIndex is defined\n    name?: string\n})\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.mapselectchanged\">mapselectchanged</a></p>\n"
+                "descriptionCN": "<p>Toggles selecting status of specified map area.</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;mapToggleSelect&#39;,\n    // optional; series index; could be an array of multiple series\n    seriesIndex?: number|Array,\n    // optional; series name; could be an array of multiple series\n    seriesName?: string|Array,\n    // data index; could assign by name attribute when not defined\n    dataIndex?: number,\n    // optional; data name; ignored when dataIndex is defined\n    name?: string\n})\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.mapselectchanged\">mapselectchanged</a></p>\n<!--============= graph ==========-->\n"
+              }
+            }
+          },
+          "graph": {
+            "type": [
+              "*"
+            ],
+            "descriptionCN": "<p>Actions related to <a href=\"option.html#series-graph\" target=\"_blank\">graph</a>, which should include <a href=\"option.html#series-graph\" target=\"_blank\">graph</a> before use.</p>\n",
+            "properties": {
+              "focusNodeAdjacency": {
+                "type": [
+                  "Action"
+                ],
+                "descriptionCN": "<p>Highlight the specified node and all of its adjacent nodes.</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;focusNodeAdjacency&#39;,\n\n    // Use seriesId or seriesIndex or seriesName to location the series.\n    seriesId: &#39;xxx&#39;,\n    seriesIndex: 0,\n    seriesName: &#39;nnn&#39;,\n\n    // Use dataIndex to location the node.\n    dataIndex: 12\n})\n</code></pre>\n<p>Event <a href=\"#event.focusNodeAdjacency\">focusNodeAdjacency</a> will be thrown finally.</p>\n"
+              },
+              "unfocusNodeAdjacency": {
+                "type": [
+                  "Action"
+                ],
+                "descriptionCN": "<p>Reverse highlight the specified node and all of its adjacent nodes.</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;unfocusNodeAdjacency&#39;,\n\n    // Use seriesId or seriesIndex or seriesName to location the series.\n    seriesId: &#39;xxx&#39;,\n    seriesIndex: 0,\n    seriesName: &#39;nnn&#39;\n})\n</code></pre>\n<p>Event <a href=\"#event.unfocusNodeAdjacency\">unfocusNodeAdjacency</a> will be thrown finally.</p>\n"
               }
             }
           }
@@ -519,6 +539,30 @@
               "Event"
             ],
             "descriptionCN": "<p>Selecting event of range of <a href=\"option.html#parallelAxis\" target=\"_blank\">parallel axis</a>.</p>\n<p>When selecting axis range, the following method can be used to get data indices of currently highlight lines, which is the list of indices in <code>data</code> of <code>series</code>.</p>\n<pre><code class=\"lang-javascript\">chart.on(&#39;axisareaselected&#39;, function () {\n    var series1 = chart.getModel().getSeries()[0];\n    var series2 = chart.getModel().getSeries()[0];\n    var indices1 = series1.getRawIndicesByActiveState(&#39;active&#39;);\n    var indices2 = series2.getRawIndicesByActiveState(&#39;active&#39;);\n    console.log(indices1);\n    console.log(indices2);\n});\n</code></pre>\n"
+          },
+          "focusNodeAdjacency": {
+            "type": [
+              "Event"
+            ],
+            "descriptionCN": "<p>Adjacent nodes highlight event in <a href=\"option.html#graph\" target=\"_blank\">graph</a>.</p>\n<p>See <a href=\"#action.graph.focusNodeAdjacency\">focusNodeAdjacency</a>.</p>\n"
+          },
+          "unfocusNodeAdjacency": {
+            "type": [
+              "Event"
+            ],
+            "descriptionCN": "<p>Adjacent nodes reverse-highlight event in <a href=\"option.html#graph\" target=\"_blank\">graph</a>.</p>\n<p>See <a href=\"#action.graph.unfocusNodeAdjacency\">unfocusNodeAdjacency</a>.</p>\n"
+          },
+          "brush": {
+            "type": [
+              "Event"
+            ],
+            "descriptionCN": "<p>Event triggered after action <a href=\"#action.brush\">brush</a> dispatched.</p>\n"
+          },
+          "brushselected": {
+            "type": [
+              "Event"
+            ],
+            "descriptionCN": "<p>Notice what are selected.</p>\n<p>See <a href=\"option.html#brush\" target=\"_blank\">brush component</a>。</p>\n<p>This event will be triggered when <code>dispatchAction</code> called, or use do brush behavior.\nBut this event will not be triggered in <code>setOption</code>.</p>\n<p>Properties in this event.</p>\n<pre><code class=\"lang-javascript\">{\n    type: &#39;brushselected&#39;,\n    batch: [\n        {\n            // id of brush component. In most case, only one brush component is used, so do not care about this property.\n            brushIndex: number.\n\n            // The selected items in each series.\n            // Notice, if a series do not support `brush`, its cooresponding item still appear in this array. Namely, the index this array is the same as `seriesIndex`.\n            selected: [\n                { // The selected items in series 0.\n                    seriesIndex: number,\n                    // dataIndex can be used to find value in original data.\n                    dataIndex: [ 3, 6, 12, 23 ]\n                },\n                { // The selected items in series 0.\n                    seriesIndex: number,\n                    dataIndex: []\n                },\n                ...\n            ]\n        },\n        ...\n    ]\n}\n</code></pre>\n<p>Usage example of this event:</p>\n<pre><code class=\"lang-javascript\">var dataBySeries = [\n    [ 12, 23, 54, 6 ], // Data of series 0.\n    [ 34, 34433, 2223, 21122, 1232, 34 ] // Data of series 1.\n];\n\nchart.setOption({\n    ...,\n    brush: {\n        ...\n    },\n    series: [\n        { // series 0\n            data: dataBySeries[0]\n        },\n        { // series 1\n            data: dataBySeries[1]\n        }\n    ]\n});\n\nchart.on(&#39;brushSelected&#39;, function (params) {\n    var brushComponent = params.batch[0];\n\n    var sum = 0; // The sum of all selected values.\n\n    for (var sIdx = 0; sIdx &lt; brushComponent.selected.length; sIdx++) {\n        var dataIndices = brushComponent.selected[sIdx].dataIndex;\n\n        for (var i = 0; i &lt; dataIndices.length; i++) {\n            var dataIndex = dataIndices[i];\n            sum += dataBySeries[sIdx][dataIndex];\n        }\n    }\n    console.log(sum);\n});\n</code></pre>\n<p><strong>Tip: </strong>\n<a href=\"option.html#brush.throttleType\" target=\"_blank\">brush.throttleType</a> can be used to avoid triggering this event too frequently.</p>\n"
           }
         }
       }

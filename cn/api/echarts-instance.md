@@ -9,7 +9,9 @@
 
 ## setOption(Function)
 ```js
-(option: Object, notMerge: boolean, lazyUpdate: boolean)
+(option: Object, notMerge?: boolean, lazyUpdate?: boolean)
+or
+(option: Object, opts?: Object)
 ```
 
 设置图表实例的配置项以及数据，万能接口，所有参数和数据的修改都可以通过`setOption`完成，ECharts 会合并新的参数和数据，然后刷新图表。如果开启[动画](~option.html#option.animation)的话，ECharts 找到两组数据之间的差异然后通过合适的动画去表现数据的变化。
@@ -21,6 +23,20 @@
 **注：** ECharts 2.x 中的通过 `addData` , `setSeries` 方法设置配置项的方式将不再支持，在 ECharts 3 中统一使用`setOption`，可以参考上面示例。
 
 **参数：**
+
+调用方式：
+```js
+chart.setOption(option, notMerge, lazyUpdate);
+```
+或者
+```js
+chart.setOption(option, {
+    notMerge: ...,
+    lazyUpdate: ...,
+    silent: ...
+});
+```
+
 + `option`
 
     图表的配置项和数据，具体见[配置项手册](option.html)。
@@ -32,6 +48,10 @@
 + `lazyUpdate`
 
     可选，在设置完`option`后是否不立即更新图表，默认为`false`，即立即更新。
+
++ `silent`
+
+    可选，阻止调用 `setOption` 时抛出事件，默认为`false`，即抛出事件。
 
 ## getWidth(Function)
 ```js
@@ -93,8 +113,9 @@ myChart.setOption({
 ## resize(Function)
 ```js
 (opts?: {
-    width?: number|string
-    height? number|string
+    width?: number|string,
+    height?: number|string,
+    silent?: boolean
 }) => ECharts
 ```
 
@@ -112,6 +133,10 @@ myChart.setOption({
     + `height`
 
         可显式指定实例高度，单位为像素。如果传入值为 `null`/`undefined`/`'auto'`，则表示自动取 `dom`（实例容器）的高度。
+
+    + `silent`
+
+        是否禁止抛出事件。默认为 `false`。
 
 **Tip:** 有时候图表会放在多个标签页里，那些初始隐藏的标签在初始化图表的时候应为获取不到容器的实际高宽，可能会绘制失败，因此在切换到该标签页时需要手动调用 `resize` 方法获取正确的高宽并且刷新画布，或者在 `opts` 中显示指定图表高宽。
 

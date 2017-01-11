@@ -8,6 +8,8 @@ Text label of ${name}, to explain some data information about graphic item like 
 Whether to show label.
 #${prefix} position(string|Array) = ${defaultPosition}
 {{use:partial-label-position}}
+#${prefix} offset(Array)
+Whether to move text slightly. For example: `[30, 40]` means move `30` horizontally and move `40` vertically.
 {{ if: ${formatter} }}
 #${prefix} formatter(string|Function)
 {{use:partial-2d-data-label-formatter}}
@@ -28,7 +30,7 @@ Label position.
 + [x, y]
 
     Use relative percentage, or absolute pixel values to represent position of label relative to top-left corner of bounding box.
-    For example: 
+    For example:
     ```js
     // Absolute pixel values
     position: [10, 10],

@@ -24,6 +24,10 @@
 }
 ```
 
+**Tip:**
+geo 区域的颜色也可以被 map series 所控制，参见 [series-map.geoIndex](~series-map.geoIndex)。
+
+
 ## show(boolean) = true
 
 是否显示地理坐标系组件。
@@ -44,11 +48,13 @@ regions: [{
     name: '广东',
     itemStyle: {
         normal: {
+            areaColor: 'red',
             color: 'red'
         }
     }
 }]
 ```
+geo 区域的颜色也可以被 map series 所控制，参见 [series-map.geoIndex](~series-map.geoIndex)。
 
 ### name(string)
 地图区域的名称，例如 `'广东'`，`'浙江'`。

@@ -1,0 +1,20 @@
+strong {
+    color: yellow;
+}
+.reveal section img {
+    border-width: 0;
+}
+.reveal section iframe {
+    display: block;
+    margin: 20px auto;
+}
+.reveal section ul {
+    margin-top: 0.4em;
+    margin-bottom: 0.4em;
+}
+.reveal section li {
+    font-size: 0.75em;
+}
+.reveal section > ul > li {
+    font-size: 0.9em;
+}

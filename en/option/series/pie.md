@@ -136,7 +136,15 @@ The label configuration of a single sector.
     prefix="#"
 ) }}
 
-{{use:partial-animation(prefix="#")}}
+## animationType(string) = 'expansion'
+Initial animation type.
++ `'expansion'` Default expansion animation.
++ `'scale'` Scale animation. You can use it with `animationEasing='elasticOut'` to have popup effect.
+
+{{use:partial-animation(
+    prefix="#",
+    galleryEditorPath=${galleryEditorPath}
+)}}
 
 
 

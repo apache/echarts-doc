@@ -6,9 +6,9 @@ Use a line in the chart to illustrate.
 {{ use: partial-silent(prefix="#" + ${prefix}) }}
 
 ##${prefix} symbol(string|Array)
-Symbol type at the two ends of the mark line. It can be an arrary for two ends, or assigned seperately. See [data.symbol](~series-${seriesType}.markLine.data.0.symbol) for more format information.
+Symbol type at the two ends of the mark line. It can be an array for two ends, or assigned seperately. See [data.symbol](~series-${seriesType}.markLine.data.0.symbol) for more format information.
 ##${prefix} symbolSize(number|Array)
-Symbol size at the two ends of the mark line. It can be an arrary for two ends, or assigned seperately.
+Symbol size at the two ends of the mark line. It can be an array for two ends, or assigned seperately.
 
 **Attention: ** You cannot assgin width and height seperately as normal `symbolSize`.
 

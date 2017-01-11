@@ -131,6 +131,11 @@
     prefix="#"
 ) }}
 
+## animationType(string) = 'expansion'
+初始动画效果，可选
++ `'expansion'` 默认研圆弧展开的效果。
++ `'scale'` 缩放效果，配合设置 `animationEasing='elasticOut'` 可以做成 popup 的效果。
+
 {{use:partial-animation(
     prefix="#",
     galleryEditorPath=${galleryEditorPath}

@@ -35,7 +35,7 @@ node server.js
 3. `cd dash`
 
 3. Build
-  - To build Docset in English: `./dashing build echarts -f dashing-en.json -s ./en`
-  - To build Docset in Chinese: `./dashing build echarts -f dashing-cn.json -s ./cn`
+  - To build Docset in English: `./dashing build echarts -f dashing-en.json -s ./en`.
+  - To build Docset in Chinese: `./dashing build echarts -f dashing-cn.json -s ./cn`.
 
 4. The generated Docset is under current directory. Change version number in `echarts.docset/Contents/Info.plist` if you may.

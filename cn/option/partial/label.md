@@ -8,6 +8,8 @@ ${name}图形上的文本标签，可用于说明图形的一些数据信息，�
 是否显示标签。
 #${prefix} position(string|Array) = ${defaultPosition}
 {{use:partial-label-position}}
+#${prefix} offset(Array)
+是否对文字进行偏移。默认不偏移。例如：`[30, 40]` 表示文字在横向上偏移 `30`，纵向上偏移 `40`。
 {{ if: ${formatter} }}
 #${prefix} formatter(string|Function)
 {{use:partial-2d-data-label-formatter}}

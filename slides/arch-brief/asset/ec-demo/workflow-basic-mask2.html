@@ -1,0 +1,115 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="../common/echarts.min.js"></script>
+        <script src="../common/jquery.min.js"></script>
+        <link rel="stylesheet" href="../common/reset.css">
+    </head>
+    <body>
+        <style>
+        </style>
+        <div id="main"></div>
+        <script>
+
+        var myChart = echarts.init(document.getElementById('main'));
+
+        function makeStrokedRect(opt, width, height, text, textPosition) {
+            var base = {
+                type: 'rect',
+                shape: {
+                    width: width,
+                    height: height
+                },
+                style: {
+                    text: text,
+                    textPosition: textPosition,
+                    textFill: 'yellow',
+                    font: '20px Arial',
+                    fill: 'transparent',
+                    stroke: 'yellow',
+                    lineWidth: 2
+                }
+            };
+            return echarts.util.extend(base, opt);
+        }
+
+        function makeFilledRect(opt, width, height, text, textPosition) {
+            var base = {
+                type: 'rect',
+                shape: {
+                    width: width,
+                    height: height
+                },
+                style: {
+                    text: text,
+                    textPosition: textPosition,
+                    textFill: 'yellow',
+                    font: '20px Arial',
+                    fill: 'rgba(221,221,0,0.15)',
+                    stroke: 'rgba(221,221,0,0.3)',
+                    lineWidth: 2
+                }
+            };
+            return echarts.util.extend(base, opt);
+        }
+
+        function makeText(opt, text) {
+            var base = {
+                type: 'text',
+                style: {
+                    text: text,
+                    fill: 'yellow',
+                    font: '20px Arial'
+                }
+            };
+            return echarts.util.extend(base, opt);
+        }
+
+        function makeArrow(opt) {
+            return {
+                type: 'group',
+                rotation: opt.rotation,
+                position: opt.position,
+                children: [{
+                    type: 'polygon',
+                    shape: {
+                        points: [[0, 0], [30, 10], [30, -10]]
+                    },
+                    style: {
+                        fill: 'yellow'
+                    }
+                }, {
+                    type: 'line',
+                    shape: {
+                        x1: 30 - 3,
+                        y1: 0,
+                        x2: opt.length + 3,
+                        y2: 0
+                    },
+                    style: {
+                        stroke: 'yellow',
+                        lineWidth: 3,
+                        lineCap: 'round'
+                    }
+                }]
+            };
+        }
+
+        myChart.setOption({
+            backgroundColor: 'rgba(0,0,0,0.6)',
+            series: [],
+            graphic: [
+                makeStrokedRect({left: 'center', top: 5}, 200, 30, 'legend', 'left'),
+                makeStrokedRect({left: 90, bottom: 10}, 600, 30, 'dataZoom', 'right'),
+                makeStrokedRect({right: 10, top: 'middle'}, 90, 140, 'visualMap', 'top'),
+                makeText({left: 'center', top: 110}, 'series I'),
+                makeText({left: 'center', top: 140}, 'series II'),
+                makeArrow({rotation: 0, position: [510, 130], length: 259}),
+                makeArrow({rotation: Math.PI / 2, position: [430, 90], length: 50}),
+                makeArrow({rotation: -Math.PI / 2, position: [430, 180], length: 62})
+            ]
+        });
+
+        </script>
+    </body>
+</html>
