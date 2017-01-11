@@ -13,11 +13,11 @@ Data label formatter, which supoports string template and callback function. In 
 
 - Callback function
 
-    Callback function is in form of: 
+    Callback function is in form of:
     ```js
     (params: Object|Array) => string
     ```
-    where `params` is the single dataset needed by formatter, which is formed as: 
+    where `params` is the single dataset needed by formatter, which is formed as:
     {{ use: partial-formatter-params-structure(extra = ${extra}) }}
 
 
@@ -27,39 +27,112 @@ Data label formatter, which supoports string template and callback function. In 
 
 Data array of series, which can be in the following forms:
 
-1. When an axis of the coordinate is of category type, data can be in one dimension, whose length is equals to that of [xAxis.data](~xAxis.data), and they are one-to-one matches. For example: 
+Basically, data is represented by a two-dimension array, like the example below, where each colum is named as a "dimension".
+```js
+series: [{
+    data: [
+        // dimX   dimY   other dimensions ...
+        [  3.4,    4.5,   15,   43],
+        [  4.2,    2.3,   20,   91],
+        [  10.8,   9.5,   30,   18],
+        [  7.2,    8.8,   18,   57]
+    ]
+}]
+```
+
++ In [cartesian (grid)](~grid), "dimX" and "dimY" correspond to [xAxis](~xAxis) and [yAxis](~yAxis) repectively.
++ In [polar](~polar) "dimX" and "dimY" correspond to [radiusAxis](~radiusAxis) 和 [angleAxis](~anbleAxis) repectively.
++ Other dimensions are optional, which can be used in other place. For example:
+    + [visualMap](~visualMap) can map one or more dimensions to viusal (color, symbol size ...).
+    + [series.symbolSize](~series.symbolSize) can be set as a callback function, where symbol size can be calculated by values of a certain dimension.
+    + Values in other dimensions can be shown by [tooltip.formatter](~tooltip.formatter) or [series.label.normal.formatter](~series.label.normal.formatter).
+
+Especially, when there is one and only one category axis (axis.type is `'category'`), data can be simply be represented by a one-dimension array, like:
+```js
+xAxis: {
+    data: ['a', 'b', 'm', 'n']
+},
+series: [{
+    // Each item corresponds to each item in xAxis.data.
+    data: [23,  44,  55,  19]
+    // In fact, it is the simplification of the format below:
+    // data: [[0, 23], [1, 44], [2, 55], [3, 19]]
+}]
+```
+
+<br>
+**Relationship between "value" and [axis.type](~xAxis.type)**
+
++ When a dimension corresponds to a value axis (axis.type is `'value'` or `'log'`):
+
+    The value can be a `number` (like `12`) (can also be a number in a `string` format, like `'12'`).
+
++ When a dimension corresponds to a category axis (axis.type is `'category'`):
+
+    The value should be the ordinal of the axis.data (based on `0`), the string value of the axis.data. For example:
     ```js
-    [12, 34, 56, 10, 23]
+    xAxis: {
+        type: 'category',
+        data: ['Monday', 'Tuesday', 'Wednesday', 'Thursday']
+    },
+    yAxis: {
+        type: 'category',
+        data: ['a', 'b', 'm', 'n', 'p', 'q']
+    },
+    series: [{
+        data: [
+            // xAxis      yAxis
+            [  0,           0,    2  ], // This point is located at xAxis: 'Monday', yAxis: 'a'.
+            [  'Thursday',  2,    1  ], // This point is located at xAxis: 'Thursday', yAxis: 'm'.
+            [  2,          'p',   2  ], // This point is located at xAxis: 'Wednesday', yAxis: 'p'.
+            [  3,           3,    5  ]
+        ]
+    }]
     ```
+    There is an example of double category axes: [Github Punchcard](${galleryEditorPath}scatter-punchCard).
 
-2. When both axes of the coordinate are of value type, every data item needs an array, and at least two values should represent `x` and `y` in rectangular coordinates, or `radius` and `angle` in polar coordinates. For example: 
-    ```js
-    [[3.4, 4.5, 15], [4.2, 2.3, 20], [10.8, 9.5, 30], [7.2, 8.8, 18]]
-    ```
-    Every data values from the third value can be used to present other data dimensions. With [visualMap](~visualMap) component, one or more dimensions can be assigned to map to color, size and other graphic attributes.
++ When a dimension corresponds to a time axis (type is `'time'`):
 
-3. When both axes in the coordinate are of category type, every data item also needs to be one array. At least two values of a data item should represent category index or name of two axes. For example: 
-    ```js
-    [[0, 0, 2], ['monday', 2, 1], [2, 1, 2], [3, 3, 5]]
-    ```
-    Every data values from the third value can be used to present other data dimensions. With [visualMap](~visualMap) component, one or more dimensions can be assigned to map to color, size and other graphic attributes.
+    The value can be a timestamp (like `1484141700832`), or a instance of `Date`, or in string format (like '2012-12-12', '2012/12/12', ...).
 
-    Example with two category axes can be found at [Github Punchcard](${galleryEditorPath}scatter-punchCard).
 
-When a data item need to be custerized, data item can be an object, whose `value` stands for data value, for example: 
+<br>
+**Customize a data item:**
+
+When needing to customize a data item, it can be set as an object, where property `value` reprensent real value. For example:
 ```js
 [
-    12, 34,
+    12,
+    24,
     {
-        value : 56,
-        // user-defined label format that only useful for this data item
+        value: [24, 32],
+        // label style, only works in this data item.
         label: {},
-        // user-defined special itemStyle that only useful for this data item
+        // item style, only works in this data item.
         itemStyle:{}
     },
-    10, 23
+    33
+]
+// Or
+[
+    [12, 332],
+    [24, 32],
+    {
+        value: [24, 32],
+        // label style, only works in this data item.
+        label: {},
+        // item style, only works in this data item.
+        itemStyle:{}
+    },
+    [33, 31]
 ]
 ```
 
-**Tip: **When data of certain category does not exist (ps: *not exist* doesn't mean the value is 0), you may use `-` to represent. When there is no data, it should be disconnected in line chart, and no symbols in the chart.
+<br>
+**Empty value:**
 
+`'-'` or `null` or `undefined` or `NaN` can be used to describe that a data item is not exists (ps：*not exist* does not means its value is `0`).
+
+For example, line chart can break when encounter an empty value, and scatter chart do not display graphic elements for empty values.
+
+<br><br>
