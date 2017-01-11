@@ -34,15 +34,17 @@ option = {
 既然是『数据』到『视觉元素』的映射，`visualMap` 中可以指定数据的『哪个维度』（参见[visualMap.dimension](~visualMap.dimension)）映射到哪些『视觉元素』（参见[visualMap.inRange](~visualMap.inRange) 和 [visualMap.outOfRange](~visualMap.outOfRange)）中。
 
 <br>
-> 如果 series 中某个数据项不需要进行 visualMap 映射，可以这么配置：
-> ```
-> series : [
->     {name: 'Beijing', value: 821, visualMap: false}, // visualMap 不对此项进行控制
->     {name: 'Shanghai', value: 251},
->     {name: 'Haikou', value: 21},
->     ...
-> ]
-> ```
+在 visualMap 组件所控制的 series 中，如果 series 中某个数据项需要避开 visualMap 映射，可以这么配置：
+```
+series : [
+    {name: 'Shanghai', value: 251},
+    {name: 'Haikou', value: 21},
+    // 设置 `visualMap: false` 则 visualMap 不对此项进行控制，此时系列
+    // 可使用自身的视觉参数（color/symbol/ ...控制此项的显示。
+    {name: 'Beijing', value: 821, visualMap: false},
+    ...
+]
+```
 
 
 
