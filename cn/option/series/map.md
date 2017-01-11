@@ -33,7 +33,7 @@
 当设定了 `geoIndex` 后，[series-map.map](~series-map.map) 属性，以及 [series-map.itemStyle](~series-map.itemStyle) 等样式配置不再起作用，而是采用 [geo](~geo) 中的相应属性。
 
 参见：
-~[600x400](${galleryViewPath}doc-example/geo-map-scatter&reset=1&edit=1)
+~[600x400](${galleryViewPath}geo-map-scatter&reset=1&edit=1)
 
 ## mapValueCalculation(string) = 'sum'
 多个拥有相同[地图类型](~series-map.map)的系列会使用同一个地图展现，如果多个系列都在同一个区域有值，ECharts 会对这些值统计得到一个数据。这个配置项就是用于配置统计的方式，目前有：
