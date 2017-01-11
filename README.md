@@ -21,7 +21,7 @@
 # Install depedencies
 npm install
 # Build
-node build.js
+node build.js (github)
 # Run a static server
 node server.js
 ```
