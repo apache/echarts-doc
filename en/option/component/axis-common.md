@@ -48,7 +48,7 @@ Settings related to axis label.
 
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
 
-Whether to show the label of axis label or not. 
+Whether to show the label of axis label or not.
 
 {{ if: ${hasLabelInterval|default(true)} }}
 ##${prefix} interval(number|Function) = 'auto'
@@ -162,9 +162,9 @@ Whether to show the splitLine. Value axes are shown by default, while category a
 
 <!-- overwrite color -->
 ###${prefix} color(Array|string) = ['#ccc']
-The color of the splitLine, which could be set separately. 
+The color of the splitLine, which could be set separately.
 
-SplitLine color could also be set in color array, which the split lines would take as their colors in turns. 
+SplitLine color could also be set in color array, which the split lines would take as their colors in turns.
 
 Example:
 ```
@@ -200,7 +200,7 @@ Whether to show the splitArea.
 ##${prefix} areaStyle(Object)
 Split area style.
 ###${prefix} color(Array) = ['rgba(250,250,250,0.3)','rgba(200,200,200,0.3)']
-Color of split area. 
+Color of split area.
 SplitArea color could also be set in color array, which the split lines would take as their colors in turns. Dark and light colors in turns are used by default.
 {{ use:partial-style-shadow-opacity(prefix='##' + ${prefix}) }}
 
@@ -212,15 +212,15 @@ SplitArea color could also be set in color array, which the split lines would ta
 
 Type of axis
 
-Option: 
+Option:
 + `'value'`
     Numerical axis, suitable for continuous data.
 
 + `'category'`
-    Category axis, suitable for discrete category data. Data should only be set via [data](~${componentType}.data) for this type. 
+    Category axis, suitable for discrete category data. Data should only be set via [data](~${componentType}.data) for this type.
 
 + `'time'`
-    Time axis, suitable for continuous time series data. As compared to value axis, it has a better formatting for time and a different tick calculation method. For example, it decides to use month, week, day or hour for tick based on the range of span.  
+    Time axis, suitable for continuous time series data. As compared to value axis, it has a better formatting for time and a different tick calculation method. For example, it decides to use month, week, day or hour for tick based on the range of span.
 
 + `'log'`
     Log axis, suitable for log data.
@@ -250,7 +250,7 @@ Color of axis name uses [axisLine.lineStyle.color](~${componentType}.axisLine.li
 
 #${prefix} nameGap(number) = 15
 
-Gap between axis name and axis line. 
+Gap between axis name and axis line.
 
 #${prefix} nameRotate(number) = null
 
@@ -258,14 +258,14 @@ Rotation of axis name.
 
 #${prefix} inverse(boolean) = false
 
-Whether axis is inversed. New option from ECharts 3. 
+Whether axis is inversed. New option from ECharts 3.
 
 {{/if}}
 
 #${prefix} boundaryGap(boolean|Array)
 The boundary gap on both sides of a coordinate axis. The setting and behavior of category axes and non-category axes are different.
 
-The `boundaryGap` of category axis can be set to either `true` or `false`. Default value is set to be `true`, in which case [axisTick](~${componentType}.axisTick) is served only as a separation line, and labels and data appear only in the center part of two [axis ticks](~${componentType}.axisTick), which is called *band*. 
+The `boundaryGap` of category axis can be set to either `true` or `false`. Default value is set to be `true`, in which case [axisTick](~${componentType}.axisTick) is served only as a separation line, and labels and data appear only in the center part of two [axis ticks](~${componentType}.axisTick), which is called *band*.
 
 For non-category axis, including time, numerical value, and log axes, `boundaryGap` is an array of two values, representing the spanning range between minimum and maximum value. The value can be set in numeric value or relative percentage, which becomes invalid after setting [min](~${componentType}.min) and [max](~${componentType}.max).
 **Example: **
@@ -275,21 +275,27 @@ boundaryGap: ['20%', '20%']
 
 #${prefix} min(number|string) = 'auto'
 
-The minimun value of axis, unavailable in category axis. 
+The minimun value of axis.
 
 It can be set to a special value `'dataMin'` so that the minimum value on this axis is set to be the minimum label.
 
+It will be automatically computed to make sure axis tick is equally distributed when not set.
+
+In category axis, it can also be set as the ordinal number. For example, if a catergory axis has `data: ['categoryA', 'categoryB', 'categoryC']`, and the ordinal `2` represents `'categoryC'`. Moreover, it can be set as negative number, like `-3`.
+
 #${prefix} max(number|string) = 'auto'
 
-The maximum value of axis, unavailable in category axis. 
+The maximum value of axis.
 
 It can be set to a special value `'dataMax'` so that the minimum value on this axis is set to be the maximum label.
 
 It will be automatically computed to make sure axis tick is equally distributed when not set.
 
+In category axis, it can also be set as the ordinal number. For example, if a catergory axis has `data: ['categoryA', 'categoryB', 'categoryC']`, and the ordinal `2` represents `'categoryC'`. Moreover, it can be set as negative number, like `-3`.
+
 #${prefix} scale(boolean) = false
 
-It is available only in numerical axis, i.e., [type](~${componentType}.type): 'value'. 
+It is available only in numerical axis, i.e., [type](~${componentType}.type): 'value'.
 
 It specifies whether not to contain zero position of axis compulsively. When it is set to be `true`, the axis may not contain zero position, which is useful in the scatter chart for both value axes.
 
@@ -317,7 +323,7 @@ It is available only for axis of [type](~${componentType}.type) 'value'.
 
 #${prefix} interval(number)
 
-Compulsively set segmentation interval for axis. 
+Compulsively set segmentation interval for axis.
 
 As [splitNumber](~${componentType}.splitNumber) is a recommendation value, the calculated tick may not be the same as expected. In this case, interval should be used along with [min](~${componentType}.min) and [max](~${componentType}.max) to compulsively set tickings. But in most cases, we do not suggest using this, out automatic calculation is enough for most situations.
 
@@ -361,7 +367,7 @@ Base of logarithm, which is valid only for numeric axes with [type](~${component
 
 Category data, available in [type](~${componentType}.type): 'category' axis.
 
-Example: 
+Example:
 
 ```js
 // Name list of all categories
@@ -399,7 +405,7 @@ It uses a strategy that labels do not overlap by default.
 
 You may set it to be 0 to display all labels compulsively.
 
-If it is set to be 1, it means that labels are shown once after one label. And if it is set to be 2, it means labels are shown once after two labels, and so on. 
+If it is set to be 1, it means that labels are shown once after one label. And if it is set to be 2, it means labels are shown once after two labels, and so on.
 
 On the other hand, you can control by callback function, whose format is shown below:
 ```js

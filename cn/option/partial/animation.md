@@ -18,9 +18,18 @@
 ) }}
 
 
-#${prefix} animationDurationUpdate(number) = ${defaultAnimationDurationUpdate|default(300)}
+#${prefix} animationDurationUpdate(number|Function) = ${defaultAnimationDurationUpdate|default(300)}
 
 数据更新动画的时长。
+
+支持回调函数，可以通过每个数据返回不同的 delay 时间实现更戏剧的更新动画效果：
+
+```js
+animationDurationUpdate: function (idx) {
+    // 越往后的数据延迟越大
+    return idx * 100;
+}
+```
 
 
 #${prefix} animationEasingUpdate(string) = ${defaultAnimationEasingUpdate|default('cubicOut')}
@@ -47,7 +56,14 @@ animationDelayUpdate: function (idx) {
 
 #${prefix} animationDuration(number) = ${defaultAnimationDuration|default(1000)}
 
-初始动画的时长。
+初始动画的时长，支持回调函数，可以通过每个数据返回不同的 delay 时间实现更戏剧的初始动画效果：
+
+```js
+animationDuration: function (idx) {
+    // 越往后的数据延迟越大
+    return idx * 100;
+}
+```
 
 #${prefix} animationEasing(string) = ${defaultAnimationEasing|default('cubicOut')}
 
@@ -60,7 +76,7 @@ animationDelayUpdate: function (idx) {
 
 如下示例：
 ```js
-animationDelayUpdate: function (idx) {
+animationDelay: function (idx) {
     // 越往后的数据延迟越大
     return idx * 100;
 }

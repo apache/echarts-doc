@@ -19,10 +19,16 @@ Whether to set graphic number threshold to animation. Animation will be disabled
 ) }}
 
 
-#${prefix} animationDurationUpdate(number) = ${defaultAnimationDurationUpdate|default(300)}
+#${prefix} animationDurationUpdate(number|Function) = ${defaultAnimationDurationUpdate|default(300)}
 
-Time for animation to complete.
+Time for animation to complete, which supports callback function for different data to have different animation effect:
 
+```js
+animationDurationUpdate: function (idx) {
+    // delay for later data is larger
+    return idx * 100;
+}
+```
 
 #${prefix} animationEasingUpdate(string) = ${defaultAnimationEasingUpdate|default('cubicOut')}
 
@@ -46,9 +52,16 @@ See [this example](${galleryEditorPath}bar-animation-delay) for more information
 
 {{ target: partial-animation-init}}
 
-#${prefix} animationDuration(number) = ${defaultAnimationDuration|default(1000)}
+#${prefix} animationDuration(number|Function) = ${defaultAnimationDuration|default(1000)}
 
-Duration of the first animation.
+Duration of the first animation, which supports callback function for different data to have different animation effect:
+
+```js
+animationDuration: function (idx) {
+    // delay for later data is larger
+    return idx * 100;
+}
+```
 
 #${prefix} animationEasing(string) = ${defaultAnimationEasing|default('cubicOut')}
 
@@ -62,7 +75,7 @@ Delay before updating the first animation, which supports callback function for 
 
 For example:
 ```js
-animationDelayUpdate: function (idx) {
+animationDelay: function (idx) {
     // delay for later data is larger
     return idx * 100;
 }
