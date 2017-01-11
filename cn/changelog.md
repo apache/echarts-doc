@@ -17,7 +17,7 @@
 
 + [+] [category axis](http://echarts.baidu.com/option.html#xAxis.type) 默认情况会显示所有的类目，不论是否有类目中没有数据（原先两端的没有数据的类目不会被显示）。
 
-+ [+] [singleAxis](http://echarts.baidu.com/option.html#singleAxis) 中的 `data` 支持了一维数组的数据格式，如 `[11, 23, 44]`。
++ [+] 使用 [singleAxis](http://echarts.baidu.com/option.html#singleAxis) 时，`series.data` 支持了一维数组的数据格式，如 `[11, 23, 44]`。
 
 + [+] [dataZoom](http://echarts.baidu.com/option.html#dataZoom) 支持了 [singleAxis](http://echarts.baidu.com/option.html#singleAxis)。
 
