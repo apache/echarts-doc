@@ -76,6 +76,10 @@ define(function (require) {
             }
         },
 
+        getLang: function () {
+            return lang;
+        },
+
         _initHash: function () {
             var that = this;
             hashHelper.initHash(parseHash);
