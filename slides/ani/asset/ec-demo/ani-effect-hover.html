@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="../common/echarts.min.js"></script>
+        <script src="../common/jquery.min.js"></script>
+        <link rel="stylesheet" href="../common/reset.css">
+    </head>
+    <body>
+        <style>
+        </style>
+        <div id="main"></div>
+        <script>
+
+        var myChart = echarts.init(document.getElementById('main'));
+        var animation = location.href.split('?');
+        if (animation[1]) {
+            var match = animation[1].match(/animation=([a-zA-Z0-9_]+)/);
+            animation = match[1] !== 'false' && match[1] !== '0' && !!match[1];
+        }
+        else {
+            animation = true;
+        }
+
+
+        option = {
+            animation: animation,
+            series : [
+                {
+                    name: '访问来源',
+                    type: 'pie',
+                    selectedMode: 'single',
+                    radius : '55%',
+                    center: ['50%', '60%'],
+                    data:[
+                        {value:335, name:'直接访问'},
+                        {value:310, name:'邮件营销'},
+                        {value:234, name:'联盟广告'},
+                        {value:135, name:'视频广告'},
+                        {value:1548, name:'搜索引擎'}
+                    ],
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+
+
+
+
+
+
+
+
+        myChart.setOption(option);
+
+
+
+
+
+
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,429 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="../common/echarts.min.js"></script>
+        <script src="../common/jquery.min.js"></script>
+        <script src="../data/stock-DJI.js"></script>
+        <link rel="stylesheet" href="../common/reset.css">
+    </head>
+    <body>
+        <style>
+        </style>
+        <div id="main"></div>
+        <script>
+
+        var myChart = echarts.init(document.getElementById('main'));
+
+        var scatterData = [];
+        for (var i = 0; i < 30; i++) {
+            scatterData.push([+(Math.random().toFixed(1)), +(Math.random().toFixed(2))]);
+        }
+
+        function splitData(rawData) {
+            var categoryData = [];
+            var values = [];
+            var volumns = [];
+            for (var i = 0; i < rawData.length; i++) {
+                categoryData.push(rawData[i].splice(0, 1)[0]);
+                values.push(rawData[i]);
+                volumns.push(rawData[i][4]);
+            }
+            if (rawData.length > 800) {
+                categoryData = categoryData.slice(rawData.length - 1000);
+                values = values.slice(rawData.length - 1000);
+                volumns = volumns.slice(rawData.length - 1000);
+            }
+
+            return {
+                categoryData: categoryData,
+                values: values,
+                volumns: volumns
+            };
+        }
+
+        function calculateMA(dayCount, data) {
+            var result = [];
+            for (var i = 0, len = data.values.length; i < len; i++) {
+                if (i < dayCount) {
+                    result.push('-');
+                    continue;
+                }
+                var sum = 0;
+                for (var j = 0; j < dayCount; j++) {
+                    sum += data.values[i - j][1];
+                }
+                result.push(+(sum / dayCount).toFixed(3));
+            }
+            return result;
+        }
+
+        function makeText(opt, emphasis) {
+            var base = {
+                textStyle: {
+                    fontSize: 12,
+                    fontWeight: 'normal',
+                    fontFamily: 'Arial',
+                    color: emphasis ? 'yellow' : '#eee'
+                },
+                backgroundColor: '#333',
+                borderColor: '#555',
+                borderWidth: 1,
+                padding: 10
+            };
+            return echarts.util.extend(base, opt);
+        }
+
+        function makeScatterDataText() {
+            var textArr = ['Scatter Data:', '['];
+            for (var i = 0; i < 6; i++) {
+                textArr.push(
+                    '   [' + scatterData[i][0] + ', ' + scatterData[i][1] + '],'
+                );
+            }
+            textArr.push('   ...', ']');
+            return textArr.join('\n');
+        }
+
+
+        var data = splitData(window.rawData);
+
+        function showFixText(show) {
+            myChart.setOption({
+                title: echarts.util.map(['a0', 'b0', 'c0'], function (id) {
+                    return {
+                        id: id,
+                        show: !show
+                    };
+                })
+            });
+            myChart.setOption({
+                title: echarts.util.map(['a1', 'b1', 'c1'], function (id) {
+                    return {
+                        id: id,
+                        show: !!show
+                    };
+                })
+            });
+        }
+
+        myChart.setOption(option = {
+            backgroundColor: '#eee',
+            animation: false,
+
+            title: [
+                makeText({
+                    id: 'a0',
+                    left: '32%',
+                    top: '13%',
+                    text: [
+                        'Candlestick Data:',
+                        '[',
+                        '   [12941.85,12896.67,12852.24,12961.3,978],',
+                        '   [12889.4,12772.47,12702.99,12889.4,9676],',
+                        '   [12772.02,12736.29,12686.57,12772.02,10015],',
+                        '   [12733.87,12653.12,12606.91,12830.29,11476],',
+                        '   [12653.04,12604.53,12534.33,12661.97,12842],',
+                        '   [12602.71,12573.27,12492.25,12630.64,14276],',
+                        '   ...',
+                        ']'
+                    ].join('\n')
+                }),
+                makeText({
+                    id: 'a1',
+                    show: false,
+                    left: '32%',
+                    top: '13%',
+                    text: [
+                        'Candlestick Data:',
+                        '[',
+                        '   [0, 12941.85,12896.67,12852.24,12961.3,978],',
+                        '   [1, 12889.4,12772.47,12702.99,12889.4,9676],',
+                        '   [2, 12772.02,12736.29,12686.57,12772.02,10015],',
+                        '   [3, 12733.87,12653.12,12606.91,12830.29,11476],',
+                        '   [4, 12653.04,12604.53,12534.33,12661.97,12842],',
+                        '   [5, 12602.71,12573.27,12492.25,12630.64,14276],',
+                        '   ...',
+                        ']'
+                    ].join('\n')
+                }, true),
+                makeText({
+                    left: '48%',
+                    top: '53%',
+                    text: [
+                        'Category Data:',
+                        '[',
+                        '   "2012-07-05",',
+                        '   "2012-07-06",',
+                        '   "2012-07-09",',
+                        '   "2012-07-10",',
+                        '   "2012-07-11",',
+                        '   "2012-07-12",',
+                        '   ...',
+                        ']'
+                    ].join('\n')
+                }),
+                makeText({
+                    id: 'b0',
+                    left: '32%',
+                    top: '53%',
+                    text: [
+                        'Bar Data:',
+                        '[',
+                        '   97800000,',
+                        '   96760000,',
+                        '   100150000,',
+                        '   114760000,',
+                        '   128420000,',
+                        '   142760000,',
+                        '   ...',
+                        ']'
+                    ].join('\n')
+                }),
+                makeText({
+                    id: 'b1',
+                    show: false,
+                    left: '32%',
+                    top: '53%',
+                    text: [
+                        'Bar Data:',
+                        '[',
+                        '   [0, 97800000],',
+                        '   [1, 96760000],',
+                        '   [2, 100150000],',
+                        '   [3, 114760000],',
+                        '   [4, 128420000],',
+                        '   [5, 142760000],',
+                        '   ...',
+                        ']'
+                    ].join('\n')
+                }, true),
+                makeText({
+                    id: 'c0',
+                    right: 120,
+                    top: '53%',
+                    text: makeScatterDataText()
+                }),
+                makeText({
+                    show: false,
+                    id: 'c1',
+                    right: 120,
+                    top: '53%',
+                    text: makeScatterDataText()
+                }, true)
+            ],
+
+            legend: {
+                bottom: 10,
+                left: 'center',
+                data: ['Dow-Jones index', 'MA5', 'MA10', 'MA20', 'MA30']
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'line'
+                }
+            },
+            toolbox: {
+                left: 'center',
+                itemSize: 30,
+                itemGap: 20,
+                feature: {
+                    myToRaw: {
+                        show: true,
+                        title: 'Raw Data format',
+                        icon: 'path://M237.062,81.761L237.062,81.761c-12.144-14.24-25.701-20.1-40.68-19.072 c-10.843,0.747-20.938,5.154-30.257,13.127c-9.51-5.843-19.8-9.227-30.859-10.366c0.521-3.197,1.46-6.306,2.85-9.363 c3.458-7.038,8.907-12.741,16.331-17.296c-5.609-3.384-11.227-6.799-16.854-10.279c-16.257,8.104-25.06,20.601-26.463,38.417 c-7.599,1.705-14.685,4.486-21.247,8.437c-9.164-7.677-18.996-11.917-29.496-12.632c-14.819-0.998-28.467,4.787-40.938,18.827 C6.445,96.182,0,114.867,0,136.242c-0.007,6.371,0.674,12.646,2.053,18.738c4.593,22.785,15.398,41.367,32.558,55.344 c15.43,12.773,29.901,18.023,43.362,16.981c7.074-0.561,13.624-3.977,19.685-10.192c10.534,5.49,20.391,8.217,29.561,8.203 c9.856-0.012,20.236-2.953,31.125-8.898c6.227,6.692,12.966,10.346,20.211,10.933c13.795,1.073,28.614-4.111,44.377-16.84 c17.49-14.104,28.043-32.79,31.796-55.485c0.836-5.624,1.272-11.292,1.272-16.966C255.998,115.814,249.707,96.601,237.062,81.761z  M54.795,97.7l40.661,14.496c-4.402,8.811-10.766,13.219-19.06,13.219c-2.542,0-4.917-0.419-7.122-1.274 C58.103,118.38,53.263,109.572,54.795,97.7z M150.613,185.396l-9.156-8.389l-7.619,12.951c-3.391,0.341-6.615,0.514-9.665,0.514 c-4.401,0-8.635-0.263-12.708-0.777l-8.634-14.973l-9.151,9.909c-4.91-2.717-9.15-5.856-12.708-9.413 c-8.81-8.295-13.384-17.959-13.727-28.97c2.877,1.692,7.427,3.461,13.675,5.308l10.636,13.629l9.44-9.852 c4.734,0.702,9.234,1.12,13.466,1.275l10.689,11.498l9.671-11.949c3.559-0.173,7.285-0.515,11.182-1.01l9.924,10.159l10.933-14.227 c5.931-1.351,11.196-2.798,15.771-4.323C179.747,163.538,169.068,176.414,150.613,185.396z M175.258,124.907 c-2.209,0.849-4.66,1.273-7.369,1.273c-8.134,0-14.489-4.415-19.052-13.224l40.905-14.477 C191.105,110.331,186.273,119.141,175.258,124.907z',
+                        onclick: function () {
+                            showFixText(false);
+                        }
+                    },
+                    myToUnified: {
+                        show: true,
+                        title: 'Unify Data Format',
+                        icon: 'path://M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM22 8c1.105 0 2 1.343 2 3s-0.895 3-2 3-2-1.343-2-3 0.895-3 2-3zM10 8c1.105 0 2 1.343 2 3s-0.895 3-2 3-2-1.343-2-3 0.895-3 2-3zM16 28c-5.215 0-9.544-4.371-10-9.947 2.93 1.691 6.377 2.658 10 2.658s7.070-0.963 10-2.654c-0.455 5.576-4.785 9.942-10 9.942z',
+                        onclick: function () {
+                            showFixText(true);
+                        }
+                    }
+                }
+            },
+            grid: [
+                {
+                    left: 60,
+                    right: '70%',
+                    height: '30%'
+                },
+                {
+                    left: 60,
+                    right: '70%',
+                    top: '53%',
+                    height: '24%'
+                },
+                {
+                    left: '72%',
+                    right: 80,
+                    height: '30%'
+                }
+            ],
+            xAxis: [
+                {
+                    type: 'category',
+                    data: data.categoryData,
+                    scale: true,
+                    boundaryGap : false,
+                    axisLine: {onZero: false},
+                    splitLine: {show: false},
+                    axisLabel: {margin: 13},
+                    splitNumber: 20,
+                    min: 'dataMin',
+                    max: 'dataMax'
+                },
+                {
+                    type: 'category',
+                    gridIndex: 1,
+                    data: data.categoryData,
+                    scale: true,
+                    boundaryGap : false,
+                    axisLine: {onZero: false},
+                    splitLine: {show: false},
+                    splitNumber: 20,
+                    min: 'dataMin',
+                    max: 'dataMax'
+                },
+                {
+                    gridIndex: 2
+                }
+            ],
+            yAxis: [
+                {
+                    scale: true,
+                    splitArea: {
+                        show: true
+                    }
+                },
+                {
+                    scale: true,
+                    gridIndex: 1,
+                    splitNumber: 2,
+                    axisLabel: {show: false},
+                    axisLine: {show: false},
+                    axisTick: {show: false},
+                    splitLine: {show: false}
+                },
+                {
+                    gridIndex: 2
+                }
+            ],
+            dataZoom: [
+                {
+                    type: 'inside',
+                    xAxisIndex: [0, 1],
+                    start: 95,
+                    end: 100
+                },
+                {
+                    show: true,
+                    xAxisIndex: [0, 1],
+                    type: 'slider',
+                    top: '85%',
+                    start: 95,
+                    end: 100
+                },
+                {
+                    show: true,
+                    yAxisIndex: 2,
+                    type: 'slider',
+                    labelPrecision: 2,
+                    right: 30,
+                    start: 35,
+                    end: 80
+                },
+                {
+                    yAxisIndex: 2,
+                    type: 'inside',
+                    start: 35,
+                    end: 80
+                },
+            ],
+            series: [
+                {
+                    name: 'Dow-Jones index',
+                    type: 'candlestick',
+                    data: data.values,
+                    itemStyle: {
+                        normal: {
+                            borderColor: null,
+                            borderColor0: null
+                        }
+                    },
+                    tooltip: {
+                        formatter: function (param) {
+                            var param = param[0];
+                            return [
+                                'Date: ' + param.name + '<hr size=1 style="margin: 3px 0">',
+                                'Open: ' + param.data[0] + '<br/>',
+                                'Close: ' + param.data[1] + '<br/>',
+                                'Lowest: ' + param.data[2] + '<br/>',
+                                'Highest: ' + param.data[3] + '<br/>'
+                            ].join('');
+                        }
+                    }
+                },
+                {
+                    name: 'MA5',
+                    type: 'line',
+                    data: calculateMA(5, data),
+                    smooth: true,
+                    lineStyle: {
+                        normal: {opacity: 0.5}
+                    }
+                },
+                {
+                    name: 'MA10',
+                    type: 'line',
+                    data: calculateMA(10, data),
+                    smooth: true,
+                    lineStyle: {
+                        normal: {opacity: 0.5}
+                    }
+                },
+                {
+                    name: 'MA20',
+                    type: 'line',
+                    data: calculateMA(20, data),
+                    smooth: true,
+                    lineStyle: {
+                        normal: {opacity: 0.5}
+                    }
+                },
+                {
+                    name: 'MA30',
+                    type: 'line',
+                    data: calculateMA(30, data),
+                    smooth: true,
+                    lineStyle: {
+                        normal: {opacity: 0.5}
+                    }
+                },
+                {
+                    name: 'Volumn',
+                    type: 'bar',
+                    xAxisIndex: 1,
+                    yAxisIndex: 1,
+                    data: data.volumns
+                },
+                {
+                    name: 'scatter',
+                    type: 'scatter',
+                    xAxisIndex: 2,
+                    yAxisIndex: 2,
+                    tooltip: {
+                        trigger: 'item'
+                    },
+                    data: scatterData
+                }
+            ]
+        }, true);
+
+        </script>
+    </body>
+</html>

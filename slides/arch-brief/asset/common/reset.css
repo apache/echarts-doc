@@ -1,0 +1,47 @@
+html,
+body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#main {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+body.has-code {
+    background: #eee;
+}
+.has-code #code-box {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 290px;
+    margin: 0;
+    border: 3px solid #aaa;
+    overflow: auto;
+}
+.has-code #code-area {
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    top: 0;
+    bottom: 0;
+    width: 500px;
+}
+.has-code #main {
+    left: 300px;
+    user-select: none;
+    -webkit-user-select: none;
+}

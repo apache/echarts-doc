@@ -1,0 +1,280 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="../common/echarts.min.js"></script>
+        <script src="../common/map/js/world.js"></script>
+        <script src="../data/price-and-earnings.js"></script>
+        <link rel="stylesheet" href="../common/reset.css">
+    </head>
+    <body>
+        <style>
+        </style>
+        <div id="main"></div>
+        <script>
+
+        var myChart = echarts.init(document.getElementById('main'));
+        var animation = location.href.split('?');
+        if (animation[1]) {
+            var match = animation[1].match(/animation=([a-zA-Z0-9_]+)/);
+            animation = match[1] !== 'false' && match[1] !== '0' && !!match[1];
+        }
+        else {
+            animation = true;
+        }
+
+        var rawData = window.rawData;
+        var schema = rawData.schema;
+
+        var itemStyle = {
+            normal: {
+                opacity: 0.8,
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowOffsetY: 0,
+                shadowColor: 'rgba(0, 0, 0, 0.5)'
+            }
+        };
+
+        var cities = makeCities();
+
+        function makeCities() {
+            var names = [];
+            echarts.util.each(rawData.geoCoordMap, function (v, name) {
+                names.push(name);
+            });
+            return names;
+        }
+
+        function generateColors(count) {
+            var colors = [];
+
+            for (var i = 0; i < count; i++) {
+                colors.push(
+                    'rgb('
+                    + [
+                        Math.round(Math.random() * 255),
+                        Math.round(Math.random() * 255),
+                        Math.round(Math.random() * 255)
+                    ].join(',')
+                    + ')'
+                );
+            }
+            return colors;
+        }
+
+        option = {
+            animation: animation,
+            backgroundColor: '#333',
+            tooltip: {
+                padding: 5,
+                backgroundColor: '#222',
+                borderColor: '#777',
+                borderWidth: 1
+            },
+            xAxis: {
+                name: 'Inflation 2011',
+                nameGap: 25,
+                nameLocation: 'middle',
+                nameTextStyle: {
+                    fontSize: 14
+                },
+                splitLine: {
+                    show: false
+                },
+                axisTick: {
+                    lineStyle: {
+                        color: '#ddd'
+                    }
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#ddd'
+                    }
+                },
+                axisLabel: {
+                    textStyle: {
+                        color: '#ddd'
+                    }
+                }
+            },
+            yAxis: {
+                name: 'Prices (incl. rent)',
+                nameLocation: 'middle',
+                nameGap: 30,
+                nameTextStyle: {
+                    color: '#ccc',
+                    fontSize: 14
+                },
+                axisLine: {
+                    onZero: false,
+                    lineStyle: {
+                        color: '#ddd'
+                    }
+                },
+                axisTick: {
+                    lineStyle: {
+                        color: '#ddd'
+                    }
+                },
+                splitLine: {
+                    // show: false
+                },
+                axisLabel: {
+                    textStyle: {
+                        color: '#ddd'
+                    }
+                }
+            },
+            grid: {
+                show: true,
+                backgroundColor: 'rgba(30,30,30,0.8)',
+                top: '50%',
+                bottom: 45,
+                left: 50,
+                right: 30,
+                z: 1
+            },
+            geo: {
+                silent: true,
+                top: 20,
+                left: 50,
+                right: 120,
+                height: '38%',
+                roam: true,
+                map: 'world',
+                animationDurationUpdate: 1000,
+                animationEasingUpdate: 'cubicInOut',
+                label: {
+                    emphasis: {
+                        show: false
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        borderColor: '#aaa',
+                        areaColor: '#555'
+                    },
+                    emphasis: {
+                        areaColor: '#555'
+                    }
+                }
+            },
+            toolbox: {
+                top: 15,
+                right: 10,
+                itemSize: 20,
+                iconStyle: {
+                    normal: {
+                        borderColor: '#eee'
+                    },
+                    emphasis: {
+                        borderColor: '#fffb60'
+                    }
+                }
+            },
+            brush: {
+                toolbox: ['polygon', 'keep', 'clear'],
+                brushLink: 'all',
+                outOfBrush: {
+                    opacity: .1,
+                    color: '#aaa'
+                }
+            },
+            visualMap: [
+                {
+                    show: false,
+                    type: 'piecewise',
+                    dimension: 2,
+                    categories: cities,
+                    right: 0,
+                    bottom: 35,
+                    textGap: 10,
+                    itemGap: 12,
+                    textStyle: {
+                        color: '#ccc'
+                    },
+                    inRange: {
+                        color: generateColors(cities.length)
+                        // ['#bcd3bb', '#e88f70', '#edc1a5', '#9dc5c8', '#e1e8c8', '#7b7c68', '#e5b5b5', '#f0b489', '#928ea8', '#bda29a', '#376956', '#c3bed4', '#495a80', '#9966cc', '#bdb76a', '#eee8ab', '#a35015', '#04dd98', '#d9b3e6']
+                    },
+                    outOfRange: {
+                        color: '#555'
+                    }
+                }
+            ],
+            series: [
+                {
+                    type: 'scatter',
+                    id: 'gridScatter',
+                    itemStyle: itemStyle,
+                    data: echarts.util.map(rawData.data, function (dataItem) {
+                        // 19: "Inflation 2011",
+                        // 20: "Prices (incl. rent)",
+                        // 0: "Cities",
+                        return [dataItem[19], dataItem[20], dataItem[0]];
+                    }),
+                    symbolSize: 12
+                },
+                {
+                    type: 'scatter',
+                    id: 'geoScatter',
+                    coordinateSystem: 'geo',
+                    itemStyle: {
+                        normal: {
+                            opacity: 1,
+                            shadowBlur: 5,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        },
+                        emphasis: {
+                            symbolSize: 40,
+                        }
+                    },
+                    data: echarts.util.map(rawData.data, function (dataItem) {
+                        return {
+                            name: dataItem[0],
+                            value: rawData.geoCoordMap[dataItem[0]].concat([dataItem[0]])
+                        };
+                    }),
+                    z: 0,
+                    symbolSize: 5,
+                    animationDurationUpdate: 1000,
+                    animationEasingUpdate: 'cubicInOut'
+                }
+            ]
+        };
+
+
+        myChart.setOption(option);
+
+        myChart.on('click', function (param) {
+            if (param.seriesIndex === 0) {
+                myChart.setOption({
+                    geo: {
+                        center: rawData.geoCoordMap[param.data[2]],
+                        zoom: 14
+                    }
+                });
+                myChart.dispatchAction({
+                    type: 'highlight',
+                    seriesIndex: 1,
+                    dataIndex: param.dataIndex
+                });
+            }
+        });
+
+        myChart.on('mouseover', echarts.util.curry(highdown, 'highlight'));
+        myChart.on('mouseout', echarts.util.curry(highdown, 'downplay'));
+
+        function highdown(name, param) {
+            if (param.seriesIndex === 0) {
+                myChart.dispatchAction({
+                    type: name,
+                    seriesIndex: 1,
+                    dataIndex: param.dataIndex
+                });
+            }
+        }
+
+        </script>
+    </body>
+</html>

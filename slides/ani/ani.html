@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Reveal.js</title>
+        <base target="_blank"/>
+        <link rel="stylesheet" href="./asset/md2reveal-0.1.7/css/reveal.css">
+        <link rel="stylesheet" href="./asset/md2reveal-0.1.7/css/theme/black.css" id="theme">
+        <link rel="stylesheet" href="./asset/md2reveal-0.1.7/css/theme/black-md2reveal.css" id="themeMine">
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="./asset/md2reveal-0.1.7/lib/css/zenburn.css">
+    </head>
+    <body>
+
+        <div class="reveal">
+            <div class="slides"><section  data-markdown><script type="text/template">
+### Animation
+
+</script></section><section ><section data-markdown><script type="text/template">
+#### just effects
+
+<div class="fragment" data-fragment-index="0">example: hover, select, ...</div>
+
+<div style="min-width: 1050px; text-align: center;">
+<div style="display:inline-block;">
+<div class="fragment" data-fragment-index="1"><iframe style="width:450px;height:400px;" data-md2r-src="./asset/ec-demo/ani-effect-hover.html"></iframe></div>
+</div>
+<div style="display:inline-block;">
+<div class="fragment" data-fragment-index="2"><iframe style="width:450px;height:400px;" data-md2r-src="./asset/ec-demo/ani-effect-hover.html?animation=false"></iframe></div>
+</div>
+</div>
+</script></section><section data-markdown><script type="text/template">
+#### functional effects
+
+<div class="fragment" data-fragment-index="0">example: opening animation</div>
+
+<div class="fragment" data-fragment-index="1"><iframe style="width:1200px;height:500px;" data-md2r-src="./asset/ec-demo/ani-effect-delay.html"></iframe></div>
+</script></section><section data-markdown><script type="text/template">
+#### functional effects
+
+<div class="fragment" data-fragment-index="0">example: stream</div>
+
+<div class="fragment" data-fragment-index="1"><iframe style="width:800px;height:500px;" data-md2r-src="./asset/ec-demo/fn-effect-lines.html"></iframe></div>
+
+</script></section><section data-markdown><script type="text/template">
+#### for transform
+
+<div style="min-width: 1050px; text-align: center;">
+<div style="display:inline-block;">
+<div class="fragment" data-fragment-index="0"><iframe style="width:450px;height:400px;" data-md2r-src="./asset/ec-demo/transform-timeline.html"></iframe></div>
+</div>
+<div style="display:inline-block;">
+<div class="fragment" data-fragment-index="1"><iframe style="width:450px;height:400px;" data-md2r-src="./asset/ec-demo/transform-timeline.html?animation=false"></iframe></div>
+</div>
+</div>
+</script></section><section data-markdown><script type="text/template">
+#### for transform
+
+<div class="fragment" data-fragment-index="0">example: layout</div>
+
+<div style="min-width: 1050px; text-align: center;">
+<div style="display:inline-block;">
+<div class="fragment" data-fragment-index="0"><iframe style="width:450px;height:400px;" data-md2r-src="./asset/ec-demo/transform-graph.html"></iframe></div>
+</div>
+<div style="display:inline-block;">
+<div class="fragment" data-fragment-index="1"><iframe style="width:450px;height:400px;" data-md2r-src="./asset/ec-demo/transform-graph.html?animation=false"></iframe></div>
+</div>
+</div>
+
+</script></section><section data-markdown><script type="text/template">
+#### for transform
+
+<div class="fragment" data-fragment-index="0">example: data zoom</div>
+
+<div style="min-width: 1050px; text-align: center;">
+<div style="display:inline-block;">
+<div class="fragment" data-fragment-index="1"><iframe style="width:450px;height:400px;" data-md2r-src="./asset/ec-demo/transform-data-zoom.html"></iframe></div>
+</div>
+<div style="display:inline-block;">
+<div class="fragment" data-fragment-index="2"><iframe style="width:450px;height:400px;" data-md2r-src="./asset/ec-demo/transform-data-zoom.html?animation=false"></iframe></div>
+</div>
+</div>
+</script></section><section data-markdown><script type="text/template">
+#### for transform
+
+<div class="fragment" data-fragment-index="0">example: roam</div>
+
+<div style="min-width: 1050px; text-align: center;">
+<div style="display:inline-block;">
+<div class="fragment" data-fragment-index="1"><iframe style="width:450px;height:400px;" data-md2r-src="./asset/ec-demo/transform-focus-geo.html"></iframe></div>
+</div>
+<div style="display:inline-block;">
+<div class="fragment" data-fragment-index="2"><iframe style="width:450px;height:400px;" data-md2r-src="./asset/ec-demo/transform-focus-geo.html?animation=false"></iframe></div>
+</div>
+</div>
+</script></section></section><section ><section data-markdown><script type="text/template">
+Animation Requirements
+
++ Reduce complexity of programming.
+    + robustness
+    + development efficiency
++ Performance.
+</script></section><section data-markdown><script type="text/template">
+Animation Module
+
++ main loop, requestAnimationFrame
++ frame, interpolation, easing
+</script></section><section data-markdown><script type="text/template">
+Programming Requirements
+
++ <div class="fragment" data-fragment-index="0">Best practice => pattern</div>
++ <div class="fragment" data-fragment-index="1">Pattern should be simple</div>
+</script></section><section data-markdown><script type="text/template">
+<iframe style="width:900px;height:200px;" data-md2r-src="./asset/ec-demo/data-zoom2.html"></iframe>
+
+<div class="fragment" data-fragment-index="0">![](./asset/img2/ec3-workflow.png)</div>
+
+<aside class="notes" data-markdown>Creating shape each time is an easy way.
+But, animation requires shape reuse.</aside></script></section><section data-markdown><script type="text/template">
+Programming Pattern: Data Diff
+
+```js
+
+// diff: map by key.
+data.diff(oldData)
+    .add(function (newIdx) {
+        // Create symbol
+        ...
+        // Store symbol on data.
+        data.setItemGraphicEl(newIdx, symbolEl);
+    })
+    .update(function (newIdx, oldIdx) {
+        // Create or update symbol.
+        ...
+        // Store symbol on data.
+        data.setItemGraphicEl(newIdx, symbolEl);
+    })
+    .remove(function (oldIdx) {
+        // Remove symbol.
+    })
+    .execute();
+```
+</script></section><section data-markdown><script type="text/template">
+```js
+option = {
+    animation: true,
+    animationDuration: ...,
+    animationEasing: ...,
+    animationDelay: ...,
+    ...,
+
+    xxxx: [{
+        animation: true,
+        animationDuration: ...,
+        animationEasing: ...,
+        animationDelay: ...,
+        ...
+    }, {
+        ...
+    }]
+};
+```
+</script></section><section data-markdown><script type="text/template">
+```js
+itemStyle: {
+    normal: {
+        color: ...,
+        ...
+    },
+    emphasis: {
+        color: ...,
+        ...
+    }
+}
+```
+</script></section><section data-markdown><script type="text/template">
+Programming Pattern: Unified API
+
+```js
+graphic.updateProps(symbolEl, {
+    // properties to be updated with or without animation.
+    position: point,
+    ...
+}, seriesModel);
+```
+</script></section><section data-markdown><script type="text/template">
+Throttle
+
+```js
+fn = echarts.throttle(fn);
+```
+
+
+
+
+
+
+
+
+</script></section></section></div>
+        </div>
+
+        <script src="./asset/md2reveal-0.1.7/lib/js/head.min.js"></script>
+        <script src="./asset/md2reveal-0.1.7/js/reveal.js"></script>
+        <script src="./asset/md2reveal-0.1.7/js/md2reveal.js"></script>
+
+        <script>
+            function extend() {
+              var target = {};
+              for (var i = 0; i < arguments.length; i++) {
+                var source = arguments[i];
+                for (var key in source) {
+                  if (source.hasOwnProperty(key)) {
+                    target[key] = source[key];
+                  }
+                }
+              }
+              return target;
+            }
+
+            // Optional libraries used to extend on reveal.js
+            var deps = [
+              { src: './asset/md2reveal-0.1.7/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+              { src: './asset/md2reveal-0.1.7/plugin/markdown/marked.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+              { src: './asset/md2reveal-0.1.7/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+              { src: './asset/md2reveal-0.1.7/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+              { src: './asset/md2reveal-0.1.7/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+              // { src: './asset/md2reveal-0.1.7/plugin/math/math.js', async: true }
+            ];
+
+            // default options to init reveal.js
+            var defaultOptions = {
+              controls: true,
+              progress: true,
+              history: true,
+              center: true,
+              transition: 'default',
+              dependencies: deps
+            };
+
+            // options from URL query string
+            var queryOptions = Reveal.getQueryHash() || {};
+
+            var options = {};
+            options = extend(defaultOptions, options, queryOptions);
+            Reveal.initialize(options);
+        </script>
+    </body>
+</html>

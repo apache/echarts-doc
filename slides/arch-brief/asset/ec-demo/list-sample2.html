@@ -1,0 +1,306 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="../common/echarts.min.js"></script>
+        <script src="../common/jquery.min.js"></script>
+        <link rel="stylesheet" href="../common/reset.css">
+    </head>
+    <body>
+        <style>
+        </style>
+        <div id="main"></div>
+        <script>
+
+        var myChart = echarts.init(document.getElementById('main'));
+
+        function splitData(rawData) {
+            var categoryData = [];
+            var values = [];
+            var volumns = [];
+            for (var i = 0; i < rawData.length; i++) {
+                categoryData.push(rawData[i].splice(0, 1)[0]);
+                values.push(rawData[i]);
+                volumns.push(rawData[i][4]);
+            }
+            if (rawData.length > 800) {
+                categoryData = categoryData.slice(rawData.length - 1000);
+                values = values.slice(rawData.length - 1000);
+                volumns = volumns.slice(rawData.length - 1000);
+            }
+
+            return {
+                categoryData: categoryData,
+                values: values,
+                volumns: volumns
+            };
+        }
+
+        function calculateMA(dayCount, data) {
+            var result = [];
+            for (var i = 0, len = data.values.length; i < len; i++) {
+                if (i < dayCount) {
+                    result.push('-');
+                    continue;
+                }
+                var sum = 0;
+                for (var j = 0; j < dayCount; j++) {
+                    sum += data.values[i - j][1];
+                }
+                result.push(+(sum / dayCount).toFixed(3));
+            }
+            return result;
+        }
+
+        $.get('../data/stock-DJI.json', function (rawData) {
+
+            var data = splitData(rawData);
+
+            myChart.setOption(option = {
+                backgroundColor: '#eee',
+                animation: false,
+
+                title: [
+                    {
+                        textStyle: {fontSize: 12, color: '#eee'},
+                        borderColor: '#555',
+                        borderWidth: 1,
+                        padding: 10,
+                        backgroundColor: '#333',
+                        right: 10,
+                        left: '66%',
+                        top: '13%',
+                        text: [
+                            'Candlestick Data:',
+                            '[',
+                            '   [0, 12941.85,12896.67,12852.24,12961.3,978],',
+                            '   [1, 12889.4,12772.47,12702.99,12889.4,9676],',
+                            '   [2, 12772.02,12736.29,12686.57,12772.02,10015],',
+                            '   [3, 12733.87,12653.12,12606.91,12830.29,11476],',
+                            '   [4, 12653.04,12604.53,12534.33,12661.97,12842],',
+                            '   [5, 12602.71,12573.27,12492.25,12630.64,14276],',
+                            '   ...',
+                            ']'
+                        ].join('\n')
+                    },
+                    {
+                        textStyle: {fontSize: 12, color: '#eee'},
+                        backgroundColor: '#333',
+                        borderColor: '#555',
+                        borderWidth: 1,
+                        padding: 10,
+                        right: 10,
+                        left: '82%',
+                        top: '53%',
+                        text: [
+                            'Category Data:',
+                            '[',
+                            '   "2012-07-05",',
+                            '   "2012-07-06",',
+                            '   "2012-07-09",',
+                            '   "2012-07-10",',
+                            '   "2012-07-11",',
+                            '   "2012-07-12",',
+                            '   ...',
+                            ']'
+                        ].join('\n')
+                    },
+                    {
+                        textStyle: {fontSize: 12, color: '#eee'},
+                        backgroundColor: '#333',
+                        borderColor: '#555',
+                        borderWidth: 1,
+                        padding: 10,
+                        right: 10,
+                        left: '66%',
+                        top: '53%',
+                        text: [
+                            'Bar Data:',
+                            '[',
+                            '   [0, 97800000],',
+                            '   [1, 96760000],',
+                            '   [2, 100150000],',
+                            '   [3, 114760000],',
+                            '   [4, 128420000],',
+                            '   [5, 142760000],',
+                            '   ...',
+                            ']'
+                        ].join('\n')
+
+                    }
+                ],
+
+                legend: {
+                    bottom: 10,
+                    left: 'center',
+                    data: ['Dow-Jones index', 'MA5', 'MA10', 'MA20', 'MA30']
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'line'
+                    }
+                },
+                toolbox: {
+                    feature: {
+                        dataZoom: {
+                            yAxisIndex: false
+                        },
+                        brush: {
+                            type: ['lineX', 'clear']
+                        }
+                    }
+                },
+                brush: {
+                    xAxisIndex: 'all',
+                    brushLink: 'all',
+                    outOfBrush: {
+                        colorAlpha: 0.1
+                    }
+                },
+                grid: [
+                    {
+                        left: '10%',
+                        right: '36%',
+                        height: '30%'
+                    },
+                    {
+                        left: '10%',
+                        right: '36%',
+                        top: '53%',
+                        height: '24%'
+                    }
+                ],
+                xAxis: [
+                    {
+                        type: 'category',
+                        data: data.categoryData,
+                        scale: true,
+                        boundaryGap : false,
+                        axisLine: {onZero: false},
+                        splitLine: {show: false},
+                        axisLabel: {margin: 13},
+                        splitNumber: 20,
+                        min: 'dataMin',
+                        max: 'dataMax'
+                    },
+                    {
+                        type: 'category',
+                        gridIndex: 1,
+                        data: data.categoryData,
+                        scale: true,
+                        boundaryGap : false,
+                        axisLine: {onZero: false},
+                        splitLine: {show: false},
+                        splitNumber: 20,
+                        min: 'dataMin',
+                        max: 'dataMax'
+                    }
+                ],
+                yAxis: [
+                    {
+                        scale: true,
+                        splitArea: {
+                            show: true
+                        }
+                    },
+                    {
+                        scale: true,
+                        gridIndex: 1,
+                        splitNumber: 2,
+                        axisLabel: {show: false},
+                        axisLine: {show: false},
+                        axisTick: {show: false},
+                        splitLine: {show: false}
+                    }
+                ],
+                dataZoom: [
+                    {
+                        type: 'inside',
+                        xAxisIndex: [0, 1],
+                        start: 85,
+                        end: 100
+                    },
+                    {
+                        show: true,
+                        xAxisIndex: [0, 1],
+                        type: 'slider',
+                        top: '85%',
+                        start: 85,
+                        end: 100
+                    }
+                ],
+                series: [
+                    {
+                        name: 'Dow-Jones index',
+                        type: 'candlestick',
+                        data: data.values,
+                        itemStyle: {
+                            normal: {
+                                borderColor: null,
+                                borderColor0: null
+                            }
+                        },
+                        tooltip: {
+                            formatter: function (param) {
+                                var param = param[0];
+                                return [
+                                    'Date: ' + param.name + '<hr size=1 style="margin: 3px 0">',
+                                    'Open: ' + param.data[0] + '<br/>',
+                                    'Close: ' + param.data[1] + '<br/>',
+                                    'Lowest: ' + param.data[2] + '<br/>',
+                                    'Highest: ' + param.data[3] + '<br/>'
+                                ].join('');
+                            }
+                        }
+                    },
+                    {
+                        name: 'MA5',
+                        type: 'line',
+                        data: calculateMA(5, data),
+                        smooth: true,
+                        lineStyle: {
+                            normal: {opacity: 0.5}
+                        }
+                    },
+                    {
+                        name: 'MA10',
+                        type: 'line',
+                        data: calculateMA(10, data),
+                        smooth: true,
+                        lineStyle: {
+                            normal: {opacity: 0.5}
+                        }
+                    },
+                    {
+                        name: 'MA20',
+                        type: 'line',
+                        data: calculateMA(20, data),
+                        smooth: true,
+                        lineStyle: {
+                            normal: {opacity: 0.5}
+                        }
+                    },
+                    {
+                        name: 'MA30',
+                        type: 'line',
+                        data: calculateMA(30, data),
+                        smooth: true,
+                        lineStyle: {
+                            normal: {opacity: 0.5}
+                        }
+                    },
+                    {
+                        name: 'Volumn',
+                        type: 'bar',
+                        xAxisIndex: 1,
+                        yAxisIndex: 1,
+                        data: data.volumns
+                    }
+                ]
+            }, true);
+
+        });
+
+        </script>
+    </body>
+</html>

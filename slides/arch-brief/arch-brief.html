@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Reveal.js</title>
+        <base target="_blank"/>
+        <link rel="stylesheet" href="./asset/md2reveal-0.1.7/css/reveal.css">
+        <link rel="stylesheet" href="./asset/md2reveal-0.1.7/css/theme/black.css" id="theme">
+        <link rel="stylesheet" href="./asset/md2reveal-0.1.7/css/theme/black-md2reveal.css" id="themeMine">
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="./asset/md2reveal-0.1.7/lib/css/zenburn.css">
+    </head>
+    <body>
+
+        <div class="reveal">
+            <div class="slides"><section  data-markdown><script type="text/template">
+# echarts 结构和演进
+
+百度前端技术部 echarts 团队
+
+
+
+</script></section><section  data-markdown><script type="text/template">
+
+#### echarts
+
++ 浏览器端数据可视化图表组件库
+
++ <https://github.com/ecomfe/echarts>
+
++ <http://gallery.echartsjs.com>
+
++ 15000
+
+
+</script></section><section  data-markdown><script type="text/template">
+### 纲要
+
++ 结构概览
++ 基本设定
++ 数据结构的抽象
++ 组件间的依赖和交互
++ 工作流程
++ 视觉编码
++ 反思
+
+
+
+
+
+
+
+</script></section><section ><section data-markdown><script type="text/template">
+### Level 0
+
+![](./asset/img2/hierarchy-level0.png)
+</script></section><section data-markdown><script type="text/template">
+### zrender 层
+
++ <div class="fragment" data-fragment-index="0">渲染引擎隔离（canvas (in browser/nodejs) / vml / svg / ...）</div>
++ <div class="fragment" data-fragment-index="1">对象抽象 & 状态维护（Element / Group / Layer / ...）</div>
++ <div class="fragment" data-fragment-index="2">用户交互封装（mouse event / touch / gesture / drag / ...）</div>
++ <div class="fragment" data-fragment-index="3">动画（frame / easing / ...）</div>
++ <div class="fragment" data-fragment-index="4">图形支持（transformable / contain / curve / ...）</div>
++ <div class="fragment" data-fragment-index="5">其他基本工具（eventful / color / array diff / svg path converter / ...）</div>
+
+
+</script></section><section data-markdown><script type="text/template">
+### echarts 层
+
+<div class="fragment" data-fragment-index="0">图表 / 组件 / 交互行为 / API</div>
+
+<div class="fragment" data-fragment-index="0">![](./asset/img2/ec-general.png)</div>
+
+> + <div class="fragment" data-fragment-index="1">变化多、需扩展、需易维护</div>
+> + <div class="fragment" data-fragment-index="2">架构、演变</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script></section></section><section ><section data-markdown><script type="text/template">
+#### 声明式接口
+
+> <div class="fragment" data-fragment-index="0">
+    所有数据、组件、布局、行为、... <br>
+    由用户声明的 **option** 描述 <br>
+</div>
+
+<aside class="notes" data-markdown>在基本设定（声明式，数据驱动，单向流）下才有后面的讨论。</aside></script></section><section data-markdown><script type="text/template">
+<iframe style="width:1200px;height:600px;" data-md2r-src="./asset/ec-demo/scatter-weight.html"></iframe>
+</script></section><section data-markdown><script type="text/template">
+### 数据流 — Level 0
+
+![](./asset/img2/dataflow-level0.png)
+</script></section><section data-markdown><script type="text/template">
+#### echarts 2.x Arch
+
+<div class="fragment" data-fragment-index="0">![](./asset/img2/ec2-arch.png)</div>
+
++ <div class="fragment" data-fragment-index="1">flat and intuitive => easy to understand and learn</div>
++ <div class="fragment" data-fragment-index="2">interaction, othogonality, extensibility => inadequate</div>
+
+
+</script></section><section data-markdown><script type="text/template">
+下面在这几方面介绍架构的设计和进化
+
++ <div class="fragment" data-fragment-index="0">数据结构的抽象</div>
++ <div class="fragment" data-fragment-index="1">工作流程</div>
++ <div class="fragment" data-fragment-index="2">视觉编码</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script></section></section><section ><section data-markdown><script type="text/template">
+## 数据结构的抽象
+
+<aside class="notes" data-markdown>下面的介绍，按『需求』->『解决』（按需抽象）的逻辑</aside></script></section><section data-markdown><script type="text/template">
+### 需求: 正交（1）
+
+<div style="min-width: 1050px">
+<div style="float:left;">
+<div class="fragment" data-fragment-index="0">
+scatter on cartesian
+<iframe style="width:350px;height:400px;" data-md2r-src="./asset/ec-demo/orthogonal1-scatter-cartesian.html"></iframe>
+</div>
+</div>
+
+<div style="float:left;">
+<div class="fragment" data-fragment-index="1">
+scatter on polar
+<iframe style="width:350px;height:400px;" data-md2r-src="./asset/ec-demo/orthogonal1-scatter-polar.html"></iframe>
+</div>
+</div>
+
+<div style="float:left;">
+<div class="fragment" data-fragment-index="2">
+scatter on geo
+<iframe style="width:350px;height:400px;" data-md2r-src="./asset/ec-demo/orthogonal1-scatter-geo.html"></iframe>
+</div>
+</div>
+</script></section><section data-markdown><script type="text/template">
+### 需求: 正交（2）
+
+<div style="min-width: 1050px">
+<div style="float:left;">
+<div class="fragment" data-fragment-index="0">
+line on cartesian
+<iframe style="width:350px;height:400px;" data-md2r-src="./asset/ec-demo/orthogonal2-cartesian-line.html"></iframe>
+</div>
+</div>
+
+<div style="float:left;">
+<div class="fragment" data-fragment-index="1">
+boxplot on cartesian
+<iframe style="width:350px;height:400px;" data-md2r-src="./asset/ec-demo/orthogonal2-cartesian-boxplot.html"></iframe>
+</div>
+</div>
+
+<div style="float:left;">
+<div class="fragment" data-fragment-index="2">
+graph on cartesian
+<iframe style="width:350px;height:400px;" data-md2r-src="./asset/ec-demo/orthogonal2-cartesian-graph.html"></iframe>
+</div>
+</div>
+</script></section><section data-markdown><script type="text/template">
+### 需求: 混合排布
+
+<div class="fragment" data-fragment-index="1"><iframe style="width:800px;height:500px;" data-md2r-src="./asset/ec-demo/grid-on-geo.html"></iframe></div>
+</script></section><section data-markdown><script type="text/template">
+### 抽象
+
++ <div class="fragment" data-fragment-index="0">**coordinate system** : cartesian / polar / geo / single / parallel ...</div>
++ <div class="fragment" data-fragment-index="0">**chart** : line / bar / scatter / pie / candlestick ...</div>
+
+<aside class="notes" data-markdown>coord 有公用的 interface（如 dataToPoint）。coord 有单独的阶段。</aside></script></section><section data-markdown><script type="text/template">
+### 需求: 一个功能的多种用户交互形式
+
+<div class="fragment" data-fragment-index="0"><iframe style="width:800px;height:400px;" data-md2r-src="./asset/ec-demo/interaction-multi-one.html"></iframe></div>
+
++ <div class="fragment" data-fragment-index="1">Generalization: <br> dataZoom => insideZoom / sliderZoom / toolboxZoom</div>
+</script></section><section data-markdown><script type="text/template">
+### 需求: 统一的位置、尺寸描述方式
+
++ <div class="fragment" data-fragment-index="0">六元：left / right / top / bottom / width / height</div>
++ <div class="fragment" data-fragment-index="1">绝对值 / 百分比 / 'center'</div>
+</script></section><section data-markdown><script type="text/template">
+### 需求: 逻辑的复用（以 axis / scale 为例）
+
+<div style="min-width: 1060px;">
+<div style="float:left;">
+<div class="fragment" data-fragment-index="0">
+axes in radar
+<iframe style="width:350px;height:400px;" data-md2r-src="./asset/ec-demo/reuse-axis-radar.html"></iframe>
+</div>
+</div>
+<div style="float:left;">
+<div class="fragment" data-fragment-index="1">
+axes in parallel
+<iframe style="width:350px;height:400px;" data-md2r-src="./asset/ec-demo/reuse-axis-parallel.html"></iframe>
+</div>
+</div>
+<div style="float:left;">
+<div class="fragment" data-fragment-index="2">
+axis in timeline
+<iframe style="width:350px;height:400px;" data-md2r-src="./asset/ec-demo/reuse-axis-timeline.html"></iframe>
+</div>
+</div>
+</div>
+
+</script></section><section data-markdown><script type="text/template">
+### 需求: 逻辑的复用（以 axis / scale 为例）
+
+<div style="min-width: 1050px; text-align: center;">
+<div style="display:inline-block;">
+<div class="fragment" data-fragment-index="0">
+different shapes and angles
+<iframe style="width:450px;height:400px;" data-md2r-src="./asset/ec-demo/different-axis-position.html"></iframe>
+</div>
+</div>
+<div style="display:inline-block;">
+<div class="fragment" data-fragment-index="1">
+different scales
+<iframe style="width:450px;height:400px;" data-md2r-src="./asset/ec-demo/different-axis-scale.html"></iframe>
+</div>
+</div>
+</div>
+
+</script></section><section data-markdown><script type="text/template">
+### 抽象
+
++ <div class="fragment" data-fragment-index="0">**axis** : model / view</div>
++ <div class="fragment" data-fragment-index="1">**scale** : interval / ordinal / time / log / ...</div>
+
+</script></section><section data-markdown><script type="text/template">
+### 需求: 逻辑的复用（以 data 为例）
+
+<div>
+<div class="fragment" data-fragment-index="0"><iframe style="width:1100px;height:500px;" data-md2r-src="./asset/ec-demo/list-sample1.html"></iframe></div>
+</div>
+<div class="fragment" data-fragment-index="1">dataZoom 组件如何处理不同的图表中不同格式的数据？<br>（<del>if-else</del>）</div>
+
+</script></section><section data-markdown><script type="text/template">
+### 抽象
+
++ <div class="fragment" data-fragment-index="0">**List** : line / bar / scatter / pie / parallel / candlestick / ...</div>
++ <div class="fragment" data-fragment-index="0">**Graph** : force / chord / sankey / ...</div>
++ <div class="fragment" data-fragment-index="0">**Tree** : treemap / tree / ...</div>
+
+</script></section><section data-markdown><script type="text/template">
+### 各种数据结构的抽象
+
++ Coordinate System
++ Scale
++ Axis
++ List / Graph / Tree
++ Symbol
++ RoamController
++ ComponentModel
++ ...
+
+</script></section><section data-markdown><script type="text/template">
+### Model & View
+
++ <div class="fragment" data-fragment-index="0">option cascade</div>
++ <div class="fragment" data-fragment-index="1">state maintenance</div>
++ <div class="fragment" data-fragment-index="2">transition animation (view reuse)</div>
++ <div class="fragment" data-fragment-index="3">option management (reset, timeline, responsive)</div>
+
+<aside class="notes" data-markdown>过渡动画指的是：option 不放在 view 里管理，从而 view 能重用，从而能在非 merge 模式有过渡动画。
+引入Model后这些feature的实现会清晰。</aside></script></section><section data-markdown><script type="text/template">
+![](./asset/img2/model-cascade.png)
+
+option cascade
+</script></section><section data-markdown><script type="text/template">
+<iframe style="width:1200px;height:500px;" data-md2r-src="./asset/ec-demo/timeline.html"></iframe>
+
+option management: timeline
+</script></section><section data-markdown><script type="text/template">
+<iframe style="width:1200px;height:500px;" data-md2r-src="./asset/ec-demo/media-query.html"></iframe>
+
+option management: responsive (media query)
+
+
+
+
+
+
+
+
+
+</script></section></section><section ><section data-markdown><script type="text/template">
+## 组件间的依赖和交互
+</script></section><section data-markdown><script type="text/template">
+![](./asset/img2/ec2-arch.png)
+
+回顾: echarts2 ARCH
+
+<aside class="notes" data-markdown>下面从『组件依赖』这个例子来介绍引入『工作流程』的意义。</aside></script></section><section data-markdown><script type="text/template">
+【组件间的依赖】
+
+<div>
+<div class="fragment" data-fragment-index="0"><iframe style="width:1100px;height:300px;" data-md2r-src="./asset/ec-demo/workflow-basic.html"></iframe></div>
+</div><div style="margin-top:-320px">
+<div class="fragment" data-fragment-index="1"><iframe style="width:1100px;height:300px;" data-md2r-src="./asset/ec-demo/workflow-basic-mask.html"></iframe></div>
+</div>
+
+<div class="fragment" data-fragment-index="2">依赖声明和拓扑</div>
+<div class="fragment" data-fragment-index="3">![](./asset/img2/topology.png)</div>
+
+<aside class="notes" data-markdown>dependency: ec2#echarts.js: dataZoom.syncOption。</aside></script></section><section data-markdown><script type="text/template">
+【组件间的交互】
+
+<div>
+<div class="fragment" data-fragment-index="0"><iframe style="width:1100px;height:300px;" data-md2r-src="./asset/ec-demo/workflow-basic.html"></iframe></div>
+</div><div style="margin-top:-320px">
+<div class="fragment" data-fragment-index="1"><iframe style="width:1100px;height:300px;" data-md2r-src="./asset/ec-demo/workflow-basic-mask2.html"></iframe></div>
+</div>
+
++ <div class="fragment" data-fragment-index="1">行为：过滤数据、显示 / 隐藏、改变范围、...</div>
++ <div class="fragment" data-fragment-index="2"><del>一个组件间直接调用另一个组件</del></div>
+</script></section><section data-markdown><script type="text/template">
+【组件间的交互】
+
+echarts2：事件通讯
+
+![](./asset/img2/ec2-message.png)
+
+<div class="fragment" data-fragment-index="0">消除了组件的『实例间的依赖』</div>
+</script></section><section data-markdown><script type="text/template">
+问题 1：需主动监听其他组件的事件。
+
+<div class="fragment" data-fragment-index="0"><iframe style="width:1100px;height:220px;" data-md2r-src="./asset/ec-demo/workflow-basic.html"></iframe></div>
+
+<div class="fragment" data-fragment-index="1">![](./asset/img2/type-know.png)</div>
+
+<div class="fragment" data-fragment-index="2">组件之间仍然要互相知晓（类型的依赖）</div>
+
+<aside class="notes" data-markdown>onlegendselected 中，tooltip 要主动监听，并更新自己的 selectedMap，从而才能遍历 series 时候避开没有选中的。各个 component 都要主动监听，则扩展性问题。</aside></script></section><section data-markdown><script type="text/template">
+问题 2：
+
+```javascript
+// 因为交互行为导致的后续过程（如清除、刷新等）可能有所不同，
+// echarts main 只得主动监听一些组件事件，从而形成了 switch case。
+switch (eventType) {
+    case ecConfig.EVENT.LEGEND_SELECTED :
+        this._onlegendSelected(param);
+        break;
+    case ecConfig.EVENT.DATA_ZOOM :
+        ...
+        this._ondataZoom(param);
+        break;
+    case ecConfig.EVENT.DATA_RANGE :
+        fromMyself && this._ondataRange(param);
+        break;
+    case ecConfig.EVENT.MAGIC_TYPE_CHANGED :
+        ...
+        this._onmagicTypeChanged(param);
+        break;
+    case ecConfig.EVENT.DATA_VIEW_CHANGED :
+        fromMyself && this._ondataViewChanged(param);
+        break;
+    case ecConfig.EVENT.TOOLTIP_HOVER :
+        fromMyself && this._tooltipHover(param);
+        break;
+    case ecConfig.EVENT.RESTORE :
+    case ecConfig.EVENT.REFRESH :
+    case ecConfig.EVENT.TOOLTIP_IN_GRID :
+    case ecConfig.EVENT.TOOLTIP_OUT_GRID :
+    ...
+```
+
+<div class="fragment" data-fragment-index="1">纯粹的『事件模式』并不足以指导后续行为</div>
+
+
+
+<aside class="notes" data-markdown>一些后续行为，如 clearEffect 之类，是公用的，不适于写在每个组件的事件响应函数中。</aside></script></section></section><section ><section data-markdown><script type="text/template">
+## echarts 工作流程
+</script></section><section data-markdown><script type="text/template">
+<div class="fragment" data-fragment-index="0">![](./asset/img2/type-know.png)</div>
+
++ <div class="fragment" data-fragment-index="1">用户行为触发 => 组件改变各自状态 => 处理数据 => 更新视图</div>
++ <div class="fragment" data-fragment-index="2">公共操作对象的归纳和抽离：**数据**</div>
+
+<div class="fragment" data-fragment-index="2">![](./asset/img2/data-focus.png)</div>
+
+
+<aside class="notes" data-markdown>无非都是（1）改变状态（2）更新数据（3）刷新视图 和具体事件无关（刷新的类型稍微有点变化，比如tooltip不需要全局刷新）。
+所以可以进一步解耦抽象：阶段。</aside></script></section><section data-markdown><script type="text/template">
++ <div class="fragment" data-fragment-index="0">对数据的处理规则：**阶段** & 注册</div>
+
+<div class="fragment" data-fragment-index="0">![](./asset/img2/phases.png)</div>
+</script></section><section data-markdown><script type="text/template">
+![](./asset/img2/ec3-workflow.png)
+
+echarts3 workflow
+
+
+
+
+
+
+
+</script></section></section><section ><section data-markdown><script type="text/template">
+## 视觉编码
+
+<aside class="notes" data-markdown>从视觉编码这例子来看工作流程。</aside></script></section><section data-markdown><script type="text/template">
+#### 概念
+
++ 数据 => 视觉元素
++ <div class="fragment" data-fragment-index="0">标记：点、线、面</div>
++ <div class="fragment" data-fragment-index="1">视觉通道</div>
+
+    + <div class="fragment" data-fragment-index="1">颜色</div>
+        <div class="fragment" data-fragment-index="1">亮度、饱和度、透明度、色调</div>
+    + <div class="fragment" data-fragment-index="1">尺寸</div>
+    + <div class="fragment" data-fragment-index="1">形状</div>
+    + <div class="fragment" data-fragment-index="1">纹理</div>
+    + <div class="fragment" data-fragment-index="1">方向</div>
+    + <div class="fragment" data-fragment-index="1">动画</div>
+</script></section><section data-markdown><script type="text/template">
+<iframe style="width:1100px;height:500px;" data-md2r-src="./asset/ec-demo/visualmap-sample1.html"></iframe>
+</script></section><section data-markdown><script type="text/template">
+<iframe style="width:1100px;height:550px;" data-md2r-src="./asset/ec-demo/visualmap-sample2.html"></iframe>
+</script></section><section data-markdown><script type="text/template">
+<iframe style="width:800px;height:500px;" data-md2r-src="./asset/ec-demo/mix-sample1.html"></iframe>
+</script></section><section data-markdown><script type="text/template">
+![](./asset/img2/ec3-workflow.png)
+</script></section><section data-markdown><script type="text/template">
+![](./asset/img2/visual-map.png)
+
+<aside class="notes" data-markdown>不同组件都能干涉 visual（visaulMap 组件，brush 组件，原生组件）
+（legend 对颜色的干涉 ec2 中存在 legend）</aside></script></section></section><section ><section data-markdown><script type="text/template">
+
+# ?
+
+<div class="fragment" data-fragment-index="0">尽量解耦？</div>
+<div class="fragment" data-fragment-index="1">尽量抽象？</div>
+
+<br>
+
++ <div class="fragment" data-fragment-index="2">工程妥协（优化、开发效率）</div>
++ <div class="fragment" data-fragment-index="3">过度设计</div>
+</script></section><section data-markdown><script type="text/template">
++ <div class="fragment" data-fragment-index="0">上层架构和约定应考究</div>
++ <div class="fragment" data-fragment-index="1">细节从权</div>
+
+
+
+
+
+
+</script></section></section><section  data-markdown><script type="text/template">
+## The End
+
+
+
+
+
+
+
+</script></section></div>
+        </div>
+
+        <script src="./asset/md2reveal-0.1.7/lib/js/head.min.js"></script>
+        <script src="./asset/md2reveal-0.1.7/js/reveal.js"></script>
+        <script src="./asset/md2reveal-0.1.7/js/md2reveal.js"></script>
+
+        <script>
+            function extend() {
+              var target = {};
+              for (var i = 0; i < arguments.length; i++) {
+                var source = arguments[i];
+                for (var key in source) {
+                  if (source.hasOwnProperty(key)) {
+                    target[key] = source[key];
+                  }
+                }
+              }
+              return target;
+            }
+
+            // Optional libraries used to extend on reveal.js
+            var deps = [
+              { src: './asset/md2reveal-0.1.7/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+              { src: './asset/md2reveal-0.1.7/plugin/markdown/marked.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+              { src: './asset/md2reveal-0.1.7/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+              { src: './asset/md2reveal-0.1.7/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+              { src: './asset/md2reveal-0.1.7/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+              // { src: './asset/md2reveal-0.1.7/plugin/math/math.js', async: true }
+            ];
+
+            // default options to init reveal.js
+            var defaultOptions = {
+              controls: true,
+              progress: true,
+              history: true,
+              center: true,
+              transition: 'default',
+              dependencies: deps
+            };
+
+            // options from URL query string
+            var queryOptions = Reveal.getQueryHash() || {};
+
+            var options = {};
+            options = extend(defaultOptions, options, queryOptions);
+            Reveal.initialize(options);
+        </script>
+    </body>
+</html>
