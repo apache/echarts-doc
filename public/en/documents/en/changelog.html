@@ -1,3 +1,56 @@
+<h2 id="v3-4-0">v3.4.0</h2>
+<div class="time">2017-01-12</div>
+
+<ul>
+<li><p><strong>[+] Published <code>pictorialBar</code> chart：<a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-pictorialBar">pictorialBar</a>。See <a href="https://ecomfe.github.io/echarts-examples/public/index.html#chart-type-pictorialBar">example</a>。</strong></p>
+</li>
+<li><p><strong>[+] Published <code>themeRiver</code> chart：<a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-themeRiver">themeRiver</a>。See <a href="https://ecomfe.github.io/echarts-examples/public/index.html#chart-type-themeRiver">example</a>。</strong></p>
+</li>
+<li><p>[+] A specified <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#geo">geo coordinate system</a> has been able to be used in <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-map">map series</a>. (In the past map series could only creat an inner exclusive geo coodinate system). Thus, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-map">map series</a> can be used to control color of a geo component. Moreover, a geo coordinate system can be shared among <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-map">map series</a> and other series, like <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-scatter">scatter series</a>. See <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-map.geoIndex">series-map.geoIndex</a>.</p>
+</li>
+<li><p>[+] Added <a href="https://ecomfe.github.io/echarts-doc/public/en/api.html#action.graph.focusNodeAdjacency">focusNodeAdjacency action</a>, which enables trigger adjacent highlight of <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-geo">graph</a> through API.</p>
+</li>
+<li><p>[+] Added <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-pie.animationType">series-pie.animationType</a>, which enables more animation effects.</p>
+</li>
+<li><p>[+] Callback function have been supported in <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#animationDuration">animationDuration</a>, which enables different animation duration of data items.</p>
+</li>
+<li><p>[+] <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.min">min</a> and <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.max">max</a> have been supported in <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.type">category axis</a>.</p>
+</li>
+<li><p>[+] <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.type">category axis</a> has been changed to show all categories by default, in spite of whether there is data in categories. In the past, categories in the end that has no data will not be displayed.</p>
+</li>
+<li><p>[+] When using <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#singleAxis">singleAxis</a>, <code>series.data</code> has supported one-dimension array, like <code>[11, 23, 44]</code>.</p>
+</li>
+<li><p>[+] <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#dataZoom">dataZoom</a> has supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#singleAxis">singleAxis</a>.</p>
+</li>
+<li><p>[+] Exposed throttle util method: <code>chart.util.throttle</code>.</p>
+</li>
+<li><p>[+] <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-candlestick">candlestick</a> has supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-candlestick.barWidth">barWidth</a>, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-candlestick.barMinWidth">barMinWidth</a> and <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-candlestick.barMaxWidth">barMaxWidth</a>. See <a href="https://github.com/ecomfe/echarts/issues/4783">#4783</a>.</p>
+</li>
+<li><p>[+] <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-lines">lines chart</a> has supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-lines.symbol">symbol</a>, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-lines.symbolSize">symbolSize</a>.</p>
+</li>
+<li><p>[+] Added support for show end text and data label at the same time in <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#visualMap-piecewise">visualMap-piecewise</a>. See <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#visualMap-piecewise.showLabel">visualMap-piecewise.showLabel</a>, and See <a href="https://github.com/ecomfe/echarts/issues/4845">#4845</a>.</p>
+</li>
+<li><p>[+] When using <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#visualMap">visualMap</a> to control a series, it has supported that some data items escape from the control by visualMap, but use its series visual settings (color, symbol, ...). See the paragraph of <code>Configure mapping</code> in <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#visualMap">visualMap</a>.</p>
+</li>
+<li><p>[^] Enhanced the effect of <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#grid">grid (cartesian)</a> when on data displayed.</p>
+</li>
+<li><p>[^] Added parameter <code>dataIndex</code> in <a href="https://ecomfe.github.io/echarts-doc/public/en/api.html#action.tooltip.showTip">showTip event</a>.</p>
+</li>
+<li><p>[^] Fixed vulnerability about XSS in tooltip. See <a href="https://github.com/ecomfe/echarts/issues/4769">#4769</a>.</p>
+</li>
+<li><p>[^] Fixed that some attributes did not work in <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-graph.edgeLabel">series-graph.edgeLabel</a>. See <a href="https://github.com/ecomfe/echarts/issues/4555">#4555</a>.</p>
+</li>
+<li><p>[^] Fixed tick render problem when <code>min</code> <code>max</code> is <code>stirng</code> in <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-gauge">series-gauge</a>. See <a href="https://github.com/ecomfe/echarts/issues/4617">#4617</a>.</p>
+</li>
+<li><p>[^] Fixed <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-gauge.pointer.show">series-gauge.pointer.show</a> problem. See <a href="https://github.com/ecomfe/echarts/issues/4618">#4618</a>.</p>
+</li>
+<li><p>[^] Fixed <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-radar">series-radar</a> render error in a case that no data exists.</p>
+</li>
+<li><p>[^] Fixed <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-line.markArea.label.normal.show">markArea.label.normal.show</a> problem. See <a href="https://github.com/ecomfe/echarts/issues/4723">#4723</a>.</p>
+</li>
+<li><p>[^] Enhanced the process when data is equals or less then zero in <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#yAxis.type">log axis</a>. See <a href="https://github.com/ecomfe/echarts/issues/4743">#4743</a> and <a href="https://github.com/ecomfe/echarts/issues/3161">#3161</a>.</p>
+</li>
+</ul>
 <h2 id="v3-3-2">v3.3.2</h2>
 <div class="time">2016-11-24</div>
 
@@ -12,7 +65,7 @@
 </li>
 <li><p>[^] Enhance user experience for <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#geo">geo</a> / <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-map">map</a> in touche device。</p>
 </li>
-<li><p>[^] Fix calculation error of <a href="http://echarts.baidu.com/api.html#echartsInstance.containPixel">containPixel</a> in <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#geo">geo</a> / <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-graph">graph</a>. See <a href="https://github.com/ecomfe/echarts/issues/4405">#4405</a>.</p>
+<li><p>[^] Fix calculation error of <a href="https://ecomfe.github.io/echarts-doc/public/en/api.html#echartsInstance.containPixel">containPixel</a> in <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#geo">geo</a> / <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-graph">graph</a>. See <a href="https://github.com/ecomfe/echarts/issues/4405">#4405</a>.</p>
 </li>
 <li><p>[^] Enhance gradient <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#visualMap">visualMap</a> for <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-line">line</a>.</p>
 </li>
@@ -227,7 +280,7 @@
 <div class="time">2016-01-18</div>
 
 <ul>
-<li><p>[+] add <a href="http://echarts.baidu.com/api.html#echartsInstance.getOption">getOption</a> and <a href="http://echarts.baidu.com/api.html#echartsInstance.clear">clear</a> method</p>
+<li><p>[+] add <a href="https://ecomfe.github.io/echarts-doc/public/en/api.html#echartsInstance.getOption">getOption</a> and <a href="https://ecomfe.github.io/echarts-doc/public/en/api.html#echartsInstance.clear">clear</a> method</p>
 </li>
 <li><p>[^] fix average value, maximum value and minimum vaule label and the incapability to show correct value of tooltip. Fix <a href="https://github.com/ecomfe/echarts/issues/2393">#2393</a></p>
 </li>

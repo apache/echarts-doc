@@ -1,3 +1,56 @@
+<h2 id="v3-4-0">v3.4.0</h2>
+<div class="time">2017-01-12</div>
+
+<ul>
+<li><p><strong>[+] 发布象形柱图：<a href="http://echarts.baidu.com/option.html#series-pictorialBar">pictorialBar</a>。参见<a href="http://echarts.baidu.com/examples.html#chart-type-pictorialBar">例子</a>。</strong></p>
+</li>
+<li><p><strong>[+] 发布主题河流图：<a href="http://echarts.baidu.com/option.html#series-themeRiver">themeRiver</a>。参见<a href="http://echarts.baidu.com/examples.html#chart-type-themeRiver">例子</a>。</strong></p>
+</li>
+<li><p>[+] <a href="http://echarts.baidu.com/option.html#series-map">map series</a> 可以使用用户指定的 <a href="http://echarts.baidu.com/option.html#geo">geo 坐标系</a> 了（原先是只能使用内置的 geo 坐标系）。从而，geo 坐标系可以使用 <a href="http://echarts.baidu.com/option.html#series-map">map series</a> 控制自身的颜色，并且 <a href="http://echarts.baidu.com/option.html#series-map">map series</a> 可以和其他类型的 series（如 <a href="http://echarts.baidu.com/option.html#series-scatter">scatter series</a>）共享 geo 坐标系。参见 <a href="http://echarts.baidu.com/option.html#series-map.geoIndex">series-map.geoIndex</a>。</p>
+</li>
+<li><p>[+] 增加了 <a href="http://echarts.baidu.com/api.html#action.graph.focusNodeAdjacency">focusNodeAdjacency action</a>，从而能用 API 控制 <a href="http://echarts.baidu.com/option.html#series-geo">graph</a> 的连接高亮。</p>
+</li>
+<li><p>[+] 增加了 <a href="http://echarts.baidu.com/option.html#series-pie.animationType">series-pie.animationType</a>，支持不同的饼图动画效果。</p>
+</li>
+<li><p>[+] <a href="http://echarts.baidu.com/option.html#animationDuration">animationDuration</a> 增加了回调函数支持，可以根据不同的数据项得到不同的动画时长。</p>
+</li>
+<li><p>[+] <a href="http://echarts.baidu.com/option.html#xAxis.type">category axis</a> 支持了 <a href="http://echarts.baidu.com/option.html#xAxis.min">min</a> <a href="http://echarts.baidu.com/option.html#xAxis.max">max</a> 的设置。</p>
+</li>
+<li><p>[+] <a href="http://echarts.baidu.com/option.html#xAxis.type">category axis</a> 默认情况会显示所有的类目，不论是否有类目中没有数据（原先两端的没有数据的类目不会被显示）。</p>
+</li>
+<li><p>[+] 使用 <a href="http://echarts.baidu.com/option.html#singleAxis">singleAxis</a> 时，<code>series.data</code> 支持了一维数组的数据格式，如 <code>[11, 23, 44]</code>。</p>
+</li>
+<li><p>[+] <a href="http://echarts.baidu.com/option.html#dataZoom">dataZoom</a> 支持了 <a href="http://echarts.baidu.com/option.html#singleAxis">singleAxis</a>。</p>
+</li>
+<li><p>[+] 开放了 throttle 工具方法：<code>chart.util.throttle</code>。</p>
+</li>
+<li><p>[+] <a href="http://echarts.baidu.com/option.html#series-candlestick">K 线图</a> 支持了 <a href="http://echarts.baidu.com/option.html#series-candlestick.barWidth">barWidth</a>，<a href="http://echarts.baidu.com/option.html#series-candlestick.barMinWidth">barMinWidth</a>，<a href="http://echarts.baidu.com/option.html#series-candlestick.barMaxWidth">barMaxWidth</a> 设置。参见 <a href="https://github.com/ecomfe/echarts/issues/4783">#4783</a>。</p>
+</li>
+<li><p>[+] <a href="http://echarts.baidu.com/option.html#series-lines">线图</a> 支持了 <a href="http://echarts.baidu.com/option.html#series-lines.symbol">symbol</a>, <a href="http://echarts.baidu.com/option.html#series-lines.symbolSize">symbolSize</a> 设置。</p>
+</li>
+<li><p>[+] 支持了 <a href="http://echarts.baidu.com/option.html#visualMap-piecewise">visualMap-piecewise</a> 中数据标签和首尾的文本同时显示。参见 <a href="http://echarts.baidu.com/option.html#visualMap-piecewise.showLabel">visualMap-piecewise.showLabel</a> 参见 <a href="https://github.com/ecomfe/echarts/issues/4845">#4845</a>。</p>
+</li>
+<li><p>[+] 一个系列使用 <a href="http://echarts.baidu.com/option.html#visualMap">visualMap</a> 做视觉映射时，现在允许了系列中的某些数据项不受 <code>visualMap</code> 控制，从而能使用系列的自身的视觉定义定义（颜色、形状等）。参见 <a href="http://echarts.baidu.com/option.html#visualMap">visualMap</a> 中 <code>视觉映射方式的配置</code> 一节的描述。</p>
+</li>
+<li><p>[^] 优化了 <a href="http://echarts.baidu.com/option.html#grid">直角坐标系</a> 中数据全不显示时的显示效果。</p>
+</li>
+<li><p>[^] 在 <a href="http://echarts.baidu.com/api.html#action.tooltip.showTip">showTip</a> 事件中开放了 <code>dataIndex</code> 参数。</p>
+</li>
+<li><p>[^] 修复了 tooltip 中的 XSS 隐患。参见 <a href="https://github.com/ecomfe/echarts/issues/4769">#4769</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#series-graph.edgeLabel">series-graph.edgeLabel</a> 中部分属性无效的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/4555">#4555</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#series-gauge">series-gauge</a> 中 <code>min</code> <code>max</code> 是 <code>stirng</code> 时的 tick 渲染问题。参见 <a href="https://github.com/ecomfe/echarts/issues/4617">#4617</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#series-gauge.pointer.show">series-gauge.pointer.show</a> 的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/4618">#4618</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#series-radar">series-radar</a> 在无数据时渲染可能抛错的问题。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#series-line.markArea.label.normal.show">markArea.label.normal.show</a> 的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/4723">#4723</a>。</p>
+</li>
+<li><p>[^] 优化了 <a href="http://echarts.baidu.com/option.html#yAxis.type">log 数轴</a> 中，数据小于等于 0 时的处理。参见 <a href="https://github.com/ecomfe/echarts/issues/4743">#4743</a> 和 <a href="https://github.com/ecomfe/echarts/issues/3161">#3161</a>。</p>
+</li>
+</ul>
 <h2 id="v3-3-2">v3.3.2</h2>
 <div class="time">2016-11-24</div>
 
