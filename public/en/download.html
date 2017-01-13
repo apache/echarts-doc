@@ -5,7 +5,22 @@
         + '@font-face {font-family:"noto-light";src:local("Microsoft Yahei");}';
     document.head.insertBefore(el, document.getElementById('font-hack'));
 }
-</script><title>ECharts Documentation</title><link rel="stylesheet" type="text/css" href="css/ecOption.css?_v_=1478158214015"><link rel="stylesheet" type="text/css" href="vendors/prettify/prettify.css"><link rel="stylesheet" type="text/css" href="vendors/perfect-scrollbar/0.6.8/css/perfect-scrollbar.min.css"><link rel="stylesheet" type="text/css" href="vendors/jquery-autocomplete/jquery.auto-complete.css"><script src="js/log.js"></script><script src="vendors/prettify/prettify.js"></script><script src="vendors/prettify/lang-css.js"></script><script src="vendors/esl.js"></script><script type="text/javascript" src="./vendors/jquery/jquery.min.js"></script></head><!--[if lte IE 8]>
+</script><title>ECharts Download</title><link rel="stylesheet" type="text/css" href="css/ecOption.css?_v_=1478158214015"><link rel="stylesheet" type="text/css" href="vendors/prettify/prettify.css"><link rel="stylesheet" type="text/css" href="vendors/perfect-scrollbar/0.6.8/css/perfect-scrollbar.min.css"><link rel="stylesheet" type="text/css" href="vendors/jquery-autocomplete/jquery.auto-complete.css"><script src="js/log.js"></script><script src="vendors/prettify/prettify.js"></script><script src="vendors/prettify/lang-css.js"></script><script src="vendors/esl.js"></script><script type="text/javascript" src="./vendors/jquery/jquery.min.js"></script></head>
+
+<style>
+    #download-main h3 {
+        width: 650px;
+    }
+    #download-main .d-section-version .circle-wrap {
+        line-height: 120px;
+        font-size: 20px;
+        font-family: Helvetica;
+        color: #214d62;
+        font-weight: normal;
+    }
+</style>
+
+<!--[if lte IE 8]>
 <body class="lower-ie">
 <![endif]-->
 <!--[if (gt IE 8)|!(IE)]><body class="undefined"></body><![endif]--><div id="lowie-main"><img src="./images/forie.png" alt="ie tip"></div><div id="main">
@@ -42,77 +57,65 @@
             </ul></div></div></nav>
 
 
+<div id="download-main"><div class="d-section-version"><h2 id="tag-name"></h2><h3><span class="warn">Tip: the version "Source", which includes common warnings and hints, is recommanded for dev.</span></h3><div class="list-wrap"><ul id="download-list"></ul></div></div></div>
 
-<div class="ecdoc-apidoc"></div></div><script type="text/javascript" src="./vendors/bootstrap/js/bootstrap.min.js"></script><script type="text/javascript" src="./vendors/bootstrap/js/validator.js"></script><script type="text/javascript">$('#main').addClass('tutorial');
-
-window.globalArgsExtra = {
-    pageName: 'tutorial',
-    schemaUrl: 'documents/en/tutorial.json',
-    initHash: 'ECharts 特性介绍',
-    hideTreeRoot: true,
-    pureTitle: true,
-    lang: {
-        cn: {
-            queryBoxTextFuzzyPath: '教程搜索',
-            queryBoxPlaceholderFuzzyPath: '教程名称搜索（快捷键\'/\'）'
+<script type="text/javascript">
+    var list = [
+        {
+            label: 'Common',
+            fileName: 'echarts.common.min.js',
+            descHTML0: 'Includes common charts and components.',
+            descHTML1: 'line bar pie scatter legend tooltip toolbox markLine markPoint markArea dataZoom'
         },
-        en: {
-            queryBoxTextFuzzyPath: 'Tutorial search',
-            queryBoxPlaceholderFuzzyPath: 'Tutorial search (shortcut: \'/\')'
+        {
+            label: 'Simple',
+            fileName: 'echarts.simple.min.js',
+            descHTML0: 'Only includes basic charts.',
+            descHTML1: 'line bar pie'
+        },
+        {
+            label: 'Full',
+            fileName: 'echarts.min.js',
+            descHTML0: 'Includes all charts and components.',
+            descHTML1: ''
+        },
+        {
+            label: 'Source',
+            fileName: 'echarts.js',
+            descHTML0: 'Source code of all charts and components, including warnings and hints for dev.',
+            descHTML1: ''
         }
+    ];
+
+    function encodeHTML(source) {
+        return source == null
+            ? ''
+            : String(source)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
     }
-};</script><script src="vendors/jquery-autocomplete/jquery.auto-complete.min.js"></script><script type="text/javascript">document.getElementById('nav-doc').className = 'active';
 
-var vendorPath = '../vendors';
+    $.getJSON("https://api.github.com/repos/ecomfe/echarts/releases/latest").done(function (param) {
+        var tagName = param['tag_name'];
 
-define('globalArgs', extend({
-    version: '1478158214015',
-    basePath: './',
-    // Schema url is added by each doc page
-    schemaUrl: '',
-    iconfont: {
-        down: '&#' + parseInt('e600', 16),
-        up: '&#' + parseInt('e603', 16),
-        right: '&#' + parseInt('e602', 16),
-        left: '&#' + parseInt('e604', 16),
-        handLens: '&#' + parseInt('e601', 16)
-    }
-}, window.globalArgsExtra || {}));
+        $('#tag-name').html('Download ' + encodeHTML(tagName));
 
-define('prettyPrint', function () {
-    return prettyPrint;
-});
+        var htmls = [];
+        for (var i = 0; i < list.length; i++) {
+            var item = list[i];
+            var url = 'https://raw.githubusercontent.com/ecomfe/echarts/' + tagName + '/dist/' + item.fileName;
 
-define('ecLog', function () {
-    // log maybe blocked
-    if (typeof ecLog === 'undefined') {
-        ecLog = function () {};
-    }
-    return ecLog;
-});
-
-require.config({
-    baseUrl: './js',
-    paths: {
-        dt: vendorPath + '/dt/0.0.1',
-        tpl: vendorPath + '/dt/0.0.1/tplLoader',
-        etpl: vendorPath + '/etpl/3.0.0/etpl.min',
-        signals: vendorPath + '/signals/1.0.0/signals.min',
-        hasher: vendorPath + '/hasher/1.2.0/hasher.min',
-        perfectScrollbar: vendorPath + '/perfect-scrollbar/0.6.8/js/perfect-scrollbar'
-    },
-    urlArgs: '_v_=1478158214015'
-});
-
-require(['docTool/main'], function (main) {
-    main.init();
-});
-
-function extend(tar, src) {
-    for (var name in src) {
-        if (src.hasOwnProperty(name)) {
-            tar[name] = src[name];
+            htmls.push(
+                '<li><a target="_blank" href="' + encodeHTML(url) + '" download="' + encodeHTML(item.fileName) + '" class="download-echarts"><div class="circle-wrap">' + encodeHTML(item.label) + '</div></a><div class="text">' + item.descHTML0 + '<br><span>' + item.descHTML1 + '</span></div></li>'
+            );
         }
-    }
-    return tar;
-}</script><script type="text/javascript" src="./js/hm.js"></script></html>
+        $('#download-list')[0].innerHTML = htmls.join('');
+    })
+
+
+</script>
+<script type="text/javascript" src="./vendors/bootstrap/js/bootstrap.min.js"></script><script type="text/javascript" src="./vendors/bootstrap/js/validator.js"></script>
+<script type="text/javascript" src="./js/hm.js"></script></html>
