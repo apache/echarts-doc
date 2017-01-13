@@ -12,20 +12,16 @@
     </head>
     <body>
         <style>
-            #doc-index {
-                width: 900px;
-                margin: 100px auto;
-                font-family: 'Microsoft Yahei';
+            nav {
+                background:transparent !important;
             }
-
-            #doc-index h1, #doc-index h2 {
-                margin: 40px 10px;
-                text-align: center;
+            #fullpage {
+                height: 100%;
+                position: relative;
+                touch-action: none;
             }
-
-            #doc-index li {
-                margin: 10px 20px;
-                list-style: square;
+            #fullpage .section {
+                height:100%;
             }
         </style>
         <div id="main">
@@ -47,38 +43,28 @@
                         <li><a href="http://gallery.echartsjs.com" target="_blank">Gallery</a></li>
                     </ul>
                 </li>
-                <li id="nav-index"><a href="http://echarts.baidu.com/index.html" target="_blank">HOMEPAGE</a></li>
                 <li id="nav-github">
                     <a href="https://github.com/ecomfe/echarts"  target="_blank">GITHUB</a>
                 </li>
+                <li id="nav-index"><a href="http://echarts.baidu.com/index.html" target="_blank">HOME CN</a></li>
             </ul></div></div></nav>
 
-            <div id="doc-index">
-                <h1 id="echarts-documentation">ECharts Documentation</h1>
-                <ul>
-                    <li><p><a href="./en/tutorial.html">Tutorial</a></p>
-                    <ul>
-                    <li><a href="./cn/tutorial.html">中文</a></li>
-                    <li><a href="./en/tutorial.html">English</a></li>
-                    </ul>
-                    </li>
-                    <li><p><a href="./en/api.html">API</a></p>
-                    <ul>
-                    <li><a href="./cn/api.html">中文</a></li>
-                    <li><a href="./en/api.html">English</a></li>
-                    </ul>
-                    </li>
-                    <li><p><a href="./en/option.html">Option Manual</a></p>
-                    <ul>
-                    <li><a href="./cn/option.html">中文</a></li>
-                    <li><a href="./en/option.html">English</a></li>
-                    </ul>
-                    </li>
-                    </ul>
-                </ul>
+            <div id="fullpage">
+                <div class="section section-one">
+                    <div class="container-one">
+                        <div id="animate-logo"></div>
+                        <img src="./en/images/index/shadow.png" class="shadow">
+                        <div id="wave"></div>
+                    </div>
+                </div>
             </div>
+
         </div>
     </body>
     <script type="text/javascript" src="./en/vendors/jquery/jquery.min.js"></script><script type="text/javascript" src="./en/vendors/bootstrap/js/bootstrap.min.js"></script><script type="text/javascript" src="./en/vendors/bootstrap/js/validator.js"></script>
-    <script type="text/javascript" src="./en/js/hm.js"></script>
+    <script type="text/javascript" src="en/vendors/echarts/echarts.simple.min.js"></script><script src="index.js"></script><script type="text/javascript">
+    $(document).ready(function() {
+        drawCanvasOne();
+        drawLogo();
+    });</script><script type="text/javascript" src="./en/js/hm.js"></script>
 </html>
