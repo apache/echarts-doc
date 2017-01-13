@@ -3,6 +3,8 @@ public/documents/dash/en
 public/documents/dash/*.docset
 .vscode
 
+.sass-cache
+
 #################
 ## Eclipse
 #################

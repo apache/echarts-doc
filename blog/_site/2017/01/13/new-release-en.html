@@ -1,0 +1,197 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?8581b5de0049c5e3009931686fc45d7a";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<title>ECharts Released v3.4, supporting new chart types: pictorial-bar chart, theme-river chart, liquid-fill chart &#8211; </title>
+<meta name="description" content="TODO">
+<meta name="keywords" content="new release, extension, tutorial">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ECharts Released v3.4, supporting new chart types: pictorial-bar chart, theme-river chart, liquid-fill chart">
+<meta property="og:description" content="TODO">
+<meta property="og:url" content="http://echarts.baidu.com/blog/2017/01/13/new-release-en.html">
+<meta property="og:site_name" content="">
+
+
+
+
+
+<link rel="canonical" href="http://echarts.baidu.com/blog/2017/01/13/new-release-en.html">
+<link href="http://echarts.baidu.com/blog/feed.xml" type="application/atom+xml" rel="alternate" title=" Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://echarts.baidu.com/blog/assets/css/main.css">
+<!-- Webfonts -->
+<link href="//fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic" rel="stylesheet" type="text/css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="http://echarts.baidu.com/blog/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://echarts.baidu.com/blog/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://echarts.baidu.com/blog/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://echarts.baidu.com/blog/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://echarts.baidu.com/blog/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://echarts.baidu.com/blog/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://echarts.baidu.com/blog/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+</head>
+
+<body id="post" class="feature">
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
+	<button class="dl-trigger">展开</button>
+	<ul class="dl-menu">
+		<li><a href="http://echarts.baidu.com/blog/">首页</a></li>
+		<!--<li>
+			<a href="#">About</a>
+			<ul class="dl-submenu">
+				<li>
+					<img src="http://echarts.baidu.com/blog/images/echarts.png" alt="ECharts photo" class="author-photo">
+					<h4>ECharts</h4>
+					<p>强大、简单、灵活的可视化工具</p>
+				</li>
+				<li><a href="http://echarts.baidu.com/blog/about/"><span class="btn btn-inverse">Learn More</span></a></li>
+				
+				
+				
+				
+				
+				<li>
+					<a href="https://github.com/ecomfe/echarts"><i class="fa fa-fw fa-github"></i> GitHub</a>
+				</li>
+				
+				
+				
+				
+			</ul><!-- /.dl-submenu -->
+		<!--/li-->
+		<li>
+			<a href="http://echarts.baidu.com/blog/posts/">所有文章</a>
+		</li>
+		<li>
+			<a href="http://echarts.baidu.com/blog/tags/">所有标签</a>
+		</li>
+		<li>
+			<a href="http://echarts.baidu.com/">ECharts 官网</a>
+		</li>
+		<!--
+	</ul><!-- /.dl-menu -->
+</nav><!-- /.dl-menuwrapper -->
+
+
+
+<div class="entry-lang">
+  
+  <a href="http://echarts.baidu.com/blog/2017/01/13/new-release.html">中文</a> |
+  EN
+  
+</div>
+<div class="entry-header">
+  
+  <div class="entry-image">
+    <img src="http://echarts.baidu.com/blog/images/post/2017-01-13-new-release-theme-river.png" alt="ECharts Released v3.4, supporting new chart types: pictorial-bar chart, theme-river chart, liquid-fill chart">
+  </div><!-- /.entry-image -->
+</div><!-- /.entry-header -->
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <header class="header-title">
+      <div class="header-title-wrap">
+        <h1 class="entry-title">ECharts Released v3.4, supporting new chart types: pictorial-bar chart, theme-river chart, liquid-fill chart</h1>
+        <h2><span class="entry-date date published"><time datetime="2017-01-13T00:00:00+08:00">2017-01-13</time></span></h2>
+        
+        <p class="entry-reading-time">
+          <i class="fa fa-clock-o"></i>
+          
+
+Reading time: ~1 minute
+
+
+        </p><!-- /.entry-reading-time -->
+        
+      </div><!-- /.header-title-wrap -->
+    </header>
+    <div class="entry-content">
+      <p>This is english version…</p>
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="http://echarts.baidu.com/blog/tags/#new release" title="Pages tagged new release" class="tag"><span class="term">new release</span></a><a href="http://echarts.baidu.com/blog/tags/#extension" title="Pages tagged extension" class="tag"><span class="term">extension</span></a><a href="http://echarts.baidu.com/blog/tags/#tutorial" title="Pages tagged tutorial" class="tag"><span class="term">tutorial</span></a></span>
+        
+        <div class="social-share">
+  <ul class="socialcount socialcount-small inline-list">分享到：
+    <li class="weibo"><a href="http://v.t.sina.com.cn/share/share.php?title=ECharts+官网博文：ECharts Released v3.4, supporting new chart types: pictorial-bar chart, theme-river chart, liquid-fill chart&url=/2017/01/13/new-release-en.html" title="Share on Weibo">新浪微博</a></li>
+    <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=http://echarts.baidu.com/blog/2017/01/13/new-release-en.html" title="Share on Facebook"><span class="count"><i class="fa fa-facebook-square"></i> Like</span></a></li>
+    <li class="twitter"><a href="https://twitter.com/intent/tweet?text=http://echarts.baidu.com/blog/2017/01/13/new-release-en.html" title="Share on Twitter"><span class="count"><i class="fa fa-twitter-square"></i> Tweet</span></a></li>
+    <li class="googleplus"><a href="https://plus.google.com/share?url=http://echarts.baidu.com/blog/2017/01/13/new-release-en.html" title="Share on Google Plus"><span class="count"><i class="fa fa-google-plus-square"></i> +1</span></a></li>
+  </ul>
+</div><!-- /.social-share -->
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    <div class="read-more">
+  
+    <div class="read-more-header">
+      <a href="http://echarts.baidu.com/blog" class="read-more-btn">了解更多</a>
+    </div><!-- /.read-more-header -->
+    <div class="read-more-content">
+      <h3><a href="http://echarts.baidu.com/blog/2017/01/13/new-release.html" title="ECharts 3.4 版本发布：新增象形柱图、主题河流图、水球图">ECharts 3.4 版本发布：新增象形柱图、主题河流图、水球图</a></h3>
+      <p>在 ECharts 新发布的 3.4 版本中，新增象形柱图、主题河流图、水球图三种新图表。象形柱图利用图片和形状表现数据，主题河流图可以用来表示事件或主题等在一段时间内变化，水球图常用来展现百分比数据。 <a href="http://echarts.baidu.com/blog/2017/01/13/new-release.html">继续阅读</a></p>
+    </div><!-- /.read-more-content -->
+  
+  <div class="read-more-list">
+    
+  </div><!-- /.read-more-list -->
+</div><!-- /.read-more -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2017 ECharts. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/hpstr-jekyll-theme/" rel="nofollow">HPSTR Theme</a>.</span>
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://echarts.baidu.com/blog/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://echarts.baidu.com/blog/assets/js/scripts.min.js"></script>
+
+
+
+
+
+</body>
+</html>
