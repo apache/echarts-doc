@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<generator uri="http://jekyllrb.com" version="3.1.3">Jekyll</generator>
+<link href="http://localhost/ec-doc/blog/feed.xml" rel="self" type="application/atom+xml" />
+<link href="http://localhost/ec-doc/blog/" rel="alternate" type="text/html" />
+<updated>2017-01-13T16:14:08+08:00</updated>
+<id>http://localhost/ec-doc/blog/</id>
+<entry>
+<title>ECharts 3.4 版本发布：新增象形柱图、主题河流图、水球图</title>
+<link href="http://localhost/ec-doc/blog/2017/01/13/new-release.html" rel="alternate" type="text/html" title="ECharts 3.4 版本发布：新增象形柱图、主题河流图、水球图" />
+<published>2017-01-13T00:00:00+08:00</published>
+<updated>2017-01-13T00:00:00+08:00</updated>
+<id>http://localhost/ec-doc/blog/2017/01/13/new-release</id>
+<content type="html" xml:base="http://localhost/ec-doc/blog/2017/01/13/new-release.html">&lt;p&gt;在 ECharts 新发布的 3.4 版本中，新增象形柱图、主题河流图、水球图三种新图表。象形柱图利用图片和形状表现数据，主题河流图可以用来表示事件或主题等在一段时间内变化，水球图常用来展现百分比数据。&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;象形柱图&lt;/h2&gt;
+
+&lt;p&gt;象形柱图是可以设置各种具象图形元素（如图片、&lt;a href=&quot;http://www.w3.org/TR/SVG/paths.html#PathData&quot;&gt;SVG PathData&lt;/a&gt; 等）的柱状图。往往用在信息图中，用于有至少一个类目轴或时间轴的&lt;a href=&quot;http://echarts.baidu.com/option.html#grid&quot;&gt;直角坐标系&lt;/a&gt;上。&lt;/p&gt;
+
+&lt;p&gt;它既可以用图形的长宽变形表现数据，也可以用图形的个数、甚至是图形的颜色、透明度变化表现数据。&lt;/p&gt;
+
+&lt;p&gt;在下面的例子中，右边的两座山分别是一个图片，而最左侧的纸是由多个图片堆加成的，象形柱图会根据它们所在系列对应的数值，决定其高度。配合动画效果，能够实现很好的视觉效果。&lt;/p&gt;
+
+&lt;iframe style=&quot;width: 100%; height: 400px&quot; src=&quot;http://gallery.echartsjs.com/view.html?cid=pictorialBar-hill&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;在 &lt;a href=&quot;http://jing.baidu.com/h5/echarts-christmas-2016.html&quot;&gt;ECharts 圣诞活动页&lt;/a&gt;中，我们制作了以下这个驯鹿和交通方式的速度对比图，这样的图表可以使用 ECharts 象形柱图方便地实现。下图包含两个系列，一个是显示在上方的交通方式矢量图标，象形柱图默认会将每个图标放在对应值所在位置的下方，通过 &lt;code class=&quot;highlighter-rouge&quot;&gt;symbolSize&lt;/code&gt; 指定图标大小；另一个系列是显示在图标下方的山峰，在不指定 &lt;code class=&quot;highlighter-rouge&quot;&gt;symbolSize&lt;/code&gt; 的情况下，将填充满所在的“柱子”，因而就有了图示效果。&lt;/p&gt;
+
+&lt;iframe style=&quot;width: 100%; height: 400px&quot; src=&quot;http://gallery.echartsjs.com/view.html?cid=pictorialBar-velocity&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;除此之外，象形柱图还可以用同一图形的个数表现数值，实现类似 ECharts 圣诞活动页中一群小精灵的效果。因而象形柱图可以很大程度上满足信息图的制图需求。&lt;/p&gt;
+
+&lt;iframe style=&quot;width: 100%; height: 400px&quot; src=&quot;http://gallery.echartsjs.com/view.html?cid=pictorialBar-spirit&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;从 3.4 版本起，象形柱图将被包含在 &lt;a href=&quot;http://echarts.baidu.com/download.html&quot;&gt;ECharts 下载页面&lt;/a&gt;的“完整”版本中，无需引入额外文件，通过将系列名称设为 &lt;code class=&quot;highlighter-rouge&quot;&gt;pictorialBar&lt;/code&gt; 即可使用。&lt;/p&gt;
+
+&lt;p&gt;更多例子请前往&lt;a href=&quot;http://echarts.baidu.com/examples.html#chart-type-pictorialBar&quot;&gt;官网例子&lt;/a&gt;查看。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;主题河流图&lt;/h2&gt;
+
+&lt;p&gt;主题河流图是一种特殊的流图，它主要用来表示事件或主题等在一段时间内的变化。&lt;/p&gt;
+
+&lt;p&gt;主题河流中不同颜色的条带状河流分支编码了不同的事件或主题，河流分支的宽度编码了原数据集中的 &lt;code class=&quot;highlighter-rouge&quot;&gt;value&lt;/code&gt; 值。此外，原数据集中的时间属性，映射到单个时间轴上。&lt;/p&gt;
+
+&lt;iframe style=&quot;width: 100%; height: 400px&quot; src=&quot;http://gallery.echartsjs.com/view.html?cid=themeRiver-basic&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;图中的每一个系列，可以是一个产品市场占有率的变化，也可以表示国家人口的变化等等事件或主题。&lt;/p&gt;
+
+&lt;p&gt;更多例子请前往&lt;a href=&quot;http://echarts.baidu.com/examples.html#chart-type-themeRiver&quot;&gt;官网例子&lt;/a&gt;查看。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;水球图&lt;/h2&gt;
+
+&lt;p&gt;水球图的使用方式非常简单，实现以下这样的效果，只需要将系列类型设为 &lt;code class=&quot;highlighter-rouge&quot;&gt;liquidFill&lt;/code&gt;，并且指定数据即可。&lt;/p&gt;
+
+&lt;iframe style=&quot;width: 100%; height: 300px&quot; src=&quot;http://gallery.echartsjs.com/view.html?cid=liquidfill-basic&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;对应的代码为：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;option&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;series&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;liquidFill&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;水球图的个性化程度非常高，你可以为每个波指定波长、周期、相位、颜色、阴影、透明度等等属性，“水球”的形状可以是圆形、方形、三角形等等，甚至可以指定任意的 &lt;a href=&quot;http://www.w3.org/TR/SVG/paths.html#PathData&quot;&gt;SVG PathData&lt;/a&gt;，因此可以制作出变化非常的效果。&lt;/p&gt;
+
+&lt;iframe style=&quot;width: 100%; height: 400px&quot; src=&quot;http://gallery.echartsjs.com/view.html?cid=liquidfill-echarts&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;我们在 ECharts 圣诞主题页实现的雪球下降的效果，即是用水球图实现的。&lt;/p&gt;
+
+&lt;iframe style=&quot;width: 100%; height: 400px&quot; src=&quot;http://gallery.echartsjs.com/view.html?cid=christmas-gift-show&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;和象形柱图、主题河流图不同的是，水球图是作为插件发布的。这意味着，在 ECharts 官网下载的完整版本将不包含水球图，使用时，需要在引入 &lt;code class=&quot;highlighter-rouge&quot;&gt;echarts.js&lt;/code&gt; 之后，另外引入水球图对应的 &lt;code class=&quot;highlighter-rouge&quot;&gt;echarts-liquidfill.js&lt;/code&gt;，可以在 &lt;a href=&quot;https://github.com/ecomfe/echarts-liquidfill/tree/gh-pages/dist&quot;&gt;GitHub&lt;/a&gt; 找到最新版本。&lt;/p&gt;
+
+&lt;p&gt;如果感兴趣的话，可以前往&lt;a href=&quot;https://github.com/ecomfe/echarts-liquidfill&quot;&gt;水球图 GitHub 项目页面&lt;/a&gt;了解更多，或者在 &lt;a href=&quot;http://gallery.echartsjs.com/explore.html#sort=rank~timeframe=all~query=liquidfill~author=all&quot;&gt;Gallery&lt;/a&gt; 页面查看更多效果。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-3&quot;&gt;其他更新内容&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;[+] &lt;a href=&quot;http://echarts.baidu.com/option.html#series-map&quot;&gt;map series&lt;/a&gt; 可以使用用户指定的 &lt;a href=&quot;http://echarts.baidu.com/option.html#geo&quot;&gt;geo 坐标系&lt;/a&gt; 了（原先是只能使用内置的 geo 坐标系）。从而，geo 坐标系可以使用 &lt;a href=&quot;http://echarts.baidu.com/option.html#series-map&quot;&gt;map series&lt;/a&gt; 控制自身的颜色，并且 &lt;a href=&quot;http://echarts.baidu.com/option.html#series-map&quot;&gt;map series&lt;/a&gt; 可以和其他类型的 series（如 &lt;a href=&quot;http://echarts.baidu.com/option.html#series-scatter&quot;&gt;scatter series&lt;/a&gt;）共享 geo 坐标系。参见 &lt;a href=&quot;http://echarts.baidu.com/option.html#series-map.geoIndex&quot;&gt;series-map.geoIndex&lt;/a&gt;。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[+] 增加了 &lt;a href=&quot;http://echarts.baidu.com/api.html#action.graph.focusNodeAdjacency&quot;&gt;focusNodeAdjacency action&lt;/a&gt;，从而能用 API 控制 &lt;a href=&quot;http://echarts.baidu.com/option.html#series-geo&quot;&gt;graph&lt;/a&gt; 的连接高亮。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[+] 增加了 &lt;a href=&quot;http://echarts.baidu.com/option.html#series-pie.animationType&quot;&gt;series-pie.animationType&lt;/a&gt;，支持不同的饼图动画效果。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[+] &lt;a href=&quot;http://echarts.baidu.com/option.html#animationDuration&quot;&gt;animationDuration&lt;/a&gt; 增加了回调函数支持，可以根据不同的数据项得到不同的动画时长。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[+] &lt;a href=&quot;http://echarts.baidu.com/option.html#xAxis.type&quot;&gt;category axis&lt;/a&gt; 支持了 &lt;a href=&quot;http://echarts.baidu.com/option.html#xAxis.min&quot;&gt;min&lt;/a&gt; &lt;a href=&quot;http://echarts.baidu.com/option.html#xAxis.max&quot;&gt;max&lt;/a&gt; 的设置。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[+] &lt;a href=&quot;http://echarts.baidu.com/option.html#xAxis.type&quot;&gt;category axis&lt;/a&gt; 默认情况会显示所有的类目，不论是否有类目中没有数据（原先两端的没有数据的类目不会被显示）。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[+] &lt;a href=&quot;http://echarts.baidu.com/option.html#singleAxis&quot;&gt;singleAxis&lt;/a&gt; 中的 &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; 支持了一维数组的数据格式，如 &lt;code class=&quot;highlighter-rouge&quot;&gt;[11, 23, 44]&lt;/code&gt;。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[+] &lt;a href=&quot;http://echarts.baidu.com/option.html#dataZoom&quot;&gt;dataZoom&lt;/a&gt; 支持了 &lt;a href=&quot;http://echarts.baidu.com/option.html#singleAxis&quot;&gt;singleAxis&lt;/a&gt;。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[+] 开放了 throttle 工具方法：&lt;code class=&quot;highlighter-rouge&quot;&gt;chart.util.throttle&lt;/code&gt;。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[+] 优化了 &lt;a href=&quot;http://echarts.baidu.com/option.html#grid&quot;&gt;直角坐标系&lt;/a&gt; 中数据全不显示时的显示效果。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[+] &lt;a href=&quot;http://echarts.baidu.com/option.html#series-candlestick&quot;&gt;K 线图&lt;/a&gt; 支持了 &lt;a href=&quot;http://echarts.baidu.com/option.html#series-candlestick.barWidth&quot;&gt;barWidth&lt;/a&gt;，&lt;a href=&quot;http://echarts.baidu.com/option.html#series-candlestick.barMinWidth&quot;&gt;barMinWidth&lt;/a&gt;，&lt;a href=&quot;http://echarts.baidu.com/option.html#series-candlestick.barMaxWidth&quot;&gt;barMaxWidth&lt;/a&gt; 设置。参见 &lt;a href=&quot;https://github.com/ecomfe/echarts/issues/4783&quot;&gt;#4783&lt;/a&gt;。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[+] &lt;a href=&quot;http://echarts.baidu.com/option.html#series-lines&quot;&gt;线图&lt;/a&gt; 支持了 &lt;a href=&quot;http://echarts.baidu.com/option.html#series-lines.symbol&quot;&gt;symbol&lt;/a&gt;, &lt;a href=&quot;http://echarts.baidu.com/option.html#series-lines.symbolSize&quot;&gt;symbolSize&lt;/a&gt; 设置。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[+] 支持了 &lt;a href=&quot;http://echarts.baidu.com/option.html#visualMap-piecewise&quot;&gt;visualMap-piecewise&lt;/a&gt; 中数据标签和首尾的文本同时显示。参见 &lt;a href=&quot;http://echarts.baidu.com/option.html#visualMap-piecewise.showLabel&quot;&gt;visualMap-piecewise.showLabel&lt;/a&gt; 参见 &lt;a href=&quot;https://github.com/ecomfe/echarts/issues/4845&quot;&gt;#4845&lt;/a&gt;。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[+] 支持了 &lt;a href=&quot;http://echarts.baidu.com/option.html#visualMap&quot;&gt;visualMap&lt;/a&gt; 支持系列中的某些数据不受 &lt;code class=&quot;highlighter-rouge&quot;&gt;visualMap&lt;/code&gt; 控制。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[^] 在 &lt;a href=&quot;http://echarts.baidu.com/api.html#action.tooltip.showTip&quot;&gt;showTip&lt;/a&gt; 事件中开放了 &lt;code class=&quot;highlighter-rouge&quot;&gt;dataIndex&lt;/code&gt; 参数。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[^] 修复了 tooltip 中的 XSS 隐患。参见 &lt;a href=&quot;https://github.com/ecomfe/echarts/issues/4769&quot;&gt;#4769&lt;/a&gt;。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[^] 修复了 &lt;a href=&quot;http://echarts.baidu.com/option.html#series-graph.edgeLabel&quot;&gt;series-graph.edgeLabel&lt;/a&gt; 中部分属性无效的问题。参见 &lt;a href=&quot;https://github.com/ecomfe/echarts/issues/4555&quot;&gt;#4555&lt;/a&gt;。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[^] 修复了 &lt;a href=&quot;http://echarts.baidu.com/option.html#series-gauge&quot;&gt;series-gauge&lt;/a&gt; 中 &lt;code class=&quot;highlighter-rouge&quot;&gt;min&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;max&lt;/code&gt; 是 &lt;code class=&quot;highlighter-rouge&quot;&gt;stirng&lt;/code&gt; 时的 tick 渲染问题。参见 &lt;a href=&quot;https://github.com/ecomfe/echarts/issues/4617&quot;&gt;#4617&lt;/a&gt;。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[^] 修复了 &lt;a href=&quot;http://echarts.baidu.com/option.html#series-gauge.pointer.show&quot;&gt;series-gauge.pointer.show&lt;/a&gt; 的问题。参见 &lt;a href=&quot;https://github.com/ecomfe/echarts/issues/4618&quot;&gt;#4618&lt;/a&gt;。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[^] 修复了 &lt;a href=&quot;http://echarts.baidu.com/option.html#series-radar&quot;&gt;series-radar&lt;/a&gt; 在无数据时渲染可能抛错的问题。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[^] 修复了 &lt;a href=&quot;http://echarts.baidu.com/option.html#series-line.markArea.label.normal.show&quot;&gt;markArea.label.normal.show&lt;/a&gt; 的问题。参见 &lt;a href=&quot;https://github.com/ecomfe/echarts/issues/4723&quot;&gt;#4723&lt;/a&gt;。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[^] 优化了 &lt;a href=&quot;http://echarts.baidu.com/option.html#yAxis.type&quot;&gt;log 数轴&lt;/a&gt; 中，数据小于等于 0 时的处理。参见 &lt;a href=&quot;https://github.com/ecomfe/echarts/issues/4743&quot;&gt;#4743&lt;/a&gt; 和 &lt;a href=&quot;https://github.com/ecomfe/echarts/issues/3161&quot;&gt;#3161&lt;/a&gt;。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;欢迎前往 &lt;a href=&quot;http://gallery.echartsjs.com/explore.html&quot;&gt;ECharts Gallery&lt;/a&gt; 创建自己的 ECharts 图表，更方便地提问，以及建立自己的作品集。2017 年，让我们一起将可视化做得更棒！&lt;/strong&gt;&lt;/p&gt;
+
+</content>
+<category term="new release" />
+<category term="extension" />
+<category term="tutorial" />
+<summary>在 ECharts 新发布的 3.4 版本中，新增象形柱图、主题河流图、水球图三种新图表。象形柱图利用图片和形状表现数据，主题河流图可以用来表示事件或主题等在一段时间内变化，水球图常用来展现百分比数据。</summary>
+</entry>
+<entry>
+<title>ECharts Released v3.4, supporting three new chart types</title>
+<link href="http://localhost/ec-doc/blog/2017/01/13/new-release-en.html" rel="alternate" type="text/html" title="ECharts Released v3.4, supporting three new chart types" />
+<published>2017-01-13T00:00:00+08:00</published>
+<updated>2017-01-13T00:00:00+08:00</updated>
+<id>http://localhost/ec-doc/blog/2017/01/13/new-release-en</id>
+<content type="html" xml:base="http://localhost/ec-doc/blog/2017/01/13/new-release-en.html">&lt;p&gt;We are releasing ECharts v3.4, supporting three new types of charts, namely, pictorial-bar charts, theme-river charts, and liquid-fill charts. Pictorial-bar charts use images and shapes to represent data; theme-river charts are used to show the evolution of events or themes during a period; and liquid-fill charts are usually used to represent data in percentage.&lt;/p&gt;
+
+&lt;h2 id=&quot;pictorial-bar-charts&quot;&gt;Pictorial-bar Charts&lt;/h2&gt;
+
+&lt;p&gt;Pictorial-bar chart is a type of bar chart that customized glyph (like images, &lt;a href=&quot;http://www.w3.org/TR/SVG/paths.html#PathData&quot;&gt;SVG PathData&lt;/a&gt;) can be used instead of rectangular bar. This kind of chart is usually used in infographic.&lt;/p&gt;
+
+&lt;p&gt;Pictorial bar chart can only be used in &lt;a href=&quot;~grid&quot;&gt;rectangular coordinate&lt;/a&gt; with at least 1 category axis.&lt;/p&gt;
+
+&lt;p&gt;It can use the width or height of the graphic elements, or its number, color, opacity, and &lt;em&gt;etc.&lt;/em&gt; to represent data.&lt;/p&gt;
+
+&lt;p&gt;In the example below, the mountains at the right side are two images, while the pile of paper are composed with multiple images. Pictorial bar chart will compute their height with their values, and make a nice visual effect with animation like this example do.&lt;/p&gt;
+
+&lt;iframe style=&quot;width: 100%; height: 400px&quot; src=&quot;http://gallery.echartsjs.com/view.html?cid=pictorialBar-hill&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;In &lt;a href=&quot;http://jing.baidu.com/h5/echarts-christmas-2016.html&quot;&gt;ECharts Christmas Event Pages&lt;/a&gt;, we used pictorial-bar chart to make a chart comparing the speed of Santa’s reindeer and other transportation methods. The following chart contains two series, the first of which contains vector images of transportation methods, and the other the mountains below. Pictorial-bar charts compute the position of each graphic element based on its &lt;code class=&quot;highlighter-rouge&quot;&gt;value&lt;/code&gt; and put it below that position. &lt;code class=&quot;highlighter-rouge&quot;&gt;symbolSize&lt;/code&gt; can be used to specify image size, and will automatically fill the &lt;em&gt;bar&lt;/em&gt; when it is not given.&lt;/p&gt;
+
+&lt;iframe style=&quot;width: 100%; height: 400px&quot; src=&quot;http://gallery.echartsjs.com/view.html?cid=pictorialBar-velocity&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Besides, pictorial-bar charts can use the amount of the same graph element to represent data. The spirits chart of ECharts Christmas Event Pages is made with this type of pictorial-bar chart. In this way, pictorial-bar chart can be largely used in infographic.&lt;/p&gt;
+
+&lt;iframe style=&quot;width: 100%; height: 400px&quot; src=&quot;http://gallery.echartsjs.com/view.html?cid=pictorialBar-spirit&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;From ECharts v3.4, pictorial-bar chart is included in &lt;em&gt;full version&lt;/em&gt; in &lt;a href=&quot;http://echarts.baidu.com/download.html&quot;&gt;ECharts download page&lt;/a&gt;, so that you can use it by assigning series name to be &lt;code class=&quot;highlighter-rouge&quot;&gt;pictorialBar&lt;/code&gt; without using an extra file.&lt;/p&gt;
+
+&lt;p&gt;You may refer to &lt;a href=&quot;http://echarts.baidu.com/examples.html#chart-type-pictorialBar&quot;&gt;official examples&lt;/a&gt; for more information.&lt;/p&gt;
+
+&lt;h2 id=&quot;theme-river-charts&quot;&gt;Theme-river Charts&lt;/h2&gt;
+
+&lt;p&gt;Theme-river chart is a special flow graph which is mainly used to present the changes of an event or theme during a period.&lt;/p&gt;
+
+&lt;p&gt;The ribbon-shape river branches in different colors in theme river encode variable events or themes. The width of river branches encode the value of the original dataset.&lt;/p&gt;
+
+&lt;p&gt;What’s more, the time attribute of the orinigal dataset would map to a single time axis.&lt;/p&gt;
+
+&lt;iframe style=&quot;width: 100%; height: 400px&quot; src=&quot;http://gallery.echartsjs.com/view.html?cid=themeRiver-basic&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Each series can be changing of market share of a product overtime, or the changing of population of a country, and &lt;em&gt;etc&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;You may refer to &lt;a href=&quot;http://echarts.baidu.com/examples.html#chart-type-themeRiver&quot;&gt;official examples&lt;/a&gt; for more information.&lt;/p&gt;
+
+&lt;h2 id=&quot;liquid-fill-charts&quot;&gt;Liquid-fill Charts&lt;/h2&gt;
+
+&lt;p&gt;Liquid-fill charts are very easy to use. To make the following chart, you only need to set series type to be &lt;code class=&quot;highlighter-rouge&quot;&gt;liquidFill&lt;/code&gt; and assign values.&lt;/p&gt;
+
+&lt;iframe style=&quot;width: 100%; height: 300px&quot; src=&quot;http://gallery.echartsjs.com/view.html?cid=liquidfill-basic&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Corresponding code is:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;option&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;series&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;liquidFill&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Liquid-fill charts have a great ability to be customized. You can assign each wave’s attributes like wave length, period, phase, color, shadow, opacity, and &lt;em&gt;etc&lt;/em&gt;. The shape of the &lt;em&gt;ball&lt;/em&gt; can be circle, rectangular, triangle, or even a random shape with &lt;a href=&quot;http://www.w3.org/TR/SVG/paths.html#PathData&quot;&gt;SVG PathData&lt;/a&gt;, giving it a great ability to make amazing charts.&lt;/p&gt;
+
+&lt;iframe style=&quot;width: 100%; height: 400px&quot; src=&quot;http://gallery.echartsjs.com/view.html?cid=liquidfill-echarts&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;The snowing chart in ECharts Christmas Event Pages is made with liquid-fill chart.&lt;/p&gt;
+
+&lt;iframe style=&quot;width: 100%; height: 400px&quot; src=&quot;http://gallery.echartsjs.com/view.html?cid=christmas-gift-show&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Unlike pictorial-bar chart or theme-river chart, liquid-fill chart is released as an ECharts plugin. This means, it is not included in the full version in ECharts download page, and you need to include &lt;code class=&quot;highlighter-rouge&quot;&gt;echarts-liquidfill.js&lt;/code&gt; after &lt;code class=&quot;highlighter-rouge&quot;&gt;echarts.js&lt;/code&gt;. You may find the latest liquid-fill chart at &lt;a href=&quot;https://github.com/ecomfe/echarts-liquidfill/tree/gh-pages/dist&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;You may find more information at &lt;a href=&quot;https://github.com/ecomfe/echarts-liquidfill&quot;&gt;Liquid-fill GitHub repo&lt;/a&gt;, or visit &lt;a href=&quot;http://gallery.echartsjs.com/explore.html#sort=rank~timeframe=all~query=liquidfill~author=all&quot;&gt;Gallery&lt;/a&gt; for more application.&lt;/p&gt;
+
+&lt;h2 id=&quot;other-updates&quot;&gt;Other Updates&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;[+] A specified &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#geo&quot;&gt;geo coordinate system&lt;/a&gt; has been able to be used in &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#series-map&quot;&gt;map series&lt;/a&gt;. (In the past map series could only creat an inner exclusive geo coodinate system). Thus, &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#series-map&quot;&gt;map series&lt;/a&gt; can be used to control color of a geo component. Moreover, a geo coordinate system can be shared among &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#series-map&quot;&gt;map series&lt;/a&gt; and other series, like &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#series-scatter&quot;&gt;scatter series&lt;/a&gt;. See &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#series-map.geoIndex&quot;&gt;series-map.geoIndex&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[+] Added &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/api.html#action.graph.focusNodeAdjacency&quot;&gt;focusNodeAdjacency action&lt;/a&gt;, which enables trigger adjacent highlight of &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#series-geo&quot;&gt;graph&lt;/a&gt; through API.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[+] Added &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#series-pie.animationType&quot;&gt;series-pie.animationType&lt;/a&gt;, which enables more animation effects.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[+] Callback function have been supported in &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#animationDuration&quot;&gt;animationDuration&lt;/a&gt;, which enables different animation duration of data items.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[+] &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.min&quot;&gt;min&lt;/a&gt; and &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.max&quot;&gt;max&lt;/a&gt; have been supported in &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.type&quot;&gt;category axis&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[+] &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.type&quot;&gt;category axis&lt;/a&gt; has been changed to show all categories by default, in spite of whether there is data in categories. In the past, categories in the end that has no data will not be displayed.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[+] When using &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#singleAxis&quot;&gt;singleAxis&lt;/a&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;series.data&lt;/code&gt; has supported one-dimension array, like &lt;code class=&quot;highlighter-rouge&quot;&gt;[11, 23, 44]&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[+] &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#dataZoom&quot;&gt;dataZoom&lt;/a&gt; has supported &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#singleAxis&quot;&gt;singleAxis&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[+] Exposed throttle util method: &lt;code class=&quot;highlighter-rouge&quot;&gt;chart.util.throttle&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[+] &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#series-candlestick&quot;&gt;candlestick&lt;/a&gt; has supported &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#series-candlestick.barWidth&quot;&gt;barWidth&lt;/a&gt;, &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#series-candlestick.barMinWidth&quot;&gt;barMinWidth&lt;/a&gt; and &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#series-candlestick.barMaxWidth&quot;&gt;barMaxWidth&lt;/a&gt;. See &lt;a href=&quot;https://github.com/ecomfe/echarts/issues/4783&quot;&gt;#4783&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[+] &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#series-lines&quot;&gt;lines chart&lt;/a&gt; has supported &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#series-lines.symbol&quot;&gt;symbol&lt;/a&gt;, &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#series-lines.symbolSize&quot;&gt;symbolSize&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[+] Added support for show end text and data label at the same time in &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#visualMap-piecewise&quot;&gt;visualMap-piecewise&lt;/a&gt;. See &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#visualMap-piecewise.showLabel&quot;&gt;visualMap-piecewise.showLabel&lt;/a&gt;, and See &lt;a href=&quot;https://github.com/ecomfe/echarts/issues/4845&quot;&gt;#4845&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[+] When using &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#visualMap&quot;&gt;visualMap&lt;/a&gt; to control a series, it has supported that some data items escape from the control by visualMap, but use its series visual settings (color, symbol, …). See the paragraph of &lt;code class=&quot;highlighter-rouge&quot;&gt;Configure mapping&lt;/code&gt; in &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#visualMap&quot;&gt;visualMap&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[^] Enhanced the effect of &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#grid&quot;&gt;grid (cartesian)&lt;/a&gt; when on data displayed.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[^] Added parameter &lt;code class=&quot;highlighter-rouge&quot;&gt;dataIndex&lt;/code&gt; in &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/api.html#action.tooltip.showTip&quot;&gt;showTip event&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[^] Fixed vulnerability about XSS in tooltip. See &lt;a href=&quot;https://github.com/ecomfe/echarts/issues/4769&quot;&gt;#4769&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[^] Fixed that some attributes did not work in &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#series-graph.edgeLabel&quot;&gt;series-graph.edgeLabel&lt;/a&gt;. See &lt;a href=&quot;https://github.com/ecomfe/echarts/issues/4555&quot;&gt;#4555&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[^] Fixed tick render problem when &lt;code class=&quot;highlighter-rouge&quot;&gt;min&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;max&lt;/code&gt; is &lt;code class=&quot;highlighter-rouge&quot;&gt;stirng&lt;/code&gt; in &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#series-gauge&quot;&gt;series-gauge&lt;/a&gt;. See &lt;a href=&quot;https://github.com/ecomfe/echarts/issues/4617&quot;&gt;#4617&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[^] Fixed &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#series-gauge.pointer.show&quot;&gt;series-gauge.pointer.show&lt;/a&gt; problem. See &lt;a href=&quot;https://github.com/ecomfe/echarts/issues/4618&quot;&gt;#4618&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[^] Fixed &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#series-radar&quot;&gt;series-radar&lt;/a&gt; render error in a case that no data exists.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[^] Fixed &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#series-line.markArea.label.normal.show&quot;&gt;markArea.label.normal.show&lt;/a&gt; problem. See &lt;a href=&quot;https://github.com/ecomfe/echarts/issues/4723&quot;&gt;#4723&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[^] Enhanced the process when data is equals or less then zero in &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#yAxis.type&quot;&gt;log axis&lt;/a&gt;. See &lt;a href=&quot;https://github.com/ecomfe/echarts/issues/4743&quot;&gt;#4743&lt;/a&gt; and &lt;a href=&quot;https://github.com/ecomfe/echarts/issues/3161&quot;&gt;#3161&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Please visit &lt;a href=&quot;http://gallery.echartsjs.com/explore.html&quot;&gt;ECharts Gallery&lt;/a&gt; to create charts with ECharts, for sharing when asking others for help, or make your own portfolio. Let’s make better visualization products in 2017!&lt;/strong&gt;&lt;/p&gt;
+</content>
+<category term="en" />
+<category term="new release" />
+<category term="extension" />
+<category term="tutorial" />
+<summary>We are releasing ECharts v3.4, supporting three new types of charts, namely, pictorial-bar charts, theme-river charts, and liquid-fill charts. Pictorial-bar charts use images and shapes to represent data; theme-river charts are used to show the evolution of events or themes during a period; and liquid-fill charts are usually used to represent data in percentage.</summary>
+</entry>
+</feed>

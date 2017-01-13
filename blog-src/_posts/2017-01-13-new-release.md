@@ -23,7 +23,7 @@ image:
 <iframe style="width: 100%; height: 400px" src="http://gallery.echartsjs.com/view.html?cid=pictorialBar-hill"></iframe>
 
 
-在 [ECharts 圣诞活动页](http://jing.baidu.com/h5/echarts-christmas-2016.html)中，我们制作了以下这个驯鹿和交通方式的速度对比图，这样的图表可以使用 ECharts 象形柱图方便地实现。下图包含两个系列，一个是显示在上方的交通方式矢量图标，象形柱图默认会将每个图标放在对应值所在位置的下方，通过 `symbolSize` 指定图表大小；另一个系列是显示在图标下方的山峰，在不指定 `symbolSize` 的情况下，将填充满所在的“柱子”，因而就有了图示效果。
+在 [ECharts 圣诞活动页](http://jing.baidu.com/h5/echarts-christmas-2016.html)中，我们制作了以下这个驯鹿和交通方式的速度对比图，这样的图表可以使用 ECharts 象形柱图方便地实现。下图包含两个系列，一个是显示在上方的交通方式矢量图标，象形柱图默认会将每个图标放在对应值所在位置的下方，通过 `symbolSize` 指定图标大小；另一个系列是显示在图标下方的山峰，在不指定 `symbolSize` 的情况下，将填充满所在的“柱子”，因而就有了图示效果。
 
 <iframe style="width: 100%; height: 400px" src="http://gallery.echartsjs.com/view.html?cid=pictorialBar-velocity"></iframe>
 
@@ -77,7 +77,7 @@ option = {
 
 <iframe style="width: 100%; height: 400px" src="http://gallery.echartsjs.com/view.html?cid=christmas-gift-show"></iframe>
 
-和象形柱图不同的是，水球图是作为插件发布的。这意味着，在 ECharts 官网下载的完整版本将不包含水球图，使用时，需要在引入 `echarts.js` 之后，另外引入水球图对应的 `echarts-liquidfill.js`，可以在 [GitHub](https://github.com/ecomfe/echarts-liquidfill/tree/gh-pages/dist) 找到最新版本。
+和象形柱图、主题河流图不同的是，水球图是作为插件发布的。这意味着，在 ECharts 官网下载的完整版本将不包含水球图，使用时，需要在引入 `echarts.js` 之后，另外引入水球图对应的 `echarts-liquidfill.js`，可以在 [GitHub](https://github.com/ecomfe/echarts-liquidfill/tree/gh-pages/dist) 找到最新版本。
 
 如果感兴趣的话，可以前往[水球图 GitHub 项目页面](https://github.com/ecomfe/echarts-liquidfill)了解更多，或者在 [Gallery](http://gallery.echartsjs.com/explore.html#sort=rank~timeframe=all~query=liquidfill~author=all) 页面查看更多效果。
 
