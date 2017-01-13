@@ -5,8 +5,8 @@ words_per_minute: 50
 destination: ../blog
 # Your site's domain goes here (eg: https://mmistakes.github.io, http://yourdomain.com, etc)
 # When testing locally leave blank or use http://localhost:4000
-# url: http://echarts.baidu.com/blog
-url: http://localhost/ec-doc/blog
+url: http://echarts.baidu.com/blog
+# url: http://localhost/ec-doc/blog
 
 # Owner/author information
 owner:

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 <generator uri="http://jekyllrb.com" version="3.1.3">Jekyll</generator>
-<link href="http://localhost/ec-doc/blog/feed.xml" rel="self" type="application/atom+xml" />
-<link href="http://localhost/ec-doc/blog/" rel="alternate" type="text/html" />
-<updated>2017-01-13T16:14:08+08:00</updated>
-<id>http://localhost/ec-doc/blog/</id>
+<link href="http://echarts.baidu.com/blog/feed.xml" rel="self" type="application/atom+xml" />
+<link href="http://echarts.baidu.com/blog/" rel="alternate" type="text/html" />
+<updated>2017-01-13T16:31:18+08:00</updated>
+<id>http://echarts.baidu.com/blog/</id>
 <entry>
 <title>ECharts 3.4 版本发布：新增象形柱图、主题河流图、水球图</title>
-<link href="http://localhost/ec-doc/blog/2017/01/13/new-release.html" rel="alternate" type="text/html" title="ECharts 3.4 版本发布：新增象形柱图、主题河流图、水球图" />
+<link href="http://echarts.baidu.com/blog/2017/01/13/new-release.html" rel="alternate" type="text/html" title="ECharts 3.4 版本发布：新增象形柱图、主题河流图、水球图" />
 <published>2017-01-13T00:00:00+08:00</published>
 <updated>2017-01-13T00:00:00+08:00</updated>
-<id>http://localhost/ec-doc/blog/2017/01/13/new-release</id>
-<content type="html" xml:base="http://localhost/ec-doc/blog/2017/01/13/new-release.html">&lt;p&gt;在 ECharts 新发布的 3.4 版本中，新增象形柱图、主题河流图、水球图三种新图表。象形柱图利用图片和形状表现数据，主题河流图可以用来表示事件或主题等在一段时间内变化，水球图常用来展现百分比数据。&lt;/p&gt;
+<id>http://echarts.baidu.com/blog/2017/01/13/new-release</id>
+<content type="html" xml:base="http://echarts.baidu.com/blog/2017/01/13/new-release.html">&lt;p&gt;在 ECharts 新发布的 3.4 版本中，新增象形柱图、主题河流图、水球图三种新图表。象形柱图利用图片和形状表现数据，主题河流图可以用来表示事件或主题等在一段时间内变化，水球图常用来展现百分比数据。&lt;/p&gt;
 
 &lt;h2 id=&quot;section&quot;&gt;象形柱图&lt;/h2&gt;
 
@@ -157,11 +157,11 @@
 </entry>
 <entry>
 <title>ECharts Released v3.4, supporting three new chart types</title>
-<link href="http://localhost/ec-doc/blog/2017/01/13/new-release-en.html" rel="alternate" type="text/html" title="ECharts Released v3.4, supporting three new chart types" />
+<link href="http://echarts.baidu.com/blog/2017/01/13/new-release-en.html" rel="alternate" type="text/html" title="ECharts Released v3.4, supporting three new chart types" />
 <published>2017-01-13T00:00:00+08:00</published>
 <updated>2017-01-13T00:00:00+08:00</updated>
-<id>http://localhost/ec-doc/blog/2017/01/13/new-release-en</id>
-<content type="html" xml:base="http://localhost/ec-doc/blog/2017/01/13/new-release-en.html">&lt;p&gt;We are releasing ECharts v3.4, supporting three new types of charts, namely, pictorial-bar charts, theme-river charts, and liquid-fill charts. Pictorial-bar charts use images and shapes to represent data; theme-river charts are used to show the evolution of events or themes during a period; and liquid-fill charts are usually used to represent data in percentage.&lt;/p&gt;
+<id>http://echarts.baidu.com/blog/2017/01/13/new-release-en</id>
+<content type="html" xml:base="http://echarts.baidu.com/blog/2017/01/13/new-release-en.html">&lt;p&gt;We are releasing ECharts v3.4, supporting three new types of charts, namely, pictorial-bar charts, theme-river charts, and liquid-fill charts. Pictorial-bar charts use images and shapes to represent data; theme-river charts are used to show the evolution of events or themes during a period; and liquid-fill charts are usually used to represent data in percentage.&lt;/p&gt;
 
 &lt;h2 id=&quot;pictorial-bar-charts&quot;&gt;Pictorial-bar Charts&lt;/h2&gt;
 
