@@ -13,3 +13,9 @@ cp -R ${basepath}/asset/ ${basepath}/../echarts-home/documents/asset/
 
 # github
 node ${basepath}/build.js github
+
+
+
+# blog
+rm -r ${basepath}/../echarts-home/blog
+cp -R ${basepath}/blog ${basepath}/../echarts-home/
