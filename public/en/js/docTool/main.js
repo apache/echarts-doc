@@ -542,9 +542,7 @@ define(function (require) {
             }
 
             // 不需要encodeHTML，本身就是html
-            var descText = lang.langCode === 'en'
-                ? (treeItem.descriptionEN || '')
-                : (treeItem.descriptionCN || '');
+            var descText = treeItem.descriptionCN || '';
 
             if (removeIFrame) {
                 descText = descText.replace(IFR_REG, '');

@@ -17,13 +17,11 @@
 
 + [+] [category axis](http://echarts.baidu.com/option.html#xAxis.type) 默认情况会显示所有的类目，不论是否有类目中没有数据（原先两端的没有数据的类目不会被显示）。
 
-+ [+] [singleAxis](http://echarts.baidu.com/option.html#singleAxis) 中的 `data` 支持了一维数组的数据格式，如 `[11, 23, 44]`。
++ [+] 使用 [singleAxis](http://echarts.baidu.com/option.html#singleAxis) 时，`series.data` 支持了一维数组的数据格式，如 `[11, 23, 44]`。
 
 + [+] [dataZoom](http://echarts.baidu.com/option.html#dataZoom) 支持了 [singleAxis](http://echarts.baidu.com/option.html#singleAxis)。
 
 + [+] 开放了 throttle 工具方法：`chart.util.throttle`。
-
-+ [+] 优化了 [直角坐标系](http://echarts.baidu.com/option.html#grid) 中数据全不显示时的显示效果。
 
 + [+] [K 线图](http://echarts.baidu.com/option.html#series-candlestick) 支持了 [barWidth](http://echarts.baidu.com/option.html#series-candlestick.barWidth)，[barMinWidth](http://echarts.baidu.com/option.html#series-candlestick.barMinWidth)，[barMaxWidth](http://echarts.baidu.com/option.html#series-candlestick.barMaxWidth) 设置。参见 [#4783](https://github.com/ecomfe/echarts/issues/4783)。
 
@@ -31,7 +29,9 @@
 
 + [+] 支持了 [visualMap-piecewise](http://echarts.baidu.com/option.html#visualMap-piecewise) 中数据标签和首尾的文本同时显示。参见 [visualMap-piecewise.showLabel](http://echarts.baidu.com/option.html#visualMap-piecewise.showLabel) 参见 [#4845](https://github.com/ecomfe/echarts/issues/4845)。
 
-+ [+] 支持了 [visualMap](http://echarts.baidu.com/option.html#visualMap) 支持系列中的某些数据不受 `visualMap` 控制。
++ [+] 一个系列使用 [visualMap](http://echarts.baidu.com/option.html#visualMap) 做视觉映射时，现在允许了系列中的某些数据项不受 `visualMap` 控制，从而能使用系列的自身的视觉定义定义（颜色、形状等）。参见 [visualMap](http://echarts.baidu.com/option.html#visualMap) 中 `视觉映射方式的配置` 一节的描述。
+
++ [^] 优化了 [直角坐标系](http://echarts.baidu.com/option.html#grid) 中数据全不显示时的显示效果。
 
 + [^] 在 [showTip](http://echarts.baidu.com/api.html#action.tooltip.showTip) 事件中开放了 `dataIndex` 参数。
 
