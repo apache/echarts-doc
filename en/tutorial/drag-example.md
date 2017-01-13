@@ -2,7 +2,9 @@
 
 # An Example: Implement Dragging
 
-This is a tiny example, introducing how to implement dragging of graphic elements in echarts. This is the [URL](http://echarts.baidu.com/demo.html#line-draggable) of the example. From this example, we will see how to make an application with rich intractivity based on echarts API.
+This is a tiny example, introducing how to implement dragging of graphic elements in echarts. From this example, we will see how to make an application with rich intractivity based on echarts API.
+
+~[600x400](${galleryViewPath}line-draggable&edit=1&reset=1)
 
 This example mainly implements that dragging points of a curve and by which the curve is modified. Although it is simple example, but we can do more based on that, like edit charts viually. So let's get started from this simple example.
 
