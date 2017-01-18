@@ -1,2 +1,3 @@
 # Handling Reading
 markdown_ext: "markdown,mkdown,mkdn,mkd"
+exclude: ["node_modules", "vendor/bundle/", "vendor/cache/", "vendor/gems/", "vendor/ruby/", "blog-src", "README.md"]

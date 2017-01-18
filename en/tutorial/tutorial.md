@@ -9,3 +9,4 @@
 {{ import: media-query }}
 {{ import: visual-map }}
 {{ import: event }}
+{{ import: drag-example }}
