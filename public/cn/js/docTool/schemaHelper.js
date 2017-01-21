@@ -153,6 +153,8 @@ define(function (require) {
      * @param {Object=} options
      * @param {boolean=} [options.arrayOnlyAtom] default false
      * @param {boolean=} [options.ignoreEmptyItem] default false
+     * @param {boolean=} [options.noCtxVar=false] If false, in 'Responsive%20Mobile-End',
+     *                                            '-End' will be recognized as ctxVar.
      */
     schemaHelper.parseOptionPath = function (optionPath, options) {
         options = options || {};
@@ -178,6 +180,12 @@ define(function (require) {
             var propertyName = regResult[1];
             var ctxVar = regResult[2];
             var ctxVarValue = regResult[3];
+
+            if (options.noCtxVar) {
+                propertyName += ctxVar;
+                ctxVarValue = null;
+            }
+
             var pa = {};
             var lastPa = retArr[retArr.length - 1];
 
@@ -269,6 +277,8 @@ define(function (require) {
      * @param {string=} [args.anyText] Like 'somesomesome',
      *                                 using fuzzy mode, case insensitive..
      *                                 full text query (include descriptoin)
+     * @param {boolean} [args.noCtxVar=false] If false, in 'Responsive%20Mobile-End',
+     *                                   '-End' will be recognized as ctxVar.
      * @return {Array.<Object>} result
      * @throws {Error}
      */
@@ -278,10 +288,16 @@ define(function (require) {
             originalDocTree: docTree,
             result: [],
             optionPath: args.optionPath
-                ? schemaHelper.parseOptionPath(args.optionPath, {arrayOnlyAtom: true})
+                ? schemaHelper.parseOptionPath(
+                    args.optionPath,
+                    {arrayOnlyAtom: true, noCtxVar: args.noCtxVar}
+                )
                 : null,
             fuzzyPath: args.fuzzyPath
-                ? schemaHelper.parseOptionPath(args.fuzzyPath, {arrayOnlyAtom: true, ignoreEmptyItem: true})
+                ? schemaHelper.parseOptionPath(
+                    args.fuzzyPath,
+                    {arrayOnlyAtom: true, ignoreEmptyItem: true, noCtxVar: args.noCtxVar}
+                )
                 : null,
             anyText: args.anyText && $.trim(args.anyText) || null
         };
