@@ -10,8 +10,6 @@ Those graphic type are supported.
 {{ use: graphic-cpt-type-list }}
 
 
-下面示例中，使用图形元素做了水印，和文本块：
-
 This example shows how to make a watermark and text block:
 ~[600x400](${galleryViewPath}line-graphic&edit=1&reset=1)
 
