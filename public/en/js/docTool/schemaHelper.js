@@ -463,6 +463,26 @@ define(function (require) {
 
         buildRecursively(renderBase, schema.option, makeContext({optionPath: []}));
 
+        // option count.
+        // (function (renderBase) {
+        //     result = 0;
+        //     count(renderBase);
+        //     function count(item) {
+        //         if (!item) {
+        //             return;
+        //         }
+        //         if (item.children && item.children.length) {
+        //             for (var i = 0; i < item.children.length; i++) {
+        //                 count(item.children[i]);
+        //             }
+        //         }
+        //         else {
+        //             result++;
+        //         }
+        //     }
+        //     console.log('option item count: ' + result);
+        // })(renderBase);
+
         return renderBase;
 
         function makeContext(props) {

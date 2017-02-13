@@ -18,7 +18,7 @@
     (params: Object|Array) => string
     ```
     参数 `params` 是 formatter 需要的单个数据集。格式如下：
-    {{ use: partial-formatter-params-structor() }}。
+    {{ use: partial-formatter-params-structure() }}。
 
 
 
