@@ -60,6 +60,20 @@ center: [115.97, 29.71]
 
 最终的 `aspect` 的计算方式是：`geoBoundingRect.width / geoBoundingRect.height * aspectScale`
 
+#${prefix} boundingCoords(Array) = null
+二维数组，定义定位的左上角以及右下角分别所对应的经纬度。例如
+```js
+// 设置为一张完整经纬度的世界地图
+map: 'world',
+left: 0, top: 0, right: 0, bottom: 0,
+boundingCoords: [
+    // 定位左上角经纬度
+    [-180, 90],
+    // 定位右下角经纬度
+    [180, -90]
+],
+```
+
 #${prefix} zoom(number) = 1
 当前视角的缩放比例。
 

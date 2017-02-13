@@ -61,6 +61,21 @@ Used to scale aspect of geo.
 
 The final aspect is calculated by: `geoBoundingRect.width / geoBoundingRect.height * aspectScale`.
 
+#${prefix} boundingCoords(Array) = null
+Two dimension array. Define coord of left-top, right-bottom in layout box.
+
+```js
+// A complete world map
+map: 'world',
+left: 0, top: 0, right: 0, bottom: 0,
+boundingCoords: [
+    // [lng, lat] of left-top corner
+    [-180, 90],
+    // [lng, lat] of right-bottom corner
+    [180, -90]
+],
+```
+
 #${prefix} zoom(number) = 1
 Zoom rate of current view-port.
 
