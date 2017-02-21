@@ -84,6 +84,13 @@ The margin between the axis label and the axis line.
     prefix='##' + ${prefix},
     defaultColor="'#333'"
 )}}
+
+###${prefix} align(string)
+Label text align, can be `'left'`, `'right'`, `'center'`. Defaultly will choose one of them automatically.
+
+###${prefix} baseline(string)
+Label text vertical align, can be `'top'`, `'middle'`, `'bottom'`. Defaultly will choose one of them automatically.
+
 <!-- Overwrite color -->
 ###${prefix} color(Color|Function)
 
@@ -397,6 +404,13 @@ Text style of the category.
     hasAlign=true,
     hasBaseline=true
 ) }}
+
+###${prefix} align(string)
+Label text align, can be `'left'`, `'right'`, `'center'`. Defaultly will choose one of them automatically.
+
+###${prefix} baseline(string)
+Label text vertical align, can be `'top'`, `'middle'`, `'bottom'`. Defaultly will choose one of them automatically.
+
 
 { target: partial-axis-interval }}
 Interval of ${name}, which is available in category axis. {{ if: !${isAxisLabel} }} is set to be the same as [axisLabel.interval](~${componentType}.axisLabel.interval) by default.{{ /if }}
