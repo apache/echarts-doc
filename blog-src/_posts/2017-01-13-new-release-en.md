@@ -3,7 +3,7 @@ layout: post
 category: en
 cnUrl: '2017/01/13/new-release.html'
 title: 'ECharts Released v3.4, supporting three new chart types'
-description: "TODO"
+description: "We are releasing ECharts v3.4, supporting three new types of charts, namely, pictorial-bar charts, theme-river charts, and liquid-fill charts."
 tags: [new release, extension, tutorial]
 image:
   feature: post/2017-01-13-new-release-theme-river.png
