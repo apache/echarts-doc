@@ -1,1 +1,1 @@
-Sitemap: http://localhost/ec-doc/blog/sitemap.xml
+Sitemap: http://echarts.baidu.com/blog/sitemap.xml
