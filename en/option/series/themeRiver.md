@@ -102,12 +102,6 @@ The style of tooltip in theme river.
 )}}
 
 
-
-Hope Mr. Shen could add the configuration of single axis here. And it needs to be specially illustrated that the theme river is valid only if the orient is horizontal and position is top or bottom. Thanks a lot!
-
-
-
-
 ## data(Array)
 {{ use: partial-2d-data-desc() }}
 ### date(string)
