@@ -262,7 +262,7 @@ splitLine: {
 boundaryGap: ['20%', '20%']
 ```
 
-#${prefix} min(number|string) = 'auto'
+#${prefix} min(number|string) = null
 
 坐标轴刻度最小值。
 
@@ -272,7 +272,7 @@ boundaryGap: ['20%', '20%']
 
 在类目轴中，也可以设置为类目的序数（如类目轴 `data: ['类A', '类B', '类C']` 中，序数 `2` 表示 `'类C'`。也可以设置为负数，如 `-3`）。
 
-#${prefix} max(number|string) = 'auto'
+#${prefix} max(number|string) = null
 
 坐标轴刻度最大值。
 
