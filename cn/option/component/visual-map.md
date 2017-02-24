@@ -363,7 +363,8 @@ chart.setOption(option); // option设置回 ${componentMainType}
 
 {{use: partial-visual-map-inRange-outOfRange(
     prefix="",
-    visualMapName=${visualMapName}
+    visualMapName=${visualMapName},
+    galleryEditorPath=${galleryEditorPath}
 )}}
 
 
@@ -373,7 +374,8 @@ visualMap 组件中，`控制器` 的 `inRange` `outOfRange` 设置。如果没�
 
 {{use: partial-visual-map-inRange-outOfRange(
     prefix="#",
-    visualMapName=${visualMapName}
+    visualMapName=${visualMapName},
+    galleryEditorPath=${galleryEditorPath}
 )}}
 
 
