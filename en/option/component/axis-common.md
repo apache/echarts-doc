@@ -104,8 +104,8 @@ Parameter is the text of label, and return value is the color. See the following
 
 ```js
 textStyle: {
-    color: function (val) {
-        return val >= 0 ? 'green' : 'red';
+    color: function (value, index, params) {
+        return params.value >= 0 ? 'green' : 'red';
     }
 }
 ```
@@ -438,7 +438,7 @@ Example:
 formatter: '{value} kg'
 
 // Use callback function; function parameters are axis index
-formatter: function (value, index) {
+formatter: function (value, index, params) {
     // Formatted to be month/day; display year only in the first label
     var date = new Date(value);
     var texts = [(date.getMonth() + 1), date.getDate()];
