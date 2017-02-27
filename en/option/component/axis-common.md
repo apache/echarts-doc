@@ -280,7 +280,7 @@ For non-category axis, including time, numerical value, and log axes, `boundaryG
 boundaryGap: ['20%', '20%']
 ```
 
-#${prefix} min(number|string) = 'auto'
+#${prefix} min(number|string) = null
 
 The minimun value of axis.
 
@@ -290,7 +290,7 @@ It will be automatically computed to make sure axis tick is equally distributed 
 
 In category axis, it can also be set as the ordinal number. For example, if a catergory axis has `data: ['categoryA', 'categoryB', 'categoryC']`, and the ordinal `2` represents `'categoryC'`. Moreover, it can be set as negative number, like `-3`.
 
-#${prefix} max(number|string) = 'auto'
+#${prefix} max(number|string) = null
 
 The maximum value of axis.
 
