@@ -8,7 +8,7 @@
 ~[700x500](${galleryViewPath}scatter-single-axis&edit=1&reset=1)
 
 {{ use: partial-rect-layout-width-height(
-    componentName="grid ",
+    componentName="single",
     defaultLeft="'5%'",
     defaultTop="'5%'",
     defaultRight="'5%'",
