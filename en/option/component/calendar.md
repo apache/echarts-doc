@@ -2,15 +2,15 @@
 
 # calendar(Object)
 
-Calendar coordinate can be used in heatmap, scatter, effectScatter, and graph chart.
+Calendar coordinates can be used in heatmap, scatter, effectScatter, and graph chart.
 
-**Example of using heatmap series in calendar coordinate:**
+**Example of using heatmap series in calendar coordinates:**
 ~[800x400](${galleryViewPath}calendar-heatmap&edit=1&reset=1)
 
-**Example of using effectScatter series in calendar coordinate:**
+**Example of using effectScatter series in calendar coordinates:**
 ~[800x400](${galleryViewPath}calendar-effectscatter&edit=1&reset=1)
 
-**Example of using graph series in calendar coordinate:**
+**Example of using graph series in calendar coordinates:**
 ~[800x400](${galleryViewPath}calendar-graph&edit=1&reset=1)
 
 
@@ -67,6 +67,19 @@ cellSize: 'auto'
 cellSize: ['auto', 40]
 
 ```
+
+## width(number|string) = auto
+The height of calendar coordinates.
+
+Note: `cellSize` is 20 by default. If `width` is set,
+  `cellSize[0]` will be forced to `auto`;
+
+## height(number|string) = auto
+The height of calendar coordinates.
+
+Note: `cellSize` is 20 by default. If `height` is set,
+  `cellSize[1]` will be forced to `auto`;
+
 
 ## orient(string) = 'horizontal'
 

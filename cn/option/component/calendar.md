@@ -66,6 +66,17 @@ cellSize: ['auto', 40]
 
 ```
 
+## width(number|string) = auto
+日历坐标的整体宽度
+
+注意: 默认cellSize 为20，若设置了`width`的值, 则`cellSize`中的宽度强制转为`auto`;
+
+## height(number|string) = auto
+日历坐标的整体高度，
+
+注意: 默认cellSize 为20，若设置了`height`的值, 则`cellSize`中的高度强制转为`auto`;
+
+
 ## orient(string) = 'horizontal'
 日历坐标的布局朝向。
 
