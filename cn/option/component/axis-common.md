@@ -91,8 +91,8 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 
 ```js
 textStyle: {
-    color: function (val) {
-        return val >= 0 ? 'green' : 'red';
+    color: function (value, index, params) {
+        return params.value >= 0 ? 'green' : 'red';
     }
 }
 ```
@@ -262,7 +262,7 @@ splitLine: {
 boundaryGap: ['20%', '20%']
 ```
 
-#${prefix} min(number|string) = 'auto'
+#${prefix} min(number|string) = null
 
 坐标轴刻度最小值。
 
@@ -272,7 +272,7 @@ boundaryGap: ['20%', '20%']
 
 在类目轴中，也可以设置为类目的序数（如类目轴 `data: ['类A', '类B', '类C']` 中，序数 `2` 表示 `'类C'`。也可以设置为负数，如 `-3`）。
 
-#${prefix} max(number|string) = 'auto'
+#${prefix} max(number|string) = null
 
 坐标轴刻度最大值。
 
@@ -422,7 +422,7 @@ ${name}的显示间隔，在类目轴中有效。{{ if: !${isAxisLabel} }}默认
 formatter: '{value} kg'
 
 // 使用函数模板，函数参数分别为刻度数值（类目），刻度的索引
-formatter: function (value, index) {
+formatter: function (value, index, params) {
     // 格式化成月/日，只在第一个刻度显示年份
     var date = new Date(value);
     var texts = [(date.getMonth() + 1), date.getDate()];

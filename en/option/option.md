@@ -20,6 +20,7 @@
 {{import: component-single-axis}}
 {{import: component-timeline}}
 {{import: component-graphic}}
+{{import: component-calendar}}
 
 
 {{import: series-line}}

@@ -390,7 +390,8 @@ Inversely, when mouse hovers a graphical element of chart, its value label will 
 
 {{use: partial-visual-map-inRange-outOfRange(
     prefix="",
-    visualMapName=${visualMapName}
+    visualMapName=${visualMapName},
+    galleryEditorPath=${galleryEditorPath}
 )}}
 
 
@@ -401,7 +402,8 @@ Property `inRange` and `outOfRange` can be set within property `controller`, whi
 
 {{use: partial-visual-map-inRange-outOfRange(
     prefix="#",
-    visualMapName=${visualMapName}
+    visualMapName=${visualMapName},
+    galleryEditorPath=${galleryEditorPath}
 )}}
 
 

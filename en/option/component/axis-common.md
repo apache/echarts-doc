@@ -104,8 +104,8 @@ Parameter is the text of label, and return value is the color. See the following
 
 ```js
 textStyle: {
-    color: function (val) {
-        return val >= 0 ? 'green' : 'red';
+    color: function (value, index, params) {
+        return params.value >= 0 ? 'green' : 'red';
     }
 }
 ```
@@ -280,7 +280,7 @@ For non-category axis, including time, numerical value, and log axes, `boundaryG
 boundaryGap: ['20%', '20%']
 ```
 
-#${prefix} min(number|string) = 'auto'
+#${prefix} min(number|string) = null
 
 The minimun value of axis.
 
@@ -290,7 +290,7 @@ It will be automatically computed to make sure axis tick is equally distributed 
 
 In category axis, it can also be set as the ordinal number. For example, if a catergory axis has `data: ['categoryA', 'categoryB', 'categoryC']`, and the ordinal `2` represents `'categoryC'`. Moreover, it can be set as negative number, like `-3`.
 
-#${prefix} max(number|string) = 'auto'
+#${prefix} max(number|string) = null
 
 The maximum value of axis.
 
@@ -438,7 +438,7 @@ Example:
 formatter: '{value} kg'
 
 // Use callback function; function parameters are axis index
-formatter: function (value, index) {
+formatter: function (value, index, params) {
     // Formatted to be month/day; display year only in the first label
     var date = new Date(value);
     var texts = [(date.getMonth() + 1), date.getDate()];
