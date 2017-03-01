@@ -2,15 +2,18 @@
 
 # calendar(Object)
 
-Calendar coordinates can be used in heatmap, scatter, effectScatter, and graph chart.
+Calendar coordinates.
 
-**Example of using heatmap series in calendar coordinates:**
+In ECharts, we are very creative to achieve the calendar chart, by using the calendar coordinates to achieve the calendar chart,
+as shown in the following example, we can use calendar coordinates in heatmap, scatter, effectScatter, and graph.
+
+**Example of using heatmap in calendar coordinates:**
 ~[800x400](${galleryViewPath}calendar-heatmap&edit=1&reset=1)
 
-**Example of using effectScatter series in calendar coordinates:**
+**Example of using effectScatter in calendar coordinates:**
 ~[800x400](${galleryViewPath}calendar-effectscatter&edit=1&reset=1)
 
-**Example of using graph series in calendar coordinates:**
+**Example of using graph in calendar coordinates:**
 ~[800x400](${galleryViewPath}calendar-graph&edit=1&reset=1)
 
 
