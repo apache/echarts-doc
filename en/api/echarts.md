@@ -69,7 +69,8 @@ echarts.connect('group1');
 echarts.connect([chart1, chart2]);
 ```
 
-## disConnect(Function)
+
+## disconnect(Function)
 ```js
 (group:string)
 ```
