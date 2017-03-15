@@ -129,6 +129,84 @@
   <header>
     
       <div class="entry-image-index">
+        <a href="http://echarts.baidu.com/blog/2017/03/15/echarts-dataAbstraction-tutorial.html" title="可视化什么？"><img src="http://echarts.baidu.com/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-dataset.png" alt="可视化什么？"></a>
+      </div><!-- /.entry-image -->
+    
+    <div class="entry-meta">
+      <span class="entry-date date published updated"><time datetime="2017-03-15T00:00:00+08:00"><a href="http://echarts.baidu.com/blog/2017/03/15/echarts-dataAbstraction-tutorial.html">2017-03-15</a></time></span><span class="author vcard"><span class="fn"><a href="http://echarts.baidu.com/blog/about/" title="About ECharts">ECharts</a></span></span>
+      
+      <span class="entry-reading-time">
+        <i class="fa fa-clock-o"></i>
+        
+
+预计阅读时间：1 分钟
+
+
+      </span><!-- /.entry-reading-time -->
+      
+    </div><!-- /.entry-meta -->
+    
+      <h1 class="entry-title"><a href="http://echarts.baidu.com/blog/2017/03/15/echarts-dataAbstraction-tutorial.html" rel="bookmark" title="可视化什么？" itemprop="url">可视化什么？</a></h1>
+    
+  </header>
+  <div class="entry-content">
+    <p>本文主要介绍可视化中的数据抽象，下文中所提到的可视化形式是指具体的可视化视图以及这些视图上的交互操作。</p>
+
+<h2 id="可视化什么数据抽象">可视化什么：数据抽象</h2>
+
+<p>既然是数据可视化，无可非议，可视化的元素肯定是数据，这里所指的数据是广义上的数据，包括文本、图片、声音等超媒体数据。可视化中的四种基本数据集类型分别是表格数据、网状数据、场数据和几何空间（spatial）数据，像集合、列表等也是数据集类型。这些基本数据集类型又是由不同的数据类组合构成的，这里的数据类是指可视化中所涉及的数据种类，主要包括四种数据类，分别是数据项、数据项的属性、链接（links）、位置。数据项的属性又可分为类别型和有序型两种，其中有序型又进一步细分为序数型和数值型，下面将分别介绍数据类，数据集类型，以及属性类型。</p>
+
+<h3 id="数据类">数据类</h3>
+
+<p>本文主要讨论四种基本的数据类，分别是数据项，数据项的属性，链接，位置。数据项是指一个独立的实体，如关系数据表中的一行，或网络中的一个节点；属性是数据项的某个可被观测的特性，如年龄，性别等；链接是指数据项之间的关系，该数据类型在网状关系型数据集中用的比较多；位置是地理空间数据类型，指代二维或三维空间中的某个具体位置；下图展示了四种不同的数据集类型所包含的数据类。</p>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-datatypes.png" alt="data" /></p>
+
+<h3 id="数据集类型">数据集类型</h3>
+
+<p>数据集是指为了分析而收集的任何信息，数据集包括数据表，网状数据，场数据（本文主要关注信息可视化，而场数据主要应用于科学可视化，因而在此不作介绍）以及几何空间数据这四种基本类型，而现实世界中的数据集一般是由这四个基本类型中的一个或多个组合而成的。下图展示了四种不同数据集类型具体的内部结构。</p>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-dataset.png" alt="data" /></p>
+
+<h4 id="数据表">数据表</h4>
+
+<p>数据表是常用的数据集形式，由行和列组成。对于简单的扁平表格来说，每一行代表一个数据项，每一列代表一个属性，表格中的每一个单元格是由行号和列号索引的，保存着某个数据项的某个属性值；多维数据表在数据仓库中用的比较多，具有复杂的结构以及复杂的索引机制，一般来说，简单扁平表格至多具有一个键属性（key attribute），而多维表格具有多个键属性。</p>
+
+<h4 id="网状数据">网状数据</h4>
+
+<p>网状数据主要用来表明数据项之间具有某种关系，在网状数据中数据项通常被称为节点，两个节点之间的关系被称为链接，也就是网络中的边，并且节点和链接都可以拥有与之相关联的属性。树是一种具有层次结构的特殊类型网络数据，与一般网络数据相比，树没有回路，每一个子节点都对应唯一的一个父节点。</p>
+
+<h4 id="几何空间spatial数据">几何空间（spatial）数据</h4>
+
+<p>几何空间结构数据通过明确的几何空间位置指定数据项的形状信息，这些数据项可以是空间中的点、一维的直线或曲线、二维的平面或区域，以及三维的立方体。空间数据在不同的度量尺度上具有层级结构。这种层级结构要么是原始数据集固有的，要么是从原始数据集派生出来的。
+可视化中的数据主要以两种形式存在，一种是静态的数据文件，一种是动态的数据流。静态的数据文件是指可以同时获得完整的数据文件，而动态的数据流是指数据在不断的更新和变化。</p>
+
+<h3 id="属性类型">属性类型</h3>
+
+<p>属性类型主要分为类别型和有序型两种，有序型又可进一步分为序数型和数值型。有序型数据的排列方向有三种，分别是单向型，有公共零点的双向型，以及环状周期型，如下图所示，除此之外，属性也可能有层级结构。
+类别型属性是指名称上的不同，属性的值之间没有明确的排序，例如喜欢的球类运动包括足球、篮球、排球等。虽然类别型属性内部没有明确的排序，但任意外部的排序机制可以被应用在类别型属性上，如将球类运动的名字按字母顺序排列。
+有序型属性包括序数型属性和数值型属性，所有有序型属性都有隐含的排列顺序。对于序数型属性，如小中大，虽然我们不能对它进行完全的算术运算，但在属性的内部有明确定义的顺序，如大减去中并不是有意义的概念，但我们知道中介于大和小之间。数值属性与序数属性不同，它具有大小和量级的明确度量，并且支持算术比较，一般以整数和实数形式存在，如76米减去34米是个有意义的数值，并且它们之间的差是可以被度量的，像温度、高度、长度等都是数值属性。
+有序型数据可以是单向的有序序列，比如人的年龄，只能往一个方向递增，也可以是有公共零点的对向序列，如温度。有序型数据也可以是环状周期的，如时间相关的属性。
+在单个属性内部或者多个属性之间可能具有层级结构，如北京一年的交通事故数量，这是一个时间序列数据，具有时间属性，可以分层级聚合，可以分别按周、月、年聚合，在不同的时间聚合尺度下可能会发现数据集中有趣的模式。除了时间属性之外，地理空间数据也具有层级结构，如可以细分到省、市、县等。</p>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-attribute.png" alt="" /></p>
+
+<h2 id="总结">总结</h2>
+<p>本文简要讨论了可视化中的数据，从数据的种类、数据集的类型以及属性的类型这三个角度阐述了可视化中需要可视表达的数据信息。</p>
+
+<h4 id="参考文献">参考文献</h4>
+
+<p>[1] Tamara Munzner.Visualization Analysis and Design. CRC Press, 2014.</p>
+
+  </div><!-- /.entry-content -->
+</article><!-- /.hentry -->
+
+
+
+<article class="hentry">
+  <header>
+    
+      <div class="entry-image-index">
         <a href="http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html" title="ECharts 水球图教程"><img src="http://echarts.baidu.com/blog/images/post/2017-02-21-echarts-liquidfill-chart-tutorial.gif" alt="ECharts 水球图教程"></a>
       </div><!-- /.entry-image -->
     
@@ -558,287 +636,6 @@
 </article><!-- /.hentry -->
 
 
-
-
-
-<article class="hentry">
-  <header>
-    
-      <div class="entry-image-index">
-        <a href="http://echarts.baidu.com/blog/2016/06/13/echarts-map-tutorial.html" title="ECharts 实现地图散点图（下）"><img src="http://echarts.baidu.com/blog/images/post/2016-06-13-bmap-4.png" alt="ECharts 实现地图散点图（下）"></a>
-      </div><!-- /.entry-image -->
-    
-    <div class="entry-meta">
-      <span class="entry-date date published updated"><time datetime="2016-06-13T00:00:00+08:00"><a href="http://echarts.baidu.com/blog/2016/06/13/echarts-map-tutorial.html">2016-06-13</a></time></span><span class="author vcard"><span class="fn"><a href="http://echarts.baidu.com/blog/about/" title="About ECharts">ECharts</a></span></span>
-      
-      <span class="entry-reading-time">
-        <i class="fa fa-clock-o"></i>
-        
-
-预计阅读时间：6 分钟
-
-
-      </span><!-- /.entry-reading-time -->
-      
-    </div><!-- /.entry-meta -->
-    
-      <h1 class="entry-title"><a href="http://echarts.baidu.com/blog/2016/06/13/echarts-map-tutorial.html" rel="bookmark" title="ECharts 实现地图散点图（下）" itemprop="url">ECharts 实现地图散点图（下）</a></h1>
-    
-  </header>
-  <div class="entry-content">
-    <h2 id="在百度地图上绘制散点图">在百度地图上绘制散点图</h2>
-
-<p>上一篇我们介绍了如何使用 ehcarts 内置地图实现地图上绘制的散点图，这篇中，我们将讲解如何在百度地图上绘制散点图。</p>
-
-<h2 id="一初始准备">一、初始准备</h2>
-
-<p>首先要创建 html 和引入 ECharts 包，具体说明详见上篇：<a href="http://echarts.baidu.com/blog/2016/04/28/echarts-map-tutorial.html">ECharts 实现地图散点图（一）</a>。</p>
-
-<h2 id="二引入echarts百度地图扩展包">二、引入echarts百度地图扩展包</h2>
-
-<p>在 <a href="https://github.com/ecomfe/echarts/tree/master/extension/bmap">github</a> 上下载 ECharts 扩展 bmap.js，放在 /extension/ 目录下，并引入 html 中：</p>
-
-<div class="language-html highlighter-rouge"><pre class="highlight"><code>	<span class="cp">&lt;!DOCTYPE html&gt;</span>
-	<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;head&gt;</span>
-	<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;title&gt;</span>ECharts map Demo<span class="nt">&lt;/title&gt;</span>
-	<span class="nt">&lt;/head&gt;</span>
-	<span class="nt">&lt;body&gt;</span>
-		<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"map-wrap"</span> <span class="na">style=</span><span class="s">"height: 500px;"</span><span class="nt">&gt;</span>
-			<span class="c">&lt;!-- 这里以后是地图 --&gt;</span>
-		<span class="nt">&lt;/div&gt;</span>
-	<span class="nt">&lt;/body&gt;</span>
-	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/dep/echarts.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-
-	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/extension/bmap.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-
-	<span class="nt">&lt;/html&gt;</span>
-
-
-</code></pre>
-</div>
-
-<h2 id="三绘制地图">三、绘制地图</h2>
-
-<p>1.在 js 中，新建 ECharts 示例，并为其设置配置项 option：</p>
-
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">bmapChart</span> <span class="o">=</span> <span class="nx">echarts</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'map-wrap'</span><span class="p">));</span>
-
-<span class="kd">var</span> <span class="nx">option</span> <span class="o">=</span> <span class="p">{</span>
-	<span class="c1">// 这里是 ECharts 的配置项，接下来会说明</span>
-<span class="p">}</span>
-
-<span class="nx">bmapChart</span><span class="p">.</span><span class="nx">setOption</span><span class="p">(</span><span class="nx">option</span><span class="p">);</span>
-
-
-</code></pre>
-</div>
-
-<p>2.添加百度地图：</p>
-
-<p>在 option 中添加 bmap 相关设置：</p>
-
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">option</span> <span class="o">=</span> <span class="p">{</span>
-	<span class="na">bmap</span><span class="p">:</span> <span class="p">{</span>
-      	<span class="na">center</span><span class="p">:</span> <span class="p">[</span><span class="mf">116.307698</span><span class="p">,</span> <span class="mf">40.056975</span><span class="p">],</span> <span class="c1">// 中心位置坐标</span>
-      	<span class="na">zoom</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="c1">// 地图缩放比例</span>
-      	<span class="na">roam</span><span class="p">:</span> <span class="kc">true</span> <span class="c1">// 开启用户缩放</span>
-  	<span class="p">}</span>
-
-<span class="p">}</span>
-
-</code></pre>
-</div>
-
-<p>ECharts 将百度地图部分配置集成在了 bmap 中，包括：</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>参数</th>
-      <th>说明</th>
-      <th>格式</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>center</td>
-      <td>中心点的百度坐标</td>
-      <td>坐标数组, 如：[116.307698, 40.056975]</td>
-    </tr>
-    <tr>
-      <td>zoom</td>
-      <td>初始缩放比</td>
-      <td>number</td>
-    </tr>
-    <tr>
-      <td>roam</td>
-      <td>是否允许用户缩放操作</td>
-      <td>boolean</td>
-    </tr>
-    <tr>
-      <td>mapStyle</td>
-      <td>地图自定义样式</td>
-      <td>object, 如：{ styleJson: […] }</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>这样百度地图就加载到页面中了，这里显示百度地图的默认样式，稍后第四部分将为百度地图添加自定义样式的配置：</p>
-
-<p><img src="http://echarts.baidu.com/blog/images/post/2016-06-13-bmap-1.png" alt="百度地图1" /></p>
-
-<h2 id="四绘制散点图">四、绘制散点图</h2>
-
-<p>绘制散点图的方法与上篇中绘制散点图方法相同，需要修改的部分是，将散点图的坐标系 <code class="highlighter-rouge">coordinateSystem</code> 改成使用 bmap</p>
-
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">myData</span> <span class="o">=</span> <span class="p">[</span>
-
-	<span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="s1">'海门'</span><span class="p">,</span> <span class="na">value</span><span class="p">:</span> <span class="p">[</span><span class="mf">121.15</span><span class="p">,</span> <span class="mf">31.89</span><span class="p">,</span> <span class="mi">90</span><span class="p">]},</span>
-  	<span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="s1">'鄂尔多斯'</span><span class="p">,</span> <span class="na">value</span><span class="p">:</span> <span class="p">[</span><span class="mf">109.781327</span><span class="p">,</span> <span class="mf">39.608266</span><span class="p">,</span> <span class="mi">120</span><span class="p">]},</span>
-  	<span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="s1">'招远'</span><span class="p">,</span> <span class="na">value</span><span class="p">:</span> <span class="p">[</span><span class="mf">120.38</span><span class="p">,</span> <span class="mf">37.35</span><span class="p">,</span> <span class="mi">142</span><span class="p">]},</span>
-    <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="s1">'舟山'</span><span class="p">,</span> <span class="na">value</span><span class="p">:</span> <span class="p">[</span><span class="mf">122.207216</span><span class="p">,</span> <span class="mf">29.985295</span><span class="p">,</span> <span class="mi">123</span><span class="p">]},</span>
-  	<span class="p">...</span>
-<span class="p">]</span>
-
-
-<span class="kd">var</span> <span class="nx">option</span> <span class="o">=</span> <span class="p">{</span>
-	<span class="na">bmap</span><span class="p">:</span> <span class="p">{</span>
-      	<span class="p">...</span>
-  	<span class="p">},</span>
-  	<span class="na">visualMap</span><span class="p">:</span> <span class="p">{</span>	<span class="c1">// 视觉映射组件</span>
-		<span class="na">type</span><span class="p">:</span> <span class="s1">'continuous'</span><span class="p">,</span>
-		<span class="na">min</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-		<span class="na">max</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
-		<span class="na">calculable</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-		<span class="na">inRange</span><span class="p">:</span> <span class="p">{</span>
-             	<span class="na">color</span><span class="p">:</span> <span class="p">[</span><span class="s1">'#50a3ba'</span><span class="p">,</span><span class="s1">'#eac736'</span><span class="p">,</span><span class="s1">'#d94e5d'</span><span class="p">]</span>
-          <span class="p">},</span>
-		<span class="na">textStyle</span><span class="p">:</span> <span class="p">{</span>
-			<span class="na">color</span><span class="p">:</span> <span class="s1">'#fff'</span>
-		<span class="p">}</span>
-     	<span class="p">}</span>
-	<span class="nl">series</span><span class="p">:</span> <span class="p">[</span>
-		<span class="p">{</span>
-			<span class="na">name</span><span class="p">:</span> <span class="s1">'销量'</span><span class="p">,</span>
-			<span class="na">type</span><span class="p">:</span> <span class="s1">'scatter'</span><span class="p">,</span>
-
-			<span class="na">coordinateSystem</span><span class="p">:</span> <span class="s1">'bmap'</span><span class="p">,</span> <span class="c1">// 坐标系使用bmap</span>
-
-			<span class="na">data</span><span class="p">:</span> <span class="nx">myData</span>
-		<span class="p">}</span>
-	<span class="p">]</span>
-<span class="p">}</span>
-
-</code></pre>
-</div>
-
-<p>绘制散点后的百度地图：</p>
-
-<p><img src="http://echarts.baidu.com/blog/images/post/2016-06-13-bmap-2.png" alt="百度地图2" /></p>
-
-<h2 id="四-自定义百度地图样式">四、	自定义百度地图样式</h2>
-
-<p>地图的样式配置 <code class="highlighter-rouge">bmap.mapStyle</code> 中 <code class="highlighter-rouge">styleJson</code> 与百度地图内置的样式配置一致，具体参考百度地图API开发指南中 <a href="http://lbsyun.baidu.com/index.php?title=jspopular/guide/custom">定制个性地图</a> 章节的介绍。</p>
-
-<p>这里我们设置一个较暗色调的地图,如下：</p>
-
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">option</span> <span class="o">=</span> <span class="p">{</span>
-		<span class="na">bmap</span><span class="p">:</span> <span class="p">{</span>
-      		<span class="na">center</span><span class="p">:</span> <span class="p">[</span><span class="mf">116.307698</span><span class="p">,</span> <span class="mf">40.056975</span><span class="p">],</span>
-         		<span class="na">zoom</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-
-     	    	<span class="na">roam</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// 允许缩放</span>
-
-     	    	<span class="na">mapStyle</span><span class="p">:</span> <span class="p">{</span>  <span class="c1">// 百度地图自定义样式</span>
-     	    		<span class="na">styleJson</span><span class="p">:</span> <span class="p">[</span>
-     	    			<span class="c1">// 陆地</span>
-                 		<span class="p">{</span>
-						<span class="s2">"featureType"</span><span class="p">:</span> <span class="s2">"land"</span><span class="p">,</span>
-                          <span class="s2">"elementType"</span><span class="p">:</span> <span class="s2">"all"</span><span class="p">,</span>
-                          <span class="s2">"stylers"</span><span class="p">:</span> <span class="p">{</span>
-                              <span class="s2">"color"</span><span class="p">:</span> <span class="s2">"#073763"</span>
-                          <span class="p">}</span>
-                      <span class="p">},</span>
-                      <span class="c1">// 水系</span>
-                      <span class="p">{</span>
-                          <span class="s2">"featureType"</span><span class="p">:</span> <span class="s2">"water"</span><span class="p">,</span>
-                          <span class="s2">"elementType"</span><span class="p">:</span> <span class="s2">"all"</span><span class="p">,</span>
-                          <span class="s2">"stylers"</span><span class="p">:</span> <span class="p">{</span>
-                              <span class="s2">"color"</span><span class="p">:</span> <span class="s2">"#073763"</span><span class="p">,</span>
-                              <span class="s2">"lightness"</span><span class="p">:</span> <span class="o">-</span><span class="mi">54</span>
-                          <span class="p">}</span>
-                      <span class="p">},</span>
-                      <span class="c1">// 国道与高速</span>
-                      <span class="p">{</span>
-                          <span class="s2">"featureType"</span><span class="p">:</span> <span class="s2">"highway"</span><span class="p">,</span>
-                          <span class="s2">"elementType"</span><span class="p">:</span> <span class="s2">"all"</span><span class="p">,</span>
-                          <span class="s2">"stylers"</span><span class="p">:</span> <span class="p">{</span>
-                              <span class="s2">"color"</span><span class="p">:</span> <span class="s2">"#45818e"</span>
-                          <span class="p">}</span>
-                      <span class="p">},</span>
-                      <span class="c1">// 边界线</span>
-                      <span class="p">{</span>
-                          <span class="s2">"featureType"</span><span class="p">:</span> <span class="s2">"boundary"</span><span class="p">,</span>
-                          <span class="s2">"elementType"</span><span class="p">:</span> <span class="s2">"all"</span><span class="p">,</span>
-                          <span class="s2">"stylers"</span><span class="p">:</span> <span class="p">{</span>
-                              <span class="s2">"color"</span><span class="p">:</span> <span class="s2">"#ffffff"</span><span class="p">,</span>
-                              <span class="s2">"lightness"</span><span class="p">:</span> <span class="o">-</span><span class="mi">62</span><span class="p">,</span>
-                              <span class="s2">"visibility"</span><span class="p">:</span> <span class="s2">"on"</span>
-                          <span class="p">}</span>
-                      <span class="p">},</span>
-                      <span class="c1">// 行政标注</span>
-                      <span class="p">{</span>
-                          <span class="s2">"featureType"</span><span class="p">:</span> <span class="s2">"label"</span><span class="p">,</span>
-                          <span class="s2">"elementType"</span><span class="p">:</span> <span class="s2">"labels.text.fill"</span><span class="p">,</span>
-                          <span class="s2">"stylers"</span><span class="p">:</span> <span class="p">{</span>
-                              <span class="s2">"color"</span><span class="p">:</span> <span class="s2">"#ffffff"</span><span class="p">,</span>
-                              <span class="s2">"visibility"</span><span class="p">:</span> <span class="s2">"on"</span>
-                          <span class="p">}</span>
-                      <span class="p">},</span>
-                      <span class="p">{</span>
-                          <span class="s2">"featureType"</span><span class="p">:</span> <span class="s2">"label"</span><span class="p">,</span>
-                          <span class="s2">"elementType"</span><span class="p">:</span> <span class="s2">"labels.text.stroke"</span><span class="p">,</span>
-                          <span class="s2">"stylers"</span><span class="p">:</span> <span class="p">{</span>
-                              <span class="s2">"color"</span><span class="p">:</span> <span class="s2">"#444444"</span><span class="p">,</span>
-                              <span class="s2">"visibility"</span><span class="p">:</span> <span class="s2">"on"</span>
-                          <span class="p">}</span>
-                      <span class="p">}</span>
-     	    		<span class="p">]</span>
-     	    	<span class="p">}</span>
-  		<span class="p">},</span>
-  		<span class="p">...</span>
-	<span class="p">}</span>
-</code></pre>
-</div>
-
-<p>实现效果如下图：</p>
-
-<p><img src="http://echarts.baidu.com/blog/images/post/2016-06-13-bmap-3.png" alt="百度地图3" /></p>
-
-<p>除了上述四个配置，其他地图设置都可以通过 <a href="http://lbsyun.baidu.com/index.php?title=jspopular">百度地图提供的API</a> 实现</p>
-
-<p>获取百度地图实例的方法如下：</p>
-
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">bmap</span> <span class="o">=</span> <span class="nx">bmapCharts</span><span class="p">.</span><span class="nx">getModel</span><span class="p">().</span><span class="nx">getComponent</span><span class="p">(</span><span class="s1">'bmap'</span><span class="p">).</span><span class="nx">getBMap</span><span class="p">();</span> <span class="c1">// 百度地图实例</span>
-
-</code></pre>
-</div>
-
-<p>例如，我们可以为地图添加一个缩放控件和一个比例尺：</p>
-
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">bmap</span><span class="p">.</span><span class="nx">addControl</span><span class="p">(</span><span class="k">new</span> <span class="nx">BMap</span><span class="p">.</span><span class="nx">NavigationControl</span><span class="p">());</span> <span class="c1">// 缩放控件</span>
-<span class="nx">bmap</span><span class="p">.</span><span class="nx">addControl</span><span class="p">(</span><span class="k">new</span> <span class="nx">BMap</span><span class="p">.</span><span class="nx">ScaleControl</span><span class="p">());</span> <span class="c1">// 比例尺</span>
-
-</code></pre>
-</div>
-
-<p><img src="http://echarts.baidu.com/blog/images/post/2016-06-13-bmap-4.png" alt="百度地图4" /></p>
-
-
-  </div><!-- /.entry-content -->
-</article><!-- /.hentry -->
 
 
 

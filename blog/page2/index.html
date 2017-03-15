@@ -129,6 +129,287 @@
   <header>
     
       <div class="entry-image-index">
+        <a href="http://echarts.baidu.com/blog/2016/06/13/echarts-map-tutorial.html" title="ECharts 实现地图散点图（下）"><img src="http://echarts.baidu.com/blog/images/post/2016-06-13-bmap-4.png" alt="ECharts 实现地图散点图（下）"></a>
+      </div><!-- /.entry-image -->
+    
+    <div class="entry-meta">
+      <span class="entry-date date published updated"><time datetime="2016-06-13T00:00:00+08:00"><a href="http://echarts.baidu.com/blog/2016/06/13/echarts-map-tutorial.html">2016-06-13</a></time></span><span class="author vcard"><span class="fn"><a href="http://echarts.baidu.com/blog/about/" title="About ECharts">ECharts</a></span></span>
+      
+      <span class="entry-reading-time">
+        <i class="fa fa-clock-o"></i>
+        
+
+预计阅读时间：6 分钟
+
+
+      </span><!-- /.entry-reading-time -->
+      
+    </div><!-- /.entry-meta -->
+    
+      <h1 class="entry-title"><a href="http://echarts.baidu.com/blog/2016/06/13/echarts-map-tutorial.html" rel="bookmark" title="ECharts 实现地图散点图（下）" itemprop="url">ECharts 实现地图散点图（下）</a></h1>
+    
+  </header>
+  <div class="entry-content">
+    <h2 id="在百度地图上绘制散点图">在百度地图上绘制散点图</h2>
+
+<p>上一篇我们介绍了如何使用 ehcarts 内置地图实现地图上绘制的散点图，这篇中，我们将讲解如何在百度地图上绘制散点图。</p>
+
+<h2 id="一初始准备">一、初始准备</h2>
+
+<p>首先要创建 html 和引入 ECharts 包，具体说明详见上篇：<a href="http://echarts.baidu.com/blog/2016/04/28/echarts-map-tutorial.html">ECharts 实现地图散点图（一）</a>。</p>
+
+<h2 id="二引入echarts百度地图扩展包">二、引入echarts百度地图扩展包</h2>
+
+<p>在 <a href="https://github.com/ecomfe/echarts/tree/master/extension/bmap">github</a> 上下载 ECharts 扩展 bmap.js，放在 /extension/ 目录下，并引入 html 中：</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code>	<span class="cp">&lt;!DOCTYPE html&gt;</span>
+	<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;head&gt;</span>
+	<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;title&gt;</span>ECharts map Demo<span class="nt">&lt;/title&gt;</span>
+	<span class="nt">&lt;/head&gt;</span>
+	<span class="nt">&lt;body&gt;</span>
+		<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"map-wrap"</span> <span class="na">style=</span><span class="s">"height: 500px;"</span><span class="nt">&gt;</span>
+			<span class="c">&lt;!-- 这里以后是地图 --&gt;</span>
+		<span class="nt">&lt;/div&gt;</span>
+	<span class="nt">&lt;/body&gt;</span>
+	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/dep/echarts.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/extension/bmap.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+	<span class="nt">&lt;/html&gt;</span>
+
+
+</code></pre>
+</div>
+
+<h2 id="三绘制地图">三、绘制地图</h2>
+
+<p>1.在 js 中，新建 ECharts 示例，并为其设置配置项 option：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">bmapChart</span> <span class="o">=</span> <span class="nx">echarts</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'map-wrap'</span><span class="p">));</span>
+
+<span class="kd">var</span> <span class="nx">option</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="c1">// 这里是 ECharts 的配置项，接下来会说明</span>
+<span class="p">}</span>
+
+<span class="nx">bmapChart</span><span class="p">.</span><span class="nx">setOption</span><span class="p">(</span><span class="nx">option</span><span class="p">);</span>
+
+
+</code></pre>
+</div>
+
+<p>2.添加百度地图：</p>
+
+<p>在 option 中添加 bmap 相关设置：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">option</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="na">bmap</span><span class="p">:</span> <span class="p">{</span>
+      	<span class="na">center</span><span class="p">:</span> <span class="p">[</span><span class="mf">116.307698</span><span class="p">,</span> <span class="mf">40.056975</span><span class="p">],</span> <span class="c1">// 中心位置坐标</span>
+      	<span class="na">zoom</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="c1">// 地图缩放比例</span>
+      	<span class="na">roam</span><span class="p">:</span> <span class="kc">true</span> <span class="c1">// 开启用户缩放</span>
+  	<span class="p">}</span>
+
+<span class="p">}</span>
+
+</code></pre>
+</div>
+
+<p>ECharts 将百度地图部分配置集成在了 bmap 中，包括：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>参数</th>
+      <th>说明</th>
+      <th>格式</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>center</td>
+      <td>中心点的百度坐标</td>
+      <td>坐标数组, 如：[116.307698, 40.056975]</td>
+    </tr>
+    <tr>
+      <td>zoom</td>
+      <td>初始缩放比</td>
+      <td>number</td>
+    </tr>
+    <tr>
+      <td>roam</td>
+      <td>是否允许用户缩放操作</td>
+      <td>boolean</td>
+    </tr>
+    <tr>
+      <td>mapStyle</td>
+      <td>地图自定义样式</td>
+      <td>object, 如：{ styleJson: […] }</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>这样百度地图就加载到页面中了，这里显示百度地图的默认样式，稍后第四部分将为百度地图添加自定义样式的配置：</p>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2016-06-13-bmap-1.png" alt="百度地图1" /></p>
+
+<h2 id="四绘制散点图">四、绘制散点图</h2>
+
+<p>绘制散点图的方法与上篇中绘制散点图方法相同，需要修改的部分是，将散点图的坐标系 <code class="highlighter-rouge">coordinateSystem</code> 改成使用 bmap</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">myData</span> <span class="o">=</span> <span class="p">[</span>
+
+	<span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="s1">'海门'</span><span class="p">,</span> <span class="na">value</span><span class="p">:</span> <span class="p">[</span><span class="mf">121.15</span><span class="p">,</span> <span class="mf">31.89</span><span class="p">,</span> <span class="mi">90</span><span class="p">]},</span>
+  	<span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="s1">'鄂尔多斯'</span><span class="p">,</span> <span class="na">value</span><span class="p">:</span> <span class="p">[</span><span class="mf">109.781327</span><span class="p">,</span> <span class="mf">39.608266</span><span class="p">,</span> <span class="mi">120</span><span class="p">]},</span>
+  	<span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="s1">'招远'</span><span class="p">,</span> <span class="na">value</span><span class="p">:</span> <span class="p">[</span><span class="mf">120.38</span><span class="p">,</span> <span class="mf">37.35</span><span class="p">,</span> <span class="mi">142</span><span class="p">]},</span>
+    <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="s1">'舟山'</span><span class="p">,</span> <span class="na">value</span><span class="p">:</span> <span class="p">[</span><span class="mf">122.207216</span><span class="p">,</span> <span class="mf">29.985295</span><span class="p">,</span> <span class="mi">123</span><span class="p">]},</span>
+  	<span class="p">...</span>
+<span class="p">]</span>
+
+
+<span class="kd">var</span> <span class="nx">option</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="na">bmap</span><span class="p">:</span> <span class="p">{</span>
+      	<span class="p">...</span>
+  	<span class="p">},</span>
+  	<span class="na">visualMap</span><span class="p">:</span> <span class="p">{</span>	<span class="c1">// 视觉映射组件</span>
+		<span class="na">type</span><span class="p">:</span> <span class="s1">'continuous'</span><span class="p">,</span>
+		<span class="na">min</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+		<span class="na">max</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+		<span class="na">calculable</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+		<span class="na">inRange</span><span class="p">:</span> <span class="p">{</span>
+             	<span class="na">color</span><span class="p">:</span> <span class="p">[</span><span class="s1">'#50a3ba'</span><span class="p">,</span><span class="s1">'#eac736'</span><span class="p">,</span><span class="s1">'#d94e5d'</span><span class="p">]</span>
+          <span class="p">},</span>
+		<span class="na">textStyle</span><span class="p">:</span> <span class="p">{</span>
+			<span class="na">color</span><span class="p">:</span> <span class="s1">'#fff'</span>
+		<span class="p">}</span>
+     	<span class="p">}</span>
+	<span class="nl">series</span><span class="p">:</span> <span class="p">[</span>
+		<span class="p">{</span>
+			<span class="na">name</span><span class="p">:</span> <span class="s1">'销量'</span><span class="p">,</span>
+			<span class="na">type</span><span class="p">:</span> <span class="s1">'scatter'</span><span class="p">,</span>
+
+			<span class="na">coordinateSystem</span><span class="p">:</span> <span class="s1">'bmap'</span><span class="p">,</span> <span class="c1">// 坐标系使用bmap</span>
+
+			<span class="na">data</span><span class="p">:</span> <span class="nx">myData</span>
+		<span class="p">}</span>
+	<span class="p">]</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+
+<p>绘制散点后的百度地图：</p>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2016-06-13-bmap-2.png" alt="百度地图2" /></p>
+
+<h2 id="四-自定义百度地图样式">四、	自定义百度地图样式</h2>
+
+<p>地图的样式配置 <code class="highlighter-rouge">bmap.mapStyle</code> 中 <code class="highlighter-rouge">styleJson</code> 与百度地图内置的样式配置一致，具体参考百度地图API开发指南中 <a href="http://lbsyun.baidu.com/index.php?title=jspopular/guide/custom">定制个性地图</a> 章节的介绍。</p>
+
+<p>这里我们设置一个较暗色调的地图,如下：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">option</span> <span class="o">=</span> <span class="p">{</span>
+		<span class="na">bmap</span><span class="p">:</span> <span class="p">{</span>
+      		<span class="na">center</span><span class="p">:</span> <span class="p">[</span><span class="mf">116.307698</span><span class="p">,</span> <span class="mf">40.056975</span><span class="p">],</span>
+         		<span class="na">zoom</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+
+     	    	<span class="na">roam</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// 允许缩放</span>
+
+     	    	<span class="na">mapStyle</span><span class="p">:</span> <span class="p">{</span>  <span class="c1">// 百度地图自定义样式</span>
+     	    		<span class="na">styleJson</span><span class="p">:</span> <span class="p">[</span>
+     	    			<span class="c1">// 陆地</span>
+                 		<span class="p">{</span>
+						<span class="s2">"featureType"</span><span class="p">:</span> <span class="s2">"land"</span><span class="p">,</span>
+                          <span class="s2">"elementType"</span><span class="p">:</span> <span class="s2">"all"</span><span class="p">,</span>
+                          <span class="s2">"stylers"</span><span class="p">:</span> <span class="p">{</span>
+                              <span class="s2">"color"</span><span class="p">:</span> <span class="s2">"#073763"</span>
+                          <span class="p">}</span>
+                      <span class="p">},</span>
+                      <span class="c1">// 水系</span>
+                      <span class="p">{</span>
+                          <span class="s2">"featureType"</span><span class="p">:</span> <span class="s2">"water"</span><span class="p">,</span>
+                          <span class="s2">"elementType"</span><span class="p">:</span> <span class="s2">"all"</span><span class="p">,</span>
+                          <span class="s2">"stylers"</span><span class="p">:</span> <span class="p">{</span>
+                              <span class="s2">"color"</span><span class="p">:</span> <span class="s2">"#073763"</span><span class="p">,</span>
+                              <span class="s2">"lightness"</span><span class="p">:</span> <span class="o">-</span><span class="mi">54</span>
+                          <span class="p">}</span>
+                      <span class="p">},</span>
+                      <span class="c1">// 国道与高速</span>
+                      <span class="p">{</span>
+                          <span class="s2">"featureType"</span><span class="p">:</span> <span class="s2">"highway"</span><span class="p">,</span>
+                          <span class="s2">"elementType"</span><span class="p">:</span> <span class="s2">"all"</span><span class="p">,</span>
+                          <span class="s2">"stylers"</span><span class="p">:</span> <span class="p">{</span>
+                              <span class="s2">"color"</span><span class="p">:</span> <span class="s2">"#45818e"</span>
+                          <span class="p">}</span>
+                      <span class="p">},</span>
+                      <span class="c1">// 边界线</span>
+                      <span class="p">{</span>
+                          <span class="s2">"featureType"</span><span class="p">:</span> <span class="s2">"boundary"</span><span class="p">,</span>
+                          <span class="s2">"elementType"</span><span class="p">:</span> <span class="s2">"all"</span><span class="p">,</span>
+                          <span class="s2">"stylers"</span><span class="p">:</span> <span class="p">{</span>
+                              <span class="s2">"color"</span><span class="p">:</span> <span class="s2">"#ffffff"</span><span class="p">,</span>
+                              <span class="s2">"lightness"</span><span class="p">:</span> <span class="o">-</span><span class="mi">62</span><span class="p">,</span>
+                              <span class="s2">"visibility"</span><span class="p">:</span> <span class="s2">"on"</span>
+                          <span class="p">}</span>
+                      <span class="p">},</span>
+                      <span class="c1">// 行政标注</span>
+                      <span class="p">{</span>
+                          <span class="s2">"featureType"</span><span class="p">:</span> <span class="s2">"label"</span><span class="p">,</span>
+                          <span class="s2">"elementType"</span><span class="p">:</span> <span class="s2">"labels.text.fill"</span><span class="p">,</span>
+                          <span class="s2">"stylers"</span><span class="p">:</span> <span class="p">{</span>
+                              <span class="s2">"color"</span><span class="p">:</span> <span class="s2">"#ffffff"</span><span class="p">,</span>
+                              <span class="s2">"visibility"</span><span class="p">:</span> <span class="s2">"on"</span>
+                          <span class="p">}</span>
+                      <span class="p">},</span>
+                      <span class="p">{</span>
+                          <span class="s2">"featureType"</span><span class="p">:</span> <span class="s2">"label"</span><span class="p">,</span>
+                          <span class="s2">"elementType"</span><span class="p">:</span> <span class="s2">"labels.text.stroke"</span><span class="p">,</span>
+                          <span class="s2">"stylers"</span><span class="p">:</span> <span class="p">{</span>
+                              <span class="s2">"color"</span><span class="p">:</span> <span class="s2">"#444444"</span><span class="p">,</span>
+                              <span class="s2">"visibility"</span><span class="p">:</span> <span class="s2">"on"</span>
+                          <span class="p">}</span>
+                      <span class="p">}</span>
+     	    		<span class="p">]</span>
+     	    	<span class="p">}</span>
+  		<span class="p">},</span>
+  		<span class="p">...</span>
+	<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>实现效果如下图：</p>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2016-06-13-bmap-3.png" alt="百度地图3" /></p>
+
+<p>除了上述四个配置，其他地图设置都可以通过 <a href="http://lbsyun.baidu.com/index.php?title=jspopular">百度地图提供的API</a> 实现</p>
+
+<p>获取百度地图实例的方法如下：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">bmap</span> <span class="o">=</span> <span class="nx">bmapCharts</span><span class="p">.</span><span class="nx">getModel</span><span class="p">().</span><span class="nx">getComponent</span><span class="p">(</span><span class="s1">'bmap'</span><span class="p">).</span><span class="nx">getBMap</span><span class="p">();</span> <span class="c1">// 百度地图实例</span>
+
+</code></pre>
+</div>
+
+<p>例如，我们可以为地图添加一个缩放控件和一个比例尺：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">bmap</span><span class="p">.</span><span class="nx">addControl</span><span class="p">(</span><span class="k">new</span> <span class="nx">BMap</span><span class="p">.</span><span class="nx">NavigationControl</span><span class="p">());</span> <span class="c1">// 缩放控件</span>
+<span class="nx">bmap</span><span class="p">.</span><span class="nx">addControl</span><span class="p">(</span><span class="k">new</span> <span class="nx">BMap</span><span class="p">.</span><span class="nx">ScaleControl</span><span class="p">());</span> <span class="c1">// 比例尺</span>
+
+</code></pre>
+</div>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2016-06-13-bmap-4.png" alt="百度地图4" /></p>
+
+
+  </div><!-- /.entry-content -->
+</article><!-- /.hentry -->
+
+
+
+<article class="hentry">
+  <header>
+    
+      <div class="entry-image-index">
         <a href="http://echarts.baidu.com/blog/2016/04/28/echarts-map-tutorial.html" title="ECharts 实现地图散点图（上）"><img src="http://echarts.baidu.com/blog/images/post/2016-04-28-echarts-map-tutorial-scatter-2.png" alt="ECharts 实现地图散点图（上）"></a>
       </div><!-- /.entry-image -->
     
