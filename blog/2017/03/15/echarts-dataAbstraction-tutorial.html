@@ -1,6 +1,138 @@
-<h1 id="可视化什么">可视化什么？</h1>
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>可视化什么？ </title>
+<meta name="description" content="本文主要介绍可视化中的数据抽象，下文中所提到的可视化形式是指具体的可视化视图以及这些视图上的交互操作。">
+<meta name="keywords" content="visualization, tutorial">
 
-<p>本文主要介绍ECharts在可视化过程中的数据抽象，下文中所提到的可视化形式是指具体的可视化视图以及这些视图上的交互操作。</p>
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="可视化什么？">
+<meta property="og:description" content="本文主要介绍可视化中的数据抽象，下文中所提到的可视化形式是指具体的可视化视图以及这些视图上的交互操作。">
+<meta property="og:url" content="http://echarts.baidu.com/blog/2017/03/15/echarts-dataAbstraction-tutorial.html">
+<meta property="og:site_name" content="">
+
+
+
+
+
+<link rel="canonical" href="http://echarts.baidu.com/blog/2017/03/15/echarts-dataAbstraction-tutorial.html">
+<link href="http://echarts.baidu.com/blog/feed.xml" type="application/atom+xml" rel="alternate" title=" Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://echarts.baidu.com/blog/assets/css/main.css">
+<!-- Webfonts -->
+<link href="//fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic" rel="stylesheet" type="text/css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="http://echarts.baidu.com/blog/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://echarts.baidu.com/blog/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://echarts.baidu.com/blog/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://echarts.baidu.com/blog/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://echarts.baidu.com/blog/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://echarts.baidu.com/blog/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://echarts.baidu.com/blog/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+</head>
+
+<body id="post" class="feature">
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
+	<button class="dl-trigger">展开</button>
+	<ul class="dl-menu">
+		<li><a href="http://echarts.baidu.com/blog/">首页</a></li>
+		<!--<li>
+			<a href="#">About</a>
+			<ul class="dl-submenu">
+				<li>
+					<img src="http://echarts.baidu.com/blog/images/echarts.png" alt="ECharts photo" class="author-photo">
+					<h4>ECharts</h4>
+					<p>强大、简单、灵活的可视化工具</p>
+				</li>
+				<li><a href="http://echarts.baidu.com/blog/about/"><span class="btn btn-inverse">Learn More</span></a></li>
+				
+				
+				
+				
+				
+				<li>
+					<a href="https://github.com/ecomfe/echarts"><i class="fa fa-fw fa-github"></i> GitHub</a>
+				</li>
+				
+				
+				
+				
+			</ul><!-- /.dl-submenu -->
+		<!--/li-->
+		<li>
+			<a href="http://echarts.baidu.com/blog/posts/">所有文章</a>
+		</li>
+		<li>
+			<a href="http://echarts.baidu.com/blog/tags/">所有标签</a>
+		</li>
+		<li>
+			<a href="http://echarts.baidu.com/">ECharts 官网</a>
+		</li>
+		<!--
+	</ul><!-- /.dl-menu -->
+</nav><!-- /.dl-menuwrapper -->
+
+
+
+
+<div class="entry-header">
+  
+  <div class="entry-image">
+    <img src="http://echarts.baidu.com/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-dataset.png" alt="可视化什么？">
+  </div><!-- /.entry-image -->
+</div><!-- /.entry-header -->
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <header class="header-title">
+      <div class="header-title-wrap">
+        <h1 class="entry-title">可视化什么？</h1>
+        <h2><span class="entry-date date published"><time datetime="2017-03-15T00:00:00+08:00">2017-03-15</time></span></h2>
+        
+        <p class="entry-reading-time">
+          <i class="fa fa-clock-o"></i>
+          
+
+预计阅读时间：1 分钟
+
+
+        </p><!-- /.entry-reading-time -->
+        
+      </div><!-- /.header-title-wrap -->
+    </header>
+    <div class="entry-content">
+      <p>本文主要介绍ECharts在可视化过程中的数据抽象，下文中所提到的可视化形式是指具体的可视化视图以及这些视图上的交互操作。</p>
 
 <h2 id="可视化什么数据抽象">可视化什么：数据抽象</h2>
 
@@ -10,13 +142,13 @@
 
 <p>本文主要讨论ECharts中所涉及的四种基本数据类，分别是数据项、数据项的属性、链接、位置。数据项是指一个独立的实体，如关系数据表中的一行，或网络中的一个节点；属性是数据项的某个可被观测的特性，如年龄，性别等；链接是指数据项之间的关系，该数据类型在网状关系型数据集中用的比较多；位置是地理空间数据类型，指代二维或三维空间中的某个具体位置；下图展示了四种不同的数据集类型所包含的数据类。</p>
 
-<p><img src="img/2017-03-15-echarts-dataAbstraction-tutorial-datatypes.png" alt="data" /></p>
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-datatypes.png" alt="data" /></p>
 
 <h3 id="数据集类型">数据集类型</h3>
 
 <p>数据集是指为了分析而收集的任何信息，数据集包括数据表，网状数据，场数据（本文主要关注信息可视化，而场数据主要应用于科学可视化，因而在此不作介绍）以及几何空间数据这四种基本类型，而现实世界中的数据集一般是由这四个基本类型中的一个或多个组合而成的。下图展示了四种不同数据集类型具体的内部结构。</p>
 
-<p><img src="img/2017-03-15-echarts-dataAbstraction-tutorial-dataset.png" alt="data" /></p>
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-dataset.png" alt="data" /></p>
 
 <h4 id="数据表">数据表</h4>
 
@@ -39,7 +171,7 @@
 有序型数据可以是单向的有序序列，比如人的年龄，只能往一个方向递增，也可以是有公共零点的对向序列，如温度。有序型数据也可以是环状周期的，如时间相关的属性。
 在单个属性内部或者多个属性之间可能具有层级结构，如北京一年的交通事故数量，这是一个时间序列数据，具有时间属性，可以分层级聚合，可以分别按周、月、年聚合，在不同的时间聚合尺度下可能会发现数据集中有趣的模式。除了时间属性之外，地理空间数据也具有层级结构，如可以细分到省、市、县等。</p>
 
-<p><img src="img/2017-03-15-echarts-dataAbstraction-tutorial-attribute.png" alt="" /></p>
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-attribute.png" alt="" /></p>
 
 <h2 id="总结">总结</h2>
 <p>本文简要讨论了可视化中的数据，从数据的种类、数据集的类型以及属性的类型这三个角度阐述了可视化中需要可视表达的数据信息。</p>
@@ -47,3 +179,69 @@
 <h4 id="参考文献">参考文献</h4>
 
 <p>[1] Tamara Munzner.Visualization Analysis and Design. CRC Press, 2014.</p>
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="http://echarts.baidu.com/blog/tags/#visualization" title="Pages tagged visualization" class="tag"><span class="term">visualization</span></a><a href="http://echarts.baidu.com/blog/tags/#tutorial" title="Pages tagged tutorial" class="tag"><span class="term">tutorial</span></a></span>
+        
+        <div class="social-share">
+  <ul class="socialcount socialcount-small inline-list">分享到：
+    <li class="weibo"><a href="http://v.t.sina.com.cn/share/share.php?title=ECharts+官网博文：可视化什么？&url=http://echarts.baidu.com/blog/2017/03/15/echarts-dataAbstraction-tutorial.html" title="Share on Weibo">新浪微博</a></li>
+    <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=http://echarts.baidu.com/blog/2017/03/15/echarts-dataAbstraction-tutorial.html" title="Share on Facebook"><span class="count"><i class="fa fa-facebook-square"></i> Like</span></a></li>
+    <li class="twitter"><a href="https://twitter.com/intent/tweet?text=http://echarts.baidu.com/blog/2017/03/15/echarts-dataAbstraction-tutorial.html" title="Share on Twitter"><span class="count"><i class="fa fa-twitter-square"></i> Tweet</span></a></li>
+    <li class="googleplus"><a href="https://plus.google.com/share?url=http://echarts.baidu.com/blog/2017/03/15/echarts-dataAbstraction-tutorial.html" title="Share on Google Plus"><span class="count"><i class="fa fa-google-plus-square"></i> +1</span></a></li>
+  </ul>
+</div><!-- /.social-share -->
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    <div class="read-more">
+  
+    
+    <div class="read-more-header">
+      <a href="http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html" class="read-more-btn">了解更多</a>
+    </div><!-- /.read-more-header -->
+    <div class="read-more-content">
+      <h3><a href="http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html" title="ECharts 水球图教程">ECharts 水球图教程</a></h3>
+      <p>水球图是一种适合于展现单个百分比数据的图表类型，ECharts 的水球图插件使你能够通过非常简单的配置，实现酷炫的数据展示效果。本文将会介绍，如何使用 ECharts 水球图。 <a href="http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html">继续阅读</a></p>
+    </div><!-- /.read-more-content -->
+    
+  
+  <div class="read-more-list">
+    
+    
+    
+    
+      <div class="list-item">
+        <h4><a href="http://echarts.baidu.com/blog/2017/01/13/new-release.html" title="ECharts 3.4 版本发布：新增象形柱图、主题河流图、水球图">ECharts 3.4 版本发布：新增象形柱图、主题河流图、水球图</a></h4>
+        <span>Published on January 13, 2017</span>
+      </div><!-- /.list-item -->
+    
+    
+  </div><!-- /.read-more-list -->
+</div><!-- /.read-more -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2017 ECharts. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/hpstr-jekyll-theme/" rel="nofollow">HPSTR Theme</a>.</span>
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="http://echarts.baidu.com/blog/assets/js/vendor/jquery-1.9.1.min.js"></script>
+<script src="http://echarts.baidu.com/blog/assets/js/scripts.min.js"></script>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?4bad1df23f079e0d12bdbef5e65b072f";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</body>
+</html>

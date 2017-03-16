@@ -1,4 +1,11 @@
-# 可视化什么？
+---
+layout: post
+title: 可视化什么？
+description: "本文主要介绍可视化中的数据抽象，下文中所提到的可视化形式是指具体的可视化视图以及这些视图上的交互操作。"
+tags: [visualization, tutorial]
+image:
+  feature: post/2017-03-15-echarts-dataAbstraction-tutorial-dataset.png
+---
 
 本文主要介绍ECharts在可视化过程中的数据抽象，下文中所提到的可视化形式是指具体的可视化视图以及这些视图上的交互操作。
 
@@ -10,13 +17,13 @@
 
 本文主要讨论ECharts中所涉及的四种基本数据类，分别是数据项、数据项的属性、链接、位置。数据项是指一个独立的实体，如关系数据表中的一行，或网络中的一个节点；属性是数据项的某个可被观测的特性，如年龄，性别等；链接是指数据项之间的关系，该数据类型在网状关系型数据集中用的比较多；位置是地理空间数据类型，指代二维或三维空间中的某个具体位置；下图展示了四种不同的数据集类型所包含的数据类。
 
-![data](img/2017-03-15-echarts-dataAbstraction-tutorial-datatypes.png)
+![data]({{ site.url }}/images/post/2017-03-15-echarts-dataAbstraction-tutorial-datatypes.png)
 
 ### 数据集类型
 
 数据集是指为了分析而收集的任何信息，数据集包括数据表，网状数据，场数据（本文主要关注信息可视化，而场数据主要应用于科学可视化，因而在此不作介绍）以及几何空间数据这四种基本类型，而现实世界中的数据集一般是由这四个基本类型中的一个或多个组合而成的。下图展示了四种不同数据集类型具体的内部结构。
 
-![data](img/2017-03-15-echarts-dataAbstraction-tutorial-dataset.png)
+![data]({{ site.url }}/images/post/2017-03-15-echarts-dataAbstraction-tutorial-dataset.png)
 
 #### 数据表
 
@@ -39,7 +46,7 @@
 有序型数据可以是单向的有序序列，比如人的年龄，只能往一个方向递增，也可以是有公共零点的对向序列，如温度。有序型数据也可以是环状周期的，如时间相关的属性。
 在单个属性内部或者多个属性之间可能具有层级结构，如北京一年的交通事故数量，这是一个时间序列数据，具有时间属性，可以分层级聚合，可以分别按周、月、年聚合，在不同的时间聚合尺度下可能会发现数据集中有趣的模式。除了时间属性之外，地理空间数据也具有层级结构，如可以细分到省、市、县等。
 
-![](img/2017-03-15-echarts-dataAbstraction-tutorial-attribute.png)
+![]({{ site.url }}/images/post/2017-03-15-echarts-dataAbstraction-tutorial-attribute.png)
 
 ## 总结
 本文简要讨论了可视化中的数据，从数据的种类、数据集的类型以及属性的类型这三个角度阐述了可视化中需要可视表达的数据信息。
