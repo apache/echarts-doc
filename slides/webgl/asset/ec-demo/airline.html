@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="../common/echarts.min.js"></script>
+        <script src="../common/map/js/world.js"></script>
+        <script src="../common/jquery.min.js"></script>
+        <script src="../data/flights.json.js"></script>
+        <link rel="stylesheet" href="../common/reset.css">
+    </head>
+    <body>
+        <style>
+        </style>
+        <div id="main"></div>
+        <script>
+
+        var myChart = echarts.init(document.getElementById('main'));
+
+        function getAirportCoord(idx) {
+            return [flightsData.airports[idx][3], flightsData.airports[idx][4]];
+        }
+        var routes = flightsData.routes.map(function (airline) {
+            return [
+                getAirportCoord(airline[1]),
+                getAirportCoord(airline[2])
+            ];
+        });
+
+        myChart.setOption({
+            title: {
+                text: 'World Flights',
+                left: 'center',
+                textStyle: {
+                    color: '#eee'
+                }
+            },
+            tooltip: {
+                formatter: function (param) {
+                    var route = flightsData.routes[param.dataIndex];
+                    return flightsData.airports[route[1]][1] + ' > ' + flightsData.airports[route[2]][1];
+                }
+            },
+            geo: {
+                map: 'world',
+                left: 0,
+                right: 0,
+                roam: true,
+                silent: true,
+                itemStyle: {
+                    normal: {
+                        borderColor: '#003',
+                        color: '#005'
+                    }
+                }
+            },
+            series: [{
+                type: 'lines',
+                coordinateSystem: 'geo',
+                data: routes,
+                large: true,
+                largeThreshold: 100,
+                lineStyle: {
+                    normal: {
+                        opacity: 0.05,
+                        width: 0.5,
+                        curveness: 0.3
+                    }
+                },
+                // 设置混合模式为叠加
+                blendMode: 'lighter'
+            }]
+        });
+        </script>
+    </body>
+</html>
