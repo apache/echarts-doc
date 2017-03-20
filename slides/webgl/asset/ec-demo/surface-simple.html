@@ -20,10 +20,10 @@
                 var data = [];
                 for (var i = 0; i <= 50; i++) {
                     for (var j = 0; j <= 50; j++) {
-                        var value = noise.noise2D(i / 20, j / 20);
+                        var value = noise.noise2D(i / 30, j / 30);
                         valMax = Math.max(valMax, value);
                         valMin = Math.min(valMin, value);
-                        data.push([i, j, value * 2 + 4]);
+                        data.push([j, i, value * 2 + 4]);
                     }
                 }
                 return data;
@@ -71,14 +71,13 @@
                     }
                 },
                 series: [{
-                    type: 'bar3D',
+                    type: 'surface',
                     data: data,
                     shading: 'lambert',
-                    label: {
-                        formatter: function (param) {
-                            return param.value[2].toFixed(1);
-                        }
-                    }
+                    wireframe: {
+                        show: false
+                    },
+                    silent: true
                 }]
             });
 

@@ -25906,7 +25906,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var cartesian = grid3DModel.coordinateSystem;
 	        var viewGL = cartesian.viewGL;
 
-	        viewGL.on('mousemove', this._updateAxisPointerOnMousePosition, this);
+	        if (grid3DModel.get('show')) {
+	            viewGL.on('mousemove', this._updateAxisPointerOnMousePosition, this);
+	        }
+	        else {
+	            viewGL.off('mousemove', this._updateAxisPointerOnMousePosition);
+	        }
 	    },
 
 	    /**
@@ -26105,11 +26110,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 
 	    _doShowAxisPointer: function () {
+	        if (!this._axisPointerLineMesh.invisible) {
+	            return;
+	        }
+
 	        this._axisPointerLineMesh.invisible = false;
 	        this._api.getZr().refresh();
 	    },
 
 	    _doHideAxisPointer: function () {
+	        if (this._axisPointerLineMesh.invisible) {
+	            return;
+	        }
+
 	        this._axisPointerLineMesh.invisible = true;
 	        this._api.getZr().refresh();
 	    },
@@ -38278,7 +38291,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (this.triangleCount !== triangleCount) {
 	            this.indices = vertexCount > 0xffff ? new Uint32Array(triangleCount * 3) : new Uint16Array(triangleCount * 3);
 
-	            this._dataIndices = new Uint32Array(triangleCount);
+	            this._dataIndices = new Uint32Array(vertexCount);
 	        }
 	    },
 
@@ -44193,6 +44206,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        zr.on('mousedown', this._mouseDownHandler);
 	        zr.on('mousewheel', this._mouseWheelHandler);
+	        zr.on('globalout', this._mouseUpHandler);
 
 	        zr.animation.on('frame', this._update);
 	    },
@@ -44337,6 +44351,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        zr.off('mousemove', this._mouseMoveHandler);
 	        zr.off('mouseup', this._mouseUpHandler);
 	        zr.off('mousewheel', this._mouseWheelHandler);
+	        zr.off('globalout', this._mouseUpHandler);
 
 	        zr.animation.off('frame', this._update);
 	    }

@@ -147,7 +147,7 @@ echarts 支不支持三维图表的绘制已经是 github 上的一个月经贴�
     <iframe data-src="./asset/ec-demo/scatter3D-simple.html" frameborder="0" style="width: 50%;height:300px;float:left;"></iframe>
     <iframe data-src="./asset/ec-demo/line3D-simple.html" frameborder="0" style="width: 50%;height:300px;float:left;"></iframe>
     <iframe data-src="./asset/ec-demo/bar3D-simple.html" frameborder="0" style="width: 50%;height:300px;float:left;"></iframe>
-    <iframe data-src="./asset/ec-demo/surface3D-simple.html" frameborder="0" style="width: 50%;height:300px;float:left;"></iframe>
+    <iframe data-src="./asset/ec-demo/surface-simple.html" frameborder="0" style="width: 50%;height:300px;float:left;"></iframe>
 </div>
 
 Note:
