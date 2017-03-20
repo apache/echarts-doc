@@ -91,8 +91,8 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 
 ```js
 textStyle: {
-    color: function (value, index, params) {
-        return params.value >= 0 ? 'green' : 'red';
+    color: function (value, index) {
+        return value >= 0 ? 'green' : 'red';
     }
 }
 ```
@@ -422,7 +422,7 @@ ${name}的显示间隔，在类目轴中有效。{{ if: !${isAxisLabel} }}默认
 formatter: '{value} kg'
 
 // 使用函数模板，函数参数分别为刻度数值（类目），刻度的索引
-formatter: function (value, index, params) {
+formatter: function (value, index) {
     // 格式化成月/日，只在第一个刻度显示年份
     var date = new Date(value);
     var texts = [(date.getMonth() + 1), date.getDate()];
