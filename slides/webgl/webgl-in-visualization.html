@@ -68,7 +68,7 @@ ECharts 是基于 Canvas 的一个开源的前端可视化库，提供了
 还有因为 Canvas 还是个二维的绘图接口，它很难胜任复杂点的三维绘制工作，第一点就是刚才提到的性能限制，还有这种“软渲染”的方式在三角面片交叉的时候没法正确处理，这在早期的 Flash 三维引擎中也存在这个问题。
 
 不过 Canvas 软渲染还是有优势的，就是浏览器兼容性比较好，现代浏览器上都能跑。</aside></script></section><section data-markdown><script type="text/template">
-<div class="fragment" data-fragment-index="0"><iframe style="width:900px;height:600px;" data-md2r-src="./asset/ec-demo/airline.html"></iframe></div>
+<div class="fragment" data-fragment-index="0"><iframe style="width:100%;height:100%;" data-md2r-src="./asset/ec-demo/airline.html"></iframe></div>
 </script></section></section><section ><section data-markdown><script type="text/template">
 ## WebGL
 
@@ -286,6 +286,9 @@ z = Math.cos(v);
 <aside class="notes" data-markdown>空间的哈希优化</aside></script></section><section data-markdown><script type="text/template">
 ## 性能优化
 
++ 使用 TypedArray
++ 尽量少分配临时数组
+
 <aside class="notes" data-markdown>上面生成 mesh 都要操作几万，几十万，甚至上百万的数据和顶点，所以在性能上一定要小心，特别是在内存上，比如分配数组尽量使用 TypedArray，计算过程中尽量少分配临时数组等等，尽管 JS 的数组操作很快，但是分配了很大的数组后会占用很多堆内存，容易频繁的 GC 导致开销都在这上面。
 
 TODO bench case</aside></script></section></section><section ><section data-markdown><script type="text/template">
@@ -312,6 +315,7 @@ TODO bench case</aside></script></section></section><section ><section data-mark
 <aside class="notes" data-markdown>半透明的三角面需要从远到近绘制才能保证混合正确。</aside></script></section></section><section ><section data-markdown><script type="text/template">
 ## 真实感渲染
 
+![](./asset/img/globe.png)
 </script></section><section data-markdown><script type="text/template">
 ## Physically Based Rendering
 
@@ -342,7 +346,9 @@ TODO bench case</aside></script></section></section><section ><section data-mark
 + 地理上的点数据和线数据
 + GPGPU 加速力引导布局
 
-<aside class="notes" data-markdown>点数据和线数据的渲染前面已经提了挺多的了，接下来主要讲我们使用 GPGPU 加速力引导布局的一个尝试</aside></script></section><section data-markdown><script type="text/template">
+<aside class="notes" data-markdown>点数据和线数据的渲染前面已经提了挺多的了，接下来主要讲我们使用 GPGPU 加速力引导布局的一个尝试
+
+GPGPU 是利用 WebGL 做通用计算，比如做一些物理上的布料运算，计算 FFT 啊等等</aside></script></section><section data-markdown><script type="text/template">
 ## 力引导布局介绍
 
 + 用于关系图
@@ -366,7 +372,8 @@ TODO bench case</aside></script></section></section><section ><section data-mark
 
 但是 JS 里对 SIMD 和多线程的支持并不好。所以这一块优化很难做</aside></script></section><section data-markdown><script type="text/template">
 ## GPGPU 加速
-</script></section><section data-markdown><script type="text/template"></script></section></section><section ><section data-markdown><script type="text/template">
+
+<aside class="notes" data-markdown></aside></script></section></section><section ><section data-markdown><script type="text/template">
 
 ## 在现有架构中集成 WebGL
 </script></section><section data-markdown><script type="text/template">
@@ -375,6 +382,8 @@ TODO bench case</aside></script></section></section><section ><section data-mark
 ## 与现有的组件集成
 </script></section><section data-markdown><script type="text/template">
 ## ECharts as Surface
+
+![](./asset/img/canvas-surface.png)
 </script></section><section data-markdown><script type="text/template">
 ## 交互
 </script></section></section><section  data-markdown><script type="text/template">

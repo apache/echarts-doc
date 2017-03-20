@@ -61,14 +61,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	__webpack_require__(165);
 
 	__webpack_require__(171);
-	__webpack_require__(178);
-	__webpack_require__(183);
-	__webpack_require__(191);
-	__webpack_require__(198);
-	__webpack_require__(202);
+	__webpack_require__(179);
+	__webpack_require__(184);
+	__webpack_require__(192);
+	__webpack_require__(199);
+	__webpack_require__(203);
 
-	__webpack_require__(205);
-	__webpack_require__(208);
+	__webpack_require__(206);
+	__webpack_require__(209);
 
 /***/ },
 /* 1 */
@@ -341,6 +341,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        console.error(e);
 	        return;
 	    }
+
+	    this.onglobalout = this.onglobalout.bind(this);
+	    zr.on('globalout', this.onglobalout);
 
 	    /**
 	     * Canvas dom for webgl rendering
@@ -665,6 +668,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	LayerGL.prototype.dispose = function () {
 	    this._stopAccumulating();
 	    this.renderer.disposeScene(this.scene);
+
+	    this.zr.off('globalout', this.onglobalout);
 	};
 
 	// Event handlers
@@ -714,6 +719,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var obj = this.pickObject(e.offsetX, e.offsetY);
 
 	    this._dispatchEvent('click', e, obj);
+	};
+
+	LayerGL.prototype.onglobalout = function (e) {
+	    var lastHovered = this._hovered;
+	    if (lastHovered) {
+	        this._dispatchEvent('mouseout', e, {
+	            target: lastHovered.target
+	        });
+	    }
 	};
 
 	LayerGL.prototype.pickObject = function (x, y) {
@@ -13004,7 +13018,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    if (!chunks) {  // Empty mesh
 	                        return;
 	                    }
-
 	                    vaoList = [];
 	                    for (var c = 0; c < chunks.length; c++) {
 	                        var chunk = chunks[c];
@@ -13117,8 +13130,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                        }
 	                        _gl.drawElements(glDrawMode, indicesBuffer.count, indicesType, 0);
 	                        renderInfo.triangleCount += indicesBuffer.count / 3;
-	                    }
-	                    else {
+	                    } else {
 	                        _gl.drawArrays(glDrawMode, 0, nVertex);
 	                    }
 
@@ -14961,8 +14973,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        exposure: exposure
 	    }, function () {
 	        ambientCubemap.cubemap.flipY = false;
-	        ambientCubemap.prefilter(renderer);
-	        ambientSH.coefficients = shUtil.projectEnvironmentMap(renderer, ambientCubemap.cubemap);
+	        ambientCubemap.prefilter(renderer, 32);
+	        ambientSH.coefficients = shUtil.projectEnvironmentMap(renderer, ambientCubemap.cubemap, {
+	            lod: 1
+	        });
 	    });
 
 	    return {
@@ -19544,7 +19558,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        type: 'AMBIENT_CUBEMAP_LIGHT',
 
-	        prefilter: function (renderer) {
+	        prefilter: function (renderer, size) {
 	            if (!this._brdfLookup) {
 	                this._normalDistribution = cubemapUtil.generateNormalDistribution();
 	                this._brdfLookup = cubemapUtil.integrateBRDF(renderer, this._normalDistribution);
@@ -19556,7 +19570,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	            var result = cubemapUtil.prefilterEnvironmentMap(
 	                renderer, cubemap, {
-	                    encodeRGBM: true
+	                    encodeRGBM: true,
+	                    width: size,
+	                    height: size
 	                }, this._normalDistribution, this._brdfLookup
 	            );
 	            this.cubemap = result.environmentMap;
@@ -19650,7 +19666,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            normalDistribution = cubemapUtil.generateNormalDistribution();
 	            brdfLookup = cubemapUtil.integrateBRDF(renderer, normalDistribution);
 	        }
-	        textureOpts =  textureOpts || {};
+	        textureOpts = textureOpts || {};
 
 	        var width = textureOpts.width || 64;
 	        var height = textureOpts.height || 64;
@@ -20786,6 +20802,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        var skybox;
 	        var dummyScene = new Scene();
+	        var size = 64;
 	        if (envMap instanceof Texture2D) {
 	            skybox = new Skydome({
 	                scene: dummyScene,
@@ -20793,14 +20810,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	            });
 	        }
 	        else {
+	            size = (envMap.image && envMap.image.px) ? envMap.image.px.width : envMap.width;
 	            skybox = new Skybox({
 	                scene: dummyScene,
 	                environmentMap: envMap
 	            });
 	        }
 	        // Convert to rgbm
-	        var width = 128;
-	        var height = 128;
+	        var width = Math.ceil(size / Math.pow(2, opts.lod));
+	        var height = Math.ceil(size / Math.pow(2, opts.lod));
 	        var rgbmTexture = new Texture2D({
 	            width: width,
 	            height: height
@@ -26392,6 +26410,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var zr = this.zr;
 
 	        zr.on('mousedown', this._mouseDownHandler);
+	        zr.on('globalout', this._mouseUpHandler);
 	        zr.on('mousewheel', this._mouseWheelHandler);
 
 	        this._decomposeTransform();
@@ -26409,6 +26428,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        zr.off('mousemove', this._mouseMoveHandler);
 	        zr.off('mouseup', this._mouseUpHandler);
 	        zr.off('mousewheel', this._mouseWheelHandler);
+	        zr.off('globalout', this._mouseUpHandler);
 
 	        zr.animation.off('frame', this._update);
 	        this.stopAllAnimation();
@@ -34358,7 +34378,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    getFormattedLabel: function (dataIndex, status) {
 	        var name = this._data.getName(dataIndex);
 	        var regionModel = this.getRegionModel(name);
-	        var formatter = regionModel.get('label.' + status + '.formatter');
+	        var formatter = regionModel.get(status === 'normal' ? ['label', 'formatter'] : ['emphasis', 'label', 'formatter']);
+	        if (formatter == null) {
+	            formatter = regionModel.get(['label', 'formatter']);
+	        }
 	        var params = {
 	            name: name
 	        };
@@ -37217,7 +37240,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        this._updateViewControl(globeModel, api);
 
-	        // this._updateLayers(globeModel, api);
+	        this._updateLayers(globeModel, api);
 	    },
 
 	    afterRender: function (globeModel, ecModel, api, layerGL) {
@@ -37262,7 +37285,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	                var overlayMesh = this._layerMeshes[id];
 	                if (!overlayMesh) {
 	                    overlayMesh = this._layerMeshes[id] = new graphicGL.Mesh({
-	                        geometry: this._overlayGeometry
+	                        geometry: this._overlayGeometry,
+	                        castShadow: false,
+	                        ignorePicking: true
 	                    });
 	                }
 	                var shading = layerModel.get('shading');
@@ -37728,7 +37753,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	__webpack_require__(176);
 
 	echarts.registerVisual(echarts.util.curry(
-	    __webpack_require__(177), 'bar3D'
+	    __webpack_require__(178), 'bar3D'
 	));
 
 	echarts.registerProcessor(function (ecModel, api) {
@@ -38577,6 +38602,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var echarts = __webpack_require__(2);
 	var componentShadingMixin = __webpack_require__(152);
+	var formatUtil = __webpack_require__(177);
 
 	var Bar3DSeries = echarts.extendSeriesModel({
 
@@ -38594,7 +38620,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 
 	    getFormattedLabel: function (dataIndex, status, dataType, dimIndex) {
-	        var text = Bar3DSeries.superCall(this, 'getFormattedLabel', dataIndex, status, dataType, dimIndex);
+	        var text = formatUtil.getFormattedLabel(this, dataIndex, status, dataType, dimIndex);
 	        if (text == null) {
 	            text = this.getData().get('z', dataIndex);
 	        }
@@ -38658,6 +38684,40 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 177 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var echarts = __webpack_require__(2);
+
+	var formatUtil = {};
+	formatUtil.getFormattedLabel = function (seriesModel, dataIndex, status, dataType, dimIndex) {
+	    status = status || 'normal';
+	    var data = seriesModel.getData(dataType);
+	    var itemModel = data.getItemModel(dataIndex);
+
+	    var params = seriesModel.getDataParams(dataIndex, dataType);
+	    if (dimIndex != null && (params.value instanceof Array)) {
+	        params.value = params.value[dimIndex];
+	    }
+
+	    var formatter = itemModel.get(status === 'normal' ? ['label', 'formatter'] : ['emphasis', 'label', 'formatter']);
+	    if (formatter == null) {
+	        formatter = itemModel.get(['label', 'formatter']);
+	    }
+	    var text;
+	    if (typeof formatter === 'function') {
+	        params.status = status;
+	        text = formatter(params);
+	    }
+	    else if (typeof formatter === 'string') {
+	        text = echarts.format.formatTpl(formatter, params);
+	    }
+	    return text;
+	};
+
+	module.exports = formatUtil;
+
+/***/ },
+/* 178 */
 /***/ function(module, exports) {
 
 	module.exports = function (seriesType, ecModel, api) {
@@ -38683,20 +38743,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 178 */
+/* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var echarts = __webpack_require__(2);
 
-	__webpack_require__(179);
 	__webpack_require__(180);
+	__webpack_require__(181);
 
 	echarts.registerVisual(echarts.util.curry(
-	    __webpack_require__(182), 'line3D', 'circle', null
+	    __webpack_require__(183), 'line3D', 'circle', null
 	));
 
 	echarts.registerVisual(echarts.util.curry(
-	    __webpack_require__(177), 'line3D'
+	    __webpack_require__(178), 'line3D'
 	));
 
 	echarts.registerLayout(function (ecModel, api) {
@@ -38734,7 +38794,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 179 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var echarts = __webpack_require__(2);
@@ -38770,7 +38830,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Line3DSeries;
 
 /***/ },
-/* 180 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var echarts = __webpack_require__(2);
@@ -38780,7 +38840,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Matrix4 = __webpack_require__(16);
 	var Vector3 = __webpack_require__(14);
 	var vec3 = __webpack_require__(15).vec3;
-	var lineContain = __webpack_require__(181);
+	var lineContain = __webpack_require__(182);
 
 	graphicGL.Shader.import(__webpack_require__(110));
 
@@ -39053,7 +39113,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 181 */
+/* 182 */
 /***/ function(module, exports) {
 
 	
@@ -39101,7 +39161,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 182 */
+/* 183 */
 /***/ function(module, exports) {
 
 	
@@ -39150,20 +39210,20 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 183 */
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var echarts = __webpack_require__(2);
 
-	__webpack_require__(184);
 	__webpack_require__(185);
+	__webpack_require__(186);
 
 	echarts.registerVisual(echarts.util.curry(
-	    __webpack_require__(182), 'scatter3D', 'circle', null
+	    __webpack_require__(183), 'scatter3D', 'circle', null
 	));
 
 	echarts.registerVisual(echarts.util.curry(
-	    __webpack_require__(177), 'scatter3D'
+	    __webpack_require__(178), 'scatter3D'
 	));
 
 	echarts.registerLayout(function (ecModel, api) {
@@ -39215,10 +39275,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 184 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var echarts = __webpack_require__(2);
+	var formatUtil = __webpack_require__(177);
 
 	var Scatter3DSeries = echarts.extendSeriesModel({
 
@@ -39236,7 +39297,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 
 	    getFormattedLabel: function (dataIndex, status, dataType, dimIndex) {
-	        var text = Scatter3DSeries.superCall(this, 'getFormattedLabel', dataIndex, status, dataType, dimIndex);
+	        var text = formatUtil.getFormattedLabel(this, dataIndex, status, dataType, dimIndex);
 	        if (text == null) {
 	            var data = this.getData();
 	            var lastDim = data.dimensions[data.dimensions.length - 1];
@@ -39293,13 +39354,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 185 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var echarts = __webpack_require__(2);
 	var graphicGL = __webpack_require__(31);
 
-	var PointsBuilder = __webpack_require__(186);
+	var PointsBuilder = __webpack_require__(187);
 
 	echarts.extendChartView({
 
@@ -39353,13 +39414,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 186 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var echarts = __webpack_require__(2);
 	var graphicGL = __webpack_require__(31);
-	var spriteUtil = __webpack_require__(187);
-	var PointsMesh = __webpack_require__(188);
+	var spriteUtil = __webpack_require__(188);
+	var PointsMesh = __webpack_require__(189);
 	var LabelsBuilder = __webpack_require__(160);
 	var Matrix4 = __webpack_require__(16);
 
@@ -39505,13 +39566,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	            geometry.sortVertices = false;
 	        }
 	        else {
+	            // material.depthTest = true;
+	            // var transparent = hasTransparentPoint
+	            //     // Stroke is transparent
+	            //     || (itemStyle.lineWidth && strokeColor[3] < 0.99);
+	            // material.transparent = transparent;
+	            // material.depthMask = !transparent;
+	            // geometry.sortVertices = transparent;
+
+	            // Because of symbol texture, we always needs it be transparent.
 	            material.depthTest = true;
-	            var transparent = hasTransparentPoint
-	                // Stroke is transparent
-	                || (itemStyle.lineWidth && strokeColor[3] < 0.99);
-	            material.transparent = transparent;
-	            material.depthMask = !transparent;
-	            geometry.sortVertices = transparent;
+	            material.transparent = true;
+	            material.depthMask = false;
+	            geometry.sortVertices = true;
 	        }
 
 	        this._updateHandler(seriesModel, ecModel, api);
@@ -39711,7 +39778,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = PointsBuilder;
 
 /***/ },
-/* 187 */
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var echarts = __webpack_require__(2);
@@ -39898,16 +39965,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = spriteUtil;
 
 /***/ },
-/* 188 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var graphicGL = __webpack_require__(31);
-	var verticesSortMixin = __webpack_require__(189);
+	var verticesSortMixin = __webpack_require__(190);
 	var echarts = __webpack_require__(2);
 	var glmatrix = __webpack_require__(15);
 	var vec4 = glmatrix.vec4;
 
-	graphicGL.Shader.import(__webpack_require__(190));
+	graphicGL.Shader.import(__webpack_require__(191));
 
 	var PointsMesh = graphicGL.Mesh.extend(function () {
 	    var geometry = new graphicGL.Geometry({
@@ -39956,7 +40023,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var ndcScaleY = 2 / viewport.height;
 	        // From near to far. indices have been sorted.
 	        for (var i = this.geometry.vertexCount - 1; i >= 0; i--) {
-	            var idx = this.geometry.indices[i];
+	            var idx;
+	            if (!this.geometry.indices) {
+	                idx = i;
+	            }
+	            else {
+	                idx = this.geometry.indices[i];
+	            }
 
 	            var cx = positionNDC[idx * 2];
 	            var cy = positionNDC[idx * 2 + 1];
@@ -40018,7 +40091,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = PointsMesh;
 
 /***/ },
-/* 189 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var vec3 = __webpack_require__(15).vec3;
@@ -40117,29 +40190,29 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 190 */
+/* 191 */
 /***/ function(module, exports) {
 
 	module.exports = "@export ecgl.sdfSprite.vertex\n\nuniform mat4 worldViewProjection : WORLDVIEWPROJECTION;\nuniform float elapsedTime : 0;\n\nattribute vec3 position : POSITION;\n\n#ifdef VERTEX_COLOR\nattribute vec4 a_FillColor: COLOR;\nvarying vec4 v_Color;\n#endif\n\nattribute float size;\n\n#ifdef ANIMATING\nattribute float delay;\n#endif\n\n#ifdef POSITIONTEXTURE_ENABLED\nuniform sampler2D positionTexture;\n#endif\n\nvarying float v_Size;\n\nvoid main()\n{\n\n#ifdef POSITIONTEXTURE_ENABLED\n    // Only 2d position texture supported\n    gl_Position = worldViewProjection * vec4(texture2D(positionTexture, position.xy).xy, -10.0, 1.0);\n#else\n    gl_Position = worldViewProjection * vec4(position, 1.0);\n#endif\n\n#ifdef ANIMATING\n    gl_PointSize = size * (sin((elapsedTime + delay) * 3.14) * 0.5 + 1.0);\n#else\n    gl_PointSize = size;\n#endif\n\n#ifdef VERTEX_COLOR\n    v_Color = a_FillColor;\n    // v_StrokeColor = a_StrokeColor;\n#endif\n\n    v_Size = size;\n}\n\n@end\n\n@export ecgl.sdfSprite.fragment\n\nuniform vec4 color: [1, 1, 1, 1];\nuniform vec4 strokeColor: [1, 1, 1, 1];\nuniform float smoothing: 0.1;\n\nuniform float lineWidth: 0.0;\n\n#ifdef VERTEX_COLOR\nvarying vec4 v_Color;\n// varying vec4 v_StrokeColor;\n#endif\n\nvarying float v_Size;\n\nuniform sampler2D sprite;\n\nvoid main()\n{\n    gl_FragColor = color;\n\n    vec4 _strokeColor = strokeColor;\n\n#ifdef VERTEX_COLOR\n    gl_FragColor *= v_Color;\n    // TODO\n    // _strokeColor *= v_StrokeColor;\n#endif\n\n#ifdef SPRITE_ENABLED\n    float d = texture2D(sprite, gl_PointCoord).r;\n    // Antialias\n    gl_FragColor.a *= smoothstep(0.5 - smoothing, 0.5 + smoothing, d);\n\n    if (lineWidth > 0.0) {\n        // TODO SCREEN SPACE OUTLINE\n        float sLineWidth = lineWidth / 2.0;\n\n        float outlineMaxValue0 = 0.5 + sLineWidth;\n        float outlineMaxValue1 = 0.5 + sLineWidth + smoothing;\n        float outlineMinValue0 = 0.5 - sLineWidth - smoothing;\n        float outlineMinValue1 = 0.5 - sLineWidth;\n\n        // FIXME Aliasing\n        if (d <= outlineMaxValue1 && d >= outlineMinValue0) {\n            float a = _strokeColor.a;\n            if (d <= outlineMinValue1) {\n                a = a * smoothstep(outlineMinValue0, outlineMinValue1, d);\n            }\n            else {\n                a = a * smoothstep(outlineMaxValue1, outlineMaxValue0, d);\n            }\n            gl_FragColor.rgb = mix(gl_FragColor.rgb * gl_FragColor.a, _strokeColor.rgb, a);\n            gl_FragColor.a = gl_FragColor.a * (1.0 - a) + a;\n        }\n    }\n#endif\n\n    if (gl_FragColor.a == 0.0) {\n        discard;\n    }\n}\n@end"
 
 /***/ },
-/* 191 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var echarts = __webpack_require__(2);
 
-	__webpack_require__(192);
-
 	__webpack_require__(193);
-	__webpack_require__(197);
+
+	__webpack_require__(194);
+	__webpack_require__(198);
 
 	echarts.registerVisual(echarts.util.curry(
-	    __webpack_require__(177), 'lines3D'
+	    __webpack_require__(178), 'lines3D'
 	));
 
 
 /***/ },
-/* 192 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var echarts = __webpack_require__(2);
@@ -40271,13 +40344,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 193 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var echarts = __webpack_require__(2);
 	var graphicGL = __webpack_require__(31);
 	var LinesGeometry = __webpack_require__(99);
-	var CurveAnimatingPointsMesh = __webpack_require__(194);
+	var CurveAnimatingPointsMesh = __webpack_require__(195);
 
 	graphicGL.Shader.import(__webpack_require__(110));
 
@@ -40443,16 +40516,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 194 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var echarts = __webpack_require__(2);
 	var graphicGL = __webpack_require__(31);
-	var spriteUtil = __webpack_require__(187);
+	var spriteUtil = __webpack_require__(188);
 
-	var CurveAnimatingPointsGeometry = __webpack_require__(195);
+	var CurveAnimatingPointsGeometry = __webpack_require__(196);
 
-	graphicGL.Shader.import(__webpack_require__(196));
+	graphicGL.Shader.import(__webpack_require__(197));
 
 	module.exports = graphicGL.Mesh.extend(function () {
 
@@ -40532,7 +40605,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 195 */
+/* 196 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -40628,13 +40701,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = CurveAnimatingPointsGeometry;
 
 /***/ },
-/* 196 */
+/* 197 */
 /***/ function(module, exports) {
 
 	module.exports = "@export ecgl.curveAnimatingPoints.vertex\n\nuniform mat4 worldViewProjection : WORLDVIEWPROJECTION;\nuniform float percent : 0.0;\n\nattribute vec3 p0;\nattribute vec3 p1;\nattribute vec3 p2;\nattribute vec3 p3;\nattribute vec4 color : COLOR;\n\nattribute float offset;\nattribute float size;\n\nvarying vec4 v_Color;\n\nvoid main()\n{\n    float t = mod(offset + percent, 1.0);\n    float onet = 1.0 - t;\n    vec3 position = onet * onet * (onet * p0 + 3.0 * t * p1)\n        + t * t * (t * p3 + 3.0 * onet * p2);\n\n    gl_Position = worldViewProjection * vec4(position, 1.0);\n\n    gl_PointSize = size;\n\n    v_Color = color;\n}\n\n@end\n\n@export ecgl.curveAnimatingPoints.fragment\n\nvarying vec4 v_Color;\n\nuniform sampler2D sprite;\n\nvoid main()\n{\n    gl_FragColor = v_Color;\n\n#ifdef SPRITE_ENABLED\n    gl_FragColor *= texture2D(sprite, gl_PointCoord);\n#endif\n\n}\n@end"
 
 /***/ },
-/* 197 */
+/* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var echarts = __webpack_require__(2);
@@ -40698,22 +40771,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 198 */
+/* 199 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var echarts = __webpack_require__(2);
 
-	__webpack_require__(199);
 	__webpack_require__(200);
 	__webpack_require__(201);
+	__webpack_require__(202);
 
 	echarts.registerVisual(echarts.util.curry(
-	    __webpack_require__(177), 'surface'
+	    __webpack_require__(178), 'surface'
 	));
 
 
 /***/ },
-/* 199 */
+/* 200 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var echarts = __webpack_require__(2);
@@ -40893,7 +40966,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = SurfaceSeries;
 
 /***/ },
-/* 200 */
+/* 201 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var echarts = __webpack_require__(2);
@@ -41331,7 +41404,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 201 */
+/* 202 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var echarts = __webpack_require__(2);
@@ -41366,18 +41439,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 202 */
+/* 203 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var echarts = __webpack_require__(2);
 
-	__webpack_require__(203);
 	__webpack_require__(204);
+	__webpack_require__(205);
 
 	__webpack_require__(161);
 
 	echarts.registerVisual(echarts.util.curry(
-	    __webpack_require__(177), 'map3D'
+	    __webpack_require__(178), 'map3D'
 	));
 
 	echarts.registerAction({
@@ -41393,7 +41466,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 203 */
+/* 204 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var echarts = __webpack_require__(2);
@@ -41402,6 +41475,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var componentLightMixin = __webpack_require__(96);
 	var componentShadingMixin = __webpack_require__(152);
 	var geo3DModelMixin = __webpack_require__(153);
+	var formatUtil = __webpack_require__(177);
 
 	var Map3DModel = echarts.extendSeriesModel({
 
@@ -41441,7 +41515,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @return {string}
 	     */
 	    getFormattedLabel: function (dataIndex, status) {
-	        var text = Map3DModel.superCall(this, 'getFormattedLabel', dataIndex, status);
+	        var text = formatUtil.getFormattedLabel(this, dataIndex, status);
 	        if (text == null) {
 	            text = this.getData().getName(dataIndex);
 	        }
@@ -41467,7 +41541,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Map3DModel;
 
 /***/ },
-/* 204 */
+/* 205 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var echarts = __webpack_require__(2);
@@ -41545,20 +41619,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 205 */
+/* 206 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var echarts = __webpack_require__(2);
 
-	__webpack_require__(206);
 	__webpack_require__(207);
+	__webpack_require__(208);
 
 	echarts.registerVisual(echarts.util.curry(
-	    __webpack_require__(182), 'scatterGL', 'circle', null
+	    __webpack_require__(183), 'scatterGL', 'circle', null
 	));
 
 	echarts.registerVisual(echarts.util.curry(
-	    __webpack_require__(177), 'scatterGL'
+	    __webpack_require__(178), 'scatterGL'
 	));
 
 	echarts.registerLayout(function (ecModel, api) {
@@ -41594,7 +41668,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 206 */
+/* 207 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var echarts = __webpack_require__(2);
@@ -41639,14 +41713,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 207 */
+/* 208 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var echarts = __webpack_require__(2);
 	var graphicGL = __webpack_require__(31);
 	var ViewGL = __webpack_require__(122);
 
-	var PointsBuilder = __webpack_require__(186);
+	var PointsBuilder = __webpack_require__(187);
 
 	echarts.extendChartView({
 
@@ -41696,20 +41770,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 208 */
+/* 209 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var echarts = __webpack_require__(2);
 
-	__webpack_require__(209);
-	__webpack_require__(213);
+	__webpack_require__(210);
+	__webpack_require__(214);
 
 	echarts.registerVisual(echarts.util.curry(
-	    __webpack_require__(182), 'graphGL', 'circle', null
+	    __webpack_require__(183), 'graphGL', 'circle', null
 	));
 
 	echarts.registerVisual(echarts.util.curry(
-	    __webpack_require__(177), 'graphGL'
+	    __webpack_require__(178), 'graphGL'
 	));
 
 	echarts.registerVisual(function (ecModel) {
@@ -41808,11 +41882,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	}, function () {});
 
 /***/ },
-/* 209 */
+/* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var echarts = __webpack_require__(2);
-	var createGraphFromNodeEdge = __webpack_require__(210);
+	var createGraphFromNodeEdge = __webpack_require__(211);
 
 	var GraphSeries = echarts.extendSeriesModel({
 
@@ -42050,12 +42124,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = GraphSeries;
 
 /***/ },
-/* 210 */
+/* 211 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var echarts = __webpack_require__(2);
-	var Graph = __webpack_require__(211);
-	var linkList = __webpack_require__(212);
+	var Graph = __webpack_require__(212);
+	var linkList = __webpack_require__(213);
 	var retrieve = __webpack_require__(69);
 
 	module.exports = function (nodes, edges, hostModel, directed, beforeLink) {
@@ -42111,7 +42185,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 211 */
+/* 212 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42630,7 +42704,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 212 */
+/* 213 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -42768,24 +42842,24 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 213 */
+/* 214 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var echarts = __webpack_require__(2);
 	var layoutUtil = __webpack_require__(115);
 	var graphicGL = __webpack_require__(31);
 	var ViewGL = __webpack_require__(122);
-	var Lines2DGeometry = __webpack_require__(214);
+	var Lines2DGeometry = __webpack_require__(215);
 	var retrieve = __webpack_require__(69);
-	var ForceAtlas2GPU = __webpack_require__(215);
+	var ForceAtlas2GPU = __webpack_require__(216);
 	var requestAnimationFrame = __webpack_require__(30);
 	var vec2 = __webpack_require__(15).vec2;
 
-	var Roam2DControl = __webpack_require__(217);
+	var Roam2DControl = __webpack_require__(218);
 
-	var PointsBuilder = __webpack_require__(186);
+	var PointsBuilder = __webpack_require__(187);
 
-	graphicGL.Shader.import(__webpack_require__(218));
+	graphicGL.Shader.import(__webpack_require__(219));
 
 	var globalLayoutId = 1;
 
@@ -43188,7 +43262,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 214 */
+/* 215 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -43606,7 +43680,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = LinesGeometry;
 
 /***/ },
-/* 215 */
+/* 216 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var echarts = __webpack_require__(2);
@@ -43614,7 +43688,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Pass = __webpack_require__(57);
 	var FrameBuffer = __webpack_require__(48);
 
-	graphicGL.Shader.import(__webpack_require__(216));
+	graphicGL.Shader.import(__webpack_require__(217));
 
 	var defaultConfigs = {
 	    repulsionByDegree: true,
@@ -44065,13 +44139,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ForceAtlas2GPU;
 
 /***/ },
-/* 216 */
+/* 217 */
 /***/ function(module, exports) {
 
 	module.exports = "@export ecgl.forceAtlas2.updateNodeRepulsion\n\n#define NODE_COUNT 0\n\nuniform sampler2D positionTex;\n\nuniform vec2 textureSize;\nuniform float gravity;\nuniform float scaling;\nuniform vec2 gravityCenter;\n\nuniform bool strongGravityMode;\nuniform bool preventOverlap;\n\nvarying vec2 v_Texcoord;\n\nvoid main() {\n\n    vec4 n0 = texture2D(positionTex, v_Texcoord);\n\n    vec2 force = vec2(0.0);\n    for (int i = 0; i < NODE_COUNT; i++) {\n        vec2 uv = vec2(\n            mod(float(i), textureSize.x) / (textureSize.x - 1.0),\n            floor(float(i) / textureSize.x) / (textureSize.y - 1.0)\n        );\n        vec4 n1 = texture2D(positionTex, uv);\n\n        vec2 dir = n0.xy - n1.xy;\n        float d2 = dot(dir, dir);\n\n        if (d2 > 0.0) {\n            float factor = 0.0;\n            if (preventOverlap) {\n                float d = sqrt(d2);\n                d = d - n0.w - n1.w;\n                if (d > 0.0) {\n                    factor = scaling * n0.z * n1.z / (d * d);\n                }\n                else if (d < 0.0) {\n                    // A stronger repulsion if overlap\n                    factor = scaling * 100.0 * n0.z * n1.z;\n                }\n            }\n            else {\n                // Divide factor by an extra `d` to normalize the `v`\n                factor = scaling * n0.z * n1.z / d2;\n            }\n            force += dir * factor;\n        }\n    }\n\n    // Gravity\n    vec2 dir = gravityCenter - n0.xy;\n    float d = 1.0;\n    if (!strongGravityMode) {\n        d = length(dir);\n    }\n\n    force += dir * n0.z * gravity / (d + 1.0);\n\n    gl_FragColor = vec4(force, 0.0, 1.0);\n}\n@end\n\n@export ecgl.forceAtlas2.updateEdgeAttraction.vertex\n\nattribute vec2 node1;\nattribute vec2 node2;\nattribute float weight;\n\nuniform sampler2D positionTex;\nuniform float edgeWeightInfluence;\nuniform bool preventOverlap;\nuniform bool linLogMode;\n\nuniform vec2 windowSize: WINDOW_SIZE;\n\nvarying vec2 v_Force;\n\nvoid main() {\n\n    vec4 n0 = texture2D(positionTex, node1);\n    vec4 n1 = texture2D(positionTex, node2);\n\n    vec2 dir = n1.xy - n0.xy;\n    float d = length(dir);\n    float w;\n    if (edgeWeightInfluence == 0.0) {\n        w = 1.0;\n    }\n    else if (edgeWeightInfluence == 1.0) {\n        w = weight;\n    }\n    else {\n        w = pow(weight, edgeWeightInfluence);\n    }\n    // Add 0.5 offset.\n    // PENDING.\n    vec2 offset = vec2(1.0 / windowSize.x, 1.0 / windowSize.y);\n    vec2 scale = vec2((windowSize.x - 1.0) / windowSize.x, (windowSize.y - 1.0) / windowSize.y);\n    vec2 pos = node1 * scale * 2.0 - 1.0;\n    gl_Position = vec4(pos + offset, 0.0, 1.0);\n    gl_PointSize = 1.0;\n\n    float factor;\n    if (preventOverlap) {\n        d = d - n1.w - n0.w;\n    }\n    if (d <= 0.0) {\n        v_Force = vec2(0.0);\n        return;\n    }\n\n    if (linLogMode) {\n        // Divide factor by an extra `d` to normalize the `v`\n        factor = w * log(d) / d;\n    }\n    else {\n        factor = w;\n    }\n    v_Force = dir * factor;\n}\n@end\n\n@export ecgl.forceAtlas2.updateEdgeAttraction.fragment\n\nvarying vec2 v_Force;\n\nvoid main() {\n    gl_FragColor = vec4(v_Force, 0.0, 0.0);\n}\n@end\n\n@export ecgl.forceAtlas2.calcWeightedSum.vertex\n\nattribute vec2 node;\n\nvarying vec2 v_NodeUv;\n\nvoid main() {\n\n    v_NodeUv = node;\n    gl_Position = vec4(0.0, 0.0, 0.0, 1.0);\n    gl_PointSize = 1.0;\n}\n@end\n\n@export ecgl.forceAtlas2.calcWeightedSum.fragment\n\nvarying vec2 v_NodeUv;\n\nuniform sampler2D positionTex;\nuniform sampler2D forceTex;\nuniform sampler2D forcePrevTex;\n\nvoid main() {\n    vec2 force = texture2D(forceTex, v_NodeUv).rg;\n    vec2 forcePrev = texture2D(forcePrevTex, v_NodeUv).rg;\n\n    float mass = texture2D(positionTex, v_NodeUv).z;\n    float swing = length(force - forcePrev) * mass;\n    float traction = length(force + forcePrev) * 0.5 * mass;\n\n    gl_FragColor = vec4(swing, traction, 0.0, 0.0);\n}\n@end\n\n@export ecgl.forceAtlas2.calcGlobalSpeed\n\nuniform sampler2D globalSpeedPrevTex;\nuniform sampler2D weightedSumTex;\nuniform float jitterTolerence;\n\nvoid main() {\n    vec2 weightedSum = texture2D(weightedSumTex, vec2(0.5)).xy;\n    float prevGlobalSpeed = texture2D(globalSpeedPrevTex, vec2(0.5)).x;\n    float globalSpeed = jitterTolerence * jitterTolerence\n        // traction / swing\n        * weightedSum.y / weightedSum.x;\n    if (prevGlobalSpeed > 0.0) {\n        globalSpeed = min(globalSpeed / prevGlobalSpeed, 1.5) * prevGlobalSpeed;\n    }\n    gl_FragColor = vec4(globalSpeed, 0.0, 0.0, 1.0);\n}\n@end\n\n@export ecgl.forceAtlas2.updatePosition\n\nuniform sampler2D forceTex;\nuniform sampler2D forcePrevTex;\nuniform sampler2D positionTex;\nuniform sampler2D globalSpeedTex;\n\nvarying vec2 v_Texcoord;\n\nvoid main() {\n    vec2 force = texture2D(forceTex, v_Texcoord).xy;\n    vec2 forcePrev = texture2D(forcePrevTex, v_Texcoord).xy;\n    vec4 node = texture2D(positionTex, v_Texcoord);\n\n    float globalSpeed = texture2D(globalSpeedTex, vec2(0.5)).r;\n    float swing = length(force - forcePrev);\n    float speed = 0.1 * globalSpeed / (0.1 + globalSpeed * sqrt(swing));\n\n    // Additional constraint to prevent local speed gets too high\n    float df = length(force);\n    if (df > 0.0) {\n        speed = min(df * speed, 10.0) / df;\n\n        gl_FragColor = vec4(node.xy + speed * force, node.zw);\n    }\n    else {\n        gl_FragColor = node;\n    }\n}\n@end\n\n// For edge draw\n@export ecgl.forceAtlas2.edges.vertex\nuniform mat4 worldViewProjection : WORLDVIEWPROJECTION;\n\nattribute vec2 node;\nattribute vec4 a_Color : COLOR;\nvarying vec4 v_Color;\n\nuniform sampler2D positionTex;\n\nvoid main()\n{\n    gl_Position = worldViewProjection * vec4(\n        texture2D(positionTex, node).xy, -10.0, 1.0\n    );\n    v_Color = a_Color;\n}\n@end\n\n@export ecgl.forceAtlas2.edges.fragment\nuniform vec4 color : [1.0, 1.0, 1.0, 1.0];\nvarying vec4 v_Color;\nvoid main() {\n    gl_FragColor = color * v_Color;\n}\n@end"
 
 /***/ },
-/* 217 */
+/* 218 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -44271,7 +44345,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Roam2DControl;
 
 /***/ },
-/* 218 */
+/* 219 */
 /***/ function(module, exports) {
 
 	module.exports = "@export ecgl.lines2D.vertex\n\nuniform mat4 worldViewProjection : WORLDVIEWPROJECTION;\n\nattribute vec2 position: POSITION;\nattribute vec4 a_Color : COLOR;\nvarying vec4 v_Color;\n\n#ifdef POSITIONTEXTURE_ENABLED\nuniform sampler2D positionTexture;\n#endif\n\nvoid main()\n{\n    gl_Position = worldViewProjection * vec4(position, -10.0, 1.0);\n\n    v_Color = a_Color;\n}\n\n@end\n\n@export ecgl.lines2D.fragment\n\nuniform vec4 color : [1.0, 1.0, 1.0, 1.0];\n\nvarying vec4 v_Color;\n\nvoid main()\n{\n    gl_FragColor = color * v_Color;\n}\n@end\n\n\n@export ecgl.meshLines2D.vertex\n\n// https://mattdesl.svbtle.com/drawing-lines-is-hard\nattribute vec2 position: POSITION;\nattribute vec2 normal;\nattribute float offset;\nattribute vec4 a_Color : COLOR;\n\nuniform mat4 worldViewProjection : WORLDVIEWPROJECTION;\nuniform vec4 viewport : VIEWPORT;\n\nvarying vec4 v_Color;\nvarying float v_Miter;\n\nvoid main()\n{\n    vec4 p2 = worldViewProjection * vec4(position + normal, -10.0, 1.0);\n    gl_Position = worldViewProjection * vec4(position, -10.0, 1.0);\n\n    p2.xy /= p2.w;\n    gl_Position.xy /= gl_Position.w;\n\n    // Get normal on projection space.\n    vec2 N = normalize(p2.xy - gl_Position.xy);\n    gl_Position.xy += N * offset / viewport.zw * 2.0;\n\n    gl_Position.xy *= gl_Position.w;\n\n    v_Color = a_Color;\n}\n@end\n\n\n@export ecgl.meshLines2D.fragment\n\nuniform vec4 color : [1.0, 1.0, 1.0, 1.0];\n\nvarying vec4 v_Color;\nvarying float v_Miter;\n\nvoid main()\n{\n    // TODO Fadeout pixels v_Miter > 1\n    gl_FragColor = color * v_Color;\n}\n\n@end"

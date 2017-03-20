@@ -7,9 +7,9 @@ thisDir=`pwd`
 cd ${zrDevDir}
 npm run prepublish
 
-cd ${ecDevDir}/build
-sh build.sh
-cp ../dist/echarts.js ${thisDir}/asset/common/echarts.min.js
+# cd ${ecDevDir}/build
+# sh build.sh
+# cp ../dist/echarts.js ${thisDir}/asset/common/echarts.min.js
 cd ${ecGLDevDir}
 webpack
 cp dist/echarts-gl.js ${thisDir}/asset/common/echarts-gl.js

@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="../common/reset.css">
+    </head>
+    <body>
+        <div id="main"></div>
+        <script src="../common/echarts.min.js"></script>
+        <script src="../common/jquery.min.js"></script>
+        <script src="../common/echarts-gl.js"></script>
+        <script>
+            var chart = echarts.init(document.getElementById('main'));
+
+            function makeGaussian(amplitude, x0, y0, sigmaX, sigmaY) {
+                return function (amplitude, x0, y0, sigmaX, sigmaY, x, y) {
+                    var exponent = -(
+                            ( Math.pow(x - x0, 2) / (2 * Math.pow(sigmaX, 2)))
+                            + ( Math.pow(y - y0, 2) / (2 * Math.pow(sigmaY, 2)))
+                        );
+                    return amplitude * Math.pow(Math.E, exponent);
+                }.bind(null, amplitude, x0, y0, sigmaX, sigmaY);
+            }
+            var gaussian = makeGaussian(300, 0, 0, 20, 20);
+
+            var data = [];
+            for (var i = 0; i < 10000; i++) {
+                var value = [Math.random() * 100 - 50, Math.random() * 100 - 50];
+                value[2] = gaussian(value[0], value[1]);
+                data.push(value);
+            }
+
+
+            chart.setOption({
+                visualMap: {
+                    show: false,
+                    min: 0,
+                    max: 300,
+                    inRange: {
+                        color: ['#1710c0', '#0b9df0', '#00fea8', '#00ff0d', '#f5f811', '#f09a09', '#fe0300']
+                    }
+                },
+                xAxis3D: {
+                    type: 'value'
+                },
+                yAxis3D: {
+                    type: 'value'
+                },
+                zAxis3D: {
+                    type: 'value',
+                    max: 500
+                },
+                grid3D: {
+                    axisLine: {
+                        lineStyle: { color: '#fff' }
+                    },
+                    axisPointer: {
+                        lineStyle: { color: '#fff' }
+                    },
+                    viewControl: {
+                        autoRotate: true
+                    }
+                },
+                series: [{
+                    type: 'scatter3D',
+                    symbolSize: 2,
+                    data: data,
+                    label: {
+                        formatter: function (param) {
+                            return param.value[2].toFixed(1);
+                        }
+                    }
+                }]
+            });
+
+            window.onresize = chart.resize;
+        </script>
+    </body>
+</html>

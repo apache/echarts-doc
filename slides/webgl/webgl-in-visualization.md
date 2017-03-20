@@ -1,4 +1,24 @@
-# WebGL 在数据可视化中的实践
+---
+title: WebGL 在数据可视化中的实践
+theme: ec
+scripts: asset/common/jquery.min.js,ec.js
+revealOptions:
+    controls: true
+    transition: 'slide'
+    backgroundTransition: 'zoom'
+    viewDistance: 2
+    margin: 0
+    math:
+        mathjax: '//cdn.bootcss.com/mathjax/2.6.1/MathJax.js'
+
+---
+
+<!--.slide: data-background="./asset/img/graph-gl2.jpg" -->
+
+
+## WebGL 在数据可视化中的实践
+
+沈毅
 
 Note:
 这次分享我会先大概介绍 echarts 这个产品，然后主要介绍我们最近尝试用 WebGL 实践数据可视化中碰到的一些问题和解决方案。
@@ -8,7 +28,7 @@ Note:
 
 ## ECharts 简介
 
-ECharts 是基于 Canvas 的一个开源的前端可视化库，提供了
++ 基于 Canvas 的开源前端可视化库
 
 + 声明式的编程接口
 
@@ -31,7 +51,9 @@ ECharts 是基于 Canvas 的一个开源的前端可视化库，提供了
 ## 为什么选择 Canvas？
 
 + 更灵活的性能优化
+
 + 像素操作的能力
+
 + 和 WebGL 更好的结合
 
 Note:
@@ -45,6 +67,7 @@ Note:
 ## Canvas 的限制
 
 + 画路径本质上还是矢量的方式
+
 + 只能“软渲染”三维图形
 
 Note:
@@ -56,11 +79,11 @@ Canvas 画路径本质上还是矢量的方式，就算有 GPU 加速，为了�
 
 ----
 
-{0|~[900*600](./asset/ec-demo/airline.html)}
+<!--.slide: data-background-iframe="./asset/ec-demo/airline.html" -->
 
 ---
 
-## WebGL
+# WebGL
 
 Note:
 所以我们需要一个能力更强的绘图接口，WebGL。
@@ -72,8 +95,11 @@ Note:
 ## WebGL 能够带来什么
 
 + 绘制三维图表
+
 + 加速二维图表的绘制
+
 + GPGPU 进行布局的加速
+
 + 更加酷炫的特效
 
 Note:
@@ -81,14 +107,16 @@ Note:
 
 ----
 
-{0|~[900*600](./asset/ec-demo/airline-gl.html)}
+<iframe data-src="./asset/ec-demo/airline-gl.html" class="fullscreen" frameborder="0"></iframe>
 
 ---
 
 ## Agenda
 
 + 三维图表中点线面的绘制
+
 + 可视化，艺术化
+
 + 利用 WebGL 加速力引导布局
 
 Note:
@@ -115,11 +143,12 @@ echarts 支不支持三维图表的绘制已经是 github 上的一个月经贴�
 
 ----
 
-+ 散点图
-+ 折线图
-+ 柱状图
-+ 曲面图
-+ ...
+<div>
+    <iframe data-src="./asset/ec-demo/scatter3D-simple.html" frameborder="0" style="width: 50%;height:300px;float:left;"></iframe>
+    <iframe data-src="./asset/ec-demo/line3D-simple.html" frameborder="0" style="width: 50%;height:300px;float:left;"></iframe>
+    <iframe data-src="./asset/ec-demo/bar3D-simple.html" frameborder="0" style="width: 50%;height:300px;float:left;"></iframe>
+    <iframe data-src="./asset/ec-demo/surface3D-simple.html" frameborder="0" style="width: 50%;height:300px;float:left;"></iframe>
+</div>
 
 Note:
 像现在这些直角坐标系上的散点图，折线图，柱状图都可以加一个 Z 轴扩展到三维空间，还有三维空间上表示趋势的曲面图，老版本 echarts-x 里的 globe visualization 等等。
@@ -207,10 +236,13 @@ Note:
 
 ## 描边？
 
-+ {0|画轮廓线}
-+ {1|单独再创建一张描边的纹理}
-+ {2|单纹理中描边和填充用颜色区分}
-+ {3|Signed Distance Field}
++ 画轮廓线 <!-- .element: class="fragment" -->
+
++ 单独再创建一张描边的纹理 <!-- .element: class="fragment" -->
+
++ 单纹理中描边和填充用颜色区分 <!-- .element: class="fragment" -->
+
++ Signed Distance Field <!-- .element: class="fragment" -->
 
 Note:
 刚刚我们解决了绘制的问题，还有个问题就是如何描边，可视化里描边可以让混在一起的图形更清晰的被区分开来。
@@ -227,7 +259,9 @@ Note:
 ## Signed Distance Field
 
 + 存储到曲线或曲面的距离
+
 + Shader 中根据这个距离填色。
+
 + 优势：存储空间小，放大后已然清晰
 
 Note:
@@ -275,7 +309,9 @@ Note:
 ## 原生画线方法的各种坑
 
 + 不同的驱动下画线的效果会有细微区别
+
 + 无法控制 `lineJoin` 和 `lineCap`
+
 + **有最大线宽的限制，而且 Windows 下最大只有 1**
 
 Note:
@@ -316,8 +352,9 @@ Miter Limit ?
 
 ## 面
 
-+ {0|三角面}
-+ {1|程序生成}
++ 三角面 <!-- .element: class="fragment" -->
+
++ 程序生成 <!-- .element: class="fragment" -->
 
 Note:
 刚演示了单个的顶点，两个顶点组成的线段，而三个顶点组成的三角面是面绘制的基础，它也是游戏中几乎所有的三维场景绘制的基础。
@@ -367,8 +404,9 @@ Note:
 
 ## Geo3D
 
-+ {0|Triangulation}
-+ {1|Extrude}
++ Triangulation <!-- .element: class="fragment" -->
+
++ Extrude <!-- .element: class="fragment" -->
 
 ----
 
@@ -380,6 +418,10 @@ Note:
 ----
 
 ## 性能优化
+
++ 使用 TypedArray
+
++ 尽量少分配临时数组
 
 Note:
 上面生成 mesh 都要操作几万，几十万，甚至上百万的数据和顶点，所以在性能上一定要小心，特别是在内存上，比如分配数组尽量使用 TypedArray，计算过程中尽量少分配临时数组等等，尽管 JS 的数组操作很快，但是分配了很大的数组后会占用很多堆内存，容易频繁的 GC 导致开销都在这上面。
@@ -403,7 +445,9 @@ Note:
 ----
 
 + 半透明
+
 + 高品质的真实感渲染
+
 + 粒子特效
 
 Note:
@@ -418,7 +462,9 @@ Note:
 ## 对大量三角面排序
 
 + 从远到近绘制
+
 + 快速排序
+
 + > 2w 的三角面分多帧排序
 
 Note:
@@ -458,8 +504,11 @@ Note:
 ## 抗锯齿
 
 + SSAA（慢）
+
 + MSAA（不支持离线的 FrameBuffer）
+
 + FXAA（效果差强人意）
+
 + **Temporal AA**
 
 Note:
@@ -476,10 +525,13 @@ Note:
 ## 二维图表的加速
 
 + 地理上的点数据和线数据
+
 + GPGPU 加速力引导布局
 
 Note:
 点数据和线数据的渲染前面已经提了挺多的了，接下来主要讲我们使用 GPGPU 加速力引导布局的一个尝试
+
+GPGPU 是利用 WebGL 做通用计算，比如做一些物理上的布料运算，计算 FFT 啊等等
 
 ----
 
@@ -501,7 +553,9 @@ Note:
 ## 力引导布局的性能优化
 
 + Barnes Hut Simulation
+
 + SIMD？
+
 + 多线程？
 
 Note:
@@ -509,13 +563,19 @@ Note:
 
 在程序层面，可以通过 SIMD，多线程等方式去并行计算，也可以带来可观的优化效果。
 
-但是 JS 里对 SIMD 和多线程的支持并不好。所以这一块优化很难做
+但是 JS 里对 SIMD 和多线程的支持并不好。所以这一块优化很难做。
+SIMD 只有 firefox nightly 支持，多线程的话
+
+----
+
+TODO WebWorker + Barnes Hut Simulation
 
 ----
 
 ## GPGPU 加速
 
-----
+Note:
+
 
 ---
 
@@ -533,6 +593,8 @@ Note:
 ----
 
 ## ECharts as Surface
+
+![](./asset/img/canvas-surface.png)
 
 ----
 
