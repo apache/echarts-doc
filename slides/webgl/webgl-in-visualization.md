@@ -1,0 +1,640 @@
+---
+title: WebGL 在数据可视化中的实践
+theme: ec
+scripts: asset/common/jquery.min.js,ec.js
+revealOptions:
+    controls: true
+    transition: 'slide'
+    backgroundTransition: 'zoom'
+    viewDistance: 2
+    margin: 0
+    width: 1366
+    height: 768
+    math:
+        mathjax: '//cdn.bootcss.com/mathjax/2.6.1/MathJax.js'
+
+---
+
+<!--.slide: data-background="./asset/img/graph-gl2.jpg" -->
+
+
+# WebGL 在数据可视化中的实践
+
+沈毅
+
+Note:
+这次分享我会先大概介绍 echarts 这个产品，然后主要介绍我们最近尝试用 WebGL 实践数据可视化中碰到的一些问题和解决方案。
+具体的可视化方面的知识也会穿插着介绍。
+
+---
+
+## ECharts 简介
+
++ 基于 Canvas 的开源前端可视化库
+
++ 声明式的编程接口
+
++ 丰富的可视化类型和交互方式
+
++ 大数据量展现的能力
+
++ 吸引眼球的动画和特效
+
+----
+
+## ECharts 简介
+
++ GitHub 关注数 ~16k
+
++ 官网访问量 ~300k pv
+
+----
+
+## 为什么选择 Canvas？
+
++ 更灵活的性能优化
+
++ 像素操作的能力
+
++ 和 WebGL 更好的结合
+
+Note:
+之前大家做 Canvas 和 SVG 的对比，都会说 Canvas 的性能要比 SVG 好，我们最开始选择 Canvas 也是基于性能考虑，但是现在尴尬的是，浏览器对 SVG 的性能提升非常大，特别是 chrome 某个版本 SVG 的性能有巨大的提升，很多场景下 Canvas 的优势其实并没有这么大了，而且像小米手机的移动端 Canvas 性能非常糟糕。
+
+然后是像素操作的能力，这点依旧是 SVG 无法实现的，基于像素处理我们可以绘制几十上百万的数据，也可以做图片的处理，或者尾迹特效等等。。
+还有与 WebGL 更好的结合，Canvas 可以直接作为纹理给 WebGL 使用。
+
+----
+
+## Canvas 的限制
+
++ 画路径本质上还是矢量的方式
+
++ 只能“软渲染”三维图形
+
+Note:
+Canvas 画路径本质上还是矢量的方式，就算有 GPU 加速，为了画个圆浏览器的底层图形库还是需要做很多事，将圆转成贝塞尔曲线，细分顶点，三角化(GrAAConvexTessellator)等等。所以往往浏览器一帧画几千个圆就已经比较卡了。
+
+还有因为 Canvas 还是个二维的绘图接口，它很难胜任复杂点的三维绘制工作，第一点就是刚才提到的性能限制，还有这种“软渲染”的方式在三角面片交叉的时候没法正确处理，这在早期的 Flash 三维引擎中也存在这个问题。
+
+不过 Canvas 软渲染还是有优势的，就是浏览器兼容性比较好，现代浏览器上都能跑。
+
+----
+
+<iframe data-src="./asset/ec-demo/airline.html" class="fullscreen front" frameborder="0"></iframe>
+
+---
+
+![](./asset/img/webgl-logo.png)
+
+Note:
+所以我们需要一个能力更强的绘图接口，WebGL。
+
+对 echarts 有所了解的同学应该知道两年前出的 echarts-x，echarts-x 是我们在 echarts 产品中对 WebGL 的首次尝试，其中获取了不少经验，也碰到了不少问题，比如在 echarts 2 的架构下对于新图表的扩展其实比较受限，所以当时只做了一个 globe visualization 就没做下去了。后来我们设计 echarts 3 架构的过程中把可扩展性作为很重要的一个点，会考虑是否能够去扩展底层新的图形接口，是否能够扩展新的坐标系，新的图表和组件等等。
+
+----
+
+<!--.slide: data-background-video="./asset/video/baidu-screen.mp4" data-background-opacity="0.25" -->
+
+## WebGL 能够带来什么
+
++ 三维空间的可视化 <!-- .element: class="fragment highlight-current-blue" -->
+
++ 二维可视化的性能提升 <!-- .element: class="fragment highlight-current-blue" -->
+
++ GPU 通用计算(GPGPU) <!-- .element: class="fragment highlight-current-blue" -->
+
++ 更加酷炫的效果 <!-- .element: class="fragment highlight-current-blue" -->
+
+Note:
+还有更多的可能性。
+
+----
+
+<iframe data-src="./asset/ec-demo/airline-gl.html" class="fullscreen" frameborder="0"></iframe>
+
+---
+
+## Agenda
+
++ 三维空间中点线面的绘制
+
++ 可视化，艺术化
+
++ 利用 WebGL 加速力引导布局
+
++ 在 ECharts 现有架构中扩展 WebGL 组件
+
+Note:
+
+这次分享的主题就是我从这几点来讲讲我们是如何在 ECharts 中集成 WebGL 的。
+主要分三大块，
+第一块是介绍在用 WebGL 绘制三维图表中常见的点线面时碰到的一些坑以及解决方案。
+第二块是如何让画出来的三维可视化作品更有逼格，更酷炫。我们可以把它叫可视化的艺术化。
+第三块会讲我们如何利用 WebGL 将力引导布局的效率提升了上百倍，这一块涉及 GPU 的通用计算，希望能够给大家带来一些不一样的新思路。
+
+
+---
+
+<!--.slide: data-background="./asset/img/bar3d.jpg"  -->
+
+# 三维空间的可视化
+
+Note:
+首先是三维空间的可视化
+
+echarts 支不支持三维图表的绘制已经是 github 上的一个月经贴了。其实大部分时候我们都会推荐用二维的可视化方式。比如传统的折柱散点图。这些传统的图表达数据是最清晰的。
+
+但是三维还是有其优势和使用场景的，比如说三维的图表可以做得很抓眼球，通过大数据的分散聚合效果，空间视角的切换也让人眼花缭乱。
+
+而且因为多了一个维度多展示一维的数据，有些场景中可以让我们更多角度更沉浸的去探索数据
+
+----
+
+<div class="fullscreen">
+    <iframe data-src="./asset/ec-demo/scatter3D-simple.html" frameborder="0" style="width: 50%;height:50%;float:left;"></iframe>
+    <iframe data-src="./asset/ec-demo/line3D-simple.html" frameborder="0" style="width: 50%;height:50%;float:left;"></iframe>
+    <iframe data-src="./asset/ec-demo/bar3D-simple.html" frameborder="0" style="width: 50%;height:50%;float:left;"></iframe>
+    <iframe data-src="./asset/ec-demo/surface-simple.html" frameborder="0" style="width: 50%;height:50%;float:left;"></iframe>
+</div>
+
+Note:
+像现在这些直角坐标系上的散点图，折线图，柱状图都可以加一个 Z 轴扩展到三维空间，还有三维空间上表示趋势的曲面图，老版本 echarts-x 里的 globe visualization 等等。
+
+---
+
+## 点 · 线 · 面
+
+Note:
+这些三维的可视化其实归结起来还是点线面的可视化。
+
+刚才说了一个点拥有颜色，形状，三维空间中的位置等属性。
+线用于连接点，可以表示起点和终点，比如飞机航线，也可以用于表示数据的走势
+面可以通过面积表示数据的大小，三维中面也可以用来表示一个平面上数据的走势。
+
+---
+
+## 点
+
++ 三维空间的位置
+
++ 颜色
+
++ 形状
+
++ 大小
+
+Note:
+一个点拥有颜色，形状，三维空间中的位置等属性。
+
+打点是最常见的一种数据可视化方式，比如刚刚的微博签到图就通过在地图打点的方式标出不同地区微博的使用程度。
+
+同时打点也是常见的一个很多人会用 WebGL 加速绘制的对象。因为其实现简单，见效快。
+
+----
+
+#### JavaScript
+```javascript
+gl.drawArrays(gl.POINTS, 0, 100);
+```
+
+#### Vertex
+```glsl
+gl_PointSize = 5;
+```
+
+#### Fragment
+```glsl
+gl_FragColor = vec4(1.0);
+```
+
+Note:
+WebGL 自带画点的模式，你只要在 drawArrays，就是 WebGL 最后调用的绘制命令，声明模式为画点的模式，然后在 shader 里直接绘制一个点了，而且还可以设置 gl_PointSize 设置这个方块点的大小。
+
+这种方式非常快，因为它需要的顶点数量很少，而且不需要构建三角面，代码也简单，往往瓶颈在显卡的像素填充率上。
+
+而且这种画点的方式还有一个好处，它是屏幕空间大小的，就是不管怎么缩放都是这个 5 个像素的大小，这样有什么好处呢，刚才提到点可以通过大小去表示数据，那如果不是屏幕空间的恒定大小的，而是有透视近大远小的话，就没法准确的去通过大小去表达数据了
+
+----
+
+## 不同形状的点
+
++ 把形状用白色填充到 Canvas 上作为纹理
+
+```glsl
+gl_FragColor = color * texture2D(sprite, gl_PointCoord);
+```
+
+Note:
+使用 gl_PointSize 扩展后的点都是方块，如果我们需要自定义的形状，例如常见的圆形，三角形，就需要 Canvas 来帮忙了，我们可以预先把这个形状绘制在一个 Canvas 上，然后用这个 Canvas 作为点的纹理。
+
+而且 WebGL（OpenGL）非常贴心的提供了一个 gl_PointCoord 的内置变量。
+
+----
+
+## Texture Atlas
+
+```glsl
+varying vec2 v_Uv0;
+varying vec2 v_Uv1;
+```
+
+```glsl
+gl_FragColor = color * texture2D(
+    sprite, mix(v_Uv0, v_Uv1, gl_PointCoord)
+);
+```
+
+Note:
+在一个图表里有各种各样的形状的时候，我们需要用 texture atlas 来存放这些图形的形状，texture atlas 就跟雪碧图一样，把所有图片都存在一张纹理上，然后通过指定左上角和右下角索引。
+
+这个 v_Uv0 就是点的左下角纹理坐标，v_Uv1 是点的右下角纹理坐标。用 gl_PointCoord 插值后可以得到每个像素的纹理坐标。
+
+----
+
+## 描边？
+
++ 画轮廓线 <!-- .element: class="fragment highlight-current-blue" -->
+
++ 单独再创建一张描边的纹理 <!-- .element: class="fragment highlight-current-blue" -->
+
++ 单纹理中描边和填充用颜色区分 <!-- .element: class="fragment highlight-current-blue" -->
+
++ Signed Distance Field <!-- .element: class="fragment highlight-blue" -->
+
+Note:
+刚刚我们解决了绘制的问题，还有个问题就是如何描边，可视化里描边可以让混在一起的图形更清晰的被区分开来。
+
+有几种手段：
+
+1. 画轮廓线，这个的开销太大，所以直接可以 pass 了。
+2. 单独创建一张描边的纹理。
+3. 在创建纹理的时候也提供描边，但是用不同颜色区分。
+4. 使用 Signed Distance Field，我们最后选择了这个方案，因为它有几个前面方案无法比拟的优势，后面会讲到。
+
+----
+
+<!--.slide: data-background-iframe="./asset/ec-demo/sdf-heatmap.html" -->
+
+## Signed Distance Field
+
++ 存储到图像边缘的距离  <!-- .element: class="fragment highlight-current-blue" -->
+
++ Shader 中根据这个距离填色  <!-- .element: class="fragment highlight-current-blue" -->
+
+
+Note:
+Signed Distance Field 用来表示到曲线和曲面的距离场，方便 shader 里根据这个距离场构建曲面或者曲线，valve 早些年发表了一篇论文用它来绘制矢量文字，相比普通的纹理贴图或者 alpha test，它的存储空间很小，而且放大后依然很清晰，
+
+我们要做的就是先根据一张 symbol 的图生成一个 SDF，
+
+----
+
+## 优势
+
++ 存储空间小，放大后也有清晰的边缘  <!-- .element: class="fragment highlight-current-blue" -->
+
++ 能实现外发光，投影  <!-- .element: class="fragment highlight-current-blue" -->
+
+Note:
+SDF 相比于普通的纹理图片来说有一些比较显著的优势。
+
+----
+
+
+
+Note:
+最左边这张是原始的贴图，中间这张是生成的 SDF，右边这张是绘制的结果。
+
+可以看到，在分辨率比较低的图中我们也能生成
+
+---
+
+## 线
+
+Note:
+echarts-gl 里有很多需要画线的地方，除了三维的折线图，飞线图等，笛卡尔坐标系，各种轮廓，网格也需要画线。所以能够实现高质量的，各种场景下稳定展现的线的绘制非常重要。
+
+----
+
+## 原生态画线
+
+```js
+gl.lineWidth(5);
+gl.drawArrays(gl.LINES, 0, 100);
+```
+
++ gl.LINES
+
++ gl.LINE_STRIP
+
++ gl.LINE_LOOP
+
+Note:
+跟刚才画点一样，WebGL 本身也支持画线的模式，而且还支持多中画线的配置。看起来很美好，实际上老版本的 echarts-x 就是这么画飞线的。
+
+----
+
+## 但是
+
+----
+
+## 原生画线方法的各种坑
+
++ 不同的驱动下画线的效果会有细微区别 <!-- .element: class="fragment highlight-current-blue" -->
+
++ 无法控制 lineJoin 和 lineCap <!-- .element: class="fragment highlight-current-blue" -->
+
++ 有最大线宽的限制，而且 Windows 下最大只有 1 <!-- .element: class="fragment highlight-blue" -->
+
+Note:
+
+windows 下因为 ANGLE 的原因最大线宽只有 1
+
+----
+
+## 三角化线段
+
+Note:
+虽然说抛弃自带的画线接口很可惜，但是没办法，我们只能重新实现一遍线段的绘制。
+做法就是如图用两个三角面组成一个线段。
+
+----
+
+## 实现屏幕空间固定宽度
+
+```glsl
+vec2 dirA = normalize(currScreen - prevScreen);
+vec2 dirB = normalize(nextScreen - currScreen);
+vec2 tanget = normalize(dirA + dirB);
+
+len *= 1.0 / max(dot(tanget, dirA), 0.5);
+offset = tanget;
+
+offset = vec2(-offset.y, offset.x) * len;
+currScreen += offset;
+```
+
+Note:
+如果是在传入 GPU 之前就把顶点构建好，没法实现屏幕空间宽度，也就是没办法保证视角放大缩小后线宽是一致的。
+需要在顶点着色器中先变换到屏幕坐标，再移动顶点屏幕空间的宽度。
+
+Miter Limit ?
+
+---
+
+## 面
+
++ 三角面 <!-- .element: class="fragment" -->
+
++ 程序生成 <!-- .element: class="fragment" -->
+
+Note:
+刚演示了单个的顶点，两个顶点组成的线段，而三个顶点组成的三角面是面绘制的基础，它也是游戏中几乎所有的三维场景绘制的基础。
+
+在游戏中三角面都是通过建模工具生成的，而在 echarts-gl 等三维的可视化库中，三角面片都需要根据输入的数据程序生成。刚才在画线部分已经涉猎了如何用三角面去画线。
+
+下面主要讲如何在几个常见的涉及面绘制的三维图表中构建三角面片。
+
+----
+
+## 曲面图
+
++ 连接邻接的四个顶点作为一个四边面
++ 分配重心坐标用于画网格
++ 对角线将四边面分解为两个三角面
+
+Note:
+TODO 示意图
+这是用散点图表示的曲面函数，我们选择其中四个相邻的顶点先组成四边面。然后为四边面的每个顶点分配重心坐标，这个重心坐标用于网格的绘制。
+
+----
+
+## 参数曲面
+
++ 用于可视化参数方程的曲面
+
+```js
+x = Math.sin(v) * Math.sin(u);
+y = Math.sin(v) * Math.cos(u);
+z = Math.cos(v);
+```
+
+Note:
+参数方程是将 x，y，z 表示成关于 u，v 的函数，
+球体就是一个经典的参数曲面
+
+同样的处理，只是按照 UV 的顺序
+
+----
+
+## 更有意思的参数曲面
+
+Note:
+这里是几个更有意思的参数方程的曲面。
+
+----
+
+## Geo3D
+
++ Triangulation <!-- .element: class="fragment" -->
+
++ Extrude <!-- .element: class="fragment" -->
+
+----
+
+## Ear Clipping
+
+Note:
+空间的哈希优化
+
+----
+
+## 性能优化
+
++ 使用 TypedArray
+
++ 尽量少分配临时数组
+
+Note:
+上面生成 mesh 都要操作几万，几十万，甚至上百万的数据和顶点，所以在性能上一定要小心，特别是在内存上，比如分配数组尽量使用 TypedArray，计算过程中尽量少分配临时数组等等，尽管 JS 的数组操作很快，但是分配了很大的数组后会占用很多堆内存，容易频繁的 GC 导致开销都在这上面。
+
+TODO bench case
+
+
+---
+
+## 可视化的艺术化
+
+----
+
+## 不要廉价的三维效果
+
+Note:
+很多人排斥三维的可视化还有一个原因是因为很多三维的可视化效果渲染效果十分廉价，比如这张柱状图，还有这张地球。充斥着经典的 phong 光照模型的高光和其所带来的塑料感。
+
+但是做得好的三维可视化还是能令人赏心悦目的。
+
+----
+
++ 半透明
+
++ 高品质的真实感渲染
+
++ 粒子特效
+
+Note:
+
+
+---
+
+## 半透明
+
+----
+
+## 对大量三角面排序
+
++ 从远到近绘制
+
++ 快速排序
+
++ 大于 2w 的三角面分多帧排序
+
+Note:
+半透明的三角面需要从远到近绘制才能保证混合正确。
+
+---
+
+## 真实感渲染
+
+
+----
+
+## Physically Based Rendering
+
+Note:
+现在游戏里基本上普遍使用了基于物理的渲染，
+单一光源的问题是该亮的地方不亮，该暗的地方不暗
+
+----
+
+## 阴影
+
+----
+
+## Temporal SSAO
+
+Note:
+环境光遮蔽是计算一个点上面能够受到多少环境光，被其它物体包围得越多的地方就会越暗。它作为阴影的补充可以让整个画面更有层次感。防止出现之前说的暗的地方不够暗的情况。
+一般游戏里都采用能够实时运算的屏幕空间环境光遮蔽。
+
+----
+
+## Post Effects
+
+----
+
+## 抗锯齿
+
++ SSAA（慢）
+
++ MSAA（不支持离线的 FrameBuffer）
+
++ FXAA（效果差强人意）
+
++ **Temporal AA**
+
+Note:
+高品质的渲染还有一个很重要的因素是抗锯齿。大家可以看下这两张有锯齿和锯齿少的效果图的区别。
+
+锯齿本质上也是因为单个像素对场景的采样不足造成的。
+
+---
+
+## 粒子效果
+
+---
+
+## 二维图表的加速
+
++ 地理上的点数据和线数据
+
++ GPGPU 加速力引导布局
+
+Note:
+点数据和线数据的渲染前面已经提了挺多的了，接下来主要讲我们使用 GPGPU 加速力引导布局的一个尝试
+
+GPGPU 是利用 WebGL 做通用计算，比如做一些物理上的布料运算，计算 FFT 啊等等
+
+----
+
+## 力引导布局介绍
+
++ 用于关系图
++ 节点与节点之间模拟斥力，边模拟弹簧的引力
++ 每次迭代 O(n2), 需要上百次迭代才能结束
+
+Note:
+力引导布局是用于关系图布局的经典算法， 有很多种算法和实现，但是其基本原理都是一样的，都是节点与节点存在一个电荷的斥力，边则存在一个弹簧的引力。每次迭代通过计算每个节点的受力，并且根据受力产生一个位移，在多次迭代后整个布局的能量会趋向一个平衡，关系边多的节点间有一个聚类的趋势。
+
+所以传统的力引导算法开销很大，因为要有上百次，每次都是 O(n2) 受力计算才能结束。为了防止布局的阻塞给用户带来的困扰，我们多会把布局过程表现出来，刚好这个动画也挺有意思的。
+
+这个是 echarts 的力引导布局。
+
+----
+
+## 力引导布局的性能优化
+
++ Barnes Hut Simulation
+
++ SIMD？
+
++ 多线程？
+
+Note:
+在算法层面力导向布局最常见的性能优化方式就是这个 Barnes Hut Simulation，它把所有节点放到一个四叉树里，然后对于一批距离远的节点可以看做一个整体计算斥力。而不用去一个点一个点的算。
+
+在程序层面，可以通过 SIMD，多线程等方式去并行计算，也可以带来可观的优化效果。
+
+但是 JS 里对 SIMD 和多线程的支持并不好。所以这一块优化很难做。
+SIMD 只有 firefox nightly 支持，多线程的话
+
+----
+
+TODO WebWorker + Barnes Hut Simulation
+
+----
+
+## GPGPU 加速
+
+Note:
+
+
+---
+
+
+## 在现有架构中集成 WebGL
+
+----
+
+## 扩展图形接口
+
+----
+
+## 与现有的组件集成
+
+----
+
+## ECharts as Surface
+
+![](./asset/img/canvas-surface.png)
+
+----
+
+## 交互
+
+---
+
+谢谢！
+
+---
