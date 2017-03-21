@@ -8,6 +8,8 @@ revealOptions:
     backgroundTransition: 'zoom'
     viewDistance: 2
     margin: 0
+    width: 1366
+    height: 768
     math:
         mathjax: '//cdn.bootcss.com/mathjax/2.6.1/MathJax.js'
 
@@ -16,7 +18,7 @@ revealOptions:
 <!--.slide: data-background="./asset/img/graph-gl2.jpg" -->
 
 
-## WebGL 在数据可视化中的实践
+# WebGL 在数据可视化中的实践
 
 沈毅
 
@@ -79,11 +81,11 @@ Canvas 画路径本质上还是矢量的方式，就算有 GPU 加速，为了�
 
 ----
 
-<!--.slide: data-background-iframe="./asset/ec-demo/airline.html" -->
+<iframe data-src="./asset/ec-demo/airline.html" class="fullscreen front" frameborder="0"></iframe>
 
 ---
 
-# WebGL
+![](./asset/img/webgl-logo.png)
 
 Note:
 所以我们需要一个能力更强的绘图接口，WebGL。
@@ -92,15 +94,17 @@ Note:
 
 ----
 
+<!--.slide: data-background-video="./asset/video/baidu-screen.mp4" data-background-opacity="0.25" -->
+
 ## WebGL 能够带来什么
 
-+ 绘制三维图表
++ 三维空间的可视化 <!-- .element: class="fragment highlight-current-blue" -->
 
-+ 加速二维图表的绘制
++ 二维可视化的性能提升 <!-- .element: class="fragment highlight-current-blue" -->
 
-+ GPGPU 进行布局的加速
++ GPU 通用计算(GPGPU) <!-- .element: class="fragment highlight-current-blue" -->
 
-+ 更加酷炫的特效
++ 更加酷炫的效果 <!-- .element: class="fragment highlight-current-blue" -->
 
 Note:
 还有更多的可能性。
@@ -113,11 +117,13 @@ Note:
 
 ## Agenda
 
-+ 三维图表中点线面的绘制
++ 三维空间中点线面的绘制
 
 + 可视化，艺术化
 
 + 利用 WebGL 加速力引导布局
+
++ 在 ECharts 现有架构中扩展 WebGL 组件
 
 Note:
 
@@ -130,10 +136,12 @@ Note:
 
 ---
 
-## 三维图表
+<!--.slide: data-background="./asset/img/bar3d.jpg"  -->
+
+# 三维空间的可视化
 
 Note:
-首先是三维图表
+首先是三维空间的可视化
 
 echarts 支不支持三维图表的绘制已经是 github 上的一个月经贴了。其实大部分时候我们都会推荐用二维的可视化方式。比如传统的折柱散点图。这些传统的图表达数据是最清晰的。
 
@@ -143,24 +151,24 @@ echarts 支不支持三维图表的绘制已经是 github 上的一个月经贴�
 
 ----
 
-<div>
-    <iframe data-src="./asset/ec-demo/scatter3D-simple.html" frameborder="0" style="width: 50%;height:300px;float:left;"></iframe>
-    <iframe data-src="./asset/ec-demo/line3D-simple.html" frameborder="0" style="width: 50%;height:300px;float:left;"></iframe>
-    <iframe data-src="./asset/ec-demo/bar3D-simple.html" frameborder="0" style="width: 50%;height:300px;float:left;"></iframe>
-    <iframe data-src="./asset/ec-demo/surface-simple.html" frameborder="0" style="width: 50%;height:300px;float:left;"></iframe>
+<div class="fullscreen">
+    <iframe data-src="./asset/ec-demo/scatter3D-simple.html" frameborder="0" style="width: 50%;height:50%;float:left;"></iframe>
+    <iframe data-src="./asset/ec-demo/line3D-simple.html" frameborder="0" style="width: 50%;height:50%;float:left;"></iframe>
+    <iframe data-src="./asset/ec-demo/bar3D-simple.html" frameborder="0" style="width: 50%;height:50%;float:left;"></iframe>
+    <iframe data-src="./asset/ec-demo/surface-simple.html" frameborder="0" style="width: 50%;height:50%;float:left;"></iframe>
 </div>
 
 Note:
 像现在这些直角坐标系上的散点图，折线图，柱状图都可以加一个 Z 轴扩展到三维空间，还有三维空间上表示趋势的曲面图，老版本 echarts-x 里的 globe visualization 等等。
 
-----
+---
 
-## 三维中点线面的绘制
+## 点 · 线 · 面
 
 Note:
 这些三维的可视化其实归结起来还是点线面的可视化。
 
-点拥有颜色，形状，三维空间中的位置等属性。
+刚才说了一个点拥有颜色，形状，三维空间中的位置等属性。
 线用于连接点，可以表示起点和终点，比如飞机航线，也可以用于表示数据的走势
 面可以通过面积表示数据的大小，三维中面也可以用来表示一个平面上数据的走势。
 
@@ -168,8 +176,16 @@ Note:
 
 ## 点
 
++ 三维空间的位置
+
++ 颜色
+
++ 形状
+
++ 大小
+
 Note:
-首先来讲下怎么画一个点。
+一个点拥有颜色，形状，三维空间中的位置等属性。
 
 打点是最常见的一种数据可视化方式，比如刚刚的微博签到图就通过在地图打点的方式标出不同地区微博的使用程度。
 
@@ -196,6 +212,8 @@ Note:
 WebGL 自带画点的模式，你只要在 drawArrays，就是 WebGL 最后调用的绘制命令，声明模式为画点的模式，然后在 shader 里直接绘制一个点了，而且还可以设置 gl_PointSize 设置这个方块点的大小。
 
 这种方式非常快，因为它需要的顶点数量很少，而且不需要构建三角面，代码也简单，往往瓶颈在显卡的像素填充率上。
+
+而且这种画点的方式还有一个好处，它是屏幕空间大小的，就是不管怎么缩放都是这个 5 个像素的大小，这样有什么好处呢，刚才提到点可以通过大小去表示数据，那如果不是屏幕空间的恒定大小的，而是有透视近大远小的话，就没法准确的去通过大小去表达数据了
 
 ----
 
@@ -236,13 +254,13 @@ Note:
 
 ## 描边？
 
-+ 画轮廓线 <!-- .element: class="fragment" -->
++ 画轮廓线 <!-- .element: class="fragment highlight-current-blue" -->
 
-+ 单独再创建一张描边的纹理 <!-- .element: class="fragment" -->
++ 单独再创建一张描边的纹理 <!-- .element: class="fragment highlight-current-blue" -->
 
-+ 单纹理中描边和填充用颜色区分 <!-- .element: class="fragment" -->
++ 单纹理中描边和填充用颜色区分 <!-- .element: class="fragment highlight-current-blue" -->
 
-+ Signed Distance Field <!-- .element: class="fragment" -->
++ Signed Distance Field <!-- .element: class="fragment highlight-blue" -->
 
 Note:
 刚刚我们解决了绘制的问题，还有个问题就是如何描边，可视化里描边可以让混在一起的图形更清晰的被区分开来。
@@ -256,26 +274,39 @@ Note:
 
 ----
 
+<!--.slide: data-background-iframe="./asset/ec-demo/sdf-heatmap.html" -->
+
 ## Signed Distance Field
 
-+ 存储到曲线或曲面的距离
++ 存储到图像边缘的距离  <!-- .element: class="fragment highlight-current-blue" -->
 
-+ Shader 中根据这个距离填色。
++ Shader 中根据这个距离填色  <!-- .element: class="fragment highlight-current-blue" -->
 
-+ 优势：存储空间小，放大后已然清晰
 
 Note:
 Signed Distance Field 用来表示到曲线和曲面的距离场，方便 shader 里根据这个距离场构建曲面或者曲线，valve 早些年发表了一篇论文用它来绘制矢量文字，相比普通的纹理贴图或者 alpha test，它的存储空间很小，而且放大后依然很清晰，
 
+我们要做的就是先根据一张 symbol 的图生成一个 SDF，
+
 ----
+
+## 优势
+
++ 存储空间小，放大后也有清晰的边缘  <!-- .element: class="fragment highlight-current-blue" -->
+
++ 能实现外发光，投影  <!-- .element: class="fragment highlight-current-blue" -->
+
+Note:
+SDF 相比于普通的纹理图片来说有一些比较显著的优势。
+
+----
+
+
 
 Note:
 最左边这张是原始的贴图，中间这张是生成的 SDF，右边这张是绘制的结果。
 
-----
-
-Note:
-这里我用 echarts 的热力图把 Signed Distance Field 的结果画出来了
+可以看到，在分辨率比较低的图中我们也能生成
 
 ---
 
@@ -288,13 +319,15 @@ echarts-gl 里有很多需要画线的地方，除了三维的折线图，飞线
 
 ## 原生态画线
 
-```javascript
+```js
 gl.lineWidth(5);
 gl.drawArrays(gl.LINES, 0, 100);
 ```
 
 + gl.LINES
+
 + gl.LINE_STRIP
+
 + gl.LINE_LOOP
 
 Note:
@@ -308,11 +341,11 @@ Note:
 
 ## 原生画线方法的各种坑
 
-+ 不同的驱动下画线的效果会有细微区别
++ 不同的驱动下画线的效果会有细微区别 <!-- .element: class="fragment highlight-current-blue" -->
 
-+ 无法控制 `lineJoin` 和 `lineCap`
++ 无法控制 lineJoin 和 lineCap <!-- .element: class="fragment highlight-current-blue" -->
 
-+ **有最大线宽的限制，而且 Windows 下最大只有 1**
++ 有最大线宽的限制，而且 Windows 下最大只有 1 <!-- .element: class="fragment highlight-blue" -->
 
 Note:
 
@@ -465,7 +498,7 @@ Note:
 
 + 快速排序
 
-+ > 2w 的三角面分多帧排序
++ 大于 2w 的三角面分多帧排序
 
 Note:
 半透明的三角面需要从远到近绘制才能保证混合正确。

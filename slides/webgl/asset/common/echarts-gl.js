@@ -21498,6 +21498,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	            return this;
 	        },
 
+	        pause: function () {
+	            for (var i = 0; i < this._clipList.length; i++) {
+	                this._clipList[i].pause();
+	            }
+	            this._paused = true;
+	        },
+
+	        resume: function () {
+	            for (var i = 0; i < this._clipList.length; i++) {
+	                this._clipList[i].resume();
+	            }
+	            this._paused = false;
+	        },
+
+	        isPaused: function () {
+	            return !!this._paused;
+	        },
+
 	        _doneCallback: function () {
 	            // Clear all tracks
 	            this._tracks = {};
@@ -21660,13 +21678,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.onframe = options.onframe;
 	        this.ondestroy = options.ondestroy;
 	        this.onrestart = options.onrestart;
+
+	        this._pausedTime = 0;
+	        this._paused = false;
 	    }
 
 	    Clip.prototype = {
 
 	        constructor: Clip,
 
-	        step: function (globalTime) {
+	        step: function (globalTime, deltaTime) {
 	            // Set startTime on first step, or _startTime may has milleseconds different between clips
 	            // PENDING
 	            if (!this._initialized) {
@@ -21674,7 +21695,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	                this._initialized = true;
 	            }
 
-	            var percent = (globalTime - this._startTime) / this._life;
+	            if (this._paused) {
+	                this._pausedTime += deltaTime;
+	                return;
+	            }
+
+	            var percent = (globalTime - this._startTime - this._pausedTime) / this._life;
 
 	            // 还没开始
 	            if (percent < 0) {
@@ -21710,17 +21736,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	        },
 
 	        restart: function (globalTime) {
-	            var remainder = (globalTime - this._startTime) % this._life;
+	            var remainder = (globalTime - this._startTime - this._pausedTime) % this._life;
 	            this._startTime = globalTime - remainder + this.gap;
+	            this._pausedTime = 0;
 
 	            this._needsRemove = false;
 	        },
 
-	        fire: function(eventType, arg) {
+	        fire: function (eventType, arg) {
 	            eventType = 'on' + eventType;
 	            if (this[eventType]) {
 	                this[eventType](this._target, arg);
 	            }
+	        },
+
+	        pause: function () {
+	            this._paused = true;
+	        },
+
+	        resume: function () {
+	            this._paused = false;
 	        }
 	    };
 
@@ -39437,7 +39472,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var LabelsBuilder = __webpack_require__(160);
 	var Matrix4 = __webpack_require__(16);
 
-	var SDF_RANGE = 10;
+	var SDF_RANGE = 20;
 	// TODO gl_PointSize has max value.
 	function PointsBuilder(is2D, api) {
 
@@ -39475,7 +39510,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var symbolInfo = this._getSymbolInfo(data);
 	        var dpr = api.getDevicePixelRatio();
 
-	        symbolInfo.maxSize *= 2;
+	        symbolInfo.maxSize = Math.min(symbolInfo.maxSize * 2, 200);
 
 	        var symbolSize = [];
 	        if (symbolInfo.aspect > 1) {
@@ -39737,7 +39772,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 
 	    _getSymbolInfo: function (data) {
-	        var symbolAspect = 1;
+	        var symbolAspect;
 	        var differentSymbolAspect = false;
 	        var symbolType = data.getItemVisual(0, 'symbol') || 'circle';
 	        var differentSymbolType = false;
@@ -39747,11 +39782,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var symbolSize = data.getItemVisual(idx, 'symbolSize');
 	            var currentSymbolType = data.getItemVisual(idx, 'symbol');
 	            var currentSymbolAspect;
-	            // Ignore NaN value.
-	            if (isNaN(symbolSize)) {
-	                return;
-	            }
 	            if (!(symbolSize instanceof Array)) {
+	                // Ignore NaN value.
+	                if (isNaN(symbolSize)) {
+	                    return;
+	                }
+
 	                currentSymbolAspect = 1;
 	                maxSymbolSize = Math.max(symbolSize, maxSymbolSize);
 	            }
@@ -39760,7 +39796,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                maxSymbolSize = Math.max(Math.max(symbolSize[0], symbolSize[1]), maxSymbolSize);
 	            }
 	            if (true) {
-	                if (Math.abs(currentSymbolAspect - symbolAspect) > 0.05) {
+	                if (symbolAspect != null && Math.abs(currentSymbolAspect - symbolAspect) > 0.05) {
 	                    differentSymbolAspect = true;
 	                }
 	                if (currentSymbolType !== symbolType) {
@@ -40206,7 +40242,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 191 */
 /***/ function(module, exports) {
 
-	module.exports = "@export ecgl.sdfSprite.vertex\n\nuniform mat4 worldViewProjection : WORLDVIEWPROJECTION;\nuniform float elapsedTime : 0;\n\nattribute vec3 position : POSITION;\n\n#ifdef VERTEX_COLOR\nattribute vec4 a_FillColor: COLOR;\nvarying vec4 v_Color;\n#endif\n\nattribute float size;\n\n#ifdef ANIMATING\nattribute float delay;\n#endif\n\n#ifdef POSITIONTEXTURE_ENABLED\nuniform sampler2D positionTexture;\n#endif\n\nvarying float v_Size;\n\nvoid main()\n{\n\n#ifdef POSITIONTEXTURE_ENABLED\n    // Only 2d position texture supported\n    gl_Position = worldViewProjection * vec4(texture2D(positionTexture, position.xy).xy, -10.0, 1.0);\n#else\n    gl_Position = worldViewProjection * vec4(position, 1.0);\n#endif\n\n#ifdef ANIMATING\n    gl_PointSize = size * (sin((elapsedTime + delay) * 3.14) * 0.5 + 1.0);\n#else\n    gl_PointSize = size;\n#endif\n\n#ifdef VERTEX_COLOR\n    v_Color = a_FillColor;\n    // v_StrokeColor = a_StrokeColor;\n#endif\n\n    v_Size = size;\n}\n\n@end\n\n@export ecgl.sdfSprite.fragment\n\nuniform vec4 color: [1, 1, 1, 1];\nuniform vec4 strokeColor: [1, 1, 1, 1];\nuniform float smoothing: 0.1;\n\nuniform float lineWidth: 0.0;\n\n#ifdef VERTEX_COLOR\nvarying vec4 v_Color;\n// varying vec4 v_StrokeColor;\n#endif\n\nvarying float v_Size;\n\nuniform sampler2D sprite;\n\nvoid main()\n{\n    gl_FragColor = color;\n\n    vec4 _strokeColor = strokeColor;\n\n#ifdef VERTEX_COLOR\n    gl_FragColor *= v_Color;\n    // TODO\n    // _strokeColor *= v_StrokeColor;\n#endif\n\n#ifdef SPRITE_ENABLED\n    float d = texture2D(sprite, gl_PointCoord).r;\n    // Antialias\n    gl_FragColor.a *= smoothstep(0.5 - smoothing, 0.5 + smoothing, d);\n\n    if (lineWidth > 0.0) {\n        // TODO SCREEN SPACE OUTLINE\n        float sLineWidth = lineWidth / 2.0;\n\n        float outlineMaxValue0 = 0.5 + sLineWidth;\n        float outlineMaxValue1 = 0.5 + sLineWidth + smoothing;\n        float outlineMinValue0 = 0.5 - sLineWidth - smoothing;\n        float outlineMinValue1 = 0.5 - sLineWidth;\n\n        // FIXME Aliasing\n        if (d <= outlineMaxValue1 && d >= outlineMinValue0) {\n            float a = _strokeColor.a;\n            if (d <= outlineMinValue1) {\n                a = a * smoothstep(outlineMinValue0, outlineMinValue1, d);\n            }\n            else {\n                a = a * smoothstep(outlineMaxValue1, outlineMaxValue0, d);\n            }\n            gl_FragColor.rgb = mix(gl_FragColor.rgb * gl_FragColor.a, _strokeColor.rgb, a);\n            gl_FragColor.a = gl_FragColor.a * (1.0 - a) + a;\n        }\n    }\n#endif\n\n    if (gl_FragColor.a == 0.0) {\n        discard;\n    }\n}\n@end"
+	module.exports = "@export ecgl.sdfSprite.vertex\n\nuniform mat4 worldViewProjection : WORLDVIEWPROJECTION;\nuniform float elapsedTime : 0;\n\nattribute vec3 position : POSITION;\n\n#ifdef VERTEX_COLOR\nattribute vec4 a_FillColor: COLOR;\nvarying vec4 v_Color;\n#endif\n\nattribute float size;\n\n#ifdef ANIMATING\nattribute float delay;\n#endif\n\n#ifdef POSITIONTEXTURE_ENABLED\nuniform sampler2D positionTexture;\n#endif\n\nvarying float v_Size;\n\nvoid main()\n{\n\n#ifdef POSITIONTEXTURE_ENABLED\n    // Only 2d position texture supported\n    gl_Position = worldViewProjection * vec4(texture2D(positionTexture, position.xy).xy, -10.0, 1.0);\n#else\n    gl_Position = worldViewProjection * vec4(position, 1.0);\n#endif\n\n#ifdef ANIMATING\n    gl_PointSize = size * (sin((elapsedTime + delay) * 3.14) * 0.5 + 1.0);\n#else\n    gl_PointSize = size;\n#endif\n\n#ifdef VERTEX_COLOR\n    v_Color = a_FillColor;\n    // v_StrokeColor = a_StrokeColor;\n#endif\n\n    v_Size = size;\n}\n\n@end\n\n@export ecgl.sdfSprite.fragment\n\nuniform vec4 color: [1, 1, 1, 1];\nuniform vec4 strokeColor: [1, 1, 1, 1];\nuniform float smoothing: 0.07;\n\nuniform float lineWidth: 0.0;\n\n#ifdef VERTEX_COLOR\nvarying vec4 v_Color;\n// varying vec4 v_StrokeColor;\n#endif\n\nvarying float v_Size;\n\nuniform sampler2D sprite;\n\nvoid main()\n{\n    gl_FragColor = color;\n\n    vec4 _strokeColor = strokeColor;\n\n#ifdef VERTEX_COLOR\n    gl_FragColor *= v_Color;\n    // TODO\n    // _strokeColor *= v_StrokeColor;\n#endif\n\n#ifdef SPRITE_ENABLED\n    float d = texture2D(sprite, gl_PointCoord).r;\n    // Antialias\n    gl_FragColor.a *= smoothstep(0.5 - smoothing, 0.5 + smoothing, d);\n\n    if (lineWidth > 0.0) {\n        // TODO SCREEN SPACE OUTLINE\n        float sLineWidth = lineWidth / 2.0;\n\n        float outlineMaxValue0 = 0.5 + sLineWidth;\n        float outlineMaxValue1 = 0.5 + sLineWidth + smoothing;\n        float outlineMinValue0 = 0.5 - sLineWidth - smoothing;\n        float outlineMinValue1 = 0.5 - sLineWidth;\n\n        // FIXME Aliasing\n        if (d <= outlineMaxValue1 && d >= outlineMinValue0) {\n            float a = _strokeColor.a;\n            if (d <= outlineMinValue1) {\n                a = a * smoothstep(outlineMinValue0, outlineMinValue1, d);\n            }\n            else {\n                a = a * smoothstep(outlineMaxValue1, outlineMaxValue0, d);\n            }\n            gl_FragColor.rgb = mix(gl_FragColor.rgb * gl_FragColor.a, _strokeColor.rgb, a);\n            gl_FragColor.a = gl_FragColor.a * (1.0 - a) + a;\n        }\n    }\n#endif\n\n    if (gl_FragColor.a == 0.0) {\n        discard;\n    }\n}\n@end"
 
 /***/ },
 /* 192 */
@@ -40223,6 +40259,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	    __webpack_require__(178), 'lines3D'
 	));
 
+
+	echarts.registerAction({
+	    type: 'lines3DPauseEffect',
+	    event: 'lines3deffectpaused',
+	    update: 'series.lines3D:pauseEffect'
+	}, function () {});
+
+	echarts.registerAction({
+	    type: 'lines3DResumeEffect',
+	    event: 'lines3deffectresumed',
+	    update: 'series.lines3D:resumeEffect'
+	}, function () {});
+
+	echarts.registerAction({
+	    type: 'lines3DToggleEffect',
+	    event: 'lines3deffectchanged',
+	    update: 'series.lines3D:toggleEffect'
+	}, function () {});
 
 /***/ },
 /* 193 */
@@ -40439,7 +40493,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var period = seriesModel.get('effect.period') * 1000;
 	            var delay = curveAnimatingPointsMesh.__percent ? -(period * curveAnimatingPointsMesh.__percent) : 0;
 	            curveAnimatingPointsMesh.__percent = 0;
-	            curveAnimatingPointsMesh.animate('', { loop: true })
+	            this._curveEffectsAnimator = curveAnimatingPointsMesh.animate('', { loop: true })
 	                .when(period, {
 	                    __percent: 1
 	                })
@@ -40451,11 +40505,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	        else {
 	            this.groupGL.remove(curveAnimatingPointsMesh);
+	            this._curveEffectsAnimator = null;
 	        }
 
 	        this._linesMesh.material.blend = this._curveAnimatingPointsMesh.material.blend
 	            = seriesModel.get('blendMode') === 'lighter'
 	            ? graphicGL.additiveBlend : null;
+	    },
+
+	    puaseEffect: function () {
+	        if (this._curveEffectsAnimator) {
+	            this._curveEffectsAnimator.pause();
+	        }
+	    },
+
+	    resumeEffect: function () {
+	        if (this._curveEffectsAnimator) {
+	            this._curveEffectsAnimator.resume();
+	        }
+	    },
+
+	    toggleEffect: function () {
+	        var animator = this._curveEffectsAnimator;
+	        if (animator) {
+	            animator.isPaused() ? animator.resume() : animator.pause();
+	        }
 	    },
 
 	    _generateBezierCurves: function (seriesModel, ecModel, api) {
