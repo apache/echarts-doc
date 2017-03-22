@@ -72,6 +72,33 @@ See the [example](${galleryViewPath}line-tooltip-touch&edit=1&reset=1).
 
 
 
+{{ target: partial-axisPointer-common}}
+
+#${prefix} show(boolean) = false
+
+axisPointer will not be displayed by default. But if[tooltip.trigger](~tooltip.trigger) is set as `'axis'` or [tooltip.axisPointer.type](~tooltip.axisPointer.type) is set as  `'cross'`, axisPointer will be displayed automatically. Each coordinate system will automatically chose the axes whose will display its axisPointer. [tooltip.axisPointer.axis](~tooltip.axisPointer.axis) can be used to change the choice.
+
+#${prefix} type(string) = 'line'
+
+Indicator type.
+
+Options:
++ `'line'` line indicator
+
++ `'shadow'` shadow crosshair indicator
+
++ `'cross'` crosshair indicator, which is actually the shortcut of enable two axisPointers of two orthometric axes.
+
+
+{{ use: partial-axisPointer-tooltip-shared(
+    prefix=${prefix},
+    galleryViewPath=${galleryViewPath}
+)}}
+
+
+
+
+
 
 
 {{ target: partial-axisPointer-tooltip-shared}}
@@ -160,3 +187,17 @@ Border width of label.
     defaultShadowBlur=3,
     defaultShadowColor='#aaa'
 ) }}
+
+
+#${prefix} lineStyle(Object)
+
+It is valid when [axisPointer.type](~tooltip.axisPointer.type) is `'line'`.
+
+{{ use: partial-line-style(prefix="#" + ${prefix}, defaultColor="#555", defaultWidth=1, defaultType='solid') }}
+
+
+#${prefix} shadowStyle(Object)
+
+It is valid when [axisPointer.type](~tooltip.axisPointer.type) is `'shadow'`.
+
+{{ use: partial-area-style(prefix="#" + ${prefix}, defaultColor="'rgba(150,150,150,0.3)") }}

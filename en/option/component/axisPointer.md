@@ -1,6 +1,8 @@
 
 {{target: component-axisPointer}}
 
+# axisPointer(Object)
+
 This is the global configurations of axisPointer.
 
 
@@ -10,10 +12,11 @@ This is the global configurations of axisPointer.
 
 ---
 
+{{ use: partial-axisPointer-common(
+    prefix="#",
+    galleryViewPath=${galleryViewPath}
+)}}
 
-## show{boolean} = false
-
-axisPointer will not be displayed by default. But if[tooltip.trigger](~tooltip.trigger) is set as `'axis'` or [tooltip.axisPointer.type](~tooltip.axisPointer.type) is set as  `'cross'`, axisPointer will be displayed automatically. Each coordinate system will automatically chose the axes whose will display its axisPointer. [tooltip.axisPointer.axis](~tooltip.axisPointer.axis) can be used to change the choice.
 
 ## link(Array)
 
@@ -37,5 +40,3 @@ Conditions to trigger tooltip. Options:
 + `'none'`
 
     Do not triggered by `'mousemove'` and `'click'`
-
-

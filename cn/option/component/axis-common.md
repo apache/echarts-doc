@@ -394,6 +394,18 @@ data: [{
 ###${prefix} baseline(string)
 文本垂直对齐方式，默认自动选择对齐方式，可以是 `'top'`, `'middle'`, `'bottom'`
 
+{{if: !${noAxisPointer} }}
+#${prefix} axisPointer(Object)
+
+axisPointer settings on axis.
+
+{{ use: partial-axisPointer-common(
+    prefix="#" + ${prefix},
+    galleryViewPath=${galleryViewPath}
+)}}
+{{/if}}
+
+
 
 {{ target: partial-axis-interval }}
 ${name}的显示间隔，在类目轴中有效。{{ if: !${isAxisLabel} }}默认同 [axisLabel.interval](~${componentType}.axisLabel.interval) 一样。{{ /if }}

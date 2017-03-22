@@ -3,7 +3,7 @@
 
 # parallelAxis(Object)
 
-This component is the coordinate axis for parallel coordinate. 
+This component is the coordinate axis for parallel coordinate.
 
 {{ use: partial-parallel-introduce(
     galleryViewPath=${galleryViewPath}
@@ -28,7 +28,7 @@ Started from `0`. For example, if the `dim` of coordinate axis is `1`, it indica
 
 It is used to define which *coordinate* the *axis* should map to.
 
-For example: 
+For example:
 
 ```javascript
 myChart.setOption({
@@ -90,5 +90,6 @@ Opacity of the select box.
 
 {{ use: axis-common(
     prefix='#',
-    componentType='parallelAxis'
+    componentType='parallelAxis',
+    noAxisPointer=true
 ) }}

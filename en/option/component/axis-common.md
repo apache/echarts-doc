@@ -411,6 +411,27 @@ Label text align, can be `'left'`, `'right'`, `'center'`. Defaultly will choose 
 ###${prefix} baseline(string)
 Label text vertical align, can be `'top'`, `'middle'`, `'bottom'`. Defaultly will choose one of them automatically.
 
+{{if: !${noAxisPointer} }}
+#${prefix} axisPointer(Object)
+
+axisPointer settings on the axis.
+
+{{ use: partial-axisPointer-common(
+    prefix="#" + ${prefix},
+    galleryViewPath=${galleryViewPath}
+)}}
+{{/if}}
+
+
+
+
+
+
+
+
+
+
+
 
 { target: partial-axis-interval }}
 Interval of ${name}, which is available in category axis. {{ if: !${isAxisLabel} }} is set to be the same as [axisLabel.interval](~${componentType}.axisLabel.interval) by default.{{ /if }}

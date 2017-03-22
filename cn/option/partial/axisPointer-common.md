@@ -65,6 +65,35 @@ axisPointer 的 label 默认不显示（也就是默认只显示指示线），�
 
 
 
+{{ target: partial-axisPointer-common}}
+
+#${prefix} show(boolean) = false
+
+默认不显示。但是如果 [tooltip.trigger](~tooltip.trigger) 设置为 `'axis'` 或者 [tooltip.axisPointer.type](~tooltip.axisPointer.type) 设置为 `'cross'`，则自动显示 axisPointer。坐标系会自动选择显示显示哪个轴的 axisPointer，也可以使用 [tooltip.axisPointer.axis](~tooltip.axisPointer.axis) 改变这种选择。
+
+#${prefix} type(string) = 'line'
+
+指示器类型。
+
+可选
+
++ `'line'` 直线指示器
+
++ `'shadow'` 阴影指示器
+
+{{ use: partial-axisPointer-tooltip-shared(
+    prefix=${prefix},
+    galleryViewPath=${galleryViewPath}
+)}}
+
+
+
+
+
+
+
+
+
 
 
 
@@ -121,7 +150,6 @@ formatter: function (params) {
 }
 ```
 
-
 ##${prefix} margin(boolean) = 3
 
 label 距离轴的距离。
@@ -138,15 +166,15 @@ label 距离轴的距离。
 {{ use: partial-padding(componentName='axisPointer')}}
 
 
-##${prefix}backgroundColor(string) = 'auto'
+##${prefix} backgroundColor(string) = 'auto'
 
 文本标签的背景颜色，默认是和 [axis.axisLine.lineStyle.color](~xAxis.axisLine.lineStyle.color) 相同。
 
-##${prefix}borderColor(string) = null
+##${prefix} borderColor(string) = null
 
 文本标签的边框颜色。
 
-##${prefix}borderWidth(string) = 0
+##${prefix} borderWidth(string) = 0
 
 文本标签的边框宽度。
 
@@ -155,3 +183,16 @@ label 距离轴的距离。
     defaultShadowBlur=3,
     defaultShadowColor='#aaa'
 ) }}
+
+
+#${prefix} lineStyle(Object)
+
+[axisPointer.type](~tooltip.axisPointer.type) 为 `'line'` 时有效。
+
+{{ use: partial-line-style(prefix="#" + ${prefix}, defaultColor="#555", defaultWidth=1, defaultType='solid') }}
+
+#${prefix} shadowStyle(Object)
+
+[axisPointer.type](~tooltip.axisPointer.type) 为 `'shadow'` 时有效。
+
+{{ use: partial-area-style(prefix="#" + ${prefix}, defaultColor="'rgba(150,150,150,0.3)") }}

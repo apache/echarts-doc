@@ -21,7 +21,7 @@
 
 ## layout(string) = 'horizontal'
 
-Layout modes, whose optional values are: 
+Layout modes, whose optional values are:
 
 + `'horizontal'`: place each axis horizontally.
 
@@ -65,5 +65,6 @@ Please refer to [parallel.axisExpandable](parallel.axisExpandable) for more info
 
 {{ use: axis-common(
     prefix='##',
-    componentType='parallelAxis'
+    componentType='parallelAxis',
+    noAxisPointer=true
 ) }}

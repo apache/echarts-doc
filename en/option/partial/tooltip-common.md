@@ -154,25 +154,12 @@ The coordinate axis, which could be `'x'`, `'y'`, `'radius'`, or `'angle'`. By d
     galleryViewPath=${galleryViewPath}
 ) }}
 
-##${prefix} lineStyle(Object)
-
-It is valid when [axisPointer.type](~tooltip.axisPointer.type) is `'line'`.
-
-{{ use: partial-line-style(prefix="##" + ${prefix}, defaultColor="#555", defaultWidth=1, defaultType='solid') }}
 
 ##${prefix} crossStyle(Object)
 
 It is valid when [axisPointer.type](~tooltip.axisPointer.type) is `'cross'`.
 
 {{ use: partial-line-style(prefix="##" + ${prefix}, defaultColor="#555", defaultWidth=1, defaultType="dashed") }}
-
-##${prefix} shadowStyle(Object)
-
-It is valid when [axisPointer.type](~tooltip.axisPointer.type) is `'shadow'`.
-
-{{ use: partial-area-style(prefix="##" + ${prefix}, defaultColor="'rgba(150,150,150,0.3)") }}
-
-
 
 
 

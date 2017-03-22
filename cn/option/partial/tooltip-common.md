@@ -163,23 +163,11 @@
     galleryViewPath=${galleryViewPath}
 ) }}
 
-##${prefix} lineStyle(Object)
-
-[axisPointer.type](~tooltip.axisPointer.type) 为 `'line'` 时有效。
-
-{{ use: partial-line-style(prefix="##" + ${prefix}, defaultColor="#555", defaultWidth=1, defaultType='solid') }}
-
 ##${prefix} crossStyle(Object)
 
 [axisPointer.type](~tooltip.axisPointer.type) 为 `'cross'` 时有效。
 
 {{ use: partial-line-style(prefix="##" + ${prefix}, defaultColor="#555", defaultWidth=1, defaultType="dashed") }}
-
-##${prefix} shadowStyle(Object)
-
-[axisPointer.type](~tooltip.axisPointer.type) 为 `'shadow'` 时有效。
-
-{{ use: partial-area-style(prefix="##" + ${prefix}, defaultColor="'rgba(150,150,150,0.3)") }}
 
 
 

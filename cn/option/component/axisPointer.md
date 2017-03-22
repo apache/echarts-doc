@@ -11,9 +11,10 @@
 
 ---
 
-## show{boolean} = false
-
-默认不显示。但是如果 [tooltip.trigger](~tooltip.trigger) 设置为 `'axis'` 或者 [tooltip.axisPointer.type](~tooltip.axisPointer.type) 设置为 `'cross'`，则自动显示 axisPointer。坐标系会自动选择显示显示哪个轴的 axisPointer，也可以使用 [tooltip.axisPointer.axis](~tooltip.axisPointer.axis) 改变这种选择。
+{{ use: partial-axisPointer-common(
+    prefix="#",
+    galleryViewPath=${galleryViewPath}
+)}}
 
 ## link(Array)
 
@@ -32,5 +33,3 @@
 + `'none'`
 
     不在 `'mousemove'` 或 `'click'` 时触发。
-
-

@@ -90,5 +90,6 @@ myChart.setOption({
 
 {{ use: axis-common(
     prefix='#',
-    componentType='parallelAxis'
+    componentType='parallelAxis',
+    noAxisPointer=true
 ) }}
