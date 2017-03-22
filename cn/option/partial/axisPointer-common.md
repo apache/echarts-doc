@@ -57,7 +57,7 @@ axisPointer 的 label 默认不显示（也就是默认只显示指示线），�
 **注意：**
 如果发现此时 tooltip 效果不良好，可设置 [tooltip.triggerOn](~tooltip.triggerOn) 为 `'none'`（于是效果为：手指按住按钮则显示 tooltip，松开按钮则隐藏 tooltip），或者 [tooltip.alwaysShowContent](~tooltip.alwaysShowContent) 为 `true`（效果为 tooltip 一直显示）。
 
-参见[例子](${galleryViewPath}line-tooltip-touch&edit=1&reset=1)。
+参见[例子](${galleryEditorPath}line-tooltip-touch&edit=1&reset=1)。
 
 
 ---
@@ -89,8 +89,65 @@ axisPointer 的 label 默认不显示（也就是默认只显示指示线），�
 
 {{ use: partial-axisPointer-tooltip-shared(
     prefix=${prefix},
-    galleryViewPath=${galleryViewPath}
+    galleryViewPath=${galleryViewPath},
+    galleryEditorPath=${galleryEditorPath}
 )}}
+
+#${prefix} tiggerTooltip(boolean) = true
+
+是否触发 tooltip。如果不想触发 tooltip 可以关掉。
+
+#${prefix} value(number) = null
+
+当前的 value。在使用 [axisPointer.handle](xAxisPointer.handle) 时，可以设置此值进行初始值设定，从而决定 axisPointer 的初始位置。
+
+#${prefix} status(boolean)
+
+当前的状态，可取值为 `'show'` 和 `'hide'`。
+
+#${prefix} handle(Object)
+
+拖拽手柄，适用于触屏的环境。参见 [例子](${galleryEditorPath}line-tooltip-touch&edit=1&reset=1)。
+
+##${prefix} show(boolean) = false
+
+当 show 设为 `true` 时开启，这时显示手柄，并且 axisPointer 会一直显示。
+
+##${prefix} icon
+
+手柄的图标。
+
+{{ use: partial-icon-path }}
+
+也可以通过 `'image://url'` 设置为图片，其中 url 为图片的链接。
+
+参见 [使用图片的例子](${galleryEditorPath}doc-example/axisPointer-handle-image&edit=1&reset=1)
+
+##${prefix} size(number|Array) = 45
+
+手柄的尺寸，可以设置单值，如 `45`，也可以设置为数组：`[width, height]`。
+
+##${prefix} margin(number) = 50
+
+手柄与轴的距离。注意，这是手柄中心点和轴的距离。
+
+##${prefix} color(string) = '#333'
+
+手柄颜色。
+
+##${prefix} throttle(number) = 40
+
+手柄拖拽时触发视图更新周期，单位毫秒，调大这个数值可以改善性能，但是降低体验。
+
+{{ use:partial-style-shadow(
+    prefix='#' + ${prefix},
+    defaultShadowBlur=3,
+    defaultShadowColor='#aaa',
+    defaultShadowOffsetX=2
+) }}
+
+
+
 
 
 

@@ -29,7 +29,9 @@
     prefix='#',
     componentType='angleAxis',
     axisTypeDefault="'category'",
-    hasSplitLineAndArea=true
+    hasSplitLineAndArea=true,
+    galleryViewPath=${galleryViewPath},
+    galleryEditorPath=${galleryEditorPath}
 )}}
 
 

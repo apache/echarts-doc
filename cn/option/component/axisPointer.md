@@ -7,13 +7,17 @@
 
 ---
 
-{{ use: partial-axisPointer-introduction(galleryViewPath=${galleryViewPath}) }}
+{{ use: partial-axisPointer-introduction(
+    galleryViewPath=${galleryViewPath},
+    galleryEditorPath=${galleryEditorPath}
+) }}
 
 ---
 
 {{ use: partial-axisPointer-common(
     prefix="#",
-    galleryViewPath=${galleryViewPath}
+    galleryViewPath=${galleryViewPath},
+    galleryEditorPath=${galleryEditorPath}
 )}}
 
 ## link(Array)

@@ -418,7 +418,8 @@ axisPointer settings on the axis.
 
 {{ use: partial-axisPointer-common(
     prefix="#" + ${prefix},
-    galleryViewPath=${galleryViewPath}
+    galleryViewPath=${galleryViewPath},
+    galleryEditorPath=${galleryEditorPath}
 )}}
 {{/if}}
 

@@ -23,10 +23,13 @@
     prefix='#',
     componentType='singleAxis',
     axisTypeDefault="'value'",
-    hasSplitLineAndArea=true
+    hasSplitLineAndArea=true,
+    galleryViewPath=${galleryViewPath},
+    galleryEditorPath=${galleryEditorPath}
 )}}
 
 
 {{use: partial-tooltip-in-coords(
-    galleryViewPath=${galleryViewPath}
+    galleryViewPath=${galleryViewPath},
+    galleryEditorPath=${galleryEditorPath}
 )}}

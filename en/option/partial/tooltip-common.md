@@ -36,7 +36,8 @@ tooltip settings in the coordinate system component.
 
 {{use: partial-tooltip-coords-common(
     prefix='##',
-    galleryViewPath=${galleryViewPath}
+    galleryViewPath=${galleryViewPath},
+    galleryEditorPath=${galleryEditorPath}
 )}}
 
 {{ use: partial-tooltip-common(scope='coordSys', prefix='##') }}
@@ -151,7 +152,8 @@ The coordinate axis, which could be `'x'`, `'y'`, `'radius'`, or `'angle'`. By d
 
 {{ use: partial-axisPointer-tooltip-shared(
     prefix="#" + ${prefix},
-    galleryViewPath=${galleryViewPath}
+    galleryViewPath=${galleryViewPath},
+    galleryEditorPath=${galleryEditorPath}
 ) }}
 
 

@@ -13,7 +13,9 @@
     prefix='#',
     componentType='radiusAxis',
     axisTypeDefault="'value'",
-    hasSplitLineAndArea=true
+    hasSplitLineAndArea=true,
+    galleryViewPath=${galleryViewPath},
+    galleryEditorPath=${galleryEditorPath}
 )}}
 
 

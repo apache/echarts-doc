@@ -15,5 +15,6 @@ Polar coordinate can be used in scatter and line chart. Every polar coordinate h
 
 
 {{use: partial-tooltip-in-coords(
-    galleryViewPath=${galleryViewPath}
+    galleryViewPath=${galleryViewPath},
+    galleryEditorPath=${galleryEditorPath}
 )}}

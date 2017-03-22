@@ -135,7 +135,10 @@
 
 ---
 
-{{ use: partial-axisPointer-introduction(galleryViewPath=${galleryViewPath}) }}
+{{ use: partial-axisPointer-introduction(
+    galleryViewPath=${galleryViewPath},
+    galleryEditorPath=${galleryEditorPath}
+) }}
 
 
 ##${prefix} type(string) = 'line'
@@ -160,7 +163,8 @@
 
 {{ use: partial-axisPointer-tooltip-shared(
     prefix="#" + ${prefix},
-    galleryViewPath=${galleryViewPath}
+    galleryViewPath=${galleryViewPath},
+    galleryEditorPath=${galleryEditorPath}
 ) }}
 
 ##${prefix} crossStyle(Object)

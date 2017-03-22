@@ -29,7 +29,9 @@ The following shows an example with clockwise as `false`.
     prefix='#',
     componentType='angleAxis',
     axisTypeDefault="'category'",
-    hasSplitLineAndArea=true
+    hasSplitLineAndArea=true,
+    galleryViewPath=${galleryViewPath},
+    galleryEditorPath=${galleryEditorPath}
 )}}
 
 

@@ -15,5 +15,6 @@
 
 
 {{use: partial-tooltip-in-coords(
-    galleryViewPath=${galleryViewPath}
+    galleryViewPath=${galleryViewPath},
+    galleryEditorPath=${galleryEditorPath}
 )}}

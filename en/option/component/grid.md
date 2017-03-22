@@ -37,5 +37,6 @@ Whether the grid region contains [axis tick label](~yAxis.axisLabel) of axis.
 {{ use:partial-component-common-style(componentName="grid", prefix='#', needShow=true) }}
 
 {{use: partial-tooltip-in-coords(
-    galleryViewPath=${galleryViewPath}
+    galleryViewPath=${galleryViewPath},
+    galleryEditorPath=${galleryEditorPath}
 )}}

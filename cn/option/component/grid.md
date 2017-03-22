@@ -37,5 +37,6 @@ grid 区域是否包含坐标轴的[刻度标签](~yAxis.axisLabel)。
 {{ use:partial-component-common-style(componentName="网格", prefix='#', needShow=true) }}
 
 {{use: partial-tooltip-in-coords(
-    galleryViewPath=${galleryViewPath}
+    galleryViewPath=${galleryViewPath},
+    galleryEditorPath=${galleryEditorPath}
 )}}

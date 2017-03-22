@@ -63,7 +63,7 @@ Set `someAxis.axisPointer.handle.show` (for example [xAxis.axisPointer.handle.sh
 **Notice:**
 If tooltip does not work well in this case, try to set[tooltip.triggerOn](~tooltip.triggerOn) as `'none'` (for the effect: show tooltip when finger holding on the button, and hide tooltip after finger left the button), or set [tooltip.alwaysShowContent](~tooltip.alwaysShowContent) as `true` (then tooltip will always be displayed).
 
-See the [example](${galleryViewPath}line-tooltip-touch&edit=1&reset=1).
+See the [example](${galleryEditorPath}line-tooltip-touch&edit=1&reset=1).
 
 
 ---
@@ -93,13 +93,66 @@ Options:
 
 + `'shadow'` shadow crosshair indicator
 
-+ `'cross'` crosshair indicator, which is actually the shortcut of enable two axisPointers of two orthometric axes.
-
 
 {{ use: partial-axisPointer-tooltip-shared(
     prefix=${prefix},
-    galleryViewPath=${galleryViewPath}
+    galleryViewPath=${galleryViewPath},
+    galleryEditorPath=${galleryEditorPath}
 )}}
+
+#${prefix} tiggerTooltip(boolean) = true
+
+Whether to trigger tooltip.
+
+#${prefix} value(number) = null
+
+current value. When using [axisPointer.handle](xAxisPointer.handle), `value` can be set to define the initail position of axisPointer.
+
+
+#${prefix} status(boolean)
+
+Current status, can be `'show'` 和 `'hide'`.
+
+#${prefix} handle(Object)
+
+A button used to drag axisPointer. This feature is applicable in touch device. See [example](${galleryEditorPath}line-tooltip-touch&edit=1&reset=1).
+
+##${prefix} show(boolean) = false
+
+Set to `true` to use handle.
+
+##${prefix} icon
+
+The icon of the handle.
+
+{{ use: partial-icon-path }}
+
+You can also set it as `'image://url'` to use a image.
+
+See the [example of using image](${galleryEditorPath}doc-example/axisPointer-handle-image&edit=1&reset=1)
+
+##${prefix} size(number|Array) = 45
+
+The size of the handle, which can be set as a single value or an array (`[width, height]`).
+
+##${prefix} margin(number) = 50
+
+Distance from handle center to axis.
+
+##${prefix} color(string) = '#333'
+
+The color of the handle.
+
+##${prefix} throttle(number) = 40
+
+Throttle rate of trigger view update when dragging handle, in ms. Increase the value to improve performance, but decrease the experience.
+
+{{ use:partial-style-shadow(
+    prefix='#' + ${prefix},
+    defaultShadowBlur=3,
+    defaultShadowColor='#aaa',
+    defaultShadowOffsetX=2
+) }}
 
 
 

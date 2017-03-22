@@ -33,7 +33,9 @@ Offset of x axis relative to default position. Useful when multiple x axis has s
     prefix='#',
     componentType='xAxis',
     axisTypeDefault="'category'",
-    hasSplitLineAndArea=true
+    hasSplitLineAndArea=true,
+    galleryViewPath=${galleryViewPath},
+    galleryEditorPath=${galleryEditorPath}
 )}}
 
 

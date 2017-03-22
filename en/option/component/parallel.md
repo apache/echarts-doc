@@ -66,5 +66,7 @@ Please refer to [parallel.axisExpandable](parallel.axisExpandable) for more info
 {{ use: axis-common(
     prefix='##',
     componentType='parallelAxis',
-    noAxisPointer=true
+    noAxisPointer=true,
+    galleryViewPath=${galleryViewPath},
+    galleryEditorPath=${galleryEditorPath}
 ) }}

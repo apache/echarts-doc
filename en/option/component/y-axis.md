@@ -31,7 +31,9 @@ Offset of y axis relative to default position. Useful when multiple y axis has s
     prefix='#',
     componentType='yAxis',
     axisTypeDefault="'value'",
-    hasSplitLineAndArea=true
+    hasSplitLineAndArea=true,
+    galleryViewPath=${galleryViewPath},
+    galleryEditorPath=${galleryEditorPath}
 )}}
 
 {{use:partial-z-zlevel(

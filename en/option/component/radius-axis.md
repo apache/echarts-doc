@@ -13,7 +13,9 @@ Index of radial axis in polor coordinate. It's the first axis by default.
     prefix='#',
     componentType='radiusAxis',
     axisTypeDefault="'value'",
-    hasSplitLineAndArea=true
+    hasSplitLineAndArea=true,
+    galleryViewPath=${galleryViewPath},
+    galleryEditorPath=${galleryEditorPath}
 )}}
 
 

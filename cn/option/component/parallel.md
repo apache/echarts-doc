@@ -66,5 +66,7 @@
 {{ use: axis-common(
     prefix='##',
     componentType='parallelAxis',
-    noAxisPointer=true
+    noAxisPointer=true,
+    galleryViewPath=${galleryViewPath},
+    galleryEditorPath=${galleryEditorPath}
 ) }}
