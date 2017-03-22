@@ -1,7 +1,8 @@
 {{ target: partial-rect-layout-width-height }}
 
 {{ use: partial-rect-layout(
-    componentName=${componentName}, defaultLeft=${defaultLeft},
+    componentName=${componentName},
+    defaultLeft=${defaultLeft},
     defaultTop=${defaultTop},
     defaultRight=${defaultRight},
     defaultBottom=${defaultBottom}

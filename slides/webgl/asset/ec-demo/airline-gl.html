@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Airline - ECHARTS-GL</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes"> <!-- Fullscreen Landscape on iOS -->
+        <link rel="stylesheet" href="../common/reset.css">
+    </head>
+    <body>
+        <div id="main"></div>
+        <script src="../common/echarts.min.js"></script>
+        <script src="../common/map/js/world.js"></script>
+        <script src="../common/jquery.min.js"></script>
+        <script src="../common/echarts-gl.js"></script>
+
+        <script src="../data/flights.json.js"></script>
+        <script>
+            var chart = echarts.init(document.getElementById('main'));
+
+            function getAirportCoord(idx) {
+                return [flightsData.airports[idx][3], flightsData.airports[idx][4]];
+            }
+            var routes = flightsData.routes.map(function (airline) {
+                return [
+                    getAirportCoord(airline[1]),
+                    getAirportCoord(airline[2])
+                ];
+            });
+
+            chart.setOption({
+                geo3D: {
+                    map: 'world',
+                    shading: 'realistic',
+                    realisticMaterial: {
+                        roughness: 0.8,
+                        metalness: 0
+                    },
+                    postEffect: {
+                        enable: true
+                    },
+                    groundPlane: {
+                        show: false
+                    },
+                    light: {
+                        main: {
+                            intensity: 1,
+                            alpha: 30
+                        },
+                        ambient: {
+                            intensity: 0
+                        }
+                    },
+                    viewControl: {
+                        distance: 50
+                    },
+
+                    itemStyle: {
+                        areaColor: '#000'
+                    },
+
+                    boxHeight: 0.5
+                },
+                series: [{
+                    type: 'lines3D',
+
+                    coordinateSystem: 'geo3D',
+
+                    effect: {
+                        show: true,
+                        symbolSize: 3
+                    },
+
+                    blendMode: 'lighter',
+
+                    lineStyle: {
+                        width: 1,
+                        opacity: 0.05
+                    },
+
+                    data: routes
+                }]
+            });
+
+            window.onresize = chart.resize;
+
+            window.addEventListener('keydown', function () {
+                chart.dispatchAction({
+                    type: 'lines3DToggleEffect',
+                    seriesIndex: 0
+                });
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="../common/reset.css">
+    </head>
+    <body>
+        <div id="main"></div>
+        <script src="../common/echarts.min.js"></script>
+        <script src="../common/jquery.min.js"></script>
+        <script src="../common/echarts-gl.js"></script>
+        <script>
+            var chart = echarts.init(document.getElementById('main'));
+
+            var data = [];
+            // Parametric curve
+            for (var t = 0; t < 25; t += 0.01) {
+                var x = (1 + 0.25 * Math.cos(30 * t)) * Math.cos(t);
+                var y = (1 + 0.25 * Math.cos(30 * t)) * Math.sin(t);
+                var z = t + 2.0 * Math.sin(30 * t);
+                data.push([x, y, z]);
+            }
+
+            chart.setOption({
+                visualMap: {
+                    show: false,
+                    min: 0,
+                    max: 30,
+                    inRange: {
+                        color: ['#1710c0', '#0b9df0', '#00fea8', '#00ff0d', '#f5f811', '#f09a09', '#fe0300']
+                    }
+                },
+                xAxis3D: {
+                    type: 'value'
+                },
+                yAxis3D: {
+                    type: 'value'
+                },
+                zAxis3D: {
+                    type: 'value'
+                },
+                grid3D: {
+                    axisLine: {
+                        lineStyle: { color: '#fff' }
+                    },
+                    axisPointer: {
+                        lineStyle: { color: '#fff' }
+                    },
+                    viewControl: {
+                        autoRotate: true
+                    }
+                },
+                series: [{
+                    type: 'line3D',
+                    data: data,
+                    lineStyle: {
+                        width: 2
+                    }
+                }]
+            });
+
+            window.onresize = chart.resize;
+        </script>
+    </body>
+</html>
