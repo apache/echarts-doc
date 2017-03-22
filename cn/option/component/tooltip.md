@@ -5,6 +5,10 @@
 
 提示框组件。
 
+---
+
+{{use: partial-tooltip-introduction}}
+
 ## show(boolean) = true
 
 是否显示提示框组件，包括提示框浮层和 [axisPointer](~tooltip.axisPointer)。
@@ -28,7 +32,11 @@
 
     在 ECharts 2.x 中只支持类目轴上使用 axis trigger，在 ECharts 3 中支持在[直角坐标系](~grid)和[极坐标系](~polar)上的所有类型的轴。并且可以通过 [axisPointer.axis](~tooltip.axisPointer.axis) 指定坐标轴。
 
-## triggerOn(string) = 'mousemove'
++ `'none'`
+
+    什么都不触发。
+
+## triggerOn(string) = 'mousemove|click'
 
 提示框触发的条件，可选：
 
@@ -40,9 +48,13 @@
 
     鼠标点击时触发。
 
++ `'mousemove|click'`
+
+    同时鼠标移动和点击时触发。
+
 + `'none'`
 
-    不触发，用户可以通过 [action.tooltip.showTip](api.html#action.tooltip.showTip) 和 [action.tooltip.hideTip](api.html#action.tooltip.hideTip) 来手动触发和隐藏。
+    不在 `'mousemove'` 或 `'click'` 时触发，用户可以通过 [action.tooltip.showTip](api.html#action.tooltip.showTip) 和 [action.tooltip.hideTip](api.html#action.tooltip.hideTip) 来手动触发和隐藏。也可以通过 [axisPointer.handle](~xAxis.axisPointer.handle) 来触发或隐藏。
 
 该属性为 ECharts 3.0 中新加。
 
@@ -87,18 +99,37 @@
 
     回调函数，格式如下
     ```js
-    (point: Array, params: Object|Array.<Object>, dom: HTMLDomElement, rect: Object) => Array
+    (point: Array, params: Object|Array.<Object>, dom: HTMLDomElement, rect: Object, size: Object) => Array
     ```
 
-    第一个参数是鼠标位置，第二个参数同 formatter 的参数相同，第三个参数是 tooltip 的 dom 对象， 第四个参数只有鼠标在图形上时有效，是一个用`x`, `y`, `width`, `height` 四个属性表达的图形包围盒。返回值是一个表示 tooltip 位置的数组，数组值可以是绝对的像素值，也可以是相对的百分比。
+    **参数：**<br>
+    point: 鼠标位置，如 [20, 40]。<br>
+    params: 同 formatter 的参数相同。<br>
+    dom: tooltip 的 dom 对象。<br>
+    rect: 只有鼠标在图形上时有效，是一个用`x`, `y`, `width`, `height`四个属性表达的图形包围盒。<br>
+    size: 包括 dom 的尺寸和 echarts 容器的当前尺寸，例如：`{contentSize: [width, height], viewSize: [width, height]}`。<br>
+
+    **返回值：**<br>
+    可以是一个表示 tooltip 位置的数组，数组值可以是绝对的像素值，也可以是相  百分比。<br>
+    也可以是一个对象，如：`{left: 10, top: 30}`，或者 `{right: '20%', bottom: 40}`。<br>
 
     如下示例：
     ```js
-    position: function (point, params, dom) {
+    position: function (point, params, dom, rect, size) {
         // 固定在顶部
         return [point[0], '10%'];
     }
     ```
+    或者：
+    ```js
+    position: function (pos, params, dom, rect, size) {
+        // 鼠标在左侧时 tooltip 显示到右侧，鼠标在右侧时 tooltip 显示到左侧。
+        var obj = {top: 60};
+        obj[['left', 'right'][+(pos[0] < size.viewSize[0] / 2)]] = 5;
+        return obj;
+    }
+    ```
+
 
 + `'inside'`
 
@@ -171,7 +202,7 @@
             type: 'number'
         }
     }) }}
-    在 [trigger](~tooltip.trigger) 为 `'axis'` 的时候 `params` 是多个系列的数据数组。
+    在 [trigger](~tooltip.trigger) 为 `'axis'` 的时候，或者 tooltip 被 [axisPointer](~xAxis.axisPointer) 触发的时候，`params` 是多个系列的数据数组。
 
     **注：** ECharts 2.x 使用数组表示各参数的方式不再支持。
 
@@ -220,7 +251,16 @@ extraCssText: 'box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);'
 
 ## axisPointer(Object)
 
-坐标轴指示器配置项，在 [trigger](~tooltip.trigger) 为 `'axis'` 时有效。
+坐标轴指示器配置项。
+
+`tooltip.axisPointer` 是配置坐标轴指示器的快捷方式。实际上坐标轴指示器的全部功能，都可以通过轴上的 axisPointer 配置项完成（例如 [xAxis.axisPointer](~xAxis.axisPointer) 或 [angleAxis.axisPointer](~angleAxis.axisPointer)）。但是使用 `tooltip.axisPinter` 在简单场景下会更方便一些。
+
+> **注意：** `tooltip.axisPointer` 中诸配置项的优先级低于轴上的 axisPointer 的配置项。
+
+---
+
+{{ use: partial-axisPointer-introduction(galleryViewPath=${galleryViewPath}) }}
+
 
 ### type(string) = 'line'
 
@@ -229,16 +269,23 @@ extraCssText: 'box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);'
 可选
 + `'line'` 直线指示器
 
-+ `'cross'` 十字准星指示器
-
 + `'shadow'` 阴影指示器
+
++ `'cross'` 十字准星指示器。其实是种简写，表示启用两个正交的轴的 axisPointer。
 
 
 ### axis(string) = 'auto'
 
-指示器的坐标轴。可以是 `'x'`, `'y'`, `'radius'`, `'angle'`。默认取类目轴或者时间轴。
+指示器的坐标轴。
 
-{{ use: partial-animation(prefix="##") }}
+默认情况，坐标系会自动选择显示显示哪个轴的 axisPointer（默认取类目轴或者时间轴）。
+
+可以是 `'x'`, `'y'`, `'radius'`, `'angle'`。
+
+{{ use: partial-axisPointer-tooltip-shared(
+    prefix="##",
+    galleryViewPath=${galleryViewPath}
+) }}
 
 ### lineStyle(Object)
 
@@ -252,14 +299,10 @@ extraCssText: 'box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);'
 
 {{ use: partial-line-style(prefix="###", defaultColor="#555", defaultWidth=1, defaultType="dashed") }}
 
-#### textStyle(Object)
-
-十字准星准星上的文字样式。
-
-{{ use: partial-text-style(prefix="####") }}
-
 ### shadowStyle(Object)
 
 [axisPointer.type](~tooltip.axisPointer.type) 为 `'shadow'` 时有效。
 
 {{ use: partial-area-style(prefix="###", defaultColor="'rgba(150,150,150,0.3)") }}
+
+{{ use: partial-animation(prefix="##") }}

@@ -12,6 +12,7 @@
 {{import: component-data-zoom}}
 {{import: component-visual-map}}
 {{import: component-tooltip}}
+{{import: component-axisPointer}}
 {{import: component-toolbox}}
 {{import: component-brush}}
 {{import: component-geo}}

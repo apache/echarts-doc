@@ -5,6 +5,10 @@
 
 Tooltip component.
 
+---
+
+{{use: partial-tooltip-introduction}}
+
 ## show(boolean) = true
 
 Whether to show the tooltip component, including tooltip floating layer and [axisPointer](~tooltip.axisPointer).
@@ -20,15 +24,19 @@ Type of triggering.
 Options:
 + `'item'`
 
-    Triggering by data item, which is mainly used for charts that don't have a category axis like scatter charts or pie charts.
+    Triggered by data item, which is mainly used for charts that don't have a category axis like scatter charts or pie charts.
 
 + `'axis'`
 
-    Triggering by axes, which is mainly used for charts that have category axes, like bar charts or line charts.
+    Triggered by axes, which is mainly used for charts that have category axes, like bar charts or line charts.
 
    ECharts 2.x only supports axis trigger for category axis. In ECharts 3, it is supported for all types of axes in [grid](~grid) or [polar](~polar). Also, you may assign axis with [axisPointer.axis](~tooltip.axisPointer.axis).
 
-## triggerOn(string) = 'mousemove'
++ `'none'`
+
+    Trigger nothing.
+
+## triggerOn(string) = 'mousemove|click'
 
 Conditions to trigger tooltip. Options:
 
@@ -38,11 +46,15 @@ Conditions to trigger tooltip. Options:
 
 + `'click'`
 
-    Trigger when mouse click.
+    Trigger when mouse clicks.
+
++ `'mousemove|click'`
+
+    Trigger when mouse clicks and moves.
 
 + `'none'`
 
-    No triggering. Tooltip can be triggered and hidden manually by calling [action.tooltip.showTip](api.html#action.tooltip.showTip) and [action.tooltip.hideTip](api.html#action.tooltip.hideTip).
+    Do not triggered by `'mousemove'` and `'click'`. Tooltip can be triggered and hidden manually by calling [action.tooltip.showTip](api.html#action.tooltip.showTip) and [action.tooltip.hideTip](api.html#action.tooltip.hideTip). It can also be triggered by [axisPointer.handle](~xAxis.axisPointer.handle) in this case.
 
 This attribute is new to ECharts 3.0.
 
@@ -87,16 +99,35 @@ Options:
 
     Callback function in the following form:
     ```js
-    (point: Array, params: Object|Array.<Object>, dom: HTMLDomElement, rect: Object) => Array
+    (point: Array, params: Object|Array.<Object>, dom: HTMLDomElement, rect: Object, size: Object) => Array
     ```
 
-    The first parameter is mouse position, the second parameter is the same as formatter, the third parameter is DOM object of tooltip, the fourth parameter is valid only when mouse is on graphic elements, which stands for a bounding box with `x`, `y`, `width`, and `height`. Return value is an array standing for tooltip position, which can be absolute pixels, or relative percentage.
+    **Parameters:**<br>
+    point: Mouse position.<br>
+    param: The same as formatter.<br>
+    dom: The DOM object of tooltip.<br>
+    rect: It is valid only when mouse is on graphic elements, which stands for a bounding box with `x`, `y`, `width`, and `height`.<br>
+    size: The size of dom echarts container. For example: `{contentSize: [width, height], viewSize: [width, height]}`. <br>
+
+    **Return:**<br>
+    Return value is an array standing for tooltip position, which can be absolute pixels, or relative percentage.<br>
+    Or can be an object, like `{left: 10, top: 30}`, or `{right: '20%', bottom: 40}`.<br>
 
     For example:
     ```js
-    position: function (point, params, dom) {
+    position: function (point, params, dom, rect, size) {
         // fixed at top
         return [point[0], '10%'];
+    }
+    ```
+    Or:
+    ```js
+    position: function (pos, params, dom, rect, size) {
+        // tooltip will be fixed on the right if mouse hovering on the left,
+        // and on the left if hovering on the right.
+        var obj = {top: 60};
+        obj[['left', 'right'][+(pos[0] < size.viewSize[0] / 2)]] = 5;
+        return obj;
     }
     ```
 
@@ -168,7 +199,7 @@ The content formatter of tooltip's floating layer which supports string template
             type: 'number'
         }
     }) }}
-    When [trigger](~tooltip.trigger) is `'axis'` , `params` is the data array of multiple series.
+    When [trigger](~tooltip.trigger) is `'axis'`, or when tooltip is triggered by [axisPointer](~xAxis.axisPointer), `params` is the data array of multiple series.
 
     **Note: **Using array to present all the parameters in ECharts 2.x is not supported anymore.
 
@@ -219,7 +250,16 @@ extraCssText: 'box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);'
 
 ## axisPointer(Object)
 
-Configuration item for axis indicator, which is valid when [trigger](~tooltip.trigger) is `'axis'`.
+Configuration item for axis indicator.
+
+`tooltip.axisPointer` is like syntactic sugar of axisPointer settings on axes (for example, [xAxis.axisPointer](~xAxis.axisPointer) or [angleAxis.axisPointer](~angleAxis.axisPointer)). More detailed features can be configured on `someAxis.axisPointer`. But in common cases, using `tooltip.axisPinter` is more convenient.
+
+> **Notice:** configurations of `tooltip.axisPointer` has lower priority than that of `someAxis.axisPointer`.
+
+---
+
+{{ use: partial-axisPointer-introduction(galleryViewPath=${galleryViewPath}) }}
+
 
 ### type(string) = 'line'
 
@@ -228,16 +268,19 @@ Indicator type.
 Options:
 + `'line'` line indicator
 
-+ `'cross'` crosshair indicator
-
 + `'shadow'` shadow crosshair indicator
+
++ `'cross'` crosshair indicator, which is actually the shortcut of enable two axisPointers of two orthometric axes.
 
 
 ### axis(string) = 'auto'
 
-The coordinate axis, which could be `'x'`, `'y'`, `'radius'`, or `'angle'`. By default, category axis or time axis is used.
+The coordinate axis, which could be `'x'`, `'y'`, `'radius'`, or `'angle'`. By default, each coordinate system will automatically chose the axes whose will display its axisPointer (category axis or time axis is used by default).
 
-{{ use: partial-animation(prefix="##") }}
+{{ use: partial-axisPointer-tooltip-shared(
+    prefix="##",
+    galleryViewPath=${galleryViewPath}
+) }}
 
 ### lineStyle(Object)
 
@@ -251,14 +294,10 @@ It is valid when [axisPointer.type](~tooltip.axisPointer.type) is `'cross'`.
 
 {{ use: partial-line-style(prefix="###", defaultColor="#555", defaultWidth=1, defaultType="dashed") }}
 
-#### textStyle(Object)
-
-The text style of crosshair.
-
-{{ use: partial-text-style(prefix="####") }}
-
 ### shadowStyle(Object)
 
 It is valid when [axisPointer.type](~tooltip.axisPointer.type) is `'shadow'`.
 
 {{ use: partial-area-style(prefix="###", defaultColor="'rgba(150,150,150,0.3)") }}
+
+{{ use: partial-animation(prefix="##") }}

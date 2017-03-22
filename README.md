@@ -26,6 +26,11 @@ node build.js (github)
 node server.js
 ```
 
+```shell
+node watch.js
+#node watch.js github
+```
+
 ## Build Dash Docset
 
 1. `cd public/documents`

@@ -98,7 +98,8 @@ The style of tooltip in theme river.
 {{use: component-tooltip(
     prefix="##",
     defaultShow=true,
-    defaultTrigger="'axis'"
+    defaultTrigger="'axis'",
+    galleryViewPath=${galleryViewPath}
 )}}
 
 

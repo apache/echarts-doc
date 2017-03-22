@@ -99,7 +99,8 @@
 {{use: component-tooltip(
     prefix="##",
     defaultShow=true,
-    defaultTrigger="'axis'"
+    defaultTrigger="'axis'",
+    galleryViewPath=${galleryViewPath}
 )}}
 
 

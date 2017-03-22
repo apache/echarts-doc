@@ -32,13 +32,13 @@
 <loc>http://echarts.baidu.com/blog/404.html</loc>
 </url>
 <url>
+<loc>http://echarts.baidu.com/blog/posts/</loc>
+</url>
+<url>
 <loc>http://echarts.baidu.com/blog/en/</loc>
 </url>
 <url>
 <loc>http://echarts.baidu.com/blog/</loc>
-</url>
-<url>
-<loc>http://echarts.baidu.com/blog/posts/</loc>
 </url>
 <url>
 <loc>http://echarts.baidu.com/blog/tags/</loc>
@@ -48,9 +48,6 @@
 </url>
 <url>
 <loc>http://echarts.baidu.com/blog/about/</loc>
-</url>
-<url>
-<loc>http://echarts.baidu.com/blog/page2/</loc>
 </url>
 <url>
 <loc>http://echarts.baidu.com/blog/test.html</loc>

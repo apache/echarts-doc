@@ -1,8 +1,8 @@
 <!doctype html>
-<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
-<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="zh"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="zh"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="zh"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh"><!--<![endif]-->
 <head>
 {% include head.html %}
 </head>
@@ -11,29 +11,13 @@
 
 {% include browser-upgrade.html %}
 {% include navigation.html %}
-<div class="entry-lang">
-  <a href="{{ site.url }}">中文</a> |
-  <a href="{{ site.url }}/en">EN</a>
+
+<div class="page-info">
+  <h1>博客</h1>
+  <p>这是ECharts持续发布文章及活动信息的平台，包含ECharts新版本介绍、教程、活动介绍等文章</p>
 </div>
 
-<div class="entry-header">
-  {% if page.image.credit %}<div class="image-credit">{% if isEn %}Image source: {% else %}图片来源：{% endif %}<a href="{{ page.image.creditlink }}">{{ page.image.credit }}</a></div><!-- /.image-credit -->{% endif %}
-  {% if page.image.feature %}
-    <div class="entry-image">
-      <img src="{{ site.url }}/images/{{ page.image.feature }}" alt="{{ page.title }}">
-    </div><!-- /.entry-image -->
-  {% endif %}
-  <div class="header-title">
-    <div class="header-title-wrap">
-      <h1>{{ site.title }}</h1>
-      <h2>{{ page.title }}</h2>
-    </div><!-- /.header-title-wrap -->
-  </div><!-- /.header-title -->
-</div><!-- /.entry-header -->
-
-<div id="main" role="main">
-  {{ content }}
-</div><!-- /#main -->
+{{ content }}
 
 <div class="footer-wrapper">
   <footer role="contentinfo">
