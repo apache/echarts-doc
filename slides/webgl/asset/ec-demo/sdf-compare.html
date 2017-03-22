@@ -41,7 +41,7 @@
                     min: -1,
                     max: 1,
                     splitLine: {
-                        show: false
+                        show: true
                     },
                     axisLine: {
                         lineStyle: {
@@ -52,29 +52,29 @@
                 series: [{
                     type: 'scatterGL',
                     data: [[0, 0]],
-                    symbolSize: [200, 200],
+                    symbolSize: 120,
                     symbol: 'rect',
                     itemStyle: {
                         borderWidth: 2,
-                        borderColor: '#000'
+                        borderColor: '#fff'
                     }
                 }, {
                     type: 'scatterGL',
                     data: [[0.5, 0]],
-                    symbolSize: [240, 200],
+                    symbolSize: [120, 100],
                     symbol: ecIconPath,
                     itemStyle: {
                         borderWidth: 2,
-                        borderColor: '#000'
+                        borderColor: '#fff'
                     }
                 }, {
                     type: 'scatterGL',
                     data: [[-0.5, 0]],
-                    symbolSize: [200, 200],
+                    symbolSize: 120,
                     symbol: 'triangle',
                     itemStyle: {
                         borderWidth: 2,
-                        borderColor: '#000'
+                        borderColor: '#fff'
                     }
                 }, {
                     type: 'scatter',
@@ -86,7 +86,7 @@
                                 fill: '#fff',
                                 marginBias: 10
                             }, canvas);
-                            spriteUtil.createSDFFromCanvas(canvas, 40, RANGE, sdfCanvas);
+                            spriteUtil.createSDFFromCanvas(canvas, 32, RANGE, sdfCanvas);
                             return 'image://' + sdfCanvas.toDataURL();
                         })()
                     }, {
@@ -96,7 +96,7 @@
                                 fill: '#fff',
                                 marginBias: 10
                             }, canvas);
-                            spriteUtil.createSDFFromCanvas(canvas, 40, RANGE, sdfCanvas);
+                            spriteUtil.createSDFFromCanvas(canvas, 32, RANGE, sdfCanvas);
                             return 'image://' + sdfCanvas.toDataURL();
                         })()
                     }, {
@@ -106,37 +106,42 @@
                                 fill: '#fff',
                                 marginBias: 10
                             }, canvas);
-                            spriteUtil.createSDFFromCanvas(canvas, 40, RANGE, sdfCanvas);
+                            spriteUtil.createSDFFromCanvas(canvas, 32, RANGE, sdfCanvas);
                             return 'image://' + sdfCanvas.toDataURL();
                         })()
                     }]
                 }, {
                     type: 'scatter',
-                    symbolSize: 32,
                     data: [{
                         value: [-0.5, -0.5],
+                        symbolSize: 120,
                         symbol: (function () {
-                            spriteUtil.createSymbolSprite('triangle', 100, {
-                                fill: '#fff',
-                                marginBias: 10
+                            spriteUtil.createSymbolSprite('triangle', 32, {
+                                fill: '#61a0a8',
+                                stroke: '#fff',
+                                lineWidth: 1
                             }, canvas);
                             return 'image://' + canvas.toDataURL();
                         })()
                     }, {
                         value: [0, -0.5],
+                        symbolSize: 120,
                         symbol: (function () {
-                            spriteUtil.createSymbolSprite('rect', 100, {
-                                fill: '#fff',
-                                marginBias: 10
+                            spriteUtil.createSymbolSprite('rect', 32, {
+                                fill: '#c23531',
+                                stroke: '#fff',
+                                lineWidth: 1
                             }, canvas);
                             return 'image://' + canvas.toDataURL();
                         })()
                     }, {
                         value: [0.5, -0.5],
+                        symbolSize: [120, 100],
                         symbol: (function () {
-                            spriteUtil.createSymbolSprite(ecIconPath, 100, {
-                                fill: '#fff',
-                                marginBias: 10
+                            spriteUtil.createSymbolSprite(ecIconPath, 32, {
+                                fill: '#2f4554',
+                                stroke: '#fff',
+                                lineWidth: 1
                             }, canvas);
                             return 'image://' + canvas.toDataURL();
                         })()
