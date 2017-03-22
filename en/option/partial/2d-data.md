@@ -2,23 +2,23 @@
 
 Data label formatter, which supoports string template and callback function. In either form, `\n` is supported to represent a new line.
 
-- String template
+**String template**
 
-    Model variation includes `{a}`, `{b}`, `{c}`, representing series name, date name, data value respectively.
+Model variation includes `{a}`, `{b}`, `{c}`, representing series name, date name, data value respectively.
 
-    **example: **
-    ```js
-    formatter: '{b}: {c}'
-    ```
+**example: **
+```js
+formatter: '{b}: {c}'
+```
 
-- Callback function
+**Callback function**
 
-    Callback function is in form of:
-    ```js
-    (params: Object|Array) => string
-    ```
-    where `params` is the single dataset needed by formatter, which is formed as:
-    {{ use: partial-formatter-params-structure(extra = ${extra}) }}
+Callback function is in form of:
+```js
+(params: Object|Array) => string
+```
+where `params` is the single dataset needed by formatter, which is formed as:
+{{ use: partial-formatter-params-structure(extra = ${extra}) }}
 
 
 

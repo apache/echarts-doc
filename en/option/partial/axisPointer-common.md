@@ -5,7 +5,7 @@
 `axisPointer` is a tool for displaying reference line and axis value under mouse pointer.
 
 For example:
-~[600x400](${galleryViewPath}candlestick-brush&edit=1&reset=1)
+~[600x450](${galleryViewPath}candlestick-brush&edit=1&reset=1)
 
 In the demo above, [axisPointer.link](~axisPointer.link) is used to link axisPointer from different coordinate systems.
 
@@ -13,6 +13,12 @@ In the demo above, [axisPointer.link](~axisPointer.link) is used to link axisPoi
 `axisPointer` can also be used on touch device, where user can drag the button to move the reference line and label.
 
 ~[600x400](${galleryViewPath}line-tooltip-touch&edit=1&reset=1)
+
+In the cases that more than one axis exist, axisPointer helps to look inside the data.
+
+~[600x300](${galleryViewPath}multiple-y-axis&edit=1&reset=1)
+~[600x300](${galleryViewPath}multiple-x-axis&edit=1&reset=1)
+
 
 ---
 
@@ -107,6 +113,8 @@ Options:
 
 Whether snap to point automatically. The default value is auto determined.
 
+This feature usually makes sense in value axis and time axis, where tiny points can be seeked automatically.
+
 #${prefix} z(number)
 
 z value, which controls order of drawing graphical components. Components with smaller `z` values may be overwritten by those with larger `z` values.
@@ -133,13 +141,15 @@ If set as `function`:
 
 **Parameters:**
 
-{Object} params: Including fields as follows:
+`{Object}` params: Including fields as follows:
 
-{Object} params.value: current value of this axis. If `axis.type` is `'category'`, it is one of the value in `axis.data`. If `axis.type` is `'time'`, it is a timestamp.
+`{Object}` params.value: current value of this axis. If `axis.type` is `'category'`, it is one of the value in `axis.data`. If `axis.type` is `'time'`, it is a timestamp.
 
-{Array.<Object>} params.seriesData: An array, containing info of nearest points. Each item is:
+`{Array.<Object>}` params.seriesData: An array, containing info of nearest points. Each item is:
 
 {{ use: partial-formatter-params-structure }}
+
+{{ use: partial-formatter-params-axisPointer }}
 
 **Return:**
 
@@ -201,3 +211,29 @@ It is valid when [axisPointer.type](~tooltip.axisPointer.type) is `'line'`.
 It is valid when [axisPointer.type](~tooltip.axisPointer.type) is `'shadow'`.
 
 {{ use: partial-area-style(prefix="#" + ${prefix}, defaultColor="'rgba(150,150,150,0.3)") }}
+
+
+
+
+
+
+
+
+
+
+
+{{ target: partial-formatter-params-axisPointer }}
+
+Each item also includes axis infomation:
+
+```js
+{
+    axisDim: 'x', // 'x', 'y', 'angle', 'radius', 'single'
+    axisId: 'xxx',
+    axisName: 'xxx',
+    axisIndex: 3,
+    axisValue: 121, // The current value of axisPointer
+    axisValueLabel: 'text of value'
+}
+```
+

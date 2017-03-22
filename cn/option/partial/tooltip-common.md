@@ -263,59 +263,63 @@
 
 提示框浮层内容格式器，支持字符串模板和回调函数两种形式。
 
-1. 字符串模板。
+**1, 字符串模板**
 
-    模板变量有 `{a}`, `{b}`，`{c}`，`{d}`，`{e}`，分别表示系列名，数据名，数据值等。
-    在 [trigger](~tooltip.trigger) 为 `'axis'` 的时候，会有多个系列的数据，此时可以通过 `{a0}`, `{a1}`, `{a2}` 这种后面加索引的方式表示系列的索引。
-    不同图表类型下的 `{a}`，`{b}`，`{c}`，`{d}` 含义不一样。
-    其中变量`{a}`, `{b}`, `{c}`, `{d}`在不同图表类型下代表数据含义为：
+模板变量有 `{a}`, `{b}`，`{c}`，`{d}`，`{e}`，分别表示系列名，数据名，数据值等。
+在 [trigger](~tooltip.trigger) 为 `'axis'` 的时候，会有多个系列的数据，此时可以通过 `{a0}`, `{a1}`, `{a2}` 这种后面加索引的方式表示系列的索引。
+不同图表类型下的 `{a}`，`{b}`，`{c}`，`{d}` 含义不一样。
+其中变量`{a}`, `{b}`, `{c}`, `{d}`在不同图表类型下代表数据含义为：
 
-    + 折线（区域）图、柱状（条形）图、K线图 : `{a}`（系列名称），`{b}`（类目值），`{c}`（数值）, `{d}`（无）
++ 折线（区域）图、柱状（条形）图、K线图 : `{a}`（系列名称），`{b}`（类目值），`{c}`（数值）, `{d}`（无）
 
-    + 散点图（气泡）图 : `{a}`（系列名称），`{b}`（数据名称），`{c}`（数值数组）, `{d}`（无）
++ 散点图（气泡）图 : `{a}`（系列名称），`{b}`（数据名称），`{c}`（数值数组）, `{d}`（无）
 
-    + 地图 : `{a}`（系列名称），`{b}`（区域名称），`{c}`（合并数值）, `{d}`（无）
++ 地图 : `{a}`（系列名称），`{b}`（区域名称），`{c}`（合并数值）, `{d}`（无）
 
-    + 饼图、仪表盘、漏斗图: `{a}`（系列名称），`{b}`（数据项名称），`{c}`（数值）, `{d}`（百分比）
++ 饼图、仪表盘、漏斗图: `{a}`（系列名称），`{b}`（数据项名称），`{c}`（数值）, `{d}`（百分比）
 
-    更多其它图表模板变量的含义可以见相应的图表的 label.normal.formatter 配置项。
+更多其它图表模板变量的含义可以见相应的图表的 label.normal.formatter 配置项。
 
-    **示例：**
-    ```js
-    formatter: '{b0}: {c0}<br />{b1}: {c1}'
-    ```
+**示例：**
+```js
+formatter: '{b0}: {c0}<br />{b1}: {c1}'
+```
 
-2. 回调函数。
 
-    回调函数格式：
+**2, 回调函数**
 
-    ```js
-    (params: Object|Array, ticket: string, callback: (ticket: string, html: string)) => string
-    ```
+回调函数格式：
 
-    第一个参数 `params` 是 formatter 需要的数据集。格式如下：
-    {{ use: partial-formatter-params-structure(extra = {
-        percent: {
-            desc: '饼图的百分比',
-            type: 'number'
-        }
-    }) }}
-    在 [trigger](~tooltip.trigger) 为 `'axis'` 的时候，或者 tooltip 被 [axisPointer](~xAxis.axisPointer) 触发的时候，`params` 是多个系列的数据数组。
+```js
+(params: Object|Array, ticket: string, callback: (ticket: string, html: string)) => string
+```
 
-    **注：** ECharts 2.x 使用数组表示各参数的方式不再支持。
-
-    第二个参数 `ticket` 是异步回调标识，配合第三个参数 `callback` 使用。
-    第三个参数 `callback` 是异步回调，在提示框浮层内容是异步获取的时候，可以通过 callback 传入上述的 `ticket` 和 `html` 更新提示框浮层内容。
-
-    示例：
-    ```js
-    formatter: function (params, ticket, callback) {
-        $.get('detail?name=' + params.name, function (content) {
-            callback(ticket, toHTML(content));
-        });
-        return 'Loading';
+第一个参数 `params` 是 formatter 需要的数据集。格式如下：
+{{ use: partial-formatter-params-structure(extra = {
+    percent: {
+        desc: '饼图的百分比',
+        type: 'number'
     }
-    ```
+}) }}
+
+在 [trigger](~tooltip.trigger) 为 `'axis'` 的时候，或者 tooltip 被 [axisPointer](~xAxis.axisPointer) 触发的时候，`params` 是多个系列的数据数组。其中每项内容格式同上，并且，
+
+{{ use: partial-formatter-params-structure}}
+
+**注：** ECharts 2.x 使用数组表示各参数的方式不再支持。
+
+第二个参数 `ticket` 是异步回调标识，配合第三个参数 `callback` 使用。
+第三个参数 `callback` 是异步回调，在提示框浮层内容是异步获取的时候，可以通过 callback 传入上述的 `ticket` 和 `html` 更新提示框浮层内容。
+
+示例：
+```js
+formatter: function (params, ticket, callback) {
+    $.get('detail?name=' + params.name, function (content) {
+        callback(ticket, toHTML(content));
+    });
+    return 'Loading';
+}
+```
 
 #${prefix} backgroundColor(Color) = 'rgba(50,50,50,0.7)'
 

@@ -4,13 +4,19 @@
 
 如下例，鼠标悬浮到图上，可以出现标线和刻度文本。
 
-~[600x400](${galleryViewPath}candlestick-brush&edit=1&reset=1)
+~[600x450](${galleryViewPath}candlestick-brush&edit=1&reset=1)
 
 上例中，使用了 [axisPointer.link](~axisPointer.link) 来关联不同的坐标系中的 axisPointer。
 
 坐标轴指示器也有适合触屏的交互方式，如下：
 
 ~[600x400](${galleryViewPath}line-tooltip-touch&edit=1&reset=1)
+
+坐标轴指示器在多轴的场景能起到辅助作用：
+
+~[600x300](${galleryViewPath}multiple-y-axis&edit=1&reset=1)
+~[600x300](${galleryViewPath}multiple-x-axis&edit=1&reset=1)
+
 
 
 ---
@@ -104,6 +110,8 @@ axisPointer 的 label 默认不显示（也就是默认只显示指示线），�
 
 坐标轴指示器是否自动吸附到点上。默认自动判断。
 
+这个功能在数值轴和时间轴上比较有意义，可以自动寻找细小的数值点。
+
 #${prefix} z(number)
 
 坐标轴指示器的 z 值。控制图形的前后顺序。`z`值小的图形会被`z`值大的图形覆盖。
@@ -130,13 +138,16 @@ axisPointer 的 label 默认不显示（也就是默认只显示指示线），�
 
 **参数：**
 
-{Object} params: 含有：
+`{Object}` params: 含有：
 
-{Object} params.value: 轴当前值，如果 axis.type 为 'category' 时，其值为 axis.data 里的数值。如果 axis.type 为 `'time'`，其值为时间戳。
+`{Object}` params.value: 轴当前值，如果 axis.type 为 'category' 时，其值为 axis.data 里的数值。如果 axis.type 为 `'time'`，其值为时间戳。
 
-{Array.<Object>} params.seriesData: 一个数组，是当前 axisPointer 最近的点的信息，每项内容为
+`{Array.<Object>}` params.seriesData: 一个数组，是当前 axisPointer 最近的点的信息，每项内容为
 
 {{ use: partial-formatter-params-structure }}
+
+{{ use: partial-formatter-params-axisPointer }}
+
 
 **返回值：**
 
@@ -196,3 +207,25 @@ label 距离轴的距离。
 [axisPointer.type](~tooltip.axisPointer.type) 为 `'shadow'` 时有效。
 
 {{ use: partial-area-style(prefix="#" + ${prefix}, defaultColor="'rgba(150,150,150,0.3)") }}
+
+
+
+
+
+
+
+
+{{ target: partial-formatter-params-axisPointer }}
+
+每项内容还包括轴的信息：
+
+```js
+{
+    axisDim: 'x', // 'x', 'y', 'angle', 'radius', 'single'
+    axisId: 'xxx',
+    axisName: 'xxx',
+    axisIndex: 3,
+    axisValue: 121, // 当前 axisPointer 对应的 value。
+    axisValueLabel: '文本'
+}
+```

@@ -251,57 +251,63 @@ Options:
 
 The content formatter of tooltip's floating layer which supports string template and callback function.
 
-1. String template
+**1. String template**
 
-    The template variables are `{a}`, `{b}`, `{c}`, `{d}` and `{e}`, which stands for series name, data name and data value and ect. When [trigger](~tooltip.trigger) is set to be `'axis'`, there may be data from multiple series. In this time, series index can be refered as `{a0}`, `{a1}`, or `{a2}`.
+The template variables are `{a}`, `{b}`, `{c}`, `{d}` and `{e}`, which stands for series name, data name and data value and ect. When [trigger](~tooltip.trigger) is set to be `'axis'`, there may be data from multiple series. In this time, series index can be refered as `{a0}`, `{a1}`, or `{a2}`.
 
-    `{a}`, `{b}`, `{c}`, `{d}` have different meanings for different series types:
+`{a}`, `{b}`, `{c}`, `{d}` have different meanings for different series types:
 
-    + Line (area) charts, bar (column) charts, K charts: `{a}` for series name, `{b}` for category name, `{c}` for data value, `{d}` for none;
++ Line (area) charts, bar (column) charts, K charts: `{a}` for series name, `{b}` for category name, `{c}` for data value, `{d}` for none;
 
-    + Scatter (bubble) charts: `{a}` for series name, `{b}` for data name, `{c}` for data value, `{d}` for none;
++ Scatter (bubble) charts: `{a}` for series name, `{b}` for data name, `{c}` for data value, `{d}` for none;
 
-    + Map: `{a}` for series name, `{b}` for area name, `{c}` for merging data, `{d}` for none;
++ Map: `{a}` for series name, `{b}` for area name, `{c}` for merging data, `{d}` for none;
 
-    + Pie charts, gauge charts, funnel charts: `{a}` for series name, `{b}` for data item name, `{c}` for data value, `{d}` for percentage.
++ Pie charts, gauge charts, funnel charts: `{a}` for series name, `{b}` for data item name, `{c}` for data value, `{d}` for percentage.
 
-    **Example: **
-    ```js
-    formatter: '{b0}: {c0}<br />{b1}: {c1}'
-    ```
+**Example: **
+```js
+formatter: '{b0}: {c0}<br />{b1}: {c1}'
+```
 
-2. callback function
 
-    The format of callback function:
+**2. Callback function**
 
-    ```js
-    (params: Object|Array, ticket: string, callback: (ticket: string, html: string)) => string
-    ```
+The format of callback function:
 
-    The first parameter `params` is the data that the formatter needs. Its format is shown as follows:
-    {{ use: partial-formatter-params-structure(extra = {
-        percent: {
-            desc: 'the percentage of pie chart',
-            type: 'number'
-        }
-    }) }}
-    When [trigger](~tooltip.trigger) is `'axis'`, or when tooltip is triggered by [axisPointer](~xAxis.axisPointer), `params` is the data array of multiple series.
+```js
+(params: Object|Array, ticket: string, callback: (ticket: string, html: string)) => string
+```
 
-    **Note: **Using array to present all the parameters in ECharts 2.x is not supported anymore.
-
-    The second parameter `ticket` is the asynchronous callback flag which should be used along with the third parameter `callback` when it is used.
-
-    The third parameter `callback` is asynchronous callback. When the content of tooltip is acquired asynchronously, `ticket` and `htm` as introduced above can be used to update tooltip with callback.
-
-    Example:
-    ```js
-    formatter: function (params, ticket, callback) {
-        $.get('detail?name=' + params.name, function (content) {
-            callback(ticket, toHTML(content));
-        });
-        return 'Loading';
+The first parameter `params` is the data that the formatter needs. Its format is shown as follows:
+{{ use: partial-formatter-params-structure(extra = {
+    percent: {
+        desc: 'the percentage of pie chart',
+        type: 'number'
     }
-    ```
+}) }}
+
+When [trigger](~tooltip.trigger) is `'axis'`, or when tooltip is triggered by [axisPointer](~xAxis.axisPointer), `params` is the data array of multiple series. The content of each item of the array is the same as above. Besides,
+
+{{ use: partial-formatter-params-structure}}
+
+**Note: **Using array to present all the parameters in ECharts 2.x is not supported anymore.
+
+The second parameter `ticket` is the asynchronous callback flag which should be used along with the third parameter `callback` when it is used.
+
+The third parameter `callback` is asynchronous callback. When the content of tooltip is acquired asynchronously, `ticket` and `htm` as introduced above can be used to update tooltip with callback.
+
+Example:
+```js
+formatter: function (params, ticket, callback) {
+    $.get('detail?name=' + params.name, function (content) {
+        callback(ticket, toHTML(content));
+    });
+    return 'Loading';
+}
+```
+
+
 
 #${prefix} backgroundColor(Color) = 'rgba(50,50,50,0.7)'
 
