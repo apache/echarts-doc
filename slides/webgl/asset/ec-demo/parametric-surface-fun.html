@@ -392,9 +392,7 @@ return v / 2 * sin(u / 2);
                 });
             }
 
-            window.addEventListener('resize', function () {
-                chart.resize();
-            });
+            window.onresize = chart.resize;
 
             function getFunctionBody(func) {
                 var str = func.toString();

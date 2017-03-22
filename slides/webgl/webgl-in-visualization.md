@@ -174,6 +174,8 @@ Note:
 
 ---
 
+<!--.slide: data-background="./asset/img/scatter3d.jpg" data-background-opacity="0.3"  -->
+
 ## 点
 
 + 三维空间的位置
@@ -200,7 +202,9 @@ gl.drawArrays(gl.POINTS, 0, 100);
 
 #### Vertex
 ```glsl
-gl_PointSize = 5;
+attribute float size;
+
+gl_PointSize = size;
 ```
 
 #### Fragment
@@ -229,6 +233,15 @@ Note:
 使用 gl_PointSize 扩展后的点都是方块，如果我们需要自定义的形状，例如常见的圆形，三角形，就需要 Canvas 来帮忙了，我们可以预先把这个形状绘制在一个 Canvas 上，然后用这个 Canvas 作为点的纹理。
 
 而且 WebGL（OpenGL）非常贴心的提供了一个 gl_PointCoord 的内置变量。
+
+----
+
+<iframe src="asset/ec-demo/scatter3D-simplex.html" class="fullscreen" frameborder="0"></iframe>
+
+Note:
+基本上这样就能画出刚才背景图那个散点图了。
+
+这是三维的 simplex noise。
 
 ----
 
@@ -389,9 +402,9 @@ Miter Limit ?
 
 ## 面
 
-+ 三角面 <!-- .element: class="fragment" -->
++ 三角面 <!-- .element: class="fragment highlight-current-blue" -->
 
-+ 程序生成 <!-- .element: class="fragment" -->
++ 程序生成 <!-- .element: class="fragment highlight-current-blue" -->
 
 Note:
 刚演示了单个的顶点，两个顶点组成的线段，而三个顶点组成的三角面是面绘制的基础，它也是游戏中几乎所有的三维场景绘制的基础。
@@ -404,11 +417,11 @@ Note:
 
 ## 曲面图
 
-+ 连接邻接的四个顶点作为一个四边面
++ 连接邻接的四个顶点作为一个四边面 <!-- .element: class="fragment highlight-current-blue" -->
 
-+ 分配重心坐标用于画网格
++ 分配重心坐标用于画网格 <!-- .element: class="fragment highlight-current-blue" -->
 
-+ 对角线将四边面分解为两个三角面
++ 对角线将四边面分解为两个三角面 <!-- .element: class="fragment highlight-current-blue" -->
 
 Note:
 TODO 示意图
