@@ -115,11 +115,11 @@ Note:
 
 ---
 
-## Agenda
+## 大纲
 
 + 三维空间中点线面的绘制
 
-+ 可视化，艺术化
++ 如何在前端实现高品质的渲染
 
 + 利用 WebGL 加速力引导布局
 
@@ -301,12 +301,14 @@ SDF 相比于普通的纹理图片来说有一些比较显著的优势。
 
 ----
 
-
+<iframe src="asset/ec-demo/sdf-compare.html" class="fullscreen" frameborder="0"></iframe>
 
 Note:
-最左边这张是原始的贴图，中间这张是生成的 SDF，右边这张是绘制的结果。
 
-可以看到，在分辨率比较低的图中我们也能生成
+上面这一层就是我们生成的距离场图了，32x32 的大小，中间是根据距离场在 shader 中绘制出来的结果，可以看到就算放大了几倍也很清晰，最下面这种作为对比就是把一张同样大小的纹理贴图直接放大的结果，
+
+TODO:
+外发光
 
 ---
 
@@ -331,7 +333,7 @@ gl.drawArrays(gl.LINES, 0, 100);
 + gl.LINE_LOOP
 
 Note:
-跟刚才画点一样，WebGL 本身也支持画线的模式，而且还支持多中画线的配置。看起来很美好，实际上老版本的 echarts-x 就是这么画飞线的。
+跟刚才画点一样，WebGL 本身也支持画线的模式，而且还支持多中画线的配置。看起来很美好。实际上老版本的 echarts-x 就是这么画飞线的。
 
 ----
 
@@ -349,11 +351,13 @@ Note:
 
 Note:
 
-windows 下因为 ANGLE 的原因最大线宽只有 1
+windows 下因为 ANGLE 的原因最大线宽只有 1。
 
 ----
 
 ## 三角化线段
+
+<iframe src="asset/ec-demo/line3D-wireframe.html" style="width:100%;height:500px;" frameborder="0"></iframe>
 
 Note:
 虽然说抛弃自带的画线接口很可惜，但是没办法，我们只能重新实现一遍线段的绘制。
@@ -401,7 +405,9 @@ Note:
 ## 曲面图
 
 + 连接邻接的四个顶点作为一个四边面
+
 + 分配重心坐标用于画网格
+
 + 对角线将四边面分解为两个三角面
 
 Note:
@@ -428,25 +434,39 @@ Note:
 
 ----
 
-## 更有意思的参数曲面
+## 几个更有意思的参数曲面
 
 Note:
-这里是几个更有意思的参数方程的曲面。
+我们再看几个更有意思的参数方程的曲面。
+
+----
+
+<iframe src="asset/ec-demo/parametric-surface-fun.html" class="fullscreen" frameborder="0"></iframe>
 
 ----
 
 ## Geo3D
 
-+ Triangulation <!-- .element: class="fragment" -->
++ 将 GeoJSON 转成 Mesh <!-- .element: class="fragment highlight-current-blue" -->
 
-+ Extrude <!-- .element: class="fragment" -->
++ Triangulation <!-- .element: class="fragment highlight-current-blue" -->
+
++ Extrude <!-- .element: class="fragment highlight-current-blue" -->
 
 ----
 
-## Ear Clipping
+<iframe src="asset/ec-demo/map-wireframe.html" class="fullscreen" frameborder="0"></iframe>
+
+----
+
+## Triangulation - Ear Clipping
+
++ 实现简单 <!-- .element: class="fragment highlight-current-blue" -->
+
++ 可以利用空间哈希优化 <!-- .element: class="fragment highlight-current-blue" -->
 
 Note:
-空间的哈希优化
+正常情况下是 O(n2) 的开销，但是可以利用 zorder 等空间哈希来进行优化
 
 ----
 
@@ -457,14 +477,16 @@ Note:
 + 尽量少分配临时数组
 
 Note:
-上面生成 mesh 都要操作几万，几十万，甚至上百万的数据和顶点，所以在性能上一定要小心，特别是在内存上，比如分配数组尽量使用 TypedArray，计算过程中尽量少分配临时数组等等，尽管 JS 的数组操作很快，但是分配了很大的数组后会占用很多堆内存，容易频繁的 GC 导致开销都在这上面。
+上面关于线和面的部分都需要程序生成 mesh， 每次都要操作几万，几十万，甚至上百万的数据和顶点，所以在性能上一定要小心
+
+特别是在内存上，比如分配数组尽量使用 TypedArray，计算过程中尽量少分配临时数组等等，尽管 JS 的数组操作很快，但是分配了很大的数组后会占用很多堆内存，容易频繁的 GC 导致开销都在这上面。
 
 TODO bench case
 
 
 ---
 
-## 可视化的艺术化
+## 高品质的渲染
 
 ----
 
@@ -477,36 +499,8 @@ Note:
 
 ----
 
-+ 半透明
-
-+ 高品质的真实感渲染
-
-+ 粒子特效
-
 Note:
-
-
----
-
-## 半透明
-
-----
-
-## 对大量三角面排序
-
-+ 从远到近绘制
-
-+ 快速排序
-
-+ 大于 2w 的三角面分多帧排序
-
-Note:
-半透明的三角面需要从远到近绘制才能保证混合正确。
-
----
-
-## 真实感渲染
-
+为了让高品质这个词更有说服力，我先放张 echarts-gl 渲染的效果图吧，
 
 ----
 
@@ -522,7 +516,7 @@ Note:
 
 ----
 
-## Temporal SSAO
+## SSAO
 
 Note:
 环境光遮蔽是计算一个点上面能够受到多少环境光，被其它物体包围得越多的地方就会越暗。它作为阴影的补充可以让整个画面更有层次感。防止出现之前说的暗的地方不够暗的情况。
@@ -530,7 +524,32 @@ Note:
 
 ----
 
-## Post Effects
+## 景深
+
+----
+
+## ACES Tone Mapping
+
+----
+
+
+## 渐进式增强
+
++ 将采样分布到多帧中 <!-- .element: class="fragment highlight-current-blue" -->
+
++ 交互的时候能够立刻反馈 <!-- .element: class="fragment highlight-current-blue" -->
+
++ 停止交互后渐进增强画面 <!-- .element: class="fragment highlight-current-blue" -->
+
+Note:
+刚讲了这么一堆 bling bling 的特效，实际上许多机器，比如我现在这台机器，如果把这些特效都设得很高，基本上是不能流畅运行的，特别是像 SSAO，景深这些效果需要对原图做大量的采样，如果采样少了效果就不好，如果采样多了就很卡。
+
+那怎么办？我们就把采样分布到多帧中，比如原来 SSAO 要采样 60 次才会有比较好的效果，那么我们
+
+----
+
+Note:
+实际上我们对于半透明图形中三角面的排序也是这么做的，因为 WebGL 在绘制透明的物体时需要保证三角面是从远往近绘制的才能混合正确，所以我们需要每一帧都对三角面做排序，但是像这个参数曲面中有 40w 的面，排序依次要几百 ms，能够做到实时是不可能，所以我们快排放到多帧里执行了，选择快排的原因也是因为它能够做到第一帧就把小的那一批都放前面，大的那一批都放后面。
 
 ----
 
@@ -551,27 +570,22 @@ Note:
 
 ---
 
-## 粒子效果
+## GPU 的通用计算
 
----
-
-## 二维图表的加速
-
-+ 地理上的点数据和线数据
-
-+ GPGPU 加速力引导布局
+WebGL 中实现力引导布局
 
 Note:
-点数据和线数据的渲染前面已经提了挺多的了，接下来主要讲我们使用 GPGPU 加速力引导布局的一个尝试
 
-GPGPU 是利用 WebGL 做通用计算，比如做一些物理上的布料运算，计算 FFT 啊等等
+TODO 加入视频
 
 ----
 
 ## 力引导布局介绍
 
 + 用于关系图
+
 + 节点与节点之间模拟斥力，边模拟弹簧的引力
+
 + 每次迭代 O(n2), 需要上百次迭代才能结束
 
 Note:
@@ -605,10 +619,11 @@ TODO WebWorker + Barnes Hut Simulation
 
 ----
 
-## GPGPU 加速
+## WebGL 中实现力引导布局
 
 Note:
-
+TODO
+架构图
 
 ---
 
