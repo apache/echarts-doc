@@ -1,39 +1,52 @@
 ---
 layout: post-index
 comments: false
-image:
-  feature: happy-new-year.png
 ---
 
-{% for post in paginator.posts %}
-{% unless post.category == 'en' %}
-<article class="hentry">
-  <header>
-    {% if post.image.feature %}
-      <div class="entry-image-index">
-        <a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}"><img src="{{ site.url }}/images/{{ post.image.feature }}" alt="{{ post.title }}"></a>
-      </div><!-- /.entry-image -->
-    {% endif %}
-    <div class="entry-meta">
-      <span class="entry-date date published updated"><time datetime="{{ post.date | date_to_xmlschema }}"><a href="{{ site.url }}{{ post.url }}">{{ post.date | date: "%Y-%m-%d" }}</a></time></span><span class="author vcard"><span class="fn"><a href="{{ site.url }}/about/" title="About {{ site.owner.name }}">{{ site.owner.name }}</a></span></span>
-      {% if site.reading_time %}
-      <span class="entry-reading-time">
-        <i class="fa fa-clock-o"></i>
-        {% include read-time-index.html %}
-      </span><!-- /.entry-reading-time -->
+<div class="container">
+  {% for post in paginator.posts %}
+  {% unless post.category == 'en' %}
+  <div class="index-post">
+    <div class="row">
+      {% if post.image.feature %}
+
+      <div class="col-md-8 col-sm-7">
+        <h2>
+          <a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>
+        </h2>
+        <p>
+          {{ post.excerpt | markdownify }}
+        </p>
+        <div class="tag-panel">
+          {% for tag in post.tags %}
+          <a href="{{ site.url }}/tags/#{{ tag }}" title="Pages tagged {{ tag }}" class="tag">
+            <span class="term">{{ tag }}</span>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-5">
+        <a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">
+          <img src="{{ site.url }}/images/{{ post.image.feature }}" alt="{{ post.title }}">
+        </a>
+      </div>
+
+      {% else %}
+
+      <div class="col-md-8 col-md-offset-2">
+        <h2>
+          <a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>
+        </h2>
+        <p>
+          {{ post.description | markdownify }}
+        </p>
+      </div>
+
       {% endif %}
-    </div><!-- /.entry-meta -->
-    {% if post.link %}
-      <h1 class="entry-title"><a href="{{ site.url }}{{ post.url }}" class="permalink" rel="bookmark" title="{{ post.title }}"><i class="fa fa-bookmark"></i></a> <a href="{{ post.link }}">{{ post.title }}</a></h1>
-    {% else %}
-      <h1 class="entry-title"><a href="{{ site.url }}{{ post.url }}" rel="bookmark" title="{{ post.title }}" itemprop="url">{{ post.title }}</a></h1>
-    {% endif %}
-  </header>
-  <div class="entry-content">
-    {{ post.content }}
-  </div><!-- /.entry-content -->
-</article><!-- /.hentry -->
-{% endunless %}
-{% endfor %}
+    </div>
+  </div>
+  {% endunless %}
+  {% endfor %}
+</div>
 
 {% include pagination.html %}

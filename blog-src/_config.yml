@@ -44,9 +44,6 @@ gems:
   - jekyll-paginate
   - jekyll-gist
   - jekyll-feed
-sass:
-  sass_dir: _sass
-  style: compressed
 
 # https://github.com/mojombo/jekyll/wiki/Permalinks
 permalink: /:year/:month/:day/:title.html
@@ -55,7 +52,7 @@ categories:
   - en
 
 # Amount of post to show on home page
-paginate: 5
+paginate: 20
 
 kramdown:
   input: GFM
