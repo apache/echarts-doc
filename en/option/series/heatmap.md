@@ -82,3 +82,8 @@ Style of a single data point. It is valid with [coordinateSystem](~series-heatma
 {{ use:partial-silent(
     prefix="#"
 ) }}
+
+
+{{use: partial-tooltip-in-series(
+    galleryViewPath=${galleryViewPath}
+)}}

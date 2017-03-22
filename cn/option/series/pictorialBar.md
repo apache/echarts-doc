@@ -138,6 +138,11 @@
     prefix="####"
 )}}
 
+{{use: partial-tooltip-in-series-data(
+    galleryViewPath=${galleryViewPath}
+)}}
+
+
 {{use: partial-marker(
     prefix="#",
     seriesType="pictorialBar",
@@ -165,6 +170,9 @@
     galleryViewPath=${galleryViewPath}
 )}}
 
+{{use: partial-tooltip-in-series(
+    galleryViewPath=${galleryViewPath}
+)}}
 
 
 

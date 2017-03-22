@@ -87,6 +87,9 @@
 高亮状态下的标签文本样式。
 {{ use: partial-text-style(prefix='#####') }}
 
+{{use: partial-tooltip-in-series-data(
+    galleryViewPath=${galleryViewPath}
+)}}
 
 {{use: partial-marker(
     prefix="#",
@@ -98,3 +101,7 @@
 {{ use:partial-silent(
     prefix="#"
 ) }}
+
+{{use: partial-tooltip-in-series(
+    galleryViewPath=${galleryViewPath}
+)}}

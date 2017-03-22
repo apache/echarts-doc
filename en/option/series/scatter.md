@@ -106,6 +106,11 @@ the style setting about single data point(bubble).
 #### emphasis(Object)
 {{use:partial-item-style(prefix="####")}}
 
+{{use: partial-tooltip-in-series-data(
+    galleryViewPath=${galleryViewPath}
+)}}
+
+
 {{use: partial-marker(
     prefix="#",
     galleryEditorPath=${galleryEditorPath},
@@ -128,3 +133,7 @@ the style setting about single data point(bubble).
     galleryEditorPath=${galleryEditorPath}
 )}}
 
+
+{{use: partial-tooltip-in-series(
+    galleryViewPath=${galleryViewPath}
+)}}

@@ -114,6 +114,9 @@ Value of data item.
 
 {{use:partial-candlestick-item-style(prefix="##")}}
 
+{{use: partial-tooltip-in-series-data(
+    galleryViewPath=${galleryViewPath}
+)}}
 
 
 {{use: partial-marker(
@@ -144,6 +147,10 @@ Value of data item.
     galleryEditorPath=${galleryEditorPath}
 )}}
 
+
+{{use: partial-tooltip-in-series(
+    galleryViewPath=${galleryViewPath}
+)}}
 
 
 

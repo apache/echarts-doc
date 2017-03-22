@@ -111,6 +111,10 @@ The label configuration of a single data item.
 #### emphasis(Object)
 {{use:partial-item-style(prefix="####")}}
 
+{{use: partial-tooltip-in-series-data(
+    galleryViewPath=${galleryViewPath}
+)}}
+
 {{use: partial-marker(
     prefix="#",
     galleryEditorPath=${galleryEditorPath},
@@ -119,6 +123,10 @@ The label configuration of a single data item.
 
 {{use:partial-animation(prefix="#")}}
 
+
+{{use: partial-tooltip-in-series(
+    galleryViewPath=${galleryViewPath}
+)}}
 
 
 

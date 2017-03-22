@@ -227,6 +227,11 @@ The label style of this node.
     prefix="####"
 ) }}
 
+{{use: partial-tooltip-in-series-data(
+    galleryViewPath=${galleryViewPath}
+)}}
+
+
 ## nodes(Array)
 Alias of [data](~series-graph.data)
 
@@ -284,6 +289,14 @@ Alias of [links](~series-graph.links)
     prefix="#",
     galleryEditorPath=${galleryEditorPath}
 ) }}
+
+
+{{use: partial-tooltip-in-series(
+    galleryViewPath=${galleryViewPath}
+)}}
+
+
+
 
 
 {{ target: graph-edge-label }}

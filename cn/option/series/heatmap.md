@@ -79,3 +79,7 @@
 {{ use:partial-silent(
     prefix="#"
 ) }}
+
+{{use: partial-tooltip-in-series(
+    galleryViewPath=${galleryViewPath}
+)}}

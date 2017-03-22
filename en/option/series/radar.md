@@ -129,6 +129,10 @@ Area filling style of a single item.
 #### emphasis(Object)
 {{use: partial-area-style(prefix="####")}}
 
+{{use: partial-tooltip-in-series-data(
+    galleryViewPath=${galleryViewPath}
+)}}
+
 
 {{use:partial-z-zlevel(
     prefix="#",
@@ -142,4 +146,9 @@ Area filling style of a single item.
 {{use: partial-animation(
     prefix="#",
     galleryEditorPath=${galleryEditorPath}
+)}}
+
+
+{{use: partial-tooltip-in-series(
+    galleryViewPath=${galleryViewPath}
 )}}

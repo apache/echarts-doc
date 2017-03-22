@@ -90,21 +90,6 @@
 )}}
 
 
-## legend(Object)
-主题河流中图例的样式。
-{{use: componet-legend(prefix="##")}}
-
-## tooltip(Object)
-主题河流中tooltip的样式。
-{{use: component-tooltip(
-    prefix="##",
-    defaultShow=true,
-    defaultTrigger="'axis'",
-    galleryViewPath=${galleryViewPath}
-)}}
-
-
-
 ## data(Array)
 {{ use: partial-2d-data-desc() }}
 ### date(string)
@@ -134,3 +119,7 @@ data: [
 
 如上所示，主题河流的数据格式是二维数组的形式，里层数组的每一项由事件或主题的时间属性、事件或主题在某个时间点的值，以及事件或主题的名称组成。值得注意的是，一定要提供一个具有完整时间段的事件或主题作为主干河流，其他事件或主题以该主干河流为依据，将缺省的时间点上的值补为0，也就是说其他事件或主题的时间段是包含在主干河流内的，如果超出，布局会出错，这么做的原因是，在计算整个图的布局的时候要计算一条baseline，以便将每个事情画成流带状。如上图中的"SS"这一事件就是一个主干河流，经过处理，我们会将"DQ"中缺省的三个时间点以["2015/11/08",0,"DQ"]，["2015/11/12",0,"DQ"]，［"2015/11/13",0,"DQ"］的格式补齐，使其与主干河流对其。从中还可以看出，我们可以在完整时间段的任意位置缺省。
 
+
+{{use: partial-tooltip-in-series(
+    galleryViewPath=${galleryViewPath}
+)}}

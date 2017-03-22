@@ -140,6 +140,10 @@ The style setting of the text label in a single bar.
     prefix="####"
 )}}
 
+{{use: partial-tooltip-in-series-data(
+    galleryViewPath=${galleryViewPath}
+)}}
+
 {{use: partial-marker(
     prefix="#",
     galleryEditorPath=${galleryEditorPath},
@@ -164,6 +168,10 @@ The style setting of the text label in a single bar.
     galleryViewPath=${galleryViewPath}
 )}}
 
+
+{{use: partial-tooltip-in-series(
+    galleryViewPath=${galleryViewPath}
+)}}
 
 
 

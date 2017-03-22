@@ -26,9 +26,10 @@ node build.js (github)
 node server.js
 ```
 
+Dev:
 ```shell
-node watch.js
-#node watch.js github
+node watch.js dev
+# should put <https://github.com/ecomfe/echarts-examples> on the same folder with echarts-doc
 ```
 
 ## Build Dash Docset

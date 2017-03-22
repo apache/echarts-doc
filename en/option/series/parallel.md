@@ -71,6 +71,9 @@ The value of a data item.
 )}}
 
 
+{{use: partial-tooltip-in-series(
+    galleryViewPath=${galleryViewPath}
+)}}
 
 
 

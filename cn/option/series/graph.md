@@ -225,6 +225,11 @@ edgeSymbol: ['circle', 'arrow']
     prefix="####"
 ) }}
 
+{{use: partial-tooltip-in-series-data(
+    galleryViewPath=${galleryViewPath}
+)}}
+
+
 ## nodes(Array)
 别名，同 [data](~series-graph.data)
 
@@ -301,6 +306,10 @@ links: [{
     prefix="#",
     galleryEditorPath=${galleryEditorPath}
 ) }}
+
+{{use: partial-tooltip-in-series(
+    galleryViewPath=${galleryViewPath}
+)}}
 
 
 {{ target: graph-edge-label }}

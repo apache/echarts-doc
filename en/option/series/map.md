@@ -65,4 +65,11 @@ The name of the map area where the data belongs to, such as `'China'` or `'Unite
 ### value(number)
 The numerical value of this area.
 
+{{use: partial-tooltip-in-series-data(
+    galleryViewPath=${galleryViewPath}
+)}}
 
+
+{{use: partial-tooltip-in-series(
+    galleryViewPath=${galleryViewPath}
+)}}

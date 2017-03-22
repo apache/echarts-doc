@@ -387,6 +387,9 @@ The same meaning as `target` in `html` `<a>` label, See [series-treemap.data.lin
 
 child nodes, recursive definition, configurations are the same as [series-treemap.data](~series-treemap.data).
 
+{{use: partial-tooltip-in-series-data(
+    galleryViewPath=${galleryViewPath}
+)}}
 
 
 {{use: partial-animation-init(
@@ -396,6 +399,10 @@ child nodes, recursive definition, configurations are the same as [series-treema
     galleryEditorPath=${galleryEditorPath}
 )}}
 
+
+{{use: partial-tooltip-in-series(
+    galleryViewPath=${galleryViewPath}
+)}}
 
 
 
@@ -545,7 +552,7 @@ This can hide the details of nodes when the rectangular area is not large enough
 )}}
 
 {{ use:partial-silent(
-    prefix="#"
+    prefix="##"
 ) }}
 
 

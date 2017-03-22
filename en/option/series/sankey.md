@@ -119,6 +119,11 @@ The lable style of this node.
     prefix="####"
 ) }}
 
+{{use: partial-tooltip-in-series-data(
+    galleryViewPath=${galleryViewPath}
+)}}
+
+
 ## nodes(Array)
 Equals to [data](~series-sankey.data)
 
@@ -163,6 +168,13 @@ Equals to [links](~series-sankey.links)
     defaultAnimationDuration=1000,
     galleryEditorPath=${galleryEditorPath}
 )}}
+
+
+{{use: partial-tooltip-in-series(
+    galleryViewPath=${galleryViewPath}
+)}}
+
+
 
 
 {{target: partial-sankey-line-style}}

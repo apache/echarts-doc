@@ -126,6 +126,10 @@ The label configuration of a single sector.
 #### emphasis(Object)
 {{use:partial-item-style(prefix="####")}}
 
+{{use: partial-tooltip-in-series-data(
+    galleryViewPath=${galleryViewPath}
+)}}
+
 {{use: partial-marker(
     prefix="#",
     galleryEditorPath=${galleryEditorPath},
@@ -146,6 +150,10 @@ Initial animation type.
     galleryEditorPath=${galleryEditorPath}
 )}}
 
+
+{{use: partial-tooltip-in-series(
+    galleryViewPath=${galleryViewPath}
+)}}
 
 
 

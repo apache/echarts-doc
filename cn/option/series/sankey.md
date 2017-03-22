@@ -123,6 +123,11 @@
     prefix="####"
 ) }}
 
+{{use: partial-tooltip-in-series-data(
+    galleryViewPath=${galleryViewPath}
+)}}
+
+
 ## nodes(Array)
 同 [data](~series-sankey.data)
 
@@ -167,6 +172,11 @@ links: [{
     defaultAnimationDuration=1000,
     galleryEditorPath=${galleryEditorPath}
 )}}
+
+{{use: partial-tooltip-in-series(
+    galleryViewPath=${galleryViewPath}
+)}}
+
 
 
 {{target: partial-sankey-line-style}}

@@ -171,3 +171,8 @@ The text color. Defaults to use [the color of section](~series-gauge.axisLine.li
 )}}
 
 {{use:partial-animation(prefix="#")}}
+
+
+{{use: partial-tooltip-in-series(
+    galleryViewPath=${galleryViewPath}
+)}}

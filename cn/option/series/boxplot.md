@@ -99,6 +99,10 @@ ECharts 并不内置对原始数据的处理，输入给 `boxplot` 的数据须�
 
 {{use:partial-boxplot-item-style(prefix="##")}}
 
+{{use: partial-tooltip-in-series-data(
+    galleryViewPath=${galleryViewPath}
+)}}
+
 
 {{use: partial-marker(
     prefix="#",
@@ -124,6 +128,9 @@ ECharts 并不内置对原始数据的处理，输入给 `boxplot` 的数据须�
     galleryEditorPath=${galleryEditorPath}
 )}}
 
+{{use: partial-tooltip-in-series(
+    galleryViewPath=${galleryViewPath}
+)}}
 
 
 

@@ -111,6 +111,9 @@
 
 {{use:partial-candlestick-item-style(prefix="##")}}
 
+{{use: partial-tooltip-in-series-data(
+    galleryViewPath=${galleryViewPath}
+)}}
 
 
 {{use: partial-marker(
@@ -137,6 +140,9 @@
     galleryEditorPath=${galleryEditorPath}
 )}}
 
+{{use: partial-tooltip-in-series(
+    galleryViewPath=${galleryViewPath}
+)}}
 
 
 

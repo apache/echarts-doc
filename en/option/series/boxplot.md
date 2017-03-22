@@ -104,6 +104,9 @@ Value of data item.
 
 {{use:partial-boxplot-item-style(prefix="##")}}
 
+{{use: partial-tooltip-in-series-data(
+    galleryViewPath=${galleryViewPath}
+)}}
 
 {{use: partial-marker(
     prefix="#",
@@ -129,6 +132,10 @@ Value of data item.
     galleryEditorPath=${galleryEditorPath}
 )}}
 
+
+{{use: partial-tooltip-in-series(
+    galleryViewPath=${galleryViewPath}
+)}}
 
 
 

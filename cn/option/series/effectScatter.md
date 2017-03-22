@@ -104,6 +104,10 @@
 #### emphasis(Object)
 {{use:partial-item-style(prefix="####")}}
 
+{{use: partial-tooltip-in-series-data(
+    galleryViewPath=${galleryViewPath}
+)}}
+
 
 {{use: partial-marker(
     prefix="#",
@@ -126,3 +130,6 @@
     galleryEditorPath=${galleryEditorPath}
 )}}
 
+{{use: partial-tooltip-in-series(
+    galleryViewPath=${galleryViewPath}
+)}}

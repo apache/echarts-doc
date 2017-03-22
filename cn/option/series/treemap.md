@@ -380,6 +380,9 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 子节点，递归定义，格式同 [series-treemap.data](~series-treemap.data)。
 
+{{use: partial-tooltip-in-series-data(
+    galleryViewPath=${galleryViewPath}
+)}}
 
 
 {{use: partial-animation-init(
@@ -389,6 +392,9 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
     galleryEditorPath=${galleryEditorPath}
 )}}
 
+{{use: partial-tooltip-in-series(
+    galleryViewPath=${galleryViewPath}
+)}}
 
 
 
@@ -535,7 +541,7 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 )}}
 
 {{ use:partial-silent(
-    prefix="#"
+    prefix="##"
 ) }}
 
 

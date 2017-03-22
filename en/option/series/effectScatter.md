@@ -106,6 +106,9 @@ The brush type for ripples. options: `'stroke'` and `'fill'`.
 #### emphasis(Object)
 {{use:partial-item-style(prefix="####")}}
 
+{{use: partial-tooltip-in-series-data(
+    galleryViewPath=${galleryViewPath}
+)}}
 
 {{use: partial-marker(
     prefix="#",
@@ -121,3 +124,7 @@ The brush type for ripples. options: `'stroke'` and `'fill'`.
 
 {{use: partial-animation(prefix="#")}}
 
+
+{{use: partial-tooltip-in-series(
+    galleryViewPath=${galleryViewPath}
+)}}

@@ -188,3 +188,7 @@ formatter: function (value) {
     prefix="#",
     galleryEditorPath=${galleryEditorPath}
 )}}
+
+{{use: partial-tooltip-in-series(
+    galleryViewPath=${galleryViewPath}
+)}}

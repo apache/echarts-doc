@@ -86,6 +86,10 @@
 #### emphasis(Object)
 {{use:partial-bar-item-style(prefix="####")}}
 
+{{use: partial-tooltip-in-series-data(
+    galleryViewPath=${galleryViewPath}
+)}}
+
 {{use: partial-marker(
     prefix="#",
     seriesType="bar",
@@ -105,6 +109,11 @@
 {{use:partial-animation(
     prefix="#",
     galleryEditorPath=${galleryEditorPath}
+)}}
+
+
+{{use: partial-tooltip-in-series(
+    galleryViewPath=${galleryViewPath}
 )}}
 
 

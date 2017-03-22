@@ -169,6 +169,10 @@ The style of the symbol of single data point.
 #### emphasis(Object)
 {{use: partial-bar-item-style(prefix="####")}}
 
+{{use: partial-tooltip-in-series-data(
+    galleryViewPath=${galleryViewPath}
+)}}
+
 {{use: partial-marker(
     prefix="#",
     galleryEditorPath=${galleryEditorPath},
@@ -185,4 +189,9 @@ The style of the symbol of single data point.
 {{use: partial-animation(
     prefix="#",
     defaultAnimationEasing='linear'
+)}}
+
+
+{{use: partial-tooltip-in-series(
+    galleryViewPath=${galleryViewPath}
 )}}
