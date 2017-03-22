@@ -23,6 +23,33 @@ tooltip can be configured on different places:
 
 
 
+
+{{target: partial-tooltip-in-coords}}
+
+## tooltip
+
+tooltip settings in the coordinate system component.
+
+---
+
+{{use: partial-tooltip-introduction}}
+
+{{use: partial-tooltip-coords-common(
+    prefix='##',
+    galleryViewPath=${galleryViewPath}
+)}}
+
+{{ use: partial-tooltip-common(scope='coordSys', prefix='##') }}
+
+
+
+
+
+
+
+
+
+
 {{target: partial-tooltip-in-series}}
 
 ## tooltip
@@ -62,6 +89,88 @@ tooltip settings in this series data.
 
 
 
+
+
+
+
+
+{{target: partial-tooltip-coords-common}}
+
+#${prefix} show(boolean) = true
+
+Whether to show the tooltip component, including tooltip floating layer and [axisPointer](~tooltip.axisPointer).
+
+
+#${prefix} trigger(string) = 'item'
+
+Type of triggering.
+
+Options:
++ `'item'`
+
+    Triggered by data item, which is mainly used for charts that don't have a category axis like scatter charts or pie charts.
+
++ `'axis'`
+
+    Triggered by axes, which is mainly used for charts that have category axes, like bar charts or line charts.
+
+   ECharts 2.x only supports axis trigger for category axis. In ECharts 3, it is supported for all types of axes in [grid](~grid) or [polar](~polar). Also, you may assign axis with [axisPointer.axis](~tooltip.axisPointer.axis).
+
++ `'none'`
+
+    Trigger nothing.
+
+#${prefix} axisPointer(Object)
+
+Configuration item for axis indicator.
+
+`tooltip.axisPointer` is like syntactic sugar of axisPointer settings on axes (for example, [xAxis.axisPointer](~xAxis.axisPointer) or [angleAxis.axisPointer](~angleAxis.axisPointer)). More detailed features can be configured on `someAxis.axisPointer`. But in common cases, using `tooltip.axisPinter` is more convenient.
+
+> **Notice:** configurations of `tooltip.axisPointer` has lower priority than that of `someAxis.axisPointer`.
+
+---
+
+{{ use: partial-axisPointer-introduction(galleryViewPath=${galleryViewPath}) }}
+
+
+##${prefix} type(string) = 'line'
+
+Indicator type.
+
+Options:
++ `'line'` line indicator
+
++ `'shadow'` shadow crosshair indicator
+
++ `'cross'` crosshair indicator, which is actually the shortcut of enable two axisPointers of two orthometric axes.
+
+
+##${prefix} axis(string) = 'auto'
+
+The coordinate axis, which could be `'x'`, `'y'`, `'radius'`, or `'angle'`. By default, each coordinate system will automatically chose the axes whose will display its axisPointer (category axis or time axis is used by default).
+
+{{ use: partial-axisPointer-tooltip-shared(
+    prefix="#" + ${prefix},
+    galleryViewPath=${galleryViewPath}
+) }}
+
+##${prefix} lineStyle(Object)
+
+It is valid when [axisPointer.type](~tooltip.axisPointer.type) is `'line'`.
+
+{{ use: partial-line-style(prefix="##" + ${prefix}, defaultColor="#555", defaultWidth=1, defaultType='solid') }}
+
+##${prefix} crossStyle(Object)
+
+It is valid when [axisPointer.type](~tooltip.axisPointer.type) is `'cross'`.
+
+{{ use: partial-line-style(prefix="##" + ${prefix}, defaultColor="#555", defaultWidth=1, defaultType="dashed") }}
+
+##${prefix} shadowStyle(Object)
+
+It is valid when [axisPointer.type](~tooltip.axisPointer.type) is `'shadow'`.
+
+{{ use: partial-area-style(prefix="##" + ${prefix}, defaultColor="'rgba(150,150,150,0.3)") }}
 
 
 

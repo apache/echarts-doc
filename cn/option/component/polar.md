@@ -12,3 +12,8 @@
 {{use: component-circular-layout(
     componentName="极坐标系"
 )}}
+
+
+{{use: partial-tooltip-in-coords(
+    galleryViewPath=${galleryViewPath}
+)}}

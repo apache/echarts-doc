@@ -25,3 +25,8 @@ Orientation of the axis. By default, it's `'horizontal'`. You can set it to be `
     axisTypeDefault="'value'",
     hasSplitLineAndArea=true
 )}}
+
+
+{{use: partial-tooltip-in-coords(
+    galleryViewPath=${galleryViewPath}
+)}}

@@ -9,32 +9,20 @@
 
 {{use: partial-tooltip-introduction}}
 
-## show(boolean) = true
-
-是否显示提示框组件，包括提示框浮层和 [axisPointer](~tooltip.axisPointer)。
+{{use: partial-tooltip-coords-common(
+    prefix='#',
+    galleryViewPath=${galleryViewPath}
+)}}
 
 ## showContent(boolean) = true
 
 是否显示提示框浮层，默认显示。只需tooltip触发事件或显示axisPointer而不需要显示内容时可配置该项为`false`。
 
-## trigger(string) = 'item'
+## alwaysShowContent(boolean) = false
 
-触发类型。
+是否永远显示提示框内容，默认情况下在移出可触发提示框区域后 [一定时间](~tooltip.hideDelay) 后隐藏，设置为 `true` 可以保证一直显示提示框内容。
 
-可选：
-+ `'item'`
-
-    数据项图形触发，主要在散点图，饼图等无类目轴的图表中使用。
-
-+ `'axis'`
-
-    坐标轴触发，主要在柱状图，折线图等会使用类目轴的图表中使用。
-
-    在 ECharts 2.x 中只支持类目轴上使用 axis trigger，在 ECharts 3 中支持在[直角坐标系](~grid)和[极坐标系](~polar)上的所有类型的轴。并且可以通过 [axisPointer.axis](~tooltip.axisPointer.axis) 指定坐标轴。
-
-+ `'none'`
-
-    什么都不触发。
+该属性为 ECharts 3.0 中新加。
 
 ## triggerOn(string) = 'mousemove|click'
 
@@ -55,12 +43,6 @@
 + `'none'`
 
     不在 `'mousemove'` 或 `'click'` 时触发，用户可以通过 [action.tooltip.showTip](api.html#action.tooltip.showTip) 和 [action.tooltip.hideTip](api.html#action.tooltip.hideTip) 来手动触发和隐藏。也可以通过 [axisPointer.handle](~xAxis.axisPointer.handle) 来触发或隐藏。
-
-该属性为 ECharts 3.0 中新加。
-
-## alwaysShowContent(boolean) = false
-
-是否永远显示提示框内容，默认情况下在移出可触发提示框区域后 [一定时间](~tooltip.hideDelay) 后隐藏，设置为 `true` 可以保证一直显示提示框内容。
 
 该属性为 ECharts 3.0 中新加。
 
@@ -89,61 +71,3 @@
 
 {{ use: partial-tooltip-common(scope='global', prefix='#') }}
 
-
-## axisPointer(Object)
-
-坐标轴指示器配置项。
-
-`tooltip.axisPointer` 是配置坐标轴指示器的快捷方式。实际上坐标轴指示器的全部功能，都可以通过轴上的 axisPointer 配置项完成（例如 [xAxis.axisPointer](~xAxis.axisPointer) 或 [angleAxis.axisPointer](~angleAxis.axisPointer)）。但是使用 `tooltip.axisPinter` 在简单场景下会更方便一些。
-
-> **注意：** `tooltip.axisPointer` 中诸配置项的优先级低于轴上的 axisPointer 的配置项。
-
----
-
-{{ use: partial-axisPointer-introduction(galleryViewPath=${galleryViewPath}) }}
-
-
-### type(string) = 'line'
-
-指示器类型。
-
-可选
-+ `'line'` 直线指示器
-
-+ `'shadow'` 阴影指示器
-
-+ `'cross'` 十字准星指示器。其实是种简写，表示启用两个正交的轴的 axisPointer。
-
-
-### axis(string) = 'auto'
-
-指示器的坐标轴。
-
-默认情况，坐标系会自动选择显示显示哪个轴的 axisPointer（默认取类目轴或者时间轴）。
-
-可以是 `'x'`, `'y'`, `'radius'`, `'angle'`。
-
-{{ use: partial-axisPointer-tooltip-shared(
-    prefix="##",
-    galleryViewPath=${galleryViewPath}
-) }}
-
-### lineStyle(Object)
-
-[axisPointer.type](~tooltip.axisPointer.type) 为 `'line'` 时有效。
-
-{{ use: partial-line-style(prefix="###", defaultColor="#555", defaultWidth=1, defaultType='solid') }}
-
-### crossStyle(Object)
-
-[axisPointer.type](~tooltip.axisPointer.type) 为 `'cross'` 时有效。
-
-{{ use: partial-line-style(prefix="###", defaultColor="#555", defaultWidth=1, defaultType="dashed") }}
-
-### shadowStyle(Object)
-
-[axisPointer.type](~tooltip.axisPointer.type) 为 `'shadow'` 时有效。
-
-{{ use: partial-area-style(prefix="###", defaultColor="'rgba(150,150,150,0.3)") }}
-
-{{ use: partial-animation(prefix="##") }}

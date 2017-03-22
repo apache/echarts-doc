@@ -35,3 +35,7 @@ grid 区域是否包含坐标轴的[刻度标签](~yAxis.axisLabel)。
     + 这常用于『防止标签溢出』的场景，标签溢出指的是，标签长度动态变化时，可能会溢出容器或者覆盖其他组件。
 
 {{ use:partial-component-common-style(componentName="网格", prefix='#', needShow=true) }}
+
+{{use: partial-tooltip-in-coords(
+    galleryViewPath=${galleryViewPath}
+)}}

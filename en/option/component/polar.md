@@ -3,7 +3,7 @@
 
 # polar(Object)
 
-Polar coordinate can be used in scatter and line chart. Every polar coordinate has an [angleAxis](~angleAxis) and a [radiusAxis](~radiusAxis). 
+Polar coordinate can be used in scatter and line chart. Every polar coordinate has an [angleAxis](~angleAxis) and a [radiusAxis](~radiusAxis).
 
 **For example: **
 
@@ -11,4 +11,9 @@ Polar coordinate can be used in scatter and line chart. Every polar coordinate h
 
 {{use: component-circular-layout(
     componentName="Polar coordinate"
+)}}
+
+
+{{use: partial-tooltip-in-coords(
+    galleryViewPath=${galleryViewPath}
 )}}

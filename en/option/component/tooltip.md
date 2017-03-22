@@ -9,32 +9,20 @@ Tooltip component.
 
 {{use: partial-tooltip-introduction}}
 
-## show(boolean) = true
-
-Whether to show the tooltip component, including tooltip floating layer and [axisPointer](~tooltip.axisPointer).
+{{use: partial-tooltip-coords-common(
+    prefix='#',
+    galleryViewPath=${galleryViewPath}
+)}}
 
 ## showContent(boolean) = true
 
 Whether to show the tooltip floating layer, whose default value is true. It should be configurated to be `false`, if you only need tooltip to trigger the event or show the axisPointer without content.
 
-## trigger(string) = 'item'
+## alwaysShowContent(boolean) = false
 
-Type of triggering.
+Whether to show tooltip content all the time. By default, it will be hidden [after some time](~tooltip.hideDelay). It can be set to be `true` to preserve displaying.
 
-Options:
-+ `'item'`
-
-    Triggered by data item, which is mainly used for charts that don't have a category axis like scatter charts or pie charts.
-
-+ `'axis'`
-
-    Triggered by axes, which is mainly used for charts that have category axes, like bar charts or line charts.
-
-   ECharts 2.x only supports axis trigger for category axis. In ECharts 3, it is supported for all types of axes in [grid](~grid) or [polar](~polar). Also, you may assign axis with [axisPointer.axis](~tooltip.axisPointer.axis).
-
-+ `'none'`
-
-    Trigger nothing.
+This attribute is newly added to ECharts 3.0.
 
 ## triggerOn(string) = 'mousemove|click'
 
@@ -58,12 +46,6 @@ Conditions to trigger tooltip. Options:
 
 This attribute is new to ECharts 3.0.
 
-## alwaysShowContent(boolean) = false
-
-Whether to show tooltip content all the time. By default, it will be hidden [after some time](~tooltip.hideDelay). It can be set to be `true` to preserve displaying.
-
-This attribute is newly added to ECharts 3.0.
-
 ## showDelay(number) = 0
 
 Delay time for showing tooltip, in ms. No delay by default, and it is not recommended to set. Only valid when [triggerOn](~tooltip.triggerOn) is set to be `'mousemove'`.
@@ -86,60 +68,5 @@ Useful when tooltip is cut because of `'overflow: hidden'` set on outer dom of c
 
 The transition duration of tooltip's animation, in seconds. When it is set to be 0, it would move closely with the mouse.
 
-
 {{ use: partial-tooltip-common(scope='global', prefix='#') }}
 
-
-## axisPointer(Object)
-
-Configuration item for axis indicator.
-
-`tooltip.axisPointer` is like syntactic sugar of axisPointer settings on axes (for example, [xAxis.axisPointer](~xAxis.axisPointer) or [angleAxis.axisPointer](~angleAxis.axisPointer)). More detailed features can be configured on `someAxis.axisPointer`. But in common cases, using `tooltip.axisPinter` is more convenient.
-
-> **Notice:** configurations of `tooltip.axisPointer` has lower priority than that of `someAxis.axisPointer`.
-
----
-
-{{ use: partial-axisPointer-introduction(galleryViewPath=${galleryViewPath}) }}
-
-
-### type(string) = 'line'
-
-Indicator type.
-
-Options:
-+ `'line'` line indicator
-
-+ `'shadow'` shadow crosshair indicator
-
-+ `'cross'` crosshair indicator, which is actually the shortcut of enable two axisPointers of two orthometric axes.
-
-
-### axis(string) = 'auto'
-
-The coordinate axis, which could be `'x'`, `'y'`, `'radius'`, or `'angle'`. By default, each coordinate system will automatically chose the axes whose will display its axisPointer (category axis or time axis is used by default).
-
-{{ use: partial-axisPointer-tooltip-shared(
-    prefix="##",
-    galleryViewPath=${galleryViewPath}
-) }}
-
-### lineStyle(Object)
-
-It is valid when [axisPointer.type](~tooltip.axisPointer.type) is `'line'`.
-
-{{ use: partial-line-style(prefix="###", defaultColor="#555", defaultWidth=1, defaultType='solid') }}
-
-### crossStyle(Object)
-
-It is valid when [axisPointer.type](~tooltip.axisPointer.type) is `'cross'`.
-
-{{ use: partial-line-style(prefix="###", defaultColor="#555", defaultWidth=1, defaultType="dashed") }}
-
-### shadowStyle(Object)
-
-It is valid when [axisPointer.type](~tooltip.axisPointer.type) is `'shadow'`.
-
-{{ use: partial-area-style(prefix="###", defaultColor="'rgba(150,150,150,0.3)") }}
-
-{{ use: partial-animation(prefix="##") }}

@@ -25,3 +25,8 @@
     axisTypeDefault="'value'",
     hasSplitLineAndArea=true
 )}}
+
+
+{{use: partial-tooltip-in-coords(
+    galleryViewPath=${galleryViewPath}
+)}}

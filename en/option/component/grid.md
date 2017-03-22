@@ -35,3 +35,7 @@ Whether the grid region contains [axis tick label](~yAxis.axisLabel) of axis.
     + Setting to `true` will helps when the length of axis labels is dynamic and is hard to approximate to avoid them overflowing the container or overlapping other components.
 
 {{ use:partial-component-common-style(componentName="grid", prefix='#', needShow=true) }}
+
+{{use: partial-tooltip-in-coords(
+    galleryViewPath=${galleryViewPath}
+)}}
