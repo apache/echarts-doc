@@ -9,13 +9,13 @@
 
 + [+] 增强了 `echarts.util.parseDate` 方法，支持多种日期表达式的统一解析成 UTC 时间。参见 [series.data 中时间类型部分](http://echarts.baidu.com/option.html#series-line.data)
 
-+ [^] 优化了 geoJSON 的处理。
++ [^] 优化了 GeoJSON 的处理。
 
 + [^] 修复了 [toolbox 中 dataZoom](http://echarts.baidu.com/option.html#toolbox.feature.dataZoom) 不能同时控制多个 x 轴问题。参见 [#4896](https://github.com/ecomfe/echarts/issues/4896)。
 
 + [^] 修复了 [dataZoom](http://echarts.baidu.com/option.html#dataZoom) 中 category 轴的默认范围。参见 [#5226](https://github.com/ecomfe/echarts/issues/5226)。
 
-+ [^] 修复了 disConnect 函数命名问题。参见 [#5208](https://github.com/ecomfe/echarts/issues/5208)。
++ [^] disConnect 函数命名修改为 disconnect。参见 [#5208](https://github.com/ecomfe/echarts/issues/5208)。
 
 + [^] 去除了指定 `width,height` 初始化 echarts 时的不正确提示。参见 [#4569](https://github.com/ecomfe/echarts/issues/4569)。
 
@@ -23,13 +23,13 @@
 
 + [^] 修复了 [gauge](http://echarts.baidu.com/option.html#series.gauge) 指针颜色的 `'auto'` 模式。参见 [#5109](https://github.com/ecomfe/echarts/issues/5109)。
 
-+ [^] 修复了 [series-gauge.pointer.show](http://echarts.baidu.com/option.html#series-gauge.pointer.show) 为 `false` 是出错的问题。参见 [#4944](https://github.com/ecomfe/echarts/issues/4944)。
++ [^] 修复了 [series-gauge.pointer.show](http://echarts.baidu.com/option.html#series-gauge.pointer.show) 为 `false` 时出错的问题。参见 [#4944](https://github.com/ecomfe/echarts/issues/4944)。
 
 + 修复 treemap 数据初始化使自动类型判断的不准确。
 
 + 修复了 [toolbox](http://echarts.baidu.com/option.html#toolbox) 样式。参见 [#3591](https://github.com/ecomfe/echarts/issues/3591)。
 
-+ 改进了在类目轴（category axis）的 [刷选](http://echarts.baidu.com/option.html#brush)行为。
++ 改进了在类目轴（category axis）上的 [刷选](http://echarts.baidu.com/option.html#brush)行为。
 
 + [^] 修复了 [visualMap-piecewise.categories](http://echarts.baidu.com/option.html#visualMap-piecewise.categories) 如果是数字字符串则不正常的问题。参见 [#4960](https://github.com/ecomfe/echarts/issues/4960)。
 
