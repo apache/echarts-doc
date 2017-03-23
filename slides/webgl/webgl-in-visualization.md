@@ -55,16 +55,20 @@ Note:
 
 ## 为什么选择 Canvas？
 
-+ 更灵活的性能优化
++ 更灵活的性能优化 <!-- .element: class="fragment highlight-current-blue" -->
 
-+ 像素操作的能力
++ 像素操作的能力 <!-- .element: class="fragment highlight-current-blue" -->
 
-+ 和 WebGL 更好的结合
++ 和 WebGL 更好的结合 <!-- .element: class="fragment highlight-current-blue" -->
 
 Note:
-之前大家做 Canvas 和 SVG 的对比，都会说 Canvas 的性能要比 SVG 好，我们最开始选择 Canvas 也是基于性能考虑，但是现在尴尬的是，浏览器对 SVG 的性能提升非常大，特别是 chrome 某个版本 SVG 的性能有巨大的提升，很多场景下 Canvas 的优势其实并没有这么大了，而且像小米手机的移动端 Canvas 性能非常糟糕。
+
+可以说 ECharts 最先打的招牌，或者说很多人对 ECharts 感兴趣就是因为 ECharts 基于 Canvas 实现，性能优良，能够绘制十几万的大规模散点图。这个十几万像素就是我们基于 canvas 的特性专门优化的。
+
+不过现在比较尴尬的是，浏览器对 SVG 的性能提升非常大，特别是 chrome 某个版本 SVG 的性能有巨大的提升，如果不是专门优化过的通用场景，Canvas 并没有太大的优势，而且像小米手机的移动端 Canvas 性能非常糟糕，所以我们其实有在考虑再底层实现一套 SVG 的绘图接口。
 
 然后是像素操作的能力，这点依旧是 SVG 无法实现的，基于像素处理我们可以绘制几十上百万的数据，也可以做图片的处理，或者尾迹特效等等。。
+
 还有与 WebGL 更好的结合，Canvas 可以直接作为纹理给 WebGL 使用。
 
 ----
@@ -239,7 +243,7 @@ Note:
 
 ----
 
-<iframe src="asset/ec-demo/scatter3D-simplex.html" class="fullscreen" frameborder="0"></iframe>
+<iframe data-src="asset/ec-demo/scatter3D-simplex.html" class="fullscreen" frameborder="0"></iframe>
 
 Note:
 基本上这样就能画出刚才背景图那个散点图了。
@@ -317,7 +321,7 @@ SDF 相比于普通的纹理图片来说有一些比较显著的优势。
 
 ----
 
-<iframe src="asset/ec-demo/sdf-compare.html" class="fullscreen" frameborder="0"></iframe>
+<iframe data-src="asset/ec-demo/sdf-compare.html" class="fullscreen" frameborder="0"></iframe>
 
 Note:
 
@@ -332,6 +336,8 @@ TODO:
 
 Note:
 echarts-gl 里有很多需要画线的地方，除了三维的折线图，飞线图等，笛卡尔坐标系，各种轮廓，网格也需要画线。所以能够实现高质量的，各种场景下稳定展现的线的绘制非常重要。
+
+TODO 背景图 or 背景示例
 
 ----
 
@@ -359,7 +365,7 @@ Note:
 
 ## 原生画线方法的各种坑
 
-+ 不同的驱动下画线的效果会有细微区别 <!-- .element: class="fragment highlight-current-blue" -->
++ 不同的显卡驱动下画线的效果会有细微区别 <!-- .element: class="fragment highlight-current-blue" -->
 
 + 无法控制 lineJoin 和 lineCap <!-- .element: class="fragment highlight-current-blue" -->
 
@@ -367,13 +373,15 @@ Note:
 
 Note:
 
+实际上 WebGl 画线并没有 lineJoin 和 lineCap 的效果
+
 windows 下因为 ANGLE 的原因最大线宽只有 1。
 
 ----
 
 ## 三角化线段
 
-<iframe src="asset/ec-demo/line3D-wireframe.html" style="width:100%;height:500px;" frameborder="0"></iframe>
+<iframe data-src="asset/ec-demo/line3D-wireframe.html" style="width:100%;height:500px;" frameborder="0"></iframe>
 
 Note:
 虽然说抛弃自带的画线接口很可惜，但是没办法，我们只能重新实现一遍线段的绘制。
@@ -405,7 +413,7 @@ Miter Limit ?
 
 ## 面
 
-+ 三角面 <!-- .element: class="fragment highlight-current-blue" -->
++ 主要为三角面 <!-- .element: class="fragment highlight-current-blue" -->
 
 + 程序生成 <!-- .element: class="fragment highlight-current-blue" -->
 
@@ -457,7 +465,7 @@ Note:
 
 ----
 
-<iframe src="asset/ec-demo/parametric-surface-fun.html" class="fullscreen" frameborder="0"></iframe>
+<iframe data-src="asset/ec-demo/parametric-surface-fun.html" class="fullscreen" frameborder="0"></iframe>
 
 ----
 
@@ -471,7 +479,7 @@ Note:
 
 ----
 
-<iframe src="asset/ec-demo/map-wireframe.html" class="fullscreen" frameborder="0"></iframe>
+<iframe data-src="asset/ec-demo/map-wireframe.html" class="fullscreen" frameborder="0"></iframe>
 
 ----
 
@@ -508,21 +516,40 @@ TODO bench case
 
 ----
 
-## 不要廉价的三维效果
+<!--.slide: data-background="./asset/img/buildings2.jpg" -->
 
 Note:
-很多人排斥三维的可视化还有一个原因是因为很多三维的可视化效果渲染效果十分廉价，比如这张柱状图，还有这张地球。充斥着经典的 phong 光照模型的高光和其所带来的塑料感。
-
-但是做得好的三维可视化还是能令人赏心悦目的。
+为了让高品质这个词更有说服力，我再放张 echarts-gl 渲染的效果图吧，
 
 ----
 
+## 不要过时的三维效果
+
+<img src="./asset/img/bar3d-ugly.png" height="300px" alt="">
+<img src="./asset/img/globe-ugly.png" height="300px" alt="">
+<img src="./asset/img/pie3d-ugly.png" height="300px" alt="">
+
 Note:
-为了让高品质这个词更有说服力，我先放张 echarts-gl 渲染的效果图吧，
+很多人排斥三维的可视化还有一个原因是因为很多三维的可视化效果渲染效果十分廉价，比如这张柱状图，还有这张地球。充斥着经典的 phong 光照模型的高光和其所带来的塑料感，以及粗糙的贴图等等。
+
+但是其实地球是可以画成这样的
 
 ----
 
-## Physically Based Rendering
+<iframe data-src="./asset/ec-demo/globe.html" class="fullscreen" frameborder="0"></iframe>
+
+Note:
+接下来介绍一些能够有效提高画质的方法
+
+----
+
+## 基于物理的渲染（PBR）
+
++ HDR 的环境光照 <!-- .element: class="fragment highlight-current-blue" -->
+
++ 对光照的积分预计算（prefilter）<!-- .element: class="fragment highlight-current-blue" -->
+
++ 一个能量守恒的光照公式 <!-- .element: class="fragment highlight-current-blue" -->
 
 Note:
 现在游戏里基本上普遍使用了基于物理的渲染，
@@ -530,7 +557,7 @@ Note:
 
 ----
 
-## 阴影
+## 软阴影
 
 ----
 
@@ -560,7 +587,7 @@ Note:
 + 停止交互后渐进增强画面 <!-- .element: class="fragment highlight-current-blue" -->
 
 Note:
-刚讲了这么一堆 bling bling 的特效，实际上许多机器，比如我现在这台机器，如果把这些特效都设得很高，基本上是不能流畅运行的，特别是像 SSAO，景深这些效果需要对原图做大量的采样，如果采样少了效果就不好，如果采样多了就很卡。
+刚讲了这么一堆 bling bling 的特效，实际上许多机器，比如我现在这台机器，如果把这些特效都设得很高，基本上是不能流畅运行的，特别是像软阴影， SSAO，景深这些效果需要对原图做大量的采样，如果采样少了效果就不好，如果采样多了就很卡。
 
 那怎么办？我们就把采样分布到多帧中，比如原来 SSAO 要采样 60 次才会有比较好的效果，那么我们
 
@@ -588,23 +615,24 @@ Note:
 
 ---
 
+<!--.slide: data-background-video="./asset/video/gpgpu.mp4" data-background-opacity="0.4" -->
+
 ## GPU 的通用计算
 
 WebGL 中实现力引导布局
 
 Note:
 
-TODO 加入视频
 
 ----
 
 ## 力引导布局介绍
 
-+ 用于关系图
++ 用于关系图的布局 <!-- .element: class="fragment highlight-current-blue" -->
 
-+ 节点与节点之间模拟斥力，边模拟弹簧的引力
++ 节点与节点之间模拟斥力，边模拟弹簧的引力 <!-- .element: class="fragment highlight-current-blue" -->
 
-+ 每次迭代 O(n2), 需要上百次迭代才能结束
++ 每次迭代 O(n2), 需要上百次迭代才能结束 <!-- .element: class="fragment highlight-current-blue" -->
 
 Note:
 力引导布局是用于关系图布局的经典算法， 有很多种算法和实现，但是其基本原理都是一样的，都是节点与节点存在一个电荷的斥力，边则存在一个弹簧的引力。每次迭代通过计算每个节点的受力，并且根据受力产生一个位移，在多次迭代后整个布局的能量会趋向一个平衡，关系边多的节点间有一个聚类的趋势。
@@ -633,6 +661,7 @@ SIMD 只有 firefox nightly 支持，多线程的话
 
 ----
 
+Note:
 TODO WebWorker + Barnes Hut Simulation
 
 ----

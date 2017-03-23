@@ -146,6 +146,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var self = this;
 	    var zr = api.getZr();
 
+	    if (!zr.getWidth() || !zr.getHeight()) {
+	        console.warn('Dom has no width or height');
+	        return;
+	    }
+
 	    function getLayerGL(model) {
 	        var zlevel = model.get('zlevel');
 	        var layers = self._layers;
@@ -39346,7 +39351,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    debugWireframeModel.get('lineStyle.color')
 	                )
 	            );
-	            lineMesh.material.material.set(
+	            lineMesh.material.set(
 	                'wireframeLineWidth', retrieve.firstNotNull(
 	                    debugWireframeModel.get('lineStyle.width'), 1
 	                )

@@ -23,6 +23,7 @@
 
 
             chart.setOption({
+                animation: false,
                 xAxis: {
                     type: 'value',
                     min: -1,
@@ -40,6 +41,7 @@
                     type: 'value',
                     min: -1,
                     max: 1,
+                    inverse: true,
                     splitLine: {
                         show: true
                     },
@@ -149,6 +151,7 @@
                 }]
             });
 
+            window.onresize = chart.resize;
         </script>
     </body>
 </html>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Globe - ECHARTS-GL</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="../common/reset.css">
+    </head>
+    <body>
+        <div id="main"></div>
+        <script src="../common/echarts.min.js"></script>
+        <script src="../common/jquery.min.js"></script>
+        <script src="../common/echarts-gl.js"></script>
+        <script>
+            var chart = echarts.init(document.getElementById('main'));
+
+            chart.setOption({
+                globe: {
+
+                    baseTexture: '../texture/world.topo.bathy.200401.jpg',
+                    heightTexture: '../texture/elev_bump_4k.jpg',
+
+                    displacementScale: 0.1,
+
+                    shading: 'realistic',
+                    realisticMaterial: {
+                        roughness: 0.8,
+                        metalness: 0
+                    },
+
+                    postEffect: {
+                        enable: true
+                    },
+                    temporalSuperSampling: {
+                        enable: true
+                    },
+                    light: {
+                        ambient: {
+                            intensity: 0
+                        },
+                        main: {
+                            intensity: 6,
+                            shadow: true
+                        },
+                        ambientCubemap: {
+                            texture: '../texture/pisa.hdr',
+                            exposure: 2,
+                            diffuseIntensity: 0.1,
+                            specularIntensity: 1
+                        }
+                    },
+                    viewControl: {
+                        autoRotate: false
+                    }
+                },
+                series: []
+            });
+
+            window.onresize = chart.resize;
+
+        </script>
+    </body>
+</html>

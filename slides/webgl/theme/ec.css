@@ -315,3 +315,7 @@ body {
   max-width:100%!important;
   max-height:100%!important;
 }
+
+.reveal .slides section .fragment.highlight-current-blue.current-fragment {
+  color: #ff991b;
+}
