@@ -30,23 +30,26 @@ Note:
 
 ## ECharts 简介
 
-+ 基于 Canvas 的开源前端可视化库
++ 基于 Canvas 的开源前端可视化库 <!-- .element: class="fragment highlight-current-blue" -->
 
-+ 声明式的编程接口
++ 声明式的编程接口 <!-- .element: class="fragment highlight-current-blue" -->
 
-+ 丰富的可视化类型和交互方式
++ 丰富的可视化类型和交互方式 <!-- .element: class="fragment highlight-current-blue" -->
 
-+ 大数据量展现的能力
++ 大数据量展现的能力 <!-- .element: class="fragment highlight-current-blue" -->
 
-+ 吸引眼球的动画和特效
++ 吸引眼球的动画和特效 <!-- .element: class="fragment highlight-current-blue" -->
+
+Note:
+首先我先花个两分钟时间介绍一下 echarts 这个产品
 
 ----
 
 ## ECharts 简介
 
-+ GitHub 关注数 ~16k
++ GitHub 关注数 ~16 k
 
-+ 官网访问量 ~300k pv
++ 官网访问量 ~300 k 日pv
 
 ----
 
@@ -499,7 +502,9 @@ TODO bench case
 
 ---
 
-## 高品质的渲染
+<!--.slide: data-background="./asset/img/buildings.jpg" -->
+
+# 高品质的渲染
 
 ----
 

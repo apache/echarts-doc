@@ -750,7 +750,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var oldViewport = renderer.viewport;
 	    for (var i = this.views.length - 1; i >= 0; i--) {
 	        var viewGL = this.views[i];
-	        if (viewGL.containPoint(e.offsetX, e.offsetY)) {
+	        if (viewGL.hasDOF() && viewGL.containPoint(e.offsetX, e.offsetY)) {
 	            this._picking.scene = viewGL.scene;
 	            this._picking.camera = viewGL.camera;
 	            // Only used for picking, renderer.setViewport will also invoke gl.viewport.
@@ -31223,6 +31223,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return enableTemporalSS;
 	};
 
+	ViewGL.prototype.hasDOF = function () {
+	    return this._enableDOF;
+	};
+
 	ViewGL.prototype.isAccumulateFinished = function () {
 	    return this.needsTemporalSS() ? this._temporalSS.isFinished()
 	        : (this._frame > 20);
@@ -31334,6 +31338,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    bloomModel.get('enable') ? compositor.enableBloom() : compositor.disableBloom();
 	    dofModel.get('enable') ? compositor.enableDOF() : compositor.disableDOF();
 
+	    this._enableDOF = dofModel.get('enable');
 	    this._enableSSAO = ssaoModel.get('enable');
 	    this._enableSSAO ? compositor.enableSSAO() : compositor.disableSSAO();
 
@@ -34717,6 +34722,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	            color: '#aaa'
 	        },
 
+	        // If enable instancing if it's too much
+	        instancing: false,
+
 	        shading: 'lambert',
 
 	        light: {
@@ -34839,6 +34847,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        // Must update after geo3D.viewGL.setPostEffect
 	        this._geo3DBuilder.update(geo3DModel, ecModel, api);
 
+	        var silent = geo3DModel.get('silent');
+	        this.groupGL && this.groupGL.traverse(function (mesh) {
+	            if (mesh.isRenderable && mesh.isRenderable()) {
+	                mesh.ignorePicking = mesh.$ignorePicking != null
+	                    ? mesh.$ignorePicking : silent;
+	            }
+	        });
+
 	        control.off('update');
 	        control.on('update', function () {
 	            api.dispatchAction({
@@ -34890,10 +34906,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    this._triangulator = new Triangulation();
 
-	    this._boxWidth;
-	    this._boxHeight;
-	    this._boxDepth;
-
 	    this._shadersMap = graphicGL.COMMON_SHADERS.reduce(function (obj, shaderName) {
 	        obj[shaderName] = graphicGL.createShader('ecgl.' + shaderName);
 	        obj[shaderName].define('fragment', 'DOUBLE_SIDE');
@@ -34935,9 +34947,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    update: function (componentModel, ecModel, api) {
 	        var geo3D = componentModel.coordinateSystem;
-
-	        if (geo3D.map !== this._currentMap) {
-
+	        var enableInstancing = componentModel.get('instancing');
+	        if (
+	            geo3D.map !== this._currentMap
+	            || (enableInstancing && !this._polygonMesh)
+	            || (!enableInstancing && !this._polygonMeshesMap)
+	        ) {
 	            this._triangulation(geo3D);
 	            this._currentMap = geo3D.map;
 
@@ -34953,68 +34968,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        var data = componentModel.getData();
 
-	        geo3D.regions.forEach(function (region) {
-	            var dataIndex = data.indexOfName(region.name);
 
-	            var polygonMesh = this._polygonMeshes[region.name];
-	            var linesMesh = this._linesMeshes[region.name];
-	            if (polygonMesh.material.shader !== shader) {
-	                polygonMesh.material.attachShader(shader, true);
-	            }
-	            var regionModel = componentModel.getRegionModel(region.name);
-	            var itemStyleModel = regionModel.getModel('itemStyle');
-	            var color = itemStyleModel.get('areaColor');
-	            var opacity = retrieve.firstNotNull(itemStyleModel.get('opacity'), 1.0);
-
-	            // Materials configurations.
-	            graphicGL.setMaterialFromModel(shader.__shading, polygonMesh.material, regionModel, api);
-
-	            // Use visual color if it is encoded by visualMap component
-	            var visualColor = data.getItemVisual(dataIndex, 'color', true);
-	            if (visualColor != null) {
-	                color = visualColor;
-	            }
-	            // Set color, opacity to visual for label usage.
-	            data.setItemVisual(dataIndex, 'color', color);
-	            data.setItemVisual(dataIndex, 'opacity', opacity);
-
-	            color = graphicGL.parseColor(color);
-	            var borderColor = graphicGL.parseColor(itemStyleModel.get('borderColor'));
-
-	            color[3] *= opacity;
-	            borderColor[3] *= opacity;
-	            polygonMesh.material.set({
-	                color: color
-	            });
-	            var isTransparent = color[3] < 0.99;
-	            polygonMesh.material.transparent = isTransparent;
-	            polygonMesh.material.depthMask = !isTransparent;
-
-	            var lineWidth = itemStyleModel.get('borderWidth');
-	            var hasLine = lineWidth > 0;
-
-	            var regionHeight = retrieve.firstNotNull(regionModel.get('height', true), geo3D.size[1]);
-
-	            this._updatePolygonGeometry(polygonMesh.geometry, region, regionHeight);
-
-	            // Update lines.
-	            if (hasLine) {
-	                lineWidth *= api.getDevicePixelRatio();
-	                this._updateLinesGeometry(linesMesh.geometry, region, regionHeight, lineWidth, geo3D.transform);
-	            }
-	            linesMesh.invisible = !hasLine;
-	            linesMesh.material.set({
-	                color: borderColor
-	            });
-
-	            // Move regions to center so they can be sorted right when material is transparent.
-	            this._moveRegionToCenter(polygonMesh, linesMesh, hasLine);
-
-	            // Bind events.
-	            polygonMesh.dataIndex = dataIndex;
-	            polygonMesh.on('mouseover', this._onmouseover, this);
-	            polygonMesh.on('mouseout', this._onmouseout, this);
-	        }, this);
+	        if (enableInstancing) {
+	            this._updateInstancingMesh(componentModel, shader, api);
+	        }
+	        this._updateRegionMesh(componentModel, shader, api, enableInstancing);
 
 	        this._updateGroundPlane(componentModel);
 	        this._groundMesh.material.shader[srgbDefineMethod]('fragment', 'SRGB_DECODE');
@@ -35037,8 +34995,135 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this._updateDebugWireframe(componentModel);
 	    },
 
+	    _updateInstancingMesh: function (componentModel, shader, api) {
+	        var geo3D = componentModel.coordinateSystem;
+
+	        var vertexCount = 0;
+	        var triangleCount = 0;
+	        // TODO Lines
+	        geo3D.regions.forEach(function (region) {
+	            var info = this._getRegionPolygonGeoInfo(region);
+	            vertexCount += info.vertexCount;
+	            triangleCount += info.triangleCount;
+	        }, this);
+
+	        var polygonMesh = this._polygonMesh;
+	        var polygonGeo = polygonMesh.geometry;
+	        ['position', 'normal', 'texcoord0', 'color'].forEach(function (attrName) {
+	            polygonGeo.attributes[attrName].init(vertexCount);
+	        });
+
+	        polygonGeo.indices = vertexCount > 0xffff ? new Uint32Array(triangleCount * 3) : new Uint16Array(triangleCount * 3);
+
+	        if (polygonMesh.material.shader !== shader) {
+	            polygonMesh.material.attachShader(shader, true);
+	        }
+	    },
+
+	    _updateRegionMesh: function (componentModel, shader, api, instancing) {
+
+	        var data = componentModel.getData();
+	        var geo3D = componentModel.coordinateSystem;
+
+	        var vertexOffset = 0;
+	        var triangleOffset = 0;
+
+	        if (instancing) {
+	            // Materials configurations.
+	            graphicGL.setMaterialFromModel(shader.__shading, this._polygonMesh.material, componentModel, api);
+	        }
+	        var hasTranparentRegion = false;
+
+	        geo3D.regions.forEach(function (region) {
+	            var dataIndex = data.indexOfName(region.name);
+
+	            var polygonMesh = instancing ? this._polygonMesh : this._polygonMeshesMap[region.name];
+	            var linesMesh = instancing ? this._linesMesh : this._linesMeshesMap[region.name];
+	            if (polygonMesh.material.shader !== shader) {
+	                polygonMesh.material.attachShader(shader, true);
+	            }
+	            // Get bunch of visual properties.
+	            var regionModel = componentModel.getRegionModel(region.name);
+	            var itemStyleModel = regionModel.getModel('itemStyle');
+	            var color = itemStyleModel.get('areaColor');
+	            var opacity = retrieve.firstNotNull(itemStyleModel.get('opacity'), 1.0);
+
+	            // Use visual color if it is encoded by visualMap component
+	            var visualColor = data.getItemVisual(dataIndex, 'color', true);
+	            if (visualColor != null && data.hasValue(dataIndex)) {
+	                color = visualColor;
+	            }
+	            // Set color, opacity to visual for label usage.
+	            data.setItemVisual(dataIndex, 'color', color);
+	            data.setItemVisual(dataIndex, 'opacity', opacity);
+
+	            color = graphicGL.parseColor(color);
+	            var borderColor = graphicGL.parseColor(itemStyleModel.get('borderColor'));
+
+	            color[3] *= opacity;
+	            borderColor[3] *= opacity;
+
+	            var isTransparent = color[3] < 0.99;
+	            if (!instancing) {
+	                // Materials configurations.
+	                graphicGL.setMaterialFromModel(shader.__shading, polygonMesh.material, regionModel, api);
+	                polygonMesh.material.set({ color: color });
+	                polygonMesh.material.transparent = isTransparent;
+	                polygonMesh.material.depthMask = !isTransparent;
+	            }
+	            hasTranparentRegion = hasTranparentRegion || isTransparent;
+
+	            var regionHeight = retrieve.firstNotNull(regionModel.get('height', true), geo3D.size[1]);
+
+	            if (instancing) {
+	                var newOffsets = this._updatePolygonGeometry(
+	                    polygonMesh.geometry, region, regionHeight, vertexOffset, triangleOffset, color
+	                );
+	                vertexOffset = newOffsets.vertexOffset;
+	                triangleOffset = newOffsets.triangleOffset;
+	            }
+	            else {
+	                this._updatePolygonGeometry(polygonMesh.geometry, region, regionHeight);
+	            }
+
+	            // Update lines.
+	            // TODO INSTANCING LINES
+	            var lineWidth = itemStyleModel.get('borderWidth');
+	            var hasLine = lineWidth > 0;
+	            if (!instancing) {
+	                if (hasLine) {
+	                    lineWidth *= api.getDevicePixelRatio();
+	                    this._updateLinesGeometry(
+	                        linesMesh.geometry, region, regionHeight, lineWidth, geo3D.transform
+	                    );
+	                }
+	                linesMesh.invisible = !hasLine;
+	                linesMesh.material.set({
+	                    color: borderColor
+	                });
+	            }
+
+	            // Move regions to center so they can be sorted right when material is transparent.
+	            if (!instancing) {
+	                this._moveRegionToCenter(polygonMesh, linesMesh, hasLine);
+	                // Bind events.
+	                polygonMesh.dataIndex = dataIndex;
+	                polygonMesh.on('mouseover', this._onmouseover, this);
+	                polygonMesh.on('mouseout', this._onmouseout, this);
+	            }
+
+	        }, this);
+
+	        if (instancing) {
+	            this._polygonMesh.material.transparent = hasTranparentRegion;
+	            this._polygonMesh.material.depthMask = !hasTranparentRegion;
+	            this._polygonMesh.geometry.updateBoundingBox();
+	        }
+	    },
+
 	    _updateDebugWireframe: function (componentModel) {
 	        var debugWireframeModel = componentModel.getModel('debug.wireframe');
+
 	        // TODO Unshow
 	        if (debugWireframeModel.get('show')) {
 	            var color = graphicGL.parseColor(
@@ -35047,13 +35132,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var width = retrieve.firstNotNull(
 	                debugWireframeModel.get('lineStyle.width'), 1
 	            );
-	            componentModel.coordinateSystem.regions.forEach(function (region) {
-	                var polygonMesh = this._polygonMeshes[region.name];
-	                polygonMesh.geometry.generateBarycentric();
-	                polygonMesh.material.shader.define('both', 'WIREFRAME_TRIANGLE');
-	                polygonMesh.material.set('wireframeLineColor', color);
-	                polygonMesh.material.set('wireframeLineWidth', width);
-	            }, this);
+
+	            var setWireframe = function (mesh) {
+	                mesh.geometry.generateBarycentric();
+	                mesh.material.shader.define('both', 'WIREFRAME_TRIANGLE');
+	                mesh.material.set('wireframeLineColor', color);
+	                mesh.material.set('wireframeLineWidth', width);
+	            }
+	            if (this._polygonMeshesMap) {
+	                componentModel.coordinateSystem.regions.forEach(function (region) {
+	                    setWireframe(this._polygonMeshesMap[region.name]);
+	                }, this);
+	            }
+	            else {
+	                setWireframe(this._polygonMesh);
+	            }
 	        }
 	    },
 
@@ -35076,57 +35169,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	    },
 
-	    highlight: function (dataIndex) {
-	        var data = this._data;
-	        if (!data) {
-	            return;
-	        }
-
-	        var itemModel = data.getItemModel(dataIndex);
-	        var emphasisItemStyleModel = itemModel.getModel('emphasis.itemStyle');
-	        var emphasisColor = emphasisItemStyleModel.get('areaColor');
-	        var emphasisOpacity = emphasisItemStyleModel.get('opacity');
-	        if (emphasisColor == null) {
-	            var color = data.getItemVisual(dataIndex, 'color');
-	            emphasisColor = echarts.color.lift(color, -0.4);
-	        }
-	        if (emphasisOpacity == null) {
-	            emphasisOpacity = data.getItemVisual(dataIndex, 'opacity');
-	        }
-	        var colorArr = graphicGL.parseColor(emphasisColor);
-	        colorArr[3] *= emphasisOpacity;
-
-	        var polygonMesh = this._polygonMeshes[data.getName(dataIndex)];
-	        if (polygonMesh) {
-	            var material = polygonMesh.material;
-	            material.set('color', colorArr);
-	        }
-
-	        this._api.getZr().refresh();
-	    },
-
-	    downplay: function (dataIndex) {
-
-	        var data = this._data;
-	        if (!data) {
-	            return;
-	        }
-
-	        var color = data.getItemVisual(dataIndex, 'color');
-	        var opacity = data.getItemVisual(dataIndex, 'opacity');
-
-	        var colorArr = graphicGL.parseColor(color);
-	        colorArr[3] *= opacity;
-
-	        var polygonMesh = this._polygonMeshes[data.getName(dataIndex)];
-	        if (polygonMesh) {
-	            var material = polygonMesh.material;
-	            material.set('color', colorArr);
-	        }
-
-	        this._api.getZr().refresh();
-	    },
-
 	    _updateGroundPlane: function (componentModel) {
 	        var groundModel = componentModel.getModel('groundPlane');
 
@@ -35147,12 +35189,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.rootNode.removeAll();
 
 	        var geo3D = componentModel.coordinateSystem;
-	        var polygonMeshesMap = {};
-	        var linesMeshesMap = {};
 	        var shader = this._getShader(componentModel.get('shading'));
 
-	        geo3D.regions.forEach(function (region) {
-	            polygonMeshesMap[region.name] = new graphicGL.Mesh({
+	        function createPolygonMesh() {
+	             var mesh = new graphicGL.Mesh({
 	                material: new graphicGL.Material({
 	                    shader: shader
 	                }),
@@ -35161,9 +35201,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    sortTriangles: true
 	                })
 	            });
-	            echarts.util.extend(polygonMeshesMap[region.name].geometry, trianglesSortMixin);
+	            echarts.util.extend(mesh.geometry, trianglesSortMixin);
+	            return mesh;
+	        }
 
-	            linesMeshesMap[region.name] = new graphicGL.Mesh({
+	        function createLinesMesh() {
+	            return new graphicGL.Mesh({
 	                material: new graphicGL.Material({
 	                    shader: this._linesShader
 	                }),
@@ -35173,13 +35216,35 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    useNativeLine: false
 	                })
 	            });
+	        }
 
-	            this.rootNode.add(polygonMeshesMap[region.name]);
-	            this.rootNode.add(linesMeshesMap[region.name]);
-	        }, this);
+	        if (!componentModel.get('instancing')) {
+	            var polygonMeshesMap = {};
+	            var linesMeshesMap = {};
+	            geo3D.regions.forEach(function (region) {
+	                polygonMeshesMap[region.name] = createPolygonMesh();
+	                linesMeshesMap[region.name] = createLinesMesh();
 
-	        this._polygonMeshes = polygonMeshesMap;
-	        this._linesMeshes = linesMeshesMap;
+	                this.rootNode.add(polygonMeshesMap[region.name]);
+	                this.rootNode.add(linesMeshesMap[region.name]);
+	            }, this);
+	            this._polygonMeshesMap = polygonMeshesMap;
+	            this._linesMeshesMap = linesMeshesMap;
+	        }
+	        else {
+	            var polygonMesh = createPolygonMesh();
+	            var linesMesh = createLinesMesh();
+	            this.rootNode.add(polygonMesh);
+	            this.rootNode.add(linesMesh);
+
+	            polygonMesh.material.shader.define('both', 'VERTEX_COLOR');
+
+	            this._polygonMesh = polygonMesh;
+	            this._linesMesh = linesMesh;
+
+	            this._polygonMeshesMap = null;
+	            this._linesMeshesMap = null;
+	        }
 
 	        this.rootNode.add(this._groundMesh);
 	    },
@@ -35256,8 +35321,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	                vec3.max(maxAll, maxAll, max);
 	                polygons.push({
 	                    points: points3,
-	                    min: min,
-	                    max: max,
 	                    minAll: minAll,
 	                    maxAll: maxAll,
 	                    indices: triangulator.triangles
@@ -35268,11 +35331,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    },
 
-	    _updatePolygonGeometry: function (geometry, region, regionHeight) {
-	        var indices = this.indices;
-	        var positionAttr = geometry.attributes.position;
-	        var normalAttr = geometry.attributes.normal;
-	        var texcoordAttr = geometry.attributes.texcoord0;
+	    /**
+	     * Get region vertex and triangle count
+	     */
+	    _getRegionPolygonGeoInfo: function (region) {
+
 	        var polygons = this._triangulationResults[region.name];
 
 	        var sideVertexCount = 0;
@@ -35286,13 +35349,37 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var vertexCount = sideVertexCount * 2 + sideVertexCount * 4;
 	        var triangleCount = sideTriangleCount * 2 + sideVertexCount * 2;
 
-	        positionAttr.init(vertexCount);
-	        normalAttr.init(vertexCount);
-	        texcoordAttr.init(vertexCount);
-	        indices = geometry.indices = vertexCount > 0xffff ? new Uint32Array(triangleCount * 3) : new Uint16Array(triangleCount * 3);
+	        return {
+	            vertexCount: vertexCount,
+	            triangleCount: triangleCount
+	        };
+	    },
 
-	        var vertexOffset = 0;
-	        var faceOffset = 0;
+	    _updatePolygonGeometry: function (
+	        geometry, region, regionHeight, vertexOffset, triangleOffset, color
+	    ) {
+	        var positionAttr = geometry.attributes.position;
+	        var normalAttr = geometry.attributes.normal;
+	        var texcoordAttr = geometry.attributes.texcoord0;
+	        var colorAttr = geometry.attributes.color;
+	        var polygons = this._triangulationResults[region.name];
+
+	        var hasColor = colorAttr.value && color;
+
+	        var indices = geometry.indices;
+	        var instancing = vertexOffset != null;
+	        if (!instancing) {
+
+	            var geoInfo = this._getRegionPolygonGeoInfo(region);
+	            vertexOffset = triangleOffset = 0;
+
+	            positionAttr.init(geoInfo.vertexCount);
+	            normalAttr.init(geoInfo.vertexCount);
+	            texcoordAttr.init(geoInfo.vertexCount);
+	            indices = geometry.indices = geoInfo.vertexCount > 0xffff
+	                ? new Uint32Array(geoInfo.triangleCount * 3)
+	                : new Uint16Array(geoInfo.triangleCount * 3);
+	        }
 
 	        var min = polygons[0].minAll;
 	        var max = polygons[0].maxAll;
@@ -35314,6 +35401,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	                uv[1] = (points[k + 2] - min[2]) / maxDimSize;
 
 	                positionAttr.set(vertexOffset, currentPosition);
+	                if (hasColor) {
+	                    colorAttr.set(vertexOffset, color);
+	                }
 	                texcoordAttr.set(vertexOffset++, uv);
 	            }
 	        }
@@ -35325,9 +35415,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	            addVertices(polygon, y, insideOffset);
 
 	            for (var k = 0; k < polygon.indices.length; k++) {
-	                indices[faceOffset * 3 + k] = polygon.indices[k] + startVertexOffset;
+	                indices[triangleOffset * 3 + k] = polygon.indices[k] + startVertexOffset;
 	            }
-	            faceOffset += polygon.indices.length / 3;
+	            triangleOffset += polygon.indices.length / 3;
 	        }
 
 	        var normalTop = [0, 1, 0];
@@ -35382,21 +35472,31 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	                for (var k = 0; k < 4; k++) {
 	                    normalAttr.set(vertexOffset + k, normal);
+	                    if (hasColor) {
+	                        colorAttr.set(vertexOffset + k, color);
+	                    }
 	                }
 
 	                for (var k = 0; k < 6; k++) {
-	                    indices[faceOffset * 3 + k] = quadToTriangle[k] + vertexOffset;
+	                    indices[triangleOffset * 3 + k] = quadToTriangle[k] + vertexOffset;
 	                }
 
 	                vertexOffset += 4;
-	                faceOffset += 2;
+	                triangleOffset += 2;
 	            }
 	        }
 
-	        geometry.updateBoundingBox();
+	        if (!instancing) {
+	            geometry.updateBoundingBox();
+	        }
+
+	        return {
+	            vertexOffset: vertexOffset,
+	            triangleOffset: triangleOffset
+	        };
 	    },
 
-	    _updateLinesGeometry: function (geometry, region, regionHeight, lineWidth, transform) {
+	    _getRegionLinesGeoInfo: function (region, geometry) {
 	        var vertexCount = 0;
 	        var triangleCount = 0;
 	        region.geometries.forEach(function (geo) {
@@ -35410,9 +35510,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	            }
 	        }, this);
 
+	    },
+
+	    _updateLinesGeometry: function (
+	        geometry, region, regionHeight, lineWidth, transform
+	    ) {
+
+	        var geoInfo = this._getRegionLinesGeoInfo(region, geometry);
+
 	        geometry.resetOffset();
-	        geometry.setVertexCount(vertexCount);
-	        geometry.setTriangleCount(vertexCount);
+	        geometry.setVertexCount(geoInfo.vertexCount);
+	        geometry.setTriangleCount(geoInfo.triangleCount);
 
 	        function convertToPoints3(polygon) {
 	            var points = new Float32Array(polygon.length * 3);
@@ -35478,6 +35586,57 @@ return /******/ (function(modules) { // webpackBootstrap
 	            }
 	            linesMesh.position.copy(cp);
 	        }
+	    },
+
+	    highlight: function (dataIndex) {
+	        var data = this._data;
+	        if (!data) {
+	            return;
+	        }
+
+	        var itemModel = data.getItemModel(dataIndex);
+	        var emphasisItemStyleModel = itemModel.getModel('emphasis.itemStyle');
+	        var emphasisColor = emphasisItemStyleModel.get('areaColor');
+	        var emphasisOpacity = emphasisItemStyleModel.get('opacity');
+	        if (emphasisColor == null) {
+	            var color = data.getItemVisual(dataIndex, 'color');
+	            emphasisColor = echarts.color.lift(color, -0.4);
+	        }
+	        if (emphasisOpacity == null) {
+	            emphasisOpacity = data.getItemVisual(dataIndex, 'opacity');
+	        }
+	        var colorArr = graphicGL.parseColor(emphasisColor);
+	        colorArr[3] *= emphasisOpacity;
+
+	        var polygonMesh = this._polygonMeshesMap[data.getName(dataIndex)];
+	        if (polygonMesh) {
+	            var material = polygonMesh.material;
+	            material.set('color', colorArr);
+	        }
+
+	        this._api.getZr().refresh();
+	    },
+
+	    downplay: function (dataIndex) {
+
+	        var data = this._data;
+	        if (!data) {
+	            return;
+	        }
+
+	        var color = data.getItemVisual(dataIndex, 'color');
+	        var opacity = data.getItemVisual(dataIndex, 'opacity');
+
+	        var colorArr = graphicGL.parseColor(color);
+	        colorArr[3] *= opacity;
+
+	        var polygonMesh = this._polygonMeshesMap[data.getName(dataIndex)];
+	        if (polygonMesh) {
+	            var material = polygonMesh.material;
+	            material.set('color', colorArr);
+	        }
+
+	        this._api.getZr().refresh();
 	    }
 	};
 
@@ -39083,7 +39242,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        var line3DMesh = new graphicGL.Mesh({
 	            geometry: new Lines3DGeometry({
-	                useNativeLine: false
+	                useNativeLine: false,
+	                sortTriangles: true
 	            }),
 	            material: new graphicGL.Material({
 	                shader: graphicGL.createShader('ecgl.meshLines3D')
@@ -39175,7 +39335,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var material = lineMesh.material;
 	        material.transparent = hasTransparent;
 	        material.depthMask = !hasTransparent;
-	        lineMesh.geometry.sortTriangles = hasTransparent;
 
 	        var debugWireframeModel = seriesModel.getModel('debug.wireframe');
 	        if (debugWireframeModel.get('show')) {
@@ -39813,19 +39972,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	            geometry.sortVertices = false;
 	        }
 	        else {
-	            // material.depthTest = true;
-	            // var transparent = hasTransparentPoint
-	            //     // Stroke is transparent
-	            //     || (itemStyle.lineWidth && strokeColor[3] < 0.99);
-	            // material.transparent = transparent;
-	            // material.depthMask = !transparent;
-	            // geometry.sortVertices = transparent;
-
 	            // Because of symbol texture, we always needs it be transparent.
 	            material.depthTest = true;
 	            material.transparent = true;
 	            material.depthMask = false;
 	            geometry.sortVertices = true;
+	        }
+
+	        var coordSys = seriesModel.coordinateSystem;
+	        if (coordSys && coordSys.viewGL) {
+	            var methodName = coordSys.viewGL.isLinearSpace() ? 'define' : 'unDefine';
+	            this._mesh.material.shader[methodName]('fragment', 'SRGB_DECODE');
 	        }
 
 	        this._updateHandler(seriesModel, ecModel, api);
@@ -40441,7 +40598,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 192 */
 /***/ function(module, exports) {
 
-	module.exports = "@export ecgl.sdfSprite.vertex\n\nuniform mat4 worldViewProjection : WORLDVIEWPROJECTION;\nuniform float elapsedTime : 0;\n\nattribute vec3 position : POSITION;\n\n#ifdef VERTEX_COLOR\nattribute vec4 a_FillColor: COLOR;\nvarying vec4 v_Color;\n#endif\n\nattribute float size;\n\n#ifdef ANIMATING\nattribute float delay;\n#endif\n\n#ifdef POSITIONTEXTURE_ENABLED\nuniform sampler2D positionTexture;\n#endif\n\nvarying float v_Size;\n\nvoid main()\n{\n\n#ifdef POSITIONTEXTURE_ENABLED\n    // Only 2d position texture supported\n    gl_Position = worldViewProjection * vec4(texture2D(positionTexture, position.xy).xy, -10.0, 1.0);\n#else\n    gl_Position = worldViewProjection * vec4(position, 1.0);\n#endif\n\n#ifdef ANIMATING\n    gl_PointSize = size * (sin((elapsedTime + delay) * 3.14) * 0.5 + 1.0);\n#else\n    gl_PointSize = size;\n#endif\n\n#ifdef VERTEX_COLOR\n    v_Color = a_FillColor;\n    // v_StrokeColor = a_StrokeColor;\n#endif\n\n    v_Size = size;\n}\n\n@end\n\n@export ecgl.sdfSprite.fragment\n\nuniform vec4 color: [1, 1, 1, 1];\nuniform vec4 strokeColor: [1, 1, 1, 1];\nuniform float smoothing: 0.07;\n\nuniform float lineWidth: 0.0;\n\n#ifdef VERTEX_COLOR\nvarying vec4 v_Color;\n// varying vec4 v_StrokeColor;\n#endif\n\nvarying float v_Size;\n\nuniform sampler2D sprite;\n\nvoid main()\n{\n    gl_FragColor = color;\n\n    vec4 _strokeColor = strokeColor;\n\n#ifdef VERTEX_COLOR\n    gl_FragColor *= v_Color;\n    // TODO\n    // _strokeColor *= v_StrokeColor;\n#endif\n\n#ifdef SPRITE_ENABLED\n    float d = texture2D(sprite, gl_PointCoord).r;\n    // Antialias\n    gl_FragColor.a *= smoothstep(0.5 - smoothing, 0.5 + smoothing, d);\n\n    if (lineWidth > 0.0) {\n        // TODO SCREEN SPACE OUTLINE\n        float sLineWidth = lineWidth / 2.0;\n\n        float outlineMaxValue0 = 0.5 + sLineWidth;\n        float outlineMaxValue1 = 0.5 + sLineWidth + smoothing;\n        float outlineMinValue0 = 0.5 - sLineWidth - smoothing;\n        float outlineMinValue1 = 0.5 - sLineWidth;\n\n        // FIXME Aliasing\n        if (d <= outlineMaxValue1 && d >= outlineMinValue0) {\n            float a = _strokeColor.a;\n            if (d <= outlineMinValue1) {\n                a = a * smoothstep(outlineMinValue0, outlineMinValue1, d);\n            }\n            else {\n                a = a * smoothstep(outlineMaxValue1, outlineMaxValue0, d);\n            }\n            gl_FragColor.rgb = mix(gl_FragColor.rgb * gl_FragColor.a, _strokeColor.rgb, a);\n            gl_FragColor.a = gl_FragColor.a * (1.0 - a) + a;\n        }\n    }\n#endif\n\n    if (gl_FragColor.a == 0.0) {\n        discard;\n    }\n}\n@end"
+	module.exports = "@export ecgl.sdfSprite.vertex\n\nuniform mat4 worldViewProjection : WORLDVIEWPROJECTION;\nuniform float elapsedTime : 0;\n\nattribute vec3 position : POSITION;\n\n#ifdef VERTEX_COLOR\nattribute vec4 a_FillColor: COLOR;\nvarying vec4 v_Color;\n#endif\n\nattribute float size;\n\n#ifdef ANIMATING\nattribute float delay;\n#endif\n\n#ifdef POSITIONTEXTURE_ENABLED\nuniform sampler2D positionTexture;\n#endif\n\nvarying float v_Size;\n\nvoid main()\n{\n\n#ifdef POSITIONTEXTURE_ENABLED\n    // Only 2d position texture supported\n    gl_Position = worldViewProjection * vec4(texture2D(positionTexture, position.xy).xy, -10.0, 1.0);\n#else\n    gl_Position = worldViewProjection * vec4(position, 1.0);\n#endif\n\n#ifdef ANIMATING\n    gl_PointSize = size * (sin((elapsedTime + delay) * 3.14) * 0.5 + 1.0);\n#else\n    gl_PointSize = size;\n#endif\n\n#ifdef VERTEX_COLOR\n    v_Color = a_FillColor;\n    // v_StrokeColor = a_StrokeColor;\n#endif\n\n    v_Size = size;\n}\n\n@end\n\n@export ecgl.sdfSprite.fragment\n\nuniform vec4 color: [1, 1, 1, 1];\nuniform vec4 strokeColor: [1, 1, 1, 1];\nuniform float smoothing: 0.07;\n\nuniform float lineWidth: 0.0;\n\n#ifdef VERTEX_COLOR\nvarying vec4 v_Color;\n// varying vec4 v_StrokeColor;\n#endif\n\nvarying float v_Size;\n\nuniform sampler2D sprite;\n\n@import qtek.util.srgb\n\nvoid main()\n{\n    gl_FragColor = color;\n\n    vec4 _strokeColor = strokeColor;\n\n#ifdef VERTEX_COLOR\n    gl_FragColor *= v_Color;\n    // TODO\n    // _strokeColor *= v_StrokeColor;\n#endif\n\n#ifdef SPRITE_ENABLED\n    float d = texture2D(sprite, gl_PointCoord).r;\n    // Antialias\n    gl_FragColor.a *= smoothstep(0.5 - smoothing, 0.5 + smoothing, d);\n\n    if (lineWidth > 0.0) {\n        // TODO SCREEN SPACE OUTLINE\n        float sLineWidth = lineWidth / 2.0;\n\n        float outlineMaxValue0 = 0.5 + sLineWidth;\n        float outlineMaxValue1 = 0.5 + sLineWidth + smoothing;\n        float outlineMinValue0 = 0.5 - sLineWidth - smoothing;\n        float outlineMinValue1 = 0.5 - sLineWidth;\n\n        // FIXME Aliasing\n        if (d <= outlineMaxValue1 && d >= outlineMinValue0) {\n            float a = _strokeColor.a;\n            if (d <= outlineMinValue1) {\n                a = a * smoothstep(outlineMinValue0, outlineMinValue1, d);\n            }\n            else {\n                a = a * smoothstep(outlineMaxValue1, outlineMaxValue0, d);\n            }\n            gl_FragColor.rgb = mix(gl_FragColor.rgb * gl_FragColor.a, _strokeColor.rgb, a);\n            gl_FragColor.a = gl_FragColor.a * (1.0 - a) + a;\n        }\n    }\n#endif\n\n#ifdef SRGB_DECODE\n    gl_FragColor = sRGBToLinear(gl_FragColor);\n#endif\n\n    if (gl_FragColor.a == 0.0) {\n        discard;\n    }\n}\n@end"
 
 /***/ },
 /* 193 */
