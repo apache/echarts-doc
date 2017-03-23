@@ -10,11 +10,16 @@
 ~[800x400](${galleryViewPath}calendar-heatmap&edit=1&reset=1)
 
 **在日历坐标系中使用散点图的示例:**
-~[800x400](${galleryViewPath}calendar-effectscatter&edit=1&reset=1)
+~[800x600](${galleryViewPath}calendar-effectscatter&edit=1&reset=1)
 
-**在日历坐标系中使用关系图的示例:**
-~[800x400](${galleryViewPath}calendar-graph&edit=1&reset=1)
+**在日历坐标系中使用关系图（以及混合图表）的示例:**
+~[600x600](${galleryViewPath}calendar-graph&edit=1&reset=1)
 
+**在日历坐标系中使用其他效果的示例:**
+[在日历中使用文字](${galleryEditorPath}calendar-lunar&edit=1&reset=1)、
+[在日历中放置饼图](${galleryEditorPath}calendar-pie&edit=1&reset=1)
+
+---
 
 {{ use: partial-rect-layout-width-height(
     componentName="calendar",

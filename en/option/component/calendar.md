@@ -11,10 +11,16 @@ as shown in the following example, we can use calendar coordinates in heatmap, s
 ~[800x400](${galleryViewPath}calendar-heatmap&edit=1&reset=1)
 
 **Example of using effectScatter in calendar coordinates:**
-~[800x400](${galleryViewPath}calendar-effectscatter&edit=1&reset=1)
+~[800x600](${galleryViewPath}calendar-effectscatter&edit=1&reset=1)
 
 **Example of using graph in calendar coordinates:**
-~[800x400](${galleryViewPath}calendar-graph&edit=1&reset=1)
+~[600x600](${galleryViewPath}calendar-graph&edit=1&reset=1)
+
+**Other examples:**
+[Display Text in Calendar](${galleryEditorPath}calendar-lunar&edit=1&reset=1),
+[Display Pies in Calendar](${galleryEditorPath}calendar-pie&edit=1&reset=1)
+
+---
 
 
 {{ use: partial-rect-layout-width-height(

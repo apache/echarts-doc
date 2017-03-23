@@ -1,3 +1,40 @@
+## v3.5.0
+<div class="time">2017-03-23</div>
+
++ **[+] Published [calendar coordinate system](https://ecomfe.github.io/echarts-doc/public/en/option.html#calendar)** 参见 [示例](https://ecomfe.github.io/echarts-examples/public/index.html#calendar).
+
++ **[+] Published echarts statistics tools [echarts-stat](https://github.com/ecomfe/echarts-stat)**
+
++ **[+] Enhanced axis pointer** See examples: [link](https://ecomfe.github.io/echarts-examples/public/index.html#candlestick-brush), [mobile (touch device) 1](https://ecomfe.github.io/echarts-examples/public/index.html#line-tooltip-touch), [mobile (touch device) 2](https://ecomfe.github.io/echarts-examples/public/index.html#candlestick-touch), [analysis](https://ecomfe.github.io/echarts-examples/public/index.html#scatter-nutrients-matrix), [multiple Y axes](https://ecomfe.github.io/echarts-examples/public/index.html#multiple-y-axis), [multiple X axes](https://ecomfe.github.io/echarts-examples/public/index.html#multiple-x-axis)
+
++ [+] Enhanced method `echarts.util.parseDate`, which have supported parsing different formats of data expression to UTC time. See [time in series.data](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-line.data)
+
++ [^] Enhanced processing of geoJSON.
+
++ [^] Fixed that [toolbox.feature.dataZoom](https://ecomfe.github.io/echarts-doc/public/en/option.html#toolbox.feature.dataZoom) can not control multiple x axes. See [#4896](https://github.com/ecomfe/echarts/issues/4896).
+
++ [^] Fixed the default extent of category axis in [dataZoom](https://ecomfe.github.io/echarts-doc/public/en/option.html#dataZoom). See [#5226](https://github.com/ecomfe/echarts/issues/5226).
+
++ [^] Fixed function name of "disConnect". See [#5208](https://github.com/ecomfe/echarts/issues/5208).
+
++ [^] Remove incorrect warning specifying `width,height` when initialize echart. See [#4569](https://github.com/ecomfe/echarts/issues/4569).
+
++ [^] Fixed that tooltip in [gauge](https://ecomfe.github.io/echarts-doc/public/en/option.html#series.gauge) do not support percentage. See [#4347](https://github.com/ecomfe/echarts/issues/4347) and [#4332](https://github.com/ecomfe/echarts/pull/4332).
+
++ [^] Fixed the behavior when pointer color is 'auto' in [gauge](https://ecomfe.github.io/echarts-doc/public/en/option.html#series.gauge). See [#5109](https://github.com/ecomfe/echarts/issues/5109).
+
++ [^] Fixed the problem when [series-gauge.pointer.show](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-gauge.pointer.show) is `false`. See [#4944](https://github.com/ecomfe/echarts/issues/4944).
+
++ Fixed the initialization of series-treemap.data is incorrect in one case.
+
++ Fixed the style of [toolbox](https://ecomfe.github.io/echarts-doc/public/en/option.html#toolbox). See [#3591](https://github.com/ecomfe/echarts/issues/3591).
+
++ Enhanced the behavior of [brush](https://ecomfe.github.io/echarts-doc/public/en/option.html#brush) on category axis.
+
++ [^] Fixed that visualMap is abnormal when some item of [visualMap-piecewise.categories](https://ecomfe.github.io/echarts-doc/public/en/option.html#visualMap-piecewise.categories) is numberic string. See [#4960](https://github.com/ecomfe/echarts/issues/4960).
+
+
+
 ## v3.4.0
 <div class="time">2017-01-12</div>
 
