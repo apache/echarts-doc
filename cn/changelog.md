@@ -5,7 +5,7 @@
 
 + **[+] 发布统计插件 [echarts-stat](https://github.com/ecomfe/echarts-stat)**
 
-+ **[+] 坐标轴指示器增强** 参见示例：[联动](http://echarts.baidu.com/examples.html#candlestick-brush)、 [移动端（触屏）1](http://echarts.baidu.com/examples.html#line-tooltip-touch)、[移动端（触屏）2](http://echarts.baidu.com/examples.html#candlestick-touch)、[分析](http://echarts.baidu.com/examples.html#scatter-nutrients-matrix)、[多Y轴](http://echarts.baidu.com/examples.html#multiple-y-axis)、[多X轴](http://echarts.baidu.com/examples.html#multiple-x-axis)
++ **[+] 坐标轴指示器增强** 参见示例：[联动](http://echarts.baidu.com/examples.html#candlestick-brush)、 [移动端（触屏）1](http://echarts.baidu.com/examples.html#line-tooltip-touch)、[移动端（触屏）2](http://echarts.baidu.com/examples.html#candlestick-touch)、[分析](http://echarts.baidu.com/examples.html#scatter-nutrients-matrix)、[多Y轴](http://echarts.baidu.com/examples.html#multiple-y-axis)、[多X轴](http://echarts.baidu.com/examples.html#multiple-x-axis)。支持和修复了 [#5040](https://github.com/ecomfe/echarts/issues/5040)，[#5039](https://github.com/ecomfe/echarts/issues/5039)，[#5102](https://github.com/ecomfe/echarts/issues/5102)，[#5262](https://github.com/ecomfe/echarts/issues/5262)，[#4905](https://github.com/ecomfe/echarts/issues/4905)，[#4921](https://github.com/ecomfe/echarts/issues/4921)，[#5091](https://github.com/ecomfe/echarts/issues/5091)
 
 + [+] 增强了 `echarts.util.parseDate` 方法，支持多种日期表达式的统一解析成 UTC 时间。参见 [series.data 中时间类型部分](http://echarts.baidu.com/option.html#series-line.data)
 
