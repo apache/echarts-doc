@@ -643,21 +643,41 @@ Note:
 
 ----
 
+<iframe data-src="asset/ec-demo/webkit-dep.html" class="fullscreen" frameborder="0"></iframe>
+
+Note:
+这个数据大概 500 个顶点，800 条边
+
+
+----
+
+<iframe data-src="asset/ec-demo/eurosis.html" class="fullscreen" frameborder="0"></iframe>
+
+Note:
+接下来来看一个更大规模的例子，
+这份数据 1285 个顶点，7586 条边
+
+可以看到已经很卡了。
+
+----
+
 ## 力引导布局的性能优化
 
-+ Barnes Hut Simulation
++ Barnes Hut Simulation <!-- .element: class="fragment highlight-current-blue" -->
 
-+ SIMD？
++ 多线程？Web Worker <!-- .element: class="fragment highlight-current-blue" -->
 
-+ 多线程？
++ SIMD？ <!-- .element: class="fragment highlight-current-blue" -->
 
 Note:
 在算法层面力导向布局最常见的性能优化方式就是这个 Barnes Hut Simulation，它把所有节点放到一个四叉树里，然后对于一批距离远的节点可以看做一个整体计算斥力。而不用去一个点一个点的算。
 
 在程序层面，可以通过 SIMD，多线程等方式去并行计算，也可以带来可观的优化效果。
 
+但是 JS 并不支持多线程，现在浏览器有 WebWorker，我们可以把布局的方法在一个单独的 WebWorker 里去做，这样有一个好处是布局的代码不会阻塞到重绘的代码，交互会更顺畅。
+
 但是 JS 里对 SIMD 和多线程的支持并不好。所以这一块优化很难做。
-SIMD 只有 firefox nightly 支持，多线程的话
+SIMD 只有 firefox nightly
 
 ----
 
@@ -671,6 +691,12 @@ TODO WebWorker + Barnes Hut Simulation
 Note:
 TODO
 架构图
+
+----
+
+<iframe data-src="asset/ec-demo/graph.html" class="fullscreen" frameborder="0"></iframe>
+
+![](asset/img/blckhole.gif)
 
 ---
 
