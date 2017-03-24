@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.3">Jekyll</generator><link href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/" rel="alternate" type="text/html" /><updated>2017-03-24T14:42:07+08:00</updated><id>http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/</id><entry><title type="html">echarts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布</title><link href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/03/23/new-release.html" rel="alternate" type="text/html" title="echarts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布" /><published>2017-03-23T00:00:00+08:00</published><updated>2017-03-23T00:00:00+08:00</updated><id>http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/03/23/new-release</id><content type="html" xml:base="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/03/23/new-release.html">&lt;p&gt;在 echarts 新发布的 3.5 版本中，新增了日历坐标系，增强了坐标轴指示器。同时，echarts 统计扩展 1.0 版本发布了。日历坐标系用于在日历中绘制图表，坐标轴指示器方便用户观察数据内容，统计扩展是一个专门用来进行数据分析的工具。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.3">Jekyll</generator><link href="http://echarts.baidu.com/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://echarts.baidu.com/blog/" rel="alternate" type="text/html" /><updated>2017-03-24T15:04:05+08:00</updated><id>http://echarts.baidu.com/blog/</id><entry><title type="html">echarts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布</title><link href="http://echarts.baidu.com/blog/2017/03/23/new-release.html" rel="alternate" type="text/html" title="echarts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布" /><published>2017-03-23T00:00:00+08:00</published><updated>2017-03-23T00:00:00+08:00</updated><id>http://echarts.baidu.com/blog/2017/03/23/new-release</id><content type="html" xml:base="http://echarts.baidu.com/blog/2017/03/23/new-release.html">&lt;p&gt;在 echarts 新发布的 3.5 版本中，新增了日历坐标系，增强了坐标轴指示器。同时，echarts 统计扩展 1.0 版本发布了。日历坐标系用于在日历中绘制图表，坐标轴指示器方便用户观察数据内容，统计扩展是一个专门用来进行数据分析的工具。&lt;/p&gt;
 
 &lt;h2 id=&quot;section&quot;&gt;统计扩展&lt;/h2&gt;
 
@@ -7,18 +7,18 @@
 &lt;p&gt;扩展中的回归算法不仅包含了常用的线性回归，还包含了指数回归、对数回归、以及多项式回归。&lt;/p&gt;
 
 &lt;p&gt;线性回归的示例：&lt;/p&gt;
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/post/2017-03-23/xS1bQ2AMKe.png&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xS1bQ2AMKe&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://echarts.baidu.com/blog/images/post/2017-03-23/xS1bQ2AMKe.png&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xS1bQ2AMKe&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
 
 &lt;p&gt;对数回归的示例：&lt;/p&gt;
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/post/2017-03-23/xry3aWkmYe.png&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xry3aWkmYe&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://echarts.baidu.com/blog/images/post/2017-03-23/xry3aWkmYe.png&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xry3aWkmYe&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
 
 &lt;p&gt;秉承了可视分析的宗旨，我们的多维聚类分析，不仅可以静态地产出数据集聚类的结果，还可以动态地查看整个聚类分析的过程。&lt;/p&gt;
 
 &lt;p&gt;静态地产出数据集聚类的结果的示例：&lt;/p&gt;
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/post/2017-03-23/xSkBOEaGtx.png&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xSkBOEaGtx&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://echarts.baidu.com/blog/images/post/2017-03-23/xSkBOEaGtx.png&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xSkBOEaGtx&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
 
 &lt;p&gt;动态地查看整个聚类分析的过程的示例：&lt;/p&gt;
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/post/2017-03-23/xHyr-esMtg.png&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xHyr-esMtg&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://echarts.baidu.com/blog/images/post/2017-03-23/xHyr-esMtg.png&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xHyr-esMtg&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
 
 &lt;p&gt;和 echarts 中的原生图表不一样，统计扩展是作为一个扩展工具发布的。这意味着，在 echarts 官网下载的完整版本将不包含该扩展包。统计扩展和 echarts 结合使用时，需要在引入 &lt;code class=&quot;highlighter-rouge&quot;&gt;echarts.js&lt;/code&gt; 之后，另外引入统计扩展对应的 &lt;code class=&quot;highlighter-rouge&quot;&gt;ecStat.js&lt;/code&gt;。可以在 &lt;a href=&quot;https://github.com/ecomfe/echarts-stat/releases/latest&quot;&gt;这里 (GitHub)&lt;/a&gt; 找到最新版本，其中 &lt;code class=&quot;highlighter-rouge&quot;&gt;dist/ecStat.js&lt;/code&gt; 可作为单文件引用。&lt;/p&gt;
 
@@ -29,13 +29,13 @@
 &lt;p&gt;日历坐标系，是一种新的 echarts 坐标系，提供了在日历上绘制图表的能力。例如可以在日历坐标系上放置热力图、散点图、关系图等。如下示例：&lt;/p&gt;
 
 &lt;p&gt;在日历坐标系中使用热力图：&lt;/p&gt;
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://sushuang.baidu.com:8000/echarts/echarts-examples/public/data/thumb/bubble-gradient.png&quot; data-src=&quot;http://sushuang.baidu.com:8000/echarts/echarts-examples/public/view.html?c=calendar-heatmap&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 300px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png&quot; data-src=&quot;http://echarts.baidu.com/gallery/view.html?c=calendar-heatmap&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 300px&quot;&gt;&lt;/div&gt;
 
 &lt;p&gt;在日历坐标系中使用散点图：&lt;/p&gt;
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://sushuang.baidu.com:8000/echarts/echarts-examples/public/data/thumb/bubble-gradient.png&quot; data-src=&quot;http://sushuang.baidu.com:8000/echarts/echarts-examples/public/view.html?c=calendar-effectscatter&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 600px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png&quot; data-src=&quot;http://echarts.baidu.com/gallery/view.html?c=calendar-effectscatter&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 600px&quot;&gt;&lt;/div&gt;
 
 &lt;p&gt;还可以混合放置不同的图表，例如下例子，同时放置了热力图和关系图：&lt;/p&gt;
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://sushuang.baidu.com:8000/echarts/echarts-examples/public/data/thumb/bubble-gradient.png&quot; data-src=&quot;http://sushuang.baidu.com:8000/echarts/echarts-examples/public/view.html?c=calendar-graph&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 600px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png&quot; data-src=&quot;http://echarts.baidu.com/gallery/view.html?c=calendar-graph&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 600px&quot;&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;strong&gt;水平和垂直放置日历&lt;/strong&gt;&lt;/p&gt;
 
@@ -56,36 +56,36 @@
 &lt;p&gt;灵活利用 echarts 图表和坐标系的组合，以及 API，可以实现更丰富的效果。&lt;/p&gt;
 
 &lt;p&gt;例如，制作农历：&lt;/p&gt;
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://sushuang.baidu.com:8000/echarts/echarts-examples/public/data/thumb/bubble-gradient.png&quot; data-src=&quot;http://sushuang.baidu.com:8000/echarts/echarts-examples/public/view.html?c=calendar-lunar&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 500px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png&quot; data-src=&quot;http://echarts.baidu.com/gallery/view.html?c=calendar-lunar&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 500px&quot;&gt;&lt;/div&gt;
 
 &lt;p&gt;下面这个例子，使用 &lt;code class=&quot;highlighter-rouge&quot;&gt;chart.convertToPixel&lt;/code&gt; 接口，实现了饼图放置在日历坐标系中的效果。&lt;/p&gt;
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://sushuang.baidu.com:8000/echarts/echarts-examples/public/data/thumb/bubble-gradient.png&quot; data-src=&quot;http://sushuang.baidu.com:8000/echarts/echarts-examples/public/view.html?c=calendar-pie&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 640px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png&quot; data-src=&quot;http://echarts.baidu.com/gallery/view.html?c=calendar-pie&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 640px&quot;&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;section-2&quot;&gt;坐标轴指示器&lt;/h2&gt;
 
 &lt;p&gt;坐标轴指示器 （axisPointer）指的是，鼠标悬浮到坐标系上时出现的竖线、阴影区域等。它能帮助用户观察数据。echarts 原有的坐标轴指示器本次被整理和增强了，加入了文本标签，自动吸附到数据，以及移动触屏的手柄拖拽交互，以及支持了多个坐标系中指示器的联动。&lt;/p&gt;
 
 &lt;p&gt;下面是一个K线图的示例。使用坐标轴指示器，能够比较方便得观察到每一项对应的 y 值。&lt;/p&gt;
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://sushuang.baidu.com:8000/echarts/echarts-examples/public/data/thumb/bubble-gradient.png&quot; data-src=&quot;http://sushuang.baidu.com:8000/echarts/echarts-examples/public/view.html?c=doc-example/candlestick-axisPointer&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 450px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png&quot; data-src=&quot;http://echarts.baidu.com/gallery/view.html?c=doc-example/candlestick-axisPointer&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 450px&quot;&gt;&lt;/div&gt;
 
 &lt;p&gt;上例中，使用了 &lt;a href=&quot;http://echarts.baidu.com/option.html#axisPointer.link&quot;&gt;axisPointer.link&lt;/a&gt; 来关联上下两个直角坐标系的 axisPointer，使他们同步运动。&lt;/p&gt;
 
 &lt;p&gt;坐标轴指示器也提供了一种适合触屏的交互方式，使用手柄来拖拽坐标轴指示器。如果触屏上和鼠标操作一样，在坐标系内部拖拽操作坐标轴指示器，那么手指可能会挡住图表，并且可能和『数据区域缩放移动』操作冲突。用单独的拖拽手柄，可以改善这个问题。&lt;/p&gt;
 
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://sushuang.baidu.com:8000/echarts/echarts-examples/public/data/thumb/bubble-gradient.png&quot; data-src=&quot;http://sushuang.baidu.com:8000/echarts/echarts-examples/public/view.html?c=line-tooltip-touch&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png&quot; data-src=&quot;http://echarts.baidu.com/gallery/view.html?c=line-tooltip-touch&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
 
 &lt;p&gt;这是另一个例子：&lt;/p&gt;
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://sushuang.baidu.com:8000/echarts/echarts-examples/public/data/thumb/bubble-gradient.png&quot; data-src=&quot;http://sushuang.baidu.com:8000/echarts/echarts-examples/public/view.html?c=candlestick-touch&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png&quot; data-src=&quot;http://echarts.baidu.com/gallery/view.html?c=candlestick-touch&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
 
 &lt;p&gt;坐标轴指示器在多轴的场景能起到辅助作用，清晰得显示出对比数值，甚至可以在坐标轴指示器的文本标签内定制表达更多信息：&lt;/p&gt;
 
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://sushuang.baidu.com:8000/echarts/echarts-examples/public/data/thumb/bubble-gradient.png&quot; data-src=&quot;http://sushuang.baidu.com:8000/echarts/echarts-examples/public/view.html?c=multiple-y-axis&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 300px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png&quot; data-src=&quot;http://echarts.baidu.com/gallery/view.html?c=multiple-y-axis&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 300px&quot;&gt;&lt;/div&gt;
 
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://sushuang.baidu.com:8000/echarts/echarts-examples/public/data/thumb/bubble-gradient.png&quot; data-src=&quot;http://sushuang.baidu.com:8000/echarts/echarts-examples/public/view.html?c=multiple-x-axis&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 300px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png&quot; data-src=&quot;http://echarts.baidu.com/gallery/view.html?c=multiple-x-axis&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 300px&quot;&gt;&lt;/div&gt;
 
 &lt;p&gt;最后提供一个内容更丰富些的例子，其中也使用了 &lt;a href=&quot;http://echarts.baidu.com/option.html#axisPointer.link&quot;&gt;axisPointer.link&lt;/a&gt; 来联动不同的坐标轴指示器。他关联和高亮了处于不同坐标系中的相互对应的点。&lt;/p&gt;
 
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://sushuang.baidu.com:8000/echarts/echarts-examples/public/data/thumb/bubble-gradient.png&quot; data-src=&quot;http://sushuang.baidu.com:8000/echarts/echarts-examples/public/view.html?c=scatter-nutrients-matrix&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 640px&quot;&gt;&lt;/div&gt;</content><author><name></name></author><category term="new release" /><category term="extension" /><category term="tutorial" /><summary type="html">在 echarts 新发布的 3.5 版本中，新增了日历坐标系，增强了坐标轴指示器。同时，echarts 统计扩展 1.0 版本发布了。日历坐标系用于在日历中绘制图表，坐标轴指示器方便用户观察数据内容，统计扩展是一个专门用来进行数据分析的工具。</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/%7B%22feature%22=%3E%22post/2017-03-23/banner.png%22%7D" /></entry><entry><title type="html">ECharts v3.5 Released, Publishing Calendar Coordinate System and Enhanced Axis Pointer, Meanwhile Statistic Extension v1.0 Released</title><link href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/03/23/new-release-en.html" rel="alternate" type="text/html" title="ECharts v3.5 Released, Publishing Calendar Coordinate System and Enhanced Axis Pointer, Meanwhile Statistic Extension v1.0 Released" /><published>2017-03-23T00:00:00+08:00</published><updated>2017-03-23T00:00:00+08:00</updated><id>http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/03/23/new-release-en</id><content type="html" xml:base="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/03/23/new-release-en.html">&lt;p&gt;We are releasing echarts v3.5, where calendar coodinate system is supported and axis pointer is enhanced. Meanwhile echarts statistic extension v1.0 is published.&lt;/p&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png&quot; data-src=&quot;http://echarts.baidu.com/gallery/view.html?c=scatter-nutrients-matrix&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 640px&quot;&gt;&lt;/div&gt;</content><author><name></name></author><category term="new release" /><category term="extension" /><category term="tutorial" /><summary type="html">在 echarts 新发布的 3.5 版本中，新增了日历坐标系，增强了坐标轴指示器。同时，echarts 统计扩展 1.0 版本发布了。日历坐标系用于在日历中绘制图表，坐标轴指示器方便用户观察数据内容，统计扩展是一个专门用来进行数据分析的工具。</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://echarts.baidu.com/blog/%7B%22feature%22=%3E%22post/2017-03-23/banner.png%22%7D" /></entry><entry><title type="html">ECharts v3.5 Released, Publishing Calendar Coordinate System and Enhanced Axis Pointer, Meanwhile Statistic Extension v1.0 Released</title><link href="http://echarts.baidu.com/blog/2017/03/23/new-release-en.html" rel="alternate" type="text/html" title="ECharts v3.5 Released, Publishing Calendar Coordinate System and Enhanced Axis Pointer, Meanwhile Statistic Extension v1.0 Released" /><published>2017-03-23T00:00:00+08:00</published><updated>2017-03-23T00:00:00+08:00</updated><id>http://echarts.baidu.com/blog/2017/03/23/new-release-en</id><content type="html" xml:base="http://echarts.baidu.com/blog/2017/03/23/new-release-en.html">&lt;p&gt;We are releasing echarts v3.5, where calendar coodinate system is supported and axis pointer is enhanced. Meanwhile echarts statistic extension v1.0 is published.&lt;/p&gt;
 
 &lt;p&gt;Calendar coordiante system is a new type of echarts coordiante system, which can used to locate different charts (For example, scatter, heatmap, graph, pie, or even other coordinate systems like cartesian).&lt;/p&gt;
 
@@ -100,18 +100,18 @@
 &lt;p&gt;The regression algorithm in the extension not only contains the commonly used linear regression, but also contains exponential regression, logarithmic regression, and polynomial regression.&lt;/p&gt;
 
 &lt;p&gt;An example of linear regression:&lt;/p&gt;
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/post/2017-03-23/xS1bQ2AMKe.png&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xS1bQ2AMKe&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://echarts.baidu.com/blog/images/post/2017-03-23/xS1bQ2AMKe.png&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xS1bQ2AMKe&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
 
 &lt;p&gt;An example of logarithmic regression:&lt;/p&gt;
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/post/2017-03-23/xry3aWkmYe.png&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xry3aWkmYe&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://echarts.baidu.com/blog/images/post/2017-03-23/xry3aWkmYe.png&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xry3aWkmYe&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
 
 &lt;p&gt;Adhering to the purpose of visual analysis, our multi-dimensional clustering analysis, can not only statically produce the results of clustering of dataset, but also dynamically view the entire clustering analysis process.&lt;/p&gt;
 
 &lt;p&gt;An example of the result of dataset clustering:&lt;/p&gt;
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/post/2017-03-23/xSkBOEaGtx.png&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xSkBOEaGtx&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://echarts.baidu.com/blog/images/post/2017-03-23/xSkBOEaGtx.png&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xSkBOEaGtx&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
 
 &lt;p&gt;An example demonstrating the entire process of clustering:&lt;/p&gt;
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/post/2017-03-23/xHyr-esMtg.png&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xHyr-esMtg&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://echarts.baidu.com/blog/images/post/2017-03-23/xHyr-esMtg.png&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xHyr-esMtg&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
 
 &lt;p&gt;Unlike built-in charts in echarts, Statistical Extension is a extension of echarts, which is not intergrated by echarts by default, and you need to inclued &lt;code class=&quot;highlighter-rouge&quot;&gt;ecStat.js&lt;/code&gt; after &lt;code class=&quot;highlighter-rouge&quot;&gt;echarts.js&lt;/code&gt;. You can find the file &lt;code class=&quot;highlighter-rouge&quot;&gt;dist/ecStat.js&lt;/code&gt; in the latest released version at &lt;a href=&quot;https://github.com/ecomfe/echarts-stat/releases/latest&quot;&gt;here (GitHub)&lt;/a&gt;.&lt;/p&gt;
 
@@ -122,15 +122,15 @@
 &lt;p&gt;Calendar coordiante system is a new type of echarts coordiante system, which can used to locate different charts (For example, scatter, heatmap, graph, pie, or even other coordinate systems like cartesian).&lt;/p&gt;
 
 &lt;p&gt;Using heatmap in calendar:&lt;/p&gt;
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://sushuang.baidu.com:8000/echarts/echarts-examples/public/data/thumb/bubble-gradient.png&quot; data-src=&quot;https://ecomfe.github.io/echarts-examples/public/view.html?c=calendar-heatmap&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 300px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;https://ecomfe.github.io/echarts-examples/public/data/thumb/bubble-gradient.png&quot; data-src=&quot;https://ecomfe.github.io/echarts-examples/public/view.html?c=calendar-heatmap&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 300px&quot;&gt;&lt;/div&gt;
 
 &lt;p&gt;Using scatter in calendar:&lt;/p&gt;
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://sushuang.baidu.com:8000/echarts/echarts-examples/public/data/thumb/bubble-gradient.png&quot; data-src=&quot;https://ecomfe.github.io/echarts-examples/public/view.html?c=calendar-effectscatter&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 600px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;https://ecomfe.github.io/echarts-examples/public/data/thumb/bubble-gradient.png&quot; data-src=&quot;https://ecomfe.github.io/echarts-examples/public/view.html?c=calendar-effectscatter&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 600px&quot;&gt;&lt;/div&gt;
 
 &lt;p&gt;Different types of chart can be place on calendar coordinate system together.&lt;/p&gt;
 
 &lt;p&gt;Both place heatmap and graph chart in calendar:&lt;/p&gt;
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://sushuang.baidu.com:8000/echarts/echarts-examples/public/data/thumb/bubble-gradient.png&quot; data-src=&quot;https://ecomfe.github.io/echarts-examples/public/view.html?c=calendar-graph&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 600px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;https://ecomfe.github.io/echarts-examples/public/data/thumb/bubble-gradient.png&quot; data-src=&quot;https://ecomfe.github.io/echarts-examples/public/view.html?c=calendar-graph&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 600px&quot;&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;strong&gt;Calendar layout:&lt;/strong&gt;&lt;/p&gt;
 
@@ -145,7 +145,7 @@
 &lt;p&gt;Feel free to combination charts and calendar coordinate systems. You may achieve awesome effects.&lt;/p&gt;
 
 &lt;p&gt;For example, using API &lt;code class=&quot;highlighter-rouge&quot;&gt;chart.convertToPixel&lt;/code&gt; to locate pie charts on calendar.&lt;/p&gt;
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://sushuang.baidu.com:8000/echarts/echarts-examples/public/data/thumb/bubble-gradient.png&quot; data-src=&quot;https://ecomfe.github.io/echarts-examples/public/view.html?c=calendar-pie&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 640px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;https://ecomfe.github.io/echarts-examples/public/data/thumb/bubble-gradient.png&quot; data-src=&quot;https://ecomfe.github.io/echarts-examples/public/view.html?c=calendar-pie&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 640px&quot;&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;axis-pointer&quot;&gt;Axis Pointer&lt;/h2&gt;
 
@@ -154,26 +154,26 @@
 &lt;p&gt;The original axis pointer is enhance significantly, which currently supports text label, a new approach of interaction on touch device, and other detailed configurations. Besides, that synchronization between axis pointers of different coordinate systems is supported.&lt;/p&gt;
 
 &lt;p&gt;An example, where axis pointers can be displayed in candlestick.&lt;/p&gt;
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://sushuang.baidu.com:8000/echarts/echarts-examples/public/data/thumb/bubble-gradient.png&quot; data-src=&quot;https://ecomfe.github.io/echarts-examples/public/view.html?c=doc-example/candlestick-axisPointer&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 450px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;https://ecomfe.github.io/echarts-examples/public/data/thumb/bubble-gradient.png&quot; data-src=&quot;https://ecomfe.github.io/echarts-examples/public/view.html?c=doc-example/candlestick-axisPointer&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 450px&quot;&gt;&lt;/div&gt;
 
 &lt;p&gt;In the example above, &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#axisPointer.link&quot;&gt;axisPointer.link&lt;/a&gt; is used to synchronize axes from the two different cartesian coordiante system.&lt;/p&gt;
 
 &lt;p&gt;Besides, a approach of interaction on touch devices is supported, where axis pointer is alwayed displayed, and a handle button can be dragged to move the axis pointer, which makes the finger not block the view to charts any more.&lt;/p&gt;
 
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://sushuang.baidu.com:8000/echarts/echarts-examples/public/data/thumb/bubble-gradient.png&quot; data-src=&quot;https://ecomfe.github.io/echarts-examples/public/view.html?c=line-tooltip-touch&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;https://ecomfe.github.io/echarts-examples/public/data/thumb/bubble-gradient.png&quot; data-src=&quot;https://ecomfe.github.io/echarts-examples/public/view.html?c=line-tooltip-touch&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
 
 &lt;p&gt;This is another example:&lt;/p&gt;
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://sushuang.baidu.com:8000/echarts/echarts-examples/public/data/thumb/bubble-gradient.png&quot; data-src=&quot;http://sushuang.baidu.com:8000/echarts/echarts-examples/public/view.html?c=candlestick-touch&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png&quot; data-src=&quot;http://echarts.baidu.com/gallery/view.html?c=candlestick-touch&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
 
 &lt;p&gt;These examples demonstrating the effect of mutiple axes with axis pointers:&lt;/p&gt;
 
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://sushuang.baidu.com:8000/echarts/echarts-examples/public/data/thumb/bubble-gradient.png&quot; data-src=&quot;https://ecomfe.github.io/echarts-examples/public/view.html?c=multiple-y-axis&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 300px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;https://ecomfe.github.io/echarts-examples/public/data/thumb/bubble-gradient.png&quot; data-src=&quot;https://ecomfe.github.io/echarts-examples/public/view.html?c=multiple-y-axis&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 300px&quot;&gt;&lt;/div&gt;
 
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://sushuang.baidu.com:8000/echarts/echarts-examples/public/data/thumb/bubble-gradient.png&quot; data-src=&quot;https://ecomfe.github.io/echarts-examples/public/view.html?c=multiple-x-axis&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 300px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;https://ecomfe.github.io/echarts-examples/public/data/thumb/bubble-gradient.png&quot; data-src=&quot;https://ecomfe.github.io/echarts-examples/public/view.html?c=multiple-x-axis&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 300px&quot;&gt;&lt;/div&gt;
 
 &lt;p&gt;At last, let’s see a more complicated example, where &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#axisPointer.link&quot;&gt;axisPointer.link&lt;/a&gt; is also be used to synchronize axis pointers of different axes.&lt;/p&gt;
 
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://sushuang.baidu.com:8000/echarts/echarts-examples/public/data/thumb/bubble-gradient.png&quot; data-src=&quot;https://ecomfe.github.io/echarts-examples/public/view.html?c=scatter-nutrients-matrix&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 640px&quot;&gt;&lt;/div&gt;</content><author><name></name></author><category term="new release" /><category term="extension" /><category term="tutorial" /><summary type="html">We are releasing echarts v3.5, where calendar coodinate system is supported and axis pointer is enhanced. Meanwhile echarts statistic extension v1.0 is published.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/%7B%22feature%22=%3E%22post/2017-01-13-new-release-theme-river.png%22%7D" /></entry><entry><title type="html">可视化中的数据</title><link href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/03/15/echarts-dataAbstraction-tutorial.html" rel="alternate" type="text/html" title="可视化中的数据" /><published>2017-03-15T00:00:00+08:00</published><updated>2017-03-15T00:00:00+08:00</updated><id>http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/03/15/echarts-dataAbstraction-tutorial</id><content type="html" xml:base="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/03/15/echarts-dataAbstraction-tutorial.html">&lt;p&gt;当下随着大数据热潮的到来，数据可视化作为一个新兴的领域，受到了学术界和工业界的重视。从可视分析、数据新闻到商业报表，各个领域都在越来越多的使用它。既然是数据可视化，说明数据是主体，可视化只是将数据以可视的形式表达的手段。接下来小编就与大家一起揭开可视化中数据的面纱，一探究竟。&lt;/p&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;https://ecomfe.github.io/echarts-examples/public/data/thumb/bubble-gradient.png&quot; data-src=&quot;https://ecomfe.github.io/echarts-examples/public/view.html?c=scatter-nutrients-matrix&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 640px&quot;&gt;&lt;/div&gt;</content><author><name></name></author><category term="new release" /><category term="extension" /><category term="tutorial" /><summary type="html">We are releasing echarts v3.5, where calendar coodinate system is supported and axis pointer is enhanced. Meanwhile echarts statistic extension v1.0 is published.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://echarts.baidu.com/blog/%7B%22feature%22=%3E%22post/2017-01-13-new-release-theme-river.png%22%7D" /></entry><entry><title type="html">可视化中的数据</title><link href="http://echarts.baidu.com/blog/2017/03/15/echarts-dataAbstraction-tutorial.html" rel="alternate" type="text/html" title="可视化中的数据" /><published>2017-03-15T00:00:00+08:00</published><updated>2017-03-15T00:00:00+08:00</updated><id>http://echarts.baidu.com/blog/2017/03/15/echarts-dataAbstraction-tutorial</id><content type="html" xml:base="http://echarts.baidu.com/blog/2017/03/15/echarts-dataAbstraction-tutorial.html">&lt;p&gt;当下随着大数据热潮的到来，数据可视化作为一个新兴的领域，受到了学术界和工业界的重视。从可视分析、数据新闻到商业报表，各个领域都在越来越多的使用它。既然是数据可视化，说明数据是主体，可视化只是将数据以可视的形式表达的手段。接下来小编就与大家一起揭开可视化中数据的面纱，一探究竟。&lt;/p&gt;
 
 &lt;h2 id=&quot;section&quot;&gt;可视化什么：数据抽象&lt;/h2&gt;
 
@@ -183,13 +183,13 @@
 
 &lt;p&gt;本文主要讨论ECharts中所涉及的四种基本数据类，分别是数据项、数据项的属性、链接、位置。数据项是指一个独立的实体，如关系数据表中的一行，或网络中的一个节点；属性是数据项的某个可被观测的特性，如年龄，性别等；链接是指数据项之间的关系，该数据类型在网状关系型数据集中用的比较多；位置是地理空间数据类型，指代二维或三维空间中的某个具体位置；下图展示了四种不同的数据集类型所包含的数据类。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-datatypes.png&quot; alt=&quot;data&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-datatypes.png&quot; alt=&quot;data&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;section-2&quot;&gt;数据集类型&lt;/h3&gt;
 
 &lt;p&gt;数据集是指为了分析而收集的任何信息，数据集包括数据表，网状数据，场数据（本文主要关注信息可视化，而场数据主要应用于科学可视化，因而在此不作介绍）以及几何空间数据这四种基本类型，而现实世界中的数据集一般是由这四个基本类型中的一个或多个组合而成的。下图展示了四种不同数据集类型具体的内部结构。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-dataset.png&quot; alt=&quot;data&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-dataset.png&quot; alt=&quot;data&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;section-3&quot;&gt;数据表&lt;/h4&gt;
 
@@ -212,14 +212,14 @@
 有序型数据可以是单向的有序序列，比如人的年龄，只能往一个方向递增，也可以是有公共零点的对向序列，如温度。有序型数据也可以是环状周期的，如时间相关的属性。
 在单个属性内部或者多个属性之间可能具有层级结构，如北京一年的交通事故数量，这是一个时间序列数据，具有时间属性，可以分层级聚合，可以分别按周、月、年聚合，在不同的时间聚合尺度下可能会发现数据集中有趣的模式。除了时间属性之外，地理空间数据也具有层级结构，如可以细分到省、市、县等。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-attribute.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-attribute.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;section-6&quot;&gt;总结&lt;/h2&gt;
 &lt;p&gt;本文简要讨论了可视化中的数据，从数据的种类、数据集的类型以及属性的类型这三个角度阐述了可视化中需要可视表达的数据信息。&lt;/p&gt;
 
 &lt;h4 id=&quot;section-7&quot;&gt;参考文献&lt;/h4&gt;
 
-&lt;p&gt;[1] Tamara Munzner.Visualization Analysis and Design. CRC Press, 2014.&lt;/p&gt;</content><author><name></name></author><category term="visualization" /><category term="tutorial" /><summary type="html">当下随着大数据热潮的到来，数据可视化作为一个新兴的领域，受到了学术界和工业界的重视。从可视分析、数据新闻到商业报表，各个领域都在越来越多的使用它。既然是数据可视化，说明数据是主体，可视化只是将数据以可视的形式表达的手段。接下来小编就与大家一起揭开可视化中数据的面纱，一探究竟。</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/%7B%22feature%22=%3E%22post/2017-03-15-echarts-dataAbstraction-tutorial-dataset.png%22%7D" /></entry><entry><title type="html">ECharts 水球图教程</title><link href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html" rel="alternate" type="text/html" title="ECharts 水球图教程" /><published>2017-02-21T00:00:00+08:00</published><updated>2017-02-21T00:00:00+08:00</updated><id>http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/02/21/echarts-liquidfill-chart-tutorial</id><content type="html" xml:base="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html">&lt;p&gt;水球图是一种适合于展现单个百分比数据的图表类型，ECharts 的&lt;a href=&quot;https://github.com/ecomfe/echarts-liquidfill&quot;&gt;水球图插件&lt;/a&gt;使你能够通过非常简单的配置，实现酷炫的数据展示效果。&lt;/p&gt;
+&lt;p&gt;[1] Tamara Munzner.Visualization Analysis and Design. CRC Press, 2014.&lt;/p&gt;</content><author><name></name></author><category term="visualization" /><category term="tutorial" /><summary type="html">当下随着大数据热潮的到来，数据可视化作为一个新兴的领域，受到了学术界和工业界的重视。从可视分析、数据新闻到商业报表，各个领域都在越来越多的使用它。既然是数据可视化，说明数据是主体，可视化只是将数据以可视的形式表达的手段。接下来小编就与大家一起揭开可视化中数据的面纱，一探究竟。</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://echarts.baidu.com/blog/%7B%22feature%22=%3E%22post/2017-03-15-echarts-dataAbstraction-tutorial-dataset.png%22%7D" /></entry><entry><title type="html">ECharts 水球图教程</title><link href="http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html" rel="alternate" type="text/html" title="ECharts 水球图教程" /><published>2017-02-21T00:00:00+08:00</published><updated>2017-02-21T00:00:00+08:00</updated><id>http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial</id><content type="html" xml:base="http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html">&lt;p&gt;水球图是一种适合于展现单个百分比数据的图表类型，ECharts 的&lt;a href=&quot;https://github.com/ecomfe/echarts-liquidfill&quot;&gt;水球图插件&lt;/a&gt;使你能够通过非常简单的配置，实现酷炫的数据展示效果。&lt;/p&gt;
 
 &lt;iframe style=&quot;width: 100%; height: 350px&quot; src=&quot;http://gallery.echartsjs.com/view.html?cid=liquidfill-basic&quot;&gt;&lt;/iframe&gt;
 
@@ -449,7 +449,7 @@
 
 &lt;p&gt;以上，我们介绍了 ECharts 水球图的一些基本用法，希望能够给大家启发，创作出更多波涛汹涌的作品。&lt;/p&gt;
 
-&lt;p&gt;更完整的配置项请参考 GitHub 上&lt;a href=&quot;https://github.com/ecomfe/echarts-liquidfill&quot;&gt;详细的文档&lt;/a&gt;，或者到 ECharts Gallery 上查看其它&lt;a href=&quot;http://gallery.echartsjs.com/explore.html#sort=rank~timeframe=all~query=liquidFill~author=all&quot;&gt;水球图作品&lt;/a&gt;。&lt;/p&gt;</content><author><name></name></author><category term="extension" /><category term="tutorial" /><summary type="html">水球图是一种适合于展现单个百分比数据的图表类型，ECharts 的水球图插件使你能够通过非常简单的配置，实现酷炫的数据展示效果。</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/%7B%22feature%22=%3E%22post/2017-02-21-echarts-liquidfill-chart-tutorial.gif%22%7D" /></entry><entry><title type="html">ECharts Liquid-fill Chart Tutorial</title><link href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/02/21/echarts-liquidfill-chart-tutorial-en.html" rel="alternate" type="text/html" title="ECharts Liquid-fill Chart Tutorial" /><published>2017-02-21T00:00:00+08:00</published><updated>2017-02-21T00:00:00+08:00</updated><id>http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/02/21/echarts-liquidfill-chart-tutorial-en</id><content type="html" xml:base="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/02/21/echarts-liquidfill-chart-tutorial-en.html">&lt;p&gt;Liquid-fill is a type of charts that are suitable for displaying single percentage data. &lt;a href=&quot;https://github.com/ecomfe/echarts-liquidfill&quot;&gt;ECharts liquid-fill Chart&lt;/a&gt; provides fancy presentation of percentage data through single but power configurations.&lt;/p&gt;
+&lt;p&gt;更完整的配置项请参考 GitHub 上&lt;a href=&quot;https://github.com/ecomfe/echarts-liquidfill&quot;&gt;详细的文档&lt;/a&gt;，或者到 ECharts Gallery 上查看其它&lt;a href=&quot;http://gallery.echartsjs.com/explore.html#sort=rank~timeframe=all~query=liquidFill~author=all&quot;&gt;水球图作品&lt;/a&gt;。&lt;/p&gt;</content><author><name></name></author><category term="extension" /><category term="tutorial" /><summary type="html">水球图是一种适合于展现单个百分比数据的图表类型，ECharts 的水球图插件使你能够通过非常简单的配置，实现酷炫的数据展示效果。</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://echarts.baidu.com/blog/%7B%22feature%22=%3E%22post/2017-02-21-echarts-liquidfill-chart-tutorial.gif%22%7D" /></entry><entry><title type="html">ECharts Liquid-fill Chart Tutorial</title><link href="http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial-en.html" rel="alternate" type="text/html" title="ECharts Liquid-fill Chart Tutorial" /><published>2017-02-21T00:00:00+08:00</published><updated>2017-02-21T00:00:00+08:00</updated><id>http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial-en</id><content type="html" xml:base="http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial-en.html">&lt;p&gt;Liquid-fill is a type of charts that are suitable for displaying single percentage data. &lt;a href=&quot;https://github.com/ecomfe/echarts-liquidfill&quot;&gt;ECharts liquid-fill Chart&lt;/a&gt; provides fancy presentation of percentage data through single but power configurations.&lt;/p&gt;
 
 &lt;iframe style=&quot;width: 100%; height: 350px&quot; src=&quot;http://gallery.echartsjs.com/view.html?cid=liquidfill-basic&quot;&gt;&lt;/iframe&gt;
 
@@ -679,7 +679,7 @@
 
 &lt;p&gt;In this post, we introduced how to use ECharts liquid-fill charts. Hopefully, you can be inspired by it and create more interesting works.&lt;/p&gt;
 
-&lt;p&gt;Full document please refer to &lt;a href=&quot;https://github.com/ecomfe/echarts-liquidfill&quot;&gt;GitHub&lt;/a&gt;. And you may go to &lt;a href=&quot;http://gallery.echartsjs.com/explore.html#sort=rank~timeframe=all~query=liquidFill~author=all&quot;&gt;ECharts Gallery&lt;/a&gt; to view more liquid-fill charts.&lt;/p&gt;</content><author><name></name></author><category term="en" /><category term="extension" /><category term="tutorial" /><summary type="html">Liquid-fill is a type of charts that are suitable for displaying single percentage data. ECharts liquid-fill Chart provides fancy presentation of percentage data through single but power configurations.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/%7B%22feature%22=%3E%22post/2017-02-21-echarts-liquidfill-chart-tutorial.gif%22%7D" /></entry><entry><title type="html">ECharts 3.4 版本发布：新增象形柱图、主题河流图、水球图</title><link href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/01/13/new-release.html" rel="alternate" type="text/html" title="ECharts 3.4 版本发布：新增象形柱图、主题河流图、水球图" /><published>2017-01-13T00:00:00+08:00</published><updated>2017-01-13T00:00:00+08:00</updated><id>http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/01/13/new-release</id><content type="html" xml:base="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/01/13/new-release.html">&lt;p&gt;在 ECharts 新发布的 3.4 版本中，新增象形柱图、主题河流图、水球图三种新图表。象形柱图利用图片和形状表现数据，主题河流图可以用来表示事件或主题等在一段时间内变化，水球图常用来展现百分比数据。&lt;/p&gt;
+&lt;p&gt;Full document please refer to &lt;a href=&quot;https://github.com/ecomfe/echarts-liquidfill&quot;&gt;GitHub&lt;/a&gt;. And you may go to &lt;a href=&quot;http://gallery.echartsjs.com/explore.html#sort=rank~timeframe=all~query=liquidFill~author=all&quot;&gt;ECharts Gallery&lt;/a&gt; to view more liquid-fill charts.&lt;/p&gt;</content><author><name></name></author><category term="en" /><category term="extension" /><category term="tutorial" /><summary type="html">Liquid-fill is a type of charts that are suitable for displaying single percentage data. ECharts liquid-fill Chart provides fancy presentation of percentage data through single but power configurations.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://echarts.baidu.com/blog/%7B%22feature%22=%3E%22post/2017-02-21-echarts-liquidfill-chart-tutorial.gif%22%7D" /></entry><entry><title type="html">ECharts 3.4 版本发布：新增象形柱图、主题河流图、水球图</title><link href="http://echarts.baidu.com/blog/2017/01/13/new-release.html" rel="alternate" type="text/html" title="ECharts 3.4 版本发布：新增象形柱图、主题河流图、水球图" /><published>2017-01-13T00:00:00+08:00</published><updated>2017-01-13T00:00:00+08:00</updated><id>http://echarts.baidu.com/blog/2017/01/13/new-release</id><content type="html" xml:base="http://echarts.baidu.com/blog/2017/01/13/new-release.html">&lt;p&gt;在 ECharts 新发布的 3.4 版本中，新增象形柱图、主题河流图、水球图三种新图表。象形柱图利用图片和形状表现数据，主题河流图可以用来表示事件或主题等在一段时间内变化，水球图常用来展现百分比数据。&lt;/p&gt;
 
 &lt;h2 id=&quot;section&quot;&gt;象形柱图&lt;/h2&gt;
 
@@ -815,7 +815,7 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;strong&gt;欢迎前往 &lt;a href=&quot;http://gallery.echartsjs.com/explore.html&quot;&gt;ECharts Gallery&lt;/a&gt; 创建自己的 ECharts 图表，更方便地提问，以及建立自己的作品集。2017 年，让我们一起将可视化做得更棒！&lt;/strong&gt;&lt;/p&gt;</content><author><name></name></author><category term="new release" /><category term="extension" /><category term="tutorial" /><summary type="html">在 ECharts 新发布的 3.4 版本中，新增象形柱图、主题河流图、水球图三种新图表。象形柱图利用图片和形状表现数据，主题河流图可以用来表示事件或主题等在一段时间内变化，水球图常用来展现百分比数据。</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/%7B%22feature%22=%3E%22post/2017-01-13-new-release-theme-river.png%22%7D" /></entry><entry><title type="html">ECharts Released v3.4, supporting three new chart types</title><link href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/01/13/new-release-en.html" rel="alternate" type="text/html" title="ECharts Released v3.4, supporting three new chart types" /><published>2017-01-13T00:00:00+08:00</published><updated>2017-01-13T00:00:00+08:00</updated><id>http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/01/13/new-release-en</id><content type="html" xml:base="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/01/13/new-release-en.html">&lt;p&gt;We are releasing ECharts v3.4, supporting three new types of charts, namely, pictorial-bar charts, theme-river charts, and liquid-fill charts. Pictorial-bar charts use images and shapes to represent data; theme-river charts are used to show the evolution of events or themes during a period; and liquid-fill charts are usually used to represent data in percentage.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;欢迎前往 &lt;a href=&quot;http://gallery.echartsjs.com/explore.html&quot;&gt;ECharts Gallery&lt;/a&gt; 创建自己的 ECharts 图表，更方便地提问，以及建立自己的作品集。2017 年，让我们一起将可视化做得更棒！&lt;/strong&gt;&lt;/p&gt;</content><author><name></name></author><category term="new release" /><category term="extension" /><category term="tutorial" /><summary type="html">在 ECharts 新发布的 3.4 版本中，新增象形柱图、主题河流图、水球图三种新图表。象形柱图利用图片和形状表现数据，主题河流图可以用来表示事件或主题等在一段时间内变化，水球图常用来展现百分比数据。</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://echarts.baidu.com/blog/%7B%22feature%22=%3E%22post/2017-01-13-new-release-theme-river.png%22%7D" /></entry><entry><title type="html">ECharts Released v3.4, supporting three new chart types</title><link href="http://echarts.baidu.com/blog/2017/01/13/new-release-en.html" rel="alternate" type="text/html" title="ECharts Released v3.4, supporting three new chart types" /><published>2017-01-13T00:00:00+08:00</published><updated>2017-01-13T00:00:00+08:00</updated><id>http://echarts.baidu.com/blog/2017/01/13/new-release-en</id><content type="html" xml:base="http://echarts.baidu.com/blog/2017/01/13/new-release-en.html">&lt;p&gt;We are releasing ECharts v3.4, supporting three new types of charts, namely, pictorial-bar charts, theme-river charts, and liquid-fill charts. Pictorial-bar charts use images and shapes to represent data; theme-river charts are used to show the evolution of events or themes during a period; and liquid-fill charts are usually used to represent data in percentage.&lt;/p&gt;
 
 &lt;h2 id=&quot;pictorial-bar-charts&quot;&gt;Pictorial-bar Charts&lt;/h2&gt;
 
@@ -955,13 +955,13 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;strong&gt;Please visit &lt;a href=&quot;http://gallery.echartsjs.com/explore.html&quot;&gt;ECharts Gallery&lt;/a&gt; to create charts with ECharts, for sharing when asking others for help, or make your own portfolio. Let’s make better visualization products in 2017!&lt;/strong&gt;&lt;/p&gt;</content><author><name></name></author><category term="en" /><category term="new release" /><category term="extension" /><category term="tutorial" /><summary type="html">We are releasing ECharts v3.4, supporting three new types of charts, namely, pictorial-bar charts, theme-river charts, and liquid-fill charts. Pictorial-bar charts use images and shapes to represent data; theme-river charts are used to show the evolution of events or themes during a period; and liquid-fill charts are usually used to represent data in percentage.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/%7B%22feature%22=%3E%22post/2017-01-13-new-release-theme-river.png%22%7D" /></entry><entry><title type="html">ECharts 实现地图散点图（下）</title><link href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2016/06/13/echarts-map-tutorial.html" rel="alternate" type="text/html" title="ECharts 实现地图散点图（下）" /><published>2016-06-13T00:00:00+08:00</published><updated>2016-06-13T00:00:00+08:00</updated><id>http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2016/06/13/echarts-map-tutorial</id><content type="html" xml:base="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2016/06/13/echarts-map-tutorial.html">&lt;h2 id=&quot;section&quot;&gt;在百度地图上绘制散点图&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Please visit &lt;a href=&quot;http://gallery.echartsjs.com/explore.html&quot;&gt;ECharts Gallery&lt;/a&gt; to create charts with ECharts, for sharing when asking others for help, or make your own portfolio. Let’s make better visualization products in 2017!&lt;/strong&gt;&lt;/p&gt;</content><author><name></name></author><category term="en" /><category term="new release" /><category term="extension" /><category term="tutorial" /><summary type="html">We are releasing ECharts v3.4, supporting three new types of charts, namely, pictorial-bar charts, theme-river charts, and liquid-fill charts. Pictorial-bar charts use images and shapes to represent data; theme-river charts are used to show the evolution of events or themes during a period; and liquid-fill charts are usually used to represent data in percentage.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://echarts.baidu.com/blog/%7B%22feature%22=%3E%22post/2017-01-13-new-release-theme-river.png%22%7D" /></entry><entry><title type="html">ECharts 实现地图散点图（下）</title><link href="http://echarts.baidu.com/blog/2016/06/13/echarts-map-tutorial.html" rel="alternate" type="text/html" title="ECharts 实现地图散点图（下）" /><published>2016-06-13T00:00:00+08:00</published><updated>2016-06-13T00:00:00+08:00</updated><id>http://echarts.baidu.com/blog/2016/06/13/echarts-map-tutorial</id><content type="html" xml:base="http://echarts.baidu.com/blog/2016/06/13/echarts-map-tutorial.html">&lt;h2 id=&quot;section&quot;&gt;在百度地图上绘制散点图&lt;/h2&gt;
 
 &lt;p&gt;上一篇我们介绍了如何使用 ehcarts 内置地图实现地图上绘制的散点图，这篇中，我们将讲解如何在百度地图上绘制散点图。&lt;/p&gt;
 
 &lt;h2 id=&quot;section-1&quot;&gt;一、初始准备&lt;/h2&gt;
 
-&lt;p&gt;首先要创建 html 和引入 ECharts 包，具体说明详见上篇：&lt;a href=&quot;http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2016/04/28/echarts-map-tutorial.html&quot;&gt;ECharts 实现地图散点图（一）&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;首先要创建 html 和引入 ECharts 包，具体说明详见上篇：&lt;a href=&quot;http://echarts.baidu.com/blog/2016/04/28/echarts-map-tutorial.html&quot;&gt;ECharts 实现地图散点图（一）&lt;/a&gt;。&lt;/p&gt;
 
 &lt;h2 id=&quot;echarts&quot;&gt;二、引入echarts百度地图扩展包&lt;/h2&gt;
 
@@ -1056,7 +1056,7 @@
 
 &lt;p&gt;这样百度地图就加载到页面中了，这里显示百度地图的默认样式，稍后第四部分将为百度地图添加自定义样式的配置：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/post/2016-06-13-bmap-1.png&quot; alt=&quot;百度地图1&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2016-06-13-bmap-1.png&quot; alt=&quot;百度地图1&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;section-3&quot;&gt;四、绘制散点图&lt;/h2&gt;
 
@@ -1105,7 +1105,7 @@
 
 &lt;p&gt;绘制散点后的百度地图：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/post/2016-06-13-bmap-2.png&quot; alt=&quot;百度地图2&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2016-06-13-bmap-2.png&quot; alt=&quot;百度地图2&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;section-4&quot;&gt;四、	自定义百度地图样式&lt;/h2&gt;
 
@@ -1184,7 +1184,7 @@
 
 &lt;p&gt;实现效果如下图：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/post/2016-06-13-bmap-3.png&quot; alt=&quot;百度地图3&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2016-06-13-bmap-3.png&quot; alt=&quot;百度地图3&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;除了上述四个配置，其他地图设置都可以通过 &lt;a href=&quot;http://lbsyun.baidu.com/index.php?title=jspopular&quot;&gt;百度地图提供的API&lt;/a&gt; 实现&lt;/p&gt;
 
@@ -1203,7 +1203,7 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/post/2016-06-13-bmap-4.png&quot; alt=&quot;百度地图4&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="map" /><category term="tutorial" /><summary type="html">在百度地图上绘制散点图</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/%7B%22feature%22=%3E%22post/2016-06-13-bmap-4.png%22%7D" /></entry><entry><title type="html">ECharts 实现地图散点图（上）</title><link href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2016/04/28/echarts-map-tutorial.html" rel="alternate" type="text/html" title="ECharts 实现地图散点图（上）" /><published>2016-04-28T00:00:00+08:00</published><updated>2016-04-28T00:00:00+08:00</updated><id>http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2016/04/28/echarts-map-tutorial</id><content type="html" xml:base="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2016/04/28/echarts-map-tutorial.html">&lt;p&gt;ECharts 作为国内应用最广泛的前端可视化生成工具，提供了丰富的图表展现方式和便捷的图表操作。
+&lt;p&gt;&lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2016-06-13-bmap-4.png&quot; alt=&quot;百度地图4&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="map" /><category term="tutorial" /><summary type="html">在百度地图上绘制散点图</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://echarts.baidu.com/blog/%7B%22feature%22=%3E%22post/2016-06-13-bmap-4.png%22%7D" /></entry><entry><title type="html">ECharts 实现地图散点图（上）</title><link href="http://echarts.baidu.com/blog/2016/04/28/echarts-map-tutorial.html" rel="alternate" type="text/html" title="ECharts 实现地图散点图（上）" /><published>2016-04-28T00:00:00+08:00</published><updated>2016-04-28T00:00:00+08:00</updated><id>http://echarts.baidu.com/blog/2016/04/28/echarts-map-tutorial</id><content type="html" xml:base="http://echarts.baidu.com/blog/2016/04/28/echarts-map-tutorial.html">&lt;p&gt;ECharts 作为国内应用最广泛的前端可视化生成工具，提供了丰富的图表展现方式和便捷的图表操作。
 ECharts 支持 geoJson 格式的地图，并且官网上提供了现成的 world，china 及全国34个省市自治区地图的下载。这篇文章中我们将会讲解如何使用 ECharts 实现一个中国地图上绘制的散点图。&lt;/p&gt;
 
 &lt;h2 id=&quot;section&quot;&gt;一、初始准备&lt;/h2&gt;
@@ -1369,7 +1369,7 @@ ECharts 支持 geoJson 格式的地图，并且官网上提供了现成的 world
 
 &lt;p&gt;现在就可以在页面中看到中国地图了：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/post/2016-04-28-echarts-map-tutorial-china-js-1.png&quot; alt=&quot;地图&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2016-04-28-echarts-map-tutorial-china-js-1.png&quot; alt=&quot;地图&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;为了突出散点效果，先为地图改个颜色&lt;/p&gt;
 
@@ -1395,7 +1395,7 @@ ECharts 支持 geoJson 格式的地图，并且官网上提供了现成的 world
 
 &lt;p&gt;换装后的地图：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/post/2016-04-28-echarts-map-tutorial-china-js-2.png&quot; alt=&quot;中国地图底图&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2016-04-28-echarts-map-tutorial-china-js-2.png&quot; alt=&quot;中国地图底图&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;section-2&quot;&gt;三、绘制散点图&lt;/h2&gt;
 
@@ -1479,7 +1479,7 @@ ECharts 支持 geoJson 格式的地图，并且官网上提供了现成的 world
 
 &lt;p&gt;数据添加完成，就可以在图表中看到渲染出的散点了：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/post/2016-04-28-echarts-map-tutorial-scatter-1.png&quot; alt=&quot;散点图1&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2016-04-28-echarts-map-tutorial-scatter-1.png&quot; alt=&quot;散点图1&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;section-4&quot;&gt;3.添加视觉映射组件&lt;/h4&gt;
 
@@ -1509,6 +1509,6 @@ ECharts 支持 geoJson 格式的地图，并且官网上提供了现成的 world
 
 &lt;p&gt;添加了值域控件的图表效果：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/post/2016-04-28-echarts-map-tutorial-china-js-2.png&quot; alt=&quot;散点图2&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2016-04-28-echarts-map-tutorial-china-js-2.png&quot; alt=&quot;散点图2&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;这样一个基于中国地图的散点图就基本实现了，如果想要继续完善图表，可以为它添加标题，图例，高亮提示等控件，配置方式在这里查看（&lt;a href=&quot;http://echarts.baidu.com/option.html#title&quot;&gt;ECharts 配置项手册&lt;/a&gt;），在此不再详细说明。&lt;/p&gt;</content><author><name></name></author><category term="map" /><category term="tutorial" /><summary type="html">ECharts 作为国内应用最广泛的前端可视化生成工具，提供了丰富的图表展现方式和便捷的图表操作。 ECharts 支持 geoJson 格式的地图，并且官网上提供了现成的 world，china 及全国34个省市自治区地图的下载。这篇文章中我们将会讲解如何使用 ECharts 实现一个中国地图上绘制的散点图。</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/%7B%22feature%22=%3E%22post/2016-04-28-echarts-map-tutorial-scatter-2.png%22%7D" /></entry></feed>
+&lt;p&gt;这样一个基于中国地图的散点图就基本实现了，如果想要继续完善图表，可以为它添加标题，图例，高亮提示等控件，配置方式在这里查看（&lt;a href=&quot;http://echarts.baidu.com/option.html#title&quot;&gt;ECharts 配置项手册&lt;/a&gt;），在此不再详细说明。&lt;/p&gt;</content><author><name></name></author><category term="map" /><category term="tutorial" /><summary type="html">ECharts 作为国内应用最广泛的前端可视化生成工具，提供了丰富的图表展现方式和便捷的图表操作。 ECharts 支持 geoJson 格式的地图，并且官网上提供了现成的 world，china 及全国34个省市自治区地图的下载。这篇文章中我们将会讲解如何使用 ECharts 实现一个中国地图上绘制的散点图。</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://echarts.baidu.com/blog/%7B%22feature%22=%3E%22post/2016-04-28-echarts-map-tutorial-scatter-2.png%22%7D" /></entry></feed>

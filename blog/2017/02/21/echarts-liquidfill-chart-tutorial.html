@@ -16,15 +16,15 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="ECharts 水球图教程">
 <meta property="og:description" content="水球图是一种适合于展现单个百分比数据的图表类型，ECharts 的水球图插件使你能够通过非常简单的配置，实现酷炫的数据展示效果。本文将会介绍，如何使用 ECharts 水球图。">
-<meta property="og:url" content="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html">
+<meta property="og:url" content="http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html">
 <meta property="og:site_name" content="">
 
 
 
 
 
-<link rel="canonical" href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html">
-<link href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/feed.xml" type="application/atom+xml" rel="alternate" title=" Feed">
+<link rel="canonical" href="http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html">
+<link href="http://echarts.baidu.com/blog/feed.xml" type="application/atom+xml" rel="alternate" title=" Feed">
 
 <!-- http://t.co/dKP3o1e -->
 <meta name="HandheldFriendly" content="True">
@@ -32,28 +32,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- For all browsers -->
-<link rel="stylesheet" href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/assets/css/main.css">
+<link rel="stylesheet" href="http://echarts.baidu.com/blog/assets/css/main.css">
 <!-- Webfonts -->
 <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic" rel="stylesheet" type="text/css">
 
 <meta http-equiv="cleartype" content="on">
 
 <!-- Load Modernizr -->
-<script src="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+<script src="http://echarts.baidu.com/blog/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
 
 <!-- Icons -->
 <!-- 16x16 -->
-<link rel="shortcut icon" href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/favicon.ico">
+<link rel="shortcut icon" href="http://echarts.baidu.com/blog/favicon.ico">
 <!-- 32x32 -->
-<link rel="shortcut icon" href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/favicon.png">
+<link rel="shortcut icon" href="http://echarts.baidu.com/blog/favicon.png">
 <!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
-<link rel="apple-touch-icon-precomposed" href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/apple-touch-icon-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="http://echarts.baidu.com/blog/images/apple-touch-icon-precomposed.png">
 <!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/apple-touch-icon-72x72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://echarts.baidu.com/blog/images/apple-touch-icon-72x72-precomposed.png">
 <!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/apple-touch-icon-114x114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://echarts.baidu.com/blog/images/apple-touch-icon-114x114-precomposed.png">
 <!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/apple-touch-icon-144x144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://echarts.baidu.com/blog/images/apple-touch-icon-144x144-precomposed.png">
 
 
 
@@ -65,16 +65,16 @@
 <nav id="dl-menu" class="dl-menuwrapper" role="navigation">
 	<button class="dl-trigger">展开</button>
 	<ul class="dl-menu">
-		<li><a href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/">首页</a></li>
+		<li><a href="http://echarts.baidu.com/blog/">首页</a></li>
 		<!--<li>
 			<a href="#">About</a>
 			<ul class="dl-submenu">
 				<li>
-					<img src="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/echarts.png" alt="ECharts photo" class="author-photo">
+					<img src="http://echarts.baidu.com/blog/images/echarts.png" alt="ECharts photo" class="author-photo">
 					<h4>ECharts</h4>
 					<p>强大、简单、灵活的可视化工具</p>
 				</li>
-				<li><a href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/about/"><span class="btn btn-inverse">Learn More</span></a></li>
+				<li><a href="http://echarts.baidu.com/blog/about/"><span class="btn btn-inverse">Learn More</span></a></li>
 				
 				
 				
@@ -90,10 +90,10 @@
 			</ul><!-- /.dl-submenu -->
 		<!--/li-->
 		<li>
-			<a href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/posts/">所有文章</a>
+			<a href="http://echarts.baidu.com/blog/posts/">所有文章</a>
 		</li>
 		<li>
-			<a href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/tags/">所有标签</a>
+			<a href="http://echarts.baidu.com/blog/tags/">所有标签</a>
 		</li>
 		<li>
 			<a href="http://echarts.baidu.com/">ECharts 官网</a>
@@ -108,7 +108,7 @@
 <div class="entry-header">
   
   <div class="entry-image">
-    <img src="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/post/2017-02-21-echarts-liquidfill-chart-tutorial.gif" alt="ECharts 水球图教程">
+    <img src="http://echarts.baidu.com/blog/images/post/2017-02-21-echarts-liquidfill-chart-tutorial.gif" alt="ECharts 水球图教程">
   </div><!-- /.entry-image -->
 </div><!-- /.entry-header -->
 
@@ -366,14 +366,14 @@
 
 
       <footer class="entry-meta">
-        <span class="entry-tags"><a href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/tags/#extension" title="Pages tagged extension" class="tag"><span class="term">extension</span></a><a href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/tags/#tutorial" title="Pages tagged tutorial" class="tag"><span class="term">tutorial</span></a></span>
+        <span class="entry-tags"><a href="http://echarts.baidu.com/blog/tags/#extension" title="Pages tagged extension" class="tag"><span class="term">extension</span></a><a href="http://echarts.baidu.com/blog/tags/#tutorial" title="Pages tagged tutorial" class="tag"><span class="term">tutorial</span></a></span>
         
         <div class="social-share">
   <ul class="socialcount socialcount-small inline-list">分享到：
-    <li class="weibo"><a href="http://v.t.sina.com.cn/share/share.php?title=ECharts+官网博文：ECharts 水球图教程&url=http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html" title="Share on Weibo">新浪微博</a></li>
-    <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html" title="Share on Facebook"><span class="count"><i class="fa fa-facebook-square"></i> Like</span></a></li>
-    <li class="twitter"><a href="https://twitter.com/intent/tweet?text=http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html" title="Share on Twitter"><span class="count"><i class="fa fa-twitter-square"></i> Tweet</span></a></li>
-    <li class="googleplus"><a href="https://plus.google.com/share?url=http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html" title="Share on Google Plus"><span class="count"><i class="fa fa-google-plus-square"></i> +1</span></a></li>
+    <li class="weibo"><a href="http://v.t.sina.com.cn/share/share.php?title=ECharts+官网博文：ECharts 水球图教程&url=http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html" title="Share on Weibo">新浪微博</a></li>
+    <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html" title="Share on Facebook"><span class="count"><i class="fa fa-facebook-square"></i> Like</span></a></li>
+    <li class="twitter"><a href="https://twitter.com/intent/tweet?text=http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html" title="Share on Twitter"><span class="count"><i class="fa fa-twitter-square"></i> Tweet</span></a></li>
+    <li class="googleplus"><a href="https://plus.google.com/share?url=http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html" title="Share on Google Plus"><span class="count"><i class="fa fa-google-plus-square"></i> +1</span></a></li>
   </ul>
 </div><!-- /.social-share -->
       </footer>
@@ -383,11 +383,11 @@
   
     
     <div class="read-more-header">
-      <a href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/02/21/echarts-liquidfill-chart-tutorial-en.html" class="read-more-btn">了解更多</a>
+      <a href="http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial-en.html" class="read-more-btn">了解更多</a>
     </div><!-- /.read-more-header -->
     <div class="read-more-content">
-      <h3><a href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/03/23/new-release.html" title="echarts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布">echarts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布</a></h3>
-      <p>在 echarts 新发布的 3.5 版本中，新增了日历坐标系，增强了坐标轴指示器。同时，echarts 统计扩展 1.0 版本发布了。日历坐标系用于在日历中绘制图表，坐标轴指示器方便用户观察数据内容，统计扩展是一个专门用来进行数据分析的工具。 <a href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/03/23/new-release.html">继续阅读</a></p>
+      <h3><a href="http://echarts.baidu.com/blog/2017/03/23/new-release.html" title="echarts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布">echarts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布</a></h3>
+      <p>在 echarts 新发布的 3.5 版本中，新增了日历坐标系，增强了坐标轴指示器。同时，echarts 统计扩展 1.0 版本发布了。日历坐标系用于在日历中绘制图表，坐标轴指示器方便用户观察数据内容，统计扩展是一个专门用来进行数据分析的工具。 <a href="http://echarts.baidu.com/blog/2017/03/23/new-release.html">继续阅读</a></p>
     </div><!-- /.read-more-content -->
     
   
@@ -395,14 +395,14 @@
     
     
       <div class="list-item">
-        <h4><a href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/03/23/new-release-en.html" title="ECharts v3.5 Released, Publishing Calendar Coordinate System and Enhanced Axis Pointer, Meanwhile Statistic Extension v1.0 Released">ECharts v3.5 Released, Publishing Calendar Coordinate System and Enhanced Axis Pointer, Meanwhile Statistic Extension v1.0 Released</a></h4>
+        <h4><a href="http://echarts.baidu.com/blog/2017/03/23/new-release-en.html" title="ECharts v3.5 Released, Publishing Calendar Coordinate System and Enhanced Axis Pointer, Meanwhile Statistic Extension v1.0 Released">ECharts v3.5 Released, Publishing Calendar Coordinate System and Enhanced Axis Pointer, Meanwhile Statistic Extension v1.0 Released</a></h4>
         <span>Published on March 23, 2017</span>
       </div><!-- /.list-item -->
     
     
     
       <div class="list-item">
-        <h4><a href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/03/15/echarts-dataAbstraction-tutorial.html" title="可视化中的数据">可视化中的数据</a></h4>
+        <h4><a href="http://echarts.baidu.com/blog/2017/03/15/echarts-dataAbstraction-tutorial.html" title="可视化中的数据">可视化中的数据</a></h4>
         <span>Published on March 15, 2017</span>
       </div><!-- /.list-item -->
     
@@ -418,8 +418,8 @@
   </footer>
 </div><!-- /.footer-wrapper -->
 
-<script src="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/assets/js/vendor/jquery-1.9.1.min.js"></script>
-<script src="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/assets/js/scripts.min.js"></script>
+<script src="http://echarts.baidu.com/blog/assets/js/vendor/jquery-1.9.1.min.js"></script>
+<script src="http://echarts.baidu.com/blog/assets/js/scripts.min.js"></script>
 
 
 
