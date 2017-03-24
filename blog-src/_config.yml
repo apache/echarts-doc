@@ -6,7 +6,23 @@ destination: ../blog
 # Your site's domain goes here (eg: https://mmistakes.github.io, http://yourdomain.com, etc)
 # When testing locally leave blank or use http://localhost:4000
 url: http://echarts.baidu.com/blog
+url_gallery_view: http://gallery.echartsjs.com/view.html
+url_ec_examples_view_cn: http://echarts.baidu.com/gallery/view.html
+url_ec_examples_view_en: https://ecomfe.github.io/echarts-examples/public/view.html
+url_ec_examples_thumb_cn: http://echarts.baidu.com/gallery/data/thumb
+url_ec_examples_thumb_en: https://ecomfe.github.io/echarts-examples/public/data/thumb
+url_ec_option_cn: http://echarts.baidu.com/option.html
+url_ec_option_en: https://ecomfe.github.io/echarts-doc/public/en/option.html
+
 # url: http://localhost/ec-doc/blog
+# url: http://192.168.1.102:8000/echarts/echarts-doc/blog
+# url_ec_examples_view_cn: http://192.168.1.102:8000/echarts/echarts-examples/public/view.html
+# url_ec_examples_view_en: https://ecomfe.github.io/echarts-examples/public/view.html
+# url_ec_examples_thumb_cn: http://192.168.1.102:8000/echarts/echarts-examples/public/data/thumb
+# url_ec_examples_thumb_en: http://192.168.1.102:8000/echarts/echarts-examples/public/data/thumb
+# url_ec_option_cn: http://echarts.baidu.com/option.html
+# url_ec_option_en: https://ecomfe.github.io/echarts-doc/public/en/option.html
+
 
 # Owner/author information
 owner:
