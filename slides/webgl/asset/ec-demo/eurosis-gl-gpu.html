@@ -11,37 +11,14 @@
         <script src="../common/echarts.min.js"></script>
         <script src="../common/jquery.min.js"></script>
         <script src="../common/echarts-gl.js"></script>
-        <script src="../data/vivagraph.json.js"></script>
+        <script src="../data/eurosis.json.js"></script>
         <script>
             var chart = echarts.init(document.getElementById('main'));
 
-            var nodes = [];
-            var nodesMap = {};
-            var links = [];
-            for (var i = 0; i < graphData.links.length;) {
-                var source = graphData.links[i++] + '';
-                var target = graphData.links[i++] + '';
-                if (!nodesMap[source]) {
-                    nodes.push({
-                        id: source
-                    });
-                    nodesMap[source] = true;
-                }
-                if (!nodesMap[target]) {
-                    nodes.push({
-                        id: target
-                    });
-                    nodesMap[target] = true;
-                }
-                links.push({
-                    source: source,
-                    target: target
-                });
-            }
             chart.setOption({
                 title: {
                     text: 'GPU Layout + 20 Steps',
-                    subtext: '\nNodes: 2121\n\nEdges: 6370',
+                    subtext: '\nNodes: 1285\n\nEdges: 7586',
                     textStyle: {
                         fontSize: 30,
                         color: '#fff'
@@ -53,30 +30,36 @@
                 },
                 series: [{
                     type: 'graphGL',
-                    roam: true,
-                    data: nodes,
-                    edges: links,
                     forceAtlas2: {
+                        GPU: true,
                         steps: 20,
-                        stopThreshold: 0.1,
                         jitterTolerence: 10,
+                        edgeWeightInfluence: 2,
                         scaling: 0.5,
-                        edgeWeight: [2, 1],
-                        edgeWeightInfluence: 1
+
+                        edgeWeight: [2, 10]
                     },
+                    roam: true,
+                    data: eurosisData.nodes.map(function (node) {
+                        node.symbolSize *= 10;
+                        node.itemStyle = {
+                            color: node.itemStyle.normal.color
+                        };
+                        return node;
+                    }),
+                    edges: eurosisData.links.map(function (link) {
+                        return link;
+                    }),
                     lineStyle: {
                         color: '#fff',
-                        opacity: 0.4
-                    },
-                    itemStyle: {
-                        color: '#fff'
+                        opacity: 0.2
                     }
                 }]
             });
 
 
-            console.log(nodes.length);
-            console.log(links.length);
+            console.log(eurosisData.nodes.length);
+            console.log(eurosisData.links.length);
 
             window.onresize = chart.resize;
         </script>

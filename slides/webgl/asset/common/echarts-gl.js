@@ -42483,7 +42483,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 
 	    defaultOption: {
-	        zlevel: 0,
+	        zlevel: 10,
 	        z: 2,
 
 	        legendHoverLink: true,
@@ -42495,16 +42495,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	        forceAtlas2: {
 	            initLayout: null,
 
+	            GPU: true,
+
 	            steps: 1,
 
+	            // barnesHutOptimize
+
 	            // Stop threshold, 0 never stop.
-	            stopThreshold: 2,
+	            stopThreshold: 1,
 
 	            repulsionByDegree: true,
 	            linLogMode: false,
 	            strongGravityMode: false,
 	            gravity: 1.0,
-	            scaling: 1.0,
+	            // scaling: 1.0,
 
 	            edgeWeightInfluence: 1.0,
 
@@ -42513,7 +42517,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            // Node weight range.
 	            nodeWeight: [1, 4],
 
-	            jitterTolerence: 0.1,
+	            // jitterTolerence: 0.1,
 	            preventOverlap: false,
 	            gravityCenter: null
 	        },
@@ -43300,14 +43304,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Lines2DGeometry = __webpack_require__(216);
 	var retrieve = __webpack_require__(69);
 	var ForceAtlas2GPU = __webpack_require__(217);
+	var ForceAtlas2 = __webpack_require__(219);
 	var requestAnimationFrame = __webpack_require__(30);
 	var vec2 = __webpack_require__(15).vec2;
 
-	var Roam2DControl = __webpack_require__(219);
+	var Roam2DControl = __webpack_require__(221);
 
 	var PointsBuilder = __webpack_require__(188);
 
-	graphicGL.Shader.import(__webpack_require__(220));
+	graphicGL.Shader.import(__webpack_require__(222));
 
 	var globalLayoutId = 1;
 
@@ -43542,7 +43547,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	                nodesIndicesMap[node.id] = offset++;
 	                var mass = echarts.number.linearMap(value, nodeDataExtent, nodeWeightRange);
 	                if (isNaN(mass)) {
-	                    mass = 1;
+	                    if (!isNaN(nodeWeightRange[0])) {
+	                        mass = nodeWeightRange[0];
+	                    }
+	                    else {
+	                        mass = 1;
+	                    }
 	                }
 	                nodes.push({
 	                    x: x, y: y, mass: mass
@@ -43555,7 +43565,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	                var value = nodeData.get('value', dataIndex);
 	                var weight = echarts.number.linearMap(value, edgeDataExtent, edgeWeightRange);
 	                if (isNaN(weight)) {
-	                    weight = 1;
+	                    if (!isNaN(edgeWeightRange[0])) {
+	                        weight = edgeWeightRange[0];
+	                    }
+	                    else {
+	                        weight = 1;
+	                    }
 	                }
 	                edges.push({
 	                    node1: nodesIndicesMap[edge.node1.id],
@@ -43564,7 +43579,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	                });
 	            });
 	            if (!layoutInstance) {
-	                layoutInstance = this._forceLayoutInstance = new ForceAtlas2GPU();
+	                var isGPU = layoutModel.get('GPU');
+	                if (this._forceLayoutInstance) {
+	                    if ((isGPU && !(this._forceLayoutInstance instanceof ForceAtlas2GPU))
+	                        || (!isGPU && !(this._forceLayoutInstance instanceof ForceAtlas2))
+	                    ) {
+	                        // Mark to dispose
+	                        this._forceLayoutInstanceToDispose = this._forceLayoutInstance;
+	                    }
+	                }
+	                layoutInstance = this._forceLayoutInstance = isGPU
+	                    ? new ForceAtlas2GPU()
+	                    : new ForceAtlas2();
 	            }
 	            layoutInstance.initData(nodes, edges);
 	            layoutInstance.updateOption(layoutModel.option);
@@ -43625,19 +43651,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	                return;
 	            }
 
-	            for (var i = 0; i < steps; i++) {
-	                layoutInstance.step(viewGL.layer.renderer);
-	            }
-	            self._updatePositionTexture();
-	            // Position texture will been swapped. set every time.
-	            api.getZr().refresh();
+	            layoutInstance.update(viewGL.layer.renderer, steps, function () {
+	                self._updatePositionTexture();
+	                // Position texture will been swapped. set every time.
+	                api.getZr().refresh();
 
-	            requestAnimationFrame(function () {
-	                doLayout(layoutId);
+	                requestAnimationFrame(function () {
+	                    doLayout(layoutId);
+	                });
 	            });
 	        };
 
 	        requestAnimationFrame(function () {
+	            if (self._forceLayoutInstanceToDispose) {
+	                self._forceLayoutInstanceToDispose.dispose(viewGL.layer.renderer);
+	                self._forceLayoutInstanceToDispose = null;
+	            }
 	            doLayout(layoutId);
 	        });
 	    },
@@ -43654,6 +43683,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.groupGL.add(this._edgesMesh);
 
 	        if (!this._forceLayoutInstance) {
+	            return;
+	        }
+
+	        if (!this.viewGL.layer) {
 	            return;
 	        }
 	        var points = this._forceLayoutInstance.getNodePosition(this.viewGL.layer.renderer);
@@ -44286,9 +44319,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	    }
 
+	    if (this.repulsionByDegree) {
+	        var positionBuffer = this._positionSourceTex.pixels;
+
+	        for (var i = 0; i < this._nodes.length; i++) {
+	            positionBuffer[i * 4 + 2] = (this._nodes[i].degree || 0) + 1;
+	        }
+	    }
 	};
 
-	ForceAtlas2GPU.prototype._updateSettings = function (options) {
+	ForceAtlas2GPU.prototype._updateGravityCenter = function (options) {
 	    var nodes = this._nodes;
 	    var edges = this._edges;
 
@@ -44325,7 +44365,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this._nodes = nodes;
 	    this._edges = edges;
 
-	    this._updateSettings();
+	    this._updateGravityCenter();
 
 	    var textureWidth = Math.ceil(Math.sqrt(nodes.length));
 	    var textureHeight = textureWidth;
@@ -44338,13 +44378,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var node = nodes[i];
 	        positionBuffer[offset++] = node.x || 0;
 	        positionBuffer[offset++] = node.y || 0;
-
-	        if (this.repulsionByDegree) {
-	            positionBuffer[offset++] = (node.degree || 0) + 1;
-	        }
-	        else {
-	            positionBuffer[offset++] = node.mass || 1;
-	        }
+	        positionBuffer[offset++] = node.mass || 1;
 	        positionBuffer[offset++] = node.size || 1;
 	    }
 	    this._positionSourceTex.pixels = positionBuffer;
@@ -44458,6 +44492,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this._framebuffer.unbind(renderer);
 
 	    this._swapTexture();
+	};
+
+	ForceAtlas2GPU.prototype.update = function (renderer, steps, cb) {
+	    if (steps == null) {
+	        steps = 1;
+	    }
+	    steps = Math.max(steps, 1);
+
+	    for (var i = 0; i < steps; i++) {
+	        this.step(renderer);
+	    }
+
+	    cb && cb();
 	};
 
 	ForceAtlas2GPU.prototype.getNodePositionTexture = function () {
@@ -44594,6 +44641,959 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 219 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Texture2D = __webpack_require__(33);
+	var Texture = __webpack_require__(21);
+	var workerFunc = __webpack_require__(220);
+	var workerUrl = workerFunc.toString();
+	workerUrl = workerUrl.slice(workerUrl.indexOf('{') + 1, workerUrl.lastIndexOf('}'));
+
+	var defaultConfigs = {
+
+	    barnesHutOptimize: true,
+	    barnesHutTheta: 1.5,
+
+	    repulsionByDegree: true,
+	    linLogMode: false,
+
+	    strongGravityMode: false,
+	    gravity: 1.0,
+
+	    scaling: 1.0,
+
+	    edgeWeightInfluence: 1.0,
+
+	    jitterTolerence: 0.1,
+
+	    preventOverlap: false,
+
+	    dissuadeHubs: false,
+
+	    gravityCenter: null
+	};
+
+	var ForceAtlas2 = function (options) {
+
+	    for (var name in defaultConfigs) {
+	        this[name] = defaultConfigs[name];
+	    }
+
+	    if (options) {
+	        for (var name in options) {
+	            this[name] = options[name];
+	        }
+	    }
+
+	    this._nodes = [];
+	    this._edges = [];
+
+	    this._disposed = false;
+
+	    this._positionTex = new Texture2D({
+	        type: Texture.FLOAT,
+	        flipY: false,
+	        minFilter: Texture.NEAREST,
+	        magFilter: Texture.NEAREST
+	    });
+	};
+
+	ForceAtlas2.prototype.initData = function (nodes, edges) {
+
+	    var bb = new Blob([workerUrl]);
+	    var blobURL = window.URL.createObjectURL(bb);
+
+	    this._worker = new Worker(blobURL);
+
+	    this._worker.onmessage = this._$onupdate.bind(this);
+
+	    this._nodes = nodes;
+	    this._edges = edges;
+	    this._frame = 0;
+
+	    var nNodes = nodes.length;
+	    var nEdges = edges.length;
+
+	    var positionArr = new Float32Array(nNodes * 2);
+	    var massArr = new Float32Array(nNodes);
+	    var sizeArr = new Float32Array(nNodes);
+
+	    var edgeArr = new Float32Array(nEdges * 2);
+	    var edgeWeightArr = new Float32Array(nEdges);
+
+	    for (var i = 0; i < nodes.length; i++) {
+	        var node = nodes[i];
+
+	        positionArr[i * 2] = node.x;
+	        positionArr[i * 2 + 1] = node.y;
+
+	        massArr[i] = node.mass == null ? 1 : node.mass;
+	        sizeArr[i] = node.size == null ? 1 : node.size;
+	    }
+
+	    for (var i = 0; i < edges.length; i++) {
+	        var edge = edges[i];
+
+	        var source = edge.node1;
+	        var target = edge.node2;
+
+	        edgeArr[i * 2] = source;
+	        edgeArr[i * 2 + 1] = target;
+
+	        edgeWeightArr[i] = edge.weight == null ? 1 : edge.weight;
+	    }
+
+
+	    var textureWidth = Math.ceil(Math.sqrt(nodes.length));
+	    var textureHeight = textureWidth;
+	    var pixels = new Float32Array(textureWidth * textureHeight * 4);
+	    var positionTex = this._positionTex;
+	    positionTex.width = textureWidth;
+	    positionTex.height = textureHeight;
+	    positionTex.pixels = pixels;
+
+	    this._worker.postMessage({
+	        cmd: 'init',
+	        nodesPosition: positionArr,
+	        nodesMass: massArr,
+	        nodesSize: sizeArr,
+	        edges: edgeArr,
+	        edgesWeight: edgeWeightArr
+	    });
+
+	    this._globalSpeed = Infinity;
+	};
+
+	ForceAtlas2.prototype.updateOption = function (options) {
+	    var config = {};
+	    // Default config
+	    for (var name in defaultConfigs) {
+	        config[name] = defaultConfigs[name];
+	    }
+
+	    var nodes = this._nodes;
+	    var edges = this._edges;
+
+	    // Config according to data scale
+	    var nNodes = nodes.length;
+	    if (nNodes > 50000) {
+	        config.jitterTolerence = 10;
+	    }
+	    else if (nNodes > 5000) {
+	        config.jitterTolerence = 1;
+	    }
+	    else {
+	        config.jitterTolerence = 0.1;
+	    }
+
+	    if (nNodes > 100) {
+	        config.scaling = 2.0;
+	    }
+	    else {
+	        config.scaling = 10.0;
+	    }
+	    if (nNodes > 1000) {
+	        config.barnesHutOptimize = true;
+	    }
+	    else {
+	        config.barnesHutOptimize = false;
+	    }
+
+	    if (options) {
+	        for (var name in defaultConfigs) {
+	            if (options[name] != null) {
+	                config[name] = options[name];
+	            }
+	        }
+	    }
+
+	    if (!config.gravityCenter) {
+	        var min = [Infinity, Infinity];
+	        var max = [-Infinity, -Infinity];
+	        for (var i = 0; i < nodes.length; i++) {
+	            min[0] = Math.min(nodes[i].x, min[0]);
+	            min[1] = Math.min(nodes[i].y, min[1]);
+	            max[0] = Math.max(nodes[i].x, max[0]);
+	            max[1] = Math.max(nodes[i].y, max[1]);
+	        }
+
+	        config.gravityCenter = [(min[0] + max[0]) * 0.5, (min[1] + max[1]) * 0.5];
+	    }
+
+	    // Update inDegree, outDegree
+	    for (var i = 0; i < edges.length; i++) {
+	        var node1 = edges[i].node1;
+	        var node2 = edges[i].node2;
+
+	        nodes[node1].degree = (nodes[node1].degree || 0) + 1;
+	        nodes[node2].degree = (nodes[node2].degree || 0) + 1;
+	    }
+
+	    if (this._worker) {
+	        this._worker.postMessage({
+	            cmd: 'updateConfig',
+	            config: config
+	        });
+	    }
+	};
+
+	// Steps per call, to keep sync with rendering
+	ForceAtlas2.prototype.update = function (renderer, steps, cb) {
+	    if (steps == null) {
+	        steps = 1;
+	    }
+	    steps = Math.max(steps, 1);
+
+	    this._frame += steps;
+	    this._onupdate = cb;
+
+	    if (this._worker) {
+	        this._worker.postMessage({
+	            cmd: 'update',
+	            steps: Math.round(steps)
+	        });
+	    }
+	};
+
+	ForceAtlas2.prototype._$onupdate = function (e) {
+	    // Incase the worker keep postMessage of last frame after it is disposed
+	    if (this._disposed) {
+	        return;
+	    }
+
+	    var positionArr = new Float32Array(e.data.buffer);
+	    this._globalSpeed = e.data.globalSpeed;
+
+	    this._positionArr = positionArr;
+
+	    this._updateTexture(positionArr);
+
+	    this._onupdate && this._onupdate();
+	};
+
+	ForceAtlas2.prototype.getNodePositionTexture = function () {
+	    return this._positionTex;
+	};
+
+	ForceAtlas2.prototype.getNodeUV = function (nodeIndex, uv) {
+	    uv = uv || [];
+	    var textureWidth = this._positionTex.width;
+	    var textureHeight = this._positionTex.height;
+	    uv[0] = (nodeIndex % textureWidth) / (textureWidth - 1);
+	    uv[1] = Math.floor(nodeIndex / textureWidth) / (textureHeight - 1);
+	    return uv;
+	};
+
+	ForceAtlas2.prototype.getNodes = function () {
+	    return this._nodes;
+	};
+	ForceAtlas2.prototype.getEdges = function () {
+	    return this._edges;
+	};
+	ForceAtlas2.prototype.isFinished = function (threshold) {
+	    return this._globalSpeed < threshold && this._frame > 10;
+	};
+
+	ForceAtlas2.prototype.getNodePosition = function (renderer, out) {
+	    if (!out) {
+	        out = new Float32Array(this._nodes.length * 2);
+	    }
+	    if (this._positionArr) {
+	        for (var i = 0; i < this._positionArr.length; i++) {
+	            out[i] = this._positionArr[i];
+	        }
+	    }
+	    return out;
+	};
+
+	ForceAtlas2.prototype._updateTexture = function (positionArr) {
+	    var pixels = this._positionTex.pixels;
+	    var offset = 0;
+	    for (var i = 0; i < positionArr.length;){
+	        pixels[offset++] = positionArr[i++];
+	        pixels[offset++] = positionArr[i++];
+	        pixels[offset++] = 1;
+	        pixels[offset++] = 1;
+	    }
+	    this._positionTex.dirty();
+	};
+
+	ForceAtlas2.prototype.dispose = function (renderer) {
+	    this._disposed = true;
+	    this._worker = null;
+	};
+
+	module.exports = ForceAtlas2;
+
+/***/ },
+/* 220 */
+/***/ function(module, exports) {
+
+	/****************************
+	 * Vector2 math functions
+	 ***************************/
+
+	function forceAtlas2Worker() {
+	    var vec2 = {
+	        create: function() {
+	            return new Float32Array(2);
+	        },
+	        dist: function(a, b) {
+	            var x = b[0] - a[0];
+	            var y = b[1] - a[1];
+	            return Math.sqrt(x*x + y*y);
+	        },
+	        len: function(a) {
+	            var x = a[0];
+	            var y = a[1];
+	            return Math.sqrt(x*x + y*y);
+	        },
+	        scaleAndAdd: function(out, a, b, scale) {
+	            out[0] = a[0] + b[0] * scale;
+	            out[1] = a[1] + b[1] * scale;
+	            return out;
+	        },
+	        scale: function(out, a, b) {
+	            out[0] = a[0] * b;
+	            out[1] = a[1] * b;
+	            return out;
+	        },
+	        add: function(out, a, b) {
+	            out[0] = a[0] + b[0];
+	            out[1] = a[1] + b[1];
+	            return out;
+	        },
+	        sub: function(out, a, b) {
+	            out[0] = a[0] - b[0];
+	            out[1] = a[1] - b[1];
+	            return out;
+	        },
+	        normalize: function(out, a) {
+	            var x = a[0];
+	            var y = a[1];
+	            var len = x*x + y*y;
+	            if (len > 0) {
+	                //TODO: evaluate use of glm_invsqrt here?
+	                len = 1 / Math.sqrt(len);
+	                out[0] = a[0] * len;
+	                out[1] = a[1] * len;
+	            }
+	            return out;
+	        },
+	        negate: function(out, a) {
+	            out[0] = -a[0];
+	            out[1] = -a[1];
+	            return out;
+	        },
+	        copy: function(out, a) {
+	            out[0] = a[0];
+	            out[1] = a[1];
+	            return out;
+	        },
+	        set: function(out, x, y) {
+	            out[0] = x;
+	            out[1] = y;
+	            return out;
+	        }
+	    }
+
+	    /****************************
+	     * Class: Region
+	     ***************************/
+
+	    function Region() {
+
+	        this.subRegions = [];
+
+	        this.nSubRegions = 0;
+
+	        this.node = null;
+
+	        this.mass = 0;
+
+	        this.centerOfMass = null;
+
+	        this.bbox = new Float32Array(4);
+
+	        this.size = 0;
+	    }
+
+	    var regionProto = Region.prototype;
+
+	    // Reset before update
+	    regionProto.beforeUpdate = function() {
+	        for (var i = 0; i < this.nSubRegions; i++) {
+	            this.subRegions[i].beforeUpdate();
+	        }
+	        this.mass = 0;
+	        if (this.centerOfMass) {
+	            this.centerOfMass[0] = 0;
+	            this.centerOfMass[1] = 0;
+	        }
+	        this.nSubRegions = 0;
+	        this.node = null;
+	    };
+	    // Clear after update
+	    regionProto.afterUpdate = function() {
+	        this.subRegions.length = this.nSubRegions;
+	        for (var i = 0; i < this.nSubRegions; i++) {
+	            this.subRegions[i].afterUpdate();
+	        }
+	    };
+
+	    regionProto.addNode = function(node) {
+	        if (this.nSubRegions === 0) {
+	            if (this.node == null) {
+	                this.node = node;
+	                return;
+	            }
+	            // Already have node, subdivide self.
+	            else {
+	                this._addNodeToSubRegion(this.node);
+	                this.node = null;
+	            }
+	        }
+	        this._addNodeToSubRegion(node);
+
+	        this._updateCenterOfMass(node);
+	    };
+
+	    regionProto.findSubRegion = function(x, y) {
+	        for (var i = 0; i < this.nSubRegions; i++) {
+	            var region = this.subRegions[i];
+	            if (region.contain(x, y)) {
+	                return region;
+	            }
+	        }
+	    };
+
+	    regionProto.contain = function(x, y) {
+	        return this.bbox[0] <= x
+	            && this.bbox[2] >= x
+	            && this.bbox[1] <= y
+	            && this.bbox[3] >= y;
+	    };
+
+	    regionProto.setBBox = function(minX, minY, maxX, maxY) {
+	        // Min
+	        this.bbox[0] = minX;
+	        this.bbox[1] = minY;
+	        // Max
+	        this.bbox[2] = maxX;
+	        this.bbox[3] = maxY;
+
+	        this.size = (maxX - minX + maxY - minY) / 2;
+	    };
+
+	    regionProto._newSubRegion = function() {
+	        var subRegion = this.subRegions[this.nSubRegions];
+	        if (!subRegion) {
+	            subRegion = new Region();
+	            this.subRegions[this.nSubRegions] = subRegion;
+	        }
+	        this.nSubRegions++;
+	        return subRegion;
+	    };
+
+	    regionProto._addNodeToSubRegion = function(node) {
+	        var subRegion = this.findSubRegion(node.position[0], node.position[1]);
+	        var bbox = this.bbox;
+	        if (!subRegion) {
+	            var cx = (bbox[0] + bbox[2]) / 2;
+	            var cy = (bbox[1] + bbox[3]) / 2;
+	            var w = (bbox[2] - bbox[0]) / 2;
+	            var h = (bbox[3] - bbox[1]) / 2;
+
+	            var xi = node.position[0] >= cx ? 1 : 0;
+	            var yi = node.position[1] >= cy ? 1 : 0;
+
+	            var subRegion = this._newSubRegion();
+	            // Min
+	            subRegion.setBBox(
+	                // Min
+	                xi * w + bbox[0],
+	                yi * h + bbox[1],
+	                // Max
+	                (xi + 1) * w + bbox[0],
+	                (yi + 1) * h + bbox[1]
+	            );
+	        }
+
+	        subRegion.addNode(node);
+	    };
+
+	    regionProto._updateCenterOfMass = function(node) {
+	        // Incrementally update
+	        if (this.centerOfMass == null) {
+	            this.centerOfMass = new Float32Array(2);
+	        }
+	        var x = this.centerOfMass[0] * this.mass;
+	        var y = this.centerOfMass[1] * this.mass;
+	        x += node.position[0] * node.mass;
+	        y += node.position[1] * node.mass;
+	        this.mass += node.mass;
+	        this.centerOfMass[0] = x / this.mass;
+	        this.centerOfMass[1] = y / this.mass;
+	    };
+
+	    /****************************
+	     * Class: Graph Node
+	     ***************************/
+	    function GraphNode() {
+	        this.position = new Float32Array(2);
+
+	        this.force = vec2.create();
+	        this.forcePrev = vec2.create();
+
+	        // If repulsionByDegree is true
+	        //  mass = inDegree + outDegree + 1
+	        // Else
+	        //  mass is manually set
+	        this.mass = 1;
+
+	        this.inDegree = 0;
+	        this.outDegree = 0;
+
+	        // Optional
+	        // this.size = 1;
+	    }
+
+	    /****************************
+	     * Class: Graph Edge
+	     ***************************/
+	    function GraphEdge(source, target) {
+	        this.source = source;
+	        this.target = target;
+
+	        this.weight = 1;
+	    }
+
+	    /****************************
+	     * Class: ForceStlas2
+	     ***************************/
+	    function ForceAtlas2() {
+	        //-------------
+	        // Configs
+
+	        // If auto settings is true
+	        //  barnesHutOptimize,
+	        //  barnesHutTheta,
+	        //  scaling,
+	        //  jitterTolerence
+	        // Will be set by the system automatically
+	        //  preventOverlap will be set false
+	        //  if node size is not given
+	        this.autoSettings = true;
+
+	        // Barnes Hut
+	        // http://arborjs.org/docs/barnes-hut
+	        this.barnesHutOptimize = true;
+	        this.barnesHutTheta = 1.5;
+
+	        // Force Atlas2 Configs
+	        // http://webatlas.fr/tempshare/ForceAtlas2_Paper.pdf
+	        this.repulsionByDegree = true;
+
+	        this.linLogMode = false;
+
+	        this.strongGravityMode = false;
+	        this.gravity = 1.0;
+
+	        this.scaling = 1.0;
+
+	        this.edgeWeightInfluence = 1.0;
+	        this.jitterTolerence = 0.1;
+
+	        // TODO
+	        this.preventOverlap = false;
+	        this.dissuadeHubs = false;
+
+	        //
+	        this.rootRegion = new Region();
+	        this.rootRegion.centerOfMass = vec2.create();
+
+	        this.nodes = [];
+
+	        this.edges = [];
+
+	        this.bbox = new Float32Array(4);
+
+	        this.gravityCenter = null;
+
+	        this._massArr = null;
+
+	        this._swingingArr = null;
+
+	        this._sizeArr = null;
+
+	        this._globalSpeed = 0;
+	    }
+
+	    var forceAtlas2Proto = ForceAtlas2.prototype;
+
+	    forceAtlas2Proto.initNodes = function(positionArr, massArr, sizeArr) {
+	        var nNodes = massArr.length;
+	        this.nodes.length = 0;
+	        var haveSize = typeof(sizeArr) != 'undefined';
+	        for (var i = 0; i < nNodes; i++) {
+	            var node = new GraphNode();
+	            node.position[0] = positionArr[i * 2];
+	            node.position[1] = positionArr[i * 2 + 1];
+	            node.mass = massArr[i];
+	            if (haveSize) {
+	                node.size = sizeArr[i];
+	            }
+	            this.nodes.push(node);
+	        }
+
+	        this._massArr = massArr;
+	        this._swingingArr = new Float32Array(nNodes);
+
+	        if (haveSize) {
+	            this._sizeArr = sizeArr;
+	        }
+	    };
+
+	    forceAtlas2Proto.initEdges = function(edgeArr, edgeWeightArr) {
+	        var nEdges = edgeArr.length / 2;
+	        this.edges.length = 0;
+	        for (var i = 0; i < nEdges; i++) {
+	            var sIdx = edgeArr[i * 2];
+	            var tIdx = edgeArr[i * 2 + 1];
+	            var sNode = this.nodes[sIdx];
+	            var tNode = this.nodes[tIdx];
+
+	            if (!sNode || !tNode) {
+	                console.error('Node not exists, try initNodes before initEdges');
+	                return;
+	            }
+	            sNode.outDegree++;
+	            tNode.inDegree++;
+	            var edge = new GraphEdge(sNode, tNode);
+
+	            if (edgeWeightArr) {
+	                edge.weight = edgeWeightArr[i];
+	            }
+
+	            this.edges.push(edge);
+	        }
+	    }
+
+	    forceAtlas2Proto.updateSettings = function() {
+	        if (this.repulsionByDegree) {
+	            for (var i = 0; i < this.nodes.length; i++) {
+	                var node = this.nodes[i];
+	                node.mass = node.inDegree + node.outDegree + 1;
+	            }
+	        }
+	        else {
+	            for (var i = 0; i < this.nodes.length; i++) {
+	                var node = this.nodes[i];
+	                node.mass = this._massArr[i];
+	            }
+	        }
+	    };
+
+	    forceAtlas2Proto.update = function() {
+	        var nNodes = this.nodes.length;
+
+	        this.updateSettings();
+
+	        this.updateBBox();
+
+	        // Update region
+	        if (this.barnesHutOptimize) {
+	            this.rootRegion.setBBox(
+	                this.bbox[0], this.bbox[1],
+	                this.bbox[2], this.bbox[3]
+	            );
+
+	            this.rootRegion.beforeUpdate();
+	            for (var i = 0; i < nNodes; i++) {
+	                this.rootRegion.addNode(this.nodes[i]);
+	            }
+	            this.rootRegion.afterUpdate();
+	        }
+
+	        // Reset forces
+	        for (var i = 0; i < nNodes; i++) {
+	            var node = this.nodes[i];
+	            vec2.copy(node.forcePrev, node.force);
+	            vec2.set(node.force, 0, 0);
+	        }
+
+	        // Compute forces
+	        // Repulsion
+	        for (var i = 0; i < nNodes; i++) {
+	            var na = this.nodes[i];
+	            if (this.barnesHutOptimize) {
+	                this.applyRegionToNodeRepulsion(this.rootRegion, na);
+	            }
+	            else {
+	                for (var j = i + 1; j < nNodes; j++) {
+	                    var nb = this.nodes[j];
+	                    this.applyNodeToNodeRepulsion(na, nb, false);
+	                }
+	            }
+
+	            // Gravity
+	            if (this.gravity > 0) {
+	                if (this.strongGravityMode) {
+	                    this.applyNodeStrongGravity(na);
+	                }
+	                else {
+	                    this.applyNodeGravity(na);
+	                }
+	            }
+	        }
+
+	        // Attraction
+	        for (var i = 0; i < this.edges.length; i++) {
+	            this.applyEdgeAttraction(this.edges[i]);
+	        }
+
+	        // Handle swinging
+	        var swingWeightedSum = 0;
+	        var tractionWeightedSum = 0;
+	        var tmp = vec2.create();
+	        for (var i = 0; i < nNodes; i++) {
+	            var node = this.nodes[i];
+	            var swing = vec2.dist(node.force, node.forcePrev);
+	            swingWeightedSum += swing * node.mass;
+
+	            vec2.add(tmp, node.force, node.forcePrev);
+	            var traction = vec2.len(tmp) * 0.5;
+	            tractionWeightedSum += traction * node.mass;
+
+	            // Save the value for using later
+	            this._swingingArr[i] = swing;
+	        }
+	        var globalSpeed = this.jitterTolerence * this.jitterTolerence
+	                        * tractionWeightedSum / swingWeightedSum;
+	        // NB: During our tests we observed that an excessive rise of the global speed could have a negative impact.
+	        // That’s why we limited the increase of global speed s(t)(G) to 50% of the previous step s(t−1)(G).
+	        if (this._globalSpeed > 0) {
+	            globalSpeed = Math.min(globalSpeed / this._globalSpeed, 1.5) * this._globalSpeed;
+	        }
+	        this._globalSpeed = globalSpeed;
+
+	        // Apply forces
+	        for (var i = 0; i < nNodes; i++) {
+	            var node = this.nodes[i];
+	            var swing = this._swingingArr[i];
+
+	            var speed = 0.1 * globalSpeed / (1 + globalSpeed * Math.sqrt(swing));
+
+	            // Additional constraint to prevent local speed gets too high
+	            var df = vec2.len(node.force);
+	            if (df > 0) {
+	                speed = Math.min(df * speed, 10) / df;
+	                vec2.scaleAndAdd(node.position, node.position, node.force, speed);
+	            }
+	        }
+	    };
+
+	    forceAtlas2Proto.applyRegionToNodeRepulsion = (function() {
+	        var v = vec2.create();
+	        return function applyRegionToNodeRepulsion(region, node) {
+	            if (region.node) { // Region is a leaf
+	                this.applyNodeToNodeRepulsion(region.node, node, true);
+	            }
+	            else {
+	                vec2.sub(v, node.position, region.centerOfMass);
+	                var d2 = v[0] * v[0] + v[1] * v[1];
+	                if (d2 > this.barnesHutTheta * region.size * region.size) {
+	                    var factor = this.scaling * node.mass * region.mass / d2;
+	                    vec2.scaleAndAdd(node.force, node.force, v, factor);
+	                }
+	                else {
+	                    for (var i = 0; i < region.nSubRegions; i++) {
+	                        this.applyRegionToNodeRepulsion(region.subRegions[i], node);
+	                    }
+	                }
+	            }
+	        }
+	    })();
+
+	    forceAtlas2Proto.applyNodeToNodeRepulsion = (function() {
+	        var v = vec2.create();
+	        return function applyNodeToNodeRepulsion(na, nb, oneWay) {
+	            if (na == nb) {
+	                return;
+	            }
+	            vec2.sub(v, na.position, nb.position);
+	            var d2 = v[0] * v[0] + v[1] * v[1];
+
+	            // PENDING
+	            if (d2 === 0) {
+	                return;
+	            }
+
+	            var factor;
+	            if (this.preventOverlap) {
+	                var d = Math.sqrt(d2);
+	                d = d - na.size - nb.size;
+	                if (d > 0) {
+	                    factor = this.scaling * na.mass * nb.mass / (d * d);
+	                }
+	                else if (d < 0) {
+	                    // A stronger repulsion if overlap
+	                    factor = this.scaling * 100 * na.mass * nb.mass;
+	                }
+	                else {
+	                    // No repulsion
+	                    return;
+	                }
+	            }
+	            else {
+	                // Divide factor by an extra `d` to normalize the `v`
+	                factor = this.scaling * na.mass * nb.mass / d2;
+	            }
+
+	            vec2.scaleAndAdd(na.force, na.force, v, factor);
+	            vec2.scaleAndAdd(nb.force, nb.force, v, -factor);
+	        }
+	    })();
+
+	    forceAtlas2Proto.applyEdgeAttraction = (function() {
+	        var v = vec2.create();
+	        return function applyEdgeAttraction(edge) {
+	            var na = edge.source;
+	            var nb = edge.target;
+
+	            vec2.sub(v, na.position, nb.position);
+	            var d = vec2.len(v);
+
+	            var w;
+	            if (this.edgeWeightInfluence === 0) {
+	                w = 1;
+	            }
+	            else if (this.edgeWeightInfluence === 1) {
+	                w = edge.weight;
+	            }
+	            else {
+	                w = Math.pow(edge.weight, this.edgeWeightInfluence);
+	            }
+
+	            var factor;
+
+	            if (this.preventOverlap) {
+	                d = d - na.size - nb.size;
+	                if (d <= 0) {
+	                    // No attraction
+	                    return;
+	                }
+	            }
+
+	            if (this.linLogMode) {
+	                // Divide factor by an extra `d` to normalize the `v`
+	                factor = - w * Math.log(d + 1) / (d + 1);
+	            }
+	            else {
+	                factor = - w;
+	            }
+	            vec2.scaleAndAdd(na.force, na.force, v, factor);
+	            vec2.scaleAndAdd(nb.force, nb.force, v, -factor);
+	        }
+	    })();
+
+	    forceAtlas2Proto.applyNodeGravity = (function() {
+	        var v = vec2.create();
+	        return function(node) {
+	            vec2.sub(v, this.gravityCenter, node.position);
+	            var d = vec2.len(v);
+	            vec2.scaleAndAdd(node.force, node.force, v, this.gravity * node.mass / (d + 1));
+	        }
+	    })();
+
+	    forceAtlas2Proto.applyNodeStrongGravity = (function() {
+	        var v = vec2.create();
+	        return function(node) {
+	            vec2.sub(v, this.gravityCenter, node.position);
+	            vec2.scaleAndAdd(node.force, node.force, v, this.gravity * node.mass);
+	        }
+	    })();
+
+	    forceAtlas2Proto.updateBBox = function() {
+	        var minX = Infinity;
+	        var minY = Infinity;
+	        var maxX = -Infinity;
+	        var maxY = -Infinity;
+	        for (var i = 0; i < this.nodes.length; i++) {
+	            var pos = this.nodes[i].position;
+	            minX = Math.min(minX, pos[0]);
+	            minY = Math.min(minY, pos[1]);
+	            maxX = Math.max(maxX, pos[0]);
+	            maxY = Math.max(maxY, pos[1]);
+	        }
+	        this.bbox[0] = minX;
+	        this.bbox[1] = minY;
+	        this.bbox[2] = maxX;
+	        this.bbox[3] = maxY;
+	    };
+
+	    forceAtlas2Proto.getGlobalSpeed = function () {
+	        return this._globalSpeed;
+	    }
+
+	    /****************************
+	     * Main process
+	     ***************************/
+
+	    var forceAtlas2 = null;
+
+	    self.onmessage = function(e) {
+	        switch(e.data.cmd) {
+	            case 'init':
+	                forceAtlas2 = new ForceAtlas2();
+	                forceAtlas2.initNodes(e.data.nodesPosition, e.data.nodesMass, e.data.nodesSize);
+	                forceAtlas2.initEdges(e.data.edges, e.data.edgesWeight);
+	                break;
+	            case 'updateConfig':
+	                if (forceAtlas2) {
+	                    for (var name in e.data.config) {
+	                        forceAtlas2[name] = e.data.config[name];
+	                    }
+	                }
+	                break;
+	            case 'update':
+	                var steps = e.data.steps;
+	                if (forceAtlas2) {
+	                    for (var i = 0; i < steps; i++) {
+	                        forceAtlas2.update();
+	                    }
+
+	                    var nNodes = forceAtlas2.nodes.length;
+	                    var positionArr = new Float32Array(nNodes * 2);
+	                    // Callback
+	                    for (var i = 0; i < nNodes; i++) {
+	                        var node = forceAtlas2.nodes[i];
+	                        positionArr[i * 2] = node.position[0];
+	                        positionArr[i * 2 + 1] = node.position[1];
+	                    }
+	                    self.postMessage({
+	                        buffer: positionArr.buffer,
+	                        globalSpeed: forceAtlas2.getGlobalSpeed()
+	                    }, [positionArr.buffer]);
+	                }
+	                else {
+	                    // Not initialzied yet
+	                    var emptyArr = new Float32Array();
+	                    // Post transfer object
+	                    self.postMessage({
+	                        buffer: emptyArr.buffer,
+	                        globalSpeed: forceAtlas2.getGlobalSpeed()
+	                    }, [emptyArr.buffer]);
+	                }
+	                break;
+	        }
+	    }
+	}
+
+	module.exports = forceAtlas2Worker;
+
+/***/ },
+/* 221 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -44795,7 +45795,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Roam2DControl;
 
 /***/ },
-/* 220 */
+/* 222 */
 /***/ function(module, exports) {
 
 	module.exports = "@export ecgl.lines2D.vertex\n\nuniform mat4 worldViewProjection : WORLDVIEWPROJECTION;\n\nattribute vec2 position: POSITION;\nattribute vec4 a_Color : COLOR;\nvarying vec4 v_Color;\n\n#ifdef POSITIONTEXTURE_ENABLED\nuniform sampler2D positionTexture;\n#endif\n\nvoid main()\n{\n    gl_Position = worldViewProjection * vec4(position, -10.0, 1.0);\n\n    v_Color = a_Color;\n}\n\n@end\n\n@export ecgl.lines2D.fragment\n\nuniform vec4 color : [1.0, 1.0, 1.0, 1.0];\n\nvarying vec4 v_Color;\n\nvoid main()\n{\n    gl_FragColor = color * v_Color;\n}\n@end\n\n\n@export ecgl.meshLines2D.vertex\n\n// https://mattdesl.svbtle.com/drawing-lines-is-hard\nattribute vec2 position: POSITION;\nattribute vec2 normal;\nattribute float offset;\nattribute vec4 a_Color : COLOR;\n\nuniform mat4 worldViewProjection : WORLDVIEWPROJECTION;\nuniform vec4 viewport : VIEWPORT;\n\nvarying vec4 v_Color;\nvarying float v_Miter;\n\nvoid main()\n{\n    vec4 p2 = worldViewProjection * vec4(position + normal, -10.0, 1.0);\n    gl_Position = worldViewProjection * vec4(position, -10.0, 1.0);\n\n    p2.xy /= p2.w;\n    gl_Position.xy /= gl_Position.w;\n\n    // Get normal on projection space.\n    vec2 N = normalize(p2.xy - gl_Position.xy);\n    gl_Position.xy += N * offset / viewport.zw * 2.0;\n\n    gl_Position.xy *= gl_Position.w;\n\n    v_Color = a_Color;\n}\n@end\n\n\n@export ecgl.meshLines2D.fragment\n\nuniform vec4 color : [1.0, 1.0, 1.0, 1.0];\n\nvarying vec4 v_Color;\nvarying float v_Miter;\n\nvoid main()\n{\n    // TODO Fadeout pixels v_Miter > 1\n    gl_FragColor = color * v_Color;\n}\n\n@end"

@@ -516,10 +516,22 @@ TODO bench case
 
 ----
 
+## 高品质的渲染
+
++ 一些有效提高画质的方法
+
++ 如何在有限的电脑配置内实现“无限”的画质
+
+Note:
+这一块我会分两部分讲，首先是一些能够有效提高画质的方法。
+然后我会讲讲如何在我这样有限的垃圾电脑配置中实现很好的画质。
+
+----
+
 <!--.slide: data-background="./asset/img/buildings2.jpg" -->
 
 Note:
-为了让高品质这个词更有说服力，我再放张 echarts-gl 渲染的效果图吧，
+首先为了让高品质这个词更有说服力，我再放一张 echarts-gl 渲染的效果图，
 
 ----
 
@@ -530,16 +542,13 @@ Note:
 <img src="./asset/img/pie3d-ugly.png" height="300px" alt="">
 
 Note:
-很多人排斥三维的可视化还有一个原因是因为很多三维的可视化效果渲染效果十分廉价，比如这张柱状图，还有这张地球。充斥着经典的 phong 光照模型的高光和其所带来的塑料感，以及粗糙的贴图等等。
+很多人排斥三维的可视化还有一个原因是因为很多三维的可视化效果渲染效果十分廉价，比如这张柱状图，这张地球，和这张饼图。充斥着经典的 phong 光照模型的高光和其所带来的塑料感，以及粗糙的贴图等等。
 
 但是其实地球是可以画成这样的
 
 ----
 
 <iframe data-src="./asset/ec-demo/globe.html" class="fullscreen" frameborder="0"></iframe>
-
-Note:
-接下来介绍一些能够有效提高画质的方法
 
 ----
 
@@ -613,6 +622,22 @@ Note:
 
 锯齿本质上也是因为单个像素对场景的采样不足造成的。
 
+----
+
+## Temporal Methods 无法解决的
+
++ 几何信息缺失 - SSAO  <!-- .element: class="fragment highlight-current-blue" -->
+
++ 精度不够 - Bias  <!-- .element: class="fragment highlight-current-blue" -->
+
+Note:
+
+尽管说通过 Temporal Methods 我们能够一直采样最后收敛到一个最优的结果，但是它并没有办法解决一些信息丢失的问题，比如刚才介绍的 SSAO 因为是屏幕空间的，很多隐藏在后面的几何体其实也会对像素点有遮蔽，但是因为无法获取到这个几何体的信息就没办法判断到。
+
+还有就是因为像 ShadowMap 这样数据精度不够需要添加 bias 的算法，Temporal Methods 也没办法解决。
+
+所以开始对无限的画质中无限这个词加了引号。
+
 ---
 
 <!--.slide: data-background-video="./asset/video/gpgpu.mp4" data-background-opacity="0.4" -->
@@ -622,7 +647,7 @@ Note:
 WebGL 中实现力引导布局
 
 Note:
-
+这次分享的最后一块，是通过在 WebGL 中实现力引导布局这个案例来介绍如何去做 GPU 的通用计算。
 
 ----
 
@@ -635,6 +660,8 @@ Note:
 + 每次迭代 O(n2), 需要上百次迭代才能结束 <!-- .element: class="fragment highlight-current-blue" -->
 
 Note:
+首先介绍一下什么是力引导布局。
+
 力引导布局是用于关系图布局的经典算法， 有很多种算法和实现，但是其基本原理都是一样的，都是节点与节点存在一个电荷的斥力，边则存在一个弹簧的引力。每次迭代通过计算每个节点的受力，并且根据受力产生一个位移，在多次迭代后整个布局的能量会趋向一个平衡，关系边多的节点间有一个聚类的趋势。
 
 所以传统的力引导算法开销很大，因为要有上百次，每次都是 O(n2) 受力计算才能结束。为了防止布局的阻塞给用户带来的困扰，我们多会把布局过程表现出来，刚好这个动画也挺有意思的。
@@ -676,13 +703,24 @@ Note:
 
 但是 JS 并不支持多线程，现在浏览器有 WebWorker，我们可以把布局的方法在一个单独的 WebWorker 里去做，这样有一个好处是布局的代码不会阻塞到重绘的代码，交互会更顺畅。
 
-但是 JS 里对 SIMD 和多线程的支持并不好。所以这一块优化很难做。
 SIMD 只有 firefox nightly
 
 ----
 
+<iframe data-src="asset/ec-demo/eurosis-gl.html" class="fullscreen" frameborder="0"></iframe>
+
 Note:
-TODO WebWorker + Barnes Hut Simulation
+刚才说到在 WebWorker 中做布局可以保证渲染的线程跟布局的线程分离，如果是单线程的话我们可能就是布局一次，渲染一次，如果布局多次就可能会阻塞渲染，导致交互不顺畅，但是用 WebWorker 我们就没这个担忧，我们可以再 Worker 中布局迭代多次后再提交给主线程渲染。这样可以有效的提高布局的速度
+
+----
+
+<iframe data-src="asset/ec-demo/eurosis-gl.html?5" class="fullscreen" frameborder="0"></iframe>
+
+----
+
+<iframe data-src="asset/ec-demo/eurosis-gl.html?10" class="fullscreen" frameborder="0"></iframe>
+
+Note:
 
 ----
 
@@ -694,6 +732,12 @@ TODO
 
 ----
 
+<iframe data-src="asset/ec-demo/eurosis-gl-gpu.html" class="fullscreen" frameborder="0"></iframe>
+
+Note:
+
+----
+
 <iframe data-src="asset/ec-demo/graph.html" class="fullscreen" frameborder="0"></iframe>
 
 ![](asset/img/blckhole.gif)
@@ -702,33 +746,52 @@ TODO
 
 ## 对比
 
-CPU without Barnes Hut Simulation: ~12000 ms
-CPU with Barnes Hut Simulation: ~300ms
+CPU without Barnes Hut: ~12000 ms
+
+CPU with Barnes Hut: ~300ms
+
 GPU: < 1ms
 
+Note:
+GTX1070, i7
+
+## 对比
+
+Note:
+Macbook 13 2012
+
+----
+
+## More
+
++ GPGPU 中实现 Barnes Hut
+
+Note:
+因为 Shader 中实现数据结构非常麻烦，所以像 Barnes Hut 这种依赖四叉树作为数据结构的，就很难在 GPU 中使用。但是也不是不可能，GPU Gem 2 中就已经有人尝试了在 Shader 模拟指针实现了四叉树。
+
+----
+
+## 限制
+
++ 需要浏览器支持 WebGL  <!-- .element: class="fragment highlight-current-blue" -->
+
++ 需要浮点纹理扩展的支持  <!-- .element: class="fragment highlight-current-blue" -->
+
++ 数据量特别大的时候容易造成整个电脑阻塞  <!-- .element: class="fragment highlight-current-blue" -->
 
 ---
 
+## 总结
 
-## 在现有架构中集成 WebGL
++ 三维图表的绘制
 
-----
+    + 点线面
 
-## 扩展图形接口
++ 优化画质的方法
 
-----
+    + Temporal Methods
 
-## 与现有的组件集成
-
-----
-
-## ECharts as Surface
-
-![](./asset/img/canvas-surface.png)
-
-----
-
-## 交互
++ GPU 通用计算
 
 ---
 
