@@ -4,7 +4,7 @@
 
 如下例，鼠标悬浮到图上，可以出现标线和刻度文本。
 
-~[600x450](${galleryViewPath}candlestick-brush&edit=1&reset=1)
+~[600x450](${galleryViewPath}doc-example/candlestick-axisPointer&edit=1&reset=1)
 
 上例中，使用了 [axisPointer.link](~axisPointer.link) 来关联不同的坐标系中的 axisPointer。
 

@@ -7,18 +7,34 @@ Calendar coordinates.
 In ECharts, we are very creative to achieve the calendar chart, by using the calendar coordinates to achieve the calendar chart,
 as shown in the following example, we can use calendar coordinates in heatmap, scatter, effectScatter, and graph.
 
-**Example of using heatmap in calendar coordinates:**
+Example of using heatmap in calendar coordinates:
 ~[800x400](${galleryViewPath}calendar-heatmap&edit=1&reset=1)
 
-**Example of using effectScatter in calendar coordinates:**
+Example of using effectScatter in calendar coordinates:
 ~[800x600](${galleryViewPath}calendar-effectscatter&edit=1&reset=1)
 
-**Example of using graph in calendar coordinates:**
+Example of using graph in calendar coordinates:
 ~[600x600](${galleryViewPath}calendar-graph&edit=1&reset=1)
 
-**Other examples:**
+Combination calendar coordinate system and charts, you may be able to create more wonderful effects.
+
 [Display Text in Calendar](${galleryEditorPath}calendar-lunar&edit=1&reset=1),
 [Display Pies in Calendar](${galleryEditorPath}calendar-pie&edit=1&reset=1)
+
+---
+
+**Calendar layout**
+
+Calendar coordinate system can be placed horizontally or vertically. By convention, the heatmap calendar is horizontal. But if we need bigger cell size in other cases, the total width may be too wide. So [calendar.orient](~calendar.orient) can help in this case.
+
+
+---
+
+**Adapt to container size**
+
+Calendar coordinate system can be configured to adapt to container size, which is useful when page size is not sure. First of all, like other components, those location and size configurations can be specified on canlendar: [left](~calendar.left) [right](~calendar.right) [top](~calendar.top) [bottom](bottom) [width](~calendar.width) [height](~calendar.height), which make calendar possible to modify its size according to container size. Besides, [cellSize](~calendar.cellSize) can be specified to fix the size of each cell of calendar.
+
+
 
 ---
 

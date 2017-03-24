@@ -6,18 +6,41 @@
 
 在ECharts中，我们非常有创意地实现了日历图，是通过使用日历坐标系组件来达到日历图效果的，如下方的几个示例图所示，我们可以在热力图、散点图、关系图中使用日历坐标系。
 
-**在日历坐标系中使用热力图的示例:**
+在日历坐标系中使用热力图的示例:
 ~[800x400](${galleryViewPath}calendar-heatmap&edit=1&reset=1)
 
-**在日历坐标系中使用散点图的示例:**
+在日历坐标系中使用散点图的示例:
 ~[800x600](${galleryViewPath}calendar-effectscatter&edit=1&reset=1)
 
-**在日历坐标系中使用关系图（以及混合图表）的示例:**
+在日历坐标系中使用关系图（以及混合图表）的示例:
 ~[600x600](${galleryViewPath}calendar-graph&edit=1&reset=1)
 
-**在日历坐标系中使用其他效果的示例:**
+灵活利用 echarts 图表和坐标系的组合，以及 API，可以实现更丰富的效果。
 [在日历中使用文字](${galleryEditorPath}calendar-lunar&edit=1&reset=1)、
 [在日历中放置饼图](${galleryEditorPath}calendar-pie&edit=1&reset=1)
+
+---
+
+**水平和垂直放置日历**
+
+在日历坐标系可以水平放置，也可以垂直放置。如上面的例子，使用热力图时，经常是水平放置的。但是如果需要格子的尺寸大些，水平放置就过于宽了，于是也可以选择垂直放置。参见 [calendar.orient](~calendar.orient)。
+
+
+---
+
+**尺寸的自适应**
+
+可以设置日历坐标系使他支持不同尺寸的容器（页面）大小变化的自适应。首先，和 echarts 其他组件一样，日历坐标系可以选择使用 [left](~calendar.left) [right](~calendar.right) [top](~calendar.top) [bottom](bottom) [width](~calendar.width) [height](~calendar.height) 来描述尺寸和位置，从而将日历摆放在上下左右各种位置，并随着页面尺寸变动而改变自身尺寸。另外，也可以使用 [cellSize](~calendar.cellSize) 来固定日历格子的长宽。
+
+---
+
+**中西方日历习惯的支持**
+
+中西方日历有所差别，西方常使用星期日作为一周的第一天，中国使用星期一为一周的第一天。日历坐标系做了这种切换的支持。参见 [calendar.dayLabel.firstDay](~calendar.dayLabel.firstDay)。
+
+另外，日历上的『月份』和『星期几』的文字，也可以较方便的切换中英文，甚至自定义。参见 [calendar.dayLabel.nameMap](~calendar.dayLabel.nameMap) [calendar.monthLabel.nameMap](~calendar.monthLabel.nameMap)。
+
+
 
 ---
 

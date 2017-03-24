@@ -5,7 +5,7 @@
 `axisPointer` is a tool for displaying reference line and axis value under mouse pointer.
 
 For example:
-~[600x450](${galleryViewPath}candlestick-brush&edit=1&reset=1)
+~[600x450](${galleryViewPath}doc-example/candlestick-axisPointer&edit=1&reset=1)
 
 In the demo above, [axisPointer.link](~axisPointer.link) is used to link axisPointer from different coordinate systems.
 
