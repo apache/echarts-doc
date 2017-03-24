@@ -68,8 +68,11 @@ See the [example](${galleryEditorPath}line-tooltip-touch&edit=1&reset=1).
 
 ---
 
+**Snap to point**
 
+In value axis and time axis, if [snap](~xAxis.axisPointer.snap) is set as true, axisPointer will snap to point automatically.
 
+---
 
 
 

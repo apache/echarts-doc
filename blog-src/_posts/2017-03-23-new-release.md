@@ -118,9 +118,9 @@ image:
 
 ## 坐标轴指示器
 
-坐标轴指示器 （axisPointer）指的是，鼠标悬浮到坐标系上时出现的竖线、阴影区域等。它能帮助用户观察数据。echarts 原有的坐标轴指示器本次被整理和增强了，加入了文本标签，以及移动触屏的手柄拖拽交互，以及支持了多个坐标系中指示器的联动。
+坐标轴指示器 （axisPointer）指的是，鼠标悬浮到坐标系上时出现的竖线、阴影区域等。它能帮助用户观察数据。echarts 原有的坐标轴指示器本次被整理和增强了，加入了文本标签，自动吸附到数据，以及移动触屏的手柄拖拽交互，以及支持了多个坐标系中指示器的联动。
 
-例如在 K线图中的效果示例：
+下面是一个K线图的示例。使用坐标轴指示器，能够比较方便得观察到每一项对应的 y 值。
 <div class="ec-lazy"
   data-thumb="{{ site.url_ec_examples_thumb_cn }}/bubble-gradient.png"
   data-src="{{ site.url_ec_examples_view_cn }}?c=doc-example/candlestick-axisPointer&edit=1&reset=1"
@@ -129,7 +129,7 @@ image:
 
 上例中，使用了 [axisPointer.link]({{ site.url_ec_option_cn }}#axisPointer.link) 来关联上下两个直角坐标系的 axisPointer，使他们同步运动。
 
-坐标轴指示器也提供了一种适合触屏的交互方式，使用手柄来拖拽坐标轴指示器，从而手指不会挡住图表，并且可以避免『显示tooltip』操作和『数据区域缩放』操作冲突：
+坐标轴指示器也提供了一种适合触屏的交互方式，使用手柄来拖拽坐标轴指示器。如果触屏上和鼠标操作一样，在坐标系内部拖拽操作坐标轴指示器，那么手指可能会挡住图表，并且可能和『数据区域缩放移动』操作冲突。用单独的拖拽手柄，可以改善这个问题。
 
 <div class="ec-lazy"
   data-thumb="{{ site.url_ec_examples_thumb_cn }}/bubble-gradient.png"
@@ -144,7 +144,7 @@ image:
   style="width: 100%; height: 400px"
 ></div>
 
-坐标轴指示器在多轴的场景能起到辅助作用：
+坐标轴指示器在多轴的场景能起到辅助作用，清晰得显示出对比数值，甚至可以在坐标轴指示器的文本标签内定制表达更多信息：
 
 <div class="ec-lazy"
   data-thumb="{{ site.url_ec_examples_thumb_cn }}/bubble-gradient.png"
@@ -158,7 +158,7 @@ image:
   style="width: 100%; height: 300px"
 ></div>
 
-最后提供一个内容更丰富些的例子，其中也使用了 [axisPointer.link]({{ site.url_ec_option_cn }}#axisPointer.link)来联动不同的坐标轴指示器。
+最后提供一个内容更丰富些的例子，其中也使用了 [axisPointer.link]({{ site.url_ec_option_cn }}#axisPointer.link) 来联动不同的坐标轴指示器。他关联和高亮了处于不同坐标系中的相互对应的点。
 
 <div class="ec-lazy"
   data-thumb="{{ site.url_ec_examples_thumb_cn }}/bubble-gradient.png"
