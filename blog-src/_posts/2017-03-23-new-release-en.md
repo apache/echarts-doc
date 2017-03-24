@@ -165,3 +165,6 @@ At last, let's see a more complicated example, where [axisPointer.link]({{ site.
   style="width: 100%; height: 640px"
 ></div>
 
+## Other Updates
+
+See [changelog](https://ecomfe.github.io/echarts-doc/public/en/documents/en/changelog.html)

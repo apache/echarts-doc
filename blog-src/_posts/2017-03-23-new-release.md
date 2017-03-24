@@ -166,3 +166,6 @@ image:
   style="width: 100%; height: 640px"
 ></div>
 
+## 其他更新内容
+
+参见 [changelog](http://echarts.baidu.com/changelog.html)
