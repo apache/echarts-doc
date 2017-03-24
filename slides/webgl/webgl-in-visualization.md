@@ -698,6 +698,15 @@ TODO
 
 ![](asset/img/blckhole.gif)
 
+----
+
+## 对比
+
+CPU without Barnes Hut Simulation: ~12000 ms
+CPU with Barnes Hut Simulation: ~300ms
+GPU: < 1ms
+
+
 ---
 
 
