@@ -744,21 +744,58 @@ Note:
 
 ----
 
-## 对比
+<!--.slide: data-background="./asset/img/graph-gl.jpg" -->
 
-CPU without Barnes Hut: ~12000 ms
+## 性能对比
 
-CPU with Barnes Hut: ~300ms
+Nodes: <span style="color: #ffbc00">22k</span>
 
-GPU: < 1ms
+Edges: <span style="color: #ffbc00">48k</span>
+
+----
+
+## 原论文
+
+CPU without Barnes Hut: <span style="color: #ffbc00"><b>41161 ms</b></span>
+
+CPU with Barnes Hut: <span style="color: #ffbc00"><b>403 ms</b></span>
 
 Note:
-GTX1070, i7
+这是这个力引导算法原论文给出的数字
 
-## 对比
+----
+
+<p style="font-size: 2rem;color:#ffbc00;">Macbook 13 2012</p>
+
+CPU without Barnes Hut: <span style="color: #ffbc00"><b>~28000 ms</b></span>
+
+CPU with Barnes Hut: <span style="color: #ffbc00"><b>~1000ms</b></span>
+
+GPU: <span style="color: #ffbc00"><b>~260ms</b></span>
 
 Note:
-Macbook 13 2012
+
+我先在自己的电脑上测试了一下不同算法的性能
+
+没有 Barnes Hut 优化的一次迭代需要近 28s，加上 Barnes Hut 也需要近 1s，然后 GPU 运算的 260ms，有几倍的提升，但是这个提升不是太明显
+
+我在想可能是 HD 4000 这张显卡太烂了，于是又在台式机上试了下。
+
+----
+
+<p style="font-size: 2rem;color:#ffbc00;">GTX1070, i7</p>
+
+CPU without Barnes Hut: <span style="color: #ffbc00"><b>~12000 ms</b></span>
+
+CPU with Barnes Hut: <span style="color: #ffbc00"><b>~300ms</b></span>
+
+GPU: <span style="color: #ffbc00"><b>~2ms</b></span>
+
+Note:
+
+----
+
+## GPU 加速在高端显卡中的性能提十分显著
 
 ----
 
