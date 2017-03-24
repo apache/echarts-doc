@@ -66,9 +66,7 @@
                 series: series
             });
 
-            window.addEventListener('resize', function () {
-                chart.resize();
-            });
+            window.onresize = chart.resize;
 
         </script>
     </body>
