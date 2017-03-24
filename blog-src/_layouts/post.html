@@ -1,8 +1,8 @@
 <!doctype html>
-<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="zh"> <![endif]-->
-<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="zh"><![endif]-->
-<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="zh"><![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="zh"><!--<![endif]-->
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 {% include head.html %}
 </head>
@@ -14,6 +14,15 @@
 
 {% if page.image.feature %}
 {% if page.category == 'en' or page.category == 'cn' %}
+<div class="entry-lang">
+  {% if page.category == 'en' %}
+  <a href="{{ site.url }}/{{ page.cnUrl }}">中文</a> |
+  EN
+  {% else %}
+  中文 |
+  <a href="{{ site.url }}/{{ page.enUrl }}">EN</a>
+  {% endif %}
+</div>
 {% endif %}
 <div class="entry-header">
   {% if page.image.credit %}<div class="image-credit">{% if isEn %}Image source: {% else %}图片来源：{% endif %}{% if page.image.creditlink %}<a href="{{ page.image.creditlink }}">{% endif %}{{ page.image.credit }}{% if page.image.creditlink %}</a>{% endif %}</div><!-- /.image-credit -->{% endif %}

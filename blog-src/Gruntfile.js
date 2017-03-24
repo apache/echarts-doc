@@ -63,11 +63,7 @@ module.exports = function(grunt) {
     sass: {
       dist: {
         files: {
-          'assets/css/main.css': '_sass/main.scss',
-          '../blog/assets/css/main.css': '_sass/main.scss'
-        },
-        options: {
-          style: 'compressed'
+          '_site/assets/css/main.css': 'assets/css/main.scss'
         }
       }
     }
@@ -78,7 +74,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-svgmin');
 
@@ -87,8 +82,7 @@ module.exports = function(grunt) {
     'clean',
     'uglify',
     'imagemin',
-    'svgmin',
-    'sass'
+    'svgmin'
   ]);
   grunt.registerTask('dev', [
     'watch'

@@ -15,6 +15,7 @@ url_ec_option_cn: http://echarts.baidu.com/option.html
 url_ec_option_en: https://ecomfe.github.io/echarts-doc/public/en/option.html
 
 # url: http://localhost/ec-doc/blog
+# url: http://localhost/ec-doc/blog
 # url: http://192.168.1.102:8000/echarts/echarts-doc/blog
 # url_ec_examples_view_cn: http://192.168.1.102:8000/echarts/echarts-examples/public/view.html
 # url_ec_examples_view_en: https://ecomfe.github.io/echarts-examples/public/view.html
@@ -22,6 +23,7 @@ url_ec_option_en: https://ecomfe.github.io/echarts-doc/public/en/option.html
 # url_ec_examples_thumb_en: http://192.168.1.102:8000/echarts/echarts-examples/public/data/thumb
 # url_ec_option_cn: http://echarts.baidu.com/option.html
 # url_ec_option_en: https://ecomfe.github.io/echarts-doc/public/en/option.html
+
 
 
 # Owner/author information
@@ -60,6 +62,9 @@ gems:
   - jekyll-paginate
   - jekyll-gist
   - jekyll-feed
+sass:
+  sass_dir: _sass
+  style: compressed
 
 # https://github.com/mojombo/jekyll/wiki/Permalinks
 permalink: /:year/:month/:day/:title.html
@@ -68,7 +73,7 @@ categories:
   - en
 
 # Amount of post to show on home page
-paginate: 20
+paginate: 5
 
 kramdown:
   input: GFM

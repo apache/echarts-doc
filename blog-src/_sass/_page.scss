@@ -9,40 +9,6 @@ body {
 	background-color: $body-color;
 }
 
-.page-info {
-    margin-top: 50px;
-    margin-bottom: 30px;
-    text-align: center;
-    padding: 30px;
-    color: $clr-primary;
-    background: #ddd;
-
-    h1 {
-        margin-bottom: 10px;
-		margin-top: 0;
-        font-size: 25px;
-		font-weight: normal;
-    }
-
-	p {
-		font-size: 14px;
-	}
-}
-
-.page-content {
-    h2 {
-        color: $clr-secondary;
-        padding-bottom: 10px;
-        border-bottom: 1px solid #ddd;
-    }
-
-    p {
-        font-size: 1.5rem;
-        line-height: 2.2rem;
-        margin: 15px 0;
-    }
-}
-
 /*
    Main content
    ========================================================================== */
