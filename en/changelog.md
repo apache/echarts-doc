@@ -1,7 +1,7 @@
 ## v3.5.0
 <div class="time">2017-03-23</div>
 
-+ **[+] Published [calendar coordinate system](https://ecomfe.github.io/echarts-doc/public/en/option.html#calendar)** 参见 [示例](https://ecomfe.github.io/echarts-examples/public/index.html#calendar).
++ **[+] Published [calendar coordinate system](https://ecomfe.github.io/echarts-doc/public/en/option.html#calendar)**. See [examples](https://ecomfe.github.io/echarts-examples/public/index.html#calendar).
 
 + **[+] Published echarts statistics tools [echarts-stat](https://github.com/ecomfe/echarts-stat)**
 
