@@ -1,1 +1,1 @@
-Sitemap: http://echarts.baidu.com/blog/sitemap.xml
+Sitemap: http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/sitemap.xml

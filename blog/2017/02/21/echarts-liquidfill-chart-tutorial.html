@@ -1,8 +1,8 @@
 <!doctype html>
-<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="zh"> <![endif]-->
-<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="zh"><![endif]-->
-<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="zh"><![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="zh"><!--<![endif]-->
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
 <title>ECharts 水球图教程 </title>
@@ -16,15 +16,15 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="ECharts 水球图教程">
 <meta property="og:description" content="水球图是一种适合于展现单个百分比数据的图表类型，ECharts 的水球图插件使你能够通过非常简单的配置，实现酷炫的数据展示效果。本文将会介绍，如何使用 ECharts 水球图。">
-<meta property="og:url" content="http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html">
+<meta property="og:url" content="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html">
 <meta property="og:site_name" content="">
 
 
 
 
 
-<link rel="canonical" href="http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html">
-<link href="http://echarts.baidu.com/blog/feed.xml" type="application/atom+xml" rel="alternate" title=" Feed">
+<link rel="canonical" href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html">
+<link href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/feed.xml" type="application/atom+xml" rel="alternate" title=" Feed">
 
 <!-- http://t.co/dKP3o1e -->
 <meta name="HandheldFriendly" content="True">
@@ -32,29 +32,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- For all browsers -->
-<link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css">
-<link rel="stylesheet" href="http://echarts.baidu.com/blog/assets/css/main.css">
+<link rel="stylesheet" href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/assets/css/main.css">
 <!-- Webfonts -->
 <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic" rel="stylesheet" type="text/css">
 
 <meta http-equiv="cleartype" content="on">
 
 <!-- Load Modernizr -->
-<!--<script src="http://echarts.baidu.com/blog/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>-->
+<script src="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
 
 <!-- Icons -->
 <!-- 16x16 -->
-<link rel="shortcut icon" href="http://echarts.baidu.com/blog/favicon.ico">
+<link rel="shortcut icon" href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/favicon.ico">
 <!-- 32x32 -->
-<link rel="shortcut icon" href="http://echarts.baidu.com/blog/favicon.png">
+<link rel="shortcut icon" href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/favicon.png">
 <!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
-<link rel="apple-touch-icon-precomposed" href="http://echarts.baidu.com/blog/images/apple-touch-icon-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/apple-touch-icon-precomposed.png">
 <!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://echarts.baidu.com/blog/images/apple-touch-icon-72x72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/apple-touch-icon-72x72-precomposed.png">
 <!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://echarts.baidu.com/blog/images/apple-touch-icon-114x114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/apple-touch-icon-114x114-precomposed.png">
 <!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://echarts.baidu.com/blog/images/apple-touch-icon-144x144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/apple-touch-icon-144x144-precomposed.png">
 
 
 
@@ -62,57 +61,46 @@
 
 <body id="post" class="feature">
 
-
-<nav class="navbar navbar-default navbar-fixed-top">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<button type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="http://echarts.baidu.com/index.html" class="navbar-brand"><img src="http://echarts.baidu.com/images/logo.png" alt="echarts logo" class="navbar-logo"/></a>
-		</div>
-		<div class="collapse navbar-collapse" id="navbar-collapse">
-			<ul class="nav navbar-nav navbar-left">
-				<li id="nav-index"><a href="http://echarts.baidu.com/index.html">首页</a></li>
-				<li id="nav-doc" class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">文档<b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="http://echarts.baidu.com/tutorial.html">教程</a></li>
-						<li><a href="http://echarts.baidu.com/api.html">API</a></li>
-						<li><a href="http://echarts.baidu.com/option.html">配置项手册</a></li>
-						<li><a href="http://echarts.baidu.com/faq.html">常见问题</a></li>
-						<li><a href="http://echarts.baidu.com/changelog.html">版本记录</a></li>
-						<li><a href="http://echarts.baidu.com/feature.html">特性</a></li>
-					</ul>
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
+	<button class="dl-trigger">展开</button>
+	<ul class="dl-menu">
+		<li><a href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/">首页</a></li>
+		<!--<li>
+			<a href="#">About</a>
+			<ul class="dl-submenu">
+				<li>
+					<img src="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/echarts.png" alt="ECharts photo" class="author-photo">
+					<h4>ECharts</h4>
+					<p>强大、简单、灵活的可视化工具</p>
 				</li>
-				<li id="nav-download" class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">下载<b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="http://echarts.baidu.com/download.html">下载</a></li>
-						<li><a href="http://echarts.baidu.com/download-extension.html">扩展下载</a></li>
-						<li><a href="http://echarts.baidu.com/download-theme.html">主题下载</a></li>
-						<li><a href="http://echarts.baidu.com/download-map.html">地图下载</a></li>
-					</ul>
+				<li><a href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/about/"><span class="btn btn-inverse">Learn More</span></a></li>
+				
+				
+				
+				
+				
+				<li>
+					<a href="https://github.com/ecomfe/echarts"><i class="fa fa-fw fa-github"></i> GitHub</a>
 				</li>
-				<li id="nav-examples"><a href="http://echarts.baidu.com/examples.html" class="dropdown-toggle">实例</a></li>
-				<li id="nav-community" class="active"><a href="#" data-toggle="dropdown" class="dropdown-toggle">社区<b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="http://gallery.echartsjs.com">GALLERY</a></li>
-						<li><a href="http://echarts.baidu.com/blog/">博客</a></li>
-					</ul>
-				</li>
-				<li id="nav-tool"><a href="#" data-toggle="dropdown" class="dropdown-toggle">工具<b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="http://echarts.baidu.com/spreadsheet.html">表格工具</a></li>
-						<li><a href="http://ecomfe.github.io/echarts-map-tool/">地图数据在线工具</a></li>
-						<li><a href="http://echarts.baidu.com/theme-builder/">主题构建工具</a></li>
-					</ul>
-				</li>
-				<li id="nav-about"><a href="http://echarts.baidu.com/about.html">关于</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li id="nav-github"><a href="https://github.com/ecomfe/echarts" target="_blank"><img src="http://echarts.baidu.com/images/github.png" width="18"/></a></li>
-				<li id="nav-2" class="0"><a href="http://echarts.baidu.com/echarts2/">2.0</a></li>
-				<li id="nav-homeen"><a href="https://ecomfe.github.io/echarts-doc/public/en/index.html">EN</a></li>
-			</ul>
-		</div>
-	</div>
-</nav>
+				
+				
+				
+				
+			</ul><!-- /.dl-submenu -->
+		<!--/li-->
+		<li>
+			<a href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/posts/">所有文章</a>
+		</li>
+		<li>
+			<a href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/tags/">所有标签</a>
+		</li>
+		<li>
+			<a href="http://echarts.baidu.com/">ECharts 官网</a>
+		</li>
+		<!--
+	</ul><!-- /.dl-menu -->
+</nav><!-- /.dl-menuwrapper -->
 
 
 
@@ -120,7 +108,7 @@
 <div class="entry-header">
   
   <div class="entry-image">
-    <img src="http://echarts.baidu.com/blog/images/post/2017-02-21-echarts-liquidfill-chart-tutorial.gif" alt="ECharts 水球图教程">
+    <img src="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/post/2017-02-21-echarts-liquidfill-chart-tutorial.gif" alt="ECharts 水球图教程">
   </div><!-- /.entry-image -->
 </div><!-- /.entry-header -->
 
@@ -150,7 +138,7 @@
 
 <p>那么，今天我们就一起来学习一下，如何使用 ECharts 水球图。</p>
 
-<h2 id="第一步引入-javascript-文件">第一步：引入 JavaScript 文件</h2>
+<h2 id="javascript-">第一步：引入 JavaScript 文件</h2>
 
 <p>ECharts 的水球图是一个<em>插件</em>类型的图表。这意味着，在 ECharts 官网下载的完整版本将不包含水球图——这保证了不需要使用该图表的用户能够获得一个尽可能小的代码版本。使用时，需要在引入 <code class="highlighter-rouge">echarts.js</code> 之后，另外引入水球图对应的 <code class="highlighter-rouge">echarts-liquidfill.js</code>，可以在 <a href="https://github.com/ecomfe/echarts-liquidfill/tree/gh-pages/dist">GitHub</a> 找到最新版本。</p>
 
@@ -163,7 +151,7 @@
 </code></pre>
 </div>
 
-<h2 id="第二步指定-dom-元素作为图表容器">第二步：指定 DOM 元素作为图表容器</h2>
+<h2 id="dom-">第二步：指定 DOM 元素作为图表容器</h2>
 
 <p>和创建 ECharts 的其他图表一样，我们需要指定 DOM 中的一个有高度和宽度的元素作为图表的容器——也就是图表将会绘制的位置。</p>
 
@@ -177,7 +165,7 @@
 </code></pre>
 </div>
 
-<h2 id="第三步设置水球图参数">第三步：设置水球图参数</h2>
+<h2 id="section">第三步：设置水球图参数</h2>
 
 <p>和其他 ECharts 图表一样，水球图提供将系列的 <code class="highlighter-rouge">type</code> 指定为 <code class="highlighter-rouge">'liquidFill'</code>（注意大小写）来表明这是一个水球图类型。</p>
 
@@ -212,11 +200,11 @@
 
 <p>即使不配置很多参数，预设的参数也可以使你获得一个优雅的水球图效果。而如果有特定的需求，ECharts 水球图又支持非常高度定制的效果。下面我们具体说明如何定制化你的水球图。</p>
 
-<h2 id="第四步定制化水球图">第四步：定制化水球图</h2>
+<h2 id="section-1">第四步：定制化水球图</h2>
 
 <p>水球图支持非常高度定制化的需求，包括颜色（<code class="highlighter-rouge">color</code>）、大小（<code class="highlighter-rouge">radius</code>）、波的振幅（<code class="highlighter-rouge">amplitude</code>）、波长（<code class="highlighter-rouge">waveLength</code>）、相位（<code class="highlighter-rouge">phase</code>）、周期（<code class="highlighter-rouge">period</code>）、移动方向（<code class="highlighter-rouge">direction</code>）、形状（<code class="highlighter-rouge">shape</code>）、动画（<code class="highlighter-rouge">waveAnimation</code>）等等，完整的配置项参数参见<a href="https://github.com/ecomfe/echarts-liquidfill#api">水球图 API</a>。文档有针对每个配置项的详细说明，这里我们来介绍一些重要的参数。</p>
 
-<h3 id="形状与动画">形状与动画</h3>
+<h3 id="section-2">形状与动画</h3>
 
 <iframe style="width: 100%; height: 600px" src="http://gallery.echartsjs.com/view.html?cid=xry0tUfcBe"></iframe>
 
@@ -279,7 +267,7 @@
 </code></pre>
 </div>
 
-<h3 id="单个波的配置">单个波的配置</h3>
+<h3 id="section-3">单个波的配置</h3>
 
 <p>除了对所有水波做的设置之外，每个水波可以进行单独的配置。和 ECharts 的其他配置项一样，对单个数据的配置项将覆盖整个系列的配置项。</p>
 
@@ -306,7 +294,7 @@
 
 <p>可以发现，原先 <code class="highlighter-rouge">data</code> 中的一项是一个数字，而在需要做特殊定制的数据中，我们将其设置为一个对象，<code class="highlighter-rouge">value</code> 值是原先的数字，其他配置项将覆盖系列配置项的值。</p>
 
-<h3 id="文字显示">文字显示</h3>
+<h3 id="section-4">文字显示</h3>
 
 <p>水球图中间的文字有个酷炫的效果，在水波和背景前的文字颜色是不同的，可以通过 <code class="highlighter-rouge">insideColor</code> 设置水波处的文字颜色，<code class="highlighter-rouge">color</code> 设置背景处的文字颜色。</p>
 
@@ -370,7 +358,7 @@
 </code></pre>
 </div>
 
-<h2 id="小结">小结</h2>
+<h2 id="section-5">小结</h2>
 
 <p>以上，我们介绍了 ECharts 水球图的一些基本用法，希望能够给大家启发，创作出更多波涛汹涌的作品。</p>
 
@@ -378,14 +366,14 @@
 
 
       <footer class="entry-meta">
-        <span class="entry-tags"><a href="http://echarts.baidu.com/blog/tags/#extension" title="Pages tagged extension" class="tag"><span class="term">extension</span></a><a href="http://echarts.baidu.com/blog/tags/#tutorial" title="Pages tagged tutorial" class="tag"><span class="term">tutorial</span></a></span>
+        <span class="entry-tags"><a href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/tags/#extension" title="Pages tagged extension" class="tag"><span class="term">extension</span></a><a href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/tags/#tutorial" title="Pages tagged tutorial" class="tag"><span class="term">tutorial</span></a></span>
         
         <div class="social-share">
   <ul class="socialcount socialcount-small inline-list">分享到：
-    <li class="weibo"><a href="http://v.t.sina.com.cn/share/share.php?title=ECharts+官网博文：ECharts 水球图教程&url=http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html" title="Share on Weibo">新浪微博</a></li>
-    <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html" title="Share on Facebook"><span class="count"><i class="fa fa-facebook-square"></i> Like</span></a></li>
-    <li class="twitter"><a href="https://twitter.com/intent/tweet?text=http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html" title="Share on Twitter"><span class="count"><i class="fa fa-twitter-square"></i> Tweet</span></a></li>
-    <li class="googleplus"><a href="https://plus.google.com/share?url=http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html" title="Share on Google Plus"><span class="count"><i class="fa fa-google-plus-square"></i> +1</span></a></li>
+    <li class="weibo"><a href="http://v.t.sina.com.cn/share/share.php?title=ECharts+官网博文：ECharts 水球图教程&url=http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html" title="Share on Weibo">新浪微博</a></li>
+    <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html" title="Share on Facebook"><span class="count"><i class="fa fa-facebook-square"></i> Like</span></a></li>
+    <li class="twitter"><a href="https://twitter.com/intent/tweet?text=http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html" title="Share on Twitter"><span class="count"><i class="fa fa-twitter-square"></i> Tweet</span></a></li>
+    <li class="googleplus"><a href="https://plus.google.com/share?url=http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html" title="Share on Google Plus"><span class="count"><i class="fa fa-google-plus-square"></i> +1</span></a></li>
   </ul>
 </div><!-- /.social-share -->
       </footer>
@@ -395,22 +383,27 @@
   
     
     <div class="read-more-header">
-      <a href="http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial-en.html" class="read-more-btn">了解更多</a>
+      <a href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/02/21/echarts-liquidfill-chart-tutorial-en.html" class="read-more-btn">了解更多</a>
     </div><!-- /.read-more-header -->
     <div class="read-more-content">
-      <h3><a href="http://echarts.baidu.com/blog/2017/03/15/echarts-dataAbstraction-tutorial.html" title="可视化中的数据">可视化中的数据</a></h3>
-      <p>当下随着大数据热潮的到来，数据可视化作为一个新兴的领域，受到了学术界和工业界的重视。从可视分析、数据新闻到商业报表，各个领域都在越来越多的使用它。既然是数据可视化，说明数据是主体，可视化只是将数据以可视的形式表达的手段。接下来小编就与大家一起揭开可视化中数据的面纱，一探究竟。 <a href="http://echarts.baidu.com/blog/2017/03/15/echarts-dataAbstraction-tutorial.html">继续阅读</a></p>
+      <h3><a href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/03/23/new-release.html" title="echarts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布">echarts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布</a></h3>
+      <p>在 echarts 新发布的 3.5 版本中，新增了日历坐标系，增强了坐标轴指示器。同时，echarts 统计扩展 1.0 版本发布了。日历坐标系用于在日历中绘制图表，坐标轴指示器方便用户观察数据内容，统计扩展是一个专门用来进行数据分析的工具。 <a href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/03/23/new-release.html">继续阅读</a></p>
     </div><!-- /.read-more-content -->
     
   
   <div class="read-more-list">
     
     
+      <div class="list-item">
+        <h4><a href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/03/23/new-release-en.html" title="ECharts v3.5 Released, Publishing Calendar Coordinate System and Enhanced Axis Pointer, Meanwhile Statistic Extension v1.0 Released">ECharts v3.5 Released, Publishing Calendar Coordinate System and Enhanced Axis Pointer, Meanwhile Statistic Extension v1.0 Released</a></h4>
+        <span>Published on March 23, 2017</span>
+      </div><!-- /.list-item -->
+    
     
     
       <div class="list-item">
-        <h4><a href="http://echarts.baidu.com/blog/2017/01/13/new-release.html" title="ECharts 3.4 版本发布：新增象形柱图、主题河流图、水球图">ECharts 3.4 版本发布：新增象形柱图、主题河流图、水球图</a></h4>
-        <span>Published on January 13, 2017</span>
+        <h4><a href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/03/15/echarts-dataAbstraction-tutorial.html" title="可视化中的数据">可视化中的数据</a></h4>
+        <span>Published on March 15, 2017</span>
       </div><!-- /.list-item -->
     
     
@@ -421,13 +414,15 @@
 
 <div class="footer-wrapper">
   <footer role="contentinfo">
-    
+    <span>&copy; 2017 ECharts. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/hpstr-jekyll-theme/" rel="nofollow">HPSTR Theme</a>.</span>
   </footer>
 </div><!-- /.footer-wrapper -->
 
-<script src="http://echarts.baidu.com/blog/assets/js/vendor/jquery-1.9.1.min.js"></script>
-<script src="http://echarts.baidu.com/vendors/bootstrap/js/bootstrap.min.js"></script>
-<script src="http://echarts.baidu.com/blog/assets/js/scripts.min.js"></script>
+<script src="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/assets/js/vendor/jquery-1.9.1.min.js"></script>
+<script src="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/assets/js/scripts.min.js"></script>
+
+
+
 
 <script>
 var _hmt = _hmt || [];

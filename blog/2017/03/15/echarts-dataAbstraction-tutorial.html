@@ -1,8 +1,8 @@
 <!doctype html>
-<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="zh"> <![endif]-->
-<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="zh"><![endif]-->
-<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="zh"><![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="zh"><!--<![endif]-->
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
 <title>可视化中的数据 </title>
@@ -16,15 +16,15 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="可视化中的数据">
 <meta property="og:description" content="当下随着大数据热潮的到来，数据可视化作为一个新兴的领域，受到了学术界和工业界的重视。从可视分析、数据新闻到商业报表，各个领域都在越来越多的使用它。既然是数据可视化，说明数据是主体，可视化只是将数据以可视的形式表达的手段。接下来小编就与大家一起揭开可视化中数据的面纱，一探究竟。">
-<meta property="og:url" content="http://echarts.baidu.com/blog/2017/03/15/echarts-dataAbstraction-tutorial.html">
+<meta property="og:url" content="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/03/15/echarts-dataAbstraction-tutorial.html">
 <meta property="og:site_name" content="">
 
 
 
 
 
-<link rel="canonical" href="http://echarts.baidu.com/blog/2017/03/15/echarts-dataAbstraction-tutorial.html">
-<link href="http://echarts.baidu.com/blog/feed.xml" type="application/atom+xml" rel="alternate" title=" Feed">
+<link rel="canonical" href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/03/15/echarts-dataAbstraction-tutorial.html">
+<link href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/feed.xml" type="application/atom+xml" rel="alternate" title=" Feed">
 
 <!-- http://t.co/dKP3o1e -->
 <meta name="HandheldFriendly" content="True">
@@ -32,29 +32,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- For all browsers -->
-<link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css">
-<link rel="stylesheet" href="http://echarts.baidu.com/blog/assets/css/main.css">
+<link rel="stylesheet" href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/assets/css/main.css">
 <!-- Webfonts -->
 <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic" rel="stylesheet" type="text/css">
 
 <meta http-equiv="cleartype" content="on">
 
 <!-- Load Modernizr -->
-<!--<script src="http://echarts.baidu.com/blog/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>-->
+<script src="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
 
 <!-- Icons -->
 <!-- 16x16 -->
-<link rel="shortcut icon" href="http://echarts.baidu.com/blog/favicon.ico">
+<link rel="shortcut icon" href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/favicon.ico">
 <!-- 32x32 -->
-<link rel="shortcut icon" href="http://echarts.baidu.com/blog/favicon.png">
+<link rel="shortcut icon" href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/favicon.png">
 <!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
-<link rel="apple-touch-icon-precomposed" href="http://echarts.baidu.com/blog/images/apple-touch-icon-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/apple-touch-icon-precomposed.png">
 <!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://echarts.baidu.com/blog/images/apple-touch-icon-72x72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/apple-touch-icon-72x72-precomposed.png">
 <!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://echarts.baidu.com/blog/images/apple-touch-icon-114x114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/apple-touch-icon-114x114-precomposed.png">
 <!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://echarts.baidu.com/blog/images/apple-touch-icon-144x144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/apple-touch-icon-144x144-precomposed.png">
 
 
 
@@ -62,57 +61,46 @@
 
 <body id="post" class="feature">
 
-
-<nav class="navbar navbar-default navbar-fixed-top">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<button type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="http://echarts.baidu.com/index.html" class="navbar-brand"><img src="http://echarts.baidu.com/images/logo.png" alt="echarts logo" class="navbar-logo"/></a>
-		</div>
-		<div class="collapse navbar-collapse" id="navbar-collapse">
-			<ul class="nav navbar-nav navbar-left">
-				<li id="nav-index"><a href="http://echarts.baidu.com/index.html">首页</a></li>
-				<li id="nav-doc" class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">文档<b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="http://echarts.baidu.com/tutorial.html">教程</a></li>
-						<li><a href="http://echarts.baidu.com/api.html">API</a></li>
-						<li><a href="http://echarts.baidu.com/option.html">配置项手册</a></li>
-						<li><a href="http://echarts.baidu.com/faq.html">常见问题</a></li>
-						<li><a href="http://echarts.baidu.com/changelog.html">版本记录</a></li>
-						<li><a href="http://echarts.baidu.com/feature.html">特性</a></li>
-					</ul>
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
+	<button class="dl-trigger">展开</button>
+	<ul class="dl-menu">
+		<li><a href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/">首页</a></li>
+		<!--<li>
+			<a href="#">About</a>
+			<ul class="dl-submenu">
+				<li>
+					<img src="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/echarts.png" alt="ECharts photo" class="author-photo">
+					<h4>ECharts</h4>
+					<p>强大、简单、灵活的可视化工具</p>
 				</li>
-				<li id="nav-download" class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">下载<b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="http://echarts.baidu.com/download.html">下载</a></li>
-						<li><a href="http://echarts.baidu.com/download-extension.html">扩展下载</a></li>
-						<li><a href="http://echarts.baidu.com/download-theme.html">主题下载</a></li>
-						<li><a href="http://echarts.baidu.com/download-map.html">地图下载</a></li>
-					</ul>
+				<li><a href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/about/"><span class="btn btn-inverse">Learn More</span></a></li>
+				
+				
+				
+				
+				
+				<li>
+					<a href="https://github.com/ecomfe/echarts"><i class="fa fa-fw fa-github"></i> GitHub</a>
 				</li>
-				<li id="nav-examples"><a href="http://echarts.baidu.com/examples.html" class="dropdown-toggle">实例</a></li>
-				<li id="nav-community" class="active"><a href="#" data-toggle="dropdown" class="dropdown-toggle">社区<b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="http://gallery.echartsjs.com">GALLERY</a></li>
-						<li><a href="http://echarts.baidu.com/blog/">博客</a></li>
-					</ul>
-				</li>
-				<li id="nav-tool"><a href="#" data-toggle="dropdown" class="dropdown-toggle">工具<b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="http://echarts.baidu.com/spreadsheet.html">表格工具</a></li>
-						<li><a href="http://ecomfe.github.io/echarts-map-tool/">地图数据在线工具</a></li>
-						<li><a href="http://echarts.baidu.com/theme-builder/">主题构建工具</a></li>
-					</ul>
-				</li>
-				<li id="nav-about"><a href="http://echarts.baidu.com/about.html">关于</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li id="nav-github"><a href="https://github.com/ecomfe/echarts" target="_blank"><img src="http://echarts.baidu.com/images/github.png" width="18"/></a></li>
-				<li id="nav-2" class="0"><a href="http://echarts.baidu.com/echarts2/">2.0</a></li>
-				<li id="nav-homeen"><a href="https://ecomfe.github.io/echarts-doc/public/en/index.html">EN</a></li>
-			</ul>
-		</div>
-	</div>
-</nav>
+				
+				
+				
+				
+			</ul><!-- /.dl-submenu -->
+		<!--/li-->
+		<li>
+			<a href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/posts/">所有文章</a>
+		</li>
+		<li>
+			<a href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/tags/">所有标签</a>
+		</li>
+		<li>
+			<a href="http://echarts.baidu.com/">ECharts 官网</a>
+		</li>
+		<!--
+	</ul><!-- /.dl-menu -->
+</nav><!-- /.dl-menuwrapper -->
 
 
 
@@ -120,7 +108,7 @@
 <div class="entry-header">
   
   <div class="entry-image">
-    <img src="http://echarts.baidu.com/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-dataset.png" alt="可视化中的数据">
+    <img src="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-dataset.png" alt="可视化中的数据">
   </div><!-- /.entry-image -->
 </div><!-- /.entry-header -->
 
@@ -146,36 +134,36 @@
     <div class="entry-content">
       <p>当下随着大数据热潮的到来，数据可视化作为一个新兴的领域，受到了学术界和工业界的重视。从可视分析、数据新闻到商业报表，各个领域都在越来越多的使用它。既然是数据可视化，说明数据是主体，可视化只是将数据以可视的形式表达的手段。接下来小编就与大家一起揭开可视化中数据的面纱，一探究竟。</p>
 
-<h2 id="可视化什么数据抽象">可视化什么：数据抽象</h2>
+<h2 id="section">可视化什么：数据抽象</h2>
 
 <p>既然是数据可视化，无可非议，可视化的元素肯定是数据，这里所指的数据是广义上的数据，包括文本、图片、声音等超媒体数据。ECharts在可视化过程中所涉及的四种基本数据集类型分别是表格数据、网状数据、场数据和几何空间（spatial）数据，像集合、列表等也是常用的数据集类型。这些基本数据集类型又是由不同的数据类组合构成的，这里的数据类是指可视化中所涉及的数据种类，主要包括四种数据类，分别是数据项、数据项的属性、链接（links）、位置。数据项的属性又可分为类别型和有序型两种，其中有序型又进一步细分为序数型和数值型，下面将分别介绍数据类，数据集类型，以及属性类型。</p>
 
-<h3 id="数据类">数据类</h3>
+<h3 id="section-1">数据类</h3>
 
 <p>本文主要讨论ECharts中所涉及的四种基本数据类，分别是数据项、数据项的属性、链接、位置。数据项是指一个独立的实体，如关系数据表中的一行，或网络中的一个节点；属性是数据项的某个可被观测的特性，如年龄，性别等；链接是指数据项之间的关系，该数据类型在网状关系型数据集中用的比较多；位置是地理空间数据类型，指代二维或三维空间中的某个具体位置；下图展示了四种不同的数据集类型所包含的数据类。</p>
 
-<p><img src="http://echarts.baidu.com/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-datatypes.png" alt="data" /></p>
+<p><img src="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-datatypes.png" alt="data" /></p>
 
-<h3 id="数据集类型">数据集类型</h3>
+<h3 id="section-2">数据集类型</h3>
 
 <p>数据集是指为了分析而收集的任何信息，数据集包括数据表，网状数据，场数据（本文主要关注信息可视化，而场数据主要应用于科学可视化，因而在此不作介绍）以及几何空间数据这四种基本类型，而现实世界中的数据集一般是由这四个基本类型中的一个或多个组合而成的。下图展示了四种不同数据集类型具体的内部结构。</p>
 
-<p><img src="http://echarts.baidu.com/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-dataset.png" alt="data" /></p>
+<p><img src="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-dataset.png" alt="data" /></p>
 
-<h4 id="数据表">数据表</h4>
+<h4 id="section-3">数据表</h4>
 
 <p>数据表是常用的数据集形式，由行和列组成。对于简单的扁平表格来说，每一行代表一个数据项，每一列代表一个属性，表格中的每一个单元格是由行号和列号索引的，保存着某个数据项的某个属性值；多维数据表在数据仓库中用的比较多，具有复杂的结构以及复杂的索引机制，一般来说，简单扁平表格至多具有一个键属性（key attribute），而多维表格具有多个键属性。</p>
 
-<h4 id="网状数据">网状数据</h4>
+<h4 id="section-4">网状数据</h4>
 
 <p>网状数据主要用来表明数据项之间具有某种关系，在网状数据中数据项通常被称为节点，两个节点之间的关系被称为链接，也就是网络中的边，并且节点和链接都可以拥有与之相关联的属性。树是一种具有层次结构的特殊类型网络数据，与一般网络数据相比，树没有回路，每一个子节点都对应唯一的一个父节点。</p>
 
-<h4 id="几何空间spatial数据">几何空间（spatial）数据</h4>
+<h4 id="spatial">几何空间（spatial）数据</h4>
 
 <p>几何空间结构数据通过明确的几何空间位置指定数据项的形状信息，这些数据项可以是空间中的点、一维的直线或曲线、二维的平面或区域，以及三维的立方体。空间数据在不同的度量尺度上具有层级结构。这种层级结构要么是原始数据集固有的，要么是从原始数据集派生出来的。
 可视化中的数据主要以两种形式存在，一种是静态的数据文件，一种是动态的数据流。静态的数据文件是指可以同时获得完整的数据文件，而动态的数据流是指数据在不断的更新和变化。</p>
 
-<h3 id="属性类型">属性类型</h3>
+<h3 id="section-5">属性类型</h3>
 
 <p>属性类型主要分为类别型和有序型两种，有序型又可进一步分为序数型和数值型。有序型数据的排列方向有三种，分别是单向型，有公共零点的双向型，以及环状周期型，如下图所示，除此之外，属性也可能有层级结构。
 类别型属性是指名称上的不同，属性的值之间没有明确的排序，例如喜欢的球类运动包括足球、篮球、排球等。虽然类别型属性内部没有明确的排序，但任意外部的排序机制可以被应用在类别型属性上，如将球类运动的名字按字母顺序排列。
@@ -183,24 +171,24 @@
 有序型数据可以是单向的有序序列，比如人的年龄，只能往一个方向递增，也可以是有公共零点的对向序列，如温度。有序型数据也可以是环状周期的，如时间相关的属性。
 在单个属性内部或者多个属性之间可能具有层级结构，如北京一年的交通事故数量，这是一个时间序列数据，具有时间属性，可以分层级聚合，可以分别按周、月、年聚合，在不同的时间聚合尺度下可能会发现数据集中有趣的模式。除了时间属性之外，地理空间数据也具有层级结构，如可以细分到省、市、县等。</p>
 
-<p><img src="http://echarts.baidu.com/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-attribute.png" alt="" /></p>
+<p><img src="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-attribute.png" alt="" /></p>
 
-<h2 id="总结">总结</h2>
+<h2 id="section-6">总结</h2>
 <p>本文简要讨论了可视化中的数据，从数据的种类、数据集的类型以及属性的类型这三个角度阐述了可视化中需要可视表达的数据信息。</p>
 
-<h4 id="参考文献">参考文献</h4>
+<h4 id="section-7">参考文献</h4>
 
 <p>[1] Tamara Munzner.Visualization Analysis and Design. CRC Press, 2014.</p>
 
       <footer class="entry-meta">
-        <span class="entry-tags"><a href="http://echarts.baidu.com/blog/tags/#visualization" title="Pages tagged visualization" class="tag"><span class="term">visualization</span></a><a href="http://echarts.baidu.com/blog/tags/#tutorial" title="Pages tagged tutorial" class="tag"><span class="term">tutorial</span></a></span>
+        <span class="entry-tags"><a href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/tags/#visualization" title="Pages tagged visualization" class="tag"><span class="term">visualization</span></a><a href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/tags/#tutorial" title="Pages tagged tutorial" class="tag"><span class="term">tutorial</span></a></span>
         
         <div class="social-share">
   <ul class="socialcount socialcount-small inline-list">分享到：
-    <li class="weibo"><a href="http://v.t.sina.com.cn/share/share.php?title=ECharts+官网博文：可视化中的数据&url=http://echarts.baidu.com/blog/2017/03/15/echarts-dataAbstraction-tutorial.html" title="Share on Weibo">新浪微博</a></li>
-    <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=http://echarts.baidu.com/blog/2017/03/15/echarts-dataAbstraction-tutorial.html" title="Share on Facebook"><span class="count"><i class="fa fa-facebook-square"></i> Like</span></a></li>
-    <li class="twitter"><a href="https://twitter.com/intent/tweet?text=http://echarts.baidu.com/blog/2017/03/15/echarts-dataAbstraction-tutorial.html" title="Share on Twitter"><span class="count"><i class="fa fa-twitter-square"></i> Tweet</span></a></li>
-    <li class="googleplus"><a href="https://plus.google.com/share?url=http://echarts.baidu.com/blog/2017/03/15/echarts-dataAbstraction-tutorial.html" title="Share on Google Plus"><span class="count"><i class="fa fa-google-plus-square"></i> +1</span></a></li>
+    <li class="weibo"><a href="http://v.t.sina.com.cn/share/share.php?title=ECharts+官网博文：可视化中的数据&url=http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/03/15/echarts-dataAbstraction-tutorial.html" title="Share on Weibo">新浪微博</a></li>
+    <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/03/15/echarts-dataAbstraction-tutorial.html" title="Share on Facebook"><span class="count"><i class="fa fa-facebook-square"></i> Like</span></a></li>
+    <li class="twitter"><a href="https://twitter.com/intent/tweet?text=http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/03/15/echarts-dataAbstraction-tutorial.html" title="Share on Twitter"><span class="count"><i class="fa fa-twitter-square"></i> Tweet</span></a></li>
+    <li class="googleplus"><a href="https://plus.google.com/share?url=http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/03/15/echarts-dataAbstraction-tutorial.html" title="Share on Google Plus"><span class="count"><i class="fa fa-google-plus-square"></i> +1</span></a></li>
   </ul>
 </div><!-- /.social-share -->
       </footer>
@@ -210,22 +198,27 @@
   
     
     <div class="read-more-header">
-      <a href="http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html" class="read-more-btn">了解更多</a>
+      <a href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html" class="read-more-btn">了解更多</a>
     </div><!-- /.read-more-header -->
     <div class="read-more-content">
-      <h3><a href="http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html" title="ECharts 水球图教程">ECharts 水球图教程</a></h3>
-      <p>水球图是一种适合于展现单个百分比数据的图表类型，ECharts 的水球图插件使你能够通过非常简单的配置，实现酷炫的数据展示效果。本文将会介绍，如何使用 ECharts 水球图。 <a href="http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html">继续阅读</a></p>
+      <h3><a href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/03/23/new-release.html" title="echarts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布">echarts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布</a></h3>
+      <p>在 echarts 新发布的 3.5 版本中，新增了日历坐标系，增强了坐标轴指示器。同时，echarts 统计扩展 1.0 版本发布了。日历坐标系用于在日历中绘制图表，坐标轴指示器方便用户观察数据内容，统计扩展是一个专门用来进行数据分析的工具。 <a href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/03/23/new-release.html">继续阅读</a></p>
     </div><!-- /.read-more-content -->
     
   
   <div class="read-more-list">
     
     
+      <div class="list-item">
+        <h4><a href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/03/23/new-release-en.html" title="ECharts v3.5 Released, Publishing Calendar Coordinate System and Enhanced Axis Pointer, Meanwhile Statistic Extension v1.0 Released">ECharts v3.5 Released, Publishing Calendar Coordinate System and Enhanced Axis Pointer, Meanwhile Statistic Extension v1.0 Released</a></h4>
+        <span>Published on March 23, 2017</span>
+      </div><!-- /.list-item -->
+    
     
     
       <div class="list-item">
-        <h4><a href="http://echarts.baidu.com/blog/2017/01/13/new-release.html" title="ECharts 3.4 版本发布：新增象形柱图、主题河流图、水球图">ECharts 3.4 版本发布：新增象形柱图、主题河流图、水球图</a></h4>
-        <span>Published on January 13, 2017</span>
+        <h4><a href="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html" title="ECharts 水球图教程">ECharts 水球图教程</a></h4>
+        <span>Published on February 21, 2017</span>
       </div><!-- /.list-item -->
     
     
@@ -236,13 +229,15 @@
 
 <div class="footer-wrapper">
   <footer role="contentinfo">
-    
+    <span>&copy; 2017 ECharts. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/hpstr-jekyll-theme/" rel="nofollow">HPSTR Theme</a>.</span>
   </footer>
 </div><!-- /.footer-wrapper -->
 
-<script src="http://echarts.baidu.com/blog/assets/js/vendor/jquery-1.9.1.min.js"></script>
-<script src="http://echarts.baidu.com/vendors/bootstrap/js/bootstrap.min.js"></script>
-<script src="http://echarts.baidu.com/blog/assets/js/scripts.min.js"></script>
+<script src="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/assets/js/vendor/jquery-1.9.1.min.js"></script>
+<script src="http://sushuang.baidu.com:8000/echarts/echarts-doc/blog/assets/js/scripts.min.js"></script>
+
+
+
 
 <script>
 var _hmt = _hmt || [];
