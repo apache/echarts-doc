@@ -28,6 +28,18 @@ Note:
 
 ---
 
+## About Me
+
++ WebGL
+
++ Canvas
+
++ ECharts
+
++ QTEK
+
+---
+
 ## ECharts 简介
 
 + 基于 Canvas 的开源前端可视化库 <!-- .element: class="fragment highlight-current-blue" -->
@@ -124,13 +136,11 @@ Note:
 
 ## 大纲
 
-+ 三维空间中点线面的绘制
++ 三维空间的可视化
 
 + 如何在前端实现高品质的渲染
 
 + 利用 WebGL 加速力引导布局
-
-+ 在 ECharts 现有架构中扩展 WebGL 组件
 
 Note:
 
@@ -427,13 +437,13 @@ Note:
 
 ## 曲面图
 
-+ 连接邻接的四个顶点作为一个四边面 <!-- .element: class="fragment highlight-current-blue" -->
++ 邻接的四个顶点作为一个四边面 <!-- .element: class="fragment highlight-current-blue" -->
 
 + 分配重心坐标用于画网格 <!-- .element: class="fragment highlight-current-blue" -->
 
 + 对角线将四边面分解为两个三角面 <!-- .element: class="fragment highlight-current-blue" -->
 
-<img data-src="asset/img/triangle.png" alt="">
+<img data-src="asset/img/triangle.png" style="background: none;box-shadow: none;" alt="">
 
 Note:
 这是用散点图表示的曲面函数，我们选择其中四个相邻的顶点先组成四边面。然后为四边面的每个顶点分配重心坐标，这个重心坐标用于网格的绘制。
@@ -449,6 +459,8 @@ x = Math.sin(v) * Math.sin(u);
 y = Math.sin(v) * Math.cos(u);
 z = Math.cos(v);
 ```
+
+<iframe data-src="asset/ec-demo/surface-sphere.html" style="width:600px;height: 400px;" frameborder="0"></iframe>
 
 Note:
 参数方程是将 x，y，z 表示成关于 u，v 的函数，
@@ -585,9 +597,9 @@ Note:
 
 ----
 
-## 景深
+<h2 style="text-shadow: 0 0 10px #000">景深</h2>
 
-<img style="width:45%" data-src="asset/img/buildings-dof.jpg" alt="">
+<!--.slide: data-background="./asset/img/buildings-dof.jpg" -->
 
 Note:
 景深可以让镜头效果显得更真实，而且像这个 GeoJSON 的粒子可以有一种微型模型的感觉。
@@ -610,7 +622,7 @@ ACES Tone Mapping + Color Grading
 <img style="width:30%" data-src="asset/img/buildings-ao.jpg" alt="">
 <img style="width:30%" data-src="asset/img/buildings-dof.jpg" alt="">
 
-都需要采样越多越好 <!-- .element: class="fragment" -->
+采样！采样！采样！ <!-- .element: class="fragment" -->
 
 Note:
 
@@ -648,6 +660,12 @@ Note:
 高品质的渲染还有一个很重要的因素是抗锯齿。大家可以看下这两张有锯齿和锯齿少的效果图的区别。
 
 锯齿本质上也是因为单个像素对场景的采样不足造成的。
+
+----
+
+<img style="width:45%" data-src="asset/img/no-aa.png" alt="">
+<img style="width:45%" data-src="asset/img/temporal-aa.png" alt="">
+
 
 ----
 
@@ -766,9 +784,8 @@ Note:
 
 ## WebGL 中实现力引导布局
 
-Note:
-TODO
-架构图
+<img src="asset/img/gpgpu.png" style="background: none;box-shadow: none;" />
+
 
 ----
 
@@ -848,15 +865,6 @@ Note:
 
 ----
 
-## More
-
-+ GPGPU 中实现 Barnes Hut
-
-Note:
-因为 Shader 中实现数据结构非常麻烦，所以像 Barnes Hut 这种依赖四叉树作为数据结构的，就很难在 GPU 中使用。但是也不是不可能，GPU Gem 2 中就已经有人尝试了在 Shader 模拟指针实现了四叉树。
-
-----
-
 ## 限制
 
 + 需要浏览器支持 WebGL  <!-- .element: class="fragment highlight-current-blue" -->
@@ -864,6 +872,15 @@ Note:
 + 需要浮点纹理扩展  <!-- .element: class="fragment highlight-current-blue" -->
 
 + 数据量特别大的时候容易造成整个系统阻塞  <!-- .element: class="fragment highlight-current-blue" -->
+
+----
+
+## More
+
++ GPGPU 中实现 Barnes Hut
+
+Note:
+因为 Shader 中实现数据结构非常麻烦，所以像 Barnes Hut 这种依赖四叉树作为数据结构的，就很难在 GPU 中使用。但是也不是不可能，GPU Gem 2 中就已经有人尝试了在 Shader 模拟指针实现了四叉树。
 
 ---
 
