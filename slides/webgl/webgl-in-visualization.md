@@ -28,15 +28,20 @@ Note:
 
 ---
 
+<!--.slide: data-background-video="./asset/video/showreel.mp4" data-background-opacity="0.5" -->
+
 ## About Me
 
-+ WebGL
++ <b>WebGL</b> <small>2011</small>
 
-+ Canvas
++ <b>Canvas</b> <small>2013</small>
 
-+ ECharts
++ <b>ECharts</b> <small>2014</small>
 
-+ QTEK
++ <b>qtek</b> <small>2013</small>
+
+Note:
+我从
 
 ---
 
