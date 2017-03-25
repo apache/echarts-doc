@@ -104,7 +104,7 @@ Canvas 画路径本质上还是矢量的方式，就算有 GPU 加速，为了�
 
 ---
 
-![](./asset/img/webgl-logo.png)
+<img src="./asset/img/webgl-logo.png" style="background: none;box-shadow: none;">
 
 Note:
 所以我们需要一个能力更强的绘图接口，WebGL。
@@ -241,6 +241,8 @@ WebGL 自带画点的模式，你只要在 drawArrays，就是 WebGL 最后调�
 ## 不同形状的点
 
 + 把形状用白色填充到 Canvas 上作为纹理
+
+<img src="asset/img/sprite.png" >
 
 ```glsl
 gl_FragColor = color * texture2D(sprite, gl_PointCoord);
