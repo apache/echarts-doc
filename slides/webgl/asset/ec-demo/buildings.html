@@ -16,7 +16,9 @@
 
         <script>
             echarts.registerMap('buildings', buildingsGeoJSON);
-            var chart = echarts.init(document.getElementById('main'));
+            var chart = echarts.init(document.getElementById('main'), null, {
+                devicePixelRatio: 1
+            });
 
             var regions = buildingsGeoJSON.features.map(function (feature) {
                 return {
@@ -39,19 +41,19 @@
                     postEffect: {
                         enable: true,
                         bloom: {
-                            enable: true
+                            enable: false
                         },
                         SSAO: {
                             enable: true,
-                            quality: 'ultra',
+                            quality: 'medium',
                             radius: 2,
-                            intensity: 2
+                            intensity: 1.5
                         },
                         depthOfField: {
-                            // enable: true,
+                            enable: true,
                             focalRange: 5,
                             fstop: 0.5,
-                            blurRadius: 10
+                            blurRadius: 5
                         }
                     },
                     groundPlane: {
@@ -61,7 +63,7 @@
                         main: {
                             intensity: 4,
                             shadow: true,
-                            shadowQuality: 'ultra',
+                            shadowQuality: 'high',
                             alpha: 30
                         },
                         ambient: {

@@ -19,10 +19,10 @@
             var noise = new SimplexNoise(Math.random);
             function generateData(theta, min, max) {
                 var data = [];
-                for (var i = 0; i <= 30; i++) {
-                    for (var j = 0; j <= 30; j++) {
-                        for (var k = 0; k <= 30; k++) {
-                            var value = noise.noise2D(i / 20, j / 20, k / 20);
+                for (var i = 0; i <= 40; i++) {
+                    for (var j = 0; j <= 40; j++) {
+                        for (var k = 0; k <= 40; k++) {
+                            var value = noise.noise3D(i / 20, j / 20, k / 20);
                             valMax = Math.max(valMax, value);
                             valMin = Math.min(valMin, value);
                             data.push([i, j, k, value * 2 + 4]);

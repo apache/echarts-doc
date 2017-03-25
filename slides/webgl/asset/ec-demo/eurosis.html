@@ -16,6 +16,18 @@
             var chart = echarts.init(document.getElementById('main'));
 
             chart.setOption({
+                title: {
+                    text: 'Force Directed Layout',
+                    subtext: '\nNodes: 1285\n\nEdges: 7586',
+                    textStyle: {
+                        fontSize: 30,
+                        color: '#fff'
+                    },
+                    subtextStyle: {
+                        fontSize: 20,
+                        color: '#fff'
+                    }
+                },
                 series: [{
                     type: 'graph',
                     layout: 'force',

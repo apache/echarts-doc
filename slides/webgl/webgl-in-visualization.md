@@ -23,7 +23,7 @@ revealOptions:
 沈毅
 
 Note:
-这次分享我会先大概介绍 echarts 这个产品，然后主要介绍我们最近尝试用 WebGL 实践数据可视化中碰到的一些问题和解决方案。
+这次分享我要介绍我们最近尝试用 WebGL 实践数据可视化中碰到的一些问题和解决方案。
 具体的可视化方面的知识也会穿插着介绍。
 
 ---
@@ -332,12 +332,11 @@ TODO:
 
 ---
 
+<!--.slide: data-background="./asset/img/alirline.jpg" -->
 ## 线
 
 Note:
 echarts-gl 里有很多需要画线的地方，除了三维的折线图，飞线图等，笛卡尔坐标系，各种轮廓，网格也需要画线。所以能够实现高质量的，各种场景下稳定展现的线的绘制非常重要。
-
-TODO 背景图 or 背景示例
 
 ----
 
@@ -413,7 +412,7 @@ Miter Limit ?
 
 ## 面
 
-+ 主要为三角面 <!-- .element: class="fragment highlight-current-blue" -->
++ 三角面 <!-- .element: class="fragment highlight-current-blue" -->
 
 + 程序生成 <!-- .element: class="fragment highlight-current-blue" -->
 
@@ -434,8 +433,9 @@ Note:
 
 + 对角线将四边面分解为两个三角面 <!-- .element: class="fragment highlight-current-blue" -->
 
+<img data-src="asset/img/triangle.png" alt="">
+
 Note:
-TODO 示意图
 这是用散点图表示的曲面函数，我们选择其中四个相邻的顶点先组成四边面。然后为四边面的每个顶点分配重心坐标，这个重心坐标用于网格的绘制。
 
 ----
@@ -500,12 +500,15 @@ Note:
 
 + 尽量少分配临时数组
 
+<img width="40%" data-src="asset/img/bench-typedarray.png" alt="">
+
+<img width="60%" data-src="asset/img/bench-array.png" alt="">
+
 Note:
 上面关于线和面的部分都需要程序生成 mesh， 每次都要操作几万，几十万，甚至上百万的数据和顶点，所以在性能上一定要小心
 
 特别是在内存上，比如分配数组尽量使用 TypedArray，计算过程中尽量少分配临时数组等等，尽管 JS 的数组操作很快，但是分配了很大的数组后会占用很多堆内存，容易频繁的 GC 导致开销都在这上面。
 
-TODO bench case
 
 
 ---
@@ -518,28 +521,22 @@ TODO bench case
 
 ## 高品质的渲染
 
-+ 一些有效提高画质的方法
++ 一些有效提高画质的方法 <!-- .element: class="fragment highlight-current-blue" -->
 
-+ 如何在有限的电脑配置内实现“无限”的画质
-
-Note:
-这一块我会分两部分讲，首先是一些能够有效提高画质的方法。
-然后我会讲讲如何在我这样有限的垃圾电脑配置中实现很好的画质。
-
-----
-
-<!--.slide: data-background="./asset/img/buildings2.jpg" -->
++ 如何在有限的电脑配置内实现“无限”的画质 <!-- .element: class="fragment highlight-current-blue" -->
 
 Note:
-首先为了让高品质这个词更有说服力，我再放一张 echarts-gl 渲染的效果图，
+这一块我会分两部分讲，首先是一些能够有效提高画质的方法。这一块我不会介绍技术细节，因为每一块都能深入讲，有各种演变的算法，所以我主要通过效果图对比来看这些方法对画质的提升，
+
+然后我会讲讲如何在我这样有限的垃圾电脑配置中实现很好的效果图。
 
 ----
 
 ## 不要过时的三维效果
 
-<img src="./asset/img/bar3d-ugly.png" height="300px" alt="">
-<img src="./asset/img/globe-ugly.png" height="300px" alt="">
-<img src="./asset/img/pie3d-ugly.png" height="300px" alt="">
+<img data-src="./asset/img/bar3d-ugly.png" height="300px" alt="">
+<img data-src="./asset/img/globe-ugly.png" height="300px" alt="">
+<img data-src="./asset/img/pie3d-ugly.png" height="300px" alt="">
 
 Note:
 很多人排斥三维的可视化还有一个原因是因为很多三维的可视化效果渲染效果十分廉价，比如这张柱状图，这张地球，和这张饼图。充斥着经典的 phong 光照模型的高光和其所带来的塑料感，以及粗糙的贴图等等。
@@ -554,23 +551,33 @@ Note:
 
 ## 基于物理的渲染（PBR）
 
-+ HDR 的环境光照 <!-- .element: class="fragment highlight-current-blue" -->
-
-+ 对光照的积分预计算（prefilter）<!-- .element: class="fragment highlight-current-blue" -->
-
-+ 一个能量守恒的光照公式 <!-- .element: class="fragment highlight-current-blue" -->
-
 Note:
 现在游戏里基本上普遍使用了基于物理的渲染，
-单一光源的问题是该亮的地方不亮，该暗的地方不暗
+单一光源的问题是该亮的地方不亮，该暗的地方不暗，画面过于平坦
+
+TODO 贴图
+
+----
+
++ HDR 的环境光照贴图 <!-- .element: class="fragment highlight-current-blue" -->
+
++ 对环境光照的积分预计算（prefilter）<!-- .element: class="fragment highlight-current-blue" -->
+
++ 能量守恒的光照公式 <!-- .element: class="fragment highlight-current-blue" -->
 
 ----
 
 ## 软阴影
 
+<img style="width:45%" data-src="asset/img/buildings-raw.jpg" alt="">
+<img style="width:45%" data-src="asset/img/buildings-shadow.jpg" alt="">
+
 ----
 
 ## SSAO
+
+<img style="width:45%" data-src="asset/img/buildings-shadow.jpg" alt="">
+<img style="width:45%" data-src="asset/img/buildings-ao.jpg" alt="">
 
 Note:
 环境光遮蔽是计算一个点上面能够受到多少环境光，被其它物体包围得越多的地方就会越暗。它作为阴影的补充可以让整个画面更有层次感。防止出现之前说的暗的地方不够暗的情况。
@@ -580,12 +587,38 @@ Note:
 
 ## 景深
 
+<img style="width:45%" data-src="asset/img/buildings-dof.jpg" alt="">
+
+Note:
+景深可以让镜头效果显得更真实，而且像这个 GeoJSON 的粒子可以有一种微型模型的感觉。
+
+
 ----
 
-## ACES Tone Mapping
+## 调色
+
+ACES Tone Mapping + Color Grading
+
+<img style="width:45%" data-src="asset/img/buildings-cold.jpg" alt="">
+<img style="width:45%" data-src="asset/img/buildings-warm.jpg" alt="">
 
 ----
 
+## 在有限的电脑配置内实现“无限”的画质
+
+<img style="width:30%" data-src="asset/img/buildings-shadow.jpg" alt="">
+<img style="width:30%" data-src="asset/img/buildings-ao.jpg" alt="">
+<img style="width:30%" data-src="asset/img/buildings-dof.jpg" alt="">
+
+都需要采样越多越好 <!-- .element: class="fragment" -->
+
+Note:
+
+我们刚才说的这些效果，软阴影，屏幕空间的环境光遮蔽，景深，都需要对周围的纹理进行采样，而且采样需要越多效果越好。因为这些本质上都是蒙特卡洛方法，就是采样越多越趋近于最优值
+
+实际上许多机器，比如我现在这台机器，如果把这些特效都设得很高，也就是采样很多，基本上是不能流畅运行的，但是如果采样少了效果就不好。
+
+----
 
 ## 渐进式增强
 
@@ -596,14 +629,8 @@ Note:
 + 停止交互后渐进增强画面 <!-- .element: class="fragment highlight-current-blue" -->
 
 Note:
-刚讲了这么一堆 bling bling 的特效，实际上许多机器，比如我现在这台机器，如果把这些特效都设得很高，基本上是不能流畅运行的，特别是像软阴影， SSAO，景深这些效果需要对原图做大量的采样，如果采样少了效果就不好，如果采样多了就很卡。
 
 那怎么办？我们就把采样分布到多帧中，比如原来 SSAO 要采样 60 次才会有比较好的效果，那么我们
-
-----
-
-Note:
-实际上我们对于半透明图形中三角面的排序也是这么做的，因为 WebGL 在绘制透明的物体时需要保证三角面是从远往近绘制的才能混合正确，所以我们需要每一帧都对三角面做排序，但是像这个参数曲面中有 40w 的面，排序依次要几百 ms，能够做到实时是不可能，所以我们快排放到多帧里执行了，选择快排的原因也是因为它能够做到第一帧就把小的那一批都放前面，大的那一批都放后面。
 
 ----
 
@@ -624,9 +651,22 @@ Note:
 
 ----
 
+<iframe data-src="asset/ec-demo/buildings.html" class="fullscreen" frameborder="0"></iframe>
+
+----
+
+<iframe data-src="asset/ec-demo/surface-transparent-large.html" class="fullscreen" frameborder="0"></iframe>
+
+Note:
+我们对于半透明图形中三角面的排序也是这么做的，因为 WebGL 在绘制透明的物体时需要保证三角面是从远往近绘制的才能混合正确，所以我们需要每一帧都对三角面做排序，但是像这个参数曲面中有 40w 的面，排序依次要几百 ms，能够做到实时是不可能，所以我们快排放到多帧里执行了，选择快排的原因也是因为它能够做到第一帧就把小的那一批都放前面，大的那一批都放后面。
+
+----
+
 ## Temporal Methods 无法解决的
 
-+ 几何信息缺失 - SSAO  <!-- .element: class="fragment highlight-current-blue" -->
++ 动态的画面 <!-- .element: class="fragment highlight-current-blue" -->
+
++ 几何信息缺失  <!-- .element: class="fragment highlight-current-blue" -->
 
 + 精度不够 - Bias  <!-- .element: class="fragment highlight-current-blue" -->
 
@@ -642,7 +682,7 @@ Note:
 
 <!--.slide: data-background-video="./asset/video/gpgpu.mp4" data-background-opacity="0.4" -->
 
-## GPU 的通用计算
+# GPU 的通用计算
 
 WebGL 中实现力引导布局
 
@@ -756,9 +796,9 @@ Edges: <span style="color: #ffbc00">48k</span>
 
 ## 原论文
 
-CPU without Barnes Hut: <span style="color: #ffbc00"><b>41161 ms</b></span>
+CPU without Barnes Hut: <span style="color: #ffbc00"><b>~41000 ms</b></span>
 
-CPU with Barnes Hut: <span style="color: #ffbc00"><b>403 ms</b></span>
+CPU with Barnes Hut: <span style="color: #ffbc00"><b>~400 ms</b></span>
 
 Note:
 这是这个力引导算法原论文给出的数字
@@ -771,7 +811,9 @@ CPU without Barnes Hut: <span style="color: #ffbc00"><b>~28000 ms</b></span>
 
 CPU with Barnes Hut: <span style="color: #ffbc00"><b>~1000ms</b></span>
 
-GPU: <span style="color: #ffbc00"><b>~260ms</b></span>
+<p class="fragment">
+    GPU: <span style="color: #ffbc00"><b>~260ms</b></span>
+</p>
 
 Note:
 
@@ -789,13 +831,20 @@ CPU without Barnes Hut: <span style="color: #ffbc00"><b>~12000 ms</b></span>
 
 CPU with Barnes Hut: <span style="color: #ffbc00"><b>~300ms</b></span>
 
+<p class="fragment">
 GPU: <span style="color: #ffbc00"><b>~2ms</b></span>
+</p>
 
 Note:
 
 ----
 
-## GPU 加速在高端显卡中的性能提十分显著
+<!--.slide: data-background="./asset/img/gtx1080.jpg" -->
+
+## GPU 加速在高端显卡中的性能提升十分显著
+
+Note:
+这里顺便给核长最新款的战术核显卡打了个广告。
 
 ----
 
@@ -812,9 +861,9 @@ Note:
 
 + 需要浏览器支持 WebGL  <!-- .element: class="fragment highlight-current-blue" -->
 
-+ 需要浮点纹理扩展的支持  <!-- .element: class="fragment highlight-current-blue" -->
++ 需要浮点纹理扩展  <!-- .element: class="fragment highlight-current-blue" -->
 
-+ 数据量特别大的时候容易造成整个电脑阻塞  <!-- .element: class="fragment highlight-current-blue" -->
++ 数据量特别大的时候容易造成整个系统阻塞  <!-- .element: class="fragment highlight-current-blue" -->
 
 ---
 
@@ -832,6 +881,8 @@ Note:
 
 ---
 
-谢谢！
+<!--.slide: data-background="./asset/img/buildings2.jpg" -->
+
+## Thanks
 
 ---
