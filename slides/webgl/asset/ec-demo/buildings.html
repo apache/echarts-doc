@@ -13,6 +13,8 @@
         <script src="../common/jquery.min.js"></script>
         <script src="../common/echarts-gl.js"></script>
         <script src="../data/buildings.json.js"></script>
+        <script src="../texture/woods.jpg.js"></script>
+        <script src="../texture/canyon.hdr.js"></script>
 
         <script>
             echarts.registerMap('buildings', buildingsGeoJSON);
@@ -35,7 +37,7 @@
                     shading: 'realistic',
                     realisticMaterial: {
                         roughness: 0.6,
-                        baseTexture: '../texture/woods.jpg',
+                        baseTexture: woodsUrl,
                         textureTiling: 40
                     },
                     postEffect: {
@@ -70,7 +72,7 @@
                             intensity: 0
                         },
                         ambientCubemap: {
-                            texture: '../texture/canyon.hdr',
+                            texture: canyonUrl,
                             exposure: 2,
                             diffuseIntensity: 1,
                             specularIntensity: 0.2

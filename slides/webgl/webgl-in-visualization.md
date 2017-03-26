@@ -319,6 +319,11 @@ Note:
 
 + Shader 中根据这个距离填色  <!-- .element: class="fragment highlight-current-blue" -->
 
+```glsl
+float d = texture2D(sprite, gl_PointCoord).r;
+// Antialias
+gl_FragColor.a *= smoothstep(0.5 - smoothing, 0.5 + smoothing, d);
+```
 
 Note:
 Signed Distance Field 用来表示到曲线和曲面的距离场，方便 shader 里根据这个距离场构建曲面或者曲线，valve 早些年发表了一篇论文用它来绘制矢量文字，相比普通的纹理贴图或者 alpha test，它的存储空间很小，而且放大后依然很清晰，

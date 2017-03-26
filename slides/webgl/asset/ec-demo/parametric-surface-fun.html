@@ -93,6 +93,7 @@
         <script src="../common/dat.gui.js"></script>
         <script src="../common/codemirror/codemirror.js"></script>
         <script src="../common/codemirror/javascript.js"></script>
+        <script src="../texture/pisa.hdr.js"></script>
         <script>
             // http://xahlee.info/surface/breather_p/breather_p.html
             var chart = echarts.init(document.getElementById('main'), null, {
@@ -316,7 +317,7 @@ return v / 2 * sin(u / 2);
                             intensity: 0
                         },
                         ambientCubemap: {
-                            texture: '../texture/pisa.hdr',
+                            texture: pisaUrl,
                             exposure: 2,
                             diffuseIntensity: 1,
                             specularIntensity: 5
