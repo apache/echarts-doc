@@ -1,3 +1,13 @@
+## v3.5.1
+<div class="time">2017-03-23</div>
+Recovery Build
+
++ [^] Fixed `"undefined"` is displayed when [tooltip.formatter](http://echarts.baidu.com/option.html#tooltip.formatter) returns `null`/`undefined`. See [#5352](https://github.com/ecomfe/echarts/issues/5352).
+
++ [^] Fixed [visualMap component](http://echarts.baidu.com/option.html#visualMap) porcesses rgba color incorrectly. See [#5350](https://github.com/ecomfe/echarts/issues/5350).
+
+
+
 ## v3.5.0
 <div class="time">2017-03-23</div>
 

@@ -1,3 +1,12 @@
+## v3.5.1
+<div class="time">2017-03-23</div>
+Recovery Build
+
++ [^] 修复了 [tooltip.formatter](http://echarts.baidu.com/option.html#tooltip.formatter) 为函数时返回值为 `null`/`undefined` 时显示 `"undefined"` 的问题。参见 [#5352](https://github.com/ecomfe/echarts/issues/5352)。
+
++ [^] 修复了 [visualMap 组件](http://echarts.baidu.com/option.html#visualMap) 处理 rgba 不正确的问题。参见 [#5350](https://github.com/ecomfe/echarts/issues/5350)。
+
+
 ## v3.5.0
 <div class="time">2017-03-23</div>
 
