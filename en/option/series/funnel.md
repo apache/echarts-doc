@@ -29,7 +29,7 @@ The mapped width from maximum data value [max](~series-funnel.max).
 It can be absolute pixel and also the percentage of [layout width](~series-funnel.width).
 
 ## sort(string) = 'descending'
-Data sorting, which can be whether `'ascending'` or `'descending'`.
+Data sorting, which can be whether `'ascending'`, `'descending'`, `'none'`(in data order) or a function, which is the same as `Array.prototype.sort(function (a, b) { ... })`;
 
 ## gap(number) = 0
 Gap between each trapezoid.
