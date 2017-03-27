@@ -10,7 +10,7 @@ image:
 ---
 
 
-在 echarts 新发布的 3.5 版本中，新增了日历坐标系，增强了坐标轴指示器。同时，echarts 统计扩展 1.0 版本发布了。日历坐标系用于在日历中绘制图表，坐标轴指示器方便用户观察数据内容，统计扩展是一个专门用来进行数据分析的工具。
+在 echarts 新发布的 [3.5 版本](https://github.com/ecomfe/echarts/releases/tag/3.5.0)中，新增了日历坐标系，增强了坐标轴指示器。同时，[echarts 统计扩展](https://github.com/ecomfe/echarts-stat) 1.0 版本发布了。日历坐标系用于在日历中绘制图表，坐标轴指示器方便用户观察数据内容，统计扩展是一个专门用来进行数据分析的工具。
 
 
 ## 统计扩展
@@ -166,6 +166,3 @@ image:
   style="width: 100%; height: 640px"
 ></div>
 
-## 其他更新内容
-
-参见 [changelog](http://echarts.baidu.com/changelog.html)
