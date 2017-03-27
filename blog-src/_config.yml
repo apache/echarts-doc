@@ -15,13 +15,15 @@ url_ec_option_cn: http://echarts.baidu.com/option.html
 url_ec_option_en: https://ecomfe.github.io/echarts-doc/public/en/option.html
 
 # url: http://localhost/ec-doc/blog
-# url: http://192.168.1.102:8000/echarts/echarts-doc/blog
-# url_ec_examples_view_cn: http://192.168.1.102:8000/echarts/echarts-examples/public/view.html
+# url: http://localhost/ec-doc/blog
+# url: http://sushuang.baidu.com:8000/echarts/echarts-doc/blog
+# url_ec_examples_view_cn: http://sushuang.baidu.com:8000/echarts/echarts-examples/public/view.html
 # url_ec_examples_view_en: https://ecomfe.github.io/echarts-examples/public/view.html
-# url_ec_examples_thumb_cn: http://192.168.1.102:8000/echarts/echarts-examples/public/data/thumb
-# url_ec_examples_thumb_en: http://192.168.1.102:8000/echarts/echarts-examples/public/data/thumb
+# url_ec_examples_thumb_cn: http://sushuang.baidu.com:8000/echarts/echarts-examples/public/data/thumb
+# url_ec_examples_thumb_en: http://sushuang.baidu.com:8000/echarts/echarts-examples/public/data/thumb
 # url_ec_option_cn: http://echarts.baidu.com/option.html
 # url_ec_option_en: https://ecomfe.github.io/echarts-doc/public/en/option.html
+
 
 
 # Owner/author information
@@ -68,7 +70,7 @@ categories:
   - en
 
 # Amount of post to show on home page
-paginate: 20
+paginate: 5
 
 kramdown:
   input: GFM

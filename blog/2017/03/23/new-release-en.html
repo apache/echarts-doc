@@ -1,0 +1,301 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>ECharts v3.5 Released, Publishing Calendar Coordinate System and Enhanced Axis Pointer, Meanwhile Statistic Extension v1.0 Released </title>
+<meta name="description" content="We are releasing echarts v3.5, where calendar coodinate system is supported and axis pointer is enhanced. Meanwhile echarts statistic extension v1.0 is published.">
+<meta name="keywords" content="new release, extension, tutorial">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ECharts v3.5 Released, Publishing Calendar Coordinate System and Enhanced Axis Pointer, Meanwhile Statistic Extension v1.0 Released">
+<meta property="og:description" content="We are releasing echarts v3.5, where calendar coodinate system is supported and axis pointer is enhanced. Meanwhile echarts statistic extension v1.0 is published.">
+<meta property="og:url" content="http://echarts.baidu.com/blog/2017/03/23/new-release-en.html">
+<meta property="og:site_name" content="">
+
+
+
+
+
+<link rel="canonical" href="http://echarts.baidu.com/blog/2017/03/23/new-release-en.html">
+<link href="http://echarts.baidu.com/blog/feed.xml" type="application/atom+xml" rel="alternate" title=" Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://echarts.baidu.com/blog/assets/css/main.css">
+<!-- Webfonts -->
+<link href="//fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic" rel="stylesheet" type="text/css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="http://echarts.baidu.com/blog/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://echarts.baidu.com/blog/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://echarts.baidu.com/blog/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://echarts.baidu.com/blog/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://echarts.baidu.com/blog/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://echarts.baidu.com/blog/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://echarts.baidu.com/blog/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+</head>
+
+<body id="post" class="feature">
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
+	<button class="dl-trigger">展开</button>
+	<ul class="dl-menu">
+		<li><a href="http://echarts.baidu.com/blog/">首页</a></li>
+		<!--<li>
+			<a href="#">About</a>
+			<ul class="dl-submenu">
+				<li>
+					<img src="http://echarts.baidu.com/blog/images/echarts.png" alt="ECharts photo" class="author-photo">
+					<h4>ECharts</h4>
+					<p>强大、简单、灵活的可视化工具</p>
+				</li>
+				<li><a href="http://echarts.baidu.com/blog/about/"><span class="btn btn-inverse">Learn More</span></a></li>
+				
+				
+				
+				
+				
+				<li>
+					<a href="https://github.com/ecomfe/echarts"><i class="fa fa-fw fa-github"></i> GitHub</a>
+				</li>
+				
+				
+				
+				
+			</ul><!-- /.dl-submenu -->
+		<!--/li-->
+		<li>
+			<a href="http://echarts.baidu.com/blog/posts/">所有文章</a>
+		</li>
+		<li>
+			<a href="http://echarts.baidu.com/blog/tags/">所有标签</a>
+		</li>
+		<li>
+			<a href="http://echarts.baidu.com/">ECharts 官网</a>
+		</li>
+		<!--
+	</ul><!-- /.dl-menu -->
+</nav><!-- /.dl-menuwrapper -->
+
+
+
+
+<div class="entry-header">
+  
+  <div class="entry-image">
+    <img src="http://echarts.baidu.com/blog/images/post/2017-01-13-new-release-theme-river.png" alt="ECharts v3.5 Released, Publishing Calendar Coordinate System and Enhanced Axis Pointer, Meanwhile Statistic Extension v1.0 Released">
+  </div><!-- /.entry-image -->
+</div><!-- /.entry-header -->
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <header class="header-title">
+      <div class="header-title-wrap">
+        <h1 class="entry-title">ECharts v3.5 Released, Publishing Calendar Coordinate System and Enhanced Axis Pointer, Meanwhile Statistic Extension v1.0 Released</h1>
+        <h2><span class="entry-date date published"><time datetime="2017-03-23T00:00:00+08:00">2017-03-23</time></span></h2>
+        
+        <p class="entry-reading-time">
+          <i class="fa fa-clock-o"></i>
+          
+
+预计阅读时间：13 分钟
+
+
+        </p><!-- /.entry-reading-time -->
+        
+      </div><!-- /.header-title-wrap -->
+    </header>
+    <div class="entry-content">
+      <p>We are releasing <a href="https://github.com/ecomfe/echarts/releases/tag/3.5.0">echarts v3.5</a>, where calendar coodinate system is supported and axis pointer is enhanced. Meanwhile <a href="https://github.com/ecomfe/echarts-stat">echarts statistic extension</a> v1.0 is published.</p>
+
+<p>Calendar coordiante system is a new type of echarts coordiante system, which can used to locate different charts (For example, scatter, heatmap, graph, pie, or even other coordinate systems like cartesian).</p>
+
+<p>The original axis pointer is enhance significantly, which currently supports text label, a new interaction approach for touch device, and other detailed configurations. Besides, that synchronization between axis pointers of different coordinate systems is supported.</p>
+
+<p>Statistic extension is a JavaScript liberary for statistics and data mining, including two-dimensional regression, multi-dimensional clustering and some commonly used statistical functions in v1.0.</p>
+
+<h2 id="statistical-extension">Statistical Extension</h2>
+
+<p>Statistical extension is a statistical and data mining tool for <a href="https://github.com/ecomfe/echarts">echarts</a>. At present, it mainly includes two-dimensional regression, multi-dimensional clustering and some commonly used statistical functions.</p>
+
+<p>The regression algorithm in the extension not only contains the commonly used linear regression, but also contains exponential regression, logarithmic regression, and polynomial regression.</p>
+
+<p>An example of linear regression:</p>
+<div class="ec-lazy" data-thumb="http://echarts.baidu.com/blog/images/post/2017-03-23/xS1bQ2AMKe.png" data-src="http://gallery.echartsjs.com/view.html?cid=xS1bQ2AMKe" style="width: 100%; height: 400px"></div>
+
+<p>An example of logarithmic regression:</p>
+<div class="ec-lazy" data-thumb="http://echarts.baidu.com/blog/images/post/2017-03-23/xry3aWkmYe.png" data-src="http://gallery.echartsjs.com/view.html?cid=xry3aWkmYe" style="width: 100%; height: 400px"></div>
+
+<p>Adhering to the purpose of visual analysis, our multi-dimensional clustering analysis, can not only statically produce the results of clustering of dataset, but also dynamically view the entire clustering analysis process.</p>
+
+<p>An example of the result of dataset clustering:</p>
+<div class="ec-lazy" data-thumb="http://echarts.baidu.com/blog/images/post/2017-03-23/xSkBOEaGtx.png" data-src="http://gallery.echartsjs.com/view.html?cid=xSkBOEaGtx" style="width: 100%; height: 400px"></div>
+
+<p>An example demonstrating the entire process of clustering:</p>
+<div class="ec-lazy" data-thumb="http://echarts.baidu.com/blog/images/post/2017-03-23/xHyr-esMtg.png" data-src="http://gallery.echartsjs.com/view.html?cid=xHyr-esMtg" style="width: 100%; height: 400px"></div>
+
+<p>Unlike built-in charts in echarts, Statistical Extension is a extension of echarts, which is not intergrated by echarts by default, and you need to inclued <code class="highlighter-rouge">ecStat.js</code> after <code class="highlighter-rouge">echarts.js</code>. You can find the file <code class="highlighter-rouge">dist/ecStat.js</code> in the latest released version at <a href="https://github.com/ecomfe/echarts-stat/releases/latest">here (GitHub)</a>.</p>
+
+<p>If you would like to know more, please visit the <a href="https://github.com/ecomfe/echarts-stat">Statistical Extension GitHub Home</a></p>
+
+<h2 id="calendar-coordinate-system">Calendar Coordinate System</h2>
+
+<p>Calendar coordiante system is a new type of echarts coordiante system, which can used to locate different charts (For example, scatter, heatmap, graph, pie, or even other coordinate systems like cartesian).</p>
+
+<p>Using heatmap in calendar:</p>
+<div class="ec-lazy" data-thumb="https://ecomfe.github.io/echarts-examples/public/data/thumb/bubble-gradient.png" data-src="https://ecomfe.github.io/echarts-examples/public/view.html?c=calendar-heatmap&amp;edit=1&amp;reset=1" style="width: 100%; height: 300px"></div>
+
+<p>Using scatter in calendar:</p>
+<div class="ec-lazy" data-thumb="https://ecomfe.github.io/echarts-examples/public/data/thumb/bubble-gradient.png" data-src="https://ecomfe.github.io/echarts-examples/public/view.html?c=calendar-effectscatter&amp;edit=1&amp;reset=1" style="width: 100%; height: 600px"></div>
+
+<p>Different types of chart can be place on calendar coordinate system together.</p>
+
+<p>Both place heatmap and graph chart in calendar:</p>
+<div class="ec-lazy" data-thumb="https://ecomfe.github.io/echarts-examples/public/data/thumb/bubble-gradient.png" data-src="https://ecomfe.github.io/echarts-examples/public/view.html?c=calendar-graph&amp;edit=1&amp;reset=1" style="width: 100%; height: 600px"></div>
+
+<p><strong>Calendar layout:</strong></p>
+
+<p>Calendar coordinate system can be placed horizontally or vertically. By convention, the heatmap calendar is horizontal. But if we need bigger cell size in other cases, the total width may be too wide. So <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#calendar.orient">calendar.orient</a> can help in this case.</p>
+
+<p><strong>Adapt to container size:</strong></p>
+
+<p>Calendar coordinate system can be configured to adapt to container size, which is useful when page size is not sure. First of all, like other components, those location and size configurations can be specified on canlendar: <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#calendar.left">left</a>, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#calendar.right">right</a>, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#calendar.top">top</a>, <a href="bottom">bottom</a>, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#calendar.width">width</a>, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#calendar.height">height</a>, which make calendar possible to modify its size according to container size. Besides, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#calendar.cellSize">cellSize</a> can be specified to fix the size of each cell of calendar.</p>
+
+<p><strong>More effects:</strong></p>
+
+<p>Feel free to combination charts and calendar coordinate systems. You may achieve awesome effects.</p>
+
+<p>For example, using API <code class="highlighter-rouge">chart.convertToPixel</code> to locate pie charts on calendar.</p>
+<div class="ec-lazy" data-thumb="https://ecomfe.github.io/echarts-examples/public/data/thumb/bubble-gradient.png" data-src="https://ecomfe.github.io/echarts-examples/public/view.html?c=calendar-pie&amp;edit=1&amp;reset=1" style="width: 100%; height: 640px"></div>
+
+<h2 id="axis-pointer">Axis Pointer</h2>
+
+<p>The term “Axis Pointer” refers the appearing line, shadow block and text label when mouse hovering or clicking on a coordinate system, which helps users to have insight into the data.</p>
+
+<p>The original axis pointer is enhance significantly, which currently supports text label, a new approach of interaction on touch device, and other detailed configurations. Besides, that synchronization between axis pointers of different coordinate systems is supported.</p>
+
+<p>An example, where axis pointers can be displayed in candlestick.</p>
+<div class="ec-lazy" data-thumb="https://ecomfe.github.io/echarts-examples/public/data/thumb/bubble-gradient.png" data-src="https://ecomfe.github.io/echarts-examples/public/view.html?c=doc-example/candlestick-axisPointer&amp;edit=1&amp;reset=1" style="width: 100%; height: 450px"></div>
+
+<p>In the example above, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#axisPointer.link">axisPointer.link</a> is used to synchronize axes from the two different cartesian coordiante system.</p>
+
+<p>Besides, a approach of interaction on touch devices is supported, where axis pointer is alwayed displayed, and a handle button can be dragged to move the axis pointer, which makes the finger not block the view to charts any more.</p>
+
+<div class="ec-lazy" data-thumb="https://ecomfe.github.io/echarts-examples/public/data/thumb/bubble-gradient.png" data-src="https://ecomfe.github.io/echarts-examples/public/view.html?c=line-tooltip-touch&amp;edit=1&amp;reset=1" style="width: 100%; height: 400px"></div>
+
+<p>This is another example:</p>
+<div class="ec-lazy" data-thumb="http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png" data-src="http://echarts.baidu.com/gallery/view.html?c=candlestick-touch&amp;edit=1&amp;reset=1" style="width: 100%; height: 400px"></div>
+
+<p>These examples demonstrating the effect of mutiple axes with axis pointers:</p>
+
+<div class="ec-lazy" data-thumb="https://ecomfe.github.io/echarts-examples/public/data/thumb/bubble-gradient.png" data-src="https://ecomfe.github.io/echarts-examples/public/view.html?c=multiple-y-axis&amp;edit=1&amp;reset=1" style="width: 100%; height: 300px"></div>
+
+<div class="ec-lazy" data-thumb="https://ecomfe.github.io/echarts-examples/public/data/thumb/bubble-gradient.png" data-src="https://ecomfe.github.io/echarts-examples/public/view.html?c=multiple-x-axis&amp;edit=1&amp;reset=1" style="width: 100%; height: 300px"></div>
+
+<p>At last, let’s see a more complicated example, where <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#axisPointer.link">axisPointer.link</a> is also be used to synchronize axis pointers of different axes.</p>
+
+<div class="ec-lazy" data-thumb="https://ecomfe.github.io/echarts-examples/public/data/thumb/bubble-gradient.png" data-src="https://ecomfe.github.io/echarts-examples/public/view.html?c=scatter-nutrients-matrix&amp;edit=1&amp;reset=1" style="width: 100%; height: 640px"></div>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="http://echarts.baidu.com/blog/tags/#new release" title="Pages tagged new release" class="tag"><span class="term">new release</span></a><a href="http://echarts.baidu.com/blog/tags/#extension" title="Pages tagged extension" class="tag"><span class="term">extension</span></a><a href="http://echarts.baidu.com/blog/tags/#tutorial" title="Pages tagged tutorial" class="tag"><span class="term">tutorial</span></a></span>
+        
+        <div class="social-share">
+  <ul class="socialcount socialcount-small inline-list">分享到：
+    <li class="weibo"><a href="http://v.t.sina.com.cn/share/share.php?title=ECharts+官网博文：ECharts v3.5 Released, Publishing Calendar Coordinate System and Enhanced Axis Pointer, Meanwhile Statistic Extension v1.0 Released&url=http://echarts.baidu.com/blog/2017/03/23/new-release-en.html" title="Share on Weibo">新浪微博</a></li>
+    <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=http://echarts.baidu.com/blog/2017/03/23/new-release-en.html" title="Share on Facebook"><span class="count"><i class="fa fa-facebook-square"></i> Like</span></a></li>
+    <li class="twitter"><a href="https://twitter.com/intent/tweet?text=http://echarts.baidu.com/blog/2017/03/23/new-release-en.html" title="Share on Twitter"><span class="count"><i class="fa fa-twitter-square"></i> Tweet</span></a></li>
+    <li class="googleplus"><a href="https://plus.google.com/share?url=http://echarts.baidu.com/blog/2017/03/23/new-release-en.html" title="Share on Google Plus"><span class="count"><i class="fa fa-google-plus-square"></i> +1</span></a></li>
+  </ul>
+</div><!-- /.social-share -->
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    <div class="read-more">
+  
+    
+    <div class="read-more-header">
+      <a href="http://echarts.baidu.com/blog/2017/03/15/echarts-dataAbstraction-tutorial.html" class="read-more-btn">了解更多</a>
+    </div><!-- /.read-more-header -->
+    <div class="read-more-content">
+      <h3><a href="http://echarts.baidu.com/blog/2017/03/23/new-release.html" title="echarts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布">echarts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布</a></h3>
+      <p>在 echarts 新发布的 3.5 版本中，新增了日历坐标系，增强了坐标轴指示器。同时，echarts 统计扩展 1.0 版本发布了。日历坐标系用于在日历中绘制图表，坐标轴指示器方便用户观察数据内容，统计扩展是一个专门用来进行数据分析的工具。 <a href="http://echarts.baidu.com/blog/2017/03/23/new-release.html">继续阅读</a></p>
+    </div><!-- /.read-more-content -->
+    
+  
+  <div class="read-more-list">
+    
+    
+      <div class="list-item">
+        <h4><a href="http://echarts.baidu.com/blog/2017/03/15/echarts-dataAbstraction-tutorial.html" title="可视化中的数据">可视化中的数据</a></h4>
+        <span>Published on March 15, 2017</span>
+      </div><!-- /.list-item -->
+    
+    
+    
+      <div class="list-item">
+        <h4><a href="http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html" title="ECharts 水球图教程">ECharts 水球图教程</a></h4>
+        <span>Published on February 21, 2017</span>
+      </div><!-- /.list-item -->
+    
+    
+  </div><!-- /.read-more-list -->
+</div><!-- /.read-more -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2017 ECharts. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/hpstr-jekyll-theme/" rel="nofollow">HPSTR Theme</a>.</span>
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="http://echarts.baidu.com/blog/assets/js/vendor/jquery-1.9.1.min.js"></script>
+<script src="http://echarts.baidu.com/blog/assets/js/scripts.min.js"></script>
+
+
+<script src="http://echarts.baidu.com/blog/assets/js/plugins/md-env.js"></script>
+<script src="http://echarts.baidu.com/blog/assets/js/plugins/lazy-load.js"></script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?4bad1df23f079e0d12bdbef5e65b072f";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</body>
+</html>

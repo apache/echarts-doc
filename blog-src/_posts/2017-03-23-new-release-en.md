@@ -9,7 +9,7 @@ image:
   feature: post/2017-01-13-new-release-theme-river.png
 ---
 
-We are releasing echarts v3.5, where calendar coodinate system is supported and axis pointer is enhanced. Meanwhile echarts statistic extension v1.0 is published.
+We are releasing [echarts v3.5](https://github.com/ecomfe/echarts/releases/tag/3.5.0), where calendar coodinate system is supported and axis pointer is enhanced. Meanwhile [echarts statistic extension](https://github.com/ecomfe/echarts-stat) v1.0 is published.
 
 Calendar coordiante system is a new type of echarts coordiante system, which can used to locate different charts (For example, scatter, heatmap, graph, pie, or even other coordinate systems like cartesian).
 

@@ -1,0 +1,300 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>echarts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布 </title>
+<meta name="description" content="在 echarts 新发布的 3.5 版本中，新增了日历坐标系，增强了坐标轴指示器。同时，echarts 统计扩展 1.0 版本发布了。日历坐标系用于在日历中绘制图表，坐标轴指示器方便用户观察数据内容，统计扩展是一个专门用来进行数据分析的工具。">
+<meta name="keywords" content="new release, extension, tutorial">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="echarts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布">
+<meta property="og:description" content="在 echarts 新发布的 3.5 版本中，新增了日历坐标系，增强了坐标轴指示器。同时，echarts 统计扩展 1.0 版本发布了。日历坐标系用于在日历中绘制图表，坐标轴指示器方便用户观察数据内容，统计扩展是一个专门用来进行数据分析的工具。">
+<meta property="og:url" content="http://echarts.baidu.com/blog/2017/03/23/new-release.html">
+<meta property="og:site_name" content="">
+
+
+
+
+
+<link rel="canonical" href="http://echarts.baidu.com/blog/2017/03/23/new-release.html">
+<link href="http://echarts.baidu.com/blog/feed.xml" type="application/atom+xml" rel="alternate" title=" Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://echarts.baidu.com/blog/assets/css/main.css">
+<!-- Webfonts -->
+<link href="//fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic" rel="stylesheet" type="text/css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="http://echarts.baidu.com/blog/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://echarts.baidu.com/blog/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://echarts.baidu.com/blog/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://echarts.baidu.com/blog/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://echarts.baidu.com/blog/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://echarts.baidu.com/blog/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://echarts.baidu.com/blog/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+</head>
+
+<body id="post" class="feature">
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
+	<button class="dl-trigger">展开</button>
+	<ul class="dl-menu">
+		<li><a href="http://echarts.baidu.com/blog/">首页</a></li>
+		<!--<li>
+			<a href="#">About</a>
+			<ul class="dl-submenu">
+				<li>
+					<img src="http://echarts.baidu.com/blog/images/echarts.png" alt="ECharts photo" class="author-photo">
+					<h4>ECharts</h4>
+					<p>强大、简单、灵活的可视化工具</p>
+				</li>
+				<li><a href="http://echarts.baidu.com/blog/about/"><span class="btn btn-inverse">Learn More</span></a></li>
+				
+				
+				
+				
+				
+				<li>
+					<a href="https://github.com/ecomfe/echarts"><i class="fa fa-fw fa-github"></i> GitHub</a>
+				</li>
+				
+				
+				
+				
+			</ul><!-- /.dl-submenu -->
+		<!--/li-->
+		<li>
+			<a href="http://echarts.baidu.com/blog/posts/">所有文章</a>
+		</li>
+		<li>
+			<a href="http://echarts.baidu.com/blog/tags/">所有标签</a>
+		</li>
+		<li>
+			<a href="http://echarts.baidu.com/">ECharts 官网</a>
+		</li>
+		<!--
+	</ul><!-- /.dl-menu -->
+</nav><!-- /.dl-menuwrapper -->
+
+
+
+
+<div class="entry-header">
+  
+  <div class="entry-image">
+    <img src="http://echarts.baidu.com/blog/images/post/2017-03-23/banner.png" alt="echarts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布">
+  </div><!-- /.entry-image -->
+</div><!-- /.entry-header -->
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <header class="header-title">
+      <div class="header-title-wrap">
+        <h1 class="entry-title">echarts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布</h1>
+        <h2><span class="entry-date date published"><time datetime="2017-03-23T00:00:00+08:00">2017-03-23</time></span></h2>
+        
+        <p class="entry-reading-time">
+          <i class="fa fa-clock-o"></i>
+          
+
+预计阅读时间：1 分钟
+
+
+        </p><!-- /.entry-reading-time -->
+        
+      </div><!-- /.header-title-wrap -->
+    </header>
+    <div class="entry-content">
+      <p>在 echarts 新发布的 <a href="https://github.com/ecomfe/echarts/releases/tag/3.5.0">3.5 版本</a>中，新增了日历坐标系，增强了坐标轴指示器。同时，<a href="https://github.com/ecomfe/echarts-stat">echarts 统计扩展</a> 1.0 版本发布了。日历坐标系用于在日历中绘制图表，坐标轴指示器方便用户观察数据内容，统计扩展是一个专门用来进行数据分析的工具。</p>
+
+<h2 id="统计扩展">统计扩展</h2>
+
+<p>统计扩展是一个专门用来进行数据分析的工具，目前主要包含了二维的回归、多维的聚类以及一些常用的统计功能。</p>
+
+<p>扩展中的回归算法不仅包含了常用的线性回归，还包含了指数回归、对数回归、以及多项式回归。</p>
+
+<p>线性回归的示例：</p>
+<div class="ec-lazy" data-thumb="http://echarts.baidu.com/blog/images/post/2017-03-23/xS1bQ2AMKe.png" data-src="http://gallery.echartsjs.com/view.html?cid=xS1bQ2AMKe" style="width: 100%; height: 400px"></div>
+
+<p>对数回归的示例：</p>
+<div class="ec-lazy" data-thumb="http://echarts.baidu.com/blog/images/post/2017-03-23/xry3aWkmYe.png" data-src="http://gallery.echartsjs.com/view.html?cid=xry3aWkmYe" style="width: 100%; height: 400px"></div>
+
+<p>秉承了可视分析的宗旨，我们的多维聚类分析，不仅可以静态地产出数据集聚类的结果，还可以动态地查看整个聚类分析的过程。</p>
+
+<p>静态地产出数据集聚类的结果的示例：</p>
+<div class="ec-lazy" data-thumb="http://echarts.baidu.com/blog/images/post/2017-03-23/xSkBOEaGtx.png" data-src="http://gallery.echartsjs.com/view.html?cid=xSkBOEaGtx" style="width: 100%; height: 400px"></div>
+
+<p>动态地查看整个聚类分析的过程的示例：</p>
+<div class="ec-lazy" data-thumb="http://echarts.baidu.com/blog/images/post/2017-03-23/xHyr-esMtg.png" data-src="http://gallery.echartsjs.com/view.html?cid=xHyr-esMtg" style="width: 100%; height: 400px"></div>
+
+<p>和 echarts 中的原生图表不一样，统计扩展是作为一个扩展工具发布的。这意味着，在 echarts 官网下载的完整版本将不包含该扩展包。统计扩展和 echarts 结合使用时，需要在引入 <code class="highlighter-rouge">echarts.js</code> 之后，另外引入统计扩展对应的 <code class="highlighter-rouge">ecStat.js</code>。可以在 <a href="https://github.com/ecomfe/echarts-stat/releases/latest">这里 (GitHub)</a> 找到最新版本，其中 <code class="highlighter-rouge">dist/ecStat.js</code> 可作为单文件引用。</p>
+
+<p>如果想了解更多内容请前往 <a href="https://github.com/ecomfe/echarts-stat">统计扩展 GitHub 首页</a>。</p>
+
+<h2 id="日历坐标系">日历坐标系</h2>
+
+<p>日历坐标系，是一种新的 echarts 坐标系，提供了在日历上绘制图表的能力。例如可以在日历坐标系上放置热力图、散点图、关系图等。如下示例：</p>
+
+<p>在日历坐标系中使用热力图：</p>
+<div class="ec-lazy" data-thumb="http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png" data-src="http://echarts.baidu.com/gallery/view.html?c=calendar-heatmap&amp;edit=1&amp;reset=1" style="width: 100%; height: 300px"></div>
+
+<p>在日历坐标系中使用散点图：</p>
+<div class="ec-lazy" data-thumb="http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png" data-src="http://echarts.baidu.com/gallery/view.html?c=calendar-effectscatter&amp;edit=1&amp;reset=1" style="width: 100%; height: 600px"></div>
+
+<p>还可以混合放置不同的图表，例如下例子，同时放置了热力图和关系图：</p>
+<div class="ec-lazy" data-thumb="http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png" data-src="http://echarts.baidu.com/gallery/view.html?c=calendar-graph&amp;edit=1&amp;reset=1" style="width: 100%; height: 600px"></div>
+
+<p><strong>水平和垂直放置日历</strong></p>
+
+<p>在日历坐标系可以水平放置，也可以垂直放置。如上面的例子，使用热力图时，经常是水平放置的。但是如果需要格子的尺寸大些，水平放置就过于宽了，于是也可以选择垂直放置。参见 <a href="http://echarts.baidu.com/option.html#calendar.orient">calendar.orient</a>。</p>
+
+<p><strong>尺寸的自适应</strong></p>
+
+<p>日历坐标系支持不同尺寸的容器（页面）大小变化的自适应。首先，和 echarts 其他组件一样，日历坐标系可以选择使用 <a href="http://echarts.baidu.com/option.html#calendar.left">left</a>，<a href="http://echarts.baidu.com/option.html#calendar.right">right</a>，<a href="http://echarts.baidu.com/option.html#calendar.top">top</a>，<a href="bottom">bottom</a>，<a href="http://echarts.baidu.com/option.html#calendar.width">width</a>，<a href="http://echarts.baidu.com/option.html#calendar.height">height</a> 来描述尺寸和位置，从而将日历摆放在上下左右各种位置，并随着页面尺寸变动而改变自身尺寸。另外，也可以使用 <a href="http://echarts.baidu.com/option.html#calendar.cellSize">cellSize</a> 来固定日历格子的长宽。</p>
+
+<p><strong>中西方日历习惯的支持</strong></p>
+
+<p>中西方日历有所差别，西方常使用星期日作为一周的第一天，中国使用星期一为一周的第一天。日历坐标系做了这种切换的支持。参见 <a href="http://echarts.baidu.com/option.html#calendar.dayLabel.firstDay">calendar.dayLabel.firstDay</a>。</p>
+
+<p>另外，日历上的『月份』和『星期几』的文字，也可以较方便的切换中英文，甚至自定义。参见 <a href="http://echarts.baidu.com/option.html#calendar.dayLabel.nameMap">calendar.dayLabel.nameMap</a> <a href="http://echarts.baidu.com/option.html#calendar.monthLabel.nameMap">calendar.monthLabel.nameMap</a>。</p>
+
+<p><strong>其他更丰富的效果</strong></p>
+
+<p>灵活利用 echarts 图表和坐标系的组合，以及 API，可以实现更丰富的效果。</p>
+
+<p>例如，制作农历：</p>
+<div class="ec-lazy" data-thumb="http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png" data-src="http://echarts.baidu.com/gallery/view.html?c=calendar-lunar&amp;edit=1&amp;reset=1" style="width: 100%; height: 500px"></div>
+
+<p>下面这个例子，使用 <code class="highlighter-rouge">chart.convertToPixel</code> 接口，实现了饼图放置在日历坐标系中的效果。</p>
+<div class="ec-lazy" data-thumb="http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png" data-src="http://echarts.baidu.com/gallery/view.html?c=calendar-pie&amp;edit=1&amp;reset=1" style="width: 100%; height: 640px"></div>
+
+<h2 id="坐标轴指示器">坐标轴指示器</h2>
+
+<p>坐标轴指示器 （axisPointer）指的是，鼠标悬浮到坐标系上时出现的竖线、阴影区域等。它能帮助用户观察数据。echarts 原有的坐标轴指示器本次被整理和增强了，加入了文本标签，自动吸附到数据，以及移动触屏的手柄拖拽交互，以及支持了多个坐标系中指示器的联动。</p>
+
+<p>下面是一个K线图的示例。使用坐标轴指示器，能够比较方便得观察到每一项对应的 y 值。</p>
+<div class="ec-lazy" data-thumb="http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png" data-src="http://echarts.baidu.com/gallery/view.html?c=doc-example/candlestick-axisPointer&amp;edit=1&amp;reset=1" style="width: 100%; height: 450px"></div>
+
+<p>上例中，使用了 <a href="http://echarts.baidu.com/option.html#axisPointer.link">axisPointer.link</a> 来关联上下两个直角坐标系的 axisPointer，使他们同步运动。</p>
+
+<p>坐标轴指示器也提供了一种适合触屏的交互方式，使用手柄来拖拽坐标轴指示器。如果触屏上和鼠标操作一样，在坐标系内部拖拽操作坐标轴指示器，那么手指可能会挡住图表，并且可能和『数据区域缩放移动』操作冲突。用单独的拖拽手柄，可以改善这个问题。</p>
+
+<div class="ec-lazy" data-thumb="http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png" data-src="http://echarts.baidu.com/gallery/view.html?c=line-tooltip-touch&amp;edit=1&amp;reset=1" style="width: 100%; height: 400px"></div>
+
+<p>这是另一个例子：</p>
+<div class="ec-lazy" data-thumb="http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png" data-src="http://echarts.baidu.com/gallery/view.html?c=candlestick-touch&amp;edit=1&amp;reset=1" style="width: 100%; height: 400px"></div>
+
+<p>坐标轴指示器在多轴的场景能起到辅助作用，清晰得显示出对比数值，甚至可以在坐标轴指示器的文本标签内定制表达更多信息：</p>
+
+<div class="ec-lazy" data-thumb="http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png" data-src="http://echarts.baidu.com/gallery/view.html?c=multiple-y-axis&amp;edit=1&amp;reset=1" style="width: 100%; height: 300px"></div>
+
+<div class="ec-lazy" data-thumb="http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png" data-src="http://echarts.baidu.com/gallery/view.html?c=multiple-x-axis&amp;edit=1&amp;reset=1" style="width: 100%; height: 300px"></div>
+
+<p>最后提供一个内容更丰富些的例子，其中也使用了 <a href="http://echarts.baidu.com/option.html#axisPointer.link">axisPointer.link</a> 来联动不同的坐标轴指示器。他关联和高亮了处于不同坐标系中的相互对应的点。</p>
+
+<div class="ec-lazy" data-thumb="http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png" data-src="http://echarts.baidu.com/gallery/view.html?c=scatter-nutrients-matrix&amp;edit=1&amp;reset=1" style="width: 100%; height: 640px"></div>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="http://echarts.baidu.com/blog/tags/#new release" title="Pages tagged new release" class="tag"><span class="term">new release</span></a><a href="http://echarts.baidu.com/blog/tags/#extension" title="Pages tagged extension" class="tag"><span class="term">extension</span></a><a href="http://echarts.baidu.com/blog/tags/#tutorial" title="Pages tagged tutorial" class="tag"><span class="term">tutorial</span></a></span>
+        
+        <div class="social-share">
+  <ul class="socialcount socialcount-small inline-list">分享到：
+    <li class="weibo"><a href="http://v.t.sina.com.cn/share/share.php?title=ECharts+官网博文：echarts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布&url=http://echarts.baidu.com/blog/2017/03/23/new-release.html" title="Share on Weibo">新浪微博</a></li>
+    <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=http://echarts.baidu.com/blog/2017/03/23/new-release.html" title="Share on Facebook"><span class="count"><i class="fa fa-facebook-square"></i> Like</span></a></li>
+    <li class="twitter"><a href="https://twitter.com/intent/tweet?text=http://echarts.baidu.com/blog/2017/03/23/new-release.html" title="Share on Twitter"><span class="count"><i class="fa fa-twitter-square"></i> Tweet</span></a></li>
+    <li class="googleplus"><a href="https://plus.google.com/share?url=http://echarts.baidu.com/blog/2017/03/23/new-release.html" title="Share on Google Plus"><span class="count"><i class="fa fa-google-plus-square"></i> +1</span></a></li>
+  </ul>
+</div><!-- /.social-share -->
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    <div class="read-more">
+  
+    
+    <div class="read-more-header">
+      <a href="http://echarts.baidu.com/blog/2017/03/23/new-release-en.html" class="read-more-btn">了解更多</a>
+    </div><!-- /.read-more-header -->
+    <div class="read-more-content">
+      <h3><a href="http://echarts.baidu.com/blog/2017/03/23/new-release-en.html" title="ECharts v3.5 Released, Publishing Calendar Coordinate System and Enhanced Axis Pointer, Meanwhile Statistic Extension v1.0 Released">ECharts v3.5 Released, Publishing Calendar Coordinate System and Enhanced Axis Pointer, Meanwhile Statistic Extension v1.0 Released</a></h3>
+      <p>We are releasing echarts v3.5, where calendar coodinate system is supported and axis pointer is enhanced. Meanwhile echarts statistic extension v1.0 is published. <a href="http://echarts.baidu.com/blog/2017/03/23/new-release-en.html">继续阅读</a></p>
+    </div><!-- /.read-more-content -->
+    
+  
+  <div class="read-more-list">
+    
+    
+      <div class="list-item">
+        <h4><a href="http://echarts.baidu.com/blog/2017/03/15/echarts-dataAbstraction-tutorial.html" title="可视化中的数据">可视化中的数据</a></h4>
+        <span>Published on March 15, 2017</span>
+      </div><!-- /.list-item -->
+    
+    
+    
+      <div class="list-item">
+        <h4><a href="http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html" title="ECharts 水球图教程">ECharts 水球图教程</a></h4>
+        <span>Published on February 21, 2017</span>
+      </div><!-- /.list-item -->
+    
+    
+  </div><!-- /.read-more-list -->
+</div><!-- /.read-more -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2017 ECharts. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/hpstr-jekyll-theme/" rel="nofollow">HPSTR Theme</a>.</span>
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="http://echarts.baidu.com/blog/assets/js/vendor/jquery-1.9.1.min.js"></script>
+<script src="http://echarts.baidu.com/blog/assets/js/scripts.min.js"></script>
+
+
+<script src="http://echarts.baidu.com/blog/assets/js/plugins/md-env.js"></script>
+<script src="http://echarts.baidu.com/blog/assets/js/plugins/lazy-load.js"></script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?4bad1df23f079e0d12bdbef5e65b072f";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</body>
+</html>
