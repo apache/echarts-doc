@@ -1,6 +1,7 @@
 var md2json = require('./tool/md2json');
 var fs = require('fs');
 var marked = require('marked');
+var copydir = require('copy-dir');
 
 var languages = ['cn', 'en'];
 
@@ -66,6 +67,7 @@ languages.forEach(function (language) {
 
     md2json({
             path: language + '/option-gl/**/*.md',
+            sectionsAnyOf: ['series'],
             entry: 'option-gl',
             tplEnv: config.gl,
             imageRoot: config.gl.imagePath
@@ -85,3 +87,6 @@ languages.forEach(function (language) {
         'utf-8'
     );
 });
+
+copydir.sync('./asset', './public/cn/documents/asset');
+copydir.sync('./asset', './public/en/documents/asset');

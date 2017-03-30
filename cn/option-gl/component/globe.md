@@ -54,18 +54,41 @@ baseTexture: mapChart
 
 ## heightTexture(string|HTMLImageElement|HTMLCanvasElement)
 
-地球的高度纹理。高度纹理可以用于配合光照表现地球表面的明暗细节。下面两图分别是使用 `heightTexture` 和未使用 `heightTexuture` 的效果区别。
+地球的高度纹理。高度纹理可以用于[凹凸贴图](https://zh.wikipedia.org/wiki/%E5%87%B9%E5%87%B8%E8%B4%B4%E5%9B%BE)表现地球表面的明暗细节。下面两图分别是使用`heightTexture`和未使用`heightTexuture`的效果区别。
 
-![300xauto](~heightmap-enable.png)
+![400xauto](~heightmap-enable.png)
 
-![300xauto](~heightmap-disable.png)
+![400xauto](~heightmap-disable.png)
 
 ## displacementTexture(string|HTMLImageElement|HTMLCanvasElement)
 
-地球顶点的置换纹理，默认同 [heightTexture]()
+地球顶点的置换纹理，默认同 [heightTexture](~globe.heightTexture)。
 
-## displacementScale(number)
+相比于凹凸贴图，顶点的置换是根据纹理直接对顶点做位移。在 [displaymentScale](~globe.displaymentScale) 大于 0 时有效。
 
+## displacementScale(number) = 0
+
+地球顶点位移的大小。默认为 0， 也就是没位移，下面两图分别是设置不同的`displacementScale`的效果
+
++ `displacementScale: 0.1`
+
+![400xauto](~displacement-enable.png)
+
++ `displacementScale: 0`
+
+![400xauto](~displacement-disable.png)
+
+## displacementQuality(string) = 'medium'
+
+地球顶点位移的质量。支持设置成 `'low'`, `'medium'`, `'high'`, `'ultra'` 。更高的质量能够表现更多的地表高度细节。下面靓图分别是不同`displacementQuality`的效果
+
++ `displacementScale: 'ultra'`
+
+![400xauto](~displacement-ultra.png)
+
++ `displacementScale: 'low'`
+
+![400xauto](~displacement-low.png)
 
 {{ use: partial-shading }}
 
@@ -74,3 +97,70 @@ baseTexture: mapChart
 {{ use: partial-post-effect }}
 
 {{ use: partial-view-control }}
+
+## layers(Array)
+
+地球表面层的配置，你可以使用该配置项加入云层，或者对 [baseTexture](~globe.baseTexture) 进行补充绘制出国家的轮廓等等。
+
+### show(boolean) = true
+
+是否显示该层。
+
+### type(string) = 'overlay'
+
+层的类型，可选：
+
++ `'overlay'`
+
+在地表上的覆盖层，可以用来显示云层等。
+
++ `'blend'`
+
+跟 [baseTexture](~globe.baseTexture) 混合。
+
+### name(string)
+
+层的名字，在用 setOption 设置层属性的时候可以用 name 来标识需要更新的层。
+
+```js
+chart.setOption({
+    globe: {
+        layer: [{
+            // 更新 name 为 'cloud' 的层的纹理
+            name: 'cloud',
+            texture: 'cloud.png'
+        }]
+    }
+});
+```
+
+### blendTo(string) = 'albedo'
+
+在 [type](~globe.layers.type) 为 `'blend'` 时有效。
+
+可选：
++ `albedo` 混合到 albedo，受光照的影响。
+
++ `emission` 混合到自发光，不受光照影响。
+
+### shading(string) = 'lambert'
+
+覆盖层的着色效果，同 [globe.shading](~globe.shading)， 支持 `'color'`, `'lambert'`, `'realistic'`
+
+在 [type](globe.layers.type) 为 `'overlay'` 时有效。
+
+### distance(number) = null
+
+覆盖层离地球表面的距离。
+
+在 [type](~globe.layers.type) 为 `'overlay'` 时有效。
+
+
+### texture(string|HTMLImageElement|HTMLCanvasElement|EChartsInstance)
+
+层的纹理，支持图片路径字符串，图片或者 Canvas 的对象。
+
+也支持直接使用 echarts 的实例作为纹理，此时在地球上的鼠标动作会跟纹理上使用的 echarts 实例有联动。
+
+
+
