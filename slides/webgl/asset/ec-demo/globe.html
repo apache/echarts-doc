@@ -14,7 +14,7 @@
         <script src="../common/echarts-gl.js"></script>
         <script src="../texture/world.jpg.js"></script>
         <script src="../texture/elev_bump.jpg.js"></script>
-        <script src="../texture/canyon.hdr.js"></script>
+        <script src="../texture/pisa.hdr.js"></script>
         <script>
             var chart = echarts.init(document.getElementById('main'));
             var worldImg = new Image();
@@ -49,12 +49,12 @@
                             shadow: true
                         },
                         // TODO
-                        // ambientCubemap: {
-                        //     texture: pisaUrl,
-                        //     exposure: 2,
-                        //     diffuseIntensity: 0.1,
-                        //     specularIntensity: 1
-                        // }
+                        ambientCubemap: {
+                            texture: pisaUrl,
+                            exposure: 2,
+                            diffuseIntensity: 0.1,
+                            specularIntensity: 1
+                        }
                     },
                     viewControl: {
                         autoRotate: false

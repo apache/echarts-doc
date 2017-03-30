@@ -1,0 +1,1 @@
+{{ target: partial-view-control }}
