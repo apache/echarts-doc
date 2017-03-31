@@ -9,10 +9,6 @@
 
 是否显示地球组件。
 
-{{ use: partial-zlevel }}
-
-{{ use: partial-viewport }}
-
 ## globeRadius(number) = 100
 地球的半径。单位相对于三维空间，跟 [viewControl.distance](~globe.viewControl.distance) 相关。
 
@@ -72,11 +68,11 @@ baseTexture: mapChart
 
 + `displacementScale: 0.1`
 
-![400xauto](~displacement-enable.png)
+![500xauto](~displacement-enable.png)
 
 + `displacementScale: 0`
 
-![400xauto](~displacement-disable.png)
+![500xauto](~displacement-disable.png)
 
 ## displacementQuality(string) = 'medium'
 
@@ -84,13 +80,13 @@ baseTexture: mapChart
 
 + `displacementScale: 'ultra'`
 
-![400xauto](~displacement-ultra.png)
+![500xauto](~displacement-ultra.png)
 
 + `displacementScale: 'low'`
 
-![400xauto](~displacement-low.png)
+![500xauto](~displacement-low.png)
 
-{{ use: partial-shading }}
+{{ use: partial-shading-globe }}
 
 {{ use: partial-light }}
 
@@ -162,5 +158,20 @@ chart.setOption({
 
 也支持直接使用 echarts 的实例作为纹理，此时在地球上的鼠标动作会跟纹理上使用的 echarts 实例有联动。
 
+{{ use: partial-zlevel }}
 
+{{ use: partial-viewport }}
+
+
+
+
+{{ target: partial-shading-globe(master=partial-shading) }}
+
+{{ block: shading-compare }}
+下面是不同着色效果的区别
+
+![250xauto](~globe-shading-color.png)
+![250xauto](~globe-shading-lambert.png)
+![250xauto](~globe-shading-realistic.png)
+{{ /block }}
 
