@@ -430,6 +430,9 @@ define(function (require) {
                     });
                 });
             }
+            else if ($.fn.twentytwenty) {
+                $(window).trigger('resize.twentytwenty');
+            }
         },
 
         /**

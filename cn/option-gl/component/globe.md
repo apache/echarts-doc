@@ -66,25 +66,20 @@ baseTexture: mapChart
 
 地球顶点位移的大小。默认为 0， 也就是没位移，下面两图分别是设置不同的`displacementScale`的效果
 
-+ `displacementScale: 0.1`
-
-![500xauto](~displacement-enable.png)
-
-+ `displacementScale: 0`
-
-![500xauto](~displacement-disable.png)
+<div class="twentytwenty-container" style="width: 700px;">
+    <img src="documents/asset/gl/img/displacement-disable.png" width="100%" title="Scale: 0">
+    <img src="documents/asset/gl/img/displacement-enable.png" width="100%" title="Scale: 0.1">
+</div>
 
 ## displacementQuality(string) = 'medium'
 
 地球顶点位移的质量。支持设置成 `'low'`, `'medium'`, `'high'`, `'ultra'` 。更高的质量能够表现更多的地表高度细节。下面靓图分别是不同`displacementQuality`的效果
 
-+ `displacementScale: 'ultra'`
+<div class="twentytwenty-container" style="width: 700px;">
+    <img src="documents/asset/gl/img/displacement-low.png" width="100%" title="Low">
+    <img src="documents/asset/gl/img/displacement-ultra.png" width="100%" title="Ultra">
+</div>
 
-![500xauto](~displacement-ultra.png)
-
-+ `displacementScale: 'low'`
-
-![500xauto](~displacement-low.png)
 
 {{ use: partial-shading-globe }}
 
