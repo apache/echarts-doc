@@ -163,8 +163,6 @@ chart.setOption({
 {{ use: partial-viewport }}
 
 
-
-
 {{ target: partial-shading-globe(master=partial-shading) }}
 
 {{ block: shading-compare }}
