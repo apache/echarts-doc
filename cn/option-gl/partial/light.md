@@ -37,6 +37,13 @@
 
 阴影的质量。可选`'low'`, `'medium'`, `'high'`, `'ultra'`
 
+下图是低质量和高质量阴影的区别。
+
+<div class="twentytwenty-container" style="width: 700px;">
+    <img src="documents/asset/gl/img/geo-shadow-low.png" width="100%" title="Low">
+    <img src="documents/asset/gl/img/geo-shadow-high.png" width="100%" title="High">
+</div>
+
 ###${prefix|default("#")} alpha(number) = ${defaultMainLightAlpha|default(0)}
 
 主光源绕 x 轴，即上下旋转的角度。配合 [beta](${componentType}.light.main.beta) 控制光源的方向。
@@ -55,7 +62,7 @@
 
 ##${prefix|default("#")} ambient(Object)
 
-环境光设置。
+全局的环境光设置。
 
 ###${prefix|default("#")} color(string) = ${defaultAmbientLightColor|default('#fff')}
 
@@ -87,7 +94,7 @@ ambientCubemap: {
 
 漫反射的强度。
 
-###${prefix|default("#")} diffuseIntensity(number) = ${defaultAmbientCubemapLightSpecularIntensity|default(0.5)}
+###${prefix|default("#")} specularIntensity(number) = ${defaultAmbientCubemapLightSpecularIntensity|default(0.5)}
 
 高光反射的强度。
 

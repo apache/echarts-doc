@@ -111,6 +111,9 @@ Canvas 画路径本质上还是矢量的方式，就算有 GPU 加速，为了�
 
 <img src="./asset/img/webgl-logo.png" style="background: none;box-shadow: none;">
 
+新世界的大门 <!-- .element: class="fragment" -->
+
+
 Note:
 所以我们需要一个能力更强的绘图接口，WebGL。
 
@@ -132,6 +135,8 @@ Note:
 
 Note:
 还有更多的可能性。
+
+TODO 前面加一页提纲挈领，
 
 ----
 
@@ -757,6 +762,8 @@ Note:
 这份数据 1285 个顶点，7586 条边
 
 可以看到已经很卡了。
+
+去浙大 CAD 交流的时候有个学生提出需要在 1s 内完成上千个点的布局, 也有用户反馈能不能关闭这个动画
 
 ----
 

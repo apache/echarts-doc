@@ -412,7 +412,7 @@ define(function (require) {
             this._doLazyLoad = lazyload;
 
             // Twentytwenty
-            if ($.fn.twentytwenty) {
+            if ($.fn.twentytwenty && !$content.find('.twentytwenty-wrapper').length) {
                 $content.find('.twentytwenty-container').each(function () {
                     var self = this;
                     var loading = 0;
