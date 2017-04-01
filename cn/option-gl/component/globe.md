@@ -88,7 +88,7 @@ baseTexture: mapChart
 
 {{ use: partial-shading-globe }}
 
-{{ use: partial-light }}
+{{ use: partial-light-globe }}
 
 {{ use: partial-post-effect }}
 
@@ -172,4 +172,15 @@ chart.setOption({
 ![250xauto](~globe-shading-lambert.png)
 ![250xauto](~globe-shading-realistic.png)
 {{ /block }}
+
+
+{{ target: partial-light-globe(master=partial-light) }}
+
+{{ block: light-extend }}
+###${prefix|default("#")} time(Date)
+
+日照的时间，默认使用当前的系统时间。
+
+{{ /block }}
+
 

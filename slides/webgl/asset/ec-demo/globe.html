@@ -17,8 +17,6 @@
         <script src="../texture/pisa.hdr.js"></script>
         <script>
             var chart = echarts.init(document.getElementById('main'));
-            var worldImg = new Image();
-            var elevBumImg = new Image();
 
             chart.setOption({
                 globe: {
@@ -30,7 +28,7 @@
 
                     shading: 'realistic',
                     realisticMaterial: {
-                        roughness: 0.8,
+                        roughness: 0.4,
                         metalness: 0
                     },
 

@@ -20,6 +20,23 @@
 
 主光源的强度。
 
+###${prefix|default("#")} shadow(boolean) = false
+
+主光源是否投射阴影。默认关闭。
+
+开启阴影可以给场景带来更真实和有层次的光照效果。但是同时也会增加程序的运行开销。
+
+下图是开启阴影以及关闭阴影的区别。
+
+<div class="twentytwenty-container" style="width: 700px;">
+    <img src="documents/asset/gl/img/geo-shadow.png" width="100%" title="Shadow">
+    <img src="documents/asset/gl/img/geo-no-shadow.png" width="100%" title="No Shadow">
+</div>
+
+###${prefix|default("#")} shadowQuality(string) = 'medium'
+
+阴影的质量。可选`'low'`, `'medium'`, `'high'`, `'ultra'`
+
 ###${prefix|default("#")} alpha(number) = ${defaultMainLightAlpha|default(0)}
 
 主光源绕 x 轴，即上下旋转的角度。配合 [beta](${componentType}.light.main.beta) 控制光源的方向。
@@ -31,6 +48,10 @@
 ###${prefix|default("#")} beta(number) = ${defaultMainLightAlpha|default(0)}
 
 主光源绕 y 轴，即左右旋转的角度。
+
+
+{{ block: light-extend }}
+{{ /block }}
 
 ##${prefix|default("#")} ambient(Object)
 
