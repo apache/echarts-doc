@@ -2,7 +2,7 @@
 
 #${prefix|default('#')} postEffect(Object)
 
-后处理特效的相关配置，后处理特效可以为画面添加高光，景深，全局阴影（SSAO），调色等效果。可以让整个画面更富有质感。
+后处理特效的相关配置，后处理特效可以为画面添加高光，景深，环境光遮蔽（SSAO），调色等效果。可以让整个画面更富有质感。
 
 下面分别是关闭和开启 `postEffect` 的区别。
 
@@ -10,6 +10,8 @@
     <img src="documents/asset/gl/img/globe-posteffect-disable.png" width="100%" title="Disable">
     <img src="documents/asset/gl/img/globe-posteffect-enable.png" width="100%" title="Enable">
 </div>
+
+注意在开启 postEffect 的时候默认会开启 [temporalSuperSampling](${componentType}.temporalSuperSampling) 在画面静止后持续对画面增强，包括抗锯齿，景深，SSAO，阴影等。
 
 ##${prefix|default('#')} enable(boolean) = false
 
@@ -41,4 +43,67 @@
     <img src="documents/asset/gl/img/geo-no-dof.png" width="100%" title="Disable">
     <img src="documents/asset/gl/img/geo-dof.png" width="100%" title="Enable">
 </div>
+
+###${prefix|default('#')} enable(boolean) = false
+
+是否开启景深
+
+###${prefix|default('#')} focalDistance(boolean) = 50
+
+初始的焦距，用户可以点击区域自动聚焦。
+
+###${prefix|default('#')} focalRange(boolean) = 20
+
+完全聚焦的区域范围，在此范围内的物体时完全清晰的，不会有模糊
+
+###${prefix|default('#')} fstop(number) = 2.8
+
+镜头的[F值](https://zh.wikipedia.org/wiki/%E7%84%A6%E6%AF%94)，值越小景深越浅。
+
+###${prefix|default('#')} blurRadius(number) = 10
+
+焦外的模糊半径
+
+不同模糊半径的区别：
+
+<div class="twentytwenty-container" style="width: 700px;">
+    <img src="documents/asset/gl/img/geo-dof-small.png" width="100%" title="blurSize: 3">
+    <img src="documents/asset/gl/img/geo-dof-large.png" width="100%" title="blurSize: 10">
+</div>
+
+##${prefix|default('#')} SSAO(Object)
+
+屏幕空间的环境光遮蔽效果。环境光遮蔽可以让角落，缝隙等大部分光无法到达的区域变暗，是传统的阴影贴图的补充，可以让整个场景更加自然，有层次。
+
+下面是无 SSAO 和有 SSAO 的对比。
+
+<div class="twentytwenty-container" style="width: 700px;">
+    <img src="documents/asset/gl/img/geo-no-ssao.png" width="100%" title="No SSAO">
+    <img src="documents/asset/gl/img/geo-ssao.png" width="100%" title="SSAO">
+</div>
+
+###${prefix|default('#')} enable(boolean) = false
+
+是否开启环境光遮蔽，默认不开启
+
+###${prefix|default('#')} quality(string) = 'medium'
+
+环境光遮蔽的质量，支持`'low'`, `'medium'`, `'high'`, `'ultra'`
+
+###${prefix|default('#')} radius(number) = 1
+
+环境光遮蔽的采样半径。半径越大效果越自然，但是需要设置较高的`'quality'`。
+
+下面是半径值较小与较大之间的区别
+
+<div class="twentytwenty-container" style="width: 700px;">
+    <img src="documents/asset/gl/img/geo-ssao-small-radius.png" width="100%" title="Radius: 1">
+    <img src="documents/asset/gl/img/geo-ssao-large-radius.png" width="100%" title="Radius: 10">
+</div>
+
+###${prefix|default('#')} intensity(number) = 1
+
+环境光遮蔽的强度。值越大颜色越深。
+
+
 

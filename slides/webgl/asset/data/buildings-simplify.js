@@ -12,4 +12,4 @@ var features = buildingsData.features.map(function (feature, idx) {
     };
 }).slice(0, 8000);
 
-fs.writeFileSync('buildings.json.js', 'buildingsGeoJSON = ' + JSON.stringify({ features: features }), 'utf-8');
+fs.writeFileSync('buildings.json.js', 'buildingsGeoJSON = ' + JSON.stringify(compress({ features: features })), 'utf-8');

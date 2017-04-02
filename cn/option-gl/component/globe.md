@@ -81,13 +81,25 @@ baseTexture: mapChart
 </div>
 
 
-{{ use: partial-shading-globe }}
+{{ use: partial-shading-globe(
+    componentType="globe",
+    componentName="地球"
+) }}
 
-{{ use: partial-light-globe }}
+{{ use: partial-light-globe(
+    componentType="globe",
+    componentName="地球"
+) }}
 
-{{ use: partial-post-effect }}
+{{ use: partial-post-effect(
+    componentType="globe",
+    componentName="地球"
+) }}
 
-{{ use: partial-view-control }}
+{{ use: partial-view-control(
+    componentType="globe",
+    componentName="地球"
+) }}
 
 ## layers(Array)
 

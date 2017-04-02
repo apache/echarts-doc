@@ -114,7 +114,7 @@
   background: rgba(0, 0, 0, 0);
   z-index: 25; }
   .twentytwenty-overlay:hover {
-    background: rgba(0, 0, 0, 0.5); }
+    background: rgba(0, 0, 0, 0.0); }
     .twentytwenty-overlay:hover .twentytwenty-after-label {
       opacity: 1; }
     .twentytwenty-overlay:hover .twentytwenty-before-label {

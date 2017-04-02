@@ -14,6 +14,7 @@
         <script src="../common/echarts-gl.js"></script>
         <script src="../data/buildings.json.js"></script>
         <script src="../texture/woods.jpg.js"></script>
+        <script src="../texture/oakfloor2_basecolor.jpg.js"></script>
         <script src="../texture/canyon.hdr.js"></script>
 
         <script>
@@ -37,7 +38,7 @@
                     shading: 'realistic',
                     realisticMaterial: {
                         roughness: 0.6,
-                        baseTexture: woodsUrl,
+                        baseTexture: floorBaseColorTexture,
                         textureTiling: 40
                     },
                     postEffect: {
@@ -52,10 +53,10 @@
                             intensity: 1.5
                         },
                         depthOfField: {
-                            enable: true,
+                            enable: f,
                             focalRange: 5,
-                            fstop: 0.5,
-                            blurRadius: 2
+                            fstop: 1,
+                            blurRadius: 4
                         }
                     },
                     groundPlane: {

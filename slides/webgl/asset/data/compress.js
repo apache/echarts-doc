@@ -2,6 +2,7 @@
 function compress(json) {
 
     json.UTF8Encoding = true;
+    json.UTF8Scale = 1e6;
 
     var features = json.features;
 
@@ -53,7 +54,7 @@ function encodePolygon(coordinates, encodeOffsets) {
 }
 
 function quantize(val) {
-    return Math.ceil(val * 1024);
+    return Math.ceil(val * 1e6);
 }
 
 function encode(val, prev){
