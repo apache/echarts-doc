@@ -1,7 +1,7 @@
 {{ target: partial-box-size }}
 
-#${prefix} boxWidth
+#${prefix} boxWidth(number)
 
-#${prefix} boxHeight
+#${prefix} boxHeight(number)
 
-#${prefix} boxDepth
+#${prefix} boxDepth(number)

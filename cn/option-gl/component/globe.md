@@ -73,7 +73,7 @@ baseTexture: mapChart
 
 ## displacementQuality(string) = 'medium'
 
-地球顶点位移的质量。支持设置成 `'low'`, `'medium'`, `'high'`, `'ultra'` 。更高的质量能够表现更多的地表高度细节。下面靓图分别是不同`displacementQuality`的效果
+地球顶点位移的质量。支持设置成 `'low'`, `'medium'`, `'high'`, `'ultra'` 。更高的质量能够表现更多的地表高度细节。下面截图分别是不同`displacementQuality`的效果
 
 <div class="twentytwenty-container" style="width: 700px;">
     <img src="documents/asset/gl/img/displacement-low.png" width="100%" title="Low">
