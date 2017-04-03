@@ -2,7 +2,7 @@
 
 #${prefix|default("#")} light(Object)
 
-光照相关的设置。在 [shading](${componentType}.shading) 为 `'color'` 的时候无效。
+光照相关的设置。在 [shading](~${componentType}.shading) 为 `'color'` 的时候无效。
 
 光照的设置会影响到组件以及组件所在坐标系上的所有图表。
 
@@ -46,7 +46,7 @@
 
 ###${prefix|default("#")} alpha(number) = ${defaultMainLightAlpha|default(0)}
 
-主光源绕 x 轴，即上下旋转的角度。配合 [beta](${componentType}.light.main.beta) 控制光源的方向。
+主光源绕 x 轴，即上下旋转的角度。配合 [beta](~${componentType}.light.main.beta) 控制光源的方向。
 
 如下示意图：
 
@@ -74,7 +74,7 @@
 
 ##${prefix|default("#")} ambientCubemap(Object)
 
-ambientCubemap 会使用纹理作为光源的环境光， 会为物体提供漫反射和高光反射。可以通过 [diffuseIntensity](${componentType}.light.ambientCubemap.diffuseIntensity) 和 [specularIntensity](${componentType}.light.ambientCubemap.specularIntensity) 分别设置漫反射强度和高光反射强度。
+ambientCubemap 会使用纹理作为光源的环境光， 会为物体提供漫反射和高光反射。可以通过 [diffuseIntensity](~${componentType}.light.ambientCubemap.diffuseIntensity) 和 [specularIntensity](~${componentType}.light.ambientCubemap.specularIntensity) 分别设置漫反射强度和高光反射强度。
 
 ###${prefix|default("#")} texture(string)
 

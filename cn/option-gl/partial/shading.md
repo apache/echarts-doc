@@ -35,7 +35,7 @@ ${componentName}组件中三维图形的着色效果，echarts-gl 中支持下�
 
 #${prefix|default("#")} realisticMaterial(Object)
 
-真实感材质相关的配置项，在 [shading](${componentType}.shading) 为`'realistic'`时有效。
+真实感材质相关的配置项，在 [shading](~${componentType}.shading) 为`'realistic'`时有效。
 
 ##${prefix|default("#")} roughness(number) = 0.5
 
@@ -66,7 +66,7 @@ ${componentName}组件中三维图形的着色效果，echarts-gl 中支持下�
 {{ if: ${useTexture} }}
 #${prefix|default("#")} lambertMaterial(Object)
 
-lambert 材质相关的配置项，在 [shading](${componentType}.shading) 为`'lambert'`时有效。
+lambert 材质相关的配置项，在 [shading](~${componentType}.shading) 为`'lambert'`时有效。
 
 {{ use: partial-material-texture(prefix=${prefix|default("#")} + '#') }}
 {{ /if }}
@@ -74,7 +74,7 @@ lambert 材质相关的配置项，在 [shading](${componentType}.shading) 为`'
 {{ if: ${useTexture} }}
 #${prefix|default("#")} colorMaterial(Object)
 
-color 材质相关的配置项，在 [shading](${componentType}.shading) 为`'color'`时有效。
+color 材质相关的配置项，在 [shading](~${componentType}.shading) 为`'color'`时有效。
 
 {{ use: partial-material-texture(prefix=${prefix|default("#")} + '#') }}
 {{ /if }}

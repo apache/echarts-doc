@@ -2,7 +2,7 @@
 
 #${prefix|default("#")} environment(string) = 'auto'
 
-环境贴图，支持純颜色值，渐变色，全景贴图的 url。默认为 `'auto'`，在配置有 [light.ambientCubemap.texture](${componentType}.light.ambientCubemap.texture) 的时候会使用该纹理作为环境贴图。否则则不显示环境贴图。
+环境贴图，支持純颜色值，渐变色，全景贴图的 url。默认为 `'auto'`，在配置有 [light.ambientCubemap.texture](~${componentType}.light.ambientCubemap.texture) 的时候会使用该纹理作为环境贴图。否则则不显示环境贴图。
 
 示例：
 ```js
