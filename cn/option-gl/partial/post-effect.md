@@ -105,7 +105,7 @@
 
 环境光遮蔽的强度。值越大颜色越深。
 
-##${prefix} FXAA(Object)
+##${prefix|default('#')} FXAA(Object)
 
 在开启 [postEffect](~${componentType}.postEffect) 后，WebGL 默认的 MSAA 会无法使用。这时候通过 FXAA 可以廉价方便的解决抗锯齿的问题，FXAA 会对一些场景的边缘部分进行模糊从而解决锯齿的问题，这在一些场景上效果还不错，但是在 echarts-gl 中，需要保证很多文字和线条边缘的锐利清晰，因此 FXAA 并不是那么适用。这时候我们可以通过如下设置更高的`devicePixelRatio`来使用超采样
 
@@ -117,7 +117,7 @@ var chart = echarts.init(dom, null, {
 
 但是这种方法对电脑性能有很高的要求，所以更多时候我们建议使用 echarts-gl 中的 [temporalSuperSampling](~${componentType}.temporalSuperSampling)，在画面静止后会持续分帧对一个像素多次抖动采样，从而达到超采样抗锯齿的效果。
 
-###${prefix} enable(boolean) = false
+###${prefix|default('#')} enable(boolean) = false
 
 是否开启 FXAA，默认关闭。
 

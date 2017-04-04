@@ -34,7 +34,7 @@
 
 如下示意图：
 
-![](~light-alpha-beta.png)
+![](~view-alpha-beta.png)
 
 ##${prefix|default('#')} beta(number) = ${defaultBeta|default(0)}
 

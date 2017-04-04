@@ -96,6 +96,11 @@ baseTexture: mapChart
     componentName="地球"
 ) }}
 
+{{ use: partial-temporal-super-sampling(
+    componentType="globe",
+    componentName="地球"
+) }}
+
 {{ use: partial-view-control(
     componentType="globe",
     componentName="地球"
