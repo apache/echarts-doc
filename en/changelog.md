@@ -1,11 +1,25 @@
-## v3.5.1
-<div class="time">2017-03-23</div>
+## v3.5.2
+<div class="time">2017-04-05</div>
 
-Recovery Build
++ [+] Supported [useUTC](https://ecomfe.github.io/echarts-doc/public/en/option.html#useUTC), which enables display `axisLabel` and `tooltip` in local time or UTC. Related default setttings are modified: `axisLabel` and `tooltip` display local time by default, and `data` recognize time string as local time if timezone not specified. See [the time part in series.data](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-line.data). Fixed the problem that when `axis.type` is `'time'` tick is determined by UTC and can not align with daytime. Fixed [#5396](https://github.com/ecomfe/echarts/issues/5396) and [#5393](https://github.com/ecomfe/echarts/issues/5393)。
 
-+ [^] Fixed `"undefined"` is displayed when [tooltip.formatter](http://echarts.baidu.com/option.html#tooltip.formatter) returns `null`/`undefined`. See [#5352](https://github.com/ecomfe/echarts/issues/5352).
++ [+] Supported [funnel.sort](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-funnel.sort), which enables sorting funnel by index or customized function.
 
-+ [^] Fixed [visualMap component](http://echarts.baidu.com/option.html#visualMap) porcesses rgba color incorrectly. See [#5350](https://github.com/ecomfe/echarts/issues/5350).
++ [+] Supported `UTF8Scale` in geoJSON.
+
++ [^] Fixed float error of `axisTick`. See [#5041](https://github.com/ecomfe/echarts/issues/5041)。
+
++ [^] Fixed that `axisTick` did not display when value was too small. See [#5386](https://github.com/ecomfe/echarts/issues/5386).
+
++ [^] Fixed when [tooltip.trigger](https://ecomfe.github.io/echarts-doc/public/en/option.html#tooltip.trigger) was `'axis'`, `dispatchAction` [showTip](https://ecomfe.github.io/echarts-doc/public/en/api.html#action.tooltip.showTip) did not work. See [#5423](https://github.com/ecomfe/echarts/issues/5423).
+
++ [^] Fixed that [visualMap](https://ecomfe.github.io/echarts-doc/public/en/option.html#visualMap) disabled `itemStyle` of [map](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-map). See [#5388](https://github.com/ecomfe/echarts/issues/5388).
+
++ [^] Fixed that [tooltip.trigger](https://ecomfe.github.io/echarts-doc/public/en/option.html#tooltip.trigger) did not support `'none'`. See [#5400](https://github.com/ecomfe/echarts/issues/5400)。
+
++ [^] Fixed problem of [sankey](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-sankey) on ie11. See [#3306](https://github.com/ecomfe/echarts/issues/3306).
+
++ [^] Fixed that `data.lineStyle.color` of [parallel](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-parallel) did not work. See [#5363](https://github.com/ecomfe/echarts/issues/5363).
 
 
 
