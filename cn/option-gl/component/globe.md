@@ -12,7 +12,10 @@
 ## globeRadius(number) = 100
 地球的半径。单位相对于三维空间，跟 [viewControl.distance](~globe.viewControl.distance) 相关。
 
-{{ use: partial-environment }}
+{{ use: partial-environment(
+    componentType="globe",
+    componentName="地球"
+) }}
 
 ## baseTexture(string|HTMLImageElement|HTMLCanvasElement|EChartsInstance)
 
