@@ -41,13 +41,38 @@ Note:
 + <b>qtek</b> <small>2013</small>
 
 Note:
-我从
+
+
 
 ---
 
-## ECharts 简介
+## 大纲
 
-+ 基于 Canvas 的开源前端可视化库 <!-- .element: class="fragment highlight-current-blue" -->
++ ECharts 简介
+
++ 为什么选择 Canvas 及 Canvas 的限制
+
++ WebGL 与 ECharts 的结合
+
+    + 三维空间的可视化
+
+    + 在前端实现高品质的渲染
+
+    + 利用 WebGL 加速力引导布局
+
+Note:
+
+这次分享我首先会花个几分钟大概介绍一下我们现在在维护的开源可视化库 ECharts，讲一下为什么我们开始会选择使用 Canvas 以及 Canvas 的限制，然后我们这次的重点是，就像标题说的，着重讲 WebGL 在 echarts 里的应用，包括三部分内容。
+
+第一块是介绍在用 WebGL 绘制三维图表中常见的点线面时碰到的一些坑以及解决方案。
+第二块是如何让画出来的三维可视化作品更有逼格，更酷炫。我们可以把它叫可视化的艺术化。
+第三块会讲我们如何利用 WebGL 将力引导布局的效率提升了上百倍，这一块涉及 GPU 的通用计算，希望能够给大家带来一些不一样的新思路。
+
+---
+
+## ECharts 是什么
+
++ 拥有 <span style="color: #ffbc00">17k star</span> 的开源前端可视化库
 
 + 声明式的编程接口 <!-- .element: class="fragment highlight-current-blue" -->
 
@@ -58,15 +83,11 @@ Note:
 + 吸引眼球的动画和特效 <!-- .element: class="fragment highlight-current-blue" -->
 
 Note:
-首先我先花个两分钟时间介绍一下 echarts 这个产品
+那么 ECharts 是什么，首先它是一个在 GitHub 上拥有 1w7k star 的基于 Canvas 的开源前端可视化库。
 
-----
+ECharts 提供的是一个声明式的接口，用户通过一个配置项集去描述如何展示一个图表以及交互组件，这种声明式的接口有利有弊，利是它没有程序逻辑，上手非常简单，而且不会写程序的，比如我们的设计师，琢磨琢磨也能画出一个像样的图表。弊端就是它能描述的东西也比较受限，需要我们提供丰富的配置项去支持用户自定义的展示，其实相当于把很多工作量转移到我们身上了，而且做不了还容易被喷。
 
-## ECharts 简介
-
-+ GitHub 关注数 ~16 k
-
-+ 官网访问量 ~300 k 日pv
+然后几个是 ECharts 的主要特性，丰富的可视化类型以及交互组件，大数据量展现的能力，以及吸引眼球的动画和特效，这里就不细讲了。
 
 ----
 
@@ -76,7 +97,7 @@ Note:
 
 + 像素操作的能力 <!-- .element: class="fragment highlight-current-blue" -->
 
-+ 和 WebGL 更好的结合 <!-- .element: class="fragment highlight-current-blue" -->
++ 能够和 WebGL 更好的结合 <!-- .element: class="fragment highlight-current-blue" -->
 
 Note:
 
@@ -90,13 +111,33 @@ Note:
 
 ----
 
-## Canvas 的限制
+## 越来越复杂的需求
 
-+ 画路径本质上还是矢量的方式
++ 我要三维图表
+
++ 我要显示几十万的数据
+
++ 我要一秒内能够完成关系图布局
+
++ 我要大屏上酷炫的特效
+
+
+Note:
+但是，随着 echarts 的用户越来越多，我们也会收到各种各样更复杂的需求。比如 GitHub 上月经的 issue，问 ECharts 有没有三维的图表，ECharts 最多能够展示多少量级的数据，为什么我才十万的数据就卡卡的了，
+
+我要一秒内能够完成关系图布局这个是上次去浙大 CAD 实验室交流的时候一个同学问我们的一个问题，因为他们之前接手的一个项目有这个需求，然后用了一些取巧的手段去实现了，问 echarts 有没有什么思路实现这种快速的布局，当时想了想并没有什么太好的办法，包括经常有人会问的力引导布局为什么不能关闭动画，我们只能很无奈的回复使用动画是因为力引导布局需要很多次的迭代，如果关闭动画就容易导致浏览器假死，所以这是个 feature 不是个 bug。
+
+----
+
+## 越来越力不从心的 Canvas
+
++ 画路径还是矢量的方式
 
 + 只能“软渲染”三维图形
 
 Note:
+对于这些需求，Canvas 也显得越来越力不从心
+
 Canvas 画路径本质上还是矢量的方式，就算有 GPU 加速，为了画个圆浏览器的底层图形库还是需要做很多事，将圆转成贝塞尔曲线，细分顶点，三角化(GrAAConvexTessellator)等等。所以往往浏览器一帧画几千个圆就已经比较卡了。
 
 还有因为 Canvas 还是个二维的绘图接口，它很难胜任复杂点的三维绘制工作，第一点就是刚才提到的性能限制，还有这种“软渲染”的方式在三角面片交叉的时候没法正确处理，这在早期的 Flash 三维引擎中也存在这个问题。
@@ -107,74 +148,79 @@ Canvas 画路径本质上还是矢量的方式，就算有 GPU 加速，为了�
 
 <iframe data-src="./asset/ec-demo/airline.html" class="fullscreen front" frameborder="0"></iframe>
 
+Note:
+这个飞机航线的可视化例子就非常明显了，ECharts 能够把它画出来，但是想要交互，就非常非常卡。
+
 ---
 
 <img src="./asset/img/webgl-logo.png" style="background: none;box-shadow: none;">
 
-新世界的大门 <!-- .element: class="fragment" -->
+## 新世界的大门 <!-- .element: class="fragment" -->
 
 
 Note:
-所以我们需要一个能力更强的绘图接口，WebGL。
+Canvas 也解决不了的，那我们只能寄希望与 WebGL 了。
 
-对 echarts 有所了解的同学应该知道两年前出的 echarts-x，echarts-x 是我们在 echarts 产品中对 WebGL 的首次尝试，其中获取了不少经验，也碰到了不少问题，比如在 echarts 2 的架构下对于新图表的扩展其实比较受限，所以当时只做了一个 globe visualization 就没做下去了。后来我们设计 echarts 3 架构的过程中把可扩展性作为很重要的一个点，会考虑是否能够去扩展底层新的图形接口，是否能够扩展新的坐标系，新的图表和组件等等。
+对 echarts 有所了解的同学应该知道两年前出的 echarts-x，echarts-x 是我们在 echarts 产品中对 WebGL 的首次尝试，其中获取了不少经验，也碰到了不少问题，比如在 echarts 2 的架构下对于新图表的扩展其实比较受限，所以当时只做了一个地球的可视化就没做下去了。后来我们设计 echarts 3 架构的过程中把可扩展性作为很重要的一个点，会考虑是否能够去扩展底层新的图形接口，是否能够扩展新的坐标系，新的图表和组件等等。
 
 ----
 
-<!--.slide: data-background-video="./asset/video/baidu-screen.mp4" data-background-opacity="0.25" -->
+<!--.slide: data-background-video="./asset/video/baidu-screen.mp4" data-background-opacity="0.2" -->
 
 ## WebGL 能够带来什么
 
-+ 三维空间的可视化 <!-- .element: class="fragment highlight-current-blue" -->
++ 三维场景的绘制  <!-- .element: class="fragment highlight-current-blue" -->
 
-+ 二维可视化的性能提升 <!-- .element: class="fragment highlight-current-blue" -->
++ 二维绘制的性能提升  <!-- .element: class="fragment highlight-current-blue" -->
 
-+ GPU 通用计算(GPGPU) <!-- .element: class="fragment highlight-current-blue" -->
++ GPU 通用计算(GPGPU)  <!-- .element: class="fragment highlight-current-blue" -->
 
 + 更加酷炫的效果 <!-- .element: class="fragment highlight-current-blue" -->
 
 Note:
-还有更多的可能性。
 
-TODO 前面加一页提纲挈领，
+WebGL 能给我们带来什么？首先是它的老本行，三维场景的绘制。比如这一页背景视频是我们帮百度世界大会开发的一个大屏，里面的场景都是三维的。
+然后是二维可视化的性能提升，比较多的就是用 WebGL 在地图上打很多很多点。
+然后是 GPU 的通用计算，这一块可能是大家不太能想到的，因为 GPU 天生的并行性，所以很多开发者会尝试在 GPU 上去加速一些适合并行算法，比如解矩阵，物理中的布料运算等等。
+最后就是 WebGL 能够给我们给我们带来更多炫酷的效果，背景视频里面各种各样的特效都是用 WebGL 绘制的。
 
 ----
 
 <iframe data-src="./asset/ec-demo/airline-gl.html" class="fullscreen" frameborder="0"></iframe>
 
----
-
-## 大纲
-
-+ 三维空间的可视化
-
-+ 如何在前端实现高品质的渲染
-
-+ 利用 WebGL 加速力引导布局
-
 Note:
-
-这次分享的主题就是我从这几点来讲讲我们是如何在 ECharts 中集成 WebGL 的。
-主要分三大块，
-第一块是介绍在用 WebGL 绘制三维图表中常见的点线面时碰到的一些坑以及解决方案。
-第二块是如何让画出来的三维可视化作品更有逼格，更酷炫。我们可以把它叫可视化的艺术化。
-第三块会讲我们如何利用 WebGL 将力引导布局的效率提升了上百倍，这一块涉及 GPU 的通用计算，希望能够给大家带来一些不一样的新思路。
+这个是同样的航线数据，通过 WebGL 可视化出来的效果，我们可以已经可以实时的交互，缩放浏览，甚至还能加入粒子飞行的特效。
 
 
 ---
 
-<!--.slide: data-background="./asset/img/bar3d.jpg"  -->
 
-# 三维空间的可视化
+能力越大
+
+## 坑越大 <!-- .element: class="fragment" -->
 
 Note:
-首先是三维空间的可视化
+但是，俗话说得好，能力越大，坑越大，在 ECharts 集成 WebGL 的过程中，包括平时我自己在做其它的 WebGL 项目的时候，基本上是一路踩着各种各样的坑过来的。
 
-echarts 支不支持三维图表的绘制已经是 github 上的一个月经贴了。其实大部分时候我们都会推荐用二维的可视化方式。比如传统的折柱散点图。这些传统的图表达数据是最清晰的。
+----
 
-但是三维还是有其优势和使用场景的，比如说三维的图表可以做得很抓眼球，通过大数据的分散聚合效果，空间视角的切换也让人眼花缭乱。
+## WebGL 的使用和坑
 
-而且因为多了一个维度多展示一维的数据，有些场景中可以让我们更多角度更沉浸的去探索数据
++ 三维图表的绘制 <!-- .element: class="fragment highlight-current-blue" -->
+
++ 前端实现高品质的渲染 <!-- .element: class="fragment highlight-current-blue" -->
+
++ 利用 WebGL 加速力引导布局 <!-- .element: class="fragment highlight-current-blue" -->
+
+Note:
+所以接下来我会分为这三块去介绍我们使用 WebGL 的一些经验。
+
+---
+
+
+<!--.slide: data-background="./asset/img/bar3D.jpg" data-background-opacity="0.2" -->
+
+# 三维图表
 
 ----
 
@@ -186,18 +232,27 @@ echarts 支不支持三维图表的绘制已经是 github 上的一个月经贴�
 </div>
 
 Note:
-像现在这些直角坐标系上的散点图，折线图，柱状图都可以加一个 Z 轴扩展到三维空间，还有三维空间上表示趋势的曲面图，老版本 echarts-x 里的 globe visualization 等等。
+像现在这些直角坐标系上的散点图，折线图，柱状图都可以加一个 Z 轴扩展到三维空间，还有三维空间上表示趋势的曲面图。
 
 ---
 
-## 点 · 线 · 面
+总结起来就是
+
+## 点 · 线 · 面 <!-- .element: class="fragment" -->
 
 Note:
-这些三维的可视化其实归结起来还是点线面的可视化。
+这些三维的可视化，总结起来就是画点线面。
 
-刚才说了一个点拥有颜色，形状，三维空间中的位置等属性。
+点拥有颜色，形状，三维空间中的位置等属性。
 线用于连接点，可以表示起点和终点，比如飞机航线，也可以用于表示数据的走势
 面可以通过面积表示数据的大小，三维中面也可以用来表示一个平面上数据的走势。
+
+---
+
+## 画好三维的点线面
+
+Note:
+所以画好点线面，在三维可视化中非常重要，这些在  Canvas 里非常简单，比如画点用 fillRect，画线用 stroke，画面用 fill 就可以了。
 
 ---
 
@@ -520,6 +575,8 @@ Note:
 
 + 可以利用空间哈希优化 <!-- .element: class="fragment highlight-current-blue" -->
 
+![](asset/img/ear-clipping.gif)
+
 Note:
 正常情况下是 O(n2) 的开销，但是可以利用 zorder 等空间哈希来进行优化
 
@@ -572,11 +629,33 @@ Note:
 Note:
 很多人排斥三维的可视化还有一个原因是因为很多三维的可视化效果渲染效果十分廉价，比如这张柱状图，这张地球，和这张饼图。充斥着经典的 phong 光照模型的高光和其所带来的塑料感，以及粗糙的贴图等等。
 
-但是其实地球是可以画成这样的
+但是地球其实是可以画成这样的
 
 ----
 
 <iframe data-src="./asset/ec-demo/globe.html" class="fullscreen" frameborder="0"></iframe>
+
+----
+
+目标
+
+## 随手截一张就是桌面背景 <!-- .element: class="fragment" -->
+
+PPT，媒体写作 <!-- .element: class="fragment" -->
+
+Note:
+为什么要设这个目标，因为之前我们发现很多用户用 echarts 的方式就是在我们的示例页面改改数据后直接截图就用了，比如说放到自己的 PPT 里，文章里等等。
+
+所以我们觉得 echarts-gl 除了需要能够实时交互，展示图表外，也需要有一定的能力能够通过提高配置让展示出来的图片够漂亮。哪怕需要一定的渲染时间。
+
+----
+
+<!--.slide: data-background="./asset/img/buildings2.jpg" -->
+
+# 几个对画质提升比较大的技术
+
+Note:
+我这次 PPT 里的图片就都是用 echarts-gl 渲染的。
 
 ----
 
@@ -602,6 +681,9 @@ TODO 贴图
 
 <img style="width:45%" data-src="asset/img/buildings-raw.jpg" alt="">
 <img style="width:45%" data-src="asset/img/buildings-shadow.jpg" alt="">
+
+Note:
+TODO twentytwenty
 
 ----
 

@@ -26,7 +26,7 @@
             var regions = buildingsGeoJSON.features.map(function (feature) {
                 return {
                     name: feature.properties.name,
-                    height: Math.random() * 4 + 0.1
+                    height: Math.max(Math.sqrt(feature.properties.height), 0.1)
                 };
             });
 
@@ -49,11 +49,11 @@
                         SSAO: {
                             enable: true,
                             quality: 'medium',
-                            radius: 2,
-                            intensity: 1.5
+                            radius: 4,
+                            intensity: 1.2
                         },
                         depthOfField: {
-                            enable: f,
+                            enable: true,
                             focalRange: 5,
                             fstop: 1,
                             blurRadius: 4
