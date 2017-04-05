@@ -1,11 +1,26 @@
-<h2 id="v3-5-1">v3.5.1</h2>
-<div class="time">2017-03-23</div>
+<h2 id="v3-5-2">v3.5.2</h2>
+<div class="time">2017-04-05</div>
 
-<p>Recovery Build</p>
 <ul>
-<li><p>[^] Fixed <code>&quot;undefined&quot;</code> is displayed when <a href="http://echarts.baidu.com/option.html#tooltip.formatter">tooltip.formatter</a> returns <code>null</code>/<code>undefined</code>. See <a href="https://github.com/ecomfe/echarts/issues/5352">#5352</a>.</p>
+<li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#useUTC">useUTC</a>, which enables display <code>axisLabel</code> and <code>tooltip</code> in local time or UTC. Related default setttings are modified: <code>axisLabel</code> and <code>tooltip</code> display local time by default, and <code>data</code> recognize time string as local time if timezone not specified. See <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-line.data">the time part in series.data</a>. Fixed the problem that when <code>axis.type</code> is <code>&#39;time&#39;</code> tick is determined by UTC and can not align with daytime. Fixed <a href="https://github.com/ecomfe/echarts/issues/5396">#5396</a> and <a href="https://github.com/ecomfe/echarts/issues/5393">#5393</a>。</p>
 </li>
-<li><p>[^] Fixed <a href="http://echarts.baidu.com/option.html#visualMap">visualMap component</a> porcesses rgba color incorrectly. See <a href="https://github.com/ecomfe/echarts/issues/5350">#5350</a>.</p>
+<li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.axisLabel.showMinLabel">axisLabel.showMinLabel</a> and <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.axisLabel.showMaxLabel">axisLabel.showMaxLabel</a>.</p>
+</li>
+<li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-funnel.sort">funnel.sort</a>, which enables sorting funnel by index or customized function.</p>
+</li>
+<li><p>[^] Fixed float error of <code>axisTick</code>. See <a href="https://github.com/ecomfe/echarts/issues/5041">#5041</a>。</p>
+</li>
+<li><p>[^] Fixed that <code>axisTick</code> did not display when value was too small. See <a href="https://github.com/ecomfe/echarts/issues/5386">#5386</a>.</p>
+</li>
+<li><p>[^] Fixed when <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#tooltip.trigger">tooltip.trigger</a> was <code>&#39;axis&#39;</code>, <code>dispatchAction</code> <a href="https://ecomfe.github.io/echarts-doc/public/en/api.html#action.tooltip.showTip">showTip</a> did not work. See <a href="https://github.com/ecomfe/echarts/issues/5423">#5423</a>.</p>
+</li>
+<li><p>[^] Fixed that <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#visualMap">visualMap</a> disabled <code>itemStyle</code> of <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-map">map</a>. See <a href="https://github.com/ecomfe/echarts/issues/5388">#5388</a>.</p>
+</li>
+<li><p>[^] Fixed that <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#tooltip.trigger">tooltip.trigger</a> did not support <code>&#39;none&#39;</code>. See <a href="https://github.com/ecomfe/echarts/issues/5400">#5400</a>。</p>
+</li>
+<li><p>[^] Fixed problem of <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-sankey">sankey</a> on ie11. See <a href="https://github.com/ecomfe/echarts/issues/3306">#3306</a>.</p>
+</li>
+<li><p>[^] Fixed that <code>data.lineStyle.color</code> of <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-parallel">parallel</a> did not work. See <a href="https://github.com/ecomfe/echarts/issues/5363">#5363</a>.</p>
 </li>
 </ul>
 <h2 id="v3-5-0">v3.5.0</h2>

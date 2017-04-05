@@ -4,6 +4,8 @@
 <ul>
 <li><p>[+] 增加了 <a href="http://echarts.baidu.com/option.html#useUTC">useUTC</a> 配置项，支持按照 UTC 或本地时间显示 <code>axisLabel</code> 和 <code>tooltip</code>。并且修改了时间解析和显示的默认设定：默认在 <code>axisLabel</code> 和 <code>tooltip</code> 中显示本地时间，<code>data</code> 中使用没指定时区的时间字符串时默认解析为本地时间。参见 <a href="http://echarts.baidu.com/option.html#series-line.data">series.data 中时间类型部分</a>。修复了 <code>axis.type</code> 为 <code>&#39;time&#39;</code> 时默认按照 UTC 取刻度的问题。修复了 <a href="https://github.com/ecomfe/echarts/issues/5396">#5396</a> 和 <a href="https://github.com/ecomfe/echarts/issues/5393">#5393</a>。</p>
 </li>
+<li><p>[+] 增加了 <a href="http://echarts.baidu.com/option.html#xAxis.axisLabel.showMinLabel">axisLabel.showMinLabel</a> 和 <a href="http://echarts.baidu.com/option.html#xAxis.axisLabel.showMaxLabel">axisLabel.showMaxLabel</a>。</p>
+</li>
 <li><p>[+] 支持 <a href="http://echarts.baidu.com/option.html#series-funnel.sort">funnel.sort</a> 按照 index 排序或自定义排序。</p>
 </li>
 <li><p>[^] 修复了 <code>axisTick</code> 浮点数精度错误的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/5041">#5041</a>。</p>
