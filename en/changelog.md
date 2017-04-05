@@ -3,9 +3,9 @@
 
 + [+] Supported [useUTC](https://ecomfe.github.io/echarts-doc/public/en/option.html#useUTC), which enables display `axisLabel` and `tooltip` in local time or UTC. Related default setttings are modified: `axisLabel` and `tooltip` display local time by default, and `data` recognize time string as local time if timezone not specified. See [the time part in series.data](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-line.data). Fixed the problem that when `axis.type` is `'time'` tick is determined by UTC and can not align with daytime. Fixed [#5396](https://github.com/ecomfe/echarts/issues/5396) and [#5393](https://github.com/ecomfe/echarts/issues/5393)。
 
-+ [+] Supported [funnel.sort](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-funnel.sort), which enables sorting funnel by index or customized function.
++ [+] Supported [axisLabel.showMinLabel](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.axisLabel.showMinLabel) and [axisLabel.showMaxLabel](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.axisLabel.showMaxLabel).
 
-+ [+] Supported `UTF8Scale` in geoJSON.
++ [+] Supported [funnel.sort](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-funnel.sort), which enables sorting funnel by index or customized function.
 
 + [^] Fixed float error of `axisTick`. See [#5041](https://github.com/ecomfe/echarts/issues/5041)。
 

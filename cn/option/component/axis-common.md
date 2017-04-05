@@ -65,6 +65,12 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 
 {{use: axis-common-formatter-desc}}
 
+##${prefix} showMinLabel(boolean) = null
+是否显示最小 tick 的 label。可取值 `true`, `false`, `null`。默认自动判定（即如果标签重叠，不会显示最小 tick 的 label）。
+
+##${prefix} showMaxLabel(boolean) = null
+是否显示最大 tick 的 label。可取值 `true`, `false`, `null`。默认自动判定（即如果标签重叠，不会显示最大 tick 的 label）。
+
 ##${prefix} textStyle(Object)
 
 {{ use: partial-text-style(
@@ -77,6 +83,7 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 
 ###${prefix} baseline(string)
 文本垂直对齐方式，默认自动选择对齐方式，可以是 `'top'`, `'middle'`, `'bottom'`
+
 
 <!-- Overwrite color -->
 ###${prefix} color(Color|Function)
