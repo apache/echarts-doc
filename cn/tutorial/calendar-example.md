@@ -5,10 +5,10 @@
 在ECharts中，我们新增了日历坐标系，如何快速写出一个日历图呢？
 ~[800x300](${galleryViewPath}calendar-simple&edit=1&reset=1)
 
-通过以下几个步骤即可：
+通过以下三个步骤即可实现上述效果：
 
 ## 第一步：引入js文件
-下载的完整版本echarts.min.js即可，无需再单独引入其他文件哦
+下载的最新完整版本echarts.min.js即可，无需再单独引入其他文件哦
 
 ```html
 <script src="echarts.min.js"></script>
@@ -58,7 +58,7 @@ myChart.setOption(option);
 > - DOM 元素在 `echarts.init` 的时候是否有高度和宽度。
 > - 若为type: heatMap是否配置 `visualMap`参数
 
-**附完整示例效果**
+**附完整示例代码**
 
 ```html
 <!DOCTYPE html>
@@ -109,9 +109,9 @@ myChart.setOption(option);
 </html>
 
 ```
-以上就是绘制最简日历图的步骤了，如若还想进一步私人定制，还可以通过第四步自定义配置参数
+以上就是绘制最简日历图的步骤了，如若还想进一步私人定制，还可以通过自定义配置参数来实现
 
-## 第四步：自定义配置参数
+## 自定义配置参数
 
 使用日历坐标绘制日历图时，支持自定义各项属性:
 
