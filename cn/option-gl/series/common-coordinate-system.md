@@ -1,6 +1,6 @@
 {{ target: series-common-coordinate-system }}
 
-## coordinateSystem(string) = ${coordSysDefault}
+## coordinateSystem(string) = ${defaultCoordinateSystem}
 
 该系列使用的坐标系，可选：
 

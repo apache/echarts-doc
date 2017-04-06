@@ -13,6 +13,7 @@
 {{ use: partial-series-name() }}
 
 {{ use: series-common-coordinate-system(
+    defaultCoordinateSystem='cartesian3D',
     cartesian3D=true,
     geo3D=true,
     globe=true
@@ -81,7 +82,7 @@
 
 ## data(Array)
 
-柱状图数据数组。数组每一项为一个数据。通常这个数据是用数组存储数据的每个属性/维度。例如下面：
+三维柱状图数据数组。数组每一项为一个数据。通常这个数据是用数组存储数据的每个属性/维度。例如下面：
 
 ```js
 data: [
@@ -96,33 +97,7 @@ data: [
 
 除了默认给坐标系使用的三个值，每一项还可以加入任意多个值，用于给 [visualMap](~visualMap) 组件映射到颜色等其它图形属性。
 
-更多时候我们需要指定每个数据项的名称，这时候需要每个项为一个对象：
-```js
-[{
-    // 数据项的名称
-    name: '数据1',
-    // 数据项值
-    value: [12, 14, 10]
-}, {
-    name: '数据2',
-    value: [34, 50, 15]
-}]
-```
-
-需要对个别内容指定进行个性化定义时：
-
-```js
-[{
-    name: '数据1',
-    value: [12, 14, 10]
-}, {
-    // 数据项名称
-    name: '数据2',
-    value : [34, 50, 15],
-    //自定义特殊itemStyle，仅对该item有效
-    itemStyle:{}
-}]
-```
+{{ use: common-data-option-desc() }}
 
 ### name(string)
 数据项名称。
@@ -167,7 +142,6 @@ data: [
 ) }}
 
 
-
 {{ use: partial-shading(
     componentType='series-bar3D',
     componentName='三维柱状图'
@@ -175,3 +149,5 @@ data: [
 
 
 {{ use: partial-zlevel }}
+
+{{ use: partial-silent }}
