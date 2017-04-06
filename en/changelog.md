@@ -22,6 +22,15 @@
 + [^] Fixed that `data.lineStyle.color` of [parallel](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-parallel) did not work. See [#5363](https://github.com/ecomfe/echarts/issues/5363).
 
 
+## v3.5.1
+<div class="time">2017-03-23</div>
+
+Recovery Build
+
++ [^] Fixed [#5352](https://github.com/ecomfe/echarts/issues/5352).
+
++ [^] Fixed [#5350](https://github.com/ecomfe/echarts/issues/5350).
+
 
 ## v3.5.0
 <div class="time">2017-03-23</div>

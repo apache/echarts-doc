@@ -54,6 +54,12 @@ Distance between two axes when at expanding state, in pixels.
 
 Please refer to [parallel.axisExpandable](parallel.axisExpandable) for more information.
 
+## axisExpandTriggerOn(string) = 'click'
+
+Optional values:
++ `'click'`: Trigger expanding when mouse clicking.
++ `'mousemove'`: Trigger expanding when mouse hovering. When use `'mousemove'`, it is suggested that close [parallelAxis.animation](~parallelAxis.animation) and [series-parallel.animation](~series-parallel.animation).
+
 
 ## parallelAxisDefault(Object)
 
