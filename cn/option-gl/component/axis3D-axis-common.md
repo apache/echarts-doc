@@ -1,5 +1,9 @@
 {{ target: component-axis3D-axis-common }}
 
+## grid3DIndex(number) = 0
+
+坐标轴使用的 [grid3D](~grid3D) 组件的索引。默认使用第一个 [grid3D](~grid3D) 组件。
+
 ## nameTextStyle(Object)
 
 坐标轴名称的显示样式。

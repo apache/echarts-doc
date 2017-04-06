@@ -15,7 +15,7 @@
 
 
 {{ use: component-geo3D-common(
-    componentType="map3D",
+    componentType="series-map3D",
     inMap=true,
     componentName="三维地图"
 )  }}

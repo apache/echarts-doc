@@ -76,6 +76,7 @@ ${name}文字字体的粗细。
 
 标签距离图形的距离，在三维的散点图中这个距离是屏幕空间的像素值，其它图中这个距离是相对的三维距离。
 
+{{ if: ${hasPosition} }}
 #${prefix|default('##')} position(string) = ${defaultPosition|default('top')}
 
 标签的位置。
@@ -86,6 +87,8 @@ ${name}文字字体的粗细。
 + 'left'
 + 'right'
 + 'bottom'
+
+{{ /if }}
 
 #${prefix|default('##')} formatter(Function|string)
 
@@ -106,16 +109,8 @@ formatter: '{b}: {c}'
 (params: Object|Array) => string
 ```
 参数 `params` 是 formatter 需要的单个数据集。格式如下：
-{{ use: partial-formatter-params-structure() }}。
+{{ use: partial-formatter-params-structure() }}
 
-
-{{ if: ${formatter} }}
-#${prefix} formatter(string|Function)
-{{use:partial-2d-data-label-formatter}}
-{{ elif: ${formatter1d} }}
-#${prefix} formatter(string|Function)
-{{use:partial-1d-data-label-formatter}}
-{{ /if }}
 
 #${prefix|default('##')} textStyle(Object)
 
