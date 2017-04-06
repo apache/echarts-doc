@@ -2,12 +2,10 @@
 
 # 小例子：实现日历图
 
-在ECharts中，我们是通过日历坐标系的方式实现日历图的，我们可以在热力图、散点图、关系图中使用日历坐标系。
-
-首先介绍一个实现日历图的小例子。
+在ECharts中，我们新增了日历坐标系，如何快速写出一个日历图呢？通过以下几个步骤就可以快速实现了：
 
 ## 第一步：引入js文件
-下载的完整版本echarts.min.js，无需再单独引入其他文件，即可绘制日历图
+下载的完整版本echarts.min.js即可，无需再单独引入其他文件哦
 
 ```html
 <script src="echarts.min.js"></script>
@@ -17,17 +15,17 @@
 ```
 
 ## 第二步：指定DOM元素作为图表容器
-和ECharts中的其他图表一样，我们需要创建一个DOM作为绘制图表的容器
+和ECharts中的其他图表一样，创建一个DOM来作为绘制图表的容器
 ```html
 <div id="main" style="width=100%; height = 400px"></div>
 ```
 使用ECharts进行初始化
 ```js
-var chart = echarts.init(document.getElementById('main'));
+var myChart = echarts.init(document.getElementById('main'));
 ```
 
 ## 第三步：配置参数
-以常见的日历图为例: calendar heatmap
+以常见的日历图为例: calendar坐标 + heatmap图
 
 ```js
 var option = {
@@ -47,15 +45,15 @@ var option = {
 }
 myChart.setOption(option);
 ```
-在heatmap图的基础上，加上`coordinateSystem: 'calendar',`和`calendar: { range: '2017' }`即可将heatmap图转为日历图
+在heatmap图的基础上，加上`coordinateSystem: 'calendar',`和`calendar: { range: '2017' }`heatmap图就秒变为日历图了。
 
-> 如果发现图表没有正确显示，你可以检查以下几种可能：
+> 若发现图表没有正确显示，你可以检查以下几种可能：
 >
 > - JS文件是否正确加载；
 > - `echarts` 变量是否存在；
 > - 控制台是否报错;
 > - DOM 元素在 `echarts.init` 的时候是否有高度和宽度。
-> - 若为heatMap图是否配置 `visualMap`参数
+> - 若为type: heatMap是否配置 `visualMap`参数
 
 **附完整示例效果**
 
@@ -72,6 +70,7 @@ myChart.setOption(option);
     <script type="text/javascript">
         var myChart = echarts.init(document.getElementById('main'));
 
+        // 模拟数据
         function getVirtulData(year) {
             year = year || '2017';
             var date = +echarts.number.parseDate(year + '-01-01');
@@ -107,8 +106,9 @@ myChart.setOption(option);
 </html>
 
 ```
+以上就是绘制最简日历图的步骤了，如若还想进一步私人定制，还可以通过第四步自定义配置参数
 
-## 第四步：自定义日历图配置
+## 第四步：自定义配置参数
 
 使用日历坐标绘制日历图时，支持自定义各项属性:
 
@@ -135,9 +135,9 @@ myChart.setOption(option);
 
 
 ## 日历坐标系的其他形式
-除了制作常用的日历图外，我们可以在热力图、散点图、关系图中使用日历坐标系
+此外，日历坐标系是一种新的 `ECharts` 坐标系，提供了在日历上绘制图表的能力; 所以除了制作常用的日历图外，我们可以在热力图、散点图、关系图中使用日历坐标系。
 
-在日历坐标系中使用热力图：
+在日历坐标系中使用热力图：（日历图）
 ~[800x300](${galleryViewPath}calendar-heatmap&edit=1&reset=1)
 
 在日历坐标系中使用散点图：
@@ -148,12 +148,12 @@ myChart.setOption(option);
 
 **其他更丰富的效果**
 
-灵活利用 `ECharts` 图表和坐标系的组合，以及 API，可以实现更丰富的效果。
+灵活利用 `ECharts` 图表和坐标系的组合，以及 API，还可以实现更丰富的效果。
 
 例如，制作农历：
 ~[600x500](${galleryViewPath}calendar-lunar&edit=1&reset=1)
 
-下面这个例子，使用 `chart.convertToPixel` 接口，实现了饼图放置在日历坐标系中的效果。
+例如，使用 `chart.convertToPixel` 接口，在日历坐标系绘制饼图。
 ~[800x640](${galleryViewPath}calendar-pie&edit=1&reset=1)
 
 
