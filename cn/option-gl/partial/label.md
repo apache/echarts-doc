@@ -1,3 +1,33 @@
+{{ target: partial-formatter-params-structure }}
+```js
+{
+    componentType: 'series',
+    // 系列类型
+    seriesType: string,
+    // 系列在传入的 option.series 中的 index
+    seriesIndex: number,
+    // 系列名称
+    seriesName: string,
+    // 数据名，类目名
+    name: string,
+    // 数据在传入的 data 数组中的 index
+    dataIndex: number,
+    // 传入的原始数据项
+    data: Object,
+    // 传入的数据值
+    value: number|Array,
+    // 数据图形的颜色
+    color: string,
+{{ for: ${extra} as ${obj}, ${name} }}
+    // ${obj.desc}
+    ${name}: ${obj.type},
+{{ /for }}
+}
+```
+{{ /target }}
+
+
+
 {{ target: partial-text-style }}
 
 #${prefix|default('###')} color(string)=${defaultColor|default('"#fff"')}
@@ -56,6 +86,36 @@ ${name}文字字体的粗细。
 + 'left'
 + 'right'
 + 'bottom'
+
+#${prefix|default('##')} formatter(Function|string)
+
+标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 `\n` 换行。
+
+**字符串模板**
+模板变量有 `{a}`、`{b}`、`{c}`，分别表示系列名，数据名，数据值。
+
+**示例：**
+```js
+formatter: '{b}: {c}'
+```
+
+**回调函数**
+
+回调函数格式：
+```js
+(params: Object|Array) => string
+```
+参数 `params` 是 formatter 需要的单个数据集。格式如下：
+{{ use: partial-formatter-params-structure() }}。
+
+
+{{ if: ${formatter} }}
+#${prefix} formatter(string|Function)
+{{use:partial-2d-data-label-formatter}}
+{{ elif: ${formatter1d} }}
+#${prefix} formatter(string|Function)
+{{use:partial-1d-data-label-formatter}}
+{{ /if }}
 
 #${prefix|default('##')} textStyle(Object)
 

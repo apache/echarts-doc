@@ -13,6 +13,7 @@
 
 注意在开启 postEffect 的时候默认会开启 [temporalSuperSampling](~${componentType}.temporalSuperSampling) 在画面静止后持续对画面增强，包括抗锯齿，景深，SSAO，阴影等。
 
+
 ##${prefix|default('#')} enable(boolean) = false
 
 是否开启后处理特效，默认关闭。

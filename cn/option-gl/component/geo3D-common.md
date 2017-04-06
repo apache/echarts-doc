@@ -110,7 +110,7 @@ ${componentName} 中三维图形的视觉属性，包括颜色，透明度，描
     prefix="###"
 ) }}
 
-## {{ if: ${inMap} }} data(Array) {{ else: }} region(Array) {{ /if }}
+## {{ if: ${inMap} }} data(Array) {{ else: }} regions(Array) {{ /if }}
 
 地图区域的设置，
 
@@ -162,10 +162,6 @@ ${componentName} 中三维图形的视觉属性，包括颜色，透明度，描
 ) }}
 
 
-{{ use: partial-label-geo3D(
-    prefix="###",
-    defaultShow=false
-) }}
 
 {{ use: partial-shading(
     componentType=${componentType},
@@ -175,7 +171,9 @@ ${componentName} 中三维图形的视觉属性，包括颜色，透明度，描
 
 {{ use: partial-light(
     componentType=${componentType},
-    componentName=${componentName}
+    componentName=${componentName},
+    defaultMainLightAlpha=40,
+    defaultMainLightBeta=30
 ) }}
 
 {{ use: partial-post-effect(
@@ -190,7 +188,13 @@ ${componentName} 中三维图形的视觉属性，包括颜色，透明度，描
 
 {{ use: partial-view-control(
     componentType=${componentType},
-    componentName=${componentName}
+    componentName=${componentName},
+    defaultAlpha=40,
+    defaultBeta=0,
+    defaultDistance=100,
+    defaultMinAlpha=5,
+    defaultMinBeta=-80,
+    defaultMaxBeta=80
 ) }}
 
 {{ use: partial-zlevel }}
