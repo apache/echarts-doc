@@ -154,6 +154,10 @@ chart.setOption({
 
 + `emission` 混合到自发光，不受光照影响。
 
+### intensity(number) = 1
+
+在 [blendTo](~globe.blendTo) 为`'emission'`时有效，用于设置自发光的强度。
+
 ### shading(string) = 'lambert'
 
 覆盖层的着色效果，同 [globe.shading](~globe.shading)， 支持 `'color'`, `'lambert'`, `'realistic'`

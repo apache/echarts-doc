@@ -19,7 +19,7 @@
 
 #${prefix|default("#")} shading(string)
 
-${componentName}组件中三维图形的着色效果，echarts-gl 中支持下面三种着色方式
+${componentName}中三维图形的着色效果，echarts-gl 中支持下面三种着色方式
 
 + `'color'`
 只显示颜色，不受光照等其它因素的影响。

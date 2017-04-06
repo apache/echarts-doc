@@ -74,7 +74,7 @@ define(function (require) {
     var QUOTATION_REG_SINGLE = /^\s*'(.*)'\s*$/; // 中间也含有引号，因为贪婪，所以可以不管。
     var QUOTATION_REG_DOUBLE = /^\s*"(.*)"\s*$/; // 中间也含有引号，因为贪婪，所以可以不管。
     // var PATH_ITEM_REG = /^(\w+|i\])(\-([a-zA-Z_ \/,]*))?$/; // Only ascii.
-    var PATH_ITEM_REG = /^([^\[\]\-]+|i\])(\-([a-zA-Z_ \/,]*))?$/; // Also 中文.
+    var PATH_ITEM_REG = /^([^\[\]\-]+|i\])(\-([0-9a-zA-Z_ \/,]*))?$/; // Also 中文.
 
     /**
      * @public

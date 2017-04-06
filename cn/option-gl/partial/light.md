@@ -52,6 +52,8 @@
 
 ![](~light-alpha-beta.png)
 
+[globe](~globe) 组件中可以通过 [time](~globe.light.main.time) 控制日光的时间。
+
 ###${prefix|default("#")} beta(number) = ${defaultMainLightAlpha|default(0)}
 
 主光源绕 y 轴，即左右旋转的角度。

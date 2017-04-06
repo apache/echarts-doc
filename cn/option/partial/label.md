@@ -19,6 +19,7 @@ ${name}图形上的文本标签，可用于说明图形的一些数据信息，�
 {{ /if }}
 #${prefix} textStyle(Object)
 标签的字体样式。
+
 {{ use:partial-text-style(prefix=${prefix} + '#') }}
 
 
