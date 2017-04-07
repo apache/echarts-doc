@@ -112,8 +112,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var echartsGl = {
 	    version: '1.0.0',
 	    dependencies: {
-	        echarts: '3.5.0',
-	        qtek: '0.3.0'
+	        echarts: '3.5.2',
+	        qtek: '0.3.1'
 	    }
 	};
 	var echarts = __webpack_require__(2);
@@ -276,7 +276,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	
-	    module.exports = '0.3.0';
+	    module.exports = '0.3.1';
 
 
 /***/ },
@@ -23291,19 +23291,19 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 78 */
 /***/ function(module, exports) {
 
-	module.exports = "@export ecgl.color.vertex\n\nuniform mat4 worldViewProjection : WORLDVIEWPROJECTION;\nuniform vec2 uvRepeat: [1, 1];\n\nattribute vec2 texcoord : TEXCOORD_0;\nattribute vec3 position: POSITION;\n\n@import ecgl.wireframe.common.vertexHeader\n\n#ifdef VERTEX_COLOR\nattribute vec4 a_Color : COLOR;\nvarying vec4 v_Color;\n#endif\n\nvarying vec2 v_Texcoord;\n\nvoid main()\n{\n    gl_Position = worldViewProjection * vec4(position, 1.0);\n    v_Texcoord = texcoord * uvRepeat;\n\n#ifdef VERTEX_COLOR\n    v_Color = a_Color;\n#endif\n\n    @import ecgl.wireframe.common.vertexMain\n\n}\n\n@end\n\n@export ecgl.color.fragment\n\n#define LAYER_DIFFUSEMAP_COUNT 0\n#define LAYER_EMISSIVEMAP_COUNT 0\n\nuniform sampler2D diffuseMap;\nuniform vec4 color : [1.0, 1.0, 1.0, 1.0];\n\nuniform float emissionIntensity: 1.0;\n\n#ifdef VERTEX_COLOR\nvarying vec4 v_Color;\n#endif\n\n#if (LAYER_DIFFUSEMAP_COUNT > 0)\nuniform sampler2D layerDiffuseMap[LAYER_DIFFUSEMAP_COUNT];\n#endif\n\n#if (LAYER_EMISSIVEMAP_COUNT > 0)\nuniform sampler2D layerEmissiveMap[LAYER_EMISSIVEMAP_COUNT];\n#endif\n\nvarying vec2 v_Texcoord;\n\n@import ecgl.wireframe.common.fragmentHeader\n\n@import qtek.util.srgb\n\nvoid main()\n{\n#ifdef SRGB_DECODE\n    gl_FragColor = sRGBToLinear(color);\n#else\n    gl_FragColor = color;\n#endif\n\n#ifdef VERTEX_COLOR\n    gl_FragColor *= v_Color;\n#endif\n\n    vec4 albedoTexel = vec4(1.0);\n#ifdef DIFFUSEMAP_ENABLED\n    albedoTexel = texture2D(diffuseMap, v_Texcoord);\n    #ifdef SRGB_DECODE\n    albedoTexel = sRGBToLinear(albedoTexel);\n    #endif\n#endif\n\n#if (LAYER_DIFFUSEMAP_COUNT > 0)\n    for (int _idx_ = 0; _idx_ < LAYER_DIFFUSEMAP_COUNT; _idx_++) {{\n        vec4 texel2 = texture2D(layerDiffuseMap[_idx_], v_Texcoord);\n        #ifdef SRGB_DECODE\n        texel2 = sRGBToLinear(texel2);\n        #endif\n        // source-over blend\n        albedoTexel.rgb = mix(albedoTexel.rgb, texel2.rgb, texel2.a);\n        albedoTexel.a = texel2.a + (1.0 - texel2.a) * albedoTexel.a;\n    }}\n#endif\n    gl_FragColor *= albedoTexel;\n\n#if (LAYER_EMISSIVEMAP_COUNT > 0)\n    for (int _idx_ = 0; _idx_ < LAYER_EMISSIVEMAP_COUNT; _idx_++) {{\n        // PENDING BLEND?\n        vec4 texel2 = texture2D(layerEmissiveMap[_idx_], v_Texcoord);\n        gl_FragColor.rgb += texel2.rgb * texel2.a * emissionIntensity;\n    }}\n#endif\n\n\n    @import ecgl.wireframe.common.fragmentMain\n\n}\n@end"
+	module.exports = "@export ecgl.color.vertex\n\nuniform mat4 worldViewProjection : WORLDVIEWPROJECTION;\nuniform vec2 uvRepeat: [1, 1];\n\nattribute vec2 texcoord : TEXCOORD_0;\nattribute vec3 position: POSITION;\n\n@import ecgl.wireframe.common.vertexHeader\n\n#ifdef VERTEX_COLOR\nattribute vec4 a_Color : COLOR;\nvarying vec4 v_Color;\n#endif\n\nvarying vec2 v_Texcoord;\n\nvoid main()\n{\n    gl_Position = worldViewProjection * vec4(position, 1.0);\n    v_Texcoord = texcoord * uvRepeat;\n\n#ifdef VERTEX_COLOR\n    v_Color = a_Color;\n#endif\n\n    @import ecgl.wireframe.common.vertexMain\n\n}\n\n@end\n\n@export ecgl.color.fragment\n\n#define LAYER_DIFFUSEMAP_COUNT 0\n#define LAYER_EMISSIVEMAP_COUNT 0\n\nuniform sampler2D diffuseMap;\nuniform vec4 color : [1.0, 1.0, 1.0, 1.0];\n\n#ifdef VERTEX_COLOR\nvarying vec4 v_Color;\n#endif\n\n#if (LAYER_DIFFUSEMAP_COUNT > 0)\nuniform sampler2D layerDiffuseMap[LAYER_DIFFUSEMAP_COUNT];\n#endif\n\n#if (LAYER_EMISSIVEMAP_COUNT > 0)\nuniform float layerEmissionIntensity[LAYER_EMISSIVEMAP_COUNT];\nuniform sampler2D layerEmissiveMap[LAYER_EMISSIVEMAP_COUNT];\n#endif\n\nvarying vec2 v_Texcoord;\n\n@import ecgl.wireframe.common.fragmentHeader\n\n@import qtek.util.srgb\n\nvoid main()\n{\n#ifdef SRGB_DECODE\n    gl_FragColor = sRGBToLinear(color);\n#else\n    gl_FragColor = color;\n#endif\n\n#ifdef VERTEX_COLOR\n    gl_FragColor *= v_Color;\n#endif\n\n    vec4 albedoTexel = vec4(1.0);\n#ifdef DIFFUSEMAP_ENABLED\n    albedoTexel = texture2D(diffuseMap, v_Texcoord);\n    #ifdef SRGB_DECODE\n    albedoTexel = sRGBToLinear(albedoTexel);\n    #endif\n#endif\n\n#if (LAYER_DIFFUSEMAP_COUNT > 0)\n    for (int _idx_ = 0; _idx_ < LAYER_DIFFUSEMAP_COUNT; _idx_++) {{\n        vec4 texel2 = texture2D(layerDiffuseMap[_idx_], v_Texcoord);\n        #ifdef SRGB_DECODE\n        texel2 = sRGBToLinear(texel2);\n        #endif\n        // source-over blend\n        albedoTexel.rgb = mix(albedoTexel.rgb, texel2.rgb, texel2.a);\n        albedoTexel.a = texel2.a + (1.0 - texel2.a) * albedoTexel.a;\n    }}\n#endif\n    gl_FragColor *= albedoTexel;\n\n#if (LAYER_EMISSIVEMAP_COUNT > 0)\n    for (int _idx_ = 0; _idx_ < LAYER_EMISSIVEMAP_COUNT; _idx_++) {{\n        // PENDING BLEND?\n        vec4 texel2 = texture2D(layerEmissiveMap[_idx_], v_Texcoord);\n        gl_FragColor.rgb += texel2.rgb * texel2.a * layerEmissionIntensity[_idx_];\n    }}\n#endif\n\n\n    @import ecgl.wireframe.common.fragmentMain\n\n}\n@end"
 
 /***/ },
 /* 79 */
 /***/ function(module, exports) {
 
-	module.exports = "/**\n * http://en.wikipedia.org/wiki/Lambertian_reflectance\n */\n\n@export ecgl.lambert.vertex\n\nuniform mat4 worldViewProjection : WORLDVIEWPROJECTION;\nuniform mat4 worldInverseTranspose : WORLDINVERSETRANSPOSE;\nuniform mat4 world : WORLD;\n\nuniform vec2 uvRepeat : [1.0, 1.0];\nuniform vec2 uvOffset : [0.0, 0.0];\n\nattribute vec3 position : POSITION;\nattribute vec2 texcoord : TEXCOORD_0;\nattribute vec3 normal : NORMAL;\n\n@import ecgl.wireframe.common.vertexHeader\n\n#ifdef VERTEX_COLOR\nattribute vec4 a_Color : COLOR;\nvarying vec4 v_Color;\n#endif\n\nvarying vec2 v_Texcoord;\n\nvarying vec3 v_Normal;\nvarying vec3 v_WorldPosition;\n\nvoid main()\n{\n    v_Texcoord = texcoord * uvRepeat + uvOffset;\n\n    gl_Position = worldViewProjection * vec4(position, 1.0);\n\n    v_Normal = normalize((worldInverseTranspose * vec4(normal, 0.0)).xyz);\n    v_WorldPosition = (world * vec4(position, 1.0)).xyz;\n\n#ifdef VERTEX_COLOR\n    v_Color = a_Color;\n#endif\n\n    @import ecgl.wireframe.common.vertexMain\n}\n\n@end\n\n\n@export ecgl.lambert.fragment\n\n#define LAYER_DIFFUSEMAP_COUNT 0\n#define LAYER_EMISSIVEMAP_COUNT 0\n#define PI 3.14159265358979\n\nvarying vec2 v_Texcoord;\n\nvarying vec3 v_Normal;\nvarying vec3 v_WorldPosition;\n\n#ifdef DIFFUSEMAP_ENABLED\nuniform sampler2D diffuseMap;\n#endif\n\n#if (LAYER_DIFFUSEMAP_COUNT > 0)\nuniform sampler2D layerDiffuseMap[LAYER_DIFFUSEMAP_COUNT];\n#endif\n\n#if (LAYER_EMISSIVEMAP_COUNT > 0)\nuniform sampler2D layerEmissiveMap[LAYER_EMISSIVEMAP_COUNT];\n#endif\n\nuniform float emissionIntensity: 1.0;\n\n#ifdef BUMPMAP_ENABLED\nuniform sampler2D bumpMap;\nuniform float bumpScale : 1.0;\n// Derivative maps - bump mapping unparametrized surfaces by Morten Mikkelsen\n//  http://mmikkelsen3d.blogspot.sk/2011/07/derivative-maps.html\n\n// Evaluate the derivative of the height w.r.t. screen-space using forward differencing (listing 2)\n\nvec3 perturbNormalArb(vec3 surfPos, vec3 surfNormal, vec3 baseNormal)\n{\n    vec2 dSTdx = dFdx(v_Texcoord);\n    vec2 dSTdy = dFdy(v_Texcoord);\n\n    float Hll = bumpScale * texture2D(bumpMap, v_Texcoord).x;\n    float dHx = bumpScale * texture2D(bumpMap, v_Texcoord + dSTdx).x - Hll;\n    float dHy = bumpScale * texture2D(bumpMap, v_Texcoord + dSTdy).x - Hll;\n\n    vec3 vSigmaX = dFdx(surfPos);\n    vec3 vSigmaY = dFdy(surfPos);\n    vec3 vN = surfNormal;\n\n    vec3 R1 = cross(vSigmaY, vN);\n    vec3 R2 = cross(vN, vSigmaX);\n\n    float fDet = dot(vSigmaX, R1);\n\n    vec3 vGrad = sign(fDet) * (dHx * R1 + dHy * R2);\n    return normalize(abs(fDet) * baseNormal - vGrad);\n\n}\n#endif\n\nuniform vec4 color : [1.0, 1.0, 1.0, 1.0];\n\nuniform mat4 viewInverse : VIEWINVERSE;\n\n#ifdef AMBIENT_LIGHT_COUNT\n@import qtek.header.ambient_light\n#endif\n#ifdef AMBIENT_SH_LIGHT_COUNT\n@import qtek.header.ambient_sh_light\n#endif\n\n#ifdef DIRECTIONAL_LIGHT_COUNT\n@import qtek.header.directional_light\n#endif\n\n#ifdef VERTEX_COLOR\nvarying vec4 v_Color;\n#endif\n\n@import qtek.util.srgb\n\n@import ecgl.wireframe.common.fragmentHeader\n\n@import qtek.plugin.compute_shadow_map\n\nvoid main()\n{\n#ifdef SRGB_DECODE\n    gl_FragColor = sRGBToLinear(color);\n#else\n    gl_FragColor = color;\n#endif\n\n#ifdef VERTEX_COLOR\n    // PENDING\n    #ifdef SRGB_DECODE\n    gl_FragColor *= sRGBToLinear(v_Color);\n    #else\n    gl_FragColor *= v_Color;\n    #endif\n#endif\n\n    vec4 albedoTexel = vec4(1.0);\n#ifdef DIFFUSEMAP_ENABLED\n    albedoTexel = texture2D(diffuseMap, v_Texcoord);\n    #ifdef SRGB_DECODE\n    albedoTexel = sRGBToLinear(albedoTexel);\n    #endif\n#endif\n\n#if (LAYER_DIFFUSEMAP_COUNT > 0)\n    for (int _idx_ = 0; _idx_ < LAYER_DIFFUSEMAP_COUNT; _idx_++) {{\n        vec4 texel2 = texture2D(layerDiffuseMap[_idx_], v_Texcoord);\n        #ifdef SRGB_DECODE\n        texel2 = sRGBToLinear(texel2);\n        #endif\n        // source-over blend\n        albedoTexel.rgb = mix(albedoTexel.rgb, texel2.rgb, texel2.a);\n        albedoTexel.a = texel2.a + (1.0 - texel2.a) * albedoTexel.a;\n    }}\n#endif\n    gl_FragColor *= albedoTexel;\n\n    vec3 N = v_Normal;\n#ifdef DOUBLE_SIDE\n    vec3 eyePos = viewInverse[3].xyz;\n    vec3 V = normalize(eyePos - v_WorldPosition);\n\n    if (dot(N, V) < 0.0) {\n        N = -N;\n    }\n#endif\n\n    float ambientFactor = 1.0;\n\n#ifdef BUMPMAP_ENABLED\n    N = perturbNormalArb(v_WorldPosition, v_Normal, N);\n    // PENDING\n    ambientFactor = dot(v_Normal, N);\n#endif\n\n    vec3 diffuseColor = vec3(0.0, 0.0, 0.0);\n\n#ifdef AMBIENT_LIGHT_COUNT\n    for(int i = 0; i < AMBIENT_LIGHT_COUNT; i++)\n    {\n        // Multiply a dot factor to make sure the bump detail can be seen\n        // in the dark side\n        diffuseColor += ambientLightColor[i] * ambientFactor;\n    }\n#endif\n#ifdef AMBIENT_SH_LIGHT_COUNT\n    for(int _idx_ = 0; _idx_ < AMBIENT_SH_LIGHT_COUNT; _idx_++)\n    {{\n        diffuseColor += calcAmbientSHLight(_idx_, N) * ambientSHLightColor[_idx_];\n    }}\n#endif\n#ifdef DIRECTIONAL_LIGHT_COUNT\n#if defined(DIRECTIONAL_LIGHT_SHADOWMAP_COUNT)\n    float shadowContribsDir[DIRECTIONAL_LIGHT_COUNT];\n    if(shadowEnabled)\n    {\n        computeShadowOfDirectionalLights(v_WorldPosition, shadowContribsDir);\n    }\n#endif\n    for(int i = 0; i < DIRECTIONAL_LIGHT_COUNT; i++)\n    {\n        vec3 lightDirection = -directionalLightDirection[i];\n        vec3 lightColor = directionalLightColor[i];\n\n        float shadowContrib = 1.0;\n#if defined(DIRECTIONAL_LIGHT_SHADOWMAP_COUNT)\n        if (shadowEnabled)\n        {\n            shadowContrib = shadowContribsDir[i];\n        }\n#endif\n\n        float ndl = dot(N, normalize(lightDirection)) * shadowContrib;\n\n        diffuseColor += lightColor * clamp(ndl, 0.0, 1.0);\n    }\n#endif\n\n    gl_FragColor.rgb *= diffuseColor;\n\n#if (LAYER_EMISSIVEMAP_COUNT > 0)\n    for (int _idx_ = 0; _idx_ < LAYER_EMISSIVEMAP_COUNT; _idx_++) {{\n        vec4 texel2 = texture2D(layerEmissiveMap[_idx_], v_Texcoord) * emissionIntensity;\n        gl_FragColor.rgb += texel2.rgb;\n    }}\n#endif\n\n    @import ecgl.wireframe.common.fragmentMain\n}\n\n@end"
+	module.exports = "/**\n * http://en.wikipedia.org/wiki/Lambertian_reflectance\n */\n\n@export ecgl.lambert.vertex\n\nuniform mat4 worldViewProjection : WORLDVIEWPROJECTION;\nuniform mat4 worldInverseTranspose : WORLDINVERSETRANSPOSE;\nuniform mat4 world : WORLD;\n\nuniform vec2 uvRepeat : [1.0, 1.0];\nuniform vec2 uvOffset : [0.0, 0.0];\n\nattribute vec3 position : POSITION;\nattribute vec2 texcoord : TEXCOORD_0;\nattribute vec3 normal : NORMAL;\n\n@import ecgl.wireframe.common.vertexHeader\n\n#ifdef VERTEX_COLOR\nattribute vec4 a_Color : COLOR;\nvarying vec4 v_Color;\n#endif\n\nvarying vec2 v_Texcoord;\n\nvarying vec3 v_Normal;\nvarying vec3 v_WorldPosition;\n\nvoid main()\n{\n    v_Texcoord = texcoord * uvRepeat + uvOffset;\n\n    gl_Position = worldViewProjection * vec4(position, 1.0);\n\n    v_Normal = normalize((worldInverseTranspose * vec4(normal, 0.0)).xyz);\n    v_WorldPosition = (world * vec4(position, 1.0)).xyz;\n\n#ifdef VERTEX_COLOR\n    v_Color = a_Color;\n#endif\n\n    @import ecgl.wireframe.common.vertexMain\n}\n\n@end\n\n\n@export ecgl.lambert.fragment\n\n#define LAYER_DIFFUSEMAP_COUNT 0\n#define LAYER_EMISSIVEMAP_COUNT 0\n#define PI 3.14159265358979\n\nvarying vec2 v_Texcoord;\n\nvarying vec3 v_Normal;\nvarying vec3 v_WorldPosition;\n\n#ifdef DIFFUSEMAP_ENABLED\nuniform sampler2D diffuseMap;\n#endif\n\n#if (LAYER_DIFFUSEMAP_COUNT > 0)\nuniform sampler2D layerDiffuseMap[LAYER_DIFFUSEMAP_COUNT];\n#endif\n\n#if (LAYER_EMISSIVEMAP_COUNT > 0)\nuniform float layerEmissionIntensity[LAYER_EMISSIVEMAP_COUNT];\nuniform sampler2D layerEmissiveMap[LAYER_EMISSIVEMAP_COUNT];\n#endif\n\nuniform float emissionIntensity: 1.0;\n\n#ifdef BUMPMAP_ENABLED\nuniform sampler2D bumpMap;\nuniform float bumpScale : 1.0;\n// Derivative maps - bump mapping unparametrized surfaces by Morten Mikkelsen\n//  http://mmikkelsen3d.blogspot.sk/2011/07/derivative-maps.html\n\n// Evaluate the derivative of the height w.r.t. screen-space using forward differencing (listing 2)\n\nvec3 perturbNormalArb(vec3 surfPos, vec3 surfNormal, vec3 baseNormal)\n{\n    vec2 dSTdx = dFdx(v_Texcoord);\n    vec2 dSTdy = dFdy(v_Texcoord);\n\n    float Hll = bumpScale * texture2D(bumpMap, v_Texcoord).x;\n    float dHx = bumpScale * texture2D(bumpMap, v_Texcoord + dSTdx).x - Hll;\n    float dHy = bumpScale * texture2D(bumpMap, v_Texcoord + dSTdy).x - Hll;\n\n    vec3 vSigmaX = dFdx(surfPos);\n    vec3 vSigmaY = dFdy(surfPos);\n    vec3 vN = surfNormal;\n\n    vec3 R1 = cross(vSigmaY, vN);\n    vec3 R2 = cross(vN, vSigmaX);\n\n    float fDet = dot(vSigmaX, R1);\n\n    vec3 vGrad = sign(fDet) * (dHx * R1 + dHy * R2);\n    return normalize(abs(fDet) * baseNormal - vGrad);\n\n}\n#endif\n\nuniform vec4 color : [1.0, 1.0, 1.0, 1.0];\n\nuniform mat4 viewInverse : VIEWINVERSE;\n\n#ifdef AMBIENT_LIGHT_COUNT\n@import qtek.header.ambient_light\n#endif\n#ifdef AMBIENT_SH_LIGHT_COUNT\n@import qtek.header.ambient_sh_light\n#endif\n\n#ifdef DIRECTIONAL_LIGHT_COUNT\n@import qtek.header.directional_light\n#endif\n\n#ifdef VERTEX_COLOR\nvarying vec4 v_Color;\n#endif\n\n@import qtek.util.srgb\n\n@import ecgl.wireframe.common.fragmentHeader\n\n@import qtek.plugin.compute_shadow_map\n\nvoid main()\n{\n#ifdef SRGB_DECODE\n    gl_FragColor = sRGBToLinear(color);\n#else\n    gl_FragColor = color;\n#endif\n\n#ifdef VERTEX_COLOR\n    // PENDING\n    #ifdef SRGB_DECODE\n    gl_FragColor *= sRGBToLinear(v_Color);\n    #else\n    gl_FragColor *= v_Color;\n    #endif\n#endif\n\n    vec4 albedoTexel = vec4(1.0);\n#ifdef DIFFUSEMAP_ENABLED\n    albedoTexel = texture2D(diffuseMap, v_Texcoord);\n    #ifdef SRGB_DECODE\n    albedoTexel = sRGBToLinear(albedoTexel);\n    #endif\n#endif\n\n#if (LAYER_DIFFUSEMAP_COUNT > 0)\n    for (int _idx_ = 0; _idx_ < LAYER_DIFFUSEMAP_COUNT; _idx_++) {{\n        vec4 texel2 = texture2D(layerDiffuseMap[_idx_], v_Texcoord);\n        #ifdef SRGB_DECODE\n        texel2 = sRGBToLinear(texel2);\n        #endif\n        // source-over blend\n        albedoTexel.rgb = mix(albedoTexel.rgb, texel2.rgb, texel2.a);\n        albedoTexel.a = texel2.a + (1.0 - texel2.a) * albedoTexel.a;\n    }}\n#endif\n    gl_FragColor *= albedoTexel;\n\n    vec3 N = v_Normal;\n#ifdef DOUBLE_SIDE\n    vec3 eyePos = viewInverse[3].xyz;\n    vec3 V = normalize(eyePos - v_WorldPosition);\n\n    if (dot(N, V) < 0.0) {\n        N = -N;\n    }\n#endif\n\n    float ambientFactor = 1.0;\n\n#ifdef BUMPMAP_ENABLED\n    N = perturbNormalArb(v_WorldPosition, v_Normal, N);\n    // PENDING\n    ambientFactor = dot(v_Normal, N);\n#endif\n\n    vec3 diffuseColor = vec3(0.0, 0.0, 0.0);\n\n#ifdef AMBIENT_LIGHT_COUNT\n    for(int i = 0; i < AMBIENT_LIGHT_COUNT; i++)\n    {\n        // Multiply a dot factor to make sure the bump detail can be seen\n        // in the dark side\n        diffuseColor += ambientLightColor[i] * ambientFactor;\n    }\n#endif\n#ifdef AMBIENT_SH_LIGHT_COUNT\n    for(int _idx_ = 0; _idx_ < AMBIENT_SH_LIGHT_COUNT; _idx_++)\n    {{\n        diffuseColor += calcAmbientSHLight(_idx_, N) * ambientSHLightColor[_idx_];\n    }}\n#endif\n#ifdef DIRECTIONAL_LIGHT_COUNT\n#if defined(DIRECTIONAL_LIGHT_SHADOWMAP_COUNT)\n    float shadowContribsDir[DIRECTIONAL_LIGHT_COUNT];\n    if(shadowEnabled)\n    {\n        computeShadowOfDirectionalLights(v_WorldPosition, shadowContribsDir);\n    }\n#endif\n    for(int i = 0; i < DIRECTIONAL_LIGHT_COUNT; i++)\n    {\n        vec3 lightDirection = -directionalLightDirection[i];\n        vec3 lightColor = directionalLightColor[i];\n\n        float shadowContrib = 1.0;\n#if defined(DIRECTIONAL_LIGHT_SHADOWMAP_COUNT)\n        if (shadowEnabled)\n        {\n            shadowContrib = shadowContribsDir[i];\n        }\n#endif\n\n        float ndl = dot(N, normalize(lightDirection)) * shadowContrib;\n\n        diffuseColor += lightColor * clamp(ndl, 0.0, 1.0);\n    }\n#endif\n\n    gl_FragColor.rgb *= diffuseColor;\n\n#if (LAYER_EMISSIVEMAP_COUNT > 0)\n    for (int _idx_ = 0; _idx_ < LAYER_EMISSIVEMAP_COUNT; _idx_++) {{\n        vec4 texel2 = texture2D(layerEmissiveMap[_idx_], v_Texcoord) * layerEmissionIntensity[_idx_];\n        gl_FragColor.rgb += texel2.rgb;\n    }}\n#endif\n\n    @import ecgl.wireframe.common.fragmentMain\n}\n\n@end"
 
 /***/ },
 /* 80 */
 /***/ function(module, exports) {
 
-	module.exports = "@export ecgl.realistic.vertex\n\nuniform mat4 worldViewProjection : WORLDVIEWPROJECTION;\nuniform mat4 worldInverseTranspose : WORLDINVERSETRANSPOSE;\nuniform mat4 world : WORLD;\n\nuniform vec2 uvRepeat : [1.0, 1.0];\nuniform vec2 uvOffset : [0.0, 0.0];\n\nattribute vec3 position : POSITION;\nattribute vec2 texcoord : TEXCOORD_0;\nattribute vec3 normal : NORMAL;\n\n@import ecgl.wireframe.common.vertexHeader\n\n#ifdef VERTEX_COLOR\nattribute vec4 a_Color : COLOR;\nvarying vec4 v_Color;\n#endif\n\nvarying vec2 v_Texcoord;\n\nvarying vec3 v_Normal;\nvarying vec3 v_WorldPosition;\n\nvoid main()\n{\n    v_Texcoord = texcoord * uvRepeat + uvOffset;\n\n    gl_Position = worldViewProjection * vec4(position, 1.0);\n\n    v_Normal = normalize((worldInverseTranspose * vec4(normal, 0.0)).xyz);\n    v_WorldPosition = (world * vec4(position, 1.0)).xyz;\n\n#ifdef VERTEX_COLOR\n    v_Color = a_Color;\n#endif\n\n    @import ecgl.wireframe.common.vertexMain\n\n}\n\n@end\n\n\n@export ecgl.realistic.fragment\n\n#define LAYER_DIFFUSEMAP_COUNT 0\n#define LAYER_EMISSIVEMAP_COUNT 0\n#define PI 3.14159265358979\n\n#ifdef VERTEX_COLOR\nvarying vec4 v_Color;\n#endif\n\nvarying vec2 v_Texcoord;\nvarying vec3 v_Normal;\nvarying vec3 v_WorldPosition;\n\n#ifdef DIFFUSEMAP_ENABLED\nuniform sampler2D diffuseMap;\n#endif\n\n#if (LAYER_DIFFUSEMAP_COUNT > 0)\nuniform sampler2D layerDiffuseMap[LAYER_DIFFUSEMAP_COUNT];\n#endif\n\n#if (LAYER_EMISSIVEMAP_COUNT > 0)\nuniform sampler2D layerEmissiveMap[LAYER_EMISSIVEMAP_COUNT];\n#endif\n\nuniform float emissionIntensity: 1.0;\n\n#ifdef BUMPMAP_ENABLED\nuniform sampler2D bumpMap;\nuniform float bumpScale : 1.0;\n// Derivative maps - bump mapping unparametrized surfaces by Morten Mikkelsen\n//  http://mmikkelsen3d.blogspot.sk/2011/07/derivative-maps.html\n\n// Evaluate the derivative of the height w.r.t. screen-space using forward differencing (listing 2)\n\nvec3 perturbNormalArb(vec3 surfPos, vec3 surfNormal, vec3 baseNormal)\n{\n    vec2 dSTdx = dFdx(v_Texcoord);\n    vec2 dSTdy = dFdy(v_Texcoord);\n\n    float Hll = bumpScale * texture2D(bumpMap, v_Texcoord).x;\n    float dHx = bumpScale * texture2D(bumpMap, v_Texcoord + dSTdx).x - Hll;\n    float dHy = bumpScale * texture2D(bumpMap, v_Texcoord + dSTdy).x - Hll;\n\n    vec3 vSigmaX = dFdx(surfPos);\n    vec3 vSigmaY = dFdy(surfPos);\n    vec3 vN = surfNormal;\n\n    vec3 R1 = cross(vSigmaY, vN);\n    vec3 R2 = cross(vN, vSigmaX);\n\n    float fDet = dot(vSigmaX, R1);\n\n    vec3 vGrad = sign(fDet) * (dHx * R1 + dHy * R2);\n    return normalize(abs(fDet) * baseNormal - vGrad);\n\n}\n#endif\n\nuniform vec4 color : [1.0, 1.0, 1.0, 1.0];\n\nuniform float metalness : 0.0;\nuniform float roughness : 0.5;\n\nuniform mat4 viewInverse : VIEWINVERSE;\n\n#ifdef AMBIENT_LIGHT_COUNT\n@import qtek.header.ambient_light\n#endif\n\n#ifdef AMBIENT_SH_LIGHT_COUNT\n@import qtek.header.ambient_sh_light\n#endif\n\n#ifdef AMBIENT_CUBEMAP_LIGHT_COUNT\n@import qtek.header.ambient_cubemap_light\n#endif\n\n#ifdef DIRECTIONAL_LIGHT_COUNT\n@import qtek.header.directional_light\n#endif\n\n@import qtek.util.srgb\n\n@import qtek.util.rgbm\n\n@import ecgl.wireframe.common.fragmentHeader\n\n@import qtek.plugin.compute_shadow_map\n\n// Fresnel\nvec3 F_Schlick(float ndv, vec3 spec) {\n    return spec + (1.0 - spec) * pow(1.0 - ndv, 5.0);\n}\n\nfloat D_Phong(float g, float ndh) {\n    // from black ops 2\n    float a = pow(8192.0, g);\n    return (a + 2.0) / 8.0 * pow(ndh, a);\n}\nvoid main()\n{\n    vec4 albedoColor = color;\n\n    vec3 eyePos = viewInverse[3].xyz;\n    vec3 V = normalize(eyePos - v_WorldPosition);\n#ifdef VERTEX_COLOR\n    // PENDING\n    #ifdef SRGB_DECODE\n    albedoColor *= sRGBToLinear(v_Color);\n    #else\n    albedoColor *= v_Color;\n    #endif\n#endif\n\n    vec4 albedoTexel = vec4(1.0);\n#ifdef DIFFUSEMAP_ENABLED\n    albedoTexel = texture2D(diffuseMap, v_Texcoord);\n    #ifdef SRGB_DECODE\n    albedoTexel = sRGBToLinear(albedoTexel);\n    #endif\n#endif\n\n#if (LAYER_DIFFUSEMAP_COUNT > 0)\n    for (int _idx_ = 0; _idx_ < LAYER_DIFFUSEMAP_COUNT; _idx_++) {{\n        vec4 texel2 = texture2D(layerDiffuseMap[_idx_], v_Texcoord);\n        #ifdef SRGB_DECODE\n        texel2 = sRGBToLinear(texel2);\n        #endif\n        // source-over blend\n        albedoTexel.rgb = mix(albedoTexel.rgb, texel2.rgb, texel2.a);\n        albedoTexel.a = texel2.a + (1.0 - texel2.a) * albedoTexel.a;\n    }}\n#endif\n    albedoColor *= albedoTexel;\n\n    vec3 baseColor = albedoColor.rgb;\n    albedoColor.rgb = baseColor * (1.0 - metalness);\n    vec3 specFactor = mix(vec3(0.04), baseColor, metalness);\n\n    float g = 1.0 - roughness;\n\n    vec3 N = v_Normal;\n\n#ifdef DOUBLE_SIDE\n    if (dot(N, V) < 0.0) {\n        N = -N;\n    }\n#endif\n\n    float ambientFactor = 1.0;\n\n#ifdef BUMPMAP_ENABLED\n    N = perturbNormalArb(v_WorldPosition, v_Normal, N);\n    // PENDING\n    ambientFactor = dot(v_Normal, N);\n#endif\n\n    vec3 diffuseTerm = vec3(0.0);\n    vec3 specularTerm = vec3(0.0);\n\n    float ndv = clamp(dot(N, V), 0.0, 1.0);\n    vec3 fresnelTerm = F_Schlick(ndv, specFactor);\n\n#ifdef AMBIENT_LIGHT_COUNT\n    for(int _idx_ = 0; _idx_ < AMBIENT_LIGHT_COUNT; _idx_++)\n    {{\n        // Multiply a dot factor to make sure the bump detail can be seen\n        // in the dark side\n        diffuseTerm += ambientLightColor[_idx_] * ambientFactor;\n    }}\n#endif\n\n#ifdef AMBIENT_SH_LIGHT_COUNT\n    for(int _idx_ = 0; _idx_ < AMBIENT_SH_LIGHT_COUNT; _idx_++)\n    {{\n        diffuseTerm += calcAmbientSHLight(_idx_, N) * ambientSHLightColor[_idx_];\n    }}\n#endif\n\n#ifdef DIRECTIONAL_LIGHT_COUNT\n#if defined(DIRECTIONAL_LIGHT_SHADOWMAP_COUNT)\n    float shadowContribsDir[DIRECTIONAL_LIGHT_COUNT];\n    if(shadowEnabled)\n    {\n        computeShadowOfDirectionalLights(v_WorldPosition, shadowContribsDir);\n    }\n#endif\n    for(int _idx_ = 0; _idx_ < DIRECTIONAL_LIGHT_COUNT; _idx_++)\n    {{\n        vec3 L = -directionalLightDirection[_idx_];\n        vec3 lc = directionalLightColor[_idx_];\n\n        vec3 H = normalize(L + V);\n        float ndl = clamp(dot(N, normalize(L)), 0.0, 1.0);\n        float ndh = clamp(dot(N, H), 0.0, 1.0);\n\n        float shadowContrib = 1.0;\n#if defined(DIRECTIONAL_LIGHT_SHADOWMAP_COUNT)\n        if (shadowEnabled)\n        {\n            shadowContrib = shadowContribsDir[_idx_];\n        }\n#endif\n\n        vec3 li = lc * ndl * shadowContrib;\n\n        diffuseTerm += li;\n        specularTerm += li * fresnelTerm * D_Phong(g, ndh);\n    }}\n#endif\n\n\n#ifdef AMBIENT_CUBEMAP_LIGHT_COUNT\n    vec3 L = reflect(-V, N);\n    float rough2 = clamp(1.0 - g, 0.0, 1.0);\n    // FIXME fixed maxMipmapLevel ?\n    float bias2 = rough2 * 5.0;\n    // One brdf lookup is enough\n    vec2 brdfParam2 = texture2D(ambientCubemapLightBRDFLookup[0], vec2(rough2, ndv)).xy;\n    vec3 envWeight2 = specFactor * brdfParam2.x + brdfParam2.y;\n    vec3 envTexel2;\n    for(int _idx_ = 0; _idx_ < AMBIENT_CUBEMAP_LIGHT_COUNT; _idx_++)\n    {{\n        envTexel2 = RGBMDecode(textureCubeLodEXT(ambientCubemapLightCubemap[_idx_], L, bias2), 51.5);\n        // TODO mix ?\n        specularTerm += ambientCubemapLightColor[_idx_] * envTexel2 * envWeight2;\n    }}\n#endif\n\n    gl_FragColor.rgb = albedoColor.rgb * diffuseTerm + specularTerm;\n    gl_FragColor.a = albedoColor.a;\n\n    #ifdef SRGB_ENCODE\n    gl_FragColor = linearTosRGB(gl_FragColor);\n    #endif\n\n#if (LAYER_EMISSIVEMAP_COUNT > 0)\n    for (int _idx_ = 0; _idx_ < LAYER_EMISSIVEMAP_COUNT; _idx_++)\n    {{\n        // PENDING sRGB ?\n        vec4 texel2 = texture2D(layerEmissiveMap[_idx_], v_Texcoord) * emissionIntensity;\n        gl_FragColor.rgb += texel2.rgb;\n    }}\n#endif\n\n    @import ecgl.wireframe.common.fragmentMain\n}\n\n@end"
+	module.exports = "@export ecgl.realistic.vertex\n\nuniform mat4 worldViewProjection : WORLDVIEWPROJECTION;\nuniform mat4 worldInverseTranspose : WORLDINVERSETRANSPOSE;\nuniform mat4 world : WORLD;\n\nuniform vec2 uvRepeat : [1.0, 1.0];\nuniform vec2 uvOffset : [0.0, 0.0];\n\nattribute vec3 position : POSITION;\nattribute vec2 texcoord : TEXCOORD_0;\nattribute vec3 normal : NORMAL;\n\n@import ecgl.wireframe.common.vertexHeader\n\n#ifdef VERTEX_COLOR\nattribute vec4 a_Color : COLOR;\nvarying vec4 v_Color;\n#endif\n\nvarying vec2 v_Texcoord;\n\nvarying vec3 v_Normal;\nvarying vec3 v_WorldPosition;\n\nvoid main()\n{\n    v_Texcoord = texcoord * uvRepeat + uvOffset;\n\n    gl_Position = worldViewProjection * vec4(position, 1.0);\n\n    v_Normal = normalize((worldInverseTranspose * vec4(normal, 0.0)).xyz);\n    v_WorldPosition = (world * vec4(position, 1.0)).xyz;\n\n#ifdef VERTEX_COLOR\n    v_Color = a_Color;\n#endif\n\n    @import ecgl.wireframe.common.vertexMain\n\n}\n\n@end\n\n\n@export ecgl.realistic.fragment\n\n#define LAYER_DIFFUSEMAP_COUNT 0\n#define LAYER_EMISSIVEMAP_COUNT 0\n#define PI 3.14159265358979\n\n#ifdef VERTEX_COLOR\nvarying vec4 v_Color;\n#endif\n\nvarying vec2 v_Texcoord;\nvarying vec3 v_Normal;\nvarying vec3 v_WorldPosition;\n\n#ifdef DIFFUSEMAP_ENABLED\nuniform sampler2D diffuseMap;\n#endif\n\n#if (LAYER_DIFFUSEMAP_COUNT > 0)\nuniform sampler2D layerDiffuseMap[LAYER_DIFFUSEMAP_COUNT];\n#endif\n\n#if (LAYER_EMISSIVEMAP_COUNT > 0)\nuniform float layerEmissionIntensity[LAYER_EMISSIVEMAP_COUNT];\nuniform sampler2D layerEmissiveMap[LAYER_EMISSIVEMAP_COUNT];\n#endif\n\nuniform float emissionIntensity: 1.0;\n\n#ifdef BUMPMAP_ENABLED\nuniform sampler2D bumpMap;\nuniform float bumpScale : 1.0;\n// Derivative maps - bump mapping unparametrized surfaces by Morten Mikkelsen\n//  http://mmikkelsen3d.blogspot.sk/2011/07/derivative-maps.html\n\n// Evaluate the derivative of the height w.r.t. screen-space using forward differencing (listing 2)\n\nvec3 perturbNormalArb(vec3 surfPos, vec3 surfNormal, vec3 baseNormal)\n{\n    vec2 dSTdx = dFdx(v_Texcoord);\n    vec2 dSTdy = dFdy(v_Texcoord);\n\n    float Hll = bumpScale * texture2D(bumpMap, v_Texcoord).x;\n    float dHx = bumpScale * texture2D(bumpMap, v_Texcoord + dSTdx).x - Hll;\n    float dHy = bumpScale * texture2D(bumpMap, v_Texcoord + dSTdy).x - Hll;\n\n    vec3 vSigmaX = dFdx(surfPos);\n    vec3 vSigmaY = dFdy(surfPos);\n    vec3 vN = surfNormal;\n\n    vec3 R1 = cross(vSigmaY, vN);\n    vec3 R2 = cross(vN, vSigmaX);\n\n    float fDet = dot(vSigmaX, R1);\n\n    vec3 vGrad = sign(fDet) * (dHx * R1 + dHy * R2);\n    return normalize(abs(fDet) * baseNormal - vGrad);\n\n}\n#endif\n\nuniform vec4 color : [1.0, 1.0, 1.0, 1.0];\n\nuniform float metalness : 0.0;\nuniform float roughness : 0.5;\n\nuniform mat4 viewInverse : VIEWINVERSE;\n\n#ifdef AMBIENT_LIGHT_COUNT\n@import qtek.header.ambient_light\n#endif\n\n#ifdef AMBIENT_SH_LIGHT_COUNT\n@import qtek.header.ambient_sh_light\n#endif\n\n#ifdef AMBIENT_CUBEMAP_LIGHT_COUNT\n@import qtek.header.ambient_cubemap_light\n#endif\n\n#ifdef DIRECTIONAL_LIGHT_COUNT\n@import qtek.header.directional_light\n#endif\n\n@import qtek.util.srgb\n\n@import qtek.util.rgbm\n\n@import ecgl.wireframe.common.fragmentHeader\n\n@import qtek.plugin.compute_shadow_map\n\n// Fresnel\nvec3 F_Schlick(float ndv, vec3 spec) {\n    return spec + (1.0 - spec) * pow(1.0 - ndv, 5.0);\n}\n\nfloat D_Phong(float g, float ndh) {\n    // from black ops 2\n    float a = pow(8192.0, g);\n    return (a + 2.0) / 8.0 * pow(ndh, a);\n}\nvoid main()\n{\n    vec4 albedoColor = color;\n\n    vec3 eyePos = viewInverse[3].xyz;\n    vec3 V = normalize(eyePos - v_WorldPosition);\n#ifdef VERTEX_COLOR\n    // PENDING\n    #ifdef SRGB_DECODE\n    albedoColor *= sRGBToLinear(v_Color);\n    #else\n    albedoColor *= v_Color;\n    #endif\n#endif\n\n    vec4 albedoTexel = vec4(1.0);\n#ifdef DIFFUSEMAP_ENABLED\n    albedoTexel = texture2D(diffuseMap, v_Texcoord);\n    #ifdef SRGB_DECODE\n    albedoTexel = sRGBToLinear(albedoTexel);\n    #endif\n#endif\n\n#if (LAYER_DIFFUSEMAP_COUNT > 0)\n    for (int _idx_ = 0; _idx_ < LAYER_DIFFUSEMAP_COUNT; _idx_++) {{\n        vec4 texel2 = texture2D(layerDiffuseMap[_idx_], v_Texcoord);\n        #ifdef SRGB_DECODE\n        texel2 = sRGBToLinear(texel2);\n        #endif\n        // source-over blend\n        albedoTexel.rgb = mix(albedoTexel.rgb, texel2.rgb, texel2.a);\n        albedoTexel.a = texel2.a + (1.0 - texel2.a) * albedoTexel.a;\n    }}\n#endif\n    albedoColor *= albedoTexel;\n\n    vec3 baseColor = albedoColor.rgb;\n    albedoColor.rgb = baseColor * (1.0 - metalness);\n    vec3 specFactor = mix(vec3(0.04), baseColor, metalness);\n\n    float g = 1.0 - roughness;\n\n    vec3 N = v_Normal;\n\n#ifdef DOUBLE_SIDE\n    if (dot(N, V) < 0.0) {\n        N = -N;\n    }\n#endif\n\n    float ambientFactor = 1.0;\n\n#ifdef BUMPMAP_ENABLED\n    N = perturbNormalArb(v_WorldPosition, v_Normal, N);\n    // PENDING\n    ambientFactor = dot(v_Normal, N);\n#endif\n\n    vec3 diffuseTerm = vec3(0.0);\n    vec3 specularTerm = vec3(0.0);\n\n    float ndv = clamp(dot(N, V), 0.0, 1.0);\n    vec3 fresnelTerm = F_Schlick(ndv, specFactor);\n\n#ifdef AMBIENT_LIGHT_COUNT\n    for(int _idx_ = 0; _idx_ < AMBIENT_LIGHT_COUNT; _idx_++)\n    {{\n        // Multiply a dot factor to make sure the bump detail can be seen\n        // in the dark side\n        diffuseTerm += ambientLightColor[_idx_] * ambientFactor;\n    }}\n#endif\n\n#ifdef AMBIENT_SH_LIGHT_COUNT\n    for(int _idx_ = 0; _idx_ < AMBIENT_SH_LIGHT_COUNT; _idx_++)\n    {{\n        diffuseTerm += calcAmbientSHLight(_idx_, N) * ambientSHLightColor[_idx_];\n    }}\n#endif\n\n#ifdef DIRECTIONAL_LIGHT_COUNT\n#if defined(DIRECTIONAL_LIGHT_SHADOWMAP_COUNT)\n    float shadowContribsDir[DIRECTIONAL_LIGHT_COUNT];\n    if(shadowEnabled)\n    {\n        computeShadowOfDirectionalLights(v_WorldPosition, shadowContribsDir);\n    }\n#endif\n    for(int _idx_ = 0; _idx_ < DIRECTIONAL_LIGHT_COUNT; _idx_++)\n    {{\n        vec3 L = -directionalLightDirection[_idx_];\n        vec3 lc = directionalLightColor[_idx_];\n\n        vec3 H = normalize(L + V);\n        float ndl = clamp(dot(N, normalize(L)), 0.0, 1.0);\n        float ndh = clamp(dot(N, H), 0.0, 1.0);\n\n        float shadowContrib = 1.0;\n#if defined(DIRECTIONAL_LIGHT_SHADOWMAP_COUNT)\n        if (shadowEnabled)\n        {\n            shadowContrib = shadowContribsDir[_idx_];\n        }\n#endif\n\n        vec3 li = lc * ndl * shadowContrib;\n\n        diffuseTerm += li;\n        specularTerm += li * fresnelTerm * D_Phong(g, ndh);\n    }}\n#endif\n\n\n#ifdef AMBIENT_CUBEMAP_LIGHT_COUNT\n    vec3 L = reflect(-V, N);\n    float rough2 = clamp(1.0 - g, 0.0, 1.0);\n    // FIXME fixed maxMipmapLevel ?\n    float bias2 = rough2 * 5.0;\n    // One brdf lookup is enough\n    vec2 brdfParam2 = texture2D(ambientCubemapLightBRDFLookup[0], vec2(rough2, ndv)).xy;\n    vec3 envWeight2 = specFactor * brdfParam2.x + brdfParam2.y;\n    vec3 envTexel2;\n    for(int _idx_ = 0; _idx_ < AMBIENT_CUBEMAP_LIGHT_COUNT; _idx_++)\n    {{\n        envTexel2 = RGBMDecode(textureCubeLodEXT(ambientCubemapLightCubemap[_idx_], L, bias2), 51.5);\n        // TODO mix ?\n        specularTerm += ambientCubemapLightColor[_idx_] * envTexel2 * envWeight2;\n    }}\n#endif\n\n    gl_FragColor.rgb = albedoColor.rgb * diffuseTerm + specularTerm;\n    gl_FragColor.a = albedoColor.a;\n\n    #ifdef SRGB_ENCODE\n    gl_FragColor = linearTosRGB(gl_FragColor);\n    #endif\n\n#if (LAYER_EMISSIVEMAP_COUNT > 0)\n    for (int _idx_ = 0; _idx_ < LAYER_EMISSIVEMAP_COUNT; _idx_++)\n    {{\n        // PENDING sRGB ?\n        vec4 texel2 = texture2D(layerEmissiveMap[_idx_], v_Texcoord) * layerEmissionIntensity[_idx_];\n        gl_FragColor.rgb += texel2.rgb;\n    }}\n#endif\n\n    @import ecgl.wireframe.common.fragmentMain\n}\n\n@end"
 
 /***/ },
 /* 81 */
@@ -25652,7 +25652,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        viewControl: {
 	            // Small damping for precise control.
-	            damping: 0.1,
+	            // damping: 0.1,
+
 	            // Alpha angle for top-down rotation
 	            // Positive to rotate to top.
 	            alpha: 5,
@@ -25973,11 +25974,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var labelIntervalFuncs = ['x', 'y', 'z'].reduce(function (obj, axisDim) {
 	            var axis = cartesian.getAxis(axisDim);
 	            var axisModel = axis.model;
-	            // TODO Automatic LABEL INTERVAL
 	            obj[axisDim] = firstNotNull(
 	                axisModel.get('axisLabel.interval'),
 	                grid3DModel.get('axisLabel.interval')
 	            );
+	            if (axis.scale.type === 'ordinal') {
+	                // TODO consider label length
+	                if (obj[axisDim] == null || obj[axisDim] == 'auto') {
+	                    obj[axisDim] = Math.floor(axis.scale.getTicks().length / 8);
+	                }
+	            }
 	            return obj;
 	        }, {});
 	        this._faces.forEach(function (face) {
@@ -26538,6 +26544,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this._mouseWheelHandler = this._mouseWheelHandler.bind(this);
 	    this._mouseMoveHandler = this._mouseMoveHandler.bind(this);
 	    this._mouseUpHandler = this._mouseUpHandler.bind(this);
+	    this._pinchHandler = this._pinchHandler.bind(this);
 	    this._update = this._update.bind(this);
 	}, {
 	    /**
@@ -26550,6 +26557,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        zr.on('mousedown', this._mouseDownHandler);
 	        zr.on('globalout', this._mouseUpHandler);
 	        zr.on('mousewheel', this._mouseWheelHandler);
+	        zr.on('pinch', this._pinchHandler);
 
 	        this._decomposeTransform();
 
@@ -26566,6 +26574,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        zr.off('mousemove', this._mouseMoveHandler);
 	        zr.off('mouseup', this._mouseUpHandler);
 	        zr.off('mousewheel', this._mouseWheelHandler);
+	        zr.off('pinch', this._pinchHandler);
 	        zr.off('globalout', this._mouseUpHandler);
 
 	        zr.animation.off('frame', this._update);
@@ -26963,15 +26972,28 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        this._mouseX = e.offsetX;
 	        this._mouseY = e.offsetY;
+
+	        e.event.preventDefault();
 	    },
 
 	    _mouseWheelHandler: function (e) {
 	        if (this._isAnimating()) {
 	            return;
 	        }
-	        e = e.event;
-	        var delta = e.wheelDelta // Webkit
-	                || -e.detail; // Firefox
+	        var delta = e.event.wheelDelta // Webkit
+	                || -e.event.detail; // Firefox
+	        this._zoomHandler(e, delta);
+	    },
+
+	    _pinchHandler: function (e) {
+	        if (this._isAnimating()) {
+	            return;
+	        }
+	        e.event.preventDefault();
+	        this._zoomHandler(e, e.pinchScale > 1 ? 1 : -1);
+	    },
+
+	    _zoomHandler: function (e, delta) {
 	        if (delta === 0) {
 	            return;
 	        }
@@ -27086,7 +27108,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     */
 	    resetOffset: function () {
 	        this._vertexOffset = 0;
-	        this._faceOffset = 0;
+	        this._triangleOffset = 0;
 	    },
 
 	    /**
@@ -27387,7 +27409,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	            if (!this.useNativeLine) {
 	                if (k > 0) {
-	                    var idx3 = this._faceOffset * 3;
+	                    var idx3 = this._triangleOffset * 3;
 	                    var indices = this.indices;
 	                    // 0-----2
 	                    // 1-----3
@@ -27400,7 +27422,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    indices[idx3 + 4] = vertexOffset - 1;
 	                    indices[idx3 + 5] = vertexOffset - 2;
 
-	                    this._faceOffset += 2;
+	                    this._triangleOffset += 2;
 	                }
 	            }
 	            else {
@@ -28469,19 +28491,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.labelElements = [];
 	    var dpr = api.getDevicePixelRatio();
 	    if (axisLabelModel.get('show')) {
-	        var textStyleModel = axisLabelModel.getModel('textStyle');
 	        var labelsCoords = axis.getLabelsCoords();
+	        var categoryData = axisModel.get('data');
 	        // TODO color callback.
-	        var labelColor = firstNotNull(textStyleModel.get('color'), axisLineColor);
-	        var opacity = firstNotNull(textStyleModel.get('opacity'), 1.0);
-	        var strokeColor = textStyleModel.get('borderColor');
-	        var lineWidth = textStyleModel.get('borderWidth');
+	        var textStyleModel = axisLabelModel.getModel('textStyle');
 	        // TODO Automatic interval
 	        var intervalFunc = labelIntervalFunc;
 
 	        var labelMargin = axisLabelModel.get('margin');
 
 	        var labels = axisModel.getFormattedLabels();
+	        var ticks = axis.scale.getTicks();
 	        for (var i = 0; i < labelsCoords.length; i++) {
 	            if (ifIgnoreOnTick(axis, i, intervalFunc)) {
 	                continue;
@@ -28495,13 +28515,36 @@ return /******/ (function(modules) { // webpackBootstrap
 	            p[idx] = p[idx] = tickCoord;
 	            p[otherIdx] = labelMargin;
 
+	            var itemTextStyleModel = textStyleModel;
+	            if (categoryData && categoryData[ticks[i]] && categoryData[ticks[i]].textStyle) {
+	                itemTextStyleModel = new echarts.Model(
+	                    categoryData[ticks[i]].textStyle, textStyleModel, axisModel.ecModel
+	                );
+	            }
+	            var textColor = firstNotNull(itemTextStyleModel.get('color'), axisLineColor);
+	            var opacity = firstNotNull(itemTextStyleModel.get('opacity'), 1.0);
+	            var strokeColor = itemTextStyleModel.get('borderColor');
+	            var lineWidth = itemTextStyleModel.get('borderWidth');
+
 	            var textEl = new echarts.graphic.Text({
 	                style: {
 	                    text: labels[i],
-	                    fill: labelColor,
+	                    fill: typeof textColor === 'function'
+	                        ? textColor(
+	                            // (1) In category axis with data zoom, tick is not the original
+	                            // index of axis.data. So tick should not be exposed to user
+	                            // in category axis.
+	                            // (2) Compatible with previous version, which always returns labelStr.
+	                            // But in interval scale labelStr is like '223,445', which maked
+	                            // user repalce ','. So we modify it to return original val but remain
+	                            // it as 'string' to avoid error in replacing.
+	                            axis.type === 'category' ? labels[i] : axis.type === 'value' ? ticks[i] + '' : ticks[i],
+	                            i
+	                        )
+	                        : textColor,
 	                    stroke: strokeColor,
 	                    lineWidth: lineWidth,
-	                    font: textStyleModel.getFont(),
+	                    font: itemTextStyleModel.getFont(),
 	                    textVerticalAlign: 'top',
 	                    textAlign: 'left'
 	                }
@@ -28758,7 +28801,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 110 */
 /***/ function(module, exports) {
 
-	module.exports = "@export ecgl.lines3D.vertex\n\nuniform mat4 worldViewProjection : WORLDVIEWPROJECTION;\n\nattribute vec3 position: POSITION;\nattribute vec4 a_Color : COLOR;\nvarying vec4 v_Color;\n\nvoid main()\n{\n    gl_Position = worldViewProjection * vec4(position, 1.0);\n    v_Color = a_Color;\n}\n\n@end\n\n@export ecgl.lines3D.fragment\n\nuniform vec4 color : [1.0, 1.0, 1.0, 1.0];\n\nvarying vec4 v_Color;\n\n@import qtek.util.srgb\n\nvoid main()\n{\n#ifdef SRGB_DECODE\n    gl_FragColor = sRGBToLinear(color * v_Color);\n#else\n    gl_FragColor = color * v_Color;\n#endif\n}\n@end\n\n\n@export ecgl.meshLines3D.vertex\n\n// https://mattdesl.svbtle.com/drawing-lines-is-hard\nattribute vec3 position: POSITION;\nattribute vec3 positionPrev;\nattribute vec3 positionNext;\nattribute float offset;\nattribute vec4 a_Color : COLOR;\n\nuniform mat4 worldViewProjection : WORLDVIEWPROJECTION;\nuniform vec4 viewport : VIEWPORT;\nuniform float near : NEAR;\n\nvarying vec4 v_Color;\nvarying float v_Miter;\n\nvarying vec2 v_PosScreen;\n\n@import ecgl.wireframe.common.vertexHeader\n\nvec4 clipNear(vec4 p1, vec4 p2) {\n    float n = (p1.w - near) / (p1.w - p2.w);\n    // PENDING\n    return vec4(mix(p1.xy, p2.xy, n), -near, near);\n}\n\nvoid main()\n{\n    vec4 prevProj = worldViewProjection * vec4(positionPrev, 1.0);\n    vec4 currProj = worldViewProjection * vec4(position, 1.0);\n    vec4 nextProj = worldViewProjection * vec4(positionNext, 1.0);\n\n    if (currProj.w < 0.0) {\n        if (prevProj.w < 0.0) {\n            currProj = clipNear(currProj, nextProj);\n        }\n        else {\n            currProj = clipNear(currProj, prevProj);\n        }\n    }\n\n    vec2 prevScreen = (prevProj.xy / abs(prevProj.w) + 1.0) * 0.5 * viewport.zw;\n    vec2 currScreen = (currProj.xy / abs(currProj.w) + 1.0) * 0.5 * viewport.zw;\n    vec2 nextScreen = (nextProj.xy / abs(nextProj.w) + 1.0) * 0.5 * viewport.zw;\n\n    v_PosScreen = currScreen;\n\n    vec2 dir;\n    float len = offset;\n    // Start point\n    if (position == positionPrev) {\n        dir = normalize(nextScreen - currScreen);\n        v_Miter = 1.0;\n    }\n    // End point\n    else if (position == positionNext) {\n        dir = normalize(currScreen - prevScreen);\n        v_Miter = 1.0;\n    }\n    else {\n        vec2 dirA = normalize(currScreen - prevScreen);\n        vec2 dirB = normalize(nextScreen - currScreen);\n\n        vec2 tanget = normalize(dirA + dirB);\n\n        // TODO, simple miterLimit\n        v_Miter = 1.0 / max(dot(tanget, dirA), 0.5);\n        len *= v_Miter;\n        dir = tanget;\n    }\n\n    dir = vec2(-dir.y, dir.x) * len;\n    currScreen += dir;\n\n    currProj.xy = (currScreen / viewport.zw - 0.5) * 2.0 * abs(currProj.w);\n    gl_Position = currProj;\n\n    v_Color = a_Color;\n\n    @import ecgl.wireframe.common.vertexMain\n}\n@end\n\n\n@export ecgl.meshLines3D.fragment\n\nuniform vec4 color : [1.0, 1.0, 1.0, 1.0];\n\nvarying vec4 v_Color;\nvarying float v_Miter;\n\nvarying vec2 v_PosScreen;\n\n@import ecgl.wireframe.common.fragmentHeader\n\n@import qtek.util.srgb\n\nvoid main()\n{\n#ifdef SRGB_DECODE\n    gl_FragColor = sRGBToLinear(color * v_Color);\n#else\n    gl_FragColor = color * v_Color;\n#endif\n\n    @import ecgl.wireframe.common.fragmentMain\n}\n\n@end"
+	module.exports = "@export ecgl.lines3D.vertex\n\nuniform mat4 worldViewProjection : WORLDVIEWPROJECTION;\n\nattribute vec3 position: POSITION;\nattribute vec4 a_Color : COLOR;\nvarying vec4 v_Color;\n\nvoid main()\n{\n    gl_Position = worldViewProjection * vec4(position, 1.0);\n    v_Color = a_Color;\n}\n\n@end\n\n@export ecgl.lines3D.fragment\n\nuniform vec4 color : [1.0, 1.0, 1.0, 1.0];\n\nvarying vec4 v_Color;\n\n@import qtek.util.srgb\n\nvoid main()\n{\n#ifdef SRGB_DECODE\n    gl_FragColor = sRGBToLinear(color * v_Color);\n#else\n    gl_FragColor = color * v_Color;\n#endif\n}\n@end\n\n\n\n@export ecgl.lines3D.clipNear\n\nvec4 clipNear(vec4 p1, vec4 p2) {\n    float n = (p1.w - near) / (p1.w - p2.w);\n    // PENDING\n    return vec4(mix(p1.xy, p2.xy, n), -near, near);\n}\n\n@end\n\n@export ecgl.lines3D.expandLine\n    vec4 prevProj = worldViewProjection * vec4(positionPrev, 1.0);\n    vec4 currProj = worldViewProjection * vec4(position, 1.0);\n    vec4 nextProj = worldViewProjection * vec4(positionNext, 1.0);\n\n    if (currProj.w < 0.0) {\n        if (prevProj.w < 0.0) {\n            currProj = clipNear(currProj, nextProj);\n        }\n        else {\n            currProj = clipNear(currProj, prevProj);\n        }\n    }\n\n    vec2 prevScreen = (prevProj.xy / abs(prevProj.w) + 1.0) * 0.5 * viewport.zw;\n    vec2 currScreen = (currProj.xy / abs(currProj.w) + 1.0) * 0.5 * viewport.zw;\n    vec2 nextScreen = (nextProj.xy / abs(nextProj.w) + 1.0) * 0.5 * viewport.zw;\n\n    vec2 dir;\n    float len = offset;\n    // Start point\n    if (position == positionPrev) {\n        dir = normalize(nextScreen - currScreen);\n    }\n    // End point\n    else if (position == positionNext) {\n        dir = normalize(currScreen - prevScreen);\n    }\n    else {\n        vec2 dirA = normalize(currScreen - prevScreen);\n        vec2 dirB = normalize(nextScreen - currScreen);\n\n        vec2 tanget = normalize(dirA + dirB);\n\n        // TODO, simple miterLimit\n        float miter = 1.0 / max(dot(tanget, dirA), 0.5);\n        len *= miter;\n        dir = tanget;\n    }\n\n    dir = vec2(-dir.y, dir.x) * len;\n    currScreen += dir;\n\n    currProj.xy = (currScreen / viewport.zw - 0.5) * 2.0 * abs(currProj.w);\n@end\n\n\n@export ecgl.meshLines3D.vertex\n\n// https://mattdesl.svbtle.com/drawing-lines-is-hard\nattribute vec3 position: POSITION;\nattribute vec3 positionPrev;\nattribute vec3 positionNext;\nattribute float offset;\nattribute vec4 a_Color : COLOR;\n\nuniform mat4 worldViewProjection : WORLDVIEWPROJECTION;\nuniform vec4 viewport : VIEWPORT;\nuniform float near : NEAR;\n\nvarying vec4 v_Color;\n\n@import ecgl.wireframe.common.vertexHeader\n\n@import ecgl.lines3D.clipNear\n\nvoid main()\n{\n    @import ecgl.lines3D.expandLine\n\n    gl_Position = currProj;\n\n    v_Color = a_Color;\n\n    @import ecgl.wireframe.common.vertexMain\n}\n@end\n\n\n@export ecgl.meshLines3D.fragment\n\nuniform vec4 color : [1.0, 1.0, 1.0, 1.0];\n\nvarying vec4 v_Color;\n\n@import ecgl.wireframe.common.fragmentHeader\n\n@import qtek.util.srgb\n\nvoid main()\n{\n#ifdef SRGB_DECODE\n    gl_FragColor = sRGBToLinear(color * v_Color);\n#else\n    gl_FragColor = color * v_Color;\n#endif\n\n    @import ecgl.wireframe.common.fragmentMain\n}\n\n@end"
 
 /***/ },
 /* 111 */
@@ -30518,8 +30561,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return val > -RADIAN_EPSILON && val < RADIAN_EPSILON;
 	    };
 
-	    var TIME_REG = /^(?:(\d{4})(?:[-\/](\d{1,2})(?:[-\/](\d{1,2})(?:[T ](\d{1,2})(?::(\d\d)(?::(\d\d)(?:[.,](\d+))?)?)?(?:Z|([\+\-]\d\d):?\d\d)?)?)?)?)?$/; // jshint ignore:line
-	    var TIMEZONE_OFFSET = (new Date()).getTimezoneOffset();
+	    var TIME_REG = /^(?:(\d{4})(?:[-\/](\d{1,2})(?:[-\/](\d{1,2})(?:[T ](\d{1,2})(?::(\d\d)(?::(\d\d)(?:[.,](\d+))?)?)?(Z|[\+\-]\d\d:?\d\d)?)?)?)?)?$/; // jshint ignore:line
+
+	    /**
+	     * @return {number} in minutes
+	     */
+	    number.getTimezoneOffset = function () {
+	        return (new Date()).getTimezoneOffset();
+	    };
 
 	    /**
 	     * @param {string|Date|number} value These values can be accepted:
@@ -30528,9 +30577,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	     *     + only year, month, date: '2012-03', '2012-03-01', '2012-03-01 05', '2012-03-01 05:06',
 	     *     + separated with T or space: '2012-03-01T12:22:33.123', '2012-03-01 12:22:33.123',
 	     *     + time zone: '2012-03-01T12:22:33Z', '2012-03-01T12:22:33+8000', '2012-03-01T12:22:33-05:00',
-	     *     all of which will be treated as they reperent a time in UTC
-	     *     if time zone is not specified.
-	     *   + Or other string format, including:
+	     *     all of which will be treated as local time if time zone is not specified
+	     *     (see <https://momentjs.com/>).
+	     *   + Or other string format, including (all of which will be treated as loacal time):
 	     *     '2012', '2012-3-1', '2012/3/1', '2012/03/01',
 	     *     '2009/6/12 2:00', '2009/6/12 2:05:08', '2009/6/12 2:05:08.123'
 	     *   + a timestamp, which represent a time in UTC.
@@ -30553,6 +30602,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	                return new Date(NaN);
 	            }
 
+	            var timezoneOffset = number.getTimezoneOffset();
+	            var timeOffset = !match[8]
+	                ? 0
+	                : match[8].toUpperCase() === 'Z'
+	                ? timezoneOffset
+	                : +match[8].slice(0, 3) * 60 + timezoneOffset;
+
 	            // match[n] can only be string or undefined.
 	            // But take care of '12' + 1 => '121'.
 	            return new Date(
@@ -30560,7 +30616,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                +(match[2] || 1) - 1,
 	                +match[3] || 1,
 	                +match[4] || 0,
-	                +(match[5] || 0) - (match[8] || 0) * 60 - TIMEZONE_OFFSET,
+	                +(match[5] || 0) - timeOffset,
 	                +match[6] || 0,
 	                +match[7] || 0
 	            );
@@ -30851,15 +30907,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * ISO Date format
 	     * @param {string} tpl
 	     * @param {number} value
-	     * @param {boolean} [isLocal=false] Default use UTC
-	     *  Why default UTC? In most case, time provided by user is
-	     *  understood in UTC. For example, new Date('2012-01-01')
-	     *  or a string '2012-01-01' or a timestamp. So it is
-	     *  recommended to format time in UTC.
-	     *  (see `echarts/util/number.js#parseDate`);
+	     * @param {boolean} [isUTC=false] Default in local time.
+	     *           see `module:echarts/scale/Time`
+	     *           and `module:echarts/util/number#parseDate`.
 	     * @inner
 	     */
-	    formatUtil.formatTime = function (tpl, value, isLocal) {
+	    formatUtil.formatTime = function (tpl, value, isUTC) {
 	        if (tpl === 'week'
 	            || tpl === 'month'
 	            || tpl === 'quarter'
@@ -30870,7 +30923,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 
 	        var date = numberUtil.parseDate(value);
-	        var utc = isLocal ? '' : 'UTC';
+	        var utc = isUTC ? 'UTC' : '';
 	        var y = date['get' + utc + 'FullYear']();
 	        var M = date['get' + utc + 'Month']() + 1;
 	        var d = date['get' + utc + 'Date']();
@@ -30997,8 +31050,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        var textHeight = textRect.height;
 
-	        var lineHeight = textRect.lineHeight;
-	        var halfHeight = height / 2 - textHeight / 2 + lineHeight;
+	        var halfHeight = height / 2 - textHeight / 2;
 
 	        var textAlign = 'left';
 
@@ -31015,12 +31067,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	                break;
 	            case 'top':
 	                x += width / 2;
-	                y -= distance + textHeight - lineHeight;
+	                y -= distance + textHeight;
 	                textAlign = 'center';
 	                break;
 	            case 'bottom':
 	                x += width / 2;
-	                y += height + distance + lineHeight;
+	                y += height + distance;
 	                textAlign = 'center';
 	                break;
 	            case 'inside':
@@ -31045,7 +31097,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                break;
 	            case 'insideBottom':
 	                x += width / 2;
-	                y += height - textHeight - distance + lineHeight;
+	                y += height - textHeight - distance;
 	                textAlign = 'center';
 	                break;
 	            case 'insideTopLeft':
@@ -31060,11 +31112,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	                break;
 	            case 'insideBottomLeft':
 	                x += distance;
-	                y += height - textHeight - distance + lineHeight;
+	                y += height - textHeight - distance;
 	                break;
 	            case 'insideBottomRight':
 	                x += width - distance;
-	                y += height - textHeight - distance + lineHeight;
+	                y += height - textHeight - distance;
 	                textAlign = 'right';
 	                break;
 	        }
@@ -31073,7 +31125,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            x: x,
 	            y: y,
 	            textAlign: textAlign,
-	            textBaseline: 'alphabetic'
+	            textBaseline: 'top'
 	        };
 	    }
 
@@ -37608,6 +37660,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        environment: 'auto',
 
+	        baseColor: '#fff',
+
 	        // Base albedo texture
 	        baseTexture: '',
 
@@ -37633,10 +37687,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	            main: {
 	                // Time, default it will use system time
 	                time: ''
-	            },
-	            // Emission from emissive layers
-	            emission: {
-	                intensity: 1
 	            }
 	        },
 
@@ -37790,6 +37840,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	            });
 	        }
 
+	        earthMesh.material.set('color', graphicGL.parseColor(
+	            globeModel.get('baseColor')
+	        ));
+
 	        earthMesh.scale.set(coordSys.radius, coordSys.radius, coordSys.radius);
 
 	        var diffuseTexture = earthMesh.material.setTextureImage('diffuseMap', globeModel.get('baseTexture'), api, {
@@ -37838,6 +37892,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var lastDistance = coordSys.radius;
 	        var layerDiffuseTextures = [];
 	        var layerEmissiveTextures = [];
+	        var layerEmissionIntensity = [];
 	        echarts.util.each(layers, function (layerOption) {
 	            var layerModel = new echarts.Model(layerOption);
 	            var layerType = layerModel.get('type');
@@ -37854,6 +37909,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	                var blendTo = layerModel.get('blendTo');
 	                if (blendTo === 'emission') {
 	                    layerEmissiveTextures.push(texture);
+	                    layerEmissionIntensity.push(
+	                        retrieve.firstNotNull(layerModel.get('intensity'), 1.0)
+	                    );
 	                }
 	                else { // Default is albedo
 	                    layerDiffuseTextures.push(texture);
@@ -37921,6 +37979,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        earthMaterial.set('layerDiffuseMap', layerDiffuseTextures);
 	        earthMaterial.set('layerEmissiveMap', layerEmissiveTextures);
+	        earthMaterial.set('layerEmissionIntensity', layerEmissionIntensity);
 
 	        var debugWireframeModel = globeModel.getModel('debug.wireframe');
 	        if (debugWireframeModel.get('show')) {
@@ -40861,6 +40920,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var echarts = __webpack_require__(2);
 	var glmatrix = __webpack_require__(15);
 	var vec3 = glmatrix.vec3;
+	var vec2 = glmatrix.vec2;
 
 	function layoutGlobe(seriesModel, coordSys) {
 	    var data = seriesModel.getData();
@@ -40870,13 +40930,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var tangent = vec3.create();
 	    var bitangent = vec3.create();
 	    var halfVector = vec3.create();
+	    var distanceToGlobe = seriesModel.get('distanceToGlobe') || 0;
+	    var radius = coordSys.radius + distanceToGlobe;
 
 	    data.setLayout('lineType', isPolyline ? 'polyline' : 'cubicBezier');
 
+	    var coord0 = [];
+	    var coord1 = [];
 	    data.each(function (idx) {
 	        var itemModel = data.getItemModel(idx);
 	        var coords = (itemModel.option instanceof Array) ?
 	            itemModel.option : itemModel.getShallow('coords', true);
+
+	        vec2.copy(coord0, coords[0]);
+	        vec2.copy(coord1, coords[1]);
+	        coord0[2] = coord1[2] = distanceToGlobe;
 
 	        if (!(coords instanceof Array && coords.length > 0 && coords[0] instanceof Array)) {
 	            throw new Error('Invalid coords ' + JSON.stringify(coords) + '. Lines must have 2d coords array in data item.');
@@ -40887,12 +40955,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        // }
 	        // else {
+
 	            var p0 = pts[0] = vec3.create();
 	            var p1 = pts[1] = vec3.create();
 	            var p2 = pts[2] = vec3.create();
 	            var p3 = pts[3] = vec3.create();
-	            coordSys.dataToPoint(coords[0], p0);
-	            coordSys.dataToPoint(coords[1], p3);
+	            coordSys.dataToPoint(coord0, p0);
+	            coordSys.dataToPoint(coord1, p3);
 	            // Get p1
 	            vec3.normalize(normal, p0);
 	            // TODO p0-p3 is parallel with normal
@@ -40922,7 +40991,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var projDist = vec3.dot(p0, halfVector);
 	            // Angle of halfVector and p1
 	            var cosTheta = vec3.dot(halfVector, p1);
-	            var len = (coordSys.radius - projDist) / cosTheta * 2;
+	            var len = (radius - projDist) / cosTheta * 2;
 
 	            vec3.scaleAndAdd(p1, p0, p1, len);
 	            vec3.scaleAndAdd(p2, p3, p2, len);
@@ -40959,7 +41028,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var p2 = pts[2] = vec3.create();
 	        var p3 = pts[3] = vec3.create();
 
-
 	        coordSys.dataToPoint(coords[0], p0);
 	        coordSys.dataToPoint(coords[1], p3);
 
@@ -40993,7 +41061,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var echarts = __webpack_require__(2);
 	var graphicGL = __webpack_require__(31);
 	var LinesGeometry = __webpack_require__(99);
-	var CurveAnimatingPointsMesh = __webpack_require__(196);
+	var TrailMesh = __webpack_require__(196);
 
 	graphicGL.Shader.import(__webpack_require__(110));
 
@@ -41033,7 +41101,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            geometry: new LinesGeometry()
 	        });
 
-	        this._curveAnimatingPointsMesh = new CurveAnimatingPointsMesh();
+	        this._trailMesh = new TrailMesh();
 	    },
 
 	    render: function (seriesModel, ecModel, api) {
@@ -41055,34 +41123,37 @@ return /******/ (function(modules) { // webpackBootstrap
 	            this._linesMesh.material.shader[methodName]('fragment', 'SRGB_DECODE');
 	        }
 
-	        var curveAnimatingPointsMesh = this._curveAnimatingPointsMesh;
-	        curveAnimatingPointsMesh.stopAnimation();
+	        var trailMesh = this._trailMesh;
+	        trailMesh.stopAnimation();
 
 	        if (seriesModel.get('effect.show')) {
-	            this.groupGL.add(curveAnimatingPointsMesh);
+	            var trailLength = seriesModel.get('effect.trailLength');
+	            var percentScale = trailLength + 1.0;
 
-	            curveAnimatingPointsMesh.setScale(getCoordSysSize(coordSys));
-	            curveAnimatingPointsMesh.setData(data, api);
+	            this.groupGL.add(trailMesh);
+
+	            trailMesh.setScale(getCoordSysSize(coordSys));
+	            trailMesh.setData(data, api);
 
 	            var period = seriesModel.get('effect.period') * 1000;
-	            var delay = curveAnimatingPointsMesh.__percent ? -(period * curveAnimatingPointsMesh.__percent) : 0;
-	            curveAnimatingPointsMesh.__percent = 0;
-	            this._curveEffectsAnimator = curveAnimatingPointsMesh.animate('', { loop: true })
-	                .when(period, {
-	                    __percent: 1
+	            var delay = trailMesh.__percent ? -(period * trailMesh.__percent / percentScale) : 0;
+	            trailMesh.__percent = 0;
+	            this._curveEffectsAnimator = trailMesh.animate('', { loop: true })
+	                .when(period * percentScale, {
+	                    __percent: percentScale
 	                })
 	                .delay(delay)
 	                .during(function () {
-	                    curveAnimatingPointsMesh.setAnimationPercent(curveAnimatingPointsMesh.__percent);
+	                    trailMesh.setAnimationPercent(trailMesh.__percent);
 	                })
 	                .start();
 	        }
 	        else {
-	            this.groupGL.remove(curveAnimatingPointsMesh);
+	            this.groupGL.remove(trailMesh);
 	            this._curveEffectsAnimator = null;
 	        }
 
-	        this._linesMesh.material.blend = this._curveAnimatingPointsMesh.material.blend
+	        this._linesMesh.material.blend = this._trailMesh.material.blend
 	            = seriesModel.get('blendMode') === 'lighter'
 	            ? graphicGL.additiveBlend : null;
 	    },
@@ -41129,7 +41200,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	            data.setItemVisual(idx, 'lineWidth', lineWidth);
 	            maxLineWidth = Math.max(lineWidth, maxLineWidth);
 	        });
-	        var canUseNativeLine = maxLineWidth * dpr <= 1;
+	        var canUseNativeLine = false;
+	        // var canUseNativeLine = maxLineWidth * dpr <= 1;
 	        // Must set useNativeLine before calling any other methods
 	        geometry.useNativeLine = canUseNativeLine;
 
@@ -41184,7 +41256,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var graphicGL = __webpack_require__(31);
 	var spriteUtil = __webpack_require__(189);
 
-	var CurveAnimatingPointsGeometry = __webpack_require__(197);
+	var TrailGeometry = __webpack_require__(197);
 
 	graphicGL.Shader.import(__webpack_require__(198));
 
@@ -41192,27 +41264,29 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    var material = new graphicGL.Material({
 	        shader: new graphicGL.Shader({
-	            vertex: graphicGL.Shader.source('ecgl.curveAnimatingPoints.vertex'),
-	            fragment: graphicGL.Shader.source('ecgl.curveAnimatingPoints.fragment')
+	            vertex: graphicGL.Shader.source('ecgl.trail.vertex'),
+	            fragment: graphicGL.Shader.source('ecgl.trail.fragment')
 	        }),
 	        transparent: true,
 	        depthMask: false
 	    });
-	    material.shader.enableTexture('sprite');
-	    var texture = new graphicGL.Texture2D({
-	        image: document.createElement('canvas')
+
+	    // texture saving the keypoints.
+	    var pointsTexture = new graphicGL.Texture2D({
+	        type: graphicGL.Texture.FLOAT,
+	        minFilter: graphicGL.Texture.NEAREST,
+	        magFilter: graphicGL.Texture.NEAREST,
+	        width: 1024
 	    });
-	    material.set('sprite', texture);
 
 	    return {
-	        geometry: new CurveAnimatingPointsGeometry({
+	        geometry: new TrailGeometry({
 	            dynamic: true
 	        }),
 	        material: material,
+	        culling: false,
 
-	        mode: graphicGL.Mesh.POINTS,
-
-	        _spriteTexture: texture
+	        _pointsTexture: pointsTexture
 	    };
 	}, {
 
@@ -41221,24 +41295,35 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var geometry = this.geometry;
 
 	        var effectModel = seriesModel.getModel('effect');
-	        var symbolType = effectModel.get('symbol');
-	        var size = effectModel.get('symbolSize') * api.getDevicePixelRatio();
+	        var size = effectModel.get('width') * api.getDevicePixelRatio();
+	        var trailLength = effectModel.get('trailLength');
 
-	        spriteUtil.createSymbolSprite(symbolType, size, {
-	            fill: '#fff'
-	        }, this._spriteTexture.image);
-	        this._spriteTexture.dirty();
+	        geometry.trailLength = trailLength;
+	        this.material.set('trailLength', trailLength);
 
 	        geometry.reset();
 
 	        var vertexCount = 0;
+	        var triangleCount = 0;
 	        data.each(function (idx) {
 	            var pts = data.getItemLayout(idx);
-	            vertexCount += geometry.getPointVertexCount(pts[0], pts[1], pts[2], pts[3]);
+	            vertexCount += geometry.getCurveVertexCount(pts[0], pts[1], pts[2], pts[3]);
+	            triangleCount += geometry.getCurveTriangleCount(pts[0], pts[1], pts[2], pts[3]);
 	        });
 	        geometry.setVertexCount(vertexCount);
+	        geometry.setTriangleCount(triangleCount);
 
 	        var colorArr = [];
+	        var textureWidth = this._pointsTexture.width;
+	        var textureHeight = Math.ceil(data.count() / (textureWidth / 4));
+	        var pointsTexture = this._pointsTexture;
+	        pointsTexture.height = textureHeight;
+
+	        if (!(pointsTexture.pixels && pointsTexture.pixels.length === textureWidth * textureHeight * 4)) {
+	            pointsTexture.pixels = new Float32Array(textureWidth * textureHeight * 4);
+	        }
+	        var pixels = pointsTexture.pixels;
+
 	        data.each(function (idx) {
 	            var pts = data.getItemLayout(idx);
 	            var opacity = data.getItemVisual(idx, 'opacity');
@@ -41250,8 +41335,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	            colorArr = graphicGL.parseColor(color, colorArr);
 	            colorArr[3] *= opacity;
 
-	            geometry.addPoint(pts[0], pts[1], pts[2], pts[3], size, colorArr);
+	            var u = idx * 4 % textureWidth / (textureWidth - 1);
+	            var v = Math.floor(idx * 4 / textureWidth) / (textureHeight - 1) || 0;
+
+	            for (var k = 0; k < 4; k++) {
+	                pixels[(idx * 4 + k) * 4] = pts[k][0];
+	                pixels[(idx * 4 + k) * 4 + 1] = pts[k][1];
+	                pixels[(idx * 4 + k) * 4 + 2] = pts[k][2];
+	            }
+
+	            geometry.addCurveTrail(
+	                pts[0], pts[1], pts[2], pts[3], [u, v], size, colorArr
+	            );
 	        });
+
+	        this.material.set('pointsTexture', pointsTexture);
+
+	        pointsTexture.dirty();
 
 	        geometry.dirty();
 	    },
@@ -41273,7 +41373,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Geometry colleting cloud points data
 	 * Points will move on a cubic curve path
 	 *
-	 * @module echarts-gl/chart/lines3D/CurveAnimatingPointsGeometry
+	 * @module echarts-gl/chart/lines3D/CurveTrailGeometry
 	 * @author Yi Shen(http://github.com/pissang)
 	 */
 
@@ -41282,38 +41382,65 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/**
 	 * @constructor
-	 * @alias module:echarts-gl/chart/lines3D/CurveAnimatingPointsGeometry
+	 * @alias module:echarts-gl/chart/lines3D/CurveTrailGeometry
 	 * @extends qtek.StaticGeometry
 	 */
-	var CurveAnimatingPointsGeometry = StaticGeometry.derive(function () {
+	var CurveTrailGeometry = StaticGeometry.derive(function () {
 	    return {
 	        attributes: {
-	            p0: new StaticGeometry.Attribute('p0', 'float', 3, ''),
-	            p1: new StaticGeometry.Attribute('p1', 'float', 3, ''),
-	            p2: new StaticGeometry.Attribute('p2', 'float', 3, ''),
-	            p3: new StaticGeometry.Attribute('p3', 'float', 3, ''),
-	            offset: new StaticGeometry.Attribute('offset', 'float', 1, ''),
-	            size: new StaticGeometry.Attribute('size', 'float', 1, ''),
+	            uv: new StaticGeometry.Attribute('offset', 'float', 2),
+	            currT: new StaticGeometry.Attribute('offset', 'float', 1),
+	            start: new StaticGeometry.Attribute('offset', 'float', 1),
+	            prevT: new StaticGeometry.Attribute('offset', 'float', 1),
+	            nextT: new StaticGeometry.Attribute('offset', 'float', 1),
+	            offset: new StaticGeometry.Attribute('offset', 'float', 1),
 	            color: new StaticGeometry.Attribute('color', 'float', 4, 'COLOR')
 	        },
-	        mainAttribute: 'p0',
+	        mainAttribute: 'uv',
 
 	        scale: 1,
 
-	        _offset: 0
+	        trailLength: 0.3,
+
+	        _vertexOffset: 0,
+	        _triangleOffset: 0
 	    };
 	},
-	/** @lends module:echarts-gl/chart/lines3D/CurveAnimatingPointsGeometry.prototype */
+	/** @lends module:echarts-gl/chart/lines3D/CurveTrailGeometry.prototype */
 	{
 
 	    reset: function () {
-	        this._offset = 0;
+	        this._vertexOffset = 0;
+	        this._triangleOffset = 0;
 	    },
 
 	    setVertexCount: function (vertexCount) {
 	        if (this.vertexCount !== vertexCount) {
 	            for (var name in this.attributes) {
 	                this.attributes[name].init(vertexCount);
+	            }
+
+	            if (vertexCount > 0xffff) {
+	                if (this.indices instanceof Uint16Array) {
+	                    this.indices = new Uint32Array(this.indices);
+	                }
+	            }
+	            else {
+	                if (this.indices instanceof Uint32Array) {
+	                    this.indices = new Uint16Array(this.indices);
+	                }
+	            }
+	        }
+	    },
+
+	    setTriangleCount: function (triangleCount) {
+	        if (this.triangleCount !== triangleCount) {
+	            if (triangleCount === 0) {
+	                this.indices = null;
+	            }
+	            else {
+	                this.indices = this.vertexCount > 0xffff
+	                    ? new Uint32Array(triangleCount * 3) : new Uint16Array(triangleCount * 3);
 	            }
 	        }
 	    },
@@ -41326,12 +41453,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @param {Array.<number>} p3
 	     * @return number
 	     */
-	    getPointVertexCount: function (p0, p1, p2, p3) {
-	        var len = vec3.dist(p0, p1) + vec3.dist(p2, p1) + vec3.dist(p3, p2);
-	        // TODO Consider time
-	        var count = Math.max(Math.min(Math.round((len + 1) / this.scale * 40), 15), 5);
-	        return count;
+	    getCurveVertexCount: function (p0, p1, p2, p3) {
+	        var len = (vec3.dist(p0, p1) + vec3.dist(p2, p1) + vec3.dist(p3, p2)) * this.trailLength;
+	        // TODO Remove magic number.
+	        var count = Math.max(Math.min(Math.round((len + 1) / this.scale * 500), 50), 5);
+	        return count * 2;
 	    },
+
+	    getCurveTriangleCount: function (p0, p1, p2, p3) {
+	        var segCount = this.getCurveVertexCount(p0, p1, p2, p3) / 2 - 1;
+	        return segCount * 2;
+	    },
+
 	    /**
 	     * Add a point
 	     * @param {Array.<number>} p0
@@ -41341,31 +41474,70 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @param {number} size
 	     * @param {Array.<number>} color
 	     */
-	    addPoint: function (p0, p1, p2, p3, size, color) {
+	    addCurveTrail: function (p0, p1, p2, p3, uv, size, color) {
 	        var attributes = this.attributes;
-	        var offset = Math.random();
-	        var count = this.getPointVertexCount(p0, p1, p2, p3);
+	        var start = Math.random();
+	        var t = 0;
+	        var prevT = 0;
+	        var nextT;
+	        var count = this.getCurveVertexCount(p0, p1, p2, p3) / 2;
+	        var offset = this._vertexOffset;
+	        var alpha = color[3];
 	        for (var i = 0; i < count; i++) {
-	            attributes.p0.set(this._offset, p0);
-	            attributes.p1.set(this._offset, p1);
-	            attributes.p2.set(this._offset, p2);
-	            attributes.p3.set(this._offset, p3);
-	            attributes.offset.set(this._offset, offset);
-	            attributes.size.set(this._offset, size * i / count);
-	            attributes.color.set(this._offset++, color);
+	            nextT = t - 1 / count * this.trailLength;
 	            // PENDING
-	            offset += 0.004;
+	            var fadeOutFactor = 1 - Math.pow(i / count, 2);
+	            color[3] = Math.max(alpha * fadeOutFactor, 0.0);
+
+	            for (var k = 0; k < 2; k++) {
+	                attributes.currT.set(offset, t);
+	                attributes.prevT.set(offset, prevT);
+	                attributes.offset.set(offset, (k * 2 - 1) * size / 2 * fadeOutFactor);
+	                attributes.color.set(offset, color);
+	                attributes.uv.set(offset, uv);
+	                attributes.start.set(offset, start);
+
+	                if (i < count - 1) {
+	                    attributes.nextT.set(offset, nextT);
+	                }
+	                else {
+	                    attributes.nextT.set(offset, t);
+	                }
+	                offset++;
+	            }
+
+	            prevT = t;
+	            t = nextT;
+
+	            if (i > 0) {
+	                var idx3 = this._triangleOffset * 3;
+	                var indices = this.indices;
+	                // 0-----2
+	                // 1-----3
+	                // 0->1->2, 1->3->2
+	                indices[idx3] = offset - 4;
+	                indices[idx3 + 1] = offset - 3;
+	                indices[idx3 + 2] = offset - 2;
+
+	                indices[idx3 + 3] = offset - 3;
+	                indices[idx3 + 4] = offset - 1;
+	                indices[idx3 + 5] = offset - 2;
+
+	                this._triangleOffset += 2;
+	            }
 	        }
+
+	        this._vertexOffset = offset;
 	    }
 	});
 
-	module.exports = CurveAnimatingPointsGeometry;
+	module.exports = CurveTrailGeometry;
 
 /***/ },
 /* 198 */
 /***/ function(module, exports) {
 
-	module.exports = "@export ecgl.curveAnimatingPoints.vertex\n\nuniform mat4 worldViewProjection : WORLDVIEWPROJECTION;\nuniform float percent : 0.0;\n\nattribute vec3 p0;\nattribute vec3 p1;\nattribute vec3 p2;\nattribute vec3 p3;\nattribute vec4 color : COLOR;\n\nattribute float offset;\nattribute float size;\n\nvarying vec4 v_Color;\n\nvoid main()\n{\n    float t = mod(offset + percent, 1.0);\n    float onet = 1.0 - t;\n    vec3 position = onet * onet * (onet * p0 + 3.0 * t * p1)\n        + t * t * (t * p3 + 3.0 * onet * p2);\n\n    gl_Position = worldViewProjection * vec4(position, 1.0);\n\n    gl_PointSize = size;\n\n    v_Color = color;\n}\n\n@end\n\n@export ecgl.curveAnimatingPoints.fragment\n\nvarying vec4 v_Color;\n\nuniform sampler2D sprite;\n\nvoid main()\n{\n    gl_FragColor = v_Color;\n\n#ifdef SPRITE_ENABLED\n    gl_FragColor *= texture2D(sprite, gl_PointCoord);\n#endif\n\n}\n@end"
+	module.exports = "@export ecgl.trail.vertex\n\nuniform mat4 worldViewProjection : WORLDVIEWPROJECTION;\nuniform float percent : 0.0;\nuniform float trailLength: 0.3;\n\nuniform sampler2D pointsTexture;\nuniform float textureWidth : 1024;\n\nuniform vec4 viewport : VIEWPORT;\nuniform float near : NEAR;\n\nattribute vec2 uv;\nattribute vec4 color : COLOR;\n\nattribute float start;\nattribute float prevT;\nattribute float currT;\nattribute float nextT;\nattribute float offset;\n\nvarying vec4 v_Color;\n\n@import ecgl.lines3D.clipNear\n\nvec3 getPointAt(in float off, in vec3 p0, in vec3 p1, in vec3 p2, in vec3 p3) {\n    float t = max(min(mod(start + percent, (1.0 + trailLength)) + off, 1.0), 0.0);\n    float onet = 1.0 - t;\n    return onet * onet * (onet * p0 + 3.0 * t * p1)\n        + t * t * (t * p3 + 3.0 * onet * p2);\n}\n\nvoid main()\n{\n    vec2 unit = vec2(1.0 / textureWidth, 0.0);\n    vec3 p0 = texture2D(pointsTexture, uv).rgb;\n    vec3 p1 = texture2D(pointsTexture, uv + unit).rgb;\n    vec3 p2 = texture2D(pointsTexture, uv + unit * 2.0).rgb;\n    vec3 p3 = texture2D(pointsTexture, uv + unit * 3.0).rgb;\n\n    vec3 positionPrev = getPointAt(prevT, p0, p1, p2, p3);\n    vec3 position = getPointAt(currT, p0, p1, p2, p3);\n    vec3 positionNext = getPointAt(nextT, p0, p1, p2, p3);\n\n    @import ecgl.lines3D.expandLine\n\n    gl_Position = currProj;\n\n    v_Color = color;\n}\n\n@end\n\n@export ecgl.trail.fragment\n\nvarying vec4 v_Color;\n\nuniform sampler2D sprite;\n\nvoid main()\n{\n    gl_FragColor = v_Color;\n\n#ifdef SPRITE_ENABLED\n    gl_FragColor *= texture2D(sprite, gl_PointCoord);\n#endif\n\n}\n@end"
 
 /***/ },
 /* 199 */
@@ -41414,11 +41586,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	        polyline: false,
 
 	        effect: {
-	            symbol: 'circle',
 	            show: false,
 	            period: 4,
-	            symbolSize: 4
+	            // Trail width
+	            width: 4,
+	            trailLength: 0.2
 	        },
+
+	        // Distance to the globe, when coordinate system is globe
+	        distanceToGlobe: 0,
 
 	        silent: true,
 
@@ -41461,7 +41637,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    dependencies: ['globe', 'grid3D', 'geo3D'],
 
-	    visualColorAccessPath: 'areaStyle.color',
+	    visualColorAccessPath: 'itemStyle.color',
 
 	    getInitialData: function (option, ecModel) {
 	        var data = option.data;
@@ -41482,21 +41658,21 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	            if (!option.parametric) {
 	                // From surface equation
-	                var surfaceEquation = option.surfaceEquation || {};
-	                var xOpts = surfaceEquation.x || {};
-	                var yOpts = surfaceEquation.y || {};
+	                var equation = option.equation || {};
+	                var xOpts = equation.x || {};
+	                var yOpts = equation.y || {};
 
 	                ['x', 'y'].forEach(function (dim) {
-	                    if (!validateDimension(surfaceEquation[dim])) {
+	                    if (!validateDimension(equation[dim])) {
 	                        if (true) {
-	                            console.error('Invalid surfaceEquation.%s', dim);
+	                            console.error('Invalid equation.%s', dim);
 	                        }
 	                        return;
 	                    }
 	                });
-	                if (typeof surfaceEquation.z !== 'function') {
+	                if (typeof equation.z !== 'function') {
 	                    if (true) {
-	                        console.error('surfaceEquation.z needs to be function');
+	                        console.error('equation.z needs to be function');
 	                    }
 	                    return;
 	                }
@@ -41506,28 +41682,28 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    for (var x = xOpts.min; x < xOpts.max + xOpts.step * 0.999; x += xOpts.step) {
 	                        var x2 = echarts.number.round(Math.min(x, xOpts.max), xPrecision);
 	                        var y2 = echarts.number.round(Math.min(y, yOpts.max), yPrecision);
-	                        var z = surfaceEquation.z(x2, y2);
+	                        var z = equation.z(x2, y2);
 	                        data.push([x2, y2, z]);
 	                    }
 	                }
 	            }
 	            else {
-	                var parametricSurfaceEquation = option.parametricSurfaceEquation || {};
-	                var uOpts = parametricSurfaceEquation.u || {};
-	                var vOpts = parametricSurfaceEquation.v || {};
+	                var parametricEquation = option.parametricEquation || {};
+	                var uOpts = parametricEquation.u || {};
+	                var vOpts = parametricEquation.v || {};
 
 	                ['u', 'v'].forEach(function (dim) {
-	                    if (!validateDimension(parametricSurfaceEquation[dim])) {
+	                    if (!validateDimension(parametricEquation[dim])) {
 	                        if (true) {
-	                            console.error('Invalid parametricSurfaceEquation.%s', dim);
+	                            console.error('Invalid parametricEquation.%s', dim);
 	                        }
 	                        return;
 	                    }
 	                });
 	                ['x', 'y', 'z'].forEach(function (dim) {
-	                    if (typeof parametricSurfaceEquation[dim] !== 'function') {
+	                    if (typeof parametricEquation[dim] !== 'function') {
 	                        if (true) {
-	                            console.error('parametricSurfaceEquation.%s needs to be function', dim);
+	                            console.error('parametricEquation.%s needs to be function', dim);
 	                        }
 	                        return;
 	                    }
@@ -41540,9 +41716,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    for (var u = uOpts.min; u < uOpts.max + uOpts.step * 0.999; u += uOpts.step) {
 	                        var u2 = echarts.number.round(Math.min(u, uOpts.max), uPrecision);
 	                        var v2 = echarts.number.round(Math.min(v, vOpts.max), vPrecision);
-	                        var x = parametricSurfaceEquation.x(u2, v2);
-	                        var y = parametricSurfaceEquation.y(u2, v2);
-	                        var z = parametricSurfaceEquation.z(u2, v2);
+	                        var x = parametricEquation.x(u2, v2);
+	                        var y = parametricEquation.y(u2, v2);
+	                        var z = parametricEquation.z(u2, v2);
 	                        data.push([x, y, z, u2, v2]);
 	                    }
 	                }
@@ -41585,7 +41761,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        /**
 	         * Generate surface data from z = f(x, y) equation
 	         */
-	        surfaceEquation: {
+	        equation: {
 	            // [min, max, step]
 	            x: {
 	                min: -1,
@@ -41600,7 +41776,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            z: null
 	        },
 
-	        parametricSurfaceEquation: {
+	        parametricEquation: {
 	            // [min, max, step]
 	            u: {
 	                min: -1,
@@ -41618,7 +41794,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            z: null
 	        },
 
-	        areaStyle: {
+	        itemStyle: {
 	            // Color
 	        }
 	    }
@@ -44742,7 +44918,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var textureWidth = this._positionTex.width;
 	    var textureHeight = this._positionTex.height;
 	    uv[0] = (nodeIndex % textureWidth) / (textureWidth - 1);
-	    uv[1] = Math.floor(nodeIndex / textureWidth) / (textureHeight - 1);
+	    uv[1] = Math.floor(nodeIndex / textureWidth) / (textureHeight - 1) || 0;
 	    return uv;
 	};
 
