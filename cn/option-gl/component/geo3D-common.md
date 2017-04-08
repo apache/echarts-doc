@@ -243,7 +243,7 @@ ${componentName} 中三维图形的视觉属性，包括颜色，透明度，描
 
 #${prefix|default('##')} borderWidth(number) = ${defaultBorderWidth|default(0)}
 
-图形描边。加上描边后可以更清晰的区分每个区域。如下图：
+图形描边的宽度。加上描边后可以更清晰的区分每个区域。如下图：
 
 ![](~geo-border.png)
 
