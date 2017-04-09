@@ -156,7 +156,7 @@ chart.setOption({
 
 ### intensity(number) = 1
 
-在 [blendTo](~globe.blendTo) 为`'emission'`时有效，用于设置自发光的强度。
+混合的强度。
 
 ### shading(string) = 'lambert'
 

@@ -41,9 +41,6 @@ ${name}标记的大小，可以设置成诸如 `10` 这样单一的数字，也�
 
 距离 geo3D 的距离，在 [coordinateSystem](~series-scatter3D.coordinateSystem) 为`'globe'`时有效。
 
-## blendMode(string) = 'source-over'
-
-混合模式，目前支持`'source-over'`，`'lighter'`，默认使用的`'source-over'`是通过 alpha 混合，而`'lighter'`是叠加模式，该模式可以让数据集中的区域因为叠加而产生高亮的效果。
 
 ## itemStyle(Object)
 
@@ -76,8 +73,6 @@ ${name}标记的大小，可以设置成诸如 `10` 这样单一的数字，也�
     prefix="###"
 )}}
 
-{{ use: partial-zlevel }}
-
 ## data(Array)
 
 三维散点图数据数组。数组每一项为一个数据。通常这个数据是用数组存储数据的每个属性/维度。例如下面：
@@ -98,6 +93,10 @@ data: [
 {{ use: common-data-option-desc() }}
 
 
+{{ use: partial-blend-mode() }}
+
+{{ use: partial-zlevel }}
+
 
 
 
@@ -115,7 +114,6 @@ data: [
 
 #${prefix|default('##')} borderColor(string)='#fff'
 图形描边颜色。
-
 
 
 {{ target: partial-label-scatter3D }}
