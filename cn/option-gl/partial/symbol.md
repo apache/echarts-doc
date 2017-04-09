@@ -5,7 +5,7 @@
 
 {{ use: partial-icon }}
 
-#${prefix|default('#')} symbolSize(number|Array|Function) = ${defaultSymbolSize}
+#${prefix|default('#')} symbolSize(number|Array|Function) = ${defaultSymbolSize|default(10)}
 
 ${name}标记的大小，可以设置成诸如 `10` 这样单一的数字，也可以用数组分开表示宽和高，例如 `[20, 10]` 表示标记宽为`20`，高为`10`。
 
