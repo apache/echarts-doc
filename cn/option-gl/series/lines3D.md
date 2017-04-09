@@ -104,10 +104,4 @@ data: [
 
 {{ use: partial-zlevel }}
 
-
-
-
-
-{{ use: partial-zlevel }}
-
 {{ use: partial-silent }}
