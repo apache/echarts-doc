@@ -62,7 +62,7 @@
 {{ use: partial-view-control(
     componentType='grid3D',
     componentName='三维笛卡尔坐标系',
-    defaultAlpha=5,
+    defaultAlpha=20,
     defaultBeta=40,
     defaultDistance=200,
     defaultMinDistance=40,
