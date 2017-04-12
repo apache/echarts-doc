@@ -58,7 +58,7 @@ Please refer to [parallel.axisExpandable](parallel.axisExpandable) for more info
 
 Optional values:
 + `'click'`: Trigger expanding when mouse clicking.
-+ `'mousemove'`: Trigger expanding when mouse hovering. When use `'mousemove'`, it is suggested that close [parallelAxis.animation](~parallelAxis.animation) and [series-parallel.animation](~series-parallel.animation).
++ `'mousemove'`: Trigger expanding when mouse hovering.
 
 
 ## parallelAxisDefault(Object)

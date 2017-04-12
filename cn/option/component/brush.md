@@ -176,8 +176,7 @@ myChart.dispatchAction({
 {
     borderWidth: 1,
     color: 'rgba(120,140,180,0.3)',
-    borderColor: 'rgba(120,140,180,0.8)',
-    width: null
+    borderColor: 'rgba(120,140,180,0.8)'
 },
 ```
 
