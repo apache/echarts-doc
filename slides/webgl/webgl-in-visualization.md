@@ -75,6 +75,8 @@ Note:
 
 ---
 
+<!--.slide: data-background-video="./asset/video/echarts.mp4" data-background-opacity="0.4" -->
+
 ## ECharts 是什么
 
 + 拥有 <span style="color: #ffbc00">17k star</span> 的开源前端可视化库
@@ -524,11 +526,19 @@ Note:
 
 程序生成有一个好处，就是它不用加载模型资源，因为 Web 端往往网速会成为影响用户体验的一大因素，如果要很高质量的模型，就需要加载很大的模型，但是可能很多人等不及加载完就把网页关了，如果程序生成就可以控制模型的精度而不用担心加载时间。
 
-下面主要讲如何在几个常见的涉及面绘制的三维图表中构建三角面片。
-
 ----
 
 ## 曲面图
+
+<img data-src="asset/img/surface-index.png" style="background: none;box-shadow: none;" alt="">
+
+Note:
+我们先拿曲面图做个例子。
+
+这边 0 到 24 个点是用户输入的 25 个数据，而我们需要做的是根据这 25 个数据构建出一个曲面，那么怎么做呢
+
+----
+
 
 + 邻接的四个顶点作为一个四边面 <!-- .element: class="fragment highlight-current-blue" -->
 
@@ -539,7 +549,7 @@ Note:
 <img data-src="asset/img/triangle.png" style="background: none;box-shadow: none;" alt="">
 
 Note:
-这是用散点图表示的曲面函数，我们选择其中四个相邻的顶点先组成四边面。然后为四边面的每个顶点分配重心坐标，这个重心坐标用于网格的绘制。
+我们选择其中四个相邻的顶点先组成四边面。然后为四边面的每个顶点分配重心坐标，这个重心坐标用于网格的绘制。
 
 ----
 
@@ -572,6 +582,9 @@ Note:
 
 <iframe data-src="asset/ec-demo/parametric-surface.html" class="fullscreen" frameborder="0"></iframe>
 
+Note:
+这也是数据可视化有魅力的地方。能够从你的数据，然后几句代码就能生成一副有艺术感的图片，或者有意思的图形
+
 ----
 
 ## Geo3D
@@ -581,6 +594,9 @@ Note:
 + Triangulation <!-- .element: class="fragment highlight-current-blue" -->
 
 + Extrude <!-- .element: class="fragment highlight-current-blue" -->
+
+Note:
+还有一个构建面的例子是三维的地图，我们需要将输入的 GeoJSON 转成 Mesh
 
 ----
 
@@ -684,8 +700,6 @@ Note:
 现在游戏里基本上普遍使用了基于物理的渲染，
 单一光源的问题是该亮的地方不亮，该暗的地方不暗，画面过于平坦
 
-TODO 贴图
-
 ----
 
 + HDR 的环境光照贴图 <!-- .element: class="fragment highlight-current-blue" -->
@@ -693,6 +707,16 @@ TODO 贴图
 + 对环境光照的积分预计算（prefilter）<!-- .element: class="fragment highlight-current-blue" -->
 
 + 能量守恒的光照公式 <!-- .element: class="fragment highlight-current-blue" -->
+
+<img width="40%" data-src="asset/img/canyon.jpg" alt="">
+<img width="40%" data-src="asset/img/canyon-convolve.jpg" alt="">
+
+Note:
+一般基于物理的渲染要做到这么几点，首先它需要一张 HDR 格式的环境光照贴图。
+
+然后因为光照计算需要做积分，如果是实时做的话就会性能很差，所以一般会对这张环境光照的贴图做积分的预计算。得到右边这张看起来像是被模糊了的图。这种预计算的卷积可能不是完全正确的结果，但是足够以假乱真了。实际上实时渲染基本上就是在用各种 trick 去实现以假乱真的效果。
+
+Ok，然后最后我们再使用一个能量守恒的光照公式应用到像素上。
 
 ----
 
@@ -702,7 +726,8 @@ TODO 贴图
 <img style="width:45%" data-src="asset/img/buildings-shadow.jpg" alt="">
 
 Note:
-TODO twentytwenty
+在图中这样建筑可视化的示例中，阴影是用来增强空间感的一个非常重要的手段，如果没有阴影，我们可能会觉得这些建筑就是一片连起来的，建筑也是浮在地面上的感觉。
+那么软阴影又是什么，这个软的意思就是阴影的边缘要柔和，不能太硬，这个基本上需要靠很多采样才能解决。
 
 ----
 
@@ -712,7 +737,10 @@ TODO twentytwenty
 <img style="width:45%" data-src="asset/img/buildings-ao.jpg" alt="">
 
 Note:
-但是阴影只能提供单一的单光源的投影，一个点受到的光照也只能二元化的判断有阴影和无阴影，但是现实中显然没这么简单，显示中可能一些角落的区域受到的光少导致非常暗。这个我们叫环境光遮蔽
+
+光有阴影还不够。
+
+因为阴影只能提供单一的单光源的投影，一个点受到的光照也只能二元化的判断有阴影和无阴影，但是现实中显然没这么简单，显示中可能一些角落的区域受到的光少导致非常暗。这个我们叫环境光遮蔽
 
 环境光遮蔽是计算一个点上面能够受到多少环境光，被其它物体包围得越多的地方就会越暗。它作为阴影的补充可以让整个画面更有层次感。防止出现之前说的暗的地方不够暗的情况。
 一般游戏里都采用能够实时运算的屏幕空间环境光遮蔽。
@@ -724,16 +752,18 @@ Note:
 <!--.slide: data-background="./asset/img/buildings-dof.jpg" -->
 
 Note:
-景深可以让镜头效果显得更真实，而且像这个 GeoJSON 的粒子可以有一种微型模型的感觉。
+景深是平时摄影的时候非常常见的一个效果，一般摄影时在镜头的聚焦区域图像会比较锐利，有德味。而聚焦区域外的区域则会变得很模糊，这段聚焦的区域我们叫景深。
+
+我们在画面中加上景深也可以让镜头效果显得更真实，像这个 GeoJSON 的例子可以有一种微型模型的感觉。
 
 ----
 
-<h2 style="text-shadow: 0 0 10px #000">Bokeh</h2>
-
 <!--.slide: data-background="./asset/img/bokeh.jpg" -->
 
+<h2 style="text-shadow: 0 0 10px #000">Bokeh</h2>
+
 Note:
-一般相机拍出来的景深还有一个很重要的效果就是这个散景效果，就是背后这些特别亮的地方会有光圈孔的形状，但是现在实时的渲染里要实现这样的散景效果开销都比较大。需要在这个 disk 里采很多样。
+一般相机拍出来的景深还有一个很重要的效果就是这个散景效果，就是背后这些特别亮的地方会有光斑的形状，但是现在实时的渲染里要实现这样的散景效果开销都比较大。需要在这个 disk 里采很多样。
 
 
 ----
@@ -918,6 +948,8 @@ Note:
 ## WebGL 中实现力引导布局
 
 <img src="asset/img/gpgpu.png" style="background: none;box-shadow: none;" />
+
+Note:
 
 
 ----

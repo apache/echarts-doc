@@ -43,6 +43,9 @@
                 zAxis3D: {},
                 grid3D: {
                     show: false,
+                    viewControl: {
+                        distance: 100
+                    },
                     postEffect: {
                         enable: true,
                         SSAO: {
@@ -50,7 +53,8 @@
                             radius: 4
                         },
                         depthOfField: {
-                            enable: true
+                            enable: true,
+                            focalDistance: 100
                         }
                     },
                     light: {
