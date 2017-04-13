@@ -106,6 +106,56 @@
 
 环境光遮蔽的强度。值越大颜色越深。
 
+##${prefix|default('#')} colorCorrection(Object)
+
+颜色纠正和调整。类似 Photoshop 中的 Color Adjustments
+
+下图同个场景调整为冷色系和暖色系的区别。
+
+<div class="twentytwenty-container" style="width: 700px;">
+    <img src="documents/asset/gl/img/buildings-cold.jpg" width="100%" title="Cold">
+    <img src="documents/asset/gl/img/buildings-warm.jpg" width="100%" title="Warm">
+</div>
+
+
+###${prefix|default('#')} enable(boolean) = true
+是否开启颜色纠正
+
+###${prefix|default('#')} lookupTexture(string|HTMLImageElement|HTMLCanvasElement)
+颜色查找表，推荐使用。
+
+颜色查找表是一张像下面这样的纹理图片。
+
+![200xauto](~lookup.png)
+
+这张是基础的查找表图片，你可以直接拿来使用，为了方便将场景色调调整你想要的效果，你可以将场景截图后在 Photoshop 等图像处理软件中调整颜色到想要的效果，然后将相同的调整应用到上面这张查找表的图片上。
+
+比如调成冷色调后，查找表的纹理图片就会成为下面这样：
+
+![200xauto](~crispwinter.png)
+
+然后那这张纹理图片就作为该配置项的值，就可以得到相同的你在 Photoshop 上的效果了。
+
+当然如果你只是想得到一张截图，完全不用再这样折腾，但是如果你想在能实时交互的作品中也能方便的调整到理想的色调，这个就非常有用了。
+
+###${prefix|default('#')} exposure(number) = 0
+
+画面的曝光。
+
+###${prefix|default('#')} brightness(number) = 0
+
+画面的亮度。
+
+###${prefix|default('#')} contrast(number) = 1
+
+画面的对比度。
+
+###${prefix|default('#')} saturation(number) = 1
+
+画面的饱和度。
+
+
+
 ##${prefix|default('#')} FXAA(Object)
 
 在开启 [postEffect](~${componentType}.postEffect) 后，WebGL 默认的 MSAA 会无法使用。这时候通过 FXAA 可以廉价方便的解决抗锯齿的问题，FXAA 会对一些场景的边缘部分进行模糊从而解决锯齿的问题，这在一些场景上效果还不错，但是在 echarts-gl 中，需要保证很多文字和线条边缘的锐利清晰，因此 FXAA 并不是那么适用。这时候我们可以通过如下设置更高的`devicePixelRatio`来使用超采样
