@@ -1,6 +1,6 @@
 {{target: partial-zlevel}}
 
-#${prefix|default("#")} zlevel(number) = -10
+#${prefix|default("#")} zlevel(number) = ${defaultZLevel|default(-10)}
 
 组件所在的层。
 

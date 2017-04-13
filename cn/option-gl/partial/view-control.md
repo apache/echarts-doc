@@ -10,7 +10,15 @@
 
 ##${prefix|default('#')} damping(number) = ${defaultDamping|default(0.8)}
 
-鼠标进行旋转，缩放等操作时的迟滞因子，在大于 0 的时候鼠标在停止操作后，视角仍会因为一定的惯性继续运动（旋转和缩放），
+鼠标进行旋转，缩放等操作时的迟滞因子，在大于 0 的时候鼠标在停止操作后，视角仍会因为一定的惯性继续运动（旋转和缩放）。
+
+##${prefix|default('#')} rotateSensitivity(number) = ${defaultRotateSensitivitydefault(1)}
+
+旋转操作的灵敏度，值越大越灵敏。默认为`${defaultRotateSensitivitydefault(1)}`
+
+##${prefix|default('#')} zoomSensitivity(number) = ${defaultZoomSensitivitydefault(1)}
+
+缩放操作的灵敏度，值越大越灵敏。默认为`${defaultRotateSensitivitydefault(1)}`
 
 ##${prefix|default('#')} autoRotateAfterStill(number) = 3
 

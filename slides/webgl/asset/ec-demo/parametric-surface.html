@@ -11,9 +11,8 @@
         <script src="../common/echarts.min.js"></script>
         <script src="../common/jquery.min.js"></script>
         <script src="../common/echarts-gl.js"></script>
-        <script src="../common/simplex.js"></script>
+        <script src="../texture/canyon.hdr.js"></script>
         <script>
-            // http://xahlee.info/surface/breather_p/breather_p.html
             var chart = echarts.init(document.getElementById('main'));
 
             var sin = Math.sin;
@@ -24,96 +23,84 @@
             var sinh = Math.sinh;
             var PI = Math.PI;
 
+            var aa = 0.4;
+            var r = 1 - aa * aa;
+            var w = sqrt(r);
+
             chart.setOption({
-                title: {
-                    text: '分帧排序半透明的三角面',
-                    subtext: 'Triangles 400k',
-                    left: 'center',
-                    textStyle: {
-                        color: '#fff',
-                        fontSize: 26
-                    },
-                    subtextStyle: {
-                        color: '#fff',
-                        fontSize: 20
-                    }
-                },
+                tooltip: {},
                 visualMap: {
                     show: false,
                     dimension: 2,
-                    min: -4,
-                    max: 4,
+                    min: -3,
+                    max: 3,
                     inRange: {
-                        color: ['#1710c0', '#0b9df0', '#00fea8', '#00ff0d', '#f5f811', '#f09a09', '#fe0300']
+                        color: ['#313695', '#4575b4', '#74add1', '#abd9e9', '#e0f3f8', '#ffffbf', '#fee090', '#fdae61', '#f46d43', '#d73027', '#a50026']
                     }
                 },
-                xAxis3D: {
-                    type: 'value'
-                },
-                yAxis3D: {
-                    type: 'value'
-                },
-                zAxis3D: {
-                    type: 'value'
-                },
+                xAxis3D: {},
+                yAxis3D: {},
+                zAxis3D: {},
                 grid3D: {
-                    axisPointer: {
-                        show: false
-                    },
-                    axisLine: {
-                        lineStyle: {
-                            color: '#fff'
+                    show: false,
+                    postEffect: {
+                        enable: true,
+                        SSAO: {
+                            enable: true,
+                            radius: 4
+                        },
+                        depthOfField: {
+                            enable: true
                         }
                     },
-                    temporalSuperSampling: {
-                        enable: true
-                    },
-                    viewControl: {
-                        // autoRotate: true
-                        // projection: 'orthographic'
+                    light: {
+                        main: {
+                            intensity: 2,
+                            shadow: true
+                        },
+                        ambient: {
+                            intensity: 0
+                        },
+                        ambientCubemap: {
+                            texture: canyonUrl,
+                            exposure: 2,
+                            diffuseIntensity: 0.2,
+                            specularIntensity: 1
+                        }
                     }
                 },
                 series: [{
                     type: 'surface',
                     parametric: true,
-                    shading: 'lambert',
                     silent: true,
                     wireframe: {
                         show: false
                     },
-                    itemStyle: {
-                        opacity: 0.5
+                    shading: 'realistic',
+                    realisticMaterial: {
+                        roughness: 0.3,
+                        metalness: 0
                     },
-                    // shading: 'albedo',
                     parametricEquation: {
                         u: {
                             min: -13.2,
                             max: 13.2,
-                            step: 0.1
+                            step: 0.2
                         },
                         v: {
                             min: -37.4,
                             max: 37.4,
-                            step: 0.1
+                            step: 0.2
                         },
                         x: function (u, v) {
-                            var aa = 0.4;
-                            var r = 1 - aa * aa;
-                            var w = sqrt(r);
                             var denom = aa * (pow(w * cosh(aa * u), 2) + aa * pow(sin(w * v), 2))
                             return -u + (2 * r * cosh(aa * u) * sinh(aa * u) / denom);
                         },
                         y: function (u, v) {
-                            var aa = 0.4;
-                            var r = 1 - aa * aa;
-                            var w = sqrt(r);
                             var denom = aa * (pow(w * cosh(aa * u), 2) + aa * pow(sin(w * v), 2))
                             return 2 * w * cosh(aa * u) * (-(w * cos(v) * cos(w * v)) - (sin(v) * sin(w * v))) / denom;
                         },
                         z: function (u, v) {
-                            var aa = 0.4;
-                            var r = 1 - aa * aa;
-                            var w = sqrt(r);
                             var denom = aa * (pow(w * cosh(aa * u), 2) + aa * pow(sin(w * v), 2))
                             return  2 * w * cosh(aa * u) * (-(w * sin(v) * cos(w * v)) + (cos(v) * sin(w * v))) / denom
                         }
