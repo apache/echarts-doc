@@ -145,25 +145,27 @@ ECharts GL 提供了一系列诸如[景深](http://localhost/echarts-doc/public/
 
 <img src="{{ site.url }}/images/post/2017-04-12/gpu-layout-perf.png" width="400px" alt="">
 
-下面是对这个关系图实时布局的视频。
+以及对这个关系图实时布局的视频。
 
 <video controls width="100%" src="{{ site.url }}/images/post/2017-04-12/graphGL.mp4"></video>
 
 
-下面对`2500`个节点的网格图进行 GPU 布局的例子（只支持 PC 端）。
+`2500`个节点的网格图使用 GPU 布局的例子（只支持 PC 端）。
 
 <div style="width: 100%; height: 400px; background: #111;" class="ec-lazy" data-src="http://gallery.echartsjs.com/view.html?cid=xrJchBL9ag"></div>
 
-特别感谢 Gephi 提供了 Force Atlas2 这样在大规模网络上能够有稳定优良的布局结果的算法。
+这里特别感谢 Gephi 提供了 Force Atlas2 这样在大规模关系数据上能够有稳定优良的布局结果的算法。
 
 
 ## 五、与 ECharts 交互组件的结合
 
-ECharts GL 中提供的系列和组件能够和 ECharts 中的大部分组件，例如 [visualMap](http://echarts.baidu.com/option.html#visualMap)，[legend](http://echarts.baidu.com/option.html#legend)，[tooltip](http://echarts.baidu.com/option.html#tooltip) 等组合使用。
+ECharts GL 作为一个扩展，并不是独立的，它提供的系列和组件能够和 ECharts 中的大部分组件，例如 ，， 组合使用。你可以使用 [visualMap](http://echarts.baidu.com/option.html#visualMap) 组件对 GL 中的系列进行颜色，大小，不透明的编码，可以用 [tooltip](http://echarts.baidu.com/option.html#tooltip) 组件显示 GL 中图形的数据信息，也可以用 [legend](http://echarts.baidu.com/option.html#legend) 筛选出想要展示的系列，等等等等。
 
 例如下面这个例子用 [visualMap](http://echarts.baidu.com/option.html#visualMap) 组件对柱状图做了颜色的映射，而且能够通过控件筛选出区间内的数据
 
 <div style="width: 100%; height: 400px; background: #111;" class="ec-lazy" data-src="http://gallery.echartsjs.com/view.html?cid=xSyMekmcTx"></div>
+
+当然除此之外，你也可以在一个实例里任意混搭使用 ECharts GL 的组件以及 ECharts 的组件。
 
 ## 六、移动端兼容
 
