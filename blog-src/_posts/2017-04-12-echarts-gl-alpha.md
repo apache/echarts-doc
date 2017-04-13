@@ -10,9 +10,9 @@ image:
 
 距离 ECharts-X 最近一个版本已经过去了两年多时间，期间我们不断被开发者在各种渠道询问 ECharts-X 为什么还不升级新版本，是不是不再维护了等等，对于这些问题我们只能回答我们还没准备好。这两年时间尽管我们很少直接开发 ECharts-X，但是这期间的工作，像 ECharts 3 的架构大改动和后续版本的迭代升级，以及其它 WebGL 产品的开发，都是不断对新版本架构和技术上的积累。现在我们终于可以说我们准备得差不多了，ECharts-X 的下一代，ECharts-GL 发布 1.0 alpha。
 
-ECharts GL 是 ECharts 的 WebGL 扩展，其中提供了三维散点图，飞线图，柱状图，曲面图，地球等多种三维可视化方式。并且增加 `scatterGL`，`graphGL` 系列类型用于二维的散点图，关系图的加速绘制和布局。
+[ECharts GL](https://github.com/ecomfe/echarts-gl) 是 ECharts 的 WebGL 扩展，其中提供了三维散点图，飞线图，柱状图，曲面图，地球等多种三维可视化方式。并且增加 `scatterGL`，`graphGL` 系列类型用于二维的散点图，关系图的加速绘制和布局。
 
-先来一张 Gallery 上 ECharts GL 的示例图片集。
+先来一张 Gallery 上 [ECharts GL](https://github.com/ecomfe/echarts-gl) 的示例图片集。
 
 ![]({{ site.url }}/images/post/2017-04-12/demos.jpg)
 
@@ -26,7 +26,7 @@ ECharts GL 是 ECharts 的 WebGL 扩展，其中提供了三维散点图，飞�
 
 大家用过 ECharts-X 的话，肯定会被其繁琐的引入方式困扰过，甚至可能因为尝试了很多次都没办法正确引入而导致放弃。
 
-ECharts-GL 的引入方式大大的简化了，在标签引入的环境下，只需要在引入`echarts`文件后再引入`echarts-gl`的构建文件。
+ECharts-GL 的引入方式大大的简化了，在标签引入的环境下。你可以从 [GitHub](https://github.com/ecomfe/echarts-gl/tree/master/dist) 上获取 ECharts GL 后直接引入构建好的文件.
 
 ```js
 <script data-src="echarts/dist/echarts.min.js"></script>
