@@ -91,7 +91,7 @@
 
 环境光遮蔽的质量，支持`'low'`, `'medium'`, `'high'`, `'ultra'`
 
-###${prefix|default('#')} radius(number) = 1
+###${prefix|default('#')} radius(number) = 2
 
 环境光遮蔽的采样半径。半径越大效果越自然，但是需要设置较高的`'quality'`。
 
