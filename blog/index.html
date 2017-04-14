@@ -129,6 +129,218 @@
   <header>
     
       <div class="entry-image-index">
+        <a href="http://echarts.baidu.com/blog/2017/04/12/echarts-gl-alpha.html" title="ECharts GL 1.0 alpha 发布"><img src="http://echarts.baidu.com/blog/images/post/2017-04-12/buildings2.jpg" alt="ECharts GL 1.0 alpha 发布"></a>
+      </div><!-- /.entry-image -->
+    
+    <div class="entry-meta">
+      <span class="entry-date date published updated"><time datetime="2017-04-12T00:00:00+08:00"><a href="http://echarts.baidu.com/blog/2017/04/12/echarts-gl-alpha.html">2017-04-12</a></time></span><span class="author vcard"><span class="fn"><a href="http://echarts.baidu.com/blog/about/" title="About ECharts">ECharts</a></span></span>
+      
+      <span class="entry-reading-time">
+        <i class="fa fa-clock-o"></i>
+        
+
+预计阅读时间：5 分钟
+
+
+      </span><!-- /.entry-reading-time -->
+      
+    </div><!-- /.entry-meta -->
+    
+      <h1 class="entry-title"><a href="http://echarts.baidu.com/blog/2017/04/12/echarts-gl-alpha.html" rel="bookmark" title="ECharts GL 1.0 alpha 发布" itemprop="url">ECharts GL 1.0 alpha 发布</a></h1>
+    
+  </header>
+  <div class="entry-content">
+    <p>距离 ECharts-X 最近一个版本已经过去了两年多时间，期间我们不断被开发者在各种渠道询问 ECharts-X 为什么还不升级新版本，是不是不再维护了等等，对于这些问题我们只能回答我们还没准备好。尽管这两年时间 ECharts X 没什么动静，但是其它的工作，像 ECharts 3 的架构大改动和后续版本的迭代升级，以及其它 WebGL 产品的开发，都是对新版本架构和技术上的积累。现在我们终于可以说我们准备得差不多了，ECharts-X 的下一代，ECharts-GL 发布 1.0 alpha。</p>
+
+<p><a href="https://github.com/ecomfe/echarts-gl">ECharts GL</a> 是 ECharts 的 WebGL 扩展，其中提供了三维散点图，飞线图，柱状图，曲面图，地球等多种三维可视化方式。并且增加 <code class="highlighter-rouge">scatterGL</code>，<code class="highlighter-rouge">graphGL</code> 系列类型用于二维的散点图，关系图的加速绘制和布局。</p>
+
+<p>先来一张 Gallery 上 <a href="https://github.com/ecomfe/echarts-gl">ECharts GL</a> 的示例图片集。</p>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-04-12/demos.jpg" alt="" /></p>
+
+<p>下面会一一介绍 ECharts GL 的特性，如果你已经等不及想尝鲜了，可以直接在 Gallery 上查看编辑 ECharts GL 的示例。</p>
+
+<ul>
+  <li>
+    <p><a href="http://gallery.echartsjs.com/explore.html#tags=echarts-gl">GL 的 Gallery 示例</a></p>
+  </li>
+  <li>
+    <p><a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html">GL 的配置项手册</a></p>
+  </li>
+</ul>
+
+<h2 id="section">一、更便捷的安装和引入</h2>
+
+<p>大家用过 ECharts-X 的话，或许曾被其繁琐的引入方式困扰过，甚至可能因为尝试了很多次都没办法正确引入而选择放弃。</p>
+
+<p>ECharts-GL 中大大简化了引入方式，在标签引入的环境下。你可以从 <a href="https://github.com/ecomfe/echarts-gl/tree/master/dist">GitHub</a> 上获取 ECharts GL 后直接引入构建好的文件.</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">data</span><span class="o">-</span><span class="nx">src</span><span class="o">=</span><span class="s2">"echarts/dist/echarts.min.js"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">data</span><span class="o">-</span><span class="nx">src</span><span class="o">=</span><span class="s2">"echarts-gl/dist/echarts-gl.min.js"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span></code></pre>
+</div>
+
+<p>如果你用 webpack 和 npm 作为开发环境。也只需要在 <code class="highlighter-rouge">npm install echarts-gl</code> 之后再<code class="highlighter-rouge">require</code>引入。</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">require</span><span class="p">(</span><span class="s1">'echarts-gl'</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<h2 id="section-1">二、更多三维可视化类型。</h2>
+
+<p>除了老版本的<a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#globe">地球</a>用于地理数据可视化，ECharts GL 新增了三维的<a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#grid3D">笛卡尔坐标系</a>、<a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#geo3D">地理坐标系</a>，并且在这些新的三维坐标系基础上提供了六个新的系列类型，包括 <a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-scatter3D">散点图 scatter3D</a>、<a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-line3D">折线图 line3D</a>、<a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-bar3D">柱状图 bar3D</a>、<a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-surface">曲面图 surface</a>、<a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-lines3D">飞线图 lines3D</a>以及<a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-map3D">地图 map3D</a></p>
+
+<p>这些新的系列类型以及组件类型都是使用 WebGL 绘制，因此能够保证高质量，高性能的展示出你想要的三维可视化作品。</p>
+
+<p>同时我们在配置项的设计上尽量沿用了 ECharts 的风格，保证简洁统一。比如下面这个配置就能画出一个简单的三维散点图。</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">option</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">grid3D</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="na">xAxis3D</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="na">yAxis3D</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="na">zAxis3D</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="na">series</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="s1">'scatter3D'</span><span class="p">,</span>
+        <span class="na">symbolSize</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+        <span class="na">data</span><span class="p">:</span> <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span>
+        <span class="na">itemStyle</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">opacity</span><span class="p">:</span> <span class="mi">1</span>
+        <span class="p">}</span>
+    <span class="p">}]</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+<blockquote>
+  <p>这里跟 ECharts 有点区别，GL 中尝试了更扁平的 option 设计，使用场景更少的 emphasis 属性将会单独移出来，而原先 normal 这个层级将被移除，itemStyle 下的属性相当于原先 itemStyle.normal 下的属性。如果这次尝试没问题，接下来 ECharts 新的大版本也会使用这种更扁平的设计。
+具体配置结构见 <a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-scatter3D.itemStyle">https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-scatter3D.itemStyle</a></p>
+</blockquote>
+
+<p>大部分 GL 中的三维组件和系列都会带上<code class="highlighter-rouge">3D</code>后缀以便跟 ECharts 中的组件系列区分开。</p>
+
+<p>下面这个更复杂点的例子使用<code class="highlighter-rouge">scatter3D</code>可视化了三维的 <a href="https://en.wikipedia.org/wiki/Simplex_noise">Simplex Noise</a></p>
+
+<div style="width: 100%; height: 400px; background: #111" class="ec-lazy" data-src="http://gallery.echartsjs.com/view.html?cid=xBkWoZOjTe&amp;v=2"></div>
+
+<p>除了三维的散点图，你也可以在笛卡尔坐标系上画 <a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-line3D">折线图 line3D</a>，<a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-bar3D">柱状图 bar3D</a>，<a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-surface">曲面图 surface</a>。</p>
+
+<p>其中 <a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-line3D">line3D</a>，<a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-bar3D">bar3D</a> 也是对 ECharts 中的折线图，柱状图扩展到了三维的版本。而 <a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-surface">surface</a> 是 ECharts GL 里全新的三维图。</p>
+
+<p>你可以像下面这样用 <a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-surface">surface</a> 画函数曲面。</p>
+
+<div style="width: 100%; height: 400px;" class="ec-lazy" data-src="http://gallery.echartsjs.com/view.html?cid=xHkcYXm9pe"></div>
+
+<p>也可以像这样用曲面去可视化像图片像素这样的数据</p>
+
+<div style="width: 100%; height: 400px;" class="ec-lazy" data-src="http://gallery.echartsjs.com/view.html?cid=xBk5PSvqpx&amp;v=4"></div>
+
+<p>甚至你可以用参数方程构建出下面这样有趣的参数曲面</p>
+
+<div style="width: 100%; height: 400px;" class="ec-lazy" data-src="http://gallery.echartsjs.com/view.html?cid=xHku9OE96l"></div>
+
+<p>除了三维笛卡尔坐标系，像柱状图，散点图也可以显示在<a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#globe">地球</a>，<a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#geo3D">三维地理坐标系</a>上。</p>
+
+<p>比如下面这个例子就是在地球上通过散点图绘制世界人口。</p>
+
+<div style="width: 100%; height: 400px;" class="ec-lazy" data-src="http://gallery.echartsjs.com/view.html?cid=xS1moC0s6x"></div>
+
+<p>你可以大胆的组合不同坐标系和系列，制作出更具创造力的可视化作品！</p>
+
+<h2 id="section-2">三、高品质的画面</h2>
+
+<p>在很多场景里，高品质的画面是一个很重要的需求，例如：</p>
+
+<ul>
+  <li>
+    <p>在大屏中，需要提供炫酷的，一下能够抓住人眼球的特效。</p>
+  </li>
+  <li>
+    <p>生成需要放在文章或者 PPT 中的截图，需要高质量的渲染，不能有廉价三维效果的感觉。</p>
+  </li>
+</ul>
+
+<p>ECharts GL 提供了一系列诸如<a href="http://localhost/echarts-doc/public/cn/option-gl.html#geo3D.postEffect.depthOfField">景深</a>，<a href="http://localhost/echarts-doc/public/cn/option-gl.html#geo3D.postEffect.bloom">光晕</a>，<a href="http://localhost/echarts-doc/public/cn/option-gl.html#geo3D.postEffect.colorCorrection">颜色纠正</a>，<a href="http://localhost/echarts-doc/public/cn/option-gl.html#geo3D.postEffect.SSAO">阴影</a>，<a href="http://localhost/echarts-doc/public/cn/option-gl.html#geo3D.light.ambientCubemap">基于物理的渲染</a> 等等开箱即用的配置项让你去方便的提升自己可视化作品的渲染效果。</p>
+
+<p>在这些配置项的基础上，你可以实现这样带景深的微缩模型的效果：</p>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-04-12/high-quality-1.jpg" style="width:100%;" alt="" /></p>
+
+<p>或者这样的基于物理渲染的金属零件的效果：</p>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-04-12/high-quality-3.jpg" style="width:100%;" alt="" /></p>
+
+<p>或者这样 Bling Bling 的影视广告特效：</p>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-04-12/high-quality-2.jpg" style="width:100%;" alt="" /></p>
+
+<p>又或者这样的大规模建筑群：</p>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-04-12/high-quality-4.jpg" style="width:100%;" alt="" /></p>
+
+<p>想要了解更多的效果，可以逛逛我们的<a href="http://gallery.echartsjs.com/explore.html#tags=echarts-gl">示例集</a></p>
+
+<h2 id="section-3">四、二维可视化的加速</h2>
+
+<p>除了三维的可视化，ECharts GL 还内置 <a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-scatterGL">scatterGL</a>, <a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-scatterGL">graphGL</a> 两个系列，能够大幅度的优化常见的二维散点图和关系图的绘制和布局性能。</p>
+
+<p>散点图也是比较常见的会有大数据量的系列类型。ECharts 尽管能绘制像微博签到图那样上十万的散点图，但是很难做到流畅的交互。拖拽、缩放等操作都会有卡顿。</p>
+
+<p>在 ECharts GL 里利用 WebGL 加速绘制后，可以无压力得绘制和实时的交互十万个数据的散点图了。</p>
+
+<div style="width: 100%; height: 400px; background: #111;" class="ec-lazy" data-src="http://gallery.echartsjs.com/view.html?cid=xHJkXhU9Tg"></div>
+
+<p>而且实现这一切只需要把原先的<code class="highlighter-rouge">scatter</code>类型改为<code class="highlighter-rouge">scatterGL</code>类型，不需要再做其它的改动！</p>
+
+<p>对于<a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-scatterGL">关系图 graphGL</a>除了绘制上有加速之外，我们还在 WebGL 中实现了<a href="https://github.com/gephi/gephi/wiki/Force-Atlas-2">力引导布局</a>。在高端的显卡上 GPU 布局相对于 CPU 布局甚至能有上百倍的性能提升。</p>
+
+<p>下面是在<code class="highlighter-rouge">GTX1070</code>和<code class="highlighter-rouge">i7 4GHz</code>的电脑中对一个<code class="highlighter-rouge">两万</code>个节点，近<code class="highlighter-rouge">五万</code>条边的关系图一次布局的迭代的性能对比。</p>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-04-12/gpu-layout-perf.png" width="400px" alt="" /></p>
+
+<p>以及对这个关系图实时布局的视频。</p>
+
+<video controls="" width="100%" src="http://echarts.baidu.com/blog/images/post/2017-04-12/graphGL.mp4"></video>
+
+<p><code class="highlighter-rouge">2500</code>个节点的网格图使用 GPU 布局的例子（只支持 PC 端）。</p>
+
+<div style="width: 100%; height: 400px; background: #111;" class="ec-lazy" data-src="http://gallery.echartsjs.com/view.html?cid=xrJchBL9ag"></div>
+
+<p>这里特别感谢 Gephi 提供了 Force Atlas2 这样在大规模关系数据上能够有稳定优良的布局结果的算法。</p>
+
+<h2 id="echarts-">五、与 ECharts 交互组件的结合</h2>
+
+<p>ECharts GL 作为一个扩展，并不是独立的，它提供的系列和组件能够和 ECharts 中的大部分组件，例如 ，， 组合使用。你可以使用 <a href="http://echarts.baidu.com/option.html#visualMap">visualMap</a> 组件对 GL 中的系列进行颜色，大小，不透明的编码，可以用 <a href="http://echarts.baidu.com/option.html#tooltip">tooltip</a> 组件显示 GL 中图形的数据信息，也可以用 <a href="http://echarts.baidu.com/option.html#legend">legend</a> 筛选出想要展示的系列，等等等等。</p>
+
+<p>例如下面这个例子用 <a href="http://echarts.baidu.com/option.html#visualMap">visualMap</a> 组件对柱状图做了颜色的映射，而且能够通过控件筛选出区间内的数据</p>
+
+<div style="width: 100%; height: 400px; background: #111;" class="ec-lazy" data-src="http://gallery.echartsjs.com/view.html?cid=xSyMekmcTx"></div>
+
+<p>当然除此之外，你也可以在一个实例里任意混搭使用 ECharts GL 的组件以及 ECharts 的组件。</p>
+
+<h2 id="section-4">六、移动端兼容</h2>
+
+<p>现在很多移动端的浏览器已经支持 WebGL 了，特别是像 iOS 系统对 WebGL 的扩展特性等支持得非常完善。所以用 ECharts GL 制作的大部分例子都能在 iOS 上流畅无压力的运行。在交互上 ECharts GL 也对移动端做了兼容处理，支持平移，双指缩放等等。</p>
+
+<p>如果你现在不是在手机上浏览这篇文章，可以稍后在手机上打开 <a href="http://gallery.echartsjs.com/">http://gallery.echartsjs.com/</a> 看看效果。</p>
+
+<p>下面是在 iPhone 6 上实时预览前面示例中参数曲面的效果。</p>
+
+<video controls="" width="100%" src="http://echarts.baidu.com/blog/images/post/2017-04-12/mobile.mp4"></video>
+
+<h2 id="section-5">更多</h2>
+
+<p>ECharts GL 1.0 alpha 只是个开始，在正式版发布之前，我们还会对画面，交互的细节，动画，性能等等做更多的优化。大家使用过程中有任何的问题或者建议都可以在 GitHub 上跟我们反馈，
+我们也非常期待大家能够利用 ECharts GL 做出让我们想象不到的作品。</p>
+
+
+  </div><!-- /.entry-content -->
+</article><!-- /.hentry -->
+
+
+
+<article class="hentry">
+  <header>
+    
+      <div class="entry-image-index">
         <a href="http://echarts.baidu.com/blog/2017/03/23/new-release.html" title="echarts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布"><img src="http://echarts.baidu.com/blog/images/post/2017-03-23/banner.png" alt="echarts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布"></a>
       </div><!-- /.entry-image -->
     
@@ -152,7 +364,7 @@
   <div class="entry-content">
     <p>在 echarts 新发布的 <a href="https://github.com/ecomfe/echarts/releases/tag/3.5.0">3.5 版本</a>中，新增了日历坐标系，增强了坐标轴指示器。同时，<a href="https://github.com/ecomfe/echarts-stat">echarts 统计扩展</a> 1.0 版本发布了。日历坐标系用于在日历中绘制图表，坐标轴指示器方便用户观察数据内容，统计扩展是一个专门用来进行数据分析的工具。</p>
 
-<h2 id="统计扩展">统计扩展</h2>
+<h2 id="section">统计扩展</h2>
 
 <p>统计扩展是一个专门用来进行数据分析的工具，目前主要包含了二维的回归、多维的聚类以及一些常用的统计功能。</p>
 
@@ -176,7 +388,7 @@
 
 <p>如果想了解更多内容请前往 <a href="https://github.com/ecomfe/echarts-stat">统计扩展 GitHub 首页</a>。</p>
 
-<h2 id="日历坐标系">日历坐标系</h2>
+<h2 id="section-1">日历坐标系</h2>
 
 <p>日历坐标系，是一种新的 echarts 坐标系，提供了在日历上绘制图表的能力。例如可以在日历坐标系上放置热力图、散点图、关系图等。如下示例：</p>
 
@@ -213,7 +425,7 @@
 <p>下面这个例子，使用 <code class="highlighter-rouge">chart.convertToPixel</code> 接口，实现了饼图放置在日历坐标系中的效果。</p>
 <div class="ec-lazy" data-thumb="http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png" data-src="http://echarts.baidu.com/gallery/view.html?c=calendar-pie&amp;edit=1&amp;reset=1" style="width: 100%; height: 640px"></div>
 
-<h2 id="坐标轴指示器">坐标轴指示器</h2>
+<h2 id="section-2">坐标轴指示器</h2>
 
 <p>坐标轴指示器 （axisPointer）指的是，鼠标悬浮到坐标系上时出现的竖线、阴影区域等。它能帮助用户观察数据。echarts 原有的坐标轴指示器本次被整理和增强了，加入了文本标签，自动吸附到数据，以及移动触屏的手柄拖拽交互，以及支持了多个坐标系中指示器的联动。</p>
 
@@ -393,36 +605,36 @@
   <div class="entry-content">
     <p>当下随着大数据热潮的到来，数据可视化作为一个新兴的领域，受到了学术界和工业界的重视。从可视分析、数据新闻到商业报表，各个领域都在越来越多的使用它。既然是数据可视化，说明数据是主体，可视化只是将数据以可视的形式表达的手段。接下来小编就与大家一起揭开可视化中数据的面纱，一探究竟。</p>
 
-<h2 id="可视化什么数据抽象">可视化什么：数据抽象</h2>
+<h2 id="section">可视化什么：数据抽象</h2>
 
 <p>既然是数据可视化，无可非议，可视化的元素肯定是数据，这里所指的数据是广义上的数据，包括文本、图片、声音等超媒体数据。ECharts在可视化过程中所涉及的四种基本数据集类型分别是表格数据、网状数据、场数据和几何空间（spatial）数据，像集合、列表等也是常用的数据集类型。这些基本数据集类型又是由不同的数据类组合构成的，这里的数据类是指可视化中所涉及的数据种类，主要包括四种数据类，分别是数据项、数据项的属性、链接（links）、位置。数据项的属性又可分为类别型和有序型两种，其中有序型又进一步细分为序数型和数值型，下面将分别介绍数据类，数据集类型，以及属性类型。</p>
 
-<h3 id="数据类">数据类</h3>
+<h3 id="section-1">数据类</h3>
 
 <p>本文主要讨论ECharts中所涉及的四种基本数据类，分别是数据项、数据项的属性、链接、位置。数据项是指一个独立的实体，如关系数据表中的一行，或网络中的一个节点；属性是数据项的某个可被观测的特性，如年龄，性别等；链接是指数据项之间的关系，该数据类型在网状关系型数据集中用的比较多；位置是地理空间数据类型，指代二维或三维空间中的某个具体位置；下图展示了四种不同的数据集类型所包含的数据类。</p>
 
 <p><img src="http://echarts.baidu.com/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-datatypes.png" alt="data" /></p>
 
-<h3 id="数据集类型">数据集类型</h3>
+<h3 id="section-2">数据集类型</h3>
 
 <p>数据集是指为了分析而收集的任何信息，数据集包括数据表，网状数据，场数据（本文主要关注信息可视化，而场数据主要应用于科学可视化，因而在此不作介绍）以及几何空间数据这四种基本类型，而现实世界中的数据集一般是由这四个基本类型中的一个或多个组合而成的。下图展示了四种不同数据集类型具体的内部结构。</p>
 
 <p><img src="http://echarts.baidu.com/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-dataset.png" alt="data" /></p>
 
-<h4 id="数据表">数据表</h4>
+<h4 id="section-3">数据表</h4>
 
 <p>数据表是常用的数据集形式，由行和列组成。对于简单的扁平表格来说，每一行代表一个数据项，每一列代表一个属性，表格中的每一个单元格是由行号和列号索引的，保存着某个数据项的某个属性值；多维数据表在数据仓库中用的比较多，具有复杂的结构以及复杂的索引机制，一般来说，简单扁平表格至多具有一个键属性（key attribute），而多维表格具有多个键属性。</p>
 
-<h4 id="网状数据">网状数据</h4>
+<h4 id="section-4">网状数据</h4>
 
 <p>网状数据主要用来表明数据项之间具有某种关系，在网状数据中数据项通常被称为节点，两个节点之间的关系被称为链接，也就是网络中的边，并且节点和链接都可以拥有与之相关联的属性。树是一种具有层次结构的特殊类型网络数据，与一般网络数据相比，树没有回路，每一个子节点都对应唯一的一个父节点。</p>
 
-<h4 id="几何空间spatial数据">几何空间（spatial）数据</h4>
+<h4 id="spatial">几何空间（spatial）数据</h4>
 
 <p>几何空间结构数据通过明确的几何空间位置指定数据项的形状信息，这些数据项可以是空间中的点、一维的直线或曲线、二维的平面或区域，以及三维的立方体。空间数据在不同的度量尺度上具有层级结构。这种层级结构要么是原始数据集固有的，要么是从原始数据集派生出来的。
 可视化中的数据主要以两种形式存在，一种是静态的数据文件，一种是动态的数据流。静态的数据文件是指可以同时获得完整的数据文件，而动态的数据流是指数据在不断的更新和变化。</p>
 
-<h3 id="属性类型">属性类型</h3>
+<h3 id="section-5">属性类型</h3>
 
 <p>属性类型主要分为类别型和有序型两种，有序型又可进一步分为序数型和数值型。有序型数据的排列方向有三种，分别是单向型，有公共零点的双向型，以及环状周期型，如下图所示，除此之外，属性也可能有层级结构。
 类别型属性是指名称上的不同，属性的值之间没有明确的排序，例如喜欢的球类运动包括足球、篮球、排球等。虽然类别型属性内部没有明确的排序，但任意外部的排序机制可以被应用在类别型属性上，如将球类运动的名字按字母顺序排列。
@@ -432,10 +644,10 @@
 
 <p><img src="http://echarts.baidu.com/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-attribute.png" alt="" /></p>
 
-<h2 id="总结">总结</h2>
+<h2 id="section-6">总结</h2>
 <p>本文简要讨论了可视化中的数据，从数据的种类、数据集的类型以及属性的类型这三个角度阐述了可视化中需要可视表达的数据信息。</p>
 
-<h4 id="参考文献">参考文献</h4>
+<h4 id="section-7">参考文献</h4>
 
 <p>[1] Tamara Munzner.Visualization Analysis and Design. CRC Press, 2014.</p>
 
@@ -475,7 +687,7 @@
 
 <p>那么，今天我们就一起来学习一下，如何使用 ECharts 水球图。</p>
 
-<h2 id="第一步引入-javascript-文件">第一步：引入 JavaScript 文件</h2>
+<h2 id="javascript-">第一步：引入 JavaScript 文件</h2>
 
 <p>ECharts 的水球图是一个<em>插件</em>类型的图表。这意味着，在 ECharts 官网下载的完整版本将不包含水球图——这保证了不需要使用该图表的用户能够获得一个尽可能小的代码版本。使用时，需要在引入 <code class="highlighter-rouge">echarts.js</code> 之后，另外引入水球图对应的 <code class="highlighter-rouge">echarts-liquidfill.js</code>，可以在 <a href="https://github.com/ecomfe/echarts-liquidfill/tree/gh-pages/dist">GitHub</a> 找到最新版本。</p>
 
@@ -488,7 +700,7 @@
 </code></pre>
 </div>
 
-<h2 id="第二步指定-dom-元素作为图表容器">第二步：指定 DOM 元素作为图表容器</h2>
+<h2 id="dom-">第二步：指定 DOM 元素作为图表容器</h2>
 
 <p>和创建 ECharts 的其他图表一样，我们需要指定 DOM 中的一个有高度和宽度的元素作为图表的容器——也就是图表将会绘制的位置。</p>
 
@@ -502,7 +714,7 @@
 </code></pre>
 </div>
 
-<h2 id="第三步设置水球图参数">第三步：设置水球图参数</h2>
+<h2 id="section">第三步：设置水球图参数</h2>
 
 <p>和其他 ECharts 图表一样，水球图提供将系列的 <code class="highlighter-rouge">type</code> 指定为 <code class="highlighter-rouge">'liquidFill'</code>（注意大小写）来表明这是一个水球图类型。</p>
 
@@ -537,11 +749,11 @@
 
 <p>即使不配置很多参数，预设的参数也可以使你获得一个优雅的水球图效果。而如果有特定的需求，ECharts 水球图又支持非常高度定制的效果。下面我们具体说明如何定制化你的水球图。</p>
 
-<h2 id="第四步定制化水球图">第四步：定制化水球图</h2>
+<h2 id="section-1">第四步：定制化水球图</h2>
 
 <p>水球图支持非常高度定制化的需求，包括颜色（<code class="highlighter-rouge">color</code>）、大小（<code class="highlighter-rouge">radius</code>）、波的振幅（<code class="highlighter-rouge">amplitude</code>）、波长（<code class="highlighter-rouge">waveLength</code>）、相位（<code class="highlighter-rouge">phase</code>）、周期（<code class="highlighter-rouge">period</code>）、移动方向（<code class="highlighter-rouge">direction</code>）、形状（<code class="highlighter-rouge">shape</code>）、动画（<code class="highlighter-rouge">waveAnimation</code>）等等，完整的配置项参数参见<a href="https://github.com/ecomfe/echarts-liquidfill#api">水球图 API</a>。文档有针对每个配置项的详细说明，这里我们来介绍一些重要的参数。</p>
 
-<h3 id="形状与动画">形状与动画</h3>
+<h3 id="section-2">形状与动画</h3>
 
 <iframe style="width: 100%; height: 600px" src="http://gallery.echartsjs.com/view.html?cid=xry0tUfcBe"></iframe>
 
@@ -604,7 +816,7 @@
 </code></pre>
 </div>
 
-<h3 id="单个波的配置">单个波的配置</h3>
+<h3 id="section-3">单个波的配置</h3>
 
 <p>除了对所有水波做的设置之外，每个水波可以进行单独的配置。和 ECharts 的其他配置项一样，对单个数据的配置项将覆盖整个系列的配置项。</p>
 
@@ -631,7 +843,7 @@
 
 <p>可以发现，原先 <code class="highlighter-rouge">data</code> 中的一项是一个数字，而在需要做特殊定制的数据中，我们将其设置为一个对象，<code class="highlighter-rouge">value</code> 值是原先的数字，其他配置项将覆盖系列配置项的值。</p>
 
-<h3 id="文字显示">文字显示</h3>
+<h3 id="section-4">文字显示</h3>
 
 <p>水球图中间的文字有个酷炫的效果，在水波和背景前的文字颜色是不同的，可以通过 <code class="highlighter-rouge">insideColor</code> 设置水波处的文字颜色，<code class="highlighter-rouge">color</code> 设置背景处的文字颜色。</p>
 
@@ -695,7 +907,7 @@
 </code></pre>
 </div>
 
-<h2 id="小结">小结</h2>
+<h2 id="section-5">小结</h2>
 
 <p>以上，我们介绍了 ECharts 水球图的一些基本用法，希望能够给大家启发，创作出更多波涛汹涌的作品。</p>
 
@@ -704,8 +916,6 @@
 
   </div><!-- /.entry-content -->
 </article><!-- /.hentry -->
-
-
 
 
 
