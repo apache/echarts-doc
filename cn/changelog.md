@@ -17,6 +17,8 @@
 
 + [^] 使 [toolbox 清除选区按钮](http://echarts.baidu.com/option.html#toolbox.feature.brush.type) 能够清除[parallelAxis](http://echarts.baidu.com/option.html#parallelAxis) 的选区。
 
++ [^] 优化了 `zrender` 图形性能，最高提升 50%。
+
 
 ## v3.5.2
 <div class="time">2017-04-05</div>

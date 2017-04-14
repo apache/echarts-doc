@@ -17,6 +17,7 @@
 
 + [^] Enabled [toolbox clear button](https://ecomfe.github.io/echarts-doc/public/en/option.html#toolbox.feature.brush.type) to be able to clear brush box of [parallelAxis](https://ecomfe.github.io/echarts-doc/public/en/option.html#parallelAxis).
 
++ [^] Improveed the performance of zrender up to `50%`.
 
 
 ## v3.5.2
