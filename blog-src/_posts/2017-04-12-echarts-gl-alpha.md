@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ECharts GL 1.0 Alpha 发布
+title: ECharts GL 1.0 alpha 发布
 description: "ECharts GL （原 ECharts-X）发布 1.0 alpha，ECharts GL 是 ECharts 的 WebGL 扩展，其中提供了三维散点图，飞线图，柱状图，曲面图，地球等多种三维可视化方式。并且增加 scatterGL，graphGL系列类型用于二维的散点图，关系图的加速绘制和布局。"
 tags: [new release, extension, echarts-gl]
 lazyLoad: true
@@ -179,7 +179,7 @@ ECharts GL 作为一个扩展，并不是独立的，它提供的系列和组件
 
 ## 更多
 
-ECharts GL 1.0 Alpha 只是个开始，在正式版发布之前，我们还会对画面，交互的细节，动画，性能等等做更多的优化。大家使用过程中有任何的问题或者建议都可以在 GitHub 上跟我们反馈，
+ECharts GL 1.0 alpha 只是个开始，在正式版发布之前，我们还会对画面，交互的细节，动画，性能等等做更多的优化。大家使用过程中有任何的问题或者建议都可以在 GitHub 上跟我们反馈，
 我们也非常期待大家能够利用 ECharts GL 做出让我们想象不到的作品。
 
 
