@@ -164,7 +164,8 @@ define(function (require) {
             var defs = [
                 ['tutorial', '教程'],
                 ['api', 'API'],
-                ['option', '配置项手册']
+                ['option', '配置项手册'],
+                ['option-gl', 'GL']
             ];
 
             var html = [];
