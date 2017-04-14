@@ -71,7 +71,9 @@ option = {
 
 下面这个更复杂点的例子使用`scatter3D`可视化了三维的 [Simplex Noise](https://en.wikipedia.org/wiki/Simplex_noise)
 
-<div style="width: 100%; height: 400px; background: #111" class="ec-lazy" class="ec-lazy" data-src="http://gallery.echartsjs.com/view.html?cid=xBkWoZOjTe&v=2"></div>
+<a href="http://gallery.echartsjs.com/editor.html?c=xBkWoZOjTe">
+    <img src="{{ site.url }}/images/post/2017-04-12/simplex-noise.jpg" alt="">
+</a>
 
 除了三维的散点图，你也可以在笛卡尔坐标系上画 [折线图 line3D](https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-line3D)，[柱状图 bar3D](https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-bar3D)，[曲面图 surface](https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-surface)。
 
@@ -79,21 +81,29 @@ option = {
 
 你可以像下面这样用 [surface](https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-surface) 画函数曲面。
 
-<div style="width: 100%; height: 400px;" class="ec-lazy" data-src="http://gallery.echartsjs.com/view.html?cid=xHkcYXm9pe"></div>
+<a href="http://gallery.echartsjs.com/editor.html?c=xHkcYXm9pe">
+    <img src="{{ site.url }}/images/post/2017-04-12/surface.png" alt="">
+</a>
 
 也可以像这样用曲面去可视化像图片像素这样的数据
 
-<div style="width: 100%; height: 400px;" class="ec-lazy" data-src="http://gallery.echartsjs.com/view.html?cid=xBk5PSvqpx&v=4"></div>
+<a href="http://gallery.echartsjs.com/editor.html?c=xBk5PSvqpx">
+    <img src="{{ site.url }}/images/post/2017-04-12/image-pixels.jpg" alt="">
+</a>
 
 甚至你可以用参数方程构建出下面这样有趣的参数曲面
 
-<div style="width: 100%; height: 400px;" class="ec-lazy" data-src="http://gallery.echartsjs.com/view.html?cid=xHku9OE96l"></div>
+<a href="http://gallery.echartsjs.com/editor.html?c=xHku9OE96l">
+    <img src="{{ site.url }}/images/post/2017-04-12/parametric-surface.jpg" alt="">
+</a>
 
 除了三维笛卡尔坐标系，像柱状图，散点图也可以显示在[地球](https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#globe)，[三维地理坐标系](https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#geo3D)上。
 
 比如下面这个例子就是在地球上通过散点图绘制世界人口。
 
-<div style="width: 100%; height: 400px;" class="ec-lazy" data-src="http://gallery.echartsjs.com/view.html?cid=xS1moC0s6x"></div>
+<a href="http://gallery.echartsjs.com/editor.html?c=xS1moC0s6x">
+    <img src="{{ site.url }}/images/post/2017-04-12/high-quality-2.jpg" style="width:100%;" alt="">
+</a>
 
 你可以大胆的组合不同坐标系和系列，制作出更具创造力的可视化作品！
 
@@ -117,7 +127,7 @@ ECharts GL 提供了一系列诸如[景深](http://localhost/echarts-doc/public/
 
 或者这样 Bling Bling 的影视广告特效：
 
-<img src="{{ site.url }}/images/post/2017-04-12/high-quality-2.jpg" style="width:100%;" alt="">
+<img src="{{ site.url }}/images/post/2017-04-12/high-quality-5.jpg" style="width:100%;" alt="">
 
 又或者这样的大规模建筑群：
 
@@ -135,7 +145,9 @@ ECharts GL 提供了一系列诸如[景深](http://localhost/echarts-doc/public/
 
 在 ECharts GL 里利用 WebGL 加速绘制后，可以无压力得绘制和实时的交互十万个数据的散点图了。
 
-<div style="width: 100%; height: 400px; background: #111;" class="ec-lazy" data-src="http://gallery.echartsjs.com/view.html?cid=xHJkXhU9Tg"></div>
+
+<a href="http://gallery.echartsjs.com/editor.html?c=xHJkXhU9Tg">
+<img src="{{ site.url }}/images/post/2017-04-12/weibo-checkin.jpg" alt=""></a>
 
 而且实现这一切只需要把原先的`scatter`类型改为`scatterGL`类型，不需要再做其它的改动！
 
@@ -152,18 +164,20 @@ ECharts GL 提供了一系列诸如[景深](http://localhost/echarts-doc/public/
 
 `2500`个节点的网格图使用 GPU 布局的例子（只支持 PC 端）。
 
-<div style="width: 100%; height: 400px; background: #111;" class="ec-lazy" data-src="http://gallery.echartsjs.com/view.html?cid=xrJchBL9ag"></div>
+<a href="http://gallery.echartsjs.com/editor.html?c=xrJchBL9ag">
+<img src="{{ site.url }}/images/post/2017-04-12/grid.jpg" alt=""></a>
 
 这里特别感谢 Gephi 提供了 Force Atlas2 这样在大规模关系数据上能够有稳定优良的布局结果的算法。
 
 
 ## 五、与 ECharts 交互组件的结合
 
-ECharts GL 作为一个扩展，并不是独立的，它提供的系列和组件能够和 ECharts 中的大部分组件，例如 ，， 组合使用。你可以使用 [visualMap](http://echarts.baidu.com/option.html#visualMap) 组件对 GL 中的系列进行颜色，大小，不透明的编码，可以用 [tooltip](http://echarts.baidu.com/option.html#tooltip) 组件显示 GL 中图形的数据信息，也可以用 [legend](http://echarts.baidu.com/option.html#legend) 筛选出想要展示的系列，等等等等。
+ECharts GL 作为一个扩展，并不是独立的，它提供的系列和组件能够和 ECharts 中的大部分组件组合使用。你可以使用 [visualMap](http://echarts.baidu.com/option.html#visualMap) 组件对 GL 中的系列进行颜色，大小，不透明的编码，可以用 [tooltip](http://echarts.baidu.com/option.html#tooltip) 组件显示 GL 中图形的数据信息，也可以用 [legend](http://echarts.baidu.com/option.html#legend) 筛选出想要展示的系列等等。
 
 例如下面这个例子用 [visualMap](http://echarts.baidu.com/option.html#visualMap) 组件对柱状图做了颜色的映射，而且能够通过控件筛选出区间内的数据
 
-<div style="width: 100%; height: 400px; background: #111;" class="ec-lazy" data-src="http://gallery.echartsjs.com/view.html?cid=xSyMekmcTx"></div>
+<a href="http://gallery.echartsjs.com/editor.html?c=xSyMekmcTx">
+<img src="{{ site.url }}/images/post/2017-04-12/visual-map.jpg" alt=""></a>
 
 当然除此之外，你也可以在一个实例里任意混搭使用 ECharts GL 的组件以及 ECharts 的组件。
 
