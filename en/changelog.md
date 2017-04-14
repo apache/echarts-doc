@@ -1,3 +1,24 @@
+## v3.5.3
+<div class="time">2017-04-14</div>
+
++ [^] Fixed the problem when both `left` `right` `width` `top` `bottom` `height` are set. See [#5440](https://github.com/ecomfe/echarts/issues/5440).
+
++ [^] Fixed the problem when input x,y to [showTip](https://ecomfe.github.io/echarts-doc/public/en/api.html#action.tooltip.showTip). See [#5449](https://github.com/ecomfe/echarts/issues/5449).
+
++ [^] Enhanced the effect of [boundaryGap](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.boundaryGap) when only one data existed. See [#4417](https://github.com/ecomfe/echarts/issues/4417).
+
++ [^] Fixed animation easing setting of [gauge](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-gauge.animationEasing). See [#5451](https://github.com/ecomfe/echarts/issues/5451).
+
++ [^] Made the sorting of [treemap](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-treemap) stable when values were the same.
+
++ [^] Fixed that roam and brush conflicted when components overlaped.
+
++ [^] Enlarged area of [parallel axis name](https://ecomfe.github.io/echarts-doc/public/en/option.html#parallelAxis.nameRotate) when it rotates.
+
++ [^] Enabled [toolbox clear button](https://ecomfe.github.io/echarts-doc/public/en/option.html#toolbox.feature.brush.type) to be able to clear brush box of [parallelAxis](https://ecomfe.github.io/echarts-doc/public/en/option.html#parallelAxis).
+
+
+
 ## v3.5.2
 <div class="time">2017-04-05</div>
 

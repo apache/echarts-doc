@@ -1,3 +1,23 @@
+## v3.5.3
+<div class="time">2017-04-14</div>
+
++ [^] 修复了 `option` 中 `left` `right` `width` `top` `bottom` `height` 的默认选取问题。参见 [#5440](https://github.com/ecomfe/echarts/issues/5440)。
+
++ [^] 修复了 [showTip](http://echarts.baidu.com/api.html#action.tooltip.showTip) 使用像素点位置传入时的问题。参见 [#5449](https://github.com/ecomfe/echarts/issues/5449)。
+
++ [^] 优化了只有一个数据时 [boundaryGap](http://echarts.baidu.com/option.html#xAxis.boundaryGap) 的效果。参见 [#4417](https://github.com/ecomfe/echarts/issues/4417)。
+
++ [^] 修复了 [gauge](http://echarts.baidu.com/option.html#series-gauge.animationEasing) 的动画效果设置。参见 [#5451](https://github.com/ecomfe/echarts/issues/5451)。
+
++ [^] 修复了 [treemap](http://echarts.baidu.com/option.html#series-treemap) 数据值相同时，排序不稳定的问题。
+
++ [^] 修正了组件重叠时 roam 以及 brush 之间的冲突。
+
++ [^] 扩大了 [parallel axis name](http://echarts.baidu.com/option.html#parallelAxis.nameRotate) 倾斜时的文字可显示区域，能显示更长的维度标题。
+
++ [^] 使 [toolbox 清除选区按钮](http://echarts.baidu.com/option.html#toolbox.feature.brush.type) 能够清除[parallelAxis](http://echarts.baidu.com/option.html#parallelAxis) 的选区。
+
+
 ## v3.5.2
 <div class="time">2017-04-05</div>
 
