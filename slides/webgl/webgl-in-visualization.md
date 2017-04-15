@@ -1,7 +1,7 @@
 ---
 title: WebGL 在数据可视化中的实践
 theme: ec
-scripts: asset/common/jquery.min.js,ec.js
+scripts: asset/common/jquery.min.js,asset/common/echarts.min.js,ec.js
 revealOptions:
     controls: true
     transition: 'slide'
