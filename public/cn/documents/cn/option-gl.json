@@ -45,7 +45,7 @@
               "HTMLImageElement",
               "HTMLCanvasElement"
             ],
-            "descriptionCN": "<p>地球的高度纹理。高度纹理可以用于<a href=\"https://zh.wikipedia.org/wiki/%E5%87%B9%E5%87%B8%E8%B4%B4%E5%9B%BE\" target=\"_blank\">凹凸贴图</a>表现地球表面的明暗细节。下面两图分别是使用<code>heightTexture</code>和未使用<code>heightTexuture</code>的效果区别。</p>\n<p><img width=\"400\" height=\"auto\" src=\"documents/asset/img/heightmap-enable.png\"></p>\n<p><img width=\"400\" height=\"auto\" src=\"documents/asset/img/heightmap-disable.png\"></p>\n"
+            "descriptionCN": "<p>地球的高度纹理。高度纹理可以用于<a href=\"https://zh.wikipedia.org/wiki/%E5%87%B9%E5%87%B8%E8%B4%B4%E5%9B%BE\" target=\"_blank\">凹凸贴图</a>表现地球表面的明暗细节。下面两图分别是使用<code>heightTexture</code>和未使用<code>heightTexuture</code>的效果区别。</p>\n<p><img width=\"400\" height=\"auto\" src=\"documents/asset/gl/img/heightmap-enable.png\"></p>\n<p><img width=\"400\" height=\"auto\" src=\"documents/asset/gl/img/heightmap-disable.png\"></p>\n"
           },
           "displacementTexture": {
             "type": [
@@ -73,7 +73,7 @@
             "type": [
               "string"
             ],
-            "descriptionCN": "<p>地球中三维图形的着色效果，echarts-gl 中支持下面三种着色方式</p>\n<ul>\n<li><p><code>&#39;color&#39;</code>\n只显示颜色，不受光照等其它因素的影响。</p>\n</li>\n<li><p><code>&#39;lambert&#39;</code>\n通过经典的 <a href=\"https://en.wikipedia.org/wiki/Lambertian_reflectance\" target=\"_blank\">lambert</a> 着色表现光照带来的明暗。</p>\n</li>\n<li><p><code>&#39;realistic&#39;</code>\n真实感渲染，配合 <a href=\"#globe.light.ambientCubemap\">light.ambientCubemap</a> 和 <a href=\"#globe.postEffect\">postEffect</a> 使用可以让展示的画面效果和质感有质的提升。</p>\n</li>\n</ul>\n<p>下面是不同着色效果的区别</p>\n<p><img width=\"250\" height=\"auto\" src=\"documents/asset/img/globe-shading-color.png\">\n<img width=\"250\" height=\"auto\" src=\"documents/asset/img/globe-shading-lambert.png\">\n<img width=\"250\" height=\"auto\" src=\"documents/asset/img/globe-shading-realistic.png\"></p>\n"
+            "descriptionCN": "<p>地球中三维图形的着色效果，echarts-gl 中支持下面三种着色方式</p>\n<ul>\n<li><p><code>&#39;color&#39;</code>\n只显示颜色，不受光照等其它因素的影响。</p>\n</li>\n<li><p><code>&#39;lambert&#39;</code>\n通过经典的 <a href=\"https://en.wikipedia.org/wiki/Lambertian_reflectance\" target=\"_blank\">lambert</a> 着色表现光照带来的明暗。</p>\n</li>\n<li><p><code>&#39;realistic&#39;</code>\n真实感渲染，配合 <a href=\"#globe.light.ambientCubemap\">light.ambientCubemap</a> 和 <a href=\"#globe.postEffect\">postEffect</a> 使用可以让展示的画面效果和质感有质的提升。</p>\n</li>\n</ul>\n<p>下面是不同着色效果的区别</p>\n<p><img width=\"250\" height=\"auto\" src=\"documents/asset/gl/img/globe-shading-color.png\">\n<img width=\"250\" height=\"auto\" src=\"documents/asset/gl/img/globe-shading-lambert.png\">\n<img width=\"250\" height=\"auto\" src=\"documents/asset/gl/img/globe-shading-realistic.png\"></p>\n"
           },
           "realisticMaterial": {
             "type": [
@@ -85,14 +85,14 @@
                 "type": [
                   "number"
                 ],
-                "descriptionCN": "<p><code>roughness</code>属性用于表示材质的光泽度，<code>0</code>为完全光滑，<code>1</code>完全粗糙，中间的值则是介于这两者之间。</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>roughness</code>分别是<code>0.2</code>（光滑）与<code>0.8</code>（粗糙）的效果</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/img/globe-gloss.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/img/globe-rough.png\"></p>\n",
+                "descriptionCN": "<p><code>roughness</code>属性用于表示材质的光泽度，<code>0</code>为完全光滑，<code>1</code>完全粗糙，中间的值则是介于这两者之间。</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>roughness</code>分别是<code>0.2</code>（光滑）与<code>0.8</code>（粗糙）的效果</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-gloss.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-rough.png\"></p>\n",
                 "default": 0.5
               },
               "metalness": {
                 "type": [
                   "number"
                 ],
-                "descriptionCN": "<p><code>metalness</code>属性用于表示材质是金属还是非金属，<code>0</code>为非金属，<code>1</code>为金属，中间的值则是介于这两者之间，但是通常设成<code>0</code>和<code>1</code>就能满足大部分场景了</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>metalness</code>分别设成<code>1</code>与<code>0</code>的效果区别。</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/img/globe-metal.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/img/globe-non-metal.png\"></p>\n",
+                "descriptionCN": "<p><code>metalness</code>属性用于表示材质是金属还是非金属，<code>0</code>为非金属，<code>1</code>为金属，中间的值则是介于这两者之间，但是通常设成<code>0</code>和<code>1</code>就能满足大部分场景了</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>metalness</code>分别设成<code>1</code>与<code>0</code>的效果区别。</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-metal.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-non-metal.png\"></p>\n",
                 "default": 0
               }
             }
@@ -141,7 +141,7 @@
                     "type": [
                       "number"
                     ],
-                    "descriptionCN": "<p>主光源绕 x 轴，即上下旋转的角度。配合 <a href=\"#globe.light.main.beta\">beta</a> 控制光源的方向。</p>\n<p>如下示意图：</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/img/light-alpha-beta.png\"></p>\n<p><a href=\"#globe\">globe</a> 组件中可以通过 <a href=\"#globe.light.main.time\">time</a> 控制日光的时间。</p>\n",
+                    "descriptionCN": "<p>主光源绕 x 轴，即上下旋转的角度。配合 <a href=\"#globe.light.main.beta\">beta</a> 控制光源的方向。</p>\n<p>如下示意图：</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/gl/img/light-alpha-beta.png\"></p>\n<p><a href=\"#globe\">globe</a> 组件中可以通过 <a href=\"#globe.light.main.time\">time</a> 控制日光的时间。</p>\n",
                     "default": 0
                   },
                   "beta": {
@@ -228,7 +228,7 @@
                 "type": [
                   "Object"
                 ],
-                "descriptionCN": "<p>高光特效。高光特效用来表现很“亮”的颜色，因为传统的 RGB 只能表现<code>0 - 255</code>范围的颜色，所以对于超出这个范围特别“亮”的颜色，会通过这种高光溢出的特效去表现。如下图</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/img/globe-posteffect-bloom.png\"></p>\n",
+                "descriptionCN": "<p>高光特效。高光特效用来表现很“亮”的颜色，因为传统的 RGB 只能表现<code>0 - 255</code>范围的颜色，所以对于超出这个范围特别“亮”的颜色，会通过这种高光溢出的特效去表现。如下图</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/gl/img/globe-posteffect-bloom.png\"></p>\n",
                 "properties": {
                   "enable": {
                     "type": [
@@ -344,7 +344,7 @@
                       "HTMLImageElement",
                       "HTMLCanvasElement"
                     ],
-                    "descriptionCN": "<p>颜色查找表，推荐使用。</p>\n<p>颜色查找表是一张像下面这样的纹理图片。</p>\n<p><img width=\"200\" height=\"auto\" src=\"documents/asset/img/lookup.png\"></p>\n<p>这张是基础的查找表图片，你可以直接拿来使用，为了方便将场景色调调整你想要的效果，你可以将场景截图后在 Photoshop 等图像处理软件中调整颜色到想要的效果，然后将相同的调整应用到上面这张查找表的图片上。</p>\n<p>比如调成冷色调后，查找表的纹理图片就会成为下面这样：</p>\n<p><img width=\"200\" height=\"auto\" src=\"documents/asset/img/crispwinter.png\"></p>\n<p>然后那这张纹理图片就作为该配置项的值，就可以得到相同的你在 Photoshop 上的效果了。</p>\n<p>当然如果你只是想得到一张截图，完全不用再这样折腾，但是如果你想在能实时交互的作品中也能方便的调整到理想的色调，这个就非常有用了。</p>\n"
+                    "descriptionCN": "<p>颜色查找表，推荐使用。</p>\n<p>颜色查找表是一张像下面这样的纹理图片。</p>\n<p><img width=\"200\" height=\"auto\" src=\"documents/asset/gl/img/lookup.png\"></p>\n<p>这张是基础的查找表图片，你可以直接拿来使用，为了方便将场景色调调整你想要的效果，你可以将场景截图后在 Photoshop 等图像处理软件中调整颜色到想要的效果，然后将相同的调整应用到上面这张查找表的图片上。</p>\n<p>比如调成冷色调后，查找表的纹理图片就会成为下面这样：</p>\n<p><img width=\"200\" height=\"auto\" src=\"documents/asset/gl/img/crispwinter.png\"></p>\n<p>然后那这张纹理图片就作为该配置项的值，就可以得到相同的你在 Photoshop 上的效果了。</p>\n<p>当然如果你只是想得到一张截图，完全不用再这样折腾，但是如果你想在能实时交互的作品中也能方便的调整到理想的色调，这个就非常有用了。</p>\n"
                   },
                   "exposure": {
                     "type": [
@@ -472,7 +472,7 @@
                 "type": [
                   "number"
                 ],
-                "descriptionCN": "<p>视角绕 x 轴，即上下旋转的角度。配合 <a href=\"#globe.light.main.beta\">beta</a> 可以控制视角的方向。</p>\n<p>如下示意图：</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/img/view-alpha-beta.png\"></p>\n",
+                "descriptionCN": "<p>视角绕 x 轴，即上下旋转的角度。配合 <a href=\"#globe.light.main.beta\">beta</a> 可以控制视角的方向。</p>\n<p>如下示意图：</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/gl/img/view-alpha-beta.png\"></p>\n",
                 "default": 0
               },
               "beta": {
@@ -660,7 +660,7 @@
             "type": [
               "number"
             ],
-            "descriptionCN": "<p>三维地理坐标系组件组件在三维场景中的宽度。配合 <a href=\"#geo3D.viewControl.distance\">viewControl.distance</a> 可以得到最合适的展示尺寸。</p>\n<p>下面是三维地理坐标系组件 中<code>boxWidth</code>, <code>boxHeight</code>, <code>boxDepth</code>的示意图。</p>\n<p><img width=\"600\" height=\"auto\" src=\"documents/asset/img/geo-size.png\"></p>\n",
+            "descriptionCN": "<p>三维地理坐标系组件组件在三维场景中的宽度。配合 <a href=\"#geo3D.viewControl.distance\">viewControl.distance</a> 可以得到最合适的展示尺寸。</p>\n<p>下面是三维地理坐标系组件 中<code>boxWidth</code>, <code>boxHeight</code>, <code>boxDepth</code>的示意图。</p>\n<p><img width=\"600\" height=\"auto\" src=\"documents/asset/gl/img/geo-size.png\"></p>\n",
             "default": 100
           },
           "boxHeight": {
@@ -816,7 +816,7 @@
                 "type": [
                   "number"
                 ],
-                "descriptionCN": "<p>图形描边的宽度。加上描边后可以更清晰的区分每个区域。如下图：</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/img/geo-border.png\"></p>\n",
+                "descriptionCN": "<p>图形描边的宽度。加上描边后可以更清晰的区分每个区域。如下图：</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/gl/img/geo-border.png\"></p>\n",
                 "default": 0
               },
               "borderColor": {
@@ -955,7 +955,7 @@
                   "type": [
                     "number"
                   ],
-                  "descriptionCN": "<p>区域的高度，可以设置不同的高度用来表达数据的大小。当 GeoJSON 为建筑的数据时，也可以通过这个值表示简直的高度。如下图</p>\n<p><img width=\"700\" height=\"auto\" src=\"documents/asset/img/city-region-height.jpg\"></p>\n"
+                  "descriptionCN": "<p>区域的高度，可以设置不同的高度用来表达数据的大小。当 GeoJSON 为建筑的数据时，也可以通过这个值表示简直的高度。如下图</p>\n<p><img width=\"700\" height=\"auto\" src=\"documents/asset/gl/img/city-region-height.jpg\"></p>\n"
                 },
                 "itemStyle": {
                   "type": [
@@ -981,7 +981,7 @@
                       "type": [
                         "number"
                       ],
-                      "descriptionCN": "<p>图形描边的宽度。加上描边后可以更清晰的区分每个区域。如下图：</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/img/geo-border.png\"></p>\n",
+                      "descriptionCN": "<p>图形描边的宽度。加上描边后可以更清晰的区分每个区域。如下图：</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/gl/img/geo-border.png\"></p>\n",
                       "default": 0
                     },
                     "borderColor": {
@@ -1102,7 +1102,7 @@
                           "type": [
                             "number"
                           ],
-                          "descriptionCN": "<p>图形描边的宽度。加上描边后可以更清晰的区分每个区域。如下图：</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/img/geo-border.png\"></p>\n",
+                          "descriptionCN": "<p>图形描边的宽度。加上描边后可以更清晰的区分每个区域。如下图：</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/gl/img/geo-border.png\"></p>\n",
                           "default": 0
                         },
                         "borderColor": {
@@ -1214,14 +1214,14 @@
                 "type": [
                   "number"
                 ],
-                "descriptionCN": "<p><code>roughness</code>属性用于表示材质的光泽度，<code>0</code>为完全光滑，<code>1</code>完全粗糙，中间的值则是介于这两者之间。</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>roughness</code>分别是<code>0.2</code>（光滑）与<code>0.8</code>（粗糙）的效果</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/img/globe-gloss.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/img/globe-rough.png\"></p>\n",
+                "descriptionCN": "<p><code>roughness</code>属性用于表示材质的光泽度，<code>0</code>为完全光滑，<code>1</code>完全粗糙，中间的值则是介于这两者之间。</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>roughness</code>分别是<code>0.2</code>（光滑）与<code>0.8</code>（粗糙）的效果</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-gloss.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-rough.png\"></p>\n",
                 "default": 0.5
               },
               "metalness": {
                 "type": [
                   "number"
                 ],
-                "descriptionCN": "<p><code>metalness</code>属性用于表示材质是金属还是非金属，<code>0</code>为非金属，<code>1</code>为金属，中间的值则是介于这两者之间，但是通常设成<code>0</code>和<code>1</code>就能满足大部分场景了</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>metalness</code>分别设成<code>1</code>与<code>0</code>的效果区别。</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/img/globe-metal.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/img/globe-non-metal.png\"></p>\n",
+                "descriptionCN": "<p><code>metalness</code>属性用于表示材质是金属还是非金属，<code>0</code>为非金属，<code>1</code>为金属，中间的值则是介于这两者之间，但是通常设成<code>0</code>和<code>1</code>就能满足大部分场景了</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>metalness</code>分别设成<code>1</code>与<code>0</code>的效果区别。</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-metal.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-non-metal.png\"></p>\n",
                 "default": 0
               },
               "baseTexture": {
@@ -1352,7 +1352,7 @@
                     "type": [
                       "number"
                     ],
-                    "descriptionCN": "<p>主光源绕 x 轴，即上下旋转的角度。配合 <a href=\"#geo3D.light.main.beta\">beta</a> 控制光源的方向。</p>\n<p>如下示意图：</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/img/light-alpha-beta.png\"></p>\n<p><a href=\"#globe\">globe</a> 组件中可以通过 <a href=\"#globe.light.main.time\">time</a> 控制日光的时间。</p>\n",
+                    "descriptionCN": "<p>主光源绕 x 轴，即上下旋转的角度。配合 <a href=\"#geo3D.light.main.beta\">beta</a> 控制光源的方向。</p>\n<p>如下示意图：</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/gl/img/light-alpha-beta.png\"></p>\n<p><a href=\"#globe\">globe</a> 组件中可以通过 <a href=\"#globe.light.main.time\">time</a> 控制日光的时间。</p>\n",
                     "default": 40
                   },
                   "beta": {
@@ -1433,7 +1433,7 @@
                 "type": [
                   "Object"
                 ],
-                "descriptionCN": "<p>高光特效。高光特效用来表现很“亮”的颜色，因为传统的 RGB 只能表现<code>0 - 255</code>范围的颜色，所以对于超出这个范围特别“亮”的颜色，会通过这种高光溢出的特效去表现。如下图</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/img/globe-posteffect-bloom.png\"></p>\n",
+                "descriptionCN": "<p>高光特效。高光特效用来表现很“亮”的颜色，因为传统的 RGB 只能表现<code>0 - 255</code>范围的颜色，所以对于超出这个范围特别“亮”的颜色，会通过这种高光溢出的特效去表现。如下图</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/gl/img/globe-posteffect-bloom.png\"></p>\n",
                 "properties": {
                   "enable": {
                     "type": [
@@ -1549,7 +1549,7 @@
                       "HTMLImageElement",
                       "HTMLCanvasElement"
                     ],
-                    "descriptionCN": "<p>颜色查找表，推荐使用。</p>\n<p>颜色查找表是一张像下面这样的纹理图片。</p>\n<p><img width=\"200\" height=\"auto\" src=\"documents/asset/img/lookup.png\"></p>\n<p>这张是基础的查找表图片，你可以直接拿来使用，为了方便将场景色调调整你想要的效果，你可以将场景截图后在 Photoshop 等图像处理软件中调整颜色到想要的效果，然后将相同的调整应用到上面这张查找表的图片上。</p>\n<p>比如调成冷色调后，查找表的纹理图片就会成为下面这样：</p>\n<p><img width=\"200\" height=\"auto\" src=\"documents/asset/img/crispwinter.png\"></p>\n<p>然后那这张纹理图片就作为该配置项的值，就可以得到相同的你在 Photoshop 上的效果了。</p>\n<p>当然如果你只是想得到一张截图，完全不用再这样折腾，但是如果你想在能实时交互的作品中也能方便的调整到理想的色调，这个就非常有用了。</p>\n"
+                    "descriptionCN": "<p>颜色查找表，推荐使用。</p>\n<p>颜色查找表是一张像下面这样的纹理图片。</p>\n<p><img width=\"200\" height=\"auto\" src=\"documents/asset/gl/img/lookup.png\"></p>\n<p>这张是基础的查找表图片，你可以直接拿来使用，为了方便将场景色调调整你想要的效果，你可以将场景截图后在 Photoshop 等图像处理软件中调整颜色到想要的效果，然后将相同的调整应用到上面这张查找表的图片上。</p>\n<p>比如调成冷色调后，查找表的纹理图片就会成为下面这样：</p>\n<p><img width=\"200\" height=\"auto\" src=\"documents/asset/gl/img/crispwinter.png\"></p>\n<p>然后那这张纹理图片就作为该配置项的值，就可以得到相同的你在 Photoshop 上的效果了。</p>\n<p>当然如果你只是想得到一张截图，完全不用再这样折腾，但是如果你想在能实时交互的作品中也能方便的调整到理想的色调，这个就非常有用了。</p>\n"
                   },
                   "exposure": {
                     "type": [
@@ -1677,7 +1677,7 @@
                 "type": [
                   "number"
                 ],
-                "descriptionCN": "<p>视角绕 x 轴，即上下旋转的角度。配合 <a href=\"#geo3D.light.main.beta\">beta</a> 可以控制视角的方向。</p>\n<p>如下示意图：</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/img/view-alpha-beta.png\"></p>\n",
+                "descriptionCN": "<p>视角绕 x 轴，即上下旋转的角度。配合 <a href=\"#geo3D.light.main.beta\">beta</a> 可以控制视角的方向。</p>\n<p>如下示意图：</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/gl/img/view-alpha-beta.png\"></p>\n",
                 "default": 40
               },
               "beta": {
@@ -1778,7 +1778,7 @@
         "type": [
           "Object"
         ],
-        "descriptionCN": "<p>三维笛卡尔坐标系组件。需要和 <a href=\"#xAxis3D\">xAxis3D</a>，<a href=\"#yAxis3D\">yAxis3D</a>，<a href=\"#zAxis3D\">zAxis3D</a> 三个坐标轴组件一起使用。</p>\n<p>可以在三维笛卡尔坐标系上绘制<a href=\"#series-line3D\">三维折线图</a>，<a href=\"#series-bar3D\">三维柱状图</a>，<a href=\"#series-scatter3D\">三维散点/气泡图</a>，<a href=\"#series-surface\">曲面图</a>。</p>\n<p>你可以设置 <a href=\"#grid3D.postEffect\">postEffect</a>, <a href=\"#grid3D.light\">light</a> 等配置项提升<code>grid3D</code>中三维图表的显示效果。</p>\n<p>下面是 grid3D 中坐标轴配置项的说明。</p>\n<p><img width=\"700\" height=\"auto\" src=\"documents/asset/img/grid3D.png\"></p>\n<hr>\n<blockquote>\n<p><strong>注意：</strong> <a href=\"#xAxis3D\">xAxis3D</a>，<a href=\"#yAxis3D\">yAxis3D</a>，<a href=\"#zAxis3D\">zAxis3D</a> 上单独设置的<code>axisLine</code>, <code>axisTick</code>, <code>axisLabel</code>, <code>splitLine</code>, <code>splitArea</code>, <code>axisPointer</code>会覆盖<code>grid3D</code>下的相应配置项。</p>\n</blockquote>\n",
+        "descriptionCN": "<p>三维笛卡尔坐标系组件。需要和 <a href=\"#xAxis3D\">xAxis3D</a>，<a href=\"#yAxis3D\">yAxis3D</a>，<a href=\"#zAxis3D\">zAxis3D</a> 三个坐标轴组件一起使用。</p>\n<p>可以在三维笛卡尔坐标系上绘制<a href=\"#series-line3D\">三维折线图</a>，<a href=\"#series-bar3D\">三维柱状图</a>，<a href=\"#series-scatter3D\">三维散点/气泡图</a>，<a href=\"#series-surface\">曲面图</a>。</p>\n<p>你可以设置 <a href=\"#grid3D.postEffect\">postEffect</a>, <a href=\"#grid3D.light\">light</a> 等配置项提升<code>grid3D</code>中三维图表的显示效果。</p>\n<p>下面是 grid3D 中坐标轴配置项的说明。</p>\n<p><img width=\"700\" height=\"auto\" src=\"documents/asset/gl/img/grid3D.png\"></p>\n<hr>\n<blockquote>\n<p><strong>注意：</strong> <a href=\"#xAxis3D\">xAxis3D</a>，<a href=\"#yAxis3D\">yAxis3D</a>，<a href=\"#zAxis3D\">zAxis3D</a> 上单独设置的<code>axisLine</code>, <code>axisTick</code>, <code>axisLabel</code>, <code>splitLine</code>, <code>splitArea</code>, <code>axisPointer</code>会覆盖<code>grid3D</code>下的相应配置项。</p>\n</blockquote>\n",
         "properties": {
           "show": {
             "type": [
@@ -2262,7 +2262,7 @@
                     "type": [
                       "number"
                     ],
-                    "descriptionCN": "<p>主光源绕 x 轴，即上下旋转的角度。配合 <a href=\"#grid3D.light.main.beta\">beta</a> 控制光源的方向。</p>\n<p>如下示意图：</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/img/light-alpha-beta.png\"></p>\n<p><a href=\"#globe\">globe</a> 组件中可以通过 <a href=\"#globe.light.main.time\">time</a> 控制日光的时间。</p>\n",
+                    "descriptionCN": "<p>主光源绕 x 轴，即上下旋转的角度。配合 <a href=\"#grid3D.light.main.beta\">beta</a> 控制光源的方向。</p>\n<p>如下示意图：</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/gl/img/light-alpha-beta.png\"></p>\n<p><a href=\"#globe\">globe</a> 组件中可以通过 <a href=\"#globe.light.main.time\">time</a> 控制日光的时间。</p>\n",
                     "default": 30
                   },
                   "beta": {
@@ -2343,7 +2343,7 @@
                 "type": [
                   "Object"
                 ],
-                "descriptionCN": "<p>高光特效。高光特效用来表现很“亮”的颜色，因为传统的 RGB 只能表现<code>0 - 255</code>范围的颜色，所以对于超出这个范围特别“亮”的颜色，会通过这种高光溢出的特效去表现。如下图</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/img/globe-posteffect-bloom.png\"></p>\n",
+                "descriptionCN": "<p>高光特效。高光特效用来表现很“亮”的颜色，因为传统的 RGB 只能表现<code>0 - 255</code>范围的颜色，所以对于超出这个范围特别“亮”的颜色，会通过这种高光溢出的特效去表现。如下图</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/gl/img/globe-posteffect-bloom.png\"></p>\n",
                 "properties": {
                   "enable": {
                     "type": [
@@ -2459,7 +2459,7 @@
                       "HTMLImageElement",
                       "HTMLCanvasElement"
                     ],
-                    "descriptionCN": "<p>颜色查找表，推荐使用。</p>\n<p>颜色查找表是一张像下面这样的纹理图片。</p>\n<p><img width=\"200\" height=\"auto\" src=\"documents/asset/img/lookup.png\"></p>\n<p>这张是基础的查找表图片，你可以直接拿来使用，为了方便将场景色调调整你想要的效果，你可以将场景截图后在 Photoshop 等图像处理软件中调整颜色到想要的效果，然后将相同的调整应用到上面这张查找表的图片上。</p>\n<p>比如调成冷色调后，查找表的纹理图片就会成为下面这样：</p>\n<p><img width=\"200\" height=\"auto\" src=\"documents/asset/img/crispwinter.png\"></p>\n<p>然后那这张纹理图片就作为该配置项的值，就可以得到相同的你在 Photoshop 上的效果了。</p>\n<p>当然如果你只是想得到一张截图，完全不用再这样折腾，但是如果你想在能实时交互的作品中也能方便的调整到理想的色调，这个就非常有用了。</p>\n"
+                    "descriptionCN": "<p>颜色查找表，推荐使用。</p>\n<p>颜色查找表是一张像下面这样的纹理图片。</p>\n<p><img width=\"200\" height=\"auto\" src=\"documents/asset/gl/img/lookup.png\"></p>\n<p>这张是基础的查找表图片，你可以直接拿来使用，为了方便将场景色调调整你想要的效果，你可以将场景截图后在 Photoshop 等图像处理软件中调整颜色到想要的效果，然后将相同的调整应用到上面这张查找表的图片上。</p>\n<p>比如调成冷色调后，查找表的纹理图片就会成为下面这样：</p>\n<p><img width=\"200\" height=\"auto\" src=\"documents/asset/gl/img/crispwinter.png\"></p>\n<p>然后那这张纹理图片就作为该配置项的值，就可以得到相同的你在 Photoshop 上的效果了。</p>\n<p>当然如果你只是想得到一张截图，完全不用再这样折腾，但是如果你想在能实时交互的作品中也能方便的调整到理想的色调，这个就非常有用了。</p>\n"
                   },
                   "exposure": {
                     "type": [
@@ -2587,7 +2587,7 @@
                 "type": [
                   "number"
                 ],
-                "descriptionCN": "<p>视角绕 x 轴，即上下旋转的角度。配合 <a href=\"#grid3D.light.main.beta\">beta</a> 可以控制视角的方向。</p>\n<p>如下示意图：</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/img/view-alpha-beta.png\"></p>\n",
+                "descriptionCN": "<p>视角绕 x 轴，即上下旋转的角度。配合 <a href=\"#grid3D.light.main.beta\">beta</a> 可以控制视角的方向。</p>\n<p>如下示意图：</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/gl/img/view-alpha-beta.png\"></p>\n",
                 "default": 20
               },
               "beta": {
@@ -4528,7 +4528,7 @@
               "type": [
                 "Object"
               ],
-              "descriptionCN": "<p>三维散点/气泡图。可以用于<a href=\"#grid3D\">三维直角坐标系 grid3D</a>，<a href=\"#geo3D\">三维地理坐标系 geo3D</a>，<a href=\"#globe\">地球 globe</a>，通过大小，颜色等属性展示数据。</p>\n<p>下图示一个三维的 simplex noise 用气泡图绘制出来的例子。</p>\n<p><img width=\"500\" height=\"auto\" src=\"documents/asset/img/scatter3D.png\"></p>\n",
+              "descriptionCN": "<p>三维散点/气泡图。可以用于<a href=\"#grid3D\">三维直角坐标系 grid3D</a>，<a href=\"#geo3D\">三维地理坐标系 geo3D</a>，<a href=\"#globe\">地球 globe</a>，通过大小，颜色等属性展示数据。</p>\n<p>下图示一个三维的 simplex noise 用气泡图绘制出来的例子。</p>\n<p><img width=\"500\" height=\"auto\" src=\"documents/asset/gl/img/scatter3D.png\"></p>\n",
               "properties": {
                 "type": {
                   "type": [
@@ -4878,7 +4878,7 @@
               "type": [
                 "Object"
               ],
-              "descriptionCN": "<p>三维柱状图。可以用于<a href=\"#grid3D\">三维直角坐标系 grid3D</a>，<a href=\"#geo3D\">三维地理坐标系 geo3D</a>，<a href=\"#globe\">地球 globe</a>，通过高度，颜色等属性展示数据。</p>\n<p>下图就是在 <a href=\"#geo3D\">geo3D</a> 上通过三维柱状图展示世界的人口密度数据。</p>\n<p><img width=\"700\" height=\"auto\" src=\"documents/asset/img/geo-bar3D.jpg\"></p>\n",
+              "descriptionCN": "<p>三维柱状图。可以用于<a href=\"#grid3D\">三维直角坐标系 grid3D</a>，<a href=\"#geo3D\">三维地理坐标系 geo3D</a>，<a href=\"#globe\">地球 globe</a>，通过高度，颜色等属性展示数据。</p>\n<p>下图就是在 <a href=\"#geo3D\">geo3D</a> 上通过三维柱状图展示世界的人口密度数据。</p>\n<p><img width=\"700\" height=\"auto\" src=\"documents/asset/gl/img/geo-bar3D.jpg\"></p>\n",
               "properties": {
                 "type": {
                   "type": [
@@ -5409,14 +5409,14 @@
                       "type": [
                         "number"
                       ],
-                      "descriptionCN": "<p><code>roughness</code>属性用于表示材质的光泽度，<code>0</code>为完全光滑，<code>1</code>完全粗糙，中间的值则是介于这两者之间。</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>roughness</code>分别是<code>0.2</code>（光滑）与<code>0.8</code>（粗糙）的效果</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/img/globe-gloss.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/img/globe-rough.png\"></p>\n",
+                      "descriptionCN": "<p><code>roughness</code>属性用于表示材质的光泽度，<code>0</code>为完全光滑，<code>1</code>完全粗糙，中间的值则是介于这两者之间。</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>roughness</code>分别是<code>0.2</code>（光滑）与<code>0.8</code>（粗糙）的效果</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-gloss.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-rough.png\"></p>\n",
                       "default": 0.5
                     },
                     "metalness": {
                       "type": [
                         "number"
                       ],
-                      "descriptionCN": "<p><code>metalness</code>属性用于表示材质是金属还是非金属，<code>0</code>为非金属，<code>1</code>为金属，中间的值则是介于这两者之间，但是通常设成<code>0</code>和<code>1</code>就能满足大部分场景了</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>metalness</code>分别设成<code>1</code>与<code>0</code>的效果区别。</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/img/globe-metal.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/img/globe-non-metal.png\"></p>\n",
+                      "descriptionCN": "<p><code>metalness</code>属性用于表示材质是金属还是非金属，<code>0</code>为非金属，<code>1</code>为金属，中间的值则是介于这两者之间，但是通常设成<code>0</code>和<code>1</code>就能满足大部分场景了</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>metalness</code>分别设成<code>1</code>与<code>0</code>的效果区别。</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-metal.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-non-metal.png\"></p>\n",
                       "default": 0
                     }
                   }
@@ -5441,7 +5441,7 @@
               "type": [
                 "Object"
               ],
-              "descriptionCN": "<p>三维折线图。可以用于<a href=\"#grid3D\">三维直角坐标系 grid3D</a>。</p>\n<p><img width=\"600\" height=\"auto\" src=\"documents/asset/img/line3D.png\"></p>\n",
+              "descriptionCN": "<p>三维折线图。可以用于<a href=\"#grid3D\">三维直角坐标系 grid3D</a>。</p>\n<p><img width=\"600\" height=\"auto\" src=\"documents/asset/gl/img/line3D.png\"></p>\n",
               "properties": {
                 "type": {
                   "type": [
@@ -5600,7 +5600,7 @@
               "type": [
                 "Object"
               ],
-              "descriptionCN": "<p>三维的飞线图。跟二维的<a href=\"http://echarts.baidu.com/option.html#series-line\" target=\"_blank\">飞线图</a>一样用于表现起点终点的线数据。更多用在地理可视化上。</p>\n<p>下图是使用 <a href=\"#series-lines3D\">lines3D</a> 在 <a href=\"#globe\">globe</a> 上可视化飞机航班的一个例子。</p>\n<p><img width=\"700\" height=\"auto\" src=\"documents/asset/img/globe-airline.png\"></p>\n",
+              "descriptionCN": "<p>三维的飞线图。跟二维的<a href=\"http://echarts.baidu.com/option.html#series-line\" target=\"_blank\">飞线图</a>一样用于表现起点终点的线数据。更多用在地理可视化上。</p>\n<p>下图是使用 <a href=\"#series-lines3D\">lines3D</a> 在 <a href=\"#globe\">globe</a> 上可视化飞机航班的一个例子。</p>\n<p><img width=\"700\" height=\"auto\" src=\"documents/asset/gl/img/globe-airline.png\"></p>\n",
               "properties": {
                 "type": {
                   "type": [
@@ -5817,7 +5817,7 @@
                   "type": [
                     "number"
                   ],
-                  "descriptionCN": "<p>三维地图组件在三维场景中的宽度。配合 <a href=\"#series-map3D.viewControl.distance\">viewControl.distance</a> 可以得到最合适的展示尺寸。</p>\n<p>下面是三维地图 中<code>boxWidth</code>, <code>boxHeight</code>, <code>boxDepth</code>的示意图。</p>\n<p><img width=\"600\" height=\"auto\" src=\"documents/asset/img/geo-size.png\"></p>\n",
+                  "descriptionCN": "<p>三维地图组件在三维场景中的宽度。配合 <a href=\"#series-map3D.viewControl.distance\">viewControl.distance</a> 可以得到最合适的展示尺寸。</p>\n<p>下面是三维地图 中<code>boxWidth</code>, <code>boxHeight</code>, <code>boxDepth</code>的示意图。</p>\n<p><img width=\"600\" height=\"auto\" src=\"documents/asset/gl/img/geo-size.png\"></p>\n",
                   "default": 100
                 },
                 "boxHeight": {
@@ -5973,7 +5973,7 @@
                       "type": [
                         "number"
                       ],
-                      "descriptionCN": "<p>图形描边的宽度。加上描边后可以更清晰的区分每个区域。如下图：</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/img/geo-border.png\"></p>\n",
+                      "descriptionCN": "<p>图形描边的宽度。加上描边后可以更清晰的区分每个区域。如下图：</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/gl/img/geo-border.png\"></p>\n",
                       "default": 0
                     },
                     "borderColor": {
@@ -6118,7 +6118,7 @@
                         "type": [
                           "number"
                         ],
-                        "descriptionCN": "<p>区域的高度，可以设置不同的高度用来表达数据的大小。当 GeoJSON 为建筑的数据时，也可以通过这个值表示简直的高度。如下图</p>\n<p><img width=\"700\" height=\"auto\" src=\"documents/asset/img/city-region-height.jpg\"></p>\n"
+                        "descriptionCN": "<p>区域的高度，可以设置不同的高度用来表达数据的大小。当 GeoJSON 为建筑的数据时，也可以通过这个值表示简直的高度。如下图</p>\n<p><img width=\"700\" height=\"auto\" src=\"documents/asset/gl/img/city-region-height.jpg\"></p>\n"
                       },
                       "itemStyle": {
                         "type": [
@@ -6144,7 +6144,7 @@
                             "type": [
                               "number"
                             ],
-                            "descriptionCN": "<p>图形描边的宽度。加上描边后可以更清晰的区分每个区域。如下图：</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/img/geo-border.png\"></p>\n",
+                            "descriptionCN": "<p>图形描边的宽度。加上描边后可以更清晰的区分每个区域。如下图：</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/gl/img/geo-border.png\"></p>\n",
                             "default": 0
                           },
                           "borderColor": {
@@ -6265,7 +6265,7 @@
                                 "type": [
                                   "number"
                                 ],
-                                "descriptionCN": "<p>图形描边的宽度。加上描边后可以更清晰的区分每个区域。如下图：</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/img/geo-border.png\"></p>\n",
+                                "descriptionCN": "<p>图形描边的宽度。加上描边后可以更清晰的区分每个区域。如下图：</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/gl/img/geo-border.png\"></p>\n",
                                 "default": 0
                               },
                               "borderColor": {
@@ -6377,14 +6377,14 @@
                       "type": [
                         "number"
                       ],
-                      "descriptionCN": "<p><code>roughness</code>属性用于表示材质的光泽度，<code>0</code>为完全光滑，<code>1</code>完全粗糙，中间的值则是介于这两者之间。</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>roughness</code>分别是<code>0.2</code>（光滑）与<code>0.8</code>（粗糙）的效果</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/img/globe-gloss.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/img/globe-rough.png\"></p>\n",
+                      "descriptionCN": "<p><code>roughness</code>属性用于表示材质的光泽度，<code>0</code>为完全光滑，<code>1</code>完全粗糙，中间的值则是介于这两者之间。</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>roughness</code>分别是<code>0.2</code>（光滑）与<code>0.8</code>（粗糙）的效果</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-gloss.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-rough.png\"></p>\n",
                       "default": 0.5
                     },
                     "metalness": {
                       "type": [
                         "number"
                       ],
-                      "descriptionCN": "<p><code>metalness</code>属性用于表示材质是金属还是非金属，<code>0</code>为非金属，<code>1</code>为金属，中间的值则是介于这两者之间，但是通常设成<code>0</code>和<code>1</code>就能满足大部分场景了</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>metalness</code>分别设成<code>1</code>与<code>0</code>的效果区别。</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/img/globe-metal.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/img/globe-non-metal.png\"></p>\n",
+                      "descriptionCN": "<p><code>metalness</code>属性用于表示材质是金属还是非金属，<code>0</code>为非金属，<code>1</code>为金属，中间的值则是介于这两者之间，但是通常设成<code>0</code>和<code>1</code>就能满足大部分场景了</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>metalness</code>分别设成<code>1</code>与<code>0</code>的效果区别。</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-metal.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-non-metal.png\"></p>\n",
                       "default": 0
                     },
                     "baseTexture": {
@@ -6515,7 +6515,7 @@
                           "type": [
                             "number"
                           ],
-                          "descriptionCN": "<p>主光源绕 x 轴，即上下旋转的角度。配合 <a href=\"#series-map3D.light.main.beta\">beta</a> 控制光源的方向。</p>\n<p>如下示意图：</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/img/light-alpha-beta.png\"></p>\n<p><a href=\"#globe\">globe</a> 组件中可以通过 <a href=\"#globe.light.main.time\">time</a> 控制日光的时间。</p>\n",
+                          "descriptionCN": "<p>主光源绕 x 轴，即上下旋转的角度。配合 <a href=\"#series-map3D.light.main.beta\">beta</a> 控制光源的方向。</p>\n<p>如下示意图：</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/gl/img/light-alpha-beta.png\"></p>\n<p><a href=\"#globe\">globe</a> 组件中可以通过 <a href=\"#globe.light.main.time\">time</a> 控制日光的时间。</p>\n",
                           "default": 40
                         },
                         "beta": {
@@ -6596,7 +6596,7 @@
                       "type": [
                         "Object"
                       ],
-                      "descriptionCN": "<p>高光特效。高光特效用来表现很“亮”的颜色，因为传统的 RGB 只能表现<code>0 - 255</code>范围的颜色，所以对于超出这个范围特别“亮”的颜色，会通过这种高光溢出的特效去表现。如下图</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/img/globe-posteffect-bloom.png\"></p>\n",
+                      "descriptionCN": "<p>高光特效。高光特效用来表现很“亮”的颜色，因为传统的 RGB 只能表现<code>0 - 255</code>范围的颜色，所以对于超出这个范围特别“亮”的颜色，会通过这种高光溢出的特效去表现。如下图</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/gl/img/globe-posteffect-bloom.png\"></p>\n",
                       "properties": {
                         "enable": {
                           "type": [
@@ -6712,7 +6712,7 @@
                             "HTMLImageElement",
                             "HTMLCanvasElement"
                           ],
-                          "descriptionCN": "<p>颜色查找表，推荐使用。</p>\n<p>颜色查找表是一张像下面这样的纹理图片。</p>\n<p><img width=\"200\" height=\"auto\" src=\"documents/asset/img/lookup.png\"></p>\n<p>这张是基础的查找表图片，你可以直接拿来使用，为了方便将场景色调调整你想要的效果，你可以将场景截图后在 Photoshop 等图像处理软件中调整颜色到想要的效果，然后将相同的调整应用到上面这张查找表的图片上。</p>\n<p>比如调成冷色调后，查找表的纹理图片就会成为下面这样：</p>\n<p><img width=\"200\" height=\"auto\" src=\"documents/asset/img/crispwinter.png\"></p>\n<p>然后那这张纹理图片就作为该配置项的值，就可以得到相同的你在 Photoshop 上的效果了。</p>\n<p>当然如果你只是想得到一张截图，完全不用再这样折腾，但是如果你想在能实时交互的作品中也能方便的调整到理想的色调，这个就非常有用了。</p>\n"
+                          "descriptionCN": "<p>颜色查找表，推荐使用。</p>\n<p>颜色查找表是一张像下面这样的纹理图片。</p>\n<p><img width=\"200\" height=\"auto\" src=\"documents/asset/gl/img/lookup.png\"></p>\n<p>这张是基础的查找表图片，你可以直接拿来使用，为了方便将场景色调调整你想要的效果，你可以将场景截图后在 Photoshop 等图像处理软件中调整颜色到想要的效果，然后将相同的调整应用到上面这张查找表的图片上。</p>\n<p>比如调成冷色调后，查找表的纹理图片就会成为下面这样：</p>\n<p><img width=\"200\" height=\"auto\" src=\"documents/asset/gl/img/crispwinter.png\"></p>\n<p>然后那这张纹理图片就作为该配置项的值，就可以得到相同的你在 Photoshop 上的效果了。</p>\n<p>当然如果你只是想得到一张截图，完全不用再这样折腾，但是如果你想在能实时交互的作品中也能方便的调整到理想的色调，这个就非常有用了。</p>\n"
                         },
                         "exposure": {
                           "type": [
@@ -6840,7 +6840,7 @@
                       "type": [
                         "number"
                       ],
-                      "descriptionCN": "<p>视角绕 x 轴，即上下旋转的角度。配合 <a href=\"#series-map3D.light.main.beta\">beta</a> 可以控制视角的方向。</p>\n<p>如下示意图：</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/img/view-alpha-beta.png\"></p>\n",
+                      "descriptionCN": "<p>视角绕 x 轴，即上下旋转的角度。配合 <a href=\"#series-map3D.light.main.beta\">beta</a> 可以控制视角的方向。</p>\n<p>如下示意图：</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/gl/img/view-alpha-beta.png\"></p>\n",
                       "default": 40
                     },
                     "beta": {
@@ -6941,7 +6941,7 @@
               "type": [
                 "Object"
               ],
-              "descriptionCN": "<p>曲面图。支持通过 <a href=\"#series-surface.parametric\">parametric</a> 绘制<a href=\"https://en.wikipedia.org/wiki/Parametric_surface\" target=\"_blank\">参数曲面</a>。</p>\n<p>下图就是一个配置成金属材质的类似一个金属零件的参数曲面。</p>\n<p><img width=\"500\" height=\"auto\" src=\"documents/asset/img/parametric-surface.png\"></p>\n",
+              "descriptionCN": "<p>曲面图。支持通过 <a href=\"#series-surface.parametric\">parametric</a> 绘制<a href=\"https://en.wikipedia.org/wiki/Parametric_surface\" target=\"_blank\">参数曲面</a>。</p>\n<p>下图就是一个配置成金属材质的类似一个金属零件的参数曲面。</p>\n<p><img width=\"500\" height=\"auto\" src=\"documents/asset/gl/img/parametric-surface.png\"></p>\n",
               "properties": {
                 "type": {
                   "type": [
@@ -7191,7 +7191,7 @@
                   "type": [
                     "Array"
                   ],
-                  "descriptionCN": "<p>曲面图的数据数组。</p>\n<p>数据是线性存储的数组，包含<code>X 顶点数</code>x<code>Y 顶点数</code>个数据。一个 5 x 5 的曲面共有 25 个顶点，数据在数组中的索引如下</p>\n<p><img width=\"400\" height=\"auto\" src=\"documents/asset/img/surface-index.png\"></p>\n<p>上图使用的数据：</p>\n<pre><code class=\"lang-js\">data: [\n    [-1,-1,0],[-0.5,-1,0],[0,-1,0],[0.5,-1,0],[1,-1,0],\n    [-1,-0.5,0],[-0.5,-0.5,1],[0,-0.5,0],[0.5,-0.5,-1],[1,-0.5,0],\n    [-1,0,0],[-0.5,0,0],[0,0,0],[0.5,0,0],[1,0,0],\n    [-1,0.5,0],[-0.5,0.5,-1],[0,0.5,0],[0.5,0.5,1],[1,0.5,0],\n    [-1,1,0],[-0.5,1,0],[0,1,0],[0.5,1,0],[1,1,0]\n]\n</code></pre>\n<p>每一项分别为 <code>x</code>, <code>y</code>, <code>z</code>。</p>\n<p>对于参数方程来说，每一项需要存储五个数据，分别是 <code>x</code>, <code>y</code>, <code>z</code> 和参数 <code>u</code>, <code>v</code>。而数据的索引按照<code>u</code>, <code>v</code> 的顺序。例如下面的数据：</p>\n<pre><code class=\"lang-js\">data: [\n    // v 为 0，u 从 -3.14 到 3.13\n    [0,0,1,-3.14,0],[0,0,1,-1.57,0],[0,0,1,0,0],[0,0,1,1.57,0],[0,0,1,3.14,0],\n    // v 为 1.57，u 从 -3.14 到 3.13\n    [0,-1,0,-3.14,1.57],[-1,0,0,-1.57,1.57],[0,1,0,0,1.57],[1,0,0,1.57,1.57],[0,-1,0,3.14,1.57],\n    // v 为 3.14，u 从 -3.14 到 3.13\n    [0,0,-1,-3.14,3.14],[0,0,-1,-1.57,3.14],[0,0,-1,0,3.14],[0,0,-1,1.57,3.14],[0,0,-1,3.14,3.14]]\n]\n</code></pre>\n<p>有些时候我们需要指定每个数据项的名称，这时候需要每个项为一个对象：</p>\n<pre><code class=\"lang-js\">[{\n    // 数据项的名称\n    name: &#39;数据1&#39;,\n    // 数据项值\n    value: [12, 14, 10]\n}, {\n    name: &#39;数据2&#39;,\n    value: [34, 50, 15]\n}]\n</code></pre>\n<p>需要对个别内容指定进行个性化定义时：</p>\n<pre><code class=\"lang-js\">[{\n    name: &#39;数据1&#39;,\n    value: [12, 14, 10]\n}, {\n    // 数据项名称\n    name: &#39;数据2&#39;,\n    value : [34, 50, 15],\n    //自定义特殊itemStyle，仅对该item有效\n    itemStyle:{}\n}]\n</code></pre>\n",
+                  "descriptionCN": "<p>曲面图的数据数组。</p>\n<p>数据是线性存储的数组，包含<code>X 顶点数</code>x<code>Y 顶点数</code>个数据。一个 5 x 5 的曲面共有 25 个顶点，数据在数组中的索引如下</p>\n<p><img width=\"400\" height=\"auto\" src=\"documents/asset/gl/img/surface-index.png\"></p>\n<p>上图使用的数据：</p>\n<pre><code class=\"lang-js\">data: [\n    [-1,-1,0],[-0.5,-1,0],[0,-1,0],[0.5,-1,0],[1,-1,0],\n    [-1,-0.5,0],[-0.5,-0.5,1],[0,-0.5,0],[0.5,-0.5,-1],[1,-0.5,0],\n    [-1,0,0],[-0.5,0,0],[0,0,0],[0.5,0,0],[1,0,0],\n    [-1,0.5,0],[-0.5,0.5,-1],[0,0.5,0],[0.5,0.5,1],[1,0.5,0],\n    [-1,1,0],[-0.5,1,0],[0,1,0],[0.5,1,0],[1,1,0]\n]\n</code></pre>\n<p>每一项分别为 <code>x</code>, <code>y</code>, <code>z</code>。</p>\n<p>对于参数方程来说，每一项需要存储五个数据，分别是 <code>x</code>, <code>y</code>, <code>z</code> 和参数 <code>u</code>, <code>v</code>。而数据的索引按照<code>u</code>, <code>v</code> 的顺序。例如下面的数据：</p>\n<pre><code class=\"lang-js\">data: [\n    // v 为 0，u 从 -3.14 到 3.13\n    [0,0,1,-3.14,0],[0,0,1,-1.57,0],[0,0,1,0,0],[0,0,1,1.57,0],[0,0,1,3.14,0],\n    // v 为 1.57，u 从 -3.14 到 3.13\n    [0,-1,0,-3.14,1.57],[-1,0,0,-1.57,1.57],[0,1,0,0,1.57],[1,0,0,1.57,1.57],[0,-1,0,3.14,1.57],\n    // v 为 3.14，u 从 -3.14 到 3.13\n    [0,0,-1,-3.14,3.14],[0,0,-1,-1.57,3.14],[0,0,-1,0,3.14],[0,0,-1,1.57,3.14],[0,0,-1,3.14,3.14]]\n]\n</code></pre>\n<p>有些时候我们需要指定每个数据项的名称，这时候需要每个项为一个对象：</p>\n<pre><code class=\"lang-js\">[{\n    // 数据项的名称\n    name: &#39;数据1&#39;,\n    // 数据项值\n    value: [12, 14, 10]\n}, {\n    name: &#39;数据2&#39;,\n    value: [34, 50, 15]\n}]\n</code></pre>\n<p>需要对个别内容指定进行个性化定义时：</p>\n<pre><code class=\"lang-js\">[{\n    name: &#39;数据1&#39;,\n    value: [12, 14, 10]\n}, {\n    // 数据项名称\n    name: &#39;数据2&#39;,\n    value : [34, 50, 15],\n    //自定义特殊itemStyle，仅对该item有效\n    itemStyle:{}\n}]\n</code></pre>\n",
                   "items": {
                     "type": "Object",
                     "properties": {
@@ -7248,14 +7248,14 @@
                       "type": [
                         "number"
                       ],
-                      "descriptionCN": "<p><code>roughness</code>属性用于表示材质的光泽度，<code>0</code>为完全光滑，<code>1</code>完全粗糙，中间的值则是介于这两者之间。</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>roughness</code>分别是<code>0.2</code>（光滑）与<code>0.8</code>（粗糙）的效果</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/img/globe-gloss.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/img/globe-rough.png\"></p>\n",
+                      "descriptionCN": "<p><code>roughness</code>属性用于表示材质的光泽度，<code>0</code>为完全光滑，<code>1</code>完全粗糙，中间的值则是介于这两者之间。</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>roughness</code>分别是<code>0.2</code>（光滑）与<code>0.8</code>（粗糙）的效果</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-gloss.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-rough.png\"></p>\n",
                       "default": 0.5
                     },
                     "metalness": {
                       "type": [
                         "number"
                       ],
-                      "descriptionCN": "<p><code>metalness</code>属性用于表示材质是金属还是非金属，<code>0</code>为非金属，<code>1</code>为金属，中间的值则是介于这两者之间，但是通常设成<code>0</code>和<code>1</code>就能满足大部分场景了</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>metalness</code>分别设成<code>1</code>与<code>0</code>的效果区别。</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/img/globe-metal.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/img/globe-non-metal.png\"></p>\n",
+                      "descriptionCN": "<p><code>metalness</code>属性用于表示材质是金属还是非金属，<code>0</code>为非金属，<code>1</code>为金属，中间的值则是介于这两者之间，但是通常设成<code>0</code>和<code>1</code>就能满足大部分场景了</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>metalness</code>分别设成<code>1</code>与<code>0</code>的效果区别。</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-metal.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-non-metal.png\"></p>\n",
                       "default": 0
                     },
                     "baseTexture": {
@@ -7542,7 +7542,7 @@
                   "type": [
                     "Object"
                   ],
-                  "descriptionCN": "<p><a href=\"https://github.com/gephi/gephi/wiki/Force-Atlas-2\" target=\"_blank\">forceAtlas2</a> 布局算法。</p>\n<p>该算法对大规模的网络数据有着高效的布局效率和稳定的布局结果。</p>\n<p>支持通过 <a href=\"#series-graphGL.forceAtlas2.GPU\">forceAtlas2.GPU</a> 配置为 GPU 还是 CPU 布局。</p>\n<p>CPU 实现的优势是兼容性好，而 GPU 实现在高端显卡中有着数十倍甚至上百倍的性能优势。</p>\n<p>下面是在 GTX1070 和 i7 4GHz 的电脑中对一个 2w 个节点，近 5w 条边的关系图一次布局的迭代的性能对比。</p>\n<p><img width=\"400\" height=\"auto\" src=\"documents/asset/img/gpu-layout-perf.png\"></p>\n",
+                  "descriptionCN": "<p><a href=\"https://github.com/gephi/gephi/wiki/Force-Atlas-2\" target=\"_blank\">forceAtlas2</a> 布局算法。</p>\n<p>该算法对大规模的网络数据有着高效的布局效率和稳定的布局结果。</p>\n<p>支持通过 <a href=\"#series-graphGL.forceAtlas2.GPU\">forceAtlas2.GPU</a> 配置为 GPU 还是 CPU 布局。</p>\n<p>CPU 实现的优势是兼容性好，而 GPU 实现在高端显卡中有着数十倍甚至上百倍的性能优势。</p>\n<p>下面是在 GTX1070 和 i7 4GHz 的电脑中对一个 2w 个节点，近 5w 条边的关系图一次布局的迭代的性能对比。</p>\n<p><img width=\"400\" height=\"auto\" src=\"documents/asset/gl/img/gpu-layout-perf.png\"></p>\n",
                   "properties": {
                     "GPU": {
                       "type": [

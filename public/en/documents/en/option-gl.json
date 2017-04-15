@@ -38,7 +38,7 @@
               "HTMLImageElement",
               "HTMLCanvasElement"
             ],
-            "descriptionCN": "<p>地球的高度纹理。高度纹理可以用于配合光照表现地球表面的明暗细节。下面两图分别是使用 <code>heightTexture</code> 和未使用 <code>heightTexuture</code> 的效果区别。</p>\n<p><img width=\"300\" height=\"auto\" src=\"documents/asset/img/heightmap-enable.png\"></p>\n<p><img width=\"300\" height=\"auto\" src=\"documents/asset/img/heightmap-disable.png\"></p>\n"
+            "descriptionCN": "<p>地球的高度纹理。高度纹理可以用于配合光照表现地球表面的明暗细节。下面两图分别是使用 <code>heightTexture</code> 和未使用 <code>heightTexuture</code> 的效果区别。</p>\n<p><img width=\"300\" height=\"auto\" src=\"documents/asset/gl/img/heightmap-enable.png\"></p>\n<p><img width=\"300\" height=\"auto\" src=\"documents/asset/gl/img/heightmap-disable.png\"></p>\n"
           },
           "displacementTexture": {
             "type": [
