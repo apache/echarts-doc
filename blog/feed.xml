@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.3">Jekyll</generator><link href="http://echarts.baidu.com/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://echarts.baidu.com/blog/" rel="alternate" type="text/html" /><updated>2017-04-14T14:48:11+08:00</updated><id>http://echarts.baidu.com/blog/</id><entry><title type="html">ECharts GL 1.0 alpha 发布</title><link href="http://echarts.baidu.com/blog/2017/04/12/echarts-gl-alpha.html" rel="alternate" type="text/html" title="ECharts GL 1.0 alpha 发布" /><published>2017-04-12T00:00:00+08:00</published><updated>2017-04-12T00:00:00+08:00</updated><id>http://echarts.baidu.com/blog/2017/04/12/echarts-gl-alpha</id><content type="html" xml:base="http://echarts.baidu.com/blog/2017/04/12/echarts-gl-alpha.html">&lt;p&gt;距离 ECharts-X 最近一个版本已经过去了两年多时间，期间我们不断被开发者在各种渠道询问 ECharts-X 为什么还不升级新版本，是不是不再维护了等等，对于这些问题我们只能回答我们还没准备好。尽管这两年时间 ECharts X 没什么动静，但是其它的工作，像 ECharts 3 的架构大改动和后续版本的迭代升级，以及其它 WebGL 产品的开发，都是对新版本架构和技术上的积累。现在我们终于可以说我们准备得差不多了，ECharts-X 的下一代，ECharts-GL 发布 1.0 alpha。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.3">Jekyll</generator><link href="http://echarts.baidu.com/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://echarts.baidu.com/blog/" rel="alternate" type="text/html" /><updated>2017-04-14T18:29:18+08:00</updated><id>http://echarts.baidu.com/blog/</id><entry><title type="html">ECharts GL 1.0 alpha 发布</title><link href="http://echarts.baidu.com/blog/2017/04/12/echarts-gl-alpha.html" rel="alternate" type="text/html" title="ECharts GL 1.0 alpha 发布" /><published>2017-04-12T00:00:00+08:00</published><updated>2017-04-12T00:00:00+08:00</updated><id>http://echarts.baidu.com/blog/2017/04/12/echarts-gl-alpha</id><content type="html" xml:base="http://echarts.baidu.com/blog/2017/04/12/echarts-gl-alpha.html">&lt;p&gt;距离 ECharts-X 最近一个版本已经过去了两年多时间，期间我们不断被开发者在各种渠道询问 ECharts-X 为什么还不升级新版本，是不是不再维护了等等，对于这些问题我们只能回答我们还没准备好。尽管这两年时间 ECharts X 没什么动静，但是其它的工作，像 ECharts 3 的架构大改动和后续版本的迭代升级，以及其它 WebGL 产品的开发，都是对新版本架构和技术上的积累。现在我们终于可以说我们准备得差不多了，ECharts-X 的下一代，ECharts-GL 发布 1.0 alpha。&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://github.com/ecomfe/echarts-gl&quot;&gt;ECharts GL&lt;/a&gt; 是 ECharts 的 WebGL 扩展，其中提供了三维散点图，飞线图，柱状图，曲面图，地球等多种三维可视化方式。并且增加 &lt;code class=&quot;highlighter-rouge&quot;&gt;scatterGL&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;graphGL&lt;/code&gt; 系列类型用于二维的散点图，关系图的加速绘制和布局。&lt;/p&gt;
 
@@ -67,7 +67,9 @@
 
 &lt;p&gt;下面这个更复杂点的例子使用&lt;code class=&quot;highlighter-rouge&quot;&gt;scatter3D&lt;/code&gt;可视化了三维的 &lt;a href=&quot;https://en.wikipedia.org/wiki/Simplex_noise&quot;&gt;Simplex Noise&lt;/a&gt;&lt;/p&gt;
 
-&lt;div style=&quot;width: 100%; height: 400px; background: #111&quot; class=&quot;ec-lazy&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xBkWoZOjTe&amp;amp;v=2&quot;&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a href=&quot;http://gallery.echartsjs.com/editor.html?c=xBkWoZOjTe&quot;&gt;
+    &lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2017-04-12/simplex-noise.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;除了三维的散点图，你也可以在笛卡尔坐标系上画 &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-line3D&quot;&gt;折线图 line3D&lt;/a&gt;，&lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-bar3D&quot;&gt;柱状图 bar3D&lt;/a&gt;，&lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-surface&quot;&gt;曲面图 surface&lt;/a&gt;。&lt;/p&gt;
 
@@ -75,21 +77,29 @@
 
 &lt;p&gt;你可以像下面这样用 &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-surface&quot;&gt;surface&lt;/a&gt; 画函数曲面。&lt;/p&gt;
 
-&lt;div style=&quot;width: 100%; height: 400px;&quot; class=&quot;ec-lazy&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xHkcYXm9pe&quot;&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a href=&quot;http://gallery.echartsjs.com/editor.html?c=xHkcYXm9pe&quot;&gt;
+    &lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2017-04-12/surface.png&quot; alt=&quot;&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;也可以像这样用曲面去可视化像图片像素这样的数据&lt;/p&gt;
 
-&lt;div style=&quot;width: 100%; height: 400px;&quot; class=&quot;ec-lazy&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xBk5PSvqpx&amp;amp;v=4&quot;&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a href=&quot;http://gallery.echartsjs.com/editor.html?c=xBk5PSvqpx&quot;&gt;
+    &lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2017-04-12/image-pixels.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;甚至你可以用参数方程构建出下面这样有趣的参数曲面&lt;/p&gt;
 
-&lt;div style=&quot;width: 100%; height: 400px;&quot; class=&quot;ec-lazy&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xHku9OE96l&quot;&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a href=&quot;http://gallery.echartsjs.com/editor.html?c=xHku9OE96l&quot;&gt;
+    &lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2017-04-12/parametric-surface.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;除了三维笛卡尔坐标系，像柱状图，散点图也可以显示在&lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#globe&quot;&gt;地球&lt;/a&gt;，&lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#geo3D&quot;&gt;三维地理坐标系&lt;/a&gt;上。&lt;/p&gt;
 
 &lt;p&gt;比如下面这个例子就是在地球上通过散点图绘制世界人口。&lt;/p&gt;
 
-&lt;div style=&quot;width: 100%; height: 400px;&quot; class=&quot;ec-lazy&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xS1moC0s6x&quot;&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a href=&quot;http://gallery.echartsjs.com/editor.html?c=xS1moC0s6x&quot;&gt;
+    &lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2017-04-12/high-quality-2.jpg&quot; style=&quot;width:100%;&quot; alt=&quot;&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;你可以大胆的组合不同坐标系和系列，制作出更具创造力的可视化作品！&lt;/p&gt;
 
@@ -118,7 +128,7 @@
 
 &lt;p&gt;或者这样 Bling Bling 的影视广告特效：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2017-04-12/high-quality-2.jpg&quot; style=&quot;width:100%;&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2017-04-12/high-quality-5.jpg&quot; style=&quot;width:100%;&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;又或者这样的大规模建筑群：&lt;/p&gt;
 
@@ -134,7 +144,8 @@
 
 &lt;p&gt;在 ECharts GL 里利用 WebGL 加速绘制后，可以无压力得绘制和实时的交互十万个数据的散点图了。&lt;/p&gt;
 
-&lt;div style=&quot;width: 100%; height: 400px; background: #111;&quot; class=&quot;ec-lazy&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xHJkXhU9Tg&quot;&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a href=&quot;http://gallery.echartsjs.com/editor.html?c=xHJkXhU9Tg&quot;&gt;
+&lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2017-04-12/weibo-checkin.jpg&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;而且实现这一切只需要把原先的&lt;code class=&quot;highlighter-rouge&quot;&gt;scatter&lt;/code&gt;类型改为&lt;code class=&quot;highlighter-rouge&quot;&gt;scatterGL&lt;/code&gt;类型，不需要再做其它的改动！&lt;/p&gt;
 
@@ -150,17 +161,19 @@
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;2500&lt;/code&gt;个节点的网格图使用 GPU 布局的例子（只支持 PC 端）。&lt;/p&gt;
 
-&lt;div style=&quot;width: 100%; height: 400px; background: #111;&quot; class=&quot;ec-lazy&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xrJchBL9ag&quot;&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a href=&quot;http://gallery.echartsjs.com/editor.html?c=xrJchBL9ag&quot;&gt;
+&lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2017-04-12/grid.jpg&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;这里特别感谢 Gephi 提供了 Force Atlas2 这样在大规模关系数据上能够有稳定优良的布局结果的算法。&lt;/p&gt;
 
 &lt;h2 id=&quot;echarts-&quot;&gt;五、与 ECharts 交互组件的结合&lt;/h2&gt;
 
-&lt;p&gt;ECharts GL 作为一个扩展，并不是独立的，它提供的系列和组件能够和 ECharts 中的大部分组件，例如 ，， 组合使用。你可以使用 &lt;a href=&quot;http://echarts.baidu.com/option.html#visualMap&quot;&gt;visualMap&lt;/a&gt; 组件对 GL 中的系列进行颜色，大小，不透明的编码，可以用 &lt;a href=&quot;http://echarts.baidu.com/option.html#tooltip&quot;&gt;tooltip&lt;/a&gt; 组件显示 GL 中图形的数据信息，也可以用 &lt;a href=&quot;http://echarts.baidu.com/option.html#legend&quot;&gt;legend&lt;/a&gt; 筛选出想要展示的系列，等等等等。&lt;/p&gt;
+&lt;p&gt;ECharts GL 作为一个扩展，并不是独立的，它提供的系列和组件能够和 ECharts 中的大部分组件组合使用。你可以使用 &lt;a href=&quot;http://echarts.baidu.com/option.html#visualMap&quot;&gt;visualMap&lt;/a&gt; 组件对 GL 中的系列进行颜色，大小，不透明的编码，可以用 &lt;a href=&quot;http://echarts.baidu.com/option.html#tooltip&quot;&gt;tooltip&lt;/a&gt; 组件显示 GL 中图形的数据信息，也可以用 &lt;a href=&quot;http://echarts.baidu.com/option.html#legend&quot;&gt;legend&lt;/a&gt; 筛选出想要展示的系列等等。&lt;/p&gt;
 
 &lt;p&gt;例如下面这个例子用 &lt;a href=&quot;http://echarts.baidu.com/option.html#visualMap&quot;&gt;visualMap&lt;/a&gt; 组件对柱状图做了颜色的映射，而且能够通过控件筛选出区间内的数据&lt;/p&gt;
 
-&lt;div style=&quot;width: 100%; height: 400px; background: #111;&quot; class=&quot;ec-lazy&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xSyMekmcTx&quot;&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a href=&quot;http://gallery.echartsjs.com/editor.html?c=xSyMekmcTx&quot;&gt;
+&lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2017-04-12/visual-map.jpg&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;当然除此之外，你也可以在一个实例里任意混搭使用 ECharts GL 的组件以及 ECharts 的组件。&lt;/p&gt;
 
