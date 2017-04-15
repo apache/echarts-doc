@@ -61,7 +61,7 @@ timerChart.setOption({
             show : false
         },
         detail : {
-            formatter:function () { return ''},
+            formatter:function () { return '';},
             textStyle: {
                 color: 'auto',
                 fontWeight: 'bolder'
