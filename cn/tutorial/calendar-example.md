@@ -56,7 +56,7 @@ myChart.setOption(option);
 > - `echarts` 变量是否存在；
 > - 控制台是否报错;
 > - DOM 元素在 `echarts.init` 的时候是否有高度和宽度。
-> - 若为type: heatMap是否配置 `visualMap`参数
+> - 若为 `type: heatmap`，检查是否配置了 `visualMap`。
 
 **附完整示例代码**
 
