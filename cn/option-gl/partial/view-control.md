@@ -16,9 +16,19 @@
 
 旋转操作的灵敏度，值越大越灵敏。默认为`${defaultRotateSensitivitydefault(1)}`
 
+设置为`0`后无法旋转。
+
 ##${prefix|default('#')} zoomSensitivity(number) = ${defaultZoomSensitivitydefault(1)}
 
 缩放操作的灵敏度，值越大越灵敏。默认为`${defaultRotateSensitivitydefault(1)}`
+
+设置为`0`后无法缩放。
+
+##${prefix|default('#')} panSensitivity(number) = ${defaultZoomSensitivitydefault(1)}
+
+平移操作的灵敏度，值越大越灵敏。默认为`${defaultRotateSensitivitydefault(1)}`
+
+设置为`0`后无法平移。
 
 ##${prefix|default('#')} autoRotateAfterStill(number) = 3
 
@@ -47,6 +57,10 @@
 ##${prefix|default('#')} beta(number) = ${defaultBeta|default(0)}
 
 视角绕 y 轴，即左右旋转的角度。
+
+##${prefix|default('#')} center(Array) = ${defaultCenter}
+
+视角中心点，旋转也会围绕这个中心点旋转，默认为`[0,0,0]`。
 
 ##${prefix|default('#')} minAlpha(number) = ${defaultMinAlpha|default(-90)}
 
