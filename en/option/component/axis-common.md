@@ -209,7 +209,7 @@ Split area of axis in [grid](~grid) area, not shown by default.
 ) }}
 {{ /if }}
 
-##${prefix} show(boolean) = ${defaultShow|default(true)}
+##${prefix} show(boolean) = ${defaultShow|default(false)}
 Whether to show the splitArea.
 ##${prefix} areaStyle(Object)
 Split area style.

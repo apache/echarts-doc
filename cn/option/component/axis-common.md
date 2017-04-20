@@ -190,7 +190,7 @@ splitLine: {
 ) }}
 {{ /if }}
 
-##${prefix} show(boolean) = ${defaultShow|default(true)}
+##${prefix} show(boolean) = ${defaultShow|default(false)}
 是否显示分隔区域。
 ##${prefix} areaStyle(Object)
 分隔区域的样式设置。
