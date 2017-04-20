@@ -246,6 +246,31 @@ option: {
 注意，如果轴的类型为 `category`，则 `endValue` 即可以设置为 `axis.data` 数组的 `index`，也可以设置为数组值本身。
 但是如果设置为数组值本身，会在内部自动转化为数组的 index。
 
+## minSpan(number) = null
+
+用于限制窗口大小的最小值（百分比值），取值范围是 `0` ~ `100`。
+
+如果设置了 [${dataZoomName}.minValueSpan](~${dataZoomName}.minValueSpan) 则 `minSpan` 失效。
+
+## maxSpan(number) = null
+
+用于限制窗口大小的最大值（百分比值），取值范围是 `0` ~ `100`。
+
+如果设置了 [${dataZoomName}.maxValueSpan](~${dataZoomName}.maxValueSpan) 则 `maxSpan` 失效。
+
+## minValueSpan(number|string|Date) = null
+
+用于限制窗口大小的最小值（实际数值）。
+
+如在时间轴上可以设置为：`3600 * 24 * 1000 * 5` 表示 5 天。
+在类目轴上可以设置为 `5` 表示 5 个类目。
+
+## maxValueSpan(number|string|Date) = null
+
+用于限制窗口大小的最大值（实际数值）。
+
+如在时间轴上可以设置为：`3600 * 24 * 1000 * 5` 表示 5 天。
+在类目轴上可以设置为 `5` 表示 5 个类目。
 
 ## orient(string) = null
 

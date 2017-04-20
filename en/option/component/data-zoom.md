@@ -254,6 +254,34 @@ The end absolute value of the window, not works when [${dataZoomName}.end](~${da
 Notice, if an axis is set to be `category`, `startValue` could be set as `index` of the array of `axis.data` or as the array value itself. In the latter case, it will internally and automatically translate to the index of array.
 
 
+## minSpan(number) = null
+
+Used to restrict minimal window size, in percent, which value is in the range of [0, 100].
+
+If [${dataZoomName}.minValueSpan](~${dataZoomName}.minValueSpan) is set, `minSpan` does not work any more.
+
+## maxSpan(number) = null
+
+Used to restrict maximal window size, in percent, which value is in the range of [0, 100].
+
+If [${dataZoomName}.maxValueSpan](~${dataZoomName}.maxValueSpan) is set, `maxSpan` does not work any more.
+
+## minValueSpan(number|string|Date) = null
+
+Used to restrict minimal window size.
+
+For example:
+In time axis it can be set as `3600 * 24 * 1000 * 5` to represent "5 day".
+In category axis it can be set as `5` to represent 5 categories.
+
+## maxValueSpan(number|string|Date) = null
+
+Used to restrict maximal window size.
+
+For example:
+In time axis it can be set as `3600 * 24 * 1000 * 5` to represent "5 day".
+In category axis it can be set as `5` to represent 5 categories.
+
 ## orient(string) = null
 
 Specify whether the layout of `dataZoom` component is horizontal or vertical. What's more, it indicates whether the horizontal axis or vertical axis is controlled by default in catesian coordinate system.
