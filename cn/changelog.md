@@ -1,3 +1,11 @@
+## v3.5.4
+<div class="time">2017-04-27</div>
+
++ [^] 修复了对 [水球图](https://github.com/ecomfe/echarts-liquidfill) clipPath 的支持问题。
++ [^] 修复了 `label` 设置为 `insideTop` 时的位置。
++ [^] 修复了 [SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData) transform 时的问题。
+
+
 ## v3.5.3
 <div class="time">2017-04-14</div>
 

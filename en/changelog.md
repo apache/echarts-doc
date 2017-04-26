@@ -1,3 +1,11 @@
+## v3.5.4
+<div class="time">2017-04-27</div>
+
++ [^] Fixed the `clipPath` support for [liquidfill](https://github.com/ecomfe/echarts-liquidfill).
++ [^] Fixed the position when `label` is set as `insideTop`.
++ [^] Fixed the problem when transforming [SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData).
+
+
 ## v3.5.3
 <div class="time">2017-04-14</div>
 
