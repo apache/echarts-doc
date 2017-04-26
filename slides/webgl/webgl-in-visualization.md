@@ -1,5 +1,5 @@
 ---
-title: WebGL 在数据可视化中的实践
+title: ECharts 中运用 WebGL 的实践
 theme: ec
 scripts: asset/common/jquery.min.js,asset/common/echarts.min.js,ec.js
 revealOptions:
@@ -18,34 +18,17 @@ revealOptions:
 <!--.slide: data-background="./asset/img/graph-gl2.jpg" -->
 
 
-# WebGL 在数据可视化中的实践
+# ECharts 中运用 WebGL 的实践
 
 沈毅
 
 Note:
 这次分享我会讲一下我们团队最近在 WebGL 上的一些实践。
-具体的可视化方面的知识也会穿插着介绍。
 
----
+我这次分享主要还是侧重应用 WebGL 时候使用的一些算法，以及一些图形学的知识。
+具体的可视化方面的知识也会穿插着介绍。之前对这一块没怎么接触过的同学，我希望这次分享能够让大家觉得 WebGL 和可视化很好玩很有魅力，以后有机会的话也能够玩起来或者在工作中用起来，如果有接触过的，希望能够给大家带来一些不一样的启发。
 
-<!--.slide: data-background-video="./asset/video/showreel.mp4" data-background-opacity="0.5" -->
-
-## About Me
-
-+ <b>WebGL</b> <small>2011</small>
-
-+ <b>Canvas</b> <small>2013</small>
-
-+ <b>ECharts</b> <small>2014</small>
-
-+ <b>qtek</b> <small>2013</small>
-
-Note:
-首先自我介绍一下，我 2012 年在浙大毕业就进入百度做前端开发。然后技能点基本上都点在了 WebGL 和 Canvas 上。用 WebGL 也做了不少大大小小的项目，这个背景视频就是挑了比较视觉系的项目做了一个混剪。
-
-然后我是 14 年才开始做 ECharts 做得比较多。Canvas 也是这时候开始写的比较多的，不得不说，Canvas 比起 WebGL 真的是简单很多。但是有时候也会比较受限。
-
-最后的 qtek 是我个人一直在维护的一个 WebGL 框架。
+Ok，言归正传。
 
 ---
 
@@ -540,9 +523,11 @@ Note:
 
 程序生成有一个好处，就是它不用加载模型资源，因为 Web 端往往网速会成为影响用户体验的一大因素，如果要很高质量的模型，就需要加载很大的模型，但是可能很多人等不及加载完就把网页关了，如果程序生成就可以控制模型的精度而不用担心加载时间。
 
-比如这是做 PPT 非常有名的大 V 阿文，用 GL 生成的几张效果图。他就是输入一张精度不高的头像图片，然后通过这个图片像素数据画出这个有点像 minecraft 效果的柱状图。
+----
 
-TODO
+<!--.slide: data-background="./asset/img/temple.jpg" -->
+
+<img src="./asset/img/sample.jpg" class="fragment" style="border: 4px solid #fff;" alt="">
 
 ----
 
@@ -559,7 +544,7 @@ Note:
 
 ----
 
-<iframe data-src="asset/ec-demo/map-wireframe.html" class="fullscreen" frameborder="0"></iframe>
+<!--.slide: data-background="./asset/img/map3D-wireframe.jpg" -->
 
 ----
 
@@ -951,7 +936,9 @@ Note:
 
 Note:
 
-那怎么办？我们就把采样分布到多帧中，比如原来 SSAO 要采样 60 次才会有比较好的效果，那么我们
+那怎么办？
+
+一帧解决不了的，我们就分很多帧去解决
 
 ----
 
@@ -984,13 +971,6 @@ Note:
 
 ----
 
-<iframe data-src="asset/ec-demo/surface-transparent-large.html" class="fullscreen" frameborder="0"></iframe>
-
-Note:
-我们对于半透明图形中三角面的排序也是这么做的，因为 WebGL 在绘制透明的物体时需要保证三角面是从远往近绘制的才能混合正确，所以我们需要每一帧都对三角面做排序，但是像这个参数曲面中有 40w 的面，排序依次要几百 ms，能够做到实时是不可能，所以我们快排放到多帧里执行了，选择快排的原因也是因为它能够做到第一帧就把小的那一批都放前面，大的那一批都放后面。
-
-----
-
 ## Temporal Methods 无法解决的
 
 + 动态的画面
@@ -1006,15 +986,6 @@ Note:
 还有就是因为像 ShadowMap 这样数据精度不够需要添加 bias 的算法，Temporal Methods 也没办法解决。
 
 所以开始对无限的画质中无限这个词加了引号。
-
-----
-
-## More
-
-+ GPGPU 中实现 Barnes Hut
-
-Note:
-因为 Shader 中实现数据结构非常麻烦，所以像 Barnes Hut 这种依赖四叉树作为数据结构的，就很难在 GPU 中使用。但是也不是不可能，GPU Gem 2 中就已经有人尝试了在 Shader 模拟指针实现了四叉树。
 
 ---
 
@@ -1035,5 +1006,7 @@ Note:
 <!--.slide: data-background="./asset/img/buildings2.jpg" -->
 
 ## Thanks
+
+<img width="400px" src="asset/img/developer.png" alt="">
 
 ---

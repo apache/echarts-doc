@@ -106,7 +106,8 @@ baseTexture: mapChart
 
 {{ use: partial-view-control(
     componentType="globe",
-    componentName="地球"
+    componentName="地球",
+    defaultPanSensitivity=0
 ) }}
 
 ## layers(Array)

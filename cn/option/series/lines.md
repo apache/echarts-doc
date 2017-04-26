@@ -43,6 +43,9 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 ### period(number) = 4
 特效动画的时间，单位为 s。
 
+### delay(number|Function)
+特效动画的延时，支持设置成数字或者回调。单位`ms`
+
 ### constantSpeed(number) = 0
 配置特效图形的移动动画是否是固定速度，单位`像素/秒`，设置为大于 0 的值后会忽略 [period](~series-lines.effect.period) 配置项。
 
