@@ -432,13 +432,22 @@
                 "type": [
                   "number"
                 ],
-                "descriptionCN": "<p>旋转操作的灵敏度，值越大越灵敏。默认为``</p>\n"
+                "descriptionCN": "<p>旋转操作的灵敏度，值越大越灵敏。默认为``</p>\n<p>设置为<code>0</code>后无法旋转。</p>\n",
+                "default": 1
               },
               "zoomSensitivity": {
                 "type": [
                   "number"
                 ],
-                "descriptionCN": "<p>缩放操作的灵敏度，值越大越灵敏。默认为``</p>\n"
+                "descriptionCN": "<p>缩放操作的灵敏度，值越大越灵敏。默认为``</p>\n<p>设置为<code>0</code>后无法缩放。</p>\n",
+                "default": 1
+              },
+              "panSensitivity": {
+                "type": [
+                  "number"
+                ],
+                "descriptionCN": "<p>平移操作的灵敏度，值越大越灵敏。默认为``</p>\n<p>设置为<code>0</code>后无法平移。</p>\n",
+                "default": 0
               },
               "autoRotateAfterStill": {
                 "type": [
@@ -481,6 +490,12 @@
                 ],
                 "descriptionCN": "<p>视角绕 y 轴，即左右旋转的角度。</p>\n",
                 "default": 0
+              },
+              "center": {
+                "type": [
+                  "Array"
+                ],
+                "descriptionCN": "<p>视角中心点，旋转也会围绕这个中心点旋转，默认为<code>[0,0,0]</code>。</p>\n"
               },
               "minAlpha": {
                 "type": [
@@ -802,7 +817,7 @@
                   "string",
                   "Function"
                 ],
-                "descriptionCN": "<p>图形的颜色。 默认从全局调色盘 <a href=\"http://echarts.baidu.com/option.html#color\" target=\"_blank\">option.color</a> 获取颜色 </p>\n",
+                "descriptionCN": "<p>图形的颜色。 默认从全局调色盘 <a href=\"http://echarts.baidu.com/option.html#color\" target=\"_blank\">option.color</a> 获取颜色 </p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                 "default": "自适应"
               },
               "opacity": {
@@ -923,7 +938,7 @@
                     "type": [
                       "string"
                     ],
-                    "descriptionCN": "<p>图形的颜色。</p>\n",
+                    "descriptionCN": "<p>图形的颜色。</p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                     "default": "自适应"
                   },
                   "opacity": {
@@ -967,7 +982,7 @@
                       "type": [
                         "string"
                       ],
-                      "descriptionCN": "<p>图形的颜色。</p>\n",
+                      "descriptionCN": "<p>图形的颜色。</p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                       "default": "自适应"
                     },
                     "opacity": {
@@ -1088,7 +1103,7 @@
                           "type": [
                             "string"
                           ],
-                          "descriptionCN": "<p>图形的颜色。</p>\n",
+                          "descriptionCN": "<p>图形的颜色。</p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                           "default": "自适应"
                         },
                         "opacity": {
@@ -1637,13 +1652,22 @@
                 "type": [
                   "number"
                 ],
-                "descriptionCN": "<p>旋转操作的灵敏度，值越大越灵敏。默认为``</p>\n"
+                "descriptionCN": "<p>旋转操作的灵敏度，值越大越灵敏。默认为``</p>\n<p>设置为<code>0</code>后无法旋转。</p>\n",
+                "default": 1
               },
               "zoomSensitivity": {
                 "type": [
                   "number"
                 ],
-                "descriptionCN": "<p>缩放操作的灵敏度，值越大越灵敏。默认为``</p>\n"
+                "descriptionCN": "<p>缩放操作的灵敏度，值越大越灵敏。默认为``</p>\n<p>设置为<code>0</code>后无法缩放。</p>\n",
+                "default": 1
+              },
+              "panSensitivity": {
+                "type": [
+                  "number"
+                ],
+                "descriptionCN": "<p>平移操作的灵敏度，值越大越灵敏。默认为``</p>\n<p>设置为<code>0</code>后无法平移。</p>\n",
+                "default": 1
               },
               "autoRotateAfterStill": {
                 "type": [
@@ -1686,6 +1710,12 @@
                 ],
                 "descriptionCN": "<p>视角绕 y 轴，即左右旋转的角度。</p>\n",
                 "default": 0
+              },
+              "center": {
+                "type": [
+                  "Array"
+                ],
+                "descriptionCN": "<p>视角中心点，旋转也会围绕这个中心点旋转，默认为<code>[0,0,0]</code>。</p>\n"
               },
               "minAlpha": {
                 "type": [
@@ -1838,7 +1868,7 @@
                     "type": [
                       "string"
                     ],
-                    "descriptionCN": "<p>线条的颜色。</p>\n",
+                    "descriptionCN": "<p>线条的颜色。</p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                     "default": "'#333'"
                   },
                   "opacity": {
@@ -2113,7 +2143,7 @@
                     "type": [
                       "string"
                     ],
-                    "descriptionCN": "<p>线条的颜色。</p>\n",
+                    "descriptionCN": "<p>线条的颜色。</p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                     "default": "'rgba(0, 0, 0, 0.8)'"
                   },
                   "opacity": {
@@ -2547,13 +2577,22 @@
                 "type": [
                   "number"
                 ],
-                "descriptionCN": "<p>旋转操作的灵敏度，值越大越灵敏。默认为``</p>\n"
+                "descriptionCN": "<p>旋转操作的灵敏度，值越大越灵敏。默认为``</p>\n<p>设置为<code>0</code>后无法旋转。</p>\n",
+                "default": 1
               },
               "zoomSensitivity": {
                 "type": [
                   "number"
                 ],
-                "descriptionCN": "<p>缩放操作的灵敏度，值越大越灵敏。默认为``</p>\n"
+                "descriptionCN": "<p>缩放操作的灵敏度，值越大越灵敏。默认为``</p>\n<p>设置为<code>0</code>后无法缩放。</p>\n",
+                "default": 1
+              },
+              "panSensitivity": {
+                "type": [
+                  "number"
+                ],
+                "descriptionCN": "<p>平移操作的灵敏度，值越大越灵敏。默认为``</p>\n<p>设置为<code>0</code>后无法平移。</p>\n",
+                "default": 1
               },
               "autoRotateAfterStill": {
                 "type": [
@@ -2596,6 +2635,12 @@
                 ],
                 "descriptionCN": "<p>视角绕 y 轴，即左右旋转的角度。</p>\n",
                 "default": 40
+              },
+              "center": {
+                "type": [
+                  "Array"
+                ],
+                "descriptionCN": "<p>视角中心点，旋转也会围绕这个中心点旋转，默认为<code>[0,0,0]</code>。</p>\n"
               },
               "minAlpha": {
                 "type": [
@@ -2921,7 +2966,7 @@
                     "type": [
                       "string"
                     ],
-                    "descriptionCN": "<p>线条的颜色。</p>\n",
+                    "descriptionCN": "<p>线条的颜色。</p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                     "default": "'#333'"
                   },
                   "opacity": {
@@ -3196,7 +3241,7 @@
                     "type": [
                       "string"
                     ],
-                    "descriptionCN": "<p>线条的颜色。</p>\n",
+                    "descriptionCN": "<p>线条的颜色。</p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                     "default": "'rgba(0, 0, 0, 0.8)'"
                   },
                   "opacity": {
@@ -3533,7 +3578,7 @@
                     "type": [
                       "string"
                     ],
-                    "descriptionCN": "<p>线条的颜色。</p>\n",
+                    "descriptionCN": "<p>线条的颜色。</p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                     "default": "'#333'"
                   },
                   "opacity": {
@@ -3808,7 +3853,7 @@
                     "type": [
                       "string"
                     ],
-                    "descriptionCN": "<p>线条的颜色。</p>\n",
+                    "descriptionCN": "<p>线条的颜色。</p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                     "default": "'rgba(0, 0, 0, 0.8)'"
                   },
                   "opacity": {
@@ -4145,7 +4190,7 @@
                     "type": [
                       "string"
                     ],
-                    "descriptionCN": "<p>线条的颜色。</p>\n",
+                    "descriptionCN": "<p>线条的颜色。</p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                     "default": "'#333'"
                   },
                   "opacity": {
@@ -4420,7 +4465,7 @@
                     "type": [
                       "string"
                     ],
-                    "descriptionCN": "<p>线条的颜色。</p>\n",
+                    "descriptionCN": "<p>线条的颜色。</p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                     "default": "'rgba(0, 0, 0, 0.8)'"
                   },
                   "opacity": {
@@ -4610,7 +4655,7 @@
                       "type": [
                         "string"
                       ],
-                      "descriptionCN": "<p>图形的颜色。</p>\n",
+                      "descriptionCN": "<p>图形的颜色。</p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                       "default": "自适应"
                     },
                     "opacity": {
@@ -4738,7 +4783,7 @@
                           "type": [
                             "string"
                           ],
-                          "descriptionCN": "<p>图形的颜色。</p>\n",
+                          "descriptionCN": "<p>图形的颜色。</p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                           "default": "自适应"
                         },
                         "opacity": {
@@ -4960,7 +5005,7 @@
                         "string",
                         "Function"
                       ],
-                      "descriptionCN": "<p>图形的颜色。 默认从全局调色盘 <a href=\"http://echarts.baidu.com/option.html#color\" target=\"_blank\">option.color</a> 获取颜色 </p>\n",
+                      "descriptionCN": "<p>图形的颜色。 默认从全局调色盘 <a href=\"http://echarts.baidu.com/option.html#color\" target=\"_blank\">option.color</a> 获取颜色 </p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                       "default": "自适应"
                     },
                     "opacity": {
@@ -5067,7 +5112,7 @@
                           "type": [
                             "string"
                           ],
-                          "descriptionCN": "<p>图形的颜色。</p>\n",
+                          "descriptionCN": "<p>图形的颜色。</p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                           "default": "自适应"
                         },
                         "opacity": {
@@ -5190,7 +5235,7 @@
                             "type": [
                               "string"
                             ],
-                            "descriptionCN": "<p>图形的颜色。</p>\n",
+                            "descriptionCN": "<p>图形的颜色。</p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                             "default": "自适应"
                           },
                           "opacity": {
@@ -5297,7 +5342,7 @@
                                 "type": [
                                   "string"
                                 ],
-                                "descriptionCN": "<p>图形的颜色。</p>\n",
+                                "descriptionCN": "<p>图形的颜色。</p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                                 "default": "自适应"
                               },
                               "opacity": {
@@ -5480,7 +5525,7 @@
                       "type": [
                         "string"
                       ],
-                      "descriptionCN": "<p>线条的颜色。</p>\n",
+                      "descriptionCN": "<p>线条的颜色。</p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                       "default": "自适应"
                     },
                     "opacity": {
@@ -5507,7 +5552,7 @@
                           "type": [
                             "string"
                           ],
-                          "descriptionCN": "<p>线条的颜色。</p>\n",
+                          "descriptionCN": "<p>线条的颜色。</p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                           "default": "自适应"
                         },
                         "opacity": {
@@ -5558,7 +5603,7 @@
                             "type": [
                               "string"
                             ],
-                            "descriptionCN": "<p>线条的颜色。</p>\n",
+                            "descriptionCN": "<p>线条的颜色。</p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                             "default": "自适应"
                           },
                           "opacity": {
@@ -5693,7 +5738,7 @@
                       "type": [
                         "string"
                       ],
-                      "descriptionCN": "<p>线条的颜色。</p>\n",
+                      "descriptionCN": "<p>线条的颜色。</p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                       "default": "自适应"
                     },
                     "opacity": {
@@ -5743,7 +5788,7 @@
                             "type": [
                               "string"
                             ],
-                            "descriptionCN": "<p>线条的颜色。</p>\n",
+                            "descriptionCN": "<p>线条的颜色。</p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                             "default": "自适应"
                           },
                           "opacity": {
@@ -5959,7 +6004,7 @@
                         "string",
                         "Function"
                       ],
-                      "descriptionCN": "<p>图形的颜色。 默认从全局调色盘 <a href=\"http://echarts.baidu.com/option.html#color\" target=\"_blank\">option.color</a> 获取颜色 </p>\n",
+                      "descriptionCN": "<p>图形的颜色。 默认从全局调色盘 <a href=\"http://echarts.baidu.com/option.html#color\" target=\"_blank\">option.color</a> 获取颜色 </p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                       "default": "自适应"
                     },
                     "opacity": {
@@ -6080,7 +6125,7 @@
                           "type": [
                             "string"
                           ],
-                          "descriptionCN": "<p>图形的颜色。</p>\n",
+                          "descriptionCN": "<p>图形的颜色。</p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                           "default": "自适应"
                         },
                         "opacity": {
@@ -6130,7 +6175,7 @@
                             "type": [
                               "string"
                             ],
-                            "descriptionCN": "<p>图形的颜色。</p>\n",
+                            "descriptionCN": "<p>图形的颜色。</p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                             "default": "自适应"
                           },
                           "opacity": {
@@ -6251,7 +6296,7 @@
                                 "type": [
                                   "string"
                                 ],
-                                "descriptionCN": "<p>图形的颜色。</p>\n",
+                                "descriptionCN": "<p>图形的颜色。</p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                                 "default": "自适应"
                               },
                               "opacity": {
@@ -6800,13 +6845,22 @@
                       "type": [
                         "number"
                       ],
-                      "descriptionCN": "<p>旋转操作的灵敏度，值越大越灵敏。默认为``</p>\n"
+                      "descriptionCN": "<p>旋转操作的灵敏度，值越大越灵敏。默认为``</p>\n<p>设置为<code>0</code>后无法旋转。</p>\n",
+                      "default": 1
                     },
                     "zoomSensitivity": {
                       "type": [
                         "number"
                       ],
-                      "descriptionCN": "<p>缩放操作的灵敏度，值越大越灵敏。默认为``</p>\n"
+                      "descriptionCN": "<p>缩放操作的灵敏度，值越大越灵敏。默认为``</p>\n<p>设置为<code>0</code>后无法缩放。</p>\n",
+                      "default": 1
+                    },
+                    "panSensitivity": {
+                      "type": [
+                        "number"
+                      ],
+                      "descriptionCN": "<p>平移操作的灵敏度，值越大越灵敏。默认为``</p>\n<p>设置为<code>0</code>后无法平移。</p>\n",
+                      "default": 1
                     },
                     "autoRotateAfterStill": {
                       "type": [
@@ -6849,6 +6903,12 @@
                       ],
                       "descriptionCN": "<p>视角绕 y 轴，即左右旋转的角度。</p>\n",
                       "default": 0
+                    },
+                    "center": {
+                      "type": [
+                        "Array"
+                      ],
+                      "descriptionCN": "<p>视角中心点，旋转也会围绕这个中心点旋转，默认为<code>[0,0,0]</code>。</p>\n"
                     },
                     "minAlpha": {
                       "type": [
@@ -7000,7 +7060,7 @@
                           "type": [
                             "string"
                           ],
-                          "descriptionCN": "<p>线条的颜色。</p>\n",
+                          "descriptionCN": "<p>线条的颜色。</p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                           "default": "#222"
                         },
                         "opacity": {
@@ -7175,7 +7235,7 @@
                       "type": [
                         "string"
                       ],
-                      "descriptionCN": "<p>图形的颜色。</p>\n",
+                      "descriptionCN": "<p>图形的颜色。</p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                       "default": "自适应"
                     },
                     "opacity": {
@@ -7217,7 +7277,7 @@
                             "type": [
                               "string"
                             ],
-                            "descriptionCN": "<p>图形的颜色。</p>\n",
+                            "descriptionCN": "<p>图形的颜色。</p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                             "default": "自适应"
                           },
                           "opacity": {
@@ -7410,7 +7470,7 @@
                       "type": [
                         "string"
                       ],
-                      "descriptionCN": "<p>图形的颜色。</p>\n",
+                      "descriptionCN": "<p>图形的颜色。</p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                       "default": "自适应"
                     },
                     "opacity": {
@@ -7467,7 +7527,7 @@
                             "type": [
                               "string"
                             ],
-                            "descriptionCN": "<p>图形的颜色。</p>\n",
+                            "descriptionCN": "<p>图形的颜色。</p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                             "default": "自适应"
                           },
                           "opacity": {
@@ -7662,7 +7722,7 @@
                       "type": [
                         "string"
                       ],
-                      "descriptionCN": "<p>图形的颜色。</p>\n",
+                      "descriptionCN": "<p>图形的颜色。</p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                       "default": "自适应"
                     },
                     "opacity": {
@@ -7698,7 +7758,7 @@
                       "type": [
                         "string"
                       ],
-                      "descriptionCN": "<p>线条的颜色。</p>\n",
+                      "descriptionCN": "<p>线条的颜色。</p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                       "default": "#aaa"
                     },
                     "opacity": {
@@ -7748,7 +7808,7 @@
                             "type": [
                               "string"
                             ],
-                            "descriptionCN": "<p>图形的颜色。</p>\n",
+                            "descriptionCN": "<p>图形的颜色。</p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                             "default": "自适应"
                           },
                           "opacity": {
@@ -7819,7 +7879,7 @@
                             "type": [
                               "string"
                             ],
-                            "descriptionCN": "<p>线条的颜色。</p>\n",
+                            "descriptionCN": "<p>线条的颜色。</p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
                             "default": "#aaa"
                           },
                           "opacity": {
