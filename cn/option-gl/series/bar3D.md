@@ -151,3 +151,5 @@ data: [
 {{ use: partial-zlevel }}
 
 {{ use: partial-silent }}
+
+{{ use: partial-animation }}

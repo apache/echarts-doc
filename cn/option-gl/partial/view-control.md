@@ -78,4 +78,8 @@
 
 左右旋转的最大 beta 值。即视角能旋转到达最右的角度。
 
-
+{{ use: partial-animation(
+    prefix="##",
+    defaultAnimationEasingUpdate="cubicInOut",
+    defaultAnimationDurationUpdate=1000
+) }}
