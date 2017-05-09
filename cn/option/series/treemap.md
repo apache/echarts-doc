@@ -80,6 +80,9 @@ treemap 首先是把数值映射到『面积』这种视觉元素上。
 **drill down 的例子：**
 ~[800x500](${galleryViewPath}treemap-drill-down&edit=1&reset=1)
 
+## drillDownIcon(string) = '▶'
+
+当节点可以下钻时的提示符。只能是字符。
 
 ## roam(boolean|string) = true
 
