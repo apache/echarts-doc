@@ -110,6 +110,19 @@ baseTexture: mapChart
     defaultPanSensitivity=0
 ) }}
 
+### targetCoord(Array)
+
+定位目标的经纬度坐标。设置后会忽略 [alpha](~globe.viewControl.alpha) 和 [beta](~globe.viewControl.beta)。
+
+
+```js
+viewControl: {
+    // 定位到北京
+    targetCoord: [116.46, 39.92]
+}
+```
+
+
 ## layers(Array)
 
 地球表面层的配置，你可以使用该配置项加入云层，或者对 [baseTexture](~globe.baseTexture) 进行补充绘制出国家的轮廓等等。
