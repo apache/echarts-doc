@@ -134,36 +134,36 @@
     <div class="entry-content">
       <p>当下随着大数据热潮的到来，数据可视化作为一个新兴的领域，受到了学术界和工业界的重视。从可视分析、数据新闻到商业报表，各个领域都在越来越多的使用它。既然是数据可视化，说明数据是主体，可视化只是将数据以可视的形式表达的手段。接下来小编就与大家一起揭开可视化中数据的面纱，一探究竟。</p>
 
-<h2 id="section">可视化什么：数据抽象</h2>
+<h2 id="可视化什么数据抽象">可视化什么：数据抽象</h2>
 
 <p>既然是数据可视化，无可非议，可视化的元素肯定是数据，这里所指的数据是广义上的数据，包括文本、图片、声音等超媒体数据。ECharts在可视化过程中所涉及的四种基本数据集类型分别是表格数据、网状数据、场数据和几何空间（spatial）数据，像集合、列表等也是常用的数据集类型。这些基本数据集类型又是由不同的数据类组合构成的，这里的数据类是指可视化中所涉及的数据种类，主要包括四种数据类，分别是数据项、数据项的属性、链接（links）、位置。数据项的属性又可分为类别型和有序型两种，其中有序型又进一步细分为序数型和数值型，下面将分别介绍数据类，数据集类型，以及属性类型。</p>
 
-<h3 id="section-1">数据类</h3>
+<h3 id="数据类">数据类</h3>
 
 <p>本文主要讨论ECharts中所涉及的四种基本数据类，分别是数据项、数据项的属性、链接、位置。数据项是指一个独立的实体，如关系数据表中的一行，或网络中的一个节点；属性是数据项的某个可被观测的特性，如年龄，性别等；链接是指数据项之间的关系，该数据类型在网状关系型数据集中用的比较多；位置是地理空间数据类型，指代二维或三维空间中的某个具体位置；下图展示了四种不同的数据集类型所包含的数据类。</p>
 
 <p><img src="http://echarts.baidu.com/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-datatypes.png" alt="data" /></p>
 
-<h3 id="section-2">数据集类型</h3>
+<h3 id="数据集类型">数据集类型</h3>
 
 <p>数据集是指为了分析而收集的任何信息，数据集包括数据表，网状数据，场数据（本文主要关注信息可视化，而场数据主要应用于科学可视化，因而在此不作介绍）以及几何空间数据这四种基本类型，而现实世界中的数据集一般是由这四个基本类型中的一个或多个组合而成的。下图展示了四种不同数据集类型具体的内部结构。</p>
 
 <p><img src="http://echarts.baidu.com/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-dataset.png" alt="data" /></p>
 
-<h4 id="section-3">数据表</h4>
+<h4 id="数据表">数据表</h4>
 
 <p>数据表是常用的数据集形式，由行和列组成。对于简单的扁平表格来说，每一行代表一个数据项，每一列代表一个属性，表格中的每一个单元格是由行号和列号索引的，保存着某个数据项的某个属性值；多维数据表在数据仓库中用的比较多，具有复杂的结构以及复杂的索引机制，一般来说，简单扁平表格至多具有一个键属性（key attribute），而多维表格具有多个键属性。</p>
 
-<h4 id="section-4">网状数据</h4>
+<h4 id="网状数据">网状数据</h4>
 
 <p>网状数据主要用来表明数据项之间具有某种关系，在网状数据中数据项通常被称为节点，两个节点之间的关系被称为链接，也就是网络中的边，并且节点和链接都可以拥有与之相关联的属性。树是一种具有层次结构的特殊类型网络数据，与一般网络数据相比，树没有回路，每一个子节点都对应唯一的一个父节点。</p>
 
-<h4 id="spatial">几何空间（spatial）数据</h4>
+<h4 id="几何空间spatial数据">几何空间（spatial）数据</h4>
 
 <p>几何空间结构数据通过明确的几何空间位置指定数据项的形状信息，这些数据项可以是空间中的点、一维的直线或曲线、二维的平面或区域，以及三维的立方体。空间数据在不同的度量尺度上具有层级结构。这种层级结构要么是原始数据集固有的，要么是从原始数据集派生出来的。
 可视化中的数据主要以两种形式存在，一种是静态的数据文件，一种是动态的数据流。静态的数据文件是指可以同时获得完整的数据文件，而动态的数据流是指数据在不断的更新和变化。</p>
 
-<h3 id="section-5">属性类型</h3>
+<h3 id="属性类型">属性类型</h3>
 
 <p>属性类型主要分为类别型和有序型两种，有序型又可进一步分为序数型和数值型。有序型数据的排列方向有三种，分别是单向型，有公共零点的双向型，以及环状周期型，如下图所示，除此之外，属性也可能有层级结构。
 类别型属性是指名称上的不同，属性的值之间没有明确的排序，例如喜欢的球类运动包括足球、篮球、排球等。虽然类别型属性内部没有明确的排序，但任意外部的排序机制可以被应用在类别型属性上，如将球类运动的名字按字母顺序排列。
@@ -173,10 +173,10 @@
 
 <p><img src="http://echarts.baidu.com/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-attribute.png" alt="" /></p>
 
-<h2 id="section-6">总结</h2>
+<h2 id="总结">总结</h2>
 <p>本文简要讨论了可视化中的数据，从数据的种类、数据集的类型以及属性的类型这三个角度阐述了可视化中需要可视表达的数据信息。</p>
 
-<h4 id="section-7">参考文献</h4>
+<h4 id="参考文献">参考文献</h4>
 
 <p>[1] Tamara Munzner.Visualization Analysis and Design. CRC Press, 2014.</p>
 
@@ -201,8 +201,8 @@
       <a href="http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html" class="read-more-btn">了解更多</a>
     </div><!-- /.read-more-header -->
     <div class="read-more-content">
-      <h3><a href="http://echarts.baidu.com/blog/2017/04/12/echarts-gl-alpha.html" title="ECharts GL 1.0 alpha 发布">ECharts GL 1.0 alpha 发布</a></h3>
-      <p>ECharts GL （原 ECharts-X）发布 1.0 alpha，ECharts GL 是 ECharts 的 WebGL 扩展，其中提供了三维散点图，飞线图，柱状图，曲面图，地球等多种三维可视化方式。并且增加 scatterGL，graphGL系列类型用于二维的散点图，关系图的加速绘制和布局。 <a href="http://echarts.baidu.com/blog/2017/04/12/echarts-gl-alpha.html">继续阅读</a></p>
+      <h3><a href="http://echarts.baidu.com/blog/2017/05/08/echarts-histogram-tutorial.html" title="那些年我们一起学过的直方图">那些年我们一起学过的直方图</a></h3>
+      <p>某天下午小编正在安安静静地撸代码，突然听说在我们的[gallery](http://gallery.echartsjs.com/explore.html#sort=rank~timeframe=all~author=all)上，有用户提出，[ECharts](http://echarts.baidu.com/index.html)不支持直方图，什么？这怎么能忍？于是小编将珍藏已久的机械键盘拿出来，摆好姿势，通宵达旦地为用户大大们加好了直方图，并于上周四悄悄上线了，对，我们就是这么低调。然而，很多大大们表示，直方图还是柱状图？傻傻分不清。小编深感这年头光有图怕是不行了，必须得有个教程，要做到图文并茂。下面小编就从直方图是什么，为什么要用直方图，以及如何使用[ECharts](http://echarts.baidu.com/index.html)制作直方图三个方面，为各位大大们上点干货。 <a href="http://echarts.baidu.com/blog/2017/05/08/echarts-histogram-tutorial.html">继续阅读</a></p>
     </div><!-- /.read-more-content -->
     
   
@@ -210,14 +210,14 @@
     
     
       <div class="list-item">
-        <h4><a href="http://echarts.baidu.com/blog/2017/03/23/new-release.html" title="echarts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布">echarts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布</a></h4>
-        <span>Published on March 23, 2017</span>
+        <h4><a href="http://echarts.baidu.com/blog/2017/04/12/echarts-gl-alpha.html" title="ECharts GL 1.0 alpha 发布">ECharts GL 1.0 alpha 发布</a></h4>
+        <span>Published on April 12, 2017</span>
       </div><!-- /.list-item -->
     
     
     
       <div class="list-item">
-        <h4><a href="http://echarts.baidu.com/blog/2017/03/23/new-release-en.html" title="ECharts v3.5 Released, Publishing Calendar Coordinate System and Enhanced Axis Pointer, Meanwhile Statistic Extension v1.0 Released">ECharts v3.5 Released, Publishing Calendar Coordinate System and Enhanced Axis Pointer, Meanwhile Statistic Extension v1.0 Released</a></h4>
+        <h4><a href="http://echarts.baidu.com/blog/2017/03/23/new-release.html" title="echarts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布">echarts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布</a></h4>
         <span>Published on March 23, 2017</span>
       </div><!-- /.list-item -->
     

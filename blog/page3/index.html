@@ -5,25 +5,25 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>ECharts 实现地图散点图（上） </title>
-<meta name="description" content="ECharts 作为国内应用最广泛的前端可视化生成工具，提供了丰富的图表展现方式和便捷的图表操作。ECharts 支持 geoJson 格式的地图，并且官网上提供了现成的 world，china 及全国34个省市自治区地图的下载。这篇文章中我们将会讲解如何使用 ECharts 实现一个中国地图上绘制的散点图。">
-<meta name="keywords" content="map, tutorial">
+<title></title>
+<meta name="description" content="">
+
 
 
 
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ECharts 实现地图散点图（上）">
-<meta property="og:description" content="ECharts 作为国内应用最广泛的前端可视化生成工具，提供了丰富的图表展现方式和便捷的图表操作。ECharts 支持 geoJson 格式的地图，并且官网上提供了现成的 world，china 及全国34个省市自治区地图的下载。这篇文章中我们将会讲解如何使用 ECharts 实现一个中国地图上绘制的散点图。">
-<meta property="og:url" content="http://echarts.baidu.com/blog/2016/04/28/echarts-map-tutorial.html">
+<meta property="og:title" content="">
+<meta property="og:description" content="">
+<meta property="og:url" content="http://echarts.baidu.com/blog/page3/">
 <meta property="og:site_name" content="">
 
 
 
 
 
-<link rel="canonical" href="http://echarts.baidu.com/blog/2016/04/28/echarts-map-tutorial.html">
+<link rel="canonical" href="http://echarts.baidu.com/blog/page3/">
 <link href="http://echarts.baidu.com/blog/feed.xml" type="application/atom+xml" rel="alternate" title=" Feed">
 
 <!-- http://t.co/dKP3o1e -->
@@ -59,7 +59,7 @@
 
 </head>
 
-<body id="post" class="feature">
+<body id="post-index" class="feature">
 
 <!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
 <nav id="dl-menu" class="dl-menuwrapper" role="navigation">
@@ -102,37 +102,55 @@
 	</ul><!-- /.dl-menu -->
 </nav><!-- /.dl-menuwrapper -->
 
-
-
+<div class="entry-lang">
+  <a href="http://echarts.baidu.com/blog">中文</a> |
+  <a href="http://echarts.baidu.com/blog/en">EN</a>
+</div>
 
 <div class="entry-header">
   
-  <div class="entry-image">
-    <img src="http://echarts.baidu.com/blog/images/post/2016-04-28-echarts-map-tutorial-scatter-2.png" alt="ECharts 实现地图散点图（上）">
-  </div><!-- /.entry-image -->
+  
+    <div class="entry-image">
+      <img src="http://echarts.baidu.com/blog/images/happy-new-year.png" alt="">
+    </div><!-- /.entry-image -->
+  
+  <div class="header-title">
+    <div class="header-title-wrap">
+      <h1></h1>
+      <h2></h2>
+    </div><!-- /.header-title-wrap -->
+  </div><!-- /.header-title -->
 </div><!-- /.entry-header -->
 
-
 <div id="main" role="main">
-  <article class="hentry">
-    <header class="header-title">
-      <div class="header-title-wrap">
-        <h1 class="entry-title">ECharts 实现地图散点图（上）</h1>
-        <h2><span class="entry-date date published"><time datetime="2016-04-28T00:00:00+08:00">2016-04-28</time></span></h2>
+  
+
+<article class="hentry">
+  <header>
+    
+      <div class="entry-image-index">
+        <a href="http://echarts.baidu.com/blog/2016/04/28/echarts-map-tutorial.html" title="ECharts 实现地图散点图（上）"><img src="http://echarts.baidu.com/blog/images/post/2016-04-28-echarts-map-tutorial-scatter-2.png" alt="ECharts 实现地图散点图（上）"></a>
+      </div><!-- /.entry-image -->
+    
+    <div class="entry-meta">
+      <span class="entry-date date published updated"><time datetime="2016-04-28T00:00:00+08:00"><a href="http://echarts.baidu.com/blog/2016/04/28/echarts-map-tutorial.html">2016-04-28</a></time></span><span class="author vcard"><span class="fn"><a href="http://echarts.baidu.com/blog/about/" title="About ECharts">ECharts</a></span></span>
+      
+      <span class="entry-reading-time">
+        <i class="fa fa-clock-o"></i>
         
-        <p class="entry-reading-time">
-          <i class="fa fa-clock-o"></i>
-          
 
 预计阅读时间：9 分钟
 
 
-        </p><!-- /.entry-reading-time -->
-        
-      </div><!-- /.header-title-wrap -->
-    </header>
-    <div class="entry-content">
-      <p>ECharts 作为国内应用最广泛的前端可视化生成工具，提供了丰富的图表展现方式和便捷的图表操作。
+      </span><!-- /.entry-reading-time -->
+      
+    </div><!-- /.entry-meta -->
+    
+      <h1 class="entry-title"><a href="http://echarts.baidu.com/blog/2016/04/28/echarts-map-tutorial.html" rel="bookmark" title="ECharts 实现地图散点图（上）" itemprop="url">ECharts 实现地图散点图（上）</a></h1>
+    
+  </header>
+  <div class="entry-content">
+    <p>ECharts 作为国内应用最广泛的前端可视化生成工具，提供了丰富的图表展现方式和便捷的图表操作。
 ECharts 支持 geoJson 格式的地图，并且官网上提供了现成的 world，china 及全国34个省市自治区地图的下载。这篇文章中我们将会讲解如何使用 ECharts 实现一个中国地图上绘制的散点图。</p>
 
 <h2 id="一初始准备">一、初始准备</h2>
@@ -443,51 +461,54 @@ ECharts 支持 geoJson 格式的地图，并且官网上提供了现成的 world
 <p>这样一个基于中国地图的散点图就基本实现了，如果想要继续完善图表，可以为它添加标题，图例，高亮提示等控件，配置方式在这里查看（<a href="http://echarts.baidu.com/option.html#title">ECharts 配置项手册</a>），在此不再详细说明。</p>
 
 
-      <footer class="entry-meta">
-        <span class="entry-tags"><a href="http://echarts.baidu.com/blog/tags/#map" title="Pages tagged map" class="tag"><span class="term">map</span></a><a href="http://echarts.baidu.com/blog/tags/#tutorial" title="Pages tagged tutorial" class="tag"><span class="term">tutorial</span></a></span>
+  </div><!-- /.entry-content -->
+</article><!-- /.hentry -->
+
+
+
+
+<div class="pagination">
+  <ul class="inline-list">
+    
+    
+      
+        <li><a href="http://echarts.baidu.com/blog/page2/" class="btn">Previous</a></li>
+      
+    
+
+    
+    
+      <li><a href="http://echarts.baidu.com/blog">1</a></li>
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
         
-        <div class="social-share">
-  <ul class="socialcount socialcount-small inline-list">分享到：
-    <li class="weibo"><a href="http://v.t.sina.com.cn/share/share.php?title=ECharts+官网博文：ECharts 实现地图散点图（上）&url=http://echarts.baidu.com/blog/2016/04/28/echarts-map-tutorial.html" title="Share on Weibo">新浪微博</a></li>
-    <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=http://echarts.baidu.com/blog/2016/04/28/echarts-map-tutorial.html" title="Share on Facebook"><span class="count"><i class="fa fa-facebook-square"></i> Like</span></a></li>
-    <li class="twitter"><a href="https://twitter.com/intent/tweet?text=http://echarts.baidu.com/blog/2016/04/28/echarts-map-tutorial.html" title="Share on Twitter"><span class="count"><i class="fa fa-twitter-square"></i> Tweet</span></a></li>
-    <li class="googleplus"><a href="https://plus.google.com/share?url=http://echarts.baidu.com/blog/2016/04/28/echarts-map-tutorial.html" title="Share on Google Plus"><span class="count"><i class="fa fa-google-plus-square"></i> +1</span></a></li>
+        
+        
+        <li><a href="http://echarts.baidu.com/blog/page2/">2</a></li>
+      
+    
+
+    
+    
+
+    
+      <li><strong class="current-page">3</strong></li>
+    
+
+    
+    
   </ul>
-</div><!-- /.social-share -->
-      </footer>
-    </div><!-- /.entry-content -->
-    
-    <div class="read-more">
-  
-    
-    <div class="read-more-header">
-      <a href="http://echarts.baidu.com/blog" class="read-more-btn">了解更多</a>
-    </div><!-- /.read-more-header -->
-    <div class="read-more-content">
-      <h3><a href="http://echarts.baidu.com/blog/2017/05/08/echarts-histogram-tutorial.html" title="那些年我们一起学过的直方图">那些年我们一起学过的直方图</a></h3>
-      <p>某天下午小编正在安安静静地撸代码，突然听说在我们的[gallery](http://gallery.echartsjs.com/explore.html#sort=rank~timeframe=all~author=all)上，有用户提出，[ECharts](http://echarts.baidu.com/index.html)不支持直方图，什么？这怎么能忍？于是小编将珍藏已久的机械键盘拿出来，摆好姿势，通宵达旦地为用户大大们加好了直方图，并于上周四悄悄上线了，对，我们就是这么低调。然而，很多大大们表示，直方图还是柱状图？傻傻分不清。小编深感这年头光有图怕是不行了，必须得有个教程，要做到图文并茂。下面小编就从直方图是什么，为什么要用直方图，以及如何使用[ECharts](http://echarts.baidu.com/index.html)制作直方图三个方面，为各位大大们上点干货。 <a href="http://echarts.baidu.com/blog/2017/05/08/echarts-histogram-tutorial.html">继续阅读</a></p>
-    </div><!-- /.read-more-content -->
-    
-  
-  <div class="read-more-list">
-    
-    
-      <div class="list-item">
-        <h4><a href="http://echarts.baidu.com/blog/2017/04/12/echarts-gl-alpha.html" title="ECharts GL 1.0 alpha 发布">ECharts GL 1.0 alpha 发布</a></h4>
-        <span>Published on April 12, 2017</span>
-      </div><!-- /.list-item -->
-    
-    
-    
-      <div class="list-item">
-        <h4><a href="http://echarts.baidu.com/blog/2017/03/23/new-release.html" title="echarts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布">echarts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布</a></h4>
-        <span>Published on March 23, 2017</span>
-      </div><!-- /.list-item -->
-    
-    
-  </div><!-- /.read-more-list -->
-</div><!-- /.read-more -->
-  </article>
+</div>
+
 </div><!-- /#main -->
 
 <div class="footer-wrapper">
