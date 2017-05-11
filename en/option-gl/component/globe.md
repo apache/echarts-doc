@@ -9,7 +9,7 @@ Provides settings for the globe component that allows to render three-dimensiona
 Displays globe when true.
 
 ## globeRadius (number) = 100
-Globe radius in the three-dimensional viewport. Globe distance can be changed via [viewControl.distance] (~ globe.viewControl.distance) settings.
+Globe radius in the three-dimensional viewport. Globe distance can be changed via [viewControl.distance](~ globe.viewControl.distance) settings.
 
 {{ use: partial-environment(
     componentType="globe",
@@ -30,7 +30,7 @@ baseTexture: 'asset/earth.jpg'
 
 // Example echarts drawing the world map as a texture
 var canvas = document.createElement('canvas');
-var Mapchart = echarts.init (canvas, null, {
+var mapChart = echarts.init (canvas, null, {
     width: 4096, height: 2048
 });
 mapChart.setOption({
@@ -51,14 +51,14 @@ BaseTexture: mapChart
 ```
 
 ## heightTexture(string|HTMLImageElement|HTMLCanvasElement)
-Height texture can be provided to render globe surface in three dimensions. Echarts uses [bump mapping] (https://zh.wikipedia.org/wiki/%E5%87%B9%E5%87%B8%E8%B4%B4%E5%9B%BE) which simulates bumps and wrinkles on the surface of an object. Below are two examples, one using heightTexture and another one without heightTexture:  
+Height texture can be provided to render globe surface in three dimensions. Echarts uses [bump mapping] (https://en.wikipedia.org/wiki/Bump_mapping) which simulates bumps and wrinkles on the surface of an object. Below are two examples, one using heightTexture and another one without heightTexture:  
 
 ![400xauto](~heightmap-enable.png)
 
 ![400xauto](~heightmap-disable.png)
 
 ## displacementTexture(string|HTMLImageElement|HTMLCanvasElement)
-Globe displacement vertext texture with [heightTexture] (~ globe.heightTexture) as default. 
+Globe displacement vertext texture with [heightTexture](~globe.heightTexture) as default. 
 
 Compared to bump mapping technique, displacement of vertices is calculated directly from the displacement texture. Applicable only when [displaymentScale] (~ globe.displaymentScale) is greater than 0.
 
@@ -73,7 +73,7 @@ Globe displacement vertex size. The default is 0 (no displacement) Below are two
 
 ## displacementQuality(string) = 'medium'
 
-Quality of vertex displacement. Can be ` 'low'`,`' medium'`, ` 'high'`,`' ultra'`. Higher quality surface shows more detail. Below are examples of different `displacementQuality`:
+Quality of vertex displacement. Can be `'low'`,`'medium'`, `'high'`,`'ultra'`. Higher quality surface shows more detail. Below are examples of different `displacementQuality`:
 
 <div class="twentytwenty-container" style="width: 700px;">
     <img src="documents/asset/gl/img/displacement-low.png" width="100%" title="Low">
