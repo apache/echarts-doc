@@ -321,6 +321,8 @@ Possible values:
 
 + 'empty': data that outside the window will be **set to NaN**, which will not lead to changes of windows of other axes.
 
++ 'none': Do not filter data.
+
 How to set `filterMode` is up to users, depending on the requirments and scenarios. Expirically:
 
 + If only `xAxis` or only `yAxis` is controlled by `dataZoom`, `filterMode: 'filter'` is typically used, which enable the other axis auto adapte its window to the extent of the filtered data.
