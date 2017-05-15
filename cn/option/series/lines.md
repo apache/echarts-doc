@@ -105,7 +105,7 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 ) }}
 
 ## label(Object)
-标签相关配置。在 [polyline](series-lines.polyline) 设置为 `true` 时无效。
+标签相关配置。在 [polyline](~series-lines.polyline) 设置为 `true` 时无效。
 ### normal(Object)
 {{ use: lines-label(prefix="###")}}
 ### emphasis(Object)
@@ -144,7 +144,7 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 数据名称
 
 ### coords(Array)
-一个包含两个到多个二维坐标的数组。在 [polyline](series-lines.polyline) 设置为 `true` 时支持多于两个的坐标。
+一个包含两个到多个二维坐标的数组。在 [polyline](~series-lines.polyline) 设置为 `true` 时支持多于两个的坐标。
 
 ### lineStyle(Object)
 单个数据（单条线）的样式设置。
@@ -161,7 +161,7 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 
 
 ### label(Object)
-单个数据（单条线）的标签设置。在 [polyline](series-lines.polyline) 设置为 `true` 时无效。
+单个数据（单条线）的标签设置。在 [polyline](~series-lines.polyline) 设置为 `true` 时无效。
 #### normal(Object)
 {{ use: lines-label(
     prefix="####"
