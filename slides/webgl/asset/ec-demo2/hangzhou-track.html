@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="../common/reset.css">
+    </head>
+    <body>
+        <div id="main"></div>
+        <script src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+        <script src="../common/echarts.js"></script>
+        <script src="../common/extension/bmap.js"></script>
+        <script src="../data/hangzhou-tracks.json.js"></script>
+        <script>
+            var chart = echarts.init(document.getElementById('main'));
+
+            var points = [].concat.apply([], hangzhouTracks.map(function (track) {
+                return track.map(function (seg) {
+                    return seg.coord.concat([1]);
+                });
+            }));
+
+            setTimeout(function () {
+                chart.setOption({
+                    animation: false,
+                    bmap: {
+                        center: [120.13066322374, 30.240018034923],
+                        zoom: 14,
+                        roam: true
+                    },
+                    visualMap: {
+                        top: 'top',
+                        min: 0,
+                        max: 5,
+                        seriesIndex: 0,
+                        calculable: true,
+                        inRange: {
+                            color: ['blue', 'blue', 'green', 'yellow', 'red']
+                        }
+                    },
+                    series: [{
+                        type: 'heatmap',
+                        coordinateSystem: 'bmap',
+                        data: points,
+                        pointSize: 5,
+                        blurSize: 6
+                    }]
+                });
+
+                var bmap = chart.getModel().getComponent('bmap').getBMap();
+                bmap.addControl(new BMap.MapTypeControl());
+            }, 100);
+
+            window.onresize = chart.resize;
+        </script>
+    </body>
+</html>

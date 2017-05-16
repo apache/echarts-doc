@@ -1,0 +1,123 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="../common/reset.css">
+    </head>
+    <body>
+        <div id="main"></div>
+        <script src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+        <script src="../common/echarts.min.js"></script>
+        <script src="../common/extension/bmap.min.js"></script>
+        <script src="../common/echarts-gl.js"></script>
+        <script src="../data/hangzhou-tracks.json.js"></script>
+        <script src="../data/xihuqu.js"></script>
+        <script>
+            var chart = echarts.init(document.getElementById('main'));
+            var lines = hangzhouTracks.map(function (track) {
+                return {
+                    coords: track.map(function (seg, idx) {
+                        return seg.coord.concat([seg.elevation]);
+                    })
+                };
+            });
+            var len = lines.length;
+            for (var i = 0; i < 5; i++) {
+                for (var k = 0; k < len; k++) {
+                    var coords = lines[k].coords;
+                    lines.push({
+                        coords: coords.map(function (coord) {
+                            return [
+                                coord[0] + (Math.random() - 0.5) / 9e4,
+                                coord[1] + (Math.random() - 0.5) / 9e4,
+                                coord[2] + (Math.random() - 0.5) / 9e4,
+                            ];
+                        })
+                    });
+                }
+            }
+
+            chart.setOption({
+                geo3D: {
+                    map: 'xihuqu',
+                    shading: 'realistic',
+
+                    environment: '#111',
+
+                    silent: true,
+
+                    realisticMaterial: {
+                        roughness: 0.8,
+                        metalness: 0
+                    },
+                    postEffect: {
+                        enable: true
+                    },
+                    groundPlane: {
+                        show: true,
+                        color: '#000'
+                    },
+                    light: {
+                        main: {
+                            intensity: 0,
+                            shadow: true,
+                            shadowQuality: 'high',
+                            alpha: 30
+                        },
+                        ambient: {
+                            intensity: 0.2
+                        }
+                    },
+                    viewControl: {
+                        distance: 50
+                    },
+
+                    itemStyle: {
+                        areaColor: '#333',
+                        borderColor: '#fff'
+                    },
+
+                    boxHeight: 0.5
+                },
+                series: [{
+                    type: 'lines3D',
+
+                    coordinateSystem: 'geo3D',
+
+                    effect: {
+                        show: true,
+                        constantSpeed: 10,
+                        trailWidth: 2,
+                        trailLength: 0.2,
+                        trailColor: [2, 2, 10],
+                        trailOpacity: 0.2
+                    },
+
+                    blendMode: 'lighter',
+
+                    polyline: true,
+
+                    lineStyle: {
+                        width: 0.5,
+                        color: 'rgb(50, 50, 150)',
+                        opacity: 0.1
+                    },
+
+                    distanceToGeo3D: [0, 10],
+
+                    data: lines
+                }]
+            });
+
+            window.onresize = chart.resize;
+
+            window.addEventListener('keydown', function () {
+                chart.dispatchAction({
+                    type: 'lines3DToggleEffect',
+                    seriesIndex: 0
+                });
+            });
+        </script>
+    </body>
+</html>

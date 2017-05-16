@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Bar 3D - ECHARTS-GL</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes"> <!-- Fullscreen Landscape on iOS -->
+        <link rel="stylesheet" href="../common/reset.css">
+    </head>
+    <body>
+        <div id="main"></div>
+        <script src="../common/echarts.js"></script>
+        <script src="../common/echarts-gl.js"></script>
+        <script src="../common/StageControl.js"></script>
+        <script src="../texture/sample.jpg.js"></script>
+        <script>
+            var UPDATE_DURATION = 20;
+
+            var chart = echarts.init(document.getElementById('main'));
+
+            window.AudioContext = window.AudioContext || window.webkitAudioContext;
+
+            var audioContext = new AudioContext();
+
+            var oReq = new XMLHttpRequest();
+            oReq.open('GET', '../data/roll-it-up.mp3', true);
+            oReq.responseType = 'arraybuffer';
+
+            oReq.onload = function(e) {
+                audioContext.decodeAudioData(oReq.response, initVisualizer);
+            };
+            oReq.send();
+
+            function initVisualizer(audioBuffer) {
+                var source = audioContext.createBufferSource();
+                source.buffer = audioBuffer;
+
+                // Must invoked right after click event
+                if (source.noteOn) {
+                    source.noteOn(0);
+                }
+                else {
+                    source.start(0);
+                }
+
+                var analyzer = audioContext.createAnalyser();
+                var gainNode = audioContext.createGain();
+                analyzer.fftSize = 4096;
+
+                gainNode.gain.value = 1;
+                source.connect(gainNode);
+                gainNode.connect(analyzer);
+                analyzer.connect(audioContext.destination);
+
+                var frequencyBinCount = analyzer.frequencyBinCount;
+                var dataArray = new Uint8Array(frequencyBinCount);
+
+                var size = 30;
+
+                function update() {
+                    var dataProvider = [];
+                    for (var i = 0; i < size * size; i++) {
+                            var x = i % size;
+                            var y = Math.floor(i / size);
+                            var dx = x - size / 2;
+                            var dy = y - size / 2;
+
+                            var angle = Math.atan2(dy, dx);
+                            if (angle < 0) {
+                                angle = Math.PI * 2 + angle;
+                            }
+                            var dist = Math.sqrt(dx * dx + dy * dy);
+                            var idx = Math.min(
+                                frequencyBinCount - 1, Math.round(angle / Math.PI / 2 * 60 + dist * 60) + 100
+                            );
+
+                            var val = Math.pow(dataArray[idx] / 100, 3);
+                            dataProvider.push([x, y, Math.max(val, 0.1)]);
+                    }
+
+                    analyzer.getByteFrequencyData(dataArray);
+
+                    chart.setOption({
+                        series: [{
+                            data: dataProvider
+                        }]
+                    });
+
+                    setTimeout(update, UPDATE_DURATION);
+                }
+
+                update();
+            }
+
+            chart.setOption({
+                tooltip: {},
+                visualMap: {
+                    show: false,
+                    min: 0.1,
+                    max: 4,
+                    inRange: {
+                        color: ['#010103', '#2f490c', '#b0b70f', '#fdff44'],
+                        symbolSize: [3, 60]
+                    }
+                },
+                xAxis: {
+                    type: 'value',
+                    show: false
+                },
+                yAxis: {
+                    type: 'value',
+                    show: false
+                },
+                series: [{
+                    type: 'scatter',
+                    silent: true,
+                    data: [],
+                    blendMode: 'lighter',
+                    animation: false
+                }]
+            });
+
+            window.addEventListener('resize', function () {
+                chart.resize();
+            });
+
+        </script>
+    </body>
+</html>
