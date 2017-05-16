@@ -33100,7 +33100,7 @@ module.exports = echarts.extendComponentView({
         var time = globeModel.get('light.main.time') || new Date();
 
         // http://en.wikipedia.org/wiki/Azimuth
-        var pos = sunCalc.getPosition(Date.parse(time), 0, 0);
+        var pos = sunCalc.getPosition(echarts.number.parseDate(time), 0, 0);
         var r0 = Math.cos(pos.altitude);
         // FIXME How to calculate the y ?
         mainLight.position.y = -r0 * Math.cos(pos.azimuth);
@@ -36251,6 +36251,7 @@ module.exports = EffectCompositor;
 
 // NormalPass will generate normal and depth data.
 
+// TODO Animation
 var Texture2D = __webpack_require__(6);
 var Texture = __webpack_require__(5);
 var Shader = __webpack_require__(8);

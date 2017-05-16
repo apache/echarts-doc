@@ -192,6 +192,12 @@ z: (u, v) => cos(v)
 
 ----
 
+<iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/surface-sphere.html"></iframe>
+
+----
+
+<iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/surface-parametric.html"></iframe>
+
 ---
 
 ## 更好的效果
@@ -205,7 +211,7 @@ z: (u, v) => cos(v)
 Note:
 仅仅能够画出来是不够的，我们还需要画好看
 
-----
+---
 
 ## 光影
 
@@ -215,7 +221,15 @@ Note:
 
 ----
 
+<iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/globe-sun.html"></iframe>
+
+----
+
 ## 阴影
+
+----
+
+<iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/geo3D-shadow.html"></iframe>
 
 ----
 
@@ -252,7 +266,25 @@ Note:
 
 ## Physically Based Rendering
 
++ HDR 的环境光照贴图
+
++ 对环境光照的积分预计算（prefilter）<!-- .element: class="fragment highlight-current-blue" -->
+
++ 能量守恒的光照公式
+
++ <s>经验模型</s> 直观的公式参数。
+
+<img width="40%" data-src="asset/img/canyon.jpg" alt="">
+<img width="40%" data-src="asset/img/canyon-convolve.jpg" alt="">
+
 Note:
+一般基于物理的渲染要做到这么几点，首先它需要一张 HDR 格式的环境光照贴图。
+
+然后因为光照计算需要做积分计算这张环境贴图里每一个像素产生光照贡献，如果是实时做的话就会性能很差，所以一般会对这张环境光照的贴图做积分的预计算。得到右边这张看起来像是被模糊了的图。这种预计算的卷积可能不是完全正确的结果，但是足够以假乱真了。实际上实时渲染基本上就是在用各种 trick 去实现以假乱真的效果。
+
+Ok，然后最后我们再使用一个能量守恒的光照公式应用到像素上。
+
+
 实时渲染肯定很难做到离线渲染的品质和逼真程度，但是我们希望通过一些 trick 让画面达到以假乱真的品质
 
 ----
@@ -260,7 +292,10 @@ Note:
 ## 金属度和光泽度
 
 Note:
-https://twitter.com/marcinignac/status/864389237357117440
+
+----
+
+<iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/globe-material.html"></iframe>
 
 ----
 
