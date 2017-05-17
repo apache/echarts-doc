@@ -200,7 +200,7 @@ z: (u, v) => cos(v)
 
 ---
 
-## 更好的效果
+## 渲染
 
 + 光影
 
@@ -211,9 +211,14 @@ z: (u, v) => cos(v)
 Note:
 仅仅能够画出来是不够的，我们还需要画好看
 
+很多时候我们不喜欢三维的可视化，一方面是因为它并没有二维的那么清晰，还有一个很重要的原因是很多三维的渲染效果很糟糕，比如用着过时的光照模型。充满锯齿的画面。但是如果我们提升一下渲染的品质，把一张图渲染好看了，我相信很少会有人不喜欢。
+
 ---
 
 ## 光影
+
+Note:
+ECharts GL 中主要有两种光源，日光和环境光。
 
 ----
 
@@ -241,7 +246,9 @@ Note:
 
 Note:
 
-除了外来的光源
+除了外来的光源。有些物体它本身也会发光，而不会因为在暗面的缘故无法被看到。
+
+比如我们拿这张夜晚的图片，它里面的星星点点的灯光就属于是灯光的自发光。它们不会受太阳暗面的影响，反而因为其它地方都暗下来了，突出了这些自发光的点。
 
 ----
 
@@ -268,7 +275,7 @@ Note:
 
 + HDR 的环境光照贴图
 
-+ 对环境光照的积分预计算（prefilter）<!-- .element: class="fragment highlight-current-blue" -->
++ 对环境光照的积分预计算（prefilter）
 
 + 能量守恒的光照公式
 
@@ -289,7 +296,11 @@ Ok，然后最后我们再使用一个能量守恒的光照公式应用到像素
 
 ----
 
-## 金属度和光泽度
+## 金属和光泽度
+
++ metalness
+
++ roughness
 
 Note:
 
@@ -299,9 +310,8 @@ Note:
 
 ----
 
-## 木质
-
-----
+Note:
+木质
 
 ----
 
@@ -314,9 +324,39 @@ Note:
 
 ## 描边
 
++ Sobel 边缘检测
+
++ Depth + Normal
+
+Note:
+我们使用基于 Depth + Normal 的 sobel 算子提取图像的边缘
+
+----
+
+
+<iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/bar3D-edge.html"></iframe>
+
+Note:
+描边除了有卡通效果外，还有可以有效的去分离每个图形。
+
 ----
 
 ## Cross Hatching
+
+----
+
+## Tonal Art Maps
+
+<img data-src="asset/img/TAM.png" alt="">
+
+----
+
+
+<iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/surface-hatching.html"></iframe>
+
+----
+
+<iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/buildings-hatching.html"></iframe>
 
 
 ---
@@ -329,11 +369,20 @@ Note:
 
 ----
 
-## Motion
-
-----
-
 ## 调色
+
+Note:
+其它更多数字艺术的作品, Glitch, Dot Screen
+
+---
+
+## 渐进增强
+
++ 将采样分布到多帧中
+
++ 交互的时候能够立刻反馈
+
++ 停止交互后渐进增强画面
 
 ---
 
@@ -354,15 +403,17 @@ Note:
 
 ----
 
+<iframe data-src="./asset/ec-demo/airline.html" class="fullscreen front" frameborder="0"></iframe>
+
 Note:
 这是一个 ECharts 中绘制的航班图
 
 ----
 
+<iframe data-src="./asset/ec-demo/airline-gl.html" class="fullscreen" frameborder="0"></iframe>
+
 Note:
 这是用 ECharts GL 绘制的
-
-----
 
 ---
 
@@ -448,7 +499,7 @@ Note:
 
 ## WebGL 中实现力引导布局
 
-<img src="asset/img/gpgpu.png" style="background: none;box-shadow: none;" />
+<img data-src="asset/img/gpgpu.png" style="background: none;box-shadow: none;" />
 
 Note:
 一般 WebGL 实现 GPGPU 的思路就是把各式各样的数据存到纹理里，然后在 shader 里取出数据之后进过一系列计算之后再写入纹理。
@@ -541,10 +592,31 @@ Note:
 
 ## D3 + ECharts + ECharts GL
 
+Note:
+最后我再讲一个前段时间做的 D3 和 ECharts 结合使用的例子
+
+----
+
+<video autoplay loop data-src="../asset/video/contour.mp4"></video>
+
+----
+
+<img data-src="../asset/img/globe-contour-idea.jpg" alt="">
+
+----
+
+<iframe data-src="asset/ec-demo2/globe-contour.html" class="fullscreen" frameborder="0"></iframe>
+
+----
+
+<iframe data-src="asset/ec-demo2/globe-contour2.html" class="fullscreen" frameborder="0"></iframe>
+
 ----
 
 Note:
 把 ECharts 中的图形提取出来画成三维的。
+
+TODO
 
 ---
 
