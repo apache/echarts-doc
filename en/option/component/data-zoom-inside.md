@@ -31,3 +31,23 @@ Whether disable inside zoom.
     galleryViewPath=${galleryViewPath}
 ) }}
 
+
+## zoomOnMouseWheel(boolean) = true
+
+How to trigger zoom. Optional values:
+
++ `true`：Mouse wheel triggers zoom.
++ `false`：Mouse wheel can not triggers zoom.
++ `'shift'`：Holding `shift` and mouse wheel triggers zoom.
++ `'ctrl'`：Holding `ctrl` and mouse wheel triggers zoom.
++ `'alt'`：Holding `alt` and mouse wheel triggers zoom.
+
+## moveOnMouseMove(boolean) = true
+
+How to trigger data window move. Optional values:
+
++ `true`：Mouse move triggers data window move.
++ `false`：Mouse move can not triggers data window move.
++ `'shift'`：Holding `shift` and mouse move triggers data window move.
++ `'ctrl'`：Holding `ctrl` and mouse move triggers data window move.
++ `'alt'`：Holding `alt` and mouse move triggers data window move.
