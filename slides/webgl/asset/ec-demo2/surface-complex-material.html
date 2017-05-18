@@ -21,38 +21,39 @@
             var sqrt = Math.sqrt;
             var cosh = Math.cosh;
             var sinh = Math.sinh;
-            var exp = Math.exp;
             var PI = Math.PI;
-            var square = function (x) {
-                return x*x;
-            };
-            var mod2 = function (a, b) {
-                var c = a % b;
-                return c > 0 ? c : (c + b);
+
+            var aa = 0.4;
+            var r = 1 - aa * aa;
+            var w = sqrt(r);
+
+            var config = {
+                aa: aa
             };
 
-            var theta1 = -(20/9) * PI;
-            var theta2 = 15 * PI;
             function getParametricEquation() {
                 return {
                     u: {
-                        min: -Math.PI,
-                        max: Math.PI,
-                        step: Math.PI / 20
+                        min: -13.2,
+                        max: 13.2,
+                        step: 0.4
                     },
                     v: {
-                        min: 0,
-                        max: Math.PI,
-                        step: Math.PI / 20
+                        min: -37.4,
+                        max: 37.4,
+                        step: 0.4
                     },
                     x: function (u, v) {
-                        return Math.sin(v) * Math.sin(u);
+                        var denom = aa * (pow(w * cosh(aa * u), 2) + aa * pow(sin(w * v), 2))
+                        return -u + (2 * r * cosh(aa * u) * sinh(aa * u) / denom);
                     },
                     y: function (u, v) {
-                        return Math.sin(v) * Math.cos(u);
+                        var denom = aa * (pow(w * cosh(aa * u), 2) + aa * pow(sin(w * v), 2))
+                        return 2 * w * cosh(aa * u) * (-(w * cos(v) * cos(w * v)) - (sin(v) * sin(w * v))) / denom;
                     },
                     z: function (u, v) {
-                        return Math.cos(v);
+                        var denom = aa * (pow(w * cosh(aa * u), 2) + aa * pow(sin(w * v), 2))
+                        return  2 * w * cosh(aa * u) * (-(w * sin(v) * cos(w * v)) + (cos(v) * sin(w * v))) / denom
                     }
                 };
             }
@@ -68,7 +69,6 @@
                     type: 'value'
                 },
                 grid3D: {
-
                     show: false,
 
                     environment: 'none',
@@ -82,55 +82,65 @@
                         }
                     },
                     postEffect: {
+                        enable: true,
+                        SSAO: {
+                            enable: true,
+                            radius: 4,
+                            intensity: 2
+                        }
+                    },
+                    temporalSuperSampling: {
                         enable: true
-                        // SSAO: {
-                        //     enable: true,
-                        //     radius: 10,
-                        //     intensity: 2
-                        // }
                     },
                     light: {
                         main: {
-                            intensity: 1,
-                            shadow: true,
+                            intensity: 0
                         },
                         ambient: {
                             intensity: 0
                         },
                         ambientCubemap: {
                             texture: '../texture/pisa.hdr',
-                            exposure: 0,
-                            diffuseIntensity: 0.05
+                            exposure: 1,
+                            diffuseIntensity: 1,
+                            specularIntensity: 2
                         }
                     },
                     viewControl: {
+                        distance: 120
                         // projection: 'orthographic'
                     }
                 },
                 series: [{
                     type: 'surface',
                     parametric: true,
-                    shading: 'hatching',
+                    shading: 'realistic',
                     silent: true,
                     wireframe: {
                         show: false
                     },
-                    hatchingMaterial: {
-                        hatchingTextures: [
-                            '../texture/tam/hatch_0.jpg',
-                            '../texture/tam/hatch_1.jpg',
-                            '../texture/tam/hatch_2.jpg',
-                            '../texture/tam/hatch_3.jpg',
-                            '../texture/tam/hatch_4.jpg',
-                            '../texture/tam/hatch_5.jpg'
-                        ],
-                        textureTiling: [5, 5]
+                    realisticMaterial: {
+                        baseTexture: '../texture/iron-rusted4/iron-rusted4-basecolor.png',
+                        metalness: '../texture/iron-rusted4/iron-rusted4-metalness.png',
+                        roughness: '../texture/iron-rusted4/iron-rusted4-roughness.png',
+                        normalTexture: '../texture/iron-rusted4/iron-rusted4-normal.png',
+                        textureTiling: [2, 4]
                     },
                     itemStyle: {
-                        color: '#000'
+                        color: '#fff'
                     },
                     parametricEquation: getParametricEquation()
                 }]
+            });
+
+            var gui = new dat.GUI();
+            gui.add(config, 'aa', 0.1, 0.9).onFinishChange(function () {
+                aa = config.aa;
+                chart.setOption({
+                    series: [{
+                        parametricEquation: getParametricEquation()
+                    }]
+                });
             });
 
             window.addEventListener('resize', function () {

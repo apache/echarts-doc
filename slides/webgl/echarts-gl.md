@@ -158,6 +158,8 @@ Note:
 Note:
 音频的波形数据用折线图画出来大概就是这个样子。这只是其中的一帧，如果做音乐可视化，我们需要让整个图随着音乐的节奏动起来。
 
+
+
 ----
 
 <iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/scatter-music.html"></iframe>
@@ -170,7 +172,8 @@ Note:
 <iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/bar3D-music.html"></iframe>
 
 Note:
-中间特别大的值我们还可以给它一个特别亮的颜色。这个亮度是超出屏幕所能表现的白色的。
+
+同时通过镜头动画辅助表达整个音乐的节奏，可以让用户更容易被这 Motion 带入节奏。
 
 ----
 
@@ -190,6 +193,8 @@ Note:
 ----
 
 ## 函数
+
+<iframe src="asset/ec-demo2/polar.html" width="600" height="400" frameborder="0"></iframe>
 
 Note:
 如果要可视化的是一个函数的话，连输入的数据都可以是根据规则程序生成了
@@ -248,6 +253,9 @@ ECharts GL 中主要有两种光源，日光和环境光。
 
 ## 日光
 
+Note:
+日光示意图
+
 ----
 
 <iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/globe-sun.html"></iframe>
@@ -264,13 +272,15 @@ ECharts GL 中主要有两种光源，日光和环境光。
 
 ## 环境光
 
-<img width="40%" data-src="asset/img/canyon.jpg" alt="">
+<img width="60%" data-src="asset/img/canyon.jpg" alt="">
 
 ----
 
 ## 环境光遮蔽
 
 + Screen Space Ambient Occulusion
+
+![](asset/img/ssao-fig.jpg)
 
 Note:
 计算全局光的阴影是一件开销非常大的事，所以实时的渲染一般都用非常取巧的屏幕空间的环境光遮蔽。这里的技术细节我就不讲了，
@@ -364,10 +374,9 @@ Note:
 
 ----
 
-Note:
-木质
+<iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/surface-complex-material.html"></iframe>
 
-todo
+Note:
 
 ----
 
@@ -470,9 +479,9 @@ TODO
 
 ## 二维加速
 
-+ 加速绘制
++ 绘制
 
-+ 加速布局计算
++ 布局计算
 
 ---
 
@@ -617,7 +626,7 @@ CPU without Barnes Hut: <span style="color: #ffbc00"><b>~41000 ms</b></span>
 CPU with Barnes Hut: <span style="color: #ffbc00"><b>~400 ms</b></span>
 
 Note:
-这是这个力引导算法原论文给出的数字
+这是这个力引导算法原论文给出的数字，论文里没给出具体环境参数，我实际上测的时候在多核的 CPU 下是挺快的
 
 ----
 
@@ -656,6 +665,10 @@ Note:
 ----
 
 <!--.slide: data-background-video="./asset/video/gpgpu.mp4"  -->
+
+----
+
+<iframe data-src="asset/ec-demo2/graphGL-large.html" class="fullscreen" frameborder="0"></iframe>
 
 ---
 
