@@ -22,7 +22,7 @@
 var config = {
     color: '#c0101a',
     levels: 1,
-    intensity: 8,
+    intensity: 4,
     threshold: 0.01
 }
 
@@ -38,7 +38,7 @@ context.shadowColor = config.color;
 
 var gui = new dat.GUI();
 
-image("asset/bathymetry_bw_composite_4k.jpg").then(function(image) {
+image("../texture/bathymetry_bw_composite_4k.jpg").then(function(image) {
   var m = image.height,
       n = image.width,
       values = new Array(n * m),
@@ -167,7 +167,9 @@ function initCharts(option) {
             postEffect: {
                 enable: true,
                 depthOfField: {
-                    enable: true
+                    enable: true,
+                    quality: 'ultra',
+                    focalDistance: 150
                 },
                 bloom: {
                     intensity: 0.05

@@ -31,7 +31,7 @@
                 return {
                     name: item[0],
                     value: item[1],
-                    height: Math.max(item[1] / 10, 0.1)
+                    height: Math.max(item[1] / 5, 0.1)
                 };
             });
             chart.setOption({
@@ -57,7 +57,12 @@
                     },
 
                     postEffect: {
-                        enable: true
+                        enable: true,
+                        SSAO: {
+                            enable: true,
+                            intensity: 1.5,
+                            radius: 2
+                        }
                     },
 
                     groundPlane: {
@@ -68,7 +73,7 @@
                         main: {
                             intensity: 2,
                             shadow: true,
-                            shadowQuality: 'high',
+                            shadowQuality: 'ultra',
                             alpha: config.alpha,
                             beta: 80
                         },

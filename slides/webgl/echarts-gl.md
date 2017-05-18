@@ -59,6 +59,24 @@ Note:
 
 ----
 
+<iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/hangzhou-track.html"></iframe>
+
+Note:
+这个是去年的 R 语言大会演示的一个例子。
+
+
+----
+
+<iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/hangzhou-track-gl.html"></iframe>
+
+Note:
+我在 ECharts GL 里又重新实现了一遍这个效果
+
+TODO
+高度图
+
+----
+
 #### ECharts
 
 ```js
@@ -88,31 +106,25 @@ Note:
 
 
 <iframe data-src="./asset/ec-demo2/scatter-simplex.html" frameborder="0" style="width: 50%;height:600px;float:left;"></iframe>
-<iframe data-src="./asset/ec-demo2/scatter3D-simplex2.html" frameborder="0" style="width: 50%;height:600px;float:left;"></iframe>
+<iframe data-src="./asset/ec-demo2/scatter3D-simplex.html" frameborder="0" style="width: 50%;height:600px;float:left;"></iframe>
 
 ---
 
-<iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/hangzhou-track.html"></iframe>
+## 三维空间
+
++ 高度
+
++ 深度
+
++ 光影
+
++ 材质
+
++ ....
 
 Note:
-这个是去年的 R 语言大会演示的一个例子。
+在三维空间中有更多的视觉属性可以为我们所用。
 
-
-----
-
-<iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/hangzhou-track-gl.html"></iframe>
-
-Note:
-我在 ECharts GL 里又重新实现了一遍这个效果
-
-TODO
-高度图
-
-----
-
-# 三维空间
-
-Note:
 地图多了高度，笛卡尔坐标系多了深度。
 
 多一个维度表示数据
@@ -120,7 +132,7 @@ Note:
 
 ---
 
-## 场景
+## 程序生成的场景
 
 Note:
 程序生成，
@@ -133,6 +145,8 @@ Note:
 ----
 
 ## 像素
+
+----
 
 <iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/bar3D-image-pixels.html"></iframe>
 
@@ -163,6 +177,10 @@ Note:
 ## 地图
 
 + GeoJSON
+
++ Polgon to Triangles
+
+![](asset/img/ear-clipping.gif)
 
 ----
 
@@ -200,7 +218,7 @@ z: (u, v) => cos(v)
 
 ---
 
-## 渲染
+## 丰富的渲染效果
 
 + 光影
 
@@ -216,6 +234,12 @@ Note:
 ---
 
 ## 光影
+
++ 日光和阴影
+
++ 环境光和阴影
+
++ 自发光
 
 Note:
 ECharts GL 中主要有两种光源，日光和环境光。
@@ -240,6 +264,23 @@ ECharts GL 中主要有两种光源，日光和环境光。
 
 ## 环境光
 
+<img width="40%" data-src="asset/img/canyon.jpg" alt="">
+
+----
+
+## 环境光遮蔽
+
++ Screen Space Ambient Occulusion
+
+Note:
+计算全局光的阴影是一件开销非常大的事，所以实时的渲染一般都用非常取巧的屏幕空间的环境光遮蔽。这里的技术细节我就不讲了，
+
+----
+
+
+<iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/buildings-ssao.html"></iframe>
+
+
 ----
 
 ## 自发光
@@ -248,14 +289,27 @@ Note:
 
 除了外来的光源。有些物体它本身也会发光，而不会因为在暗面的缘故无法被看到。
 
+----
+
+<iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/globe-night.html"></iframe>
+
+Note:
 比如我们拿这张夜晚的图片，它里面的星星点点的灯光就属于是灯光的自发光。它们不会受太阳暗面的影响，反而因为其它地方都暗下来了，突出了这些自发光的点。
 
 ----
 
-## HDR + Bloom
+## 更强的颜色亮度
 
++ 高动态范围 HDR
+
++ Bloom
 
 Note:
+显示能显示的最亮的颜色是白色
+
+----
+
+<iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/bloom.html"></iframe>
 
 ---
 
@@ -313,6 +367,8 @@ Note:
 Note:
 木质
 
+todo
+
 ----
 
 ## 风格化
@@ -363,15 +419,41 @@ Note:
 
 ## 摄影与后期
 
+Note:
+加一些摄影中常见的镜头效果以及后期处理
+
 ----
 
 ## 景深
+
+
+----
+
+<iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/bar3D-dof.html"></iframe>
+
+Note:
+景深可以让整个场景有一种微缩模型的感觉
+
+----
+
+<iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/globe-dof.html"></iframe>
+
+Note:
+景深焦散所带来的光斑也让整个画面更有德味
 
 ----
 
 ## 调色
 
+ACES Tone Mapping + Color Grading
+
+<img style="width:45%" data-src="asset/img/buildings-cold.jpg" alt="">
+<img style="width:45%" data-src="asset/img/buildings-warm.jpg" alt="">
+
 Note:
+当然跟摄影一样，你可能会对图片出来的整个色调不满意，所以一般再会有一个颜色纠正的操作，
+
+TODO
 其它更多数字艺术的作品, Glitch, Dot Screen
 
 ---
@@ -386,7 +468,7 @@ Note:
 
 ---
 
-# 二维加速
+## 二维加速
 
 + 加速绘制
 
@@ -571,6 +653,10 @@ GPU: <span style="color: #ffbc00"><b>~2ms</b></span>
 
 Note:
 
+----
+
+<!--.slide: data-background-video="./asset/video/gpgpu.mp4"  -->
+
 ---
 
 # 与 ECharts 的组合使用
@@ -601,7 +687,8 @@ Note:
 
 ----
 
-<img data-src="../asset/img/globe-contour-idea.jpg" alt="">
+<!--.slide: data-background="../asset/img/globe-contour-idea.jpg"  -->
+
 
 ----
 
@@ -610,13 +697,6 @@ Note:
 ----
 
 <iframe data-src="asset/ec-demo2/globe-contour2.html" class="fullscreen" frameborder="0"></iframe>
-
-----
-
-Note:
-把 ECharts 中的图形提取出来画成三维的。
-
-TODO
 
 ---
 
