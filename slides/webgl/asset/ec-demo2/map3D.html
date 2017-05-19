@@ -23,6 +23,12 @@
             var regionData = alcoholData.map(function (item) {
                 return {
                     name: item[0],
+                    value: item[1]
+                };
+            });
+            var regionData2 = alcoholData.map(function (item) {
+                return {
+                    name: item[0],
                     value: item[1],
                     height: Math.max(item[1] / 10, 0.1)
                 };
@@ -86,6 +92,7 @@
                     chart.setOption({
                         series: [{
                             boxHeight: 1,
+                            data: regionData2,
                             viewControl: {
                                 alpha: 30,
                                 minDistance: 30,

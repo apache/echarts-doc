@@ -26,6 +26,8 @@ Note:
 
 ---
 
+<!--.slide: data-background-video="./asset/video/echarts.mp4" data-background-opacity="0.4" -->
+
 ## ECharts 是什么
 
 + 拥有 <span style="color: #ffbc00">~18k star</span> 的开源前端可视化库
@@ -123,6 +125,8 @@ Note:
 + ....
 
 Note:
+那么我们可以看到 ECharts GL 是在三维空间中绘图
+
 在三维空间中有更多的视觉属性可以为我们所用。
 
 地图多了高度，笛卡尔坐标系多了深度。
@@ -134,37 +138,57 @@ Note:
 
 ## 程序生成的场景
 
++ 数据 + 规则 + 参数
+
 Note:
 程序生成，
 数据 -> 程序规则 -> 场景
 
 灵活，可以生成高精度模型。
 
-我们在接下来通过几个例子看看，一些常见的二维数据转到三维的场景后会有什么效果
+我们在接下来通过几个例子看看，一些常见的二维数据在三维场景中是什么效果
+
+TODO
 
 ----
 
 ## 像素
 
+Note:
+首先来看一个图片的像素数据的例子。
+
+TODO
+
 ----
 
 <iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/bar3D-image-pixels.html"></iframe>
 
+Note:
+
+图片的像素数据呢它是二维的，每一个像素有 x, y, r, g, b, a 的属性。
+
+我们可以把每个像素画成一个柱子。柱子的颜色就是像素的颜色
+
+然后把每个像素计算出来的亮度映射到柱子的高度，就可以得到这个非常有意思有点像是丛林和火山的形状
 
 ----
 
 ## 音频
 
+<iframe src="asset/ec-demo2/audio-waveform.html" width="1200" height="200" frameborder="0"></iframe>
+
 Note:
-音频的波形数据用折线图画出来大概就是这个样子。这只是其中的一帧，如果做音乐可视化，我们需要让整个图随着音乐的节奏动起来。
 
-
+这是一个最基础的把音频的波形可视化出来的效果，横轴是时间
 
 ----
 
 <iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/scatter-music.html"></iframe>
 
 Note:
+
+我们可以使用 WebAudio 的 API 把时域的波形图转成频域。
+
 每一个气泡都是 fft 计算音频频域的一个 bin。这是非常基础的一个音频可视化例子。
 
 ----
@@ -185,6 +209,9 @@ Note:
 
 ![](asset/img/ear-clipping.gif)
 
+Note:
+我们需要做的就是把通过三角化的算法把多边形转成更适合 WebGL 绘制的三角面。
+
 ----
 
 
@@ -197,7 +224,7 @@ Note:
 <iframe src="asset/ec-demo2/polar.html" width="600" height="400" frameborder="0"></iframe>
 
 Note:
-如果要可视化的是一个函数的话，连输入的数据都可以是根据规则程序生成了
+如果要可视化的是一个函数的话，连输入的数据都可以是根据函数的规则程序生成了
 
 ----
 
@@ -212,6 +239,11 @@ y: (u, v) => sin(v) * cos(u),
 z: (u, v) => cos(v)
 
 ```
+
+Note:
+例如参数曲面
+
+参数曲面是三维空间中表达参数方程的曲面图。
 
 ----
 
@@ -268,6 +300,10 @@ Note:
 
 <iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/geo3D-shadow.html"></iframe>
 
+Note:
+在图中这样建筑可视化的示例中，阴影是用来增强空间感的一个非常重要的手段，如果没有阴影，我们可能会觉得这些区域就是一片连起来的，建筑也是浮在地面上的感觉。
+那么软阴影又是什么，这个软的意思就是阴影的边缘要柔和，不能太硬，这个基本上需要靠很多采样才能解决。
+
 ----
 
 ## 环境光
@@ -283,13 +319,17 @@ Note:
 ![](asset/img/ssao-fig.jpg)
 
 Note:
-计算全局光的阴影是一件开销非常大的事，所以实时的渲染一般都用非常取巧的屏幕空间的环境光遮蔽。这里的技术细节我就不讲了，
+计算全局光的阴影是一件开销非常大的事，所以实时的渲染一般都用非常取巧的屏幕空间的环境光遮蔽。
+
+就是通过采样估计一个点上面能够受到多少环境光，被其它物体包围得越多的地方就会越暗。它作为阴影的补充可以让整个画面更有层次感，不会让阴影显得很单调。
 
 ----
 
 
 <iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/buildings-ssao.html"></iframe>
 
+Note:
+环境光遮蔽可以让这些挨得比较近的建筑因为光照不够显得比较暗。
 
 ----
 
@@ -297,7 +337,9 @@ Note:
 
 Note:
 
-除了外来的光源。有些物体它本身也会发光，而不会因为在暗面的缘故无法被看到。
+除了外来的光源。有些物体它本身也会发光，而不会因为阴影的缘故无法被看到。
+
+TODO
 
 ----
 
@@ -312,14 +354,32 @@ Note:
 
 + 高动态范围 HDR
 
++ Tone Mapping(ACES)
+
 + Bloom
 
 Note:
-显示能显示的最亮的颜色是白色
+
+我们平时写代码的时候，比如在页面里面设置颜色，或者可视化里做颜色映射，大部分是使用 0 到 255 的 RGB 颜色空间。一方面是因为大部分图片格式或者标准只支持 0 - 255 的范围，所以能表达的最亮的颜色也就是白色了。
+
+但是我们平时在现实生活中，看纸上的白色，或者屏幕的白色，或者太阳的白色，感受到的亮度的是不一样的。
+
+我们刚才加了这么多光照，光照稍微强一点的话就超出 RGB 的范围了。这样屏幕上一片白色，一是看不出什么有用的信息，二是无法通过对比去显示出真正很亮的颜色。
+
+我们需要一个一种高动态范围这样的机制去准确存储每个像素颜色的强度方便后期去调整到合适的色调范围。
+
+方便后期通过 Tone Mapping 去调整到合适的色调范围，
+
+Bloom 是配合 HDR 使用，用来模拟高光溢出效果的一个后期效果。
 
 ----
 
 <iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/bloom.html"></iframe>
+
+Note:
+
+这是一个 Bloom 效果的例子
+它会找出 HDR 图像中超过一定阈值的颜色，然后多层高斯模糊后再与原图像混合，混合得到图像模拟了高光的溢出效果。
 
 ---
 
@@ -349,14 +409,14 @@ Note:
 <img width="40%" data-src="asset/img/canyon-convolve.jpg" alt="">
 
 Note:
-一般基于物理的渲染要做到这么几点，首先它需要一张 HDR 格式的环境光照贴图。
+一般基于物理的渲染要做到这么几点，首先刚才提到过的它需要一张环境光照贴图。这个贴图格式是 HDR 的，刚才提到过更大范围的颜色可以表达更丰富的光照强度。
 
 然后因为光照计算需要做积分计算这张环境贴图里每一个像素产生光照贡献，如果是实时做的话就会性能很差，所以一般会对这张环境光照的贴图做积分的预计算。得到右边这张看起来像是被模糊了的图。这种预计算的卷积可能不是完全正确的结果，但是足够以假乱真了。实际上实时渲染基本上就是在用各种 trick 去实现以假乱真的效果。
 
 Ok，然后最后我们再使用一个能量守恒的光照公式应用到像素上。
 
 
-实时渲染肯定很难做到离线渲染的品质和逼真程度，但是我们希望通过一些 trick 让画面达到以假乱真的品质
+// 实时渲染肯定很难做到离线渲染的品质和逼真程度，但是我们希望通过一些 trick 让画面达到以假乱真的品质
 
 ----
 
@@ -364,19 +424,46 @@ Ok，然后最后我们再使用一个能量守恒的光照公式应用到像素
 
 + metalness
 
+    + 0 金属
+
+    + 1 非金属
+
 + roughness
 
+    + 0 完全光滑
+
+    + 1 完全粗糙
+
 Note:
+
+比如说我们可以用金属和光泽度这两个参数去描述一个物体表面的参数，这两个参数是 normalize 后的，比如金属度 metalness，0 就是非金属，1就是金属，0 - 1 之间的值实际上是两者之间的插值，用得比较少。roughness 的话 0 就是全光滑
 
 ----
 
 <iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/globe-material.html"></iframe>
+
+Note:
+金属和非金属有个区别是因为菲尼尔反射的参数不一样，上面的塑料材质的边缘视角和平面角度小反射比较强，中间正对着的反射比较弱，金属的是不管什么角度反射都差不多。
+
+----
+
+#### Metalness Map
+
+<img height="200" src="asset/texture/iron-rusted4/iron-rusted4-metalness.png" alt="">
+
+#### Roughness Map
+
+<img height="200" src="asset/texture/iron-rusted4/iron-rusted4-roughness.png" alt="">
+
+Note:
+为了描述更复杂的材质，我们可以把描述材质的属性存到各个纹理上。这样就可以精确到像素的去描述每个像素的材质了。
 
 ----
 
 <iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/surface-complex-material.html"></iframe>
 
 Note:
+比如这么一个生锈的零件
 
 ----
 
@@ -435,6 +522,7 @@ Note:
 
 ## 景深
 
+<img data-src="asset/img/dof-example.jpg" width="50%" alt="">
 
 ----
 
@@ -452,9 +540,7 @@ Note:
 
 ----
 
-## 调色
-
-ACES Tone Mapping + Color Grading
+## 调色 Color Grading
 
 <img style="width:45%" data-src="asset/img/buildings-cold.jpg" alt="">
 <img style="width:45%" data-src="asset/img/buildings-warm.jpg" alt="">
@@ -491,6 +577,8 @@ Note:
 串行改并行
 
 准备好顶点数据, commit，shader中并行绘制
+
+TODO
 
 ----
 
@@ -671,23 +759,6 @@ Note:
 <iframe data-src="asset/ec-demo2/graphGL-large.html" class="fullscreen" frameborder="0"></iframe>
 
 ---
-
-# 与 ECharts 的组合使用
-
-Note:
-看到这个大家可能会疑惑，这已经是 ECharts 的组件了，还需要组合什么鬼。
-
-但是其实我们可以做一些更有意思的事情。
-
-----
-
-## 与现有组件的无缝结合
-
-----
-
-## Interactive ECharts Surface
-
-----
 
 ## D3 + ECharts + ECharts GL
 
