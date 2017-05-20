@@ -60,18 +60,15 @@
             }
 
             chart.setOption({
-                toolbox: {
-                    feature: {
-                        saveAsImage: {
-                            backgroundColor: '#111'
-                        }
-                    },
-                    iconStyle: {
-                        normal: {
-                            borderColor: '#fff'
-                        }
-                    },
-                    left: 0
+                tooltip: {},
+                visualMap: {
+                    show: false,
+                    dimension: 2,
+                    min: -3,
+                    max: 3,
+                    inRange: {
+                        color: ['#313695', '#4575b4', '#74add1', '#abd9e9', '#e0f3f8', '#ffffbf', '#fee090', '#fdae61', '#f46d43', '#d73027', '#a50026']
+                    }
                 },
                 xAxis3D: {
                     type: 'value'
@@ -99,29 +96,27 @@
                         SSAO: {
                             enable: true,
                             radius: 3,
-                            intensity: 2,
-                            quality: 'ultra'
+                            intensity: 2
                         }
-                    },
-                    temporalSuperSampling: {
-                        enable: true
                     },
                     light: {
                         main: {
-                            intensity: 0
+                            intensity: 2,
+                            shadow: true
                         },
                         ambient: {
                             intensity: 0
                         },
                         ambientCubemap: {
-                            texture: '../texture/pisa.hdr',
-                            exposure: 1,
-                            diffuseIntensity: 1,
-                            specularIntensity: 2
+                            texture: '../texture/canyon.hdr',
+                            exposure: 2,
+                            diffuseIntensity: 0.2,
+                            specularIntensity: 1
                         }
                     },
                     viewControl: {
-                        // projection: 'orthographic'
+                        distance: 130,
+                        beta: 50
                     }
                 },
                 series: [{
@@ -133,8 +128,8 @@
                         show: false
                     },
                     realisticMaterial: {
-                        roughness: 0.1,
-                        metalness: 1
+                        roughness: 0.3,
+                        metalness: 0
                     },
                     itemStyle: {
                         color: '#fff'

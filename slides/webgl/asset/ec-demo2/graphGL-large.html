@@ -14,7 +14,9 @@
         <script src="../common/jquery.min.js"></script>
         <script>
             var chart = echarts.init(document.getElementById('main'), null, {
-                devicePixelRatio: 1
+                devicePixelRatio: 1,
+                width: 1366,
+                height: 768
             });
 
             $.getJSON('../data/internet.graph.json', function (graph) {
@@ -35,8 +37,8 @@
                         categoriesMap[node[3]] = true;
                     }
                     return {
-                        x: Math.random() * window.innerWidth,
-                        y: Math.random() * window.innerHeight,
+                        x: Math.random() * 1366,
+                        y: Math.random() * 768,
                         // x: node[0],
                         // y: node[1],
                         symbolSize: node[2],
@@ -44,7 +46,6 @@
                         value: 1
                     }
                 });
-
 
                 chart.setOption({
                     color: ["rgb(203,239,15)", "rgb(73,15,239)","rgb(239,231,15)","rgb(15,217,239)","rgb(30,15,239)","rgb(15,174,239)","rgb(116,239,15)","rgb(239,15,58)","rgb(15,239,174)","rgb(239,102,15)","rgb(239,15,15)","rgb(15,44,239)","rgb(239,145,15)","rgb(30,239,15)","rgb(239,188,15)","rgb(159,239,15)","rgb(159,15,239)","rgb(15,239,44)","rgb(15,239,87)","rgb(15,239,217)","rgb(203,15,239)","rgb(239,15,188)","rgb(239,15,102)","rgb(239,58,15)","rgb(239,15,145)","rgb(116,15,239)","rgb(15,131,239)","rgb(73,239,15)","rgb(15,239,131)","rgb(15,87,239)","rgb(239,15,231)"],
@@ -61,7 +62,7 @@
                         },
                         forceAtlas2: {
                             // GPU: false,
-                            steps: 1,
+                            steps: 5,
                             stopThreshold: 1,
                             jitterTolerence: 10,
                             edgeWeight: [0.2, 1],
