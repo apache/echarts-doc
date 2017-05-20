@@ -10,8 +10,6 @@ revealOptions:
     margin: 0
     width: 1366
     height: 768
-    math:
-        mathjax: '//cdn.bootcss.com/mathjax/2.6.1/MathJax.js'
 
 ---
 
@@ -187,7 +185,7 @@ Note:
 
 ## 音频
 
-<iframe src="asset/ec-demo2/audio-waveform.html" width="1200" height="200" frameborder="0"></iframe>
+<iframe data-src="asset/ec-demo2/audio-waveform.html" width="1200" height="200" frameborder="0"></iframe>
 
 Note:
 
@@ -215,7 +213,7 @@ Note:
 
 ## 地图
 
-<img src="asset/img/geo-example.png" width="600" alt="">
+<img data-src="asset/img/geo-example.png" width="600" alt="">
 
 Note:
 ECharts 中的地图使用的是存储行政区域或者国家轮廓的 GeoJSON 数据。我们用 Canvas 把这些轮廓画出来，在不同的国家或者行政区域填充不同的颜色。
@@ -244,7 +242,7 @@ Note:
 
 ## 函数
 
-<iframe src="asset/ec-demo2/polar.html" width="600" height="400" frameborder="0"></iframe>
+<iframe data-src="asset/ec-demo2/polar.html" width="600" height="400" frameborder="0"></iframe>
 
 Note:
 如果要可视化的是一个函数或者方程的话，连输入的数据都可以是根据函数的规则程序生成了
@@ -520,11 +518,11 @@ Note:
 
 #### Metalness Map
 
-<img height="200" src="asset/texture/iron-rusted4/iron-rusted4-metalness.png" alt="">
+<img height="200" data-src="asset/texture/iron-rusted4/iron-rusted4-metalness.png" alt="">
 
 #### Roughness Map
 
-<img height="200" src="asset/texture/iron-rusted4/iron-rusted4-roughness.png" alt="">
+<img height="200" data-src="asset/texture/iron-rusted4/iron-rusted4-roughness.png" alt="">
 
 Note:
 为了描述更复杂的材质，我们可以把描述材质的属性存到各个纹理上。这样就可以精确到像素的去描述每个像素的材质了。
