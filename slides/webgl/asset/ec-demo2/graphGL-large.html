@@ -72,6 +72,17 @@
                         }
                     }]
                 });
+
+                var layout = true;
+
+                window.addEventListener('keydown', function () {
+                    chart.dispatchAction({
+                        type: layout ? 'graphGLStopLayout' : 'graphGLStartLayout',
+                        seriesIndex: 0
+                    });
+                    layout = !layout;
+                });
+
             });
 
         </script>

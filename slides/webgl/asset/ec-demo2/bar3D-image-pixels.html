@@ -48,7 +48,10 @@
                         animationDurationUpdate: 4000
                     },
                     postEffect: {
-                        enable: true
+                        enable: false,
+                        bloom: {
+                            enable: false
+                        }
                     },
                     boxDepth: 100,
                     boxHeight: 1,
@@ -73,10 +76,10 @@
                     var r = data[i * 4] / 255;
                     var g = data[i * 4 + 1] / 255;
                     var b = data[i * 4 + 2] / 255;
-                    // var lum = (0.2125 * r + 0.7154 * g + 0.0721 * b);
-                    // r *= lum * 2;
-                    // g *= lum * 2;
-                    // b *= lum * 2;
+                    var lum = (0.2125 * r + 0.7154 * g + 0.0721 * b);
+                    r *= lum * 2;
+                    g *= lum * 2;
+                    b *= lum * 2;
                     return [r, g, b, 1];
                 };
             }
@@ -162,6 +165,26 @@
                         config.scale = 0.5;
                         updateData(imgData.data, width, height);
                     },
+
+                    function () {
+                        chart.setOption({
+                            grid3D: {
+                                environment: '../texture/starfield.jpg',
+                                postEffect: {
+                                    enable: true,
+                                    bloom: {
+                                        enable: true
+                                    },
+                                    depthOfField: {
+                                        enable: true,
+                                        quality: 'high',
+                                        focalRange: 50,
+                                        fstop: 5
+                                    }
+                                }
+                            }
+                        });
+                    }
                 ]);
             };
 

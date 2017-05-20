@@ -65,24 +65,6 @@ Note:
 
 ----
 
-<iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/hangzhou-track.html"></iframe>
-
-Note:
-这个是去年的 R 语言大会演示的一个例子。
-
-
-----
-
-<iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/hangzhou-track-gl.html"></iframe>
-
-Note:
-我在 ECharts GL 里又换了种效果实现。
-
-TODO
-高度图
-
-----
-
 #### ECharts
 
 ```js
@@ -133,6 +115,8 @@ Note:
 
 在三维空间中有更多的视觉属性可以为我们所用。
 
+更复杂的材质可以通过 WebGL 的 shader 去实现
+
 地图多了高度，笛卡尔坐标系多了深度。
 
 多一个维度表示数据
@@ -149,7 +133,7 @@ Note:
 程序生成，
 数据 -> 程序规则 -> 场景
 
-灵活，可以生成高精度模型。
+这是数据可视化比较有魅力的地方，你改改参数和规则就可能同样一份数据出来不一样的效果。甚至你的规则或者参数写错了，你会发现这张出来的效果图更有意思哎。
 
 但是这种程序生成的场景也有缺点，就是没办法做一些耗时比较长的预计算和处理已得到更好的渲染效果了，这就需要我们后面在渲染部分花更大的功夫。
 
@@ -158,7 +142,6 @@ Note:
 
 我们在接下来通过几个例子看看，一些常见的二维数据在三维场景中是什么效果
 
-TODO
 
 ----
 
@@ -167,7 +150,7 @@ TODO
 Note:
 首先来看一个图片的像素数据的例子。
 
-TODO
+
 
 ----
 
@@ -177,9 +160,9 @@ Note:
 
 图片的像素数据呢它是二维的，每一个像素有 x, y, r, g, b, a 的属性。
 
-我们可以把每个像素画成一个柱子。柱子的颜色就是像素的颜色
+我们可以把每个像素画成一个柱子。柱子的颜色就是像素的颜色。然后切换到三维视角。
 
-然后把每个像素计算出来的亮度映射到柱子的高度，就可以得到这个非常有意思有点像是丛林和火山的形状
+然后把每个像素计算出来的亮度映射到柱子的高度，然后再加上后期效果，就可以得到这个非常奇幻有点像是丛林和火山的形状
 
 ----
 
@@ -193,19 +176,11 @@ Note:
 
 ----
 
-<iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/scatter-music.html"></iframe>
+<iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/bar3D-music.html"></iframe>
 
 Note:
 
 我们可以使用 WebAudio 的 API 把时域的波形图转成频域。
-
-每一个气泡都是 fft 计算音频频域的一个 bin。这是非常基础的一个音频可视化例子。
-
-----
-
-<iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/bar3D-music.html"></iframe>
-
-Note:
 
 同时通过镜头动画辅助表达整个音乐的节奏，可以让用户更容易被这 Motion 带入节奏。
 
@@ -277,7 +252,7 @@ Note:
 <iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/surface-parametric.html"></iframe>
 
 Note:
-这是一个更复杂的参数曲面例子
+如果参数方程复杂点我们还看到更有意思的曲面，比如这个像零件一样的曲面一直是我最喜欢的一个参数曲面，因为那它来试验各种渲染算法效果非常好。
 
 ---
 
@@ -314,18 +289,18 @@ ECharts GL 中的场景主要有两种光源，日光和环境光。这些是图
 
 ## 日光
 
-+ Lambert
+<img data-src="asset/img/dir-light.png" alt="">
 
 Note:
 
-日光是大部分场景中的主要光源。因为太阳距离很远，所以日光基本上是平行光，就是说在空间中任意位置光的方向都是一样的。物体表面跟光线角度大的话受到的光多，就会更亮，角度小的话更暗，这是渲染里光照最基础的 lambert 法则。也是绘画里基础的明暗法，通过这种明暗的区别可以让单调颜色的物体一下子又立体感起来。
-
-TODO 加日光和没加日光的区别
-TODO 日光示意图
+日光作为大部分场景的主要光源，可以有效的给整个场景区分整体的明暗面。
 
 ----
 
 <iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/globe-sun.html"></iframe>
+
+Note:
+现在是凌晨 4 点北京的上空
 
 ----
 
@@ -338,9 +313,6 @@ Note:
 日光被遮挡的地方会产生阴影。
 
 在图中这样建筑可视化的示例中，阴影是用来增强空间感的一个非常重要的手段，如果没有阴影，我们可能会觉得这些区域就是一片连起来的，建筑也是浮在地面上的感觉。
-那么软阴影又是什么，这个软的意思就是阴影的边缘要柔和，不能太硬，这个基本上需要靠很多采样才能解决。
-
-现在流行的实时阴影的算法就是阴影贴图，就是在灯光的视角渲染一边场景得到深度信息，然后在摄像机视角渲染场景的时候根据这张深度贴图判断这个点是否被遮挡了。因为贴图尺寸和精度的限制，阴影贴图在
 
 ----
 
@@ -407,41 +379,6 @@ Note:
 Note:
 比如我们拿这张夜晚的图片放到地球上，它里面的星星点点的灯光就属于灯光的自发光。它们不会受太阳暗面的影响，反而因为其它地方都暗下来了，更容易突出哪些地方比较繁华，大些地方夜生活比价少，哪些地方几乎没有人烟。
 
-----
-
-## 更强的颜色亮度
-
-+ 高动态范围 HDR
-
-+ Tone Mapping(ACES)
-
-+ Bloom
-
-Note:
-
-我们平时写代码的时候，比如在页面里面设置颜色，或者可视化里做颜色映射，大部分是使用 0 到 255 的 RGB 颜色空间。一方面是因为大部分图片格式或者标准只支持 0 - 255 的范围，所以能表达的最亮的颜色也就是白色了。
-
-但是我们平时在现实生活中，看纸上的白色，或者屏幕的白色，或者太阳的白色，感受到的亮度的其实是不一样的。如果你从很亮的室外一下子进入室内，你会觉得原本室内看起来很亮的东西变得特别暗，这是因为眼睛会根据进入光线的强度自动调节你瞳孔的大小。也就是说很多亮度只有其实只有在有对比的情况下才能被感知。这也是高动态范围 HDR 存在的意义。
-
-我们刚才加了这么多光照，光照稍微强一点的话就超出 RGB 的范围了。这样屏幕上一片白色，一是看不出什么有用的信息，二是无法通过对比去显示出真正很亮的颜色。
-
-我们需要一个更高的精度去准确存储每个像素颜色的强度方便后期去调整到合适的色调范围。
-
-同时后期模拟眼睛的自适应，通过 Tone Mapping 去调整到合适的色调范围，
-
-Bloom 是配合 HDR 使用，用来模拟高光溢出效果的一个后期效果。
-
-----
-
-<iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/bloom.html"></iframe>
-
-Note:
-
-这是一个 Bloom 效果的例子
-它会找出 HDR 图像中超过一定阈值的颜色，然后多层高斯模糊后再与原图像混合，混合得到图像，模拟了高光在镜头或者眼中的溢出效果。
-
-这种高强度的亮度很容易一下子就吸引人的注意力。
-
 ---
 
 ## 材质
@@ -493,9 +430,9 @@ Ok，然后最后我们再使用一个能量守恒的光照公式应用到像素
 
 + metalness
 
-    + 0 金属
+    + 0 非金属
 
-    + 1 非金属
+    + 1 金属
 
 + roughness
 
@@ -543,38 +480,10 @@ Note:
 
 ----
 
-## 描边
-
-+ Sobel 边缘检测
-
-+ Depth + Normal
-
-Note:
-我们使用基于 Depth + Normal 的 sobel 算子提取图像的边缘，如果只是用 Normal 容易产生改被检测到但是没被检测到的情况，如果只使用 depth 则容易出现不是边缘但是却发生了误判的情况。
-
-----
-
-
-<iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/bar3D-edge.html"></iframe>
-
-Note:
-描边除了有卡通效果外，还有可以有效的去分离每个图形。
-
-----
-
 ## Cross Hatching
 
 Note:
 Cross Hatching 在有些场景下有奇效
-
-----
-
-## Tonal Art Maps
-
-<img data-src="asset/img/TAM.png" alt="">
-
-Note:
-Tonal Art Maps 是一系列预先生成的线稿，黑点的交叉线比较多，白点的交叉线则比较少。在渲染的时候会根据像素受到光照的强度去索引这些贴图。为了做到不同贴图的平滑过渡，会对色调所在范围的前后两个贴图做线性的插值。
 
 ----
 
@@ -689,87 +598,7 @@ Note:
 
 ---
 
-## GPU 加速布局
-
-----
-
-## 力引导布局
-
-+ 用于关系图的布局
-
-+ 节点与节点之间模拟斥力，边模拟弹簧的引力
-
-+ 每次迭代 O(n2), 需要上百次迭代才能结束
-
-Note:
-
-大家如果做过关系图布局的话应该知道关系图布局的算法主要是力引导布局。
-
-首先介绍一下什么是力引导布局。
-
-力引导布局是用于关系图布局的经典算法， 有很多种算法和实现，但是其基本原理都是一样的，都是节点与节点存在一个电荷的斥力，边则存在一个弹簧的引力。每次迭代通过计算每个节点的受力，并且根据受力产生一个位移，在多次迭代后整个布局的能量会趋向一个平衡，关系边多的节点间有一个聚类的趋势。
-
-所以传统的力引导算法开销很大，因为要有上百次，每次都是 O(n2) 受力计算才能结束。为了防止布局的阻塞给用户带来的困扰，我们多会把布局过程表现出来，刚好这个动画也挺有意思的。
-
-这个是 echarts 的力引导布局。
-
-----
-
-<iframe data-src="asset/ec-demo/webkit-dep.html" class="fullscreen" frameborder="0"></iframe>
-
-Note:
-这个数据大概 500 个顶点，800 条边
-
-
-----
-
-<iframe data-src="asset/ec-demo/eurosis.html" class="fullscreen" frameborder="0"></iframe>
-
-Note:
-接下来来看一个更大规模的例子，
-这份数据 1285 个顶点，7586 条边
-
-可以看到已经很卡了。
-
-----
-
-## 力引导布局的性能优化
-
-+ Barnes Hut Simulation
-
-+ 多线程？Web Worker
-
-+ SIMD？
-
-Note:
-在算法层面力导向布局最常见的性能优化方式就是这个 Barnes Hut Simulation，它把所有节点放到一个四叉树里，然后对于一批距离远的节点可以看做一个整体计算斥力。而不用去一个点一个点的算。
-
-在程序层面，可以通过 SIMD，多线程等方式去并行计算，也可以带来可观的优化效果。
-
-但是 JS 并不支持多线程，现在浏览器有 WebWorker，我们可以把布局的方法在一个单独的 WebWorker 里去做，这样有一个好处是布局的代码不会阻塞到重绘的代码，交互会更顺畅。
-
-力引导布局里有很多向量操作，所以 SIMD 也能带来显著的优化效果，但是遗憾的是只有 firefox nightly 现在才支持 SIMD。
-
-----
-
-<iframe data-src="asset/ec-demo/eurosis-gl.html" class="fullscreen" frameborder="0"></iframe>
-
-Note:
-刚才说到在 WebWorker 中做布局可以保证渲染的线程跟布局的线程分离，如果是单线程的话我们可能就是布局一次，渲染一次，如果布局多次就可能会阻塞渲染，导致交互不顺畅，但是用 WebWorker 我们就没这个担忧，我们可以再 Worker 中布局迭代多次后再提交给主线程渲染。这样可以有效的提高布局的速度
-
-----
-
-<iframe data-src="asset/ec-demo/eurosis-gl.html?5" class="fullscreen" frameborder="0"></iframe>
-
-----
-
-<iframe data-src="asset/ec-demo/eurosis-gl.html?10" class="fullscreen" frameborder="0"></iframe>
-
-Note:
-
-----
-
-## WebGL 中实现力引导布局
+## WebGL 加速力引导布局
 
 <img data-src="asset/img/gpgpu.png" style="background: none;box-shadow: none;" />
 
@@ -800,37 +629,6 @@ Edges: <span style="color: #ffbc00">48k</span>
 
 ----
 
-## 原论文
-
-CPU without Barnes Hut: <span style="color: #ffbc00"><b>~41000 ms</b></span>
-
-CPU with Barnes Hut: <span style="color: #ffbc00"><b>~400 ms</b></span>
-
-Note:
-这是这个力引导算法原论文给出的数字，论文里没给出具体环境参数，我实际上测的时候在多核的 CPU 下是挺快的
-
-----
-
-<p style="font-size: 2rem;color:#ffbc00;">Macbook 13 2012</p>
-
-CPU without Barnes Hut: <span style="color: #ffbc00"><b>~28000 ms</b></span>
-
-CPU with Barnes Hut: <span style="color: #ffbc00"><b>~1000ms</b></span>
-
-<p class="fragment">
-    GPU: <span style="color: #ffbc00"><b>~260ms</b></span>
-</p>
-
-Note:
-
-我先在自己的电脑上测试了一下不同算法的性能
-
-没有 Barnes Hut 优化的一次迭代需要近 28s，加上 Barnes Hut 也需要近 1s，然后 GPU 运算的 260ms，有几倍的提升，但是这个提升不是太明显
-
-我在想可能是 HD 4000 这张显卡太烂了，于是又在台式机上试了下。
-
-----
-
 <p style="font-size: 2rem;color:#ffbc00;">GTX1070, i7</p>
 
 CPU without Barnes Hut: <span style="color: #ffbc00"><b>~12000 ms</b></span>
@@ -851,6 +649,11 @@ Note:
 
 <iframe data-src="asset/ec-demo2/graphGL-large.html" class="fullscreen" frameborder="0"></iframe>
 
+Note:
+我现在这台电脑肯定没这么快，所以我犹豫了再三要不要把这个例子放上来，后来还是放上来了，还是比较卡的，但是整个布局的收敛时间还是可以让人接受的。
+
+实际上我也拿 gephi 在那台好点的台式机上试过，因为它能够充分的利用多核进行计算，所以整个布局的收敛也是挺快的。
+
 ---
 
 ## D3 + ECharts + ECharts GL
@@ -862,17 +665,20 @@ Note:
 
 <!--.slide: data-background="../asset/img/globe-contour-idea.jpg"  -->
 
+Note:
+这个例子最早是 datav 的闻啸发了我一个设计师的链接，这个设计师的作品列表里有这么张效果图让我舔屏舔了很久，觉得要是 gl 里也能画出来这样的图片就好了。
+
 ----
 
 <video autoplay loop data-src="../asset/video/contour.mp4"></video>
 
 ----
 
-<iframe data-src="asset/ec-demo2/globe-contour.html" class="fullscreen" frameborder="0"></iframe>
+<iframe data-src="asset/ec-demo2/globe-contour2.html" class="fullscreen" frameborder="0"></iframe>
 
 ----
 
-<iframe data-src="asset/ec-demo2/globe-contour2.html" class="fullscreen" frameborder="0"></iframe>
+<iframe data-src="asset/ec-demo2/globe-contour.html" class="fullscreen" frameborder="0"></iframe>
 
 ---
 
