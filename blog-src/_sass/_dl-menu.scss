@@ -4,8 +4,9 @@ $nav-height: 51px;
     border: none;
     // border-bottom: 1px solid $clr-primary-darker;
     background-color: $clr-primary;
-    z-index: 13;
+    z-index: 10000;
     transition: background-color 0.5s linear;
+    height: 50px;
 
     .navbar-nav {
         transition: background-color 0.5s linear;
@@ -19,9 +20,27 @@ $nav-height: 51px;
             transition: 0.5s background-color;
             font-size: 14px;
 
+            &:before {
+                content: '';
+                position: absolute;
+                left: 50%;
+                right: 50%;
+                top: 0;
+                background: $clr-secondary;
+                height: 4px;
+                transition-property: 'left, right';
+                transition-duration: .3s;
+                transition-timing-function: ease-out;
+            }
+
             &:hover, &:focus {
                 color: $clr-lightest;
-                background-color: $clr-primary-dark;;
+                background-color: $clr-primary-dark;
+
+                &:before {
+                    left: 0;
+                    right: 0;
+                }
             }
             .iconfont {
                 font-size: 12px;
@@ -43,8 +62,11 @@ $nav-height: 51px;
             border-top: 4px solid $clr-secondary;
             color: #fff;
             background-color: $clr-primary-darker;
-            font-family: noto-light;
             transition: 0.5s background-color;
+
+            &:before {
+                display: none;
+            }
 
             &:hover, &:focus {
                 color: $clr-lightest;
@@ -76,6 +98,12 @@ $nav-height: 51px;
             }
             box-shadow: none;
             border: none;
+        }
+
+        ul {
+            a:before {
+                display: none;
+            }
         }
     }
     .navbar-logo {
@@ -134,14 +162,6 @@ $nav-height: 51px;
             opacity: 1;
         }
     }
-    .navbar-toggle {
-        border-color: #517A94;
-        background-color: #517A94;
-        &:hover {
-            border-color: #384E6B;
-            background-color: #384E6B;
-        }
-    }
 }
 
 #nav-github {
@@ -158,6 +178,8 @@ $nav-height: 51px;
         .navbar-nav {
             background-color: $clr-primary;
             transition: background-color 0.5s linear;
+            margin-top: 0;
+            margin-bottom: 0;
 
             .open .dropdown-menu {
                 li a {
@@ -187,7 +209,6 @@ $nav-height: 51px;
         }
     }
 }
-
 
 
 footer {
@@ -226,6 +247,11 @@ footer {
         dt {
             width: 50%;
             float: left;
+            font-weight: 300;
+        }
+
+        li {
+            font-weight: 300;
         }
 
         a {
@@ -239,15 +265,20 @@ footer {
         }
     }
 
-    .footer-icon {
-        display: inline-block;
-        width: 40px;
-        height: 40px;
-        border-radius: 50px;
-        margin: 5px 10px 5px 0;
-        padding: 8px 10px;
-        border: 1px solid white;
+    #footer-icon-panel {
+        text-align: right;
+        font-weight: 300;
     }
+
+        .footer-icon {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 50px;
+            margin: 5px 10px 5px 0;
+            padding: 8px 10px;
+            border: 1px solid white;
+        }
 }
 
 @media (max-width: 768px) {
