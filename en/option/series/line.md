@@ -133,6 +133,16 @@ Options:
 + `'min'` Use minimum value of filter points
 + `'sum'` Use sum of filter points
 
+
+{{use:partial-series-dimensions(
+    prefix="#"
+)}}
+
+{{use:partial-series-encode(
+    prefix="#"
+)}}
+
+
 ## data(Array)
 
 {{ use: partial-2d-data-desc(

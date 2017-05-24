@@ -73,6 +73,15 @@
 {{use:partial-candlestick-item-style(prefix="#")}}
 
 
+{{use:partial-series-dimensions(
+    prefix="#"
+)}}
+
+{{use:partial-series-encode(
+    prefix="#"
+)}}
+
+
 ## data(Array)
 
 数据格式是如下的二维数组。

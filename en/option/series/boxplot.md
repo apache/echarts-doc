@@ -59,6 +59,15 @@ It could be absolute value in pixel, such as `[7, 50]`, or percentage, such as `
 {{use:partial-boxplot-item-style(prefix="#")}}
 
 
+{{use:partial-series-dimensions(
+    prefix="#"
+)}}
+
+{{use:partial-series-encode(
+    prefix="#"
+)}}
+
+
 ## data(Array)
 
 Data should be the two-dimensional array shown as follow.

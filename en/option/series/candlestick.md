@@ -77,6 +77,15 @@ Specify bar max width. Absolute value (like `10`) or percentage (like `'20%'`, a
 {{use:partial-candlestick-item-style(prefix="#")}}
 
 
+{{use:partial-series-dimensions(
+    prefix="#"
+)}}
+
+{{use:partial-series-encode(
+    prefix="#"
+)}}
+
+
 ## data(Array)
 
 Data should be the two-dimensional array shown as follow.
