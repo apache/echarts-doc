@@ -44,6 +44,7 @@
 {{import: series-gauge}}
 {{import: series-pictorialBar}}
 {{import: series-themeRiver}}
+{{import: series-custom}}
 
 # color(Array)
 

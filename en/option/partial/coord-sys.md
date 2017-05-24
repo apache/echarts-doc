@@ -75,3 +75,13 @@ Index of [geographic coordinate](~geo) to combine with, which is useful for mult
 Index of [parallel coordinates](~parallel) to combine with, which is useful for multiple parallel axes in one chart.
 
 {{/if}}
+
+
+{{if: ${calendar} }}
+## calendarIndex(number) = 0
+
+Index of [calendar coordinates](~calendar) to combine with, which is useful for multiple calendar coordinates in one chart.
+
+{{/if}}
+
+

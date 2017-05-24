@@ -75,3 +75,13 @@
 使用的[平行坐标系](~parallel)的 index，在单个图表实例中存在多个平行坐标系的时候有用。
 
 {{/if}}
+
+
+{{if: ${calendar} }}
+## calendarIndex(number) = 0
+
+使用的[日历坐标系](~calendar)的 index，在单个图表实例中存在多个日历坐标系的时候有用。
+
+{{/if}}
+
+

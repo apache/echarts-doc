@@ -19,7 +19,8 @@ It could be used with [rectangular coordinate](~grid) and [polar coordinate](~po
     coordSysDefault="'cartesian2d'",
     cartesian2d=true,
     polar=true,
-    geo=true
+    geo=true,
+    calendar=true
 )}}
 
 ## hoverAnimation(boolean)

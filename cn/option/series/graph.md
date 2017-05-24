@@ -23,7 +23,8 @@
     none=true,
     cartesian2d=true,
     polar=true,
-    geo=true
+    geo=true,
+    calendar=true
 ) }}
 
 ## hoverAnimation(boolean)

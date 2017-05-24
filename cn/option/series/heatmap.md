@@ -24,7 +24,8 @@
     coordSysDefault="'cartesian2d'",
     cartesian2d=true,
     polar=false,
-    geo=true
+    geo=true,
+    calendar=true
 )}}
 
 ## blurSize(number) = 20

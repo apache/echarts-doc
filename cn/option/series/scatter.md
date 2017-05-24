@@ -18,7 +18,8 @@
     coordSysDefault="'cartesian2d'",
     cartesian2d=true,
     polar=true,
-    geo=true
+    geo=true,
+    calendar=true
 )}}
 
 ## hoverAnimation(boolean)

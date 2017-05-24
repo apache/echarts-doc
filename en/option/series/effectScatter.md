@@ -42,7 +42,8 @@ The brush type for ripples. options: `'stroke'` and `'fill'`.
     coordSysDefault="'cartesian2d'",
     cartesian2d=true,
     polar=true,
-    geo=true
+    geo=true,
+    calendar=true
 )}}
 
 {{ use:partial-symbol(

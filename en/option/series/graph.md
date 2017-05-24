@@ -23,7 +23,8 @@ Graph is a diagram to represent [nodes](~series-graph.nodes) and the [links](~se
     none=true,
     cartesian2d=true,
     polar=true,
-    geo=true
+    geo=true,
+    calendar=true
 ) }}
 
 ## hoverAnimation(boolean)
