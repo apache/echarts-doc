@@ -1,6 +1,6 @@
 title:
 disqus_shortname:
-reading_time:     true
+reading_time:     false
 words_per_minute: 50
 destination: ../blog
 # Your site's domain goes here (eg: https://mmistakes.github.io, http://yourdomain.com, etc)
@@ -16,8 +16,8 @@ url_ec_option_cn: http://echarts.baidu.com/option.html
 url_ec_option_en: https://ecomfe.github.io/echarts-doc/public/en/option.html
 
 # url: http://localhost/ec-doc/blog
-# url: http://localhost/ec-doc/blog
 # url: http://sushuang.baidu.com:8000/echarts/echarts-doc/blog
+# url_gallery_view: http://gallery.echartsjs.com/view.html
 # url_ec_examples_view_cn: http://sushuang.baidu.com:8000/echarts/echarts-examples/public/view.html
 # url_ec_examples_view_en: https://ecomfe.github.io/echarts-examples/public/view.html
 # url_ec_examples_thumb_cn: http://sushuang.baidu.com:8000/echarts/echarts-examples/public/data/thumb

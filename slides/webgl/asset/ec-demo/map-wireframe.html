@@ -15,6 +15,7 @@
         <script src="../common/echarts-gl.js"></script>
 
         <script src="../data/alcohol.json.js"></script>
+        <script src="../texture/canyon.hdr.js"></script>
         <script>
             var chart = echarts.init(document.getElementById('main'));
 
@@ -66,7 +67,7 @@
                             intensity: 0
                         },
                         ambientCubemap: {
-                            texture: '../texture/canyon.hdr',
+                            texture: canyonUrl,
                             exposure: 2,
                             diffuseIntensity: 1
                         }

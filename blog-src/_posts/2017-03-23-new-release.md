@@ -3,7 +3,7 @@ layout: post
 enUrl: '2017/03/23/new-release-en.html'
 title: ECharts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布
 description: "在 ECharts 新发布的 3.5 版本中，新增了日历坐标系，增强了坐标轴指示器。同时，ECharts 统计扩展 1.0 版本发布了。日历坐标系用于在日历中绘制图表，坐标轴指示器方便用户观察数据内容，统计扩展是一个专门用来进行数据分析的工具。"
-tags: [new release, extension, tutorial]
+tags: [新版本, 扩展, 教程]
 lazyLoad: true
 image:
   feature: post/2017-03-23/banner.png

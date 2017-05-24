@@ -1,0 +1,399 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="zh"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="zh"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="zh"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>那些年我们一起学过的直方图 </title>
+<meta name="description" content="某天下午小编正在安安静静地撸代码，突然听说在我们的[gallery](http://gallery.echartsjs.com/explore.html#sort=rank~timeframe=all~author=all)上，有用户提出，[ECharts](http://echarts.baidu.com/index.html)不支持直方图，什么？这怎么能忍？于是小编将珍藏已久的机械键盘拿出来，摆好姿势，通宵达旦地为用户大大们加好了直方图，并于上周四悄悄上线了，对，我们就是这么低调。然而，很多大大们表示，直方图还是柱状图？傻傻分不清。小编深感这年头光有图怕是不行了，必须得有个教程，要做到图文并茂。下面小编就从直方图是什么，为什么要用直方图，以及如何使用[ECharts](http://echarts.baidu.com/index.html)制作直方图三个方面，为各位大大们上点干货。">
+<meta name="keywords" content="直方图, 教程, 扩展">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="那些年我们一起学过的直方图">
+<meta property="og:description" content="某天下午小编正在安安静静地撸代码，突然听说在我们的[gallery](http://gallery.echartsjs.com/explore.html#sort=rank~timeframe=all~author=all)上，有用户提出，[ECharts](http://echarts.baidu.com/index.html)不支持直方图，什么？这怎么能忍？于是小编将珍藏已久的机械键盘拿出来，摆好姿势，通宵达旦地为用户大大们加好了直方图，并于上周四悄悄上线了，对，我们就是这么低调。然而，很多大大们表示，直方图还是柱状图？傻傻分不清。小编深感这年头光有图怕是不行了，必须得有个教程，要做到图文并茂。下面小编就从直方图是什么，为什么要用直方图，以及如何使用[ECharts](http://echarts.baidu.com/index.html)制作直方图三个方面，为各位大大们上点干货。">
+<meta property="og:url" content="http://echarts.baidu.com/blog/2017/05/08/echarts-histogram-tutorial.html">
+<meta property="og:site_name" content="">
+
+
+
+
+
+<link rel="canonical" href="http://echarts.baidu.com/blog/2017/05/08/echarts-histogram-tutorial.html">
+<link href="http://echarts.baidu.com/blog/feed.xml" type="application/atom+xml" rel="alternate" title=" Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://echarts.baidu.com/blog/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://echarts.baidu.com/blog/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="http://echarts.baidu.com/blog/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://echarts.baidu.com/blog/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://echarts.baidu.com/blog/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://echarts.baidu.com/blog/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://echarts.baidu.com/blog/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://echarts.baidu.com/blog/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://echarts.baidu.com/blog/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post" class="feature">
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false" class="navbar-toggle collapsed">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://echarts.baidu.com/index.html" class="navbar-brand">
+                <img src="http://echarts.baidu.com/images/logo.png" alt="echarts logo" class="navbar-logo">
+            </a>
+        </div>
+        <div id="navbar-collapse" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-left">
+                <li id="nav-index"><a href="http://echarts.baidu.com/index.html">首页</a></li>
+                <li id="nav-doc" class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">文档<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="http://echarts.baidu.com/tutorial.html">教程</a></li>
+                        <li><a href="http://echarts.baidu.com/api.html">API</a></li>
+                        <li><a href="http://echarts.baidu.com/option.html">配置项手册</a></li>
+                        <li><a href="http://echarts.baidu.com/faq.html">常见问题</a></li>
+                        <li><a href="http://echarts.baidu.com/changelog.html">版本记录</a></li>
+                        <li><a href="http://echarts.baidu.com/feature.html">特性</a></li>
+                    </ul>
+                </li>
+                <li id="nav-download" class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">下载<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="http://echarts.baidu.com/download.html">下载</a></li>
+                        <li><a href="http://echarts.baidu.com/download-theme.html">主题下载</a></li>
+                        <li><a href="http://echarts.baidu.com/download-map.html">地图下载</a></li>
+                        <li><a href="http://echarts.baidu.com/download-extension.html">扩展下载</a></li>
+                    </ul>
+                </li>
+                <li id="nav-examples"><a href="http://echarts.baidu.com/examples.html" class="dropdown-toggle">实例</a></li>
+                <li id="nav-community" class="active">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">社区<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="http://gallery.echartsjs.com">GALLERY</a></li>
+                        <li><a href="http://echarts.baidu.com/blog">博客</a></li>
+                    </ul>
+                </li>
+                <li id="nav-tool">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">工具<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="http://echarts.baidu.com/spreadsheet.html">表格工具</a></li>
+                        <li><a href="http://ecomfe.github.io/echarts-map-tool/">地图数据在线工具</a></li>
+                        <li><a href="http://echarts.baidu.com/theme-builder/">主题构建工具</a></li>
+                    </ul>
+                </li>
+                <li id="nav-about"><a href="http://echarts.baidu.com/about.html">关于</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li id="nav-github"><a href="https://github.com/ecomfe/echarts" target="_blank"><img src="http://echarts.baidu.com/images/github.png" width="18"></a></li>
+                <li id="nav-2" class="0"><a href="http://echarts.baidu.com/echarts2/">2.0</a></li>
+                <li id="nav-homeen"><a href="https://ecomfe.github.io/echarts-doc/public/en/index.html">EN</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="entry-header">
+  
+  <div class="entry-image">
+    <img src="http://echarts.baidu.com/blog/images/post/2017-05-08-echarts-histogram-height-of-tree.png" alt="那些年我们一起学过的直方图">
+  </div><!-- /.entry-image -->
+</div><!-- /.entry-header -->
+
+
+<div id="post-main" role="main">
+  <article class="hentry">
+    <header class="header-title">
+      <div class="header-title-wrap">
+        <h1 class="entry-title">那些年我们一起学过的直方图</h1>
+        <h2><span class="entry-date date published"><time datetime="2017-05-08T00:00:00+08:00">2017-05-08</time></span></h2>
+        
+      </div><!-- /.header-title-wrap -->
+    </header>
+    <div class="entry-content">
+      <p>某天下午小编正在安安静静地撸代码，突然听说在我们的 <a href="http://gallery.echartsjs.com/explore.html#sort=rank~timeframe=all~author=all">gallery</a> 上，有用户提出，<a href="http://echarts.baidu.com/index.html">ECharts</a> 不支持直方图，什么？这怎么能忍？于是小编将珍藏已久的机械键盘拿出来，摆好姿势，通宵达旦地为用户大大们加好了直方图，并于上周四悄悄上线了，对，我们就是这么低调。然而，很多大大们表示，直方图还是柱状图？傻傻分不清。小编深感这年头光有图怕是不行了，必须得有个教程，要做到图文并茂。下面小编就从直方图是什么，为什么要用直方图，以及如何使用 <a href="http://echarts.baidu.com/index.html">ECharts</a> 制作直方图三个方面，为各位大大们上点干货。</p>
+
+<h2 id="直方图是什么">直方图是什么</h2>
+
+<p>直方图主要用来反映一组样本数据的分布情况。从图的形式来看，它属于柱状图的一种，但它和柱状图相比还是有很多不同之处的。首先，直方图的任意两个 bar 之间不允许有间隙，这是因为原始样本值被分割成一系列连续的、相互邻接的小区间，每一个小区间都是左闭右开的，除了最后一个，如<code class="highlighter-rouge">[x0, x1), [x1,x2), [x2,x3]</code>，在直方图中小区间又被称为“bin”。其中bin的高度是由落入该区间中样本值的个数决定的；其次，在 ECharts 中绘制双数值轴（这里的双数值轴指的是 x 轴和 y 轴都是数值类型的）柱状图，用户需要传入二维的数组，如<code class="highlighter-rouge">array1 = [[1, 2], [3, 4]]</code>，而绘制直方图，用户只需要传入一维的数组，如<code class="highlighter-rouge">array2 = [1, 2, 3, 4]</code>，然后由<a href="https://github.com/ecomfe/echarts-stat">ECharts 统计扩展</a>将一维的样本值分割成一个个具体的bin，并计算输出每一个bin的绘制信息，然后选用 ECharts 柱状图绘制具体的直方图。</p>
+
+<h2 id="为什么要用直方图">为什么要用直方图</h2>
+
+<p>前面已经提到了，直方图主要用来反映样本数据的分布，如下图，这是使用著名的<a href="https://en.wikipedia.org/wiki/Iris_flower_data_set">虹膜花数据集</a>中的花瓣长度这一维度所作的直方图。从图中可以直观地看出该维度样本数据不符合正态分布，有多个峰值，具有明显的差异。这说明不同种类虹膜花的花瓣长度，受多个因素的影响，同时也表明在进一步的数据分析中，所有基于正态分布假设的分析，都不适合该维度数据。</p>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-05-08-echarts-histogram-petal-length-iris.png" alt="petal-width" /></p>
+
+<p>除此之外，直方图还可以用来进行数据审查。所谓的数据审查，是指在数据预处理之前，通过直方图直观地审视样本数据中的每个维度，检查是否有异常值的同时，了解值的分布。如图，这是记录 31 颗黑樱桃树周长的样本数据，从图中可以明显地看出有三个异常值，因为树的周长肯定大于 0 ，不会出现小于 0 的负数，而<code class="highlighter-rouge">[-5, 0)</code>这个区间内有三个样本值，这就需要通过数据清洗将异常值过滤掉。</p>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-05-08-echarts-histogram-girth-of-tree.png" alt="girth-tree" /></p>
+
+<h2 id="如何使用-echarts制作直方图">如何使用 <a href="http://echarts.baidu.com/index.html">ECharts</a>制作直方图</h2>
+
+<p>ECharts 是一个强大的可视化图表库，并不是一个统计分析的工具，所以我们将处理原始数据并分割成一个个具体的bin这一部分放在了 ECharts 的<a href="https://github.com/ecomfe/echarts-stat">统计扩展</a>中实现。这就需要我们在引入 <code class="highlighter-rouge">echarts.js</code> 的同时，引入统计扩展对应的 <code class="highlighter-rouge">ecStat.js</code>，如：</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"echarts.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"ecStat.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+
+<span class="kd">var</span> <span class="nx">height</span> <span class="o">=</span> <span class="p">[</span><span class="mi">70</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">63</span><span class="p">,</span> <span class="mi">72</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="mi">83</span><span class="p">,</span> <span class="mi">66</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">79</span><span class="p">,</span> <span class="mi">76</span><span class="p">,</span> <span class="mi">76</span><span class="p">,</span> <span class="mi">69</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">74</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">86</span><span class="p">,</span> <span class="mi">71</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">74</span><span class="p">,</span> <span class="mi">72</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">87</span><span class="p">];</span>
+
+<span class="kd">var</span> <span class="nx">bins</span> <span class="o">=</span> <span class="nx">ecStat</span><span class="p">.</span><span class="nx">histogram</span><span class="p">(</span><span class="nx">height</span><span class="p">);</span>
+
+<span class="nt">&lt;/script&gt;</span>
+</code></pre>
+</div>
+<p>然后使用统计扩展处理过后的数据，配置 ECharts 柱状图中的 option，如：</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">option</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">color</span><span class="p">:</span> <span class="p">[</span><span class="s1">'rgb(25, 183, 207)'</span><span class="p">],</span>
+    <span class="na">grid</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">left</span><span class="p">:</span> <span class="s1">'3%'</span><span class="p">,</span>
+        <span class="na">right</span><span class="p">:</span> <span class="s1">'3%'</span><span class="p">,</span>
+        <span class="na">bottom</span><span class="p">:</span> <span class="s1">'3%'</span><span class="p">,</span>
+        <span class="na">containLabel</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">xAxis</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="s1">'value'</span><span class="p">,</span>
+        <span class="c1">//这个一定要设，不然barWidth和bins对应不上</span>
+        <span class="na">scale</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="p">}],</span>
+    <span class="na">yAxis</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="s1">'value'</span><span class="p">,</span>
+    <span class="p">}],</span>
+    <span class="na">series</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="s1">'bar'</span><span class="p">,</span>
+        <span class="na">barWidth</span><span class="p">:</span> <span class="s1">'99.3%'</span><span class="p">,</span>
+        <span class="na">label</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">normal</span><span class="p">:</span> <span class="p">{</span>
+                <span class="na">show</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="na">position</span><span class="p">:</span> <span class="s1">'insideTop'</span><span class="p">,</span>
+                <span class="na">formatter</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="nx">params</span><span class="p">.</span><span class="nx">value</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="na">data</span><span class="p">:</span> <span class="nx">bins</span><span class="p">.</span><span class="nx">data</span>
+    <span class="p">}]</span>
+<span class="p">};</span>
+
+</code></pre>
+</div>
+<p>这样就得到了如下的直方图：</p>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-05-08-echarts-histogram-height-of-tree.png" alt="height-tree" /></p>
+
+<p>这里不得不说的是，由于历史遗留的问题，ECharts 中的柱状图并不能完美地支持直方图的绘制，所以不得不使用一些小的 trick，如设置 <code class="highlighter-rouge">xAxis</code> 的 <code class="highlighter-rouge">scale</code> 为 <code class="highlighter-rouge">true</code>，调整 <code class="highlighter-rouge">barWidth</code> 的值等。不过，大家不用担心，作为一个良心以及正义感爆棚的团队，我们即将发布一款新的自定义图表类型。经小编亲测，该图表类型可以画出狂拽酷炫屌炸天的直方图，敬请期待哦。</p>
+
+
+      <div class="entry-meta">
+        <span class="tag-panel">
+          
+          <!--<a href="http://echarts.baidu.com/blog/tags/#直方图" title="Pages tagged 直方图" class="tag">-->
+            <span class="term">直方图</span>
+          <!--</a>-->
+          
+          
+          <!--<a href="http://echarts.baidu.com/blog/tags/#教程" title="Pages tagged 教程" class="tag">-->
+            <span class="term">教程</span>
+          <!--</a>-->
+          
+          
+          <!--<a href="http://echarts.baidu.com/blog/tags/#扩展" title="Pages tagged 扩展" class="tag">-->
+            <span class="term">扩展</span>
+          <!--</a>-->
+          
+          
+        </span>
+      </div>
+    </div><!-- /.entry-content -->
+    
+    <div class="container">
+  <div class="read-more">
+    <h3>更多相关信息</h3>
+    <div class="row">
+      
+      
+      
+      
+      
+      <div class="col-md-4">
+        <div class="read-more-post">
+          <h4><a href="http://echarts.baidu.com/blog/2017/05/09/echarts-statistical-extension-tutorial.html" title="ECharts 统计扩展教程">ECharts 统计扩展教程</a></h4>
+          <p>你是否想了解一组样本数据的分布情况？你是否想根据用户的数值属性将用户分成不同的群体？你是否想预测两个变量的变化趋势？——什么？不需要？不要再违心了，小编已经听到来自你们内心深处的呐喊，今天就为大家推荐一款神器——ECharts 统计扩展，这是一个用来进行数据分析的扩展工具，包含的功能有直方图、聚类、回归、以及常用的汇总统计。通过统计扩展和 ECharts 的结合，可以使大家方便地实现可视分析，也就是将数据分析的结果，通过可视化直观地呈现出来。</p>
+          <div class="tag-panel">
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#直方图" title="Pages tagged 直方图" class="tag">-->
+              <span class="term">直方图</span>
+            <!--</a>-->
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#教程" title="Pages tagged 教程" class="tag">-->
+              <span class="term">教程</span>
+            <!--</a>-->
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#扩展" title="Pages tagged 扩展" class="tag">-->
+              <span class="term">扩展</span>
+            <!--</a>-->
+            
+          </div>
+        </div>
+      </div>
+      
+      
+      
+      
+      
+      <div class="col-md-4">
+        <div class="read-more-post">
+          <h4><a href="http://echarts.baidu.com/blog/2017/04/12/echarts-gl-alpha.html" title="ECharts GL 1.0 alpha 发布">ECharts GL 1.0 alpha 发布</a></h4>
+          <p>ECharts GL （原 ECharts-X）发布 1.0 alpha，ECharts GL 是 ECharts 的 WebGL 扩展，其中提供了三维散点图，飞线图，柱状图，曲面图，地球等多种三维可视化方式。并且增加 scatterGL，graphGL系列类型用于二维的散点图，关系图的加速绘制和布局。</p>
+          <div class="tag-panel">
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#直方图" title="Pages tagged 直方图" class="tag">-->
+              <span class="term">直方图</span>
+            <!--</a>-->
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#教程" title="Pages tagged 教程" class="tag">-->
+              <span class="term">教程</span>
+            <!--</a>-->
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#扩展" title="Pages tagged 扩展" class="tag">-->
+              <span class="term">扩展</span>
+            <!--</a>-->
+            
+          </div>
+        </div>
+      </div>
+      
+      
+      
+      
+      
+      <div class="col-md-4">
+        <div class="read-more-post">
+          <h4><a href="http://echarts.baidu.com/blog/2017/03/23/new-release.html" title="ECharts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布">ECharts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布</a></h4>
+          <p>在 ECharts 新发布的 3.5 版本中，新增了日历坐标系，增强了坐标轴指示器。同时，ECharts 统计扩展 1.0 版本发布了。日历坐标系用于在日历中绘制图表，坐标轴指示器方便用户观察数据内容，统计扩展是一个专门用来进行数据分析的工具。</p>
+          <div class="tag-panel">
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#直方图" title="Pages tagged 直方图" class="tag">-->
+              <span class="term">直方图</span>
+            <!--</a>-->
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#教程" title="Pages tagged 教程" class="tag">-->
+              <span class="term">教程</span>
+            <!--</a>-->
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#扩展" title="Pages tagged 扩展" class="tag">-->
+              <span class="term">扩展</span>
+            <!--</a>-->
+            
+          </div>
+        </div>
+      </div>
+      
+      
+      
+        
+    </div>
+  </div>
+</div>
+
+  </article>
+</div><!-- /#main -->
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 logo"><img src="http://echarts.baidu.com/images/echarts-footer-logo.png"/></div>
+            <div id="efe-product" class="col-md-2 col-sm-4 pc">
+                <h3>百度EFE更多产品</h3>
+                <ul id="efe-product">
+                    <li><a href="http://tushuo.baidu.com/" target="_blank">图说</a></li>
+                    <li><a href="https://ecomfe.github.io/san/" target="_blank">SAN</a></li>
+                    <li><a href="http://ecomfe.github.io/edp" target="_blank">EDP</a></li>
+                    <li><a href="http://github.com/ecomfe/zrender" target="_blank">ZRender</a></li>
+                    <li><a href="http://fecs.baidu.com/" target="_blank">FECS</a></li>
+                    <li><a href="http://ecomfe.github.io/fontmin/" target="_blank">Fontmin</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-md-offset-1 col-sm-4 pc">
+                <h3>友情链接</h3>
+                <ul>
+                    <li><a href="https://fex.baidu.com" target="_blank">FEX</a></li>
+                    <li><a href="http://bit.baidu.com/" target="_blank">BIT</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3" id="footer-icon-panel">
+                <div class="icon-panel">
+                    <a href="mailto:echarts@baidu.com" class="footer-icon">
+                        <img src="http://echarts.baidu.com/images/icon-email"/>
+                    </a>
+                    <a href="https://twitter.com/EChartsJs" class="footer-icon">
+                        <img src="http://echarts.baidu.com/images/icon-twitter"/>
+                    </a>
+                    <a href="http://weibo.com/u/5160877841" class="footer-icon">
+                        <img src="http://echarts.baidu.com/images/icon-weibo"/>
+                    </a>
+                    <a href="https://github.com/ecomfe/echarts" class="footer-icon">
+                        <img src="http://echarts.baidu.com/images/icon-github"/>
+                    </a>
+                </div>
+                <div id="echarts-copyright">&#9400; 2017 百度ECharts团队出品</div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="http://echarts.baidu.com/blog/assets/js/vendor/jquery-1.9.1.min.js"></script>
+<script src="http://echarts.baidu.com/vendors/bootstrap/js/bootstrap.min.js"></script>
+<script src="http://echarts.baidu.com/blog/assets/js/scripts.min.js"></script>
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?4bad1df23f079e0d12bdbef5e65b072f";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</body>
+</html>

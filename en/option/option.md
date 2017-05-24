@@ -54,6 +54,7 @@ Defaults:
 ['#c23531','#2f4554', '#61a0a8', '#d48265', '#91c7ae','#749f83',  '#ca8622', '#bda29a','#6e7074', '#546570', '#c4ccd3']
 ```
 
+
 # backgroundColor(Color)
 Background color. Defaults to have no background.
 
@@ -69,3 +70,19 @@ Global font style.
 ) }}
 
 {{import: partial-animation }}
+
+
+# useUTC(boolean) = false
+
+Whether to use UTC in display.
+
++ `true`: When `axis.type` is `'time'`, ticks is determined according to UTC, and `axisLabel` and `tooltip` use UTC by default.
++ `false`: When `axis.type` is `'time'`, ticks is determined according to local time, and `axisLabel` and `tooltip` use local time by default.
+
+The default value of `useUTC` is false, for sake of considering:
+
++ In many cases, labels should be displayed in local time (whether the time is stored in server in local time or UTC).
++ If user uses time string (like '2012-01-02') in data, it usually means local time if time zone is not specified. Time should be displayed in its original time zone by default.
+
+Notice: the setting only effects "display time", but not "parse time".
+About how time value (like `1491339540396`, `'2013-01-04'`, ...) is parsed in echarts, see [the time part in date](~series-line.data).

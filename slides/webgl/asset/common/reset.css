@@ -45,3 +45,28 @@ body.has-code {
     user-select: none;
     -webkit-user-select: none;
 }
+
+.stage-control-toolbar {
+    position: absolute;
+    z-index: 10000;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    height: 60px;
+
+    text-align: center;
+}
+.stage-control-toolbar button {
+    float: left;
+    margin-top: 10px;
+
+    border-radius: 5px;
+    font-size: 20px;
+    color: #fff;
+    background: none;
+    border: 1px solid #fff;
+    margin-left: 10px;
+    padding: 5px;
+
+    cursor: pointer;
+}

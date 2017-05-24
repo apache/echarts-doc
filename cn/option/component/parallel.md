@@ -54,6 +54,12 @@
 
 参见 [parallel.axisExpandable](parallel.axisExpandable)
 
+## axisExpandTriggerOn(string) = 'click'
+
+可取值：
++ `'click'`：鼠标点击的时候 expand。
++ `'mousemove'`：鼠标悬浮的时候 expand。
+
 
 ## parallelAxisDefault(Object)
 

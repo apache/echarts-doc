@@ -380,7 +380,7 @@ header .entry-meta {
 .read-more {
 	margin: 40px 0;
 	padding: 25px 0;
-	border-top: 1px solid #999;
+	border-top: 1px solid $clr-border;
 
 	h3 {
 		font-size: 22px;
@@ -487,18 +487,12 @@ pre code {
 
 	article {
 		background-color: #fff;
-		box-shadow: 0 0 0 0, 0 6px 12px rgba($base-color,0.1);
 		border-radius: 3px;
 		margin-bottom: 20px;
 		padding: 25px 15px;
 
 		@media #{$medium} {
 			padding: 30px;
-		}
-
-		@media #{$large} {
-			margin-bottom: 30px;
-			padding: 50px 80px;
 		}
 	}
 }

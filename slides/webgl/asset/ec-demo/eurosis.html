@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="../common/reset.css">
+    </head>
+    <body>
+        <div id="main"></div>
+        <script src="../common/echarts.min.js"></script>
+        <script src="../common/jquery.min.js"></script>
+        <script src="../common/echarts-gl.js"></script>
+        <script src="../data/eurosis.json.js"></script>
+        <script>
+            var chart = echarts.init(document.getElementById('main'));
+
+            chart.setOption({
+                title: {
+                    text: 'Force Directed Layout',
+                    subtext: '\nNodes: 1285\n\nEdges: 7586',
+                    textStyle: {
+                        fontSize: 30,
+                        color: '#fff'
+                    },
+                    subtextStyle: {
+                        fontSize: 20,
+                        color: '#fff'
+                    }
+                },
+                series: [{
+                    type: 'graph',
+                    layout: 'force',
+                    animation: false,
+                    label: {
+                        normal: {
+                            position: 'right',
+                            formatter: '{b}'
+                        }
+                    },
+                    roam: true,
+                    data: eurosisData.nodes.map(function (node) {
+                        node.symbolSize *= 10;
+                        return node;
+                    }),
+                    categories: eurosisData.categories,
+                    force: {
+                        edgeLength: 1,
+                        repulsion: 10,
+                        gravity: 0.4
+                    },
+                    edges: eurosisData.links,
+                    lineStyle: {
+                        normal: {
+                            color: '#fff',
+                            opacity: 0.1
+                        }
+                    },
+                    progressive: 0
+                }]
+            });
+
+
+            console.log(eurosisData.nodes.length);
+            console.log(eurosisData.links.length);
+
+            window.onresize = chart.resize;
+        </script>
+    </body>
+</html>

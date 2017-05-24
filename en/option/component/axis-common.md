@@ -78,6 +78,12 @@ The margin between the axis label and the axis line.
 
 {{use: axis-common-formatter-desc}}
 
+##${prefix} showMinLabel(boolean) = null
+Whether to show the label of the min tick. Optional values: `true`, `false`, `null`. It is auto determined by default, that is, if labels are overlapped, the label of the min tick will not be displayed.
+
+##${prefix} showMaxLabel(boolean) = null
+Whether to show the label of the max tick. Optional values: `true`, `false`, `null`. It is auto determined by default, that is, if labels are overlapped, the label of the max tick will not be displayed.
+
 ##${prefix} textStyle(Object)
 
 {{ use: partial-text-style(
@@ -90,6 +96,7 @@ Label text align, can be `'left'`, `'right'`, `'center'`. Defaultly will choose 
 
 ###${prefix} baseline(string)
 Label text vertical align, can be `'top'`, `'middle'`, `'bottom'`. Defaultly will choose one of them automatically.
+
 
 <!-- Overwrite color -->
 ###${prefix} color(Color|Function)
@@ -202,7 +209,7 @@ Split area of axis in [grid](~grid) area, not shown by default.
 ) }}
 {{ /if }}
 
-##${prefix} show(boolean) = ${defaultShow|default(true)}
+##${prefix} show(boolean) = ${defaultShow|default(false)}
 Whether to show the splitArea.
 ##${prefix} areaStyle(Object)
 Split area style.

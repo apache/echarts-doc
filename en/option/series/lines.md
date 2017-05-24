@@ -43,6 +43,9 @@ Whether to show special effect.
 ### period(number) = 4
 The duration of special effect, which unit is second.
 
+### delay(number|Function)
+Effect animation delay. Can be number or callback function.
+
 ### constantSpeed(number) = 0
 If symbol movement of special effect has a constant speed, which unit is pixel per second. [period](~series-lines.effect.period) will be ignored if `constantSpeed` is larger than 0.
 

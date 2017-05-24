@@ -164,7 +164,8 @@ define(function (require) {
             var defs = [
                 ['tutorial', '教程'],
                 ['api', 'API'],
-                ['option', '配置项手册']
+                ['option', '配置项手册'],
+                ['option-gl', 'GL']
             ];
 
             var html = [];
@@ -410,6 +411,29 @@ define(function (require) {
             }
             lazyload();
             this._doLazyLoad = lazyload;
+
+            // Twentytwenty
+            if ($.fn.twentytwenty && !$content.find('.twentytwenty-wrapper').length) {
+                $content.find('.twentytwenty-container').each(function () {
+                    var self = this;
+                    var loading = 0;
+                    // http://stackoverflow.com/questions/3877027/jquery-callback-on-image-load-even-when-the-image-is-cached
+                    $(this).find('img').one('load', function () {
+                        loading--;
+                        if (loading === 0) {
+                            $(self).twentytwenty();
+                        }
+                    }).each(function () {
+                        loading++;
+                        if(this.complete) {
+                            $(this).load();
+                        }
+                    });
+                });
+            }
+            else if ($.fn.twentytwenty) {
+                $(window).trigger('resize.twentytwenty');
+            }
         },
 
         /**

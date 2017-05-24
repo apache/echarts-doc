@@ -1,3 +1,59 @@
+<h2 id="v3-5-4">v3.5.4</h2>
+<div class="time">2017-04-27</div>
+
+<ul>
+<li>[^] 修复了对 <a href="https://github.com/ecomfe/echarts-liquidfill">水球图</a> clipPath 的支持问题。</li>
+<li>[^] 修复了 <code>label</code> 设置为 <code>insideTop</code> 时的位置。</li>
+<li>[^] 修复了 <a href="http://www.w3.org/TR/SVG/paths.html#PathData">SVG PathData</a> transform 时的问题。</li>
+</ul>
+<h2 id="v3-5-3">v3.5.3</h2>
+<div class="time">2017-04-14</div>
+
+<ul>
+<li><p>[^] 修复了 <code>option</code> 中 <code>left</code> <code>right</code> <code>width</code> <code>top</code> <code>bottom</code> <code>height</code> 的默认选取问题。参见 <a href="https://github.com/ecomfe/echarts/issues/5440">#5440</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/api.html#action.tooltip.showTip">showTip</a> 使用像素点位置传入时的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/5449">#5449</a>。</p>
+</li>
+<li><p>[^] 优化了只有一个数据时 <a href="http://echarts.baidu.com/option.html#xAxis.boundaryGap">boundaryGap</a> 的效果。参见 <a href="https://github.com/ecomfe/echarts/issues/4417">#4417</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#series-gauge.animationEasing">gauge</a> 的动画效果设置。参见 <a href="https://github.com/ecomfe/echarts/issues/5451">#5451</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#series-treemap">treemap</a> 数据值相同时，排序不稳定的问题。</p>
+</li>
+<li><p>[^] 修正了组件重叠时 roam 以及 brush 之间的冲突。</p>
+</li>
+<li><p>[^] 扩大了 <a href="http://echarts.baidu.com/option.html#parallelAxis.nameRotate">parallel axis name</a> 倾斜时的文字可显示区域，能显示更长的维度标题。</p>
+</li>
+<li><p>[^] 使 <a href="http://echarts.baidu.com/option.html#toolbox.feature.brush.type">toolbox 清除选区按钮</a> 能够清除<a href="http://echarts.baidu.com/option.html#parallelAxis">parallelAxis</a> 的选区。</p>
+</li>
+<li><p>[^] 优化了 <code>zrender</code> 图形性能，最高提升 50%。</p>
+</li>
+</ul>
+<h2 id="v3-5-2">v3.5.2</h2>
+<div class="time">2017-04-05</div>
+
+<ul>
+<li><p>[+] 增加了 <a href="http://echarts.baidu.com/option.html#useUTC">useUTC</a> 配置项，支持按照 UTC 或本地时间显示 <code>axisLabel</code> 和 <code>tooltip</code>。并且修改了时间解析和显示的默认设定：默认在 <code>axisLabel</code> 和 <code>tooltip</code> 中显示本地时间，<code>data</code> 中使用没指定时区的时间字符串时默认解析为本地时间。参见 <a href="http://echarts.baidu.com/option.html#series-line.data">series.data 中时间类型部分</a>。修复了 <code>axis.type</code> 为 <code>&#39;time&#39;</code> 时默认按照 UTC 取刻度的问题。修复了 <a href="https://github.com/ecomfe/echarts/issues/5396">#5396</a> 和 <a href="https://github.com/ecomfe/echarts/issues/5393">#5393</a>。</p>
+</li>
+<li><p>[+] 增加了 <a href="http://echarts.baidu.com/option.html#xAxis.axisLabel.showMinLabel">axisLabel.showMinLabel</a> 和 <a href="http://echarts.baidu.com/option.html#xAxis.axisLabel.showMaxLabel">axisLabel.showMaxLabel</a>。</p>
+</li>
+<li><p>[+] 支持 <a href="http://echarts.baidu.com/option.html#series-funnel.sort">funnel.sort</a> 按照 index 排序或自定义排序。</p>
+</li>
+<li><p>[^] 修复了 <code>axisTick</code> 浮点数精度错误的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/5041">#5041</a>。</p>
+</li>
+<li><p>[^] 修复了 <code>axisTick</code> 数值过小时不显示的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/5386">#5386</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#tooltip.trigger">tooltip.trigger</a> 为 <code>&#39;axis&#39;</code> 时使用 <code>dispatchAction</code> 触发 <a href="http://echarts.baidu.com/api.html#action.tooltip.showTip">showTip</a> 无效的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/5423">#5423</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#visualMap">visualMap</a> 使 <a href="http://echarts.baidu.com/option.html#series-map">map</a> 的 <code>itemStyle</code> 失效的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/5388">#5388</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#tooltip.trigger">tooltip.trigger</a> 不支持 <code>&#39;none&#39;</code> 的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/5400">#5400</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#series-sankey">sankey</a> 在 ie11 上的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/3306">#3306</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#series-parallel">parallel</a> 的 <code>data.lineStyle.color</code> 无效的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/5363">#5363</a>。</p>
+</li>
+</ul>
 <h2 id="v3-5-1">v3.5.1</h2>
 <div class="time">2017-03-23</div>
 

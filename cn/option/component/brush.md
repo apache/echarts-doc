@@ -176,8 +176,7 @@ myChart.dispatchAction({
 {
     borderWidth: 1,
     color: 'rgba(120,140,180,0.3)',
-    borderColor: 'rgba(120,140,180,0.8)',
-    width: null
+    borderColor: 'rgba(120,140,180,0.8)'
 },
 ```
 
@@ -227,7 +226,9 @@ brush: {
 }
 ```
 
+## z(number) = 10000
 
+brush 选框的 z-index。当有和不想管组件有不正确的重叠时，可以进行调整。
 
 
 

@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Globe - ECHARTS-GL</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="../common/reset.css">
+    </head>
+    <body>
+        <div id="main"></div>
+        <script src="../common/echarts.min.js"></script>
+        <script src="../common/jquery.min.js"></script>
+        <script src="../common/echarts-gl.js"></script>
+        <script src="../common/dat.gui.js"></script>
+        <script src="../texture/world.jpg.js"></script>
+        <script src="../texture/elev_bump.jpg.js"></script>
+        <script>
+            var chart = echarts.init(document.getElementById('main'));
+
+            var globes = [];
+
+            for (var i = 0; i < 4; i++) {
+                for (var k = 0; k < 2; k++) {
+                    globes.push({
+                        left: i / 4 * 100 + '%',
+                        top: k / 2 * 100 + '%',
+                        width: '25%',
+                        height: '50%',
+
+                        heightTexture: elevBumpUrl,
+
+                        displacementQuality: 'low',
+                        displacementScale: 0.1,
+
+                        shading: 'realistic',
+
+                        baseColor: k === 0 ? '#000' : '#aaa',
+
+                        environment: 'none',
+
+                        realisticMaterial: {
+                            roughness: i / 4,
+                            metalness: k
+                        },
+
+                        postEffect: {
+                            enable: true
+                        },
+                        temporalSuperSampling: {
+                            enable: true
+                        },
+
+                        light: {
+                            ambient: {
+                                intensity: 0
+                            },
+                            main: {
+                                intensity: 0
+                            },
+                            // TODO
+                            ambientCubemap: {
+                                texture: '../texture/pisa.hdr',
+                                exposure: 0,
+                                diffuseIntensity: 0.2,
+                                specularIntensity: 1
+                            }
+                        },
+                        viewControl: {
+                            autoRotate: true,
+                            distance: 200
+                        }
+                    });
+                }
+            }
+
+            chart.setOption({
+                globe: globes,
+                series: []
+            });
+
+            window.onresize = chart.resize;
+
+        </script>
+    </body>
+</html>

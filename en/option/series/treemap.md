@@ -78,6 +78,9 @@ When `leafDepth` is set, the feature "drill down" is enabled, which means when c
 **An example about drill down:**
 ~[800x500](${galleryViewPath}treemap-drill-down&edit=1&reset=1)
 
+## drillDownIcon(string) = '▶'
+
+Marker when the node is able to be drilled down.
 
 ## roam(boolean|string) = true
 

@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Globe - ECHARTS-GL</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="../common/reset.css">
+    </head>
+    <body>
+        <div id="main"></div>
+        <script src="../common/dat.gui.js"></script>
+        <script src="../common/echarts.min.js"></script>
+        <script src="../common/map/js/world-simp.js"></script>
+        <script src="../common/jquery.min.js"></script>
+        <script src="../common/echarts-gl.js"></script>
+        <script src="../common/StageControl.js"></script>
+
+        <script src="../data/alcohol.json.js"></script>
+        <script src="../texture/canyon.hdr.js"></script>
+        <script>
+            var chart = echarts.init(document.getElementById('main'));
+
+            var config = {
+                alpha: 30
+            };
+
+            var chart = echarts.init(document.getElementById('main'));
+
+            var regionData = alcoholData.map(function (item) {
+                return {
+                    name: item[0],
+                    value: item[1],
+                    height: Math.max(item[1] / 5, 0.1)
+                };
+            });
+            chart.setOption({
+                visualMap: {
+                    min: 0,
+                    max: 15,
+                    realtime: true,
+                    calculable : true,
+                    inRange: {
+                        color: ['#313695', '#4575b4', '#74add1', '#abd9e9', '#e0f3f8', '#ffffbf', '#fee090', '#fdae61', '#f46d43', '#d73027', '#a50026']
+                    }
+                },
+                series: [{
+                    type: 'map3D',
+                    map: 'world-simp',
+                    shading: 'lambert',
+
+                    boxHeight: 0.1,
+
+                    realisticMaterial: {
+                        roughness: 0.2,
+                        metalness: 0
+                    },
+
+                    postEffect: {
+                        enable: true,
+                        SSAO: {
+                            enable: true,
+                            intensity: 1.5,
+                            radius: 2
+                        }
+                    },
+
+                    groundPlane: {
+                        show: true
+                    },
+
+                    light: {
+                        main: {
+                            intensity: 2,
+                            shadow: true,
+                            shadowQuality: 'ultra',
+                            alpha: config.alpha,
+                            beta: 80
+                        },
+                        ambient: {
+                            intensity: 0
+                        },
+                        ambientCubemap: {
+                            texture: canyonUrl,
+                            exposure: 1,
+                            diffuseIntensity: 0.5
+                        }
+                    },
+
+                    viewControl: {
+                        distance: 60,
+                        alpha: 80
+                    },
+
+                    silent: true,
+
+                    data: regionData
+                }]
+            });
+
+            window.onresize = chart.resize;
+
+            var gui = new dat.GUI();
+
+            gui.add(config, 'alpha', 10, 170).onChange(function () {
+                chart.setOption({
+                    series: {
+                        light: {
+                            main: {
+                                alpha: config.alpha
+                            }
+                        }
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>

@@ -2,16 +2,22 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-sm-4 logo"><img src="{{ site.url_echarts }}/images/echarts-footer-logo.png"/></div>
-            <div id="efe-product" class="col-md-2 col-sm-4">
+            <div id="efe-product" class="col-md-2 col-sm-4 pc">
                 <h3>百度EFE更多产品</h3>
-                <ul id="efe-more"></ul>
-            </div>
-            <div class="col-md-3 col-md-offset-1 col-sm-4">
-                <h3>ECharts团队出品</h3>
-                <ul>
-                    <li><a href="http://tushuo.baidu.com/" target="_blank">Baidu图说</a></li>
+                <ul id="efe-product">
+                    <li><a href="http://tushuo.baidu.com/" target="_blank">图说</a></li>
+                    <li><a href="https://ecomfe.github.io/san/" target="_blank">SAN</a></li>
+                    <li><a href="http://ecomfe.github.io/edp" target="_blank">EDP</a></li>
                     <li><a href="http://github.com/ecomfe/zrender" target="_blank">ZRender</a></li>
-                    <li><a href="https://github.com/pissang/qtek" target="_blank">QTEK</a></li>
+                    <li><a href="http://fecs.baidu.com/" target="_blank">FECS</a></li>
+                    <li><a href="http://ecomfe.github.io/fontmin/" target="_blank">Fontmin</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-md-offset-1 col-sm-4 pc">
+                <h3>友情链接</h3>
+                <ul>
+                    <li><a href="https://fex.baidu.com" target="_blank">FEX</a></li>
+                    <li><a href="http://bit.baidu.com/" target="_blank">BIT</a></li>
                 </ul>
             </div>
             <div class="col-md-3" id="footer-icon-panel">
@@ -34,27 +40,3 @@
         </div>
     </div>
 </footer>
-<script>
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'http://ecomfe.github.io/efe-meta/html/full-intro.html', true);
-    xhr.send();
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            var efeMore = document.getElementById('efe-more');
-            efeMore.insertAdjacentHTML(
-                'beforeend', xhr.responseText.replace(/<dd>.*?<\/dd>/g, '')
-            );
-
-            var removed = [
-                'a[href="http://echarts.baidu.com/"]',
-                'a[href="http://tushuo.baidu.com/"]',
-                'a[href="http://efe.baidu.com/"]'
-            ];
-            removed.forEach(function (query) {
-                var result = efeMore.querySelectorAll(query)[0];
-                var dtNode = result && result.parentNode;
-                dtNode.parentNode.removeChild(dtNode);
-            });
-        }
-    };
-</script>

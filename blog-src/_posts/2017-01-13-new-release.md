@@ -3,7 +3,7 @@ layout: post
 enUrl: '2017/01/13/new-release-en.html'
 title: ECharts 3.4 版本发布：新增象形柱图、主题河流图、水球图
 description: "在 ECharts 新发布的 3.4 版本中，新增象形柱图、主题河流图、水球图三种新图表。象形柱图利用图片和形状表现数据，主题河流图可以用来表示事件或主题等在一段时间内变化，水球图常用来展现百分比数据。"
-tags: [new release, extension, tutorial]
+tags: [新版本, 扩展, 教程]
 image:
   feature: post/2017-01-13-new-release-theme-river.png
 ---

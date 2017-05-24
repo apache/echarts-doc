@@ -29,7 +29,7 @@
 可以是绝对的像素大小，也可以是相对[布局宽度](~series-funnel.width)的百分比。
 
 ## sort(string) = 'descending'
-数据排序， 可以取 `'ascending'`, `'descending'`。
+数据排序， 可以取 `'ascending'`，`'descending'`，`'none'`（表示按 data 顺序），或者一个函数（即 `Array.prototype.sort(function (a, b) { ... })`）。
 
 ## gap(number) = 0
 数据图形间距。

@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes"> <!-- Fullscreen Landscape on iOS -->
+        <link rel="stylesheet" href="../common/reset.css">
+    </head>
+    <body>
+        <div id="main"></div>
+        <script src="../common/echarts.min.js"></script>
+        <script src="../common/jquery.min.js"></script>
+        <script src="../common/echarts-gl.js"></script>
+        <script src="../common/dat.gui.js"></script>
+        <script>
+            var chart = echarts.init(document.getElementById('main'));
+
+            var sin = Math.sin;
+            var cos = Math.cos;
+            var pow = Math.pow;
+            var sqrt = Math.sqrt;
+            var cosh = Math.cosh;
+            var sinh = Math.sinh;
+            var PI = Math.PI;
+
+            var aa = 0.4;
+            var r = 1 - aa * aa;
+            var w = sqrt(r);
+
+            var config = {
+                aa: aa
+            };
+
+            function getParametricEquation() {
+                return {
+                    u: {
+                        min: -13.2,
+                        max: 13.2,
+                        step: 0.4
+                    },
+                    v: {
+                        min: -37.4,
+                        max: 37.4,
+                        step: 0.4
+                    },
+                    x: function (u, v) {
+                        var denom = aa * (pow(w * cosh(aa * u), 2) + aa * pow(sin(w * v), 2))
+                        return -u + (2 * r * cosh(aa * u) * sinh(aa * u) / denom);
+                    },
+                    y: function (u, v) {
+                        var denom = aa * (pow(w * cosh(aa * u), 2) + aa * pow(sin(w * v), 2))
+                        return 2 * w * cosh(aa * u) * (-(w * cos(v) * cos(w * v)) - (sin(v) * sin(w * v))) / denom;
+                    },
+                    z: function (u, v) {
+                        var denom = aa * (pow(w * cosh(aa * u), 2) + aa * pow(sin(w * v), 2))
+                        return  2 * w * cosh(aa * u) * (-(w * sin(v) * cos(w * v)) + (cos(v) * sin(w * v))) / denom
+                    }
+                };
+            }
+
+            chart.setOption({
+                xAxis3D: {
+                    type: 'value'
+                },
+                yAxis3D: {
+                    type: 'value'
+                },
+                zAxis3D: {
+                    type: 'value'
+                },
+                grid3D: {
+                    show: false,
+
+                    environment: 'none',
+
+                    axisPointer: {
+                        show: false
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: '#fff'
+                        }
+                    },
+                    postEffect: {
+                        enable: true,
+                        SSAO: {
+                            enable: true,
+                            radius: 4,
+                            intensity: 2
+                        }
+                    },
+                    temporalSuperSampling: {
+                        enable: true
+                    },
+                    light: {
+                        main: {
+                            intensity: 0
+                        },
+                        ambient: {
+                            intensity: 0
+                        },
+                        ambientCubemap: {
+                            texture: '../texture/pisa.hdr',
+                            exposure: 1,
+                            diffuseIntensity: 1,
+                            specularIntensity: 2
+                        }
+                    },
+                    viewControl: {
+                        distance: 120
+                        // projection: 'orthographic'
+                    }
+                },
+                series: [{
+                    type: 'surface',
+                    parametric: true,
+                    shading: 'realistic',
+                    silent: true,
+                    wireframe: {
+                        show: false
+                    },
+                    realisticMaterial: {
+                        baseTexture: '../texture/iron-rusted4/iron-rusted4-basecolor.png',
+                        metalness: '../texture/iron-rusted4/iron-rusted4-metalness.png',
+                        roughness: '../texture/iron-rusted4/iron-rusted4-roughness.png',
+                        normalTexture: '../texture/iron-rusted4/iron-rusted4-normal.png',
+                        textureTiling: [2, 4],
+                        roughnessTint: 0.3
+                    },
+                    itemStyle: {
+                        color: '#fff'
+                    },
+                    parametricEquation: getParametricEquation()
+                }]
+            });
+
+            var gui = new dat.GUI();
+            gui.add(config, 'aa', 0.1, 0.9).onFinishChange(function () {
+                aa = config.aa;
+                chart.setOption({
+                    series: [{
+                        parametricEquation: getParametricEquation()
+                    }]
+                });
+            });
+
+            window.addEventListener('resize', function () {
+                chart.resize();
+            });
+
+        </script>
+    </body>
+</html>

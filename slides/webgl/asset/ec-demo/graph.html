@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="../common/reset.css">
+    </head>
+    <body>
+        <div id="main"></div>
+        <script src="../common/echarts.min.js"></script>
+        <script src="../common/jquery.min.js"></script>
+        <script src="../common/echarts-gl.js"></script>
+        <script src="../data/vivagraph.json.js"></script>
+        <script>
+            var chart = echarts.init(document.getElementById('main'));
+
+            var nodes = [];
+            var nodesMap = {};
+            var links = [];
+            for (var i = 0; i < graphData.links.length;) {
+                var source = graphData.links[i++] + '';
+                var target = graphData.links[i++] + '';
+                if (!nodesMap[source]) {
+                    nodes.push({
+                        id: source
+                    });
+                    nodesMap[source] = true;
+                }
+                if (!nodesMap[target]) {
+                    nodes.push({
+                        id: target
+                    });
+                    nodesMap[target] = true;
+                }
+                links.push({
+                    source: source,
+                    target: target
+                });
+            }
+            chart.setOption({
+                title: {
+                    text: 'GPU Layout + 100 Steps',
+                    subtext: '\nNodes: 2121\n\nEdges: 6370',
+                    textStyle: {
+                        fontSize: 30,
+                        color: '#fff'
+                    },
+                    subtextStyle: {
+                        fontSize: 20,
+                        color: '#fff'
+                    }
+                },
+                series: [{
+                    type: 'graphGL',
+                    roam: true,
+                    data: nodes,
+                    edges: links,
+                    forceAtlas2: {
+                        steps: 100,
+                        stopThreshold: 0.1,
+                        jitterTolerence: 10,
+                        scaling: 0.5,
+                        edgeWeight: [2, 1],
+                        edgeWeightInfluence: 1
+                    },
+                    lineStyle: {
+                        color: '#fff',
+                        opacity: 0.4
+                    },
+                    itemStyle: {
+                        color: '#fff'
+                    }
+                }]
+            });
+
+
+            console.log(nodes.length);
+            console.log(links.length);
+
+            window.onresize = chart.resize;
+        </script>
+    </body>
+</html>

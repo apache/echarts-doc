@@ -158,7 +158,7 @@ data: [{
     name:'搜索引擎',
     itemStyle: {
         normal: {
-            color: 'c23531'
+            color: '#c23531'
         }
     }
 }, ...]

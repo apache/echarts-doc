@@ -215,8 +215,8 @@ footer {
     background-color: $clr-primary;
 
     .row {
-        margin-top: 50px;
-        margin-bottom: 50px;
+        margin-top: 50px !important;
+        margin-bottom: 20px !important;
     }
 
     .logo {
@@ -228,12 +228,15 @@ footer {
     }
 
     #efe-product {
-        height: 176px;
+        li {
+            width: 49%;
+            display: inline-block;
+        }
     }
 
     #echarts-copyright {
         color: rgba(255, 255, 255, 0.4);
-        margin: 100px 0 20px 0;
+        margin: 65px 0 20px 0;
         font-size: 1.2rem;
     }
 
@@ -477,5 +480,9 @@ $info-height: 120px;
                 padding-top: 0;
             }
         }
+    }
+
+    .pc {
+        display: none;
     }
 }

@@ -29,7 +29,7 @@ function convert(opts, cb) {
         etplEngine.compile(mdTpl.join('\n'));
         var mdStr = etplEngine.getRenderer(entry)(tplEnv);
         // Markdown to JSON
-        var schema = mdToJsonSchema(mdStr, maxDepth);
+        var schema = mdToJsonSchema(mdStr, maxDepth, opts.imageRoot);
         // console.log(mdStr);
         var topLevel = schema.option.properties;
 
@@ -82,37 +82,37 @@ function convert(opts, cb) {
         // console.log(JSON.stringify(schema, null, 2));
 
     });
-
 }
-var renderer = new marked.Renderer();
-renderer.link = function (href, title, text) {
-    if (href.match(/^~/)) { // Property link
-        return '<a href="#' + href.slice(1) + '">' + text + '</a>';
-    }
-    else {
-        // All other links are opened in new page
-        return '<a href="' + href + '" target="_blank">' + text + '</a>';
-    }
-};
 
-renderer.image = function (href, title, text) {
-    var size = (text || '').split('x');
-    if (isNaN(size[0])) {
-        size[0] = 'auto';
-    }
-    if (isNaN(size[1])) {
-        size[1] = 'auto';
-    }
-    if (href.match(/^~/)) { // Property link
-        return '<img width="' + size[0] + '" height="' + size[1] + '" src="documents/asset/img/' + href.slice(1) + '">';
-    }
-    else {
-        // All other links are opened in new page
-        return '<img width="' + size[0] + '" height="' + size[1] + '" src="' + href + '">';
-    }
-};
+function mdToJsonSchema(mdStr, maxDepth, imagePath) {
 
-function mdToJsonSchema(mdStr, maxDepth) {
+    var renderer = new marked.Renderer();
+    renderer.link = function (href, title, text) {
+        if (href.match(/^~/)) { // Property link
+            return '<a href="#' + href.slice(1) + '">' + text + '</a>';
+        }
+        else {
+            // All other links are opened in new page
+            return '<a href="' + href + '" target="_blank">' + text + '</a>';
+        }
+    };
+
+    renderer.image = function (href, title, text) {
+        var size = (text || '').split('x');
+        if (isNaN(size[0])) {
+            size[0] = 'auto';
+        }
+        if (isNaN(size[1])) {
+            size[1] = 'auto';
+        }
+        if (href.match(/^~/)) { // Property link
+            return '<img width="' + size[0] + '" height="' + size[1] + '" src="documents/' + imagePath + href.slice(1) + '">';
+        }
+        else {
+            // All other links are opened in new page
+            return '<img width="' + size[0] + '" height="' + size[1] + '" src="' + href + '">';
+        }
+    };
 
     var currentLevel = 0;
     var result = {

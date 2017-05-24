@@ -2,7 +2,7 @@
 layout: post
 title: 可视化中的数据
 description: "当下随着大数据热潮的到来，数据可视化作为一个新兴的领域，受到了学术界和工业界的重视。从可视分析、数据新闻到商业报表，各个领域都在越来越多的使用它。既然是数据可视化，说明数据是主体，可视化只是将数据以可视的形式表达的手段。接下来小编就与大家一起揭开可视化中数据的面纱，一探究竟。"
-tags: [visualization, tutorial]
+tags: [可视化, 教程]
 image:
   feature: post/2017-03-15-echarts-dataAbstraction-tutorial-dataset.png
 ---

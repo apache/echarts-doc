@@ -4,7 +4,7 @@
 
 Legend component.
 
-Legend component shows symbol, color and name of different series. You can click legends to toggle displaying series in the chart. 
+Legend component shows symbol, color and name of different series. You can click legends to toggle displaying series in the chart.
 
 In ECharts 3, a single echarts instance may contain multiple legend components, which makes it easier for the layout of multiple legend components.
 
@@ -14,7 +14,7 @@ In ECharts 3, a single echarts instance may contain multiple legend components, 
 
 ## orient(string) = 'horizontal'
 
-The layout orientation of legend. 
+The layout orientation of legend.
 
 Options:
 + 'horizontal'
@@ -24,7 +24,7 @@ Options:
 
 Legend mrker and text aligning. By default, it automatically calculates from component location and orient. When [left](~legend.left) value of this component is 'right', and the vertical layout ([orient](~legend.orient) is 'vertical'), it would be aligned to 'right'.
 
-Option: 
+Option:
 + 'auto'
 + 'left'
 + 'right'
@@ -49,7 +49,7 @@ Image height of legend symbol.
 
 Formatter is used to format label of legend, which supports string template and callback function.
 
-Example: 
+Example:
 ```js
 // using string template, the template variable is legend name {name}
 formatter: 'Legend {name}'
@@ -73,7 +73,7 @@ Legend color when not selected.
 
 State table of selected legend.
 
-example: 
+example:
 ```
 selected: {
     // selected'series 1'
@@ -89,7 +89,7 @@ Legend text style.
 
 {{ use: partial-text-style(componentName='legend', prefix='##') }}
 
-# tooltip(Object)
+## tooltip(Object)
 
 Tooltip configuration for legend tooltip, which is similar to [tooltip](http://localhost/echarts-doc/public/option.html#tooltip).
 
@@ -97,7 +97,7 @@ Tooltip configuration for legend tooltip, which is similar to [tooltip](http://l
 
 Data array of legend. An array item is usually a `name` representing string. (If it is a [pie chart](~series-pie), it could also be the `name` of a single data in the pie chart) of a series. Legend component would automatically calculate the color and icon according to series. Special string `''` (null string) or `'\n'` (new line string) can be used for a new line.
 
-If you need to set the style for a single item, you may also set the configuration of it. In this case, `name` attribute is used to represent name of `series`. 
+If you need to set the style for a single item, you may also set the configuration of it. In this case, `name` attribute is used to represent name of `series`.
 
 Example:
 ```
@@ -125,4 +125,6 @@ Icon of the legend.
 
 Text style of legend.
 
-{{ use: partial-component-common-style(componentName='legend', prefix='#', defaultBorderColor="'#ccc'") }}
+{{ use: partial-component-common-style(
+    componentName='legend', prefix='#', defaultBorderColor="'#ccc'"
+) }}

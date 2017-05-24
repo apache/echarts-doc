@@ -3,7 +3,7 @@ layout: post
 enUrl: '2017/02/21/echarts-liquidfill-chart-tutorial-en.html'
 title: ECharts 水球图教程
 description: "水球图是一种适合于展现单个百分比数据的图表类型，ECharts 的水球图插件使你能够通过非常简单的配置，实现酷炫的数据展示效果。本文将会介绍，如何使用 ECharts 水球图。"
-tags: [extension, tutorial]
+tags: [扩展, 教程]
 image:
   feature: post/2017-02-21-echarts-liquidfill-chart-tutorial.gif
 ---

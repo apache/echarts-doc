@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <title>ECharts 水球图教程 </title>
 <meta name="description" content="水球图是一种适合于展现单个百分比数据的图表类型，ECharts 的水球图插件使你能够通过非常简单的配置，实现酷炫的数据展示效果。本文将会介绍，如何使用 ECharts 水球图。">
-<meta name="keywords" content="extension, tutorial">
+<meta name="keywords" content="扩展, 教程">
 
 
 
@@ -16,15 +16,15 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="ECharts 水球图教程">
 <meta property="og:description" content="水球图是一种适合于展现单个百分比数据的图表类型，ECharts 的水球图插件使你能够通过非常简单的配置，实现酷炫的数据展示效果。本文将会介绍，如何使用 ECharts 水球图。">
-<meta property="og:url" content="http://172.18.19.139/ec-doc/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html">
+<meta property="og:url" content="http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html">
 <meta property="og:site_name" content="">
 
 
 
 
 
-<link rel="canonical" href="http://172.18.19.139/ec-doc/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html">
-<link href="http://172.18.19.139/ec-doc/blog/feed.xml" type="application/atom+xml" rel="alternate" title=" Feed">
+<link rel="canonical" href="http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html">
+<link href="http://echarts.baidu.com/blog/feed.xml" type="application/atom+xml" rel="alternate" title=" Feed">
 
 <!-- http://t.co/dKP3o1e -->
 <meta name="HandheldFriendly" content="True">
@@ -32,27 +32,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- For all browsers -->
-<link rel="stylesheet" href="http://172.18.19.139/ec-doc/blog/assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="http://172.18.19.139/ec-doc/blog/assets/css/main.css">
+<link rel="stylesheet" href="http://echarts.baidu.com/blog/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://echarts.baidu.com/blog/assets/css/main.css">
 
 <meta http-equiv="cleartype" content="on">
 
 <!-- Load Modernizr -->
-<script src="http://172.18.19.139/ec-doc/blog/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+<script src="http://echarts.baidu.com/blog/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
 
 <!-- Icons -->
 <!-- 16x16 -->
-<link rel="shortcut icon" href="http://172.18.19.139/ec-doc/blog/favicon.ico">
+<link rel="shortcut icon" href="http://echarts.baidu.com/blog/favicon.ico">
 <!-- 32x32 -->
-<link rel="shortcut icon" href="http://172.18.19.139/ec-doc/blog/favicon.png">
+<link rel="shortcut icon" href="http://echarts.baidu.com/blog/favicon.png">
 <!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
-<link rel="apple-touch-icon-precomposed" href="http://172.18.19.139/ec-doc/blog/images/apple-touch-icon-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="http://echarts.baidu.com/blog/images/apple-touch-icon-precomposed.png">
 <!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://172.18.19.139/ec-doc/blog/images/apple-touch-icon-72x72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://echarts.baidu.com/blog/images/apple-touch-icon-72x72-precomposed.png">
 <!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://172.18.19.139/ec-doc/blog/images/apple-touch-icon-114x114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://echarts.baidu.com/blog/images/apple-touch-icon-114x114-precomposed.png">
 <!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://172.18.19.139/ec-doc/blog/images/apple-touch-icon-144x144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://echarts.baidu.com/blog/images/apple-touch-icon-144x144-precomposed.png">
 
 </head>
 
@@ -68,53 +68,53 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="http://172.18.19.139/echarts-home/index.html" class="navbar-brand">
-                <img src="http://172.18.19.139/echarts-home/images/logo.png" alt="echarts logo" class="navbar-logo">
+            <a href="http://echarts.baidu.com/index.html" class="navbar-brand">
+                <img src="http://echarts.baidu.com/images/logo.png" alt="echarts logo" class="navbar-logo">
             </a>
         </div>
         <div id="navbar-collapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-left">
-                <li id="nav-index"><a href="http://172.18.19.139/echarts-home/index.html">首页</a></li>
+                <li id="nav-index"><a href="http://echarts.baidu.com/index.html">首页</a></li>
                 <li id="nav-doc" class="dropdown">
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle">文档<b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="http://172.18.19.139/echarts-home/tutorial.html">教程</a></li>
-                        <li><a href="http://172.18.19.139/echarts-home/api.html">API</a></li>
-                        <li><a href="http://172.18.19.139/echarts-home/option.html">配置项手册</a></li>
-                        <li><a href="http://172.18.19.139/echarts-home/faq.html">常见问题</a></li>
-                        <li><a href="http://172.18.19.139/echarts-home/changelog.html">版本记录</a></li>
-                        <li><a href="http://172.18.19.139/echarts-home/feature.html">特性</a></li>
+                        <li><a href="http://echarts.baidu.com/tutorial.html">教程</a></li>
+                        <li><a href="http://echarts.baidu.com/api.html">API</a></li>
+                        <li><a href="http://echarts.baidu.com/option.html">配置项手册</a></li>
+                        <li><a href="http://echarts.baidu.com/faq.html">常见问题</a></li>
+                        <li><a href="http://echarts.baidu.com/changelog.html">版本记录</a></li>
+                        <li><a href="http://echarts.baidu.com/feature.html">特性</a></li>
                     </ul>
                 </li>
                 <li id="nav-download" class="dropdown">
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle">下载<b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="http://172.18.19.139/echarts-home/download.html">下载</a></li>
-                        <li><a href="http://172.18.19.139/echarts-home/download-extension.html">扩展下载</a></li>
-                        <li><a href="http://172.18.19.139/echarts-home/download-theme.html">主题下载</a></li>
-                        <li><a href="http://172.18.19.139/echarts-home/download-map.html">地图下载</a></li>
+                        <li><a href="http://echarts.baidu.com/download.html">下载</a></li>
+                        <li><a href="http://echarts.baidu.com/download-theme.html">主题下载</a></li>
+                        <li><a href="http://echarts.baidu.com/download-map.html">地图下载</a></li>
+                        <li><a href="http://echarts.baidu.com/download-extension.html">扩展下载</a></li>
                     </ul>
                 </li>
-                <li id="nav-examples"><a href="http://172.18.19.139/echarts-home/examples.html" class="dropdown-toggle">实例</a></li>
+                <li id="nav-examples"><a href="http://echarts.baidu.com/examples.html" class="dropdown-toggle">实例</a></li>
                 <li id="nav-community" class="active">
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle">社区<b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="http://gallery.echartsjs.com">GALLERY</a></li>
-                        <li><a href="http://172.18.19.139/ec-doc/blog">博客</a></li>
+                        <li><a href="http://echarts.baidu.com/blog">博客</a></li>
                     </ul>
                 </li>
                 <li id="nav-tool">
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle">工具<b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="http://172.18.19.139/echarts-home/spreadsheet.html">表格工具</a></li>
+                        <li><a href="http://echarts.baidu.com/spreadsheet.html">表格工具</a></li>
                         <li><a href="http://ecomfe.github.io/echarts-map-tool/">地图数据在线工具</a></li>
                         <li><a href="http://echarts.baidu.com/theme-builder/">主题构建工具</a></li>
                     </ul>
                 </li>
-                <li id="nav-about"><a href="http://172.18.19.139/echarts-home/about.html">关于</a></li>
+                <li id="nav-about"><a href="http://echarts.baidu.com/about.html">关于</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li id="nav-github"><a href="https://github.com/ecomfe/echarts" target="_blank"><img src="http://172.18.19.139/echarts-home/images/github.png" width="18"></a></li>
+                <li id="nav-github"><a href="https://github.com/ecomfe/echarts" target="_blank"><img src="http://echarts.baidu.com/images/github.png" width="18"></a></li>
                 <li id="nav-2" class="0"><a href="http://echarts.baidu.com/echarts2/">2.0</a></li>
                 <li id="nav-homeen"><a href="https://ecomfe.github.io/echarts-doc/public/en/index.html">EN</a></li>
             </ul>
@@ -127,7 +127,7 @@
 <div class="entry-header">
   
   <div class="entry-image">
-    <img src="http://172.18.19.139/ec-doc/blog/images/post/2017-02-21-echarts-liquidfill-chart-tutorial.gif" alt="ECharts 水球图教程">
+    <img src="http://echarts.baidu.com/blog/images/post/2017-02-21-echarts-liquidfill-chart-tutorial.gif" alt="ECharts 水球图教程">
   </div><!-- /.entry-image -->
 </div><!-- /.entry-header -->
 
@@ -138,15 +138,6 @@
       <div class="header-title-wrap">
         <h1 class="entry-title">ECharts 水球图教程</h1>
         <h2><span class="entry-date date published"><time datetime="2017-02-21T00:00:00+08:00">2017-02-21</time></span></h2>
-        
-        <p class="entry-reading-time">
-          <i class="fa fa-clock-o"></i>
-          
-
-预计阅读时间：7 分钟
-
-
-        </p><!-- /.entry-reading-time -->
         
       </div><!-- /.header-title-wrap -->
     </header>
@@ -387,14 +378,14 @@
       <div class="entry-meta">
         <span class="tag-panel">
           
-          <a href="http://172.18.19.139/ec-doc/blog/tags/#extension" title="Pages tagged extension" class="tag">
-            <span class="term">extension</span>
-          </a>
+          <!--<a href="http://echarts.baidu.com/blog/tags/#扩展" title="Pages tagged 扩展" class="tag">-->
+            <span class="term">扩展</span>
+          <!--</a>-->
           
           
-          <a href="http://172.18.19.139/ec-doc/blog/tags/#tutorial" title="Pages tagged tutorial" class="tag">
-            <span class="term">tutorial</span>
-          </a>
+          <!--<a href="http://echarts.baidu.com/blog/tags/#教程" title="Pages tagged 教程" class="tag">-->
+            <span class="term">教程</span>
+          <!--</a>-->
           
           
         </span>
@@ -412,17 +403,17 @@
       
       <div class="col-md-4">
         <div class="read-more-post">
-          <h4><a href="http://172.18.19.139/ec-doc/blog/2017/03/23/new-release.html" title="ECharts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布">ECharts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布</a></h4>
-          <p>在 ECharts 新发布的 3.5 版本中，新增了日历坐标系，增强了坐标轴指示器。同时，ECharts 统计扩展 1.0 版本发布了。日历坐标系用于在日历中绘制图表，坐标轴指示器方便用户观察数据内容，统计扩展是一个专门用来进行数据分析的工具。</p>
+          <h4><a href="http://echarts.baidu.com/blog/2017/05/09/echarts-statistical-extension-tutorial.html" title="ECharts 统计扩展教程">ECharts 统计扩展教程</a></h4>
+          <p>你是否想了解一组样本数据的分布情况？你是否想根据用户的数值属性将用户分成不同的群体？你是否想预测两个变量的变化趋势？——什么？不需要？不要再违心了，小编已经听到来自你们内心深处的呐喊，今天就为大家推荐一款神器——ECharts 统计扩展，这是一个用来进行数据分析的扩展工具，包含的功能有直方图、聚类、回归、以及常用的汇总统计。通过统计扩展和 ECharts 的结合，可以使大家方便地实现可视分析，也就是将数据分析的结果，通过可视化直观地呈现出来。</p>
           <div class="tag-panel">
             
-            <a href="http://172.18.19.139/ec-doc/blog/tags/#extension" title="Pages tagged extension" class="tag">
-              <span class="term">extension</span>
-            </a>
+            <!--<a href="http://echarts.baidu.com/blog/tags/#扩展" title="Pages tagged 扩展" class="tag">-->
+              <span class="term">扩展</span>
+            <!--</a>-->
             
-            <a href="http://172.18.19.139/ec-doc/blog/tags/#tutorial" title="Pages tagged tutorial" class="tag">
-              <span class="term">tutorial</span>
-            </a>
+            <!--<a href="http://echarts.baidu.com/blog/tags/#教程" title="Pages tagged 教程" class="tag">-->
+              <span class="term">教程</span>
+            <!--</a>-->
             
           </div>
         </div>
@@ -432,22 +423,19 @@
       
       
       
-      
-      
-      
       <div class="col-md-4">
         <div class="read-more-post">
-          <h4><a href="http://172.18.19.139/ec-doc/blog/2017/03/15/echarts-dataAbstraction-tutorial.html" title="可视化中的数据">可视化中的数据</a></h4>
-          <p>当下随着大数据热潮的到来，数据可视化作为一个新兴的领域，受到了学术界和工业界的重视。从可视分析、数据新闻到商业报表，各个领域都在越来越多的使用它。既然是数据可视化，说明数据是主体，可视化只是将数据以可视的形式表达的手段。接下来小编就与大家一起揭开可视化中数据的面纱，一探究竟。</p>
+          <h4><a href="http://echarts.baidu.com/blog/2017/05/08/echarts-histogram-tutorial.html" title="那些年我们一起学过的直方图">那些年我们一起学过的直方图</a></h4>
+          <p>某天下午小编正在安安静静地撸代码，突然听说在我们的[gallery](http://gallery.echartsjs.com/explore.html#sort=rank~timeframe=all~author=all)上，有用户提出，[ECharts](http://echarts.baidu.com/index.html)不支持直方图，什么？这怎么能忍？于是小编将珍藏已久的机械键盘拿出来，摆好姿势，通宵达旦地为用户大大们加好了直方图，并于上周四悄悄上线了，对，我们就是这么低调。然而，很多大大们表示，直方图还是柱状图？傻傻分不清。小编深感这年头光有图怕是不行了，必须得有个教程，要做到图文并茂。下面小编就从直方图是什么，为什么要用直方图，以及如何使用[ECharts](http://echarts.baidu.com/index.html)制作直方图三个方面，为各位大大们上点干货。</p>
           <div class="tag-panel">
             
-            <a href="http://172.18.19.139/ec-doc/blog/tags/#extension" title="Pages tagged extension" class="tag">
-              <span class="term">extension</span>
-            </a>
+            <!--<a href="http://echarts.baidu.com/blog/tags/#扩展" title="Pages tagged 扩展" class="tag">-->
+              <span class="term">扩展</span>
+            <!--</a>-->
             
-            <a href="http://172.18.19.139/ec-doc/blog/tags/#tutorial" title="Pages tagged tutorial" class="tag">
-              <span class="term">tutorial</span>
-            </a>
+            <!--<a href="http://echarts.baidu.com/blog/tags/#教程" title="Pages tagged 教程" class="tag">-->
+              <span class="term">教程</span>
+            <!--</a>-->
             
           </div>
         </div>
@@ -457,22 +445,19 @@
       
       
       
-      
-      
-      
       <div class="col-md-4">
         <div class="read-more-post">
-          <h4><a href="http://172.18.19.139/ec-doc/blog/2017/01/13/new-release.html" title="ECharts 3.4 版本发布：新增象形柱图、主题河流图、水球图">ECharts 3.4 版本发布：新增象形柱图、主题河流图、水球图</a></h4>
-          <p>在 ECharts 新发布的 3.4 版本中，新增象形柱图、主题河流图、水球图三种新图表。象形柱图利用图片和形状表现数据，主题河流图可以用来表示事件或主题等在一段时间内变化，水球图常用来展现百分比数据。</p>
+          <h4><a href="http://echarts.baidu.com/blog/2017/04/12/echarts-gl-alpha.html" title="ECharts GL 1.0 alpha 发布">ECharts GL 1.0 alpha 发布</a></h4>
+          <p>ECharts GL （原 ECharts-X）发布 1.0 alpha，ECharts GL 是 ECharts 的 WebGL 扩展，其中提供了三维散点图，飞线图，柱状图，曲面图，地球等多种三维可视化方式。并且增加 scatterGL，graphGL系列类型用于二维的散点图，关系图的加速绘制和布局。</p>
           <div class="tag-panel">
             
-            <a href="http://172.18.19.139/ec-doc/blog/tags/#extension" title="Pages tagged extension" class="tag">
-              <span class="term">extension</span>
-            </a>
+            <!--<a href="http://echarts.baidu.com/blog/tags/#扩展" title="Pages tagged 扩展" class="tag">-->
+              <span class="term">扩展</span>
+            <!--</a>-->
             
-            <a href="http://172.18.19.139/ec-doc/blog/tags/#tutorial" title="Pages tagged tutorial" class="tag">
-              <span class="term">tutorial</span>
-            </a>
+            <!--<a href="http://echarts.baidu.com/blog/tags/#教程" title="Pages tagged 教程" class="tag">-->
+              <span class="term">教程</span>
+            <!--</a>-->
             
           </div>
         </div>
@@ -491,55 +476,50 @@
 <footer>
     <div class="container">
         <div class="row">
-            <div class="col-md-3 col-sm-4 logo"><img src="http://172.18.19.139/echarts-home/images/echarts-footer-logo.png"/></div>
-            <div id="efe-product" class="col-md-2 col-sm-4">
+            <div class="col-md-3 col-sm-4 logo"><img src="http://echarts.baidu.com/images/echarts-footer-logo.png"/></div>
+            <div id="efe-product" class="col-md-2 col-sm-4 pc">
                 <h3>百度EFE更多产品</h3>
-                <ul id="efe-more"></ul>
-            </div>
-            <div class="col-md-3 col-md-offset-1 col-sm-4">
-                <h3>ECharts团队出品</h3>
-                <ul>
-                    <li><a href="http://tushuo.baidu.com/" target="_blank">Baidu图说</a></li>
+                <ul id="efe-product">
+                    <li><a href="http://tushuo.baidu.com/" target="_blank">图说</a></li>
+                    <li><a href="https://ecomfe.github.io/san/" target="_blank">SAN</a></li>
+                    <li><a href="http://ecomfe.github.io/edp" target="_blank">EDP</a></li>
                     <li><a href="http://github.com/ecomfe/zrender" target="_blank">ZRender</a></li>
-                    <li><a href="https://github.com/pissang/qtek" target="_blank">QTEK</a></li>
+                    <li><a href="http://fecs.baidu.com/" target="_blank">FECS</a></li>
+                    <li><a href="http://ecomfe.github.io/fontmin/" target="_blank">Fontmin</a></li>
                 </ul>
             </div>
-            <div class="col-md-3">
-                <div class="icon-panel"><a href="" class="footer-icon"><img src="http://172.18.19.139/echarts-home/images/icon-email"/></a><a href="" class="footer-icon"><img src="http://172.18.19.139/echarts-home/images/icon-twitter"/></a><a href="" class="footer-icon"><img src="http://172.18.19.139/echarts-home/images/icon-weibo"/></a><a href="" class="footer-icon"><img src="http://172.18.19.139/echarts-home/images/icon-github"/></a></div>
+            <div class="col-md-3 col-md-offset-1 col-sm-4 pc">
+                <h3>友情链接</h3>
+                <ul>
+                    <li><a href="https://fex.baidu.com" target="_blank">FEX</a></li>
+                    <li><a href="http://bit.baidu.com/" target="_blank">BIT</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3" id="footer-icon-panel">
+                <div class="icon-panel">
+                    <a href="mailto:echarts@baidu.com" class="footer-icon">
+                        <img src="http://echarts.baidu.com/images/icon-email"/>
+                    </a>
+                    <a href="https://twitter.com/EChartsJs" class="footer-icon">
+                        <img src="http://echarts.baidu.com/images/icon-twitter"/>
+                    </a>
+                    <a href="http://weibo.com/u/5160877841" class="footer-icon">
+                        <img src="http://echarts.baidu.com/images/icon-weibo"/>
+                    </a>
+                    <a href="https://github.com/ecomfe/echarts" class="footer-icon">
+                        <img src="http://echarts.baidu.com/images/icon-github"/>
+                    </a>
+                </div>
                 <div id="echarts-copyright">&#9400; 2017 百度ECharts团队出品</div>
             </div>
         </div>
     </div>
 </footer>
-<script>
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'http://ecomfe.github.io/efe-meta/html/full-intro.html', true);
-    xhr.send();
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            var efeMore = document.getElementById('efe-more');
-            efeMore.insertAdjacentHTML(
-                'beforeend', xhr.responseText.replace(/<dd>.*?<\/dd>/g, '')
-            );
-
-            var removed = [
-                'a[href="http://echarts.baidu.com/"]',
-                'a[href="http://tushuo.baidu.com/"]',
-                'a[href="http://efe.baidu.com/"]'
-            ];
-            removed.forEach(function (query) {
-                var result = efeMore.querySelectorAll(query)[0];
-                var dtNode = result && result.parentNode;
-                dtNode.parentNode.removeChild(dtNode);
-            });
-        }
-    };
-</script>
 
 
-<script src="http://172.18.19.139/ec-doc/blog/assets/js/vendor/jquery-1.9.1.min.js"></script>
-<script src="http://172.18.19.139/echarts-home/vendors/bootstrap/js/bootstrap.min.js"></script>
-<script src="http://172.18.19.139/ec-doc/blog/assets/js/scripts.min.js"></script>
+<script src="http://echarts.baidu.com/blog/assets/js/vendor/jquery-1.9.1.min.js"></script>
+<script src="http://echarts.baidu.com/vendors/bootstrap/js/bootstrap.min.js"></script>
+<script src="http://echarts.baidu.com/blog/assets/js/scripts.min.js"></script>
 
 
 

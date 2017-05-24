@@ -13,7 +13,7 @@
         <div id="main"></div>
         <script>
 
-        var myChart = echarts.init(document.getElementById('main'));
+        var chart = echarts.init(document.getElementById('main'));
 
         function getAirportCoord(idx) {
             return [flightsData.airports[idx][3], flightsData.airports[idx][4]];
@@ -25,11 +25,12 @@
             ];
         });
 
-        myChart.setOption({
+        chart.setOption({
             title: {
-                text: 'World Flights',
+                text: '65k+ 飞机航线',
                 left: 'center',
                 textStyle: {
+                    fontSize: 32,
                     color: '#eee'
                 }
             },
@@ -69,6 +70,9 @@
                 blendMode: 'lighter'
             }]
         });
+
+        window.onresize = chart.resize;
+
         </script>
     </body>
 </html>

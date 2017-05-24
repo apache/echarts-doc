@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Geo3D - ECHARTS-GL</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes"> <!-- Fullscreen Landscape on iOS -->
+        <link rel="stylesheet" href="../common/reset.css">
+    </head>
+    <body>
+        <div id="main"></div>
+        <script src="../common/echarts.min.js"></script>
+        <script src="../common/jquery.min.js"></script>
+        <script src="../common/echarts-gl.js"></script>
+        <script src="../data/buildings.json.js"></script>
+        <script src="../common/dat.gui.js"></script>
+        <script src="../texture/canyon.hdr.js"></script>
+        <script>
+            var chart = echarts.init(document.getElementById('main'));
+
+            echarts.registerMap('buildings', buildingsGeoJSON);
+
+            var regions = buildingsGeoJSON.features.map(function (feature) {
+                return {
+                    name: feature.properties.name,
+                    value: Math.random(),
+                    height: Math.max(Math.sqrt(feature.properties.height), 0.1)
+                };
+            });
+
+            chart.setOption({
+
+                series: [{
+                    type: 'map3D',
+                    map: 'buildings',
+                    shading: 'hatching',
+
+                    environment: '#fff',
+
+                    hatchingMaterial: {
+                        hatchingTextures: [
+                            '../texture/tam/hatch_0.jpg',
+                            '../texture/tam/hatch_1.jpg',
+                            '../texture/tam/hatch_2.jpg',
+                            '../texture/tam/hatch_3.jpg',
+                            '../texture/tam/hatch_4.jpg',
+                            '../texture/tam/hatch_5.jpg'
+                        ],
+                        textureTiling: [40, 20]
+                    },
+
+                    postEffect: {
+                        enable: true,
+                        SSAO: {
+                            enable: true,
+                            radius: 8,
+                            intensity: 1.2
+                        },
+                        edge: {
+                            enable: true
+                        }
+                    },
+                    groundPlane: {
+                        show: false
+                    },
+                    light: {
+                        main: {
+                            intensity: 1,
+                            shadow: true,
+                            shadowQuality: 'high',
+                            alpha: 30
+                        },
+                        ambient: {
+                            intensity: 0
+                        },
+                        ambientCubemap: {
+                            texture: '../texture/canyon.hdr',
+                            exposure: 0,
+                            diffuseIntensity: 0.1
+                        }
+                    },
+                    viewControl: {
+                        alpha: 80,
+                        distance: 100,
+                        minBeta: -Infinity,
+                        maxBeta: Infinity
+                    },
+
+                    itemStyle: {
+                        areaColor: '#000'
+                    },
+
+                    silent: true,
+
+                    instancing: true,
+
+                    boxWidth: 200,
+                    boxHeight: 1,
+
+                    data: regions
+                }]
+            });
+
+            var config = {
+                color: '#000'
+            };
+            var gui = new dat.GUI();
+            gui.addColor(config, 'color').onFinishChange(function () {
+                chart.setOption({
+                    series: [{
+                        itemStyle: {
+                            areaColor: config.color
+                        },
+                        postEffect: {
+                            edge: {
+                                color: config.color
+                            }
+                        }
+                    }]
+                });
+            });
+            window.addEventListener('resize', function () {
+                chart.resize();
+            });
+        </script>
+    </body>
+</html>

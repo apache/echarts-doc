@@ -10,3 +10,4 @@
 {{ import: visual-map }}
 {{ import: event }}
 {{ import: drag-example }}
+{{ import: calendar-example }}

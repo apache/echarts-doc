@@ -43,6 +43,9 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 ### period(number) = 4
 特效动画的时间，单位为 s。
 
+### delay(number|Function)
+特效动画的延时，支持设置成数字或者回调。单位`ms`
+
 ### constantSpeed(number) = 0
 配置特效图形的移动动画是否是固定速度，单位`像素/秒`，设置为大于 0 的值后会忽略 [period](~series-lines.effect.period) 配置项。
 
@@ -102,7 +105,7 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 ) }}
 
 ## label(Object)
-标签相关配置。在 [polyline](series-lines.polyline) 设置为 `true` 时无效。
+标签相关配置。在 [polyline](~series-lines.polyline) 设置为 `true` 时无效。
 ### normal(Object)
 {{ use: lines-label(prefix="###")}}
 ### emphasis(Object)
@@ -141,7 +144,7 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 数据名称
 
 ### coords(Array)
-一个包含两个到多个二维坐标的数组。在 [polyline](series-lines.polyline) 设置为 `true` 时支持多于两个的坐标。
+一个包含两个到多个二维坐标的数组。在 [polyline](~series-lines.polyline) 设置为 `true` 时支持多于两个的坐标。
 
 ### lineStyle(Object)
 单个数据（单条线）的样式设置。
@@ -158,7 +161,7 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 
 
 ### label(Object)
-单个数据（单条线）的标签设置。在 [polyline](series-lines.polyline) 设置为 `true` 时无效。
+单个数据（单条线）的标签设置。在 [polyline](~series-lines.polyline) 设置为 `true` 时无效。
 #### normal(Object)
 {{ use: lines-label(
     prefix="####"

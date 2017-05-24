@@ -15,9 +15,9 @@
           <p>{% if post.description %}{{ post.description }}{% else %}{{ post.content | strip_html | strip_newlines | truncate: 140 }}&hellip;{% endif %}</p>
           <div class="tag-panel">
             {% for tag in page.tags %}
-            <a href="{{ site.url }}/tags/#{{ tag }}" title="Pages tagged {{ tag }}" class="tag">
+            <!--<a href="{{ site.url }}/tags/#{{ tag }}" title="Pages tagged {{ tag }}" class="tag">-->
               <span class="term">{{ tag }}</span>
-            </a>
+            <!--</a>-->
             {% endfor %}
           </div>
         </div>

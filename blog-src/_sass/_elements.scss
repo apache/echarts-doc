@@ -231,22 +231,14 @@ iframe {
     margin-top: 10px;
     position: absolute;
     bottom: 0;
-
-    a {
-      color: $clr-secondary;
-      opacity: 0.8;
-
-      &:hover {
-        opacity: 1;
-        text-decoration: none;
-      }
-    }
+    color: $clr-secondary;
 
     .term {
       border: 1px solid $clr-secondary;
       padding: 3px 8px;
       margin-right: 10px;
       border-radius: 6px;
+      font-size: 12px;
     }
   }
 

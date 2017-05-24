@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="../common/reset.css">
+    </head>
+    <body>
+        <div id="main"></div>
+        <script src="../common/echarts.min.js"></script>
+        <script src="../common/jquery.min.js"></script>
+        <script src="../common/echarts-gl.js"></script>
+
+        <script src="../data/webkit-dep.json.js"></script>
+        <script>
+            var chart = echarts.init(document.getElementById('main'));
+
+            chart.setOption({
+                title: {
+                    text: 'Force Directed Layout',
+                    subtext: '\nNodes: 492\n\nEdges: 806',
+                    textStyle: {
+                        fontSize: 30,
+                        color: '#fff'
+                    },
+                    subtextStyle: {
+                        fontSize: 20,
+                        color: '#fff'
+                    }
+                },
+                color: ['#fe0300', '#0b9df0', '#00fea8', '#00ff0d', '#f5f811', '#f09a09', '#1710c0'],
+                legend: {
+                    data: ['HTMLElement', 'WebGL', 'SVG', 'CSS', 'Other'],
+                    textStyle: {
+                        color: '#fff'
+                    }
+                },
+                series: [{
+                    type: 'graph',
+                    layout: 'force',
+                    animation: false,
+                    label: {
+                        normal: {
+                            position: 'right',
+                            formatter: '{b}'
+                        }
+                    },
+                    draggable: true,
+                    data: webkitDepData.nodes.map(function (node, idx) {
+                        node.id = idx;
+                        return node;
+                    }),
+                    categories: webkitDepData.categories,
+                    force: {
+                        edgeLength: 5,
+                        repulsion: 20,
+                        gravity: 0.2
+                    },
+                    edges: webkitDepData.links
+                }]
+            });
+
+            console.log(webkitDepData.nodes.length);
+            console.log(webkitDepData.links.length);
+
+            window.onresize = chart.resize;
+        </script>
+    </body>
+</html>

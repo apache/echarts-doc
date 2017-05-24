@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="../common/reset.css">
+    </head>
+    <body>
+        <div id="main"></div>
+        <script src="../common/echarts.min.js"></script>
+        <script src="../common/jquery.min.js"></script>
+        <script src="../common/echarts-gl.js"></script>
+        <script src="../data/eurosis.json.js"></script>
+        <script>
+            var chart = echarts.init(document.getElementById('main'));
+
+            chart.setOption({
+                title: {
+                    text: 'GPU Layout + 100 Steps',
+                    subtext: '\nNodes: 1285\n\nEdges: 7586',
+                    textStyle: {
+                        fontSize: 30,
+                        color: '#fff'
+                    },
+                    subtextStyle: {
+                        fontSize: 20,
+                        color: '#fff'
+                    }
+                },
+                series: [{
+                    type: 'graphGL',
+                    forceAtlas2: {
+                        GPU: true,
+                        steps: 100,
+                        jitterTolerence: 10,
+                        edgeWeightInfluence: 2,
+                        scaling: 0.5,
+
+                        edgeWeight: [2, 10]
+                    },
+                    roam: true,
+                    data: eurosisData.nodes.map(function (node) {
+                        node.symbolSize *= 10;
+                        node.itemStyle = {
+                            color: node.itemStyle.normal.color
+                        };
+                        return node;
+                    }),
+                    edges: eurosisData.links.map(function (link) {
+                        return link;
+                    }),
+                    lineStyle: {
+                        color: '#fff',
+                        opacity: 0.2
+                    }
+                }]
+            });
+
+
+            console.log(eurosisData.nodes.length);
+            console.log(eurosisData.links.length);
+
+            window.onresize = chart.resize;
+        </script>
+    </body>
+</html>

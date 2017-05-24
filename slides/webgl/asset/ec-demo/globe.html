@@ -12,14 +12,17 @@
         <script src="../common/echarts.min.js"></script>
         <script src="../common/jquery.min.js"></script>
         <script src="../common/echarts-gl.js"></script>
+        <script src="../texture/world.jpg.js"></script>
+        <script src="../texture/elev_bump.jpg.js"></script>
+        <script src="../texture/pisa.hdr.js"></script>
         <script>
             var chart = echarts.init(document.getElementById('main'));
 
             chart.setOption({
                 globe: {
 
-                    baseTexture: '../texture/world.topo.bathy.200401.jpg',
-                    heightTexture: '../texture/elev_bump_4k.jpg',
+                    baseTexture: worldUrl,
+                    heightTexture: elevBumpUrl,
 
                     displacementScale: 0.1,
 
@@ -40,18 +43,19 @@
                             intensity: 0
                         },
                         main: {
-                            intensity: 6,
+                            intensity: 5,
                             shadow: true
                         },
+                        // TODO
                         ambientCubemap: {
-                            texture: '../texture/pisa.hdr',
+                            texture: pisaUrl,
                             exposure: 2,
                             diffuseIntensity: 0.1,
                             specularIntensity: 1
                         }
                     },
                     viewControl: {
-                        autoRotate: false
+                        autoRotate: true
                     }
                 },
                 series: []

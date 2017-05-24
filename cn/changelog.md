@@ -1,3 +1,57 @@
+## v3.5.4
+<div class="time">2017-04-27</div>
+
++ [^] 修复了对 [水球图](https://github.com/ecomfe/echarts-liquidfill) clipPath 的支持问题。
++ [^] 修复了 `label` 设置为 `insideTop` 时的位置。
++ [^] 修复了 [SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData) transform 时的问题。
+
+
+## v3.5.3
+<div class="time">2017-04-14</div>
+
++ [^] 修复了 `option` 中 `left` `right` `width` `top` `bottom` `height` 的默认选取问题。参见 [#5440](https://github.com/ecomfe/echarts/issues/5440)。
+
++ [^] 修复了 [showTip](http://echarts.baidu.com/api.html#action.tooltip.showTip) 使用像素点位置传入时的问题。参见 [#5449](https://github.com/ecomfe/echarts/issues/5449)。
+
++ [^] 优化了只有一个数据时 [boundaryGap](http://echarts.baidu.com/option.html#xAxis.boundaryGap) 的效果。参见 [#4417](https://github.com/ecomfe/echarts/issues/4417)。
+
++ [^] 修复了 [gauge](http://echarts.baidu.com/option.html#series-gauge.animationEasing) 的动画效果设置。参见 [#5451](https://github.com/ecomfe/echarts/issues/5451)。
+
++ [^] 修复了 [treemap](http://echarts.baidu.com/option.html#series-treemap) 数据值相同时，排序不稳定的问题。
+
++ [^] 修正了组件重叠时 roam 以及 brush 之间的冲突。
+
++ [^] 扩大了 [parallel axis name](http://echarts.baidu.com/option.html#parallelAxis.nameRotate) 倾斜时的文字可显示区域，能显示更长的维度标题。
+
++ [^] 使 [toolbox 清除选区按钮](http://echarts.baidu.com/option.html#toolbox.feature.brush.type) 能够清除[parallelAxis](http://echarts.baidu.com/option.html#parallelAxis) 的选区。
+
++ [^] 优化了 `zrender` 图形性能，最高提升 50%。
+
+
+## v3.5.2
+<div class="time">2017-04-05</div>
+
++ [+] 增加了 [useUTC](http://echarts.baidu.com/option.html#useUTC) 配置项，支持按照 UTC 或本地时间显示 `axisLabel` 和 `tooltip`。并且修改了时间解析和显示的默认设定：默认在 `axisLabel` 和 `tooltip` 中显示本地时间，`data` 中使用没指定时区的时间字符串时默认解析为本地时间。参见 [series.data 中时间类型部分](http://echarts.baidu.com/option.html#series-line.data)。修复了 `axis.type` 为 `'time'` 时默认按照 UTC 取刻度的问题。修复了 [#5396](https://github.com/ecomfe/echarts/issues/5396) 和 [#5393](https://github.com/ecomfe/echarts/issues/5393)。
+
++ [+] 增加了 [axisLabel.showMinLabel](http://echarts.baidu.com/option.html#xAxis.axisLabel.showMinLabel) 和 [axisLabel.showMaxLabel](http://echarts.baidu.com/option.html#xAxis.axisLabel.showMaxLabel)。
+
++ [+] 支持 [funnel.sort](http://echarts.baidu.com/option.html#series-funnel.sort) 按照 index 排序或自定义排序。
+
++ [^] 修复了 `axisTick` 浮点数精度错误的问题。参见 [#5041](https://github.com/ecomfe/echarts/issues/5041)。
+
++ [^] 修复了 `axisTick` 数值过小时不显示的问题。参见 [#5386](https://github.com/ecomfe/echarts/issues/5386)。
+
++ [^] 修复了 [tooltip.trigger](http://echarts.baidu.com/option.html#tooltip.trigger) 为 `'axis'` 时使用 `dispatchAction` 触发 [showTip](http://echarts.baidu.com/api.html#action.tooltip.showTip) 无效的问题。参见 [#5423](https://github.com/ecomfe/echarts/issues/5423)。
+
++ [^] 修复了 [visualMap](http://echarts.baidu.com/option.html#visualMap) 使 [map](http://echarts.baidu.com/option.html#series-map) 的 `itemStyle` 失效的问题。参见 [#5388](https://github.com/ecomfe/echarts/issues/5388)。
+
++ [^] 修复了 [tooltip.trigger](http://echarts.baidu.com/option.html#tooltip.trigger) 不支持 `'none'` 的问题。参见 [#5400](https://github.com/ecomfe/echarts/issues/5400)。
+
++ [^] 修复了 [sankey](http://echarts.baidu.com/option.html#series-sankey) 在 ie11 上的问题。参见 [#3306](https://github.com/ecomfe/echarts/issues/3306)。
+
++ [^] 修复了 [parallel](http://echarts.baidu.com/option.html#series-parallel) 的 `data.lineStyle.color` 无效的问题。参见 [#5363](https://github.com/ecomfe/echarts/issues/5363)。
+
+
 ## v3.5.1
 <div class="time">2017-03-23</div>
 

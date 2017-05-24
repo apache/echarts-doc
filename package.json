@@ -9,6 +9,7 @@
   "author": "shenyi",
   "license": "BSD",
   "devDependencies": {
+    "copy-dir": "^0.3.0",
     "etpl": "~3.0.1",
     "glob": "^6.0.3",
     "jquery": "^3.1.1",

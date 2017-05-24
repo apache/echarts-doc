@@ -1,4 +1,365 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.4.0">Jekyll</generator><link href="http://172.18.19.139/ec-doc/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://172.18.19.139/ec-doc/blog/" rel="alternate" type="text/html" /><updated>2017-04-17T16:57:52+08:00</updated><id>http://172.18.19.139/ec-doc/blog/</id><entry><title>ECharts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布</title><link href="http://172.18.19.139/ec-doc/blog/2017/03/23/new-release.html" rel="alternate" type="text/html" title="ECharts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布" /><published>2017-03-23T00:00:00+08:00</published><updated>2017-03-23T00:00:00+08:00</updated><id>http://172.18.19.139/ec-doc/blog/2017/03/23/new-release</id><content type="html" xml:base="http://172.18.19.139/ec-doc/blog/2017/03/23/new-release.html">&lt;p&gt;在 ECharts 新发布的 &lt;a href=&quot;https://github.com/ecomfe/echarts/releases/tag/3.5.0&quot;&gt;3.5 版本&lt;/a&gt;中，新增了日历坐标系，增强了坐标轴指示器。同时，&lt;a href=&quot;https://github.com/ecomfe/echarts-stat&quot;&gt;ECharts 统计扩展&lt;/a&gt; 1.0 版本发布了。日历坐标系用于在日历中绘制图表，坐标轴指示器方便用户观察数据内容，统计扩展是一个专门用来进行数据分析的工具。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.4.0">Jekyll</generator><link href="http://echarts.baidu.com/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://echarts.baidu.com/blog/" rel="alternate" type="text/html" /><updated>2017-05-24T16:32:33+08:00</updated><id>http://echarts.baidu.com/blog/</id><entry><title>ECharts 统计扩展教程</title><link href="http://echarts.baidu.com/blog/2017/05/09/echarts-statistical-extension-tutorial.html" rel="alternate" type="text/html" title="ECharts 统计扩展教程" /><published>2017-05-09T00:00:00+08:00</published><updated>2017-05-09T00:00:00+08:00</updated><id>http://echarts.baidu.com/blog/2017/05/09/echarts-statistical-extension-tutorial</id><content type="html" xml:base="http://echarts.baidu.com/blog/2017/05/09/echarts-statistical-extension-tutorial.html">&lt;h1 id=&quot;echarts-统计扩展教程&quot;&gt;ECharts 统计扩展教程&lt;/h1&gt;
+
+&lt;p&gt;你是否想了解一组样本数据的分布情况？你是否想根据用户的数值属性将用户分成不同的群体？你是否想预测两个变量的变化趋势？—— 什么？不需要？不要再违心了，小编已经听到来自你们内心深处的呐喊，今天就为大家推荐一款神器 —— &lt;a href=&quot;https://github.com/ecomfe/echarts-stat/&quot;&gt;ECharts 统计扩展&lt;/a&gt;，这是一个用来进行数据分析的扩展工具，包含的功能有直方图、聚类、回归、以及常用的汇总统计。通过统计扩展和 &lt;a href=&quot;http://echarts.baidu.com/&quot;&gt;ECharts&lt;/a&gt; 的结合，可以使大家方便地实现可视分析，也就是将数据分析的结果，通过可视化直观地呈现出来。下面我们就一起来学习一下这些功能。&lt;/p&gt;
+
+&lt;h2 id=&quot;首先引入-javascript-文件&quot;&gt;首先引入 JavaScript 文件&lt;/h2&gt;
+
+&lt;p&gt;如果大家不仅要对数据进行分析，还要将分析的结果呈现出来，那就需要在下载引入扩展文件的同时，下载引入 ECharts 文件。如下：&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;echarts.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ecStat.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//具体可视分析的代码&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;除此之外，还需要指定一个具有高度和宽度的 DOM 元素，作为图表的容器，用来放置将被绘制的图表。如：&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;main&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;width=100%; height=100%&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;然后传入该 DOM 元素，初始化 ECharts 图表：&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;chart&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;echarts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'main'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;完成了上面的准备工作，下面将一一介绍统计扩展的功能。&lt;/p&gt;
+
+&lt;h2 id=&quot;直方图&quot;&gt;直方图&lt;/h2&gt;
+
+&lt;p&gt;直方图主要用来反映一组样本数据的分布情况，可以近似估计一个数值类变量的概率分布。直方图是一种特殊的柱状图，它的任意两个 bar 之间不允许有间隙，这是因为整个数轴范围被分割成了一个个连续的、相互邻接的小区间。这个分割过程就是由统计扩展做的，用户只需要传入一维的数据，如下：&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;girth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;8.3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;8.6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;8.8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;10.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;10.7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;10.8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;11.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;11.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;11.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;11.2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;11.3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;11.4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;11.4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;11.7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;12.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;12.9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;12.9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;13.3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;13.7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;13.8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;14.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;14.2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;14.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;16.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;16.3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;17.3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;17.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;17.9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;18.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;18.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;20.6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bins&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ecStat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;histogram&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;girth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'scott'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;这里的第二个参数 &lt;code class=&quot;highlighter-rouge&quot;&gt;'scott'&lt;/code&gt; 是用来指定切割 bin 的方法，有四个选项，分别是 &lt;code class=&quot;highlighter-rouge&quot;&gt;'squareRoot'&lt;/code&gt; 、 &lt;code class=&quot;highlighter-rouge&quot;&gt;'scott'&lt;/code&gt; 、 &lt;code class=&quot;highlighter-rouge&quot;&gt;'freedmanDiaconis'&lt;/code&gt; 、 &lt;code class=&quot;highlighter-rouge&quot;&gt;'sturges'&lt;/code&gt; ，其中 &lt;code class=&quot;highlighter-rouge&quot;&gt;'squareRoot'&lt;/code&gt; 是默认的计算方法，也是Excel中直方图使用的计算 bin 的方法
+，有关这四种计算方法的详细介绍，请参见 &lt;a href=&quot;https://en.wikipedia.org/wiki/Histogram#Mathematical_definition&quot;&gt;wikipedia&lt;/a&gt;。使用处理后的 &lt;code class=&quot;highlighter-rouge&quot;&gt;bins.data&lt;/code&gt; 配置 ECharts 柱状图中的 &lt;code class=&quot;highlighter-rouge&quot;&gt;option.data&lt;/code&gt; 就可以得到如下的直方图。由于篇幅的问题，这里就不再赘述具体的 &lt;code class=&quot;highlighter-rouge&quot;&gt;option&lt;/code&gt; 配置，感兴趣的读者可以点击下方的 &lt;code class=&quot;highlighter-rouge&quot;&gt;代码&lt;/code&gt; 按钮，进入 ECharts Gallery 中查看。&lt;/p&gt;
+
+&lt;iframe style=&quot;width: 100%; height: 400px&quot; src=&quot;http://gallery.echartsjs.com/view.html?cid=xBk5VZddJW&amp;amp;v=4&quot;&gt;&lt;/iframe&gt;
+
+&lt;h2 id=&quot;聚类分析&quot;&gt;聚类分析&lt;/h2&gt;
+
+&lt;p&gt;聚类分析用于将原数据集聚合成多个特性不同的数据簇，每个数据簇内的数据对象具有某些相似的特征。通过 ECharts 不仅可以可视化聚类的结果，还可以可视化聚类的过程。具体的使用方式如下：&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ecStat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clustering&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;hierarchicalKMeans&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;clusterNumber&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;其中 &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; 是用户传入的二维数值数组， &lt;code class=&quot;highlighter-rouge&quot;&gt;clusterNumber&lt;/code&gt; 是由用户设定的数据簇的个数，最后一个 &lt;code class=&quot;highlighter-rouge&quot;&gt;boolean&lt;/code&gt; 类型的变量是用来指定，静态地可视化聚类的结果，还是动态地可视化聚类的过程。若值为 &lt;code class=&quot;highlighter-rouge&quot;&gt;false&lt;/code&gt; 则为前者，反之，则为后者。&lt;/p&gt;
+
+&lt;p&gt;静态可视化聚类的结果：&lt;/p&gt;
+
+&lt;iframe style=&quot;width: 100%; height: 400px&quot; src=&quot;http://gallery.echartsjs.com/view.html?cid=xSkBOEaGtx&amp;amp;v=10&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;动态可视化聚类的过程：&lt;/p&gt;
+
+&lt;iframe style=&quot;width: 100%; height: 400px&quot; src=&quot;http://gallery.echartsjs.com/view.html?cid=xHyr-esMtg&amp;amp;v=4&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;同样，感兴趣的读者可以点击上方实例的 &lt;code class=&quot;highlighter-rouge&quot;&gt;代码&lt;/code&gt; 按钮，进入 ECharts Gallery 中查看具体的代码，以及 &lt;code class=&quot;highlighter-rouge&quot;&gt;option&lt;/code&gt; 的配置。&lt;/p&gt;
+
+&lt;h2 id=&quot;回归分析&quot;&gt;回归分析&lt;/h2&gt;
+
+&lt;p&gt;回归分析就是根据数据集中自变量和因变量的值，拟合出一条曲线，反映它们的变化趋势。在统计扩展中我们实现了四种回归算法，分别是线性回归、指数回归、对数回归、以及多项式回归。使用方式如下：&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;myRegression&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ecStat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;regression&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;regressionType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;其中，&lt;code class=&quot;highlighter-rouge&quot;&gt;regressionType&lt;/code&gt; 指的是回归类型，有四种取值，分别是 &lt;code class=&quot;highlighter-rouge&quot;&gt;'linear'&lt;/code&gt; 、&lt;code class=&quot;highlighter-rouge&quot;&gt;'exponential'&lt;/code&gt; 、&lt;code class=&quot;highlighter-rouge&quot;&gt;'logarithmic'&lt;/code&gt; 、&lt;code class=&quot;highlighter-rouge&quot;&gt;'polynomial'&lt;/code&gt; 。&lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; 是用户传入的二维数值数组，分别是自变量和因变量的样本值。最后一个参数 &lt;code class=&quot;highlighter-rouge&quot;&gt;order&lt;/code&gt; 用于多项式回归，用来指定多项式的阶数。&lt;/p&gt;
+
+&lt;p&gt;线性回归：&lt;/p&gt;
+
+&lt;iframe style=&quot;width: 100%; height: 400px&quot; src=&quot;http://gallery.echartsjs.com/view.html?cid=xS1bQ2AMKe&amp;amp;v=6&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;指数回归：&lt;/p&gt;
+
+&lt;iframe style=&quot;width: 100%; height: 400px&quot; src=&quot;http://gallery.echartsjs.com/view.html?cid=xHyaNv0fFe&amp;amp;v=5&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;对数回归：&lt;/p&gt;
+
+&lt;iframe style=&quot;width: 100%; height: 400px&quot; src=&quot;http://gallery.echartsjs.com/view.html?cid=xry3aWkmYe&amp;amp;v=4&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;多项式回归：&lt;/p&gt;
+
+&lt;iframe style=&quot;width: 100%; height: 400px&quot; src=&quot;http://gallery.echartsjs.com/view.html?cid=xB16yW0MFl&amp;amp;v=3&quot;&gt;&lt;/iframe&gt;
+
+&lt;h2 id=&quot;常用汇总统计&quot;&gt;常用汇总统计&lt;/h2&gt;
+
+&lt;p&gt;除了上面提到的数据分析方法之外，统计扩展还包括了常用的汇总统计，如分位数、样本方差、标准差、中位数、平均数、求和、最大值、最小值等。具体的用法，这里就不在展开了，详情请参见 GitHub 上的&lt;a href=&quot;https://github.com/ecomfe/echarts-stat#statistics&quot;&gt;详细文档&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;最后的最后，提醒大家一句，在参照完 &lt;code class=&quot;highlighter-rouge&quot;&gt;Gallery&lt;/code&gt; 上 &lt;code class=&quot;highlighter-rouge&quot;&gt;option&lt;/code&gt; 的设置之后，一定要记得 &lt;code class=&quot;highlighter-rouge&quot;&gt;setOption&lt;/code&gt; ，如下：&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;chart&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setOption&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;option&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content><category term="统计" /><category term="扩展" /><category term="教程" /><summary>ECharts 统计扩展教程</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://echarts.baidu.com/blog{&quot;feature&quot;=&gt;&quot;post/2017-05-09-echarts-statistical-logarithmic-regression.png&quot;}" /></entry><entry><title>那些年我们一起学过的直方图</title><link href="http://echarts.baidu.com/blog/2017/05/08/echarts-histogram-tutorial.html" rel="alternate" type="text/html" title="那些年我们一起学过的直方图" /><published>2017-05-08T00:00:00+08:00</published><updated>2017-05-08T00:00:00+08:00</updated><id>http://echarts.baidu.com/blog/2017/05/08/echarts-histogram-tutorial</id><content type="html" xml:base="http://echarts.baidu.com/blog/2017/05/08/echarts-histogram-tutorial.html">&lt;p&gt;某天下午小编正在安安静静地撸代码，突然听说在我们的 &lt;a href=&quot;http://gallery.echartsjs.com/explore.html#sort=rank~timeframe=all~author=all&quot;&gt;gallery&lt;/a&gt; 上，有用户提出，&lt;a href=&quot;http://echarts.baidu.com/index.html&quot;&gt;ECharts&lt;/a&gt; 不支持直方图，什么？这怎么能忍？于是小编将珍藏已久的机械键盘拿出来，摆好姿势，通宵达旦地为用户大大们加好了直方图，并于上周四悄悄上线了，对，我们就是这么低调。然而，很多大大们表示，直方图还是柱状图？傻傻分不清。小编深感这年头光有图怕是不行了，必须得有个教程，要做到图文并茂。下面小编就从直方图是什么，为什么要用直方图，以及如何使用 &lt;a href=&quot;http://echarts.baidu.com/index.html&quot;&gt;ECharts&lt;/a&gt; 制作直方图三个方面，为各位大大们上点干货。&lt;/p&gt;
+
+&lt;h2 id=&quot;直方图是什么&quot;&gt;直方图是什么&lt;/h2&gt;
+
+&lt;p&gt;直方图主要用来反映一组样本数据的分布情况。从图的形式来看，它属于柱状图的一种，但它和柱状图相比还是有很多不同之处的。首先，直方图的任意两个 bar 之间不允许有间隙，这是因为原始样本值被分割成一系列连续的、相互邻接的小区间，每一个小区间都是左闭右开的，除了最后一个，如&lt;code class=&quot;highlighter-rouge&quot;&gt;[x0, x1), [x1,x2), [x2,x3]&lt;/code&gt;，在直方图中小区间又被称为“bin”。其中bin的高度是由落入该区间中样本值的个数决定的；其次，在 ECharts 中绘制双数值轴（这里的双数值轴指的是 x 轴和 y 轴都是数值类型的）柱状图，用户需要传入二维的数组，如&lt;code class=&quot;highlighter-rouge&quot;&gt;array1 = [[1, 2], [3, 4]]&lt;/code&gt;，而绘制直方图，用户只需要传入一维的数组，如&lt;code class=&quot;highlighter-rouge&quot;&gt;array2 = [1, 2, 3, 4]&lt;/code&gt;，然后由&lt;a href=&quot;https://github.com/ecomfe/echarts-stat&quot;&gt;ECharts 统计扩展&lt;/a&gt;将一维的样本值分割成一个个具体的bin，并计算输出每一个bin的绘制信息，然后选用 ECharts 柱状图绘制具体的直方图。&lt;/p&gt;
+
+&lt;h2 id=&quot;为什么要用直方图&quot;&gt;为什么要用直方图&lt;/h2&gt;
+
+&lt;p&gt;前面已经提到了，直方图主要用来反映样本数据的分布，如下图，这是使用著名的&lt;a href=&quot;https://en.wikipedia.org/wiki/Iris_flower_data_set&quot;&gt;虹膜花数据集&lt;/a&gt;中的花瓣长度这一维度所作的直方图。从图中可以直观地看出该维度样本数据不符合正态分布，有多个峰值，具有明显的差异。这说明不同种类虹膜花的花瓣长度，受多个因素的影响，同时也表明在进一步的数据分析中，所有基于正态分布假设的分析，都不适合该维度数据。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2017-05-08-echarts-histogram-petal-length-iris.png&quot; alt=&quot;petal-width&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;除此之外，直方图还可以用来进行数据审查。所谓的数据审查，是指在数据预处理之前，通过直方图直观地审视样本数据中的每个维度，检查是否有异常值的同时，了解值的分布。如图，这是记录 31 颗黑樱桃树周长的样本数据，从图中可以明显地看出有三个异常值，因为树的周长肯定大于 0 ，不会出现小于 0 的负数，而&lt;code class=&quot;highlighter-rouge&quot;&gt;[-5, 0)&lt;/code&gt;这个区间内有三个样本值，这就需要通过数据清洗将异常值过滤掉。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2017-05-08-echarts-histogram-girth-of-tree.png&quot; alt=&quot;girth-tree&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;如何使用-echarts制作直方图&quot;&gt;如何使用 &lt;a href=&quot;http://echarts.baidu.com/index.html&quot;&gt;ECharts&lt;/a&gt;制作直方图&lt;/h2&gt;
+
+&lt;p&gt;ECharts 是一个强大的可视化图表库，并不是一个统计分析的工具，所以我们将处理原始数据并分割成一个个具体的bin这一部分放在了 ECharts 的&lt;a href=&quot;https://github.com/ecomfe/echarts-stat&quot;&gt;统计扩展&lt;/a&gt;中实现。这就需要我们在引入 &lt;code class=&quot;highlighter-rouge&quot;&gt;echarts.js&lt;/code&gt; 的同时，引入统计扩展对应的 &lt;code class=&quot;highlighter-rouge&quot;&gt;ecStat.js&lt;/code&gt;，如：&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;echarts.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ecStat.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;height&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;70&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;65&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;63&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;72&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;81&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;83&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;66&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;75&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;75&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;79&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;76&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;76&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;69&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;75&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;74&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;85&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;86&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;71&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;78&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;74&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;72&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;77&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;81&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;82&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;87&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bins&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ecStat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;histogram&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;然后使用统计扩展处理过后的数据，配置 ECharts 柱状图中的 option，如：&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;option&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'rgb(25, 183, 207)'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;grid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'3%'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'3%'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;bottom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'3%'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;containLabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;xAxis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'value'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;//这个一定要设，不然barWidth和bins对应不上&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;scale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}],&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;yAxis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'value'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}],&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;series&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'bar'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;barWidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'99.3%'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;normal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'insideTop'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;formatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;这样就得到了如下的直方图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2017-05-08-echarts-histogram-height-of-tree.png&quot; alt=&quot;height-tree&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这里不得不说的是，由于历史遗留的问题，ECharts 中的柱状图并不能完美地支持直方图的绘制，所以不得不使用一些小的 trick，如设置 &lt;code class=&quot;highlighter-rouge&quot;&gt;xAxis&lt;/code&gt; 的 &lt;code class=&quot;highlighter-rouge&quot;&gt;scale&lt;/code&gt; 为 &lt;code class=&quot;highlighter-rouge&quot;&gt;true&lt;/code&gt;，调整 &lt;code class=&quot;highlighter-rouge&quot;&gt;barWidth&lt;/code&gt; 的值等。不过，大家不用担心，作为一个良心以及正义感爆棚的团队，我们即将发布一款新的自定义图表类型。经小编亲测，该图表类型可以画出狂拽酷炫屌炸天的直方图，敬请期待哦。&lt;/p&gt;</content><category term="直方图" /><category term="教程" /><category term="扩展" /><summary>某天下午小编正在安安静静地撸代码，突然听说在我们的 gallery 上，有用户提出，ECharts 不支持直方图，什么？这怎么能忍？于是小编将珍藏已久的机械键盘拿出来，摆好姿势，通宵达旦地为用户大大们加好了直方图，并于上周四悄悄上线了，对，我们就是这么低调。然而，很多大大们表示，直方图还是柱状图？傻傻分不清。小编深感这年头光有图怕是不行了，必须得有个教程，要做到图文并茂。下面小编就从直方图是什么，为什么要用直方图，以及如何使用 ECharts 制作直方图三个方面，为各位大大们上点干货。</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://echarts.baidu.com/blog{&quot;feature&quot;=&gt;&quot;post/2017-05-08-echarts-histogram-height-of-tree.png&quot;}" /></entry><entry><title>ECharts GL 1.0 alpha 发布</title><link href="http://echarts.baidu.com/blog/2017/04/12/echarts-gl-alpha.html" rel="alternate" type="text/html" title="ECharts GL 1.0 alpha 发布" /><published>2017-04-12T00:00:00+08:00</published><updated>2017-04-12T00:00:00+08:00</updated><id>http://echarts.baidu.com/blog/2017/04/12/echarts-gl-alpha</id><content type="html" xml:base="http://echarts.baidu.com/blog/2017/04/12/echarts-gl-alpha.html">&lt;p&gt;距离 ECharts-X 最近一个版本已经过去了两年多时间，期间我们不断被开发者在各种渠道询问 ECharts-X 为什么还不升级新版本，是不是不再维护了等等，对于这些问题我们只能回答我们还没准备好。尽管这两年时间 ECharts X 没什么动静，但是其它的工作，像 ECharts 3 的架构大改动和后续版本的迭代升级，以及其它 WebGL 产品的开发，都是对新版本架构和技术上的积累。现在我们终于可以说我们准备得差不多了，ECharts-X 的下一代，ECharts-GL 发布 1.0 alpha。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/ecomfe/echarts-gl&quot;&gt;ECharts GL&lt;/a&gt; 是 ECharts 的 WebGL 扩展，其中提供了三维散点图，飞线图，柱状图，曲面图，地球等多种三维可视化方式。并且增加 &lt;code class=&quot;highlighter-rouge&quot;&gt;scatterGL&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;graphGL&lt;/code&gt; 系列类型用于二维的散点图，关系图的加速绘制和布局。&lt;/p&gt;
+
+&lt;p&gt;先来一张 Gallery 上 &lt;a href=&quot;https://github.com/ecomfe/echarts-gl&quot;&gt;ECharts GL&lt;/a&gt; 的示例图片集。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2017-04-12/demos.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;下面会一一介绍 ECharts GL 的特性，如果你已经等不及想尝鲜了，可以直接在 Gallery 上查看编辑 ECharts GL 的示例。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://gallery.echartsjs.com/explore.html#tags=echarts-gl&quot;&gt;GL 的 Gallery 示例&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html&quot;&gt;GL 的配置项手册&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;一更便捷的安装和引入&quot;&gt;一、更便捷的安装和引入&lt;/h2&gt;
+
+&lt;p&gt;大家用过 ECharts-X 的话，或许曾被其繁琐的引入方式困扰过，甚至可能因为尝试了很多次都没办法正确引入而选择放弃。&lt;/p&gt;
+
+&lt;p&gt;ECharts-GL 中大大简化了引入方式，在标签引入的环境下。你可以从 &lt;a href=&quot;https://github.com/ecomfe/echarts-gl/tree/master/dist&quot;&gt;GitHub&lt;/a&gt; 上获取 ECharts GL 后直接引入构建好的文件.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;echarts/dist/echarts.min.js&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/script&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;echarts-gl/dist/echarts-gl.min.js&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/script&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;如果你用 webpack 和 npm 作为开发环境。也只需要在 &lt;code class=&quot;highlighter-rouge&quot;&gt;npm install echarts-gl&lt;/code&gt; 之后再&lt;code class=&quot;highlighter-rouge&quot;&gt;require&lt;/code&gt;引入。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'echarts-gl'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;二更多三维可视化类型&quot;&gt;二、更多三维可视化类型。&lt;/h2&gt;
+
+&lt;p&gt;除了老版本的&lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#globe&quot;&gt;地球&lt;/a&gt;用于地理数据可视化，ECharts GL 新增了三维的&lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#grid3D&quot;&gt;笛卡尔坐标系&lt;/a&gt;、&lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#geo3D&quot;&gt;地理坐标系&lt;/a&gt;，并且在这些新的三维坐标系基础上提供了六个新的系列类型，包括 &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-scatter3D&quot;&gt;散点图 scatter3D&lt;/a&gt;、&lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-line3D&quot;&gt;折线图 line3D&lt;/a&gt;、&lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-bar3D&quot;&gt;柱状图 bar3D&lt;/a&gt;、&lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-surface&quot;&gt;曲面图 surface&lt;/a&gt;、&lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-lines3D&quot;&gt;飞线图 lines3D&lt;/a&gt;以及&lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-map3D&quot;&gt;地图 map3D&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;这些新的系列类型以及组件类型都是使用 WebGL 绘制，因此能够保证高质量，高性能的展示出你想要的三维可视化作品。&lt;/p&gt;
+
+&lt;p&gt;同时我们在配置项的设计上尽量沿用了 ECharts 的风格，保证简洁统一。比如下面这个配置就能画出一个简单的三维散点图。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;option&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;grid3D&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;xAxis3D&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;yAxis3D&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;zAxis3D&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;series&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'scatter3D'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;symbolSize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]],&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;itemStyle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;opacity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;这里跟 ECharts 有点区别，GL 中尝试了更扁平的 option 设计，使用场景更少的 emphasis 属性将会单独移出来，而原先 normal 这个层级将被移除，itemStyle 下的属性相当于原先 itemStyle.normal 下的属性。如果这次尝试没问题，接下来 ECharts 新的大版本也会使用这种更扁平的设计。
+具体配置结构见 &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-scatter3D.itemStyle&quot;&gt;https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-scatter3D.itemStyle&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;大部分 GL 中的三维组件和系列都会带上&lt;code class=&quot;highlighter-rouge&quot;&gt;3D&lt;/code&gt;后缀以便跟 ECharts 中的组件系列区分开。&lt;/p&gt;
+
+&lt;p&gt;下面这个更复杂点的例子使用&lt;code class=&quot;highlighter-rouge&quot;&gt;scatter3D&lt;/code&gt;可视化了三维的 &lt;a href=&quot;https://en.wikipedia.org/wiki/Simplex_noise&quot;&gt;Simplex Noise&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://gallery.echartsjs.com/editor.html?c=xBkWoZOjTe&quot;&gt;
+    &lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2017-04-12/simplex-noise.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;除了三维的散点图，你也可以在笛卡尔坐标系上画 &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-line3D&quot;&gt;折线图 line3D&lt;/a&gt;，&lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-bar3D&quot;&gt;柱状图 bar3D&lt;/a&gt;，&lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-surface&quot;&gt;曲面图 surface&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;其中 &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-line3D&quot;&gt;line3D&lt;/a&gt;，&lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-bar3D&quot;&gt;bar3D&lt;/a&gt; 也是对 ECharts 中的折线图，柱状图扩展到了三维的版本。而 &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-surface&quot;&gt;surface&lt;/a&gt; 是 ECharts GL 里全新的三维图。&lt;/p&gt;
+
+&lt;p&gt;你可以像下面这样用 &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-surface&quot;&gt;surface&lt;/a&gt; 画函数曲面。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://gallery.echartsjs.com/editor.html?c=xHkcYXm9pe&quot;&gt;
+    &lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2017-04-12/surface.png&quot; alt=&quot;&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;也可以像这样用曲面去可视化像图片像素这样的数据&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://gallery.echartsjs.com/editor.html?c=xBk5PSvqpx&quot;&gt;
+    &lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2017-04-12/image-pixels.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;甚至你可以用参数方程构建出下面这样有趣的参数曲面&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://gallery.echartsjs.com/editor.html?c=xHku9OE96l&quot;&gt;
+    &lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2017-04-12/parametric-surface.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;除了三维笛卡尔坐标系，像柱状图，散点图也可以显示在&lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#globe&quot;&gt;地球&lt;/a&gt;，&lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#geo3D&quot;&gt;三维地理坐标系&lt;/a&gt;上。&lt;/p&gt;
+
+&lt;p&gt;比如下面这个例子就是在地球上通过散点图绘制世界人口。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://gallery.echartsjs.com/editor.html?c=xS1moC0s6x&quot;&gt;
+    &lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2017-04-12/high-quality-2.jpg&quot; style=&quot;width:100%;&quot; alt=&quot;&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;你可以大胆的组合不同坐标系和系列，制作出更具创造力的可视化作品！&lt;/p&gt;
+
+&lt;h2 id=&quot;三高品质的画面&quot;&gt;三、高品质的画面&lt;/h2&gt;
+
+&lt;p&gt;在很多场景里，高品质的画面是一个很重要的需求，例如：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;在大屏中，需要提供炫酷的，一下能够抓住人眼球的特效。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;生成需要放在文章或者 PPT 中的截图，需要高质量的渲染，不能有廉价三维效果的感觉。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;ECharts GL 提供了一系列诸如&lt;a href=&quot;http://localhost/echarts-doc/public/cn/option-gl.html#geo3D.postEffect.depthOfField&quot;&gt;景深&lt;/a&gt;，&lt;a href=&quot;http://localhost/echarts-doc/public/cn/option-gl.html#geo3D.postEffect.bloom&quot;&gt;光晕&lt;/a&gt;，&lt;a href=&quot;http://localhost/echarts-doc/public/cn/option-gl.html#geo3D.postEffect.colorCorrection&quot;&gt;颜色纠正&lt;/a&gt;，&lt;a href=&quot;http://localhost/echarts-doc/public/cn/option-gl.html#geo3D.postEffect.SSAO&quot;&gt;阴影&lt;/a&gt;，&lt;a href=&quot;http://localhost/echarts-doc/public/cn/option-gl.html#geo3D.light.ambientCubemap&quot;&gt;基于物理的渲染&lt;/a&gt; 等等开箱即用的配置项让你去方便的提升自己可视化作品的渲染效果。&lt;/p&gt;
+
+&lt;p&gt;在这些配置项的基础上，你可以实现这样带景深的微缩模型的效果：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2017-04-12/high-quality-1.jpg&quot; style=&quot;width:100%;&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;或者这样的基于物理渲染的金属零件的效果：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2017-04-12/high-quality-3.jpg&quot; style=&quot;width:100%;&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;或者这样 Bling Bling 的影视广告特效：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2017-04-12/high-quality-5.jpg&quot; style=&quot;width:100%;&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;又或者这样的大规模建筑群：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2017-04-12/high-quality-4.jpg&quot; style=&quot;width:100%;&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;想要了解更多的效果，可以逛逛我们的&lt;a href=&quot;http://gallery.echartsjs.com/explore.html#tags=echarts-gl&quot;&gt;示例集&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;四二维可视化的加速&quot;&gt;四、二维可视化的加速&lt;/h2&gt;
+
+&lt;p&gt;除了三维的可视化，ECharts GL 还内置 &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-scatterGL&quot;&gt;scatterGL&lt;/a&gt;, &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-scatterGL&quot;&gt;graphGL&lt;/a&gt; 两个系列，能够大幅度的优化常见的二维散点图和关系图的绘制和布局性能。&lt;/p&gt;
+
+&lt;p&gt;散点图也是比较常见的会有大数据量的系列类型。ECharts 尽管能绘制像微博签到图那样上十万的散点图，但是很难做到流畅的交互。拖拽、缩放等操作都会有卡顿。&lt;/p&gt;
+
+&lt;p&gt;在 ECharts GL 里利用 WebGL 加速绘制后，可以无压力得绘制和实时的交互十万个数据的散点图了。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://gallery.echartsjs.com/editor.html?c=xHJkXhU9Tg&quot;&gt;
+&lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2017-04-12/weibo-checkin.jpg&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;而且实现这一切只需要把原先的&lt;code class=&quot;highlighter-rouge&quot;&gt;scatter&lt;/code&gt;类型改为&lt;code class=&quot;highlighter-rouge&quot;&gt;scatterGL&lt;/code&gt;类型，不需要再做其它的改动！&lt;/p&gt;
+
+&lt;p&gt;对于&lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-scatterGL&quot;&gt;关系图 graphGL&lt;/a&gt;除了绘制上有加速之外，我们还在 WebGL 中实现了&lt;a href=&quot;https://github.com/gephi/gephi/wiki/Force-Atlas-2&quot;&gt;力引导布局&lt;/a&gt;。在高端的显卡上 GPU 布局相对于 CPU 布局甚至能有上百倍的性能提升。&lt;/p&gt;
+
+&lt;p&gt;下面是在&lt;code class=&quot;highlighter-rouge&quot;&gt;GTX1070&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;i7 4GHz&lt;/code&gt;的电脑中对一个&lt;code class=&quot;highlighter-rouge&quot;&gt;两万&lt;/code&gt;个节点，近&lt;code class=&quot;highlighter-rouge&quot;&gt;五万&lt;/code&gt;条边的关系图一次布局的迭代的性能对比。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2017-04-12/gpu-layout-perf.png&quot; width=&quot;400px&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;以及对这个关系图实时布局的视频。&lt;/p&gt;
+
+&lt;video controls=&quot;&quot; width=&quot;100%&quot; src=&quot;http://echarts.baidu.com/blog/images/post/2017-04-12/graphGL.mp4&quot;&gt;&lt;/video&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;2500&lt;/code&gt;个节点的网格图使用 GPU 布局的例子（只支持 PC 端）。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://gallery.echartsjs.com/editor.html?c=xrJchBL9ag&quot;&gt;
+&lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2017-04-12/grid.jpg&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;这里特别感谢 Gephi 提供了 Force Atlas2 这样在大规模关系数据上能够有稳定优良的布局结果的算法。&lt;/p&gt;
+
+&lt;h2 id=&quot;五与-echarts-交互组件的结合&quot;&gt;五、与 ECharts 交互组件的结合&lt;/h2&gt;
+
+&lt;p&gt;ECharts GL 作为一个扩展，并不是独立的，它提供的系列和组件能够和 ECharts 中的大部分组件组合使用。你可以使用 &lt;a href=&quot;http://echarts.baidu.com/option.html#visualMap&quot;&gt;visualMap&lt;/a&gt; 组件对 GL 中的系列进行颜色，大小，不透明的编码，可以用 &lt;a href=&quot;http://echarts.baidu.com/option.html#tooltip&quot;&gt;tooltip&lt;/a&gt; 组件显示 GL 中图形的数据信息，也可以用 &lt;a href=&quot;http://echarts.baidu.com/option.html#legend&quot;&gt;legend&lt;/a&gt; 筛选出想要展示的系列等等。&lt;/p&gt;
+
+&lt;p&gt;例如下面这个例子用 &lt;a href=&quot;http://echarts.baidu.com/option.html#visualMap&quot;&gt;visualMap&lt;/a&gt; 组件对柱状图做了颜色的映射，而且能够通过控件筛选出区间内的数据&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://gallery.echartsjs.com/editor.html?c=xSyMekmcTx&quot;&gt;
+&lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2017-04-12/visual-map.jpg&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;当然除此之外，你也可以在一个实例里任意混搭使用 ECharts GL 的组件以及 ECharts 的组件。&lt;/p&gt;
+
+&lt;h2 id=&quot;六移动端兼容&quot;&gt;六、移动端兼容&lt;/h2&gt;
+
+&lt;p&gt;现在很多移动端的浏览器已经支持 WebGL 了，特别是像 iOS 系统对 WebGL 的扩展特性等支持得非常完善。所以用 ECharts GL 制作的大部分例子都能在 iOS 上流畅无压力的运行。在交互上 ECharts GL 也对移动端做了兼容处理，支持平移，双指缩放等等。&lt;/p&gt;
+
+&lt;p&gt;如果你现在不是在手机上浏览这篇文章，可以稍后在手机上打开 &lt;a href=&quot;http://gallery.echartsjs.com/&quot;&gt;http://gallery.echartsjs.com/&lt;/a&gt; 看看效果。&lt;/p&gt;
+
+&lt;p&gt;下面是在 iPhone 6 上实时预览前面示例中参数曲面的效果。&lt;/p&gt;
+
+&lt;video controls=&quot;&quot; width=&quot;100%&quot; src=&quot;http://echarts.baidu.com/blog/images/post/2017-04-12/mobile.mp4&quot;&gt;&lt;/video&gt;
+
+&lt;h2 id=&quot;更多&quot;&gt;更多&lt;/h2&gt;
+
+&lt;p&gt;ECharts GL 1.0 alpha 只是个开始，在正式版发布之前，我们还会对画面，交互的细节，动画，性能等等做更多的优化。大家使用过程中有任何的问题或者建议都可以在 GitHub 上跟我们反馈，
+我们也非常期待大家能够利用 ECharts GL 做出让我们想象不到的作品。&lt;/p&gt;</content><category term="新版本" /><category term="扩展" /><category term="echarts-gl" /><summary>距离 ECharts-X 最近一个版本已经过去了两年多时间，期间我们不断被开发者在各种渠道询问 ECharts-X 为什么还不升级新版本，是不是不再维护了等等，对于这些问题我们只能回答我们还没准备好。尽管这两年时间 ECharts X 没什么动静，但是其它的工作，像 ECharts 3 的架构大改动和后续版本的迭代升级，以及其它 WebGL 产品的开发，都是对新版本架构和技术上的积累。现在我们终于可以说我们准备得差不多了，ECharts-X 的下一代，ECharts-GL 发布 1.0 alpha。</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://echarts.baidu.com/blog{&quot;feature&quot;=&gt;&quot;post/2017-04-12/buildings2.jpg&quot;}" /></entry><entry><title>ECharts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布</title><link href="http://echarts.baidu.com/blog/2017/03/23/new-release.html" rel="alternate" type="text/html" title="ECharts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布" /><published>2017-03-23T00:00:00+08:00</published><updated>2017-03-23T00:00:00+08:00</updated><id>http://echarts.baidu.com/blog/2017/03/23/new-release</id><content type="html" xml:base="http://echarts.baidu.com/blog/2017/03/23/new-release.html">&lt;p&gt;在 ECharts 新发布的 &lt;a href=&quot;https://github.com/ecomfe/echarts/releases/tag/3.5.0&quot;&gt;3.5 版本&lt;/a&gt;中，新增了日历坐标系，增强了坐标轴指示器。同时，&lt;a href=&quot;https://github.com/ecomfe/echarts-stat&quot;&gt;ECharts 统计扩展&lt;/a&gt; 1.0 版本发布了。日历坐标系用于在日历中绘制图表，坐标轴指示器方便用户观察数据内容，统计扩展是一个专门用来进行数据分析的工具。&lt;/p&gt;
 
 &lt;h2 id=&quot;统计扩展&quot;&gt;统计扩展&lt;/h2&gt;
 
@@ -7,18 +368,18 @@
 &lt;p&gt;扩展中的回归算法不仅包含了常用的线性回归，还包含了指数回归、对数回归、以及多项式回归。&lt;/p&gt;
 
 &lt;p&gt;线性回归的示例：&lt;/p&gt;
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://172.18.19.139/ec-doc/blog/images/post/2017-03-23/xS1bQ2AMKe.png&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xS1bQ2AMKe&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://echarts.baidu.com/blog/images/post/2017-03-23/xS1bQ2AMKe.png&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xS1bQ2AMKe&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
 
 &lt;p&gt;对数回归的示例：&lt;/p&gt;
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://172.18.19.139/ec-doc/blog/images/post/2017-03-23/xry3aWkmYe.png&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xry3aWkmYe&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://echarts.baidu.com/blog/images/post/2017-03-23/xry3aWkmYe.png&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xry3aWkmYe&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
 
 &lt;p&gt;秉承了可视分析的宗旨，我们的多维聚类分析，不仅可以静态地产出数据集聚类的结果，还可以动态地查看整个聚类分析的过程。&lt;/p&gt;
 
 &lt;p&gt;静态地产出数据集聚类的结果的示例：&lt;/p&gt;
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://172.18.19.139/ec-doc/blog/images/post/2017-03-23/xSkBOEaGtx.png&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xSkBOEaGtx&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://echarts.baidu.com/blog/images/post/2017-03-23/xSkBOEaGtx.png&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xSkBOEaGtx&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
 
 &lt;p&gt;动态地查看整个聚类分析的过程的示例：&lt;/p&gt;
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://172.18.19.139/ec-doc/blog/images/post/2017-03-23/xHyr-esMtg.png&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xHyr-esMtg&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://echarts.baidu.com/blog/images/post/2017-03-23/xHyr-esMtg.png&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xHyr-esMtg&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
 
 &lt;p&gt;和 echarts 中的原生图表不一样，统计扩展是作为一个扩展工具发布的。这意味着，在 echarts 官网下载的完整版本将不包含该扩展包。统计扩展和 echarts 结合使用时，需要在引入 &lt;code class=&quot;highlighter-rouge&quot;&gt;echarts.js&lt;/code&gt; 之后，另外引入统计扩展对应的 &lt;code class=&quot;highlighter-rouge&quot;&gt;ecStat.js&lt;/code&gt;。可以在 &lt;a href=&quot;https://github.com/ecomfe/echarts-stat/releases/latest&quot;&gt;这里 (GitHub)&lt;/a&gt; 找到最新版本，其中 &lt;code class=&quot;highlighter-rouge&quot;&gt;dist/ecStat.js&lt;/code&gt; 可作为单文件引用。&lt;/p&gt;
 
@@ -85,7 +446,7 @@
 
 &lt;p&gt;最后提供一个内容更丰富些的例子，其中也使用了 &lt;a href=&quot;http://echarts.baidu.com/option.html#axisPointer.link&quot;&gt;axisPointer.link&lt;/a&gt; 来联动不同的坐标轴指示器。他关联和高亮了处于不同坐标系中的相互对应的点。&lt;/p&gt;
 
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png&quot; data-src=&quot;http://echarts.baidu.com/gallery/view.html?c=scatter-nutrients-matrix&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 640px&quot;&gt;&lt;/div&gt;</content><category term="new release" /><category term="extension" /><category term="tutorial" /><summary>在 ECharts 新发布的 3.5 版本中，新增了日历坐标系，增强了坐标轴指示器。同时，ECharts 统计扩展 1.0 版本发布了。日历坐标系用于在日历中绘制图表，坐标轴指示器方便用户观察数据内容，统计扩展是一个专门用来进行数据分析的工具。</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://172.18.19.139/ec-doc/blog{&quot;feature&quot;=&gt;&quot;post/2017-03-23/banner.png&quot;}" /></entry><entry><title>ECharts v3.5 Released, Publishing Calendar Coordinate System and Enhanced Axis Pointer, Meanwhile Statistic Extension v1.0 Released</title><link href="http://172.18.19.139/ec-doc/blog/2017/03/23/new-release-en.html" rel="alternate" type="text/html" title="ECharts v3.5 Released, Publishing Calendar Coordinate System and Enhanced Axis Pointer, Meanwhile Statistic Extension v1.0 Released" /><published>2017-03-23T00:00:00+08:00</published><updated>2017-03-23T00:00:00+08:00</updated><id>http://172.18.19.139/ec-doc/blog/2017/03/23/new-release-en</id><content type="html" xml:base="http://172.18.19.139/ec-doc/blog/2017/03/23/new-release-en.html">&lt;p&gt;We are releasing &lt;a href=&quot;https://github.com/ecomfe/echarts/releases/tag/3.5.0&quot;&gt;ECharts v3.5&lt;/a&gt;, where calendar coodinate system is supported and axis pointer is enhanced. Meanwhile &lt;a href=&quot;https://github.com/ecomfe/echarts-stat&quot;&gt;ECharts statistic extension&lt;/a&gt; v1.0 is published.&lt;/p&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png&quot; data-src=&quot;http://echarts.baidu.com/gallery/view.html?c=scatter-nutrients-matrix&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 640px&quot;&gt;&lt;/div&gt;</content><category term="新版本" /><category term="扩展" /><category term="教程" /><summary>在 ECharts 新发布的 3.5 版本中，新增了日历坐标系，增强了坐标轴指示器。同时，ECharts 统计扩展 1.0 版本发布了。日历坐标系用于在日历中绘制图表，坐标轴指示器方便用户观察数据内容，统计扩展是一个专门用来进行数据分析的工具。</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://echarts.baidu.com/blog{&quot;feature&quot;=&gt;&quot;post/2017-03-23/banner.png&quot;}" /></entry><entry><title>ECharts v3.5 Released, Publishing Calendar Coordinate System and Enhanced Axis Pointer, Meanwhile Statistic Extension v1.0 Released</title><link href="http://echarts.baidu.com/blog/2017/03/23/new-release-en.html" rel="alternate" type="text/html" title="ECharts v3.5 Released, Publishing Calendar Coordinate System and Enhanced Axis Pointer, Meanwhile Statistic Extension v1.0 Released" /><published>2017-03-23T00:00:00+08:00</published><updated>2017-03-23T00:00:00+08:00</updated><id>http://echarts.baidu.com/blog/2017/03/23/new-release-en</id><content type="html" xml:base="http://echarts.baidu.com/blog/2017/03/23/new-release-en.html">&lt;p&gt;We are releasing &lt;a href=&quot;https://github.com/ecomfe/echarts/releases/tag/3.5.0&quot;&gt;ECharts v3.5&lt;/a&gt;, where calendar coodinate system is supported and axis pointer is enhanced. Meanwhile &lt;a href=&quot;https://github.com/ecomfe/echarts-stat&quot;&gt;ECharts statistic extension&lt;/a&gt; v1.0 is published.&lt;/p&gt;
 
 &lt;p&gt;Calendar coordiante system is a new type of echarts coordiante system, which can used to locate different charts (For example, scatter, heatmap, graph, pie, or even other coordinate systems like cartesian).&lt;/p&gt;
 
@@ -100,18 +461,18 @@
 &lt;p&gt;The regression algorithm in the extension not only contains the commonly used linear regression, but also contains exponential regression, logarithmic regression, and polynomial regression.&lt;/p&gt;
 
 &lt;p&gt;An example of linear regression:&lt;/p&gt;
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://172.18.19.139/ec-doc/blog/images/post/2017-03-23/xS1bQ2AMKe.png&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xS1bQ2AMKe&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://echarts.baidu.com/blog/images/post/2017-03-23/xS1bQ2AMKe.png&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xS1bQ2AMKe&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
 
 &lt;p&gt;An example of logarithmic regression:&lt;/p&gt;
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://172.18.19.139/ec-doc/blog/images/post/2017-03-23/xry3aWkmYe.png&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xry3aWkmYe&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://echarts.baidu.com/blog/images/post/2017-03-23/xry3aWkmYe.png&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xry3aWkmYe&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
 
 &lt;p&gt;Adhering to the purpose of visual analysis, our multi-dimensional clustering analysis, can not only statically produce the results of clustering of dataset, but also dynamically view the entire clustering analysis process.&lt;/p&gt;
 
 &lt;p&gt;An example of the result of dataset clustering:&lt;/p&gt;
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://172.18.19.139/ec-doc/blog/images/post/2017-03-23/xSkBOEaGtx.png&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xSkBOEaGtx&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://echarts.baidu.com/blog/images/post/2017-03-23/xSkBOEaGtx.png&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xSkBOEaGtx&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
 
 &lt;p&gt;An example demonstrating the entire process of clustering:&lt;/p&gt;
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://172.18.19.139/ec-doc/blog/images/post/2017-03-23/xHyr-esMtg.png&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xHyr-esMtg&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;http://echarts.baidu.com/blog/images/post/2017-03-23/xHyr-esMtg.png&quot; data-src=&quot;http://gallery.echartsjs.com/view.html?cid=xHyr-esMtg&quot; style=&quot;width: 100%; height: 400px&quot;&gt;&lt;/div&gt;
 
 &lt;p&gt;Unlike built-in charts in echarts, Statistical Extension is a extension of echarts, which is not intergrated by echarts by default, and you need to inclued &lt;code class=&quot;highlighter-rouge&quot;&gt;ecStat.js&lt;/code&gt; after &lt;code class=&quot;highlighter-rouge&quot;&gt;echarts.js&lt;/code&gt;. You can find the file &lt;code class=&quot;highlighter-rouge&quot;&gt;dist/ecStat.js&lt;/code&gt; in the latest released version at &lt;a href=&quot;https://github.com/ecomfe/echarts-stat/releases/latest&quot;&gt;here (GitHub)&lt;/a&gt;.&lt;/p&gt;
 
@@ -173,7 +534,7 @@
 
 &lt;p&gt;At last, let’s see a more complicated example, where &lt;a href=&quot;https://ecomfe.github.io/echarts-doc/public/en/option.html#axisPointer.link&quot;&gt;axisPointer.link&lt;/a&gt; is also be used to synchronize axis pointers of different axes.&lt;/p&gt;
 
-&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;https://ecomfe.github.io/echarts-examples/public/data/thumb/bubble-gradient.png&quot; data-src=&quot;https://ecomfe.github.io/echarts-examples/public/view.html?c=scatter-nutrients-matrix&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 640px&quot;&gt;&lt;/div&gt;</content><category term="en" /><category term="new release" /><category term="extension" /><category term="tutorial" /><summary>We are releasing ECharts v3.5, where calendar coodinate system is supported and axis pointer is enhanced. Meanwhile ECharts statistic extension v1.0 is published.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://172.18.19.139/ec-doc/blog{&quot;feature&quot;=&gt;&quot;post/2017-01-13-new-release-theme-river.png&quot;}" /></entry><entry><title>可视化中的数据</title><link href="http://172.18.19.139/ec-doc/blog/2017/03/15/echarts-dataAbstraction-tutorial.html" rel="alternate" type="text/html" title="可视化中的数据" /><published>2017-03-15T00:00:00+08:00</published><updated>2017-03-15T00:00:00+08:00</updated><id>http://172.18.19.139/ec-doc/blog/2017/03/15/echarts-dataAbstraction-tutorial</id><content type="html" xml:base="http://172.18.19.139/ec-doc/blog/2017/03/15/echarts-dataAbstraction-tutorial.html">&lt;p&gt;当下随着大数据热潮的到来，数据可视化作为一个新兴的领域，受到了学术界和工业界的重视。从可视分析、数据新闻到商业报表，各个领域都在越来越多的使用它。既然是数据可视化，说明数据是主体，可视化只是将数据以可视的形式表达的手段。接下来小编就与大家一起揭开可视化中数据的面纱，一探究竟。&lt;/p&gt;
+&lt;div class=&quot;ec-lazy&quot; data-thumb=&quot;https://ecomfe.github.io/echarts-examples/public/data/thumb/bubble-gradient.png&quot; data-src=&quot;https://ecomfe.github.io/echarts-examples/public/view.html?c=scatter-nutrients-matrix&amp;amp;edit=1&amp;amp;reset=1&quot; style=&quot;width: 100%; height: 640px&quot;&gt;&lt;/div&gt;</content><category term="en" /><category term="new release" /><category term="extension" /><category term="tutorial" /><summary>We are releasing ECharts v3.5, where calendar coodinate system is supported and axis pointer is enhanced. Meanwhile ECharts statistic extension v1.0 is published.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://echarts.baidu.com/blog{&quot;feature&quot;=&gt;&quot;post/2017-01-13-new-release-theme-river.png&quot;}" /></entry><entry><title>可视化中的数据</title><link href="http://echarts.baidu.com/blog/2017/03/15/echarts-dataAbstraction-tutorial.html" rel="alternate" type="text/html" title="可视化中的数据" /><published>2017-03-15T00:00:00+08:00</published><updated>2017-03-15T00:00:00+08:00</updated><id>http://echarts.baidu.com/blog/2017/03/15/echarts-dataAbstraction-tutorial</id><content type="html" xml:base="http://echarts.baidu.com/blog/2017/03/15/echarts-dataAbstraction-tutorial.html">&lt;p&gt;当下随着大数据热潮的到来，数据可视化作为一个新兴的领域，受到了学术界和工业界的重视。从可视分析、数据新闻到商业报表，各个领域都在越来越多的使用它。既然是数据可视化，说明数据是主体，可视化只是将数据以可视的形式表达的手段。接下来小编就与大家一起揭开可视化中数据的面纱，一探究竟。&lt;/p&gt;
 
 &lt;h2 id=&quot;可视化什么数据抽象&quot;&gt;可视化什么：数据抽象&lt;/h2&gt;
 
@@ -183,13 +544,13 @@
 
 &lt;p&gt;本文主要讨论ECharts中所涉及的四种基本数据类，分别是数据项、数据项的属性、链接、位置。数据项是指一个独立的实体，如关系数据表中的一行，或网络中的一个节点；属性是数据项的某个可被观测的特性，如年龄，性别等；链接是指数据项之间的关系，该数据类型在网状关系型数据集中用的比较多；位置是地理空间数据类型，指代二维或三维空间中的某个具体位置；下图展示了四种不同的数据集类型所包含的数据类。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://172.18.19.139/ec-doc/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-datatypes.png&quot; alt=&quot;data&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-datatypes.png&quot; alt=&quot;data&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;数据集类型&quot;&gt;数据集类型&lt;/h3&gt;
 
 &lt;p&gt;数据集是指为了分析而收集的任何信息，数据集包括数据表，网状数据，场数据（本文主要关注信息可视化，而场数据主要应用于科学可视化，因而在此不作介绍）以及几何空间数据这四种基本类型，而现实世界中的数据集一般是由这四个基本类型中的一个或多个组合而成的。下图展示了四种不同数据集类型具体的内部结构。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://172.18.19.139/ec-doc/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-dataset.png&quot; alt=&quot;data&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-dataset.png&quot; alt=&quot;data&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;数据表&quot;&gt;数据表&lt;/h4&gt;
 
@@ -212,14 +573,14 @@
 有序型数据可以是单向的有序序列，比如人的年龄，只能往一个方向递增，也可以是有公共零点的对向序列，如温度。有序型数据也可以是环状周期的，如时间相关的属性。
 在单个属性内部或者多个属性之间可能具有层级结构，如北京一年的交通事故数量，这是一个时间序列数据，具有时间属性，可以分层级聚合，可以分别按周、月、年聚合，在不同的时间聚合尺度下可能会发现数据集中有趣的模式。除了时间属性之外，地理空间数据也具有层级结构，如可以细分到省、市、县等。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://172.18.19.139/ec-doc/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-attribute.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://echarts.baidu.com/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-attribute.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;总结&quot;&gt;总结&lt;/h2&gt;
 &lt;p&gt;本文简要讨论了可视化中的数据，从数据的种类、数据集的类型以及属性的类型这三个角度阐述了可视化中需要可视表达的数据信息。&lt;/p&gt;
 
 &lt;h4 id=&quot;参考文献&quot;&gt;参考文献&lt;/h4&gt;
 
-&lt;p&gt;[1] Tamara Munzner.Visualization Analysis and Design. CRC Press, 2014.&lt;/p&gt;</content><category term="visualization" /><category term="tutorial" /><summary>当下随着大数据热潮的到来，数据可视化作为一个新兴的领域，受到了学术界和工业界的重视。从可视分析、数据新闻到商业报表，各个领域都在越来越多的使用它。既然是数据可视化，说明数据是主体，可视化只是将数据以可视的形式表达的手段。接下来小编就与大家一起揭开可视化中数据的面纱，一探究竟。</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://172.18.19.139/ec-doc/blog{&quot;feature&quot;=&gt;&quot;post/2017-03-15-echarts-dataAbstraction-tutorial-dataset.png&quot;}" /></entry><entry><title>ECharts 水球图教程</title><link href="http://172.18.19.139/ec-doc/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html" rel="alternate" type="text/html" title="ECharts 水球图教程" /><published>2017-02-21T00:00:00+08:00</published><updated>2017-02-21T00:00:00+08:00</updated><id>http://172.18.19.139/ec-doc/blog/2017/02/21/echarts-liquidfill-chart-tutorial</id><content type="html" xml:base="http://172.18.19.139/ec-doc/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html">&lt;p&gt;水球图是一种适合于展现单个百分比数据的图表类型，ECharts 的&lt;a href=&quot;https://github.com/ecomfe/echarts-liquidfill&quot;&gt;水球图插件&lt;/a&gt;使你能够通过非常简单的配置，实现酷炫的数据展示效果。&lt;/p&gt;
+&lt;p&gt;[1] Tamara Munzner.Visualization Analysis and Design. CRC Press, 2014.&lt;/p&gt;</content><category term="可视化" /><category term="教程" /><summary>当下随着大数据热潮的到来，数据可视化作为一个新兴的领域，受到了学术界和工业界的重视。从可视分析、数据新闻到商业报表，各个领域都在越来越多的使用它。既然是数据可视化，说明数据是主体，可视化只是将数据以可视的形式表达的手段。接下来小编就与大家一起揭开可视化中数据的面纱，一探究竟。</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://echarts.baidu.com/blog{&quot;feature&quot;=&gt;&quot;post/2017-03-15-echarts-dataAbstraction-tutorial-dataset.png&quot;}" /></entry><entry><title>ECharts 水球图教程</title><link href="http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html" rel="alternate" type="text/html" title="ECharts 水球图教程" /><published>2017-02-21T00:00:00+08:00</published><updated>2017-02-21T00:00:00+08:00</updated><id>http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial</id><content type="html" xml:base="http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html">&lt;p&gt;水球图是一种适合于展现单个百分比数据的图表类型，ECharts 的&lt;a href=&quot;https://github.com/ecomfe/echarts-liquidfill&quot;&gt;水球图插件&lt;/a&gt;使你能够通过非常简单的配置，实现酷炫的数据展示效果。&lt;/p&gt;
 
 &lt;iframe style=&quot;width: 100%; height: 350px&quot; src=&quot;http://gallery.echartsjs.com/view.html?cid=liquidfill-basic&quot;&gt;&lt;/iframe&gt;
 
@@ -449,7 +810,7 @@
 
 &lt;p&gt;以上，我们介绍了 ECharts 水球图的一些基本用法，希望能够给大家启发，创作出更多波涛汹涌的作品。&lt;/p&gt;
 
-&lt;p&gt;更完整的配置项请参考 GitHub 上&lt;a href=&quot;https://github.com/ecomfe/echarts-liquidfill&quot;&gt;详细的文档&lt;/a&gt;，或者到 ECharts Gallery 上查看其它&lt;a href=&quot;http://gallery.echartsjs.com/explore.html#sort=rank~timeframe=all~query=liquidFill~author=all&quot;&gt;水球图作品&lt;/a&gt;。&lt;/p&gt;</content><category term="extension" /><category term="tutorial" /><summary>水球图是一种适合于展现单个百分比数据的图表类型，ECharts 的水球图插件使你能够通过非常简单的配置，实现酷炫的数据展示效果。</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://172.18.19.139/ec-doc/blog{&quot;feature&quot;=&gt;&quot;post/2017-02-21-echarts-liquidfill-chart-tutorial.gif&quot;}" /></entry><entry><title>ECharts Liquid-fill Chart Tutorial</title><link href="http://172.18.19.139/ec-doc/blog/2017/02/21/echarts-liquidfill-chart-tutorial-en.html" rel="alternate" type="text/html" title="ECharts Liquid-fill Chart Tutorial" /><published>2017-02-21T00:00:00+08:00</published><updated>2017-02-21T00:00:00+08:00</updated><id>http://172.18.19.139/ec-doc/blog/2017/02/21/echarts-liquidfill-chart-tutorial-en</id><content type="html" xml:base="http://172.18.19.139/ec-doc/blog/2017/02/21/echarts-liquidfill-chart-tutorial-en.html">&lt;p&gt;Liquid-fill is a type of charts that are suitable for displaying single percentage data. &lt;a href=&quot;https://github.com/ecomfe/echarts-liquidfill&quot;&gt;ECharts liquid-fill Chart&lt;/a&gt; provides fancy presentation of percentage data through single but power configurations.&lt;/p&gt;
+&lt;p&gt;更完整的配置项请参考 GitHub 上&lt;a href=&quot;https://github.com/ecomfe/echarts-liquidfill&quot;&gt;详细的文档&lt;/a&gt;，或者到 ECharts Gallery 上查看其它&lt;a href=&quot;http://gallery.echartsjs.com/explore.html#sort=rank~timeframe=all~query=liquidFill~author=all&quot;&gt;水球图作品&lt;/a&gt;。&lt;/p&gt;</content><category term="扩展" /><category term="教程" /><summary>水球图是一种适合于展现单个百分比数据的图表类型，ECharts 的水球图插件使你能够通过非常简单的配置，实现酷炫的数据展示效果。</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://echarts.baidu.com/blog{&quot;feature&quot;=&gt;&quot;post/2017-02-21-echarts-liquidfill-chart-tutorial.gif&quot;}" /></entry><entry><title>ECharts Liquid-fill Chart Tutorial</title><link href="http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial-en.html" rel="alternate" type="text/html" title="ECharts Liquid-fill Chart Tutorial" /><published>2017-02-21T00:00:00+08:00</published><updated>2017-02-21T00:00:00+08:00</updated><id>http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial-en</id><content type="html" xml:base="http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial-en.html">&lt;p&gt;Liquid-fill is a type of charts that are suitable for displaying single percentage data. &lt;a href=&quot;https://github.com/ecomfe/echarts-liquidfill&quot;&gt;ECharts liquid-fill Chart&lt;/a&gt; provides fancy presentation of percentage data through single but power configurations.&lt;/p&gt;
 
 &lt;iframe style=&quot;width: 100%; height: 350px&quot; src=&quot;http://gallery.echartsjs.com/view.html?cid=liquidfill-basic&quot;&gt;&lt;/iframe&gt;
 
@@ -679,7 +1040,7 @@
 
 &lt;p&gt;In this post, we introduced how to use ECharts liquid-fill charts. Hopefully, you can be inspired by it and create more interesting works.&lt;/p&gt;
 
-&lt;p&gt;Full document please refer to &lt;a href=&quot;https://github.com/ecomfe/echarts-liquidfill&quot;&gt;GitHub&lt;/a&gt;. And you may go to &lt;a href=&quot;http://gallery.echartsjs.com/explore.html#sort=rank~timeframe=all~query=liquidFill~author=all&quot;&gt;ECharts Gallery&lt;/a&gt; to view more liquid-fill charts.&lt;/p&gt;</content><category term="en" /><category term="extension" /><category term="tutorial" /><summary>Liquid-fill is a type of charts that are suitable for displaying single percentage data. ECharts liquid-fill Chart provides fancy presentation of percentage data through single but power configurations.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://172.18.19.139/ec-doc/blog{&quot;feature&quot;=&gt;&quot;post/2017-02-21-echarts-liquidfill-chart-tutorial.gif&quot;}" /></entry><entry><title>ECharts 3.4 版本发布：新增象形柱图、主题河流图、水球图</title><link href="http://172.18.19.139/ec-doc/blog/2017/01/13/new-release.html" rel="alternate" type="text/html" title="ECharts 3.4 版本发布：新增象形柱图、主题河流图、水球图" /><published>2017-01-13T00:00:00+08:00</published><updated>2017-01-13T00:00:00+08:00</updated><id>http://172.18.19.139/ec-doc/blog/2017/01/13/new-release</id><content type="html" xml:base="http://172.18.19.139/ec-doc/blog/2017/01/13/new-release.html">&lt;p&gt;在 ECharts 新发布的 3.4 版本中，新增象形柱图、主题河流图、水球图三种新图表。象形柱图利用图片和形状表现数据，主题河流图可以用来表示事件或主题等在一段时间内变化，水球图常用来展现百分比数据。&lt;/p&gt;
+&lt;p&gt;Full document please refer to &lt;a href=&quot;https://github.com/ecomfe/echarts-liquidfill&quot;&gt;GitHub&lt;/a&gt;. And you may go to &lt;a href=&quot;http://gallery.echartsjs.com/explore.html#sort=rank~timeframe=all~query=liquidFill~author=all&quot;&gt;ECharts Gallery&lt;/a&gt; to view more liquid-fill charts.&lt;/p&gt;</content><category term="en" /><category term="extension" /><category term="tutorial" /><summary>Liquid-fill is a type of charts that are suitable for displaying single percentage data. ECharts liquid-fill Chart provides fancy presentation of percentage data through single but power configurations.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://echarts.baidu.com/blog{&quot;feature&quot;=&gt;&quot;post/2017-02-21-echarts-liquidfill-chart-tutorial.gif&quot;}" /></entry><entry><title>ECharts 3.4 版本发布：新增象形柱图、主题河流图、水球图</title><link href="http://echarts.baidu.com/blog/2017/01/13/new-release.html" rel="alternate" type="text/html" title="ECharts 3.4 版本发布：新增象形柱图、主题河流图、水球图" /><published>2017-01-13T00:00:00+08:00</published><updated>2017-01-13T00:00:00+08:00</updated><id>http://echarts.baidu.com/blog/2017/01/13/new-release</id><content type="html" xml:base="http://echarts.baidu.com/blog/2017/01/13/new-release.html">&lt;p&gt;在 ECharts 新发布的 3.4 版本中，新增象形柱图、主题河流图、水球图三种新图表。象形柱图利用图片和形状表现数据，主题河流图可以用来表示事件或主题等在一段时间内变化，水球图常用来展现百分比数据。&lt;/p&gt;
 
 &lt;h2 id=&quot;象形柱图&quot;&gt;象形柱图&lt;/h2&gt;
 
@@ -815,7 +1176,7 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;strong&gt;欢迎前往 &lt;a href=&quot;http://gallery.echartsjs.com/explore.html&quot;&gt;ECharts Gallery&lt;/a&gt; 创建自己的 ECharts 图表，更方便地提问，以及建立自己的作品集。2017 年，让我们一起将可视化做得更棒！&lt;/strong&gt;&lt;/p&gt;</content><category term="new release" /><category term="extension" /><category term="tutorial" /><summary>在 ECharts 新发布的 3.4 版本中，新增象形柱图、主题河流图、水球图三种新图表。象形柱图利用图片和形状表现数据，主题河流图可以用来表示事件或主题等在一段时间内变化，水球图常用来展现百分比数据。</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://172.18.19.139/ec-doc/blog{&quot;feature&quot;=&gt;&quot;post/2017-01-13-new-release-theme-river.png&quot;}" /></entry><entry><title>ECharts Released v3.4, supporting three new chart types</title><link href="http://172.18.19.139/ec-doc/blog/2017/01/13/new-release-en.html" rel="alternate" type="text/html" title="ECharts Released v3.4, supporting three new chart types" /><published>2017-01-13T00:00:00+08:00</published><updated>2017-01-13T00:00:00+08:00</updated><id>http://172.18.19.139/ec-doc/blog/2017/01/13/new-release-en</id><content type="html" xml:base="http://172.18.19.139/ec-doc/blog/2017/01/13/new-release-en.html">&lt;p&gt;We are releasing ECharts v3.4, supporting three new types of charts, namely, pictorial-bar charts, theme-river charts, and liquid-fill charts. Pictorial-bar charts use images and shapes to represent data; theme-river charts are used to show the evolution of events or themes during a period; and liquid-fill charts are usually used to represent data in percentage.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;欢迎前往 &lt;a href=&quot;http://gallery.echartsjs.com/explore.html&quot;&gt;ECharts Gallery&lt;/a&gt; 创建自己的 ECharts 图表，更方便地提问，以及建立自己的作品集。2017 年，让我们一起将可视化做得更棒！&lt;/strong&gt;&lt;/p&gt;</content><category term="新版本" /><category term="扩展" /><category term="教程" /><summary>在 ECharts 新发布的 3.4 版本中，新增象形柱图、主题河流图、水球图三种新图表。象形柱图利用图片和形状表现数据，主题河流图可以用来表示事件或主题等在一段时间内变化，水球图常用来展现百分比数据。</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://echarts.baidu.com/blog{&quot;feature&quot;=&gt;&quot;post/2017-01-13-new-release-theme-river.png&quot;}" /></entry><entry><title>ECharts Released v3.4, supporting three new chart types</title><link href="http://echarts.baidu.com/blog/2017/01/13/new-release-en.html" rel="alternate" type="text/html" title="ECharts Released v3.4, supporting three new chart types" /><published>2017-01-13T00:00:00+08:00</published><updated>2017-01-13T00:00:00+08:00</updated><id>http://echarts.baidu.com/blog/2017/01/13/new-release-en</id><content type="html" xml:base="http://echarts.baidu.com/blog/2017/01/13/new-release-en.html">&lt;p&gt;We are releasing ECharts v3.4, supporting three new types of charts, namely, pictorial-bar charts, theme-river charts, and liquid-fill charts. Pictorial-bar charts use images and shapes to represent data; theme-river charts are used to show the evolution of events or themes during a period; and liquid-fill charts are usually used to represent data in percentage.&lt;/p&gt;
 
 &lt;h2 id=&quot;pictorial-bar-charts&quot;&gt;Pictorial-bar Charts&lt;/h2&gt;
 
@@ -955,559 +1316,4 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;strong&gt;Please visit &lt;a href=&quot;http://gallery.echartsjs.com/explore.html&quot;&gt;ECharts Gallery&lt;/a&gt; to create charts with ECharts, for sharing when asking others for help, or make your own portfolio. Let’s make better visualization products in 2017!&lt;/strong&gt;&lt;/p&gt;</content><category term="en" /><category term="new release" /><category term="extension" /><category term="tutorial" /><summary>We are releasing ECharts v3.4, supporting three new types of charts, namely, pictorial-bar charts, theme-river charts, and liquid-fill charts. Pictorial-bar charts use images and shapes to represent data; theme-river charts are used to show the evolution of events or themes during a period; and liquid-fill charts are usually used to represent data in percentage.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://172.18.19.139/ec-doc/blog{&quot;feature&quot;=&gt;&quot;post/2017-01-13-new-release-theme-river.png&quot;}" /></entry><entry><title>ECharts 实现地图散点图（下）</title><link href="http://172.18.19.139/ec-doc/blog/2016/06/13/echarts-map-tutorial.html" rel="alternate" type="text/html" title="ECharts 实现地图散点图（下）" /><published>2016-06-13T00:00:00+08:00</published><updated>2016-06-13T00:00:00+08:00</updated><id>http://172.18.19.139/ec-doc/blog/2016/06/13/echarts-map-tutorial</id><content type="html" xml:base="http://172.18.19.139/ec-doc/blog/2016/06/13/echarts-map-tutorial.html">&lt;p&gt;上一篇我们介绍了如何使用 ehcarts 内置地图实现地图上绘制的散点图，这篇中，我们将讲解如何在百度地图上绘制散点图。&lt;/p&gt;
-
-&lt;h2 id=&quot;一初始准备&quot;&gt;一、初始准备&lt;/h2&gt;
-
-&lt;p&gt;首先要创建 html 和引入 ECharts 包，具体说明详见上篇：&lt;a href=&quot;http://172.18.19.139/ec-doc/blog/2016/04/28/echarts-map-tutorial.html&quot;&gt;ECharts 实现地图散点图（一）&lt;/a&gt;。&lt;/p&gt;
-
-&lt;h2 id=&quot;二引入echarts百度地图扩展包&quot;&gt;二、引入echarts百度地图扩展包&lt;/h2&gt;
-
-&lt;p&gt;在 &lt;a href=&quot;https://github.com/ecomfe/echarts/tree/master/extension/bmap&quot;&gt;github&lt;/a&gt; 上下载 ECharts 扩展 bmap.js，放在 /extension/ 目录下，并引入 html 中：&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;ECharts map Demo&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
-		&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;map-wrap&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;height: 500px;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-			&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 这里以后是地图 --&amp;gt;&lt;/span&gt;
-		&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/dep/echarts.min.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/extension/bmap.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
-
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;三绘制地图&quot;&gt;三、绘制地图&lt;/h2&gt;
-
-&lt;p&gt;1.在 js 中，新建 ECharts 示例，并为其设置配置项 option：&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bmapChart&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;echarts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'map-wrap'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;option&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;c1&quot;&gt;// 这里是 ECharts 的配置项，接下来会说明&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;bmapChart&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setOption&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;option&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;2.添加百度地图：&lt;/p&gt;
-
-&lt;p&gt;在 option 中添加 bmap 相关设置：&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;option&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;na&quot;&gt;bmap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      	&lt;span class=&quot;na&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;116.307698&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;40.056975&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 中心位置坐标&lt;/span&gt;
-      	&lt;span class=&quot;na&quot;&gt;zoom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 地图缩放比例&lt;/span&gt;
-      	&lt;span class=&quot;na&quot;&gt;roam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 开启用户缩放&lt;/span&gt;
-  	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;ECharts 将百度地图部分配置集成在了 bmap 中，包括：&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;参数&lt;/th&gt;
-      &lt;th&gt;说明&lt;/th&gt;
-      &lt;th&gt;格式&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;center&lt;/td&gt;
-      &lt;td&gt;中心点的百度坐标&lt;/td&gt;
-      &lt;td&gt;坐标数组, 如：[116.307698, 40.056975]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;zoom&lt;/td&gt;
-      &lt;td&gt;初始缩放比&lt;/td&gt;
-      &lt;td&gt;number&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;roam&lt;/td&gt;
-      &lt;td&gt;是否允许用户缩放操作&lt;/td&gt;
-      &lt;td&gt;boolean&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;mapStyle&lt;/td&gt;
-      &lt;td&gt;地图自定义样式&lt;/td&gt;
-      &lt;td&gt;object, 如：{ styleJson: […] }&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;这样百度地图就加载到页面中了，这里显示百度地图的默认样式，稍后第四部分将为百度地图添加自定义样式的配置：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://172.18.19.139/ec-doc/blog/images/post/2016-06-13-bmap-1.png&quot; alt=&quot;百度地图1&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;四绘制散点图&quot;&gt;四、绘制散点图&lt;/h2&gt;
-
-&lt;p&gt;绘制散点图的方法与上篇中绘制散点图方法相同，需要修改的部分是，将散点图的坐标系 &lt;code class=&quot;highlighter-rouge&quot;&gt;coordinateSystem&lt;/code&gt; 改成使用 bmap&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;myData&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-
-	&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'海门'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;121.15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;31.89&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;90&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]},&lt;/span&gt;
-  	&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'鄂尔多斯'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;109.781327&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;39.608266&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;120&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]},&lt;/span&gt;
-  	&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'招远'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;120.38&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;37.35&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;142&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]},&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'舟山'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;122.207216&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;29.985295&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;123&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]},&lt;/span&gt;
-  	&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-
-
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;option&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;na&quot;&gt;bmap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      	&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
-  	&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  	&lt;span class=&quot;na&quot;&gt;visualMap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;// 视觉映射组件&lt;/span&gt;
-		&lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'continuous'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-		&lt;span class=&quot;na&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-		&lt;span class=&quot;na&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-		&lt;span class=&quot;na&quot;&gt;calculable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-		&lt;span class=&quot;na&quot;&gt;inRange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-             	&lt;span class=&quot;na&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'#50a3ba'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'#eac736'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'#d94e5d'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-          &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-		&lt;span class=&quot;na&quot;&gt;textStyle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-			&lt;span class=&quot;na&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'#fff'&lt;/span&gt;
-		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-     	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-	&lt;span class=&quot;nl&quot;&gt;series&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-		&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-			&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'销量'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-			&lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'scatter'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-
-			&lt;span class=&quot;na&quot;&gt;coordinateSystem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'bmap'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 坐标系使用bmap&lt;/span&gt;
-
-			&lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;myData&lt;/span&gt;
-		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;绘制散点后的百度地图：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://172.18.19.139/ec-doc/blog/images/post/2016-06-13-bmap-2.png&quot; alt=&quot;百度地图2&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;四-自定义百度地图样式&quot;&gt;四、	自定义百度地图样式&lt;/h2&gt;
-
-&lt;p&gt;地图的样式配置 &lt;code class=&quot;highlighter-rouge&quot;&gt;bmap.mapStyle&lt;/code&gt; 中 &lt;code class=&quot;highlighter-rouge&quot;&gt;styleJson&lt;/code&gt; 与百度地图内置的样式配置一致，具体参考百度地图API开发指南中 &lt;a href=&quot;http://lbsyun.baidu.com/index.php?title=jspopular/guide/custom&quot;&gt;定制个性地图&lt;/a&gt; 章节的介绍。&lt;/p&gt;
-
-&lt;p&gt;这里我们设置一个较暗色调的地图,如下：&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;option&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;na&quot;&gt;bmap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      		&lt;span class=&quot;na&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;116.307698&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;40.056975&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-         		&lt;span class=&quot;na&quot;&gt;zoom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-
-     	    	&lt;span class=&quot;na&quot;&gt;roam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 允许缩放&lt;/span&gt;
-
-     	    	&lt;span class=&quot;na&quot;&gt;mapStyle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// 百度地图自定义样式&lt;/span&gt;
-     	    		&lt;span class=&quot;na&quot;&gt;styleJson&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-     	    			&lt;span class=&quot;c1&quot;&gt;// 陆地&lt;/span&gt;
-                 		&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-						&lt;span class=&quot;s2&quot;&gt;&quot;featureType&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;land&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                          &lt;span class=&quot;s2&quot;&gt;&quot;elementType&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;all&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                          &lt;span class=&quot;s2&quot;&gt;&quot;stylers&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                              &lt;span class=&quot;s2&quot;&gt;&quot;color&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;#073763&quot;&lt;/span&gt;
-                          &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-                      &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-                      &lt;span class=&quot;c1&quot;&gt;// 水系&lt;/span&gt;
-                      &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                          &lt;span class=&quot;s2&quot;&gt;&quot;featureType&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;water&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                          &lt;span class=&quot;s2&quot;&gt;&quot;elementType&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;all&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                          &lt;span class=&quot;s2&quot;&gt;&quot;stylers&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                              &lt;span class=&quot;s2&quot;&gt;&quot;color&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;#073763&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                              &lt;span class=&quot;s2&quot;&gt;&quot;lightness&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;54&lt;/span&gt;
-                          &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-                      &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-                      &lt;span class=&quot;c1&quot;&gt;// 国道与高速&lt;/span&gt;
-                      &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                          &lt;span class=&quot;s2&quot;&gt;&quot;featureType&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;highway&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                          &lt;span class=&quot;s2&quot;&gt;&quot;elementType&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;all&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                          &lt;span class=&quot;s2&quot;&gt;&quot;stylers&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                              &lt;span class=&quot;s2&quot;&gt;&quot;color&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;#45818e&quot;&lt;/span&gt;
-                          &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-                      &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-                      &lt;span class=&quot;c1&quot;&gt;// 边界线&lt;/span&gt;
-                      &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                          &lt;span class=&quot;s2&quot;&gt;&quot;featureType&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;boundary&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                          &lt;span class=&quot;s2&quot;&gt;&quot;elementType&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;all&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                          &lt;span class=&quot;s2&quot;&gt;&quot;stylers&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                              &lt;span class=&quot;s2&quot;&gt;&quot;color&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;#ffffff&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                              &lt;span class=&quot;s2&quot;&gt;&quot;lightness&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;62&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                              &lt;span class=&quot;s2&quot;&gt;&quot;visibility&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;on&quot;&lt;/span&gt;
-                          &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-                      &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-                      &lt;span class=&quot;c1&quot;&gt;// 行政标注&lt;/span&gt;
-                      &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                          &lt;span class=&quot;s2&quot;&gt;&quot;featureType&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                          &lt;span class=&quot;s2&quot;&gt;&quot;elementType&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;labels.text.fill&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                          &lt;span class=&quot;s2&quot;&gt;&quot;stylers&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                              &lt;span class=&quot;s2&quot;&gt;&quot;color&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;#ffffff&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                              &lt;span class=&quot;s2&quot;&gt;&quot;visibility&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;on&quot;&lt;/span&gt;
-                          &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-                      &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-                      &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                          &lt;span class=&quot;s2&quot;&gt;&quot;featureType&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                          &lt;span class=&quot;s2&quot;&gt;&quot;elementType&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;labels.text.stroke&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                          &lt;span class=&quot;s2&quot;&gt;&quot;stylers&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                              &lt;span class=&quot;s2&quot;&gt;&quot;color&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;#444444&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                              &lt;span class=&quot;s2&quot;&gt;&quot;visibility&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;on&quot;&lt;/span&gt;
-                          &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-                      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-     	    		&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-     	    	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  		&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  		&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;实现效果如下图：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://172.18.19.139/ec-doc/blog/images/post/2016-06-13-bmap-3.png&quot; alt=&quot;百度地图3&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;除了上述四个配置，其他地图设置都可以通过 &lt;a href=&quot;http://lbsyun.baidu.com/index.php?title=jspopular&quot;&gt;百度地图提供的API&lt;/a&gt; 实现&lt;/p&gt;
-
-&lt;p&gt;获取百度地图实例的方法如下：&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bmap&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bmapCharts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getComponent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'bmap'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getBMap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 百度地图实例&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;例如，我们可以为地图添加一个缩放控件和一个比例尺：&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;bmap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addControl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;BMap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;NavigationControl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 缩放控件&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;bmap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addControl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;BMap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ScaleControl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 比例尺&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://172.18.19.139/ec-doc/blog/images/post/2016-06-13-bmap-4.png&quot; alt=&quot;百度地图4&quot; /&gt;&lt;/p&gt;</content><category term="map" /><category term="tutorial" /><summary>上一篇我们介绍了如何使用 ehcarts 内置地图实现地图上绘制的散点图，这篇中，我们将讲解如何在百度地图上绘制散点图。</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://172.18.19.139/ec-doc/blog{&quot;feature&quot;=&gt;&quot;post/2016-06-13-bmap-4.png&quot;}" /></entry><entry><title>ECharts 实现地图散点图（上）</title><link href="http://172.18.19.139/ec-doc/blog/2016/04/28/echarts-map-tutorial.html" rel="alternate" type="text/html" title="ECharts 实现地图散点图（上）" /><published>2016-04-28T00:00:00+08:00</published><updated>2016-04-28T00:00:00+08:00</updated><id>http://172.18.19.139/ec-doc/blog/2016/04/28/echarts-map-tutorial</id><content type="html" xml:base="http://172.18.19.139/ec-doc/blog/2016/04/28/echarts-map-tutorial.html">&lt;p&gt;ECharts 作为国内应用最广泛的前端可视化生成工具，提供了丰富的图表展现方式和便捷的图表操作。
-ECharts 支持 geoJson 格式的地图，并且官网上提供了现成的 world，china 及全国34个省市自治区地图的下载。这篇文章中我们将会讲解如何使用 ECharts 实现一个中国地图上绘制的散点图。&lt;/p&gt;
-
-&lt;h2 id=&quot;一初始准备&quot;&gt;一、初始准备&lt;/h2&gt;
-
-&lt;h4 id=&quot;1-新建html&quot;&gt;1. 新建html&lt;/h4&gt;
-
-&lt;p&gt;首先，新建项目目录 echartsMapDemo，在其中新建一个 html 文件 &lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt;。&lt;/p&gt;
-
-&lt;p&gt;echartsMapDemo/index.html:&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
-  	&lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-  	&lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;ECharts map Demo&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;2引入echarts文件&quot;&gt;2.引入echarts文件&lt;/h4&gt;
-
-&lt;p&gt;从 &lt;a href=&quot;http://echarts.baidu.com/download.html&quot;&gt;echarts官网&lt;/a&gt; 下载最新完整开发包（目前最新版本是3.1.4）。&lt;/p&gt;
-
-&lt;p&gt;将下载好的包放置在 &lt;code class=&quot;highlighter-rouge&quot;&gt;echartsMapDemo/dep&lt;/code&gt; 目录下并在 html 中以 script 标签引入：&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;ECharts map Demo&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/dep/echarts.min.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;h4 id=&quot;3创建图标容器&quot;&gt;3.创建图标容器&lt;/h4&gt;
-
-&lt;p&gt;在 html 中定义一个 div 作为地图的容器，高度设为 500px 。别忘了，一定要保证容器高度不为 0：&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;ECharts map Demo&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
-
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;map-wrap&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;height: 500px;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-		&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 这里以后是地图 --&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/dep/echarts.min.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;然后，我们还需要一个地图文件，echart 提供两种格式的地图数据，一种是 js 格式，一种是 JSON 格式。下文中我们会分别使用这两种方式实现。&lt;/p&gt;
-
-&lt;p&gt;同样去 &lt;a href=&quot;http://echarts.baidu.com/download-map.html&quot;&gt;官网&lt;/a&gt; 上下载，这里选择下载中国地图 china.js 或 china.json 。你也可以根据需要选择其他省份地图或世界地图&lt;/p&gt;
-
-&lt;p&gt;好了，准备工作完成，现在就开始绘制地图了~&lt;/p&gt;
-
-&lt;h2 id=&quot;二绘制地图&quot;&gt;二、绘制地图&lt;/h2&gt;
-
-&lt;p&gt;echart 提供两种格式的地图数据，一种是 js 格式，一种是 JSON 格式。下面分别介绍两种格式的用法：&lt;/p&gt;
-
-&lt;h3 id=&quot;引用js格式地图数据&quot;&gt;引用js格式地图数据：&lt;/h3&gt;
-
-&lt;h4 id=&quot;1在官网上下载-js-格式中国地图-chinajs将下载好的-chinajs-放在-echartsmapdemomapjs-目录下以-script-标签引入到-html-中&quot;&gt;1.在&lt;a href=&quot;http://echarts.baidu.com/download-map.html&quot;&gt;官网&lt;/a&gt;上下载 js 格式中国地图 china.js，将下载好的 china.js 放在 &lt;code class=&quot;highlighter-rouge&quot;&gt;echartsMapDemo/map/js&lt;/code&gt; 目录下，以 script 标签引入到 html 中:&lt;/h4&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;ECharts map Demo&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;map-wrap&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;height: 500px;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-		&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 这里以后是地图 --&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/dep/echarts.min.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/map/js/china.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;2在js中用-echartsinit-方法初始化一个-echarts-实例在-init-中传入图表容器-dom-对象&quot;&gt;2.在js中用 &lt;code class=&quot;highlighter-rouge&quot;&gt;echarts.init()&lt;/code&gt; 方法初始化一个 ECharts 实例，在 init() 中传入图表容器 Dom 对象，&lt;/h4&gt;
-
-&lt;p&gt;同时定义一个变量 &lt;code class=&quot;highlighter-rouge&quot;&gt;option&lt;/code&gt;，作为图表的配置项：&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 初始化echarts示例mapChart&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mapChart&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;echarts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'map-wrap'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// mapChart的配置&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;option&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;3通过配置-option新建一个地理坐标系-geo-地图类型为中国地图&quot;&gt;3.通过配置 option，新建一个地理坐标系 &lt;code class=&quot;highlighter-rouge&quot;&gt;geo&lt;/code&gt; ，地图类型为中国地图。&lt;/h4&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;option&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;na&quot;&gt;geo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      	&lt;span class=&quot;na&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'china'&lt;/span&gt;
-  	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;geo.map 属性定义该地理坐标系中的地图数据，这里我们要用 china.js ，设置map值为 ‘china’。&lt;/p&gt;
-
-&lt;p&gt;这里需要注意，中国地图的map值为 ‘china’ ，世界地图的map值为 ‘world’ ，但如果要引用省市自治区地图 map 值为&lt;strong&gt;简体中文&lt;/strong&gt;，例如 beijing.js，map 值为’北京’。&lt;/p&gt;
-
-&lt;h4 id=&quot;4调用-setoptionoption-为图表设置配置项&quot;&gt;4.调用 &lt;code class=&quot;highlighter-rouge&quot;&gt;setOption(option)&lt;/code&gt; 为图表设置配置项。&lt;/h4&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;mapChart&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setOption&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;option&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;引用json格式地图数据&quot;&gt;引用JSON格式地图数据：&lt;/h3&gt;
-
-&lt;h4 id=&quot;1同样在官网下载json格式的地图数据放在echartsmapdemomapjson目录下&quot;&gt;1.同样在&lt;a href=&quot;http://echarts.baidu.com/download-map.html&quot;&gt;官网&lt;/a&gt;下载JSON格式的地图数据，放在&lt;code class=&quot;highlighter-rouge&quot;&gt;echartsMapDemo/map/json&lt;/code&gt;目录下&lt;/h4&gt;
-
-&lt;h4 id=&quot;2json数据通过异步方式加载加载完成后需要手动注册地图&quot;&gt;2.json数据通过异步方式加载，加载完成后需要手动注册地图&lt;/h4&gt;
-
-&lt;p&gt;这里我们使用 jQuery 的 $.get() 方法异步加载 china.json （首先要在html中引用 jquery ，这里省略操作说明），在回调函数中，以上述同样的方法初始化一个 mapCharts 、注册地图并设置 option：&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'map/json/china.json'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;chinaJson&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-
-		&lt;span class=&quot;nx&quot;&gt;echarts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;registerMap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'china'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;chinaJson&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 注册地图&lt;/span&gt;
-
-		&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mapChart&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;echarts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'map-wrap'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-
-  		&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;option&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  			&lt;span class=&quot;na&quot;&gt;geo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      			&lt;span class=&quot;na&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'china'&lt;/span&gt;
-  			&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
- 		 	&lt;span class=&quot;nx&quot;&gt;mapChart&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setOption&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;option&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-  	&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;现在就可以在页面中看到中国地图了：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://172.18.19.139/ec-doc/blog/images/post/2016-04-28-echarts-map-tutorial-china-js-1.png&quot; alt=&quot;地图&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;为了突出散点效果，先为地图改个颜色&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;option&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;na&quot;&gt;geo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'china'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-
-        &lt;span class=&quot;na&quot;&gt;itemStyle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;					&lt;span class=&quot;c1&quot;&gt;// 定义样式&lt;/span&gt;
-            &lt;span class=&quot;na&quot;&gt;normal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;					&lt;span class=&quot;c1&quot;&gt;// 普通状态下的样式&lt;/span&gt;
-                &lt;span class=&quot;na&quot;&gt;areaColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'#323c48'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                &lt;span class=&quot;na&quot;&gt;borderColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'#111'&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-            &lt;span class=&quot;na&quot;&gt;emphasis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;					&lt;span class=&quot;c1&quot;&gt;// 高亮状态下的样式&lt;/span&gt;
-                &lt;span class=&quot;na&quot;&gt;areaColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'#2a333d'&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-	&lt;span class=&quot;na&quot;&gt;backgroundColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'#404a59'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  		&lt;span class=&quot;c1&quot;&gt;// 图表背景色&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;换装后的地图：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://172.18.19.139/ec-doc/blog/images/post/2016-04-28-echarts-map-tutorial-china-js-2.png&quot; alt=&quot;中国地图底图&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;三绘制散点图&quot;&gt;三、绘制散点图&lt;/h2&gt;
-
-&lt;hr /&gt;
-
-&lt;h4 id=&quot;1新建散点图series&quot;&gt;1.新建散点图series&lt;/h4&gt;
-
-&lt;p&gt;在 option 中添加一个 series ， series 的类型为散点图 &lt;code class=&quot;highlighter-rouge&quot;&gt;scatter&lt;/code&gt; ，坐标系为地理坐标系 &lt;code class=&quot;highlighter-rouge&quot;&gt;geo&lt;/code&gt; 。&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;option&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;na&quot;&gt;geo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      	&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
-  	&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-	&lt;span class=&quot;na&quot;&gt;backgroundColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'#404a59'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-
-	&lt;span class=&quot;na&quot;&gt;series&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-		&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-			&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'销量'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// series名称&lt;/span&gt;
-			&lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'scatter'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// series图表类型&lt;/span&gt;
-			&lt;span class=&quot;na&quot;&gt;coordinateSystem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'geo'&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// series坐标系类型&lt;/span&gt;
-		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;2添加数据&quot;&gt;2.添加数据&lt;/h4&gt;
-
-&lt;p&gt;ECharts 中 series.data 是定义图表数据内容的数组，其中每个项数据格式为：&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;nl&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'北京'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// 数据项名称，在这里指地区名称&lt;/span&gt;
-
-	&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;// 数据项值&lt;/span&gt;
-		&lt;span class=&quot;mf&quot;&gt;116.46&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;// 地理坐标，经度&lt;/span&gt;
-		&lt;span class=&quot;mf&quot;&gt;39.92&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;// 地理坐标，纬度&lt;/span&gt;
-		&lt;span class=&quot;mi&quot;&gt;340&lt;/span&gt;         &lt;span class=&quot;c1&quot;&gt;// 北京地区的数值&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;首先我们将需要渲染的数据转换成上述数据格式，存在一个变量中：&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;myData&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-
-	&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'海门'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;121.15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;31.89&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;90&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]},&lt;/span&gt;
-  	&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'鄂尔多斯'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;109.781327&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;39.608266&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;120&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]},&lt;/span&gt;
-  	&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'招远'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;120.38&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;37.35&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;142&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]},&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'舟山'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;122.207216&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;29.985295&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;123&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]},&lt;/span&gt;
-  	&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;然后，将 myData 赋值给 series.data：&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;option&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;na&quot;&gt;geo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      	&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
-  	&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  	&lt;span class=&quot;na&quot;&gt;backgroundColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'#404a59'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-	&lt;span class=&quot;na&quot;&gt;series&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-		&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-			&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'销量'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-			&lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'scatter'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-			&lt;span class=&quot;na&quot;&gt;coordinateSystem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'geo'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-
-			&lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;myData&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// series数据内容&lt;/span&gt;
-		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;数据添加完成，就可以在图表中看到渲染出的散点了：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://172.18.19.139/ec-doc/blog/images/post/2016-04-28-echarts-map-tutorial-scatter-1.png&quot; alt=&quot;散点图1&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;3添加视觉映射组件&quot;&gt;3.添加视觉映射组件&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://echarts.baidu.com/option.html#visualMap&quot;&gt;视觉映射组件&lt;/a&gt;是标识某一数据范围内数据及颜色对应关系的控件，视觉映射组件分为连续型和分段型，这里我们选用连续型 &lt;code class=&quot;highlighter-rouge&quot;&gt;type:continuous&lt;/code&gt; 。同时，通过视觉映射组件可以实现 ECharts 值域漫游功能，即通过拖拽控件手柄选择不同数值范围，达到对图表数据的筛选显示。
-在 &lt;code class=&quot;highlighter-rouge&quot;&gt;visualMap&lt;/code&gt; 属性中设置值域控件的相关配置：&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;option&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
-
-	&lt;span class=&quot;na&quot;&gt;visualMap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'continuous'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 连续型&lt;/span&gt;
-		&lt;span class=&quot;na&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;       		&lt;span class=&quot;c1&quot;&gt;// 值域最小值，必须参数&lt;/span&gt;
-		&lt;span class=&quot;na&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;			&lt;span class=&quot;c1&quot;&gt;// 值域最大值，必须参数&lt;/span&gt;
-		&lt;span class=&quot;na&quot;&gt;calculable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;// 是否启用值域漫游&lt;/span&gt;
-		&lt;span class=&quot;na&quot;&gt;inRange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-             	&lt;span class=&quot;na&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'#50a3ba'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'#eac736'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'#d94e5d'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-                             &lt;span class=&quot;c1&quot;&gt;// 指定数值从低到高时的颜色变化&lt;/span&gt;
-          &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-		&lt;span class=&quot;na&quot;&gt;textStyle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-			&lt;span class=&quot;na&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'#fff'&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;// 值域控件的文本颜色&lt;/span&gt;
-		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-     	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;添加了值域控件的图表效果：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://172.18.19.139/ec-doc/blog/images/post/2016-04-28-echarts-map-tutorial-china-js-2.png&quot; alt=&quot;散点图2&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;这样一个基于中国地图的散点图就基本实现了，如果想要继续完善图表，可以为它添加标题，图例，高亮提示等控件，配置方式在这里查看（&lt;a href=&quot;http://echarts.baidu.com/option.html#title&quot;&gt;ECharts 配置项手册&lt;/a&gt;），在此不再详细说明。&lt;/p&gt;</content><category term="map" /><category term="tutorial" /><summary>ECharts 作为国内应用最广泛的前端可视化生成工具，提供了丰富的图表展现方式和便捷的图表操作。
-ECharts 支持 geoJson 格式的地图，并且官网上提供了现成的 world，china 及全国34个省市自治区地图的下载。这篇文章中我们将会讲解如何使用 ECharts 实现一个中国地图上绘制的散点图。</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://172.18.19.139/ec-doc/blog{&quot;feature&quot;=&gt;&quot;post/2016-04-28-echarts-map-tutorial-scatter-2.png&quot;}" /></entry></feed>
+&lt;p&gt;&lt;strong&gt;Please visit &lt;a href=&quot;http://gallery.echartsjs.com/explore.html&quot;&gt;ECharts Gallery&lt;/a&gt; to create charts with ECharts, for sharing when asking others for help, or make your own portfolio. Let’s make better visualization products in 2017!&lt;/strong&gt;&lt;/p&gt;</content><category term="en" /><category term="new release" /><category term="extension" /><category term="tutorial" /><summary>We are releasing ECharts v3.4, supporting three new types of charts, namely, pictorial-bar charts, theme-river charts, and liquid-fill charts. Pictorial-bar charts use images and shapes to represent data; theme-river charts are used to show the evolution of events or themes during a period; and liquid-fill charts are usually used to represent data in percentage.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://echarts.baidu.com/blog{&quot;feature&quot;=&gt;&quot;post/2017-01-13-new-release-theme-river.png&quot;}" /></entry></feed>

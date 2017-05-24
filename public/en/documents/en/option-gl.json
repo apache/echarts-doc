@@ -1,0 +1,61 @@
+{
+  "$schema": "http://echarts.baidu.com/doc/json-schem",
+  "option": {
+    "type": "Object",
+    "properties": {
+      "globe": {
+        "type": [
+          "Object"
+        ],
+        "descriptionCN": "<p>地球组件。组件提供了地球的绘制以及相应的坐标系，开发者可以在上面展示三维的散点图，气泡图，柱状图，飞线图。</p>\n",
+        "properties": {
+          "show": {
+            "type": [
+              "boolean"
+            ],
+            "descriptionCN": "<p>是否显示地球组件。</p>\n",
+            "default": true
+          },
+          "globeRadius": {
+            "type": [
+              "number"
+            ],
+            "descriptionCN": "<p>地球的半径。单位相对于三维空间，跟 <a href=\"#globe.viewControl.distance\">viewControl.distance</a> 相关。</p>\n",
+            "default": 100
+          },
+          "baseTexture": {
+            "type": [
+              "string",
+              "HTMLImageElement",
+              "HTMLCanvasElement",
+              "EChartsInstance"
+            ],
+            "descriptionCN": "<p>地球的纹理。支持图片路径字符串，图片或者 Canvas 的对象。</p>\n<p>也支持直接使用 echarts 的实例作为纹理，此时在地球上的鼠标动作会跟纹理上使用的 echarts 实例有联动。</p>\n<p>示例：</p>\n<pre><code class=\"lang-js\">// 使用地球的纹理图片\nbaseTexture: &#39;asset/earth.jpg&#39;\n\n\n// 使用 echarts 绘制世界地图的实例作为纹理\nvar canvas = document.createElement(&#39;canvas&#39;);\nvar mapChart = echarts.init(canvas, null, {\n    width: 4096, height: 2048\n});\nmapChart.setOption({\n    series : [\n        {\n            type: &#39;map&#39;,\n            map: &#39;world&#39;,\n            // 绘制完整尺寸的 echarts 实例\n            top: 0, left: 0,\n            right: 0, bottom: 0,\n            boundingCoords: [[-180, 90], [180, -90]]\n        }\n    ]\n});\n...\nbaseTexture: mapChart\n</code></pre>\n"
+          },
+          "heightTexture": {
+            "type": [
+              "string",
+              "HTMLImageElement",
+              "HTMLCanvasElement"
+            ],
+            "descriptionCN": "<p>地球的高度纹理。高度纹理可以用于配合光照表现地球表面的明暗细节。下面两图分别是使用 <code>heightTexture</code> 和未使用 <code>heightTexuture</code> 的效果区别。</p>\n<p><img width=\"300\" height=\"auto\" src=\"documents/asset/gl/img/heightmap-enable.png\"></p>\n<p><img width=\"300\" height=\"auto\" src=\"documents/asset/gl/img/heightmap-disable.png\"></p>\n"
+          },
+          "displacementTexture": {
+            "type": [
+              "string",
+              "HTMLImageElement",
+              "HTMLCanvasElement"
+            ],
+            "descriptionCN": "<p>地球顶点的置换纹理，默认同 <a href=\"\" target=\"_blank\">heightTexture</a></p>\n"
+          },
+          "displacementScale": {
+            "type": [
+              "number"
+            ],
+            "descriptionCN": ""
+          }
+        }
+      }
+    }
+  }
+}

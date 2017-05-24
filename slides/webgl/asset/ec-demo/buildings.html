@@ -13,15 +13,20 @@
         <script src="../common/jquery.min.js"></script>
         <script src="../common/echarts-gl.js"></script>
         <script src="../data/buildings.json.js"></script>
+        <script src="../texture/woods.jpg.js"></script>
+        <script src="../texture/oakfloor2_basecolor.jpg.js"></script>
+        <script src="../texture/canyon.hdr.js"></script>
 
         <script>
             echarts.registerMap('buildings', buildingsGeoJSON);
-            var chart = echarts.init(document.getElementById('main'));
+            var chart = echarts.init(document.getElementById('main'), null, {
+                devicePixelRatio: 1
+            });
 
             var regions = buildingsGeoJSON.features.map(function (feature) {
                 return {
                     name: feature.properties.name,
-                    height: Math.random() * 4 + 0.1
+                    height: Math.max(Math.sqrt(feature.properties.height), 0.1)
                 };
             });
 
@@ -33,25 +38,26 @@
                     shading: 'realistic',
                     realisticMaterial: {
                         roughness: 0.6,
-                        baseTexture: '../texture/woods.jpg',
+                        baseTexture: floorBaseColorTexture,
                         textureTiling: 40
                     },
                     postEffect: {
                         enable: true,
                         bloom: {
-                            enable: true
+                            enable: false
                         },
                         SSAO: {
                             enable: true,
-                            quality: 'ultra',
-                            radius: 2,
-                            intensity: 2
+                            quality: 'low',
+                            radius: 4,
+                            intensity: 1.2
                         },
                         depthOfField: {
-                            // enable: true,
+                            enable: true,
                             focalRange: 5,
-                            fstop: 0.5,
-                            blurRadius: 10
+                            fstop: 1,
+                            blurRadius: 4,
+                            quality: 'low'
                         }
                     },
                     groundPlane: {
@@ -61,14 +67,14 @@
                         main: {
                             intensity: 4,
                             shadow: true,
-                            shadowQuality: 'ultra',
+                            shadowQuality: 'high',
                             alpha: 30
                         },
                         ambient: {
                             intensity: 0
                         },
                         ambientCubemap: {
-                            texture: '../texture/canyon.hdr',
+                            texture: canyonUrl,
                             exposure: 2,
                             diffuseIntensity: 1,
                             specularIntensity: 0.2
