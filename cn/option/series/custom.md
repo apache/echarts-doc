@@ -45,7 +45,7 @@ series: {
 
 **与 dataZoom 组件的结合**
 
-与 [dataZoom](~dataZoom) 结合使用的时候，常常使用会设置 [dataZoom.filterMode](~dataZoom.filterMode) 为 'weakFitler'，从而让 `dataItem` 部分超出坐标系边界的时候，不会整体被过滤掉。
+与 [dataZoom](~dataZoom) 结合使用的时候，常常使用会设置 [dataZoom.filterMode](~dataZoom.filterMode) 为 'weakFilter'，从而让 `dataItem` 部分超出坐标系边界的时候，不会整体被过滤掉。
 
 
 ## type(string) = 'custom'

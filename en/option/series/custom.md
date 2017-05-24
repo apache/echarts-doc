@@ -47,7 +47,7 @@ series: {
 
 **Use with dataZoom**
 
-When use `custom series` with [dataZoom](~dataZoom), [dataZoom.filterMode](~dataZoom.filterMode) usually be set as `'weakFitler'`, which prevent `dataItem` from being filtered when only part of its dimensions are out of the current data window.
+When use `custom series` with [dataZoom](~dataZoom), [dataZoom.filterMode](~dataZoom.filterMode) usually be set as `'weakFilter'`, which prevent `dataItem` from being filtered when only part of its dimensions are out of the current data window.
 
 
 
