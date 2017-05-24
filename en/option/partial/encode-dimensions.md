@@ -27,7 +27,7 @@ Attributes of encode are different according to the type of coordinate systtems.
 For [cartesian2d](~grid), `x` and `y` can be defined.
 For [polar](~polar), `radius` and `angle` can be defined.
 For [geo](~geo), `lng` and `lat` can be defined.
-Attribute `tooltip` and `label` are always can be defined.
+Attribute `tooltip` and `label` and `itemName` (data item name in tooltip) are always able to be defined.
 
 When [dimensions](~series.dimensions) is used to defined name for a certain dimension, `encode` can refer the name directly. For example:
 

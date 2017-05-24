@@ -27,7 +27,7 @@ encode 支持的属性，根据坐标系不同而不同。
 对于 [直角坐标系（cartesian2d）](~grid)，支持 `x`、`y`。
 对于 [极坐标系（polar）](~polar)，支持 `radius`、`angle`。
 对于 [地理坐标系（geo）](~geo)，支持 `lng`，`lat`。
-此外，均支持 `tooltip` 和 `label`。
+此外，均支持 `tooltip` 和 `label` 和 `itemName`（用于指定 tooltip 中数据项名称）。
 
 当使用 [dimensions](~series.dimensions) 给维度定义名称后，`encode` 中可直接引用名称，例如：
 
