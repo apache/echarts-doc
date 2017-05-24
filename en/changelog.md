@@ -1,3 +1,38 @@
+## v3.6.0
+<div class="time">2017-05-25</div>
+
++ **[+] Published [custom series](http://echarts.baidu.com/option.html#series-custom)**, which enables user to customize render logic and make new types of chart. See [samples](http://echarts.baidu.com/examples.html#custom)。
+
++ **[+] Supported polar bar chart**. See [sample1](http://echarts.baidu.com/demo.html#bar-polar-stack), [sample2](http://echarts.baidu.com/demo.html#bar-polar-stack-radial), [sample3](http://echarts.baidu.com/demo.html#bar-polar-real-estate)。
+
++ [+] Supported [encode](http://echarts.baidu.com/option.html#series-scatter.encode), which enable user to specify which dimensions in [data](http://echarts.baidu.com/option.html#series-scatter.data) are mapped to which axis of coordinate system. Or which dimensions will be displayed in [tooltip](http://echarts.baidu.com/option.html#tooltip) or [label](http://echarts.baidu.com/option.html#series-scatter.label).
+
++ [+] Supported [dimensions](http://echarts.baidu.com/option.html#series-scatter.dimensions), which enables that specifying names and types for each dimensions in [data](http://echarts.baidu.com/option.html#series-scatter.data). Name can be displayed in [tooltip](http://echarts.baidu.com/option.html#tooltip).
+
++ [+] Supported [dataZoom.minSpan](http://echarts.baidu.com/option.html#dataZoom.minSpan) and [dataZoom.maxSpan](http://echarts.baidu.com/option.html#dataZoom.maxSpan). See [#2843](https://github.com/ecomfe/echarts/issues/2843).
+
++ [+] Supported [dataZoom.moveOnMouseMove](http://echarts.baidu.com/option.html#dataZoom-inside.moveOnMouseMove) and [dataZoom.zoomOnMouseWheel](http://echarts.baidu.com/option.html#dataZoom-inside.zoomOnMouseWheel), which enables that triggering dataZoom only by mouse wheel while holding 'ctrl'/'alt'/'shift'. Moreover, supported [preventDefaultMouseMove]((http://echarts.baidu.com/option.html#dataZoom-inside.preventDefaultMouseMove), See [#5769](https://github.com/ecomfe/echarts/issues/5769).
+
++ [+] Supported using image in [dataZoom.handleIcon](http://echarts.baidu.com/option.html#dataZoom-slider.handleIcon) setting.
+
++ [^] Fixed boundary problems on world map.
+
++ [^] Fixed that [minInterval](http://echarts.baidu.com/option.html#xAxis.minInterval) did not work when [min](http://echarts.baidu.com/option.html#xAxis.min) was set. See [#4838](https://github.com/ecomfe/echarts/issues/4838).
+
++ [^] Fixed problems caused by default properties on `Object`. See [#5576](https://github.com/ecomfe/echarts/issues/5576).
+
++ [^] Fixed that error was thrown when `setOption` while legend selection changed, which was caused [graphic](http://echarts.baidu.com/option.html#graphic). See [#5783](https://github.com/ecomfe/echarts/issues/5783).
+
++ [^] Fixed [parallelAxis.axisLabel.interval](http://echarts.baidu.com/option.html#parallelAxis.axisLabel.interval) supporting. See [#5694](https://github.com/ecomfe/echarts/issues/5694).
+
++ [^] Enhanced interaction of `dataZoom`.
+
++ [^] Fixed the problem about [minAngle](http://echarts.baidu.com/option.html#series-pie.minAngle) on rose chart. See [#5617](https://github.com/ecomfe/echarts/issues/5617).
+
++ [^] Fixed the problem when tooltip updating.
+
+
+
 ## v3.5.4
 <div class="time">2017-04-27</div>
 

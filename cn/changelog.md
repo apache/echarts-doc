@@ -1,3 +1,37 @@
+## v3.6.0
+<div class="time">2017-05-25</div>
+
++ **[+] 发布自定义系列 [custom series](http://echarts.baidu.com/option.html#series-custom)** 自定义系列能让用户定制渲染逻辑，从而在已有坐标系中绘制自定义的图表。参见 [示例](http://echarts.baidu.com/examples.html#custom)。
+
++ **[+] 支持极坐标柱状图** 参见 [示例1](http://echarts.baidu.com/demo.html#bar-polar-stack)、[示例2](http://echarts.baidu.com/demo.html#bar-polar-stack-radial)、[示例3](http://echarts.baidu.com/demo.html#bar-polar-real-estate)。
+
++ [+] 支持了 [encode](http://echarts.baidu.com/option.html#series-scatter.encode) 设定，可以指定 [data](http://echarts.baidu.com/option.html#series-scatter.data) 中哪些维度映射到坐标系中哪个轴，或者哪些维度在 [tooltip](http://echarts.baidu.com/option.html#tooltip) 以及 [label](http://echarts.baidu.com/option.html#series-scatter.label) 中显示。
+
++ [+] 支持了 [dimensions](http://echarts.baidu.com/option.html#series-scatter.dimensions) 设定，能指定 [data](http://echarts.baidu.com/option.html#series-scatter.data) 中每个维度的名称和类型。名称可以显示在默认 [tooltip](http://echarts.baidu.com/option.html#tooltip) 中。
+
++ [+] `dataZoom` 支持了 [minSpan](http://echarts.baidu.com/option.html#dataZoom.minSpan) 和 [maxSpan](http://echarts.baidu.com/option.html#dataZoom.maxSpan)。参见 [#2843](https://github.com/ecomfe/echarts/issues/2843)。
+
++ [+] `dataZoom` 支持了 [moveOnMouseMove](http://echarts.baidu.com/option.html#dataZoom-inside.moveOnMouseMove) 和 [zoomOnMouseWheel](http://echarts.baidu.com/option.html#dataZoom-inside.zoomOnMouseWheel)，从而能够设定按住 'ctrl' 键或者 'alt' 键或者 'shift' 键同时滚动滚轮触发 dataZoom。此外，支持了 [preventDefaultMouseMove]((http://echarts.baidu.com/option.html#dataZoom-inside.preventDefaultMouseMove) 设置，参见 [#5769](https://github.com/ecomfe/echarts/issues/5769)。
+
++ [+] `dataZoom` 的 [handleIcon](http://echarts.baidu.com/option.html#dataZoom-slider.handleIcon) 支持使用 image。
+
++ [^] 修正了世界地图的边界问题。
+
++ [^] 修正了当 [min](http://echarts.baidu.com/option.html#xAxis.min) 被设置时，[minInterval](http://echarts.baidu.com/option.html#xAxis.minInterval) 不能正常工作的问题。参见 [#4838](https://github.com/ecomfe/echarts/issues/4838)。
+
++ [^] 修正了 Object 默认属性导致的问题。参见 [#5576](https://github.com/ecomfe/echarts/issues/5576)。
+
++ [^] 修正了 legend 选择变化时进行 `setOption` 时 [graphic](http://echarts.baidu.com/option.html#graphic) 导致的错误。参见 [#5783](https://github.com/ecomfe/echarts/issues/5783)。
+
++ [^] 修正了 `parallel` 对 [axisLabel.interval](http://echarts.baidu.com/option.html#parallelAxis.axisLabel.interval) 的支持。参见 [#5694](https://github.com/ecomfe/echarts/issues/5694)。
+
++ [^] 增强了 `dataZoom` 控件的交互。
+
++ [^] 修正了 [minAngle](http://echarts.baidu.com/option.html#series-pie.minAngle) 在玫瑰图上的问题。参见 [#5617](https://github.com/ecomfe/echarts/issues/5617)。
+
++ [^] 修正了 tooltip 更新时报错的问题。
+
+
 ## v3.5.4
 <div class="time">2017-04-27</div>
 
