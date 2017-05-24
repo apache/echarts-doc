@@ -10,8 +10,6 @@ revealOptions:
     margin: 0
     width: 1366
     height: 768
-    math:
-        mathjax: '//cdn.bootcss.com/mathjax/2.6.1/MathJax.js'
 
 ---
 
@@ -25,6 +23,8 @@ revealOptions:
 Note:
 
 ---
+
+<!--.slide: data-background-video="./asset/video/echarts.mp4" data-background-opacity="0.4" -->
 
 ## ECharts 是什么
 
@@ -41,7 +41,7 @@ Note:
 Note:
 那么 ECharts 是什么，首先它是一个基于 Canvas 的开源前端可视化库。目前在 GitHub 上已经拥有快 1w8 的 star 数了。
 
-ECharts 提供的是一个声明式的接口，也就是说用户通过一系列配置项去描述如何展示一个图表以及交互组件，这种声明式的接口有利有弊，优点是它没有程序逻辑，上手非常简单，而且不会写程序的，比如我们的设计师，没有任何的程序基础，琢磨琢磨也能画出一个像样的图表。弊端就是它很难被扩展，需要我们提供丰富的配置项去支持用户自定义的展示，其实相当于把很多工作量转移到我们身上了，而且做不了还容易被喷。
+ECharts 提供的是一个声明式的接口，也就是说用户通过一系列配置项去描述如何展示一个图表以及交互组件，这种声明式的接口有利有弊，优点是它不需要程序逻辑，上手非常简单，而且不会写程序的，比如我们的设计师，没有任何的程序基础，琢磨琢磨也能画出一个像样的图表。
 
 然后几个是 ECharts 的主要特性，丰富的可视化类型以及交互组件，大数据量展现的能力，以及吸引眼球的动画和特效，这里就不细讲了。
 
@@ -51,11 +51,17 @@ ECharts 提供的是一个声明式的接口，也就是说用户通过一系列
 
 + ECharts 的一个扩展
 
-+ 熟悉的配置，熟悉的味道
-
 + 使用 WebGL 图形接口
 
++ 熟悉的配置，熟悉的味道
+
++ 1.0.0-alpha.5
+
 Note:
+
+不像 ECharts， ECharts GL 底层使用 WebGL 作为图形接口，而且以后所有使用 WebGL 的组件都会放在 ECharts GL 中
+
+现在还在迭代 alpha 版本，大概六月底会 release 正式版
 
 ----
 
@@ -88,81 +94,119 @@ Note:
 
 
 <iframe data-src="./asset/ec-demo2/scatter-simplex.html" frameborder="0" style="width: 50%;height:600px;float:left;"></iframe>
-<iframe data-src="./asset/ec-demo2/scatter3D-simplex2.html" frameborder="0" style="width: 50%;height:600px;float:left;"></iframe>
+<iframe data-src="./asset/ec-demo2/scatter3D-simplex.html" frameborder="0" style="width: 50%;height:600px;float:left;"></iframe>
 
 ---
 
-<iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/hangzhou-track.html"></iframe>
+## 三维空间
+
++ 高度
+
++ 深度
+
++ 光影
+
++ 材质
+
++ ....
 
 Note:
-这个是去年的 R 语言大会演示的一个例子。
+那么我们可以看到 ECharts GL 的第一个特性是它可以把可视化扩展到三维空间。
 
+在三维空间中有更多的视觉属性可以为我们所用。
 
-----
+更复杂的材质可以通过 WebGL 的 shader 去实现
 
-<iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/hangzhou-track-gl.html"></iframe>
-
-Note:
-我在 ECharts GL 里又重新实现了一遍这个效果
-
-TODO
-高度图
-
-----
-
-# 三维空间
-
-Note:
 地图多了高度，笛卡尔坐标系多了深度。
 
 多一个维度表示数据
-沉浸式的数据探索
+
+我们也可以拥有更加沉浸式的数据探索体验
 
 ---
 
-## 场景
+## 程序生成的场景
+
++ 数据 + 规则 + 参数
 
 Note:
 程序生成，
 数据 -> 程序规则 -> 场景
 
-灵活，可以生成高精度模型。
+这是数据可视化比较有魅力的地方，你改改参数和规则就可能同样一份数据出来不一样的效果。甚至你的规则或者参数写错了，你会发现这张出来的效果图更有意思哎。
 
-我们在接下来通过几个例子看看，一些常见的二维数据转到三维的场景后会有什么效果
+但是这种程序生成的场景也有缺点，就是没办法做一些耗时比较长的预计算和处理已得到更好的渲染效果了，这就需要我们后面在渲染部分花更大的功夫。
+
+然后我们其实也在考虑把这些程序生成的场景能够导出到通用的三维模型交换格式，比如 collada，以供用户导入到三维工具中进行二次编辑和更好离线渲染。
+
+
+我们在接下来通过几个例子看看，一些常见的二维数据在三维场景中是什么效果
+
 
 ----
 
 ## 像素
 
+Note:
+首先来看一个图片的像素数据的例子。
+
+
+
+----
+
 <iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/bar3D-image-pixels.html"></iframe>
 
+Note:
+
+图片的像素数据呢它是二维的，每一个像素有 x, y, r, g, b, a 的属性。
+
+我们可以把每个像素画成一个柱子。柱子的颜色就是像素的颜色。然后切换到三维视角。
+
+然后把每个像素计算出来的亮度映射到柱子的高度，然后再加上后期效果，就可以得到这个非常奇幻有点像是丛林和火山的形状
 
 ----
 
 ## 音频
 
-Note:
-音频的波形数据用折线图画出来大概就是这个样子。这只是其中的一帧，如果做音乐可视化，我们需要让整个图随着音乐的节奏动起来。
-
-----
-
-<iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/scatter-music.html"></iframe>
+<iframe data-src="asset/ec-demo2/audio-waveform.html" width="1200" height="200" frameborder="0"></iframe>
 
 Note:
-每一个气泡都是 fft 计算音频频域的一个 bin。这是非常基础的一个音频可视化例子。
+
+这是一个最基础的把音频的波形可视化出来的效果，横轴是时间
 
 ----
 
 <iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/bar3D-music.html"></iframe>
 
 Note:
-中间特别大的值我们还可以给它一个特别亮的颜色。这个亮度是超出屏幕所能表现的白色的。
+
+我们可以使用 WebAudio 的 API 把时域的波形图转成频域。
+
+同时通过镜头动画辅助表达整个音乐的节奏，可以让用户更容易被这 Motion 带入节奏。
 
 ----
 
 ## 地图
 
+<img data-src="asset/img/geo-example.png" width="600" alt="">
+
+Note:
+ECharts 中的地图使用的是存储行政区域或者国家轮廓的 GeoJSON 数据。我们用 Canvas 把这些轮廓画出来，在不同的国家或者行政区域填充不同的颜色。
+
+这个是我们设计师用 echarts 制作的一张旅行城市的地图。
+
+----
+
 + GeoJSON
+
+    + Polygon
+
++ Triangulation
+
+![](asset/img/ear-clipping.gif)
+
+Note:
+我们需要做的就是把通过三角化的算法把多边形转成更适合 WebGL 绘制的三角面。
 
 ----
 
@@ -173,14 +217,16 @@ Note:
 
 ## 函数
 
+<iframe data-src="asset/ec-demo2/polar.html" width="600" height="400" frameborder="0"></iframe>
+
 Note:
-如果要可视化的是一个函数的话，连输入的数据都可以是根据规则程序生成了
+如果要可视化的是一个函数或者方程的话，连输入的数据都可以是根据函数的规则程序生成了
 
 ----
 
 ## 参数曲面
 
-```js
+```javascript
 u: { min: -PI, max: PI, step: PI / 20 },
 v: { min: 0, max: PI, step: PI / 20 },
 
@@ -190,6 +236,13 @@ z: (u, v) => cos(v)
 
 ```
 
+Note:
+例如参数曲面
+
+参数曲面是三维空间中表达参数方程的曲面图。
+
+这段代码描述的一个球面
+
 ----
 
 <iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/surface-sphere.html"></iframe>
@@ -198,9 +251,12 @@ z: (u, v) => cos(v)
 
 <iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/surface-parametric.html"></iframe>
 
+Note:
+如果参数方程复杂点我们还看到更有意思的曲面，比如这个像零件一样的曲面一直是我最喜欢的一个参数曲面，因为那它来试验各种渲染算法效果非常好。
+
 ---
 
-## 渲染
+## 丰富的渲染效果
 
 + 光影
 
@@ -209,36 +265,104 @@ z: (u, v) => cos(v)
 + 后期
 
 Note:
-仅仅能够画出来是不够的，我们还需要画好看
+仅仅能够画出来是不够的，我们还需要通过各种效果把图片渲染好看
 
 很多时候我们不喜欢三维的可视化，一方面是因为它并没有二维的那么清晰，还有一个很重要的原因是很多三维的渲染效果很糟糕，比如用着过时的光照模型。充满锯齿的画面。但是如果我们提升一下渲染的品质，把一张图渲染好看了，我相信很少会有人不喜欢。
+
+
+光影是场景有立体感的主要来源。有真实感的材质能够让我们看到一个图形后立马联想到这是什么东西，后期可以模拟一些摄像机或者 ps 的效果让画面更有质感。
 
 ---
 
 ## 光影
 
++ 日光和阴影
+
++ 环境光和阴影
+
++ 自发光
+
 Note:
-ECharts GL 中主要有两种光源，日光和环境光。
+ECharts GL 中的场景主要有两种光源，日光和环境光。这些是图形或者三维场景中的物体接受到的光照，除此之外，一些需要突出的物体可能还会有自发光。
 
 ----
 
 ## 日光
 
+<img data-src="asset/img/dir-light.png" alt="">
+
+Note:
+
+日光作为大部分场景的主要光源，可以有效的给整个场景区分整体的明暗面。
+
 ----
 
 <iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/globe-sun.html"></iframe>
+
+Note:
+现在是凌晨 4 点北京的上空
 
 ----
 
 ## 阴影
 
+<img style="width:45%" data-src="asset/img/buildings-raw.jpg" alt="">
+<img style="width:45%" data-src="asset/img/buildings-shadow.jpg" alt="">
+
+Note:
+日光被遮挡的地方会产生阴影。
+
+在图中这样建筑可视化的示例中，阴影是用来增强空间感的一个非常重要的手段，如果没有阴影，我们可能会觉得这些区域就是一片连起来的，建筑也是浮在地面上的感觉。
+
 ----
 
 <iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/geo3D-shadow.html"></iframe>
 
+Note:
+这是一个三维的地图动态阴影的效果。前段时间设计圈特别流行制作长阴影，差不多就是这样的一个效果
+
 ----
 
 ## 环境光
+
++ Image Based Lightning
+
+<img width="60%" data-src="asset/img/canyon.jpg" alt="">
+
+Note:
+基于图片的环境光作为补充，提供了各个方向的光源，可以让场景的光照不那么单一，在一些背光面也能获取到一些光照信息而不是完全黑色的。
+
+----
+
+<img style="width:35%" data-src="asset/img/no-pbr.png" alt="">
+<img style="width:35%" data-src="asset/img/pbr.png" alt="">
+
+----
+
+## 环境光的阴影
+
++ Screen Space Ambient Occulusion
+
+![](asset/img/ssao-fig.jpg)
+
+Note:
+计算环境光的阴影是一件开销非常大的事，所以实时的渲染一般都用非常取巧的屏幕空间的环境光遮蔽。
+
+就是像这种图中那样在图形表面的半球内采样，估计一个点上面能够受到多少环境光，被其它物体包围得越多的地方就会越暗。一般实时的渲染里为了性能只会采样十几次到几十次，所以噪点会非常多，还需要一层额外的双边滤波去减少噪点。
+
+它作为阴影的补充可以让整个画面更有层次感，不会让阴影显得很单调。
+
+屏幕空间环境光遮蔽从 2007 年 crysis 游戏中开始火起来到现在已经十分普及了，这十年的时间，各种论文和游戏对其的改进基本上都是在如何更好的分布采样，如何推导更好的计算遮挡的表达式，以及更好的滤波减少噪点这三块上。
+
+----
+
+
+<iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/buildings-ssao.html"></iframe>
+
+Note:
+可以看下有环境光遮蔽和没有的区别。
+
+环境光遮蔽可以让这些挨得比较近的建筑因为光照不够显得比较暗。
 
 ----
 
@@ -246,16 +370,14 @@ ECharts GL 中主要有两种光源，日光和环境光。
 
 Note:
 
-除了外来的光源。有些物体它本身也会发光，而不会因为在暗面的缘故无法被看到。
-
-比如我们拿这张夜晚的图片，它里面的星星点点的灯光就属于是灯光的自发光。它们不会受太阳暗面的影响，反而因为其它地方都暗下来了，突出了这些自发光的点。
+除了外来的光源。有些物体它本身也会发光，而不会因为阴影的缘故无法被看到。比如各种霓虹灯，这些因为自发光而高亮的点非常容易吸引人的注意力
 
 ----
 
-## HDR + Bloom
-
+<iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/globe-night.html"></iframe>
 
 Note:
+比如我们拿这张夜晚的图片放到地球上，它里面的星星点点的灯光就属于灯光的自发光。它们不会受太阳暗面的影响，反而因为其它地方都暗下来了，更容易突出哪些地方比较繁华，大些地方夜生活比价少，哪些地方几乎没有人烟。
 
 ---
 
@@ -264,6 +386,11 @@ Note:
 + 真实感
 
 + 风格化
+
+Note:
+渲染的第二块是材质
+
+渲染里的材质有两个极端，一种是追求真实，要真实感，还有一种是风格化，比如模拟卡通效果，电子效果，素描效果等等。不管是真实感还是风格化，材质的存在都是为了能够让人看到这个东西后一下就产生代入感和沉浸感。
 
 ----
 
@@ -285,14 +412,17 @@ Note:
 <img width="40%" data-src="asset/img/canyon-convolve.jpg" alt="">
 
 Note:
-一般基于物理的渲染要做到这么几点，首先它需要一张 HDR 格式的环境光照贴图。
+
+GL 的真实感渲染主要是基于 PBR 的材质。大家如果玩游戏的话可能有听过这个词。
+
+一般基于物理的渲染有这么几点，首先刚才提到过的它需要一张环境光照贴图。这个贴图格式是 HDR 的，刚才提到过更大范围的颜色可以表达更丰富的光照强度。
 
 然后因为光照计算需要做积分计算这张环境贴图里每一个像素产生光照贡献，如果是实时做的话就会性能很差，所以一般会对这张环境光照的贴图做积分的预计算。得到右边这张看起来像是被模糊了的图。这种预计算的卷积可能不是完全正确的结果，但是足够以假乱真了。实际上实时渲染基本上就是在用各种 trick 去实现以假乱真的效果。
 
 Ok，然后最后我们再使用一个能量守恒的光照公式应用到像素上。
 
 
-实时渲染肯定很难做到离线渲染的品质和逼真程度，但是我们希望通过一些 trick 让画面达到以假乱真的品质
+// 实时渲染肯定很难做到离线渲染的品质和逼真程度，但是我们希望通过一些 trick 让画面达到以假乱真的品质
 
 ----
 
@@ -300,18 +430,46 @@ Ok，然后最后我们再使用一个能量守恒的光照公式应用到像素
 
 + metalness
 
+    + 0 非金属
+
+    + 1 金属
+
 + roughness
 
+    + 0 完全光滑
+
+    + 1 完全粗糙
+
 Note:
+
+金属度和光泽度是刚才提到的公式中非常重要的两个参数，这两个参数是 normalize 后的，比如金属度 metalness，0 就是非金属，1就是金属，0 - 1 之间的值实际上是两者之间的插值，用得比较少。roughness 的话 0 就是全光滑
 
 ----
 
 <iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/globe-material.html"></iframe>
 
+Note:
+金属和非金属有个区别是因为菲尼尔反射的参数不一样，上面的塑料材质的边缘视角和平面角度小反射比较强，中间正对着的反射比较弱，金属的是不管什么角度反射都差不多。
+
 ----
 
+#### Metalness Map
+
+<img height="200" data-src="asset/texture/iron-rusted4/iron-rusted4-metalness.png" alt="">
+
+#### Roughness Map
+
+<img height="200" data-src="asset/texture/iron-rusted4/iron-rusted4-roughness.png" alt="">
+
 Note:
-木质
+为了描述更复杂的材质，我们可以把描述材质的属性存到各个纹理上。这样就可以精确到像素的去描述每个像素的材质了。
+
+----
+
+<iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/surface-complex-material.html"></iframe>
+
+Note:
+比如这么一个生锈的零件
 
 ----
 
@@ -322,37 +480,19 @@ Note:
 
 ----
 
-## 描边
-
-+ Sobel 边缘检测
-
-+ Depth + Normal
-
-Note:
-我们使用基于 Depth + Normal 的 sobel 算子提取图像的边缘
-
-----
-
-
-<iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/bar3D-edge.html"></iframe>
-
-Note:
-描边除了有卡通效果外，还有可以有效的去分离每个图形。
-
-----
-
 ## Cross Hatching
 
-----
-
-## Tonal Art Maps
-
-<img data-src="asset/img/TAM.png" alt="">
+Note:
+Cross Hatching 在有些场景下有奇效
 
 ----
 
 
 <iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/surface-hatching.html"></iframe>
+
+Note:
+
+不知道下面有没有学习绘画的朋友，想到自己练习速写的日子。
 
 ----
 
@@ -363,15 +503,41 @@ Note:
 
 ## 摄影与后期
 
+Note:
+
+渲染的第二块加一些摄影中常见的镜头效果以及后期处理
+
 ----
 
 ## 景深
 
+<img data-src="asset/img/dof-example.jpg" width="50%" alt="">
+
 ----
 
-## 调色
+<iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/bar3D-dof.html"></iframe>
 
 Note:
+景深可以让整个场景有一种微缩模型的感觉
+
+----
+
+<iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/globe-dof.html"></iframe>
+
+Note:
+景深焦散所带来的光斑也让整个画面更有德味
+
+----
+
+## 调色 Color Grading
+
+<img style="width:45%" data-src="asset/img/buildings-cold.jpg" alt="">
+<img style="width:45%" data-src="asset/img/buildings-warm.jpg" alt="">
+
+Note:
+当然跟摄影一样，你可能会对图片出来的整个色调不满意，所以一般再会有一个颜色纠正的操作，
+
+TODO
 其它更多数字艺术的作品, Glitch, Dot Screen
 
 ---
@@ -384,13 +550,24 @@ Note:
 
 + 停止交互后渐进增强画面
 
+Note:
+前面提到的效果，比如环境光遮蔽，都是需要大量的采样才能达到比较好的效果，还有比如锯齿本质上也是因为屏幕像素有限时对几何边缘采样不足导致的。
+
+----
+
+<img style="width:45%" data-src="asset/img/surface-no-taa.png" alt="">
+<img style="width:45%" data-src="asset/img/surface-taa.png" alt="">
+
+Note:
+左边是没有渐进式增强而且效果配置比较低的，右边是同样的配置但是渐进式增强后的画面，可以看到画面质量提升了很多，包括像这些高频部分更加平滑，还有线条的质量，阴影的质量，都有了很大的改善。
+
 ---
 
-# 二维加速
+## 二维加速
 
-+ 加速绘制
++ 绘制
 
-+ 加速布局计算
++ 布局计算
 
 ---
 
@@ -399,7 +576,11 @@ Note:
 Note:
 串行改并行
 
-准备好顶点数据, commit，shader中并行绘制
+Canvas 对于图形的重绘往往是串行的，就是绘制完一个图形后再绘制下一个，而且它在绘制一个矢量图形的时候需要做很多工作，画一条贝塞尔曲线，需要对这个贝塞尔曲线细分成很多细微的线段，然后对于比较粗的线再用三角面去模拟这个线段，所以绘制一条线的开销是比较大的，大家仔细留意下的话也可以发现 chrome 在画比较粗的线段会慢十倍都不止，这是因为粗的线段必须要用三角面模拟，而且还要计算线连接处的导角，这些都是计算量比较大的东西。
+
+WebGL 中画线也需要我们自己计算这些东西，但是它可以做到初始化计算好后一直使用，而且后面多条线段的绘制都是在 GPU 中并行的。
+
+TODO
 
 ----
 
@@ -417,87 +598,7 @@ Note:
 
 ---
 
-## GPU 加速布局
-
-----
-
-## 力引导布局
-
-+ 用于关系图的布局
-
-+ 节点与节点之间模拟斥力，边模拟弹簧的引力
-
-+ 每次迭代 O(n2), 需要上百次迭代才能结束
-
-Note:
-
-大家如果做过关系图布局的话应该知道关系图布局的算法主要是力引导布局。
-
-首先介绍一下什么是力引导布局。
-
-力引导布局是用于关系图布局的经典算法， 有很多种算法和实现，但是其基本原理都是一样的，都是节点与节点存在一个电荷的斥力，边则存在一个弹簧的引力。每次迭代通过计算每个节点的受力，并且根据受力产生一个位移，在多次迭代后整个布局的能量会趋向一个平衡，关系边多的节点间有一个聚类的趋势。
-
-所以传统的力引导算法开销很大，因为要有上百次，每次都是 O(n2) 受力计算才能结束。为了防止布局的阻塞给用户带来的困扰，我们多会把布局过程表现出来，刚好这个动画也挺有意思的。
-
-这个是 echarts 的力引导布局。
-
-----
-
-<iframe data-src="asset/ec-demo/webkit-dep.html" class="fullscreen" frameborder="0"></iframe>
-
-Note:
-这个数据大概 500 个顶点，800 条边
-
-
-----
-
-<iframe data-src="asset/ec-demo/eurosis.html" class="fullscreen" frameborder="0"></iframe>
-
-Note:
-接下来来看一个更大规模的例子，
-这份数据 1285 个顶点，7586 条边
-
-可以看到已经很卡了。
-
-----
-
-## 力引导布局的性能优化
-
-+ Barnes Hut Simulation
-
-+ 多线程？Web Worker
-
-+ SIMD？
-
-Note:
-在算法层面力导向布局最常见的性能优化方式就是这个 Barnes Hut Simulation，它把所有节点放到一个四叉树里，然后对于一批距离远的节点可以看做一个整体计算斥力。而不用去一个点一个点的算。
-
-在程序层面，可以通过 SIMD，多线程等方式去并行计算，也可以带来可观的优化效果。
-
-但是 JS 并不支持多线程，现在浏览器有 WebWorker，我们可以把布局的方法在一个单独的 WebWorker 里去做，这样有一个好处是布局的代码不会阻塞到重绘的代码，交互会更顺畅。
-
-力引导布局里有很多向量操作，所以 SIMD 也能带来显著的优化效果，但是遗憾的是只有 firefox nightly 现在才支持 SIMD。
-
-----
-
-<iframe data-src="asset/ec-demo/eurosis-gl.html" class="fullscreen" frameborder="0"></iframe>
-
-Note:
-刚才说到在 WebWorker 中做布局可以保证渲染的线程跟布局的线程分离，如果是单线程的话我们可能就是布局一次，渲染一次，如果布局多次就可能会阻塞渲染，导致交互不顺畅，但是用 WebWorker 我们就没这个担忧，我们可以再 Worker 中布局迭代多次后再提交给主线程渲染。这样可以有效的提高布局的速度
-
-----
-
-<iframe data-src="asset/ec-demo/eurosis-gl.html?5" class="fullscreen" frameborder="0"></iframe>
-
-----
-
-<iframe data-src="asset/ec-demo/eurosis-gl.html?10" class="fullscreen" frameborder="0"></iframe>
-
-Note:
-
-----
-
-## WebGL 中实现力引导布局
+## WebGL 加速力引导布局
 
 <img data-src="asset/img/gpgpu.png" style="background: none;box-shadow: none;" />
 
@@ -528,37 +629,6 @@ Edges: <span style="color: #ffbc00">48k</span>
 
 ----
 
-## 原论文
-
-CPU without Barnes Hut: <span style="color: #ffbc00"><b>~41000 ms</b></span>
-
-CPU with Barnes Hut: <span style="color: #ffbc00"><b>~400 ms</b></span>
-
-Note:
-这是这个力引导算法原论文给出的数字
-
-----
-
-<p style="font-size: 2rem;color:#ffbc00;">Macbook 13 2012</p>
-
-CPU without Barnes Hut: <span style="color: #ffbc00"><b>~28000 ms</b></span>
-
-CPU with Barnes Hut: <span style="color: #ffbc00"><b>~1000ms</b></span>
-
-<p class="fragment">
-    GPU: <span style="color: #ffbc00"><b>~260ms</b></span>
-</p>
-
-Note:
-
-我先在自己的电脑上测试了一下不同算法的性能
-
-没有 Barnes Hut 优化的一次迭代需要近 28s，加上 Barnes Hut 也需要近 1s，然后 GPU 运算的 260ms，有几倍的提升，但是这个提升不是太明显
-
-我在想可能是 HD 4000 这张显卡太烂了，于是又在台式机上试了下。
-
-----
-
 <p style="font-size: 2rem;color:#ffbc00;">GTX1070, i7</p>
 
 CPU without Barnes Hut: <span style="color: #ffbc00"><b>~12000 ms</b></span>
@@ -571,24 +641,20 @@ GPU: <span style="color: #ffbc00"><b>~2ms</b></span>
 
 Note:
 
----
+----
 
-# 与 ECharts 的组合使用
+<!--.slide: data-background-video="./asset/video/gpgpu.mp4"  -->
+
+----
+
+<iframe data-src="asset/ec-demo2/graphGL-large.html" class="fullscreen" frameborder="0"></iframe>
 
 Note:
-看到这个大家可能会疑惑，这已经是 ECharts 的组件了，还需要组合什么鬼。
+我现在这台电脑肯定没这么快，所以我犹豫了再三要不要把这个例子放上来，后来还是放上来了，还是比较卡的，但是整个布局的收敛时间还是可以让人接受的。
 
-但是其实我们可以做一些更有意思的事情。
+实际上我也拿 gephi 在那台好点的台式机上试过，因为它能够充分的利用多核进行计算，所以整个布局的收敛也是挺快的。
 
-----
-
-## 与现有组件的无缝结合
-
-----
-
-## Interactive ECharts Surface
-
-----
+---
 
 ## D3 + ECharts + ECharts GL
 
@@ -597,15 +663,14 @@ Note:
 
 ----
 
+<!--.slide: data-background="../asset/img/globe-contour-idea.jpg"  -->
+
+Note:
+这个例子最早是 datav 的闻啸发了我一个设计师的链接，这个设计师的作品列表里有这么张效果图让我舔屏舔了很久，觉得要是 gl 里也能画出来这样的图片就好了。
+
+----
+
 <video autoplay loop data-src="../asset/video/contour.mp4"></video>
-
-----
-
-<img data-src="../asset/img/globe-contour-idea.jpg" alt="">
-
-----
-
-<iframe data-src="asset/ec-demo2/globe-contour.html" class="fullscreen" frameborder="0"></iframe>
 
 ----
 
@@ -613,10 +678,7 @@ Note:
 
 ----
 
-Note:
-把 ECharts 中的图形提取出来画成三维的。
-
-TODO
+<iframe data-src="asset/ec-demo2/globe-contour.html" class="fullscreen" frameborder="0"></iframe>
 
 ---
 

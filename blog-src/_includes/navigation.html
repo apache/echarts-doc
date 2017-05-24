@@ -1,64 +1,62 @@
-<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
-	<button class="dl-trigger">{% if isEn %}Open Menu{% else %}展开{% endif %}</button>
-	<ul class="dl-menu">
-		<li><a href="{{ site.url }}/">{% if isEn %}Home{% else %}首页{% endif %}</a></li>
-		<!--<li>
-			<a href="#">About</a>
-			<ul class="dl-submenu">
-				<li>
-					<img src="{{ site.url }}/images/{{ site.owner.avatar }}" alt="{{ site.owner.name }} photo" class="author-photo">
-					<h4>{{ site.owner.name }}</h4>
-					<p>{{ site.owner.bio }}</p>
-				</li>
-				<li><a href="{{ site.url }}/about/"><span class="btn btn-inverse">Learn More</span></a></li>
-				{% if site.owner.email %}<li>
-					<a href="mailto:{{ site.owner.email }}"><i class="fa fa-fw fa-envelope"></i> Email</a>
-				</li>{% endif %}
-				{% if site.owner.twitter %}<li>
-					<a href="https://twitter.com/{{ site.owner.twitter }}"><i class="fa fa-fw fa-twitter"></i> Twitter</a>
-				</li>{% endif %}
-				{% if site.owner.facebook %}<li>
-					<a href="https://facebook.com/{{ site.owner.facebook }}"><i class="fa fa-fw fa-facebook"></i> Facebook</a>
-				</li>{% endif %}
-				{% if site.owner.google_plus %}<li>
-					<a href="https://google.com/{{ site.owner.google_plus }}"><i class="fa fa-fw fa-google-plus"></i> Google+</a>
-				</li>{% endif %}
-				{% if site.owner.linkedin %}<li>
-					<a href="https://linkedin.com/in/{{ site.owner.linkedin }}"><i class="fa fa-fw fa-linkedin"></i> LinkedIn</a>
-				</li>{% endif %}
-				{% if site.owner.github %}<li>
-					<a href="https://github.com/{{ site.owner.github }}"><i class="fa fa-fw fa-github"></i> GitHub</a>
-				</li>{% endif %}
-				{% if site.owner.stackexchange %}<li>
-					<a href="{{ site.owner.stackexchange }}"><i class="fa fa-fw fa-stack-exchange"></i> Stackexchange</a>
-				</li>{% endif %}
-				{% if site.owner.instagram %}<li>
-					<a href="https://instagram.com/{{ site.owner.instagram }}"><i class="fa fa-fw fa-instagram"></i> Instagram</a>
-				</li>{% endif %}
-				{% if site.owner.flickr %}<li>
-					<a href="https://www.flickr.com/photos/{{ site.owner.flickr }}"><i class="fa fa-fw fa-flickr"></i> Flickr</a>
-				</li>{% endif %}
-				{% if site.owner.tumblr %}<li>
-					<a href="http://{{ site.owner.tumblr }}.tumblr.com"><i class="fa fa-fw fa-tumblr"></i> Tumblr</a>
-				</li>{% endif %}
-			</ul><!-- /.dl-submenu -->
-		<!--/li-->
-		<li>
-			<a href="{{ site.url }}/posts/">{% if isEn %}All Posts{% else %}所有文章{% endif %}</a>
-		</li>
-		<li>
-			<a href="{{ site.url }}/tags/">{% if isEn %}All Tags{% else %}所有标签{% endif %}</a>
-		</li>
-		<li>
-			<a href="http://echarts.baidu.com/">ECharts 官网</a>
-		</li>
-		<!--{% for link in site.data.navigation %}
-	    {% if link.url contains 'http' %}
-	        {% assign domain = '' %}
-	        {% else %}
-	        {% assign domain = site.url %}
-	    {% endif %}-->
-	    <!--<li><a href="{{ domain }}{{ link.url }}" {% if link.url contains 'http' %}target="_blank"{% endif %}>{{ link.title }}</a></li>-->
-	  {% endfor %}
-	</ul><!-- /.dl-menu -->
-</nav><!-- /.dl-menuwrapper -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false" class="navbar-toggle collapsed">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="{{ site.url_echarts }}/index.html" class="navbar-brand">
+                <img src="{{ site.url_echarts }}/images/logo.png" alt="echarts logo" class="navbar-logo">
+            </a>
+        </div>
+        <div id="navbar-collapse" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-left">
+                <li id="nav-index"><a href="{{ site.url_echarts }}/index.html">首页</a></li>
+                <li id="nav-doc" class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">文档<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ site.url_echarts }}/tutorial.html">教程</a></li>
+                        <li><a href="{{ site.url_echarts }}/api.html">API</a></li>
+                        <li><a href="{{ site.url_echarts }}/option.html">配置项手册</a></li>
+                        <li><a href="{{ site.url_echarts }}/faq.html">常见问题</a></li>
+                        <li><a href="{{ site.url_echarts }}/changelog.html">版本记录</a></li>
+                        <li><a href="{{ site.url_echarts }}/feature.html">特性</a></li>
+                    </ul>
+                </li>
+                <li id="nav-download" class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">下载<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ site.url_echarts }}/download.html">下载</a></li>
+                        <li><a href="{{ site.url_echarts }}/download-theme.html">主题下载</a></li>
+                        <li><a href="{{ site.url_echarts }}/download-map.html">地图下载</a></li>
+                        <li><a href="{{ site.url_echarts }}/download-extension.html">扩展下载</a></li>
+                    </ul>
+                </li>
+                <li id="nav-examples"><a href="{{ site.url_echarts }}/examples.html" class="dropdown-toggle">实例</a></li>
+                <li id="nav-community" class="active">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">社区<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="http://gallery.echartsjs.com">GALLERY</a></li>
+                        <li><a href="{{ site.url }}">博客</a></li>
+                    </ul>
+                </li>
+                <li id="nav-tool">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">工具<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ site.url_echarts }}/spreadsheet.html">表格工具</a></li>
+                        <li><a href="http://ecomfe.github.io/echarts-map-tool/">地图数据在线工具</a></li>
+                        <li><a href="http://echarts.baidu.com/theme-builder/">主题构建工具</a></li>
+                    </ul>
+                </li>
+                <li id="nav-about"><a href="{{ site.url_echarts }}/about.html">关于</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li id="nav-github"><a href="https://github.com/ecomfe/echarts" target="_blank"><img src="{{ site.url_echarts }}/images/github.png" width="18"></a></li>
+                <li id="nav-2" class="0"><a href="http://echarts.baidu.com/echarts2/">2.0</a></li>
+                <li id="nav-homeen"><a href="https://ecomfe.github.io/echarts-doc/public/en/index.html">EN</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

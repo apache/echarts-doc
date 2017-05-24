@@ -1,8 +1,8 @@
 <!doctype html>
-<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
-<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="zh"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="zh"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="zh"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
 <title></title>
@@ -32,9 +32,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- For all browsers -->
+<link rel="stylesheet" href="http://echarts.baidu.com/blog/assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="http://echarts.baidu.com/blog/assets/css/main.css">
-<!-- Webfonts -->
-<link href="//fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic" rel="stylesheet" type="text/css">
 
 <meta http-equiv="cleartype" content="on">
 
@@ -55,775 +54,474 @@
 <!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://echarts.baidu.com/blog/images/apple-touch-icon-144x144-precomposed.png">
 
-
-
 </head>
 
-<body id="post-index" class="feature">
+<body id="post-index" >
 
 <!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
-<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
-	<button class="dl-trigger">展开</button>
-	<ul class="dl-menu">
-		<li><a href="http://echarts.baidu.com/blog/">首页</a></li>
-		<!--<li>
-			<a href="#">About</a>
-			<ul class="dl-submenu">
-				<li>
-					<img src="http://echarts.baidu.com/blog/images/echarts.png" alt="ECharts photo" class="author-photo">
-					<h4>ECharts</h4>
-					<p>强大、简单、灵活的可视化工具</p>
-				</li>
-				<li><a href="http://echarts.baidu.com/blog/about/"><span class="btn btn-inverse">Learn More</span></a></li>
-				
-				
-				
-				
-				
-				<li>
-					<a href="https://github.com/ecomfe/echarts"><i class="fa fa-fw fa-github"></i> GitHub</a>
-				</li>
-				
-				
-				
-				
-			</ul><!-- /.dl-submenu -->
-		<!--/li-->
-		<li>
-			<a href="http://echarts.baidu.com/blog/posts/">所有文章</a>
-		</li>
-		<li>
-			<a href="http://echarts.baidu.com/blog/tags/">所有标签</a>
-		</li>
-		<li>
-			<a href="http://echarts.baidu.com/">ECharts 官网</a>
-		</li>
-		<!--
-	</ul><!-- /.dl-menu -->
-</nav><!-- /.dl-menuwrapper -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false" class="navbar-toggle collapsed">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://echarts.baidu.com/index.html" class="navbar-brand">
+                <img src="http://echarts.baidu.com/images/logo.png" alt="echarts logo" class="navbar-logo">
+            </a>
+        </div>
+        <div id="navbar-collapse" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-left">
+                <li id="nav-index"><a href="http://echarts.baidu.com/index.html">首页</a></li>
+                <li id="nav-doc" class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">文档<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="http://echarts.baidu.com/tutorial.html">教程</a></li>
+                        <li><a href="http://echarts.baidu.com/api.html">API</a></li>
+                        <li><a href="http://echarts.baidu.com/option.html">配置项手册</a></li>
+                        <li><a href="http://echarts.baidu.com/faq.html">常见问题</a></li>
+                        <li><a href="http://echarts.baidu.com/changelog.html">版本记录</a></li>
+                        <li><a href="http://echarts.baidu.com/feature.html">特性</a></li>
+                    </ul>
+                </li>
+                <li id="nav-download" class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">下载<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="http://echarts.baidu.com/download.html">下载</a></li>
+                        <li><a href="http://echarts.baidu.com/download-theme.html">主题下载</a></li>
+                        <li><a href="http://echarts.baidu.com/download-map.html">地图下载</a></li>
+                        <li><a href="http://echarts.baidu.com/download-extension.html">扩展下载</a></li>
+                    </ul>
+                </li>
+                <li id="nav-examples"><a href="http://echarts.baidu.com/examples.html" class="dropdown-toggle">实例</a></li>
+                <li id="nav-community" class="active">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">社区<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="http://gallery.echartsjs.com">GALLERY</a></li>
+                        <li><a href="http://echarts.baidu.com/blog">博客</a></li>
+                    </ul>
+                </li>
+                <li id="nav-tool">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">工具<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="http://echarts.baidu.com/spreadsheet.html">表格工具</a></li>
+                        <li><a href="http://ecomfe.github.io/echarts-map-tool/">地图数据在线工具</a></li>
+                        <li><a href="http://echarts.baidu.com/theme-builder/">主题构建工具</a></li>
+                    </ul>
+                </li>
+                <li id="nav-about"><a href="http://echarts.baidu.com/about.html">关于</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li id="nav-github"><a href="https://github.com/ecomfe/echarts" target="_blank"><img src="http://echarts.baidu.com/images/github.png" width="18"></a></li>
+                <li id="nav-2" class="0"><a href="http://echarts.baidu.com/echarts2/">2.0</a></li>
+                <li id="nav-homeen"><a href="https://ecomfe.github.io/echarts-doc/public/en/index.html">EN</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
-<div class="entry-lang">
-  <a href="http://echarts.baidu.com/blog">中文</a> |
-  <a href="http://echarts.baidu.com/blog/en">EN</a>
+
+<div class="page-info">
+    <h1>博客</h1>
+    <p>这是ECharts持续发布文章及活动信息的平台，包含ECharts新版本介绍、教程、活动介绍等文章</p>
 </div>
 
-<div class="entry-header">
+<div class="container">
+    
+    
+    <div class="index-post">
+      <div class="row">
+        
+
+        <div class="index-post-content col-md-8 col-sm-7">
+          <h2>
+            <a href="http://echarts.baidu.com/blog/2017/05/09/echarts-statistical-extension-tutorial.html">ECharts 统计扩展教程</a>
+          </h2>
+          <div class="index-post-desc">
+            <p>你是否想了解一组样本数据的分布情况？你是否想根据用户的数值属性将用户分成不同的群体？你是否想预测两个变量的变化趋势？——什么？不需要？不要再违心了，小编已经听到来自你们内心深处的呐喊，今天就为大家推荐一款神器——ECharts 统计扩展，这是一个用来进行数据分析的扩展工具，包含的功能有直方图、聚类、回归、以及常用的汇总统计。通过统计扩展和 ECharts 的结合，可以使大家方便地实现可视分析，也就是将数据分析的结果，通过可视化直观地呈现出来。</p>
+
+          </div>
+          <div class="tag-panel">
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#统计" title="Pages tagged 统计" class="tag">-->
+              <span class="term">统计</span>
+            <!--</a>-->
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#扩展" title="Pages tagged 扩展" class="tag">-->
+              <span class="term">扩展</span>
+            <!--</a>-->
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#教程" title="Pages tagged 教程" class="tag">-->
+              <span class="term">教程</span>
+            <!--</a>-->
+            
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-5">
+          <a class="index-post-image" href="http://echarts.baidu.com/blog/2017/05/09/echarts-statistical-extension-tutorial.html" title="ECharts 统计扩展教程" style="background-image: url(http://echarts.baidu.com/blog/images/post/2017-05-09-echarts-statistical-logarithmic-regression.png)">
+          </a>
+        </div>
+
+        
+      </div>
+    </div>
   
   
-    <div class="entry-image">
-      <img src="http://echarts.baidu.com/blog/images/happy-new-year.png" alt="">
-    </div><!-- /.entry-image -->
+    
+    <div class="index-post">
+      <div class="row">
+        
+
+        <div class="index-post-content col-md-8 col-sm-7">
+          <h2>
+            <a href="http://echarts.baidu.com/blog/2017/05/08/echarts-histogram-tutorial.html">那些年我们一起学过的直方图</a>
+          </h2>
+          <div class="index-post-desc">
+            <p>某天下午小编正在安安静静地撸代码，突然听说在我们的<a href="http://gallery.echartsjs.com/explore.html#sort=rank~timeframe=all~author=all">gallery</a>上，有用户提出，<a href="http://echarts.baidu.com/index.html">ECharts</a>不支持直方图，什么？这怎么能忍？于是小编将珍藏已久的机械键盘拿出来，摆好姿势，通宵达旦地为用户大大们加好了直方图，并于上周四悄悄上线了，对，我们就是这么低调。然而，很多大大们表示，直方图还是柱状图？傻傻分不清。小编深感这年头光有图怕是不行了，必须得有个教程，要做到图文并茂。下面小编就从直方图是什么，为什么要用直方图，以及如何使用<a href="http://echarts.baidu.com/index.html">ECharts</a>制作直方图三个方面，为各位大大们上点干货。</p>
+
+          </div>
+          <div class="tag-panel">
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#直方图" title="Pages tagged 直方图" class="tag">-->
+              <span class="term">直方图</span>
+            <!--</a>-->
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#教程" title="Pages tagged 教程" class="tag">-->
+              <span class="term">教程</span>
+            <!--</a>-->
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#扩展" title="Pages tagged 扩展" class="tag">-->
+              <span class="term">扩展</span>
+            <!--</a>-->
+            
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-5">
+          <a class="index-post-image" href="http://echarts.baidu.com/blog/2017/05/08/echarts-histogram-tutorial.html" title="那些年我们一起学过的直方图" style="background-image: url(http://echarts.baidu.com/blog/images/post/2017-05-08-echarts-histogram-height-of-tree.png)">
+          </a>
+        </div>
+
+        
+      </div>
+    </div>
   
-  <div class="header-title">
-    <div class="header-title-wrap">
-      <h1></h1>
-      <h2></h2>
-    </div><!-- /.header-title-wrap -->
-  </div><!-- /.header-title -->
-</div><!-- /.entry-header -->
-
-<div id="main" role="main">
   
-
-<article class="hentry">
-  <header>
     
-      <div class="entry-image-index">
-        <a href="http://echarts.baidu.com/blog/2017/05/08/echarts-histogram-tutorial.html" title="那些年我们一起学过的直方图"><img src="http://echarts.baidu.com/blog/images/post/2017-05-08-echarts-histogram-height-of-tree.png" alt="那些年我们一起学过的直方图"></a>
-      </div><!-- /.entry-image -->
-    
-    <div class="entry-meta">
-      <span class="entry-date date published updated"><time datetime="2017-05-08T00:00:00+08:00"><a href="http://echarts.baidu.com/blog/2017/05/08/echarts-histogram-tutorial.html">2017-05-08</a></time></span><span class="author vcard"><span class="fn"><a href="http://echarts.baidu.com/blog/about/" title="About ECharts">ECharts</a></span></span>
-      
-      <span class="entry-reading-time">
-        <i class="fa fa-clock-o"></i>
+    <div class="index-post">
+      <div class="row">
         
 
-预计阅读时间：3 分钟
+        <div class="index-post-content col-md-8 col-sm-7">
+          <h2>
+            <a href="http://echarts.baidu.com/blog/2017/04/12/echarts-gl-alpha.html">ECharts GL 1.0 alpha 发布</a>
+          </h2>
+          <div class="index-post-desc">
+            <p>ECharts GL （原 ECharts-X）发布 1.0 alpha，ECharts GL 是 ECharts 的 WebGL 扩展，其中提供了三维散点图，飞线图，柱状图，曲面图，地球等多种三维可视化方式。并且增加 scatterGL，graphGL系列类型用于二维的散点图，关系图的加速绘制和布局。</p>
 
+          </div>
+          <div class="tag-panel">
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#新版本" title="Pages tagged 新版本" class="tag">-->
+              <span class="term">新版本</span>
+            <!--</a>-->
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#扩展" title="Pages tagged 扩展" class="tag">-->
+              <span class="term">扩展</span>
+            <!--</a>-->
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#echarts-gl" title="Pages tagged echarts-gl" class="tag">-->
+              <span class="term">echarts-gl</span>
+            <!--</a>-->
+            
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-5">
+          <a class="index-post-image" href="http://echarts.baidu.com/blog/2017/04/12/echarts-gl-alpha.html" title="ECharts GL 1.0 alpha 发布" style="background-image: url(http://echarts.baidu.com/blog/images/post/2017-04-12/buildings2.jpg)">
+          </a>
+        </div>
 
-      </span><!-- /.entry-reading-time -->
-      
-    </div><!-- /.entry-meta -->
+        
+      </div>
+    </div>
+  
+  
     
-      <h1 class="entry-title"><a href="http://echarts.baidu.com/blog/2017/05/08/echarts-histogram-tutorial.html" rel="bookmark" title="那些年我们一起学过的直方图" itemprop="url">那些年我们一起学过的直方图</a></h1>
-    
-  </header>
-  <div class="entry-content">
-    <p>某天下午小编正在安安静静地撸代码，突然听说在我们的 <a href="http://gallery.echartsjs.com/explore.html#sort=rank~timeframe=all~author=all">gallery</a> 上，有用户提出，<a href="http://echarts.baidu.com/index.html">ECharts</a> 不支持直方图，什么？这怎么能忍？于是小编将珍藏已久的机械键盘拿出来，摆好姿势，通宵达旦地为用户大大们加好了直方图，并于上周四悄悄上线了，对，我们就是这么低调。然而，很多大大们表示，直方图还是柱状图？傻傻分不清。小编深感这年头光有图怕是不行了，必须得有个教程，要做到图文并茂。下面小编就从直方图是什么，为什么要用直方图，以及如何使用 <a href="http://echarts.baidu.com/index.html">ECharts</a> 制作直方图三个方面，为各位大大们上点干货。</p>
-
-<h2 id="直方图是什么">直方图是什么</h2>
-
-<p>直方图主要用来反映一组样本数据的分布情况。从图的形式来看，它属于柱状图的一种，但它和柱状图相比还是有很多不同之处的。首先，直方图的任意两个 bar 之间不允许有间隙，这是因为原始样本值被分割成一系列连续的、相互邻接的小区间，每一个小区间都是左闭右开的，除了最后一个，如<code class="highlighter-rouge">[x0, x1), [x1,x2), [x2,x3]</code>，在直方图中小区间又被称为“bin”。其中bin的高度是由落入该区间中样本值的个数决定的；其次，在 ECharts 中绘制双数值轴（这里的双数值轴指的是 x 轴和 y 轴都是数值类型的）柱状图，用户需要传入二维的数组，如<code class="highlighter-rouge">array1 = [[1, 2], [3, 4]]</code>，而绘制直方图，用户只需要传入一维的数组，如<code class="highlighter-rouge">array2 = [1, 2, 3, 4]</code>，然后由<a href="https://github.com/ecomfe/echarts-stat">ECharts 统计扩展</a>将一维的样本值分割成一个个具体的bin，并计算输出每一个bin的绘制信息，然后选用 ECharts 柱状图绘制具体的直方图。</p>
-
-<h2 id="为什么要用直方图">为什么要用直方图</h2>
-
-<p>前面已经提到了，直方图主要用来反映样本数据的分布，如下图，这是使用著名的<a href="https://en.wikipedia.org/wiki/Iris_flower_data_set">虹膜花数据集</a>中的花瓣长度这一维度所作的直方图。从图中可以直观地看出该维度样本数据不符合正态分布，有多个峰值，具有明显的差异。这说明不同种类虹膜花的花瓣长度，受多个因素的影响，同时也表明在进一步的数据分析中，所有基于正态分布假设的分析，都不适合该维度数据。</p>
-
-<p><img src="http://echarts.baidu.com/blog/images/post/2017-05-08-echarts-histogram-petal-length-iris.png" alt="petal-width" /></p>
-
-<p>除此之外，直方图还可以用来进行数据审查。所谓的数据审查，是指在数据预处理之前，通过直方图直观地审视样本数据中的每个维度，检查是否有异常值的同时，了解值的分布。如图，这是记录 31 颗黑樱桃树周长的样本数据，从图中可以明显地看出有三个异常值，因为树的周长肯定大于 0 ，不会出现小于 0 的负数，而<code class="highlighter-rouge">[-5, 0)</code>这个区间内有三个样本值，这就需要通过数据清洗将异常值过滤掉。</p>
-
-<p><img src="http://echarts.baidu.com/blog/images/post/2017-05-08-echarts-histogram-girth-of-tree.png" alt="girth-tree" /></p>
-
-<h2 id="如何使用-echarts制作直方图">如何使用 <a href="http://echarts.baidu.com/index.html">ECharts</a>制作直方图</h2>
-
-<p>ECharts 是一个强大的可视化图表库，并不是一个统计分析的工具，所以我们将处理原始数据并分割成一个个具体的bin这一部分放在了 ECharts 的<a href="https://github.com/ecomfe/echarts-stat">统计扩展</a>中实现。这就需要我们在引入 <code class="highlighter-rouge">echarts.js</code> 的同时，引入统计扩展对应的 <code class="highlighter-rouge">ecStat.js</code>，如：</p>
-
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"echarts.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"ecStat.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-
-<span class="nt">&lt;script&gt;</span>
-
-<span class="kd">var</span> <span class="nx">height</span> <span class="o">=</span> <span class="p">[</span><span class="mi">70</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">63</span><span class="p">,</span> <span class="mi">72</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="mi">83</span><span class="p">,</span> <span class="mi">66</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">79</span><span class="p">,</span> <span class="mi">76</span><span class="p">,</span> <span class="mi">76</span><span class="p">,</span> <span class="mi">69</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">74</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">86</span><span class="p">,</span> <span class="mi">71</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">74</span><span class="p">,</span> <span class="mi">72</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">87</span><span class="p">];</span>
-
-<span class="kd">var</span> <span class="nx">bins</span> <span class="o">=</span> <span class="nx">ecStat</span><span class="p">.</span><span class="nx">histogram</span><span class="p">(</span><span class="nx">height</span><span class="p">);</span>
-
-<span class="nt">&lt;/script&gt;</span>
-</code></pre>
-</div>
-<p>然后使用统计扩展处理过后的数据，配置 ECharts 柱状图中的 option，如：</p>
-
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">option</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="na">color</span><span class="p">:</span> <span class="p">[</span><span class="s1">'rgb(25, 183, 207)'</span><span class="p">],</span>
-    <span class="na">grid</span><span class="p">:</span> <span class="p">{</span>
-        <span class="na">left</span><span class="p">:</span> <span class="s1">'3%'</span><span class="p">,</span>
-        <span class="na">right</span><span class="p">:</span> <span class="s1">'3%'</span><span class="p">,</span>
-        <span class="na">bottom</span><span class="p">:</span> <span class="s1">'3%'</span><span class="p">,</span>
-        <span class="na">containLabel</span><span class="p">:</span> <span class="kc">true</span>
-    <span class="p">},</span>
-    <span class="na">xAxis</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="na">type</span><span class="p">:</span> <span class="s1">'value'</span><span class="p">,</span>
-        <span class="c1">//这个一定要设，不然barWidth和bins对应不上</span>
-        <span class="na">scale</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="p">}],</span>
-    <span class="na">yAxis</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="na">type</span><span class="p">:</span> <span class="s1">'value'</span><span class="p">,</span>
-    <span class="p">}],</span>
-    <span class="na">series</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="na">type</span><span class="p">:</span> <span class="s1">'bar'</span><span class="p">,</span>
-        <span class="na">barWidth</span><span class="p">:</span> <span class="s1">'99.3%'</span><span class="p">,</span>
-        <span class="na">label</span><span class="p">:</span> <span class="p">{</span>
-            <span class="na">normal</span><span class="p">:</span> <span class="p">{</span>
-                <span class="na">show</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-                <span class="na">position</span><span class="p">:</span> <span class="s1">'insideTop'</span><span class="p">,</span>
-                <span class="na">formatter</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="k">return</span> <span class="nx">params</span><span class="p">.</span><span class="nx">value</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">},</span>
-        <span class="na">data</span><span class="p">:</span> <span class="nx">bins</span><span class="p">.</span><span class="nx">data</span>
-    <span class="p">}]</span>
-<span class="p">};</span>
-
-</code></pre>
-</div>
-<p>这样就得到了如下的直方图：</p>
-
-<p><img src="http://echarts.baidu.com/blog/images/post/2017-05-08-echarts-histogram-height-of-tree.png" alt="height-tree" /></p>
-
-<p>这里不得不说的是，由于历史遗留的问题，ECharts 中的柱状图并不能完美地支持直方图的绘制，所以不得不使用一些小的 trick，如设置 <code class="highlighter-rouge">xAxis</code> 的 <code class="highlighter-rouge">scale</code> 为 <code class="highlighter-rouge">true</code>，调整 <code class="highlighter-rouge">barWidth</code> 的值等。不过，大家不用担心，作为一个良心以及正义感爆棚的团队，我们即将发布一款新的自定义图表类型。经小编亲测，该图表类型可以画出狂拽酷炫屌炸天的直方图，敬请期待哦。</p>
-
-
-  </div><!-- /.entry-content -->
-</article><!-- /.hentry -->
-
-
-
-<article class="hentry">
-  <header>
-    
-      <div class="entry-image-index">
-        <a href="http://echarts.baidu.com/blog/2017/04/12/echarts-gl-alpha.html" title="ECharts GL 1.0 alpha 发布"><img src="http://echarts.baidu.com/blog/images/post/2017-04-12/buildings2.jpg" alt="ECharts GL 1.0 alpha 发布"></a>
-      </div><!-- /.entry-image -->
-    
-    <div class="entry-meta">
-      <span class="entry-date date published updated"><time datetime="2017-04-12T00:00:00+08:00"><a href="http://echarts.baidu.com/blog/2017/04/12/echarts-gl-alpha.html">2017-04-12</a></time></span><span class="author vcard"><span class="fn"><a href="http://echarts.baidu.com/blog/about/" title="About ECharts">ECharts</a></span></span>
-      
-      <span class="entry-reading-time">
-        <i class="fa fa-clock-o"></i>
+    <div class="index-post">
+      <div class="row">
         
 
-预计阅读时间：5 分钟
+        <div class="index-post-content col-md-8 col-sm-7">
+          <h2>
+            <a href="http://echarts.baidu.com/blog/2017/03/23/new-release.html">ECharts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布</a>
+          </h2>
+          <div class="index-post-desc">
+            <p>在 ECharts 新发布的 3.5 版本中，新增了日历坐标系，增强了坐标轴指示器。同时，ECharts 统计扩展 1.0 版本发布了。日历坐标系用于在日历中绘制图表，坐标轴指示器方便用户观察数据内容，统计扩展是一个专门用来进行数据分析的工具。</p>
 
+          </div>
+          <div class="tag-panel">
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#新版本" title="Pages tagged 新版本" class="tag">-->
+              <span class="term">新版本</span>
+            <!--</a>-->
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#扩展" title="Pages tagged 扩展" class="tag">-->
+              <span class="term">扩展</span>
+            <!--</a>-->
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#教程" title="Pages tagged 教程" class="tag">-->
+              <span class="term">教程</span>
+            <!--</a>-->
+            
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-5">
+          <a class="index-post-image" href="http://echarts.baidu.com/blog/2017/03/23/new-release.html" title="ECharts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布" style="background-image: url(http://echarts.baidu.com/blog/images/post/2017-03-23/banner.png)">
+          </a>
+        </div>
 
-      </span><!-- /.entry-reading-time -->
-      
-    </div><!-- /.entry-meta -->
+        
+      </div>
+    </div>
+  
+  
     
-      <h1 class="entry-title"><a href="http://echarts.baidu.com/blog/2017/04/12/echarts-gl-alpha.html" rel="bookmark" title="ECharts GL 1.0 alpha 发布" itemprop="url">ECharts GL 1.0 alpha 发布</a></h1>
+  
     
-  </header>
-  <div class="entry-content">
-    <p>距离 ECharts-X 最近一个版本已经过去了两年多时间，期间我们不断被开发者在各种渠道询问 ECharts-X 为什么还不升级新版本，是不是不再维护了等等，对于这些问题我们只能回答我们还没准备好。尽管这两年时间 ECharts X 没什么动静，但是其它的工作，像 ECharts 3 的架构大改动和后续版本的迭代升级，以及其它 WebGL 产品的开发，都是对新版本架构和技术上的积累。现在我们终于可以说我们准备得差不多了，ECharts-X 的下一代，ECharts-GL 发布 1.0 alpha。</p>
-
-<p><a href="https://github.com/ecomfe/echarts-gl">ECharts GL</a> 是 ECharts 的 WebGL 扩展，其中提供了三维散点图，飞线图，柱状图，曲面图，地球等多种三维可视化方式。并且增加 <code class="highlighter-rouge">scatterGL</code>，<code class="highlighter-rouge">graphGL</code> 系列类型用于二维的散点图，关系图的加速绘制和布局。</p>
-
-<p>先来一张 Gallery 上 <a href="https://github.com/ecomfe/echarts-gl">ECharts GL</a> 的示例图片集。</p>
-
-<p><img src="http://echarts.baidu.com/blog/images/post/2017-04-12/demos.jpg" alt="" /></p>
-
-<p>下面会一一介绍 ECharts GL 的特性，如果你已经等不及想尝鲜了，可以直接在 Gallery 上查看编辑 ECharts GL 的示例。</p>
-
-<ul>
-  <li>
-    <p><a href="http://gallery.echartsjs.com/explore.html#tags=echarts-gl">GL 的 Gallery 示例</a></p>
-  </li>
-  <li>
-    <p><a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html">GL 的配置项手册</a></p>
-  </li>
-</ul>
-
-<h2 id="一更便捷的安装和引入">一、更便捷的安装和引入</h2>
-
-<p>大家用过 ECharts-X 的话，或许曾被其繁琐的引入方式困扰过，甚至可能因为尝试了很多次都没办法正确引入而选择放弃。</p>
-
-<p>ECharts-GL 中大大简化了引入方式，在标签引入的环境下。你可以从 <a href="https://github.com/ecomfe/echarts-gl/tree/master/dist">GitHub</a> 上获取 ECharts GL 后直接引入构建好的文件.</p>
-
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">data</span><span class="o">-</span><span class="nx">src</span><span class="o">=</span><span class="s2">"echarts/dist/echarts.min.js"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
-</span><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">data</span><span class="o">-</span><span class="nx">src</span><span class="o">=</span><span class="s2">"echarts-gl/dist/echarts-gl.min.js"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
-</span></code></pre>
-</div>
-
-<p>如果你用 webpack 和 npm 作为开发环境。也只需要在 <code class="highlighter-rouge">npm install echarts-gl</code> 之后再<code class="highlighter-rouge">require</code>引入。</p>
-
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">require</span><span class="p">(</span><span class="s1">'echarts-gl'</span><span class="p">);</span>
-</code></pre>
-</div>
-
-<h2 id="二更多三维可视化类型">二、更多三维可视化类型。</h2>
-
-<p>除了老版本的<a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#globe">地球</a>用于地理数据可视化，ECharts GL 新增了三维的<a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#grid3D">笛卡尔坐标系</a>、<a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#geo3D">地理坐标系</a>，并且在这些新的三维坐标系基础上提供了六个新的系列类型，包括 <a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-scatter3D">散点图 scatter3D</a>、<a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-line3D">折线图 line3D</a>、<a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-bar3D">柱状图 bar3D</a>、<a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-surface">曲面图 surface</a>、<a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-lines3D">飞线图 lines3D</a>以及<a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-map3D">地图 map3D</a></p>
-
-<p>这些新的系列类型以及组件类型都是使用 WebGL 绘制，因此能够保证高质量，高性能的展示出你想要的三维可视化作品。</p>
-
-<p>同时我们在配置项的设计上尽量沿用了 ECharts 的风格，保证简洁统一。比如下面这个配置就能画出一个简单的三维散点图。</p>
-
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">option</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="na">grid3D</span><span class="p">:</span> <span class="p">{},</span>
-    <span class="na">xAxis3D</span><span class="p">:</span> <span class="p">{},</span>
-    <span class="na">yAxis3D</span><span class="p">:</span> <span class="p">{},</span>
-    <span class="na">zAxis3D</span><span class="p">:</span> <span class="p">{},</span>
-    <span class="na">series</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="na">type</span><span class="p">:</span> <span class="s1">'scatter3D'</span><span class="p">,</span>
-        <span class="na">symbolSize</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
-        <span class="na">data</span><span class="p">:</span> <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span>
-        <span class="na">itemStyle</span><span class="p">:</span> <span class="p">{</span>
-            <span class="na">opacity</span><span class="p">:</span> <span class="mi">1</span>
-        <span class="p">}</span>
-    <span class="p">}]</span>
-<span class="p">};</span>
-</code></pre>
-</div>
-<blockquote>
-  <p>这里跟 ECharts 有点区别，GL 中尝试了更扁平的 option 设计，使用场景更少的 emphasis 属性将会单独移出来，而原先 normal 这个层级将被移除，itemStyle 下的属性相当于原先 itemStyle.normal 下的属性。如果这次尝试没问题，接下来 ECharts 新的大版本也会使用这种更扁平的设计。
-具体配置结构见 <a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-scatter3D.itemStyle">https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-scatter3D.itemStyle</a></p>
-</blockquote>
-
-<p>大部分 GL 中的三维组件和系列都会带上<code class="highlighter-rouge">3D</code>后缀以便跟 ECharts 中的组件系列区分开。</p>
-
-<p>下面这个更复杂点的例子使用<code class="highlighter-rouge">scatter3D</code>可视化了三维的 <a href="https://en.wikipedia.org/wiki/Simplex_noise">Simplex Noise</a></p>
-
-<p><a href="http://gallery.echartsjs.com/editor.html?c=xBkWoZOjTe">
-    <img src="http://echarts.baidu.com/blog/images/post/2017-04-12/simplex-noise.jpg" alt="" />
-</a></p>
-
-<p>除了三维的散点图，你也可以在笛卡尔坐标系上画 <a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-line3D">折线图 line3D</a>，<a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-bar3D">柱状图 bar3D</a>，<a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-surface">曲面图 surface</a>。</p>
-
-<p>其中 <a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-line3D">line3D</a>，<a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-bar3D">bar3D</a> 也是对 ECharts 中的折线图，柱状图扩展到了三维的版本。而 <a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-surface">surface</a> 是 ECharts GL 里全新的三维图。</p>
-
-<p>你可以像下面这样用 <a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-surface">surface</a> 画函数曲面。</p>
-
-<p><a href="http://gallery.echartsjs.com/editor.html?c=xHkcYXm9pe">
-    <img src="http://echarts.baidu.com/blog/images/post/2017-04-12/surface.png" alt="" />
-</a></p>
-
-<p>也可以像这样用曲面去可视化像图片像素这样的数据</p>
-
-<p><a href="http://gallery.echartsjs.com/editor.html?c=xBk5PSvqpx">
-    <img src="http://echarts.baidu.com/blog/images/post/2017-04-12/image-pixels.jpg" alt="" />
-</a></p>
-
-<p>甚至你可以用参数方程构建出下面这样有趣的参数曲面</p>
-
-<p><a href="http://gallery.echartsjs.com/editor.html?c=xHku9OE96l">
-    <img src="http://echarts.baidu.com/blog/images/post/2017-04-12/parametric-surface.jpg" alt="" />
-</a></p>
-
-<p>除了三维笛卡尔坐标系，像柱状图，散点图也可以显示在<a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#globe">地球</a>，<a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#geo3D">三维地理坐标系</a>上。</p>
-
-<p>比如下面这个例子就是在地球上通过散点图绘制世界人口。</p>
-
-<p><a href="http://gallery.echartsjs.com/editor.html?c=xS1moC0s6x">
-    <img src="http://echarts.baidu.com/blog/images/post/2017-04-12/high-quality-2.jpg" style="width:100%;" alt="" />
-</a></p>
-
-<p>你可以大胆的组合不同坐标系和系列，制作出更具创造力的可视化作品！</p>
-
-<h2 id="三高品质的画面">三、高品质的画面</h2>
-
-<p>在很多场景里，高品质的画面是一个很重要的需求，例如：</p>
-
-<ul>
-  <li>
-    <p>在大屏中，需要提供炫酷的，一下能够抓住人眼球的特效。</p>
-  </li>
-  <li>
-    <p>生成需要放在文章或者 PPT 中的截图，需要高质量的渲染，不能有廉价三维效果的感觉。</p>
-  </li>
-</ul>
-
-<p>ECharts GL 提供了一系列诸如<a href="http://localhost/echarts-doc/public/cn/option-gl.html#geo3D.postEffect.depthOfField">景深</a>，<a href="http://localhost/echarts-doc/public/cn/option-gl.html#geo3D.postEffect.bloom">光晕</a>，<a href="http://localhost/echarts-doc/public/cn/option-gl.html#geo3D.postEffect.colorCorrection">颜色纠正</a>，<a href="http://localhost/echarts-doc/public/cn/option-gl.html#geo3D.postEffect.SSAO">阴影</a>，<a href="http://localhost/echarts-doc/public/cn/option-gl.html#geo3D.light.ambientCubemap">基于物理的渲染</a> 等等开箱即用的配置项让你去方便的提升自己可视化作品的渲染效果。</p>
-
-<p>在这些配置项的基础上，你可以实现这样带景深的微缩模型的效果：</p>
-
-<p><img src="http://echarts.baidu.com/blog/images/post/2017-04-12/high-quality-1.jpg" style="width:100%;" alt="" /></p>
-
-<p>或者这样的基于物理渲染的金属零件的效果：</p>
-
-<p><img src="http://echarts.baidu.com/blog/images/post/2017-04-12/high-quality-3.jpg" style="width:100%;" alt="" /></p>
-
-<p>或者这样 Bling Bling 的影视广告特效：</p>
-
-<p><img src="http://echarts.baidu.com/blog/images/post/2017-04-12/high-quality-5.jpg" style="width:100%;" alt="" /></p>
-
-<p>又或者这样的大规模建筑群：</p>
-
-<p><img src="http://echarts.baidu.com/blog/images/post/2017-04-12/high-quality-4.jpg" style="width:100%;" alt="" /></p>
-
-<p>想要了解更多的效果，可以逛逛我们的<a href="http://gallery.echartsjs.com/explore.html#tags=echarts-gl">示例集</a></p>
-
-<h2 id="四二维可视化的加速">四、二维可视化的加速</h2>
-
-<p>除了三维的可视化，ECharts GL 还内置 <a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-scatterGL">scatterGL</a>, <a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-scatterGL">graphGL</a> 两个系列，能够大幅度的优化常见的二维散点图和关系图的绘制和布局性能。</p>
-
-<p>散点图也是比较常见的会有大数据量的系列类型。ECharts 尽管能绘制像微博签到图那样上十万的散点图，但是很难做到流畅的交互。拖拽、缩放等操作都会有卡顿。</p>
-
-<p>在 ECharts GL 里利用 WebGL 加速绘制后，可以无压力得绘制和实时的交互十万个数据的散点图了。</p>
-
-<p><a href="http://gallery.echartsjs.com/editor.html?c=xHJkXhU9Tg">
-<img src="http://echarts.baidu.com/blog/images/post/2017-04-12/weibo-checkin.jpg" alt="" /></a></p>
-
-<p>而且实现这一切只需要把原先的<code class="highlighter-rouge">scatter</code>类型改为<code class="highlighter-rouge">scatterGL</code>类型，不需要再做其它的改动！</p>
-
-<p>对于<a href="https://ecomfe.github.io/echarts-doc/public/cn/option-gl.html#series-scatterGL">关系图 graphGL</a>除了绘制上有加速之外，我们还在 WebGL 中实现了<a href="https://github.com/gephi/gephi/wiki/Force-Atlas-2">力引导布局</a>。在高端的显卡上 GPU 布局相对于 CPU 布局甚至能有上百倍的性能提升。</p>
-
-<p>下面是在<code class="highlighter-rouge">GTX1070</code>和<code class="highlighter-rouge">i7 4GHz</code>的电脑中对一个<code class="highlighter-rouge">两万</code>个节点，近<code class="highlighter-rouge">五万</code>条边的关系图一次布局的迭代的性能对比。</p>
-
-<p><img src="http://echarts.baidu.com/blog/images/post/2017-04-12/gpu-layout-perf.png" width="400px" alt="" /></p>
-
-<p>以及对这个关系图实时布局的视频。</p>
-
-<video controls="" width="100%" src="http://echarts.baidu.com/blog/images/post/2017-04-12/graphGL.mp4"></video>
-
-<p><code class="highlighter-rouge">2500</code>个节点的网格图使用 GPU 布局的例子（只支持 PC 端）。</p>
-
-<p><a href="http://gallery.echartsjs.com/editor.html?c=xrJchBL9ag">
-<img src="http://echarts.baidu.com/blog/images/post/2017-04-12/grid.jpg" alt="" /></a></p>
-
-<p>这里特别感谢 Gephi 提供了 Force Atlas2 这样在大规模关系数据上能够有稳定优良的布局结果的算法。</p>
-
-<h2 id="五与-echarts-交互组件的结合">五、与 ECharts 交互组件的结合</h2>
-
-<p>ECharts GL 作为一个扩展，并不是独立的，它提供的系列和组件能够和 ECharts 中的大部分组件组合使用。你可以使用 <a href="http://echarts.baidu.com/option.html#visualMap">visualMap</a> 组件对 GL 中的系列进行颜色，大小，不透明的编码，可以用 <a href="http://echarts.baidu.com/option.html#tooltip">tooltip</a> 组件显示 GL 中图形的数据信息，也可以用 <a href="http://echarts.baidu.com/option.html#legend">legend</a> 筛选出想要展示的系列等等。</p>
-
-<p>例如下面这个例子用 <a href="http://echarts.baidu.com/option.html#visualMap">visualMap</a> 组件对柱状图做了颜色的映射，而且能够通过控件筛选出区间内的数据</p>
-
-<p><a href="http://gallery.echartsjs.com/editor.html?c=xSyMekmcTx">
-<img src="http://echarts.baidu.com/blog/images/post/2017-04-12/visual-map.jpg" alt="" /></a></p>
-
-<p>当然除此之外，你也可以在一个实例里任意混搭使用 ECharts GL 的组件以及 ECharts 的组件。</p>
-
-<h2 id="六移动端兼容">六、移动端兼容</h2>
-
-<p>现在很多移动端的浏览器已经支持 WebGL 了，特别是像 iOS 系统对 WebGL 的扩展特性等支持得非常完善。所以用 ECharts GL 制作的大部分例子都能在 iOS 上流畅无压力的运行。在交互上 ECharts GL 也对移动端做了兼容处理，支持平移，双指缩放等等。</p>
-
-<p>如果你现在不是在手机上浏览这篇文章，可以稍后在手机上打开 <a href="http://gallery.echartsjs.com/">http://gallery.echartsjs.com/</a> 看看效果。</p>
-
-<p>下面是在 iPhone 6 上实时预览前面示例中参数曲面的效果。</p>
-
-<video controls="" width="100%" src="http://echarts.baidu.com/blog/images/post/2017-04-12/mobile.mp4"></video>
-
-<h2 id="更多">更多</h2>
-
-<p>ECharts GL 1.0 alpha 只是个开始，在正式版发布之前，我们还会对画面，交互的细节，动画，性能等等做更多的优化。大家使用过程中有任何的问题或者建议都可以在 GitHub 上跟我们反馈，
-我们也非常期待大家能够利用 ECharts GL 做出让我们想象不到的作品。</p>
-
-
-  </div><!-- /.entry-content -->
-</article><!-- /.hentry -->
-
-
-
-<article class="hentry">
-  <header>
-    
-      <div class="entry-image-index">
-        <a href="http://echarts.baidu.com/blog/2017/03/23/new-release.html" title="echarts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布"><img src="http://echarts.baidu.com/blog/images/post/2017-03-23/banner.png" alt="echarts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布"></a>
-      </div><!-- /.entry-image -->
-    
-    <div class="entry-meta">
-      <span class="entry-date date published updated"><time datetime="2017-03-23T00:00:00+08:00"><a href="http://echarts.baidu.com/blog/2017/03/23/new-release.html">2017-03-23</a></time></span><span class="author vcard"><span class="fn"><a href="http://echarts.baidu.com/blog/about/" title="About ECharts">ECharts</a></span></span>
-      
-      <span class="entry-reading-time">
-        <i class="fa fa-clock-o"></i>
+    <div class="index-post">
+      <div class="row">
         
 
-预计阅读时间：1 分钟
+        <div class="index-post-content col-md-8 col-sm-7">
+          <h2>
+            <a href="http://echarts.baidu.com/blog/2017/03/15/echarts-dataAbstraction-tutorial.html">可视化中的数据</a>
+          </h2>
+          <div class="index-post-desc">
+            <p>当下随着大数据热潮的到来，数据可视化作为一个新兴的领域，受到了学术界和工业界的重视。从可视分析、数据新闻到商业报表，各个领域都在越来越多的使用它。既然是数据可视化，说明数据是主体，可视化只是将数据以可视的形式表达的手段。接下来小编就与大家一起揭开可视化中数据的面纱，一探究竟。</p>
 
+          </div>
+          <div class="tag-panel">
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#可视化" title="Pages tagged 可视化" class="tag">-->
+              <span class="term">可视化</span>
+            <!--</a>-->
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#教程" title="Pages tagged 教程" class="tag">-->
+              <span class="term">教程</span>
+            <!--</a>-->
+            
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-5">
+          <a class="index-post-image" href="http://echarts.baidu.com/blog/2017/03/15/echarts-dataAbstraction-tutorial.html" title="可视化中的数据" style="background-image: url(http://echarts.baidu.com/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-dataset.png)">
+          </a>
+        </div>
 
-      </span><!-- /.entry-reading-time -->
-      
-    </div><!-- /.entry-meta -->
+        
+      </div>
+    </div>
+  
+  
     
-      <h1 class="entry-title"><a href="http://echarts.baidu.com/blog/2017/03/23/new-release.html" rel="bookmark" title="echarts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布" itemprop="url">echarts v3.5 发布：新增日历坐标系、坐标轴指示器；同时统计扩展 v1.0 发布</a></h1>
-    
-  </header>
-  <div class="entry-content">
-    <p>在 echarts 新发布的 <a href="https://github.com/ecomfe/echarts/releases/tag/3.5.0">3.5 版本</a>中，新增了日历坐标系，增强了坐标轴指示器。同时，<a href="https://github.com/ecomfe/echarts-stat">echarts 统计扩展</a> 1.0 版本发布了。日历坐标系用于在日历中绘制图表，坐标轴指示器方便用户观察数据内容，统计扩展是一个专门用来进行数据分析的工具。</p>
-
-<h2 id="统计扩展">统计扩展</h2>
-
-<p>统计扩展是一个专门用来进行数据分析的工具，目前主要包含了二维的回归、多维的聚类以及一些常用的统计功能。</p>
-
-<p>扩展中的回归算法不仅包含了常用的线性回归，还包含了指数回归、对数回归、以及多项式回归。</p>
-
-<p>线性回归的示例：</p>
-<div class="ec-lazy" data-thumb="http://echarts.baidu.com/blog/images/post/2017-03-23/xS1bQ2AMKe.png" data-src="http://gallery.echartsjs.com/view.html?cid=xS1bQ2AMKe" style="width: 100%; height: 400px"></div>
-
-<p>对数回归的示例：</p>
-<div class="ec-lazy" data-thumb="http://echarts.baidu.com/blog/images/post/2017-03-23/xry3aWkmYe.png" data-src="http://gallery.echartsjs.com/view.html?cid=xry3aWkmYe" style="width: 100%; height: 400px"></div>
-
-<p>秉承了可视分析的宗旨，我们的多维聚类分析，不仅可以静态地产出数据集聚类的结果，还可以动态地查看整个聚类分析的过程。</p>
-
-<p>静态地产出数据集聚类的结果的示例：</p>
-<div class="ec-lazy" data-thumb="http://echarts.baidu.com/blog/images/post/2017-03-23/xSkBOEaGtx.png" data-src="http://gallery.echartsjs.com/view.html?cid=xSkBOEaGtx" style="width: 100%; height: 400px"></div>
-
-<p>动态地查看整个聚类分析的过程的示例：</p>
-<div class="ec-lazy" data-thumb="http://echarts.baidu.com/blog/images/post/2017-03-23/xHyr-esMtg.png" data-src="http://gallery.echartsjs.com/view.html?cid=xHyr-esMtg" style="width: 100%; height: 400px"></div>
-
-<p>和 echarts 中的原生图表不一样，统计扩展是作为一个扩展工具发布的。这意味着，在 echarts 官网下载的完整版本将不包含该扩展包。统计扩展和 echarts 结合使用时，需要在引入 <code class="highlighter-rouge">echarts.js</code> 之后，另外引入统计扩展对应的 <code class="highlighter-rouge">ecStat.js</code>。可以在 <a href="https://github.com/ecomfe/echarts-stat/releases/latest">这里 (GitHub)</a> 找到最新版本，其中 <code class="highlighter-rouge">dist/ecStat.js</code> 可作为单文件引用。</p>
-
-<p>如果想了解更多内容请前往 <a href="https://github.com/ecomfe/echarts-stat">统计扩展 GitHub 首页</a>。</p>
-
-<h2 id="日历坐标系">日历坐标系</h2>
-
-<p>日历坐标系，是一种新的 echarts 坐标系，提供了在日历上绘制图表的能力。例如可以在日历坐标系上放置热力图、散点图、关系图等。如下示例：</p>
-
-<p>在日历坐标系中使用热力图：</p>
-<div class="ec-lazy" data-thumb="http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png" data-src="http://echarts.baidu.com/gallery/view.html?c=calendar-heatmap&amp;edit=1&amp;reset=1" style="width: 100%; height: 300px"></div>
-
-<p>在日历坐标系中使用散点图：</p>
-<div class="ec-lazy" data-thumb="http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png" data-src="http://echarts.baidu.com/gallery/view.html?c=calendar-effectscatter&amp;edit=1&amp;reset=1" style="width: 100%; height: 600px"></div>
-
-<p>还可以混合放置不同的图表，例如下例子，同时放置了热力图和关系图：</p>
-<div class="ec-lazy" data-thumb="http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png" data-src="http://echarts.baidu.com/gallery/view.html?c=calendar-graph&amp;edit=1&amp;reset=1" style="width: 100%; height: 600px"></div>
-
-<p><strong>水平和垂直放置日历</strong></p>
-
-<p>在日历坐标系可以水平放置，也可以垂直放置。如上面的例子，使用热力图时，经常是水平放置的。但是如果需要格子的尺寸大些，水平放置就过于宽了，于是也可以选择垂直放置。参见 <a href="http://echarts.baidu.com/option.html#calendar.orient">calendar.orient</a>。</p>
-
-<p><strong>尺寸的自适应</strong></p>
-
-<p>日历坐标系支持不同尺寸的容器（页面）大小变化的自适应。首先，和 echarts 其他组件一样，日历坐标系可以选择使用 <a href="http://echarts.baidu.com/option.html#calendar.left">left</a>，<a href="http://echarts.baidu.com/option.html#calendar.right">right</a>，<a href="http://echarts.baidu.com/option.html#calendar.top">top</a>，<a href="bottom">bottom</a>，<a href="http://echarts.baidu.com/option.html#calendar.width">width</a>，<a href="http://echarts.baidu.com/option.html#calendar.height">height</a> 来描述尺寸和位置，从而将日历摆放在上下左右各种位置，并随着页面尺寸变动而改变自身尺寸。另外，也可以使用 <a href="http://echarts.baidu.com/option.html#calendar.cellSize">cellSize</a> 来固定日历格子的长宽。</p>
-
-<p><strong>中西方日历习惯的支持</strong></p>
-
-<p>中西方日历有所差别，西方常使用星期日作为一周的第一天，中国使用星期一为一周的第一天。日历坐标系做了这种切换的支持。参见 <a href="http://echarts.baidu.com/option.html#calendar.dayLabel.firstDay">calendar.dayLabel.firstDay</a>。</p>
-
-<p>另外，日历上的『月份』和『星期几』的文字，也可以较方便的切换中英文，甚至自定义。参见 <a href="http://echarts.baidu.com/option.html#calendar.dayLabel.nameMap">calendar.dayLabel.nameMap</a> <a href="http://echarts.baidu.com/option.html#calendar.monthLabel.nameMap">calendar.monthLabel.nameMap</a>。</p>
-
-<p><strong>其他更丰富的效果</strong></p>
-
-<p>灵活利用 echarts 图表和坐标系的组合，以及 API，可以实现更丰富的效果。</p>
-
-<p>例如，制作农历：</p>
-<div class="ec-lazy" data-thumb="http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png" data-src="http://echarts.baidu.com/gallery/view.html?c=calendar-lunar&amp;edit=1&amp;reset=1" style="width: 100%; height: 500px"></div>
-
-<p>下面这个例子，使用 <code class="highlighter-rouge">chart.convertToPixel</code> 接口，实现了饼图放置在日历坐标系中的效果。</p>
-<div class="ec-lazy" data-thumb="http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png" data-src="http://echarts.baidu.com/gallery/view.html?c=calendar-pie&amp;edit=1&amp;reset=1" style="width: 100%; height: 640px"></div>
-
-<h2 id="坐标轴指示器">坐标轴指示器</h2>
-
-<p>坐标轴指示器 （axisPointer）指的是，鼠标悬浮到坐标系上时出现的竖线、阴影区域等。它能帮助用户观察数据。echarts 原有的坐标轴指示器本次被整理和增强了，加入了文本标签，自动吸附到数据，以及移动触屏的手柄拖拽交互，以及支持了多个坐标系中指示器的联动。</p>
-
-<p>下面是一个K线图的示例。使用坐标轴指示器，能够比较方便得观察到每一项对应的 y 值。</p>
-<div class="ec-lazy" data-thumb="http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png" data-src="http://echarts.baidu.com/gallery/view.html?c=doc-example/candlestick-axisPointer&amp;edit=1&amp;reset=1" style="width: 100%; height: 450px"></div>
-
-<p>上例中，使用了 <a href="http://echarts.baidu.com/option.html#axisPointer.link">axisPointer.link</a> 来关联上下两个直角坐标系的 axisPointer，使他们同步运动。</p>
-
-<p>坐标轴指示器也提供了一种适合触屏的交互方式，使用手柄来拖拽坐标轴指示器。如果触屏上和鼠标操作一样，在坐标系内部拖拽操作坐标轴指示器，那么手指可能会挡住图表，并且可能和『数据区域缩放移动』操作冲突。用单独的拖拽手柄，可以改善这个问题。</p>
-
-<div class="ec-lazy" data-thumb="http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png" data-src="http://echarts.baidu.com/gallery/view.html?c=line-tooltip-touch&amp;edit=1&amp;reset=1" style="width: 100%; height: 400px"></div>
-
-<p>这是另一个例子：</p>
-<div class="ec-lazy" data-thumb="http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png" data-src="http://echarts.baidu.com/gallery/view.html?c=candlestick-touch&amp;edit=1&amp;reset=1" style="width: 100%; height: 400px"></div>
-
-<p>坐标轴指示器在多轴的场景能起到辅助作用，清晰得显示出对比数值，甚至可以在坐标轴指示器的文本标签内定制表达更多信息：</p>
-
-<div class="ec-lazy" data-thumb="http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png" data-src="http://echarts.baidu.com/gallery/view.html?c=multiple-y-axis&amp;edit=1&amp;reset=1" style="width: 100%; height: 300px"></div>
-
-<div class="ec-lazy" data-thumb="http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png" data-src="http://echarts.baidu.com/gallery/view.html?c=multiple-x-axis&amp;edit=1&amp;reset=1" style="width: 100%; height: 300px"></div>
-
-<p>最后提供一个内容更丰富些的例子，其中也使用了 <a href="http://echarts.baidu.com/option.html#axisPointer.link">axisPointer.link</a> 来联动不同的坐标轴指示器。他关联和高亮了处于不同坐标系中的相互对应的点。</p>
-
-<div class="ec-lazy" data-thumb="http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png" data-src="http://echarts.baidu.com/gallery/view.html?c=scatter-nutrients-matrix&amp;edit=1&amp;reset=1" style="width: 100%; height: 640px"></div>
-
-
-  </div><!-- /.entry-content -->
-</article><!-- /.hentry -->
-
-
-
-<article class="hentry">
-  <header>
-    
-      <div class="entry-image-index">
-        <a href="http://echarts.baidu.com/blog/2017/03/23/new-release-en.html" title="ECharts v3.5 Released, Publishing Calendar Coordinate System and Enhanced Axis Pointer, Meanwhile Statistic Extension v1.0 Released"><img src="http://echarts.baidu.com/blog/images/post/2017-01-13-new-release-theme-river.png" alt="ECharts v3.5 Released, Publishing Calendar Coordinate System and Enhanced Axis Pointer, Meanwhile Statistic Extension v1.0 Released"></a>
-      </div><!-- /.entry-image -->
-    
-    <div class="entry-meta">
-      <span class="entry-date date published updated"><time datetime="2017-03-23T00:00:00+08:00"><a href="http://echarts.baidu.com/blog/2017/03/23/new-release-en.html">2017-03-23</a></time></span><span class="author vcard"><span class="fn"><a href="http://echarts.baidu.com/blog/about/" title="About ECharts">ECharts</a></span></span>
-      
-      <span class="entry-reading-time">
-        <i class="fa fa-clock-o"></i>
+    <div class="index-post">
+      <div class="row">
         
 
-预计阅读时间：13 分钟
+        <div class="index-post-content col-md-8 col-sm-7">
+          <h2>
+            <a href="http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html">ECharts 水球图教程</a>
+          </h2>
+          <div class="index-post-desc">
+            <p>水球图是一种适合于展现单个百分比数据的图表类型，ECharts 的水球图插件使你能够通过非常简单的配置，实现酷炫的数据展示效果。本文将会介绍，如何使用 ECharts 水球图。</p>
 
+          </div>
+          <div class="tag-panel">
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#扩展" title="Pages tagged 扩展" class="tag">-->
+              <span class="term">扩展</span>
+            <!--</a>-->
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#教程" title="Pages tagged 教程" class="tag">-->
+              <span class="term">教程</span>
+            <!--</a>-->
+            
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-5">
+          <a class="index-post-image" href="http://echarts.baidu.com/blog/2017/02/21/echarts-liquidfill-chart-tutorial.html" title="ECharts 水球图教程" style="background-image: url(http://echarts.baidu.com/blog/images/post/2017-02-21-echarts-liquidfill-chart-tutorial.gif)">
+          </a>
+        </div>
 
-      </span><!-- /.entry-reading-time -->
-      
-    </div><!-- /.entry-meta -->
+        
+      </div>
+    </div>
+  
+  
     
-      <h1 class="entry-title"><a href="http://echarts.baidu.com/blog/2017/03/23/new-release-en.html" rel="bookmark" title="ECharts v3.5 Released, Publishing Calendar Coordinate System and Enhanced Axis Pointer, Meanwhile Statistic Extension v1.0 Released" itemprop="url">ECharts v3.5 Released, Publishing Calendar Coordinate System and Enhanced Axis Pointer, Meanwhile Statistic Extension v1.0 Released</a></h1>
+  
     
-  </header>
-  <div class="entry-content">
-    <p>We are releasing <a href="https://github.com/ecomfe/echarts/releases/tag/3.5.0">echarts v3.5</a>, where calendar coodinate system is supported and axis pointer is enhanced. Meanwhile <a href="https://github.com/ecomfe/echarts-stat">echarts statistic extension</a> v1.0 is published.</p>
-
-<p>Calendar coordiante system is a new type of echarts coordiante system, which can used to locate different charts (For example, scatter, heatmap, graph, pie, or even other coordinate systems like cartesian).</p>
-
-<p>The original axis pointer is enhance significantly, which currently supports text label, a new interaction approach for touch device, and other detailed configurations. Besides, that synchronization between axis pointers of different coordinate systems is supported.</p>
-
-<p>Statistic extension is a JavaScript liberary for statistics and data mining, including two-dimensional regression, multi-dimensional clustering and some commonly used statistical functions in v1.0.</p>
-
-<h2 id="statistical-extension">Statistical Extension</h2>
-
-<p>Statistical extension is a statistical and data mining tool for <a href="https://github.com/ecomfe/echarts">echarts</a>. At present, it mainly includes two-dimensional regression, multi-dimensional clustering and some commonly used statistical functions.</p>
-
-<p>The regression algorithm in the extension not only contains the commonly used linear regression, but also contains exponential regression, logarithmic regression, and polynomial regression.</p>
-
-<p>An example of linear regression:</p>
-<div class="ec-lazy" data-thumb="http://echarts.baidu.com/blog/images/post/2017-03-23/xS1bQ2AMKe.png" data-src="http://gallery.echartsjs.com/view.html?cid=xS1bQ2AMKe" style="width: 100%; height: 400px"></div>
-
-<p>An example of logarithmic regression:</p>
-<div class="ec-lazy" data-thumb="http://echarts.baidu.com/blog/images/post/2017-03-23/xry3aWkmYe.png" data-src="http://gallery.echartsjs.com/view.html?cid=xry3aWkmYe" style="width: 100%; height: 400px"></div>
-
-<p>Adhering to the purpose of visual analysis, our multi-dimensional clustering analysis, can not only statically produce the results of clustering of dataset, but also dynamically view the entire clustering analysis process.</p>
-
-<p>An example of the result of dataset clustering:</p>
-<div class="ec-lazy" data-thumb="http://echarts.baidu.com/blog/images/post/2017-03-23/xSkBOEaGtx.png" data-src="http://gallery.echartsjs.com/view.html?cid=xSkBOEaGtx" style="width: 100%; height: 400px"></div>
-
-<p>An example demonstrating the entire process of clustering:</p>
-<div class="ec-lazy" data-thumb="http://echarts.baidu.com/blog/images/post/2017-03-23/xHyr-esMtg.png" data-src="http://gallery.echartsjs.com/view.html?cid=xHyr-esMtg" style="width: 100%; height: 400px"></div>
-
-<p>Unlike built-in charts in echarts, Statistical Extension is a extension of echarts, which is not intergrated by echarts by default, and you need to inclued <code class="highlighter-rouge">ecStat.js</code> after <code class="highlighter-rouge">echarts.js</code>. You can find the file <code class="highlighter-rouge">dist/ecStat.js</code> in the latest released version at <a href="https://github.com/ecomfe/echarts-stat/releases/latest">here (GitHub)</a>.</p>
-
-<p>If you would like to know more, please visit the <a href="https://github.com/ecomfe/echarts-stat">Statistical Extension GitHub Home</a></p>
-
-<h2 id="calendar-coordinate-system">Calendar Coordinate System</h2>
-
-<p>Calendar coordiante system is a new type of echarts coordiante system, which can used to locate different charts (For example, scatter, heatmap, graph, pie, or even other coordinate systems like cartesian).</p>
-
-<p>Using heatmap in calendar:</p>
-<div class="ec-lazy" data-thumb="https://ecomfe.github.io/echarts-examples/public/data/thumb/bubble-gradient.png" data-src="https://ecomfe.github.io/echarts-examples/public/view.html?c=calendar-heatmap&amp;edit=1&amp;reset=1" style="width: 100%; height: 300px"></div>
-
-<p>Using scatter in calendar:</p>
-<div class="ec-lazy" data-thumb="https://ecomfe.github.io/echarts-examples/public/data/thumb/bubble-gradient.png" data-src="https://ecomfe.github.io/echarts-examples/public/view.html?c=calendar-effectscatter&amp;edit=1&amp;reset=1" style="width: 100%; height: 600px"></div>
-
-<p>Different types of chart can be place on calendar coordinate system together.</p>
-
-<p>Both place heatmap and graph chart in calendar:</p>
-<div class="ec-lazy" data-thumb="https://ecomfe.github.io/echarts-examples/public/data/thumb/bubble-gradient.png" data-src="https://ecomfe.github.io/echarts-examples/public/view.html?c=calendar-graph&amp;edit=1&amp;reset=1" style="width: 100%; height: 600px"></div>
-
-<p><strong>Calendar layout:</strong></p>
-
-<p>Calendar coordinate system can be placed horizontally or vertically. By convention, the heatmap calendar is horizontal. But if we need bigger cell size in other cases, the total width may be too wide. So <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#calendar.orient">calendar.orient</a> can help in this case.</p>
-
-<p><strong>Adapt to container size:</strong></p>
-
-<p>Calendar coordinate system can be configured to adapt to container size, which is useful when page size is not sure. First of all, like other components, those location and size configurations can be specified on canlendar: <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#calendar.left">left</a>, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#calendar.right">right</a>, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#calendar.top">top</a>, <a href="bottom">bottom</a>, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#calendar.width">width</a>, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#calendar.height">height</a>, which make calendar possible to modify its size according to container size. Besides, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#calendar.cellSize">cellSize</a> can be specified to fix the size of each cell of calendar.</p>
-
-<p><strong>More effects:</strong></p>
-
-<p>Feel free to combination charts and calendar coordinate systems. You may achieve awesome effects.</p>
-
-<p>For example, using API <code class="highlighter-rouge">chart.convertToPixel</code> to locate pie charts on calendar.</p>
-<div class="ec-lazy" data-thumb="https://ecomfe.github.io/echarts-examples/public/data/thumb/bubble-gradient.png" data-src="https://ecomfe.github.io/echarts-examples/public/view.html?c=calendar-pie&amp;edit=1&amp;reset=1" style="width: 100%; height: 640px"></div>
-
-<h2 id="axis-pointer">Axis Pointer</h2>
-
-<p>The term “Axis Pointer” refers the appearing line, shadow block and text label when mouse hovering or clicking on a coordinate system, which helps users to have insight into the data.</p>
-
-<p>The original axis pointer is enhance significantly, which currently supports text label, a new approach of interaction on touch device, and other detailed configurations. Besides, that synchronization between axis pointers of different coordinate systems is supported.</p>
-
-<p>An example, where axis pointers can be displayed in candlestick.</p>
-<div class="ec-lazy" data-thumb="https://ecomfe.github.io/echarts-examples/public/data/thumb/bubble-gradient.png" data-src="https://ecomfe.github.io/echarts-examples/public/view.html?c=doc-example/candlestick-axisPointer&amp;edit=1&amp;reset=1" style="width: 100%; height: 450px"></div>
-
-<p>In the example above, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#axisPointer.link">axisPointer.link</a> is used to synchronize axes from the two different cartesian coordiante system.</p>
-
-<p>Besides, a approach of interaction on touch devices is supported, where axis pointer is alwayed displayed, and a handle button can be dragged to move the axis pointer, which makes the finger not block the view to charts any more.</p>
-
-<div class="ec-lazy" data-thumb="https://ecomfe.github.io/echarts-examples/public/data/thumb/bubble-gradient.png" data-src="https://ecomfe.github.io/echarts-examples/public/view.html?c=line-tooltip-touch&amp;edit=1&amp;reset=1" style="width: 100%; height: 400px"></div>
-
-<p>This is another example:</p>
-<div class="ec-lazy" data-thumb="http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png" data-src="http://echarts.baidu.com/gallery/view.html?c=candlestick-touch&amp;edit=1&amp;reset=1" style="width: 100%; height: 400px"></div>
-
-<p>These examples demonstrating the effect of mutiple axes with axis pointers:</p>
-
-<div class="ec-lazy" data-thumb="https://ecomfe.github.io/echarts-examples/public/data/thumb/bubble-gradient.png" data-src="https://ecomfe.github.io/echarts-examples/public/view.html?c=multiple-y-axis&amp;edit=1&amp;reset=1" style="width: 100%; height: 300px"></div>
-
-<div class="ec-lazy" data-thumb="https://ecomfe.github.io/echarts-examples/public/data/thumb/bubble-gradient.png" data-src="https://ecomfe.github.io/echarts-examples/public/view.html?c=multiple-x-axis&amp;edit=1&amp;reset=1" style="width: 100%; height: 300px"></div>
-
-<p>At last, let’s see a more complicated example, where <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#axisPointer.link">axisPointer.link</a> is also be used to synchronize axis pointers of different axes.</p>
-
-<div class="ec-lazy" data-thumb="https://ecomfe.github.io/echarts-examples/public/data/thumb/bubble-gradient.png" data-src="https://ecomfe.github.io/echarts-examples/public/view.html?c=scatter-nutrients-matrix&amp;edit=1&amp;reset=1" style="width: 100%; height: 640px"></div>
-
-
-  </div><!-- /.entry-content -->
-</article><!-- /.hentry -->
-
-
-
-<article class="hentry">
-  <header>
-    
-      <div class="entry-image-index">
-        <a href="http://echarts.baidu.com/blog/2017/03/15/echarts-dataAbstraction-tutorial.html" title="可视化中的数据"><img src="http://echarts.baidu.com/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-dataset.png" alt="可视化中的数据"></a>
-      </div><!-- /.entry-image -->
-    
-    <div class="entry-meta">
-      <span class="entry-date date published updated"><time datetime="2017-03-15T00:00:00+08:00"><a href="http://echarts.baidu.com/blog/2017/03/15/echarts-dataAbstraction-tutorial.html">2017-03-15</a></time></span><span class="author vcard"><span class="fn"><a href="http://echarts.baidu.com/blog/about/" title="About ECharts">ECharts</a></span></span>
-      
-      <span class="entry-reading-time">
-        <i class="fa fa-clock-o"></i>
+    <div class="index-post">
+      <div class="row">
         
 
-预计阅读时间：1 分钟
+        <div class="index-post-content col-md-8 col-sm-7">
+          <h2>
+            <a href="http://echarts.baidu.com/blog/2017/01/13/new-release.html">ECharts 3.4 版本发布：新增象形柱图、主题河流图、水球图</a>
+          </h2>
+          <div class="index-post-desc">
+            <p>在 ECharts 新发布的 3.4 版本中，新增象形柱图、主题河流图、水球图三种新图表。象形柱图利用图片和形状表现数据，主题河流图可以用来表示事件或主题等在一段时间内变化，水球图常用来展现百分比数据。</p>
 
+          </div>
+          <div class="tag-panel">
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#新版本" title="Pages tagged 新版本" class="tag">-->
+              <span class="term">新版本</span>
+            <!--</a>-->
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#扩展" title="Pages tagged 扩展" class="tag">-->
+              <span class="term">扩展</span>
+            <!--</a>-->
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#教程" title="Pages tagged 教程" class="tag">-->
+              <span class="term">教程</span>
+            <!--</a>-->
+            
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-5">
+          <a class="index-post-image" href="http://echarts.baidu.com/blog/2017/01/13/new-release.html" title="ECharts 3.4 版本发布：新增象形柱图、主题河流图、水球图" style="background-image: url(http://echarts.baidu.com/blog/images/post/2017-01-13-new-release-theme-river.png)">
+          </a>
+        </div>
 
-      </span><!-- /.entry-reading-time -->
-      
-    </div><!-- /.entry-meta -->
-    
-      <h1 class="entry-title"><a href="http://echarts.baidu.com/blog/2017/03/15/echarts-dataAbstraction-tutorial.html" rel="bookmark" title="可视化中的数据" itemprop="url">可视化中的数据</a></h1>
-    
-  </header>
-  <div class="entry-content">
-    <p>当下随着大数据热潮的到来，数据可视化作为一个新兴的领域，受到了学术界和工业界的重视。从可视分析、数据新闻到商业报表，各个领域都在越来越多的使用它。既然是数据可视化，说明数据是主体，可视化只是将数据以可视的形式表达的手段。接下来小编就与大家一起揭开可视化中数据的面纱，一探究竟。</p>
-
-<h2 id="可视化什么数据抽象">可视化什么：数据抽象</h2>
-
-<p>既然是数据可视化，无可非议，可视化的元素肯定是数据，这里所指的数据是广义上的数据，包括文本、图片、声音等超媒体数据。ECharts在可视化过程中所涉及的四种基本数据集类型分别是表格数据、网状数据、场数据和几何空间（spatial）数据，像集合、列表等也是常用的数据集类型。这些基本数据集类型又是由不同的数据类组合构成的，这里的数据类是指可视化中所涉及的数据种类，主要包括四种数据类，分别是数据项、数据项的属性、链接（links）、位置。数据项的属性又可分为类别型和有序型两种，其中有序型又进一步细分为序数型和数值型，下面将分别介绍数据类，数据集类型，以及属性类型。</p>
-
-<h3 id="数据类">数据类</h3>
-
-<p>本文主要讨论ECharts中所涉及的四种基本数据类，分别是数据项、数据项的属性、链接、位置。数据项是指一个独立的实体，如关系数据表中的一行，或网络中的一个节点；属性是数据项的某个可被观测的特性，如年龄，性别等；链接是指数据项之间的关系，该数据类型在网状关系型数据集中用的比较多；位置是地理空间数据类型，指代二维或三维空间中的某个具体位置；下图展示了四种不同的数据集类型所包含的数据类。</p>
-
-<p><img src="http://echarts.baidu.com/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-datatypes.png" alt="data" /></p>
-
-<h3 id="数据集类型">数据集类型</h3>
-
-<p>数据集是指为了分析而收集的任何信息，数据集包括数据表，网状数据，场数据（本文主要关注信息可视化，而场数据主要应用于科学可视化，因而在此不作介绍）以及几何空间数据这四种基本类型，而现实世界中的数据集一般是由这四个基本类型中的一个或多个组合而成的。下图展示了四种不同数据集类型具体的内部结构。</p>
-
-<p><img src="http://echarts.baidu.com/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-dataset.png" alt="data" /></p>
-
-<h4 id="数据表">数据表</h4>
-
-<p>数据表是常用的数据集形式，由行和列组成。对于简单的扁平表格来说，每一行代表一个数据项，每一列代表一个属性，表格中的每一个单元格是由行号和列号索引的，保存着某个数据项的某个属性值；多维数据表在数据仓库中用的比较多，具有复杂的结构以及复杂的索引机制，一般来说，简单扁平表格至多具有一个键属性（key attribute），而多维表格具有多个键属性。</p>
-
-<h4 id="网状数据">网状数据</h4>
-
-<p>网状数据主要用来表明数据项之间具有某种关系，在网状数据中数据项通常被称为节点，两个节点之间的关系被称为链接，也就是网络中的边，并且节点和链接都可以拥有与之相关联的属性。树是一种具有层次结构的特殊类型网络数据，与一般网络数据相比，树没有回路，每一个子节点都对应唯一的一个父节点。</p>
-
-<h4 id="几何空间spatial数据">几何空间（spatial）数据</h4>
-
-<p>几何空间结构数据通过明确的几何空间位置指定数据项的形状信息，这些数据项可以是空间中的点、一维的直线或曲线、二维的平面或区域，以及三维的立方体。空间数据在不同的度量尺度上具有层级结构。这种层级结构要么是原始数据集固有的，要么是从原始数据集派生出来的。
-可视化中的数据主要以两种形式存在，一种是静态的数据文件，一种是动态的数据流。静态的数据文件是指可以同时获得完整的数据文件，而动态的数据流是指数据在不断的更新和变化。</p>
-
-<h3 id="属性类型">属性类型</h3>
-
-<p>属性类型主要分为类别型和有序型两种，有序型又可进一步分为序数型和数值型。有序型数据的排列方向有三种，分别是单向型，有公共零点的双向型，以及环状周期型，如下图所示，除此之外，属性也可能有层级结构。
-类别型属性是指名称上的不同，属性的值之间没有明确的排序，例如喜欢的球类运动包括足球、篮球、排球等。虽然类别型属性内部没有明确的排序，但任意外部的排序机制可以被应用在类别型属性上，如将球类运动的名字按字母顺序排列。
-有序型属性包括序数型属性和数值型属性，所有有序型属性都有隐含的排列顺序。对于序数型属性，如小中大，虽然我们不能对它进行完全的算术运算，但在属性的内部有明确定义的顺序，如大减去中并不是有意义的概念，但我们知道中介于大和小之间。数值属性与序数属性不同，它具有大小和量级的明确度量，并且支持算术比较，一般以整数和实数形式存在，如76米减去34米是个有意义的数值，并且它们之间的差是可以被度量的，像温度、高度、长度等都是数值属性。
-有序型数据可以是单向的有序序列，比如人的年龄，只能往一个方向递增，也可以是有公共零点的对向序列，如温度。有序型数据也可以是环状周期的，如时间相关的属性。
-在单个属性内部或者多个属性之间可能具有层级结构，如北京一年的交通事故数量，这是一个时间序列数据，具有时间属性，可以分层级聚合，可以分别按周、月、年聚合，在不同的时间聚合尺度下可能会发现数据集中有趣的模式。除了时间属性之外，地理空间数据也具有层级结构，如可以细分到省、市、县等。</p>
-
-<p><img src="http://echarts.baidu.com/blog/images/post/2017-03-15-echarts-dataAbstraction-tutorial-attribute.png" alt="" /></p>
-
-<h2 id="总结">总结</h2>
-<p>本文简要讨论了可视化中的数据，从数据的种类、数据集的类型以及属性的类型这三个角度阐述了可视化中需要可视表达的数据信息。</p>
-
-<h4 id="参考文献">参考文献</h4>
-
-<p>[1] Tamara Munzner.Visualization Analysis and Design. CRC Press, 2014.</p>
-
-  </div><!-- /.entry-content -->
-</article><!-- /.hentry -->
-
-
-
-
-<div class="pagination">
-  <ul class="inline-list">
-    
-    
-
-    
-    
-      <li><strong class="current-page">1</strong></li>
-    
-
-    
-    
-
-    
-    
-    
-
-    
-      
         
+      </div>
+    </div>
+  
+  
+    
+  
+    
+    <div class="index-post">
+      <div class="row">
         
+
+        <div class="index-post-content col-md-8 col-sm-7">
+          <h2>
+            <a href="http://echarts.baidu.com/blog/2016/06/13/echarts-map-tutorial.html">ECharts 实现地图散点图（下）</a>
+          </h2>
+          <div class="index-post-desc">
+            <p>作为国内良心开源软件的主页君，我们以后会为大家带来更多 ECharts 优质教程！本期，主页君邀请到了百度 EFE 美女前端工程师王说，为我们介绍如何在地图散点图。如果看得跃跃欲试，文末还有小作业，跟着主页君一起学 ECharts 吧！</p>
+
+          </div>
+          <div class="tag-panel">
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#地图" title="Pages tagged 地图" class="tag">-->
+              <span class="term">地图</span>
+            <!--</a>-->
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#教程" title="Pages tagged 教程" class="tag">-->
+              <span class="term">教程</span>
+            <!--</a>-->
+            
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-5">
+          <a class="index-post-image" href="http://echarts.baidu.com/blog/2016/06/13/echarts-map-tutorial.html" title="ECharts 实现地图散点图（下）" style="background-image: url(http://echarts.baidu.com/blog/images/post/2016-06-13-bmap-4.png)">
+          </a>
+        </div>
+
         
-        <li><a href="http://echarts.baidu.com/blog/page2/">2</a></li>
-      
+      </div>
+    </div>
+  
+  
     
+    <div class="index-post">
+      <div class="row">
+        
 
-    
-    
+        <div class="index-post-content col-md-8 col-sm-7">
+          <h2>
+            <a href="http://echarts.baidu.com/blog/2016/04/28/echarts-map-tutorial.html">ECharts 实现地图散点图（上）</a>
+          </h2>
+          <div class="index-post-desc">
+            <p>ECharts 作为国内应用最广泛的前端可视化生成工具，提供了丰富的图表展现方式和便捷的图表操作。ECharts 支持 geoJson 格式的地图，并且官网上提供了现成的 world，china 及全国34个省市自治区地图的下载。这篇文章中我们将会讲解如何使用 ECharts 实现一个中国地图上绘制的散点图。</p>
 
-    
-      <li><a href="http://echarts.baidu.com/blog/page3/">3</a></li>
-    
+          </div>
+          <div class="tag-panel">
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#地图" title="Pages tagged 地图" class="tag">-->
+              <span class="term">地图</span>
+            <!--</a>-->
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#教程" title="Pages tagged 教程" class="tag">-->
+              <span class="term">教程</span>
+            <!--</a>-->
+            
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-5">
+          <a class="index-post-image" href="http://echarts.baidu.com/blog/2016/04/28/echarts-map-tutorial.html" title="ECharts 实现地图散点图（上）" style="background-image: url(http://echarts.baidu.com/blog/images/post/2016-04-28-echarts-map-tutorial-scatter-2.png)">
+          </a>
+        </div>
 
-    
-    
-      <li><a href="http://echarts.baidu.com/blog/page2/" class="btn">Next</a></li>
-    
-  </ul>
+        
+      </div>
+    </div>
+  
+  
 </div>
 
-</div><!-- /#main -->
 
-<div class="footer-wrapper">
-  <footer role="contentinfo">
-    <span>&copy; 2017 ECharts. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/hpstr-jekyll-theme/" rel="nofollow">HPSTR Theme</a>.</span>
-  </footer>
-</div><!-- /.footer-wrapper -->
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 logo"><img src="http://echarts.baidu.com/images/echarts-footer-logo.png"/></div>
+            <div id="efe-product" class="col-md-2 col-sm-4 pc">
+                <h3>百度EFE更多产品</h3>
+                <ul id="efe-product">
+                    <li><a href="http://tushuo.baidu.com/?fr=echarts" target="_blank">图说</a></li>
+                    <li><a href="https://ecomfe.github.io/san/?fr=echarts" target="_blank">SAN</a></li>
+                    <li><a href="http://ecomfe.github.io/edp/?fr=echarts" target="_blank">EDP</a></li>
+                    <li><a href="http://github.com/ecomfe/zrender/?fr=echarts" target="_blank">ZRender</a></li>
+                    <li><a href="http://fecs.baidu.com/?fr=echarts" target="_blank">FECS</a></li>
+                    <li><a href="http://ecomfe.github.io/fontmin/?fr=echarts" target="_blank">Fontmin</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-md-offset-1 col-sm-4 pc">
+                <h3>友情链接</h3>
+                <ul>
+                    <li><a href="https://fex.baidu.com/?fr=echarts" target="_blank">FEX</a></li>
+                    <li><a href="http://bit.baidu.com/?fr=echarts" target="_blank">BIT</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3" id="footer-icon-panel">
+                <div class="icon-panel">
+                    <a href="mailto:echarts@baidu.com" class="footer-icon">
+                        <img src="http://echarts.baidu.com/images/icon-email"/>
+                    </a>
+                    <a href="https://twitter.com/EChartsJs" class="footer-icon">
+                        <img src="http://echarts.baidu.com/images/icon-twitter"/>
+                    </a>
+                    <a href="http://weibo.com/u/5160877841" class="footer-icon">
+                        <img src="http://echarts.baidu.com/images/icon-weibo"/>
+                    </a>
+                    <a href="https://github.com/ecomfe/echarts" class="footer-icon">
+                        <img src="http://echarts.baidu.com/images/icon-github"/>
+                    </a>
+                </div>
+                <div id="echarts-copyright">&#9400; 2017 百度ECharts团队出品</div>
+            </div>
+        </div>
+    </div>
+</footer>
+
 
 <script src="http://echarts.baidu.com/blog/assets/js/vendor/jquery-1.9.1.min.js"></script>
+<script src="http://echarts.baidu.com/vendors/bootstrap/js/bootstrap.min.js"></script>
 <script src="http://echarts.baidu.com/blog/assets/js/scripts.min.js"></script>
 
 

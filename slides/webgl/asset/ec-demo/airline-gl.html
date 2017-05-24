@@ -32,6 +32,7 @@
                 geo3D: {
                     map: 'world',
                     shading: 'realistic',
+                    silent: true,
                     realisticMaterial: {
                         roughness: 0.8,
                         metalness: 0
@@ -52,7 +53,8 @@
                         }
                     },
                     viewControl: {
-                        distance: 50
+                        distance: 70,
+                        alpha: 89
                     },
 
                     itemStyle: {
@@ -68,13 +70,16 @@
 
                     effect: {
                         show: true,
-                        symbolSize: 3
+                        trailWidth: 1,
+                        trailOpacity: 0.5,
+                        trailLength: 0.2,
+                        constantSpeed: 5
                     },
 
                     blendMode: 'lighter',
 
                     lineStyle: {
-                        width: 1,
+                        width: 0.2,
                         opacity: 0.05
                     },
 

@@ -1,11 +1,12 @@
 title:
 disqus_shortname:
-reading_time:     true
+reading_time:     false
 words_per_minute: 50
 destination: ../blog
 # Your site's domain goes here (eg: https://mmistakes.github.io, http://yourdomain.com, etc)
 # When testing locally leave blank or use http://localhost:4000
 url: http://echarts.baidu.com/blog
+url_echarts: http://echarts.baidu.com
 url_gallery_view: http://gallery.echartsjs.com/view.html
 url_ec_examples_view_cn: http://echarts.baidu.com/gallery/view.html
 url_ec_examples_view_en: https://ecomfe.github.io/echarts-examples/public/view.html
@@ -70,7 +71,7 @@ categories:
   - en
 
 # Amount of post to show on home page
-paginate: 5
+paginate: 20
 
 kramdown:
   input: GFM

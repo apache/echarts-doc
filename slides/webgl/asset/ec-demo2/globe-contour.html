@@ -21,8 +21,8 @@
 
 var config = {
     color: '#c0101a',
-    levels: 10,
-    intensity: 8,
+    levels: 50,
+    intensity: 200,
     threshold: 0.01
 }
 
@@ -31,7 +31,7 @@ canvas.width = 4096;
 canvas.height = 2048;
 context = canvas.getContext("2d");
 
-context.lineWidth = 0.5;
+context.lineWidth = 0.2;
 context.strokeStyle = config.color;
 context.fillStyle = config.color;
 context.shadowColor = config.color;
@@ -88,10 +88,6 @@ image("../texture/bathymetry_bw_composite_4k.jpg").then(function(image) {
   update(config.threshold, config.levels);
 
   gui.add(config, 'levels', 0, 100).step(1).onFinishChange(function () {
-    update(config.threshold, config.levels);
-  });
-
-  gui.add(config, 'threshold', 0, 1.00).onFinishChange(function () {
     update(config.threshold, config.levels);
   });
 
@@ -162,9 +158,6 @@ function initCharts(option) {
 
             postEffect: {
                 enable: true,
-                depthOfField: {
-                    enable: true
-                },
                 bloom: {
                     intensity: 0.05
                 }
@@ -202,16 +195,6 @@ function initCharts(option) {
 
     window.addEventListener('resize', function () {
         chart.resize();
-    });
-
-    gui.add(config, 'intensity', 0, 10).onChange(function () {
-        chart.setOption({
-            globe: {
-                layers: [{
-                    intensity: config.intensity
-                }]
-            }
-        })
     });
 }
         </script>

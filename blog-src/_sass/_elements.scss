@@ -194,3 +194,54 @@ svg:not(:root) {
 iframe {
   border: 1px solid #ddd;
 }
+
+ .index-post {
+    padding: 20px;
+    border: 1px solid $clr-border-light;
+    box-shadow: rgba(0, 0, 0, 0.05) 0 1px 4px 0;
+    max-width: 800px;
+    margin: 40px auto;
+    margin-top: 10px;
+    border-radius: 4px;
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+      line-height: 35px;
+
+      a {
+        color: $clr-primary;
+
+        &:hover {
+          color: $clr-contrast;
+          text-decoration: none;
+        }
+      }
+    }
+
+    p {
+      font-size: 15px;
+      line-height: 25px;
+    }
+  }
+
+  .tag-panel {
+    font-size: 0.9em;
+    margin-top: 10px;
+    position: absolute;
+    bottom: 0;
+    color: $clr-secondary;
+
+    .term {
+      border: 1px solid $clr-secondary;
+      padding: 3px 8px;
+      margin-right: 10px;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+  }
+
+  pre {
+      background-color: transparent;
+  }

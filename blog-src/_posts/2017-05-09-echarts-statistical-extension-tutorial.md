@@ -1,8 +1,8 @@
 ---
 layout: post
 title: ECharts 统计扩展教程
-description: "你是否想了解一组样本数据的分布情况？你是否想根据用户的数值属性将用户分成不同的群体？你是否想预测两个变量的变化趋势？—— 什么？不需要？不要再违心了，小编已经听到来自你们内心深处的呐喊，今天就为大家推荐一款神器 —— [ECharts 统计扩展](https://github.com/ecomfe/echarts-stat/)，这是一个用来进行数据分析的扩展工具，包含的功能有直方图、聚类、回归、以及常用的汇总统计。通过统计扩展和 [ECharts](http://echarts.baidu.com/) 的结合，可以使大家方便地实现可视分析，也就是将数据分析的结果，通过可视化直观地呈现出来。"
-tags: [statistics, extension, tutorial]
+description: "你是否想了解一组样本数据的分布情况？你是否想根据用户的数值属性将用户分成不同的群体？你是否想预测两个变量的变化趋势？——什么？不需要？不要再违心了，小编已经听到来自你们内心深处的呐喊，今天就为大家推荐一款神器——ECharts 统计扩展，这是一个用来进行数据分析的扩展工具，包含的功能有直方图、聚类、回归、以及常用的汇总统计。通过统计扩展和 ECharts 的结合，可以使大家方便地实现可视分析，也就是将数据分析的结果，通过可视化直观地呈现出来。"
+tags: [统计, 扩展, 教程]
 lazyLoad: true
 image:
   feature: post/2017-05-09-echarts-statistical-logarithmic-regression.png
@@ -28,7 +28,7 @@ image:
 除此之外，还需要指定一个具有高度和宽度的 DOM 元素，作为图表的容器，用来放置将被绘制的图表。如：
 
 ```html
-<div id="main" style="width=100%; height=100%"></div> 
+<div id="main" style="width=100%; height=100%"></div>
 ```
 
 然后传入该 DOM 元素，初始化 ECharts 图表：
