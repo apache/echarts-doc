@@ -11,7 +11,7 @@
 
 + [+] Supported [dataZoom.minSpan](http://echarts.baidu.com/option.html#dataZoom.minSpan) and [dataZoom.maxSpan](http://echarts.baidu.com/option.html#dataZoom.maxSpan). See [#2843](https://github.com/ecomfe/echarts/issues/2843).
 
-+ [+] Supported [dataZoom.moveOnMouseMove](http://echarts.baidu.com/option.html#dataZoom-inside.moveOnMouseMove) and [dataZoom.zoomOnMouseWheel](http://echarts.baidu.com/option.html#dataZoom-inside.zoomOnMouseWheel), which enables that triggering dataZoom only by mouse wheel while holding 'ctrl'/'alt'/'shift'. Moreover, supported [preventDefaultMouseMove]((http://echarts.baidu.com/option.html#dataZoom-inside.preventDefaultMouseMove), See [#5769](https://github.com/ecomfe/echarts/issues/5769).
++ [+] Supported [dataZoom.moveOnMouseMove](http://echarts.baidu.com/option.html#dataZoom-inside.moveOnMouseMove) and [dataZoom.zoomOnMouseWheel](http://echarts.baidu.com/option.html#dataZoom-inside.zoomOnMouseWheel), which enables that triggering dataZoom only by mouse wheel while holding 'ctrl'/'alt'/'shift'. Moreover, supported [preventDefaultMouseMove](http://echarts.baidu.com/option.html#dataZoom-inside.preventDefaultMouseMove), See [#5769](https://github.com/ecomfe/echarts/issues/5769).
 
 + [+] Supported using image in [dataZoom.handleIcon](http://echarts.baidu.com/option.html#dataZoom-slider.handleIcon) setting.
 
