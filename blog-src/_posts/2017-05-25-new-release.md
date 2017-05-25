@@ -112,6 +112,8 @@ var option = {
   style="width: 100%; height: 300px"
 ></div>
 
+使用时，只需要将系列的 `coordinateSystem` 设置为 `'polar'`，将原先笛卡尔坐标系中使用的 `xAxis` 和 `yAxis` 替换成 `radiusAxis` 和 `angleAxis`，就能使用极坐标系的柱状图了。
+
 
 ## 其他
 
