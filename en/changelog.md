@@ -1,7 +1,7 @@
 ## v3.6.0
 <div class="time">2017-05-25</div>
 
-+ **[+] Published [custom series](http://echarts.baidu.com/option.html#series-custom)**, which enables user to customize render logic and make new types of chart. See [samples](http://echarts.baidu.com/examples.html#custom)。
++ **[+] Published [custom series](http://echarts.baidu.com/option.html#series-custom)**, which enables user to customize render logic and make new types of chart. See [samples](http://echarts.baidu.com/examples.html#chart-type-custom)。
 
 + **[+] Supported polar bar chart**. See [sample1](http://echarts.baidu.com/demo.html#bar-polar-stack), [sample2](http://echarts.baidu.com/demo.html#bar-polar-stack-radial), [sample3](http://echarts.baidu.com/demo.html#bar-polar-real-estate)。
 
