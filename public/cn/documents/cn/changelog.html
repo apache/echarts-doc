@@ -1,3 +1,38 @@
+<h2 id="v3-6-0">v3.6.0</h2>
+<div class="time">2017-05-25</div>
+
+<ul>
+<li><p><strong>[+] 发布自定义系列 <a href="http://echarts.baidu.com/option.html#series-custom">custom series</a></strong> 自定义系列能让用户定制渲染逻辑，从而在已有坐标系中绘制自定义的图表。参见 <a href="http://echarts.baidu.com/examples.html#chart-type-custom">示例</a>。</p>
+</li>
+<li><p><strong>[+] 支持极坐标柱状图</strong> 参见 <a href="http://echarts.baidu.com/demo.html#bar-polar-stack">示例1</a>、<a href="http://echarts.baidu.com/demo.html#bar-polar-stack-radial">示例2</a>、<a href="http://echarts.baidu.com/demo.html#bar-polar-real-estate">示例3</a>。</p>
+</li>
+<li><p>[+] 支持了 <a href="http://echarts.baidu.com/option.html#series-scatter.encode">encode</a> 设定，可以指定 <a href="http://echarts.baidu.com/option.html#series-scatter.data">data</a> 中哪些维度映射到坐标系中哪个轴，或者哪些维度在 <a href="http://echarts.baidu.com/option.html#tooltip">tooltip</a> 以及 <a href="http://echarts.baidu.com/option.html#series-scatter.label">label</a> 中显示。[Break Change]: <code>cartesian2d</code> 中的第三个维度的默认名称从 <code>&#39;z&#39;</code> 改为了 <code>&#39;value&#39;</code>，如果在 <a href="http://echarts.baidu.com/option.html#visualMap.dimension">visualMap.dimension</a> 中使用了 <code>&#39;z&#39;</code> 这个名称，请改为 <code>&#39;value&#39;</code> 或者 <code>2</code>。</p>
+</li>
+<li><p>[+] 支持了 <a href="http://echarts.baidu.com/option.html#series-scatter.dimensions">dimensions</a> 设定，能指定 <a href="http://echarts.baidu.com/option.html#series-scatter.data">data</a> 中每个维度的名称和类型。名称可以显示在默认 <a href="http://echarts.baidu.com/option.html#tooltip">tooltip</a> 中。</p>
+</li>
+<li><p>[+] <code>dataZoom</code> 支持了 <a href="http://echarts.baidu.com/option.html#dataZoom.minSpan">minSpan</a> 和 <a href="http://echarts.baidu.com/option.html#dataZoom.maxSpan">maxSpan</a>。参见 <a href="https://github.com/ecomfe/echarts/issues/2843">#2843</a>。</p>
+</li>
+<li><p>[+] <code>dataZoom</code> 支持了 <a href="http://echarts.baidu.com/option.html#dataZoom-inside.moveOnMouseMove">moveOnMouseMove</a> 和 <a href="http://echarts.baidu.com/option.html#dataZoom-inside.zoomOnMouseWheel">zoomOnMouseWheel</a>，从而能够设定按住 &#39;ctrl&#39; 键或者 &#39;alt&#39; 键或者 &#39;shift&#39; 键同时滚动滚轮触发 dataZoom。此外，支持了 <a href="http://echarts.baidu.com/option.html#dataZoom-inside.preventDefaultMouseMove">preventDefaultMouseMove</a> 设置，参见 <a href="https://github.com/ecomfe/echarts/issues/5769">#5769</a>。</p>
+</li>
+<li><p>[+] <code>dataZoom</code> 的 <a href="http://echarts.baidu.com/option.html#dataZoom-slider.handleIcon">handleIcon</a> 支持使用 image。</p>
+</li>
+<li><p>[^] 修正了世界地图的边界问题。</p>
+</li>
+<li><p>[^] 修正了当 <a href="http://echarts.baidu.com/option.html#xAxis.min">min</a> 被设置时，<a href="http://echarts.baidu.com/option.html#xAxis.minInterval">minInterval</a> 不能正常工作的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/4838">#4838</a>。</p>
+</li>
+<li><p>[^] 修正了 Object 默认属性导致的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/5576">#5576</a>。</p>
+</li>
+<li><p>[^] 修正了 legend 选择变化时进行 <code>setOption</code> 时 <a href="http://echarts.baidu.com/option.html#graphic">graphic</a> 导致的错误。参见 <a href="https://github.com/ecomfe/echarts/issues/5783">#5783</a>。</p>
+</li>
+<li><p>[^] 修正了 <code>parallel</code> 对 <a href="http://echarts.baidu.com/option.html#parallelAxis.axisLabel.interval">axisLabel.interval</a> 的支持。参见 <a href="https://github.com/ecomfe/echarts/issues/5694">#5694</a>。</p>
+</li>
+<li><p>[^] 增强了 <code>dataZoom</code> 控件的交互。</p>
+</li>
+<li><p>[^] 修正了 <a href="http://echarts.baidu.com/option.html#series-pie.minAngle">minAngle</a> 在玫瑰图上的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/5617">#5617</a>。</p>
+</li>
+<li><p>[^] 修正了 tooltip 更新时报错的问题。</p>
+</li>
+</ul>
 <h2 id="v3-5-4">v3.5.4</h2>
 <div class="time">2017-04-27</div>
 
