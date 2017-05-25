@@ -11,7 +11,7 @@
 
 + [+] `dataZoom` 支持了 [minSpan](http://echarts.baidu.com/option.html#dataZoom.minSpan) 和 [maxSpan](http://echarts.baidu.com/option.html#dataZoom.maxSpan)。参见 [#2843](https://github.com/ecomfe/echarts/issues/2843)。
 
-+ [+] `dataZoom` 支持了 [moveOnMouseMove](http://echarts.baidu.com/option.html#dataZoom-inside.moveOnMouseMove) 和 [zoomOnMouseWheel](http://echarts.baidu.com/option.html#dataZoom-inside.zoomOnMouseWheel)，从而能够设定按住 'ctrl' 键或者 'alt' 键或者 'shift' 键同时滚动滚轮触发 dataZoom。此外，支持了 [preventDefaultMouseMove]((http://echarts.baidu.com/option.html#dataZoom-inside.preventDefaultMouseMove) 设置，参见 [#5769](https://github.com/ecomfe/echarts/issues/5769)。
++ [+] `dataZoom` 支持了 [moveOnMouseMove](http://echarts.baidu.com/option.html#dataZoom-inside.moveOnMouseMove) 和 [zoomOnMouseWheel](http://echarts.baidu.com/option.html#dataZoom-inside.zoomOnMouseWheel)，从而能够设定按住 'ctrl' 键或者 'alt' 键或者 'shift' 键同时滚动滚轮触发 dataZoom。此外，支持了 [preventDefaultMouseMove](http://echarts.baidu.com/option.html#dataZoom-inside.preventDefaultMouseMove) 设置，参见 [#5769](https://github.com/ecomfe/echarts/issues/5769)。
 
 + [+] `dataZoom` 的 [handleIcon](http://echarts.baidu.com/option.html#dataZoom-slider.handleIcon) 支持使用 image。
 
