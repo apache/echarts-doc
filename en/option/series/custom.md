@@ -6,7 +6,7 @@
 
 `custom series` supports customizing graphic elements, and then generate more types of charts.
 
-echarts manages the creation, deletion, animation and interaction with other components (like [dataZoom](~dataZoom)、[visualMap](~visualMap)), which frees users from handle those issue themselves.
+echarts manages the creation, deletion, animation and interaction with other components (like [dataZoom](~dataZoom)、[visualMap](~visualMap)), which frees developers from handle those issue themselves.
 
 **For example, a "x-range" chart is made by custom sereis:**
 ~[800x400](${galleryViewPath}custom-profile&reset=1&edit=1)
@@ -83,7 +83,7 @@ The first parameter of `renderItem`, including:
 
 ```js
 {
-    context: // {string} An object that user can store something temporarily here.
+    context: // {string} An object that developers can store something temporarily here.
     seriesId: // {string} The id of this series.
     seriesName: // {string} The name of this series.
     seriesIndex: // {number} The index of this series.
@@ -179,7 +179,7 @@ In some coordinate systems (for example, polar) or when log axis is used, the si
 
 ##### style(Function)
 
-The method obtains style info defined in [series.itemStyle.normal](~series-custom.itemStyle.normal), and visual info obtained by visual mapping, and return them. Those returned info can be assigned to `style` attribute of graphic element definition directly. User can also override style info by calling this method like this: `api.style({fill: 'green', stroke: 'yellow'})`.
+The method obtains style info defined in [series.itemStyle.normal](~series-custom.itemStyle.normal), and visual info obtained by visual mapping, and return them. Those returned info can be assigned to `style` attribute of graphic element definition directly. Developers can also override style info by calling this method like this: `api.style({fill: 'green', stroke: 'yellow'})`.
 
 ```
 @param {Object} [extra] Extra style info.
@@ -189,7 +189,7 @@ The method obtains style info defined in [series.itemStyle.normal](~series-custo
 
 ##### styleEmphasis(Function)
 
-The method obtains style info defined in [series.itemStyle.emphasis](~series-custom.itemStyle.emphasis), and visual info obtained by visual mapping, and return them. Those returned info can be assigned to `style` attribute of graphic element definition directly. User can also override style info by calling this method like this: `api.style({fill: 'green', stroke: 'yellow'})`.
+The method obtains style info defined in [series.itemStyle.emphasis](~series-custom.itemStyle.emphasis), and visual info obtained by visual mapping, and return them. Those returned info can be assigned to `style` attribute of graphic element definition directly. Developers can also override style info by calling this method like this: `api.style({fill: 'green', stroke: 'yellow'})`.
 
 ```
 @param {Object} [extra] Extra style info.
@@ -395,7 +395,7 @@ Value of data item.
 
 {{target: partial-custom-renderItem-common}}
 
-`custom series` requires user to write a render logic by themselves. This render logic is called [renderItem](~series-custom.renderItem).
+`custom series` requires developers to write a render logic by themselves. This render logic is called [renderItem](~series-custom.renderItem).
 
 For example:
 

@@ -6,7 +6,7 @@
 
 自定义系列可以自定义系列中的图形元素渲染。从而能扩展出不同的图表。
 
-同时，echarts 会统一管理图形的创建删除、动画、与其他组件（如 [dataZoom](~dataZoom)、[visualMap](~visualMap)）的联动，使用户不必纠结这些细节。
+同时，echarts 会统一管理图形的创建删除、动画、与其他组件（如 [dataZoom](~dataZoom)、[visualMap](~visualMap)）的联动，使开发者不必纠结这些细节。
 
 **例如，下面的例子使用 custom series 扩展出了 x-range 图：**
 ~[800x500](${galleryViewPath}custom-profile&reset=1&edit=1)
@@ -14,7 +14,7 @@
 **更多的例子参见：[custom examples](http://echarts.baidu.com/examples.html#custom)**
 
 
-**用户自定义渲染逻辑（renderItem 函数）**
+**开发者自定义渲染逻辑（renderItem 函数）**
 
 {{use: partial-custom-renderItem-common(
     galleryViewPath=${galleryViewPath}
@@ -79,7 +79,7 @@ renderItem 函数的第一个参数，含有：
 
 ```js
 {
-    context: // {string} 一个可供用户暂存东西的对象。
+    context: // {string} 一个可供开发者暂存东西的对象。
     seriesId: // {string} 本系列 id。
     seriesName: // {string} 本系列 name。
     seriesIndex: // {number} 本系列 index。
@@ -388,7 +388,7 @@ renderItem 函数的第二个参数。
 
 {{target: partial-custom-renderItem-common}}
 
-custom 系列需要用户自己提供图形渲染的逻辑。这个渲染逻辑一般命名为 [renderItem](~series-custom.renderItem)。例如：
+custom 系列需要开发者自己提供图形渲染的逻辑。这个渲染逻辑一般命名为 [renderItem](~series-custom.renderItem)。例如：
 
 ```js
 var option = {
@@ -426,7 +426,7 @@ var option = {
 
 [renderItem](~series-custom.renderItem) 函数提供了两个参数：
 + [params](~series-custom.renderItem.arguments.params)：包含了当前数据信息和坐标系的信息。
-+ [api](~series-custom.renderItem.arguments.api)：是一些用户可调用的方法集合。
++ [api](~series-custom.renderItem.arguments.api)：是一些开发者可调用的方法集合。
 
 [renderItem](~series-custom.renderItem) 函数须返回根据此 `dataItem` 绘制出的图形元素的定义信息，参见 [renderItem.return](~series-custom.renderItem.return)。
 
