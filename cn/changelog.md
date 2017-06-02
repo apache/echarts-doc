@@ -1,3 +1,12 @@
+## v3.6.1
+<div class="time">2017-05-26</div>
+
+[Recovery Build]
+
++ [^] 修正了 [data sampling](http://echarts.baidu.com/option.html#series-line.sampling) 的失效。
++ [^] 修正了 使用 webpack 编译时在 ie11 中的问题。参见 [zrender/#189](https://github.com/ecomfe/zrender/issues/189)。
+
+
 ## v3.6.0
 <div class="time">2017-05-25</div>
 

@@ -1,3 +1,12 @@
+## v3.6.1
+<div class="time">2017-05-26</div>
+
+[Recovery Build]
+
++ [^] Fixed that [data sampling](http://echarts.baidu.com/option.html#series-line.sampling) did not work.
++ [^] Fixed the problem on ie11 when compiled by webpack. See [zrender/#189](https://github.com/ecomfe/zrender/issues/189).
+
+
 ## v3.6.0
 <div class="time">2017-05-25</div>
 

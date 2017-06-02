@@ -182,7 +182,7 @@ define(function (require) {
             var ctxVarValue = regResult[3];
 
             if (options.noCtxVar) {
-                propertyName += ctxVar;
+                propertyName += ctxVar || '';
                 ctxVarValue = null;
             }
 
