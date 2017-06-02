@@ -1,6 +1,5 @@
 {{ target: tutorial }}
 
-{{ import: echarts-feature }}
 {{ import: getting-started }}
 {{ import: npm-webpack }}
 {{ import: styling }}
