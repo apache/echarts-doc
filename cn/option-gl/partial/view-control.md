@@ -8,6 +8,19 @@
 
 是否开启视角绕物体的自动旋转查看。
 
+##${prefix|default('#')} autoRotateDirection(string) = 'cw'
+
+物体自传的方向。默认是 `'cw'` 也就是从上往下看是顺时针方向，也可以取 `'ccw'`，既从上往下看为逆时针方向。
+
+##${prefix|default('#')} autoRotateSpeed(number) = 10
+
+物体自传的速度。单位为`角度 / 秒`，默认为`10` ，也就是`36`秒转一圈。
+
+
+##${prefix|default('#')} autoRotateAfterStill(number) = 3
+
+在鼠标静止操作后恢复自动旋转的时间间隔。在开启 [autoRotate](~${componentType}.viewControl.autoRotate) 后有效。
+
 ##${prefix|default('#')} damping(number) = ${defaultDamping|default(0.8)}
 
 鼠标进行旋转，缩放等操作时的迟滞因子，在大于 0 的时候鼠标在停止操作后，视角仍会因为一定的惯性继续运动（旋转和缩放）。
@@ -29,10 +42,6 @@
 平移操作的灵敏度，值越大越灵敏。默认为`${defaultRotateSensitivitydefault(1)}`
 
 设置为`0`后无法平移。
-
-##${prefix|default('#')} autoRotateAfterStill(number) = 3
-
-在鼠标静止操作后恢复自动旋转的时间间隔。在开启 [autoRotate](~${componentType}.viewControl.autoRotate) 后有效。
 
 ##${prefix|default('#')} distance(number) = ${defaultDistance|default(150)}
 
