@@ -8,16 +8,16 @@
 
 是否开启视角绕物体的自动旋转查看。
 
-##${prefix|default('#')} autoRotateDirection(string) = 'cw'
+##${prefix|default('#')} autoRotateDirection(string) = ${defaultAutoRotateDirection|default('cw')}
 
 物体自传的方向。默认是 `'cw'` 也就是从上往下看是顺时针方向，也可以取 `'ccw'`，既从上往下看为逆时针方向。
 
-##${prefix|default('#')} autoRotateSpeed(number) = 10
+##${prefix|default('#')} autoRotateSpeed(number) = ${defaultAutoRotateSpeed|default(10)}
 
 物体自传的速度。单位为`角度 / 秒`，默认为`10` ，也就是`36`秒转一圈。
 
 
-##${prefix|default('#')} autoRotateAfterStill(number) = 3
+##${prefix|default('#')} autoRotateAfterStill(number) = ${defaultAutoRotateAfterStill|default(3)}
 
 在鼠标静止操作后恢复自动旋转的时间间隔。在开启 [autoRotate](~${componentType}.viewControl.autoRotate) 后有效。
 
@@ -42,6 +42,30 @@
 平移操作的灵敏度，值越大越灵敏。默认为`${defaultRotateSensitivitydefault(1)}`
 
 设置为`0`后无法平移。
+
+##${prefix|default('#')} panMouseButton(string) = ${defaultPanMouseButton|default('left')}
+
+平移操作使用的鼠标按键，支持：
+
++ `'left'` 鼠标左键（默认）
+
++ `'middle'` 鼠标中键
+
++ `'right'` 鼠标右键
+
+注意：如果设置为鼠标右键则会阻止默认的右键菜单。
+
+##${prefix|default('#')} rotateMouseButton(string) = ${defaultRotateMouseButton|default('middle')}
+
+旋转操作使用的鼠标按键，支持：
+
++ `'left'` 鼠标左键
+
++ `'middle'` 鼠标中键（默认）
+
++ `'right'` 鼠标右键
+
+注意：如果设置为鼠标右键则会阻止默认的右键菜单。
 
 ##${prefix|default('#')} distance(number) = ${defaultDistance|default(150)}
 
