@@ -421,6 +421,27 @@
                 "descriptionCN": "<p>是否开启视角绕物体的自动旋转查看。</p>\n",
                 "default": false
               },
+              "autoRotateDirection": {
+                "type": [
+                  "string"
+                ],
+                "descriptionCN": "<p>物体自传的方向。默认是 <code>&#39;cw&#39;</code> 也就是从上往下看是顺时针方向，也可以取 <code>&#39;ccw&#39;</code>，既从上往下看为逆时针方向。</p>\n",
+                "default": "cw"
+              },
+              "autoRotateSpeed": {
+                "type": [
+                  "number"
+                ],
+                "descriptionCN": "<p>物体自传的速度。单位为<code>角度 / 秒</code>，默认为<code>10</code> ，也就是<code>36</code>秒转一圈。</p>\n",
+                "default": 10
+              },
+              "autoRotateAfterStill": {
+                "type": [
+                  "number"
+                ],
+                "descriptionCN": "<p>在鼠标静止操作后恢复自动旋转的时间间隔。在开启 <a href=\"#globe.viewControl.autoRotate\">autoRotate</a> 后有效。</p>\n",
+                "default": 3
+              },
               "damping": {
                 "type": [
                   "number"
@@ -449,12 +470,19 @@
                 "descriptionCN": "<p>平移操作的灵敏度，值越大越灵敏。默认为``</p>\n<p>设置为<code>0</code>后无法平移。</p>\n",
                 "default": 0
               },
-              "autoRotateAfterStill": {
+              "panMouseButton": {
                 "type": [
-                  "number"
+                  "string"
                 ],
-                "descriptionCN": "<p>在鼠标静止操作后恢复自动旋转的时间间隔。在开启 <a href=\"#globe.viewControl.autoRotate\">autoRotate</a> 后有效。</p>\n",
-                "default": 3
+                "descriptionCN": "<p>平移操作使用的鼠标按键，支持：</p>\n<ul>\n<li><p><code>&#39;left&#39;</code> 鼠标左键（默认）</p>\n</li>\n<li><p><code>&#39;middle&#39;</code> 鼠标中键</p>\n</li>\n<li><p><code>&#39;right&#39;</code> 鼠标右键</p>\n</li>\n</ul>\n<p>注意：如果设置为鼠标右键则会阻止默认的右键菜单。</p>\n",
+                "default": "left"
+              },
+              "rotateMouseButton": {
+                "type": [
+                  "string"
+                ],
+                "descriptionCN": "<p>旋转操作使用的鼠标按键，支持：</p>\n<ul>\n<li><p><code>&#39;left&#39;</code> 鼠标左键</p>\n</li>\n<li><p><code>&#39;middle&#39;</code> 鼠标中键（默认）</p>\n</li>\n<li><p><code>&#39;right&#39;</code> 鼠标右键</p>\n</li>\n</ul>\n<p>注意：如果设置为鼠标右键则会阻止默认的右键菜单。</p>\n",
+                "default": "middle"
               },
               "distance": {
                 "type": [
@@ -1668,6 +1696,27 @@
                 "descriptionCN": "<p>是否开启视角绕物体的自动旋转查看。</p>\n",
                 "default": false
               },
+              "autoRotateDirection": {
+                "type": [
+                  "string"
+                ],
+                "descriptionCN": "<p>物体自传的方向。默认是 <code>&#39;cw&#39;</code> 也就是从上往下看是顺时针方向，也可以取 <code>&#39;ccw&#39;</code>，既从上往下看为逆时针方向。</p>\n",
+                "default": "cw"
+              },
+              "autoRotateSpeed": {
+                "type": [
+                  "number"
+                ],
+                "descriptionCN": "<p>物体自传的速度。单位为<code>角度 / 秒</code>，默认为<code>10</code> ，也就是<code>36</code>秒转一圈。</p>\n",
+                "default": 10
+              },
+              "autoRotateAfterStill": {
+                "type": [
+                  "number"
+                ],
+                "descriptionCN": "<p>在鼠标静止操作后恢复自动旋转的时间间隔。在开启 <a href=\"#geo3D.viewControl.autoRotate\">autoRotate</a> 后有效。</p>\n",
+                "default": 3
+              },
               "damping": {
                 "type": [
                   "number"
@@ -1696,12 +1745,19 @@
                 "descriptionCN": "<p>平移操作的灵敏度，值越大越灵敏。默认为``</p>\n<p>设置为<code>0</code>后无法平移。</p>\n",
                 "default": 1
               },
-              "autoRotateAfterStill": {
+              "panMouseButton": {
                 "type": [
-                  "number"
+                  "string"
                 ],
-                "descriptionCN": "<p>在鼠标静止操作后恢复自动旋转的时间间隔。在开启 <a href=\"#geo3D.viewControl.autoRotate\">autoRotate</a> 后有效。</p>\n",
-                "default": 3
+                "descriptionCN": "<p>平移操作使用的鼠标按键，支持：</p>\n<ul>\n<li><p><code>&#39;left&#39;</code> 鼠标左键（默认）</p>\n</li>\n<li><p><code>&#39;middle&#39;</code> 鼠标中键</p>\n</li>\n<li><p><code>&#39;right&#39;</code> 鼠标右键</p>\n</li>\n</ul>\n<p>注意：如果设置为鼠标右键则会阻止默认的右键菜单。</p>\n",
+                "default": "left"
+              },
+              "rotateMouseButton": {
+                "type": [
+                  "string"
+                ],
+                "descriptionCN": "<p>旋转操作使用的鼠标按键，支持：</p>\n<ul>\n<li><p><code>&#39;left&#39;</code> 鼠标左键</p>\n</li>\n<li><p><code>&#39;middle&#39;</code> 鼠标中键（默认）</p>\n</li>\n<li><p><code>&#39;right&#39;</code> 鼠标右键</p>\n</li>\n</ul>\n<p>注意：如果设置为鼠标右键则会阻止默认的右键菜单。</p>\n",
+                "default": "middle"
               },
               "distance": {
                 "type": [
@@ -2614,6 +2670,27 @@
                 "descriptionCN": "<p>是否开启视角绕物体的自动旋转查看。</p>\n",
                 "default": false
               },
+              "autoRotateDirection": {
+                "type": [
+                  "string"
+                ],
+                "descriptionCN": "<p>物体自传的方向。默认是 <code>&#39;cw&#39;</code> 也就是从上往下看是顺时针方向，也可以取 <code>&#39;ccw&#39;</code>，既从上往下看为逆时针方向。</p>\n",
+                "default": "cw"
+              },
+              "autoRotateSpeed": {
+                "type": [
+                  "number"
+                ],
+                "descriptionCN": "<p>物体自传的速度。单位为<code>角度 / 秒</code>，默认为<code>10</code> ，也就是<code>36</code>秒转一圈。</p>\n",
+                "default": 10
+              },
+              "autoRotateAfterStill": {
+                "type": [
+                  "number"
+                ],
+                "descriptionCN": "<p>在鼠标静止操作后恢复自动旋转的时间间隔。在开启 <a href=\"#grid3D.viewControl.autoRotate\">autoRotate</a> 后有效。</p>\n",
+                "default": 3
+              },
               "damping": {
                 "type": [
                   "number"
@@ -2642,12 +2719,19 @@
                 "descriptionCN": "<p>平移操作的灵敏度，值越大越灵敏。默认为``</p>\n<p>设置为<code>0</code>后无法平移。</p>\n",
                 "default": 1
               },
-              "autoRotateAfterStill": {
+              "panMouseButton": {
                 "type": [
-                  "number"
+                  "string"
                 ],
-                "descriptionCN": "<p>在鼠标静止操作后恢复自动旋转的时间间隔。在开启 <a href=\"#grid3D.viewControl.autoRotate\">autoRotate</a> 后有效。</p>\n",
-                "default": 3
+                "descriptionCN": "<p>平移操作使用的鼠标按键，支持：</p>\n<ul>\n<li><p><code>&#39;left&#39;</code> 鼠标左键（默认）</p>\n</li>\n<li><p><code>&#39;middle&#39;</code> 鼠标中键</p>\n</li>\n<li><p><code>&#39;right&#39;</code> 鼠标右键</p>\n</li>\n</ul>\n<p>注意：如果设置为鼠标右键则会阻止默认的右键菜单。</p>\n",
+                "default": "left"
+              },
+              "rotateMouseButton": {
+                "type": [
+                  "string"
+                ],
+                "descriptionCN": "<p>旋转操作使用的鼠标按键，支持：</p>\n<ul>\n<li><p><code>&#39;left&#39;</code> 鼠标左键</p>\n</li>\n<li><p><code>&#39;middle&#39;</code> 鼠标中键（默认）</p>\n</li>\n<li><p><code>&#39;right&#39;</code> 鼠标右键</p>\n</li>\n</ul>\n<p>注意：如果设置为鼠标右键则会阻止默认的右键菜单。</p>\n",
+                "default": "middle"
               },
               "distance": {
                 "type": [
@@ -7001,6 +7085,27 @@
                       "descriptionCN": "<p>是否开启视角绕物体的自动旋转查看。</p>\n",
                       "default": false
                     },
+                    "autoRotateDirection": {
+                      "type": [
+                        "string"
+                      ],
+                      "descriptionCN": "<p>物体自传的方向。默认是 <code>&#39;cw&#39;</code> 也就是从上往下看是顺时针方向，也可以取 <code>&#39;ccw&#39;</code>，既从上往下看为逆时针方向。</p>\n",
+                      "default": "cw"
+                    },
+                    "autoRotateSpeed": {
+                      "type": [
+                        "number"
+                      ],
+                      "descriptionCN": "<p>物体自传的速度。单位为<code>角度 / 秒</code>，默认为<code>10</code> ，也就是<code>36</code>秒转一圈。</p>\n",
+                      "default": 10
+                    },
+                    "autoRotateAfterStill": {
+                      "type": [
+                        "number"
+                      ],
+                      "descriptionCN": "<p>在鼠标静止操作后恢复自动旋转的时间间隔。在开启 <a href=\"#series-map3D.viewControl.autoRotate\">autoRotate</a> 后有效。</p>\n",
+                      "default": 3
+                    },
                     "damping": {
                       "type": [
                         "number"
@@ -7029,12 +7134,19 @@
                       "descriptionCN": "<p>平移操作的灵敏度，值越大越灵敏。默认为``</p>\n<p>设置为<code>0</code>后无法平移。</p>\n",
                       "default": 1
                     },
-                    "autoRotateAfterStill": {
+                    "panMouseButton": {
                       "type": [
-                        "number"
+                        "string"
                       ],
-                      "descriptionCN": "<p>在鼠标静止操作后恢复自动旋转的时间间隔。在开启 <a href=\"#series-map3D.viewControl.autoRotate\">autoRotate</a> 后有效。</p>\n",
-                      "default": 3
+                      "descriptionCN": "<p>平移操作使用的鼠标按键，支持：</p>\n<ul>\n<li><p><code>&#39;left&#39;</code> 鼠标左键（默认）</p>\n</li>\n<li><p><code>&#39;middle&#39;</code> 鼠标中键</p>\n</li>\n<li><p><code>&#39;right&#39;</code> 鼠标右键</p>\n</li>\n</ul>\n<p>注意：如果设置为鼠标右键则会阻止默认的右键菜单。</p>\n",
+                      "default": "left"
+                    },
+                    "rotateMouseButton": {
+                      "type": [
+                        "string"
+                      ],
+                      "descriptionCN": "<p>旋转操作使用的鼠标按键，支持：</p>\n<ul>\n<li><p><code>&#39;left&#39;</code> 鼠标左键</p>\n</li>\n<li><p><code>&#39;middle&#39;</code> 鼠标中键（默认）</p>\n</li>\n<li><p><code>&#39;right&#39;</code> 鼠标右键</p>\n</li>\n</ul>\n<p>注意：如果设置为鼠标右键则会阻止默认的右键菜单。</p>\n",
+                      "default": "middle"
                     },
                     "distance": {
                       "type": [
