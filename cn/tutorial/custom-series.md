@@ -216,5 +216,5 @@ option = {
 
 <br>
 
-**更多的自定义系列的例子参见：[custom examples](http://echarts.baidu.com/examples.html#custom)**
+**更多的自定义系列的例子参见：[custom examples](http://echarts.baidu.com/examples.html#chart-type-custom)**
 

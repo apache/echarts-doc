@@ -223,5 +223,5 @@ See the example mentioned above [Profile](${galleryEditorPath}custom-profile).
 
 <br>
 
-**[More examples about custom series: ](https://ecomfe.github.io/echarts-examples/public/index.html#custom)**
+**[More examples about custom series: ](https://ecomfe.github.io/echarts-examples/public/index.html#chart-type-custom)**
 
