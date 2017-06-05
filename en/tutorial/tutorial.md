@@ -9,3 +9,4 @@
 {{ import: visual-map }}
 {{ import: event }}
 {{ import: drag-example }}
+{{ import: custom-series }}

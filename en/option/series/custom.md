@@ -11,16 +11,18 @@ echarts manages the creation, deletion, animation and interaction with other com
 **For example, a "x-range" chart is made by custom sereis:**
 ~[800x400](${galleryViewPath}custom-profile&reset=1&edit=1)
 
-**更多的例子参见：[custom examples](https://ecomfe.github.io/echarts-examples/public/index.html#custom)**
+**[More samples of custom series](https://ecomfe.github.io/echarts-examples/public/index.html#chart-type-custom)**
 
+**[A tutotial of custom series](https://ecomfe.github.io/echarts-doc/public/en/tutorial.html#Custom%20Series)**
 
+<br>
 **Customize the render logic (in renderItem method)**
 
 {{use: partial-custom-renderItem-common(
     galleryViewPath=${galleryViewPath}
 )}}
 
-
+<br>
 **Dimension mapping (by encode and dimension option)**
 
 In most cases, [series.encode](~series-custom.encode) is needed to be specified when using `custom series` serise, which indicate the mapping of dimensions, and then echarts can render appropriate axis by the extent of those data.
@@ -44,10 +46,17 @@ series: {
 }
 ```
 
-
-**Use with dataZoom**
+<br>
+**Controlled by dataZoom**
 
 When use `custom series` with [dataZoom](~dataZoom), [dataZoom.filterMode](~dataZoom.filterMode) usually be set as `'weakFilter'`, which prevent `dataItem` from being filtered when only part of its dimensions are out of the current data window.
+
+
+<br>
+<br>
+**Difference between `dataIndex` and `dataIndexInside`**
+{{use: partial-custom-dataIndex-dataIndexInside}}
+
 
 
 
@@ -136,6 +145,9 @@ The first parameter of `renderItem`, including:
     }
 }
 ```
+
+Difference between `dataIndex` and `dataIndexInside`:
+{{use: partial-custom-dataIndex-dataIndexInside}}
 
 
 #### api(Object)
@@ -433,17 +445,31 @@ var option = {
 
 [renderItem](~series-custom.renderItem) will be called on each data item.
 
-[renderItem](~series-custom.renderItem) supplies two parameters:
-+ [params](~series-custom.renderItem.arguments.params): includes info about current series and data and coordinate system.
+[renderItem](~series-custom.renderItem) provides two parameters:
++ [params](~series-custom.renderItem.arguments.params): provides info about the current series and data and coordinate system.
 + [api](~series-custom.renderItem.arguments.api): includes some methods.
 
 [renderItem](~series-custom.renderItem) method should returns graphic elements definitions.See [renderItem.return](~series-custom.renderItem.return).
 
-Generally, the main logic of [renderItem](~series-custom.renderItem) is that retrieve value from data and convert the to graphic element on the coordinate system. Two methods in [renderItem.arguments.api](~series-custom.renderItem.arguments.api) are always used in this procedure:
-+ [api.value(...)](~series-custom.renderItem.arguments.api.value) is used to retrieve value from data. For example, `api.value(0)` retrieve the value of the first dimension in current data item.
-+ [api.coord(...)](~series-custom.renderItem.arguments.api.coord) is used to convert data to coordinate. For example, `var point = api.coord([api.value(0), api.value(1)])` converet the data to the point on current coordinate system.
+Generally, the main process of [renderItem](~series-custom.renderItem) is that retrieve value from data and convert them to graphic elements on the current coordinate system. Two methods in [renderItem.arguments.api](~series-custom.renderItem.arguments.api) are always used in this procedure:
++ [api.value(...)](~series-custom.renderItem.arguments.api.value) is used to retrieve value from data. For example, `api.value(0)` retrieve the value of the first dimension in the current data item.
++ [api.coord(...)](~series-custom.renderItem.arguments.api.coord) is used to convert data to coordinate. For example, `var point = api.coord([api.value(0), api.value(1)])` converet the data to the point on the current coordinate system.
 
-Sometimes [api.size(...)](~series-custom.renderItem.arguments.api.size) method is needed, which calculate the size on the coordinate system by a given data range.
+Sometimes [api.size(...)](~series-custom.renderItem.arguments.api.size) method is needed, which calculates the size on the coordinate system by a given data range.
 
-What more, [api.style(...)](~series-custom.renderItem.arguments.api.style) method can be used to set style.
+Moreover, [api.style(...)](~series-custom.renderItem.arguments.api.style) method can be used to set style. It provides not only the style settings specified in [series.itemStyle.normal](~series-custom.itemStyle.normal), but also the result of visual mapping. This method can also be called like `api.style({fill: 'green', stroke: 'yellow'})` to override those style settings.
 
+
+
+
+
+
+
+
+
+
+{{target: partial-custom-dataIndex-dataIndexInside}}
++ `dataIndex` is the index of a `dataItem` in the original data.
++ `dataIndexInside` is the index of a `dataItem` in the current data window (see [dataZoom](~dataZoom).
+
+[renderItem.arguments.api](~series-custom.renderItem.arguments.api) uses `dataIndexInside` as the input parameter but not `dataIndex`, because conversion from `dataIndex` to `dataIndexInside` is time-consuming.

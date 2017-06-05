@@ -11,16 +11,18 @@
 **例如，下面的例子使用 custom series 扩展出了 x-range 图：**
 ~[800x500](${galleryViewPath}custom-profile&reset=1&edit=1)
 
-**更多的例子参见：[custom examples](http://echarts.baidu.com/examples.html#custom)**
+**更多的例子参见：[custom examples](http://echarts.baidu.com/examples.html#chart-type-custom)**
 
+**[这里是个教程](http://echarts.baidu.com/tutorial.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B3%BB%E5%88%97)**
 
+<br>
 **开发者自定义渲染逻辑（renderItem 函数）**
 
 {{use: partial-custom-renderItem-common(
     galleryViewPath=${galleryViewPath}
 )}}
 
-
+<br>
 **维度的映射（encode 和 dimensions 属性）**
 
 `custom` 系列往往需要定义 [series.encode](~series-custom.encode)，主要用于指明 `data` 的哪些维度映射到哪些数轴上。从而，echarts 能根据这些维度的值的范围，画出合适的数轴刻度。
@@ -42,10 +44,14 @@ series: {
 }
 ```
 
-
+<br>
 **与 dataZoom 组件的结合**
 
 与 [dataZoom](~dataZoom) 结合使用的时候，常常使用会设置 [dataZoom.filterMode](~dataZoom.filterMode) 为 'weakFilter'，从而让 `dataItem` 部分超出坐标系边界的时候，不会整体被过滤掉。
+
+<br>
+**关于 `dataIndex` 和 `dataIndexInside` 的区别**
+{{use: partial-custom-dataIndex-dataIndexInside}}
 
 
 ## type(string) = 'custom'
@@ -132,6 +138,9 @@ renderItem 函数的第一个参数，含有：
     }
 }
 ```
+
+其中，关于 `dataIndex` 和 `dataIndexInside` 的区别：
+{{use: partial-custom-dataIndex-dataIndexInside}}
 
 
 #### api(Object)
@@ -441,4 +450,13 @@ var option = {
 
 
 
+
+
+
+
+{{target: partial-custom-dataIndex-dataIndexInside}}
++ `dataIndex` 指的 `dataItem` 在原始数据中的 index。
++ `dataIndexInside` 指的是 `dataItem` 在当前数据窗口（参见 [dataZoom](~dataZoom)）中的 index。
+
+[renderItem.arguments.api](~series-custom.renderItem.arguments.api) 中使用的参数都是 `dataIndexInside` 而非 `dataIndex`，因为从 `dataIndex` 转换成 `dataIndexInside` 需要时间开销。
 
