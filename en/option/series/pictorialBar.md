@@ -376,6 +376,14 @@ For example:
 For example:
 ~[800x600](${galleryViewPath}doc-example/pictorialBar-repeatLayout&reset=1&edit=1)
 
+<br>
+`symbolBoundingData` can also be an array, such as `[-40, 60]`, which specifies both negative and positive symbolBoundingData.
+
+Check this example:
+~[800x400](${galleryViewPath}doc-example/pictorialBar-symbolBoundingDataArray&reset=1&edit=1)
+
+
+
 
 {{ use: pictorialBar-symbol-attrs-cascade(attrName='symbolBoundingData') }}
 

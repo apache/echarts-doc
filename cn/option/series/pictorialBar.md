@@ -339,7 +339,7 @@
 {{ use: pictorialBar-symbol-attrs-cascade(attrName='symbolClip') }}
 
 
-#${prefix} symbolBoundingData(number)
+#${prefix} symbolBoundingData(number|Array)
 
 这个属性是『指定图形界限的值』。它指定了一个 data，这个 data 映射在坐标系上的位置，是图形绘制的界限。也就是说，如果设置了 `symbolBoundingData`，图形的尺寸则由 `symbolBoundingData` 决定。
 
@@ -370,6 +370,12 @@
 
 例子：
 ~[800x600](${galleryViewPath}doc-example/pictorialBar-repeatLayout&reset=1&edit=1)
+
+<br>
+`symbolBoundingData` 可以是一个数组，例如 `[-40, 60]`，表示同时指定了正值的 `symbolBoundingData` 和负值的 `symbolBoundingData`。
+
+参见例子：
+~[800x400](${galleryViewPath}doc-example/pictorialBar-symbolBoundingDataArray&reset=1&edit=1)
 
 
 {{ use: pictorialBar-symbol-attrs-cascade(attrName='symbolBoundingData') }}
