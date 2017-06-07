@@ -124,4 +124,3 @@ formatter: '{b}: {c}'
     defaultFontSize=${defaultTextFontSize},
     defaultFontWeight=${defaultTextFontWeight}
 ) }}
-

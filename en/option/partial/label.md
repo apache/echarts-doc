@@ -17,9 +17,12 @@ Whether to move text slightly. For example: `[30, 40]` means move `30` horizonta
 #${prefix} formatter(string|Function)
 {{use:partial-1d-data-label-formatter}}
 {{ /if }}
+
+{{ if: !${noTextStyle} }}
 #${prefix} textStyle(Object)
 Label font style.
 {{ use:partial-text-style(prefix=${prefix} + '#') }}
+{{ /if }}
 
 
 {{ target:partial-label-position }}

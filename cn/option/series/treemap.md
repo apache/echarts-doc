@@ -647,16 +647,12 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 {{ target: partial-treemap-label }}
 
-#${prefix} show(boolean) = true
-
-是否显示文本标签。
-
-
-#${prefix} position(string|Array) = 'inside'
-
-{{ use:partial-label-position }}
-
-
+{{use:partial-label(
+    prefix=${prefix},
+    defaultPosition="'inside'",
+    formatter=true,
+    noTextStyle=true
+)}}
 
 #${prefix} textStyle(Object)
 

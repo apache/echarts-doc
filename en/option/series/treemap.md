@@ -657,16 +657,12 @@ See the [example](${galleryEditorPath}doc-example/treemap-borderColor&edit=1&res
 
 {{ target: partial-treemap-label }}
 
-#${prefix} show(boolean) = true
-
-Wether to show the text label.
-
-
-#${prefix} position(string|Array) = 'inside'
-
-{{ use:partial-label-position }}
-
-
+{{use:partial-label(
+    prefix=${prefix},
+    defaultPosition="'inside'",
+    formatter=true,
+    noTextStyle=true
+)}}
 
 #${prefix} textStyle(Object)
 

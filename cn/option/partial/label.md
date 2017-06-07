@@ -17,10 +17,12 @@ ${name}图形上的文本标签，可用于说明图形的一些数据信息，�
 #${prefix} formatter(string|Function)
 {{use:partial-1d-data-label-formatter}}
 {{ /if }}
+
+{{ if: !${noTextStyle} }}
 #${prefix} textStyle(Object)
 标签的字体样式。
-
 {{ use:partial-text-style(prefix=${prefix} + '#') }}
+{{ /if }}
 
 
 {{ target:partial-label-position }}
