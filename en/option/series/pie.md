@@ -44,7 +44,7 @@ The minimum angle of sector (0 ~ 360). It prevents some sector from being too sm
 Whether to show as Nightingale chart, which distinguishs data through radius. There are 2 optional modes:
 
 + `'radius'` Use area to show the percentage of data, radius to show data size.
-+ `'area'` All the sectors will share the same area, the data size is shown only through radiuses.
++ `'area'` All the sectors will share the same central angle, the data size is shown only through radiuses.
 
 ## avoidLabelOverlap(boolean) = true
 Whether to enable the strategy to avoid labels overlap. Defaults to be enabled, which will move the label positions in the case of labels overlapping
