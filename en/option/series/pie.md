@@ -43,7 +43,7 @@ The minimum angle of sector (0 ~ 360). It prevents some sector from being too sm
 ## roseType(boolean|string) = false
 Whether to show as Nightingale chart, which distinguishs data through radius. There are 2 optional modes:
 
-+ `'radius'` Use roseType doc issue to show the percentage of data, radius to show data size.
++ `'radius'` Use central angle to show the percentage of data, radius to show data size.
 + `'area'` All the sectors will share the same central angle, the data size is shown only through radiuses.
 
 ## avoidLabelOverlap(boolean) = true
