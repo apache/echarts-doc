@@ -5,7 +5,7 @@
 
 tooltip can be configured on different places:
 
-+ Configured on glboal: [tooltip](~tooltip)
++ Configured on global: [tooltip](~tooltip)
 
 + Configured in a coordinate system: [grid.tooltip](~grid.tooltip), [polar.tooltip](~polar.tooltip), [single.tooltip](~single.tooltip)
 
