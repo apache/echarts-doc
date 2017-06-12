@@ -65,14 +65,6 @@
     defaultOpacity=0.5
 ) }}
 
-## distanceToGlobe(number|Array)
-
-线的点距离 [globe](~globe) 表面的距离，可以使用数组表示距离范围，这个时候会从 [coords](~series-lines3D.data.coords) 每一项的第三个值映射。
-
-## distanceToGeo3D(number|Array)
-
-线的点距离 [geo3D](~geo3D) 表面的距离，可以使用数组表示距离范围，这个时候会从 [coords](~series-lines3D.data.coords) 每一项的第三个值映射。
-
 ## data(Array)
 
 三维飞线图的数据数组，通常数据的每一项可以是一个包含起点和终点的坐标集。在 [polyline](~series-lines3D.polyline) 设置为 `true` 时支持多于两个的坐标。
