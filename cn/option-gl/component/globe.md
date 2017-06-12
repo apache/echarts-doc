@@ -12,6 +12,9 @@
 ## globeRadius(number) = 100
 地球的半径。单位相对于三维空间，跟 [viewControl.distance](~globe.viewControl.distance) 相关。
 
+## globeOuterRadius(number) = 150
+地球的外半径。`globeRadius` 到 `globeOuterRadius` 之间这篇区域会被用于展示三维柱状图，散点图等。
+
 {{ use: partial-environment(
     componentType="globe",
     componentName="地球"

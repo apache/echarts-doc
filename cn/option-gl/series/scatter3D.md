@@ -20,15 +20,6 @@
 
 {{ use: partial-symbol() }}
 
-## distanceToGlobe(number) = 1.5
-
-距离地球表面的距离，在 [coordinateSystem](~series-scatter3D.coordinateSystem) 为`'globe'`时有效。
-
-## distanceToGeo3D(number) = 1.5
-
-距离 geo3D 的距离，在 [coordinateSystem](~series-scatter3D.coordinateSystem) 为`'globe'`时有效。
-
-
 ## itemStyle(Object)
 
 散点图颜色描边等样式。
