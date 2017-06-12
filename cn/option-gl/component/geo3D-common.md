@@ -169,8 +169,7 @@ ${componentName} 中三维图形的视觉属性，包括颜色，透明度，描
 
 {{ use: partial-shading(
     componentType=${componentType},
-    componentName=${componentName},
-    useTexture=true
+    componentName=${componentName}
 ) }}
 
 {{ use: partial-light(

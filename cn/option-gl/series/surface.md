@@ -242,8 +242,7 @@ data: [
 
 {{ use: partial-shading(
     componentType='series-surface',
-    componentName='曲面图',
-    useTexture=true
+    componentName='曲面图'
 ) }}
 
 {{ use: partial-zlevel }}
