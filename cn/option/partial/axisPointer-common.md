@@ -99,7 +99,7 @@ axisPointer 的 label 默认不显示（也就是默认只显示指示线），�
     galleryEditorPath=${galleryEditorPath}
 )}}
 
-#${prefix} tiggerTooltip(boolean) = true
+#${prefix} triggerTooltip(boolean) = true
 
 是否触发 tooltip。如果不想触发 tooltip 可以关掉。
 

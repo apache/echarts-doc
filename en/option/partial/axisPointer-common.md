@@ -103,7 +103,7 @@ Options:
     galleryEditorPath=${galleryEditorPath}
 )}}
 
-#${prefix} tiggerTooltip(boolean) = true
+#${prefix} triggerTooltip(boolean) = true
 
 Whether to trigger tooltip.
 
