@@ -2,6 +2,7 @@
 
 {{import: component-globe}}
 {{import: component-geo3D}}
+{{import: component-mapbox}}
 {{import: component-grid3D}}
 {{import: component-xAxis3D}}
 {{import: component-yAxis3D}}
