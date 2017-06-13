@@ -520,6 +520,41 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 {{use:partial-treemap-label(prefix=${prefix} + "##")}}
 
 
+#${prefix} upperLabel(Object)
+
+`upperLabel` 用于显示矩形的父节点的标签。当 [upperLabel.normal.show](~series-treemap.upperLabel.normal.show) 为 `true` 的时候，『显示父节点标签』功能开启。
+
+同 [series-treemap.label](~series-treemap.label) 一样，`upperLabel` 可以存在于 [series-treemap](~series-treemap) 的根节点，或者 [series-treemap.level](~series-treemap.level) 中，或者 [series-treemap.data](~series-treemap.data) 的每个数据项中。
+
+[series-treemap.label](~series-treemap.label) 描述的是，当前节点为叶节点时标签的样式；`upperLabel` 描述的是，当前节点为非叶节点（即含有子节点）时标签的样式。（此时标签一般会被显示在节点的最上部）
+
+参见：
+
+~[700x500](${galleryViewPath}treemap-show-parent&edit=1&reset=1)
+
+
+{{use: partial-treemap-prop-location-desc(name="label")}}
+
+<br>
+
+##${prefix} normal(Object)
+
+{{use:partial-treemap-label(prefix=${prefix} + "##")}}
+
+###${prefix} height(number) = 20
+
+父节点标签区的高度。
+
+
+##${prefix} emphasis(Object)
+
+{{use:partial-treemap-label(prefix=${prefix} + "##")}}
+
+
+##${prefix} emphasis(Object)
+
+{{use:partial-treemap-label(prefix=${prefix} + "##")}}
+
 
 #${prefix} itemStyle(Object)
 

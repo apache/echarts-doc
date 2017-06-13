@@ -531,6 +531,36 @@ This can hide the details of nodes when the rectangular area is not large enough
 {{use:partial-treemap-label(prefix=${prefix} + "##")}}
 
 
+#${prefix} upperLabel(Object)
+
+`upperLabel` is used to specify whether show label when the node has children. When [upperLabel.normal.show](~series-treemap.upperLabel.normal.show) is set as `true`, the feature that "show parent label" is enabled.
+
+The same as [series-treemap.label](~series-treemap.label), the option `upperLabel` can be placed at the root of [series-treemap](~series-treemap) directly, or in [series-treemap.level](~series-treemap.level), or in each item of [series-treemap.data](~series-treemap.data).
+
+Specifically, [series-treemap.label](~series-treemap.label) specifies the style when a node is a leaf, while `upperLabel` specifies the style when a node has children, in which case the label is displayed in the inner top of the node.
+
+See:
+
+~[700x500](${galleryViewPath}treemap-show-parent&edit=1&reset=1)
+
+
+{{use: partial-treemap-prop-location-desc(name="label")}}
+
+<br>
+
+##${prefix} normal(Object)
+
+{{use:partial-treemap-label(prefix=${prefix} + "##")}}
+
+###${prefix} height(number) = 20
+
+Height of label area.
+
+
+##${prefix} emphasis(Object)
+
+{{use:partial-treemap-label(prefix=${prefix} + "##")}}
+
 
 #${prefix} itemStyle(Object)
 
