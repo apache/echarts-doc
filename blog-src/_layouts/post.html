@@ -47,6 +47,22 @@
           {% endfor %}
         </span>
       </div>
+
+      {% if page.author %}
+      <div class="entry-author">
+        <img class="entry-author--img" src="{{ site.author[page.author].image }}">
+        <div class="entry-author--info">
+          <div class="entry-author--name">
+            <a href="{{ site.author[page.author].web }}" target="_blank">
+              {{ site.author[page.author].name }}
+            </a> | {{ site.author[page.author].title }}
+          </div>
+          <div class="entry-author--desc">
+            {{ site.author[page.author].desc }}
+          </div>
+        </div>
+      </div>
+      {% endif %}
     </div><!-- /.entry-content -->
     {% if page.comments != false and site.disqus_shortname %}<section id="disqus_thread"></section><!-- /#disqus_thread -->{% endif %}
     {% if site.related_posts.size > 0 %}{% include read-more.html %}{% endif %}

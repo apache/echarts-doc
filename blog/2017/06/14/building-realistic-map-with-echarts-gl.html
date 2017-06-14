@@ -1,0 +1,553 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="zh"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="zh"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="zh"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>在 ECharts GL 中绘制三维地图 </title>
+<meta name="description" content="ECharts 前段时间发布了超亮眼的 GL，相对于之前已经圈粉无数的 ECharst-X 而言，ECharst GL 更是帅到爆，无论是性能、颜值、类型都有了巨大的飞跃。但是不是更易上手呢？答案是肯定的，用户除了能够根据数据画出诸如三维地图等三维的可视化图之外，只需要在项目中加入几个简单的配置项，就能配制出想要的风格的高质量画面效果。">
+<meta name="keywords" content="GL, 教程">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在 ECharts GL 中绘制三维地图">
+<meta property="og:description" content="ECharts 前段时间发布了超亮眼的 GL，相对于之前已经圈粉无数的 ECharst-X 而言，ECharst GL 更是帅到爆，无论是性能、颜值、类型都有了巨大的飞跃。但是不是更易上手呢？答案是肯定的，用户除了能够根据数据画出诸如三维地图等三维的可视化图之外，只需要在项目中加入几个简单的配置项，就能配制出想要的风格的高质量画面效果。">
+<meta property="og:url" content="http://echarts.baidu.com/blog/2017/06/14/building-realistic-map-with-echarts-gl.html">
+<meta property="og:site_name" content="">
+
+
+
+
+
+<link rel="canonical" href="http://echarts.baidu.com/blog/2017/06/14/building-realistic-map-with-echarts-gl.html">
+<link href="http://echarts.baidu.com/blog/feed.xml" type="application/atom+xml" rel="alternate" title=" Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://echarts.baidu.com/blog/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://echarts.baidu.com/blog/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="http://echarts.baidu.com/blog/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://echarts.baidu.com/blog/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://echarts.baidu.com/blog/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://echarts.baidu.com/blog/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://echarts.baidu.com/blog/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://echarts.baidu.com/blog/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://echarts.baidu.com/blog/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post" class="feature">
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false" class="navbar-toggle collapsed">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://echarts.baidu.com/index.html" class="navbar-brand">
+                <img src="http://echarts.baidu.com/images/logo.png" alt="echarts logo" class="navbar-logo">
+            </a>
+        </div>
+        <div id="navbar-collapse" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-left">
+                <li id="nav-index"><a href="http://echarts.baidu.com/index.html">首页</a></li>
+                <li id="nav-doc" class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">文档<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="http://echarts.baidu.com/feature.html">特性</a></li>
+                        <li><a href="http://echarts.baidu.com/tutorial.html">教程</a></li>
+                        <li><a href="http://echarts.baidu.com/api.html">API</a></li>
+                        <li><a href="http://echarts.baidu.com/option.html">配置项手册</a></li>
+                        <li><a href="http://echarts.baidu.com/faq.html">常见问题</a></li>
+                        <li><a href="http://echarts.baidu.com/changelog.html">版本记录</a></li>
+                    </ul>
+                </li>
+                <li id="nav-download" class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">下载<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="http://echarts.baidu.com/download.html">下载</a></li>
+                        <li><a href="http://echarts.baidu.com/download-theme.html">主题下载</a></li>
+                        <li><a href="http://echarts.baidu.com/download-map.html">地图下载</a></li>
+                        <li><a href="http://echarts.baidu.com/download-extension.html">扩展下载</a></li>
+                    </ul>
+                </li>
+                <li id="nav-examples">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">实例<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="http://echarts.baidu.com/examples.html">官方实例</a></li>
+                        <li><a href="http://gallery.echartsjs.com/explore.html#tags=echarts-gl">GL 实例</a></li>
+                    </ul>
+                </li>
+                <li id="nav-community" class="active">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">社区<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="http://gallery.echartsjs.com">GALLERY</a></li>
+                        <li><a href="http://echarts.baidu.com/blog">博客</a></li>
+                    </ul>
+                </li>
+                <li id="nav-tool">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">工具<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="http://echarts.baidu.com/spreadsheet.html">表格工具</a></li>
+                        <li><a href="http://ecomfe.github.io/echarts-map-tool/">地图数据在线工具</a></li>
+                        <li><a href="http://echarts.baidu.com/theme-builder/">主题构建工具</a></li>
+                    </ul>
+                </li>
+                <li id="nav-about"><a href="http://echarts.baidu.com/about.html">关于</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li id="nav-github"><a href="https://github.com/ecomfe/echarts" target="_blank"><img src="http://echarts.baidu.com/images/github.png" width="18"></a></li>
+                <li id="nav-2" class="0"><a href="http://echarts.baidu.com/echarts2/">2.0</a></li>
+                <li id="nav-homeen"><a href="https://ecomfe.github.io/echarts-doc/public/en/index.html">EN</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="entry-header">
+  
+  <div class="entry-image">
+    <img src="http://echarts.baidu.com/blog/images/post/2017-06-14/banner.png" alt="在 ECharts GL 中绘制三维地图">
+  </div><!-- /.entry-image -->
+</div><!-- /.entry-header -->
+
+
+<div id="post-main" role="main">
+  <article class="hentry">
+    <header class="header-title">
+      <div class="header-title-wrap">
+        <h1 class="entry-title">在 ECharts GL 中绘制三维地图</h1>
+        <h2><span class="entry-date date published"><time datetime="2017-06-14T00:00:00+08:00">2017-06-14</time></span></h2>
+        
+      </div><!-- /.header-title-wrap -->
+    </header>
+    <div class="entry-content">
+      <p>ECharts 前段时间发布了超亮眼的 GL，相对于之前已经圈粉无数的 ECharst-X 而言，ECharst GL更是帅到爆，无论是性能、颜值、类型都有了巨大的飞跃。但是对于小编这样的设计师来说是不是更易上手呢？答案是肯定的，我们除了能够根据数据画出诸如三维地图等三维的可视化图之外，只需要在项目中加入几个简单的配置项，就能配制出想要的风格的高质量画面效果。</p>
+
+<p>这篇教程就希望通过在 Gallery 里绘制一个有丰富的光效、阴影的写实风格的三维地图的例子，简单介绍一些ECharts GL与画质相关的配置项，最终效果见 <a href="http://gallery.echartsjs.com/editor.html?c=xBkY4tpszb">http://gallery.echartsjs.com/editor.html?c=xBkY4tpszb</a>（下图为最后的效果）。涉及到太高深专业的算法、代码、什么什么的小设计师我实在是不会，所以这个仅仅能当 GL 入门级教程使用哦～</p>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-06-14/banner.png" alt="" /></p>
+
+<h2 id="绘制一个基础的三维地图">绘制一个基础的三维地图</h2>
+
+<p>首先我们在 Gallery 中用 ECharts GL 画一个基础的三维地图。注意因为 GL 是 ECharts 的一个扩展，所以我们需要在 Gallery 中额外引入 GL 的脚本文件。
+「引入文件」只需要在 Gallery中新建作品，然后在「脚本」的配置中加入这行地址就行了。</p>
+
+<p><a href="http://echarts.baidu.com/resource/echarts-gl-latest/dist/echarts-gl.min.js">http://echarts.baidu.com/resource/echarts-gl-latest/dist/echarts-gl.min.js</a></p>
+
+<p>如果要绘制世界地图的话还需要引入上面「常用脚本」的世界地图文件。</p>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-06-14/scripts.png" alt="" /></p>
+
+<p>做好准备工作后我们就可以开始画一个三维的世界地图了，GL 中画三维地图的配置项跟画普通的二维地图一样，只是系列名称从原来的<code class="highlighter-rouge">map</code>改成<code class="highlighter-rouge">map3D</code>。</p>
+
+<p>我们先用下面的最基础配置项，基于引入的脚本，生成一个最基础的三维地图系列。</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">option</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">series</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="s1">'map3D'</span><span class="p">,</span>
+        <span class="na">map</span><span class="p">:</span> <span class="s1">'world'</span>
+    <span class="p">}]</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+
+<p>是不是很简单，当然画出来的效果也是非常基础和简陋的。</p>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-06-14/map3D-basic.png" alt="" /></p>
+
+<p>接下来就我们需要做的就是一步一步的添加光照、阴影、后期的配置项把这个三维地图画得更漂亮。</p>
+
+<h2 id="添加更丰富的灯光">添加更丰富的灯光</h2>
+
+<p>GL 中大部分组件都支持灯光的配置，这些灯光会影响到组件中的所有图形，灯光的配置项需要统一在组件<code class="highlighter-rouge">light</code>属性下设置。</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">light</span><span class="err">:</span> <span class="p">{</span>
+    <span class="nl">main</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nl">intensity</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="p">},</span>
+    <span class="nx">ambient</span><span class="err">:</span> <span class="p">{</span>
+        <span class="nl">intensity</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>通常情况下组件中默认会有一个主光源<code class="highlighter-rouge">main</code>和一个全局的环境光<code class="highlighter-rouge">ambient</code>。主光源起到了主要的照明作用，可以让我们刚才画出来的三维地图产生基础的明暗对比，从而使图形产生真实的立体感。全局的环境光可以为整个场景提供全局照亮和统一材质的效果。（添加光照效果如下图）</p>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-06-14/map3D-light.png" alt="" /></p>
+
+<p>我们可以通过<code class="highlighter-rouge">intensity</code>属性设置不同光源的强度。例如在上面的代码中我们将主光源的强度设成<code class="highlighter-rouge">2</code>，环境光源的强度设成<code class="highlighter-rouge">0</code>后可以得到更加强烈的明暗对比。</p>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-06-14/map3D-light-high-contrast.png" alt="" /></p>
+
+<p>默认的环境光只是单纯的对所有图形都加上一个固定的亮度，所以会显得很平淡，如果把主光源去掉（<code class="highlighter-rouge">intensity</code>设为<code class="highlighter-rouge">0</code>）的话，整个地图场景会变成灰色。所以为了更丰富的光照效果，我们可以使用 GL 提供的更为强大的<code class="highlighter-rouge">ambientCubemap</code>作为环境光源。</p>
+
+<p><code class="highlighter-rouge">ambientCubemap</code>是指使用一张全景贴图作为环境光源。一般全景的环境光贴图大概是下面这样。</p>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-06-14/hdr.png" alt="" /></p>
+
+<p>大家使用手机的全景模式中就可以拍出类似的全景照片。不过小编建议去寻找专业的 <a href="https://zh.wikipedia.org/zh-hans/%E9%AB%98%E5%8A%A8%E6%80%81%E8%8C%83%E5%9B%B4%E6%88%90%E5%83%8F">HDR</a> 格式的全景图资源。这里推荐一个有不少免费的HDR全景图资源的网站 <a href="http://www.hdrlabs.com/sibl/archive.html">http://www.hdrlabs.com/sibl/archive.html</a>。</p>
+
+<p>找到合适的全景图片后，我们可以在 Gallery 的<code class="highlighter-rouge">导入数据</code>中上传该图片。</p>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-06-14/asset-hdr.png" alt="" /></p>
+
+<p>得到在 Gallery 上该图片地址链接后插入到<code class="highlighter-rouge">ambientCubemap</code>的<code class="highlighter-rouge">texture</code>属性中。</p>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">light</span><span class="err">:</span> <span class="p">{</span>
+    <span class="nl">main</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nl">intensity</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="p">},</span>
+    <span class="nx">ambient</span><span class="err">:</span> <span class="p">{</span>
+        <span class="nl">intensity</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">},</span>
+    <span class="nx">ambientCubemap</span><span class="err">:</span> <span class="p">{</span>
+        <span class="nl">diffuseIntensity</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nx">texture</span><span class="err">:</span> <span class="s1">'/asset/get/s/data-1497251035660-HkVJTnsMW.hdr'</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<p>设置了<code class="highlighter-rouge">texture</code>属性后 GL 就会自动启用环境光贴图作为环境光源。</p>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-06-14/map3D-ambientcubemap.png" alt="" /></p>
+
+<p>因为全景贴图的每个像素都会被计算到光照里，所以相比普通的环境光，使用环境光贴图会让整个光照会显得更真实和丰富。</p>
+
+<p>为了得到更真实的环境光效果，注意此处建议使用<code class="highlighter-rouge">.hdr</code>格式的图片，因为 <a href="https://zh.wikipedia.org/zh-hans/%E9%AB%98%E5%8A%A8%E6%80%81%E8%8C%83%E5%9B%B4%E6%88%90%E5%83%8F">HDR</a> 也就是高动态范围图像，它比其他格式的图像有更大亮度的数据存储。对比一下同一张图片<code class="highlighter-rouge">HDR</code>和<code class="highlighter-rouge">PNG</code>格式照亮的不同效果。</p>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-06-14/map3D-hdr-compare.png" alt="" /></p>
+
+<h2 id="添加阴影">添加阴影</h2>
+
+<p>有光的地方就会有阴影，阴影给了光照更多的层次，失去了阴影的光照是没有灵魂的，是平淡乏味的。</p>
+
+<p>在 GL 中可以简单的加上<code class="highlighter-rouge">shadow: true</code>为主光源添加阴影。同时为了让三维地图有一种放在地面上的立体模型的感觉，我们再显示一个地面<code class="highlighter-rouge">groundPlane</code>。</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">light</span><span class="err">:</span> <span class="p">{</span>
+    <span class="nl">main</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nl">intensity</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nx">shadow</span><span class="err">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="nx">ambient</span><span class="err">:</span> <span class="p">{</span>
+        <span class="nl">intensity</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">},</span>
+    <span class="nx">ambientCubemap</span><span class="err">:</span> <span class="p">{</span>
+        <span class="nl">diffuseIntensity</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nx">texture</span><span class="err">:</span> <span class="s1">'/asset/get/s/data-1491896094618-H1DmP-5px.hdr'</span>
+    <span class="p">}</span>
+<span class="p">},</span>
+<span class="nx">groundPlane</span><span class="err">:</span> <span class="p">{</span>
+    <span class="nl">show</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-06-14/map3D-shadow.png" alt="" /></p>
+
+<p>通过阴影还可以更容易得感受到光照的方向，我们可以通过设置主光源<code class="highlighter-rouge">alpha</code>、<code class="highlighter-rouge">beta</code>两个属性设置不同的光照角度，来查看阴影的变化。</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">main</span><span class="err">:</span> <span class="p">{</span>
+    <span class="nl">intensity</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">shadow</span><span class="err">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">alpha</span><span class="err">:</span> <span class="mi">150</span><span class="p">,</span>
+    <span class="nx">beta</span><span class="err">:</span> <span class="mi">70</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-06-14/map3D-shadow-long.png" alt="" /></p>
+
+<p>这样就可以实现之前设计圈非常流行的一种长阴影的风格。</p>
+
+<h2 id="更丰富的颜色">更丰富的颜色</h2>
+
+<p>到这里我们得到的效果跟最初那个简陋的画面已经是天壤之别了，小编作为一个设计师是很钟情于白模的效果的，但是如果你手里有一份数据的话更是锦上添花。
+数据的上传和转换可以通过echarts提供的表格数据转换工具实现，
+<a href="http://echarts.baidu.com/spreadsheet.html">http://echarts.baidu.com/spreadsheet.html</a>，数据部分内容不在此多述。如果暂时没有现成数据，可以直接先复制教程实例中的数据，见左侧代码区域<code class="highlighter-rouge">var regionData = [{……}];</code>内的全部内容，直接复制粘贴即可进行之后操作。</p>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-06-14/data.png" width="500px" alt="" /></p>
+
+<p>将这份数据导入并写入配置项里，</p>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-06-14/data-assign.png" width="430px" alt="" /></p>
+
+<p>接下来，我们可以使用 ECharts 中视觉映射「visualMap」组件将地图中的每块区域赋予不同的颜色。</p>
+
+<p>在 ECharts GL 中使用 visualMap 和在ECharts中并没有任何的不同：</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">visualMap</span><span class="err">:</span> <span class="p">{</span>
+    <span class="nl">show</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nx">min</span><span class="err">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nx">max</span><span class="err">:</span> <span class="mi">15</span><span class="p">,</span>
+    <span class="nx">inRange</span><span class="err">:</span> <span class="p">{</span>
+        <span class="nl">color</span><span class="p">:</span> <span class="p">[</span><span class="s1">'#313695'</span><span class="p">,</span> <span class="s1">'#4575b4'</span><span class="p">,</span> <span class="s1">'#74add1'</span><span class="p">,</span> <span class="s1">'#abd9e9'</span><span class="p">,</span> <span class="s1">'#e0f3f8'</span><span class="p">,</span> <span class="s1">'#ffffbf'</span><span class="p">,</span> <span class="s1">'#fee090'</span><span class="p">,</span> <span class="s1">'#fdae61'</span><span class="p">,</span> <span class="s1">'#f46d43'</span><span class="p">,</span> <span class="s1">'#d73027'</span><span class="p">,</span> <span class="s1">'#a50026'</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>就是这样子每个国家根据不同数据就呈现出不同的颜色啦。</p>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-06-14/map3D-data.png" alt="" /></p>
+
+<h2 id="后期处理">后期处理</h2>
+
+<p>看到后期可能大家第一个想到的就是使用 PS 调色，小编这次主要用到的确实是调色。但其实GL 中除了调色之外，还有例如景深 、描边等诸多的后期效果能让整个画面呈现出你需要的效果，大家之后可以大胆的尝试。</p>
+
+<p>不知道大家是否能感受到其实此时得到的图片整体明度偏暗，色相偏蓝。就如我们在拍完照片后发现色调和曝光不理想需要再次调整图片一样，我们也需要对这张的画面进行后期处理和调色。</p>
+
+<p>后期处理的配置项都是在组件的<code class="highlighter-rouge">postEffect</code>下。首先可以通过 enable 属性开启。</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">postEffect</span><span class="err">:</span> <span class="p">{</span>
+    <span class="nl">enable</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>开启后 GL 会自动对整个画面调整曝光到合适的颜色。</p>
+
+<p>当然如果这个画面并不能让我们满意的话，我们还可以通过<code class="highlighter-rouge">postEffect</code>下的<code class="highlighter-rouge">colorCorrection</code>配置项去手动的调整颜色。<code class="highlighter-rouge">colorCorrection</code>下有常见的曝光<code class="highlighter-rouge">exposure</code>、亮度<code class="highlighter-rouge">brightness</code>、对比度<code class="highlighter-rouge">contrast</code>和饱和度<code class="highlighter-rouge">saturation</code>选项。</p>
+
+<p>但是这次小编要教大家使用这里面更强大的颜色查找表功能<code class="highlighter-rouge">lookupTexture</code>。这个功能可以让我们在 PS 等自己用着顺手的图像处理软件里处理好图片之后再到 GL 里复现我们在 PS 里调整的颜色曲线。</p>
+
+<p>小编给大家提供了一张初始的颜色查找表，大家把下面这张查找表的图片下载下来后和你的作品截图一起放入 Photoshop 中（可以把作品截图拖入查找表图层的上方，注意需要保持查找表大小不变，作品截图是为了让我们直观的预览调整的效果，调到满意之后，删除作品图层，只保存查找表，之后在GL中载入查找表，查找表的颜色映射会直接在GL中复现）。</p>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-06-14/lookup.png" width="300px" alt="" /></p>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-06-14/ps.png" alt="" /></p>
+
+<p>点击左下角<code class="highlighter-rouge">创建新的填充或调整工具</code>来选择自己需要调整的配置项，此时两个图层是可以同时调整的，这里可以自由调整各项参数来实现自己想要的效果。我在此使用的是<code class="highlighter-rouge">颜色查找</code>下自带的<code class="highlighter-rouge">Candlelight.cube</code>将图片调整成了一种蜡烛光照的复古风格，又调整了亮度和对比度使其更清晰。</p>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-06-14/ps-adjusted.png" alt="" /></p>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-06-14/ps-adjusted2.png" alt="" /></p>
+
+<p>调整完成之后，隐藏作品截图的图层，只需保存颜色查找表（如下图）</p>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-06-14/lookup-adjusted.png" width="300px" alt="" /></p>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-06-14/asset-lookup.png" alt="" /></p>
+
+<p>将该图在 Gallery 内上传数据，得到在 Gallery 上该图片地址链接后插入到<code class="highlighter-rouge">colorCorrection</code>的 <code class="highlighter-rouge">lookupTexture</code>中即可。</p>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-06-14/code-lookup.png" alt="" /></p>
+
+<p>到此，在 ECharts GL 中配置一个三维地图的步骤就完成啦，还想解锁更多 GL 技能的话， 可以直接去 ECharts 官网查看 GL 超多酷炫的实例，或者去查看GL的配置项手册 <a href="http://echarts.baidu.com/option-gl.html">http://echarts.baidu.com/option-gl.html</a> 尽情的尝试吧～</p>
+
+<p><img src="http://echarts.baidu.com/blog/images/post/2017-06-14/banner.png" alt="" /></p>
+
+<h2 id="总结">总结</h2>
+
+<p>本文我们介绍了如何在 ECharts GL 中配置出一张好看的写实风格三维地图。小编要偷偷地告诉你，用 ECharts GL 生成的效果图你还可以直接用来做图片素材哦，如果你还在为 PPT 或者自己的设计作品找不到合适的配图素材发愁的话，快来试试直接在 Gallery 里用 ECharts GL 直接生成一张吧。</p>
+
+
+      <div class="entry-meta">
+        <span class="tag-panel">
+          
+          <!--<a href="http://echarts.baidu.com/blog/tags/#GL" title="Pages tagged GL" class="tag">-->
+            <span class="term">GL</span>
+          <!--</a>-->
+          
+          
+          <!--<a href="http://echarts.baidu.com/blog/tags/#教程" title="Pages tagged 教程" class="tag">-->
+            <span class="term">教程</span>
+          <!--</a>-->
+          
+          
+        </span>
+      </div>
+
+      
+      <div class="entry-author">
+        <img class="entry-author--img" src="http://echarts.baidu.com/images/people/王俊婷.png">
+        <div class="entry-author--info">
+          <div class="entry-author--name">
+            <a href="https://www.behance.net/wjtjiayouac8aa" target="_blank">
+              王俊婷
+            </a> | ECharts 设计师
+          </div>
+          <div class="entry-author--desc">
+            喜欢神游的女子一枚，又名王叮叮
+          </div>
+        </div>
+      </div>
+      
+    </div><!-- /.entry-content -->
+    
+    <div class="container">
+  <div class="read-more">
+    <h3>更多相关信息</h3>
+    <div class="row">
+      
+      
+      
+      
+      
+      <div class="col-md-4">
+        <div class="read-more-post">
+          <h4><a href="http://echarts.baidu.com/blog/2017/05/25/new-release.html" title="ECharts v3.6 发布：自定义系列、极坐标柱状图">ECharts v3.6 发布：自定义系列、极坐标柱状图</a></h4>
+          <p>在 ECharts 新发布的 3.6 版本中，新增了自定义系列，能让用户定制渲染逻辑，从而在已有坐标系中创造新的图表。此外还有极坐标柱状图、自定义维度映射、dataZoom 等其他一些增强。</p>
+          <div class="tag-panel">
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#GL" title="Pages tagged GL" class="tag">-->
+              <span class="term">GL</span>
+            <!--</a>-->
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#教程" title="Pages tagged 教程" class="tag">-->
+              <span class="term">教程</span>
+            <!--</a>-->
+            
+          </div>
+        </div>
+      </div>
+      
+      
+      
+      
+      
+      <div class="col-md-4">
+        <div class="read-more-post">
+          <h4><a href="http://echarts.baidu.com/blog/2017/05/09/echarts-statistical-extension-tutorial.html" title="ECharts 统计扩展教程">ECharts 统计扩展教程</a></h4>
+          <p>你是否想了解一组样本数据的分布情况？你是否想根据用户的数值属性将用户分成不同的群体？你是否想预测两个变量的变化趋势？——什么？不需要？不要再违心了，小编已经听到来自你们内心深处的呐喊，今天就为大家推荐一款神器——ECharts 统计扩展，这是一个用来进行数据分析的扩展工具，包含的功能有直方图、聚类、回归、以及常用的汇总统计。通过统计扩展和 ECharts 的结合，可以使大家方便地实现可视分析，也就是将数据分析的结果，通过可视化直观地呈现出来。</p>
+          <div class="tag-panel">
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#GL" title="Pages tagged GL" class="tag">-->
+              <span class="term">GL</span>
+            <!--</a>-->
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#教程" title="Pages tagged 教程" class="tag">-->
+              <span class="term">教程</span>
+            <!--</a>-->
+            
+          </div>
+        </div>
+      </div>
+      
+      
+      
+      
+      
+      <div class="col-md-4">
+        <div class="read-more-post">
+          <h4><a href="http://echarts.baidu.com/blog/2017/05/08/echarts-histogram-tutorial.html" title="那些年我们一起学过的直方图">那些年我们一起学过的直方图</a></h4>
+          <p>某天下午小编正在安安静静地撸代码，突然听说在我们的[gallery](http://gallery.echartsjs.com/explore.html#sort=rank~timeframe=all~author=all)上，有用户提出，[ECharts](http://echarts.baidu.com/index.html)不支持直方图，什么？这怎么能忍？于是小编将珍藏已久的机械键盘拿出来，摆好姿势，通宵达旦地为用户大大们加好了直方图，并于上周四悄悄上线了，对，我们就是这么低调。然而，很多大大们表示，直方图还是柱状图？傻傻分不清。小编深感这年头光有图怕是不行了，必须得有个教程，要做到图文并茂。下面小编就从直方图是什么，为什么要用直方图，以及如何使用[ECharts](http://echarts.baidu.com/index.html)制作直方图三个方面，为各位大大们上点干货。</p>
+          <div class="tag-panel">
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#GL" title="Pages tagged GL" class="tag">-->
+              <span class="term">GL</span>
+            <!--</a>-->
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#教程" title="Pages tagged 教程" class="tag">-->
+              <span class="term">教程</span>
+            <!--</a>-->
+            
+          </div>
+        </div>
+      </div>
+      
+      
+      
+        
+    </div>
+  </div>
+</div>
+
+  </article>
+</div><!-- /#main -->
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 logo"><img src="http://echarts.baidu.com/images/echarts-footer-logo.png"/></div>
+            <div id="efe-product" class="col-md-2 col-sm-4 pc">
+                <h3>百度EFE更多产品</h3>
+                <ul id="efe-product">
+                    <li><a href="http://tushuo.baidu.com/?fr=echarts" target="_blank">图说</a></li>
+                    <li><a href="https://ecomfe.github.io/san/?fr=echarts" target="_blank">SAN</a></li>
+                    <li><a href="http://ecomfe.github.io/edp/?fr=echarts" target="_blank">EDP</a></li>
+                    <li><a href="http://github.com/ecomfe/zrender/?fr=echarts" target="_blank">ZRender</a></li>
+                    <li><a href="http://fecs.baidu.com/?fr=echarts" target="_blank">FECS</a></li>
+                    <li><a href="http://ecomfe.github.io/fontmin/?fr=echarts" target="_blank">Fontmin</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-md-offset-1 col-sm-4 pc">
+                <h3>友情链接</h3>
+                <ul>
+                    <li><a href="https://fex.baidu.com/?fr=echarts" target="_blank">FEX</a></li>
+                    <li><a href="http://bit.baidu.com/?fr=echarts" target="_blank">百度技术学院</a></li>
+                    <li><a href="https://git.oschina.net/echarts/echarts?fr=echarts" target="_blank">码云镜像</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3" id="footer-icon-panel">
+                <div class="icon-panel">
+                    <a href="mailto:echarts@baidu.com" class="footer-icon">
+                        <img src="http://echarts.baidu.com/images/icon-email.png"/>
+                    </a>
+                    <a href="https://twitter.com/EChartsJs" class="footer-icon">
+                        <img src="http://echarts.baidu.com/images/icon-twitter.png"/>
+                    </a>
+                    <a href="http://weibo.com/u/5160877841" class="footer-icon">
+                        <img src="http://echarts.baidu.com/images/icon-weibo.png"/>
+                    </a>
+                    <a href="https://github.com/ecomfe/echarts" class="footer-icon">
+                        <img src="http://echarts.baidu.com/images/icon-github.png"/>
+                    </a>
+                </div>
+                <div id="echarts-copyright">&#9400; 2017 百度ECharts团队出品</div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="http://echarts.baidu.com/blog/assets/js/vendor/jquery-1.9.1.min.js"></script>
+<script src="http://echarts.baidu.com/vendors/bootstrap/js/bootstrap.min.js"></script>
+<script src="http://echarts.baidu.com/blog/assets/js/scripts.min.js"></script>
+
+
+<script src="http://echarts.baidu.com/blog/assets/js/plugins/md-env.js"></script>
+<script src="http://echarts.baidu.com/blog/assets/js/plugins/lazy-load.js"></script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?4bad1df23f079e0d12bdbef5e65b072f";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</body>
+</html>

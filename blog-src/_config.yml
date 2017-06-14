@@ -46,6 +46,14 @@ owner:
   # google plus id, include the '+', eg +mmistakes
   google_plus:
 
+author:
+  dingding:
+    name: 王俊婷
+    title: ECharts 设计师
+    web: https://www.behance.net/wjtjiayouac8aa
+    image: http://echarts.baidu.com/images/people/王俊婷.png
+    desc: 喜欢神游的女子一枚，又名王叮叮
+
 # Background image to be tiled on all pages
 background:
 
