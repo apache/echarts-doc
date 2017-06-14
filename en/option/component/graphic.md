@@ -501,7 +501,7 @@ Text horizontal alignment. Optional values: `'left'`, `'center'`, `'right'`.
 
 `'left'` means the left side of the text block is specified by the [style.x](~graphic.elements-text.style.x), while `'right'` means the right side of the text block is specified by [style.y](~graphic.elements-text.style.y).
 
-#### textVeticalAlign(string)
+#### textVerticalAlign(string)
 
 Text vertical alignment. Optional values: `'top'`, `'middle'`, `'bottom'`.
 
