@@ -477,7 +477,7 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
 
 如果为 `'left'`，表示文本最左端在 `x` 值上。如果为 `'right'`，表示文本最右端在 `x` 值上。
 
-#### textVeticalAlign(string)
+#### textVerticalAlign(string)
 
 垂直对齐方式，取值：`'top'`, `'middle'`, `'bottom'`。
 
