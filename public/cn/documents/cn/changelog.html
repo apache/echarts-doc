@@ -1,3 +1,36 @@
+<h2 id="3-6-2">3.6.2</h2>
+<div class="time">2017-06-15</div>
+
+<ul>
+<li><p>[+] <a href="http://echarts.baidu.com/option.html#series-custom">自定义系列（custom series）</a> 支持 <a href="https://github.com/ecomfe/echarts/tree/master/extension/bmap">百度地图插件（bmap）</a>。参见 <a href="http://echarts.baidu.com/demo.html#map-polygon">示例 1</a> 和 <a href="http://echarts.baidu.com/demo.html#map-bin">示例 2</a>。</p>
+</li>
+<li><p>[+] <a href="http://echarts.baidu.com/option.html#series-treemap">treemap</a> 支持父节点标签的显示。参见 <a href="http://echarts.baidu.com/demo.html#treemap-show-parent">示例</a>。参见：<a href="https://github.com/ecomfe/echarts/issues/5869">#5869</a>、<a href="https://github.com/ecomfe/echarts/issues/5579">#5579</a>。</p>
+</li>
+<li><p>[+] 支持图形元素上的鼠标 cursor 样式指定：<a href="http://echarts.baidu.com/option.html#series-line.cursor">series-line.cursor</a>、<a href="http://echarts.baidu.com/option.html#series-bar.cursor">series-bar.cursor</a>、<a href="http://echarts.baidu.com/option.html#series-pie.cursor">series-pie.cursor</a>、<a href="http://echarts.baidu.com/option.html#series-scatter.cursor">series-scatter.cursor</a>、<a href="http://echarts.baidu.com/option.html#series-effectScatter.cursor">series-effectScatter.cursor</a>、<a href="http://echarts.baidu.com/option.html#series-graph.cursor">series-graph.cursor</a>、<a href="http://echarts.baidu.com/option.html#series-pictorialBar.cursor">series-pictorialBar.cursor</a>。</p>
+</li>
+<li><p>[+] 支持了 <a href="http://echarts.baidu.com/option.html#series-picotrialBar.symbolBoundingData">series-picotrialBar.symbolBoundingData</a> 可以同时设置正向的值和负向的值。参见 <a href="https://github.com/ecomfe/echarts/issues/5793">#5793</a>。</p>
+</li>
+<li><p>[+] <code>graph</code> 支持通过设置 <a href="http://echarts.baidu.com/option.html#series-graph.data.fixed">fixed</a> 固定力引导布局中的指定节点。参见 <a href="https://github.com/ecomfe/echarts/issues/5966">#5966</a>。</p>
+</li>
+<li><p>[+] <code>treemap</code> 支持了 <a href="http://echarts.baidu.com/option.html#series-treemap.label.normal.formatter">label.formatter</a>。参见 <a href="https://github.com/ecomfe/echarts/issues/5757">#5757</a>。</p>
+</li>
+<li><p>[+] <code>timeline</code> 支持了 <a href="http://echarts.baidu.com/option.html#timeline.label.normal.textStyle.align">label.normal.textStyle.align</a> 和 <a href="http://echarts.baidu.com/option.html#timeline.label.normal.textStyle.basealign">label.normal.textStyle.basealign</a>。参见 <a href="https://github.com/ecomfe/echarts/issues/5960">#5960</a>。</p>
+</li>
+<li><p>[^] 修正了当 <a href="http://echarts.baidu.com/demo.html#scatter-large">large scatter</a> 缩放后，<code>tooltip</code> 不显示的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/5837">#5837</a>。</p>
+</li>
+<li><p>[^] 修正了触发 <a href="http://echarts.baidu.com/api.html#action.tooltip.showTip">showTip</a> action 时 <code>position</code> 参数无效的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/5874">#5874</a>。</p>
+</li>
+<li><p>[^] 修正了因精度导致的有时 <a href="http://echarts.baidu.com/option.html#series-pie">pie</a> 显示出的百分比总值不足 <code>100%</code> 的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/5850">#5850</a>。</p>
+</li>
+<li><p>[^] 修正了当 <code>series.name</code> 相同时，只会显示最后一个系列的 <code>markPoint</code> 或 <code>markLine</code> 的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/5712">#5712</a>。</p>
+</li>
+<li><p>[^] 修正了 <a href="http://echarts.baidu.com/option.html#series-bar.itemStyle.normal.barBorderRadius">barBorderRadius</a> 在水平条形图中不工作的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/5943">#5943</a>。</p>
+</li>
+<li><p>[^] 修正了 <a href="http://echarts.baidu.com/option.html#dataZoom-inside">dataZoom-inside</a> 使用在 Y 轴时缩放点错误的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/5278">#5278</a>。</p>
+</li>
+<li><p>[^] 修正了 <a href="http://echarts.baidu.com/option.html#series-radar">radar</a> 在某些数据中绘制不出的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/5986">#5986</a>。</p>
+</li>
+</ul>
 <h2 id="v3-6-1">v3.6.1</h2>
 <div class="time">2017-05-26</div>
 

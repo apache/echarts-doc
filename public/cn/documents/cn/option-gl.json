@@ -23,6 +23,13 @@
             "descriptionCN": "<p>地球的半径。单位相对于三维空间，跟 <a href=\"#globe.viewControl.distance\">viewControl.distance</a> 相关。</p>\n",
             "default": 100
           },
+          "globeOuterRadius": {
+            "type": [
+              "number"
+            ],
+            "descriptionCN": "<p>地球的外半径。<code>globeRadius</code> 到 <code>globeOuterRadius</code> 之间这篇区域会被用于展示三维柱状图，散点图等。</p>\n",
+            "default": 150
+          },
           "environment": {
             "type": [
               "string"
@@ -73,7 +80,7 @@
             "type": [
               "string"
             ],
-            "descriptionCN": "<p>地球中三维图形的着色效果，echarts-gl 中支持下面三种着色方式</p>\n<ul>\n<li><p><code>&#39;color&#39;</code>\n只显示颜色，不受光照等其它因素的影响。</p>\n</li>\n<li><p><code>&#39;lambert&#39;</code>\n通过经典的 <a href=\"https://en.wikipedia.org/wiki/Lambertian_reflectance\" target=\"_blank\">lambert</a> 着色表现光照带来的明暗。</p>\n</li>\n<li><p><code>&#39;realistic&#39;</code>\n真实感渲染，配合 <a href=\"#globe.light.ambientCubemap\">light.ambientCubemap</a> 和 <a href=\"#globe.postEffect\">postEffect</a> 使用可以让展示的画面效果和质感有质的提升。</p>\n</li>\n</ul>\n<p>下面是不同着色效果的区别</p>\n<p><img width=\"250\" height=\"auto\" src=\"documents/asset/gl/img/globe-shading-color.png\">\n<img width=\"250\" height=\"auto\" src=\"documents/asset/gl/img/globe-shading-lambert.png\">\n<img width=\"250\" height=\"auto\" src=\"documents/asset/gl/img/globe-shading-realistic.png\"></p>\n"
+            "descriptionCN": "<p>地球中三维图形的着色效果，echarts-gl 中支持下面三种着色方式</p>\n<ul>\n<li><p><code>&#39;color&#39;</code>\n只显示颜色，不受光照等其它因素的影响。</p>\n</li>\n<li><p><code>&#39;lambert&#39;</code>\n通过经典的 <a href=\"https://en.wikipedia.org/wiki/Lambertian_reflectance\" target=\"_blank\">lambert</a> 着色表现光照带来的明暗。</p>\n</li>\n<li><p><code>&#39;realistic&#39;</code>\n真实感渲染，配合 <a href=\"#globe.light.ambientCubemap\">light.ambientCubemap</a> 和 <a href=\"#globe.postEffect\">postEffect</a> 使用可以让展示的画面效果和质感有质的提升。ECharts GL 中使用了<a href=\"https://www.marmoset.co/posts/physically-based-rendering-and-you-can-too/\" target=\"_blank\">基于物理的渲染（PBR)</a> 来表现真实感材质。</p>\n</li>\n</ul>\n<p>下面是不同着色效果的区别</p>\n<p><img width=\"250\" height=\"auto\" src=\"documents/asset/gl/img/globe-shading-color.png\">\n<img width=\"250\" height=\"auto\" src=\"documents/asset/gl/img/globe-shading-lambert.png\">\n<img width=\"250\" height=\"auto\" src=\"documents/asset/gl/img/globe-shading-realistic.png\"></p>\n"
           },
           "realisticMaterial": {
             "type": [
@@ -81,18 +88,128 @@
             ],
             "descriptionCN": "<p>真实感材质相关的配置项，在 <a href=\"#globe.shading\">shading</a> 为<code>&#39;realistic&#39;</code>时有效。</p>\n",
             "properties": {
-              "roughness": {
+              "detailTexture": {
+                "type": [
+                  "string",
+                  "HTMLImageElement",
+                  "HTMLCanvasElement"
+                ],
+                "descriptionCN": "<p>材质细节的纹理贴图。</p>\n"
+              },
+              "textureTiling": {
                 "type": [
                   "number"
                 ],
-                "descriptionCN": "<p><code>roughness</code>属性用于表示材质的光泽度，<code>0</code>为完全光滑，<code>1</code>完全粗糙，中间的值则是介于这两者之间。</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>roughness</code>分别是<code>0.2</code>（光滑）与<code>0.8</code>（粗糙）的效果</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-gloss.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-rough.png\"></p>\n",
+                "descriptionCN": "<p>材质细节纹理的平铺。默认为 1，也就是拉伸填满，大于 1 的时候数字表示纹理平铺重复的次数</p>\n<p><strong>注：</strong>使用平铺需要 <code>detailTexture</code> 的高宽是 2 的 n 次方。例如 512x512，如果是 200x200 的纹理无法使用平铺。</p>\n",
+                "default": 1
+              },
+              "textureOffset": {
+                "type": [
+                  "number"
+                ],
+                "descriptionCN": "<p>材质细节纹理的位移。</p>\n",
+                "default": 0
+              },
+              "roughness": {
+                "type": [
+                  "number",
+                  "string",
+                  "HTMLImageElement",
+                  "HTMLCanvasElement"
+                ],
+                "descriptionCN": "<p><code>roughness</code>属性用于表示材质的粗糙度，<code>0</code>为完全光滑，<code>1</code>完全粗糙，中间的值则是介于这两者之间。</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>roughness</code>分别是<code>0.2</code>（光滑）与<code>0.8</code>（粗糙）的效果</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-gloss.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-rough.png\"></p>\n<p>当你想要表达更复杂的材质时。你可以直接将 <code>roughness</code> 设置为如下用每个像素存储粗糙度的贴图。</p>\n<p><img width=\"300\" height=\"300\" src=\"documents/asset/gl/img/roughness.png\"></p>\n<p>贴图中颜色越白的地方值越大，也就是越粗糙。你可以从 <a href=\"http://freepbr.com/\" target=\"_blank\">http://freepbr.com/</a> 等资源网站获取不同材质的贴图资源，也可以自己使用工具生成。</p>\n",
                 "default": 0.5
               },
               "metalness": {
                 "type": [
+                  "number",
+                  "string",
+                  "HTMLImageElement",
+                  "HTMLCanvasElement"
+                ],
+                "descriptionCN": "<p><code>metalness</code>属性用于表示材质是金属还是非金属，<code>0</code>为非金属，<code>1</code>为金属，中间的值则是介于这两者之间，但是通常设成<code>0</code>和<code>1</code>就能满足大部分场景了</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>metalness</code>分别设成<code>1</code>与<code>0</code>的效果区别。</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-metal.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-non-metal.png\"></p>\n<p>跟 <a href=\"#globe.realisticMaterial.roughness\">roughness</a> 一样 你可以直接将 <code>metalness</code> 设置为金属度贴图。</p>\n",
+                "default": 0
+              },
+              "roughnessAdjust": {
+                "type": [
                   "number"
                 ],
-                "descriptionCN": "<p><code>metalness</code>属性用于表示材质是金属还是非金属，<code>0</code>为非金属，<code>1</code>为金属，中间的值则是介于这两者之间，但是通常设成<code>0</code>和<code>1</code>就能满足大部分场景了</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>metalness</code>分别设成<code>1</code>与<code>0</code>的效果区别。</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-metal.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-non-metal.png\"></p>\n",
+                "descriptionCN": "<p>粗糙度调整，在使用粗糙度贴图的时候有用。可以对贴图整体的粗糙度进行调整。默认为 0.5 的时候不调整，0 的时候变成完全光滑，1 的时候变成完全粗糙。</p>\n",
+                "default": 0.5
+              },
+              "metalnessAdjust": {
+                "type": [
+                  "number"
+                ],
+                "descriptionCN": "<p>金属度调整，在使用金属度贴图的时候有用。可以对贴图整体的金属度进行调整。默认为 0.5 的时候不调整，0 的时候变成非金属，1 的时候变成金属。</p>\n",
+                "default": 0.5
+              },
+              "normalTexture": {
+                "type": [
+                  "string",
+                  "HTMLImageElement",
+                  "HTMLCanvasElement"
+                ],
+                "descriptionCN": "<p>材质细节的法线贴图。</p>\n<p>使用法线贴图可以在较少的顶点下依然表现出物体表面丰富的明暗细节。</p>\n"
+              }
+            }
+          },
+          "lambertMaterial": {
+            "type": [
+              "Object"
+            ],
+            "descriptionCN": "<p>lambert 材质相关的配置项，在 <a href=\"#globe.shading\">shading</a> 为<code>&#39;lambert&#39;</code>时有效。</p>\n",
+            "properties": {
+              "detailTexture": {
+                "type": [
+                  "string",
+                  "HTMLImageElement",
+                  "HTMLCanvasElement"
+                ],
+                "descriptionCN": "<p>材质细节的纹理贴图。</p>\n"
+              },
+              "textureTiling": {
+                "type": [
+                  "number"
+                ],
+                "descriptionCN": "<p>材质细节纹理的平铺。默认为 1，也就是拉伸填满，大于 1 的时候数字表示纹理平铺重复的次数</p>\n<p><strong>注：</strong>使用平铺需要 <code>detailTexture</code> 的高宽是 2 的 n 次方。例如 512x512，如果是 200x200 的纹理无法使用平铺。</p>\n",
+                "default": 1
+              },
+              "textureOffset": {
+                "type": [
+                  "number"
+                ],
+                "descriptionCN": "<p>材质细节纹理的位移。</p>\n",
+                "default": 0
+              }
+            }
+          },
+          "colorMaterial": {
+            "type": [
+              "Object"
+            ],
+            "descriptionCN": "<p>color 材质相关的配置项，在 <a href=\"#globe.shading\">shading</a> 为<code>&#39;color&#39;</code>时有效。</p>\n",
+            "properties": {
+              "detailTexture": {
+                "type": [
+                  "string",
+                  "HTMLImageElement",
+                  "HTMLCanvasElement"
+                ],
+                "descriptionCN": "<p>材质细节的纹理贴图。</p>\n"
+              },
+              "textureTiling": {
+                "type": [
+                  "number"
+                ],
+                "descriptionCN": "<p>材质细节纹理的平铺。默认为 1，也就是拉伸填满，大于 1 的时候数字表示纹理平铺重复的次数</p>\n<p><strong>注：</strong>使用平铺需要 <code>detailTexture</code> 的高宽是 2 的 n 次方。例如 512x512，如果是 200x200 的纹理无法使用平铺。</p>\n",
+                "default": 1
+              },
+              "textureOffset": {
+                "type": [
+                  "number"
+                ],
+                "descriptionCN": "<p>材质细节纹理的位移。</p>\n",
                 "default": 0
               }
             }
@@ -730,15 +847,15 @@
             "type": [
               "number"
             ],
-            "descriptionCN": "<p>三维地理坐标系组件组件在三维场景中的宽度。配合 <a href=\"#geo3D.viewControl.distance\">viewControl.distance</a> 可以得到最合适的展示尺寸。</p>\n<p>下面是三维地理坐标系组件 中<code>boxWidth</code>, <code>boxHeight</code>, <code>boxDepth</code>的示意图。</p>\n<p><img width=\"600\" height=\"auto\" src=\"documents/asset/gl/img/geo-size.png\"></p>\n",
+            "descriptionCN": "<p>三维地理坐标系组件组件在三维场景中的宽度。配合 <a href=\"#geo3D.viewControl.distance\">viewControl.distance</a> 可以得到最合适的展示尺寸。</p>\n<p>下面是三维地理坐标系组件 中<code>boxWidth</code>, <code>boxHeight</code>, <code>boxDepth</code>, <code>regionHeight</code>的示意图。</p>\n<p><img width=\"600\" height=\"auto\" src=\"documents/asset/gl/img/geo-size.png\"></p>\n",
             "default": 100
           },
           "boxHeight": {
             "type": [
               "number"
             ],
-            "descriptionCN": "<p>三维地理坐标系组件组件在三维场景中的高度。</p>\n",
-            "default": 3
+            "descriptionCN": "<p>三维地理坐标系组件组件在三维场景中的高度。</p>\n<p>组件高度。这个高度包含三维地图上的柱状图，散点图。</p>\n",
+            "default": 10
           },
           "boxDepth": {
             "type": [
@@ -746,6 +863,13 @@
             ],
             "descriptionCN": "<p>三维地理坐标系组件组件在三维场景中的深度。</p>\n<p>组件深度默认自动，保证三维组件的显示比例跟输入的 GeoJSON 的比例相同</p>\n",
             "default": "auto"
+          },
+          "regionHeight": {
+            "type": [
+              "number"
+            ],
+            "descriptionCN": "<p>三维地图每个区域的高度。这个高度是模型的高度，小于 <a href=\"#geo3D.boxHeight\">boxHeight</a>。<code>boxHeight - regionHeight</code> 这一片区域会被用于三维柱状图，散点图等的展示。</p>\n",
+            "default": 3
           },
           "environment": {
             "type": [
@@ -1272,7 +1396,7 @@
             "type": [
               "string"
             ],
-            "descriptionCN": "<p>三维地理坐标系组件中三维图形的着色效果，echarts-gl 中支持下面三种着色方式</p>\n<ul>\n<li><p><code>&#39;color&#39;</code>\n只显示颜色，不受光照等其它因素的影响。</p>\n</li>\n<li><p><code>&#39;lambert&#39;</code>\n通过经典的 <a href=\"https://en.wikipedia.org/wiki/Lambertian_reflectance\" target=\"_blank\">lambert</a> 着色表现光照带来的明暗。</p>\n</li>\n<li><p><code>&#39;realistic&#39;</code>\n真实感渲染，配合 <a href=\"#globe.light.ambientCubemap\">light.ambientCubemap</a> 和 <a href=\"#globe.postEffect\">postEffect</a> 使用可以让展示的画面效果和质感有质的提升。</p>\n</li>\n</ul>\n"
+            "descriptionCN": "<p>三维地理坐标系组件中三维图形的着色效果，echarts-gl 中支持下面三种着色方式</p>\n<ul>\n<li><p><code>&#39;color&#39;</code>\n只显示颜色，不受光照等其它因素的影响。</p>\n</li>\n<li><p><code>&#39;lambert&#39;</code>\n通过经典的 <a href=\"https://en.wikipedia.org/wiki/Lambertian_reflectance\" target=\"_blank\">lambert</a> 着色表现光照带来的明暗。</p>\n</li>\n<li><p><code>&#39;realistic&#39;</code>\n真实感渲染，配合 <a href=\"#globe.light.ambientCubemap\">light.ambientCubemap</a> 和 <a href=\"#globe.postEffect\">postEffect</a> 使用可以让展示的画面效果和质感有质的提升。ECharts GL 中使用了<a href=\"https://www.marmoset.co/posts/physically-based-rendering-and-you-can-too/\" target=\"_blank\">基于物理的渲染（PBR)</a> 来表现真实感材质。</p>\n</li>\n</ul>\n"
           },
           "realisticMaterial": {
             "type": [
@@ -1280,21 +1404,7 @@
             ],
             "descriptionCN": "<p>真实感材质相关的配置项，在 <a href=\"#geo3D.shading\">shading</a> 为<code>&#39;realistic&#39;</code>时有效。</p>\n",
             "properties": {
-              "roughness": {
-                "type": [
-                  "number"
-                ],
-                "descriptionCN": "<p><code>roughness</code>属性用于表示材质的光泽度，<code>0</code>为完全光滑，<code>1</code>完全粗糙，中间的值则是介于这两者之间。</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>roughness</code>分别是<code>0.2</code>（光滑）与<code>0.8</code>（粗糙）的效果</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-gloss.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-rough.png\"></p>\n",
-                "default": 0.5
-              },
-              "metalness": {
-                "type": [
-                  "number"
-                ],
-                "descriptionCN": "<p><code>metalness</code>属性用于表示材质是金属还是非金属，<code>0</code>为非金属，<code>1</code>为金属，中间的值则是介于这两者之间，但是通常设成<code>0</code>和<code>1</code>就能满足大部分场景了</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>metalness</code>分别设成<code>1</code>与<code>0</code>的效果区别。</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-metal.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-non-metal.png\"></p>\n",
-                "default": 0
-              },
-              "baseTexture": {
+              "detailTexture": {
                 "type": [
                   "string",
                   "HTMLImageElement",
@@ -1306,7 +1416,7 @@
                 "type": [
                   "number"
                 ],
-                "descriptionCN": "<p>材质细节纹理的平铺。默认为 1，也就是拉伸填满，大于 1 的时候数字表示纹理平铺重复的次数</p>\n<p><strong>注：</strong>使用平铺需要 <code>baseTexture</code> 的高宽是 2 的 n 次方。例如 512x512，如果是 200x200 的纹理无法使用平铺。</p>\n",
+                "descriptionCN": "<p>材质细节纹理的平铺。默认为 1，也就是拉伸填满，大于 1 的时候数字表示纹理平铺重复的次数</p>\n<p><strong>注：</strong>使用平铺需要 <code>detailTexture</code> 的高宽是 2 的 n 次方。例如 512x512，如果是 200x200 的纹理无法使用平铺。</p>\n",
                 "default": 1
               },
               "textureOffset": {
@@ -1315,6 +1425,48 @@
                 ],
                 "descriptionCN": "<p>材质细节纹理的位移。</p>\n",
                 "default": 0
+              },
+              "roughness": {
+                "type": [
+                  "number",
+                  "string",
+                  "HTMLImageElement",
+                  "HTMLCanvasElement"
+                ],
+                "descriptionCN": "<p><code>roughness</code>属性用于表示材质的粗糙度，<code>0</code>为完全光滑，<code>1</code>完全粗糙，中间的值则是介于这两者之间。</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>roughness</code>分别是<code>0.2</code>（光滑）与<code>0.8</code>（粗糙）的效果</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-gloss.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-rough.png\"></p>\n<p>当你想要表达更复杂的材质时。你可以直接将 <code>roughness</code> 设置为如下用每个像素存储粗糙度的贴图。</p>\n<p><img width=\"300\" height=\"300\" src=\"documents/asset/gl/img/roughness.png\"></p>\n<p>贴图中颜色越白的地方值越大，也就是越粗糙。你可以从 <a href=\"http://freepbr.com/\" target=\"_blank\">http://freepbr.com/</a> 等资源网站获取不同材质的贴图资源，也可以自己使用工具生成。</p>\n",
+                "default": 0.5
+              },
+              "metalness": {
+                "type": [
+                  "number",
+                  "string",
+                  "HTMLImageElement",
+                  "HTMLCanvasElement"
+                ],
+                "descriptionCN": "<p><code>metalness</code>属性用于表示材质是金属还是非金属，<code>0</code>为非金属，<code>1</code>为金属，中间的值则是介于这两者之间，但是通常设成<code>0</code>和<code>1</code>就能满足大部分场景了</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>metalness</code>分别设成<code>1</code>与<code>0</code>的效果区别。</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-metal.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-non-metal.png\"></p>\n<p>跟 <a href=\"#geo3D.realisticMaterial.roughness\">roughness</a> 一样 你可以直接将 <code>metalness</code> 设置为金属度贴图。</p>\n",
+                "default": 0
+              },
+              "roughnessAdjust": {
+                "type": [
+                  "number"
+                ],
+                "descriptionCN": "<p>粗糙度调整，在使用粗糙度贴图的时候有用。可以对贴图整体的粗糙度进行调整。默认为 0.5 的时候不调整，0 的时候变成完全光滑，1 的时候变成完全粗糙。</p>\n",
+                "default": 0.5
+              },
+              "metalnessAdjust": {
+                "type": [
+                  "number"
+                ],
+                "descriptionCN": "<p>金属度调整，在使用金属度贴图的时候有用。可以对贴图整体的金属度进行调整。默认为 0.5 的时候不调整，0 的时候变成非金属，1 的时候变成金属。</p>\n",
+                "default": 0.5
+              },
+              "normalTexture": {
+                "type": [
+                  "string",
+                  "HTMLImageElement",
+                  "HTMLCanvasElement"
+                ],
+                "descriptionCN": "<p>材质细节的法线贴图。</p>\n<p>使用法线贴图可以在较少的顶点下依然表现出物体表面丰富的明暗细节。</p>\n"
               }
             }
           },
@@ -1324,7 +1476,7 @@
             ],
             "descriptionCN": "<p>lambert 材质相关的配置项，在 <a href=\"#geo3D.shading\">shading</a> 为<code>&#39;lambert&#39;</code>时有效。</p>\n",
             "properties": {
-              "baseTexture": {
+              "detailTexture": {
                 "type": [
                   "string",
                   "HTMLImageElement",
@@ -1336,7 +1488,7 @@
                 "type": [
                   "number"
                 ],
-                "descriptionCN": "<p>材质细节纹理的平铺。默认为 1，也就是拉伸填满，大于 1 的时候数字表示纹理平铺重复的次数</p>\n<p><strong>注：</strong>使用平铺需要 <code>baseTexture</code> 的高宽是 2 的 n 次方。例如 512x512，如果是 200x200 的纹理无法使用平铺。</p>\n",
+                "descriptionCN": "<p>材质细节纹理的平铺。默认为 1，也就是拉伸填满，大于 1 的时候数字表示纹理平铺重复的次数</p>\n<p><strong>注：</strong>使用平铺需要 <code>detailTexture</code> 的高宽是 2 的 n 次方。例如 512x512，如果是 200x200 的纹理无法使用平铺。</p>\n",
                 "default": 1
               },
               "textureOffset": {
@@ -1354,7 +1506,7 @@
             ],
             "descriptionCN": "<p>color 材质相关的配置项，在 <a href=\"#geo3D.shading\">shading</a> 为<code>&#39;color&#39;</code>时有效。</p>\n",
             "properties": {
-              "baseTexture": {
+              "detailTexture": {
                 "type": [
                   "string",
                   "HTMLImageElement",
@@ -1366,7 +1518,7 @@
                 "type": [
                   "number"
                 ],
-                "descriptionCN": "<p>材质细节纹理的平铺。默认为 1，也就是拉伸填满，大于 1 的时候数字表示纹理平铺重复的次数</p>\n<p><strong>注：</strong>使用平铺需要 <code>baseTexture</code> 的高宽是 2 的 n 次方。例如 512x512，如果是 200x200 的纹理无法使用平铺。</p>\n",
+                "descriptionCN": "<p>材质细节纹理的平铺。默认为 1，也就是拉伸填满，大于 1 的时候数字表示纹理平铺重复的次数</p>\n<p><strong>注：</strong>使用平铺需要 <code>detailTexture</code> 的高宽是 2 的 n 次方。例如 512x512，如果是 200x200 的纹理无法使用平铺。</p>\n",
                 "default": 1
               },
               "textureOffset": {
@@ -1905,6 +2057,497 @@
             ],
             "descriptionCN": "<p>组件的视图高度。</p>\n",
             "default": "auto"
+          }
+        }
+      },
+      "mapbox": {
+        "type": [
+          "Object"
+        ],
+        "descriptionCN": "<p>基于 mapbox-gl-js 的地理组件。支持在 mapbox 的地图上绘制三维的散点图，飞线图，柱状图和地图。你可以利用 Mapbox 强大的地图服务和 ECharts GL 丰富的可视化和渲染效果实现你想要的可视化作品。</p>\n<p>在使用 mapbox 组件之前你需要先引入 mapbox 的官方 sdk。</p>\n<pre><code class=\"lang-html\">&lt;script src=&#39;https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.js&#39;&gt;&lt;/script&gt;\n&lt;link href=&#39;https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.css&#39; rel=&#39;stylesheet&#39; /&gt;\n</code></pre>\n<p>然后获取到 mapbox 提供的 token 后设置到 <code>mapbox.accessToken</code> 上。</p>\n<pre><code class=\"lang-js\">mapboxgl.accessToken = &#39;你的 token&#39;;\n</code></pre>\n<p>接下来你就可以像使用其它组件一样使用 mapbox 组件了。</p>\n<pre><code class=\"lang-js\">chart.setOption({\n    mapbox: {\n        style: &#39;mapbox://styles/mapbox/dark-v9&#39;\n    }\n});\n</code></pre>\n<p>可以前往 <a href=\"https://www.mapbox.com/mapbox-gl-js/api/\" target=\"_blank\">https://www.mapbox.com/mapbox-gl-js/api/</a> 了解更详细的关于 mapbox-gl-js sdk 的内容。</p>\n",
+        "properties": {
+          "style": {
+            "type": [
+              "string",
+              "Object"
+            ],
+            "descriptionCN": "<p>Mapbox 地图样式。同 <a href=\"https://www.mapbox.com/mapbox-gl-js/style-spec/\" target=\"_blank\">https://www.mapbox.com/mapbox-gl-js/style-spec/</a></p>\n"
+          },
+          "center": {
+            "type": [
+              "Array"
+            ],
+            "descriptionCN": "<p>Mapbox 地图中心经纬度。经纬度用数组表示，例如：</p>\n<pre><code class=\"lang-js\">mapbox: {\n    center: [104.114129, 37.550339],\n    zoom: 3\n}\n</code></pre>\n"
+          },
+          "zoom": {
+            "type": [
+              "number"
+            ],
+            "descriptionCN": "<p>Mapbox 地图的缩放等级。见 <a href=\"https://www.mapbox.com/mapbox-gl-js/style-spec/#root-zoom\" target=\"_blank\">https://www.mapbox.com/mapbox-gl-js/style-spec/#root-zoom</a></p>\n"
+          },
+          "bearing": {
+            "type": [
+              "number"
+            ],
+            "descriptionCN": "<p>Mapbox 地图的旋转角度。见 <a href=\"https://www.mapbox.com/mapbox-gl-js/style-spec/#root-bearing\" target=\"_blank\">https://www.mapbox.com/mapbox-gl-js/style-spec/#root-bearing</a></p>\n",
+            "default": 0
+          },
+          "pitch": {
+            "type": [
+              "number"
+            ],
+            "descriptionCN": "<p>视角俯视的倾斜角度。默认为<code>0</code>，也就是正对着地图。最大<code>60</code>。见 <a href=\"https://www.mapbox.com/mapbox-gl-js/style-spec/#root-pitch\" target=\"_blank\">https://www.mapbox.com/mapbox-gl-js/style-spec/#root-pitch</a></p>\n",
+            "default": 0
+          },
+          "altitudeScale": {
+            "type": [
+              "number"
+            ],
+            "descriptionCN": "<p>海拔的缩放。</p>\n",
+            "default": 1
+          },
+          "shading": {
+            "type": [
+              "string"
+            ],
+            "descriptionCN": "<p>mapbox中三维图形的着色效果，echarts-gl 中支持下面三种着色方式</p>\n<ul>\n<li><p><code>&#39;color&#39;</code>\n只显示颜色，不受光照等其它因素的影响。</p>\n</li>\n<li><p><code>&#39;lambert&#39;</code>\n通过经典的 <a href=\"https://en.wikipedia.org/wiki/Lambertian_reflectance\" target=\"_blank\">lambert</a> 着色表现光照带来的明暗。</p>\n</li>\n<li><p><code>&#39;realistic&#39;</code>\n真实感渲染，配合 <a href=\"#globe.light.ambientCubemap\">light.ambientCubemap</a> 和 <a href=\"#globe.postEffect\">postEffect</a> 使用可以让展示的画面效果和质感有质的提升。ECharts GL 中使用了<a href=\"https://www.marmoset.co/posts/physically-based-rendering-and-you-can-too/\" target=\"_blank\">基于物理的渲染（PBR)</a> 来表现真实感材质。</p>\n</li>\n</ul>\n"
+          },
+          "realisticMaterial": {
+            "type": [
+              "Object"
+            ],
+            "descriptionCN": "<p>真实感材质相关的配置项，在 <a href=\"#mapbox.shading\">shading</a> 为<code>&#39;realistic&#39;</code>时有效。</p>\n",
+            "properties": {
+              "detailTexture": {
+                "type": [
+                  "string",
+                  "HTMLImageElement",
+                  "HTMLCanvasElement"
+                ],
+                "descriptionCN": "<p>材质细节的纹理贴图。</p>\n"
+              },
+              "textureTiling": {
+                "type": [
+                  "number"
+                ],
+                "descriptionCN": "<p>材质细节纹理的平铺。默认为 1，也就是拉伸填满，大于 1 的时候数字表示纹理平铺重复的次数</p>\n<p><strong>注：</strong>使用平铺需要 <code>detailTexture</code> 的高宽是 2 的 n 次方。例如 512x512，如果是 200x200 的纹理无法使用平铺。</p>\n",
+                "default": 1
+              },
+              "textureOffset": {
+                "type": [
+                  "number"
+                ],
+                "descriptionCN": "<p>材质细节纹理的位移。</p>\n",
+                "default": 0
+              },
+              "roughness": {
+                "type": [
+                  "number",
+                  "string",
+                  "HTMLImageElement",
+                  "HTMLCanvasElement"
+                ],
+                "descriptionCN": "<p><code>roughness</code>属性用于表示材质的粗糙度，<code>0</code>为完全光滑，<code>1</code>完全粗糙，中间的值则是介于这两者之间。</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>roughness</code>分别是<code>0.2</code>（光滑）与<code>0.8</code>（粗糙）的效果</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-gloss.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-rough.png\"></p>\n<p>当你想要表达更复杂的材质时。你可以直接将 <code>roughness</code> 设置为如下用每个像素存储粗糙度的贴图。</p>\n<p><img width=\"300\" height=\"300\" src=\"documents/asset/gl/img/roughness.png\"></p>\n<p>贴图中颜色越白的地方值越大，也就是越粗糙。你可以从 <a href=\"http://freepbr.com/\" target=\"_blank\">http://freepbr.com/</a> 等资源网站获取不同材质的贴图资源，也可以自己使用工具生成。</p>\n",
+                "default": 0.5
+              },
+              "metalness": {
+                "type": [
+                  "number",
+                  "string",
+                  "HTMLImageElement",
+                  "HTMLCanvasElement"
+                ],
+                "descriptionCN": "<p><code>metalness</code>属性用于表示材质是金属还是非金属，<code>0</code>为非金属，<code>1</code>为金属，中间的值则是介于这两者之间，但是通常设成<code>0</code>和<code>1</code>就能满足大部分场景了</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>metalness</code>分别设成<code>1</code>与<code>0</code>的效果区别。</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-metal.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-non-metal.png\"></p>\n<p>跟 <a href=\"#mapbox.realisticMaterial.roughness\">roughness</a> 一样 你可以直接将 <code>metalness</code> 设置为金属度贴图。</p>\n",
+                "default": 0
+              },
+              "roughnessAdjust": {
+                "type": [
+                  "number"
+                ],
+                "descriptionCN": "<p>粗糙度调整，在使用粗糙度贴图的时候有用。可以对贴图整体的粗糙度进行调整。默认为 0.5 的时候不调整，0 的时候变成完全光滑，1 的时候变成完全粗糙。</p>\n",
+                "default": 0.5
+              },
+              "metalnessAdjust": {
+                "type": [
+                  "number"
+                ],
+                "descriptionCN": "<p>金属度调整，在使用金属度贴图的时候有用。可以对贴图整体的金属度进行调整。默认为 0.5 的时候不调整，0 的时候变成非金属，1 的时候变成金属。</p>\n",
+                "default": 0.5
+              },
+              "normalTexture": {
+                "type": [
+                  "string",
+                  "HTMLImageElement",
+                  "HTMLCanvasElement"
+                ],
+                "descriptionCN": "<p>材质细节的法线贴图。</p>\n<p>使用法线贴图可以在较少的顶点下依然表现出物体表面丰富的明暗细节。</p>\n"
+              }
+            }
+          },
+          "lambertMaterial": {
+            "type": [
+              "Object"
+            ],
+            "descriptionCN": "<p>lambert 材质相关的配置项，在 <a href=\"#mapbox.shading\">shading</a> 为<code>&#39;lambert&#39;</code>时有效。</p>\n",
+            "properties": {
+              "detailTexture": {
+                "type": [
+                  "string",
+                  "HTMLImageElement",
+                  "HTMLCanvasElement"
+                ],
+                "descriptionCN": "<p>材质细节的纹理贴图。</p>\n"
+              },
+              "textureTiling": {
+                "type": [
+                  "number"
+                ],
+                "descriptionCN": "<p>材质细节纹理的平铺。默认为 1，也就是拉伸填满，大于 1 的时候数字表示纹理平铺重复的次数</p>\n<p><strong>注：</strong>使用平铺需要 <code>detailTexture</code> 的高宽是 2 的 n 次方。例如 512x512，如果是 200x200 的纹理无法使用平铺。</p>\n",
+                "default": 1
+              },
+              "textureOffset": {
+                "type": [
+                  "number"
+                ],
+                "descriptionCN": "<p>材质细节纹理的位移。</p>\n",
+                "default": 0
+              }
+            }
+          },
+          "colorMaterial": {
+            "type": [
+              "Object"
+            ],
+            "descriptionCN": "<p>color 材质相关的配置项，在 <a href=\"#mapbox.shading\">shading</a> 为<code>&#39;color&#39;</code>时有效。</p>\n",
+            "properties": {
+              "detailTexture": {
+                "type": [
+                  "string",
+                  "HTMLImageElement",
+                  "HTMLCanvasElement"
+                ],
+                "descriptionCN": "<p>材质细节的纹理贴图。</p>\n"
+              },
+              "textureTiling": {
+                "type": [
+                  "number"
+                ],
+                "descriptionCN": "<p>材质细节纹理的平铺。默认为 1，也就是拉伸填满，大于 1 的时候数字表示纹理平铺重复的次数</p>\n<p><strong>注：</strong>使用平铺需要 <code>detailTexture</code> 的高宽是 2 的 n 次方。例如 512x512，如果是 200x200 的纹理无法使用平铺。</p>\n",
+                "default": 1
+              },
+              "textureOffset": {
+                "type": [
+                  "number"
+                ],
+                "descriptionCN": "<p>材质细节纹理的位移。</p>\n",
+                "default": 0
+              }
+            }
+          },
+          "light": {
+            "type": [
+              "Object"
+            ],
+            "descriptionCN": "<p>光照相关的设置。在 <a href=\"#mapbox.shading\">shading</a> 为 <code>&#39;color&#39;</code> 的时候无效。</p>\n<p>光照的设置会影响到组件以及组件所在坐标系上的所有图表。</p>\n<p>合理的光照设置能够让整个场景的明暗变得更丰富，更有层次。</p>\n",
+            "properties": {
+              "main": {
+                "type": [
+                  "Object"
+                ],
+                "descriptionCN": "<p>场景主光源的设置，在 <a href=\"#globe\">globe</a> 组件中就是太阳光。</p>\n",
+                "properties": {
+                  "color": {
+                    "type": [
+                      "string"
+                    ],
+                    "descriptionCN": "<p>主光源的颜色。</p>\n",
+                    "default": "#fff"
+                  },
+                  "intensity": {
+                    "type": [
+                      "number"
+                    ],
+                    "descriptionCN": "<p>主光源的强度。</p>\n",
+                    "default": 1
+                  },
+                  "shadow": {
+                    "type": [
+                      "boolean"
+                    ],
+                    "descriptionCN": "<p>主光源是否投射阴影。默认关闭。</p>\n<p>开启阴影可以给场景带来更真实和有层次的光照效果。但是同时也会增加程序的运行开销。</p>\n<p>下图是开启阴影以及关闭阴影的区别。</p>\n<div class=\"twentytwenty-container\" style=\"width: 700px;\">\n    <img src=\"documents/asset/gl/img/geo-shadow.png\" width=\"100%\" title=\"Shadow\">\n    <img src=\"documents/asset/gl/img/geo-no-shadow.png\" width=\"100%\" title=\"No Shadow\">\n</div>\n",
+                    "default": false
+                  },
+                  "shadowQuality": {
+                    "type": [
+                      "string"
+                    ],
+                    "descriptionCN": "<p>阴影的质量。可选<code>&#39;low&#39;</code>, <code>&#39;medium&#39;</code>, <code>&#39;high&#39;</code>, <code>&#39;ultra&#39;</code></p>\n<p>下图是低质量和高质量阴影的区别。</p>\n<div class=\"twentytwenty-container\" style=\"width: 700px;\">\n    <img src=\"documents/asset/gl/img/geo-shadow-low.png\" width=\"100%\" title=\"Low\">\n    <img src=\"documents/asset/gl/img/geo-shadow-high.png\" width=\"100%\" title=\"High\">\n</div>\n",
+                    "default": "'medium'"
+                  },
+                  "alpha": {
+                    "type": [
+                      "number"
+                    ],
+                    "descriptionCN": "<p>主光源绕 x 轴，即上下旋转的角度。配合 <a href=\"#mapbox.light.main.beta\">beta</a> 控制光源的方向。</p>\n<p>如下示意图：</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/gl/img/light-alpha-beta.png\"></p>\n<p><a href=\"#globe\">globe</a> 组件中可以通过 <a href=\"#globe.light.main.time\">time</a> 控制日光的时间。</p>\n",
+                    "default": 40
+                  },
+                  "beta": {
+                    "type": [
+                      "number"
+                    ],
+                    "descriptionCN": "<p>主光源绕 y 轴，即左右旋转的角度。</p>\n",
+                    "default": 40
+                  }
+                }
+              },
+              "ambient": {
+                "type": [
+                  "Object"
+                ],
+                "descriptionCN": "<p>全局的环境光设置。</p>\n",
+                "properties": {
+                  "color": {
+                    "type": [
+                      "string"
+                    ],
+                    "descriptionCN": "<p>环境光的颜色。</p>\n",
+                    "default": "#fff"
+                  },
+                  "intensity": {
+                    "type": [
+                      "number"
+                    ],
+                    "descriptionCN": "<p>环境光的强度。</p>\n",
+                    "default": 0.2
+                  }
+                }
+              },
+              "ambientCubemap": {
+                "type": [
+                  "Object"
+                ],
+                "descriptionCN": "<p>ambientCubemap 会使用纹理作为光源的环境光， 会为物体提供漫反射和高光反射。可以通过 <a href=\"#mapbox.light.ambientCubemap.diffuseIntensity\">diffuseIntensity</a> 和 <a href=\"#mapbox.light.ambientCubemap.specularIntensity\">specularIntensity</a> 分别设置漫反射强度和高光反射强度。</p>\n",
+                "properties": {
+                  "texture": {
+                    "type": [
+                      "string"
+                    ],
+                    "descriptionCN": "<p>环境光纹理的 url，支持使用<code>.hdr</code>格式的 HDR 贴图。可以从 <a href=\"http://www.hdrlabs.com/sibl/archive.html\" target=\"_blank\">http://www.hdrlabs.com/sibl/archive.html</a> 等网站获取 <code>.hdr</code> 的资源。</p>\n<p>例如：</p>\n<pre><code class=\"lang-js\">ambientCubemap: {\n    texture: &#39;pisa.hdr&#39;,\n    // 解析 hdr 时使用的曝光值\n    exposure: 1.0\n}\n</code></pre>\n"
+                  },
+                  "diffuseIntensity": {
+                    "type": [
+                      "number"
+                    ],
+                    "descriptionCN": "<p>漫反射的强度。</p>\n",
+                    "default": 0.5
+                  },
+                  "specularIntensity": {
+                    "type": [
+                      "number"
+                    ],
+                    "descriptionCN": "<p>高光反射的强度。</p>\n",
+                    "default": 0.5
+                  }
+                }
+              }
+            }
+          },
+          "postEffect": {
+            "type": [
+              "Object"
+            ],
+            "descriptionCN": "<p>后处理特效的相关配置，后处理特效可以为画面添加高光，景深，环境光遮蔽（SSAO），调色等效果。可以让整个画面更富有质感。</p>\n<p>下面分别是关闭和开启 <code>postEffect</code> 的区别。</p>\n<div class=\"twentytwenty-container\" style=\"width: 700px;\">\n    <img src=\"documents/asset/gl/img/globe-posteffect-disable.png\" width=\"100%\" title=\"Disable\">\n    <img src=\"documents/asset/gl/img/globe-posteffect-enable.png\" width=\"100%\" title=\"Enable\">\n</div>\n\n<p>注意在开启 postEffect 的时候默认会开启 <a href=\"#mapbox.temporalSuperSampling\">temporalSuperSampling</a> 在画面静止后持续对画面增强，包括抗锯齿，景深，SSAO，阴影等。</p>\n",
+            "properties": {
+              "enable": {
+                "type": [
+                  "boolean"
+                ],
+                "descriptionCN": "<p>是否开启后处理特效，默认关闭。</p>\n",
+                "default": false
+              },
+              "bloom": {
+                "type": [
+                  "Object"
+                ],
+                "descriptionCN": "<p>高光特效。高光特效用来表现很“亮”的颜色，因为传统的 RGB 只能表现<code>0 - 255</code>范围的颜色，所以对于超出这个范围特别“亮”的颜色，会通过这种高光溢出的特效去表现。如下图</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/gl/img/globe-posteffect-bloom.png\"></p>\n",
+                "properties": {
+                  "enable": {
+                    "type": [
+                      "boolean"
+                    ],
+                    "descriptionCN": "<p>是否开启光晕特效。</p>\n",
+                    "default": false
+                  },
+                  "bloomIntensity": {
+                    "type": [
+                      "number"
+                    ],
+                    "descriptionCN": "<p>光晕的强度，默认为 0.1</p>\n",
+                    "default": 0.1
+                  }
+                }
+              },
+              "depthOfField": {
+                "type": [
+                  "Object"
+                ],
+                "descriptionCN": "<p>景深效果。景深效果是模拟摄像机的光学成像效果，在对焦的区域相对清晰，原理对焦的区域则会逐渐模糊。</p>\n<p>景深效果可以让观察者几种注意力到对焦的区域，而且让画面的镜头感更强，大景深还能塑造出微距的模型效果。</p>\n<p>下面分别是关闭和开启景深的区别。</p>\n<div class=\"twentytwenty-container\" style=\"width: 700px;\">\n    <img src=\"documents/asset/gl/img/geo-no-dof.png\" width=\"100%\" title=\"Disable\">\n    <img src=\"documents/asset/gl/img/geo-dof.png\" width=\"100%\" title=\"Enable\">\n</div>\n",
+                "properties": {
+                  "enable": {
+                    "type": [
+                      "boolean"
+                    ],
+                    "descriptionCN": "<p>是否开启景深</p>\n",
+                    "default": false
+                  },
+                  "focalDistance": {
+                    "type": [
+                      "boolean"
+                    ],
+                    "descriptionCN": "<p>初始的焦距，用户可以点击区域自动聚焦。</p>\n",
+                    "default": 50
+                  },
+                  "focalRange": {
+                    "type": [
+                      "boolean"
+                    ],
+                    "descriptionCN": "<p>完全聚焦的区域范围，在此范围内的物体时完全清晰的，不会有模糊</p>\n",
+                    "default": 20
+                  },
+                  "fstop": {
+                    "type": [
+                      "number"
+                    ],
+                    "descriptionCN": "<p>镜头的<a href=\"https://zh.wikipedia.org/wiki/%E7%84%A6%E6%AF%94\" target=\"_blank\">F值</a>，值越小景深越浅。</p>\n",
+                    "default": 2.8
+                  },
+                  "blurRadius": {
+                    "type": [
+                      "number"
+                    ],
+                    "descriptionCN": "<p>焦外的模糊半径</p>\n<p>不同模糊半径的区别：</p>\n<div class=\"twentytwenty-container\" style=\"width: 700px;\">\n    <img src=\"documents/asset/gl/img/geo-dof-small.png\" width=\"100%\" title=\"blurSize: 3\">\n    <img src=\"documents/asset/gl/img/geo-dof-large.png\" width=\"100%\" title=\"blurSize: 10\">\n</div>\n",
+                    "default": 10
+                  }
+                }
+              },
+              "SSAO": {
+                "type": [
+                  "Object"
+                ],
+                "descriptionCN": "<p>屏幕空间的环境光遮蔽效果。环境光遮蔽可以让角落，缝隙等大部分光无法到达的区域变暗，是传统的阴影贴图的补充，可以让整个场景更加自然，有层次。</p>\n<p>下面是无 SSAO 和有 SSAO 的对比。</p>\n<div class=\"twentytwenty-container\" style=\"width: 700px;\">\n    <img src=\"documents/asset/gl/img/geo-no-ssao.png\" width=\"100%\" title=\"No SSAO\">\n    <img src=\"documents/asset/gl/img/geo-ssao.png\" width=\"100%\" title=\"SSAO\">\n</div>\n",
+                "properties": {
+                  "enable": {
+                    "type": [
+                      "boolean"
+                    ],
+                    "descriptionCN": "<p>是否开启环境光遮蔽，默认不开启</p>\n",
+                    "default": false
+                  },
+                  "quality": {
+                    "type": [
+                      "string"
+                    ],
+                    "descriptionCN": "<p>环境光遮蔽的质量，支持<code>&#39;low&#39;</code>, <code>&#39;medium&#39;</code>, <code>&#39;high&#39;</code>, <code>&#39;ultra&#39;</code></p>\n",
+                    "default": "'medium'"
+                  },
+                  "radius": {
+                    "type": [
+                      "number"
+                    ],
+                    "descriptionCN": "<p>环境光遮蔽的采样半径。半径越大效果越自然，但是需要设置较高的<code>&#39;quality&#39;</code>。</p>\n<p>下面是半径值较小与较大之间的区别</p>\n<div class=\"twentytwenty-container\" style=\"width: 700px;\">\n    <img src=\"documents/asset/gl/img/geo-ssao-small-radius.png\" width=\"100%\" title=\"Radius: 1\">\n    <img src=\"documents/asset/gl/img/geo-ssao-large-radius.png\" width=\"100%\" title=\"Radius: 10\">\n</div>\n",
+                    "default": 2
+                  },
+                  "intensity": {
+                    "type": [
+                      "number"
+                    ],
+                    "descriptionCN": "<p>环境光遮蔽的强度。值越大颜色越深。</p>\n",
+                    "default": 1
+                  }
+                }
+              },
+              "colorCorrection": {
+                "type": [
+                  "Object"
+                ],
+                "descriptionCN": "<p>颜色纠正和调整。类似 Photoshop 中的 Color Adjustments</p>\n<p>下图同个场景调整为冷色系和暖色系的区别。</p>\n<div class=\"twentytwenty-container\" style=\"width: 700px;\">\n    <img src=\"documents/asset/gl/img/buildings-cold.jpg\" width=\"100%\" title=\"Cold\">\n    <img src=\"documents/asset/gl/img/buildings-warm.jpg\" width=\"100%\" title=\"Warm\">\n</div>\n\n",
+                "properties": {
+                  "enable": {
+                    "type": [
+                      "boolean"
+                    ],
+                    "descriptionCN": "<p>是否开启颜色纠正</p>\n",
+                    "default": true
+                  },
+                  "lookupTexture": {
+                    "type": [
+                      "string",
+                      "HTMLImageElement",
+                      "HTMLCanvasElement"
+                    ],
+                    "descriptionCN": "<p>颜色查找表，推荐使用。</p>\n<p>颜色查找表是一张像下面这样的纹理图片。</p>\n<p><img width=\"200\" height=\"auto\" src=\"documents/asset/gl/img/lookup.png\"></p>\n<p>这张是基础的查找表图片，你可以直接拿来使用，为了方便将场景色调调整你想要的效果，你可以将场景截图后在 Photoshop 等图像处理软件中调整颜色到想要的效果，然后将相同的调整应用到上面这张查找表的图片上。</p>\n<p>比如调成冷色调后，查找表的纹理图片就会成为下面这样：</p>\n<p><img width=\"200\" height=\"auto\" src=\"documents/asset/gl/img/crispwinter.png\"></p>\n<p>然后那这张纹理图片就作为该配置项的值，就可以得到相同的你在 Photoshop 上的效果了。</p>\n<p>当然如果你只是想得到一张截图，完全不用再这样折腾，但是如果你想在能实时交互的作品中也能方便的调整到理想的色调，这个就非常有用了。</p>\n"
+                  },
+                  "exposure": {
+                    "type": [
+                      "number"
+                    ],
+                    "descriptionCN": "<p>画面的曝光。</p>\n",
+                    "default": 0
+                  },
+                  "brightness": {
+                    "type": [
+                      "number"
+                    ],
+                    "descriptionCN": "<p>画面的亮度。</p>\n",
+                    "default": 0
+                  },
+                  "contrast": {
+                    "type": [
+                      "number"
+                    ],
+                    "descriptionCN": "<p>画面的对比度。</p>\n",
+                    "default": 1
+                  },
+                  "saturation": {
+                    "type": [
+                      "number"
+                    ],
+                    "descriptionCN": "<p>画面的饱和度。</p>\n",
+                    "default": 1
+                  }
+                }
+              },
+              "FXAA": {
+                "type": [
+                  "Object"
+                ],
+                "descriptionCN": "<p>在开启 <a href=\"#mapbox.postEffect\">postEffect</a> 后，WebGL 默认的 MSAA 会无法使用。这时候通过 FXAA 可以廉价方便的解决抗锯齿的问题，FXAA 会对一些场景的边缘部分进行模糊从而解决锯齿的问题，这在一些场景上效果还不错，但是在 echarts-gl 中，需要保证很多文字和线条边缘的锐利清晰，因此 FXAA 并不是那么适用。这时候我们可以通过如下设置更高的<code>devicePixelRatio</code>来使用超采样</p>\n<pre><code class=\"lang-js\">var chart = echarts.init(dom, null, {\n    devicePixelRatio: 2\n})\n</code></pre>\n<p>但是这种方法对电脑性能有很高的要求，所以更多时候我们建议使用 echarts-gl 中的 <a href=\"#mapbox.temporalSuperSampling\">temporalSuperSampling</a>，在画面静止后会持续分帧对一个像素多次抖动采样，从而达到超采样抗锯齿的效果。</p>\n",
+                "properties": {
+                  "enable": {
+                    "type": [
+                      "boolean"
+                    ],
+                    "descriptionCN": "<p>是否开启 FXAA，默认关闭。</p>\n",
+                    "default": false
+                  }
+                }
+              }
+            }
+          },
+          "temporalSuperSampling": {
+            "type": [
+              "Object"
+            ],
+            "descriptionCN": "<p>分帧超采样。在开启 <a href=\"#mapbox.postEffect\">postEffect</a> 后，WebGL 默认的 MSAA 会无法使用，所以我们需要自己解决锯齿的问题。</p>\n<p>分帧超采样就是用来解决锯齿的问题，它在画面静止后会持续分帧对一个像素多次抖动采样，从而达到抗锯齿的效果。而且在这个分帧采样的过程中，echarts-gl 也会对 <a href=\"#mapbox.postEffect\">postEffect</a> 中一些需要采样保证效果的特效，例如 <a href=\"#mapbox.postEffect.SSAO\">SSAO</a>, <a href=\"#mapbox.postEffect.depthOfField\">景深</a>，以及阴影进行渐进增强。</p>\n<p>下面是未开启和开启<code>temporalSuperSampling</code>的区别。</p>\n<div class=\"twentytwenty-container\" style=\"width: 800px;\">\n    <img src=\"documents/asset/gl/img/surface-no-taa.png\" width=\"100%\" title=\"No AA\">\n    <img src=\"documents/asset/gl/img/surface-taa.png\" width=\"100%\" title=\"AA\">\n</div>\n",
+            "properties": {
+              "enable": {
+                "type": [
+                  "boolean"
+                ],
+                "descriptionCN": "<p>是否开启分帧超采样。默认在开启 <a href=\"#mapbox.postEffect\">postEffect</a> 后也会同步开启。</p>\n",
+                "default": "'auto'"
+              }
+            }
           }
         }
       },
@@ -4784,20 +5427,6 @@
                   "descriptionCN": "<p>标记的大小，可以设置成诸如 <code>10</code> 这样单一的数字，也可以用数组分开表示宽和高，例如 <code>[20, 10]</code> 表示标记宽为<code>20</code>，高为<code>10</code>。</p>\n<p>如果需要每个数据的图形大小不一样，可以设置为如下格式的回调函数：</p>\n<pre><code class=\"lang-js\">(value: Array|number, params: Object) =&gt; number|Array\n</code></pre>\n<p>其中第一个参数 <code>value</code> 为 <a href=\"#series-.data\">data</a> 中的数据值。第二个参数<code>params</code> 是其它的数据项参数。</p>\n",
                   "default": 10
                 },
-                "distanceToGlobe": {
-                  "type": [
-                    "number"
-                  ],
-                  "descriptionCN": "<p>距离地球表面的距离，在 <a href=\"#series-scatter3D.coordinateSystem\">coordinateSystem</a> 为<code>&#39;globe&#39;</code>时有效。</p>\n",
-                  "default": 1.5
-                },
-                "distanceToGeo3D": {
-                  "type": [
-                    "number"
-                  ],
-                  "descriptionCN": "<p>距离 geo3D 的距离，在 <a href=\"#series-scatter3D.coordinateSystem\">coordinateSystem</a> 为<code>&#39;globe&#39;</code>时有效。</p>\n",
-                  "default": 1.5
-                },
                 "itemStyle": {
                   "type": [
                     "Object"
@@ -5165,15 +5794,8 @@
                   "type": [
                     "number"
                   ],
-                  "descriptionCN": "<p>最小柱子高度。</p>\n<p>在柱状图不在笛卡尔坐标系上的时候，需要通过<code>minHeight</code>和<code>maxHeight</code>指明柱状图数据映射的高度范围。</p>\n",
+                  "descriptionCN": "<p>最小柱子高度。</p>\n",
                   "default": 0
-                },
-                "maxHeight": {
-                  "type": [
-                    "number"
-                  ],
-                  "descriptionCN": "<p>最大柱子高度。</p>\n",
-                  "default": 100
                 },
                 "itemStyle": {
                   "type": [
@@ -5623,7 +6245,7 @@
                   "type": [
                     "string"
                   ],
-                  "descriptionCN": "<p>三维柱状图中三维图形的着色效果，echarts-gl 中支持下面三种着色方式</p>\n<ul>\n<li><p><code>&#39;color&#39;</code>\n只显示颜色，不受光照等其它因素的影响。</p>\n</li>\n<li><p><code>&#39;lambert&#39;</code>\n通过经典的 <a href=\"https://en.wikipedia.org/wiki/Lambertian_reflectance\" target=\"_blank\">lambert</a> 着色表现光照带来的明暗。</p>\n</li>\n<li><p><code>&#39;realistic&#39;</code>\n真实感渲染，配合 <a href=\"#globe.light.ambientCubemap\">light.ambientCubemap</a> 和 <a href=\"#globe.postEffect\">postEffect</a> 使用可以让展示的画面效果和质感有质的提升。</p>\n</li>\n</ul>\n"
+                  "descriptionCN": "<p>三维柱状图中三维图形的着色效果，echarts-gl 中支持下面三种着色方式</p>\n<ul>\n<li><p><code>&#39;color&#39;</code>\n只显示颜色，不受光照等其它因素的影响。</p>\n</li>\n<li><p><code>&#39;lambert&#39;</code>\n通过经典的 <a href=\"https://en.wikipedia.org/wiki/Lambertian_reflectance\" target=\"_blank\">lambert</a> 着色表现光照带来的明暗。</p>\n</li>\n<li><p><code>&#39;realistic&#39;</code>\n真实感渲染，配合 <a href=\"#globe.light.ambientCubemap\">light.ambientCubemap</a> 和 <a href=\"#globe.postEffect\">postEffect</a> 使用可以让展示的画面效果和质感有质的提升。ECharts GL 中使用了<a href=\"https://www.marmoset.co/posts/physically-based-rendering-and-you-can-too/\" target=\"_blank\">基于物理的渲染（PBR)</a> 来表现真实感材质。</p>\n</li>\n</ul>\n"
                 },
                 "realisticMaterial": {
                   "type": [
@@ -5631,18 +6253,128 @@
                   ],
                   "descriptionCN": "<p>真实感材质相关的配置项，在 <a href=\"#series-bar3D.shading\">shading</a> 为<code>&#39;realistic&#39;</code>时有效。</p>\n",
                   "properties": {
-                    "roughness": {
+                    "detailTexture": {
+                      "type": [
+                        "string",
+                        "HTMLImageElement",
+                        "HTMLCanvasElement"
+                      ],
+                      "descriptionCN": "<p>材质细节的纹理贴图。</p>\n"
+                    },
+                    "textureTiling": {
                       "type": [
                         "number"
                       ],
-                      "descriptionCN": "<p><code>roughness</code>属性用于表示材质的光泽度，<code>0</code>为完全光滑，<code>1</code>完全粗糙，中间的值则是介于这两者之间。</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>roughness</code>分别是<code>0.2</code>（光滑）与<code>0.8</code>（粗糙）的效果</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-gloss.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-rough.png\"></p>\n",
+                      "descriptionCN": "<p>材质细节纹理的平铺。默认为 1，也就是拉伸填满，大于 1 的时候数字表示纹理平铺重复的次数</p>\n<p><strong>注：</strong>使用平铺需要 <code>detailTexture</code> 的高宽是 2 的 n 次方。例如 512x512，如果是 200x200 的纹理无法使用平铺。</p>\n",
+                      "default": 1
+                    },
+                    "textureOffset": {
+                      "type": [
+                        "number"
+                      ],
+                      "descriptionCN": "<p>材质细节纹理的位移。</p>\n",
+                      "default": 0
+                    },
+                    "roughness": {
+                      "type": [
+                        "number",
+                        "string",
+                        "HTMLImageElement",
+                        "HTMLCanvasElement"
+                      ],
+                      "descriptionCN": "<p><code>roughness</code>属性用于表示材质的粗糙度，<code>0</code>为完全光滑，<code>1</code>完全粗糙，中间的值则是介于这两者之间。</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>roughness</code>分别是<code>0.2</code>（光滑）与<code>0.8</code>（粗糙）的效果</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-gloss.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-rough.png\"></p>\n<p>当你想要表达更复杂的材质时。你可以直接将 <code>roughness</code> 设置为如下用每个像素存储粗糙度的贴图。</p>\n<p><img width=\"300\" height=\"300\" src=\"documents/asset/gl/img/roughness.png\"></p>\n<p>贴图中颜色越白的地方值越大，也就是越粗糙。你可以从 <a href=\"http://freepbr.com/\" target=\"_blank\">http://freepbr.com/</a> 等资源网站获取不同材质的贴图资源，也可以自己使用工具生成。</p>\n",
                       "default": 0.5
                     },
                     "metalness": {
                       "type": [
+                        "number",
+                        "string",
+                        "HTMLImageElement",
+                        "HTMLCanvasElement"
+                      ],
+                      "descriptionCN": "<p><code>metalness</code>属性用于表示材质是金属还是非金属，<code>0</code>为非金属，<code>1</code>为金属，中间的值则是介于这两者之间，但是通常设成<code>0</code>和<code>1</code>就能满足大部分场景了</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>metalness</code>分别设成<code>1</code>与<code>0</code>的效果区别。</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-metal.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-non-metal.png\"></p>\n<p>跟 <a href=\"#series-bar3D.realisticMaterial.roughness\">roughness</a> 一样 你可以直接将 <code>metalness</code> 设置为金属度贴图。</p>\n",
+                      "default": 0
+                    },
+                    "roughnessAdjust": {
+                      "type": [
                         "number"
                       ],
-                      "descriptionCN": "<p><code>metalness</code>属性用于表示材质是金属还是非金属，<code>0</code>为非金属，<code>1</code>为金属，中间的值则是介于这两者之间，但是通常设成<code>0</code>和<code>1</code>就能满足大部分场景了</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>metalness</code>分别设成<code>1</code>与<code>0</code>的效果区别。</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-metal.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-non-metal.png\"></p>\n",
+                      "descriptionCN": "<p>粗糙度调整，在使用粗糙度贴图的时候有用。可以对贴图整体的粗糙度进行调整。默认为 0.5 的时候不调整，0 的时候变成完全光滑，1 的时候变成完全粗糙。</p>\n",
+                      "default": 0.5
+                    },
+                    "metalnessAdjust": {
+                      "type": [
+                        "number"
+                      ],
+                      "descriptionCN": "<p>金属度调整，在使用金属度贴图的时候有用。可以对贴图整体的金属度进行调整。默认为 0.5 的时候不调整，0 的时候变成非金属，1 的时候变成金属。</p>\n",
+                      "default": 0.5
+                    },
+                    "normalTexture": {
+                      "type": [
+                        "string",
+                        "HTMLImageElement",
+                        "HTMLCanvasElement"
+                      ],
+                      "descriptionCN": "<p>材质细节的法线贴图。</p>\n<p>使用法线贴图可以在较少的顶点下依然表现出物体表面丰富的明暗细节。</p>\n"
+                    }
+                  }
+                },
+                "lambertMaterial": {
+                  "type": [
+                    "Object"
+                  ],
+                  "descriptionCN": "<p>lambert 材质相关的配置项，在 <a href=\"#series-bar3D.shading\">shading</a> 为<code>&#39;lambert&#39;</code>时有效。</p>\n",
+                  "properties": {
+                    "detailTexture": {
+                      "type": [
+                        "string",
+                        "HTMLImageElement",
+                        "HTMLCanvasElement"
+                      ],
+                      "descriptionCN": "<p>材质细节的纹理贴图。</p>\n"
+                    },
+                    "textureTiling": {
+                      "type": [
+                        "number"
+                      ],
+                      "descriptionCN": "<p>材质细节纹理的平铺。默认为 1，也就是拉伸填满，大于 1 的时候数字表示纹理平铺重复的次数</p>\n<p><strong>注：</strong>使用平铺需要 <code>detailTexture</code> 的高宽是 2 的 n 次方。例如 512x512，如果是 200x200 的纹理无法使用平铺。</p>\n",
+                      "default": 1
+                    },
+                    "textureOffset": {
+                      "type": [
+                        "number"
+                      ],
+                      "descriptionCN": "<p>材质细节纹理的位移。</p>\n",
+                      "default": 0
+                    }
+                  }
+                },
+                "colorMaterial": {
+                  "type": [
+                    "Object"
+                  ],
+                  "descriptionCN": "<p>color 材质相关的配置项，在 <a href=\"#series-bar3D.shading\">shading</a> 为<code>&#39;color&#39;</code>时有效。</p>\n",
+                  "properties": {
+                    "detailTexture": {
+                      "type": [
+                        "string",
+                        "HTMLImageElement",
+                        "HTMLCanvasElement"
+                      ],
+                      "descriptionCN": "<p>材质细节的纹理贴图。</p>\n"
+                    },
+                    "textureTiling": {
+                      "type": [
+                        "number"
+                      ],
+                      "descriptionCN": "<p>材质细节纹理的平铺。默认为 1，也就是拉伸填满，大于 1 的时候数字表示纹理平铺重复的次数</p>\n<p><strong>注：</strong>使用平铺需要 <code>detailTexture</code> 的高宽是 2 的 n 次方。例如 512x512，如果是 200x200 的纹理无法使用平铺。</p>\n",
+                      "default": 1
+                    },
+                    "textureOffset": {
+                      "type": [
+                        "number"
+                      ],
+                      "descriptionCN": "<p>材质细节纹理的位移。</p>\n",
                       "default": 0
                     }
                   }
@@ -5994,20 +6726,6 @@
                     }
                   }
                 },
-                "distanceToGlobe": {
-                  "type": [
-                    "number",
-                    "Array"
-                  ],
-                  "descriptionCN": "<p>线的点距离 <a href=\"#globe\">globe</a> 表面的距离，可以使用数组表示距离范围，这个时候会从 <a href=\"#series-lines3D.data.coords\">coords</a> 每一项的第三个值映射。</p>\n"
-                },
-                "distanceToGeo3D": {
-                  "type": [
-                    "number",
-                    "Array"
-                  ],
-                  "descriptionCN": "<p>线的点距离 <a href=\"#geo3D\">geo3D</a> 表面的距离，可以使用数组表示距离范围，这个时候会从 <a href=\"#series-lines3D.data.coords\">coords</a> 每一项的第三个值映射。</p>\n"
-                },
                 "data": {
                   "type": [
                     "Array"
@@ -6113,15 +6831,15 @@
                   "type": [
                     "number"
                   ],
-                  "descriptionCN": "<p>三维地图组件在三维场景中的宽度。配合 <a href=\"#series-map3D.viewControl.distance\">viewControl.distance</a> 可以得到最合适的展示尺寸。</p>\n<p>下面是三维地图 中<code>boxWidth</code>, <code>boxHeight</code>, <code>boxDepth</code>的示意图。</p>\n<p><img width=\"600\" height=\"auto\" src=\"documents/asset/gl/img/geo-size.png\"></p>\n",
+                  "descriptionCN": "<p>三维地图组件在三维场景中的宽度。配合 <a href=\"#series-map3D.viewControl.distance\">viewControl.distance</a> 可以得到最合适的展示尺寸。</p>\n<p>下面是三维地图 中<code>boxWidth</code>, <code>boxHeight</code>, <code>boxDepth</code>, <code>regionHeight</code>的示意图。</p>\n<p><img width=\"600\" height=\"auto\" src=\"documents/asset/gl/img/geo-size.png\"></p>\n",
                   "default": 100
                 },
                 "boxHeight": {
                   "type": [
                     "number"
                   ],
-                  "descriptionCN": "<p>三维地图组件在三维场景中的高度。</p>\n",
-                  "default": 3
+                  "descriptionCN": "<p>三维地图组件在三维场景中的高度。</p>\n<p>组件高度。这个高度包含三维地图上的柱状图，散点图。</p>\n",
+                  "default": 10
                 },
                 "boxDepth": {
                   "type": [
@@ -6129,6 +6847,13 @@
                   ],
                   "descriptionCN": "<p>三维地图组件在三维场景中的深度。</p>\n<p>组件深度默认自动，保证三维组件的显示比例跟输入的 GeoJSON 的比例相同</p>\n",
                   "default": "auto"
+                },
+                "regionHeight": {
+                  "type": [
+                    "number"
+                  ],
+                  "descriptionCN": "<p>三维地图每个区域的高度。这个高度是模型的高度，小于 <a href=\"#series-map3D.boxHeight\">boxHeight</a>。<code>boxHeight - regionHeight</code> 这一片区域会被用于三维柱状图，散点图等的展示。</p>\n",
+                  "default": 3
                 },
                 "environment": {
                   "type": [
@@ -6661,7 +7386,7 @@
                   "type": [
                     "string"
                   ],
-                  "descriptionCN": "<p>三维地图中三维图形的着色效果，echarts-gl 中支持下面三种着色方式</p>\n<ul>\n<li><p><code>&#39;color&#39;</code>\n只显示颜色，不受光照等其它因素的影响。</p>\n</li>\n<li><p><code>&#39;lambert&#39;</code>\n通过经典的 <a href=\"https://en.wikipedia.org/wiki/Lambertian_reflectance\" target=\"_blank\">lambert</a> 着色表现光照带来的明暗。</p>\n</li>\n<li><p><code>&#39;realistic&#39;</code>\n真实感渲染，配合 <a href=\"#globe.light.ambientCubemap\">light.ambientCubemap</a> 和 <a href=\"#globe.postEffect\">postEffect</a> 使用可以让展示的画面效果和质感有质的提升。</p>\n</li>\n</ul>\n"
+                  "descriptionCN": "<p>三维地图中三维图形的着色效果，echarts-gl 中支持下面三种着色方式</p>\n<ul>\n<li><p><code>&#39;color&#39;</code>\n只显示颜色，不受光照等其它因素的影响。</p>\n</li>\n<li><p><code>&#39;lambert&#39;</code>\n通过经典的 <a href=\"https://en.wikipedia.org/wiki/Lambertian_reflectance\" target=\"_blank\">lambert</a> 着色表现光照带来的明暗。</p>\n</li>\n<li><p><code>&#39;realistic&#39;</code>\n真实感渲染，配合 <a href=\"#globe.light.ambientCubemap\">light.ambientCubemap</a> 和 <a href=\"#globe.postEffect\">postEffect</a> 使用可以让展示的画面效果和质感有质的提升。ECharts GL 中使用了<a href=\"https://www.marmoset.co/posts/physically-based-rendering-and-you-can-too/\" target=\"_blank\">基于物理的渲染（PBR)</a> 来表现真实感材质。</p>\n</li>\n</ul>\n"
                 },
                 "realisticMaterial": {
                   "type": [
@@ -6669,21 +7394,7 @@
                   ],
                   "descriptionCN": "<p>真实感材质相关的配置项，在 <a href=\"#series-map3D.shading\">shading</a> 为<code>&#39;realistic&#39;</code>时有效。</p>\n",
                   "properties": {
-                    "roughness": {
-                      "type": [
-                        "number"
-                      ],
-                      "descriptionCN": "<p><code>roughness</code>属性用于表示材质的光泽度，<code>0</code>为完全光滑，<code>1</code>完全粗糙，中间的值则是介于这两者之间。</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>roughness</code>分别是<code>0.2</code>（光滑）与<code>0.8</code>（粗糙）的效果</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-gloss.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-rough.png\"></p>\n",
-                      "default": 0.5
-                    },
-                    "metalness": {
-                      "type": [
-                        "number"
-                      ],
-                      "descriptionCN": "<p><code>metalness</code>属性用于表示材质是金属还是非金属，<code>0</code>为非金属，<code>1</code>为金属，中间的值则是介于这两者之间，但是通常设成<code>0</code>和<code>1</code>就能满足大部分场景了</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>metalness</code>分别设成<code>1</code>与<code>0</code>的效果区别。</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-metal.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-non-metal.png\"></p>\n",
-                      "default": 0
-                    },
-                    "baseTexture": {
+                    "detailTexture": {
                       "type": [
                         "string",
                         "HTMLImageElement",
@@ -6695,7 +7406,7 @@
                       "type": [
                         "number"
                       ],
-                      "descriptionCN": "<p>材质细节纹理的平铺。默认为 1，也就是拉伸填满，大于 1 的时候数字表示纹理平铺重复的次数</p>\n<p><strong>注：</strong>使用平铺需要 <code>baseTexture</code> 的高宽是 2 的 n 次方。例如 512x512，如果是 200x200 的纹理无法使用平铺。</p>\n",
+                      "descriptionCN": "<p>材质细节纹理的平铺。默认为 1，也就是拉伸填满，大于 1 的时候数字表示纹理平铺重复的次数</p>\n<p><strong>注：</strong>使用平铺需要 <code>detailTexture</code> 的高宽是 2 的 n 次方。例如 512x512，如果是 200x200 的纹理无法使用平铺。</p>\n",
                       "default": 1
                     },
                     "textureOffset": {
@@ -6704,6 +7415,48 @@
                       ],
                       "descriptionCN": "<p>材质细节纹理的位移。</p>\n",
                       "default": 0
+                    },
+                    "roughness": {
+                      "type": [
+                        "number",
+                        "string",
+                        "HTMLImageElement",
+                        "HTMLCanvasElement"
+                      ],
+                      "descriptionCN": "<p><code>roughness</code>属性用于表示材质的粗糙度，<code>0</code>为完全光滑，<code>1</code>完全粗糙，中间的值则是介于这两者之间。</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>roughness</code>分别是<code>0.2</code>（光滑）与<code>0.8</code>（粗糙）的效果</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-gloss.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-rough.png\"></p>\n<p>当你想要表达更复杂的材质时。你可以直接将 <code>roughness</code> 设置为如下用每个像素存储粗糙度的贴图。</p>\n<p><img width=\"300\" height=\"300\" src=\"documents/asset/gl/img/roughness.png\"></p>\n<p>贴图中颜色越白的地方值越大，也就是越粗糙。你可以从 <a href=\"http://freepbr.com/\" target=\"_blank\">http://freepbr.com/</a> 等资源网站获取不同材质的贴图资源，也可以自己使用工具生成。</p>\n",
+                      "default": 0.5
+                    },
+                    "metalness": {
+                      "type": [
+                        "number",
+                        "string",
+                        "HTMLImageElement",
+                        "HTMLCanvasElement"
+                      ],
+                      "descriptionCN": "<p><code>metalness</code>属性用于表示材质是金属还是非金属，<code>0</code>为非金属，<code>1</code>为金属，中间的值则是介于这两者之间，但是通常设成<code>0</code>和<code>1</code>就能满足大部分场景了</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>metalness</code>分别设成<code>1</code>与<code>0</code>的效果区别。</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-metal.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-non-metal.png\"></p>\n<p>跟 <a href=\"#series-map3D.realisticMaterial.roughness\">roughness</a> 一样 你可以直接将 <code>metalness</code> 设置为金属度贴图。</p>\n",
+                      "default": 0
+                    },
+                    "roughnessAdjust": {
+                      "type": [
+                        "number"
+                      ],
+                      "descriptionCN": "<p>粗糙度调整，在使用粗糙度贴图的时候有用。可以对贴图整体的粗糙度进行调整。默认为 0.5 的时候不调整，0 的时候变成完全光滑，1 的时候变成完全粗糙。</p>\n",
+                      "default": 0.5
+                    },
+                    "metalnessAdjust": {
+                      "type": [
+                        "number"
+                      ],
+                      "descriptionCN": "<p>金属度调整，在使用金属度贴图的时候有用。可以对贴图整体的金属度进行调整。默认为 0.5 的时候不调整，0 的时候变成非金属，1 的时候变成金属。</p>\n",
+                      "default": 0.5
+                    },
+                    "normalTexture": {
+                      "type": [
+                        "string",
+                        "HTMLImageElement",
+                        "HTMLCanvasElement"
+                      ],
+                      "descriptionCN": "<p>材质细节的法线贴图。</p>\n<p>使用法线贴图可以在较少的顶点下依然表现出物体表面丰富的明暗细节。</p>\n"
                     }
                   }
                 },
@@ -6713,7 +7466,7 @@
                   ],
                   "descriptionCN": "<p>lambert 材质相关的配置项，在 <a href=\"#series-map3D.shading\">shading</a> 为<code>&#39;lambert&#39;</code>时有效。</p>\n",
                   "properties": {
-                    "baseTexture": {
+                    "detailTexture": {
                       "type": [
                         "string",
                         "HTMLImageElement",
@@ -6725,7 +7478,7 @@
                       "type": [
                         "number"
                       ],
-                      "descriptionCN": "<p>材质细节纹理的平铺。默认为 1，也就是拉伸填满，大于 1 的时候数字表示纹理平铺重复的次数</p>\n<p><strong>注：</strong>使用平铺需要 <code>baseTexture</code> 的高宽是 2 的 n 次方。例如 512x512，如果是 200x200 的纹理无法使用平铺。</p>\n",
+                      "descriptionCN": "<p>材质细节纹理的平铺。默认为 1，也就是拉伸填满，大于 1 的时候数字表示纹理平铺重复的次数</p>\n<p><strong>注：</strong>使用平铺需要 <code>detailTexture</code> 的高宽是 2 的 n 次方。例如 512x512，如果是 200x200 的纹理无法使用平铺。</p>\n",
                       "default": 1
                     },
                     "textureOffset": {
@@ -6743,7 +7496,7 @@
                   ],
                   "descriptionCN": "<p>color 材质相关的配置项，在 <a href=\"#series-map3D.shading\">shading</a> 为<code>&#39;color&#39;</code>时有效。</p>\n",
                   "properties": {
-                    "baseTexture": {
+                    "detailTexture": {
                       "type": [
                         "string",
                         "HTMLImageElement",
@@ -6755,7 +7508,7 @@
                       "type": [
                         "number"
                       ],
-                      "descriptionCN": "<p>材质细节纹理的平铺。默认为 1，也就是拉伸填满，大于 1 的时候数字表示纹理平铺重复的次数</p>\n<p><strong>注：</strong>使用平铺需要 <code>baseTexture</code> 的高宽是 2 的 n 次方。例如 512x512，如果是 200x200 的纹理无法使用平铺。</p>\n",
+                      "descriptionCN": "<p>材质细节纹理的平铺。默认为 1，也就是拉伸填满，大于 1 的时候数字表示纹理平铺重复的次数</p>\n<p><strong>注：</strong>使用平铺需要 <code>detailTexture</code> 的高宽是 2 的 n 次方。例如 512x512，如果是 200x200 的纹理无法使用平铺。</p>\n",
                       "default": 1
                     },
                     "textureOffset": {
@@ -7596,7 +8349,7 @@
                   "type": [
                     "string"
                   ],
-                  "descriptionCN": "<p>曲面图中三维图形的着色效果，echarts-gl 中支持下面三种着色方式</p>\n<ul>\n<li><p><code>&#39;color&#39;</code>\n只显示颜色，不受光照等其它因素的影响。</p>\n</li>\n<li><p><code>&#39;lambert&#39;</code>\n通过经典的 <a href=\"https://en.wikipedia.org/wiki/Lambertian_reflectance\" target=\"_blank\">lambert</a> 着色表现光照带来的明暗。</p>\n</li>\n<li><p><code>&#39;realistic&#39;</code>\n真实感渲染，配合 <a href=\"#globe.light.ambientCubemap\">light.ambientCubemap</a> 和 <a href=\"#globe.postEffect\">postEffect</a> 使用可以让展示的画面效果和质感有质的提升。</p>\n</li>\n</ul>\n"
+                  "descriptionCN": "<p>曲面图中三维图形的着色效果，echarts-gl 中支持下面三种着色方式</p>\n<ul>\n<li><p><code>&#39;color&#39;</code>\n只显示颜色，不受光照等其它因素的影响。</p>\n</li>\n<li><p><code>&#39;lambert&#39;</code>\n通过经典的 <a href=\"https://en.wikipedia.org/wiki/Lambertian_reflectance\" target=\"_blank\">lambert</a> 着色表现光照带来的明暗。</p>\n</li>\n<li><p><code>&#39;realistic&#39;</code>\n真实感渲染，配合 <a href=\"#globe.light.ambientCubemap\">light.ambientCubemap</a> 和 <a href=\"#globe.postEffect\">postEffect</a> 使用可以让展示的画面效果和质感有质的提升。ECharts GL 中使用了<a href=\"https://www.marmoset.co/posts/physically-based-rendering-and-you-can-too/\" target=\"_blank\">基于物理的渲染（PBR)</a> 来表现真实感材质。</p>\n</li>\n</ul>\n"
                 },
                 "realisticMaterial": {
                   "type": [
@@ -7604,21 +8357,7 @@
                   ],
                   "descriptionCN": "<p>真实感材质相关的配置项，在 <a href=\"#series-surface.shading\">shading</a> 为<code>&#39;realistic&#39;</code>时有效。</p>\n",
                   "properties": {
-                    "roughness": {
-                      "type": [
-                        "number"
-                      ],
-                      "descriptionCN": "<p><code>roughness</code>属性用于表示材质的光泽度，<code>0</code>为完全光滑，<code>1</code>完全粗糙，中间的值则是介于这两者之间。</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>roughness</code>分别是<code>0.2</code>（光滑）与<code>0.8</code>（粗糙）的效果</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-gloss.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-rough.png\"></p>\n",
-                      "default": 0.5
-                    },
-                    "metalness": {
-                      "type": [
-                        "number"
-                      ],
-                      "descriptionCN": "<p><code>metalness</code>属性用于表示材质是金属还是非金属，<code>0</code>为非金属，<code>1</code>为金属，中间的值则是介于这两者之间，但是通常设成<code>0</code>和<code>1</code>就能满足大部分场景了</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>metalness</code>分别设成<code>1</code>与<code>0</code>的效果区别。</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-metal.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-non-metal.png\"></p>\n",
-                      "default": 0
-                    },
-                    "baseTexture": {
+                    "detailTexture": {
                       "type": [
                         "string",
                         "HTMLImageElement",
@@ -7630,7 +8369,7 @@
                       "type": [
                         "number"
                       ],
-                      "descriptionCN": "<p>材质细节纹理的平铺。默认为 1，也就是拉伸填满，大于 1 的时候数字表示纹理平铺重复的次数</p>\n<p><strong>注：</strong>使用平铺需要 <code>baseTexture</code> 的高宽是 2 的 n 次方。例如 512x512，如果是 200x200 的纹理无法使用平铺。</p>\n",
+                      "descriptionCN": "<p>材质细节纹理的平铺。默认为 1，也就是拉伸填满，大于 1 的时候数字表示纹理平铺重复的次数</p>\n<p><strong>注：</strong>使用平铺需要 <code>detailTexture</code> 的高宽是 2 的 n 次方。例如 512x512，如果是 200x200 的纹理无法使用平铺。</p>\n",
                       "default": 1
                     },
                     "textureOffset": {
@@ -7639,6 +8378,48 @@
                       ],
                       "descriptionCN": "<p>材质细节纹理的位移。</p>\n",
                       "default": 0
+                    },
+                    "roughness": {
+                      "type": [
+                        "number",
+                        "string",
+                        "HTMLImageElement",
+                        "HTMLCanvasElement"
+                      ],
+                      "descriptionCN": "<p><code>roughness</code>属性用于表示材质的粗糙度，<code>0</code>为完全光滑，<code>1</code>完全粗糙，中间的值则是介于这两者之间。</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>roughness</code>分别是<code>0.2</code>（光滑）与<code>0.8</code>（粗糙）的效果</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-gloss.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-rough.png\"></p>\n<p>当你想要表达更复杂的材质时。你可以直接将 <code>roughness</code> 设置为如下用每个像素存储粗糙度的贴图。</p>\n<p><img width=\"300\" height=\"300\" src=\"documents/asset/gl/img/roughness.png\"></p>\n<p>贴图中颜色越白的地方值越大，也就是越粗糙。你可以从 <a href=\"http://freepbr.com/\" target=\"_blank\">http://freepbr.com/</a> 等资源网站获取不同材质的贴图资源，也可以自己使用工具生成。</p>\n",
+                      "default": 0.5
+                    },
+                    "metalness": {
+                      "type": [
+                        "number",
+                        "string",
+                        "HTMLImageElement",
+                        "HTMLCanvasElement"
+                      ],
+                      "descriptionCN": "<p><code>metalness</code>属性用于表示材质是金属还是非金属，<code>0</code>为非金属，<code>1</code>为金属，中间的值则是介于这两者之间，但是通常设成<code>0</code>和<code>1</code>就能满足大部分场景了</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>metalness</code>分别设成<code>1</code>与<code>0</code>的效果区别。</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-metal.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-non-metal.png\"></p>\n<p>跟 <a href=\"#series-surface.realisticMaterial.roughness\">roughness</a> 一样 你可以直接将 <code>metalness</code> 设置为金属度贴图。</p>\n",
+                      "default": 0
+                    },
+                    "roughnessAdjust": {
+                      "type": [
+                        "number"
+                      ],
+                      "descriptionCN": "<p>粗糙度调整，在使用粗糙度贴图的时候有用。可以对贴图整体的粗糙度进行调整。默认为 0.5 的时候不调整，0 的时候变成完全光滑，1 的时候变成完全粗糙。</p>\n",
+                      "default": 0.5
+                    },
+                    "metalnessAdjust": {
+                      "type": [
+                        "number"
+                      ],
+                      "descriptionCN": "<p>金属度调整，在使用金属度贴图的时候有用。可以对贴图整体的金属度进行调整。默认为 0.5 的时候不调整，0 的时候变成非金属，1 的时候变成金属。</p>\n",
+                      "default": 0.5
+                    },
+                    "normalTexture": {
+                      "type": [
+                        "string",
+                        "HTMLImageElement",
+                        "HTMLCanvasElement"
+                      ],
+                      "descriptionCN": "<p>材质细节的法线贴图。</p>\n<p>使用法线贴图可以在较少的顶点下依然表现出物体表面丰富的明暗细节。</p>\n"
                     }
                   }
                 },
@@ -7648,7 +8429,7 @@
                   ],
                   "descriptionCN": "<p>lambert 材质相关的配置项，在 <a href=\"#series-surface.shading\">shading</a> 为<code>&#39;lambert&#39;</code>时有效。</p>\n",
                   "properties": {
-                    "baseTexture": {
+                    "detailTexture": {
                       "type": [
                         "string",
                         "HTMLImageElement",
@@ -7660,7 +8441,7 @@
                       "type": [
                         "number"
                       ],
-                      "descriptionCN": "<p>材质细节纹理的平铺。默认为 1，也就是拉伸填满，大于 1 的时候数字表示纹理平铺重复的次数</p>\n<p><strong>注：</strong>使用平铺需要 <code>baseTexture</code> 的高宽是 2 的 n 次方。例如 512x512，如果是 200x200 的纹理无法使用平铺。</p>\n",
+                      "descriptionCN": "<p>材质细节纹理的平铺。默认为 1，也就是拉伸填满，大于 1 的时候数字表示纹理平铺重复的次数</p>\n<p><strong>注：</strong>使用平铺需要 <code>detailTexture</code> 的高宽是 2 的 n 次方。例如 512x512，如果是 200x200 的纹理无法使用平铺。</p>\n",
                       "default": 1
                     },
                     "textureOffset": {
@@ -7678,7 +8459,7 @@
                   ],
                   "descriptionCN": "<p>color 材质相关的配置项，在 <a href=\"#series-surface.shading\">shading</a> 为<code>&#39;color&#39;</code>时有效。</p>\n",
                   "properties": {
-                    "baseTexture": {
+                    "detailTexture": {
                       "type": [
                         "string",
                         "HTMLImageElement",
@@ -7690,7 +8471,7 @@
                       "type": [
                         "number"
                       ],
-                      "descriptionCN": "<p>材质细节纹理的平铺。默认为 1，也就是拉伸填满，大于 1 的时候数字表示纹理平铺重复的次数</p>\n<p><strong>注：</strong>使用平铺需要 <code>baseTexture</code> 的高宽是 2 的 n 次方。例如 512x512，如果是 200x200 的纹理无法使用平铺。</p>\n",
+                      "descriptionCN": "<p>材质细节纹理的平铺。默认为 1，也就是拉伸填满，大于 1 的时候数字表示纹理平铺重复的次数</p>\n<p><strong>注：</strong>使用平铺需要 <code>detailTexture</code> 的高宽是 2 的 n 次方。例如 512x512，如果是 200x200 的纹理无法使用平铺。</p>\n",
                       "default": 1
                     },
                     "textureOffset": {
