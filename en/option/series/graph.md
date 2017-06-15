@@ -197,9 +197,39 @@ The label style of node in this category.
 
 
 ## data(Array)
-{{ use: partial-1d-data-desc() }}
+
+Nodes list of graph.
+
+```js
+data: [{
+    name: '1',
+    x: 10,
+    y: 10,
+    value: 10
+}, {
+    name: '2',
+    x: 100,
+    y: 100,
+    value: 20,
+    symbolSize: 20,
+    itemStyle: {
+        normal: {
+            color: 'red'
+        }
+    }
+}]
+```
+
 ### name(string)
 Name of data item.
+
+### x(number)
+`x` value of node position.
+### y(number)
+`y` value of node position.
+### fixed(boolean)
+If node are fixed when doing force directed layout.
+
 ### value(number|Array)
 Value of data item.
 ### category(number)

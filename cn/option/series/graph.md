@@ -195,9 +195,41 @@ edgeSymbol: ['circle', 'arrow']
 
 
 ## data(Array)
-{{ use: partial-1d-data-desc() }}
+
+关系图的节点数据列表。
+
+```js
+data: [{
+    name: '1',
+    x: 10,
+    y: 10,
+    value: 10
+}, {
+    name: '2',
+    x: 100,
+    y: 100,
+    value: 20,
+    symbolSize: 20,
+    itemStyle: {
+        normal: {
+            color: 'red'
+        }
+    }
+}]
+```
+
+**注意:** 节点的`name`不能重复。
+
 ### name(string)
 数据项名称。
+
+### x(number)
+节点的初始 x 值。在不指定的时候需要指明`layout`属性选择布局方式。
+### y(number)
+节点的初始 y 值。在不指定的时候需要指明`layout`属性选择布局方式。
+### fixed(boolean)
+节点在力引导布局中是否固定。
+
 ### value(number|Array)
 数据项值。
 ### category(number)
