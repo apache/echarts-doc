@@ -9,7 +9,7 @@
 
 + [+] 支持了 [series-picotrialBar.symbolBoundingData](http://echarts.baidu.com/option.html#series-picotrialBar.symbolBoundingData) 可以同时设置正向的值和负向的值。参见 [#5793](https://github.com/ecomfe/echarts/issues/5793)。
 
-+ [+] `graph` 支持了 [fixed](http://echarts.baidu.com/option.html#series-graph.data.fixed)。参见 [#5966](https://github.com/ecomfe/echarts/issues/5966)。
++ [+] `graph` 支持通过设置 [fixed](http://echarts.baidu.com/option.html#series-graph.data.fixed) 固定力引导布局中的指定节点。参见 [#5966](https://github.com/ecomfe/echarts/issues/5966)。
 
 + [+] `treemap` 支持了 [label.formatter](http://echarts.baidu.com/option.html#series-treemap.label.normal.formatter)。参见 [#5757](https://github.com/ecomfe/echarts/issues/5757)。
 
@@ -19,7 +19,7 @@
 
 + [^] 修正了触发 [showTip](http://echarts.baidu.com/api.html#action.tooltip.showTip) action 时 `position` 参数无效的问题。参见 [#5874](https://github.com/ecomfe/echarts/issues/5874)。
 
-+ [^] 修正了触发因精度导致的有时 [pie](http://echarts.baidu.com/option.html#series-pie) 显示出的百分比总值不足 `100%` 的问题。参见 [#5850](https://github.com/ecomfe/echarts/issues/5850)。
++ [^] 修正了因精度导致的有时 [pie](http://echarts.baidu.com/option.html#series-pie) 显示出的百分比总值不足 `100%` 的问题。参见 [#5850](https://github.com/ecomfe/echarts/issues/5850)。
 
 + [^] 修正了当 `series.name` 相同时，只会显示最后一个系列的 `markPoint` 或 `markLine` 的问题。参见 [#5712](https://github.com/ecomfe/echarts/issues/5712)。
 
