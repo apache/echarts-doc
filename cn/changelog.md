@@ -1,4 +1,4 @@
-## 3.6.2
+## v3.6.2
 <div class="time">2017-06-15</div>
 
 + [+] [自定义系列（custom series）](http://echarts.baidu.com/option.html#series-custom) 支持 [百度地图插件（bmap）](https://github.com/ecomfe/echarts/tree/master/extension/bmap)。参见 [示例 1](http://echarts.baidu.com/demo.html#map-polygon) 和 [示例 2](http://echarts.baidu.com/demo.html#map-bin)。
