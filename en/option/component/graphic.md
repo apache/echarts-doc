@@ -878,9 +878,7 @@ Whether response to mouse events / touch events.
 
 Whether the element is visible.
 
-### cursor(string) = 'pointer'
-
-The mouse style when mouse hover on this element, the same as `cursor` property in `CSS`.
+{{ use: partial-cursor(prefix="##") }}
 
 ### draggable(boolean) = false
 

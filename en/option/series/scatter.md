@@ -46,6 +46,8 @@ The style of a single data item can't be customided.
 ## largeThreshold(number) = 2000
 The threshold enabling the drawing optimization.
 
+{{ use: partial-cursor }}
+
 ## label(Object)
 {{use:partial-label-desc}}
 ### normal(Object)

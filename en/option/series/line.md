@@ -52,6 +52,8 @@ The effect of the below example could be seen through stack switching of [toolbo
 
 ~[600x400](${galleryViewPath}doc-example/line-stack-tiled&edit=1&reset=1)
 
+{{ use: partial-cursor }}
+
 ## clipOverflow(boolean) = true
 Whether to clip the overflowing part, which defaults to clip.
 

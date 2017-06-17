@@ -843,9 +843,7 @@ z 方向的高度，决定层叠关系。
 
 节点是否可见。
 
-### cursor(string) = 'pointer'
-
-鼠标悬浮时鼠标的样式是什么。同 CSS 的 `cursor`。
+{{ use: partial-cursor(prefix="##") }}
 
 ### draggable(boolean) = false
 

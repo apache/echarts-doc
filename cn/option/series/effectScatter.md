@@ -50,6 +50,8 @@
     prefix="#"
 ) }}
 
+{{ use: partial-cursor }}
+
 ## label(Object)
 {{use:partial-label-desc}}
 ### normal(Object)

@@ -113,6 +113,8 @@ symbolSize: [5, 10],
 symbolSize: 10
 ```
 
+{{ use: partial-cursor }}
+
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
 ### normal(Object)

@@ -109,6 +109,8 @@ edgeSymbol: ['circle', 'arrow']
 ## edgeSymbolSize(Array|number) = 10
 边两端的标记大小，可以是一个数组分别指定两端，也可以是单个统一指定。
 
+{{ use: partial-cursor }}
+
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
 ### normal(Object)
