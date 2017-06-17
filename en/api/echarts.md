@@ -148,3 +148,9 @@ echarts.registerMap('USA', usaJson, {
 ```
 
 Registers a theme, should be specified when [initialize the chart instance](~echarts.init).
+
+
+{{ use: echarts-graphic }}
+
+
+
