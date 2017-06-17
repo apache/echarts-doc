@@ -56,6 +56,26 @@
               "Function"
             ],
             "descriptionCN": "<pre><code class=\"lang-js\">(themeName: string, theme: Object)\n</code></pre>\n<p>注册主题，用于<a href=\"#echarts.init\">初始化实例</a>的时候指定。</p>\n"
+          },
+          "graphic": {
+            "type": [
+              "*"
+            ],
+            "descriptionCN": "<p>图形相关帮助方法。</p>\n",
+            "properties": {
+              "clipPointsByRect": {
+                "type": [
+                  "Function"
+                ],
+                "descriptionCN": "<p>输入一组点，和一个矩形，返回被矩形截取过的点。</p>\n<pre><code class=\"lang-js\">(\n    // 要被截取的点列表，如 [[23, 44], [12, 15], ...]。\n    points: Array.&lt;Array.&lt;number&gt;&gt;,\n    // 用于截取点的矩形。\n    rect: {\n        x: number,\n        y: number,\n        width: number,\n        height: number\n    }\n) =&gt; Array.&lt;Array.&lt;number&gt;&gt; // 截取结果。\n</code></pre>\n"
+              },
+              "clipRectByRect": {
+                "type": [
+                  "Function"
+                ],
+                "descriptionCN": "<p>输入两个矩形，返回第二个矩形截取第一个矩形的结果。</p>\n<pre><code class=\"lang-js\">(\n    // 要被截取的矩形。\n    targetRect: {\n        x: number,\n        y: number,\n        width: number,\n        height: number\n    },\n    // 用于截取点的矩形。\n    rect: {\n        x: number,\n        y: number,\n        width: number,\n        height: number\n    }\n) =&gt; { // 截取结果。\n    x: number,\n    y: number,\n    width: number,\n    height: number\n}\n</code></pre>\n"
+              }
+            }
           }
         }
       },

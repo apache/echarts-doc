@@ -50,6 +50,26 @@
               "Function"
             ],
             "descriptionCN": "<pre><code class=\"lang-js\">(themeName: string, theme: Object)\n</code></pre>\n<p>Registers a theme, should be specified when <a href=\"#echarts.init\">initialize the chart instance</a>.</p>\n"
+          },
+          "graphic": {
+            "type": [
+              "*"
+            ],
+            "descriptionCN": "<p>Util methods about grphics.</p>\n",
+            "properties": {
+              "clipPointsByRect": {
+                "type": [
+                  "Function"
+                ],
+                "descriptionCN": "<p>Clip the given points by the given rectangular.</p>\n<pre><code class=\"lang-js\">(\n    // The points to be clipped, like [[23, 44], [12, 15], ...].\n    points: Array.&lt;Array.&lt;number&gt;&gt;,\n    // The rectangular that is used to clip points.\n    rect: {\n        x: number,\n        y: number,\n        width: number,\n        height: number\n    }\n) =&gt; Array.&lt;Array.&lt;number&gt;&gt; // The result Points.\n</code></pre>\n"
+              },
+              "clipRectByRect": {
+                "type": [
+                  "Function"
+                ],
+                "descriptionCN": "<p>Clip the first input rectangular by the second input rectangular.</p>\n<pre><code class=\"lang-js\">(\n    // The rectangular to be clipped.\n    targetRect: {\n        x: number,\n        y: number,\n        width: number,\n        height: number\n    },\n    // The rectangular that is used to clip the first  rectangular.\n    rect: {\n        x: number,\n        y: number,\n        width: number,\n        height: number\n    }\n) =&gt; { // The result rectangular.\n    x: number,\n    y: number,\n    width: number,\n    height: number\n}\n</code></pre>\n"
+              }
+            }
           }
         }
       },
