@@ -373,7 +373,7 @@ Each column of the above array is regarded as a `dimension`. For example, when p
 
 Use the last dimension of `data` by default.
 
-## seriesIndex(number|Array.<number>)
+## seriesIndex(number|Array)
 
 Specify visual mapping should be performed on which series, from which
 [series.data](~series.data) is fetched.

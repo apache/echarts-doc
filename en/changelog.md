@@ -1,3 +1,36 @@
+## v3.6.2
+<div class="time">2017-06-15</div>
+
++ [+] Supported draw [custom series](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom) on [Baidu Map (bmap)](https://github.com/ecomfe/echarts/tree/master/extension/bmap). See [example 1](https://ecomfe.github.io/echarts-examples/public/editor.html?c=map-polygon) and [example 2](https://ecomfe.github.io/echarts-examples/public/editor.html?c=map-bin)。
+
++ [+] Supported show parent labels in [treemap](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-treemap). See [example](https://ecomfe.github.io/echarts-examples/public/editor.html?c=treemap-show-parent). See [#5869](https://github.com/ecomfe/echarts/issues/5869) and [#5579](https://github.com/ecomfe/echarts/issues/5579).
+
++ [+] Supported specifying mouse cursor style by: [series-line.cursor](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-line.cursor), [series-bar.cursor](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-bar.cursor), [series-pie.cursor](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-pie.cursor), [series-scatter.cursor](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-scatter.cursor), [series-effectScatter.cursor](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-effectScatter.cursor), [series-graph.cursor](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-graph.cursor), [series-pictorialBar.cursor](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-pictorialBar.cursor).
+
++ [+] Support both negative and positive bounding data specified on [series-pictorialBar.symbolBoundingData](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-pictorialBar.symbolBoundingData). See [#5793](https://github.com/ecomfe/echarts/issues/5793).
+
++ [+] Supported [fixed](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-graph.data.fixed) in `graph`. See [#5966](https://github.com/ecomfe/echarts/issues/5966).
+
++ [+] Supported [label.formatter](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-treemap.label.normal.formatter)in `treemap`. See [#5757](https://github.com/ecomfe/echarts/issues/5757).
+
++ [+] Supported [label.normal.textStyle.align](https://ecomfe.github.io/echarts-doc/public/en/option.html#timeline.label.normal.textStyle.align) and [label.normal.textStyle.basealign](https://ecomfe.github.io/echarts-doc/public/en/option.html#timeline.label.normal.textStyle.basealign) in `timeline`. See [#5960](https://github.com/ecomfe/echarts/issues/5960).
+
++ [^] Fixed that `tooltip` did not work when [large scatter](https://ecomfe.github.io/echarts-examples/public/editor.html?c=scatter-large) was zoomed. See[#5837](https://github.com/ecomfe/echarts/issues/5837).
+
++ [^] Fixed that parameter `position` did not work when trigger [showTip](https://ecomfe.github.io/echarts-doc/public/en/api.html#action.tooltip.showTip) action. See [#5874](https://github.com/ecomfe/echarts/issues/5874).
+
++ [^] Fixed that sometimes the sum of the percent value is less than `100%` slightly in [pie](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-pie), which was caused by precision problem. See [#5850](https://github.com/ecomfe/echarts/issues/5850).
+
++ [^] Fixed only the last `markPoint` or `markLine` was displayed when `series.name` was the same. See [#5712](https://github.com/ecomfe/echarts/issues/5712).
+
++ [^] Fixed that [barBorderRadius](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-bar.itemStyle.normal.barBorderRadius) did not work in horizontal bar. See [#5943](https://github.com/ecomfe/echarts/issues/5943).
+
++ [^] Fixed the zoom point error when applying [dataZoom-inside](https://ecomfe.github.io/echarts-doc/public/en/option.html#dataZoom-inside) on Y axis. See [#5278](https://github.com/ecomfe/echarts/issues/5278).
+
++ [^] Fixed sometimes [radar](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-radar) did not display normally. See [#5986](https://github.com/ecomfe/echarts/issues/5986).
+
+
+
 ## v3.6.1
 <div class="time">2017-05-26</div>
 

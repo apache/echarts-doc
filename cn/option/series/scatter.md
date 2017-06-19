@@ -45,6 +45,8 @@
 ## largeThreshold(number) = 2000
 开启绘制优化的阈值。
 
+{{ use: partial-cursor }}
+
 ## label(Object)
 {{use:partial-label-desc}}
 ### normal(Object)

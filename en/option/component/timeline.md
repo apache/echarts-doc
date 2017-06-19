@@ -3,9 +3,9 @@
 
 # timeline(Object)
 
-`timeline` component, which provides functions like switching and playing between multiple ECharts `options`.  
+`timeline` component, which provides functions like switching and playing between multiple ECharts `options`.
 
-Here is an example: 
+Here is an example:
 
 ~[600x400](${galleryViewPath}doc-example/mix-timeline-all&edit=1&reset=1)
 
@@ -63,7 +63,7 @@ myChart.setOption(
                     {data: []}
                 ]
             },
-            { // it is an option corresponding to '2004-01-01' 
+            { // it is an option corresponding to '2004-01-01'
                 title: {
                     text: 'the statistics of the year 2004'
                 },
@@ -78,7 +78,7 @@ myChart.setOption(
 );
 ```
 
-In the above example, each item in `timeline.data` corresponds to each `option` of `options` array. 
+In the above example, each item in `timeline.data` corresponds to each `option` of `options` array.
 
 <br>
 **Attention and Best Practice: **
@@ -97,7 +97,7 @@ In the above example, each item in `timeline.data` corresponds to each `option` 
 
 + ECharts3 doesn't support `timeline.notMerge` parameter any more, which implies *notMerge mode* is no longer supported. If you need this function, you may manage the option in your own program before passing to `setOption(option, true)`.
 
-+ Comparing ECharts 3 with ECharts 2, the definition location of timeline attributes are different. The one in ECharts 3 is moved to  `baseOption` and is regarded as a seperate component, which is also compatible with the timeline definition location of ECharts 2. But it is not recommended to do so. 
++ Comparing ECharts 3 with ECharts 2, the definition location of timeline attributes are different. The one in ECharts 3 is moved to  `baseOption` and is regarded as a seperate component, which is also compatible with the timeline definition location of ECharts 2. But it is not recommended to do so.
 
 
 ## show(boolean) = true
@@ -112,19 +112,19 @@ This attribute has only one valid value as `slider` by now. You don't have to ch
 
 ## axisType(string) = 'time'
 
-Type of axis, whose values may be: 
+Type of axis, whose values may be:
 
 + `'value'`
     Numeric axis, which is suitable for continuous data.
 + `'category'`
     Category axis, which is suitable for category data.
 + `'time'`
-    Time axis, which is suitable for continuous time data. Compared with value axis, time axis is equipped with time formatting function and has a different method when calculating axis ticks. For example, for time axis, axis ticks may vary in choosing unit as month, week, date, or hour based on the range of data.   
+    Time axis, which is suitable for continuous time data. Compared with value axis, time axis is equipped with time formatting function and has a different method when calculating axis ticks. For example, for time axis, axis ticks may vary in choosing unit as month, week, date, or hour based on the range of data.
 
 
 ## currentIndex(number) = 0
 
-Indicates which is the currently selected item. For instance, if `currentIndex` is `0`, it indicates that the currently selected item is `timeline.data[0]` (namely, using `options[0]`). 
+Indicates which is the currently selected item. For instance, if `currentIndex` is `0`, it indicates that the currently selected item is `timeline.data[0]` (namely, using `options[0]`).
 
 
 ## autoPlay(boolean) = false
@@ -149,12 +149,12 @@ Indicates play speed (gap time between two state), whose unit is millisecond.
 
 ## realtime(boolean) = true
 
-Whether the view updates in real time during dragging the control dot. 
+Whether the view updates in real time during dragging the control dot.
 
 
 ## controlPosition(string) = 'left'
 
-Position of the play button, whose valid values are `'left'` and `'right'`. 
+Position of the play button, whose valid values are `'left'` and `'right'`.
 
 
 {{ use: partial-rect-layout(
@@ -208,34 +208,34 @@ Whether to show the axis. It can be set to be `false` to hide the axis line to m
 Label axis, which has `normal` and `emphasis` status. `normal` refers to the normal style of text, while `emphasis` is the highlighted style of text. For instance, text style in `emphasis` would be used when mouse hovers or legend connects.
 
 
-### position(string|number) = 'auto'
+### normal(Object)
+
+#### position(string|number) = 'auto'
 
 Configurations:
 
-+ `'auto'`: 
++ `'auto'`:
     Automatic layout.
 
-+ `'left'`: 
++ `'left'`:
     Put it along the left margin.
     It is valid when [timline.orient](~timeline.orient) is set as `'horizontal'` .
 
-+ `'right'`: 
++ `'right'`:
     Put it along the right margin.
     It is valid when [timline.orient](~timeline.orient) is set as `'horizontal'`.
 
-+ `'top'`: 
++ `'top'`:
     Put it along the margin of the top.
     It is valid when [timline.orient](~timeline.orient) is set as `'vertical'`.
 
-+ `'bottom'`: 
++ `'bottom'`:
     Put it along the margin of the bottom.
     It is valid when [timline.orient](~timeline.orient) is set as `'vertical'`.
 
-+ `number`: 
-    When it is assigned to be a a number value, it indicates the distance between `label` and axis. If it is set to be `0` , `label` would be at the same position with axis. Negative value is valid for the other side of the axis.   
++ `number`:
+    When it is assigned to be a a number value, it indicates the distance between `label` and axis. If it is set to be `0` , `label` would be at the same position with axis. Negative value is valid for the other side of the axis.
 
-
-### normal(Object)
 
 {{ use: partial-timeline-label(
     prefix="###",
@@ -299,22 +299,22 @@ Color of `checkpoint` in `timeline` component.
 ### borderWidth(number) = 5
 
 
-The border-width of `checkpoint` in `timeline` component. 
+The border-width of `checkpoint` in `timeline` component.
 
 
 ### borderColor(Color) = 'rgba(194,53,49, 0.5)'
 
-The border-color of `checkpoint` in `timeline` component. 
+The border-color of `checkpoint` in `timeline` component.
 
 
 ### animation(boolean) = true
 
-In `timeline` component, whether there is animation in `checkpoint` moving during the process of `timeline` playing and switching. 
+In `timeline` component, whether there is animation in `checkpoint` moving during the process of `timeline` playing and switching.
 
 
 ### animationDuration(number) = 300
 
-The animation duration of `checkpoint` in `timeline` component. 
+The animation duration of `checkpoint` in `timeline` component.
 
 
 ### animationEasing(string) = 'quinticInOut'
@@ -430,11 +430,11 @@ Width of button border.
 
 ## data(Array)
 
-`timeline` data. Each item of `Array` can be a instant value. If you need to set style individually for a data item, the `data` item should be written as `Object`. In then `Object`, the attribute of `value` is numerical value. Other attributes, such as shown the examples below, could cover the attribute configurations in `timeline`.  
+`timeline` data. Each item of `Array` can be a instant value. If you need to set style individually for a data item, the `data` item should be written as `Object`. In then `Object`, the attribute of `value` is numerical value. Other attributes, such as shown the examples below, could cover the attribute configurations in `timeline`.
 
 
 
-as follows: 
+as follows:
 
 ```javascript
 [
@@ -485,7 +485,7 @@ Interval of `label`. When it is assigned with a numerical value, such as  `2`, a
 
 #${prefix} rotate(prefix) = 0
 
-Rotation angle of `label`, in which positive values refer to counter clockwise rotation. 
+Rotation angle of `label`, in which positive values refer to counter clockwise rotation.
 
 #${prefix} formatter(string|Function) = null
 
@@ -497,5 +497,7 @@ Rotation angle of `label`, in which positive values refer to counter clockwise r
 {{ use: partial-text-style(
     prefix="#" + ${prefix},
     name="timeline.lable." + ${state},
-    defaultColor=${textStyleDefaultColor}
+    defaultColor=${textStyleDefaultColor},
+    hasAlign=true,
+    hasBaseline=true
 ) }}

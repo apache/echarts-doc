@@ -1,3 +1,36 @@
+## v3.6.2
+<div class="time">2017-06-15</div>
+
++ [+] [自定义系列（custom series）](http://echarts.baidu.com/option.html#series-custom) 支持 [百度地图插件（bmap）](https://github.com/ecomfe/echarts/tree/master/extension/bmap)。参见 [示例 1](http://echarts.baidu.com/demo.html#map-polygon) 和 [示例 2](http://echarts.baidu.com/demo.html#map-bin)。
+
++ [+] [treemap](http://echarts.baidu.com/option.html#series-treemap) 支持父节点标签的显示。参见 [示例](http://echarts.baidu.com/demo.html#treemap-show-parent)。参见：[#5869](https://github.com/ecomfe/echarts/issues/5869)、[#5579](https://github.com/ecomfe/echarts/issues/5579)。
+
++ [+] 支持图形元素上的鼠标 cursor 样式指定：[series-line.cursor](http://echarts.baidu.com/option.html#series-line.cursor)、[series-bar.cursor](http://echarts.baidu.com/option.html#series-bar.cursor)、[series-pie.cursor](http://echarts.baidu.com/option.html#series-pie.cursor)、[series-scatter.cursor](http://echarts.baidu.com/option.html#series-scatter.cursor)、[series-effectScatter.cursor](http://echarts.baidu.com/option.html#series-effectScatter.cursor)、[series-graph.cursor](http://echarts.baidu.com/option.html#series-graph.cursor)、[series-pictorialBar.cursor](http://echarts.baidu.com/option.html#series-pictorialBar.cursor)。
+
++ [+] 支持了 [series-pictorialBar.symbolBoundingData](http://echarts.baidu.com/option.html#series-pictorialBar.symbolBoundingData) 可以同时设置正向的值和负向的值。参见 [#5793](https://github.com/ecomfe/echarts/issues/5793)。
+
++ [+] `graph` 支持通过设置 [fixed](http://echarts.baidu.com/option.html#series-graph.data.fixed) 固定力引导布局中的指定节点。参见 [#5966](https://github.com/ecomfe/echarts/issues/5966)。
+
++ [+] `treemap` 支持了 [label.formatter](http://echarts.baidu.com/option.html#series-treemap.label.normal.formatter)。参见 [#5757](https://github.com/ecomfe/echarts/issues/5757)。
+
++ [+] `timeline` 支持了 [label.normal.textStyle.align](http://echarts.baidu.com/option.html#timeline.label.normal.textStyle.align) 和 [label.normal.textStyle.basealign](http://echarts.baidu.com/option.html#timeline.label.normal.textStyle.basealign)。参见 [#5960](https://github.com/ecomfe/echarts/issues/5960)。
+
++ [^] 修正了当 [large scatter](http://echarts.baidu.com/demo.html#scatter-large) 缩放后，`tooltip` 不显示的问题。参见 [#5837](https://github.com/ecomfe/echarts/issues/5837)。
+
++ [^] 修正了触发 [showTip](http://echarts.baidu.com/api.html#action.tooltip.showTip) action 时 `position` 参数无效的问题。参见 [#5874](https://github.com/ecomfe/echarts/issues/5874)。
+
++ [^] 修正了因精度导致的有时 [pie](http://echarts.baidu.com/option.html#series-pie) 显示出的百分比总值不足 `100%` 的问题。参见 [#5850](https://github.com/ecomfe/echarts/issues/5850)。
+
++ [^] 修正了当 `series.name` 相同时，只会显示最后一个系列的 `markPoint` 或 `markLine` 的问题。参见 [#5712](https://github.com/ecomfe/echarts/issues/5712)。
+
++ [^] 修正了 [barBorderRadius](http://echarts.baidu.com/option.html#series-bar.itemStyle.normal.barBorderRadius) 在水平条形图中不工作的问题。参见 [#5943](https://github.com/ecomfe/echarts/issues/5943)。
+
++ [^] 修正了 [dataZoom-inside](http://echarts.baidu.com/option.html#dataZoom-inside) 使用在 Y 轴时缩放点错误的问题。参见 [#5278](https://github.com/ecomfe/echarts/issues/5278)。
+
++ [^] 修正了 [radar](http://echarts.baidu.com/option.html#series-radar) 在某些数据中绘制不出的问题。参见 [#5986](https://github.com/ecomfe/echarts/issues/5986)。
+
+
+
 ## v3.6.1
 <div class="time">2017-05-26</div>
 

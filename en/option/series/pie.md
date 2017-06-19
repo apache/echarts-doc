@@ -52,6 +52,8 @@ Whether to enable the strategy to avoid labels overlap. Defaults to be enabled, 
 ## stillShowZeroSum(boolean) = true
 Whether to show sector when all data are zero.
 
+{{ use: partial-cursor }}
+
 ## label(Object)
 {{use:partial-label-desc(name="pie chart")}}
 ### normal(Object)

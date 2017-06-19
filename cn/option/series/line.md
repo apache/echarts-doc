@@ -50,6 +50,8 @@
 
 ~[600x400](${galleryViewPath}doc-example/line-stack-tiled&edit=1&reset=1)
 
+{{ use: partial-cursor }}
+
 ## connectNulls(boolean) = false
 是否连接空数据。
 

@@ -1,3 +1,36 @@
+<h2 id="v3-6-2">v3.6.2</h2>
+<div class="time">2017-06-15</div>
+
+<ul>
+<li><p>[+] Supported draw <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom">custom series</a> on <a href="https://github.com/ecomfe/echarts/tree/master/extension/bmap">Baidu Map (bmap)</a>. See <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=map-polygon">example 1</a> and <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=map-bin">example 2</a>。</p>
+</li>
+<li><p>[+] Supported show parent labels in <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-treemap">treemap</a>. See <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=treemap-show-parent">example</a>. See <a href="https://github.com/ecomfe/echarts/issues/5869">#5869</a> and <a href="https://github.com/ecomfe/echarts/issues/5579">#5579</a>.</p>
+</li>
+<li><p>[+] Supported specifying mouse cursor style by: <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-line.cursor">series-line.cursor</a>, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-bar.cursor">series-bar.cursor</a>, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-pie.cursor">series-pie.cursor</a>, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-scatter.cursor">series-scatter.cursor</a>, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-effectScatter.cursor">series-effectScatter.cursor</a>, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-graph.cursor">series-graph.cursor</a>, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-pictorialBar.cursor">series-pictorialBar.cursor</a>.</p>
+</li>
+<li><p>[+] Support both negative and positive bounding data specified on <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-pictorialBar.symbolBoundingData">series-pictorialBar.symbolBoundingData</a>. See <a href="https://github.com/ecomfe/echarts/issues/5793">#5793</a>.</p>
+</li>
+<li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-graph.data.fixed">fixed</a> in <code>graph</code>. See <a href="https://github.com/ecomfe/echarts/issues/5966">#5966</a>.</p>
+</li>
+<li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-treemap.label.normal.formatter">label.formatter</a>in <code>treemap</code>. See <a href="https://github.com/ecomfe/echarts/issues/5757">#5757</a>.</p>
+</li>
+<li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#timeline.label.normal.textStyle.align">label.normal.textStyle.align</a> and <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#timeline.label.normal.textStyle.basealign">label.normal.textStyle.basealign</a> in <code>timeline</code>. See <a href="https://github.com/ecomfe/echarts/issues/5960">#5960</a>.</p>
+</li>
+<li><p>[^] Fixed that <code>tooltip</code> did not work when <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=scatter-large">large scatter</a> was zoomed. See<a href="https://github.com/ecomfe/echarts/issues/5837">#5837</a>.</p>
+</li>
+<li><p>[^] Fixed that parameter <code>position</code> did not work when trigger <a href="https://ecomfe.github.io/echarts-doc/public/en/api.html#action.tooltip.showTip">showTip</a> action. See <a href="https://github.com/ecomfe/echarts/issues/5874">#5874</a>.</p>
+</li>
+<li><p>[^] Fixed that sometimes the sum of the percent value is less than <code>100%</code> slightly in <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-pie">pie</a>, which was caused by precision problem. See <a href="https://github.com/ecomfe/echarts/issues/5850">#5850</a>.</p>
+</li>
+<li><p>[^] Fixed only the last <code>markPoint</code> or <code>markLine</code> was displayed when <code>series.name</code> was the same. See <a href="https://github.com/ecomfe/echarts/issues/5712">#5712</a>.</p>
+</li>
+<li><p>[^] Fixed that <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-bar.itemStyle.normal.barBorderRadius">barBorderRadius</a> did not work in horizontal bar. See <a href="https://github.com/ecomfe/echarts/issues/5943">#5943</a>.</p>
+</li>
+<li><p>[^] Fixed the zoom point error when applying <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#dataZoom-inside">dataZoom-inside</a> on Y axis. See <a href="https://github.com/ecomfe/echarts/issues/5278">#5278</a>.</p>
+</li>
+<li><p>[^] Fixed sometimes <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-radar">radar</a> did not display normally. See <a href="https://github.com/ecomfe/echarts/issues/5986">#5986</a>.</p>
+</li>
+</ul>
 <h2 id="v3-6-1">v3.6.1</h2>
 <div class="time">2017-05-26</div>
 

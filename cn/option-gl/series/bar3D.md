@@ -38,12 +38,6 @@
 
 最小柱子高度。
 
-在柱状图不在笛卡尔坐标系上的时候，需要通过`minHeight`和`maxHeight`指明柱状图数据映射的高度范围。
-
-## maxHeight(number) = 100
-
-最大柱子高度。
-
 ## itemStyle(Object)
 
 柱子的样式，包括颜色和不透明度。

@@ -477,7 +477,7 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
 
 如果为 `'left'`，表示文本最左端在 `x` 值上。如果为 `'right'`，表示文本最右端在 `x` 值上。
 
-#### textVeticalAlign(string)
+#### textVerticalAlign(string)
 
 垂直对齐方式，取值：`'top'`, `'middle'`, `'bottom'`。
 
@@ -843,9 +843,7 @@ z 方向的高度，决定层叠关系。
 
 节点是否可见。
 
-### cursor(string) = 'pointer'
-
-鼠标悬浮时鼠标的样式是什么。同 CSS 的 `cursor`。
+{{ use: partial-cursor(prefix="##") }}
 
 ### draggable(boolean) = false
 

@@ -52,6 +52,8 @@ The brush type for ripples. options: `'stroke'` and `'fill'`.
     prefix="#"
 ) }}
 
+{{ use: partial-cursor }}
+
 ## label(Object)
 {{use:partial-label-desc}}
 ### normal(Object)

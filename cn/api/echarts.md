@@ -161,3 +161,9 @@ echarts.registerMap('USA', usaJson, {
 ```
 
 注册主题，用于[初始化实例](~echarts.init)的时候指定。
+
+
+{{ use: echarts-graphic }}
+
+
+
