@@ -19,7 +19,7 @@ ${name}图形的颜色。{{ if: ${useColorPalatte} }} 默认从全局调色盘 [
 
 #${prefix} borderColor(Color) = ${defaultBorderColor|default('"#000"')}
 
-${name}图形的描边颜色。支持的格式同 `color`。
+${name}图形的描边颜色。支持的颜色格式同 `color`，不支持回调函数。
 
 
 #${prefix} borderWidth(number) = ${defaultBorderWidth|default(0)}

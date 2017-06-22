@@ -27,7 +27,7 @@ ${componentName}中三维图形的着色效果，echarts-gl 中支持下面三�
 通过经典的 [lambert](https://en.wikipedia.org/wiki/Lambertian_reflectance) 着色表现光照带来的明暗。
 
 + `'realistic'`
-真实感渲染，配合 [light.ambientCubemap](~globe.light.ambientCubemap) 和 [postEffect](~globe.postEffect) 使用可以让展示的画面效果和质感有质的提升。ECharts GL 中使用了[基于物理的渲染（PBR)](https://www.marmoset.co/posts/physically-based-rendering-and-you-can-too/) 来表现真实感材质。
+真实感渲染，配合 [light.ambientCubemap](~globe.light.ambientCubemap) 和 [postEffect](~globe.postEffect) 使用可以让展示的画面效果和质感有质的提升。ECharts GL 中使用了[基于物理的渲染（PBR）](https://www.marmoset.co/posts/physically-based-rendering-and-you-can-too/) 来表现真实感材质。
 
 {{ block: shading-compare }}
 {{ /block }}

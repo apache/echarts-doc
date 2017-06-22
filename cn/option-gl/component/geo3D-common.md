@@ -64,6 +64,8 @@ ECharts 使用 [geoJSON](http://geojson.org/) 格式的数据作为地图的轮�
 
 地面可以让整个组件有个“摆放”的地方，从而使整个场景看起来更真实，更有模型感。
 
+`groundPlane` 下支持设置单独的 `realisticMaterial`, `colorMaterial`, `lambertMaterial` 等材质。如果不设置则默认取组件下的材质参数。
+
 ### show(boolean) = false
 
 是否显示地面。
