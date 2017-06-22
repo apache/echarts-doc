@@ -65,7 +65,7 @@ series: [{
 
 + 当某维度对应于数值轴（axis.type 为 `'value'` 或者 `'log'`）的时候：
 
-    其值可以为 `number`（例如 `12`）。（也可以容忍 `string` 形式的 number，例如 `'12'`）
+    其值可以为 `number`（例如 `12`）。（也可以兼容 `string` 形式的 number，例如 `'12'`）
 
 + 当某维度对应于类目轴（axis.type 为 `'category'`）的时候：
 
