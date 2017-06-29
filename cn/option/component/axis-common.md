@@ -315,7 +315,21 @@ boundaryGap: ['20%', '20%']
 }
 ```
 
-只在数值轴中（[type](~${componentType}.type): 'value'）有效。
+只在数值轴或时间轴中（[type](~${componentType}.type): 'value' 或 'time'）有效。
+
+#${prefix} maxInterval(number)
+
+自动计算的坐标轴最大间隔大小。
+
+例如，在时间轴（（[type](~${componentType}.type): 'time'））可以设置成 `3600 * 24 * 1000` 保证坐标轴分割刻度最大为一天。
+
+```js
+{
+    maxInterval: 3600 * 24 * 1000
+}
+```
+
+只在数值轴或时间轴中（[type](~${componentType}.type): 'value' 或 'time'）有效。
 
 #${prefix} interval(number)
 

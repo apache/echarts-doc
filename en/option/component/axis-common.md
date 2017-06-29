@@ -333,7 +333,21 @@ For example, it can be set to be `1` to make sure axis label is show as integer.
 }
 ```
 
-It is available only for axis of [type](~${componentType}.type) 'value'.
+It is available only for axis of [type](~${componentType}.type) 'value' or 'time'.
+
+#${prefix} minInterval(number)
+
+Maximum gap between split lines.
+
+For example, in time axis ([type](~${componentType}.type) is 'time'), it can be set to be `3600 * 24 * 1000` to make sure that the gap between axis labels is less than or equal to one day.
+
+```js
+{
+    maxInterval: 3600 * 1000 * 24
+}
+```
+
+It is available only for axis of [type](~${componentType}.type) 'value' or 'time'.
 
 #${prefix} interval(number)
 
