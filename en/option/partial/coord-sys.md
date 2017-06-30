@@ -5,7 +5,7 @@
 The coordinate used in the series, whose options are:
 
 {{if: ${none} }}
-+ `null`
++ `null` or `'none'`
 
     No coordinate.
 {{/if}}
