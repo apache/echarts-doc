@@ -1,0 +1,103 @@
+html,
+body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#main {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+#main #chart {
+    position: absolute;
+    overflow: hidden;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+    /*transition: margin-left .7s;*/
+}
+#main pre {
+    position: absolute;
+    overflow: auto;
+    padding: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    border-width: 0;
+    margin: 0;
+    font-size: 16px;
+    /*transition: width .7s;*/
+}
+/*#main.show-code #chart {
+    margin-left: 300px;
+}
+#main.show-code pre {
+    width: 270px;
+}*/
+#main pre .desc {
+    font-size: 20px;
+    line-height: 1.5;
+}
+#main pre .pln {
+    color: #eee;
+}
+#main pre .pun {
+    color: #8d8d02;
+}
+#main pre .str {
+    color: #02de02;
+}
+#main pre .com {
+    color: #c76868;
+}
+#main pre .lit {
+    color: #05c1c1;
+}
+#main pre .kwd {
+    color: #9292ce;
+}
+
+
+
+
+
+
+body.has-code {
+    background: #eee;
+}
+.has-code #code-box {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 290px;
+    margin: 0;
+    border: 3px solid #aaa;
+    overflow: auto;
+}
+.has-code #code-area {
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    top: 0;
+    bottom: 0;
+    width: 500px;
+}
+.has-code #main {
+    left: 300px;
+    user-select: none;
+    -webkit-user-select: none;
+}

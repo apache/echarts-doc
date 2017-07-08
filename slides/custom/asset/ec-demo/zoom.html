@@ -1,0 +1,162 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="../common/jquery.min.js"></script>
+        <script src="../common/echarts.min.js"></script>
+        <script src="../common/prettify/prettify.js"></script>
+        <script src="../common/showCode.js"></script>
+        <link rel="stylesheet" href="../common/reset.css">
+        <link rel="stylesheet" href="../common/prettify/prettify.css">
+        <script src="../common/perfect-scrollbar/0.6.8/js/perfect-scrollbar.min.js"></script>
+        <link rel="stylesheet" href="../common/perfect-scrollbar/0.6.8/css/perfect-scrollbar.min.css">
+    </head>
+    <body>
+
+        <div id="main">
+            <pre class="prettyprint" style="font-size: 16px;">
+
+option = {
+    dataZoom: [{
+        // 用于直角坐标系内交互
+        type: 'inside'
+    }, {
+        // 用于交互条
+        type: 'slider'
+    }],
+    ...
+};
+
+// 默认提供的交互行为不满足时，用
+// 『监听事件 + dispatchAction』
+// 的方式来自定义交互行为。
+var zoomSize = 6;
+myChart.on('click', function (params) {
+    myChart.dispatchAction({
+        type: 'dataZoom',
+        startValue: dataAxis[
+            Math.max(params.dataIndex - zoomSize / 2, 0)
+        ],
+        endValue: dataAxis[
+            Math.min(params.dataIndex + zoomSize / 2, data.length - 1)
+        ]
+    });
+});
+
+            </pre>
+            <div id="chart"></div>
+        </div>
+
+
+        <script>
+        var data = [220, 182, 191, 234, 290, 330, 310, 123, 442, 321, 90, 149, 210, 122, 133, 334, 198, 123, 125, 220];
+        var dataAxis = echarts.util.map(data, function (item, index) {
+            return index + '';
+        });
+        var yMax = 500;
+        var dataShadow = [];
+
+        for (var i = 0; i < data.length; i++) {
+            dataShadow.push(yMax);
+        }
+
+        option = {
+            backgroundColor: '#eee',
+            grid: {
+                top: 50,
+                bottom: 70
+            },
+            xAxis: {
+                data: dataAxis,
+                axisLabel: {
+                    interval: 0
+                },
+                axisTick: {
+                    show: false
+                },
+                axisLine: {
+                    show: false
+                },
+                z: 10
+            },
+            yAxis: {
+                axisLine: {
+                    show: false
+                },
+                axisTick: {
+                    show: false
+                },
+                axisLabel: {
+                    textStyle: {
+                        color: '#999'
+                    }
+                }
+            },
+            dataZoom: [{
+                type: 'inside',
+                minValueSpan: 2,
+            }, {
+                type: 'slider',
+                minValueSpan: 2,
+                height: 20,
+                handleIcon: 'M10.7,11.9H9.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4h1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+                handleSize: '120%'
+            }],
+            series: [
+                { // For shadow
+                    type: 'bar',
+                    itemStyle: {
+                        normal: {color: 'rgba(0,0,0,0.05)'}
+                    },
+                    barGap:'-100%',
+                    barCategoryGap:'40%',
+                    data: dataShadow,
+                    animation: false
+                },
+                {
+                    type: 'bar',
+                    itemStyle: {
+                        normal: {
+                            color: new echarts.graphic.LinearGradient(
+                                0, 0, 0, 1,
+                                [
+                                    {offset: 0, color: '#83bff6'},
+                                    {offset: 0.5, color: '#188df0'},
+                                    {offset: 1, color: '#188df0'}
+                                ]
+                            )
+                        },
+                        emphasis: {
+                            color: new echarts.graphic.LinearGradient(
+                                0, 0, 0, 1,
+                                [
+                                    {offset: 0, color: '#2378f7'},
+                                    {offset: 0.7, color: '#2378f7'},
+                                    {offset: 1, color: '#83bff6'}
+                                ]
+                            )
+                        }
+                    },
+                    data: data
+                }
+            ]
+        };
+
+        var myChart = initShowCode(option, {codeWidth: 400});
+
+        // Enable data zoom when user click bar.
+        var zoomSize = 6;
+        myChart.on('click', function (params) {
+            myChart.dispatchAction({
+                type: 'dataZoom',
+                startValue: dataAxis[
+                    Math.max(params.dataIndex - zoomSize / 2, 0)
+                ],
+                endValue: dataAxis[
+                    Math.min(params.dataIndex + zoomSize / 2, data.length - 1)
+                ]
+            });
+        });
+
+        </script>
+    </body>
+</html>
