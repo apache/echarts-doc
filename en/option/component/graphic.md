@@ -638,7 +638,7 @@ Arc element.
 {{ use: graphic-cpt-style-prop-common(
     fill = 'null',
     stroke = '"#000"',
-    lineWidth = 5
+    lineWidth = 1
 ) }}
 
 {{ use: graphic-cpt-event-handlers }}
