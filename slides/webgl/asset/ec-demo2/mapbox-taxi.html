@@ -21,6 +21,7 @@ https://web1.capetown.gov.za/web1/opendataportal/DatasetDetail?DatasetName=Build
         <script src="../common/shapefile.js"></script>
         <script src="../common/jquery.min.js"></script>
         <script src="../common/dat.gui.js"></script>
+        <script src="../common/StageControl.js"></script>
         <script>
             mapboxgl.accessToken = 'pk.eyJ1IjoicGlzc2FuZyIsImEiOiJjaXBnaGYxcW8wMDFodWNtNDc4NzdqMWR2In0.4XUWeduDltiCbsIiS-U8Lg';
             var chart = echarts.init(document.getElementById('main'));
@@ -96,37 +97,9 @@ https://web1.capetown.gov.za/web1/opendataportal/DatasetDetail?DatasetName=Build
                             altitudeScale: 2,
                             style: 'mapbox://styles/mapbox/dark-v9',
                             postEffect: {
-                                enable: true,
-                                screenSpaceAmbientOcclusion: {
-                                    enable: true,
-                                    intensity: 1.2,
-                                    radius: 6,
-                                    quality: 'high'
-                                },
-                                screenSpaceReflection: {
-                                    enable: true
-                                },
-                                depthOfField: {
-                                    enable: false,
-                                    focalDistance: 80,
-                                    blurRadius: 5
-                                }
+                                enable: false
                             },
                             light: {
-                                main: {
-                                    intensity: 1,
-                                    shadow: true,
-                                    shadowQuality: 'high'
-                                },
-                                ambient: {
-                                    intensity: 0.
-                                },
-                                ambientCubemap: {
-                                    texture: '../texture/pisa.hdr',
-                                    exposure: 1,
-                                    diffuseIntensity: 0.5,
-                                    specularIntensity: 2
-                                }
                             }
                         },
                         series: [{
@@ -162,11 +135,12 @@ https://web1.capetown.gov.za/web1/opendataportal/DatasetDetail?DatasetName=Build
                                 }
                             }
                         }, {
+                            name: 'buildings',
                             type: 'map3D',
                             map: 'buildings',
 
                             coordinateSystem: 'mapbox',
-                            shading: 'realistic',
+                            shading: 'lambert',
                             silent: true,
 
                             instancing: true,
@@ -174,8 +148,8 @@ https://web1.capetown.gov.za/web1/opendataportal/DatasetDetail?DatasetName=Build
                             data: regions,
 
                             realisticMaterial: {
-                                metalness: 1,
-                                roughness: 0.2,
+                                metalness: 0,
+                                roughness: 0.8,
                             }
                         }]
                     });
@@ -206,6 +180,59 @@ https://web1.capetown.gov.za/web1/opendataportal/DatasetDetail?DatasetName=Build
                 });
             });
 
+            new StageControl([
+                function () {
+                },
+                function () {
+                    chart.setOption({
+                        mapbox: {
+                            postEffect: {
+                                enable: true,
+                                screenSpaceAmbientOcclusion: {
+                                    enable: true,
+                                    intensity: 1.2,
+                                    radius: 6,
+                                    quality: 'high'
+                                },
+                                screenSpaceReflection: {
+                                    enable: true
+                                }
+                            },
+
+                            light: {
+                                main: {
+                                    intensity: 1,
+                                    shadow: true,
+                                    shadowQuality: 'high'
+                                },
+                                ambient: {
+                                    intensity: 0.
+                                },
+                                ambientCubemap: {
+                                    texture: '../texture/pisa.hdr',
+                                    exposure: 1,
+                                    diffuseIntensity: 0.5,
+                                    specularIntensity: 2
+                                }}
+                        },
+                        series: [{
+                            name: 'buildings',
+                            shading: 'realistic'
+                        }]
+                    });
+                },
+                function () {
+                    chart.setOption({
+                        series: [{
+                            name: 'buildings',
+                            realisticMaterial: {
+                                metalness: 1,
+                                roughness: 0.2,
+                            }
+                        }]
+                    })
+                }
+            ]);
         </script>
     </body>
 </html>

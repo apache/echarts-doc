@@ -25,15 +25,23 @@ Note:
 <img data-src="asset/img/tr-compare.png" alt="">
 
 Note:
+开始之前我们先来看一长很经典的描述这二十年游戏画面的进步的图，就是古墓丽影里劳拉这个角色的演变。
+大家如果玩游戏的话应该有看过这张图片
 
 ----
 
 
 <img data-src="asset/img/tr1.jpg" alt="">
 
+Note:
+早起的古墓丽影因为机器性能的限制，只能用非常少的多边形，光影效果也很简单，甚至是没有光影，只有简陋的贴图。
+
 ----
 
 <!--.slide: data-background="asset/img/rise-of-the-tomb-raider.jpg" -->
+
+Note:
+更真实会带来更强的临场感和沉浸感
 
 ----
 
@@ -45,8 +53,11 @@ Note:
 ----
 
 
-<img style="width:45%" data-src="asset/img/city-graphic-low.jpg" alt="">
-<img style="width:45%" data-src="asset/img/city-graphic-high.jpg" alt="">
+<img  data-src="asset/img/city-graphic-low.jpg" alt="">
+
+----
+
+<!--.slide: data-background="./asset/img/city-graphic-high.jpg" -->
 
 ---
 
@@ -499,13 +510,18 @@ Note:
 
 ----
 
+<img  data-src="asset/img/qgis-capetown.png" alt="">
+
+----
+
 <iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/mapbox-taxi.html"></iframe>
+
 
 ---
 
-<!--.slide: data-background="./asset/img/buildings2.jpg" -->
+<!--.slide: data-background="./asset/img/london-city.jpg" -->
 
-## Thanks
+# Thanks
 
 
 

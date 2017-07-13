@@ -66,8 +66,8 @@ body {
 .reveal h1 {
   font-size: 1.8em;
   background-color: rgba(0, 0, 0, 0.5);
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .reveal h2 {
