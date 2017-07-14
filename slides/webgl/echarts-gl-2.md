@@ -20,12 +20,13 @@ revealOptions:
 
 Note:
 
+
 ---
 
 <img data-src="asset/img/tr-compare.png" alt="">
 
 Note:
-开始之前我们先来看一长很经典的描述这二十年游戏画面的进步的图，就是古墓丽影里劳拉这个角色的演变。
+我们先来看一长很经典的描述这二十年游戏画面的进步的图，就是古墓丽影里劳拉这个角色的演变。
 大家如果玩游戏的话应该有看过这张图片
 
 ----
@@ -48,7 +49,6 @@ Note:
 <img data-src="asset/img/tr-settings.webp" alt="">
 
 Note:
-图形学渲染领域在过去十几年有了翻天覆地的变化，我们可以在像游戏这样对实时渲染重度依赖的场景里应用 PBR，阴影，SSAO，景深，屏幕空间反射等渲染技术。
 
 ----
 
@@ -61,7 +61,7 @@ Note:
 
 ---
 
-## 丰富的渲染效果
+## ECharts GL 里的渲染技术
 
 + 光影
 
@@ -70,11 +70,6 @@ Note:
 + 后期
 
 Note:
-仅仅能够画出来是不够的，我们还需要通过各种效果把图片渲染好看
-
-很多时候我们不喜欢三维的可视化，一方面是因为它并没有二维的那么清晰，还有一个很重要的原因是很多三维的渲染效果很糟糕，比如用着过时的光照模型。充满锯齿的画面。但是如果我们提升一下渲染的品质，把一张图渲染好看了，我相信很少会有人不喜欢。
-
-
 光影是场景有立体感的主要来源。有真实感的材质能够让我们看到一个图形后立马联想到这是什么东西，后期可以模拟一些摄像机或者 ps 的效果让画面更有质感。
 
 ---
@@ -504,6 +499,10 @@ Note:
 Note:
 比如这么一个生锈的零件
 
+----
+
+<iframe class="fullscreen" frameborder="0" data-src="asset/ec-demo2/surface-leather.html"></iframe>
+
 ---
 
 ## 开普敦的出租车线路
@@ -511,6 +510,9 @@ Note:
 ----
 
 <img  data-src="asset/img/qgis-capetown.png" alt="">
+
+Note:
+从开普敦的政府网上获取的两份开放数据，出租车路线和建筑群，然后用 QGIS 大概清理了下，保留了左边这块比较密集的建筑群。不然体积太大加载会比较慢。然后用 ECharts GL 组件画在了 mapbox 上。
 
 ----
 
@@ -523,6 +525,10 @@ Note:
 
 # Thanks
 
+----
 
+<!--.slide: data-background="./asset/img/gallery-demo.jpg" data-background-opacity="0.3" -->
+
+<h1 style="text-transform: lowercase;background-color: rgba(0,0,0,0.7)">http://gallery.echartsjs.com</h1>
 
 ---
