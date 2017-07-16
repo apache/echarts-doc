@@ -298,7 +298,11 @@ option: {
 
 如果 [animation](~animation) 设为 `false` 或者 [animationDurationUpdate](~animationDurationUpdate) 设为 `0`，且在数据量不大时，拖拽时画面感觉卡顿，可以把尝试把 `throttle` 设为 `0` 来改善。
 
+## rangeMode(Array)
 
+例如 `rangeMode: ['value', 'percent']`，表示 start 值取绝对数值，end 取百分比。
+
+可选值为：`'value'`, `'percent'`
 
 
 

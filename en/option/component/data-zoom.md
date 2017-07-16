@@ -309,6 +309,12 @@ If [animation](~animation) set as `true` and [animationDurationUpdate](~animatio
 
 If [animation](~animation) set as `false` or [animationDurationUpdate](~animationDurationUpdate) set as `0`, and data size is not very large, and it seems to be not smooth when dragging, you can set `throttle` as `0` to improve that.
 
+## rangeMode(Array)
+
+For example `rangeMode: ['value', 'percent']` means that use absolute value in `start` and percent value in `end`.
+
+Optional value: `'value'`, `'percent'`.
+
 
 
 {{target: partial-data-zoom-filterMode}}
