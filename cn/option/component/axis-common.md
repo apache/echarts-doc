@@ -28,6 +28,9 @@
 {{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
 ##${prefix} onZero(boolean) = true
 X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一个轴为数值轴且包含 0 刻度时有效。
+
+##${prefix} onZeroAxisIndex(number)
+当有双轴时，可以用这个属性手动指定，在哪个轴的 0 刻度上。
 {{ /if }}
 
 ##${prefix} lineStyle(Object)
