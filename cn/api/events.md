@@ -225,13 +225,13 @@ chart.on('axisareaselected', function () {
 });
 ```
 
-## focusNodeAdjacency(Event)
+## focusnodeadjacency(Event)
 [graph](option.html#graph)的邻接节点高亮事件。
 
 参见[focusNodeAdjacency](~action.graph.focusNodeAdjacency)。
 
 
-## unfocusNodeAdjacency(Event)
+## unfocusnodeadjacency(Event)
 [graph](option.html#graph)的邻接节点取消高亮事件。
 
 参见[unfocusNodeAdjacency](~action.graph.unfocusNodeAdjacency)。
