@@ -9,7 +9,7 @@ ${name} text color.
 
 Horizontal alignment of text, automatic by default.
 
-Options are: 
+Options are:
 + `'left'`
 + `'center'`
 + `'right'`
@@ -19,7 +19,7 @@ Options are:
 #${prefix} baseline(string)=${defaultAlign}
 
 Baseline alignment of text, automatic by default.
-Options are: 
+Options are:
 + `'top'`
 + `'middle'`
 + `'bottom'`
@@ -29,7 +29,7 @@ Options are:
 
 ${name} font style
 
-Options are: 
+Options are:
 + `'normal'`
 + `'italic'`
 + `'oblique'`
@@ -39,7 +39,7 @@ Options are:
 
 ${name} font thick weight
 
-Options are: 
+Options are:
 + `'normal'`
 + `'bold'`
 + `'bolder'`
@@ -47,9 +47,11 @@ Options are:
 + 100 | 200 | 300 | 400...
 
 
-#${prefix} fontFamily(string)='sans-serief'
+#${prefix} fontFamily(string)='sans-serif'
 
 ${name} font family
+
+Can also be 'serif' , 'monospace', ...
 
 #${prefix} fontSize(number)=${defaultFontSize|default(12)}
 

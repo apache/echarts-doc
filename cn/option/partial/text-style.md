@@ -52,6 +52,8 @@ ${name}文字字体的粗细
 
 ${name}文字的字体系列
 
+还可以是 'serif' , 'monospace', 'Arial', 'Courier New', 'Microsoft YaHei', ...
+
 #${prefix} fontSize(number)=${defaultFontSize|default(12)}
 
 ${name}文字的字体大小
