@@ -208,13 +208,13 @@ chart.on('axisareaselected', function () {
 ```
 
 
-## focusNodeAdjacency(Event)
+## focusnodeadjacency(Event)
 Adjacent nodes highlight event in [graph](option.html#graph).
 
 See [focusNodeAdjacency](~action.graph.focusNodeAdjacency).
 
 
-## unfocusNodeAdjacency(Event)
+## unfocusnodeadjacency(Event)
 Adjacent nodes reverse-highlight event in [graph](option.html#graph).
 
 See [unfocusNodeAdjacency](~action.graph.unfocusNodeAdjacency).
