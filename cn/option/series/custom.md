@@ -225,11 +225,11 @@ renderItem 函数的第二个参数。
 @param {number} [opt.barMaxWidth] bar 最大宽度。
 @param {number} [opt.barGap] 每个簇的 bar 之间的宽度。
 @param {number} [opt.barCategoryGap] 不同簇间的宽度。
-@return {Object} {
+@return {Array.<Object>} [{
         width: number bar 的宽度。
         offset: number bar 的偏移量，以bar最左为基准。
         offsetCenter: number bar 的偏移量，以bar中心为基准。
-    }
+    }, ...]
 ```
 
 

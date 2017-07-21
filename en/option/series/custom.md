@@ -233,11 +233,11 @@ See a [sample](${galleryEditorPath}custom-bar-trend).
 @param {number} [opt.barMaxWidth] Max width of a bar.
 @param {number} [opt.barGap] Gap of bars in a group.
 @param {number} [opt.barCategoryGap] Gap of groups.
-@return {Object} {
+@return {Array.<Object>} [{
         width: {number} Width of a bar.
         offset: {number} Offset of a bar, based on the left most edge.
         offsetCenter: {number} bar Offset of a bar, based on the center of the bar.
-    }
+    }, ...]
 ```
 
 
