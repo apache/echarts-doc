@@ -4,6 +4,11 @@
 
 `viewControl`用于鼠标的旋转，缩放等视角控制。
 
+
+##${prefix|default('#')} projection(string) = ${defaultProjection|default('perspective')}
+
+投影方式，默认为透视投影`'perspective'`，也支持设置为正交投影`'orthographic'`。
+
 ##${prefix|default('#')} autoRotate(boolean) = ${defaultAutoRotate|default(false)}
 
 是否开启视角绕物体的自动旋转查看。
@@ -25,11 +30,22 @@
 
 鼠标进行旋转，缩放等操作时的迟滞因子，在大于 0 的时候鼠标在停止操作后，视角仍会因为一定的惯性继续运动（旋转和缩放）。
 
-##${prefix|default('#')} rotateSensitivity(number) = ${defaultRotateSensitivity|default(1)}
+##${prefix|default('#')} rotateSensitivity(number|Array) = ${defaultRotateSensitivity|default(1)}
 
-旋转操作的灵敏度，值越大越灵敏。默认为`${defaultRotateSensitivitydefault(1)}`
+旋转操作的灵敏度，值越大越灵敏。支持使用数组分别设置横向和纵向的旋转灵敏度。
+
+默认为`${defaultRotateSensitivitydefault(1)}`
 
 设置为`0`后无法旋转。
+
+```js
+// 无法旋转
+rotateSensitivity: 0
+// 只能横向旋转
+rotateSensitivity: [1, 0]
+// 只能纵向旋转
+rotateSensitivity: [0, 1]
+```
 
 ##${prefix|default('#')} zoomSensitivity(number) = ${defaultZoomSensitivity|default(1)}
 
@@ -39,7 +55,9 @@
 
 ##${prefix|default('#')} panSensitivity(number) = ${defaultPanSensitivity|default(1)}
 
-平移操作的灵敏度，值越大越灵敏。默认为`${defaultRotateSensitivitydefault(1)}`
+平移操作的灵敏度，值越大越灵敏。支持使用数组分别设置横向和纵向的平移灵敏度
+
+默认为`${defaultRotateSensitivitydefault(1)}`
 
 设置为`0`后无法平移。
 
@@ -69,15 +87,27 @@
 
 ##${prefix|default('#')} distance(number) = ${defaultDistance|default(150)}
 
-默认视角距离主体的距离，对于 [globe](~globe) 来说是距离地球表面的距离，对于 [grid3D](~grid3D) 和 [geo3D](~geo3D) 等其它组件来说是距离中心原点的距离。
+默认视角距离主体的距离，对于 [globe](~globe) 来说是距离地球表面的距离，对于 [grid3D](~grid3D) 和 [geo3D](~geo3D) 等其它组件来说是距离中心原点的距离。在 [projection](~${componentType}.viewControl.projection) 为`'perspective'`的时候有效。
 
 ##${prefix|default('#')} minDistance(number) = ${defaultMinDistance|default(40)}
 
-视角通过鼠标控制能拉近到主体的最小距离。
+视角通过鼠标控制能拉近到主体的最小距离。在 [projection](~${componentType}.viewControl.projection) 为`'perspective'`的时候有效。
 
 ##${prefix|default('#')} maxDistance(number) = ${defaultMaxDistance|default(400)}
 
-视角通过鼠标控制能拉远到主体的最小距离。
+视角通过鼠标控制能拉远到主体的最小距离。在 [projection](~${componentType}.viewControl.projection) 为`'perspective'`的时候有效。
+
+##${prefix|default('#')} orthographicSize(number) = ${defaultDistance|default(150)}
+
+正交投影的大小。在 [projection](~${componentType}.viewControl.projection) 为`'orthographic'`的时候有效。
+
+##${prefix|default('#')} maxOrthographicSize(number) = ${defaultMinDistance|default(20)}
+
+正交投影缩放的最大值。在 [projection](~${componentType}.viewControl.projection) 为`'orthographic'`的时候有效。
+
+##${prefix|default('#')} minOrthographicSize(number) = ${defaultMaxDistance|default(400)}
+
+正交投影缩放的最小值。在 [projection](~${componentType}.viewControl.projection) 为`'orthographic'`的时候有效。
 
 ##${prefix|default('#')} alpha(number) = ${defaultAlpha|default(0)}
 
