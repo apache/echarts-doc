@@ -78,8 +78,6 @@ ECharts 使用 [geoJSON](http://geojson.org/) 格式的数据作为地图的轮�
 
 `instancing`会将 GeoJSON 中所有的 [geometry](http://geojson.org/geojson-spec.html#geometry-objects) 合并成一个，在 GeoJSON 拥有特别多（上千）的 [geometry](http://geojson.org/geojson-spec.html#geometry-objects) 时可以有效提升绘制效率。
 
-注意，开启`instancing`后场景不再具备选择，hover等交互的功能。
-
 ## label(Object)
 
 标签的相关设置。
