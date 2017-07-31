@@ -104,8 +104,6 @@ formatter: function (value) {
 ```
 ### textStyle(Object)
 {{ use: partial-text-style(prefix="###") }}
-### color(Color) = 'auto'
-刻度颜色
 
 
 ## pointer(Object)

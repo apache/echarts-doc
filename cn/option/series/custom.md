@@ -301,6 +301,9 @@ renderItem 函数的第二个参数。
 // 一组图形元素
 {
     type: 'group',
+    // 如果 diffChildrenByName 设为 true，则会使用 child.name 进行 diff，
+    // 从而能有更好的过度动画，但是降低性能。缺省为 false。
+    // diffChildrenByName: true,
     children: [{
         type: 'circle',
         shape: {

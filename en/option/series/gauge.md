@@ -102,8 +102,6 @@ formatter: function (value) {
 ```
 ### textStyle(Object)
 {{ use: partial-text-style(prefix="###") }}
-### color(Color) = 'auto'
-The scale color
 
 
 ## pointer(Object)

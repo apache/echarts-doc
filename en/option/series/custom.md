@@ -309,6 +309,10 @@ For example:
 // Returns a group of elements.
 {
     type: 'group',
+    // If diffChildrenByName is set as `true`, `child.name` will be used
+    // to diff children, which improves animation transition but degrade
+    // performance. The default value is `false`.
+    // diffChildrenByName: true,
     children: [{
         type: 'circle',
         shape: {
