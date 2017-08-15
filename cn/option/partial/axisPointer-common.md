@@ -123,9 +123,7 @@ axisPointer 的 label 默认不显示（也就是默认只显示指示线），�
 
 手柄的图标。
 
-{{ use: partial-icon-path }}
-
-也可以通过 `'image://url'` 设置为图片，其中 url 为图片的链接。
+{{ use: partial-icon-image-path }}
 
 参见 [使用图片的例子](${galleryEditorPath}doc-example/axisPointer-handle-image&edit=1&reset=1)
 

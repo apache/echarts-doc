@@ -367,25 +367,29 @@ the location of *control button*.
 ### playIcon(string)
 
 Icon of *play status* for *play button*.
-{{ use: partial-icon-path }}
+
+{{ use: partial-icon-image-path }}
 
 
 ### stopIcon(string)
 
 Icon of *stop status* for *play button*.
-{{ use: partial-icon-path }}
+
+{{ use: partial-icon-image-path }}
 
 
 ### prevIcon(string)
 
 Icon of *previous button*.
-{{ use: partial-icon-path }}
+
+{{ use: partial-icon-image-path }}
 
 
 ### nextIcon(string)
 
 Icon of *next button*.
-{{ use: partial-icon-path }}
+
+{{ use: partial-icon-image-path }}
 
 
 ### normal(Object)

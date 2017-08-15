@@ -371,25 +371,29 @@ myChart.setOption(
 ### playIcon(string)
 
 『播放按钮』的『可播放状态』的图形。
-{{ use: partial-icon-path }}
+
+{{ use: partial-icon-image-path }}
 
 
 ### stopIcon(string)
 
 『播放按钮』的『可停止状态』的图形。
-{{ use: partial-icon-path }}
+
+{{ use: partial-icon-image-path }}
 
 
 ### prevIcon(string)
 
 『后退按钮』的图形
-{{ use: partial-icon-path }}
+
+{{ use: partial-icon-image-path }}
 
 
 ### nextIcon(string)
 
 『前进按钮』的图形
-{{ use: partial-icon-path }}
+
+{{ use: partial-icon-image-path }}
 
 
 ### normal(Object)

@@ -63,9 +63,7 @@ Icon shape of handle, which supports path string. Its default value is:
 'M8.2,13.6V3.9H6.3v9.7H3.1v14.9h3.3v9.7h1.8v-9.7h3.3V13.6H8.2z M9.7,24.4H4.8v-1.4h4.9V24.4z M9.7,19.1H4.8v-1.4h4.9V19.1z'
 ```
 
-{{ use: partial-icon-path }}
-
-You can also set it as `'image://url'` to use a image.
+{{ use: partial-icon-image-path }}
 
 Refer to [area-simple example](${galleryEditorPath}area-simple) for customized icon.
 
