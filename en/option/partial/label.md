@@ -8,6 +8,10 @@ Text label of ${name}, to explain some data information about graphic item like 
 Whether to show label.
 #${prefix} position(string|Array) = ${defaultPosition}
 {{use:partial-label-position}}
+
+#${prefix} rotate(number) = ${defaultRotate}
+Rotate label, from -90 degree to 90, positive value represents rotate anti-clockwise.
+
 #${prefix} offset(Array)
 Whether to move text slightly. For example: `[30, 40]` means move `30` horizontally and move `40` vertically.
 {{ if: ${formatter} }}
