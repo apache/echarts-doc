@@ -96,6 +96,21 @@ Event emitted after unselecting legend.
     selected: Object
 }
 ```
+
+## legendscroll(Event)
+**ACTION:** [legendscroll](~action.legend.legendScroll)
+Event when trigger legend scroll.
+
+```js
+{
+    type: 'legendscroll',
+    scrollDataIndex: number
+    legendId: string
+}
+```
+
+
+
 ## datazoom(Event)
 **ACTION:** [dataZoom](~action.dataZoom.dataZoom)
 

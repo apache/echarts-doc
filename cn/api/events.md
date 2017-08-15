@@ -106,6 +106,21 @@ myChart.on('legendselectchanged', function (params) {
     selected: Object
 }
 ```
+
+
+## legendscroll(Event)
+**ACTION:** [legendscroll](~action.legend.legendScroll)
+图例滚动事件。
+
+```js
+{
+    type: 'legendscroll',
+    scrollDataIndex: number
+    legendId: string
+}
+```
+
+
 ## datazoom(Event)
 **ACTION:** [dataZoom](~action.dataZoom.dataZoom)
 

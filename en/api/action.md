@@ -92,6 +92,18 @@ dispatchAction({
 
 **EVENT:** [legendselectchanged](~events.legendselectchanged)
 
+### legendScroll(Action)
+Controll the scrolling of legend. It works when [legend.type](option.html#legend.type) is `'scroll'`.
+```js
+dispatchAction({
+    type: 'legendScroll',
+    scrollDataIndex: number,
+    legendId: string
+})
+```
+
+**EVENT:** [legendscroll](~events.legendscroll)
+
 <!--============= tooltip ==========-->
 ## tooltip
 
