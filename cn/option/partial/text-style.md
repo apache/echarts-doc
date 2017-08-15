@@ -4,27 +4,6 @@
 
 ${name}文字的颜色。
 
-{{ if: ${noAlign} }}
-#${prefix} align(string)=${defaultAlign}
-
-文字水平对齐方式，默认自动。
-
-可选：
-+ `'left'`
-+ `'center'`
-+ `'right'`
-{{ /if }}
-
-{{ if: ${noVerticalAlign} }}
-#${prefix} verticalAlign(string)=${defaultVerticalAlign}
-
-文字垂直对齐方式，默认自动。
-
-可选：
-+ `'top'`
-+ `'middle'`
-+ `'bottom'`
-{{ /if }}
 
 #${prefix} fontStyle(string)='normal'
 
@@ -57,3 +36,26 @@ ${name}文字的字体系列
 #${prefix} fontSize(number)=${defaultFontSize|default(12)}
 
 ${name}文字的字体大小
+
+
+{{ if: !${noAlign} }}
+#${prefix} align(string)=${defaultAlign}
+
+文字水平对齐方式，默认自动。
+
+可选：
++ `'left'`
++ `'center'`
++ `'right'`
+{{ /if }}
+
+{{ if: !${noVerticalAlign} }}
+#${prefix} verticalAlign(string)=${defaultVerticalAlign}
+
+文字垂直对齐方式，默认自动。
+
+可选：
++ `'top'`
++ `'middle'`
++ `'bottom'`
+{{ /if }}
