@@ -43,14 +43,6 @@ Open the hyper link of main title in specified tab.
     defaultColor="'#333'"
 ) }}
 
-## textAlign(string)
-
-Setting the title text align horizontally, supporting 'left','center','right', the default value is based on the title position.
-
-## textBaseline(string)
-
-Setting the title text align vertically, supporting 'top','middle','bottom', the default value is based on the title position.
-
 
 ## subtext(string) = ''
 

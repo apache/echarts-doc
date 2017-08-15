@@ -707,16 +707,3 @@ When the text is overflow the rectangle boundary, whether to replace the excess 
 )}}
 
 
-##${prefix} align(string) = 'center'
-
-Horizontal alignment. Optional values are `'center'`, `'right` and `'left'`.
-
-
-##${prefix} baseline(string) = 'middle'
-
-Vertical alignment, Optional values are  `'middle'`, `'right` and `'left'`.
-
-
-
-
-

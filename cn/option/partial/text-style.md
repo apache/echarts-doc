@@ -4,7 +4,7 @@
 
 ${name}文字的颜色。
 
-{{ if: ${hasAlign} }}
+{{ if: ${noAlign} }}
 #${prefix} align(string)=${defaultAlign}
 
 文字水平对齐方式，默认自动。
@@ -15,10 +15,10 @@ ${name}文字的颜色。
 + `'right'`
 {{ /if }}
 
-{{ if: ${hasBaseline} }}
-#${prefix} baseline(string)=${defaultAlign}
+{{ if: ${noVerticalAlign} }}
+#${prefix} verticalAlign(string)=${defaultVerticalAlign}
 
-文字基线对齐方式，默认自动。
+文字垂直对齐方式，默认自动。
 
 可选：
 + `'top'`

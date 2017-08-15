@@ -504,7 +504,5 @@ myChart.setOption(
 {{ use: partial-text-style(
     prefix="#" + ${prefix},
     name="timeline.lable." + ${state},
-    defaultColor=${textStyleDefaultColor},
-    hasAlign=true,
-    hasBaseline=true
+    defaultColor=${textStyleDefaultColor}
 ) }}

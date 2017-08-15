@@ -81,11 +81,6 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
     defaultColor="'#333'"
 )}}
 
-###${prefix} align(string)
-文本水平对齐方式，默认自动选择对齐方式，可以是 `'left'`, `'right'`, `'center'`
-
-###${prefix} baseline(string)
-文本垂直对齐方式，默认自动选择对齐方式，可以是 `'top'`, `'middle'`, `'bottom'`
 
 
 <!-- Overwrite color -->
@@ -407,16 +402,8 @@ data: [{
 类目标签的文字样式。
 
 {{ use:partial-text-style(
-    prefix='##' + ${prefix},
-    hasAlign=true,
-    hasBaseline=true
+    prefix='##' + ${prefix}
 ) }}
-
-###${prefix} align(string)
-文本水平对齐方式，默认自动选择对齐方式，可以是 `'left'`, `'right'`, `'center'`
-
-###${prefix} baseline(string)
-文本垂直对齐方式，默认自动选择对齐方式，可以是 `'top'`, `'middle'`, `'bottom'`
 
 {{if: !${noAxisPointer} }}
 #${prefix} axisPointer(Object)

@@ -4,7 +4,7 @@
 
 ${name} text color.
 
-{{ if: ${hasAlign} }}
+{{ if: ${noAlign} }}
 #${prefix} align(string)=${defaultAlign}
 
 Horizontal alignment of text, automatic by default.
@@ -15,10 +15,11 @@ Options are:
 + `'right'`
 {{ /if }}
 
-{{ if: ${hasBaseline} }}
-#${prefix} baseline(string)=${defaultAlign}
+{{ if: ${noVerticalAlign} }}
+#${prefix} verticalAlign(string)=${defaultVerticalAlign}
 
-Baseline alignment of text, automatic by default.
+Vertical alignment of text, automatic by default.
+
 Options are:
 + `'top'`
 + `'middle'`

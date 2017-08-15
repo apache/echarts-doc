@@ -94,12 +94,6 @@ Whether to show the label of the max tick. Optional values: `true`, `false`, `nu
     defaultColor="'#333'"
 )}}
 
-###${prefix} align(string)
-Label text align, can be `'left'`, `'right'`, `'center'`. Defaultly will choose one of them automatically.
-
-###${prefix} baseline(string)
-Label text vertical align, can be `'top'`, `'middle'`, `'bottom'`. Defaultly will choose one of them automatically.
-
 
 <!-- Overwrite color -->
 ###${prefix} color(Color|Function)
@@ -424,16 +418,8 @@ Name of a category.
 Text style of the category.
 
 {{ use:partial-text-style(
-    prefix='##' + ${prefix},
-    hasAlign=true,
-    hasBaseline=true
+    prefix='##' + ${prefix}
 ) }}
-
-###${prefix} align(string)
-Label text align, can be `'left'`, `'right'`, `'center'`. Defaultly will choose one of them automatically.
-
-###${prefix} baseline(string)
-Label text vertical align, can be `'top'`, `'middle'`, `'bottom'`. Defaultly will choose one of them automatically.
 
 {{if: !${noAxisPointer} }}
 #${prefix} axisPointer(Object)

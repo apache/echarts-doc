@@ -501,7 +501,5 @@ Rotation angle of `label`, in which positive values refer to counter clockwise r
 {{ use: partial-text-style(
     prefix="#" + ${prefix},
     name="timeline.lable." + ${state},
-    defaultColor=${textStyleDefaultColor},
-    hasAlign=true,
-    hasBaseline=true
+    defaultColor=${textStyleDefaultColor}
 ) }}
