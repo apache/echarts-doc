@@ -218,15 +218,17 @@ backgroundColor: {
 {{ /if }}
 
 
-#${prefix} width(number)
+#${prefix} width(number|string)
 
 文字块的宽度。一般不用指定，不指定则自动是文字的宽度。在想做表格项或者使用图片（参见 `backgroundColor`）时，可能会使用它。
 
 注意，文字块的 `width` 和 `height` 指定的是内容高宽，不包含 `padding`。
 
+`width` 也可以是百分比字符串，如 `'100%'`。表示的是所在文本块的 `contentWidth`（即不包含文本块的 `padding`）的百分之多少。之所以以 `contentWidth` 做基数，因为每个文本片段只能基于 `content box` 布局。如果以 `outerWidth` 做基数，则百分比的计算在实用中不具有意义，可能会超出。
+
 注意，如果不定义 `rich` 属性，则不能指定 `width` 和 `height`。
 
-#${prefix} height(number)
+#${prefix} height(number|string)
 
 文字块的高度。一般不用指定，不指定则自动是文字的高度。在使用图片（参见 `backgroundColor`）时，可能会使用它。
 

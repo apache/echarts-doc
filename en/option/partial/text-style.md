@@ -223,15 +223,18 @@ Shadow Y offset of the text block.
 {{ /if }}
 
 
-#${prefix} width(number)
+#${prefix} width(number|string)
 
 Width of the text block. It is the width of the text by default. In most cases, there is no need to specify it. You may want to use it in some cases like make simple table or using background image (see `backgroundColor`).
 
 Notice, `width` and `height` specifies the width and height of the content, without `padding`.
 
+`width` can also be percent string, like `'100%'`, which represents the percent of `contentWidth` (that is, the width without `padding`) of its container box. It is based on `contentWidth` because that each text snippet is layout based on the `content box`, where it makes no sense that calculating width based on `outerWith` in prectice.
+
+
 Notice, `width` and `height` only work when `rich` specified.
 
-#${prefix} height(number)
+#${prefix} height(number|string)
 
 Height of the text block. It is the width of the text by default. You may want to use it in some cases like using background image (see `backgroundColor`).
 
