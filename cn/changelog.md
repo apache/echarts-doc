@@ -1,4 +1,83 @@
 ## v3.6.2
+<div class="time">2017-08-16</div>
+
++ **[+] 支持了 [富文本标签](http://echarts.baidu.com/tutorial.html#%E5%AF%8C%E6%96%87%E6%9C%AC%E6%A0%87%E7%AD%BE)**。富文本标签能够对文本块、文本的部分片段进行样式设置，以及支持在文本中使用图片，并且支持了更多的对齐、旋转能力，从而可以形成丰富的效果。
+
++ **[+] 支持了 [可翻页的图例](http://echarts.baidu.com/option.html#legend.type)**，提供一种方案解决图例过多页面放不下或者难于自适应的问题。参见 [垂直图例](http://echarts.baidu.com/demo.html#pie-legend) 或 [水平图例](http://echarts.baidu.com/demo.html#radar2)。
+
++ [+] `textStyle` 配置项扁平化。在 echarts 中有众多的 `textStyle` 设置，例如 [series-bar.label.normal.textStyle](http://echarts.baidu.com/option.html#series-bar.label.normal.textStyle)、[xAxis.axisLabel.textStyle](http://echarts.baidu.com/option.html#xAxis.axisLabel.textStyle) 等等。这些 `textStyle` 有些层级过深和语法冗余，导致不方便，所以进行了扁平化，去掉了他们的 `textStyle` 这个层级。也就是从前是这种写法：`label.normal.textStyle.fontSize`、`axisLabel.textStyle.fontSize`， `v3.7` 之后，推荐这种写法 `label.normal.fontSize`、`axisLabel.fontSize`。当然，之前的写法仍然被兼容。有这些地方进行了扁平化：
+    + `axisPointer.textStyle`
+    + `xAxis.axisLabel.textStyle`
+    + `yAxis.axisLabel.textStyle`
+    + `radar.axisLabel.textStyle`
+    + `singleAxis.axisLabel.textStyle`
+    + `radiusAxis.axisLabel.textStyle`
+    + `angleAxis.axisLabel.textStyle`
+    + `parallel.parallelAxisDefault.axisLabel.textStyle`
+    + `parallelAxis.axisLabel.textStyle`
+    + `series.label[normal|emphasis].textStyle`
+    + `series.data.label[normal|emphasis].textStyle`
+    + `series-gauge.axisLabel.textStyle`
+    + `series-gauge.title.textStyle`
+    + `series-gauge.detail.textStyle`
+    + `series-treemap.upperLabel[normal|emphasis].textStyle`
+    + `calendar.dayLabel.textStyle`
+    + `calendar.monthLabel.textStyle`
+    + `calendar.yearLabel.textStyle`
+    + `markPoint.label[normal|emphasis].textStyle`
+    + `markPoint.data.label[normal|emphasis].textStyle`
+    + `markLine.label[normal|emphasis].textStyle`
+    + `markLine.data.label[normal|emphasis].textStyle`
+    + `markArea.label[normal|emphasis].textStyle`
+    + `markArea.data.label[normal|emphasis].textStyle`
+    + `tooltip.axisPointer.crossStyle.textStyle`
+    + `axisPointer.label.textStyle`
+    + `timeline.label.textStyle`
+    + `radar.name.textStyle`
+
++ [+] 对于时间坐标轴（即 [axis.type](http://echarts.baidu.com/option.html#xAxis.type) 为 `'time'`）支持了 [minInterval](http://echarts.baidu.com/option.html#xAxis.minInterval)。对于时间坐标轴和数值坐标轴（即 [axis.type](http://echarts.baidu.com/option.html#xAxis.type) 为 `'value'`）支持了 [maxInterval](http://echarts.baidu.com/option.html#xAxis.maxInterval)，从而能控制缩放（如 dataZoom）时刻度的最大最小范围。
+
++ [+] 支持了 [http://echarts.baidu.com/option.html#onZeroAxisIndex](option.html#xAxis.axisLine.onZeroAxisIndex)，从而能在多轴并且需要轴 `onZero` 的场景下，灵活设置轴互相的对应关系。参见 [#5069](https://github.com/ecomfe/echarts/issues/5069)。
+
++ [+] 支持了 `自定义系列(custom series)` 不使用 [坐标系](http://echarts.baidu.com/option.html#series-custom.coordinateSystems)。
+
++ [+] 支持了柱状图标签的旋转。参见 [rotate](http://echarts.baidu.com/option.html#series-bar.label.normal.rotate)、[align](http://echarts.baidu.com/option.html#series-bar.label.normal.align)、[verticalAlign](http://echarts.baidu.com/option.html#series-bar.label.normal.verticalAlign)。参见 [#5309](https://github.com/ecomfe/echarts/issues/5309)。
+
++ [+] 支持了 [radar.indicator.color](http://echarts.baidu.com/option.html#radar.indicator.color)，从而雷达每个标签能设置不同颜色。参见 [#6128](https://github.com/ecomfe/echarts/issues/6128)。
+
++ [+] 支持了 [dataZoom.rangeMode](http://echarts.baidu.com/option.html#dataZoom.rangeMode)，从而能在数据更新时固定缩放区域。参见 [#6128](https://github.com/ecomfe/echarts/issues/6040)。
+
++ [+] 支持了 [action.legend.legendToggleSelect](http://echarts.baidu.com/api.html#action.legend.legendToggleSelect), [action.legend.legendSelect](http://echarts.baidu.com/api.html#action.legend.legendSelect), [action.legend.legendUnSelect](http://echarts.baidu.com/api.html#action.legend.legendUnSelect) 中使用 `dataIndex`。参见 [#4242](https://github.com/ecomfe/echarts/issues/4242)。
+
++ [+] 支持了 [map.label.formatter](http://echarts.baidu.com/option.html#series-map.label.formatter)，从而方便于在地图系列中使用富文本标签。参见：[地图标签](http://echarts.baidu.com/demo.html#map-labels)。
+
++ [^] 修复了在 IE 某些版本中饼图和折线图中设置了阴影效果后偶见的异常。参见 [#5777](https://github.com/ecomfe/echarts/issues/5777)。
+
++ [^] 修复了地图中如果 `nameMap` 被设置且某些区域没有数据时，`tooltip` 中得不到区域名的问题。参见 [#5633](https://github.com/ecomfe/echarts/issues/5633)。
+
++ [^] 修复了百度地图扩展中，地图平移后 tooltip 位置错误的问题。参见 [#6211](https://github.com/ecomfe/echarts/issues/6211)。
+
++ [^] 修复了 `axisPointer` 偶发的报错。参见 [#6121](https://github.com/ecomfe/echarts/issues/6121)。
+
++ [^] 修复了热力图高度为 0 时的报错。参见 [#6214](https://github.com/ecomfe/echarts/issues/6214)。
+
++ [+] 修复了 [candlestick](http://echarts.baidu.com/option.html#series-candlestick) 第一个数据项为空时的异常。参见 [#6059](https://github.com/ecomfe/echarts/issues/6059)。
+
++ [^] 修复了 [series-bar.dimensions](http://echarts.baidu.com/option.html#series-bar.dimensions) 无效的问题。参见 [#6252](https://github.com/ecomfe/echarts/issues/6252)。
+
++ [^] 修复了 [自定义系列(custom series)](http://echarts.baidu.com/option.html#series-custom) 中 `group` 中子元素数目不确定时不能正确删除的问题。
+
++ [^] 修复了 在 `setOption` 执行之前调用 `connect` 时会抛出的异常。参见 [#6281](https://github.com/ecomfe/echarts/issues/6281)。
+
++ [^] 修复了 [tooltip.confine](http://echarts.baidu.com/option.html#tooltip.confine) 时的边界判断。参见 [#6277](https://github.com/ecomfe/echarts/issues/6277) 和 [0da06d8](https://github.com/ecomfe/echarts/commit/0da06d8)。
+
++ [^] 修复了柱状图重叠（同时设置了 `barWidth` 和 `barGap: '-100%'`）时在窄窗中的不正常。参见 [#6312](https://github.com/ecomfe/echarts/issues/6312)。
+
++ [^] 修复了精度问题。参见 [#6371](https://github.com/ecomfe/echarts/issues/6371)。
+
+
+
+## v3.6.2
 <div class="time">2017-06-15</div>
 
 + [+] [自定义系列（custom series）](http://echarts.baidu.com/option.html#series-custom) 支持 [百度地图插件（bmap）](https://github.com/ecomfe/echarts/tree/master/extension/bmap)。参见 [示例 1](http://echarts.baidu.com/demo.html#map-polygon) 和 [示例 2](http://echarts.baidu.com/demo.html#map-bin)。
