@@ -73,7 +73,8 @@ When use `custom series` with [dataZoom](~dataZoom), [dataZoom.filterMode](~data
     cartesian2d=true,
     polar=true,
     geo=true,
-    calendar=true
+    calendar=true,
+    none=true
 ) }}
 
 ## renderItem(Function)

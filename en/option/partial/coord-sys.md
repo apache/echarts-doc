@@ -38,6 +38,12 @@ The coordinate used in the series, whose options are:
     Use parallel coordinates, with [parallelIndex](~series-${seriesType}.parallelIndex) to assign the corresponding parallel coordinate components.
 {{/if}}
 
+{{if: ${none} }}
+
++ `'none'`
+
+    Do not use coordinate system.
+{{/if}}
 
 {{if: ${cartesian2d} }}
 ## xAxisIndex(number) = 0

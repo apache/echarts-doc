@@ -66,7 +66,8 @@ series: {
     cartesian2d=true,
     polar=true,
     geo=true,
-    calendar=true
+    calendar=true,
+    none=true
 ) }}
 
 ## renderItem(Function)
