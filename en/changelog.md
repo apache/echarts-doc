@@ -1,4 +1,4 @@
-## v3.6.2
+## v3.7.0
 <div class="time">2017-08-16</div>
 
 + **[+] Supported [Rich Text](https://ecomfe.github.io/echarts-doc/public/en/tutorial.html#%E5%AF%8C%E6%96%87%E6%9C%AC%E6%A0%87%E7%AD%BE)**, which has enabled style configuring to some text snippets or the entire text block, and supported using images in text, and supported alignment or rotation of text block or snippets.
@@ -37,7 +37,7 @@
 
 + [+] Supported [minInterval](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.minInterval) on time axis (that is, [axis.type](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.type) is `'time'`), and supported [maxInterval](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.maxInterval) on value axis (that is [axis.type](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.type) is `'value'`). So that it is enabled to controll the precision of label when data zooming.
 
-+ [+] Supported [https://ecomfe.github.io/echarts-doc/public/en/option.html#onZeroAxisIndex](option.html#xAxis.axisLine.onZeroAxisIndex), which enables specifing corresponding relationship when multiple axes used and `onZero` is required. See [#5069](https://github.com/ecomfe/echarts/issues/5069)。
++ [+] Supported [xAxis.axisLine.onZeroAxisIndex](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.axisLine.onZeroAxisIndex), which enables specifing corresponding relationship when multiple axes used and `onZero` is required. See [#5069](https://github.com/ecomfe/echarts/issues/5069)。
 
 + [+] Supported that do not use [coordinate system](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.coordinateSystems) in `custom series`.
 
