@@ -87,10 +87,8 @@ Whether to show the label of the min tick. Optional values: `true`, `false`, `nu
 ##${prefix} showMaxLabel(boolean) = null
 Whether to show the label of the max tick. Optional values: `true`, `false`, `null`. It is auto determined by default, that is, if labels are overlapped, the label of the max tick will not be displayed.
 
-##${prefix} textStyle(Object)
-
 {{ use: partial-text-style(
-    prefix='##' + ${prefix},
+    prefix='#' + ${prefix},
     defaultColor="'#333'"
 )}}
 

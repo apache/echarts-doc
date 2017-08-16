@@ -61,17 +61,20 @@
     defaultShowLabel=true,
     defaultPosition="'left'",
     defaultMargin=4,
-    defaultTextAlign="'right'"
-)}}
-#### textStyle(Object)
-{{use: partial-text-style(
-    prefix="####",
+    noAlign=true,
+    noVerticalAlign=true,
     defaultColor="'#000'",
-    defaultFontSize=11
+    defaultFontSize=11,
 )}}
 ### emphasis(Object)
 {{use:partial-label(
-    prefix="###"
+    prefix="###",
+    defaultPosition="'left'",
+    defaultMargin=4,
+    noAlign=true,
+    noVerticalAlign=true,
+    defaultColor="'#000'",
+    defaultFontSize=11,
 )}}
 
 ## itemStyle(Object)

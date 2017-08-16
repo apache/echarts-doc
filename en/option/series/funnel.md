@@ -162,9 +162,8 @@ Label position.
     }
 }) }}
 {{ /if }}
-#${prefix} textStyle(Object)
-the font style of lable.
-{{ use:partial-text-style(prefix=${prefix} + '#') }}
+
+{{ use:partial-text-style(prefix=${prefix}) }}
 
 
 {{ target: partial-funnel-label-line }}

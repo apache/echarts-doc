@@ -102,8 +102,7 @@ formatter: function (value) {
     return value + 'km/h';
 }
 ```
-### textStyle(Object)
-{{ use: partial-text-style(prefix="###") }}
+{{ use: partial-text-style(prefix="##") }}
 
 
 ## pointer(Object)
@@ -131,9 +130,8 @@ formatter: function (value) {
 是否显示标题。
 ### offsetCenter(Array) = [0, '-40%']
 相对于仪表盘中心的偏移位置，数组第一项是水平方向的偏移，第二项是垂直方向的偏移。可以是绝对的数值，也可以是相对于仪表盘半径的百分比。
-### textStyle(Object)
 {{ use: partial-text-style(
-    prefix="###",
+    prefix="##",
     defaultColor = "'#333'",
     defaultFontSize = 15
 ) }}
@@ -163,9 +161,8 @@ formatter: function (value) {
 }
 ```
 
-### textStyle(Object)
 {{ use: partial-text-style(
-    prefix="###",
+    prefix="##",
     defaultColor = "'auto'",
     defaultFontSize = 15
 ) }}

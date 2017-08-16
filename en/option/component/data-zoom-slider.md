@@ -123,7 +123,7 @@ Whether to update view while dragging. If it is set as `false`, the view will be
 
 ## textStyle
 
-{{ use:partial-text-style(
+{{ use:partial-simple-text-style(
     prefix='##',
     name='dataZoom ',
     defaultColor='#333'

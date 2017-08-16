@@ -341,7 +341,7 @@ The border width of tooltip's floating layer.
 
 The text syle of tooltip's floating layer.
 
-{{ use: partial-text-style(prefix="#" + ${prefix}, defaultColor="'#fff'", defaultFontSize=14) }}
+{{ use: partial-simple-text-style(prefix="#" + ${prefix}, defaultColor="'#fff'", defaultFontSize=14) }}
 
 #${prefix} extraCssText(string)
 

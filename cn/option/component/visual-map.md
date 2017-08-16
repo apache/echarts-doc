@@ -426,7 +426,7 @@ visualMap 组件中，`控制器` 的 `inRange` `outOfRange` 设置。如果没�
 
 ## textStyle(Object)
 
-{{ use:partial-text-style(
+{{ use:partial-simple-text-style(
     prefix='##',
     name='visualMap ',
     defaultColor='#333'

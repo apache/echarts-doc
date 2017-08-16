@@ -102,7 +102,13 @@ selected: {
 
 图例的公用文本样式。
 
-{{ use: partial-text-style(componentName='图例', prefix='##', defaultColor="#333") }}
+{{ use: partial-text-style(
+    componentName='图例',
+    prefix='##',
+    defaultColor="#333",
+    noAlign=true,
+    noVerticalAlign=true
+) }}
 
 ## tooltip(Object)
 
@@ -271,7 +277,7 @@ data: [{
 
 图例页信息的文字样式。
 
-{{ use: partial-text-style(componentName='图例页信息', prefix='##', defaultColor="#333") }}
+{{ use: partial-simple-text-style(componentName='图例页信息', prefix='##', defaultColor="#333") }}
 
 ## animation(boolean)
 

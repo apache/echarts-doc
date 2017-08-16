@@ -355,7 +355,7 @@ formatter: function (params, ticket, callback) {
 
 提示框浮层的文本样式。
 
-{{ use: partial-text-style(prefix="#" + ${prefix}, defaultColor="'#fff'", defaultFontSize=14) }}
+{{ use: partial-simple-text-style(prefix="#" + ${prefix}, defaultColor="'#fff'", defaultFontSize=14) }}
 
 #${prefix} extraCssText(string)
 

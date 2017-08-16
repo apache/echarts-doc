@@ -224,7 +224,7 @@ Distance between label and axis.
 
 ##${prefix} textStyle(boolean)
 
-{{ use: partial-text-style(
+{{ use: partial-simple-text-style(
     prefix='##' + ${prefix},
     defaultColor="'#fff'"
 )}}

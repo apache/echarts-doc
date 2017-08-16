@@ -228,7 +228,7 @@ label 距离轴的距离。
 
 ##${prefix} textStyle(boolean)
 
-{{ use: partial-text-style(
+{{ use: partial-simple-text-style(
     prefix='##' + ${prefix},
     defaultColor="'#fff'"
 )}}

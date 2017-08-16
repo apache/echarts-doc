@@ -24,11 +24,15 @@ ${name}图形上的文本标签，可用于说明图形的一些数据信息，�
 
 
 {{ if: !${noTextStyle} }}
-标签的字体样式。
 {{ use:partial-text-style(
     prefix=${prefix},
     noAlign=${noAlign},
-    noVerticalAlign=${noVerticalAlign}
+    noVerticalAlign=${noVerticalAlign},
+    name=${name},
+    defaultColor=${defaultColor},
+    defaultFontSize=${defaultFontSize},
+    noRich=${noRich},
+    noBox=${noBox}
 ) }}
 {{ /if }}
 

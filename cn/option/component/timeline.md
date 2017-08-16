@@ -499,10 +499,8 @@ myChart.setOption(
 {{use: axis-common-formatter-desc}}
 
 
-#${prefix} textStyle(Object)
-
 {{ use: partial-text-style(
-    prefix="#" + ${prefix},
+    prefix=${prefix},
     name="timeline.lable." + ${state},
     defaultColor=${textStyleDefaultColor}
 ) }}

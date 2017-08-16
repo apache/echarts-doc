@@ -63,7 +63,7 @@
 
 # textStyle(Object)
 全局的字体样式。
-{{ use: partial-text-style(
+{{ use: partial-simple-text-style(
     prefix='#',
     defaultFontSize=12
 ) }}

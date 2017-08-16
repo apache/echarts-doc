@@ -100,8 +100,7 @@ formatter: function (value) {
     return value + 'km/h';
 }
 ```
-### textStyle(Object)
-{{ use: partial-text-style(prefix="###") }}
+{{ use: partial-text-style(prefix="##") }}
 
 
 ## pointer(Object)
@@ -129,9 +128,8 @@ The title of gauge chart.
 Whether to show the title.
 ### offsetCenter(Array) = [0, '-40%']
 The offset position relative to the center of gauge chart. The first item of array is the horizontal offset; the second item of array is the vertical offset. It could be absolute value and also the percentage relative to the radius of gauge chart.
-### textStyle(Object)
 {{ use: partial-text-style(
-    prefix="###",
+    prefix="##",
     defaultColor = "'#333'",
     defaultFontSize = 15
 ) }}
@@ -152,9 +150,8 @@ The border width of detail.
 The border color of detail.
 ### offsetCenter(Array) = [0, '40%']
 The offset position relative to the center of gauge chart. The first item of array is the horizontal offset; the second item of array is the vertical offset. It could be absolute value and also the percentage relative to the radius of gauge chart.
-### textStyle(Object)
 {{ use: partial-text-style(
-    prefix="###",
+    prefix="##",
     defaultColor = "'auto'",
     defaultFontSize = 15
 ) }}

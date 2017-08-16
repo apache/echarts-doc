@@ -2,7 +2,7 @@
 
 # radar(Object)
 
-Coordinate for [radar charts](~series-radar). This component is equal to the polar component in ECharts 2. Because the polar component in the echarts 3 is reconstructed to be the standard polar coordinate component, this component is renamed to be radar to avoid confusion. 
+Coordinate for [radar charts](~series-radar). This component is equal to the polar component in ECharts 2. Because the polar component in the echarts 3 is reconstructed to be the standard polar coordinate component, this component is renamed to be radar to avoid confusion.
 
 Radar chart coordinate is different from polar coordinate, in that every axis indicator of the radar chart coordinate is an individual dimension. The style of indicator coordinate axis could be configured through the following configuration items, including [name](~radar.name), [axisLine](~radar.axisLine), [axisTick](~radar.axisTick), [axisLabel](~radar.axisLabel), [splitLine](~radar.splitLine), [splitArea](~radar.splitArea).
 
@@ -30,21 +30,22 @@ Whether to display the indicator's name.
 
 ### formatter(string|Function)
 
-The formatter of indicator's name, in which the string and callback function are supported. See the following example: 
+The formatter of indicator's name, in which the string and callback function are supported. See the following example:
 
 ```js
 // using string template, the template variable should be the indicator's name {value}
 formatter: '【{value}】'
-// using callback function, the first parameter is the indicator's name, and the second parameter id the indicator's cinfiguration item 
+// using callback function, the first parameter is the indicator's name, and the second parameter id the indicator's cinfiguration item
 formatter: function (value, indicator) {
     return '【' + value + '】';
 }
 ```
 
-### textStyle(Object)
 {{ use: partial-text-style(
-    prefix='###',
-    defaultColor="'#333'"
+    prefix='##',
+    defaultColor="'#333'",
+    noAlign=true,
+    noVerticalAlign=true
 )}}
 
 ## nameGap(number) = 15
@@ -91,7 +92,7 @@ Whether to prevent calculating the scaling relative to zero. If it is set to be 
 
 ## indicator(Array)
 
-Indicator of radar chart, which is used to assign multiple variables(dimensions) in radar chart. Here is the example. 
+Indicator of radar chart, which is used to assign multiple variables(dimensions) in radar chart. Here is the example.
 
 ```js
 indicator: [

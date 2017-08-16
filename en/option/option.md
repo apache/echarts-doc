@@ -65,7 +65,7 @@ Background color. Defaults to have no background.
 # textStyle(Object)
 Global font style.
 
-{{ use: partial-text-style(
+{{ use: partial-simple-text-style(
     prefix: '#',
     defaultFontSize: 12
 ) }}

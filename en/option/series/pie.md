@@ -189,9 +189,7 @@ The position of label.
     }
 }) }}
 {{ /if }}
-#${prefix} textStyle(Object)
-The text style of labels.
-{{ use:partial-text-style(prefix=${prefix} + '#') }}
+{{ use:partial-text-style(prefix=${prefix}) }}
 
 
 

@@ -40,7 +40,8 @@
     name="主标题",
     defaultFontSize=18,
     defaultFontWeight="'bolder'",
-    defaultColor="'#333'"
+    defaultColor="'#333'",
+    noBox=true
 ) }}
 
 
@@ -68,7 +69,8 @@
 {{ use: partial-text-style(
     prefix='##',
     name="副标题",
-    defaultColor="'#aaa'"
+    defaultColor="'#aaa'",
+    noBox=true
 ) }}
 
 ## padding(number) = 5

@@ -227,9 +227,7 @@ calendar: [{
 }]
 ```
 
-### textStyle(Object)
-Style of text in normal state.
-{{ use: partial-text-style(prefix='###', defaultColor="#000",) }}
+{{ use: partial-text-style(prefix='##', defaultColor="#000",) }}
 
 
 ## monthLabel(Object)
@@ -327,9 +325,7 @@ formatter: function (param) {
 }
 ```
 
-### textStyle(Object)
-Style of text in normal state.
-{{ use: partial-text-style(prefix='###', defaultColor="#000") }}
+{{ use: partial-text-style(prefix='##', defaultColor="#000") }}
 
 
 ## yearLabel(Object)
@@ -384,9 +380,7 @@ formatter: function (param) {
 }
 ```
 
-### textStyle(Object)
-Style of text in normal state.
-{{ use: partial-text-style(prefix='###') }}
+{{ use: partial-text-style(prefix='##') }}
 
 
 {{ use:partial-silent(

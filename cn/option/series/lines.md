@@ -204,5 +204,4 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 #${prefix} formatter(string|Function)
 {{ use: partial-2d-data-label-formatter }}
 
-#${prefix} textStyle(Object)
-{{ use: partial-text-style(prefix=${prefix} + '#') }}
+{{ use: partial-text-style(prefix=${prefix}) }}

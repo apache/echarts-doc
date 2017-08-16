@@ -40,7 +40,8 @@ Open the hyper link of main title in specified tab.
     name="main title",
     defaultFontSize=18,
     defaultFontWeight="'bolder'",
-    defaultColor="'#333'"
+    defaultColor="'#333'",
+    noBox=true
 ) }}
 
 
@@ -68,7 +69,8 @@ The hyper link of subtitle text.
 {{ use: partial-text-style(
     prefix='##',
     name="subtitle",
-    defaultColor="'#aaa'"
+    defaultColor="'#aaa'",
+    noBox=true
 ) }}
 
 ## padding(number) = 5

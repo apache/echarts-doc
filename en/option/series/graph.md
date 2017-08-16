@@ -344,5 +344,4 @@ Label position, options：
 #${prefix} formatter(string|Function)
 {{ use: partial-2d-data-label-formatter }}
 
-#${prefix} textStyle(Object)
-{{ use: partial-text-style(prefix=${prefix} + '#') }}
+{{ use: partial-text-style(prefix=${prefix}) }}

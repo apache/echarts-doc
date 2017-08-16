@@ -452,7 +452,7 @@ If you persist in using it, the following issue should be noticed: the sequence 
 
 ## textStyle
 
-{{ use:partial-text-style(
+{{ use:partial-simple-text-style(
     prefix='##',
     name='visualMap ',
     defaultColor='#333'

@@ -127,7 +127,7 @@ labelFormatter: function (value) {
 
 ## textStyle
 
-{{ use:partial-text-style(
+{{ use:partial-simple-text-style(
     prefix='##',
     name='dataZoom ',
     defaultColor='#333'

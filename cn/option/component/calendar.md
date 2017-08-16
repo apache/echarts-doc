@@ -222,9 +222,7 @@ calendar: [{
 }]
 ```
 
-### textStyle(Object)
-普通状态下的标签文本样式。
-{{ use: partial-text-style(prefix='###', defaultColor="#000",) }}
+{{ use: partial-text-style(prefix='##', defaultColor="#000",) }}
 
 
 ## monthLabel(Object)
@@ -315,9 +313,7 @@ formatter: function (param) {
 }
 ```
 
-### textStyle(Object)
-普通状态下的标签文本样式。
-{{ use: partial-text-style(prefix='###', defaultColor="#000") }}
+{{ use: partial-text-style(prefix='##', defaultColor="#000") }}
 
 ## yearLabel(Object)
 设置日历坐标中 年的样式
@@ -365,9 +361,7 @@ formatter: function (param) {
 }
 ```
 
-### textStyle(Object)
-普通状态下的标签文本样式。
-{{ use: partial-text-style(prefix='###') }}
+{{ use: partial-text-style(prefix='##') }}
 
 
 {{ use:partial-silent(

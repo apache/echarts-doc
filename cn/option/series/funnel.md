@@ -168,9 +168,8 @@
     }
 }) }}
 {{ /if }}
-#${prefix} textStyle(Object)
-标签的字体样式。
-{{ use:partial-text-style(prefix=${prefix} + '#') }}
+
+{{ use:partial-text-style(prefix=${prefix}) }}
 
 
 {{ target: partial-funnel-label-line }}

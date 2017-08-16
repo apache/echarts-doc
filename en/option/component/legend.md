@@ -271,7 +271,11 @@ It works when [legend.type](~legend.type) is `'scroll'`.
 
 The text style of page info.
 
-{{ use: partial-text-style(componentName='图例页信息', prefix='##', defaultColor="#333") }}
+{{ use: partial-simple-text-style(
+    componentName='图例页信息',
+    prefix='##',
+    defaultColor="#333"
+) }}
 
 ## animation(boolean)
 

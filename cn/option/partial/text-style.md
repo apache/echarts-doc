@@ -1,3 +1,18 @@
+{{target:partial-simple-text-style}}
+
+{{ use:partial-text-style(
+    prefix=${prefix},
+    name=${name},
+    defaultColor=${defaultColor},
+    defaultFontSize=${defaultFontSize},
+    noAlign=true,
+    noVerticalAlign=true,
+    noRich=true,
+    noBox=true
+) }}
+
+
+
 {{target:partial-text-style}}
 
 #${prefix} color(Color)=${defaultColor|default('"#fff"')}
@@ -38,7 +53,7 @@ ${name}文字的字体系列
 ${name}文字的字体大小
 
 
-{{ if: !${noAlign} }}
+ {{ if: !${noAlign} }}
 #${prefix} align(string)=${defaultAlign}
 
 文字水平对齐方式，默认自动。

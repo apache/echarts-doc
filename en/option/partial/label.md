@@ -27,7 +27,12 @@ Whether to move text slightly. For example: `[30, 40]` means move `30` horizonta
 {{ use:partial-text-style(
     prefix=${prefix},
     noAlign=${noAlign},
-    noVerticalAlign=${noVerticalAlign}
+    noVerticalAlign=${noVerticalAlign},
+    name=${name},
+    defaultColor=${defaultColor},
+    defaultFontSize=${defaultFontSize},
+    noRich=${noRich},
+    noBox=${noBox}
 ) }}
 {{ /if }}
 
