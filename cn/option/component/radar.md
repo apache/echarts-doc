@@ -97,7 +97,7 @@ formatter: function (value, indicator) {
 ```js
 indicator: [
    { name: '销售（sales）', max: 6500},
-   { name: '管理（Administration）', max: 16000},
+   { name: '管理（Administration）', max: 16000, color: 'red'}, // 标签设置为红色
    { name: '信息技术（Information Techology）', max: 30000},
    { name: '客服（Customer Support）', max: 38000},
    { name: '研发（Development）', max: 52000},
@@ -116,3 +116,7 @@ indicator: [
 ### min(number)
 
 指示器的最小值，可选，默认为 0。
+
+### color(string)
+
+标签特定的颜色。

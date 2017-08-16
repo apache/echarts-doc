@@ -97,7 +97,7 @@ Indicator of radar chart, which is used to assign multiple variables(dimensions)
 ```js
 indicator: [
    { name: 'Sales (sales) ', max: 6500},
-   { name: 'Administration (Administration) ', max: 16000},
+   { name: 'Administration (Administration) ', max: 16000, color: 'red'}, // Set the indicator as 'red'
    { name: 'Information Technology (Information Technology) ', max: 30000},
    { name: 'Customer Support (Customer Support) ', max: 38000},
    { name: 'Development (Development) ', max: 52000},
@@ -116,3 +116,7 @@ The maximum value of indicator. It is an optional configuration, but we recommen
 ### min(number)
 
 The minimum value of indicator. It it an optional configuration, with default value of 0.
+
+## color(string)
+
+Specfy a color the the indicator.
