@@ -92,33 +92,23 @@ boundingCoords: [
 ## selectedMode(boolean|string) = false
 选中模式，表示是否支持多个选中，默认关闭，支持布尔值和字符串，字符串取值可选`'single'`表示单选，或者`'multiple'`表示多选。
 
+
+
+
 #${prefix} label(Object)
-
-{{ use: partial-label-desc }}
-
+{{use: partial-label-desc}}
 ##${prefix} normal(Object)
-
-###${prefix} show(boolean) = false
-
-是否在普通状态下显示标签。
-
-###${prefix} textStyle(Object)
-
-普通状态下的标签文本样式。
-
-{{ use: partial-text-style(prefix=${prefix} + '###') }}
-
+{{use: partial-label(
+    prefix="##" + ${prefix},
+    formatter=true
+)}}
 ##${prefix} emphasis(Object)
+{{use: partial-label(
+    prefix="##" + ${prefix},
+    formatter=true
+)}}
 
-###${prefix} show(boolean) = false
 
-是否在高亮状态下显示标签。
-
-###${prefix} textStyle(Object)
-
-高亮状态下的标签文本样式。
-
-{{ use: partial-text-style(prefix=${prefix} + '###') }}
 
 
 #${prefix} itemStyle(Object)

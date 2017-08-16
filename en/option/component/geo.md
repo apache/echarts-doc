@@ -73,20 +73,19 @@ Area color in the map.
 Area color in the map.
 {{ use: partial-item-style(prefix='####') }}
 
+
 ### label(Object)
-Label style of this region.
+{{use: partial-label-desc}}
 #### normal(Object)
-##### show(boolean) = false
-Whether to show label in normal state.
-##### textStyle(Object)
-Text style of label in normal state.
-{{ use: partial-text-style(prefix='#####') }}
+{{use: partial-label(
+    prefix="####",
+    formatter=true
+)}}
 #### emphasis(Object)
-##### show(boolean) = false
-Whether to show label in emphasized state.
-##### textStyle(Object)
-Text style of label in emphasized state.
-{{ use: partial-text-style(prefix='#####') }}
+{{use: partial-label(
+    prefix="####",
+    formatter=true
+)}}
 
 
 

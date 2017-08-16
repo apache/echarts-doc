@@ -72,24 +72,29 @@
 地图区域的颜色。
 {{ use: partial-item-style(prefix='####') }}
 
-### label(Object)
-该数据所在区域的标签样式设置
-#### normal(Object)
-##### show(boolean) = false
-是否在普通状态下显示标签。
-##### textStyle(Object)
-普通状态下的标签文本样式。
-{{ use: partial-text-style(prefix='#####') }}
-#### emphasis(Object)
-##### show(boolean) = false
-是否在高亮状态下显示标签。
-##### textStyle(Object)
-高亮状态下的标签文本样式。
-{{ use: partial-text-style(prefix='#####') }}
-
 {{use: partial-tooltip-in-series-data(
     galleryViewPath=${galleryViewPath}
 )}}
+
+
+## label(Object)
+{{use: partial-label-desc}}
+### normal(Object)
+{{use: partial-label(
+    prefix="###",
+    defaultPosition="'bottom'",
+    formatter=true,
+    noAlign=true,
+    noVerticalAlign=true
+)}}
+### emphasis(Object)
+{{use: partial-label(
+    prefix="###",
+    formatter=true,
+    noAlign=true,
+    noVerticalAlign=true
+)}}
+
 
 {{use: partial-marker(
     prefix="#",

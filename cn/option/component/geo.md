@@ -73,20 +73,19 @@ geo 区域的颜色也可以被 map series 所控制，参见 [series-map.geoInd
 地图区域的颜色。
 {{ use: partial-item-style(prefix='####') }}
 
+
 ### label(Object)
-该区域的标签样式设置
+{{use: partial-label-desc}}
 #### normal(Object)
-##### show(boolean) = false
-是否在普通状态下显示标签。
-##### textStyle(Object)
-普通状态下的标签文本样式。
-{{ use: partial-text-style(prefix='#####') }}
+{{use: partial-label(
+    prefix="####",
+    formatter=true
+)}}
 #### emphasis(Object)
-##### show(boolean) = false
-是否在高亮状态下显示标签。
-##### textStyle(Object)
-高亮状态下的标签文本样式。
-{{ use: partial-text-style(prefix='#####') }}
+{{use: partial-label(
+    prefix="####",
+    formatter=true
+)}}
 
 
 
