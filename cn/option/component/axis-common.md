@@ -82,7 +82,7 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 
 
 <!-- Overwrite color -->
-###${prefix} color(Color|Function)
+##${prefix} color(Color|Function)
 
 刻度标签文字的颜色，默认取 [axisLine.lineStyle.color](~${componentType}.axisLine.lineStyle.color)。支持回调函数，格式如下
 

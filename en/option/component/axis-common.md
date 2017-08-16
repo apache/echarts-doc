@@ -94,7 +94,7 @@ Whether to show the label of the max tick. Optional values: `true`, `false`, `nu
 
 
 <!-- Overwrite color -->
-###${prefix} color(Color|Function)
+##${prefix} color(Color|Function)
 
 Color of axis label is set to be [axisLine.lineStyle.color](~${componentType}.axisLine.lineStyle.color) by default. Callback function is supported, in the following format:
 
