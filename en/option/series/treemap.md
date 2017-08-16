@@ -523,12 +523,22 @@ This can hide the details of nodes when the rectangular area is not large enough
 
 ##${prefix} normal(Object)
 
-{{use:partial-treemap-label(prefix=${prefix} + "##")}}
+{{use:partial-label(
+    prefix=${prefix} + "##",
+    defaultPosition="'inside'",
+    formatter=true,
+    ellipsis=true
+)}}
 
 
 ##${prefix} emphasis(Object)
 
-{{use:partial-treemap-label(prefix=${prefix} + "##")}}
+{{use:partial-label(
+    prefix=${prefix} + "##",
+    defaultPosition="'inside'",
+    formatter=true,
+    ellipsis=true
+)}}
 
 
 #${prefix} upperLabel(Object)
@@ -550,7 +560,12 @@ See:
 
 ##${prefix} normal(Object)
 
-{{use:partial-treemap-label(prefix=${prefix} + "##")}}
+{{use:partial-label(
+    prefix=${prefix} + "##",
+    defaultPosition="'inside'",
+    formatter=true,
+    ellipsis=true
+)}}
 
 ###${prefix} height(number) = 20
 
@@ -559,7 +574,12 @@ Height of label area.
 
 ##${prefix} emphasis(Object)
 
-{{use:partial-treemap-label(prefix=${prefix} + "##")}}
+{{use:partial-label(
+    prefix=${prefix} + "##",
+    defaultPosition="'inside'",
+    formatter=true,
+    ellipsis=true
+)}}
 
 
 #${prefix} itemStyle(Object)
@@ -682,28 +702,5 @@ If all of the border/gaps are set with the same color, confusion might occur whe
 See the [example](${galleryEditorPath}doc-example/treemap-borderColor&edit=1&reset=1). Noticed that the child rectangles in the red area are in the deeper level than rectangles that are saparated by white gap. So in the red area, basically we set gap color with red, and use `borderColorSaturation` to lift the saturation.
 
 
-
-
-
-{{ target: partial-treemap-label }}
-
-{{use:partial-label(
-    prefix=${prefix},
-    defaultPosition="'inside'",
-    formatter=true,
-    noTextStyle=true
-)}}
-
-#${prefix} textStyle(Object)
-
-##${prefix} ellipsis(boolean) = true
-
-When the text is overflow the rectangle boundary, whether to replace the excess part with apostrophe.
-
-
-{{use:partial-text-style(
-    prefix=${prefix} + '#',
-    defaultColor="'#fff'"
-)}}
 
 

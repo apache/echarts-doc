@@ -22,10 +22,21 @@ ${name}图形上的文本标签，可用于说明图形的一些数据信息，�
 {{use:partial-1d-data-label-formatter}}
 {{ /if }}
 
+
 {{ if: !${noTextStyle} }}
-#${prefix} textStyle(Object)
 标签的字体样式。
-{{ use:partial-text-style(prefix=${prefix} + '#') }}
+{{ use:partial-text-style(
+    prefix=${prefix},
+    noAlign=${noAlign},
+    noVerticalAlign=${noVerticalAlign}
+) }}
+{{ /if }}
+
+
+{{ if: ${ellipsis} }}
+#${prefix} ellipsis(boolean) = true
+
+当文字超出的时候，是否超出部分替换为省略号。
 {{ /if }}
 
 

@@ -22,11 +22,22 @@ Whether to move text slightly. For example: `[30, 40]` means move `30` horizonta
 {{use:partial-1d-data-label-formatter}}
 {{ /if }}
 
+
 {{ if: !${noTextStyle} }}
-#${prefix} textStyle(Object)
-Label font style.
-{{ use:partial-text-style(prefix=${prefix} + '#') }}
+{{ use:partial-text-style(
+    prefix=${prefix},
+    noAlign=${noAlign},
+    noVerticalAlign=${noVerticalAlign}
+) }}
 {{ /if }}
+
+
+{{ if: ${ellipsis} }}
+#${prefix} ellipsis(boolean) = true
+
+When the text is overflow, whether to replace the excess part with apostrophe.
+{{ /if }}
+
 
 
 {{ target:partial-label-position }}
