@@ -75,8 +75,7 @@ For more details, see [Rich Text](tutorial.html#Rich%20Text) please.
 ##${prefix} <user defined style name>(Object)
 
 {{use:partial-text-style-base-item(
-    prefix=${prefix} + '##',
-    inRichToken=true
+    prefix=${prefix} + '##'
 )}}
 
 {{ /if }}
@@ -224,17 +223,13 @@ Shadow Y offset of the text block.
 {{ /if }}
 
 
-
-
-
-{{ if: ${inRichToken} }}
-
 #${prefix} width(number)
 
 Width of the text block. It is the width of the text by default. In most cases, there is no need to specify it. You may want to use it in some cases like make simple table or using background image (see `backgroundColor`).
 
 Notice, `width` and `height` specifies the width and height of the content, without `padding`.
 
+Notice, `width` and `height` only work when `rich` specified.
 
 #${prefix} height(number)
 
@@ -242,8 +237,7 @@ Height of the text block. It is the width of the text by default. You may want t
 
 Notice, `width` and `height` specifies the width and height of the content, without `padding`.
 
-
-{{ /if }}
+Notice, `width` and `height` only work when `rich` specified.
 
 
 #${prefix} textBorderColor(string)='transparent'

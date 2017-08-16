@@ -75,8 +75,7 @@ rich: {
 ##${prefix} <user defined style name>(Object)
 
 {{use:partial-text-style-base-item(
-    prefix=${prefix} + '##',
-    inRichToken=true
+    prefix=${prefix} + '##'
 )}}
 
 {{ /if }}
@@ -219,16 +218,13 @@ backgroundColor: {
 {{ /if }}
 
 
-
-
-
-{{ if: ${inRichToken} }}
-
 #${prefix} width(number)
 
 文字块的宽度。一般不用指定，不指定则自动是文字的宽度。在想做表格项或者使用图片（参见 `backgroundColor`）时，可能会使用它。
 
 注意，文字块的 `width` 和 `height` 指定的是内容高宽，不包含 `padding`。
+
+注意，如果不定义 `rich` 属性，则不能指定 `width` 和 `height`。
 
 #${prefix} height(number)
 
@@ -236,8 +232,7 @@ backgroundColor: {
 
 注意，文字块的 `width` 和 `height` 指定的是内容高宽，不包含 `padding`。
 
-{{ /if }}
-
+注意，如果不定义 `rich` 属性，则不能指定 `width` 和 `height`。
 
 #${prefix} textBorderColor(string)='transparent'
 

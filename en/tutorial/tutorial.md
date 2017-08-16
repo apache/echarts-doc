@@ -10,3 +10,4 @@
 {{ import: event }}
 {{ import: drag-example }}
 {{ import: custom-series }}
+{{ import: rich-text }}
