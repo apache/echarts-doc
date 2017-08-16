@@ -102,7 +102,11 @@ formatter: function (value) {
     return value + 'km/h';
 }
 ```
-{{ use: partial-text-style(prefix="##") }}
+{{ use: partial-text-style(
+    prefix="##",
+    noAlign=true,
+    noVerticalAlign=true
+) }}
 
 
 ## pointer(Object)
@@ -133,7 +137,9 @@ formatter: function (value) {
 {{ use: partial-text-style(
     prefix="##",
     defaultColor = "'#333'",
-    defaultFontSize = 15
+    defaultFontSize = 15,
+    noAlign=true,
+    noVerticalAlign=true
 ) }}
 
 ## detail(Object)
@@ -164,7 +170,9 @@ formatter: function (value) {
 {{ use: partial-text-style(
     prefix="##",
     defaultColor = "'auto'",
-    defaultFontSize = 15
+    defaultFontSize = 15,
+    noAlign=true,
+    noVerticalAlign=true
 ) }}
 <!-- overwrite color -->
 #### color(Color) = 'auto'

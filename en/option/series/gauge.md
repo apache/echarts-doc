@@ -100,7 +100,11 @@ formatter: function (value) {
     return value + 'km/h';
 }
 ```
-{{ use: partial-text-style(prefix="##") }}
+{{ use: partial-text-style(
+    prefix="##",
+    noAlign=true,
+    noVerticalAlign=true
+) }}
 
 
 ## pointer(Object)
@@ -131,7 +135,9 @@ The offset position relative to the center of gauge chart. The first item of arr
 {{ use: partial-text-style(
     prefix="##",
     defaultColor = "'#333'",
-    defaultFontSize = 15
+    defaultFontSize = 15,
+    noAlign=true,
+    noVerticalAlign=true
 ) }}
 
 ## detail(Object)
@@ -153,7 +159,9 @@ The offset position relative to the center of gauge chart. The first item of arr
 {{ use: partial-text-style(
     prefix="##",
     defaultColor = "'auto'",
-    defaultFontSize = 15
+    defaultFontSize = 15,
+    noAlign=true,
+    noVerticalAlign=true
 ) }}
 <!-- overwrite color -->
 #### color(Color) = 'auto'
