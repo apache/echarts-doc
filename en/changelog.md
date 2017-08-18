@@ -51,6 +51,8 @@
 
 + [+] Supported [map.label.formatter](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-map.label.formatter), which enables using rich text in map series. See [Map Labels](https://ecomfe.github.io/echarts-examples/public/editor.html?c=map-labels).
 
++ [+] Supported [title.borderRadius](http://echarts.baidu.com/option.html#title.borderRadius) and [legend.borderRadius](http://echarts.baidu.com/option.html#legend.borderRadius), which enables round corner of background or border in `title` and `legend` component.
+
 + [^] Fixed that error thrown when using shadow in pie series in some version of IE. See [#5777](https://github.com/ecomfe/echarts/issues/5777).
 
 + [^] Fixed that name can not be obtained in `tooltip` when `nameMap` was used in map serise and there was no data in some areas. See [#5633](https://github.com/ecomfe/echarts/issues/5633).

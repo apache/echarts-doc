@@ -83,7 +83,12 @@ The gap between the main title and subtitle.
 
 {{use: partial-rect-layout(componentName="grid ")}}
 
-{{ use: partial-component-common-style(componentName="title", prefix='#', defaultBorderWidth="0")}}
+{{ use: partial-component-common-style(
+    componentName="title",
+    prefix='#',
+    defaultBorderWidth="0",
+    hasBorderRadius=true
+)}}
 
 
 

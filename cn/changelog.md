@@ -51,6 +51,8 @@
 
 + [+] 支持了 [map.label.formatter](http://echarts.baidu.com/option.html#series-map.label.formatter)，从而方便于在地图系列中使用富文本标签。参见：[地图标签](http://echarts.baidu.com/demo.html#map-labels)。
 
++ [+] 支持了 [title.borderRadius](http://echarts.baidu.com/option.html#title.borderRadius) 和 [legend.borderRadius](http://echarts.baidu.com/option.html#legend.borderRadius)，从而他们能绘制圆角的背景或边框。
+
 + [^] 修复了在 IE 某些版本中饼图和折线图中设置了阴影效果后偶见的异常。参见 [#5777](https://github.com/ecomfe/echarts/issues/5777)。
 
 + [^] 修复了地图中如果 `nameMap` 被设置且某些区域没有数据时，`tooltip` 中得不到区域名的问题。参见 [#5633](https://github.com/ecomfe/echarts/issues/5633)。

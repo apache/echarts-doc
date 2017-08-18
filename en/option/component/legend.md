@@ -155,7 +155,10 @@ Icon of the legend.
 Text style of legend.
 
 {{ use: partial-component-common-style(
-    componentName='legend', prefix='#', defaultBorderColor="'#ccc'"
+    componentName='legend',
+    prefix='#',
+    defaultBorderColor="'#ccc'",
+    hasBorderRadius=true
 ) }}
 
 

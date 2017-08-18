@@ -185,7 +185,7 @@ backgroundColor: {
 
 文字块边框宽度。
 
-#${prefix} borderRadius(number)=0
+#${prefix} borderRadius(number|Array)=0
 
 文字块的圆角。
 

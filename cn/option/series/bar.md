@@ -148,13 +148,10 @@
 柱条的描边类型，默认为实线，支持 `'dashed'`, `'dotted'`。
 
 {{ if: ${barBorderRadius} }}
-#${prefix} barBorderRadius(number|Array) = 0
-柱形边框圆角半径，单位px，支持传入数组分别指定柱形4个圆角半径。
-如:
-```
-barBorderRadius: 5, // 统一设置四个角的圆角大小
-barBorderRadius: [5, 5, 0, 0] //（顺时针左上，右上，右下，左下）
-```
+{{use: partial-border-radius(
+    propName: 'barBorderRadius',
+    prefix: ${prefix}
+)}}
 {{ /if }}
 
 {{ use:partial-style-shadow-opacity(prefix=${prefix}) }}

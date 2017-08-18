@@ -171,7 +171,12 @@ data: [{
 
 图例项的文本样式。
 
-{{ use: partial-component-common-style(componentName='图例', prefix='#', defaultBorderColor="'#ccc'") }}
+{{ use: partial-component-common-style(
+    componentName='图例',
+    prefix='#',
+    defaultBorderColor="'#ccc'",
+    hasBorderRadius=true
+) }}
 
 
 
