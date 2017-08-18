@@ -22,6 +22,20 @@ ECharts 3 中单个 echarts 实例中可以存在多个图例组件，会方便�
 
 参见 [滚动图例（垂直）](${galleryEditorPath}pie-legend&edit=1&reset=1) 或 [滚动图例（水平）](${galleryEditorPath}radar2&edit=1&reset=1)。
 
+当使用 `'scroll'` 时，这些使用这些设置进行细节配置：
++ [legend.scrollDataIndex](~legend.scrollDataIndex)
++ [legend.pageButtonItemGap](~legend.pageButtonItemGap)
++ [legend.pageButtonGap](~legend.pageButtonGap)
++ [legend.pageButtonPosition](~legend.pageButtonPosition)
++ [legend.pageFormatter](~legend.pageFormatter)
++ [legend.pageIcons](~legend.pageIcons)
++ [legend.pageIconColor](~legend.pageIconColor)
++ [legend.pageIconInactiveColor](~legend.pageIconInactiveColor)
++ [legend.pageIconSize](~legend.pageIconSize)
++ [legend.pageTextStyle](~legend.pageTextStyle)
++ [legend.animation](~legend.animation)
++ [legend.animationDurationUpdate](~legend.animationDurationUpdate)
+
 ## show(boolean) = true
 
 

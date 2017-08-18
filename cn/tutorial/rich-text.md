@@ -3,9 +3,7 @@
 
 # 富文本标签
 
-在许多地方（如图、轴的标签等）都可以使用富文本标签。富文本标签中，支持对部分文字采用特定的样式，如设置颜色、字体大小、字体背景、图片、字体块左右上下对齐方式等，从而可以做出丰富的效果。
-
-例如：
+在许多地方（如图、轴的标签等）都可以使用富文本标签。例如：
 
 ~[800x400](${galleryViewPath}pie-rich-text&edit=1&reset=1)
 
@@ -23,17 +21,32 @@
 
 <br>
 
+
+原先 echarts 中的文本标签，只能对整块统一进行样式设置，并且仅仅支持颜色和字体的设置，从而导致不易于制作表达能力更强的文字描述信息。
+
+echarts v3.7 以后，支持了富文本标签，能够：
+
++ 能够定制文本块整体的样式（如背景、边框、阴影等）、位置、旋转等。
++ 能够对文本块中个别片段定义样式（如颜色、字体、高宽、背景、阴影等）、对齐方式等。
++ 能够在文本中使用图片做小图标或者背景。
++ 特定组合以上的规则，可以做出简单表格、分割线等效果。
+
+
 ---
 
-**富文本标签的使用方式**
+**文本样式相关的配置项**
 
-echarts 提供了丰富的文本标签设置属性，包括：
+echarts 提供了丰富的文本标签配置项，包括：
 
 + 字体基本样式设置：`fontStyle`, `fontWeight`, `fontSize`, `fontFamily`；
 + 字体颜色和修饰：`color`, `textBorderColor`, `textBorderWidth`, `textShadowColor`, `textShadowBlur`, `textShadowOffsetX`, `textShadowOffsetY`；
 + 文字块大小和对齐：`lineHeight`, `width`, `height`, `align`, `verticalAlign`, `padding`；
 + 文字块颜色、图片和修饰：`backgroundColor`, `borderColor`, `borderWidth`, `borderRadius`, `shadowColor`, `shadowBlur`, `shadowOffsetX`, `shadowOffsetY`。
 
+
+---
+
+**定制文本片段**
 
 可以在各处的 `rich` 属性中定义细节的自定义文本片段样式。例如 [series-bar.label.normal.rich](option.html#series-bar.label.normal.rich)
 

@@ -3,9 +3,7 @@
 
 # Rich Text
 
-Rich text can be used in labels of series and axis and so on. It is supported to specifty styles (like font, color, background image, align) to part of text.
-
-For example:
+Rich text can be used in labels of series, axis or other components. For example:
 
 ~[800x400](${galleryViewPath}pie-rich-text&edit=1&reset=1)
 
@@ -23,9 +21,20 @@ More examples:
 
 <br>
 
+Before v3.7, the style options was only able to adopted to the whole label text block, and only color and font can be configured, which restricted the expressability of text descriptions.
+
+Since v3.7, rich text has been supported:
+
++ Box styles (background, border, shadow, etc.), rotation, position of a text block can be specified.
++ Styles (color, font, width/height, background, shadow, etc.) and alignment can be adopted to some snippets (some parts of text) in a text block.
++ Image can be used in text as icon or background.
++ Combine these configurations, some special effects can be made, such as simple table, horizontal rule (hr).
+
+
+
 ---
 
-**How to use rich text?**
+**Options about Text**
 
 echarts provides plenty of text options, including:
 
@@ -34,6 +43,10 @@ echarts provides plenty of text options, including:
 + Size and align of text block: `lineHeight`, `width`, `height`, `align`, `verticalAlign`, `padding`;
 + Color, image and decoration of text block: `backgroundColor`, `borderColor`, `borderWidth`, `borderRadius`, `shadowColor`, `shadowBlur`, `shadowOffsetX`, `shadowOffsetY`.
 
+
+---
+
+**Customize Snippets**
 
 User can defined styles in `rich` property everywhere. For example, [series-bar.label.normal.rich](option.html#series-bar.label.normal.rich)
 
@@ -70,3 +83,9 @@ Then these styles can be apapted in text by adding some marker in text, like `{s
 ```
 
 `'\n'` is the newline character.
+
+
+
+
+
+

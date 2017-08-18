@@ -20,6 +20,21 @@ Type of legend. Optional values:
 
 See [vertically scrollable legend](${galleryEditorPath}pie-legend&edit=1&reset=1) or [horizontally scrollable legend](${galleryEditorPath}radar2&edit=1&reset=1).
 
+When `'scroll'` used, these options below can be used for detailed configuration:
+
++ [legend.scrollDataIndex](~legend.scrollDataIndex)
++ [legend.pageButtonItemGap](~legend.pageButtonItemGap)
++ [legend.pageButtonGap](~legend.pageButtonGap)
++ [legend.pageButtonPosition](~legend.pageButtonPosition)
++ [legend.pageFormatter](~legend.pageFormatter)
++ [legend.pageIcons](~legend.pageIcons)
++ [legend.pageIconColor](~legend.pageIconColor)
++ [legend.pageIconInactiveColor](~legend.pageIconInactiveColor)
++ [legend.pageIconSize](~legend.pageIconSize)
++ [legend.pageTextStyle](~legend.pageTextStyle)
++ [legend.animation](~legend.animation)
++ [legend.animationDurationUpdate](~legend.animationDurationUpdate)
+
 
 ## show(boolean) = true
 
