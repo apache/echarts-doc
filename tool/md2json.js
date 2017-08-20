@@ -34,11 +34,11 @@ function convert(opts, cb) {
         // ETPL rendering.
         // I know this approach is ugly, but I am sorry that I have no time to make
         // a pull request to ETPL yet.
-        var originalProto = [];
         Object.keys(tplEnv).forEach(function (key) {
             var originalItem = [key];
-            Object.prototype.hasOwnProperty(key) && originalItem.push(Object.prototype[key]);
-            originalProto.push(originalItem);
+            if (Object.prototype.hasOwnProperty(key)) {
+                throw new Error(key + ' can not be used in tpl config');
+            }
 
             Object.prototype[key] = tplEnv[key];
         });
@@ -46,13 +46,8 @@ function convert(opts, cb) {
         var mdStr = etplEngine.getRenderer(entry)({});
 
         // Restore the global variables.
-        originalProto.forEach(function (originalItem) {
-            if (originalItem.length === 1) {
-                delete Object.prototype[originalItem[0]];
-            }
-            else {
-                Object.prototype[originalItem[0]] = originalItem[1];
-            }
+        Object.keys(tplEnv).forEach(function (key) {
+            delete Object.prototype[key];
         });
 
         // Markdown to JSON
