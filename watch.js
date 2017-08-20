@@ -32,6 +32,7 @@ function onChange(event) {
         console.log('File changed, auto compile ...');
         setTimeout(function () {
             execBuild(); // Writing may be not finished yet.
+            console.log('Done.');
         }, 1000);
     }
 }

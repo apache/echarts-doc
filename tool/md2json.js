@@ -27,7 +27,34 @@ function convert(opts, cb) {
 
         // Render tpl
         etplEngine.compile(mdTpl.join('\n'));
-        var mdStr = etplEngine.getRenderer(entry)(tplEnv);
+
+        // ETPL do not support global variables, without which we have to pass
+        // parameters like `galleryViewPath` each time `{{use: ...}}` used, which
+        // is easy to forget. So we mount global variables on Object prototype when
+        // ETPL rendering.
+        // I know this approach is ugly, but I am sorry that I have no time to make
+        // a pull request to ETPL yet.
+        var originalProto = [];
+        Object.keys(tplEnv).forEach(function (key) {
+            var originalItem = [key];
+            Object.prototype.hasOwnProperty(key) && originalItem.push(Object.prototype[key]);
+            originalProto.push(originalItem);
+
+            Object.prototype[key] = tplEnv[key];
+        });
+
+        var mdStr = etplEngine.getRenderer(entry)({});
+
+        // Restore the global variables.
+        originalProto.forEach(function (originalItem) {
+            if (originalItem.length === 1) {
+                delete Object.prototype[originalItem[0]];
+            }
+            else {
+                Object.prototype[originalItem[0]] = originalItem[1];
+            }
+        });
+
         // Markdown to JSON
         var schema = mdToJsonSchema(mdStr, maxDepth, opts.imageRoot);
         // console.log(mdStr);
