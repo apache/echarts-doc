@@ -11,10 +11,12 @@ Whether to show label.
 #${prefix} distance(number) = 5
 Distance to the host graphic element. Works when position is string value (like `'top'`、`'insideRight'`).
 
-See: [label position](${galleryViewPath}doc-example/label-position).
+See: [label position](${galleryEditorPath}doc-example/label-position).
 
 #${prefix} rotate(number) = ${defaultRotate}
 Rotate label, from -90 degree to 90, positive value represents rotate anti-clockwise.
+
+See: [label rotation](${galleryEditorPath}bar-label-rotation).
 
 #${prefix} offset(Array)
 Whether to move text slightly. For example: `[30, 40]` means move `30` horizontally and move `40` vertically.
