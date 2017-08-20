@@ -38,35 +38,42 @@
 
 例如：
 
-```
-rich: {
-    a: {
-        color: 'red',
-        lineHeight: 10
-    },
-    b: {
-        backgroundColor: {
-            image: 'xxx/xxx.jpg'
-        },
-        height: 40
-    },
-    x: {
-        fontSize: 18,
-        fontFamily: 'Microsoft YaHei',
-        borderColor: '#449933',
-        borderRadius: 4
-    },
-    ...
+```js
+label: {
+    normal: {
+
+        // 在文本中，可以对部分文本采用 rich 中定义样式。
+        // 这里需要在文本中使用标记符号：
+        // `{styleName|text content text content}` 标记样式名。
+        // 注意，换行仍是使用 '\n'。
+        formatter: [
+            '{a|这段文本采用样式a}',
+            '{b|这段文本采用样式b}这段用默认样式{x|这段用样式x}'
+        ].join('\n'),
+
+        rich: {
+            a: {
+                color: 'red',
+                lineHeight: 10
+            },
+            b: {
+                backgroundColor: {
+                    image: 'xxx/xxx.jpg'
+                },
+                height: 40
+            },
+            x: {
+                fontSize: 18,
+                fontFamily: 'Microsoft YaHei',
+                borderColor: '#449933',
+                borderRadius: 4
+            },
+            ...
+        }
+    }
 }
 ```
 
-于是，在文本中，可以对部分文本采用这些样式。这里需要在文本中使用标记符号 `{styleName|text content text content}` 标记样式名。例如，文本是：
-
-```js
-'{a|这段文本采用样式a}\n{b|这段文本采用样式b}这段用默认样式{c|这段用样式c}'
-```
-
-注意，换行仍是使用 `'\n'`。
 
 详情参见教程：[富文本标签](tutorial.html#%E5%AF%8C%E6%96%87%E6%9C%AC%E6%A0%87%E7%AD%BE)
 

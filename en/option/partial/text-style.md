@@ -38,35 +38,42 @@
 
 "Rich text styles" can be defined in this `rich` property. For example:
 
-```
-rich: {
-    a: {
-        color: 'red',
-        lineHeight: 10
-    },
-    b: {
-        backgroundColor: {
-            image: 'xxx/xxx.jpg'
-        },
-        height: 40
-    },
-    x: {
-        fontSize: 18,
-        fontFamily: 'Microsoft YaHei',
-        borderColor: '#449933',
-        borderRadius: 4
-    },
-    ...
+```js
+label: {
+    normal: {
+
+        // Styles defined in 'rich' can be applied to some fregments
+        // of text by adding some markers to those fregment, like
+        // `{styleName|text content text content}`.
+        // `'\n'` is the newline character.
+        formatter: [
+            '{a|Style "a" is applied to this snippet}'
+            '{b|Style "b" is applied to this snippet}This snippet use default style{x|use style "x"}'
+        ].join('\n'),
+
+        rich: {
+            a: {
+                color: 'red',
+                lineHeight: 10
+            },
+            b: {
+                backgroundColor: {
+                    image: 'xxx/xxx.jpg'
+                },
+                height: 40
+            },
+            x: {
+                fontSize: 18,
+                fontFamily: 'Microsoft YaHei',
+                borderColor: '#449933',
+                borderRadius: 4
+            },
+            ...
+        }
+    }
 }
 ```
 
-Then these styles can be apapted in text by adding some marker in text, like `{styleName|text content text content}`. For example:
-
-```js
-'{a|Style "a" is adapted to this snippet}\n{b|Style "b" is adapted to this snippet}This snippet use default style{c|use style "c"}'
-```
-
-`'\n'` is the newline character.
 
 For more details, see [Rich Text](tutorial.html#Rich%20Text) please.
 
@@ -156,14 +163,14 @@ Options are:
 
 #${prefix} lineHeight(number)
 
-Line height of the text snippet.
+Line height of the text fregment.
 
 
 {{ if: !${noBox} }}
 
 #${prefix} backgroundColor(string|Object)='transparent'
 
-Background color of the text snippet.
+Background color of the text fregment.
 
 Can be color string, like `'#123234'`, `'red'`, `rgba(0,23,11,0.3)'`.
 
@@ -184,19 +191,19 @@ auto adapted by default.
 
 #${prefix} borderColor(string)='transparent'
 
-Border color of the text snippet.
+Border color of the text fregment.
 
 #${prefix} borderWidth(number)=0
 
-Border width of the text snippet.
+Border width of the text fregment.
 
 #${prefix} borderRadius(number)=0
 
-Border radius of the text snippet.
+Border radius of the text fregment.
 
 #${prefix} padding(number|Array)=0
 
-Padding of the text snippet, for example:
+Padding of the text fregment, for example:
 
 + `padding: [3, 4, 5, 6]`: represents padding of `[top, right, bottom, left]`.
 + `padding: 4`: represents `padding: [4, 4, 4, 4]`.
@@ -229,7 +236,7 @@ Width of the text block. It is the width of the text by default. In most cases, 
 
 Notice, `width` and `height` specifies the width and height of the content, without `padding`.
 
-`width` can also be percent string, like `'100%'`, which represents the percent of `contentWidth` (that is, the width without `padding`) of its container box. It is based on `contentWidth` because that each text snippet is layout based on the `content box`, where it makes no sense that calculating width based on `outerWith` in prectice.
+`width` can also be percent string, like `'100%'`, which represents the percent of `contentWidth` (that is, the width without `padding`) of its container box. It is based on `contentWidth` because that each text fregment is layout based on the `content box`, where it makes no sense that calculating width based on `outerWith` in prectice.
 
 
 Notice, `width` and `height` only work when `rich` specified.
