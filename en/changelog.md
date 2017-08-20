@@ -21,6 +21,7 @@
     + `series-gauge.title.textStyle`
     + `series-gauge.detail.textStyle`
     + `series-treemap.upperLabel[normal|emphasis].textStyle`
+    + `series-graph.edgeLabel[normal|emphasis].textStyle`
     + `calendar.dayLabel.textStyle`
     + `calendar.monthLabel.textStyle`
     + `calendar.yearLabel.textStyle`

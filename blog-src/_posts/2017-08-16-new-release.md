@@ -59,10 +59,15 @@ echarts v3.7 以后，支持了富文本标签，能够：
 
 为了支持这些样式设置，echarts 提供了丰富的文本配置属性，包括：
 
-+ 字体基本样式设置：`fontStyle`, `fontWeight`, `fontSize`, `fontFamily`；
-+ 字体颜色和修饰：`color`, `textBorderColor`, `textBorderWidth`, `textShadowColor`, `textShadowBlur`, `textShadowOffsetX`, `textShadowOffsetY`；
-+ 文字块大小和对齐：`lineHeight`, `width`, `height`, `align`, `verticalAlign`, `padding`；
-+ 文字块颜色、图片和修饰：`backgroundColor`, `borderColor`, `borderWidth`, `borderRadius`, `shadowColor`, `shadowBlur`, `shadowOffsetX`, `shadowOffsetY`。
++ 字体基本样式设置：`fontStyle`, `fontWeight`, `fontSize`, `fontFamily`。
++ 文字颜色：`color`。
++ 文字描边：`textBorderColor`, `textBorderWidth`。
++ 文字阴影：`textShadowColor`, `textShadowBlur`, `textShadowOffsetX`, `textShadowOffsetY`。
++ 文本块或文本片段大小：`lineHeight`, `width`, `height`, `padding`。
++ 文本块或文本片段的对齐：`align`, `verticalAlign`。
++ 文本块或文本片段的边框、背景（颜色或图片）：`backgroundColor`, `borderColor`, `borderWidth`, `borderRadius`。
++ 文本块或文本片段的阴影：`shadowColor`, `shadowBlur`, `shadowOffsetX`, `shadowOffsetY`。
++ 文本块的位置和旋转：`position`，`distance`, `rotate`。
 
 
 详情参见教程：[富文本标签](http://echarts.baidu.com/tutorial.html#%E5%AF%8C%E6%96%87%E6%9C%AC%E6%A0%87%E7%AD%BE)
@@ -123,6 +128,8 @@ echarts v3.7 以后，支持了富文本标签，能够：
   <li>series-gauge.title<del>.textStyle</del>.xxx => series-gauge.title.xxx</li>
   <li>series-gauge.detail<del>.textStyle</del>.xxx => series-gauge.detail.xxx</li>
   <li>series-treemap.upperLabel[normal|emphasis]<del>.textStyle</del>.xxx => series-treemap.upperLabel[normal|emphasis].xxx</li>
+  <li>calendar.dayLabel<del>.textStyle</del>.xxx => calendar.dayLabel.xxx</li>
+  <li>series-graph.edgeLabel[normal|emphasis]<del>.textStyle</del>.xxx => series-graph.edgeLabel[normal|emphasis].xxx</li>
   <li>calendar.dayLabel<del>.textStyle</del>.xxx => calendar.dayLabel.xxx</li>
   <li>calendar.monthLabel<del>.textStyle</del>.xxx => calendar.monthLabel.xxx</li>
   <li>calendar.yearLabel<del>.textStyle</del>.xxx => calendar.yearLabel.xxx</li>
