@@ -42,7 +42,7 @@
 
 + [+] Supported that do not use [coordinate system](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.coordinateSystems) in `custom series`.
 
-+ [+] Supported rotation and alignment of label in bar chart. See [rotate](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-bar.label.normal.rotate), [align](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-bar.label.normal.align), [verticalAlign](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-bar.label.normal.verticalAlign). See [#5309](https://github.com/ecomfe/echarts/issues/5309).
++ [+] Supported rotation and alignment of label in bar chart. See [rotate](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-bar.label.normal.rotate), [align](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-bar.label.normal.align), [verticalAlign](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-bar.label.normal.verticalAlign). See [example](https://ecomfe.github.io/echarts-examples/public/editor.html?c=bar-label-rotation). See [#5309](https://github.com/ecomfe/echarts/issues/5309).
 
 + [+] Supported [radar.indicator.color](https://ecomfe.github.io/echarts-doc/public/en/option.html#radar.indicator.color), which enables setting different color for each indicator of radar chart. See [#6128](https://github.com/ecomfe/echarts/issues/6128).
 
