@@ -8,6 +8,10 @@ Text label of ${name}, to explain some data information about graphic item like 
 Whether to show label.
 #${prefix} position(string|Array) = ${defaultPosition}
 {{use:partial-label-position}}
+#${prefix} distance(number) = 5
+Distance to the host graphic element. Works when position is string value (like `'top'`、`'insideRight'`).
+
+See: [label position](${galleryViewPath}doc-example/label-position).
 
 #${prefix} rotate(number) = ${defaultRotate}
 Rotate label, from -90 degree to 90, positive value represents rotate anti-clockwise.
@@ -74,3 +78,5 @@ Label position.
 + 'insideLeftBottom'
 + 'insideRightTop'
 + 'insideRightBottom'
+
+See: [label position](${galleryViewPath}doc-example/label-position).

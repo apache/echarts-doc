@@ -8,6 +8,11 @@ ${name}图形上的文本标签，可用于说明图形的一些数据信息，�
 是否显示标签。
 #${prefix} position(string|Array) = ${defaultPosition}
 {{use:partial-label-position}}
+#${prefix} distance(number) = 5
+距离图形元素的距离。当 position 为字符描述值（如 `'top'`、`'insideRight'`）时候有效。
+
+参见：[label position](${galleryViewPath}doc-example/label-position)。
+
 
 #${prefix} rotate(number) = ${defaultRotate}
 标签旋转。从 -90 度到 90 度。正值是逆时针。
@@ -73,3 +78,5 @@ ${name}图形上的文本标签，可用于说明图形的一些数据信息，�
 + 'insideBottomLeft'
 + 'insideTopRight'
 + 'insideBottomRight'
+
+参见：[label position](${galleryViewPath}doc-example/label-position)。
