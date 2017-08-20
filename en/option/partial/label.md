@@ -36,7 +36,8 @@ Whether to move text slightly. For example: `[30, 40]` means move `30` horizonta
     defaultColor=${defaultColor},
     defaultFontSize=${defaultFontSize},
     noRich=${noRich},
-    noBox=${noBox}
+    noBox=${noBox},
+    enableAutoColor=true
 ) }}
 {{ /if }}
 

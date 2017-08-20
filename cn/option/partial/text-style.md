@@ -28,7 +28,8 @@
     defaultVerticalAlign=${defaultVerticalAlign},
     noAlign=${noAlign},
     noVerticalAlign=${noVerticalAlign},
-    noBox=${noBox}
+    noBox=${noBox},
+    enableAutoColor=${enableAutoColor}
 )}}
 
 {{ if: !${noRich} }}
@@ -82,7 +83,8 @@ label: {
 ##${prefix} <user defined style name>(Object)
 
 {{use:partial-text-style-base-item(
-    prefix=${prefix} + '##'
+    prefix=${prefix} + '##',
+    enableAutoColor=${enableAutoColor}
 )}}
 
 {{ /if }}
@@ -98,6 +100,10 @@ label: {
 #${prefix} color(Color)=${defaultColor|default('"#fff"')}
 
 ${name}文字的颜色。
+
+{{if: ${enableAutoColor} }}
+{{ use: partial-text-style-auto-color-desc }}
+{{/if}}
 
 
 #${prefix} fontStyle(string)='normal'
@@ -184,9 +190,17 @@ backgroundColor: {
 
 当使用图片的时候，可以使用 `width` 或 `height` 指定高宽，也可以不指定自适应。
 
+{{if: ${enableAutoColor} }}
+{{ use: partial-text-style-auto-color-desc }}
+{{/if}}
+
 #${prefix} borderColor(string)='transparent'
 
 文字块边框颜色。
+
+{{if: ${enableAutoColor} }}
+{{ use: partial-text-style-auto-color-desc }}
+{{/if}}
 
 #${prefix} borderWidth(number)=0
 
@@ -247,6 +261,10 @@ backgroundColor: {
 
 文字本身的描边颜色。
 
+{{if: ${enableAutoColor} }}
+{{ use: partial-text-style-auto-color-desc }}
+{{/if}}
+
 #${prefix} textBorderWidth(number)=0
 
 文字本身的描边宽度。
@@ -266,3 +284,8 @@ backgroundColor: {
 #${prefix} textShadowOffsetY(number)=0
 
 文字本身的阴影 Y 偏移。
+
+
+
+{{ target: partial-text-style-auto-color-desc }}
+如果设置为 `'auto'`，则为视觉映射得到的颜色，如系列色。

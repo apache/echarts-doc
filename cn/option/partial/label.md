@@ -37,7 +37,8 @@ ${name}图形上的文本标签，可用于说明图形的一些数据信息，�
     defaultColor=${defaultColor},
     defaultFontSize=${defaultFontSize},
     noRich=${noRich},
-    noBox=${noBox}
+    noBox=${noBox},
+    enableAutoColor=true
 ) }}
 {{ /if }}
 

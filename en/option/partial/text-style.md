@@ -30,7 +30,8 @@
     defaultVerticalAlign=${defaultVerticalAlign},
     noAlign=${noAlign},
     noVerticalAlign=${noVerticalAlign},
-    noBox=${noBox}
+    noBox=${noBox},
+    enableAutoColor=${enableAutoColor}
 )}}
 
 {{ if: !${noRich} }}
@@ -82,7 +83,8 @@ For more details, see [Rich Text](tutorial.html#Rich%20Text) please.
 ##${prefix} <user defined style name>(Object)
 
 {{use:partial-text-style-base-item(
-    prefix=${prefix} + '##'
+    prefix=${prefix} + '##',
+    enableAutoColor=${enableAutoColor}
 )}}
 
 {{ /if }}
@@ -98,6 +100,10 @@ For more details, see [Rich Text](tutorial.html#Rich%20Text) please.
 #${prefix} color(Color)=${defaultColor|default('"#fff"')}
 
 ${name} text color.
+
+{{if: ${enableAutoColor} }}
+{{ use: partial-text-style-auto-color-desc }}
+{{/if}}
 
 
 #${prefix} fontStyle(string)='normal'
@@ -189,9 +195,17 @@ backgroundColor: {
 `width` or `height` can be specified when using background image, or
 auto adapted by default.
 
+{{if: ${enableAutoColor} }}
+{{ use: partial-text-style-auto-color-desc }}
+{{/if}}
+
 #${prefix} borderColor(string)='transparent'
 
 Border color of the text fregment.
+
+{{if: ${enableAutoColor} }}
+{{ use: partial-text-style-auto-color-desc }}
+{{/if}}
 
 #${prefix} borderWidth(number)=0
 
@@ -254,6 +268,11 @@ Notice, `width` and `height` only work when `rich` specified.
 
 Storke color of the text.
 
+{{if: ${enableAutoColor} }}
+{{ use: partial-text-style-auto-color-desc }}
+{{/if}}
+
+
 #${prefix} textBorderWidth(number)=0
 
 Storke line width of the text.
@@ -274,3 +293,9 @@ Shadow X offset of the text itself.
 
 Shadow Y offset of the text itself.
 
+
+
+
+
+{{ target: partial-text-style-auto-color-desc }}
+If set as `'auto'`, the color will assigned as visual color, such as series color.
