@@ -148,6 +148,12 @@ ${name}文字的字体大小
 + `'left'`
 + `'center'`
 + `'right'`
+
+{{ use: partial-text-style-rich-inherit(
+    name='align',
+    value='right'
+) }}
+
 {{ /if }}
 
 {{ if: !${noVerticalAlign} }}
@@ -159,6 +165,12 @@ ${name}文字的字体大小
 + `'top'`
 + `'middle'`
 + `'bottom'`
+
+{{ use: partial-text-style-rich-inherit(
+    name='verticalAlign',
+    value='bottom'
+) }}
+
 {{ /if }}
 
 
@@ -167,6 +179,10 @@ ${name}文字的字体大小
 
 行高。
 
+{{ use: partial-text-style-rich-inherit(
+    name='lineHeight',
+    value=56
+) }}
 
 {{ if: !${noBox} }}
 
@@ -289,3 +305,21 @@ backgroundColor: {
 
 {{ target: partial-text-style-auto-color-desc }}
 如果设置为 `'auto'`，则为视觉映射得到的颜色，如系列色。
+
+
+
+
+
+{{ target: partial-text-style-rich-inherit }}
+`rich` 中如果没有设置 `${name}`，则会取父层级的 `${name}`。例如：
+
+```js
+{
+    ${name}: ${value},
+    rich: {
+        a: {
+            // 没有设置 `${name}`，则 `${name}` 为 ${value}
+        }
+    }
+}
+```

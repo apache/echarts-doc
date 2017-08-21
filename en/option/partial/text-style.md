@@ -148,6 +148,12 @@ Options are:
 + `'left'`
 + `'center'`
 + `'right'`
+
+{{ use: partial-text-style-rich-inherit(
+    name='align',
+    value='right'
+) }}
+
 {{ /if }}
 
 {{ if: !${noVerticalAlign} }}
@@ -159,6 +165,12 @@ Options are:
 + `'top'`
 + `'middle'`
 + `'bottom'`
+
+{{ use: partial-text-style-rich-inherit(
+    name='verticalAlign',
+    value='bottom'
+) }}
+
 {{ /if }}
 
 
@@ -170,6 +182,11 @@ Options are:
 #${prefix} lineHeight(number)
 
 Line height of the text fregment.
+
+{{ use: partial-text-style-rich-inherit(
+    name='lineHeight',
+    value=56
+) }}
 
 
 {{ if: !${noBox} }}
@@ -299,3 +316,22 @@ Shadow Y offset of the text itself.
 
 {{ target: partial-text-style-auto-color-desc }}
 If set as `'auto'`, the color will assigned as visual color, such as series color.
+
+
+
+
+
+{{ target: partial-text-style-rich-inherit }}
+
+If `${name}` is not set in `rich`, `${name}` in parent level will be used. For example:
+
+```js
+{
+    ${name}: ${value},
+    rich: {
+        a: {
+            // `${name}` is not set, then it will be ${value}
+        }
+    }
+}
+```
