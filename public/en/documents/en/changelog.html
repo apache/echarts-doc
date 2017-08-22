@@ -1,3 +1,87 @@
+<h2 id="v3-7-0">v3.7.0</h2>
+<div class="time">2017-08-16</div>
+
+<ul>
+<li><p><strong>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/tutorial.html#%E5%AF%8C%E6%96%87%E6%9C%AC%E6%A0%87%E7%AD%BE">Rich Text</a></strong>, which has enabled style configuring to some text snippets or the entire text block, and supported using images in text, and supported alignment or rotation of text block or snippets.</p>
+</li>
+<li><p><strong>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#legend.type">Scrollable Legend</a></strong>, which provides a solution for displays planty of legend items. See <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=pie-legend">vertical legend</a> 或 <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=radar2">horizontal legend</a>.</p>
+</li>
+<li><p>[+] Flatten <code>textStyle</code> option. <code>textStyle</code> exist in echarts option everywhere, for example, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-bar.label.normal.textStyle">series-bar.label.normal.textStyle</a>, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.axisLabel.textStyle">xAxis.axisLabel.textStyle</a>. It seems that some of them are to deep and verbose. So we removed the level of <code>textStyle</code> to flatten them. That is, previous <code>label.normal.textStyle.fontSize</code>, <code>axisLabel.textStyle.fontSize</code> is modified to <code>label.normal.fontSize</code>, <code>axisLabel.fontSize</code> after <code>v3.7</code>. Of course, the previous style is compatible all the same. Those options are flattened:</p>
+<ul>
+<li><code>axisPointer.textStyle</code></li>
+<li><code>xAxis.axisLabel.textStyle</code></li>
+<li><code>yAxis.axisLabel.textStyle</code></li>
+<li><code>radar.axisLabel.textStyle</code></li>
+<li><code>singleAxis.axisLabel.textStyle</code></li>
+<li><code>radiusAxis.axisLabel.textStyle</code></li>
+<li><code>angleAxis.axisLabel.textStyle</code></li>
+<li><code>parallel.parallelAxisDefault.axisLabel.textStyle</code></li>
+<li><code>parallelAxis.axisLabel.textStyle</code></li>
+<li><code>series.label[normal|emphasis].textStyle</code></li>
+<li><code>series.data.label[normal|emphasis].textStyle</code></li>
+<li><code>series-gauge.axisLabel.textStyle</code></li>
+<li><code>series-gauge.title.textStyle</code></li>
+<li><code>series-gauge.detail.textStyle</code></li>
+<li><code>series-treemap.upperLabel[normal|emphasis].textStyle</code></li>
+<li><code>series-graph.edgeLabel[normal|emphasis].textStyle</code></li>
+<li><code>calendar.dayLabel.textStyle</code></li>
+<li><code>calendar.monthLabel.textStyle</code></li>
+<li><code>calendar.yearLabel.textStyle</code></li>
+<li><code>markPoint.label[normal|emphasis].textStyle</code></li>
+<li><code>markPoint.data.label[normal|emphasis].textStyle</code></li>
+<li><code>markLine.label[normal|emphasis].textStyle</code></li>
+<li><code>markLine.data.label[normal|emphasis].textStyle</code></li>
+<li><code>markArea.label[normal|emphasis].textStyle</code></li>
+<li><code>markArea.data.label[normal|emphasis].textStyle</code></li>
+<li><code>tooltip.axisPointer.crossStyle.textStyle</code></li>
+<li><code>axisPointer.label.textStyle</code></li>
+<li><code>timeline.label.textStyle</code></li>
+<li><code>radar.name.textStyle</code></li>
+</ul>
+</li>
+<li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.minInterval">minInterval</a> on time axis (that is, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.type">axis.type</a> is <code>&#39;time&#39;</code>), and supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.maxInterval">maxInterval</a> on value axis (that is <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.type">axis.type</a> is <code>&#39;value&#39;</code>). So that it is enabled to controll the precision of label when data zooming.</p>
+</li>
+<li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.axisLine.onZeroAxisIndex">xAxis.axisLine.onZeroAxisIndex</a>, which enables specifing corresponding relationship when multiple axes used and <code>onZero</code> is required. See <a href="https://github.com/ecomfe/echarts/issues/5069">#5069</a>。</p>
+</li>
+<li><p>[+] Supported that do not use <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.coordinateSystems">coordinate system</a> in <code>custom series</code>.</p>
+</li>
+<li><p>[+] Supported rotation and alignment of label in bar chart. See <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-bar.label.normal.rotate">rotate</a>, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-bar.label.normal.align">align</a>, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-bar.label.normal.verticalAlign">verticalAlign</a>. See <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=bar-label-rotation">example</a>. See <a href="https://github.com/ecomfe/echarts/issues/5309">#5309</a>.</p>
+</li>
+<li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#radar.indicator.color">radar.indicator.color</a>, which enables setting different color for each indicator of radar chart. See <a href="https://github.com/ecomfe/echarts/issues/6128">#6128</a>.</p>
+</li>
+<li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#dataZoom.rangeMode">dataZoom.rangeMode</a>, which can fixing zoom window according to data when data updated. See <a href="https://github.com/ecomfe/echarts/issues/6040">#6128</a>.</p>
+</li>
+<li><p>[+] Supported using <code>dataIndex</code> in <a href="https://ecomfe.github.io/echarts-doc/public/en/api.html#action.legend.legendToggleSelect">action.legend.legendToggleSelect</a>, <a href="https://ecomfe.github.io/echarts-doc/public/en/api.html#action.legend.legendSelect">action.legend.legendSelect</a>, <a href="https://ecomfe.github.io/echarts-doc/public/en/api.html#action.legend.legendUnSelect">action.legend.legendUnSelect</a>. See <a href="https://github.com/ecomfe/echarts/issues/4242">#4242</a>.</p>
+</li>
+<li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-map.label.formatter">map.label.formatter</a>, which enables using rich text in map series. See <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=map-labels">Map Labels</a>.</p>
+</li>
+<li><p>[+] Supported <a href="http://echarts.baidu.com/option.html#title.borderRadius">title.borderRadius</a> and <a href="http://echarts.baidu.com/option.html#legend.borderRadius">legend.borderRadius</a>, which enables round corner of background or border in <code>title</code> and <code>legend</code> component.</p>
+</li>
+<li><p>[^] Fixed that error thrown when using shadow in pie series in some version of IE. See <a href="https://github.com/ecomfe/echarts/issues/5777">#5777</a>.</p>
+</li>
+<li><p>[^] Fixed that name can not be obtained in <code>tooltip</code> when <code>nameMap</code> was used in map serise and there was no data in some areas. See <a href="https://github.com/ecomfe/echarts/issues/5633">#5633</a>.</p>
+</li>
+<li><p>[^] Fixed <code>tooltip</code> location incorrect after roamed in bmap extension. See <a href="https://github.com/ecomfe/echarts/issues/6211">#6211</a>.</p>
+</li>
+<li><p>[^] Fixed null pointer exception of <code>axisPointer</code>. See <a href="https://github.com/ecomfe/echarts/issues/6121">#6121</a>.</p>
+</li>
+<li><p>[^] Fixed that error occured when height of heatmap was 0. See <a href="https://github.com/ecomfe/echarts/issues/6214">#6214</a>.</p>
+</li>
+<li><p>[+] Fixed the incorrect rendering when the first entry was empty in <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-candlestick">candlestick</a>. See <a href="https://github.com/ecomfe/echarts/issues/6059">#6059</a>.</p>
+</li>
+<li><p>[^] Fixed that <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-bar.dimensions">series-bar.dimensions</a> did not work. See <a href="https://github.com/ecomfe/echarts/issues/6252">#6252</a>。</p>
+</li>
+<li><p>[^] Fixed that when chilren number of group was not fixed, they could not be removed correctly in <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom">custom series</a>.</p>
+</li>
+<li><p>[^] Fixed the error that calling <code>connect</code> before <code>setOption</code> called. See <a href="https://github.com/ecomfe/echarts/issues/6281">#6281</a>.</p>
+</li>
+<li><p>[^] Fixed the edge judgement of <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#tooltip.confine">tooltip.confine</a>. See <a href="https://github.com/ecomfe/echarts/issues/6277">#6277</a> and <a href="https://github.com/ecomfe/echarts/commit/0da06d8">0da06d8</a>.</p>
+</li>
+<li><p>[^] Fixed that bar series displayed abnormal when viewport was narrow and bar series were overlapped (both set <code>barWidth</code> and <code>barGap: &#39;-100%&#39;</code>). See <a href="https://github.com/ecomfe/echarts/issues/6312">#6312</a>.</p>
+</li>
+<li><p>[^] Fixed precision problems. See <a href="https://github.com/ecomfe/echarts/issues/6371">#6371</a>.</p>
+</li>
+</ul>
 <h2 id="v3-6-2">v3.6.2</h2>
 <div class="time">2017-06-15</div>
 
@@ -45,7 +129,7 @@
 <ul>
 <li><p><strong>[+] Published <a href="http://echarts.baidu.com/option.html#series-custom">custom series</a></strong>, which enables user to customize render logic and make new types of chart. See <a href="http://echarts.baidu.com/examples.html#chart-type-custom">samples</a>。</p>
 </li>
-<li><p><strong>[+] Supported polar bar chart</strong>. See <a href="http://echarts.baidu.com/demo.html#bar-polar-stack">sample1</a>, <a href="http://echarts.baidu.com/demo.html#bar-polar-stack-radial">sample2</a>, <a href="http://echarts.baidu.com/demo.html#bar-polar-real-estate">sample3</a>。</p>
+<li><p><strong>[+] Supported polar bar chart</strong>. See <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=bar-polar-stack">sample1</a>, <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=bar-polar-stack-radial">sample2</a>, <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=bar-polar-real-estate">sample3</a>。</p>
 </li>
 <li><p>[+] Supported <a href="http://echarts.baidu.com/option.html#series-scatter.encode">encode</a>, which enable user to specify which dimensions in <a href="http://echarts.baidu.com/option.html#series-scatter.data">data</a> are mapped to which axis of coordinate system. Or which dimensions will be displayed in <a href="http://echarts.baidu.com/option.html#tooltip">tooltip</a> or <a href="http://echarts.baidu.com/option.html#series-scatter.label">label</a>. [Break Change]: The default name of the third dimension in <code>cartesian2d</code> is changed from <code>&#39;z&#39;</code> to <code>&#39;value&#39;</code>. If <code>&#39;z&#39;</code> is used in <a href="http://echarts.baidu.com/option.html#visualMap.dimension">visualMap.dimension</a>, please modify it to <code>&#39;value&#39;</code> or <code>2</code>.</p>
 </li>

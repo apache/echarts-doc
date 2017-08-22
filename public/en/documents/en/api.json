@@ -242,7 +242,13 @@
                 "type": [
                   "Action"
                 ],
-                "descriptionCN": "<p>Toggles legend selecting state.</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;legendToggleSelect&#39;,\n    // legend name\n    name: string\n})\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.legendselectchanged\">legendselectchanged</a></p>\n<!--============= tooltip ==========-->\n"
+                "descriptionCN": "<p>Toggles legend selecting state.</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;legendToggleSelect&#39;,\n    // legend name\n    name: string\n})\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.legendselectchanged\">legendselectchanged</a></p>\n"
+              },
+              "legendScroll": {
+                "type": [
+                  "Action"
+                ],
+                "descriptionCN": "<p>Controll the scrolling of legend. It works when <a href=\"option.html#legend.type\" target=\"_blank\">legend.type</a> is <code>&#39;scroll&#39;</code>.</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;legendScroll&#39;,\n    scrollDataIndex: number,\n    legendId: string\n})\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.legendscroll\">legendscroll</a></p>\n<!--============= tooltip ==========-->\n"
               }
             }
           },
@@ -476,6 +482,12 @@
             ],
             "descriptionCN": "<p><strong>ACTION:</strong> <a href=\"#action.legend.legendUnSelect\">legendUnSelect</a>\nEvent emitted after unselecting legend.</p>\n<pre><code class=\"lang-js\">{\n    type: &#39;legendunselected&#39;,\n    // name of unselected legend\n    name: string\n    // table of all legend selecting states\n    selected: Object\n}\n</code></pre>\n"
           },
+          "legendscroll": {
+            "type": [
+              "Event"
+            ],
+            "descriptionCN": "<p><strong>ACTION:</strong> <a href=\"#action.legend.legendScroll\">legendscroll</a>\nEvent when trigger legend scroll.</p>\n<pre><code class=\"lang-js\">{\n    type: &#39;legendscroll&#39;,\n    scrollDataIndex: number\n    legendId: string\n}\n</code></pre>\n"
+          },
           "datazoom": {
             "type": [
               "Event"
@@ -560,13 +572,13 @@
             ],
             "descriptionCN": "<p>Selecting event of range of <a href=\"option.html#parallelAxis\" target=\"_blank\">parallel axis</a>.</p>\n<p>When selecting axis range, the following method can be used to get data indices of currently highlight lines, which is the list of indices in <code>data</code> of <code>series</code>.</p>\n<pre><code class=\"lang-javascript\">chart.on(&#39;axisareaselected&#39;, function () {\n    var series1 = chart.getModel().getSeries()[0];\n    var series2 = chart.getModel().getSeries()[0];\n    var indices1 = series1.getRawIndicesByActiveState(&#39;active&#39;);\n    var indices2 = series2.getRawIndicesByActiveState(&#39;active&#39;);\n    console.log(indices1);\n    console.log(indices2);\n});\n</code></pre>\n"
           },
-          "focusNodeAdjacency": {
+          "focusnodeadjacency": {
             "type": [
               "Event"
             ],
             "descriptionCN": "<p>Adjacent nodes highlight event in <a href=\"option.html#graph\" target=\"_blank\">graph</a>.</p>\n<p>See <a href=\"#action.graph.focusNodeAdjacency\">focusNodeAdjacency</a>.</p>\n"
           },
-          "unfocusNodeAdjacency": {
+          "unfocusnodeadjacency": {
             "type": [
               "Event"
             ],

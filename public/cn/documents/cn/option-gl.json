@@ -80,7 +80,7 @@
             "type": [
               "string"
             ],
-            "descriptionCN": "<p>地球中三维图形的着色效果，echarts-gl 中支持下面三种着色方式</p>\n<ul>\n<li><p><code>&#39;color&#39;</code>\n只显示颜色，不受光照等其它因素的影响。</p>\n</li>\n<li><p><code>&#39;lambert&#39;</code>\n通过经典的 <a href=\"https://en.wikipedia.org/wiki/Lambertian_reflectance\" target=\"_blank\">lambert</a> 着色表现光照带来的明暗。</p>\n</li>\n<li><p><code>&#39;realistic&#39;</code>\n真实感渲染，配合 <a href=\"#globe.light.ambientCubemap\">light.ambientCubemap</a> 和 <a href=\"#globe.postEffect\">postEffect</a> 使用可以让展示的画面效果和质感有质的提升。ECharts GL 中使用了<a href=\"https://www.marmoset.co/posts/physically-based-rendering-and-you-can-too/\" target=\"_blank\">基于物理的渲染（PBR)</a> 来表现真实感材质。</p>\n</li>\n</ul>\n<p>下面是不同着色效果的区别</p>\n<p><img width=\"250\" height=\"auto\" src=\"documents/asset/gl/img/globe-shading-color.png\">\n<img width=\"250\" height=\"auto\" src=\"documents/asset/gl/img/globe-shading-lambert.png\">\n<img width=\"250\" height=\"auto\" src=\"documents/asset/gl/img/globe-shading-realistic.png\"></p>\n"
+            "descriptionCN": "<p>地球中三维图形的着色效果，echarts-gl 中支持下面三种着色方式</p>\n<ul>\n<li><p><code>&#39;color&#39;</code>\n只显示颜色，不受光照等其它因素的影响。</p>\n</li>\n<li><p><code>&#39;lambert&#39;</code>\n通过经典的 <a href=\"https://en.wikipedia.org/wiki/Lambertian_reflectance\" target=\"_blank\">lambert</a> 着色表现光照带来的明暗。</p>\n</li>\n<li><p><code>&#39;realistic&#39;</code>\n真实感渲染，配合 <a href=\"#globe.light.ambientCubemap\">light.ambientCubemap</a> 和 <a href=\"#globe.postEffect\">postEffect</a> 使用可以让展示的画面效果和质感有质的提升。ECharts GL 中使用了<a href=\"https://www.marmoset.co/posts/physically-based-rendering-and-you-can-too/\" target=\"_blank\">基于物理的渲染（PBR）</a> 来表现真实感材质。</p>\n</li>\n</ul>\n<p>下面是不同着色效果的区别</p>\n<p><img width=\"250\" height=\"auto\" src=\"documents/asset/gl/img/globe-shading-color.png\">\n<img width=\"250\" height=\"auto\" src=\"documents/asset/gl/img/globe-shading-lambert.png\">\n<img width=\"250\" height=\"auto\" src=\"documents/asset/gl/img/globe-shading-realistic.png\"></p>\n"
           },
           "realisticMaterial": {
             "type": [
@@ -406,11 +406,17 @@
                   }
                 }
               },
+              "screenSpaceAmbientOcclusion": {
+                "type": [
+                  "Object"
+                ],
+                "descriptionCN": "<p>屏幕空间的环境光遮蔽效果。环境光遮蔽可以让角落，缝隙等大部分光无法到达的区域变暗，是传统的阴影贴图的补充，可以让整个场景更加自然，有层次。</p>\n<p>下面是无 SSAO 和有 SSAO 的对比。</p>\n<div class=\"twentytwenty-container\" style=\"width: 700px;\">\n    <img src=\"documents/asset/gl/img/geo-no-ssao.png\" width=\"100%\" title=\"No SSAO\">\n    <img src=\"documents/asset/gl/img/geo-ssao.png\" width=\"100%\" title=\"SSAO\">\n</div>\n"
+              },
               "SSAO": {
                 "type": [
                   "Object"
                 ],
-                "descriptionCN": "<p>屏幕空间的环境光遮蔽效果。环境光遮蔽可以让角落，缝隙等大部分光无法到达的区域变暗，是传统的阴影贴图的补充，可以让整个场景更加自然，有层次。</p>\n<p>下面是无 SSAO 和有 SSAO 的对比。</p>\n<div class=\"twentytwenty-container\" style=\"width: 700px;\">\n    <img src=\"documents/asset/gl/img/geo-no-ssao.png\" width=\"100%\" title=\"No SSAO\">\n    <img src=\"documents/asset/gl/img/geo-ssao.png\" width=\"100%\" title=\"SSAO\">\n</div>\n",
+                "descriptionCN": "<p>同 <a href=\"#globe.postEffect.screenSpaceAmbientOcclusion\">screenSpaceAmbientOcclusion</a></p>\n",
                 "properties": {
                   "enable": {
                     "type": [
@@ -531,6 +537,13 @@
             ],
             "descriptionCN": "<p><code>viewControl</code>用于鼠标的旋转，缩放等视角控制。</p>\n",
             "properties": {
+              "projection": {
+                "type": [
+                  "string"
+                ],
+                "descriptionCN": "<p>投影方式，默认为透视投影<code>&#39;perspective&#39;</code>，也支持设置为正交投影<code>&#39;orthographic&#39;</code>。</p>\n",
+                "default": "perspective"
+              },
               "autoRotate": {
                 "type": [
                   "boolean"
@@ -568,9 +581,10 @@
               },
               "rotateSensitivity": {
                 "type": [
-                  "number"
+                  "number",
+                  "Array"
                 ],
-                "descriptionCN": "<p>旋转操作的灵敏度，值越大越灵敏。默认为``</p>\n<p>设置为<code>0</code>后无法旋转。</p>\n",
+                "descriptionCN": "<p>旋转操作的灵敏度，值越大越灵敏。支持使用数组分别设置横向和纵向的旋转灵敏度。</p>\n<p>默认为``</p>\n<p>设置为<code>0</code>后无法旋转。</p>\n<pre><code class=\"lang-js\">// 无法旋转\nrotateSensitivity: 0\n// 只能横向旋转\nrotateSensitivity: [1, 0]\n// 只能纵向旋转\nrotateSensitivity: [0, 1]\n</code></pre>\n",
                 "default": 1
               },
               "zoomSensitivity": {
@@ -584,7 +598,7 @@
                 "type": [
                   "number"
                 ],
-                "descriptionCN": "<p>平移操作的灵敏度，值越大越灵敏。默认为``</p>\n<p>设置为<code>0</code>后无法平移。</p>\n",
+                "descriptionCN": "<p>平移操作的灵敏度，值越大越灵敏。支持使用数组分别设置横向和纵向的平移灵敏度</p>\n<p>默认为``</p>\n<p>设置为<code>0</code>后无法平移。</p>\n",
                 "default": 0
               },
               "panMouseButton": {
@@ -605,21 +619,42 @@
                 "type": [
                   "number"
                 ],
-                "descriptionCN": "<p>默认视角距离主体的距离，对于 <a href=\"#globe\">globe</a> 来说是距离地球表面的距离，对于 <a href=\"#grid3D\">grid3D</a> 和 <a href=\"#geo3D\">geo3D</a> 等其它组件来说是距离中心原点的距离。</p>\n",
+                "descriptionCN": "<p>默认视角距离主体的距离，对于 <a href=\"#globe\">globe</a> 来说是距离地球表面的距离，对于 <a href=\"#grid3D\">grid3D</a> 和 <a href=\"#geo3D\">geo3D</a> 等其它组件来说是距离中心原点的距离。在 <a href=\"#globe.viewControl.projection\">projection</a> 为<code>&#39;perspective&#39;</code>的时候有效。</p>\n",
                 "default": 150
               },
               "minDistance": {
                 "type": [
                   "number"
                 ],
-                "descriptionCN": "<p>视角通过鼠标控制能拉近到主体的最小距离。</p>\n",
+                "descriptionCN": "<p>视角通过鼠标控制能拉近到主体的最小距离。在 <a href=\"#globe.viewControl.projection\">projection</a> 为<code>&#39;perspective&#39;</code>的时候有效。</p>\n",
                 "default": 40
               },
               "maxDistance": {
                 "type": [
                   "number"
                 ],
-                "descriptionCN": "<p>视角通过鼠标控制能拉远到主体的最小距离。</p>\n",
+                "descriptionCN": "<p>视角通过鼠标控制能拉远到主体的最小距离。在 <a href=\"#globe.viewControl.projection\">projection</a> 为<code>&#39;perspective&#39;</code>的时候有效。</p>\n",
+                "default": 400
+              },
+              "orthographicSize": {
+                "type": [
+                  "number"
+                ],
+                "descriptionCN": "<p>正交投影的大小。在 <a href=\"#globe.viewControl.projection\">projection</a> 为<code>&#39;orthographic&#39;</code>的时候有效。</p>\n",
+                "default": 150
+              },
+              "maxOrthographicSize": {
+                "type": [
+                  "number"
+                ],
+                "descriptionCN": "<p>正交投影缩放的最大值。在 <a href=\"#globe.viewControl.projection\">projection</a> 为<code>&#39;orthographic&#39;</code>的时候有效。</p>\n",
+                "default": 20
+              },
+              "minOrthographicSize": {
+                "type": [
+                  "number"
+                ],
+                "descriptionCN": "<p>正交投影缩放的最小值。在 <a href=\"#globe.viewControl.projection\">projection</a> 为<code>&#39;orthographic&#39;</code>的时候有效。</p>\n",
                 "default": 400
               },
               "alpha": {
@@ -882,7 +917,7 @@
             "type": [
               "Object"
             ],
-            "descriptionCN": "<p>地面可以让整个组件有个“摆放”的地方，从而使整个场景看起来更真实，更有模型感。</p>\n",
+            "descriptionCN": "<p>地面可以让整个组件有个“摆放”的地方，从而使整个场景看起来更真实，更有模型感。</p>\n<p><code>groundPlane</code> 下支持设置单独的 <code>realisticMaterial</code>, <code>colorMaterial</code>, <code>lambertMaterial</code> 等材质。如果不设置则默认取组件下的材质参数。</p>\n",
             "properties": {
               "show": {
                 "type": [
@@ -904,7 +939,7 @@
             "type": [
               "boolean"
             ],
-            "descriptionCN": "<p><code>instancing</code>会将 GeoJSON 中所有的 <a href=\"http://geojson.org/geojson-spec.html#geometry-objects\" target=\"_blank\">geometry</a> 合并成一个，在 GeoJSON 拥有特别多（上千）的 <a href=\"http://geojson.org/geojson-spec.html#geometry-objects\" target=\"_blank\">geometry</a> 时可以有效提升绘制效率。</p>\n<p>注意，开启<code>instancing</code>后场景不再具备选择，hover等交互的功能。</p>\n",
+            "descriptionCN": "<p><code>instancing</code>会将 GeoJSON 中所有的 <a href=\"http://geojson.org/geojson-spec.html#geometry-objects\" target=\"_blank\">geometry</a> 合并成一个，在 GeoJSON 拥有特别多（上千）的 <a href=\"http://geojson.org/geojson-spec.html#geometry-objects\" target=\"_blank\">geometry</a> 时可以有效提升绘制效率。</p>\n",
             "default": false
           },
           "label": {
@@ -1396,7 +1431,7 @@
             "type": [
               "string"
             ],
-            "descriptionCN": "<p>三维地理坐标系组件中三维图形的着色效果，echarts-gl 中支持下面三种着色方式</p>\n<ul>\n<li><p><code>&#39;color&#39;</code>\n只显示颜色，不受光照等其它因素的影响。</p>\n</li>\n<li><p><code>&#39;lambert&#39;</code>\n通过经典的 <a href=\"https://en.wikipedia.org/wiki/Lambertian_reflectance\" target=\"_blank\">lambert</a> 着色表现光照带来的明暗。</p>\n</li>\n<li><p><code>&#39;realistic&#39;</code>\n真实感渲染，配合 <a href=\"#globe.light.ambientCubemap\">light.ambientCubemap</a> 和 <a href=\"#globe.postEffect\">postEffect</a> 使用可以让展示的画面效果和质感有质的提升。ECharts GL 中使用了<a href=\"https://www.marmoset.co/posts/physically-based-rendering-and-you-can-too/\" target=\"_blank\">基于物理的渲染（PBR)</a> 来表现真实感材质。</p>\n</li>\n</ul>\n"
+            "descriptionCN": "<p>三维地理坐标系组件中三维图形的着色效果，echarts-gl 中支持下面三种着色方式</p>\n<ul>\n<li><p><code>&#39;color&#39;</code>\n只显示颜色，不受光照等其它因素的影响。</p>\n</li>\n<li><p><code>&#39;lambert&#39;</code>\n通过经典的 <a href=\"https://en.wikipedia.org/wiki/Lambertian_reflectance\" target=\"_blank\">lambert</a> 着色表现光照带来的明暗。</p>\n</li>\n<li><p><code>&#39;realistic&#39;</code>\n真实感渲染，配合 <a href=\"#globe.light.ambientCubemap\">light.ambientCubemap</a> 和 <a href=\"#globe.postEffect\">postEffect</a> 使用可以让展示的画面效果和质感有质的提升。ECharts GL 中使用了<a href=\"https://www.marmoset.co/posts/physically-based-rendering-and-you-can-too/\" target=\"_blank\">基于物理的渲染（PBR）</a> 来表现真实感材质。</p>\n</li>\n</ul>\n"
           },
           "realisticMaterial": {
             "type": [
@@ -1716,11 +1751,17 @@
                   }
                 }
               },
+              "screenSpaceAmbientOcclusion": {
+                "type": [
+                  "Object"
+                ],
+                "descriptionCN": "<p>屏幕空间的环境光遮蔽效果。环境光遮蔽可以让角落，缝隙等大部分光无法到达的区域变暗，是传统的阴影贴图的补充，可以让整个场景更加自然，有层次。</p>\n<p>下面是无 SSAO 和有 SSAO 的对比。</p>\n<div class=\"twentytwenty-container\" style=\"width: 700px;\">\n    <img src=\"documents/asset/gl/img/geo-no-ssao.png\" width=\"100%\" title=\"No SSAO\">\n    <img src=\"documents/asset/gl/img/geo-ssao.png\" width=\"100%\" title=\"SSAO\">\n</div>\n"
+              },
               "SSAO": {
                 "type": [
                   "Object"
                 ],
-                "descriptionCN": "<p>屏幕空间的环境光遮蔽效果。环境光遮蔽可以让角落，缝隙等大部分光无法到达的区域变暗，是传统的阴影贴图的补充，可以让整个场景更加自然，有层次。</p>\n<p>下面是无 SSAO 和有 SSAO 的对比。</p>\n<div class=\"twentytwenty-container\" style=\"width: 700px;\">\n    <img src=\"documents/asset/gl/img/geo-no-ssao.png\" width=\"100%\" title=\"No SSAO\">\n    <img src=\"documents/asset/gl/img/geo-ssao.png\" width=\"100%\" title=\"SSAO\">\n</div>\n",
+                "descriptionCN": "<p>同 <a href=\"#geo3D.postEffect.screenSpaceAmbientOcclusion\">screenSpaceAmbientOcclusion</a></p>\n",
                 "properties": {
                   "enable": {
                     "type": [
@@ -1841,6 +1882,13 @@
             ],
             "descriptionCN": "<p><code>viewControl</code>用于鼠标的旋转，缩放等视角控制。</p>\n",
             "properties": {
+              "projection": {
+                "type": [
+                  "string"
+                ],
+                "descriptionCN": "<p>投影方式，默认为透视投影<code>&#39;perspective&#39;</code>，也支持设置为正交投影<code>&#39;orthographic&#39;</code>。</p>\n",
+                "default": "perspective"
+              },
               "autoRotate": {
                 "type": [
                   "boolean"
@@ -1878,9 +1926,10 @@
               },
               "rotateSensitivity": {
                 "type": [
-                  "number"
+                  "number",
+                  "Array"
                 ],
-                "descriptionCN": "<p>旋转操作的灵敏度，值越大越灵敏。默认为``</p>\n<p>设置为<code>0</code>后无法旋转。</p>\n",
+                "descriptionCN": "<p>旋转操作的灵敏度，值越大越灵敏。支持使用数组分别设置横向和纵向的旋转灵敏度。</p>\n<p>默认为``</p>\n<p>设置为<code>0</code>后无法旋转。</p>\n<pre><code class=\"lang-js\">// 无法旋转\nrotateSensitivity: 0\n// 只能横向旋转\nrotateSensitivity: [1, 0]\n// 只能纵向旋转\nrotateSensitivity: [0, 1]\n</code></pre>\n",
                 "default": 1
               },
               "zoomSensitivity": {
@@ -1894,7 +1943,7 @@
                 "type": [
                   "number"
                 ],
-                "descriptionCN": "<p>平移操作的灵敏度，值越大越灵敏。默认为``</p>\n<p>设置为<code>0</code>后无法平移。</p>\n",
+                "descriptionCN": "<p>平移操作的灵敏度，值越大越灵敏。支持使用数组分别设置横向和纵向的平移灵敏度</p>\n<p>默认为``</p>\n<p>设置为<code>0</code>后无法平移。</p>\n",
                 "default": 1
               },
               "panMouseButton": {
@@ -1915,21 +1964,42 @@
                 "type": [
                   "number"
                 ],
-                "descriptionCN": "<p>默认视角距离主体的距离，对于 <a href=\"#globe\">globe</a> 来说是距离地球表面的距离，对于 <a href=\"#grid3D\">grid3D</a> 和 <a href=\"#geo3D\">geo3D</a> 等其它组件来说是距离中心原点的距离。</p>\n",
+                "descriptionCN": "<p>默认视角距离主体的距离，对于 <a href=\"#globe\">globe</a> 来说是距离地球表面的距离，对于 <a href=\"#grid3D\">grid3D</a> 和 <a href=\"#geo3D\">geo3D</a> 等其它组件来说是距离中心原点的距离。在 <a href=\"#geo3D.viewControl.projection\">projection</a> 为<code>&#39;perspective&#39;</code>的时候有效。</p>\n",
                 "default": 100
               },
               "minDistance": {
                 "type": [
                   "number"
                 ],
-                "descriptionCN": "<p>视角通过鼠标控制能拉近到主体的最小距离。</p>\n",
+                "descriptionCN": "<p>视角通过鼠标控制能拉近到主体的最小距离。在 <a href=\"#geo3D.viewControl.projection\">projection</a> 为<code>&#39;perspective&#39;</code>的时候有效。</p>\n",
                 "default": 40
               },
               "maxDistance": {
                 "type": [
                   "number"
                 ],
-                "descriptionCN": "<p>视角通过鼠标控制能拉远到主体的最小距离。</p>\n",
+                "descriptionCN": "<p>视角通过鼠标控制能拉远到主体的最小距离。在 <a href=\"#geo3D.viewControl.projection\">projection</a> 为<code>&#39;perspective&#39;</code>的时候有效。</p>\n",
+                "default": 400
+              },
+              "orthographicSize": {
+                "type": [
+                  "number"
+                ],
+                "descriptionCN": "<p>正交投影的大小。在 <a href=\"#geo3D.viewControl.projection\">projection</a> 为<code>&#39;orthographic&#39;</code>的时候有效。</p>\n",
+                "default": 100
+              },
+              "maxOrthographicSize": {
+                "type": [
+                  "number"
+                ],
+                "descriptionCN": "<p>正交投影缩放的最大值。在 <a href=\"#geo3D.viewControl.projection\">projection</a> 为<code>&#39;orthographic&#39;</code>的时候有效。</p>\n",
+                "default": 20
+              },
+              "minOrthographicSize": {
+                "type": [
+                  "number"
+                ],
+                "descriptionCN": "<p>正交投影缩放的最小值。在 <a href=\"#geo3D.viewControl.projection\">projection</a> 为<code>&#39;orthographic&#39;</code>的时候有效。</p>\n",
                 "default": 400
               },
               "alpha": {
@@ -2110,7 +2180,7 @@
             "type": [
               "string"
             ],
-            "descriptionCN": "<p>mapbox中三维图形的着色效果，echarts-gl 中支持下面三种着色方式</p>\n<ul>\n<li><p><code>&#39;color&#39;</code>\n只显示颜色，不受光照等其它因素的影响。</p>\n</li>\n<li><p><code>&#39;lambert&#39;</code>\n通过经典的 <a href=\"https://en.wikipedia.org/wiki/Lambertian_reflectance\" target=\"_blank\">lambert</a> 着色表现光照带来的明暗。</p>\n</li>\n<li><p><code>&#39;realistic&#39;</code>\n真实感渲染，配合 <a href=\"#globe.light.ambientCubemap\">light.ambientCubemap</a> 和 <a href=\"#globe.postEffect\">postEffect</a> 使用可以让展示的画面效果和质感有质的提升。ECharts GL 中使用了<a href=\"https://www.marmoset.co/posts/physically-based-rendering-and-you-can-too/\" target=\"_blank\">基于物理的渲染（PBR)</a> 来表现真实感材质。</p>\n</li>\n</ul>\n"
+            "descriptionCN": "<p>mapbox中三维图形的着色效果，echarts-gl 中支持下面三种着色方式</p>\n<ul>\n<li><p><code>&#39;color&#39;</code>\n只显示颜色，不受光照等其它因素的影响。</p>\n</li>\n<li><p><code>&#39;lambert&#39;</code>\n通过经典的 <a href=\"https://en.wikipedia.org/wiki/Lambertian_reflectance\" target=\"_blank\">lambert</a> 着色表现光照带来的明暗。</p>\n</li>\n<li><p><code>&#39;realistic&#39;</code>\n真实感渲染，配合 <a href=\"#globe.light.ambientCubemap\">light.ambientCubemap</a> 和 <a href=\"#globe.postEffect\">postEffect</a> 使用可以让展示的画面效果和质感有质的提升。ECharts GL 中使用了<a href=\"https://www.marmoset.co/posts/physically-based-rendering-and-you-can-too/\" target=\"_blank\">基于物理的渲染（PBR）</a> 来表现真实感材质。</p>\n</li>\n</ul>\n"
           },
           "realisticMaterial": {
             "type": [
@@ -2430,11 +2500,17 @@
                   }
                 }
               },
+              "screenSpaceAmbientOcclusion": {
+                "type": [
+                  "Object"
+                ],
+                "descriptionCN": "<p>屏幕空间的环境光遮蔽效果。环境光遮蔽可以让角落，缝隙等大部分光无法到达的区域变暗，是传统的阴影贴图的补充，可以让整个场景更加自然，有层次。</p>\n<p>下面是无 SSAO 和有 SSAO 的对比。</p>\n<div class=\"twentytwenty-container\" style=\"width: 700px;\">\n    <img src=\"documents/asset/gl/img/geo-no-ssao.png\" width=\"100%\" title=\"No SSAO\">\n    <img src=\"documents/asset/gl/img/geo-ssao.png\" width=\"100%\" title=\"SSAO\">\n</div>\n"
+              },
               "SSAO": {
                 "type": [
                   "Object"
                 ],
-                "descriptionCN": "<p>屏幕空间的环境光遮蔽效果。环境光遮蔽可以让角落，缝隙等大部分光无法到达的区域变暗，是传统的阴影贴图的补充，可以让整个场景更加自然，有层次。</p>\n<p>下面是无 SSAO 和有 SSAO 的对比。</p>\n<div class=\"twentytwenty-container\" style=\"width: 700px;\">\n    <img src=\"documents/asset/gl/img/geo-no-ssao.png\" width=\"100%\" title=\"No SSAO\">\n    <img src=\"documents/asset/gl/img/geo-ssao.png\" width=\"100%\" title=\"SSAO\">\n</div>\n",
+                "descriptionCN": "<p>同 <a href=\"#mapbox.postEffect.screenSpaceAmbientOcclusion\">screenSpaceAmbientOcclusion</a></p>\n",
                 "properties": {
                   "enable": {
                     "type": [
@@ -3181,11 +3257,17 @@
                   }
                 }
               },
+              "screenSpaceAmbientOcclusion": {
+                "type": [
+                  "Object"
+                ],
+                "descriptionCN": "<p>屏幕空间的环境光遮蔽效果。环境光遮蔽可以让角落，缝隙等大部分光无法到达的区域变暗，是传统的阴影贴图的补充，可以让整个场景更加自然，有层次。</p>\n<p>下面是无 SSAO 和有 SSAO 的对比。</p>\n<div class=\"twentytwenty-container\" style=\"width: 700px;\">\n    <img src=\"documents/asset/gl/img/geo-no-ssao.png\" width=\"100%\" title=\"No SSAO\">\n    <img src=\"documents/asset/gl/img/geo-ssao.png\" width=\"100%\" title=\"SSAO\">\n</div>\n"
+              },
               "SSAO": {
                 "type": [
                   "Object"
                 ],
-                "descriptionCN": "<p>屏幕空间的环境光遮蔽效果。环境光遮蔽可以让角落，缝隙等大部分光无法到达的区域变暗，是传统的阴影贴图的补充，可以让整个场景更加自然，有层次。</p>\n<p>下面是无 SSAO 和有 SSAO 的对比。</p>\n<div class=\"twentytwenty-container\" style=\"width: 700px;\">\n    <img src=\"documents/asset/gl/img/geo-no-ssao.png\" width=\"100%\" title=\"No SSAO\">\n    <img src=\"documents/asset/gl/img/geo-ssao.png\" width=\"100%\" title=\"SSAO\">\n</div>\n",
+                "descriptionCN": "<p>同 <a href=\"#grid3D.postEffect.screenSpaceAmbientOcclusion\">screenSpaceAmbientOcclusion</a></p>\n",
                 "properties": {
                   "enable": {
                     "type": [
@@ -3306,6 +3388,13 @@
             ],
             "descriptionCN": "<p><code>viewControl</code>用于鼠标的旋转，缩放等视角控制。</p>\n",
             "properties": {
+              "projection": {
+                "type": [
+                  "string"
+                ],
+                "descriptionCN": "<p>投影方式，默认为透视投影<code>&#39;perspective&#39;</code>，也支持设置为正交投影<code>&#39;orthographic&#39;</code>。</p>\n",
+                "default": "perspective"
+              },
               "autoRotate": {
                 "type": [
                   "boolean"
@@ -3343,9 +3432,10 @@
               },
               "rotateSensitivity": {
                 "type": [
-                  "number"
+                  "number",
+                  "Array"
                 ],
-                "descriptionCN": "<p>旋转操作的灵敏度，值越大越灵敏。默认为``</p>\n<p>设置为<code>0</code>后无法旋转。</p>\n",
+                "descriptionCN": "<p>旋转操作的灵敏度，值越大越灵敏。支持使用数组分别设置横向和纵向的旋转灵敏度。</p>\n<p>默认为``</p>\n<p>设置为<code>0</code>后无法旋转。</p>\n<pre><code class=\"lang-js\">// 无法旋转\nrotateSensitivity: 0\n// 只能横向旋转\nrotateSensitivity: [1, 0]\n// 只能纵向旋转\nrotateSensitivity: [0, 1]\n</code></pre>\n",
                 "default": 1
               },
               "zoomSensitivity": {
@@ -3359,7 +3449,7 @@
                 "type": [
                   "number"
                 ],
-                "descriptionCN": "<p>平移操作的灵敏度，值越大越灵敏。默认为``</p>\n<p>设置为<code>0</code>后无法平移。</p>\n",
+                "descriptionCN": "<p>平移操作的灵敏度，值越大越灵敏。支持使用数组分别设置横向和纵向的平移灵敏度</p>\n<p>默认为``</p>\n<p>设置为<code>0</code>后无法平移。</p>\n",
                 "default": 1
               },
               "panMouseButton": {
@@ -3380,21 +3470,42 @@
                 "type": [
                   "number"
                 ],
-                "descriptionCN": "<p>默认视角距离主体的距离，对于 <a href=\"#globe\">globe</a> 来说是距离地球表面的距离，对于 <a href=\"#grid3D\">grid3D</a> 和 <a href=\"#geo3D\">geo3D</a> 等其它组件来说是距离中心原点的距离。</p>\n",
+                "descriptionCN": "<p>默认视角距离主体的距离，对于 <a href=\"#globe\">globe</a> 来说是距离地球表面的距离，对于 <a href=\"#grid3D\">grid3D</a> 和 <a href=\"#geo3D\">geo3D</a> 等其它组件来说是距离中心原点的距离。在 <a href=\"#grid3D.viewControl.projection\">projection</a> 为<code>&#39;perspective&#39;</code>的时候有效。</p>\n",
                 "default": 200
               },
               "minDistance": {
                 "type": [
                   "number"
                 ],
-                "descriptionCN": "<p>视角通过鼠标控制能拉近到主体的最小距离。</p>\n",
+                "descriptionCN": "<p>视角通过鼠标控制能拉近到主体的最小距离。在 <a href=\"#grid3D.viewControl.projection\">projection</a> 为<code>&#39;perspective&#39;</code>的时候有效。</p>\n",
                 "default": 40
               },
               "maxDistance": {
                 "type": [
                   "number"
                 ],
-                "descriptionCN": "<p>视角通过鼠标控制能拉远到主体的最小距离。</p>\n",
+                "descriptionCN": "<p>视角通过鼠标控制能拉远到主体的最小距离。在 <a href=\"#grid3D.viewControl.projection\">projection</a> 为<code>&#39;perspective&#39;</code>的时候有效。</p>\n",
+                "default": 400
+              },
+              "orthographicSize": {
+                "type": [
+                  "number"
+                ],
+                "descriptionCN": "<p>正交投影的大小。在 <a href=\"#grid3D.viewControl.projection\">projection</a> 为<code>&#39;orthographic&#39;</code>的时候有效。</p>\n",
+                "default": 200
+              },
+              "maxOrthographicSize": {
+                "type": [
+                  "number"
+                ],
+                "descriptionCN": "<p>正交投影缩放的最大值。在 <a href=\"#grid3D.viewControl.projection\">projection</a> 为<code>&#39;orthographic&#39;</code>的时候有效。</p>\n",
+                "default": 40
+              },
+              "minOrthographicSize": {
+                "type": [
+                  "number"
+                ],
+                "descriptionCN": "<p>正交投影缩放的最小值。在 <a href=\"#grid3D.viewControl.projection\">projection</a> 为<code>&#39;orthographic&#39;</code>的时候有效。</p>\n",
                 "default": 400
               },
               "alpha": {
@@ -5780,7 +5891,7 @@
                   "type": [
                     "number"
                   ],
-                  "descriptionCN": "<p>柱子的倒角尺寸，默认为 0，即没有倒角。</p>\n<p>下面是无倒角和有倒角的区别。</p>\n<div class=\"twentytwenty-container\" style=\"width: 700px;\">\n    <img src=\"documents/asset/gl/img/bar3D-no-bevel.png\" width=\"100%\" title=\"bevelSize: 0\">\n    <img src=\"documents/asset/gl/img/bar3D-bevel.png\" width=\"100%\" title=\"bevelSize: 0.3\">\n</div>\n",
+                  "descriptionCN": "<p>柱子的倒角尺寸。支持设置为从 0 到 1 的值。默认为 0，即没有倒角。</p>\n<p>下面是无倒角和有倒角的区别。</p>\n<div class=\"twentytwenty-container\" style=\"width: 700px;\">\n    <img src=\"documents/asset/gl/img/bar3D-no-bevel.png\" width=\"100%\" title=\"bevelSize: 0\">\n    <img src=\"documents/asset/gl/img/bar3D-bevel.png\" width=\"100%\" title=\"bevelSize: 0.3\">\n</div>\n",
                   "default": 0
                 },
                 "bevelSmoothness": {
@@ -5789,6 +5900,12 @@
                   ],
                   "descriptionCN": "<p>柱子倒角的光滑/圆润度，数值越大越光滑/圆润。</p>\n",
                   "default": 2
+                },
+                "stack": {
+                  "type": [
+                    "string"
+                  ],
+                  "descriptionCN": "<p>柱状图堆叠，相同 <code>stack</code> 值的柱状图系列数据会有叠加。注意不同系列需要叠加的数据项在数组中的索引必须是一样的。</p>\n"
                 },
                 "minHeight": {
                   "type": [
@@ -6245,7 +6362,7 @@
                   "type": [
                     "string"
                   ],
-                  "descriptionCN": "<p>三维柱状图中三维图形的着色效果，echarts-gl 中支持下面三种着色方式</p>\n<ul>\n<li><p><code>&#39;color&#39;</code>\n只显示颜色，不受光照等其它因素的影响。</p>\n</li>\n<li><p><code>&#39;lambert&#39;</code>\n通过经典的 <a href=\"https://en.wikipedia.org/wiki/Lambertian_reflectance\" target=\"_blank\">lambert</a> 着色表现光照带来的明暗。</p>\n</li>\n<li><p><code>&#39;realistic&#39;</code>\n真实感渲染，配合 <a href=\"#globe.light.ambientCubemap\">light.ambientCubemap</a> 和 <a href=\"#globe.postEffect\">postEffect</a> 使用可以让展示的画面效果和质感有质的提升。ECharts GL 中使用了<a href=\"https://www.marmoset.co/posts/physically-based-rendering-and-you-can-too/\" target=\"_blank\">基于物理的渲染（PBR)</a> 来表现真实感材质。</p>\n</li>\n</ul>\n"
+                  "descriptionCN": "<p>三维柱状图中三维图形的着色效果，echarts-gl 中支持下面三种着色方式</p>\n<ul>\n<li><p><code>&#39;color&#39;</code>\n只显示颜色，不受光照等其它因素的影响。</p>\n</li>\n<li><p><code>&#39;lambert&#39;</code>\n通过经典的 <a href=\"https://en.wikipedia.org/wiki/Lambertian_reflectance\" target=\"_blank\">lambert</a> 着色表现光照带来的明暗。</p>\n</li>\n<li><p><code>&#39;realistic&#39;</code>\n真实感渲染，配合 <a href=\"#globe.light.ambientCubemap\">light.ambientCubemap</a> 和 <a href=\"#globe.postEffect\">postEffect</a> 使用可以让展示的画面效果和质感有质的提升。ECharts GL 中使用了<a href=\"https://www.marmoset.co/posts/physically-based-rendering-and-you-can-too/\" target=\"_blank\">基于物理的渲染（PBR）</a> 来表现真实感材质。</p>\n</li>\n</ul>\n"
                 },
                 "realisticMaterial": {
                   "type": [
@@ -6866,7 +6983,7 @@
                   "type": [
                     "Object"
                   ],
-                  "descriptionCN": "<p>地面可以让整个组件有个“摆放”的地方，从而使整个场景看起来更真实，更有模型感。</p>\n",
+                  "descriptionCN": "<p>地面可以让整个组件有个“摆放”的地方，从而使整个场景看起来更真实，更有模型感。</p>\n<p><code>groundPlane</code> 下支持设置单独的 <code>realisticMaterial</code>, <code>colorMaterial</code>, <code>lambertMaterial</code> 等材质。如果不设置则默认取组件下的材质参数。</p>\n",
                   "properties": {
                     "show": {
                       "type": [
@@ -6888,7 +7005,7 @@
                   "type": [
                     "boolean"
                   ],
-                  "descriptionCN": "<p><code>instancing</code>会将 GeoJSON 中所有的 <a href=\"http://geojson.org/geojson-spec.html#geometry-objects\" target=\"_blank\">geometry</a> 合并成一个，在 GeoJSON 拥有特别多（上千）的 <a href=\"http://geojson.org/geojson-spec.html#geometry-objects\" target=\"_blank\">geometry</a> 时可以有效提升绘制效率。</p>\n<p>注意，开启<code>instancing</code>后场景不再具备选择，hover等交互的功能。</p>\n",
+                  "descriptionCN": "<p><code>instancing</code>会将 GeoJSON 中所有的 <a href=\"http://geojson.org/geojson-spec.html#geometry-objects\" target=\"_blank\">geometry</a> 合并成一个，在 GeoJSON 拥有特别多（上千）的 <a href=\"http://geojson.org/geojson-spec.html#geometry-objects\" target=\"_blank\">geometry</a> 时可以有效提升绘制效率。</p>\n",
                   "default": false
                 },
                 "label": {
@@ -7386,7 +7503,7 @@
                   "type": [
                     "string"
                   ],
-                  "descriptionCN": "<p>三维地图中三维图形的着色效果，echarts-gl 中支持下面三种着色方式</p>\n<ul>\n<li><p><code>&#39;color&#39;</code>\n只显示颜色，不受光照等其它因素的影响。</p>\n</li>\n<li><p><code>&#39;lambert&#39;</code>\n通过经典的 <a href=\"https://en.wikipedia.org/wiki/Lambertian_reflectance\" target=\"_blank\">lambert</a> 着色表现光照带来的明暗。</p>\n</li>\n<li><p><code>&#39;realistic&#39;</code>\n真实感渲染，配合 <a href=\"#globe.light.ambientCubemap\">light.ambientCubemap</a> 和 <a href=\"#globe.postEffect\">postEffect</a> 使用可以让展示的画面效果和质感有质的提升。ECharts GL 中使用了<a href=\"https://www.marmoset.co/posts/physically-based-rendering-and-you-can-too/\" target=\"_blank\">基于物理的渲染（PBR)</a> 来表现真实感材质。</p>\n</li>\n</ul>\n"
+                  "descriptionCN": "<p>三维地图中三维图形的着色效果，echarts-gl 中支持下面三种着色方式</p>\n<ul>\n<li><p><code>&#39;color&#39;</code>\n只显示颜色，不受光照等其它因素的影响。</p>\n</li>\n<li><p><code>&#39;lambert&#39;</code>\n通过经典的 <a href=\"https://en.wikipedia.org/wiki/Lambertian_reflectance\" target=\"_blank\">lambert</a> 着色表现光照带来的明暗。</p>\n</li>\n<li><p><code>&#39;realistic&#39;</code>\n真实感渲染，配合 <a href=\"#globe.light.ambientCubemap\">light.ambientCubemap</a> 和 <a href=\"#globe.postEffect\">postEffect</a> 使用可以让展示的画面效果和质感有质的提升。ECharts GL 中使用了<a href=\"https://www.marmoset.co/posts/physically-based-rendering-and-you-can-too/\" target=\"_blank\">基于物理的渲染（PBR）</a> 来表现真实感材质。</p>\n</li>\n</ul>\n"
                 },
                 "realisticMaterial": {
                   "type": [
@@ -7706,11 +7823,17 @@
                         }
                       }
                     },
+                    "screenSpaceAmbientOcclusion": {
+                      "type": [
+                        "Object"
+                      ],
+                      "descriptionCN": "<p>屏幕空间的环境光遮蔽效果。环境光遮蔽可以让角落，缝隙等大部分光无法到达的区域变暗，是传统的阴影贴图的补充，可以让整个场景更加自然，有层次。</p>\n<p>下面是无 SSAO 和有 SSAO 的对比。</p>\n<div class=\"twentytwenty-container\" style=\"width: 700px;\">\n    <img src=\"documents/asset/gl/img/geo-no-ssao.png\" width=\"100%\" title=\"No SSAO\">\n    <img src=\"documents/asset/gl/img/geo-ssao.png\" width=\"100%\" title=\"SSAO\">\n</div>\n"
+                    },
                     "SSAO": {
                       "type": [
                         "Object"
                       ],
-                      "descriptionCN": "<p>屏幕空间的环境光遮蔽效果。环境光遮蔽可以让角落，缝隙等大部分光无法到达的区域变暗，是传统的阴影贴图的补充，可以让整个场景更加自然，有层次。</p>\n<p>下面是无 SSAO 和有 SSAO 的对比。</p>\n<div class=\"twentytwenty-container\" style=\"width: 700px;\">\n    <img src=\"documents/asset/gl/img/geo-no-ssao.png\" width=\"100%\" title=\"No SSAO\">\n    <img src=\"documents/asset/gl/img/geo-ssao.png\" width=\"100%\" title=\"SSAO\">\n</div>\n",
+                      "descriptionCN": "<p>同 <a href=\"#series-map3D.postEffect.screenSpaceAmbientOcclusion\">screenSpaceAmbientOcclusion</a></p>\n",
                       "properties": {
                         "enable": {
                           "type": [
@@ -7831,6 +7954,13 @@
                   ],
                   "descriptionCN": "<p><code>viewControl</code>用于鼠标的旋转，缩放等视角控制。</p>\n",
                   "properties": {
+                    "projection": {
+                      "type": [
+                        "string"
+                      ],
+                      "descriptionCN": "<p>投影方式，默认为透视投影<code>&#39;perspective&#39;</code>，也支持设置为正交投影<code>&#39;orthographic&#39;</code>。</p>\n",
+                      "default": "perspective"
+                    },
                     "autoRotate": {
                       "type": [
                         "boolean"
@@ -7868,9 +7998,10 @@
                     },
                     "rotateSensitivity": {
                       "type": [
-                        "number"
+                        "number",
+                        "Array"
                       ],
-                      "descriptionCN": "<p>旋转操作的灵敏度，值越大越灵敏。默认为``</p>\n<p>设置为<code>0</code>后无法旋转。</p>\n",
+                      "descriptionCN": "<p>旋转操作的灵敏度，值越大越灵敏。支持使用数组分别设置横向和纵向的旋转灵敏度。</p>\n<p>默认为``</p>\n<p>设置为<code>0</code>后无法旋转。</p>\n<pre><code class=\"lang-js\">// 无法旋转\nrotateSensitivity: 0\n// 只能横向旋转\nrotateSensitivity: [1, 0]\n// 只能纵向旋转\nrotateSensitivity: [0, 1]\n</code></pre>\n",
                       "default": 1
                     },
                     "zoomSensitivity": {
@@ -7884,7 +8015,7 @@
                       "type": [
                         "number"
                       ],
-                      "descriptionCN": "<p>平移操作的灵敏度，值越大越灵敏。默认为``</p>\n<p>设置为<code>0</code>后无法平移。</p>\n",
+                      "descriptionCN": "<p>平移操作的灵敏度，值越大越灵敏。支持使用数组分别设置横向和纵向的平移灵敏度</p>\n<p>默认为``</p>\n<p>设置为<code>0</code>后无法平移。</p>\n",
                       "default": 1
                     },
                     "panMouseButton": {
@@ -7905,21 +8036,42 @@
                       "type": [
                         "number"
                       ],
-                      "descriptionCN": "<p>默认视角距离主体的距离，对于 <a href=\"#globe\">globe</a> 来说是距离地球表面的距离，对于 <a href=\"#grid3D\">grid3D</a> 和 <a href=\"#geo3D\">geo3D</a> 等其它组件来说是距离中心原点的距离。</p>\n",
+                      "descriptionCN": "<p>默认视角距离主体的距离，对于 <a href=\"#globe\">globe</a> 来说是距离地球表面的距离，对于 <a href=\"#grid3D\">grid3D</a> 和 <a href=\"#geo3D\">geo3D</a> 等其它组件来说是距离中心原点的距离。在 <a href=\"#series-map3D.viewControl.projection\">projection</a> 为<code>&#39;perspective&#39;</code>的时候有效。</p>\n",
                       "default": 100
                     },
                     "minDistance": {
                       "type": [
                         "number"
                       ],
-                      "descriptionCN": "<p>视角通过鼠标控制能拉近到主体的最小距离。</p>\n",
+                      "descriptionCN": "<p>视角通过鼠标控制能拉近到主体的最小距离。在 <a href=\"#series-map3D.viewControl.projection\">projection</a> 为<code>&#39;perspective&#39;</code>的时候有效。</p>\n",
                       "default": 40
                     },
                     "maxDistance": {
                       "type": [
                         "number"
                       ],
-                      "descriptionCN": "<p>视角通过鼠标控制能拉远到主体的最小距离。</p>\n",
+                      "descriptionCN": "<p>视角通过鼠标控制能拉远到主体的最小距离。在 <a href=\"#series-map3D.viewControl.projection\">projection</a> 为<code>&#39;perspective&#39;</code>的时候有效。</p>\n",
+                      "default": 400
+                    },
+                    "orthographicSize": {
+                      "type": [
+                        "number"
+                      ],
+                      "descriptionCN": "<p>正交投影的大小。在 <a href=\"#series-map3D.viewControl.projection\">projection</a> 为<code>&#39;orthographic&#39;</code>的时候有效。</p>\n",
+                      "default": 100
+                    },
+                    "maxOrthographicSize": {
+                      "type": [
+                        "number"
+                      ],
+                      "descriptionCN": "<p>正交投影缩放的最大值。在 <a href=\"#series-map3D.viewControl.projection\">projection</a> 为<code>&#39;orthographic&#39;</code>的时候有效。</p>\n",
+                      "default": 20
+                    },
+                    "minOrthographicSize": {
+                      "type": [
+                        "number"
+                      ],
+                      "descriptionCN": "<p>正交投影缩放的最小值。在 <a href=\"#series-map3D.viewControl.projection\">projection</a> 为<code>&#39;orthographic&#39;</code>的时候有效。</p>\n",
                       "default": 400
                     },
                     "alpha": {
@@ -8349,7 +8501,7 @@
                   "type": [
                     "string"
                   ],
-                  "descriptionCN": "<p>曲面图中三维图形的着色效果，echarts-gl 中支持下面三种着色方式</p>\n<ul>\n<li><p><code>&#39;color&#39;</code>\n只显示颜色，不受光照等其它因素的影响。</p>\n</li>\n<li><p><code>&#39;lambert&#39;</code>\n通过经典的 <a href=\"https://en.wikipedia.org/wiki/Lambertian_reflectance\" target=\"_blank\">lambert</a> 着色表现光照带来的明暗。</p>\n</li>\n<li><p><code>&#39;realistic&#39;</code>\n真实感渲染，配合 <a href=\"#globe.light.ambientCubemap\">light.ambientCubemap</a> 和 <a href=\"#globe.postEffect\">postEffect</a> 使用可以让展示的画面效果和质感有质的提升。ECharts GL 中使用了<a href=\"https://www.marmoset.co/posts/physically-based-rendering-and-you-can-too/\" target=\"_blank\">基于物理的渲染（PBR)</a> 来表现真实感材质。</p>\n</li>\n</ul>\n"
+                  "descriptionCN": "<p>曲面图中三维图形的着色效果，echarts-gl 中支持下面三种着色方式</p>\n<ul>\n<li><p><code>&#39;color&#39;</code>\n只显示颜色，不受光照等其它因素的影响。</p>\n</li>\n<li><p><code>&#39;lambert&#39;</code>\n通过经典的 <a href=\"https://en.wikipedia.org/wiki/Lambertian_reflectance\" target=\"_blank\">lambert</a> 着色表现光照带来的明暗。</p>\n</li>\n<li><p><code>&#39;realistic&#39;</code>\n真实感渲染，配合 <a href=\"#globe.light.ambientCubemap\">light.ambientCubemap</a> 和 <a href=\"#globe.postEffect\">postEffect</a> 使用可以让展示的画面效果和质感有质的提升。ECharts GL 中使用了<a href=\"https://www.marmoset.co/posts/physically-based-rendering-and-you-can-too/\" target=\"_blank\">基于物理的渲染（PBR）</a> 来表现真实感材质。</p>\n</li>\n</ul>\n"
                 },
                 "realisticMaterial": {
                   "type": [

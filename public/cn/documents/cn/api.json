@@ -248,7 +248,13 @@
                 "type": [
                   "Action"
                 ],
-                "descriptionCN": "<p>切换图例的选中状态。</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;legendToggleSelect&#39;,\n    // 图例名称\n    name: string\n})\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.legendselectchanged\">legendselectchanged</a></p>\n<!--============= tooltip ==========-->"
+                "descriptionCN": "<p>切换图例的选中状态。</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;legendToggleSelect&#39;,\n    // 图例名称\n    name: string\n})\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.legendselectchanged\">legendselectchanged</a></p>\n"
+              },
+              "legendScroll": {
+                "type": [
+                  "Action"
+                ],
+                "descriptionCN": "<p>控制图例的滚动。当 <a href=\"option.html#legend.type\" target=\"_blank\">legend.type</a> 为 <code>&#39;scroll&#39;</code> 时有效。</p>\n<pre><code class=\"lang-js\">dispatchAction({\n    type: &#39;legendScroll&#39;,\n    scrollDataIndex: number,\n    legendId: string\n})\n</code></pre>\n<p><strong>EVENT:</strong> <a href=\"#events.legendscroll\">legendscroll</a></p>\n<!--============= tooltip ==========-->"
               }
             }
           },
@@ -522,6 +528,12 @@
             ],
             "descriptionCN": "<p><strong>ACTION:</strong> <a href=\"#action.legend.legendUnSelect\">legendUnSelect</a>\n图例取消选中后的事件。</p>\n<pre><code class=\"lang-js\">{\n    type: &#39;legendunselected&#39;,\n    // 取消选中的图例名称\n    name: string\n    // 所有图例的选中状态表。\n    selected: Object\n}\n</code></pre>\n"
           },
+          "legendscroll": {
+            "type": [
+              "Event"
+            ],
+            "descriptionCN": "<p><strong>ACTION:</strong> <a href=\"#action.legend.legendScroll\">legendscroll</a>\n图例滚动事件。</p>\n<pre><code class=\"lang-js\">{\n    type: &#39;legendscroll&#39;,\n    scrollDataIndex: number\n    legendId: string\n}\n</code></pre>\n"
+          },
           "datazoom": {
             "type": [
               "Event"
@@ -624,13 +636,13 @@
             ],
             "descriptionCN": "<p><a href=\"option.html#parallelAxis\" target=\"_blank\">平行坐标轴 (Parallel)</a>范围选取事件。</p>\n<p>当进行坐标轴范围选取时，可以用如下方式获取当前高亮的线所对应的 data indices\n（即 <code>series</code> 的 <code>data</code> 中的序号列表）。</p>\n<pre><code class=\"lang-javascript\">chart.on(&#39;axisareaselected&#39;, function () {\n    var series0 = chart.getModel().getSeries()[0];\n    var series1 = chart.getModel().getSeries()[1];\n    var indices0 = series0.getRawIndicesByActiveState(&#39;active&#39;);\n    var indices1 = series1.getRawIndicesByActiveState(&#39;active&#39;);\n    console.log(indices0, indices1);\n});\n</code></pre>\n"
           },
-          "focusNodeAdjacency": {
+          "focusnodeadjacency": {
             "type": [
               "Event"
             ],
             "descriptionCN": "<p><a href=\"option.html#graph\" target=\"_blank\">graph</a>的邻接节点高亮事件。</p>\n<p>参见<a href=\"#action.graph.focusNodeAdjacency\">focusNodeAdjacency</a>。</p>\n"
           },
-          "unfocusNodeAdjacency": {
+          "unfocusnodeadjacency": {
             "type": [
               "Event"
             ],
