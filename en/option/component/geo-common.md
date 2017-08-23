@@ -120,10 +120,8 @@ Selected mode decides whether multiple selecting is supported. By default, `fals
 
 Map area style in normal state.
 
-{{ if: ${inMap} }}
 ###${prefix} areaColor(Color) = '#eee'
 Area filling color.
-{{ /if }}
 
 {{ use: partial-item-style(prefix=${prefix} + '##') }}
 
@@ -131,10 +129,8 @@ Area filling color.
 
 Map area style in highlighted state.
 
-{{ if: ${inMap} }}
 ###${prefix} areaColor(Color) = '#eee'
 Area filling color.
-{{ /if }}
 
 {{ use: partial-item-style(prefix=${prefix} + '##') }}
 

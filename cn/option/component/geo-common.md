@@ -120,10 +120,8 @@ boundingCoords: [
 
 普通状态下的多边形样式。
 
-{{ if: ${inMap} }}
 ###${prefix} areaColor(Color) = '#eee'
 地图区域的颜色。
-{{ /if }}
 
 {{ use: partial-item-style(prefix=${prefix} + '##') }}
 
@@ -131,10 +129,8 @@ boundingCoords: [
 
 高亮状态下的多边形样式。
 
-{{ if: ${inMap} }}
 ###${prefix} areaColor(Color) = '#eee'
 地图区域的颜色。
-{{ /if }}
 
 {{ use: partial-item-style(prefix=${prefix} + '##') }}
 
