@@ -1,3 +1,19 @@
+## v3.7.1
+<div class="time">2017-08-31</div>
+
+[Recovery Build]
+
++ [+] Supported function in [axis.min](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.min), [axis.max](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.max). See [#6465](https://github.com/ecomfe/echarts/issues/6465).
+
++ [^] Fixed problems of compatibility and emphasis style about textStyle. See [#6491](https://github.com/ecomfe/echarts/issues/6491)、[#6529](https://github.com/ecomfe/echarts/issues/6529), [#6516](https://github.com/ecomfe/echarts/issues/6516), [#6532](https://github.com/ecomfe/echarts/issues/6532).
+
++ [^] Add sub-pixel optimize to [candlestick](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-candlestick).
+
++ [^] Fixed that emphasis style was not applied when using [graph.focusNodeAdjacency](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-graph.focusNodeAdjacency).
+
+
+
+
 ## v3.7.0
 <div class="time">2017-08-16</div>
 
