@@ -5,7 +5,7 @@
 
 + [+] Supported function in [axis.min](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.min), [axis.max](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.max). See [#6465](https://github.com/ecomfe/echarts/issues/6465).
 
-+ [^] Fixed problems of compatibility and emphasis style about textStyle. See [#6491](https://github.com/ecomfe/echarts/issues/6491)、[#6529](https://github.com/ecomfe/echarts/issues/6529), [#6516](https://github.com/ecomfe/echarts/issues/6516), [#6532](https://github.com/ecomfe/echarts/issues/6532).
++ [^] Fixed problems of compatibility and emphasis style about textStyle. See [#6491](https://github.com/ecomfe/echarts/issues/6491)、[#6529](https://github.com/ecomfe/echarts/issues/6529), [#6516](https://github.com/ecomfe/echarts/issues/6516), [#6532](https://github.com/ecomfe/echarts/issues/6532), [#6237](https://github.com/ecomfe/echarts/issues/6237).
 
 + [^] Add sub-pixel optimize to [candlestick](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-candlestick).
 

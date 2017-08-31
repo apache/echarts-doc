@@ -5,7 +5,7 @@
 
 + [+] [axis.min](http://echarts.baidu.com/option.html#xAxis.min), [axis.max](http://echarts.baidu.com/option.html#xAxis.max) 支持了设置函数。参见 [#6465](https://github.com/ecomfe/echarts/issues/6465)。
 
-+ [^] 修复了 textStyle 相关兼容性和 emphasis style 问题，参见 [#6491](https://github.com/ecomfe/echarts/issues/6491)、[#6529](https://github.com/ecomfe/echarts/issues/6529)、[#6516](https://github.com/ecomfe/echarts/issues/6516)、[#6532](https://github.com/ecomfe/echarts/issues/6532)。
++ [^] 修复了 textStyle 相关兼容性和 emphasis style 问题，参见 [#6491](https://github.com/ecomfe/echarts/issues/6491)、[#6529](https://github.com/ecomfe/echarts/issues/6529)、[#6516](https://github.com/ecomfe/echarts/issues/6516)、[#6532](https://github.com/ecomfe/echarts/issues/6532)、[#6237](https://github.com/ecomfe/echarts/issues/6237)。
 
 + [^] 改善了 [K线图](http://echarts.baidu.com/option.html#series-candlestick) 边界模糊的问题。
 
