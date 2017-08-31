@@ -265,7 +265,7 @@ splitLine: {
 boundaryGap: ['20%', '20%']
 ```
 
-#${prefix} min(number|string) = null
+#${prefix} min(number|string|function) = null
 
 坐标轴刻度最小值。
 
@@ -274,6 +274,16 @@ boundaryGap: ['20%', '20%']
 不设置时会自动计算最小值保证坐标轴刻度的均匀分布。
 
 在类目轴中，也可以设置为类目的序数（如类目轴 `data: ['类A', '类B', '类C']` 中，序数 `2` 表示 `'类C'`。也可以设置为负数，如 `-3`）。
+
+当设置成 `function` 形式时，可以根据计算得出的数据最大最小值设定坐标轴的最小值。如：
+
+```
+min: function(value) {
+    return value.min - 20;
+}
+```
+
+其中 `value` 是一个包含 `min` 和 `max` 的对象，分别表示数据的最大最小值，这个函数应该返回坐标轴的最小值。
 
 #${prefix} max(number|string) = null
 
@@ -284,6 +294,16 @@ boundaryGap: ['20%', '20%']
 不设置时会自动计算最大值保证坐标轴刻度的均匀分布。
 
 在类目轴中，也可以设置为类目的序数（如类目轴 `data: ['类A', '类B', '类C']` 中，序数 `2` 表示 `'类C'`。也可以设置为负数，如 `-3`）。
+
+当设置成 `function` 形式时，可以根据计算得出的数据最大最小值设定坐标轴的最小值。如：
+
+```
+max: function(value) {
+    return value.max - 20;
+}
+```
+
+其中 `value` 是一个包含 `min` 和 `max` 的对象，分别表示数据的最大最小值，这个函数应该返回坐标轴的最大值。
 
 #${prefix} scale(boolean) = false
 
