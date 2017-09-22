@@ -20,6 +20,9 @@
 ## hoverAnimation(boolean) = true
 是否开启 hover 在扇区上的放大动画效果。
 
+## hoverOffset(number) = 10
+高亮扇区的偏移距离。
+
 ## selectedMode(boolean|string) = false
 选中模式，表示是否支持多个选中，默认关闭，支持布尔值和字符串，字符串取值可选`'single'`，`'multiple'`，分别表示单选还是多选。
 
