@@ -29,9 +29,6 @@
 ## selectedOffset(number) = 10
 选中扇区的偏移距离。
 
-## hoverOffset(number) = 10
-高亮扇区的偏移量。
-
 ## clockwise(boolean) = true
 饼图的扇区是否是顺时针排布。
 

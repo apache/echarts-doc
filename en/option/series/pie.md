@@ -33,9 +33,6 @@ Besides, it can be set to `'single'` or `'multiple'`, for single selection and m
 ## selectedOffset(number) = 10
 The offset distance of selected sector.
 
-## hoverOffset(number) = 10
-The offset distance of highlighted sector.
-
 ## clockwise(boolean) = true
 Whether the layout of sectors of pie chart is clockwise.
 
