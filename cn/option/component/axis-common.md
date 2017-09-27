@@ -226,7 +226,7 @@ splitLine: {
 
 **可选：**
 + `'start'`
-+ `'middle'`
++ `'middle'` 或者 `'center'`
 + `'end'`
 
 #${prefix} nameTextStyle(Object)
