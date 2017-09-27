@@ -21,7 +21,7 @@
 
 + [^] 优化了 IE 高版本保存为图片功能。参见 [#6279](https://github.com/ecomfe/echarts/issues/6279)。
 
-+ [^] 修复了 motion blur 清除问题。参见 [#6577](https://github.com/ecomfe/echarts/issues/6577)。
++ [^] 修复了尾迹特效清除问题。参见 [#6577](https://github.com/ecomfe/echarts/issues/6577)。
 
 + [^] 修复了 [K线图（candlestick）](http://echarts.baidu.com/option.html#series-candlestick) 中开盘收盘相等时颜色问题。参见 [#6583](https://github.com/ecomfe/echarts/issues/6583)。
 
