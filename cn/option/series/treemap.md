@@ -675,6 +675,14 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 <br>
 {{ use: partial-treemap-borderColor-setting(galleryEditorPath=${galleryEditorPath}) }}
 
+#${prefix} strokeColor(Color) = null
+
+每个矩形的描边颜色。
+
+#${prefix} strokeWidth(number) = null
+
+每个矩形的描边宽度。
+
 {{/if }}
 
 
