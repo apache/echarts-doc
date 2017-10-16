@@ -1,120 +1,222 @@
 
-{{target: series-sankey}}
+{{target: series-tree}}
 
-# series.sankey(Object)
+# series.tree(Object)
 
-** Sankey Graphs **
+**树图**
 
-Sankey graphs are a specific type of streamgraphs, in which the width of each branch is shown proportionally to the flow quantity. These graphs are typically used to visualize energy or material or cost transfers between processes. They can also visualize the energy accounts, material flow accounts on a regional or national level, and also the breakdown of cost of item or services.
+树图主要用来可视化树形数据结构，是一种特殊的层次类型，具有唯一的根节点，左子树，和右子树。
 
-**Example: **
+**注意：目前不支持在单个 series 中直接绘制森林，可以通过在一个 option 中配置多个 series 实现森林**
 
-~[700x580](${galleryViewPath}sankey-energy&edit=1&reset=1)
+**树图示例：**
 
+~[900x780](${galleryViewPath}tree-vertical&edit=1&reset=1)
 
-<br>
-**Visual Encoding: **
+**多个 series 组合成森林示例：**
 
-The sankey graphs encodes each `node` of the raw data into a small rectangular. And different nodes are presented in different colors as far as possible. The `label` next to the small rectangular, which encoding the name of the node.
+~[800x680](${galleryViewPath}tree-legend&edit=1&reset=1)
 
-In addition, the edge between two small rectangulars in the graph encoding the `link` of the raw data. The width of edge is shown proportionally to the `value` of `link`.
+## type(string) = 'tree'
 
-
-
-## type(string) = 'sankey'
+{{ use: partial-series-name() }}
 
 {{ use: partial-rect-layout-width-height(
-    componentName='sankey',
-    defaultLeft: '5%',
-    defaultRight: '20%',
-    defaultTop: '5%',
-    defaultBottom: '5%',
+    componentName='tree',
+    defaultLeft: '12%',
+    defaultRight: '12%',
+    defaultTop: '12%',
+    defaultBottom: '12%',
     defaultWidth: 'null',
     defaultHeight: 'null'
 ) }}
 
+## layout(string) = 'orthogonal'
 
-## nodeWidth(number) = 20
+树图的布局，有 `正交` 和 `径向` 两种布局。这里的 `正交布局` 就是我们通常所说的 `水平` 和 `垂直` 两个方向，对应的参数取值为 `'orthogonal'` 。而 `径向布局` 是指以根节点为圆心，每一层节点为环，一层层向外发散绘制而成的布局，对应的参数取值为 `'radial'` 。
 
-The node width of rectangle in graph.
+**正交布局示例：**
 
-
-## nodeGap(number) = 8
-
-The gap between any two regtangles in each column from the graph.
+~[780x900](${galleryViewPath}tree-basic&edit=1&reset=1)
 
 
-## layoutIterations(number) = 32
+**径向布局示例：**
 
-The iterations of layout, which is used to continuously optimize the positions of nodes in graph, decreasing the overlapping between nodes and edges.
+~[800x800](${galleryViewPath}tree-radial&edit=1&reset=1)
 
-The default iterations of layout: `32`.
 
-The test shows that iterations of layout could not be less than the default value.
+## orient(string) = 'horizontal'
 
-## label(Object)
+树图中 `正交布局` 的方向 ，对应有 `水平` 和 `垂直` 两个方向，取值分别为 `horizontal` , `vertical`.
 
-`label` describes the text label style in each rectangular node.
 
-### normal(Object)
-{{use:partial-label(
-    prefix="###",
-    defaultShowLabel=true,
-    defaultPosition="'right'",
-    formatter1d=true
-)}}
-### emphasis(Object)
-{{use:partial-label(
-    prefix="###"
-)}}
+{{ use:partial-symbol(
+    seriesType="tree",
+    defaultSymbol="'emptyCircle'",
+    defaultSymbolSize=7,
+    prefix="##",
+    hasCallback=true
+) }}
+
+
+## expandAndCollapse(boolean) = true
+
+子树折叠和展开的交互，`默认打开` 。由于绘图区域是有限的，而通常一个树图的节点可能会比较多，这样就会出现节点之间相互遮盖的问题。为了避免这一问题，可以将暂时无关的子树折叠收起，等到需要时再将其展开。如上面径向布局树图示例，节点中心用蓝色填充的就是折叠收起的子树，可以点击将其展开。
+
+**注意：如果配置自定义的图片作为节点的标记，是无法通过填充色来区分当前节点是否有折叠的子树的。而目前暂不支持，上传两张图片分别表示节点折叠和展开两种状态。所以，如果想明确地显示节点的两种状态，建议使用 `ECharts` 常规的标记类型，如 `'emptyCircle'` 等。**
+
+## initialTreeDepth(number) = 2
+
+树图初始展开的层级（深度）。根节点是第 0 层，然后是第 1 层、第 2 层，... ，直到叶子节点。该配置项主要和 `折叠展开` 交互一起使用，目的还是为了防止一次展示过多节点，节点之间发生遮盖。
 
 ## itemStyle(Object)
 
-The style of node rectangle in sankey graphs.
+树图中每个节点的样式，其中 [itemStyle.normal.color](~series-tree.itemStyle.normal.color) 表示节点的填充色，用来区别当前节点所对应的子树折叠或展开的状态。
 
 ### normal(Object)
 {{use: partial-item-style(
     prefix="###",
     useColorPalatte=true,
-    defaultBorderWidth=1,
-    defaultBorderColor="'#aaa'"
+    defaultBorderWidth=1.5,
+    defaultBorderColor="'#c23531'"
 )}}
+
 ### emphasis(Object)
 {{use: partial-item-style(prefix="###")}}
 
 
-## lineStyle(Object)
-The line style of sankey graph, in which [lineStyle.normal.color](~series-sankey.lineStyle.normal.color) can be assigned to the value of `'source'` of `'target'`, then the edge will automatically take the source node or target node color as its own color.
+## label(Object)
+
+`label` 描述了每个节点所对应的文本标签的样式。
 
 ### normal(Object)
-{{use: partial-sankey-line-style(prefix="###")}}
+
+{{use:partial-label(
+    prefix="###",
+    defaultShowLabel=true,
+    formatter1d=true
+)}}
+
 ### emphasis(Object)
-{{use: partial-sankey-line-style(
+
+{{use:partial-label(
+    prefix="###",
+    formatter1d=true
+)}}
+
+
+## lineStyle(Object)
+
+定义了树图边的样式。
+
+### normal(Object)
+{{use: partial-tree-line-style(prefix="###")}}
+
+### emphasis(Object)
+{{use: partial-tree-line-style(
     prefix="###"
 )}}
 
 
-## data(Array)
+## leaves(Object)
 
-{{ use: partial-1d-data-desc() }}
-### name(string)
-The name of data item.
-### value(number|Array)
-The value of data item.
-### itemStyle(Object)
-The style of this node.
+叶子节点的特殊配置，如上面的树图实例中，叶子节点和非叶子节点的标签位置不同。
+
+### label(Object)
+
+描述了叶子节点所对应的文本标签的样式。
+
 #### normal(Object)
-{{use:partial-item-style(prefix="####", useColorPalatte=true)}}
+
+{{use:partial-label(
+    prefix="####",
+    defaultShowLabel=true,
+    formatter1d=true
+)}}
+
 #### emphasis(Object)
+
+{{use:partial-label(
+    prefix="####",
+    formatter1d=true
+)}}
+
+### itemStyle(Object)
+
+树图中叶子节点的样式。
+
+#### normal(Object)
+{{use: partial-item-style(
+    prefix="####",
+    useColorPalatte=true
+)}}
+
+#### emphasis(Object)
+{{use: partial-item-style(prefix="####")}}
+
+
+## data(Object)
+
+[series-tree.data](~series-tree.data) 的数据格式是树状结构的，例如：
+
+```javascript
+{ // 注意，最外层是一个对象，代表树的根节点
+    name: "flare",    // 节点的名称，当前节点 label 对应的文本
+    label: {          // 此节点特殊的 label 配置（如果需要的话）。
+        ...           // label的格式参见 series-tree.label。
+    },
+    itemStyle: {      // 此节点特殊的 itemStyle 配置（如果需要的话）。
+        ...           // label的格式参见 series-tree.itemStyle。
+    },
+    children: [
+        {
+            name: "flex",
+            value: 4116,    // value 值，只在 tooltip 中显示
+            label: {
+                ...
+            },
+            itemStyle: {
+                ...
+            }
+            children: [...]     // 叶子节点没有 children, 可以不写
+        },
+        ... 
+    ]
+};
+```
+
+### name(string)
+
+树节点的名称，用来标识每一个节点。
+
+### value(number)
+
+节点的值，在 tooltip 中显示。
+
+### itemStyle(Object)
+
+该节点的样式。
+
+#### normal(Object)
+
+{{use:partial-item-style(prefix="####", useColorPalatte=true)}}
+
+#### emphasis(Object)
+
 {{use:partial-item-style(prefix="####")}}
 
 ### label(Object)
-The lable style of this node.
+
+该节点的标签。
+
 #### normal(Object)
+
 {{ use:partial-label(
     prefix="####"
 ) }}
+
 #### emphasis(Object)
+
 {{ use:partial-label(
     prefix="####"
 ) }}
@@ -124,68 +226,30 @@ The lable style of this node.
 )}}
 
 
-## nodes(Array)
-Equals to [data](~series-sankey.data)
-
-## links(Array)
-The links data between nodes. For instance:
-```js
-links: [{
-    source: 'n1',
-    target: 'n2'
-}, {
-    source: 'n2',
-    target: 'n3'
-}]
-```
-### source(string)
-The [name of source node](~series-graph.data.name) of edge
-### target(string)
-The [name of target node](~series-graph.data.name) of edge
-### value(number)
-The value of edge, which decides the width of edge.
-### lineStyle(Object)
-The line stlye of edge.
-#### normal(Object)
-{{use:partial-sankey-line-style(
-    prefix="####"
-)}}
-#### emphasis(Object)
-{{ use:partial-sankey-line-style(
-    prefix="####"
-) }}
-
-## edges(Array)
-Equals to [links](~series-sankey.links)
-
-{{ use:partial-silent(
-    prefix="#"
-)}}
-
 {{use: partial-animation(
-    prefix="#",
+    prefix="##",
     defaultAnimationEasing="'linear'",
     defaultAnimationDuration=1000,
     galleryEditorPath=${galleryEditorPath}
 )}}
-
 
 {{use: partial-tooltip-in-series(
     galleryViewPath=${galleryViewPath}
 )}}
 
 
+{{target: partial-tree-line-style}}
 
+#${prefix} color(Color) = "'#ccc'"
 
-{{target: partial-sankey-line-style}}
+树图边的颜色。
 
-#${prefix} color(Color) = "'#314656'"
-The color of the edge in sankey graphs.
+#${prefix} width(number) = 1.5
 
-#${prefix} opacity(number) = 0.2
-The opacity of the edge in sankey graph.
+树图边的宽度。
 
 #${prefix} curveness(number) = 0.5
-The curveness of the edge in sankey graph.
+
+树图边的曲度。
 
 {{use: partial-style-shadow(prefix=${prefix})}}
