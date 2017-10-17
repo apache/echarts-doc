@@ -1,19 +1,18 @@
-
 {{target: series-tree}}
 
 # series.tree(Object)
 
-**树图**
+**Tree Diagram**
 
-树图主要用来可视化树形数据结构，是一种特殊的层次类型，具有唯一的根节点，左子树，和右子树。
+The tree diagram is mainly used to visualize the tree data structure, which is a special hierarchical type with a unique root node, left subtree, and right subtree. 
 
-**注意：目前不支持在单个 series 中直接绘制森林，可以通过在一个 option 中配置多个 series 实现森林**
+**Note: Forests are not currently supported directly in a single series, and can be implemented by configuring multiple series in an option**
 
-**树图示例：**
+**Tree example：**
 
 ~[900x780](${galleryViewPath}tree-vertical&edit=1&reset=1)
 
-**多个 series 组合成森林示例：**
+**Multiple series are combined into forest：**
 
 ~[800x680](${galleryViewPath}tree-legend&edit=1&reset=1)
 
@@ -33,21 +32,21 @@
 
 ## layout(string) = 'orthogonal'
 
-树图的布局，有 `正交` 和 `径向` 两种布局。这里的 `正交布局` 就是我们通常所说的 `水平` 和 `垂直` 两个方向，对应的参数取值为 `'orthogonal'` 。而 `径向布局` 是指以根节点为圆心，每一层节点为环，一层层向外发散绘制而成的布局，对应的参数取值为 `'radial'` 。
+The layout of the tree, which can be `orthogonal` and `radial` 。Here the `orthogonal` layout is what we usually refer to the `horizontal` and `vertical` direction, the corresponding parameter value is `orthogonal`. The `radial` layout refers to the view that the root node as the center and each layer of nodes as the ring, the corresponding parameter value is `radial`. 
 
-**正交布局示例：**
+**Orthogonal Example：**
 
 ~[780x900](${galleryViewPath}tree-basic&edit=1&reset=1)
 
 
-**径向布局示例：**
+**Radial Example：**
 
 ~[800x800](${galleryViewPath}tree-radial&edit=1&reset=1)
 
 
 ## orient(string) = 'horizontal'
 
-树图中 `正交布局` 的方向 ，对应有 `水平` 和 `垂直` 两个方向，取值分别为 `horizontal` , `vertical`.
+The direction of the `orthogonal` layout in the tree, the corresponding parameter value is `horizontal` or `vertical`.
 
 
 {{ use:partial-symbol(
@@ -61,17 +60,17 @@
 
 ## expandAndCollapse(boolean) = true
 
-子树折叠和展开的交互，`默认打开` 。由于绘图区域是有限的，而通常一个树图的节点可能会比较多，这样就会出现节点之间相互遮盖的问题。为了避免这一问题，可以将暂时无关的子树折叠收起，等到需要时再将其展开。如上面径向布局树图示例，节点中心用蓝色填充的就是折叠收起的子树，可以点击将其展开。
+Subtree collapses and expands interaction, `default true`. As the drawing area is limited, and usually the nodes of a tree may be more, so there will be hidden between the nodes. In order to avoid this problem, you can put a temporary unrelated subtree folded away, until you need to start when necessary. Such as the above radial layout tree example, the center of the node is filled with blue is the folded away subtree, you can click to expand it.
 
-**注意：如果配置自定义的图片作为节点的标记，是无法通过填充色来区分当前节点是否有折叠的子树的。而目前暂不支持，上传两张图片分别表示节点折叠和展开两种状态。所以，如果想明确地显示节点的两种状态，建议使用 `ECharts` 常规的标记类型，如 `'emptyCircle'` 等。**
+**Note: If you configure a custom image as the tag for a node, it is not possible to distinguish whether the current node has a collapsed subtree by the fill color. And currently do not support, upload two pictures, respectively represent the collapsing and expansion state of the node. So, if you want to explicitly show the two states of the node, it is recommended to use `ECharts` regular tag types, such as `emptyCircle`.**
 
 ## initialTreeDepth(number) = 2
 
-树图初始展开的层级（深度）。根节点是第 0 层，然后是第 1 层、第 2 层，... ，直到叶子节点。该配置项主要和 `折叠展开` 交互一起使用，目的还是为了防止一次展示过多节点，节点之间发生遮盖。
+The initial level (depth) of the tree. The root node is the 0th layer, then the first layer, the second layer, ... , until the leaf node. This configuration item is primarily used in conjunction with `collapsing and expansion` interactions. The purpose is to prevent the nodes from obscuring each other。
 
 ## itemStyle(Object)
 
-树图中每个节点的样式，其中 [itemStyle.normal.color](~series-tree.itemStyle.normal.color) 表示节点的填充色，用来区别当前节点所对应的子树折叠或展开的状态。
+The style of each node in the tree, where [itemStyle.normal.color] (~ series-tree.itemStyle.normal.color) represents the fill color of the node, to distinguish the state of the subtree corresponding to `collapsing` or `expansion`.
 
 ### normal(Object)
 {{use: partial-item-style(
@@ -87,7 +86,7 @@
 
 ## label(Object)
 
-`label` 描述了每个节点所对应的文本标签的样式。
+`label` describes the style of the text corresponding to each node.
 
 ### normal(Object)
 
@@ -107,7 +106,7 @@
 
 ## lineStyle(Object)
 
-定义了树图边的样式。
+Defines the style of the tree edge.
 
 ### normal(Object)
 {{use: partial-tree-line-style(prefix="###")}}
@@ -120,11 +119,11 @@
 
 ## leaves(Object)
 
-叶子节点的特殊配置，如上面的树图实例中，叶子节点和非叶子节点的标签位置不同。
+Leaf node special configuration, such as the above tree diagram example, the leaf node and non-leaf node label location is different.
 
 ### label(Object)
 
-描述了叶子节点所对应的文本标签的样式。
+Describes the style of the text label corresponding to the leaf node.
 
 #### normal(Object)
 
@@ -143,7 +142,7 @@
 
 ### itemStyle(Object)
 
-树图中叶子节点的样式。
+The style of the leaf node in the tree.
 
 #### normal(Object)
 {{use: partial-item-style(
@@ -157,28 +156,28 @@
 
 ## data(Object)
 
-[series-tree.data](~series-tree.data) 的数据格式是树状结构的，例如：
+[series-tree.data](~series-tree.data) the data format is a tree structure，for example：
 
 ```javascript
-{ // 注意，最外层是一个对象，代表树的根节点
-    name: "flare",    // 节点的名称，当前节点 label 对应的文本
-    label: {          // 此节点特殊的 label 配置（如果需要的话）。
-        ...           // label的格式参见 series-tree.label。
+{ // note that the outermost layer is an object that represents the root node of the tree.
+    name: "flare",    // the name of the node, the text corresponding to the current node label.
+    label: {          // the special label configuration (if necessary).
+        ...           // the format of the label is shown in the series-tree.label.
     },
-    itemStyle: {      // 此节点特殊的 itemStyle 配置（如果需要的话）。
-        ...           // label的格式参见 series-tree.itemStyle。
+    itemStyle: {      // the special itemStyle configuration (if necessary).
+        ...           // the format of the itemstyle is shown in the series-tree.itemStyle。
     },
     children: [
         {
             name: "flex",
-            value: 4116,    // value 值，只在 tooltip 中显示
+            value: 4116,    // value, which only displayed in tooltip.
             label: {
                 ...
             },
             itemStyle: {
                 ...
             }
-            children: [...]     // 叶子节点没有 children, 可以不写
+            children: [...]     // leaf nodes do not have children, can not write.
         },
         ... 
     ]
@@ -187,15 +186,15 @@
 
 ### name(string)
 
-树节点的名称，用来标识每一个节点。
+The name of the tree node, used to identify each node.
 
 ### value(number)
 
-节点的值，在 tooltip 中显示。
+The value of the node, displayed in the tooltip.
 
 ### itemStyle(Object)
 
-该节点的样式。
+The style of the node.
 
 #### normal(Object)
 
@@ -207,7 +206,7 @@
 
 ### label(Object)
 
-该节点的标签。
+The label of the node.
 
 #### normal(Object)
 
@@ -242,14 +241,14 @@
 
 #${prefix} color(Color) = "'#ccc'"
 
-树图边的颜色。
+The color of the tree edge.
 
 #${prefix} width(number) = 1.5
 
-树图边的宽度。
+The width of the tree edge.
 
 #${prefix} curveness(number) = 0.5
 
-树图边的曲度。
+The curvature of the tree edge.
 
 {{use: partial-style-shadow(prefix=${prefix})}}
