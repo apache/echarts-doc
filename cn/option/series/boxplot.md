@@ -91,7 +91,7 @@ box 的宽度的上下限。数组的意思是：`[min, max]`。
 
 ECharts 并不内置对原始数据的处理，输入给 `boxplot` 的数据须是如上五个统计结果量值。
 
-但是 ECharts 也额外提供了简单的 [原始数据处理函数](https://github.com/ecomfe/echarts/tree/dev-3.0.0/extension/dataTool)，如这个 [例子](${galleryEditorPath}boxplot-light-velocity&edit=1&reset=1) 使用了`echarts.dataTool.prepareBoxplotData` 来进行简单的数据统计。
+但是 ECharts 也额外提供了简单的 [原始数据处理函数](https://github.com/ecomfe/echarts/tree/master/extension/dataTool)，如这个 [例子](${galleryEditorPath}boxplot-light-velocity&edit=1&reset=1) 使用了`echarts.dataTool.prepareBoxplotData` 来进行简单的数据统计。
 
 
 ### name(string)
