@@ -7,7 +7,7 @@ You can get ECharts through the following ways.
 
 1. Choose the version you need and download from [official download page](http://echarts.baidu.com/download.html). Based on developer's varied need of function and package size, we provide different download packages. If you have concern about package size, you can download [full version](http://echarts.baidu.com/dist/echarts.min.js) directly.
 
-2. Download the latest `release` version in ECharts [GitHub](https://github.com/echarts), and you can find the latest version of echarts in `dist` directory of the unzipped files.
+2. Download the latest `release` version in ECharts [GitHub](https://github.com/ecomfe/echarts), and you can find the latest version of echarts in `dist` directory of the unzipped files.
 
 3. Alternatively, you may get echarts through npm by `npm install echarts --save`. See detail in [use echarts in webpack](http://echarts.baidu.com/tutorial.html#%E5%9C%A8%20webpack%20%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts)
 
