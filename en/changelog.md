@@ -1,3 +1,35 @@
+## v3.7.2
+<div class="time">2017-09-27</div>
+
++ [+] Supported English version build (All default text is in English) in <https://github.com/ecomfe/echarts/tree/master/dist>. See [#2321](https://github.com/ecomfe/echarts/issues/2321).
+
++ [+] Supported [pie.hoverOffset](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-pie.hoverOffset). See [#3857](https://github.com/ecomfe/echarts/issues/3857).
+
++ [^] Fixed compatibility of data in [candlestick](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-candlestick). See [#6576](https://github.com/ecomfe/echarts/issues/6576).
+
++ [^] Fixed [showMaxLabel](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.showMaxLabel) [showMinLabel](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.showMinLabel).
+
++ [^] Fixed area chart when all value is negative. See [#6707](https://github.com/ecomfe/echarts/issues/6707).
+
++ [^] Made the meaning of `'middle'` and `'center'` consist in [axis.nameLocation](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.nameLocation).
+
++ [^] Fixed that [markArea.itemStyle.emphasis](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-line.markArea.itemStyle.emphasis) did not work. See [#5245](https://github.com/ecomfe/echarts/issues/5245).
+
++ [^] Fixed the problem of right click in [treemap](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-treemap). See [#6313](https://github.com/ecomfe/echarts/issues/6313).
+
++ [^] Fixed that calender did not work because of DST (Day Saving Time). See [#6543](https://github.com/ecomfe/echarts/issues/6543).
+
++ [^] Enhanced the "save as image" in IE. See [#6279](https://github.com/ecomfe/echarts/issues/6279).
+
++ [^] Fixed cleaning for "motion blur". See [#6577](https://github.com/ecomfe/echarts/issues/6577).
+
++ [^] Fix doji for k series [candlestick](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-candlestick). See [#6583](https://github.com/ecomfe/echarts/issues/6583).
+
++ [^] Fixed the compatibility for `markPoint`. See [#6503](https://github.com/ecomfe/echarts/issues/6503).
+
+
+
+
 ## v3.7.1
 <div class="time">2017-08-31</div>
 

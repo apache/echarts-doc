@@ -245,7 +245,7 @@ Location of axis name.
 
 **Options: **
 + `'start'`
-+ `'middle'`
++ `'middle'` or `'center'`
 + `'end'`
 
 #${prefix} nameTextStyle(Object)

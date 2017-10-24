@@ -1,3 +1,35 @@
+## v3.7.2
+<div class="time">2017-09-27</div>
+
++ [+] 支持了纯英文版 echarts（即默认文字提示为英文）。在 <https://github.com/ecomfe/echarts/tree/master/dist> 中。参见 [#2321](https://github.com/ecomfe/echarts/issues/2321)。
+
++ [+] 支持了设置饼图高亮扇区偏移量：[pie.hoverOffset](http://echarts.baidu.com/option.html#series-pie.hoverOffset)。参见 [#3857](https://github.com/ecomfe/echarts/issues/3857)。
+
++ [^] 修复了 [K线图（candlestick）](http://echarts.baidu.com/option.html#series-candlestick) 中 data 的兼容性。参见 [#6576](https://github.com/ecomfe/echarts/issues/6576)。
+
++ [^] 修复了 [showMaxLabel](http://echarts.baidu.com/option.html#xAxis.showMaxLabel) [showMinLabel](http://echarts.baidu.com/option.html#xAxis.showMinLabel)。
+
++ [^] 修复了负值时区域图的朝向。参见 [#6707](https://github.com/ecomfe/echarts/issues/6707)。
+
++ [^] 统一了 [axis.nameLocation](http://echarts.baidu.com/option.html#xAxis.nameLocation) 取值为 `'middle'` 和 `'center'` 的表现。
+
++ [^] 修复了 [markArea.itemStyle.emphasis](http://echarts.baidu.com/option.html#series-line.markArea.itemStyle.emphasis) 无效的问题。参见 [#5245](https://github.com/ecomfe/echarts/issues/5245)。
+
++ [^] 修复了 [treemap](http://echarts.baidu.com/option.html#series-treemap) 右键点击问题。参见 [#6313](https://github.com/ecomfe/echarts/issues/6313)。
+
++ [^] 修复了在有 DST (Day Saving Time) 的地区的 calendar 出错的问题。参见 [#6543](https://github.com/ecomfe/echarts/issues/6543)。
+
++ [^] 优化了 IE 高版本保存为图片功能。参见 [#6279](https://github.com/ecomfe/echarts/issues/6279)。
+
++ [^] 修复了尾迹特效清除问题。参见 [#6577](https://github.com/ecomfe/echarts/issues/6577)。
+
++ [^] 修复了 [K线图（candlestick）](http://echarts.baidu.com/option.html#series-candlestick) 中开盘收盘相等时颜色问题。参见 [#6583](https://github.com/ecomfe/echarts/issues/6583)。
+
++ [^] 修复了 `markPoint` 向前兼容的问题。参见 [#6503](https://github.com/ecomfe/echarts/issues/6503)。
+
+
+
+
 ## v3.7.1
 <div class="time">2017-08-31</div>
 

@@ -686,6 +686,14 @@ In this way, a effect can be implemented: different sections have different hue 
 <br>
 {{ use: partial-treemap-borderColor-setting(galleryEditorPath=${galleryEditorPath}) }}
 
+#${prefix} strokeColor(Color) = null
+
+Stroke color of each rect.
+
+#${prefix} strokeWidth(number) = null
+
+Stroke width of each rect.
+
 {{/if }}
 
 
