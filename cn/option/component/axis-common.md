@@ -33,6 +33,12 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 当有双轴时，可以用这个属性手动指定，在哪个轴的 0 刻度上。
 {{ /if }}
 
+##${prefix} symbol(string| string[]) = 'none'
+轴线两边的箭头。可以是字符串，表示两端使用同样的箭头；或者长度为 2 的字符串数组，分别表示两端的箭头。默认不显示箭头，即 `'none'`。两端都显示箭头可以设置为 `'arrow'`，只在末端显示箭头可以设置为 `['none', 'arrow']`。
+
+##${prefix} symbolSize(number[]) = [10, 15]
+轴线两边的箭头的大小，第一个数字表示宽度（垂直坐标轴方向），第二个数字表示高度（平行坐标轴方向）。
+
 ##${prefix} lineStyle(Object)
 {{ use: partial-line-style(prefix='##' + ${prefix}, defaultColor="'#333'", defaultWidth=1, defaultType="'solid'", name="坐标轴线") }}
 
