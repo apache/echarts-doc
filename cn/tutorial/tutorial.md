@@ -1,6 +1,7 @@
 {{ target: tutorial }}
 
 {{ import: getting-started }}
+{{ import: custom-build }}
 {{ import: npm-webpack }}
 {{ import: styling }}
 {{ import: dynamic-data }}

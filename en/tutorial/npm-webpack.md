@@ -26,10 +26,12 @@ var echarts = require('echarts');
 var myChart = echarts.init(document.getElementById('main'));
 // draw chart
 myChart.setOption({
-    title: { text: 'ECharts entry example' },
+    title: {
+        text: 'ECharts entry example'
+    },
     tooltip: {},
     xAxis: {
-        data: ["shirt","cardign","chiffon shirt","pants","heels","socks"]
+        data: ['shirt', 'cardign', 'chiffon shirt', 'pants', 'heels', 'socks']
     },
     yAxis: {},
     series: [{
@@ -48,21 +50,23 @@ For example, the code above only uses bar chart, tooltip and title component, so
 
 ```js
 // include ECharts main module
-var echarts = require('echarts/lib/echarts');
+var echarts = require('echarts/src/echarts');
 // include bar chart
-require('echarts/lib/chart/bar');
+require('echarts/src/chart/bar');
 // include tooltip and title component
-require('echarts/lib/component/tooltip');
-require('echarts/lib/component/title');
+require('echarts/src/component/tooltip');
+require('echarts/src/component/title');
 
 // initialize echarts instance with prepared DOM
 var myChart = echarts.init(document.getElementById('main'));
 // draw chart
 myChart.setOption({
-    title: { text: 'ECharts introductory example' },
+    title: {
+        text: 'ECharts introductory example'
+    },
     tooltip: {},
     xAxis: {
-        data: ["shirt","cardign","chiffon shirt","pants","heels","socks"]
+        data: ['shirt', 'cardign', 'chiffon shirt', 'pants', 'heels', 'socks']
     },
     yAxis: {},
     series: [{
@@ -75,4 +79,4 @@ myChart.setOption({
 
 Available modules see [https://github.com/ecomfe/echarts/blob/master/index.js](https://github.com/ecomfe/echarts/blob/master/index.js)
 
-The same goes for another popular packaging tool [browserify](http://browserify.org/), which will not be introduced again here.
+The same goes for another popular packaging tools [browserify](http://browserify.org/), which will not be introduced again here. Using [rollup](https://rollupjs.org/) to make a custom build of echarts is introduced in [Create Custom Build of ECharts](http://echarts.baidu.com/tutorial.html#Create%20Custom%20Build%20of%20ECharts)

@@ -26,10 +26,12 @@ var echarts = require('echarts');
 var myChart = echarts.init(document.getElementById('main'));
 // 绘制图表
 myChart.setOption({
-    title: { text: 'ECharts 入门示例' },
+    title: {
+        text: 'ECharts 入门示例'
+    },
     tooltip: {},
     xAxis: {
-        data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+        data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
     },
     yAxis: {},
     series: [{
@@ -48,21 +50,23 @@ myChart.setOption({
 
 ```js
 // 引入 ECharts 主模块
-var echarts = require('echarts/lib/echarts');
+var echarts = require('echarts/src/echarts');
 // 引入柱状图
-require('echarts/lib/chart/bar');
+require('echarts/src/chart/bar');
 // 引入提示框和标题组件
-require('echarts/lib/component/tooltip');
-require('echarts/lib/component/title');
+require('echarts/src/component/tooltip');
+require('echarts/src/component/title');
 
 // 基于准备好的dom，初始化echarts实例
 var myChart = echarts.init(document.getElementById('main'));
 // 绘制图表
 myChart.setOption({
-    title: { text: 'ECharts 入门示例' },
+    title: {
+        text: 'ECharts 入门示例'
+    },
     tooltip: {},
     xAxis: {
-        data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+        data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
     },
     yAxis: {},
     series: [{
@@ -76,4 +80,4 @@ myChart.setOption({
 可以按需引入的模块列表见 [https://github.com/ecomfe/echarts/blob/master/index.js](https://github.com/ecomfe/echarts/blob/master/index.js)
 
 
-对于另一个流行的模块打包工具 [browserify](http://browserify.org/) 也是同样的用法，这里就不赘述了。
+对于流行的模块打包工具 [browserify](http://browserify.org/) 也是同样的用法，这里就不赘述了。而对于使用 [rollup](https://rollupjs.org/) 的自定义构建，参见 [自定义构建 ECharts](http://echarts.baidu.com/tutorial.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%9E%84%E5%BB%BA%20ECharts)。
