@@ -37,7 +37,7 @@
 
     + `renderer`
 
-        渲染器，目前仅支持`'canvas'`。
+        渲染器，支持 `'canvas'` 或者 `'svg'`。参见 [使用 Canvas 或者 SVG 渲染](http://echarts.baidu.com/tutorial.html#%E4%BD%BF%E7%94%A8%20Canvas%20%E6%88%96%E8%80%85%20SVG%20%E6%B8%B2%E6%9F%93)。
 
     + `width`
 

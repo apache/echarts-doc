@@ -1,3 +1,43 @@
+## v3.8
+<div class="time">2017-11-07</div>
+
++ [+] **Supported [Tree Chart](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-tree)**, including [horizontal layout](https://ecomfe.github.io/echarts-examples/public/index.html#tree-basic), [vertical layout](https://ecomfe.github.io/echarts-examples/public/index.html#tree-vertical), [radial layout](https://ecomfe.github.io/echarts-examples/public/index.html#tree-radial).
+
++ [+] **Supported [SVG Renderer (beta)](https://ecomfe.github.io/echarts-doc/public/en/option.html#Render%20by%20Canvas%20or%20SVG)**, enable developers to choose SVG or Canvas renderer based on their platfroms and functional requirments.
+
++ [+] Supported [axis arrow](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.axisLine.symbol). See [#6675](https://github.com/ecomfe/echarts/issues/6675).
+
++ [+] Source code of echarts has been switched to ES Module, which enabled tree shaking of bundle and reduced size.
+
++ [+] Supported build scripts for creating custom build, including multiple language support. See [custom build tutorial](https://ecomfe.github.io/echarts-doc/public/en/option.html#Create%20Custom%20Build%20of%20ECharts). And added Finnish support, which is contributed by [xvaara](https://github.com/xvaara) in [PR #6863](https://github.com/ecomfe/echarts/pull/6863).
+
++ [+] Supported [strokeWidth](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-treemap.levels.itemStyle.normal.strokeWidth) and [strokeColor](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-treemap.levels.itemStyle.normal.strokeColor) in treemap. See [#6804](https://github.com/ecomfe/echarts/issues/6804).
+
++ [+] Supported [show adjacent nodes](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-graph.focusNodeAdjacency) in graph. See [#6772](https://github.com/ecomfe/echarts/issues/6772).
+
++ [^] Fixed the area calculation when [grid.containLabel](https://ecomfe.github.io/echarts-doc/public/en/option.html#grid.containLabel) is `true` and axis is [rotated](https://ecomfe.github.io/echarts-doc/public/en/option.html#yAxis.axisLabel.rotate). Thanks [xvaara](https://github.com/xvaara) for [PR #6951](https://github.com/ecomfe/echarts/pull/6951).
+
++ [^] Fixed that the calculation of interval is not incorrect when [axisLabel.rotate](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.axisLabel.rotate) is set in [category axis](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.type). See [#4170](https://github.com/ecomfe/echarts/issues/4170). Thanks[lanyuechen](https://github.com/lanyuechen) for [PR #6903](https://github.com/ecomfe/echarts/pull/6903).
+
++ [^] Fixed the negative problem in `dataTool.prepareBoxplotData`. Thanks [d-rudolf](https://github.com/d-rudolf) for [PR #6749](https://github.com/ecomfe/echarts/pull/6749).
+
++ [^] Enhanced the label interval of [time axis](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.type). Thanks [xiaoshan00](https://github.com/xiaoshan00) for [PR #6808](https://github.com/ecomfe/echarts/pull/6808).
+
++ [^] Supported [radiusAxis.inverse](https://ecomfe.github.io/echarts-doc/public/en/option.html#radiusAxis.inverse). See [#6805](https://github.com/ecomfe/echarts/issues/6805) and [#4253](https://github.com/ecomfe/echarts/issues/4253).
+
++ [^] Renamed some variables to avoid webpack special variable name. See [#6788](https://github.com/ecomfe/echarts/issues/6788).
+
++ [^] Fixed position problem of [scrollable legend](https://ecomfe.github.io/echarts-examples/public/index.html#pie-legend). See [#6756](https://github.com/ecomfe/echarts/issues/6756).
+
++ [^] Fixed that the [themeRiver](https://ecomfe.github.io/echarts-examples/public/index.html#themeRiver-basic) legend color is incorrect. See [#6932](https://github.com/ecomfe/echarts/issues/6932).
+
++ [^] Fixed that brush empty value caused error thrown. See [#6892](https://github.com/ecomfe/echarts/issues/6892).
+
+
+
+
+
+
 ## v3.7.2
 <div class="time">2017-09-27</div>
 

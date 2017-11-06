@@ -13,3 +13,4 @@
 {{ import: calendar-example }}
 {{ import: custom-series }}
 {{ import: rich-text }}
+{{ import: renderer }}
