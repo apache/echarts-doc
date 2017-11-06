@@ -31,6 +31,7 @@
 {{import: series-effectScatter}}
 
 {{import: series-radar}}
+{{import: series-tree}}
 {{import: series-treemap}}
 {{import: series-boxplot}}
 {{import: series-candlestick}}

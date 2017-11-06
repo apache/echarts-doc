@@ -4,7 +4,7 @@
 
 **Tree Diagram**
 
-The tree diagram is mainly used to visualize the tree data structure, which is a special hierarchical type with a unique root node, left subtree, and right subtree. 
+The tree diagram is mainly used to visualize the tree data structure, which is a special hierarchical type with a unique root node, left subtree, and right subtree.
 
 **Note: Forests are not currently supported directly in a single series, and can be implemented by configuring multiple series in an option**
 
@@ -32,7 +32,7 @@ The tree diagram is mainly used to visualize the tree data structure, which is a
 
 ## layout(string) = 'orthogonal'
 
-The layout of the tree, which can be `orthogonal` and `radial` 。Here the `orthogonal` layout is what we usually refer to the `horizontal` and `vertical` direction, the corresponding parameter value is `orthogonal`. The `radial` layout refers to the view that the root node as the center and each layer of nodes as the ring, the corresponding parameter value is `radial`. 
+The layout of the tree, which can be `orthogonal` and `radial` 。Here the `orthogonal` layout is what we usually refer to the `horizontal` and `vertical` direction, the corresponding parameter value is `orthogonal`. The `radial` layout refers to the view that the root node as the center and each layer of nodes as the ring, the corresponding parameter value is `radial`.
 
 **Orthogonal Example：**
 
@@ -66,7 +66,7 @@ Subtree collapses and expands interaction, `default true`. As the drawing area i
 
 ## initialTreeDepth(number) = 2
 
-The initial level (depth) of the tree. The root node is the 0th layer, then the first layer, the second layer, ... , until the leaf node. This configuration item is primarily used in conjunction with `collapsing and expansion` interactions. The purpose is to prevent the nodes from obscuring each other。
+The initial level (depth) of the tree. The root node is the 0th layer, then the first layer, the second layer, ... , until the leaf node. This configuration item is primarily used in conjunction with `collapsing and expansion` interactions. The purpose is to prevent the nodes from obscuring each other. If set as -1 or `null` or `undefined`, all nodes are expanded.
 
 ## itemStyle(Object)
 
@@ -176,10 +176,11 @@ The style of the leaf node in the tree.
             },
             itemStyle: {
                 ...
-            }
-            children: [...]     // leaf nodes do not have children, can not write.
+            },
+            collapsed: null, // If set as `true`, the node is collpased in the initialization.
+            children: [...]  // leaf nodes do not have children, can not write.
         },
-        ... 
+        ...
     ]
 };
 ```
