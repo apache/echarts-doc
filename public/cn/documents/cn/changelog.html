@@ -1,3 +1,41 @@
+<h2 id="v3-8">v3.8</h2>
+<div class="time">2017-11-07</div>
+
+<ul>
+<li><p>[+] <strong>新增 <a href="http://echarts.baidu.com/option.html#series-tree">树图</a></strong>。其中支持 <a href="http://echarts.baidu.com/demo.html#tree-basic">横向布局</a>、<a href="http://echarts.baidu.com/demo.html#tree-vertical">纵向布局</a>、<a href="http://echarts.baidu.com/demo.html#tree-radial">径向布局</a>。</p>
+</li>
+<li><p>[+] <strong>新增 <a href="http://echarts.baidu.com/tutorial.html#%E4%BD%BF%E7%94%A8%20Canvas%20%E6%88%96%E8%80%85%20SVG%20%E6%B8%B2%E6%9F%93">SVG 渲染支持（beta 版）</a></strong>。从而可以根据自己的需要，选择 SVG 或者 Canvas 作为渲染引擎。</p>
+</li>
+<li><p>[+] 源代码的模块系统改用 ES Module。从而可以受益于 tree shaking，减小构建所得 bundle 的体积。</p>
+</li>
+<li><p>[+] 提供了构建脚本，方便于灵活引用模块和多语言构建，参见 <a href="http://echarts.baidu.com/tutorial.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%9E%84%E5%BB%BA%20ECharts">自定义构建</a>。并且加入了 <a href="https://github.com/xvaara">xvaara</a> 提供的芬兰语（<a href="https://github.com/ecomfe/echarts/pull/6863">PR #6863</a>）。</p>
+</li>
+<li><p>[+] 支持了 <a href="http://echarts.baidu.com/option.html#xAxis.axisLine.symbol">axis arrow</a>. 参见 <a href="https://github.com/ecomfe/echarts/issues/6675">#6675</a>。</p>
+</li>
+<li><p>[+] treemap 中支持了 <a href="http://echarts.baidu.com/option.html#series-treemap.levels.itemStyle.normal.strokeWidth">strokeWidth</a> 和 <a href="http://echarts.baidu.com/option.html#series-treemap.levels.itemStyle.normal.strokeColor">strokeColor</a>。参见 <a href="https://github.com/ecomfe/echarts/issues/6804">#6804</a>。</p>
+</li>
+<li><p>[+] graph 图中支持了鼠标悬浮到边上时也 <a href="http://echarts.baidu.com/option.html#series-graph.focusNodeAdjacency">显示相邻点</a> 的功能。参见 <a href="https://github.com/ecomfe/echarts/issues/6772">#6772</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#grid.containLabel">grid.containLabel</a> 为 <code>true</code> 且 <a href="http://echarts.baidu.com/option.html#yAxis.axisLabel.rotate">轴标签旋转</a> 时的坐标系范围判断。感谢 <a href="https://github.com/xvaara">xvaara</a> 提供的 <a href="https://github.com/ecomfe/echarts/pull/6951">PR #6951</a>。</p>
+</li>
+<li><p>[^] 修复设置了 <a href="http://echarts.baidu.com/option.html#xAxis.type">类目轴</a> 中设置了 <a href="http://echarts.baidu.com/option.html#xAxis.axisLabel.rotate">axisLabel.rotate</a> 以后，interval 计算有误的 bug。参见 <a href="https://github.com/ecomfe/echarts/issues/4170">#4170</a>。感谢 <a href="https://github.com/lanyuechen">lanyuechen</a> 提供的 <a href="https://github.com/ecomfe/echarts/pull/6903">PR #6903</a>。</p>
+</li>
+<li><p>[^] 修复了 <code>dataTool.prepareBoxplotData</code> 的负值问题。感谢 <a href="https://github.com/d-rudolf">d-rudolf</a> 提供的 <a href="https://github.com/ecomfe/echarts/pull/6749">PR #6749</a>。</p>
+</li>
+<li><p>[^] 优化了 <a href="http://echarts.baidu.com/option.html#xAxis.type">时间类型坐标轴</a> 的刻度显示。感谢 <a href="https://github.com/xiaoshan00">xiaoshan00</a> 提供的 <a href="https://github.com/ecomfe/echarts/pull/6808">PR #6808</a>。</p>
+</li>
+<li><p>[^] 支持了 <a href="http://echarts.baidu.com/option.html#radiusAxis.inverse">radiusAxis.inverse</a>。参见 <a href="https://github.com/ecomfe/echarts/issues/6805">#6805</a> 和 <a href="https://github.com/ecomfe/echarts/issues/4253">#4253</a>。</p>
+</li>
+<li><p>[^] 修复了和 webpack 中约定特殊变量重名的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/6788">#6788</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/demo.html#pie-legend">可滚动图例</a> 定位不准确问题。参见 <a href="https://github.com/ecomfe/echarts/issues/6756">#6756</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/demo.html#themeRiver-basic">themeRiver</a> 图例颜色不正确的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/6932">#6932</a>。</p>
+</li>
+<li><p>[^] 修复了刷选时如果存在空值则报错的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/6892">#6892</a>。</p>
+</li>
+</ul>
+<p>详细的介绍见 <a href="http://efe.baidu.com/blog/echarts-3.8.0/">ECharts 3.8.0 介绍</a></p>
 <h2 id="v3-7-2">v3.7.2</h2>
 <div class="time">2017-09-27</div>
 
