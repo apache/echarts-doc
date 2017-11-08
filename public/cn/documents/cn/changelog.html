@@ -34,6 +34,10 @@
 </li>
 <li><p>[^] 修复了刷选时如果存在空值则报错的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/6892">#6892</a>。</p>
 </li>
+<li><p><code>dist/echarts/echarts.simple.js</code> 中不再包含 echarts 上所挂载的工具方法。如果需要使用工具方法，可使用 <code>dist/echarts/echarts.common.js</code> 或者 <code>dist/echarts/echarts.js</code>，或者 <a href="http://echarts.baidu.com/tutorial.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%9E%84%E5%BB%BA%20ECharts">自定义构建</a>。</p>
+</li>
+<li><p>对于 dataTool 的变化：使用 <code>dist/echarts/echarts.simple.js</code> 和 <code>dist/echarts/echarts.common.js</code>，和之前相同，须自行引入 <code>dist/echarts/extension/dataTool.js</code>，但是不会挂载成 <code>echarts.dataTool</code>。使用 <code>dist/echarts/echarts.js</code> 时，默认包含 <code>echarts.dataTool</code>。</p>
+</li>
 </ul>
 <p>详细的介绍见 <a href="http://efe.baidu.com/blog/echarts-3.8.0/">ECharts 3.8.0 介绍</a></p>
 <h2 id="v3-7-2">v3.7.2</h2>

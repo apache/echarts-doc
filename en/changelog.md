@@ -5,11 +5,11 @@
 
 + [+] **Supported [SVG Renderer (beta)](https://ecomfe.github.io/echarts-doc/public/en/option.html#Render%20by%20Canvas%20or%20SVG)**, enable developers to choose SVG or Canvas renderer based on their platfroms and functional requirments.
 
-+ [+] Supported [axis arrow](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.axisLine.symbol). See [#6675](https://github.com/ecomfe/echarts/issues/6675).
-
 + [+] Source code of echarts has been switched to ES Module, which enabled tree shaking of bundle and reduced size.
 
 + [+] Supported build scripts for creating custom build, including multiple language support. See [custom build tutorial](https://ecomfe.github.io/echarts-doc/public/en/option.html#Create%20Custom%20Build%20of%20ECharts). And added Finnish support, which is contributed by [xvaara](https://github.com/xvaara) in [PR #6863](https://github.com/ecomfe/echarts/pull/6863).
+
++ [+] Supported [axis arrow](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.axisLine.symbol). See [#6675](https://github.com/ecomfe/echarts/issues/6675).
 
 + [+] Supported [strokeWidth](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-treemap.levels.itemStyle.normal.strokeWidth) and [strokeColor](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-treemap.levels.itemStyle.normal.strokeColor) in treemap. See [#6804](https://github.com/ecomfe/echarts/issues/6804).
 
@@ -33,6 +33,9 @@
 
 + [^] Fixed that brush empty value caused error thrown. See [#6892](https://github.com/ecomfe/echarts/issues/6892).
 
++ `dist/echarts/echarts.simple.js` do not includ utils, which used to be mounted on `echarts`. `dist/echarts/echarts.common.js` and `dist/echarts/echarts.js` keep including them as before. And developers can [custom build](https://ecomfe.github.io/echarts-doc/public/en/option.html#Create%20Custom%20Build%20of%20ECharts) to include them.
+
++ Changes about `dataTool`: When using `dist/echarts/echarts.simple.js` or `dist/echarts/echarts.common.js`, `dist/echarts/extension/dataTool.js` should be manually included as before, but the namespace `dataTool` will not be mounted to `echarts`. When using `dist/echarts/echarts.js`, `echarts.dataTool` is included automatically by default.
 
 
 
@@ -651,8 +654,6 @@ Recovery Build
 + [^] fix errors in background seeting under IE 8.
 
 + [^] fix incorrect release event in tooltip component dispose.
-
-
 
 ## v3.0.0
 <div class="time">2016-01-12</div>

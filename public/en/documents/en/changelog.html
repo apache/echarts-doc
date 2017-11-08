@@ -6,11 +6,11 @@
 </li>
 <li><p>[+] <strong>Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#Render%20by%20Canvas%20or%20SVG">SVG Renderer (beta)</a></strong>, enable developers to choose SVG or Canvas renderer based on their platfroms and functional requirments.</p>
 </li>
-<li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.axisLine.symbol">axis arrow</a>. See <a href="https://github.com/ecomfe/echarts/issues/6675">#6675</a>.</p>
-</li>
 <li><p>[+] Source code of echarts has been switched to ES Module, which enabled tree shaking of bundle and reduced size.</p>
 </li>
 <li><p>[+] Supported build scripts for creating custom build, including multiple language support. See <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#Create%20Custom%20Build%20of%20ECharts">custom build tutorial</a>. And added Finnish support, which is contributed by <a href="https://github.com/xvaara">xvaara</a> in <a href="https://github.com/ecomfe/echarts/pull/6863">PR #6863</a>.</p>
+</li>
+<li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.axisLine.symbol">axis arrow</a>. See <a href="https://github.com/ecomfe/echarts/issues/6675">#6675</a>.</p>
 </li>
 <li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-treemap.levels.itemStyle.normal.strokeWidth">strokeWidth</a> and <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-treemap.levels.itemStyle.normal.strokeColor">strokeColor</a> in treemap. See <a href="https://github.com/ecomfe/echarts/issues/6804">#6804</a>.</p>
 </li>
@@ -33,6 +33,10 @@
 <li><p>[^] Fixed that the <a href="https://ecomfe.github.io/echarts-examples/public/index.html#themeRiver-basic">themeRiver</a> legend color is incorrect. See <a href="https://github.com/ecomfe/echarts/issues/6932">#6932</a>.</p>
 </li>
 <li><p>[^] Fixed that brush empty value caused error thrown. See <a href="https://github.com/ecomfe/echarts/issues/6892">#6892</a>.</p>
+</li>
+<li><p><code>dist/echarts/echarts.simple.js</code> do not includ utils, which used to be mounted on <code>echarts</code>. <code>dist/echarts/echarts.common.js</code> and <code>dist/echarts/echarts.js</code> keep including them as before. And developers can <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#Create%20Custom%20Build%20of%20ECharts">custom build</a> to include them.</p>
+</li>
+<li><p>Changes about <code>dataTool</code>: When using <code>dist/echarts/echarts.simple.js</code> or <code>dist/echarts/echarts.common.js</code>, <code>dist/echarts/extension/dataTool.js</code> should be manually included as before, but the namespace <code>dataTool</code> will not be mounted to <code>echarts</code>. When using <code>dist/echarts/echarts.js</code>, <code>echarts.dataTool</code> is included automatically by default.</p>
 </li>
 </ul>
 <h2 id="v3-7-2">v3.7.2</h2>
