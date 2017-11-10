@@ -1,4 +1,17 @@
-<h2 id="v3-8">v3.8</h2>
+<h2 id="v3-8-2">v3.8.2</h2>
+<div class="time">2017-11-10</div>
+
+<ul>
+<li>[^] Fixed backward compatibility problems brounght by <code>3.8.0</code>:<ul>
+<li>In <code>3.8.0</code>, the content in <code>lib</code> directory is the same as the content in <code>src</code> directory (both are ES Module), which may not compatible with the old verisons of node and webpack. So rollback to commonJS format in <code>lib</code> of <code>3.8.2</code>.</li>
+<li>In <code>3.8.0</code>, the source code in <code>src</code> constains global variable <code>__DEV__</code> (which prints dev helper info for echarts users). To get the declaration of the global variable, users should include <code>echarts/src/config.js</code> manually or make some settings in <code>webpack</code>/<code>rollup</code> (Check <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#Create%20Custom%20Build%20of%20ECharts">custom build tutorial</a> please), which is not backward compatible. So we have removed <code>__DEV__</code> from the codes in <code>echarts/lib/**</code> in <code>3.8.2</code>. If dev helper info is required, use codes in <code>echarts/src/**</code>.</li>
+<li>After <code>3.8</code>, <code>echarts/src/echarts.js</code> (the same as <code>echarts/lib/echarts.js</code> in <code>3.8.0</code>) does not include util methods, which used to be mounted on it. Now util methods are listed in <code>echarts/src/export</code> and mounted on <code>echarts/echarts*.js</code>. But it is not backward compatibility, so we have rollbacked to mount them on <code>echarts/lib/echarts.js</code> in <code>3.8.2</code>.</li>
+<li>The way of including <code>echarts/extension/dataTool</code>, havs been rollbacked to the original approach before <code>3.8</code>, where it must be included explicitly, and the namespace will be mounted on <code>echarts</code> namespame.</li>
+</ul>
+</li>
+<li>[^] Fixed the problem that SVG renderer throws error when encounter null value.</li>
+</ul>
+<h2 id="v3-8-0">v3.8,0</h2>
 <div class="time">2017-11-07</div>
 
 <ul>

@@ -1,7 +1,21 @@
-<h2 id="v3-8">v3.8</h2>
+<h2 id="v3-8-2">v3.8.2</h2>
+<div class="time">2017-11-10</div>
+
+<ul>
+<li>[^] 修复了 <code>3.8.0</code> 中向后兼容的几个问题：<ul>
+<li><code>3.8.0</code> 的 <code>lib</code> 目录中和 <code>src</code> 是一样的内容（ES Module）。而老版本的 node 和 webpack 不能支持。所以 <code>3.8.2</code> 中 <code>lib</code> 仍然恢复为 commonJS 格式。</li>
+<li><code>3.8.0</code> 的 <code>src</code> 中的源代码含有 <code>__DEV__</code> 全局变量（这个标志里的代码段，用于为 echarts 的使用者打印开发帮助信息），全局变量的声明需要手动引入 <code>echarts/src/config.js</code> 或者在 <code>webpack</code>/<code>rollup</code> 中做相应配置（参见 <a href="http://echarts.baidu.com/tutorial.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%9E%84%E5%BB%BA%20ECharts">自定义构建</a>）。但是这并不向后兼容。所以在 <code>3.8.2</code> 中的 <code>echarts/lib/**</code> 中的代码，去掉了 <code>__DEV__</code> 变量。如果需要有开发者帮助的版本，请引用 <code>echarts/src/**</code>。</li>
+<li><code>3.8</code> 以后，<code>echarts/src/echarts.js</code>（即 <code>echarts/lib/echarts.js</code>）中并不会包括之前挂载于其上的工具方法，对外开放的工具方法汇总在 <code>echarts/src/export</code> 并挂载在 <code>echarts/echarts*.js</code>。但是这并不向后兼容。所以 <code>3.8.2</code> 改回为 <code>echarts/lib/echarts.js</code> 会像原来一样挂载这些方法。</li>
+<li><code>echarts/extension/dataTool</code> 的引用和挂载方式，改为为 <code>3.8</code> 之前的方式：必须手动引用，引用则会挂载到 <code>echarts</code> 名空间上。</li>
+</ul>
+</li>
+<li>[^] 修复了 SVG 渲染器的空值抛错问题。</li>
+</ul>
+<h2 id="v3-8-0">v3.8.0</h2>
 <div class="time">2017-11-07</div>
 
 <ul>
+<li>[+] <strong>新增 <a href="http://echarts.baidu.com/option.html#series-tree">树图</a></strong>。其中支持 <a href="http://echarts.baidu.com/demo.html#tree-basic">横向布局</a>、<a href="http://echarts.baidu.com/demo.html#tree-vertical">纵向布局</a>、<a href="http://echarts.baidu.com/demo.html#tree-radial">径向布局</a>。</li>
 <li><p>[+] <strong>新增 <a href="http://echarts.baidu.com/option.html#series-tree">树图</a></strong>。其中支持 <a href="http://echarts.baidu.com/demo.html#tree-basic">横向布局</a>、<a href="http://echarts.baidu.com/demo.html#tree-vertical">纵向布局</a>、<a href="http://echarts.baidu.com/demo.html#tree-radial">径向布局</a>。</p>
 </li>
 <li><p>[+] <strong>新增 <a href="http://echarts.baidu.com/tutorial.html#%E4%BD%BF%E7%94%A8%20Canvas%20%E6%88%96%E8%80%85%20SVG%20%E6%B8%B2%E6%9F%93">SVG 渲染支持（beta 版）</a></strong>。从而可以根据自己的需要，选择 SVG 或者 Canvas 作为渲染引擎。</p>
@@ -68,7 +82,7 @@
 </li>
 <li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#series-candlestick">K线图（candlestick）</a> 中开盘收盘相等时颜色问题。参见 <a href="https://github.com/ecomfe/echarts/issues/6583">#6583</a>。</p>
 </li>
-<li><p>[^] 修复了 <code>markPoint</code> 向前兼容的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/6503">#6503</a>。</p>
+<li><p>[^] 修复了 <code>markPoint</code> 向后兼容的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/6503">#6503</a>。</p>
 </li>
 </ul>
 <h2 id="v3-7-1">v3.7.1</h2>

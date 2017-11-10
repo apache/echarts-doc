@@ -4,9 +4,9 @@
 
 一般来说，可以直接从 [echarts 下载页](http://echarts.baidu.com/download.html) 中获取构建好的 echarts，也可以从 [GitHub](https://github.com/ecomfe/echarts/releases) 中的 `echarts/dist` 文件夹中获取构建好的 echarts，这都可以直接在浏览器端项目中使用。这些构建好的 echarts 提供了下面这几种定制：
 
-+ 完全版：`echarts/dist/echarts.js`，体积最大，包含所有的图表和组件，所包含内容参见：`echarts/index.js`。
-+ 常用版：`echarts/dist/echarts.common.js`，体积适中，包含常见的图表和组件，所包含内容参见：`echarts/index.common.js`。
-+ 精简版：`echarts/dist/echarts.simple.js`，体积较小，仅包含最常用的图表和组件，所包含内容参见：`echarts/index.simple.js`。
++ 完全版：`echarts/dist/echarts.js`，体积最大，包含所有的图表和组件，所包含内容参见：`echarts/echarts.all.js`。
++ 常用版：`echarts/dist/echarts.common.js`，体积适中，包含常见的图表和组件，所包含内容参见：`echarts/echarts.common.js`。
++ 精简版：`echarts/dist/echarts.simple.js`，体积较小，仅包含最常用的图表和组件，所包含内容参见：`echarts/echarts.simple.js`。
 
 如果对文件体积有更严苛的要求，可以自己构建 echarts，能够仅仅包括自己所需要的图表和组件。自定义构建有几种方式：
 
@@ -120,7 +120,7 @@ node node_modules/echarts/build/build.js --min -i echarts.custom.js -o lib/echar
 
 ## 允许被引用的模块
 
-在自定义构建中，允许被引用的模块，全声明在 [`myProject/node_module/echarts/index.js`](https://github.com/ecomfe/echarts/blob/master/index.js) 和 [`myProject/node_module/echarts/src/export.js`](https://github.com/ecomfe/echarts/blob/master/src/export.js) 中。echarts 和 zrender 源代码中的其他模块，都是 echarts 的内部模块，**不应该去引用**。因为在后续 echarts 版本升级中，内部模块的接口和功能可能变化，甚至模块本身也可能被移除。
+在自定义构建中，允许被引用的模块，全声明在 [`myProject/node_module/echarts/echarts.all.js`](https://github.com/ecomfe/echarts/blob/master/echarts.all.js) 和 [`myProject/node_module/echarts/src/export.js`](https://github.com/ecomfe/echarts/blob/master/src/export.js) 中。echarts 和 zrender 源代码中的其他模块，都是 echarts 的内部模块，**不应该去引用**。因为在后续 echarts 版本升级中，内部模块的接口和功能可能变化，甚至模块本身也可能被移除。
 
 
 ## 直接使用 rollup 自定义构建

@@ -7,9 +7,9 @@
 In most cases, echarts build can be fetched from [echarts download page](https://ecomfe.github.io/echarts-doc/public/en/download.html) or from the `echarts/dist` directory in [GitHub](https://github.com/ecomfe/echarts/releases), where
 these pre-builds are provided:
 
-+ Complete verion: `echarts/dist/echarts.js`, including all charts and components (see `echarts/index.js` for detail), but has maximum file size.
-+ Common version: `echarts/dist/echarts.common.js`, including common charts and components (see `echarts/index.common.js` for detail), moderate file size.
-+ Simple version: `echarts/dist/echarts.simple.js`, including several most common charts and components (see `echarts/index.simple.js` for detail), small file size.
++ Complete verion: `echarts/dist/echarts.js`, including all charts and components (see `echarts/echarts.all.js` for detail), but has maximum file size.
++ Common version: `echarts/dist/echarts.common.js`, including common charts and components (see `echarts/echarts.common.js` for detail), moderate file size.
++ Simple version: `echarts/dist/echarts.simple.js`, including several most common charts and components (see `echarts/echarts.simple.js` for detail), small file size.
 
 If small file size is desperately required, we can customize echart build by ourselves with these approaches:
 
@@ -124,7 +124,7 @@ Open `myProject/pie.html` in a browser, we can see the pie chart:
 
 ## Modules that are permitted to be imported
 
-All of the permitted modules are declared in [`myProject/node_module/echarts/index.js`](https://github.com/ecomfe/echarts/blob/master/index.js) and [`myProject/node_module/echarts/src/export.js`](https://github.com/ecomfe/echarts/blob/master/src/export.js). Other modules in the source code of echarts and zrender **SHOULD NOT BE IMPORTED**, because they are inner modules, whose interfaces and functionalities may be modified in the subsequent upgrades of echarts.
+All of the permitted modules are declared in [`myProject/node_module/echarts/echarts.all.js`](https://github.com/ecomfe/echarts/blob/master/echarts.all.js) and [`myProject/node_module/echarts/src/export.js`](https://github.com/ecomfe/echarts/blob/master/src/export.js). Other modules in the source code of echarts and zrender **SHOULD NOT BE IMPORTED**, because they are inner modules, whose interfaces and functionalities may be modified in the subsequent upgrades of echarts.
 
 
 ## Build echarts and our project directly by rollup
