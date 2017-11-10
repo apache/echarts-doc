@@ -91,8 +91,8 @@ node node_modules/echarts/build/build.js --min -i echarts.custom.js -o lib/echar
 <head>
     <meta charset="utf-8">
     <title>myProject</title>
-    <!-- 引入 lib/echarts.custom.js -->
-    <script src="lib/echarts.custom.js"></script>
+    <!-- 引入 lib/echarts.custom.min.js -->
+    <script src="lib/echarts.custom.min.js"></script>
 </head>
 <body>
     <div id="main" style="width: 600px;height:400px;"></div>
