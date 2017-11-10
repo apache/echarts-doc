@@ -12,7 +12,7 @@ ECharts has been using Canvas as its renderer (use VML for IE8-) from the begini
 
 Generally speaking, Canvas is suitable for the case that there is a large amount of grpahic elements (which basically due to a large amount of data), like heatmap and lines or scatter plot with large data in geo or parallel coordinates. Besides it supports some [special visual effect](https://ecomfe.github.io/echarts-examples/public/editor.html?c=lines-bmap-effect). But in some other scenarios SVG has some critical advantages: it consumes less memory then Canvas (especially in mobile device), and gives better performance in rendering. Moreover, it never blurs when zooming the viewport of browser whereas Canvas may blurs. For example, we have tried to render line, bar, pie charts with the Canvas renderer and the SVG renderer, and recorded the frame rate during the the stage that the initial animation performed:
 
-~[90%x400](${galleryViewPath}doc-example/canvas-vs-svg&reset=1)
+~[90%x400](${galleryViewPath}doc-example/canvas-vs-svg-en&reset=1)
 
 In the scenarios above, the SVG renderer has provided a better FPS performance in mobile devices. In some other scenarios, where big data amount or certain kinds of human interactions exists, the SVG renderer is still not as good as the Canvas renderer in performance, but two options provides the ability to optimize the performance according to the requirements of each developer.
 
