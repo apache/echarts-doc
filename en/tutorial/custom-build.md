@@ -68,7 +68,7 @@ These options can be used in this example:
 + `-i`: Entry file of the echarts code. Can be an absolute path or a relative path relative to the current working directory.
 + `-o`: The bundle file path. Can be an absolute path or a relative path relative to the current working directory.
 + `--min`: Whether to compress file (not by default), and remove the code that is for printing error and warning info.
-+ `--lang <language shortcut or file path>`: Whether to use the specified language (Chinese by default). For example: `--lang en` means using English, `--lang my/langXX.js` means using `<cwd>/my/langXX.js` to substitute `echarts/src/lang.js` while buiding.
++ `--lang <language shortcut or file path>`: Whether to use the specified language (Chinese by default). For example: `--lang en` means using English, `--lang my/langXX.js` means using `<cwd>/my/langXX.js` to substitute `echarts/lib/lang.js` while buiding.
 + `--sourcemap`: Whether to output source map, which is useful in debug.
 + `--format`: The format of output. Can be `'umb'`(default), `'amd'`, `'iife'`, `'cjs'`, `'es'`.
 
@@ -76,9 +76,9 @@ Now we want to create a echarts bundle that only supports pie chart, we should f
 
 ```js
 // Import the main module of echarts and export them.
-export * from 'echarts/src/echarts';
+export * from 'echarts/lib/echarts';
 // Import pie chart.
-import 'echarts/src/chart/pie';
+import 'echarts/lib/chart/pie';
 ```
 
 Then we can use command below in `myProject` directory to build the bundle:
@@ -144,13 +144,13 @@ Then we create a project JS file `myProject/line.js` for line chart rendering:
 
 ```js
 // Import the main module of echarts.
-import * as echarts from 'echarts/src/echarts';
+import * as echarts from 'echarts/lib/echarts';
 // Import line chart.
-import 'echarts/src/chart/line';
+import 'echarts/lib/chart/line';
 // Import components of tooltip, title and toolbox.
-import 'echarts/src/component/tooltip';
-import 'echarts/src/component/title';
-import 'echarts/src/component/toolbox';
+import 'echarts/lib/component/tooltip';
+import 'echarts/lib/component/title';
+import 'echarts/lib/component/toolbox';
 
 // Render line chart and components.
 echarts.init(document.getElementById('main')).setOption({
@@ -179,13 +179,11 @@ The created module `myProject/line.js` can not work directly in the browsers tha
 
 ```js
 // Responsible for looking for modules in `node_module` directory. For example,
-// if there is code `import 'echarts/src/chart/line';`, the module file
-// `node_module/echarts/src/chart/line.js` can be find by this plugin.
+// if there is code `import 'echarts/lib/chart/line';`, the module file
+// `node_module/echarts/lib/chart/line.js` can be find by this plugin.
 import nodeResolve from 'rollup-plugin-node-resolve';
 // Responsible for compress code.
 import uglify from 'rollup-plugin-uglify';
-// Responsible for declare environment variable `__DEV__`.
-import ecDevPlugin from 'echarts/build/rollup-plugin-ec-dev';
 // Support multi-language.
 import ecLangPlugin from 'echarts/build/rollup-plugin-ec-lang';
 
@@ -195,15 +193,9 @@ export default {
     input: './line.js',
     plugins: [
         nodeResolve(),
-        ecDevPlugin(),
         ecLangPlugin({lang: 'en'}), // Use english
         // Remove the snippet in `__DEV__`, which mainly prints error log.
-        uglify({
-            compress: {
-                'global_defs': {__DEV__: false},
-                'dead_code': true
-            }
-        })
+        uglify()
     ],
     output: {
         // Output file in the format of 'umd'.
@@ -245,18 +237,6 @@ Open `myProject/line.html` in a browser, we will get:
 
 ![500xauto](~custom-build-line.png)
 
-Notice: if [webpack](https://webpack.github.io/) is used, the functionality provided by `echarts/build/rollup-plugin-ec-dev` can be implemented by:
-```js
-// ...
-plugins: [
-    // ...
-    new webpack.DefinePlugin({
-        'typeof __DEV__': JSON.stringify('boolean'),
-        '__DEV__': false
-    })
-]
-```
-
 
 ## Multi-language
 
@@ -274,6 +254,6 @@ It means that the pre-defined English text is used. Moreover, can be `--lang fi`
 node node_modules/echarts/build/build.js --min -i echarts.custom.js -o lib/echarts.custom.min.js --lang my/langXX.js
 ```
 
-It means that `myProject/my/langXX.js` is used to substitute `myProject/node_modules/echarts/src/lang.js` while performing build. So we can customize text in our language in `myProject/my/langXX.js`. Notice, `-o` or `--output` must be specified in the approach.
+It means that `myProject/my/langXX.js` is used to substitute `myProject/node_modules/echarts/lib/lang.js` while performing build. So we can customize text in our language in `myProject/my/langXX.js`. Notice, `-o` or `--output` must be specified in the approach.
 
 Besides, the same lang parameter can be pass to `echarts/build/rollup-plugin-ec-lang`.

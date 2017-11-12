@@ -64,7 +64,7 @@ node node_modules/echarts/build/build.js --help
 + `-i`：代码入口文件，可以是绝对路径或者基于当前命令行路径的相对路径。
 + `-o`：生成的 bundle 文件，可以是绝对路径或者基于当前命令行路径的相对路径。
 + `--min`：是否压缩文件（默认不压缩），并且去多余的打印错误信息的代码，形成生产环境可用的文件。
-+ `--lang <language shortcut or file path>`：是否使用其他语言版本，默认是中文。例如：`--lang en` 表示使用英文，`--lang my/langXX.js` 表示构建时使用 `<cwd>/my/langXX.js` 替代 `echarts/src/lang.js` 文件。
++ `--lang <language shortcut or file path>`：是否使用其他语言版本，默认是中文。例如：`--lang en` 表示使用英文，`--lang my/langXX.js` 表示构建时使用 `<cwd>/my/langXX.js` 替代 `echarts/lib/lang.js` 文件。
 + `--sourcemap`：是否输出 source map，以便于调试。
 + `--format`：输出的格式，可选 `'umb'`（默认）、`'amd'`、`'iife'`、`'cjs'`、`'es'`。
 
@@ -72,9 +72,9 @@ node node_modules/echarts/build/build.js --help
 
 ```js
 // 引入 echarts 主模块。
-export * from 'echarts/src/echarts';
+export * from 'echarts/lib/echarts';
 // 引入饼图。
-import 'echarts/src/chart/pie';
+import 'echarts/lib/chart/pie';
 ```
 
 然后我们可以在 `myProject` 目录下使用命令行，这样开始构建：
@@ -139,13 +139,13 @@ npm install rollup-plugin-uglify --save-dev
 
 ```js
 // 引入 echarts 主模块。
-import * as echarts from 'echarts/src/echarts';
+import * as echarts from 'echarts/lib/echarts';
 // 引入折线图。
-import 'echarts/src/chart/line';
+import 'echarts/lib/chart/line';
 // 引入提示框组件、标题组件、工具箱组件。
-import 'echarts/src/component/tooltip';
-import 'echarts/src/component/title';
-import 'echarts/src/component/toolbox';
+import 'echarts/lib/component/tooltip';
+import 'echarts/lib/component/title';
+import 'echarts/lib/component/toolbox';
 
 // 基于准备好的dom，初始化 echarts 实例并绘制图表。
 echarts.init(document.getElementById('main')).setOption({
@@ -174,13 +174,11 @@ echarts.init(document.getElementById('main')).setOption({
 
 ```js
 // 这个插件用于在 `node_module` 文件夹（即 npm 用于管理模块的文件夹）中寻找模块。比如，代码中有
-// `import 'echarts/src/chart/line';` 时，这个插件能够寻找到
-// `node_module/echarts/src/chart/line.js` 这个模块文件。
+// `import 'echarts/lib/chart/line';` 时，这个插件能够寻找到
+// `node_module/echarts/lib/chart/line.js` 这个模块文件。
 import nodeResolve from 'rollup-plugin-node-resolve';
 // 用于压缩构建出的代码。
 import uglify from 'rollup-plugin-uglify';
-// 用于处理开发模式的代码（声明 __DEV__ 变量）。
-import ecDevPlugin from 'echarts/build/rollup-plugin-ec-dev';
 // 用于多语言支持（如果不需要可忽略此 plugin）。
 // import ecLangPlugin from 'echarts/build/rollup-plugin-ec-lang';
 
@@ -190,15 +188,9 @@ export default {
     input: './line.js',
     plugins: [
         nodeResolve(),
-        ecDevPlugin(),
         // ecLangPlugin({lang: 'en'}),
         // 消除代码中的 __DEV__ 代码段，从而不在控制台打印错误提示信息。
-        uglify({
-            compress: {
-                'global_defs': {__DEV__: false},
-                'dead_code': true
-            }
-        })
+        uglify()
     ],
     output: {
         // 以 UMD 格式输出，从而能在各种浏览器中加载使用。
@@ -241,18 +233,6 @@ export default {
 
 ![500xauto](~custom-build-line.png)
 
-另外注意：如果您使用 [webpack](https://webpack.github.io/) 来构建，上文中的 `echarts/build/rollup-plugin-ec-dev` 所提供的功能，可以使用下面的定义来实现：
-```js
-// ...
-plugins: [
-    // ...
-    new webpack.DefinePlugin({
-        'typeof __DEV__': JSON.stringify('boolean'),
-        '__DEV__': false
-    })
-]
-```
-
 
 ## 多语言支持
 
@@ -270,6 +250,6 @@ node node_modules/echarts/build/build.js --min -i echarts.custom.js -o lib/echar
 node node_modules/echarts/build/build.js --min -i echarts.custom.js -o lib/echarts.custom.min.js --lang my/langXX.js
 ```
 
-表示在构建时使用 `myProject/my/langXX.js` 文件来替换 `myProject/node_modules/echarts/src/lang.js` 文件。这样可以在 `myProject/my/langXX.js` 文件中自定义语言。注意这种方式中，必须指定 `-o` 或者 `--output`。
+表示在构建时使用 `myProject/my/langXX.js` 文件来替换 `myProject/node_modules/echarts/lib/lang.js` 文件。这样可以在 `myProject/my/langXX.js` 文件中自定义语言。注意这种方式中，必须指定 `-o` 或者 `--output`。
 
 另外，上面的 rollup 插件 `echarts/build/rollup-plugin-ec-lang` 也可以传入同样的参数，实现同样的功能。
