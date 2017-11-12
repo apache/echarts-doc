@@ -50,12 +50,12 @@ For example, the code above only uses bar chart, tooltip and title component, so
 
 ```js
 // include ECharts main module
-var echarts = require('echarts/src/echarts');
+var echarts = require('echarts/lib/echarts');
 // include bar chart
-require('echarts/src/chart/bar');
+require('echarts/lib/chart/bar');
 // include tooltip and title component
-require('echarts/src/component/tooltip');
-require('echarts/src/component/title');
+require('echarts/lib/component/tooltip');
+require('echarts/lib/component/title');
 
 // initialize echarts instance with prepared DOM
 var myChart = echarts.init(document.getElementById('main'));
