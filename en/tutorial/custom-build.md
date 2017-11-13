@@ -76,9 +76,12 @@ Now we want to create a echarts bundle that only supports pie chart, we should f
 
 ```js
 // Import the main module of echarts and export them.
-export * from 'echarts/lib/echarts';
+export * from 'echarts/src/echarts';
 // Import pie chart.
-import 'echarts/lib/chart/pie';
+import 'echarts/src/chart/pie';
+// In this case, modules in either `echarts/src` or `echarts/lib`
+// can be imported (but should not be mixed). See
+// "Use `echarts/lib/**` or `echarts/src/**`" below.
 ```
 
 Then we can use command below in `myProject` directory to build the bundle:
@@ -125,6 +128,15 @@ Open `myProject/pie.html` in a browser, we can see the pie chart:
 ## Modules that are permitted to be imported
 
 All of the permitted modules are declared in [`myProject/node_module/echarts/echarts.all.js`](https://github.com/ecomfe/echarts/blob/master/echarts.all.js) and [`myProject/node_module/echarts/src/export.js`](https://github.com/ecomfe/echarts/blob/master/src/export.js). Other modules in the source code of echarts and zrender **SHOULD NOT BE IMPORTED**, because they are inner modules, whose interfaces and functionalities may be modified in the subsequent upgrades of echarts.
+
+
+## Use `echarts/lib/**` or `echarts/src/**`?
+
++ If intending to import part of echarts modules in your project and build yourself, only `echarts/lib/**` can be used, `echarts/src/**` should not be used.
++ If using `echarts/build/build.js` to make a bundle, either `echarts/lib/**` or `echarts/src/**` can be used (should not be mixed), where `echarts/src/**` brings smaller bundle size a little.
+
+> Reason: currently, `echarts/src/**` is the source code that using ES Module, and they are transpiled to CommonJS code and placed in `echarts/lib/**`. (This transformation is for backward compatible with old version of NodeJS and webpack that do not support ES Module.)
+> Historically, echarts extensions and user projects have been using the package path `echarts/lib/**`. So it should not be changed, otherwise, mixed using both `echarts/src/**` and `echarts/lib/**` will generate two echarts namespace and bring some problems. But it is not an issue when using `echarts/build/build.js` to create a bundle, where ES modules in `echarts/src/**` can be analyzed statically for smaller bundle size.
 
 
 ## Build echarts and our project directly by rollup

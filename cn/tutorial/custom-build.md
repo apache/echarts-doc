@@ -72,9 +72,11 @@ node node_modules/echarts/build/build.js --help
 
 ```js
 // 引入 echarts 主模块。
-export * from 'echarts/lib/echarts';
+export * from 'echarts/src/echarts';
 // 引入饼图。
-import 'echarts/lib/chart/pie';
+import 'echarts/src/chart/pie';
+// 在这个场景下，可以引用 `echarts/src` 或者 `echarts/lib` 下的文件（但是不可混用），
+// 参见下方的解释：“引用 `echarts/lib/**` 还是 `echarts/src/**`”。
 ```
 
 然后我们可以在 `myProject` 目录下使用命令行，这样开始构建：
@@ -121,6 +123,15 @@ node node_modules/echarts/build/build.js --min -i echarts.custom.js -o lib/echar
 ## 允许被引用的模块
 
 在自定义构建中，允许被引用的模块，全声明在 [`myProject/node_module/echarts/echarts.all.js`](https://github.com/ecomfe/echarts/blob/master/echarts.all.js) 和 [`myProject/node_module/echarts/src/export.js`](https://github.com/ecomfe/echarts/blob/master/src/export.js) 中。echarts 和 zrender 源代码中的其他模块，都是 echarts 的内部模块，**不应该去引用**。因为在后续 echarts 版本升级中，内部模块的接口和功能可能变化，甚至模块本身也可能被移除。
+
+
+## 引用 `echarts/lib/**` 还是 `echarts/src/**`
+
++ 项目中如果直接引用 echarts 里的一些模块并自行构建，应该使用 `echarts/lib/**` 路径，而不可使用 `echarts/src/**`。
++ 当使用构建脚本 `echarts/build/build.js` 打包 bundle，那么两者可以选其一使用（不可混用），使用 `echarts/src/**` 可以获得稍微小一些的文件体积。
+
+> 原因是：目前，`echarts/src/**` 中是采用 ES Module 的源代码，`echarts/lib/**` 中是 `echarts/src/**` 编译成为 CommonJS 后的产物（编译成 CommonJS 是为了向后兼容一些不支持 ES Module 的老版本 NodeJS 和 webpack）。
+> 因为历史上，各个 echarts 扩展、各个用户项目，一直是使用的包路径是 `echarts/lib/**`，所以这个路径不应该改变，否则，可能导致混合使用 `echarts/src/**` 和 `echarts/lib/**` 得到两个不同的 echarts 名空间，造成问题。而使用 `echarts/build/build.js` 打包 bundle 时没有涉及这个问题，`echarts/src/**` 中的 ES Module 便于静态分析从而得到稍微小些的文件体积。
 
 
 ## 直接使用 rollup 自定义构建
