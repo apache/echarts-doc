@@ -1,3 +1,10 @@
+## v3.8.4
+<div class="time">2017-11-13</div>
+
++ [^] Fixed that `registerMap` is null on `index*.js`.
++ [^] Fixed some CommonJS incorrect brought by injection.
+
+
 ## v3.8.2
 <div class="time">2017-11-10</div>
 

@@ -1,3 +1,10 @@
+## v3.8.4
+<div class="time">2017-11-13</div>
+
++ [^] 修复了 `index*.js` 中的 `registerMap` 问题。
++ [^] 修复了注入导致的个别 CommonJS 模块错误。
+
+
 ## v3.8.2
 <div class="time">2017-11-10</div>
 
