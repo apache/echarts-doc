@@ -53,7 +53,7 @@ The direction of the `orthogonal` layout in the tree, the corresponding paramete
     seriesType="tree",
     defaultSymbol="'emptyCircle'",
     defaultSymbolSize=7,
-    prefix="##",
+    prefix="#",
     hasCallback=true
 ) }}
 

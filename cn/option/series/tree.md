@@ -54,7 +54,7 @@
     seriesType="tree",
     defaultSymbol="'emptyCircle'",
     defaultSymbolSize=7,
-    prefix="##",
+    prefix="#",
     hasCallback=true
 ) }}
 
