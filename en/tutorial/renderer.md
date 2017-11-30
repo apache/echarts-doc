@@ -38,7 +38,7 @@ ECharts uses Canvas by default. If user intends to use the SVG renderer, the mod
 + If [build ECharts offline](http://echarts.baidu.com/tutorial.html#Create%20Custom%20Build%20of%20ECharts), the module of the SVG renderer should be imported:
 
 ```js
-import 'zrender/src/svg/svg';
+import 'zrender/lib/svg/svg';
 ```
 
 Then wen can specify renderer by [parameter](https://ecomfe.github.io/echarts-doc/public/en/api.html#echarts.init):
