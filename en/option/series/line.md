@@ -103,9 +103,7 @@ Line style.
 ## areaStyle(Object)
 The style of area.
 ### normal(Object)
-{{use: partial-area-style(prefix="###")}}
-### emphasis(Object)
-{{use: partial-area-style(prefix="###")}}
+{{use: partial-area-style(prefix="###", hasOrigin=true)}}
 
 ## smooth(false) = false
 Whether to show as smooth curve.

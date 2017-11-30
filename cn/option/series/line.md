@@ -105,7 +105,7 @@
 ## areaStyle(Object)
 区域填充样式。
 ### normal(Object)
-{{use: partial-area-style(prefix="###")}}
+{{use: partial-area-style(prefix="###", hasOrigin=true)}}
 
 ## smooth(false) = false
 是否平滑曲线显示。
