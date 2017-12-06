@@ -85,6 +85,12 @@ The visual guide line style of label. When [label position](~series-funnel.label
 the name of data item.
 ### value(number)
 data value.
+### itemStyle(Object)
+{{use:partial-item-style-desc}}
+#### normal(Object)
+{{use:partial-item-style(prefix="####")}}
+##### height(string|number)
+Height of this data item. By default, the height is evenly divided for all data items. The height can be set to percentage (e.g.: '10%') or pixel value (e.g.: 20). Please make sure that the total height of all data items is 100%.
 
 ### label(Object)
 The label configuration of a single data item.
