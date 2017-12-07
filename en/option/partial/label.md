@@ -77,9 +77,9 @@ Label position.
 + 'insideRight'
 + 'insideTop'
 + 'insideBottom'
-+ 'insideLeftTop'
-+ 'insideLeftBottom'
-+ 'insideRightTop'
-+ 'insideRightBottom'
++ 'insideTopLeft'
++ 'insideBottomLeft'
++ 'insideTopRight'
++ 'insideBottomRight'
 
 See: [label position](${galleryViewPath}doc-example/label-position).
