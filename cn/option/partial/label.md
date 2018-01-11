@@ -14,10 +14,13 @@ ${name}图形上的文本标签，可用于说明图形的一些数据信息，�
 参见：[label position](${galleryEditorPath}doc-example/label-position)。
 
 
+{{ if: !${noRotate} }}
 #${prefix} rotate(number) = ${defaultRotate}
 标签旋转。从 -90 度到 90 度。正值是逆时针。
 
 参见：[label rotation](${galleryEditorPath}bar-label-rotation)。
+{{ /if }}
+
 
 #${prefix} offset(Array)
 是否对文字进行偏移。默认不偏移。例如：`[30, 40]` 表示文字在横向上偏移 `30`，纵向上偏移 `40`。
