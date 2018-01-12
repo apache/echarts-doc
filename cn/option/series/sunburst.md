@@ -60,7 +60,7 @@ ECharts 中，通常使用 *normal* 表示图形的默认状态，*emphasis* 表
 
 #${prefix} normal(Object)
 
-图形的默认状态，参见 [itemStyle](~series-sunburst.itemStyle) 与 [highlightPolicy](~series-sunburst.highlightPolicy)。
+图形的默认状态，参见 [highlightPolicy](~series-sunburst.highlightPolicy)。
 
 {{use: partial-item-style(
     prefix="#" + ${prefix},
@@ -119,6 +119,10 @@ ECharts 中，通常使用 *normal* 表示图形的默认状态，*emphasis* 表
 ~[700x500](${galleryViewPath}sunburst-monochrome&edit=1&reset=1)
 
 ~[700x700](${galleryViewPath}sunburst-drink&edit=1&reset=1)
+
+**数据下钻**
+
+旭日图默认支持数据下钻，也就是说，当用户点击了某个扇形块之后，将会以该节点作为根结点显示，并且在中间出现一个返回上层节点的圆。如果不希望有数据下钻功能，可以通过将 [series-sunburst.nodeClick](~series-treemap.nodeClick) 设置为 `false` 实现。
 
 
 ## type(string) = 'sunburst'
@@ -184,7 +188,7 @@ ECharts 中，通常使用 *normal* 表示图形的默认状态，*emphasis* 表
 
 ### target(string) = 'blank'
 
-意义同 `html` `<a>` 标签中的 `target`，参见 [series-sunburst.data.link](~series-sunburst.data.link)。可选值为：`'blank'` 或 `'self'`。
+意义同 HTML `<a>` 标签中的 `target`，参见 [series-sunburst.data.link](~series-sunburst.data.link)。可选值为：`'blank'` 或 `'self'`。
 
 ### children(Array)
 
@@ -228,7 +232,7 @@ itemStyle: {
 
 
 
-## nodeClick(boolean|string) = 'zoomToNode'
+## nodeClick(boolean|string) = 'rootToNode'
 
 点击节点后的行为。可取值为：
 

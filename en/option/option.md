@@ -33,6 +33,7 @@
 {{import: series-radar}}
 {{import: series-tree}}
 {{import: series-treemap}}
+{{import: series-sunburst}}
 {{import: series-boxplot}}
 {{import: series-candlestick}}
 {{import: series-heatmap}}
