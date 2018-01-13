@@ -242,7 +242,7 @@ ${componentName} 中三维图形的视觉属性，包括颜色，透明度，描
 
 {{ use: partial-item-style(
     prefix=${prefix|default('##')},
-    colorName='areaColor',
+    colorName='color',
     hasCallback = ${hasCallback},
     useColorPalette = ${useColorPalette}
 ) }}

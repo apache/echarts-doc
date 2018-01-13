@@ -14,6 +14,7 @@
 {{import: series-lines3D}}
 {{import: series-map3D}}
 {{import: series-surface}}
+{{import: series-polygons3D}}
 
 {{import: series-scatterGL}}
 {{import: series-graphGL}}
