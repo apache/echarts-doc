@@ -37,6 +37,17 @@
 
 粒子的轨迹长度，数值越大轨迹越长。
 
+## supersampling(number) = 1
+
+画面的超采样比率，采用`4`的超采样可以有效的提高画面的清晰度，减少画面锯齿。但是因为需要处理更多的像素数量，所以也对性能有更高的要求。
+
+下面分别是没有超采样和超采样值为 4 的区别。
+
+<div class="twentytwenty-container" style="width: 700px;">
+    <img src="documents/asset/gl/img/flowGL-noss.jpg" width="100%" title="No supersampling">
+    <img src="documents/asset/gl/img/flowGL-ss.jpg" width="100%" title="Supersampling=4">
+</div>
+
 ## gridWidth(number|string) = 'auto'
 
 传入的网格数据的网格宽度数量，`flowGL` 会根据这个值和 [gridHeight](~series-flowGL.gridHeight) 创建存储向量场的浮点纹理，用于粒子的轨迹计算。
