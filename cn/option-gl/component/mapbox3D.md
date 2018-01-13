@@ -1,7 +1,7 @@
 
-{{ target: component-mapbox }}
+{{ target: component-mapbox3D }}
 
-# mapbox(Object)
+# mapbox3D(Object)
 
 基于 mapbox-gl-js 的地理组件。支持在 mapbox 的地图上绘制三维的散点图，飞线图，柱状图和地图。你可以利用 Mapbox 强大的地图服务和 ECharts GL 丰富的可视化和渲染效果实现你想要的可视化作品。
 
@@ -39,7 +39,7 @@ Mapbox 地图样式。同 [https://www.mapbox.com/mapbox-gl-js/style-spec/](http
 Mapbox 地图中心经纬度。经纬度用数组表示，例如：
 
 ```js
-mapbox: {
+mapbox3D: {
     center: [104.114129, 37.550339],
     zoom: 3
 }
@@ -62,23 +62,23 @@ Mapbox 地图的旋转角度。见 [https://www.mapbox.com/mapbox-gl-js/style-sp
 海拔的缩放。
 
 {{ use: partial-shading(
-    componentType='mapbox',
-    componentName='mapbox'
+    componentType='mapbox3D',
+    componentName='mapbox3D'
 ) }}
 
 {{ use: partial-light(
-    componentType='mapbox',
-    componentName='mapbox',
+    componentType='mapbox3D',
+    componentName='mapbox3D',
     defaultMainLightAlpha=40,
     defaultMainLightBeta=30
 ) }}
 
 {{ use: partial-post-effect(
-    componentType='mapbox',
-    componentName='mapbox'
+    componentType='mapbox3D',
+    componentName='mapbox3D'
 ) }}
 
 {{ use: partial-temporal-super-sampling(
-    componentType='mapbox',
-    componentName='mapbox'
+    componentType='mapbox3D',
+    componentName='mapbox3D'
 ) }}

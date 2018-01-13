@@ -2,7 +2,7 @@
 
 {{import: component-globe}}
 {{import: component-geo3D}}
-{{import: component-mapbox}}
+{{import: component-mapbox3D}}
 {{import: component-grid3D}}
 {{import: component-xAxis3D}}
 {{import: component-yAxis3D}}
@@ -17,3 +17,4 @@
 
 {{import: series-scatterGL}}
 {{import: series-graphGL}}
+{{import: series-flowGL}}
