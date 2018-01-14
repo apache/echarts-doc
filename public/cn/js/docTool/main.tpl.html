@@ -82,7 +82,7 @@
     <div data-tree-item-id="${idAttr}"
         class="ecdoc-api-doc-line-expand iconfont"
         {{ if: !${showExpandIcon} }}style="display:none"{{ /if }}>${expandIcon|raw}</div>
-    <div class="ecdoc-api-doc-line-head" data-tree-item-id="${idAttr}">
+    <div class="ecdoc-api-doc-line-head {{ if: ${showExpandIcon} }} ecdoc-api-doc-expandable {{ /if }}" data-tree-item-id="${idAttr}">
        <span class="ecdoc-api-doc-line-label">${descItemOptionPath|raw}</span>
        <span class="ecdoc-api-doc-line-type">${descItemType|raw}</span>
     </div>
