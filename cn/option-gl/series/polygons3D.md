@@ -32,6 +32,29 @@
     prefix="###"
 ) }}
 
+## data(Object)
+
+多边形的数据列表。
+
+```js
+data: [{
+    // A square
+    coords: [[0, 0], [100, 0], [100, 100], [0, 100]],
+    // Height
+    height: 3
+}, {
+    // A triangle
+    coords: [[50, 0], [100, 100], [0, 100]],
+    // Height
+    height: 5
+}]
+```
+
+### coords(Array)
+
+多边形的坐标列表。如果 [multiPolygon](~series-polygons3D.multiPolygon) 设成 true，则是包含多个多边形的数组。
+
+
 ## progressiveThreshold(number) = 1000
 
 启用渐进渲染的阈值，渐进渲染可以让你在加载画面的过程中不会有阻塞。
