@@ -5,21 +5,24 @@
 Define what is encoded to for each dimension of `data`. For example:
 
 ```js
-series: {
-    type: 'xxx',
-    encode: {
-        x: [3, 1, 5],      // Dimension 3, 1, 5 is mapped to x axis.
-        y: 2,              // Dimension 2 is mapped to y axis.
-        tooltip: [3, 2, 4] // Dimension 3, 2, 4 will be displayed in tooltip.
-        label: 3           // Dimension 3 will be displayed in label.
+option = {
+    dataset: {
+        source: [
+            // Each column is called a dimension.
+            // There are five dimensions: 0, 1, 2, 3, 4。
+            [12, 44, 55, 66, 2],
+            [23, 6, 16, 23, 1],
+            ...
+        ]
     },
-    data: [
-        // Each column is called a dimension.
-        // There are five dimensions: 0, 1, 2, 3, 4。
-        [12, 44, 55, 66, 2],
-        [23, 6, 16, 23, 1],
-        ...
-    ]
+    series: {
+        type: 'xxx',
+        encode: {
+            x: [3, 1, 5],      // Dimension 3, 1, 5 is mapped to x axis.
+            y: 2,              // Dimension 2 is mapped to y axis.
+            tooltip: [3, 2, 4] // Dimension 3, 2, 4 will be displayed in tooltip.
+        }
+    }
 }
 ```
 
@@ -27,7 +30,7 @@ Attributes of encode are different according to the type of coordinate systtems.
 For [cartesian2d](~grid), `x` and `y` can be defined.
 For [polar](~polar), `radius` and `angle` can be defined.
 For [geo](~geo), `lng` and `lat` can be defined.
-Attribute `tooltip` and `label` and `itemName` (data item name in tooltip) are always able to be defined.
+Attribute `tooltip` and `itemName` (data item name in tooltip) are always able to be defined.
 
 When [dimensions](~series.dimensions) is used to defined name for a certain dimension, `encode` can refer the name directly. For example:
 
@@ -38,8 +41,7 @@ series: {
     encode: {
         x: 'date',
         y: ['open', 'close', 'highest', 'lowest']
-    },
-    data: [ ... ]
+    }
 }
 ```
 
@@ -48,19 +50,28 @@ series: {
 
 #${prefix} dimensions(Array)
 
-`dimensions` can be used to define dimension info for data. For example:
+`dimensions` can be used to define dimension info for `series.data` or `dataset.source`.
+
+Notice: if [dataset](~dataset) is used, we can provide dimension names in the first column/row of [dataset.source](~dataset.source), and not need to specify `dimensions` here. But if `dimensions` is specified here, echarts will not retrieve dimension names from the first row/column of `dataset.source` any more.
+
+
+For example:
 
 ```js
-series: {
-    type: 'xxx',
-    // Specify name for each dimesions, which will be displayed in tooltip.
-    dimensions: ['date', 'open', 'close', 'highest', 'lowest']
-    data: [
-        // 'date', 'open', 'close', 'highest', 'lowest'
-        [12, 44, 55, 66, 2],
-        [23, 6, 16, 23, 1],
-        ...
-    ]
+option = {
+    dataset: {
+        source: [
+            // 'date', 'open', 'close', 'highest', 'lowest'
+            [12, 44, 55, 66, 2],
+            [23, 6, 16, 23, 1],
+            ...
+        ]
+    },
+    series: {
+        type: 'xxx',
+        // Specify name for each dimesions, which will be displayed in tooltip.
+        dimensions: ['date', 'open', 'close', 'highest', 'lowest']
+    }
 }
 ```
 
