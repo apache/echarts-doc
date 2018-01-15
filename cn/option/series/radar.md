@@ -29,9 +29,8 @@
 
 ## label(Object)
 {{use: partial-label-desc}}
-### normal(Object)
 {{use: partial-label(
-    prefix="###",
+    prefix="##",
     defaultPosition="'top'",
     formatter=true
 )}}
@@ -43,9 +42,8 @@
 
 ## itemStyle(Object)
 折线拐点标志的样式。
-### normal(Object)
 {{use: partial-item-style(
-    prefix="###",
+    prefix="##",
     useColorPalatte=true,
     hasCallback=true
 )}}
@@ -54,15 +52,13 @@
 
 ## lineStyle(Object)
 线条样式。
-### normal(Object)
-{{use:partial-line-style(prefix="###")}}
+{{use:partial-line-style(prefix="##")}}
 ### emphasis(Object)
 {{use: partial-line-style(prefix="###")}}
 
 ## areaStyle(Object)
 区域填充样式。
-### normal(Object)
-{{use: partial-area-style(prefix="###")}}
+{{use: partial-area-style(prefix="##")}}
 ### emphasis(Object)
 {{use: partial-area-style(prefix="###")}}
 
@@ -101,9 +97,8 @@ data : [
 
 ### label(Object)
 单个拐点文本的样式设置。
-#### normal(Object)
 {{ use: partial-label(
-    prefix="####",
+    prefix="###",
     defaultPosition="top"
 ) }}
 #### emphasis(Object)
@@ -111,22 +106,19 @@ data : [
 
 ### itemStyle(Object)
 单个拐点标志的样式设置。
-#### normal(Object)
-{{use: partial-bar-item-style(prefix="####")}}
+{{use: partial-bar-item-style(prefix="###")}}
 #### emphasis(Object)
 {{use: partial-bar-item-style(prefix="####")}}
 
 ### lineStyle(Object)
 单项线条样式。
-#### normal(Object)
-{{use:partial-line-style(prefix="####")}}
+{{use:partial-line-style(prefix="###")}}
 #### emphasis(Object)
 {{use: partial-line-style(prefix="####")}}
 
 ### areaStyle(Object)
 单项区域填充样式。
-#### normal(Object)
-{{use: partial-area-style(prefix="####")}}
+{{use: partial-area-style(prefix="###")}}
 #### emphasis(Object)
 {{use: partial-area-style(prefix="####")}}
 

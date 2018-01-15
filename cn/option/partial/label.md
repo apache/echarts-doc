@@ -1,6 +1,6 @@
 {{target:partial-label-desc}}
 
-${name}图形上的文本标签，可用于说明图形的一些数据信息，比如值，名称等，`label`选项在 ECharts 2.x 中放置于`itemStyle.normal`下，在 ECharts 3 中为了让整个配置项结构更扁平合理，`label` 被拿出来跟 `itemStyle` 平级，并且跟 `itemStyle` 一样拥有 `normal`, `emphasis` 两个状态。
+${name}图形上的文本标签，可用于说明图形的一些数据信息，比如值，名称等，`label`选项在 ECharts 2.x 中放置于`itemStyle`下，在 ECharts 3 中为了让整个配置项结构更扁平合理，`label` 被拿出来跟 `itemStyle` 平级，并且跟 `itemStyle` 一样拥有 `emphasis` 状态。
 
 
 {{target:partial-label}}

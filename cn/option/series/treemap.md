@@ -37,13 +37,13 @@ treemap 首先是把数值映射到『面积』这种视觉元素上。
 
 + `center/size` 方式的定位不再支持，而是统一使用 `left/top/bottom/right/width/height` 方式定位。
 
-+ `breadcrumb` 的配置被移动到了 `itemStyle.normal/itemStyle.emphasis` 外部，和 `itemStyle` 平级。
++ `breadcrumb` 的配置被移动到了 `itemStyle/itemStyle.emphasis` 外部，和 `itemStyle` 平级。
 
 + `root` 的设置暂时不支持。目前可以使用 `zoom` 的方式来查看树更下层次的细节，或者使用 [leafDepth](~series-treemap.leafDepth) 开启 "drill down" 功能。
 
-+ `label` 的配置被移动到了 `itemStyle.normal/itemStyle.emphasis` 外部，和 `itemStyle` 平级。
++ `label` 的配置被移动到了 `itemStyle/itemStyle.emphasis` 外部，和 `itemStyle` 平级。
 
-+ `itemStyle.normal.childBorderWidth`、`itemStyle.normal.childBorderColor`不再支持（因为这个配置方式只能定义两层的treemap）。统一使用 [series-treemap.levels](~series-treemap.levels) 来进行各层级的定义。
++ `itemStyle.childBorderWidth`、`itemStyle.childBorderColor`不再支持（因为这个配置方式只能定义两层的treemap）。统一使用 [series-treemap.levels](~series-treemap.levels) 来进行各层级的定义。
 
 <br>
 <br>
@@ -255,10 +255,8 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 {{ use: partial-item-style-desc }}
 
 
-#### normal
-
 {{use: partial-item-style(
-    prefix="####",
+    prefix="###",
     name="boxplot",
     defaultColor="rgba(0,0,0,0.7)",
     defaultBorderColor="rgba(255,255,255,0.7)",
@@ -510,10 +508,8 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 <br>
 
-##${prefix} normal(Object)
-
 {{use:partial-label(
-    prefix=${prefix} + "##",
+    prefix=${prefix} + "#",
     defaultPosition="'inside'",
     formatter=true,
     ellipsis=true
@@ -533,7 +529,7 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 #${prefix} upperLabel(Object)
 
-`upperLabel` 用于显示矩形的父节点的标签。当 [upperLabel.normal.show](~series-treemap.upperLabel.normal.show) 为 `true` 的时候，『显示父节点标签』功能开启。
+`upperLabel` 用于显示矩形的父节点的标签。当 [upperLabel.show](~series-treemap.upperLabel.show) 为 `true` 的时候，『显示父节点标签』功能开启。
 
 同 [series-treemap.label](~series-treemap.label) 一样，`upperLabel` 可以存在于 [series-treemap](~series-treemap) 的根节点，或者 [series-treemap.level](~series-treemap.level) 中，或者 [series-treemap.data](~series-treemap.data) 的每个数据项中。
 
@@ -548,10 +544,8 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 <br>
 
-##${prefix} normal(Object)
-
 {{use:partial-label(
-    prefix=${prefix} + "##",
+    prefix=${prefix} + "#",
     defaultPosition="'inside'",
     formatter=true,
     ellipsis=true
@@ -578,10 +572,8 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 <br>
 
-##${prefix} normal(Object)
-
 {{use: partial-treemap-item-style(
-    prefix=${prefix} + "##",
+    prefix=${prefix} + "#",
     galleryEditorPath=${galleryEditorPath},
     itemStyleType='normal'
 )}}

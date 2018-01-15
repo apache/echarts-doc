@@ -101,7 +101,7 @@ var option = {
 
 有时候还需要用到 [api.size(...)](http://echarts.baidu.com/option.html#series-custom.renderItem.arguments.api.size) 函数，表示得到坐标系上一段数值范围对应的长度。
 
-返回值中样式的设置可以使用 [api.style(...)](http://echarts.baidu.com/option.html#series-custom.renderItem.arguments.api.style) 函数，他能得到 [series.itemStyle.normal](http://echarts.baidu.com/option.html#series-custom.itemStyle.normal) 中定义的样式信息，以及视觉映射的样式信息。也可以用这种方式覆盖这些样式信息：`api.style({fill: 'green', stroke: 'yellow'})`。
+返回值中样式的设置可以使用 [api.style(...)](http://echarts.baidu.com/option.html#series-custom.renderItem.arguments.api.style) 函数，他能得到 [series.itemStyle](http://echarts.baidu.com/option.html#series-custom.itemStyle) 中定义的样式信息，以及视觉映射的样式信息。也可以用这种方式覆盖这些样式信息：`api.style({fill: 'green', stroke: 'yellow'})`。
 
 书写完 `renderItem` 方法后，自定义系列的 90% 工作就做完了。剩下的是一些精化工作。
 

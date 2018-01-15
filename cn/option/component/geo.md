@@ -47,10 +47,8 @@ geo 区域的颜色也可以被 map series 所控制，参见 [series-map.geoInd
 regions: [{
     name: '广东',
     itemStyle: {
-        normal: {
-            areaColor: 'red',
-            color: 'red'
-        }
+        areaColor: 'red',
+        color: 'red'
     }
 }]
 ```
@@ -64,8 +62,7 @@ geo 区域的颜色也可以被 map series 所控制，参见 [series-map.geoInd
 
 ### itemStyle(Object)
 该区域的多边形样式设置
-#### normal(Object)
-##### areaColor(Color)
+#### areaColor(Color)
 地图区域的颜色。
 {{ use: partial-item-style(prefix='####') }}
 #### emphasis(Object)
@@ -76,9 +73,8 @@ geo 区域的颜色也可以被 map series 所控制，参见 [series-map.geoInd
 
 ### label(Object)
 {{use: partial-label-desc}}
-#### normal(Object)
 {{use: partial-label(
-    prefix="####",
+    prefix="###",
     formatter=true
 )}}
 #### emphasis(Object)

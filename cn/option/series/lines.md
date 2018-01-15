@@ -29,9 +29,9 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 ## polyline(boolean) = false
 是否是多段线。
 
-默认为 `false`，只能用于绘制只有两个端点的线段，线段可以通过 [lineStyle.normal.curveness](~series-lines.lineStyle.normal.curveness) 配置为曲线。
+默认为 `false`，只能用于绘制只有两个端点的线段，线段可以通过 [lineStyle.curveness](~series-lines.lineStyle.curveness) 配置为曲线。
 
-如果该配置项为 `true`，则可以在 [data.coords](~series-lines.data.coords) 中设置多于 2 个的顶点用来绘制多段线，在绘制路线轨迹的时候比较有用，见示例 [北京公交路线](${galleryEditorPath}lines-bmap-bus)，设置为多段线后 [lineStyle.normal.curveness](~series-lines.lineStyle.normal.curveness) 无效。
+如果该配置项为 `true`，则可以在 [data.coords](~series-lines.data.coords) 中设置多于 2 个的顶点用来绘制多段线，在绘制路线轨迹的时候比较有用，见示例 [北京公交路线](${galleryEditorPath}lines-bmap-bus)，设置为多段线后 [lineStyle.curveness](~series-lines.lineStyle.curveness) 无效。
 
 ## effect(Object)
 线特效的配置，见示例 [模拟迁徙](${galleryEditorPath}geo-lines) 和 [北京公交路线](${galleryEditorPath}lines-bmap-effect)
@@ -61,7 +61,7 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 特效标记的大小，可以设置成诸如 `10` 这样单一的数字，也可以用数组分开表示高和宽，例如 `[20, 10]` 表示标记宽为`20`，高为`10`。
 
 ### color(Color)
-特效标记的颜色，默认取 [lineStyle.normal.color](~series-lines.lineStyle.normal.color)。
+特效标记的颜色，默认取 [lineStyle.color](~series-lines.lineStyle.color)。
 
 ### trailLength(number) = 0.2
 特效尾迹的长度。取从 0 到 1 的值，数值越大尾迹越长。
@@ -88,9 +88,8 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 **注意：** 这里无法像一般的 `symbolSize` 那样通过数组分别指定高宽。
 
 ## lineStyle(Object)
-### normal(Object)
 {{ use: partial-line-style(
-    prefix= '###',
+    prefix= '##',
     useColorPalatte=true,
     defaultOpacity=0.5,
     hasCallback=true
@@ -106,8 +105,7 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 
 ## label(Object)
 标签相关配置。在 [polyline](~series-lines.polyline) 设置为 `true` 时无效。
-### normal(Object)
-{{ use: lines-label(prefix="###")}}
+{{ use: lines-label(prefix="##")}}
 ### emphasis(Object)
 {{ use: lines-label(prefix="###") }}
 
@@ -120,7 +118,7 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 // [{
 //    // 起点坐标
 //    coord: [120, 66],
-//    lineStyle: { normal: {} }
+//    lineStyle: { }
 // }, {
 //    // 终点坐标
 //    coord: [122, 67]
@@ -135,7 +133,6 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
     ],
     // 统一的样式设置
     lineStyle: {
-        normal: {}
     }
 }
 ```
@@ -148,9 +145,8 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 
 ### lineStyle(Object)
 单个数据（单条线）的样式设置。
-#### normal(Object)
 {{ use: partial-line-style(
-    prefix="####",
+    prefix="###",
     hasCurveness=true
 ) }}
 #### emphasis(Object)
@@ -162,9 +158,8 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 
 ### label(Object)
 单个数据（单条线）的标签设置。在 [polyline](~series-lines.polyline) 设置为 `true` 时无效。
-#### normal(Object)
 {{ use: lines-label(
-    prefix="####"
+    prefix="###"
 ) }}
 #### emphasis(Object)
 {{ use: lines-label(

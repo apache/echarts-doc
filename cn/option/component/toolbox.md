@@ -2,16 +2,15 @@
 
 #${prefix} iconStyle(Object)
 ${name} icon 样式设置。
-##${prefix} normal(Object)
 {{ use: partial-item-style(
     defaultBorderColor = '#666',
     defualtColor = 'none',
     defaultBorderWidth = 1,
-    prefix="##" + ${prefix}
+    prefix="#" + ${prefix}
 ) }}
-###${prefix} textPosition(string)
+##${prefix} textPosition(string)
 文本位置，`'left'` / `'right'` / `'top'` / `'bottom'`。
-###${prefix} textAlign(string)
+##${prefix} textAlign(string)
 文本对齐方式，`'left'` / `'right'`。
 ##${prefix} emphasis(Object)
 {{ use: partial-item-style(prefix="##" + ${prefix}) }}

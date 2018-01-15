@@ -97,9 +97,8 @@ boundingCoords: [
 
 #${prefix} label(Object)
 {{use: partial-label-desc}}
-##${prefix} normal(Object)
 {{use: partial-label(
-    prefix="##" + ${prefix},
+    prefix="#" + ${prefix},
     formatter=true
 )}}
 ##${prefix} emphasis(Object)
@@ -115,15 +114,10 @@ boundingCoords: [
 
 {{ use: partial-item-style-desc(name= '地图区域的多边形') }}
 
-
-##${prefix} normal(Object)
-
-普通状态下的多边形样式。
-
-###${prefix} areaColor(Color) = '#eee'
+##${prefix} areaColor(Color) = '#eee'
 地图区域的颜色。
 
-{{ use: partial-item-style(prefix=${prefix} + '##') }}
+{{ use: partial-item-style(prefix=${prefix} + '#') }}
 
 ##${prefix} emphasis(Object)
 

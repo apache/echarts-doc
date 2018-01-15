@@ -208,12 +208,9 @@ myChart.setOption(
 
 ## label(Object)
 
-轴的文本标签。有 `normal` 和 `emphasis` 两个状态，`normal` 是文本正常的样式，`emphasis` 是文本高亮的样式，比如鼠标悬浮或者图例联动高亮的时候会使用 `emphasis` 作为文本的样式。
+轴的文本标签。`emphasis` 是文本高亮的样式，比如鼠标悬浮或者图例联动高亮的时候会使用 `emphasis` 作为文本的样式。
 
-
-### normal(Object)
-
-#### position(string|number) = 'auto'
+### position(string|number) = 'auto'
 
 可选的配置方式：
 
@@ -240,8 +237,7 @@ myChart.setOption(
 
 
 {{ use: partial-timeline-label(
-    prefix="###",
-    state="normal",
+    prefix="##",
     textStyleDefaultColor="'#304654'"
 ) }}
 
@@ -262,10 +258,9 @@ myChart.setOption(
 ) }}
 
 
-### normal(Object)
 
 {{ use:partial-item-style(
-    prefix="###",
+    prefix="##",
     name="timeline ",
     defaultColor="'#304654'",
     defaultBorderWidth=1
@@ -396,22 +391,17 @@ myChart.setOption(
 {{ use: partial-icon-image-path }}
 
 
-### normal(Object)
-
-控制按钮的『正常状态』的样式。
-
-
-#### color(Color) = '#304654'
+### color(Color) = '#304654'
 
 按钮颜色。
 
 
-#### borderColor(Color) = '#304654'
+### borderColor(Color) = '#304654'
 
 按钮边框颜色。
 
 
-#### borderWidth(number) = 1
+### borderWidth(number) = 1
 
 按钮边框线宽。
 
@@ -498,9 +488,16 @@ myChart.setOption(
 
 {{use: axis-common-formatter-desc}}
 
-
+{{ if: ${state} }}
 {{ use: partial-text-style(
     prefix=${prefix},
     name="timeline.lable." + ${state},
     defaultColor=${textStyleDefaultColor}
 ) }}
+{{ else }}
+{{ use: partial-text-style(
+    prefix=${prefix},
+    name="timeline.lable",
+    defaultColor=${textStyleDefaultColor}
+) }}
+{{ /if }}

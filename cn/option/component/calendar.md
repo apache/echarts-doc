@@ -147,9 +147,8 @@ calendar: [{
 
 ## itemStyle(Object)
 设置日历格的样式
-### normal(Object)
 {{ use:partial-item-style(
-    prefix="###",
+    prefix="##",
     name="calendar",
     defaultColor="#fff",
     defaultBorderWidth=1,
@@ -161,11 +160,9 @@ calendar: [{
 ```js
 calendar: [{
     itemStyle: {
-        normal: {
-            color: '#fff',
-            borderWidth: 1,
-            borderColor: '#ccc'
-        }
+        color: '#fff',
+        borderWidth: 1,
+        borderColor: '#ccc'
     }
 }]
 ```

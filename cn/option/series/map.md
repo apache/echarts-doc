@@ -63,8 +63,7 @@
 
 ### itemStyle(Object)
 该数据所在区域的多边形样式设置
-#### normal(Object)
-##### areaColor(Color)
+#### areaColor(Color)
 地图区域的颜色。
 {{ use: partial-item-style(prefix='####') }}
 #### emphasis(Object)
@@ -79,9 +78,8 @@
 
 ## label(Object)
 {{use: partial-label-desc}}
-### normal(Object)
 {{use: partial-label(
-    prefix="###",
+    prefix="##",
     defaultPosition="'bottom'",
     formatter=true,
     noAlign=true,

@@ -78,10 +78,8 @@
 
 线条样式。
 
-##${prefix} normal(Object)
-
 {{use:partial-line-style(
-    prefix="###",
+    prefix="##",
     defaultWidth=2,
     defaultOpacity=0.45
 )}}

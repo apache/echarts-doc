@@ -1,6 +1,6 @@
 {{ target: partial-sunburst-label-helper }}
 
-##${prefix} rotate(string|number) = 'radial'
+#${prefix} rotate(string|number) = 'radial'
 
 如果是 `number` 类型，则表示标签的旋转角，从 -90 度到 90 度，正值是逆时针。
 
@@ -12,14 +12,14 @@
 
 ~[700x400](${galleryViewPath}sunburst-label-rotate&edit=1&reset=1)
 
-##${prefix} align(string) = 'center'
+#${prefix} align(string) = 'center'
 
 文字对齐方式，可取值为：`'left'`、 `'center'`、 `'right'`。注意，`'left'` 是指靠近内圈，而 `'right'` 是指靠近外圈。
 
 ~[700x400](${galleryViewPath}doc-example/sunburst-label-align&edit=1&reset=1)
 
 {{use:partial-label(
-    prefix="###",
+    prefix="##",
     defaultPosition="'inside'",
     formatter=true,
     defaultShowLabel="true",
@@ -38,17 +38,16 @@ ${prefix} label(Object)
 
 {{use:partial-label-desc}}
 
-#${prefix} normal(Object)
 {{ use: partial-sunburst-label-helper(prefix=${prefix}) }}
 
 #${prefix} emphasis(Object)
-{{ use: partial-sunburst-label-helper(prefix=${prefix}) }}
+{{ use: partial-sunburst-label-helper(prefix="#"+${prefix}) }}
 
 
 
 {{ target: partial-sunburst-itemStyle-props }}
 
-${prefix} itemStyle(Object)
+#${prefix} itemStyle(Object)
 
 旭日图扇形块的样式。
 
@@ -56,21 +55,17 @@ ${prefix} itemStyle(Object)
 
 **优先级：[series.data.itemStyle](~series-sunburst.data.itemStyle) > [series.levels.itemStyle](~series-sunburst.levels.itemStyle) > [series.itemStyle](~series-sunburst.itemStyle)。**
 
-ECharts 中，通常使用 *normal* 表示图形的默认状态，*emphasis* 表示鼠标移动到图形上后的高亮状态。对于旭日图而言，我们引入了另两种状态：*highlight* 表示由于高亮了某个扇形块引起的其他相关扇形块的高亮；*downplay* 表示除了 highlight 扇形块之外的被淡化的扇形块。
-
-#${prefix} normal(Object)
-
-图形的默认状态，参见 [highlightPolicy](~series-sunburst.highlightPolicy)。
+ECharts 中，通常使用 *emphasis* 表示鼠标移动到图形上后的高亮状态。对于旭日图而言，我们引入了另两种状态：*highlight* 表示由于高亮了某个扇形块引起的其他相关扇形块的高亮；*downplay* 表示除了 highlight 扇形块之外的被淡化的扇形块。参见 [highlightPolicy](~series-sunburst.highlightPolicy)。
 
 {{use: partial-item-style(
-    prefix="#" + ${prefix},
+    prefix=${prefix},
     useColorPalatte=true,
     defaultBorderWidth=1,
     defaultBorderColor="'white'",
     defaultOpacity=1
 )}}
 
-#${prefix} emphasis(Object)
+##${prefix} emphasis(Object)
 
 图形的高亮状态，参见 [highlightPolicy](~series-sunburst.highlightPolicy)。
 
@@ -82,7 +77,7 @@ ECharts 中，通常使用 *normal* 表示图形的默认状态，*emphasis* 表
     defaultOpacity=1
 )}}
 
-#${prefix} highlight(Object)
+##${prefix} highlight(Object)
 
 相关图形的高亮状态，参见 [highlightPolicy](~series-sunburst.highlightPolicy)。
 
@@ -94,7 +89,7 @@ ECharts 中，通常使用 *normal* 表示图形的默认状态，*emphasis* 表
     defaultOpacity=1
 )}}
 
-#${prefix} downplay(Object)
+##${prefix} downplay(Object)
 
 图形的淡化状态，参见 [highlightPolicy](~series-sunburst.highlightPolicy)。
 
@@ -195,11 +190,11 @@ ECharts 中，通常使用 *normal* 表示图形的默认状态，*emphasis* 表
 子节点，递归定义，格式同 [series-sunburst.data](~series-sunburst.data)。
 
 {{use: partial-sunburst-label-props(
-    prefix="###"
+    prefix="##"
 )}}
 
 {{use: partial-sunburst-itemStyle-props(
-    prefix="###"
+    prefix="##"
 )}}
 
 ## highlightPolicy(string) = 'descendant'
@@ -208,7 +203,7 @@ ECharts 中，通常使用 *normal* 表示图形的默认状态，*emphasis* 表
 
 ~[700x350](${galleryViewPath}doc-example/sunburst-highlight-descendant&edit=1&reset=1)
 
-上面的例子 `highlightPolicy` 是默认值 `'descendant'`，我们通过 `dispatchAction` 触发了旭日图中某个数据块的高亮操作（相当于将鼠标移动到下图中的 `target` 扇形块中）。目标扇形块将采用 `emphasis` 的样式（在本例中是为红色），和目标扇形块相关的扇形块（由 `highlightPolicy` 决定哪些扇形块是相关的）采用 `highlight` 的样式（橙色），其他扇形块采用 `downplay` 的样式（灰色）。而如果没有高亮对象，则所有扇形块都采用 `normal` 的样式。自 ECharts 4.0 版本起，由于 `normal` 可以省略不写，所以样式定义是类似这样的：
+上面的例子 `highlightPolicy` 是默认值 `'descendant'`，我们通过 `dispatchAction` 触发了旭日图中某个数据块的高亮操作（相当于将鼠标移动到下图中的 `target` 扇形块中）。目标扇形块将采用 `emphasis` 的样式（在本例中是为红色），和目标扇形块相关的扇形块（由 `highlightPolicy` 决定哪些扇形块是相关的）采用 `highlight` 的样式（橙色），其他扇形块采用 `downplay` 的样式（灰色）。而如果没有高亮对象，则所有扇形块都采用默认的样式。样式定义是类似这样的：
 
 ```js
 itemStyle: {
@@ -295,11 +290,11 @@ series: {
 ```
 
 {{use: partial-sunburst-label-props(
-    prefix="###"
+    prefix="##"
 )}}
 
 {{use: partial-sunburst-itemStyle-props(
-    prefix="###"
+    prefix="##"
 )}}
 
 {{use: partial-animation(

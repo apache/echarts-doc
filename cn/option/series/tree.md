@@ -71,11 +71,10 @@
 
 ## itemStyle(Object)
 
-树图中每个节点的样式，其中 [itemStyle.normal.color](~series-tree.itemStyle.normal.color) 表示节点的填充色，用来区别当前节点所对应的子树折叠或展开的状态。
+树图中每个节点的样式，其中 [itemStyle.color](~series-tree.itemStyle.color) 表示节点的填充色，用来区别当前节点所对应的子树折叠或展开的状态。
 
-### normal(Object)
 {{use: partial-item-style(
-    prefix="###",
+    prefix="##",
     useColorPalatte=true,
     defaultBorderWidth=1.5,
     defaultBorderColor="'#c23531'"
@@ -89,10 +88,8 @@
 
 `label` 描述了每个节点所对应的文本标签的样式。
 
-### normal(Object)
-
 {{use:partial-label(
-    prefix="###",
+    prefix="##",
     defaultShowLabel=true,
     formatter1d=true
 )}}
@@ -109,8 +106,7 @@
 
 定义了树图边的样式。
 
-### normal(Object)
-{{use: partial-tree-line-style(prefix="###")}}
+{{use: partial-tree-line-style(prefix="##")}}
 
 ### emphasis(Object)
 {{use: partial-tree-line-style(
@@ -126,10 +122,8 @@
 
 描述了叶子节点所对应的文本标签的样式。
 
-#### normal(Object)
-
 {{use:partial-label(
-    prefix="####",
+    prefix="###",
     defaultShowLabel=true,
     formatter1d=true
 )}}
@@ -145,9 +139,8 @@
 
 树图中叶子节点的样式。
 
-#### normal(Object)
 {{use: partial-item-style(
-    prefix="####",
+    prefix="###",
     useColorPalatte=true
 )}}
 
@@ -198,9 +191,7 @@
 
 该节点的样式。
 
-#### normal(Object)
-
-{{use:partial-item-style(prefix="####", useColorPalatte=true)}}
+{{use:partial-item-style(prefix="###", useColorPalatte=true)}}
 
 #### emphasis(Object)
 
@@ -210,10 +201,8 @@
 
 该节点的标签。
 
-#### normal(Object)
-
 {{ use:partial-label(
-    prefix="####"
+    prefix="###"
 ) }}
 
 #### emphasis(Object)

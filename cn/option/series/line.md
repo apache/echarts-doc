@@ -68,9 +68,8 @@
 
 ## label(Object)
 {{use: partial-label-desc}}
-### normal(Object)
 {{use: partial-label(
-    prefix="###",
+    prefix="##",
     defaultPosition="'top'",
     formatter=true
 )}}
@@ -82,9 +81,8 @@
 
 ## itemStyle(Object)
 折线拐点标志的样式。
-### normal(Object)
 {{use: partial-item-style(
-    prefix="###",
+    prefix="##",
     useColorPalatte=true,
     hasCallback=true
 )}}
@@ -94,18 +92,16 @@
 ## lineStyle(Object)
 线条样式。
 
-**注：** 修改 `lineStyle` 中的颜色不会影响图例颜色，如果需要图例颜色和折线图颜色一致，需修改 [itemStyle.normal.color](~series-line.itemStyle.normal.color)，线条颜色默认也会取改颜色。
+**注：** 修改 `lineStyle` 中的颜色不会影响图例颜色，如果需要图例颜色和折线图颜色一致，需修改 [itemStyle.color](~series-line.itemStyle.color)，线条颜色默认也会取改颜色。
 
-### normal(Object)
 {{use:partial-line-style(
-    prefix="###",
+    prefix="##",
     defaultWidth=2
 )}}
 
 ## areaStyle(Object)
 区域填充样式。
-### normal(Object)
-{{use: partial-area-style(prefix="###", hasOrigin=true)}}
+{{use: partial-area-style(prefix="##", hasOrigin=true)}}
 
 ## smooth(false) = false
 是否平滑曲线显示。
@@ -166,9 +162,8 @@
 
 ### label(Object)
 单个拐点文本的样式设置。
-#### normal(Object)
 {{ use: partial-label(
-    prefix="####",
+    prefix="###",
     defaultPosition="top"
 ) }}
 #### emphasis(Object)
@@ -176,8 +171,7 @@
 
 ### itemStyle(Object)
 单个拐点标志的样式设置。
-#### normal(Object)
-{{use: partial-item-style(prefix="####")}}
+{{use: partial-item-style(prefix="###")}}
 #### emphasis(Object)
 {{use: partial-item-style(prefix="####")}}
 

@@ -185,7 +185,7 @@ renderItem 函数的第二个参数。
 
 ##### style(Function)
 
-能得到 [series.itemStyle.normal](~series-custom.itemStyle.normal) 中定义的样式信息和视觉映射得到的样式信息，可直接用于绘制图元。也可以用这种方式覆盖这些样式信息：`api.style({fill: 'green', stroke: 'yellow'})`。
+能得到 [series.itemStyle](~series-custom.itemStyle) 中定义的样式信息和视觉映射得到的样式信息，可直接用于绘制图元。也可以用这种方式覆盖这些样式信息：`api.style({fill: 'green', stroke: 'yellow'})`。
 
 ```
 @param {Object} [extra] 额外指定的样式信息。
@@ -324,9 +324,8 @@ renderItem 函数的第二个参数。
 
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
-### normal(Object)
 {{use:partial-item-style(
-    prefix="###",
+    prefix="##",
     useColorPalatte=true,
     hasCallback=false
 )}}
@@ -358,9 +357,8 @@ renderItem 函数的第二个参数。
 单个数据项的数值。
 
 ### itemStyle(Object)
-#### normal(Object)
 {{use:partial-item-style(
-    prefix="####"
+    prefix="###"
 )}}
 #### emphasis(Object)
 {{use:partial-item-style(
@@ -449,7 +447,7 @@ var option = {
 
 有时候还需要用到 [api.size(...)](~series-custom.renderItem.arguments.api.size) 函数，表示得到坐标系上一段数值范围对应的长度。
 
-返回值中样式的设置可以使用 [api.style(...)](~series-custom.renderItem.arguments.api.style) 函数，他能得到 [series.itemStyle.normal](~series-custom.itemStyle.normal) 中定义的样式信息，以及视觉映射的样式信息。也可以用这种方式覆盖这些样式信息：`api.style({fill: 'green', stroke: 'yellow'})`。
+返回值中样式的设置可以使用 [api.style(...)](~series-custom.renderItem.arguments.api.style) 函数，他能得到 [series.itemStyle](~series-custom.itemStyle) 中定义的样式信息，以及视觉映射的样式信息。也可以用这种方式覆盖这些样式信息：`api.style({fill: 'green', stroke: 'yellow'})`。
 
 
 

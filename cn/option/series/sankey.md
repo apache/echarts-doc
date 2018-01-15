@@ -59,9 +59,8 @@
 
 `label` 描述了每个矩形节点中文本标签的样式。
 
-### normal(Object)
 {{use:partial-label(
-    prefix="###",
+    prefix="##",
     defaultShowLabel=true,
     defaultPosition="'right'",
     formatter1d=true
@@ -76,9 +75,8 @@
 
 桑基图节点矩形的样式。
 
-### normal(Object)
 {{use: partial-item-style(
-    prefix="###",
+    prefix="##",
     useColorPalatte=true,
     defaultBorderWidth=1,
     defaultBorderColor="'#aaa'"
@@ -88,10 +86,9 @@
 
 
 ## lineStyle(Object)
-桑基图边的样式，其中 [lineStyle.normal.color](~series-sankey.lineStyle.normal.color) 支持设置为`'source'`或者`'target'`特殊值，此时边会自动取源节点或目标节点的颜色作为自己的颜色。
+桑基图边的样式，其中 [lineStyle.color](~series-sankey.lineStyle.color) 支持设置为`'source'`或者`'target'`特殊值，此时边会自动取源节点或目标节点的颜色作为自己的颜色。
 
-### normal(Object)
-{{use: partial-sankey-line-style(prefix="###")}}
+{{use: partial-sankey-line-style(prefix="##")}}
 ### emphasis(Object)
 {{use: partial-sankey-line-style(
     prefix="###"
@@ -107,16 +104,14 @@
 数据项值。
 ### itemStyle(Object)
 该节点的样式。
-#### normal(Object)
-{{use:partial-item-style(prefix="####", useColorPalatte=true)}}
+{{use:partial-item-style(prefix="###", useColorPalatte=true)}}
 #### emphasis(Object)
 {{use:partial-item-style(prefix="####")}}
 
 ### label(Object)
 该节点标签的样式。
-#### normal(Object)
 {{ use:partial-label(
-    prefix="####"
+    prefix="###"
 ) }}
 #### emphasis(Object)
 {{ use:partial-label(
@@ -150,9 +145,8 @@ links: [{
 边的数值，决定边的宽度。
 ### lineStyle(Object)
 关系边的线条样式。
-#### normal(Object)
 {{use:partial-sankey-line-style(
-    prefix="####"
+    prefix="###"
 )}}
 #### emphasis(Object)
 {{ use:partial-sankey-line-style(
