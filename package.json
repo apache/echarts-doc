@@ -4,7 +4,7 @@
   "description": "Documentation of ECharts",
   "repository": {
     "type": "git",
-    "url": "ssh://g@gitlab.baidu.com:8022/shenyi01/echarts-doc.git"
+    "url": "git@github.com:ecomfe/echarts-doc.git"
   },
   "author": "shenyi",
   "license": "BSD",
