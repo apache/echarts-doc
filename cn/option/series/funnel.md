@@ -41,9 +41,8 @@
 
 ## label(Object)
 {{use:partial-label-desc(name="漏斗图")}}
-### normal(Object)
 {{use:partial-funnel-label(
-    prefix="###",
+    prefix="##",
     position=true,
     formatter=true
 )}}
@@ -55,14 +54,13 @@
 )}}
 
 ## labelLine(Object)
-标签的视觉引导线样式，在 [label 位置](~series-funnel.label.normal.position) 设置为`'left'`或者`'right'`的时候会显示视觉引导线。
+标签的视觉引导线样式，在 [label 位置](~series-funnel.label.position) 设置为`'left'`或者`'right'`的时候会显示视觉引导线。
 {{ use: partial-funnel-label-line(prefix='##') }}
 
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
-### normal(Object)
 {{use:partial-item-style(
-    prefix="###",
+    prefix="##",
     useColorPalatte=true,
     hasCallback=true
 )}}
@@ -87,16 +85,14 @@
 数据值。
 ### itemStyle(Object)
 {{use:partial-item-style-desc}}
-#### normal(Object)
-{{use:partial-item-style(prefix="####")}}
+{{use:partial-item-style(prefix="###")}}
 ##### height(string|number)
 该数据项的高度。默认平均分配高度，如果需要修改，可以将其设为百分比（如：`'10%'`）或像素值（如：`20px`）。需要注意总和应为 100%。
 
 ### label(Object)
 单个数据的标签配置。
-#### normal(Object)
 {{use:partial-funnel-label(
-    prefix="####",
+    prefix="###",
     position=true,
     formatter=false
 )}}
@@ -112,8 +108,7 @@
 
 ### itemStyle(Object)
 {{use:partial-item-style-desc}}
-#### normal(Object)
-{{use:partial-item-style(prefix="####")}}
+{{use:partial-item-style(prefix="###")}}
 #### emphasis(Object)
 {{use:partial-item-style(prefix="####")}}
 
@@ -179,14 +174,12 @@
 
 
 {{ target: partial-funnel-label-line }}
-#${prefix} normal(Object)
-普通状态下视觉引导线的样式。
-##${prefix} show(boolean)
+#${prefix} show(boolean)
 是否显示视觉引导线。
-##${prefix} length(number)
+#${prefix} length(number)
 视觉引导线第一段的长度。
-##${prefix} lineStyle(Object)
-{{use:partial-line-style(prefix="##" + ${prefix})}}
+#${prefix} lineStyle(Object)
+{{use:partial-line-style(prefix="#" + ${prefix})}}
 #${prefix} emphasis(Object)
 高亮状态下视觉引导线的样式。
 ##${prefix} show(boolean)

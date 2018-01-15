@@ -120,10 +120,9 @@ formatter: function (value) {
 
 ## itemStyle(Object)
 仪表盘指针样式。
-### normal(Object)
-{{ use: partial-item-style(prefix="###") }}
+{{ use: partial-item-style(prefix="##") }}
 <!-- overwrite color -->
-#### color(Color) = 'auto'
+### color(Color) = 'auto'
 指针颜色，默认取数值所在的[区间的颜色](~series-gauge.axisLine.lineStyle.color)
 ### emphasis(Object)
 {{ use: partial-item-style(prefix="###") }}

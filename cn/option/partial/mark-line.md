@@ -17,9 +17,8 @@
 
 ##${prefix} label(Object)
 标线的文本。
-###${prefix} normal(Object)
 {{ use: mark-line-label(
-    prefix=${prefix} + '###'
+    prefix=${prefix} + '##'
 ) }}
 ###${prefix} emphasis(Object)
 {{ use: mark-line-label(
@@ -28,9 +27,8 @@
 
 ##${prefix} lineStyle(Object)
 标线的样式
-###${prefix} normal(Object)
 {{ use: partial-line-style(
-    prefix="###" + ${prefix},
+    prefix="##" + ${prefix},
     defaultColor='自适应',
     defaultLineType='dashed',
     hasCurveness=true
@@ -183,9 +181,8 @@ data: [
 
 #${prefix} lineStyle(Object)
 该数据项线的样式，起点和终点项的 `lineStyle`会合并到一起。
-##${prefix} normal(Object)
 {{ use: partial-line-style(
-    prefix="##"+${prefix},
+    prefix="#"+${prefix},
     hasCurveness=true
 ) }}
 ##${prefix} emphasis(Object)
@@ -196,9 +193,8 @@ data: [
 
 #${prefix} label(Object)
 该数据项标签的样式，起点和终点项的 `label`会合并到一起。
-##${prefix} normal(Object)
 {{ use: mark-line-label(
-    prefix='##'+${prefix}
+    prefix='#'+${prefix}
 ) }}
 ##${prefix} emphasis(Object)
 {{ use: mark-line-label(

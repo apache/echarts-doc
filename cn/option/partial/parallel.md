@@ -112,7 +112,7 @@ option = {
 
 **如果数据量很大并且发生卡顿**
 
-建议把 [series-parallel.lineStyle.normal.width](~series-parallel.lineStyle.normal.width) 设为 `0.5`（或更小），
+建议把 [series-parallel.lineStyle.width](~series-parallel.lineStyle.width) 设为 `0.5`（或更小），
 可能显著改善性能。
 
 <br>

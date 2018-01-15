@@ -7,9 +7,8 @@
 
 ##${prefix} label(Object)
 标域文本配置。
-###${prefix} normal(Object)
 {{ use: partial-label(
-    prefix=${prefix} + '###'
+    prefix=${prefix} + '##'
 ) }}
 ###${prefix} emphasis(Object)
 {{ use: partial-label(
@@ -18,8 +17,7 @@
 
 ##${prefix} itemStyle(Object)
 该标域的样式。
-###${prefix} normal(Object)
-{{ use: partial-item-style(prefix="###" + ${prefix}) }}
+{{ use: partial-item-style(prefix="##" + ${prefix}) }}
 ###${prefix} emphasis(Object)
 {{ use: partial-item-style(prefix="###" + ${prefix}) }}
 
@@ -149,9 +147,8 @@ data: [
 
 #${prefix} itemStyle(Object)
 该数据项区域的样式，起点和终点项的`itemStyle`会合并到一起。
-##${prefix} normal(Object)
 {{ use: partial-item-style(
-    prefix="##"+${prefix}
+    prefix="#"+${prefix}
 ) }}
 ##${prefix} emphasis(Object)
 {{ use: partial-item-style(
@@ -160,9 +157,9 @@ data: [
 
 #${prefix} label(Object)
 该数据项标签的样式，起点和终点项的`label`会合并到一起。
-##${prefix} normal(Object)
+
 {{ use: partial-label(
-    prefix='##'+${prefix}
+    prefix='#'+${prefix}
 ) }}
 ##${prefix} emphasis(Object)
 {{ use: partial-label(

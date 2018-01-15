@@ -55,9 +55,8 @@
 
 `label` 描述了主题河流中每个带状河流分支对应的文本标签的样式。
 
-### normal(Object)
 {{use:partial-label(
-    prefix="###",
+    prefix="##",
     defaultShowLabel=true,
     defaultPosition="'left'",
     defaultMargin=4,
@@ -81,9 +80,8 @@
 
 主题河流中每个带状河流分支的样式。
 
-### normal(Object)
 {{use: partial-item-style(
-    prefix="###"
+    prefix="##"
 )}}
 ### emphasis(Object)
 {{use: partial-item-style(

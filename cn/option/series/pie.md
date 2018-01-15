@@ -56,9 +56,8 @@
 
 ## label(Object)
 {{use:partial-label-desc(name="饼图")}}
-### normal(Object)
 {{use:partial-pie-label(
-    prefix="###",
+    prefix="##",
     galleryEditorPath = ${galleryEditorPath},
     position=true,
     formatter=true
@@ -71,14 +70,13 @@
 )}}
 
 ## labelLine(Object)
-标签的视觉引导线样式，在 [label 位置](~series-pie.label.normal.position) 设置为`'outside'`的时候会显示视觉引导线。
+标签的视觉引导线样式，在 [label 位置](~series-pie.label.position) 设置为`'outside'`的时候会显示视觉引导线。
 {{ use: partial-pie-label-line(prefix='##') }}
 
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
-### normal(Object)
 {{use:partial-item-style(
-    prefix="###",
+    prefix="##",
     useColorPalatte=true,
     hasCallback=true
 )}}
@@ -102,9 +100,8 @@
 
 ### label(Object)
 单个扇区的标签配置。
-#### normal(Object)
 {{use:partial-pie-label(
-    prefix="####",
+    prefix="###",
     galleryEditorPath = ${galleryEditorPath},
     position=true,
     formatter=false
@@ -121,8 +118,7 @@
 
 ### itemStyle(Object)
 {{use:partial-item-style-desc}}
-#### normal(Object)
-{{use:partial-item-style(prefix="####")}}
+{{use:partial-item-style(prefix="###")}}
 #### emphasis(Object)
 {{use:partial-item-style(prefix="####")}}
 
@@ -193,18 +189,16 @@
 
 
 {{ target: partial-pie-label-line }}
-#${prefix} normal(Object)
-普通状态下视觉引导线的样式。
-##${prefix} show(boolean)
+#${prefix} show(boolean)
 是否显示视觉引导线。
-##${prefix} length(number)
+#${prefix} length(number)
 视觉引导线第一段的长度。
-##${prefix} length2(number)
+#${prefix} length2(number)
 视觉引导项第二段的长度。
-##${prefix} smooth(boolean|number) = false
+#${prefix} smooth(boolean|number) = false
 是否平滑视觉引导线，默认不平滑，可以设置成 `true` 平滑显示，也可以设置为 0 到 1 的值，表示平滑程度。
-##${prefix} lineStyle(Object)
-{{use:partial-line-style(prefix="##" + ${prefix})}}
+#${prefix} lineStyle(Object)
+{{use:partial-line-style(prefix="#" + ${prefix})}}
 
 #${prefix} emphasis(Object)
 高亮状态下视觉引导线的样式。

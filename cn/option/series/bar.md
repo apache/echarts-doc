@@ -22,9 +22,8 @@
 
 ## label(Object)
 {{use:partial-label-desc}}
-### normal(Object)
 {{use:partial-label(
-    prefix="###",
+    prefix="##",
     defaultPosition="'inside'",
     formatter=true
 )}}
@@ -36,9 +35,8 @@
 
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
-### normal(Object)
 {{use:partial-bar-item-style(
-    prefix="###",
+    prefix="##",
     useColorPalatte=true,
     hasCallback=true,
     barBorderRadius=true
@@ -81,18 +79,16 @@
 
 ### label(Object)
 单个柱条文本的样式设置。
-#### normal(Object)
 {{ use:partial-label(
-    prefix="####",
+    prefix="###",
     defaultPosition="inside"
 ) }}
 #### emphasis(Object)
 {{ use:partial-label(prefix="####") }}
 
 ### itemStyle(Object)
-#### normal(Object)
 {{use:partial-bar-item-style(
-    prefix="####",
+    prefix="###",
     barBorderRadius=true
 )}}
 #### emphasis(Object)

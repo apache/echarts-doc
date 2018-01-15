@@ -62,52 +62,49 @@ echarts 提供了丰富的文本标签配置项，包括：
 + 文本块的位置和旋转：`position`、`distance`、`rotate`。
 
 
-可以在各处的 `rich` 属性中定义文本片段样式。例如 [series-bar.label.normal.rich](option.html#series-bar.label.normal.rich)
+可以在各处的 `rich` 属性中定义文本片段样式。例如 [series-bar.label.rich](option.html#series-bar.label.rich)
 
 例如：
 
 ```js
 label: {
-    normal: {
+    // 在文本中，可以对部分文本采用 rich 中定义样式。
+    // 这里需要在文本中使用标记符号：
+    // `{styleName|text content text content}` 标记样式名。
+    // 注意，换行仍是使用 '\n'。
+    formatter: [
+        '{a|这段文本采用样式a}',
+        '{b|这段文本采用样式b}这段用默认样式{x|这段用样式x}'
+    ].join('\n'),
 
-        // 在文本中，可以对部分文本采用 rich 中定义样式。
-        // 这里需要在文本中使用标记符号：
-        // `{styleName|text content text content}` 标记样式名。
-        // 注意，换行仍是使用 '\n'。
-        formatter: [
-            '{a|这段文本采用样式a}',
-            '{b|这段文本采用样式b}这段用默认样式{x|这段用样式x}'
-        ].join('\n'),
+    // 这里是文本块的样式设置：
+    color: '#333',
+    fontSize: 5,
+    fontFamily: 'Arial',
+    borderWidth: 3,
+    backgroundColor: '#984455',
+    padding: [3, 10, 10, 5],
+    lineHeight: 20,
 
-        // 这里是文本块的样式设置：
-        color: '#333',
-        fontSize: 5,
-        fontFamily: 'Arial',
-        borderWidth: 3,
-        backgroundColor: '#984455',
-        padding: [3, 10, 10, 5],
-        lineHeight: 20,
-
-        // rich 里是文本片段的样式设置：
-        rich: {
-            a: {
-                color: 'red',
-                lineHeight: 10
+    // rich 里是文本片段的样式设置：
+    rich: {
+        a: {
+            color: 'red',
+            lineHeight: 10
+        },
+        b: {
+            backgroundColor: {
+                image: 'xxx/xxx.jpg'
             },
-            b: {
-                backgroundColor: {
-                    image: 'xxx/xxx.jpg'
-                },
-                height: 40
-            },
-            x: {
-                fontSize: 18,
-                fontFamily: 'Microsoft YaHei',
-                borderColor: '#449933',
-                borderRadius: 4
-            },
-            ...
-        }
+            height: 40
+        },
+        x: {
+            fontSize: 18,
+            fontFamily: 'Microsoft YaHei',
+            borderColor: '#449933',
+            borderRadius: 4
+        },
+        ...
     }
 }
 ```
@@ -143,7 +140,7 @@ label: {
 
 **标签的位置**
 
-对于折线图、柱状图、散点图等，均可以使用 `label` 来设置标签。标签的相对于图形元素的位置，一般使用 [label[normal|emphasis].position](option.html#series-scatter.label.normal.position)、[label[normal|emphasis].distance](option.html#series-scatter.label.normal.distance) 来配置。
+对于折线图、柱状图、散点图等，均可以使用 `label` 来设置标签。标签的相对于图形元素的位置，一般使用 [label.position](option.html#series-scatter.label.position)、[label.distance](option.html#series-scatter.label.distance) 来配置。
 
 例如：
 ~[800x400](${galleryViewPath}doc-example/label-position&edit=1&reset=1)
@@ -163,7 +160,7 @@ label: {
 
 ~[900x500](${galleryViewPath}bar-label-rotation&edit=1&reset=1)
 
-这种场景下，可以结合 [align](option.html#series-bar.label.normal.align) 和 [verticalAlign](option.html#series-bar.label.normal.verticalAlign) 来调整标签位置。
+这种场景下，可以结合 [align](option.html#series-bar.label.align) 和 [verticalAlign](option.html#series-bar.label.verticalAlign) 来调整标签位置。
 
 注意，逻辑是，先使用 `align` 和 `verticalAlign` 定位，再旋转。
 

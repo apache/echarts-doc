@@ -49,7 +49,7 @@ series: [{
 + 后面的其他维度是可选的，可以在别处被使用，例如：
     + 在 [visualMap](~visualMap) 中可以将一个或多个维度映射到颜色，大小等多个图形属性上。
     + 在 [series.symbolSize](~series.symbolSize) 中可以使用回调函数，基于某个维度得到 symbolSize 值。
-    + 使用 [tooltip.formatter](~tooltip.formatter) 或 [series.label.normal.formatter](~series.label.normal.formatter) 可以把其他维度的值展示出来。
+    + 使用 [tooltip.formatter](~tooltip.formatter) 或 [series.label.formatter](~series.label.formatter) 可以把其他维度的值展示出来。
 
 特别地，当只有一个轴为类目轴（axis.type 为 `'category'`）的时候，数据可以简化用一个一维数组表示。例如：
 ```js

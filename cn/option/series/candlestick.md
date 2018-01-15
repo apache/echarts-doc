@@ -19,10 +19,10 @@
 
 默认配置项，采用的是『红涨蓝跌』。如果想更改这个颜色配置，在这些配置项中更改即可：
 
-+ [series-candlestick.itemStyle.normal.color](~series-candlestick.itemStyle.normal.color)：阳线填充色（即『涨』）
-+ [series-candlestick.itemStyle.normal.color0](~series-candlestick.itemStyle.normal.color0)：阴线填充色（即『跌』）
-+ [series-candlestick.itemStyle.normal.borderColor](~series-candlestick.itemStyle.normal.borderColor)：阳线边框色（即『涨』）
-+ [series-candlestick.itemStyle.normal.borderColor0](series-candlestick.itemStyle.normal.borderColor0)：阴线边框色（即『跌』）
++ [series-candlestick.itemStyle.color](~series-candlestick.itemStyle.color)：阳线填充色（即『涨』）
++ [series-candlestick.itemStyle.color0](~series-candlestick.itemStyle.color0)：阴线填充色（即『跌』）
++ [series-candlestick.itemStyle.borderColor](~series-candlestick.itemStyle.borderColor)：阳线边框色（即『涨』）
++ [series-candlestick.itemStyle.borderColor0](series-candlestick.itemStyle.borderColor0)：阴线边框色（即『跌』）
 
 
 <br>
@@ -213,10 +213,8 @@ candlestick 描边线宽。为 0 时无描边。
 {{use:partial-item-style-desc(name="candlestick")}}
 
 
-##${prefix} normal(Object)
-
 {{use: partial-candlestick-item-style-detail(
-    prefix="###",
+    prefix="##",
     defaultColor="#c23531",
     defaultColor0="#314656",
     defaultBorderColor="#c23531",
