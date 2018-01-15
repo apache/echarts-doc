@@ -150,11 +150,11 @@ Data-related configures.
 
 Maximum data number.
 
-### allData = '其数据是——'
+### allData(string) = '其数据是——'
 
 Description used when all data is displayed. Note that this option will **not** set to display all data. If all data should be displayed, [aria.data.maxCount](~aria.data.maxCount) should be set to be `Number.MAX_VALUE`.
 
-### partialData = '其中，前{displayCnt}项是——'
+### partialData(string) = '其中，前{displayCnt}项是——'
 
 Description used when only part of data is displayed. Template variable:
 

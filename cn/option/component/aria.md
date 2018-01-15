@@ -148,11 +148,11 @@ option = {
 
 描述中每个系列最多出现的数据个数。
 
-### allData = '其数据是——'
+### allData(string) = '其数据是——'
 
 当数据全部显示时采用的描述。这一配置项**不会**使得数据全部显示，可以通过将 [aria.data.maxCount](~aria.data.maxCount) 设置为 `Number.MAX_VALUE` 实现全部显示的效果。
 
-### partialData = '其中，前{displayCnt}项是——'
+### partialData(string) = '其中，前{displayCnt}项是——'
 
 当只有部分数据显示时采用的描述。其中包括模板变量：
 
