@@ -118,10 +118,9 @@ The width of pointer.
 
 ## itemStyle(Object)
 The style of gauge chart.
-### normal(Object)
-{{ use: partial-item-style(prefix="###") }}
+{{ use: partial-item-style(prefix="##") }}
 <!-- overwrite color -->
-#### color(Color) = 'auto'
+### color(Color) = 'auto'
 The color of pointer. Defaults to use [the color of section](~series-gauge.axisLine.lineStyle.color) where the numerical value belongs to.
 ### emphasis(Object)
 {{ use: partial-item-style(prefix="###") }}

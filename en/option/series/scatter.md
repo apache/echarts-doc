@@ -50,9 +50,8 @@ The threshold enabling the drawing optimization.
 
 ## label(Object)
 {{use:partial-label-desc}}
-### normal(Object)
 {{use:partial-label(
-    prefix="###",
+    prefix="##",
     defaultPosition="'inside'",
     formatter=true
 )}}
@@ -65,9 +64,8 @@ The threshold enabling the drawing optimization.
 
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
-### normal(Object)
 {{use:partial-item-style(
-    prefix="###",
+    prefix="##",
     useColorPalatte=true,
     hasCallback=true
 )}}
@@ -102,9 +100,8 @@ the value of data item.
 ) }}
 
 ### label(Object)
-#### normal(Object)
 {{ use:partial-label(
-    prefix="####",
+    prefix="###",
     defaultPosition="inside"
 ) }}
 #### emphasis(Object)
@@ -113,8 +110,7 @@ the value of data item.
 
 ### itemStyle(Object)
 the style setting about single data point(bubble).
-#### normal(Object)
-{{use:partial-item-style(prefix="####")}}
+{{use:partial-item-style(prefix="###")}}
 #### emphasis(Object)
 {{use:partial-item-style(prefix="####")}}
 

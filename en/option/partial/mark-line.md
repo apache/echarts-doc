@@ -17,9 +17,8 @@ Precison of marking line value, which is useful when displaying average value ma
 
 ##${prefix} label(Object)
 Mark line text.
-###${prefix} normal(Object)
 {{ use: mark-line-label(
-    prefix=${prefix} + '###'
+    prefix=${prefix} + '##'
 ) }}
 ###${prefix} emphasis(Object)
 {{ use: mark-line-label(
@@ -28,9 +27,8 @@ Mark line text.
 
 ##${prefix} lineStyle(Object)
 Mark line style.
-###${prefix} normal(Object)
 {{ use: partial-line-style(
-    prefix="###" + ${prefix},
+    prefix="##" + ${prefix},
     defaultColor=null,
     defaultLineType='dashed',
     hasCurveness=true
@@ -184,9 +182,8 @@ Label value, which can be ignored.
 
 #${prefix} lineStyle(Object)
 Line style of this data item, which will be merged with `lineStyle` of starting point and ending point.
-##${prefix} normal(Object)
 {{ use: partial-line-style(
-    prefix="##"+${prefix},
+    prefix="#"+${prefix},
     hasCurveness=true
 ) }}
 ##${prefix} emphasis(Object)
@@ -197,9 +194,8 @@ Line style of this data item, which will be merged with `lineStyle` of starting 
 
 #${prefix} label(Object)
 Label of this data item, which will be merged with `label` of starting point and ending point.
-##${prefix} normal(Object)
 {{ use: mark-line-label(
-    prefix='##'+${prefix}
+    prefix='#'+${prefix}
 ) }}
 ##${prefix} emphasis(Object)
 {{ use: mark-line-label(

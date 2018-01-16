@@ -61,52 +61,49 @@ echarts provides plenty of text options, including:
 + Position and rotation of text block: `position`, `distance`, `rotate`.
 
 
-User can defined styles for text fregment in `rich` property. For example, [series-bar.label.normal.rich](option.html#series-bar.label.normal.rich)
+User can defined styles for text fregment in `rich` property. For example, [series-bar.label.rich](option.html#series-bar.label.rich)
 
 For example:
 
 ```js
 label: {
-    normal: {
+    // Styles defined in 'rich' can be applied to some fregments
+    // of text by adding some markers to those fregment, like
+    // `{styleName|text content text content}`.
+    // `'\n'` is the newline character.
+    formatter: [
+        '{a|Style "a" is applied to this fregment}'
+        '{b|Style "b" is applied to this fregment}This fregment use default style{x|use style "x"}'
+    ].join('\n'),
 
-        // Styles defined in 'rich' can be applied to some fregments
-        // of text by adding some markers to those fregment, like
-        // `{styleName|text content text content}`.
-        // `'\n'` is the newline character.
-        formatter: [
-            '{a|Style "a" is applied to this fregment}'
-            '{b|Style "b" is applied to this fregment}This fregment use default style{x|use style "x"}'
-        ].join('\n'),
+    // Styles for the whole text block are defined here:
+    color: '#333',
+    fontSize: 5,
+    fontFamily: 'Arial',
+    borderWidth: 3,
+    backgroundColor: '#984455',
+    padding: [3, 10, 10, 5],
+    lineHeight: 20,
 
-        // Styles for the whole text block are defined here:
-        color: '#333',
-        fontSize: 5,
-        fontFamily: 'Arial',
-        borderWidth: 3,
-        backgroundColor: '#984455',
-        padding: [3, 10, 10, 5],
-        lineHeight: 20,
-
-        // Styles for text fregments are defined here:
-        rich: {
-            a: {
-                color: 'red',
-                lineHeight: 10
+    // Styles for text fregments are defined here:
+    rich: {
+        a: {
+            color: 'red',
+            lineHeight: 10
+        },
+        b: {
+            backgroundColor: {
+                image: 'xxx/xxx.jpg'
             },
-            b: {
-                backgroundColor: {
-                    image: 'xxx/xxx.jpg'
-                },
-                height: 40
-            },
-            x: {
-                fontSize: 18,
-                fontFamily: 'Microsoft YaHei',
-                borderColor: '#449933',
-                borderRadius: 4
-            },
-            ...
-        }
+            height: 40
+        },
+        x: {
+            fontSize: 18,
+            fontFamily: 'Microsoft YaHei',
+            borderColor: '#449933',
+            borderRadius: 4
+        },
+        ...
     }
 }
 ```
@@ -144,7 +141,7 @@ For example:
 
 **Label Position**
 
-`label` option can be use in charts like `bar`, `line`, `scatter`, etc. The position of a label, can be specified by [label[normal|emphasis].position](option.html#series-scatter.label.normal.position)、[label[normal|emphasis].distance](option.html#series-scatter.label.normal.distance).
+`label` option can be use in charts like `bar`, `line`, `scatter`, etc. The position of a label, can be specified by [label.position](option.html#series-scatter.label.position)、[label.distance](option.html#series-scatter.label.distance).
 
 For example:
 ~[800x400](${galleryViewPath}doc-example/label-position&edit=1&reset=1)
@@ -165,7 +162,7 @@ Sometimes label is needed to be rotated. For example:
 
 ~[900x500](${galleryViewPath}bar-label-rotation&edit=1&reset=1)
 
-[align](option.html#series-bar.label.normal.align) and[verticalAlign](option.html#series-bar.label.normal.verticalAlign) can be used to adjust location of label in this scenario.
+[align](option.html#series-bar.label.align) and[verticalAlign](option.html#series-bar.label.verticalAlign) can be used to adjust location of label in this scenario.
 
 Notice, `align` and `verticalAlign` are applied firstly, then rotate.
 

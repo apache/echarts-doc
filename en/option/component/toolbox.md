@@ -2,16 +2,15 @@
 
 #${prefix} iconStyle(Object)
 The style setting of ${name} icon.
-##${prefix} normal(Object)
 {{ use: partial-item-style(
     defaultBorderColor = '#666',
     defualtColor = 'none',
     defaultBorderWidth = 1,
-    prefix="##" + ${prefix}
+    prefix="#" + ${prefix}
 ) }}
-###${prefix} textPosition(string)
+##${prefix} textPosition(string)
 Position of label: `'left'` / `'right'` / `'top'` / `'bottom'`.
-###${prefix} textAlign(string)
+##${prefix} textAlign(string)
 Align of label text: `'left'` / `'right'`.
 ##${prefix} emphasis(Object)
 {{ use: partial-item-style(prefix="##" + ${prefix}) }}

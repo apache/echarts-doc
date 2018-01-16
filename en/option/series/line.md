@@ -70,9 +70,8 @@ See the example using different `step` options:
 
 ## label(Object)
 {{use: partial-label-desc}}
-### normal(Object)
 {{use: partial-label(
-    prefix="###",
+    prefix="##",
     defaultPosition="'top'",
     formatter=true
 )}}
@@ -84,9 +83,8 @@ See the example using different `step` options:
 
 ## itemStyle(Object)
 The style of the symbol point of broken line.
-### normal(Object)
 {{use: partial-item-style(
-    prefix="###",
+    prefix="##",
     useColorPalatte=true,
     hasCallback=true
 )}}
@@ -95,15 +93,13 @@ The style of the symbol point of broken line.
 
 ## lineStyle(Object)
 Line style.
-### normal(Object)
-{{use:partial-line-style(prefix="###")}}
+{{use:partial-line-style(prefix="##")}}
 ### emphasis(Object)
 {{use: partial-line-style(prefix="###")}}
 
 ## areaStyle(Object)
 The style of area.
-### normal(Object)
-{{use: partial-area-style(prefix="###", hasOrigin=true)}}
+{{use: partial-area-style(prefix="##", hasOrigin=true)}}
 
 ## smooth(false) = false
 Whether to show as smooth curve.
@@ -164,9 +160,8 @@ The value of a single data item.
 
 ### label(Object)
 The style of the text of single data point.
-#### normal(Object)
 {{ use: partial-label(
-    prefix="####",
+    prefix="###",
     defaultPosition="top"
 ) }}
 #### emphasis(Object)
@@ -174,8 +169,7 @@ The style of the text of single data point.
 
 ### itemStyle(Object)
 The style of the symbol of single data point.
-#### normal(Object)
-{{use: partial-bar-item-style(prefix="####")}}
+{{use: partial-bar-item-style(prefix="###")}}
 #### emphasis(Object)
 {{use: partial-bar-item-style(prefix="####")}}
 

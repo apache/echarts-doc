@@ -70,11 +70,10 @@ The initial level (depth) of the tree. The root node is the 0th layer, then the 
 
 ## itemStyle(Object)
 
-The style of each node in the tree, where [itemStyle.normal.color] (~ series-tree.itemStyle.normal.color) represents the fill color of the node, to distinguish the state of the subtree corresponding to `collapsing` or `expansion`.
+The style of each node in the tree, where [itemStyle.color] (~ series-tree.itemStyle.color) represents the fill color of the node, to distinguish the state of the subtree corresponding to `collapsing` or `expansion`.
 
-### normal(Object)
 {{use: partial-item-style(
-    prefix="###",
+    prefix="##",
     useColorPalatte=true,
     defaultBorderWidth=1.5,
     defaultBorderColor="'#c23531'"
@@ -88,10 +87,8 @@ The style of each node in the tree, where [itemStyle.normal.color] (~ series-tre
 
 `label` describes the style of the text corresponding to each node.
 
-### normal(Object)
-
 {{use:partial-label(
-    prefix="###",
+    prefix="##",
     defaultShowLabel=true,
     formatter1d=true
 )}}
@@ -108,8 +105,7 @@ The style of each node in the tree, where [itemStyle.normal.color] (~ series-tre
 
 Defines the style of the tree edge.
 
-### normal(Object)
-{{use: partial-tree-line-style(prefix="###")}}
+{{use: partial-tree-line-style(prefix="##")}}
 
 ### emphasis(Object)
 {{use: partial-tree-line-style(
@@ -125,10 +121,8 @@ Leaf node special configuration, such as the above tree diagram example, the lea
 
 Describes the style of the text label corresponding to the leaf node.
 
-#### normal(Object)
-
 {{use:partial-label(
-    prefix="####",
+    prefix="###",
     defaultShowLabel=true,
     formatter1d=true
 )}}
@@ -144,9 +138,8 @@ Describes the style of the text label corresponding to the leaf node.
 
 The style of the leaf node in the tree.
 
-#### normal(Object)
 {{use: partial-item-style(
-    prefix="####",
+    prefix="###",
     useColorPalatte=true
 )}}
 
@@ -197,9 +190,7 @@ The value of the node, displayed in the tooltip.
 
 The style of the node.
 
-#### normal(Object)
-
-{{use:partial-item-style(prefix="####", useColorPalatte=true)}}
+{{use:partial-item-style(prefix="###", useColorPalatte=true)}}
 
 #### emphasis(Object)
 
@@ -209,10 +200,9 @@ The style of the node.
 
 The label of the node.
 
-#### normal(Object)
 
 {{ use:partial-label(
-    prefix="####"
+    prefix="###"
 ) }}
 
 #### emphasis(Object)

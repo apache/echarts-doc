@@ -61,7 +61,7 @@ The above example uses a custom path of plane shape.
 The symbol size of special effect, which could be set as single number such as `10`. What's more, arrays could be used to decribe the width and height respectively. For instance, `[20, 10]` indicates `20` for width and  `10` for height.
 
 ### color(Color)
-The color of special effect symbol, which defaults to be same with [lineStyle.normal.color](~series-lines.lineStyle.normal.color).
+The color of special effect symbol, which defaults to be same with [lineStyle.color](~series-lines.lineStyle.color).
 
 ### trailLength(number) = 0.2
 The length of trail of special effect.  The values from 0 to 1 could be set. Trail would be longer as the the value becomes larger.
@@ -89,9 +89,8 @@ Symbol size at the two ends of the line. It can be an array for two ends, or ass
 **Attention: ** You cannot assgin width and height seperately as normal `symbolSize`.
 
 ## lineStyle(Object)
-### normal(Object)
 {{ use: partial-line-style(
-    prefix= '###',
+    prefix= '##',
     useColorPalatte=true,
     defaultOpacity=0.5,
     hasCallback=true
@@ -106,9 +105,8 @@ The curveness of edge. The values from 0 to 1 could be set. The curveness would 
 ) }}
 
 ## label(Object)
-### normal(Object)
 {{ use: lines-label(
-    prefix="###"
+    prefix="##"
 )}}
 ### emphasis(Object)
 {{ use: lines-label(prefix="###") }}
@@ -125,9 +123,8 @@ An array includes two ore more than two coordinates. Each coordinate could be `[
 
 ### lineStyle(Object)
 The line style of this data item.
-#### normal(Object)
 {{ use: partial-line-style(
-    prefix="####",
+    prefix="###",
     hasCurveness=true
 ) }}
 ##### emphasis(Object)
@@ -137,9 +134,8 @@ The line style of this data item.
 ) }}
 
 ### label(Object)
-#### normal(Object)
 {{ use: lines-label(
-    prefix="####"
+    prefix="###"
 ) }}
 #### emphasis(Object)
 {{ use: lines-label(

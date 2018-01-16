@@ -108,7 +108,7 @@ Generally, the main process of [renderItem](https://ecomfe.github.io/echarts-doc
 
 Sometimes [api.size(...)](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.renderItem.arguments.api.size) method is needed, which calculates the size on the coordinate system by a given data range.
 
-Moreover, [api.style(...)](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.renderItem.arguments.api.style) method can be used to set style. It provides not only the style settings specified in [series.itemStyle.normal](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.itemStyle.normal), but also the result of visual mapping. This method can also be called like `api.style({fill: 'green', stroke: 'yellow'})` to override those style settings.
+Moreover, [api.style(...)](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.renderItem.arguments.api.style) method can be used to set style. It provides not only the style settings specified in [series.itemStyle](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.itemStyle), but also the result of visual mapping. This method can also be called like `api.style({fill: 'green', stroke: 'yellow'})` to override those style settings.
 
 Having `renderItem` provided, 90% of the work of creating custom series has been accomplished. The rest of this work is to refine and polish them.
 

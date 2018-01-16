@@ -78,9 +78,7 @@ option = {
         {
             type: 'scatter', // this is scatter chart
             itemStyle: {
-                normal: {
-                    opacity: 0.8
-                }
+                opacity: 0.8
             },
             symbolSize: function (val) {
                 return val[2] * 40;

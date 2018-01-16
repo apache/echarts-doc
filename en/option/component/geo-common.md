@@ -98,9 +98,8 @@ Selected mode decides whether multiple selecting is supported. By default, `fals
 
 #${prefix} label(Object)
 {{use: partial-label-desc}}
-##${prefix} normal(Object)
 {{use: partial-label(
-    prefix="##" + ${prefix},
+    prefix="#" + ${prefix},
     formatter=true
 )}}
 ##${prefix} emphasis(Object)
@@ -116,11 +115,7 @@ Selected mode decides whether multiple selecting is supported. By default, `fals
 {{ use: partial-item-style-desc(name='Map Area Border') }}
 
 
-##${prefix} normal(Object)
-
-Map area style in normal state.
-
-###${prefix} areaColor(Color) = '#eee'
+##${prefix} areaColor(Color) = '#eee'
 Area filling color.
 
 {{ use: partial-item-style(prefix=${prefix} + '##') }}

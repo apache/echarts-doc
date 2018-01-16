@@ -68,9 +68,8 @@ See the example below:
 
 ## label(Object)
 {{use:partial-label-desc}}
-### normal(Object)
 {{use:partial-label(
-    prefix="###",
+    prefix="##",
     defaultPosition="'inside'",
     formatter=true
 )}}
@@ -82,9 +81,8 @@ See the example below:
 
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
-### normal(Object)
 {{use:partial-item-style(
-    prefix="###",
+    prefix="##",
     useColorPalatte=true,
     hasCallback=false
 )}}
@@ -134,18 +132,16 @@ The value of a single data item.
 ### label(Object)
 The style setting of the text label in a single bar.
 
-#### normal(Object)
 {{ use:partial-label(
-    prefix="####",
+    prefix="###",
     defaultPosition="inside"
 ) }}
 #### emphasis(Object)
 {{ use:partial-label(prefix="####") }}
 
 ### itemStyle(Object)
-#### normal(Object)
 {{use:partial-item-style(
-    prefix="####"
+    prefix="###"
 )}}
 #### emphasis(Object)
 {{use:partial-item-style(
@@ -401,11 +397,9 @@ textureImg.src = 'data:image/jpeg;base64,...'; // dataURI
 // textureImg.src = 'http://xxx.xxx.xxx/xx.png'; // URL
 ...
 itemStyle: {
-    normal: {
-        color: {
-            image: textureImg,
-            repeat: 'repeat'
-        }
+    color: {
+        image: textureImg,
+        repeat: 'repeat'
     }
 }
 ```

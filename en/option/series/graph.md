@@ -117,9 +117,8 @@ symbolSize: 10
 
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
-### normal(Object)
 {{use:partial-item-style(
-    prefix="###",
+    prefix="##",
     useColorPalatte=true,
     hasCallback=true
 )}}
@@ -127,11 +126,10 @@ symbolSize: 10
 {{use:partial-item-style(prefix="###")}}
 
 ## lineStyle(Object)
-The style of edge line. [lineStyle.normal.color](~series-graph.lineStyle.normal.color) can be `'source'` or `'target'`, which will use the color of source node or target node.
+The style of edge line. [lineStyle.color](~series-graph.lineStyle.color) can be `'source'` or `'target'`, which will use the color of source node or target node.
 
-### normal(Object)
 {{use:partial-line-style(
-    prefix="###",
+    prefix="##",
     defaultColor="'#aaa'",
     defaultWidth=1,
     defaultOpacity=0.5,
@@ -144,9 +142,8 @@ The style of edge line. [lineStyle.normal.color](~series-graph.lineStyle.normal.
 
 ## label(Object)
 {{use:partial-label-desc}}
-### normal(Object)
 {{use:partial-label(
-    prefix="###",
+    prefix="##",
     defaultPosition="'inside'",
     formatter1d=true
 )}}
@@ -158,9 +155,8 @@ The style of edge line. [lineStyle.normal.color](~series-graph.lineStyle.normal.
 )}}
 
 ## edgeLabel(Object)
-### normal(Object)
 {{use: graph-edge-label(
-    prefix="###"
+    prefix="##"
 )}}
 ### emphasis(Object)
 {{use: graph-edge-label(
@@ -181,16 +177,14 @@ Name of category, which is used to correspond with [legend](~legend) and the con
 
 ### itemStyle(Object)
 The style of node in this category.
-#### normal(Object)
-{{use:partial-item-style(prefix="####", useColorPalatte=true)}}
+{{use:partial-item-style(prefix="###", useColorPalatte=true)}}
 #### emphasis(Object)
 {{use:partial-item-style(prefix="####")}}
 
 ### label(Object)
 The label style of node in this category.
-#### normal(Object)
 {{ use:partial-label(
-    prefix="####",
+    prefix="###",
     defaultPosition="inside",
     formatter1d=true
 ) }}
@@ -215,9 +209,7 @@ data: [{
     value: 20,
     symbolSize: 20,
     itemStyle: {
-        normal: {
-            color: 'red'
-        }
+        color: 'red'
     }
 }]
 ```
@@ -244,16 +236,14 @@ Index of category which the data item belongs to.
 
 ### itemStyle(Object)
 The style of this node.
-#### normal(Object)
-{{use:partial-item-style(prefix="####", useColorPalatte=true)}}
+{{use:partial-item-style(prefix="###", useColorPalatte=true)}}
 #### emphasis(Object)
 {{use:partial-item-style(prefix="####")}}
 
 ### label(Object)
 The label style of this node.
-#### normal(Object)
 {{ use:partial-label(
-    prefix="####"
+    prefix="###"
 ) }}
 #### emphasis(Object)
 {{ use:partial-label(
@@ -286,11 +276,10 @@ links: [{
 [name of target node](~series-graph.data.name) on edge
 ### lineStyle(Object)
 Line style of edges.
-#### normal(Object)
 {{use:partial-line-style(
-    prefix="####"
+    prefix="###"
 )}}
-##### curveness(number) = 0
+#### curveness(number) = 0
 The curveness of edge, supporting values from 0 to 1. The curveness will be larger as the value becomes lager.
 #### emphasis(Object)
 {{ use:partial-line-style(

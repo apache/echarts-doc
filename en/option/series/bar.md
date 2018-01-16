@@ -22,9 +22,8 @@ Bar chart shows different data through the height of a bar, which is used in [re
 
 ## label(Object)
 {{use:partial-label-desc}}
-### normal(Object)
 {{use:partial-label(
-    prefix="###",
+    prefix="##",
     defaultPosition="'inside'",
     formatter=true
 )}}
@@ -36,9 +35,8 @@ Bar chart shows different data through the height of a bar, which is used in [re
 
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
-### normal(Object)
 {{use:partial-bar-item-style(
-    prefix="###",
+    prefix="##",
     useColorPalatte=true,
     hasCallback=true,
     barBorderRadius=true
@@ -82,18 +80,16 @@ The value of a single data item.
 ### label(Object)
 The style setting of the text label in a single bar.
 
-#### normal(Object)
 {{ use:partial-label(
-    prefix="####",
+    prefix="###",
     defaultPosition="inside"
 ) }}
 #### emphasis(Object)
 {{ use:partial-label(prefix="####") }}
 
 ### itemStyle(Object)
-#### normal(Object)
 {{use:partial-bar-item-style(
-    prefix="####",
+    prefix="###",
     barBorderRadius=true
 )}}
 #### emphasis(Object)

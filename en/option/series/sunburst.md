@@ -1,6 +1,6 @@
 {{ target: partial-sunburst-label-helper }}
 
-##${prefix} rotate(string|number) = 'radial'
+#${prefix} rotate(string|number) = 'radial'
 
 If it is `number` type, then is stands for rotation, from -90 degrees to 90 degrees, and positive values stand for counterclockwise.
 
@@ -12,14 +12,14 @@ The following example shows different `rotate` settings:
 
 ~[700x400](${galleryViewPath}sunburst-label-rotate&edit=1&reset=1)
 
-##${prefix} align(string) = 'center'
+#${prefix} align(string) = 'center'
 
 Align of text, which can be `'left'`, `'center'`, or `'right'`. Note that `'left'` stands for inner side, and `'right'` stands for outer side.
 
 ~[700x400](${galleryViewPath}doc-example/sunburst-label-align&edit=1&reset=1)
 
 {{use:partial-label(
-    prefix="###",
+    prefix="##",
     defaultPosition="'inside'",
     formatter=true,
     defaultShowLabel="true",
@@ -36,19 +36,18 @@ ${prefix} label(Object)
 
 **Priority: [series.data.label](~series-sunburst.data.label) > [series.levels.label](~series-sunburst.levels.label) > [series.label](~series-sunburst.label).**
 
+
 {{use:partial-label-desc}}
 
-#${prefix} normal(Object)
 {{ use: partial-sunburst-label-helper(prefix=${prefix}) }}
 
 #${prefix} emphasis(Object)
-{{ use: partial-sunburst-label-helper(prefix=${prefix}) }}
-
+{{ use: partial-sunburst-label-helper(prefix="#"+${prefix}) }}
 
 
 {{ target: partial-sunburst-itemStyle-props }}
 
-${prefix} itemStyle(Object)
+#${prefix} itemStyle(Object)
 
 Style of Sunburst sectors.
 
@@ -56,21 +55,17 @@ Style can be set in [series.itemStyle](~series-sunburst.itemStyle) for sectors o
 
 **Priority: [series.data.itemStyle](~series-sunburst.data.itemStyle) > [series.levels.itemStyle](~series-sunburst.levels.itemStyle) > [series.itemStyle](~series-sunburst.itemStyle).**
 
-In ECharts, *normal* is usually for default style, and *emphasis* for that when mouse hovers. For Sunburst charts, there are two extra states: *highlight* for highlighting items that relates to the emphasized one, and *downplay* for others when emphasizing an item.
-
-#${prefix} normal(Object)
-
-Default item style. See [highlightPolicy](~series-sunburst.highlightPolicy).
+In ECharts, *emphasis* is for styles when mouse hovers. For Sunburst charts, there are two extra states: *highlight* for highlighting items that relates to the emphasized one, and *downplay* for others when emphasizing an item. See [highlightPolicy](~series-sunburst.highlightPolicy).
 
 {{use: partial-item-style(
-    prefix="#" + ${prefix},
+    prefix=${prefix},
     useColorPalatte=true,
     defaultBorderWidth=1,
     defaultBorderColor="'white'",
     defaultOpacity=1
 )}}
 
-#${prefix} emphasis(Object)
+##${prefix} emphasis(Object)
 
 Item style when mouse is hovering. See [highlightPolicy](~series-sunburst.highlightPolicy).
 
@@ -82,7 +77,7 @@ Item style when mouse is hovering. See [highlightPolicy](~series-sunburst.highli
     defaultOpacity=1
 )}}
 
-#${prefix} highlight(Object)
+##${prefix} highlight(Object)
 
 Item style when mouse is hovering related items. See [highlightPolicy](~series-sunburst.highlightPolicy).
 
@@ -94,7 +89,7 @@ Item style when mouse is hovering related items. See [highlightPolicy](~series-s
     defaultOpacity=1
 )}}
 
-#${prefix} downplay(Object)
+##${prefix} downplay(Object)
 
 Item style when mouse is hovering unrelated items. See [highlightPolicy](~series-sunburst.highlightPolicy).
 
@@ -211,7 +206,7 @@ When mouse hovers a sector, the sector is emphasized. **If `highlightPolicy` is 
 
 ~[700x350](${galleryViewPath}doc-example/sunburst-highlight-descendant&edit=1&reset=1)
 
-The `highlightPolicy` value above is the default value `'descendant'`. We use `dispatchAction` to highlight certain sector. Target sector will use the style of `emphasis`, and related sectors decided by `highlightPolicy` uses the style of `highlight`, and others use `downplay`. If no sector is hovered, all sectors will use `normal` style:
+The `highlightPolicy` value above is the default value `'descendant'`. We use `dispatchAction` to highlight certain sector. Target sector will use the style of `emphasis`, and related sectors decided by `highlightPolicy` uses the style of `highlight`, and others use `downplay`.
 
 ```js
 itemStyle: {
@@ -298,11 +293,11 @@ series: {
 ```
 
 {{use: partial-sunburst-label-props(
-    prefix="###"
+    prefix="##"
 )}}
 
 {{use: partial-sunburst-itemStyle-props(
-    prefix="###"
+    prefix="##"
 )}}
 
 {{use: partial-animation(

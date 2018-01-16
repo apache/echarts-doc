@@ -56,9 +56,8 @@ The test shows that iterations of layout could not be less than the default valu
 
 `label` describes the text label style in each rectangular node.
 
-### normal(Object)
 {{use:partial-label(
-    prefix="###",
+    prefix="##",
     defaultShowLabel=true,
     defaultPosition="'right'",
     formatter1d=true
@@ -72,9 +71,8 @@ The test shows that iterations of layout could not be less than the default valu
 
 The style of node rectangle in sankey graphs.
 
-### normal(Object)
 {{use: partial-item-style(
-    prefix="###",
+    prefix="##",
     useColorPalatte=true,
     defaultBorderWidth=1,
     defaultBorderColor="'#aaa'"
@@ -84,10 +82,9 @@ The style of node rectangle in sankey graphs.
 
 
 ## lineStyle(Object)
-The line style of sankey graph, in which [lineStyle.normal.color](~series-sankey.lineStyle.normal.color) can be assigned to the value of `'source'` of `'target'`, then the edge will automatically take the source node or target node color as its own color.
+The line style of sankey graph, in which [lineStyle.color](~series-sankey.lineStyle.color) can be assigned to the value of `'source'` of `'target'`, then the edge will automatically take the source node or target node color as its own color.
 
-### normal(Object)
-{{use: partial-sankey-line-style(prefix="###")}}
+{{use: partial-sankey-line-style(prefix="##")}}
 ### emphasis(Object)
 {{use: partial-sankey-line-style(
     prefix="###"
@@ -103,16 +100,14 @@ The name of data item.
 The value of data item.
 ### itemStyle(Object)
 The style of this node.
-#### normal(Object)
-{{use:partial-item-style(prefix="####", useColorPalatte=true)}}
+{{use:partial-item-style(prefix="###", useColorPalatte=true)}}
 #### emphasis(Object)
 {{use:partial-item-style(prefix="####")}}
 
 ### label(Object)
 The lable style of this node.
-#### normal(Object)
 {{ use:partial-label(
-    prefix="####"
+    prefix="###"
 ) }}
 #### emphasis(Object)
 {{ use:partial-label(
@@ -146,9 +141,8 @@ The [name of target node](~series-graph.data.name) of edge
 The value of edge, which decides the width of edge.
 ### lineStyle(Object)
 The line stlye of edge.
-#### normal(Object)
 {{use:partial-sankey-line-style(
-    prefix="####"
+    prefix="###"
 )}}
 #### emphasis(Object)
 {{ use:partial-sankey-line-style(

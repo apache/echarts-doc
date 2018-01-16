@@ -58,9 +58,8 @@ Whether to show sector when all data are zero.
 
 ## label(Object)
 {{use:partial-label-desc(name="pie chart")}}
-### normal(Object)
 {{use:partial-pie-label(
-    prefix="###",
+    prefix="##",
     galleryEditorPath = ${galleryEditorPath},
     position=true,
     formatter=true
@@ -73,15 +72,14 @@ Whether to show sector when all data are zero.
 )}}
 
 ## labelLine(Object)
-The style of visual guide line. Will show when [label position](~series-pie.label.normal.position) is set as `'outside'`.
+The style of visual guide line. Will show when [label position](~series-pie.label.position) is set as `'outside'`.
 
 {{ use: partial-pie-label-line(prefix='##') }}
 
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
-### normal(Object)
 {{use:partial-item-style(
-    prefix="###",
+    prefix="##",
     useColorPalatte=true,
     hasCallback=true
 )}}
@@ -106,9 +104,8 @@ Whether the data item is selected.
 ### label(Object)
 The label configuration of a single sector.
 
-#### normal(Object)
 {{use:partial-pie-label(
-    prefix="####",
+    prefix="###",
     galleryEditorPath = ${galleryEditorPath},
     position=true,
     formatter=false
@@ -125,8 +122,7 @@ The label configuration of a single sector.
 
 ### itemStyle(Object)
 {{use:partial-item-style-desc}}
-#### normal(Object)
-{{use:partial-item-style(prefix="####")}}
+{{use:partial-item-style(prefix="###")}}
 #### emphasis(Object)
 {{use:partial-item-style(prefix="####")}}
 
@@ -196,18 +192,17 @@ The position of label.
 
 
 {{ target: partial-pie-label-line }}
-#${prefix} normal(Object)
-The style of visual guide line in normal status.
-##${prefix} show(boolean)
-Whether to show the visual guide ine in normal status.
-##${prefix} length(number)
+The style of visual guide line.
+#${prefix} show(boolean)
+Whether to show the visual guide ine.
+#${prefix} length(number)
 The length of the first segment of visual guide line.
-##${prefix} length2(number)
+#${prefix} length2(number)
 The length of the second segment of visual guide line.
-##${prefix} smooth(boolean|number) = false
+#${prefix} smooth(boolean|number) = false
 Whether to smooth the visual guide line. It defaults to be unsmooth and can be set as `true` or the values from 0 to 1 which indicating the smoothness.
-##${prefix} lineStyle(Object)
-{{use:partial-line-style(prefix="##" + ${prefix})}}
+#${prefix} lineStyle(Object)
+{{use:partial-line-style(prefix="#" + ${prefix})}}
 
 #${prefix} emphasis(Object)
 The style of visual guide line in emphasis status.

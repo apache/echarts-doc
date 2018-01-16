@@ -53,9 +53,8 @@ The index of single time axis, which defaults to be 0 because it contains only o
 
 `label` describes style of text labels with which each ribbon-shape river branch corresponds in theme river.
 
-### normal(Object)
 {{use:partial-label(
-    prefix="###",
+    prefix="##",
     defaultShowLabel=true,
     defaultPosition="'left'",
     defaultMargin=4,
@@ -78,9 +77,8 @@ The index of single time axis, which defaults to be 0 because it contains only o
 ## itemStyle(Object)
 
 style of each ribbon-shape river branch in theme river.
-### normal(Object)
 {{use: partial-item-style(
-    prefix="###"
+    prefix="##"
 )}}
 ### emphasis(Object)
 {{use: partial-item-style(
