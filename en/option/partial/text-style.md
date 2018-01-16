@@ -41,36 +41,33 @@
 
 ```js
 label: {
-    normal: {
+    // Styles defined in 'rich' can be applied to some fregments
+    // of text by adding some markers to those fregment, like
+    // `{styleName|text content text content}`.
+    // `'\n'` is the newline character.
+    formatter: [
+        '{a|Style "a" is applied to this snippet}'
+        '{b|Style "b" is applied to this snippet}This snippet use default style{x|use style "x"}'
+    ].join('\n'),
 
-        // Styles defined in 'rich' can be applied to some fregments
-        // of text by adding some markers to those fregment, like
-        // `{styleName|text content text content}`.
-        // `'\n'` is the newline character.
-        formatter: [
-            '{a|Style "a" is applied to this snippet}'
-            '{b|Style "b" is applied to this snippet}This snippet use default style{x|use style "x"}'
-        ].join('\n'),
-
-        rich: {
-            a: {
-                color: 'red',
-                lineHeight: 10
+    rich: {
+        a: {
+            color: 'red',
+            lineHeight: 10
+        },
+        b: {
+            backgroundColor: {
+                image: 'xxx/xxx.jpg'
             },
-            b: {
-                backgroundColor: {
-                    image: 'xxx/xxx.jpg'
-                },
-                height: 40
-            },
-            x: {
-                fontSize: 18,
-                fontFamily: 'Microsoft YaHei',
-                borderColor: '#449933',
-                borderRadius: 4
-            },
-            ...
-        }
+            height: 40
+        },
+        x: {
+            fontSize: 18,
+            fontFamily: 'Microsoft YaHei',
+            borderColor: '#449933',
+            borderRadius: 4
+        },
+        ...
     }
 }
 ```

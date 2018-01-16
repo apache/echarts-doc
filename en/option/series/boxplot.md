@@ -164,10 +164,8 @@ Value of data item.
 {{use:partial-item-style-desc(name="boxplot")}}
 
 
-##${prefix} normal(Object)
-
 {{use: partial-item-style(
-    prefix="###",
+    prefix="##",
     useColorPalatte=true,
     name="boxplot",
     defaultColor="#fff",

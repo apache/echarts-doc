@@ -41,9 +41,8 @@ Horizontal align. Defaults to align center. Can be 'left', 'right', 'center'.
 
 ## label(Object)
 {{use:partial-label-desc(name="funnel chart")}}
-### normal(Object)
 {{use:partial-funnel-label(
-    prefix="###",
+    prefix="##",
     position=true,
     formatter=true
 )}}
@@ -55,14 +54,13 @@ Horizontal align. Defaults to align center. Can be 'left', 'right', 'center'.
 )}}
 
 ## labelLine(Object)
-The visual guide line style of label. When [label position](~series-funnel.label.normal.position) is set as `'left'`or`'right'`, the visual guide line will show.
+The visual guide line style of label. When [label position](~series-funnel.label.position) is set as `'left'`or`'right'`, the visual guide line will show.
 {{ use: partial-funnel-label-line(prefix='##') }}
 
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
-### normal(Object)
 {{use:partial-item-style(
-    prefix="###",
+    prefix="##",
     useColorPalatte=true,
     hasCallback=true
 )}}
@@ -87,16 +85,14 @@ the name of data item.
 data value.
 ### itemStyle(Object)
 {{use:partial-item-style-desc}}
-#### normal(Object)
-{{use:partial-item-style(prefix="####")}}
+{{use:partial-item-style(prefix="###")}}
 ##### height(string|number)
 Height of this data item. By default, the height is evenly divided for all data items. The height can be set to percentage (e.g.: '10%') or pixel value (e.g.: 20). Please make sure that the total height of all data items is 100%.
 
 ### label(Object)
 The label configuration of a single data item.
-#### normal(Object)
 {{use:partial-funnel-label(
-    prefix="####",
+    prefix="###",
     position=true,
     formatter=false
 )}}
@@ -112,8 +108,7 @@ The label configuration of a single data item.
 
 ### itemStyle(Object)
 {{use:partial-item-style-desc}}
-#### normal(Object)
-{{use:partial-item-style(prefix="####")}}
+{{use:partial-item-style(prefix="###")}}
 #### emphasis(Object)
 {{use:partial-item-style(prefix="####")}}
 
@@ -173,14 +168,12 @@ Label position.
 
 
 {{ target: partial-funnel-label-line }}
-#${prefix} normal(Object)
-The style of visual guide line in normal status.
-##${prefix} show(boolean)
+#${prefix} show(boolean)
 Whether to show visual guide line.
-##${prefix} length(number)
+#${prefix} length(number)
 The length of the first part from visual guide line.
-##${prefix} lineStyle(Object)
-{{use:partial-line-style(prefix="##" + ${prefix})}}
+#${prefix} lineStyle(Object)
+{{use:partial-line-style(prefix="#" + ${prefix})}}
 #${prefix} emphasis(Object)
 The style of visual guide line in emphasis status.
 ##${prefix} show(boolean)

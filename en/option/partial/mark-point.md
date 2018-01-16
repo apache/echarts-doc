@@ -14,9 +14,8 @@ Mark point in a chart.
 
 ##${prefix} label(Object)
 Label of mark point.
-###${prefix} normal(Object)
 {{use:partial-label(
-    prefix="###" + ${prefix},
+    prefix="##" + ${prefix},
     defaultPosition="'inside'",
     formatter=true
 )}}
@@ -28,9 +27,8 @@ Label of mark point.
 
 ##${prefix} itemStyle(Object)
 Mark point style.
-###${prefix} normal(Object)
 {{use:partial-item-style(
-    prefix="###" + ${prefix}
+    prefix="##" + ${prefix}
 )}}
 ###${prefix} emphasis(Object)
 {{use:partial-item-style(prefix="###" + ${prefix})}}
@@ -107,15 +105,13 @@ Label value, which can be ignored.
 
 ###${prefix} itemStyle(Object)
 Mark point style.
-####${prefix} normal(Object)
-{{ use: partial-item-style(prefix="####" + ${prefix}) }}
+{{ use: partial-item-style(prefix="###" + ${prefix}) }}
 ####${prefix} emphasis(Object)
 {{ use: partial-item-style(prefix="####" + ${prefix}) }}
 
 ###${prefix} label(Object)
-####${prefix} normal(Object)
 {{ use: partial-label(
-    prefix=${prefix} + '####'
+    prefix=${prefix} + '###'
 ) }}
 ####${prefix} emphasis(Object)
 {{ use: partial-label(

@@ -149,9 +149,8 @@ calendar: [{
 ## itemStyle(Object)
 Every rect style in calendar coordinates.
 
-### normal(Object)
 {{ use:partial-item-style(
-    prefix="###",
+    prefix="##",
     name="calendar",
     defaultColor="#fff",
     defaultBorderWidth=1,
@@ -163,11 +162,9 @@ Examples:
 ```js
 calendar: [{
     itemStyle: {
-        normal: {
-            color: '#fff',
-            borderWidth: 1,
-            borderColor: '#ccc'
-        }
+        color: '#fff',
+        borderWidth: 1,
+        borderColor: '#ccc'
     }
 }]
 ```

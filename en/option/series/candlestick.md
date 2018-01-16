@@ -19,10 +19,10 @@ Different countries or regions have different implications on the color of candl
 
 We use red to represent increasing and blue decreasing by default. If you want to change the configuration, you may change the following parameters.
 
-+ [series-candlestick.itemStyle.normal.color](~series-candlestick.itemStyle.normal.color): fill color for bullish candle stick (namely, increase)
-+ [series-candlestick.itemStyle.normal.color0](~series-candlestick.itemStyle.normal.color0): fill color for bearish candle stick (namely, decrease)
-+ [series-candlestick.itemStyle.normal.borderColor](~series-candlestick.itemStyle.normal.borderColor): border color for bullish candle stick (namely, increase)
-+ [series-candlestick.itemStyle.normal.borderColor0](series-candlestick.itemStyle.normal.borderColor0): border color for bearish candle stick (namely, decrease)
++ [series-candlestick.itemStyle.color](~series-candlestick.itemStyle.color): fill color for bullish candle stick (namely, increase)
++ [series-candlestick.itemStyle.color0](~series-candlestick.itemStyle.color0): fill color for bearish candle stick (namely, decrease)
++ [series-candlestick.itemStyle.borderColor](~series-candlestick.itemStyle.borderColor): border color for bullish candle stick (namely, increase)
++ [series-candlestick.itemStyle.borderColor0](series-candlestick.itemStyle.borderColor0): border color for bearish candle stick (namely, decrease)
 
 
 <br>
@@ -220,11 +220,8 @@ Border width of candlestick. There is no border when it is `0`.
 
 {{use:partial-item-style-desc(name="candlestick")}}
 
-
-##${prefix} normal(Object)
-
 {{use: partial-candlestick-item-style-detail(
-    prefix="###",
+    prefix="##",
     defaultColor="#c23531",
     defaultColor0="#314656",
     defaultBorderColor="#c23531",

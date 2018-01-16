@@ -1,6 +1,6 @@
 {{target:partial-label-desc}}
 
-Text label of ${name}, to explain some data information about graphic item like value, name and so on. `label` is placed under `itemStyle.normal` in ECharts 2.x. In ECharts 3, to make the configuration structure flatter, `label`is taken to be at the same level with `itemStyle`, and has two status `normal` and `emphasis` as `itemStyle` does.
+Text label of ${name}, to explain some data information about graphic item like value, name and so on. `label` is placed under `itemStyle` in ECharts 2.x. In ECharts 3, to make the configuration structure flatter, `label`is taken to be at the same level with `itemStyle`, and has `emphasis` as `itemStyle` does.
 
 
 {{target:partial-label}}

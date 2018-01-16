@@ -192,7 +192,7 @@ In some coordinate systems (for example, polar) or when log axis is used, the si
 
 ##### style(Function)
 
-The method obtains style info defined in [series.itemStyle.normal](~series-custom.itemStyle.normal), and visual info obtained by visual mapping, and return them. Those returned info can be assigned to `style` attribute of graphic element definition directly. Developers can also override style info by calling this method like this: `api.style({fill: 'green', stroke: 'yellow'})`.
+The method obtains style info defined in [series.itemStyle](~series-custom.itemStyle), and visual info obtained by visual mapping, and return them. Those returned info can be assigned to `style` attribute of graphic element definition directly. Developers can also override style info by calling this method like this: `api.style({fill: 'green', stroke: 'yellow'})`.
 
 ```
 @param {Object} [extra] Extra style info.
@@ -333,9 +333,8 @@ For example:
 
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
-### normal(Object)
 {{use:partial-item-style(
-    prefix="###",
+    prefix="##",
     useColorPalatte=true,
     hasCallback=false
 )}}
@@ -369,9 +368,8 @@ Name of data item.
 Value of data item.
 
 ### itemStyle(Object)
-#### normal(Object)
 {{use:partial-item-style(
-    prefix="####"
+    prefix="###"
 )}}
 #### emphasis(Object)
 {{use:partial-item-style(
@@ -462,7 +460,7 @@ Generally, the main process of [renderItem](~series-custom.renderItem) is that r
 
 Sometimes [api.size(...)](~series-custom.renderItem.arguments.api.size) method is needed, which calculates the size on the coordinate system by a given data range.
 
-Moreover, [api.style(...)](~series-custom.renderItem.arguments.api.style) method can be used to set style. It provides not only the style settings specified in [series.itemStyle.normal](~series-custom.itemStyle.normal), but also the result of visual mapping. This method can also be called like `api.style({fill: 'green', stroke: 'yellow'})` to override those style settings.
+Moreover, [api.style(...)](~series-custom.renderItem.arguments.api.style) method can be used to set style. It provides not only the style settings specified in [series.itemStyle](~series-custom.itemStyle), but also the result of visual mapping. This method can also be called like `api.style({fill: 'green', stroke: 'yellow'})` to override those style settings.
 
 
 

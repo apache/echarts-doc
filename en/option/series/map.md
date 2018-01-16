@@ -64,8 +64,7 @@ Whether the are selected.
 
 ### itemStyle(Object)
 Style of item polygon
-#### normal(Object)
-##### areaColor(Color)
+#### areaColor(Color)
 Color of the area.
 {{ use: partial-item-style(prefix='####') }}
 #### emphasis(Object)
@@ -82,9 +81,8 @@ Color of the area.
 
 ## label(Object)
 {{use: partial-label-desc}}
-### normal(Object)
 {{use: partial-label(
-    prefix="###",
+    prefix="##",
     defaultPosition="'bottom'",
     formatter=true,
     noAlign=true,

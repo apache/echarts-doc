@@ -45,7 +45,7 @@ series: [{
 + Other dimensions are optional, which can be used in other place. For example:
     + [visualMap](~visualMap) can map one or more dimensions to viusal (color, symbol size ...).
     + [series.symbolSize](~series.symbolSize) can be set as a callback function, where symbol size can be calculated by values of a certain dimension.
-    + Values in other dimensions can be shown by [tooltip.formatter](~tooltip.formatter) or [series.label.normal.formatter](~series.label.normal.formatter).
+    + Values in other dimensions can be shown by [tooltip.formatter](~tooltip.formatter) or [series.label.formatter](~series.label.formatter).
 
 Especially, when there is one and only one category axis (axis.type is `'category'`), data can be simply be represented by a one-dimension array, like:
 ```js

@@ -82,11 +82,8 @@ The value of a data item.
 #${prefix} lineStyle(Object)
 
 Line style.
-
-##${prefix} normal(Object)
-
 {{use:partial-line-style(
-    prefix="###",
+    prefix="##",
     defaultWidth=2,
     defaultOpacity=0.45
 )}}

@@ -205,12 +205,10 @@ Whether to show the axis. It can be set to be `false` to hide the axis line to m
 
 ## label(Object)
 
-Label axis, which has `normal` and `emphasis` status. `normal` refers to the normal style of text, while `emphasis` is the highlighted style of text. For instance, text style in `emphasis` would be used when mouse hovers or legend connects.
+Label axis, `emphasis` is the highlighted style of text. For instance, text style in `emphasis` would be used when mouse hovers or legend connects.
 
 
-### normal(Object)
-
-#### position(string|number) = 'auto'
+### position(string|number) = 'auto'
 
 Configurations:
 
@@ -238,7 +236,7 @@ Configurations:
 
 
 {{ use: partial-timeline-label(
-    prefix="###",
+    prefix="##",
     state="normal",
     textStyleDefaultColor="'#304654'"
 ) }}
@@ -260,10 +258,8 @@ Configurations:
 ) }}
 
 
-### normal(Object)
-
 {{ use:partial-item-style(
-    prefix="###",
+    prefix="##",
     name="timeline ",
     defaultColor="'#304654'",
     defaultBorderWidth=1
@@ -392,22 +388,17 @@ Icon of *next button*.
 {{ use: partial-icon-image-path }}
 
 
-### normal(Object)
-
-Style of *normal* state for control button.
-
-
-#### color(Color) = '#304654'
+### color(Color) = '#304654'
 
 Button color.
 
 
-#### borderColor(Color) = '#304654'
+### borderColor(Color) = '#304654'
 
 Color of button border.
 
 
-#### borderWidth(number) = 1
+### borderWidth(number) = 1
 
 Border width of button.
 
@@ -496,8 +487,17 @@ Rotation angle of `label`, in which positive values refer to counter clockwise r
 {{use: axis-common-formatter-desc}}
 
 
+{{ if: ${state} }}
 {{ use: partial-text-style(
     prefix=${prefix},
     name="timeline.lable." + ${state},
     defaultColor=${textStyleDefaultColor}
 ) }}
+{{ else }}
+{{ use: partial-text-style(
+    prefix=${prefix},
+    name="timeline.lable",
+    defaultColor=${textStyleDefaultColor}
+) }}
+{{ /if }}
+

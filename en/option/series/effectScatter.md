@@ -56,9 +56,8 @@ The brush type for ripples. options: `'stroke'` and `'fill'`.
 
 ## label(Object)
 {{use:partial-label-desc}}
-### normal(Object)
 {{use:partial-label(
-    prefix="###",
+    prefix="##",
     defaultPosition="'inside'",
     formatter=true
 )}}
@@ -70,9 +69,8 @@ The brush type for ripples. options: `'stroke'` and `'fill'`.
 
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
-### normal(Object)
 {{use:partial-item-style(
-    prefix="###",
+    prefix="##",
     useColorPalatte=true,
     hasCallback=true
 )}}
@@ -103,9 +101,8 @@ The brush type for ripples. options: `'stroke'` and `'fill'`.
 ) }}
 
 ### label(Object)
-#### normal(Object)
 {{ use:partial-label(
-    prefix="####",
+    prefix="###",
     defaultPosition="inside"
 ) }}
 #### emphasis(Object)
@@ -113,8 +110,7 @@ The brush type for ripples. options: `'stroke'` and `'fill'`.
 
 
 ### itemStyle(Object)
-#### normal(Object)
-{{use:partial-item-style(prefix="####")}}
+{{use:partial-item-style(prefix="###")}}
 #### emphasis(Object)
 {{use:partial-item-style(prefix="####")}}
 

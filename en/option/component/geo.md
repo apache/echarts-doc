@@ -45,10 +45,8 @@ For example:
 regions: [{
     name: 'Guangdong',
     itemStyle: {
-        normal: {
-            areaColor: 'red',
-            color: 'red'
-        }
+        areaColor: 'red',
+        color: 'red'
     }
 }]
 ```
@@ -64,8 +62,7 @@ Whether this area is selected.
 
 ### itemStyle(Object)
 Item style of this area.
-#### normal(Object)
-##### areaColor(Color)
+#### areaColor(Color)
 Area color in the map.
 {{ use: partial-item-style(prefix='####') }}
 #### emphasis(Object)
@@ -76,9 +73,8 @@ Area color in the map.
 
 ### label(Object)
 {{use: partial-label-desc}}
-#### normal(Object)
 {{use: partial-label(
-    prefix="####",
+    prefix="###",
     formatter=true
 )}}
 #### emphasis(Object)

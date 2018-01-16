@@ -54,9 +54,8 @@ Value of data item.
 ### label(Object)
 It is valid with [coordinateSystem](~series-heatmap.coordinateSystem) of 'cartesian2d' value.
 
-#### normal(Object)
 {{ use:partial-label(
-    prefix="####",
+    prefix="###",
     defaultPosition="inside"
 ) }}
 #### emphasis(Object)
@@ -64,8 +63,7 @@ It is valid with [coordinateSystem](~series-heatmap.coordinateSystem) of 'cartes
 
 ### itemStyle(Object)
 Style of a single data point. It is valid with [coordinateSystem](~series-heatmap.coordinateSystem) of 'cartesian2d' value.
-#### normal(Object)
-{{use:partial-item-style(prefix="####")}}
+{{use:partial-item-style(prefix="###")}}
 #### emphasis(Object)
 {{use:partial-item-style(prefix="####")}}
 
