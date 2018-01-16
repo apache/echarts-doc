@@ -59,11 +59,6 @@
     defaultPosition="'inside'",
     formatter=true
 )}}
-### emphasis(Object)
-{{use:partial-label(
-    prefix="###",
-    formatter=true
-)}}
 
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
@@ -72,8 +67,6 @@
     useColorPalatte=true,
     hasCallback=true
 )}}
-### emphasis(Object)
-{{use:partial-item-style(prefix="###")}}
 
 
 {{use:partial-series-dimensions(
@@ -82,6 +75,26 @@
 
 {{use:partial-series-encode(
     prefix="#"
+)}}
+
+
+## emphasis(Object)
+
+高亮的标签和图形样式。
+
+### label(Object)
+
+{{use:partial-label(
+    prefix="###",
+    formatter=true
+)}}
+
+### itemStyle(Object)
+
+{{use:partial-item-style(
+    prefix="###",
+    useColorPalatte=true,
+    hasCallback=true
 )}}
 
 
@@ -99,18 +112,27 @@
 ) }}
 
 ### label(Object)
+
 {{ use:partial-label(
     prefix="###",
     defaultPosition="inside"
 ) }}
-#### emphasis(Object)
-{{ use:partial-label(prefix="####") }}
-
 
 ### itemStyle(Object)
 {{use:partial-item-style(prefix="###")}}
-#### emphasis(Object)
+
+### emphasis(Object)
+
+单个数据的图形和标签样式。
+
+#### label(Object)
+
+{{ use:partial-label(prefix="####") }}
+
+#### itemStyle(Object)
+
 {{use:partial-item-style(prefix="####")}}
+
 
 {{use: partial-tooltip-in-series-data(
     galleryViewPath=${galleryViewPath}

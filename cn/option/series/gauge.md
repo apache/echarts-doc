@@ -124,7 +124,12 @@ formatter: function (value) {
 <!-- overwrite color -->
 ### color(Color) = 'auto'
 指针颜色，默认取数值所在的[区间的颜色](~series-gauge.axisLine.lineStyle.color)
-### emphasis(Object)
+
+
+## emphasis(Object)
+高亮的仪表盘指针样式
+
+### itemStyle
 {{ use: partial-item-style(prefix="###") }}
 
 ## title(Object)

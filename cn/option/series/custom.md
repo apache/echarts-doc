@@ -323,13 +323,20 @@ renderItem 函数的第二个参数。
 
 
 ## itemStyle(Object)
+
 {{use:partial-item-style-desc}}
+
 {{use:partial-item-style(
     prefix="##",
     useColorPalatte=true,
     hasCallback=false
 )}}
-### emphasis(Object)
+
+## emphasis(Object)
+
+高亮图形样式
+
+### itemStyle(Object)
 {{use:partial-item-style(
     prefix="###"
 )}}
@@ -360,7 +367,10 @@ renderItem 函数的第二个参数。
 {{use:partial-item-style(
     prefix="###"
 )}}
-#### emphasis(Object)
+
+### emphasis(Object)
+
+#### itemStyle(Object)
 {{use:partial-item-style(
     prefix="####"
 )}}
