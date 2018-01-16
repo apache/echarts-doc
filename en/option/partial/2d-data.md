@@ -27,6 +27,11 @@ where `params` is the single dataset needed by formatter, which is formed as:
 
 Data array of series, which can be in the following forms:
 
+Notice, if no `data` specified in series, and there is [dataset](~dataset) in option, series will use the first [dataset](~dataset) as its datasource. If `data` has been specified, [dataset](~dataset) will not used.
+
+`series.datasetIndex` can be used to specify other [dataset](~dataset).
+
+
 Basically, data is represented by a two-dimension array, like the example below, where each colum is named as a "dimension".
 ```js
 series: [{

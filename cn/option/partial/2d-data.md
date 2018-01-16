@@ -27,6 +27,10 @@ formatter: '{b}: {c}'
 
 系列中的数据内容数组。数组项通常为具体的数据项。
 
+注意，如果系列没有指定 `data`，并且 option 有 [dataset](~dataset)，那么默认使用第一个 [dataset](~dataset)。如果指定了 `data`，则不会再使用 [dataset](~dataset)。
+
+可以使用 `series.datasetIndex` 指定其他的 [dataset](~dataset)。
+
 通常来说，数据用一个二维数组表示。如下，每一列被称为一个『维度』。
 ```js
 series: [{

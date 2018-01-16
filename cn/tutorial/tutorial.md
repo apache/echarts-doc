@@ -14,3 +14,4 @@
 {{ import: custom-series }}
 {{ import: rich-text }}
 {{ import: renderer }}
+{{ import: dataset }}
