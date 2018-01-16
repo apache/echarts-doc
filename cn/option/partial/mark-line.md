@@ -20,10 +20,6 @@
 {{ use: mark-line-label(
     prefix=${prefix} + '##'
 ) }}
-###${prefix} emphasis(Object)
-{{ use: mark-line-label(
-    prefix=${prefix} + '###'
-) }}
 
 ##${prefix} lineStyle(Object)
 标线的样式
@@ -33,7 +29,16 @@
     defaultLineType='dashed',
     hasCurveness=true
 ) }}
-###${prefix} emphasis(Object)
+
+##${prefix} emphasis(Object)
+
+标线的高亮样式。
+
+###${prefix} label(Object)
+{{ use: mark-line-label(
+    prefix=${prefix} + '###'
+) }}
+###${prefix} lineStyle(Object)
 {{ use: partial-line-style(
     prefix="###" + ${prefix}
 ) }}
@@ -185,18 +190,20 @@ data: [
     prefix="#"+${prefix},
     hasCurveness=true
 ) }}
-##${prefix} emphasis(Object)
-{{ use: partial-line-style(
-    prefix="##"+${prefix},
-    hasCurveness=true
-) }}
 
 #${prefix} label(Object)
 该数据项标签的样式，起点和终点项的 `label`会合并到一起。
 {{ use: mark-line-label(
     prefix='#'+${prefix}
 ) }}
-##${prefix} emphasis(Object)
+
+#${prefix} emphasis(Object)
+##${prefix} lineStyle(Object)
+{{ use: partial-line-style(
+    prefix="##"+${prefix},
+    hasCurveness=true
+) }}
+##${prefix} label(Object)
 {{ use: mark-line-label(
     prefix='##'+${prefix}
 ) }}
