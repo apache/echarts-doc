@@ -65,7 +65,20 @@
     defaultColor="'#000'",
     defaultFontSize=11,
 )}}
-### emphasis(Object)
+
+## itemStyle(Object)
+
+主题河流中每个带状河流分支的样式。
+
+{{use: partial-item-style(
+    prefix="##"
+)}}
+
+## emphasis(Object)
+
+高亮的图形和标签样式。
+
+### label(Object)
 {{use:partial-label(
     prefix="###",
     defaultPosition="'left'",
@@ -76,14 +89,7 @@
     defaultFontSize=11,
 )}}
 
-## itemStyle(Object)
-
-主题河流中每个带状河流分支的样式。
-
-{{use: partial-item-style(
-    prefix="##"
-)}}
-### emphasis(Object)
+### itemStyle(Object)
 {{use: partial-item-style(
     prefix="###",
     defaultShadowBlur=20,

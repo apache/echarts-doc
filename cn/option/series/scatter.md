@@ -54,11 +54,6 @@
     defaultPosition="'inside'",
     formatter=true
 )}}
-### emphasis(Object)
-{{use:partial-label(
-    prefix="###",
-    formatter=true
-)}}
 
 
 ## itemStyle(Object)
@@ -68,7 +63,16 @@
     useColorPalatte=true,
     hasCallback=true
 )}}
-### emphasis(Object)
+
+
+## emphasis(Object)
+高亮的图形和标签样式。
+### label(Object)
+{{use:partial-label(
+    prefix="###",
+    formatter=true
+)}}
+### itemStyle(Object)
 {{use:partial-item-style(prefix="###")}}
 
 
@@ -104,15 +108,18 @@
     prefix="###",
     defaultPosition="inside"
 ) }}
-#### emphasis(Object)
-{{ use:partial-label(prefix="####") }}
-
 
 ### itemStyle(Object)
 单个数据点（气泡）的样式设置。
 {{use:partial-item-style(prefix="###")}}
-#### emphasis(Object)
+
+### emphasis(Object)
+单个数据的高亮图形和标签样式。
+#### label(Object)
+{{ use:partial-label(prefix="####") }}
+#### itemStyle(Object)
 {{use:partial-item-style(prefix="####")}}
+
 
 {{use: partial-tooltip-in-series-data(
     galleryViewPath=${galleryViewPath}
