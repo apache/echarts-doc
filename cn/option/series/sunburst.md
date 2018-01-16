@@ -208,14 +208,20 @@ ECharts 中，通常使用 *emphasis* 表示鼠标移动到图形上后的高亮
 ```js
 itemStyle: {
     color: 'yellow',
-    borderWidth: 2,
-    emphasis: {
+    borderWidth: 2
+},
+emphasis: {
+    itemStyle: {
         color: 'red'
-    },
-    highlight: {
+    }
+},
+highlight: {
+    itemStyle: {
         color: 'orange'
-    },
-    downplay: {
+    }
+},
+downplay: {
+    itemStyle: {
         color: '#ccc'
     }
 }
