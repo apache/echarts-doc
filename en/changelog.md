@@ -1,8 +1,19 @@
 ## v4.0.0
 <div class="time">2018-01-16</div>
 
+## v4.0.2
+<div class="time">2018-01-18</div>
+
++ [^] Fixed that in some case the scollable legend (`legend.type: 'scroll'`) caused ghost. See [#7502](https://github.com/ecomfe/echarts/issues/7502).
+
++ [^] Fixed that the `selected` option did not work in the data item of [pie](option.html#series-pie). See [#7515](https://github.com/ecomfe/echarts/issues/7515).
+
++ [^] Fixed [play button](option.html#timeline.controlStyle.showNextBtn) of timeline component could not be disabled. See [#7506](https://github.com/ecomfe/echarts/issues/7506).
+
+
 ## v4.0.1
 <div class="time">2018-01-17</div>
+
 
 ## v4.0.0
 <div class="time">2018-01-16</div>
