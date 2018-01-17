@@ -19,7 +19,7 @@
 ~[700x400](${galleryViewPath}doc-example/sunburst-label-align&edit=1&reset=1)
 
 {{use:partial-label(
-    prefix="##",
+    prefix=${prefix},
     defaultPosition="'inside'",
     formatter=true,
     defaultShowLabel="true",
@@ -36,18 +36,15 @@ ${prefix} label(Object)
 
 **优先级：[series.data.label](~series-sunburst.data.label) > [series.levels.label](~series-sunburst.levels.label) > [series.label](~series-sunburst.label)。**
 
-{{use:partial-label-desc}}
+{{ use: partial-label-desc }}
 
 {{ use: partial-sunburst-label-helper(prefix=${prefix}) }}
-
-#${prefix} emphasis(Object)
-{{ use: partial-sunburst-label-helper(prefix="#"+${prefix}) }}
 
 
 
 {{ target: partial-sunburst-itemStyle-props }}
 
-#${prefix} itemStyle(Object)
+${prefix} itemStyle(Object)
 
 旭日图扇形块的样式。
 
@@ -65,40 +62,44 @@ ECharts 中，通常使用 *emphasis* 表示鼠标移动到图形上后的高亮
     defaultOpacity=1
 )}}
 
-##${prefix} emphasis(Object)
 
-图形的高亮状态，参见 [highlightPolicy](~series-sunburst.highlightPolicy)。
 
-{{use: partial-item-style(
-    prefix="#" + ${prefix},
-    useColorPalatte=true,
-    defaultBorderWidth=1,
-    defaultBorderColor="'white'",
-    defaultOpacity=1
+{{ target: partial-sunburst-other-state }}
+
+#${prefix} emphasis(Object)
+
+鼠标悬停后的配置项。
+
+{{use: partial-sunburst-label-props(
+    prefix="##" + ${prefix}
 )}}
 
-##${prefix} highlight(Object)
-
-相关图形的高亮状态，参见 [highlightPolicy](~series-sunburst.highlightPolicy)。
-
-{{use: partial-item-style(
-    prefix="#" + ${prefix},
-    useColorPalatte=true,
-    defaultBorderWidth=1,
-    defaultBorderColor="'white'",
-    defaultOpacity=1
+{{use: partial-sunburst-itemStyle-props(
+    prefix="##" + ${prefix}
 )}}
 
-##${prefix} downplay(Object)
+#${prefix} highlight(Object)
 
-图形的淡化状态，参见 [highlightPolicy](~series-sunburst.highlightPolicy)。
+鼠标悬停后相关扇形块的配置项。参见 [highlightPolicy](~series-sunburst.highlightPolicy)。
 
-{{use: partial-item-style(
-    prefix="#" + ${prefix},
-    useColorPalatte=true,
-    defaultBorderWidth=1,
-    defaultBorderColor="'white'",
-    defaultOpacity=0.9
+{{use: partial-sunburst-label-props(
+    prefix="##" + ${prefix}
+)}}
+
+{{use: partial-sunburst-itemStyle-props(
+    prefix="##" + ${prefix}
+)}}
+
+#${prefix} downplay(Object)
+
+鼠标悬停后不相关扇形块的配置项。参见 [highlightPolicy](~series-sunburst.highlightPolicy)。
+
+{{use: partial-sunburst-label-props(
+    prefix="##" + ${prefix}
+)}}
+
+{{use: partial-sunburst-itemStyle-props(
+    prefix="##" + ${prefix}
 )}}
 
 
@@ -185,6 +186,17 @@ ECharts 中，通常使用 *emphasis* 表示鼠标移动到图形上后的高亮
 
 意义同 HTML `<a>` 标签中的 `target`，参见 [series-sunburst.data.link](~series-sunburst.data.link)。可选值为：`'blank'` 或 `'self'`。
 
+
+{{use: partial-sunburst-label-props(
+    prefix="###"
+)}}
+
+{{use: partial-sunburst-itemStyle-props(
+    prefix="###"
+)}}
+
+{{ use: partial-sunburst-other-state(prefix="##") }}
+
 ### children(Array)
 
 子节点，递归定义，格式同 [series-sunburst.data](~series-sunburst.data)。
@@ -256,10 +268,7 @@ downplay: {
     prefix="##"
 )}}
 
-
-
-
-
+{{ use: partial-sunburst-other-state(prefix="#") }}
 
 
 
@@ -296,12 +305,14 @@ series: {
 ```
 
 {{use: partial-sunburst-label-props(
-    prefix="##"
+    prefix="###"
 )}}
 
 {{use: partial-sunburst-itemStyle-props(
-    prefix="##"
+    prefix="###"
 )}}
+
+{{ use: partial-sunburst-other-state(prefix="##") }}
 
 {{use: partial-animation(
     prefix="#",
