@@ -3,7 +3,7 @@
 
 + [+] **支持最高达千万级数据量渲染**。ECharts4 变更为流式结构，并且配合各种细致的优化，支持增量加载数据和渐进渲染。几千万的地理坐标数据就算使用二进制存储也要占上百 MB 的空间，增量加载数据可以使用户能使用 WebSocket 或者对数据分块后加载，从而能很快的渲染出结果并且阻塞浏览器。参见 [scatterGL-gps](http://echarts.baidu.com/demo.html#scatterGL-gps)、[linesGL-ny](http://echarts.baidu.com/demo.html#linesGL-ny)。 ECharts 使用了渐进渲染来支持大数据场景下的平移缩放等交互，参见 [lines-airline](http://echarts.baidu.com/demo.html#lines-airline) 的缩放平移。而 ECharts GL 下则会有效果好的交互体验。
 + [+] **zrender SVG 渲染引擎发布，从而支持 Canvas / SVG 双引擎渲染，可进按照场景所需进行切换。例如，SVG 可适用于移动端、单页多图表等场景，Canvas 适用于大数据量、视觉特效需求等场景。Canvas 渲染引擎仍为默认引擎。**
-+ [+] **发布旭日图（sunburst）**，高效表达带有层次结构的数据占比情况，并有良好的交互体验。参见 [旭日图](http://echarts.baidu.com/demo.html#chart-type-sunburst)。
++ [+] **发布旭日图（sunburst）**，高效表达带有层次结构的数据占比情况，并有良好的交互体验。参见旭日图[例子](http://echarts.baidu.com/examples/index.html#chart-type-sunburst)和[文档](http://echarts.baidu.com/option.html#series-sunburst)。
 + [+] **新增 [dataset](http://echarts.baidu.com/tutorial.html#%E6%95%B0%E6%8D%AE%E9%9B%86%EF%BC%88dataset%EF%BC%89) 组件**，从而能够数据与样式分离，便于单独管理数据，支持数据映射到视觉配置，可以多个系列共享数据，也省去数据分割处理的步骤。
 + [+] **支持无障碍富互联网应用规范集（WAI-ARIA，the Accessible Rich Internet Applications Suite）**，致力于使得网⻚内容和网⻚应，用能够被更多残障人士访问。
 + [+] ECharts 4 开始，`label`、`itemStyle` 等配置被扁平化了，去掉了原先的 `normal` 层级，使得 `option` 更为清爽。原先的配置方式也被向后兼容。
