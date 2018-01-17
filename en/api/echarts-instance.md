@@ -457,6 +457,24 @@ img.src = myChart.getDataURL({
 
 Exports connected chart image; returns a base64 url; can be set to `src` of `Image`. Position of charts in exported image are related to that of the container.
 
+## appendData
+```js
+(opts: {
+    // Specify which series the data will be appended to.
+    seriesIndex?: string,
+    // The data to be appended.
+    data?: Array|TypedArray,
+}) => string
+```
+
+The method is used in rendering millions of data (e.g. rendering geo data). In these scenario, the entire size of data is probably up to 10 or 100 MB, even using binary format. So chunked load data and rendering is required. When using `appendData`, the graphic elements that have been rendered will not be cleared, but keep rendering new graphic elements.
+
+Notice:
+
++ Currently, when a series is using `dataset`, it is not supported to use `appendData`.
++ Currently not all types of series supported incremental rendering when using `appendData`. Only these types of series support it: [scatter](option.html#series-scatter) and [lines](option-gl.html#series-linesGL) of pure echarts, and [scatterGL](option-gl.html#series-scatterGL), [linesGL](option-gl.html#series-lines3D) and [polygons3D](ooption-gl.html#series-polygons3D) of echarts-gl.
+
+
 ## clear
 
 Clears current instance; removes all components and charts in current instance. After clearing, [getOption](~echartsInstance.getOption) returns an empty object `{}`.
