@@ -11,6 +11,7 @@
 {{ import: event }}
 {{ import: drag-example }}
 {{ import: calendar-example }}
+{{ import: sunburst-series }}
 {{ import: custom-series }}
 {{ import: rich-text }}
 {{ import: renderer }}
