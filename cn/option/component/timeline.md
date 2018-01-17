@@ -242,15 +242,6 @@ myChart.setOption(
 ) }}
 
 
-### emphasis(Object)
-
-{{ use: partial-timeline-label(
-    prefix="###",
-    state="emphasis",
-    textStyleDefaultColor="'#c23531'"
-) }}
-
-
 ## itemStyle(Object)
 
 {{use:partial-item-style-desc(
@@ -266,15 +257,6 @@ myChart.setOption(
     defaultBorderWidth=1
 ) }}
 
-
-### emphasis(Object)
-
-{{ use:partial-item-style(
-    prefix="###",
-    name="timeline ",
-    defaultColor="'#c23531'",
-    defaultBorderWidth=1
-) }}
 
 
 ## checkpointStyle(Object)
@@ -405,12 +387,6 @@ myChart.setOption(
 
 按钮边框线宽。
 
-
-### emphasis(Object)
-
-控制按钮的『高亮状态』的样式（hover时）。
-
-
 #### color(Color) = '#c23531'
 
 按钮颜色。
@@ -424,6 +400,30 @@ myChart.setOption(
 #### borderWidth(number) = 2
 
 按钮边框线宽。
+
+
+## emphasis(Object)
+
+### label(Object)
+{{ use: partial-timeline-label(
+    prefix="###",
+    state="emphasis",
+    textStyleDefaultColor="'#c23531'"
+) }}
+
+### itemStyle(Object)
+{{ use:partial-item-style(
+    prefix="###",
+    name="timeline ",
+    defaultColor="'#c23531'",
+    defaultBorderWidth=1
+) }}
+
+### checkpointStyle(Object)
+当前项『高亮状态』的样式（hover时）。
+
+### controlStyle(Object)
+控制按钮的『高亮状态』的样式（hover时）。
 
 
 ## data(Array)

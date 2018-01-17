@@ -69,13 +69,38 @@
 
 指定柱最小宽度。可以使用绝对数值（如 `10`）或百分比（如 `'20%'`，表示 band width 的百分之多少）。默认自适应。
 
+## itemStyle(Object)
 
-{{use:partial-candlestick-item-style(prefix="#")}}
+ K 线图的图形样式。
 
+{{use: partial-candlestick-item-style-detail(
+    prefix="##",
+    defaultColor="#c23531",
+    defaultColor0="#314656",
+    defaultBorderColor="#c23531",
+    defaultBorderColor0="#314656",
+    defaultBorderWidth=1
+)}}
 
 {{use:partial-series-dimensions(
     prefix="#"
 )}}
+
+## emphasis(Object)
+
+ K 线图的高亮图形样式。
+
+### itemStyle(Object)
+
+{{use: partial-candlestick-item-style-detail(
+    prefix="###",
+    defaultColor="#c23531",
+    defaultColor0="#314656",
+    defaultBorderColor="#c23531",
+    defaultBorderColor0="#314656",
+    defaultBorderWidth=2
+)}}
+
 
 {{use:partial-series-encode(
     prefix="#"
@@ -117,8 +142,38 @@
 [open, close, lowest, highest] （即：[开盘值, 收盘值, 最低值, 最高值]）
 ```
 
+### itemStyle(Object)
 
-{{use:partial-candlestick-item-style(prefix="##")}}
+单个 K 线图数据的图形样式。
+
+{{use: partial-candlestick-item-style-detail(
+    prefix="###",
+    defaultColor="#c23531",
+    defaultColor0="#314656",
+    defaultBorderColor="#c23531",
+    defaultBorderColor0="#314656",
+    defaultBorderWidth=1
+)}}
+
+### emphasis(Object)
+
+单个 K 线图数据的高亮图形样式。
+
+#### itemStyle(Object)
+
+{{use: partial-candlestick-item-style-detail(
+    prefix="####",
+    defaultColor="#c23531",
+    defaultColor0="#314656",
+    defaultBorderColor="#c23531",
+    defaultBorderColor0="#314656",
+    defaultBorderWidth=2
+)}}
+
+{{use:partial-series-dimensions(
+    prefix="#"
+)}}
+
 
 {{use: partial-tooltip-in-series-data(
     galleryViewPath=${galleryViewPath}
@@ -196,40 +251,3 @@ candlestick 描边线宽。为 0 时无描边。
     defaultShadowOffsetX=${defaultShadowOffsetX},
     defaultShadowOffsetY=${defaultShadowOffsetY}
 ) }}
-
-
-
-
-
-
-
-
-
-{{target:partial-candlestick-item-style}}
-
-
-#${prefix} itemStyle(Object)
-
-{{use:partial-item-style-desc(name="candlestick")}}
-
-
-{{use: partial-candlestick-item-style-detail(
-    prefix="##",
-    defaultColor="#c23531",
-    defaultColor0="#314656",
-    defaultBorderColor="#c23531",
-    defaultBorderColor0="#314656",
-    defaultBorderWidth=1
-)}}
-
-##${prefix} emphasis(Object)
-
-{{use: partial-candlestick-item-style-detail(
-    prefix="###",
-    defaultColor="#c23531",
-    defaultColor0="#314656",
-    defaultBorderColor="#c23531",
-    defaultBorderColor0="#314656",
-    defaultBorderWidth=2
-)}}
-

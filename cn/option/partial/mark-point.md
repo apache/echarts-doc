@@ -19,18 +19,21 @@
     defaultPosition="'inside'",
     formatter=true
 )}}
-###${prefix} emphasis(Object)
-{{use:partial-label(
-    prefix="###" + ${prefix},
-    formatter=true
-)}}
 
 ##${prefix} itemStyle(Object)
 标注的样式。
 {{use:partial-item-style(
     prefix="##" + ${prefix}
 )}}
-###${prefix} emphasis(Object)
+
+##${prefix} emphasis(Object)
+标注的高亮样式。
+###${prefix} label(Object)
+{{use:partial-label(
+    prefix="###" + ${prefix},
+    formatter=true
+)}}
+###${prefix} itemStyle(Object)
 {{use:partial-item-style(prefix="###" + ${prefix})}}
 
 ##${prefix} data(Array)
@@ -107,17 +110,19 @@ data: [{{if: ${hasType} }}
 ###${prefix} itemStyle(Object)
 该标注的样式。
 {{ use: partial-item-style(prefix="###" + ${prefix}) }}
-####${prefix} emphasis(Object)
-{{ use: partial-item-style(prefix="####" + ${prefix}) }}
 
 ###${prefix} label(Object)
 {{ use: partial-label(
     prefix=${prefix} + '###'
 ) }}
-####${prefix} emphasis(Object)
+
+###${prefix} emphasis(Object)
+####${prefix} label(Object)
 {{ use: partial-label(
     prefix=${prefix} + '####'
 ) }}
+####${prefix} itemStyle(Object)
+{{ use: partial-item-style(prefix="####" + ${prefix}) }}
 
 
 {{ use: partial-animation(

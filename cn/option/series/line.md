@@ -73,11 +73,6 @@
     defaultPosition="'top'",
     formatter=true
 )}}
-### emphasis(Object)
-{{use: partial-label(
-    prefix="###",
-    formatter=true
-)}}
 
 ## itemStyle(Object)
 折线拐点标志的样式。
@@ -86,8 +81,6 @@
     useColorPalatte=true,
     hasCallback=true
 )}}
-### emphasis(Object)
-{{use: partial-item-style(prefix="###")}}
 
 ## lineStyle(Object)
 线条样式。
@@ -102,6 +95,18 @@
 ## areaStyle(Object)
 区域填充样式。
 {{use: partial-area-style(prefix="##", hasOrigin=true)}}
+
+## emphasis(Object)
+图形的高亮样式。
+
+### label(Object)
+{{use: partial-label(
+    prefix="###",
+    formatter=true
+)}}
+### itemStyle(Object)
+{{use: partial-item-style(prefix="###")}}
+
 
 ## smooth(false) = false
 是否平滑曲线显示。
@@ -166,14 +171,19 @@
     prefix="###",
     defaultPosition="top"
 ) }}
-#### emphasis(Object)
-{{ use: partial-label(prefix="####") }}
 
 ### itemStyle(Object)
 单个拐点标志的样式设置。
 {{use: partial-item-style(prefix="###")}}
-#### emphasis(Object)
+
+
+### emphasis(Object)
+单个拐点的高亮样式和标签设置。
+#### itemStyle(Object)
 {{use: partial-item-style(prefix="####")}}
+#### label(Object)
+{{ use: partial-label(prefix="####") }}
+
 
 {{use: partial-tooltip-in-series-data(
     galleryViewPath=${galleryViewPath}

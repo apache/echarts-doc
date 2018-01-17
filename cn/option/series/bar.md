@@ -27,11 +27,6 @@
     defaultPosition="'inside'",
     formatter=true
 )}}
-### emphasis(Object)
-{{use:partial-label(
-    prefix="###",
-    formatter=true
-)}}
 
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
@@ -41,8 +36,21 @@
     hasCallback=true,
     barBorderRadius=true
 )}}
-### emphasis(Object)
+
+## emphasis(Object)
+
+高亮的图形样式和标签样式。
+
+### label(Object)
+{{use:partial-label(
+    prefix="###",
+    formatter=true
+)}}
+
+### itemStyle(Object)
 {{use:partial-bar-item-style(prefix="###")}}
+
+
 
 
 ## stack(string) = null
@@ -83,15 +91,24 @@
     prefix="###",
     defaultPosition="inside"
 ) }}
-#### emphasis(Object)
-{{ use:partial-label(prefix="####") }}
 
 ### itemStyle(Object)
 {{use:partial-bar-item-style(
     prefix="###",
     barBorderRadius=true
 )}}
-#### emphasis(Object)
+
+
+### emphasis(Object)
+
+高亮状态的柱状图图形与标签样式。
+
+#### label(Object)
+
+{{ use:partial-label(prefix="####") }}
+
+
+#### itemStyle(Object)
 {{use:partial-bar-item-style(prefix="####")}}
 
 {{use: partial-tooltip-in-series-data(

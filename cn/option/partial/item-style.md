@@ -1,5 +1,5 @@
 {{target:partial-item-style-desc}}
-${name} 图形样式，`emphasis` 是图形在高亮状态下的样式，比如在鼠标悬浮或者图例联动高亮时。
+${name} 图形样式。
 
 {{target:partial-item-style}}
 

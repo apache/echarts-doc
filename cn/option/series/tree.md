@@ -80,9 +80,6 @@
     defaultBorderColor="'#c23531'"
 )}}
 
-### emphasis(Object)
-{{use: partial-item-style(prefix="###")}}
-
 
 ## label(Object)
 
@@ -94,13 +91,6 @@
     formatter1d=true
 )}}
 
-### emphasis(Object)
-
-{{use:partial-label(
-    prefix="###",
-    formatter1d=true
-)}}
-
 
 ## lineStyle(Object)
 
@@ -108,9 +98,21 @@
 
 {{use: partial-tree-line-style(prefix="##")}}
 
-### emphasis(Object)
+
+## emphasis(Object)
+
+树图中个图形和标签高亮的样式。
+
+### itemStyle(Object)
+{{use: partial-item-style(prefix="###")}}
+### lineStyle(Object)
 {{use: partial-tree-line-style(
     prefix="###"
+)}}
+### label(Object)
+{{use:partial-label(
+    prefix="###",
+    formatter1d=true
 )}}
 
 
@@ -128,13 +130,6 @@
     formatter1d=true
 )}}
 
-#### emphasis(Object)
-
-{{use:partial-label(
-    prefix="####",
-    formatter1d=true
-)}}
-
 ### itemStyle(Object)
 
 树图中叶子节点的样式。
@@ -144,7 +139,15 @@
     useColorPalatte=true
 )}}
 
-#### emphasis(Object)
+
+### emphasis(Object)
+叶子节点高亮的样式。
+#### label(Object)
+{{use:partial-label(
+    prefix="####",
+    formatter1d=true
+)}}
+#### itemStyle(Object)
 {{use: partial-item-style(prefix="####")}}
 
 
@@ -193,10 +196,6 @@
 
 {{use:partial-item-style(prefix="###", useColorPalatte=true)}}
 
-#### emphasis(Object)
-
-{{use:partial-item-style(prefix="####")}}
-
 ### label(Object)
 
 该节点的标签。
@@ -205,11 +204,15 @@
     prefix="###"
 ) }}
 
-#### emphasis(Object)
 
+### emphasis(Object)
+高亮的节点样式
+#### label(Object)
 {{ use:partial-label(
     prefix="####"
 ) }}
+#### itemStyle(Object)
+{{use:partial-item-style(prefix="####")}}
 
 {{use: partial-tooltip-in-series-data(
     galleryViewPath=${galleryViewPath}

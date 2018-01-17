@@ -101,12 +101,6 @@ boundingCoords: [
     prefix="#" + ${prefix},
     formatter=true
 )}}
-##${prefix} emphasis(Object)
-{{use: partial-label(
-    prefix="##" + ${prefix},
-    formatter=true
-)}}
-
 
 
 
@@ -119,14 +113,22 @@ boundingCoords: [
 
 {{ use: partial-item-style(prefix=${prefix} + '#') }}
 
-##${prefix} emphasis(Object)
 
-高亮状态下的多边形样式。
+#${prefix} emphasis(Object)
+高亮状态下的多边形和标签样式。
 
+##${prefix} label(Object)
+{{use: partial-label(
+    prefix="##" + ${prefix},
+    formatter=true
+)}}
+
+##${prefix} itemStyle(Object)
 ###${prefix} areaColor(Color) = '#eee'
 地图区域的颜色。
-
 {{ use: partial-item-style(prefix=${prefix} + '##') }}
+
+
 
 {{ use: partial-rect-layout(prefix=${prefix}) }}
 

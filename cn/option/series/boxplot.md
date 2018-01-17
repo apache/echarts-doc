@@ -62,6 +62,36 @@ box 的宽度的上下限。数组的意思是：`[min, max]`。
     prefix="#"
 )}}
 
+## itemStyle(Object)
+
+盒须图样式。
+
+{{use: partial-item-style(
+    prefix="##",
+    useColorPalatte=true,
+    name="boxplot",
+    defaultColor="#fff",
+    defaultBorderWidth=1
+)}}
+
+## emphasis(Object)
+
+盒须图高亮样式
+
+### itemStyle(Object)
+
+{{use: partial-item-style(
+    prefix="###",
+    useColorPalatte=true,
+    name="boxplot",
+    defaultColor="#fff",
+    defaultBorderWidth=2,
+    defaultShadowBlur=5,
+    defaultShadowOffsetX=2,
+    defaultShadowOffsetY=2,
+    defaultShadowColor="rgba(0,0,0,0.4)"
+)}}
+
 
 ## data(Array)
 
@@ -106,7 +136,37 @@ ECharts 并不内置对原始数据的处理，输入给 `boxplot` 的数据须�
 [min,  Q1,  median (or Q2),  Q3,  max]
 ```
 
-{{use:partial-boxplot-item-style(prefix="##")}}
+
+### itemStyle(Object)
+
+单个数据盒须图样式。
+
+{{use: partial-item-style(
+    prefix="###",
+    useColorPalatte=true,
+    name="boxplot",
+    defaultColor="#fff",
+    defaultBorderWidth=1
+)}}
+
+### emphasis(Object)
+
+单个数据盒须图高亮样式
+
+#### itemStyle(Object)
+
+{{use: partial-item-style(
+    prefix="####",
+    useColorPalatte=true,
+    name="boxplot",
+    defaultColor="#fff",
+    defaultBorderWidth=2,
+    defaultShadowBlur=5,
+    defaultShadowOffsetX=2,
+    defaultShadowOffsetY=2,
+    defaultShadowColor="rgba(0,0,0,0.4)"
+)}}
+
 
 {{use: partial-tooltip-in-series-data(
     galleryViewPath=${galleryViewPath}
@@ -139,46 +199,4 @@ ECharts 并不内置对原始数据的处理，输入给 `boxplot` 的数据须�
 
 {{use: partial-tooltip-in-series(
     galleryViewPath=${galleryViewPath}
-)}}
-
-
-
-
-
-
-
-
-
-
-
-
-{{target:partial-boxplot-item-style}}
-
-#${prefix} itemStyle(Object)
-
-{{use:partial-item-style-desc(name="boxplot")}}
-
-
-
-{{use: partial-item-style(
-    prefix="##",
-    useColorPalatte=true,
-    name="boxplot",
-    defaultColor="#fff",
-    defaultBorderWidth=1
-)}}
-
-
-##${prefix} emphasis(Object)
-
-{{use: partial-item-style(
-    prefix="###",
-    useColorPalatte=true,
-    name="boxplot",
-    defaultColor="#fff",
-    defaultBorderWidth=2,
-    defaultShadowBlur=5,
-    defaultShadowOffsetX=2,
-    defaultShadowOffsetY=2,
-    defaultShadowColor="rgba(0,0,0,0.4)"
 )}}

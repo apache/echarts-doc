@@ -46,12 +46,6 @@
     position=true,
     formatter=true
 )}}
-### emphasis(Object)
-{{use:partial-funnel-label(
-    prefix="###",
-    position=false,
-    formatter=true
-)}}
 
 ## labelLine(Object)
 标签的视觉引导线样式，在 [label 位置](~series-funnel.label.position) 设置为`'left'`或者`'right'`的时候会显示视觉引导线。
@@ -64,8 +58,23 @@
     useColorPalatte=true,
     hasCallback=true
 )}}
-### emphasis(Object)
+
+## emphasis(Object)
+高亮的标签和图形样式。
+
+### label(Object)
+{{use:partial-funnel-label(
+    prefix="###",
+    position=false,
+    formatter=true
+)}}
+
+### itemStyle(Object)
 {{use:partial-item-style(prefix="###")}}
+
+### labelLine(Object)
+{{ use: partial-funnel-label-line(prefix='###') }}
+
 
 
 {{ use: component-rect-layout-width-height(
@@ -96,12 +105,7 @@
     position=true,
     formatter=false
 )}}
-#### emphasis(Object)
-{{use:partial-funnel-label(
-    prefix="####",
-    position=false,
-    formatter=false
-)}}
+
 
 ### labelLine(Object)
 {{ use: partial-funnel-label-line(prefix='###') }}
@@ -109,8 +113,25 @@
 ### itemStyle(Object)
 {{use:partial-item-style-desc}}
 {{use:partial-item-style(prefix="###")}}
-#### emphasis(Object)
+
+
+### emphasis(Object)
+
+#### itemStyle(Object)
 {{use:partial-item-style(prefix="####")}}
+
+#### label(Object)
+
+{{use:partial-funnel-label(
+    prefix="####",
+    position=false,
+    formatter=false
+)}}
+
+#### labelLine(Object)
+{{use:partial-funnel-label-line(prefix="####")}}
+
+
 
 {{use: partial-tooltip-in-series-data(
     galleryViewPath=${galleryViewPath}

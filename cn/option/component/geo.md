@@ -65,11 +65,6 @@ geo 区域的颜色也可以被 map series 所控制，参见 [series-map.geoInd
 #### areaColor(Color)
 地图区域的颜色。
 {{ use: partial-item-style(prefix='####') }}
-#### emphasis(Object)
-##### areaColor(Color)
-地图区域的颜色。
-{{ use: partial-item-style(prefix='####') }}
-
 
 ### label(Object)
 {{use: partial-label-desc}}
@@ -77,12 +72,20 @@ geo 区域的颜色也可以被 map series 所控制，参见 [series-map.geoInd
     prefix="###",
     formatter=true
 )}}
-#### emphasis(Object)
+
+
+
+### emphasis(Object)
+高亮的样式。
+#### itemStyle(Object)
+##### areaColor(Color)
+地图区域的颜色。
+{{ use: partial-item-style(prefix='####') }}
+#### label(Object)
 {{use: partial-label(
     prefix="####",
     formatter=true
 )}}
-
 
 
 {{ use:partial-silent(

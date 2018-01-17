@@ -118,8 +118,6 @@ edgeSymbol: ['circle', 'arrow']
     useColorPalatte=true,
     hasCallback=true
 )}}
-### emphasis(Object)
-{{use:partial-item-style(prefix="###")}}
 
 ## lineStyle(Object)
 关系边的公用线条样式。其中 [lineStyle.color](~series-graph.lineStyle.color) 支持设置为`'source'`或者`'target'`特殊值，此时边会自动取源节点或目标节点的颜色作为自己的颜色。
@@ -131,10 +129,6 @@ edgeSymbol: ['circle', 'arrow']
     defaultOpacity=0.5,
     hasCurveness=true
 )}}
-### emphasis(Object)
-{{ use:partial-line-style(
-    prefix="###"
-) }}
 
 ## label(Object)
 {{use:partial-label-desc}}
@@ -143,18 +137,27 @@ edgeSymbol: ['circle', 'arrow']
     defaultPosition="'inside'",
     formatter2d=true
 )}}
-### emphasis(Object)
-{{use:partial-label(
-    prefix="###",
-    defaultShow=true,
-    formatter2d=true
-)}}
 
 ## edgeLabel(Object)
 {{use: graph-edge-label(
     prefix="##"
 )}}
-### emphasis(Object)
+
+## emphasis(Object)
+高亮的图形样式。
+### itemStyle(Object)
+{{use:partial-item-style(prefix="###")}}
+### lineStyle(Object)
+{{ use:partial-line-style(
+    prefix="###"
+) }}
+### label(Object)
+{{use:partial-label(
+    prefix="###",
+    defaultShow=true,
+    formatter2d=true
+)}}
+### edgeLabel(Object)
 {{use: graph-edge-label(
     prefix="###"
 )}}
@@ -176,8 +179,6 @@ edgeSymbol: ['circle', 'arrow']
 ### itemStyle(Object)
 该类目节点的样式。
 {{use:partial-item-style(prefix="###", useColorPalatte=true)}}
-#### emphasis(Object)
-{{use:partial-item-style(prefix="####")}}
 
 ### label(Object)
 该类目节点标签的样式。
@@ -186,7 +187,11 @@ edgeSymbol: ['circle', 'arrow']
     defaultPosition="inside",
     formatter2d=true
 ) }}
-#### emphasis(Object)
+
+### emphasis(Object)
+#### itemStyle(Object)
+{{use:partial-item-style(prefix="####")}}
+#### label(Object)
 {{ use:partial-label(prefix="####") }}
 
 
@@ -237,18 +242,21 @@ data: [{
 ### itemStyle(Object)
 该节点的样式。
 {{use:partial-item-style(prefix="###", useColorPalatte=true)}}
-#### emphasis(Object)
-{{use:partial-item-style(prefix="####")}}
 
 ### label(Object)
 该节点标签的样式。
 {{ use:partial-label(
     prefix="###"
 ) }}
-#### emphasis(Object)
+
+### emphasis(Object)
+#### itemStyle(Object)
+{{use:partial-item-style(prefix="####")}}
+#### label(Object)
 {{ use:partial-label(
     prefix="####"
 ) }}
+
 
 {{use: partial-tooltip-in-series-data(
     galleryViewPath=${galleryViewPath}
@@ -292,8 +300,14 @@ links: [{
 {{use: graph-edge-label(
     prefix="###"
 )}}
-#### emphasis(Object)
+
+### emphasis(Object)
+#### label(Object)
 {{use: graph-edge-label(
+    prefix="####"
+)}}
+#### lineStyle(Object)
+{{use:partial-line-style(
     prefix="####"
 )}}
 
