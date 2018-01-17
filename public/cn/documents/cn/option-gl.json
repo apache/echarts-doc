@@ -1026,7 +1026,7 @@
             ],
             "descriptionCN": "<p>三维地理坐标系组件 中三维图形的视觉属性，包括颜色，透明度，描边等。</p>\n",
             "properties": {
-              "areaColor": {
+              "color": {
                 "type": [
                   "string",
                   "Function"
@@ -1192,7 +1192,7 @@
                   ],
                   "descriptionCN": "<p>单个区域的样式设置。</p>\n",
                   "properties": {
-                    "areaColor": {
+                    "color": {
                       "type": [
                         "string"
                       ],
@@ -1313,7 +1313,7 @@
                       ],
                       "descriptionCN": "",
                       "properties": {
-                        "areaColor": {
+                        "color": {
                           "type": [
                             "string"
                           ],
@@ -2130,7 +2130,7 @@
           }
         }
       },
-      "mapbox": {
+      "mapbox3D": {
         "type": [
           "Object"
         ],
@@ -2147,7 +2147,7 @@
             "type": [
               "Array"
             ],
-            "descriptionCN": "<p>Mapbox 地图中心经纬度。经纬度用数组表示，例如：</p>\n<pre><code class=\"lang-js\">mapbox: {\n    center: [104.114129, 37.550339],\n    zoom: 3\n}\n</code></pre>\n"
+            "descriptionCN": "<p>Mapbox 地图中心经纬度。经纬度用数组表示，例如：</p>\n<pre><code class=\"lang-js\">mapbox3D: {\n    center: [104.114129, 37.550339],\n    zoom: 3\n}\n</code></pre>\n"
           },
           "zoom": {
             "type": [
@@ -2180,13 +2180,13 @@
             "type": [
               "string"
             ],
-            "descriptionCN": "<p>mapbox中三维图形的着色效果，echarts-gl 中支持下面三种着色方式</p>\n<ul>\n<li><p><code>&#39;color&#39;</code>\n只显示颜色，不受光照等其它因素的影响。</p>\n</li>\n<li><p><code>&#39;lambert&#39;</code>\n通过经典的 <a href=\"https://en.wikipedia.org/wiki/Lambertian_reflectance\" target=\"_blank\">lambert</a> 着色表现光照带来的明暗。</p>\n</li>\n<li><p><code>&#39;realistic&#39;</code>\n真实感渲染，配合 <a href=\"#globe.light.ambientCubemap\">light.ambientCubemap</a> 和 <a href=\"#globe.postEffect\">postEffect</a> 使用可以让展示的画面效果和质感有质的提升。ECharts GL 中使用了<a href=\"https://www.marmoset.co/posts/physically-based-rendering-and-you-can-too/\" target=\"_blank\">基于物理的渲染（PBR）</a> 来表现真实感材质。</p>\n</li>\n</ul>\n"
+            "descriptionCN": "<p>mapbox3D中三维图形的着色效果，echarts-gl 中支持下面三种着色方式</p>\n<ul>\n<li><p><code>&#39;color&#39;</code>\n只显示颜色，不受光照等其它因素的影响。</p>\n</li>\n<li><p><code>&#39;lambert&#39;</code>\n通过经典的 <a href=\"https://en.wikipedia.org/wiki/Lambertian_reflectance\" target=\"_blank\">lambert</a> 着色表现光照带来的明暗。</p>\n</li>\n<li><p><code>&#39;realistic&#39;</code>\n真实感渲染，配合 <a href=\"#globe.light.ambientCubemap\">light.ambientCubemap</a> 和 <a href=\"#globe.postEffect\">postEffect</a> 使用可以让展示的画面效果和质感有质的提升。ECharts GL 中使用了<a href=\"https://www.marmoset.co/posts/physically-based-rendering-and-you-can-too/\" target=\"_blank\">基于物理的渲染（PBR）</a> 来表现真实感材质。</p>\n</li>\n</ul>\n"
           },
           "realisticMaterial": {
             "type": [
               "Object"
             ],
-            "descriptionCN": "<p>真实感材质相关的配置项，在 <a href=\"#mapbox.shading\">shading</a> 为<code>&#39;realistic&#39;</code>时有效。</p>\n",
+            "descriptionCN": "<p>真实感材质相关的配置项，在 <a href=\"#mapbox3D.shading\">shading</a> 为<code>&#39;realistic&#39;</code>时有效。</p>\n",
             "properties": {
               "detailTexture": {
                 "type": [
@@ -2227,7 +2227,7 @@
                   "HTMLImageElement",
                   "HTMLCanvasElement"
                 ],
-                "descriptionCN": "<p><code>metalness</code>属性用于表示材质是金属还是非金属，<code>0</code>为非金属，<code>1</code>为金属，中间的值则是介于这两者之间，但是通常设成<code>0</code>和<code>1</code>就能满足大部分场景了</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>metalness</code>分别设成<code>1</code>与<code>0</code>的效果区别。</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-metal.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-non-metal.png\"></p>\n<p>跟 <a href=\"#mapbox.realisticMaterial.roughness\">roughness</a> 一样 你可以直接将 <code>metalness</code> 设置为金属度贴图。</p>\n",
+                "descriptionCN": "<p><code>metalness</code>属性用于表示材质是金属还是非金属，<code>0</code>为非金属，<code>1</code>为金属，中间的值则是介于这两者之间，但是通常设成<code>0</code>和<code>1</code>就能满足大部分场景了</p>\n<p>下图是 <a href=\"#globe\">globe</a> 中<code>metalness</code>分别设成<code>1</code>与<code>0</code>的效果区别。</p>\n<p><img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-metal.png\">\n<img width=\"auto\" height=\"280\" src=\"documents/asset/gl/img/globe-non-metal.png\"></p>\n<p>跟 <a href=\"#mapbox3D.realisticMaterial.roughness\">roughness</a> 一样 你可以直接将 <code>metalness</code> 设置为金属度贴图。</p>\n",
                 "default": 0
               },
               "roughnessAdjust": {
@@ -2258,7 +2258,7 @@
             "type": [
               "Object"
             ],
-            "descriptionCN": "<p>lambert 材质相关的配置项，在 <a href=\"#mapbox.shading\">shading</a> 为<code>&#39;lambert&#39;</code>时有效。</p>\n",
+            "descriptionCN": "<p>lambert 材质相关的配置项，在 <a href=\"#mapbox3D.shading\">shading</a> 为<code>&#39;lambert&#39;</code>时有效。</p>\n",
             "properties": {
               "detailTexture": {
                 "type": [
@@ -2288,7 +2288,7 @@
             "type": [
               "Object"
             ],
-            "descriptionCN": "<p>color 材质相关的配置项，在 <a href=\"#mapbox.shading\">shading</a> 为<code>&#39;color&#39;</code>时有效。</p>\n",
+            "descriptionCN": "<p>color 材质相关的配置项，在 <a href=\"#mapbox3D.shading\">shading</a> 为<code>&#39;color&#39;</code>时有效。</p>\n",
             "properties": {
               "detailTexture": {
                 "type": [
@@ -2318,7 +2318,7 @@
             "type": [
               "Object"
             ],
-            "descriptionCN": "<p>光照相关的设置。在 <a href=\"#mapbox.shading\">shading</a> 为 <code>&#39;color&#39;</code> 的时候无效。</p>\n<p>光照的设置会影响到组件以及组件所在坐标系上的所有图表。</p>\n<p>合理的光照设置能够让整个场景的明暗变得更丰富，更有层次。</p>\n",
+            "descriptionCN": "<p>光照相关的设置。在 <a href=\"#mapbox3D.shading\">shading</a> 为 <code>&#39;color&#39;</code> 的时候无效。</p>\n<p>光照的设置会影响到组件以及组件所在坐标系上的所有图表。</p>\n<p>合理的光照设置能够让整个场景的明暗变得更丰富，更有层次。</p>\n",
             "properties": {
               "main": {
                 "type": [
@@ -2358,7 +2358,7 @@
                     "type": [
                       "number"
                     ],
-                    "descriptionCN": "<p>主光源绕 x 轴，即上下旋转的角度。配合 <a href=\"#mapbox.light.main.beta\">beta</a> 控制光源的方向。</p>\n<p>如下示意图：</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/gl/img/light-alpha-beta.png\"></p>\n<p><a href=\"#globe\">globe</a> 组件中可以通过 <a href=\"#globe.light.main.time\">time</a> 控制日光的时间。</p>\n",
+                    "descriptionCN": "<p>主光源绕 x 轴，即上下旋转的角度。配合 <a href=\"#mapbox3D.light.main.beta\">beta</a> 控制光源的方向。</p>\n<p>如下示意图：</p>\n<p><img width=\"\" height=\"auto\" src=\"documents/asset/gl/img/light-alpha-beta.png\"></p>\n<p><a href=\"#globe\">globe</a> 组件中可以通过 <a href=\"#globe.light.main.time\">time</a> 控制日光的时间。</p>\n",
                     "default": 40
                   },
                   "beta": {
@@ -2396,7 +2396,7 @@
                 "type": [
                   "Object"
                 ],
-                "descriptionCN": "<p>ambientCubemap 会使用纹理作为光源的环境光， 会为物体提供漫反射和高光反射。可以通过 <a href=\"#mapbox.light.ambientCubemap.diffuseIntensity\">diffuseIntensity</a> 和 <a href=\"#mapbox.light.ambientCubemap.specularIntensity\">specularIntensity</a> 分别设置漫反射强度和高光反射强度。</p>\n",
+                "descriptionCN": "<p>ambientCubemap 会使用纹理作为光源的环境光， 会为物体提供漫反射和高光反射。可以通过 <a href=\"#mapbox3D.light.ambientCubemap.diffuseIntensity\">diffuseIntensity</a> 和 <a href=\"#mapbox3D.light.ambientCubemap.specularIntensity\">specularIntensity</a> 分别设置漫反射强度和高光反射强度。</p>\n",
                 "properties": {
                   "texture": {
                     "type": [
@@ -2426,7 +2426,7 @@
             "type": [
               "Object"
             ],
-            "descriptionCN": "<p>后处理特效的相关配置，后处理特效可以为画面添加高光，景深，环境光遮蔽（SSAO），调色等效果。可以让整个画面更富有质感。</p>\n<p>下面分别是关闭和开启 <code>postEffect</code> 的区别。</p>\n<div class=\"twentytwenty-container\" style=\"width: 700px;\">\n    <img src=\"documents/asset/gl/img/globe-posteffect-disable.png\" width=\"100%\" title=\"Disable\">\n    <img src=\"documents/asset/gl/img/globe-posteffect-enable.png\" width=\"100%\" title=\"Enable\">\n</div>\n\n<p>注意在开启 postEffect 的时候默认会开启 <a href=\"#mapbox.temporalSuperSampling\">temporalSuperSampling</a> 在画面静止后持续对画面增强，包括抗锯齿，景深，SSAO，阴影等。</p>\n",
+            "descriptionCN": "<p>后处理特效的相关配置，后处理特效可以为画面添加高光，景深，环境光遮蔽（SSAO），调色等效果。可以让整个画面更富有质感。</p>\n<p>下面分别是关闭和开启 <code>postEffect</code> 的区别。</p>\n<div class=\"twentytwenty-container\" style=\"width: 700px;\">\n    <img src=\"documents/asset/gl/img/globe-posteffect-disable.png\" width=\"100%\" title=\"Disable\">\n    <img src=\"documents/asset/gl/img/globe-posteffect-enable.png\" width=\"100%\" title=\"Enable\">\n</div>\n\n<p>注意在开启 postEffect 的时候默认会开启 <a href=\"#mapbox3D.temporalSuperSampling\">temporalSuperSampling</a> 在画面静止后持续对画面增强，包括抗锯齿，景深，SSAO，阴影等。</p>\n",
             "properties": {
               "enable": {
                 "type": [
@@ -2510,7 +2510,7 @@
                 "type": [
                   "Object"
                 ],
-                "descriptionCN": "<p>同 <a href=\"#mapbox.postEffect.screenSpaceAmbientOcclusion\">screenSpaceAmbientOcclusion</a></p>\n",
+                "descriptionCN": "<p>同 <a href=\"#mapbox3D.postEffect.screenSpaceAmbientOcclusion\">screenSpaceAmbientOcclusion</a></p>\n",
                 "properties": {
                   "enable": {
                     "type": [
@@ -2597,7 +2597,7 @@
                 "type": [
                   "Object"
                 ],
-                "descriptionCN": "<p>在开启 <a href=\"#mapbox.postEffect\">postEffect</a> 后，WebGL 默认的 MSAA 会无法使用。这时候通过 FXAA 可以廉价方便的解决抗锯齿的问题，FXAA 会对一些场景的边缘部分进行模糊从而解决锯齿的问题，这在一些场景上效果还不错，但是在 echarts-gl 中，需要保证很多文字和线条边缘的锐利清晰，因此 FXAA 并不是那么适用。这时候我们可以通过如下设置更高的<code>devicePixelRatio</code>来使用超采样</p>\n<pre><code class=\"lang-js\">var chart = echarts.init(dom, null, {\n    devicePixelRatio: 2\n})\n</code></pre>\n<p>但是这种方法对电脑性能有很高的要求，所以更多时候我们建议使用 echarts-gl 中的 <a href=\"#mapbox.temporalSuperSampling\">temporalSuperSampling</a>，在画面静止后会持续分帧对一个像素多次抖动采样，从而达到超采样抗锯齿的效果。</p>\n",
+                "descriptionCN": "<p>在开启 <a href=\"#mapbox3D.postEffect\">postEffect</a> 后，WebGL 默认的 MSAA 会无法使用。这时候通过 FXAA 可以廉价方便的解决抗锯齿的问题，FXAA 会对一些场景的边缘部分进行模糊从而解决锯齿的问题，这在一些场景上效果还不错，但是在 echarts-gl 中，需要保证很多文字和线条边缘的锐利清晰，因此 FXAA 并不是那么适用。这时候我们可以通过如下设置更高的<code>devicePixelRatio</code>来使用超采样</p>\n<pre><code class=\"lang-js\">var chart = echarts.init(dom, null, {\n    devicePixelRatio: 2\n})\n</code></pre>\n<p>但是这种方法对电脑性能有很高的要求，所以更多时候我们建议使用 echarts-gl 中的 <a href=\"#mapbox3D.temporalSuperSampling\">temporalSuperSampling</a>，在画面静止后会持续分帧对一个像素多次抖动采样，从而达到超采样抗锯齿的效果。</p>\n",
                 "properties": {
                   "enable": {
                     "type": [
@@ -2614,13 +2614,13 @@
             "type": [
               "Object"
             ],
-            "descriptionCN": "<p>分帧超采样。在开启 <a href=\"#mapbox.postEffect\">postEffect</a> 后，WebGL 默认的 MSAA 会无法使用，所以我们需要自己解决锯齿的问题。</p>\n<p>分帧超采样就是用来解决锯齿的问题，它在画面静止后会持续分帧对一个像素多次抖动采样，从而达到抗锯齿的效果。而且在这个分帧采样的过程中，echarts-gl 也会对 <a href=\"#mapbox.postEffect\">postEffect</a> 中一些需要采样保证效果的特效，例如 <a href=\"#mapbox.postEffect.SSAO\">SSAO</a>, <a href=\"#mapbox.postEffect.depthOfField\">景深</a>，以及阴影进行渐进增强。</p>\n<p>下面是未开启和开启<code>temporalSuperSampling</code>的区别。</p>\n<div class=\"twentytwenty-container\" style=\"width: 800px;\">\n    <img src=\"documents/asset/gl/img/surface-no-taa.png\" width=\"100%\" title=\"No AA\">\n    <img src=\"documents/asset/gl/img/surface-taa.png\" width=\"100%\" title=\"AA\">\n</div>\n",
+            "descriptionCN": "<p>分帧超采样。在开启 <a href=\"#mapbox3D.postEffect\">postEffect</a> 后，WebGL 默认的 MSAA 会无法使用，所以我们需要自己解决锯齿的问题。</p>\n<p>分帧超采样就是用来解决锯齿的问题，它在画面静止后会持续分帧对一个像素多次抖动采样，从而达到抗锯齿的效果。而且在这个分帧采样的过程中，echarts-gl 也会对 <a href=\"#mapbox3D.postEffect\">postEffect</a> 中一些需要采样保证效果的特效，例如 <a href=\"#mapbox3D.postEffect.SSAO\">SSAO</a>, <a href=\"#mapbox3D.postEffect.depthOfField\">景深</a>，以及阴影进行渐进增强。</p>\n<p>下面是未开启和开启<code>temporalSuperSampling</code>的区别。</p>\n<div class=\"twentytwenty-container\" style=\"width: 800px;\">\n    <img src=\"documents/asset/gl/img/surface-no-taa.png\" width=\"100%\" title=\"No AA\">\n    <img src=\"documents/asset/gl/img/surface-taa.png\" width=\"100%\" title=\"AA\">\n</div>\n",
             "properties": {
               "enable": {
                 "type": [
                   "boolean"
                 ],
-                "descriptionCN": "<p>是否开启分帧超采样。默认在开启 <a href=\"#mapbox.postEffect\">postEffect</a> 后也会同步开启。</p>\n",
+                "descriptionCN": "<p>是否开启分帧超采样。默认在开启 <a href=\"#mapbox3D.postEffect\">postEffect</a> 后也会同步开启。</p>\n",
                 "default": "'auto'"
               }
             }
@@ -7092,7 +7092,7 @@
                   ],
                   "descriptionCN": "<p>三维地图 中三维图形的视觉属性，包括颜色，透明度，描边等。</p>\n",
                   "properties": {
-                    "areaColor": {
+                    "color": {
                       "type": [
                         "string",
                         "Function"
@@ -7264,7 +7264,7 @@
                         ],
                         "descriptionCN": "<p>单个区域的样式设置。</p>\n",
                         "properties": {
-                          "areaColor": {
+                          "color": {
                             "type": [
                               "string"
                             ],
@@ -7385,7 +7385,7 @@
                             ],
                             "descriptionCN": "",
                             "properties": {
-                              "areaColor": {
+                              "color": {
                                 "type": [
                                   "string"
                                 ],
@@ -8676,6 +8676,109 @@
               "type": [
                 "Object"
               ],
+              "descriptionCN": "<p><code>polygons3D</code> 用于可视化地图上带有高度信息的多边形数据，常用于建筑群的绘制。下图就是用<code>polygons3D</code>绘制的近 50w 数量的纽约建筑群。</p>\n<p><img width=\"900\" height=\"auto\" src=\"documents/asset/gl/img/polygons3D-ny.jpg\"></p>\n",
+              "properties": {
+                "type": {
+                  "type": [
+                    "string"
+                  ],
+                  "descriptionCN": "",
+                  "default": "'polygons3D'"
+                },
+                "multiPolygon": {
+                  "type": [
+                    "boolean"
+                  ],
+                  "descriptionCN": "<p>是否一个数据包含多个多边形。</p>\n",
+                  "default": true
+                },
+                "itemStyle": {
+                  "type": [
+                    "Object"
+                  ],
+                  "descriptionCN": "<p>图形样式，包括颜色，透明度，描边等。</p>\n",
+                  "properties": {
+                    "color": {
+                      "type": [
+                        "string",
+                        "Function"
+                      ],
+                      "descriptionCN": "<p>图形的颜色。 默认从全局调色盘 <a href=\"http://echarts.baidu.com/option.html#color\" target=\"_blank\">option.color</a> 获取颜色 </p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
+                      "default": "自适应"
+                    },
+                    "opacity": {
+                      "type": [
+                        "number"
+                      ],
+                      "descriptionCN": "<p>图形的不透明度。</p>\n",
+                      "default": 1
+                    }
+                  }
+                },
+                "emphasis": {
+                  "type": [
+                    "Object"
+                  ],
+                  "descriptionCN": "<p>鼠标 hover 高亮时图形和标签的样式</p>\n",
+                  "properties": {
+                    "itemStyle": {
+                      "type": [
+                        "Object"
+                      ],
+                      "descriptionCN": "",
+                      "properties": {
+                        "color": {
+                          "type": [
+                            "string"
+                          ],
+                          "descriptionCN": "<p>图形的颜色。</p>\n<p>除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：</p>\n<pre><code class=\"lang-js\">// 纯白色\n[1, 1, 1, 1]\n</code></pre>\n<p>使用数组表示的时候，每个通道可以设置大于 1 的值用于表示 HDR 的色值。</p>\n",
+                          "default": "自适应"
+                        },
+                        "opacity": {
+                          "type": [
+                            "number"
+                          ],
+                          "descriptionCN": "<p>图形的不透明度。</p>\n",
+                          "default": 1
+                        }
+                      }
+                    }
+                  }
+                },
+                "data": {
+                  "type": [
+                    "Object"
+                  ],
+                  "descriptionCN": "<p>多边形的数据列表。</p>\n<pre><code class=\"lang-js\">data: [{\n    // A square\n    coords: [[0, 0], [100, 0], [100, 100], [0, 100]],\n    // Height\n    height: 3\n}, {\n    // A triangle\n    coords: [[50, 0], [100, 100], [0, 100]],\n    // Height\n    height: 5\n}]\n</code></pre>\n",
+                  "properties": {
+                    "coords": {
+                      "type": [
+                        "Array"
+                      ],
+                      "descriptionCN": "<p>多边形的坐标列表。如果 <a href=\"#series-polygons3D.multiPolygon\">multiPolygon</a> 设成 true，则是包含多个多边形的数组。</p>\n"
+                    }
+                  }
+                },
+                "progressiveThreshold": {
+                  "type": [
+                    "number"
+                  ],
+                  "descriptionCN": "<p>启用渐进渲染的阈值，渐进渲染可以让你在加载画面的过程中不会有阻塞。</p>\n",
+                  "default": 1000
+                },
+                "progressive": {
+                  "type": [
+                    "number"
+                  ],
+                  "descriptionCN": "<p>渐进渲染每次渲染的数据量。</p>\n",
+                  "default": 1000
+                }
+              }
+            },
+            {
+              "type": [
+                "Object"
+              ],
               "descriptionCN": "<p>使用 WebGL 绘制的二维散点/气泡图。</p>\n<p>使用方式同 <a href=\"http://echarts.baidu.com/option.html#series-scatter\" target=\"_blank\">scatter</a>。</p>\n",
               "properties": {
                 "type": {
@@ -8823,6 +8926,20 @@
                   ],
                   "descriptionCN": "<p>组件所在的层。</p>\n<p><code>zlevel</code>用于 Canvas 分层，不同<code>zlevel</code>值的图形会放置在不同的 Canvas 中，Canvas 分层是一种常见的优化手段。我们可以把一些图形变化频繁（例如有动画）的组件设置成一个单独的<code>zlevel</code>。需要注意的是过多的 Canvas 会引起内存开销的增大，在手机端上需要谨慎使用以防崩溃。</p>\n<p><code>zlevel</code> 大的 Canvas 会放在 <code>zlevel</code> 小的 Canvas 的上面。</p>\n<p><strong>注:</strong> echarts-gl 中组件的层需要跟 echarts 中组件的层分开。同一个 zlevel 不能同时用于 WebGL 和 Canvas 的绘制。</p>\n",
                   "default": 10
+                },
+                "progressiveThreshold": {
+                  "type": [
+                    "number"
+                  ],
+                  "descriptionCN": "<p>启用渐进渲染的阈值，渐进渲染可以让你在加载画面的过程中不会有阻塞。</p>\n",
+                  "default": 100000
+                },
+                "progressive": {
+                  "type": [
+                    "number"
+                  ],
+                  "descriptionCN": "<p>渐进渲染每次渲染的数据量。</p>\n",
+                  "default": 100000
                 }
               }
             },
@@ -9167,6 +9284,107 @@
                   ],
                   "descriptionCN": "<p>组件所在的层。</p>\n<p><code>zlevel</code>用于 Canvas 分层，不同<code>zlevel</code>值的图形会放置在不同的 Canvas 中，Canvas 分层是一种常见的优化手段。我们可以把一些图形变化频繁（例如有动画）的组件设置成一个单独的<code>zlevel</code>。需要注意的是过多的 Canvas 会引起内存开销的增大，在手机端上需要谨慎使用以防崩溃。</p>\n<p><code>zlevel</code> 大的 Canvas 会放在 <code>zlevel</code> 小的 Canvas 的上面。</p>\n<p><strong>注:</strong> echarts-gl 中组件的层需要跟 echarts 中组件的层分开。同一个 zlevel 不能同时用于 WebGL 和 Canvas 的绘制。</p>\n",
                   "default": 10
+                }
+              }
+            },
+            {
+              "type": [
+                "Object"
+              ],
+              "descriptionCN": "<p><code>flowGL</code> 组件通过 WebGL 实现的粒子效果可视化向量场的迹线。</p>\n<p>下图是全球的风场通过<code>flowGL</code>可视化后的效果。</p>\n<p><img width=\"700\" height=\"auto\" src=\"documents/asset/gl/img/flowGL-wind.jpg\"></p>\n",
+              "properties": {
+                "type": {
+                  "type": [
+                    "string"
+                  ],
+                  "descriptionCN": "",
+                  "default": "'flowGL'"
+                },
+                "particleDensity": {
+                  "type": [
+                    "number"
+                  ],
+                  "descriptionCN": "<p>粒子的密度，实际的粒子数量是设置数目的平方。粒子密度越大迹线效果越好，但是性能开销也会越大。除了该属性，将 <a href=\"#series-flowGL.particleType\">particleType</a> 也可以得到更加清晰连贯的迹线。</p>\n",
+                  "default": 128
+                },
+                "particleType": {
+                  "type": [
+                    "string"
+                  ],
+                  "descriptionCN": "<p>粒子的类型，默认为点 <code>&#39;point&#39;</code>，可以设置成线 <code>&#39;line&#39;</code>，线类型的粒子会用一条线连接上个运动位置和当前运动位置。会让这个轨迹更加连贯。</p>\n<p>下面是类型分别是<code>&#39;point&#39;</code>和<code>&#39;line&#39;</code>的区别。</p>\n<div class=\"twentytwenty-container\" style=\"width: 700px;\">\n    <img src=\"documents/asset/gl/img/flowGL-point.jpg\" width=\"100%\" title=\"Point\">\n    <img src=\"documents/asset/gl/img/flowGL-line.jpg\" width=\"100%\" title=\"Line\">\n</div>\n",
+                  "default": "'point'"
+                },
+                "particleSize": {
+                  "type": [
+                    "number"
+                  ],
+                  "descriptionCN": "<p>粒子的大小，如果 <a href=\"#series-flowGL.particleType\">particleType</a> 是 <code>&#39;line&#39;</code> 的话则会通过线宽的形式表现。</p>\n",
+                  "default": 1
+                },
+                "particleSpeed": {
+                  "type": [
+                    "number"
+                  ],
+                  "descriptionCN": "<p>粒子的速度，默认为 1。注意在 <a href=\"#series-flowGL.particleType\">particleType</a> 为 <code>&#39;point&#39;</code> 的时候过大的速度会让整个轨迹变得断断续续。</p>\n",
+                  "default": 1
+                },
+                "particleTrail": {
+                  "type": [
+                    "number"
+                  ],
+                  "descriptionCN": "<p>粒子的轨迹长度，数值越大轨迹越长。</p>\n",
+                  "default": 2
+                },
+                "supersampling": {
+                  "type": [
+                    "number"
+                  ],
+                  "descriptionCN": "<p>画面的超采样比率，采用<code>4</code>的超采样可以有效的提高画面的清晰度，减少画面锯齿。但是因为需要处理更多的像素数量，所以也对性能有更高的要求。</p>\n<p>下面分别是没有超采样和超采样值为 4 的区别。</p>\n<div class=\"twentytwenty-container\" style=\"width: 700px;\">\n    <img src=\"documents/asset/gl/img/flowGL-noss.jpg\" width=\"100%\" title=\"No supersampling\">\n    <img src=\"documents/asset/gl/img/flowGL-ss.jpg\" width=\"100%\" title=\"Supersampling=4\">\n</div>\n",
+                  "default": 1
+                },
+                "gridWidth": {
+                  "type": [
+                    "number",
+                    "string"
+                  ],
+                  "descriptionCN": "<p>传入的网格数据的网格宽度数量，<code>flowGL</code> 会根据这个值和 <a href=\"#series-flowGL.gridHeight\">gridHeight</a> 创建存储向量场的浮点纹理，用于粒子的轨迹计算。</p>\n",
+                  "default": "'auto'"
+                },
+                "gridHeight": {
+                  "type": [
+                    "number",
+                    "string"
+                  ],
+                  "descriptionCN": "<p>传入的网格数据的网格高度数量。</p>\n",
+                  "default": "'auto'"
+                },
+                "data": {
+                  "type": [
+                    "Array"
+                  ],
+                  "descriptionCN": "<p>向量场数据，包含向量的位置和向量的方向（包含大小）。<code>flowGL</code> 对数据的存储顺序和没有强制性要求，你甚至可以传入比较稀疏的向量数据。</p>\n<p>如下示例</p>\n<pre><code class=\"lang-js\">data: [\n    // 每个数据项包含四个值，表示位置的 lng, lat 以及相应维度上的速度 sLng, sLat.\n    // 如果是直角坐标系上的话则是表示位置的 x, y 以及相应维度上的速度 sx, sy\n    [0, 0, 1, 1], [1, 0, 1, 1],\n    [0, 1, 1, 1], [1, 1, 1, 1]\n];\n</code></pre>\n<p>默认<code>flowGL</code>会根据规整的网格形数据自动计算 <a href=\"#series-flowGL.gridWidth\">gridWidth</a> 和 <a href=\"#series-flowGL.gridHeight\">gridHeight</a>。但是因为 flowGL 也支持相对稀疏的数据格式，也可以手动指定这两个值。</p>\n"
+                },
+                "itemStyle": {
+                  "type": [
+                    "Object"
+                  ],
+                  "descriptionCN": "<p>向量场迹线的样式。</p>\n",
+                  "properties": {
+                    "color": {
+                      "type": [
+                        "string"
+                      ],
+                      "descriptionCN": "<p>向量场迹线的颜色。更多的是按照上面图中演示的通过<code>visualMap</code>组件去编码向量的大小。</p>\n",
+                      "default": "'#fff'"
+                    },
+                    "opacity": {
+                      "type": [
+                        "number"
+                      ],
+                      "descriptionCN": "<p>向量场迹线的透明度。</p>\n",
+                      "default": 0.8
+                    }
+                  }
                 }
               }
             }
