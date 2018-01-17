@@ -4,7 +4,7 @@
 ## v4.0.0
 <div class="time">2018-01-16</div>
 
-+ [+] **支持最高达千万级数据量渲染**。ECharts4 变更为流式结构，并且配合各种细致的优化，对于大数据量的渲染场景，支持了增量加载数据和渐进渲染。几千万的地理坐标数据就算使用二进制存储也要占上百 MB 的空间，增量加载数据可以支持用户对数据分块后加载，或者使用 WebSocket，从而能很快的渲染出结果并且不会阻塞浏览器。增量加载的例子可以参考使用了 ECharts GL 的 [scatterGL-gps](http://echarts.baidu.com/examples/editor.html?c=scatterGL-gps&gl=1) 和 [linesGL-ny](http://echarts.baidu.com/examples/editor.html?c=linesGL-gps&gl=1)，以及单使用 ECharts 基础库的 [lines-ny](http://echarts.baidu.com/examples/editor.html?c=lines-ny)。对于大数据量下的用户交互，能做到浏览器中的布局重绘等计算不会阻塞连续交互操作（常见如持续的平移缩放等）。其中，ECharts GL 下因 GPU 计算和省去了重布局等操作，会有效果很平滑的效果的交互体验，参见上面的例子。而 ECharts 基础库也使用了渐进渲染来支持交互的无阻塞，参见 [lines-airline](http://echarts.baidu.com/examples/editor.html?c=lines-airline) 和 [lines-airline](http://echarts.baidu.com/examples/editor.html?c=scatter-large) 的缩放平移。
++ [+] **支持最高达千万级数据量渲染**。ECharts4 变更为流式结构，并且配合各种细致的优化，对于大数据量的渲染场景，支持了增量加载数据和渐进渲染。几千万的地理坐标数据就算使用二进制存储也要占上百 MB 的空间，增量加载数据可以支持用户对数据分块后加载，或者使用 WebSocket，从而能很快的渲染出结果并且不会阻塞浏览器。增量加载的例子可以参考使用了 ECharts GL 的 [scatterGL-gps](http://echarts.baidu.com/examples/editor.html?c=scatterGL-gps&gl=1) 和 [linesGL-ny](http://echarts.baidu.com/examples/editor.html?c=linesGL-gps&gl=1)，以及单使用 ECharts 基础库的 [lines-ny](http://echarts.baidu.com/examples/editor.html?c=lines-ny)。对于大数据量下的用户交互，能做到浏览器中的布局重绘等计算不会阻塞连续交互操作（常见如持续的平移缩放等）。其中，ECharts GL 下因 GPU 计算和省去了重布局等操作，会有效果很平滑的效果的交互体验，参见上面的例子。而 ECharts 基础库也使用了渐进渲染来支持交互的无阻塞，参见 [lines-airline](http://echarts.baidu.com/examples/editor.html?c=lines-airline) 和 [scatter-large](http://echarts.baidu.com/examples/editor.html?c=scatter-large) 的缩放平移。
 
 + [+] **zrender SVG 渲染引擎发布，从而支持 Canvas / SVG 双引擎渲染，可进按照场景所需进行切换。例如，SVG 可适用于移动端、单页多图表等场景，Canvas 适用于大数据量、视觉特效需求等场景。Canvas 渲染引擎仍为默认引擎。**
 
