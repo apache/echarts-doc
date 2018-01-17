@@ -10,16 +10,20 @@
 {{ use: partial-label(
     prefix=${prefix} + '##'
 ) }}
-###${prefix} emphasis(Object)
-{{ use: partial-label(
-    prefix=${prefix} + '###'
-) }}
 
 ##${prefix} itemStyle(Object)
 该标域的样式。
 {{ use: partial-item-style(prefix="##" + ${prefix}) }}
-###${prefix} emphasis(Object)
+
+##${prefix} emphasis(Object)
+高亮的标域样式
+###${prefix} label(Object)
+{{ use: partial-label(
+    prefix=${prefix} + '###'
+) }}
+###${prefix} itemStyle
 {{ use: partial-item-style(prefix="###" + ${prefix}) }}
+
 
 ##${prefix} data
 标域的数据数组。每个数组项是一个两个项的数组，分别表示标域左上角和右下角的位置，每个项支持通过下面几种方式指定自己的位置
@@ -150,10 +154,6 @@ data: [
 {{ use: partial-item-style(
     prefix="#"+${prefix}
 ) }}
-##${prefix} emphasis(Object)
-{{ use: partial-item-style(
-    prefix="##"+${prefix}
-) }}
 
 #${prefix} label(Object)
 该数据项标签的样式，起点和终点项的`label`会合并到一起。
@@ -161,7 +161,13 @@ data: [
 {{ use: partial-label(
     prefix='#'+${prefix}
 ) }}
-##${prefix} emphasis(Object)
+
+#${prefix} emphasis(Object)
+##${prefix} itemStyle(Object)
+{{ use: partial-item-style(
+    prefix="##"+${prefix}
+) }}
+##${prefix} label(Object)
 {{ use: partial-label(
     prefix='##'+${prefix}
 ) }}

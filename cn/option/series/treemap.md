@@ -276,8 +276,8 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 )}}
 
 
-#### emphasis
-
+### emphasis
+#### itemStyle(Object)
 {{use: partial-item-style(
     prefix="####",
     name="boxplot",
@@ -289,8 +289,6 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
     defaultShadowOffsetX=0,
     defaultShadowOffsetY=0
 )}}
-
-
 ##### textStyle(Object)
 
 {{use: partial-text-style(
@@ -515,18 +513,6 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
     ellipsis=true
 )}}
 
-
-
-##${prefix} emphasis(Object)
-
-{{use:partial-label(
-    prefix=${prefix} + "##",
-    defaultPosition="'inside'",
-    formatter=true,
-    ellipsis=true
-)}}
-
-
 #${prefix} upperLabel(Object)
 
 `upperLabel` 用于显示矩形的父节点的标签。当 [upperLabel.show](~series-treemap.upperLabel.show) 为 `true` 的时候，『显示父节点标签』功能开启。
@@ -555,17 +541,6 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 父节点标签区的高度。
 
-
-##${prefix} emphasis(Object)
-
-{{use:partial-label(
-    prefix=${prefix} + "##",
-    defaultPosition="'inside'",
-    formatter=true,
-    ellipsis=true
-)}}
-
-
 #${prefix} itemStyle(Object)
 
 {{use: partial-treemap-prop-location-desc(name="itemStyle")}}
@@ -578,13 +553,28 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
     itemStyleType='normal'
 )}}
 
-##${prefix} emphasis(Object)
-
+#${prefix} emphasis(Object)
+##${prefix} label(Object)
+{{use:partial-label(
+    prefix=${prefix} + "##",
+    defaultPosition="'inside'",
+    formatter=true,
+    ellipsis=true
+)}}
+##${prefix} upperLabel(Object)
+{{use:partial-label(
+    prefix=${prefix} + "##",
+    defaultPosition="'inside'",
+    formatter=true,
+    ellipsis=true
+)}}
+##${prefix} itemStyle(Object)
 {{use: partial-treemap-item-style(
     prefix=${prefix} + "##",
     galleryEditorPath=${galleryEditorPath},
     itemStyleType='emphasis'
 )}}
+
 
 {{ use:partial-silent(
     prefix="#"

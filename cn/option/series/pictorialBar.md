@@ -69,11 +69,6 @@
     defaultPosition="'inside'",
     formatter=true
 )}}
-### emphasis(Object)
-{{use:partial-label(
-    prefix="###",
-    formatter=true
-)}}
 
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
@@ -82,7 +77,14 @@
     useColorPalatte=true,
     hasCallback=false
 )}}
-### emphasis(Object)
+## emphasis(Object)
+
+### label(Object)
+{{use:partial-label(
+    prefix="###",
+    formatter=true
+)}}
+### itemStyle(Object)
 {{use:partial-item-style(
     prefix="###"
 )}}
@@ -133,14 +135,16 @@
     prefix="###",
     defaultPosition="inside"
 ) }}
-#### emphasis(Object)
-{{ use:partial-label(prefix="####") }}
-
 ### itemStyle(Object)
 {{use:partial-item-style(
     prefix="###"
 )}}
-#### emphasis(Object)
+
+
+### emphasis(Object)
+#### label(Object)
+{{ use:partial-label(prefix="####") }}
+#### itemStyle(Object)
 {{use:partial-item-style(
     prefix="####"
 )}}

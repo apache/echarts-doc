@@ -62,12 +62,6 @@
     position=true,
     formatter=true
 )}}
-### emphasis(Object)
-{{use:partial-pie-label(
-    prefix="###",
-    position=false,
-    formatter=true
-)}}
 
 ## labelLine(Object)
 标签的视觉引导线样式，在 [label 位置](~series-pie.label.position) 设置为`'outside'`的时候会显示视觉引导线。
@@ -80,7 +74,16 @@
     useColorPalatte=true,
     hasCallback=true
 )}}
-### emphasis(Object)
+
+## emphasis(Object)
+高亮的扇区和标签样式。
+### label(Object)
+{{use:partial-pie-label(
+    prefix="###",
+    position=false,
+    formatter=true
+)}}
+### itemStyle(Object)
 {{ use:partial-item-style(prefix="###") }}
 
 {{use: component-circular-layout(
@@ -106,12 +109,6 @@
     position=true,
     formatter=false
 )}}
-#### emphasis(Object)
-{{use:partial-pie-label(
-    prefix="####",
-    position=false,
-    formatter=false
-)}}
 
 ### labelLine(Object)
 {{ use: partial-pie-label-line(prefix='###') }}
@@ -119,7 +116,15 @@
 ### itemStyle(Object)
 {{use:partial-item-style-desc}}
 {{use:partial-item-style(prefix="###")}}
-#### emphasis(Object)
+
+### emphasis(Object)
+#### label(Object)
+{{use:partial-pie-label(
+    prefix="####",
+    position=false,
+    formatter=false
+)}}
+#### itemStyle(Object)
 {{use:partial-item-style(prefix="####")}}
 
 {{use: partial-tooltip-in-series-data(

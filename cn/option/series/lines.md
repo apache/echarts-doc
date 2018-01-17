@@ -98,15 +98,17 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 #### curveness(number) = 0
 边的曲度，支持从 0 到 1 的值，值越大曲度越大。
 
-### emphasis(Object)
-{{ use: partial-line-style(
-    prefix='###'
-) }}
-
 ## label(Object)
 标签相关配置。在 [polyline](~series-lines.polyline) 设置为 `true` 时无效。
 {{ use: lines-label(prefix="##")}}
-### emphasis(Object)
+
+## emphasis(Object)
+高亮的线条和标签样式。
+### lineStyle(Object)
+{{ use: partial-line-style(
+    prefix='###'
+) }}
+### label(Object)
 {{ use: lines-label(prefix="###") }}
 
 ## data(Array)
@@ -149,19 +151,20 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
     prefix="###",
     hasCurveness=true
 ) }}
-#### emphasis(Object)
-{{ use: partial-line-style(
-    prefix="####",
-    hasCurveness=true
-) }}
-
 
 ### label(Object)
 单个数据（单条线）的标签设置。在 [polyline](~series-lines.polyline) 设置为 `true` 时无效。
 {{ use: lines-label(
     prefix="###"
 ) }}
-#### emphasis(Object)
+
+### emphasis(Object)
+#### lineStyle(Object)
+{{ use: partial-line-style(
+    prefix="####",
+    hasCurveness=true
+) }}
+#### label(Object)
 {{ use: lines-label(
     prefix="####"
 ) }}

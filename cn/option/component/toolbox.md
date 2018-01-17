@@ -12,7 +12,10 @@ ${name} icon 样式设置。
 文本位置，`'left'` / `'right'` / `'top'` / `'bottom'`。
 ##${prefix} textAlign(string)
 文本对齐方式，`'left'` / `'right'`。
-##${prefix} emphasis(Object)
+
+
+#${prefix} emphasis(Object)
+##${prefix} iconStyle(Object)
 {{ use: partial-item-style(prefix="##" + ${prefix}) }}
 
 

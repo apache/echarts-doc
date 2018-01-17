@@ -37,6 +37,27 @@
 ## maxOpacity(number) = 1
 最大的透明度，在地理坐标系([coordinateSystem](~series-heatmap.coordinateSystem): 'geo')上有效。
 
+## label(Object)
+在直角坐标系([coordinateSystem](~series-heatmap.coordinateSystem): 'cartesian2d')上有效。
+{{ use:partial-label(
+    prefix="##",
+    defaultPosition="inside"
+) }}
+
+## itemStyle(Object)
+样式设置，在直角坐标系([coordinateSystem](~series-heatmap.coordinateSystem): 'cartesian2d')上有效。
+{{use:partial-item-style(prefix="##")}}
+
+
+## emphasis(Object)
+
+### itemStyle(Object)
+{{use:partial-item-style(prefix="###")}}
+### label(Object)
+{{use:partial-label(prefix="###",
+    defaultPosition="inside"
+)}}
+
 ## data(Array)
 
 {{ use: partial-2d-data-desc(
@@ -55,14 +76,21 @@
     prefix="###",
     defaultPosition="inside"
 ) }}
-#### emphasis(Object)
-{{ use:partial-label(prefix="####") }}
 
 ### itemStyle(Object)
 单个数据点的样式设置，在直角坐标系([coordinateSystem](~series-heatmap.coordinateSystem): 'cartesian2d')上有效。
 {{use:partial-item-style(prefix="###")}}
-#### emphasis(Object)
+
+
+### emphasis(Object)
+
+#### itemStyle(Object)
 {{use:partial-item-style(prefix="####")}}
+
+#### label(Object)
+{{use:partial-label(prefix="####",
+    defaultPosition="inside"
+)}}
 
 {{use: partial-marker(
     prefix="#",

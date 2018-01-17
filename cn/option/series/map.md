@@ -65,34 +65,35 @@
 该数据所在区域的多边形样式设置
 #### areaColor(Color)
 地图区域的颜色。
-{{ use: partial-item-style(prefix='####') }}
-#### emphasis(Object)
-##### areaColor(Color)
-地图区域的颜色。
-{{ use: partial-item-style(prefix='####') }}
+{{ use: partial-item-style(prefix='###') }}
 
-{{use: partial-tooltip-in-series-data(
-    galleryViewPath=${galleryViewPath}
-)}}
-
-
-## label(Object)
+### label(Object)
 {{use: partial-label-desc}}
 {{use: partial-label(
-    prefix="##",
+    prefix="###",
     defaultPosition="'bottom'",
     formatter=true,
     noAlign=true,
     noVerticalAlign=true
 )}}
+
 ### emphasis(Object)
+该数据所在区域的多边形高亮样式设置
+#### itemStyle(Object)
+##### areaColor(Color)
+地图区域的颜色。
+{{ use: partial-item-style(prefix='####') }}
+#### label(Object)
 {{use: partial-label(
-    prefix="###",
+    prefix="####",
     formatter=true,
     noAlign=true,
     noVerticalAlign=true
 )}}
 
+{{use: partial-tooltip-in-series-data(
+    galleryViewPath=${galleryViewPath}
+)}}
 
 {{use: partial-marker(
     prefix="#",

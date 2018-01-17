@@ -65,11 +65,6 @@
     defaultPosition="'right'",
     formatter1d=true
 )}}
-### emphasis(Object)
-{{use:partial-label(
-    prefix="###",
-    formatter1d=true
-)}}
 
 ## itemStyle(Object)
 
@@ -81,15 +76,23 @@
     defaultBorderWidth=1,
     defaultBorderColor="'#aaa'"
 )}}
-### emphasis(Object)
-{{use: partial-item-style(prefix="###")}}
-
 
 ## lineStyle(Object)
 桑基图边的样式，其中 [lineStyle.color](~series-sankey.lineStyle.color) 支持设置为`'source'`或者`'target'`特殊值，此时边会自动取源节点或目标节点的颜色作为自己的颜色。
 
 {{use: partial-sankey-line-style(prefix="##")}}
-### emphasis(Object)
+
+
+## emphasis(Object)
+桑基图的高亮样式设置。
+### label(Object)
+{{use:partial-label(
+    prefix="###",
+    formatter1d=true
+)}}
+### itemStyle(Object)
+{{use: partial-item-style(prefix="###")}}
+### lineStyle(Object)
 {{use: partial-sankey-line-style(
     prefix="###"
 )}}
@@ -105,15 +108,17 @@
 ### itemStyle(Object)
 该节点的样式。
 {{use:partial-item-style(prefix="###", useColorPalatte=true)}}
-#### emphasis(Object)
-{{use:partial-item-style(prefix="####")}}
 
 ### label(Object)
 该节点标签的样式。
 {{ use:partial-label(
     prefix="###"
 ) }}
-#### emphasis(Object)
+
+### emphasis(Object)
+#### itemStyle(Object)
+{{use:partial-item-style(prefix="####")}}
+#### label(Object)
 {{ use:partial-label(
     prefix="####"
 ) }}
@@ -148,7 +153,8 @@ links: [{
 {{use:partial-sankey-line-style(
     prefix="###"
 )}}
-#### emphasis(Object)
+### emphasis(Object)
+#### lineStyle(Object)
 {{ use:partial-sankey-line-style(
     prefix="####"
 ) }}
