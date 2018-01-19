@@ -1,6 +1,3 @@
-## v4.0.0
-<div class="time">2018-01-16</div>
-
 ## v4.0.2
 <div class="time">2018-01-18</div>
 
@@ -14,9 +11,28 @@
 ## v4.0.1
 <div class="time">2018-01-17</div>
 
-
 ## v4.0.0
 <div class="time">2018-01-16</div>
+
++ [+] Supported to render up to **tens millions of data** directly。ECharts4 has upgrade to stream architecture, and along with detailed optimization, it has supported to render incrementally loaded data and support progressive rendering.
+    + Ten millions of GIS data probably take up to about hundreds MB of space. In this case chunked data loading or WebStock is required for the purpose of display graphics as soon as possible and not blocking the browser while processing loaded data. The samples of incremental data loading can be checked here: [scatterGL-gps](https://ecomfe.github.io/echarts-examples/public/editor.html?c=scatterGL-gps&gl=1) and [linesGL-ny](https://ecomfe.github.io/echarts-examples/public/editor.html?c=linesGL-ny&gl=1), who use ECharts GL, and [lines-ny](https://ecomfe.github.io/echarts-examples/public/editor.html?c=lines-ny), who only uses ECharts.
+    + Supported the human interactions in the big data scenario, where continuous interactions (e.g., roam in geo and cartesian) will not block the browser. Benefit from the using of GPU and avoiding of layout recalculation, ECharts GL provides smooth interactions, which has been demonstrated in the examples above. Without WebGL, the basic ECharts implements progressive rendering to support non-blocking interaction, which can be checked at the pan and zoom in [lines-airline](https://ecomfe.github.io/echarts-examples/public/editor.html?c=lines-airline) and [scatter-large](https://ecomfe.github.io/echarts-examples/public/editor.html?c=scatter-large).
+
++ [+] **Published ZRender SVG Rendering Engine** as an alternative backend of ECharts besides the existing Canvas Rendering Engine. The choice of rendering engine usually depends on the scenario, for example, benefit from the low memory cost, SVG Rendering Engine is suitable for mobile device, or the case that many ECharts instances exists in a single page, while the Canvas Rendering Engine is suitable for big data rendering or when visual effects required. Canvas Rendering Engine is default rendering engine. See [zrender](https://github.com/ecomfe/zrender).
+
++ [+] **Published Sunburst Chart** to visualize hierarchical data efficiently with excellent interactions. See [examples] and (excellent) and [docs](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-sunburst)。
+
++ [+] **Published [dataset](http://echarts.baidu.com/tutorial.html#%E6%95%B0%E6%8D%AE%E9%9B%86%EF%BC%88dataset%EF%BC%89) component** to support data based configuration, visual encoding and data sharing in different series.
+
++ [+] **Supported WAI-ARIA (the Accessible Rich Internet Applications Suite）** to help the disabled people to access the data visualization in web.
+
++ [+] Since ECharts4, the options `label` and `itemStyle` has been flattened. The original level of `normal` is not needed any more, which make ECharts option more neat. As always, **The previous option style in ECharts3 is still be compatible**.
+
++ [+] Added two color themes, named 'light' and 'dark'. Apply them by `echarts.init(dom, themeName);`.
+
++ [+] Supported that auto collect legend names when [legend.data](https://ecomfe.github.io/echarts-doc/public/en/option.html#legend.data) is not specified.
+
++ [+] Supported that auto collect category names when `axis.type` is `'category'` and [axis.data](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.data) is not specified.
 
 
 ## v3.8.4

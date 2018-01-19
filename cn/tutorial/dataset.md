@@ -166,45 +166,6 @@ option = {
 ~[800x600](${galleryViewPath}dataset-series-layout-by&edit=1&reset=1)
 
 
-更重要的是，我们可以使用 `encode` 配置项来更细节得指定数据如何映射到图形。总体是这样的感觉：
-
-```js
-var option = {
-    dataset: {
-        source: [
-            ['score', 'amount', 'product'],
-            [89.3, 58212, 'Matcha Latte'],
-            [57.1, 78254, 'Milk Tea'],
-            [74.4, 41032, 'Cheese Cocoa'],
-            [50.1, 12755, 'Cheese Brownie'],
-            [89.7, 20145, 'Matcha Cocoa'],
-            [68.1, 79146, 'Tea'],
-            [19.6, 91852, 'Orange Juice'],
-            [10.6, 101852, 'Lemon Juice'],
-            [32.7, 20112, 'Walnut Brownie']
-        ]
-    },
-    xAxis: {},
-    yAxis: {type: 'category'},
-    series: [
-        {
-            type: 'bar',
-            encode: {
-                // 将 "amount" 列映射到 X 轴。
-                x: 'amount',
-                // 将 "product" 列映射到 Y 轴。
-                y: 'product'
-            }
-        }
-    ]
-};
-```
-
-效果如下：
-
-~[500x300](${galleryViewPath}doc-example/dataset-encode-simple0&edit=1&reset=1)
-
-
 
 <br>
 
@@ -275,7 +236,46 @@ var option2 = {
 
 **数据到图形的映射（encode）**
 
-了解了维度的概念后，我们就可以使用 `encode` 来做映射。`encode` 声明的基本结构如下，其中冒号左边是坐标系、标签等特定名称，如 `'x'`, `'y'`, `'tooltip'` 等，冒号右边是数据中的维度名（string 格式）或者维度的序号（number 格式，从 0 开始计数），可以指定一个或多个维度（使用数组）。通常情况下，下面各种信息不需要所有的都写，按需写即可。
+了解了维度的概念后，我们就可以使用 `encode` 来做映射。总体是这样的感觉：
+
+```js
+var option = {
+    dataset: {
+        source: [
+            ['score', 'amount', 'product'],
+            [89.3, 58212, 'Matcha Latte'],
+            [57.1, 78254, 'Milk Tea'],
+            [74.4, 41032, 'Cheese Cocoa'],
+            [50.1, 12755, 'Cheese Brownie'],
+            [89.7, 20145, 'Matcha Cocoa'],
+            [68.1, 79146, 'Tea'],
+            [19.6, 91852, 'Orange Juice'],
+            [10.6, 101852, 'Lemon Juice'],
+            [32.7, 20112, 'Walnut Brownie']
+        ]
+    },
+    xAxis: {},
+    yAxis: {type: 'category'},
+    series: [
+        {
+            type: 'bar',
+            encode: {
+                // 将 "amount" 列映射到 X 轴。
+                x: 'amount',
+                // 将 "product" 列映射到 Y 轴。
+                y: 'product'
+            }
+        }
+    ]
+};
+```
+
+效果如下：
+
+~[500x300](${galleryViewPath}doc-example/dataset-encode-simple0&edit=1&reset=1)
+
+
+`encode` 声明的基本结构如下，其中冒号左边是坐标系、标签等特定名称，如 `'x'`, `'y'`, `'tooltip'` 等，冒号右边是数据中的维度名（string 格式）或者维度的序号（number 格式，从 0 开始计数），可以指定一个或多个维度（使用数组）。通常情况下，下面各种信息不需要所有的都写，按需写即可。
 
 ```js
 // 例如在直角坐标系（grid/cartesian）中：
@@ -372,7 +372,7 @@ series: {
 
 答：
 关于标签的显示（`label.formatter`），现在支持使用这样的语法：
-`'aaa{@product}bbb{@score}ccc{@[4]}ddd'` 来引用某个具体的维度值。其中 `'{@score}'` 表示因为 “名为 score” 的维度里的值，`'{@[4]}'` 表示引用序号为 4 的维度里的值。参见 [???]
+`'aaa{@product}bbb{@score}ccc{@[4]}ddd'` 来引用某个具体的维度值。其中 `'{@score}'` 表示因为 “名为 score” 的维度里的值，`'{@[4]}'` 表示引用序号为 4 的维度里的值。
 
 ```js
 series: [{
