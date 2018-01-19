@@ -188,6 +188,12 @@
             ],
             "descriptionCN": "<pre><code class=\"lang-js\">(opts: {\n    // 导出的格式，可选 png, jpeg\n    type?: string,\n    // 导出的图片分辨率比例，默认为 1。\n    pixelRatio?: number,\n    // 导出的图片背景色，默认使用 option 里的 backgroundColor\n    backgroundColor?: string,\n    // 忽略组件的列表，例如要忽略 toolbox 就是 [&#39;toolbox&#39;]\n    excludeComponents?: Array.&lt;string&gt;\n}) =&gt; string\n</code></pre>\n<p>导出联动的图表图片，返回一个 base64 的 url，可以设置为<code>Image</code>的<code>src</code>。导出图片中每个图表的相对位置跟容器的相对位置有关。</p>\n"
           },
+          "appendData": {
+            "type": [
+              "*"
+            ],
+            "descriptionCN": "<pre><code class=\"lang-js\">(opts: {\n    // 要增加数据的系列序号。\n    seriesIndex?: string,\n    // 增加的数据。\n    data?: Array|TypedArray,\n}) =&gt; string\n</code></pre>\n<p>此接口用于，在大数据量（百万以上）的渲染场景，分片加载数据和增量渲染。在大数据量的场景下（例如地理数的打点），就算数据使用二进制格式，也会有几十或上百兆，在互联网环境下，往往需要分片加载。<code>appendData</code> 接口提供了分片加载后增量渲染的能力，渲染新加如的数据块时不会清除原有已经渲染的部分。</p>\n<p>注意：</p>\n<ul>\n<li>现在不支持 <a href=\"option.html#series\" target=\"_blank\">系列（series）</a> 使用 <a href=\"option.html#dataset\" target=\"_blank\">dataset</a> 同时使用 <code>appendData</code>，只支持系列使用自己的 <a href=\"option.html#series.data\" target=\"_blank\">series.data</a> 时使用 <code>appendData</code>。</li>\n<li>目前并非所有的图表都支持分片加载时的增量渲染。目前支持的图有：ECharts 基础版本的 <a href=\"option.html#series-scatter\" target=\"_blank\">散点图（scatter）</a> 和 <a href=\"option-gl.html#series-linesGL\" target=\"_blank\">线图（lines）</a>。ECharts GL 的 <a href=\"option-gl.html#series-scatterGL\" target=\"_blank\">散点图（scatterGL）</a>、<a href=\"option-gl.html#series-lines3D\" target=\"_blank\">线图（linesGL）</a> 和 <a href=\"ooption-gl.html#series-polygons3D\" target=\"_blank\">可视化建筑群（polygons3D）</a>。</li>\n</ul>\n"
+          },
           "clear": {
             "type": [
               "*"

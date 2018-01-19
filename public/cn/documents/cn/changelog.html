@@ -1,3 +1,14 @@
+<h2 id="v4-0-2">v4.0.2</h2>
+<div class="time">2018-01-18</div>
+
+<ul>
+<li><p>[^] 修复了可滚动图例（<code>legend.type: &#39;scroll&#39;</code>）导致重影的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/7502">#7502</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="option.html#series-pie">饼图（pie）</a> 中数据项设置 <code>selected</code> 无效的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/7515">#7515</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="option.html#timeline.controlStyle.showNextBtn">时间线播放组件的播放按钮</a> 不能隐去的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/7506">#7506</a>。</p>
+</li>
+</ul>
 <h2 id="v4-0-1">v4.0.1</h2>
 <div class="time">2018-01-17</div>
 
@@ -5,7 +16,7 @@
 <div class="time">2018-01-16</div>
 
 <ul>
-<li><p>[+] <strong>支持最高达千万级数据量渲染</strong>。ECharts4 变更为流式结构，并且配合各种细致的优化，对于大数据量的渲染场景，支持了增量加载数据和渐进渲染。几千万的地理坐标数据就算使用二进制存储也要占上百 MB 的空间，增量加载数据可以支持用户对数据分块后加载，或者使用 WebSocket，从而能很快的渲染出结果并且不会阻塞浏览器。增量加载的例子可以参考使用了 ECharts GL 的 <a href="http://echarts.baidu.com/examples/editor.html?c=scatterGL-gps&amp;gl=1">scatterGL-gps</a> 和 <a href="http://echarts.baidu.com/examples/editor.html?c=linesGL-gps&amp;gl=1">linesGL-ny</a>，以及单使用 ECharts 基础库的 <a href="http://echarts.baidu.com/examples/editor.html?c=lines-ny">lines-ny</a>。对于大数据量下的用户交互，能做到浏览器中的布局重绘等计算不会阻塞连续交互操作（常见如持续的平移缩放等）。其中，ECharts GL 下因 GPU 计算和省去了重布局等操作，会有效果很平滑的效果的交互体验，参见上面的例子。而 ECharts 基础库也使用了渐进渲染来支持交互的无阻塞，参见 <a href="http://echarts.baidu.com/examples/editor.html?c=lines-airline">lines-airline</a> 和 <a href="http://echarts.baidu.com/examples/editor.html?c=scatter-large">lines-airline</a> 的缩放平移。</p>
+<li><p>[+] <strong>支持最高达千万级数据量渲染</strong>。ECharts4 变更为流式结构，并且配合各种细致的优化，对于大数据量的渲染场景，支持了增量加载数据和渐进渲染。几千万的地理坐标数据就算使用二进制存储也要占上百 MB 的空间，增量加载数据可以支持用户对数据分块后加载，或者使用 WebSocket，从而能很快的渲染出结果并且不会阻塞浏览器。增量加载的例子可以参考使用了 ECharts GL 的 <a href="http://echarts.baidu.com/examples/editor.html?c=scatterGL-gps&amp;gl=1">scatterGL-gps</a> 和 <a href="http://echarts.baidu.com/examples/editor.html?c=linesGL-gps&amp;gl=1">linesGL-ny</a>，以及单使用 ECharts 基础库的 <a href="http://echarts.baidu.com/examples/editor.html?c=lines-ny">lines-ny</a>。对于大数据量下的用户交互，能做到浏览器中的布局重绘等计算不会阻塞连续交互操作（常见如持续的平移缩放等）。其中，ECharts GL 下因 GPU 计算和省去了重布局等操作，会有效果很平滑的效果的交互体验，参见上面的例子。而 ECharts 基础库也使用了渐进渲染来支持交互的无阻塞，参见 <a href="http://echarts.baidu.com/examples/editor.html?c=lines-airline">lines-airline</a> 和 <a href="http://echarts.baidu.com/examples/editor.html?c=scatter-large">scatter-large</a> 的缩放平移。</p>
 </li>
 <li><p>[+] <strong>zrender SVG 渲染引擎发布，从而支持 Canvas / SVG 双引擎渲染，可进按照场景所需进行切换。例如，SVG 可适用于移动端、单页多图表等场景，Canvas 适用于大数据量、视觉特效需求等场景。Canvas 渲染引擎仍为默认引擎。</strong></p>
 </li>

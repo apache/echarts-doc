@@ -1,3 +1,12 @@
+## v4.0.2
+<div class="time">2018-01-18</div>
+
++ [^] 修复了可滚动图例（`legend.type: 'scroll'`）导致重影的问题。参见 [#7502](https://github.com/ecomfe/echarts/issues/7502)。
+
++ [^] 修复了 [饼图（pie）](option.html#series-pie) 中数据项设置 `selected` 无效的问题。参见 [#7515](https://github.com/ecomfe/echarts/issues/7515)。
+
++ [^] 修复了 [时间线播放组件的播放按钮](option.html#timeline.controlStyle.showNextBtn) 不能隐去的问题。参见 [#7506](https://github.com/ecomfe/echarts/issues/7506)。
+
 ## v4.0.1
 <div class="time">2018-01-17</div>
 
