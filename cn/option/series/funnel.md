@@ -85,6 +85,8 @@
     defaultBottom=60
 ) }}
 
+{{ use: partial-seriesLayoutBy }}
+
 {{ use: partial-datasetIndex }}
 
 ## data(Array)

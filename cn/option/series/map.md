@@ -49,6 +49,8 @@
 ## roam(boolean|string) = false
 {{ use: partial-roam }}
 
+{{ use: partial-seriesLayoutBy }}
+
 {{ use: partial-datasetIndex }}
 
 ## data(Array)

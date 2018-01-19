@@ -84,6 +84,8 @@
     prefix="#"
 )}}
 
+{{ use: partial-seriesLayoutBy }}
+
 {{ use: partial-datasetIndex }}
 
 ## data(Array)

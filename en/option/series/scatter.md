@@ -81,6 +81,8 @@ The threshold enabling the drawing optimization.
     prefix="#"
 )}}
 
+{{ use: partial-seriesLayoutBy }}
+
 {{ use: partial-datasetIndex }}
 
 ## data(Array)

@@ -97,6 +97,7 @@
     hasCallback=true
 )}}
 
+{{ use: partial-seriesLayoutBy }}
 
 {{ use: partial-datasetIndex }}
 

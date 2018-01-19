@@ -92,6 +92,8 @@
 )}}
 可以将内半径设大显示成圆环图（Donut chart）。
 
+{{ use: partial-seriesLayoutBy }}
+
 {{ use: partial-datasetIndex }}
 
 ## data(Array)

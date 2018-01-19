@@ -350,6 +350,8 @@ renderItem 函数的第二个参数。
     prefix="#"
 )}}
 
+{{ use: partial-seriesLayoutBy }}
+
 {{ use: partial-datasetIndex }}
 
 ## data(Array)

@@ -25,6 +25,16 @@ formatter: '{b}: {@score}'
 {{ use: partial-formatter-params-structure() }}。
 
 
+{{ target: partial-seriesLayoutBy }}
+
+## seriesLayoutBy(string) = 'column'
+
+当使用 [dataset](~dataset) 时，`seriesLayoutBy` 指定了 `dataset` 中用行还是列对应到系列上，也就是说，系列“排布”到 `dataset` 的行还是列上。可取值：
+
++ 'column'：默认，`dataset` 的列对应于系列，从而 `dataset` 中每一列是一个维度（dimension）。
++ 'row'：`dataset` 的行对应于系列，从而 `dataset` 中每一行是一个维度（dimension）。
+
+参见这个 [示例](http://echarts.baidu.com/examples/editor.html?c=dataset-series-layout-by&theme=lite)
 
 {{ target: partial-datasetIndex }}
 

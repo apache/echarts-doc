@@ -92,6 +92,8 @@ The style of visual guide line. Will show when [label position](~series-pie.labe
 )}}
 You can set a large inner radius for a Donut chart.
 
+{{ use: partial-seriesLayoutBy }}
+
 {{ use: partial-datasetIndex }}
 
 ## data(Array)

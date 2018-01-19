@@ -27,6 +27,19 @@ where `params` is the single dataset needed by formatter, which is formed as:
 {{ use: partial-formatter-params-structure(extra = ${extra}) }}
 
 
+
+{{ target: partial-seriesLayoutBy }}
+
+## seriesLayoutBy(string) = 'column'
+
+When [dataset](~dataset) is used, `seriesLayoutBy` specifies whether the column or the row of `dataset` is mapped to the series, namely, the series is "layout" on columns or rows. Optional values:
+
++ 'column': by default, the columns of `dataset` are mapped the series. In this case, each column represents a dimension.
++ 'row'：the rows of `dataset` are mapped to the series. In this case, each row represents a dimension.
+
+Check this [example](https://ecomfe.github.io/echarts-examples/public/editor.html?c=dataset-series-layout-by).
+
+
 {{ target: partial-datasetIndex }}
 
 ## datasetIndex(number) = 0

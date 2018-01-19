@@ -64,6 +64,9 @@ Name of stack. On the same category axis, the series with the same `stack` name 
     prefix="#"
 )}}
 
+{{ use: partial-seriesLayoutBy }}
+
+{{ use: partial-datasetIndex }}
 
 ## data(Array)
 
