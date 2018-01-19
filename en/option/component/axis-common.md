@@ -396,6 +396,11 @@ Base of logarithm, which is valid only for numeric axes with [type](~${component
 
 Category data, available in [type](~${componentType}.type): 'category' axis.
 
+If [type](~${componentType}.type) is not specified, but `axis.data` is specified, the [type](~${componentType}.type) is auto set as `'category'`.
+
+If [type](~${componentType}.type) is specified as `'category'`, but `axis.data` is not specified, `axis.data` will be auto collected from [series.data](~series.data). It brings convenience, but we should notice that `axis.data` provides then value range of the `'category'` axis. If  it is auto collected from [series.data](~series.data), Only the values appearing in [series.data](~series.data) can be collected. For example, if [series.data](~series.data) is empty, nothing will be collected.
+
+
 Example:
 
 ```js
