@@ -18,10 +18,10 @@
     value: number|Array,
     // 数据图形的颜色
     color: string,
-{{ for: ${extra} as ${obj}, ${name} }}
+{{ for: ${extra} as ${obj}, ${name} }}{{ if: ${extra}.hasOwnProperty(${name}) }}
     // ${obj.desc}
     ${name}: ${obj.type},
-{{ /for }}
+{{ /if }}{{ /for }}
 }
 ```
 {{ /target }}
