@@ -4,7 +4,7 @@
 
 浏览器端图表库大多会选择 SVG 或者 Canvas 进行渲染。对于绘制图表来说，这两种技术往往是可替换的，效果相近。但是在一些场景中，他们的表现和能力又有一定差异。于是，对它们的选择取舍，就成为了一个一直存在的不易有标准答案的话题。
 
-ECharts 从初始一直使用 Canvas 绘制图表（除了对 IE8- 使用 VML）。而 [ECharts v3.8](https://github.com/ecomfe/echarts/releases) 发布了 SVG 渲染器（beta 版），从而提供了一种新的选择。只须在初始化一个图表实例时，设置 [renderer 参数](http://echarts.baidu.com/api.html#echarts.init) 为 `'canvas'` 或 `'svg'` 即可指定渲染器，比较方便。
+ECharts 从初始一直使用 Canvas 绘制图表（除了对 IE8- 使用 VML）。而 [ECharts v4.0](https://github.com/ecomfe/echarts/releases) 发布了 SVG 渲染器，从而提供了一种新的选择。只须在初始化一个图表实例时，设置 [renderer 参数](http://echarts.baidu.com/api.html#echarts.init) 为 `'canvas'` 或 `'svg'` 即可指定渲染器，比较方便。
 
 > SVG 和 Canvas 这两种使用方式差异很大的技术，能够做到同时被透明支持，主要归功于 ECharts 底层库 [ZRender](https://github.com/ecomfe/zrender) 的抽象和实现，形成可互换的 SVG 渲染器和 Canvas 渲染器。
 
@@ -25,7 +25,7 @@ ECharts 从初始一直使用 Canvas 绘制图表（除了对 IE8- 使用 VML）
 我们强烈欢迎开发者们 [反馈](https://github.com/ecomfe/echarts/issues/new) 给我们使用的体验和场景，帮助我们更好的做优化。
 
 
-注：目前的 SVG beta 版中，富文本、阴影、材质功能尚未实现。
+注：除了某些特殊的渲染可能依赖 Canvas：如[炫光尾迹特效](http://echarts.baidu.com/option.html#series-lines.effect)、[带有混合效果的热力图](http://echarts.baidu.com/examples/editor.html?c=heatmap-bmap)等，绝大部分功能 SVG 都是支持的。此外，目前的 SVG 版中，富文本、材质功能尚未实现。
 
 
 ## 如何使用渲染器
