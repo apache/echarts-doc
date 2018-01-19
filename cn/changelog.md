@@ -33,7 +33,11 @@
 
 + [+] 支持类目轴（`axis.type: 'category'`）中 [axis.data](http://echarts.baidu.com/option.html#xAxis.data) 不指定时，自动根据数据生成。
 
+[Break Changes]:
 
+总体而言，ECharts4 兼容之前的各种 option 和 API，除了以下这些细节：
+
++ 当第二次（或第三、四、... 次）调用 `chart.setOption(option);` 时（merge 模式），如果 option.series 中没有设置 `type` 属性，并且此 option 会 merge 到 type 为 `graph`，`gauge` 或者 `treemap` 的系列时，ECharts 2/3 的已被废弃的配置方式（如 itemStyle.normal 等）不会被兼容。当然，这种场景并不常见。
 
 
 
