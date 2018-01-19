@@ -76,6 +76,7 @@ The visual guide line style of label. When [label position](~series-funnel.label
     defaultBottom=60
 ) }}
 
+{{ use: partial-datasetIndex }}
 
 ## data(Array)
 {{ use: partial-1d-data-desc }}

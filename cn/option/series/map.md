@@ -49,6 +49,8 @@
 ## roam(boolean|string) = false
 {{ use: partial-roam }}
 
+{{ use: partial-datasetIndex }}
+
 ## data(Array)
 {{ use: partial-1d-data-desc(name="地图") }}
 

@@ -98,6 +98,8 @@
 )}}
 
 
+{{ use: partial-datasetIndex }}
+
 ## data(Array)
 
 {{ use: partial-2d-data-desc(

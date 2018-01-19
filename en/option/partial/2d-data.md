@@ -1,14 +1,20 @@
 {{ target: partial-2d-data-label-formatter }}
 
-Data label formatter, which supoports string template and callback function. In either form, `\n` is supported to represent a new line.
+Data label formatter, which supports string template and callback function. In either form, `\n` is supported to represent a new line.
+
 
 **String template**
 
-Model variation includes `{a}`, `{b}`, `{c}`, representing series name, date name, data value respectively.
+Model variation includes:
++ `{a}`: series name.
++ `{b}`: the name of a data item.
++ `{c}`: the value of a data item.
++ `{@xxx}: the value of a dimension named `'xxx'`, for example, `{@product}` refers the value of `'product'` dimension。
++ `{@[n]}: the value of a dimension at the index of `n`, for example, `{@[3]}` refers the value at dimensions[3].
 
 **example: **
 ```js
-formatter: '{b}: {c}'
+formatter: '{b}: {@score}'
 ```
 
 **Callback function**
@@ -20,6 +26,12 @@ Callback function is in form of:
 where `params` is the single dataset needed by formatter, which is formed as:
 {{ use: partial-formatter-params-structure(extra = ${extra}) }}
 
+
+{{ target: partial-datasetIndex }}
+
+## datasetIndex(number) = 0
+
+If [series.data](~series.data) is not specified, and [dataset](~dataset) exists, the series will use `dataset`. `datasetIndex` specifies which dataset will be used.
 
 
 

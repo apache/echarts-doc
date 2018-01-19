@@ -352,6 +352,7 @@ For example:
     prefix="#"
 )}}
 
+{{ use: partial-datasetIndex }}
 
 ## data(Array)
 

@@ -3,12 +3,16 @@
 标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 `\n` 换行。
 
 **字符串模板**
-
-模板变量有 `{a}`、`{b}`、`{c}`，分别表示系列名，数据名，数据值。
+模板变量有：
++ `{a}`：系列名。
++ `{b}`：数据名。
++ `{c}`：数据值。
++ `{@xxx}：数据中名为 `'xxx'` 的维度的值，如 `{@product}` 表示名为 `'product'` 的维度的值。
++ `{@[n]}：数据中维度 `n` 的值，如 `{@[3]}` 表示维度 3 的值，从 0 开始计数。
 
 **示例：**
 ```js
-formatter: '{b}: {c}'
+formatter: '{b}: {@score}'
 ```
 
 **回调函数**
@@ -20,6 +24,13 @@ formatter: '{b}: {c}'
 参数 `params` 是 formatter 需要的单个数据集。格式如下：
 {{ use: partial-formatter-params-structure() }}。
 
+
+
+{{ target: partial-datasetIndex }}
+
+## datasetIndex(number) = 0
+
+如果 [series.data](~series.data) 没有指定，并且 [dataset](~dataset) 存在，那么就会使用 [dataset](~dataset)。`datasetIndex` 指定本系列使用那个 [dataset](~dataset)。
 
 
 
