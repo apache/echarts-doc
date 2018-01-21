@@ -38,9 +38,9 @@ option: {
 
 于是，ECharts 4 新提供了 `数据集`（`dataset`）组件来单独声明数据，他带来了这些效果：
 
++ 能够贴近这样的数据可视化常见思维方式：基于数据（`dataset` 组件来提供数据），指定数据到视觉的映射（由 [encode](option.html#series.encode) 属性来指定映射），形成图表。
 + 数据和其他配置可以被分离开来，使用者相对便于进行单独管理，也省去了一些数据处理的步骤。
 + 数据可以被多个系列或者组件复用，对于大数据，不必为每个系列创建一份。
-+ 更重要的是，有了 `dataset` 后，能够贴近这样的数据可视化常见思维方式：基于数据（`dataset` 组件来提供数据），指定数据到视觉的映射（由 `encode` 属性来指定映射），形成图表。
 + 支持更多的数据的常用格式，例如二维数组、对象数组等，一定程度上避免使用者为了数据格式而进行转换。
 
 
@@ -111,6 +111,7 @@ option = {
 };
 ```
 
+
 <br>
 
 ---
@@ -122,8 +123,9 @@ option = {
 本篇里，我们制作数据可视化图表的逻辑是这样的：基于数据，在配置项中指定如何映射到图形。
 
 概略而言，可以进行这些映射：
-+ 指定 dataset 的列（column）还是行（row）映射为图形系列（series）。这件事可以使用 `series.seriesLayoutBy` 属性来配置。
-+ 指定 dataset 的哪些列（column）或行（row）对应到坐标轴（如 X、Y 轴）、提示框（tooltip）、标签（label）、图形元素大小颜色等（visualMap）。这件事可以使用 `series.encode` 属性来配置。如果有需要映射颜色大小等视觉维度，可以使用 visualMap 组件。
+
++ 指定 dataset 的列（column）还是行（row）映射为图形系列（series）。这件事可以使用 [series.seriesLayoutBy](option.html#series.seriesLayoutBy) 属性来配置。默认是按照列（column）来映射。
++ 指定维度映射的规则：如何从 dataset 的维度（一个“维度”的意思是一行/列）映射到坐标轴（如 X、Y 轴）、提示框（tooltip）、标签（label）、图形元素大小颜色等（visualMap）。这件事可以使用 [series.encode](option.html#series.encode) 属性，以及 [visualMap](option.html#visualMap) 组件（如果有需要映射颜色大小等视觉维度的话）来配置。上面的例子中，没有给出这种映射配置，那么 ECharts 就按最常见的理解进行默认映射：X 坐标轴声明为类目轴，默认情况下会自动对应到 dataset.source 中的第一列；三个柱图系列，一一对应到 dataset.source 中后面每一列。
 
 
 下面详细解释。
@@ -139,13 +141,13 @@ option = {
 **按行还是按列做映射**
 
 
-有了数据表之后，使用者可以灵活得配置：数据如何对应到轴和图形系列。上面的例子中，没有给出这种映射配置，那么ECharts 就按最常见的理解进行默认映射：
-+ X 坐标轴声明为类目轴，默认情况下会自动对应到 dataset.source 中的第一列；
-+ 三个柱图系列，一一对应到 dataset.source 中后面每一列。
+有了数据表之后，使用者可以灵活得配置：数据如何对应到轴和图形系列。
 
 用户可以使用 `seriesLayoutBy` 配置项，改变图表对于行列的理解。`seriesLayoutBy` 可取值：
 + 'column': 默认值。系列被安放到 `dataset` 的列上面。
 + 'row': 系列被安放到 `dataset` 的行上面。
+
+看这个例子：
 
 ```js
 option = {
@@ -242,11 +244,11 @@ var option2 = {
 大多数情况下，我们并不需要去设置维度类型，因为会自动判断。但是如果因为数据为空之类原因导致判断不足够准确时，可以手动设置维度类型。
 
 维度类型（dimension type）可以取这些值：
-+ 'number': 默认，表示普通数据。
-+ 'ordinal': 对于类目、文本这些 string 类型的数据，如果需要能在数轴上使用，须是 'ordinal' 类型。ECharts 默认会自动判断这个类型。但是自动判断也是不可能很完备的，所以使用者也可以手动强制指定。
-+ 'time': 表示时间数据。设置成 'time' 则能支持自动解析数据成时间戳（timestamp），比如该维度的数据是 '2017-05-10'，会自动被解析。时间类型的支持参见 [data](option.html#series.data)。
-+ 'float': 如果设置成 `float`，在存储时候会使用 `TypedArray`，对性能优化有好处。
-+ 'int': 如果设置成 `float`，在存储时候会使用 `TypedArray`，对性能优化有好处。
++ `'number'`: 默认，表示普通数据。
++ `'ordinal'`: 对于类目、文本这些 string 类型的数据，如果需要能在数轴上使用，须是 'ordinal' 类型。ECharts 默认会自动判断这个类型。但是自动判断也是不可能很完备的，所以使用者也可以手动强制指定。
++ `'time'`: 表示时间数据。设置成 `'time'` 则能支持自动解析数据成时间戳（timestamp），比如该维度的数据是 '2017-05-10'，会自动被解析。如果这个维度被用在时间数轴（[axis.type](option.html#xAxis.type) 为 `'time'`）上，那么会被自动设置为 `'time'` 类型。时间类型的支持参见 [data](option.html#series.data)。
++ `'float'`: 如果设置成 `'float'`，在存储时候会使用 `TypedArray`，对性能优化有好处。
++ `'int'`: 如果设置成 `'float'`，在存储时候会使用 `TypedArray`，对性能优化有好处。
 
 
 
@@ -260,7 +262,7 @@ var option2 = {
 
 **数据到图形的映射（encode）**
 
-了解了维度的概念后，我们就可以使用 `encode` 来做映射。总体是这样的感觉：
+了解了维度的概念后，我们就可以使用 [encode](option.html#series.encode) 来做映射。总体是这样的感觉：
 
 ```js
 var option = {
@@ -343,20 +345,32 @@ encode: {
 
 
 
+
 <br>
+
+---
+
+<br>
+
 
 **视觉通道（颜色、尺寸等）的映射**
 
-我们可以使用 `visualMap` 组件进行视觉通道的映射。详见 `visualMap` 文档的介绍。这是一个示例：
+我们可以使用 [visualMap](option.html#visualMap) 组件进行视觉通道的映射。详见 `visualMap` 文档的介绍。这是一个示例：
 
 ~[500x400](${galleryViewPath}dataset-encode0&edit=1&reset=1)
 
 
+
 <br>
+
+---
+
+<br>
+
 
 **默认的映射**
 
-指的一提的是，ECharts 针对最常见直角坐标系中的图表（折线图、柱状图、散点图、K线图等）、饼图、漏斗图，给出了简单的默认的映射，从而不需要配置 `encode` 也可以出现图表。默认的映射规则不易做得复杂，基本规则大体是：
+指的一提的是，ECharts 针对最常见直角坐标系中的图表（折线图、柱状图、散点图、K线图等）、饼图、漏斗图，给出了简单的默认的映射，从而不需要配置 `encode` 也可以出现图表（一旦给出了 `encode`，那么就不会采用默认映射）。默认的映射规则不易做得复杂，基本规则大体是：
 + 在坐标系中（如直角坐标系、极坐标系等）
     + 如果有类目轴（axis.type 为 'category'），则将第一列（行）映射到这个轴上，后续每一列（行）对应一个系列。
     + 如果没有类目轴，假如坐标系有两个轴（例如直角坐标系的 X Y 轴），则每两列对应一个系列，这两列分别映射到这两个轴上。
@@ -367,7 +381,13 @@ encode: {
 
 ~[800x400](${galleryViewPath}dataset-default&edit=1&reset=1)
 
+
 <br>
+
+---
+
+<br>
+
 
 **几个常见的映射设置方式**
 
@@ -376,7 +396,8 @@ encode: {
 答：
 ```js
 series: {
-    encode: {x: 3, y: 5},
+    // 注意维度序号（dimensionIndex）从 0 开始计数，第三列是 dimensions[2]。
+    encode: {x: 2, y: 4},
     ...
 }
 ```
@@ -386,7 +407,7 @@ series: {
 答：
 ```js
 series: {
-    encode: {x: 3, y: 5},
+    encode: {x: 2, y: 4},
     seriesLayoutBy: 'row',
     ...
 }
@@ -395,25 +416,16 @@ series: {
 问：如何把第二列设置为标签？
 
 答：
-关于标签的显示（`label.formatter`），现在支持使用这样的语法：
-`'aaa{@product}bbb{@score}ccc{@[4]}ddd'` 来引用某个具体的维度值。其中 `'{@score}'` 表示因为 “名为 score” 的维度里的值，`'{@[4]}'` 表示引用序号为 4 的维度里的值。
+关于标签的显示 [label.formatter](option.html#series.label.formatter)，现在支持引用特定维度的值，例如：
 
 ```js
-series: [{
+series: {
     label: {
-        show: true,
-        // 标签中引用第二列。
-        formatter: 'The value at column 2 is: {@[2]}.'
-    },
-    ...
-}, {
-    label: {
-        show: true,
-        // 标签中引用维度名为 product 的列。
-        formatter: 'The product name is: {@product}.'
-    },
-    ...
-}]
+        // `'{@score}'` 表示 “名为 score” 的维度里的值。
+        // `'{@[4]}'` 表示引用序号为 4 的维度里的值。
+        formatter: 'aaa{@product}bbb{@score}ccc{@[4]}ddd'
+    }
+}
 ```
 
 问：如何让第 2 列和第 3 列显示在提示框（tooltip）中？
@@ -422,7 +434,7 @@ series: [{
 ```js
 series: {
     encode: {
-        tooltip: [2, 3]
+        tooltip: [1, 2]
         ...
     },
     ...
@@ -496,11 +508,11 @@ var option = {
 
 在 JavaScript 常用的数据传输格式中，二维数组可以比较直观的存储二维表。前面的示例都是使用二维数组表示。
 
-除了二维数组以外，dataset 也支持例如下面 key-value 方式的数据格式，这类格式也非常常见。但是这类格式中，目前并不支持 `seriesLayoutBy` 参数。
+除了二维数组以外，dataset 也支持例如下面 key-value 方式的数据格式，这类格式也非常常见。但是这类格式中，目前并不支持 [seriesLayoutBy](option.html#series.seriesLayoutBy) 参数。
 
 ```js
 dataset: [{
-    // 按行的 key-value 形式，这是个比较常见的格式。
+    // 按行的 key-value 形式（对象数组），这是个比较常见的格式。
     source: [
         {product: 'Matcha Latte', count: 823, score: 95.8},
         {product: 'Milk Tea', count: 235, score: 81.4},
@@ -524,9 +536,9 @@ dataset: [{
 
 <br>
 
-**数据的引用**
+**多个 dataset 和他们的引用**
 
-可以同时定义多个 dataset。系列可以通过 `series.datasetIndex` 来指定引用哪个 dataset。例如：
+可以同时定义多个 dataset。系列可以通过 [series.datasetIndex](option.html#series.datasetIndex) 来指定引用哪个 dataset。例如：
 
 ```js
 var option = {
@@ -550,7 +562,18 @@ var option = {
 }
 ```
 
-此外，ECharts 4 之前一直以来的数据声明方式仍然被正常支持，如果系列已经声明了 `series.data`， 那么就会使用 `series.data` 而非 `dataset`。
+
+
+<br>
+
+---
+
+<br>
+
+**ECharts 3 的数据设置方式（series.data）仍正常使用**
+
+ECharts 4 之前一直以来的数据声明方式仍然被正常支持，如果系列已经声明了 [series.data](option.html#series.data)， 那么就会使用 [series.data](option.html#series.data) 而非 `dataset`。
+
 ```js
 {
     xAxis: {
@@ -573,6 +596,8 @@ var option = {
     }]
 }
 ```
+
+其实，[series.data](option.html#series.data) 也是种会一直存在的重要设置方式。一些特殊的非 table 格式的图表，如 [treemap](option.html#series-treemap)、[graph](option.html#series-graph)、[lines](option.html#series-lines) 等，现在仍不支持在 dataset 中设置，仍然需要使用 [series.data](option.html#series.data)。另外，对于巨大数据量的渲染（如百万以上的数据量），需要使用 [appendData](api.html#echartsInstance.appendData) 进行增量加载，这种情况不支持使用 `dataset`。
 
 
 <br>
