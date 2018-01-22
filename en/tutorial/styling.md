@@ -7,7 +7,7 @@ ECharts provides a rich amount of configurable items, which can be set in global
 
 ## Drawing Nightingale Rose Chart
 
-[Getting started tutorial](~getting-started) introduced how to make a simple bar chart. This time, we are going to make a pie chart. Pie charts use arc length of fans to represent ratio of a certain series in total share. It's data format is simpler than bar chart, because it only contains one dimension without category. Besides, since it's not in rectangular system, it doesn't need `xAxis`，`yAxis` either.
+[Getting started tutorial](~Get%20Started%20with%20ECharts%20in%205%20minutes) introduced how to make a simple bar chart. This time, we are going to make a pie chart. Pie charts use arc length of fans to represent ratio of a certain series in total share. It's data format is simpler than bar chart, because it only contains one dimension without category. Besides, since it's not in rectangular system, it doesn't need `xAxis`，`yAxis` either.
 
 ```js
 myChart.setOption({
