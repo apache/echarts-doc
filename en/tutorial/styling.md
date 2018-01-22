@@ -1,5 +1,5 @@
 {{ target: styling }}
-# Customerized Chart Styles
+# Customized Chart Styles
 
 ECharts provides a rich amount of configurable items, which can be set in global, series, and data three different levels. Next, let's see an example of how to use ECharts to implement the following Nightingale rose chart:
 

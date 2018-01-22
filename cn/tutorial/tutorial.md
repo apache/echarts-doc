@@ -4,6 +4,7 @@
 {{ import: custom-build }}
 {{ import: npm-webpack }}
 {{ import: styling }}
+{{ import: style-overview }}
 {{ import: dynamic-data }}
 {{ import: data-zoom }}
 {{ import: media-query }}
