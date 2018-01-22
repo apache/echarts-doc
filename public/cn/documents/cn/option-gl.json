@@ -633,7 +633,7 @@
                 "type": [
                   "number"
                 ],
-                "descriptionCN": "<p>视角通过鼠标控制能拉远到主体的最小距离。在 <a href=\"#globe.viewControl.projection\">projection</a> 为<code>&#39;perspective&#39;</code>的时候有效。</p>\n",
+                "descriptionCN": "<p>视角通过鼠标控制能拉远到主体的最大距离。在 <a href=\"#globe.viewControl.projection\">projection</a> 为<code>&#39;perspective&#39;</code>的时候有效。</p>\n",
                 "default": 400
               },
               "orthographicSize": {
@@ -966,7 +966,7 @@
                   "Function",
                   "string"
                 ],
-                "descriptionCN": "<p>标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 <code>\\n</code> 换行。</p>\n<p><strong>字符串模板</strong>\n模板变量有 <code>{a}</code>、<code>{b}</code>、<code>{c}</code>，分别表示系列名，数据名，数据值。</p>\n<p><strong>示例：</strong></p>\n<pre><code class=\"lang-js\">formatter: &#39;{b}: {c}&#39;\n</code></pre>\n<p><strong>回调函数</strong></p>\n<p>回调函数格式：</p>\n<pre><code class=\"lang-js\">(params: Object|Array) =&gt; string\n</code></pre>\n<p>参数 <code>params</code> 是 formatter 需要的单个数据集。格式如下：</p>\n<pre><code class=\"lang-js\">{\n    componentType: &#39;series&#39;,\n    // 系列类型\n    seriesType: string,\n    // 系列在传入的 option.series 中的 index\n    seriesIndex: number,\n    // 系列名称\n    seriesName: string,\n    // 数据名，类目名\n    name: string,\n    // 数据在传入的 data 数组中的 index\n    dataIndex: number,\n    // 传入的原始数据项\n    data: Object,\n    // 传入的数据值\n    value: number|Array,\n    // 数据图形的颜色\n    color: string,\n\n}\n</code></pre>\n"
+                "descriptionCN": "<p>标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 <code>\\n</code> 换行。</p>\n<p><strong>字符串模板</strong>\n模板变量有 <code>{a}</code>、<code>{b}</code>、<code>{c}</code>，分别表示系列名，数据名，数据值。</p>\n<p><strong>示例：</strong></p>\n<pre><code class=\"lang-js\">formatter: &#39;{b}: {c}&#39;\n</code></pre>\n<p><strong>回调函数</strong></p>\n<p>回调函数格式：</p>\n<pre><code class=\"lang-js\">(params: Object|Array) =&gt; string\n</code></pre>\n<p>参数 <code>params</code> 是 formatter 需要的单个数据集。格式如下：</p>\n"
               },
               "textStyle": {
                 "type": [
@@ -1088,7 +1088,7 @@
                       "Function",
                       "string"
                     ],
-                    "descriptionCN": "<p>标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 <code>\\n</code> 换行。</p>\n<p><strong>字符串模板</strong>\n模板变量有 <code>{a}</code>、<code>{b}</code>、<code>{c}</code>，分别表示系列名，数据名，数据值。</p>\n<p><strong>示例：</strong></p>\n<pre><code class=\"lang-js\">formatter: &#39;{b}: {c}&#39;\n</code></pre>\n<p><strong>回调函数</strong></p>\n<p>回调函数格式：</p>\n<pre><code class=\"lang-js\">(params: Object|Array) =&gt; string\n</code></pre>\n<p>参数 <code>params</code> 是 formatter 需要的单个数据集。格式如下：</p>\n<pre><code class=\"lang-js\">{\n    componentType: &#39;series&#39;,\n    // 系列类型\n    seriesType: string,\n    // 系列在传入的 option.series 中的 index\n    seriesIndex: number,\n    // 系列名称\n    seriesName: string,\n    // 数据名，类目名\n    name: string,\n    // 数据在传入的 data 数组中的 index\n    dataIndex: number,\n    // 传入的原始数据项\n    data: Object,\n    // 传入的数据值\n    value: number|Array,\n    // 数据图形的颜色\n    color: string,\n\n}\n</code></pre>\n"
+                    "descriptionCN": "<p>标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 <code>\\n</code> 换行。</p>\n<p><strong>字符串模板</strong>\n模板变量有 <code>{a}</code>、<code>{b}</code>、<code>{c}</code>，分别表示系列名，数据名，数据值。</p>\n<p><strong>示例：</strong></p>\n<pre><code class=\"lang-js\">formatter: &#39;{b}: {c}&#39;\n</code></pre>\n<p><strong>回调函数</strong></p>\n<p>回调函数格式：</p>\n<pre><code class=\"lang-js\">(params: Object|Array) =&gt; string\n</code></pre>\n<p>参数 <code>params</code> 是 formatter 需要的单个数据集。格式如下：</p>\n"
                   },
                   "textStyle": {
                     "type": [
@@ -1247,7 +1247,7 @@
                         "Function",
                         "string"
                       ],
-                      "descriptionCN": "<p>标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 <code>\\n</code> 换行。</p>\n<p><strong>字符串模板</strong>\n模板变量有 <code>{a}</code>、<code>{b}</code>、<code>{c}</code>，分别表示系列名，数据名，数据值。</p>\n<p><strong>示例：</strong></p>\n<pre><code class=\"lang-js\">formatter: &#39;{b}: {c}&#39;\n</code></pre>\n<p><strong>回调函数</strong></p>\n<p>回调函数格式：</p>\n<pre><code class=\"lang-js\">(params: Object|Array) =&gt; string\n</code></pre>\n<p>参数 <code>params</code> 是 formatter 需要的单个数据集。格式如下：</p>\n<pre><code class=\"lang-js\">{\n    componentType: &#39;series&#39;,\n    // 系列类型\n    seriesType: string,\n    // 系列在传入的 option.series 中的 index\n    seriesIndex: number,\n    // 系列名称\n    seriesName: string,\n    // 数据名，类目名\n    name: string,\n    // 数据在传入的 data 数组中的 index\n    dataIndex: number,\n    // 传入的原始数据项\n    data: Object,\n    // 传入的数据值\n    value: number|Array,\n    // 数据图形的颜色\n    color: string,\n\n}\n</code></pre>\n"
+                      "descriptionCN": "<p>标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 <code>\\n</code> 换行。</p>\n<p><strong>字符串模板</strong>\n模板变量有 <code>{a}</code>、<code>{b}</code>、<code>{c}</code>，分别表示系列名，数据名，数据值。</p>\n<p><strong>示例：</strong></p>\n<pre><code class=\"lang-js\">formatter: &#39;{b}: {c}&#39;\n</code></pre>\n<p><strong>回调函数</strong></p>\n<p>回调函数格式：</p>\n<pre><code class=\"lang-js\">(params: Object|Array) =&gt; string\n</code></pre>\n<p>参数 <code>params</code> 是 formatter 需要的单个数据集。格式如下：</p>\n"
                     },
                     "textStyle": {
                       "type": [
@@ -1368,7 +1368,7 @@
                             "Function",
                             "string"
                           ],
-                          "descriptionCN": "<p>标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 <code>\\n</code> 换行。</p>\n<p><strong>字符串模板</strong>\n模板变量有 <code>{a}</code>、<code>{b}</code>、<code>{c}</code>，分别表示系列名，数据名，数据值。</p>\n<p><strong>示例：</strong></p>\n<pre><code class=\"lang-js\">formatter: &#39;{b}: {c}&#39;\n</code></pre>\n<p><strong>回调函数</strong></p>\n<p>回调函数格式：</p>\n<pre><code class=\"lang-js\">(params: Object|Array) =&gt; string\n</code></pre>\n<p>参数 <code>params</code> 是 formatter 需要的单个数据集。格式如下：</p>\n<pre><code class=\"lang-js\">{\n    componentType: &#39;series&#39;,\n    // 系列类型\n    seriesType: string,\n    // 系列在传入的 option.series 中的 index\n    seriesIndex: number,\n    // 系列名称\n    seriesName: string,\n    // 数据名，类目名\n    name: string,\n    // 数据在传入的 data 数组中的 index\n    dataIndex: number,\n    // 传入的原始数据项\n    data: Object,\n    // 传入的数据值\n    value: number|Array,\n    // 数据图形的颜色\n    color: string,\n\n}\n</code></pre>\n"
+                          "descriptionCN": "<p>标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 <code>\\n</code> 换行。</p>\n<p><strong>字符串模板</strong>\n模板变量有 <code>{a}</code>、<code>{b}</code>、<code>{c}</code>，分别表示系列名，数据名，数据值。</p>\n<p><strong>示例：</strong></p>\n<pre><code class=\"lang-js\">formatter: &#39;{b}: {c}&#39;\n</code></pre>\n<p><strong>回调函数</strong></p>\n<p>回调函数格式：</p>\n<pre><code class=\"lang-js\">(params: Object|Array) =&gt; string\n</code></pre>\n<p>参数 <code>params</code> 是 formatter 需要的单个数据集。格式如下：</p>\n"
                         },
                         "textStyle": {
                           "type": [
@@ -1978,7 +1978,7 @@
                 "type": [
                   "number"
                 ],
-                "descriptionCN": "<p>视角通过鼠标控制能拉远到主体的最小距离。在 <a href=\"#geo3D.viewControl.projection\">projection</a> 为<code>&#39;perspective&#39;</code>的时候有效。</p>\n",
+                "descriptionCN": "<p>视角通过鼠标控制能拉远到主体的最大距离。在 <a href=\"#geo3D.viewControl.projection\">projection</a> 为<code>&#39;perspective&#39;</code>的时候有效。</p>\n",
                 "default": 400
               },
               "orthographicSize": {
@@ -3484,7 +3484,7 @@
                 "type": [
                   "number"
                 ],
-                "descriptionCN": "<p>视角通过鼠标控制能拉远到主体的最小距离。在 <a href=\"#grid3D.viewControl.projection\">projection</a> 为<code>&#39;perspective&#39;</code>的时候有效。</p>\n",
+                "descriptionCN": "<p>视角通过鼠标控制能拉远到主体的最大距离。在 <a href=\"#grid3D.viewControl.projection\">projection</a> 为<code>&#39;perspective&#39;</code>的时候有效。</p>\n",
                 "default": 400
               },
               "orthographicSize": {
@@ -3779,7 +3779,7 @@
             "type": [
               "Array"
             ],
-            "descriptionCN": "<p>类目数据，在类目轴（<a href=\"#xAxis3D.type\">type</a>: &#39;category&#39;）中有效。</p>\n<p>示例：</p>\n<pre><code class=\"lang-js\">// 所有类目名称列表\ndata: [&#39;周一&#39;, &#39;周二&#39;, &#39;周三&#39;, &#39;周四&#39;, &#39;周五&#39;, &#39;周六&#39;, &#39;周日&#39;]\n// 每一项也可以是具体的配置项，此时取配置项中的 `value` 为类目名\ndata: [{\n    value: &#39;周一&#39;,\n    // 突出周一\n    textStyle: {\n        fontSize: 20,\n        color: &#39;red&#39;\n    }\n}, &#39;周二&#39;, &#39;周三&#39;, &#39;周四&#39;, &#39;周五&#39;, &#39;周六&#39;, &#39;周日&#39;]\n</code></pre>\n",
+            "descriptionCN": "<p>类目数据，在类目轴（<a href=\"#xAxis3D.type\">type</a>: &#39;category&#39;）中有效。</p>\n<p>如果设置了 <a href=\"#xAxis3D.type\">type</a> 是 <code>&#39;category&#39;</code>，但没有设置 <code>axis.data</code>，则 <code>axis.data</code> 的内容会自动从 <a href=\"#series.data\">series.data</a> 中获取，这会比较方便。不过注意，<code>axis.data</code> 指明的是 <code>&#39;category&#39;</code> 轴的取值范围。如果不指定而是从 <a href=\"#series.data\">series.data</a> 中获取，那么只能获取到 <a href=\"#series.data\">series.data</a> 中出现的值。比如说，假如 <a href=\"#series.data\">series.data</a> 为空时，就什么也获取不到。</p>\n<p>示例：</p>\n<pre><code class=\"lang-js\">// 所有类目名称列表\ndata: [&#39;周一&#39;, &#39;周二&#39;, &#39;周三&#39;, &#39;周四&#39;, &#39;周五&#39;, &#39;周六&#39;, &#39;周日&#39;]\n// 每一项也可以是具体的配置项，此时取配置项中的 `value` 为类目名\ndata: [{\n    value: &#39;周一&#39;,\n    // 突出周一\n    textStyle: {\n        fontSize: 20,\n        color: &#39;red&#39;\n    }\n}, &#39;周二&#39;, &#39;周三&#39;, &#39;周四&#39;, &#39;周五&#39;, &#39;周六&#39;, &#39;周日&#39;]\n</code></pre>\n",
             "items": {
               "type": "Object",
               "properties": {
@@ -4252,7 +4252,7 @@
         "type": [
           "Object"
         ],
-        "descriptionCN": "<p>三维笛卡尔坐标系中的 x 轴。可以通过 <a href=\"#yAxis3D.grid3DIndex\">grid3DIndex</a> 索引所在的<a href=\"#grid3D\">三维笛卡尔坐标系</a>。</p>\n<p>在<code>yAxis3D</code>下设置的 <a href=\"#yAxis3D.axisLine\">axisLine</a>, <a href=\"#yAxis3D.axisTick\">axisTick</a>, <a href=\"#yAxis3D.axisLabel\">axisLabel</a>, <a href=\"#yAxis3D.splitLine\">splitLine</a>, <a href=\"#yAxis3D.splitArea\">splitArea</a>, <a href=\"#yAxis3D.axisPointer\">axisPointer</a> 会覆盖 <a href=\"#grid3D\">grid3D</a> 下的相应配置项。</p>\n",
+        "descriptionCN": "<p>三维笛卡尔坐标系中的 y 轴。可以通过 <a href=\"#yAxis3D.grid3DIndex\">grid3DIndex</a> 索引所在的<a href=\"#grid3D\">三维笛卡尔坐标系</a>。</p>\n<p>在<code>yAxis3D</code>下设置的 <a href=\"#yAxis3D.axisLine\">axisLine</a>, <a href=\"#yAxis3D.axisTick\">axisTick</a>, <a href=\"#yAxis3D.axisLabel\">axisLabel</a>, <a href=\"#yAxis3D.splitLine\">splitLine</a>, <a href=\"#yAxis3D.splitArea\">splitArea</a>, <a href=\"#yAxis3D.axisPointer\">axisPointer</a> 会覆盖 <a href=\"#grid3D\">grid3D</a> 下的相应配置项。</p>\n",
         "properties": {
           "show": {
             "type": [
@@ -4391,7 +4391,7 @@
             "type": [
               "Array"
             ],
-            "descriptionCN": "<p>类目数据，在类目轴（<a href=\"#yAxis3D.type\">type</a>: &#39;category&#39;）中有效。</p>\n<p>示例：</p>\n<pre><code class=\"lang-js\">// 所有类目名称列表\ndata: [&#39;周一&#39;, &#39;周二&#39;, &#39;周三&#39;, &#39;周四&#39;, &#39;周五&#39;, &#39;周六&#39;, &#39;周日&#39;]\n// 每一项也可以是具体的配置项，此时取配置项中的 `value` 为类目名\ndata: [{\n    value: &#39;周一&#39;,\n    // 突出周一\n    textStyle: {\n        fontSize: 20,\n        color: &#39;red&#39;\n    }\n}, &#39;周二&#39;, &#39;周三&#39;, &#39;周四&#39;, &#39;周五&#39;, &#39;周六&#39;, &#39;周日&#39;]\n</code></pre>\n",
+            "descriptionCN": "<p>类目数据，在类目轴（<a href=\"#yAxis3D.type\">type</a>: &#39;category&#39;）中有效。</p>\n<p>如果设置了 <a href=\"#yAxis3D.type\">type</a> 是 <code>&#39;category&#39;</code>，但没有设置 <code>axis.data</code>，则 <code>axis.data</code> 的内容会自动从 <a href=\"#series.data\">series.data</a> 中获取，这会比较方便。不过注意，<code>axis.data</code> 指明的是 <code>&#39;category&#39;</code> 轴的取值范围。如果不指定而是从 <a href=\"#series.data\">series.data</a> 中获取，那么只能获取到 <a href=\"#series.data\">series.data</a> 中出现的值。比如说，假如 <a href=\"#series.data\">series.data</a> 为空时，就什么也获取不到。</p>\n<p>示例：</p>\n<pre><code class=\"lang-js\">// 所有类目名称列表\ndata: [&#39;周一&#39;, &#39;周二&#39;, &#39;周三&#39;, &#39;周四&#39;, &#39;周五&#39;, &#39;周六&#39;, &#39;周日&#39;]\n// 每一项也可以是具体的配置项，此时取配置项中的 `value` 为类目名\ndata: [{\n    value: &#39;周一&#39;,\n    // 突出周一\n    textStyle: {\n        fontSize: 20,\n        color: &#39;red&#39;\n    }\n}, &#39;周二&#39;, &#39;周三&#39;, &#39;周四&#39;, &#39;周五&#39;, &#39;周六&#39;, &#39;周日&#39;]\n</code></pre>\n",
             "items": {
               "type": "Object",
               "properties": {
@@ -4864,7 +4864,7 @@
         "type": [
           "Object"
         ],
-        "descriptionCN": "<p>三维笛卡尔坐标系中的 x 轴。可以通过 <a href=\"#zAxis3D.grid3DIndex\">grid3DIndex</a> 索引所在的<a href=\"#grid3D\">三维笛卡尔坐标系</a>。</p>\n<p>在<code>zAxis3D</code>下设置的 <a href=\"#zAxis3D.axisLine\">axisLine</a>, <a href=\"#zAxis3D.axisTick\">axisTick</a>, <a href=\"#zAxis3D.axisLabel\">axisLabel</a>, <a href=\"#zAxis3D.splitLine\">splitLine</a>, <a href=\"#zAxis3D.splitArea\">splitArea</a>, <a href=\"#zAxis3D.axisPointer\">axisPointer</a> 会覆盖 <a href=\"#grid3D\">grid3D</a> 下的相应配置项。</p>\n",
+        "descriptionCN": "<p>三维笛卡尔坐标系中的 z 轴。可以通过 <a href=\"#zAxis3D.grid3DIndex\">grid3DIndex</a> 索引所在的<a href=\"#grid3D\">三维笛卡尔坐标系</a>。</p>\n<p>在<code>zAxis3D</code>下设置的 <a href=\"#zAxis3D.axisLine\">axisLine</a>, <a href=\"#zAxis3D.axisTick\">axisTick</a>, <a href=\"#zAxis3D.axisLabel\">axisLabel</a>, <a href=\"#zAxis3D.splitLine\">splitLine</a>, <a href=\"#zAxis3D.splitArea\">splitArea</a>, <a href=\"#zAxis3D.axisPointer\">axisPointer</a> 会覆盖 <a href=\"#grid3D\">grid3D</a> 下的相应配置项。</p>\n",
         "properties": {
           "show": {
             "type": [
@@ -5003,7 +5003,7 @@
             "type": [
               "Array"
             ],
-            "descriptionCN": "<p>类目数据，在类目轴（<a href=\"#zAxis3D.type\">type</a>: &#39;category&#39;）中有效。</p>\n<p>示例：</p>\n<pre><code class=\"lang-js\">// 所有类目名称列表\ndata: [&#39;周一&#39;, &#39;周二&#39;, &#39;周三&#39;, &#39;周四&#39;, &#39;周五&#39;, &#39;周六&#39;, &#39;周日&#39;]\n// 每一项也可以是具体的配置项，此时取配置项中的 `value` 为类目名\ndata: [{\n    value: &#39;周一&#39;,\n    // 突出周一\n    textStyle: {\n        fontSize: 20,\n        color: &#39;red&#39;\n    }\n}, &#39;周二&#39;, &#39;周三&#39;, &#39;周四&#39;, &#39;周五&#39;, &#39;周六&#39;, &#39;周日&#39;]\n</code></pre>\n",
+            "descriptionCN": "<p>类目数据，在类目轴（<a href=\"#zAxis3D.type\">type</a>: &#39;category&#39;）中有效。</p>\n<p>如果设置了 <a href=\"#zAxis3D.type\">type</a> 是 <code>&#39;category&#39;</code>，但没有设置 <code>axis.data</code>，则 <code>axis.data</code> 的内容会自动从 <a href=\"#series.data\">series.data</a> 中获取，这会比较方便。不过注意，<code>axis.data</code> 指明的是 <code>&#39;category&#39;</code> 轴的取值范围。如果不指定而是从 <a href=\"#series.data\">series.data</a> 中获取，那么只能获取到 <a href=\"#series.data\">series.data</a> 中出现的值。比如说，假如 <a href=\"#series.data\">series.data</a> 为空时，就什么也获取不到。</p>\n<p>示例：</p>\n<pre><code class=\"lang-js\">// 所有类目名称列表\ndata: [&#39;周一&#39;, &#39;周二&#39;, &#39;周三&#39;, &#39;周四&#39;, &#39;周五&#39;, &#39;周六&#39;, &#39;周日&#39;]\n// 每一项也可以是具体的配置项，此时取配置项中的 `value` 为类目名\ndata: [{\n    value: &#39;周一&#39;,\n    // 突出周一\n    textStyle: {\n        fontSize: 20,\n        color: &#39;red&#39;\n    }\n}, &#39;周二&#39;, &#39;周三&#39;, &#39;周四&#39;, &#39;周五&#39;, &#39;周六&#39;, &#39;周日&#39;]\n</code></pre>\n",
             "items": {
               "type": "Object",
               "properties": {
@@ -5606,7 +5606,7 @@
                         "Function",
                         "string"
                       ],
-                      "descriptionCN": "<p>标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 <code>\\n</code> 换行。</p>\n<p><strong>字符串模板</strong>\n模板变量有 <code>{a}</code>、<code>{b}</code>、<code>{c}</code>，分别表示系列名，数据名，数据值。</p>\n<p><strong>示例：</strong></p>\n<pre><code class=\"lang-js\">formatter: &#39;{b}: {c}&#39;\n</code></pre>\n<p><strong>回调函数</strong></p>\n<p>回调函数格式：</p>\n<pre><code class=\"lang-js\">(params: Object|Array) =&gt; string\n</code></pre>\n<p>参数 <code>params</code> 是 formatter 需要的单个数据集。格式如下：</p>\n<pre><code class=\"lang-js\">{\n    componentType: &#39;series&#39;,\n    // 系列类型\n    seriesType: string,\n    // 系列在传入的 option.series 中的 index\n    seriesIndex: number,\n    // 系列名称\n    seriesName: string,\n    // 数据名，类目名\n    name: string,\n    // 数据在传入的 data 数组中的 index\n    dataIndex: number,\n    // 传入的原始数据项\n    data: Object,\n    // 传入的数据值\n    value: number|Array,\n    // 数据图形的颜色\n    color: string,\n\n}\n</code></pre>\n"
+                      "descriptionCN": "<p>标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 <code>\\n</code> 换行。</p>\n<p><strong>字符串模板</strong>\n模板变量有 <code>{a}</code>、<code>{b}</code>、<code>{c}</code>，分别表示系列名，数据名，数据值。</p>\n<p><strong>示例：</strong></p>\n<pre><code class=\"lang-js\">formatter: &#39;{b}: {c}&#39;\n</code></pre>\n<p><strong>回调函数</strong></p>\n<p>回调函数格式：</p>\n<pre><code class=\"lang-js\">(params: Object|Array) =&gt; string\n</code></pre>\n<p>参数 <code>params</code> 是 formatter 需要的单个数据集。格式如下：</p>\n"
                     },
                     "textStyle": {
                       "type": [
@@ -5734,7 +5734,7 @@
                             "Function",
                             "string"
                           ],
-                          "descriptionCN": "<p>标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 <code>\\n</code> 换行。</p>\n<p><strong>字符串模板</strong>\n模板变量有 <code>{a}</code>、<code>{b}</code>、<code>{c}</code>，分别表示系列名，数据名，数据值。</p>\n<p><strong>示例：</strong></p>\n<pre><code class=\"lang-js\">formatter: &#39;{b}: {c}&#39;\n</code></pre>\n<p><strong>回调函数</strong></p>\n<p>回调函数格式：</p>\n<pre><code class=\"lang-js\">(params: Object|Array) =&gt; string\n</code></pre>\n<p>参数 <code>params</code> 是 formatter 需要的单个数据集。格式如下：</p>\n<pre><code class=\"lang-js\">{\n    componentType: &#39;series&#39;,\n    // 系列类型\n    seriesType: string,\n    // 系列在传入的 option.series 中的 index\n    seriesIndex: number,\n    // 系列名称\n    seriesName: string,\n    // 数据名，类目名\n    name: string,\n    // 数据在传入的 data 数组中的 index\n    dataIndex: number,\n    // 传入的原始数据项\n    data: Object,\n    // 传入的数据值\n    value: number|Array,\n    // 数据图形的颜色\n    color: string,\n\n}\n</code></pre>\n"
+                          "descriptionCN": "<p>标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 <code>\\n</code> 换行。</p>\n<p><strong>字符串模板</strong>\n模板变量有 <code>{a}</code>、<code>{b}</code>、<code>{c}</code>，分别表示系列名，数据名，数据值。</p>\n<p><strong>示例：</strong></p>\n<pre><code class=\"lang-js\">formatter: &#39;{b}: {c}&#39;\n</code></pre>\n<p><strong>回调函数</strong></p>\n<p>回调函数格式：</p>\n<pre><code class=\"lang-js\">(params: Object|Array) =&gt; string\n</code></pre>\n<p>参数 <code>params</code> 是 formatter 需要的单个数据集。格式如下：</p>\n"
                         },
                         "textStyle": {
                           "type": [
@@ -5962,7 +5962,7 @@
                         "Function",
                         "string"
                       ],
-                      "descriptionCN": "<p>标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 <code>\\n</code> 换行。</p>\n<p><strong>字符串模板</strong>\n模板变量有 <code>{a}</code>、<code>{b}</code>、<code>{c}</code>，分别表示系列名，数据名，数据值。</p>\n<p><strong>示例：</strong></p>\n<pre><code class=\"lang-js\">formatter: &#39;{b}: {c}&#39;\n</code></pre>\n<p><strong>回调函数</strong></p>\n<p>回调函数格式：</p>\n<pre><code class=\"lang-js\">(params: Object|Array) =&gt; string\n</code></pre>\n<p>参数 <code>params</code> 是 formatter 需要的单个数据集。格式如下：</p>\n<pre><code class=\"lang-js\">{\n    componentType: &#39;series&#39;,\n    // 系列类型\n    seriesType: string,\n    // 系列在传入的 option.series 中的 index\n    seriesIndex: number,\n    // 系列名称\n    seriesName: string,\n    // 数据名，类目名\n    name: string,\n    // 数据在传入的 data 数组中的 index\n    dataIndex: number,\n    // 传入的原始数据项\n    data: Object,\n    // 传入的数据值\n    value: number|Array,\n    // 数据图形的颜色\n    color: string,\n\n}\n</code></pre>\n"
+                      "descriptionCN": "<p>标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 <code>\\n</code> 换行。</p>\n<p><strong>字符串模板</strong>\n模板变量有 <code>{a}</code>、<code>{b}</code>、<code>{c}</code>，分别表示系列名，数据名，数据值。</p>\n<p><strong>示例：</strong></p>\n<pre><code class=\"lang-js\">formatter: &#39;{b}: {c}&#39;\n</code></pre>\n<p><strong>回调函数</strong></p>\n<p>回调函数格式：</p>\n<pre><code class=\"lang-js\">(params: Object|Array) =&gt; string\n</code></pre>\n<p>参数 <code>params</code> 是 formatter 需要的单个数据集。格式如下：</p>\n"
                     },
                     "textStyle": {
                       "type": [
@@ -6069,7 +6069,7 @@
                             "Function",
                             "string"
                           ],
-                          "descriptionCN": "<p>标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 <code>\\n</code> 换行。</p>\n<p><strong>字符串模板</strong>\n模板变量有 <code>{a}</code>、<code>{b}</code>、<code>{c}</code>，分别表示系列名，数据名，数据值。</p>\n<p><strong>示例：</strong></p>\n<pre><code class=\"lang-js\">formatter: &#39;{b}: {c}&#39;\n</code></pre>\n<p><strong>回调函数</strong></p>\n<p>回调函数格式：</p>\n<pre><code class=\"lang-js\">(params: Object|Array) =&gt; string\n</code></pre>\n<p>参数 <code>params</code> 是 formatter 需要的单个数据集。格式如下：</p>\n<pre><code class=\"lang-js\">{\n    componentType: &#39;series&#39;,\n    // 系列类型\n    seriesType: string,\n    // 系列在传入的 option.series 中的 index\n    seriesIndex: number,\n    // 系列名称\n    seriesName: string,\n    // 数据名，类目名\n    name: string,\n    // 数据在传入的 data 数组中的 index\n    dataIndex: number,\n    // 传入的原始数据项\n    data: Object,\n    // 传入的数据值\n    value: number|Array,\n    // 数据图形的颜色\n    color: string,\n\n}\n</code></pre>\n"
+                          "descriptionCN": "<p>标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 <code>\\n</code> 换行。</p>\n<p><strong>字符串模板</strong>\n模板变量有 <code>{a}</code>、<code>{b}</code>、<code>{c}</code>，分别表示系列名，数据名，数据值。</p>\n<p><strong>示例：</strong></p>\n<pre><code class=\"lang-js\">formatter: &#39;{b}: {c}&#39;\n</code></pre>\n<p><strong>回调函数</strong></p>\n<p>回调函数格式：</p>\n<pre><code class=\"lang-js\">(params: Object|Array) =&gt; string\n</code></pre>\n<p>参数 <code>params</code> 是 formatter 需要的单个数据集。格式如下：</p>\n"
                         },
                         "textStyle": {
                           "type": [
@@ -6192,7 +6192,7 @@
                               "Function",
                               "string"
                             ],
-                            "descriptionCN": "<p>标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 <code>\\n</code> 换行。</p>\n<p><strong>字符串模板</strong>\n模板变量有 <code>{a}</code>、<code>{b}</code>、<code>{c}</code>，分别表示系列名，数据名，数据值。</p>\n<p><strong>示例：</strong></p>\n<pre><code class=\"lang-js\">formatter: &#39;{b}: {c}&#39;\n</code></pre>\n<p><strong>回调函数</strong></p>\n<p>回调函数格式：</p>\n<pre><code class=\"lang-js\">(params: Object|Array) =&gt; string\n</code></pre>\n<p>参数 <code>params</code> 是 formatter 需要的单个数据集。格式如下：</p>\n<pre><code class=\"lang-js\">{\n    componentType: &#39;series&#39;,\n    // 系列类型\n    seriesType: string,\n    // 系列在传入的 option.series 中的 index\n    seriesIndex: number,\n    // 系列名称\n    seriesName: string,\n    // 数据名，类目名\n    name: string,\n    // 数据在传入的 data 数组中的 index\n    dataIndex: number,\n    // 传入的原始数据项\n    data: Object,\n    // 传入的数据值\n    value: number|Array,\n    // 数据图形的颜色\n    color: string,\n\n}\n</code></pre>\n"
+                            "descriptionCN": "<p>标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 <code>\\n</code> 换行。</p>\n<p><strong>字符串模板</strong>\n模板变量有 <code>{a}</code>、<code>{b}</code>、<code>{c}</code>，分别表示系列名，数据名，数据值。</p>\n<p><strong>示例：</strong></p>\n<pre><code class=\"lang-js\">formatter: &#39;{b}: {c}&#39;\n</code></pre>\n<p><strong>回调函数</strong></p>\n<p>回调函数格式：</p>\n<pre><code class=\"lang-js\">(params: Object|Array) =&gt; string\n</code></pre>\n<p>参数 <code>params</code> 是 formatter 需要的单个数据集。格式如下：</p>\n"
                           },
                           "textStyle": {
                             "type": [
@@ -6299,7 +6299,7 @@
                                   "Function",
                                   "string"
                                 ],
-                                "descriptionCN": "<p>标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 <code>\\n</code> 换行。</p>\n<p><strong>字符串模板</strong>\n模板变量有 <code>{a}</code>、<code>{b}</code>、<code>{c}</code>，分别表示系列名，数据名，数据值。</p>\n<p><strong>示例：</strong></p>\n<pre><code class=\"lang-js\">formatter: &#39;{b}: {c}&#39;\n</code></pre>\n<p><strong>回调函数</strong></p>\n<p>回调函数格式：</p>\n<pre><code class=\"lang-js\">(params: Object|Array) =&gt; string\n</code></pre>\n<p>参数 <code>params</code> 是 formatter 需要的单个数据集。格式如下：</p>\n<pre><code class=\"lang-js\">{\n    componentType: &#39;series&#39;,\n    // 系列类型\n    seriesType: string,\n    // 系列在传入的 option.series 中的 index\n    seriesIndex: number,\n    // 系列名称\n    seriesName: string,\n    // 数据名，类目名\n    name: string,\n    // 数据在传入的 data 数组中的 index\n    dataIndex: number,\n    // 传入的原始数据项\n    data: Object,\n    // 传入的数据值\n    value: number|Array,\n    // 数据图形的颜色\n    color: string,\n\n}\n</code></pre>\n"
+                                "descriptionCN": "<p>标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 <code>\\n</code> 换行。</p>\n<p><strong>字符串模板</strong>\n模板变量有 <code>{a}</code>、<code>{b}</code>、<code>{c}</code>，分别表示系列名，数据名，数据值。</p>\n<p><strong>示例：</strong></p>\n<pre><code class=\"lang-js\">formatter: &#39;{b}: {c}&#39;\n</code></pre>\n<p><strong>回调函数</strong></p>\n<p>回调函数格式：</p>\n<pre><code class=\"lang-js\">(params: Object|Array) =&gt; string\n</code></pre>\n<p>参数 <code>params</code> 是 formatter 需要的单个数据集。格式如下：</p>\n"
                               },
                               "textStyle": {
                                 "type": [
@@ -7032,7 +7032,7 @@
                         "Function",
                         "string"
                       ],
-                      "descriptionCN": "<p>标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 <code>\\n</code> 换行。</p>\n<p><strong>字符串模板</strong>\n模板变量有 <code>{a}</code>、<code>{b}</code>、<code>{c}</code>，分别表示系列名，数据名，数据值。</p>\n<p><strong>示例：</strong></p>\n<pre><code class=\"lang-js\">formatter: &#39;{b}: {c}&#39;\n</code></pre>\n<p><strong>回调函数</strong></p>\n<p>回调函数格式：</p>\n<pre><code class=\"lang-js\">(params: Object|Array) =&gt; string\n</code></pre>\n<p>参数 <code>params</code> 是 formatter 需要的单个数据集。格式如下：</p>\n<pre><code class=\"lang-js\">{\n    componentType: &#39;series&#39;,\n    // 系列类型\n    seriesType: string,\n    // 系列在传入的 option.series 中的 index\n    seriesIndex: number,\n    // 系列名称\n    seriesName: string,\n    // 数据名，类目名\n    name: string,\n    // 数据在传入的 data 数组中的 index\n    dataIndex: number,\n    // 传入的原始数据项\n    data: Object,\n    // 传入的数据值\n    value: number|Array,\n    // 数据图形的颜色\n    color: string,\n\n}\n</code></pre>\n"
+                      "descriptionCN": "<p>标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 <code>\\n</code> 换行。</p>\n<p><strong>字符串模板</strong>\n模板变量有 <code>{a}</code>、<code>{b}</code>、<code>{c}</code>，分别表示系列名，数据名，数据值。</p>\n<p><strong>示例：</strong></p>\n<pre><code class=\"lang-js\">formatter: &#39;{b}: {c}&#39;\n</code></pre>\n<p><strong>回调函数</strong></p>\n<p>回调函数格式：</p>\n<pre><code class=\"lang-js\">(params: Object|Array) =&gt; string\n</code></pre>\n<p>参数 <code>params</code> 是 formatter 需要的单个数据集。格式如下：</p>\n"
                     },
                     "textStyle": {
                       "type": [
@@ -7154,7 +7154,7 @@
                             "Function",
                             "string"
                           ],
-                          "descriptionCN": "<p>标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 <code>\\n</code> 换行。</p>\n<p><strong>字符串模板</strong>\n模板变量有 <code>{a}</code>、<code>{b}</code>、<code>{c}</code>，分别表示系列名，数据名，数据值。</p>\n<p><strong>示例：</strong></p>\n<pre><code class=\"lang-js\">formatter: &#39;{b}: {c}&#39;\n</code></pre>\n<p><strong>回调函数</strong></p>\n<p>回调函数格式：</p>\n<pre><code class=\"lang-js\">(params: Object|Array) =&gt; string\n</code></pre>\n<p>参数 <code>params</code> 是 formatter 需要的单个数据集。格式如下：</p>\n<pre><code class=\"lang-js\">{\n    componentType: &#39;series&#39;,\n    // 系列类型\n    seriesType: string,\n    // 系列在传入的 option.series 中的 index\n    seriesIndex: number,\n    // 系列名称\n    seriesName: string,\n    // 数据名，类目名\n    name: string,\n    // 数据在传入的 data 数组中的 index\n    dataIndex: number,\n    // 传入的原始数据项\n    data: Object,\n    // 传入的数据值\n    value: number|Array,\n    // 数据图形的颜色\n    color: string,\n\n}\n</code></pre>\n"
+                          "descriptionCN": "<p>标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 <code>\\n</code> 换行。</p>\n<p><strong>字符串模板</strong>\n模板变量有 <code>{a}</code>、<code>{b}</code>、<code>{c}</code>，分别表示系列名，数据名，数据值。</p>\n<p><strong>示例：</strong></p>\n<pre><code class=\"lang-js\">formatter: &#39;{b}: {c}&#39;\n</code></pre>\n<p><strong>回调函数</strong></p>\n<p>回调函数格式：</p>\n<pre><code class=\"lang-js\">(params: Object|Array) =&gt; string\n</code></pre>\n<p>参数 <code>params</code> 是 formatter 需要的单个数据集。格式如下：</p>\n"
                         },
                         "textStyle": {
                           "type": [
@@ -7319,7 +7319,7 @@
                               "Function",
                               "string"
                             ],
-                            "descriptionCN": "<p>标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 <code>\\n</code> 换行。</p>\n<p><strong>字符串模板</strong>\n模板变量有 <code>{a}</code>、<code>{b}</code>、<code>{c}</code>，分别表示系列名，数据名，数据值。</p>\n<p><strong>示例：</strong></p>\n<pre><code class=\"lang-js\">formatter: &#39;{b}: {c}&#39;\n</code></pre>\n<p><strong>回调函数</strong></p>\n<p>回调函数格式：</p>\n<pre><code class=\"lang-js\">(params: Object|Array) =&gt; string\n</code></pre>\n<p>参数 <code>params</code> 是 formatter 需要的单个数据集。格式如下：</p>\n<pre><code class=\"lang-js\">{\n    componentType: &#39;series&#39;,\n    // 系列类型\n    seriesType: string,\n    // 系列在传入的 option.series 中的 index\n    seriesIndex: number,\n    // 系列名称\n    seriesName: string,\n    // 数据名，类目名\n    name: string,\n    // 数据在传入的 data 数组中的 index\n    dataIndex: number,\n    // 传入的原始数据项\n    data: Object,\n    // 传入的数据值\n    value: number|Array,\n    // 数据图形的颜色\n    color: string,\n\n}\n</code></pre>\n"
+                            "descriptionCN": "<p>标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 <code>\\n</code> 换行。</p>\n<p><strong>字符串模板</strong>\n模板变量有 <code>{a}</code>、<code>{b}</code>、<code>{c}</code>，分别表示系列名，数据名，数据值。</p>\n<p><strong>示例：</strong></p>\n<pre><code class=\"lang-js\">formatter: &#39;{b}: {c}&#39;\n</code></pre>\n<p><strong>回调函数</strong></p>\n<p>回调函数格式：</p>\n<pre><code class=\"lang-js\">(params: Object|Array) =&gt; string\n</code></pre>\n<p>参数 <code>params</code> 是 formatter 需要的单个数据集。格式如下：</p>\n"
                           },
                           "textStyle": {
                             "type": [
@@ -7440,7 +7440,7 @@
                                   "Function",
                                   "string"
                                 ],
-                                "descriptionCN": "<p>标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 <code>\\n</code> 换行。</p>\n<p><strong>字符串模板</strong>\n模板变量有 <code>{a}</code>、<code>{b}</code>、<code>{c}</code>，分别表示系列名，数据名，数据值。</p>\n<p><strong>示例：</strong></p>\n<pre><code class=\"lang-js\">formatter: &#39;{b}: {c}&#39;\n</code></pre>\n<p><strong>回调函数</strong></p>\n<p>回调函数格式：</p>\n<pre><code class=\"lang-js\">(params: Object|Array) =&gt; string\n</code></pre>\n<p>参数 <code>params</code> 是 formatter 需要的单个数据集。格式如下：</p>\n<pre><code class=\"lang-js\">{\n    componentType: &#39;series&#39;,\n    // 系列类型\n    seriesType: string,\n    // 系列在传入的 option.series 中的 index\n    seriesIndex: number,\n    // 系列名称\n    seriesName: string,\n    // 数据名，类目名\n    name: string,\n    // 数据在传入的 data 数组中的 index\n    dataIndex: number,\n    // 传入的原始数据项\n    data: Object,\n    // 传入的数据值\n    value: number|Array,\n    // 数据图形的颜色\n    color: string,\n\n}\n</code></pre>\n"
+                                "descriptionCN": "<p>标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 <code>\\n</code> 换行。</p>\n<p><strong>字符串模板</strong>\n模板变量有 <code>{a}</code>、<code>{b}</code>、<code>{c}</code>，分别表示系列名，数据名，数据值。</p>\n<p><strong>示例：</strong></p>\n<pre><code class=\"lang-js\">formatter: &#39;{b}: {c}&#39;\n</code></pre>\n<p><strong>回调函数</strong></p>\n<p>回调函数格式：</p>\n<pre><code class=\"lang-js\">(params: Object|Array) =&gt; string\n</code></pre>\n<p>参数 <code>params</code> 是 formatter 需要的单个数据集。格式如下：</p>\n"
                               },
                               "textStyle": {
                                 "type": [
@@ -8050,7 +8050,7 @@
                       "type": [
                         "number"
                       ],
-                      "descriptionCN": "<p>视角通过鼠标控制能拉远到主体的最小距离。在 <a href=\"#series-map3D.viewControl.projection\">projection</a> 为<code>&#39;perspective&#39;</code>的时候有效。</p>\n",
+                      "descriptionCN": "<p>视角通过鼠标控制能拉远到主体的最大距离。在 <a href=\"#series-map3D.viewControl.projection\">projection</a> 为<code>&#39;perspective&#39;</code>的时候有效。</p>\n",
                       "default": 400
                     },
                     "orthographicSize": {
