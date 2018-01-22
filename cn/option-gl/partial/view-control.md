@@ -95,7 +95,7 @@ rotateSensitivity: [0, 1]
 
 ##${prefix|default('#')} maxDistance(number) = ${defaultMaxDistance|default(400)}
 
-视角通过鼠标控制能拉远到主体的最小距离。在 [projection](~${componentType}.viewControl.projection) 为`'perspective'`的时候有效。
+视角通过鼠标控制能拉远到主体的最大距离。在 [projection](~${componentType}.viewControl.projection) 为`'perspective'`的时候有效。
 
 ##${prefix|default('#')} orthographicSize(number) = ${defaultDistance|default(150)}
 
