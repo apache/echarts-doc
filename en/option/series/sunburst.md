@@ -240,6 +240,17 @@ The action of clicking a sector, which can be:
 
 
 
+## sort(string|Function) = 'desc'
+
+Sorting method that sectors use based on [`value`](~series-sunburst.data.value), which is the sum of children when not set. The default value `'desc'` states for descending order, while it can also be set to be `'asc'` for ascending order, or `null` for not sorting, or callback function like:
+
+```js
+function(nodeA, nodeB) {
+    return nodeA.getValue() - nodeB.getValue();
+}
+```
+
+
 ## renderLabelForZeroData(boolean) = false
 
 If there is no `name`, whether need to render it.

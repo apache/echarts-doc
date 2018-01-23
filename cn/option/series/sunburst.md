@@ -255,6 +255,18 @@ downplay: {
 
 
 
+## sort(string|Function) = 'desc'
+
+扇形块根据数据 [`value`](~series-sunburst.data.value) 的排序方式，如果未指定 `value`，则其值为子元素 `value` 之和。默认值 `'desc'` 表示降序排序；还可以设置为 `'asc'` 表示升序排序；`null` 表示不排序，使用原始数据的顺序；或者用回调函数进行排列：
+
+```js
+function(nodeA, nodeB) {
+    return nodeA.getValue() - nodeB.getValue();
+}
+```
+
+
+
 ## renderLabelForZeroData(boolean) = false
 
 如果数据没有 `name`，是否需要渲染文字。
