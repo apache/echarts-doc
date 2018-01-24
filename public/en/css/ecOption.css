@@ -313,9 +313,6 @@
 * {
   font-family: "Helvetica Neue", "Segoe UI", Tahoma, Arial, "Hiragino Sans GB", STHeiti, "Microsoft Yahei", "WenQuanYi Micro Hei", sans-serif;
 }
-.navbar * {
-  font-family: "noto-thin";
-}
 body {
   background: #FAFAFC;
   color: #333;
@@ -385,7 +382,7 @@ code {
   height: 46px;
   vertical-align: middle;
   color: #555;
-  margin: 0 15px;
+  margin: 0 10px;
   padding: 0 5px;
 }
 .ecdoc-quick-link a {
@@ -587,7 +584,7 @@ code {
 }
 .ecdoc-api-doc-group-line {
   position: relative;
-  padding: 15px 15px;
+  padding: 0px 15px 15px 15px;
   background: #fff;
   margin: 10px 0px;
   -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
@@ -613,6 +610,15 @@ code {
 }
 .ecdoc-api-doc-line-head {
   cursor: pointer;
+  margin-left: -15px;
+  margin-right: -15px;
+  padding: 8px 15px;
+}
+.ecdoc-api-doc-line-head.ecdoc-api-doc-expandable {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.ecdoc-api-doc-line-head.ecdoc-api-doc-expandable:hover {
+  background-color: rgba(0, 0, 0, 0.2);
 }
 .ecdoc-api-doc-line-label {
   color: #C592A0;
@@ -700,4 +706,18 @@ code {
 }
 #main.tutorial .dtui-treelist-i .dtui-treelist-text {
   padding-left: 15px;
+}
+@media (max-width: 600px) {
+  .ecdoc-api-left-area {
+    display: none;
+  }
+  .ecdoc-api-right-area {
+    left: 0px;
+  }
+  .ecdoc-api-doc-group-content iframe {
+    max-width: 100%;
+  }
+  .ecdoc-api-doc-group-content {
+    padding: 14px 30px;
+  }
 }
