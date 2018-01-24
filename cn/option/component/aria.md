@@ -43,6 +43,16 @@ option = {
 这是一个关于“某站点用户访问来源”的图表。图表类型是饼图，表示访问来源。其数据是——直接访问的数据是335，邮件营销的数据是310，联盟广告的数据是234，视频广告的数据是135，搜索引擎的数据是1548。
 ```
 
+生成描述的基本流程为，如果 [aria.show](~aria.show) 设置为 `true`，则生成无障碍访问描述，否则不生成。如果定义了 [aria.description](~aria.description)，则将其作为图表的完整描述，否则根据模板拼接生成描述。我们提供了默认的生成描述的算法，仅当生成的描述不太合适时，才需要修改这些模板，甚至使用 `aria.description` 完全覆盖。
+
+使用模板拼接时，先根据是否存在标题 [title.text](~title.text) 决定使用 [aria.general.withTitle](~aria.general.withTitle) 还是 [aria.general.withoutTitle](~aria.general.withoutTitle) 作为整体性描述。其中，`aria.general.withTitle` 配置项包括模板变量 `'{title}'`，将会被替换成图表标题。也就是说，如果 `aria.general.withTitle` 被设置为 `'图表的标题是：{title}。'`，则如果包含标题 `'价格分布图'`，这部分的描述为 `'图表的标题是：价格分布图。'`。
+
+拼接完标题之后，会依次拼接系列的描述（[aria.series](~aria.series)），和每个系列的数据的描述（[aria.data](~aria.data)）。同样，每个模板都有可能包括模板变量，用以替换实际的值。
+
+完整的描述生成流程为：
+
+![800xauto](~echarts-aria.jpg)
+
 
 ## show(boolean) = false
 

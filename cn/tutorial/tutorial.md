@@ -17,3 +17,4 @@
 {{ import: rich-text }}
 {{ import: renderer }}
 {{ import: dataset }}
+{{ import: aria }}
