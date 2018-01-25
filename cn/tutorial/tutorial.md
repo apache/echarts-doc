@@ -18,3 +18,4 @@
 {{ import: renderer }}
 {{ import: dataset }}
 {{ import: aria }}
+{{ import: echarts-gl }}
