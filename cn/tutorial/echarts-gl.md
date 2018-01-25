@@ -2,9 +2,9 @@
 
 # 使用 ECharts GL 实现基础的三维可视化
 
-ECharts GL （后面统一简称 GL）为 ECharts 补充了丰富的三维可视化组件，这篇文章我们会简单介绍如何基于 GL 实现一些常见的三维可视化作品。实际上如果你对 ECharts 有一定了解的话，使用 GL 也是一件很自然的事情，GL 的配置项是完全按照 ECharts 的标准和上手难度来设计的。
+ECharts GL （后面统一简称 GL）为 ECharts 补充了丰富的三维可视化组件，这篇文章我们会简单介绍如何基于 GL 实现一些常见的三维可视化作品。实际上如果你对 ECharts 有一定了解的话，也可以很快的上手 GL，GL 的配置项完全是按照 ECharts 的标准和上手难度来设计的。
 
-<!-- TODO 所有示例截图。 -->
+在看完文章之后，你可以前往 [官方示例](http://echarts.baidu.com/examples/index.html#chart-type-globe) 和 [Gallery](http://gallery.echartsjs.com/explore.html#tags=echarts-gl) 去了解更多使用 GL 制作的示例，对于文章中我们没法解释到的代码，也可以前往 [GL 配置项手册](http://echarts.baidu.com/option-gl.html) 查看具体的配置项使用方法。
 
 ## 如何下载和引入 ECharts GL
 
@@ -30,7 +30,7 @@ import 'echarts-gl';
 
 ## 声明一个基础的三维笛卡尔坐标系
 
-GL 中提供了一个三维的笛卡尔坐标系用于绘制三维的散点图，柱状图，曲面图等常见的统计图。
+引入 ECharts 和 ECharts GL 后，我们先来声明一个基础的三维笛卡尔坐标系用于绘制三维的散点图，柱状图，曲面图等常见的统计图。
 
 在 ECharts 中我们有 [grid](http://echarts.baidu.com/option.html#grid) 组件用于提供一个矩形的区域放置一个二维的笛卡尔坐标系，以及笛卡尔坐标系上上的 x 轴（[xAxis](http://echarts.baidu.com/option.html#xAxis)）和 y 轴（[yAxis](http://echarts.baidu.com/option.html#yAxis)）。对于三维的笛卡尔坐标系，我们在 GL 中提供了 [grid3D](http://echarts.baidu.com/option-gl.html#grid3D) 组件用于划分一块三维的笛卡尔空间，以及放置在这个 [grid3D](http://echarts.baidu.com/option-gl.html#grid3D) 上的 [xAxis3D](http://echarts.baidu.com/option-gl.html#xAxis3D), [yAxis3D](http://echarts.baidu.com/option-gl.html#yAxis3D), [zAxis3D](http://echarts.baidu.com/option-gl.html#zAxis3D)。
 
@@ -58,7 +58,9 @@ var option = {
 
 ## 绘制三维的散点图
 
-接下来我们先用一份虚拟的程序生成的高斯分布数据在这个三维的笛卡尔坐标系中画散点图。
+声明好笛卡尔坐标系后，我们先试试用一份程序生成的正态分布数据在这个三维的笛卡尔坐标系中画散点图。
+
+下面这段是生成正态分布数据的代码，你可以先不用关心这段代码是怎么工作的，只需要知道它生成了一份三维的正态分布数据放在`data`数组中。
 
 ```js
 function makeGaussian(amplitude, x0, y0, sigmaX, sigmaY) {
@@ -83,7 +85,7 @@ for (var i = 0; i < 1000; i++) {
 }
 ```
 
-生成的正态分布的数据大概张这样：
+生成的正态分布的数据大概长这样：
 
 ```js
 [
@@ -96,7 +98,7 @@ for (var i = 0; i < 1000; i++) {
 
 每一项都包含了`x`, `y`, `z`三个值，这三个值会分别被映射到笛卡尔坐标系的 x 轴，y 轴和 z 轴上。
 
-然后我们使用 GL 提供的 [scatter3D](http://echarts.baidu.com/option-gl.html#series-scatter3D) 系列类型把这些数据画成三维空间中正太分布的点。
+然后我们可以使用 GL 提供的 [scatter3D](http://echarts.baidu.com/option-gl.html#series-scatter3D) 系列类型把这些数据画成三维空间中正态分布的点。
 
 ```js
 option = {
@@ -119,7 +121,7 @@ option = {
 
 可以先从 http://www.echartsjs.com/examples/data/asset/data/life-expectancy-table.json 获取这份数据。
 
-格式化一下可以看到这份数据是很传统转成 JSON 后的表格格式。第一行是每一列数据的属性名，然后都是不同属性的数据集。
+格式化一下可以看到这份数据是很传统转成 JSON 后的表格格式。第一行是每一列数据的属性名，可以从这个属性名看出来每一列数据的含义，分别是人均收入，人均寿命，人口数量，国家和年份。
 
 ```js
 [
@@ -193,7 +195,7 @@ myChart.setOption({
 
 ## 利用 visualMap 组件对三维散点图进行视觉编码
 
-刚才多维数据的例子中，我们还有几个维度没能表达出来，我们可以利用 ECharts 内置的 [visualMap](http://echarts.baidu.com/option.html#visualMap) 组件将第四个维度编码成颜色。
+刚才多维数据的例子中，我们还有几个维度（列）没能表达出来，利用 ECharts 内置的 [visualMap](http://echarts.baidu.com/option.html#visualMap) 组件我们可以继续将第四个维度编码成颜色。
 
 ```js
 myChart.setOption({
@@ -241,11 +243,13 @@ myChart.setOption({
 
 这段代码中我们又在刚才的例子基础上加入了 [visualMap](http://echarts.baidu.com/option.html#visualMap) 组件，将`Life Expectancy`这一列数据映射到了不同的颜色。
 
-除此之外我们把原来的透视投影改成了正交投影。正交投影在某些场景中可以避免因为近大远小所造成的表达错误。
+除此之外我们还把原来默认的透视投影改成了正交投影。正交投影在某些场景中可以避免因为近大远小所造成的表达错误。
 
 ![](~gl/scatter3D-color.png)
 
-当然，除了 [visualMap](http://echarts.baidu.com/option.html#visualMap) 组件，你还可以利用其它的内置 ECharts 组件并且利用这些组件的交互效果，比如 [legend](http://echarts.baidu.com/option.html#legend)，也可以像 [三维散点图和散点矩阵结合使用](http://echarts.baidu.com/examples/editor.html?c=scatter3d-scatter) 这个例子一样实现二维和三维的系列混搭，我们尽可能把 WebGL 和 Canvas 之间的实现差异屏蔽到最小，从而让 ECharts GL 的使用可以更加方便自然。
+当然，除了 [visualMap](http://echarts.baidu.com/option.html#visualMap) 组件，还可以利用其它的 ECharts 内置组件并且充分利用这些组件的交互效果，比如 [legend](http://echarts.baidu.com/option.html#legend)。也可以像 [三维散点图和散点矩阵结合使用](http://echarts.baidu.com/examples/editor.html?c=scatter3d-scatter) 这个例子一样实现二维和三维的系列混搭。
+
+在实现 GL 的时候我们尽可能地把 WebGL 和 Canvas 之间的差异屏蔽了到最小，从而让 GL 的使用可以更加方便自然。
 
 
 ## 在笛卡尔坐标系上显示其它类型的三维图表
@@ -254,7 +258,7 @@ myChart.setOption({
 
 ![](~gl/bar3D.png)
 
-还有机器学习中会用到的三维曲面图 [surface](http://echarts.baidu.com/option-gl.html#series-surface)，三维曲面图常用来表达二维平面上的数据走势，刚才的正太分布数据我们也可以像下面这样画成曲面图。
+还有机器学习中会用到的三维曲面图 [surface](http://echarts.baidu.com/option-gl.html#series-surface)，三维曲面图常用来表达平面上的数据走势，刚才的正态分布数据我们也可以像下面这样画成曲面图。
 
 ```js
 var data = [];
@@ -281,9 +285,9 @@ option = {
 
 ## 老板想要立体的柱状图效果
 
-这篇文章的最后，我们经常会被问到如何用 ECharts 画只有二维数据的三维柱状图效果。一般来说我们是不推荐这么做的，因为这种不必要的三维柱状图很容易造成错误的表达，具体可以见我们 [柱状图使用指南](http://vis.baidu.com/chartusage/bar/) 中的解释。
+最后，我们经常会被问到如何用 ECharts 画只有二维数据的立体柱状图效果。一般来说我们是不推荐这么做的，因为这种不必要的立体柱状图很容易造成错误的表达，具体可以见我们 [柱状图使用指南](http://vis.baidu.com/chartusage/bar/) 中的解释。
 
-但是如果有一些其他因素必须得画成三维的柱状图的话，用 GL 也可以实现，开发者 [丶灬豆奶](http://gallery.echartsjs.com/explore.html?u=bd-3056387051) 和 [阿洛儿啊](http://gallery.echartsjs.com/explore.html?u=bd-809368804) 在 Gallery 已经写了这样的例子，大家可以参考。
+但是如果有一些其他因素导致必须得画成立体的柱状图的话，用 GL 也可以实现。[丶灬豆奶](http://gallery.echartsjs.com/explore.html?u=bd-3056387051) 和 [阿洛儿啊](http://gallery.echartsjs.com/explore.html?u=bd-809368804) 在 Gallery 已经写了类似的例子，大家可以参考。
 
 [3D堆积柱状图](http://gallery.echartsjs.com/explore.html?u=bd-3056387051)
 
