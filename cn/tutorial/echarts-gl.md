@@ -247,7 +247,7 @@ myChart.setOption({
 
 ![](~gl/scatter3D-color.png)
 
-当然，除了 [visualMap](http://echarts.baidu.com/option.html#visualMap) 组件，还可以利用其它的 ECharts 内置组件并且充分利用这些组件的交互效果，比如 [legend](http://echarts.baidu.com/option.html#legend)。也可以像 [三维散点图和散点矩阵结合使用](http://echarts.baidu.com/examples/editor.html?c=scatter3d-scatter) 这个例子一样实现二维和三维的系列混搭。
+当然，除了 [visualMap](http://echarts.baidu.com/option.html#visualMap) 组件，还可以利用其它的 ECharts 内置组件并且充分利用这些组件的交互效果，比如 [legend](http://echarts.baidu.com/option.html#legend)。也可以像 [三维散点图和散点矩阵结合使用](http://echarts.baidu.com/examples/editor.html?c=scatter3d-scatter&gl=1) 这个例子一样实现二维和三维的系列混搭。
 
 在实现 GL 的时候我们尽可能地把 WebGL 和 Canvas 之间的差异屏蔽了到最小，从而让 GL 的使用可以更加方便自然。
 
