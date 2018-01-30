@@ -226,10 +226,9 @@ formatter: function (params) {
 
 label 距离轴的距离。
 
-##${prefix} textStyle(boolean)
 
 {{ use: partial-simple-text-style(
-    prefix='##' + ${prefix},
+    prefix='#' + ${prefix},
     defaultColor="'#fff'"
 )}}
 
