@@ -13,10 +13,12 @@ Distance to the host graphic element. Works when position is string value (like 
 
 See: [label position](${galleryEditorPath}doc-example/label-position).
 
+{{ if: !${noRotate} }}
 #${prefix} rotate(number) = ${defaultRotate}
 Rotate label, from -90 degree to 90, positive value represents rotate anti-clockwise.
 
 See: [label rotation](${galleryEditorPath}bar-label-rotation).
+{{ /if }}
 
 #${prefix} offset(Array)
 Whether to move text slightly. For example: `[30, 40]` means move `30` horizontally and move `40` vertically.

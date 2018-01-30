@@ -19,7 +19,7 @@ Align of text, which can be `'left'`, `'center'`, or `'right'`. Note that `'left
 ~[700x400](${galleryViewPath}doc-example/sunburst-label-align&edit=1&reset=1)
 
 {{use:partial-label(
-    prefix="##",
+    prefix=${prefix},
     defaultPosition="'inside'",
     formatter=true,
     defaultShowLabel="true",
@@ -41,13 +41,11 @@ ${prefix} label(Object)
 
 {{ use: partial-sunburst-label-helper(prefix=${prefix}) }}
 
-#${prefix} emphasis(Object)
-{{ use: partial-sunburst-label-helper(prefix="#"+${prefix}) }}
 
 
 {{ target: partial-sunburst-itemStyle-props }}
 
-#${prefix} itemStyle(Object)
+${prefix} itemStyle(Object)
 
 Style of Sunburst sectors.
 
@@ -65,43 +63,41 @@ In ECharts, *emphasis* is for styles when mouse hovers. For Sunburst charts, the
     defaultOpacity=1
 )}}
 
-##${prefix} emphasis(Object)
+#${prefix} emphasis(Object)
 
 Item style when mouse is hovering. See [highlightPolicy](~series-sunburst.highlightPolicy).
 
-{{use: partial-item-style(
-    prefix="#" + ${prefix},
-    useColorPalatte=true,
-    defaultBorderWidth=1,
-    defaultBorderColor="'white'",
-    defaultOpacity=1
+{{use: partial-sunburst-label-props(
+    prefix="##" + ${prefix}
 )}}
 
-##${prefix} highlight(Object)
+{{use: partial-sunburst-itemStyle-props(
+    prefix="##" + ${prefix}
+)}}
+
+#${prefix} highlight(Object)
 
 Item style when mouse is hovering related items. See [highlightPolicy](~series-sunburst.highlightPolicy).
 
-{{use: partial-item-style(
-    prefix="#" + ${prefix},
-    useColorPalatte=true,
-    defaultBorderWidth=1,
-    defaultBorderColor="'white'",
-    defaultOpacity=1
+{{use: partial-sunburst-label-props(
+    prefix="##" + ${prefix}
+)}}
+
+{{use: partial-sunburst-itemStyle-props(
+    prefix="##" + ${prefix}
 )}}
 
 ##${prefix} downplay(Object)
 
 Item style when mouse is hovering unrelated items. See [highlightPolicy](~series-sunburst.highlightPolicy).
 
-{{use: partial-item-style(
-    prefix="#" + ${prefix},
-    useColorPalatte=true,
-    defaultBorderWidth=1,
-    defaultBorderColor="'white'",
-    defaultOpacity=0.9
+{{use: partial-sunburst-label-props(
+    prefix="##" + ${prefix}
 )}}
 
-
+{{use: partial-sunburst-itemStyle-props(
+    prefix="##" + ${prefix}
+)}}
 
 {{ target: series-sunburst }}
 
@@ -193,11 +189,11 @@ Like `target` attribute of HTML `<a>`, which can either be `'blank'` or `'self'`
 Children nodes, which is recursively defined. In the same format to [series-sunburst.data](~series-sunburst.data).
 
 {{use: partial-sunburst-label-props(
-    prefix="###"
+    prefix="##"
 )}}
 
 {{use: partial-sunburst-itemStyle-props(
-    prefix="###"
+    prefix="##"
 )}}
 
 ## highlightPolicy(string) = 'descendant'
@@ -255,7 +251,6 @@ function(nodeA, nodeB) {
 
 If there is no `name`, whether need to render it.
 
-
 {{use: partial-sunburst-label-props(
     prefix="##"
 )}}
@@ -264,11 +259,7 @@ If there is no `name`, whether need to render it.
     prefix="##"
 )}}
 
-
-
-
-
-
+{{ use: partial-sunburst-other-state(prefix="#") }}
 
 
 
@@ -304,12 +295,14 @@ series: {
 ```
 
 {{use: partial-sunburst-label-props(
-    prefix="##"
+    prefix="###"
 )}}
 
 {{use: partial-sunburst-itemStyle-props(
-    prefix="##"
+    prefix="###"
 )}}
+
+{{ use: partial-sunburst-other-state(prefix="##") }}
 
 {{use: partial-animation(
     prefix="#",
