@@ -222,10 +222,9 @@ formatter: function (params) {
 
 Distance between label and axis.
 
-##${prefix} textStyle(boolean)
 
 {{ use: partial-simple-text-style(
-    prefix='##' + ${prefix},
+    prefix='#' + ${prefix},
     defaultColor="'#fff'"
 )}}
 
