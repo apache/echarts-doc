@@ -46,6 +46,9 @@ Symbol of the two ends of the axis. It could be a string, representing the same 
 ##${prefix} symbolSize(Array) = [10, 15]
 Size of the arrows at two ends. The first is the width perpendicular to the axis, the next is the width parallel to the axis.
 
+##${prefix} symbolOffset(Array|number) = [0, 0]
+Arrow offset of axis. If is array, the first number is the offset of the arrow at the beginning, and the second number is the offset of the arrow at the end. If is number, it means the arrows have the same offset.
+
 ##${prefix} lineStyle(Object)
 {{ use: partial-line-style(prefix='##' + ${prefix}, defaultColor="'#333'", defaultWidth=1, defaultType="'solid'", name="line style") }}
 

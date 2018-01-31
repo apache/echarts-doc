@@ -39,6 +39,10 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 ##${prefix} symbolSize(Array) = [10, 15]
 轴线两边的箭头的大小，第一个数字表示宽度（垂直坐标轴方向），第二个数字表示高度（平行坐标轴方向）。
 
+##${prefix} symbolOffset(Array|number) = [0, 0]
+
+轴线两边的箭头的偏移，如果是数组，第一个数字表示起始箭头的偏移，第二个数字表示末端箭头的偏移；如果是数字，表示这两个箭头使用同样的偏移。
+
 ##${prefix} lineStyle(Object)
 {{ use: partial-line-style(prefix='##' + ${prefix}, defaultColor="'#333'", defaultWidth=1, defaultType="'solid'", name="坐标轴线") }}
 
