@@ -99,5 +99,6 @@ Each data item of `dimensions` can be:
         + `int`, that is, [Int32Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array)
         + `ordinal`, discrete value, which represents string generally.
         + `time`, time value, see [data](~series.data) to check the format of time value.
+    + displayName: `string`, generally used in tooltip for dimension display. If not specified, use `name` by default.
 
 When `dimensions` is specified, the default `tooltip` will be displayed vertically, which is better to show diemsion names. Otherwise, `tooltip` will displayed only value horizontally.
