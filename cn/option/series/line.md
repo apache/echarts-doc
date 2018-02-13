@@ -108,23 +108,33 @@
 {{use: partial-item-style(prefix="###")}}
 
 
-## smooth(false) = false
+## smooth(boolean|number) = false
 是否平滑曲线显示。
 
+如果是 `boolean` 类型，则表示是否开启平滑处理。如果是 `number` 类型（取值范围 0 到 1），表示平滑程度，越小表示越接近折线段，反之则反。设为 `true` 时相当于设为 `0.5`。
+
+如果需要修改平滑算法，请参考 [smoothMonotone](~series-line.smoothMonotone)。
+
 ## smoothMonotone(string)
-折线平滑后是否在一个维度上保持单调性，可以设置成`'x'`, `'y'`来指明是在 x 轴或者 y 轴上保持单调性。
+折线平滑后是否在一个维度上保持单调性，可以设置成`'x'`, `'y'`来指明是在 x 轴或者 y 轴上保持单调性。设置为 `'none'` 则采用不单调的平滑算法。
 
-通常在双数值轴上使用。
+ECharts 4.0.3 版本起，更新了折线平滑的默认算法，原先的算法可以通过将 `smoothMonotone` 设为 `'none'` 实现。下图是新老算法的效果对比图：
 
-下面两张图分别是双数值轴中的折线图`smoothMonotone`不设置以及设置为`'x'`的区别。
+![600xauto](~smooth-old-vs-new.png)
 
-+ 不设置`smoothMonotone`:
+老算法存在以下问题：
 
-![300xauto](~smooth-monotone-none.png)
+![600xauto](~smooth-old-problem.png)
 
-+ 设置为 `'x'`:
+老算法的控制点平行前后点组成的向量，而新算法的控制点始终是水平（如果数据的第 0 个维度上是单调递增的）或竖直的（如果数据的第 1 个维度上是单调递增的）。
 
-![300xauto](~smooth-monotone-x.png)
+![600xauto](~smooth-algorithm.png)
+
+但是新算法对于数据不单调的时候会产生不理想的效果。
+
+![600xauto](~smooth-non-monotone-x.png)
+
+因此，我们建议在默认情况下使用新算法（即不需要设置 `smoothMonotone`）。如果数据的 Y 坐标是单调递增的，则将其设为 `'y'`。如果数据在任何方向上都不是单调递增的，则将其设置为 `'none'` 使用老算法。
 
 ## sampling(string)
 
