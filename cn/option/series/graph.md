@@ -331,7 +331,7 @@ links: [{
 
 {{ use: partial-rect-layout-width-height(
     defaultLeft="'center'",
-    defaultTop="'center'",
+    defaultTop="'middle'",
     defaultWidth='自适应',
     defaultHeight='自适应'
 ) }}

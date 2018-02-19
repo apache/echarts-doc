@@ -298,7 +298,7 @@ Alias of [links](~series-graph.links)
 
 {{ use: partial-rect-layout-width-height(
     defaultLeft="'center'",
-    defaultTop="'center'",
+    defaultTop="'middle'",
     defaultWidth='auto',
     defaultHeight='auto'
 ) }}
