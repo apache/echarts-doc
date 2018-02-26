@@ -19,3 +19,4 @@
 {{ import: renderer }}
 {{ import: aria }}
 {{ import: echarts-gl }}
+{{ import: weixin-application }}
