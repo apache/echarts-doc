@@ -1,3 +1,43 @@
+## v4.0.3
+<div class="time">2018-02-26</div>
+
+
++ **[+] ECharts 可以在微信小程序中使用了**。我们接到了很多微信小程序开发者的反馈，表示他们强烈需要像 ECharts 这样的可视化工具。但是微信小程序是不支持 DOM 操作的，Canvas 接口也和浏览器不尽相同。因此，我们和微信小程序官方团队合作，提供了 ECharts 的微信小程序版本。开发者可以通过熟悉的 ECharts 配置方式，快速开发图表，满足各种可视化需求。参见 [教程](tutorial.html#%E5%9C%A8%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts)。
+
++ [+] 优化折线图平滑算法. 参见 [series-line.smooth](option.html#series-line.smooth) 和 [series-line.smoothMonotone](option.html#series-line.smoothMonotone) 和 [#7158](https://github.com/ecomfe/echarts/issues/7158)。
+
++ [+] 支持坐标轴两端的箭头偏移值 [series-line.symbolOffset](option.html#series-line.symbolOffset) of axis arrow. 参见 [#7422](https://github.com/ecomfe/echarts/issues/7422)。
+
++ [+] [旭日图（sunburst）](option.html#series-sunburst) 支持了 [series-sunburst.label.minAngle](option.html#series-sunburst.label.minAngle)。当一个扇形区的角度小于该值时，该扇形区对应的文字不显示。可以用来对较小的扇形区隐藏文字。参见 [#7614](https://github.com/ecomfe/echarts/issues/7614)。
+
++ [+] [旭日图（sunburst）](option.html#series-sunburst) 支持了 tooltip。参见 [#7691](https://github.com/ecomfe/echarts/issues/7691)。
+
++ [+] [旭日图（sunburst）](option.html#series-sunburst) 支持了再 level 和单个扇形块层级设置 [series-sunburst.nodeClick](option.html#series-sunburst.nodeClick)。参见 [#7541](https://github.com/ecomfe/echarts/issues/7541)。
+
++ [^] 修正了 [折线图](option.html#series-line) 超出坐标系边界的问题。
+
++ [^] 修复了 [splitArea](option.html#xAxis.splitArea) 最后一个区域不显示的问题。参见 [#7118](https://github.com/ecomfe/echarts/issues/7118)。
+
++ [^] 修复了 [旭日图（sunburst）](option.html#series-sunburst) 修改渐变色时引起的 bug。参见 [#7569](https://github.com/ecomfe/echarts/issues/7569)。
+
++ [^] 修复了 [旭日图（sunburst）](option.html#series-sunburst) 不引入 [视觉映射组件（visualMap）](option.html#visualMap) 会报错的问题。参见 [#7575](https://github.com/ecomfe/echarts/issues/7575)。
+
++ [^] 修复了当数据量小于 [progressive](option.html#series-scatter.progressive) 时 [apendData](api.html#echartsInstance.appendData) 无效的问题。参见 [#7718](https://github.com/ecomfe/echarts/issues/7718) 和 [#7625](https://github.com/ecomfe/echarts/issues/7625)。
+
++ [^] 修复了 [apendData](api.html#echartsInstance.appendData) 导致系列颜色变化的问题。
+
++ [^] 修复了 [tooltip.axisPointer.label.show](option.html#tooltip.axisPointer.label.show) 设置为 `false` 时无效的问题。参见 [#7725](https://github.com/ecomfe/echarts/issues/7725)。
+
++ [^] 修复了 [地图系列](option.html#series-map) 无数据区域不能选中的问题。参见 [#7629](https://github.com/ecomfe/echarts/issues/7629)。
+
++ [^] 修复了 [K线图（candlestick）](option.html#series-candlestick) 的 `encode` 问题。参见 [#7715](https://github.com/ecomfe/echarts/issues/7715)。
+
++ [^] 修复了数据项为空的判断逻辑。这钱的逻辑导致了当数据项长度不一时，自定义系列的 [renderItem](option.html#series-custom.renderItem) 可能不能进入，以及 [dataset](option.html#dataset) 被使用时可能不能渲染的问题。参见 [#7733](https://github.com/ecomfe/echarts/issues/7733)。
+
++ [^] 修复了 `textStyle` 向后兼容的逻辑。
+
+
+
 ## v4.0.2
 <div class="time">2018-01-18</div>
 
@@ -1049,6 +1089,9 @@ Recovery Build
 + [^] 折线图平滑优化，加入`smoothMonotone`配置项，详见 [option.html#series-line.smoothMonotone](http://echarts.baidu.com/option.html#series-line.smoothMonotone)，Fix [#2612](https://github.com/ecomfe/echarts/issues/2612)
 
 + [^] 修复 Surface 等带有触屏的电脑上无法触发鼠标事件的 bug，Fix [#2569](https://github.com/ecomfe/echarts/issues/2569)
+
+
+
 
 ## v3.0.2
 <div class="time">2016-01-23</div>
