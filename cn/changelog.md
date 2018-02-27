@@ -2,7 +2,7 @@
 <div class="time">2018-02-26</div>
 
 
-+ **[+] ECharts 可以在微信小程序中使用了。参见 [教程](tutorial.html#%E5%9C%A8%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts)。**
++ **[+] ECharts 可以在微信小程序中使用了**。我们接到了很多微信小程序开发者的反馈，表示他们强烈需要像 ECharts 这样的可视化工具。但是微信小程序是不支持 DOM 操作的，Canvas 接口也和浏览器不尽相同。因此，我们和微信小程序官方团队合作，提供了 ECharts 的微信小程序版本。开发者可以通过熟悉的 ECharts 配置方式，快速开发图表，满足各种可视化需求。参见 [教程](tutorial.html#%E5%9C%A8%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts)。
 
 + [+] 优化折线图平滑算法. 参见 [series-line.smooth](option.html#series-line.smooth) 和 [series-line.smoothMonotone](option.html#series-line.smoothMonotone) 和 [#7158](https://github.com/ecomfe/echarts/issues/7158)。
 

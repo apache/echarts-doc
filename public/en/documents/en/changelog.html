@@ -1,3 +1,42 @@
+<h2 id="v4-0-3">v4.0.3</h2>
+<div class="time">2018-02-26</div>
+
+<ul>
+<li><p><strong>[+] ECharts has been able to work on WeChat Applet.</strong></p>
+</li>
+<li><p>[+] Added a new smooth policy, which corrects some undesired smooth result. See details in <a href="option.html#series-line.smooth">series-line.smooth</a> and <a href="option.html#series-line.smoothMonotone">series-line.smoothMonotone</a>. Fixed <a href="https://github.com/ecomfe/echarts/issues/7158">#7158</a>.</p>
+</li>
+<li><p>[+] Supported <a href="option.html#series-line.symbolOffset">series-line.symbolOffset</a> of axis arrow. See <a href="https://github.com/ecomfe/echarts/issues/7422">#7422</a>.</p>
+</li>
+<li><p>[+] Supported <a href="option.html#series-sunburst.label.minAngle">series-sunburst.label.minAngle</a>, which enables hiding text if the sector is less then the <code>minAngle</code>. See <a href="https://github.com/ecomfe/echarts/issues/7614">#7614</a>.</p>
+</li>
+<li><p>[+] Supported tooltip in <a href="option.html#series-sunburst">sunburst</a>. See <a href="https://github.com/ecomfe/echarts/issues/7691">#7691</a>.</p>
+</li>
+<li><p>[+] Supported configuring <a href="option.html#series-sunburst.nodeClick">series-sunburst.nodeClick</a> in level or single sector. See <a href="https://github.com/ecomfe/echarts/issues/7541">#7541</a>.</p>
+</li>
+<li><p>[^] Fixed shape clip when <a href="option.html#series-line">line chart</a> is overflow cartesian area.</p>
+</li>
+<li><p>[^] Fixed that the last area of <a href="option.html#xAxis.splitArea">splitArea</a> did not display. See <a href="https://github.com/ecomfe/echarts/issues/7118">#7118</a>.</p>
+</li>
+<li><p>[^] Fixed gradient color bug of <a href="option.html#series-sunburst">sunburst</a>. See <a href="https://github.com/ecomfe/echarts/issues/7569">#7569</a>.</p>
+</li>
+<li><p>[^] Fixed the case when <a href="option.html#visualMap">visualMap</a> component is not imported for <a href="option.html#series-sunburst">sunburst</a>. See <a href="https://github.com/ecomfe/echarts/issues/7575">#7575</a>.</p>
+</li>
+<li><p>[^] Fixed that <a href="api.html#echartsInstance.appendData">apendData</a> did not work when data amount was less then <a href="option.html#series-scatter.progressive">progressive</a> limit. See <a href="https://github.com/ecomfe/echarts/issues/7718">#7718</a> and <a href="https://github.com/ecomfe/echarts/issues/7625">#7625</a>.</p>
+</li>
+<li><p>[^] Fixed that <a href="api.html#echartsInstance.appendData">apendData</a> caused series color changed if series name was not specified.</p>
+</li>
+<li><p>[^] Fixed that <a href="option.html#tooltip.axisPointer.label.show">tooltip.axisPointer.label.show</a> did not work when set as <code>false</code>. See <a href="https://github.com/ecomfe/echarts/issues/7725">#7725</a>.</p>
+</li>
+<li><p>[^] Fixed that <a href="option.html#series-map">map</a> could not be selected if an area had no data. See <a href="https://github.com/ecomfe/echarts/issues/7629">#7629</a>.</p>
+</li>
+<li><p>[^] Fixed <a href="option.html#series-candlestick">candlestick</a> encode problem. See <a href="https://github.com/ecomfe/echarts/issues/7715">#7715</a>.</p>
+</li>
+<li><p>[^] Fixed the data item empty check logic, which caused that <a href="option.html#series-custom.renderItem">renderItem</a> could not enter when value array length not the same, and <a href="option.html#dataset">dataset</a> could not be displayed. See <a href="https://github.com/ecomfe/echarts/issues/7733">#7733</a>.</p>
+</li>
+<li><p>[^] Fixed the textStyle compatibility logic.</p>
+</li>
+</ul>
 <h2 id="v4-0-2">v4.0.2</h2>
 <div class="time">2018-01-18</div>
 

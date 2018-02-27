@@ -1,3 +1,43 @@
+<h2 id="v4-0-3">v4.0.3</h2>
+<div class="time">2018-02-26</div>
+
+
+<ul>
+<li><p><strong>[+] ECharts 可以在微信小程序中使用了</strong>。我们接到了很多微信小程序开发者的反馈，表示他们强烈需要像 ECharts 这样的可视化工具。但是微信小程序是不支持 DOM 操作的，Canvas 接口也和浏览器不尽相同。因此，我们和微信小程序官方团队合作，提供了 ECharts 的微信小程序版本。开发者可以通过熟悉的 ECharts 配置方式，快速开发图表，满足各种可视化需求。参见 <a href="tutorial.html#%E5%9C%A8%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts">教程</a>。</p>
+</li>
+<li><p>[+] 优化折线图平滑算法. 参见 <a href="option.html#series-line.smooth">series-line.smooth</a> 和 <a href="option.html#series-line.smoothMonotone">series-line.smoothMonotone</a> 和 <a href="https://github.com/ecomfe/echarts/issues/7158">#7158</a>。</p>
+</li>
+<li><p>[+] 支持坐标轴两端的箭头偏移值 <a href="option.html#series-line.symbolOffset">series-line.symbolOffset</a> of axis arrow. 参见 <a href="https://github.com/ecomfe/echarts/issues/7422">#7422</a>。</p>
+</li>
+<li><p>[+] <a href="option.html#series-sunburst">旭日图（sunburst）</a> 支持了 <a href="option.html#series-sunburst.label.minAngle">series-sunburst.label.minAngle</a>。当一个扇形区的角度小于该值时，该扇形区对应的文字不显示。可以用来对较小的扇形区隐藏文字。参见 <a href="https://github.com/ecomfe/echarts/issues/7614">#7614</a>。</p>
+</li>
+<li><p>[+] <a href="option.html#series-sunburst">旭日图（sunburst）</a> 支持了 tooltip。参见 <a href="https://github.com/ecomfe/echarts/issues/7691">#7691</a>。</p>
+</li>
+<li><p>[+] <a href="option.html#series-sunburst">旭日图（sunburst）</a> 支持了再 level 和单个扇形块层级设置 <a href="option.html#series-sunburst.nodeClick">series-sunburst.nodeClick</a>。参见 <a href="https://github.com/ecomfe/echarts/issues/7541">#7541</a>。</p>
+</li>
+<li><p>[^] 修正了 <a href="option.html#series-line">折线图</a> 超出坐标系边界的问题。</p>
+</li>
+<li><p>[^] 修复了 <a href="option.html#xAxis.splitArea">splitArea</a> 最后一个区域不显示的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/7118">#7118</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="option.html#series-sunburst">旭日图（sunburst）</a> 修改渐变色时引起的 bug。参见 <a href="https://github.com/ecomfe/echarts/issues/7569">#7569</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="option.html#series-sunburst">旭日图（sunburst）</a> 不引入 <a href="option.html#visualMap">视觉映射组件（visualMap）</a> 会报错的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/7575">#7575</a>。</p>
+</li>
+<li><p>[^] 修复了当数据量小于 <a href="option.html#series-scatter.progressive">progressive</a> 时 <a href="api.html#echartsInstance.appendData">apendData</a> 无效的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/7718">#7718</a> 和 <a href="https://github.com/ecomfe/echarts/issues/7625">#7625</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="api.html#echartsInstance.appendData">apendData</a> 导致系列颜色变化的问题。</p>
+</li>
+<li><p>[^] 修复了 <a href="option.html#tooltip.axisPointer.label.show">tooltip.axisPointer.label.show</a> 设置为 <code>false</code> 时无效的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/7725">#7725</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="option.html#series-map">地图系列</a> 无数据区域不能选中的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/7629">#7629</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="option.html#series-candlestick">K线图（candlestick）</a> 的 <code>encode</code> 问题。参见 <a href="https://github.com/ecomfe/echarts/issues/7715">#7715</a>。</p>
+</li>
+<li><p>[^] 修复了数据项为空的判断逻辑。这钱的逻辑导致了当数据项长度不一时，自定义系列的 <a href="option.html#series-custom.renderItem">renderItem</a> 可能不能进入，以及 <a href="option.html#dataset">dataset</a> 被使用时可能不能渲染的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/7733">#7733</a>。</p>
+</li>
+<li><p>[^] 修复了 <code>textStyle</code> 向后兼容的逻辑。</p>
+</li>
+</ul>
 <h2 id="v4-0-2">v4.0.2</h2>
 <div class="time">2018-01-18</div>
 
