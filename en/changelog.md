@@ -1,37 +1,37 @@
 ## v4.0.3
-<div class="time">2018-02-26</div>
+<div class="time">2018-02-27</div>
 
 + **[+] ECharts has been able to work on WeChat Applet.**
 
-+ [+] Added a new smooth policy, which corrects some undesired smooth result. See details in [series-line.smooth](option.html#series-line.smooth) and [series-line.smoothMonotone](option.html#series-line.smoothMonotone). Fixed [#7158](https://github.com/ecomfe/echarts/issues/7158).
++ [+] Added a new smooth policy, which corrects some undesired smooth result. See details in [series-line.smooth](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-line.smooth) and [series-line.smoothMonotone](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-line.smoothMonotone). Fixed [#7158](https://github.com/ecomfe/echarts/issues/7158).
 
-+ [+] Supported [series-line.symbolOffset](option.html#series-line.symbolOffset) of axis arrow. See [#7422](https://github.com/ecomfe/echarts/issues/7422).
++ [+] Supported [series-line.symbolOffset](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-line.symbolOffset) of axis arrow. See [#7422](https://github.com/ecomfe/echarts/issues/7422).
 
-+ [+] Supported [series-sunburst.label.minAngle](option.html#series-sunburst.label.minAngle), which enables hiding text if the sector is less then the `minAngle`. See [#7614](https://github.com/ecomfe/echarts/issues/7614).
++ [+] Supported [series-sunburst.label.minAngle](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-sunburst.label.minAngle), which enables hiding text if the sector is less then the `minAngle`. See [#7614](https://github.com/ecomfe/echarts/issues/7614).
 
-+ [+] Supported tooltip in [sunburst](option.html#series-sunburst). See [#7691](https://github.com/ecomfe/echarts/issues/7691).
++ [+] Supported tooltip in [sunburst](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-sunburst). See [#7691](https://github.com/ecomfe/echarts/issues/7691).
 
-+ [+] Supported configuring [series-sunburst.nodeClick](option.html#series-sunburst.nodeClick) in level or single sector. See [#7541](https://github.com/ecomfe/echarts/issues/7541).
++ [+] Supported configuring [series-sunburst.nodeClick](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-sunburst.nodeClick) in level or single sector. See [#7541](https://github.com/ecomfe/echarts/issues/7541).
 
-+ [^] Fixed shape clip when [line chart](option.html#series-line) is overflow cartesian area.
++ [^] Fixed shape clip when [line chart](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-line) is overflow cartesian area.
 
-+ [^] Fixed that the last area of [splitArea](option.html#xAxis.splitArea) did not display. See [#7118](https://github.com/ecomfe/echarts/issues/7118).
++ [^] Fixed that the last area of [splitArea](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.splitArea) did not display. See [#7118](https://github.com/ecomfe/echarts/issues/7118).
 
-+ [^] Fixed gradient color bug of [sunburst](option.html#series-sunburst). See [#7569](https://github.com/ecomfe/echarts/issues/7569).
++ [^] Fixed gradient color bug of [sunburst](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-sunburst). See [#7569](https://github.com/ecomfe/echarts/issues/7569).
 
-+ [^] Fixed the case when [visualMap](option.html#visualMap) component is not imported for [sunburst](option.html#series-sunburst). See [#7575](https://github.com/ecomfe/echarts/issues/7575).
++ [^] Fixed the case when [visualMap](https://ecomfe.github.io/echarts-doc/public/en/option.html#visualMap) component is not imported for [sunburst](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-sunburst). See [#7575](https://github.com/ecomfe/echarts/issues/7575).
 
-+ [^] Fixed that [apendData](api.html#echartsInstance.appendData) did not work when data amount was less then [progressive](option.html#series-scatter.progressive) limit. See [#7718](https://github.com/ecomfe/echarts/issues/7718) and [#7625](https://github.com/ecomfe/echarts/issues/7625).
++ [^] Fixed that [apendData](https://ecomfe.github.io/echarts-doc/public/en/api.html#echartsInstance.appendData) did not work when data amount was less then [progressive](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-scatter.progressive) limit. See [#7718](https://github.com/ecomfe/echarts/issues/7718) and [#7625](https://github.com/ecomfe/echarts/issues/7625).
 
 + [^] Fixed that [apendData](api.html#echartsInstance.appendData) caused series color changed if series name was not specified.
 
-+ [^] Fixed that [tooltip.axisPointer.label.show](option.html#tooltip.axisPointer.label.show) did not work when set as `false`. See [#7725](https://github.com/ecomfe/echarts/issues/7725).
++ [^] Fixed that [tooltip.axisPointer.label.show](https://ecomfe.github.io/echarts-doc/public/en/option.html#tooltip.axisPointer.label.show) did not work when set as `false`. See [#7725](https://github.com/ecomfe/echarts/issues/7725).
 
-+ [^] Fixed that [map](option.html#series-map) could not be selected if an area had no data. See [#7629](https://github.com/ecomfe/echarts/issues/7629).
++ [^] Fixed that [map](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-map) could not be selected if an area had no data. See [#7629](https://github.com/ecomfe/echarts/issues/7629).
 
-+ [^] Fixed [candlestick](option.html#series-candlestick) encode problem. See [#7715](https://github.com/ecomfe/echarts/issues/7715).
++ [^] Fixed [candlestick](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-candlestick) encode problem. See [#7715](https://github.com/ecomfe/echarts/issues/7715).
 
-+ [^] Fixed the data item empty check logic, which caused that [renderItem](option.html#series-custom.renderItem) could not enter when value array length not the same, and [dataset](option.html#dataset) could not be displayed. See [#7733](https://github.com/ecomfe/echarts/issues/7733).
++ [^] Fixed the data item empty check logic, which caused that [renderItem](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.renderItem) could not enter when value array length not the same, and [dataset](https://ecomfe.github.io/echarts-doc/public/en/option.html#dataset) could not be displayed. See [#7733](https://github.com/ecomfe/echarts/issues/7733).
 
 + [^] Fixed the textStyle compatibility logic.
 
