@@ -18,6 +18,10 @@ Align of text, which can be `'left'`, `'center'`, or `'right'`. Note that `'left
 
 ~[700x400](${galleryViewPath}doc-example/sunburst-label-align&edit=1&reset=1)
 
+#${prefix} minAngle(number) = null
+
+If angle of data piece is smaller than this value (in degrees), then text is not displayed. This is used for hiding text for small piece of data.
+
 {{use:partial-label(
     prefix=${prefix},
     defaultPosition="'inside'",

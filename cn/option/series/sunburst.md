@@ -18,6 +18,11 @@
 
 ~[700x400](${galleryViewPath}doc-example/sunburst-label-align&edit=1&reset=1)
 
+#${prefix} minAngle(number) = null
+
+当某个扇形块的角度小于该值（角度制）时，扇形块对应的文字不显示。该值用以隐藏过小扇形块中的文字。
+
+
 {{use:partial-label(
     prefix=${prefix},
     defaultPosition="'inside'",
