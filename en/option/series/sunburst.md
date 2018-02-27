@@ -67,6 +67,10 @@ In ECharts, *emphasis* is for styles when mouse hovers. For Sunburst charts, the
     defaultOpacity=1
 )}}
 
+
+
+{{ target: partial-sunburst-other-state }}
+
 #${prefix} emphasis(Object)
 
 Item style when mouse is hovering. See [highlightPolicy](~series-sunburst.highlightPolicy).
@@ -91,7 +95,7 @@ Item style when mouse is hovering related items. See [highlightPolicy](~series-s
     prefix="##" + ${prefix}
 )}}
 
-##${prefix} downplay(Object)
+#${prefix} downplay(Object)
 
 Item style when mouse is hovering unrelated items. See [highlightPolicy](~series-sunburst.highlightPolicy).
 
@@ -187,6 +191,18 @@ See [series-sunburst.data.target](~series-sunburst.data.target).
 ### target(string) = 'blank'
 
 Like `target` attribute of HTML `<a>`, which can either be `'blank'` or `'self'`. See [series-sunburst.data.link](~series-sunburst.data.link).
+
+
+{{use: partial-sunburst-label-props(
+    prefix="###"
+)}}
+
+{{use: partial-sunburst-itemStyle-props(
+    prefix="###"
+)}}
+
+{{ use: partial-sunburst-other-state(prefix="##") }}
+
 
 ### children(Array)
 
