@@ -13,6 +13,8 @@
 
 + [+] Supported configuring [series-sunburst.nodeClick](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-sunburst.nodeClick) in level or single sector. See [#7541](https://github.com/ecomfe/echarts/issues/7541).
 
++ [+] Supported [stack data](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-bar.stack) by value but not index. Fixed stack bug when using [dataset](https://ecomfe.github.io/echarts-doc/public/en/option.html#dataset). See [#7535](https://github.com/ecomfe/echarts/issues/7535), [#7560](https://github.com/ecomfe/echarts/issues/7560), [#6861](https://github.com/ecomfe/echarts/issues/6861).
+
 + [^] Fixed shape clip when [line chart](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-line) is overflow cartesian area.
 
 + [^] Fixed that the last area of [splitArea](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.splitArea) did not display. See [#7118](https://github.com/ecomfe/echarts/issues/7118).

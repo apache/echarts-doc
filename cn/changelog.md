@@ -14,6 +14,8 @@
 
 + [+] [旭日图（sunburst）](option.html#series-sunburst) 支持了再 level 和单个扇形块层级设置 [series-sunburst.nodeClick](option.html#series-sunburst.nodeClick)。参见 [#7541](https://github.com/ecomfe/echarts/issues/7541)。
 
++ [+] 支持了按值进行 [堆积](option.html#series-bar.stack)，原先是按照数据顺序堆积，在一些场景下不够合理。修复了 [dataset](option.html#dataset) 不能使用堆积的问题。参见 [#7535](https://github.com/ecomfe/echarts/issues/7535)，[#7560](https://github.com/ecomfe/echarts/issues/7560), [#6861](https://github.com/ecomfe/echarts/issues/6861)。
+
 + [^] 修正了 [折线图](option.html#series-line) 超出坐标系边界的问题。
 
 + [^] 修复了 [splitArea](option.html#xAxis.splitArea) 最后一个区域不显示的问题。参见 [#7118](https://github.com/ecomfe/echarts/issues/7118)。
