@@ -2,7 +2,7 @@
 <div class="time">2018-02-26</div>
 
 
-+ **[+] ECharts 可以在微信小程序中使用了。**
++ **[+] ECharts 可以在微信小程序中使用了。参见 [教程](tutorial.html#%E5%9C%A8%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts)。**
 
 + [+] 优化折线图平滑算法. 参见 [series-line.smooth](option.html#series-line.smooth) 和 [series-line.smoothMonotone](option.html#series-line.smoothMonotone) 和 [#7158](https://github.com/ecomfe/echarts/issues/7158)。
 
