@@ -1,3 +1,12 @@
+## v4.0.4
+<div class="time">2018-02-28</div>
+
+[Recovery Build]
+
++ [^] 修正柱状图布局的问题。参见 [#7831](https://github.com/ecomfe/echarts/issues/7831)。
+
+
+
 ## v4.0.3
 <div class="time">2018-02-26</div>
 
@@ -6,7 +15,7 @@
 
 + [+] 优化折线图平滑算法. 参见 [series-line.smooth](option.html#series-line.smooth) 和 [series-line.smoothMonotone](option.html#series-line.smoothMonotone) 和 [#7158](https://github.com/ecomfe/echarts/issues/7158)。
 
-+ [+] 支持坐标轴两端的箭头偏移值 [series-line.symbolOffset](option.html#series-line.symbolOffset) of axis arrow. 参见 [#7422](https://github.com/ecomfe/echarts/issues/7422)。
++ [+] 支持坐标轴两端的箭头偏移值 [series-line.symbolOffset](option.html#series-line.symbolOffset) of axis arrow。参见 [#7422](https://github.com/ecomfe/echarts/issues/7422)。
 
 + [+] [旭日图（sunburst）](option.html#series-sunburst) 支持了 [series-sunburst.label.minAngle](option.html#series-sunburst.label.minAngle)。当一个扇形区的角度小于该值时，该扇形区对应的文字不显示。可以用来对较小的扇形区隐藏文字。参见 [#7614](https://github.com/ecomfe/echarts/issues/7614)。
 

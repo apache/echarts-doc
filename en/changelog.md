@@ -1,3 +1,11 @@
+## v4.0.4
+<div class="time">2018-02-28</div>
+
+[Recovery Build]
+
++ [^] Fixed bar layout problem. See [#7831](https://github.com/ecomfe/echarts/issues/7831).
+
+
 ## v4.0.3
 <div class="time">2018-02-27</div>
 
