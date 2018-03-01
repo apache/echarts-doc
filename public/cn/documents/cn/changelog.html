@@ -1,3 +1,10 @@
+<h2 id="v4-0-4">v4.0.4</h2>
+<div class="time">2018-02-28</div>
+
+<p>[Recovery Build]</p>
+<ul>
+<li>[^] 修正柱状图布局的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/7831">#7831</a>。</li>
+</ul>
 <h2 id="v4-0-3">v4.0.3</h2>
 <div class="time">2018-02-26</div>
 
@@ -7,13 +14,15 @@
 </li>
 <li><p>[+] 优化折线图平滑算法. 参见 <a href="option.html#series-line.smooth">series-line.smooth</a> 和 <a href="option.html#series-line.smoothMonotone">series-line.smoothMonotone</a> 和 <a href="https://github.com/ecomfe/echarts/issues/7158">#7158</a>。</p>
 </li>
-<li><p>[+] 支持坐标轴两端的箭头偏移值 <a href="option.html#series-line.symbolOffset">series-line.symbolOffset</a> of axis arrow. 参见 <a href="https://github.com/ecomfe/echarts/issues/7422">#7422</a>。</p>
+<li><p>[+] 支持坐标轴两端的箭头偏移值 <a href="option.html#series-line.symbolOffset">series-line.symbolOffset</a> of axis arrow。参见 <a href="https://github.com/ecomfe/echarts/issues/7422">#7422</a>。</p>
 </li>
 <li><p>[+] <a href="option.html#series-sunburst">旭日图（sunburst）</a> 支持了 <a href="option.html#series-sunburst.label.minAngle">series-sunburst.label.minAngle</a>。当一个扇形区的角度小于该值时，该扇形区对应的文字不显示。可以用来对较小的扇形区隐藏文字。参见 <a href="https://github.com/ecomfe/echarts/issues/7614">#7614</a>。</p>
 </li>
 <li><p>[+] <a href="option.html#series-sunburst">旭日图（sunburst）</a> 支持了 tooltip。参见 <a href="https://github.com/ecomfe/echarts/issues/7691">#7691</a>。</p>
 </li>
 <li><p>[+] <a href="option.html#series-sunburst">旭日图（sunburst）</a> 支持了再 level 和单个扇形块层级设置 <a href="option.html#series-sunburst.nodeClick">series-sunburst.nodeClick</a>。参见 <a href="https://github.com/ecomfe/echarts/issues/7541">#7541</a>。</p>
+</li>
+<li><p>[+] 支持了按值进行 <a href="option.html#series-bar.stack">堆积</a>，原先是按照数据顺序堆积，在一些场景下不够合理。修复了 <a href="option.html#dataset">dataset</a> 不能使用堆积的问题。参见 <a href="https://github.com/ecomfe/echarts/issues/7535">#7535</a>，<a href="https://github.com/ecomfe/echarts/issues/7560">#7560</a>, <a href="https://github.com/ecomfe/echarts/issues/6861">#6861</a>。</p>
 </li>
 <li><p>[^] 修正了 <a href="option.html#series-line">折线图</a> 超出坐标系边界的问题。</p>
 </li>

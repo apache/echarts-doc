@@ -1,3 +1,11 @@
+## v4.0.4
+<div class="time">2018-02-28</div>
+
+[Recovery Build]
+
++ [^] Fixed bar layout problem. See [#7831](https://github.com/ecomfe/echarts/issues/7831).
+
+
 ## v4.0.3
 <div class="time">2018-02-27</div>
 
@@ -12,6 +20,8 @@
 + [+] Supported tooltip in [sunburst](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-sunburst). See [#7691](https://github.com/ecomfe/echarts/issues/7691).
 
 + [+] Supported configuring [series-sunburst.nodeClick](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-sunburst.nodeClick) in level or single sector. See [#7541](https://github.com/ecomfe/echarts/issues/7541).
+
++ [+] Supported [stack data](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-bar.stack) by value but not index. Fixed stack bug when using [dataset](https://ecomfe.github.io/echarts-doc/public/en/option.html#dataset). See [#7535](https://github.com/ecomfe/echarts/issues/7535), [#7560](https://github.com/ecomfe/echarts/issues/7560), [#6861](https://github.com/ecomfe/echarts/issues/6861).
 
 + [^] Fixed shape clip when [line chart](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-line) is overflow cartesian area.
 
