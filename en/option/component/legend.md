@@ -74,6 +74,10 @@ Image width of legend symbol.
 
 Image height of legend symbol.
 
+## symbolKeepAspect(boolean) = true
+
+Whether to keep aspect for icons (from `series.symbol` or user-defined `legend.data.icon`) in the form of `path://`.
+
 ## formatter(string|Function) = null
 
 Formatter is used to format label of legend, which supports string template and callback function.

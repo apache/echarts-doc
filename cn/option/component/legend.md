@@ -74,6 +74,10 @@ ECharts 3 中单个 echarts 实例中可以存在多个图例组件，会方便�
 
 图例标记的图形高度。
 
+## symbolKeepAspect(boolean) = true
+
+如果图标（可能来自系列的 `symbol` 或用户自定义的 `legend.data.icon`）是 `path://` 的形式，是否在缩放时保持该图形的长宽比。
+
 ## formatter(string|Function) = null
 
 用来格式化图例文本，支持字符串模板和回调函数两种形式。
