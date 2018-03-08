@@ -52,6 +52,8 @@ Notice: There are some difference in treemap configuration between ECharts3 and 
 
 {{use: partial-component-id(prefix="#")}}
 
+{{ use: partial-series-name() }}
+
 {{ use: partial-rect-layout-width-height(
     componentName='treemap ',
     defaultLeft: 'center',

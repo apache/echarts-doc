@@ -52,6 +52,8 @@ treemap 首先是把数值映射到『面积』这种视觉元素上。
 
 {{use: partial-component-id(prefix="#")}}
 
+{{ use: partial-series-name() }}
+
 {{ use: partial-rect-layout-width-height(
     componentName='treemap ',
     defaultLeft: 'center',

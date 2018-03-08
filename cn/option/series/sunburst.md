@@ -130,6 +130,8 @@ ECharts 中，通常使用 *emphasis* 表示鼠标移动到图形上后的高亮
 
 {{use: partial-component-id(prefix="#")}}
 
+{{ use: partial-series-name() }}
+
 {{use: component-circular-layout(
     componentName="旭日图",
     defaultRadius="[0, '75%']"
