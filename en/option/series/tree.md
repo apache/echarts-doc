@@ -44,9 +44,10 @@ The layout of the tree, which can be `orthogonal` and `radial` 。Here the `orth
 ~[800x800](${galleryViewPath}tree-radial&edit=1&reset=1)
 
 
-## orient(string) = 'horizontal'
+## orient(string) = 'LR'
 
-The direction of the `orthogonal` layout in the tree, the corresponding parameter value is `horizontal` or `vertical`.
+The direction of the `orthogonal` layout in the tree diagram. That means this configuration takes effect only if `layout = 'orthogonal'`. The corresponding directions are `from left to right`, `from right to left`, `from top to bottom`, `from bottom to top`, with shorthand values `'LR'`, `'RL'`, `'TB'`, `'BT'`. 
+**Note: The previous configuration value `'horizontal'` is equivalent to `'LR'`, `'vertical'` is equivalent to `'TB'`.**
 
 
 {{ use:partial-symbol(
