@@ -13,6 +13,8 @@
 
 ## type(string) = 'graph'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 {{ use: partial-legend-hover-link() }}

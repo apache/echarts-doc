@@ -14,6 +14,8 @@ The pie chart is mainly used for showing proportion of different categories. Eac
 
 ## type(string) = 'pie'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 {{ use: partial-legend-hover-link }}

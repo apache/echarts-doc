@@ -25,6 +25,9 @@ Piecewise visualMap component works in one of the three modes:
 
 Used to determine it is a piecewise visualMap component.
 
+
+{{use: partial-component-id(prefix="#")}}
+
 ## splitNumber(number) = 5
 
 Continuous data can be divide into pieces averagely according to splitNumber, that is, if splitNumber is 5, data will be sliced into 5 pieces.

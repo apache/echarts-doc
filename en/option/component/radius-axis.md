@@ -5,6 +5,8 @@
 
 Radial axis of polar coordinate.
 
+{{use: partial-component-id(prefix="#")}}
+
 ## polarIndex(number) = 0
 
 Index of radial axis in polor coordinate. It's the first axis by default.

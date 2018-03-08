@@ -20,6 +20,8 @@
 
 ## type(string) = 'inside'
 
+{{use: partial-component-id(prefix="#")}}
+
 ## disabled(boolean) = false
 
 是否停止组件的功能。

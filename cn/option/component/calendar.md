@@ -44,6 +44,8 @@
 
 ---
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-rect-layout-width-height(
     componentName="calendar",
     defaultLeft="80",

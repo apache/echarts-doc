@@ -12,6 +12,8 @@ It could be used with [rectangular coordinate](~grid) and [polar coordinate](~po
 
 ## type(string) = 'scatter'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 {{use: partial-coord-sys(

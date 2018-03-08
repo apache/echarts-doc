@@ -8,6 +8,8 @@ Bar chart shows different data through the height of a bar, which is used in [re
 
 ## type(string) = 'bar'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 {{ use: partial-legend-hover-link() }}

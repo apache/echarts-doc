@@ -12,7 +12,6 @@ ECharts 3 中单个 echarts 实例中可以存在多个图例组件，会方便�
 当图例数量过多时，可以使用 [滚动图例（垂直）](${galleryEditorPath}pie-legend&edit=1&reset=1) 或 [滚动图例（水平）](${galleryEditorPath}radar2&edit=1&reset=1)，参见：[legend.type](~legend.type)
 
 
-
 ## type(string)
 
 图例的类型。可选值：
@@ -35,6 +34,8 @@ ECharts 3 中单个 echarts 实例中可以存在多个图例组件，会方便�
 + [legend.pageTextStyle](~legend.pageTextStyle)
 + [legend.animation](~legend.animation)
 + [legend.animationDurationUpdate](~legend.animationDurationUpdate)
+
+{{use: partial-component-id(prefix="#")}}
 
 ## show(boolean) = true
 

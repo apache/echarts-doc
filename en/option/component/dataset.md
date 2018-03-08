@@ -9,6 +9,7 @@ More details about `dataset` can be checked in the [tutorial](https://ecomfe.git
 
 ---
 
+{{use: partial-component-id(prefix="#")}}
 
 ## source(Array|Object)
 

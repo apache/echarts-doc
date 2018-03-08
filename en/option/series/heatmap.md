@@ -17,6 +17,8 @@ Here are the examples using it in rectangular coordinate and geographic coordina
 
 ## type(string) = 'heatmap'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 {{use: partial-coord-sys(

@@ -10,6 +10,8 @@
 
 ## type(string) = 'gauge'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 {{ use: partial-circular-layout }}

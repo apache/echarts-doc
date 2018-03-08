@@ -11,6 +11,8 @@ Here is a custom example of radar component.
 
 ~[400x400](${galleryViewPath}doc-example/radar&edit=1&reset=1)
 
+{{use: partial-component-id(prefix="#")}}
+
 {{use: component-circular-layout(
     defaultRadius="75%",
     defaultRadiusType="number|string"

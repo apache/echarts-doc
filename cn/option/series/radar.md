@@ -13,6 +13,8 @@
 
 ## type(string) = 'radar'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 ## radarIndex(number)

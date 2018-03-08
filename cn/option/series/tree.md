@@ -19,6 +19,8 @@
 
 ## type(string) = 'tree'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 {{ use: partial-rect-layout-width-height(

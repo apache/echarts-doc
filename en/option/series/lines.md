@@ -15,6 +15,8 @@ ECharts 2.x uses the `markLine` to draw the migrating effect, while in ECharts 3
 
 ## type(string) = 'lines'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 

@@ -15,6 +15,8 @@ Series of same [map type](~series-map.map) will show in one map. At this point, 
 
 ## type(string) = 'map'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 {{ use: geo-common(
