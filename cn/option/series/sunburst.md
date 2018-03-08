@@ -128,6 +128,7 @@ ECharts 中，通常使用 *emphasis* 表示鼠标移动到图形上后的高亮
 
 ## type(string) = 'sunburst'
 
+{{use: partial-component-id(prefix="#")}}
 
 {{use: component-circular-layout(
     componentName="旭日图",

@@ -27,6 +27,7 @@
 **Tip:**
 geo 区域的颜色也可以被 map series 所控制，参见 [series-map.geoIndex](~series-map.geoIndex)。
 
+{{use: partial-component-id(prefix="#")}}
 
 ## show(boolean) = true
 

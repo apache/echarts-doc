@@ -5,6 +5,8 @@
 
 直角坐标系 grid 中的 y 轴，一般情况下单个 grid 组件最多只能放左右两个 y 轴，多于两个 y 轴需要通过配置 [offset](~yAxis.offset) 属性防止同个位置多个 Y 轴的重叠。
 
+{{use: partial-component-id(prefix="#")}}
+
 ## show(boolean) = true
 
 是否显示 y 轴。

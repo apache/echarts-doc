@@ -47,6 +47,8 @@ Icon 的 path 字符串，ECharts 3 中支持使用自定义的 svg path 作为 
 
 ~[600x400](${galleryViewPath}line-marker&reset=1&edit=1)
 
+{{use: partial-component-id(prefix="#")}}
+
 ## show(boolean) = true
 
 是否显示工具栏组件。

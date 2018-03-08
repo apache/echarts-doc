@@ -20,6 +20,7 @@
 
 类型为连续型。
 
+{{use: partial-component-id(prefix="#")}}
 
 ## min(number)
 

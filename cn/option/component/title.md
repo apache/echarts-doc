@@ -1,6 +1,7 @@
 
 {{target: component-title}}
 
+
 # title(Object)
 
 标题组件，包含主标题和副标题。
@@ -10,6 +11,7 @@
 **例如下面不同缓动函数效果的示例，每一个缓动效果图都带有一个标题组件：**
 ~[700x400](${galleryViewPath}line-easing&edit=1&reset=1)
 
+{{use: partial-component-id(prefix="#")}}
 
 ## show(boolean) = true
 

@@ -30,6 +30,8 @@ We use red to represent increasing and blue decreasing by default. If you want t
 
 ## type(string) = 'candlestick'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{use: partial-coord-sys(
     seriesType="cartesian2d",
     coordSysDefault="'cartesian2d'",

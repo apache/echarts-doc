@@ -7,6 +7,8 @@ An axis with a single dimension. It can be used to display data in one dimension
 
 ~[700x500](${galleryViewPath}scatter-single-axis&edit=1&reset=1)
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-rect-layout-width-height(
     componentName="grid ",
     defaultLeft="'5%'",

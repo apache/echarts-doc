@@ -5,6 +5,8 @@
 
 直角坐标系 grid 中的 x 轴，一般情况下单个 grid 组件最多只能放上下两个 x 轴，多于两个 x 轴需要通过配置 [offset](~xAxis.offset) 属性防止同个位置多个 x 轴的重叠。
 
+{{use: partial-component-id(prefix="#")}}
+
 ## show(boolean) = true
 
 是否显示 x 轴。

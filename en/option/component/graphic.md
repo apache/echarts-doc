@@ -105,8 +105,6 @@ Notice, when using `setOption` to modify existing elements, if id is not specifi
 
 **Graphic Element Configuration**
 
-介绍每个图形元素的配置。不同类型的图形元素的设置有这些共性：
-
 Different types of graphic elements has their own configuration respectively, but they have these common configuration below:
 
 ```javascript
@@ -356,7 +354,7 @@ Note, [bounding](graphic.elements.bounding) can be used to specify whether the e
 
 Detailed configurations are listed as follows.
 
-
+{{use: partial-component-id(prefix="#")}}
 
 ## elements(Array)
 

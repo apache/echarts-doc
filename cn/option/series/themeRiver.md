@@ -22,6 +22,8 @@
 
 ## type(string) = 'themeRiver'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-rect-layout-width-height(
     componentName='thmemRiver',
     defaultLeft: '5%',

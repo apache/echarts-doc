@@ -108,7 +108,7 @@ myChart.dispatchAction({
 下面是详细配置。
 
 
-
+{{use: partial-component-id(prefix="#")}}
 
 
 ## toolbox(Array) = ['rect', 'polygon', 'keep', 'clear']

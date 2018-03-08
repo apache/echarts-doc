@@ -22,6 +22,8 @@ What's more, the time attribute of the orinigal dataset would map to a single ti
 
 ## type(string) = 'themeRiver'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-rect-layout-width-height(
     componentName='thmemRiver',
     defaultLeft: '5%',

@@ -14,6 +14,8 @@
 
 ## type(string) = 'line'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 {{ use: partial-coord-sys(

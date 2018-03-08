@@ -126,6 +126,7 @@ Sunburst charts support data mining by default. That means, when a user clicks a
 
 ## type(string) = 'sunburst'
 
+{{use: partial-component-id(prefix="#")}}
 
 {{use: component-circular-layout(
     componentName="Sunburst chart",

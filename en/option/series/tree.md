@@ -18,6 +18,8 @@ The tree diagram is mainly used to visualize the tree data structure, which is a
 
 ## type(string) = 'tree'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 {{ use: partial-rect-layout-width-height(

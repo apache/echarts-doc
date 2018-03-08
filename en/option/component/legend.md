@@ -36,6 +36,8 @@ When `'scroll'` used, these options below can be used for detailed configuration
 + [legend.animationDurationUpdate](~legend.animationDurationUpdate)
 
 
+{{use: partial-component-id(prefix="#")}}
+
 ## show(boolean) = true
 
 

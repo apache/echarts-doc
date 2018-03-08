@@ -45,6 +45,9 @@ A group of utility tools, which includes [export](~toolbox.feature.saveAsImage),
 
 ~[600x400](${galleryViewPath}line-marker&reset=1&edit=1)
 
+
+{{use: partial-component-id(prefix="#")}}
+
 ## show(boolean) = true
 
 Whether to show toolbox component.

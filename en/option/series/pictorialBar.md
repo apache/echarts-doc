@@ -52,6 +52,8 @@ See the example below:
 
 ## type(string) = 'pictorialBar'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 {{ use: partial-legend-hover-link() }}
