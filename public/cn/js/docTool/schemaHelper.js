@@ -16,8 +16,7 @@ define(function (require) {
      * [schema格式]：
      * {
      *     type: 类型，如'Array', 'Object', 'string', 'Function'，或者['Array', 'string']
-     *     descriptionCN: '中文解释文字'
-     *     descriptionEN: '英文解释文字'
+     *     description: '解释文字'
      *     default:
      *         default value字段
      *     defaultExplanation:
@@ -384,8 +383,7 @@ define(function (require) {
             if (context.anyText
                 && (
                     pathFuzzyMatch(docTree, context.anyText)
-                    || (docTree.descriptionCN && docTree.descriptionCN.indexOf(context.anyText) >= 0)
-                    || (docTree.descriptionEN && docTree.descriptionEN.indexOf(context.anyText) >= 0)
+                    || (docTree.description && docTree.description.indexOf(context.anyText) >= 0)
                 )
             ) {
                 context.result.push(docTree);
@@ -715,8 +713,7 @@ define(function (require) {
                 type: schemaItem.type,
                 typeEnum: isEnumItem ? getTypeEnum(schemaItem) : null,
                 parent: renderBase,
-                descriptionCN: result.descriptionCN,
-                descriptionEN: result.descriptionEN,
+                description: result.description,
                 defau: result.defau,
                 optionPathForHash: schemaHelper.stringifyOptionPath(
                     context.optionPath, {useSquareBrackets: false}
@@ -746,16 +743,16 @@ define(function (require) {
             //      {
             //          name: 'visualMap',
             //          type: 'Array',
-            //          descriptionCN: 'visualMap introduce',
+            //          description: 'visualMap introduce',
             //          items: {
             //              anyOf: [
             //                  {
             //                      type: 'continuous',
-            //                      descriptionCN: 'visualMapContinuous introduce'
+            //                      description: 'visualMapContinuous introduce'
             //                  },
             //                  {
             //                      type: 'piecewise',
-            //                      descriptionCN: 'visualMapPiecewise introduce'
+            //                      description: 'visualMapPiecewise introduce'
             //                  }
             //              ]
             //          }
@@ -767,7 +764,7 @@ define(function (require) {
             //      {
             //          name: 'data',
             //          type: 'Array',
-            //          descriptionCN: 'description of data',
+            //          description: 'description of data',
             //          items: {
             //              properties: {
             //                  ...
@@ -788,8 +785,7 @@ define(function (require) {
             ) ? arrayFrom[0] : schemaItem;
 
             var result = {
-                descriptionCN: item.descriptionCN,
-                descriptionEN: item.descriptionEN,
+                description: item.description,
                 defau: {type: item.type}
             };
 

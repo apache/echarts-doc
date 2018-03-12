@@ -12,6 +12,10 @@ define(function (require) {
      */
     var cn = {
         langCode: 'cn',
+        quickLinkTutorial: '教程',
+        quickLinkAPI: 'API',
+        quickLinkOption: '配置项',
+        quickLinkOptionGL: 'GL',
         queryBoxPlaceholderFuzzyPath: '配置项模糊搜索（快捷键\'/\'）',
         queryBoxPlaceholderAnyText: '全文搜索（快捷键\'/\'）',
         queryBoxTextFuzzyPath: '配置项搜索',
@@ -32,6 +36,10 @@ define(function (require) {
      */
     var en = {
         langCode: 'en',
+        quickLinkTutorial: 'Tutorial',
+        quickLinkAPI: 'API',
+        quickLinkOption: 'Option',
+        quickLinkOptionGL: 'GL',
         queryBoxPlaceholderFuzzyPath: 'Search (Short cut:\'/\'). Try input: ser(line).border',
         queryBoxPlaceholderAnyText: 'Search (Short cut:\'/\'). Try input: style',
         queryBoxTextFuzzyPath: 'In properties',

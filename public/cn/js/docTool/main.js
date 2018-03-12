@@ -13,12 +13,12 @@ define(function (require) {
     var hashHelper = require('./hashHelper');
     var perfectScrollbar = require('perfectScrollbar');
     var prettyPrint = require('prettyPrint');
-    var iconfont = docUtil.getGlobalArg('iconfont');
     var ecLog = require('ecLog');
+    var iconfont = docUtil.getGlobalArg('iconfont');
+    var pageName = docUtil.getGlobalArg('pageName');
 
     require('dt/componentConfig');
 
-    // var SCHEMA_URL = '/ecOption/schema.json';
     var TPL_TARGET = 'APIMain';
     var SELECTOR_HOVER_DESC = '.ecdoc-api-hover-desc';
     var SELECTOR_COLLAPSE_RADIO = '.query-collapse-radio input[type=radio]';
@@ -80,6 +80,20 @@ define(function (require) {
             return lang;
         },
 
+        _getSchemaURL: function (partName) {
+            var fileName = pageName !== 'option'
+                ? pageName
+                : pageName + (
+                    // !partName ? '_outline' : '_part_' + partName
+                    !partName ? '' : '_part_' + partName
+                );
+            return [
+                'documents',
+                lang.langCode,
+                fileName + '.json'
+            ].join('/');
+        },
+
         _initHash: function () {
             var that = this;
             hashHelper.initHash(parseHash);
@@ -112,11 +126,13 @@ define(function (require) {
         },
 
         _prepare: function () {
+            console.time('a');
             $.getJSON(
-                docUtil.addVersionArg(docUtil.getGlobalArg('schemaUrl'))
+                docUtil.addVersionArg(this._getSchemaURL())
             ).done($.proxy(onLoaded, this));
 
             function onLoaded(schema, catagory) {
+                console.timeEnd('a');
                 // Before render page
                 this._prepareDoc(schema);
 
@@ -162,17 +178,17 @@ define(function (require) {
 
         _initQuickLink: function () {
             var defs = [
-                ['tutorial', '教程'],
-                ['api', 'API'],
-                ['option', '配置项手册'],
-                ['option-gl', 'GL']
+                ['tutorial', lang.quickLinkTutorial],
+                ['api', lang.quickLinkAPI],
+                ['option', lang.quickLinkOption],
+                ['option-gl', lang.quickLinkOptionGL]
             ];
 
             var html = [];
 
             for (var i = 0; i < defs.length; i++) {
                 html.push(
-                    docUtil.getGlobalArg('pageName') === defs[i][0]
+                    pageName === defs[i][0]
                         ? '<span>' + defs[i][1] + '</span>'
                         : '<a href="' + defs[i][0] + '.html">' + defs[i][1] + '</a>'
                 );
@@ -566,9 +582,7 @@ define(function (require) {
             }
 
             // 不需要encodeHTML，本身就是html
-            var descText = lang.langCode === 'en'
-                ? (treeItem.descriptionEN || '')
-                : (treeItem.descriptionCN || '');
+            var descText = treeItem.description;
 
             if (removeIFrame) {
                 descText = descText.replace(IFR_REG, '');
@@ -709,9 +723,7 @@ define(function (require) {
     }
 
     function log(params) {
-        ecLog(dtLib.assign({
-            page: docUtil.getGlobalArg('pageName')
-        }, params));
+        ecLog(dtLib.assign({page: pageName}, params));
     }
 
     return api;
