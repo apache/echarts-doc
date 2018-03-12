@@ -17,9 +17,6 @@ Align of label text: `'left'` / `'right'`.
 
 
 
-{{ target: feature-icon-desc }}
-
-Path string for icon. In ECharts 3, user-defined svg path is supported to be used as icon, whose format could be refered at [SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData). It could be edited and exported from some graphic tools such as Adobe Illustrator.
 
 {{ target: feature-common}}
 
@@ -29,7 +26,7 @@ Whether to show the tool.
 #### title(boolean) = '${title}'
 
 #### icon
-{{ use: feature-icon-desc }}
+{{ use: partial-icon-image-path }}
 
 {{ use: feature-icon-style(name=${title}, prefix="###") }}
 
@@ -193,9 +190,9 @@ Defines which [yAxis](~yAxis) should be controlled. By default, it controls all 
 #### icon(Object)
 Zooming and restore icon path.
 ##### zoom(string)
-{{ use: feature-icon-desc }}
+{{ use: partial-icon-image-path }}
 ##### back(string)
-{{ use: feature-icon-desc }}
+{{ use: partial-icon-image-path }}
 #### title(Object)
 Restored and zoomed title text.
 ##### zoom(string) = 'area zooming'
@@ -220,13 +217,13 @@ Enabled magic types, including `'line'` (for line charts), `'bar'` (for bar char
 #### icon(Object)
 the different types of icon path , which could be configurated individually.
 ##### line(string)
-{{ use: feature-icon-desc }}
+{{ use: partial-icon-image-path }}
 ##### bar(string)
-{{ use: feature-icon-desc }}
+{{ use: partial-icon-image-path }}
 ##### stack(string)
-{{ use: feature-icon-desc }}
+{{ use: partial-icon-image-path }}
 ##### tiled(string)
-{{ use: feature-icon-desc }}
+{{ use: partial-icon-image-path }}
 #### title(Object)
 Title for different types, can be configured seperately.
 ##### line(string) = 'for line charts'
@@ -267,17 +264,17 @@ Icons used, whose values are:
 #### icon(Object)
 Icon path for each icon.
 ##### rect(string)
-{{ use: feature-icon-desc }}
+{{ use: partial-icon-image-path }}
 ##### polygon(string)
-{{ use: feature-icon-desc }}
+{{ use: partial-icon-image-path }}
 ##### lineX(string)
-{{ use: feature-icon-desc }}
+{{ use: partial-icon-image-path }}
 ##### lineY(string)
-{{ use: feature-icon-desc }}
+{{ use: partial-icon-image-path }}
 ##### keep(string)
-{{ use: feature-icon-desc }}
+{{ use: partial-icon-image-path }}
 ##### clear(string)
-{{ use: feature-icon-desc }}
+{{ use: partial-icon-image-path }}
 #### title(Object)
 Title.
 ##### rect(string) = 'Rectangle selection'
