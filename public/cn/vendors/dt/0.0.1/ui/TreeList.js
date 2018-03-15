@@ -10,11 +10,10 @@ define(function (require) {
     var encodeHTML = lib.encodeHTML;
 
     // Constant
-    var PATH_ATTR = 'data-item-path';
-    var LEVEL_ATTR = 'data-item-level';
-    var ENCODE_HTML_ATTR = 'data-item-encode-html';
     var SLIDE_INTERVAL = 200;
     var UNDEFINED;
+
+    var DATASOURCE_ID = 'id-0';
 
     /**
      * @class
@@ -100,11 +99,12 @@ define(function (require) {
             lib.assert(lib.obTypeOf(viewModel.highlighted) === 'obArray');
 
             this._enhanceOb();
+            this._prepareDatasource();
             this._initContent();
-            this._initTooltip();
+            // this._initTooltip();
             this._initChange();
             this._initMouse();
-            this._initExpand();
+            // this._initExpand();
         },
 
         /**
@@ -155,104 +155,141 @@ define(function (require) {
         /**
          * @private
          */
-        _initContent: function () {
-            var itemCss = this._getCss('item');
-            var parentCss = this._getCss('parent');
-            var thumbCss = this._getCss('thumb');
-            var collapsedCss = this._getCss('collapsed');
-            var textCss = this._getCss('text');
-            var listCss = this._getCss('list');
-            var postCss = this._getCss('post');
-            var html = [];
+        _prepareDatasource: function () {
+            var datasource = this._viewModel().datasource;
 
-            this._travelData(
-                this._viewModel().datasource,
-                {
-                    preList: function (treeList, thisPath, parent) {
-                        // 第一层（树林的根）展开，其他默认收缩。
-                        var display = thisPath === '' ? '' : 'display:none';
-                        html.push('<ul class="', listCss, '" style="', display, '">');
-                    },
-                    postList: function () {
-                        html.push('</ul>');
-                    },
-                    preChildren: function (dataItem, thisPath, parent, isLast, level) {
-                        var otherCss = (dataItem.children && dataItem.children.length)
-                            ? (parentCss + ' ' + collapsedCss)
-                            : '';
-                        var dataPath = ' ' + PATH_ATTR + '="' + thisPath + '" ';
-                        var dataLevel = ' ' + LEVEL_ATTR + '="' + level + '" ';
-                        var dataEncodeHTML = ' ' + ENCODE_HTML_ATTR + '="'
-                            + (dataItem.itemEncodeHTML !== false ? '1' : '0') + '" ';
-                        var anchor = dataItem.anchor ? ' name="' + dataItem.anchor + '" ' : ' ';
-                        var encode = dataItem.itemEncodeHTML !== false ? encodeHTML : returnInput;
-                        var textHTML = encode(toText(dataItem.text));
-                        var childrenPreHTML = encode(toText(dataItem.childrenPre));
-                        var childrenPostHTML = encode(toText(dataItem.childrenPost));
-                        var childrenBriefHTML = encode(toText(dataItem.childrenBrief));
+            this._containerMap = lib.createLiteHashMap();
 
-                        html.push(
-                            '<li class="', itemCss, ' ', otherCss, '" ',
-                                dataPath, dataLevel, dataEncodeHTML, '>',
-                            '<i class="', thumbCss, '"></i>', // 展开收起的控制器。
-                            anchor,
-                            '<span ',
-                                ' class="', textCss, '" ', dataPath, '>',
-                                textHTML, childrenPreHTML, childrenBriefHTML, childrenPostHTML,
-                            '</span>'
-                        );
-                    },
-                    postChildren: function (dataItem, thisPath, parent, isLast) {
-                        html.push('</li>');
-                        var encode = dataItem.itemEncodeHTML !== false ? encodeHTML : returnInput;
-                        if (isLast && parent && parent.childrenPost) {
-                            html.push('<li class="' , postCss, '">', encode(parent.childrenPost), '</li>');
-                        }
-                    }
-                }
-            );
+            var dataItemMap = this._dataItemMap = lib.createLiteHashMap();
+            var levelMap = this._levelMap = lib.createLiteHashMap();
 
-            this.el().innerHTML = html.join('');
+            this._travelData(datasource, function (dataItem, level) {
+                var id = dataItem.value;
+                dataItemMap.set(id, dataItem);
+                levelMap.set(id, level);
+            });
         },
 
         /**
          * @private
          */
-        _initTooltip: function () {
+        _initContent: function () {
             var datasource = this._viewModel().datasource;
-            var loc = {
-                x: 0,
-                y: -15,
-                xAnchor: 'center',
-                yAnchor: 'bottom'
-            };
-            var that = this;
 
-            this._disposable(lib.bindTooltip({
-                bindEl: this.el(),
-                followMouse: true,
-                selector: '.' + this._getCss('text'),
-                location: loc,
-                text: getText,
-                encodeHTML: false // 在getText中处理encodeHTML
-            }));
-
-            function getText(itemEl) {
-                if (that.isFrozen()) {
-                    return;
+            if (datasource && datasource.length) {
+                var initValues = [datasource[0].value];
+                var children = datasource[0].children;
+                if (children && children.length) {
+                    initValues.push(children[0].value);
                 }
-                var dataItem = that._findDataItemByPath(
-                    datasource, $(itemEl).attr(PATH_ATTR)
-                );
-
-                var tooltipText = (dataItem || {}).tooltip;
-                if (tooltipText != null) {
-                    return dataItem.tooltipEncodeHTML !== false
-                        ? encodeHTML(tooltipText) : tooltipText;
-                }
-                // tooltipText为空则不显示tooltip
+                this._build(datasource, null, lib.createLiteHashMap(initValues), true);
             }
         },
+
+        // /**
+        //  * @private
+        //  */
+        // _initContent: function () {
+        //     var itemCss = this._getCss('item');
+        //     var parentCss = this._getCss('parent');
+        //     var thumbCss = this._getCss('thumb');
+        //     var collapsedCss = this._getCss('collapsed');
+        //     var textCss = this._getCss('text');
+        //     var listCss = this._getCss('list');
+        //     var postCss = this._getCss('post');
+        //     var html = [];
+
+        //     this._travelData(
+        //         this._viewModel().datasource,
+        //         {
+        //             preList: function (treeList, thisPath, parent) {
+        //                 // 第一层（树林的根）展开，其他默认收缩。
+        //                 var isRoot = thisPath === '';
+        //                 var display = isRoot ? '' : 'display:none';
+        //                 var notRendered = isRoot ? '' : 'data-not-rendered';
+        //                 html.push('<ul class="', listCss, '" style="', display, '" ', notRendered, '>');
+        //                 // return !isRoot;
+        //             },
+        //             postList: function () {
+        //                 html.push('</ul>');
+        //             },
+        //             preChildren: function (dataItem, thisPath, parent, isLast, level) {
+        //                 var otherCss = (dataItem.children && dataItem.children.length)
+        //                     ? (parentCss + ' ' + collapsedCss)
+        //                     : '';
+        //                 var dataPath = ' ' + PATH_ATTR + '="' + thisPath + '" ';
+        //                 var dataLevel = ' ' + LEVEL_ATTR + '="' + level + '" ';
+        //                 var dataEncodeHTML = ' ' + ENCODE_HTML_ATTR + '="'
+        //                     + (dataItem.itemEncodeHTML !== false ? '1' : '0') + '" ';
+        //                 var anchor = dataItem.anchor ? ' name="' + dataItem.anchor + '" ' : ' ';
+        //                 var encode = dataItem.itemEncodeHTML !== false ? encodeHTML : returnInput;
+        //                 var textHTML = encode(toText(dataItem.text));
+        //                 var childrenPreHTML = encode(toText(dataItem.childrenPre));
+        //                 var childrenPostHTML = encode(toText(dataItem.childrenPost));
+        //                 var childrenBriefHTML = encode(toText(dataItem.childrenBrief));
+
+        //                 html.push(
+        //                     '<li class="', itemCss, ' ', otherCss, '" ',
+        //                         dataPath, dataLevel, dataEncodeHTML, '>',
+        //                     '<i class="', thumbCss, '"></i>', // 展开收起的控制器。
+        //                     anchor,
+        //                     '<span ',
+        //                         ' class="', textCss, '" ', dataPath, '>',
+        //                         textHTML, childrenPreHTML, childrenBriefHTML, childrenPostHTML,
+        //                     '</span>'
+        //                 );
+        //             },
+        //             postChildren: function (dataItem, thisPath, parent, isLast) {
+        //                 html.push('</li>');
+        //                 var encode = dataItem.itemEncodeHTML !== false ? encodeHTML : returnInput;
+        //                 if (isLast && parent && parent.childrenPost) {
+        //                     html.push('<li class="' , postCss, '">', encode(parent.childrenPost), '</li>');
+        //                 }
+        //             }
+        //         }
+        //     );
+
+        //     this.el().innerHTML = html.join('');
+        // },
+
+        // /**
+        //  * @private
+        //  */
+        // _initTooltip: function () {
+        //     var datasource = this._viewModel().datasource;
+        //     var loc = {
+        //         x: 0,
+        //         y: -15,
+        //         xAnchor: 'center',
+        //         yAnchor: 'bottom'
+        //     };
+        //     var that = this;
+
+        //     this._disposable(lib.bindTooltip({
+        //         bindEl: this.el(),
+        //         followMouse: true,
+        //         selector: '.' + this._getCss('text'),
+        //         location: loc,
+        //         text: getText,
+        //         encodeHTML: false // 在getText中处理encodeHTML
+        //     }));
+
+        //     function getText(itemEl) {
+        //         if (that.isFrozen()) {
+        //             return;
+        //         }
+        //         var dataItem = that._findDataItemByPath(
+        //             datasource, $(itemEl).attr(PATH_ATTR)
+        //         );
+
+        //         var tooltipText = (dataItem || {}).tooltip;
+        //         if (tooltipText != null) {
+        //             return dataItem.tooltipEncodeHTML !== false
+        //                 ? encodeHTML(tooltipText) : tooltipText;
+        //         }
+        //         // tooltipText为空则不显示tooltip
+        //     }
+        // },
 
         /**
          * @private
@@ -293,9 +330,7 @@ define(function (require) {
                 }
                 var $item = $(this);
                 $item.addClass(textHoverCss);
-                var dataItem = that._findDataItemByPath(
-                    viewModel.datasource, $item.attr(PATH_ATTR)
-                );
+                var dataItem = that._findDataItemByEl(this);
                 viewModel.hovered(dataItem.value, {dataItem: dataItem});
             }
 
@@ -312,9 +347,7 @@ define(function (require) {
                     return;
                 }
                 var obType = lib.obTypeOf(viewModel.selected);
-                var dataItem = that._findDataItemByPath(
-                    viewModel.datasource, $(this).attr(PATH_ATTR)
-                );
+                var dataItem = that._findDataItemByEl(this);
                 var value = dataItem.value;
 
                 if (obType === 'obArray') { // 多选
@@ -341,16 +374,133 @@ define(function (require) {
             }
         },
 
+        // /**
+        //  * @protectd
+        //  */
+        // _initExpand: function () {
+        //     var that = this;
+        //     var datasource = this._viewModel().datasource;
+        //     var $itemEls = this.$el().find('.' + this._getCss('item')).filter(function () {
+        //         return !!that._findDataItemByEl(this).expanded;
+        //     });
+        //     this._expandOrCollapse($itemEls, 'expand', {noAnimation: true});
+        // },
+
         /**
-         * @protectd
+         * Do not build util needed, to enhance performance.
+         *
+         * @private
          */
-        _initExpand: function () {
-            var that = this;
-            var datasource = this._viewModel().datasource;
-            var $itemEls = this.$el().find('.' + this._getCss('item')).filter(function () {
-                return !!that._findDataItemByPath(datasource, $(this).attr(PATH_ATTR)).expanded;
-            });
-            this._expandOrCollapse($itemEls, 'expand', {noAnimation: true});
+        _build: function (treeList, hostDataItem, targetValueMap, isInit) {
+            var listCss = this._getCss('list');
+            var itemCss = this._getCss('item');
+            var parentCss = this._getCss('parent');
+            var thumbCss = this._getCss('thumb');
+            var collapsedCss = this._getCss('collapsed');
+            var textCss = this._getCss('text');
+            var listCss = this._getCss('list');
+            var postCss = this._getCss('post');
+
+            var containerMap = this._containerMap;
+            if (containerMap.get(DATASOURCE_ID) == null) {
+                var thisEl = this.$el()[0];
+                thisEl.innerHTML = '<ul class="' + listCss
+                    + '" data-id="' + DATASOURCE_ID + '"></ul>';
+                containerMap.set(DATASOURCE_ID, thisEl.getElementsByTagName('ul')[0]);
+            }
+
+            buildAndCollect(treeList, hostDataItem);
+
+            function buildAndCollect(thisList, hostDataItem) {
+                if (!thisList || !thisList.length) {
+                    return;
+                }
+
+                var needRenderList;
+
+                for (var i = 0, len = thisList.length; i < len; i++) {
+                    var dataItem = thisList[i];
+
+                    needRenderList |= (
+                        dataItem.__needRenderChildren = buildAndCollect(dataItem.children, dataItem)
+                    );
+
+                    if (targetValueMap.get(dataItem.value) != null) {
+                        needRenderList = true;
+                    }
+                }
+
+                // If container found, indicate that is has rolluped to a render point.
+                var container = containerMap.get(hostDataItem ? hostDataItem.value : DATASOURCE_ID);
+                if (needRenderList && container && !thisList.__rendered) {
+                    var htmlCollector = [];
+
+                    build(thisList, hostDataItem, htmlCollector);
+
+                    container.innerHTML = htmlCollector.join('');
+
+                    // Cache containers for search.
+                    var subContainers = container.getElementsByTagName('ul');
+                    for (var i = 0; i < subContainers.length; i++) {
+                        var subContainer = subContainers[i];
+                        containerMap.set(subContainer.getAttribute('data-id'), subContainer);
+                    }
+
+                    needRenderList = false;
+                }
+
+                return needRenderList;
+            }
+
+            function build(thisList, hostDataItem, htmlCollector) {
+                if (!thisList || !thisList.length) {
+                    return;
+                }
+
+                for (var i = 0; i < thisList.length; i++) {
+                    var dataItem = thisList[i];
+                    var encode = dataItem.itemEncodeHTML !== false ? encodeHTML : returnInput;
+
+                    var otherCss = (dataItem.children && dataItem.children.length)
+                        ? (parentCss + ' ' + collapsedCss)
+                        : '';
+                    var anchor = dataItem.anchor ? ' name="' + dataItem.anchor + '" ' : ' ';
+                    var textHTML = encode(toText(dataItem.text));
+                    var childrenPreHTML = encode(toText(dataItem.childrenPre));
+                    var childrenPostHTML = encode(toText(dataItem.childrenPost));
+                    var childrenBriefHTML = encode(toText(dataItem.childrenBrief));
+                    var idString = ' data-id="' + dataItem.value + '" ';
+
+                    htmlCollector.push(
+                        '<li class="', itemCss, ' ', otherCss, '" ', idString, '>',
+                        '<i class="', thumbCss, '"></i>', // 展开收起的控制器。
+                        anchor,
+                        '<span class="', textCss, '" ', idString, '>',
+                            textHTML, childrenPreHTML, childrenBriefHTML, childrenPostHTML,
+                        '</span>'
+                    );
+
+                    if (dataItem.children && dataItem.children.length) {
+                        var styleStr = isInit ? '' : ' style="display:none" ';
+                        htmlCollector.push(
+                            '<ul class="', listCss, '" ', idString, styleStr, '>'
+                        );
+                        if (dataItem.__needRenderChildren) {
+                            build(dataItem.children, dataItem, htmlCollector);
+                        }
+                        htmlCollector.push('</ul>');
+                        dataItem.__needRenderChildren = null;
+                    }
+
+                    htmlCollector.push('</li>');
+
+                    if (i === thisList.length - 1 && hostDataItem && hostDataItem.childrenPost) {
+                        htmlCollector.push('<li class="' , postCss, '">', encode(parent.childrenPost), '</li>');
+                    }
+                }
+
+                thisList.__rendered = true;
+            }
         },
 
         /**
@@ -365,11 +515,14 @@ define(function (require) {
 
             lib.assert(obType !== 'obArray' || $.isArray(nextValue));
 
+            var nextValueMap = lib.createLiteHashMap(
+                obType === 'obArray' ? nextValue : nextValue ? [nextValue] : []
+            );
+
+            this._build(viewModel.datasource, null, nextValueMap);
+
             this._travelItemText(function ($text, thisValue) {
-                if (obType === 'obArray'
-                    ? lib.arrayIndexOf(nextValue, thisValue) >= 0 // 多选情况
-                    : thisValue === nextValue // 单选情况
-                ) {
+                if (nextValueMap.hasOwnProperty(thisValue)) {
                     $text.addClass(activeCss);
                     if (!ob.peekValueInfo('preventExpand')) {
                         expandList.push(that._findItemEl($text));
@@ -399,8 +552,12 @@ define(function (require) {
             var highlightList = [];
             var that = this;
 
+            var nextValueMap = lib.createLiteHashMap(nextValue);
+
+            this._build(this._viewModel().datasource, null, nextValueMap);
+
             this._travelItemText(function ($text, thisValue) {
-                if (lib.arrayIndexOf(nextValue, thisValue) >= 0) {
+                if (nextValueMap.hasOwnProperty(thisValue)) {
                     $text.addClass(highlightedCss);
                     if (!ob.peekValueInfo('preventExpand')) {
                         highlightList.push(that._findItemEl($text));
@@ -507,15 +664,12 @@ define(function (require) {
          * @param {Function} callback
          */
         _travelItemText: function (callback) {
-            var viewModel = this._viewModel();
             var $o = this.$el().find('.' + this._getCss('text'));
-            var that = this;
 
+            var that = this;
             $o.each(function () {
                 var $this = $(this);
-                var thisValue = that._findDataItemByPath(
-                    viewModel.datasource, $this.attr(PATH_ATTR)
-                ).value;
+                var thisValue = that._findDataItemByEl(this).value;
                 callback.call(that, $this, thisValue);
             });
         },
@@ -530,6 +684,7 @@ define(function (require) {
          */
         _collapseAll: function (options) {
             var collapseLevel = options.collapseLevel;
+            var levelMap = this._levelMap;
             var that = this;
 
             if (collapseLevel == null || collapseLevel < 0) {
@@ -538,7 +693,7 @@ define(function (require) {
             else {
                 var itemSelector = '.' + this._getCss('item');
                 var $changeItems = this.$el().find(itemSelector).filter(function () {
-                    return $(this).attr(LEVEL_ATTR) >= collapseLevel;
+                    return levelMap.get(this.getAttribute('data-id')) >= collapseLevel;
                 });
 
                 this._expandOrCollapse(
@@ -654,6 +809,12 @@ define(function (require) {
             var collapsedCss = this._getCss('collapsed');
             var expandedCss = this._getCss('expanded');
             var viewModel = this._viewModel();
+
+            var dataItem = this._findDataItemByEl($itemEl[0]);
+            if (dataItem.children && dataItem.children.length && !dataItem.children.__rendered) {
+                this._build(dataItem.children, dataItem, lib.createLiteHashMap([dataItem.children[0].value]));
+            }
+
             var $listEl = this._findElInItem($itemEl, 'list');
 
             if ($itemEl.hasClass(collapsedCss)) {
@@ -685,16 +846,11 @@ define(function (require) {
         hasValue: function (value) {
             var has = false;
 
-            this._travelData(
-                this._viewModel().datasource,
-                {preChildren: visitItem}
-            );
-
-            function visitItem(dataItem) {
+            this._travelData(this._viewModel().datasource, function (dataItem) {
                 if (dataItem.value === value) {
                     has = true;
                 }
-            }
+            });
 
             return has;
         },
@@ -720,89 +876,94 @@ define(function (require) {
          */
         findDataItemByValues: function (values, single) {
             var result = [];
-            this._travelData(
-                this._viewModel().datasource,
-                {preChildren: visitItem}
-            );
-
-            function visitItem(dataItem) {
+            this._travelData(this._viewModel().datasource, function (dataItem) {
                 if (lib.arrayIndexOf(values, dataItem.value) >= 0) {
                     result.push(dataItem);
                 }
-            }
+            });
 
             return single ? result[0] : result;
         },
 
-        /**
-         * 深度优先遍历treeListData。@see _travelData
-         *
-         * @public
-         */
-        travelData: function (callbacks) {
-            return this._travelData(this._viewModel().datasource, callbacks);
-        },
-
-        /**
-         * 深度优先遍历treeListData。
-         *
-         * @private
-         * @param {Array.<Object>} treeList 被遍历的对象。
-         * @param {Array.<Function>} callbacks 遍历过程中的回调处理函数。
-         * @param {Function} callbacks.preList 访问本list前的处理函数，参数：
-         *                                     {Array.<Object>} 本list。
-         *                                     {string} path 当前节点的位置信息, 形如'4,1,5'
-         * @param {Function} callbacks.postList 访问子孙前的处理，参数同preList。
-         * @param {Function} callbacks.preChildren 访问子孙前的处理，参数：
-         *                                     {Object} item 当前节点,
-         *                                     {string} path 当前节点的位置信息, 形如'4,1,5'
-         *                                     {boolean} isLast
-         * @param {Function} callbacks.postChildren 访问子孙后的处理，参数同callbacks.preChildren
-         * @param {string=} parentPath 父节点的位置信息, 形如'4,1,5'，递归内部使用。
-         * @param {Object=} parent 若没有则可以不传
-         */
-        _travelData: function (treeList, callbacks, parentPath, parent, level) {
-            parentPath = (parentPath == null || parentPath === '')
-                ? '' : (parentPath + ',');
-            level == null && (level = 0);
-
+        _travelData: function (treeList, callback, level) {
+            level = level || 0;
             if (treeList && treeList.length) {
-                callbacks.preList && callbacks.preList(treeList, parentPath, parent);
-
                 for (var i = 0, len = treeList.length; i < len; i++) {
-                    var dataItem = treeList[i];
-                    var thisPath = parentPath + i;
-                    var isLast = i === len - 1;
-
-                    callbacks.preChildren
-                        && callbacks.preChildren(dataItem, thisPath, parent, isLast, level);
-                    this._travelData(dataItem.children, callbacks, thisPath, dataItem, level + 1); // 递归
-                    callbacks.postChildren
-                        && callbacks.postChildren(dataItem, thisPath, parent, isLast, level);
+                    if (treeList[i]) {
+                        callback(treeList[i], level);
+                        this._travelData(treeList[i].children, callback, level + 1);
+                    }
                 }
-
-                callbacks.postList && callbacks.postList(treeList, parentPath, parent);
             }
         },
 
-        /**
-         * @private
-         * @param {Array.<Object>} treeList 在这里面find。
-         * @param {string} path 节点的位置信息, 形如'4,1,5'。
-         * @return {Object=} 找到的节点对象，没找到返回空。
-         */
-        _findDataItemByPath: function (treeList, path) {
-            path = path.split(',');
-            treeList = treeList || [];
-            var dataItem;
+        // /**
+        //  * 深度优先遍历treeListData。
+        //  *
+        //  * @private
+        //  * @param {Array.<Object>} treeList 被遍历的对象。
+        //  * @param {Array.<Function>} callbacks 遍历过程中的回调处理函数。
+        //  * @param {Function} callbacks.preList 访问本list前的处理函数，参数：
+        //  *                                     {Array.<Object>} 本list。
+        //  *                                     {string} path 当前节点的位置信息, 形如'4,1,5'
+        //  *                                     返回 true 则 skipChildren。
+        //  * @param {Function} callbacks.postList 访问子孙前的处理，参数同preList。
+        //  * @param {Function} callbacks.preChildren 访问子孙前的处理，参数：
+        //  *                                     {Object} item 当前节点,
+        //  *                                     {string} path 当前节点的位置信息, 形如'4,1,5'
+        //  *                                     {boolean} isLast
+        //  * @param {Function} callbacks.postChildren 访问子孙后的处理，参数同callbacks.preChildren
+        //  * @param {string=} parentPath 父节点的位置信息, 形如'4,1,5'，递归内部使用。
+        //  * @param {Object=} parent 若没有则可以不传
+        //  */
+        // _travelData: function (treeList, callbacks, parentPath, parent, level) {
+        //     parentPath = (parentPath == null || parentPath === '')
+        //         ? '' : (parentPath + ',');
+        //     level == null && (level = 0);
 
-            for (var i = 0, len = path.length; i < len && treeList; i++) {
-                dataItem = treeList[path[i]];
-                treeList = (dataItem || {}).children;
-            }
+        //     if (treeList && treeList.length) {
+        //         var skipChildren = callbacks.preList && callbacks.preList(treeList, parentPath, parent);
 
-            return dataItem;
+        //         if (!skipChildren) {
+        //             for (var i = 0, len = treeList.length; i < len; i++) {
+        //                 var dataItem = treeList[i];
+        //                 var thisPath = parentPath + i;
+        //                 var isLast = i === len - 1;
+
+        //                 callbacks.preChildren
+        //                     && callbacks.preChildren(dataItem, thisPath, parent, isLast, level);
+        //                 this._travelData(dataItem.children, callbacks, thisPath, dataItem, level + 1); // 递归
+        //                 callbacks.postChildren
+        //                     && callbacks.postChildren(dataItem, thisPath, parent, isLast, level);
+        //             }
+        //         }
+
+        //         callbacks.postList && callbacks.postList(treeList, parentPath, parent);
+        //     }
+        // },
+
+        _findDataItemByEl: function (itemEl) {
+            return itemEl && this._dataItemMap.get(itemEl.getAttribute('data-id'));
         },
+
+        // /**
+        //  * @private
+        //  * @param {Array.<Object>} treeList 在这里面find。
+        //  * @param {string} path 节点的位置信息, 形如'4,1,5'。
+        //  * @return {Object=} 找到的节点对象，没找到返回空。
+        //  */
+        // _findDataItemByPath: function (treeList, path) {
+        //     path = path.split(',');
+        //     treeList = treeList || [];
+        //     var dataItem;
+
+        //     for (var i = 0, len = path.length; i < len && treeList; i++) {
+        //         dataItem = treeList[path[i]];
+        //         treeList = (dataItem || {}).children;
+        //     }
+
+        //     return dataItem;
+        // },
 
         /**
          * 从item中某个el找到itemEl
@@ -837,12 +998,11 @@ define(function (require) {
          */
         _resetItemText: function ($itemEls) {
             var that = this;
-            var datasource = this._viewModel().datasource;
 
             $itemEls.each(function () {
                 var $itemEl = $(this);
-                var dataItem = that._findDataItemByPath(datasource, $itemEl.attr(PATH_ATTR));
-                var encode = $itemEl.attr(ENCODE_HTML_ATTR) === '0' ? returnInput : encodeHTML;
+                var dataItem = that._findDataItemByEl(this);
+                var encode = dataItem.itemEncodeHTML !== false ? encodeHTML : returnInput;
                 var $textEl = that._findElInItem($itemEl, 'text');
 
                 if ($itemEl.hasClass(that._getCss('collapsed'))) {

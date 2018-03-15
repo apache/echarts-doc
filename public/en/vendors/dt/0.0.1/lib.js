@@ -25,6 +25,7 @@ define(function (require) {
         require('./lib/htmlCleaner'),
         require('./lib/codeStringify'),
         require('./lib/others'),
+        require('./lib/liteHashMap'),
         require('./ui/tooltip')
     );
 

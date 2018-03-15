@@ -79,10 +79,10 @@
 
 {{ target: descGroupLine }}
 <div class="ecdoc-api-doc-group-line ${highlightCSS}" data-tree-item-id="${idAttr}" >
-    <div data-tree-item-id="${idAttr}"
+    <!-- <div data-tree-item-id="${idAttr}"
         class="ecdoc-api-doc-line-expand iconfont"
-        {{ if: !${showExpandIcon} }}style="display:none"{{ /if }}>${expandIcon|raw}</div>
-    <div class="ecdoc-api-doc-line-head {{ if: ${showExpandIcon} }} ecdoc-api-doc-expandable {{ /if }}" data-tree-item-id="${idAttr}">
+        {{ if: !${hasSubGroup} }}style="display:none"{{ /if }}>${expandIcon|raw}</div> -->
+    <div class="ecdoc-api-doc-line-head {{ if: ${hasSubGroup} }} ecdoc-api-doc-expandable {{ /if }}" data-tree-item-id="${idAttr}">
        <span class="ecdoc-api-doc-line-label">${descItemOptionPath|raw}</span>
        <span class="ecdoc-api-doc-line-type">${descItemType|raw}</span>
     </div>
@@ -90,8 +90,11 @@
        ${descItemContent|raw}
     </div>
     ${descItemDescText|raw}
-    {{ if: ${subGroupHTML} }}
-    <div style="display:none" class="ecdoc-api-doc-sub-group">
+    <div class="ecdoc-api-doc-prop-expand"
+        data-tree-item-id="${idAttr}"
+        {{ if: !${hasSubGroup} }}style="display:none"{{ /if }}>${expandIcon|raw}</div>
+    {{ if: ${hasSubGroup} }}
+    <div style="display:none" class="ecdoc-api-doc-sub-group" data-tree-item-id="${idAttr}">
         ${subGroupHTML|raw}
     </div>
     {{ /if }}

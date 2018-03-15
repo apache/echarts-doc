@@ -69,6 +69,15 @@ define(function (require) {
     lib.ieVersion = /msie (\d+\.\d+)/i.test(navigator.userAgent)
         ? (document.documentMode || +RegExp['\x241']) : undefined;
 
+    var replaceReg = /([&<>"'])/g;
+    var replaceMap = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        '\'': '&#39;',
+    };
+
     /**
      * 对目标字符串进行html编码
      * 编码字符有5个：&<>"'
@@ -80,12 +89,10 @@ define(function (require) {
     lib.encodeHTML = function (source) {
         return source == null
             ? ''
-            : String(source)
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;')
-                .replace(/'/g, '&#39;');
+            : (source + '')
+                .replace(replaceReg, function (str, char) {
+                    return replaceMap[char];
+                });
     };
 
     /**
@@ -395,11 +402,15 @@ define(function (require) {
      * 是否是（广义的）对象。array、HTMLElement等都是对象。
      *
      * @pubilc
-     * @param {*} o 判断目标
+     * @param {*} value 判断目标
      * @return {boolean} 是否是对象
      */
-    var isObject = lib.isObject = function (o) {
-        return Object(o) === o;
+    var isObject = lib.isObject = function (value) {
+        // Avoid a V8 JIT bug in Chrome 19-20.
+        // See https://code.google.com/p/v8/issues/detail?id=2291 for more details.
+        var type = typeof value;
+        return type === 'function' || (!!value && type == 'object');
+        // return Object(value) === value;
     };
 
     /**
