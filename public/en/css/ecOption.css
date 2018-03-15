@@ -608,7 +608,7 @@ code {
       -ms-user-select: none;
           user-select: none;
 }
-.ecdoc-api-doc-prop-expand {
+.ecdoc-api-doc-prop-expand span {
   font-size: 12px;
   background: rgba(176, 59, 91, 0.15);
   margin: 20px 0 0 0;

@@ -92,7 +92,7 @@
     ${descItemDescText|raw}
     <div class="ecdoc-api-doc-prop-expand"
         data-tree-item-id="${idAttr}"
-        {{ if: !${hasSubGroup} }}style="display:none"{{ /if }}>${expandIcon|raw}</div>
+        {{ if: !${hasSubGroup} }}style="display:none"{{ /if }}><span>${expandIcon|raw}</span></div>
     {{ if: ${hasSubGroup} }}
     <div style="display:none" class="ecdoc-api-doc-sub-group" data-tree-item-id="${idAttr}">
         ${subGroupHTML|raw}
