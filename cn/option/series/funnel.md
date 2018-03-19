@@ -98,7 +98,7 @@
 ### itemStyle(Object)
 {{use:partial-item-style-desc}}
 {{use:partial-item-style(prefix="###")}}
-##### height(string|number)
+#### height(string|number)
 该数据项的高度。默认平均分配高度，如果需要修改，可以将其设为百分比（如：`'10%'`）或像素值（如：`20px`）。需要注意总和应为 100%。
 
 ### label(Object)
