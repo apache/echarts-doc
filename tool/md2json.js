@@ -88,7 +88,7 @@ function convert(opts, cb) {
                     };
                     // Use description in excatly #series
                     if (cptName === nm) {
-                        newProps[cptName].descriptionCN = level[nm].descriptionCN;
+                        newProps[cptName].description = level[nm].description;
                     }
                     else {
                         newProps[cptName].items.anyOf.push(level[nm]);
@@ -272,7 +272,7 @@ function mdToJsonSchema(mdStr, maxDepth, imagePath) {
         });
         var property = {
             'type': types,
-            'descriptionCN': marked(section, {
+            'description': marked(section, {
                 renderer: renderer
             })
         };

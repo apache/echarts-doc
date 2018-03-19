@@ -11,6 +11,8 @@ In ECharts 2.x, a single instance of ECharts could contains one title component 
 ~[700x400](${galleryViewPath}line-easing&edit=1&reset=1)
 
 
+{{use: partial-component-id(prefix="#")}}
+
 ## show(boolean) = true
 
 It specifies whether to show the title component.

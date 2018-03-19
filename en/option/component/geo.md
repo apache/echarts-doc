@@ -27,6 +27,7 @@ From `3.1.10`, geo component also supports mouse events, whose parameters are:
 **Tip:**
 The region color can also be controlled by map series. See [series-map.geoIndex](~series-map.geoIndex).
 
+{{use: partial-component-id(prefix="#")}}
 
 ## show(boolean) = true
 

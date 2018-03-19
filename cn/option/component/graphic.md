@@ -330,7 +330,7 @@ myChart.setOption({
 
 下面是详细配置。
 
-
+{{use: partial-component-id(prefix="#")}}
 
 ## elements(Array)
 

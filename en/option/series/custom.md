@@ -63,6 +63,8 @@ When use `custom series` with [dataZoom](~dataZoom), [dataZoom.filterMode](~data
 
 ## type(string) = 'custom'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 {{ use: partial-legend-hover-link() }}

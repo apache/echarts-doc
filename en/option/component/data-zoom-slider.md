@@ -13,6 +13,7 @@
 
 ## type(string) = 'slider'
 
+{{use: partial-component-id(prefix="#")}}
 
 ## show(boolean) = true
 

@@ -13,6 +13,8 @@
 <br>
 <br>
 
+{{use: partial-component-id(prefix="#")}}
+
 ## dim(number)
 
 坐标轴的维度序号。

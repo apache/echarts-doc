@@ -12,6 +12,7 @@ The series in parallel coordinate system.
 
 ## type(string) = 'parallel'
 
+{{use: partial-component-id(prefix="#")}}
 
 {{use: partial-coord-sys(
     seriesType="parallel",

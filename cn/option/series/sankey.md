@@ -26,6 +26,8 @@
 
 ## type(string) = 'sankey'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-rect-layout-width-height(
     componentName='sankey',
     defaultLeft: '5%',

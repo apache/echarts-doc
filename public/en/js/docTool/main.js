@@ -3,6 +3,30 @@
  */
 define(function (require) {
 
+    /**
+     * The optimization of option doc loading (2018-03):
+     *
+     * The facts:
+     * (1) The case of a single `option.json` (700KB, after gz)
+     * From local netword:
+     *      Download: 100ms
+     *      JSON parse: 200ms
+     *      JS rendering: 2s
+     * From gf-page:
+     *      Download: 1.5s~5s
+     * (2) The search feature requires all of the `option.json`.
+     *
+     * Sulotion:
+     * Now that the main info is in `description`, and consider the
+     * simplicity of the implementation, only optimize the rendering.
+     *
+     * Further job if necessary:
+     * Partition `option.json` to by components or `option_outline.json`
+     * and `option_description.json`. Download `option_description.json`
+     * after page rendered (it will block the search, but not block the
+     * option tree behavior).
+     */
+
     var $ = require('jquery');
     var Component = require('dt/ui/Component');
     var schemaHelper = require('./schemaHelper');
@@ -13,12 +37,12 @@ define(function (require) {
     var hashHelper = require('./hashHelper');
     var perfectScrollbar = require('perfectScrollbar');
     var prettyPrint = require('prettyPrint');
-    var iconfont = docUtil.getGlobalArg('iconfont');
     var ecLog = require('ecLog');
+    // var iconfont = docUtil.getGlobalArg('iconfont');
+    var pageName = docUtil.getGlobalArg('pageName');
 
     require('dt/componentConfig');
 
-    // var SCHEMA_URL = '/ecOption/schema.json';
     var TPL_TARGET = 'APIMain';
     var SELECTOR_HOVER_DESC = '.ecdoc-api-hover-desc';
     var SELECTOR_COLLAPSE_RADIO = '.query-collapse-radio input[type=radio]';
@@ -27,12 +51,14 @@ define(function (require) {
     var SELECTOR_TREE_AREA = '.ecdoc-api-tree-area';
     var SELECTOR_DESC_AREA = '.ecdoc-api-doc-group-area';
     var SELECTOR_QUICK_LINK = '.ecdoc-quick-link';
-    var CSS_DESC_EXPAND_BTN = 'ecdoc-api-doc-line-expand';
+    var CSS_DESC_EXPAND_BTN = 'ecdoc-api-doc-prop-expand';
     var CSS_DESC_LINE_HEAD = 'ecdoc-api-doc-line-head';
     var CSS_DESC_GROUP_HIGHLIGHT = 'ecdoc-api-doc-group-line-highlight';
     var CSS_DESC_SUB_GROUP = 'ecdoc-api-doc-sub-group';
-    var ICON_CAN_COLLAPSE = iconfont.down;
-    var ICON_CAN_EXPAND = iconfont.left;
+    // var ICON_CAN_COLLAPSE = iconfont.down;
+    // var ICON_CAN_EXPAND = iconfont.left;
+    var ICON_CAN_COLLAPSE = lang.hideProperties;
+    var ICON_CAN_EXPAND = lang.showProperties;
     var CSS_DESC_NODE = 'ecdoc-api-doc-group-line';
     var IFR_REG = /<iframe[^>]*>.*?<\/iframe>/g;
 
@@ -112,14 +138,17 @@ define(function (require) {
         },
 
         _prepare: function () {
-            $.getJSON(
-                docUtil.addVersionArg(docUtil.getGlobalArg('schemaUrl'))
-            ).done($.proxy(onLoaded, this));
 
-            function onLoaded(schema, catagory) {
+            $.getJSON(
+                docUtil.addVersionArg([
+                    'documents',
+                    lang.langCode,
+                    pageName + '.json'
+                ].join('/'))
+            ).done($.proxy(function (schema) {
+
                 // Before render page
                 this._prepareDoc(schema);
-
                 // Render page
                 this._applyTpl(this.$el(), TPL_TARGET);
 
@@ -135,7 +164,8 @@ define(function (require) {
                 this._initHash();
 
                 this._initScroll();
-            }
+
+            }, this));
         },
 
         _prepareDoc: function (schema) {
@@ -151,7 +181,7 @@ define(function (require) {
                 childrenBrief: '...',
                 children: renderBase.children[0].children,
                 expanded: true,
-                optionPathHTML: 'option',
+                propertyName: 'option',
                 type: 'Object',
                 hasObjectProperties: true
             };
@@ -162,16 +192,17 @@ define(function (require) {
 
         _initQuickLink: function () {
             var defs = [
-                ['tutorial', 'Tutorial'],
-                ['api', 'API'],
-                ['option', 'Option']
+                ['tutorial', lang.quickLinkTutorial],
+                ['api', lang.quickLinkAPI],
+                ['option', lang.quickLinkOption],
+                ['option-gl', lang.quickLinkOptionGL]
             ];
 
             var html = [];
 
             for (var i = 0; i < defs.length; i++) {
                 html.push(
-                    docUtil.getGlobalArg('pageName') === defs[i][0]
+                    pageName === defs[i][0]
                         ? '<span>' + defs[i][1] + '</span>'
                         : '<a href="' + defs[i][0] + '.html">' + defs[i][1] + '</a>'
                 );
@@ -205,7 +236,7 @@ define(function (require) {
                     this._updateDescArea(treeItem);
 
                     if (!isInit) {
-                        log({key: 'clickTreeItem', data: treeItem.optionPathForHash});
+                        log({key: 'clickTreeItem', data: schemaHelper.getOptionPathForHash(treeItem)});
                     }
 
                     locateToDescAnchor.call(this, treeItem);
@@ -214,11 +245,9 @@ define(function (require) {
                     $el.find('.' + CSS_DESC_GROUP_HIGHLIGHT).removeClass(CSS_DESC_GROUP_HIGHLIGHT);
                     this._findDescNode(treeItem.value).addClass(CSS_DESC_GROUP_HIGHLIGHT);
 
-                    if (treeItem.optionPathForHash) {
-                        hashHelper.hashRoute({
-                            queryString: treeItem.optionPathForHash
-                        });
-                    }
+                    hashHelper.hashRoute({
+                        queryString: schemaHelper.getOptionPathForHash(treeItem)
+                    });
                 }
             }
 
@@ -273,7 +302,7 @@ define(function (require) {
 
                     var list = [];
                     for (var i = 0; i < result.length; i++) {
-                        list.push(result[i].optionPathForHash);
+                        list.push(schemaHelper.getOptionPathForHash(result[i]));
                     }
 
                     suggest(list);
@@ -334,9 +363,9 @@ define(function (require) {
             }, this);
 
             function handleDescExpandClick(e) {
-                var $descNode = this._findDescNode(
-                    e.currentTarget.getAttribute('data-tree-item-id')
-                );
+                var treeItemId = e.currentTarget.getAttribute('data-tree-item-id');
+
+                var $descNode = this._findDescNode(treeItemId);
                 var elsInNode = this._findElInDescNode($descNode);
 
                 if (!elsInNode.subGroup.length) {
@@ -347,12 +376,15 @@ define(function (require) {
                 var treeItem = this._sub('apiDocTree').findDataItemByValues(
                     [elsInNode.expandBtn.attr('data-tree-item-id')], true
                 );
-                var optionPathForHash = treeItem ? treeItem.optionPathForHash : '';
+                var optionPathForHash = treeItem ? schemaHelper.getOptionPathForHash(treeItem) : '';
 
                 if (elsInNode.subGroup[0].style.display === 'none') {
                     log({key: 'expandDesc', data: optionPathForHash});
 
                     elsInNode.expandBtn[0].innerHTML = ICON_CAN_COLLAPSE;
+
+                    this._completeSubGroupContent(elsInNode.subGroup);
+
                     elsInNode.subGroup.slideDown().promise().always(slideFinal);
                 }
                 else {
@@ -374,6 +406,8 @@ define(function (require) {
             var html = '';
 
             if (base !== this._lastDescBase) {
+                // Reset pendingSubGroupMap.
+                this._pendingSubGroupMap = dtLib.createLiteHashMap();
                 html = this._createDescHTML(base, treeItem);
                 $content[0].innerHTML = html;
             }
@@ -410,6 +444,43 @@ define(function (require) {
             }
             lazyload();
             this._doLazyLoad = lazyload;
+
+            // Twentytwenty
+            if ($.fn.twentytwenty && !$content.find('.twentytwenty-wrapper').length) {
+                $content.find('.twentytwenty-container').each(function () {
+                    var self = this;
+                    var loading = 0;
+                    // http://stackoverflow.com/questions/3877027/jquery-callback-on-image-load-even-when-the-image-is-cached
+                    $(this).find('img').one('load', function () {
+                        loading--;
+                        if (loading === 0) {
+                            $(self).twentytwenty();
+                        }
+                    }).each(function () {
+                        loading++;
+                        if(this.complete) {
+                            $(this).load();
+                        }
+                    });
+                });
+            }
+            else if ($.fn.twentytwenty) {
+                $(window).trigger('resize.twentytwenty');
+            }
+        },
+
+        /**
+         * @private
+         */
+        _completeSubGroupContent: function ($subGroupEl) {
+            var pendingSubGroupMap = this._pendingSubGroupMap;
+            var treeItemId = $subGroupEl.attr('data-tree-item-id');
+
+            var treeItem = pendingSubGroupMap.get(treeItemId);
+            if (treeItem != null) {
+                $subGroupEl[0].innerHTML = this._createDescSubGroupHTML(treeItem);
+                pendingSubGroupMap.set(treeItemId, null);
+            }
         },
 
         /**
@@ -465,52 +536,51 @@ define(function (require) {
                 return '';
             }
 
-            var that = this;
-
             var baseDesc = this._wrapDesc(base);
             var descTitleHTML = tpl.render('descGroupTitle', {
                 baseDescOptionPath: baseDesc.optionPath,
                 descText: baseDesc.descText
             });
 
-            return descTitleHTML + buildDescSubGroup(base, selTreeItem);
+            return descTitleHTML + this._createDescSubGroupHTML(base, selTreeItem);
+        },
 
-            function buildDescSubGroup(parentTreeItem, selTreeItem) {
-                var children = parentTreeItem.children;
+        _createDescSubGroupHTML: function (parentTreeItem, selTreeItem) {
+            var children = parentTreeItem.children;
 
-                if (!children) {
-                    return '';
-                }
-
-                var descList = [];
-
-                for (var i = 0; i < children.length; i++) {
-                    var descItem = that._wrapDesc(children[i]);
-                    var subGroupHTML = '';
-
-                    if (children[i].hasObjectProperties) {
-                        subGroupHTML = buildDescSubGroup(children[i], selTreeItem);
-                    }
-
-                    descList.push(tpl.render(
-                        'descGroupLine',
-                        {
-                            descItemOptionPath: descItem.optionPath,
-                            descItemType: descItem.type,
-                            descItemContent: getDefaultHTML(descItem),
-                            descItemDescText: descItem.descText,
-                            showExpandIcon: !!subGroupHTML,
-                            expandIcon: ICON_CAN_EXPAND,
-                            highlightCSS: children[i] === selTreeItem
-                                ? CSS_DESC_GROUP_HIGHLIGHT : '',
-                            idAttr: children[i].value,
-                            subGroupHTML: subGroupHTML
-                        }
-                    ));
-                }
-
-                return descList.join('');
+            if (!children) {
+                return '';
             }
+
+            var descList = [];
+
+            var pendingSubGroupMap = this._pendingSubGroupMap;
+
+            for (var i = 0; i < children.length; i++) {
+                var descItem = this._wrapDesc(children[i]);
+                var hasSubGroup = children[i].hasObjectProperties;
+
+                if (hasSubGroup) {
+                    pendingSubGroupMap.set(children[i].value, children[i]);
+                }
+
+                descList.push(tpl.render(
+                    'descGroupLine',
+                    {
+                        descItemOptionPath: descItem.optionPath,
+                        descItemType: descItem.type,
+                        descItemContent: getDefaultHTML(descItem),
+                        descItemDescText: descItem.descText,
+                        expandIcon: ICON_CAN_EXPAND,
+                        hasSubGroup: hasSubGroup,
+                        highlightCSS: children[i] === selTreeItem
+                            ? CSS_DESC_GROUP_HIGHLIGHT : '',
+                        idAttr: children[i].value
+                    }
+                ));
+            }
+
+            return descList.join('');
         },
 
         _doExpand: function (treeItemTrace, $descContent, selTreeItem) {
@@ -530,6 +600,9 @@ define(function (require) {
                 }
 
                 elsInNode.expandBtn[0].innerHTML = ICON_CAN_COLLAPSE;
+
+                that._completeSubGroupContent(elsInNode.subGroup);
+
                 elsInNode.subGroup.show();
             });
         },
@@ -542,9 +615,9 @@ define(function (require) {
             }
 
             // 不需要encodeHTML，本身就是html
-            var descText = treeItem.descriptionCN || '';
+            var descText = treeItem.description;
 
-            if (removeIFrame) {
+            if (removeIFrame && descText) {
                 descText = descText.replace(IFR_REG, '');
             }
 
@@ -552,7 +625,7 @@ define(function (require) {
                 type: dtLib.encodeHTML(type),
                 descText: descText,
                 defaultValueText: dtLib.encodeHTML(treeItem.defaultValueText),
-                optionPath: treeItem.optionPathHTML
+                optionPath: schemaHelper.getOptionPathForHTML(treeItem)
             };
         },
 
@@ -585,7 +658,7 @@ define(function (require) {
          */
         _handleHashQuery: function (queryString) {
             var dataItem = this._viewModel().apiTreeSelected.getTreeDataItem(true);
-            if (!dataItem || queryString !== dataItem.optionPathForHash) {
+            if (!dataItem || queryString !== schemaHelper.getOptionPathForHash(dataItem)) {
 
                 if (!isInit) {
                     log({key: 'innerLinkChangeHash', data: queryString});
@@ -599,7 +672,7 @@ define(function (require) {
             try {
                 var args = {};
                 args[queryArgName] = queryStr;
-                args.noCtxVar = docUtil.getGlobalArg('noCtxVar');
+                args.noTypeEnum = docUtil.getGlobalArg('noTypeEnum');
                 return schemaHelper.queryDocTree(this._docTree, args) || [];
             }
             catch (e) {
@@ -683,9 +756,7 @@ define(function (require) {
     }
 
     function log(params) {
-        ecLog(dtLib.assign({
-            page: docUtil.getGlobalArg('pageName')
-        }, params));
+        ecLog(dtLib.assign({page: pageName}, params));
     }
 
     return api;

@@ -38,6 +38,7 @@ Calendar coordinate system can be configured to adapt to container size, which i
 
 ---
 
+{{use: partial-component-id(prefix="#")}}
 
 {{ use: partial-rect-layout-width-height(
     componentName="calendar",

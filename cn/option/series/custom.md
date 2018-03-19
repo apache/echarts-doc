@@ -56,6 +56,8 @@ series: {
 
 ## type(string) = 'custom'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 {{ use: partial-legend-hover-link() }}

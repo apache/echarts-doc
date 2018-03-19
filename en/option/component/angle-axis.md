@@ -5,6 +5,8 @@
 
 The angle axis in Polar Coordinate.
 
+{{use: partial-component-id(prefix="#")}}
+
 ## polarIndex(number) = 0
 
 The index of angle axis in Polar Coordinate. The first axis is used by default.

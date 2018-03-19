@@ -13,6 +13,8 @@
 
 ## type(string) = 'pie'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 {{ use: partial-legend-hover-link }}

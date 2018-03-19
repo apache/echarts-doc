@@ -11,6 +11,8 @@ In ECharts 2.x, there could only be one single grid component at most in a singl
 
 ~[600x400](${galleryViewPath}scatter-anscombe-quartet&edit=1&reset=1)
 
+{{use: partial-component-id(prefix="#")}}
+
 ## show(boolean) = false
 
 Whether to show the grid in rectangular coordinate.

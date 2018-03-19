@@ -1,65 +1,92 @@
-// FIXME
-// 清理无用的代码以及注释
-
-/**
- * @file Schema related operations.
- * @author sushuang(sushuang@baidu.com)
- */
 define(function (require) {
 
     /**
-     * [optionPath总共占用的字符总结]（中文顿号不算）：
-     * a-z、A-Z、0-9、[、]、-、所有非ascii。
+     * [optionPath reserved characters]:
+     * a-z、A-Z、0-9、[、]、-、All of non-ascii
      */
 
     /**
-     * [schema格式]：
+     * [Schema Format]：
      * {
-     *     type: 类型，如'Array', 'Object', 'string', 'Function'，或者['Array', 'string']
-     *     descriptionCN: '中文解释文字'
-     *     descriptionEN: '英文解释文字'
-     *     default:
-     *         default value字段
-     *     defaultExplanation:
-     *         默认值的补充说明片段，有些默认值可能描述为“各异”“自适应”。如果不存在default字段，则会寻找defaultExplanation。
-     *     items: 如果type为Array，items描述节点。同json-schema中的定义。
-     *     properties: 如果type为Object，properties描述属性。同json-schema中的定义。
-     *     definitions: { ... } 同json-schema中的定义。
-     *     applicable: {string|Array.<string>}，详见下面applicable说明。
-     *     oneOf: { ... } 同json-schema中的定义。暂时不支持 anyOf 和 allOf
-     *     enumerateBy: ['line', 'pie'] 在文档中，此项下，按照所给出的值设置applicable并列表显示。
-     *     setApplicable: ['markPoint', 'markLine'] 在此子树中遍历时，用给定的值设置applicable。
-     *     defaultByApplicable: {'line': 'default1', 'pie': 'default2'} doc展示中，根据applicable得到default。
+     *     type: 'Array', 'Object', 'string', 'Function', or ['Array', 'string'],
+     *     description: 'description text',
+     *     default: string, default value,
+     *     properties: If type is `'Object'`,
+     *         {
+     *             type: 'Object',
+     *             properties: {
+     *                 objAttr1: {... objAttr1 definition ...},
+     *                 objAttr2: {... objAttr2 definition ...}
+     *             }
+     *         }
+     *     items: If type is `'Array'`
+     *         {
+     *             type: 'Array',
+     *             items: {... item definition ...}
+     *         }
+     *         or
+     *         {
+     *             type: 'Array',
+     *             items: {
+     *                 anyOf: [
+     *                    {
+     *                        type: 'Object',
+     *                        properties: {
+     *                            type: {... A property named `type` (that is, typeEnum) should exists ...},
+     *                            attr2: {... attr2 definition ...}
+     *                        }
+     *                    },
+     *                    ...
+     *                 ]
+     *             }
+     *         }
      * }
      */
 
     /**
-     * [applicable说明]：
-     *
-     * applicable是特殊添加的字段，表示axis和series的适用类型，
-     * 参见EC_AXIS_APPLICABLE和EC_SERIES_APPLICABLE。
-     * 其值可以是string（表示只有一个aplicable），或Array.<string>
-     * 如果其值为'all'，表示所有。
-     * 在oneOf的各个子项中，如果子项a有applicable: 'all'，子项b有applicable: 'someValue'，则b优先级高。
-     * （不过理论上这是业务层面的处理，不是schame该管的范畴，放在这里说明是为了方便。）
-     *
-     * 在oneOf中，applicable能决定路径的选取，例如：
-     * some: {
-     *    oneOf: [
-     *        {applicable: 'line'},
-     *        {applicable: 'pie'}
-     *    ]
+     * Doc tree structure:
+     * (1)
+     * {
+     *     propertyName: 'option',
+     *     children: [{
+     *         propertyName: 'xAxis' // Use data[i] instead of data level.
+     *         children: [...]
+     *     }, {
+     *         propertyName: 'color'
+     *     }, ...]
      * }
-     * 如果当前上下文是'pie'，则some取pie作为定义。
-     *
-     * 在properties中，applicable能决定属性的出现与否，例如：
-     * some: {
-     *     properties: {
-     *         a: {appliable: 'line'},
-     *         b: {appliable: 'pie'}
-     *     }
+     * (2)
+     * {
+     *     propertyName: 'legend',
+     *     children: [{
+     *         propertyName: 'data', // Use `'data[i]'` instead of data level.
+     *         arrayDepth: 1,  // `1` means `data[i]`, `2` means `data[i][i]`.
+     *         children: [{
+     *             propertyName: 'id'
+     *         }, ...]
+     *     }, ...]
      * }
-     * 如果当前上下文是'pie'，则some.b出现而some.a不出现。
+     * (3)
+     * {
+     *     propertyName: 'option',
+     *     children: [{
+     *         propertyName: 'series',
+     *         arrayDepth: 1,
+     *         isEnumParent: true,
+     *         children: [{
+     *             // No `propertyName` in type enum node.
+     *             typeEnum: 'line',
+     *             children: [{
+     *                 propertyName: 'id'
+     *             }, ...]
+     *         }, {
+     *             typeEnum: 'bar',
+     *             children: [{
+     *                 propertyName: 'id'
+     *             }, ...]
+     *         }, ...]
+     *     }, ...]
+     * }
      */
 
     // References
@@ -69,7 +96,6 @@ define(function (require) {
     var encodeHTML = dtLib.encodeHTML;
 
     // Inner constants
-    var UNDEFINED;
     var DEFAULT_VALUE_BRIEF_LENGTH = 20;
     var QUOTATION_REG_SINGLE = /^\s*'(.*)'\s*$/; // 中间也含有引号，因为贪婪，所以可以不管。
     var QUOTATION_REG_DOUBLE = /^\s*"(.*)"\s*$/; // 中间也含有引号，因为贪婪，所以可以不管。
@@ -78,207 +104,90 @@ define(function (require) {
 
     /**
      * @public
-     * @type {Object}
      */
     var schemaHelper = {};
 
-    /**
-     * ec option中的type枚举
-     *
-     * @public
-     */
-    schemaHelper.EC_OPTION_TYPE = [
-        'Array', 'Object', 'string', 'number', 'boolean', 'color', 'Function', 'Date'
-    ];
+    // Relation info:
+    var IS_OBJECT_ITEM = 'isPropertyItem';
+    var IS_ARRAY_ITEM = 'isArrayItem';
+
+    // Enum info:
+    var IS_ENUM_ITEM = 'isEnumItem';
+    var IS_ENUM_PARENT = 'isEnumParent';
 
     /**
-     * ec option axis的适用类型枚举
+     * option path:
      *
-     * @public
-     */
-    schemaHelper.EC_AXIS_APPLICABLE = ['category', 'value', 'time', 'log'];
-
-    /**
-     * ec option series的适用类型枚举
-     *
-     * @public
-     */
-    schemaHelper.EC_SERIES_APPLICABLE = [
-        'line', 'bar', 'scatter', 'k', 'pie', 'radar', 'chord', 'force', 'map', 'gauge',
-        'funnel', 'eventRiver', 'venn', 'treemap', 'tree', 'wordCloud', 'heatmap'
-    ];
-
-    /**
-     * ec option itemStyle的适用类型枚举
-     *
-     * @public
-     */
-    schemaHelper.EC_ITEM_STYLE_APPLICABLE = schemaHelper.EC_SERIES_APPLICABLE.concat(
-        ['markPoint', 'markLine']
-    );
-
-    /**
-     * option path 是类似于这样的东西：
-     *
-     * 'tooltip.formatter'
-     * 'axis[i].symbol' 或 'axis-i.symbol'
-     *     当路途中有数组时，[i]表示直接进入数组元素定义继续检索。
-     *     为什么兼容两种方式？因为url上[]是unsafe character，须encode，不好看。所以url上使用'-'。
-     * 'series[i](pie,line).itemStyle.normal.borderColor'
-     *     表示，解析到series[i]将当前context中applicable设置成pie和line。
-     *     context中的applicable用于oneOf的选取和properties限定。
-     * 'series[i](!pie,!line).itemStyle.normal.borderColor'
-     *     表示，解析到series[i]将当前context中applicable设置成!pie和!line，即不能是pie也不能是line。
-     *
-     * Input: 'asdf(bb,cc)[i](dd,ee).zzz[i][i]. ee() .ff',
-     * Output:
-     * When arrayOnlyAtom is false: [
-     *     {propertyName: 'asdf', applicable: new Set('bb,cc')},
-     *     {arrayName: 'asdf[i]', applicable: new Set('dd,ee')},
-     *     {propertyName: 'zzz'},
-     *     {arrayName: 'zzz[i]'},
-     *     {arrayName: 'zzz[i][i]'},
-     *     {propertyName: 'ee', applicable: new Set()},
-     *     {propertyName: 'ff'}
-     * ]
-     * When arrayOnlyAtom is true: [
-     *     {arrayName: 'asdf[i]', applicable: new Set().reset('bb,cc').reset('dd,ee')},
-     *     {arrayName: 'zzz[i][i]'},
-     *     {propertyName: 'ee', applicable: new Set()},
-     *     {propertyName: 'ff'}
-     * ]
+     * `'tooltip.formatter'`
+     * `'axis[i].symbol'` (the same as `'axis.symbol'` in query)
+     * `'series[i]-line.symbol'` (the same as `'series-line.symbol'` in query)
+     * where `'line'` is `typeEnum`, and `'[i]'` will be removed.
      *
      * @public
      * @param {string} optionPath
      * @param {Object=} options
-     * @param {boolean=} [options.arrayOnlyAtom] default false
-     * @param {boolean=} [options.ignoreEmptyItem] default false
-     * @param {boolean=} [options.noCtxVar=false] If false, in 'Responsive%20Mobile-End',
-     *                                            '-End' will be recognized as ctxVar.
+     * @param {boolean=} [options.noTypeEnum=false] If false, in 'Responsive%20Mobile-End',
+     *        '-End' will be recognized as ctxVar.
+     * @return {Array.<Object>} An array of:
+     *         {
+     *             // either arrayName (for array) or propertyName (for object)
+     *             propertyName: 'xxx',
+     *             // A string indicates the type enum.
+     *             typeEnum: 'line'
+     *         }
      */
     schemaHelper.parseOptionPath = function (optionPath, options) {
         options = options || {};
+
         var errorInfo = 'Path is illegal: \'' + optionPath + '\'';
         dtLib.assert(
             optionPath && (optionPath = $.trim(optionPath)), errorInfo
         );
-        // 因为mark down的url中不支持小括号（marked实现太简单了），所以小括号改用减号，数组不再用减号。
-        // URL中的数组，不写[i]。
-        // optionPath = optionPath.replace(/\-i/g, '-i]'); // 兼容 series-i表示数组的情况。
-        var pathArr = optionPath.split(/\.|\[/);
+
+        var pathArr = optionPath.replace(/\[i\]/g, '').split(/\./);
         var retArr = [];
 
         for (var i = 0, len = pathArr.length; i < len; i++) {
             var itemStr = $.trim(pathArr[i]);
-            if (options.ignoreEmptyItem && itemStr === '') {
+            // if (options.ignoreEmptyItem && itemStr === '') {
+            if (itemStr === '') {
                 continue;
             }
-            // 因为mark down的url中不支持小括号（marked实现太简单了），所以不用小括号，改用减号表示type。
             // match: 'asdf-bb' 'asdf-' 'i]-bb' 'i]-' 'asdf' 'i]'
             var regResult = itemStr.match(PATH_ITEM_REG) || [];
 
             var propertyName = regResult[1];
-            var ctxVar = regResult[2];
-            var ctxVarValue = regResult[3];
+            var typeEnumSegment = regResult[2]; // '-line'
+            var typeEnum = regResult[3]; // 'line'
 
-            if (options.noCtxVar) {
-                propertyName += ctxVar || '';
-                ctxVarValue = null;
+            if (options.noTypeEnum) {
+                propertyName += typeEnumSegment || '';
+                typeEnum = null;
             }
 
-            var pa = {};
-            var lastPa = retArr[retArr.length - 1];
-
-            if (propertyName === 'i]') {
-                pa.arrayName = (lastPa.arrayName || lastPa.propertyName) + '[i]';
-            }
-            else {
-                pa.propertyName = propertyName;
-            }
-
-            if (ctxVar) {
-                // FIXME
-                // 暂时只支持  series(line),  不支持 series(line,bar,pie)，好像没啥用？
-                // pa.applicable = new dtLib.Set(ctxVarValue);
-                pa.typeEnum = ctxVarValue;
-            }
-            retArr.push(pa);
-        }
-
-        if (options.arrayOnlyAtom) {
-            for (var i = 0, len = retArr.length; i < len;) {
-                var thisItem = retArr[i];
-                var nextItem = retArr[i + 1];
-                if (nextItem && nextItem.arrayName) {
-                    if (thisItem.applicable && !nextItem.applicable) {
-                        nextItem.applicable = new dtLib.Set(thisItem.applicable);
-                    }
-                    retArr.splice(i, 1);
-                }
-                else {
-                    i++;
-                }
-            }
+            retArr.push({
+                propertyName: propertyName,
+                typeEnum: typeEnum ? typeEnum : null
+            });
         }
 
         return retArr;
     };
 
     /**
-     * @see schemaHelper.parseOptionPath
-     * @public
-     * @param {Array.<Object>} optionsPathArr
-     * @param {Object} options
-     * @param {boolean} [options.useSquareBrackets] default false,
-     *                                              ignore square brackets for array item.
-     * @param {boolean} [options.html=false]
-     */
-    schemaHelper.stringifyOptionPath = function (optionPathArr, options) {
-        options = options || {};
-        var strArr = [];
-
-        for (var i = 0, len = optionPathArr.length; i < len; i++) {
-            var item = optionPathArr[i];
-            var arrayName = item.arrayName;
-            if (arrayName != null && !options.useSquareBrackets) {
-                arrayName = arrayName.replace(/\[i\]/g, '');
-            }
-            var itemStr = item.propertyName || arrayName;
-
-            if (item.typeEnum) {
-                itemStr += '-' + item.typeEnum;
-            }
-
-            if (options.html) {
-                itemStr = dtLib.encodeHTML(itemStr || '');
-                if (i === optionPathArr.length - 1) {
-                    itemStr = '<strong>' + itemStr + '</strong>';
-                }
-            }
-            strArr.push(itemStr);
-        }
-
-        return strArr.join('.');
-    };
-
-    /**
-     * 用于在 docJsonRenderer 绘制出的doctree中检索定义内容。
-     * 可以返回多个检索结果。
-     * optionPath和fuzzyPath的解释，参见 parseOptionPath。
-     *
      * @public
      * @param {Object} docTree
      * @param {Object} args
      * @param {string=} [args.fuzzyPath] Like 'bbb(line,pie).ccc',
-     *                                   using fuzzy mode, case insensitive.
-     *                                   i.e. The query string above matches the result 'mm.zbbbx.yyy.cccl'.
+     *        using fuzzy mode, case insensitive.
+     *        i.e. The query string above matches the result 'mm.zbbbx.yyy.cccl'.
      * @param {string=} [args.optionPath] Like 'aaa(line,pie).bbb.cc',
-     *                                    must be matched accurately, case sensitive.
+     *        must be matched accurately, case sensitive.
      * @param {string=} [args.anyText] Like 'somesomesome',
-     *                                 using fuzzy mode, case insensitive..
-     *                                 full text query (include descriptoin)
-     * @param {boolean} [args.noCtxVar=false] If false, in 'Responsive%20Mobile-End',
-     *                                   '-End' will be recognized as ctxVar.
+     *        using fuzzy mode, case insensitive..
+     *        full text query (include descriptoin)
+     * @param {boolean} [args.noTypeEnum=false] If false, in 'Responsive%20Mobile-End',
+     *        '-End' will be recognized as ctxVar.
      * @return {Array.<Object>} result
      * @throws {Error}
      */
@@ -290,13 +199,13 @@ define(function (require) {
             optionPath: args.optionPath
                 ? schemaHelper.parseOptionPath(
                     args.optionPath,
-                    {arrayOnlyAtom: true, noCtxVar: args.noCtxVar}
+                    {noTypeEnum: args.noTypeEnum}
                 )
                 : null,
             fuzzyPath: args.fuzzyPath
                 ? schemaHelper.parseOptionPath(
                     args.fuzzyPath,
-                    {arrayOnlyAtom: true, ignoreEmptyItem: true, noCtxVar: args.noCtxVar}
+                    {noTypeEnum: args.noTypeEnum}
                 )
                 : null,
             anyText: args.anyText && $.trim(args.anyText) || null
@@ -326,7 +235,6 @@ define(function (require) {
             var lastPathItem = (context.optionPath || context.fuzzyPath)[pathIndex - 1];
 
             if (!pathItem) {
-
                 // Consider: query 'series-line', whether match 'series'?
                 if (!docTree.isEnumParent
                     || context.fuzzyPath
@@ -347,7 +255,6 @@ define(function (require) {
                 var nextPathIndex = null;
 
                 if (docTree.isEnumParent) {
-                    // if (isApplicableLoosely(child.applicable, subApplicable)) {
                     if (!lastPathItem
                         || !lastPathItem.typeEnum
                         || child.typeEnum === lastPathItem.typeEnum
@@ -381,13 +288,10 @@ define(function (require) {
                 return;
             }
 
-            if (context.anyText
-                && (
-                    pathFuzzyMatch(docTree, context.anyText)
-                    || (docTree.descriptionCN && docTree.descriptionCN.indexOf(context.anyText) >= 0)
-                    || (docTree.descriptionEN && docTree.descriptionEN.indexOf(context.anyText) >= 0)
-                )
-            ) {
+            if (context.anyText && (
+                pathFuzzyMatch(docTree, context.anyText)
+                || (docTree.description && docTree.description.indexOf(context.anyText) >= 0)
+            )) {
                 context.result.push(docTree);
                 return;
             }
@@ -398,13 +302,7 @@ define(function (require) {
         }
 
         function pathAccurateMatch(child, propertyName, arrayName) {
-            return (child.propertyName != null && child.propertyName === propertyName)
-                || (
-                    child.arrayName != null && isMatchArrayName(
-                        arrayName != null ? arrayName : propertyName,
-                        child.arrayName
-                    )
-                );
+            return child.propertyName != null && child.propertyName === propertyName;
         }
 
         function pathFuzzyMatch(child, propertyName, arrayName) {
@@ -414,20 +312,8 @@ define(function (require) {
             if (arrayName != null) {
                 arrayName = arrayName.replace(/\[i\]/g, '').toLowerCase();
             }
-            return (child.propertyName != null
-                    && child.propertyName.toLowerCase().indexOf(propertyName) >= 0
-                )
-                || (child.arrayName != null
-                    && child.arrayName.toLowerCase().indexOf(
-                        arrayName != null ? arrayName : propertyName
-                    ) >= 0
-                );
-        }
-
-        function isMatchArrayName(nameShort, nameFull) {
-            return nameShort && nameFull
-                && nameFull.indexOf(nameShort) === 0
-                && /^(\[i\])*$/.test(nameFull.slice(nameShort.length));
+            return child.propertyName != null
+                && child.propertyName.toLowerCase().indexOf(propertyName) >= 0;
         }
     };
 
@@ -440,243 +326,152 @@ define(function (require) {
      * @public
      * @param {Object} schema
      * @param {Object} renderBase
-     * @param {Function} docRenderer params: renderBase, schemaItem, context
-     *                               return: subRenderBase (MUST return the object for continue building)
-     *                               See schemaHelper.buildDoc.docJsonRenderer.
-     *                               The context object contains: {
-     *                                   itemName {string},
-     *                                   relationInfo {BuildDocInfo},
-     *                                   selfInfo {BuildDocInfo},
-     *                                   enumInfo: {BuildDocInfo},
-     *                                   oneOfInfo: {BuildDocInfo},
-     *                                   arrayFrom {Array.<Object>},
-     *                                   applicable: {string|Array.<string>},
-     *                                   optionPath: {Array.<Object>} Available only in 'doc' mode.
-     *                                                                @see parseOptionPath method,
-     *                                                                in arrayOnlyAtom mode
-     *                                   schemaPath: {Array.<string>} Available only in 'schema' mode
-     *                               }
      */
-    schemaHelper.buildDoc = function (schema, renderBase, docRenderer) {
+    schemaHelper.buildDoc = function (schema, renderBase) {
 
-        docRenderer = docRenderer || schemaHelper.buildDoc.docJsonRenderer;
-
-        buildRecursively(renderBase, schema.option, makeContext({optionPath: []}));
+        buildRecursively(renderBase, schema.option);
 
         return renderBase;
 
-        function makeContext(props) {
-            return $.extend(
-                {
-                    originalSchema: schema,
-                    docRenderer: docRenderer
-                },
-                props
-            );
-        }
+        // To reduce GC cost, pass context parameters directly.
+        function buildRecursively(renderBase, schemaItem, optionPathItemName, relationInfo, enumInfo, arrayFrom) {
 
-        function buildRecursively(renderBase, schemaItem, context) {
             if (!dtLib.isObject(schemaItem)) {
                 return;
             }
 
-            else if (schemaItem.anyOf
-                && context.enumInfo !== BuildDocInfo.IS_ENUM_ITEM
-            ) {
-                handleEnumerate(renderBase, schemaItem, context);
-            }
-            else if (schemaItem.items) { // Array
-                handleArray(renderBase, schemaItem, context);
-            }
-            else if (schemaItem.properties) { // Object and simple type
-                handleObject(renderBase, schemaItem, context);
-            }
-            else {
-                handleAtom(renderBase, schemaItem, context);
-            }
-        }
-
-        function handleEnumerate(renderBase, schemaItem, context) {
-            context.enumInfo = BuildDocInfo.IS_ENUM_PARENT;
-            var subRenderBase = context.docRenderer(renderBase, schemaItem, context);
-            var anyOf = schemaItem.anyOf;
-
-            for (var j = 0, lj = anyOf.length; j < lj; j++) {
-                // Make subOptionPath
-                var subOptionPath;
-                if (context.optionPath) {
-                    subOptionPath = dtLib.clone(context.optionPath);
-                    var optionPathItem = getLastOptionPathItem(subOptionPath);
-                    optionPathItem.typeEnum = getTypeEnum(anyOf[j]);
-                }
-
-                buildRecursively(
-                    subRenderBase,
-                    anyOf[j],
-                    makeContext({
-                        itemName: context.itemName,
-                        relationInfo: context.relationInfo,
-                        enumInfo: BuildDocInfo.IS_ENUM_ITEM,
-                        arrayFrom: context.arrayFrom ? context.arrayFrom.slice() : UNDEFINED,
-                        optionPath: subOptionPath
-                    })
+            if (schemaItem.anyOf) {
+                var subRenderBase = renderDocItem(
+                    'isEnumParent', renderBase, schemaItem,
+                    optionPathItemName, relationInfo, IS_ENUM_PARENT, arrayFrom
                 );
-            }
-        }
-
-        function handleArray(renderBase, schemaItem, context) {
-            context.selfInfo = BuildDocInfo.HAS_ARRAY_ITEMS;
-            var subRenderBase = context.docRenderer(renderBase, schemaItem, context);
-            var arrayFrom = context.arrayFrom;
-
-            // Make subOptionPath
-            var subOptionPath;
-            if (context.optionPath) {
-                subOptionPath = dtLib.clone(context.optionPath);
-                var lastOptionPathItem = getLastOptionPathItem(subOptionPath);
-                if (lastOptionPathItem.hasOwnProperty('propertyName')) {
-                    lastOptionPathItem.arrayName = lastOptionPathItem.propertyName;
-                    delete lastOptionPathItem.propertyName;
-                }
-                lastOptionPathItem.arrayName += '[i]';
-            }
-
-            // Make subSchemaPath
-            var subSchemaPath;
-            if (context.schemaPath) {
-                subSchemaPath = context.schemaPath.slice();
-                subSchemaPath.push('items');
-            }
-
-            buildRecursively(
-                subRenderBase,
-                schemaItem.items,
-                makeContext({
-                    itemName: context.itemName, // Actually this is array base item name.
-                    relationInfo: BuildDocInfo.IS_ARRAY_ITEM,
-                    arrayFrom: arrayFrom
-                        ? (arrayFrom.push(schemaItem), arrayFrom)
-                        : [schemaItem],
-                    optionPath: subOptionPath,
-                    schemaPath: subSchemaPath
-                })
-            );
-        }
-
-        function handleObject(renderBase, schemaItem, context) {
-            context.selfInfo = BuildDocInfo.HAS_OBJECT_PROPERTIES;
-            var subRenderBase = context.docRenderer(renderBase, schemaItem, context);
-            var properties = schemaItem.properties;
-
-            for (var propertyName in properties) {
-                if (properties.hasOwnProperty(propertyName)) {
-
-                    // Make subOptionPath
-                    var subOptionPath;
-                    if (context.optionPath) {
-                        subOptionPath = dtLib.clone(context.optionPath);
-                        subOptionPath.push({propertyName: propertyName});
-                    }
-
-                    // Make subSchemaPath
-                    var subSchemaPath;
-                    if (context.schemaPath) {
-                        subSchemaPath = context.schemaPath.slice();
-                        subSchemaPath.push('properties', propertyName);
-                    }
-
+                for (var j = 0; j < schemaItem.anyOf.length; j++) {
                     buildRecursively(
                         subRenderBase,
-                        properties[propertyName],
-                        makeContext({
-                            itemName: propertyName,
-                            relationInfo: BuildDocInfo.IS_OBJECT_ITEM,
-                            arrayFrom: UNDEFINED,
-                            optionPath: subOptionPath,
-                            schemaPath: subSchemaPath
-                        })
+                        schemaItem.anyOf[j],
+                        optionPathItemName,
+                        null,
+                        IS_ENUM_ITEM,
+                        arrayFrom ? arrayFrom.slice() : null
                     );
                 }
             }
-        }
+            else if (schemaItem.items) {
+                var subRenderBase = renderDocItem(
+                    'hasArrayItems', renderBase, schemaItem,
+                    optionPathItemName, relationInfo, enumInfo, arrayFrom
+                );
+                buildRecursively(
+                    subRenderBase,
+                    schemaItem.items,
+                    optionPathItemName, // Actually this is array base item name.
+                    IS_ARRAY_ITEM,
+                    null,
+                    arrayFrom
+                        ? (arrayFrom.push(schemaItem), arrayFrom)
+                        : [schemaItem]
+                );
+            }
+            else if (schemaItem.properties) {
+                var subRenderBase = renderDocItem(
+                    'hasObjectProperties', renderBase, schemaItem,
+                    optionPathItemName, relationInfo, enumInfo, arrayFrom
+                );
+                var properties = schemaItem.properties;
 
-        function handleAtom(renderBase, schemaItem, context) {
-            context.selfInfo = BuildDocInfo.IS_ATOM;
-            context.docRenderer(renderBase, schemaItem, context);
-        }
-
-        function getLastOptionPathItem(optionPath) {
-            return optionPath.length > 0 ? optionPath[optionPath.length - 1] : null;
+                for (var propertyName in schemaItem.properties) {
+                    if (properties.hasOwnProperty(propertyName)) {
+                        buildRecursively(
+                            subRenderBase,
+                            schemaItem.properties[propertyName],
+                            propertyName,
+                            IS_OBJECT_ITEM,
+                            null,
+                            null
+                        );
+                    }
+                }
+            }
+            // SchemaItem with type of neither 'object' or 'array', and schemaItem with type of 'object'
+            // but do not has properties defined.
+            else {
+                renderDocItem(
+                    'isAtom', renderBase, schemaItem,
+                    optionPathItemName, relationInfo, enumInfo, arrayFrom
+                );
+            }
         }
     };
 
-    /**
-     * @public
-     * @type {Enum}
-     */
-    var BuildDocInfo = schemaHelper.buildDoc.BuildDocInfo = {
+    function renderDocItem(
+        handlerName, renderBase, schemaItem, optionPathItemName, relationInfo, enumInfo, arrayFrom
+    ) {
+        var subRenderBase = renderBase;
+        var typeEnum = enumInfo === IS_ENUM_ITEM ? getTypeEnum(schemaItem) : null;
 
-        // relation info
-        IS_OBJECT_ITEM: 'isPropertyItem',
-        IS_ARRAY_ITEM: 'isArrayItem',
-        IS_DEFINITION_ITEM: 'isDefinitionItem',
+        // makeSubRenderBase
+        if (handlerName !== 'hasArrayItems') {
+            var descInfo = retrieveDescFromSchemaItem(schemaItem, relationInfo, enumInfo, arrayFrom);
+            subRenderBase = {
+                value: 'id-' + dtLib.localUID(),
+                parent: renderBase,
+                hasObjectProperties: handlerName === 'hasObjectProperties',
+                isEnumParent: enumInfo === IS_ENUM_PARENT,
+                type: schemaItem.type,
+                typeEnum: typeEnum,
+                description: descInfo.description,
+                defau: descInfo.defau,
+                // optionPath: context.optionPath.slice(),
+                defaultValueText: schemaHelper.getDefaultValueText(descInfo.defau),
+                itemEncodeHTML: false,
+                tooltipEncodeHTML: false
+            };
 
-        // self info
-        HAS_OBJECT_PROPERTIES: 'hasObjectProperties', // An schemaItem with type of object and no properties defined
-                                          // belongs to atom.
-        HAS_ARRAY_ITEMS: 'hasArrayItems',
-        IS_ATOM: 'isAtom', // SchemaItem with type of neither 'object' or 'array',
-                           // and schemaItem with type of 'object' but do not has properties defined.
+            if (enumInfo !== IS_ENUM_ITEM) {
+                subRenderBase.propertyName = optionPathItemName;
+            }
+            if (relationInfo === IS_ARRAY_ITEM) {
+                subRenderBase.arrayDepth = arrayFrom.length;
+            }
 
-        // enum info
-        IS_ENUM_ITEM: 'isEnumItem',
-        IS_ENUM_PARENT: 'isEnumParent'
-    };
-
-    /**
-     * @public
-     */
-    schemaHelper.buildDoc.docJsonRenderer = function (renderBase, schemaItem, context) {
-        var selfInfo = context.selfInfo;
-        var enumInfo = context.enumInfo;
-
-        // Make subRenderBase.
-        var subRenderBase = selfInfo === BuildDocInfo.HAS_ARRAY_ITEMS
-            ? renderBase
-            : makeSubRenderBase(schemaItem, context);
+            (renderBase.children = renderBase.children || []).push(subRenderBase);
+        }
 
         // Make prefix, suffix and childrenBrief.
         var prefix = '';
         var suffix = '';
         var childrenBrief = '...';
-        if (context.enumInfo !== BuildDocInfo.IS_ENUM_ITEM) {
-            var itemName = context.itemName;
-            if (itemName) {
-                prefix = '<span class="ecdoc-api-tree-text-prop">' + encodeHTML(itemName) + '</span>';
+        if (enumInfo === IS_ENUM_ITEM) {
+            childrenBrief = 'type: \'' + encodeHTML(typeEnum) + '\', ...';
+        }
+        else {
+            if (optionPathItemName) {
+                prefix = '<span class="ecdoc-api-tree-text-prop">' + encodeHTML(optionPathItemName) + '</span>';
                 if (!docUtil.getGlobalArg('pureTitle')) {
                     prefix += ': ';
                 }
             }
-            var arrayFrom = context.arrayFrom;
-            if (arrayFrom) {
-                var tmpArr = new Array(arrayFrom.length + 1);
-                prefix += tmpArr.join('[');
-                suffix += tmpArr.join(']');
+            if (arrayFrom && arrayFrom.length) {
+                // Simple optimize.
+                if (arrayFrom.length === 1) {
+                    prefix += '[';
+                    suffix += ']';
+                }
+                else {
+                    var tmpArr = new Array(arrayFrom.length + 1);
+                    prefix += tmpArr.join('[');
+                    suffix += tmpArr.join(']');
+                }
             }
-        }
-        else {
-            childrenBrief = 'type: \'' + encodeHTML(getTypeEnum(schemaItem)) + '\', ...';
         }
 
         // Make tree item text and children.
-        var children = [];
-        if (selfInfo === BuildDocInfo.HAS_OBJECT_PROPERTIES) {
+        if (handlerName === 'hasObjectProperties') {
             subRenderBase.childrenPre = prefix + '{';
             subRenderBase.childrenPost = '}' + suffix + ',';
             subRenderBase.childrenBrief = childrenBrief;
-            children.push(subRenderBase);
         }
-        else if (selfInfo === BuildDocInfo.IS_ATOM) {
+        else if (handlerName === 'isAtom') {
             var defaultValueText = schemaHelper.getDefaultValueText(
                 subRenderBase.defau, {getBrief: true}
             );
@@ -686,134 +481,75 @@ define(function (require) {
                 + '<span class="ecdoc-api-tree-text-default">' + encodeHTML(defaultValueText) + '</span>'
                 + suffix + ',';
             }
-            children.push(subRenderBase);
         }
-        else if (enumInfo === BuildDocInfo.IS_ENUM_PARENT) { // selfInfo == undefined
+        else if (handlerName === 'isEnumParent') {
             subRenderBase.childrenPre = prefix;
             subRenderBase.childrenPost = suffix + ',';
             subRenderBase.childrenBrief = childrenBrief;
-            children.push(subRenderBase);
-        }
-
-        // Assign children.
-        if (children.length) {
-            renderBase.children = (renderBase.children || []).concat(children);
         }
 
         return subRenderBase;
+    }
 
-        function makeSubRenderBase(schemaItem, context) {
-            var result = retrieveInfo(schemaItem, context);
-            var hasObjectProperties = context.selfInfo === BuildDocInfo.HAS_OBJECT_PROPERTIES;
-            var isEnumParent = context.enumInfo === BuildDocInfo.IS_ENUM_PARENT;
-            var isEnumItem = context.enumInfo === BuildDocInfo.IS_ENUM_ITEM;
-            var sub = {
-                value: 'ecapidocid-' + dtLib.localUID(),
-                hasObjectProperties: hasObjectProperties,
-                isEnumParent: isEnumParent,
-                // enumerateBy: isEnumParent ? schemaItem.enumerateBy.slice() : UNDEFINED,
-                type: schemaItem.type,
-                typeEnum: isEnumItem ? getTypeEnum(schemaItem) : null,
-                parent: renderBase,
-                descriptionCN: result.descriptionCN,
-                descriptionEN: result.descriptionEN,
-                defau: result.defau,
-                optionPathForHash: schemaHelper.stringifyOptionPath(
-                    context.optionPath, {useSquareBrackets: false}
-                ),
-                optionPathHTML: schemaHelper.stringifyOptionPath(
-                    context.optionPath, {useSquareBrackets: true, html: true}
-                ),
-                defaultValueText: schemaHelper.getDefaultValueText(result.defau),
-                itemEncodeHTML: false,
-                tooltipEncodeHTML: false
-            };
+    function retrieveDescFromSchemaItem(schemaItem, relationInfo, enumInfo, arrayFrom) {
+        // Array parent has no renderBase, so consider these cases:
+        //
+        // Case 1:
+        //      {
+        //          name: 'visualMap',
+        //          type: 'Array',
+        //          description: 'visualMap introduce',
+        //          items: {
+        //              anyOf: [
+        //                  {
+        //                      type: 'continuous',
+        //                      description: 'visualMapContinuous introduce'
+        //                  },
+        //                  {
+        //                      type: 'piecewise',
+        //                      description: 'visualMapPiecewise introduce'
+        //                  }
+        //              ]
+        //          }
+        //      }
+        //      The real renderBase is on "items",
+        //      where we need show description of 'visualMap'.
+        //
+        // Case 2:
+        //      {
+        //          name: 'data',
+        //          type: 'Array',
+        //          description: 'description of data',
+        //          items: {
+        //              properties: {
+        //                  ...
+        //              }
+        //          }
+        //      }
+        //      The real renderBase is on "items",
+        //      where we need show description of 'data'.
 
-            if (context.relationInfo === BuildDocInfo.IS_ARRAY_ITEM) {
-                sub.arrayName = context.itemName + (new Array(context.arrayFrom.length + 1)).join('[i]');
-            }
-            else { // IS_OBJECT_ITEM
-                sub.propertyName = context.itemName; // For query.
-            }
-
-            return sub;
-        }
-
-        function retrieveInfo(schemaItem, context) {
-            // Array parent has no renderBase, so consider these cases:
-            //
-            // Case 1:
-            //      {
-            //          name: 'visualMap',
-            //          type: 'Array',
-            //          descriptionCN: 'visualMap introduce',
-            //          items: {
-            //              anyOf: [
-            //                  {
-            //                      type: 'continuous',
-            //                      descriptionCN: 'visualMapContinuous introduce'
-            //                  },
-            //                  {
-            //                      type: 'piecewise',
-            //                      descriptionCN: 'visualMapPiecewise introduce'
-            //                  }
-            //              ]
-            //          }
-            //      }
-            //      The real renderBase is on "items",
-            //      where we need show description of 'visualMap'.
-            //
-            // Case 2:
-            //      {
-            //          name: 'data',
-            //          type: 'Array',
-            //          descriptionCN: 'description of data',
-            //          items: {
-            //              properties: {
-            //                  ...
-            //              }
-            //          }
-            //      }
-            //      The real renderBase is on "items",
-            //      where we need show description of 'data'.
-
-            var arrayFrom = (context.arrayFrom || []).slice();
-            var item = (
-                arrayFrom.length && (
-                    context.enumInfo === BuildDocInfo.IS_ENUM_PARENT
-                    || (context.relationInfo === BuildDocInfo.IS_ARRAY_ITEM
-                        && context.enumInfo !== BuildDocInfo.IS_ENUM_ITEM
-                    )
+        var arrayFrom = (arrayFrom || []).slice();
+        var item = (
+            arrayFrom && arrayFrom.length && (
+                enumInfo === IS_ENUM_PARENT
+                || (relationInfo === IS_ARRAY_ITEM
+                    && enumInfo !== IS_ENUM_ITEM
                 )
-            ) ? arrayFrom[0] : schemaItem;
+            )
+        ) ? arrayFrom[0] : schemaItem;
 
-            var result = {
-                descriptionCN: item.descriptionCN,
-                descriptionEN: item.descriptionEN,
-                defau: {type: item.type}
-            };
+        var result = {
+            description: item.description,
+            defau: {type: item.type}
+        };
 
-            if (item.hasOwnProperty('default')) {
-                result.defau['default'] = item['default'];
-            }
-
-            return result;
+        if (item.hasOwnProperty('default')) {
+            result.defau['default'] = item['default'];
         }
-    };
 
-    /**
-     * 是否合法的type
-     */
-    schemaHelper.isValidEcOptionType = function (type) {
-        return dtLib.arrayIndexOf(schemaHelper.EC_OPTION_TYPE, type) !== -1;
-    };
-
-    /**
-     * @return {Array}
-     */
-    schemaHelper.getEcOptionTypes = function () {
-        return dtLib.clone(schemaHelper.EC_OPTION_TYPE);
-    };
+        return result;
+    }
 
     /**
      * 得到默认值的简写，在一行之内显示。
@@ -822,7 +558,6 @@ define(function (require) {
      * @public
      * @param {Object} defau
      * @param {Object} [defau.default]
-     * @param {Object} [defau.defaultExplanation]
      * @param {Object} options
      * @param {boolean} [options.getBrief] default false, otherwise return full text.
      * @param {Object} [options.briefMapping]
@@ -883,6 +618,93 @@ define(function (require) {
             }
         }
     };
+
+    // /**
+    //  * @param {Object} schema Where schema Will be filled.
+    //  * @param {Object} descSchema
+    //  */
+    // schemaHelper.fillSchemaWithDescription = function (schema, descSchema) {
+
+    //     buildRecursively(descSchema.option, schema.option);
+
+    //     function buildRecursively(descSchemaItem, schemaItem) {
+    //         if (!dtLib.isObject(schemaItem)) {
+    //             return;
+    //         }
+
+    //         if (schemaItem.anyOf) {
+    //             schemaItem.anyOf.forEach(function (item, j) {
+    //                 buildRecursively(descSchemaItem.anyOf[j], item);
+    //             });
+    //         }
+    //         else if (schemaItem.items) {
+    //             buildRecursively(descSchemaItem.items, schemaItem.items);
+    //         }
+    //         else if (schemaItem.properties) {
+    //             Object.keys(schemaItem.properties).forEach(function (propertyName) {
+    //                 buildRecursively(
+    //                     descSchemaItem.properties[propertyName],
+    //                     schemaItem.properties[propertyName]
+    //                 );
+    //             });
+    //         }
+    //         else {
+    //             schemaItem.description = descSchemaItem.description;
+    //         }
+    //     }
+    // };
+
+    schemaHelper.getOptionPathForHash = function (treeItem) {
+        return buildOptionPathFromTreeItem(treeItem);
+    };
+
+    schemaHelper.getOptionPathForHTML = function (treeItem) {
+        return buildOptionPathFromTreeItem(treeItem, true, true);
+    };
+
+    function buildOptionPathFromTreeItem(treeItem, useSquareBrackets, html) {
+        var optionPath = [];
+        var notLeaf;
+
+        // Exclude the root.
+        while (treeItem && treeItem.parent && treeItem.parent.parent) {
+            var typeEnum = treeItem.typeEnum;
+            var itemStr = typeEnum
+                ? getPropertyName(treeItem.parent, useSquareBrackets) + '-' + typeEnum
+                : getPropertyName(treeItem, useSquareBrackets);
+
+            if (html) {
+                itemStr = dtLib.encodeHTML(itemStr || '');
+                if (!notLeaf) {
+                    itemStr = '<strong>' + itemStr + '</strong>';
+                }
+            }
+
+            optionPath.push(itemStr);
+
+            treeItem = treeItem.parent;
+            if (typeEnum) {
+                treeItem = treeItem.parent;
+            }
+            notLeaf = true;
+        }
+
+        return optionPath.reverse().join('.');
+    }
+
+    function getPropertyName(treeItem, useSquareBrackets) {
+        var propertyName = treeItem.propertyName;
+        var arrayDepth = treeItem.arrayDepth;
+        if (useSquareBrackets && arrayDepth) {
+            if (arrayDepth === 1) {
+                propertyName += '[i]';
+            }
+            else {
+                propertyName += new Array(arrayDepth + 1).join('[i]');
+            }
+        }
+        return propertyName;
+    }
 
     /**
      * @inner

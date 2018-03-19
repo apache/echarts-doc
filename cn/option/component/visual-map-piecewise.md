@@ -25,6 +25,8 @@
 
 类型为分段型。
 
+{{use: partial-component-id(prefix="#")}}
+
 ## splitNumber(number) = 5
 
 对于连续型数据，自动平均切分成几段。默认为5段。

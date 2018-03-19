@@ -21,6 +21,8 @@ The *inside* means it's inside the coordinates.
 
 ## type(string) = 'inside'
 
+{{use: partial-component-id(prefix="#")}}
+
 ## disabled(boolean) = false
 
 Whether disable inside zoom.

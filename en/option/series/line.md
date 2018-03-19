@@ -14,6 +14,8 @@ Broken line chart relates all the data points [symbol](~series-line.symbol) by b
 
 ## type(string) = 'line'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 {{ use: partial-coord-sys(

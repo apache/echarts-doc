@@ -17,6 +17,8 @@
 
 ## type(string) = 'map'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 {{ use: geo-common(

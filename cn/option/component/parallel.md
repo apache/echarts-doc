@@ -10,6 +10,8 @@
 <br>
 <br>
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-rect-layout-width-height(
     componentName='parallel ',
     defaultLeft: 80,

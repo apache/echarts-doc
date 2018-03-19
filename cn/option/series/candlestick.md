@@ -30,6 +30,8 @@
 
 ## type(string) = 'candlestick'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{use: partial-coord-sys(
     seriesType="cartesian2d",
     coordSysDefault="'cartesian2d'",

@@ -12,6 +12,7 @@
 
 ## type(string) = 'parallel'
 
+{{use: partial-component-id(prefix="#")}}
 
 {{use: partial-coord-sys(
     seriesType="parallel",

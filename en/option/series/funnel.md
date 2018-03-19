@@ -10,6 +10,8 @@
 
 ## type(string) = 'funnel'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 ## min(number) = 0

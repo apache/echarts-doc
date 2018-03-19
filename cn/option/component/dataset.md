@@ -10,6 +10,7 @@ ECharts 4 开始支持了 `数据集`（`dataset`）组件用于单独的数据�
 
 ---
 
+{{use: partial-component-id(prefix="#")}}
 
 ## source(Array|Object)
 

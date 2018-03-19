@@ -21,6 +21,8 @@ You can set [visualMap.calculable](~visualMap.calculable) to show or hide the ha
 Used to determine that it is a continuous visualMap component.
 
 
+{{use: partial-component-id(prefix="#")}}
+
 ## min(number)
 
 Specify the min dataValue for the visualMap component. `[visualMap.min, visualMax.max]` make up the domain of viusul mapping.

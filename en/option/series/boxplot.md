@@ -17,6 +17,8 @@ Multiple `series` can be displayed in the same coordinate system. Please refer t
 
 ## type(string) = 'boxplot'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{use: partial-coord-sys(
     seriesType="cartesian2d",
     coordSysDefault="'cartesian2d'",

@@ -13,6 +13,8 @@ Graph is a diagram to represent [nodes](~series-graph.nodes) and the [links](~se
 
 ## type(string) = 'graph'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 {{ use: partial-legend-hover-link() }}

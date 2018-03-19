@@ -11,6 +11,8 @@
 
 ~[600x400](${galleryViewPath}scatter-anscombe-quartet&edit=1&reset=1)
 
+{{use: partial-component-id(prefix="#")}}
+
 ## show(boolean) = false
 
 是否显示直角坐标系网格。
