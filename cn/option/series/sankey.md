@@ -5,7 +5,7 @@
 
 ** 桑基图 **
 
-是一种特殊的流图, 它主要用来表示原材料、能量等如何从初始形式经过中间过程的加工、转化到达最终形式。
+是一种特殊的流图（可以看作是有向无环图）。 它主要用来表示原材料、能量等如何从最初形式经过中间过程的加工或转化达到最终状态。
 
 **示例：**
 
@@ -103,15 +103,22 @@
 ## data(Array)
 
 {{ use: partial-1d-data-desc() }}
+
 ### name(string)
+
 数据项名称。
+
 ### value(number|Array)
+
 数据项值。
+
 ### itemStyle(Object)
+
 该节点的样式。
 {{use:partial-item-style(prefix="###", useColorPalatte=true)}}
 
 ### label(Object)
+
 该节点标签的样式。
 {{ use:partial-label(
     prefix="###"
@@ -134,7 +141,8 @@
 同 [data](~series-sankey.data)
 
 ## links(Array)
-节点间的关系数据。示例：
+节点间的边。**注意: 桑基图理论上只支持有向无环图（DAG, Directed Acyclic Graph），所以请确保输入的边是无环的.** 示例：
+
 ```js
 links: [{
     source: 'n1',
@@ -144,24 +152,36 @@ links: [{
     target: 'n3'
 }]
 ```
+
 ### source(string)
+
 边的[源节点名称](~series-graph.data.name)
+
 ### target(string)
+
 边的[目标节点名称](~series-graph.data.name)
+
 ### value(number)
+
 边的数值，决定边的宽度。
+
 ### lineStyle(Object)
+
 关系边的线条样式。
 {{use:partial-sankey-line-style(
     prefix="###"
 )}}
+
 ### emphasis(Object)
+
 #### lineStyle(Object)
+
 {{ use:partial-sankey-line-style(
     prefix="####"
 ) }}
 
 ## edges(Array)
+
 同 [links](~series-sankey.links)
 
 {{ use:partial-silent(
@@ -184,12 +204,15 @@ links: [{
 {{target: partial-sankey-line-style}}
 
 #${prefix} color(Color) = "'#314656'"
+
 桑基图边的颜色。
 
 #${prefix} opacity(number) = 0.2
+
 桑基图边的透明度。
 
 #${prefix} curveness(number) = 0.5
+
 桑基图边的曲度。
 
 {{use: partial-style-shadow(prefix=${prefix})}}
