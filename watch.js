@@ -13,6 +13,8 @@ var watchDirs = [];
 getAllDirs(docSrcDirCN, watchDirs);
 getAllDirs(docSrcDirEN, watchDirs);
 
+var timer;
+
 watchDirs.forEach(function (p) {
     fs.watch(p, onChange);
 });
@@ -30,8 +32,13 @@ function getAllDirs(rootDir, result) {
 function onChange(event) {
     if (event === 'change') {
         console.log('File changed, auto compile ...');
-        setTimeout(function () {
-            execBuild(); // Writing may be not finished yet.
+
+        if (timer) {
+            clearTimeout(timer);
+        }
+
+        timer = setTimeout(function () {
+            execBuild(); // Writing may be not finished yet, and throttle.
             console.log('Done.');
         }, 1000);
     }
@@ -44,6 +51,7 @@ function execBuild() {
             if (error !== null) {
                 console.log('exec error: ' + error);
             }
+            console.log(stdout);
         }
     );
 }

@@ -5,7 +5,9 @@ var copydir = require('copy-dir');
 
 var languages = ['cn', 'en'];
 
-var configName = './config' + (process.argv[2] || '');
+var env = process.argv[2] || '';
+
+var configName = './config' + env;
 
 var config = require(configName);
 
@@ -16,77 +18,202 @@ for (var key in config) {
     }
 }
 
-languages.forEach(function (language) {
-    if (!fs.existsSync('public/' + language + '/documents/' + language)) {
-        fs.mkdirSync('public/' + language + '/documents/' + language);
-    }
-    md2json({
-            path: language + '/option/**/*.md',
-            sectionsAnyOf: ['visualMap', 'dataZoom', 'series', 'graphic.elements'],
-            entry: 'option',
-            tplEnv: config,
-            imageRoot: config.imagePath
-        },
-        function (optionSchema) {
-            fs.writeFileSync(
-                'public/' + language + '/documents/' + language + '/option.json',
-                JSON.stringify(optionSchema, null, 2),
-                'utf-8'
-            );
+function run() {
+    languages.forEach(function (language) {
+        if (!fs.existsSync('public/' + language + '/documents/' + language)) {
+            fs.mkdirSync('public/' + language + '/documents/' + language);
         }
-    );
-    md2json({
-            path: language + '/tutorial/**/*.md',
-            entry: 'tutorial',
-            tplEnv: config,
-            maxDepth: 1,
-            imageRoot: config.imagePath
-        },
-        function (tutorialSchema) {
-            fs.writeFileSync(
-                'public/' + language + '/documents/' + language + '/tutorial.json',
-                JSON.stringify(tutorialSchema, null, 2),
-                'utf-8'
-            );
-        }
-    );
-    md2json({
-            path: language + '/api/**/*.md',
-            entry: 'api',
-            tplEnv: config,
-            imageRoot: config.imagePath
-        },
-        function (apiSchema) {
-            fs.writeFileSync(
-                'public/' + language + '/documents/' + language + '/api.json',
-                JSON.stringify(apiSchema, null, 2),
-                'utf-8'
-            );
-        }
-    );
+        md2json({
+                path: language + '/option/**/*.md',
+                sectionsAnyOf: ['visualMap', 'dataZoom', 'series', 'graphic.elements'],
+                entry: 'option',
+                tplEnv: config,
+                imageRoot: config.imagePath
+            },
+            function (schema) {
+                // Always print single option.html file for some third part usage (e.g., dataV).
+                writeSingleSchema(schema, language, 'option');
+                // writePartitionedOptionSchema(schema, language, 'option');
+            }
+        );
+        md2json({
+                path: language + '/tutorial/**/*.md',
+                entry: 'tutorial',
+                tplEnv: config,
+                maxDepth: 1,
+                imageRoot: config.imagePath
+            },
+            function (schema) {
+                writeSingleSchema(schema, language, 'tutorial');
+            }
+        );
+        md2json({
+                path: language + '/api/**/*.md',
+                entry: 'api',
+                tplEnv: config,
+                imageRoot: config.imagePath
+            },
+            function (schema) {
+                writeSingleSchema(schema, language, 'api');
+            }
+        );
 
-    md2json({
-            path: language + '/option-gl/**/*.md',
-            sectionsAnyOf: ['series'],
-            entry: 'option-gl',
-            tplEnv: config.gl,
-            imageRoot: config.gl.imagePath
-        },
-        function (apiSchema) {
-            fs.writeFileSync(
-                'public/' + language + '/documents/' + language + '/option-gl.json',
-                JSON.stringify(apiSchema, null, 2),
-                'utf-8'
-            );
-        }
-    );
+        md2json({
+                path: language + '/option-gl/**/*.md',
+                sectionsAnyOf: ['series'],
+                entry: 'option-gl',
+                tplEnv: config.gl,
+                imageRoot: config.gl.imagePath
+            },
+            function (schema) {
+                writeSingleSchema(schema, language, 'option-gl');
+                // writePartitionedOptionSchema(schema, language, 'option-gl');
+            }
+        );
 
+        fs.writeFileSync(
+            'public/' + language + '/documents/' + language + '/changelog.html',
+            marked(fs.readFileSync(language + '/changelog.md', 'utf-8')),
+            'utf-8'
+        );
+    });
+
+    copydir.sync('./asset', './public/cn/documents/asset');
+    copydir.sync('./asset', './public/en/documents/asset');
+}
+
+function writeSingleSchema(schema, language, docName, format) {
+    var path = 'public/' + language + '/documents/' + language + '/' + docName + '.json';
+    console.log('output: ' + path);
     fs.writeFileSync(
-        'public/' + language + '/documents/' + language + '/changelog.html',
-        marked(fs.readFileSync(language + '/changelog.md', 'utf-8')),
+        path,
+        format ? JSON.stringify(schema, null, 2) : JSON.stringify(schema),
         'utf-8'
     );
-});
+}
 
-copydir.sync('./asset', './public/cn/documents/asset');
-copydir.sync('./asset', './public/en/documents/asset');
+/**
+ * Partition by outline and description.
+ * The schema format, see `echarts-www/js/docTool/schemaHelper.js`
+ *
+ * Notice: the input schema will be modified.
+ */
+function writePartitionedOptionSchema(schema, language, prefix) {
+    var descSchema = {
+        option: {}
+    };
+
+    buildRecursively(descSchema.option, schema.option);
+
+    function buildRecursively(descSchemaItem, schemaItem) {
+        if (!isObject(schemaItem)) {
+            return;
+        }
+
+        if (schemaItem.anyOf) {
+            descSchemaItem.anyOf = [];
+            schemaItem.anyOf.forEach(function (item, j) {
+                buildRecursively(descSchemaItem.anyOf[j] = {}, item);
+            });
+        }
+        else if (schemaItem.items) {
+            buildRecursively(descSchemaItem.items = {}, schemaItem.items);
+        }
+        else if (schemaItem.properties) {
+            descSchemaItem.properties = {};
+            Object.keys(schemaItem.properties).forEach(function (propertyName) {
+                buildRecursively(
+                    descSchemaItem.properties[propertyName] = {},
+                    schemaItem.properties[propertyName]
+                );
+            });
+        }
+        else {
+            descSchemaItem.description = schemaItem.description;
+            // Remove `description` to reduce file size.
+            delete schemaItem.description;
+        }
+    }
+
+    writeSingleSchema(schema, language, prefix + '_outline');
+    writeSingleSchema(descSchema, language, prefix + '_description');
+}
+
+// /**
+//  * Partition by subtree.
+//  */
+// function writePartitionedOptionSchema(optionSchema, language, prefix) {
+//     var partailSchemaList = [];
+
+//     Object.keys(optionSchema.option.properties).forEach(function (propName) {
+
+//         var propDefine = optionSchema.option.properties[propName];
+//         var propDefineType = normalizeToArray(propDefine.type);
+
+//         if (propDefineType.indexOf('Object') >= 0 && propDefine.properties) {
+//             partailSchemaList.push({
+//                 partName: propName,
+//                 properties: propDefine.properties
+//             });
+//             propDefine.properties = {};
+//             propDefine.requestPart = propName;
+//         }
+//         else if (
+//             propDefineType.indexOf('Array') >= 0
+//             && propDefine.items
+//             && propDefine.items.anyOf
+//         ) {
+//             propDefine.items.anyOf.forEach(function (componentDefine) {
+//                 var type = normalizeToArray(componentDefine.type);
+//                 var componentTypeDefine = componentDefine.properties.type;
+
+//                 if (!componentTypeDefine || !componentTypeDefine.default) {
+//                     return;
+//                 }
+
+//                 var componentType = componentTypeDefine.default.replace(/\'/g, '');
+
+//                 assert(
+//                     componentDefine
+//                     && type.length === 1
+//                     && type[0] === 'Object'
+//                     && componentTypeDefine
+//                     && componentType
+//                 );
+
+//                 var partName = propName + '-' + componentType;
+//                 partailSchemaList.push({
+//                     partName: partName,
+//                     properties: componentDefine.properties
+//                 });
+
+//                 componentDefine.properties = {type: componentTypeDefine};
+//                 componentDefine.requestPart = partName;
+//             });
+//         }
+
+//     });
+
+//     writeSingleSchema(optionSchema, language, prefix + '_outline');
+
+//     partailSchemaList.forEach(function (schemaItem) {
+//         writeSingleSchema(schemaItem, language, prefix + '_part_' + schemaItem.partName);
+//     });
+// }
+
+function assert(cond, msg) {
+    if (!cond) {
+        throw new Error(msg || '');
+    }
+}
+
+function normalizeToArray(val) {
+    return (val instanceof Array) ? val : val ? [val] : [];
+}
+
+function isObject(value) {
+    var type = typeof value;
+    return type === 'function' || (!!value && type == 'object');
+}
+
+run();

@@ -40,6 +40,9 @@ When perform brush selection, the selected lines will be set as this transparenc
 
 Whether to update view in realtime.
 
+## smooth(boolean|number) = false
+
+Whether to smooth the line. It defaults to be `false` and can be set as `true` or the values from 0 to 1 which indicating the smoothness.
 
 ## data(Array)
 

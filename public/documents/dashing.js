@@ -97,8 +97,8 @@ function jsonToHtml(infile, outfile, className) {
             }
         }
 
-        if (!isRoot && node[1].descriptionCN) {
-            var content = node[1].descriptionCN.replace(
+        if (!isRoot && node[1].description) {
+            var content = node[1].description.replace(
                 new RegExp('<h2', 'g'), '<h4');
             container.append(
                 '<h3 class="' + node[2] + '">' + node[0] + '</h3>' + content

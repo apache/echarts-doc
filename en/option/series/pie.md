@@ -206,7 +206,7 @@ The length of the first segment of visual guide line.
 #${prefix} length2(number)
 The length of the second segment of visual guide line.
 #${prefix} smooth(boolean|number) = false
-Whether to smooth the visual guide line. It defaults to be unsmooth and can be set as `true` or the values from 0 to 1 which indicating the smoothness.
+Whether to smooth the visual guide line. It defaults to be `false` and can be set as `true` or the values from 0 to 1 which indicating the smoothness.
 #${prefix} lineStyle(Object)
 {{use:partial-line-style(prefix="#" + ${prefix})}}
 

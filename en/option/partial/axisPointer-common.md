@@ -1,7 +1,5 @@
 {{ target: partial-axisPointer-introduction}}
 
-坐标轴指示器是指示坐标轴当前刻度的工具。
-
 `axisPointer` is a tool for displaying reference line and axis value under mouse pointer.
 
 For example:
