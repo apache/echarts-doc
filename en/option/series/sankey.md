@@ -5,7 +5,7 @@
 
 ** Sankey Graphs **
 
-Sankey graphs are a specific type of streamgraphs, in which the width of each branch is shown proportionally to the flow quantity. These graphs are typically used to visualize energy or material or cost transfers between processes. They can also visualize the energy accounts, material flow accounts on a regional or national level, and also the breakdown of cost of item or services.
+Sankey diagram is a specific type of streamgraphs(can also be seen as a directed acyclic graph). In which the width of each branch is shown proportionally to the flow quantity. These graphs are typically used to visualize energy or material or cost transfers between processes. They can also visualize the energy accounts, material flow accounts on a regional or national level, and also the breakdown of cost of item or services.
 
 **Example: **
 
@@ -79,15 +79,20 @@ The style of node rectangle in sankey graphs.
     defaultBorderWidth=1,
     defaultBorderColor="'#aaa'"
 )}}
+
 ### emphasis(Object)
+
 {{use: partial-item-style(prefix="###")}}
 
 
 ## lineStyle(Object)
+
 The line style of sankey graph, in which [lineStyle.color](~series-sankey.lineStyle.color) can be assigned to the value of `'source'` of `'target'`, then the edge will automatically take the source node or target node color as its own color.
 
 {{use: partial-sankey-line-style(prefix="##")}}
+
 ### emphasis(Object)
+
 {{use: partial-sankey-line-style(
     prefix="###"
 )}}
@@ -96,21 +101,31 @@ The line style of sankey graph, in which [lineStyle.color](~series-sankey.lineSt
 ## data(Array)
 
 {{ use: partial-1d-data-desc() }}
+
 ### name(string)
+
 The name of data item.
+
 ### value(number|Array)
+
 The value of data item.
+
 ### itemStyle(Object)
+
 The style of this node.
 {{use:partial-item-style(prefix="###", useColorPalatte=true)}}
+
 #### emphasis(Object)
+
 {{use:partial-item-style(prefix="####")}}
 
 ### label(Object)
+
 The lable style of this node.
 {{ use:partial-label(
     prefix="###"
 ) }}
+
 #### emphasis(Object)
 {{ use:partial-label(
     prefix="####"
@@ -122,10 +137,13 @@ The lable style of this node.
 
 
 ## nodes(Array)
+
 Equals to [data](~series-sankey.data)
 
 ## links(Array)
-The links data between nodes. For instance:
+
+The links between nodes. **Notes: The Sankey diagram theoretically only supports Directed Acyclic Graph(DAG), so please make sure that there is no cycle in the links.** For instance:
+
 ```js
 links: [{
     source: 'n1',
@@ -135,23 +153,34 @@ links: [{
     target: 'n3'
 }]
 ```
+
 ### source(string)
+
 The [name of source node](~series-graph.data.name) of edge
+
 ### target(string)
+
 The [name of target node](~series-graph.data.name) of edge
+
 ### value(number)
+
 The value of edge, which decides the width of edge.
+
 ### lineStyle(Object)
+
 The line stlye of edge.
 {{use:partial-sankey-line-style(
     prefix="###"
 )}}
+
 #### emphasis(Object)
+
 {{ use:partial-sankey-line-style(
     prefix="####"
 ) }}
 
 ## edges(Array)
+
 Equals to [links](~series-sankey.links)
 
 {{ use:partial-silent(
