@@ -37,10 +37,11 @@ Broken line chart relates all the data points [symbol](~series-line.symbol) by b
 ## showSymbol(boolean) = true
 Whether to show symbol. It would be shown during tooltip hover.
 
-## showAllSymbol(boolean) = false
-Symbols are shown when label of main axis is shown. Which means it has same interval strategy with [axisLabel.interval](~xAxis.axisLabel.interval).
-
-If you want to show them all, set this property as `true`.
+## showAllSymbol(boolean) = 'auto'
+Only work when main axis is `'category'` axis (`axis.type` is `'category'`). Optional values:
++ `'auto'`: Default value. Show all symbols if there is enough space. Otherwise follow the interval strategy with with [axisLabel.interval](~xAxis.axisLabel.interval).
++ `true`: Show all symbols.
++ `false`: Follow the interval strategy with [axisLabel.interval](~xAxis.axisLabel.interval).
 
 ## hoverAnimation(boolean) = true
 Whether to enable the animation effect when mouse is on the symbol.

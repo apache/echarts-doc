@@ -37,8 +37,12 @@
 ## showSymbol(boolean) = true
 是否显示 symbol, 如果 `false` 则只有在 tooltip hover 的时候显示。
 
-## showAllSymbol(boolean) = false
-标志图形默认只有主轴显示（随主轴标签间隔隐藏策略），如需全部显示可把 showAllSymbol 设为 `true`。
+## showAllSymbol(boolean) = 'auto'
+只在主轴为类目轴（`axis.type` 为 `'category'`）时有效。
+可选值：
++ `'auto'`：默认，如果有足够空间则显示标志图形，否则随主轴标签间隔隐藏策略。
++ `true`：显示所有图形。
++ `false`：随主轴标签间隔隐藏策略。
 
 ## hoverAnimation(boolean) = true
 是否开启 hover 在拐点标志上的提示动画效果。
