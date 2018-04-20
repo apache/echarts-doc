@@ -105,6 +105,12 @@ Emphasis style of candlestick.
 )}}
 
 
+{{use: partial-large(
+    prefix="#",
+    defaultLarge=true,
+    defaultLargeThreshold=600
+)}}
+
 {{ use:partial-progressive(
     prefix='#',
     supportProgressiveChunkMode=true,

@@ -37,15 +37,9 @@
     hasCallback=true
 ) }}
 
-## large(boolean) = true
-是否开启大规模散点图的优化，在数据图形特别多的时候（>=5k）可以开启。
-
-开启后配合 [largeThreshold](~series-scatter.largeThreshold) 在数据量大于指定阈值的时候对绘制进行优化。
-
-缺点：优化后不能自定义设置单个数据项的样式。
-
-## largeThreshold(number) = 2000
-开启绘制优化的阈值。
+{{use: partial-large(
+    prefix="#"
+)}}
 
 {{ use: partial-cursor }}
 

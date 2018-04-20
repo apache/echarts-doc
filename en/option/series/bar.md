@@ -61,6 +61,11 @@ Name of stack. On the same category axis, the series with the same `stack` name 
     galleryViewPath=${galleryViewPath}
 )}}
 
+{{use: partial-large(
+    prefix="#",
+    defaultLargeThreshold=400
+)}}
+
 {{ use:partial-progressive(
     prefix='#',
     supportProgressiveChunkMode=true,

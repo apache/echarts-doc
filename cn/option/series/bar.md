@@ -65,6 +65,11 @@
     galleryViewPath=${galleryViewPath}
 )}}
 
+{{use: partial-large(
+    prefix="#",
+    defaultLargeThreshold=400
+)}}
+
 {{ use:partial-progressive(
     prefix='#',
     supportProgressiveChunkMode=true,

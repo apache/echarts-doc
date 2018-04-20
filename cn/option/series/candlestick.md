@@ -101,6 +101,12 @@ K 线图的高亮图形样式。
 )}}
 
 
+{{use: partial-large(
+    prefix="#",
+    defaultLarge=true,
+    defaultLargeThreshold=600
+)}}
+
 {{ use:partial-progressive(
     prefix='#',
     supportProgressiveChunkMode=true,

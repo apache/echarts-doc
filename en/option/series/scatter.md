@@ -38,15 +38,9 @@ Whether to enable the animation effect when mouse is on the symbol.
     hasCallback=true
 ) }}
 
-## large(boolean) = true
-Whether to enable the optimization of large-scale scatter graph. It could be enabled when there is a particularly large number of data(>=5k) .
-
-After being enabled, [largeThreshold](~series-scatter.largeThreshold) can be used to indicate the minimum number for turning on the optimization.
-
-The style of a single data item can't be customided.
-
-## largeThreshold(number) = 2000
-The threshold enabling the drawing optimization.
+{{use: partial-large(
+    prefix="#"
+)}}
 
 {{ use: partial-cursor }}
 
