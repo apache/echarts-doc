@@ -63,11 +63,6 @@ The brush type for ripples. options: `'stroke'` and `'fill'`.
     defaultPosition="'inside'",
     formatter=true
 )}}
-### emphasis(Object)
-{{use:partial-label(
-    prefix="###",
-    formatter=true
-)}}
 
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
@@ -76,9 +71,28 @@ The brush type for ripples. options: `'stroke'` and `'fill'`.
     useColorPalatte=true,
     hasCallback=true
 )}}
-### emphasis(Object)
-{{use:partial-item-style(prefix="###")}}
 
+
+## emphasis(Object)
+
+### label(Object)
+
+{{use:partial-label(
+    prefix="###",
+    formatter=true
+)}}
+
+### itemStyle(Object)
+
+{{use:partial-item-style(
+    prefix="###",
+    useColorPalatte=true,
+    hasCallback=true
+)}}
+
+{{ use: partial-seriesLayoutBy }}
+
+{{ use: partial-datasetIndex }}
 
 {{use:partial-series-dimensions(
     prefix="#"
@@ -87,10 +101,6 @@ The brush type for ripples. options: `'stroke'` and `'fill'`.
 {{use:partial-series-encode(
     prefix="#"
 )}}
-
-{{ use: partial-seriesLayoutBy }}
-
-{{ use: partial-datasetIndex }}
 
 ## data(Array)
 
@@ -110,14 +120,20 @@ The brush type for ripples. options: `'stroke'` and `'fill'`.
     prefix="###",
     defaultPosition="inside"
 ) }}
-#### emphasis(Object)
-{{ use:partial-label(prefix="####") }}
-
 
 ### itemStyle(Object)
 {{use:partial-item-style(prefix="###")}}
-#### emphasis(Object)
+
+### emphasis(Object)
+
+#### label(Object)
+
+{{ use:partial-label(prefix="####") }}
+
+#### itemStyle(Object)
+
 {{use:partial-item-style(prefix="####")}}
+
 
 {{use: partial-tooltip-in-series-data(
     galleryViewPath=${galleryViewPath}

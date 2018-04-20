@@ -79,6 +79,7 @@
     useColorPalatte=true,
     hasCallback=false
 )}}
+
 ## emphasis(Object)
 
 ### label(Object)

@@ -75,11 +75,6 @@ See the example below:
     defaultPosition="'inside'",
     formatter=true
 )}}
-### emphasis(Object)
-{{use:partial-label(
-    prefix="###",
-    formatter=true
-)}}
 
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
@@ -88,7 +83,15 @@ See the example below:
     useColorPalatte=true,
     hasCallback=false
 )}}
-### emphasis(Object)
+
+## emphasis(Object)
+
+### label(Object)
+{{use:partial-label(
+    prefix="###",
+    formatter=true
+)}}
+### itemStyle(Object)
 {{use:partial-item-style(
     prefix="###"
 )}}
@@ -128,6 +131,7 @@ The value of a single data item.
 
 {{use: pictorialBar-symbol-attrs(
     prefix="##",
+    useZ2=true,
     galleryViewPath=${galleryViewPath}
 )}}
 
@@ -138,14 +142,16 @@ The style setting of the text label in a single bar.
     prefix="###",
     defaultPosition="inside"
 ) }}
-#### emphasis(Object)
-{{ use:partial-label(prefix="####") }}
 
 ### itemStyle(Object)
 {{use:partial-item-style(
     prefix="###"
 )}}
-#### emphasis(Object)
+
+### emphasis(Object)
+#### label(Object)
+{{ use:partial-label(prefix="####") }}
+#### itemStyle(Object)
 {{use:partial-item-style(
     prefix="####"
 )}}
@@ -165,6 +171,9 @@ The style setting of the text label in a single bar.
 {{use:partial-z-zlevel(
     prefix="#",
     componentName="pictorial bar chart"
+) }}
+{{ use:partial-silent(
+    prefix="#"
 ) }}
 
 {{use:partial-animation(

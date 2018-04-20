@@ -65,7 +65,17 @@ The index of single time axis, which defaults to be 0 because it contains only o
     defaultColor="'#000'",
     defaultFontSize=11,
 )}}
-### emphasis(Object)
+
+## itemStyle(Object)
+
+style of each ribbon-shape river branch in theme river.
+{{use: partial-item-style(
+    prefix="##"
+)}}
+
+## emphasis(Object)
+
+### label(Object)
 {{use:partial-label(
     prefix="###",
     defaultPosition="'left'",
@@ -76,13 +86,7 @@ The index of single time axis, which defaults to be 0 because it contains only o
     defaultFontSize=11,
 )}}
 
-## itemStyle(Object)
-
-style of each ribbon-shape river branch in theme river.
-{{use: partial-item-style(
-    prefix="##"
-)}}
-### emphasis(Object)
+### itemStyle(Object)
 {{use: partial-item-style(
     prefix="###",
     defaultShadowBlur=20,

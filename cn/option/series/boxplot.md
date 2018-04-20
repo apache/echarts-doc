@@ -53,17 +53,6 @@ box 的宽度的上下限。数组的意思是：`[min, max]`。
 可以是绝对数值，如 `[7, 50]`，也可以是百分比，如 `['40%', '90%']`。百分比的意思是，最大可能宽度（bandWidth）的百分之多少。
 
 
-{{use:partial-boxplot-item-style(prefix="#")}}
-
-
-{{use:partial-series-dimensions(
-    prefix="#"
-)}}
-
-{{use:partial-series-encode(
-    prefix="#"
-)}}
-
 ## itemStyle(Object)
 
 盒须图样式。
@@ -92,6 +81,15 @@ box 的宽度的上下限。数组的意思是：`[min, max]`。
     defaultShadowOffsetX=2,
     defaultShadowOffsetY=2,
     defaultShadowColor="rgba(0,0,0,0.4)"
+)}}
+
+
+{{use:partial-series-dimensions(
+    prefix="#"
+)}}
+
+{{use:partial-series-encode(
+    prefix="#"
 )}}
 
 

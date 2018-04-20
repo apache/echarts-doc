@@ -124,7 +124,10 @@ The style of gauge chart.
 <!-- overwrite color -->
 ### color(Color) = 'auto'
 The color of pointer. Defaults to use [the color of section](~series-gauge.axisLine.lineStyle.color) where the numerical value belongs to.
-### emphasis(Object)
+
+## emphasis(Object)
+
+### itemStyle
 {{ use: partial-item-style(prefix="###") }}
 
 ## title(Object)

@@ -58,7 +58,33 @@ Up and bottom boundary of box width. The array is in the form of `[min, max]`.
 It could be absolute value in pixel, such as `[7, 50]`, or percentage, such as `['40%', '90%']`. The percentage means the percentage to the maximum possible width.
 
 
-{{use:partial-boxplot-item-style(prefix="#")}}
+
+## itemStyle(Object)
+
+{{use: partial-item-style(
+    prefix="##",
+    useColorPalatte=true,
+    name="boxplot",
+    defaultColor="#fff",
+    defaultBorderWidth=1
+)}}
+
+## emphasis(Object)
+
+### itemStyle(Object)
+
+{{use: partial-item-style(
+    prefix="###",
+    useColorPalatte=true,
+    name="boxplot",
+    defaultColor="#fff",
+    defaultBorderWidth=2,
+    defaultShadowBlur=5,
+    defaultShadowOffsetX=2,
+    defaultShadowOffsetY=2,
+    defaultShadowColor="rgba(0,0,0,0.4)"
+)}}
+
 
 
 {{use:partial-series-dimensions(
@@ -113,7 +139,32 @@ Value of data item.
 [min,  Q1,  median (or Q2),  Q3,  max]
 ```
 
-{{use:partial-boxplot-item-style(prefix="##")}}
+### itemStyle(Object)
+
+{{use: partial-item-style(
+    prefix="###",
+    useColorPalatte=true,
+    name="boxplot",
+    defaultColor="#fff",
+    defaultBorderWidth=1
+)}}
+
+### emphasis(Object)
+
+#### itemStyle(Object)
+
+{{use: partial-item-style(
+    prefix="####",
+    useColorPalatte=true,
+    name="boxplot",
+    defaultColor="#fff",
+    defaultBorderWidth=2,
+    defaultShadowBlur=5,
+    defaultShadowOffsetX=2,
+    defaultShadowOffsetY=2,
+    defaultShadowColor="rgba(0,0,0,0.4)"
+)}}
+
 
 {{use: partial-tooltip-in-series-data(
     galleryViewPath=${galleryViewPath}
@@ -148,43 +199,3 @@ Value of data item.
     galleryViewPath=${galleryViewPath}
 )}}
 
-
-
-
-
-
-
-
-
-
-
-
-{{target:partial-boxplot-item-style}}
-
-#${prefix} itemStyle(Object)
-
-{{use:partial-item-style-desc(name="boxplot")}}
-
-
-{{use: partial-item-style(
-    prefix="##",
-    useColorPalatte=true,
-    name="boxplot",
-    defaultColor="#fff",
-    defaultBorderWidth=1
-)}}
-
-
-##${prefix} emphasis(Object)
-
-{{use: partial-item-style(
-    prefix="###",
-    useColorPalatte=true,
-    name="boxplot",
-    defaultColor="#fff",
-    defaultBorderWidth=2,
-    defaultShadowBlur=5,
-    defaultShadowOffsetX=2,
-    defaultShadowOffsetY=2,
-    defaultShadowColor="rgba(0,0,0,0.4)"
-)}}

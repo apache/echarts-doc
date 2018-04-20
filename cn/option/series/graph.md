@@ -252,6 +252,7 @@ data: [{
 ) }}
 
 ### emphasis(Object)
+
 #### itemStyle(Object)
 {{use:partial-item-style(prefix="####")}}
 #### label(Object)
@@ -291,12 +292,8 @@ links: [{
 {{use:partial-line-style(
     prefix="###"
 )}}
-##### curveness(number) = 0
+#### curveness(number) = 0
 边的曲度，支持从 0 到 1 的值，值越大曲度越大。
-#### emphasis(Object)
-{{ use:partial-line-style(
-    prefix="####"
-) }}
 
 ### label(Object)
 {{use: graph-edge-label(
@@ -325,7 +322,6 @@ links: [{
 {{use: partial-marker(
     prefix="#",
     seriesType="graph",
-    galleryEditorPath=${galleryEditorPath},
     hasType=true,
     hasCoord=true
 )}}

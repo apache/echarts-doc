@@ -73,35 +73,32 @@ Style of item polygon
 #### areaColor(Color)
 Color of the area.
 {{ use: partial-item-style(prefix='####') }}
-#### emphasis(Object)
-##### areaColor(Color)
-Color of the area.
-{{ use: partial-item-style(prefix='####') }}
 
-
-{{use: partial-tooltip-in-series-data(
-    galleryViewPath=${galleryViewPath}
-)}}
-
-
-
-## label(Object)
+### label(Object)
 {{use: partial-label-desc}}
 {{use: partial-label(
-    prefix="##",
+    prefix="###",
     defaultPosition="'bottom'",
     formatter=true,
     noAlign=true,
     noVerticalAlign=true
 )}}
+
 ### emphasis(Object)
+#### itemStyle(Object)
+##### areaColor(Color)
+{{ use: partial-item-style(prefix='####') }}
+#### label(Object)
 {{use: partial-label(
-    prefix="###",
+    prefix="####",
     formatter=true,
     noAlign=true,
     noVerticalAlign=true
 )}}
 
+{{use: partial-tooltip-in-series-data(
+    galleryViewPath=${galleryViewPath}
+)}}
 
 {{use: partial-marker(
     prefix="#",

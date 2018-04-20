@@ -126,7 +126,6 @@
 {{use:partial-item-style(prefix="####")}}
 
 #### label(Object)
-
 {{use:partial-funnel-label(
     prefix="####",
     position=false,

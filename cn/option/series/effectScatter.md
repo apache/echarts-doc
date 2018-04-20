@@ -71,15 +71,6 @@
 )}}
 
 
-{{use:partial-series-dimensions(
-    prefix="#"
-)}}
-
-{{use:partial-series-encode(
-    prefix="#"
-)}}
-
-
 ## emphasis(Object)
 
 高亮的标签和图形样式。
@@ -102,6 +93,15 @@
 {{ use: partial-seriesLayoutBy }}
 
 {{ use: partial-datasetIndex }}
+
+{{use:partial-series-dimensions(
+    prefix="#"
+)}}
+
+{{use:partial-series-encode(
+    prefix="#"
+)}}
+
 
 ## data(Array)
 
@@ -147,7 +147,6 @@
 {{use: partial-marker(
     prefix="#",
     seriesType="effectScatter",
-    galleryEditorPath=${galleryEditorPath},
     hasCoord=true,
     hasType=true
 )}}

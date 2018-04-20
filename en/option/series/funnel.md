@@ -48,12 +48,6 @@ Horizontal align. Defaults to align center. Can be 'left', 'right', 'center'.
     position=true,
     formatter=true
 )}}
-### emphasis(Object)
-{{use:partial-funnel-label(
-    prefix="###",
-    position=false,
-    formatter=true
-)}}
 
 ## labelLine(Object)
 The visual guide line style of label. When [label position](~series-funnel.label.position) is set as `'left'`or`'right'`, the visual guide line will show.
@@ -66,8 +60,23 @@ The visual guide line style of label. When [label position](~series-funnel.label
     useColorPalatte=true,
     hasCallback=true
 )}}
-### emphasis(Object)
+
+
+## emphasis(Object)
+
+### label(Object)
+{{use:partial-funnel-label(
+    prefix="###",
+    position=false,
+    formatter=true
+)}}
+
+### itemStyle(Object)
 {{use:partial-item-style(prefix="###")}}
+
+### labelLine(Object)
+{{ use: partial-funnel-label-line(prefix='###') }}
+
 
 
 {{ use: component-rect-layout-width-height(
@@ -101,12 +110,7 @@ The label configuration of a single data item.
     position=true,
     formatter=false
 )}}
-#### emphasis(Object)
-{{use:partial-funnel-label(
-    prefix="####",
-    position=false,
-    formatter=false
-)}}
+
 
 ### labelLine(Object)
 {{ use: partial-funnel-label-line(prefix='###') }}
@@ -114,8 +118,22 @@ The label configuration of a single data item.
 ### itemStyle(Object)
 {{use:partial-item-style-desc}}
 {{use:partial-item-style(prefix="###")}}
-#### emphasis(Object)
+
+### emphasis(Object)
+
+#### itemStyle(Object)
 {{use:partial-item-style(prefix="####")}}
+
+#### label(Object)
+{{use:partial-funnel-label(
+    prefix="####",
+    position=false,
+    formatter=false
+)}}
+
+#### labelLine(Object)
+{{use:partial-funnel-label-line(prefix="####")}}
+
 
 {{use: partial-tooltip-in-series-data(
     galleryViewPath=${galleryViewPath}

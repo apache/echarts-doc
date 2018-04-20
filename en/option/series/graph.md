@@ -124,8 +124,6 @@ symbolSize: 10
     useColorPalatte=true,
     hasCallback=true
 )}}
-### emphasis(Object)
-{{use:partial-item-style(prefix="###")}}
 
 ## lineStyle(Object)
 The style of edge line. [lineStyle.color](~series-graph.lineStyle.color) can be `'source'` or `'target'`, which will use the color of source node or target node.
@@ -137,10 +135,6 @@ The style of edge line. [lineStyle.color](~series-graph.lineStyle.color) can be 
     defaultOpacity=0.5,
     hasCurveness=true
 )}}
-### emphasis(Object)
-{{ use:partial-line-style(
-    prefix="###"
-) }}
 
 ## label(Object)
 {{use:partial-label-desc}}
@@ -149,18 +143,27 @@ The style of edge line. [lineStyle.color](~series-graph.lineStyle.color) can be 
     defaultPosition="'inside'",
     formatter1d=true
 )}}
-### emphasis(Object)
-{{use:partial-label(
-    prefix="###",
-    defaultShow=true,
-    formatter1d=true
-)}}
 
 ## edgeLabel(Object)
 {{use: graph-edge-label(
     prefix="##"
 )}}
-### emphasis(Object)
+
+## emphasis(Object)
+
+### itemStyle(Object)
+{{use:partial-item-style(prefix="###")}}
+### lineStyle(Object)
+{{ use:partial-line-style(
+    prefix="###"
+) }}
+### label(Object)
+{{use:partial-label(
+    prefix="###",
+    defaultShow=true,
+    formatter2d=true
+)}}
+### edgeLabel(Object)
 {{use: graph-edge-label(
     prefix="###"
 )}}
@@ -180,8 +183,6 @@ Name of category, which is used to correspond with [legend](~legend) and the con
 ### itemStyle(Object)
 The style of node in this category.
 {{use:partial-item-style(prefix="###", useColorPalatte=true)}}
-#### emphasis(Object)
-{{use:partial-item-style(prefix="####")}}
 
 ### label(Object)
 The label style of node in this category.
@@ -190,8 +191,13 @@ The label style of node in this category.
     defaultPosition="inside",
     formatter1d=true
 ) }}
-#### emphasis(Object)
+
+### emphasis(Object)
+#### itemStyle(Object)
+{{use:partial-item-style(prefix="####")}}
+#### label(Object)
 {{ use:partial-label(prefix="####") }}
+
 
 
 ## data(Array)
@@ -239,18 +245,22 @@ Index of category which the data item belongs to.
 ### itemStyle(Object)
 The style of this node.
 {{use:partial-item-style(prefix="###", useColorPalatte=true)}}
-#### emphasis(Object)
-{{use:partial-item-style(prefix="####")}}
 
 ### label(Object)
 The label style of this node.
 {{ use:partial-label(
     prefix="###"
 ) }}
-#### emphasis(Object)
+
+### emphasis(Object)
+
+#### itemStyle(Object)
+{{use:partial-item-style(prefix="####")}}
+#### label(Object)
 {{ use:partial-label(
     prefix="####"
 ) }}
+
 
 {{use: partial-tooltip-in-series-data(
     galleryViewPath=${galleryViewPath}
@@ -276,6 +286,9 @@ links: [{
 [name of source node](~series-graph.data.name) on edge
 ### target(string)
 [name of target node](~series-graph.data.name) on edge
+### value(number)
+value of edge, can be mapped to edge length in force graph.
+
 ### lineStyle(Object)
 Line style of edges.
 {{use:partial-line-style(
@@ -283,19 +296,36 @@ Line style of edges.
 )}}
 #### curveness(number) = 0
 The curveness of edge, supporting values from 0 to 1. The curveness will be larger as the value becomes lager.
-#### emphasis(Object)
-{{ use:partial-line-style(
-    prefix="####"
-) }}
 
+### label(Object)
+{{use: graph-edge-label(
+    prefix="###"
+)}}
+
+### emphasis(Object)
+#### label(Object)
+{{use: graph-edge-label(
+    prefix="####"
+)}}
+#### lineStyle(Object)
+{{use:partial-line-style(
+    prefix="####"
+)}}
+
+### symbol(Array|string)
+Symbol of edge ends. Can be an array with two item to specify two ends, or a string specifies both ends.
+
+### symbolSize(Array|string)
+Symbol size of edge ends. Can be an array with two item to specify two ends, or a string specifies both ends.
 
 ## edges(Array)
 Alias of [links](~series-graph.links)
 
 {{use: partial-marker(
     prefix="#",
-    galleryEditorPath=${galleryEditorPath},
-    seriesType="graph"
+    seriesType="graph",
+    hasType=true,
+    hasCoord=true
 )}}
 
 {{ use: partial-rect-layout-width-height(

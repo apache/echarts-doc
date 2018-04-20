@@ -100,7 +100,9 @@ Line style.
     defaultOpacity=0.45
 )}}
 
-##${prefix} emphasis(Object)
+#${prefix} emphasis(Object)
+
+##${prefix} lineStyle(Object)
 
 {{use:partial-line-style(
     prefix="##" + ${prefix},

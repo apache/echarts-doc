@@ -282,8 +282,8 @@ When is no content in breadcrumb, this minimal width need to be set up.
 )}}
 
 
-#### emphasis
-
+### emphasis
+#### itemStyle(Object)
 {{use: partial-item-style(
     prefix="####",
     name="boxplot",
@@ -531,15 +531,6 @@ This can hide the details of nodes when the rectangular area is not large enough
 )}}
 
 
-##${prefix} emphasis(Object)
-
-{{use:partial-label(
-    prefix=${prefix} + "##",
-    defaultPosition="'inside'",
-    formatter=true,
-    ellipsis=true
-)}}
-
 
 #${prefix} upperLabel(Object)
 
@@ -570,16 +561,6 @@ See:
 Height of label area.
 
 
-##${prefix} emphasis(Object)
-
-{{use:partial-label(
-    prefix=${prefix} + "##",
-    defaultPosition="'inside'",
-    formatter=true,
-    ellipsis=true
-)}}
-
-
 #${prefix} itemStyle(Object)
 
 {{use: partial-treemap-prop-location-desc(name="itemStyle")}}
@@ -592,8 +573,22 @@ Height of label area.
     itemStyleType='normal'
 )}}
 
-##${prefix} emphasis(Object)
-
+#${prefix} emphasis(Object)
+##${prefix} label(Object)
+{{use:partial-label(
+    prefix=${prefix} + "##",
+    defaultPosition="'inside'",
+    formatter=true,
+    ellipsis=true
+)}}
+##${prefix} upperLabel(Object)
+{{use:partial-label(
+    prefix=${prefix} + "##",
+    defaultPosition="'inside'",
+    formatter=true,
+    ellipsis=true
+)}}
+##${prefix} itemStyle(Object)
 {{use: partial-treemap-item-style(
     prefix=${prefix} + "##",
     galleryEditorPath=${galleryEditorPath},

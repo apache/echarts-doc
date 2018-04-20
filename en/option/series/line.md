@@ -57,11 +57,11 @@ The effect of the below example could be seen through stack switching of [toolbo
 
 {{ use: partial-cursor }}
 
-## clipOverflow(boolean) = true
-Whether to clip the overflowing part, which defaults to clip.
-
 ## connectNulls(boolean) = false
 Whether to connect the line across null points.
+
+## clipOverflow(boolean) = true
+Whether to clip the overflowing part, which defaults to clip.
 
 ## step(string|boolean) = false
 Whether to show as a step line. It can be `true`, `false`. Or `'start'`, `'middle'`, `'end'`. Which will configure the turn point of step line.
@@ -78,11 +78,6 @@ See the example using different `step` options:
     defaultPosition="'top'",
     formatter=true
 )}}
-### emphasis(Object)
-{{use: partial-label(
-    prefix="###",
-    formatter=true
-)}}
 
 ## itemStyle(Object)
 The style of the symbol point of broken line.
@@ -91,18 +86,31 @@ The style of the symbol point of broken line.
     useColorPalatte=true,
     hasCallback=true
 )}}
-### emphasis(Object)
-{{use: partial-item-style(prefix="###")}}
 
 ## lineStyle(Object)
 Line style.
-{{use:partial-line-style(prefix="##")}}
-### emphasis(Object)
-{{use: partial-line-style(prefix="###")}}
+
+{{use:partial-line-style(
+    prefix="##",
+    defaultWidth=2
+)}}
 
 ## areaStyle(Object)
 The style of area.
 {{use: partial-area-style(prefix="##", hasOrigin=true)}}
+
+
+## emphasis(Object)
+图形的高亮样式。
+
+### label(Object)
+{{use: partial-label(
+    prefix="###",
+    formatter=true
+)}}
+### itemStyle(Object)
+{{use: partial-item-style(prefix="###")}}
+
 
 ## smooth(boolean|number) = false
 Whether to show as smooth curve.
@@ -181,14 +189,19 @@ The style of the text of single data point.
     prefix="###",
     defaultPosition="top"
 ) }}
-#### emphasis(Object)
-{{ use: partial-label(prefix="####") }}
 
 ### itemStyle(Object)
 The style of the symbol of single data point.
 {{use: partial-bar-item-style(prefix="###")}}
-#### emphasis(Object)
+
+
+### emphasis(Object)
+
+#### itemStyle(Object)
 {{use: partial-bar-item-style(prefix="####")}}
+#### label(Object)
+{{ use: partial-label(prefix="####") }}
+
 
 {{use: partial-tooltip-in-series-data(
     galleryViewPath=${galleryViewPath}
@@ -205,6 +218,10 @@ The style of the symbol of single data point.
 {{use:partial-z-zlevel(
     prefix="#",
     componentName="broken line graph"
+) }}
+
+{{ use:partial-silent(
+    prefix="#"
 ) }}
 
 {{use: partial-animation(

@@ -64,10 +64,6 @@ The test shows that iterations of layout could not be less than the default valu
     defaultPosition="'right'",
     formatter1d=true
 )}}
-### emphasis(Object)
-{{use:partial-label(
-    prefix="###"
-)}}
 
 ## itemStyle(Object)
 
@@ -80,10 +76,6 @@ The style of node rectangle in sankey graphs.
     defaultBorderColor="'#aaa'"
 )}}
 
-### emphasis(Object)
-
-{{use: partial-item-style(prefix="###")}}
-
 
 ## lineStyle(Object)
 
@@ -91,8 +83,16 @@ The line style of sankey graph, in which [lineStyle.color](~series-sankey.lineSt
 
 {{use: partial-sankey-line-style(prefix="##")}}
 
-### emphasis(Object)
 
+## emphasis(Object)
+### label(Object)
+{{use:partial-label(
+    prefix="###",
+    formatter1d=true
+)}}
+### itemStyle(Object)
+{{use: partial-item-style(prefix="###")}}
+### lineStyle(Object)
 {{use: partial-sankey-line-style(
     prefix="###"
 )}}
@@ -115,10 +115,6 @@ The value of data item.
 The style of this node.
 {{use:partial-item-style(prefix="###", useColorPalatte=true)}}
 
-#### emphasis(Object)
-
-{{use:partial-item-style(prefix="####")}}
-
 ### label(Object)
 
 The lable style of this node.
@@ -126,7 +122,10 @@ The lable style of this node.
     prefix="###"
 ) }}
 
-#### emphasis(Object)
+### emphasis(Object)
+#### itemStyle(Object)
+{{use:partial-item-style(prefix="####")}}
+#### label(Object)
 {{ use:partial-label(
     prefix="####"
 ) }}
@@ -173,7 +172,9 @@ The line stlye of edge.
     prefix="###"
 )}}
 
-#### emphasis(Object)
+### emphasis(Object)
+
+#### lineStyle(Object)
 
 {{ use:partial-sankey-line-style(
     prefix="####"

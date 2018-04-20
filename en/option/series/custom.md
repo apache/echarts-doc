@@ -340,7 +340,8 @@ For example:
     useColorPalatte=true,
     hasCallback=false
 )}}
-### emphasis(Object)
+## emphasis(Object)
+### itemStyle(Object)
 {{use:partial-item-style(
     prefix="###"
 )}}
@@ -376,7 +377,8 @@ Value of data item.
 {{use:partial-item-style(
     prefix="###"
 )}}
-#### emphasis(Object)
+### emphasis(Object)
+#### itemStyle(Object)
 {{use:partial-item-style(
     prefix="####"
 )}}

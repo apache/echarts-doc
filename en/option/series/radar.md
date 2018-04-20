@@ -35,11 +35,6 @@ Index of [radar](~radar) component that radar chart uses.
     defaultPosition="'top'",
     formatter=true
 )}}
-### emphasis(Object)
-{{use: partial-label(
-    prefix="###",
-    formatter=true
-)}}
 
 ## itemStyle(Object)
 Item style of the inflection point of the lines.
@@ -48,20 +43,29 @@ Item style of the inflection point of the lines.
     useColorPalatte=true,
     hasCallback=true
 )}}
-### emphasis(Object)
-{{use: partial-item-style(prefix="###")}}
 
 ## lineStyle(Object)
 Line style.
 {{use:partial-line-style(prefix="##")}}
-### emphasis(Object)
-{{use: partial-line-style(prefix="###")}}
 
 ## areaStyle(Object)
 Area filling style.
 {{use: partial-area-style(prefix="##")}}
-### emphasis(Object)
+
+
+## emphasis(Object)
+### itemStyle(Object)
+{{use: partial-item-style(prefix="###")}}
+### label(Object)
+{{use: partial-label(
+    prefix="###",
+    formatter=true
+)}}
+### lineStyle(Object)
+{{use: partial-line-style(prefix="###")}}
+### areaStyle(Object)
 {{use: partial-area-style(prefix="###")}}
+
 
 
 ## data(Array)
@@ -102,26 +106,32 @@ Style setting of the text on single inflection point.
     prefix="###",
     defaultPosition="top"
 ) }}
-#### emphasis(Object)
-{{ use: partial-label(prefix="####") }}
 
 ### itemStyle(Object)
 Style setting of the symbol on single inflection point.
 {{use: partial-bar-item-style(prefix="###")}}
-#### emphasis(Object)
-{{use: partial-bar-item-style(prefix="####")}}
 
 ### lineStyle(Object)
 Line style of a single item.
 {{use:partial-line-style(prefix="###")}}
-#### emphasis(Object)
-{{use: partial-line-style(prefix="####")}}
 
 ### areaStyle(Object)
 Area filling style of a single item.
 {{use: partial-area-style(prefix="###")}}
-#### emphasis(Object)
+
+### emphasis(Object)
+#### label(Object)
+{{ use: partial-label(
+    prefix="####", defaultPosition="top"
+) }}
+#### itemStyle(Object)
+{{use: partial-bar-item-style(prefix="####")}}
+#### lineStyle(Object)
+{{use: partial-line-style(prefix="####")}}
+#### areaStyle(Object)
 {{use: partial-area-style(prefix="####")}}
+
+
 
 {{use: partial-tooltip-in-series-data(
     galleryViewPath=${galleryViewPath}
@@ -131,6 +141,10 @@ Area filling style of a single item.
 {{use:partial-z-zlevel(
     prefix="#",
     componentName="radar chart"
+) }}
+
+{{ use:partial-silent(
+    prefix="#"
 ) }}
 
 {{use: partial-animation(

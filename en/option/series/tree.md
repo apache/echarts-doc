@@ -48,7 +48,7 @@ The layout of the tree, which can be `orthogonal` and `radial` 。Here the `orth
 
 ## orient(string) = 'LR'
 
-The direction of the `orthogonal` layout in the tree diagram. That means this configuration takes effect only if `layout = 'orthogonal'`. The corresponding directions are `from left to right`, `from right to left`, `from top to bottom`, `from bottom to top`, with shorthand values `'LR'`, `'RL'`, `'TB'`, `'BT'`. 
+The direction of the `orthogonal` layout in the tree diagram. That means this configuration takes effect only if `layout = 'orthogonal'`. The corresponding directions are `from left to right`, `from right to left`, `from top to bottom`, `from bottom to top`, with shorthand values `'LR'`, `'RL'`, `'TB'`, `'BT'`.
 **Note: The previous configuration value `'horizontal'` is equivalent to `'LR'`, `'vertical'` is equivalent to `'TB'`.**
 
 
@@ -82,9 +82,6 @@ The style of each node in the tree, where [itemStyle.color] (~ series-tree.itemS
     defaultBorderColor="'#c23531'"
 )}}
 
-### emphasis(Object)
-{{use: partial-item-style(prefix="###")}}
-
 
 ## label(Object)
 
@@ -96,13 +93,6 @@ The style of each node in the tree, where [itemStyle.color] (~ series-tree.itemS
     formatter1d=true
 )}}
 
-### emphasis(Object)
-
-{{use:partial-label(
-    prefix="###",
-    formatter1d=true
-)}}
-
 
 ## lineStyle(Object)
 
@@ -110,9 +100,19 @@ Defines the style of the tree edge.
 
 {{use: partial-tree-line-style(prefix="##")}}
 
-### emphasis(Object)
+
+## emphasis(Object)
+
+### itemStyle(Object)
+{{use: partial-item-style(prefix="###")}}
+### lineStyle(Object)
 {{use: partial-tree-line-style(
     prefix="###"
+)}}
+### label(Object)
+{{use:partial-label(
+    prefix="###",
+    formatter1d=true
 )}}
 
 
@@ -130,13 +130,6 @@ Describes the style of the text label corresponding to the leaf node.
     formatter1d=true
 )}}
 
-#### emphasis(Object)
-
-{{use:partial-label(
-    prefix="####",
-    formatter1d=true
-)}}
-
 ### itemStyle(Object)
 
 The style of the leaf node in the tree.
@@ -146,7 +139,13 @@ The style of the leaf node in the tree.
     useColorPalatte=true
 )}}
 
-#### emphasis(Object)
+### emphasis(Object)
+#### label(Object)
+{{use:partial-label(
+    prefix="####",
+    formatter1d=true
+)}}
+#### itemStyle(Object)
 {{use: partial-item-style(prefix="####")}}
 
 
@@ -195,10 +194,6 @@ The style of the node.
 
 {{use:partial-item-style(prefix="###", useColorPalatte=true)}}
 
-#### emphasis(Object)
-
-{{use:partial-item-style(prefix="####")}}
-
 ### label(Object)
 
 The label of the node.
@@ -208,11 +203,15 @@ The label of the node.
     prefix="###"
 ) }}
 
-#### emphasis(Object)
 
+### emphasis(Object)
+#### label(Object)
 {{ use:partial-label(
     prefix="####"
 ) }}
+#### itemStyle(Object)
+{{use:partial-item-style(prefix="####")}}
+
 
 {{use: partial-tooltip-in-series-data(
     galleryViewPath=${galleryViewPath}

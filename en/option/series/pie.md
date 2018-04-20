@@ -66,12 +66,6 @@ Whether to show sector when all data are zero.
     position=true,
     formatter=true
 )}}
-### emphasis(Object)
-{{use:partial-pie-label(
-    prefix="###",
-    position=false,
-    formatter=true
-)}}
 
 ## labelLine(Object)
 The style of visual guide line. Will show when [label position](~series-pie.label.position) is set as `'outside'`.
@@ -85,7 +79,15 @@ The style of visual guide line. Will show when [label position](~series-pie.labe
     useColorPalatte=true,
     hasCallback=true
 )}}
-### emphasis(Object)
+
+## emphasis(Object)
+### label(Object)
+{{use:partial-pie-label(
+    prefix="###",
+    position=false,
+    formatter=true
+)}}
+### itemStyle(Object)
 {{ use:partial-item-style(prefix="###") }}
 
 {{use: component-circular-layout(
@@ -116,12 +118,6 @@ The label configuration of a single sector.
     position=true,
     formatter=false
 )}}
-#### emphasis(Object)
-{{use:partial-pie-label(
-    prefix="####",
-    position=false,
-    formatter=false
-)}}
 
 ### labelLine(Object)
 {{ use: partial-pie-label-line(prefix='###') }}
@@ -129,7 +125,15 @@ The label configuration of a single sector.
 ### itemStyle(Object)
 {{use:partial-item-style-desc}}
 {{use:partial-item-style(prefix="###")}}
-#### emphasis(Object)
+
+### emphasis(Object)
+#### label(Object)
+{{use:partial-pie-label(
+    prefix="####",
+    position=false,
+    formatter=false
+)}}
+#### itemStyle(Object)
 {{use:partial-item-style(prefix="####")}}
 
 {{use: partial-tooltip-in-series-data(

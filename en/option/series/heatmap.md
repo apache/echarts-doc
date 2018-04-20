@@ -41,6 +41,29 @@ Minimum opacity. It is valid with [coordinateSystem](~series-heatmap.coordinateS
 
 Maximum opacity. It is valid with [coordinateSystem](~series-heatmap.coordinateSystem) of 'geo' value.
 
+
+## label(Object)
+Work for [coordinateSystem](~series-heatmap.coordinateSystem): 'cartesian2d'.
+{{ use:partial-label(
+    prefix="##",
+    defaultPosition="inside"
+) }}
+
+## itemStyle(Object)
+Work for [coordinateSystem](~series-heatmap.coordinateSystem): 'cartesian2d'.
+{{use:partial-item-style(prefix="##")}}
+
+
+## emphasis(Object)
+
+### itemStyle(Object)
+{{use:partial-item-style(prefix="###")}}
+### label(Object)
+{{use:partial-label(prefix="###",
+    defaultPosition="inside"
+)}}
+
+
 ## data(Array)
 
 {{ use: partial-2d-data-desc(
@@ -60,14 +83,20 @@ It is valid with [coordinateSystem](~series-heatmap.coordinateSystem) of 'cartes
     prefix="###",
     defaultPosition="inside"
 ) }}
-#### emphasis(Object)
-{{ use:partial-label(prefix="####") }}
 
 ### itemStyle(Object)
 Style of a single data point. It is valid with [coordinateSystem](~series-heatmap.coordinateSystem) of 'cartesian2d' value.
 {{use:partial-item-style(prefix="###")}}
-#### emphasis(Object)
+
+### emphasis(Object)
+
+#### itemStyle(Object)
 {{use:partial-item-style(prefix="####")}}
+
+#### label(Object)
+{{use:partial-label(prefix="####",
+    defaultPosition="inside"
+)}}
 
 {{use: partial-marker(
     prefix="#",
