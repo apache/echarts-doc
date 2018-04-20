@@ -74,8 +74,6 @@
 
 {{import: partial-animation }}
 
-{{import: partial-progressive }}
-
 
 # blendMode(string) = 'source-over'
 

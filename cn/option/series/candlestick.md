@@ -73,7 +73,7 @@
 
 ## itemStyle(Object)
 
- K 线图的图形样式。
+K 线图的图形样式。
 
 {{use: partial-candlestick-item-style-detail(
     prefix="##",
@@ -84,13 +84,10 @@
     defaultBorderWidth=1
 )}}
 
-{{use:partial-series-dimensions(
-    prefix="#"
-)}}
 
 ## emphasis(Object)
 
- K 线图的高亮图形样式。
+K 线图的高亮图形样式。
 
 ### itemStyle(Object)
 
@@ -103,6 +100,18 @@
     defaultBorderWidth=2
 )}}
 
+
+{{ use:partial-progressive(
+    prefix='#',
+    supportProgressiveChunkMode=true,
+    defaultProgressive=5000,
+    defaultProgressiveThreshold=10000,
+    defaultProgressiveChunkMode='mod'
+) }}
+
+{{use:partial-series-dimensions(
+    prefix="#"
+)}}
 
 {{use:partial-series-encode(
     prefix="#"
@@ -170,10 +179,6 @@
     defaultBorderColor="#c23531",
     defaultBorderColor0="#314656",
     defaultBorderWidth=2
-)}}
-
-{{use:partial-series-dimensions(
-    prefix="#"
 )}}
 
 

@@ -29,11 +29,6 @@ Bar chart shows different data through the height of a bar, which is used in [re
     defaultPosition="'inside'",
     formatter=true
 )}}
-### emphasis(Object)
-{{use:partial-label(
-    prefix="###",
-    formatter=true
-)}}
 
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
@@ -43,7 +38,16 @@ Bar chart shows different data through the height of a bar, which is used in [re
     hasCallback=true,
     barBorderRadius=true
 )}}
-### emphasis(Object)
+
+## emphasis(Object)
+
+### label(Object)
+{{use:partial-label(
+    prefix="###",
+    formatter=true
+)}}
+
+### itemStyle(Object)
 {{use:partial-bar-item-style(prefix="###")}}
 
 
@@ -57,6 +61,12 @@ Name of stack. On the same category axis, the series with the same `stack` name 
     galleryViewPath=${galleryViewPath}
 )}}
 
+{{ use:partial-progressive(
+    prefix='#',
+    supportProgressiveChunkMode=true,
+    defaultProgressive=5000,
+    defaultProgressiveChunkMode='mod'
+) }}
 
 {{use:partial-series-dimensions(
     prefix="#"

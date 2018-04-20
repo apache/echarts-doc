@@ -78,6 +78,14 @@
 {{use:partial-item-style(prefix="###")}}
 
 
+
+
+{{ use:partial-progressive(
+    prefix='#'
+) }}
+
+
+
 {{use:partial-series-dimensions(
     prefix="#"
 )}}

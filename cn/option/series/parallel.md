@@ -45,6 +45,14 @@
 
 是否使用平滑曲线。默认为 `false`，可以设置为 `true` 或者一个范围为 `0` 到 `1` 的小数值，指定平滑程度。
 
+
+{{ use:partial-progressive(
+    prefix='#',
+    supportProgressiveChunkMode=true,
+    defaultProgressive=500
+) }}
+
+
 ## data(Array)
 
 {{use: partial-parallel-data-example}}

@@ -101,17 +101,27 @@ Symbol size at the two ends of the line. It can be an array for two ends, or ass
 #### curveness(number) = 0
 The curveness of edge. The values from 0 to 1 could be set. The curveness would be larger as the the value becomes larger.
 
-### emphasis(Object)
+## label(Object)
+Label settings. Does not work when [polyline](~series-lines.polyline) is `true`.
+
+{{ use: lines-label(prefix="##")}}
+
+## emphasis(Object)
+
+Emphasis style.
+
+### lineStyle(Object)
 {{ use: partial-line-style(
     prefix='###'
 ) }}
-
-## label(Object)
-{{ use: lines-label(
-    prefix="##"
-)}}
-### emphasis(Object)
+### label(Object)
 {{ use: lines-label(prefix="###") }}
+
+
+{{ use:partial-progressive(
+    prefix='#'
+) }}
+
 
 ## data(Array)
 The data set of lines.
@@ -129,17 +139,20 @@ The line style of this data item.
     prefix="###",
     hasCurveness=true
 ) }}
-##### emphasis(Object)
-{{ use: partial-line-style(
-    prefix="#####",
-    hasCurveness=true
-) }}
 
 ### label(Object)
 {{ use: lines-label(
     prefix="###"
 ) }}
-#### emphasis(Object)
+
+
+### emphasis(Object)
+#### lineStyle(Object)
+{{ use: partial-line-style(
+    prefix="####",
+    hasCurveness=true
+) }}
+#### label(Object)
 {{ use: lines-label(
     prefix="####"
 ) }}

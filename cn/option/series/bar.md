@@ -65,6 +65,12 @@
     galleryViewPath=${galleryViewPath}
 )}}
 
+{{ use:partial-progressive(
+    prefix='#',
+    supportProgressiveChunkMode=true,
+    defaultProgressive=5000,
+    defaultProgressiveChunkMode='mod'
+) }}
 
 {{use:partial-series-dimensions(
     prefix="#"

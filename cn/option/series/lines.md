@@ -105,13 +105,23 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 {{ use: lines-label(prefix="##")}}
 
 ## emphasis(Object)
+
 高亮的线条和标签样式。
+
 ### lineStyle(Object)
 {{ use: partial-line-style(
     prefix='###'
 ) }}
 ### label(Object)
 {{ use: lines-label(prefix="###") }}
+
+
+
+{{ use:partial-progressive(
+    prefix='#'
+) }}
+
+
 
 ## data(Array)
 线数据集。

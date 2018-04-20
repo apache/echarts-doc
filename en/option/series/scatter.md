@@ -57,11 +57,6 @@ The threshold enabling the drawing optimization.
     defaultPosition="'inside'",
     formatter=true
 )}}
-### emphasis(Object)
-{{use:partial-label(
-    prefix="###",
-    formatter=true
-)}}
 
 
 ## itemStyle(Object)
@@ -71,8 +66,22 @@ The threshold enabling the drawing optimization.
     useColorPalatte=true,
     hasCallback=true
 )}}
-### emphasis(Object)
+
+## emphasis(Object)
+### label(Object)
+{{use:partial-label(
+    prefix="###",
+    formatter=true
+)}}
+### itemStyle(Object)
 {{use:partial-item-style(prefix="###")}}
+
+
+
+{{ use:partial-progressive(
+    prefix='#'
+) }}
+
 
 
 {{use:partial-series-dimensions(
@@ -109,15 +118,20 @@ the value of data item.
     prefix="###",
     defaultPosition="inside"
 ) }}
-#### emphasis(Object)
-{{ use:partial-label(prefix="####") }}
-
 
 ### itemStyle(Object)
 the style setting about single data point(bubble).
+
 {{use:partial-item-style(prefix="###")}}
-#### emphasis(Object)
+
+
+### emphasis(Object)
+
+#### label(Object)
+{{ use:partial-label(prefix="####") }}
+#### itemStyle(Object)
 {{use:partial-item-style(prefix="####")}}
+
 
 {{use: partial-tooltip-in-series-data(
     galleryViewPath=${galleryViewPath}

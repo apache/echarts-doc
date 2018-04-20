@@ -44,6 +44,14 @@ Whether to update view in realtime.
 
 Whether to smooth the line. It defaults to be `false` and can be set as `true` or the values from 0 to 1 which indicating the smoothness.
 
+
+{{ use:partial-progressive(
+    prefix='#',
+    supportProgressiveChunkMode=true,
+    defaultProgressive=500
+) }}
+
+
 ## data(Array)
 
 {{use: partial-parallel-data-example}}
@@ -95,7 +103,7 @@ Line style.
 ##${prefix} emphasis(Object)
 
 {{use:partial-line-style(
-    prefix="###",
+    prefix="##" + ${prefix},
     defaultWidth=2,
     defaultOpacity=0.45
 )}}
