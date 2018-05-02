@@ -323,6 +323,36 @@ chart.on('brushSelected', function (params) {
 
 
 
+
+## rendered(Event)
+
+Trigger when a frame rendered. Notice that the `rendered` event does not indicate that the animation finished (see [animation](~animation) and relevant options) or progressive rendering finished (see [progressive](~series-scatter.progressive) and relevant options).
+
+For example:
+```js
+var snapshotImage = new Image();
+document.body.append(snapshotImage);
+chart.on('rendered', function () {
+    snapshotImage.src = chart.getDataURL();
+});
+```
+
+
+## finished(Event)
+
+Triggered when render finished, that is, when animation finished (see [animation](~animation) and relevant options) and progressive rendering finished (see [progressive](~series-scatter.progressive) and relevant options).
+
+
+```js
+var snapshotImage = new Image();
+document.body.append(snapshotImage);
+chart.on('finished', function () {
+    snapshotImage.src = chart.getDataURL();
+});
+```
+
+
+
 {{ target: event-select }}
 ## ${componentType}selectchanged(Event)
 **ACTION:** [${componentType}ToggleSelect](~action.${componentType}.${componentType}ToggleSelect)
