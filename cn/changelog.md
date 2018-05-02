@@ -1,45 +1,77 @@
-# v4.1.0.rc2
+## v4.1.0.rc2
 <div class="time">2018-05-02</div>
 
 + [Feature] 支持了中等规模数据量K线图和柱状图的渲染（200K 数据）。并且可以使用 [series-candlestick.progressiveChunkMode](option.html#series-candlestick.progressiveChunkMode) 设定渐进渲染的模式。 查看示例 [candlestick-large](http://echarts.baidu.com/examples/editor.html?c=candlestick-large)。
+
 + [Feature] 支持树图的布局：从右向左，从下向上。[#7351](https://github.com/ecomfe/echarts/issues/7351) [#7154](https://github.com/ecomfe/echarts/issues/7154)。查看示例 [tree-orient-right-left](http://echarts.baidu.com/examples/editor.html?c=tree-orient-right-left)，[tree-vertical](http://echarts.baidu.com/examples/editor.html?c=tree-vertical)。
-+ [Feature] 图例路径支持 keeping-aspect. [#7831](https://github.com/ecomfe/echarts/issues/7831)
+
++ [Feature] 图例路径支持 keeping-aspect. [#7831](https://github.com/ecomfe/echarts/issues/7831)。
+
 + [Feature] 桑基图支持节点拖拽。查看示例 [sankey-energy](http://echarts.baidu.com/examples/editor.html?c=sankey-energy)。
 
 + [Enhance] 类目轴优化：
     + 为中等规模数据 (> 100K ~ 1M) 性能优化。
     + 当没有足够空间时，优化了轴的提示标志（axisTick）和标签（axisLabel）的展示策略。
     + 数据窗口改变时（使用 dataZoom），优化了轴的提示标志（axisTick）和轴的标签（axisLabel）的动画。
+
 + [Enhance] 折线图中，优化了图形的展示策略，参见`showAllSymbol:'auto'`。
+
 + [Enhance] 刷选工具中，提高了被选中项的 z 层级，参见`visualMap.inRange.liftZ`。
+
 + [Enhance] 解决桑基图的节点顺序改变问题。[#3390](https://github.com/ecomfe/echarts/issues/3390) [#3543](https://github.com/ecomfe/echarts/issues/3543) [#6365](https://github.com/ecomfe/echarts/issues/6365) [#4880](https://github.com/ecomfe/echarts/issues/4880) [#4986](https://github.com/ecomfe/echarts/issues/4986)
+
 + [Enhance] 优化了折线图采样的性能。
+
 + [Enhance] 优化了平行坐标系的渐进渲染（progressive rendering）性能。
+
 + [Enhance] 有数据过滤（dataZoom）时，对于折线图中断线的优化。[#7955](https://github.com/ecomfe/echarts/issues/7955)。
+
 + [Enhance] 支持 `toolbox.feature` 的融合模式的 `setOption`。
 
 + [Fix] 修复有环图导致桑基图死循环的问题。[#7495](https://github.com/ecomfe/echarts/issues/7495) [#8117](https://github.com/ecomfe/echarts/issues/8117) [#7583](https://github.com/ecomfe/echarts/issues/7583) [#7325](https://github.com/ecomfe/echarts/issues/7325) [#6555](https://github.com/ecomfe/echarts/issues/6555)
+
 + [Fix] 修复了当使用数据堆叠（stack）时 `yAxis` 范围不改变的问题。[#8003](https://github.com/ecomfe/echarts/issues/8003)。
+
 + [Fix] 优先从 `dateItem.name` 或许名称。[#7966](https://github.com/ecomfe/echarts/issues/7966)
+
 + [Fix] 修复了微信小程序中，Typed array 使用的问题。
+
 + [Fix] 修复了 axis data item 中的 `option` 无效。[#7954](https://github.com/ecomfe/echarts/issues/7954)
+
 + [Fix] 修复了 `markArea` 只显示最后一个。[#7902](https://github.com/ecomfe/echarts/issues/7902)
+
 + [Fix] 修复了微信小程序的环境检测不精确。
+
 + [Fix] 折线图剪切（clip）图形时，修复了精度问题。[#7913](https://github.com/ecomfe/echarts/issues/7913)
+
 + [Fix] 修复了K线图默认的提示（tooltip）只显示一条. [#8149](https://github.com/ecomfe/echarts/issues/8149)
+
 + [Fix] 当多个坐标轴存在时，修复了柱状图起始位置问题。[#7412](https://github.com/ecomfe/echarts/issues/7412)
+
 + [Fix] 修复了当使用 `string` 时 `markArea` 不显示问题。[#7849](https://github.com/ecomfe/echarts/issues/7849)
+
 + [Fix] 修复了 `dataZoom` 系列为空的时候抛出异常的问题。[#7666](https://github.com/ecomfe/echarts/issues/7666)
+
 + [Fix] 桑基图提升兼容性。[#2867](https://github.com/ecomfe/echarts/issues/2867)
+
 + [Fix] 修复了树图第二次渲染的抛出异常。[#8038](https://github.com/ecomfe/echarts/issues/8038) [#8040](https://github.com/ecomfe/echarts/issues/8040) [#7720](https://github.com/ecomfe/echarts/issues/7720) [#7363](https://github.com/ecomfe/echarts/issues/7363) [#7315](https://github.com/ecomfe/echarts/issues/7315)
+
 + [Fix] 修复了当 `chart.setOption` 调用时，旭日图（`sunburst`）上卷节点不消除的问题。[#8132](https://github.com/ecomfe/echarts/issues/8132)
+
 + [Fix] SVG axisPointer 文本位置问题。[#7947](https://github.com/ecomfe/echarts/issues/7947)
+
 + [Fix] 修复了线图（lines chart）大规模模式中的渲染问题。
+
 + [Fix] 修复了日历坐标系中，最后一日不显示的问题。[#8045](https://github.com/ecomfe/echarts/issues/8045)
+
 + [Fix] 修复了当数据有 NaN 时，折线图中数据采样导致错误的轴范围的问题。
+
 + [Fix] 修复了设置了 `series.encode` 时，折线图采样中不正确的问题。[#8017](https://github.com/ecomfe/echarts/issues/8017)
+
 + [Fix] 修复了同名的多个系列设置 `legendHoverLink: false` 时效果不对的问题。[#8010](https://github.com/ecomfe/echarts/issues/8010)
+
 + [Fix] 修复了关系图（`graph`）的部分高亮样式（hover style）不正确的问题。
+
 + [Fix] 修复了堆叠数据时（stack）轴的范围计算不正确的问题。
 
 

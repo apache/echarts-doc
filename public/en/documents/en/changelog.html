@@ -1,3 +1,83 @@
+<h2 id="v4-1-0-rc2">v4.1.0.rc2</h2>
+<div class="time">2018-05-02</div>
+
+<ul>
+<li><p>[Feature] Enable candlestick and bar chart rendering and zooming in a large amount of data (200K). Add option <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-candlestick.progressiveChunkMode">series-candlestick.progressiveChunkMode</a> to enhance the effect when progressively rendering. See example <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=candlestick-large">candlestick-large</a>.</p>
+</li>
+<li><p>[Feature] Add tree directions from right to left, from bottom to top for tree series. <a href="https://github.com/ecomfe/echarts/issues/7351">#7351</a> <a href="https://github.com/ecomfe/echarts/issues/7154">#7154</a>. See example <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=tree-orient-right-left">tree-orient-right-left</a>, <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=tree-vertical">tree-vertical</a>.</p>
+</li>
+<li><p>[Feature] Support keeping-aspect for legend path. <a href="https://github.com/ecomfe/echarts/issues/7831">#7831</a></p>
+</li>
+<li><p>[Feature] Support node dragging for sankey chart. See example <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=sankey-energy">sankey-energy</a>.</p>
+</li>
+<li><p>[Enhance] Category axis enhancement:</p>
+<ul>
+<li>Optimize the performance in a large amount of data (&gt; 100K ~ 1M)</li>
+<li>Enhance the auto interval strategy.</li>
+<li>Enhance the animation when zooming and moving the data window of cartesian.</li>
+</ul>
+</li>
+<li><p>[Enhance] In line chart, enhance symbol display strategy when using category axis (see <code>showAllSymbol:&#39;auto&#39;</code>).</p>
+</li>
+<li><p>[Enhance] Support that lift the brushed elements to the top (add option <code>visualMap.inRange.liftZ</code>).</p>
+</li>
+<li><p>[Enhance] Enhance the order of nodes for sankey diagram. <a href="https://github.com/ecomfe/echarts/issues/3390">#3390</a> <a href="https://github.com/ecomfe/echarts/issues/3543">#3543</a> <a href="https://github.com/ecomfe/echarts/issues/6365">#6365</a> <a href="https://github.com/ecomfe/echarts/issues/4880">#4880</a> <a href="https://github.com/ecomfe/echarts/issues/4986">#4986</a></p>
+</li>
+<li><p>[Enhance] Enhance sampling performance in progressive mode.</p>
+</li>
+<li><p>[Enhance] Enhance parallel performance in progressive mode.</p>
+</li>
+<li><p>[Enhance] Currently do not filter empty data item in data zoom, which makes line chart keeping broken. <a href="https://github.com/ecomfe/echarts/issues/7955">#7955</a></p>
+</li>
+<li><p>[Enhance] Support toolbox.feature merge.</p>
+</li>
+<li><p>[Fix] Resolve browser become unresponsive when the data of sankey series has cycle. <a href="https://github.com/ecomfe/echarts/issues/7495">#7495</a> <a href="https://github.com/ecomfe/echarts/issues/8117">#8117</a> <a href="https://github.com/ecomfe/echarts/issues/7583">#7583</a> <a href="https://github.com/ecomfe/echarts/issues/7325">#7325</a> <a href="https://github.com/ecomfe/echarts/issues/6555">#6555</a></p>
+</li>
+<li><p>[Fix] <code>yAxis</code> extent did not update when some of the stacked bar series hide. <a href="https://github.com/ecomfe/echarts/issues/8003">#8003</a></p>
+</li>
+<li><p>[Fix] Currently we fetch name from <code>dateItem.name</code> firstly in list. <a href="https://github.com/ecomfe/echarts/issues/7966">#7966</a></p>
+</li>
+<li><p>[Fix] Typed array incorrect usage in WeChat app.</p>
+</li>
+<li><p>[Fix] <code>option</code> in axis data item did not work. <a href="https://github.com/ecomfe/echarts/issues/7954">#7954</a></p>
+</li>
+<li><p>[Fix] <code>markArea</code> only displayed the last one. <a href="https://github.com/ecomfe/echarts/issues/7902">#7902</a></p>
+</li>
+<li><p>[Fix] Fixed the WeChat environment imprecise detection.</p>
+</li>
+<li><p>[Fix] Rounding error in clip symbol for line chart. <a href="https://github.com/ecomfe/echarts/issues/7913">#7913</a></p>
+</li>
+<li><p>[Fix] The default tooltip in candlestick only showed one item. <a href="https://github.com/ecomfe/echarts/issues/8149">#8149</a></p>
+</li>
+<li><p>[Fix] Bar chart start point was incorrect when multiple axes exist. <a href="https://github.com/ecomfe/echarts/issues/7412">#7412</a></p>
+</li>
+<li><p>[Fix] <code>markArea</code> did not display when using ordinal string. <a href="https://github.com/ecomfe/echarts/issues/7849">#7849</a></p>
+</li>
+<li><p>[Fix] <code>dataZoom</code> threw error when series was empty. <a href="https://github.com/ecomfe/echarts/issues/7666">#7666</a></p>
+</li>
+<li><p>[Fix] Add compatibility of data exceptions for sankey series. <a href="https://github.com/ecomfe/echarts/issues/2867">#2867</a></p>
+</li>
+<li><p>[Fix] Fix error when removing node or rendering again for the tree series. <a href="https://github.com/ecomfe/echarts/issues/8038">#8038</a> <a href="https://github.com/ecomfe/echarts/issues/8040">#8040</a> <a href="https://github.com/ecomfe/echarts/issues/7720">#7720</a> <a href="https://github.com/ecomfe/echarts/issues/7363">#7363</a> <a href="https://github.com/ecomfe/echarts/issues/7315">#7315</a></p>
+</li>
+<li><p>[Fix] <code>sunburst</code> chart roll-up element was not removed when chart.setOption called. <a href="https://github.com/ecomfe/echarts/issues/8132">#8132</a></p>
+</li>
+<li><p>[Fix] SVG axisPointer text position bug. <a href="https://github.com/ecomfe/echarts/issues/7947">#7947</a></p>
+</li>
+<li><p>[Fix] Large lines chart render bug in large mode.</p>
+</li>
+<li><p>[Fix] The last day of a month was not displayed in calendar. <a href="https://github.com/ecomfe/echarts/issues/8045">#8045</a></p>
+</li>
+<li><p>[Fix] Data sampling of line chart caused incorrect extent when data had NaN.</p>
+</li>
+<li><p>[Fix] Data sampling of line chart worked abnormally when using <code>series.encode</code>. <a href="https://github.com/ecomfe/echarts/issues/8017">#8017</a></p>
+</li>
+<li><p>[Fix] <code>legendHoverLink: false</code> did not work appropriately when multiple series had the same name. <a href="https://github.com/ecomfe/echarts/issues/8010">#8010</a></p>
+</li>
+<li><p>[Fix] Some of the graph hover style did not work.</p>
+</li>
+<li><p>[Fix] Fix axis extent calculation error when using stack.</p>
+</li>
+</ul>
 <h2 id="v4-0-4">v4.0.4</h2>
 <div class="time">2018-02-28</div>
 
