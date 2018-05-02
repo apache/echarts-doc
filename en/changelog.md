@@ -1,3 +1,50 @@
+# v4.1.0.rc2
+<div class="time">2018-05-02</div>
+
++ [Feature] Enable candlestick and bar chart rendering and zooming in a large amount of data (200K). Add option [series-candlestick.progressiveChunkMode](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-candlestick.progressiveChunkMode) to enhance the effect when progressively rendering. See example [candlestick-large](https://ecomfe.github.io/echarts-examples/public/editor.html?c=candlestick-large).
++ [Feature] Add tree directions from right to left, from bottom to top for tree series. [#7351](https://github.com/ecomfe/echarts/issues/7351) [#7154](https://github.com/ecomfe/echarts/issues/7154). See example [tree-orient-right-left](https://ecomfe.github.io/echarts-examples/public/editor.html?c=tree-orient-right-left), [tree-vertical](https://ecomfe.github.io/echarts-examples/public/editor.html?c=tree-vertical).
++ [Feature] Support keeping-aspect for legend path. [#7831](https://github.com/ecomfe/echarts/issues/7831)
++ [Feature] Support node dragging for sankey chart. See example [sankey-energy](https://ecomfe.github.io/echarts-examples/public/editor.html?c=sankey-energy).
+
++ [Enhance] Category axis enhancement:
+    + Optimize the performance in a large amount of data (> 100K ~ 1M)
+    + Enhance the auto interval strategy.
+    + Enhance the animation when zooming and moving the data window of cartesian.
++ [Enhance] In line chart, enhance symbol display strategy when using category axis (see `showAllSymbol:'auto'`).
++ [Enhance] Support that lift the brushed elements to the top (add option `visualMap.inRange.liftZ`).
++ [Enhance] Enhance the order of nodes for sankey diagram. [#3390](https://github.com/ecomfe/echarts/issues/3390) [#3543](https://github.com/ecomfe/echarts/issues/3543) [#6365](https://github.com/ecomfe/echarts/issues/6365) [#4880](https://github.com/ecomfe/echarts/issues/4880) [#4986](https://github.com/ecomfe/echarts/issues/4986)
++ [Enhance] Enhance sampling performance in progressive mode.
++ [Enhance] Enhance parallel performance in progressive mode.
++ [Enhance] Currently do not filter empty data item in data zoom, which makes line chart keeping broken. [#7955](https://github.com/ecomfe/echarts/issues/7955)
++ [Enhance] Support toolbox.feature merge.
+
++ [Fix] Resolve browser become unresponsive when the data of sankey series has cycle. [#7495](https://github.com/ecomfe/echarts/issues/7495) [#8117](https://github.com/ecomfe/echarts/issues/8117) [#7583](https://github.com/ecomfe/echarts/issues/7583) [#7325](https://github.com/ecomfe/echarts/issues/7325) [#6555](https://github.com/ecomfe/echarts/issues/6555)
++ [Fix] `yAxis` extent did not update when some of the stacked bar series hide. [#8003](https://github.com/ecomfe/echarts/issues/8003)
++ [Fix] Currently we fetch name from `dateItem.name` firstly in list. [#7966](https://github.com/ecomfe/echarts/issues/7966)
++ [Fix] Typed array incorrect usage in WeChat app.
++ [Fix] `option` in axis data item did not work. [#7954](https://github.com/ecomfe/echarts/issues/7954)
++ [Fix] `markArea` only displayed the last one. [#7902](https://github.com/ecomfe/echarts/issues/7902)
++ [Fix] Fixed the WeChat environment imprecise detection.
++ [Fix] Rounding error in clip symbol for line chart. [#7913](https://github.com/ecomfe/echarts/issues/7913)
++ [Fix] The default tooltip in candlestick only showed one item. [#8149](https://github.com/ecomfe/echarts/issues/8149)
++ [Fix] Bar chart start point was incorrect when multiple axes exist. [#7412](https://github.com/ecomfe/echarts/issues/7412)
++ [Fix] `markArea` did not display when using ordinal string. [#7849](https://github.com/ecomfe/echarts/issues/7849)
++ [Fix] `dataZoom` threw error when series was empty. [#7666](https://github.com/ecomfe/echarts/issues/7666)
++ [Fix] Add compatibility of data exceptions for sankey series. [#2867](https://github.com/ecomfe/echarts/issues/2867)
++ [Fix] Fix error when removing node or rendering again for the tree series. [#8038](https://github.com/ecomfe/echarts/issues/8038) [#8040](https://github.com/ecomfe/echarts/issues/8040) [#7720](https://github.com/ecomfe/echarts/issues/7720) [#7363](https://github.com/ecomfe/echarts/issues/7363) [#7315](https://github.com/ecomfe/echarts/issues/7315)
++ [Fix] `sunburst` chart roll-up element was not removed when chart.setOption called. [#8132](https://github.com/ecomfe/echarts/issues/8132)
++ [Fix] SVG axisPointer text position bug. [#7947](https://github.com/ecomfe/echarts/issues/7947)
++ [Fix] Large lines chart render bug in large mode.
++ [Fix] The last day of a month was not displayed in calendar. [#8045](https://github.com/ecomfe/echarts/issues/8045)
++ [Fix] Data sampling of line chart caused incorrect extent when data had NaN.
++ [Fix] Data sampling of line chart worked abnormally when using `series.encode`. [#8017](https://github.com/ecomfe/echarts/issues/8017)
++ [Fix] `legendHoverLink: false` did not work appropriately when multiple series had the same name. [#8010](https://github.com/ecomfe/echarts/issues/8010)
++ [Fix] Some of the graph hover style did not work.
++ [Fix] Fix axis extent calculation error when using stack.
+
+
+
+
 ## v4.0.4
 <div class="time">2018-02-28</div>
 
