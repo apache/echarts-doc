@@ -58,6 +58,10 @@ The test shows that iterations of layout could not be less than the default valu
 
 The drag-and-drop interaction of the node, which is enabled by default. After opening, the user can drag any node in the Sankey diagram to any position. To turn this interaction off, simply set the value to `false`.
 
+## focusNodeAdjacency(boolean|string) = false
+
+Mouse hover to the node (edge), adjacent nodes and edges highlighted interaction, default off, can be manually opened. When hover to the node, three highlighting methods are provided: 1) The outgoing edges of the corresponding node are highlighted, and the value is `'outEdges'`. 2) The incoming edges of the corresponding node are highlighted, and the value is `'inEdges'`. 3) All the edges that adjacent to the node are highlighted, and the value is `'allEdges'`. When hover to the edge , Uniformly edges and two adjacent nodes of the edge are highlighted.
+
 ## label(Object)
 
 `label` describes the text label style in each rectangular node.
