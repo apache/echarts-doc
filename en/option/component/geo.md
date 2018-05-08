@@ -65,7 +65,7 @@ Whether this area is selected.
 Item style of this area.
 #### areaColor(Color)
 Area color in the map.
-{{ use: partial-item-style(prefix='####') }}
+{{ use: partial-item-style(prefix='###') }}
 #### emphasis(Object)
 ##### areaColor(Color)
 Area color in the map.

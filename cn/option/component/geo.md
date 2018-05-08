@@ -65,7 +65,7 @@ geo 区域的颜色也可以被 map series 所控制，参见 [series-map.geoInd
 该区域的多边形样式设置
 #### areaColor(Color)
 地图区域的颜色。
-{{ use: partial-item-style(prefix='####') }}
+{{ use: partial-item-style(prefix='###') }}
 
 ### label(Object)
 {{use: partial-label-desc}}
