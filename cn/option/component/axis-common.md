@@ -50,8 +50,11 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 {{target: partial-axis-common-axis-label}}
 #${prefix} axisLabel(Object)
 坐标轴刻度标签的相关设置。
+
+{{if: !${hideShow} }}
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
 是否显示刻度标签。
+{{ /if }}
 
 {{ if: ${hasLabelInterval|default(true)} }}
 ##${prefix} interval(number|Function) = 'auto'

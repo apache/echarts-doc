@@ -58,9 +58,13 @@ Arrow offset of axis. If is array, the first number is the offset of the arrow a
 
 Settings related to axis label.
 
+{{if: !${hideShow} }}
+
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
 
 Whether to show the label of axis label or not.
+
+{{ /if }}
 
 {{ if: ${hasLabelInterval|default(true)} }}
 ##${prefix} interval(number|Function) = 'auto'

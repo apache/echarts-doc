@@ -79,6 +79,7 @@ formatter: function (value, indicator) {
 {{ use: partial-axis-common-axis-label(
     prefix="#",
     defaultShow=false,
+    hideShow=true,
     hasLabelInterval=false
 )}}
 

@@ -79,6 +79,7 @@ Whether to prevent calculating the scaling relative to zero. If it is set to be 
 {{ use: partial-axis-common-axis-label(
     prefix="#",
     defaultShow=false,
+    hideShow=true,
     hasLabelInterval=false
 )}}
 
