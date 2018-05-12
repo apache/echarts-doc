@@ -35,14 +35,17 @@ The dimension of [series.data](~series.data) can be specified by [visualMap.dime
 <br>
 In series that controlled by visualMap, if a data item needs to escape from controlled by visualMap, you can set like this:
 ```
-series : [
-    {name: 'Shanghai', value: 251},
-    {name: 'Haikou', value: 21},
-    // Mark as `visualMap: false`, then this item does not controlled by visualMap any more,
-    // and series visual config (like color, symbol, ...) can be used to this item.
-    {name: 'Beijing', value: 821, },
-    ...
-]
+series: {
+    type: '...',
+    data: [
+        {name: 'Shanghai', value: 251},
+        {name: 'Haikou', value: 21},
+        // Mark as `visualMap: false`, then this item does not controlled by visualMap any more,
+        // and series visual config (like color, symbol, ...) can be used to this item.
+        {name: 'Beijing', value: 821, },
+        ...
+    ]
+}
 ```
 
 
