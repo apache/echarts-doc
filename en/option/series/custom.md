@@ -333,6 +333,17 @@ For example:
 ```
 
 
+{{use: partial-zr-graphic-elements(
+    prefix='##',
+    hostName='return',
+    symbolVisit='_',
+    symbolDeclare='_',
+    optionPath='series-custom.renderItem',
+    usageType='customSeries'
+)}}
+
+
+
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
 {{use:partial-item-style(

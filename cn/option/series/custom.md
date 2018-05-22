@@ -324,6 +324,17 @@ renderItem 函数的第二个参数。
 ```
 
 
+{{use: partial-zr-graphic-elements(
+    prefix='##',
+    hostName='return',
+    symbolVisit='_',
+    symbolDeclare='_',
+    optionPath='series-custom.renderItem',
+    usageType='customSeries'
+)}}
+
+
+
 ## itemStyle(Object)
 
 {{use:partial-item-style-desc}}
