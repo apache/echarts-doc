@@ -526,6 +526,17 @@ Rectangle element.
 {{ use: graphic-cpt-sub-prop-xy }}
 {{ use: graphic-cpt-sub-prop-wh }}
 
+#### r(Array)
+
+Specify border radius of the rectangular here. Generally, `r` should be `[topLeftRadius, topRightRadius, BottomRightRadius, bottomLeftRadius]`, where each item is a number.
+
+Abbreviation is enabled, for example:
++ `r`: `1`         means `[1, 1, 1, 1]`
++ `r`: `[1]`       means `[1, 1, 1, 1]`
++ `r`: `[1, 2]`    means `[1, 2, 1, 2]`
++ `r`: `[1, 2, 3]` means `[1, 2, 3, 2]`
+
+
 ### style(Object)
 
 {{ use: graphic-cpt-style-prop-common }}

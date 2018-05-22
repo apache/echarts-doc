@@ -504,6 +504,18 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
 {{ use: graphic-cpt-sub-prop-xy }}
 {{ use: graphic-cpt-sub-prop-wh }}
 
+#### r(Array)
+
+可以用于设置圆角矩形。`r: [r1, r2, r3, r4]`，
+左上、右上、右下、左下角的半径依次为r1、r2、r3、r4。
+
+可以缩写，例如：
++ `r` 缩写为 `1`         相当于 `[1, 1, 1, 1]`
++ `r` 缩写为 `[1]`       相当于 `[1, 1, 1, 1]`
++ `r` 缩写为 `[1, 2]`    相当于 `[1, 2, 1, 2]`
++ `r` 缩写为 `[1, 2, 3]1 相当于 `[1, 2, 3, 2]`
+
+
 ### style(Object)
 
 {{ use: graphic-cpt-style-prop-common }}
