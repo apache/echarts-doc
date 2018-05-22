@@ -381,7 +381,7 @@ define(function (require) {
                 if (elsInNode.subGroup[0].style.display === 'none') {
                     log({key: 'expandDesc', data: optionPathForHash});
 
-                    elsInNode.expandBtn[0].innerHTML = ICON_CAN_COLLAPSE;
+                    elsInNode.expandBtn[0].innerHTML = '<span>' + ICON_CAN_COLLAPSE + '</span>';
 
                     this._completeSubGroupContent(elsInNode.subGroup);
 
@@ -390,7 +390,7 @@ define(function (require) {
                 else {
                     log({key: 'collapseDesc', data: optionPathForHash});
 
-                    elsInNode.expandBtn[0].innerHTML = ICON_CAN_EXPAND;
+                    elsInNode.expandBtn[0].innerHTML = '<span>' + ICON_CAN_EXPAND + '</span>';
                     elsInNode.subGroup.slideUp().promise().always(slideFinal);
                 }
             }
@@ -599,7 +599,7 @@ define(function (require) {
                     return;
                 }
 
-                elsInNode.expandBtn[0].innerHTML = ICON_CAN_COLLAPSE;
+                elsInNode.expandBtn[0].innerHTML = '<span>' + ICON_CAN_COLLAPSE + '</span>';
 
                 that._completeSubGroupContent(elsInNode.subGroup);
 
