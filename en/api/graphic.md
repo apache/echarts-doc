@@ -2,7 +2,7 @@
 
 ## graphic
 
-Util methods about grphics.
+Util methods about graphics.
 
 ### clipPointsByRect(Function)
 
