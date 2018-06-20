@@ -88,7 +88,7 @@ renderItem 函数的第一个参数，含有：
 
 ```js
 {
-    context: // {Object} 一个可供开发者暂存东西的对象。
+    context: // {Object} 一个可供开发者暂存东西的对象。生命周期只为：当前次的渲染。
     seriesId: // {string} 本系列 id。
     seriesName: // {string} 本系列 name。
     seriesIndex: // {number} 本系列 index。

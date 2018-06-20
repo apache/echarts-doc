@@ -95,7 +95,7 @@ The first parameter of `renderItem`, including:
 
 ```js
 {
-    context: // {string} An object that developers can store something temporarily here.
+    context: // {string} An object that developers can store something temporarily here. Life cycle: current round of rendering.
     seriesId: // {string} The id of this series.
     seriesName: // {string} The name of this series.
     seriesIndex: // {number} The index of this series.
