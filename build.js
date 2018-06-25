@@ -2,6 +2,7 @@ var md2json = require('./tool/md2json');
 var fs = require('fs');
 var marked = require('marked');
 var copydir = require('copy-dir');
+var MarkDownTOCRenderer = require('./tool/MarkDownTOCRenderer');
 
 var languages = ['cn', 'en'];
 
@@ -74,6 +75,18 @@ function run() {
         fs.writeFileSync(
             'public/' + language + '/documents/' + language + '/changelog.html',
             marked(fs.readFileSync(language + '/changelog.md', 'utf-8')),
+            'utf-8'
+        );
+
+        var plainMarkDownTpl = fs.readFileSync('tool/plain-md.tpl', 'utf-8');
+        var codingStandardMD = fs.readFileSync('en' + '/coding-standard.md', 'utf-8');
+        var codingStandardContent = marked(codingStandardMD);
+        var codingStandardTOC = marked(codingStandardMD, {renderer: new MarkDownTOCRenderer()});
+        fs.writeFileSync(
+            'public/' + language + '/documents/' + language + '/coding-standard.html',
+            plainMarkDownTpl
+                .replace('{{toc}}', codingStandardTOC)
+                .replace('{{content}}', codingStandardContent),
             'utf-8'
         );
     });
