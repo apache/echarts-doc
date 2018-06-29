@@ -472,7 +472,7 @@ The method is used in rendering millions of data (e.g. rendering geo data). In t
 Notice:
 
 + Currently, when a series is using `dataset`, it is not supported to use `appendData`.
-+ Currently not all types of series supported incremental rendering when using `appendData`. Only these types of series support it: [scatter](option.html#series-scatter) and [lines](option-gl.html#series-linesGL) of pure echarts, and [scatterGL](option-gl.html#series-scatterGL), [linesGL](option-gl.html#series-lines3D) and [polygons3D](ooption-gl.html#series-polygons3D) of echarts-gl.
++ Currently not all types of series supported incremental rendering when using `appendData`. Only these types of series support it: scatter and lines of pure echarts, and scatterGL, linesGL and polygons3D of echarts-gl.
 
 
 ## clear

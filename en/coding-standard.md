@@ -1,5 +1,3 @@
-# Coding Standard of ECharts
-
 ## Code Style
 
 

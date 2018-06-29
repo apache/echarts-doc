@@ -78,18 +78,24 @@ function run() {
             'utf-8'
         );
 
-        var plainMarkDownTpl = fs.readFileSync('tool/plain-md.tpl', 'utf-8');
-        var codingStandardMD = fs.readFileSync('en' + '/coding-standard.md', 'utf-8');
-        var codingStandardContent = marked(codingStandardMD);
-        var codingStandardTOC = marked(codingStandardMD, {renderer: new MarkDownTOCRenderer()});
-        fs.writeFileSync(
-            'public/' + language + '/documents/' + language + '/coding-standard.html',
-            plainMarkDownTpl
-                .replace('{{toc}}', codingStandardTOC)
-                .replace('{{content}}', codingStandardContent),
-            'utf-8'
-        );
+        // var plainMarkDownTpl = fs.readFileSync('tool/plain-md.tpl', 'utf-8');
+        // var codingStandardMD = fs.readFileSync('en' + '/coding-standard.md', 'utf-8');
+        // var codingStandardContent = marked(codingStandardMD);
+        // var codingStandardTOC = marked(codingStandardMD, {renderer: new MarkDownTOCRenderer()});
+        // fs.writeFileSync(
+        //     'public/' + language + '/documents/' + language + '/coding-standard.html',
+        //     plainMarkDownTpl
+        //         .replace('{{toc}}', codingStandardTOC)
+        //         .replace('{{content}}', codingStandardContent),
+        //     'utf-8'
+        // );
     });
+
+    fs.writeFileSync(
+        'public/en/documents/en/coding-standard.html',
+        marked(fs.readFileSync('en/coding-standard.md', 'utf-8')),
+        'utf-8'
+    );
 
     copydir.sync('./asset', './public/cn/documents/asset');
     copydir.sync('./asset', './public/en/documents/asset');

@@ -194,9 +194,11 @@ define(function (require) {
             var defs = [
                 ['tutorial', lang.quickLinkTutorial],
                 ['api', lang.quickLinkAPI],
-                ['option', lang.quickLinkOption],
-                ['option-gl', lang.quickLinkOptionGL]
+                ['option', lang.quickLinkOption]
             ];
+            if (lang.langCode === 'cn') {
+                defs.push(['option-gl', lang.quickLinkOptionGL]);
+            }
 
             var html = [];
 
