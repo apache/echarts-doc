@@ -558,7 +558,7 @@ body {
 }
 .ecdoc-sprsht-codeinputs-area .ecdoc-sprsht-codeinput {
   position: relative;
-  height: 105px;
+  height: 205px;
 }
 .ecdoc-sprsht-codeinputs-area .dtui-txipt-type-textarea {
   display: block;
@@ -569,6 +569,7 @@ body {
   bottom: 0;
   right: 30px;
   margin: 0;
+  height: auto;
 }
 .ecdoc-sprsht-codeinputs-area .ecdoc-sprsht-codeinputs {
   margin-top: 20px;
