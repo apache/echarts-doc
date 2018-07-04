@@ -557,9 +557,6 @@ class Element {
     // ...
 }
 
-
-// Forbidden
-
 String.prototype.trim = function () {
 };
 ```
