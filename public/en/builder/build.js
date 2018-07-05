@@ -100,7 +100,7 @@ define(function (require) {
 
         builderLog('<br />Completed');
 
-        document.getElementById('tip').innerHTML = '构建完毕';
+        document.getElementById('tip').innerHTML = 'OK';
     });
 
     function download(code) {
