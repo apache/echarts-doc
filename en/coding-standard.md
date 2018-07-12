@@ -510,7 +510,7 @@ var svgParser;
 
 ### Compatibility
 
-**[MUST]** The JavaScript code of ECharts should be based on `ECMAScript Language Specification Edition 3 (ES3)`. The language features that not supported by ES3 (namely, features that only support by ES5, ES6 or upper versions) must not be used.
+**[MUST]** The JavaScript code of ECharts should be based on `ECMAScript Language Specification Edition 3 (ES3)`. The language features that not supported by ES3 (namely, features that are only supported by ES5, ES6 or upper versions) must not be used.
 
 But there is an exception that ES Module can be used.
 
