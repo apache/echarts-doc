@@ -37,7 +37,6 @@ local.properties
 # PDT-specific
 .buildpath
 
-.mp4
 
 #################
 ## Visual Studio
@@ -173,5 +172,3 @@ pip-log.txt
 
 node_modules
 configshenyi.js
-
-*.mp4
