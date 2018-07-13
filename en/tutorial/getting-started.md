@@ -3,17 +3,19 @@
 
 ## Get ECharts
 
-You can get ECharts through the following ways.
+First, install ECharts using one of the following methods:
 
-1. Choose the version you need and download from [official download page](http://echarts.baidu.com/download.html). Based on developer's varied need of function and package size, we provide different download packages. If you have concern about package size, you can download [full version](http://echarts.baidu.com/dist/echarts.min.js) directly.
+1. The [official download page](https://ecomfe.github.io/echarts-doc/public/en/download.html), which has different builds for common needs. If you want to include all packages, you can download [the full minified version](http://echarts.baidu.com/dist/echarts.min.js).
 
-2. Download the latest `release` version in ECharts [GitHub](https://github.com/ecomfe/echarts), and you can find the latest version of echarts in `dist` directory of the unzipped files.
+2. From the latest [GitHub](https://github.com/ecomfe/echarts) release, you can find the latest version of echarts in `dist` directory of the unzipped files.
 
-3. Alternatively, you may get echarts through npm by `npm install echarts --save`. See detail in [use echarts in webpack](http://echarts.baidu.com/tutorial.html#%E5%9C%A8%20webpack%20%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts)
+3. Using npm: `npm install echarts --save`. [Using ECharts with webpack](https://ecomfe.github.io/echarts-doc/public/en/tutorial.html#Use%20ECharts%20with%20webpack)
+
+4. Using the [online build tool](http://echarts.baidu.com/builder.html) (Chinese).
 
 ## Including ECharts
 
-ECharts 3 no longer emphysis on using AMD to load packages on need, and AMD loader is no longer included in ECharts. Therefore, it is much easier to include ECharts, in that you only need to include ECharts in script label like most other JavaScript libraries require.
+ECharts 3 no longer requires using AMD to load packages, and the AMD loader is no longer included in ECharts. Instead, ECharts should be included using a traditonal `<script>` tag:
 
 ```html
 <!DOCTYPE html>
@@ -33,11 +35,11 @@ Before drawing charts, we need to prepare a DOM container with width and height 
 ```
 <body>
     <!-- preparing a DOM with width and height for ECharts -->
-    <div id="main" style="width: 600px;height:400px;"></div>
+    <div id="main" style="width:600px; height:400px;"></div>
 </body>
 ```
 
-Then we can initialize an echarts instance through [echarts.init](api.html#echarts.init), and create a simple bar chart through [setOption](api.html#echartsInstance.setOption). Below is the complete code.
+Then we can initialize an ECharts instance using [echarts.init](api.html#echarts.init), and create a simple bar chart with [setOption](api.html#echartsInstance.setOption). Below is the complete code.
 
 
 ```html
@@ -83,8 +85,8 @@ Then we can initialize an echarts instance through [echarts.init](api.html#echar
 </html>
 ```
 
-Here is your first chart!
+You've made your first chart!
 
 ~[600x300](${galleryViewPath}doc-example/getting-started&reset=1&edit=1)
 
-You can also go to [ECharts Gallery](${galleryEditorPath}doc-example/getting-started) to view examples.
+For more examples, go to the [ECharts Gallery](${galleryEditorPath}doc-example/getting-started)
