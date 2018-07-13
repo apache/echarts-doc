@@ -37,18 +37,22 @@ treemap 首先是把数值映射到『面积』这种视觉元素上。
 
 + `center/size` 方式的定位不再支持，而是统一使用 `left/top/bottom/right/width/height` 方式定位。
 
-+ `breadcrumb` 的配置被移动到了 `itemStyle.normal/itemStyle.emphasis` 外部，和 `itemStyle` 平级。
++ `breadcrumb` 的配置被移动到了 `itemStyle/itemStyle.emphasis` 外部，和 `itemStyle` 平级。
 
 + `root` 的设置暂时不支持。目前可以使用 `zoom` 的方式来查看树更下层次的细节，或者使用 [leafDepth](~series-treemap.leafDepth) 开启 "drill down" 功能。
 
-+ `label` 的配置被移动到了 `itemStyle.normal/itemStyle.emphasis` 外部，和 `itemStyle` 平级。
++ `label` 的配置被移动到了 `itemStyle/itemStyle.emphasis` 外部，和 `itemStyle` 平级。
 
-+ `itemStyle.normal.childBorderWidth`、`itemStyle.normal.childBorderColor`不再支持（因为这个配置方式只能定义两层的treemap）。统一使用 [series-treemap.levels](~series-treemap.levels) 来进行各层级的定义。
++ `itemStyle.childBorderWidth`、`itemStyle.childBorderColor`不再支持（因为这个配置方式只能定义两层的treemap）。统一使用 [series-treemap.levels](~series-treemap.levels) 来进行各层级的定义。
 
 <br>
 <br>
 
 ## type(string) = 'treemap'
+
+{{use: partial-component-id(prefix="#")}}
+
+{{ use: partial-series-name() }}
 
 {{ use: partial-rect-layout-width-height(
     componentName='treemap ',
@@ -255,10 +259,8 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 {{ use: partial-item-style-desc }}
 
 
-#### normal
-
 {{use: partial-item-style(
-    prefix="####",
+    prefix="###",
     name="boxplot",
     defaultColor="rgba(0,0,0,0.7)",
     defaultBorderColor="rgba(255,255,255,0.7)",
@@ -278,8 +280,8 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 )}}
 
 
-#### emphasis
-
+### emphasis
+#### itemStyle(Object)
 {{use: partial-item-style(
     prefix="####",
     name="boxplot",
@@ -291,8 +293,6 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
     defaultShadowOffsetX=0,
     defaultShadowOffsetY=0
 )}}
-
-
 ##### textStyle(Object)
 
 {{use: partial-text-style(
@@ -510,16 +510,40 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 <br>
 
-##${prefix} normal(Object)
+{{use:partial-label(
+    prefix=${prefix} + "#",
+    defaultPosition="'inside'",
+    formatter=true,
+    ellipsis=true
+)}}
 
-{{use:partial-treemap-label(prefix=${prefix} + "##")}}
+#${prefix} upperLabel(Object)
+
+`upperLabel` 用于显示矩形的父节点的标签。当 [upperLabel.show](~series-treemap.upperLabel.show) 为 `true` 的时候，『显示父节点标签』功能开启。
+
+同 [series-treemap.label](~series-treemap.label) 一样，`upperLabel` 可以存在于 [series-treemap](~series-treemap) 的根节点，或者 [series-treemap.level](~series-treemap.level) 中，或者 [series-treemap.data](~series-treemap.data) 的每个数据项中。
+
+[series-treemap.label](~series-treemap.label) 描述的是，当前节点为叶节点时标签的样式；`upperLabel` 描述的是，当前节点为非叶节点（即含有子节点）时标签的样式。（此时标签一般会被显示在节点的最上部）
+
+参见：
+
+~[700x500](${galleryViewPath}treemap-show-parent&edit=1&reset=1)
 
 
-##${prefix} emphasis(Object)
+{{use: partial-treemap-prop-location-desc(name="label")}}
 
-{{use:partial-treemap-label(prefix=${prefix} + "##")}}
+<br>
 
+{{use:partial-label(
+    prefix=${prefix} + "#",
+    defaultPosition="'inside'",
+    formatter=true,
+    ellipsis=true
+)}}
 
+###${prefix} height(number) = 20
+
+父节点标签区的高度。
 
 #${prefix} itemStyle(Object)
 
@@ -527,24 +551,37 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 <br>
 
-##${prefix} normal(Object)
-
 {{use: partial-treemap-item-style(
-    prefix=${prefix} + "##",
+    prefix=${prefix} + "#",
     galleryEditorPath=${galleryEditorPath},
     itemStyleType='normal'
 )}}
 
-##${prefix} emphasis(Object)
-
+#${prefix} emphasis(Object)
+##${prefix} label(Object)
+{{use:partial-label(
+    prefix=${prefix} + "##",
+    defaultPosition="'inside'",
+    formatter=true,
+    ellipsis=true
+)}}
+##${prefix} upperLabel(Object)
+{{use:partial-label(
+    prefix=${prefix} + "##",
+    defaultPosition="'inside'",
+    formatter=true,
+    ellipsis=true
+)}}
+##${prefix} itemStyle(Object)
 {{use: partial-treemap-item-style(
     prefix=${prefix} + "##",
     galleryEditorPath=${galleryEditorPath},
     itemStyleType='emphasis'
 )}}
 
+
 {{ use:partial-silent(
-    prefix="##"
+    prefix="#"
 ) }}
 
 
@@ -624,6 +661,14 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 <br>
 {{ use: partial-treemap-borderColor-setting(galleryEditorPath=${galleryEditorPath}) }}
 
+#${prefix} strokeColor(Color) = null
+
+每个矩形的描边颜色。
+
+#${prefix} strokeWidth(number) = null
+
+每个矩形的描边宽度。
+
 {{/if }}
 
 
@@ -638,49 +683,5 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 如果统一用一种颜色设置矩形的缝隙（gap），那么当不同层级的矩形同时展示时可能会出现混淆。
 
 参见 [例子](${galleryEditorPath}doc-example/treemap-borderColor&edit=1&reset=1)，注意其中红色的区块中的子矩形其实是更深层级，和其他用白色缝隙区分的矩形不是在一个层级。所以，红色区块中矩形的分割线的颜色，我们在 `borderColorSaturation` 中设置为『加了饱和度变化的红颜色』，以示区别。
-
-
-
-
-
-
-
-{{ target: partial-treemap-label }}
-
-#${prefix} show(boolean) = true
-
-是否显示文本标签。
-
-
-#${prefix} position(string|Array) = 'inside'
-
-{{ use:partial-label-position }}
-
-
-
-#${prefix} textStyle(Object)
-
-##${prefix} ellipsis(boolean) = true
-
-当文字超出矩形边界的时候，是否超出部分替换为省略号。
-
-
-{{use:partial-text-style(
-    prefix=${prefix} + '#',
-    defaultColor="'#fff'"
-)}}
-
-
-##${prefix} align(string) = undefined
-
-文字水平对齐方式，可选值 `'center'`、`'right`、`'left'`
-
-
-##${prefix} baseline(string) = undefined
-
-文字竖直对齐方式，可选值 `'middle'`、`'right`、`'left'`
-
-
-
 
 

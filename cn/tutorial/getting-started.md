@@ -7,7 +7,7 @@
 
 1. 从[官网下载界面](http://echarts.baidu.com/download.html)选择你需要的版本下载，根据开发者功能和体积上的需求，我们提供了不同打包的下载，如果你在体积上没有要求，可以直接下载[完整版本](http://echarts.baidu.com/dist/echarts.min.js)。开发环境建议下载[源代码版本](http://echarts.baidu.com/dist/echarts.js)，包含了常见的错误提示和警告。
 
-2. 在 ECharts 的 [GitHub](https://github.com/echarts) 上下载最新的 `release` 版本，解压出来的文件夹里的 `dist` 目录里可以找到最新版本的 echarts 库。
+2. 在 ECharts 的 [GitHub](https://github.com/ecomfe/echarts) 上下载最新的 `release` 版本，解压出来的文件夹里的 `dist` 目录里可以找到最新版本的 echarts 库。
 
 3. 通过 npm 获取 echarts，`npm install echarts --save`，详见“[在 webpack 中使用 echarts](http://echarts.baidu.com/tutorial.html#%E5%9C%A8%20webpack%20%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts)”
 

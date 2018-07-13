@@ -13,6 +13,8 @@ This component is the coordinate axis for parallel coordinate.
 <br>
 <br>
 
+{{use: partial-component-id(prefix="#")}}
+
 ## dim(number)
 
 Dimension index of coordinate axis.

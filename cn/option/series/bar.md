@@ -8,6 +8,8 @@
 
 ## type(string) = 'bar'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 {{ use: partial-legend-hover-link() }}
@@ -22,38 +24,70 @@
 
 ## label(Object)
 {{use:partial-label-desc}}
-### normal(Object)
 {{use:partial-label(
-    prefix="###",
+    prefix="##",
     defaultPosition="'inside'",
-    formatter=true
-)}}
-### emphasis(Object)
-{{use:partial-label(
-    prefix="###",
     formatter=true
 )}}
 
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
-### normal(Object)
 {{use:partial-bar-item-style(
-    prefix="###",
+    prefix="##",
     useColorPalatte=true,
     hasCallback=true,
     barBorderRadius=true
 )}}
-### emphasis(Object)
+
+## emphasis(Object)
+
+高亮的图形样式和标签样式。
+
+### label(Object)
+{{use:partial-label(
+    prefix="###",
+    formatter=true
+)}}
+
+### itemStyle(Object)
 {{use:partial-bar-item-style(prefix="###")}}
+
+
 
 
 ## stack(string) = null
 数据堆叠，同个类目轴上系列配置相同的`stack`值可以堆叠放置。
 
+{{ use: partial-cursor }}
+
 {{use: partial-barGrid(
     seriesType='bar',
     galleryViewPath=${galleryViewPath}
 )}}
+
+{{use: partial-large(
+    prefix="#",
+    defaultLargeThreshold=400
+)}}
+
+{{ use:partial-progressive(
+    prefix='#',
+    supportProgressiveChunkMode=true,
+    defaultProgressive=5000,
+    defaultProgressiveChunkMode='mod'
+) }}
+
+{{use:partial-series-dimensions(
+    prefix="#"
+)}}
+
+{{use:partial-series-encode(
+    prefix="#"
+)}}
+
+{{ use: partial-seriesLayoutBy }}
+
+{{ use: partial-datasetIndex }}
 
 ## data(Array)
 
@@ -69,21 +103,28 @@
 
 ### label(Object)
 单个柱条文本的样式设置。
-#### normal(Object)
 {{ use:partial-label(
-    prefix="####",
+    prefix="###",
     defaultPosition="inside"
 ) }}
-#### emphasis(Object)
-{{ use:partial-label(prefix="####") }}
 
 ### itemStyle(Object)
-#### normal(Object)
 {{use:partial-bar-item-style(
-    prefix="####",
+    prefix="###",
     barBorderRadius=true
 )}}
-#### emphasis(Object)
+
+
+### emphasis(Object)
+
+高亮状态的柱状图图形与标签样式。
+
+#### label(Object)
+
+{{ use:partial-label(prefix="####") }}
+
+
+#### itemStyle(Object)
 {{use:partial-bar-item-style(prefix="####")}}
 
 {{use: partial-tooltip-in-series-data(
@@ -136,13 +177,10 @@
 柱条的描边类型，默认为实线，支持 `'dashed'`, `'dotted'`。
 
 {{ if: ${barBorderRadius} }}
-#${prefix} barBorderRadius(number|Array) = 0
-柱形边框圆角半径，单位px，支持传入数组分别指定柱形4个圆角半径。
-如:
-```
-barBorderRadius: 5, // 统一设置四个角的圆角大小
-barBorderRadius: [5, 5, 0, 0] //（顺时针左上，右上，右下，左下）
-```
+{{use: partial-border-radius(
+    propName: 'barBorderRadius',
+    prefix: ${prefix}
+)}}
 {{ /if }}
 
 {{ use:partial-style-shadow-opacity(prefix=${prefix}) }}

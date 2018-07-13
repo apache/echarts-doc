@@ -22,6 +22,8 @@
 
 ## type(string) = 'themeRiver'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-rect-layout-width-height(
     componentName='thmemRiver',
     defaultLeft: '5%',
@@ -55,34 +57,41 @@
 
 `label` 描述了主题河流中每个带状河流分支对应的文本标签的样式。
 
-### normal(Object)
 {{use:partial-label(
-    prefix="###",
+    prefix="##",
     defaultShowLabel=true,
     defaultPosition="'left'",
     defaultMargin=4,
-    defaultTextAlign="'right'"
-)}}
-#### textStyle(Object)
-{{use: partial-text-style(
-    prefix="####",
+    noAlign=true,
+    noVerticalAlign=true,
     defaultColor="'#000'",
-    defaultFontSize=11
-)}}
-### emphasis(Object)
-{{use:partial-label(
-    prefix="###"
+    defaultFontSize=11,
 )}}
 
 ## itemStyle(Object)
 
 主题河流中每个带状河流分支的样式。
 
-### normal(Object)
 {{use: partial-item-style(
-    prefix="###"
+    prefix="##"
 )}}
-### emphasis(Object)
+
+## emphasis(Object)
+
+高亮的图形和标签样式。
+
+### label(Object)
+{{use:partial-label(
+    prefix="###",
+    defaultPosition="'left'",
+    defaultMargin=4,
+    noAlign=true,
+    noVerticalAlign=true,
+    defaultColor="'#000'",
+    defaultFontSize=11,
+)}}
+
+### itemStyle(Object)
 {{use: partial-item-style(
     prefix="###",
     defaultShadowBlur=20,

@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes"> <!-- Fullscreen Landscape on iOS -->
+        <link rel="stylesheet" href="../common/reset.css">
+    </head>
+    <body>
+        <div id="main"></div>
+        <script src="../common/echarts.js"></script>
+        <script src="../common/StageControl.js"></script>
+        <script src="../texture/sample.jpg.js"></script>
+        <script>
+            var UPDATE_DURATION = 20;
+
+            var chart = echarts.init(document.getElementById('main'));
+
+            window.AudioContext = window.AudioContext || window.webkitAudioContext;
+
+            var audioContext = new AudioContext();
+
+            var oReq = new XMLHttpRequest();
+            oReq.open('GET', '../data/roll-it-up.mp3', true);
+            oReq.responseType = 'arraybuffer';
+
+            oReq.onload = function(e) {
+                audioContext.decodeAudioData(oReq.response, drawWaveform);
+            };
+            oReq.send();
+
+            function drawWaveform(audioBuffer) {
+                var leftChannel = audioBuffer.getChannelData(0);
+                var data = [];
+                console.log(leftChannel.length);
+                for (var i = 10000; i < 200000; i++) {
+                    data.push([i, leftChannel[i]]);
+                }
+                chart.setOption({
+                    tooltip: {},
+                    grid: {
+                        top: 0,left:0,right:0,bottom:0
+                    },
+                    xAxis: {
+                        show: false,
+                        type: 'value',
+                        min: 'dataMin',
+                        max: 'dataMax'
+                    },
+                    yAxis: {
+                        show: false,
+                        type: 'value'
+                    },
+                    series: [{
+                        type: 'line',
+                        symbol: 'none',
+                        data: data,
+                        lineStyle: {
+                            normal: {
+                                width: 0.5,
+                                color: '#15f0ff'
+                            }
+                        }
+                    }]
+                });
+            }
+
+
+            window.addEventListener('resize', function () {
+                chart.resize();
+            });
+
+        </script>
+    </body>
+</html>

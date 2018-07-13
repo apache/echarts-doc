@@ -5,7 +5,7 @@
 
 ** 桑基图 **
 
-是一种特殊的流图, 它主要用来表示原材料、能量等如何从初始形式经过中间过程的加工、转化到达最终形式。
+是一种特殊的流图（可以看作是有向无环图）。 它主要用来表示原材料、能量等如何从最初形式经过中间过程的加工或转化达到最终状态。
 
 **示例：**
 
@@ -25,6 +25,8 @@
 
 
 ## type(string) = 'sankey'
+
+{{use: partial-component-id(prefix="#")}}
 
 {{ use: partial-rect-layout-width-height(
     componentName='sankey',
@@ -55,20 +57,22 @@
 
 经测试，布局迭代次数不要低于默认值。
 
+## draggable(boolean) = true
+
+控制节点拖拽的交互，默认开启。开启后，用户可以将图中任意节点拖拽到任意位置。若想关闭此交互，只需将值设为 `false` 就行了。
+
+## focusNodeAdjacency(boolean|string) = false
+
+鼠标 hover 到节点（边）上，相邻接的节点和边高亮的交互，默认关闭，可手动开启。当 hover 到节点上，提供了三种高亮的方式：1）对应节点的出边和出边邻接的另一节点高亮，取值为 `'outEdges'`. 2）对应节点的入边和入边邻接的另一节点高亮，取值为 `'inEdges'`. 3）与节点邻接的所有边以及边对应的节点全部高亮，取值为 `'allEdges'`. 当 hover 到边上，统一为边以及边邻接的两个节点高亮。
+
 ## label(Object)
 
 `label` 描述了每个矩形节点中文本标签的样式。
 
-### normal(Object)
 {{use:partial-label(
-    prefix="###",
+    prefix="##",
     defaultShowLabel=true,
     defaultPosition="'right'",
-    formatter1d=true
-)}}
-### emphasis(Object)
-{{use:partial-label(
-    prefix="###",
     formatter1d=true
 )}}
 
@@ -76,23 +80,29 @@
 
 桑基图节点矩形的样式。
 
-### normal(Object)
 {{use: partial-item-style(
-    prefix="###",
+    prefix="##",
     useColorPalatte=true,
     defaultBorderWidth=1,
     defaultBorderColor="'#aaa'"
 )}}
-### emphasis(Object)
-{{use: partial-item-style(prefix="###")}}
-
 
 ## lineStyle(Object)
-桑基图边的样式，其中 [lineStyle.normal.color](~series-sankey.lineStyle.normal.color) 支持设置为`'source'`或者`'target'`特殊值，此时边会自动取源节点或目标节点的颜色作为自己的颜色。
+桑基图边的样式，其中 [lineStyle.color](~series-sankey.lineStyle.color) 支持设置为`'source'`或者`'target'`特殊值，此时边会自动取源节点或目标节点的颜色作为自己的颜色。
 
-### normal(Object)
-{{use: partial-sankey-line-style(prefix="###")}}
-### emphasis(Object)
+{{use: partial-sankey-line-style(prefix="##")}}
+
+
+## emphasis(Object)
+桑基图的高亮样式设置。
+### label(Object)
+{{use:partial-label(
+    prefix="###",
+    formatter1d=true
+)}}
+### itemStyle(Object)
+{{use: partial-item-style(prefix="###")}}
+### lineStyle(Object)
 {{use: partial-sankey-line-style(
     prefix="###"
 )}}
@@ -101,24 +111,31 @@
 ## data(Array)
 
 {{ use: partial-1d-data-desc() }}
+
 ### name(string)
+
 数据项名称。
+
 ### value(number|Array)
+
 数据项值。
+
 ### itemStyle(Object)
+
 该节点的样式。
-#### normal(Object)
-{{use:partial-item-style(prefix="####", useColorPalatte=true)}}
-#### emphasis(Object)
-{{use:partial-item-style(prefix="####")}}
+{{use:partial-item-style(prefix="###", useColorPalatte=true)}}
 
 ### label(Object)
+
 该节点标签的样式。
-#### normal(Object)
 {{ use:partial-label(
-    prefix="####"
+    prefix="###"
 ) }}
-#### emphasis(Object)
+
+### emphasis(Object)
+#### itemStyle(Object)
+{{use:partial-item-style(prefix="####")}}
+#### label(Object)
 {{ use:partial-label(
     prefix="####"
 ) }}
@@ -132,7 +149,8 @@
 同 [data](~series-sankey.data)
 
 ## links(Array)
-节点间的关系数据。示例：
+节点间的边。**注意: 桑基图理论上只支持有向无环图（DAG, Directed Acyclic Graph），所以请确保输入的边是无环的.** 示例：
+
 ```js
 links: [{
     source: 'n1',
@@ -142,24 +160,36 @@ links: [{
     target: 'n3'
 }]
 ```
+
 ### source(string)
+
 边的[源节点名称](~series-graph.data.name)
+
 ### target(string)
+
 边的[目标节点名称](~series-graph.data.name)
+
 ### value(number)
+
 边的数值，决定边的宽度。
+
 ### lineStyle(Object)
+
 关系边的线条样式。
-#### normal(Object)
 {{use:partial-sankey-line-style(
-    prefix="####"
+    prefix="###"
 )}}
-#### emphasis(Object)
+
+### emphasis(Object)
+
+#### lineStyle(Object)
+
 {{ use:partial-sankey-line-style(
     prefix="####"
 ) }}
 
 ## edges(Array)
+
 同 [links](~series-sankey.links)
 
 {{ use:partial-silent(
@@ -182,12 +212,15 @@ links: [{
 {{target: partial-sankey-line-style}}
 
 #${prefix} color(Color) = "'#314656'"
+
 桑基图边的颜色。
 
 #${prefix} opacity(number) = 0.2
+
 桑基图边的透明度。
 
 #${prefix} curveness(number) = 0.5
+
 桑基图边的曲度。
 
 {{use: partial-style-shadow(prefix=${prefix})}}

@@ -55,3 +55,12 @@
 {{ use: partial-blend-mode() }}
 
 {{ use: partial-zlevel(defaultZLevel=10) }}
+
+
+## progressiveThreshold(number) = 1e5
+
+启用渐进渲染的阈值，渐进渲染可以让你在加载画面的过程中不会有阻塞。
+
+## progressive(number) = 1e5
+
+渐进渲染每次渲染的数据量。

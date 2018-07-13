@@ -10,6 +10,8 @@
 
 ## type(string) = 'gauge'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 {{ use: partial-circular-layout }}
@@ -100,10 +102,11 @@ formatter: function (value) {
     return value + 'km/h';
 }
 ```
-### textStyle(Object)
-{{ use: partial-text-style(prefix="###") }}
-### color(Color) = 'auto'
-The scale color
+{{ use: partial-text-style(
+    prefix="##",
+    noAlign=true,
+    noVerticalAlign=true
+) }}
 
 
 ## pointer(Object)
@@ -117,12 +120,14 @@ The width of pointer.
 
 ## itemStyle(Object)
 The style of gauge chart.
-### normal(Object)
-{{ use: partial-item-style(prefix="###") }}
+{{ use: partial-item-style(prefix="##") }}
 <!-- overwrite color -->
-#### color(Color) = 'auto'
+### color(Color) = 'auto'
 The color of pointer. Defaults to use [the color of section](~series-gauge.axisLine.lineStyle.color) where the numerical value belongs to.
-### emphasis(Object)
+
+## emphasis(Object)
+
+### itemStyle
 {{ use: partial-item-style(prefix="###") }}
 
 ## title(Object)
@@ -131,11 +136,12 @@ The title of gauge chart.
 Whether to show the title.
 ### offsetCenter(Array) = [0, '-40%']
 The offset position relative to the center of gauge chart. The first item of array is the horizontal offset; the second item of array is the vertical offset. It could be absolute value and also the percentage relative to the radius of gauge chart.
-### textStyle(Object)
 {{ use: partial-text-style(
-    prefix="###",
+    prefix="##",
     defaultColor = "'#333'",
-    defaultFontSize = 15
+    defaultFontSize = 15,
+    noAlign=true,
+    noVerticalAlign=true
 ) }}
 
 ## detail(Object)
@@ -154,11 +160,12 @@ The border width of detail.
 The border color of detail.
 ### offsetCenter(Array) = [0, '40%']
 The offset position relative to the center of gauge chart. The first item of array is the horizontal offset; the second item of array is the vertical offset. It could be absolute value and also the percentage relative to the radius of gauge chart.
-### textStyle(Object)
 {{ use: partial-text-style(
-    prefix="###",
+    prefix="##",
     defaultColor = "'auto'",
-    defaultFontSize = 15
+    defaultFontSize = 15,
+    noAlign=true,
+    noVerticalAlign=true
 ) }}
 <!-- overwrite color -->
 #### color(Color) = 'auto'

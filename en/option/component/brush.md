@@ -107,6 +107,7 @@ Refer to [brush.inBrush](~brush.inBrush) and [brush.outOfBrush](~brush.outOfBrus
 Here is the configuration in details.
 
 
+{{use: partial-component-id(prefix="#")}}
 
 ## toolbox(Array) = ['rect', 'polygon', 'keep', 'clear']
 

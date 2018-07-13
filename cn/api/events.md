@@ -106,6 +106,21 @@ myChart.on('legendselectchanged', function (params) {
     selected: Object
 }
 ```
+
+
+## legendscroll(Event)
+**ACTION:** [legendscroll](~action.legend.legendScroll)
+图例滚动事件。
+
+```js
+{
+    type: 'legendscroll',
+    scrollDataIndex: number
+    legendId: string
+}
+```
+
+
 ## datazoom(Event)
 **ACTION:** [dataZoom](~action.dataZoom.dataZoom)
 
@@ -225,13 +240,13 @@ chart.on('axisareaselected', function () {
 });
 ```
 
-## focusNodeAdjacency(Event)
+## focusnodeadjacency(Event)
 [graph](option.html#graph)的邻接节点高亮事件。
 
 参见[focusNodeAdjacency](~action.graph.focusNodeAdjacency)。
 
 
-## unfocusNodeAdjacency(Event)
+## unfocusnodeadjacency(Event)
 [graph](option.html#graph)的邻接节点取消高亮事件。
 
 参见[unfocusNodeAdjacency](~action.graph.unfocusNodeAdjacency)。
@@ -317,6 +332,34 @@ chart.on('brushSelected', function (params) {
 ```
 
 如果想**避免此事件频繁触发**，可以使用 [brush.throttleType](option.html#brush.throttleType)。
+
+
+## rendered(Event)
+
+渲染结束事件。注意 `rendered` 事件并不代表渲染动画（参见 [animation](~animation) 相关配置）或者渐进渲染（参见 [progressive](~series-scatter.progressive) 相关配置）停止，只代表本帧的渲染结束。
+
+例如：
+```js
+var snapshotImage = new Image();
+document.body.append(snapshotImage);
+chart.on('rendered', function () {
+    snapshotImage.src = chart.getDataURL();
+});
+```
+
+
+## finished(Event)
+
+渲染完成事件。当渲染动画（参见 [animation](~animation) 相关配置）或者渐进渲染（参见 [progressive](~series-scatter.progressive) 相关配置）停止时触发。
+
+```js
+var snapshotImage = new Image();
+document.body.append(snapshotImage);
+chart.on('finished', function () {
+    snapshotImage.src = chart.getDataURL();
+});
+```
+
 
 
 {{ target: event-select }}

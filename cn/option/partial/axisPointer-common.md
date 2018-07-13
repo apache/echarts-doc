@@ -36,7 +36,7 @@
 
 + 设置轴上的 `axisPointer.show`（例如 [xAxis.axisPointer.show](~xAxis.axisPointer.show)）为 `true`，则显示此轴的 axisPointer。
 
-+ 设置 [tooltip.trigger](~tooltip.trigger) 设置为 `'axis'` 或者 [tooltip.axisPointer.type](~tooltip.axisPointer.type) 设置为 `'cross'`，则此时坐标系会自动选择显示显示哪个轴的 axisPointer，也可以使用 [tooltip.axisPointer.axis](~tooltip.axisPointer.axis) 改变这种选择。注意，轴上如果设置了 axisPointer，会覆盖此设置。
++ 设置 [tooltip.trigger](~tooltip.trigger) 设置为 `'axis'` 或者 [tooltip.axisPointer.type](~tooltip.axisPointer.type) 设置为 `'cross'`，则此时坐标系会自动选择显示哪个轴的 axisPointer，也可以使用 [tooltip.axisPointer.axis](~tooltip.axisPointer.axis) 改变这种选择。注意，轴上如果设置了 axisPointer，会覆盖此设置。
 
 ---
 
@@ -99,7 +99,7 @@ axisPointer 的 label 默认不显示（也就是默认只显示指示线），�
     galleryEditorPath=${galleryEditorPath}
 )}}
 
-#${prefix} tiggerTooltip(boolean) = true
+#${prefix} triggerTooltip(boolean) = true
 
 是否触发 tooltip。如果不想触发 tooltip 可以关掉。
 
@@ -123,9 +123,7 @@ axisPointer 的 label 默认不显示（也就是默认只显示指示线），�
 
 手柄的图标。
 
-{{ use: partial-icon-path }}
-
-也可以通过 `'image://url'` 设置为图片，其中 url 为图片的链接。
+{{ use: partial-icon-image-path }}
 
 参见 [使用图片的例子](${galleryEditorPath}doc-example/axisPointer-handle-image&edit=1&reset=1)
 
@@ -228,10 +226,9 @@ formatter: function (params) {
 
 label 距离轴的距离。
 
-##${prefix} textStyle(boolean)
 
-{{ use: partial-text-style(
-    prefix='##' + ${prefix},
+{{ use: partial-simple-text-style(
+    prefix='#' + ${prefix},
     defaultColor="'#fff'"
 )}}
 

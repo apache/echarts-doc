@@ -17,6 +17,8 @@
 
 ## type(string) = 'map'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 {{ use: geo-common(
@@ -49,6 +51,10 @@
 ## roam(boolean|string) = false
 {{ use: partial-roam }}
 
+{{ use: partial-seriesLayoutBy }}
+
+{{ use: partial-datasetIndex }}
+
 ## data(Array)
 {{ use: partial-1d-data-desc(name="地图") }}
 
@@ -63,29 +69,33 @@
 
 ### itemStyle(Object)
 该数据所在区域的多边形样式设置
-#### normal(Object)
-##### areaColor(Color)
+#### areaColor(Color)
 地图区域的颜色。
-{{ use: partial-item-style(prefix='####') }}
-#### emphasis(Object)
-##### areaColor(Color)
-地图区域的颜色。
-{{ use: partial-item-style(prefix='####') }}
+{{ use: partial-item-style(prefix='###') }}
 
 ### label(Object)
-该数据所在区域的标签样式设置
-#### normal(Object)
-##### show(boolean) = false
-是否在普通状态下显示标签。
-##### textStyle(Object)
-普通状态下的标签文本样式。
-{{ use: partial-text-style(prefix='#####') }}
-#### emphasis(Object)
-##### show(boolean) = false
-是否在高亮状态下显示标签。
-##### textStyle(Object)
-高亮状态下的标签文本样式。
-{{ use: partial-text-style(prefix='#####') }}
+{{use: partial-label-desc}}
+{{use: partial-label(
+    prefix="###",
+    defaultPosition="'bottom'",
+    formatter=true,
+    noAlign=true,
+    noVerticalAlign=true
+)}}
+
+### emphasis(Object)
+该数据所在区域的多边形高亮样式设置
+#### itemStyle(Object)
+##### areaColor(Color)
+地图区域的颜色。
+{{ use: partial-item-style(prefix='####') }}
+#### label(Object)
+{{use: partial-label(
+    prefix="####",
+    formatter=true,
+    noAlign=true,
+    noVerticalAlign=true
+)}}
 
 {{use: partial-tooltip-in-series-data(
     galleryViewPath=${galleryViewPath}

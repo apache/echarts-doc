@@ -5,7 +5,7 @@
 
 tooltip can be configured on different places:
 
-+ Configured on glboal: [tooltip](~tooltip)
++ Configured on global: [tooltip](~tooltip)
 
 + Configured in a coordinate system: [grid.tooltip](~grid.tooltip), [polar.tooltip](~polar.tooltip), [single.tooltip](~single.tooltip)
 
@@ -341,7 +341,7 @@ The border width of tooltip's floating layer.
 
 The text syle of tooltip's floating layer.
 
-{{ use: partial-text-style(prefix="#" + ${prefix}, defaultColor="'#fff'", defaultFontSize=14) }}
+{{ use: partial-simple-text-style(prefix="#" + ${prefix}, defaultColor="'#fff'", defaultFontSize=14) }}
 
 #${prefix} extraCssText(string)
 

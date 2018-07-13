@@ -208,8 +208,7 @@ myChart.setOption(
 
 ## label(Object)
 
-轴的文本标签。有 `normal` 和 `emphasis` 两个状态，`normal` 是文本正常的样式，`emphasis` 是文本高亮的样式，比如鼠标悬浮或者图例联动高亮的时候会使用 `emphasis` 作为文本的样式。
-
+轴的文本标签。`emphasis` 是文本高亮的样式，比如鼠标悬浮或者图例联动高亮的时候会使用 `emphasis` 作为文本的样式。
 
 ### position(string|number) = 'auto'
 
@@ -237,21 +236,9 @@ myChart.setOption(
     指定某个数值时，表示 `label` 和轴的距离。为 `0` 时则和坐标轴重合，可以为正负值，决定 `label` 在坐标轴的哪一边。
 
 
-### normal(Object)
-
 {{ use: partial-timeline-label(
-    prefix="###",
-    state="normal",
+    prefix="##",
     textStyleDefaultColor="'#304654'"
-) }}
-
-
-### emphasis(Object)
-
-{{ use: partial-timeline-label(
-    prefix="###",
-    state="emphasis",
-    textStyleDefaultColor="'#c23531'"
 ) }}
 
 
@@ -262,24 +249,14 @@ myChart.setOption(
 ) }}
 
 
-### normal(Object)
 
 {{ use:partial-item-style(
-    prefix="###",
+    prefix="##",
     name="timeline ",
     defaultColor="'#304654'",
     defaultBorderWidth=1
 ) }}
 
-
-### emphasis(Object)
-
-{{ use:partial-item-style(
-    prefix="###",
-    name="timeline ",
-    defaultColor="'#c23531'",
-    defaultBorderWidth=1
-) }}
 
 
 ## checkpointStyle(Object)
@@ -371,51 +348,44 @@ myChart.setOption(
 ### playIcon(string)
 
 『播放按钮』的『可播放状态』的图形。
-{{ use: partial-icon-path }}
+
+{{ use: partial-icon-image-path }}
 
 
 ### stopIcon(string)
 
 『播放按钮』的『可停止状态』的图形。
-{{ use: partial-icon-path }}
+
+{{ use: partial-icon-image-path }}
 
 
 ### prevIcon(string)
 
 『后退按钮』的图形
-{{ use: partial-icon-path }}
+
+{{ use: partial-icon-image-path }}
 
 
 ### nextIcon(string)
 
 『前进按钮』的图形
-{{ use: partial-icon-path }}
+
+{{ use: partial-icon-image-path }}
 
 
-### normal(Object)
-
-控制按钮的『正常状态』的样式。
-
-
-#### color(Color) = '#304654'
+### color(Color) = '#304654'
 
 按钮颜色。
 
 
-#### borderColor(Color) = '#304654'
+### borderColor(Color) = '#304654'
 
 按钮边框颜色。
 
 
-#### borderWidth(number) = 1
+### borderWidth(number) = 1
 
 按钮边框线宽。
-
-
-### emphasis(Object)
-
-控制按钮的『高亮状态』的样式（hover时）。
-
 
 #### color(Color) = '#c23531'
 
@@ -430,6 +400,30 @@ myChart.setOption(
 #### borderWidth(number) = 2
 
 按钮边框线宽。
+
+
+## emphasis(Object)
+
+### label(Object)
+{{ use: partial-timeline-label(
+    prefix="###",
+    state="emphasis",
+    textStyleDefaultColor="'#c23531'"
+) }}
+
+### itemStyle(Object)
+{{ use:partial-item-style(
+    prefix="###",
+    name="timeline ",
+    defaultColor="'#c23531'",
+    defaultBorderWidth=1
+) }}
+
+### checkpointStyle(Object)
+当前项『高亮状态』的样式（hover时）。
+
+### controlStyle(Object)
+控制按钮的『高亮状态』的样式（hover时）。
 
 
 ## data(Array)
@@ -494,11 +488,16 @@ myChart.setOption(
 
 {{use: axis-common-formatter-desc}}
 
-
-#${prefix} textStyle(Object)
-
+{{ if: ${state} }}
 {{ use: partial-text-style(
-    prefix="#" + ${prefix},
+    prefix=${prefix},
     name="timeline.lable." + ${state},
     defaultColor=${textStyleDefaultColor}
 ) }}
+{{ else }}
+{{ use: partial-text-style(
+    prefix=${prefix},
+    name="timeline.lable",
+    defaultColor=${textStyleDefaultColor}
+) }}
+{{ /if }}

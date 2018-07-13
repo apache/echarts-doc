@@ -14,6 +14,8 @@
 
 ---
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-axisPointer-common(
     prefix="#",
     galleryViewPath=${galleryViewPath},

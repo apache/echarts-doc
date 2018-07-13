@@ -94,33 +94,20 @@ Name mapping for customized areas. For example:
 ## selectedMode(boolean|string) = false
 Selected mode decides whether multiple selecting is supported. By default, `false` is used for disabling selection. Its value can also be `'single'` for selecting single area, or `'multiple'` for selecting multiple areas.
 
+
+
 #${prefix} label(Object)
-
-{{ use: partial-label-desc }}
-
-##${prefix} normal(Object)
-
-###${prefix} show(boolean) = false
-
-Whether to show label in normal state.
-
-###${prefix} textStyle(Object)
-
-Style of text in normal state.
-
-{{ use: partial-text-style(prefix=${prefix} + '###') }}
-
+{{use: partial-label-desc}}
+{{use: partial-label(
+    prefix="#" + ${prefix},
+    formatter=true
+)}}
 ##${prefix} emphasis(Object)
+{{use: partial-label(
+    prefix="##" + ${prefix},
+    formatter=true
+)}}
 
-###${prefix} show(boolean) = false
-
-Whether to show label in highlighted state.
-
-###${prefix} textStyle(Object)
-
-Style of text in highlighted state.
-
-{{ use: partial-text-style(prefix=${prefix} + '###') }}
 
 
 #${prefix} itemStyle(Object)
@@ -128,14 +115,8 @@ Style of text in highlighted state.
 {{ use: partial-item-style-desc(name='Map Area Border') }}
 
 
-##${prefix} normal(Object)
-
-Map area style in normal state.
-
-{{ if: ${inMap} }}
-###${prefix} areaColor(Color) = '#eee'
+##${prefix} areaColor(Color) = '#eee'
 Area filling color.
-{{ /if }}
 
 {{ use: partial-item-style(prefix=${prefix} + '##') }}
 
@@ -143,10 +124,8 @@ Area filling color.
 
 Map area style in highlighted state.
 
-{{ if: ${inMap} }}
 ###${prefix} areaColor(Color) = '#eee'
 Area filling color.
-{{ /if }}
 
 {{ use: partial-item-style(prefix=${prefix} + '##') }}
 

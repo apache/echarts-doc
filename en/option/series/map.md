@@ -15,6 +15,8 @@ Series of same [map type](~series-map.map) will show in one map. At this point, 
 
 ## type(string) = 'map'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 {{ use: geo-common(
@@ -43,18 +45,15 @@ Supported statistical methods:
 + `'max'`
 + `'min'`
 
-## selectedMode(boolean|string) = false
-
-Selected mode of map. It is enabled by default, and you may set it to be `false` to disabled it.
-
-Besides, it can be set to `'single'` or `'multiple'`, for single selection and multiple selection.
-
-
 ## showLegendSymbol(boolean)
 Show the symbol in related area (dot of series symbol). Available when [legend](~legend) component exists.
 
 ## roam(boolean|string) = false
 {{ use: partial-roam }}
+
+{{ use: partial-seriesLayoutBy }}
+
+{{ use: partial-datasetIndex }}
 
 ## data(Array)
 {{ use: partial-1d-data-desc(name="map") }}
@@ -65,9 +64,52 @@ The name of the map area where the data belongs to, such as `'China'` or `'Unite
 ### value(number)
 The numerical value of this area.
 
+### selected(boolean) = false
+Whether the are selected.
+
+
+### itemStyle(Object)
+Style of item polygon
+#### areaColor(Color)
+Color of the area.
+{{ use: partial-item-style(prefix='####') }}
+
+### label(Object)
+{{use: partial-label-desc}}
+{{use: partial-label(
+    prefix="###",
+    defaultPosition="'bottom'",
+    formatter=true,
+    noAlign=true,
+    noVerticalAlign=true
+)}}
+
+### emphasis(Object)
+#### itemStyle(Object)
+##### areaColor(Color)
+{{ use: partial-item-style(prefix='####') }}
+#### label(Object)
+{{use: partial-label(
+    prefix="####",
+    formatter=true,
+    noAlign=true,
+    noVerticalAlign=true
+)}}
+
 {{use: partial-tooltip-in-series-data(
     galleryViewPath=${galleryViewPath}
 )}}
+
+{{use: partial-marker(
+    prefix="#",
+    seriesType="map",
+    galleryEditorPath=${galleryEditorPath},
+    hasCoord=true
+)}}
+
+{{ use:partial-silent(
+    prefix="#"
+) }}
 
 
 {{use: partial-tooltip-in-series(

@@ -11,6 +11,8 @@
 
 ## type(string) = 'scatter'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 {{use: partial-coord-sys(
@@ -18,7 +20,8 @@
     coordSysDefault="'cartesian2d'",
     cartesian2d=true,
     polar=true,
-    geo=true
+    geo=true,
+    calendar=true
 )}}
 
 ## hoverAnimation(boolean)
@@ -34,42 +37,60 @@
     hasCallback=true
 ) }}
 
-## large(boolean) = true
-是否开启大规模散点图的优化，在数据图形特别多的时候（>=5k）可以开启。
+{{use: partial-large(
+    prefix="#"
+)}}
 
-开启后配合 [largeThreshold](~series-scatter.largeThreshold) 在数据量大于指定阈值的时候对绘制进行优化。
-
-缺点：优化后不能自定义设置单个数据项的样式。
-
-## largeThreshold(number) = 2000
-开启绘制优化的阈值。
+{{ use: partial-cursor }}
 
 ## label(Object)
 {{use:partial-label-desc}}
-### normal(Object)
 {{use:partial-label(
-    prefix="###",
+    prefix="##",
     defaultPosition="'inside'",
-    formatter=true
-)}}
-### emphasis(Object)
-{{use:partial-label(
-    prefix="###",
     formatter=true
 )}}
 
 
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
-### normal(Object)
 {{use:partial-item-style(
-    prefix="###",
+    prefix="##",
     useColorPalatte=true,
     hasCallback=true
 )}}
-### emphasis(Object)
+
+
+## emphasis(Object)
+高亮的图形和标签样式。
+### label(Object)
+{{use:partial-label(
+    prefix="###",
+    formatter=true
+)}}
+### itemStyle(Object)
 {{use:partial-item-style(prefix="###")}}
 
+
+
+
+{{ use:partial-progressive(
+    prefix='#'
+) }}
+
+
+
+{{use:partial-series-dimensions(
+    prefix="#"
+)}}
+
+{{use:partial-series-encode(
+    prefix="#"
+)}}
+
+{{ use: partial-seriesLayoutBy }}
+
+{{ use: partial-datasetIndex }}
 
 ## data(Array)
 
@@ -89,21 +110,22 @@
 ) }}
 
 ### label(Object)
-#### normal(Object)
 {{ use:partial-label(
-    prefix="####",
+    prefix="###",
     defaultPosition="inside"
 ) }}
-#### emphasis(Object)
-{{ use:partial-label(prefix="####") }}
-
 
 ### itemStyle(Object)
 单个数据点（气泡）的样式设置。
-#### normal(Object)
+{{use:partial-item-style(prefix="###")}}
+
+### emphasis(Object)
+单个数据的高亮图形和标签样式。
+#### label(Object)
+{{ use:partial-label(prefix="####") }}
+#### itemStyle(Object)
 {{use:partial-item-style(prefix="####")}}
-#### emphasis(Object)
-{{use:partial-item-style(prefix="####")}}
+
 
 {{use: partial-tooltip-in-series-data(
     galleryViewPath=${galleryViewPath}

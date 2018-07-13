@@ -5,6 +5,9 @@
 
 The x axis in cartesian(rectangular) coordinate. Usually a single grid component can place at most 2 x axis, one on the bottom and another on the top. [offset](~xAxis.offset) can be used to avoid overlap when you need to put more than two x axis.
 
+
+{{use: partial-component-id(prefix="#")}}
+
 ## show(boolean) = true
 
 If show x axis.

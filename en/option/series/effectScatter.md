@@ -12,6 +12,8 @@ The scatter (bubble) graph with ripple animation. The special animation effect c
 
 ## type(string) = 'effectScatter'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 {{ use: partial-legend-hover-link() }}
@@ -42,7 +44,8 @@ The brush type for ripples. options: `'stroke'` and `'fill'`.
     coordSysDefault="'cartesian2d'",
     cartesian2d=true,
     polar=true,
-    geo=true
+    geo=true,
+    calendar=true
 )}}
 
 {{ use:partial-symbol(
@@ -51,31 +54,53 @@ The brush type for ripples. options: `'stroke'` and `'fill'`.
     prefix="#"
 ) }}
 
+{{ use: partial-cursor }}
+
 ## label(Object)
 {{use:partial-label-desc}}
-### normal(Object)
 {{use:partial-label(
-    prefix="###",
+    prefix="##",
     defaultPosition="'inside'",
-    formatter=true
-)}}
-### emphasis(Object)
-{{use:partial-label(
-    prefix="###",
     formatter=true
 )}}
 
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
-### normal(Object)
+{{use:partial-item-style(
+    prefix="##",
+    useColorPalatte=true,
+    hasCallback=true
+)}}
+
+
+## emphasis(Object)
+
+### label(Object)
+
+{{use:partial-label(
+    prefix="###",
+    formatter=true
+)}}
+
+### itemStyle(Object)
+
 {{use:partial-item-style(
     prefix="###",
     useColorPalatte=true,
     hasCallback=true
 )}}
-### emphasis(Object)
-{{use:partial-item-style(prefix="###")}}
 
+{{ use: partial-seriesLayoutBy }}
+
+{{ use: partial-datasetIndex }}
+
+{{use:partial-series-dimensions(
+    prefix="#"
+)}}
+
+{{use:partial-series-encode(
+    prefix="#"
+)}}
 
 ## data(Array)
 
@@ -91,20 +116,24 @@ The brush type for ripples. options: `'stroke'` and `'fill'`.
 ) }}
 
 ### label(Object)
-#### normal(Object)
 {{ use:partial-label(
-    prefix="####",
+    prefix="###",
     defaultPosition="inside"
 ) }}
-#### emphasis(Object)
-{{ use:partial-label(prefix="####") }}
-
 
 ### itemStyle(Object)
-#### normal(Object)
+{{use:partial-item-style(prefix="###")}}
+
+### emphasis(Object)
+
+#### label(Object)
+
+{{ use:partial-label(prefix="####") }}
+
+#### itemStyle(Object)
+
 {{use:partial-item-style(prefix="####")}}
-#### emphasis(Object)
-{{use:partial-item-style(prefix="####")}}
+
 
 {{use: partial-tooltip-in-series-data(
     galleryViewPath=${galleryViewPath}

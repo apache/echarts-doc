@@ -17,6 +17,8 @@ Here are the examples using it in rectangular coordinate and geographic coordina
 
 ## type(string) = 'heatmap'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 {{use: partial-coord-sys(
@@ -24,7 +26,8 @@ Here are the examples using it in rectangular coordinate and geographic coordina
     coordSysDefault="'cartesian2d'",
     cartesian2d=true,
     polar=false,
-    geo=true
+    geo=true,
+    calendar=true
 )}}
 
 ## blurSize(number) = 20
@@ -37,6 +40,29 @@ Minimum opacity. It is valid with [coordinateSystem](~series-heatmap.coordinateS
 ## maxOpacity(number) = 1
 
 Maximum opacity. It is valid with [coordinateSystem](~series-heatmap.coordinateSystem) of 'geo' value.
+
+
+## label(Object)
+Work for [coordinateSystem](~series-heatmap.coordinateSystem): 'cartesian2d'.
+{{ use:partial-label(
+    prefix="##",
+    defaultPosition="inside"
+) }}
+
+## itemStyle(Object)
+Work for [coordinateSystem](~series-heatmap.coordinateSystem): 'cartesian2d'.
+{{use:partial-item-style(prefix="##")}}
+
+
+## emphasis(Object)
+
+### itemStyle(Object)
+{{use:partial-item-style(prefix="###")}}
+### label(Object)
+{{use:partial-label(prefix="###",
+    defaultPosition="inside"
+)}}
+
 
 ## data(Array)
 
@@ -53,20 +79,24 @@ Value of data item.
 ### label(Object)
 It is valid with [coordinateSystem](~series-heatmap.coordinateSystem) of 'cartesian2d' value.
 
-#### normal(Object)
 {{ use:partial-label(
-    prefix="####",
+    prefix="###",
     defaultPosition="inside"
 ) }}
-#### emphasis(Object)
-{{ use:partial-label(prefix="####") }}
 
 ### itemStyle(Object)
 Style of a single data point. It is valid with [coordinateSystem](~series-heatmap.coordinateSystem) of 'cartesian2d' value.
-#### normal(Object)
+{{use:partial-item-style(prefix="###")}}
+
+### emphasis(Object)
+
+#### itemStyle(Object)
 {{use:partial-item-style(prefix="####")}}
-#### emphasis(Object)
-{{use:partial-item-style(prefix="####")}}
+
+#### label(Object)
+{{use:partial-label(prefix="####",
+    defaultPosition="inside"
+)}}
 
 {{use: partial-marker(
     prefix="#",

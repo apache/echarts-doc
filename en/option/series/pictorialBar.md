@@ -52,6 +52,8 @@ See the example below:
 
 ## type(string) = 'pictorialBar'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 {{ use: partial-legend-hover-link() }}
@@ -64,29 +66,32 @@ See the example below:
     geo=false
 ) }}
 
+{{ use: partial-cursor }}
+
 ## label(Object)
 {{use:partial-label-desc}}
-### normal(Object)
 {{use:partial-label(
-    prefix="###",
+    prefix="##",
     defaultPosition="'inside'",
-    formatter=true
-)}}
-### emphasis(Object)
-{{use:partial-label(
-    prefix="###",
     formatter=true
 )}}
 
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
-### normal(Object)
 {{use:partial-item-style(
-    prefix="###",
+    prefix="##",
     useColorPalatte=true,
     hasCallback=false
 )}}
-### emphasis(Object)
+
+## emphasis(Object)
+
+### label(Object)
+{{use:partial-label(
+    prefix="###",
+    formatter=true
+)}}
+### itemStyle(Object)
 {{use:partial-item-style(
     prefix="###"
 )}}
@@ -102,6 +107,16 @@ See the example below:
     galleryViewPath=${galleryViewPath}
 )}}
 
+
+{{use:partial-series-dimensions(
+    prefix="#"
+)}}
+
+{{use:partial-series-encode(
+    prefix="#"
+)}}
+
+
 ## data(Array)
 
 {{ use: partial-2d-data-desc(
@@ -116,26 +131,27 @@ The value of a single data item.
 
 {{use: pictorialBar-symbol-attrs(
     prefix="##",
+    useZ2=true,
     galleryViewPath=${galleryViewPath}
 )}}
 
 ### label(Object)
 The style setting of the text label in a single bar.
 
-#### normal(Object)
 {{ use:partial-label(
-    prefix="####",
+    prefix="###",
     defaultPosition="inside"
 ) }}
-#### emphasis(Object)
-{{ use:partial-label(prefix="####") }}
 
 ### itemStyle(Object)
-#### normal(Object)
 {{use:partial-item-style(
-    prefix="####"
+    prefix="###"
 )}}
-#### emphasis(Object)
+
+### emphasis(Object)
+#### label(Object)
+{{ use:partial-label(prefix="####") }}
+#### itemStyle(Object)
 {{use:partial-item-style(
     prefix="####"
 )}}
@@ -155,6 +171,9 @@ The style setting of the text label in a single bar.
 {{use:partial-z-zlevel(
     prefix="#",
     componentName="pictorial bar chart"
+) }}
+{{ use:partial-silent(
+    prefix="#"
 ) }}
 
 {{use:partial-animation(
@@ -366,6 +385,14 @@ For example:
 For example:
 ~[800x600](${galleryViewPath}doc-example/pictorialBar-repeatLayout&reset=1&edit=1)
 
+<br>
+`symbolBoundingData` can also be an array, such as `[-40, 60]`, which specifies both negative and positive symbolBoundingData.
+
+Check this example:
+~[800x400](${galleryViewPath}doc-example/pictorialBar-symbolBoundingDataArray&reset=1&edit=1)
+
+
+
 
 {{ use: pictorialBar-symbol-attrs-cascade(attrName='symbolBoundingData') }}
 
@@ -381,11 +408,9 @@ textureImg.src = 'data:image/jpeg;base64,...'; // dataURI
 // textureImg.src = 'http://xxx.xxx.xxx/xx.png'; // URL
 ...
 itemStyle: {
-    normal: {
-        color: {
-            image: textureImg,
-            repeat: 'repeat'
-        }
+    color: {
+        image: textureImg,
+        repeat: 'repeat'
     }
 }
 ```

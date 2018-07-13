@@ -19,16 +19,18 @@
 
 默认配置项，采用的是『红涨蓝跌』。如果想更改这个颜色配置，在这些配置项中更改即可：
 
-+ [series-candlestick.itemStyle.normal.color](~series-candlestick.itemStyle.normal.color)：阳线填充色（即『涨』）
-+ [series-candlestick.itemStyle.normal.color0](~series-candlestick.itemStyle.normal.color0)：阴线填充色（即『跌』）
-+ [series-candlestick.itemStyle.normal.borderColor](~series-candlestick.itemStyle.normal.borderColor)：阳线边框色（即『涨』）
-+ [series-candlestick.itemStyle.normal.borderColor0](series-candlestick.itemStyle.normal.borderColor0)：阴线边框色（即『跌』）
++ [series-candlestick.itemStyle.color](~series-candlestick.itemStyle.color)：阳线填充色（即『涨』）
++ [series-candlestick.itemStyle.color0](~series-candlestick.itemStyle.color0)：阴线填充色（即『跌』）
++ [series-candlestick.itemStyle.borderColor](~series-candlestick.itemStyle.borderColor)：阳线边框色（即『涨』）
++ [series-candlestick.itemStyle.borderColor0](series-candlestick.itemStyle.borderColor0)：阴线边框色（即『跌』）
 
 
 <br>
 <br>
 
 ## type(string) = 'candlestick'
+
+{{use: partial-component-id(prefix="#")}}
 
 {{use: partial-coord-sys(
     seriesType="cartesian2d",
@@ -69,8 +71,57 @@
 
 指定柱最小宽度。可以使用绝对数值（如 `10`）或百分比（如 `'20%'`，表示 band width 的百分之多少）。默认自适应。
 
+## itemStyle(Object)
 
-{{use:partial-candlestick-item-style(prefix="#")}}
+K 线图的图形样式。
+
+{{use: partial-candlestick-item-style-detail(
+    prefix="##",
+    defaultColor="#c23531",
+    defaultColor0="#314656",
+    defaultBorderColor="#c23531",
+    defaultBorderColor0="#314656",
+    defaultBorderWidth=1
+)}}
+
+
+## emphasis(Object)
+
+K 线图的高亮图形样式。
+
+### itemStyle(Object)
+
+{{use: partial-candlestick-item-style-detail(
+    prefix="###",
+    defaultColor="#c23531",
+    defaultColor0="#314656",
+    defaultBorderColor="#c23531",
+    defaultBorderColor0="#314656",
+    defaultBorderWidth=2
+)}}
+
+
+{{use: partial-large(
+    prefix="#",
+    defaultLarge=true,
+    defaultLargeThreshold=600
+)}}
+
+{{ use:partial-progressive(
+    prefix='#',
+    supportProgressiveChunkMode=true,
+    defaultProgressive=5000,
+    defaultProgressiveThreshold=10000,
+    defaultProgressiveChunkMode='mod'
+) }}
+
+{{use:partial-series-dimensions(
+    prefix="#"
+)}}
+
+{{use:partial-series-encode(
+    prefix="#"
+)}}
 
 
 ## data(Array)
@@ -108,8 +159,34 @@
 [open, close, lowest, highest] （即：[开盘值, 收盘值, 最低值, 最高值]）
 ```
 
+### itemStyle(Object)
 
-{{use:partial-candlestick-item-style(prefix="##")}}
+单个 K 线图数据的图形样式。
+
+{{use: partial-candlestick-item-style-detail(
+    prefix="###",
+    defaultColor="#c23531",
+    defaultColor0="#314656",
+    defaultBorderColor="#c23531",
+    defaultBorderColor0="#314656",
+    defaultBorderWidth=1
+)}}
+
+### emphasis(Object)
+
+单个 K 线图数据的高亮图形样式。
+
+#### itemStyle(Object)
+
+{{use: partial-candlestick-item-style-detail(
+    prefix="####",
+    defaultColor="#c23531",
+    defaultColor0="#314656",
+    defaultBorderColor="#c23531",
+    defaultBorderColor0="#314656",
+    defaultBorderWidth=2
+)}}
+
 
 {{use: partial-tooltip-in-series-data(
     galleryViewPath=${galleryViewPath}
@@ -187,42 +264,3 @@ candlestick 描边线宽。为 0 时无描边。
     defaultShadowOffsetX=${defaultShadowOffsetX},
     defaultShadowOffsetY=${defaultShadowOffsetY}
 ) }}
-
-
-
-
-
-
-
-
-
-{{target:partial-candlestick-item-style}}
-
-
-#${prefix} itemStyle(Object)
-
-{{use:partial-item-style-desc(name="candlestick")}}
-
-
-##${prefix} normal(Object)
-
-{{use: partial-candlestick-item-style-detail(
-    prefix="###",
-    defaultColor="#c23531",
-    defaultColor0="#314656",
-    defaultBorderColor="#c23531",
-    defaultBorderColor0="#314656",
-    defaultBorderWidth=1
-)}}
-
-##${prefix} emphasis(Object)
-
-{{use: partial-candlestick-item-style-detail(
-    prefix="###",
-    defaultColor="#c23531",
-    defaultColor0="#314656",
-    defaultBorderColor="#c23531",
-    defaultBorderColor0="#314656",
-    defaultBorderWidth=2
-)}}
-

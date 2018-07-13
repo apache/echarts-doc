@@ -11,7 +11,7 @@ Symbol of ${name}.
 ${name} symbol size. It can be set to single numbers like `10`, or use an array to represent width and height. For example, `[20, 10]` means symbol width is `20`, and height is`10`.
 
 {{ if: ${hasCallback} }}
-If size of symbols needs to be different, you can set with callback function in the following format: 
+If size of symbols needs to be different, you can set with callback function in the following format:
 ```js
 (value: Array|number, params: Object) => number|Array
 ```
@@ -21,6 +21,10 @@ The first parameter `value` is the value in [data](~series-${seriesType}.data), 
 #${prefix} symbolRotate(number)
 
 Rotate degree of ${name} symbol. Note that when `symbol` is set to be `'arrow'` in `markLine`, `symbolRotate` value will be ignored, and compulsively use tangent angle.
+
+#${prefix} symbolKeepAspect(boolean) = false
+
+Whether to keep aspect for symbols in the form of `path://`.
 
 #${prefix} symbolOffset(Array) = [0, 0]
 

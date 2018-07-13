@@ -10,6 +10,8 @@
 
 ## type(string) = 'gauge'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 {{ use: partial-circular-layout }}
@@ -102,10 +104,11 @@ formatter: function (value) {
     return value + 'km/h';
 }
 ```
-### textStyle(Object)
-{{ use: partial-text-style(prefix="###") }}
-### color(Color) = 'auto'
-刻度颜色
+{{ use: partial-text-style(
+    prefix="##",
+    noAlign=true,
+    noVerticalAlign=true
+) }}
 
 
 ## pointer(Object)
@@ -119,12 +122,16 @@ formatter: function (value) {
 
 ## itemStyle(Object)
 仪表盘指针样式。
-### normal(Object)
-{{ use: partial-item-style(prefix="###") }}
+{{ use: partial-item-style(prefix="##") }}
 <!-- overwrite color -->
-#### color(Color) = 'auto'
+### color(Color) = 'auto'
 指针颜色，默认取数值所在的[区间的颜色](~series-gauge.axisLine.lineStyle.color)
-### emphasis(Object)
+
+
+## emphasis(Object)
+高亮的仪表盘指针样式
+
+### itemStyle
 {{ use: partial-item-style(prefix="###") }}
 
 ## title(Object)
@@ -133,11 +140,12 @@ formatter: function (value) {
 是否显示标题。
 ### offsetCenter(Array) = [0, '-40%']
 相对于仪表盘中心的偏移位置，数组第一项是水平方向的偏移，第二项是垂直方向的偏移。可以是绝对的数值，也可以是相对于仪表盘半径的百分比。
-### textStyle(Object)
 {{ use: partial-text-style(
-    prefix="###",
+    prefix="##",
     defaultColor = "'#333'",
-    defaultFontSize = 15
+    defaultFontSize = 15,
+    noAlign=true,
+    noVerticalAlign=true
 ) }}
 
 ## detail(Object)
@@ -165,11 +173,12 @@ formatter: function (value) {
 }
 ```
 
-### textStyle(Object)
 {{ use: partial-text-style(
-    prefix="###",
+    prefix="##",
     defaultColor = "'auto'",
-    defaultFontSize = 15
+    defaultFontSize = 15,
+    noAlign=true,
+    noVerticalAlign=true
 ) }}
 <!-- overwrite color -->
 #### color(Color) = 'auto'

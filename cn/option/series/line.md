@@ -14,6 +14,8 @@
 
 ## type(string) = 'line'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 {{ use: partial-coord-sys(
@@ -35,8 +37,12 @@
 ## showSymbol(boolean) = true
 是否显示 symbol, 如果 `false` 则只有在 tooltip hover 的时候显示。
 
-## showAllSymbol(boolean) = false
-标志图形默认只有主轴显示（随主轴标签间隔隐藏策略），如需全部显示可把 showAllSymbol 设为 `true`。
+## showAllSymbol(boolean) = 'auto'
+只在主轴为类目轴（`axis.type` 为 `'category'`）时有效。
+可选值：
++ `'auto'`：默认，如果有足够空间则显示标志图形，否则随主轴标签间隔隐藏策略。
++ `true`：显示所有图形。
++ `false`：随主轴标签间隔隐藏策略。
 
 ## hoverAnimation(boolean) = true
 是否开启 hover 在拐点标志上的提示动画效果。
@@ -49,6 +55,8 @@
 下面示例可以通过右上角 [toolbox](~toolbox) 中的堆叠切换看效果：
 
 ~[600x400](${galleryViewPath}doc-example/line-stack-tiled&edit=1&reset=1)
+
+{{ use: partial-cursor }}
 
 ## connectNulls(boolean) = false
 是否连接空数据。
@@ -66,62 +74,73 @@
 
 ## label(Object)
 {{use: partial-label-desc}}
-### normal(Object)
 {{use: partial-label(
-    prefix="###",
+    prefix="##",
     defaultPosition="'top'",
-    formatter=true
-)}}
-### emphasis(Object)
-{{use: partial-label(
-    prefix="###",
     formatter=true
 )}}
 
 ## itemStyle(Object)
 折线拐点标志的样式。
-### normal(Object)
 {{use: partial-item-style(
-    prefix="###",
+    prefix="##",
     useColorPalatte=true,
     hasCallback=true
 )}}
-### emphasis(Object)
-{{use: partial-item-style(prefix="###")}}
 
 ## lineStyle(Object)
 线条样式。
 
-**注：** 修改 `lineStyle` 中的颜色不会影响图例颜色，如果需要图例颜色和折线图颜色一致，需修改 [itemStyle.normal.color](~series-line.itemStyle.normal.color)，线条颜色默认也会取改颜色。
+**注：** 修改 `lineStyle` 中的颜色不会影响图例颜色，如果需要图例颜色和折线图颜色一致，需修改 [itemStyle.color](~series-line.itemStyle.color)，线条颜色默认也会取改颜色。
 
-### normal(Object)
 {{use:partial-line-style(
-    prefix="###",
+    prefix="##",
     defaultWidth=2
 )}}
 
 ## areaStyle(Object)
 区域填充样式。
-### normal(Object)
-{{use: partial-area-style(prefix="###")}}
+{{use: partial-area-style(prefix="##", hasOrigin=true)}}
 
-## smooth(false) = false
+## emphasis(Object)
+图形的高亮样式。
+
+### label(Object)
+{{use: partial-label(
+    prefix="###",
+    formatter=true
+)}}
+### itemStyle(Object)
+{{use: partial-item-style(prefix="###")}}
+
+
+## smooth(boolean|number) = false
 是否平滑曲线显示。
 
+如果是 `boolean` 类型，则表示是否开启平滑处理。如果是 `number` 类型（取值范围 0 到 1），表示平滑程度，越小表示越接近折线段，反之则反。设为 `true` 时相当于设为 `0.5`。
+
+如果需要修改平滑算法，请参考 [smoothMonotone](~series-line.smoothMonotone)。
+
 ## smoothMonotone(string)
-折线平滑后是否在一个维度上保持单调性，可以设置成`'x'`, `'y'`来指明是在 x 轴或者 y 轴上保持单调性。
+折线平滑后是否在一个维度上保持单调性，可以设置成`'x'`, `'y'`来指明是在 x 轴或者 y 轴上保持单调性。设置为 `'none'` 则采用不单调的平滑算法。
 
-通常在双数值轴上使用。
+ECharts 4.0.3 版本起，更新了折线平滑的默认算法，原先的算法可以通过将 `smoothMonotone` 设为 `'none'` 实现。下图是新老算法的效果对比图：
 
-下面两张图分别是双数值轴中的折线图`smoothMonotone`不设置以及设置为`'x'`的区别。
+![600xauto](~smooth-old-vs-new.png)
 
-+ 不设置`smoothMonotone`:
+老算法存在以下问题：
 
-![300xauto](~smooth-monotone-none.png)
+![600xauto](~smooth-old-problem.png)
 
-+ 设置为 `'x'`:
+老算法的控制点平行前后点组成的向量，而新算法的控制点始终是水平（如果数据的第 0 个维度上是单调递增的）或竖直的（如果数据的第 1 个维度上是单调递增的）。
 
-![300xauto](~smooth-monotone-x.png)
+![600xauto](~smooth-algorithm.png)
+
+但是新算法对于数据不单调的时候会产生不理想的效果。
+
+![600xauto](~smooth-non-monotone-x.png)
+
+因此，我们建议在默认情况下使用新算法（即不需要设置 `smoothMonotone`）。如果数据的 Y 坐标是单调递增的，则将其设为 `'y'`。如果数据在任何方向上都不是单调递增的，则将其设置为 `'none'` 使用老算法。
 
 ## sampling(string)
 
@@ -132,6 +151,19 @@
 + `'max'` 取过滤点的最大值
 + `'min'` 取过滤点的最小值
 + `'sum'` 取过滤点的和
+
+
+{{use:partial-series-dimensions(
+    prefix="#"
+)}}
+
+{{use:partial-series-encode(
+    prefix="#"
+)}}
+
+{{ use: partial-seriesLayoutBy }}
+
+{{ use: partial-datasetIndex }}
 
 ## data(Array)
 
@@ -154,20 +186,23 @@
 
 ### label(Object)
 单个拐点文本的样式设置。
-#### normal(Object)
 {{ use: partial-label(
-    prefix="####",
+    prefix="###",
     defaultPosition="top"
 ) }}
-#### emphasis(Object)
-{{ use: partial-label(prefix="####") }}
 
 ### itemStyle(Object)
 单个拐点标志的样式设置。
-#### normal(Object)
+{{use: partial-item-style(prefix="###")}}
+
+
+### emphasis(Object)
+单个拐点的高亮样式和标签设置。
+#### itemStyle(Object)
 {{use: partial-item-style(prefix="####")}}
-#### emphasis(Object)
-{{use: partial-item-style(prefix="####")}}
+#### label(Object)
+{{ use: partial-label(prefix="####") }}
+
 
 {{use: partial-tooltip-in-series-data(
     galleryViewPath=${galleryViewPath}

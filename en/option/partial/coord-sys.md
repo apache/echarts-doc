@@ -5,7 +5,7 @@
 The coordinate used in the series, whose options are:
 
 {{if: ${none} }}
-+ `null`
++ `null` or `'none'`
 
     No coordinate.
 {{/if}}
@@ -38,6 +38,12 @@ The coordinate used in the series, whose options are:
     Use parallel coordinates, with [parallelIndex](~series-${seriesType}.parallelIndex) to assign the corresponding parallel coordinate components.
 {{/if}}
 
+{{if: ${none} }}
+
++ `'none'`
+
+    Do not use coordinate system.
+{{/if}}
 
 {{if: ${cartesian2d} }}
 ## xAxisIndex(number) = 0
@@ -75,3 +81,13 @@ Index of [geographic coordinate](~geo) to combine with, which is useful for mult
 Index of [parallel coordinates](~parallel) to combine with, which is useful for multiple parallel axes in one chart.
 
 {{/if}}
+
+
+{{if: ${calendar} }}
+## calendarIndex(number) = 0
+
+Index of [calendar coordinates](~calendar) to combine with, which is useful for multiple calendar coordinates in one chart.
+
+{{/if}}
+
+

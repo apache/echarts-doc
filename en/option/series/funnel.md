@@ -10,6 +10,8 @@
 
 ## type(string) = 'funnel'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 ## min(number) = 0
@@ -41,33 +43,40 @@ Horizontal align. Defaults to align center. Can be 'left', 'right', 'center'.
 
 ## label(Object)
 {{use:partial-label-desc(name="funnel chart")}}
-### normal(Object)
 {{use:partial-funnel-label(
-    prefix="###",
+    prefix="##",
     position=true,
     formatter=true
 )}}
-### emphasis(Object)
+
+## labelLine(Object)
+The visual guide line style of label. When [label position](~series-funnel.label.position) is set as `'left'`or`'right'`, the visual guide line will show.
+{{ use: partial-funnel-label-line(prefix='##') }}
+
+## itemStyle(Object)
+{{use:partial-item-style-desc}}
+{{use:partial-item-style(
+    prefix="##",
+    useColorPalatte=true,
+    hasCallback=true
+)}}
+
+
+## emphasis(Object)
+
+### label(Object)
 {{use:partial-funnel-label(
     prefix="###",
     position=false,
     formatter=true
 )}}
 
-## labelLine(Object)
-The visual guide line style of label. When [label position](~series-funnel.label.normal.position) is set as `'left'`or`'right'`, the visual guide line will show.
-{{ use: partial-funnel-label-line(prefix='##') }}
-
-## itemStyle(Object)
-{{use:partial-item-style-desc}}
-### normal(Object)
-{{use:partial-item-style(
-    prefix="###",
-    useColorPalatte=true,
-    hasCallback=true
-)}}
-### emphasis(Object)
+### itemStyle(Object)
 {{use:partial-item-style(prefix="###")}}
+
+### labelLine(Object)
+{{ use: partial-funnel-label-line(prefix='###') }}
+
 
 
 {{ use: component-rect-layout-width-height(
@@ -78,6 +87,9 @@ The visual guide line style of label. When [label position](~series-funnel.label
     defaultBottom=60
 ) }}
 
+{{ use: partial-seriesLayoutBy }}
+
+{{ use: partial-datasetIndex }}
 
 ## data(Array)
 {{ use: partial-1d-data-desc }}
@@ -85,31 +97,43 @@ The visual guide line style of label. When [label position](~series-funnel.label
 the name of data item.
 ### value(number)
 data value.
+### itemStyle(Object)
+{{use:partial-item-style-desc}}
+{{use:partial-item-style(prefix="###")}}
+#### height(string|number)
+Height of this data item. By default, the height is evenly divided for all data items. The height can be set to percentage (e.g.: '10%') or pixel value (e.g.: 20). Please make sure that the total height of all data items is 100%.
 
 ### label(Object)
 The label configuration of a single data item.
-#### normal(Object)
 {{use:partial-funnel-label(
-    prefix="####",
+    prefix="###",
     position=true,
     formatter=false
 )}}
-#### emphasis(Object)
-{{use:partial-funnel-label(
-    prefix="####",
-    position=false,
-    formatter=false
-)}}
+
 
 ### labelLine(Object)
 {{ use: partial-funnel-label-line(prefix='###') }}
 
 ### itemStyle(Object)
 {{use:partial-item-style-desc}}
-#### normal(Object)
+{{use:partial-item-style(prefix="###")}}
+
+### emphasis(Object)
+
+#### itemStyle(Object)
 {{use:partial-item-style(prefix="####")}}
-#### emphasis(Object)
-{{use:partial-item-style(prefix="####")}}
+
+#### label(Object)
+{{use:partial-funnel-label(
+    prefix="####",
+    position=false,
+    formatter=false
+)}}
+
+#### labelLine(Object)
+{{use:partial-funnel-label-line(prefix="####")}}
+
 
 {{use: partial-tooltip-in-series-data(
     galleryViewPath=${galleryViewPath}
@@ -162,20 +186,17 @@ Label position.
     }
 }) }}
 {{ /if }}
-#${prefix} textStyle(Object)
-the font style of lable.
-{{ use:partial-text-style(prefix=${prefix} + '#') }}
+
+{{ use:partial-text-style(prefix=${prefix}) }}
 
 
 {{ target: partial-funnel-label-line }}
-#${prefix} normal(Object)
-The style of visual guide line in normal status.
-##${prefix} show(boolean)
+#${prefix} show(boolean)
 Whether to show visual guide line.
-##${prefix} length(number)
+#${prefix} length(number)
 The length of the first part from visual guide line.
-##${prefix} lineStyle(Object)
-{{use:partial-line-style(prefix="##" + ${prefix})}}
+#${prefix} lineStyle(Object)
+{{use:partial-line-style(prefix="#" + ${prefix})}}
 #${prefix} emphasis(Object)
 The style of visual guide line in emphasis status.
 ##${prefix} show(boolean)

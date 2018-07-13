@@ -13,6 +13,8 @@
 
 ## type(string) = 'graph'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 {{ use: partial-legend-hover-link() }}
@@ -23,7 +25,8 @@
     none=true,
     cartesian2d=true,
     polar=true,
-    geo=true
+    geo=true,
+    calendar=true
 ) }}
 
 ## hoverAnimation(boolean)
@@ -108,54 +111,55 @@ edgeSymbol: ['circle', 'arrow']
 ## edgeSymbolSize(Array|number) = 10
 边两端的标记大小，可以是一个数组分别指定两端，也可以是单个统一指定。
 
+{{ use: partial-cursor }}
+
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
-### normal(Object)
 {{use:partial-item-style(
-    prefix="###",
+    prefix="##",
     useColorPalatte=true,
     hasCallback=true
 )}}
-### emphasis(Object)
-{{use:partial-item-style(prefix="###")}}
 
 ## lineStyle(Object)
-关系边的公用线条样式。其中 [lineStyle.normal.color](~series-graph.lineStyle.normal.color) 支持设置为`'source'`或者`'target'`特殊值，此时边会自动取源节点或目标节点的颜色作为自己的颜色。
+关系边的公用线条样式。其中 [lineStyle.color](~series-graph.lineStyle.color) 支持设置为`'source'`或者`'target'`特殊值，此时边会自动取源节点或目标节点的颜色作为自己的颜色。
 
-### normal(Object)
 {{use:partial-line-style(
-    prefix="###",
+    prefix="##",
     defaultColor="'#aaa'",
     defaultWidth=1,
     defaultOpacity=0.5,
     hasCurveness=true
 )}}
-### emphasis(Object)
-{{ use:partial-line-style(
-    prefix="###"
-) }}
 
 ## label(Object)
 {{use:partial-label-desc}}
-### normal(Object)
 {{use:partial-label(
-    prefix="###",
+    prefix="##",
     defaultPosition="'inside'",
     formatter2d=true
 )}}
-### emphasis(Object)
+
+## edgeLabel(Object)
+{{use: graph-edge-label(
+    prefix="##"
+)}}
+
+## emphasis(Object)
+高亮的图形样式。
+### itemStyle(Object)
+{{use:partial-item-style(prefix="###")}}
+### lineStyle(Object)
+{{ use:partial-line-style(
+    prefix="###"
+) }}
+### label(Object)
 {{use:partial-label(
     prefix="###",
     defaultShow=true,
     formatter2d=true
 )}}
-
-## edgeLabel(Object)
-### normal(Object)
-{{use: graph-edge-label(
-    prefix="###"
-)}}
-### emphasis(Object)
+### edgeLabel(Object)
 {{use: graph-edge-label(
     prefix="###"
 )}}
@@ -176,27 +180,57 @@ edgeSymbol: ['circle', 'arrow']
 
 ### itemStyle(Object)
 该类目节点的样式。
-#### normal(Object)
-{{use:partial-item-style(prefix="####", useColorPalatte=true)}}
-#### emphasis(Object)
-{{use:partial-item-style(prefix="####")}}
+{{use:partial-item-style(prefix="###", useColorPalatte=true)}}
 
 ### label(Object)
 该类目节点标签的样式。
-#### normal(Object)
 {{ use:partial-label(
-    prefix="####",
+    prefix="###",
     defaultPosition="inside",
     formatter2d=true
 ) }}
-#### emphasis(Object)
+
+### emphasis(Object)
+#### itemStyle(Object)
+{{use:partial-item-style(prefix="####")}}
+#### label(Object)
 {{ use:partial-label(prefix="####") }}
 
 
 ## data(Array)
-{{ use: partial-1d-data-desc() }}
+
+关系图的节点数据列表。
+
+```js
+data: [{
+    name: '1',
+    x: 10,
+    y: 10,
+    value: 10
+}, {
+    name: '2',
+    x: 100,
+    y: 100,
+    value: 20,
+    symbolSize: 20,
+    itemStyle: {
+        color: 'red'
+    }
+}]
+```
+
+**注意:** 节点的`name`不能重复。
+
 ### name(string)
 数据项名称。
+
+### x(number)
+节点的初始 x 值。在不指定的时候需要指明`layout`属性选择布局方式。
+### y(number)
+节点的初始 y 值。在不指定的时候需要指明`layout`属性选择布局方式。
+### fixed(boolean)
+节点在力引导布局中是否固定。
+
 ### value(number|Array)
 数据项值。
 ### category(number)
@@ -209,21 +243,23 @@ edgeSymbol: ['circle', 'arrow']
 
 ### itemStyle(Object)
 该节点的样式。
-#### normal(Object)
-{{use:partial-item-style(prefix="####", useColorPalatte=true)}}
-#### emphasis(Object)
-{{use:partial-item-style(prefix="####")}}
+{{use:partial-item-style(prefix="###", useColorPalatte=true)}}
 
 ### label(Object)
 该节点标签的样式。
-#### normal(Object)
+{{ use:partial-label(
+    prefix="###"
+) }}
+
+### emphasis(Object)
+
+#### itemStyle(Object)
+{{use:partial-item-style(prefix="####")}}
+#### label(Object)
 {{ use:partial-label(
     prefix="####"
 ) }}
-#### emphasis(Object)
-{{ use:partial-label(
-    prefix="####"
-) }}
+
 
 {{use: partial-tooltip-in-series-data(
     galleryViewPath=${galleryViewPath}
@@ -253,24 +289,24 @@ links: [{
 
 ### lineStyle(Object)
 关系边的线条样式。
-#### normal(Object)
 {{use:partial-line-style(
-    prefix="####"
+    prefix="###"
 )}}
-##### curveness(number) = 0
+#### curveness(number) = 0
 边的曲度，支持从 0 到 1 的值，值越大曲度越大。
-#### emphasis(Object)
-{{ use:partial-line-style(
-    prefix="####"
-) }}
 
 ### label(Object)
-#### normal(Object)
+{{use: graph-edge-label(
+    prefix="###"
+)}}
+
+### emphasis(Object)
+#### label(Object)
 {{use: graph-edge-label(
     prefix="####"
 )}}
-#### emphasis(Object)
-{{use: graph-edge-label(
+#### lineStyle(Object)
+{{use:partial-line-style(
     prefix="####"
 )}}
 
@@ -286,7 +322,6 @@ links: [{
 {{use: partial-marker(
     prefix="#",
     seriesType="graph",
-    galleryEditorPath=${galleryEditorPath},
     hasType=true,
     hasCoord=true
 )}}
@@ -294,7 +329,7 @@ links: [{
 
 {{ use: partial-rect-layout-width-height(
     defaultLeft="'center'",
-    defaultTop="'center'",
+    defaultTop="'middle'",
     defaultWidth='自适应',
     defaultHeight='自适应'
 ) }}
@@ -324,5 +359,4 @@ links: [{
 #${prefix} formatter(string|Function)
 {{ use: partial-2d-data-label-formatter }}
 
-#${prefix} textStyle(Object)
-{{ use: partial-text-style(prefix=${prefix} + '#') }}
+{{ use: partial-text-style(prefix=${prefix}) }}

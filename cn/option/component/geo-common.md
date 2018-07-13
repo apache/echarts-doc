@@ -92,61 +92,43 @@ boundingCoords: [
 ## selectedMode(boolean|string) = false
 选中模式，表示是否支持多个选中，默认关闭，支持布尔值和字符串，字符串取值可选`'single'`表示单选，或者`'multiple'`表示多选。
 
+
+
+
 #${prefix} label(Object)
+{{use: partial-label-desc}}
+{{use: partial-label(
+    prefix="#" + ${prefix},
+    formatter=true
+)}}
 
-{{ use: partial-label-desc }}
-
-##${prefix} normal(Object)
-
-###${prefix} show(boolean) = false
-
-是否在普通状态下显示标签。
-
-###${prefix} textStyle(Object)
-
-普通状态下的标签文本样式。
-
-{{ use: partial-text-style(prefix=${prefix} + '###') }}
-
-##${prefix} emphasis(Object)
-
-###${prefix} show(boolean) = false
-
-是否在高亮状态下显示标签。
-
-###${prefix} textStyle(Object)
-
-高亮状态下的标签文本样式。
-
-{{ use: partial-text-style(prefix=${prefix} + '###') }}
 
 
 #${prefix} itemStyle(Object)
 
 {{ use: partial-item-style-desc(name= '地图区域的多边形') }}
 
+##${prefix} areaColor(Color) = '#eee'
+地图区域的颜色。
 
-##${prefix} normal(Object)
+{{ use: partial-item-style(prefix=${prefix} + '#') }}
 
-普通状态下的多边形样式。
 
-{{ if: ${inMap} }}
+#${prefix} emphasis(Object)
+高亮状态下的多边形和标签样式。
+
+##${prefix} label(Object)
+{{use: partial-label(
+    prefix="##" + ${prefix},
+    formatter=true
+)}}
+
+##${prefix} itemStyle(Object)
 ###${prefix} areaColor(Color) = '#eee'
 地图区域的颜色。
-{{ /if }}
-
 {{ use: partial-item-style(prefix=${prefix} + '##') }}
 
-##${prefix} emphasis(Object)
 
-高亮状态下的多边形样式。
-
-{{ if: ${inMap} }}
-###${prefix} areaColor(Color) = '#eee'
-地图区域的颜色。
-{{ /if }}
-
-{{ use: partial-item-style(prefix=${prefix} + '##') }}
 
 {{ use: partial-rect-layout(prefix=${prefix}) }}
 

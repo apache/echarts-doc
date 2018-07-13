@@ -12,7 +12,7 @@
     height? number|string
 }) => ECharts
 ```
-创建一个 ECharts 实例，返回 [echartsInstance](~echartsInstance)，不能再单个容器上初始化多个 ECharts 实例。
+创建一个 ECharts 实例，返回 [echartsInstance](~echartsInstance)，不能在单个容器上初始化多个 ECharts 实例。
 
 **参数**
 + `dom`
@@ -37,7 +37,7 @@
 
     + `renderer`
 
-        渲染器，目前仅支持`'canvas'`。
+        渲染器，支持 `'canvas'` 或者 `'svg'`。参见 [使用 Canvas 或者 SVG 渲染](http://echarts.baidu.com/tutorial.html#%E4%BD%BF%E7%94%A8%20Canvas%20%E6%88%96%E8%80%85%20SVG%20%E6%B8%B2%E6%9F%93)。
 
     + `width`
 
@@ -161,3 +161,9 @@ echarts.registerMap('USA', usaJson, {
 ```
 
 注册主题，用于[初始化实例](~echarts.init)的时候指定。
+
+
+{{ use: echarts-graphic }}
+
+
+

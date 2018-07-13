@@ -17,6 +17,8 @@
 
 ## type(string) = 'boxplot'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{use: partial-coord-sys(
     seriesType="cartesian2d",
     coordSysDefault="'cartesian2d'",
@@ -51,7 +53,44 @@ box 的宽度的上下限。数组的意思是：`[min, max]`。
 可以是绝对数值，如 `[7, 50]`，也可以是百分比，如 `['40%', '90%']`。百分比的意思是，最大可能宽度（bandWidth）的百分之多少。
 
 
-{{use:partial-boxplot-item-style(prefix="#")}}
+## itemStyle(Object)
+
+盒须图样式。
+
+{{use: partial-item-style(
+    prefix="##",
+    useColorPalatte=true,
+    name="boxplot",
+    defaultColor="#fff",
+    defaultBorderWidth=1
+)}}
+
+## emphasis(Object)
+
+盒须图高亮样式
+
+### itemStyle(Object)
+
+{{use: partial-item-style(
+    prefix="###",
+    useColorPalatte=true,
+    name="boxplot",
+    defaultColor="#fff",
+    defaultBorderWidth=2,
+    defaultShadowBlur=5,
+    defaultShadowOffsetX=2,
+    defaultShadowOffsetY=2,
+    defaultShadowColor="rgba(0,0,0,0.4)"
+)}}
+
+
+{{use:partial-series-dimensions(
+    prefix="#"
+)}}
+
+{{use:partial-series-encode(
+    prefix="#"
+)}}
 
 
 ## data(Array)
@@ -82,7 +121,7 @@ box 的宽度的上下限。数组的意思是：`[min, max]`。
 
 ECharts 并不内置对原始数据的处理，输入给 `boxplot` 的数据须是如上五个统计结果量值。
 
-但是 ECharts 也额外提供了简单的 [原始数据处理函数](https://github.com/ecomfe/echarts/tree/dev-3.0.0/extension/dataTool)，如这个 [例子](${galleryEditorPath}boxplot-light-velocity&edit=1&reset=1) 使用了`echarts.dataTool.prepareBoxplotData` 来进行简单的数据统计。
+但是 ECharts 也额外提供了简单的 [原始数据处理函数](https://github.com/ecomfe/echarts/tree/master/extension/dataTool)，如这个 [例子](${galleryEditorPath}boxplot-light-velocity&edit=1&reset=1) 使用了`echarts.dataTool.prepareBoxplotData` 来进行简单的数据统计。
 
 
 ### name(string)
@@ -97,7 +136,37 @@ ECharts 并不内置对原始数据的处理，输入给 `boxplot` 的数据须�
 [min,  Q1,  median (or Q2),  Q3,  max]
 ```
 
-{{use:partial-boxplot-item-style(prefix="##")}}
+
+### itemStyle(Object)
+
+单个数据盒须图样式。
+
+{{use: partial-item-style(
+    prefix="###",
+    useColorPalatte=true,
+    name="boxplot",
+    defaultColor="#fff",
+    defaultBorderWidth=1
+)}}
+
+### emphasis(Object)
+
+单个数据盒须图高亮样式
+
+#### itemStyle(Object)
+
+{{use: partial-item-style(
+    prefix="####",
+    useColorPalatte=true,
+    name="boxplot",
+    defaultColor="#fff",
+    defaultBorderWidth=2,
+    defaultShadowBlur=5,
+    defaultShadowOffsetX=2,
+    defaultShadowOffsetY=2,
+    defaultShadowColor="rgba(0,0,0,0.4)"
+)}}
+
 
 {{use: partial-tooltip-in-series-data(
     galleryViewPath=${galleryViewPath}
@@ -130,47 +199,4 @@ ECharts 并不内置对原始数据的处理，输入给 `boxplot` 的数据须�
 
 {{use: partial-tooltip-in-series(
     galleryViewPath=${galleryViewPath}
-)}}
-
-
-
-
-
-
-
-
-
-
-
-
-{{target:partial-boxplot-item-style}}
-
-#${prefix} itemStyle(Object)
-
-{{use:partial-item-style-desc(name="boxplot")}}
-
-
-##${prefix} normal(Object)
-
-{{use: partial-item-style(
-    prefix="###",
-    useColorPalatte=true,
-    name="boxplot",
-    defaultColor="#fff",
-    defaultBorderWidth=1
-)}}
-
-
-##${prefix} emphasis(Object)
-
-{{use: partial-item-style(
-    prefix="###",
-    useColorPalatte=true,
-    name="boxplot",
-    defaultColor="#fff",
-    defaultBorderWidth=2,
-    defaultShadowBlur=5,
-    defaultShadowOffsetX=2,
-    defaultShadowOffsetY=2,
-    defaultShadowColor="rgba(0,0,0,0.4)"
 )}}

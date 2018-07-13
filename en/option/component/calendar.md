@@ -38,6 +38,7 @@ Calendar coordinate system can be configured to adapt to container size, which i
 
 ---
 
+{{use: partial-component-id(prefix="#")}}
 
 {{ use: partial-rect-layout-width-height(
     componentName="calendar",
@@ -149,9 +150,8 @@ calendar: [{
 ## itemStyle(Object)
 Every rect style in calendar coordinates.
 
-### normal(Object)
 {{ use:partial-item-style(
-    prefix="###",
+    prefix="##",
     name="calendar",
     defaultColor="#fff",
     defaultBorderWidth=1,
@@ -163,11 +163,9 @@ Examples:
 ```js
 calendar: [{
     itemStyle: {
-        normal: {
-            color: '#fff',
-            borderWidth: 1,
-            borderColor: '#ccc'
-        }
+        color: '#fff',
+        borderWidth: 1,
+        borderColor: '#ccc'
     }
 }]
 ```
@@ -227,9 +225,7 @@ calendar: [{
 }]
 ```
 
-### textStyle(Object)
-Style of text in normal state.
-{{ use: partial-text-style(prefix='###', defaultColor="#000",) }}
+{{ use: partial-text-style(prefix='##', defaultColor="#000",) }}
 
 
 ## monthLabel(Object)
@@ -327,9 +323,7 @@ formatter: function (param) {
 }
 ```
 
-### textStyle(Object)
-Style of text in normal state.
-{{ use: partial-text-style(prefix='###', defaultColor="#000") }}
+{{ use: partial-text-style(prefix='##', defaultColor="#000") }}
 
 
 ## yearLabel(Object)
@@ -384,9 +378,7 @@ formatter: function (param) {
 }
 ```
 
-### textStyle(Object)
-Style of text in normal state.
-{{ use: partial-text-style(prefix='###') }}
+{{ use: partial-text-style(prefix='##') }}
 
 
 {{ use:partial-silent(

@@ -10,6 +10,8 @@
 
 ## type(string) = 'funnel'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 ## min(number) = 0
@@ -41,33 +43,40 @@
 
 ## label(Object)
 {{use:partial-label-desc(name="漏斗图")}}
-### normal(Object)
 {{use:partial-funnel-label(
-    prefix="###",
+    prefix="##",
     position=true,
     formatter=true
 )}}
-### emphasis(Object)
+
+## labelLine(Object)
+标签的视觉引导线样式，在 [label 位置](~series-funnel.label.position) 设置为`'left'`或者`'right'`的时候会显示视觉引导线。
+{{ use: partial-funnel-label-line(prefix='##') }}
+
+## itemStyle(Object)
+{{use:partial-item-style-desc}}
+{{use:partial-item-style(
+    prefix="##",
+    useColorPalatte=true,
+    hasCallback=true
+)}}
+
+## emphasis(Object)
+高亮的标签和图形样式。
+
+### label(Object)
 {{use:partial-funnel-label(
     prefix="###",
     position=false,
     formatter=true
 )}}
 
-## labelLine(Object)
-标签的视觉引导线样式，在 [label 位置](~series-funnel.label.normal.position) 设置为`'left'`或者`'right'`的时候会显示视觉引导线。
-{{ use: partial-funnel-label-line(prefix='##') }}
-
-## itemStyle(Object)
-{{use:partial-item-style-desc}}
-### normal(Object)
-{{use:partial-item-style(
-    prefix="###",
-    useColorPalatte=true,
-    hasCallback=true
-)}}
-### emphasis(Object)
+### itemStyle(Object)
 {{use:partial-item-style(prefix="###")}}
+
+### labelLine(Object)
+{{ use: partial-funnel-label-line(prefix='###') }}
+
 
 
 {{ use: component-rect-layout-width-height(
@@ -78,6 +87,9 @@
     defaultBottom=60
 ) }}
 
+{{ use: partial-seriesLayoutBy }}
+
+{{ use: partial-datasetIndex }}
 
 ## data(Array)
 {{ use: partial-1d-data-desc }}
@@ -85,31 +97,45 @@
 数据项名称。
 ### value(number)
 数据值。
+### itemStyle(Object)
+{{use:partial-item-style-desc}}
+{{use:partial-item-style(prefix="###")}}
+#### height(string|number)
+该数据项的高度。默认平均分配高度，如果需要修改，可以将其设为百分比（如：`'10%'`）或像素值（如：`20px`）。需要注意总和应为 100%。
 
 ### label(Object)
 单个数据的标签配置。
-#### normal(Object)
 {{use:partial-funnel-label(
-    prefix="####",
+    prefix="###",
     position=true,
     formatter=false
 )}}
-#### emphasis(Object)
-{{use:partial-funnel-label(
-    prefix="####",
-    position=false,
-    formatter=false
-)}}
+
 
 ### labelLine(Object)
 {{ use: partial-funnel-label-line(prefix='###') }}
 
 ### itemStyle(Object)
 {{use:partial-item-style-desc}}
-#### normal(Object)
+{{use:partial-item-style(prefix="###")}}
+
+
+### emphasis(Object)
+
+#### itemStyle(Object)
 {{use:partial-item-style(prefix="####")}}
-#### emphasis(Object)
-{{use:partial-item-style(prefix="####")}}
+
+#### label(Object)
+{{use:partial-funnel-label(
+    prefix="####",
+    position=false,
+    formatter=false
+)}}
+
+#### labelLine(Object)
+{{use:partial-funnel-label-line(prefix="####")}}
+
+
 
 {{use: partial-tooltip-in-series-data(
     galleryViewPath=${galleryViewPath}
@@ -168,20 +194,17 @@
     }
 }) }}
 {{ /if }}
-#${prefix} textStyle(Object)
-标签的字体样式。
-{{ use:partial-text-style(prefix=${prefix} + '#') }}
+
+{{ use:partial-text-style(prefix=${prefix}) }}
 
 
 {{ target: partial-funnel-label-line }}
-#${prefix} normal(Object)
-普通状态下视觉引导线的样式。
-##${prefix} show(boolean)
+#${prefix} show(boolean)
 是否显示视觉引导线。
-##${prefix} length(number)
+#${prefix} length(number)
 视觉引导线第一段的长度。
-##${prefix} lineStyle(Object)
-{{use:partial-line-style(prefix="##" + ${prefix})}}
+#${prefix} lineStyle(Object)
+{{use:partial-line-style(prefix="#" + ${prefix})}}
 #${prefix} emphasis(Object)
 高亮状态下视觉引导线的样式。
 ##${prefix} show(boolean)

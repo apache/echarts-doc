@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Bar3D Simplex Noise - ECHARTS-GL</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="../common/reset.css">
+    </head>
+    <body>
+        <div id="main"></div>
+        <script src="../common/echarts.min.js"></script>
+        <script src="../common/jquery.min.js"></script>
+        <script src="../common/simplex.js"></script>
+        <script>
+            var chart = echarts.init(document.getElementById('main'));
+
+            var noise = new SimplexNoise(Math.random);
+            function generateData(theta, min, max) {
+                var data = [];
+                for (var i = 0; i <= 30; i++) {
+                    for (var j = 0; j <= 30; j++) {
+                        var value = noise.noise2D(i / 10, j / 10);
+                        valMax = Math.max(valMax, value);
+                        valMin = Math.min(valMin, value);
+                        data.push([i, j, value * 2 + 4]);
+                    }
+                }
+                return data;
+            }
+            var valMin = Infinity;
+            var valMax = -Infinity;
+            var data = generateData(2, -5, 5);
+            console.log(valMin, valMax);
+
+            chart.setOption({
+                tooltip: {},
+                visualMap: {
+                    show: false,
+                    min: 2,
+                    max: 6,
+                    inRange: {
+                        symbolSize: [0.5, 20],
+                        color: ['#313695', '#4575b4', '#74add1', '#abd9e9', '#e0f3f8', '#ffffbf', '#fee090', '#fdae61', '#f46d43', '#d73027', '#a50026'],
+                        colorAlpha: [0.2, 1]
+                    }
+                },
+                xAxis: {
+                    type: 'value',
+                    axisLine: {
+                        lineStyle: { color: '#fff' }
+                    }
+                },
+                yAxis: {
+                    type: 'value',
+                    axisLine: {
+                        lineStyle: { color: '#fff' }
+                    }
+                },
+                series: [{
+                    type: 'scatter',
+                    data: data
+                }]
+            });
+
+            window.onresize = chart.resize;
+        </script>
+    </body>
+</html>

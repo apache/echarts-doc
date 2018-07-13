@@ -1,3 +1,438 @@
+<h2 id="v4-1-0-rc2">v4.1.0.rc2</h2>
+<div class="time">2018-05-02</div>
+
+<ul>
+<li><p>[Feature] Enable candlestick and bar chart rendering and zooming in a large amount of data (200K). Add option <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-candlestick.progressiveChunkMode">series-candlestick.progressiveChunkMode</a> to enhance the effect when progressively rendering. See example <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=candlestick-large">candlestick-large</a>.</p>
+</li>
+<li><p>[Feature] Add tree directions from right to left, from bottom to top for tree series. <a href="https://github.com/ecomfe/echarts/issues/7351">#7351</a> <a href="https://github.com/ecomfe/echarts/issues/7154">#7154</a>. See example <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=tree-orient-right-left">tree-orient-right-left</a>, <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=tree-vertical">tree-vertical</a>.</p>
+</li>
+<li><p>[Feature] Support keeping-aspect for legend path. <a href="https://github.com/ecomfe/echarts/issues/7831">#7831</a></p>
+</li>
+<li><p>[Feature] Support node dragging for sankey chart. See example <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=sankey-energy">sankey-energy</a>.</p>
+</li>
+<li><p>[Enhance] Category axis enhancement:</p>
+<ul>
+<li>Optimize the performance in a large amount of data (&gt; 100K ~ 1M)</li>
+<li>Enhance the auto interval strategy.</li>
+<li>Enhance the animation when zooming and moving the data window of cartesian.</li>
+</ul>
+</li>
+<li><p>[Enhance] In line chart, enhance symbol display strategy when using category axis (see <code>showAllSymbol:&#39;auto&#39;</code>).</p>
+</li>
+<li><p>[Enhance] Support that lift the brushed elements to the top (add option <code>visualMap.inRange.liftZ</code>).</p>
+</li>
+<li><p>[Enhance] Enhance the order of nodes for sankey diagram. <a href="https://github.com/ecomfe/echarts/issues/3390">#3390</a> <a href="https://github.com/ecomfe/echarts/issues/3543">#3543</a> <a href="https://github.com/ecomfe/echarts/issues/6365">#6365</a> <a href="https://github.com/ecomfe/echarts/issues/4880">#4880</a> <a href="https://github.com/ecomfe/echarts/issues/4986">#4986</a></p>
+</li>
+<li><p>[Enhance] Enhance sampling performance in progressive mode.</p>
+</li>
+<li><p>[Enhance] Enhance parallel performance in progressive mode.</p>
+</li>
+<li><p>[Enhance] Currently do not filter empty data item in data zoom, which makes line chart keeping broken. <a href="https://github.com/ecomfe/echarts/issues/7955">#7955</a></p>
+</li>
+<li><p>[Enhance] Support toolbox.feature merge.</p>
+</li>
+<li><p>[Fix] Resolve browser become unresponsive when the data of sankey series has cycle. <a href="https://github.com/ecomfe/echarts/issues/7495">#7495</a> <a href="https://github.com/ecomfe/echarts/issues/8117">#8117</a> <a href="https://github.com/ecomfe/echarts/issues/7583">#7583</a> <a href="https://github.com/ecomfe/echarts/issues/7325">#7325</a> <a href="https://github.com/ecomfe/echarts/issues/6555">#6555</a></p>
+</li>
+<li><p>[Fix] <code>yAxis</code> extent did not update when some of the stacked bar series hide. <a href="https://github.com/ecomfe/echarts/issues/8003">#8003</a></p>
+</li>
+<li><p>[Fix] Currently we fetch name from <code>dateItem.name</code> firstly in list. <a href="https://github.com/ecomfe/echarts/issues/7966">#7966</a></p>
+</li>
+<li><p>[Fix] Typed array incorrect usage in WeChat app.</p>
+</li>
+<li><p>[Fix] <code>option</code> in axis data item did not work. <a href="https://github.com/ecomfe/echarts/issues/7954">#7954</a></p>
+</li>
+<li><p>[Fix] <code>markArea</code> only displayed the last one. <a href="https://github.com/ecomfe/echarts/issues/7902">#7902</a></p>
+</li>
+<li><p>[Fix] Fixed the WeChat environment imprecise detection.</p>
+</li>
+<li><p>[Fix] Rounding error in clip symbol for line chart. <a href="https://github.com/ecomfe/echarts/issues/7913">#7913</a></p>
+</li>
+<li><p>[Fix] The default tooltip in candlestick only showed one item. <a href="https://github.com/ecomfe/echarts/issues/8149">#8149</a></p>
+</li>
+<li><p>[Fix] Bar chart start point was incorrect when multiple axes exist. <a href="https://github.com/ecomfe/echarts/issues/7412">#7412</a></p>
+</li>
+<li><p>[Fix] <code>markArea</code> did not display when using ordinal string. <a href="https://github.com/ecomfe/echarts/issues/7849">#7849</a></p>
+</li>
+<li><p>[Fix] <code>dataZoom</code> threw error when series was empty. <a href="https://github.com/ecomfe/echarts/issues/7666">#7666</a></p>
+</li>
+<li><p>[Fix] Add compatibility of data exceptions for sankey series. <a href="https://github.com/ecomfe/echarts/issues/2867">#2867</a></p>
+</li>
+<li><p>[Fix] Fix error when removing node or rendering again for the tree series. <a href="https://github.com/ecomfe/echarts/issues/8038">#8038</a> <a href="https://github.com/ecomfe/echarts/issues/8040">#8040</a> <a href="https://github.com/ecomfe/echarts/issues/7720">#7720</a> <a href="https://github.com/ecomfe/echarts/issues/7363">#7363</a> <a href="https://github.com/ecomfe/echarts/issues/7315">#7315</a></p>
+</li>
+<li><p>[Fix] <code>sunburst</code> chart roll-up element was not removed when chart.setOption called. <a href="https://github.com/ecomfe/echarts/issues/8132">#8132</a></p>
+</li>
+<li><p>[Fix] SVG axisPointer text position bug. <a href="https://github.com/ecomfe/echarts/issues/7947">#7947</a></p>
+</li>
+<li><p>[Fix] Large lines chart render bug in large mode.</p>
+</li>
+<li><p>[Fix] The last day of a month was not displayed in calendar. <a href="https://github.com/ecomfe/echarts/issues/8045">#8045</a></p>
+</li>
+<li><p>[Fix] Data sampling of line chart caused incorrect extent when data had NaN.</p>
+</li>
+<li><p>[Fix] Data sampling of line chart worked abnormally when using <code>series.encode</code>. <a href="https://github.com/ecomfe/echarts/issues/8017">#8017</a></p>
+</li>
+<li><p>[Fix] <code>legendHoverLink: false</code> did not work appropriately when multiple series had the same name. <a href="https://github.com/ecomfe/echarts/issues/8010">#8010</a></p>
+</li>
+<li><p>[Fix] Some of the graph hover style did not work.</p>
+</li>
+<li><p>[Fix] Fix axis extent calculation error when using stack.</p>
+</li>
+</ul>
+<h2 id="v4-0-4">v4.0.4</h2>
+<div class="time">2018-02-28</div>
+
+<p>[Recovery Build]</p>
+<ul>
+<li>[^] Fixed bar layout problem. See <a href="https://github.com/ecomfe/echarts/issues/7831">#7831</a>.</li>
+</ul>
+<h2 id="v4-0-3">v4.0.3</h2>
+<div class="time">2018-02-27</div>
+
+<ul>
+<li><p><strong>[+] ECharts has been able to work on WeChat Applet.</strong></p>
+</li>
+<li><p>[+] Added a new smooth policy, which corrects some undesired smooth result. See details in <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-line.smooth">series-line.smooth</a> and <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-line.smoothMonotone">series-line.smoothMonotone</a>. Fixed <a href="https://github.com/ecomfe/echarts/issues/7158">#7158</a>.</p>
+</li>
+<li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-line.symbolOffset">series-line.symbolOffset</a> of axis arrow. See <a href="https://github.com/ecomfe/echarts/issues/7422">#7422</a>.</p>
+</li>
+<li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-sunburst.label.minAngle">series-sunburst.label.minAngle</a>, which enables hiding text if the sector is less then the <code>minAngle</code>. See <a href="https://github.com/ecomfe/echarts/issues/7614">#7614</a>.</p>
+</li>
+<li><p>[+] Supported tooltip in <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-sunburst">sunburst</a>. See <a href="https://github.com/ecomfe/echarts/issues/7691">#7691</a>.</p>
+</li>
+<li><p>[+] Supported configuring <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-sunburst.nodeClick">series-sunburst.nodeClick</a> in level or single sector. See <a href="https://github.com/ecomfe/echarts/issues/7541">#7541</a>.</p>
+</li>
+<li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-bar.stack">stack data</a> by value but not index. Fixed stack bug when using <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#dataset">dataset</a>. See <a href="https://github.com/ecomfe/echarts/issues/7535">#7535</a>, <a href="https://github.com/ecomfe/echarts/issues/7560">#7560</a>, <a href="https://github.com/ecomfe/echarts/issues/6861">#6861</a>.</p>
+</li>
+<li><p>[^] Fixed shape clip when <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-line">line chart</a> is overflow cartesian area.</p>
+</li>
+<li><p>[^] Fixed that the last area of <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.splitArea">splitArea</a> did not display. See <a href="https://github.com/ecomfe/echarts/issues/7118">#7118</a>.</p>
+</li>
+<li><p>[^] Fixed gradient color bug of <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-sunburst">sunburst</a>. See <a href="https://github.com/ecomfe/echarts/issues/7569">#7569</a>.</p>
+</li>
+<li><p>[^] Fixed the case when <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#visualMap">visualMap</a> component is not imported for <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-sunburst">sunburst</a>. See <a href="https://github.com/ecomfe/echarts/issues/7575">#7575</a>.</p>
+</li>
+<li><p>[^] Fixed that <a href="https://ecomfe.github.io/echarts-doc/public/en/api.html#echartsInstance.appendData">apendData</a> did not work when data amount was less then <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-scatter.progressive">progressive</a> limit. See <a href="https://github.com/ecomfe/echarts/issues/7718">#7718</a> and <a href="https://github.com/ecomfe/echarts/issues/7625">#7625</a>.</p>
+</li>
+<li><p>[^] Fixed that <a href="api.html#echartsInstance.appendData">apendData</a> caused series color changed if series name was not specified.</p>
+</li>
+<li><p>[^] Fixed that <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#tooltip.axisPointer.label.show">tooltip.axisPointer.label.show</a> did not work when set as <code>false</code>. See <a href="https://github.com/ecomfe/echarts/issues/7725">#7725</a>.</p>
+</li>
+<li><p>[^] Fixed that <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-map">map</a> could not be selected if an area had no data. See <a href="https://github.com/ecomfe/echarts/issues/7629">#7629</a>.</p>
+</li>
+<li><p>[^] Fixed <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-candlestick">candlestick</a> encode problem. See <a href="https://github.com/ecomfe/echarts/issues/7715">#7715</a>.</p>
+</li>
+<li><p>[^] Fixed the data item empty check logic, which caused that <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.renderItem">renderItem</a> could not enter when value array length not the same, and <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#dataset">dataset</a> could not be displayed. See <a href="https://github.com/ecomfe/echarts/issues/7733">#7733</a>.</p>
+</li>
+<li><p>[^] Fixed the textStyle compatibility logic.</p>
+</li>
+</ul>
+<h2 id="v4-0-2">v4.0.2</h2>
+<div class="time">2018-01-18</div>
+
+<ul>
+<li><p>[^] Fixed that in some case the scollable legend (<code>legend.type: &#39;scroll&#39;</code>) caused ghost. See <a href="https://github.com/ecomfe/echarts/issues/7502">#7502</a>.</p>
+</li>
+<li><p>[^] Fixed that the <code>selected</code> option did not work in the data item of <a href="option.html#series-pie">pie</a>. See <a href="https://github.com/ecomfe/echarts/issues/7515">#7515</a>.</p>
+</li>
+<li><p>[^] Fixed <a href="option.html#timeline.controlStyle.showNextBtn">play button</a> of timeline component could not be disabled. See <a href="https://github.com/ecomfe/echarts/issues/7506">#7506</a>.</p>
+</li>
+</ul>
+<h2 id="v4-0-1">v4.0.1</h2>
+<div class="time">2018-01-17</div>
+
+<h2 id="v4-0-0">v4.0.0</h2>
+<div class="time">2018-01-16</div>
+
+<ul>
+<li><p>[+] Supported to render up to <strong>tens millions of data</strong> directly。ECharts4 has upgrade to stream architecture, and along with detailed optimization, it has supported to render incrementally loaded data and support progressive rendering.</p>
+<ul>
+<li>Ten millions of GIS data probably take up to about hundreds MB of space. In this case chunked data loading or WebStock is required for the purpose of display graphics as soon as possible and not blocking the browser while processing loaded data. The samples of incremental data loading can be checked here: <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=scatterGL-gps&amp;gl=1">scatterGL-gps</a> and <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=linesGL-ny&amp;gl=1">linesGL-ny</a>, who use ECharts GL, and <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=lines-ny">lines-ny</a>, who only uses ECharts.</li>
+<li>Supported the human interactions in the big data scenario, where continuous interactions (e.g., roam in geo and cartesian) will not block the browser. Benefit from the using of GPU and avoiding of layout recalculation, ECharts GL provides smooth interactions, which has been demonstrated in the examples above. Without WebGL, the basic ECharts implements progressive rendering to support non-blocking interaction, which can be checked at the pan and zoom in <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=lines-airline">lines-airline</a> and <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=scatter-large">scatter-large</a>.</li>
+</ul>
+</li>
+<li><p>[+] <strong>Published ZRender SVG Rendering Engine</strong> as an alternative backend of ECharts besides the existing Canvas Rendering Engine. The choice of rendering engine usually depends on the scenario, for example, benefit from the low memory cost, SVG Rendering Engine is suitable for mobile device, or the case that many ECharts instances exists in a single page, while the Canvas Rendering Engine is suitable for big data rendering or when visual effects required. Canvas Rendering Engine is default rendering engine. See <a href="https://github.com/ecomfe/zrender">zrender</a>.</p>
+</li>
+<li><p>[+] <strong>Published Sunburst Chart</strong> to visualize hierarchical data efficiently with excellent interactions. See [examples] and (excellent) and <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-sunburst">docs</a>。</p>
+</li>
+<li><p>[+] <strong>Published <a href="http://echarts.baidu.com/tutorial.html#%E6%95%B0%E6%8D%AE%E9%9B%86%EF%BC%88dataset%EF%BC%89">dataset</a> component</strong> to support data based configuration, visual encoding and data sharing in different series.</p>
+</li>
+<li><p>[+] <strong>Supported WAI-ARIA (the Accessible Rich Internet Applications Suite）</strong> to help the disabled people to access the data visualization in web.</p>
+</li>
+<li><p>[+] Since ECharts4, the options <code>label</code> and <code>itemStyle</code> has been flattened. The original level of <code>normal</code> is not needed any more, which make ECharts option more neat. As always, <strong>The previous option style in ECharts3 is still be compatible</strong>.</p>
+</li>
+<li><p>[+] Added two color themes, named &#39;light&#39; and &#39;dark&#39;. Apply them by <code>echarts.init(dom, themeName);</code>.</p>
+</li>
+<li><p>[+] Supported that auto collect legend names when <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#legend.data">legend.data</a> is not specified.</p>
+</li>
+<li><p>[+] Supported that auto collect category names when <code>axis.type</code> is <code>&#39;category&#39;</code> and <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.data">axis.data</a> is not specified.</p>
+</li>
+</ul>
+<h2 id="v3-8-4">v3.8.4</h2>
+<div class="time">2017-11-13</div>
+
+<ul>
+<li>[^] Fixed that <code>registerMap</code> is null on <code>index*.js</code>.</li>
+<li>[^] Fixed some CommonJS incorrect brought by injection.</li>
+</ul>
+<h2 id="v3-8-2">v3.8.2</h2>
+<div class="time">2017-11-10</div>
+
+<ul>
+<li>[^] Fixed backward compatibility problems brounght by <code>3.8.0</code>:<ul>
+<li>In <code>3.8.0</code>, the content in <code>lib</code> directory is the same as the content in <code>src</code> directory (both are ES Module), which may not compatible with the old verisons of node and webpack. So rollback to commonJS format in <code>lib</code> of <code>3.8.2</code>.</li>
+<li>In <code>3.8.0</code>, the source code in <code>src</code> constains global variable <code>__DEV__</code> (which prints dev helper info for echarts users). To get the declaration of the global variable, users should include <code>echarts/src/config.js</code> manually or make some settings in <code>webpack</code>/<code>rollup</code> (Check <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#Create%20Custom%20Build%20of%20ECharts">custom build tutorial</a> please), which is not backward compatible. So we have removed <code>__DEV__</code> from the codes in <code>echarts/lib/**</code> in <code>3.8.2</code>. If dev helper info is required, use codes in <code>echarts/src/**</code>.</li>
+<li>After <code>3.8</code>, <code>echarts/src/echarts.js</code> (the same as <code>echarts/lib/echarts.js</code> in <code>3.8.0</code>) does not include util methods, which used to be mounted on it. Now util methods are listed in <code>echarts/src/export</code> and mounted on <code>echarts/echarts*.js</code>. But it is not backward compatibility, so we have rollbacked to mount them on <code>echarts/lib/echarts.js</code> in <code>3.8.2</code>.</li>
+<li>The way of including <code>echarts/extension/dataTool</code>, havs been rollbacked to the original approach before <code>3.8</code>, where it must be included explicitly, and the namespace will be mounted on <code>echarts</code> namespame.</li>
+</ul>
+</li>
+<li>[^] Fixed the problem that SVG renderer throws error when encounter null value.</li>
+</ul>
+<h2 id="v3-8-0">v3.8,0</h2>
+<div class="time">2017-11-07</div>
+
+<ul>
+<li><p>[+] <strong>Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-tree">Tree Chart</a></strong>, including <a href="https://ecomfe.github.io/echarts-examples/public/index.html#tree-basic">horizontal layout</a>, <a href="https://ecomfe.github.io/echarts-examples/public/index.html#tree-vertical">vertical layout</a>, <a href="https://ecomfe.github.io/echarts-examples/public/index.html#tree-radial">radial layout</a>.</p>
+</li>
+<li><p>[+] <strong>Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#Render%20by%20Canvas%20or%20SVG">SVG Renderer (beta)</a></strong>, enable developers to choose SVG or Canvas renderer based on their platfroms and functional requirments.</p>
+</li>
+<li><p>[+] Source code of echarts has been switched to ES Module, which enabled tree shaking of bundle and reduced size.</p>
+</li>
+<li><p>[+] Supported build scripts for creating custom build, including multiple language support. See <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#Create%20Custom%20Build%20of%20ECharts">custom build tutorial</a>. And added Finnish support, which is contributed by <a href="https://github.com/xvaara">xvaara</a> in <a href="https://github.com/ecomfe/echarts/pull/6863">PR #6863</a>.</p>
+</li>
+<li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.axisLine.symbol">axis arrow</a>. See <a href="https://github.com/ecomfe/echarts/issues/6675">#6675</a>.</p>
+</li>
+<li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-treemap.levels.itemStyle.normal.strokeWidth">strokeWidth</a> and <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-treemap.levels.itemStyle.normal.strokeColor">strokeColor</a> in treemap. See <a href="https://github.com/ecomfe/echarts/issues/6804">#6804</a>.</p>
+</li>
+<li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-graph.focusNodeAdjacency">show adjacent nodes</a> in graph. See <a href="https://github.com/ecomfe/echarts/issues/6772">#6772</a>.</p>
+</li>
+<li><p>[^] Fixed the area calculation when <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#grid.containLabel">grid.containLabel</a> is <code>true</code> and axis is <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#yAxis.axisLabel.rotate">rotated</a>. Thanks <a href="https://github.com/xvaara">xvaara</a> for <a href="https://github.com/ecomfe/echarts/pull/6951">PR #6951</a>.</p>
+</li>
+<li><p>[^] Fixed that the calculation of interval is not incorrect when <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.axisLabel.rotate">axisLabel.rotate</a> is set in <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.type">category axis</a>. See <a href="https://github.com/ecomfe/echarts/issues/4170">#4170</a>. Thanks<a href="https://github.com/lanyuechen">lanyuechen</a> for <a href="https://github.com/ecomfe/echarts/pull/6903">PR #6903</a>.</p>
+</li>
+<li><p>[^] Fixed the negative problem in <code>dataTool.prepareBoxplotData</code>. Thanks <a href="https://github.com/d-rudolf">d-rudolf</a> for <a href="https://github.com/ecomfe/echarts/pull/6749">PR #6749</a>.</p>
+</li>
+<li><p>[^] Enhanced the label interval of <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.type">time axis</a>. Thanks <a href="https://github.com/xiaoshan00">xiaoshan00</a> for <a href="https://github.com/ecomfe/echarts/pull/6808">PR #6808</a>.</p>
+</li>
+<li><p>[^] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#radiusAxis.inverse">radiusAxis.inverse</a>. See <a href="https://github.com/ecomfe/echarts/issues/6805">#6805</a> and <a href="https://github.com/ecomfe/echarts/issues/4253">#4253</a>.</p>
+</li>
+<li><p>[^] Renamed some variables to avoid webpack special variable name. See <a href="https://github.com/ecomfe/echarts/issues/6788">#6788</a>.</p>
+</li>
+<li><p>[^] Fixed position problem of <a href="https://ecomfe.github.io/echarts-examples/public/index.html#pie-legend">scrollable legend</a>. See <a href="https://github.com/ecomfe/echarts/issues/6756">#6756</a>.</p>
+</li>
+<li><p>[^] Fixed that the <a href="https://ecomfe.github.io/echarts-examples/public/index.html#themeRiver-basic">themeRiver</a> legend color is incorrect. See <a href="https://github.com/ecomfe/echarts/issues/6932">#6932</a>.</p>
+</li>
+<li><p>[^] Fixed that brush empty value caused error thrown. See <a href="https://github.com/ecomfe/echarts/issues/6892">#6892</a>.</p>
+</li>
+<li><p><code>dist/echarts/echarts.simple.js</code> do not includ utils, which used to be mounted on <code>echarts</code>. <code>dist/echarts/echarts.common.js</code> and <code>dist/echarts/echarts.js</code> keep including them as before. And developers can <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#Create%20Custom%20Build%20of%20ECharts">custom build</a> to include them.</p>
+</li>
+<li><p>Changes about <code>dataTool</code>: When using <code>dist/echarts/echarts.simple.js</code> or <code>dist/echarts/echarts.common.js</code>, <code>dist/echarts/extension/dataTool.js</code> should be manually included as before, but the namespace <code>dataTool</code> will not be mounted to <code>echarts</code>. When using <code>dist/echarts/echarts.js</code>, <code>echarts.dataTool</code> is included automatically by default.</p>
+</li>
+</ul>
+<h2 id="v3-7-2">v3.7.2</h2>
+<div class="time">2017-09-27</div>
+
+<ul>
+<li><p>[+] Supported English version build (All default text is in English) in <a href="https://github.com/ecomfe/echarts/tree/master/dist">https://github.com/ecomfe/echarts/tree/master/dist</a>. See <a href="https://github.com/ecomfe/echarts/issues/2321">#2321</a>.</p>
+</li>
+<li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-pie.hoverOffset">pie.hoverOffset</a>. See <a href="https://github.com/ecomfe/echarts/issues/3857">#3857</a>.</p>
+</li>
+<li><p>[^] Fixed compatibility of data in <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-candlestick">candlestick</a>. See <a href="https://github.com/ecomfe/echarts/issues/6576">#6576</a>.</p>
+</li>
+<li><p>[^] Fixed <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.showMaxLabel">showMaxLabel</a> <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.showMinLabel">showMinLabel</a>.</p>
+</li>
+<li><p>[^] Fixed area chart when all value is negative. See <a href="https://github.com/ecomfe/echarts/issues/6707">#6707</a>.</p>
+</li>
+<li><p>[^] Made the meaning of <code>&#39;middle&#39;</code> and <code>&#39;center&#39;</code> consist in <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.nameLocation">axis.nameLocation</a>.</p>
+</li>
+<li><p>[^] Fixed that <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-line.markArea.itemStyle.emphasis">markArea.itemStyle.emphasis</a> did not work. See <a href="https://github.com/ecomfe/echarts/issues/5245">#5245</a>.</p>
+</li>
+<li><p>[^] Fixed the problem of right click in <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-treemap">treemap</a>. See <a href="https://github.com/ecomfe/echarts/issues/6313">#6313</a>.</p>
+</li>
+<li><p>[^] Fixed that calender did not work because of DST (Day Saving Time). See <a href="https://github.com/ecomfe/echarts/issues/6543">#6543</a>.</p>
+</li>
+<li><p>[^] Enhanced the &quot;save as image&quot; in IE. See <a href="https://github.com/ecomfe/echarts/issues/6279">#6279</a>.</p>
+</li>
+<li><p>[^] Fixed cleaning for &quot;motion blur&quot;. See <a href="https://github.com/ecomfe/echarts/issues/6577">#6577</a>.</p>
+</li>
+<li><p>[^] Fix doji for k series <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-candlestick">candlestick</a>. See <a href="https://github.com/ecomfe/echarts/issues/6583">#6583</a>.</p>
+</li>
+<li><p>[^] Fixed the compatibility for <code>markPoint</code>. See <a href="https://github.com/ecomfe/echarts/issues/6503">#6503</a>.</p>
+</li>
+</ul>
+<h2 id="v3-7-1">v3.7.1</h2>
+<div class="time">2017-08-31</div>
+
+<p>[Recovery Build]</p>
+<ul>
+<li><p>[+] Supported function in <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.min">axis.min</a>, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.max">axis.max</a>. See <a href="https://github.com/ecomfe/echarts/issues/6465">#6465</a>.</p>
+</li>
+<li><p>[^] Fixed problems of compatibility and emphasis style about textStyle. See <a href="https://github.com/ecomfe/echarts/issues/6491">#6491</a>、<a href="https://github.com/ecomfe/echarts/issues/6529">#6529</a>, <a href="https://github.com/ecomfe/echarts/issues/6516">#6516</a>, <a href="https://github.com/ecomfe/echarts/issues/6532">#6532</a>, <a href="https://github.com/ecomfe/echarts/issues/6237">#6237</a>.</p>
+</li>
+<li><p>[^] Add sub-pixel optimize to <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-candlestick">candlestick</a>.</p>
+</li>
+<li><p>[^] Fixed that emphasis style was not applied when using <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-graph.focusNodeAdjacency">graph.focusNodeAdjacency</a>.</p>
+</li>
+</ul>
+<h2 id="v3-7-0">v3.7.0</h2>
+<div class="time">2017-08-16</div>
+
+<ul>
+<li><p><strong>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/tutorial.html#%E5%AF%8C%E6%96%87%E6%9C%AC%E6%A0%87%E7%AD%BE">Rich Text</a></strong>, which has enabled style configuring to some text snippets or the entire text block, and supported using images in text, and supported alignment or rotation of text block or snippets.</p>
+</li>
+<li><p><strong>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#legend.type">Scrollable Legend</a></strong>, which provides a solution for displays planty of legend items. See <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=pie-legend">vertical legend</a> 或 <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=radar2">horizontal legend</a>.</p>
+</li>
+<li><p>[+] Flatten <code>textStyle</code> option. <code>textStyle</code> exist in echarts option everywhere, for example, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-bar.label.normal.textStyle">series-bar.label.normal.textStyle</a>, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.axisLabel.textStyle">xAxis.axisLabel.textStyle</a>. It seems that some of them are to deep and verbose. So we removed the level of <code>textStyle</code> to flatten them. That is, previous <code>label.normal.textStyle.fontSize</code>, <code>axisLabel.textStyle.fontSize</code> is modified to <code>label.normal.fontSize</code>, <code>axisLabel.fontSize</code> after <code>v3.7</code>. Of course, the previous style is compatible all the same. Those options are flattened:</p>
+<ul>
+<li><code>axisPointer.textStyle</code></li>
+<li><code>xAxis.axisLabel.textStyle</code></li>
+<li><code>yAxis.axisLabel.textStyle</code></li>
+<li><code>radar.axisLabel.textStyle</code></li>
+<li><code>singleAxis.axisLabel.textStyle</code></li>
+<li><code>radiusAxis.axisLabel.textStyle</code></li>
+<li><code>angleAxis.axisLabel.textStyle</code></li>
+<li><code>parallel.parallelAxisDefault.axisLabel.textStyle</code></li>
+<li><code>parallelAxis.axisLabel.textStyle</code></li>
+<li><code>series.label[normal|emphasis].textStyle</code></li>
+<li><code>series.data.label[normal|emphasis].textStyle</code></li>
+<li><code>series-gauge.axisLabel.textStyle</code></li>
+<li><code>series-gauge.title.textStyle</code></li>
+<li><code>series-gauge.detail.textStyle</code></li>
+<li><code>series-treemap.upperLabel[normal|emphasis].textStyle</code></li>
+<li><code>series-graph.edgeLabel[normal|emphasis].textStyle</code></li>
+<li><code>calendar.dayLabel.textStyle</code></li>
+<li><code>calendar.monthLabel.textStyle</code></li>
+<li><code>calendar.yearLabel.textStyle</code></li>
+<li><code>markPoint.label[normal|emphasis].textStyle</code></li>
+<li><code>markPoint.data.label[normal|emphasis].textStyle</code></li>
+<li><code>markLine.label[normal|emphasis].textStyle</code></li>
+<li><code>markLine.data.label[normal|emphasis].textStyle</code></li>
+<li><code>markArea.label[normal|emphasis].textStyle</code></li>
+<li><code>markArea.data.label[normal|emphasis].textStyle</code></li>
+<li><code>tooltip.axisPointer.crossStyle.textStyle</code></li>
+<li><code>axisPointer.label.textStyle</code></li>
+<li><code>timeline.label.textStyle</code></li>
+<li><code>radar.name.textStyle</code></li>
+</ul>
+</li>
+<li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.minInterval">minInterval</a> on time axis (that is, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.type">axis.type</a> is <code>&#39;time&#39;</code>), and supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.maxInterval">maxInterval</a> on value axis (that is <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.type">axis.type</a> is <code>&#39;value&#39;</code>). So that it is enabled to controll the precision of label when data zooming.</p>
+</li>
+<li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.axisLine.onZeroAxisIndex">xAxis.axisLine.onZeroAxisIndex</a>, which enables specifing corresponding relationship when multiple axes used and <code>onZero</code> is required. See <a href="https://github.com/ecomfe/echarts/issues/5069">#5069</a>。</p>
+</li>
+<li><p>[+] Supported that do not use <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.coordinateSystems">coordinate system</a> in <code>custom series</code>.</p>
+</li>
+<li><p>[+] Supported rotation and alignment of label in bar chart. See <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-bar.label.normal.rotate">rotate</a>, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-bar.label.normal.align">align</a>, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-bar.label.normal.verticalAlign">verticalAlign</a>. See <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=bar-label-rotation">example</a>. See <a href="https://github.com/ecomfe/echarts/issues/5309">#5309</a>.</p>
+</li>
+<li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#radar.indicator.color">radar.indicator.color</a>, which enables setting different color for each indicator of radar chart. See <a href="https://github.com/ecomfe/echarts/issues/6128">#6128</a>.</p>
+</li>
+<li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#dataZoom.rangeMode">dataZoom.rangeMode</a>, which can fixing zoom window according to data when data updated. See <a href="https://github.com/ecomfe/echarts/issues/6040">#6128</a>.</p>
+</li>
+<li><p>[+] Supported using <code>dataIndex</code> in <a href="https://ecomfe.github.io/echarts-doc/public/en/api.html#action.legend.legendToggleSelect">action.legend.legendToggleSelect</a>, <a href="https://ecomfe.github.io/echarts-doc/public/en/api.html#action.legend.legendSelect">action.legend.legendSelect</a>, <a href="https://ecomfe.github.io/echarts-doc/public/en/api.html#action.legend.legendUnSelect">action.legend.legendUnSelect</a>. See <a href="https://github.com/ecomfe/echarts/issues/4242">#4242</a>.</p>
+</li>
+<li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-map.label.formatter">map.label.formatter</a>, which enables using rich text in map series. See <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=map-labels">Map Labels</a>.</p>
+</li>
+<li><p>[+] Supported <a href="http://echarts.baidu.com/option.html#title.borderRadius">title.borderRadius</a> and <a href="http://echarts.baidu.com/option.html#legend.borderRadius">legend.borderRadius</a>, which enables round corner of background or border in <code>title</code> and <code>legend</code> component.</p>
+</li>
+<li><p>[^] Fixed that error thrown when using shadow in pie series in some version of IE. See <a href="https://github.com/ecomfe/echarts/issues/5777">#5777</a>.</p>
+</li>
+<li><p>[^] Fixed that name can not be obtained in <code>tooltip</code> when <code>nameMap</code> was used in map serise and there was no data in some areas. See <a href="https://github.com/ecomfe/echarts/issues/5633">#5633</a>.</p>
+</li>
+<li><p>[^] Fixed <code>tooltip</code> location incorrect after roamed in bmap extension. See <a href="https://github.com/ecomfe/echarts/issues/6211">#6211</a>.</p>
+</li>
+<li><p>[^] Fixed null pointer exception of <code>axisPointer</code>. See <a href="https://github.com/ecomfe/echarts/issues/6121">#6121</a>.</p>
+</li>
+<li><p>[^] Fixed that error occured when height of heatmap was 0. See <a href="https://github.com/ecomfe/echarts/issues/6214">#6214</a>.</p>
+</li>
+<li><p>[+] Fixed the incorrect rendering when the first entry was empty in <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-candlestick">candlestick</a>. See <a href="https://github.com/ecomfe/echarts/issues/6059">#6059</a>.</p>
+</li>
+<li><p>[^] Fixed that <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-bar.dimensions">series-bar.dimensions</a> did not work. See <a href="https://github.com/ecomfe/echarts/issues/6252">#6252</a>。</p>
+</li>
+<li><p>[^] Fixed that when chilren number of group was not fixed, they could not be removed correctly in <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom">custom series</a>.</p>
+</li>
+<li><p>[^] Fixed the error that calling <code>connect</code> before <code>setOption</code> called. See <a href="https://github.com/ecomfe/echarts/issues/6281">#6281</a>.</p>
+</li>
+<li><p>[^] Fixed the edge judgement of <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#tooltip.confine">tooltip.confine</a>. See <a href="https://github.com/ecomfe/echarts/issues/6277">#6277</a> and <a href="https://github.com/ecomfe/echarts/commit/0da06d8">0da06d8</a>.</p>
+</li>
+<li><p>[^] Fixed that bar series displayed abnormal when viewport was narrow and bar series were overlapped (both set <code>barWidth</code> and <code>barGap: &#39;-100%&#39;</code>). See <a href="https://github.com/ecomfe/echarts/issues/6312">#6312</a>.</p>
+</li>
+<li><p>[^] Fixed precision problems. See <a href="https://github.com/ecomfe/echarts/issues/6371">#6371</a>.</p>
+</li>
+</ul>
+<h2 id="v3-6-2">v3.6.2</h2>
+<div class="time">2017-06-15</div>
+
+<ul>
+<li><p>[+] Supported draw <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom">custom series</a> on <a href="https://github.com/ecomfe/echarts/tree/master/extension/bmap">Baidu Map (bmap)</a>. See <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=map-polygon">example 1</a> and <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=map-bin">example 2</a>。</p>
+</li>
+<li><p>[+] Supported show parent labels in <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-treemap">treemap</a>. See <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=treemap-show-parent">example</a>. See <a href="https://github.com/ecomfe/echarts/issues/5869">#5869</a> and <a href="https://github.com/ecomfe/echarts/issues/5579">#5579</a>.</p>
+</li>
+<li><p>[+] Supported specifying mouse cursor style by: <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-line.cursor">series-line.cursor</a>, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-bar.cursor">series-bar.cursor</a>, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-pie.cursor">series-pie.cursor</a>, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-scatter.cursor">series-scatter.cursor</a>, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-effectScatter.cursor">series-effectScatter.cursor</a>, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-graph.cursor">series-graph.cursor</a>, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-pictorialBar.cursor">series-pictorialBar.cursor</a>.</p>
+</li>
+<li><p>[+] Support both negative and positive bounding data specified on <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-pictorialBar.symbolBoundingData">series-pictorialBar.symbolBoundingData</a>. See <a href="https://github.com/ecomfe/echarts/issues/5793">#5793</a>.</p>
+</li>
+<li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-graph.data.fixed">fixed</a> in <code>graph</code>. See <a href="https://github.com/ecomfe/echarts/issues/5966">#5966</a>.</p>
+</li>
+<li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-treemap.label.normal.formatter">label.formatter</a>in <code>treemap</code>. See <a href="https://github.com/ecomfe/echarts/issues/5757">#5757</a>.</p>
+</li>
+<li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#timeline.label.normal.textStyle.align">label.normal.textStyle.align</a> and <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#timeline.label.normal.textStyle.basealign">label.normal.textStyle.basealign</a> in <code>timeline</code>. See <a href="https://github.com/ecomfe/echarts/issues/5960">#5960</a>.</p>
+</li>
+<li><p>[^] Fixed that <code>tooltip</code> did not work when <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=scatter-large">large scatter</a> was zoomed. See<a href="https://github.com/ecomfe/echarts/issues/5837">#5837</a>.</p>
+</li>
+<li><p>[^] Fixed that parameter <code>position</code> did not work when trigger <a href="https://ecomfe.github.io/echarts-doc/public/en/api.html#action.tooltip.showTip">showTip</a> action. See <a href="https://github.com/ecomfe/echarts/issues/5874">#5874</a>.</p>
+</li>
+<li><p>[^] Fixed that sometimes the sum of the percent value is less than <code>100%</code> slightly in <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-pie">pie</a>, which was caused by precision problem. See <a href="https://github.com/ecomfe/echarts/issues/5850">#5850</a>.</p>
+</li>
+<li><p>[^] Fixed only the last <code>markPoint</code> or <code>markLine</code> was displayed when <code>series.name</code> was the same. See <a href="https://github.com/ecomfe/echarts/issues/5712">#5712</a>.</p>
+</li>
+<li><p>[^] Fixed that <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-bar.itemStyle.normal.barBorderRadius">barBorderRadius</a> did not work in horizontal bar. See <a href="https://github.com/ecomfe/echarts/issues/5943">#5943</a>.</p>
+</li>
+<li><p>[^] Fixed the zoom point error when applying <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#dataZoom-inside">dataZoom-inside</a> on Y axis. See <a href="https://github.com/ecomfe/echarts/issues/5278">#5278</a>.</p>
+</li>
+<li><p>[^] Fixed sometimes <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-radar">radar</a> did not display normally. See <a href="https://github.com/ecomfe/echarts/issues/5986">#5986</a>.</p>
+</li>
+</ul>
+<h2 id="v3-6-1">v3.6.1</h2>
+<div class="time">2017-05-26</div>
+
+<p>[Recovery Build]</p>
+<ul>
+<li>[^] Fixed that <a href="http://echarts.baidu.com/option.html#series-line.sampling">data sampling</a> did not work.</li>
+<li>[^] Fixed the problem on ie11 when compiled by webpack. See <a href="https://github.com/ecomfe/zrender/issues/189">zrender/#189</a>.</li>
+</ul>
+<h2 id="v3-6-0">v3.6.0</h2>
+<div class="time">2017-05-25</div>
+
+<ul>
+<li><p><strong>[+] Published <a href="http://echarts.baidu.com/option.html#series-custom">custom series</a></strong>, which enables user to customize render logic and make new types of chart. See <a href="http://echarts.baidu.com/examples.html#chart-type-custom">samples</a>。</p>
+</li>
+<li><p><strong>[+] Supported polar bar chart</strong>. See <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=bar-polar-stack">sample1</a>, <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=bar-polar-stack-radial">sample2</a>, <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=bar-polar-real-estate">sample3</a>。</p>
+</li>
+<li><p>[+] Supported <a href="http://echarts.baidu.com/option.html#series-scatter.encode">encode</a>, which enable user to specify which dimensions in <a href="http://echarts.baidu.com/option.html#series-scatter.data">data</a> are mapped to which axis of coordinate system. Or which dimensions will be displayed in <a href="http://echarts.baidu.com/option.html#tooltip">tooltip</a> or <a href="http://echarts.baidu.com/option.html#series-scatter.label">label</a>. [Break Change]: The default name of the third dimension in <code>cartesian2d</code> is changed from <code>&#39;z&#39;</code> to <code>&#39;value&#39;</code>. If <code>&#39;z&#39;</code> is used in <a href="http://echarts.baidu.com/option.html#visualMap.dimension">visualMap.dimension</a>, please modify it to <code>&#39;value&#39;</code> or <code>2</code>.</p>
+</li>
+<li><p>[+] Supported <a href="http://echarts.baidu.com/option.html#series-scatter.dimensions">dimensions</a>, which enables that specifying names and types for each dimensions in <a href="http://echarts.baidu.com/option.html#series-scatter.data">data</a>. Name can be displayed in <a href="http://echarts.baidu.com/option.html#tooltip">tooltip</a>.</p>
+</li>
+<li><p>[+] Supported <a href="http://echarts.baidu.com/option.html#dataZoom.minSpan">dataZoom.minSpan</a> and <a href="http://echarts.baidu.com/option.html#dataZoom.maxSpan">dataZoom.maxSpan</a>. See <a href="https://github.com/ecomfe/echarts/issues/2843">#2843</a>.</p>
+</li>
+<li><p>[+] Supported <a href="http://echarts.baidu.com/option.html#dataZoom-inside.moveOnMouseMove">dataZoom.moveOnMouseMove</a> and <a href="http://echarts.baidu.com/option.html#dataZoom-inside.zoomOnMouseWheel">dataZoom.zoomOnMouseWheel</a>, which enables that triggering dataZoom only by mouse wheel while holding &#39;ctrl&#39;/&#39;alt&#39;/&#39;shift&#39;. Moreover, supported <a href="http://echarts.baidu.com/option.html#dataZoom-inside.preventDefaultMouseMove">preventDefaultMouseMove</a>, See <a href="https://github.com/ecomfe/echarts/issues/5769">#5769</a>.</p>
+</li>
+<li><p>[+] Supported using image in <a href="http://echarts.baidu.com/option.html#dataZoom-slider.handleIcon">dataZoom.handleIcon</a> setting.</p>
+</li>
+<li><p>[^] Fixed boundary problems on world map.</p>
+</li>
+<li><p>[^] Fixed that <a href="http://echarts.baidu.com/option.html#xAxis.minInterval">minInterval</a> did not work when <a href="http://echarts.baidu.com/option.html#xAxis.min">min</a> was set. See <a href="https://github.com/ecomfe/echarts/issues/4838">#4838</a>.</p>
+</li>
+<li><p>[^] Fixed problems caused by default properties on <code>Object</code>. See <a href="https://github.com/ecomfe/echarts/issues/5576">#5576</a>.</p>
+</li>
+<li><p>[^] Fixed that error was thrown when <code>setOption</code> while legend selection changed, which was caused <a href="http://echarts.baidu.com/option.html#graphic">graphic</a>. See <a href="https://github.com/ecomfe/echarts/issues/5783">#5783</a>.</p>
+</li>
+<li><p>[^] Fixed <a href="http://echarts.baidu.com/option.html#parallelAxis.axisLabel.interval">parallelAxis.axisLabel.interval</a> supporting. See <a href="https://github.com/ecomfe/echarts/issues/5694">#5694</a>.</p>
+</li>
+<li><p>[^] Enhanced interaction of <code>dataZoom</code>.</p>
+</li>
+<li><p>[^] Fixed the problem about <a href="http://echarts.baidu.com/option.html#series-pie.minAngle">minAngle</a> on rose chart. See <a href="https://github.com/ecomfe/echarts/issues/5617">#5617</a>.</p>
+</li>
+<li><p>[^] Fixed the problem when tooltip updating.</p>
+</li>
+</ul>
 <h2 id="v3-5-4">v3.5.4</h2>
 <div class="time">2017-04-27</div>
 

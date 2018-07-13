@@ -66,8 +66,8 @@ body {
 .reveal h1 {
   font-size: 1.8em;
   background-color: rgba(0, 0, 0, 0.5);
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .reveal h2 {
@@ -314,6 +314,8 @@ body {
   height:100%!important;
   max-width:100%!important;
   max-height:100%!important;
+  min-width: 100px;
+  min-height: 100px;
 }
 
 .reveal .slides section .fragment.highlight-current-blue.current-fragment {

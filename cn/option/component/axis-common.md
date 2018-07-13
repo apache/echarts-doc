@@ -28,7 +28,20 @@
 {{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
 ##${prefix} onZero(boolean) = true
 X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一个轴为数值轴且包含 0 刻度时有效。
+
+##${prefix} onZeroAxisIndex(number)
+当有双轴时，可以用这个属性手动指定，在哪个轴的 0 刻度上。
 {{ /if }}
+
+##${prefix} symbol(string|Array) = 'none'
+轴线两边的箭头。可以是字符串，表示两端使用同样的箭头；或者长度为 2 的字符串数组，分别表示两端的箭头。默认不显示箭头，即 `'none'`。两端都显示箭头可以设置为 `'arrow'`，只在末端显示箭头可以设置为 `['none', 'arrow']`。
+
+##${prefix} symbolSize(Array) = [10, 15]
+轴线两边的箭头的大小，第一个数字表示宽度（垂直坐标轴方向），第二个数字表示高度（平行坐标轴方向）。
+
+##${prefix} symbolOffset(Array|number) = [0, 0]
+
+轴线两边的箭头的偏移，如果是数组，第一个数字表示起始箭头的偏移，第二个数字表示末端箭头的偏移；如果是数字，表示这两个箭头使用同样的偏移。
 
 ##${prefix} lineStyle(Object)
 {{ use: partial-line-style(prefix='##' + ${prefix}, defaultColor="'#333'", defaultWidth=1, defaultType="'solid'", name="坐标轴线") }}
@@ -37,8 +50,11 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 {{target: partial-axis-common-axis-label}}
 #${prefix} axisLabel(Object)
 坐标轴刻度标签的相关设置。
+
+{{if: !${hideShow} }}
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
 是否显示刻度标签。
+{{ /if }}
 
 {{ if: ${hasLabelInterval|default(true)} }}
 ##${prefix} interval(number|Function) = 'auto'
@@ -71,22 +87,15 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 ##${prefix} showMaxLabel(boolean) = null
 是否显示最大 tick 的 label。可取值 `true`, `false`, `null`。默认自动判定（即如果标签重叠，不会显示最大 tick 的 label）。
 
-##${prefix} textStyle(Object)
-
 {{ use: partial-text-style(
-    prefix='##' + ${prefix},
+    prefix='#' + ${prefix},
     defaultColor="'#333'"
 )}}
 
-###${prefix} align(string)
-文本水平对齐方式，默认自动选择对齐方式，可以是 `'left'`, `'right'`, `'center'`
-
-###${prefix} baseline(string)
-文本垂直对齐方式，默认自动选择对齐方式，可以是 `'top'`, `'middle'`, `'bottom'`
 
 
 <!-- Overwrite color -->
-###${prefix} color(Color|Function)
+##${prefix} color(Color|Function)
 
 刻度标签文字的颜色，默认取 [axisLine.lineStyle.color](~${componentType}.axisLine.lineStyle.color)。支持回调函数，格式如下
 
@@ -230,7 +239,7 @@ splitLine: {
 
 **可选：**
 + `'start'`
-+ `'middle'`
++ `'middle'` 或者 `'center'`
 + `'end'`
 
 #${prefix} nameTextStyle(Object)
@@ -269,7 +278,7 @@ splitLine: {
 boundaryGap: ['20%', '20%']
 ```
 
-#${prefix} min(number|string) = null
+#${prefix} min(number|string|function) = null
 
 坐标轴刻度最小值。
 
@@ -278,6 +287,16 @@ boundaryGap: ['20%', '20%']
 不设置时会自动计算最小值保证坐标轴刻度的均匀分布。
 
 在类目轴中，也可以设置为类目的序数（如类目轴 `data: ['类A', '类B', '类C']` 中，序数 `2` 表示 `'类C'`。也可以设置为负数，如 `-3`）。
+
+当设置成 `function` 形式时，可以根据计算得出的数据最大最小值设定坐标轴的最小值。如：
+
+```
+min: function(value) {
+    return value.min - 20;
+}
+```
+
+其中 `value` 是一个包含 `min` 和 `max` 的对象，分别表示数据的最大最小值，这个函数应该返回坐标轴的最小值。
 
 #${prefix} max(number|string) = null
 
@@ -288,6 +307,16 @@ boundaryGap: ['20%', '20%']
 不设置时会自动计算最大值保证坐标轴刻度的均匀分布。
 
 在类目轴中，也可以设置为类目的序数（如类目轴 `data: ['类A', '类B', '类C']` 中，序数 `2` 表示 `'类C'`。也可以设置为负数，如 `-3`）。
+
+当设置成 `function` 形式时，可以根据计算得出的数据最大最小值设定坐标轴的最小值。如：
+
+```
+max: function(value) {
+    return value.max - 20;
+}
+```
+
+其中 `value` 是一个包含 `min` 和 `max` 的对象，分别表示数据的最大最小值，这个函数应该返回坐标轴的最大值。
 
 #${prefix} scale(boolean) = false
 
@@ -315,7 +344,21 @@ boundaryGap: ['20%', '20%']
 }
 ```
 
-只在数值轴中（[type](~${componentType}.type): 'value'）有效。
+只在数值轴或时间轴中（[type](~${componentType}.type): 'value' 或 'time'）有效。
+
+#${prefix} maxInterval(number)
+
+自动计算的坐标轴最大间隔大小。
+
+例如，在时间轴（（[type](~${componentType}.type): 'time'））可以设置成 `3600 * 24 * 1000` 保证坐标轴分割刻度最大为一天。
+
+```js
+{
+    maxInterval: 3600 * 24 * 1000
+}
+```
+
+只在数值轴或时间轴中（[type](~${componentType}.type): 'value' 或 'time'）有效。
 
 #${prefix} interval(number)
 
@@ -363,7 +406,11 @@ boundaryGap: ['20%', '20%']
 
 #${prefix} data(Array)
 
-类目数据，在类目轴（[type](~${componentType}.type): 'category'）中有效。
+类目数据，在类目轴（[type](~${componentType}.type): `'category'`）中有效。
+
+如果没有设置 [type](~${componentType}.type)，但是设置了 `axis.data`，则认为 `type` 是 `'category'`。
+
+如果设置了 [type](~${componentType}.type) 是 `'category'`，但没有设置 `axis.data`，则 `axis.data` 的内容会自动从 [series.data](~series.data) 中获取，这会比较方便。不过注意，`axis.data` 指明的是 `'category'` 轴的取值范围。如果不指定而是从 [series.data](~series.data) 中获取，那么只能获取到 [series.data](~series.data) 中出现的值。比如说，假如 [series.data](~series.data) 为空时，就什么也获取不到。
 
 示例：
 
@@ -390,16 +437,8 @@ data: [{
 类目标签的文字样式。
 
 {{ use:partial-text-style(
-    prefix='##' + ${prefix},
-    hasAlign=true,
-    hasBaseline=true
+    prefix='##' + ${prefix}
 ) }}
-
-###${prefix} align(string)
-文本水平对齐方式，默认自动选择对齐方式，可以是 `'left'`, `'right'`, `'center'`
-
-###${prefix} baseline(string)
-文本垂直对齐方式，默认自动选择对齐方式，可以是 `'top'`, `'middle'`, `'bottom'`
 
 {{if: !${noAxisPointer} }}
 #${prefix} axisPointer(Object)

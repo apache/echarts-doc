@@ -27,6 +27,7 @@ From `3.1.10`, geo component also supports mouse events, whose parameters are:
 **Tip:**
 The region color can also be controlled by map series. See [series-map.geoIndex](~series-map.geoIndex).
 
+{{use: partial-component-id(prefix="#")}}
 
 ## show(boolean) = true
 
@@ -45,10 +46,8 @@ For example:
 regions: [{
     name: 'Guangdong',
     itemStyle: {
-        normal: {
-            areaColor: 'red',
-            color: 'red'
-        }
+        areaColor: 'red',
+        color: 'red'
     }
 }]
 ```
@@ -64,29 +63,26 @@ Whether this area is selected.
 
 ### itemStyle(Object)
 Item style of this area.
-#### normal(Object)
-##### areaColor(Color)
+#### areaColor(Color)
 Area color in the map.
-{{ use: partial-item-style(prefix='####') }}
+{{ use: partial-item-style(prefix='###') }}
 #### emphasis(Object)
 ##### areaColor(Color)
 Area color in the map.
 {{ use: partial-item-style(prefix='####') }}
 
+
 ### label(Object)
-Label style of this region.
-#### normal(Object)
-##### show(boolean) = false
-Whether to show label in normal state.
-##### textStyle(Object)
-Text style of label in normal state.
-{{ use: partial-text-style(prefix='#####') }}
+{{use: partial-label-desc}}
+{{use: partial-label(
+    prefix="###",
+    formatter=true
+)}}
 #### emphasis(Object)
-##### show(boolean) = false
-Whether to show label in emphasized state.
-##### textStyle(Object)
-Text style of label in emphasized state.
-{{ use: partial-text-style(prefix='#####') }}
+{{use: partial-label(
+    prefix="####",
+    formatter=true
+)}}
 
 
 

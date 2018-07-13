@@ -20,6 +20,8 @@
 
 ## type(string) = 'inside'
 
+{{use: partial-component-id(prefix="#")}}
+
 ## disabled(boolean) = false
 
 是否停止组件的功能。
@@ -30,3 +32,26 @@
     galleryViewPath=${galleryViewPath}
 ) }}
 
+## zoomOnMouseWheel(boolean) = true
+
+如何触发缩放。可选值为：
+
++ `true`：表示不按任何功能键，鼠标滚轮能触发缩放。
++ `false`：表示鼠标滚轮不能触发缩放。
++ `'shift'`：表示按住 `shift` 和鼠标滚轮能触发缩放。
++ `'ctrl'`：表示按住 `ctrl` 和鼠标滚轮能触发缩放。
++ `'alt'`：表示按住 `alt` 和鼠标滚轮能触发缩放。
+
+## moveOnMouseMove(boolean) = true
+
+如何触发数据窗口平移。可选值为：
+
++ `true`：表示不按任何功能键，鼠标移动能触发数据窗口平移。
++ `false`：表示鼠标滚轮不能触发平移。
++ `'shift'`：表示按住 `shift` 和鼠标移动能触发数据窗口平移。
++ `'ctrl'`：表示按住 `ctrl` 和鼠标移动能触发数据窗口平移。
++ `'alt'`：表示按住 `alt` 和鼠标移动能触发数据窗口平移。
+
+## preventDefaultMouseMove(boolean) = true
+
+是否阻止 mousemove 事件的默认行为。

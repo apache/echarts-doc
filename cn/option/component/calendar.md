@@ -44,6 +44,8 @@
 
 ---
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-rect-layout-width-height(
     componentName="calendar",
     defaultLeft="80",
@@ -147,9 +149,8 @@ calendar: [{
 
 ## itemStyle(Object)
 设置日历格的样式
-### normal(Object)
 {{ use:partial-item-style(
-    prefix="###",
+    prefix="##",
     name="calendar",
     defaultColor="#fff",
     defaultBorderWidth=1,
@@ -161,11 +162,9 @@ calendar: [{
 ```js
 calendar: [{
     itemStyle: {
-        normal: {
-            color: '#fff',
-            borderWidth: 1,
-            borderColor: '#ccc'
-        }
+        color: '#fff',
+        borderWidth: 1,
+        borderColor: '#ccc'
     }
 }]
 ```
@@ -222,9 +221,7 @@ calendar: [{
 }]
 ```
 
-### textStyle(Object)
-普通状态下的标签文本样式。
-{{ use: partial-text-style(prefix='###', defaultColor="#000",) }}
+{{ use: partial-text-style(prefix='##', defaultColor="#000",) }}
 
 
 ## monthLabel(Object)
@@ -315,9 +312,7 @@ formatter: function (param) {
 }
 ```
 
-### textStyle(Object)
-普通状态下的标签文本样式。
-{{ use: partial-text-style(prefix='###', defaultColor="#000") }}
+{{ use: partial-text-style(prefix='##', defaultColor="#000") }}
 
 ## yearLabel(Object)
 设置日历坐标中 年的样式
@@ -365,9 +360,7 @@ formatter: function (param) {
 }
 ```
 
-### textStyle(Object)
-普通状态下的标签文本样式。
-{{ use: partial-text-style(prefix='###') }}
+{{ use: partial-text-style(prefix='##') }}
 
 
 {{ use:partial-silent(

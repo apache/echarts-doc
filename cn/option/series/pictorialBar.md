@@ -48,6 +48,8 @@
 
 ## type(string) = 'pictorialBar'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 {{ use: partial-legend-hover-link() }}
@@ -60,29 +62,32 @@
     geo=false
 ) }}
 
+{{ use: partial-cursor }}
+
 ## label(Object)
 {{use:partial-label-desc}}
-### normal(Object)
 {{use:partial-label(
-    prefix="###",
+    prefix="##",
     defaultPosition="'inside'",
-    formatter=true
-)}}
-### emphasis(Object)
-{{use:partial-label(
-    prefix="###",
     formatter=true
 )}}
 
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
-### normal(Object)
 {{use:partial-item-style(
-    prefix="###",
+    prefix="##",
     useColorPalatte=true,
     hasCallback=false
 )}}
-### emphasis(Object)
+
+## emphasis(Object)
+
+### label(Object)
+{{use:partial-label(
+    prefix="###",
+    formatter=true
+)}}
+### itemStyle(Object)
 {{use:partial-item-style(
     prefix="###"
 )}}
@@ -96,6 +101,15 @@
 {{use: pictorialBar-symbol-attrs(
     prefix="#",
     galleryViewPath=${galleryViewPath}
+)}}
+
+
+{{use:partial-series-dimensions(
+    prefix="#"
+)}}
+
+{{use:partial-series-encode(
+    prefix="#"
 )}}
 
 
@@ -120,20 +134,20 @@
 
 ### label(Object)
 单个柱条文本的样式设置。
-#### normal(Object)
 {{ use:partial-label(
-    prefix="####",
+    prefix="###",
     defaultPosition="inside"
 ) }}
-#### emphasis(Object)
-{{ use:partial-label(prefix="####") }}
-
 ### itemStyle(Object)
-#### normal(Object)
 {{use:partial-item-style(
-    prefix="####"
+    prefix="###"
 )}}
-#### emphasis(Object)
+
+
+### emphasis(Object)
+#### label(Object)
+{{ use:partial-label(prefix="####") }}
+#### itemStyle(Object)
 {{use:partial-item-style(
     prefix="####"
 )}}
@@ -330,7 +344,7 @@
 {{ use: pictorialBar-symbol-attrs-cascade(attrName='symbolClip') }}
 
 
-#${prefix} symbolBoundingData(number)
+#${prefix} symbolBoundingData(number|Array)
 
 这个属性是『指定图形界限的值』。它指定了一个 data，这个 data 映射在坐标系上的位置，是图形绘制的界限。也就是说，如果设置了 `symbolBoundingData`，图形的尺寸则由 `symbolBoundingData` 决定。
 
@@ -362,6 +376,12 @@
 例子：
 ~[800x600](${galleryViewPath}doc-example/pictorialBar-repeatLayout&reset=1&edit=1)
 
+<br>
+`symbolBoundingData` 可以是一个数组，例如 `[-40, 60]`，表示同时指定了正值的 `symbolBoundingData` 和负值的 `symbolBoundingData`。
+
+参见例子：
+~[800x400](${galleryViewPath}doc-example/pictorialBar-symbolBoundingDataArray&reset=1&edit=1)
+
 
 {{ use: pictorialBar-symbol-attrs-cascade(attrName='symbolBoundingData') }}
 
@@ -377,11 +397,9 @@ textureImg.src = 'data:image/jpeg;base64,...'; // dataURI
 // textureImg.src = 'http://xxx.xxx.xxx/xx.png'; // URL
 ...
 itemStyle: {
-    normal: {
-        color: {
-            image: textureImg,
-            repeat: 'repeat'
-        }
+    color: {
+        image: textureImg,
+        repeat: 'repeat'
     }
 }
 ```

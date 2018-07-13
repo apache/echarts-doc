@@ -1,5 +1,5 @@
 {{ target: styling }}
-# Customerized Chart Styles
+# Customized Chart Styles
 
 ECharts provides a rich amount of configurable items, which can be set in global, series, and data three different levels. Next, let's see an example of how to use ECharts to implement the following Nightingale rose chart:
 
@@ -7,7 +7,7 @@ ECharts provides a rich amount of configurable items, which can be set in global
 
 ## Drawing Nightingale Rose Chart
 
-[Getting started tutorial](~getting-started) introduced how to make a simple bar chart. This time, we are going to make a pie chart. Pie charts use arc length of fans to represent ratio of a certain series in total share. It's data format is simpler than bar chart, because it only contains one dimension without category. Besides, since it's not in rectangular system, it doesn't need `xAxis`，`yAxis` either.
+[Getting started tutorial](~Get%20Started%20with%20ECharts%20in%205%20minutes) introduced how to make a simple bar chart. This time, we are going to make a pie chart. Pie charts use arc length of fans to represent ratio of a certain series in total share. It's data format is simpler than bar chart, because it only contains one dimension without category. Besides, since it's not in rectangular system, it doesn't need `xAxis`，`yAxis` either.
 
 ```js
 myChart.setOption({
@@ -50,16 +50,14 @@ Commonly used styles of ECharts, like shadow, opacity, color, border-color, bord
 
 ```js
 itemStyle: {
-    normal: {
-        // shadow size
-        shadowBlur: 200,
-        // horizontal offset of shadow
-        shadowOffsetX: 0,
-        // vertical offset of shadow
-        shadowOffsetY: 0,
-        // shadow color
-        shadowColor: 'rgba(0, 0, 0, 0.5)'
-    }
+    // shadow size
+    shadowBlur: 200,
+    // horizontal offset of shadow
+    shadowOffsetX: 0,
+    // vertical offset of shadow
+    shadowOffsetY: 0,
+    // shadow color
+    shadowColor: 'rgba(0, 0, 0, 0.5)'
 }
 ```
 
@@ -67,7 +65,7 @@ The effect after added shadow is:
 
 ~[400x300](${galleryViewPath}doc-example/tutorial-styling-step2&edit=1&reset=1)
 
-Each `itemStyle` has two children, `normal` and `emphasis`. `normal` is the style by default, while `emphasis` is the highlighted style when mouse hovered. The last example shows the effect of adding shadow by default. But in most situations, we may probably need to add shadow to emphasis when mouse is hovered.
+Each `itemStyle` has `emphasis` as the highlighted style when mouse hovered. The last example shows the effect of adding shadow by default. But in most situations, we may probably need to add shadow to emphasis when mouse is hovered.
 
 ```js
 itemStyle: {
@@ -100,14 +98,12 @@ setOption({
 })
 ```
 
-On the other hand, we can also set them in [label.normal.textStyle](option.html#series-pie.label.normal.textStyle) of each series.
+On the other hand, we can also set them in [label.textStyle](option.html#series-pie.label.textStyle) of each series.
 
 ```js
 label: {
-    normal: {
-        textStyle: {
-            color: 'rgba(255, 255, 255, 0.3)'
-        }
+    textStyle: {
+        color: 'rgba(255, 255, 255, 0.3)'
     }
 }
 ```
@@ -116,10 +112,8 @@ We also need to set line color of pie chart to be lighter.
 
 ```js
 labelLine: {
-    normal: {
-        lineStyle: {
-            color: 'rgba(255, 255, 255, 0.3)'
-        }
+    lineStyle: {
+        color: 'rgba(255, 255, 255, 0.3)'
     }
 }
 ```
@@ -128,7 +122,7 @@ Thus, we can get the following effect.
 
 ~[400x300](${galleryViewPath}doc-example/tutorial-styling-step3&edit=1&reset=1)
 
-Similar to `itemStyle`, `label` and `labelLine` also have `normal` and `emphasis` children.
+Similar to `itemStyle`, `label` and `labelLine` also have `emphasis` children.
 
 
 ## Setting Fan Colors
@@ -137,12 +131,10 @@ Fan colors can be set in `itemStyle`:
 
 ```js
 itemStyle: {
-    normal: {
-        // 设置扇形的颜色
-        color: '#c23531',
-        shadowBlur: 200,
-        shadowColor: 'rgba(0, 0, 0, 0.5)'
-    }
+    // 设置扇形的颜色
+    color: '#c23531',
+    shadowBlur: 200,
+    shadowColor: 'rgba(0, 0, 0, 0.5)'
 }
 ```
 
@@ -157,9 +149,7 @@ data: [{
     value:400,
     name:'搜索引擎',
     itemStyle: {
-        normal: {
-            color: '#c23531'
-        }
+        color: '#c23531'
     }
 }, ...]
 ```

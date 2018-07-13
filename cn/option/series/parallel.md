@@ -12,6 +12,7 @@
 
 ## type(string) = 'parallel'
 
+{{use: partial-component-id(prefix="#")}}
 
 {{use: partial-coord-sys(
     seriesType="parallel",
@@ -39,6 +40,17 @@
 ## realtime(boolean) = true
 
 是否实时刷新。
+
+## smooth(boolean|number) = false
+
+是否使用平滑曲线。默认为 `false`，可以设置为 `true` 或者一个范围为 `0` 到 `1` 的小数值，指定平滑程度。
+
+
+{{ use:partial-progressive(
+    prefix='#',
+    supportProgressiveChunkMode=true,
+    defaultProgressive=500
+) }}
 
 
 ## data(Array)
@@ -78,18 +90,18 @@
 
 线条样式。
 
-##${prefix} normal(Object)
-
 {{use:partial-line-style(
-    prefix="###",
+    prefix="##",
     defaultWidth=2,
     defaultOpacity=0.45
 )}}
 
-##${prefix} emphasis(Object)
+#${prefix} emphasis(Object)
+
+##${prefix} lineStyle(Object)
 
 {{use:partial-line-style(
-    prefix="###",
+    prefix="##" + ${prefix},
     defaultWidth=2,
     defaultOpacity=0.45
 )}}

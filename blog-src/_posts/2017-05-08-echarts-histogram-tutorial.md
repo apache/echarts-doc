@@ -2,7 +2,7 @@
 layout: post
 title: 那些年我们一起学过的直方图
 description: "某天下午小编正在安安静静地撸代码，突然听说在我们的[gallery](http://gallery.echartsjs.com/explore.html#sort=rank~timeframe=all~author=all)上，有用户提出，[ECharts](http://echarts.baidu.com/index.html)不支持直方图，什么？这怎么能忍？于是小编将珍藏已久的机械键盘拿出来，摆好姿势，通宵达旦地为用户大大们加好了直方图，并于上周四悄悄上线了，对，我们就是这么低调。然而，很多大大们表示，直方图还是柱状图？傻傻分不清。小编深感这年头光有图怕是不行了，必须得有个教程，要做到图文并茂。下面小编就从直方图是什么，为什么要用直方图，以及如何使用[ECharts](http://echarts.baidu.com/index.html)制作直方图三个方面，为各位大大们上点干货。"
-tags: [histogram, tutorial]
+tags: [直方图, 教程, 扩展]
 image:
   feature: post/2017-05-08-echarts-histogram-height-of-tree.png
 ---

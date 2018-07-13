@@ -2,24 +2,23 @@
 
 #${prefix} iconStyle(Object)
 ${name} icon 样式设置。
-##${prefix} normal(Object)
 {{ use: partial-item-style(
     defaultBorderColor = '#666',
     defualtColor = 'none',
     defaultBorderWidth = 1,
-    prefix="##" + ${prefix}
+    prefix="#" + ${prefix}
 ) }}
-###${prefix} textPosition(string)
+##${prefix} textPosition(string)
 文本位置，`'left'` / `'right'` / `'top'` / `'bottom'`。
-###${prefix} textAlign(string)
+##${prefix} textAlign(string)
 文本对齐方式，`'left'` / `'right'`。
-##${prefix} emphasis(Object)
+
+
+#${prefix} emphasis(Object)
+##${prefix} iconStyle(Object)
 {{ use: partial-item-style(prefix="##" + ${prefix}) }}
 
 
-{{ target: feature-icon-desc }}
-
-Icon 的 path 字符串，ECharts 3 中支持使用自定义的 svg path 作为 icon，格式参见 [SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData)。可以从 Adobe Illustrator 等工具编辑导出。
 
 {{ target: feature-common}}
 
@@ -29,7 +28,7 @@ Icon 的 path 字符串，ECharts 3 中支持使用自定义的 svg path 作为 
 #### title(boolean) = '${title}'
 
 #### icon
-{{ use: feature-icon-desc }}
+{{ use: partial-icon-image-path }}
 
 {{ use: feature-icon-style(name=${title}, prefix="###") }}
 
@@ -44,6 +43,8 @@ Icon 的 path 字符串，ECharts 3 中支持使用自定义的 svg path 作为 
 **如下示例：**
 
 ~[600x400](${galleryViewPath}line-marker&reset=1&edit=1)
+
+{{use: partial-component-id(prefix="#")}}
 
 ## show(boolean) = true
 
@@ -186,9 +187,9 @@ optionToContent: function(opt) {
 #### icon(Object)
 缩放和还原的 icon path。
 ##### zoom(string)
-{{ use: feature-icon-desc }}
+{{ use: partial-icon-image-path }}
 ##### back(string)
-{{ use: feature-icon-desc }}
+{{ use: partial-icon-image-path }}
 #### title(Object)
 缩放和还原的标题文本。
 ##### zoom(string) = '区域缩放'
@@ -213,13 +214,13 @@ feature: {
 #### icon(Object)
 各个类型的 icon path，可以分别配置。
 ##### line(string)
-{{ use: feature-icon-desc }}
+{{ use: partial-icon-image-path }}
 ##### bar(string)
-{{ use: feature-icon-desc }}
+{{ use: partial-icon-image-path }}
 ##### stack(string)
-{{ use: feature-icon-desc }}
+{{ use: partial-icon-image-path }}
 ##### tiled(string)
-{{ use: feature-icon-desc }}
+{{ use: partial-icon-image-path }}
 #### title(Object)
 各个类型的标题文本，可以分别配置。
 ##### line(string) = '切换为折线图'
@@ -259,17 +260,17 @@ feature: {
 #### icon(Object)
 每个按钮的 icon path。
 ##### rect(string)
-{{ use: feature-icon-desc }}
+{{ use: partial-icon-image-path }}
 ##### polygon(string)
-{{ use: feature-icon-desc }}
+{{ use: partial-icon-image-path }}
 ##### lineX(string)
-{{ use: feature-icon-desc }}
+{{ use: partial-icon-image-path }}
 ##### lineY(string)
-{{ use: feature-icon-desc }}
+{{ use: partial-icon-image-path }}
 ##### keep(string)
-{{ use: feature-icon-desc }}
+{{ use: partial-icon-image-path }}
 ##### clear(string)
-{{ use: feature-icon-desc }}
+{{ use: partial-icon-image-path }}
 #### title(Object)
 标题文本。
 ##### rect(string) = '矩形选择'

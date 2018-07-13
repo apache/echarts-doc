@@ -22,6 +22,8 @@ What's more, the time attribute of the orinigal dataset would map to a single ti
 
 ## type(string) = 'themeRiver'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-rect-layout-width-height(
     componentName='thmemRiver',
     defaultLeft: '5%',
@@ -53,33 +55,38 @@ The index of single time axis, which defaults to be 0 because it contains only o
 
 `label` describes style of text labels with which each ribbon-shape river branch corresponds in theme river.
 
-### normal(Object)
 {{use:partial-label(
-    prefix="###",
+    prefix="##",
     defaultShowLabel=true,
     defaultPosition="'left'",
     defaultMargin=4,
-    defaultTextAlign="'right'"
-)}}
-#### textStyle(Object)
-{{use: partial-text-style(
-    prefix="####",
+    noAlign=true,
+    noVerticalAlign=true,
     defaultColor="'#000'",
-    defaultFontSize=11
-)}}
-### emphasis(Object)
-{{use:partial-label(
-    prefix="###"
+    defaultFontSize=11,
 )}}
 
 ## itemStyle(Object)
 
 style of each ribbon-shape river branch in theme river.
-### normal(Object)
 {{use: partial-item-style(
-    prefix="###"
+    prefix="##"
 )}}
-### emphasis(Object)
+
+## emphasis(Object)
+
+### label(Object)
+{{use:partial-label(
+    prefix="###",
+    defaultPosition="'left'",
+    defaultMargin=4,
+    noAlign=true,
+    noVerticalAlign=true,
+    defaultColor="'#000'",
+    defaultFontSize=11,
+)}}
+
+### itemStyle(Object)
 {{use: partial-item-style(
     prefix="###",
     defaultShadowBlur=20,

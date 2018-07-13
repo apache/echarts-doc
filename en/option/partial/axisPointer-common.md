@@ -1,7 +1,5 @@
 {{ target: partial-axisPointer-introduction}}
 
-坐标轴指示器是指示坐标轴当前刻度的工具。
-
 `axisPointer` is a tool for displaying reference line and axis value under mouse pointer.
 
 For example:
@@ -103,7 +101,7 @@ Options:
     galleryEditorPath=${galleryEditorPath}
 )}}
 
-#${prefix} tiggerTooltip(boolean) = true
+#${prefix} triggerTooltip(boolean) = true
 
 Whether to trigger tooltip.
 
@@ -128,9 +126,7 @@ Set to `true` to use handle.
 
 The icon of the handle.
 
-{{ use: partial-icon-path }}
-
-You can also set it as `'image://url'` to use a image.
+{{ use: partial-icon-image-path }}
 
 See the [example of using image](${galleryEditorPath}doc-example/axisPointer-handle-image&edit=1&reset=1)
 
@@ -224,10 +220,9 @@ formatter: function (params) {
 
 Distance between label and axis.
 
-##${prefix} textStyle(boolean)
 
-{{ use: partial-text-style(
-    prefix='##' + ${prefix},
+{{ use: partial-simple-text-style(
+    prefix='#' + ${prefix},
     defaultColor="'#fff'"
 )}}
 

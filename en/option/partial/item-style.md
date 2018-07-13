@@ -1,5 +1,5 @@
 {{target:partial-item-style-desc}}
-Graphic style of ${name}, which has `normal` and `emphasis` two styles. `normal` is the style by default, while `emphasis` is the style when it is highlighted, like being hovered by mouse, or highlighted via legend connect. 
+Graphic style of ${name}, `emphasis` is the style when it is highlighted, like being hovered by mouse, or highlighted via legend connect.
 
 {{target:partial-item-style}}
 

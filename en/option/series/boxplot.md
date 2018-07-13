@@ -17,6 +17,8 @@ Multiple `series` can be displayed in the same coordinate system. Please refer t
 
 ## type(string) = 'boxplot'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{use: partial-coord-sys(
     seriesType="cartesian2d",
     coordSysDefault="'cartesian2d'",
@@ -56,7 +58,42 @@ Up and bottom boundary of box width. The array is in the form of `[min, max]`.
 It could be absolute value in pixel, such as `[7, 50]`, or percentage, such as `['40%', '90%']`. The percentage means the percentage to the maximum possible width.
 
 
-{{use:partial-boxplot-item-style(prefix="#")}}
+
+## itemStyle(Object)
+
+{{use: partial-item-style(
+    prefix="##",
+    useColorPalatte=true,
+    name="boxplot",
+    defaultColor="#fff",
+    defaultBorderWidth=1
+)}}
+
+## emphasis(Object)
+
+### itemStyle(Object)
+
+{{use: partial-item-style(
+    prefix="###",
+    useColorPalatte=true,
+    name="boxplot",
+    defaultColor="#fff",
+    defaultBorderWidth=2,
+    defaultShadowBlur=5,
+    defaultShadowOffsetX=2,
+    defaultShadowOffsetY=2,
+    defaultShadowColor="rgba(0,0,0,0.4)"
+)}}
+
+
+
+{{use:partial-series-dimensions(
+    prefix="#"
+)}}
+
+{{use:partial-series-encode(
+    prefix="#"
+)}}
 
 
 ## data(Array)
@@ -87,7 +124,7 @@ Every data item (each line in the example above) in the two-dimensional array wi
 
 ECharts doesn't contain data processing modules, so the five statistic values should be calculated by yourself and then passes into `boxplot`.
 
-However, ECharts also provide some simple [raw data processing tools](https://github.com/ecomfe/echarts/tree/dev-3.0.0/extension/dataTool). For example, this [example](${galleryEditorPath}boxplot-light-velocity&edit=1&reset=1) uses `echarts.dataTool.prepareBoxplotData` to proceed simple data statistics.
+However, ECharts also provide some simple [raw data processing tools](https://github.com/ecomfe/echarts/tree/master/extension/dataTool). For example, this [example](${galleryEditorPath}boxplot-light-velocity&edit=1&reset=1) uses `echarts.dataTool.prepareBoxplotData` to proceed simple data statistics.
 
 
 ### name(string)
@@ -102,7 +139,32 @@ Value of data item.
 [min,  Q1,  median (or Q2),  Q3,  max]
 ```
 
-{{use:partial-boxplot-item-style(prefix="##")}}
+### itemStyle(Object)
+
+{{use: partial-item-style(
+    prefix="###",
+    useColorPalatte=true,
+    name="boxplot",
+    defaultColor="#fff",
+    defaultBorderWidth=1
+)}}
+
+### emphasis(Object)
+
+#### itemStyle(Object)
+
+{{use: partial-item-style(
+    prefix="####",
+    useColorPalatte=true,
+    name="boxplot",
+    defaultColor="#fff",
+    defaultBorderWidth=2,
+    defaultShadowBlur=5,
+    defaultShadowOffsetX=2,
+    defaultShadowOffsetY=2,
+    defaultShadowColor="rgba(0,0,0,0.4)"
+)}}
+
 
 {{use: partial-tooltip-in-series-data(
     galleryViewPath=${galleryViewPath}
@@ -137,45 +199,3 @@ Value of data item.
     galleryViewPath=${galleryViewPath}
 )}}
 
-
-
-
-
-
-
-
-
-
-
-
-{{target:partial-boxplot-item-style}}
-
-#${prefix} itemStyle(Object)
-
-{{use:partial-item-style-desc(name="boxplot")}}
-
-
-##${prefix} normal(Object)
-
-{{use: partial-item-style(
-    prefix="###",
-    useColorPalatte=true,
-    name="boxplot",
-    defaultColor="#fff",
-    defaultBorderWidth=1
-)}}
-
-
-##${prefix} emphasis(Object)
-
-{{use: partial-item-style(
-    prefix="###",
-    useColorPalatte=true,
-    name="boxplot",
-    defaultColor="#fff",
-    defaultBorderWidth=2,
-    defaultShadowBlur=5,
-    defaultShadowOffsetX=2,
-    defaultShadowOffsetY=2,
-    defaultShadowColor="rgba(0,0,0,0.4)"
-)}}

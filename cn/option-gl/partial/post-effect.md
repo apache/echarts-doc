@@ -72,7 +72,7 @@
     <img src="documents/asset/gl/img/geo-dof-large.png" width="100%" title="blurSize: 10">
 </div>
 
-##${prefix|default('#')} SSAO(Object)
+##${prefix|default('#')} screenSpaceAmbientOcclusion(Object)
 
 屏幕空间的环境光遮蔽效果。环境光遮蔽可以让角落，缝隙等大部分光无法到达的区域变暗，是传统的阴影贴图的补充，可以让整个场景更加自然，有层次。
 
@@ -82,6 +82,11 @@
     <img src="documents/asset/gl/img/geo-no-ssao.png" width="100%" title="No SSAO">
     <img src="documents/asset/gl/img/geo-ssao.png" width="100%" title="SSAO">
 </div>
+
+##${prefix|default('#')} SSAO(Object)
+
+同 [screenSpaceAmbientOcclusion](~${componentType}.postEffect.screenSpaceAmbientOcclusion)
+
 
 ###${prefix|default('#')} enable(boolean) = false
 

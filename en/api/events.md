@@ -96,6 +96,21 @@ Event emitted after unselecting legend.
     selected: Object
 }
 ```
+
+## legendscroll(Event)
+**ACTION:** [legendscroll](~action.legend.legendScroll)
+Event when trigger legend scroll.
+
+```js
+{
+    type: 'legendscroll',
+    scrollDataIndex: number
+    legendId: string
+}
+```
+
+
+
 ## datazoom(Event)
 **ACTION:** [dataZoom](~action.dataZoom.dataZoom)
 
@@ -208,13 +223,13 @@ chart.on('axisareaselected', function () {
 ```
 
 
-## focusNodeAdjacency(Event)
+## focusnodeadjacency(Event)
 Adjacent nodes highlight event in [graph](option.html#graph).
 
 See [focusNodeAdjacency](~action.graph.focusNodeAdjacency).
 
 
-## unfocusNodeAdjacency(Event)
+## unfocusnodeadjacency(Event)
 Adjacent nodes reverse-highlight event in [graph](option.html#graph).
 
 See [unfocusNodeAdjacency](~action.graph.unfocusNodeAdjacency).
@@ -305,6 +320,36 @@ chart.on('brushSelected', function (params) {
 
 **Tip: **
 [brush.throttleType](option.html#brush.throttleType) can be used to avoid triggering this event too frequently.
+
+
+
+
+## rendered(Event)
+
+Trigger when a frame rendered. Notice that the `rendered` event does not indicate that the animation finished (see [animation](~animation) and relevant options) or progressive rendering finished (see [progressive](~series-scatter.progressive) and relevant options).
+
+For example:
+```js
+var snapshotImage = new Image();
+document.body.append(snapshotImage);
+chart.on('rendered', function () {
+    snapshotImage.src = chart.getDataURL();
+});
+```
+
+
+## finished(Event)
+
+Triggered when render finished, that is, when animation finished (see [animation](~animation) and relevant options) and progressive rendering finished (see [progressive](~series-scatter.progressive) and relevant options).
+
+
+```js
+var snapshotImage = new Image();
+document.body.append(snapshotImage);
+chart.on('finished', function () {
+    snapshotImage.src = chart.getDataURL();
+});
+```
 
 
 

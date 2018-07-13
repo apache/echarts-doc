@@ -140,35 +140,21 @@ textStyle: {
 {{ target: component-axis3D-common-splitLine }}
 
 #${prefix|default('#')} splitLine(Object)
-
-坐标轴在 [grid3D](~grid3D) 的平面上的分隔线。
+坐标轴轴线相关设置。
 ##${prefix|default('#')} show(boolean) = ${defaultShow|default(true)}
-是否显示分隔线。默认数值轴显示，类目轴不显示。
+是否显示坐标轴轴线。
 
 {{ if: ${hasLabelInterval|default(true)} }}
 ##${prefix|default('#')} interval(number|Function) = 'auto'
 {{ use: component-axis3D-common-axis-interval(
-    name="坐标轴分隔线",
+    name="坐标轴刻度标签",
+    isAxisLabel=true,
     componentType=${componentType}
 ) }}
 {{ /if }}
 
-{{ use: partial-line-style(prefix='##' + ${prefix}, defaultColor="'#333'", defaultWidth=1, name="坐标轴分隔线") }}
-<!-- overwrite color -->
-###${prefix} color(Array|string) = ['#ccc']
-分隔线颜色，可以设置成单个颜色。
-
-也可以设置成颜色数组，分隔线会按数组中颜色的顺序依次循环设置颜色。
-
-示例
-```
-splitLine: {
-    lineStyle: {
-        // 使用深浅的间隔色
-        color: ['#aaa', '#ddd']
-    }
-}
-```
+##${prefix|default('#')} lineStyle(Object)
+{{ use: partial-line-style(prefix='##' + ${prefix|default('#')}, defaultColor="'#333'", defaultWidth=2, name="坐标轴线") }}
 
 
 

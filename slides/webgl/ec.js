@@ -71,7 +71,7 @@ timerChart.setOption({
     }]
 });
 
-var timeAll = 45 * 60 * 1000;
+var timeAll = 30 * 60 * 1000;
 var elapsedTime = 0;
 var timeInterval = 1000 * 30;
 setInterval(function () {

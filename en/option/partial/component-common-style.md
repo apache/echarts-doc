@@ -27,4 +27,24 @@ Border width of ${componentName}.
 **Attention**: Works only if `show: true` is set.
 {{/if}}
 
+{{if: ${hasBorderRadius} }}
+{{use: partial-border-radius(prefix=${prefix})}}
+{{/if}}
+
 {{ use:partial-style-shadow(prefix=${prefix}, needShow=true) }}
+
+
+
+
+
+
+{{target: partial-border-radius}}
+
+#${prefix} ${propName|default('borderRadius')}(number|Array) = 0
+The radius of rounded corner. Its unit is px. And it supports use array to respectively specify the 4 corner radiuses.
+
+For example:
+```
+${propName|default('borderRadius')}: 5, // consistently set the size of 4 rounded corners
+${propName|default('borderRadius')}: [5, 5, 0, 0] // (clockwise upper left, upper right, bottom right and bottom left)
+```

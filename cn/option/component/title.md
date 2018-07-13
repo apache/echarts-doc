@@ -1,6 +1,7 @@
 
 {{target: component-title}}
 
+
 # title(Object)
 
 标题组件，包含主标题和副标题。
@@ -10,6 +11,7 @@
 **例如下面不同缓动函数效果的示例，每一个缓动效果图都带有一个标题组件：**
 ~[700x400](${galleryViewPath}line-easing&edit=1&reset=1)
 
+{{use: partial-component-id(prefix="#")}}
 
 ## show(boolean) = true
 
@@ -40,16 +42,9 @@
     name="主标题",
     defaultFontSize=18,
     defaultFontWeight="'bolder'",
-    defaultColor="'#333'"
+    defaultColor="'#333'",
+    noBox=true
 ) }}
-
-## textAlign(string)
-
-标题文本水平对齐，支持 'left', 'center', 'right'，默认根据标题位置决定。
-
-## textBaseline(string)
-
-标题文本垂直对齐，支持 'top', 'middle', 'bottom'，默认根据标题位置决定。
 
 
 ## subtext(string) = ''
@@ -76,7 +71,8 @@
 {{ use: partial-text-style(
     prefix='##',
     name="副标题",
-    defaultColor="'#aaa'"
+    defaultColor="'#aaa'",
+    noBox=true
 ) }}
 
 ## padding(number) = 5
@@ -89,7 +85,12 @@
 
 {{use: partial-rect-layout(componentName="grid ")}}
 
-{{ use: partial-component-common-style(componentName="标题", prefix='#', defaultBorderWidth="0") }}
+{{ use: partial-component-common-style(
+    componentName="标题",
+    prefix='#',
+    defaultBorderWidth="0",
+    hasBorderRadius=true
+) }}
 
 
 

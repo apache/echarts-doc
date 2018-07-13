@@ -138,7 +138,7 @@ myChart.setOption({
 
         是否禁止抛出事件。默认为 `false`。
 
-**Tip:** 有时候图表会放在多个标签页里，那些初始隐藏的标签在初始化图表的时候应为获取不到容器的实际高宽，可能会绘制失败，因此在切换到该标签页时需要手动调用 `resize` 方法获取正确的高宽并且刷新画布，或者在 `opts` 中显示指定图表高宽。
+**Tip:** 有时候图表会放在多个标签页里，那些初始隐藏的标签在初始化图表的时候因为获取不到容器的实际高宽，可能会绘制失败，因此在切换到该标签页时需要手动调用 `resize` 方法获取正确的高宽并且刷新画布，或者在 `opts` 中显示指定图表高宽。
 
 ## dispatchAction(Function)
 ```js
@@ -442,6 +442,25 @@ img.src = myChart.getDataURL({
 ```
 
 导出联动的图表图片，返回一个 base64 的 url，可以设置为`Image`的`src`。导出图片中每个图表的相对位置跟容器的相对位置有关。
+
+
+## appendData
+```js
+(opts: {
+    // 要增加数据的系列序号。
+    seriesIndex?: string,
+    // 增加的数据。
+    data?: Array|TypedArray,
+}) => string
+```
+
+此接口用于，在大数据量（百万以上）的渲染场景，分片加载数据和增量渲染。在大数据量的场景下（例如地理数的打点），就算数据使用二进制格式，也会有几十或上百兆，在互联网环境下，往往需要分片加载。`appendData` 接口提供了分片加载后增量渲染的能力，渲染新加如的数据块时不会清除原有已经渲染的部分。
+
+注意：
+
++ 现在不支持 [系列（series）](option.html#series) 使用 [dataset](option.html#dataset) 同时使用 `appendData`，只支持系列使用自己的 [series.data](option.html#series.data) 时使用 `appendData`。
++ 目前并非所有的图表都支持分片加载时的增量渲染。目前支持的图有：ECharts 基础版本的 [散点图（scatter）](option.html#series-scatter) 和 [线图（lines）](option-gl.html#series-linesGL)。ECharts GL 的 [散点图（scatterGL）](option-gl.html#series-scatterGL)、[线图（linesGL）](option-gl.html#series-lines3D) 和 [可视化建筑群（polygons3D）](ooption-gl.html#series-polygons3D)。
+
 
 ## clear
 

@@ -13,6 +13,7 @@
 
 ## type(string) = 'slider'
 
+{{use: partial-component-id(prefix="#")}}
 
 ## show(boolean) = true
 
@@ -65,6 +66,8 @@
 ```js
 'M8.2,13.6V3.9H6.3v9.7H3.1v14.9h3.3v9.7h1.8v-9.7h3.3V13.6H8.2z M9.7,24.4H4.8v-1.4h4.9V24.4z M9.7,19.1H4.8v-1.4h4.9V19.1z'
 ```
+
+{{ use: partial-icon-image-path }}
 
 自定义 icon 见 [示例 area-simple](${galleryEditorPath}area-simple)
 
@@ -125,7 +128,7 @@ labelFormatter: function (value) {
 
 ## textStyle
 
-{{ use:partial-text-style(
+{{ use:partial-simple-text-style(
     prefix='##',
     name='dataZoom ',
     defaultColor='#333'

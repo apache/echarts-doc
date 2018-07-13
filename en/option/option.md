@@ -22,6 +22,8 @@
 {{import: component-timeline}}
 {{import: component-graphic}}
 {{import: component-calendar}}
+{{import: component-dataset}}
+{{import: component-aria}}
 
 
 {{import: series-line}}
@@ -31,7 +33,9 @@
 {{import: series-effectScatter}}
 
 {{import: series-radar}}
+{{import: series-tree}}
 {{import: series-treemap}}
+{{import: series-sunburst}}
 {{import: series-boxplot}}
 {{import: series-candlestick}}
 {{import: series-heatmap}}
@@ -44,6 +48,7 @@
 {{import: series-gauge}}
 {{import: series-pictorialBar}}
 {{import: series-themeRiver}}
+{{import: series-custom}}
 
 # color(Array)
 
@@ -64,7 +69,7 @@ Background color. Defaults to have no background.
 # textStyle(Object)
 Global font style.
 
-{{ use: partial-text-style(
+{{ use: partial-simple-text-style(
     prefix: '#',
     defaultFontSize: 12
 ) }}

@@ -3,12 +3,16 @@
 标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 `\n` 换行。
 
 **字符串模板**
-
-模板变量有 `{a}`、`{b}`、`{c}`，分别表示系列名，数据名，数据值。
+模板变量有：
++ `{a}`：系列名。
++ `{b}`：数据名。
++ `{c}`：数据值。
++ `{@xxx}：数据中名为 `'xxx'` 的维度的值，如 `{@product}` 表示名为 `'product'` 的维度的值。
++ `{@[n]}：数据中维度 `n` 的值，如 `{@[3]}` 表示维度 3 的值，从 0 开始计数。
 
 **示例：**
 ```js
-formatter: '{b}: {c}'
+formatter: '{b}: {@score}'
 ```
 
 **回调函数**
@@ -21,11 +25,32 @@ formatter: '{b}: {c}'
 {{ use: partial-formatter-params-structure() }}。
 
 
+{{ target: partial-seriesLayoutBy }}
+
+## seriesLayoutBy(string) = 'column'
+
+当使用 [dataset](~dataset) 时，`seriesLayoutBy` 指定了 `dataset` 中用行还是列对应到系列上，也就是说，系列“排布”到 `dataset` 的行还是列上。可取值：
+
++ 'column'：默认，`dataset` 的列对应于系列，从而 `dataset` 中每一列是一个维度（dimension）。
++ 'row'：`dataset` 的行对应于系列，从而 `dataset` 中每一行是一个维度（dimension）。
+
+参见这个 [示例](http://echarts.baidu.com/examples/editor.html?c=dataset-series-layout-by&theme=lite)
+
+{{ target: partial-datasetIndex }}
+
+## datasetIndex(number) = 0
+
+如果 [series.data](~series.data) 没有指定，并且 [dataset](~dataset) 存在，那么就会使用 [dataset](~dataset)。`datasetIndex` 指定本系列使用那个 [dataset](~dataset)。
+
 
 
 {{ target: partial-2d-data-desc }}
 
 系列中的数据内容数组。数组项通常为具体的数据项。
+
+注意，如果系列没有指定 `data`，并且 option 有 [dataset](~dataset)，那么默认使用第一个 [dataset](~dataset)。如果指定了 `data`，则不会再使用 [dataset](~dataset)。
+
+可以使用 `series.datasetIndex` 指定其他的 [dataset](~dataset)。
 
 通常来说，数据用一个二维数组表示。如下，每一列被称为一个『维度』。
 ```js
@@ -45,7 +70,7 @@ series: [{
 + 后面的其他维度是可选的，可以在别处被使用，例如：
     + 在 [visualMap](~visualMap) 中可以将一个或多个维度映射到颜色，大小等多个图形属性上。
     + 在 [series.symbolSize](~series.symbolSize) 中可以使用回调函数，基于某个维度得到 symbolSize 值。
-    + 使用 [tooltip.formatter](~tooltip.formatter) 或 [series.label.normal.formatter](~series.label.normal.formatter) 可以把其他维度的值展示出来。
+    + 使用 [tooltip.formatter](~tooltip.formatter) 或 [series.label.formatter](~series.label.formatter) 可以把其他维度的值展示出来。
 
 特别地，当只有一个轴为类目轴（axis.type 为 `'category'`）的时候，数据可以简化用一个一维数组表示。例如：
 ```js
@@ -65,7 +90,7 @@ series: [{
 
 + 当某维度对应于数值轴（axis.type 为 `'value'` 或者 `'log'`）的时候：
 
-    其值可以为 `number`（例如 `12`）。（也可以容忍 `string` 形式的 number，例如 `'12'`）
+    其值可以为 `number`（例如 `12`）。（也可以兼容 `string` 形式的 number，例如 `'12'`）
 
 + 当某维度对应于类目轴（axis.type 为 `'category'`）的时候：
 

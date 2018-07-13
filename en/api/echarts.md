@@ -37,7 +37,7 @@ Creates an ECharts instance, and returns an [echartsInstance](~echartsInstance).
 
     + `renderer`
 
-        The renderer only supports `'canvas'` by now.
+        Supports `'canvas'` or `'svg'`. See [Render by Canvas or SVG](https://ecomfe.github.io/echarts-doc/public/en/tutorial.html#Render%20by%20Canvas%20or%20SVG).
 
     + `width`
 
@@ -148,3 +148,9 @@ echarts.registerMap('USA', usaJson, {
 ```
 
 Registers a theme, should be specified when [initialize the chart instance](~echarts.init).
+
+
+{{ use: echarts-graphic }}
+
+
+

@@ -27,4 +27,23 @@ ${componentName}的边框线宽。
 **注意**：此配置项生效的前提是，设置了 `show: true`。
 {{/if}}
 
+{{if: ${hasBorderRadius} }}
+{{use: partial-border-radius(prefix=${prefix})}}
+{{/if}}
+
 {{ use:partial-style-shadow(prefix=${prefix}, needShow=true) }}
+
+
+
+
+
+
+{{target: partial-border-radius}}
+
+#${prefix} ${propName|default('borderRadius')}(number|Array) = 0
+圆角半径，单位px，支持传入数组分别指定 4 个圆角半径。
+如:
+```
+${propName|default('borderRadius')}: 5, // 统一设置四个角的圆角大小
+${propName|default('borderRadius')}: [5, 5, 0, 0] //（顺时针左上，右上，右下，左下）
+```

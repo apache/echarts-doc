@@ -8,9 +8,8 @@ Used to mark an area in chart. For example, mark a time interval.
 
 ##${prefix} label(Object)
 Label in mark area.
-###${prefix} normal(Object)
 {{ use: partial-label(
-    prefix=${prefix} + '###'
+    prefix=${prefix} + '##'
 ) }}
 ###${prefix} emphasis(Object)
 {{ use: partial-label(
@@ -19,8 +18,7 @@ Label in mark area.
 
 ##${prefix} itemStyle(Object)
 Style of the mark area.
-###${prefix} normal(Object)
-{{ use: partial-item-style(prefix="###" + ${prefix}) }}
+{{ use: partial-item-style(prefix="##" + ${prefix}) }}
 ###${prefix} emphasis(Object)
 {{ use: partial-item-style(prefix="###" + ${prefix}) }}
 
@@ -159,9 +157,8 @@ value of the item, not necessary.
 #${prefix} itemStyle(Object)
 Style of the item.
 `itemStyle` of start point and end point will be merged together.
-##${prefix} normal(Object)
 {{ use: partial-item-style(
-    prefix="##"+${prefix}
+    prefix="#"+${prefix}
 ) }}
 ##${prefix} emphasis(Object)
 {{ use: partial-item-style(
@@ -171,9 +168,8 @@ Style of the item.
 #${prefix} label(Object)
 Label style of the item.
 Label style of start point and end point will be merged together.
-##${prefix} normal(Object)
 {{ use: partial-label(
-    prefix='##'+${prefix}
+    prefix='#'+${prefix}
 ) }}
 ##${prefix} emphasis(Object)
 {{ use: partial-label(

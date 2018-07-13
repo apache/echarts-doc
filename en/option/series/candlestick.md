@@ -19,16 +19,18 @@ Different countries or regions have different implications on the color of candl
 
 We use red to represent increasing and blue decreasing by default. If you want to change the configuration, you may change the following parameters.
 
-+ [series-candlestick.itemStyle.normal.color](~series-candlestick.itemStyle.normal.color): fill color for bullish candle stick (namely, increase)
-+ [series-candlestick.itemStyle.normal.color0](~series-candlestick.itemStyle.normal.color0): fill color for bearish candle stick (namely, decrease)
-+ [series-candlestick.itemStyle.normal.borderColor](~series-candlestick.itemStyle.normal.borderColor): border color for bullish candle stick (namely, increase)
-+ [series-candlestick.itemStyle.normal.borderColor0](series-candlestick.itemStyle.normal.borderColor0): border color for bearish candle stick (namely, decrease)
++ [series-candlestick.itemStyle.color](~series-candlestick.itemStyle.color): fill color for bullish candle stick (namely, increase)
++ [series-candlestick.itemStyle.color0](~series-candlestick.itemStyle.color0): fill color for bearish candle stick (namely, decrease)
++ [series-candlestick.itemStyle.borderColor](~series-candlestick.itemStyle.borderColor): border color for bullish candle stick (namely, increase)
++ [series-candlestick.itemStyle.borderColor0](series-candlestick.itemStyle.borderColor0): border color for bearish candle stick (namely, decrease)
 
 
 <br>
 <br>
 
 ## type(string) = 'candlestick'
+
+{{use: partial-component-id(prefix="#")}}
 
 {{use: partial-coord-sys(
     seriesType="cartesian2d",
@@ -73,8 +75,57 @@ Specify bar min width. Absolute value (like `10`) or percentage (like `'20%'`, a
 
 Specify bar max width. Absolute value (like `10`) or percentage (like `'20%'`, according to band width) can be used. Auto adapt by default.
 
+## itemStyle(Object)
 
-{{use:partial-candlestick-item-style(prefix="#")}}
+Item style of candlestick.
+
+{{use: partial-candlestick-item-style-detail(
+    prefix="##",
+    defaultColor="#c23531",
+    defaultColor0="#314656",
+    defaultBorderColor="#c23531",
+    defaultBorderColor0="#314656",
+    defaultBorderWidth=1
+)}}
+
+
+## emphasis(Object)
+
+Emphasis style of candlestick.
+
+### itemStyle(Object)
+
+{{use: partial-candlestick-item-style-detail(
+    prefix="###",
+    defaultColor="#c23531",
+    defaultColor0="#314656",
+    defaultBorderColor="#c23531",
+    defaultBorderColor0="#314656",
+    defaultBorderWidth=2
+)}}
+
+
+{{use: partial-large(
+    prefix="#",
+    defaultLarge=true,
+    defaultLargeThreshold=600
+)}}
+
+{{ use:partial-progressive(
+    prefix='#',
+    supportProgressiveChunkMode=true,
+    defaultProgressive=5000,
+    defaultProgressiveThreshold=10000,
+    defaultProgressiveChunkMode='mod'
+) }}
+
+{{use:partial-series-dimensions(
+    prefix="#"
+)}}
+
+{{use:partial-series-encode(
+    prefix="#"
+)}}
 
 
 ## data(Array)
@@ -111,8 +162,34 @@ Value of data item.
 [open, close, lowest, highest]  (namely: [opening value, closing value, lowest value, highest value])
 ```
 
+### itemStyle(Object)
 
-{{use:partial-candlestick-item-style(prefix="##")}}
+Style of a candle box.
+
+{{use: partial-candlestick-item-style-detail(
+    prefix="###",
+    defaultColor="#c23531",
+    defaultColor0="#314656",
+    defaultBorderColor="#c23531",
+    defaultBorderColor0="#314656",
+    defaultBorderWidth=1
+)}}
+
+### emphasis(Object)
+
+Emphasis style of a candle box.
+
+#### itemStyle(Object)
+
+{{use: partial-candlestick-item-style-detail(
+    prefix="####",
+    defaultColor="#c23531",
+    defaultColor0="#314656",
+    defaultBorderColor="#c23531",
+    defaultBorderColor0="#314656",
+    defaultBorderWidth=2
+)}}
+
 
 {{use: partial-tooltip-in-series-data(
     galleryViewPath=${galleryViewPath}
@@ -195,42 +272,4 @@ Border width of candlestick. There is no border when it is `0`.
     defaultShadowOffsetX=${defaultShadowOffsetX},
     defaultShadowOffsetY=${defaultShadowOffsetY}
 ) }}
-
-
-
-
-
-
-
-
-
-{{target:partial-candlestick-item-style}}
-
-
-#${prefix} itemStyle(Object)
-
-{{use:partial-item-style-desc(name="candlestick")}}
-
-
-##${prefix} normal(Object)
-
-{{use: partial-candlestick-item-style-detail(
-    prefix="###",
-    defaultColor="#c23531",
-    defaultColor0="#314656",
-    defaultBorderColor="#c23531",
-    defaultBorderColor0="#314656",
-    defaultBorderWidth=1
-)}}
-
-##${prefix} emphasis(Object)
-
-{{use: partial-candlestick-item-style-detail(
-    prefix="###",
-    defaultColor="#c23531",
-    defaultColor0="#314656",
-    defaultBorderColor="#c23531",
-    defaultBorderColor0="#314656",
-    defaultBorderWidth=2
-)}}
 

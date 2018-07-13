@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes"> <!-- Fullscreen Landscape on iOS -->
+        <link rel="stylesheet" href="../common/reset.css">
+    </head>
+    <body>
+        <div id="main"></div>
+        <script src="../common/echarts.min.js"></script>
+        <script src="../common/jquery.min.js"></script>
+        <script src="../common/echarts-gl.js"></script>
+        <script src="../common/dat.gui.js"></script>
+        <script>
+            var chart = echarts.init(document.getElementById('main'));
+            var TILING = [4, 2];
+
+            var heightImg = new Image();
+            heightImg.onload = update;
+            heightImg.src = '../texture/leather/leather_height.jpg';
+
+            function update() {
+                var canvas = document.createElement('canvas');
+                var ctx = canvas.getContext('2d');
+                var width = canvas.width = heightImg.width;
+                var height = canvas.height = heightImg.height;
+                ctx.drawImage(heightImg, 0, 0, width, height);
+                var imgData = ctx.getImageData(0, 0, width, height).data;
+
+                function getScale(u, v) {
+                    u = (u / Math.PI * 0.5 + 0.5) * TILING[0];
+                    v = v / Math.PI * TILING[1];
+
+                    u = Math.floor((u - Math.floor(u)) * (width - 1));
+                    v = Math.floor((1 - v + Math.floor(v)) * (height - 1));
+
+                    var idx = v * width + u;
+                    return 1 + imgData[idx * 4] / 255 / 20;
+                }
+
+                chart.setOption({
+                    xAxis3D: {
+                        type: 'value'
+                    },
+                    yAxis3D: {
+                        type: 'value'
+                    },
+                    zAxis3D: {
+                        type: 'value'
+                    },
+                    grid3D: {
+                        show: false,
+
+                        environment: 'none',
+
+                        axisPointer: {
+                            show: false
+                        },
+                        postEffect: {
+                            enable: true,
+                            screenSpaceAmbientOcclusion: {
+                                enable: true,
+                                radius: 10,
+                                intensity: 2,
+                                quality: 'high'
+                            },
+                            depthOfField: {
+                                enable: false,
+                                focalRange: 10,
+                                fstop: 4
+                            }
+                        },
+                        temporalSuperSampling: {
+                            enable: true
+                        },
+                        light: {
+                            main: {
+                                intensity: 2,
+                                shadow: true
+                            },
+                            ambient: {
+                                intensity: 0
+                            },
+                            ambientCubemap: {
+                                texture: '../texture/pisa.hdr',
+                                exposure: 1,
+                                diffuseIntensity: 2,
+                                specularIntensity: 2
+                            }
+                        },
+                        viewControl: {
+                            distance: 80
+                            // projection: 'orthographic'
+                        }
+                    },
+                    series: [{
+                        type: 'surface',
+                        parametric: true,
+                        shading: 'realistic',
+                        silent: true,
+                        wireframe: {
+                            show: false
+                        },
+                        realisticMaterial: {
+                            // detailTexture: '../texture/leather/leather_albedo.jpg',
+                            roughness: '../texture/leather/leather_roughness.jpg',
+                            normalTexture: '../texture/leather/leather_normal.jpg',
+                            textureTiling: TILING
+                        },
+                        itemStyle: {
+                            color: '#000'
+                        },
+                        parametricEquation: {
+                            u: {
+                                min: 0,
+                                max: Math.PI * 2,
+                                step: Math.PI / 100
+                            },
+                            v: {
+                                min: -1,
+                                max: 1,
+                                step: 0.02
+                            },
+                            x: function (u, v) {
+                                return (1 + v / 2 * Math.cos(u / 2)) * Math.cos(u) * getScale(u, v);
+                            },
+                            y: function (u, v) {
+                                return (1 + v / 2 * Math.cos(u / 2)) * Math.sin(u)  * getScale(u, v);
+                            },
+                            z: function (u, v) {
+                                return v / 2 * Math.sin(u / 2) * getScale(u, v);
+                            }
+                        }
+                    }]
+                });
+            }
+
+            var config = {
+                color: '#000'
+            };
+
+            var gui = new dat.GUI();
+            gui.addColor(config, 'color').onChange(function () {
+                chart.setOption({
+                    series: [{
+                        itemStyle: {
+                            color: config.color
+                        }
+                    }]
+                });
+            });
+
+            window.addEventListener('resize', function () {
+                chart.resize();
+            });
+
+        </script>
+    </body>
+</html>

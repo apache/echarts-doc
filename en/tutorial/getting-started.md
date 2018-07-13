@@ -7,7 +7,7 @@ First, install ECharts using one of the following methods:
 
 1. The [official download page](https://ecomfe.github.io/echarts-doc/public/en/download.html), which has different builds for common needs. If you want to include all packages, you can download [the full minified version](http://echarts.baidu.com/dist/echarts.min.js).
 
-2. From the latest [GitHub](https://github.com/echarts) release, you can find the latest version of echarts in `dist` directory of the unzipped files.
+2. From the latest [GitHub](https://github.com/ecomfe/echarts) release, you can find the latest version of echarts in `dist` directory of the unzipped files.
 
 3. Using npm: `npm install echarts --save`. [Using ECharts with webpack](https://ecomfe.github.io/echarts-doc/public/en/tutorial.html#Use%20ECharts%20with%20webpack)
 

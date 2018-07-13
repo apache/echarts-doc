@@ -7,7 +7,7 @@ ECharts 提供了丰富的自定义配置选项，并且能够从全局、系列
 
 ## 绘制南丁格尔图
 
-[上一篇中](~getting-started)讲了如何绘制一个简单的柱状图，这次要画的是饼图，饼图主要是通过扇形的弧度表现不同类目的数据在总和中的占比，它的数据格式比柱状图更简单，只有一维的数值，不需要给类目。因为不在直角坐标系上，所以也不需要`xAxis`，`yAxis`。
+[5分钟上手ECharts](~5%20%E5%88%86%E9%92%9F%E4%B8%8A%E6%89%8B%20ECharts) 中讲了如何绘制一个简单的柱状图，这次要画的是饼图，饼图主要是通过扇形的弧度表现不同类目的数据在总和中的占比，它的数据格式比柱状图更简单，只有一维的数值，不需要给类目。因为不在直角坐标系上，所以也不需要`xAxis`，`yAxis`。
 
 ```js
 myChart.setOption({
@@ -51,16 +51,14 @@ ECharts 中有一些通用的样式，诸如阴影、透明度、颜色、边框
 
 ```js
 itemStyle: {
-    normal: {
-        // 阴影的大小
-        shadowBlur: 200,
-        // 阴影水平方向上的偏移
-        shadowOffsetX: 0,
-        // 阴影垂直方向上的偏移
-        shadowOffsetY: 0,
-        // 阴影颜色
-        shadowColor: 'rgba(0, 0, 0, 0.5)'
-    }
+    // 阴影的大小
+    shadowBlur: 200,
+    // 阴影水平方向上的偏移
+    shadowOffsetX: 0,
+    // 阴影垂直方向上的偏移
+    shadowOffsetY: 0,
+    // 阴影颜色
+    shadowColor: 'rgba(0, 0, 0, 0.5)'
 }
 ```
 
@@ -68,7 +66,7 @@ itemStyle: {
 
 ~[400x300](${galleryViewPath}doc-example/tutorial-styling-step2&edit=1&reset=1)
 
-`itemStyle`都会有`normal`和`emphasis`两个选项，`normal`选项是正常展示下的样式，`emphasis`是鼠标 hover 时候的高亮样式。这个示例里是正常的样式下加阴影，但是可能更多的时候是 hover 的时候通过阴影突出。
+`itemStyle`的`emphasis`是鼠标 hover 时候的高亮样式。这个示例里是正常的样式下加阴影，但是可能更多的时候是 hover 的时候通过阴影突出。
 ```js
 itemStyle: {
     emphasis: {
@@ -98,13 +96,11 @@ setOption({
 })
 ```
 
-也可以每个系列分别设置，每个系列的文本设置在 [label.normal.textStyle](option.html#series-pie.label.normal.textStyle)。
+也可以每个系列分别设置，每个系列的文本设置在 [label.textStyle](option.html#series-pie.label.textStyle)。
 ```js
 label: {
-    normal: {
-        textStyle: {
-            color: 'rgba(255, 255, 255, 0.3)'
-        }
+    textStyle: {
+        color: 'rgba(255, 255, 255, 0.3)'
     }
 }
 ```
@@ -112,10 +108,8 @@ label: {
 饼图的话还要将标签的视觉引导线的颜色设为浅色。
 ```js
 labelLine: {
-    normal: {
-        lineStyle: {
-            color: 'rgba(255, 255, 255, 0.3)'
-        }
+    lineStyle: {
+        color: 'rgba(255, 255, 255, 0.3)'
     }
 }
 ```
@@ -124,7 +118,7 @@ labelLine: {
 
 ~[400x300](${galleryViewPath}doc-example/tutorial-styling-step3&edit=1&reset=1)
 
-跟`itemStyle`一样，`label`和`labelLine`的样式也有`normal`和`emphasis`两个状态。
+跟`itemStyle`一样，`label`和`labelLine`的样式也有`emphasis`状态。
 
 
 ## 设置扇形的颜色
@@ -133,12 +127,10 @@ labelLine: {
 
 ```js
 itemStyle: {
-    normal: {
-        // 设置扇形的颜色
-        color: '#c23531',
-        shadowBlur: 200,
-        shadowColor: 'rgba(0, 0, 0, 0.5)'
-    }
+    // 设置扇形的颜色
+    color: '#c23531',
+    shadowBlur: 200,
+    shadowColor: 'rgba(0, 0, 0, 0.5)'
 }
 ```
 
@@ -152,9 +144,7 @@ data: [{
     value:400,
     name:'搜索引擎',
     itemStyle: {
-        normal: {
-            color: '#c23531'
-        }
+        color: '#c23531'
     }
 }, ...]
 ```

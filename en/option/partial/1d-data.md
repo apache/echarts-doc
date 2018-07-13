@@ -1,10 +1,17 @@
 {{ target: partial-1d-data-label-formatter }}
 
-Data label formatter, which supoports string template and callback function. In either form, `\n` is supported to represent a new line.
+Data label formatter, which supports string template and callback function. In either form, `\n` is supported to represent a new line.
 
 **String template**
 
-Template variables includes `{a}`, `{b}`, `{c}`, `{d}`, representing series name, data name, data value, and percent respectively.
+Model variation includes:
++ `{a}`: series name.
++ `{b}`: the name of a data item.
++ `{c}`: the value of a data item.
++ `{d}`: the percent.
++ `{@xxx}: the value of a dimension named `'xxx'`, for example, `{@product}` refers the value of `'product'` dimension。
++ `{@[n]}: the value of a dimension at the index of `n`, for example, `{@[3]}` refers the value at dimensions[3].
+
 **example: **
 ```js
 formatter: '{b}: {d}'

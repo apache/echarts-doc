@@ -37,18 +37,22 @@ Notice: There are some difference in treemap configuration between ECharts3 and 
 
 + The position method using `center/size` is no longer supported, and `left/top/bottom/right/width/height` are used to position treemap, as other components do.
 
-+ The configuration item `breadcrumb` is moved outside `itemStyle.normal/itemStyle.emphasis`, and it is in the same level with `itemStyle` now.
++ The configuration item `breadcrumb` is moved outside `itemStyle/itemStyle.emphasis`, and it is in the same level with `itemStyle` now.
 
 + The configuration item `root` is not avaliable temporarily.User can zoom treemap to see some tiny or deep descendants, or using [leafDepth](~series-treemap.leafDepth) to enable the feature of "drill down".
 
-+ The configuration item `label` is moved outside the `itemStyle.normal/itemStyle.emphasis`, and it is in the same level with `itemStyle` now.
++ The configuration item `label` is moved outside the `itemStyle/itemStyle.emphasis`, and it is in the same level with `itemStyle` now.
 
-+ The configuration items `itemStyle.normal.childBorderWidth` and `itemStyle.normal.childBorderColor` are not supported anymore (because in this way only 2 levels can be defined). [series-treemap.levels](~series-treemap.levels) is used to define all levels now.
++ The configuration items `itemStyle.childBorderWidth` and `itemStyle.childBorderColor` are not supported anymore (because in this way only 2 levels can be defined). [series-treemap.levels](~series-treemap.levels) is used to define all levels now.
 
 <br>
 <br>
 
 ## type(string) = 'treemap'
+
+{{use: partial-component-id(prefix="#")}}
+
+{{ use: partial-series-name() }}
 
 {{ use: partial-rect-layout-width-height(
     componentName='treemap ',
@@ -257,10 +261,8 @@ When is no content in breadcrumb, this minimal width need to be set up.
 {{ use: partial-item-style-desc }}
 
 
-#### normal
-
 {{use: partial-item-style(
-    prefix="####",
+    prefix="###",
     name="boxplot",
     defaultColor="rgba(0,0,0,0.7)",
     defaultBorderColor="rgba(255,255,255,0.7)",
@@ -272,16 +274,16 @@ When is no content in breadcrumb, this minimal width need to be set up.
 )}}
 
 
-##### textStyle(Object)
+#### textStyle(Object)
 
 {{use: partial-text-style(
-    prefix="#####",
+    prefix="####",
     defaultColor="#fff"
 )}}
 
 
-#### emphasis
-
+### emphasis
+#### itemStyle(Object)
 {{use: partial-item-style(
     prefix="####",
     name="boxplot",
@@ -521,15 +523,42 @@ This can hide the details of nodes when the rectangular area is not large enough
 
 <br>
 
-##${prefix} normal(Object)
+{{use:partial-label(
+    prefix=${prefix} + "#",
+    defaultPosition="'inside'",
+    formatter=true,
+    ellipsis=true
+)}}
 
-{{use:partial-treemap-label(prefix=${prefix} + "##")}}
 
 
-##${prefix} emphasis(Object)
+#${prefix} upperLabel(Object)
 
-{{use:partial-treemap-label(prefix=${prefix} + "##")}}
+`upperLabel` is used to specify whether show label when the node has children. When [upperLabel.show](~series-treemap.upperLabel.show) is set as `true`, the feature that "show parent label" is enabled.
 
+The same as [series-treemap.label](~series-treemap.label), the option `upperLabel` can be placed at the root of [series-treemap](~series-treemap) directly, or in [series-treemap.level](~series-treemap.level), or in each item of [series-treemap.data](~series-treemap.data).
+
+Specifically, [series-treemap.label](~series-treemap.label) specifies the style when a node is a leaf, while `upperLabel` specifies the style when a node has children, in which case the label is displayed in the inner top of the node.
+
+See:
+
+~[700x500](${galleryViewPath}treemap-show-parent&edit=1&reset=1)
+
+
+{{use: partial-treemap-prop-location-desc(name="label")}}
+
+<br>
+
+{{use:partial-label(
+    prefix=${prefix} + "#",
+    defaultPosition="'inside'",
+    formatter=true,
+    ellipsis=true
+)}}
+
+##${prefix} height(number) = 20
+
+Height of label area.
 
 
 #${prefix} itemStyle(Object)
@@ -538,16 +567,28 @@ This can hide the details of nodes when the rectangular area is not large enough
 
 <br>
 
-##${prefix} normal(Object)
-
 {{use: partial-treemap-item-style(
-    prefix=${prefix} + "##",
+    prefix=${prefix} + "#",
     galleryEditorPath=${galleryEditorPath},
     itemStyleType='normal'
 )}}
 
-##${prefix} emphasis(Object)
-
+#${prefix} emphasis(Object)
+##${prefix} label(Object)
+{{use:partial-label(
+    prefix=${prefix} + "##",
+    defaultPosition="'inside'",
+    formatter=true,
+    ellipsis=true
+)}}
+##${prefix} upperLabel(Object)
+{{use:partial-label(
+    prefix=${prefix} + "##",
+    defaultPosition="'inside'",
+    formatter=true,
+    ellipsis=true
+)}}
+##${prefix} itemStyle(Object)
 {{use: partial-treemap-item-style(
     prefix=${prefix} + "##",
     galleryEditorPath=${galleryEditorPath},
@@ -555,7 +596,7 @@ This can hide the details of nodes when the rectangular area is not large enough
 )}}
 
 {{ use:partial-silent(
-    prefix="##"
+    prefix="#"
 ) }}
 
 
@@ -636,6 +677,14 @@ In this way, a effect can be implemented: different sections have different hue 
 <br>
 {{ use: partial-treemap-borderColor-setting(galleryEditorPath=${galleryEditorPath}) }}
 
+#${prefix} strokeColor(Color) = null
+
+Stroke color of each rect.
+
+#${prefix} strokeWidth(number) = null
+
+Stroke width of each rect.
+
 {{/if }}
 
 
@@ -650,46 +699,6 @@ In this way, a effect can be implemented: different sections have different hue 
 If all of the border/gaps are set with the same color, confusion might occur when rectangulars in different levels display at the same time.
 
 See the [example](${galleryEditorPath}doc-example/treemap-borderColor&edit=1&reset=1). Noticed that the child rectangles in the red area are in the deeper level than rectangles that are saparated by white gap. So in the red area, basically we set gap color with red, and use `borderColorSaturation` to lift the saturation.
-
-
-
-
-
-{{ target: partial-treemap-label }}
-
-#${prefix} show(boolean) = true
-
-Wether to show the text label.
-
-
-#${prefix} position(string|Array) = 'inside'
-
-{{ use:partial-label-position }}
-
-
-
-#${prefix} textStyle(Object)
-
-##${prefix} ellipsis(boolean) = true
-
-When the text is overflow the rectangle boundary, whether to replace the excess part with apostrophe.
-
-
-{{use:partial-text-style(
-    prefix=${prefix} + '#',
-    defaultColor="'#fff'"
-)}}
-
-
-##${prefix} align(string) = 'center'
-
-Horizontal alignment. Optional values are `'center'`, `'right` and `'left'`.
-
-
-##${prefix} baseline(string) = 'middle'
-
-Vertical alignment, Optional values are  `'middle'`, `'right` and `'left'`.
-
 
 
 

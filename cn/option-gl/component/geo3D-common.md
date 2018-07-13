@@ -47,9 +47,13 @@ ECharts 使用 [geoJSON](http://geojson.org/) 格式的数据作为地图的轮�
 {{ use: partial-box-size-geo3D(
     componentType=${componentType},
     componentName=${componentName},
-    defaultBoxHeight = 3,
+    defaultBoxHeight = 10,
     defaultBoxDepth = 'auto'
 ) }}
+
+## regionHeight(number) = 3
+
+三维地图每个区域的高度。这个高度是模型的高度，小于 [boxHeight](~${componentType}.boxHeight)。`boxHeight - regionHeight` 这一片区域会被用于三维柱状图，散点图等的展示。
 
 {{ use: partial-environment(
     componentType=${componentType},
@@ -59,6 +63,8 @@ ECharts 使用 [geoJSON](http://geojson.org/) 格式的数据作为地图的轮�
 ## groundPlane(Object)
 
 地面可以让整个组件有个“摆放”的地方，从而使整个场景看起来更真实，更有模型感。
+
+`groundPlane` 下支持设置单独的 `realisticMaterial`, `colorMaterial`, `lambertMaterial` 等材质。如果不设置则默认取组件下的材质参数。
 
 ### show(boolean) = false
 
@@ -71,8 +77,6 @@ ECharts 使用 [geoJSON](http://geojson.org/) 格式的数据作为地图的轮�
 ## instancing(boolean) = false
 
 `instancing`会将 GeoJSON 中所有的 [geometry](http://geojson.org/geojson-spec.html#geometry-objects) 合并成一个，在 GeoJSON 拥有特别多（上千）的 [geometry](http://geojson.org/geojson-spec.html#geometry-objects) 时可以有效提升绘制效率。
-
-注意，开启`instancing`后场景不再具备选择，hover等交互的功能。
 
 ## label(Object)
 
@@ -165,8 +169,7 @@ ${componentName} 中三维图形的视觉属性，包括颜色，透明度，描
 
 {{ use: partial-shading(
     componentType=${componentType},
-    componentName=${componentName},
-    useTexture=true
+    componentName=${componentName}
 ) }}
 
 {{ use: partial-light(
@@ -208,7 +211,7 @@ ${componentName} 中三维图形的视觉属性，包括颜色，透明度，描
 
 {{ block: boxWidthDescriptionExtra }}
 
-下面是${componentName} 中`boxWidth`, `boxHeight`, `boxDepth`的示意图。
+下面是${componentName} 中`boxWidth`, `boxHeight`, `boxDepth`, `regionHeight`的示意图。
 
 ![600xauto](~geo-size.png)
 
@@ -218,6 +221,9 @@ ${componentName} 中三维图形的视觉属性，包括颜色，透明度，描
 组件深度默认自动，保证三维组件的显示比例跟输入的 GeoJSON 的比例相同
 {{ /block }}
 
+{{ block: boxHeightDescriptionExtra}}
+组件高度。这个高度包含三维地图上的柱状图，散点图。
+{{ /block }}
 
 
 {{ target: partial-label-geo3D }}
@@ -236,7 +242,7 @@ ${componentName} 中三维图形的视觉属性，包括颜色，透明度，描
 
 {{ use: partial-item-style(
     prefix=${prefix|default('##')},
-    colorName='areaColor',
+    colorName='color',
     hasCallback = ${hasCallback},
     useColorPalette = ${useColorPalette}
 ) }}

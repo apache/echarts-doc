@@ -2,7 +2,7 @@
 layout: post
 title: ECharts 实现地图散点图（上）
 description: "ECharts 作为国内应用最广泛的前端可视化生成工具，提供了丰富的图表展现方式和便捷的图表操作。ECharts 支持 geoJson 格式的地图，并且官网上提供了现成的 world，china 及全国34个省市自治区地图的下载。这篇文章中我们将会讲解如何使用 ECharts 实现一个中国地图上绘制的散点图。"
-tags: [map, tutorial]
+tags: [地图, 教程]
 image:
   feature: post/2016-04-28-echarts-map-tutorial-scatter-2.png
 ---

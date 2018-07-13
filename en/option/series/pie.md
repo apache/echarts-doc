@@ -14,6 +14,8 @@ The pie chart is mainly used for showing proportion of different categories. Eac
 
 ## type(string) = 'pie'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 {{ use: partial-legend-hover-link }}
@@ -21,12 +23,14 @@ The pie chart is mainly used for showing proportion of different categories. Eac
 ## hoverAnimation(boolean) = true
 Whether to enable the zoom animation effects when hovering sectors.
 
+## hoverOffset(number) = 10
+The offset distance of hovered sector.
+
 ## selectedMode(boolean|string) = false
 
 Selected mode of pie.  It is enabled by default, and you may set it to be `false` to disabled it.
 
 Besides, it can be set to `'single'` or `'multiple'`, for single selection and multiple selection.
-
 
 ## selectedOffset(number) = 10
 The offset distance of selected sector.
@@ -43,8 +47,8 @@ The minimum angle of sector (0 ~ 360). It prevents some sector from being too sm
 ## roseType(boolean|string) = false
 Whether to show as Nightingale chart, which distinguishs data through radius. There are 2 optional modes:
 
-+ `'radius'` Use area to show the percentage of data, radius to show data size.
-+ `'area'` All the sectors will share the same area, the data size is shown only through radiuses.
++ `'radius'` Use central angle to show the percentage of data, radius to show data size.
++ `'area'` All the sectors will share the same central angle, the data size is shown only through radiuses.
 
 ## avoidLabelOverlap(boolean) = true
 Whether to enable the strategy to avoid labels overlap. Defaults to be enabled, which will move the label positions in the case of labels overlapping
@@ -52,36 +56,38 @@ Whether to enable the strategy to avoid labels overlap. Defaults to be enabled, 
 ## stillShowZeroSum(boolean) = true
 Whether to show sector when all data are zero.
 
+{{ use: partial-cursor }}
+
 ## label(Object)
 {{use:partial-label-desc(name="pie chart")}}
-### normal(Object)
 {{use:partial-pie-label(
-    prefix="###",
+    prefix="##",
     galleryEditorPath = ${galleryEditorPath},
     position=true,
     formatter=true
 )}}
-### emphasis(Object)
-{{use:partial-pie-label(
-    prefix="###",
-    position=false,
-    formatter=true
-)}}
 
 ## labelLine(Object)
-The style of visual guide line. Will show when [label position](~series-pie.label.normal.position) is set as `'outside'`.
+The style of visual guide line. Will show when [label position](~series-pie.label.position) is set as `'outside'`.
 
 {{ use: partial-pie-label-line(prefix='##') }}
 
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
-### normal(Object)
 {{use:partial-item-style(
-    prefix="###",
+    prefix="##",
     useColorPalatte=true,
     hasCallback=true
 )}}
-### emphasis(Object)
+
+## emphasis(Object)
+### label(Object)
+{{use:partial-pie-label(
+    prefix="###",
+    position=false,
+    formatter=true
+)}}
+### itemStyle(Object)
 {{ use:partial-item-style(prefix="###") }}
 
 {{use: component-circular-layout(
@@ -89,6 +95,10 @@ The style of visual guide line. Will show when [label position](~series-pie.labe
     defaultRadius="[0, '75%']"
 )}}
 You can set a large inner radius for a Donut chart.
+
+{{ use: partial-seriesLayoutBy }}
+
+{{ use: partial-datasetIndex }}
 
 ## data(Array)
 {{ use: partial-1d-data-desc }}
@@ -102,17 +112,10 @@ Whether the data item is selected.
 ### label(Object)
 The label configuration of a single sector.
 
-#### normal(Object)
 {{use:partial-pie-label(
-    prefix="####",
+    prefix="###",
     galleryEditorPath = ${galleryEditorPath},
     position=true,
-    formatter=false
-)}}
-#### emphasis(Object)
-{{use:partial-pie-label(
-    prefix="####",
-    position=false,
     formatter=false
 )}}
 
@@ -121,9 +124,16 @@ The label configuration of a single sector.
 
 ### itemStyle(Object)
 {{use:partial-item-style-desc}}
-#### normal(Object)
-{{use:partial-item-style(prefix="####")}}
-#### emphasis(Object)
+{{use:partial-item-style(prefix="###")}}
+
+### emphasis(Object)
+#### label(Object)
+{{use:partial-pie-label(
+    prefix="####",
+    position=false,
+    formatter=false
+)}}
+#### itemStyle(Object)
 {{use:partial-item-style(prefix="####")}}
 
 {{use: partial-tooltip-in-series-data(
@@ -187,25 +197,22 @@ The position of label.
     }
 }) }}
 {{ /if }}
-#${prefix} textStyle(Object)
-The text style of labels.
-{{ use:partial-text-style(prefix=${prefix} + '#') }}
+{{ use:partial-text-style(prefix=${prefix}) }}
 
 
 
 {{ target: partial-pie-label-line }}
-#${prefix} normal(Object)
-The style of visual guide line in normal status.
-##${prefix} show(boolean)
-Whether to show the visual guide ine in normal status.
-##${prefix} length(number)
+The style of visual guide line.
+#${prefix} show(boolean)
+Whether to show the visual guide ine.
+#${prefix} length(number)
 The length of the first segment of visual guide line.
-##${prefix} length2(number)
+#${prefix} length2(number)
 The length of the second segment of visual guide line.
-##${prefix} smooth(boolean|number) = false
-Whether to smooth the visual guide line. It defaults to be unsmooth and can be set as `true` or the values from 0 to 1 which indicating the smoothness.
-##${prefix} lineStyle(Object)
-{{use:partial-line-style(prefix="##" + ${prefix})}}
+#${prefix} smooth(boolean|number) = false
+Whether to smooth the visual guide line. It defaults to be `false` and can be set as `true` or the values from 0 to 1 which indicating the smoothness.
+#${prefix} lineStyle(Object)
+{{use:partial-line-style(prefix="#" + ${prefix})}}
 
 #${prefix} emphasis(Object)
 The style of visual guide line in emphasis status.

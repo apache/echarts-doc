@@ -1,0 +1,252 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="../common/jquery.min.js"></script>
+        <!--<script src="../common/echarts.min.js"></script>-->
+        <script src="../common/echarts.js"></script>
+        <script src="../common/prettify/prettify.js"></script>
+        <script src="../common/showCode.js"></script>
+        <link rel="stylesheet" href="../common/reset.css">
+        <link rel="stylesheet" href="../common/prettify/prettify.css">
+        <script src="../common/perfect-scrollbar/0.6.8/js/perfect-scrollbar.min.js"></script>
+        <link rel="stylesheet" href="../common/perfect-scrollbar/0.6.8/css/perfect-scrollbar.min.css">
+    </head>
+    <body>
+
+        <div id="main">
+            <pre class="prettyprint">
+// 先初始化日历坐标系。
+chart.setOption({
+    calendar: {
+        ...
+    }
+});
+
+var option2 = {
+    xAxis: [],
+    yAxis: [],
+    grid: [],
+    series: []
+};
+
+dateList.each(function (date) {
+    // 对每日，计算其在日历坐标系上的像素位置。
+    var gridCenter = chart.convertToPixel(
+        'calendar', date
+    );
+    // 对每日，做一个直角坐标系。
+    option2.grid.push({
+        left: gridCenter[0] - cellWidth / 2,
+        top: gridCenter[1] - cellHeight / 2,
+        width: cellWidth,
+        height: cellHeight,
+        ...
+    });
+    option2.xAxis.push({...});
+    option2.yAxis.push({...});
+
+    // 直角坐标系里的柱状图。
+    option2.series.push({
+        type: 'bar',
+        data: ...
+    });
+});
+
+// 将所有直角坐标系和柱状图设置进 chart。
+chart.setOption(option2);
+
+            </pre>
+            <div id="chart"></div>
+        </div>
+
+
+        <script>
+
+
+
+        var cellSize = [80, 80];
+        var cartesianSize = [60, 55];
+
+        function getVirtulData() {
+            var date = +echarts.number.parseDate('2017-02-01');
+            var end = +echarts.number.parseDate('2017-03-01');
+            var dayTime = 3600 * 24 * 1000;
+            var data = [];
+            for (var time = date; time < end; time += dayTime) {
+                data.push([
+                    echarts.format.formatTime('yyyy-MM-dd', time),
+                    Math.floor(Math.random() * 10000)
+                ]);
+            }
+            return data;
+        }
+
+        function makeCartesian(scatterData, chart) {
+            var option = {
+                grid: [],
+                xAxis: [],
+                yAxis: [],
+                series: []
+            };
+
+            echarts.util.each(scatterData, function (item, index) {
+                var center = chart.convertToPixel('calendar', item);
+                option.visualMap = {
+                    orient: 'horizontal',
+                    right: 150,
+                    type: 'piecewise',
+                    seriesIndex: visualMapSeriesIndices,
+                    dimension: 0,
+                    itemWidth: 30,
+                    itemHeight: 20,
+                    textStyle: {
+                        color: '#ccc',
+                        fontSize: 18
+                    },
+                    pieces: [{
+                        value: 0,
+                        label: '工作',
+                        color: '#E56666'
+                    }, {
+                        value: 1,
+                        label: '娱乐',
+                        color: '#61a0a8'
+                    }, {
+                        value: 2,
+                        label: '睡觉',
+                        color: '#E9962B'
+                    }]
+                };
+                option.xAxis.push({
+                    id: index + '_x',
+                    data: ['工作', '娱乐', '睡觉'],
+                    gridId: index + '_grid',
+                    axisLabel: {show: false},
+                    axisLine: {show: false},
+                    axisTick: {show: false}
+                });
+                option.yAxis.push({
+                    id: index + '_y',
+                    gridId: index + '_grid',
+                    axisLabel: {show: false},
+                    axisLine: {show: false},
+                    axisTick: {show: false}
+                });
+                option.grid.push({
+                    id: index + '_grid',
+                    left: center[0] - cartesianSize[0] / 2,
+                    top: center[1] - cartesianSize[1] / 2 + 10,
+                    width: cartesianSize[0],
+                    height: cartesianSize[1]
+                });
+                option.series.push({
+                    id: index + '_bar',
+                    type: 'bar',
+                    xAxisId: index + '_x',
+                    yAxisId: index + '_y',
+                    label: {
+                        normal: {
+                            formatter: '{c}',
+                            position: 'inside'
+                        }
+                    },
+                    data: [
+                        Math.round(Math.random() * 24),
+                        Math.round(Math.random() * 24),
+                        Math.round(Math.random() * 24)
+                    ]
+                });
+            });
+
+            return option;
+        }
+
+        function makeCartesianUpdate(scatterData, chart) {
+            var option = {
+                grid: []
+            };
+
+            echarts.util.each(scatterData, function (item, index) {
+                var center = chart.convertToPixel('calendar', item);
+                option.grid.push({
+                    id: index + '_grid',
+                    left: center[0] - cartesianSize[0] / 2,
+                    top: center[1] - cartesianSize[1] / 2 + 10
+                });
+            });
+
+            return option;
+        }
+
+        var scatterData = getVirtulData();
+        var visualMapSeriesIndices = echarts.util.map(function (entry, index) {
+            return index + 1;
+        });
+
+        option = {
+            tooltip : {},
+            animationDurationUpdate: 0,
+            calendar: {
+                top: 'middle',
+                left: 'center',
+                orient: 'vertical',
+                cellSize: cellSize,
+                yearLabel: {
+                    show: false,
+                    textStyle: {
+                        fontSize: 30
+                    }
+                },
+                dayLabel: {
+                    margin: 20,
+                    firstDay: 1,
+                    nameMap: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+                    textStyle: {
+                        color: '#ccc',
+                        fontSize: 16,
+                    }
+                },
+                monthLabel: {
+                    show: false
+                },
+                range: ['2017-02']
+            },
+            series: [{
+                id: 'label',
+                type: 'scatter',
+                coordinateSystem: 'calendar',
+                symbolSize: 1,
+                label: {
+                    normal: {
+                        show: true,
+                        formatter: function (params) {
+                            return echarts.format.formatTime('dd', params.value[0]);
+                        },
+                        offset: [-cellSize[0] / 2 + 10, -cellSize[1] / 2 + 10],
+                        textStyle: {
+                            color: '#000',
+                            fontSize: 14
+                        }
+                    }
+                },
+                data: scatterData
+            }]
+        };
+
+        var chart = initShowCode(
+            option,
+            {
+                codeWidth: 500,
+                noAnimation: true,
+                onResize: function () {
+                    chart.resize();
+                    chart.setOption(makeCartesianUpdate(scatterData, chart));
+                }
+            }
+        );
+
+        chart.setOption(makeCartesian(scatterData, chart));
+
+        </script>
+    </body>
+</html>

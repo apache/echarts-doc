@@ -17,6 +17,13 @@
     globe=true
  ) }}
 
+## polyline(boolean) = false
+是否是多段线。
+
+默认为 `false`，只能用于绘制只有两个端点的线段（表现为被赛尔曲线）。
+
+如果该配置项为 `true`，则可以在 [data.coords](~series-lines3D.data.coords) 中设置多于 2 个的顶点用来绘制多段线，在绘制路线轨迹的时候比较有用。
+
 ## effect(Object)
 
 飞线的尾迹特效。
@@ -28,6 +35,10 @@
 ### period(number) = 4
 
 尾迹特效的周期。
+
+### constantSpeed(number) = null
+
+轨迹特效的移动动画是否是固定速度，单位按三维空间的尺寸，设置为非 null 的值后会忽略 [period](~series-lines3D.effect.period) 配置项。
 
 ### trailWidth(number) = 4
 
@@ -56,13 +67,14 @@
 
 ## data(Array)
 
-三维飞线图的数据数组，通常数据的每一项可以是一个包含起点和终点的坐标集。如下：
+三维飞线图的数据数组，通常数据的每一项可以是一个包含起点和终点的坐标集。在 [polyline](~series-lines3D.polyline) 设置为 `true` 时支持多于两个的坐标。
+如下：
 
 ```js
 data: [
     [
-        [120, 66], // 起点的经纬度坐标
-        [122, 67]  // 终点的经纬度坐标
+        [120, 66, 1], // 起点的经纬度和海拔坐标
+        [122, 67, 2]  // 终点的经纬度和海拔坐标
     ]
 ]
 ```
@@ -85,7 +97,7 @@ data: [
 
 ### coords(Array)
 
-一个包含两个到多个经纬度坐标的数组。
+一个包含两个到多个经纬度坐标的数组。在 [polyline](~series-lines3D.polyline) 设置为 `true` 时支持多于两个的坐标。
 
 ### value(Array|number)
 

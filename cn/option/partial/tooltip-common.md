@@ -157,7 +157,7 @@
 
 指示器的坐标轴。
 
-默认情况，坐标系会自动选择显示显示哪个轴的 axisPointer（默认取类目轴或者时间轴）。
+默认情况，坐标系会自动选择显示哪个轴的 axisPointer（默认取类目轴或者时间轴）。
 
 可以是 `'x'`, `'y'`, `'radius'`, `'angle'`。
 
@@ -282,7 +282,7 @@
 
 + 饼图、仪表盘、漏斗图: `{a}`（系列名称），`{b}`（数据项名称），`{c}`（数值）, `{d}`（百分比）
 
-更多其它图表模板变量的含义可以见相应的图表的 label.normal.formatter 配置项。
+更多其它图表模板变量的含义可以见相应的图表的 label.formatter 配置项。
 
 **示例：**
 ```js
@@ -355,7 +355,7 @@ formatter: function (params, ticket, callback) {
 
 提示框浮层的文本样式。
 
-{{ use: partial-text-style(prefix="#" + ${prefix}, defaultColor="'#fff'", defaultFontSize=14) }}
+{{ use: partial-simple-text-style(prefix="#" + ${prefix}, defaultColor="'#fff'", defaultFontSize=14) }}
 
 #${prefix} extraCssText(string)
 

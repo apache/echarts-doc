@@ -92,6 +92,18 @@ dispatchAction({
 
 **EVENT:** [legendselectchanged](~events.legendselectchanged)
 
+### legendScroll(Action)
+控制图例的滚动。当 [legend.type](option.html#legend.type) 为 `'scroll'` 时有效。
+```js
+dispatchAction({
+    type: 'legendScroll',
+    scrollDataIndex: number,
+    legendId: string
+})
+```
+
+**EVENT:** [legendscroll](~events.legendscroll)
+
 <!--============= tooltip ==========-->
 ## tooltip
 

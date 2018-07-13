@@ -1,11 +1,14 @@
 title:
 disqus_shortname:
-reading_time:     true
+reading_time:     false
 words_per_minute: 50
 destination: ../blog
 # Your site's domain goes here (eg: https://mmistakes.github.io, http://yourdomain.com, etc)
 # When testing locally leave blank or use http://localhost:4000
 url: http://echarts.baidu.com/blog
+# url: http://localhost/ec-doc/blog
+url_echarts: http://echarts.baidu.com
+# url_echarts: http://localhost/echarts-home
 url_gallery_view: http://gallery.echartsjs.com/view.html
 url_ec_examples_view_cn: http://echarts.baidu.com/gallery/view.html
 url_ec_examples_view_en: https://ecomfe.github.io/echarts-examples/public/view.html
@@ -43,6 +46,14 @@ owner:
   # google plus id, include the '+', eg +mmistakes
   google_plus:
 
+author:
+  dingding:
+    name: 王俊婷
+    title: ECharts 设计师
+    web: https://www.behance.net/wjtjiayouac8aa
+    image: http://echarts.baidu.com/images/people/王俊婷.png
+    desc: 喜欢神游的女子一枚，又名王叮叮
+
 # Background image to be tiled on all pages
 background:
 
@@ -70,7 +81,7 @@ categories:
   - en
 
 # Amount of post to show on home page
-paginate: 5
+paginate: 20
 
 kramdown:
   input: GFM

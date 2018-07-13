@@ -1,21 +1,23 @@
 basepath=$(cd `dirname $0`; pwd)
 
-node ${basepath}/build.js $1 # $1 is myname, than use configmyname.js but not config.js.
 
-rm ${basepath}/../echarts-home/documents/cn/*
-cp -R ${basepath}/public/cn/documents/cn/ ${basepath}/../echarts-home/documents/cn/
-
-
-# asset
-rm -r ${basepath}/../echarts-home/documents/asset/*
-cp -R ${basepath}/asset/ ${basepath}/../echarts-home/documents/asset/
+# Build cn doc for www.echartsjs.com.
+node ${basepath}/build.js
+# Do not rm, keep option3.json.
+cp -R ${basepath}/public/cn/documents/cn/ ${basepath}/../echarts-www/documents/cn/
 
 
-# github
+# Build en doc for gf-page of echarts-doc and apache.echarts.com.
 node ${basepath}/build.js github
+# Do not rm, keep option3.json.
+cp -R ${basepath}/public/en/documents/en/ ${basepath}/../echarts-www/documents/en/
 
 
+# Copy asset.
+# Do not rm, keep option3.json
+cp -R ${basepath}/asset/ ${basepath}/../echarts-www/documents/asset/
 
-# blog
-rm -r ${basepath}/../echarts-home/blog
-cp -R ${basepath}/blog ${basepath}/../echarts-home/
+
+# Copy blog.
+rm -r ${basepath}/../echarts-www/blog
+cp -R ${basepath}/blog ${basepath}/../echarts-www/

@@ -13,6 +13,8 @@ Graph is a diagram to represent [nodes](~series-graph.nodes) and the [links](~se
 
 ## type(string) = 'graph'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 {{ use: partial-legend-hover-link() }}
@@ -23,7 +25,8 @@ Graph is a diagram to represent [nodes](~series-graph.nodes) and the [links](~se
     none=true,
     cartesian2d=true,
     polar=true,
-    geo=true
+    geo=true,
+    calendar=true
 ) }}
 
 ## hoverAnimation(boolean)
@@ -112,54 +115,55 @@ symbolSize: [5, 10],
 symbolSize: 10
 ```
 
+{{ use: partial-cursor }}
+
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
-### normal(Object)
 {{use:partial-item-style(
-    prefix="###",
+    prefix="##",
     useColorPalatte=true,
     hasCallback=true
 )}}
-### emphasis(Object)
-{{use:partial-item-style(prefix="###")}}
 
 ## lineStyle(Object)
-The style of edge line. [lineStyle.normal.color](~series-graph.lineStyle.normal.color) can be `'source'` or `'target'`, which will use the color of source node or target node.
+The style of edge line. [lineStyle.color](~series-graph.lineStyle.color) can be `'source'` or `'target'`, which will use the color of source node or target node.
 
-### normal(Object)
 {{use:partial-line-style(
-    prefix="###",
+    prefix="##",
     defaultColor="'#aaa'",
     defaultWidth=1,
     defaultOpacity=0.5,
     hasCurveness=true
 )}}
-### emphasis(Object)
-{{ use:partial-line-style(
-    prefix="###"
-) }}
 
 ## label(Object)
 {{use:partial-label-desc}}
-### normal(Object)
 {{use:partial-label(
-    prefix="###",
+    prefix="##",
     defaultPosition="'inside'",
-    formatter1d=true
-)}}
-### emphasis(Object)
-{{use:partial-label(
-    prefix="###",
-    defaultShow=true,
     formatter1d=true
 )}}
 
 ## edgeLabel(Object)
-### normal(Object)
 {{use: graph-edge-label(
-    prefix="###"
+    prefix="##"
 )}}
-### emphasis(Object)
+
+## emphasis(Object)
+
+### itemStyle(Object)
+{{use:partial-item-style(prefix="###")}}
+### lineStyle(Object)
+{{ use:partial-line-style(
+    prefix="###"
+) }}
+### label(Object)
+{{use:partial-label(
+    prefix="###",
+    defaultShow=true,
+    formatter2d=true
+)}}
+### edgeLabel(Object)
 {{use: graph-edge-label(
     prefix="###"
 )}}
@@ -178,27 +182,56 @@ Name of category, which is used to correspond with [legend](~legend) and the con
 
 ### itemStyle(Object)
 The style of node in this category.
-#### normal(Object)
-{{use:partial-item-style(prefix="####", useColorPalatte=true)}}
-#### emphasis(Object)
-{{use:partial-item-style(prefix="####")}}
+{{use:partial-item-style(prefix="###", useColorPalatte=true)}}
 
 ### label(Object)
 The label style of node in this category.
-#### normal(Object)
 {{ use:partial-label(
-    prefix="####",
+    prefix="###",
     defaultPosition="inside",
     formatter1d=true
 ) }}
-#### emphasis(Object)
+
+### emphasis(Object)
+#### itemStyle(Object)
+{{use:partial-item-style(prefix="####")}}
+#### label(Object)
 {{ use:partial-label(prefix="####") }}
 
 
+
 ## data(Array)
-{{ use: partial-1d-data-desc() }}
+
+Nodes list of graph.
+
+```js
+data: [{
+    name: '1',
+    x: 10,
+    y: 10,
+    value: 10
+}, {
+    name: '2',
+    x: 100,
+    y: 100,
+    value: 20,
+    symbolSize: 20,
+    itemStyle: {
+        color: 'red'
+    }
+}]
+```
+
 ### name(string)
 Name of data item.
+
+### x(number)
+`x` value of node position.
+### y(number)
+`y` value of node position.
+### fixed(boolean)
+If node are fixed when doing force directed layout.
+
 ### value(number|Array)
 Value of data item.
 ### category(number)
@@ -211,21 +244,23 @@ Index of category which the data item belongs to.
 
 ### itemStyle(Object)
 The style of this node.
-#### normal(Object)
-{{use:partial-item-style(prefix="####", useColorPalatte=true)}}
-#### emphasis(Object)
-{{use:partial-item-style(prefix="####")}}
+{{use:partial-item-style(prefix="###", useColorPalatte=true)}}
 
 ### label(Object)
 The label style of this node.
-#### normal(Object)
+{{ use:partial-label(
+    prefix="###"
+) }}
+
+### emphasis(Object)
+
+#### itemStyle(Object)
+{{use:partial-item-style(prefix="####")}}
+#### label(Object)
 {{ use:partial-label(
     prefix="####"
 ) }}
-#### emphasis(Object)
-{{ use:partial-label(
-    prefix="####"
-) }}
+
 
 {{use: partial-tooltip-in-series-data(
     galleryViewPath=${galleryViewPath}
@@ -251,32 +286,51 @@ links: [{
 [name of source node](~series-graph.data.name) on edge
 ### target(string)
 [name of target node](~series-graph.data.name) on edge
+### value(number)
+value of edge, can be mapped to edge length in force graph.
+
 ### lineStyle(Object)
 Line style of edges.
-#### normal(Object)
+{{use:partial-line-style(
+    prefix="###"
+)}}
+#### curveness(number) = 0
+The curveness of edge, supporting values from 0 to 1. The curveness will be larger as the value becomes lager.
+
+### label(Object)
+{{use: graph-edge-label(
+    prefix="###"
+)}}
+
+### emphasis(Object)
+#### label(Object)
+{{use: graph-edge-label(
+    prefix="####"
+)}}
+#### lineStyle(Object)
 {{use:partial-line-style(
     prefix="####"
 )}}
-##### curveness(number) = 0
-The curveness of edge, supporting values from 0 to 1. The curveness will be larger as the value becomes lager.
-#### emphasis(Object)
-{{ use:partial-line-style(
-    prefix="####"
-) }}
 
+### symbol(Array|string)
+Symbol of edge ends. Can be an array with two item to specify two ends, or a string specifies both ends.
+
+### symbolSize(Array|string)
+Symbol size of edge ends. Can be an array with two item to specify two ends, or a string specifies both ends.
 
 ## edges(Array)
 Alias of [links](~series-graph.links)
 
 {{use: partial-marker(
     prefix="#",
-    galleryEditorPath=${galleryEditorPath},
-    seriesType="graph"
+    seriesType="graph",
+    hasType=true,
+    hasCoord=true
 )}}
 
 {{ use: partial-rect-layout-width-height(
     defaultLeft="'center'",
-    defaultTop="'center'",
+    defaultTop="'middle'",
     defaultWidth='auto',
     defaultHeight='auto'
 ) }}
@@ -311,5 +365,4 @@ Label position, options：
 #${prefix} formatter(string|Function)
 {{ use: partial-2d-data-label-formatter }}
 
-#${prefix} textStyle(Object)
-{{ use: partial-text-style(prefix=${prefix} + '#') }}
+{{ use: partial-text-style(prefix=${prefix}) }}

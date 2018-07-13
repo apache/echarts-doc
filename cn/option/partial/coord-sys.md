@@ -5,7 +5,7 @@
 该系列使用的坐标系，可选：
 
 {{if: ${none} }}
-+ `null`
++ `null` 或者 `'none'`
 
     无坐标系。
 {{/if}}
@@ -28,15 +28,23 @@
 
 + `'geo'`
 
-    使用地理坐标系，通过 [geoIndex](~series-${seriesType}.geoIndex) 指定相应的地理坐标系组件
+    使用地理坐标系，通过 [geoIndex](~series-${seriesType}.geoIndex) 指定相应的地理坐标系组件。
 {{/if}}
 
 {{if: ${parallel} }}
 
 + `'parallel'`
 
-    使用平行坐标系，通过 [parallelIndex](~series-${seriesType}.parallelIndex) 指定相应的平行坐标系组件
+    使用平行坐标系，通过 [parallelIndex](~series-${seriesType}.parallelIndex) 指定相应的平行坐标系组件。
 {{/if}}
+
+{{if: ${none} }}
+
++ `'none'`
+
+    不使用坐标系。
+{{/if}}
+
 
 
 {{if: ${cartesian2d} }}
@@ -75,3 +83,13 @@
 使用的[平行坐标系](~parallel)的 index，在单个图表实例中存在多个平行坐标系的时候有用。
 
 {{/if}}
+
+
+{{if: ${calendar} }}
+## calendarIndex(number) = 0
+
+使用的[日历坐标系](~calendar)的 index，在单个图表实例中存在多个日历坐标系的时候有用。
+
+{{/if}}
+
+

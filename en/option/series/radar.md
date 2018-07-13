@@ -12,6 +12,8 @@ Here is the example of AQI data which is presented in radar chart.
 
 ## type(string) = 'radar'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 ## radarIndex(number)
@@ -28,42 +30,42 @@ Index of [radar](~radar) component that radar chart uses.
 
 ## label(Object)
 {{use: partial-label-desc}}
-### normal(Object)
 {{use: partial-label(
-    prefix="###",
+    prefix="##",
     defaultPosition="'top'",
-    formatter=true
-)}}
-### emphasis(Object)
-{{use: partial-label(
-    prefix="###",
     formatter=true
 )}}
 
 ## itemStyle(Object)
 Item style of the inflection point of the lines.
-### normal(Object)
 {{use: partial-item-style(
-    prefix="###",
+    prefix="##",
     useColorPalatte=true,
     hasCallback=true
 )}}
-### emphasis(Object)
-{{use: partial-item-style(prefix="###")}}
 
 ## lineStyle(Object)
 Line style.
-### normal(Object)
-{{use:partial-line-style(prefix="###")}}
-### emphasis(Object)
-{{use: partial-line-style(prefix="###")}}
+{{use:partial-line-style(prefix="##")}}
 
 ## areaStyle(Object)
 Area filling style.
-### normal(Object)
+{{use: partial-area-style(prefix="##")}}
+
+
+## emphasis(Object)
+### itemStyle(Object)
+{{use: partial-item-style(prefix="###")}}
+### label(Object)
+{{use: partial-label(
+    prefix="###",
+    formatter=true
+)}}
+### lineStyle(Object)
+{{use: partial-line-style(prefix="###")}}
+### areaStyle(Object)
 {{use: partial-area-style(prefix="###")}}
-### emphasis(Object)
-{{use: partial-area-style(prefix="###")}}
+
 
 
 ## data(Array)
@@ -100,34 +102,36 @@ Numerical value of a single data item.
 
 ### label(Object)
 Style setting of the text on single inflection point.
-#### normal(Object)
 {{ use: partial-label(
-    prefix="####",
+    prefix="###",
     defaultPosition="top"
 ) }}
-#### emphasis(Object)
-{{ use: partial-label(prefix="####") }}
 
 ### itemStyle(Object)
 Style setting of the symbol on single inflection point.
-#### normal(Object)
-{{use: partial-bar-item-style(prefix="####")}}
-#### emphasis(Object)
-{{use: partial-bar-item-style(prefix="####")}}
+{{use: partial-bar-item-style(prefix="###")}}
 
 ### lineStyle(Object)
 Line style of a single item.
-#### normal(Object)
-{{use:partial-line-style(prefix="####")}}
-#### emphasis(Object)
-{{use: partial-line-style(prefix="####")}}
+{{use:partial-line-style(prefix="###")}}
 
 ### areaStyle(Object)
 Area filling style of a single item.
-#### normal(Object)
+{{use: partial-area-style(prefix="###")}}
+
+### emphasis(Object)
+#### label(Object)
+{{ use: partial-label(
+    prefix="####", defaultPosition="top"
+) }}
+#### itemStyle(Object)
+{{use: partial-bar-item-style(prefix="####")}}
+#### lineStyle(Object)
+{{use: partial-line-style(prefix="####")}}
+#### areaStyle(Object)
 {{use: partial-area-style(prefix="####")}}
-#### emphasis(Object)
-{{use: partial-area-style(prefix="####")}}
+
+
 
 {{use: partial-tooltip-in-series-data(
     galleryViewPath=${galleryViewPath}
@@ -137,6 +141,10 @@ Area filling style of a single item.
 {{use:partial-z-zlevel(
     prefix="#",
     componentName="radar chart"
+) }}
+
+{{ use:partial-silent(
+    prefix="#"
 ) }}
 
 {{use: partial-animation(

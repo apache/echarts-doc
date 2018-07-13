@@ -1,10 +1,13 @@
 
 ecDevDir=~/Develop/echarts
 zrDevDir=~/Develop/zrender
+qtDevDir=~/Develop/qtek
 ecGLDevDir=~/Develop/echarts-gl
 thisDir=`pwd`
 
 cd ${zrDevDir}
+npm run prepublish
+cd ${qtDevDir}
 npm run prepublish
 
 # cd ${ecDevDir}/build

@@ -27,6 +27,7 @@
 **Tip:**
 geo 区域的颜色也可以被 map series 所控制，参见 [series-map.geoIndex](~series-map.geoIndex)。
 
+{{use: partial-component-id(prefix="#")}}
 
 ## show(boolean) = true
 
@@ -47,10 +48,8 @@ geo 区域的颜色也可以被 map series 所控制，参见 [series-map.geoInd
 regions: [{
     name: '广东',
     itemStyle: {
-        normal: {
-            areaColor: 'red',
-            color: 'red'
-        }
+        areaColor: 'red',
+        color: 'red'
     }
 }]
 ```
@@ -64,30 +63,30 @@ geo 区域的颜色也可以被 map series 所控制，参见 [series-map.geoInd
 
 ### itemStyle(Object)
 该区域的多边形样式设置
-#### normal(Object)
-##### areaColor(Color)
+#### areaColor(Color)
 地图区域的颜色。
-{{ use: partial-item-style(prefix='####') }}
-#### emphasis(Object)
-##### areaColor(Color)
-地图区域的颜色。
-{{ use: partial-item-style(prefix='####') }}
+{{ use: partial-item-style(prefix='###') }}
 
 ### label(Object)
-该区域的标签样式设置
-#### normal(Object)
-##### show(boolean) = false
-是否在普通状态下显示标签。
-##### textStyle(Object)
-普通状态下的标签文本样式。
-{{ use: partial-text-style(prefix='#####') }}
-#### emphasis(Object)
-##### show(boolean) = false
-是否在高亮状态下显示标签。
-##### textStyle(Object)
-高亮状态下的标签文本样式。
-{{ use: partial-text-style(prefix='#####') }}
+{{use: partial-label-desc}}
+{{use: partial-label(
+    prefix="###",
+    formatter=true
+)}}
 
+
+
+### emphasis(Object)
+高亮的样式。
+#### itemStyle(Object)
+##### areaColor(Color)
+地图区域的颜色。
+{{ use: partial-item-style(prefix='####') }}
+#### label(Object)
+{{use: partial-label(
+    prefix="####",
+    formatter=true
+)}}
 
 
 {{ use:partial-silent(

@@ -1,14 +1,20 @@
 {{ target: partial-2d-data-label-formatter }}
 
-Data label formatter, which supoports string template and callback function. In either form, `\n` is supported to represent a new line.
+Data label formatter, which supports string template and callback function. In either form, `\n` is supported to represent a new line.
+
 
 **String template**
 
-Model variation includes `{a}`, `{b}`, `{c}`, representing series name, date name, data value respectively.
+Model variation includes:
++ `{a}`: series name.
++ `{b}`: the name of a data item.
++ `{c}`: the value of a data item.
++ `{@xxx}: the value of a dimension named `'xxx'`, for example, `{@product}` refers the value of `'product'` dimension。
++ `{@[n]}: the value of a dimension at the index of `n`, for example, `{@[3]}` refers the value at dimensions[3].
 
 **example: **
 ```js
-formatter: '{b}: {c}'
+formatter: '{b}: {@score}'
 ```
 
 **Callback function**
@@ -22,10 +28,34 @@ where `params` is the single dataset needed by formatter, which is formed as:
 
 
 
+{{ target: partial-seriesLayoutBy }}
+
+## seriesLayoutBy(string) = 'column'
+
+When [dataset](~dataset) is used, `seriesLayoutBy` specifies whether the column or the row of `dataset` is mapped to the series, namely, the series is "layout" on columns or rows. Optional values:
+
++ 'column': by default, the columns of `dataset` are mapped the series. In this case, each column represents a dimension.
++ 'row'：the rows of `dataset` are mapped to the series. In this case, each row represents a dimension.
+
+Check this [example](https://ecomfe.github.io/echarts-examples/public/editor.html?c=dataset-series-layout-by).
+
+
+{{ target: partial-datasetIndex }}
+
+## datasetIndex(number) = 0
+
+If [series.data](~series.data) is not specified, and [dataset](~dataset) exists, the series will use `dataset`. `datasetIndex` specifies which dataset will be used.
+
+
 
 {{ target: partial-2d-data-desc }}
 
 Data array of series, which can be in the following forms:
+
+Notice, if no `data` specified in series, and there is [dataset](~dataset) in option, series will use the first [dataset](~dataset) as its datasource. If `data` has been specified, [dataset](~dataset) will not used.
+
+`series.datasetIndex` can be used to specify other [dataset](~dataset).
+
 
 Basically, data is represented by a two-dimension array, like the example below, where each colum is named as a "dimension".
 ```js
@@ -45,7 +75,7 @@ series: [{
 + Other dimensions are optional, which can be used in other place. For example:
     + [visualMap](~visualMap) can map one or more dimensions to viusal (color, symbol size ...).
     + [series.symbolSize](~series.symbolSize) can be set as a callback function, where symbol size can be calculated by values of a certain dimension.
-    + Values in other dimensions can be shown by [tooltip.formatter](~tooltip.formatter) or [series.label.normal.formatter](~series.label.normal.formatter).
+    + Values in other dimensions can be shown by [tooltip.formatter](~tooltip.formatter) or [series.label.formatter](~series.label.formatter).
 
 Especially, when there is one and only one category axis (axis.type is `'category'`), data can be simply be represented by a one-dimension array, like:
 ```js

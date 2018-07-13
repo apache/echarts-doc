@@ -11,6 +11,8 @@ In ECharts 2.x, a single instance of ECharts could contains one title component 
 ~[700x400](${galleryViewPath}line-easing&edit=1&reset=1)
 
 
+{{use: partial-component-id(prefix="#")}}
+
 ## show(boolean) = true
 
 It specifies whether to show the title component.
@@ -40,16 +42,9 @@ Open the hyper link of main title in specified tab.
     name="main title",
     defaultFontSize=18,
     defaultFontWeight="'bolder'",
-    defaultColor="'#333'"
+    defaultColor="'#333'",
+    noBox=true
 ) }}
-
-## textAlign(string)
-
-Setting the title text align horizontally, supporting 'left','center','right', the default value is based on the title position.
-
-## textBaseline(string)
-
-Setting the title text align vertically, supporting 'top','middle','bottom', the default value is based on the title position.
 
 
 ## subtext(string) = ''
@@ -76,7 +71,8 @@ The hyper link of subtitle text.
 {{ use: partial-text-style(
     prefix='##',
     name="subtitle",
-    defaultColor="'#aaa'"
+    defaultColor="'#aaa'",
+    noBox=true
 ) }}
 
 ## padding(number) = 5
@@ -89,7 +85,12 @@ The gap between the main title and subtitle.
 
 {{use: partial-rect-layout(componentName="grid ")}}
 
-{{ use: partial-component-common-style(componentName="title", prefix='#', defaultBorderWidth="0")}}
+{{ use: partial-component-common-style(
+    componentName="title",
+    prefix='#',
+    defaultBorderWidth="0",
+    hasBorderRadius=true
+)}}
 
 
 

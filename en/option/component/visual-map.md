@@ -35,14 +35,17 @@ The dimension of [series.data](~series.data) can be specified by [visualMap.dime
 <br>
 In series that controlled by visualMap, if a data item needs to escape from controlled by visualMap, you can set like this:
 ```
-series : [
-    {name: 'Shanghai', value: 251},
-    {name: 'Haikou', value: 21},
-    // Mark as `visualMap: false`, then this item does not controlled by visualMap any more,
-    // and series visual config (like color, symbol, ...) can be used to this item.
-    {name: 'Beijing', value: 821, },
-    ...
-]
+series: {
+    type: '...',
+    data: [
+        {name: 'Shanghai', value: 251},
+        {name: 'Haikou', value: 21},
+        // Mark as `visualMap: false`, then this item does not controlled by visualMap any more,
+        // and series visual config (like color, symbol, ...) can be used to this item.
+        {name: 'Beijing', value: 821, },
+        ...
+    ]
+}
 ```
 
 
@@ -373,7 +376,7 @@ Each column of the above array is regarded as a `dimension`. For example, when p
 
 Use the last dimension of `data` by default.
 
-## seriesIndex(number|Array.<number>)
+## seriesIndex(number|Array)
 
 Specify visual mapping should be performed on which series, from which
 [series.data](~series.data) is fetched.
@@ -452,7 +455,7 @@ If you persist in using it, the following issue should be noticed: the sequence 
 
 ## textStyle
 
-{{ use:partial-text-style(
+{{ use:partial-simple-text-style(
     prefix='##',
     name='visualMap ',
     defaultColor='#333'

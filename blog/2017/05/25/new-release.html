@@ -1,0 +1,416 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="zh"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="zh"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="zh"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>ECharts v3.6 发布：自定义系列、极坐标柱状图 </title>
+<meta name="description" content="在 ECharts 新发布的 3.6 版本中，新增了自定义系列，能让用户定制渲染逻辑，从而在已有坐标系中创造新的图表。此外还有极坐标柱状图、自定义维度映射、dataZoom 等其他一些增强。">
+<meta name="keywords" content="新版本, 扩展, 教程">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ECharts v3.6 发布：自定义系列、极坐标柱状图">
+<meta property="og:description" content="在 ECharts 新发布的 3.6 版本中，新增了自定义系列，能让用户定制渲染逻辑，从而在已有坐标系中创造新的图表。此外还有极坐标柱状图、自定义维度映射、dataZoom 等其他一些增强。">
+<meta property="og:url" content="http://echarts.baidu.com/blog/2017/05/25/new-release.html">
+<meta property="og:site_name" content="">
+
+
+
+
+
+<link rel="canonical" href="http://echarts.baidu.com/blog/2017/05/25/new-release.html">
+<link href="http://echarts.baidu.com/blog/feed.xml" type="application/atom+xml" rel="alternate" title=" Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://echarts.baidu.com/blog/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://echarts.baidu.com/blog/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="http://echarts.baidu.com/blog/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://echarts.baidu.com/blog/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://echarts.baidu.com/blog/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://echarts.baidu.com/blog/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://echarts.baidu.com/blog/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://echarts.baidu.com/blog/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://echarts.baidu.com/blog/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post" class="feature">
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false" class="navbar-toggle collapsed">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://echarts.baidu.com/index.html" class="navbar-brand">
+                <img src="http://echarts.baidu.com/images/logo.png" alt="echarts logo" class="navbar-logo">
+            </a>
+        </div>
+        <div id="navbar-collapse" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-left">
+                <li id="nav-index"><a href="http://echarts.baidu.com/index.html">首页</a></li>
+                <li id="nav-doc" class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">文档<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="http://echarts.baidu.com/feature.html">特性</a></li>
+                        <li><a href="http://echarts.baidu.com/tutorial.html">教程</a></li>
+                        <li><a href="http://echarts.baidu.com/api.html">API</a></li>
+                        <li><a href="http://echarts.baidu.com/option.html">配置项手册</a></li>
+                        <li><a href="http://echarts.baidu.com/faq.html">常见问题</a></li>
+                        <li><a href="http://echarts.baidu.com/changelog.html">版本记录</a></li>
+                    </ul>
+                </li>
+                <li id="nav-download" class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">下载<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="http://echarts.baidu.com/download.html">下载</a></li>
+                        <li><a href="http://echarts.baidu.com/download-theme.html">主题下载</a></li>
+                        <li><a href="http://echarts.baidu.com/download-map.html">地图下载</a></li>
+                        <li><a href="http://echarts.baidu.com/download-extension.html">扩展下载</a></li>
+                    </ul>
+                </li>
+                <li id="nav-examples">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">实例<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="http://echarts.baidu.com/examples.html">官方实例</a></li>
+                        <li><a href="http://gallery.echartsjs.com/explore.html#tags=echarts-gl">GL 实例</a></li>
+                    </ul>
+                </li>
+                <li id="nav-community" class="active">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">社区<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="http://gallery.echartsjs.com">GALLERY</a></li>
+                        <li><a href="http://echarts.baidu.com/blog">博客</a></li>
+                    </ul>
+                </li>
+                <li id="nav-tool">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">工具<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="http://echarts.baidu.com/spreadsheet.html">表格工具</a></li>
+                        <li><a href="http://ecomfe.github.io/echarts-map-tool/">地图数据在线工具</a></li>
+                        <li><a href="http://echarts.baidu.com/theme-builder/">主题构建工具</a></li>
+                    </ul>
+                </li>
+                <li id="nav-about"><a href="http://echarts.baidu.com/about.html">关于</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li id="nav-github"><a href="https://github.com/ecomfe/echarts" target="_blank"><img src="http://echarts.baidu.com/images/github.png" width="18"></a></li>
+                <li id="nav-2" class="0"><a href="http://echarts.baidu.com/echarts2/">2.0</a></li>
+                <li id="nav-homeen"><a href="https://ecomfe.github.io/echarts-doc/public/en/index.html">EN</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="entry-header">
+  
+  <div class="entry-image">
+    <img src="http://echarts.baidu.com/blog/images/post/2017-05-25-banner.png" alt="ECharts v3.6 发布：自定义系列、极坐标柱状图">
+  </div><!-- /.entry-image -->
+</div><!-- /.entry-header -->
+
+
+<div id="post-main" role="main">
+  <article class="hentry">
+    <header class="header-title">
+      <div class="header-title-wrap">
+        <h1 class="entry-title">ECharts v3.6 发布：自定义系列、极坐标柱状图</h1>
+        <h2><span class="entry-date date published"><time datetime="2017-05-25T00:00:00+08:00">2017-05-25</time></span></h2>
+        
+      </div><!-- /.header-title-wrap -->
+    </header>
+    <div class="entry-content">
+      <p>在 ECharts 新发布的 <a href="https://github.com/ecomfe/echarts/releases/tag/3.6.0">3.6 版本</a>中，新增了 <a href="http://echarts.baidu.com/option.html#series-custom">自定义系列（custom series）</a>，能让用户定制渲染逻辑，从而在已有坐标系中创造新的图表。此外还有极坐标柱状图、自定义维度映射、dataZoom 等其他一些增强。</p>
+
+<h2 id="自定义系列">自定义系列</h2>
+
+<p>图表的类型多种多样，有些大众有些小众，echarts 难于内置得支持所有类型的图表。所以推出了 <a href="http://echarts.baidu.com/option.html#series-custom">自定义系列（custom series）</a>。</p>
+
+<p>自定义系列可以自定义系列中的图形元素渲染。从而能扩展出不同的图表。同时，echarts 会统一管理图形的创建删除、动画、与其他组件（如 <a href="http://echarts.baidu.com/option.html#dataZoom">dataZoom</a>、<a href="http://echarts.baidu.com/option.html#visualMap">visualMap</a>）的联动，使用户不必纠结这些细节。</p>
+
+<p><strong>例如，下面的例子使用 custom series 扩展出了 x-range 图：</strong></p>
+<div class="ec-lazy" data-thumb="http://echarts.baidu.com/gallery/data/thumb/custom-profile.png" data-src="http://echarts.baidu.com/gallery/view.html?c=custom-profile&amp;edit=1&amp;reset=1" style="width: 100%; height: 300px"></div>
+
+<p>可以注意到，里面须用户自定义的渲染逻辑，在 <code class="highlighter-rouge">renderItem</code> 这个函数中，并不十分复杂。但是得到的功能是比较完备的。</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">option</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">...,</span>
+    <span class="na">series</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="s1">'custom'</span><span class="p">,</span>
+        <span class="na">renderItem</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">params</span><span class="p">,</span> <span class="nx">api</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">categoryIndex</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">value</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+            <span class="kd">var</span> <span class="nx">start</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">coord</span><span class="p">([</span><span class="nx">api</span><span class="p">.</span><span class="nx">value</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="nx">categoryIndex</span><span class="p">]);</span>
+            <span class="kd">var</span> <span class="nx">end</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">coord</span><span class="p">([</span><span class="nx">api</span><span class="p">.</span><span class="nx">value</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="nx">categoryIndex</span><span class="p">]);</span>
+            <span class="kd">var</span> <span class="nx">height</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">size</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.6</span><span class="p">;</span>
+
+            <span class="k">return</span> <span class="p">{</span>
+                <span class="na">type</span><span class="p">:</span> <span class="s1">'rect'</span><span class="p">,</span>
+                <span class="na">shape</span><span class="p">:</span> <span class="nx">echarts</span><span class="p">.</span><span class="nx">graphic</span><span class="p">.</span><span class="nx">clipRectByRect</span><span class="p">({</span>
+                    <span class="na">x</span><span class="p">:</span> <span class="nx">start</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                    <span class="na">y</span><span class="p">:</span> <span class="nx">start</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="nx">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+                    <span class="na">width</span><span class="p">:</span> <span class="nx">end</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="nx">start</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                    <span class="na">height</span><span class="p">:</span> <span class="nx">height</span>
+                <span class="p">},</span> <span class="p">{</span>
+                    <span class="na">x</span><span class="p">:</span> <span class="nx">params</span><span class="p">.</span><span class="nx">coordSys</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span>
+                    <span class="na">y</span><span class="p">:</span> <span class="nx">params</span><span class="p">.</span><span class="nx">coordSys</span><span class="p">.</span><span class="nx">y</span><span class="p">,</span>
+                    <span class="na">width</span><span class="p">:</span> <span class="nx">params</span><span class="p">.</span><span class="nx">coordSys</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span>
+                    <span class="na">height</span><span class="p">:</span> <span class="nx">params</span><span class="p">.</span><span class="nx">coordSys</span><span class="p">.</span><span class="nx">height</span>
+                <span class="p">}),</span>
+                <span class="na">style</span><span class="p">:</span> <span class="nx">api</span><span class="p">.</span><span class="nx">style</span><span class="p">()</span>
+            <span class="p">};</span>
+        <span class="p">},</span>
+        <span class="na">data</span><span class="p">:</span> <span class="nx">data</span>
+    <span class="p">}]</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>下面的两个例子使用 custom series 扩展出了 error-chart 图：</strong></p>
+<div class="ec-lazy" data-thumb="http://echarts.baidu.com/gallery/data/thumb/custom-error-bar.png" data-src="http://echarts.baidu.com/gallery/view.html?c=custom-error-bar&amp;edit=1&amp;reset=1" style="width: 100%; height: 300px"></div>
+
+<div class="ec-lazy" data-thumb="http://echarts.baidu.com/gallery/data/thumb/custom-error-scatter.png" data-src="http://echarts.baidu.com/gallery/view.html?c=custom-error-scatter&amp;edit=1&amp;reset=1" style="width: 100%; height: 400px"></div>
+
+<p><strong>下面是其他一些例子：</strong></p>
+
+<div class="ec-lazy" data-thumb="http://echarts.baidu.com/gallery/data/thumb/custom-bar-trend.png" data-src="http://echarts.baidu.com/gallery/view.html?c=custom-bar-trend&amp;edit=1&amp;reset=1" style="width: 100%; height: 300px"></div>
+
+<div class="ec-lazy" data-thumb="http://echarts.baidu.com/gallery/data/thumb/custom-profit.png" data-src="http://echarts.baidu.com/gallery/view.html?c=custom-profit&amp;edit=1&amp;reset=1" style="width: 100%; height: 300px"></div>
+
+<div class="ec-lazy" data-thumb="http://echarts.baidu.com/gallery/data/thumb/custom-hexbin.png" data-src="http://echarts.baidu.com/gallery/view.html?c=custom-hexbin&amp;edit=1&amp;reset=1" style="width: 100%; height: 500px"></div>
+
+<h2 id="极坐标柱状图">极坐标柱状图</h2>
+
+<p>极坐标中的柱状图，可以按径向排布或者切向排布。</p>
+
+<div class="ec-lazy" data-thumb="http://echarts.baidu.com/gallery/data/thumb/bar-polar-stack.png" data-src="http://echarts.baidu.com/gallery/view.html?c=bar-polar-stack&amp;edit=1&amp;reset=1" style="width: 100%; height: 300px"></div>
+
+<div class="ec-lazy" data-thumb="http://echarts.baidu.com/gallery/data/thumb/bar-polar-stack-radial.png" data-src="http://echarts.baidu.com/gallery/view.html?c=bar-polar-stack-radial&amp;edit=1&amp;reset=1" style="width: 100%; height: 300px"></div>
+
+<p>使用时，只需要将系列的 <code class="highlighter-rouge">coordinateSystem</code> 设置为 <code class="highlighter-rouge">'polar'</code>，将原先笛卡尔坐标系中使用的 <code class="highlighter-rouge">xAxis</code> 和 <code class="highlighter-rouge">yAxis</code> 替换成 <code class="highlighter-rouge">radiusAxis</code> 和 <code class="highlighter-rouge">angleAxis</code>，就能使用极坐标系的柱状图了。</p>
+
+<h2 id="其他">其他</h2>
+
+<p>此外，</p>
+
+<ul>
+  <li>支持了<a href="http://echarts.baidu.com/option.html#series-scatter.encode">encode</a> 设定，可以指定 <a href="http://echarts.baidu.com/option.html#series-scatter.data">data</a> 中哪些维度映射到坐标系中哪个轴，或者哪些维度在 <a href="http://echarts.baidu.com/option.html#tooltip">tooltip</a> 以及 <a href="http://echarts.baidu.com/option.html#series-scatter.label">label</a> 中显示。</li>
+  <li>支持了 <a href="http://echarts.baidu.com/option.html#series-scatter.dimensions">dimensions</a> 设定，能指定 <a href="http://echarts.baidu.com/option.html#series-scatter.data">data</a> 中每个维度的名称和类型。名称可以显示在默认 <a href="http://echarts.baidu.com/option.html#tooltip">tooltip</a> 中。</li>
+  <li><code class="highlighter-rouge">dataZoom</code> 组件进行了增强。比如，支持了『按住 <code class="highlighter-rouge">'ctrl'</code>/<code class="highlighter-rouge">'alt'</code>/<code class="highlighter-rouge">'shift'</code> 和滚轮时才能出发缩放平移』功能，避免和页面的滚动冲突（参见 <a href="http://echarts.baidu.com/option.html#dataZoom-inside.moveOnMouseMove">moveOnMouseMove</a> 和 <a href="http://echarts.baidu.com/option.html#dataZoom-inside.zoomOnMouseWheel">zoomOnMouseWheel</a>。另外支持了 <a href="http://echarts.baidu.com/option.html#dataZoom.minSpan">minSpan</a> 和 <a href="http://echarts.baidu.com/option.html#dataZoom.maxSpan">maxSpan</a> 等细节配置。</li>
+</ul>
+
+<p>更多的升级信息，参见 <a href="http://echarts.baidu.com/changelog.html">changelog</a>。</p>
+
+      <div class="entry-meta">
+        <span class="tag-panel">
+          
+          <!--<a href="http://echarts.baidu.com/blog/tags/#新版本" title="Pages tagged 新版本" class="tag">-->
+            <span class="term">新版本</span>
+          <!--</a>-->
+          
+          
+          <!--<a href="http://echarts.baidu.com/blog/tags/#扩展" title="Pages tagged 扩展" class="tag">-->
+            <span class="term">扩展</span>
+          <!--</a>-->
+          
+          
+          <!--<a href="http://echarts.baidu.com/blog/tags/#教程" title="Pages tagged 教程" class="tag">-->
+            <span class="term">教程</span>
+          <!--</a>-->
+          
+          
+        </span>
+      </div>
+
+      
+    </div><!-- /.entry-content -->
+    
+    <div class="container">
+  <div class="read-more">
+    <h3>更多相关信息</h3>
+    <div class="row">
+      
+      
+      
+      
+      
+      <div class="col-md-4">
+        <div class="read-more-post">
+          <h4><a href="http://echarts.baidu.com/blog/2017/06/14/building-realistic-map-with-echarts-gl.html" title="在 ECharts GL 中绘制三维地图">在 ECharts GL 中绘制三维地图</a></h4>
+          <p>ECharts 前段时间发布了超亮眼的 GL，相对于之前已经圈粉无数的 ECharst-X 而言，ECharst GL 更是帅到爆，无论是性能、颜值、类型都有了巨大的飞跃。但是不是更易上手呢？答案是肯定的，用户除了能够根据数据画出诸如三维地图等三维的可视化图之外，只需要在项目中加入几个简单的配置项，就能配制出想要的风格的高质量画面效果。</p>
+          <div class="tag-panel">
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#新版本" title="Pages tagged 新版本" class="tag">-->
+              <span class="term">新版本</span>
+            <!--</a>-->
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#扩展" title="Pages tagged 扩展" class="tag">-->
+              <span class="term">扩展</span>
+            <!--</a>-->
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#教程" title="Pages tagged 教程" class="tag">-->
+              <span class="term">教程</span>
+            <!--</a>-->
+            
+          </div>
+        </div>
+      </div>
+      
+      
+      
+      
+      
+      <div class="col-md-4">
+        <div class="read-more-post">
+          <h4><a href="http://echarts.baidu.com/blog/2017/05/09/echarts-statistical-extension-tutorial.html" title="ECharts 统计扩展教程">ECharts 统计扩展教程</a></h4>
+          <p>你是否想了解一组样本数据的分布情况？你是否想根据用户的数值属性将用户分成不同的群体？你是否想预测两个变量的变化趋势？——什么？不需要？不要再违心了，小编已经听到来自你们内心深处的呐喊，今天就为大家推荐一款神器——ECharts 统计扩展，这是一个用来进行数据分析的扩展工具，包含的功能有直方图、聚类、回归、以及常用的汇总统计。通过统计扩展和 ECharts 的结合，可以使大家方便地实现可视分析，也就是将数据分析的结果，通过可视化直观地呈现出来。</p>
+          <div class="tag-panel">
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#新版本" title="Pages tagged 新版本" class="tag">-->
+              <span class="term">新版本</span>
+            <!--</a>-->
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#扩展" title="Pages tagged 扩展" class="tag">-->
+              <span class="term">扩展</span>
+            <!--</a>-->
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#教程" title="Pages tagged 教程" class="tag">-->
+              <span class="term">教程</span>
+            <!--</a>-->
+            
+          </div>
+        </div>
+      </div>
+      
+      
+      
+      
+      
+      <div class="col-md-4">
+        <div class="read-more-post">
+          <h4><a href="http://echarts.baidu.com/blog/2017/05/08/echarts-histogram-tutorial.html" title="那些年我们一起学过的直方图">那些年我们一起学过的直方图</a></h4>
+          <p>某天下午小编正在安安静静地撸代码，突然听说在我们的[gallery](http://gallery.echartsjs.com/explore.html#sort=rank~timeframe=all~author=all)上，有用户提出，[ECharts](http://echarts.baidu.com/index.html)不支持直方图，什么？这怎么能忍？于是小编将珍藏已久的机械键盘拿出来，摆好姿势，通宵达旦地为用户大大们加好了直方图，并于上周四悄悄上线了，对，我们就是这么低调。然而，很多大大们表示，直方图还是柱状图？傻傻分不清。小编深感这年头光有图怕是不行了，必须得有个教程，要做到图文并茂。下面小编就从直方图是什么，为什么要用直方图，以及如何使用[ECharts](http://echarts.baidu.com/index.html)制作直方图三个方面，为各位大大们上点干货。</p>
+          <div class="tag-panel">
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#新版本" title="Pages tagged 新版本" class="tag">-->
+              <span class="term">新版本</span>
+            <!--</a>-->
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#扩展" title="Pages tagged 扩展" class="tag">-->
+              <span class="term">扩展</span>
+            <!--</a>-->
+            
+            <!--<a href="http://echarts.baidu.com/blog/tags/#教程" title="Pages tagged 教程" class="tag">-->
+              <span class="term">教程</span>
+            <!--</a>-->
+            
+          </div>
+        </div>
+      </div>
+      
+      
+      
+        
+    </div>
+  </div>
+</div>
+
+  </article>
+</div><!-- /#main -->
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 logo"><img src="http://echarts.baidu.com/images/echarts-footer-logo.png"/></div>
+            <div id="efe-product" class="col-md-2 col-sm-4 pc">
+                <h3>百度EFE更多产品</h3>
+                <ul id="efe-product">
+                    <li><a href="http://tushuo.baidu.com/?fr=echarts" target="_blank">图说</a></li>
+                    <li><a href="https://ecomfe.github.io/san/?fr=echarts" target="_blank">SAN</a></li>
+                    <li><a href="http://ecomfe.github.io/edp/?fr=echarts" target="_blank">EDP</a></li>
+                    <li><a href="http://github.com/ecomfe/zrender/?fr=echarts" target="_blank">ZRender</a></li>
+                    <li><a href="http://fecs.baidu.com/?fr=echarts" target="_blank">FECS</a></li>
+                    <li><a href="http://ecomfe.github.io/fontmin/?fr=echarts" target="_blank">Fontmin</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-md-offset-1 col-sm-4 pc">
+                <h3>友情链接</h3>
+                <ul>
+                    <li><a href="https://fex.baidu.com/?fr=echarts" target="_blank">FEX</a></li>
+                    <li><a href="http://bit.baidu.com/?fr=echarts" target="_blank">百度技术学院</a></li>
+                    <li><a href="https://git.oschina.net/echarts/echarts?fr=echarts" target="_blank">码云镜像</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3" id="footer-icon-panel">
+                <div class="icon-panel">
+                    <a href="mailto:echarts@baidu.com" class="footer-icon">
+                        <img src="http://echarts.baidu.com/images/icon-email.png"/>
+                    </a>
+                    <a href="https://twitter.com/EChartsJs" class="footer-icon">
+                        <img src="http://echarts.baidu.com/images/icon-twitter.png"/>
+                    </a>
+                    <a href="http://weibo.com/u/5160877841" class="footer-icon">
+                        <img src="http://echarts.baidu.com/images/icon-weibo.png"/>
+                    </a>
+                    <a href="https://github.com/ecomfe/echarts" class="footer-icon">
+                        <img src="http://echarts.baidu.com/images/icon-github.png"/>
+                    </a>
+                </div>
+                <div id="echarts-copyright">&#9400; 2017 百度ECharts团队出品</div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="http://echarts.baidu.com/blog/assets/js/vendor/jquery-1.9.1.min.js"></script>
+<script src="http://echarts.baidu.com/vendors/bootstrap/js/bootstrap.min.js"></script>
+<script src="http://echarts.baidu.com/blog/assets/js/scripts.min.js"></script>
+
+
+<script src="http://echarts.baidu.com/blog/assets/js/plugins/md-env.js"></script>
+<script src="http://echarts.baidu.com/blog/assets/js/plugins/lazy-load.js"></script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?4bad1df23f079e0d12bdbef5e65b072f";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</body>
+</html>

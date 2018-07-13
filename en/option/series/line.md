@@ -14,6 +14,8 @@ Broken line chart relates all the data points [symbol](~series-line.symbol) by b
 
 ## type(string) = 'line'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 {{ use: partial-coord-sys(
@@ -35,10 +37,11 @@ Broken line chart relates all the data points [symbol](~series-line.symbol) by b
 ## showSymbol(boolean) = true
 Whether to show symbol. It would be shown during tooltip hover.
 
-## showAllSymbol(boolean) = false
-Symbols are shown when label of main axis is shown. Which means it has same interval strategy with [axisLabel.interval](~xAxis.axisLabel.interval).
-
-If you want to show them all, set this property as `true`.
+## showAllSymbol(boolean) = 'auto'
+Only work when main axis is `'category'` axis (`axis.type` is `'category'`). Optional values:
++ `'auto'`: Default value. Show all symbols if there is enough space. Otherwise follow the interval strategy with with [axisLabel.interval](~xAxis.axisLabel.interval).
++ `true`: Show all symbols.
++ `false`: Follow the interval strategy with [axisLabel.interval](~xAxis.axisLabel.interval).
 
 ## hoverAnimation(boolean) = true
 Whether to enable the animation effect when mouse is on the symbol.
@@ -52,11 +55,13 @@ The effect of the below example could be seen through stack switching of [toolbo
 
 ~[600x400](${galleryViewPath}doc-example/line-stack-tiled&edit=1&reset=1)
 
-## clipOverflow(boolean) = true
-Whether to clip the overflowing part, which defaults to clip.
+{{ use: partial-cursor }}
 
 ## connectNulls(boolean) = false
 Whether to connect the line across null points.
+
+## clipOverflow(boolean) = true
+Whether to clip the overflowing part, which defaults to clip.
 
 ## step(string|boolean) = false
 Whether to show as a step line. It can be `true`, `false`. Or `'start'`, `'middle'`, `'end'`. Which will configure the turn point of step line.
@@ -68,60 +73,73 @@ See the example using different `step` options:
 
 ## label(Object)
 {{use: partial-label-desc}}
-### normal(Object)
 {{use: partial-label(
-    prefix="###",
+    prefix="##",
     defaultPosition="'top'",
-    formatter=true
-)}}
-### emphasis(Object)
-{{use: partial-label(
-    prefix="###",
     formatter=true
 )}}
 
 ## itemStyle(Object)
 The style of the symbol point of broken line.
-### normal(Object)
 {{use: partial-item-style(
-    prefix="###",
+    prefix="##",
     useColorPalatte=true,
     hasCallback=true
 )}}
-### emphasis(Object)
-{{use: partial-item-style(prefix="###")}}
 
 ## lineStyle(Object)
 Line style.
-### normal(Object)
-{{use:partial-line-style(prefix="###")}}
-### emphasis(Object)
-{{use: partial-line-style(prefix="###")}}
+
+{{use:partial-line-style(
+    prefix="##",
+    defaultWidth=2
+)}}
 
 ## areaStyle(Object)
 The style of area.
-### normal(Object)
-{{use: partial-area-style(prefix="###")}}
-### emphasis(Object)
-{{use: partial-area-style(prefix="###")}}
+{{use: partial-area-style(prefix="##", hasOrigin=true)}}
 
-## smooth(false) = false
+
+## emphasis(Object)
+图形的高亮样式。
+
+### label(Object)
+{{use: partial-label(
+    prefix="###",
+    formatter=true
+)}}
+### itemStyle(Object)
+{{use: partial-item-style(prefix="###")}}
+
+
+## smooth(boolean|number) = false
 Whether to show as smooth curve.
 
+If is typed in `boolean`, then it means whether to enable smoothing. If is typed in `number`, valued from 0 to 1, then it means smoothness. A smaller value makes it less smooth.
+
+Please refer to [smoothMonotone](~series-line.smoothMonotone) to change smoothing algorithm.
+
 ## smoothMonotone(string)
-Whether the broken line keep the monotonicity when it is smoothed. It can be set as `'x'`, `'y'` to keep the monotonicity on x axis or y axis.
+Whether the broken line keep the monotonicity when it is smoothed. It can be set as `'x'`, `'y'` to keep the monotonicity on x axis or y axis. Or it can be set to be `'none'` to use non-monotone smoothing algorithm.
 
-It is usually used on dual value axis.
+From ECharts 4.0.3, we improved our default smoothing algorithm. The old algorithm can be used by setting `smoothMonotone` to be `'none'`. Here's the difference between old and new algorithm. In the following chart, old algorithm is in green color, and new algorithm is in red color.
 
-Here are 2 examples of broken line chart with dual value axis, showing the differences when `smoothMonotone` is without any setting, and `smoothMonotone` is set as `'x'`.
+![600xauto](~smooth-old-vs-new.png)
 
-+ No setting about `smoothMonotone`:
+The old algorithm has many problems:
 
-![300xauto](~smooth-monotone-none.png)
+![600xauto](~smooth-old-problem.png)
 
-+ It is set as `'x'`:
+Old algorithm uses the previous and next point to form control points' direction, while they are always horizontal (when the first dimension of data is monotone) or vertical (when the second dimension of data is monotone) in new algorithm.
 
-![300xauto](~smooth-monotone-x.png)
+![600xauto](~smooth-algorithm.png)
+
+But new algorithm doesn't work with non-monotone data.
+
+![600xauto](~smooth-non-monotone-x.png)
+
+So we suggest that default value of `smoothMonotone` be used in most situations. If data on Y axis is monotone, it should be set to be `'y'`. If data is non-monotone, it should be set to be `'none'` to use the old algorithm.
+
 
 ## sampling(string)
 
@@ -132,6 +150,19 @@ Options:
 + `'max'` Use maximum value of filter points
 + `'min'` Use minimum value of filter points
 + `'sum'` Use sum of filter points
+
+
+{{use:partial-series-dimensions(
+    prefix="#"
+)}}
+
+{{use:partial-series-encode(
+    prefix="#"
+)}}
+
+{{ use: partial-seriesLayoutBy }}
+
+{{ use: partial-datasetIndex }}
 
 ## data(Array)
 
@@ -154,20 +185,23 @@ The value of a single data item.
 
 ### label(Object)
 The style of the text of single data point.
-#### normal(Object)
 {{ use: partial-label(
-    prefix="####",
+    prefix="###",
     defaultPosition="top"
 ) }}
-#### emphasis(Object)
-{{ use: partial-label(prefix="####") }}
 
 ### itemStyle(Object)
 The style of the symbol of single data point.
-#### normal(Object)
+{{use: partial-bar-item-style(prefix="###")}}
+
+
+### emphasis(Object)
+
+#### itemStyle(Object)
 {{use: partial-bar-item-style(prefix="####")}}
-#### emphasis(Object)
-{{use: partial-bar-item-style(prefix="####")}}
+#### label(Object)
+{{ use: partial-label(prefix="####") }}
+
 
 {{use: partial-tooltip-in-series-data(
     galleryViewPath=${galleryViewPath}
@@ -184,6 +218,10 @@ The style of the symbol of single data point.
 {{use:partial-z-zlevel(
     prefix="#",
     componentName="broken line graph"
+) }}
+
+{{ use:partial-silent(
+    prefix="#"
 ) }}
 
 {{use: partial-animation(

@@ -5,6 +5,8 @@
 
 极坐标系的角度轴。
 
+{{use: partial-component-id(prefix="#")}}
+
 ## polarIndex(number) = 0
 
 角度轴所在的极坐标系的索引，默认使用第一个极坐标系。

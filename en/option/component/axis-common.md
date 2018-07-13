@@ -35,7 +35,19 @@ Whether to show the axis line or not.
 {{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
 ##${prefix} onZero(boolean) = true
 Specifies whether X or Y axis lies on the other's origin position, where value is 0 on axis. Valid only if the other axis is of value type, and contains 0 value.
+
+##${prefix} onZeroAxisIndex(number)
+When mutiple axes exists, this option can be used to specify which axis can be "onZero" to.
 {{ /if }}
+
+##${prefix} symbol(string|Array) = 'none'
+Symbol of the two ends of the axis. It could be a string, representing the same symbol for two ends; or an array with two string elements, representing the two ends separately. It's set to be `'none'` by default, meaning no arrow for either end. If it is set to be `'arrow'`, there shall be two arrows. If there should only one arrow at the end, it should set to be `['none', 'arrow']`.
+
+##${prefix} symbolSize(Array) = [10, 15]
+Size of the arrows at two ends. The first is the width perpendicular to the axis, the next is the width parallel to the axis.
+
+##${prefix} symbolOffset(Array|number) = [0, 0]
+Arrow offset of axis. If is array, the first number is the offset of the arrow at the beginning, and the second number is the offset of the arrow at the end. If is number, it means the arrows have the same offset.
 
 ##${prefix} lineStyle(Object)
 {{ use: partial-line-style(prefix='##' + ${prefix}, defaultColor="'#333'", defaultWidth=1, defaultType="'solid'", name="line style") }}
@@ -46,9 +58,13 @@ Specifies whether X or Y axis lies on the other's origin position, where value i
 
 Settings related to axis label.
 
+{{if: !${hideShow} }}
+
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
 
 Whether to show the label of axis label or not.
+
+{{ /if }}
 
 {{ if: ${hasLabelInterval|default(true)} }}
 ##${prefix} interval(number|Function) = 'auto'
@@ -84,22 +100,14 @@ Whether to show the label of the min tick. Optional values: `true`, `false`, `nu
 ##${prefix} showMaxLabel(boolean) = null
 Whether to show the label of the max tick. Optional values: `true`, `false`, `null`. It is auto determined by default, that is, if labels are overlapped, the label of the max tick will not be displayed.
 
-##${prefix} textStyle(Object)
-
 {{ use: partial-text-style(
-    prefix='##' + ${prefix},
+    prefix='#' + ${prefix},
     defaultColor="'#333'"
 )}}
 
-###${prefix} align(string)
-Label text align, can be `'left'`, `'right'`, `'center'`. Defaultly will choose one of them automatically.
-
-###${prefix} baseline(string)
-Label text vertical align, can be `'top'`, `'middle'`, `'bottom'`. Defaultly will choose one of them automatically.
-
 
 <!-- Overwrite color -->
-###${prefix} color(Color|Function)
+##${prefix} color(Color|Function)
 
 Color of axis label is set to be [axisLine.lineStyle.color](~${componentType}.axisLine.lineStyle.color) by default. Callback function is supported, in the following format:
 
@@ -250,7 +258,7 @@ Location of axis name.
 
 **Options: **
 + `'start'`
-+ `'middle'`
++ `'middle'` or `'center'`
 + `'end'`
 
 #${prefix} nameTextStyle(Object)
@@ -333,7 +341,21 @@ For example, it can be set to be `1` to make sure axis label is show as integer.
 }
 ```
 
-It is available only for axis of [type](~${componentType}.type) 'value'.
+It is available only for axis of [type](~${componentType}.type) 'value' or 'time'.
+
+#${prefix} minInterval(number)
+
+Maximum gap between split lines.
+
+For example, in time axis ([type](~${componentType}.type) is 'time'), it can be set to be `3600 * 24 * 1000` to make sure that the gap between axis labels is less than or equal to one day.
+
+```js
+{
+    maxInterval: 3600 * 1000 * 24
+}
+```
+
+It is available only for axis of [type](~${componentType}.type) 'value' or 'time'.
 
 #${prefix} interval(number)
 
@@ -381,6 +403,11 @@ Base of logarithm, which is valid only for numeric axes with [type](~${component
 
 Category data, available in [type](~${componentType}.type): 'category' axis.
 
+If [type](~${componentType}.type) is not specified, but `axis.data` is specified, the [type](~${componentType}.type) is auto set as `'category'`.
+
+If [type](~${componentType}.type) is specified as `'category'`, but `axis.data` is not specified, `axis.data` will be auto collected from [series.data](~series.data). It brings convenience, but we should notice that `axis.data` provides then value range of the `'category'` axis. If  it is auto collected from [series.data](~series.data), Only the values appearing in [series.data](~series.data) can be collected. For example, if [series.data](~series.data) is empty, nothing will be collected.
+
+
 Example:
 
 ```js
@@ -407,16 +434,8 @@ Name of a category.
 Text style of the category.
 
 {{ use:partial-text-style(
-    prefix='##' + ${prefix},
-    hasAlign=true,
-    hasBaseline=true
+    prefix='##' + ${prefix}
 ) }}
-
-###${prefix} align(string)
-Label text align, can be `'left'`, `'right'`, `'center'`. Defaultly will choose one of them automatically.
-
-###${prefix} baseline(string)
-Label text vertical align, can be `'top'`, `'middle'`, `'bottom'`. Defaultly will choose one of them automatically.
 
 {{if: !${noAxisPointer} }}
 #${prefix} axisPointer(Object)

@@ -8,6 +8,8 @@ Bar chart shows different data through the height of a bar, which is used in [re
 
 ## type(string) = 'bar'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 {{ use: partial-legend-hover-link() }}
@@ -22,39 +24,66 @@ Bar chart shows different data through the height of a bar, which is used in [re
 
 ## label(Object)
 {{use:partial-label-desc}}
-### normal(Object)
 {{use:partial-label(
-    prefix="###",
+    prefix="##",
     defaultPosition="'inside'",
-    formatter=true
-)}}
-### emphasis(Object)
-{{use:partial-label(
-    prefix="###",
     formatter=true
 )}}
 
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
-### normal(Object)
 {{use:partial-bar-item-style(
-    prefix="###",
+    prefix="##",
     useColorPalatte=true,
     hasCallback=true,
     barBorderRadius=true
 )}}
-### emphasis(Object)
+
+## emphasis(Object)
+
+### label(Object)
+{{use:partial-label(
+    prefix="###",
+    formatter=true
+)}}
+
+### itemStyle(Object)
 {{use:partial-bar-item-style(prefix="###")}}
 
 
 ## stack(string) = null
 Name of stack. On the same category axis, the series with the same `stack` name would be put on top of each other.
 
+{{ use: partial-cursor }}
+
 {{use: partial-barGrid(
     seriesType='bar',
     galleryViewPath=${galleryViewPath}
 )}}
 
+{{use: partial-large(
+    prefix="#",
+    defaultLargeThreshold=400
+)}}
+
+{{ use:partial-progressive(
+    prefix='#',
+    supportProgressiveChunkMode=true,
+    defaultProgressive=5000,
+    defaultProgressiveChunkMode='mod'
+) }}
+
+{{use:partial-series-dimensions(
+    prefix="#"
+)}}
+
+{{use:partial-series-encode(
+    prefix="#"
+)}}
+
+{{ use: partial-seriesLayoutBy }}
+
+{{ use: partial-datasetIndex }}
 
 ## data(Array)
 
@@ -71,18 +100,16 @@ The value of a single data item.
 ### label(Object)
 The style setting of the text label in a single bar.
 
-#### normal(Object)
 {{ use:partial-label(
-    prefix="####",
+    prefix="###",
     defaultPosition="inside"
 ) }}
 #### emphasis(Object)
 {{ use:partial-label(prefix="####") }}
 
 ### itemStyle(Object)
-#### normal(Object)
 {{use:partial-bar-item-style(
-    prefix="####",
+    prefix="###",
     barBorderRadius=true
 )}}
 #### emphasis(Object)
@@ -134,14 +161,10 @@ The bodrder color of bar.
 The bodrder width of bar. defaults to have no border.
 
 {{ if: ${barBorderRadius} }}
-#${prefix} barBorderRadius(number|Array) = 0
-The radius of rounded corner of bar border. Its unit is px. And it supports use array to respectively specify the 4 corner radiuses of the bar.
-
-For example:
-```
-barBorderRadius: 5, // consistently set the size of 4 rounded corners
-barBorderRadius: [5, 5, 0, 0] // (clockwise upper left, upper right, bottom right and bottom left)
-```
+{{use: partial-border-radius(
+    propName: 'barBorderRadius',
+    prefix: ${prefix}
+)}}
 {{ /if }}
 
 {{ use:partial-style-shadow-opacity(prefix=${prefix}) }}

@@ -298,7 +298,11 @@ option: {
 
 如果 [animation](~animation) 设为 `false` 或者 [animationDurationUpdate](~animationDurationUpdate) 设为 `0`，且在数据量不大时，拖拽时画面感觉卡顿，可以把尝试把 `throttle` 设为 `0` 来改善。
 
+## rangeMode(Array)
 
+例如 `rangeMode: ['value', 'percent']`，表示 start 值取绝对数值，end 取百分比。
+
+可选值为：`'value'`, `'percent'`
 
 
 
@@ -311,6 +315,8 @@ option: {
 + 'weakFilter'：当前数据窗口外的数据，被 **过滤掉**。即 **会** 影响其他轴的数据范围。每个数据项，只有当全部维度都在数据窗口同侧外部，整个数据项才会被过滤掉。
 
 + 'empty'：当前数据窗口外的数据，被 **设置为空**。即 **不会** 影响其他轴的数据范围。
+
++ 'none': 不过滤数据，只改变数轴范围。
 
 如何设置，由用户根据场景和需求自己决定。经验来说：
 

@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Reveal.js</title>
+        <base target="_blank"/>
+        <link rel="stylesheet" href="./asset/md2reveal-0.1.7/css/reveal.css">
+        <link rel="stylesheet" href="./asset/md2reveal-0.1.7/css/theme/black.css" id="theme">
+        <link rel="stylesheet" href="./asset/md2reveal-0.1.7/css/theme/black-md2reveal.css" id="themeMine">
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="./asset/md2reveal-0.1.7/lib/css/zenburn.css">
+    </head>
+    <body>
+
+        <div class="reveal">
+            <div class="slides"><section  data-markdown><script type="text/template">
+## 从简单图表到个性定制
+
+宿爽
+
+
+
+</script></section><section  data-markdown><script type="text/template">
+
+## echarts
+
++ 开源前端可视化库
+    + <https://github.com/ecomfe/echarts> (star: 18k+)
+    + 丰富的可视化类型和交互方式
+    + 大数据量展现的能力
+    + 动画和特效
+
+</script></section><section ><section data-markdown><script type="text/template">
+最常见的图表
+
+<div class="fragment" data-fragment-index="0"  data-fragment-param=""  id="fregment_0.41812343848869205_1582" ><iframe style="width:1200px;height:600px;" data-md2r-src="./asset/ec-demo/chart-simple1.html"></iframe></div><div class="fragment" data-fragment-index="1"  data-fragment-param="code"  data-fragment-ref-id="fregment_0.41812343848869205_1582" ></div>
+</script></section><section data-markdown><script type="text/template">
+<iframe style="width:1200px;height:600px;" data-md2r-src="./asset/ec-demo/chart-simple2.html"></iframe>
+
+<aside class="notes" data-markdown>看看这个 option 中有哪些东西。</aside></script></section><section data-markdown><script type="text/template">
+然而，稍复杂些的图表，可能是这样的：
+
+<div class="fragment" data-fragment-index="0"  data-fragment-param=""  id="fregment_0.8908163052983582_1583" ><iframe style="width:1200px;height:550px;" data-md2r-src="./asset/ec-demo/brush-map.html"></iframe></div>
+</script></section><section data-markdown><script type="text/template">
+<iframe style="width:1200px;height:550px;" data-md2r-src="./asset/ec-demo/grid-on-geo.html"></iframe>
+</script></section><section data-markdown><script type="text/template">
+<iframe style="width:1200px;height:550px;" data-md2r-src="./asset/ec-demo/link-brush1.html"></iframe>
+</script></section><section data-markdown><script type="text/template">
+
+多种形式的 **组合** 和 **交互**
+</script></section></section><section ><section data-markdown><script type="text/template">
+
+
+### 坐标系和系列（series）
+</script></section><section data-markdown><script type="text/template">
+<iframe style="width:1200px;height:550px;" data-md2r-src="./asset/ec-demo/chart-simple3.html"></iframe>
+
+</script></section><section data-markdown><script type="text/template">
+
+坐标系和系列的组合
+
+<div style="min-width: 1050px">
+<div style="float:left;">
+<div class="fragment" data-fragment-index="0"  data-fragment-param=""  id="fregment_0.3851719356607646_1584" >
+line on cartesian
+<iframe style="width:350px;height:400px;" data-md2r-src="./asset/ec-demo/orthogonal2-cartesian-line.html"></iframe>
+</div>
+</div>
+
+<div style="float:left;">
+<div class="fragment" data-fragment-index="1"  data-fragment-param=""  id="fregment_0.7223194588441402_1585" >
+boxplot on cartesian
+<iframe style="width:350px;height:400px;" data-md2r-src="./asset/ec-demo/orthogonal2-cartesian-boxplot.html"></iframe>
+</div>
+</div>
+
+<div style="float:left;">
+<div class="fragment" data-fragment-index="2"  data-fragment-param=""  id="fregment_0.27048664074391127_1586" >
+graph on cartesian
+<iframe style="width:350px;height:400px;" data-md2r-src="./asset/ec-demo/orthogonal2-cartesian-graph.html"></iframe>
+</div>
+</div>
+
+</script></section><section data-markdown><script type="text/template">
+一个图中的多个坐标系
+
+<div class="fragment" data-fragment-index="0"  data-fragment-param=""  id="fregment_0.904351573670283_1587" ><iframe style="width:1200px;height:550px;" data-md2r-src="./asset/ec-demo/chart-simple4.html"></iframe></div>
+</script></section><section data-markdown><script type="text/template">
+各种坐标系
+
+<div style="min-width: 1050px">
+<div style="float:left;">
+<div class="fragment" data-fragment-index="0"  data-fragment-param=""  id="fregment_0.3724106578156352_1588" >
+<div style="font-size:26px">直角坐标系 cartesian2d</div>
+<iframe style="width:350px;height:400px;" data-md2r-src="./asset/ec-demo/orthogonal1-scatter-cartesian.html"></iframe>
+</div>
+</div>
+
+<div style="float:left;">
+<div class="fragment" data-fragment-index="1"  data-fragment-param=""  id="fregment_0.7290815927553922_1589" >
+<div style="font-size:26px">极坐标系 polar</div>
+<iframe style="width:350px;height:400px;" data-md2r-src="./asset/ec-demo/orthogonal1-scatter-polar.html"></iframe>
+</div>
+</div>
+
+<div style="float:left;">
+<div class="fragment" data-fragment-index="2"  data-fragment-param=""  id="fregment_0.4184580547735095_1590" >
+<div style="font-size:26px">地理坐标系 geo</div>
+<iframe style="width:350px;height:400px;" data-md2r-src="./asset/ec-demo/orthogonal1-scatter-geo.html"></iframe>
+</div>
+</div>
+
+</script></section><section data-markdown><script type="text/template">
+各种坐标系（2）
+
+<div style="min-width: 1050px">
+<div style="float:left;">
+<div class="fragment" data-fragment-index="0"  data-fragment-param=""  id="fregment_0.9808631078340113_1591" >
+<div style="font-size:26px">平行坐标系 parallel</div>
+<iframe style="width:350px;height:400px;" data-md2r-src="./asset/ec-demo/orthogonal1-scatter-parallel.html"></iframe>
+</div>
+</div>
+
+<div style="float:left;">
+<div class="fragment" data-fragment-index="1"  data-fragment-param=""  id="fregment_0.8445793075952679_1592" >
+<div style="font-size:26px">单轴坐标系 singleAxis</div>
+<iframe style="width:350px;height:400px;" data-md2r-src="./asset/ec-demo/orthogonal1-scatter-singleAxis.html"></iframe>
+</div>
+</div>
+
+<div style="float:left;">
+<div class="fragment" data-fragment-index="2"  data-fragment-param=""  id="fregment_0.9386022449471056_1593" >
+<div style="font-size:26px">日历坐标系 calendar</div>
+<iframe style="width:350px;height:400px;" data-md2r-src="./asset/ec-demo/orthogonal1-scatter-calendar.html"></iframe>
+</div>
+</div>
+
+
+
+</script></section></section><section ><section data-markdown><script type="text/template">
+
+
+
+
+
+### 系列的自定义
+</script></section><section data-markdown><script type="text/template">
+内置支持的许多图表和组件
+
+![](./asset/img2/ec-general.png)
+
+
++ <div class="fragment" data-fragment-index="0"  data-fragment-param=""  id="fregment_0.16570553998462856_1594" >只能枚举常用图表，需求无法穷尽</div>
++ <div class="fragment" data-fragment-index="1"  data-fragment-param=""  id="fregment_0.7425085329450667_1595" >没有来得及/没有计划 内置支持的图表类型</div>
+</script></section><section data-markdown><script type="text/template">
+例如 如何实现：
+
+<div class="fragment" data-fragment-index="0"  data-fragment-param=""  id="fregment_0.4636402160394937_1596" ><iframe style="width:1200px;height:450px;" data-md2r-src="./asset/ec-demo/pictorialBar-dotted.html"></iframe></div><div class="fragment" data-fragment-index="1"  data-fragment-param="code"  data-fragment-ref-id="fregment_0.4636402160394937_1596" ></div>
+
+<div class="fragment" data-fragment-index="2"  data-fragment-param=""  id="fregment_0.6029278633650392_1597" >组合使用多个系列做出效果</div>
+</script></section><section data-markdown><script type="text/template">
+另一个信息图例子
+
+<div class="fragment" data-fragment-index="0"  data-fragment-param=""  id="fregment_0.7847588460426778_1598" ><iframe style="width:1200px;height:500px;" data-md2r-src="./asset/ec-demo/pictorialBar-velocity.html"></iframe></div><div class="fragment" data-fragment-index="1"  data-fragment-param="code"  data-fragment-ref-id="fregment_0.7847588460426778_1598" ></div>
+
+<div class="fragment" data-fragment-index="2"  data-fragment-param=""  id="fregment_0.10493180248886347_1599" >使用单独系列做图标、文字等</div>
+</script></section><section data-markdown><script type="text/template">
+刚才的例子都基于现在已支持的 series type
+<div class="fragment" data-fragment-index="0"  data-fragment-param=""  id="fregment_0.9132980797439814_1600" >现有的 series type 不满足需求怎么办？</div>
+</script></section><section data-markdown><script type="text/template">
+OHLC 图
+
+<div class="fragment" data-fragment-index="0"  data-fragment-param=""  id="fregment_0.5448267736937851_1601" ><iframe style="width:1200px;height:500px;" data-md2r-src="./asset/ec-demo/ohlc.html"></iframe></div><div class="fragment" data-fragment-index="1"  data-fragment-param="code"  data-fragment-ref-id="fregment_0.5448267736937851_1601" ></div>
+</script></section><section data-markdown><script type="text/template">
+这种扩展方式的方便之处
+
+<div class="fragment" data-fragment-index="0"  data-fragment-param=""  id="fregment_0.2668461324647069_1602" >![](./asset/img2/renderItem.png)</div>
+
+<div class="fragment" data-fragment-index="1"  data-fragment-param=""  id="fregment_0.37792415358126163_1603" >可直接使用内置组件的能力<br>（数据缩放、视觉映射、图例、提示框 等）</div>
+
+<aside class="notes" data-markdown>差异化只在 render 一块。
+其他部分对用户透明。</aside></script></section><section data-markdown><script type="text/template">
+其他例子：Vector Chart
+
+<div class="fragment" data-fragment-index="0"  data-fragment-param=""  id="fregment_0.8705663364380598_1604" ><iframe style="width:1200px;height:550px;" data-md2r-src="./asset/ec-demo/wind-barb.html"></iframe></div><div class="fragment" data-fragment-index="1"  data-fragment-param="code"  data-fragment-ref-id="fregment_0.8705663364380598_1604" ></div>
+</script></section><section data-markdown><script type="text/template">
+其他例子：Error Chart
+
+<iframe style="width:1200px;height:550px;" data-md2r-src="./asset/ec-demo/error-scatter.html"></iframe>
+</script></section><section data-markdown><script type="text/template">
+其他例子：Cycle Plot
+
+<div class="fragment" data-fragment-index="0"  data-fragment-param=""  id="fregment_0.2952206286136061_1605" ><iframe style="width:1200px;height:550px;" data-md2r-src="./asset/ec-demo/cycle-plot.html"></iframe></div><div class="fragment" data-fragment-index="1"  data-fragment-param="code"  data-fragment-ref-id="fregment_0.2952206286136061_1605" ></div>
+</script></section><section data-markdown><script type="text/template">
+其他例子：Hexagonal Binning
+
+<iframe style="width:1200px;height:550px;" data-md2r-src="./asset/ec-demo/hex-bin.html"></iframe>
+
+
+
+
+
+
+
+
+</script></section></section><section ><section data-markdown><script type="text/template">
+## 坐标系的组合
+</script></section><section data-markdown><script type="text/template">
+### 排布
+
+<iframe style="width:1200px;height:550px;" data-md2r-src="./asset/ec-demo/scatter-matrix.html"></iframe>
+</script></section><section data-markdown><script type="text/template">
+### 嵌套
+
+<div class="fragment" data-fragment-index="0"  data-fragment-param=""  id="fregment_0.9081209623254836_1606" ><iframe style="width:1200px;height:450px;" data-md2r-src="./asset/ec-demo/calendar-bar.html"></iframe></div><div class="fragment" data-fragment-index="1"  data-fragment-param="code"  data-fragment-ref-id="fregment_0.9081209623254836_1606" ></div>
+
++ <div class="fragment" data-fragment-index="2"  data-fragment-param=""  id="fregment_0.3328638810198754_1607" >chart.convertFromPixel()</div>
++ <div class="fragment" data-fragment-index="2"  data-fragment-param=""  id="fregment_0.6295334140304476_1608" >chart.convertToPixel()</div>
+
+
+
+
+
+</script></section></section><section ><section data-markdown><script type="text/template">
+## 交互的定制
+</script></section><section data-markdown><script type="text/template">
+LINK
+
+<div class="fragment" data-fragment-index="0"  data-fragment-param=""  id="fregment_0.5510188876651227_1609" ><iframe style="width:1200px;height:600px;" data-md2r-src="./asset/ec-demo/scatter-nutrients-matrix.html"></iframe></div><div class="fragment" data-fragment-index="1"  data-fragment-param="code"  data-fragment-ref-id="fregment_0.5510188876651227_1609" ></div>
+</script></section><section data-markdown><script type="text/template">
+LINK AND BRUSH
+
+<div class="fragment" data-fragment-index="0"  data-fragment-param=""  id="fregment_0.8858746909536421_1610" ><iframe style="width:1200px;height:600px;" data-md2r-src="./asset/ec-demo/link-brush1.html"></iframe></div><div class="fragment" data-fragment-index="1"  data-fragment-param="code"  data-fragment-ref-id="fregment_0.8858746909536421_1610" ></div>
+</script></section><section data-markdown><script type="text/template">
+ZOOM
+
+<div class="fragment" data-fragment-index="0"  data-fragment-param=""  id="fregment_0.28416049270890653_1611" ><iframe style="width:1200px;height:550px;" data-md2r-src="./asset/ec-demo/zoom.html"></iframe></div><div class="fragment" data-fragment-index="1"  data-fragment-param="code"  data-fragment-ref-id="fregment_0.28416049270890653_1611" ></div>
+</script></section><section data-markdown><script type="text/template">
+交互定制模型
+
+![](./asset/img2/dataflow-level0.png)
+
+<div class="fragment" data-fragment-index="0"  data-fragment-param=""  id="fregment_0.453250708989799_1612" >event handler (update data) => setOption</div>
+</script></section><section data-markdown><script type="text/template">
+拖拽
+
+<div class="fragment" data-fragment-index="0"  data-fragment-param=""  id="fregment_0.12285167467780411_1613" ><iframe style="width:1200px;height:550px;" data-md2r-src="./asset/ec-demo/drag-and-drop.html"></iframe></div><div class="fragment" data-fragment-index="1"  data-fragment-param="code"  data-fragment-ref-id="fregment_0.12285167467780411_1613" ></div>
+</script></section><section data-markdown><script type="text/template">
+选择 · 过滤 · 探索
+
+<div class="fragment" data-fragment-index="0"  data-fragment-param=""  id="fregment_0.08335447614081204_1614" ><iframe style="width:1200px;height:550px;" data-md2r-src="./asset/ec-demo/brush-map.html"></iframe></div><div class="fragment" data-fragment-index="1"  data-fragment-param="code"  data-fragment-ref-id="fregment_0.08335447614081204_1614" ></div>
+</script></section><section data-markdown><script type="text/template">
+setInterval | requestAnimationFrame
+
+<div class="fragment" data-fragment-index="0"  data-fragment-param=""  id="fregment_0.7172228856943548_1615" ><iframe style="width:1200px;height:550px;" data-md2r-src="./asset/ec-demo/audio.html"></iframe></div><div class="fragment" data-fragment-index="1"  data-fragment-param="code"  data-fragment-ref-id="fregment_0.7172228856943548_1615" ></div>
+
+</script></section><section data-markdown><script type="text/template">
+用于其他类型应用的场景绘制或布局
+
+<div class="fragment" data-fragment-index="0"  data-fragment-param=""  id="fregment_0.2987103182822466_1616" ><iframe style="width:1200px;height:550px;" data-md2r-src="./asset/ec-demo/christmas/game.html"></iframe></div>
+
+<aside class="notes" data-markdown>再复杂一点（ec 用来绘制场景、布局，zr graphic 可被使用，结合 raf、mouse event）。</aside></script></section><section data-markdown><script type="text/template">
+其他：
+
++ <http://gallery.echartsjs.com/editor.html?c=xrkJZ2pfeZ>
++ <http://gallery.echartsjs.com/editor.html?c=xHkuOqLs1Z>
+
+
+
+
+
+
+
+</script></section></section><section  data-markdown><script type="text/template">
+### 总结
+
++ <div class="fragment" data-fragment-index="0"  data-fragment-param=""  id="fregment_0.8674828708171844_1617" >系列的组合</div>
++ <div class="fragment" data-fragment-index="1"  data-fragment-param=""  id="fregment_0.7000074298121035_1618" >系列的自定义</div>
++ <div class="fragment" data-fragment-index="2"  data-fragment-param=""  id="fregment_0.1836388127412647_1619" >坐标系的组合</div>
++ <div class="fragment" data-fragment-index="3"  data-fragment-param=""  id="fregment_0.9381319324020296_1620" >交互定制</div>
+
+
+
+
+
+</script></section><section  data-markdown><script type="text/template">
+### 谢谢
+
+
+
+<aside class="notes" data-markdown>散饼例子（缩放后变饼图，点击缩放）
+
+数据的更新动画（用 name 对应）：
+http://echarts.baidu.com/demo.html#dynamic-data2
+
+同步：
+股票图（built-in）
+用内建的方式（以及connect），或者 dispatchAction 转发
+
+
+### 视觉效果
+
+善用元素
+
+http://gallery.echartsjs.com/editor.html?c=xBycRXbPgx
+http://gallery.echartsjs.com/editor.html?c=pictorialBar-hill
+
+<div class="fragment" data-fragment-index="0"  data-fragment-param=""  id="fregment_0.45527044706977904_1621" >图片：SVG Path 或 image</div>
+
+动效延迟
+
+http://gallery.echartsjs.com/editor.html?c=xSyTPGl62x&v=4
+http://echarts.baidu.com/demo.html#pie-custom</aside></script></section></div>
+        </div>
+
+        <script src="./asset/md2reveal-0.1.7/lib/js/head.min.js"></script>
+        <script src="./asset/md2reveal-0.1.7/js/reveal.js"></script>
+        <script src="./asset/md2reveal-0.1.7/js/md2reveal.js"></script>
+
+        <script>
+            function extend() {
+              var target = {};
+              for (var i = 0; i < arguments.length; i++) {
+                var source = arguments[i];
+                for (var key in source) {
+                  if (source.hasOwnProperty(key)) {
+                    target[key] = source[key];
+                  }
+                }
+              }
+              return target;
+            }
+
+            // Optional libraries used to extend on reveal.js
+            var deps = [
+              { src: './asset/md2reveal-0.1.7/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+              { src: './asset/md2reveal-0.1.7/plugin/markdown/marked.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+              { src: './asset/md2reveal-0.1.7/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+              { src: './asset/md2reveal-0.1.7/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+              { src: './asset/md2reveal-0.1.7/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+              // { src: './asset/md2reveal-0.1.7/plugin/math/math.js', async: true }
+            ];
+
+            // default options to init reveal.js
+            var defaultOptions = {
+              controls: true,
+              progress: true,
+              history: true,
+              center: true,
+              transition: 'default',
+              dependencies: deps
+            };
+
+            // options from URL query string
+            var queryOptions = Reveal.getQueryHash() || {};
+
+            var options = {};
+            options = extend(defaultOptions, options, queryOptions);
+            Reveal.initialize(options);
+        </script>
+    </body>
+</html>

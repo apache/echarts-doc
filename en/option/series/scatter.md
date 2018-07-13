@@ -12,6 +12,8 @@ It could be used with [rectangular coordinate](~grid) and [polar coordinate](~po
 
 ## type(string) = 'scatter'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 {{use: partial-coord-sys(
@@ -19,7 +21,8 @@ It could be used with [rectangular coordinate](~grid) and [polar coordinate](~po
     coordSysDefault="'cartesian2d'",
     cartesian2d=true,
     polar=true,
-    geo=true
+    geo=true,
+    calendar=true
 )}}
 
 ## hoverAnimation(boolean)
@@ -35,42 +38,57 @@ Whether to enable the animation effect when mouse is on the symbol.
     hasCallback=true
 ) }}
 
-## large(boolean) = true
-Whether to enable the optimization of large-scale scatter graph. It could be enabled when there is a particularly large number of data(>=5k) .
+{{use: partial-large(
+    prefix="#"
+)}}
 
-After being enabled, [largeThreshold](~series-scatter.largeThreshold) can be used to indicate the minimum number for turning on the optimization.
-
-The style of a single data item can't be customided.
-
-## largeThreshold(number) = 2000
-The threshold enabling the drawing optimization.
+{{ use: partial-cursor }}
 
 ## label(Object)
 {{use:partial-label-desc}}
-### normal(Object)
 {{use:partial-label(
-    prefix="###",
+    prefix="##",
     defaultPosition="'inside'",
-    formatter=true
-)}}
-### emphasis(Object)
-{{use:partial-label(
-    prefix="###",
     formatter=true
 )}}
 
 
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
-### normal(Object)
 {{use:partial-item-style(
-    prefix="###",
+    prefix="##",
     useColorPalatte=true,
     hasCallback=true
 )}}
-### emphasis(Object)
+
+## emphasis(Object)
+### label(Object)
+{{use:partial-label(
+    prefix="###",
+    formatter=true
+)}}
+### itemStyle(Object)
 {{use:partial-item-style(prefix="###")}}
 
+
+
+{{ use:partial-progressive(
+    prefix='#'
+) }}
+
+
+
+{{use:partial-series-dimensions(
+    prefix="#"
+)}}
+
+{{use:partial-series-encode(
+    prefix="#"
+)}}
+
+{{ use: partial-seriesLayoutBy }}
+
+{{ use: partial-datasetIndex }}
 
 ## data(Array)
 
@@ -90,21 +108,24 @@ the value of data item.
 ) }}
 
 ### label(Object)
-#### normal(Object)
 {{ use:partial-label(
-    prefix="####",
+    prefix="###",
     defaultPosition="inside"
 ) }}
-#### emphasis(Object)
-{{ use:partial-label(prefix="####") }}
-
 
 ### itemStyle(Object)
 the style setting about single data point(bubble).
-#### normal(Object)
+
+{{use:partial-item-style(prefix="###")}}
+
+
+### emphasis(Object)
+
+#### label(Object)
+{{ use:partial-label(prefix="####") }}
+#### itemStyle(Object)
 {{use:partial-item-style(prefix="####")}}
-#### emphasis(Object)
-{{use:partial-item-style(prefix="####")}}
+
 
 {{use: partial-tooltip-in-series-data(
     galleryViewPath=${galleryViewPath}

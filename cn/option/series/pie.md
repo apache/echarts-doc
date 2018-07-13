@@ -13,12 +13,17 @@
 
 ## type(string) = 'pie'
 
+{{use: partial-component-id(prefix="#")}}
+
 {{ use: partial-series-name() }}
 
 {{ use: partial-legend-hover-link }}
 
 ## hoverAnimation(boolean) = true
 是否开启 hover 在扇区上的放大动画效果。
+
+## hoverOffset(number) = 10
+高亮扇区的偏移距离。
 
 ## selectedMode(boolean|string) = false
 选中模式，表示是否支持多个选中，默认关闭，支持布尔值和字符串，字符串取值可选`'single'`，`'multiple'`，分别表示单选还是多选。
@@ -38,8 +43,8 @@
 ## roseType(boolean|string) = false
 是否展示成南丁格尔图，通过半径区分数据大小。可选择两种模式：
 
-+ `'radius'` 面积展现数据的百分比，半径展现数据的大小。
-+ `'area'` 所有扇区面积相同，仅通过半径展现数据大小。
++ `'radius'` 扇区圆心角展现数据的百分比，半径展现数据的大小。
++ `'area'` 所有扇区圆心角相同，仅通过半径展现数据大小。
 
 ## avoidLabelOverlap(boolean) = true
 是否启用防止标签重叠策略，默认开启，在标签拥挤重叠的情况下会挪动各个标签的位置，防止标签间的重叠。
@@ -49,35 +54,38 @@
 ## stillShowZeroSum(boolean) = true
 是否在数据和为`0`（一般情况下所有数据为`0`） 的时候不显示扇区。
 
+{{ use: partial-cursor }}
+
 ## label(Object)
 {{use:partial-label-desc(name="饼图")}}
-### normal(Object)
 {{use:partial-pie-label(
-    prefix="###",
+    prefix="##",
     galleryEditorPath = ${galleryEditorPath},
     position=true,
     formatter=true
 )}}
-### emphasis(Object)
+
+## labelLine(Object)
+标签的视觉引导线样式，在 [label 位置](~series-pie.label.position) 设置为`'outside'`的时候会显示视觉引导线。
+{{ use: partial-pie-label-line(prefix='##') }}
+
+## itemStyle(Object)
+{{use:partial-item-style-desc}}
+{{use:partial-item-style(
+    prefix="##",
+    useColorPalatte=true,
+    hasCallback=true
+)}}
+
+## emphasis(Object)
+高亮的扇区和标签样式。
+### label(Object)
 {{use:partial-pie-label(
     prefix="###",
     position=false,
     formatter=true
 )}}
-
-## labelLine(Object)
-标签的视觉引导线样式，在 [label 位置](~series-pie.label.normal.position) 设置为`'outside'`的时候会显示视觉引导线。
-{{ use: partial-pie-label-line(prefix='##') }}
-
-## itemStyle(Object)
-{{use:partial-item-style-desc}}
-### normal(Object)
-{{use:partial-item-style(
-    prefix="###",
-    useColorPalatte=true,
-    hasCallback=true
-)}}
-### emphasis(Object)
+### itemStyle(Object)
 {{ use:partial-item-style(prefix="###") }}
 
 {{use: component-circular-layout(
@@ -85,6 +93,10 @@
     defaultRadius="[0, '75%']"
 )}}
 可以将内半径设大显示成圆环图（Donut chart）。
+
+{{ use: partial-seriesLayoutBy }}
+
+{{ use: partial-datasetIndex }}
 
 ## data(Array)
 {{ use: partial-1d-data-desc }}
@@ -97,17 +109,10 @@
 
 ### label(Object)
 单个扇区的标签配置。
-#### normal(Object)
 {{use:partial-pie-label(
-    prefix="####",
+    prefix="###",
     galleryEditorPath = ${galleryEditorPath},
     position=true,
-    formatter=false
-)}}
-#### emphasis(Object)
-{{use:partial-pie-label(
-    prefix="####",
-    position=false,
     formatter=false
 )}}
 
@@ -116,9 +121,16 @@
 
 ### itemStyle(Object)
 {{use:partial-item-style-desc}}
-#### normal(Object)
-{{use:partial-item-style(prefix="####")}}
-#### emphasis(Object)
+{{use:partial-item-style(prefix="###")}}
+
+### emphasis(Object)
+#### label(Object)
+{{use:partial-pie-label(
+    prefix="####",
+    position=false,
+    formatter=false
+)}}
+#### itemStyle(Object)
 {{use:partial-item-style(prefix="####")}}
 
 {{use: partial-tooltip-in-series-data(
@@ -182,25 +194,22 @@
     }
 }) }}
 {{ /if }}
-#${prefix} textStyle(Object)
-标签的字体样式。
-{{ use:partial-text-style(prefix=${prefix} + '#') }}
+
+{{ use:partial-text-style(prefix=${prefix}) }}
 
 
 
 {{ target: partial-pie-label-line }}
-#${prefix} normal(Object)
-普通状态下视觉引导线的样式。
-##${prefix} show(boolean)
+#${prefix} show(boolean)
 是否显示视觉引导线。
-##${prefix} length(number)
+#${prefix} length(number)
 视觉引导线第一段的长度。
-##${prefix} length2(number)
+#${prefix} length2(number)
 视觉引导项第二段的长度。
-##${prefix} smooth(boolean|number) = false
+#${prefix} smooth(boolean|number) = false
 是否平滑视觉引导线，默认不平滑，可以设置成 `true` 平滑显示，也可以设置为 0 到 1 的值，表示平滑程度。
-##${prefix} lineStyle(Object)
-{{use:partial-line-style(prefix="##" + ${prefix})}}
+#${prefix} lineStyle(Object)
+{{use:partial-line-style(prefix="#" + ${prefix})}}
 
 #${prefix} emphasis(Object)
 高亮状态下视觉引导线的样式。

@@ -2,13 +2,10 @@
 layout: post
 title: ECharts 实现地图散点图（下）
 description: "作为国内良心开源软件的主页君，我们以后会为大家带来更多 ECharts 优质教程！本期，主页君邀请到了百度 EFE 美女前端工程师王说，为我们介绍如何在地图散点图。如果看得跃跃欲试，文末还有小作业，跟着主页君一起学 ECharts 吧！"
-tags: [map, tutorial]
+tags: [地图, 教程]
 image:
   feature: post/2016-06-13-bmap-4.png
 ---
-
-## 在百度地图上绘制散点图
-
 
 上一篇我们介绍了如何使用 ehcarts 内置地图实现地图上绘制的散点图，这篇中，我们将讲解如何在百度地图上绘制散点图。
 

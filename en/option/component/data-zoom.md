@@ -309,6 +309,12 @@ If [animation](~animation) set as `true` and [animationDurationUpdate](~animatio
 
 If [animation](~animation) set as `false` or [animationDurationUpdate](~animationDurationUpdate) set as `0`, and data size is not very large, and it seems to be not smooth when dragging, you can set `throttle` as `0` to improve that.
 
+## rangeMode(Array)
+
+For example `rangeMode: ['value', 'percent']` means that use absolute value in `start` and percent value in `end`.
+
+Optional value: `'value'`, `'percent'`.
+
 
 
 {{target: partial-data-zoom-filterMode}}
@@ -320,6 +326,8 @@ Possible values:
 + 'weakFilter': data that outside the window will be **filtered**, which may lead to some changes of windows of other axes. For each data item, it will be filtered only if all of the relevant dimensions are out of the same side of the window.
 
 + 'empty': data that outside the window will be **set to NaN**, which will not lead to changes of windows of other axes.
+
++ 'none': Do not filter data.
 
 How to set `filterMode` is up to users, depending on the requirments and scenarios. Expirically:
 
