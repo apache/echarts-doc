@@ -397,7 +397,7 @@ var svgParser;
 </code></pre>
 <h2 id="language-features">Language features</h2>
 <h3 id="compatibility">Compatibility</h3>
-<p><strong>[MUST]</strong> The JavaScript code of ECharts should be based on <code>ECMAScript Language Specification Edition 3 (ES3)</code>. The language features that not supported by ES3 (namely, features that only support by ES5, ES6 or upper versions) must not be used.</p>
+<p><strong>[MUST]</strong> The JavaScript code of ECharts should be based on <code>ECMAScript Language Specification Edition 3 (ES3)</code>. The language features that not supported by ES3 (namely, features that are only supported by ES5, ES6 or upper versions) must not be used.</p>
 <p>But there is an exception that ES Module can be used.</p>
 <p>Language features can be polyfilled by some utilities, but must not by modifying the prototype of the built-in JS objects.</p>
 <pre><code class="lang-js">// good
@@ -438,9 +438,6 @@ var obj2 = Object.assign({}, obj1);
 class Element {
     // ...
 }
-
-
-// Forbidden
 
 String.prototype.trim = function () {
 };
