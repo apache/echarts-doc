@@ -98,7 +98,7 @@ Symbol size at the two ends of the line. It can be an array for two ends, or ass
     hasCallback=true
 ) }}
 
-#### curveness(number) = 0
+### curveness(number) = 0
 The curveness of edge. The values from 0 to 1 could be set. The curveness would be larger as the the value becomes larger.
 
 ## label(Object)
