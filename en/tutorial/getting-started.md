@@ -15,7 +15,7 @@ First, install ECharts using one of the following methods:
 
 ## Including ECharts
 
-ECharts 3 no longer requires using AMD to load packages, and the AMD loader is no longer included in ECharts. Instead, ECharts should be included using a traditonal `<script>` tag:
+ECharts 3 no longer requires using AMD to load packages, and the AMD loader is no longer included in ECharts. Instead, ECharts should be included using a traditional `<script>` tag:
 
 ```html
 <!DOCTYPE html>
