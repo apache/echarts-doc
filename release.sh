@@ -11,6 +11,7 @@ cp -R ${basepath}/public/cn/documents/cn/ ${basepath}/../echarts-www/documents/c
 node ${basepath}/build.js github
 # Do not rm, keep option3.json.
 cp -R ${basepath}/public/en/documents/en/ ${basepath}/../echarts-www/documents/en/
+cp -R ${basepath}/public/en/documents/en/ ${basepath}/../incubator-echarts-website/documents/en/
 
 
 # Copy asset.
