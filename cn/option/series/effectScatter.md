@@ -31,7 +31,7 @@
 ## rippleEffect(Object)
 涟漪特效相关配置。
 ### period(number) = 4
-动画的时间。
+动画的周期，秒数。
 ### scale(number) = 2.5
 动画中波纹的最大缩放比例。
 ### brushType(string) = 'fill'

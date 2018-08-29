@@ -147,7 +147,7 @@ Resizes chart, which should be called manually when container size changes.
 ```js
 (payload: Object)
 ```
-Triggers chart action, like chart switch `legendToggleSelect`,zoom data area `dataZoom`, show tooltip `showTip` and so on. See more [action](~action) and [events](~events) for more information.
+Triggers chart action, like chart switch `legendToggleSelect`,zoom data area `dataZoom`, show tooltip `showTip` and so on. See [action](~action) and [events](~events) for more information.
 
 `payload` parameter can trigger multiple actions through `batch` attribute.
 
@@ -190,7 +190,7 @@ If event is triggered externally by [dispatchAction](~echartsInstance.dispatchAc
 **Parameters**
 + `eventName`
 
-    Event names are all in lower-cases, for example `'click'`, `'mousemove'`, `'legendselected'`
+    Event names are all in lower-cases, for example, `'click'`, `'mousemove'`, `'legendselected'`
 
     **Attention: ** ECharts 2.x uses attributes like `CLICK` in `config` object as event name. In ECharts 3, lower-case strings are used as event name to align with DOM events.
 
@@ -203,7 +203,7 @@ If event is triggered externally by [dispatchAction](~echartsInstance.dispatchAc
 
 + `context`
 
-    Optional; `context` of callback function, what `this` refers to.
+    Optional; context of callback function, what `this` refers to.
 
 
 ## off(Function)
@@ -253,8 +253,7 @@ Unbind event-handler function.
 ) => Array|string
 ```
 
-Convert a point from logical coordinate (e.g., in geo, cartesian, graph, ...) to
-pixel coordinate.
+Convert a point from logical coordinate (e.g., in geo, cartesian, graph, ...) to pixel coordinate.
 
 
 For example:
@@ -343,8 +342,7 @@ Convert a point from pixel coordinate to logical coordinate (e.g., in geo, carte
 ```js
 (
     // finder is used to specify coordinate systems or series on which the judgement performed.
-    // Generally
-    // 通常地，可以使用 index 或者 id 或者 name 来定位。
+    // Generally, index or id or name can be used to specify coordinate system.
     finder: {
         seriesIndex?: number,
         seriesId?: string,
