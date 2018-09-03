@@ -139,9 +139,11 @@ Configuration item for axis indicator.
 Indicator type.
 
 Options:
-+ `'line'` line indicator
++ `'line'` line indicator.
 
-+ `'shadow'` shadow crosshair indicator
++ `'shadow'` shadow crosshair indicator.
+
++ `'none'` no indicator displayed.
 
 + `'cross'` crosshair indicator, which is actually the shortcut of enable two axisPointers of two orthometric axes.
 
