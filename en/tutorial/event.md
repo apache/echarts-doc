@@ -93,9 +93,95 @@ myChart.on('click', function (params) {
             }
         }
     }
-
 });
 ```
+
+Use `query` to call handler only on the graphic elements of the specified components:
+```js
+chart.on(eventName, query, handler);
+```
+
+`query` can be `string` or `Object`.
+
+If `string`, the formatter can be 'mainType' or 'mainType.subType'. For example:
+```js
+chart.on('click', 'series', function () {...});
+chart.on('click', 'series.line', function () {...});
+chart.on('click', 'dataZoom', function () {...});
+chart.on('click', 'xAxis.category', function () {...});
+```
+
+If `Object`, one or more properties below can be included, and any of them is optional.
+```js
+{
+    <mainType>Index: number // component index
+    <mainType>Name: string // component name
+    <mainType>Id: string // component id
+    name: string // data name
+    targetName: string // element name in custom series
+}
+```
+
+For example:
+```js
+chart.setOption({
+    // ...
+    series: [{
+        name: 'uuu'
+        // ...
+    }]
+});
+chart.on('mouseover', {seriesName: 'uuu'}, function () {
+    // When the graphic elements in the series with name 'uuu' mouse overed, this method called.
+});
+```
+
+For example:
+```js
+chart.setOption({
+    // ...
+    series: [{
+        // ...
+    }, {
+        // ...
+        data: [
+            {name: 'xx', value: 121},
+            {name: 'yy', value: 33}
+        ]
+    }]
+});
+chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function () {
+    // When the graphic elements of the data item with name 'xx' in the series with index 1 mouse overed, this method called.
+});
+```
+
+For example:
+```js
+chart.setOption({
+    // ...
+    series: {
+        // ...
+        type: 'custom',
+        renderItem: function (params, api) {
+            return {
+                type: 'group',
+                children: [{
+                    type: 'circle',
+                    name: 'my_el',
+                    // ...
+                }, {
+                    // ...
+                }]
+            }
+        },
+        data: [[12, 33]]
+    }
+})
+chart.on('click', {targetName: 'my_el'}, function () {
+    // When the element with name 'my_el' clicked, this method called.
+});
+```
+
 
 You may update chart or show customized layer with information got from your own data warehouse, indexed from data name or series name of an object received from a callback function. Sample code is shown as followed:
 

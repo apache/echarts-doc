@@ -91,9 +91,95 @@ myChart.on('click', function (params) {
             }
         }
     }
-
 });
 ```
+
+使用 `query` 只对指定的组件的图形元素的触发回调：
+```js
+chart.on(eventName, query, handler);
+```
+
+`query` 可为 `string` 或者 `Object`。
+
+如果为 `string` 表示组件类型。格式可以是 'mainType' 或者 'mainType.subType'。例如：
+```js
+chart.on('click', 'series', function () {...});
+chart.on('click', 'series.line', function () {...});
+chart.on('click', 'dataZoom', function () {...});
+chart.on('click', 'xAxis.category', function () {...});
+```
+
+如果为 `Object`，可以包含以下一个或多个属性，每个属性都是可选的：
+```js
+{
+    <mainType>Index: number // 组件 index
+    <mainType>Name: string // 组件 name
+    <mainType>Id: string // 组件 id
+    name: string // 数据项的 name
+    targetName: string // 自定义系列中的 el 的 name
+}
+```
+
+例如：
+```js
+chart.setOption({
+    // ...
+    series: [{
+        name: 'uuu'
+        // ...
+    }]
+});
+chart.on('mouseover', {seriesName: 'uuu'}, function () {
+    // series name 为 'uuu' 的系列中的图形元素被 'mouseover' 时，此方法被回调。
+});
+```
+
+例如：
+```js
+chart.setOption({
+    // ...
+    series: [{
+        // ...
+    }, {
+        // ...
+        data: [
+            {name: 'xx', value: 121},
+            {name: 'yy', value: 33}
+        ]
+    }]
+});
+chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function () {
+    // series index 1 的系列中的 name 为 'xx' 的元素被 'mouseover' 时，此方法被回调。
+});
+```
+
+例如：
+```js
+chart.setOption({
+    // ...
+    series: {
+        // ...
+        type: 'custom',
+        renderItem: function (params, api) {
+            return {
+                type: 'group',
+                children: [{
+                    type: 'circle',
+                    name: 'my_el',
+                    // ...
+                }, {
+                    // ...
+                }]
+            }
+        },
+        data: [[12, 33]]
+    }
+})
+chart.on('mouseup', {targetName: 'my_el'}, function () {
+    // name 为 'my_el' 的元素被 'mouseup' 时，此方法被回调。
+});
+```
+
 
 你可以在回调函数中获得这个对象中的数据名、系列名称后在自己的数据仓库中索引得到其它的信息候更新图表，显示浮层等等，如下示例代码：
 
