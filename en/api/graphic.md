@@ -50,4 +50,5 @@ Clip the first input rectangular by the second input rectangular.
 }
 ```
 
+Notice: if the rect is totally clipped, returns `undefined`.
 

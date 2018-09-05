@@ -53,26 +53,29 @@ var option = {
             // 这里使用 api.size(...) 获得 Y 轴上数值范围为 1 的一段所对应的像素长度。
             var height = api.size([0, 1])[1] * 0.6;
 
+            // shape 属性描述了这个矩形的像素位置和大小。
+            // 其中特殊得用到了 echarts.graphic.clipRectByRect，意思是，
+            // 如果矩形超出了当前坐标系的包围盒，则剪裁这个矩形。
+            // 如果矩形完全被剪掉，会返回 undefined.
+            var rectShape = echarts.graphic.clipRectByRect({
+                // 矩形的位置和大小。
+                x: startPoint[0],
+                y: startPoint[1] - height / 2,
+                width: endPoint[0] - startPoint[0],
+                height: height
+            }, {
+                // 当前坐标系的包围盒。
+                x: params.coordSys.x,
+                y: params.coordSys.y,
+                width: params.coordSys.width,
+                height: params.coordSys.height
+            });
+
             // 这里返回为这个 dataItem 构建的图形元素定义。
-            return {
+            return rectShape && {
                 // 表示这个图形元素是矩形。还可以是 'circle', 'sector', 'polygon' 等等。
                 type: 'rect',
-                // shape 属性描述了这个矩形的像素位置和大小。
-                // 其中特殊得用到了 echarts.graphic.clipRectByRect，意思是，
-                // 如果矩形超出了当前坐标系的包围盒，则剪裁这个矩形。
-                shape: echarts.graphic.clipRectByRect({
-                    // 矩形的位置和大小。
-                    x: startPoint[0],
-                    y: startPoint[1] - height / 2,
-                    width: endPoint[0] - startPoint[0],
-                    height: height
-                }, {
-                    // 当前坐标系的包围盒。
-                    x: params.coordSys.x,
-                    y: params.coordSys.y,
-                    width: params.coordSys.width,
-                    height: params.coordSys.height
-                }),
+                shape: rectShape,
                 // 用 api.style(...) 得到默认的样式设置。这个样式设置包含了
                 // option 中 itemStyle 的配置和视觉映射得到的颜色。
                 style: api.style()
