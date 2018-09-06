@@ -54,6 +54,10 @@ The default iterations of layout: `32`.
 
 The test shows that iterations of layout could not be less than the default value.
 
+## orient(string) = 'horizontal'
+
+The layout direction of the nodes in the Sankey diagram, which can be horizontal from left to right or vertical from top to bottom. The corresponding parameter values ​​are `horizontal` or `vertical`.
+
 ## draggable(boolean) = true
 
 The drag-and-drop interaction of the node, which is enabled by default. After opening, the user can drag any node in the Sankey diagram to any position. To turn this interaction off, simply set the value to `false`.

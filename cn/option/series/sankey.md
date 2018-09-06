@@ -11,7 +11,6 @@
 
 ~[700x580](${galleryViewPath}sankey-energy&edit=1&reset=1)
 
-
 <br>
 **可视编码：**
 
@@ -22,7 +21,6 @@
 <br>
 **排序：**
 如果想指定结果的纵向顺序，那么可以把 [layoutIterations](~series-sankey.layoutIterations) 设为 `0`，此时纵向的顺序依照数据在 [links](~series-sankey.links) 中出现的顺序。
-
 
 ## type(string) = 'sankey'
 
@@ -38,16 +36,13 @@
     defaultHeight: 'null'
 ) }}
 
-
 ## nodeWidth(number) = 20
 
 图中每个矩形节点的宽度。
 
-
 ## nodeGap(number) = 8
 
 图中每一列任意两个矩形节点之间的间隔。
-
 
 ## layoutIterations(number) = 32
 
@@ -56,6 +51,10 @@
 默认布局迭代次数：`32`。
 
 经测试，布局迭代次数不要低于默认值。
+
+## orient(string) = 'horizontal'
+
+桑基图中节点的布局方向，可以是水平的从左往右，也可以是垂直的从上往下，对应的参数值分别是 `horizontal`, `vertical`。
 
 ## draggable(boolean) = true
 
@@ -92,7 +91,6 @@
 
 {{use: partial-sankey-line-style(prefix="##")}}
 
-
 ## emphasis(Object)
 桑基图的高亮样式设置。
 ### label(Object)
@@ -106,7 +104,6 @@
 {{use: partial-sankey-line-style(
     prefix="###"
 )}}
-
 
 ## data(Array)
 
