@@ -32,7 +32,7 @@ When to show the effect.
 Related configurations about ripple effect.
 
 ### period(number) = 4
-The duration of animation.
+The period duration of animation, in seconds.
 
 ### scale(number) = 2.5
 The maximum zooming scale of ripples in animation.

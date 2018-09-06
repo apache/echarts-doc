@@ -90,9 +90,11 @@ axisPointer will not be displayed by default. But if[tooltip.trigger](~tooltip.t
 Indicator type.
 
 Options:
-+ `'line'` line indicator
++ `'line'` line indicator.
 
-+ `'shadow'` shadow crosshair indicator
++ `'shadow'` shadow crosshair indicator.
+
++ `'none'` no indicator displayed.
 
 
 {{ use: partial-axisPointer-tooltip-shared(

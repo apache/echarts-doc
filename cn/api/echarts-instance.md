@@ -175,7 +175,17 @@ myChart.dispatchAction({
 
 ## on(Function)
 ```js
-(eventName: string, handler: Function, context?: Object)
+(
+    eventName: string,
+    handler: Function,
+    context?: Object
+)
+(
+    eventName: string,
+    query: string|Object,
+    handler: Function,
+    context?: Object
+)
 ```
 
 绑定事件处理函数。
@@ -191,9 +201,93 @@ ECharts 中的事件有两种，一种是鼠标事件，在鼠标点击某个图
 
     **注：** ECharts 2.x 中会使用 `config` 对象中的 `CLICK` 等属性作为事件名称。在 ECharts 3 中统一使用跟 dom 事件一样的全小写字符串作为事件名。
 
++ `query`
+
+    可选的过滤条件，能够只在指定的组件或者元素上进行响应。可为 `string` 或者 `Object`。
+
+    如果为 `string` 表示组件类型。格式可以是 'mainType' 或者 'mainType.subType'。例如：
+    ```js
+    chart.on('click', 'series', function () {...});
+    chart.on('click', 'series.line', function () {...});
+    chart.on('click', 'dataZoom', function () {...});
+    chart.on('click', 'xAxis.category', function () {...});
+    ```
+
+    如果为 `Object`，可以包含以下一个或多个属性，每个属性都是可选的：
+    ```js
+    {
+        <mainType>Index: number // 组件 index
+        <mainType>Name: string // 组件 name
+        <mainType>Id: string // 组件 id
+        name: string // 数据项的 name
+        targetName: string // 自定义系列中的 el 的 name
+    }
+    ```
+
+    例如：
+    ```js
+    chart.setOption({
+        // ...
+        series: [{
+            name: 'uuu'
+            // ...
+        }]
+    });
+    chart.on('mouseover', {seriesName: 'uuu'}, function () {
+        // series name 为 'uuu' 的系列中的图形元素被 'mouseover' 时，此方法被回调。
+    });
+    ```
+
+    例如：
+    ```js
+    chart.setOption({
+        // ...
+        series: [{
+            // ...
+        }, {
+            // ...
+            data: [
+                {name: 'xx', value: 121},
+                {name: 'yy', value: 33}
+            ]
+        }]
+    });
+    chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function () {
+        // series index 1 的系列中的 name 为 'xx' 的元素被 'mouseover' 时，此方法被回调。
+    });
+    ```
+
+    例如：
+    ```js
+    chart.setOption({
+        // ...
+        series: {
+            // ...
+            type: 'custom',
+            renderItem: function (params, api) {
+                return {
+                    type: 'group',
+                    children: [{
+                        type: 'circle',
+                        name: 'my_el',
+                        // ...
+                    }, {
+                        // ...
+                    }]
+                }
+            },
+            data: [[12, 33]]
+        }
+    })
+    chart.on('mouseup', {targetName: 'my_el'}, function () {
+        // name 为 'my_el' 的元素被 'mouseup' 时，此方法被回调。
+    });
+    ```
+
 + `handler`
 
     事件处理函数。格式为:
+
     ```js
     (event: Object)
     ```

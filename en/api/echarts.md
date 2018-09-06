@@ -12,7 +12,7 @@ Global echarts object, which can be accessed after including `echarts.js` in scr
     height? number|string
 }) => ECharts
 ```
-Creates an ECharts instance, and returns an [echartsInstance](~echartsInstance). You can not initialize multiple ECharts instances on a single container.
+Creates an ECharts instance, and returns an [echartsInstance](~echartsInstance). You shall not initialize multiple ECharts instances on a single container.
 
 **Parameters**
 + `dom`
@@ -29,7 +29,7 @@ Creates an ECharts instance, and returns an [echartsInstance](~echartsInstance).
 
 + `opts`
 
-    Optional; which may contain:
+    Optional chart configurations; which may contain:
 
     + `devicePixelRatio`
 
@@ -57,7 +57,7 @@ Connects interaction of multiple chart series.
 
 **Parameters**
 + `group`
-    group id, or array of chart instance.
+    Group id, or array of chart instance.
 
 **For example: **
 ```js
@@ -141,6 +141,21 @@ echarts.registerMap('USA', usaJson, {
 });
     ```
 
+## getMap(Function)
+```js
+(mapName: string)
+```
+
+Get a registed map in the following format:
+
+```js
+{
+    // geoJson data of the map
+    geoJson: Object,
+    // special area, see registerMap() for more information
+    specialAreas: Object
+}
+```
 
 ## registerTheme(Function)
 ```js

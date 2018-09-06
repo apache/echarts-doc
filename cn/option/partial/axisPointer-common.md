@@ -93,6 +93,8 @@ axisPointer 的 label 默认不显示（也就是默认只显示指示线），�
 
 + `'shadow'` 阴影指示器
 
++ `'none'` 无指示器
+
 {{ use: partial-axisPointer-tooltip-shared(
     prefix=${prefix},
     galleryViewPath=${galleryViewPath},
