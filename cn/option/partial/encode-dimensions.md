@@ -45,6 +45,44 @@ series: {
 }
 ```
 
+特殊地，在 [自定义系列（custom series）](~series-custom) 中，`encode` 中轴可以不指定或设置为 `null/undefined`，从而使系列免于受这个轴控制，也就是说，轴的范围（extent）不会受此系列数值的影响，轴被 [dataZoom](~dataZoom) 控制时也不会过滤掉这个系列：
+
+```js
+var option = {
+    xAxis: {},
+    yAxis: {},
+    dataZoom: [{
+        xAxisIndex: 0
+    }, {
+        yAxisIndex: 0
+    }],
+    series: {
+        type: 'custom',
+        renderItem: function (params, api) {
+            return {
+                type: 'circle',
+                shape: {
+                    cx: 100, // x 位置永远为 100
+                    cy: api.coord([0, api.value(0)])[1],
+                    r: 30
+                },
+                style: {
+                    fill: 'blue'
+                }
+            };
+        },
+        encode: {
+            // 这样这个系列就不会被 x 轴以及 x
+            // 轴上的 dataZoom 控制了。
+            x: null,
+            y: 1
+        },
+        data: [ ... ]
+    }
+};
+```
+
+
 
 {{target:partial-series-dimensions}}
 

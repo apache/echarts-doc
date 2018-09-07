@@ -45,6 +45,46 @@ series: {
 }
 ```
 
+Specially, in [custom series(~series-custom), some property in `encode`, corresponding to axis, can be set as null to make the series not controlled by the axis, that is, the series data will not be count in the extent of the axis, and the [dataZoom](~dataZoom) on the axis will not filter the series.
+
+
+```js
+var option = {
+    xAxis: {},
+    yAxis: {},
+    dataZoom: [{
+        xAxisIndex: 0
+    }, {
+        yAxisIndex: 0
+    }],
+    series: {
+        type: 'custom',
+        renderItem: function (params, api) {
+            return {
+                type: 'circle',
+                shape: {
+                    cx: 100, // x position is always 100
+                    cy: api.coord([0, api.value(0)])[1],
+                    r: 30
+                },
+                style: {
+                    fill: 'blue'
+                }
+            };
+        },
+        encode: {
+            // Then the series will not be controlled
+            // by x axis and corresponding dataZoom.
+            x: null,
+            y: 1
+        },
+        data: [ ... ]
+    }
+};
+```
+
+
+
 
 {{target:partial-series-dimensions}}
 
