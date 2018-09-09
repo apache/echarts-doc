@@ -1025,7 +1025,7 @@ But notice that the operation is performance consuming, do not use it for large 
 
 
 
-##${prefix} info = undefined
+##${prefix} info
 
 User defined data, can be visited in event listeners.
 

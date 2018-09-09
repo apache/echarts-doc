@@ -1009,7 +1009,7 @@ z 方向的高度，决定层叠关系。
 {{ /if }}
 
 
-##${prefix} info = undefined
+##${prefix} info
 
 用户定义的任意数据，可以在 event listener 中访问，如：
 
