@@ -75,6 +75,10 @@
     noBox=true
 ) }}
 
+## triggerEvent(boolean) = false
+
+是否触发事件。
+
 ## padding(number) = 5
 
 {{ use: partial-padding(componentName="标题")}}

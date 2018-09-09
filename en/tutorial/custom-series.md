@@ -226,5 +226,40 @@ See the example mentioned above [Profile](${galleryEditorPath}custom-profile).
 
 <br>
 
+(3) Event listener
+
+```js
+chart.setOption({
+    // ...
+    series: {
+        type: 'custom',
+        renderItem: function () {
+            // ...
+            return {
+                type: 'group',
+                children: [{
+                    type: 'circle'
+                    // ...
+                }, {
+                    type: 'circle',
+                    name: 'aaa',
+                    // User specified info, available
+                    // in event handler.
+                    info: 12345,
+                    // ...
+                }]
+            };
+        }
+    }
+});
+chart.on('click', {element: 'aaa'}, function (params) {
+    // When the element with name 'aaa' clicked,
+    // this method called.
+    console.log(params.info);
+});
+```
+
+<br>
+
 **[More examples about custom series](https://ecomfe.github.io/echarts-examples/public/index.html#chart-type-custom)**
 

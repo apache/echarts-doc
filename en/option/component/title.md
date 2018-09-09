@@ -75,6 +75,10 @@ The hyper link of subtitle text.
     noBox=true
 ) }}
 
+## triggerEvent(boolean) = false
+
+Whether to trigger event.
+
 ## padding(number) = 5
 
 {{ use: partial-padding(componentName="title")}}

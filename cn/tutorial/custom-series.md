@@ -217,6 +217,41 @@ option = {
 
 [renderItem.arguments.api](http://echarts.baidu.com/option.html#series-custom.renderItem.arguments.api) 中使用的参数都是 `dataIndexInside` 而非 `dataIndex`，因为从 `dataIndex` 转换成 `dataIndexInside` 需要时间开销。
 
+
+<br>
+
+（3）Event listener
+
+```js
+chart.setOption({
+    // ...
+    series: {
+        type: 'custom',
+        renderItem: function () {
+            // ...
+            return {
+                type: 'group',
+                children: [{
+                    type: 'circle'
+                    // ...
+                }, {
+                    type: 'circle',
+                    name: 'aaa',
+                    // 用户指定的信息，可以在 event handler 访问到。
+                    info: 12345,
+                    // ...
+                }]
+            };
+        }
+    }
+});
+chart.on('click', {element: 'aaa'}, function (params) {
+    // 当 name 为 'aaa' 的图形元素被点击时，此回调被触发。
+    console.log(params.info);
+});
+```
+
+
 <br>
 
 **更多的自定义系列的例子参见：[custom examples](http://echarts.baidu.com/examples.html#chart-type-custom)**

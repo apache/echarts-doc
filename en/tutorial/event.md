@@ -117,8 +117,11 @@ If `Object`, one or more properties below can be included, and any of them is op
     <mainType>Index: number // component index
     <mainType>Name: string // component name
     <mainType>Id: string // component id
-    name: string // data name
-    targetName: string // element name in custom series
+    dataIndex: number // data item index
+    name: string // data item name
+    dataType: string // data item type, e.g.,
+                     // 'node' and 'edge' in graph.
+    element: string // element name in custom series
 }
 ```
 
@@ -159,6 +162,24 @@ For example:
 ```js
 chart.setOption({
     // ...
+    series: [{
+        type: 'graph',
+        nodes: [{name: 'a', value: 10}, {name: 'b', value: 20}],
+        edges: [{source: 0, target: 1}]
+    }]
+});
+chart.on('click', {dataType: 'node'}, function () {
+    // When the nodes of the graph clicked, this method is called.
+});
+chart.on('click', {dataType: 'edge'}, function () {
+    // When the edges of the graph clicked, this method is called.
+});
+```
+
+For example:
+```js
+chart.setOption({
+    // ...
     series: {
         // ...
         type: 'custom',
@@ -177,7 +198,7 @@ chart.setOption({
         data: [[12, 33]]
     }
 })
-chart.on('click', {targetName: 'my_el'}, function () {
+chart.on('click', {element: 'my_el'}, function () {
     // When the element with name 'my_el' clicked, this method called.
 });
 ```

@@ -35,9 +35,13 @@ Event parameters of mouse events are attributes of event object. The following s
     // where dataType is not needed.
     dataType: string,
     // incoming data value
-    value: number|Array
+    value: number|Array,
     // color of component (make sense when componentType is 'series')
-    color: string
+    color: string,
+    // User info (only available in graphic component
+    // and custom series, if element option has info
+    // property, e.g., {type: 'circle', info: {some: 123}})
+    info: *
 }
 ```
 

@@ -222,8 +222,11 @@ If event is triggered externally by [dispatchAction](~echartsInstance.dispatchAc
         <mainType>Index: number // component index
         <mainType>Name: string // component name
         <mainType>Id: string // component id
-        name: string // data name
-        targetName: string // element name in custom series
+        dataIndex: number // data item index
+        name: string // data item name
+        dataType: string // data item type, e.g.,
+                         // 'node' and 'edge' in graph.
+        element: string // element name in custom series
     }
     ```
 
@@ -237,7 +240,7 @@ If event is triggered externally by [dispatchAction](~echartsInstance.dispatchAc
         }]
     });
     chart.on('mouseover', {seriesName: 'uuu'}, function () {
-        // When the graphic elements in the series with name 'uuu' mouse overed, this method called.
+        // When the graphic elements in the series with name 'uuu' mouse overed, this method is called.
     });
     ```
 
@@ -256,7 +259,25 @@ If event is triggered externally by [dispatchAction](~echartsInstance.dispatchAc
         }]
     });
     chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function () {
-        // When the graphic elements of the data item with name 'xx' in the series with index 1 mouse overed, this method called.
+        // When the graphic elements of the data item with name 'xx' in the series with index 1 mouse overed, this method is called.
+    });
+    ```
+
+    For example:
+    ```js
+    chart.setOption({
+        // ...
+        series: [{
+            type: 'graph',
+            nodes: [{name: 'a', value: 10}, {name: 'b', value: 20}],
+            edges: [{source: 0, target: 1}]
+        }]
+    });
+    chart.on('click', {dataType: 'node'}, function () {
+        // When the nodes of the graph clicked, this method is called.
+    });
+    chart.on('click', {dataType: 'edge'}, function () {
+        // When the edges of the graph clicked, this method is called.
     });
     ```
 
@@ -283,7 +304,7 @@ If event is triggered externally by [dispatchAction](~echartsInstance.dispatchAc
         }
     })
     chart.on('click', {targetName: 'my_el'}, function () {
-        // When the element with name 'my_el' clicked, this method called.
+        // When the element with name 'my_el' clicked, this method is called.
     });
     ```
 

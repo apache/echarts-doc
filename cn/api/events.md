@@ -42,9 +42,12 @@ myChart.on('legendselectchanged', function (params) {
     // 其他大部分图表中只有一种 data，dataType 无意义。
     dataType: string,
     // 传入的数据值
-    value: number|Array
+    value: number|Array,
     // 数据图形的颜色。当 componentType 为 'series' 时有意义。
-    color: string
+    color: string,
+    // 用户自定义的数据。只在 graphic component 和自定义系列（custom series）
+    // 中生效，如果节点定义上设置了如：{type: 'circle', info: {some: 123}}。
+    info: *
 }
 ```
 

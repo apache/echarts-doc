@@ -989,7 +989,6 @@ z 方向的高度，决定层叠关系。
 {{ /if }}
 
 
-
 {{ if: ${usageType} === 'customSeries' }}
 
 ##${prefix} z2(number) = undefined
@@ -1000,6 +999,7 @@ z 方向的高度，决定层叠关系。
 
 参见 [diffChildrenByName](~${optionPath}.${hostName}${symbolVisit}polygon.diffChildrenByName)。
 
+
 ##${prefix} diffChildrenByName(boolean) = false
 
 在 [自定义系列](~series-custom) 中，当 `diffChildrenByName: true` 时，对于 [renderItem](~series-custom.renderItem) 返回值中的每一个 [group](~${optionPath}.${hostName}${symbolVisit}group)，会根据其 [children](~${optionPath}.${hostName}${symbolVisit}group.children) 中每个图形元素的 [name](~${optionPath}.${hostName}${symbolVisit}polygon.name) 属性进行 "diff"。在这里，"diff" 的意思是，重绘的时候，在已存在的图形元素和新的图形元素之间建立对应关系（依据 `name` 是否相同），从如果数据有更新，能够形成的过渡动画。
@@ -1009,17 +1009,26 @@ z 方向的高度，决定层叠关系。
 {{ /if }}
 
 
+##${prefix} info = undefined
+
+用户定义的任意数据，可以在 event listener 中访问，如：
+
+```js
+chart.on('click', function (params) {
+    console.log(params.info);
+});
+```
 
 ##${prefix} silent(boolean) = false
 
 是否不响应鼠标以及触摸事件。
 
-
-{{ if: ${usageType} === 'graphicComponent' }}
-
 ##${prefix} invisible(boolean) = false
 
 节点是否可见。
+
+
+{{ if: ${usageType} === 'graphicComponent' }}
 
 {{ use: partial-cursor(prefix="##") }}
 

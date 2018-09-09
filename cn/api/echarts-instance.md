@@ -219,8 +219,10 @@ ECharts 中的事件有两种，一种是鼠标事件，在鼠标点击某个图
         <mainType>Index: number // 组件 index
         <mainType>Name: string // 组件 name
         <mainType>Id: string // 组件 id
-        name: string // 数据项的 name
-        targetName: string // 自定义系列中的 el 的 name
+        dataIndex: number // 数据项 index
+        name: string // 数据项 name
+        dataType: string // 数据项 type，如关系图中的 'node', 'edge'
+        element: string // 自定义系列中的 el 的 name
     }
     ```
 
@@ -261,6 +263,24 @@ ECharts 中的事件有两种，一种是鼠标事件，在鼠标点击某个图
     ```js
     chart.setOption({
         // ...
+        series: [{
+            type: 'graph',
+            nodes: [{name: 'a', value: 10}, {name: 'b', value: 20}],
+            edges: [{source: 0, target: 1}]
+        }]
+    });
+    chart.on('click', {dataType: 'node'}, function () {
+        // 关系图的节点被点击时此方法被回调。
+    });
+    chart.on('click', {dataType: 'edge'}, function () {
+        // 关系图的边被点击时此方法被回调。
+    });
+    ```
+
+    例如：
+    ```js
+    chart.setOption({
+        // ...
         series: {
             // ...
             type: 'custom',
@@ -279,7 +299,7 @@ ECharts 中的事件有两种，一种是鼠标事件，在鼠标点击某个图
             data: [[12, 33]]
         }
     })
-    chart.on('mouseup', {targetName: 'my_el'}, function () {
+    chart.on('mouseup', {element: 'my_el'}, function () {
         // name 为 'my_el' 的元素被 'mouseup' 时，此方法被回调。
     });
     ```

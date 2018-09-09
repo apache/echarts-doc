@@ -1005,7 +1005,6 @@ Notice: Multiple canvas layer may affect performance.
 
 
 
-
 {{ if: ${usageType} === 'customSeries' }}
 
 ##${prefix} z2(number) = undefined
@@ -1026,17 +1025,26 @@ But notice that the operation is performance consuming, do not use it for large 
 
 
 
+##${prefix} info = undefined
+
+User defined data, can be visited in event listeners.
+
+```js
+chart.on('click', function (params) {
+    console.log(params.info);
+});
+```
 
 ##${prefix} silent(boolean) = false
 
 Whether response to mouse events / touch events.
 
-
-{{ if: ${usageType} === 'graphicComponent' }}
-
 ##${prefix} invisible(boolean) = false
 
 Whether the element is visible.
+
+
+{{ if: ${usageType} === 'graphicComponent' }}
 
 {{ use: partial-cursor(prefix="##") }}
 
