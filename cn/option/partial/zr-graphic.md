@@ -1027,6 +1027,11 @@ chart.on('click', function (params) {
 
 节点是否可见。
 
+##${prefix} ignore(boolean) = false
+
+节点是否完全被忽略（既不渲染，也不响应事件）。
+
+
 
 {{ if: ${usageType} === 'graphicComponent' }}
 

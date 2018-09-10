@@ -1043,6 +1043,10 @@ Whether response to mouse events / touch events.
 
 Whether the element is visible.
 
+##${prefix} ignore(boolean) = false
+
+Whether the element is totally ignored (neither render nor listen events).
+
 
 {{ if: ${usageType} === 'graphicComponent' }}
 
