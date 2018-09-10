@@ -75,7 +75,7 @@ var option = {
         encode: {
             // Then the series will not be controlled
             // by x axis and corresponding dataZoom.
-            x: null,
+            x: -1,
             y: 1
         },
         data: [ ... ]

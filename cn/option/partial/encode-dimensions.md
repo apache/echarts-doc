@@ -74,7 +74,7 @@ var option = {
         encode: {
             // 这样这个系列就不会被 x 轴以及 x
             // 轴上的 dataZoom 控制了。
-            x: null,
+            x: -1,
             y: 1
         },
         data: [ ... ]
