@@ -33,6 +33,13 @@ group 是唯一的可以有子节点的容器。group 可以用来整体定位�
 即便当高度为零的时候，子节点也可以使用 `top: 'middle'` 相对于父节点垂直居中。
 
 
+##${prefix} diffChildrenByName(boolean) = false
+
+在 [自定义系列](~series-custom) 中，当 `diffChildrenByName: true` 时，对于 [renderItem](~series-custom.renderItem) 返回值中的每一个 [group](~${optionPath}.${hostName}${symbolVisit}group)，会根据其 [children](~${optionPath}.${hostName}${symbolVisit}group.children) 中每个图形元素的 [name](~${optionPath}.${hostName}${symbolVisit}polygon.name) 属性进行 "diff"。在这里，"diff" 的意思是，重绘的时候，在已存在的图形元素和新的图形元素之间建立对应关系（依据 `name` 是否相同），从如果数据有更新，能够形成的过渡动画。
+
+但是注意，这会有性能开销。如果数据量较大，不要开启这个功能。
+
+
 ##${prefix} children(Array)
 
 子节点列表，其中项都是一个图形元素定义。
@@ -56,6 +63,109 @@ group 是唯一的可以有子节点的容器。group 可以用来整体定位�
     symbolVisit=${symbolVisit},
     symbolDeclare=${symbolDeclare}
 ) }}
+
+
+
+{{ if: ${usageType} === 'customSeries' }}
+
+#${prefix} ${hostName}${symbolDeclare}path(Object)
+
+可使用 [SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData) 做路径。
+可以用来画图标，或者其他各种图形，因为可以很便捷得缩放以适应给定尺寸。
+
+参见例子：
+[icons](${galleryEditorPath}custom-calendar-icon) 和 [shapes](${galleryEditorPath}custom-gantt-flight)。
+
+
+
+{{ use: partial-graphic-cpt-common-props(
+    type='path',
+    prefix=${prefix},
+    optionPath=${optionPath},
+    usageType=${usageType},
+    hostName=${hostName},
+    symbolVisit=${symbolVisit},
+    symbolDeclare=${symbolDeclare}
+) }}
+
+##${prefix} shape(Object)
+
+###${prefix} pathData(string)
+
+即 [SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData)。
+
+例如：`'M0,0 L0,-20 L30,-20 C42,-20 38,-1 50,-1 L70,-1 L70,0 Z'`。
+
+如果指定了 [width](~${optionPath}.${hostName}${symbolVisit}path.shape.width)、[height](~${optionPath}.${hostName}${symbolVisit}path.shape.height)、[x](~${optionPath}.${hostName}${symbolVisit}path.shape.x)、[y](~${optionPath}.${hostName}${symbolVisit}path.shape.y)，则会根据他们定义的矩形，缩放 PathData。如果没有指定这些，就不会缩放。
+
+可使用 [layout](~${optionPath}.${hostName}${symbolVisit}path.shape.layout) 指定缩放策略。
+
+
+###${prefix} d(string)
+
+同 [pathData](~${optionPath}.${hostName}${symbolVisit}path.shape.pathData)，别名。
+
+
+###${prefix} layout(string) = 'center'
+
+如果指定了 [width](~${optionPath}.${hostName}${symbolVisit}path.shape.width)、[height](~${optionPath}.${hostName}${symbolVisit}path.shape.height)、[x](~${optionPath}.${hostName}${symbolVisit}path.shape.x)、[y](~${optionPath}.${hostName}${symbolVisit}path.shape.y)，则会根据他们定义的矩形，缩放 PathData。
+
+`layout` 用于指定缩放策略。
+
+可选值：
++ `'center'`：保持原来的 PathData 的长宽比，居于矩形中，尽可能撑大但不会超出矩形。
++ `'cover'`：PathData 拉伸为矩形的长宽比，完全填满矩形，不会超出矩形。
+
+
+{{ use: partial-graphic-cpt-sub-prop-xy(
+    prefix=${prefix},
+    optionPath=${optionPath},
+    usageType=${usageType},
+    hostName=${hostName},
+    symbolVisit=${symbolVisit},
+    symbolDeclare=${symbolDeclare}
+) }}
+{{ use: partial-graphic-cpt-sub-prop-wh(
+    prefix=${prefix},
+    optionPath=${optionPath},
+    usageType=${usageType},
+    hostName=${hostName},
+    symbolVisit=${symbolVisit},
+    symbolDeclare=${symbolDeclare}
+) }}
+
+
+
+##${prefix} style(Object)
+
+{{ use: partial-graphic-cpt-style-prop-common(
+    prefix=${prefix},
+    optionPath=${optionPath},
+    usageType=${usageType},
+    hostName=${hostName},
+    symbolVisit=${symbolVisit},
+    symbolDeclare=${symbolDeclare}
+) }}
+
+{{ use: partial-graphic-cpt-style-emphasis(
+    prefix=${prefix},
+    optionPath=${optionPath},
+    usageType=${usageType},
+    hostName=${hostName},
+    symbolVisit=${symbolVisit},
+    symbolDeclare=${symbolDeclare}
+) }}
+
+{{ use: partial-graphic-cpt-event-handlers(
+    prefix=${prefix},
+    optionPath=${optionPath},
+    usageType=${usageType},
+    hostName=${hostName},
+    symbolVisit=${symbolVisit},
+    symbolDeclare=${symbolDeclare}
+) }}
+
+{{ /if }}
 
 
 
@@ -999,12 +1109,6 @@ z 方向的高度，决定层叠关系。
 
 参见 [diffChildrenByName](~${optionPath}.${hostName}${symbolVisit}polygon.diffChildrenByName)。
 
-
-##${prefix} diffChildrenByName(boolean) = false
-
-在 [自定义系列](~series-custom) 中，当 `diffChildrenByName: true` 时，对于 [renderItem](~series-custom.renderItem) 返回值中的每一个 [group](~${optionPath}.${hostName}${symbolVisit}group)，会根据其 [children](~${optionPath}.${hostName}${symbolVisit}group.children) 中每个图形元素的 [name](~${optionPath}.${hostName}${symbolVisit}polygon.name) 属性进行 "diff"。在这里，"diff" 的意思是，重绘的时候，在已存在的图形元素和新的图形元素之间建立对应关系（依据 `name` 是否相同），从如果数据有更新，能够形成的过渡动画。
-
-但是注意，这会有性能开销。如果数据量较大，不要开启这个功能。
 
 {{ /if }}
 

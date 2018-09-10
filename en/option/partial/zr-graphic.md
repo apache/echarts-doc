@@ -33,6 +33,13 @@ This height is only used for the positioning of its children.
 When height is `0`, children can also be positioned according to its parent using `top: 'middle'`.
 
 
+##${prefix} diffChildrenByName(boolean) = false
+
+In [custom series](~series-custom), when `diffChildrenByName` is set as `true`, for each [group](~${optionPath}.${hostName}${symbolVisit}group) returned from [renderItem](~series-custom.renderItem), "diff" will be performed to its [children](~${optionPath}.${hostName}${symbolVisit}group.children) according to the [name](~${optionPath}.${hostName}${symbolVisit}polygon.name) attribute of each graphic elements. Here "diff" means that map the coming graphic elements to the existing graphic elements when repainting according to `name`, which enables the transition animation if data is modified.
+
+But notice that the operation is performance consuming, do not use it for large data amount.
+
+
 ##${prefix} children(Array)
 
 A list of children, each item is a declaration of an element.
@@ -64,6 +71,106 @@ A list of children, each item is a declaration of an element.
     symbolVisit=${symbolVisit},
     symbolDeclare=${symbolDeclare}
 ) }}
+
+
+
+{{ if: ${usageType} === 'customSeries' }}
+
+#${prefix} ${hostName}${symbolDeclare}path(Object)
+
+Use [SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData) to describe a path. Can be used to draw icons or any other shapes fitting the specified size by auto transforming.
+
+See examples:
+[icons](${galleryEditorPath}custom-calendar-icon) and [shapes](${galleryEditorPath}custom-gantt-flight).
+
+
+{{ use: partial-graphic-cpt-common-props(
+    type='path',
+    prefix=${prefix},
+    optionPath=${optionPath},
+    usageType=${usageType},
+    hostName=${hostName},
+    symbolVisit=${symbolVisit},
+    symbolDeclare=${symbolDeclare}
+) }}
+
+##${prefix} shape(Object)
+
+###${prefix} pathData(string)
+
+[SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData).
+
+For example, `'M0,0 L0,-20 L30,-20 C42,-20 38,-1 50,-1 L70,-1 L70,0 Z'`。
+
+If [width](~${optionPath}.${hostName}${symbolVisit}path.shape.width), [height](~${optionPath}.${hostName}${symbolVisit}path.shape.height), [x](~${optionPath}.${hostName}${symbolVisit}path.shape.x) and [y](~${optionPath}.${hostName}${symbolVisit}path.shape.y) specified, `pathData` will be transformed to fit the defined rect. If they are not specified, do not do that.
+
+[layout](~${optionPath}.${hostName}${symbolVisit}path.shape.layout) can be used to specify the transform strategy.
+
+
+###${prefix} d(string)
+
+Alias of [pathData](~${optionPath}.${hostName}${symbolVisit}path.shape.pathData).
+
+
+###${prefix} layout(string) = 'center'
+
+If [width](~${optionPath}.${hostName}${symbolVisit}path.shape.width), [height](~${optionPath}.${hostName}${symbolVisit}path.shape.height), [x](~${optionPath}.${hostName}${symbolVisit}path.shape.x) and [y](~${optionPath}.${hostName}${symbolVisit}path.shape.y) specified, `pathData` will be transformed to fit the defined rect.
+
+`layout` can be used to specify the transform strategy.
+
+Optional value:
++ `'center'`: Keep aspect ratio, put the path in the center of the rect, expand as far as possible but never overflow.
++ `'cover'`: Transform the path according to the aspect ratio of the rect, fill the rect and do not overflow.
+
+
+{{ use: partial-graphic-cpt-sub-prop-xy(
+    prefix=${prefix},
+    optionPath=${optionPath},
+    usageType=${usageType},
+    hostName=${hostName},
+    symbolVisit=${symbolVisit},
+    symbolDeclare=${symbolDeclare}
+) }}
+{{ use: partial-graphic-cpt-sub-prop-wh(
+    prefix=${prefix},
+    optionPath=${optionPath},
+    usageType=${usageType},
+    hostName=${hostName},
+    symbolVisit=${symbolVisit},
+    symbolDeclare=${symbolDeclare}
+) }}
+
+
+##${prefix} style(Object)
+
+{{ use: partial-graphic-cpt-style-prop-common(
+    prefix=${prefix},
+    optionPath=${optionPath},
+    usageType=${usageType},
+    hostName=${hostName},
+    symbolVisit=${symbolVisit},
+    symbolDeclare=${symbolDeclare}
+) }}
+
+{{ use: partial-graphic-cpt-style-emphasis(
+    prefix=${prefix},
+    optionPath=${optionPath},
+    usageType=${usageType},
+    hostName=${hostName},
+    symbolVisit=${symbolVisit},
+    symbolDeclare=${symbolDeclare}
+) }}
+
+{{ use: partial-graphic-cpt-event-handlers(
+    prefix=${prefix},
+    optionPath=${optionPath},
+    usageType=${usageType},
+    hostName=${hostName},
+    symbolVisit=${symbolVisit},
+    symbolDeclare=${symbolDeclare}
+) }}
+
+{{ /if }}
 
 
 
@@ -1014,12 +1121,6 @@ Define the overlap relationship between graphic elements.
 ##${prefix} name(string) = undefined
 
 See [diffChildrenByName](~${optionPath}.${hostName}${symbolVisit}polygon.diffChildrenByName)。
-
-##${prefix} diffChildrenByName(boolean) = false
-
-In [custom series](~series-custom), when `diffChildrenByName` is set as `true`, for each [group](~${optionPath}.${hostName}${symbolVisit}group) returned from [renderItem](~series-custom.renderItem), "diff" will be performed to its [children](~${optionPath}.${hostName}${symbolVisit}group.children) according to the [name](~${optionPath}.${hostName}${symbolVisit}polygon.name) attribute of each graphic elements. Here "diff" means that map the coming graphic elements to the existing graphic elements when repainting according to `name`, which enables the transition animation if data is modified.
-
-But notice that the operation is performance consuming, do not use it for large data amount.
 
 {{ /if }}
 
