@@ -1,4 +1,45 @@
-## v4.1.0.rc2
+## v4.2.0.rc1
+
+<div class="time">2018-09-11</div>
+
++ **[Feature] Support non-html tooltip**, which enable show tooltip on non-html environment, for example, WeChat Mini App. Use [tooltip.renderMode](https://ecomfe.github.io/echarts-doc/public/en/option.html#tooltip.renderMode) to enable this feature.
+
++ **[Feature] Support event filtering**, which enable listen event triggered by specified component, series, data items. See [chart.on](https://ecomfe.github.io/echarts-doc/public/en/api.html#echartsInstance.on) for details, where a new parameter `query` provided this feature. Support event listening for [custom series](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom) and [graphic component](https://ecomfe.github.io/echarts-doc/public/en/option.html#graphic.triggerEvent), where specified events from the specified graphic elements can be listened by the `query`.
+
++ **[Feature] Enable implementing scroll bar** by dataZoom (similar behavior as the browser scroll bar), see [dataZoom-inside.moveOnMouseWheel](https://ecomfe.github.io/echarts-doc/public/en/option.html#dataZoom-inside.moveOnMouseWheel), and see the [Gantt example](https://ecomfe.github.io/echarts-examples/public/editor.html?c=custom-gantt-flight).
+
++ [Feature] Support focusing node adjacency in sankey diagram. See [focusNodeAdjacency](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-sankey.focusNodeAdjacency) and [example](https://ecomfe.github.io/echarts-examples/public/editor.html?c=sankey-product).
+
++ [Feature] Support vertical layout of sankey diagram, see [series-sankey.orient](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-sankey.orient) and [Vertical sankey example](https://ecomfe.github.io/echarts-examples/public/editor.html?c=sankey-vertical).
+
++ [Feature] Support roam for tree diagram. See [series-tree.roam](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-tree.roam).
+
++ [Feature] Enable to set an axis as `-1` in [encode](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.encode) for [custom series](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom), which indicates that the axis and its corresponding dataZoom do not control any dimension of the series (either calculate axis extent by this series nor scale or filter this series). See [Gantt example](https://ecomfe.github.io/echarts-examples/public/editor.html?c=custom-gantt-flight).
+
++ [Feature] Enable layout `'cover'` in [path shape](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.renderItem.return_path.shape.layout) for [custom series](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom), which brings convenience when using [SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData) create shapes. See [Gantt example](https://ecomfe.github.io/echarts-examples/public/editor.html?c=custom-gantt-flight).
+
++ [Feature] Enhance [custom series](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom): Added [params.actionType](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.renderItem.arguments.params), enables some optimize. And add[params.coordSys.zoom](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.renderItem.arguments.params) for geo coordinate system. Add [invisible](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.renderItem.return_text.invisible) and [ignore](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.renderItem.return_text.ignore) to enable show and hide graphic elements in different situation.
+
++ [Feature] Support inner radius for [radar](https://ecomfe.github.io/echarts-doc/public/en/option.html#radar.radius). See [#8717](https://github.com/apache/incubator-echarts/issues/8717).
+
++ [Fix] Fix polar category axis interval bug. See [#8791](https://github.com/apache/incubator-echarts/issues/8791).
+
++ [Fix] Do not support set polar center on series. Center should be set on [polar.center](https://ecomfe.github.io/echarts-doc/public/en/option.html#polar.center).
+
++ [Fix] Update normal shadow style for [sunburst](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-sunburst). See [#8583](https://github.com/apache/incubator-echarts/issues/8583).
+
++ [Fix] Fix empty [dataset](https://ecomfe.github.io/echarts-doc/public/en/option.html#dataset) problem. See [#8395](https://github.com/apache/incubator-echarts/issues/8395).
+
++ [Fix] Fix bar start position when multiple axes exists. See [#8747](https://github.com/apache/incubator-echarts/issues/8747).
+
++ [Fix] Remove clipPath for expansion animation. See [#8994](https://github.com/apache/incubator-echarts/issues/8994).
+
++ [Fix] Fix axes overlap when two Y axes are on one X axis. See [#8975](https://github.com/apache/incubator-echarts/issues/8975).
+
+
+
+
+## v4.1.0
 <div class="time">2018-05-02</div>
 
 + [Feature] Enable candlestick and bar chart rendering and zooming in a large amount of data (200K). Add option [series-candlestick.progressiveChunkMode](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-candlestick.progressiveChunkMode) to enhance the effect when progressively rendering. See example [candlestick-large](https://ecomfe.github.io/echarts-examples/public/editor.html?c=candlestick-large).
