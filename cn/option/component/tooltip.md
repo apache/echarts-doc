@@ -58,6 +58,10 @@
 
 鼠标是否可进入提示框浮层中，默认为false，如需详情内交互，如添加链接，按钮，可设置为 `true`。
 
+## renderMode(string) = 'html'
+
+浮层的渲染模式，默认以 `'html` 即额外的 DOM 节点展示 tooltip；此外还可以设置为 `'richText'` 表示以富文本的形式渲染，渲染的结果在图表对应的 Canvas 中（目前 SVG 尚未支持富文本），这对于一些没有 DOM 的环境（如微信小程序）有更好的支持。
+
 ## confine(boolean) = false
 
 是否将 tooltip 框限制在图表的区域内。
