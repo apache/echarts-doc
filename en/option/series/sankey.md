@@ -64,7 +64,15 @@ The drag-and-drop interaction of the node, which is enabled by default. After op
 
 ## focusNodeAdjacency(boolean|string) = false
 
-Mouse hover to the node (edge), adjacent nodes and edges highlighted interaction, default off, can be manually opened. When hover to the node, three highlighting methods are provided: 1) The outgoing edges of the corresponding node are highlighted, and the value is `'outEdges'`. 2) The incoming edges of the corresponding node are highlighted, and the value is `'inEdges'`. 3) All the edges that adjacent to the node are highlighted, and the value is `'allEdges'`. When hover to the edge , Uniformly edges and two adjacent nodes of the edge are highlighted.
+Support when mouse hovering over a node or an edge, the adjacent nodes and edges are also highlighted. Default off, can be manually opened.
+
+Optional values:
+
++ `false`: When hovering over a node or an edge, only the hovered node or edge is highlighted.
++ `true`: the same as `'allEdges'`.
++ `'allEdges'`: When hovering over a node, all of the adjacent edges and nodes are highlighted. When hovering over an edge, the adjacent nodes are highlighted.
++ `'outEdges'`: When hovering over a node, the outcoming edges and its adjacent nodes are highlighted. When hovering over an edge, the adjacent nodes are highlighted.
++ `'inEdges'`: When hovering over a node, the incoming edges and its adjacent nodes are highlighted. When hovering over an edge, the adjacent nodes are highlighted.
 
 ## label(Object)
 
