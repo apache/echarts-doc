@@ -76,7 +76,7 @@ It can be an array to represent the range of edge length. In this case edge with
 ### layoutAnimation(boolean) = true
 Because the force-directed layout will be steady after several iterations, this parameter will be decide whether to show the iteration animation of layout. It is not recommended to be closed on browser when there are a lot of node data (>100) as the layout process will cause browser to hang.
 
-## roam(boolean) = false
+## roam(boolean|string) = false
 {{ use: partial-roam }}
 
 ## nodeScaleRatio(number) = 0.6

@@ -81,7 +81,7 @@ edgeLength: [10, 50]
 ### layoutAnimation(boolean) = true
 因为力引导布局会在多次迭代后才会稳定，这个参数决定是否显示布局的迭代动画，在浏览器端节点数据较多（>100）的时候不建议关闭，布局过程会造成浏览器假死。
 
-## roam(boolean) = false
+## roam(boolean|string) = false
 {{ use: partial-roam }}
 
 ## nodeScaleRatio(number) = 0.6

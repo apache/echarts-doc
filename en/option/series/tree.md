@@ -61,6 +61,10 @@ The direction of the `orthogonal` layout in the tree diagram. That means this co
 ) }}
 
 
+## roam(boolean|string) = false
+{{ use: partial-roam }}
+
+
 ## expandAndCollapse(boolean) = true
 
 Subtree collapses and expands interaction, `default true`. As the drawing area is limited, and usually the nodes of a tree may be more, so there will be hidden between the nodes. In order to avoid this problem, you can put a temporary unrelated subtree folded away, until you need to start when necessary. Such as the above radial layout tree example, the center of the node is filled with blue is the folded away subtree, you can click to expand it.

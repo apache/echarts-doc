@@ -128,6 +128,7 @@ renderItem 函数的第一个参数，含有：
     dataIndex: // {number} 数据项的 index。
     dataIndexInside: // {number} 数据项在当前坐标系中可见的数据的 index（即 dataZoom 当前窗口中的数据的 index）。
     dataInsideLength: // {number} 当前坐标系中可见的数据长度（即 dataZoom 当前窗口中的数据数量）。
+    actionType: // {string} 触发此次重绘的 action 的 type。
     coordSys: // 不同的坐标系中，coordSys 里的信息不一样，含有如下这些可能：
     coordSys: {
         type: 'cartesian2d',
@@ -157,6 +158,7 @@ renderItem 函数的第一个参数，含有：
         y: // {number} geo rect 的 y
         width: // {number} geo rect 的 width
         height: // {number} geo rect 的 height
+        zoom: // {number} 缩放的比率。如果没有缩放，则值为 1。例如 0.5 表示缩小了一半。
     },
     coordSys: {
         type: 'polar',

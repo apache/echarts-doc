@@ -43,7 +43,7 @@ $.get('map/json/china.json', function (chinaJson) {
 
 ECharts 使用 [geoJSON](http://geojson.org/) 格式的数据作为地图的轮廓，除了上述数据，你也可以通过其它手段获取地图的 [geoJSON](http://geojson.org/) 数据注册到 ECharts 中。参见示例 [USA Population Estimates](${galleryEditorPath}map-usa)
 
-#${prefix} roam(boolean) = false
+#${prefix} roam(boolean|string) = false
 {{ use: partial-roam }}
 
 #${prefix} center(Array)
