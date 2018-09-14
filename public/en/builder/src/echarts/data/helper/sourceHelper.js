@@ -17,10 +17,9 @@
 * under the License.
 */
 import { __DEV__ } from '../../config';
-import { makeInner } from '../../util/model';
+import { makeInner, getDataItemValue } from '../../util/model';
 import { getCoordSysDefineBySeries } from '../../model/referHelper';
 import { createHashMap, each, map, isArray, isString, isObject, isTypedArray, isArrayLike, extend, assert } from 'zrender/src/core/util';
-import { getDataItemValue } from '../../util/model';
 import Source from '../Source';
 import { SOURCE_FORMAT_ORIGINAL, SOURCE_FORMAT_ARRAY_ROWS, SOURCE_FORMAT_OBJECT_ROWS, SOURCE_FORMAT_KEYED_COLUMNS, SOURCE_FORMAT_UNKNOWN, SOURCE_FORMAT_TYPED_ARRAY, SERIES_LAYOUT_BY_ROW } from './sourceType';
 var inner = makeInner();
@@ -38,6 +37,10 @@ export function detectSourceFormat(datasetModel) {
     sourceFormat = SOURCE_FORMAT_TYPED_ARRAY;
   } else if (isArray(data)) {
     // FIXME Whether tolerate null in top level array?
+    if (data.length === 0) {
+      sourceFormat = SOURCE_FORMAT_ARRAY_ROWS;
+    }
+
     for (var i = 0, len = data.length; i < len; i++) {
       var item = data[i];
 

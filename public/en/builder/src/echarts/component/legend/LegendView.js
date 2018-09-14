@@ -143,7 +143,7 @@ export default echarts.extendComponentView({
 
         var itemGroup = this._createItem(name, dataIndex, itemModel, legendModel, legendSymbolType, symbolType, itemAlign, color, selectMode);
 
-        itemGroup.on('click', curry(dispatchSelectAction, name, api)).on('mouseover', curry(dispatchHighlightAction, seriesModel, null, api, excludeSeriesId)).on('mouseout', curry(dispatchDownplayAction, seriesModel, null, api, excludeSeriesId));
+        itemGroup.on('click', curry(dispatchSelectAction, name, api)).on('mouseover', curry(dispatchHighlightAction, seriesModel.name, null, api, excludeSeriesId)).on('mouseout', curry(dispatchDownplayAction, seriesModel.name, null, api, excludeSeriesId));
         legendDrawnMap.set(name, true);
       } else {
         // Data legend of pie, funnel
@@ -167,8 +167,9 @@ export default echarts.extendComponentView({
             var itemGroup = this._createItem(name, dataIndex, itemModel, legendModel, legendSymbolType, null, itemAlign, color, selectMode); // FIXME: consider different series has items with the same name.
 
 
-            itemGroup.on('click', curry(dispatchSelectAction, name, api)) // FIXME Should not specify the series name
-            .on('mouseover', curry(dispatchHighlightAction, seriesModel, name, api, excludeSeriesId)).on('mouseout', curry(dispatchDownplayAction, seriesModel, name, api, excludeSeriesId));
+            itemGroup.on('click', curry(dispatchSelectAction, name, api)) // Should not specify the series name, consider legend controls
+            // more than one pie series.
+            .on('mouseover', curry(dispatchHighlightAction, null, name, api, excludeSeriesId)).on('mouseout', curry(dispatchDownplayAction, null, name, api, excludeSeriesId));
             legendDrawnMap.set(name, true);
           }
         }, this);
@@ -193,7 +194,7 @@ export default echarts.extendComponentView({
     // PENDING
 
     if (!itemIcon && symbolType // At least show one symbol, can't be all none
-    && (symbolType !== legendSymbolType || symbolType == 'none')) {
+    && (symbolType !== legendSymbolType || symbolType === 'none')) {
       var size = itemHeight * 0.8;
 
       if (symbolType === 'none') {
@@ -275,28 +276,28 @@ function dispatchSelectAction(name, api) {
   });
 }
 
-function dispatchHighlightAction(seriesModel, dataName, api, excludeSeriesId) {
+function dispatchHighlightAction(seriesName, dataName, api, excludeSeriesId) {
   // If element hover will move to a hoverLayer.
   var el = api.getZr().storage.getDisplayList()[0];
 
   if (!(el && el.useHoverLayer)) {
     api.dispatchAction({
       type: 'highlight',
-      seriesName: seriesModel.name,
+      seriesName: seriesName,
       name: dataName,
       excludeSeriesId: excludeSeriesId
     });
   }
 }
 
-function dispatchDownplayAction(seriesModel, dataName, api, excludeSeriesId) {
+function dispatchDownplayAction(seriesName, dataName, api, excludeSeriesId) {
   // If element hover will move to a hoverLayer.
   var el = api.getZr().storage.getDisplayList()[0];
 
   if (!(el && el.useHoverLayer)) {
     api.dispatchAction({
       type: 'downplay',
-      seriesName: seriesModel.name,
+      seriesName: seriesName,
       name: dataName,
       excludeSeriesId: excludeSeriesId
     });

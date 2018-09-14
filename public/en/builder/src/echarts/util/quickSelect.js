@@ -88,7 +88,7 @@ export default function (arr, left, right, nth, compareFunc) {
   if (arguments.length <= 3) {
     nth = left;
 
-    if (arguments.length == 2) {
+    if (arguments.length === 2) {
       compareFunc = defaultCompareFunc;
     } else {
       compareFunc = right;

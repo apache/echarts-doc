@@ -25,7 +25,7 @@ var instances = {}; // ZRender实例map索引
  * @type {string}
  */
 
-export var version = '4.0.4';
+export var version = '4.0.5';
 /**
  * Initializing a zrender instance
  * @param {HTMLElement} dom
@@ -268,8 +268,9 @@ ZRender.prototype = {
    */
   addHover: function (el, style) {
     if (this.painter.addHover) {
-      this.painter.addHover(el, style);
+      var elMirror = this.painter.addHover(el, style);
       this.refreshHover();
+      return elMirror;
     }
   },
 

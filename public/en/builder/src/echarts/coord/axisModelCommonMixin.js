@@ -16,8 +16,8 @@
 * specific language governing permissions and limitations
 * under the License.
 */
-import * as zrUtil from 'zrender/src/core/util';
-import * as axisHelper from './axisHelper';
+import * as zrUtil from 'zrender/src/core/util'; // import * as axisHelper from './axisHelper';
+
 export default {
   /**
    * @param {boolean} origin

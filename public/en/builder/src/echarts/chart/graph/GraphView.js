@@ -120,7 +120,7 @@ export default echarts.extendChartView({
       var itemModel = data.getItemModel(idx); // Update draggable
 
       el.off('drag').off('dragend');
-      var draggable = data.getItemModel(idx).get('draggable');
+      var draggable = itemModel.get('draggable');
 
       if (draggable) {
         el.on('drag', function () {
@@ -295,22 +295,22 @@ export default echarts.extendChartView({
     controller.enable(seriesModel.get('roam'));
     controllerHost.zoomLimit = seriesModel.get('scaleLimit');
     controllerHost.zoom = seriesModel.coordinateSystem.getZoom();
-    controller.off('pan').off('zoom').on('pan', function (dx, dy) {
-      roamHelper.updateViewOnPan(controllerHost, dx, dy);
+    controller.off('pan').off('zoom').on('pan', function (e) {
+      roamHelper.updateViewOnPan(controllerHost, e.dx, e.dy);
       api.dispatchAction({
         seriesId: seriesModel.id,
         type: 'graphRoam',
-        dx: dx,
-        dy: dy
+        dx: e.dx,
+        dy: e.dy
       });
-    }).on('zoom', function (zoom, mouseX, mouseY) {
-      roamHelper.updateViewOnZoom(controllerHost, zoom, mouseX, mouseY);
+    }).on('zoom', function (e) {
+      roamHelper.updateViewOnZoom(controllerHost, e.scale, e.originX, e.originY);
       api.dispatchAction({
         seriesId: seriesModel.id,
         type: 'graphRoam',
-        zoom: zoom,
-        originX: mouseX,
-        originY: mouseY
+        zoom: e.scale,
+        originX: e.originX,
+        originY: e.originY
       });
 
       this._updateNodeAndLinkScale();

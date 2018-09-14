@@ -16,6 +16,8 @@
 * specific language governing permissions and limitations
 * under the License.
 */
+
+/* global Uint32Array, Float64Array, Float32Array */
 import { __DEV__ } from '../../config';
 import SeriesModel from '../../model/Series';
 import List from '../../data/List';

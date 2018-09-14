@@ -2,8 +2,31 @@ import Clip from './Clip';
 import { isArrayLike } from '../core/util';
 import * as color from '../tool/color';
 var arraySlice = Array.prototype.slice;
-export function createTrackClip(target, getter, setter, easing, loop, delay, ondestroy, keyframes, propName, forceAnimate) {
+/**
+ * @param {Object} target
+ * @param {string} propName
+ * @param {Array.<Object>} keyframes
+ *        [{
+ *            time: number,
+ *            value: number | color string | Array.<number> | Array.<Array.<number>>
+ *        }, ...]
+ *        [Caveat]:
+ *        (1) The order should ensured by time.
+ *        (2) If `value` is `Array`, it must not be shared outside (espaciall el.shape, el.style),
+ *        in case that it be modified outside and cause incorrect interpolate result.
+ * @param {string} easing
+ * @param {boolean} [delay=false]
+ * @param {boolean} [loop=false]
+ * @param {boolean} [forceAnimate=false]
+ * @param {Function} [getter=defaultGetter]
+ * @param {Function} [setter=defaultSetter]
+ * @return {module:zrender/animation/Clip} clip
+ */
+
+export function createTrackClip(target, propName, keyframes, easing, delay, loop, forceAnimate, getter, setter) {
   var useSpline = easing === 'spline';
+  getter = getter || defaultGetter;
+  setter = setter || defaultSetter;
   var trackLen = keyframes.length;
 
   if (!trackLen) {
@@ -17,11 +40,7 @@ export function createTrackClip(target, getter, setter, easing, loop, delay, ond
   var isValueString = false; // For vertices morphing
 
   var arrDim = isValueArray ? getArrayDim(keyframes) : 0;
-  var trackMaxTime; // Sort keyframe as ascending
-
-  keyframes.sort(function (a, b) {
-    return a.time - b.time;
-  });
+  var trackMaxTime;
   trackMaxTime = keyframes[trackLen - 1].time; // Percents of each keyframe
 
   var kfPercents = []; // Value of each keyframe
@@ -41,7 +60,7 @@ export function createTrackClip(target, getter, setter, easing, loop, delay, ond
 
     prevValue = value; // Try converting a string to a color array
 
-    if (typeof value == 'string') {
+    if (typeof value === 'string') {
       var colorArray = color.parse(value);
 
       if (colorArray) {
@@ -87,7 +106,7 @@ export function createTrackClip(target, getter, setter, easing, loop, delay, ond
     var rgba = [0, 0, 0, 0];
   }
 
-  var onframe = function (target, percent) {
+  function hanleFrame(target, percent) {
     // Find the range keyframes
     // kf1-----kf2---------current--------kf3
     // find kf2 and kf3 and do interpolation
@@ -167,18 +186,21 @@ export function createTrackClip(target, getter, setter, easing, loop, delay, ond
           value = interpolateNumber(kfValues[frame], kfValues[frame + 1], w);
         }
 
+        if (target.aaaa != null) {
+          console.log(target.uuid, value, propName);
+        }
+
         setter(target, propName, value);
       }
     }
-  };
+  }
 
   var clip = new Clip({
     target: target,
     life: trackMaxTime,
     loop: loop,
     delay: delay,
-    onframe: onframe,
-    ondestroy: ondestroy
+    onframe: hanleFrame
   });
 
   if (easing && easing !== 'spline') {
@@ -287,7 +309,7 @@ function fillArr(arr0, arr1, arrDim) {
 function catmullRomInterpolateArray(p0, p1, p2, p3, t, t2, t3, out, arrDim) {
   var len = p0.length;
 
-  if (arrDim == 1) {
+  if (arrDim === 1) {
     for (var i = 0; i < len; i++) {
       out[i] = catmullRomInterpolate(p0[i], p1[i], p2[i], p3[i], t, t2, t3);
     }
@@ -353,7 +375,7 @@ function interpolateString(p0, p1, percent) {
 function interpolateArray(p0, p1, percent, out, arrDim) {
   var len = p0.length;
 
-  if (arrDim == 1) {
+  if (arrDim === 1) {
     for (var i = 0; i < len; i++) {
       out[i] = interpolateNumber(p0[i], p1[i], percent);
     }
@@ -373,4 +395,30 @@ function rgba2String(rgba) {
   rgba[1] = Math.floor(rgba[1]);
   rgba[2] = Math.floor(rgba[2]);
   return 'rgba(' + rgba.join(',') + ')';
+}
+
+export function cloneFrameValue(value) {
+  if (isArrayLike(value)) {
+    var len = value.length;
+
+    if (isArrayLike(value[0])) {
+      var ret = [];
+
+      for (var i = 0; i < len; i++) {
+        ret.push(arraySlice.call(value[i]));
+      }
+
+      return ret;
+    }
+
+    return arraySlice.call(value);
+  }
+
+  return value;
+}
+export function defaultGetter(target, key) {
+  return target[key];
+}
+export function defaultSetter(target, key, value) {
+  target[key] = value;
 }

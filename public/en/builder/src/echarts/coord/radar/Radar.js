@@ -66,6 +66,12 @@ function Radar(radarModel, ecModel, api) {
    * @readOnly
    */
 
+  this.r0;
+  /**
+   * @type {number}
+   * @readOnly
+   */
+
   this.startAngle;
 }
 
@@ -120,10 +126,18 @@ Radar.prototype.resize = function (radarModel, api) {
   var viewSize = Math.min(viewWidth, viewHeight) / 2;
   this.cx = numberUtil.parsePercent(center[0], viewWidth);
   this.cy = numberUtil.parsePercent(center[1], viewHeight);
-  this.startAngle = radarModel.get('startAngle') * Math.PI / 180;
-  this.r = numberUtil.parsePercent(radarModel.get('radius'), viewSize);
+  this.startAngle = radarModel.get('startAngle') * Math.PI / 180; // radius may be single value like `20`, `'80%'`, or array like `[10, '80%']`
+
+  var radius = radarModel.get('radius');
+
+  if (typeof radius === 'string' || typeof radius === 'number') {
+    radius = [0, radius];
+  }
+
+  this.r0 = numberUtil.parsePercent(radius[0], viewSize);
+  this.r = numberUtil.parsePercent(radius[1], viewSize);
   zrUtil.each(this._indicatorAxes, function (indicatorAxis, idx) {
-    indicatorAxis.setExtent(0, this.r);
+    indicatorAxis.setExtent(this.r0, this.r);
     var angle = this.startAngle + idx * Math.PI * 2 / this._indicatorAxes.length; // Normalize to [-PI, PI]
 
     angle = Math.atan2(Math.sin(angle), Math.cos(angle));

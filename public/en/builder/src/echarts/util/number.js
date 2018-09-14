@@ -277,7 +277,11 @@ export function remRadian(radian) {
 export function isRadianAroundZero(val) {
   return val > -RADIAN_EPSILON && val < RADIAN_EPSILON;
 }
+/* eslint-disable */
+
 var TIME_REG = /^(?:(\d{4})(?:[-\/](\d{1,2})(?:[-\/](\d{1,2})(?:[T ](\d{1,2})(?::(\d\d)(?::(\d\d)(?:[.,](\d+))?)?)?(Z|[\+\-]\d\d:?\d\d)?)?)?)?)?$/; // jshint ignore:line
+
+/* eslint-enable */
 
 /**
  * @param {string|Date|number} value These values can be accepted:

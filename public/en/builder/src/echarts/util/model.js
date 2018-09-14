@@ -17,6 +17,7 @@
 * under the License.
 */
 import * as zrUtil from 'zrender/src/core/util';
+import env from 'zrender/src/core/env';
 var each = zrUtil.each;
 var isObject = zrUtil.isObject;
 var isArray = zrUtil.isArray;
@@ -457,4 +458,12 @@ export function setAttribute(dom, key, value) {
 }
 export function getAttribute(dom, key) {
   return dom.getAttribute ? dom.getAttribute(key) : dom[key];
+}
+export function getTooltipRenderMode(renderModeOption) {
+  if (renderModeOption === 'auto') {
+    // Using html when `document` exists, use richText otherwise
+    return env.domSupported ? 'html' : 'richText';
+  } else {
+    return renderModeOption || 'html';
+  }
 }

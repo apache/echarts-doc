@@ -100,14 +100,32 @@ Path.prototype = {
       this.path.rebuildPath(ctx);
     }
 
-    hasFill && path.fill(ctx);
+    if (hasFill) {
+      if (style.fillOpacity != null) {
+        var originalGlobalAlpha = ctx.globalAlpha;
+        ctx.globalAlpha = style.fillOpacity * style.opacity;
+        path.fill(ctx);
+        ctx.globalAlpha = originalGlobalAlpha;
+      } else {
+        path.fill(ctx);
+      }
+    }
 
     if (lineDash && ctxLineDash) {
       ctx.setLineDash(lineDash);
       ctx.lineDashOffset = lineDashOffset;
     }
 
-    hasStroke && path.stroke(ctx);
+    if (hasStroke) {
+      if (style.strokeOpacity != null) {
+        var originalGlobalAlpha = ctx.globalAlpha;
+        ctx.globalAlpha = style.strokeOpacity * style.opacity;
+        path.stroke(ctx);
+        ctx.globalAlpha = originalGlobalAlpha;
+      } else {
+        path.stroke(ctx);
+      }
+    }
 
     if (lineDash && ctxLineDash) {
       // PENDING
@@ -232,7 +250,7 @@ Path.prototype = {
       this._rect = null;
     }
 
-    this.__dirty = true;
+    this.__dirty = this.__dirtyText = true;
     this.__zr && this.__zr.refresh(); // Used as a clipping path
 
     if (this.__clipTarget) {

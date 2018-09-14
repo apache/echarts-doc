@@ -25,7 +25,7 @@ import * as bbox from 'zrender/src/core/bbox';
 import * as vec2 from 'zrender/src/core/vector';
 import * as polygonContain from 'zrender/src/contain/polygon';
 /**
- * @param {string} name
+ * @param {string|Region} name
  * @param {Array} geometries
  * @param {Array.<number>} cp
  */
@@ -172,6 +172,14 @@ Region.prototype = {
     rect.copy(target); // Update center
 
     this.center = [rect.x + rect.width / 2, rect.y + rect.height / 2];
+  },
+  cloneShallow: function (name) {
+    name == null && (name = this.name);
+    var newRegion = new Region(name, this.geometries, this.center);
+    newRegion._rect = this._rect;
+    newRegion.transformTo = null; // Simply avoid to be called.
+
+    return newRegion;
   }
 };
 export default Region;

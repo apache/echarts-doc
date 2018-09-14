@@ -308,12 +308,15 @@ AxisProxy.prototype = {
     // }
     // TODO
     // filterMode 'weakFilter' and 'empty' is not optimized for huge data yet.
-    // Process series data
 
 
     each(seriesModels, function (seriesModel) {
       var seriesData = seriesModel.getData();
       var dataDims = seriesData.mapDimension(axisDim, true);
+
+      if (!dataDims.length) {
+        return;
+      }
 
       if (filterMode === 'weakFilter') {
         seriesData.filterSelf(function (dataIndex) {

@@ -190,7 +190,13 @@ TooltipContent.prototype = {
     var el = this.el;
     el.style.cssText = gCssText + assembleCssText(tooltipModel) // http://stackoverflow.com/questions/21125587/css3-transition-not-working-in-chrome-anymore
     + ';left:' + this._x + 'px;top:' + this._y + 'px;' + (tooltipModel.get('extraCssText') || '');
-    el.style.display = el.innerHTML ? 'block' : 'none';
+    el.style.display = el.innerHTML ? 'block' : 'none'; // If mouse occsionally move over the tooltip, a mouseout event will be
+    // triggered by canvas, and cuase some unexpectable result like dragging
+    // stop, "unfocusAdjacency". Here `pointer-events: none` is used to solve
+    // it. Although it is not suppored by IE8~IE10, fortunately it is a rare
+    // scenario.
+
+    el.style.pointerEvents = this._enterable ? 'auto' : 'none';
     this._show = true;
   },
   setContent: function (content) {
@@ -239,6 +245,25 @@ TooltipContent.prototype = {
   },
   isShow: function () {
     return this._show;
+  },
+  getOuterSize: function () {
+    var width = this.el.clientWidth;
+    var height = this.el.clientHeight; // Consider browser compatibility.
+    // IE8 does not support getComputedStyle.
+
+    if (document.defaultView && document.defaultView.getComputedStyle) {
+      var stl = document.defaultView.getComputedStyle(this.el);
+
+      if (stl) {
+        width += parseInt(stl.paddingLeft, 10) + parseInt(stl.paddingRight, 10) + parseInt(stl.borderLeftWidth, 10) + parseInt(stl.borderRightWidth, 10);
+        height += parseInt(stl.paddingTop, 10) + parseInt(stl.paddingBottom, 10) + parseInt(stl.borderTopWidth, 10) + parseInt(stl.borderBottomWidth, 10);
+      }
+    }
+
+    return {
+      width: width,
+      height: height
+    };
   }
 };
 export default TooltipContent;

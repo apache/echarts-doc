@@ -27,7 +27,7 @@ import { getDimensionTypeByAxis } from '../../data/helper/dimensionHelper';
 import List from '../../data/List';
 import * as zrUtil from 'zrender/src/core/util';
 import { encodeHTML } from '../../util/format';
-import nest from '../../util/array/nest';
+import nest from '../../util/nest';
 var DATA_NAME_INDEX = 2;
 var ThemeRiverSeries = SeriesModel.extend({
   type: 'series.themeRiver',
@@ -43,6 +43,7 @@ var ThemeRiverSeries = SeriesModel.extend({
    * @override
    */
   init: function (option) {
+    // eslint-disable-next-line
     ThemeRiverSeries.superApply(this, 'init', arguments); // Put this function here is for the sake of consistency of code style.
     // Enable legend selection for each data item
     // Use a function instead of direct access because data reference may changed

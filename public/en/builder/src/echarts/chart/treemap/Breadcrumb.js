@@ -151,6 +151,7 @@ function packEventData(el, seriesModel, itemNode) {
   el.eventData = {
     componentType: 'series',
     componentSubType: 'treemap',
+    componentIndex: seriesModel.componentIndex,
     seriesIndex: seriesModel.componentIndex,
     seriesName: seriesModel.name,
     seriesType: 'treemap',

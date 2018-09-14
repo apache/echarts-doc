@@ -48,7 +48,7 @@ export function createOrUpdateImage(newImageOrSrc, image, hostEl, cb, cbPayload)
       !isImageReady(image) && cachedImgObj.pending.push(pendingWrap);
     } else {
       !image && (image = new Image());
-      image.onload = imageOnLoad;
+      image.onload = image.onerror = imageOnLoad;
       globalImageCache.put(newImageOrSrc, image.__cachedImgObj = {
         image: image,
         pending: [pendingWrap]
@@ -65,7 +65,7 @@ export function createOrUpdateImage(newImageOrSrc, image, hostEl, cb, cbPayload)
 
 function imageOnLoad() {
   var cachedImgObj = this.__cachedImgObj;
-  this.onload = this.__cachedImgObj = null;
+  this.onload = this.onerror = this.__cachedImgObj = null;
 
   for (var i = 0; i < cachedImgObj.pending.length; i++) {
     var pendingWrap = cachedImgObj.pending[i];

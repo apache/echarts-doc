@@ -16,7 +16,6 @@
 * specific language governing permissions and limitations
 * under the License.
 */
-import * as zrUtil from 'zrender/src/core/util';
 var coordsOffsetMap = {
   '南海诸岛': [32, 80],
   // 全国
@@ -26,8 +25,8 @@ var coordsOffsetMap = {
   //'北京': [-10, 0],
   '天津': [5, 5]
 };
-export default function (geo) {
-  zrUtil.each(geo.regions, function (region) {
+export default function (mapType, region) {
+  if (mapType === 'china') {
     var coordFix = coordsOffsetMap[region.name];
 
     if (coordFix) {
@@ -35,5 +34,5 @@ export default function (geo) {
       cp[0] += coordFix[0] / 10.5;
       cp[1] += -coordFix[1] / (10.5 / 0.75);
     }
-  });
+  }
 }
