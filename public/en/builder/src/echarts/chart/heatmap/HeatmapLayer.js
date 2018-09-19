@@ -17,6 +17,8 @@
 * under the License.
 */
 
+/* global Uint8ClampedArray */
+
 /**
  * @file defines echarts Heatmap Chart
  * @author Ovilia (me@zhangwenli.com)

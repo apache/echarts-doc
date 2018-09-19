@@ -268,8 +268,21 @@ var SeriesModel = ComponentModel.extend({
    * @param {number} dataIndex
    * @param {boolean} [multipleSeries=false]
    * @param {number} [dataType]
+   * @param {string} [renderMode='html'] valid values: 'html' and 'richText'.
+   *                                     'html' is used for rendering tooltip in extra DOM form, and the result
+   *                                     string is used as DOM HTML content.
+   *                                     'richText' is used for rendering tooltip in rich text form, for those where
+   *                                     DOM operation is not supported.
+   * @return {Object} formatted tooltip with `html` and `markers`
    */
-  formatTooltip: function (dataIndex, multipleSeries, dataType) {
+  formatTooltip: function (dataIndex, multipleSeries, dataType, renderMode) {
+    var series = this;
+    renderMode = renderMode || 'html';
+    var newLine = renderMode === 'html' ? '<br/>' : '\n';
+    var isRichText = renderMode === 'richText';
+    var markers = {};
+    var markerId = 0;
+
     function formatArrayValue(value) {
       // ??? TODO refactor these logic.
       // check: category-no-encode-has-axis-data in dataset.html
@@ -291,20 +304,40 @@ var SeriesModel = ComponentModel.extend({
         }
 
         var dimType = dimInfo.type;
+        var markName = 'sub' + series.seriesIndex + 'at' + markerId;
         var dimHead = getTooltipMarker({
           color: color,
-          type: 'subItem'
+          type: 'subItem',
+          renderMode: renderMode,
+          markerId: markName
         });
-        var valStr = (vertially ? dimHead + encodeHTML(dimInfo.displayName || '-') + ': ' : '') + // FIXME should not format time for raw data?
+        var dimHeadStr = typeof dimHead === 'string' ? dimHead : dimHead.content;
+        var valStr = (vertially ? dimHeadStr + encodeHTML(dimInfo.displayName || '-') + ': ' : '') + // FIXME should not format time for raw data?
         encodeHTML(dimType === 'ordinal' ? val + '' : dimType === 'time' ? multipleSeries ? '' : formatTime('yyyy/MM/dd hh:mm:ss', val) : addCommas(val));
         valStr && result.push(valStr);
+
+        if (isRichText) {
+          markers[markName] = color;
+          ++markerId;
+        }
       }
 
-      return (vertially ? '<br/>' : '') + result.join(vertially ? '<br/>' : ', ');
+      var newLine = vertially ? isRichText ? '\n' : '<br/>' : '';
+      var content = newLine + result.join(newLine || ', ');
+      return {
+        renderMode: renderMode,
+        content: content,
+        style: markers
+      };
     }
 
     function formatSingleValue(val) {
-      return encodeHTML(addCommas(val));
+      // return encodeHTML(addCommas(val));
+      return {
+        renderMode: renderMode,
+        content: encodeHTML(addCommas(val)),
+        style: markers
+      };
     }
 
     var data = this.getData();
@@ -321,7 +354,16 @@ var SeriesModel = ComponentModel.extend({
     color = color || 'transparent'; // Complicated rule for pretty tooltip.
 
     var formattedValue = tooltipDimLen > 1 || isValueArr && !tooltipDimLen ? formatArrayValue(value) : tooltipDimLen ? formatSingleValue(retrieveRawValue(data, dataIndex, tooltipDims[0])) : formatSingleValue(isValueArr ? value[0] : value);
-    var colorEl = getTooltipMarker(color);
+    var content = formattedValue.content;
+    var markName = series.seriesIndex + 'at' + markerId;
+    var colorEl = getTooltipMarker({
+      color: color,
+      type: 'item',
+      renderMode: renderMode,
+      markerId: markName
+    });
+    markers[markName] = color;
+    ++markerId;
     var name = data.getName(dataIndex);
     var seriesName = this.name;
 
@@ -329,8 +371,13 @@ var SeriesModel = ComponentModel.extend({
       seriesName = '';
     }
 
-    seriesName = seriesName ? encodeHTML(seriesName) + (!multipleSeries ? '<br/>' : ': ') : '';
-    return !multipleSeries ? seriesName + colorEl + (name ? encodeHTML(name) + ': ' + formattedValue : formattedValue) : colorEl + seriesName + formattedValue;
+    seriesName = seriesName ? encodeHTML(seriesName) + (!multipleSeries ? newLine : ': ') : '';
+    var colorStr = typeof colorEl === 'string' ? colorEl : colorEl.content;
+    var html = !multipleSeries ? seriesName + colorStr + (name ? encodeHTML(name) + ': ' + content : content) : colorStr + seriesName + content;
+    return {
+      html: html,
+      markers: markers
+    };
   },
 
   /**

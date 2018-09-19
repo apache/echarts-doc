@@ -16,6 +16,8 @@
 * specific language governing permissions and limitations
 * under the License.
 */
+
+/* global Float32Array */
 // TODO Batch by color
 import * as graphic from '../../util/graphic';
 import { createSymbol } from '../../util/symbol';

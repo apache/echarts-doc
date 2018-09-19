@@ -22,6 +22,10 @@ export function retrieveTargetInfo(payload, validPayloadTypes, seriesModel) {
     var root = seriesModel.getData().tree.root;
     var targetNode = payload.targetNode;
 
+    if (typeof targetNode === 'string') {
+      targetNode = root.getNodeById(targetNode);
+    }
+
     if (targetNode && root.contains(targetNode)) {
       return {
         node: targetNode

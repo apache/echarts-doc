@@ -16,14 +16,13 @@
 * specific language governing permissions and limitations
 * under the License.
 */
-import * as zrUtil from 'zrender/src/core/util';
 var geoCoordMap = {
   'Russia': [100, 60],
   'United States': [-99, 38],
   'United States of America': [-99, 38]
 };
-export default function (geo) {
-  zrUtil.each(geo.regions, function (region) {
+export default function (mapType, region) {
+  if (mapType === 'world') {
     var geoCoord = geoCoordMap[region.name];
 
     if (geoCoord) {
@@ -31,5 +30,5 @@ export default function (geo) {
       cp[0] = geoCoord[0];
       cp[1] = geoCoord[1];
     }
-  });
+  }
 }

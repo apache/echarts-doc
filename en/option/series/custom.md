@@ -135,6 +135,7 @@ The first parameter of `renderItem`, including:
     dataIndex: // {number} The index of this data item.
     dataIndexInside: // {number} The index of this data item in the current data window (see dataZoom).
     dataInsideLength: // {number} The count of data in the current data window (see dataZoom).
+    actionType: // {string} The type of action that trigger this render.
     coordSys: // coordSys is variable by different types of coordinate systems:
     coordSys: {
         type: 'cartesian2d',
@@ -164,6 +165,7 @@ The first parameter of `renderItem`, including:
         y: // {number} y of geo rect
         width: // {number} width of geo rect
         height: // {number} height of geo rect
+        zoom: // {number} zoom ratio, 1 if no zoom, 0.5 means shrink to 50%.
     },
     coordSys: {
         type: 'polar',

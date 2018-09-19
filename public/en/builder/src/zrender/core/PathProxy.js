@@ -206,7 +206,7 @@ PathProxy.prototype = {
     this.addData(CMD.A, cx, cy, r, r, startAngle, endAngle - startAngle, 0, anticlockwise ? 0 : 1);
     this._ctx && this._ctx.arc(cx, cy, r, startAngle, endAngle, anticlockwise);
     this._xi = mathCos(endAngle) * r + cx;
-    this._yi = mathSin(endAngle) * r + cx;
+    this._yi = mathSin(endAngle) * r + cy;
     return this;
   },
   // TODO

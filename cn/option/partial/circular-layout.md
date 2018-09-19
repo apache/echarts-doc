@@ -17,8 +17,10 @@ center: [400, 300]
 center: ['50%', '50%']
 ```
 
-## radius(${defaultRadiusType|default("Array")}) = ${defaultRadius}
+## radius(number|string|Array) = ${defaultRadius}
 
-${componentName}的半径，数组的第一项是内半径，第二项是外半径。
+${componentName}的半径。可以为如下类型：
 
-支持设置成百分比，相对于容器高宽中较小的一项的一半。
++ `number`：直接指定外半径值。
++ `string`：例如，`'20%'`，表示外半径为可视区尺寸（容器高宽中较小一项）的 20% 长度。
++ `Array.<number|string>`：数组的第一项是内半径，第二项是外半径。每一项遵从上述 `number` `string` 的描述。

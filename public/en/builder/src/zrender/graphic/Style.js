@@ -2,9 +2,8 @@ import fixShadow from './helper/fixShadow';
 var STYLE_COMMON_PROPS = [['shadowBlur', 0], ['shadowOffsetX', 0], ['shadowOffsetY', 0], ['shadowColor', '#000'], ['lineCap', 'butt'], ['lineJoin', 'miter'], ['miterLimit', 10]]; // var SHADOW_PROPS = STYLE_COMMON_PROPS.slice(0, 4);
 // var LINE_PROPS = STYLE_COMMON_PROPS.slice(4);
 
-var Style = function (opts, host) {
+var Style = function (opts) {
   this.extendFrom(opts, false);
-  this.host = host;
 };
 
 function createLinearGradient(ctx, obj, rect) {
@@ -51,11 +50,6 @@ Style.prototype = {
   constructor: Style,
 
   /**
-   * @type {module:zrender/graphic/Displayable}
-   */
-  host: null,
-
-  /**
    * @type {string}
    */
   fill: '#000',
@@ -69,6 +63,16 @@ Style.prototype = {
    * @type {number}
    */
   opacity: 1,
+
+  /**
+   * @type {number}
+   */
+  fillOpacity: null,
+
+  /**
+   * @type {number}
+   */
+  strokeOpacity: null,
 
   /**
    * @type {Array.<number>}

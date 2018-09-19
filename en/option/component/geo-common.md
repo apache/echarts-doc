@@ -44,7 +44,7 @@ $.get('map/json/china.json', function (chinaJson) {
 
 ECharts uses [geoJSON](http://geojson.org/) format as map outline. Besides the methods introduced above, you can also get [geoJSON](http://geojson.org/) data through in other methods if you like and register it in ECharts. Reference to [USA Population Estimates](${galleryEditorPath}map-usa) for more information.
 
-#${prefix} roam(boolean) = false
+#${prefix} roam(boolean|string) = false
 {{ use: partial-roam }}
 
 #${prefix} center(Array)

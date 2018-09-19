@@ -17,7 +17,8 @@ if (typeof wx === 'object' && typeof wx.getSystemInfoSync === 'function') {
     // Weixin Application
     canvasSupported: true,
     svgSupported: false,
-    touchEventsSupported: true
+    touchEventsSupported: true,
+    domSupported: false
   };
 } else if (typeof document === 'undefined' && typeof self !== 'undefined') {
   // In worker
@@ -26,7 +27,8 @@ if (typeof wx === 'object' && typeof wx.getSystemInfoSync === 'function') {
     os: {},
     node: false,
     worker: true,
-    canvasSupported: true
+    canvasSupported: true,
+    domSupported: false
   };
 } else if (typeof navigator === 'undefined') {
   // In node
@@ -37,7 +39,8 @@ if (typeof wx === 'object' && typeof wx.getSystemInfoSync === 'function') {
     worker: false,
     // Assume canvas is supported
     canvasSupported: true,
-    svgSupported: true
+    svgSupported: true,
+    domSupported: false
   };
 } else {
   env = detect(navigator.userAgent);
@@ -137,8 +140,9 @@ function detect(ua) {
     // events currently. So we dont use that on other browsers unless tested sufficiently.
     // Although IE 10 supports pointer event, it use old style and is different from the
     // standard. So we exclude that. (IE 10 is hardly used on touch device)
-    && (browser.edge || browser.ie && browser.version >= 11) // passiveSupported: detectPassiveSupport()
-
+    && (browser.edge || browser.ie && browser.version >= 11),
+    // passiveSupported: detectPassiveSupport()
+    domSupported: typeof document !== 'undefined'
   };
 } // See https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md#feature-detection
 // function detectPassiveSupport() {

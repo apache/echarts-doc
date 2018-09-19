@@ -1,4 +1,43 @@
-<h2 id="v4-1-0-rc2">v4.1.0.rc2</h2>
+<h2 id="v4-2-0-rc1">v4.2.0.rc1</h2>
+<div class="time">2018-09-11</div>
+
+<ul>
+<li><p><strong>[Feature] 支持了 non-html tooltip</strong>，在一些不支持 HTML 的环境中，会有用。如微信小程序中。使用 <a href="http://echarts.baidu.com/option.html#tooltip.renderMode">tooltip.renderMode</a> 开启这个功能。</p>
+</li>
+<li><p><strong>[Feature] 鼠标/触摸事件中支持了选择器</strong>，从而能够比较方便得监听指定的组件（component）、系列（series）、数据项（data item）。参见 <a href="http://echarts.baidu.com/api.html#echartsInstance.on">chart.on</a>，新加的 <code>query</code> 参数提供了这个筛选功能。并且为 <a href="http://echarts.baidu.com/option.html#series-custom">自定义系列（custom series）</a> 和 <a href="http://echarts.baidu.com/option.html#graphic.triggerEvent">图形元素组件（graphic component）</a> 支持了鼠标/触摸事件能力，可以用 <code>query</code> 监听指定图形元素的事件。</p>
+</li>
+<li><p><strong>[Feature] 能够使用 dataZoom 实现仿浏览器的滚动条</strong>，参见 <a href="http://echarts.baidu.com/option.html#dataZoom-inside.moveOnMouseWheel">dataZoom-inside.moveOnMouseWheel</a>，以及 <a href="http://echarts.baidu.com/examples/editor.html?c=custom-gantt-flight">甘特图例子（Gantt）</a>。</p>
+</li>
+<li><p>[Feature] 在桑基图（sankey）中，当鼠标悬浮到节点或边时，支持临接节点和边的高亮。参见 <a href="http://echarts.baidu.com/option.html#series-sankey.focusNodeAdjacency">focusNodeAdjacency</a>，以及 <a href="http://echarts.baidu.com/examples/editor.html?c=sankey-product">例子</a>。</p>
+</li>
+<li><p>[Feature] 支持树图（tree）的平移和缩放（roam）。参见 <a href="http://echarts.baidu.com/option.html#series-tree.roam">series-tree.roam</a>。</p>
+</li>
+<li><p>[Feature] 支持桑基图（sankey）的纵向布局（vertical）。参见 <a href="http://echarts.baidu.com/option.html#series-sankey.orient">series-sankey.orient</a> 和 <a href="http://echarts.baidu.com/examples/editor.html?c=sankey-vertical">纵向布局桑基图例子</a>。</p>
+</li>
+<li><p>[Feature] 能够在 <a href="http://echarts.baidu.com/option.html#series-custom">自定义系列（custom series）</a> 的 <a href="http://echarts.baidu.com/option.html#series-custom.encode">encode</a> 中设置某个轴为 <code>-1</code>，意思是这个轴，以及它所对应的 dataZoom 组件，不控制这个系列数据（不用此系列计算轴的范围也不缩放过滤此系列）。参见 <a href="http://echarts.baidu.com/examples/editor.html?c=custom-gantt-flight">甘特图例子（Gantt）</a>。</p>
+</li>
+<li><p>[Feature] 支持在 <a href="http://echarts.baidu.com/option.html#series-custom">自定义系列（custom series）</a> 的 <a href="http://echarts.baidu.com/option.html#series-custom.renderItem.return_path.shape.layout">path shape</a> 中使用 <code>&#39;cover&#39;</code> 模式，从而便捷得使用 <a href="http://www.w3.org/TR/SVG/paths.html#PathData">SVG PathData</a> 创建图形形状。参见 <a href="http://echarts.baidu.com/examples/editor.html?c=custom-gantt-flight">甘特图例子（Gantt）</a>。</p>
+</li>
+<li><p>[Feature] 增加了一些 <a href="http://echarts.baidu.com/option.html#series-custom">自定义系列（custom series）</a> 的属性和参数：增加了 <a href="http://echarts.baidu.com/option.html#series-custom.renderItem.arguments.params">params.actionType</a>，能够用此参数进行一些性能优化。在 geo 坐标系中增加了 <a href="http://echarts.baidu.com/option.html#series-custom.renderItem.arguments.params">params.coordSys.zoom</a>。在图形定义中增加了 <a href="http://echarts.baidu.com/option.html#series-custom.renderItem.return_text.invisible">invisible</a> 和<a href="http://echarts.baidu.com/option.html#series-custom.renderItem.return_text.ignore">ignore</a>，能够操作图形元素的显示和隐藏。</p>
+</li>
+<li><p>[Feature] 在 <a href="http://echarts.baidu.com/option.html#radar.radius">雷达图（radar）</a> 中支持了内半径设置。参见 <a href="https://github.com/apache/incubator-echarts/issues/8717">#8717</a>。</p>
+</li>
+<li><p>[Fix] 修复了极坐标（polar）中类目轴（category axis）interval 问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/8791">#8791</a>。</p>
+</li>
+<li><p>[Fix] 不再支持在系列中设置极坐标（polar）的 center。Center 应该设置在 <a href="http://echarts.baidu.com/option.html#polar.center">polar.center</a> 中。</p>
+</li>
+<li><p>[Fix] 更新了 <a href="http://echarts.baidu.com/option.html#series-sunburst">sunburst</a> 的默认阴影样式。参见 <a href="https://github.com/apache/incubator-echarts/issues/8583">#8583</a>。</p>
+</li>
+<li><p>[Fix] 修复了 <a href="http://echarts.baidu.com/option.html#dataset">dataset</a> 中的空值问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/8395">#8395</a>。</p>
+</li>
+<li><p>[Fix] 修复了柱状图（bar）中多轴存在时柱子起点的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/8747">#8747</a>。</p>
+</li>
+<li><p>[Fix] 为了动画扩展，移除了 clipPath。参见 <a href="https://github.com/apache/incubator-echarts/issues/8994">#8994</a>。</p>
+</li>
+<li><p>[Fix] 修复了当多个 Y 轴在同一 X 轴上时，Y 轴可能重叠的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/8975">#8975</a>。</p>
+</li>
+</ul>
+<h2 id="v4-1-0">v4.1.0</h2>
 <div class="time">2018-05-02</div>
 
 <ul>
@@ -155,7 +194,7 @@
 </li>
 <li><p>[+] <strong>发布旭日图（sunburst）</strong>，高效表达带有层次结构的数据占比情况，并有良好的交互体验。参见旭日图<a href="http://echarts.baidu.com/examples/index.html#chart-type-sunburst">例子</a>和<a href="http://echarts.baidu.com/option.html#series-sunburst">文档</a>。</p>
 </li>
-<li><p>[+] <strong>新增 <a href="http://echarts.baidu.com/tutorial.html#%E6%95%B0%E6%8D%AE%E9%9B%86%EF%BC%88dataset%EF%BC%89">dataset</a> 组件</strong>，从而能够数据与样式分离，便于单独管理数据，支持数据映射到视觉配置，可以多个系列共享数据，也省去数据分割处理的步骤。</p>
+<li><p>[+] <strong>新增 <a href="http://echarts.baidu.com/tutorial.html#%E4%BD%BF%E7%94%A8%20dataset%20%E7%AE%A1%E7%90%86%E6%95%B0%E6%8D%AE">dataset</a> 组件</strong>，从而能够数据与样式分离，便于单独管理数据，支持数据映射到视觉配置，可以多个系列共享数据，也省去数据分割处理的步骤。</p>
 </li>
 <li><p>[+] <strong>支持无障碍富互联网应用规范集（WAI-ARIA，the Accessible Rich Internet Applications Suite）</strong>，致力于使得网⻚内容和网⻚应，用能够被更多残障人士访问。</p>
 </li>

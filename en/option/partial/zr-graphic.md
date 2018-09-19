@@ -83,6 +83,9 @@ Use [SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData) to describe a p
 See examples:
 [icons](${galleryEditorPath}custom-calendar-icon) and [shapes](${galleryEditorPath}custom-gantt-flight).
 
+About width/height, cover/contain, see
+[layout](~${optionPath}.${hostName}${symbolVisit}path.shape.layout).
+
 
 {{ use: partial-graphic-cpt-common-props(
     type='path',
@@ -105,6 +108,9 @@ For example, `'M0,0 L0,-20 L30,-20 C42,-20 38,-1 50,-1 L70,-1 L70,0 Z'`。
 If [width](~${optionPath}.${hostName}${symbolVisit}path.shape.width), [height](~${optionPath}.${hostName}${symbolVisit}path.shape.height), [x](~${optionPath}.${hostName}${symbolVisit}path.shape.x) and [y](~${optionPath}.${hostName}${symbolVisit}path.shape.y) specified, `pathData` will be transformed to fit the defined rect. If they are not specified, do not do that.
 
 [layout](~${optionPath}.${hostName}${symbolVisit}path.shape.layout) can be used to specify the transform strategy.
+
+See examples:
+[icons](${galleryEditorPath}custom-calendar-icon) and [shapes](${galleryEditorPath}custom-gantt-flight).
 
 
 ###${prefix} d(string)

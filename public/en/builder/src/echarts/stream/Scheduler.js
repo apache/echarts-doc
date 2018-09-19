@@ -20,7 +20,7 @@
 /**
  * @module echarts/stream/Scheduler
  */
-import { each, map, isArray, isFunction, createHashMap, noop } from 'zrender/src/core/util';
+import { each, map, isFunction, createHashMap, noop } from 'zrender/src/core/util';
 import { createTask } from './task';
 import { getUID } from '../util/component';
 import GlobalModel from '../model/Global';
@@ -517,10 +517,13 @@ ecModelMock.eachComponent = function (cond) {
 };
 
 function mockMethods(target, Clz) {
+  /* eslint-disable */
   for (var name in Clz.prototype) {
     // Do not use hasOwnProperty
     target[name] = noop;
   }
+  /* eslint-enable */
+
 }
 
 export default Scheduler;

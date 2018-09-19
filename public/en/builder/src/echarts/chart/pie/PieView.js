@@ -285,6 +285,9 @@ var PieView = ChartView.extend({
       var r = Math.max(api.getWidth(), api.getHeight()) / 2;
       var removeClipPath = zrUtil.bind(group.removeClipPath, group);
       group.setClipPath(this._createClipPath(shape.cx, shape.cy, r, shape.startAngle, shape.clockwise, removeClipPath, seriesModel));
+    } else {
+      // clipPath is used in first-time animation, so remove it when otherwise. See: #8994
+      group.removeClipPath();
     }
 
     this._data = data;

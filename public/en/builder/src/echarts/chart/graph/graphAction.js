@@ -18,6 +18,7 @@
 */
 import * as echarts from '../../echarts';
 import { updateCenterAndZoom } from '../../action/roamHelper';
+import '../helper/focusNodeAdjacencyAction';
 var actionInfo = {
   type: 'graphRoam',
   event: 'graphRoam',
@@ -44,28 +45,3 @@ echarts.registerAction(actionInfo, function (payload, ecModel) {
     seriesModel.setZoom && seriesModel.setZoom(res.zoom);
   });
 });
-/**
- * @payload
- * @property {number} [seriesIndex]
- * @property {string} [seriesId]
- * @property {string} [seriesName]
- * @property {number} [dataIndex]
- */
-
-echarts.registerAction({
-  type: 'focusNodeAdjacency',
-  event: 'focusNodeAdjacency',
-  update: 'series.graph:focusNodeAdjacency'
-}, function () {});
-/**
- * @payload
- * @property {number} [seriesIndex]
- * @property {string} [seriesId]
- * @property {string} [seriesName]
- */
-
-echarts.registerAction({
-  type: 'unfocusNodeAdjacency',
-  event: 'unfocusNodeAdjacency',
-  update: 'series.graph:unfocusNodeAdjacency'
-}, function () {});

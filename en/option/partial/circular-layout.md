@@ -17,8 +17,10 @@ center: [400, 300]
 center: ['50%', '50%']
 ```
 
-## radius(${defaultRadiusType|default("Array")}) = ${defaultRadius}
+## radius(number|string|Array) = ${defaultRadius}
 
-Radius of ${componentName}, the first of which is inner radius, and the second is outer radius.
+Radius of ${componentName}. Value can be:
 
-Percentage is supported. When set in percentage, it's relative to the smaller size between height and width of the container. 
++ `number`: Specify outside radius directly.
++ `string`: For example, `'20%'`, means that the outside radius is 20% of the viewport size (the little one between width and height of the chart container).
++ `Array.<number|string>`: The first item specifies the inside radius, and the second item specifies the outside radius. Each item follows the definitions above.

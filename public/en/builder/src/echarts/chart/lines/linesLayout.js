@@ -16,6 +16,8 @@
 * specific language governing permissions and limitations
 * under the License.
 */
+
+/* global Float32Array */
 import createRenderPlanner from '../helper/createRenderPlanner';
 export default {
   seriesType: 'lines',

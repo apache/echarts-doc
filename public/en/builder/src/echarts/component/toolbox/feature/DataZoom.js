@@ -261,12 +261,12 @@ echarts.registerPreprocessor(function (option) {
     var axisIndicesName = axisName + 'Index';
     var givenAxisIndices = dataZoomOpt[axisIndicesName];
 
-    if (givenAxisIndices != null && givenAxisIndices != 'all' && !zrUtil.isArray(givenAxisIndices)) {
+    if (givenAxisIndices != null && givenAxisIndices !== 'all' && !zrUtil.isArray(givenAxisIndices)) {
       givenAxisIndices = givenAxisIndices === false || givenAxisIndices === 'none' ? [] : [givenAxisIndices];
     }
 
     forEachComponent(axisName, function (axisOpt, axisIndex) {
-      if (givenAxisIndices != null && givenAxisIndices != 'all' && zrUtil.indexOf(givenAxisIndices, axisIndex) === -1) {
+      if (givenAxisIndices != null && givenAxisIndices !== 'all' && zrUtil.indexOf(givenAxisIndices, axisIndex) === -1) {
         return;
       }
 

@@ -175,9 +175,20 @@ option = {
 
 
 <br>
-<h2>（四）其他注意事项</h2>
+<br>
+<br>
 
-（1）与 [dataZoom](http://echarts.baidu.com/option.html#dataZoom) 结合使用的时候，常常使用会设置 [dataZoom.filterMode](http://echarts.baidu.com/option.html#dataZoom.filterMode) 为 'weakFilter'。这个设置的意思是：当 `dataItem` 部分超出坐标系边界的时候，`dataItem` 不会整体被过滤掉。例如：
+---
+
+上面，一个简单的 custome series 例子完成了。
+
+下面介绍几个其他细节要点。
+
+
+<br>
+<h2>（四）超出坐标系范围的截取</h2>
+
+与 [dataZoom](http://echarts.baidu.com/option.html#dataZoom) 结合使用的时候，常常使用会设置 [dataZoom.filterMode](http://echarts.baidu.com/option.html#dataZoom.filterMode) 为 'weakFilter'。这个设置的意思是：当 `dataItem` 部分超出坐标系边界的时候，`dataItem` 不会整体被过滤掉。例如：
 
 ```js
 option = {
@@ -208,9 +219,12 @@ option = {
 
 在这个例子中，『维度1』和『维度2』对应到 X 轴，`dataZoom` 组件控制 X 轴的缩放。假如在缩放的过程中，某个 dataItem 的『维度1』超出了 X 轴的范围，『维度2』还在 X 轴的范围中，那么只要设置 `dataZoom.filterMode = 'weakFilter'`，这个 dataItem 就不会被过滤掉，从而还能够使用 `renderItem` 绘制图形（可以使用上面提到过的 `echarts.graphic.clipRectByRect` 把图形绘制成被坐标系剪裁过的样子）。参见上面提到过的例子：[Profile](${galleryEditorPath}custom-profile)
 
-<br>
 
-（2）另外，开发者如果使用到的话应注意，[renderItem.arguments.params](http://echarts.baidu.com/option.html#series-custom.renderItem.arguments.params) 中的 `dataIndex` 和 `dataIndexInside` 是有区别的：
+
+<br>
+<h2>（五）关于 dataIndex</h2>
+
+开发者如果使用到的话应注意，[renderItem.arguments.params](http://echarts.baidu.com/option.html#series-custom.renderItem.arguments.params) 中的 `dataIndex` 和 `dataIndexInside` 是有区别的：
 
 + `dataIndex` 指的 `dataItem` 在原始数据中的 index。
 + `dataIndexInside` 指的是 `dataItem` 在当前数据窗口（参见 [dataZoom](http://echarts.baidu.com/option.html#dataZoom)）中的 index。
@@ -218,9 +232,10 @@ option = {
 [renderItem.arguments.api](http://echarts.baidu.com/option.html#series-custom.renderItem.arguments.api) 中使用的参数都是 `dataIndexInside` 而非 `dataIndex`，因为从 `dataIndex` 转换成 `dataIndexInside` 需要时间开销。
 
 
-<br>
 
-（3）Event listener
+<br>
+<h2>（六）事件监听</h2>
+
 
 ```js
 chart.setOption({
@@ -250,6 +265,15 @@ chart.on('click', {element: 'aaa'}, function (params) {
     console.log(params.info);
 });
 ```
+
+
+
+<br>
+<h2>（七）自定义矢量图形</h2>
+
+自定义系列能支持使用 [SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData) 定义矢量路径。从而可以使用矢量图工具中做出的图形。参见：[path](http://echarts.baidu.com/option.html#series-custom.renderItem.return_path)，以及例子：[icons](http://echarts.baidu.com/examples/editor.html?c=custom-calendar-icon) 和 [shapes](http://echarts.baidu.com/examples/editor.html?c=custom-gantt-flight)。
+
+
 
 
 <br>

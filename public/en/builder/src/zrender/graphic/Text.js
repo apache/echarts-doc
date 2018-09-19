@@ -25,16 +25,17 @@ Text.prototype = {
     style.fill = style.stroke = style.shadowBlur = style.shadowColor = style.shadowOffsetX = style.shadowOffsetY = null;
     var text = style.text; // Convert to string
 
-    text != null && (text += ''); // Always bind style
-
-    style.bind(ctx, this, prevEl);
+    text != null && (text += ''); // Do not apply style.bind in Text node. Because the real bind job
+    // is in textHelper.renderText, and performance of text render should
+    // be considered.
+    // style.bind(ctx, this, prevEl);
 
     if (!textHelper.needDrawText(text, style)) {
       return;
     }
 
     this.setTransform(ctx);
-    textHelper.renderText(this, ctx, text, style);
+    textHelper.renderText(this, ctx, text, style, null, prevEl);
     this.restoreTransform(ctx);
   },
   getBoundingRect: function () {

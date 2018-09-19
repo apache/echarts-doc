@@ -208,8 +208,7 @@ export function calculateCategoryInterval(axis) {
 
   for (; tickValue <= ordinalExtent[1]; tickValue += step) {
     var width = 0;
-    var height = 0; // Polar is also calculated in assumptive linear layout here.
-    // Not precise, do not consider align and vertical align
+    var height = 0; // Not precise, do not consider align and vertical align
     // and each distance from axis line yet.
 
     var rect = textContain.getBoundingRect(labelFormatter(tickValue), params.font, 'center', 'top'); // Magic number

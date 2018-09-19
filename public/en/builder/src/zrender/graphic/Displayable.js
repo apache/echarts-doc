@@ -133,8 +133,12 @@ Displayable.prototype = {
    * @type {boolean}
    */
   incremental: false,
-  // inplace is used with incremental
-  inplace: false,
+
+  /**
+   * Scale ratio for global scale.
+   * @type {boolean}
+   */
+  globalScaleRatio: 1,
   beforeBrush: function (ctx) {},
   afterBrush: function (ctx) {},
 
@@ -189,7 +193,7 @@ Displayable.prototype = {
    * Mark displayable element dirty and refresh next frame
    */
   dirty: function () {
-    this.__dirty = true;
+    this.__dirty = this.__dirtyText = true;
     this._rect = null;
     this.__zr && this.__zr.refresh();
   },

@@ -16,6 +16,8 @@
 * specific language governing permissions and limitations
 * under the License.
 */
+
+/* global Uint8Array */
 import env from 'zrender/src/core/env';
 import lang from '../../../lang';
 import * as featureManager from '../featureManager';

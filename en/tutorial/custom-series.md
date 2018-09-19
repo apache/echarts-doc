@@ -179,11 +179,20 @@ option = {
 };
 ```
 
+<br>
+<br>
+<br>
+
+
+---
+
+Several other issues about `custom series` are introduced below.
+
 
 <br>
-<h2>(IV) Other issues</h2>
+<h2>(IV) Shape clipping when overflow the coordinates area</h2>
 
-(1) When use `custom series` with [dataZoom](https://ecomfe.github.io/echarts-doc/public/en/option.html#dataZoom), [dataZoom.filterMode](https://ecomfe.github.io/echarts-doc/public/en/option.html#dataZoom.filterMode) usually be set as `'weakFilter'`, which prevent `dataItem` from being filtered when only part of its dimensions are out of the current data window. For example:
+When use `custom series` with [dataZoom](https://ecomfe.github.io/echarts-doc/public/en/option.html#dataZoom), [dataZoom.filterMode](https://ecomfe.github.io/echarts-doc/public/en/option.html#dataZoom.filterMode) usually be set as `'weakFilter'`, which prevent `dataItem` from being filtered when only part of its dimensions are out of the current data window. For example:
 
 
 ```js
@@ -217,16 +226,23 @@ See the example mentioned above [Profile](${galleryEditorPath}custom-profile).
 
 <br>
 
-(2) Developers had better notice that in [renderItem.arguments.params](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.renderItem.arguments.params) `dataIndexInside` and `dataIndex` is different:
+
+<br>
+<h2>(V) About dataIndex</h2>
+
+
+Developers had better notice that in [renderItem.arguments.params](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.renderItem.arguments.params) `dataIndexInside` and `dataIndex` is different:
+
 
 + `dataIndex` is the index of a `dataItem` in the original data.
 + `dataIndexInside` is the index of a `dataItem` in the current data window (see [dataZoom](https://ecomfe.github.io/echarts-doc/public/en/option.html#dataZoom).
 
 [renderItem.arguments.api](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.renderItem.arguments.api) uses `dataIndexInside` as the input parameter but not `dataIndex`, because conversion from `dataIndex` to `dataIndexInside` is time-consuming.
 
-<br>
 
-(3) Event listener
+<br>
+<h2>(VI) Event listener</h2>
+
 
 ```js
 chart.setOption({
@@ -258,6 +274,16 @@ chart.on('click', {element: 'aaa'}, function (params) {
     console.log(params.info);
 });
 ```
+
+
+<br>
+<h2>(VII) Custom vector shapes</h2>
+
+
+[SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData) is supported, which enables to use shapes that are created in vector tool. See [path](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.renderItem.return_path), and examples: [icons](https://ecomfe.github.io/echarts-examples/public/index.html?c=custom-calendar-icon), [shapes](https://ecomfe.github.io/echarts-examples/public/index.html?c=custom-gantt-flight).
+
+
+
 
 <br>
 

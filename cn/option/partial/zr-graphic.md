@@ -76,6 +76,7 @@ group 是唯一的可以有子节点的容器。group 可以用来整体定位�
 参见例子：
 [icons](${galleryEditorPath}custom-calendar-icon) 和 [shapes](${galleryEditorPath}custom-gantt-flight)。
 
+关于制定尺寸、拉伸还是平铺，参见 [layout](~${optionPath}.${hostName}${symbolVisit}path.shape.layout)。
 
 
 {{ use: partial-graphic-cpt-common-props(
@@ -99,6 +100,9 @@ group 是唯一的可以有子节点的容器。group 可以用来整体定位�
 如果指定了 [width](~${optionPath}.${hostName}${symbolVisit}path.shape.width)、[height](~${optionPath}.${hostName}${symbolVisit}path.shape.height)、[x](~${optionPath}.${hostName}${symbolVisit}path.shape.x)、[y](~${optionPath}.${hostName}${symbolVisit}path.shape.y)，则会根据他们定义的矩形，缩放 PathData。如果没有指定这些，就不会缩放。
 
 可使用 [layout](~${optionPath}.${hostName}${symbolVisit}path.shape.layout) 指定缩放策略。
+
+参见例子：
+[icons](${galleryEditorPath}custom-calendar-icon) 和 [shapes](${galleryEditorPath}custom-gantt-flight)。
 
 
 ###${prefix} d(string)

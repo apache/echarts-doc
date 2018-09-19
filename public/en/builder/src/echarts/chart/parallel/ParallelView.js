@@ -17,7 +17,6 @@
 * under the License.
 */
 import * as graphic from '../../util/graphic';
-import * as zrUtil from 'zrender/src/core/util';
 import ChartView from '../../view/Chart';
 var DEFAULT_SMOOTH = 0.3;
 var ParallelView = ChartView.extend({

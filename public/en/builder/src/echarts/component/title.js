@@ -116,8 +116,9 @@ echarts.extendComponentView({
     });
     var link = titleModel.get('link');
     var sublink = titleModel.get('sublink');
-    textEl.silent = !link;
-    subTextEl.silent = !sublink;
+    var triggerEvent = titleModel.get('triggerEvent', true);
+    textEl.silent = !link && !triggerEvent;
+    subTextEl.silent = !sublink && !triggerEvent;
 
     if (link) {
       textEl.on('click', function () {
@@ -131,6 +132,10 @@ echarts.extendComponentView({
       });
     }
 
+    textEl.eventData = subTextEl.eventData = triggerEvent ? {
+      componentType: 'title',
+      componentIndex: titleModel.componentIndex
+    } : null;
     group.add(textEl);
     subText && group.add(subTextEl); // If no subText, but add subTextEl, there will be an empty line.
 

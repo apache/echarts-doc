@@ -14,8 +14,7 @@ Here is a custom example of radar component.
 {{use: partial-component-id(prefix="#")}}
 
 {{use: component-circular-layout(
-    defaultRadius="75%",
-    defaultRadiusType="number|string"
+    defaultRadius="75%"
 )}}
 
 ## startAngle(number) = 90
@@ -68,19 +67,6 @@ Whether to prevent calculating the scaling relative to zero. If it is set to be 
 
 {{ use: partial-axis-common-axis-line(
     prefix="#"
-)}}
-
-{{ use: partial-axis-common-axis-tick(
-    prefix="#",
-    defaultShow=false,
-    hasLabelInterval=false
-)}}
-
-{{ use: partial-axis-common-axis-label(
-    prefix="#",
-    defaultShow=false,
-    hideShow=true,
-    hasLabelInterval=false
 )}}
 
 {{ use: partial-axis-common-split-line(

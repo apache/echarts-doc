@@ -58,7 +58,7 @@ function attrXLink(el, key, val) {
   el.setAttributeNS('http://www.w3.org/1999/xlink', key, val);
 }
 
-function bindStyle(svgEl, style, isText) {
+function bindStyle(svgEl, style, isText, el) {
   if (pathHasFill(style, isText)) {
     var fill = isText ? style.textFill : style.fill;
     fill = fill === 'transparent' ? NONE : fill;
@@ -83,7 +83,7 @@ function bindStyle(svgEl, style, isText) {
     }
 
     attr(svgEl, 'fill', fill);
-    attr(svgEl, 'fill-opacity', style.opacity);
+    attr(svgEl, 'fill-opacity', style.fillOpacity != null ? style.fillOpacity * style.opacity : style.opacity);
   } else {
     attr(svgEl, 'fill', NONE);
   }
@@ -93,11 +93,11 @@ function bindStyle(svgEl, style, isText) {
     stroke = stroke === 'transparent' ? NONE : stroke;
     attr(svgEl, 'stroke', stroke);
     var strokeWidth = isText ? style.textStrokeWidth : style.lineWidth;
-    var strokeScale = !isText && style.strokeNoScale ? style.host.getLineScale() : 1;
+    var strokeScale = !isText && style.strokeNoScale ? el.getLineScale() : 1;
     attr(svgEl, 'stroke-width', strokeWidth / strokeScale); // stroke then fill for text; fill then stroke for others
 
     attr(svgEl, 'paint-order', isText ? 'stroke' : 'fill');
-    attr(svgEl, 'stroke-opacity', style.opacity);
+    attr(svgEl, 'stroke-opacity', style.strokeOpacity != null ? style.strokeOpacity : style.opacity);
     var lineDash = style.lineDash;
 
     if (lineDash) {
@@ -257,7 +257,7 @@ svgPath.brush = function (el) {
     }
   }
 
-  bindStyle(svgEl, style);
+  bindStyle(svgEl, style, false, el);
   setTransform(svgEl, el.transform);
 
   if (style.text != null) {
@@ -376,7 +376,7 @@ var svgTextDrawRectText = function (el, rect, textRect) {
 
   attr(textSvgEl, 'x', x);
   attr(textSvgEl, 'y', y);
-  bindStyle(textSvgEl, style, true);
+  bindStyle(textSvgEl, style, true, el);
 
   if (el instanceof Text || el.style.transformText) {
     // Transform text with element
@@ -390,6 +390,7 @@ var svgTextDrawRectText = function (el, rect, textRect) {
       var pos = el.transformCoordToGlobal(rect.x, rect.y);
       rect.x = pos[0];
       rect.y = pos[1];
+      el.transform = matrix.identity(matrix.create());
     } // Text rotation, but no element transform
 
 
@@ -406,7 +407,9 @@ var svgTextDrawRectText = function (el, rect, textRect) {
     var rotate = -style.textRotation || 0;
     var transform = matrix.create(); // Apply textRotate to element matrix
 
-    matrix.rotate(transform, el.transform, rotate);
+    matrix.rotate(transform, transform, rotate);
+    var pos = [el.transform[4], el.transform[5]];
+    matrix.translate(transform, transform, pos);
     setTransform(textSvgEl, transform);
   }
 
@@ -427,7 +430,7 @@ var svgTextDrawRectText = function (el, rect, textRect) {
 
   var dy = 0;
 
-  if (verticalAlign === 'baseline') {
+  if (verticalAlign === 'after-edge') {
     dy = -textRect.height + lineHeight;
     textPadding && (dy -= textPadding[2]);
   } else if (verticalAlign === 'middle') {
@@ -487,7 +490,7 @@ function getVerticalAlignForSvg(verticalAlign) {
   if (verticalAlign === 'middle') {
     return 'middle';
   } else if (verticalAlign === 'bottom') {
-    return 'baseline';
+    return 'after-edge';
   } else {
     return 'hanging';
   }

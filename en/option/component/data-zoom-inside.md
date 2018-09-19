@@ -54,6 +54,16 @@ How to trigger data window move. Optional values:
 + `'ctrl'`：Holding `ctrl` and mouse move triggers data window move.
 + `'alt'`：Holding `alt` and mouse move triggers data window move.
 
+## moveOnMouseWheel(boolean) = false
+
+How to trigger data window move. Optional values:
+
++ `true`：Mouse wheel triggers data window move.
++ `false`：Mouse wheel can not triggers data window move.
++ `'shift'`：Holding `shift` and mouse wheel triggers data window move.
++ `'ctrl'`：Holding `ctrl` and mouse wheel triggers data window move.
++ `'alt'`：Holding `alt` and mouse wheel triggers data window move.
+
 ## preventDefaultMouseMove(boolean) = true
 
 Whether to prevent default behavior of mouse move event.
