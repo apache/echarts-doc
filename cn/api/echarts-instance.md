@@ -573,7 +573,7 @@ img.src = myChart.getDataURL({
 注意：
 
 + 现在不支持 [系列（series）](option.html#series) 使用 [dataset](option.html#dataset) 同时使用 `appendData`，只支持系列使用自己的 [series.data](option.html#series.data) 时使用 `appendData`。
-+ 目前并非所有的图表都支持分片加载时的增量渲染。目前支持的图有：ECharts 基础版本的 [散点图（scatter）](option.html#series-scatter) 和 [线图（lines）](option-gl.html#series-linesGL)。ECharts GL 的 [散点图（scatterGL）](option-gl.html#series-scatterGL)、[线图（linesGL）](option-gl.html#series-lines3D) 和 [可视化建筑群（polygons3D）](ooption-gl.html#series-polygons3D)。
++ 目前并非所有的图表都支持分片加载时的增量渲染。目前支持的图有：ECharts 基础版本的 [散点图（scatter）](option.html#series-scatter) 和 [线图（lines）](option-gl.html#series-linesGL)。ECharts GL 的 [散点图（scatterGL）](option-gl.html#series-scatterGL)、[线图（linesGL）](option-gl.html#series-lines3D) 和 [可视化建筑群（polygons3D）](option-gl.html#series-polygons3D)。
 
 
 ## clear
