@@ -41,6 +41,10 @@
 ## funnelAlign(string) = 'center'
 水平方向对齐布局类型，默认居中对齐，可用选项还有：'left' | 'right' | 'center'
 
+{{ use:partial-progressive(
+    prefix='#'
+) }}
+
 ## label(Object)
 {{use:partial-label-desc(name="漏斗图")}}
 {{use:partial-funnel-label(

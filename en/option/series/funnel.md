@@ -41,6 +41,11 @@ Gap between each trapezoid.
 ## funnelAlign(string) = 'center'
 Horizontal align. Defaults to align center. Can be 'left', 'right', 'center'.
 
+
+{{ use:partial-progressive(
+    prefix='#'
+) }}
+
 ## label(Object)
 {{use:partial-label-desc(name="funnel chart")}}
 {{use:partial-funnel-label(

@@ -72,6 +72,10 @@
 
 ~[600x400](${galleryViewPath}line-step&edit=1&reset=1)
 
+{{ use:partial-progressive(
+    prefix='#'
+) }}
+
 ## label(Object)
 {{use: partial-label-desc}}
 {{use: partial-label(

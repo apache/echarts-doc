@@ -56,6 +56,10 @@
 
 {{ use: partial-cursor }}
 
+{{ use:partial-progressive(
+    prefix='#'
+) }}
+
 ## label(Object)
 {{use:partial-label-desc(name="饼图")}}
 {{use:partial-pie-label(

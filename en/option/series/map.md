@@ -74,6 +74,10 @@ Style of item polygon
 Color of the area.
 {{ use: partial-item-style(prefix='####') }}
 
+{{ use:partial-progressive(
+    prefix='#'
+) }}
+
 ### label(Object)
 {{use: partial-label-desc}}
 {{use: partial-label(

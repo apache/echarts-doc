@@ -341,3 +341,7 @@ series: {
     defaultAnimationDurationUpdate=500,
     galleryEditorPath=${galleryEditorPath}
 )}}
+
+{{ use:partial-progressive(
+    prefix='#'
+) }}

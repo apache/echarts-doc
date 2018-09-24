@@ -110,7 +110,7 @@ K 线图的高亮图形样式。
 {{ use:partial-progressive(
     prefix='#',
     supportProgressiveChunkMode=true,
-    defaultProgressive=5000,
+    defaultProgressive=3000,
     defaultProgressiveThreshold=10000,
     defaultProgressiveChunkMode='mod'
 ) }}

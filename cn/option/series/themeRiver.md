@@ -132,3 +132,7 @@ data: [
 {{use: partial-tooltip-in-series(
     galleryViewPath=${galleryViewPath}
 )}}
+
+{{ use:partial-progressive(
+    prefix='#'
+) }}

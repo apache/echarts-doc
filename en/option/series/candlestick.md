@@ -114,7 +114,7 @@ Emphasis style of candlestick.
 {{ use:partial-progressive(
     prefix='#',
     supportProgressiveChunkMode=true,
-    defaultProgressive=5000,
+    defaultProgressive=3000,
     defaultProgressiveThreshold=10000,
     defaultProgressiveChunkMode='mod'
 ) }}

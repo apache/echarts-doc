@@ -39,6 +39,10 @@
 ## maxOpacity(number) = 1
 最大的透明度，在地理坐标系([coordinateSystem](~series-heatmap.coordinateSystem): 'geo')上有效。
 
+{{ use:partial-progressive(
+    prefix='#'
+) }}
+
 ## label(Object)
 在直角坐标系([coordinateSystem](~series-heatmap.coordinateSystem): 'cartesian2d')上有效。
 {{ use:partial-label(

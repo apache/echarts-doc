@@ -369,6 +369,10 @@ renderItem 函数的第二个参数。
 )}}
 
 
+{{ use:partial-progressive(
+    prefix='#'
+) }}
+
 
 ## itemStyle(Object)
 

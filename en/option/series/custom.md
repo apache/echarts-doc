@@ -378,6 +378,10 @@ For example:
 )}}
 
 
+{{ use:partial-progressive(
+    prefix='#'
+) }}
+
 
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}

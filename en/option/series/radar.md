@@ -28,6 +28,10 @@ Index of [radar](~radar) component that radar chart uses.
     hasCallback=true
 ) }}
 
+{{ use:partial-progressive(
+    prefix='#'
+) }}
+
 ## label(Object)
 {{use: partial-label-desc}}
 {{use: partial-label(

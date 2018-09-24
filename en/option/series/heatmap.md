@@ -42,6 +42,10 @@ Minimum opacity. It is valid with [coordinateSystem](~series-heatmap.coordinateS
 Maximum opacity. It is valid with [coordinateSystem](~series-heatmap.coordinateSystem) of 'geo' value.
 
 
+{{ use:partial-progressive(
+    prefix='#'
+) }}
+
 ## label(Object)
 Work for [coordinateSystem](~series-heatmap.coordinateSystem): 'cartesian2d'.
 {{ use:partial-label(

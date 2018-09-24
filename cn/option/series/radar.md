@@ -29,6 +29,10 @@
     hasCallback=true
 ) }}
 
+{{ use:partial-progressive(
+    prefix='#'
+) }}
+
 ## label(Object)
 {{use: partial-label-desc}}
 

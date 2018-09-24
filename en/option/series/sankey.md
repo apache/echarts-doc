@@ -74,6 +74,11 @@ Optional values:
 + `'outEdges'`: When hovering over a node, the outcoming edges and its adjacent nodes are highlighted. When hovering over an edge, the adjacent nodes are highlighted.
 + `'inEdges'`: When hovering over a node, the incoming edges and its adjacent nodes are highlighted. When hovering over an edge, the adjacent nodes are highlighted.
 
+
+{{ use:partial-progressive(
+    prefix='#'
+) }}
+
 ## label(Object)
 
 `label` describes the text label style in each rectangular node.
