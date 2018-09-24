@@ -5,6 +5,27 @@ Event-handling functions are mainly added through [on](~echartsInstance.on) in E
 
 Event in ECharts can be divided in two kinds. One is mouse event, which is triggered when mouse clicks on certain component, the other is triggered after dispatches [dispatchAction](~echartsInstance.dispatchAction).
 
+**For example:**
+```js
+myChart.on('click', function (params) {
+    console.log(params);
+});
+
+myChart.on('legendselectchanged', function (params) {
+    console.log(params);
+});
+
+chart.on('click', 'series.line', function (params) {
+    console.log(params);
+});
+
+chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
+    console.log(params);
+});
+```
+
+See [on](~echartsInstance.on) for more detailed info.
+
 ## Mouse events
 
 Event parameters of mouse events are attributes of event object. The following shows basic parameters for chart click events. Other charts, like pie charts, may have additional parameters like `percent`. Please refer to callback `params` of each chart's label formatter.

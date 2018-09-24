@@ -14,7 +14,17 @@ myChart.on('click', function (params) {
 myChart.on('legendselectchanged', function (params) {
     console.log(params);
 });
+
+chart.on('click', 'series.line', function (params) {
+    console.log(params);
+});
+
+chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
+    console.log(params);
+});
 ```
+
+详细的事件注册方式参见 [on](~echartsInstance.on)。
 
 ## 鼠标事件
 
