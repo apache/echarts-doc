@@ -17,7 +17,7 @@ Event in ECharts can be divided in two kinds. One is mouse event, which is trigg
 
 ## Mouse Events Handling
 
-ECharts support regular mouse events, which includes `'click'`, `'dblclick'`, `'mousedown'`, `'mousemove'`, `'mouseup'`, `'mouseover'`, `'mouseout'`. Next let's see an example of opening Baidu search page when clicks a bar chart.
+ECharts support regular mouse events, which includes `'click'`, `'dblclick'`, `'mousedown'`, `'mousemove'`, `'mouseup'`, `'mouseover'`, `'mouseout'`, `'globalout'`, `'contextmenu'`. Next let's see an example of opening Baidu search page when clicks a bar chart.
 
 ```js
 // initialize ECharts instance based on prepared dom

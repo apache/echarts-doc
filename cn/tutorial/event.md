@@ -17,7 +17,7 @@ myChart.on('click', function (params) {
 
 ## 鼠标事件的处理
 
-ECharts 支持常规的鼠标事件类型，包括 `'click'`、`'dblclick'`、`'mousedown'`、`'mousemove'`、`'mouseup'`、`'mouseover'`、`'mouseout'` 事件。下面先来看一个简单的点击柱状图后打开相应的百度搜索页面的示例。
+ECharts 支持常规的鼠标事件类型，包括 `'click'`、`'dblclick'`、`'mousedown'`、`'mousemove'`、`'mouseup'`、`'mouseover'`、`'mouseout'`、`'globalout'`、`'contextmenu'` 事件。下面先来看一个简单的点击柱状图后打开相应的百度搜索页面的示例。
 
 ```js
 // 基于准备好的dom，初始化ECharts实例
