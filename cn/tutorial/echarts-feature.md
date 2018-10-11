@@ -7,7 +7,7 @@ ECharts 3 中更是加入了更多丰富的交互功能以及更多的可视化�
 
 ## 丰富的图表类型
 
-ECharts 提供了常规的[折线图](option.html#series-line)，[柱状图](option.html#series-line)，[散点图](option.html#series-scatter)，[饼图](option.html#series-pie)，[K线图](option.html#series-candlestick)，用于统计的[盒形图](option.html#series-boxplot)，用于地理数据可视化的[地图](option.html#series-map)，[热力图](option.html#series-heatmap)，[线图](option.html#series-lines)，用于关系数据可视化的[关系图](option.html#series-graph)，[treemap](option.html#series-treemap)，多维数据可视化的[平行坐标](option.html#series-parallel)，还有用于 BI 的[漏斗图](option.html#series-funnel)，[仪表盘](option.html#series-gauge)，并且支持图与图之间的混搭。
+ECharts 提供了常规的[折线图](option.html#series-line)，[柱状图](option.html#series-bar)，[散点图](option.html#series-scatter)，[饼图](option.html#series-pie)，[K线图](option.html#series-candlestick)，用于统计的[盒形图](option.html#series-boxplot)，用于地理数据可视化的[地图](option.html#series-map)，[热力图](option.html#series-heatmap)，[线图](option.html#series-lines)，用于关系数据可视化的[关系图](option.html#series-graph)，[treemap](option.html#series-treemap)，多维数据可视化的[平行坐标](option.html#series-parallel)，还有用于 BI 的[漏斗图](option.html#series-funnel)，[仪表盘](option.html#series-gauge)，并且支持图与图之间的混搭。
 
 你可以在下载界面下载包含所有图表的构建文件，如果只是需要其中一两个图表，又嫌包含所有图表的构建文件太大，也可以在在线构建中选择需要的图表类型后自定义构建。
 
