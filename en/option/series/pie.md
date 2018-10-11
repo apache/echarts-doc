@@ -58,9 +58,6 @@ Whether to show sector when all data are zero.
 
 {{ use: partial-cursor }}
 
-{{ use:partial-progressive(
-    prefix='#'
-) }}
 
 ## label(Object)
 {{use:partial-label-desc(name="pie chart")}}

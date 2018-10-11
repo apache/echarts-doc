@@ -52,10 +52,6 @@ The boundary gap of the direction orthogonal with coordinate axis in diagram, wh
 The index of single time axis, which defaults to be 0 because it contains only one axis.
 
 
-{{ use:partial-progressive(
-    prefix='#'
-) }}
-
 ## label(Object)
 
 `label` describes style of text labels with which each ribbon-shape river branch corresponds in theme river.

@@ -58,10 +58,6 @@ Up and bottom boundary of box width. The array is in the form of `[min, max]`.
 It could be absolute value in pixel, such as `[7, 50]`, or percentage, such as `['40%', '90%']`. The percentage means the percentage to the maximum possible width.
 
 
-{{ use:partial-progressive(
-    prefix='#'
-) }}
-
 
 ## itemStyle(Object)
 

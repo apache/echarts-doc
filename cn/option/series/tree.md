@@ -75,10 +75,6 @@
 
 树图初始展开的层级（深度）。根节点是第 0 层，然后是第 1 层、第 2 层，... ，直到叶子节点。该配置项主要和 `折叠展开` 交互一起使用，目的还是为了防止一次展示过多节点，节点之间发生遮盖。如果设置为 `-1` 或者 `null` 或者 `undefined`，所有节点都将展开。
 
-{{ use:partial-progressive(
-    prefix='#'
-) }}
-
 ## itemStyle(Object)
 
 树图中每个节点的样式，其中 [itemStyle.color](~series-tree.itemStyle.color) 表示节点的填充色，用来区别当前节点所对应的子树折叠或展开的状态。

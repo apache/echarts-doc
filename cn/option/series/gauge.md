@@ -202,7 +202,3 @@ formatter: function (value) {
     galleryViewPath=${galleryViewPath}
 )}}
 
-
-{{ use:partial-progressive(
-    prefix='#'
-) }}

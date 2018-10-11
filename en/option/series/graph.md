@@ -136,11 +136,6 @@ The style of edge line. [lineStyle.color](~series-graph.lineStyle.color) can be 
     hasCurveness=true
 )}}
 
-
-{{ use:partial-progressive(
-    prefix='#'
-) }}
-
 ## label(Object)
 {{use:partial-label-desc}}
 {{use:partial-label(

@@ -72,9 +72,6 @@
 + `'outEdges'`：hover 的节点、节点的出边、出边邻接的另一节点 会被高亮。hover 到边时，边和相邻节点高亮。
 + `'inEdges'`：hover 的节点、节点的入边、入边邻接的另一节点 会被高亮。hover 到边时，边和相邻节点高亮。
 
-{{ use:partial-progressive(
-    prefix='#'
-) }}
 
 ## label(Object)
 

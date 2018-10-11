@@ -75,10 +75,6 @@ Subtree collapses and expands interaction, `default true`. As the drawing area i
 
 The initial level (depth) of the tree. The root node is the 0th layer, then the first layer, the second layer, ... , until the leaf node. This configuration item is primarily used in conjunction with `collapsing and expansion` interactions. The purpose is to prevent the nodes from obscuring each other. If set as -1 or `null` or `undefined`, all nodes are expanded.
 
-{{ use:partial-progressive(
-    prefix='#'
-) }}
-
 
 ## itemStyle(Object)
 

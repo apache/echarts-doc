@@ -281,10 +281,6 @@ When is no content in breadcrumb, this minimal width need to be set up.
     defaultColor="#fff"
 )}}
 
-{{ use:partial-progressive(
-    prefix='#'
-) }}
-
 ### emphasis
 #### itemStyle(Object)
 {{use: partial-item-style(
