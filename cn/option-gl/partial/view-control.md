@@ -15,11 +15,11 @@
 
 ##${prefix|default('#')} autoRotateDirection(string) = ${defaultAutoRotateDirection|default('cw')}
 
-物体自传的方向。默认是 `'cw'` 也就是从上往下看是顺时针方向，也可以取 `'ccw'`，既从上往下看为逆时针方向。
+物体自转的方向。默认是 `'cw'` 也就是从上往下看是顺时针方向，也可以取 `'ccw'`，既从上往下看为逆时针方向。
 
 ##${prefix|default('#')} autoRotateSpeed(number) = ${defaultAutoRotateSpeed|default(10)}
 
-物体自传的速度。单位为`角度 / 秒`，默认为`10` ，也就是`36`秒转一圈。
+物体自转的速度。单位为`角度 / 秒`，默认为`10` ，也就是`36`秒转一圈。
 
 
 ##${prefix|default('#')} autoRotateAfterStill(number) = ${defaultAutoRotateAfterStill|default(3)}
