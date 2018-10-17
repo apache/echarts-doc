@@ -173,6 +173,14 @@ Label position.
 
     Inside the trapezoid of funnel chart.
 
++ `'insideRight'`
+
+    Right inside the trapezoid of funnel chart.
+
++ `'insideLeft'`
+
+    Left inside the trapezoid of funnel chart.
+
 + `'inner'` equals to `'inside'`.
 + `'center'` equals to `'inside'`.
 
