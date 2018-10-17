@@ -182,6 +182,14 @@
 
     漏斗图梯形内部。
 
++ `'insideRight'`
+
+    漏斗图梯形内部右侧。
+
++ `'insideLeft'`
+
+    漏斗图梯形内部左侧。
+
 + `'inner'` 同 `'inside'`。
 + `'center'` 同 `'inside'`。
 
