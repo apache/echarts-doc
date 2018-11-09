@@ -26,12 +26,6 @@ option = {
 }
 ```
 
-Attributes of encode are different according to the type of coordinate systtems.
-For [cartesian2d](~grid), `x` and `y` can be defined.
-For [polar](~polar), `radius` and `angle` can be defined.
-For [geo](~geo), `lng` and `lat` can be defined.
-Attribute `tooltip` and `itemName` (data item name in tooltip) are always able to be defined.
-
 When [dimensions](~series.dimensions) is used to defined name for a certain dimension, `encode` can refer the name directly. For example:
 
 ```js
@@ -44,6 +38,59 @@ series: {
     }
 }
 ```
+
+The basic structure of [encode](option.html#series.encode) is illustrated as follows, where the left part of colon is the name of axis like `'x'`, `'y'`, `'radius'`, `'angle'` or some special reserved names like "tooltip", "itemName" etc., and the right part of the colon is the dimension names or dimension indices (based on 0). One or more dimensions can be specified. Usually not all of mappings need to be specified, only specify needed ones.
+
+The properties available in `encode` listed as follows:
+
+```js
+// In any of the series and coordinate systems,
+// these properties are available:
+encode: {
+    // Display dimension "product" and "score" in the tooltip.
+    tooltip: ['product', 'score']
+    // Set the series name as the concat of the names of dimensions[1] and dimensions[3].
+    // (sometimes the dimension names are too long to type in series.name manually).
+    seriesName: [1, 3],
+    // Using dimensions[2] as the id of each data item. This is useful when dynamically
+    // update data by `chart.setOption()`, where the new and old data item can be
+    // corresponded by id, by which the appropriate animation can be performed when updating.
+    itemId: 2,
+    // Using dimensions[3] as the name of each data item. This is useful in charts like
+    // 'pie', 'funnel', where data item name can be displayed in legend.
+    itemName: 3
+}
+
+// These properties only work in cartesian(grid) coordinate system:
+encode: {
+    // Map dimensions[1], dimensions[5] and dimension "score" to the X axis.
+    x: [1, 5, 'score'],
+    // Map dimensions[0] to the Y axis.
+    y: 0
+}
+
+// These properties only work in polar coordinate system:
+encode: {
+    radius: 3,
+    angle: 2,
+    ...
+}
+
+// These properties only work in geo coordinate system:
+encode: {
+    lng: 3,
+    lat: 2
+}
+
+// For some type of series that are not in any coordinate system,
+// like 'pie', 'funnel' etc.:
+encode: {
+    value: 3
+}
+```
+
+This is an [example](${galleryViewPath}dataset-encode1&edit=1&reset=1) for `encode`.
+
 
 Specially, in [custom series(~series-custom), some property in `encode`, corresponding to axis, can be set as null to make the series not controlled by the axis, that is, the series data will not be count in the extent of the axis, and the [dataZoom](~dataZoom) on the axis will not filter the series.
 
