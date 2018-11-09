@@ -1,3 +1,12 @@
+## v4.2.0.rc2
+
+<div class="time">2018-10-15</div>
+
+Recovery build
+
+修复大数据柱状图渐进渲染阻塞问题。
+
+
 ## v4.2.0.rc1
 
 <div class="time">2018-09-11</div>

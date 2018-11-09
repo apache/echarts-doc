@@ -35,8 +35,11 @@ function getAxisKey(axis) {
 
 
 function barLayoutPolar(seriesType, ecModel, api) {
-  // var width = api.getWidth();
-  // var height = api.getHeight();
+  // FIXME
+  // Revert becuase it brings bar progressive bug.
+  // The complete fix will be added in the next version.
+  var width = api.getWidth();
+  var height = api.getHeight();
   var lastStackCoords = {};
   var barWidthAndOffset = calRadialBar(zrUtil.filter(ecModel.getSeriesByType(seriesType), function (seriesModel) {
     return !ecModel.isSeriesFiltered(seriesModel) && seriesModel.coordinateSystem && seriesModel.coordinateSystem.type === 'polar';

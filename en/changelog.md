@@ -1,3 +1,12 @@
+## v4.2.0.rc2
+
+<div class="time">2018-10-15</div>
+
+Recovery build
+
+Fix the problem that bar progressive was blocked.
+
+
 ## v4.2.0.rc1
 
 <div class="time">2018-09-11</div>
