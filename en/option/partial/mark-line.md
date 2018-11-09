@@ -149,8 +149,8 @@ Positions of labels can be:
 Special label types, are used to label maximum value, minimum value and so on.
 
 **Options are:**
-+ `'min'` maximum value.
-+ `'max'` minimum value.
++ `'min'` minimum value.
++ `'max'` maximum value.
 + `'average'` average value.
 {{ /if }}
 {{ if: ${hasCoord} }}
