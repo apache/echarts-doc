@@ -14,4 +14,5 @@
 {{ import: drag-example }}
 {{ import: custom-series }}
 {{ import: rich-text }}
+{{ import: headless }}
 {{ import: renderer }}

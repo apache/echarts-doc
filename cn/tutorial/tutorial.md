@@ -16,6 +16,7 @@
 {{ import: sunburst-series }}
 {{ import: custom-series }}
 {{ import: rich-text }}
+{{ import: headless }}
 {{ import: renderer }}
 {{ import: aria }}
 {{ import: echarts-gl }}
