@@ -192,7 +192,7 @@ Line height of the text fregment.
 
 Background color of the text fregment.
 
-Can be color string, like `'#123234'`, `'red'`, `rgba(0,23,11,0.3)'`.
+Can be color string, like `'#123234'`, `'red'`, `'rgba(0,23,11,0.3)'`.
 
 Or image can be used, for example:
 
