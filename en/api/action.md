@@ -329,6 +329,74 @@ Event [unfocusNodeAdjacency](~event.unfocusNodeAdjacency) will be thrown finally
 
 
 
+
+<!--============= brush ==========-->
+## brush
+[brush](option.html#brush) related actions.
+
+### brush
+
+This action sets select-boxes (areas) in this chart. For example:
+
+```javascript
+myChart.dispatchAction({
+    type: 'brush',
+    areas: [ // "areas" means select-boxes. Multi-boxes can be specified.
+             // If "areas" is empty, all of the select-boxes will be deleted.
+        { // The first area.
+
+            // Indicate that this area is a "coodinate system area", belonging
+            // to a geo coordinate system with getIndex: 0.
+            // We can also use xAxisIndex or yAxisIndex to indicate that
+            // this area belongs to a catesian coodinate system.
+            // If no coordinate system is specified, this area is a
+            // "global area", which does not belong to any coordinate system.
+            // If an area belongs to a coordinate system, this area moves
+            // and scales alone with the coordinate system.
+            geoIndex: 0,
+            // xAxisIndex: 0,
+            // yAxisIndex: 0,
+
+            // Optional: 'polygon', 'rect', 'lineX', 'lineY'
+            brushType: 'polygon',
+
+            // Only for "global area", define the area with the pixel coordinates.
+            range: [
+                ...
+            ],
+
+            // Only for "coordinate system area", define the area with the
+            // coordinates.
+            coordRange: [
+                // In this case, the area is in a geo coordinate system, so
+                // this is [longitude, latitude].
+                [119.72,34.85],[119.68,34.85],[119.5,34.84],[119.19,34.77]
+            ]
+        },
+        ... // Other areas.
+    ]
+});
+```
+
+The content of `range` and `coordRange` can be:
+
++ If `brushType` is 'rect':
+    `range` and `coordRange` is: `[[minX, maxX], [minY, maxY]]`
++ If `brushType` is 'lineX' or 'lineY':
+    `range` and `coordRange` is: [min, maxX]
++ If `brushType` is 'polygon':
+    `range` and `coordRange` is: [[point1X, point1X], [point2X, point2X], ...]
+
+The difference between `range` and `coordRange` is:
+
++ If the area is "global area", we should use `range`.
++ If the area is "coordinate system area" (i.e., `geoIndex` or `xAxisIndex` or `yAxisIndex` is specified), we should use `coordRange`.
++ The unit of `range` is "pixel", while the unit of `coordRange` should be the save as the unit of the coordinate system. For example, in geo coordinate system, `coordRange` should be [`longitude`, `latitude`], and in cartesian, it should be [`axis A value`, `axis B value`, `axis C value`, ...].
+
+
+
+
+
 {{ target: action-select }}
 ### ${componentType}Select(Action)
 Selects the specified ${name}.

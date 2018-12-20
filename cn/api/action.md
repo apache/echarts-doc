@@ -346,24 +346,35 @@ dispatchAction({
 [区域选择](option.html#brush)相关的行为。
 
 ### brush
-触发此 action 可向 echarts 中添加一个或多个选框，例如：
+触发此 action 可设置或删除 chart 中的选框，例如：
 
 ```javascript
 myChart.dispatchAction({
     type: 'brush',
     areas: [ // areas 表示选框的集合，可以指定多个选框。
+             // 如果 areas 为空，则删除所有选框。
+             // 注意这并非增量接口而是全量接口，所以应包括所有的选框。
         { // 选框一：
-            geoIndex: 0, // 指定此选框属于 index 为 0 的 geo 坐标系。
-                         // 也可以通过 xAxisIndex 或 yAxisIndex 来指定此选框属于直角坐标系。
-                         // 如果没有指定，则此选框属于『全局选框』。不属于任何坐标系。
-                         // 属于『坐标系选框』，可以随坐标系一起缩放平移。属于全局的选框不行。
-            brushType: 'polygon', // 指定选框的类型。还可以为 'rect', 'lineX', 'lineY'
-            range: [ // 如果是『全局选框』，则使用 range 来描述选框的范围。
+
+            // 指定此选框是“坐标系选框”，属于 index 为 0 的 geo 坐标系。
+            // 也可以通过 xAxisIndex 或 yAxisIndex 来指定此选框属于直角坐标系。
+            // 如果没有指定，则此选框属于“全局选框”。不属于任何坐标系。
+            // 属于『坐标系选框』，可以随坐标系一起缩放平移。属于全局的选框不行。
+            geoIndex: 0,
+            // xAxisIndex: 0,
+            // yAxisIndex: 0,
+
+            // 指定选框的类型。可以为 'polygon', 'rect', 'lineX', 'lineY'
+            brushType: 'polygon',
+
+            // 如果是“全局选框”，则使用 range 来描述选框的范围（里面是像素坐标）。
+            range: [
                 ...
             ],
-            coordRange: [ // 如果是『坐标系选框』，则使用 coordRange 来指定选框的范围。
-                [119.72,34.85],[119.68,34.85],[119.5,34.84],[119.19,34.77]
+            // 如果是“坐标系选框”，则使用 coordRange 来指定选框的范围（里面是坐标系坐标）。
+            coordRange: [
                 // 这个例子中，因为指定了 geoIndex，所以 coordRange 里单位是经纬度。
+                [119.72,34.85],[119.68,34.85],[119.5,34.84],[119.19,34.77]
             ]
         },
         ... // 选框二、三、四、...
