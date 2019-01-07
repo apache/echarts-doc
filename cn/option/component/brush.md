@@ -352,7 +352,7 @@ option = {
 
 throttleType 取值可以是：
 + `'debounce'`：表示只有停止动作了（即一段时间没有操作了），才会触发事件。时间阈值由 [brush.throttleDelay](~brush.throttleDelay) 指定。
-+ `'fixRate'`：表示按照一定的频率触发时间，时间间隔由 [brush.throttleDelay](~brush.throttleDelay) 指定。
++ `'fixRate'`：表示按照一定的频率触发事件，时间间隔由 [brush.throttleDelay](~brush.throttleDelay) 指定。
 
 
 例如这个 [例子](${galleryViewPath}scatter-map-brush&edit=1&reset=1)，就是使用了 `debounce`的效果：只有用户停止动作了，柱状图才更新。不然的话，如果柱状图的频繁更新，那么动画效果很差。
