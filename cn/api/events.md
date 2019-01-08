@@ -285,10 +285,36 @@ chart.on('axisareaselected', function () {
     type: 'brushselected',
     batch: [
         {
-            brushIndex: number // brush 组件的id，大多数情况只使用一个 brush 组件，所以不必理会。
-            selected: [ // 每个系列被选中的项。
-                        // 注意，如果某个系列不支持 brush，但是还是会在这里出现对应的项。
-                        // 也就是说，selected 可以使用 seriesIndex 来直接找到对应的项。
+            // brush 组件的 id，大多数情况只使用一个 brush 组件，所以不必理会。
+            brushId: string,
+            // brush 组件的 index。
+            brushIndex: number,
+            // brush 组件的 name。
+            brushName: string,
+
+            // 各个选框
+            areas: [
+                { // 第一个选框
+                    // 则此处使用 range 或者 coordRange 记录了选框当前的形状。
+                    // 其值参见 brush action 中 range/coordRange 的解释。
+
+                    // 如果此选框是“全局选框”（即并不属于哪个坐标系），则使用 range 单位是像素。
+                    range: Array.<number>,
+
+                    // 如果此选框是“坐标系选框”，则使用 coordRange 和 coordRanges，单位为坐标系单位。
+                    coordRange: Array.<number>,
+                    // 其中，如果选框属于直角坐标系（grid）的某个轴（例如指定了 xAxisIndex: 0），
+                    // 且此轴对应于多个 cartesian（例如，对应两个 yAxis），那么这里 coordRanges
+                    // 是每个 cartesian 中的选框的范围值。而 coordRange 是 coordRanges[0]。
+                    coordRanges: Array.<Array.<number>>,
+                },
+                ...
+            ],
+
+            // 每个系列被选中的项。
+            // 注意，如果某个系列不支持 brush，但是还是会在这里出现对应的项。
+            // 也就是说，selected 可以使用 seriesIndex 来直接找到对应的项。
+            selected: [
                 { // series 0 被选中的项
                     seriesIndex: number,
                     dataIndex: [ 3, 6, 12, 23 ] // 用这些 dataIndex，可以去原始数据中找到真正的值。
