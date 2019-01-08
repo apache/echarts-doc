@@ -2,7 +2,7 @@
 
 > Color can be represented in RGB, for example `'rgb(128, 128, 128)'`. RGBA can be used when you need alpha channel, for example `'rgba(128, 128, 128, 0.5)'`. You may also use hexadecimal format, for example `'#ccc'`. Gradient color and texture are also supported besides single colors.
 > ```js
-> // Linear gradient. First four parameters are x0, y0, x2, and y2, each ranged from 0 to 1, standing for percentage in the bounding box. If globalCoord is `true`, then the first four parameters are in absolute pixel positions.
+> // Linear gradient. First four parameters are x0, y0, x2, and y2, each ranged from 0 to 1, standing for percentage in the bounding box. If global is `true`, then the first four parameters are in absolute pixel positions.
 > color: {
 >     type: 'linear',
 >     x: 0,
@@ -14,7 +14,7 @@
 >     }, {
 >         offset: 1, color: 'blue' // color at 100% position
 >     }],
->     globalCoord: false // false by default
+>     globa: false // false by default
 > }
 > // Radial gradient. First three parameters are x and y positions of center, and radius, similar to linear gradient.
 > color: {
@@ -27,7 +27,7 @@
 >     }, {
 >         offset: 1, color: 'blue' // color at 100% position
 >     }],
->     globalCoord: false // false by default
+>     global: false // false by default
 > }
 > // Fill with texture
 > color: {
