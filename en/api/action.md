@@ -395,6 +395,29 @@ The difference between `range` and `coordRange` is:
 
 
 
+### takeGlobalCursor
+
+The switch of the brush. This action can make the mouse enabled/disabled to brush.
+In fact, the brush buttons in [toolbox](option.html#toolbox.feature.brush) just use this aciton.
+
+This event corresponding to this action is [globalCursorTaken](~events.globalCursorTaken).
+
+```js
+api.dispatchAction({
+    type: 'takeGlobalCursor',
+    // If intending to enable brush, must set. Otherwise, the mouse will be disabled to brush.
+    key: 'brush',
+    brushOption: {
+        // See more info in the `brushType` of "brush component".
+        // If set as `false`, the mouse is disabled to brush.
+        brushType: string,
+        // See more info in the `brushModel` of "brush component".
+        // IF not set, use the `brushMode` of brush component.
+        brushMode: string
+    }
+});
+```
+
 
 
 {{ target: action-select }}

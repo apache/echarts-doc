@@ -397,6 +397,26 @@ myChart.dispatchAction({
 + 当此选框为『坐标系选框』时（即指定了 `geoIndex` 或 `xAxisIndex` 或 `yAxisIndex` 时），使用 `coordRange`。
 + `range` 的单位为 *像素*，`coordRange` 的单位为 *坐标系单位*，比如 geo 中，`coordRange` 单位为经纬度，直角坐标系中，coordRange 单位为对应轴的数据的单位。
 
+### takeGlobalCursor
+
+刷选模式的开关。使用此 action 可将当前鼠标变为可刷选状态。
+事实上，点击 [toolbox](option.html#toolbox.feature.brush) 中的 brush 按钮时，就是通过这个 action，将当前普通鼠标变为刷选器的。例如：
+
+此 action 对应的事件为 [globalCursorTaken](~events.globalCursorTaken)。
+
+```js
+api.dispatchAction({
+    type: 'takeGlobalCursor',
+    // 如果想变为“可刷选状态”，必须设置。不设置则会关闭“可刷选状态”。
+    key: 'brush',
+    brushOption: {
+        // 参见 brush 组件的 brushType。如果设置为 false 则关闭“可刷选状态”。
+        brushType: string,
+        // 参见 brush 组件的 brushMode。如果不设置，则取 brush 组件的 brushMode 设置。
+        brushMode: string
+    }
+});
+```
 
 
 {{ target: action-select }}

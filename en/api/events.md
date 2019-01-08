@@ -379,6 +379,11 @@ chart.on('brushSelected', function (params) {
 
 
 
+## globalCursorTaken(Event)
+
+See [takeGlobalCursor](~action.brush.takeGlobalCursor).
+
+
 
 ## rendered(Event)
 

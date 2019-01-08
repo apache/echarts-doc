@@ -375,6 +375,13 @@ chart.on('brushSelected', function (params) {
 如果想**避免此事件频繁触发**，可以使用 [brush.throttleType](option.html#brush.throttleType)。
 
 
+
+## globalCursorTaken(Event)
+
+参见 [takeGlobalCursor](~action.brush.takeGlobalCursor)。
+
+
+
 ## rendered(Event)
 
 渲染结束事件。注意 `rendered` 事件并不代表渲染动画（参见 [animation](~animation) 相关配置）或者渐进渲染（参见 [progressive](~series-scatter.progressive) 相关配置）停止，只代表本帧的渲染结束。
