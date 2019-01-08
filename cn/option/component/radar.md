@@ -76,7 +76,8 @@ formatter: function (value, indicator) {
 
 {{ use: partial-axis-common-split-area(
     prefix="#",
-    hasLabelInterval=false
+    hasLabelInterval=false,
+    defaultShow=true
 )}}
 
 ## indicator(Array)
