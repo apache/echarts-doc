@@ -16,6 +16,7 @@
 标注的文本。
 {{use:partial-label(
     prefix="##" + ${prefix},
+    defaultShowLabel=true,
     defaultPosition="'inside'",
     formatter=true
 )}}

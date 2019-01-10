@@ -16,6 +16,7 @@ Mark point in a chart.
 Label of mark point.
 {{use:partial-label(
     prefix="##" + ${prefix},
+    defaultShowLabel=true,
     defaultPosition="'inside'",
     formatter=true
 )}}
