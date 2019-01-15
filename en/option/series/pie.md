@@ -44,6 +44,9 @@ The start angle, which range is [0, 360].
 ## minAngle(number) = 0
 The minimum angle of sector (0 ~ 360). It prevents some sector from being too small when value is small, which will affect user interaction.
 
+## minShowLabelAngle(number) = 0
+If a sector is less than this angle (0 ~ 360), label and labelLine will not be displayed.
+
 ## roseType(boolean|string) = false
 Whether to show as Nightingale chart, which distinguishs data through radius. There are 2 optional modes:
 

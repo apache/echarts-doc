@@ -75,6 +75,18 @@ The hyper link of subtitle text.
     noBox=true
 ) }}
 
+## textAlign(string) = 'auto'
+
+The horizontal align of the component (including "text" and "subtext").
+
+Optional values: `'auto'`, `'left'`, `'right'`, `'center'`.
+
+## textVerticalAlign(string) = 'auto'
+
+The vertical align of the component (including "text" and "subtext").
+
+Optional values: `'auto'`, `'top'`, `'bottom'`, `'middle'`.
+
 ## triggerEvent(boolean) = false
 
 Whether to trigger event.
