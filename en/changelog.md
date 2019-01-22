@@ -1,3 +1,30 @@
+## v4.2.1.rc1
+
+<div class="time">2019-01-22</div>
+
++ [Fix] Fix text cache problem. See [#9190](https://github.com/apache/incubator-echarts/issues/9190), [#9597](https://github.com/apache/incubator-echarts/issues/9597), [#9762](https://github.com/apache/incubator-echarts/issues/9762).
+
++ [Fix] Fix that in some case re-`setOption` in event handler throws error. See [#9649](https://github.com/apache/incubator-echarts/issues/9649).
+
++ [Fix] Fix that geo region problem causes `showTip` abnormal. See [#9156](https://github.com/apache/incubator-echarts/issues/9156).
+
++ [Fix] Fix that stacked bars are over cartesian in some cases. See [#9346](https://github.com/apache/incubator-echarts/issues/9346).
+
++ [Fix] Fix that legend is not able to scroll when the space is not enough to contain one item. See [#6743](https://github.com/apache/incubator-echarts/issues/6743), [#8971](https://github.com/apache/incubator-echarts/issues/8971), [#9471](https://github.com/apache/incubator-echarts/issues/9471).
+
++ [Fix] Fix that the centered pie label might has some bias on some angles. See [#9657](https://github.com/apache/incubator-echarts/issues/9657).
+
++ [Fix] Fix that Geo map panning is not working on MS Edge browser See [#9479](https://github.com/apache/incubator-echarts/issues/9479).
+
++ [Fix] Fix that label dispaly problem in map series. See [#9682](https://github.com/apache/incubator-echarts/issues/9682).
+
++ [Fix] Fix that `visualMap: false` set on data items makes subsequent items abnormal. See [#8799](https://github.com/apache/incubator-echarts/issues/8799).
+
++ [Fix] When `axisLabel.interval` of a category axis is set as `0`, all labels show regardless of overlap. See [#9589](https://github.com/apache/incubator-echarts/issues/9589).
+
+
+
+
 ## v4.2.0.rc2
 
 <div class="time">2018-10-15</div>

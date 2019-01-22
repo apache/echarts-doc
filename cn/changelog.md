@@ -1,3 +1,29 @@
+## v4.2.1.rc1
+
+<div class="time">2019-01-22</div>
+
++ [Fix] 修复了文本缓存的问题. 参见 [#9190](https://github.com/apache/incubator-echarts/issues/9190)，[#9597](https://github.com/apache/incubator-echarts/issues/9597)，[#9762](https://github.com/apache/incubator-echarts/issues/9762)。
+
++ [Fix] 修复了在一些情况下事件处理器中重新 `setOption` 时抛异常的问题。参见 [#9649](https://github.com/apache/incubator-echarts/issues/9649)。
+
++ [Fix] 修复了 geo 中 `showTip` 异常的问题。参见 [#9156](https://github.com/apache/incubator-echarts/issues/9156)。
+
++ [Fix] 修复了一些情况下堆叠柱状图超出直角坐标系范围的问题。参见 [#9346](https://github.com/apache/incubator-echarts/issues/9346)。
+
++ [Fix] 修复了图例组件（legend）当空间只够显示一项时不能翻页的问题。参见 [#6743](https://github.com/apache/incubator-echarts/issues/6743)，[#8971](https://github.com/apache/incubator-echarts/issues/8971)，[#9471](https://github.com/apache/incubator-echarts/issues/9471)。
+
++ [Fix] 修复了饼图标签（label）定位在中心时，在一些角度下有便宜的问题。参见 [#9657](https://github.com/apache/incubator-echarts/issues/9657)。
+
++ [Fix] 修复了地图坐标系（geo）在 MS Edge 下不能拖动的问题。参见 [#9479](https://github.com/apache/incubator-echarts/issues/9479)。
+
++ [Fix] 修复了地图系列（series.type: 'map'）标签不能显示的问题。参见 [#9682](https://github.com/apache/incubator-echarts/issues/9682)。
+
++ [Fix] 修复了设置了 `visualMap: false` 的数据项影响其他数据项的问题。参见 [#8799](https://github.com/apache/incubator-echarts/issues/8799)。
+
++ [Fix] 使得 `axis.type: 'category'` 且 `axisLabel.interval: 0` 时，所有标签（axisLabel）都能被显示。参见 [#9589](https://github.com/apache/incubator-echarts/issues/9589)。
+
+
+
 ## v4.2.0.rc2
 
 <div class="time">2018-10-15</div>
