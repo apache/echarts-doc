@@ -252,7 +252,7 @@ Option:
 
 Name of axis.
 
-#${prefix} nameLocation(string) = 'start'
+#${prefix} nameLocation(string) = 'end'
 
 Location of axis name.
 
