@@ -182,6 +182,21 @@ dispatchAction({
 
 **EVENT:** [datazoom](~events.datazoom)
 
+### takeGlobalCursor(Action)
+
+Activate or inactivate `dataZoom` buttom in `toolbox`.
+
+```js
+myChart.dispatchAction({
+    type: 'takeGlobalCursor',
+    key: 'dataZoomSelect',
+    // Activate or inactivate.
+    dataZoomSelectActive: true
+});
+```
+
+
+
 <!--============= visualMap ==========-->
 ## visualMap
 

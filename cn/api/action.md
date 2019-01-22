@@ -183,6 +183,20 @@ dispatchAction({
 
 **EVENT:** [datazoom](~events.datazoom)
 
+### takeGlobalCursor(Action)
+
+启动或关闭 `toolbox` 中 `dataZoom` 的刷选状态。
+
+```js
+myChart.dispatchAction({
+    type: 'takeGlobalCursor',
+    key: 'dataZoomSelect',
+    // 启动或关闭
+    dataZoomSelectActive: true
+});
+```
+
+
 <!--============= visualMap ==========-->
 ## visualMap
 
