@@ -12,7 +12,6 @@ import arrayDiff from '../core/arrayDiff2';
 import GradientManager from './helper/GradientManager';
 import ClippathManager from './helper/ClippathManager';
 import ShadowManager from './helper/ShadowManager';
-import { each } from '../core/util';
 import { path as svgPath, image as svgImage, text as svgText } from './graphic';
 
 function parseInt10(val) {
@@ -337,7 +336,7 @@ function createMethodNotSupport(method) {
 } // Unsuppoted methods
 
 
-each(['getLayer', 'insertLayer', 'eachLayer', 'eachBuiltinLayer', 'eachOtherLayer', 'getLayers', 'modLayer', 'delLayer', 'clearLayer', 'toDataURL', 'pathToImage'], function (name) {
+util.each(['getLayer', 'insertLayer', 'eachLayer', 'eachBuiltinLayer', 'eachOtherLayer', 'getLayers', 'modLayer', 'delLayer', 'clearLayer', 'toDataURL', 'pathToImage'], function (name) {
   SVGPainter.prototype[name] = createMethodNotSupport(name);
 });
 export default SVGPainter;

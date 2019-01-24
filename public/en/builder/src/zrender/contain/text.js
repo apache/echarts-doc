@@ -55,12 +55,12 @@ export function getWidth(text, font) {
  * @return {Object} {x, y, width, height, lineHeight}
  */
 
-export function getBoundingRect(text, font, textAlign, textVerticalAlign, textPadding, rich, truncate) {
-  return rich ? getRichTextRect(text, font, textAlign, textVerticalAlign, textPadding, rich, truncate) : getPlainTextRect(text, font, textAlign, textVerticalAlign, textPadding, truncate);
+export function getBoundingRect(text, font, textAlign, textVerticalAlign, textPadding, textLineHeight, rich, truncate) {
+  return rich ? getRichTextRect(text, font, textAlign, textVerticalAlign, textPadding, rich, textLineHeight, truncate) : getPlainTextRect(text, font, textAlign, textVerticalAlign, textPadding, textLineHeight, truncate);
 }
 
-function getPlainTextRect(text, font, textAlign, textVerticalAlign, textPadding, truncate) {
-  var contentBlock = parsePlainText(text, font, textPadding, truncate);
+function getPlainTextRect(text, font, textAlign, textVerticalAlign, textPadding, textLineHeight, truncate) {
+  var contentBlock = parsePlainText(text, font, textPadding, textLineHeight, truncate);
   var outerWidth = getWidth(text, font);
 
   if (textPadding) {
@@ -75,13 +75,14 @@ function getPlainTextRect(text, font, textAlign, textVerticalAlign, textPadding,
   return rect;
 }
 
-function getRichTextRect(text, font, textAlign, textVerticalAlign, textPadding, rich, truncate) {
+function getRichTextRect(text, font, textAlign, textVerticalAlign, textPadding, textLineHeight, rich, truncate) {
   var contentBlock = parseRichText(text, {
     rich: rich,
     truncate: truncate,
     font: font,
     textAlign: textAlign,
-    textPadding: textPadding
+    textPadding: textPadding,
+    textLineHeight: textLineHeight
   });
   var outerWidth = contentBlock.outerWidth;
   var outerHeight = contentBlock.outerHeight;
@@ -288,7 +289,7 @@ function prepareTruncateOptions(containerWidth, font, ellipsis, options) {
     contentWidth -= ascCharWidth;
   }
 
-  var ellipsisWidth = getWidth(ellipsis);
+  var ellipsisWidth = getWidth(ellipsis, font);
 
   if (ellipsisWidth > contentWidth) {
     ellipsis = '';
@@ -384,9 +385,9 @@ methods.measureText = function (text, font) {
  */
 
 
-export function parsePlainText(text, font, padding, truncate) {
+export function parsePlainText(text, font, padding, textLineHeight, truncate) {
   text != null && (text += '');
-  var lineHeight = getLineHeight(font);
+  var lineHeight = retrieve2(textLineHeight, getLineHeight(font));
   var lines = text ? text.split('\n') : [];
   var height = lines.length * lineHeight;
   var outerHeight = height;

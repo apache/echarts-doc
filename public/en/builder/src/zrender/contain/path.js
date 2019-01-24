@@ -37,7 +37,8 @@ function windingCubic(x0, y0, x1, y1, x2, y2, x3, y3, x, y) {
   } else {
     var w = 0;
     var nExtrema = -1;
-    var y0_, y1_;
+    var y0_;
+    var y1_;
 
     for (var i = 0; i < nRoots; i++) {
       var t = roots[i]; // Avoid winding error when intersection point is the connect point of two line of polygon
@@ -64,7 +65,7 @@ function windingCubic(x0, y0, x1, y1, x2, y2, x3, y3, x, y) {
         }
       }
 
-      if (nExtrema == 2) {
+      if (nExtrema === 2) {
         // 分成三段单调函数
         if (t < extrema[0]) {
           w += y0_ < y0 ? unit : -unit;
@@ -228,7 +229,7 @@ function containPath(data, lineWidth, isStroke, x, y) {
 
     }
 
-    if (i == 1) {
+    if (i === 1) {
       // 如果第一个命令是 L, C, Q
       // 则 previous point 同绘制命令的第一个 point
       //
@@ -298,7 +299,7 @@ function containPath(data, lineWidth, isStroke, x, y) {
         var theta = data[i++];
         var dTheta = data[i++]; // TODO Arc 旋转
 
-        var psi = data[i++];
+        i += 1;
         var anticlockwise = 1 - data[i++];
         var x1 = Math.cos(theta) * rx + cx;
         var y1 = Math.sin(theta) * ry + cy; // 不是直接使用 arc 命令

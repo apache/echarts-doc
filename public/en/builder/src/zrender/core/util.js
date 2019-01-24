@@ -59,7 +59,7 @@ export function $override(name, fn) {
  */
 
 export function clone(source) {
-  if (source == null || typeof source != 'object') {
+  if (source == null || typeof source !== 'object') {
     return source;
   }
 
@@ -263,11 +263,11 @@ export function isArrayLike(data) {
     return;
   }
 
-  if (typeof data == 'string') {
+  if (typeof data === 'string') {
     return false;
   }
 
-  return typeof data.length == 'number';
+  return typeof data.length === 'number';
 }
 /**
  * 数组或对象遍历
@@ -456,7 +456,7 @@ export function isObject(value) {
   // Avoid a V8 JIT bug in Chrome 19-20.
   // See https://code.google.com/p/v8/issues/detail?id=2291 for more details.
   var type = typeof value;
-  return type === 'function' || !!value && type == 'object';
+  return type === 'function' || !!value && type === 'object';
 }
 /**
  * @memberOf module:zrender/core/util

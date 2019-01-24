@@ -49,9 +49,9 @@ var each = zrUtil.each;
 var isFunction = zrUtil.isFunction;
 var isObject = zrUtil.isObject;
 var parseClassType = ComponentModel.parseClassType;
-export var version = '4.2.0';
+export var version = '4.2.1';
 export var dependencies = {
-  zrender: '4.0.5'
+  zrender: '4.0.6'
 };
 var TEST_FRAME_REMAIN_TIME = 1;
 var PRIORITY_PROCESSOR_FILTER = 1000;
@@ -1344,7 +1344,7 @@ var MOUSE_EVENT_NAMES = ['click', 'dblclick', 'mouseover', 'mouseout', 'mousemov
 
 echartsProto._initEvents = function () {
   each(MOUSE_EVENT_NAMES, function (eveName) {
-    this._zr.on(eveName, function (e) {
+    var handler = function (e) {
       var ecModel = this.getModel();
       var el = e.target;
       var params;
@@ -1392,7 +1392,16 @@ echartsProto._initEvents = function () {
         };
         this.trigger(eveName, params);
       }
-    }, this);
+    }; // Consider that some component (like tooltip, brush, ...)
+    // register zr event handler, but user event handler might
+    // do anything, such as call `setOption` or `dispatchAction`,
+    // which probably update any of the content and probably
+    // cause problem if it is called previous other inner handlers.
+
+
+    handler.zrEventfulCallAtLast = true;
+
+    this._zr.on(eveName, handler, this);
   }, this);
   each(eventActionMap, function (actionType, eventType) {
     this._messageCenter.on(eventType, function (event) {

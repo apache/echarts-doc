@@ -2,7 +2,6 @@ import { addEventListener, removeEventListener, normalizeEvent } from '../core/e
 import * as zrUtil from '../core/util';
 import Eventful from '../mixin/Eventful';
 import env from '../core/env';
-import GestureMgr from '../core/GestureMgr';
 var TOUCH_CLICK_DELAY = 300;
 var mouseHandlerNames = ['click', 'dblclick', 'mousewheel', 'mouseout', 'mouseup', 'mousedown', 'mousemove', 'contextmenu'];
 var touchHandlerNames = ['touchstart', 'touchend', 'touchmove'];
@@ -19,21 +18,6 @@ var pointerHandlerNames = zrUtil.map(mouseHandlerNames, function (name) {
 
 function eventNameFix(name) {
   return name === 'mousewheel' && env.browser.firefox ? 'DOMMouseScroll' : name;
-}
-
-function processGesture(proxy, event, stage) {
-  var gestureMgr = proxy._gestureMgr;
-  stage === 'start' && gestureMgr.clear();
-  var gestureInfo = gestureMgr.recognize(event, proxy.handler.findHover(event.zrX, event.zrY, null).target, proxy.dom);
-  stage === 'end' && gestureMgr.clear(); // Do not do any preventDefault here. Upper application do that if necessary.
-
-  if (gestureInfo) {
-    var type = gestureInfo.type;
-    event.gestureEvent = type;
-    proxy.handler.dispatchToElement({
-      target: gestureInfo.target
-    }, type, gestureInfo.event);
-  }
 } // function onMSGestureChange(proxy, event) {
 //     if (event.translationX || event.translationY) {
 //         // mousemove is carried by MSGesture to reduce the sensitivity.
@@ -84,8 +68,8 @@ var domHandlers = {
     event = normalizeEvent(this.dom, event);
     var element = event.toElement || event.relatedTarget;
 
-    if (element != this.dom) {
-      while (element && element.nodeType != 9) {
+    if (element !== this.dom) {
+      while (element && element.nodeType !== 9) {
         // 忽略包含在root中的dom引起的mouseOut
         if (element === this.dom) {
           return;
@@ -111,7 +95,7 @@ var domHandlers = {
 
     event.zrByTouch = true;
     this._lastTouchMoment = new Date();
-    processGesture(this, event, 'start'); // In touch device, trigger `mousemove`(`mouseover`) should
+    this.handler.processGesture(this, event, 'start'); // In touch device, trigger `mousemove`(`mouseover`) should
     // be triggered, and must before `mousedown` triggered.
 
     domHandlers.mousemove.call(this, event);
@@ -129,7 +113,7 @@ var domHandlers = {
     // mouse event in upper applicatoin.
 
     event.zrByTouch = true;
-    processGesture(this, event, 'change'); // Mouse move should always be triggered no matter whether
+    this.handler.processGesture(this, event, 'change'); // Mouse move should always be triggered no matter whether
     // there is gestrue event, because mouse move and pinch may
     // be used at the same time.
 
@@ -147,7 +131,7 @@ var domHandlers = {
     // mouse event in upper applicatoin.
 
     event.zrByTouch = true;
-    processGesture(this, event, 'end');
+    this.handler.processGesture(this, event, 'end');
     domHandlers.mouseup.call(this, event); // Do not trigger `mouseout` here, in spite of `mousemove`(`mouseover`) is
     // triggered in `touchstart`. This seems to be illogical, but by this mechanism,
     // we can conveniently implement "hover style" in both PC and touch device just
@@ -253,12 +237,6 @@ function HandlerDomProxy(dom) {
    */
 
   this._touchTimer;
-  /**
-   * @private
-   * @type {module:zrender/core/GestureMgr}
-   */
-
-  this._gestureMgr = new GestureMgr();
   this._handlers = {};
   initDomHandler(this);
 

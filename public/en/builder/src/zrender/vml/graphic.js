@@ -229,7 +229,7 @@ if (!env.canvasSupported) {
   };
 
   var updateFillAndStroke = function (vmlEl, type, style, zrEl) {
-    var isFill = type == 'fill';
+    var isFill = type === 'fill';
     var el = vmlEl.getElementsByTagName(type)[0]; // Stroke must have lineWidth
 
     if (style[type] != null && style[type] !== 'none' && (isFill || !isFill && style.lineWidth)) {
@@ -469,6 +469,7 @@ if (!env.canvasSupported) {
 
     if (this.__dirtyPath) {
       path.beginPath();
+      path.subPixelOptimize = false;
       this.buildPath(path, this.shape);
       path.toStatic();
       this.__dirtyPath = false;
@@ -663,7 +664,7 @@ if (!env.canvasSupported) {
         vmlEl.appendChild(cropEl);
       }
 
-      if (imageEl.parentNode != cropEl) {
+      if (imageEl.parentNode !== cropEl) {
         cropEl.appendChild(imageEl);
       }
     } else {
@@ -814,7 +815,7 @@ if (!env.canvasSupported) {
     var fontStyle = getFontStyle(style.font); // FIXME encodeHtmlAttribute ?
 
     var font = fontStyle.style + ' ' + fontStyle.variant + ' ' + fontStyle.weight + ' ' + fontStyle.size + 'px "' + fontStyle.family + '"';
-    textRect = textRect || textContain.getBoundingRect(text, font, align, verticalAlign); // Transform rect to view space
+    textRect = textRect || textContain.getBoundingRect(text, font, align, verticalAlign, style.textPadding, style.textLineHeight); // Transform rect to view space
 
     var m = this.transform; // Ignore transform for text in other element
 

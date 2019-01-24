@@ -68,15 +68,14 @@ SunburstPieceProto.updateData = function (firstCreate, node, state, seriesModel,
   var sector = this.childAt(0);
   sector.dataIndex = node.dataIndex;
   var itemModel = node.getModel();
-  var layout = node.getLayout();
-
-  if (!layout) {
-    console.log(node.getLayout());
-  }
+  var layout = node.getLayout(); // if (!layout) {
+  //     console.log(node.getLayout());
+  // }
 
   var sectorShape = zrUtil.extend({}, layout);
   sectorShape.label = null;
   var visualColor = getNodeColor(node, seriesModel, ecModel);
+  fillDefaultColor(node, seriesModel, visualColor);
   var normalStyle = itemModel.getModel('itemStyle').getItemStyle();
   var style;
 
@@ -359,4 +358,10 @@ function isNodeHighlighted(node, activeNode, policy) {
   } else {
     return node === activeNode || node.isDescendantOf(activeNode);
   }
+} // Fix tooltip callback function params.color incorrect when pick a default color
+
+
+function fillDefaultColor(node, seriesModel, color) {
+  var data = seriesModel.getData();
+  data.setItemVisual(node.dataIndex, 'color', color);
 }

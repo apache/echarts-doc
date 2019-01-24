@@ -186,7 +186,7 @@ export function incrementalApplyVisual(stateList, visualMappings, getValueState,
       var rawDataItem = data.getRawDataItem(dataIndex); // Consider performance
 
       if (rawDataItem && rawDataItem.visualMap === false) {
-        return;
+        continue;
       }
 
       var value = dim != null ? data.get(dim, dataIndex, true) : dataIndex;

@@ -19,7 +19,7 @@
 import * as zrUtil from 'zrender/src/core/util';
 import * as textContain from 'zrender/src/contain/text';
 import { makeInner } from '../util/model';
-import { makeLabelFormatter } from './axisHelper';
+import { makeLabelFormatter, getOptionCategoryInterval, shouldShowAllLabels } from './axisHelper';
 var inner = makeInner();
 /**
  * @param {module:echats/coord/Axis} axis
@@ -278,12 +278,11 @@ function makeLabelsByNumericCategoryInterval(axis, categoryInterval, onlyTick) {
   // do not need to perform this process.
 
 
-  var showMinMax = {
-    min: labelModel.get('showMinLabel'),
-    max: labelModel.get('showMaxLabel')
-  };
+  var showAllLabel = shouldShowAllLabels(axis);
+  var includeMinLabel = labelModel.get('showMinLabel') || showAllLabel;
+  var includeMaxLabel = labelModel.get('showMaxLabel') || showAllLabel;
 
-  if (showMinMax.min && startTick !== ordinalExtent[0]) {
+  if (includeMinLabel && startTick !== ordinalExtent[0]) {
     addItem(ordinalExtent[0]);
   } // Optimize: avoid generating large array by `ordinalScale.getTicks()`.
 
@@ -294,7 +293,7 @@ function makeLabelsByNumericCategoryInterval(axis, categoryInterval, onlyTick) {
     addItem(tickValue);
   }
 
-  if (showMinMax.max && tickValue !== ordinalExtent[1]) {
+  if (includeMaxLabel && tickValue !== ordinalExtent[1]) {
     addItem(ordinalExtent[1]);
   }
 
@@ -327,10 +326,4 @@ function makeLabelsByCustomizedCategoryInterval(axis, categoryInterval, onlyTick
     }
   });
   return result;
-} // Can be null|'auto'|number|function
-
-
-function getOptionCategoryInterval(model) {
-  var interval = model.get('interval');
-  return interval == null ? 'auto' : interval;
 }

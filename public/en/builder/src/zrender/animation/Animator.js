@@ -47,7 +47,7 @@ function interpolateString(p0, p1, percent) {
 function interpolateArray(p0, p1, percent, out, arrDim) {
   var len = p0.length;
 
-  if (arrDim == 1) {
+  if (arrDim === 1) {
     for (var i = 0; i < len; i++) {
       out[i] = interpolateNumber(p0[i], p1[i], percent);
     }
@@ -156,7 +156,7 @@ function isArraySame(arr0, arr1, arrDim) {
 function catmullRomInterpolateArray(p0, p1, p2, p3, t, t2, t3, out, arrDim) {
   var len = p0.length;
 
-  if (arrDim == 1) {
+  if (arrDim === 1) {
     for (var i = 0; i < len; i++) {
       out[i] = catmullRomInterpolate(p0[i], p1[i], p2[i], p3[i], t, t2, t3);
     }
@@ -262,7 +262,7 @@ function createTrackClip(animator, easing, oneTrackDone, keyframes, propName, fo
 
     prevValue = value; // Try converting a string to a color array
 
-    if (typeof value == 'string') {
+    if (typeof value === 'string') {
       var colorArray = color.parse(value);
 
       if (colorArray) {

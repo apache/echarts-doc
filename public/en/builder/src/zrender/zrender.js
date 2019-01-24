@@ -25,11 +25,11 @@ var instances = {}; // ZRender实例map索引
  * @type {string}
  */
 
-export var version = '4.0.5';
+export var version = '4.0.6';
 /**
  * Initializing a zrender instance
  * @param {HTMLElement} dom
- * @param {Object} opts
+ * @param {Object} [opts]
  * @param {string} [opts.renderer='canvas'] 'canvas' or 'svg'
  * @param {number} [opts.devicePixelRatio]
  * @param {number|string} [opts.width] Can be 'auto' (the same as null/undefined)

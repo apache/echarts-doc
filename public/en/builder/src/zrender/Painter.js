@@ -48,7 +48,7 @@ function isDisplayableCulled(el, width, height) {
 }
 
 function isClipPathChanged(clipPaths, prevClipPaths) {
-  if (clipPaths == prevClipPaths) {
+  if (clipPaths === prevClipPaths) {
     // Can both be null or undefined
     return false;
   }
@@ -817,7 +817,7 @@ Painter.prototype = {
       height = this._getSize(1);
       domRoot.style.display = ''; // 优化没有实际改变的resize
 
-      if (this._width != width || height != this._height) {
+      if (this._width !== width || height !== this._height) {
         domRoot.style.width = width + 'px';
         domRoot.style.height = height + 'px';
 

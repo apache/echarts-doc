@@ -125,7 +125,7 @@ function RoamController(zr) {
 zrUtil.mixin(RoamController, Eventful);
 
 function mousedown(e) {
-  if (eventTool.notLeftMouse(e) || e.target && e.target.draggable) {
+  if (eventTool.isMiddleOrRightButtonOnMouseUpDown(e) || e.target && e.target.draggable) {
     return;
   }
 
@@ -141,7 +141,7 @@ function mousedown(e) {
 }
 
 function mousemove(e) {
-  if (eventTool.notLeftMouse(e) || !isAvailableBehavior('moveOnMouseMove', e, this._opt) || !this._dragging || e.gestureEvent === 'pinch' || interactionMutex.isTaken(this._zr, 'globalPan')) {
+  if (!this._dragging || !isAvailableBehavior('moveOnMouseMove', e, this._opt) || e.gestureEvent === 'pinch' || interactionMutex.isTaken(this._zr, 'globalPan')) {
     return;
   }
 
@@ -165,7 +165,7 @@ function mousemove(e) {
 }
 
 function mouseup(e) {
-  if (!eventTool.notLeftMouse(e)) {
+  if (!eventTool.isMiddleOrRightButtonOnMouseUpDown(e)) {
     this._dragging = false;
   }
 }

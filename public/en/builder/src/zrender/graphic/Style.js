@@ -1,4 +1,5 @@
 import fixShadow from './helper/fixShadow';
+import { ContextCachedBy } from './constant';
 var STYLE_COMMON_PROPS = [['shadowBlur', 0], ['shadowOffsetX', 0], ['shadowOffsetY', 0], ['shadowColor', '#000'], ['lineCap', 'butt'], ['lineJoin', 'miter'], ['miterLimit', 10]]; // var SHADOW_PROPS = STYLE_COMMON_PROPS.slice(0, 4);
 // var LINE_PROPS = STYLE_COMMON_PROPS.slice(4);
 
@@ -347,32 +348,35 @@ Style.prototype = {
    */
   bind: function (ctx, el, prevEl) {
     var style = this;
-    var prevStyle = prevEl && prevEl.style;
-    var firstDraw = !prevStyle;
+    var prevStyle = prevEl && prevEl.style; // If no prevStyle, it means first draw.
+    // Only apply cache if the last time cachced by this function.
+
+    var notCheckCache = !prevStyle || ctx.__attrCachedBy !== ContextCachedBy.STYLE_BIND;
+    ctx.__attrCachedBy = ContextCachedBy.STYLE_BIND;
 
     for (var i = 0; i < STYLE_COMMON_PROPS.length; i++) {
       var prop = STYLE_COMMON_PROPS[i];
       var styleName = prop[0];
 
-      if (firstDraw || style[styleName] !== prevStyle[styleName]) {
+      if (notCheckCache || style[styleName] !== prevStyle[styleName]) {
         // FIXME Invalid property value will cause style leak from previous element.
         ctx[styleName] = fixShadow(ctx, styleName, style[styleName] || prop[1]);
       }
     }
 
-    if (firstDraw || style.fill !== prevStyle.fill) {
+    if (notCheckCache || style.fill !== prevStyle.fill) {
       ctx.fillStyle = style.fill;
     }
 
-    if (firstDraw || style.stroke !== prevStyle.stroke) {
+    if (notCheckCache || style.stroke !== prevStyle.stroke) {
       ctx.strokeStyle = style.stroke;
     }
 
-    if (firstDraw || style.opacity !== prevStyle.opacity) {
+    if (notCheckCache || style.opacity !== prevStyle.opacity) {
       ctx.globalAlpha = style.opacity == null ? 1 : style.opacity;
     }
 
-    if (firstDraw || style.blend !== prevStyle.blend) {
+    if (notCheckCache || style.blend !== prevStyle.blend) {
       ctx.globalCompositeOperation = style.blend || 'source-over';
     }
 

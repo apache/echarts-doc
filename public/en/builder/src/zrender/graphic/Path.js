@@ -28,6 +28,12 @@ Path.prototype = {
   type: 'path',
   __dirtyPath: true,
   strokeContainThreshold: 5,
+
+  /**
+   * See `module:zrender/src/graphic/helper/subPixelOptimize`.
+   * @type {boolean}
+   */
+  subPixelOptimize: false,
   brush: function (ctx, prevEl) {
     var style = this.style;
     var path = this.path || pathProxyForDraw;
