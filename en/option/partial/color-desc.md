@@ -14,7 +14,7 @@
 >     }, {
 >         offset: 1, color: 'blue' // color at 100% position
 >     }],
->     globa: false // false by default
+>     global: false // false by default
 > }
 > // Radial gradient. First three parameters are x and y positions of center, and radius, similar to linear gradient.
 > color: {
