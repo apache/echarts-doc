@@ -154,11 +154,11 @@ Bar color.{{ if: ${useColorPalatte} }} defaults to acquire colors from global pa
 
 #${prefix} barBorderColor(Color) = '#000'
 
-The bodrder color of bar.
+The border color of bar.
 
 #${prefix} barBorderWidth(number) = 0
 
-The bodrder width of bar. defaults to have no border.
+The border width of bar. defaults to have no border.
 
 {{ if: ${barBorderRadius} }}
 {{use: partial-border-radius(
