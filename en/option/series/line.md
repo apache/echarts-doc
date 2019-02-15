@@ -44,7 +44,7 @@ Only work when main axis is `'category'` axis (`axis.type` is `'category'`). Opt
 + `false`: Follow the interval strategy with [axisLabel.interval](~xAxis.axisLabel.interval).
 
 ## hoverAnimation(boolean) = true
-Whether to enable the animation effect when mouse is on the symbol.
+Set this to `false` to prevent the animation effect when the mouse is hovering over a symbol
 
 {{ use: partial-legend-hover-link }}
 
