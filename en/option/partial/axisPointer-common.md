@@ -83,7 +83,7 @@ In value axis and time axis, if [snap](~xAxis.axisPointer.snap) is set as true, 
 
 #${prefix} show(boolean) = false
 
-axisPointer will not be displayed by default. But if[tooltip.trigger](~tooltip.trigger) is set as `'axis'` or [tooltip.axisPointer.type](~tooltip.axisPointer.type) is set as  `'cross'`, axisPointer will be displayed automatically. Each coordinate system will automatically chose the axes whose will display its axisPointer. [tooltip.axisPointer.axis](~tooltip.axisPointer.axis) can be used to change the choice.
+axisPointer will not be displayed by default. But if [tooltip.trigger](~tooltip.trigger) is set as `'axis'` or [tooltip.axisPointer.type](~tooltip.axisPointer.type) is set as  `'cross'`, axisPointer will be displayed automatically. Each coordinate system will automatically chose the axes whose will display its axisPointer. [tooltip.axisPointer.axis](~tooltip.axisPointer.axis) can be used to change the choice.
 
 #${prefix} type(string) = 'line'
 
