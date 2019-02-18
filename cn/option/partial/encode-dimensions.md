@@ -26,12 +26,6 @@ option = {
 }
 ```
 
-encode 支持的属性，根据坐标系不同而不同。
-对于 [直角坐标系（cartesian2d）](~grid)，支持 `x`、`y`。
-对于 [极坐标系（polar）](~polar)，支持 `radius`、`angle`。
-对于 [地理坐标系（geo）](~geo)，支持 `lng`，`lat`。
-此外，均支持 `tooltip` 和 `itemName`（用于指定 tooltip 中数据项名称）。
-
 当使用 [dimensions](~series.dimensions) 给维度定义名称后，`encode` 中可直接引用名称，例如：
 
 ```js
@@ -44,6 +38,53 @@ series: {
     }
 }
 ```
+
+`encode` 声明的基本结构如下，其中冒号左边是坐标系、标签等特定名称，如 `'x'`, `'y'`, `'tooltip'` 等，冒号右边是数据中的维度名（string 格式）或者维度的序号（number 格式，从 0 开始计数），可以指定一个或多个维度（使用数组）。通常情况下，下面各种信息不需要所有的都写，按需写即可。
+
+下面是 encode 支持的属性：
+
+```js
+// 在任何坐标系和系列中，都支持：
+encode: {
+    // 使用 “名为 product 的维度” 和 “名为 score 的维度” 的值在 tooltip 中显示
+    tooltip: ['product', 'score']
+    // 使用 “维度 1” 和 “维度 3” 的维度名连起来作为系列名。（有时候名字比较长，这可以避免在 series.name 重复输入这些名字）
+    seriesName: [1, 3],
+    // 表示使用 “维度2” 中的值作为 id。这在使用 setOption 动态更新数据时有用处，可以使新老数据用 id 对应起来，从而能够产生合适的数据更新动画。
+    itemId: 2,
+    // 指定数据项的名称使用 “维度3” 在饼图等图表中有用，可以使这个名字显示在图例（legend）中。
+    itemName: 3
+}
+
+// 直角坐标系（grid/cartesian）特有的属性：
+encode: {
+    // 把 “维度1”、“维度5”、“名为 score 的维度” 映射到 X 轴：
+    x: [1, 5, 'score'],
+    // 把“维度0”映射到 Y 轴。
+    y: 0
+}
+
+// 极坐标系（polar）特有的属性：
+encode: {
+    radius: 3,
+    angle: 2
+}
+
+// 地理坐标系（geo）特有的属性：
+encode: {
+    lng: 3,
+    lat: 2
+}
+
+// 对于一些没有坐标系的图表，例如饼图、漏斗图等，可以是：
+encode: {
+    value: 3
+}
+```
+
+这是个更丰富的 `encode` 的[示例](${galleryViewPath}dataset-encode1&edit=1&reset=1)：
+
+
 
 特殊地，在 [自定义系列（custom series）](~series-custom) 中，`encode` 中轴可以不指定或设置为 `null/undefined`，从而使系列免于受这个轴控制，也就是说，轴的范围（extent）不会受此系列数值的影响，轴被 [dataZoom](~dataZoom) 控制时也不会过滤掉这个系列：
 

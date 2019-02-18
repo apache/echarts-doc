@@ -75,6 +75,19 @@
     noBox=true
 ) }}
 
+
+## textAlign(string) = 'auto'
+
+整体（包括 text 和 subtext）的水平对齐。
+
+可选值：`'auto'`、`'left'`、`'right'`、`'center'`。
+
+## textVerticalAlign(string) = 'auto'
+
+整体（包括 text 和 subtext）的垂直对齐。
+
+可选值：`'auto'`、`'top'`、`'bottom'`、`'middle'`。
+
 ## triggerEvent(boolean) = false
 
 是否触发事件。

@@ -26,7 +26,7 @@ var transitionProperties = ['position', 'rotation', 'scale', 'style', 'shape'];
  */
 
 var TransitionObject = function (opts) {
-  if (typeof opts == 'string') {
+  if (typeof opts === 'string') {
     this._fromStr(opts);
   } else if (opts) {
     opts.property && (this.property = opts.property);
@@ -218,7 +218,7 @@ GraphicStates.prototype = {
           }
 
           if ( // Not initial state
-          name != this._initialState // Not copied from initial state in _extendFromInitial method
+          name !== this._initialState // Not copied from initial state in _extendFromInitial method
           && initialState.style !== state.style) {
             el.style.extendFrom(state.style, true);
           }

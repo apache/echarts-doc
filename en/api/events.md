@@ -282,8 +282,37 @@ Properties in this event.
     type: 'brushselected',
     batch: [
         {
-            // id of brush component. In most case, only one brush component is used, so do not care about this property.
-            brushIndex: number.
+            // Id of the brush component. In most case, only one brush component is used, so do not care about this property.
+            brushId: string,
+            // Index of the brush component.
+            brushIndex: number,
+            // Name of the brush component.
+            brushName: string,
+
+            // The brush areas (that is, select-boxes)
+            areas: [
+                { // The first area.
+                    // `range`/`coordRange` is used to record the current
+                    // range of the area, see the definitions in "brush
+                    // action".
+
+                    // If this area is "glboal arae" (that is, it does not
+                    // belong to any coordinate system), use `range`, where
+                    // the values are pixel.
+                    range: Array.<number>,
+
+                    // If the area is "coordinate system area', use `coordRange`,
+                    // where the values are coordinates.
+                    coordRange: Array.<number>,
+                    // Specially, if the area belongs to an axis of a "grid" (e.g., set
+                    // `xAxisIndex: 0`), and the axis belongs to more than one cartesian
+                    // e.g., the `xAxis` corresponds to two `yAxis`), `coordRanges` is
+                    // used to record the coordinates of this area in each cartesian,
+                    // and `coordRange` is `coordRanges[0]`.
+                    coordRanges: Array.<Array.<number>>,
+                },
+                ...
+            ],
 
             // The selected items in each series.
             // Notice, if a series do not support `brush`, its cooresponding item still appear in this array. Namely, the index this array is the same as `seriesIndex`.
@@ -348,6 +377,11 @@ chart.on('brushSelected', function (params) {
 **Tip: **
 [brush.throttleType](option.html#brush.throttleType) can be used to avoid triggering this event too frequently.
 
+
+
+## globalCursorTaken(Event)
+
+See [takeGlobalCursor](~action.brush.takeGlobalCursor).
 
 
 

@@ -44,6 +44,7 @@ var round = Math.round;
 var mathMax = Math.max;
 var mathMin = Math.min;
 var EMPTY_OBJ = {};
+export var Z2_EMPHASIS_LIFT = 1;
 /**
  * Extend shape with parameters
  */
@@ -262,11 +263,12 @@ function cacheElementStl(el) {
   var hoverStyle = el.__hoverStl;
 
   if (!hoverStyle) {
-    el.__normalStl = null;
+    el.__cachedNormalStl = el.__cachedNormalZ2 = null;
     return;
   }
 
-  var normalStyle = el.__normalStl = {};
+  var normalStyle = el.__cachedNormalStl = {};
+  el.__cachedNormalZ2 = el.z2;
   var elStyle = el.style;
 
   for (var name in hoverStyle) {
@@ -302,10 +304,7 @@ function doSingleEnterHover(el) {
   if (useHoverLayer) {
     elTarget = zr.addHover(el);
     targetStyle = elTarget.style;
-  } // Consider case: only `position: 'top'` is set on emphasis, then text
-  // color should be returned to `autoColor`, rather than remain '#fff'.
-  // So we should rollback then apply again after style merging.
-
+  }
 
   rollbackDefaultTextStyle(targetStyle);
 
@@ -339,7 +338,7 @@ function doSingleEnterHover(el) {
 
   if (!useHoverLayer) {
     el.dirty(false);
-    el.z2 += 1;
+    el.z2 += Z2_EMPHASIS_LIFT;
   }
 }
 
@@ -350,20 +349,19 @@ function setDefaultHoverFillStroke(targetStyle, hoverStyle, prop) {
 }
 
 function doSingleLeaveHover(el) {
-  if (el.__highlighted) {
-    doSingleRestoreHoverStyle(el);
-    el.__highlighted = false;
-  }
-}
-
-function doSingleRestoreHoverStyle(el) {
   var highlighted = el.__highlighted;
+
+  if (!highlighted) {
+    return;
+  }
+
+  el.__highlighted = false;
 
   if (highlighted === 'layer') {
     el.__zr && el.__zr.removeHover(el);
   } else if (highlighted) {
     var style = el.style;
-    var normalStl = el.__normalStl;
+    var normalStl = el.__cachedNormalStl;
 
     if (normalStl) {
       rollbackDefaultTextStyle(style); // Consider null/undefined value, should use
@@ -371,7 +369,15 @@ function doSingleRestoreHoverStyle(el) {
 
       el.setStyle(normalStl);
       applyDefaultTextStyle(style);
-      el.z2 -= 1;
+    } // `__cachedNormalZ2` will not be reset if calling `setElementHoverStyle`
+    // when `el` is on emphasis state. So here by comparing with 1, we try
+    // hard to make the bug case rare.
+
+
+    var normalZ2 = el.__cachedNormalZ2;
+
+    if (normalZ2 != null && el.z2 - normalZ2 === Z2_EMPHASIS_LIFT) {
+      el.z2 = normalZ2;
     }
   }
 }
@@ -382,7 +388,10 @@ function traverseCall(el, method) {
   }) : method(el);
 }
 /**
- * Set hover style of element.
+ * Set hover style (namely "emphasis style") of element, based on the current
+ * style of the given `el`.
+ * This method should be called after all of the normal styles have been adopted
+ * to the `el`. See the reason on `setHoverStyle`.
  *
  * @param {module:zrender/Element} el Should not be `zrender/container/Group`.
  * @param {Object|boolean} [hoverStl] The specified hover style.
@@ -396,10 +405,26 @@ function traverseCall(el, method) {
 
 
 export function setElementHoverStyle(el, hoverStl) {
+  // For performance consideration, it might be better to make the "hover style" only the
+  // difference properties from the "normal style", but not a entire copy of all styles.
   hoverStl = el.__hoverStl = hoverStl !== false && (hoverStl || {});
-  el.__hoverStlDirty = true;
+  el.__hoverStlDirty = true; // FIXME
+  // It is not completely right to save "normal"/"emphasis" flag on elements.
+  // It probably should be saved on `data` of series. Consider the cases:
+  // (1) A highlighted elements are moved out of the view port and re-enter
+  // again by dataZoom.
+  // (2) call `setOption` and replace elements totally when they are highlighted.
 
   if (el.__highlighted) {
+    // Consider the case:
+    // The styles of a highlighted `el` is being updated. The new "emphasis style"
+    // should be adapted to the `el`. Notice here new "normal styles" should have
+    // been set outside and the cached "normal style" is out of date.
+    el.__cachedNormalStl = null; // Do not clear `__cachedNormalZ2` here, because setting `z2` is not a constraint
+    // of this method. In most cases, `z2` is not set and hover style should be able
+    // to rollback. Of course, that would bring bug, but only in a rare case, see
+    // `doSingleLeaveHover` for details.
+
     doSingleLeaveHover(el);
     doSingleEnterHover(el);
   }
@@ -448,12 +473,29 @@ function leaveEmphasis() {
   traverseCall(this, doSingleLeaveHover);
 }
 /**
- * Set hover style of element.
+ * Set hover style (namely "emphasis style") of element,
+ * based on the current style of the given `el`.
  *
- * [Caveat]:
- * This method can be called repeatly and achieve the same result.
+ * (1)
+ * **CONSTRAINTS** for this method:
+ * <A> This method MUST be called after all of the normal styles having been adopted
+ * to the `el`.
+ * <B> The input `hoverStyle` (that is, "emphasis style") MUST be the subset of the
+ * "normal style" having been set to the el.
+ * <C> `color` MUST be one of the "normal styles" (because color might be lifted as
+ * a default hover style).
  *
- * [Usage]:
+ * The reason: this method treat the current style of the `el` as the "normal style"
+ * and cache them when enter/update the "emphasis style". Consider the case: the `el`
+ * is in "emphasis" state and `setOption`/`dispatchAction` trigger the style updating
+ * logic, where the el should shift from the original emphasis style to the new
+ * "emphasis style" and should be able to "downplay" back to the new "normal style".
+ *
+ * Indeed, it is error-prone to make a interface has so many constraints, but I have
+ * not found a better solution yet to fit the backward compatibility, performance and
+ * the current programming style.
+ *
+ * (2)
  * Call the method for a "root" element once. Do not call it for each descendants.
  * If the descendants elemenets of a group has itself hover style different from the
  * root group, we can simply mount the style on `el.hoverStyle` for them, but should
@@ -503,6 +545,7 @@ export function setAsHoverStyleTrigger(el, opt) {
   }
 }
 /**
+ * See more info in `setTextStyleCommon`.
  * @param {Object|module:zrender/graphic/Style} normalStyle
  * @param {Object} emphasisStyle
  * @param {module:echarts/model/Model} normalModel
@@ -562,6 +605,7 @@ export function setLabelStyle(normalStyle, emphasisStyle, normalModel, emphasisM
 }
 /**
  * Set basic textStyle properties.
+ * See more info in `setTextStyleCommon`.
  * @param {Object|module:zrender/graphic/Style} textStyle
  * @param {module:echarts/model/Model} model
  * @param {Object} [specifiedTextStyle] Can be overrided by settings in model.
@@ -577,6 +621,7 @@ export function setTextStyle(textStyle, textStyleModel, specifiedTextStyle, opt,
 }
 /**
  * Set text option in the style.
+ * See more info in `setTextStyleCommon`.
  * @deprecated
  * @param {Object} textStyle
  * @param {module:echarts/model/Model} labelModel
@@ -600,7 +645,23 @@ export function setText(textStyle, labelModel, defaultColor) {
   setTextStyleCommon(textStyle, labelModel, opt, isEmphasis); // textStyle.host && textStyle.host.dirty && textStyle.host.dirty(false);
 }
 /**
- * {
+ * The uniform entry of set text style, that is, retrieve style definitions
+ * from `model` and set to `textStyle` object.
+ *
+ * Never in merge mode, but in overwrite mode, that is, all of the text style
+ * properties will be set. (Consider the states of normal and emphasis and
+ * default value can be adopted, merge would make the logic too complicated
+ * to manage.)
+ *
+ * The `textStyle` object can either be a plain object or an instance of
+ * `zrender/src/graphic/Style`, and either be the style of normal or emphasis.
+ * After this mothod called, the `textStyle` object can then be used in
+ * `el.setStyle(textStyle)` or `el.hoverStyle = textStyle`.
+ *
+ * Default value will be adopted and `insideRollbackOpt` will be created.
+ * See `applyDefaultTextStyle` `rollbackDefaultTextStyle` for more details.
+ *
+ * opt: {
  *      disableBox: boolean, Whether diable drawing box of block (outer most).
  *      isRectText: boolean,
  *      autoColor: string, specify a color when color is 'auto',
@@ -768,14 +829,28 @@ function setTokenTextStyle(textStyle, textStyleModel, globalTextStyle, opt, isEm
 
 function getAutoColor(color, opt) {
   return color !== 'auto' ? color : opt && opt.autoColor ? opt.autoColor : null;
-} // When text position is `inside` and `textFill` not specified, we
-// provide a mechanism to auto make text border for better view. But
-// text position changing when hovering or being emphasis should be
-// considered, where the `insideRollback` enables to restore the style.
+}
+/**
+ * Give some default value to the input `textStyle` object, based on the current settings
+ * in this `textStyle` object.
+ *
+ * The Scenario:
+ * when text position is `inside` and `textFill` is not specified, we show
+ * text border by default for better view. But it should be considered that text position
+ * might be changed when hovering or being emphasis, where the `insideRollback` is used to
+ * restore the style.
+ *
+ * Usage (& NOTICE):
+ * When a style object (eithor plain object or instance of `zrender/src/graphic/Style`) is
+ * about to be modified on its text related properties, `rollbackDefaultTextStyle` should
+ * be called before the modification and `applyDefaultTextStyle` should be called after that.
+ * (For the case that all of the text related properties is reset, like `setTextStyleCommon`
+ * does, `rollbackDefaultTextStyle` is not needed to be called).
+ */
 
 
 function applyDefaultTextStyle(textStyle) {
-  var opt = textStyle.insideRollbackOpt; // Only insideRollbackOpt create (setTextStyleCommon used),
+  var opt = textStyle.insideRollbackOpt; // Only `insideRollbackOpt` created (in `setTextStyleCommon`),
   // applyDefaultTextStyle works.
 
   if (!opt || textStyle.textFill != null) {
@@ -812,6 +887,17 @@ function applyDefaultTextStyle(textStyle) {
     textStyle.insideRollback = insideRollback;
   }
 }
+/**
+ * Consider the case: in a scatter,
+ * label: {
+ *     normal: {position: 'inside'},
+ *     emphasis: {position: 'top'}
+ * }
+ * In the normal state, the `textFill` will be set as '#fff' for pretty view (see
+ * `applyDefaultTextStyle`), but when switching to emphasis state, the `textFill`
+ * should be retured to 'autoColor', but not keep '#fff'.
+ */
+
 
 function rollbackDefaultTextStyle(style) {
   var insideRollback = style.insideRollback;

@@ -270,6 +270,10 @@ MapDraw.prototype = {
 
         var textEl = new graphic.Text({
           position: region.center.slice(),
+          // FIXME
+          // label rotation is not support yet in geo or regions of series-map
+          // that has no data. The rotation will be effected by this `scale`.
+          // So needed to change to RectText?
           scale: [1 / scale[0], 1 / scale[1]],
           z2: 10,
           silent: true

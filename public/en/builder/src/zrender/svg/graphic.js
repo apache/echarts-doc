@@ -46,10 +46,6 @@ function setTransform(svgEl, m) {
 function attr(el, key, val) {
   if (!val || val.type !== 'linear' && val.type !== 'radial') {
     // Don't set attribute for gradient, since it need new dom nodes
-    if (typeof val === 'string' && val.indexOf('NaN') > -1) {
-      console.log(val);
-    }
-
     el.setAttribute(key, val);
   }
 }
@@ -246,6 +242,7 @@ svgPath.brush = function (el) {
 
   if (el.__dirtyPath) {
     path.beginPath();
+    path.subPixelOptimize = false;
     el.buildPath(path, el.shape);
     el.__dirtyPath = false;
     var pathStr = pathDataToString(path);
@@ -352,7 +349,7 @@ var svgTextDrawRectText = function (el, rect, textRect) {
 
   var font = style.font || [style.fontStyle || '', style.fontWeight || '', style.fontSize || '', style.fontFamily || ''].join(' ') || textContain.DEFAULT_FONT;
   var verticalAlign = getVerticalAlignForSvg(style.textVerticalAlign);
-  textRect = textContain.getBoundingRect(text, font, align, verticalAlign);
+  textRect = textContain.getBoundingRect(text, font, align, verticalAlign, style.textPadding, style.textLineHeight);
   var lineHeight = textRect.lineHeight; // Text position represented by coord
 
   if (textPosition instanceof Array) {

@@ -1,8 +1,10 @@
-import { retrieve2, retrieve3, each, normalizeCssArray, isString, isObject, isFunction } from '../../core/util';
+import { retrieve2, retrieve3, each, normalizeCssArray, isString, isObject } from '../../core/util';
 import * as textContain from '../../contain/text';
 import * as roundRectHelper from './roundRect';
 import * as imageHelper from './image';
-import fixShadow from './fixShadow'; // TODO: Have not support 'start', 'end' yet.
+import fixShadow from './fixShadow';
+import { ContextCachedBy, WILL_BE_RESTORED } from '../constant';
+var DEFAULT_FONT = textContain.DEFAULT_FONT; // TODO: Have not support 'start', 'end' yet.
 
 var VALID_TEXT_ALIGN = {
   left: 1,
@@ -51,24 +53,51 @@ function normalizeStyle(style) {
  * @param {module:zrender/graphic/Style} style
  * @param {Object|boolean} [rect] {x, y, width, height}
  *                  If set false, rect text is not used.
- * @param {Element} [prevEl] For ctx prop cache.
+ * @param {Element|module:zrender/graphic/helper/constant.WILL_BE_RESTORED} [prevEl] For ctx prop cache.
  */
 
 
 export function renderText(hostEl, ctx, text, style, rect, prevEl) {
-  style.rich ? renderRichText(hostEl, ctx, text, style, rect) : renderPlainText(hostEl, ctx, text, style, rect, prevEl);
+  style.rich ? renderRichText(hostEl, ctx, text, style, rect, prevEl) : renderPlainText(hostEl, ctx, text, style, rect, prevEl);
 } // Avoid setting to ctx according to prevEl if possible for
 // performance in scenarios of large amount text.
 
 function renderPlainText(hostEl, ctx, text, style, rect, prevEl) {
   'use strict';
 
-  var prevStyle = prevEl && prevEl.style; // Some cache only available on textEl.
+  var needDrawBg = needDrawBackground(style);
+  var prevStyle;
+  var checkCache = false;
+  var cachedByMe = ctx.__attrCachedBy === ContextCachedBy.PLAIN_TEXT; // Only take and check cache for `Text` el, but not RectText.
 
-  var isPrevTextEl = prevStyle && prevEl.type === 'text';
-  var styleFont = style.font || textContain.DEFAULT_FONT;
+  if (prevEl !== WILL_BE_RESTORED) {
+    if (prevEl) {
+      prevStyle = prevEl.style;
+      checkCache = !needDrawBg && cachedByMe && prevStyle;
+    } // Prevent from using cache in `Style::bind`, because of the case:
+    // ctx property is modified by other properties than `Style::bind`
+    // used, and Style::bind is called next.
 
-  if (!isPrevTextEl || styleFont !== (prevStyle.font || textContain.DEFAULT_FONT)) {
+
+    ctx.__attrCachedBy = needDrawBg ? ContextCachedBy.NONE : ContextCachedBy.PLAIN_TEXT;
+  } // Since this will be restored, prevent from using these props to check cache in the next
+  // entering of this method. But do not need to clear other cache like `Style::bind`.
+  else if (cachedByMe) {
+      ctx.__attrCachedBy = ContextCachedBy.NONE;
+    }
+
+  var styleFont = style.font || DEFAULT_FONT; // PENDING
+  // Only `Text` el set `font` and keep it (`RectText` will restore). So theoretically
+  // we can make font cache on ctx, which can cache for text el that are discontinuous.
+  // But layer save/restore needed to be considered.
+  // if (styleFont !== ctx.__fontCache) {
+  //     ctx.font = styleFont;
+  //     if (prevEl !== WILL_BE_RESTORED) {
+  //         ctx.__fontCache = styleFont;
+  //     }
+  // }
+
+  if (!checkCache || styleFont !== (prevStyle.font || DEFAULT_FONT)) {
     ctx.font = styleFont;
   } // Use the final font from context-2d, because the final
   // font might not be the style.font when it is illegal.
@@ -83,10 +112,11 @@ function renderPlainText(hostEl, ctx, text, style, rect, prevEl) {
   }
 
   var textPadding = style.textPadding;
+  var textLineHeight = style.textLineHeight;
   var contentBlock = hostEl.__textCotentBlock;
 
   if (!contentBlock || hostEl.__dirtyText) {
-    contentBlock = hostEl.__textCotentBlock = textContain.parsePlainText(text, computedFont, textPadding, style.truncate);
+    contentBlock = hostEl.__textCotentBlock = textContain.parsePlainText(text, computedFont, textPadding, textLineHeight, style.truncate);
   }
 
   var outerHeight = contentBlock.outerHeight;
@@ -102,7 +132,6 @@ function renderPlainText(hostEl, ctx, text, style, rect, prevEl) {
   var boxY = textContain.adjustTextY(baseY, outerHeight, textVerticalAlign);
   var textX = baseX;
   var textY = boxY;
-  var needDrawBg = needDrawBackground(style);
 
   if (needDrawBg || textPadding) {
     // Consider performance, do not call getTextWidth util necessary.
@@ -124,7 +153,9 @@ function renderPlainText(hostEl, ctx, text, style, rect, prevEl) {
   ctx.textAlign = textAlign; // Force baseline to be "middle". Otherwise, if using "top", the
   // text will offset downward a little bit in font "Microsoft YaHei".
 
-  ctx.textBaseline = 'middle'; // Always set shadowBlur and shadowOffset to avoid leak from displayable.
+  ctx.textBaseline = 'middle'; // Set text opacity
+
+  ctx.globalAlpha = style.opacity || 1; // Always set shadowBlur and shadowOffset to avoid leak from displayable.
 
   for (var i = 0; i < SHADOW_STYLE_COMMON_PROPS.length; i++) {
     var propItem = SHADOW_STYLE_COMMON_PROPS[i];
@@ -132,7 +163,7 @@ function renderPlainText(hostEl, ctx, text, style, rect, prevEl) {
     var ctxProp = propItem[1];
     var val = style[styleProp];
 
-    if (!isPrevTextEl || val !== prevStyle[styleProp]) {
+    if (!checkCache || val !== prevStyle[styleProp]) {
       ctx[ctxProp] = fixShadow(ctx, ctxProp, val || propItem[2]);
     }
   } // `textBaseline` is set as 'middle'.
@@ -140,9 +171,9 @@ function renderPlainText(hostEl, ctx, text, style, rect, prevEl) {
 
   textY += lineHeight / 2;
   var textStrokeWidth = style.textStrokeWidth;
-  var textStrokeWidthPrev = isPrevTextEl ? prevStyle.textStrokeWidth : null;
-  var strokeWidthChanged = !isPrevTextEl || textStrokeWidth !== textStrokeWidthPrev;
-  var strokeChanged = !isPrevTextEl || strokeWidthChanged || style.textStroke !== prevStyle.textStroke;
+  var textStrokeWidthPrev = checkCache ? prevStyle.textStrokeWidth : null;
+  var strokeWidthChanged = !checkCache || textStrokeWidth !== textStrokeWidthPrev;
+  var strokeChanged = !checkCache || strokeWidthChanged || style.textStroke !== prevStyle.textStroke;
   var textStroke = getStroke(style.textStroke, textStrokeWidth);
   var textFill = getFill(style.textFill);
 
@@ -157,7 +188,7 @@ function renderPlainText(hostEl, ctx, text, style, rect, prevEl) {
   }
 
   if (textFill) {
-    if (!isPrevTextEl || style.textFill !== prevStyle.textFill || prevStyle.textBackgroundColor) {
+    if (!checkCache || style.textFill !== prevStyle.textFill) {
       ctx.fillStyle = textFill;
     }
   } // Optimize simply, in most cases only one line exists.
@@ -177,7 +208,13 @@ function renderPlainText(hostEl, ctx, text, style, rect, prevEl) {
   }
 }
 
-function renderRichText(hostEl, ctx, text, style, rect) {
+function renderRichText(hostEl, ctx, text, style, rect, prevEl) {
+  // Do not do cache for rich text because of the complexity.
+  // But `RectText` this will be restored, do not need to clear other cache like `Style::bind`.
+  if (prevEl !== WILL_BE_RESTORED) {
+    ctx.__attrCachedBy = ContextCachedBy.NONE;
+  }
+
   var contentBlock = hostEl.__textCotentBlock;
 
   if (!contentBlock || hostEl.__dirtyText) {
@@ -303,7 +340,7 @@ function placeToken(hostEl, ctx, token, style, lineHeight, lineTop, x, textAlign
   // text will offset downward a little bit in font "Microsoft YaHei".
 
   setCtx(ctx, 'textBaseline', 'middle');
-  setCtx(ctx, 'font', token.font || textContain.DEFAULT_FONT);
+  setCtx(ctx, 'font', token.font || DEFAULT_FONT);
   var textStroke = getStroke(tokenStyle.textStroke || style.textStroke, textStrokeWidth);
   var textFill = getFill(tokenStyle.textFill || style.textFill);
   var textStrokeWidth = retrieve2(tokenStyle.textStrokeWidth, style.textStrokeWidth); // Fill after stroke so the outline will not cover the main part.
@@ -321,7 +358,7 @@ function placeToken(hostEl, ctx, token, style, lineHeight, lineTop, x, textAlign
 }
 
 function needDrawBackground(style) {
-  return style.textBackgroundColor || style.textBorderWidth && style.textBorderColor;
+  return !!(style.textBackgroundColor || style.textBorderWidth && style.textBorderColor);
 } // style: {textBackgroundColor, textBorderWidth, textBorderColor, textBorderRadius, text}
 // shape: {x, y, width, height}
 
@@ -366,9 +403,6 @@ function drawBackground(hostEl, ctx, style, x, y, width, height) {
     } else {
       ctx.fill();
     }
-  } else if (isFunction(textBackgroundColor)) {
-    setCtx(ctx, 'fillStyle', textBackgroundColor(style));
-    ctx.fill();
   } else if (isObject(textBackgroundColor)) {
     var image = textBackgroundColor.image;
     image = imageHelper.createOrUpdateImage(image, null, hostEl, onBgImageLoaded, textBackgroundColor);

@@ -25,7 +25,8 @@ export default function (points, smooth, isLoop, constraint) {
   var v2 = [];
   var prevPoint;
   var nextPoint;
-  var min, max;
+  var min;
+  var max;
 
   if (constraint) {
     min = [Infinity, Infinity];

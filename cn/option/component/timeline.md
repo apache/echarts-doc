@@ -387,19 +387,8 @@ myChart.setOption(
 
 按钮边框线宽。
 
-#### color(Color) = '#c23531'
-
-按钮颜色。
 
 
-#### borderColor(Color) = '#c23531'
-
-按钮边框颜色。
-
-
-#### borderWidth(number) = 2
-
-按钮边框线宽。
 
 
 ## emphasis(Object)

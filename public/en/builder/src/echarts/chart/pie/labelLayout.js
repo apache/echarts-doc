@@ -22,7 +22,7 @@ import * as textContain from 'zrender/src/contain/text';
 function adjustSingleSide(list, cx, cy, r, dir, viewWidth, viewHeight) {
   list.sort(function (a, b) {
     return a.y - b.y;
-  }); // 压
+  });
 
   function shiftDown(start, end, delta, dir) {
     for (var j = start; j < end; j++) {
@@ -35,8 +35,7 @@ function adjustSingleSide(list, cx, cy, r, dir, viewWidth, viewHeight) {
     }
 
     shiftUp(end - 1, delta / 2);
-  } // 弹
-
+  }
 
   function shiftUp(end, delta) {
     for (var j = end; j >= 0; j--) {
@@ -49,31 +48,26 @@ function adjustSingleSide(list, cx, cy, r, dir, viewWidth, viewHeight) {
   }
 
   function changeX(list, isDownList, cx, cy, r, dir) {
-    var lastDeltaX = dir > 0 ? isDownList // 右侧
-    ? Number.MAX_VALUE // 下
-    : 0 // 上
-    : isDownList // 左侧
-    ? Number.MAX_VALUE // 下
-    : 0; // 上
+    var lastDeltaX = dir > 0 ? isDownList // right-side
+    ? Number.MAX_VALUE // down
+    : 0 // up
+    : isDownList // left-side
+    ? Number.MAX_VALUE // down
+    : 0; // up
 
     for (var i = 0, l = list.length; i < l; i++) {
-      // Not change x for center label
-      if (list[i].position === 'center') {
-        continue;
-      }
-
       var deltaY = Math.abs(list[i].y - cy);
       var length = list[i].len;
       var length2 = list[i].len2;
       var deltaX = deltaY < r + length ? Math.sqrt((r + length + length2) * (r + length + length2) - deltaY * deltaY) : Math.abs(list[i].x - cx);
 
       if (isDownList && deltaX >= lastDeltaX) {
-        // 右下，左下
+        // right-down, left-down
         deltaX = lastDeltaX - 10;
       }
 
       if (!isDownList && deltaX <= lastDeltaX) {
-        // 右上，左上
+        // right-up, left-up
         deltaX = lastDeltaX + 10;
       }
 
@@ -119,6 +113,10 @@ function avoidOverlap(labelLayoutList, cx, cy, r, viewWidth, viewHeight) {
   var rightList = [];
 
   for (var i = 0; i < labelLayoutList.length; i++) {
+    if (isPositionCenter(labelLayoutList[i])) {
+      continue;
+    }
+
     if (labelLayoutList[i].x < cx) {
       leftList.push(labelLayoutList[i]);
     } else {
@@ -130,6 +128,10 @@ function avoidOverlap(labelLayoutList, cx, cy, r, viewWidth, viewHeight) {
   adjustSingleSide(leftList, cx, cy, r, -1, viewWidth, viewHeight);
 
   for (var i = 0; i < labelLayoutList.length; i++) {
+    if (isPositionCenter(labelLayoutList[i])) {
+      continue;
+    }
+
     var linePoints = labelLayoutList[i].linePoints;
 
     if (linePoints) {
@@ -145,6 +147,11 @@ function avoidOverlap(labelLayoutList, cx, cy, r, viewWidth, viewHeight) {
       linePoints[1][0] = linePoints[2][0] + dist;
     }
   }
+}
+
+function isPositionCenter(layout) {
+  // Not change x for center label
+  return layout.position === 'center';
 }
 
 export default function (seriesModel, r, viewWidth, viewHeight) {

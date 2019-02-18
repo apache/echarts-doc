@@ -40,6 +40,9 @@
 ## minAngle(number) = 0
 最小的扇区角度（0 ~ 360），用于防止某个值过小导致扇区太小影响交互。
 
+## minShowLabelAngle(number) = 0
+小于这个角度（0 ~ 360）的扇区，不显示标签（label 和 labelLine）。
+
 ## roseType(boolean|string) = false
 是否展示成南丁格尔图，通过半径区分数据大小。可选择两种模式：
 

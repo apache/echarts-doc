@@ -300,8 +300,8 @@ export function parse(colorStr, rgbaArr) {
     return;
   }
 
-  var op = str.indexOf('('),
-      ep = str.indexOf(')');
+  var op = str.indexOf('(');
+  var ep = str.indexOf(')');
 
   if (op !== -1 && ep + 1 === str.length) {
     var fname = str.substr(0, op);

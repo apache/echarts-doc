@@ -29,7 +29,7 @@ export default Path.extend({
     var d = shape.d;
     var offsetX = shape.cx;
     var offsetY = shape.cy;
-    var delta = shape.location == 'out' ? 1 : -1;
+    var delta = shape.location === 'out' ? 1 : -1;
 
     if (shape.location && R <= r) {
       return;

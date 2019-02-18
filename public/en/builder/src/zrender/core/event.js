@@ -79,7 +79,7 @@ export function normalizeEvent(el, e, calculate) {
     clientToLocal(el, e, e, calculate);
     e.zrDelta = e.wheelDelta ? e.wheelDelta / 120 : -(e.detail || 0) / 3;
   } else {
-    var touch = eventType != 'touchend' ? e.targetTouches[0] : e.changedTouches[0];
+    var touch = eventType !== 'touchend' ? e.targetTouches[0] : e.changedTouches[0];
     touch && clientToLocal(el, touch, e, calculate);
   } // Add which for click: 1 === left; 2 === middle; 3 === right; otherwise: 0;
   // See jQuery: https://github.com/jquery/jquery/blob/master/src/event.js
@@ -91,7 +91,11 @@ export function normalizeEvent(el, e, calculate) {
 
   if (e.which == null && button !== undefined && MOUSE_EVENT_REG.test(e.type)) {
     e.which = button & 1 ? 1 : button & 2 ? 3 : button & 4 ? 2 : 0;
-  }
+  } // [Caution]: `e.which` from browser is not always reliable. For example,
+  // when press left button and `mousemove (pointermove)` in Edge, the `e.which`
+  // is 65536 and the `e.button` is -1. But the `mouseup (pointerup)` and
+  // `mousedown (pointerdown)` is the same as Chrome does.
+
 
   return e;
 }
@@ -153,6 +157,22 @@ export var stop = isDomLevel2 ? function (e) {
   e.returnValue = false;
   e.cancelBubble = true;
 };
+/**
+ * This method only works for mouseup and mousedown. The functionality is restricted
+ * for fault tolerance, See the `e.which` compatibility above.
+ *
+ * @param {MouseEvent} e
+ * @return {boolean}
+ */
+
+export function isMiddleOrRightButtonOnMouseUpDown(e) {
+  return e.which === 2 || e.which === 3;
+}
+/**
+ * To be removed.
+ * @deprecated
+ */
+
 export function notLeftMouse(e) {
   // If e.which is undefined, considered as left mouse event.
   return e.which > 1;

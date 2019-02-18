@@ -3,6 +3,7 @@ import * as vec2 from './core/vector';
 import Draggable from './mixin/Draggable';
 import Eventful from './mixin/Eventful';
 import * as eventTool from './core/event';
+import GestureMgr from './core/GestureMgr';
 var SILENT = 'silent';
 
 function makeEventPacket(eveType, targetInfo, event) {
@@ -82,6 +83,12 @@ var Handler = function (storage, painter, proxy, painterRoot) {
    */
 
   this._lastY;
+  /**
+   * @private
+   * @type {module:zrender/core/GestureMgr}
+   */
+
+  this._gestureMgr;
   Draggable.call(this);
   this.setHandlerProxy(proxy);
 };
@@ -145,7 +152,7 @@ Handler.prototype = {
 
     do {
       element = element && element.parentNode;
-    } while (element && element.nodeType != 9 && !(innerDom = element === this.painterRoot));
+    } while (element && element.nodeType !== 9 && !(innerDom = element === this.painterRoot));
 
     !innerDom && this.trigger('globalout', {
       event: event
@@ -221,7 +228,7 @@ Handler.prototype = {
       // 用户有可能在全局 click 事件中 dispose，所以需要判断下 painter 是否存在
 
       this.painter && this.painter.eachOtherLayer(function (layer) {
-        if (typeof layer[eventHandler] == 'function') {
+        if (typeof layer[eventHandler] === 'function') {
           layer[eventHandler].call(layer, eventPacket);
         }
 
@@ -262,6 +269,24 @@ Handler.prototype = {
     }
 
     return out;
+  },
+  processGesture: function (event, stage) {
+    if (!this._gestureMgr) {
+      this._gestureMgr = new GestureMgr();
+    }
+
+    var gestureMgr = this._gestureMgr;
+    stage === 'start' && gestureMgr.clear();
+    var gestureInfo = gestureMgr.recognize(event, this.findHover(event.zrX, event.zrY, null).target, this.proxy.dom);
+    stage === 'end' && gestureMgr.clear(); // Do not do any preventDefault here. Upper application do that if necessary.
+
+    if (gestureInfo) {
+      var type = gestureInfo.type;
+      event.gestureEvent = type;
+      this.dispatchToElement({
+        target: gestureInfo.target
+      }, type, gestureInfo.event);
+    }
   }
 }; // Common handlers
 

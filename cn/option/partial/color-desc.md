@@ -14,7 +14,7 @@
 >     }, {
 >         offset: 1, color: 'blue' // 100% 处的颜色
 >     }],
->     globalCoord: false // 缺省为 false
+>     global: false // 缺省为 false
 > }
 > // 径向渐变，前三个参数分别是圆心 x, y 和半径，取值同线性渐变
 > color: {
@@ -27,7 +27,7 @@
 >     }, {
 >         offset: 1, color: 'blue' // 100% 处的颜色
 >     }],
->     globalCoord: false // 缺省为 false
+>     global: false // 缺省为 false
 > }
 > // 纹理填充
 > color: {

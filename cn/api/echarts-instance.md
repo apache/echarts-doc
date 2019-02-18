@@ -14,13 +14,13 @@ or
 (option: Object, opts?: Object)
 ```
 
-设置图表实例的配置项以及数据，万能接口，所有参数和数据的修改都可以通过`setOption`完成，ECharts 会合并新的参数和数据，然后刷新图表。如果开启[动画](~option.html#option.animation)的话，ECharts 找到两组数据之间的差异然后通过合适的动画去表现数据的变化。
+设置图表实例的配置项以及数据，万能接口，所有参数和数据的修改都可以通过 `setOption` 完成，ECharts 会合并新的参数和数据，然后刷新图表。如果开启[动画](~option.html#option.animation)的话，ECharts 找到两组数据之间的差异然后通过合适的动画去表现数据的变化。
 
 **如下示例：**
 
 ~[500x400](${galleryViewPath}dynamic-data&reset=1&edit=1)
 
-**注：** ECharts 2.x 中的通过 `addData` , `setSeries` 方法设置配置项的方式将不再支持，在 ECharts 3 中统一使用`setOption`，可以参考上面示例。
+**注：** ECharts 2.x 中的通过 `addData` , `setSeries` 方法设置配置项的方式将不再支持，在 ECharts 3 中统一使用 `setOption`，可以参考上面示例。
 
 **参数：**
 
@@ -43,15 +43,15 @@ chart.setOption(option, {
 
 + `notMerge`
 
-    可选，是否不跟之前设置的`option`进行合并，默认为`false`，即合并。
+    可选，是否不跟之前设置的 `option` 进行合并，默认为 `false`，即合并。
 
 + `lazyUpdate`
 
-    可选，在设置完`option`后是否不立即更新图表，默认为`false`，即立即更新。
+    可选，在设置完 `option` 后是否不立即更新图表，默认为 `false`，即立即更新。
 
 + `silent`
 
-    可选，阻止调用 `setOption` 时抛出事件，默认为`false`，即抛出事件。
+    可选，阻止调用 `setOption` 时抛出事件，默认为 `false`，即抛出事件。
 
 ## getWidth(Function)
 ```js
@@ -79,9 +79,9 @@ chart.setOption(option, {
 () => Object
 ```
 
-获取当前实例中维护的`option`对象，返回的`option`对象中包含了用户多次`setOption`合并得到的配置项和数据，也记录了用户交互的状态，例如图例的开关，数据区域缩放选择的范围等等。所以从这份 option 可以恢复或者得到一个新的一模一样的实例。
+获取当前实例中维护的 `option` 对象，返回的 `option` 对象中包含了用户多次 `setOption` 合并得到的配置项和数据，也记录了用户交互的状态，例如图例的开关，数据区域缩放选择的范围等等。所以从这份 `option` 可以恢复或者得到一个新的一模一样的实例。
 
-**注意：**返回的 option 每个组件的属性值都统一是一个数组，不管`setOption`传进来的时候是单个组件的对象还是多个组件的数组。如下形式：
+**注意：**返回的 option 每个组件的属性值都统一是一个数组，不管 `setOption` 传进来的时候是单个组件的对象还是多个组件的数组。如下形式：
 ```js
 {
     title: [{...}],
@@ -97,7 +97,7 @@ option.visualMap[0].inRange.color = ...;
 myChart.setOption(option);
 ```
 
-因为 `getOption`获取的是已经合并过默认值了的，所以在修改了某些配置项后会导致原本是根据这些配置项值去设置的默认值失效。
+因为 `getOption` 获取的是已经合并过默认值了的，所以在修改了某些配置项后会导致原本是根据这些配置项值去设置的默认值失效。
 
 因此我们更**推荐**通过`setOption`去修改部分配置。
 ```js
@@ -491,7 +491,7 @@ chart.containPixel({seriesIndex: [1, 4, 5], gridName: 'a'}, [23, 44]);
 ```js
 (type?: string, opts?: Object)
 ```
-显示加载动画效果。可以在加载数据前手动调用改接口显示加载动画，在数据加载完成后调用 [hideLoading](~echartsInstance.hideLoading) 隐藏加载动画。
+显示加载动画效果。可以在加载数据前手动调用该接口显示加载动画，在数据加载完成后调用 [hideLoading](~echartsInstance.hideLoading) 隐藏加载动画。
 
 **参数：**
 + `type`
@@ -568,7 +568,7 @@ img.src = myChart.getDataURL({
 }) => string
 ```
 
-此接口用于，在大数据量（百万以上）的渲染场景，分片加载数据和增量渲染。在大数据量的场景下（例如地理数的打点），就算数据使用二进制格式，也会有几十或上百兆，在互联网环境下，往往需要分片加载。`appendData` 接口提供了分片加载后增量渲染的能力，渲染新加如的数据块时不会清除原有已经渲染的部分。
+此接口用于，在大数据量（百万以上）的渲染场景，分片加载数据和增量渲染。在大数据量的场景下（例如地理数的打点），就算数据使用二进制格式，也会有几十或上百兆，在互联网环境下，往往需要分片加载。`appendData` 接口提供了分片加载后增量渲染的能力，渲染新加入的数据块时不会清除原有已经渲染的部分。
 
 注意：
 

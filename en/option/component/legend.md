@@ -126,7 +126,7 @@ Legend text style.
 
 ## tooltip(Object)
 
-Tooltip configuration for legend tooltip, which is similar to [tooltip](http://localhost/echarts-doc/public/option.html#tooltip).
+Tooltip configuration for legend tooltip, which is similar to [tooltip](~tooltip).
 
 ## data(Array)
 

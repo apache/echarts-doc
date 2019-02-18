@@ -4,6 +4,9 @@
  */
 import Path from '../Path';
 import * as roundRectHelper from '../helper/roundRect';
+import { subPixelOptimizeRect } from '../helper/subPixelOptimize'; // Avoid create repeatly.
+
+var subPixelOptimizeOutputShape = {};
 export default Path.extend({
   type: 'rect',
   shape: {
@@ -19,10 +22,25 @@ export default Path.extend({
     height: 0
   },
   buildPath: function (ctx, shape) {
-    var x = shape.x;
-    var y = shape.y;
-    var width = shape.width;
-    var height = shape.height;
+    var x;
+    var y;
+    var width;
+    var height;
+
+    if (this.subPixelOptimize) {
+      subPixelOptimizeRect(subPixelOptimizeOutputShape, shape, this.style);
+      x = subPixelOptimizeOutputShape.x;
+      y = subPixelOptimizeOutputShape.y;
+      width = subPixelOptimizeOutputShape.width;
+      height = subPixelOptimizeOutputShape.height;
+      subPixelOptimizeOutputShape.r = shape.r;
+      shape = subPixelOptimizeOutputShape;
+    } else {
+      x = shape.x;
+      y = shape.y;
+      width = shape.width;
+      height = shape.height;
+    }
 
     if (!shape.r) {
       ctx.rect(x, y, width, height);
