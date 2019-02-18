@@ -190,6 +190,22 @@
 
     漏斗图梯形内部左侧。
 
++ `'leftTop'`
+
+    漏斗图左侧上部。
+
++ `'leftBottom'`
+
+    漏斗图左侧下部。
+
++ `'rightTop'`
+
+    漏斗图右侧上部。
+
++ `'rightBottom'`
+
+    漏斗图右侧下部。
+
 + `'inner'` 同 `'inside'`。
 + `'center'` 同 `'inside'`。
 
