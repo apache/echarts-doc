@@ -64,6 +64,11 @@ encode: {
     y: 0
 }
 
+// 单轴（singleAxis）特有的属性：
+encode: {
+    single: 3
+}
+
 // 极坐标系（polar）特有的属性：
 encode: {
     radius: 3,
