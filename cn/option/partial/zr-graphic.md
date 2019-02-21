@@ -1445,7 +1445,7 @@ chart.on('click', function (params) {
 
 注意：
 + transform 中设定的坐标，都是相对于图形元素的父元素的（即 [group](~${optionPath}.${hostName}${symbolVisit}group) 元素或者顶层画布）的 `[0, 0]` 点。也就是说，我们可以使用 [group](~${optionPath}.${hostName}${symbolVisit}group) 来组织多个图形元素，并且 [group](~${optionPath}.${hostName}${symbolVisit}group) 可以嵌套。
-+ 对于一个图形元素，`transform` 执行的顺序是：先缩放（rotation），再旋转（scale），再平移（position）。
++ 对于一个图形元素，`transform` 执行的顺序是：先缩放（scale），再旋转（rotation），再平移（position）。
 
 
 
