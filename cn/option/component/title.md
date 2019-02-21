@@ -43,6 +43,8 @@
     defaultFontSize=18,
     defaultFontWeight="'bolder'",
     defaultColor="'#333'",
+    noAlign=true,
+    noVerticalAlign=true,
     noBox=true
 ) }}
 

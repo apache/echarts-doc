@@ -43,6 +43,8 @@ Open the hyper link of main title in specified tab.
     defaultFontSize=18,
     defaultFontWeight="'bolder'",
     defaultColor="'#333'",
+    noAlign=true,
+    noVerticalAlign=true,
     noBox=true
 ) }}
 
