@@ -56,7 +56,7 @@ data: [{{if: ${hasType} }}
         coord: [10, 20]
     }, {
         name: 'fixed x position',
-        yAixs: 10,
+        yAxis: 10,
         x: '90%'
     }, {{/if}}
     {
