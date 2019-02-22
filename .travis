@@ -1,5 +1,0 @@
-language: node_js
-node_js:
-  - "v10.10.0"
-script:
- - bash release.sh
