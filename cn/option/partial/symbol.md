@@ -1,10 +1,18 @@
 {{target: partial-symbol}}
 
-#${prefix} symbol(string) = ${defaultSymbol}
+#${prefix} symbol(string{{ if: ${hasCallback} }}|Function{{ /if}}) = ${defaultSymbol}
 
 ${name}标记的图形。
 
 {{ use: partial-icon }}
+
+{{ if: ${hasCallback} }}
+如果需要每个数据的图形不一样，可以设置为如下格式的回调函数：
+```js
+(value: Array|number, params: Object) => number|Array
+```
+其中第一个参数 `value` 为 [data](~series-${seriesType}.data) 中的数据值。第二个参数`params` 是其它的数据项参数。
+{{ /if }}
 
 #${prefix} symbolSize(number|Array{{ if: ${hasCallback} }}|Function{{ /if}}) = ${defaultSymbolSize}
 

@@ -1,10 +1,19 @@
 {{target: partial-symbol}}
 
-#${prefix} symbol(string) = ${defaultSymbol}
+#${prefix} symbol(string{{ if: ${hasCallback} }}|Function{{ /if}}) = ${defaultSymbol}
 
 Symbol of ${name}.
 
 {{ use: partial-icon }}
+
+{{ if: ${hasCallback} }}
+If symbols needs to be different, you can set with callback function in the following format:
+```js
+(value: Array|number, params: Object) => number|Array
+```
+The first parameter `value` is the value in [data](~series-${seriesType}.data), and the second parameter `params` is the rest parameters of data item.
+{{ /if }}
+
 
 #${prefix} symbolSize(number|Array{{ if: ${hasCallback} }}|Function{{ /if}}) = ${defaultSymbolSize}
 
