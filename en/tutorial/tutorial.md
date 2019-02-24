@@ -16,3 +16,4 @@
 {{ import: rich-text }}
 {{ import: headless }}
 {{ import: renderer }}
+{{ import: aria }}
