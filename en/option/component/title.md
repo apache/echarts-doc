@@ -15,7 +15,7 @@ In ECharts 2.x, a single instance of ECharts could contains one title component 
 
 ## show(boolean) = true
 
-It specifies whether to show the title component.
+Set this to `false` to prevent the title from showing
 
 ## text(string) = ''
 
@@ -91,7 +91,7 @@ Optional values: `'auto'`, `'top'`, `'bottom'`, `'middle'`.
 
 ## triggerEvent(boolean) = false
 
-Whether to trigger event.
+Set this to `true` to enable triggering events
 
 ## padding(number) = 5
 
