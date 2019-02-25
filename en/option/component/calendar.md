@@ -120,7 +120,8 @@ Options:
 Calendar coordinates splitLine style.
 
 ### show(boolean) = ${defaultShow|default(true)}
-Whether to show the splitLine.
+
+Set this to `false` to prevent the splitLine from showing
 
 ### lineStyle(Object)
 
@@ -174,7 +175,8 @@ calendar: [{
 Day style in calendar coordinates.
 
 ### show(boolean) = true
-Whether to show the dayLabel.
+
+Set this to `false` to prevent dayLabel from showing.
 
 ### firstDay(number) = 0
 A week from the beginning of the week, the default starting on Sunday.
@@ -232,7 +234,8 @@ calendar: [{
 Month label in calendar coordinates.
 
 ### show(boolean) = true
-Whether to show monthLabel.
+
+Set this to `false` to prevent monthLabel from showing.
 
 ### align(string) = 'center'
 Set the month text location in the month interval.
@@ -330,7 +333,8 @@ formatter: function (param) {
 Year label in calendar coordinates.
 
 ### show(boolean) = true
-Whether to show yearLabel.
+
+Set this to `false` to stop yearLabel from showing
 
 ### margin(number) = 30
 The margin between the month label and the axis line.
