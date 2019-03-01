@@ -160,7 +160,7 @@ When designing a treemap, we primarily focus on how to visually distinguish "dif
 
 See [example](${galleryEditorPath}treemap-disk&edit=1&reset=1). The top level is divided into several parts by colors "red", "green", "blue", and etc ... In each color block, `colorSaturation` is used to distinguish nodes in sublevel. The border color of the top level is "white", while the border color of the sublevel is the color that based on the current block color and processed by `borderColorSaturation`.
 
-`treemap` uses this rule of visual configuration: each level computes its visual value based on the configurations (`color`, `colorSaturation`, `borderColor`, `colorSaturation`) on this level. If there is no certain configuration in a node, it inherits the configuration from its parent.
+`treemap` uses this rule of visual configuration: each level computes its visual value based on the configurations (`color`, `colorSaturation`, `borderColor`, `borderColorSaturation`) on this level. If there is no certain configuration in a node, it inherits the configuration from its parent.
 
 In this way, this effect can be configured: set a `color` list on the parent level, and set `colorSaturation` on the child level, and then each node in the parent level would obtain a color from the `color` list, and each node in the child level would obtain a value from `colorSaturation` and compound it with the color inherited from its parent node to get its final color.
 

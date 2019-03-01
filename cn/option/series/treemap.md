@@ -160,7 +160,7 @@ treemap中首要关注的是如何在视觉上较好得区分『不同层级』�
 
 参见这个[例子](${galleryEditorPath}treemap-disk&edit=1&reset=1)，最顶层级用颜色区分，分成了『红』『绿』『蓝』等大块。每个颜色块中是下一个层级，使用颜色的饱和度来区分（参见 `colorSaturation`）。最外层的矩形边界是『白色』，下层级的矩形边界是当前区块颜色加上饱和度处理（参见 `borderColorSaturation`）。
 
-`treemap` 是通过这样的规则来支持这种配置的：每个层级计算用户配置的 `color`、`colorSaturation`、`borderColor`、`colorSaturation`等视觉信息（在levels中配置）。如果子节点没有配置，则继承父的配置，否则使用自己的配置）。
+`treemap` 是通过这样的规则来支持这种配置的：每个层级计算用户配置的 `color`、`colorSaturation`、`borderColor`、`borderColorSaturation`等视觉信息（在levels中配置）。如果子节点没有配置，则继承父的配置，否则使用自己的配置）。
 
 这样，可以做到：父层级配置 `color` 列表，子层级配置 `colorSaturation`。父层级的每个节点会从 `color` 列表中得到一个颜色，子层级的节点会从 `colorSaturation` 中得到一个值，并且继承父节点得到的颜色，合成得到自己的最终颜色。
 
