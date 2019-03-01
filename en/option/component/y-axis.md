@@ -10,7 +10,7 @@ The y axis in cartesian(rectangular) coordinate. Usually a single grid component
 
 ## show(boolean) = true
 
-If show y axis.
+Set this to `false` to prevent the axis from showing.
 
 ## gridIndex(number) = 0
 

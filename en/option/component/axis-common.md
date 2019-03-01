@@ -1,12 +1,13 @@
 {{target: partial-axis-common-axis-line}}
 #${prefix} silent(boolean) = false
-True for axis that cannot be interacted with.
+
+Set this to `true`, to prevent interaction with the axis.
 
 #${prefix} triggerEvent(boolean) = false
 
-Whether the labels of axis triggers and reacts to mouse events.
+Set this to `true` to enable triggering events.
 
-Parameters of event includes:
+Parameters of the event include:
 
 ```js
 {
@@ -29,8 +30,7 @@ Settings related to axis line.
 
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
 
-Whether to show the axis line or not.
-
+Set this to `false` to prevent the axis line from showing.
 
 {{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
 ##${prefix} onZero(boolean) = true
@@ -62,7 +62,7 @@ Settings related to axis label.
 
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
 
-Whether to show the label of axis label or not.
+Set this to `false` to prevent the axis label from appearing.
 
 {{ /if }}
 
@@ -76,7 +76,8 @@ Whether to show the label of axis label or not.
 {{ /if }}
 
 ##${prefix} inside(boolean) = false
-Specifies whether the axis label faces Inside. False by default.
+
+Set this to `true` so the axis labels face the `inside` direction.
 
 {{ if: ${componentType} !== 'angleAxis' }}
 ##${prefix} rotate(number) = 0
@@ -133,7 +134,8 @@ textStyle: {
 Settings related to axis tick.
 
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
-Whether to show the axis tick.
+
+Set this to `false` to prevent the axis tick from showing.
 
 ##${prefix} alignWithLabel(boolean) = false
 Align axis tick with label, which is available only when `boundaryGap` is set to be `true` in category axis. See the following picture:
@@ -148,7 +150,8 @@ Align axis tick with label, which is available only when `boundaryGap` is set to
 ) }}
 {{ /if }}
 ##${prefix} inside(boolean) = false
-Specifies whether the axis label faces Inside. False by default.
+Set this to `true` so the axis labels face the `inside` direction.
+
 ##${prefix} length(number) = 5
 The length of the axis tick.
 
@@ -169,7 +172,8 @@ SplitLine of axis in [grid](~grid) area.
 
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
 
-Whether to show the splitLine. Value axes are shown by default, while category axes are not.
+Set this to `false` to prevent the splitLine from showing.
+`value` type axes are shown by default, while `category` type axes are hidden.
 
 {{ if: ${hasLabelInterval|default(true)} }}
 ##${prefix} interval(number|Function) = 'auto'
@@ -218,7 +222,7 @@ Split area of axis in [grid](~grid) area, not shown by default.
 {{ /if }}
 
 ##${prefix} show(boolean) = ${defaultShow|default(false)}
-Whether to show the splitArea.
+Set this to `true` to show the splitArea.
 ##${prefix} areaStyle(Object)
 Split area style.
 ###${prefix} color(Array) = ['rgba(250,250,250,0.3)','rgba(200,200,200,0.3)']
@@ -280,7 +284,8 @@ Rotation of axis name.
 
 #${prefix} inverse(boolean) = false
 
-Whether axis is inversed. New option from ECharts 3.
+Set this to `true` to invert the axis. 
+This is a new option available from Echarts 3 and newer.
 
 {{/if}}
 
