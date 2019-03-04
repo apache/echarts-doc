@@ -38,11 +38,19 @@
 
 ## nodeWidth(number) = 20
 
-图中每个矩形节点的宽度。
+桑基图中每个矩形节点的宽度。
 
 ## nodeGap(number) = 8
 
-图中每一列任意两个矩形节点之间的间隔。
+桑基图中每一列任意两个矩形节点之间的间隔。
+
+## nodeAlign(string) = 'justify'
+
+桑基图中节点的对齐方式，默认是双端对齐，可以设置为左对齐或右对齐，对应的值分别是：
+
++ `justify`: 节点双端对齐。
++ `left`: 节点左对齐。
++ `right`: 节点右对齐。
 
 ## layoutIterations(number) = 32
 
@@ -96,20 +104,28 @@
 )}}
 
 ## lineStyle(Object)
+
 桑基图边的样式，其中 [lineStyle.color](~series-sankey.lineStyle.color) 支持设置为`'source'`或者`'target'`特殊值，此时边会自动取源节点或目标节点的颜色作为自己的颜色。
 
 {{use: partial-sankey-line-style(prefix="##")}}
 
 ## emphasis(Object)
+
 桑基图的高亮样式设置。
+
 ### label(Object)
+
 {{use:partial-label(
     prefix="###",
     formatter1d=true
 )}}
+
 ### itemStyle(Object)
+
 {{use: partial-item-style(prefix="###")}}
+
 ### lineStyle(Object)
+
 {{use: partial-sankey-line-style(
     prefix="###"
 )}}
