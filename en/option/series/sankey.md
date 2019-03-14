@@ -120,15 +120,28 @@ The line style of sankey graph, in which [lineStyle.color](~series-sankey.lineSt
 
 ## data(Array)
 
-{{ use: partial-1d-data-desc() }}
+The nodes list of the sankey diagram.
+
+```js
+data: [{
+    name: 'node1',
+    // This attribute decides the layer of the current node.
+    depth: 0
+}, {
+    name: 'node2',
+    depth: 1
+}]
+```
+
+**Notice:** The name of the node cannot be repeated.
 
 ### name(string)
 
-The name of data item.
+The name of the node.
 
-### value(number|Array)
+### depth(number)
 
-The value of data item.
+The layer of the node.
 
 ### itemStyle(Object)
 
@@ -143,9 +156,13 @@ The lable style of this node.
 ) }}
 
 ### emphasis(Object)
+
 #### itemStyle(Object)
+
 {{use:partial-item-style(prefix="####")}}
+
 #### label(Object)
+
 {{ use:partial-label(
     prefix="####"
 ) }}
@@ -226,12 +243,15 @@ Equals to [links](~series-sankey.links)
 {{target: partial-sankey-line-style}}
 
 #${prefix} color(Color) = "'#314656'"
+
 The color of the edge in sankey graphs.
 
 #${prefix} opacity(number) = 0.2
+
 The opacity of the edge in sankey graph.
 
 #${prefix} curveness(number) = 0.5
+
 The curveness of the edge in sankey graph.
 
 {{use: partial-style-shadow(prefix=${prefix})}}

@@ -132,15 +132,28 @@
 
 ## data(Array)
 
-{{ use: partial-1d-data-desc() }}
+桑基图节点数据列表。
+
+```js
+data: [{
+    name: 'node1',
+    // This attribute decides the layer of the current node.
+    depth: 0
+}, {
+    name: 'node2',
+    depth: 1
+}]
+```
+
+**注意:** 节点的`name`不能重复。
 
 ### name(string)
 
-数据项名称。
+节点的名称。
 
-### value(number|Array)
+### depth(number)
 
-数据项值。
+节点所在的层。
 
 ### itemStyle(Object)
 
@@ -155,9 +168,13 @@
 ) }}
 
 ### emphasis(Object)
+
 #### itemStyle(Object)
+
 {{use:partial-item-style(prefix="####")}}
+
 #### label(Object)
+
 {{ use:partial-label(
     prefix="####"
 ) }}
@@ -168,9 +185,11 @@
 
 
 ## nodes(Array)
+
 同 [data](~series-sankey.data)
 
 ## links(Array)
+
 节点间的边。**注意: 桑基图理论上只支持有向无环图（DAG, Directed Acyclic Graph），所以请确保输入的边是无环的.** 示例：
 
 ```js
