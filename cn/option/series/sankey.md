@@ -80,6 +80,63 @@
 + `'outEdges'`：hover 的节点、节点的出边、出边邻接的另一节点 会被高亮。hover 到边时，边和相邻节点高亮。
 + `'inEdges'`：hover 的节点、节点的入边、入边邻接的另一节点 会被高亮。hover 到边时，边和相邻节点高亮。
 
+## levels(Array)
+
+桑基图每一层的设置。可以逐层设置，如下：
+
+```js
+levels: [{
+    depth: 0,
+    itemStyle: {
+        color: '#fbb4ae'
+    },
+    lineStyle: {
+        color: 'source',
+        opacity: 0.6
+    }
+}, {
+    depth: 1,
+    itemStyle: {
+        color: '#b3cde3'
+    },
+    lineStyle: {
+        color: 'source',
+        opacity: 0.6
+    }
+}]
+```
+
+也可以只设置某一层：
+
+```js
+levels: [{
+    depth: 3,
+    itemStyle: {
+        color: '#fbb4ae'
+    },
+    lineStyle: {
+        color: 'source',
+        opacity: 0.6
+    }
+}]
+```
+
+### depth(number)
+
+指定设置的是桑基图哪一层，取值从 0 开始。
+
+### itemStyle(Object)
+
+桑基图指定层节点的样式。
+
+{{use:partial-item-style(prefix="###", useColorPalatte=true)}}
+
+### lineStyle(Object)
+
+桑基图指定层出边的样式。其中 [lineStyle.color](~series-sankey.lineStyle.color) 支持设置为`'source'`或者`'target'`特殊值，此时出边会自动取源节点或目标节点的颜色作为自己的颜色。
+
+{{use: partial-sankey-line-style(prefix="###")}}
+
 
 ## label(Object)
 
@@ -204,11 +261,11 @@ links: [{
 
 ### source(string)
 
-边的[源节点名称](~series-graph.data.name)
+边的[源节点名称](~series-sankey.data.name)
 
 ### target(string)
 
-边的[目标节点名称](~series-graph.data.name)
+边的[目标节点名称](~series-sankey.data.name)
 
 ### value(number)
 

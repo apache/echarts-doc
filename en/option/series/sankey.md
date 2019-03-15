@@ -3,7 +3,7 @@
 
 # series.sankey(Object)
 
-** Sankey Graphs **
+** Sankey diagram **
 
 Sankey diagram is a specific type of streamgraphs(can also be seen as a directed acyclic graph). In which the width of each branch is shown proportionally to the flow quantity. These graphs are typically used to visualize energy or material or cost transfers between processes. They can also visualize the energy accounts, material flow accounts on a regional or national level, and also the breakdown of cost of item or services.
 
@@ -15,9 +15,9 @@ Sankey diagram is a specific type of streamgraphs(can also be seen as a directed
 <br>
 **Visual Encoding: **
 
-The sankey graphs encodes each `node` of the raw data into a small rectangular. And different nodes are presented in different colors as far as possible. The `label` next to the small rectangular, which encoding the name of the node.
+The Sankey diagram encodes each `node` of the raw data into a small rectangular. And different nodes are presented in different colors as far as possible. The `label` next to the small rectangular, which encoding the name of the node.
 
-In addition, the edge between two small rectangulars in the graph encoding the `link` of the raw data. The width of edge is shown proportionally to the `value` of `link`.
+In addition, the edge between two small rectangulars in the diagram encoding the `link` of the raw data. The width of edge is shown proportionally to the `value` of `link`.
 
 
 
@@ -38,17 +38,17 @@ In addition, the edge between two small rectangulars in the graph encoding the `
 
 ## nodeWidth(number) = 20
 
-The node width of rectangle in graph.
+The node width of rectangle in Sankey diagram.
 
 
 ## nodeGap(number) = 8
 
-The gap between any two regtangles in each column from the graph.
+The gap between any two regtangles in each column of the Sankey diagram.
 
 
 ## layoutIterations(number) = 32
 
-The iterations of layout, which is used to continuously optimize the positions of nodes in graph, decreasing the overlapping between nodes and edges.
+The iterations of layout, which is used to continuously optimize the positions of nodes in Sankey diagram, decreasing the overlapping between nodes and edges.
 
 The default iterations of layout: `32`.
 
@@ -74,6 +74,65 @@ Optional values:
 + `'outEdges'`: When hovering over a node, the outcoming edges and its adjacent nodes are highlighted. When hovering over an edge, the adjacent nodes are highlighted.
 + `'inEdges'`: When hovering over a node, the incoming edges and its adjacent nodes are highlighted. When hovering over an edge, the adjacent nodes are highlighted.
 
+
+## levels(Array)
+
+The setting of each layer of Sankey diagram. Can be set layer by layer, as follows:
+
+```js
+levels: [{
+    depth: 0,
+    itemStyle: {
+        color: '#fbb4ae'
+    },
+    lineStyle: {
+        color: 'source',
+        opacity: 0.6
+    }
+}, {
+    depth: 1,
+    itemStyle: {
+        color: '#b3cde3'
+    },
+    lineStyle: {
+        color: 'source',
+        opacity: 0.6
+    }
+}]
+```
+
+You can also only set a certain layer:
+
+```js
+levels: [{
+    depth: 3,
+    itemStyle: {
+        color: '#fbb4ae'
+    },
+    lineStyle: {
+        color: 'source',
+        opacity: 0.6
+    }
+}]
+```
+
+### depth(number)
+
+Specify which layer is set, value starts from 0.
+
+### itemStyle(Object)
+
+Specify the node style of the specific layer.
+
+{{use:partial-item-style(prefix="###", useColorPalatte=true)}}
+
+### lineStyle(Object)
+
+Specify the outEdge style of the specific layer. in which [lineStyle.color](~series-sankey.lineStyle.color) can be assigned to the value of `'source'` of `'target'`, then the OutEdge will automatically take the source node or target node color as its own color.
+
+{{use: partial-sankey-line-style(prefix="###")}}
+
+
 ## label(Object)
 
 `label` describes the text label style in each rectangular node.
@@ -87,7 +146,7 @@ Optional values:
 
 ## itemStyle(Object)
 
-The style of node rectangle in sankey graphs.
+The style of node rectangle in Sankey diagram.
 
 {{use: partial-item-style(
     prefix="##",
@@ -99,7 +158,7 @@ The style of node rectangle in sankey graphs.
 
 ## lineStyle(Object)
 
-The line style of sankey graph, in which [lineStyle.color](~series-sankey.lineStyle.color) can be assigned to the value of `'source'` of `'target'`, then the edge will automatically take the source node or target node color as its own color.
+The edge style of Sankey diagram, in which [lineStyle.color](~series-sankey.lineStyle.color) can be assigned to the value of `'source'` of `'target'`, then the edge will automatically take the source node or target node color as its own color.
 
 {{use: partial-sankey-line-style(prefix="##")}}
 
@@ -192,11 +251,11 @@ links: [{
 
 ### source(string)
 
-The [name of source node](~series-graph.data.name) of edge
+The [name of source node](~series-sankey.data.name) of edge
 
 ### target(string)
 
-The [name of target node](~series-graph.data.name) of edge
+The [name of target node](~series-sankey.data.name) of edge
 
 ### value(number)
 
@@ -238,20 +297,18 @@ Equals to [links](~series-sankey.links)
 )}}
 
 
-
-
 {{target: partial-sankey-line-style}}
 
 #${prefix} color(Color) = "'#314656'"
 
-The color of the edge in sankey graphs.
+The color of the edge in Sankey diagram.
 
 #${prefix} opacity(number) = 0.2
 
-The opacity of the edge in sankey graph.
+The opacity of the edge in Sankey diagram.
 
 #${prefix} curveness(number) = 0.5
 
-The curveness of the edge in sankey graph.
+The curveness of the edge in Sankey diagram.
 
 {{use: partial-style-shadow(prefix=${prefix})}}
