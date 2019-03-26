@@ -166,6 +166,12 @@ It is valid when [axisPointer.type](~tooltip.axisPointer.type) is `'cross'`.
 {{ use: partial-line-style(prefix="##" + ${prefix}, defaultColor="#555", defaultWidth=1, defaultType="dashed") }}
 
 
+{{ use: partial-animation(
+    prefix='#' + ${prefix},
+    defaultAnimationEasingUpdate='exponentialOut',
+    defaultAnimationDurationUpdate=200
+) }}
+
 
 
 

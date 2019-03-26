@@ -176,6 +176,11 @@
 {{ use: partial-line-style(prefix="##" + ${prefix}, defaultColor="#555", defaultWidth=1, defaultType="dashed") }}
 
 
+{{ use: partial-animation(
+    prefix='#' + ${prefix},
+    defaultAnimationEasingUpdate='exponentialOut',
+    defaultAnimationDurationUpdate=200
+) }}
 
 
 
