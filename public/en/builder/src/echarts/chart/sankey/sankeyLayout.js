@@ -22,8 +22,8 @@
  * @author Deqing Li(annong035@gmail.com)
  */
 import * as layout from '../../util/layout';
-import nest from '../../util/nest';
 import * as zrUtil from 'zrender/src/core/util';
+import { groupData } from '../../util/model';
 import { __DEV__ } from '../../config';
 export default function (ecModel, api, payload) {
   ecModel.eachSeriesByType('sankey', function (seriesModel) {
@@ -229,11 +229,7 @@ function scaleNodeBreadths(nodes, kx, orient) {
 
 
 function computeNodeDepths(nodes, edges, height, width, nodeGap, iterations, orient) {
-  var nodesByBreadth = nest().key(getKeyFunction(orient)).sortKeys(function (a, b) {
-    return a - b;
-  }).entries(nodes).map(function (d) {
-    return d.values;
-  });
+  var nodesByBreadth = prepareNodesByBreadth(nodes, orient);
   initializeNodeDepth(nodes, nodesByBreadth, edges, height, width, nodeGap, orient);
   resolveCollisions(nodesByBreadth, nodeGap, height, width, orient);
 
@@ -248,16 +244,19 @@ function computeNodeDepths(nodes, edges, height, width, nodeGap, iterations, ori
   }
 }
 
-function getKeyFunction(orient) {
-  if (orient === 'vertical') {
-    return function (d) {
-      return d.getLayout().y;
-    };
-  }
-
-  return function (d) {
-    return d.getLayout().x;
-  };
+function prepareNodesByBreadth(nodes, orient) {
+  var nodesByBreadth = [];
+  var keyAttr = orient === 'vertical' ? 'y' : 'x';
+  var groupResult = groupData(nodes, function (node) {
+    return node.getLayout()[keyAttr];
+  });
+  groupResult.keys.sort(function (a, b) {
+    return a - b;
+  });
+  zrUtil.each(groupResult.keys, function (key) {
+    nodesByBreadth.push(groupResult.buckets.get(key));
+  });
+  return nodesByBreadth;
 }
 /**
  * Compute the original y-position for each node

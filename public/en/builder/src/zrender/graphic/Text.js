@@ -50,7 +50,7 @@ Text.prototype = {
     if (!this._rect) {
       var text = style.text;
       text != null ? text += '' : text = '';
-      var rect = textContain.getBoundingRect(style.text + '', style.font, style.textAlign, style.textVerticalAlign, style.textPadding, style.rich);
+      var rect = textContain.getBoundingRect(style.text + '', style.font, style.textAlign, style.textVerticalAlign, style.textPadding, style.textLineHeight, style.rich);
       rect.x += style.x || 0;
       rect.y += style.y || 0;
 

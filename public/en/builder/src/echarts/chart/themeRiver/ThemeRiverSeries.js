@@ -26,8 +26,8 @@ import createDimensions from '../../data/helper/createDimensions';
 import { getDimensionTypeByAxis } from '../../data/helper/dimensionHelper';
 import List from '../../data/List';
 import * as zrUtil from 'zrender/src/core/util';
+import { groupData } from '../../util/model';
 import { encodeHTML } from '../../util/format';
-import nest from '../../util/nest';
 var DATA_NAME_INDEX = 2;
 var ThemeRiverSeries = SeriesModel.extend({
   type: 'series.themeRiver',
@@ -62,15 +62,15 @@ var ThemeRiverSeries = SeriesModel.extend({
   fixData: function (data) {
     var rawDataLength = data.length; // grouped data by name
 
-    var dataByName = nest().key(function (dataItem) {
-      return dataItem[2];
-    }).entries(data); // data group in each layer
-
-    var layData = zrUtil.map(dataByName, function (d) {
-      return {
-        name: d.key,
-        dataList: d.values
-      };
+    var groupResult = groupData(data, function (item) {
+      return item[2];
+    });
+    var layData = [];
+    groupResult.buckets.each(function (items, key) {
+      layData.push({
+        name: key,
+        dataList: items
+      });
     });
     var layerNum = layData.length;
     var largestLayer = -1;
@@ -187,28 +187,23 @@ var ThemeRiverSeries = SeriesModel.extend({
 
     for (var i = 0; i < lenCount; ++i) {
       indexArr[i] = i;
-    } // data group by name
+    }
 
+    var timeDim = data.mapDimension('single'); // data group by name
 
-    var dataByName = nest().key(function (index) {
+    var groupResult = groupData(indexArr, function (index) {
       return data.get('name', index);
-    }).entries(indexArr);
-    var layerSeries = zrUtil.map(dataByName, function (d) {
-      return {
-        name: d.key,
-        indices: d.values
-      };
     });
-    var timeDim = data.mapDimension('single');
-
-    for (var j = 0; j < layerSeries.length; ++j) {
-      layerSeries[j].indices.sort(comparer);
-    }
-
-    function comparer(index1, index2) {
-      return data.get(timeDim, index1) - data.get(timeDim, index2);
-    }
-
+    var layerSeries = [];
+    groupResult.buckets.each(function (items, key) {
+      items.sort(function (index1, index2) {
+        return data.get(timeDim, index1) - data.get(timeDim, index2);
+      });
+      layerSeries.push({
+        name: key,
+        indices: items
+      });
+    });
     return layerSeries;
   },
 
