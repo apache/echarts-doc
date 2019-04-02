@@ -23,7 +23,7 @@ Align of label text: `'left'` / `'right'`.
 #### show(boolean) = true
 Whether to show the tool.
 
-#### title(boolean) = '${title}'
+#### title(string) = '${title}'
 
 #### icon
 {{ use: partial-icon-image-path }}
