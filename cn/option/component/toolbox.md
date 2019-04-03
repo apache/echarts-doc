@@ -110,6 +110,8 @@ ${name} icon 样式设置。
 保存的文件名称，默认使用 [title.text](~title.text) 作为名称。
 #### backgroundColor(Color) = 'auto'
 保存的图片背景色，默认使用 [backgroundColor](~backgroundColor)，如果`backgroundColor`不存在的话会取白色。
+#### connectedBackgroundColor(Color) = '#fff'
+如果图表使用了 [echarts.connect](api.html#echarts.connect) 对多个图表进行联动，则在导出图片时会导出这些联动的图表。该配置项决定了图表与图表之间间隙处的填充色。
 #### excludeComponents(Array) = ['toolbox']
 保存为图片时忽略的组件列表，默认忽略工具栏。
 {{ use: feature-common(title="保存为图片") }}

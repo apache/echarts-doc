@@ -109,6 +109,8 @@ Format to save the image in, which supports`'png'` and `'jpeg'`.
 Name to save the image, whose default value is [title.text](~title.text).
 #### backgroundColor(Color) = 'auto'
 Background color to save the image, whose default value is [backgroundColor](~backgroundColor). If `backgroundColor` is not set, white color is used.
+#### connectedBackgroundColor(Color) = '#fff'
+When [echarts.connect](api.html#echarts.connect) is used to connect the interaction of multiple chart series, they will all be included in the exported image. This option sets the background color between these charts.
 #### excludeComponents(Array) = ['toolbox']
 Components to be excluded when export. By default, toolbox is excluded.
 {{ use: feature-common(title="save as image") }}
