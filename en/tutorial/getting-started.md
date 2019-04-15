@@ -1,17 +1,17 @@
 {{ target: getting-started }}
 # Get Started with ECharts in 5 minutes
 
-## Get ECharts
+## Installing ECharts
 
 First, install ECharts using one of the following methods:
 
-1. The [official download page](https://ecomfe.github.io/echarts-doc/public/en/download.html), which has different builds for common needs. If you want to include all packages, you can download [the full minified version](http://echarts.baidu.com/dist/echarts.min.js).
+* The [official download page](https://ecomfe.github.io/echarts-doc/public/en/download.html), has different builds for most common use cases. If you would like to include all packages, you can download [the full minified version](http://echarts.baidu.com/dist/echarts.min.js).
 
-2. From the latest [GitHub](https://github.com/ecomfe/echarts) release, you can find the latest version of echarts in `dist` directory of the unzipped files.
+* From the latest [GitHub](https://github.com/ecomfe/echarts) release, you can find the latest version of echarts in `dist` directory of the unzipped files.
 
-3. Using npm: `npm install echarts --save`. [Using ECharts with webpack](https://ecomfe.github.io/echarts-doc/public/en/tutorial.html#Use%20ECharts%20with%20webpack)
+* Using npm: `npm install echarts --save`. [Using ECharts with webpack](https://ecomfe.github.io/echarts-doc/public/en/tutorial.html#Use%20ECharts%20with%20webpack)
 
-4. Using the [online build tool](http://echarts.baidu.com/builder.html) (Chinese).
+* Using the [online build tool](http://echarts.baidu.com/builder.html) (Currently available in Chinese only).
 
 ## Including ECharts
 
