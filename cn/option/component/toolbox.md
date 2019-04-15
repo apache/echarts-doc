@@ -1,23 +1,30 @@
 {{ target: feature-icon-style }}
 
 #${prefix} iconStyle(Object)
-${name} icon 样式设置。
+${name} icon 样式设置。由于 icon 的文本信息只在 icon hover 时候才显示，所以文字相关的配置项请在 `emphasis` 下设置。
 {{ use: partial-item-style(
     defaultBorderColor = '#666',
     defualtColor = 'none',
     defaultBorderWidth = 1,
     prefix="#" + ${prefix}
 ) }}
-##${prefix} textPosition(string)
-文本位置，`'left'` / `'right'` / `'top'` / `'bottom'`。
-##${prefix} textAlign(string)
-文本对齐方式，`'left'` / `'right'`。
 
 
 #${prefix} emphasis(Object)
 ##${prefix} iconStyle(Object)
 {{ use: partial-item-style(prefix="##" + ${prefix}) }}
-
+###${prefix} textPosition(string) = 'bottom'
+文本位置，`'left'` / `'right'` / `'top'` / `'bottom'`。
+###${prefix} textFill(string) = '#000'
+文本颜色，如果未设定，则依次取图标 emphasis 时候的填充色、描边色，如果都不存在，则为 `'#000'`。
+###${prefix} textAlign(string) = 'center'
+文本对齐方式，`'left'` / `'center'` / `'right'`。
+###${prefix} textBackgroundColor(string)
+文本区域填充色。
+###${prefix} textBorderRadius(number)
+文本区域圆角大小。
+###${prefix} textPadding(number)
+文本区域内边距。
 
 
 {{ target: feature-common}}
@@ -286,3 +293,42 @@ feature: {
 {{ use: feature-icon-style(name="公用的", prefix="#") }}
 
 {{ use: partial-rect-layout-width-height(componentName="工具栏") }}
+
+
+## tooltip(Object)
+
+工具箱的 tooltip 配置，配置项同 [tooltip](~tooltip)。默认不显示，可以在需要特殊定制文字样式（尤其是想用自定义 CSS 控制文字样式）的时候开启 tooltip，如下示例：
+
+```js
+option = {
+    tooltip: {
+        show: true // 必须引入 tooltip 组件
+    },
+    toolbox: {
+        show: true,
+        showTitle: false, // 隐藏默认文字，否则两者位置会重叠
+        feature: {
+            saveAsImage: {
+                show: true,
+                title: 'Save As Image'
+            },
+            dataView: {
+                show: true,
+                title: 'Data View'
+            },
+        },
+        tooltip: { // 和 option.tooltip 的配置项相同
+            show: true,
+            formatter: function (param) {
+                return return '<div>' + param.title + '</div>'; // 自定义的 DOM 结构
+            },
+            backgroundColor: '#222',
+            textStyle: {
+                fontSize: 12,
+            },
+            extraCssText: 'box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);' // 自定义的 CSS 样式
+        }
+    },
+    ...
+}
+```

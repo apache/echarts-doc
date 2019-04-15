@@ -1,21 +1,29 @@
 {{ target: feature-icon-style }}
 
 #${prefix} iconStyle(Object)
-The style setting of ${name} icon.
+The style setting of ${name} icon. Since icon label is displayed only when hovering on the icon, the label configuration options are available under `emphasis`.
 {{ use: partial-item-style(
     defaultBorderColor = '#666',
     defualtColor = 'none',
     defaultBorderWidth = 1,
     prefix="#" + ${prefix}
 ) }}
-##${prefix} textPosition(string)
-Position of label: `'left'` / `'right'` / `'top'` / `'bottom'`.
-##${prefix} textAlign(string)
-Align of label text: `'left'` / `'right'`.
-##${prefix} emphasis(Object)
+
+#${prefix} emphasis(Object)
+##${prefix} iconStyle(Object)
 {{ use: partial-item-style(prefix="##" + ${prefix}) }}
-
-
+###${prefix} textPosition(string) = 'bottom'
+Text position: `'left'` / `'right'` / `'top'` / `'bottom'`。
+###${prefix} textFill(string) = '#000'
+Fill color of text. If it's not set, it will use in the order of icon's fill color, stroke color, and `'#000'`.
+###${prefix} textAlign(string) = 'center'
+Text align: `'left'` / `'center'` / `'right'`。
+###${prefix} textBackgroundColor(string)
+Text background color.
+###${prefix} textBorderRadius(number)
+Border radius of text area.
+###${prefix} textPadding(number)
+Padding of text area.
 
 
 {{ target: feature-common}}
@@ -289,3 +297,44 @@ Title.
 {{ use: feature-icon-style(name="Shared", prefix="#") }}
 
 {{ use: partial-rect-layout-width-height(componentName="toolbox") }}
+
+
+## tooltip(Object)
+
+Tooltip configuration for toolbox tooltip, which is similar to [tooltip](~tooltip). It is not shown by default. If you wish to set special style for toolbox icon label (especially when using CSS to control text style), you may set as the following example:
+
+
+```js
+option = {
+    tooltip: {
+        show: true // include tooltip component for the feature
+    },
+    toolbox: {
+        show: true,
+        showTitle: false, // hide the default text so they don't overlap each other
+        feature: {
+            saveAsImage: {
+                show: true,
+                title: 'Save As Image'
+            },
+            dataView: {
+                show: true,
+                title: 'Data View'
+            },
+        },
+        tooltip: { // same as option.tooltip
+            show: true,
+            formatter: function (param) {
+                return return '<div>' + param.title + '</div>'; // user-defined DOM structure
+            },
+            backgroundColor: '#222',
+            textStyle: {
+                fontSize: 12,
+            },
+            extraCssText: 'box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);' // user-defined CSS styles
+        }
+    },
+    ...
+}
+```
+
