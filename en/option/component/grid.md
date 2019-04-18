@@ -31,10 +31,10 @@ Whether the grid region contains [axis tick label](~yAxis.axisLabel) of axis.
 
 + When containLabel is `false`:
     + `grid.left` `grid.right` `grid.top` `grid.bottom` `grid.width` `grid.height` decide the location and size of the rectangle that is made of by xAxis and yAxis.
-    + Setting to `false` will helps when multiple gris need to be align at their axes.
+    + Setting to `false` will help when multiple grids need to be aligned at their axes.
 + When containLabel is `true`:
-    + `grid.left` `grid.right` `grid.top` `grid.bottom` `grid.width` `grid.height` decide the location and size of the rectangle that is not only contains axes but also contains labels of those axes.
-    + Setting to `true` will helps when the length of axis labels is dynamic and is hard to approximate to avoid them overflowing the container or overlapping other components.
+    + `grid.left` `grid.right` `grid.top` `grid.bottom` `grid.width` `grid.height` decide the location and size of the rectangle that contains the axes and the labels of the axes.
+    + Setting to `true` will help when the length of axis labels is dynamic and is hard to approximate. This will avoid labels from overflowing the container or overlapping other components.
 
 {{ use:partial-component-common-style(componentName="grid", prefix='#', needShow=true) }}
 
