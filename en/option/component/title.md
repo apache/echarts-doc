@@ -17,6 +17,18 @@ In ECharts 2.x, a single instance of ECharts could contains one title component 
 
 Set this to `false` to prevent the title from showing
 
+## x(string|number) = 'center'
+
+Title horizontal baseline, usually work with textAlign
+
+Optional values: `'center'、'left'、'right'、 number` 
+
+## y(string|number) = 'top'
+
+Title vertical baseline
+
+Optional values: `'top'、'bottom'、'center'、 number` 
+
 ## text(string) = ''
 
 The main title text, supporting for `\n` for newlines.
@@ -79,7 +91,7 @@ The hyper link of subtitle text.
 
 ## textAlign(string) = 'auto'
 
-The horizontal align of the component (including "text" and "subtext").
+Title component horizontal position with horizontal baseline (including "text" and "subtext"). Reference[HTML5 canvas textAlign 属性](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/textAlign)
 
 Optional values: `'auto'`, `'left'`, `'right'`, `'center'`.
 

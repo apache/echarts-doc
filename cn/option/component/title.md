@@ -17,6 +17,18 @@
 
 是否显示标题组件。
 
+## x(string|number) = 'center'
+
+标题水平基准线，与textAlign配合使用
+
+可选值：`'center'、'left'、'right'、 数字` 
+
+## y(string|number) = 'top'
+
+标题垂直基准线
+
+可选值：`'top'、'bottom'、'center'、 数字` 
+
 ## text(string) = ''
 
 主标题文本，支持使用 `\n` 换行。
@@ -80,7 +92,7 @@
 
 ## textAlign(string) = 'auto'
 
-整体（包括 text 和 subtext）的水平对齐。
+整体（包括 text 和 subtext）相对水平基准线的位置, 参考 [HTML5 canvas textAlign 属性](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/textAlign)。
 
 可选值：`'auto'`、`'left'`、`'right'`、`'center'`。
 
