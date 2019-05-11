@@ -7,7 +7,7 @@ Data visualization is a procedure of mapping data into visual elements. This pro
 
 Every type of charts in ECharts has this built-in mapping procedure. For example, line charts map data into *lines*, bar charts map data into *length*. Some more complicated charts, like `graph`, `themeRiver`, and `treemap` have their own built-in mapping.
 
-Besides, ECharts provides [viusalMap component](option.html#visualMap) for general visual mapping. Visual elements allowed in `visualMap` component are:<br>
+Besides, ECharts provides [visualMap component](option.html#visualMap) for general visual mapping. Visual elements allowed in `visualMap` component are:<br>
 `symbol`, `symbolSize`<br>
 `color`, `opacity`, `colorAlpha`, <br>
 `colorLightness`, `colorSaturation`, `colorHue`
@@ -73,7 +73,7 @@ Its structure is defined as:
 option = {
     visualMap: [ // can define multiple visualMap components at the same time
         { // the first visualMap component
-            type: 'continuous', // defined as continuous viusalMap
+            type: 'continuous', // defined as continuous visualMap
             ...
         },
         { // the second visualMap component

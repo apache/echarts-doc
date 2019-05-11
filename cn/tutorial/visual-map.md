@@ -73,7 +73,7 @@ visualMap 组件定义了把数据的『哪个维度』映射到『什么视觉�
 option = {
     visualMap: [ // 可以同时定义多个 visualMap 组件。
         { // 第一个 visualMap 组件
-            type: 'continuous', // 定义为连续型 viusalMap
+            type: 'continuous', // 定义为连续型 visualMap
             ...
         },
         { // 第二个 visualMap 组件
