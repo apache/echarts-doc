@@ -173,6 +173,8 @@ Initial animation type.
 
 {{ target: partial-pie-label }}
 #${prefix} show(boolean) = false
+#${prefix} rotate(string|number) = 0
+Rotate angle of label
 {{ if: ${position} }}
 #${prefix} position(string) = 'outside'
 The position of label.
