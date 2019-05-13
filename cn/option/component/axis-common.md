@@ -65,8 +65,10 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 ) }}
 {{ /if }}
 
+{{ if: ${hasInside|default(true)} }}
 ##${prefix} inside(boolean) = false
 刻度标签是否朝内，默认朝外。
+{{ /if }}
 
 {{ if: ${componentType} !== 'angleAxis' }}
 ##${prefix} rotate(number) = 0
@@ -120,10 +122,12 @@ textStyle: {
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
 是否显示坐标轴刻度。
 
+{{ if: ${hasAlignWithLabel|default(true)} }}
 ##${prefix} alignWithLabel(boolean) = false
 类目轴中在 `boundaryGap` 为 `true` 的时候有效，可以保证刻度线和标签对齐。如下图：
 
 ![600xauto](~axis-align-with-label.png)
+{{ /if }}
 
 {{ if: ${hasLabelInterval|default(true)} }}
 ##${prefix} interval(number|Function) = 'auto'
@@ -132,8 +136,12 @@ textStyle: {
     componentType=${componentType}
 ) }}
 {{ /if }}
+
+{{ if: ${hasInside|default(true)} }}
 ##${prefix} inside(boolean) = false
 坐标轴刻度是否朝内，默认朝外。
+{{ /if }}
+
 ##${prefix} length(number) = 5
 坐标轴刻度的长度。
 ##${prefix} lineStyle(Object)
