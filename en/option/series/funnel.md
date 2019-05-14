@@ -183,19 +183,19 @@ Label position.
 
 + `'leftTop'`
 
-    Left top side of funnel chart.
+    Top-left of funnel chart.
 
 + `'leftBottom'`
 
-    Left bottom side of funnel chart.
+    Bottom-left of funnel chart.
 
 + `'rightTop'`
 
-    Right top side of funnel chart.
+    Top-right side of funnel chart.
 
 + `'rightBottom'`
 
-    Right bottom side of funnel chart.
+    Bottom-right side of funnel chart.
 
 + `'inner'` equals to `'inside'`.
 + `'center'` equals to `'inside'`.
