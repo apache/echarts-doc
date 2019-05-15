@@ -249,23 +249,23 @@
 
 + `'inside'`
 
-    鼠标所在图形的内部中心位置，只在 [trigger](~tooltip.trigger) 为`'item'`的时候有效。
+    鼠标所在图形的内部中心位置。
 
 + `'top'`
 
-    鼠标所在图形上侧，只在 [trigger](~tooltip.trigger) 为`'item'`的时候有效。
+    鼠标所在图形上侧。
 
 + `'left'`
 
-    鼠标所在图形左侧，只在 [trigger](~tooltip.trigger) 为`'item'`的时候有效。
+    鼠标所在图形左侧。
 
 + `'right'`
 
-    鼠标所在图形右侧，只在 [trigger](~tooltip.trigger) 为`'item'`的时候有效。
+    鼠标所在图形右侧。
 
 + `'bottom'`
 
-    鼠标所在图形底侧，只在 [trigger](~tooltip.trigger) 为`'item'`的时候有效。
+    鼠标所在图形底侧。
 
 
 #${prefix} formatter(string|Function)

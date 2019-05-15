@@ -236,23 +236,23 @@ Options:
 
 + `'inside'`
 
-   Center position of the graphic element where the mouse is in, which is only valid when [trigger](~tooltip.trigger) is `'item'`.
+   Center position of the graphic element where the mouse is in.
 
 + `'top'`
 
-    Top position of the graphic element where the mouse is in, which is only valid when [trigger](~tooltip.trigger) is `'item'`.
+    Top position of the graphic element where the mouse is in.
 
 + `'left'`
 
-    Left position of the graphic element where the mouse is in, which is only valid when [trigger](~tooltip.trigger) is `'item'`.
+    Left position of the graphic element where the mouse is in.
 
 + `'right'`
 
-    Right position of the graphic element where the mouse is in, which is only valid when [trigger](~tooltip.trigger) is `'item'`.
+    Right position of the graphic element where the mouse is in.
 
 + `'bottom'`
 
-    Bottom position of the graphic element where the mouse is in, which is only valid when [trigger](~tooltip.trigger) is `'item'`.
+    Bottom position of the graphic element where the mouse is in.
 
 
 #${prefix} formatter(string|Function)
