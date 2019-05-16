@@ -169,7 +169,7 @@
 
 {{ target: partial-pie-label }}
 #${prefix} show(boolean) = false
-#${prefix} rotate(boolean|number) = 0
+#${prefix} rotate(boolean|number) = false
 标签旋转角度
 {{ if: ${position} }}
 #${prefix} position(string) = 'outside'
