@@ -94,9 +94,17 @@ For more details, see [Rich Text](tutorial.html#Rich%20Text) please.
 
 {{target:partial-text-style-base-item}}
 
-#${prefix} color(Color)=${defaultColor|default('"#fff"')}
+#${prefix} color(Color|function)=${defaultColor|default('"#fff"')}
 
 ${name} text color.
+
+**Callback function**
+
+Callback function is in form of:
+```js
+(params: Number) => string
+```
+where `params` is the index of data in data array:
 
 {{if: ${enableAutoColor} }}
 {{ use: partial-text-style-auto-color-desc }}
