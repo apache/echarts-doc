@@ -102,7 +102,7 @@ ${name} text color.
 
 Callback function is in form of:
 ```js
-(params: Number) => string
+(params: number) => string
 ```
 where `params` is the index of data in data array:
 

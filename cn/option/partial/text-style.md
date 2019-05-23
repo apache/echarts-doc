@@ -102,9 +102,9 @@ ${name}文字的颜色。
 
 回调函数格式：
 ```js
-(params: Number) => string
+(params: number) => string
 ```
-参数 `params` 是数据在data数组下标
+参数 `params` 是数据在 `data` 数组下标
 
 {{if: ${enableAutoColor} }}
 {{ use: partial-text-style-auto-color-desc }}
