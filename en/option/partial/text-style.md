@@ -104,7 +104,7 @@ Callback function is in form of:
 ```js
 (params: number) => string
 ```
-where `params` is the index of data in data array:
+where `params` is the index of data in `data` array:
 
 {{if: ${enableAutoColor} }}
 {{ use: partial-text-style-auto-color-desc }}
