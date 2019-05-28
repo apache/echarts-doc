@@ -128,6 +128,12 @@ Legend text style.
 
 Tooltip configuration for legend tooltip, which is similar to [tooltip](~tooltip).
 
+## icon(string)
+
+Icon of the legend items.
+
+{{ use: partial-icon }}
+
 ## data(Array)
 
 Data array of legend. An array item is usually a `name` representing string. (If it is a [pie chart](~series-pie), it could also be the `name` of a single data in the pie chart) of a series. Legend component would automatically calculate the color and icon according to series. Special string `''` (null string) or `'\n'` (new line string) can be used for a new line.
