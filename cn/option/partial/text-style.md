@@ -94,9 +94,17 @@ label: {
 
 {{target:partial-text-style-base-item}}
 
-#${prefix} color(Color)=${defaultColor|default('"#fff"')}
+#${prefix} color(Color|function)=${defaultColor|default('"#fff"')}
 
 ${name}文字的颜色。
+
+**回调函数**
+
+回调函数格式：
+```js
+(params: number) => string
+```
+参数 `params` 是数据在 `data` 数组下标
 
 {{if: ${enableAutoColor} }}
 {{ use: partial-text-style-auto-color-desc }}
