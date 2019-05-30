@@ -201,6 +201,10 @@ If set as `function`:
 
 `{Array.<Object>}` params.seriesData: An array, containing info of nearest points. Each item is:
 
+`{string}` params.axisDimension: The dimension name of the axis. For example, in catesian it will be `'x'`, `'y'`, and in polar it will be `'radius'`, `'angle'`.
+
+`{number}` params.axisIndex: The index of the axis, for example, `0`,`1`, `2`, ...
+
 {{ use: partial-formatter-params-structure }}
 
 {{ use: partial-formatter-params-axisPointer }}

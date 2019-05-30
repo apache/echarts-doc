@@ -16,6 +16,8 @@
     data: Object,
     // 传入的数据值
     value: number|Array,
+    // 数据的维度 index，如 0 或 1 或 2 ...
+    dimensionIndex: number,
     // 数据图形的颜色
     color: string,
 {{ for: ${extra} as ${obj}, ${name} }}{{ if: ${extra}.hasOwnProperty(${name}) }}
