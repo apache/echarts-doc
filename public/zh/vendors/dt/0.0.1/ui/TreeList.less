@@ -1,0 +1,59 @@
+@import "./common.less";
+
+.dtui-treelist {
+}
+.dtui-treelist-i {
+    position: relative;
+    padding-left: 1.3em;
+    line-height: 20px;
+}
+.dtui-treelist-thumb {
+    margin: -1px 0 0 -1em;
+    position: absolute;
+    cursor: pointer;
+    font-style: normal;
+    font-family: Arial;
+    width: 1.5em; // 扩大鼠标点选区域增强用户体验
+    .user-select(none);
+
+    .dtui-treelist-expanded > &:after {
+        content: '▾';
+    }
+    .dtui-treelist-collapsed > &:after {
+        content: '▸';
+    }
+
+    &:hover {
+        color: #7DA7BA;
+    }
+}
+.dtui-treelist-text {
+    cursor: pointer;
+    display: block;
+    padding: 0 0.5em;
+    text-decoration: none;
+    color: @dtui-treelist-text-color;
+
+    &-highlight {
+        background: @dtui-treelist-text-highlight-background;
+        color: @dtui-treelist-text-highlight-color;
+    }
+    &-active { // active （选中）优先级其次
+        background: @dtui-treelist-text-active-background;
+        color: @dtui-treelist-text-active-color;
+    }
+    &-hover { // hover 优先级最高
+        background: @dtui-treelist-text-hover-background;
+        color: @dtui-treelist-text-hover-color;
+    }
+}
+.dtui-treelist-post {
+    display: block;
+    padding: 0 0.5em;
+}
+.dtui-treelist-disabled {
+    .dtui-treelist-text {
+        background: transparent;
+        color: #828599;
+    }
+}

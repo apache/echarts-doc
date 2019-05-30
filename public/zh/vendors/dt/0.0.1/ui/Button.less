@@ -1,0 +1,30 @@
+@import "./common.less";
+
+.dtui-btn {
+    .border-radius(2px);
+    .user-select(none);
+    display: inline-block;
+    cursor: pointer;
+    color: #fff;
+    background: #3498DB;
+    text-align: center;
+    font-size: 14px;
+    min-width: 60px;
+    height: 24px;
+    line-height: 24px;
+    padding: 0 8px;
+
+    &-hover {
+        background: #2980B9;
+    }
+
+    &-active {
+        .box-shadow(none);
+    }
+}
+
+.dtui-btn-disabled {
+    background: #ddd;
+    color: #999;
+    cursor: default;
+}

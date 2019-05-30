@@ -1,0 +1,567 @@
+<h2 id="code-style">Code Style</h2>
+<h3 id="file">File</h3>
+<p><strong>[MUST]</strong> JavaScript Source files must be encoded in UTF-8 without BOM.</p>
+<h3 id="indentation">Indentation</h3>
+<p><strong>[MUST]</strong> 4 space indentation. tabs and 2 space are not allowed.</p>
+<p><strong>[MUST]</strong> <code>case</code> and <code>default</code> in <code>switch</code> must be indented.</p>
+<pre><code class="lang-js">// good
+switch (variable) {
+    case &#39;1&#39;:
+        // do...
+        break;
+    case &#39;2&#39;:
+        // do...
+        break;
+    default:
+        // do...
+}
+
+// bad
+switch (variable) {
+case &#39;1&#39;:
+    // do...
+    break;
+case &#39;2&#39;:
+    // do...
+    break;
+default:
+    // do...
+}
+</code></pre>
+<h3 id="space">Space</h3>
+<p><strong>[MUST]</strong> Set off binary operator with spaces. But place no space between unary operator and its operand.</p>
+<pre><code class="lang-js">var a = !arr.length;
+a++;
+a = b + c;
+</code></pre>
+<p><strong>[MUST]</strong> Place 1 space before the leading brace.</p>
+<pre><code class="lang-js">// good
+
+if (condition) {
+}
+
+set(&#39;attr&#39;, {
+    some: &#39;xxx&#39;,
+    any: &#39;yyy&#39;
+});
+
+function funcName() {
+}
+
+
+// bad
+
+if (condition){
+}
+
+set(&#39;attr&#39;,{
+    some: &#39;xxx&#39;,
+    any: &#39;yyy&#39;
+});
+
+function funcName(){
+}
+</code></pre>
+<p><strong>[MUST]</strong> Place 1 space after <code>if</code> / <code>else</code> / <code>for</code> / <code>while</code> / <code>function</code> / <code>switch</code> / <code>do</code> / <code>try</code> / <code>catch</code> / <code>finally</code>.</p>
+<pre><code class="lang-js">// good
+
+if (condition) {
+}
+
+while (condition) {
+}
+
+(function () {
+})();
+
+
+// bad
+
+if(condition) {
+}
+
+while(condition) {
+}
+
+(function() {
+})();
+</code></pre>
+<p><strong>[MUST]</strong> In the object creating statement, place 1 space after <code>:</code>, but no space before it.</p>
+<pre><code class="lang-js">// good
+var obj = {
+    a: 1,
+    b: 2,
+    c: 3
+};
+
+// bad
+var obj = {
+    a : 1,
+    b:2,
+    c :3
+};
+</code></pre>
+<p><strong>[MUST]</strong> Place no space between the function name and <code>(</code> in function declaration, expression of named function and function call.</p>
+<pre><code class="lang-js">// good
+
+function funcName() {
+}
+
+var funcName = function funcName() {
+};
+
+funcName();
+
+
+// bad
+
+function funcName () {
+}
+
+var funcName = function funcName () {
+};
+
+funcName ();
+</code></pre>
+<p><strong>[MUST]</strong> Place no space between <code>,</code> and <code>;</code>.</p>
+<pre><code class="lang-js">// good
+callFunc(a, b);
+
+// bad
+callFunc(a , b) ;
+</code></pre>
+<p><strong>[MUST]</strong> Place no space after <code>(</code> and <code>[</code> and before <code>)</code> and <code>]</code>.</p>
+<pre><code class="lang-js">// good
+
+callFunc(param1, param2, param3);
+
+save(this.list[this.indexes[i]]);
+
+needIncream &amp;&amp; (variable += increament);
+
+if (num &gt; list.length) {
+}
+
+while (len--) {
+}
+
+
+// bad
+
+callFunc( param1, param2, param3 );
+
+save( this.list[ this.indexes[ i ] ] );
+
+needIncreament &amp;&amp; ( variable += increament );
+
+if ( num &gt; list.length ) {
+}
+
+while ( len-- ) {
+}
+
+
+// good
+var arr1 = [];
+var arr2 = [1, 2, 3];
+var obj1 = {};
+var obj2 = {name: &#39;obj&#39;};
+var obj3 = {
+    name: &#39;obj&#39;,
+    age: 20,
+    sex: 1
+};
+
+// bad
+var arr1 = [ ];
+var arr2 = [ 1, 2, 3 ];
+var obj1 = { };
+var obj2 = { name: &#39;obj&#39; };
+var obj3 = {name: &#39;obj&#39;, age: 20, sex: 1};
+</code></pre>
+<p><strong>[MUST]</strong> Must no trailing space in each line.</p>
+<h3 id="line-break">Line Break</h3>
+<p><strong>[MUST]</strong> Place line break in the end of a statement.</p>
+<p><strong>[MUST]</strong> No more than 120 characters per line.</p>
+<p><strong>[MUST]</strong> Place operator at the beginning of a line if it break lines.</p>
+<pre><code class="lang-js">// good
+if (user.isAuthenticated()
+    &amp;&amp; user.isInRole(&#39;admin&#39;)
+    &amp;&amp; user.hasAuthority(&#39;add-admin&#39;)
+    || user.hasAuthority(&#39;delete-admin&#39;)
+) {
+    // Code
+}
+
+var result = number1 + number2 + number3
+    + number4 + number5;
+
+
+// bad
+if (user.isAuthenticated() &amp;&amp;
+    user.isInRole(&#39;admin&#39;) &amp;&amp;
+    user.hasAuthority(&#39;add-admin&#39;) ||
+    user.hasAuthority(&#39;delete-admin&#39;)) {
+    // Code
+}
+
+var result = number1 + number2 + number3 +
+    number4 + number5;
+</code></pre>
+<p><strong>[MUST]</strong> Start a new line for <code>)</code>, <code>]</code>, <code>}</code> if the content inside the brackets occupies multiple lines.
+Make the same indent as the line where the corresponding <code>(</code>, <code>[</code>, <code>{</code> placed.</p>
+<pre><code class="lang-js">// good
+if (product) {
+    product.load();
+    if (user.isAuthenticated()
+        &amp;&amp; user.isInRole(&#39;admin&#39;)
+        &amp;&amp; user.hasAuthority(&#39;add-admin&#39;)
+    ) {
+        sendProduct(user, product);
+    }
+}
+var arr = [
+    &#39;candy&#39;, &#39;sugar&#39;
+];
+
+// bad
+if (product) {
+    product.load();
+    if (user.isAuthenticated()
+        &amp;&amp; user.isInRole(&#39;admin&#39;)
+        &amp;&amp; user.hasAuthority(&#39;add-admin&#39;)) {
+        sendProduct(user, product);
+    }
+}
+var arr = [
+        &#39;candy&#39;, &#39;sugar&#39;
+    ];
+</code></pre>
+<p><strong>[MUST]</strong> Must not break lines before <code>,</code> or <code>;</code>.</p>
+<pre><code class="lang-js">// good
+var obj = {
+    a: 1,
+    b: 2,
+    c: 3
+};
+
+foo(
+    aVeryVeryLongArgument,
+    anotherVeryLongArgument,
+    callback
+);
+
+
+// bad
+var obj = {
+    a: 1
+    , b: 2
+    , c: 3
+};
+
+foo(
+    aVeryVeryLongArgument
+    , anotherVeryLongArgument
+    , callback
+);
+</code></pre>
+<p><strong>[SUGGEST]</strong> Suggestion about line break and indent:</p>
+<pre><code class="lang-js">if (user.isAuthenticated()
+    &amp;&amp; user.isInRole(&#39;admin&#39;)
+    &amp;&amp; user.hasAuthority(&#39;add-admin&#39;)
+) {
+    // Code
+}
+
+foo(
+    aVeryVeryLongArgument,
+    anotherVeryLongArgument,
+    callback
+);
+
+baidu.format(
+    dateFormatTemplate,
+    year, month, date, hour, minute, second
+);
+
+$(&#39;#items&#39;)
+    .find(&#39;.selected&#39;)
+    .highlight()
+    .end();
+
+var result = thisIsAVeryVeryLongCondition
+    ? resultA : resultB;
+
+var result = condition
+    ? thisIsAVeryVeryLongResult
+    : resultB;
+</code></pre>
+<p><strong>[MUST]</strong> Start a new line for <code>else</code> and <code>catch</code> if using multi-line blocks.</p>
+<pre><code class="lang-js">// good
+
+if (condition) {
+    // some statements;
+}
+else {
+    // some statements;
+}
+
+try {
+    // some statements;
+}
+catch (ex) {
+    // some statements;
+}
+
+
+// bad
+
+if (condition) {
+    // some statements;
+} else {
+    // some statements;
+}
+
+try {
+    // some statements;
+} catch (ex) {
+    // some statements;
+}
+</code></pre>
+<h3 id="statement">Statement</h3>
+<p><strong>[MUST]</strong> The comma must not be ignored at the end of a statement.</p>
+<p><strong>[MUST]</strong> The <code>{}</code> must not be ignored even if there is only one line.</p>
+<pre><code class="lang-js">// good
+if (condition) {
+    callFunc();
+}
+
+// bad
+if (condition) callFunc();
+if (condition)
+    callFunc();
+</code></pre>
+<p><strong>[MUST]</strong> Place no comma at the end of a function definition.</p>
+<pre><code class="lang-js">// good
+function funcName() {
+}
+
+// bad
+function funcName() {
+};
+
+// For function expression, the comma must not be ignored.
+var funcName = function () {
+};
+</code></pre>
+<p><strong>[MUST]</strong> No trailing comma in object and array declarations.</p>
+<pre><code class="lang-js">// good
+
+var obj = {
+    attr1: &#39;xxx&#39;,
+    attr2: &#39;yyy&#39;
+};
+
+var arr = [
+    &#39;xxx&#39;,
+    &#39;yyy&#39;
+];
+
+
+// bad
+
+var obj = {
+    attr1: &#39;xxx&#39;,
+    attr2: &#39;yyy&#39;,
+};
+
+var arr = [
+    &#39;xxx&#39;,
+    &#39;yyy&#39;,
+];
+</code></pre>
+<h3 id="naming-conventions">Naming Conventions</h3>
+<p><strong>[MUST]</strong> Use lowerCamelCase for variables, properties and function names.</p>
+<pre><code class="lang-js">var loadingModules = {};
+function loadProduct() {
+}
+</code></pre>
+<p><strong>[MUST]</strong> Use UpperCamelCase (Pascal) for class names.</p>
+<pre><code class="lang-js">function Element(options) {
+}
+</code></pre>
+<p><strong>[SUGGEST]</strong> All of the letters of a abbreviation should be both upper cases or both lower cases.</p>
+<pre><code class="lang-js">function parseSVG() {
+}
+var svgParser;
+</code></pre>
+<h2 id="language-features">Language features</h2>
+<h3 id="compatibility">Compatibility</h3>
+<p><strong>[MUST]</strong> The JavaScript code of ECharts should be based on <code>ECMAScript Language Specification Edition 3 (ES3)</code>. The language features that not supported by ES3 (namely, features that are only supported by ES5, ES6 or upper versions) must not be used.</p>
+<p>But there is an exception that ES Module can be used.</p>
+<p>Language features can be polyfilled by some utilities, but must not by modifying the prototype of the built-in JS objects.</p>
+<pre><code class="lang-js">// good
+
+import * as zrUtil from &#39;zrender/src/core/util&#39;;
+
+zrUtil.each(array, function (val, index) {
+    sum += val;
+});
+
+var result = zrUtil.map(array, function (val) {
+    return parse(val);
+});
+
+var pos = zrUtil.indexOf(array, val);
+
+var obj2 = zrUtil.extend({}, obj1);
+
+function Element() {
+    // ...
+}
+
+
+// bad
+
+array.forEach(function (val, index) {
+    sum += val;
+});
+
+let result = array.map(function (val) {
+    return parse(val);
+});
+
+const pos = array.indexOf(val);
+
+var obj2 = Object.assign({}, obj1);
+
+class Element {
+    // ...
+}
+
+String.prototype.trim = function () {
+};
+</code></pre>
+<h3 id="variable">Variable</h3>
+<p><strong>[MUST]</strong> Variables must be declared by <code>var</code>. And a <code>var</code> can not declares more than one variable.</p>
+<pre><code class="lang-js">// good
+var name = &#39;MyName&#39;;
+var hangModules = [];
+var missModules = [];
+var visited = {};
+
+// bad
+name = &#39;MyName&#39;;
+var hangModules = [],
+    missModules = [],
+    visited = {};
+</code></pre>
+<h3 id="condition">Condition</h3>
+<p><strong>[MUST]</strong> In equality expression, <code>==</code> can only be used on <code>null</code> or <code>undefined</code> detection. <code>===</code> should be used in the rest of cases .</p>
+<pre><code class="lang-js">// good
+if (age === 30) {
+    // ...
+}
+if (type == null) {
+    // ...
+}
+
+// bad
+if (age == 30) {
+    // ......
+}
+</code></pre>
+<p><strong>[SUGGEST]</strong> Use <code>xxx == null</code> to determine <code>null</code> or <code>undefined</code>.</p>
+<p><strong>[SUGGEST]</strong> Try best to make the meaning of <code>null</code> and <code>undefined</code> the same, namely, do not make users or developers distinguishing whether a variable is <code>null</code> or <code>undefined</code>.</p>
+<p><strong>[SUGGEST]</strong> The function expression or function declaration should not be placed inside a loop body.</p>
+<pre><code class="lang-js">// good
+function clicker() {
+    // ......
+}
+
+for (var i = 0, len = elements.length; i &lt; len; i++) {
+    var element = elements[i];
+    addListener(element, &#39;click&#39;, clicker);
+}
+
+
+// bad
+for (var i = 0, len = elements.length; i &lt; len; i++) {
+    var element = elements[i];
+    addListener(element, &#39;click&#39;, function () {});
+}
+</code></pre>
+<h3 id="type-conversion">Type Conversion</h3>
+<p><strong>[SUGGEST]</strong> Use <code>+ &#39;&#39;</code> to convert a value to string.</p>
+<pre><code class="lang-js">// good
+num + &#39;&#39;;
+
+// bad
+new String(num);
+num.toString();
+String(num);
+</code></pre>
+<p><strong>[SUGGEST]</strong> Use <code>+</code> to convert a value to number.</p>
+<pre><code class="lang-js">// good
++str;
+
+// bad
+Number(str);
+</code></pre>
+<p><strong>[MUST]</strong> The second parameter must not be ignored when using <code>parseInt</code>.</p>
+<pre><code class="lang-js">// good
+parseInt(str, 10);
+
+// bad
+parseInt(str);
+</code></pre>
+<h3 id="string-object-array">String, Object, Array</h3>
+<p><strong>[MUST]</strong> Use <code>&#39;</code> but not <code>&quot;</code> to define a string.</p>
+<p><strong>[MUST]</strong> Use object literal <code>{}</code> to create a plain object.</p>
+<pre><code class="lang-js">// good
+var obj = {};
+
+// bad
+var obj = new Object();
+</code></pre>
+<p><strong>[MUST]</strong> If all of the properties of an object literal do not need quotation marks, they should ignore them. If quotation marks is necessary, use <code>&#39;</code> but not <code>&quot;</code>.</p>
+<pre><code class="lang-js">// good
+var info = {
+    name: &#39;someone&#39;,
+    age: 28
+};
+
+// bad
+var info = {
+    &#39;name&#39;: &#39;someone&#39;,
+    &#39;age&#39;: 28
+};
+var info2 = {
+    &quot;age&quot;: 40
+};
+</code></pre>
+<p><strong>[MUST]</strong> The prototype of built-in objects must not be modified.</p>
+<pre><code class="lang-js">// Forbidden
+String.prototype.trim = function () {
+};
+</code></pre>
+<p><strong>[SUGGEST]</strong> Try best to use <code>.</code> but not <code>[]</code> to visit properties of an object.</p>
+<p><strong>[SUGGEST]</strong> <code>hasOwnProperty</code> should be used to when using <code>for ... in ...</code>, in case that some extra properties is added on the prototype of <code>Object</code> in some runtime environment.</p>
+<pre><code class="lang-js">var newInfo = {};
+for (var key in info) {
+    if (info.hasOwnProperty(key)) {
+        newInfo[key] = info[key];
+    }
+}
+</code></pre>
+<p><strong>[MUST]</strong> Use array literal <code>[]</code> to create an array, except intending to create an array with a given length.</p>
+<pre><code class="lang-js">// good
+var arr = [];
+var arr2 = new Array(1e4);
+
+// bad
+var arr = new Array();
+</code></pre>
+<p><strong>[MUST]</strong> Do not use <code>for in</code> in array traverse.</p>
+<h3 id="others">Others</h3>
+<p><strong>[MUST]</strong> Do not use <code>eval</code> and <code>with</code>. <code>new Function</code> can be used.</p>

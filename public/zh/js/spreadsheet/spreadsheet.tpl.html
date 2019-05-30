@@ -1,0 +1,299 @@
+{{ target: SpreadsheetMain }}
+<!-- <div class="ecdoc-sprsht-switch" data-cpt="type: 'Button', name: 'switch'"></div> -->
+
+<div class="ecdoc-sprsht-main ecdoc-sprsht-datatable-to-codeinputs">
+    <div class="ecdoc-sprsht-datatable-ctrl">
+        <div data-cpt="
+            type: 'Button',
+            name: 'dataTableControl.clear',
+            text: lang.dataTableControl.clear,
+            css: 'datatable-ctrl-btn'">
+        </div>
+        <div data-cpt="
+            type: 'Button',
+            name: 'dataTableControl.lt',
+            text: lang.dataTableControl.lt,
+            css: 'datatable-ctrl-btn'">
+        </div>
+        <div data-cpt="
+            type: 'Button',
+            name: 'dataTableControl.rb',
+            text: lang.dataTableControl.rb,
+            css: 'datatable-ctrl-btn'">
+        </div>
+        <div data-cpt="
+            type: 'Button',
+            name: 'dataTableControl.t',
+            text: lang.dataTableControl.t,
+            css: 'datatable-ctrl-btn'">
+        </div>
+        <div data-cpt="
+            type: 'Button',
+            name: 'dataTableControl.b',
+            text: lang.dataTableControl.b,
+            css: 'datatable-ctrl-btn'">
+        </div>
+        <div data-cpt="
+            type: 'Button',
+            name: 'dataTableControl.l',
+            text: lang.dataTableControl.l,
+            css: 'datatable-ctrl-btn'">
+        </div>
+        <div data-cpt="
+            type: 'Button',
+            name: 'dataTableControl.r',
+            text: lang.dataTableControl.r,
+            css: 'datatable-ctrl-btn'">
+        </div>
+    </div>
+    <div data-cpt="
+        type: 'spreadsheet/DataTable',
+        name: 'dataTable',
+        viewModel: {
+            jsDataOb: viewModel.jsDataOb
+        }"></div>
+</div>
+
+<div class="ecdoc-sprsht-right">
+    <div class="ecdoc-sprsht-ctrl-area ecdoc-normal-panel">
+        <h1>${lang.pageTitle}</h1>
+        <div class="ecdoc-sprsht-desc">
+            <div class="ecdoc-sprsht-desc-text">${lang.pageDescHTML|raw}</div>
+        </div>
+
+        <div data-cpt="
+            type: 'Tab',
+            name: 'jsDataType',
+            viewModel: {
+                currentTab: lib.ob('dimArray'),
+                baseCss: 'ctrl-tab',
+                tabAttr: 'cpt-tab',
+                conAttr: 'cpt-con'
+            }">
+            <ul class="ctrl-tab ecdoc-sprsht-line">
+                <label>${lang.typeSetting}</label>
+                <li data-cpt-tab="dimArray">${lang.jsDataTypeDimArray|html}</li>
+                <li data-cpt-tab="arrayObject">${lang.jsDataTypeArrayObject|html}</li>
+                <li data-cpt-tab="geo">${lang.jsDataTypeGEO|html}</li>
+            </ul>
+
+            <div data-cpt-con="dimArray" class="ecdoc-sprsht-line ecdoc-sprsht-dim-setting">
+                <label>${lang.dimensionSetting}</label>
+                <div data-cpt="
+                    type: 'CheckButton',
+                    name: 'dimColStep',
+                    viewModel: {
+                        checked: lib.ob(null),
+                        dataList: [
+                            {value: 'max', text: lang.dimDesc.dimallto2},
+                            {value: null, text: lang.dimDesc.dim1to1},
+                            {value: 1, text: lang.dimDesc.dim1to2},
+                            {value: 2, text: lang.dimDesc.dim2to2},
+                            {value: 3, text: lang.dimDesc.dim3to2},
+                            {value: 4, text: lang.dimDesc.dim4to2},
+                            {value: 5, text: lang.dimDesc.dim5to2},
+                            {value: 6, text: lang.dimDesc.dim6to2}
+                        ]
+                    }">
+                </div>
+            </div>
+
+            <div data-cpt-con="arrayObject" class="ecdoc-sprsht-line ecdoc-sprsht-attr-setting">
+                <label>${lang.attributeSetting}</label>
+                <div class="ecdoc-sprsht-attr-change">
+                    <div data-cpt="type: 'Button', name: 'addAttrInput', text: '+'"></div>
+                    <div data-cpt="type: 'Button', name: 'removeAttrInput', text: '−'"></div>
+                </div>
+                <div data-cpt="
+                    type: 'Foreach',
+                    viewModelGet: 'attrInfoListOb',
+                    itemTplTarget: 'attrInfoItem'
+                "></div>
+            </div>
+
+            <div data-cpt-con="geo" class="ecdoc-sprsht-line ecdoc-sprsht-attr-setting">
+                <label>${lang.geoConvertDesc}</label>
+                <div data-cpt="
+                    type: 'Button',
+                    name: 'geoConvert',
+                    text: lang.geoConvertBtn">
+                </div>
+                <br><br>
+                <div>${lang.geoDesc}</div>
+            </div>
+
+        </div>
+
+        <div data-cpt="
+            type: 'Tab',
+            name: 'outputFormat',
+            viewModel: {
+                currentTab: lib.ob('js'),
+                baseCss: 'ctrl-tab',
+                tabAttr: 'cpt-tab',
+                conAttr: 'cpt-con'
+            }">
+            <ul class="ctrl-tab ecdoc-sprsht-line">
+                <label>${lang.outputFormat}</label>
+                <li data-cpt-tab="js">${lang.outputFormatJS|html}</li>
+                <li data-cpt-tab="json">${lang.outputFormatJSON|html}</li>
+            </ul>
+
+            <div data-cpt-con="js">
+                <div class="ecdoc-sprsht-line">
+                    <label>${lang.quotationMarkSetting}</label>
+                    <div data-cpt="
+                        type: 'CheckButton',
+                        name: 'quotationMark',
+                        viewModel: {
+                            checked: lib.ob('\''),
+                            dataList: [
+                                {value: '\'', text: lang.quotationMarks.singleQuotes},
+                                {value: '&quot;', text: lang.quotationMarks.doubleQuotes}
+                            ]
+                        }">
+                    </div>
+                </div>
+                <div class="ecdoc-sprsht-line">
+                    <label>${lang.codeFormatSetting}</label>
+                    <div data-cpt="
+                        type: 'CheckButton',
+                        name: 'codeFormatJS',
+                        viewModel: {
+                            checked: lib.ob('expanded4Indent'),
+                            dataList: [
+                                {value: 'compressed', text: lang.codeFormat.compressed},
+                                {value: 'expanded2Indent', text: lang.codeFormat.expanded2Indent},
+                                {value: 'expanded4Indent', text: lang.codeFormat.expanded4Indent}
+                            ]
+                        }">
+                    </div>
+                </div>
+            </div>
+
+            <div data-cpt-con="json">
+                <div class="ecdoc-sprsht-line">
+                    <label>${lang.codeFormatSetting}</label>
+                    <div data-cpt="
+                        type: 'CheckButton',
+                        name: 'codeFormatJSON',
+                        viewModel: {
+                            checked: lib.ob('compressed'),
+                            dataList: [
+                                {value: 'compressed', text: lang.codeFormat.compressed},
+                                {value: 'expanded2Indent', text: lang.codeFormat.expanded2Indent},
+                                {value: 'expanded4Indent', text: lang.codeFormat.expanded4Indent}
+                            ]
+                        }">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <br>
+        <div class="ecdoc-sprsht-line">
+            <label>${lang.emptyValueSetting}</label>
+            <div data-cpt="
+                type: 'CheckButton',
+                name: 'emptyValue',
+                viewModel: {
+                    checked: lib.ob(constant.EC_EMPTY_VALUE),
+                    dataList: [
+                        {value: constant.EC_EMPTY_VALUE, text: lang.ecEmptyValue},
+                        {value: null, text: 'JavaScript null'},
+                        {value: undefined, text: 'JavaScript undefined'}
+                    ]
+                }">
+            </div>
+        </div>
+
+    </div>
+    <div class="ecdoc-sprsht-codeinputs-area">
+        <label>${lang.convertResult}</label>
+        <div data-cpt="
+            type: 'spreadsheet/CodeInputs',
+            name: 'codeInputs',
+            viewModel: {
+                jsDataOb: viewModel.jsDataOb
+            }"></div>
+    </div>
+</div>
+{{ /target }}
+
+
+
+{{ target: attrInfoItem }}
+<div class="ecdoc-attr-info">
+    <div class="ecdoc-attr-title" data-cpt="type: 'Text', viewModel: {value: viewModel.title}"></div>
+    <div class="ecdoc-attr-block">
+        <label>${lang.attrInfoAttrName}</label>
+        <div data-cpt="
+            type: 'TextInput',
+            viewModel: {
+                mouseEnterSelect: lib.ob(true),
+                value: viewModel.value
+            }">
+        </div>
+    </div>
+    <div class="ecdoc-attr-block">
+        <label>${lang.attrInfoType}</label>
+        <div data-cpt="
+            type: 'CheckButton',
+            name: 'itemDataType',
+            viewModel: {
+                checked: viewModel.itemDataType,
+                css: 'ecdoc-attr-data-type',
+                dataList: [
+                    {value: 'auto', text: 'auto'},
+                    {value: 'number', text: 'number'},
+                    {value: 'string', text: 'string'}
+                ]
+            }">
+        </div>
+    </div>
+</div>
+{{ /target }}
+
+
+
+{{ target: DataTable }}
+<div class="ecdoc-sprsht-ht"></div>
+{{ /target }}
+
+
+
+{{ target: CodeInputs }}
+<div class="ecdoc-sprsht-mainlist" data-cpt="
+    type: 'Foreach',
+    viewModelGet: 'mainListViewModels',
+    itemTplTarget: 'codeInputItem'
+"></div>
+{{ /target }}
+
+
+
+{{ target: codeInputItem }}
+<div class="ecdoc-sprsht-codeinput">
+    <div class="ecdoc-sprsht-title">${viewModel.title}</div>
+    <div data-cpt="
+        type: 'TextInput',
+        viewModel: {
+            type: 'textarea',
+            mouseEnterSelect: lib.ob(true),
+            value: viewModel.codeTextOb
+        }">
+    </div>
+    <div data-cpt="
+        type: 'CheckButton',
+        viewModel: {
+            checked: lib.ob('auto'),
+            dataList: [
+                {value: 'auto', text: 'auto'},
+                {value: 'number', text: 'number'},
+                {value: 'string', text: 'string'}
+            ]
+        }">
+    </div>
+</div>
+{{ /target }}

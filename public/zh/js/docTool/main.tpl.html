@@ -1,0 +1,102 @@
+{{ target: APIMain }}
+<div class="ecdoc-api-left-area">
+
+    <div class="ecdoc-quick-link">.</div>
+
+    <div class="ecdoc-api-query-box">
+        <div data-cpt="
+            type: 'TextInput',
+            name: 'queryInput',
+            viewModel: {
+                mouseEnterSelect: true,
+                confirmPoint: {blur: false, pressEnter: true}
+            }">
+        </div>
+        <div data-cpt="
+            type: 'CheckButton',
+            name: 'queryMode',
+            viewModel: {
+                css: 'query-mode',
+                checked: lib.ob('fuzzyPath'),
+                dataList: [
+                    {
+                        value: 'fuzzyPath',
+                        placeholder: lang.queryBoxPlaceholderFuzzyPath,
+                        text: lang.queryBoxTextFuzzyPath
+                    },
+                    {
+                        value: 'anyText',
+                        placeholder: lang.queryBoxPlaceholderAnyText,
+                        text: lang.queryBoxTextAnyText
+                    }
+                ]
+            }">
+        </div>
+        <div data-cpt="
+            type: 'Button',
+            name: 'collapseAll',
+            text: lang.collapseAll,
+            css: 'collapse-all'">
+        </div>
+        <span class="query-result-info"></span>
+    </div>
+
+    <div class="ecdoc-api-tree-area">
+        <div class="ecdoc-api-tree" data-cpt="
+            type: 'TreeList',
+            name: 'apiDocTree',
+            viewModel: {
+                selected: viewModel.apiTreeSelected,
+                highlighted: viewModel.apiTreeHighlighted,
+                hovered: viewModel.apiTreeHovered,
+                datasource: viewModel.apiTreeDatasource,
+                resizeEvent: viewModel.apiTreeResize
+            }">
+        </div>
+    </div>
+
+</div>
+
+<div class="ecdoc-api-right-area">
+    <div class="ecdoc-api-doc-group-area">
+        <div class="ecdoc-api-doc-group-content">
+        </div>
+    </div>
+</div>
+
+<div class="ecdoc-api-hover-desc" style="display:none">
+</div>
+{{ /target }}
+
+
+{{ target: descGroupTitle }}
+<div class="ecdoc-api-doc-group-title">${baseDescOptionPath|raw}</div>
+<div class="ecdoc-api-doc-group-title-desc">
+    ${descText|raw}
+</div>
+{{ /target }}
+
+
+{{ target: descGroupLine }}
+<div class="ecdoc-api-doc-group-line ${highlightCSS}" data-tree-item-id="${idAttr}" >
+    <!-- <div data-tree-item-id="${idAttr}"
+        class="ecdoc-api-doc-line-expand iconfont"
+        {{ if: !${hasSubGroup} }}style="display:none"{{ /if }}>${expandIcon|raw}</div> -->
+    <div class="ecdoc-api-doc-line-head {{ if: ${hasSubGroup} }} ecdoc-api-doc-expandable {{ /if }}" data-tree-item-id="${idAttr}">
+       <span class="ecdoc-api-doc-line-label">${descItemOptionPath|raw}</span>
+       <span class="ecdoc-api-doc-line-type">${descItemType|raw}</span>
+    </div>
+    <div class="ecdoc-api-doc-line-default">
+       ${descItemContent|raw}
+    </div>
+    ${descItemDescText|raw}
+    <div class="ecdoc-api-doc-prop-expand"
+        data-tree-item-id="${idAttr}"
+        {{ if: !${hasSubGroup} }}style="display:none"{{ /if }}><span>${expandIcon|raw}</span></div>
+    {{ if: ${hasSubGroup} }}
+    <div style="display:none" class="ecdoc-api-doc-sub-group" data-tree-item-id="${idAttr}">
+        ${subGroupHTML|raw}
+    </div>
+    {{ /if }}
+</div>
+{{ /target }}

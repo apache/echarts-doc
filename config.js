@@ -1,6 +1,6 @@
 module.exports = {
-    galleryViewPath: 'https://echarts.baidu.com/gallery/view.html?c=',
-    galleryEditorPath: 'https://echarts.baidu.com/gallery/editor.html?c=',
+    galleryViewPath: 'https://echarts.apache.org/examples/zh/view.html?c=',
+    galleryEditorPath: 'https://echarts.apache.org/examples/zh/editor.html?c=',
     imagePath: 'asset/img/',
 
     gl: {
