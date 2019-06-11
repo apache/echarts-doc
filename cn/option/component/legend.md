@@ -222,7 +222,7 @@ data: [{
 图例控制块的位置。可选值为：
 
 + `'start'`：控制块在左或上。
-+ `'end'`：按钮快在右或下。
++ `'end'`：控制块在右或下。
 
 参见 [滚动图例（垂直）](${galleryEditorPath}pie-legend&edit=1&reset=1) 或 [滚动图例（水平）](${galleryEditorPath}radar2&edit=1&reset=1)。
 
