@@ -207,6 +207,10 @@ axisPointer 的 label 默认不显示（也就是默认只显示指示线），�
 
 `{Array.<Object>}` params.seriesData: 一个数组，是当前 axisPointer 最近的点的信息，每项内容为
 
+`{string}` params.axisDimension: 轴的维度名，例如直角坐标系中是 `'x'`、`'y'`，极坐标系中是 `'radius'`、`'angle'`。
+
+`{number}` params.axisIndex: 轴的 index，`0`、`1`、`2`、...
+
 {{ use: partial-formatter-params-structure }}
 
 {{ use: partial-formatter-params-axisPointer }}
