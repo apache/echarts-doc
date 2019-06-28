@@ -98,6 +98,7 @@ label: {
 
 ${name}文字的颜色。
 
+
 {{if: ${enableAutoColor} }}
 {{ use: partial-text-style-auto-color-desc }}
 {{/if}}

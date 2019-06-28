@@ -4,26 +4,24 @@
 # Create Custom Build of ECharts
 
 
-In most cases, echarts build can be fetched from [echarts download page](https://ecomfe.github.io/echarts-doc/public/en/download.html) or from the `echarts/dist` directory in [GitHub](https://github.com/ecomfe/echarts/releases), where
+In most cases, ECharts builds can be downloaded from the [download page](https://ecomfe.github.io/echarts-doc/public/en/download.html) or from the `echarts/dist` directory in our [GitHub project](https://github.com/ecomfe/echarts/releases), where
 these pre-builds are provided:
 
 + Complete verion: `echarts/dist/echarts.js`, including all charts and components (see `echarts/echarts.all.js` for detail), but has maximum file size.
 + Common version: `echarts/dist/echarts.common.js`, including common charts and components (see `echarts/echarts.common.js` for detail), moderate file size.
-+ Simple version: `echarts/dist/echarts.simple.js`, including several most common charts and components (see `echarts/echarts.simple.js` for detail), small file size.
++ Simple version: `echarts/dist/echarts.simple.js`, including a smaller subset of the most common charts and components (see `echarts/echarts.simple.js` for detail), small file size.
 
-If small file size is desperately required, we can customize echart build by ourselves with these approaches:
+If it is important for your use case to reduce the size of your ECharts dependency, you can customize your ECharts build by using one of these approaches:
 
-+ [Online custom build](http://echarts.baidu.com/builder.html) is relatively convenient.
-+ Create custom build by the script `echarts/build/build.js` is more flexible for module selecting, and supports multi-language build.
-+ Build echarts and your project directly by the tool like [rollup](https://rollupjs.org/), [webpack](https://webpack.github.io/), [browserify](http://browserify.org/) by ourselves is another choise in some situations.
++ [Online custom build tool](http://echarts.baidu.com/builder.html) is relatively convenient (Currently available in Chinese only)
++ The script `echarts/build/build.js` found in the project is flexible for module selecting, and supports multi-language builds
++ Build ECharts and your project directly by using tools such as [rollup](https://rollupjs.org/), [webpack](https://webpack.github.io/), [browserify](http://browserify.org/)
 
-Now we use some examples to illustrate the latter two approaches.
-
-
+Below are some examples to illustrate the latter two approaches.
 
 ## Prepare: create our project and install echarts
 
-Use the command line create our project:
+Create a sample project using the command line
 
 ```shell
 mkdir myProject

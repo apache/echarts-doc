@@ -69,6 +69,19 @@ Whether to prevent calculating the scaling relative to zero. If it is set to be 
     prefix="#"
 )}}
 
+{{ use: partial-axis-common-axis-tick(
+    prefix="#",
+    hasLabelInterval=false,
+    hasAlignWithLabel=false,
+    hasInside=false
+) }}
+
+{{ use: partial-axis-common-axis-label(
+    prefix="#",
+    hasLabelInterval=false,
+    hasInside=false
+) }}
+
 {{ use: partial-axis-common-split-line(
     prefix="#",
     hasLabelInterval=false

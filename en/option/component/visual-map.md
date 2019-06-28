@@ -15,10 +15,10 @@ Myltiple `visualMap` component could be defined in a chart instance, which enabl
 option = {
     visualMap: [
         { // the first visualMap component
-            type: 'continuous', // defined to be continuous viusalMap
+            type: 'continuous', // defined to be continuous visualMap
             ...
         },
-        { // the sencond visualMap component
+        { // the second visualMap component
             type: 'piecewise', // defined to be piecewise visualMap
             ...
         }

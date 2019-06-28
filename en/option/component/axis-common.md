@@ -75,9 +75,11 @@ Set this to `false` to prevent the axis label from appearing.
 ) }}
 {{ /if }}
 
+{{ if: ${hasInside|default(true)} }}
 ##${prefix} inside(boolean) = false
 
 Set this to `true` so the axis labels face the `inside` direction.
+{{ /if }}
 
 {{ if: ${componentType} !== 'angleAxis' }}
 ##${prefix} rotate(number) = 0
@@ -137,10 +139,12 @@ Settings related to axis tick.
 
 Set this to `false` to prevent the axis tick from showing.
 
+{{ if: ${hasAlignWithLabel|default(true)} }}
 ##${prefix} alignWithLabel(boolean) = false
 Align axis tick with label, which is available only when `boundaryGap` is set to be `true` in category axis. See the following picture:
 
 ![600xauto](~axis-align-with-label.png)
+{{ /if }}
 
 {{ if: ${hasLabelInterval|default(true)} }}
 ##${prefix} interval(number|Function) = 'auto'
@@ -149,8 +153,11 @@ Align axis tick with label, which is available only when `boundaryGap` is set to
     componentType=${componentType}
 ) }}
 {{ /if }}
+
+{{ if: ${hasInside|default(true)} }}
 ##${prefix} inside(boolean) = false
 Set this to `true` so the axis labels face the `inside` direction.
+{{ /if }}
 
 ##${prefix} length(number) = 5
 The length of the axis tick.
@@ -284,7 +291,7 @@ Rotation of axis name.
 
 #${prefix} inverse(boolean) = false
 
-Set this to `true` to invert the axis. 
+Set this to `true` to invert the axis.
 This is a new option available from Echarts 3 and newer.
 
 {{/if}}

@@ -98,6 +98,7 @@ For more details, see [Rich Text](tutorial.html#Rich%20Text) please.
 
 ${name} text color.
 
+
 {{if: ${enableAutoColor} }}
 {{ use: partial-text-style-auto-color-desc }}
 {{/if}}

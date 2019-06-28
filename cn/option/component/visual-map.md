@@ -16,7 +16,7 @@
 option = {
     visualMap: [
         { // 第一个 visualMap 组件
-            type: 'continuous', // 定义为连续型 viusalMap
+            type: 'continuous', // 定义为连续型 visualMap
             ...
         },
         { // 第二个 visualMap 组件

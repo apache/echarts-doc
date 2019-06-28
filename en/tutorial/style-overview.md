@@ -13,7 +13,7 @@ These approaches below will be introduced. The functionalities of them might be 
 + Customize style explicitly (itemStyle, lineStyle, areaStyle, label, ...)
 + Visual encoding (visualMap component)
 
-Other article about styling can be check in [Customized Chart Styles](~Customized%20Chart%20Styles)and [Visual Map of Data](~Visual%20Map%20of%20Data).
+Other article about styling can be check in [Customized Chart Styles](~Customized%20Chart%20Styles) and [Visual Map of Data](~Visual%20Map%20of%20Data).
 
 
 <br>

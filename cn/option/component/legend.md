@@ -47,17 +47,17 @@ ECharts 3 中单个 echarts 实例中可以存在多个图例组件，会方便�
 图例列表的布局朝向。
 
 可选：
-+ 'horizontal'
-+ 'vertical'
++ `'horizontal'`
++ `'vertical'`
 
 ## align(string) = 'auto'
 
-图例标记和文本的对齐。默认自动，根据组件的位置和 orient 决定，当组件的 [left](~legend.left) 值为 'right' 以及纵向布局（[orient](~legend.orient) 为  'vertical'）的时候为右对齐，及为 'right'。
+图例标记和文本的对齐。默认自动，根据组件的位置和 orient 决定，当组件的 [left](~legend.left) 值为 `'right'` 以及纵向布局（[orient](~legend.orient) 为 `'vertical'`）的时候为右对齐，即为 `'right'`。
 
 可选：
-+ 'auto'
-+ 'left'
-+ 'right'
++ `'auto'`
++ `'left'`
++ `'right'`
 
 ## padding(number) = 5
 
@@ -144,6 +144,12 @@ legend: {
 }
 ```
 
+## icon(string)
+
+图例项的 icon。
+
+{{ use: partial-icon }}
+
 ## data(Array)
 
 图例的数据数组。数组项通常为一个字符串，每一项代表一个系列的 `name`（如果是[饼图](~series-pie)，也可以是饼图单个数据的 `name`）。图例组件会自动根据对应系列的图形标记（symbol）来绘制自己的颜色和标记，特殊字符串 `''`（空字符串）或者 `'\n'`（换行字符串）用于图例的换行。
@@ -222,7 +228,7 @@ data: [{
 图例控制块的位置。可选值为：
 
 + `'start'`：控制块在左或上。
-+ `'end'`：按钮快在右或下。
++ `'end'`：控制块在右或下。
 
 参见 [滚动图例（垂直）](${galleryEditorPath}pie-legend&edit=1&reset=1) 或 [滚动图例（水平）](${galleryEditorPath}radar2&edit=1&reset=1)。
 
