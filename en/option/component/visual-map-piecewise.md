@@ -199,7 +199,7 @@ Default symbol (the shape of graphical element). Possible values are:
 
 {{ import: partial-icon-buildin}}
 
-The setting of visual channel `symbol` can refers to [visualMap-piecewise.inRange](~visualMap-piecewise.inRange) and [visualMap-piecewise.outOfRange](~visualMap-piecewise.outOfRange).
+The setting of visual channel `symbol` can refer to [visualMap-piecewise.inRange](~visualMap-piecewise.inRange) and [visualMap-piecewise.outOfRange](~visualMap-piecewise.outOfRange).
 
 When they are not specified, `itemSymbol` is adopted as the default value (but just used in visualMap component itself, not in chart).
 
