@@ -74,7 +74,12 @@ Whether to show sector when all data are zero.
 ## labelLine(Object)
 The style of visual guide line. Will show when [label position](~series-pie.label.position) is set as `'outside'`.
 
-{{ use: partial-pie-label-line(prefix='##') }}
+{{ use: partial-pie-label-line(
+    prefix='##',
+    length=true,
+    length2=true,
+    smooth=true
+)}}
 
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
@@ -91,6 +96,15 @@ The style of visual guide line. Will show when [label position](~series-pie.labe
     position=false,
     formatter=true
 )}}
+
+### labelLine(Object)
+{{use: partial-pie-label-line(
+    prefix='###',
+    length=false,
+    length2=false,
+    smooth=false
+)}}
+
 ### itemStyle(Object)
 {{ use:partial-item-style(prefix="###") }}
 
@@ -124,7 +138,12 @@ The label configuration of a single sector.
 )}}
 
 ### labelLine(Object)
-{{ use: partial-pie-label-line(prefix='###') }}
+{{ use: partial-pie-label-line(
+    prefix='###',
+    length=true,
+    length2=true,
+    smooth=true
+)}}
 
 ### itemStyle(Object)
 {{use:partial-item-style-desc}}
@@ -137,6 +156,15 @@ The label configuration of a single sector.
     position=false,
     formatter=false
 )}}
+
+#### labelLine(Object)
+{{use: partial-pie-label-line(
+    prefix='####',
+    length=false,
+    length2=false,
+    smooth=false
+)}}
+
 #### itemStyle(Object)
 {{use:partial-item-style(prefix="####")}}
 
@@ -217,20 +245,17 @@ Label rotation.
 The style of visual guide line.
 #${prefix} show(boolean)
 Whether to show the visual guide ine.
+{{ if: ${length} }}
 #${prefix} length(number)
 The length of the first segment of visual guide line.
+{{ /if }}
+{{ if: ${length2} }}
 #${prefix} length2(number)
 The length of the second segment of visual guide line.
+{{ /if }}
+{{ if: ${smooth} }}
 #${prefix} smooth(boolean|number) = false
 Whether to smooth the visual guide line. It defaults to be `false` and can be set as `true` or the values from 0 to 1 which indicating the smoothness.
+{{ /if }}
 #${prefix} lineStyle(Object)
 {{use:partial-line-style(prefix="#" + ${prefix})}}
-
-#${prefix} emphasis(Object)
-The style of visual guide line in emphasis status.
-##${prefix} show(boolean)
-Whether to show the visual guide line in emphasis status.
-
-##${prefix} lineStyle(Object)
-{{use:partial-line-style(prefix="##" + ${prefix})}}
-

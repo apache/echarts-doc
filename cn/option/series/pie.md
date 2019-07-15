@@ -70,7 +70,12 @@
 
 ## labelLine(Object)
 标签的视觉引导线样式，在 [label 位置](~series-pie.label.position) 设置为`'outside'`的时候会显示视觉引导线。
-{{ use: partial-pie-label-line(prefix='##') }}
+{{ use: partial-pie-label-line(
+    prefix='##',
+    length=true,
+    length2=true,
+    smooth=true
+)}}
 
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
@@ -88,6 +93,15 @@
     position=false,
     formatter=true
 )}}
+
+### labelLine(Object)
+{{use: partial-pie-label-line(
+    prefix='###',
+    length=false,
+    length2=false,
+    smooth=false
+)}}
+
 ### itemStyle(Object)
 {{ use:partial-item-style(prefix="###") }}
 
@@ -120,19 +134,34 @@
 )}}
 
 ### labelLine(Object)
-{{ use: partial-pie-label-line(prefix='###') }}
+{{use: partial-pie-label-line(
+    prefix='###',
+    length=true,
+    length2=true,
+    smooth=true
+)}}
 
 ### itemStyle(Object)
 {{use:partial-item-style-desc}}
 {{use:partial-item-style(prefix="###")}}
 
 ### emphasis(Object)
+
 #### label(Object)
 {{use:partial-pie-label(
     prefix="####",
     position=false,
     formatter=false
 )}}
+
+#### labelLine(Object)
+{{use: partial-pie-label-line(
+    prefix='####',
+    length=false,
+    length2=false,
+    smooth=false
+)}}
+
 #### itemStyle(Object)
 {{use:partial-item-style(prefix="####")}}
 
@@ -210,19 +239,17 @@
 {{ target: partial-pie-label-line }}
 #${prefix} show(boolean)
 是否显示视觉引导线。
+{{ if: ${length} }}
 #${prefix} length(number)
 视觉引导线第一段的长度。
+{{ /if }}
+{{ if: ${length2} }}
 #${prefix} length2(number)
 视觉引导项第二段的长度。
+{{ /if }}
+{{ if: ${smooth} }}
 #${prefix} smooth(boolean|number) = false
 是否平滑视觉引导线，默认不平滑，可以设置成 `true` 平滑显示，也可以设置为 0 到 1 的值，表示平滑程度。
+{{ /if }}
 #${prefix} lineStyle(Object)
 {{use:partial-line-style(prefix="#" + ${prefix})}}
-
-#${prefix} emphasis(Object)
-高亮状态下视觉引导线的样式。
-##${prefix} show(boolean)
-是否显示视觉引导线。
-##${prefix} lineStyle(Object)
-{{use:partial-line-style(prefix="##" + ${prefix})}}
-

@@ -51,7 +51,10 @@ Horizontal align. Defaults to align center. Can be 'left', 'right', 'center'.
 
 ## labelLine(Object)
 The visual guide line style of label. When [label position](~series-funnel.label.position) is set as `'left'`or`'right'`, the visual guide line will show.
-{{ use: partial-funnel-label-line(prefix='##') }}
+{{ use: partial-funnel-label-line(
+    prefix='##',
+    length=true
+)}}
 
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
@@ -71,12 +74,15 @@ The visual guide line style of label. When [label position](~series-funnel.label
     formatter=true
 )}}
 
+### labelLine(Object)
+{{ use: partial-funnel-label-line(
+    prefix='###',
+    length=false
+)}}
+
+
 ### itemStyle(Object)
 {{use:partial-item-style(prefix="###")}}
-
-### labelLine(Object)
-{{ use: partial-funnel-label-line(prefix='###') }}
-
 
 
 {{ use: component-rect-layout-width-height(
@@ -113,7 +119,10 @@ The label configuration of a single data item.
 
 
 ### labelLine(Object)
-{{ use: partial-funnel-label-line(prefix='###') }}
+{{ use: partial-funnel-label-line(
+    prefix='###',
+    length=true
+)}}
 
 ### itemStyle(Object)
 {{use:partial-item-style-desc}}
@@ -132,7 +141,10 @@ The label configuration of a single data item.
 )}}
 
 #### labelLine(Object)
-{{use:partial-funnel-label-line(prefix="####")}}
+{{use:partial-funnel-label-line(
+    prefix="####",
+    length=false
+)}}
 
 
 {{use: partial-tooltip-in-series-data(
@@ -217,15 +229,9 @@ Label position.
 {{ target: partial-funnel-label-line }}
 #${prefix} show(boolean)
 Whether to show visual guide line.
+{{ if: ${length} }}
 #${prefix} length(number)
 The length of the first part from visual guide line.
+{{ /if }}
 #${prefix} lineStyle(Object)
 {{use:partial-line-style(prefix="#" + ${prefix})}}
-#${prefix} emphasis(Object)
-The style of visual guide line in emphasis status.
-##${prefix} show(boolean)
-Whether to show visual guide line.
-##${prefix} lineStyle(Object)
-{{use:partial-line-style(prefix="##" + ${prefix})}}
-
-

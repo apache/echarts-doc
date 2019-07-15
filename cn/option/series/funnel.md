@@ -52,7 +52,10 @@
 
 ## labelLine(Object)
 标签的视觉引导线样式，在 [label 位置](~series-funnel.label.position) 设置为`'left'`或者`'right'`的时候会显示视觉引导线。
-{{ use: partial-funnel-label-line(prefix='##') }}
+{{ use: partial-funnel-label-line(
+    prefix='##',
+    length=true
+)}}
 
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
@@ -72,12 +75,14 @@
     formatter=true
 )}}
 
+### labelLine(Object)
+{{ use: partial-funnel-label-line(
+    prefix='###',
+    length=false
+)}}
+
 ### itemStyle(Object)
 {{use:partial-item-style(prefix="###")}}
-
-### labelLine(Object)
-{{ use: partial-funnel-label-line(prefix='###') }}
-
 
 
 {{ use: component-rect-layout-width-height(
@@ -114,7 +119,10 @@
 
 
 ### labelLine(Object)
-{{ use: partial-funnel-label-line(prefix='###') }}
+{{ use: partial-funnel-label-line(
+    prefix='###',
+    length=true
+)}}
 
 ### itemStyle(Object)
 {{use:partial-item-style-desc}}
@@ -134,7 +142,10 @@
 )}}
 
 #### labelLine(Object)
-{{use:partial-funnel-label-line(prefix="####")}}
+{{use:partial-funnel-label-line(
+    prefix="####",
+    length=false
+)}}
 
 
 
@@ -226,15 +237,9 @@
 {{ target: partial-funnel-label-line }}
 #${prefix} show(boolean)
 是否显示视觉引导线。
+{{ if: ${length} }}
 #${prefix} length(number)
-视觉引导线第一段的长度。
+视觉引导线的长度。
+{{ /if }}
 #${prefix} lineStyle(Object)
 {{use:partial-line-style(prefix="#" + ${prefix})}}
-#${prefix} emphasis(Object)
-高亮状态下视觉引导线的样式。
-##${prefix} show(boolean)
-是否显示视觉引导线。
-##${prefix} lineStyle(Object)
-{{use:partial-line-style(prefix="##" + ${prefix})}}
-
-
