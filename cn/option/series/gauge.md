@@ -30,6 +30,13 @@
 ## clockwise(boolean) = true
 仪表盘刻度是否是顺时针增长。
 
+## data(Array)
+{{ use: partial-1d-data-desc }}
+### name(string)
+数据项名称。
+### value(number)
+数据值。
+
 ## min(number) = 0
 最小的数据值，映射到 [minAngle](~series-gauge.minAngle)。
 

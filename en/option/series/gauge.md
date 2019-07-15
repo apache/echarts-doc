@@ -30,6 +30,13 @@ The end angle of gauge chart.
 ## clockwise(boolean) = true
 Whether the scale in gauge chart increases clockwise.
 
+## data(Array)
+{{ use: partial-1d-data-desc }}
+### name(string)
+Data name.
+### value(number)
+Data value.
+
 ## min(number) = 0
 The minimum data value which map to [minAngle](~series-gauge.minAngle).
 
