@@ -52,7 +52,7 @@ series: {
 }
 ```
 
-Usually the first one or two dimensions are used for mapping. For example, map the first dimension to x axis, and the second dimension to y axis. If you want to represent more dimensions, `visualMap` is what you need. Most likely, [scatter charts](option.html#scatter) use radius to represent the third dimension.
+Usually the first one or two dimensions are used for mapping. For example, map the first dimension to x axis, and the second dimension to y axis. If you want to represent more dimensions, `visualMap` is what you need. Most likely, [scatter charts](option.html#series-scatter) use radius to represent the third dimension.
 
 
 
