@@ -31,6 +31,9 @@ When to show the effect.
 ## rippleEffect(Object)
 Related configurations about ripple effect.
 
+### color(string)
+Color of the ripple rings. The default value is the color of scatter.
+
 ### period(number) = 4
 The period duration of animation, in seconds.
 

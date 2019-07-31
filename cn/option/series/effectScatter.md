@@ -30,6 +30,8 @@
 
 ## rippleEffect(Object)
 涟漪特效相关配置。
+### color(string)
+涟漪的颜色，默认为散点的颜色。
 ### period(number) = 4
 动画的周期，秒数。
 ### scale(number) = 2.5
