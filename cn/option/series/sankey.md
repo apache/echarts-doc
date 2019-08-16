@@ -210,7 +210,7 @@ data: [{
 
 ### depth(number)
 
-节点所在的层。
+节点所在的层，取值从 0 开始。
 
 ### itemStyle(Object)
 
