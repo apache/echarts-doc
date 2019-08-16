@@ -200,7 +200,7 @@ The name of the node.
 
 ### depth(number)
 
-The layer of the node.
+The layer of the node, value starts from 0.
 
 ### itemStyle(Object)
 
