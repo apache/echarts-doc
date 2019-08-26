@@ -6,8 +6,11 @@ Text label of ${name}, to explain some data information about graphic item like 
 {{target:partial-label}}
 #${prefix} show(boolean) = ${defaultShowLabel|default("false")}
 Whether to show label.
+
+{{  if: !${noPosition} }}
 #${prefix} position(string|Array) = ${defaultPosition}
 {{use:partial-label-position}}
+
 #${prefix} distance(number) = 5
 Distance to the host graphic element. Works when position is string value (like `'top'`、`'insideRight'`).
 

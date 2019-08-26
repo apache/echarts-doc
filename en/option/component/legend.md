@@ -307,7 +307,7 @@ The text style of page info.
     componentName='图例页信息',
     prefix='##',
     defaultColor="#333"
-) }}
+)}}
 
 ## animation(boolean)
 
@@ -317,3 +317,52 @@ Whether to use animation when page scrolll.
 
 Duration of the page scroll animation.
 
+## selector(boolean|Array) = false
+
+The selector button in the legend component. Currently includes both a full selection and an inverse selection. The selector button doesn't display by default, the user can manually configure it.
+
+Usage:
+
+```js
+selector: [
+    {
+        type: 'all or inverse',
+        // can be any title you like
+        title: 'All'
+    },
+    {
+        type: 'inverse',
+        title: 'Inv'
+    }
+]
+
+// or
+selector: true
+
+// or
+selector: ['all', 'inverse']
+```
+
+## selectorLabel(Object)
+
+The text label style of the selector button, which is displayed by default.
+
+{{use:partial-label(
+    prefix='##',
+    defaultShowLabel=true,
+    noPosition=true,
+    formatter=false,
+    formatter1d=false
+)}}
+
+## selectorPosition(string) = 'auto'
+
+The position of the selector button, which can be placed at the end or start of the legend component, the corresponding values are `'end'` and `'start'`. By default, when the legend is laid out horizontally, the selector is placed at the end of it, and when the legend is laid out vertically, the selector is placed at the start of it.
+
+## selectorItemGap(number) = 7
+
+The gap between the selector button.
+
+## selectorButtonGap(number) = 10
+
+The gap between selector button and legend component.

@@ -6,8 +6,12 @@ ${name}图形上的文本标签，可用于说明图形的一些数据信息，�
 {{target:partial-label}}
 #${prefix} show(boolean) = ${defaultShowLabel|default("false")}
 是否显示标签。
+
+{{ if: !${noPosition} }}
 #${prefix} position(string|Array) = ${defaultPosition}
 {{use:partial-label-position}}
+{{ /if }}
+
 #${prefix} distance(number) = 5
 距离图形元素的距离。当 position 为字符描述值（如 `'top'`、`'insideRight'`）时候有效。
 
@@ -24,6 +28,7 @@ ${name}图形上的文本标签，可用于说明图形的一些数据信息，�
 
 #${prefix} offset(Array)
 是否对文字进行偏移。默认不偏移。例如：`[30, 40]` 表示文字在横向上偏移 `30`，纵向上偏移 `40`。
+
 {{ if: ${formatter} }}
 #${prefix} formatter(string|Function)
 {{use:partial-2d-data-label-formatter}}

@@ -319,3 +319,52 @@ data: [{
 
 图例翻页时的动画时长。
 
+## selector(boolean|Array) = false
+
+图例组件中的选择器按钮，目前包括全选和反选两种功能。默认不显示，用户可手动开启，也可以手动配置每个按钮的标题。
+
+使用方式如下：
+
+```js
+selector: [
+    {
+        type: 'all or inverse',
+        // 可以是任意你喜欢的 title
+        title: '全选'
+    },
+    {
+        type: 'inverse',
+        title: '反选'
+    }
+]
+
+// 或
+selector: true
+
+// 或
+selector: ['all', 'inverse']
+```
+
+## selectorLabel(Object)
+
+选择器按钮的文本标签样式，默认显示。
+
+{{use:partial-label(
+    prefix='##',
+    defaultShowLabel=true,
+    noPosition=true,
+    formatter=false,
+    formatter1d=false
+)}}
+
+## selectorPosition(string) = 'auto'
+
+选择器的位置，可以放在图例的尾部或者头部，对应的值分别为 `'end'` 和 `'start'`。默认情况下，图例横向布局的时候，选择器放在图例的尾部；图例纵向布局的时候，选择器放在图例的头部。
+
+## selectorItemGap(number) = 7
+
+选择器按钮之间的间隔。
+
+## selectorButtonGap(number) = 10
+
+选择器按钮与图例组件之间的间隔。
