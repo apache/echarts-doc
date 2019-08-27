@@ -72,7 +72,7 @@ You would realize the sequence in `pieces` by a simple trial. See more detailed 
 
 ## categories(Array)
 
-When dataValues in series.data (specified by [visualMap-piecewise.dimension](~visualMap-piecewise.dimension)) are discrete (or also known as category data or enumerable data), and we intend to perform **Table Mapping** from dataVale to visual channels, `categories` is used to describe the entire enumeration of data. For instance:
+When dataValues in series.data (specified by [visualMap-piecewise.dimension](~visualMap-piecewise.dimension)) are discrete (or also known as category data or enumerable data), and we intend to perform **Table Mapping** from dataValue to visual channels, `categories` is used to describe the entire enumeration of data. For instance:
 
 ```javascript
 categories: [
