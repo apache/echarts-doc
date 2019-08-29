@@ -355,7 +355,7 @@ For example, it can be set to be `1` to make sure axis label is show as integer.
 
 It is available only for axis of [type](~${componentType}.type) 'value' or 'time'.
 
-#${prefix} minInterval(number)
+#${prefix} maxInterval(number)
 
 Maximum gap between split lines.
 
