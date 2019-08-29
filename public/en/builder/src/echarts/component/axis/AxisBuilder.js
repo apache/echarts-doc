@@ -26,15 +26,6 @@ import * as matrixUtil from 'zrender/src/core/matrix';
 import { applyTransform as v2ApplyTransform } from 'zrender/src/core/vector';
 import { shouldShowAllLabels } from '../../coord/axisHelper';
 var PI = Math.PI;
-
-function makeAxisEventDataBase(axisModel) {
-  var eventData = {
-    componentType: axisModel.mainType,
-    componentIndex: axisModel.componentIndex
-  };
-  eventData[axisModel.mainType + 'Index'] = axisModel.componentIndex;
-  return eventData;
-}
 /**
  * A final axis is translated and rotated from a "standard axis".
  * So opt.position and opt.rotation is required.
@@ -73,7 +64,6 @@ function makeAxisEventDataBase(axisModel) {
  * @param {number} [opt.strokeContainThreshold] Default label interval when label
  * @param {number} [opt.nameTruncateMaxWidth]
  */
-
 
 var AxisBuilder = function (axisModel, opt) {
   /**
@@ -147,9 +137,10 @@ var builders = {
     var lineStyle = extend({
       lineCap: 'round'
     }, axisModel.getModel('axisLine.lineStyle').getLineStyle());
-    this.group.add(new graphic.Line(graphic.subPixelOptimizeLine({
+    this.group.add(new graphic.Line({
       // Id for animation
       anid: 'line',
+      subPixelOptimize: true,
       shape: {
         x1: pt1[0],
         y1: pt1[1],
@@ -160,7 +151,7 @@ var builders = {
       strokeContainThreshold: opt.strokeContainThreshold || 5,
       silent: true,
       z2: 1
-    })));
+    }));
     var arrows = axisModel.get('axisLine.symbol');
     var arrowSize = axisModel.get('axisLine.symbolSize');
     var arrowOffset = axisModel.get('axisLine.symbolOffset') || 0;
@@ -287,7 +278,7 @@ var builders = {
       __truncatedText: truncatedText,
       position: pos,
       rotation: labelLayout.rotation,
-      silent: isSilent(axisModel),
+      silent: isLabelSilent(axisModel),
       z2: 1,
       tooltip: tooltipOpt && tooltipOpt.show ? extend({
         content: name,
@@ -301,8 +292,8 @@ var builders = {
       text: truncatedText,
       textFont: textFont,
       textFill: textStyleModel.getTextColor() || axisModel.get('axisLine.lineStyle.color'),
-      textAlign: labelLayout.textAlign,
-      textVerticalAlign: labelLayout.textVerticalAlign
+      textAlign: textStyleModel.get('align') || labelLayout.textAlign,
+      textVerticalAlign: textStyleModel.get('verticalAlign') || labelLayout.textVerticalAlign
     });
 
     if (axisModel.get('triggerEvent')) {
@@ -319,6 +310,15 @@ var builders = {
     textEl.decomposeTransform();
   }
 };
+
+var makeAxisEventDataBase = AxisBuilder.makeAxisEventDataBase = function (axisModel) {
+  var eventData = {
+    componentType: axisModel.mainType,
+    componentIndex: axisModel.componentIndex
+  };
+  eventData[axisModel.mainType + 'Index'] = axisModel.componentIndex;
+  return eventData;
+};
 /**
  * @public
  * @static
@@ -332,6 +332,7 @@ var builders = {
  *  textVerticalAlign
  * }
  */
+
 
 var innerTextLayout = AxisBuilder.innerTextLayout = function (axisRotation, textRotation, direction) {
   var rotationDiff = remRadian(textRotation - axisRotation);
@@ -393,11 +394,11 @@ function endTextLayout(opt, textPosition, textRotate, extent) {
   };
 }
 
-function isSilent(axisModel) {
+var isLabelSilent = AxisBuilder.isLabelSilent = function (axisModel) {
   var tooltipOpt = axisModel.get('tooltip');
   return axisModel.get('silent') // Consider mouse cursor, add these restrictions.
   || !(axisModel.get('triggerEvent') || tooltipOpt && tooltipOpt.show);
-}
+};
 
 function fixMinMaxLabelShow(axisModel, labelEls, tickEls) {
   if (shouldShowAllLabels(axisModel.axis)) {
@@ -504,9 +505,10 @@ function buildAxisTick(axisBuilder, axisModel, opt) {
     } // Tick line, Not use group transform to have better line draw
 
 
-    var tickEl = new graphic.Line(graphic.subPixelOptimizeLine({
+    var tickEl = new graphic.Line({
       // Id for animation
       anid: 'tick_' + ticksCoords[i].tickValue,
+      subPixelOptimize: true,
       shape: {
         x1: pt1[0],
         y1: pt1[1],
@@ -518,7 +520,7 @@ function buildAxisTick(axisBuilder, axisModel, opt) {
       }),
       z2: 2,
       silent: true
-    }));
+    });
     axisBuilder.group.add(tickEl);
     tickEls.push(tickEl);
   }
@@ -540,9 +542,9 @@ function buildAxisLabel(axisBuilder, axisModel, opt) {
 
   var labelRotation = (retrieve(opt.labelRotate, labelModel.get('rotate')) || 0) * PI / 180;
   var labelLayout = innerTextLayout(opt.rotation, labelRotation, opt.labelDirection);
-  var rawCategoryData = axisModel.getCategories(true);
+  var rawCategoryData = axisModel.getCategories && axisModel.getCategories(true);
   var labelEls = [];
-  var silent = isSilent(axisModel);
+  var silent = isLabelSilent(axisModel);
   var triggerEvent = axisModel.get('triggerEvent');
   each(labels, function (labelItem, index) {
     var tickValue = labelItem.tickValue;

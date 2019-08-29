@@ -24,19 +24,19 @@ export function summarizeDimensions(data) {
   var encode = summary.encode = {};
   var notExtraCoordDimMap = createHashMap();
   var defaultedLabel = [];
-  var defaultedTooltip = [];
+  var defaultedTooltip = []; // See the comment of `List.js#userOutput`.
+
+  var userOutput = summary.userOutput = {
+    dimensionNames: data.dimensions.slice(),
+    encode: {}
+  };
   each(data.dimensions, function (dimName) {
     var dimItem = data.getDimensionInfo(dimName);
     var coordDim = dimItem.coordDim;
 
     if (coordDim) {
-      var coordDimArr = encode[coordDim];
-
-      if (!encode.hasOwnProperty(coordDim)) {
-        coordDimArr = encode[coordDim] = [];
-      }
-
-      coordDimArr[dimItem.coordDimIndex] = dimName;
+      var coordDimIndex = dimItem.coordDimIndex;
+      getOrCreateEncodeArr(encode, coordDim)[coordDimIndex] = dimName;
 
       if (!dimItem.isExtraCoord) {
         notExtraCoordDimMap.set(coordDim, 1); // Use the last coord dim (and label friendly) as default label,
@@ -46,7 +46,11 @@ export function summarizeDimensions(data) {
 
         if (mayLabelDimType(dimItem.type)) {
           defaultedLabel[0] = dimName;
-        }
+        } // User output encode do not contain generated coords.
+        // And it only has index. User can use index to retrieve value from the raw item array.
+
+
+        getOrCreateEncodeArr(userOutput.encode, coordDim)[coordDimIndex] = dimItem.index;
       }
 
       if (dimItem.defaultTooltip) {
@@ -55,16 +59,11 @@ export function summarizeDimensions(data) {
     }
 
     OTHER_DIMENSIONS.each(function (v, otherDim) {
-      var otherDimArr = encode[otherDim];
-
-      if (!encode.hasOwnProperty(otherDim)) {
-        otherDimArr = encode[otherDim] = [];
-      }
-
+      var encodeArr = getOrCreateEncodeArr(encode, otherDim);
       var dimIndex = dimItem.otherDims[otherDim];
 
       if (dimIndex != null && dimIndex !== false) {
-        otherDimArr[dimIndex] = dimItem.name;
+        encodeArr[dimIndex] = dimItem.name;
       }
     });
   });
@@ -101,6 +100,15 @@ export function summarizeDimensions(data) {
   encode.defaultedTooltip = defaultedTooltip;
   return summary;
 }
+
+function getOrCreateEncodeArr(encode, dim) {
+  if (!encode.hasOwnProperty(dim)) {
+    encode[dim] = [];
+  }
+
+  return encode[dim];
+}
+
 export function getDimensionTypeByAxis(axisType) {
   return axisType === 'category' ? 'ordinal' : axisType === 'time' ? 'time' : 'float';
 }

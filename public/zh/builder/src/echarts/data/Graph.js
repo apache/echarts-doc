@@ -104,7 +104,7 @@ graphProto.isDirected = function () {
 
 
 graphProto.addNode = function (id, dataIndex) {
-  id = id || '' + dataIndex;
+  id = id == null ? '' + dataIndex : '' + id;
   var nodesMap = this._nodesMap;
 
   if (nodesMap[generateNodeKey(id)]) {

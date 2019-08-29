@@ -24,9 +24,10 @@ import './bar/BarSeries';
 import './bar/BarView'; // In case developer forget to include grid component
 
 import '../component/gridSimple';
-echarts.registerLayout(zrUtil.curry(layout, 'bar')); // Should after normal bar layout, otherwise it is blocked by normal bar layout.
+echarts.registerLayout(echarts.PRIORITY.VISUAL.LAYOUT, zrUtil.curry(layout, 'bar')); // Use higher prority to avoid to be blocked by other overall layout, which do not
+// only exist in this module, but probably also exist in other modules, like `barPolar`.
 
-echarts.registerLayout(largeLayout);
+echarts.registerLayout(echarts.PRIORITY.VISUAL.PROGRESSIVE_LAYOUT, largeLayout);
 echarts.registerVisual({
   seriesType: 'bar',
   reset: function (seriesModel) {

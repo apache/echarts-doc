@@ -421,8 +421,9 @@ var SliderZoomView = DataZoomView.extend({
       }
     })); // Frame border.
 
-    barGroup.add(new Rect(graphic.subPixelOptimizeRect({
+    barGroup.add(new Rect({
       silent: true,
+      subPixelOptimize: true,
       shape: {
         x: 0,
         y: 0,
@@ -434,7 +435,7 @@ var SliderZoomView = DataZoomView.extend({
         lineWidth: DEFAULT_FRAME_BORDER_WIDTH,
         fill: 'rgba(0,0,0,0)'
       }
-    })));
+    }));
     each([0, 1], function (handleIndex) {
       var path = graphic.createIcon(dataZoomModel.get('handleIcon'), {
         cursor: getCursor(this._orient),

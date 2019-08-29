@@ -16,7 +16,6 @@
 * specific language governing permissions and limitations
 * under the License.
 */
-import * as graphic from '../../util/graphic';
 import BaseAxisPointer from './BaseAxisPointer';
 import * as viewHelper from './viewHelper';
 import * as cartesianAxisHelper from '../../coord/cartesian/cartesianAxisHelper';
@@ -34,7 +33,7 @@ var CartesianAxisPointer = BaseAxisPointer.extend({
 
     if (axisPointerType && axisPointerType !== 'none') {
       var elStyle = viewHelper.buildElStyle(axisPointerModel);
-      var pointerOption = pointerShapeBuilder[axisPointerType](axis, pixelValue, otherExtent, elStyle);
+      var pointerOption = pointerShapeBuilder[axisPointerType](axis, pixelValue, otherExtent);
       pointerOption.style = elStyle;
       elOption.graphicKey = pointerOption.type;
       elOption.pointer = pointerOption;
@@ -96,18 +95,15 @@ function getCartesian(grid, axis) {
 }
 
 var pointerShapeBuilder = {
-  line: function (axis, pixelValue, otherExtent, elStyle) {
+  line: function (axis, pixelValue, otherExtent) {
     var targetShape = viewHelper.makeLineShape([pixelValue, otherExtent[0]], [pixelValue, otherExtent[1]], getAxisDimIndex(axis));
-    graphic.subPixelOptimizeLine({
-      shape: targetShape,
-      style: elStyle
-    });
     return {
       type: 'Line',
+      subPixelOptimize: true,
       shape: targetShape
     };
   },
-  shadow: function (axis, pixelValue, otherExtent, elStyle) {
+  shadow: function (axis, pixelValue, otherExtent) {
     var bandWidth = Math.max(1, axis.getBandWidth());
     var span = otherExtent[1] - otherExtent[0];
     return {

@@ -26,6 +26,7 @@ export default SeriesModel.extend({
   type: 'series.treemap',
   layoutMode: 'box',
   dependencies: ['grid', 'polar'],
+  preventUsingHoverLayer: true,
 
   /**
    * @type {module:echarts/data/Tree~Node}
@@ -34,7 +35,6 @@ export default SeriesModel.extend({
   defaultOption: {
     // Disable progressive rendering
     progressive: 0,
-    hoverLayerThreshold: Infinity,
     // center: ['50%', '50%'],          // not supported in ec3.
     // size: ['80%', '80%'],            // deprecated, compatible with ec2.
     left: 'center',

@@ -20,6 +20,7 @@ import * as zrUtil from 'zrender/src/core/util';
 import * as graphic from '../../util/graphic';
 import Model from '../../model/Model';
 import AxisView from './AxisView';
+import AxisBuilder from './AxisBuilder';
 var elementList = ['axisLine', 'axisLabel', 'axisTick', 'splitLine', 'splitArea'];
 
 function getAxisLineShape(polar, rExtent, angle) {
@@ -121,7 +122,8 @@ export default AxisView.extend({
   _axisLabel: function (angleAxisModel, polar, ticksAngles, radiusExtent, labels) {
     var rawCategoryData = angleAxisModel.getCategories(true);
     var commonLabelModel = angleAxisModel.getModel('axisLabel');
-    var labelMargin = commonLabelModel.get('margin'); // Use length of ticksAngles because it may remove the last tick to avoid overlapping
+    var labelMargin = commonLabelModel.get('margin');
+    var triggerEvent = angleAxisModel.get('triggerEvent'); // Use length of ticksAngles because it may remove the last tick to avoid overlapping
 
     zrUtil.each(labels, function (labelItem, idx) {
       var labelModel = commonLabelModel;
@@ -138,7 +140,7 @@ export default AxisView.extend({
       }
 
       var textEl = new graphic.Text({
-        silent: true
+        silent: AxisBuilder.isLabelSilent(angleAxisModel)
       });
       this.group.add(textEl);
       graphic.setTextStyle(textEl.style, labelModel, {
@@ -148,7 +150,13 @@ export default AxisView.extend({
         text: labelItem.formattedLabel,
         textAlign: labelTextAlign,
         textVerticalAlign: labelTextVerticalAlign
-      });
+      }); // Pack data for mouse event
+
+      if (triggerEvent) {
+        textEl.eventData = AxisBuilder.makeAxisEventDataBase(angleAxisModel);
+        textEl.eventData.targetType = 'axisLabel';
+        textEl.eventData.value = labelItem.rawLabel;
+      }
     }, this);
   },
 

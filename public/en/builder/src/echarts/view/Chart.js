@@ -21,6 +21,7 @@ import Group from 'zrender/src/container/Group';
 import * as componentUtil from '../util/component';
 import * as clazzUtil from '../util/clazz';
 import * as modelUtil from '../util/model';
+import * as graphicUtil from '../util/graphic';
 import { createTask } from '../stream/task';
 import createRenderPlanner from '../chart/helper/createRenderPlanner';
 var inner = modelUtil.makeInner();
@@ -157,39 +158,42 @@ chartProto.updateView = chartProto.updateLayout = chartProto.updateVisual = func
 };
 /**
  * Set state of single element
- * @param  {module:zrender/Element} el
- * @param  {string} state
+ * @param {module:zrender/Element} el
+ * @param {string} state 'normal'|'emphasis'
+ * @param {number} highlightDigit
  */
 
 
-function elSetState(el, state) {
+function elSetState(el, state, highlightDigit) {
   if (el) {
-    el.trigger(state);
+    el.trigger(state, highlightDigit);
 
-    if (el.type === 'group') {
-      for (var i = 0; i < el.childCount(); i++) {
-        elSetState(el.childAt(i), state);
+    if (el.isGroup // Simple optimize.
+    && !graphicUtil.isHighDownDispatcher(el)) {
+      for (var i = 0, len = el.childCount(); i < len; i++) {
+        elSetState(el.childAt(i), state, highlightDigit);
       }
     }
   }
 }
 /**
- * @param  {module:echarts/data/List} data
- * @param  {Object} payload
- * @param  {string} state 'normal'|'emphasis'
+ * @param {module:echarts/data/List} data
+ * @param {Object} payload
+ * @param {string} state 'normal'|'emphasis'
  */
 
 
 function toggleHighlight(data, payload, state) {
   var dataIndex = modelUtil.queryDataIndex(data, payload);
+  var highlightDigit = payload && payload.highlightKey != null ? graphicUtil.getHighlightDigit(payload.highlightKey) : null;
 
   if (dataIndex != null) {
     each(modelUtil.normalizeToArray(dataIndex), function (dataIdx) {
-      elSetState(data.getItemGraphicEl(dataIdx), state);
+      elSetState(data.getItemGraphicEl(dataIdx), state, highlightDigit);
     });
   } else {
     data.eachItemGraphicEl(function (el) {
-      elSetState(el, state);
+      elSetState(el, state, highlightDigit);
     });
   }
 } // Enable Chart.extend.

@@ -16,16 +16,6 @@
 * specific language governing permissions and limitations
 * under the License.
 */
-
-/**
- * DataZoom component entry
- */
-import './dataZoom/typeDefaulter';
-import './dataZoom/DataZoomModel';
-import './dataZoom/DataZoomView';
-import './dataZoom/SliderZoomModel';
-import './dataZoom/SliderZoomView';
-import './dataZoom/InsideZoomModel';
-import './dataZoom/InsideZoomView';
-import './dataZoom/dataZoomProcessor';
-import './dataZoom/dataZoomAction';
+import './dataZoomSlider';
+import './dataZoomInside'; // Do not include './dataZoomSelect',
+// since it only work for toolbox dataZoom.
