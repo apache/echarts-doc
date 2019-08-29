@@ -1,16 +1,36 @@
+#!/bin/bash
+
+# ------------------------------------------------------------------------
+# Usage:
+# sh release.sh --env asf
+# sh release.sh --env echartsjs
+# sh release.sh --env dev # the same as "debug"
+# # Check `./config` to see the available env
+# ------------------------------------------------------------------------
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --env) envType="$2"; shift; shift ;;
+        --env=*) envType="${1#*=}"; shift ;;
+        *) shift ;;
+    esac
+done
+if [[ ! -n "${envType}" ]]; then
+    echo "--env must be specified."
+    exit 1;
+fi
+
 basepath=$(cd `dirname $0`; pwd)
+currPath=$(pwd)
 
 
 # Build cn doc for www.echartsjs.com.
-node ${basepath}/build.js
+cd ${basepath}
+node ./build.js --env ${envType}
+cd ${currPath}
 # Do not rm, keep option3.json.
 cp -R ${basepath}/public/cn/documents/cn/ ${basepath}/../echarts-www/documents/zh/
-cp -R ${basepath}/public/cn/documents/cn/ ${basepath}/../incubator-echarts-website/documents/zh/
-
-node ${basepath}/build.js en
 cp -R ${basepath}/public/en/documents/en/ ${basepath}/../echarts-www/documents/en/
-cp -R ${basepath}/public/en/documents/en/ ${basepath}/../incubator-echarts-website/documents/en/
-
 
 # Copy asset.
 # Do not rm, keep option3.json
