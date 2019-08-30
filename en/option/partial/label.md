@@ -10,6 +10,7 @@ Whether to show label.
 {{  if: !${noPosition} }}
 #${prefix} position(string|Array) = ${defaultPosition}
 {{use:partial-label-position}}
+{{ /if }}
 
 #${prefix} distance(number) = 5
 Distance to the host graphic element. Works when position is string value (like `'top'`、`'insideRight'`).
