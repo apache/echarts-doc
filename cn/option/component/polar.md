@@ -12,7 +12,8 @@
 {{use: partial-component-id(prefix="#")}}
 
 {{use: component-circular-layout(
-    componentName="极坐标系"
+    componentName="极坐标系",
+    disableArray=true
 )}}
 
 

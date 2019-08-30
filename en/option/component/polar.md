@@ -12,7 +12,8 @@ Polar coordinate can be used in scatter and line chart. Every polar coordinate h
 {{use: partial-component-id(prefix="#")}}
 
 {{use: component-circular-layout(
-    componentName="Polar coordinate"
+    componentName="Polar coordinate",
+    disableArray=true
 )}}
 
 
