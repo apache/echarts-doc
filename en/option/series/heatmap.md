@@ -30,6 +30,9 @@ Here are the examples using it in rectangular coordinate and geographic coordina
     calendar=true
 )}}
 
+## pointSize(number) = 20
+Point size of each data point. It is valid with [coordinateSystem](~series-heatmap.coordinateSystem) of 'geo' value.
+
 ## blurSize(number) = 20
 Blur size of each data point. It is valid with [coordinateSystem](~series-heatmap.coordinateSystem) of 'geo' value.
 
