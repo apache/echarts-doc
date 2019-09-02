@@ -30,6 +30,9 @@
     calendar=true
 )}}
 
+## pointSize(number) = 20
+每个点的大小，在地理坐标系([coordinateSystem](~series-heatmap.coordinateSystem): 'geo')上有效。
+
 ## blurSize(number) = 20
 每个点模糊的大小，在地理坐标系([coordinateSystem](~series-heatmap.coordinateSystem): 'geo')上有效。
 
