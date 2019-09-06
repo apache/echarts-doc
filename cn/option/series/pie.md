@@ -182,8 +182,13 @@
 
 ## animationType(string) = 'expansion'
 初始动画效果，可选
-+ `'expansion'` 默认研圆弧展开的效果。
++ `'expansion'` 默认沿圆弧展开的效果。
 + `'scale'` 缩放效果，配合设置 `animationEasing='elasticOut'` 可以做成 popup 的效果。
+
+## animationTypeUpdate(string) = 'transition'
+更新数据时的动画效果，可选：
++ `'transition'` 通过改变起始和终止角度，从之前的数据过渡到新的数据。
++ `'expansion'` 数据将整体重新沿圆弧展开。
 
 {{use:partial-animation(
     prefix="#",
@@ -193,7 +198,6 @@
 {{use: partial-tooltip-in-series(
     galleryViewPath=${galleryViewPath}
 )}}
-
 
 
 {{ target: partial-pie-label }}
