@@ -22,7 +22,7 @@
 
 ###${prefix|default("#")} shadow(boolean) = false
 
-主光源是否投射阴影。默认关闭。
+主光源是否投射阴影。默认为关闭。
 
 开启阴影可以给场景带来更真实和有层次的光照效果。但是同时也会增加程序的运行开销。
 
@@ -76,11 +76,11 @@
 
 ##${prefix|default("#")} ambientCubemap(Object)
 
-ambientCubemap 会使用纹理作为光源的环境光， 会为物体提供漫反射和高光反射。可以通过 [diffuseIntensity](~${componentType}.light.ambientCubemap.diffuseIntensity) 和 [specularIntensity](~${componentType}.light.ambientCubemap.specularIntensity) 分别设置漫反射强度和高光反射强度。
+ambientCubemap 会使用纹理作为环境光的光源，会为物体提供漫反射和高光反射。可以通过 [diffuseIntensity](~${componentType}.light.ambientCubemap.diffuseIntensity) 和 [specularIntensity](~${componentType}.light.ambientCubemap.specularIntensity) 分别设置漫反射强度和高光反射强度。
 
 ###${prefix|default("#")} texture(string)
 
-环境光纹理的 url，支持使用`.hdr`格式的 HDR 贴图。可以从 http://www.hdrlabs.com/sibl/archive.html 等网站获取 `.hdr` 的资源。
+环境光贴图的 url，支持使用`.hdr`格式的 HDR 图片。可以从 http://www.hdrlabs.com/sibl/archive.html 等网站获取 `.hdr` 的资源。
 
 例如：
 

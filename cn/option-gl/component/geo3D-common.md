@@ -3,11 +3,11 @@
 
 ## map(string)
 
-地图类型。echarts-gl 中使用的地图类型同 [geo](http://echarts.baidu.com/option.html#geo.map) 组件相同
+地图类型。echarts-gl 中使用的地图类型同 [geo](http://echarts.baidu.com/option.html#geo.map) 组件相同。
 
 你可以在[地图下载界面](http://ecomfe.github.io/echarts-builder-web/map3.html)下载到需要的地图文件引入并注册到 ECharts 中。
 
-ECharts 中提供了两种格式的地图数据，一种是可以直接 script 标签引入的 js 文件，引入后会自动注册地图名字和数据。还有一种是 JSON 文件，需要通过 AJAX 异步加载后手动注册。
+ECharts 提供了两种格式的地图数据，一种是可以直接通过 script 标签引入的 js 文件，引入后会自动注册地图名字和数据。还有一种是 JSON 文件，需要通过 AJAX 异步加载后手动注册。
 
 下面是两种类型的使用示例：
 
@@ -42,7 +42,7 @@ $.get('map/json/china.json', function (chinaJson) {
 });
 ```
 
-ECharts 使用 [geoJSON](http://geojson.org/) 格式的数据作为地图的轮廓，除了上述数据，你也可以通过其它手段获取地图的 [geoJSON](http://geojson.org/) 数据注册到 ECharts 中。
+ECharts 使用 [geoJSON](http://geojson.org/) 格式的数据作为地图的轮廓。除此之外，你也可以通过其它手段获取地图的 [geoJSON](http://geojson.org/) 格式的数据注册到 ECharts 中。
 
 {{ use: partial-box-size-geo3D(
     componentType=${componentType},
@@ -99,7 +99,7 @@ ${componentName} 中三维图形的视觉属性，包括颜色，透明度，描
 
 ## emphasis(Object)
 
-鼠标 hover 高亮时图形和标签的样式
+鼠标 hover 高亮时图形和标签的样式。
 
 ### label(Object)
 
@@ -116,7 +116,7 @@ ${componentName} 中三维图形的视觉属性，包括颜色，透明度，描
 
 ## {{ if: ${inMap} }} data(Array) {{ else: }} regions(Array) {{ /if }}
 
-地图区域的设置，
+地图区域的设置。
 
 ### name(string)
 所对应的地图区域的名称，例如 `'广东'`，`'浙江'`。
@@ -127,7 +127,7 @@ ${componentName} 中三维图形的视觉属性，包括颜色，透明度，描
 {{ /if }}
 
 ### regionHeight(number)
-区域的高度，可以设置不同的高度用来表达数据的大小。当 GeoJSON 为建筑的数据时，也可以通过这个值表示简直的高度。如下图
+区域的高度。可以设置不同的高度用来表达数据的大小。当 GeoJSON 为建筑的数据时，也可以通过这个值表示简直的高度。如下图:
 
 ![700xauto](~city-region-height.jpg)
 
@@ -150,7 +150,7 @@ ${componentName} 中三维图形的视觉属性，包括颜色，透明度，描
 
 ### emphasis(Object)
 
-单个区域标签和样式的高亮设置。
+单个区域的标签和样式的高亮设置。
 
 #### itemStyle(Object)
 
@@ -218,11 +218,11 @@ ${componentName} 中三维图形的视觉属性，包括颜色，透明度，描
 {{ /block }}
 
 {{ block: boxDepthDescriptionExtra }}
-组件深度默认自动，保证三维组件的显示比例跟输入的 GeoJSON 的比例相同
+组件深度默认自动，保证三维组件的显示比例跟输入的 GeoJSON 的比例相同。
 {{ /block }}
 
 {{ block: boxHeightDescriptionExtra}}
-组件高度。这个高度包含三维地图上的柱状图，散点图。
+组件高度。这个高度包含三维地图上的柱状图、散点图的高度。
 {{ /block }}
 
 
