@@ -269,9 +269,9 @@ export function layout(seriesType, ecModel) {
 
     for (var idx = 0, len = data.count(); idx < len; idx++) {
       var value = data.get(valueDim, idx);
-      var baseValue = data.get(baseDim, idx);
+      var baseValue = data.get(baseDim, idx); // If dataZoom in filteMode: 'empty', the baseValue can be set as NaN in "axisProxy".
 
-      if (isNaN(value)) {
+      if (isNaN(value) || isNaN(baseValue)) {
         continue;
       }
 
@@ -364,22 +364,28 @@ export var largeLayout = {
     };
 
     function progress(params, data) {
-      var largePoints = new LargeArr(params.count * 2);
+      var count = params.count;
+      var largePoints = new LargeArr(count * 2);
+      var largeDataIndices = new LargeArr(count);
       var dataIndex;
       var coord = [];
       var valuePair = [];
-      var offset = 0;
+      var pointsOffset = 0;
+      var idxOffset = 0;
 
       while ((dataIndex = params.next()) != null) {
         valuePair[valueDimIdx] = data.get(valueDim, dataIndex);
         valuePair[1 - valueDimIdx] = data.get(baseDim, dataIndex);
-        coord = cartesian.dataToPoint(valuePair, null, coord);
-        largePoints[offset++] = coord[0];
-        largePoints[offset++] = coord[1];
+        coord = cartesian.dataToPoint(valuePair, null, coord); // Data index might not be in order, depends on `progressiveChunkMode`.
+
+        largePoints[pointsOffset++] = coord[0];
+        largePoints[pointsOffset++] = coord[1];
+        largeDataIndices[idxOffset++] = dataIndex;
       }
 
       data.setLayout({
         largePoints: largePoints,
+        largeDataIndices: largeDataIndices,
         barWidth: barWidth,
         valueAxisStart: getValueAxisStart(baseAxis, valueAxis, false),
         valueAxisHorizontal: valueAxisHorizontal

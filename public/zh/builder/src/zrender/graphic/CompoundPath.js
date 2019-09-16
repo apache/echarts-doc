@@ -28,7 +28,7 @@ export default Path.extend({
         paths[i].createPathProxy();
       }
 
-      paths[i].path.setScale(scale[0], scale[1]);
+      paths[i].path.setScale(scale[0], scale[1], paths[i].segmentIgnoreThreshold);
     }
   },
   buildPath: function (ctx, shape) {

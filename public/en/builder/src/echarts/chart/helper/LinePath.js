@@ -45,14 +45,19 @@ export default graphic.extendShape({
     cpy1: null
   },
   buildPath: function (ctx, shape) {
-    (isLine(shape) ? straightLineProto : bezierCurveProto).buildPath(ctx, shape);
+    this[isLine(shape) ? '_buildPathLine' : '_buildPathCurve'](ctx, shape);
   },
+  _buildPathLine: straightLineProto.buildPath,
+  _buildPathCurve: bezierCurveProto.buildPath,
   pointAt: function (t) {
-    return isLine(this.shape) ? straightLineProto.pointAt.call(this, t) : bezierCurveProto.pointAt.call(this, t);
+    return this[isLine(this.shape) ? '_pointAtLine' : '_pointAtCurve'](t);
   },
+  _pointAtLine: straightLineProto.pointAt,
+  _pointAtCurve: bezierCurveProto.pointAt,
   tangentAt: function (t) {
     var shape = this.shape;
-    var p = isLine(shape) ? [shape.x2 - shape.x1, shape.y2 - shape.y1] : bezierCurveProto.tangentAt.call(this, t);
+    var p = isLine(shape) ? [shape.x2 - shape.x1, shape.y2 - shape.y1] : this._tangentAtCurve(t);
     return vec2.normalize(p, p);
-  }
+  },
+  _tangentAtCurve: bezierCurveProto.tangentAt
 });

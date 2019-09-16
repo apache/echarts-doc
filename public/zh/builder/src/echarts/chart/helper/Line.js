@@ -56,21 +56,20 @@ function createSymbol(name, lineData, idx) {
 
 function createLine(points) {
   var line = new LinePath({
-    name: 'line'
+    name: 'line',
+    subPixelOptimize: true
   });
   setLinePoints(line.shape, points);
   return line;
 }
 
 function setLinePoints(targetShape, points) {
-  var p1 = points[0];
-  var p2 = points[1];
-  var cp1 = points[2];
-  targetShape.x1 = p1[0];
-  targetShape.y1 = p1[1];
-  targetShape.x2 = p2[0];
-  targetShape.y2 = p2[1];
+  targetShape.x1 = points[0][0];
+  targetShape.y1 = points[0][1];
+  targetShape.x2 = points[1][0];
+  targetShape.y2 = points[1][1];
   targetShape.percent = 1;
+  var cp1 = points[2];
 
   if (cp1) {
     targetShape.cpx1 = cp1[0];

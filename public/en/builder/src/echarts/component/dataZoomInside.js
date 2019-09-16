@@ -16,10 +16,6 @@
 * specific language governing permissions and limitations
 * under the License.
 */
-
-/**
- * DataZoom component entry
- */
 import './dataZoom/typeDefaulter';
 import './dataZoom/DataZoomModel';
 import './dataZoom/DataZoomView';

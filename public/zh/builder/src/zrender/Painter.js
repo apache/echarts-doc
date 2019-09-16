@@ -48,8 +48,8 @@ function isDisplayableCulled(el, width, height) {
 }
 
 function isClipPathChanged(clipPaths, prevClipPaths) {
+  // displayable.__clipPaths can only be `null`/`undefined` or an non-empty array.
   if (clipPaths === prevClipPaths) {
-    // Can both be null or undefined
     return false;
   }
 
@@ -62,6 +62,8 @@ function isClipPathChanged(clipPaths, prevClipPaths) {
       return true;
     }
   }
+
+  return false;
 }
 
 function doClip(clipPaths, ctx) {
@@ -473,12 +475,13 @@ Painter.prototype = {
     // And setTransform with scale 0 will cause set back transform failed.
     && !(m && !m[0] && !m[3]) // Ignore culled element
     && !(el.culling && isDisplayableCulled(el, this._width, this._height))) {
-      var clipPaths = el.__clipPaths; // Optimize when clipping on group with several elements
+      var clipPaths = el.__clipPaths;
+      var prevElClipPaths = scope.prevElClipPaths; // Optimize when clipping on group with several elements
 
-      if (!scope.prevElClipPaths || isClipPathChanged(clipPaths, scope.prevElClipPaths)) {
+      if (!prevElClipPaths || isClipPathChanged(clipPaths, prevElClipPaths)) {
         // If has previous clipping state, restore from it
-        if (scope.prevElClipPaths) {
-          currentLayer.ctx.restore();
+        if (prevElClipPaths) {
+          ctx.restore();
           scope.prevElClipPaths = null; // Reset prevEl since context has been restored
 
           scope.prevEl = null;

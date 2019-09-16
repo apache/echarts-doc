@@ -16,17 +16,15 @@
 * specific language governing permissions and limitations
 * under the License.
 */
-
-/**
- * @file Get initial data and define sankey view's series model
- * @author Deqing Li(annong035@gmail.com)
- */
 import SeriesModel from '../../model/Series';
 import createGraphFromNodeEdge from '../helper/createGraphFromNodeEdge';
 import { encodeHTML } from '../../util/format';
+import Model from '../../model/Model';
+import { __DEV__ } from '../../config';
 var SankeySeries = SeriesModel.extend({
   type: 'series.sankey',
   layoutInfo: null,
+  levelModels: null,
 
   /**
    * Init a graph data structure from data in option series
@@ -34,13 +32,43 @@ var SankeySeries = SeriesModel.extend({
    * @param  {Object} option  the object used to config echarts view
    * @return {module:echarts/data/List} storage initial data
    */
-  getInitialData: function (option) {
+  getInitialData: function (option, ecModel) {
     var links = option.edges || option.links;
     var nodes = option.data || option.nodes;
+    var levels = option.levels;
+    var levelModels = this.levelModels = {};
+
+    for (var i = 0; i < levels.length; i++) {
+      if (levels[i].depth != null && levels[i].depth >= 0) {
+        levelModels[levels[i].depth] = new Model(levels[i], this, ecModel);
+      } else {}
+    }
 
     if (nodes && links) {
-      var graph = createGraphFromNodeEdge(nodes, links, this, true);
+      var graph = createGraphFromNodeEdge(nodes, links, this, true, beforeLink);
       return graph.data;
+    }
+
+    function beforeLink(nodeData, edgeData) {
+      nodeData.wrapMethod('getItemModel', function (model, idx) {
+        model.customizeGetParent(function (path) {
+          var parentModel = this.parentModel;
+          var nodeDepth = parentModel.getData().getItemLayout(idx).depth;
+          var levelModel = parentModel.levelModels[nodeDepth];
+          return levelModel || this.parentModel;
+        });
+        return model;
+      });
+      edgeData.wrapMethod('getItemModel', function (model, idx) {
+        model.customizeGetParent(function (path) {
+          var parentModel = this.parentModel;
+          var edge = parentModel.getGraph().getEdgeByIndex(idx);
+          var depth = edge.node1.getLayout().depth;
+          var levelModel = parentModel.levelModels[depth];
+          return levelModel || this.parentModel;
+        });
+        return model;
+      });
     }
   },
   setNodePosition: function (dataIndex, localPosition) {
@@ -79,6 +107,16 @@ var SankeySeries = SeriesModel.extend({
 
       if (params.value) {
         html += ' : ' + params.value;
+      }
+
+      return encodeHTML(html);
+    } else if (dataType === 'node') {
+      var node = this.getGraph().getNodeByIndex(dataIndex);
+      var value = node.getLayout().value;
+      var name = this.getDataParams(dataIndex, dataType).data.name;
+
+      if (value) {
+        var html = name + ' : ' + value;
       }
 
       return encodeHTML(html);
@@ -121,6 +159,9 @@ var SankeySeries = SeriesModel.extend({
       color: '#000',
       fontSize: 12
     },
+    levels: [],
+    // Value can be 'left' or 'right'
+    nodeAlign: 'justify',
     itemStyle: {
       borderWidth: 1,
       borderColor: '#333'

@@ -28,6 +28,10 @@ Path.prototype = {
   type: 'path',
   __dirtyPath: true,
   strokeContainThreshold: 5,
+  // This item default to be false. But in map series in echarts,
+  // in order to improve performance, it should be set to true,
+  // so the shorty segment won't draw.
+  segmentIgnoreThreshold: 0,
 
   /**
    * See `module:zrender/src/graphic/helper/subPixelOptimize`.
@@ -81,7 +85,7 @@ Path.prototype = {
     var ctxLineDash = !!ctx.setLineDash; // Update path sx, sy
 
     var scale = this.getGlobalScale();
-    path.setScale(scale[0], scale[1]); // Proxy context
+    path.setScale(scale[0], scale[1], this.segmentIgnoreThreshold); // Proxy context
     // Rebuild path in following 2 cases
     // 1. Path is dirty
     // 2. Path needs javascript implemented lineDash stroking.

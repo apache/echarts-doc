@@ -366,18 +366,27 @@ var ScrollableLegendView = LegendView.extend({
   _findTargetItemIndex: function (targetDataIndex) {
     var index;
     var contentGroup = this.getContentGroup();
+    var defaultIndex;
 
     if (this._showController) {
       contentGroup.eachChild(function (child, idx) {
-        if (child.__legendDataIndex === targetDataIndex) {
+        var legendDataIdx = child.__legendDataIndex; // FIXME
+        // If the given targetDataIndex (from model) is illegal,
+        // we use defualtIndex. But the index on the legend model and
+        // action payload is still illegal. That case will not be
+        // changed until some scenario requires.
+
+        if (defaultIndex == null && legendDataIdx != null) {
+          defaultIndex = idx;
+        }
+
+        if (legendDataIdx === targetDataIndex) {
           index = idx;
         }
       });
-    } else {
-      index = 0;
     }
 
-    return index;
+    return index != null ? index : defaultIndex;
   }
 });
 export default ScrollableLegendView;

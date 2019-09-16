@@ -164,26 +164,22 @@ export default echarts.extendChartView({
       symbolGroup.eachChild(function (symbolPath) {
         symbolPath.setStyle(itemStyle);
         symbolPath.hoverStyle = zrUtil.clone(itemHoverStyle);
+        var defaultText = data.get(data.dimensions[symbolPath.__dimIdx], idx);
+        (defaultText == null || isNaN(defaultText)) && (defaultText = '');
         graphic.setLabelStyle(symbolPath.style, symbolPath.hoverStyle, labelModel, labelHoverModel, {
           labelFetcher: data.hostModel,
           labelDataIndex: idx,
           labelDimIndex: symbolPath.__dimIdx,
-          defaultText: data.get(data.dimensions[symbolPath.__dimIdx], idx),
+          defaultText: defaultText,
           autoColor: color,
           isRectText: true
         });
       });
 
-      function onEmphasis() {
-        polygon.attr('ignore', hoverPolygonIgnore);
-      }
+      itemGroup.highDownOnUpdate = function (fromState, toState) {
+        polygon.attr('ignore', toState === 'emphasis' ? hoverPolygonIgnore : polygonIgnore);
+      };
 
-      function onNormal() {
-        polygon.attr('ignore', polygonIgnore);
-      }
-
-      itemGroup.off('mouseover').off('mouseout').off('normal').off('emphasis');
-      itemGroup.on('emphasis', onEmphasis).on('mouseover', onEmphasis).on('normal', onNormal).on('mouseout', onNormal);
       graphic.setHoverStyle(itemGroup);
     });
     this._data = data;

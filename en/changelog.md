@@ -1,3 +1,177 @@
+## v4.3.0-rc.1
+
+<div class="time">2019-08-27</div>
+
++ [Feature] Sankey diagram enhancement:
+Add left/right node align, right in sankey diagram.
+Support user to specify the depth of the node.
+Enhance sankey node tooltip formatter.
+Add depth layout info for each node.
+
++ [Feature] Support callback in `series.symbol`. Contributed by PR #9664 originally.
+
++ [Feature] Enhance Pie chart:
+Support `minShowLabelAngle`. Contributed by PR #8997 originally.
+Support label rotate in pie chart. Fix #10045.
+
++ [Feature] Support `backgroundColor` for connected charts in toolbox. `toolbox.feature.saveAsImage.connectedBackgroundColor` can be used to set the background color. Fix #10099.
+
++ [Feature] Enhance toolbox:
+Enable to set text style of toolbox.
+Support tooltip for toolbox. Fix #10202.
+
++ [Feature] Enhance dataZoom:
+Normalize illegal range setting and get accurate `start`/`end`/`startValue`/`endValue` in `'dataZoom'` event.
+
++ [Feature] Add `dimensionNames` and `encode` info to callback parameters of formatters. Fix #10248 and Close #10250.
+
++ [Feature] Funnel enhancement:
+`series.label.position` support to set `rightTop`, `rightBottom`, `leftTop`, `leftBottom`. And fix style in funnel text position.
+
++ [Fix] Support mouse event in iOS when css transform used. Fix #9434, #8326, #5009, #5921.
+
++ [Fix] Use a clearer warning message when initing dom without size. Fix #10478.
+
++ [Fix] Fix that the rgba opacity does not work in SVG renderer. Fix #9014
+
++ [Fix] Enhance funnel chart label display policy PR #8759
+
++ [Fix] Fix the highlight/downplay of pie graphic.
+
++ [Fix] Fix the mouse pointer in force graph. Fix #7764, contributed by PR #9134.
+
++ [Fix] Fix that `symbol` and `symbolSize` and `opacity` does not work in `series[i]-graph.categories[i]`. Fix #8009 and #5969, contributed by PR #9171.
+
++ [Fix] Fix that `axisLine.show` does not work in the gauge. Fix #9194, contributed by PR #9195.
+
++ [Fix] Fix a display error when the first data item is '-' in radar. Fix 8962.
+
++ [Fix] Fix polygon rendering bug when the first value is `NaN`. Fix #8962, contributed by PR #9162.
+
++ [Fix] Fix text truncate bug in treemap when using SVG renderer.
+
++ [Fix] Fix that `label.rotate` does not work in graph. Fix #9182, contributed by PR #9210.
+
++ [Fix] Fix the rich content hiding bug and confine bug in tooltip. Fix ecomfe/echarts-for-weixin#360, ecomfe/echarts-for-weixin#347.
+
++ [Fix] Fix that callback function params.color is incorrect in sunburst area. Fix #8952, contributed by PR #9238.
+
++ [Fix] Fix that when `axisLabel.interval` of a category axis is set as `0`, all labels are displayed regardless of overlap. Fix #9589.
+
++ [Fix] Fix sub-pixel in markLine. Move subPixelOptimize to zrender. Fix #9598.
+
++ [Fix] Fix that when doing clear on click handler error is thrown. Fix #9649.
+
++ [Fix] Fix that `false` value in data items effect subsequent items in `visualMap`. Fix #8799.
+
++ [Fix] Enhance `hoverStyle` and `highlight`/`downplay` API. Support keep highlighted when changing style (e.g., `setOption` or `hoverLink`). Fix the highlight conflict.
+
++ [Fix] Fix radar line disappear on hover when there is empty value in data.
+
++ [Fix] Fix that geo map panning not working on Edge browser. Fix #9479.
+
++ [Fix] Fix map label bugs:
+Fix map rich label missing when missing data.
+Fix map label miss to enter formatter when missing data.
+Fix #9682.
+
++ [Fix] Enable `triggerEvent` for label of `angleAxis`. Fix #9765.
+
++ [Fix] Fix that the hover style bugs of graph:
+Fix that the hover style is disabled by `focusNodeAdjacency` in graph.
+Fix that the line label can not be returned to its original opacity after `"focusNodeAdjacency"`.
+
++ [Fix] Lift the axis line arrow over splitLine and tick.
+
++ [Fix] Fix that the scrollable legend pager does not work when the target index is illegal. Fix #7568.
+
++ [Fix] Exclude padding from tooltip position, since it's included in clientWidth. Contributed by PR #9750.
+
++ [Fix] Fix `barWidth` calculation when stack on multiple polars. Fix #9626.
+
++ [Fix] Loop to find the first non-NaN angle for clipPath in pie.
+
++ [Fix] Fix line width in singleAxis. Fix #9965.
+
++ [Fix] Fix the label bounding rect calculation error when `rich` used (e.g., containLabel: true while axisLabel has rich).
+
++ [Fix] Part of emphasis in sunburst do not work. Fix #9563, constributed by PR #9993.
+
++ [Fix] Add `seriesId` in `pieselectchanged`. Fix #9830.
+
++ [Fix] Fix that axis name align does not work. Fix #9901.
+
++ [Fix] Fix taht the strange label position when the pie chart series data value is `null`. Fix #10088.
+
++ [Fix] Do not create an anchor element if you don't need to in `SaveAsImage`. Contributed by PR #10132.
+
++ [Fix] Fix that `axisLabel` dost not display correctly in radar. Fix #9282, contributed by PR #10036.
+
++ [Fix] Fix that bar chart is abnormal when `filterMode` of `dataZoom` is 'empty'. Fix #9882.
+
++ [Fix] Fix `series.label.formatter` callback bug. Fix #10248, contributed by PR #10250.
+
++ [Fix] Fix that the last axis labels are duplicated. Fix #10304.
+
++ [Fix] Fix that setting `emphasis.lineStyle.type` as `solid` dose not work. Fix #9704, close #10129.
+
++ [Fix] Fix that if some negetive numbers or strings existing in the dimensions array, the corresponding line will not show. Fix #10343.
+
++ [Fix] Fix that when `'0'` existing in dimentions the chart do not work. Make backward compat when dimention is a number-like string. Fix #9363, contributed by PR #9388.
+
++ [Fix] Fix hover style on `textStroke` bug in custom series.
+
++ [Fix] Fix graph bug when data is number typed. Fix #10485.
+
++ [Fix] Fix that `axisPointer` label padding does not work. Fix #10569.
+
++ [Fix] Add `dimIndex` for callback formatter in radar. Close #10403, #10180, contributed PR #10437.
+
++ [Fix] Prevent treamap from using hover layer by default. Fix #10521. Ref #10635.
+
++ [Fix] Update pointer when type is none. Fix #10570.
+
++ [Fix] Enhance circular layout: based on symbol size and fix overlap when some value are very smaller than the max value. Fix #10462, Close #10615.
+
++ [Fix] Support click and tooltip in bar large mode. Fix #10699.
+
+
+
+
+
+## v4.2.1
+
+<div class="time">2019-03-21</div>
+
++ [Fix] Fix text cache problem. See [#9190](https://github.com/apache/incubator-echarts/issues/9190), [#9597](https://github.com/apache/incubator-echarts/issues/9597), [#9762](https://github.com/apache/incubator-echarts/issues/9762).
+
++ [Fix] Fix that in some case re-`setOption` in event handler throws error. See [#9649](https://github.com/apache/incubator-echarts/issues/9649).
+
++ [Fix] Fix that geo region problem causes `showTip` abnormal. See [#9156](https://github.com/apache/incubator-echarts/issues/9156).
+
++ [Fix] Fix that stacked bars are over cartesian in some cases. See [#9346](https://github.com/apache/incubator-echarts/issues/9346).
+
++ [Fix] Fix that legend is not able to scroll when the space is not enough to contain one item. See [#6743](https://github.com/apache/incubator-echarts/issues/6743), [#8971](https://github.com/apache/incubator-echarts/issues/8971), [#9471](https://github.com/apache/incubator-echarts/issues/9471).
+
++ [Fix] Fix that the centered pie label might has some bias on some angles. See [#9657](https://github.com/apache/incubator-echarts/issues/9657).
+
++ [Fix] Fix that Geo map panning is not working on MS Edge browser See [#9479](https://github.com/apache/incubator-echarts/issues/9479).
+
++ [Fix] Fix that label dispaly problem in map series. See [#9682](https://github.com/apache/incubator-echarts/issues/9682).
+
++ [Fix] Fix that `visualMap: false` set on data items makes subsequent items abnormal. See [#8799](https://github.com/apache/incubator-echarts/issues/8799).
+
++ [Fix] When `axisLabel.interval` of a category axis is set as `0`, all labels show regardless of overlap. See [#9589](https://github.com/apache/incubator-echarts/issues/9589).
+
++ [Fix] Fix grid(cartesian) did not render when both containLabel and axisLabel.rich used.
+
++ [Fix] Fix license statement.
+
++ [Fix] Fix rich text boundingRect bug.
+
+
+
+
 ## v4.2.1.rc1
 
 <div class="time">2019-01-22</div>

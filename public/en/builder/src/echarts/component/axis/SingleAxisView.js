@@ -79,7 +79,8 @@ var SingleAxisView = AxisView.extend({
 
       var colorIndex = lineCount++ % lineColors.length;
       splitLines[colorIndex] = splitLines[colorIndex] || [];
-      splitLines[colorIndex].push(new graphic.Line(graphic.subPixelOptimizeLine({
+      splitLines[colorIndex].push(new graphic.Line({
+        subPixelOptimize: true,
         shape: {
           x1: p1[0],
           y1: p1[1],
@@ -90,7 +91,7 @@ var SingleAxisView = AxisView.extend({
           lineWidth: lineWidth
         },
         silent: true
-      })));
+      }));
     }
 
     for (var i = 0; i < splitLines.length; ++i) {

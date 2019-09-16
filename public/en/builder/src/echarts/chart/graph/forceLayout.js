@@ -46,7 +46,7 @@ export default function (ecModel) {
       } else if (!initLayout || initLayout === 'none') {
         simpleLayout(graphSeries);
       } else if (initLayout === 'circular') {
-        circularLayout(graphSeries);
+        circularLayout(graphSeries, 'value');
       }
 
       var nodeDataExtent = nodeData.getDataExtent('value');

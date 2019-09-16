@@ -94,7 +94,7 @@ var PiecewiseVisualMapView = VisualMapView.extend({
       var visualMapModel = this.visualMapModel;
       visualMapModel.option.hoverLink && this.api.dispatchAction({
         type: method,
-        batch: helper.convertDataIndex(visualMapModel.findTargetDataIndices(pieceIndex))
+        batch: helper.makeHighDownBatch(visualMapModel.findTargetDataIndices(pieceIndex), visualMapModel)
       });
     }
   },

@@ -2,15 +2,43 @@ var md2json = require('./tool/md2json');
 var fs = require('fs');
 var marked = require('marked');
 var copydir = require('copy-dir');
-var MarkDownTOCRenderer = require('./tool/MarkDownTOCRenderer');
+// var MarkDownTOCRenderer = require('./tool/MarkDownTOCRenderer');
+var argv = require('yargs').argv;
+
+/**
+ * ------------------------------------------------------------------------
+ * Usage:
+ *
+ * ```shell
+ * ./nodule_modules/.bin/gulp release --env asf
+ * ./nodule_modules/.bin/gulp release --env echartsjs
+ * ./nodule_modules/.bin/gulp release --env dev # the same as "debug"
+ * # Check `./config` to see the available env
+ * ```
+ * ------------------------------------------------------------------------
+ */
+
+function initEnv() {
+    var envType = argv.env;
+    var isDev = argv.dev != null || argv.debug != null || envType === 'debug';
+
+    if (isDev) {
+        console.warn('=============================');
+        console.warn('!!! THIS IS IN DEV MODE !!!');
+        console.warn('=============================');
+        envType = 'dev';
+    }
+
+    if (!envType) {
+        throw new Error('--env MUST be specified');
+    }
+
+    return require('./config/env.' + envType);
+}
+
+var config = initEnv();
 
 var languages = ['cn', 'en'];
-
-var env = process.argv[2] || '';
-
-var configName = './config' + env;
-
-var config = require(configName);
 
 config.gl = config.gl || {};
 for (var key in config) {

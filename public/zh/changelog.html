@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1" user-scalable="no"><meta name="description" content="ECharts, a powerful, interactive charting and visualization library for browser"><link rel="shortcut icon" href="images/favicon.png"><link rel="stylesheet" type="text/css" href="vendors/bootstrap/css/bootstrap.min.css"><!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries--><!--[if lt IE 9]><script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script><script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]--><link rel="stylesheet" type="text/css" href="./css/main.css?_v_=1559123935727"><script>window.EC_WWW_LANG = 'zh';
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1" user-scalable="no"><meta name="description" content="ECharts, a powerful, interactive charting and visualization library for browser"><link rel="shortcut icon" href="images/favicon.png"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"><!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries--><!--[if lt IE 9]><script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script><script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]--><link rel="stylesheet" type="text/css" href="./css/main.css?_v_=1568642955357"><script>window.EC_WWW_LANG = 'zh';
 </script><script type="text/javascript" src="./vendors/pace/pace.min.js"></script><script id="font-hack" type="text/javascript">if (/windows/i.test(navigator.userAgent)) {
     var el = document.createElement('style');
     el.innerHTML = ''
@@ -6,8 +6,177 @@
         + '@font-face {font-family:"noto-light";src:local("Microsoft Yahei");}';
     document.head.insertBefore(el, document.getElementById('font-hack'));
 }
-</script><title>ECharts 版本记录</title><script type="text/javascript" src="./vendors/jquery/jquery.min.js"></script></head><!--[if lte IE 8]><body class="lower-ie"><div id="lowie-main"><img src="./images/forie.png" alt="ie tip"></div></body><![endif]-->
-<!--[if (gt IE 8)|!(IE)]><body class="undefined"></body><![endif]--><div id="main"><nav role="navigation" class="navbar navbar-default navbar-fixed-top"><div class="container-fluid"><div class="navbar-header"><button type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="https://echarts.apache.org/zh/index.html" class="navbar-brand"><img src="https://echarts.apache.org/zh/images/logo.png" alt="echarts logo" class="navbar-logo"></a></div><div id="navbar-collapse" class="collapse navbar-collapse"><ul class="nav navbar-nav navbar-left"><li id="nav-index"><a href="https://echarts.apache.org/zh/index.html">首页</a></li><li id="nav-doc" class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">文档<b class="caret"></b></a><ul class="dropdown-menu"><li><a href="https://echarts.apache.org/zh/feature.html">特性</a></li><li><a href="https://echarts.apache.org/zh/tutorial.html">教程</a></li><li><a href="https://echarts.apache.org/zh/api.html">API</a></li><li><a href="https://echarts.apache.org/zh/option.html">配置项手册</a></li><li><a href="https://echarts.apache.org/zh/option-gl.html">GL 配置项手册</a></li><li><a href="https://echarts.apache.org/zh/changelog.html">版本记录</a></li></ul></li><li id="nav-download" class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">下载<b class="caret"></b></a><ul class="dropdown-menu"><li><a href="https://echarts.apache.org/zh/download.html">下载</a></li><li><a href="https://echarts.apache.org/zh/download-theme.html">主题下载</a></li><li><a href="https://echarts.apache.org/zh/download-map.html">地图下载</a></li><li><a href="https://echarts.apache.org/zh/download-extension.html">扩展下载</a></li></ul></li><li id="nav-examples"><a href="#" data-toggle="dropdown" class="dropdown-toggle">实例<b class="caret"></b></a><ul class="dropdown-menu"><li><a href="https://echarts.apache.org/examples/zh/index.html">官方实例</a></li><li><a href="https://echarts.apache.org/examples/zh/index.html#chart-type-globe">GL 实例</a></li></ul></li><li id="nav-community"><a href="#" data-toggle="dropdown" class="dropdown-toggle">社区<b class="caret"></b></a><ul class="dropdown-menu"><li><a href="https://gallery.echartsjs.com">Gallery</a></li><li><a href="https://efe.baidu.com/tags/ECharts/">博客</a></li></ul></li><li id="nav-tool"><a href="#" data-toggle="dropdown" class="dropdown-toggle">工具<b class="caret"></b></a><ul class="dropdown-menu"><li><a href="https://echarts.apache.org/zh/spreadsheet.html">表格工具</a></li><li><a href="https://echarts.baidu.com/theme-builder/">主题构建工具</a></li></ul></li><li id="nav-contribute"><a href="#" data-toggle="dropdown" class="dropdown-toggle">贡献<b class="caret"></b></a><ul class="dropdown-menu"><li><a href="https://github.com/apache/incubator-echarts" target="_blank">源码（GitHub）</a></li><li><a href="https://github.com/apache/incubator-echarts/issues" target="_blank">Issues</a></li><li><a href="https://echarts.apache.org/zh/coding-standard.html">代码规范</a></li></ul></li><li id="nav-about"><a href="#" data-toggle="dropdown" class="dropdown-toggle">关于<b class="caret"></b></a><ul class="dropdown-menu"><li><a href="https://www.apache.org/licenses/">版权声明</a></li><li><a href="https://echarts.apache.org/zh/maillist.html">邮件列表</a></li><li><a href="https://echarts.apache.org/zh/committers.html">贡献者列表</a></li><li><a href="https://echarts.apache.org/zh/dependencies.html">依赖项</a></li><li><a href="https://echarts.apache.org/zh/faq.html">常见问题</a></li></ul></li></ul><ul class="nav navbar-nav navbar-right"><li id="nav-github"><a href="https://github.com/ecomfe/echarts" target="_blank"><img src="https://echarts.apache.org/zh/images/github.png" width="18"></a></li><li id="nav-homeen"><a href="javascript:;" onclick="changeLang('en')">EN</a></li></ul></div></div></nav><div class="page-info"><h1>ECharts 版本记录</h1><p>[+]新增 [-]删除 [^]升级 [#]修复</p></div><div class="page-content single-page"><div class="page-nav"><a class="slide-btn">收起目录</a><h4>版本记录</h4><ul></ul></div><div class="page-detail"><h2 id="v4-2-1-rc1">v4.2.1.rc1</h2>
+</script><title>版本记录 - Apache ECharts (incubating)</title><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script></head><!--[if lte IE 8]><body class="lower-ie"><div id="lowie-main"><img src="./images/forie.png" alt="ie tip"></div></body><![endif]-->
+<!--[if (gt IE 8)|!(IE)]><body class="undefined"></body><![endif]--><div id="apache-banner"><div class="txt"><p>Apache ECharts 是一个正在由 Apache 孵化器赞助的 Apache 开源基金会孵化的项目。</p><p>我们正在处理将本站跳转到 <a href="https://echarts.apache.org" target="_blank">https://echarts.apache.org</a> 的迁移工作。您可以现在就前往我们的 Apache 官网。</p></div><a href="https://echarts.apache.org" target="_blank" onclick="logApache()" class="btn"><div>访问官网</div></a><a href="javascript:;" onclick="closeApacheBanner(true)" class="close-btn">x</a></div><div id="main"><nav role="navigation" class="navbar navbar-default navbar-fixed-top"><div class="container-fluid"><div class="navbar-header"><button type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="https://echarts.apache.org/zh/index.html" class="navbar-brand"><img src="https://echarts.apache.org/zh/images/logo.png" alt="echarts logo" class="navbar-logo"></a></div><div id="navbar-collapse" class="collapse navbar-collapse"><ul class="nav navbar-nav navbar-left"><li id="nav-index"><a href="https://echarts.apache.org/zh/index.html">首页</a></li><li id="nav-doc" class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">文档<b class="caret"></b></a><ul class="dropdown-menu"><li><a href="https://echarts.apache.org/zh/feature.html">特性</a></li><li><a href="https://echarts.apache.org/zh/tutorial.html">教程</a></li><li><a href="https://echarts.apache.org/zh/api.html">API</a></li><li><a href="https://echarts.apache.org/zh/cheat-sheet.html">术语速查手册<span class="new">NEW</span></a></li><li><a href="https://echarts.apache.org/zh/option.html">配置项手册</a></li><li><a href="https://echarts.apache.org/zh/option-gl.html">GL 配置项手册</a></li><li><a href="https://echarts.apache.org/zh/changelog.html">版本记录</a></li></ul></li><li id="nav-download" class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">下载<b class="caret"></b></a><ul class="dropdown-menu"><li><a href="https://echarts.apache.org/zh/download.html">下载</a></li><li><a href="https://echarts.apache.org/zh/download-theme.html">主题下载</a></li><li><a href="https://echarts.apache.org/zh/download-extension.html">扩展下载</a></li></ul></li><li id="nav-examples"><a href="#" data-toggle="dropdown" class="dropdown-toggle">实例<b class="caret"></b></a><ul class="dropdown-menu"><li><a href="https://echarts.apache.org/examples/zh/index.html">官方实例</a></li><li><a href="https://echarts.apache.org/examples/zh/index.html#chart-type-globe">GL 实例</a></li></ul></li><li id="nav-community"><a href="#" data-toggle="dropdown" class="dropdown-toggle">社区<b class="caret"></b></a><ul class="dropdown-menu"><li><a href="https://gallery.echartsjs.com">Gallery</a></li><li><a href="https://efe.baidu.com/tags/ECharts/">博客</a></li></ul></li><li id="nav-tool"><a href="#" data-toggle="dropdown" class="dropdown-toggle">工具<b class="caret"></b></a><ul class="dropdown-menu"><li><a href="https://echarts.apache.org/zh/spreadsheet.html">表格工具</a></li><li><a href="https://echarts.baidu.com/theme-builder/">主题构建工具</a></li></ul></li><li id="nav-contribute"><a href="#" data-toggle="dropdown" class="dropdown-toggle">贡献<b class="caret"></b></a><ul class="dropdown-menu"><li><a href="https://github.com/apache/incubator-echarts" target="_blank">源码（GitHub）</a></li><li><a href="https://github.com/apache/incubator-echarts/issues" target="_blank">Issues</a></li><li><a href="https://echarts.apache.org/zh/coding-standard.html">代码规范</a></li></ul></li><li id="nav-about"><a href="#" data-toggle="dropdown" class="dropdown-toggle">关于<b class="caret"></b></a><ul class="dropdown-menu"><li><a href="https://echarts.apache.org/zh/committers.html">贡献者列表</a></li><li><a href="https://www.apache.org/licenses/">版权声明</a></li><li><a href="https://echarts.apache.org/zh/maillist.html">邮件列表</a></li><li><a href="https://echarts.apache.org/zh/dependencies.html">依赖项</a></li><li><a href="https://echarts.apache.org/zh/faq.html">常见问题</a></li></ul></li></ul><ul class="nav navbar-nav navbar-right"><li id="nav-github"><a href="https://github.com/ecomfe/echarts" target="_blank"><img src="https://echarts.apache.org/zh/images/github.png" width="18"></a></li><li id="nav-homeen"><a href="javascript:;" onclick="changeLang('en')">EN</a></li></ul></div></div></nav><div class="page-info"><h1>版本记录 - Apache ECharts (incubating)</h1><p>[+]新增 [-]删除 [^]升级 [#]修复</p></div><div class="page-content single-page"><div class="page-nav"><a class="slide-btn">收起目录</a><h4>版本记录</h4><ul></ul></div><div class="page-detail"><h2 id="v4-3-0-rc-1">v4.3.0-rc.1</h2>
+<div class="time">2019-08-27</div>
+
+<ul>
+<li><p>[Feature] Sankey diagram enhancement:
+Add left node align, right in sankey diagram.
+Support user to specify the depth of the node.
+Enhance sankey node tooltip formatter.
+Add depth layout info for each node.</p>
+</li>
+<li><p>[Feature] Support callback in <code>series.symbol</code>. Contributed by PR #9664 originally.</p>
+</li>
+<li><p>[Feature] Enhance Pie chart:
+Support <code>minShowLabelAngle</code>. Contributed by PR #8997 originally.
+Support label rotate in pie chart. Fix #10045.</p>
+</li>
+<li><p>[Feature] Support <code>backgroundColor</code> for connected charts in toolbox. <code>toolbox.feature.saveAsImage.connectedBackgroundColor</code> can be used to set the background color. Fix #10099.</p>
+</li>
+<li><p>[Feature] Enhance toolbox:
+Enable to set text style of toolbox.
+Support tooltip for toolbox. Fix #10202.</p>
+</li>
+<li><p>[Feature] Enhance dataZoom:
+Normalize illegal range setting and get accurate <code>start</code>/<code>end</code>/<code>startValue</code>/<code>endValue</code> in <code>&#39;dataZoom&#39;</code> event.</p>
+</li>
+<li><p>[Feature] Add <code>dimensionNames</code> and <code>encode</code> info to callback parameters of formatters. Fix #10248 and Close #10250.</p>
+</li>
+<li><p>[Feature] Funnel enhancement:
+<code>series.label.position</code> support to set <code>rightTop</code>, <code>rightBottom</code>, <code>leftTop</code>, <code>leftBottom</code>. And fix style in funnel text position.</p>
+</li>
+<li><p>[Fix] Support mouse event in iOS when css transform used. Fix #9434, #8326, #5009, #5921.</p>
+</li>
+<li><p>[Fix] Use a clearer warning message when initing dom without size. Fix #10478.</p>
+</li>
+<li><p>[Fix] Fix that the rgba opacity does not work in SVG renderer. Fix #9014</p>
+</li>
+<li><p>[Fix] Enhance funnel chart label display policy PR #8759</p>
+</li>
+<li><p>[Fix] Fix the highlight/downplay of pie graphic.</p>
+</li>
+<li><p>[Fix] Fix the mouse pointer in force graph. Fix #7764, contributed by PR #9134.</p>
+</li>
+<li><p>[Fix] Fix that <code>symbol</code> and <code>symbolSize</code> and <code>opacity</code> does not work in <code>series[i]-graph.categories[i]</code>. Fix #8009 and #5969, contributed by PR #9171.</p>
+</li>
+<li><p>[Fix] Fix that <code>axisLine.show</code> does not work in the gauge. Fix #9194, contributed by PR #9195.</p>
+</li>
+<li><p>[Fix] Fix a display error when the first data item is &#39;-&#39; in radar. Fix 8962.</p>
+</li>
+<li><p>[Fix] Fix polygon rendering bug when the first value is <code>NaN</code>. Fix #8962, contributed by PR #9162.</p>
+</li>
+<li><p>[Fix] Fix text truncate bug in treemap when using SVG renderer.</p>
+</li>
+<li><p>[Fix] Fix that <code>label.rotate</code> does not work in graph. Fix #9182, contributed by PR #9210.</p>
+</li>
+<li><p>[Fix] Fix the rich content hiding bug and confine bug in tooltip. Fix ecomfe/echarts-for-weixin#360, ecomfe/echarts-for-weixin#347.</p>
+</li>
+<li><p>[Fix] Fix that callback function params.color is incorrect in sunburst area. Fix #8952, contributed by PR #9238.</p>
+</li>
+<li><p>[Fix] Fix that when <code>axisLabel.interval</code> of a category axis is set as <code>0</code>, all labels are displayed regardless of overlap. Fix #9589.</p>
+</li>
+<li><p>[Fix] Fix sub-pixel in markLine. Move subPixelOptimize to zrender. Fix #9598.</p>
+</li>
+<li><p>[Fix] Fix that when doing clear on click handler error is thrown. Fix #9649.</p>
+</li>
+<li><p>[Fix] Fix that <code>false</code> value in data items effect subsequent items in <code>visualMap</code>. Fix #8799.</p>
+</li>
+<li><p>[Fix] Enhance <code>hoverStyle</code> and <code>highlight</code>/<code>downplay</code> API. Support keep highlighted when changing style (e.g., <code>setOption</code> or <code>hoverLink</code>). Fix the highlight conflict.</p>
+</li>
+<li><p>[Fix] Fix radar line disappear on hover when there is empty value in data.</p>
+</li>
+<li><p>[Fix] Fix that geo map panning not working on Edge browser. Fix #9479.</p>
+</li>
+<li><p>[Fix] Fix map label bugs:
+Fix map rich label missing when missing data.
+Fix map label miss to enter formatter when missing data.
+Fix #9682.</p>
+</li>
+<li><p>[Fix] Enable <code>triggerEvent</code> for label of <code>angleAxis</code>. Fix #9765.</p>
+</li>
+<li><p>[Fix] Fix that the hover style bugs of graph:
+Fix that the hover style is disabled by <code>focusNodeAdjacency</code> in graph.
+Fix that the line label can not be returned to its original opacity after <code>&quot;focusNodeAdjacency&quot;</code>.</p>
+</li>
+<li><p>[Fix] Lift the axis line arrow over splitLine and tick.</p>
+</li>
+<li><p>[Fix] Fix that the scrollable legend pager does not work when the target index is illegal. Fix #7568.</p>
+</li>
+<li><p>[Fix] Exclude padding from tooltip position, since it&#39;s included in clientWidth. Contributed by PR #9750.</p>
+</li>
+<li><p>[Fix] Fix <code>barWidth</code> calculation when stack on multiple polars. Fix #9626.</p>
+</li>
+<li><p>[Fix] Loop to find the first non-NaN angle for clipPath in pie.</p>
+</li>
+<li><p>[Fix] Fix line width in singleAxis. Fix #9965.</p>
+</li>
+<li><p>[Fix] Fix the label bounding rect calculation error when <code>rich</code> used (e.g., containLabel: true while axisLabel has rich).</p>
+</li>
+<li><p>[Fix] Part of emphasis in sunburst do not work. Fix #9563, constributed by PR #9993.</p>
+</li>
+<li><p>[Fix] Add <code>seriesId</code> in <code>pieselectchanged</code>. Fix #9830.</p>
+</li>
+<li><p>[Fix] Fix that axis name align does not work. Fix #9901.</p>
+</li>
+<li><p>[Fix] Fix taht the strange label position when the pie chart series data value is <code>null</code>. Fix #10088.</p>
+</li>
+<li><p>[Fix] Do not create an anchor element if you don&#39;t need to in <code>SaveAsImage</code>. Contributed by PR #10132.</p>
+</li>
+<li><p>[Fix] Fix that <code>axisLabel</code> dost not display correctly in radar. Fix #9282, contributed by PR #10036.</p>
+</li>
+<li><p>[Fix] Fix that bar chart is abnormal when <code>filterMode</code> of <code>dataZoom</code> is &#39;empty&#39;. Fix #9882.</p>
+</li>
+<li><p>[Fix] Fix <code>series.label.formatter</code> callback bug. Fix #10248, contributed by PR #10250.</p>
+</li>
+<li><p>[Fix] Fix that the last axis labels are duplicated. Fix #10304.</p>
+</li>
+<li><p>[Fix] Fix that setting <code>emphasis.lineStyle.type</code> as <code>solid</code> dose not work. Fix #9704, close #10129.</p>
+</li>
+<li><p>[Fix] Fix that if some negetive numbers or strings existing in the dimensions array, the corresponding line will not show. Fix #10343.</p>
+</li>
+<li><p>[Fix] Fix that when <code>&#39;0&#39;</code> existing in dimentions the chart do not work. Make backward compat when dimention is a number-like string. Fix #9363, contributed by PR #9388.</p>
+</li>
+<li><p>[Fix] Fix hover style on <code>textStroke</code> bug in custom series.</p>
+</li>
+<li><p>[Fix] Fix graph bug when data is number typed. Fix #10485.</p>
+</li>
+<li><p>[Fix] Fix that <code>axisPointer</code> label padding does not work. Fix #10569.</p>
+</li>
+<li><p>[Fix] Add <code>dimIndex</code> for callback formatter in radar. Close #10403, #10180, contributed PR #10437.</p>
+</li>
+<li><p>[Fix] Prevent treamap from using hover layer by default. Fix #10521. Ref #10635.</p>
+</li>
+<li><p>[Fix] Update pointer when type is none. Fix #10570.</p>
+</li>
+<li><p>[Fix] Enhance circular layout: based on symbol size and fix overlap when some value are very smaller than the max value. Fix #10462, Close #10615.</p>
+</li>
+<li><p>[Fix] Support click and tooltip in bar large mode. Fix #10699.</p>
+</li>
+</ul>
+<h2 id="v4-2-1">v4.2.1</h2>
+<div class="time">2019-03-21</div>
+
+<ul>
+<li><p>[Fix] 修复了文本缓存的问题. 参见 <a href="https://github.com/apache/incubator-echarts/issues/9190">#9190</a>，<a href="https://github.com/apache/incubator-echarts/issues/9597">#9597</a>，<a href="https://github.com/apache/incubator-echarts/issues/9762">#9762</a>。</p>
+</li>
+<li><p>[Fix] 修复了在一些情况下事件处理器中重新 <code>setOption</code> 时抛异常的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/9649">#9649</a>。</p>
+</li>
+<li><p>[Fix] 修复了 geo 中 <code>showTip</code> 异常的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/9156">#9156</a>。</p>
+</li>
+<li><p>[Fix] 修复了一些情况下堆叠柱状图超出直角坐标系范围的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/9346">#9346</a>。</p>
+</li>
+<li><p>[Fix] 修复了图例组件（legend）当空间只够显示一项时不能翻页的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/6743">#6743</a>，<a href="https://github.com/apache/incubator-echarts/issues/8971">#8971</a>，<a href="https://github.com/apache/incubator-echarts/issues/9471">#9471</a>。</p>
+</li>
+<li><p>[Fix] 修复了饼图标签（label）定位在中心时，在一些角度下有便宜的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/9657">#9657</a>。</p>
+</li>
+<li><p>[Fix] 修复了地图坐标系（geo）在 MS Edge 下不能拖动的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/9479">#9479</a>。</p>
+</li>
+<li><p>[Fix] 修复了地图系列（series.type: &#39;map&#39;）标签不能显示的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/9682">#9682</a>。</p>
+</li>
+<li><p>[Fix] 修复了设置了 <code>visualMap: false</code> 的数据项影响其他数据项的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/8799">#8799</a>。</p>
+</li>
+<li><p>[Fix] 使得 <code>axis.type: &#39;category&#39;</code> 且 <code>axisLabel.interval: 0</code> 时，所有标签（axisLabel）都能被显示。参见 <a href="https://github.com/apache/incubator-echarts/issues/9589">#9589</a>。</p>
+</li>
+<li><p>[Fix] 修复了 containLabel 和 axisLabel.rich 同时使用时，grid(cartesian) 不渲染的问题。</p>
+</li>
+<li><p>[Fix] 修复了 license 表述。</p>
+</li>
+<li><p>[Fix] 修复了 rich text boundingRect 问题。</p>
+</li>
+</ul>
+<h2 id="v4-2-1-rc1">v4.2.1.rc1</h2>
 <div class="time">2019-01-22</div>
 
 <ul>
@@ -1371,10 +1540,14 @@
 <ul>
 <li>The new echarts</li>
 </ul>
-</div></div></div><script type="text/javascript" src="./vendors/bootstrap/js/bootstrap.min.js"></script><script type="text/javascript" src="./js/common.js"></script><script type="text/javascript">document.getElementById('nav-doc').className = 'active';</script><script type="text/javascript">var _hmt = _hmt || [];
+</div></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script><script type="text/javascript" src="./js/common.js"></script><script type="text/javascript">document.getElementById('nav-doc').className = 'active';</script><!-- Baidu Tongji--><script type="text/javascript">var _hmt = _hmt || [];
 (function() {
 var hm = document.createElement("script");
-hm.src = "//hm.baidu.com/hm.js?4bad1df23f079e0d12bdbef5e65b072f";
+hm.src = "https://hm.baidu.com/hm.js?54b918eee37cb8a7045f0fd0f0b24395";
 var s = document.getElementsByTagName("script")[0];
 s.parentNode.insertBefore(hm, s);
-})();</script></html>
+})();
+</script><!-- Google Analytics--><script type="text/javascript" async src="https://www.googletagmanager.com/gtag/js?id=UA-141228404-1"></script><script type="text/javascript">window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-141228404-1');</script></html>

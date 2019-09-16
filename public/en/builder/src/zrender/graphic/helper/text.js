@@ -19,6 +19,8 @@ var VALID_TEXT_VERTICAL_ALIGN = {
 // the default value of shadowColor is `'transparent'`.
 
 var SHADOW_STYLE_COMMON_PROPS = [['textShadowBlur', 'shadowBlur', 0], ['textShadowOffsetX', 'shadowOffsetX', 0], ['textShadowOffsetY', 'shadowOffsetY', 0], ['textShadowColor', 'shadowColor', 'transparent']];
+var _tmpTextPositionResult = {};
+var _tmpBoxPositionResult = {};
 /**
  * @param {module:zrender/graphic/Style} style
  * @return {module:zrender/graphic/Style} The input style.
@@ -122,7 +124,7 @@ function renderPlainText(hostEl, ctx, text, style, rect, prevEl) {
   var outerHeight = contentBlock.outerHeight;
   var textLines = contentBlock.lines;
   var lineHeight = contentBlock.lineHeight;
-  var boxPos = getBoxPosition(outerHeight, style, rect);
+  var boxPos = getBoxPosition(_tmpBoxPositionResult, hostEl, style, rect);
   var baseX = boxPos.baseX;
   var baseY = boxPos.baseY;
   var textAlign = boxPos.textAlign || 'left';
@@ -229,7 +231,7 @@ function drawRichText(hostEl, ctx, contentBlock, style, rect) {
   var outerWidth = contentBlock.outerWidth;
   var outerHeight = contentBlock.outerHeight;
   var textPadding = style.textPadding;
-  var boxPos = getBoxPosition(outerHeight, style, rect);
+  var boxPos = getBoxPosition(_tmpBoxPositionResult, hostEl, style, rect);
   var baseX = boxPos.baseX;
   var baseY = boxPos.baseY;
   var textAlign = boxPos.textAlign;
@@ -433,7 +435,7 @@ function onBgImageLoaded(image, textBackgroundColor) {
   textBackgroundColor.image = image;
 }
 
-function getBoxPosition(blockHeiht, style, rect) {
+function getBoxPosition(out, hostEl, style, rect) {
   var baseX = style.x || 0;
   var baseY = style.y || 0;
   var textAlign = style.textAlign;
@@ -447,7 +449,7 @@ function getBoxPosition(blockHeiht, style, rect) {
       baseX = rect.x + parsePercent(textPosition[0], rect.width);
       baseY = rect.y + parsePercent(textPosition[1], rect.height);
     } else {
-      var res = textContain.adjustTextPositionOnRect(textPosition, rect, style.textDistance);
+      var res = hostEl && hostEl.calculateTextPosition ? hostEl.calculateTextPosition(_tmpTextPositionResult, style, rect) : textContain.calculateTextPosition(_tmpTextPositionResult, style, rect);
       baseX = res.x;
       baseY = res.y; // Default align and baseline when has textPosition
 
@@ -465,12 +467,12 @@ function getBoxPosition(blockHeiht, style, rect) {
     }
   }
 
-  return {
-    baseX: baseX,
-    baseY: baseY,
-    textAlign: textAlign,
-    textVerticalAlign: textVerticalAlign
-  };
+  out = out || {};
+  out.baseX = baseX;
+  out.baseY = baseY;
+  out.textAlign = textAlign;
+  out.textVerticalAlign = textVerticalAlign;
+  return out;
 }
 
 function setCtx(ctx, prop, value) {

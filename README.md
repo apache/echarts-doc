@@ -13,11 +13,16 @@
 
 ## Build and Run Locally
 
+Dev:
 ```shell
-# Install depedencies
-npm install
-# Build
-sh release.sh
-# Run a static server
+# should put <https://github.com/ecomfe/echarts-examples> on the same folder with echarts-doc
+node watch.js dev
+# or
+node build.js dev
+
+# Run a static server (optional)
 node server.js
 ```
+
+Release:
+Check `incubator-echarts-website/README.md` please.
