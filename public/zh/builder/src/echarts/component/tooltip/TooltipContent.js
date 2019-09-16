@@ -195,7 +195,9 @@ TooltipContent.prototype = {
   show: function (tooltipModel) {
     clearTimeout(this._hideTimeout);
     var el = this.el;
-    el.style.cssText = gCssText + assembleCssText(tooltipModel) // http://stackoverflow.com/questions/21125587/css3-transition-not-working-in-chrome-anymore
+    el.style.cssText = gCssText + assembleCssText(tooltipModel) // Because of the reason described in:
+    // http://stackoverflow.com/questions/21125587/css3-transition-not-working-in-chrome-anymore
+    // we should set initial value to `left` and `top`.
     + ';left:' + this._x + 'px;top:' + this._y + 'px;' + (tooltipModel.get('extraCssText') || '');
     el.style.display = el.innerHTML ? 'block' : 'none'; // If mouse occsionally move over the tooltip, a mouseout event will be
     // triggered by canvas, and cuase some unexpectable result like dragging

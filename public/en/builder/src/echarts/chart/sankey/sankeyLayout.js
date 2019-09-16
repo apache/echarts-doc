@@ -16,11 +16,6 @@
 * specific language governing permissions and limitations
 * under the License.
 */
-
-/**
- * @file The layout algorithm of sankey diagram.
- * @author Deqing Li(annong035@gmail.com)
- */
 import * as layout from '../../util/layout';
 import * as zrUtil from 'zrender/src/core/util';
 import { groupData } from '../../util/model';

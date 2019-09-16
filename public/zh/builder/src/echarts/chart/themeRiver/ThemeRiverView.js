@@ -16,11 +16,6 @@
 * specific language governing permissions and limitations
 * under the License.
 */
-
-/**
- * @file  The file used to draw themeRiver view
- * @author  Deqing Li(annong035@gmail.com)
- */
 import * as echarts from '../../echarts';
 import { Polygon } from '../line/poly';
 import * as graphic from '../../util/graphic';

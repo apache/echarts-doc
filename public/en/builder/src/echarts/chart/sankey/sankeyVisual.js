@@ -16,11 +16,6 @@
 * specific language governing permissions and limitations
 * under the License.
 */
-
-/**
- * @file Visual encoding for sankey view
- * @author  Deqing Li(annong035@gmail.com)
- */
 import VisualMapping from '../../visual/VisualMapping';
 import * as zrUtil from 'zrender/src/core/util';
 export default function (ecModel, payload) {

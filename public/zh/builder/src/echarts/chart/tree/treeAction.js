@@ -16,11 +16,6 @@
 * specific language governing permissions and limitations
 * under the License.
 */
-
-/**
- * @file Register the actions of the tree
- * @author Deqing Li(annong035@gmail.com)
- */
 import * as echarts from '../../echarts';
 import { updateCenterAndZoom } from '../../action/roamHelper';
 echarts.registerAction({
