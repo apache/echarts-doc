@@ -157,6 +157,3 @@ option = {
 维度比较多时，比如有 50+ 的维度，那么就会有 50+ 个轴。那么可能会页面显示不下。
 
 可以通过 [parallel.axisExpandable](~parallel.axisExpandable) 来改善显示效果。
-
-<!-- 如下例子：
-~[600x460](${galleryViewPath}map-parallel-prices&edit=1&reset=1) -->

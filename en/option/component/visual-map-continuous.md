@@ -6,9 +6,6 @@
 **Continuous visualMap component (visualMapContinuous)**
 
  (See [the introduction to visual Map component (visualMap)](~visualMap))
-<!--
-Sample:
-~[600x400](${galleryViewPath}doc-example/map-visualMap-continuous&edit=1&reset=1) -->
 
 You can set [visualMap.calculable](~visualMap.calculable) to show or hide the hanldes, which is used to change the selected range in `visualMapContinuous`.
 

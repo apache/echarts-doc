@@ -12,8 +12,6 @@ Here are the examples using it in rectangular coordinate and geographic coordina
 
 **rectangular coordinate: **
 ~[600x400](${galleryViewPath}heatmap-cartesian&edit=1&reset=1)
-<!-- **geographic coordinate: **
-~[600x400](${galleryViewPath}heatmap-map&edit=1&reset=1) -->
 
 ## type(string) = 'heatmap'
 

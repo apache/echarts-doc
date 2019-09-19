@@ -18,10 +18,6 @@ ECharts started to seperate the concept of "coordinate" from 3.0, supporting rec
 Below is an example that a line chart is in polar coordinate:
 
 ~[60%x400](${galleryViewPath}line-polar2&reset=1&edit=1)
-<!--
-Below is an example that a scatter chart is in geographic coordinate:
-
-~[60%x400](${galleryViewPath}scatter-map&reset=1&edit=1) -->
 
 
 ## Mobile Optimization
@@ -67,5 +63,4 @@ ECharts is data-driven, in that the change of data changes the presentation of c
 
 ECharts provides eye-catching special effects for visualization of line data, point data and geo-data, and so on.
 
-<!-- ~[60%x400](${galleryViewPath}geo-lines&reset=1&edit=1) -->
 ~[60%x400](${galleryViewPath}lines-bmap-effect&reset=1&edit=1)

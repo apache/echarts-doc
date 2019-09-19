@@ -10,10 +10,6 @@
 多个[地图类型](~series-map.map)相同的系列会在同一地图上显示，这时候使用第一个系列的配置项作为地图绘制的配置。
 
 **Tip: **在 ECharts 3 中不再建议在地图类型的图表使用 `markLine` 和 `markPoint`。如果要实现点数据或者线数据的可视化，可以使用在[地理坐标系组件](~geo)上的[散点图](~series-scatter)和[线图](~series-lines)。
-<!--
-**示例：**
-~[600x400](${galleryViewPath}doc-example/map-example&reset=1&edit=1) -->
-
 
 ## type(string) = 'map'
 
@@ -33,9 +29,6 @@
 默认情况下，map series 会自己生成内部专用的 `geo` 组件。但是也可以用这个 `geoIndex` 指定一个 [geo](~geo) 组件。这样的话，map 和 其他 series（例如散点图）就可以共享一个 [geo](~geo) 组件了。并且，[geo](~geo) 组件的颜色也可以被这个 map series 控制，从而用 [visualMap](~visualMap) 来更改。
 
 当设定了 `geoIndex` 后，[series-map.map](~series-map.map) 属性，以及 [series-map.itemStyle](~series-map.itemStyle) 等样式配置不再起作用，而是采用 [geo](~geo) 中的相应属性。
-<!--
-参见：
-~[600x400](${galleryViewPath}geo-map-scatter&reset=1&edit=1) -->
 
 ## mapValueCalculation(string) = 'sum'
 多个拥有相同[地图类型](~series-map.map)的系列会使用同一个地图展现，如果多个系列都在同一个区域有值，ECharts 会对这些值统计得到一个数据。这个配置项就是用于配置统计的方式，目前有：

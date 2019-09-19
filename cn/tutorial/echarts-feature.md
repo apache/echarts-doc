@@ -18,11 +18,7 @@ ECharts 3 开始独立出了“坐标系”的概念，支持了直角坐标系�
 下面是一个折线图在极坐标系上的例子：
 
 ~[60%x400](${galleryViewPath}line-polar2&reset=1&edit=1)
-<!--
-下面是一个散点图在地理坐标系上的例子：
 
-~[60%x400](${galleryViewPath}scatter-map&reset=1&edit=1)
- -->
 
 ## 移动端的优化
 
@@ -67,5 +63,5 @@ ECharts 由数据驱动，数据的改变驱动图表展现的改变。因此动
 
 ECharts 针对线数据，点数据等地理数据的可视化提供了吸引眼球的特效。
 
-<!-- ~[60%x400](${galleryViewPath}geo-lines&reset=1&edit=1) -->
+
 ~[60%x400](${galleryViewPath}lines-bmap-effect&reset=1&edit=1)
