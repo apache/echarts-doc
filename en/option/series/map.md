@@ -9,10 +9,6 @@ Map is maily used in the visulization of geographic area data, which can be used
 
 Series of same [map type](~series-map.map) will show in one map. At this point, the configuration of the first series will be used for the map configuration.
 
-**Example: **
-~[600x400](${galleryViewPath}doc-example/map-example&reset=1&edit=1)
-
-
 ## type(string) = 'map'
 
 {{use: partial-component-id(prefix="#")}}
