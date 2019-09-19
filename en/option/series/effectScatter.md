@@ -6,9 +6,9 @@
 The scatter (bubble) graph with ripple animation. The special animation effect can visually highlights some data.
 
 **Tip:**  The effects of map was achieved through markPoint in ECharts 2.x. However, in  ECharts 3, effectScatter on geographic coordinate is recommended for achieving that effects of map.
-
+<!--
 **Here is the example: **
-~[600x400](${galleryViewPath}effectScatter-map&edit=1&reset=1)
+~[600x400](${galleryViewPath}effectScatter-map&edit=1&reset=1) -->
 
 ## type(string) = 'effectScatter'
 

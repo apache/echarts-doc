@@ -6,8 +6,8 @@
 `brush` 是区域选择组件，用户可以选择图中一部分数据，从而便于向用户展示被选中数据，或者他们的一些统计计算结果。
 
 
-示例如下：
-~[800x600](${galleryViewPath}scatter-map-brush&edit=1&reset=1)
+<!-- 示例如下：
+~[800x600](${galleryViewPath}scatter-map-brush&edit=1&reset=1) -->
 
 
 <br>
@@ -355,7 +355,7 @@ throttleType 取值可以是：
 + `'fixRate'`：表示按照一定的频率触发事件，时间间隔由 [brush.throttleDelay](~brush.throttleDelay) 指定。
 
 
-例如这个 [例子](${galleryViewPath}scatter-map-brush&edit=1&reset=1)，就是使用了 `debounce`的效果：只有用户停止动作了，柱状图才更新。不然的话，如果柱状图的频繁更新，那么动画效果很差。
+<!-- 例如这个 [例子](${galleryViewPath}scatter-map-brush&edit=1&reset=1)，就是使用了 `debounce`的效果：只有用户停止动作了，柱状图才更新。不然的话，如果柱状图的频繁更新，那么动画效果很差。 -->
 
 
 

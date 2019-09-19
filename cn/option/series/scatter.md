@@ -5,9 +5,9 @@
 散点（气泡）图。[直角坐标系](~grid)上的散点图可以用来展现数据的 `x`，`y` 之间的关系，如果数据项有多个维度，其它维度的值可以通过不同大小的 [symbol](~series-scatter.symbol) 展现成气泡图，也可以用颜色来表现。这些可以配合 [visualMap](~visualMap) 组件完成。
 
 可以应用在[直角坐标系](~grid)，[极坐标系](~polar)，[地理坐标系](~geo)上。
-
+<!--
 **Tip:** ECharts 2.x 中在地图上通过 markPoint 标记大量数据点方式在 ECharts 3 中建议通过[地理坐标系](~geo)上的 scatter 实现。下面示例就是在中国地图上用散点图展现了空气质量的分布。并且用 [visualMap](~visualMap) 组件将 PM2.5 映射到了颜色。
-~[600x400](${galleryViewPath}scatter-map&edit=1&reset=1)
+~[600x400](${galleryViewPath}scatter-map&edit=1&reset=1) -->
 
 ## type(string) = 'scatter'
 

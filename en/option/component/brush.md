@@ -5,9 +5,9 @@
 
 `brush` is an area-selecting component, with which user can select part of data from a chart to display in detail, or doing calculations with them.
 
-
+<!--
 Example:
-~[800x600](${galleryViewPath}scatter-map-brush&edit=1&reset=1)
+~[800x600](${galleryViewPath}scatter-map-brush&edit=1&reset=1) -->
 
 
 <br>

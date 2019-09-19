@@ -8,12 +8,13 @@
 
 可以应用在[直角坐标系](~grid)以及[地理坐标系](~geo)上，这两个坐标系上的表现形式相差很大，直角坐标系上必须要使用两个类目轴。
 
-下面分别是直角坐标系和地理坐标系上应用的例子：
+下面是在直角坐标系上应用的例子：
 
 **直角坐标系：**
 ~[600x400](${galleryViewPath}heatmap-cartesian&edit=1&reset=1)
-**地理坐标系：**
-~[600x400](${galleryViewPath}heatmap-map&edit=1&reset=1)
+
+<!-- **地理坐标系：**
+~[600x400](${galleryViewPath}heatmap-map&edit=1&reset=1) -->
 
 ## type(string) = 'heatmap'
 

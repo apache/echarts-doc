@@ -7,8 +7,8 @@
 
 （参考[视觉映射组件（visualMap）的介绍](~visualMap)）
 
-展现形式如下图：
-~[600x400](${galleryViewPath}doc-example/map-visualMap-continuous&edit=1&reset=1)
+<!-- 展现形式如下图：
+~[600x400](${galleryViewPath}doc-example/map-visualMap-continuous&edit=1&reset=1) -->
 
 `visualMapContinuous`中，可以通过 [visualMap.calculable](~visualMap.calculable) 来显示或隐藏手柄（手柄能拖拽改变值域）。
 

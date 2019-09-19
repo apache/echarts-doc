@@ -7,8 +7,8 @@
 
 **Tip:** ECharts 2.x 中在地图上通过 markPoint 实现地图特效在 ECharts 3 中建议通过地理坐标系上的 effectScatter 实现。
 
-**如下示例：**
-~[600x400](${galleryViewPath}effectScatter-map&edit=1&reset=1)
+<!-- **如下示例：**
+~[600x400](${galleryViewPath}effectScatter-map&edit=1&reset=1) -->
 
 ## type(string) = 'effectScatter'
 

@@ -7,8 +7,8 @@ Scatter (bubble) chart . The scatter chart in [rectangular coordinate](~grid) co
 
 It could be used with [rectangular coordinate](~grid) and [polar coordinate](~polar) and [geographical coordinate](~geo).
 
-
-~[600x400](${galleryViewPath}scatter-map&edit=1&reset=1)
+<!--
+~[600x400](${galleryViewPath}scatter-map&edit=1&reset=1) -->
 
 ## type(string) = 'scatter'
 

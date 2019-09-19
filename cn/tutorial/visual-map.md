@@ -87,7 +87,7 @@ option = {
 
 <br>
 [连续型（visualMapContinuous）](option.html#visualMap-continuous)：
-~[600x400](${galleryViewPath}doc-example/map-visualMap-continuous&edit=1&reset=1)
+<!-- ~[600x400](${galleryViewPath}doc-example/map-visualMap-continuous&edit=1&reset=1) -->
 
 [分段型（visualMapPiecewise）](option.html#visualMap-piecewise)：
 ~[600x400](${galleryViewPath}doc-example/scatter-visualMap-piecewise&edit=1&reset=1)

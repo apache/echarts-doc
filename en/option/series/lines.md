@@ -8,9 +8,9 @@
 It is used to draw the line data with the information about "from" and "to"; and it is applied fot drawing the air routes on map, which visualizes these routes.
 
 ECharts 2.x uses the `markLine` to draw the migrating effect, while in ECharts 3, the `lines` graph is recommended to be used.
-
+<!--
 **Migrating example: **
-~[700x500](${galleryViewPath}geo-lines&edit=1&reset=1)
+~[700x500](${galleryViewPath}geo-lines&edit=1&reset=1) -->
 
 
 ## type(string) = 'lines'
