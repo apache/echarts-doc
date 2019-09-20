@@ -1,11 +1,11 @@
 The display interval of {{ target: component-axis3D-common-axis-interval }}
-${name} is valid in the category axis. {{ if: !${isAxisLabel} }} defaults to the same as [axisLabel.interval](~${componentType}.axisLabel.interval). {{ /if }}
+${name} is valid in the category axis. {{ if: !${isAxisLabel} }} Defaults to the same as [axisLabel.interval](~${componentType}.axisLabel.interval). {{ /if }}
 
 By default, `interval` is automatically calculated to ensure a good display.
 
-Can be set to 0 to force all labels to be displayed.
+It can be set to 0 to force all labels to be displayed.
 
-If set to `1`, it means "displays a label every other label". If the value is `2`, it means "displays a label between two labels", and so on.
+If the value is `1`, it means "displays a label every other label". If the value is `2`, it means "displays a label between two labels", and so on.
 
 The interval data can be represented by a numerical value or by a callback function. The format of the callback function is as follows:
 
@@ -70,7 +70,7 @@ Set this to `false` to prevent the axis label from appearing.
 ##${prefix|default('#')} margin(number) = 8
 The margin between the axis label and the axis line.
 
-**Note：** This distance is three-dimensional space and not screen space.
+**Note：** This distance is three-dimensional space, not screen space.
 
 {{ if: ${hasLabelInterval|default(true)} }}
 ##${prefix|default('#')} interval(number|Function) = 'auto'
@@ -93,7 +93,7 @@ The margin between the axis label and the axis line.
 <!-- Overwrite color -->
 ###${prefix|default('#')} color(Color|Function)
 
-Color of axis label is set to be axisLine.lineStyle.color by default. Callback function is supported, in the following format:
+Color of axis label is set to be [axisLine.lineStyle.color](~${componentType}.axisLine.lineStyle.color) by default. Callback function is supported, in the following format:
 
 ```js
 (val: string) => Color
@@ -160,7 +160,7 @@ Set this to `false` to prevent the axis line from showing.
 
 #${prefix|default('#')} splitArea(Object)
 
-Split area of axis in [grid](~grid) area
+Split area of axis in [grid](~grid) area.
 
 ##${prefix|default('#')} show(boolean) = ${defaultShow|default(false)}
 Set this to `true` to show the splitArea.
@@ -176,8 +176,8 @@ Set this to `true` to show the splitArea.
 ##${prefix|default('#')} areaStyle(Object)
 Split area style.
 ###${prefix|default('#')} color(Array) = ['rgba(250,250,250,0.3)','rgba(200,200,200,0.3)']
-Color of split area.
-SplitArea color could also be set in color array, which the split lines would take as their colors in turns. Dark and light colors in turns are used by default.
+Color of the split area.
+The split area color could also be set in color array, which the split lines would take as their colors in turns. Dark and light colors in turns are used by default.
 {{ use:partial-style-shadow-opacity(prefix='##' + ${prefix|default('#')}) }}
 
 
@@ -199,14 +199,14 @@ Whether to display the axisPointer. Set this to `true` to show the splitArea.
 
 ##${prefix|default('#')} label(Object)
 
-Label of axisPointer.
+The label of axisPointer.
 
 ###${prefix|default('#')} show(boolean) = true
 
 Whether to display the label of axisPointer. The default value axis is displayed, the category axis is not displayed.
 
 ###${prefix|default('#')} formatter(Function)
-The formatter of label. The first parameter to the function is the value of the current axis. The second parameter to the function is an array of values for all axes
+The formatter of the label. . The first parameter to the function is the value of the current axis. The second parameter to the function is an array of values for all axes
 
 ```js
 (value: number, valueAll: Array) => string

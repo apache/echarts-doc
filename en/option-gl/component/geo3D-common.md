@@ -65,7 +65,7 @@ The height of each area of the 3D map. This height is the height of the model, l
 
 The ground allows the entire assembly to be “placed” to make the entire scene look more realistic.
 
- `groundPlane` supports setting up separate `realisticMaterial`, `colorMaterial`,`lambertMaterial` and other materials. If not set, the material parameters of the component are taken by default.
+ `groundPlane` supports setting up separate `realisticMaterial`, `colorMaterial`, `lambertMaterial` and other materials. If not set, the material parameters of the component are taken by default.
 
 
 ### show(boolean) = false
@@ -92,7 +92,7 @@ The setting of the label.
 
 ## itemStyle(Object)
 
-Visual properties of 3D graphics in ${componentName}, including color, transparency, strokes, and etc.
+Visual properties of 3D graphics in ${componentName}, including color, transparency, strokes, etc.
 
 {{ use: partial-item-style-geo3D(
     prefix="##",
@@ -155,7 +155,7 @@ Label settings for a single area.
 
 ### emphasis(Object)
 
-Highlight settings for labels and styles for a single area.
+Setting the highlight for labels and styles for a single area.
 
 #### itemStyle(Object)
 
@@ -253,9 +253,9 @@ Component height. This height contains the height of the bar and scatter on a 3D
 
 #${prefix|default('##')} borderWidth(number) = ${defaultBorderWidth|default(0)}
 
-The width of the graphic stroke. With the stroke, you can distinguish each area more clearly. As shown below:
+The width of the border. With the border, you can distinguish each area more clearly. As shown below:
 
 ![](~geo-border.png)
 
 #${prefix|default('##')} borderColor(string) = ${defaultBorderColor|default('#333')}
-The color of the graphic stroke.
+The color of the border.

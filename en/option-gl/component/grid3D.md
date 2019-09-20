@@ -1,11 +1,11 @@
 {{ target: component-grid3D }}
 
 # grid3D(Object)
-3D cartesian coordinate system component. 需要和 [xAxis3D](~xAxis3D)，[yAxis3D](~yAxis3D)，[zAxis3D](~zAxis3D) 三个坐标轴组件一起使用。
+3D cartesian coordinate system component. It requires [xAxis3D](~xAxis3D)，[yAxis3D](~yAxis3D)and [zAxis3D](~zAxis3D) axis components to be used together.
 
-You can draw [3D Lines] (~series-line3D), [3D Bar] (~series-bar3D), [3D Scatter] (~series-scatter3D), [surface] (~series-surface) on the 3D Cartesian coordinate system.
+You can draw [3D Lines](~series-line3D), [3D Bar](~series-bar3D), [3D Scatter](~series-scatter3D), [surface](~series-surface) on the 3D Cartesian coordinate system.
 
-You can set the [postEffect] (~grid3D.postEffect), [light] (~grid3D.light) and other configuration items to improve the display of 3D charts in `grid3D`.
+You can set the [postEffect](~grid3D.postEffect), [light](~grid3D.light) and other configuration items to improve the display of 3D charts in `grid3D`.
 
 Below is a description of the axis configuration items in grid3D. 
 
@@ -13,11 +13,11 @@ Below is a description of the axis configuration items in grid3D.
 
 ---
 
-> **Note：** The [axisLine](~xAxis3D.axisLine), [axisTick](~xAxis3D.axisTick), [axisLabel](~xAxis3D.axisLabel), [splitLine](~xAxis3D.splitLine), [splitArea](~xAxis3D.splitArea), [axisPointer](~xAxis3D.axisPointer) set separately on [xAxis3D](~xAxis3D)，[yAxis3D](~yAxis3D)，[zAxis3D](~zAxis3D) will cover the corresponding configuration items under [grid3D](~grid3D).
+**Note：** The [axisLine](~xAxis3D.axisLine), [axisTick](~xAxis3D.axisTick), [axisLabel](~xAxis3D.axisLabel), [splitLine](~xAxis3D.splitLine), [splitArea](~xAxis3D.splitArea), [axisPointer](~xAxis3D.axisPointer) set separately on [xAxis3D](~xAxis3D)，[yAxis3D](~yAxis3D)，[zAxis3D](~zAxis3D) will cover the corresponding configuration items under [grid3D](~grid3D).
 
 
 ## show(boolean)
-Whether to display 3D cartesian coordinate system component.
+Whether to display a 3D cartesian coordinate system component.
 
 
 {{ use: partial-box-size(
@@ -58,7 +58,7 @@ Whether to display 3D cartesian coordinate system component.
 
 {{ use: partial-view-control(
     componentType='grid3D',
-    componentName='3D cartesian coordinate system'
+    componentName='3D cartesian coordinate system',
     defaultAlpha=20,
     defaultBeta=40,
     defaultDistance=200,

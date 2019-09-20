@@ -3,30 +3,41 @@
 
 # globe(Object)
 
-Globe component.The component provides the drawing of the Earth and the coordinate system. The developer can display 3D Scatter, 3D Bubble, 3D Bar, 3D Lines.
+Globe component. The component provides the drawing of the Earth and the coordinate system. The developer can display 3D Scatter, 3D Bubble, 3D Bar, 3D Lines on it.
 
 ## show(boolean) = true
 
-Whether to show the earth component.
+Whether to show the globe component.
 
 {{ use: partial-zlevel }}
 
 {{ use: partial-viewport }}
 
 ## globeRadius(number) = 100
-The radius of the earth. The unit is relative to the three-dimensional space, related to [viewControl.distance](~globe.viewControl.distance).
+The radius of the globe. The unit is relative to the three-dimensional space, related to [viewControl.distance](~globe.viewControl.distance).
+
+
+## globeOuterRadius(number) = 150
+
+The outer radius of the globe. This area between `globeRadius` and `globeOuterRadius` will be used to display 3D histograms, scatter plots, etc.
+
+
+{{ use: partial-environment(
+    componentType="globe",
+    componentName="地球"
+) }}
 
 {{ use: partial-environment }}
 
 ## baseTexture(string|HTMLImageElement|HTMLCanvasElement|EChartsInstance)
 
-The texture of the earth. Support for the string of image paths, images object or Canvas objects.
+The texture of the globe. Support for the string of image paths, images object or Canvas objects.
 
 It also supports to use an echarts example as a texture directly, in which case mouse actions on Earth will be linked to the echarts instance used on the texture.
 
 Example: 
 ```js
-// Use the earth's texture image
+// Use the globe's texture image
 baseTexture: 'asset/earth.jpg'
 
 // Use the world map example of echarts as a texture.
@@ -53,22 +64,22 @@ baseTexture: mapChart
 
 ## heightTexture(string|HTMLImageElement|HTMLCanvasElement)
 
-The high texture of the earth. High textures can be used to match [Bump Map](https://zh.wikipedia.org/wiki/%E5%87%B9%E5%87%B8%E8%B4%B4%E5%9B%BE)to show the light and dark details of the Earth's surface.
+The high texture of the globe. High textures can be used to match [Bump Map](https://zh.wikipedia.org/wiki/%E5%87%B9%E5%87%B8%E8%B4%B4%E5%9B%BE) to show the light and dark details of the Earth's surface.
 The following two images show the difference between using `heightTexture` and not using `heightTexuture`.
 
-![40xauto](~heightmap-enable.png)
+![400xauto](~heightmap-enable.png)
 
 ![400xauto](~heightmap-disable.png)
 
 ## displacementTexture(string|HTMLImageElement|HTMLCanvasElement)
 
-The displacement texture of the vertices of the earth, the default is the same as a [heightTexture]()
+The displacement texture of the vertices of the globe, the default is the same as a [heightTexture]()
 
 Compared to bump maps, The displacement of the vertex is to directly shift the vertices according to the texture. Valid when [displaymentScale](~globe.displaymentScale) is greater than 0.
 
 ## displacementScale(number) = 0
 
-The distancement map of the earth's vertex.The default is 0, which means no displacement.
+The displacement map of the globe's vertex. The default is 0, which means no displacement.
 The following two images show the effects of setting different `displacementScale`.
 
 
@@ -79,9 +90,8 @@ The following two images show the effects of setting different `displacementScal
 
 ## displacementQuality(string) = 'medium'
 
-The quality of the earth's vertex displacement.
-Support for `'low'`, `'medium'`, `'high'`, `'ultra'` settings.
-Higher quality can show more ground height detail. The following two images show the effects of different `displacementQuality`.
+The quality of the globe's vertex displacement. Support for `'low'`, `'medium'`, `'high'`, `'ultra'` settings.Higher quality can show more ground height detail. 
+The following two images show the effects of different `displacementQuality`.
 
 <div class="twentytwenty-container" style="width: 700px;">
     <img src="documents/asset/gl/img/displacement-low.png" width="100%" title="Low">
@@ -132,7 +142,7 @@ viewControl: {
 ## layers(Array)
 
 Configuration of the Earth's Surface Layer.
-You can use this configuration item to add clouds, or to supplement [baseTexture] (~globe. baseTexture) to draw the outline of the country, and so on.
+You can use this configuration item to add clouds, or to supplement [baseTexture](~globe. baseTexture) to draw the outline of the country, and so on.
 
 ### show(boolean) = true
 
@@ -152,7 +162,7 @@ Mix with [baseTexture](~globe.baseTexture).
 
 ### name(string)
 
-The name of the layer, When setting the properties of the layer with setOption, you can use name to identify the layer that needs to be updated.
+The name of the layer. When setting the properties of the layer with setOption, you can use the name to identify the layer that needs to be updated.
 
 ```js
 chart.setOption({
@@ -187,14 +197,14 @@ Valid when [type](globe.layers.type) is `'overlay'`.
 
 ### distance(number) = null
 
-The distance from the overlay to the surface of the earth.
+The distance from the overlay to the surface of the globe.
 
 Valid when [type](~globe.layers.type) is `'overlay'`.
 
 
 ### texture(string|HTMLImageElement|HTMLCanvasElement|EChartsInstance)
 
-The texture of the earth. Support for the string of image paths, images object or Canvas objects.
+The texture of the globe. Support for the string of image paths, images object or Canvas objects.
 
 It also supports to use an echarts example as a texture directly, in which case mouse actions on Earth will be linked to the echarts instance used on the texture.
 

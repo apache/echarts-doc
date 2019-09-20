@@ -19,7 +19,7 @@ Color of axis name uses [axisLine.lineStyle.color](~${componentType}.axisLine.li
 
 ## nameGap(number) = 20
 
-Gap between axis name and axis line. Note the distance in 3D space, not the screen pixel value.
+The gap between the axis name and axis line. Note the distance is in 3D space, not the screen pixel value.
 
 ## type(string) = ${axisTypeDefault|default('value')}
 
@@ -27,10 +27,10 @@ The type of the axis.
 
 Optional:
 + `'value'`
-    The value axis. Suitable for the continuous data.
+    The value axis. Suitable for continuous data.
 
 + `'category'`
-    The category axis. Suitable  for the discrete category data. For this type, the category data must be set through [data](~${componentType}.data).
+    The category axis. Suitable for the discrete category data. For this type, the category data must be set through [data](~${componentType}.data).
 
 + `'time'`
     The timeline. Suitable for the continuous timing data. The time axis has a time format compared to the value axis, and the scale calculation is also different. For example, the scale of the month, week, day, and hour ranges can be determined according to the range of the span.
@@ -40,23 +40,23 @@ Optional:
 
 ## min(number|string) = null
 
-The minimun value of axis.
+The minimum value of axis.
 
 It can be set to a special value `'dataMin'` so that the minimum value on this axis is set to be the minimum label.
 
-It will be automatically computed to make sure axis tick is equally distributed when not set.
+It will be automatically computed to make sure the axis tick is equally distributed when not set.
 
-In category axis, it can also be set as the ordinal number. For example, if a catergory axis has `data: ['categoryA', 'categoryB', 'categoryC']`, and the ordinal `2` represents `'categoryC'`. Moreover, it can be set as negative number, like `-3`.
+In the category axis, it can also be set as the ordinal number. For example, if a category axis has `data: ['categoryA', 'categoryB', 'categoryC']`, and the ordinal `2` represents `'categoryC'`. Moreover, it can be set as a negative number, like `-3`.
 
 ## max(number|string) = null
 
-The maximum value of axis.
+The maximum value of the axis.
 
 It can be set to a special value `'dataMax'` so that the minimum value on this axis is set to be the maximum label.
 
-It will be automatically computed to make sure axis tick is equally distributed when not set.
+It will be automatically computed to make sure the axis tick is equally distributed when not set.
 
-In category axis, it can also be set as the ordinal number. For example, if a catergory axis has `data: ['categoryA', 'categoryB', 'categoryC']`, and the ordinal `2` represents `'categoryC'`. Moreover, it can be set as negative number, like `-3`.
+In the category axis, it can also be set as the ordinal number. For example, if a category axis has `data: ['categoryA', 'categoryB', 'categoryC']`, and the ordinal `2` represents `'categoryC'`. Moreover, it can be set as a negative number, like `-3`.
 
 ## scale(boolean) = false
 
@@ -68,15 +68,15 @@ This configuration item is unavailable when the [min](~${componentType}.min) and
 
 ## splitNumber(number) = 5
 
-Number of segments that the axis is split into. Note that this number serves only as a recommendation, and the true segments may be adjusted based on readability.
+The number of segments that the axis is split into. Note that this number serves only as a recommendation, and the true segments may be adjusted based on readability.
 
-This is unavailable for category axis.
+This is unavailable for the category axis.
 
 ## minInterval(number) = 0
 
 Minimum gap between split lines.
 
-For example, it can be set to be `1` to make sure axis label is show as an integer.
+For example, it can be set to be `1` to make sure the axis label is shown as an integer.
 
 ```js
 {
