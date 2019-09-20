@@ -1,10 +1,11 @@
-{{ target: partial-area-style }}
+{{ target: partial-line-style }}
 
 #${prefix|default('##')} ${colorName|default('color')}(string{{if: ${hasCallback} }}|Function{{/if}})=${defaultColor|default('adaptive')}
 
-The color of the graphics area. {{ if: ${useColorPalatte} }} Color is taken from [option.color Palette](~color) by default. {{/if}}
+The color of the line. {{ if: ${useColorPalatte} }} Color is taken from [option.color Palette](~color) by default. {{/if}}
 
 In addition to color strings, RGBA values represented by arrays are supported, for example:
+
 
 ```js
 // pure white
@@ -15,5 +16,8 @@ When using an array representation, each channel can set a value greater than 1 
 
 #${prefix|default('##')} opacity(number) = ${defaultOpacity|default(1)}
 
-The opacity of the graphics area.
+The opacity of the line.
 
+#${prefix|default('##')} width(number) = ${defaultWidth|default(1)}
+
+The width of the line.

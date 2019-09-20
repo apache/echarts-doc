@@ -2,17 +2,17 @@
 
 #${prefix|default("##")} detailTexture(string|HTMLImageElement|HTMLCanvasElement)
 
-The texture map of the material detial.
+The texture map of the material detail.
 
 #${prefix|default("##")} textureTiling(number) = 1
 
-Tiles the texture map of the material detial. The default is `1`, which means that the stretch is filled. When the value is greater than `1`, the number is the time of the texture repetition
+Tiles the texture map of the material detail. The default is `1`, which means that the stretch is filled. When greater than `1`, the number indicates how many times the texture is tiled.
 
-**Note: ** The use of tiling requires the height and width of `detailTexture` to be 2 to the power of n. For example, 512x512, if it is a 200x200 texture, you cannot use tiling.
+**Note:**  The use of tiling requires the `detail texture` height and width to be 2 to the power of n. For example, 512x512, if it is a 200x200 texture, you cannot use tiling.
 
 #${prefix|default("##")} textureOffset(number) = 0
 
-The displacement of the material detial texture.
+The displacement of the texture detail texture.
 
 {{ target: partial-shading }}
 
@@ -53,7 +53,7 @@ When you want to express more complex materials. You can set `roughness` directl
 
 ![300x300](~roughness.png)
 
-The more white the color in the texture, the larger the value and the rougher it is. You can get texture resources of different materials from resource websites such as [http://freepbr.com/] (http://freepbr.com/), or you can also generate it yourself using other tools.
+The more white the color in the texture, the larger the value and the rougher it is. You can get texture resources of different materials from resource websites such as [http://freepbr.com/] (http://freepbr.com/). You can also generate it yourself using other tools.
 
 ##${prefix|default("#")} metalness(number|string|HTMLImageElement|HTMLCanvasElement) = 0
 
@@ -70,11 +70,11 @@ As with [roughness](~${componentType}.realisticMaterial.roughness) you can set `
 
 ##${prefix|default("#")} roughnessAdjust(number) = 0.5
 
-Roughness adjustment is useful when using roughness map. The roughness of the overall texture can be adjusted. The default is `0.5`, `0` is completely smooth, `1` is completely rough.
+Roughness adjustment is useful when using roughness map. The overall roughness of the texture can be adjusted. The default is `0.5`, `0` is completely smooth, `1` is completely rough.
 
 ##${prefix|default("#")} metalnessAdjust(number) = 0.5
 
-Metality adjustment is useful when using metal maps. The overall metallicity of the texture can be adjusted. The default is `0.5`, `0` is non-metal, `1` is metal.
+Metalness adjustment is useful when using metalness maps. The overall metallicity of the texture can be adjusted. The default is `0.5`, `0` is non-metal, `1` is metal.
 
 ##${prefix|default("#")} normalTexture(string|HTMLImageElement|HTMLCanvasElement)
 

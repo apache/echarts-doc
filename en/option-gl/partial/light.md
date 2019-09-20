@@ -27,7 +27,7 @@ Whether the main light source displays a shadow. The default is off.
 
 Turning on the shadows can bring more realistic and layered lighting to the scene. But it also increases the operating overhead of the program.
 
-The following two images shows the difference between turning on the shadow and turning off the shadow.
+The following two images show the difference between turning on the shadow and turning off the shadow.
 
 <div class="twentytwenty-container" style="width: 700px;">
     <img src="documents/asset/gl/img/geo-shadow.png" width="100%" title="Shadow">
@@ -47,7 +47,7 @@ The following two images shows the difference between low quality and high quali
 
 ###${prefix|default("#")} alpha(number) = ${defaultMainLightAlpha|default(0)}
 
-The main source is around the x-axis, which is the angle of up-down rotation. Control the direction of the light with [beta](~${componentType}.light.main.beta).
+The main light source is around the x-axis, which is the angle of up-down rotation. Control the direction of the light with [beta](~${componentType}.light.main.beta).
 
 As the following image show:
 
@@ -57,7 +57,7 @@ The [globe](~globe) component can control the time of sunlight by [time](~globe.
 
 ###${prefix|default("#")} beta(number) = ${defaultMainLightAlpha|default(0)}
 
-The main source is around the y-axis, which is the angle of left-right rotation.
+The main light source is around the y-axis, which is the angle of the left-right rotation.
 
 
 {{ block: light-extend }}
@@ -77,12 +77,12 @@ The intensity of ambient light.
 
 ##${prefix|default("#")} ambientCubemap(Object)
 
-ambientCubemap uses texture as the source of ambient light, which provides diffuse and specular for objects. The diffuse and specular can be set separately by [diffuseIntensity](~${componentType}.light.ambientCubemap.diffuseIntensity) and [specularIntensity](~${componentType}.light.ambientCubemap.specularIntensity).
+The ambientCubemap uses texture as the source of ambient light, which provides diffuse and specular for objects. The diffuse and specular can be set separately by [diffuseIntensity](~${componentType}.light.ambientCubemap.diffuseIntensity) and [specularIntensity](~${componentType}.light.ambientCubemap.specularIntensity).
 
 
 ###${prefix|default("#")} texture(string)
 
-The url of the ambient cubemap supports HDR images in the `.hdr` format. Resources for `.hdr` can be obtained from http://www.hdrlabs.com/sibl/archive.html and other websites.
+The URL of the ambient cubemap supports HDR images in the `.hdr` format. You can obtained the resources for `.hdr` from http://www.hdrlabs.com/sibl/archive.html and other websites.
 
 Example：
 
