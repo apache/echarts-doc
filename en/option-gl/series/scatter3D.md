@@ -2,9 +2,9 @@
 
 # series.scatter3D(Object)
 
-3D scatter chart. Can be used to diaplay data in [grid3D](~grid3D)，[ geo3D](~geo3D)，[globe](~globe) using attributre auch as size 、color and so on.
+3D scatter chart. It can be used to display data in [grid3D](~grid3D)，[ geo3D](~geo3D)，[globe](~globe) using attributes such as size 、color and so on.
 
-This example is a 3D simplex noise which drawnd with a bubble chart.
+This example is a 3D simplex noise drawn with a bubble chart.
 
 ![500xauto](~scatter3D.png)
 
@@ -63,9 +63,9 @@ data: [
 For each item in the array：
 
 1. In [grid3D](~grid3D) ，the first three values of each item are`x`, `y`, `z`.
-2. In [geo3D](~geo3D) and [globe](globe) ，the first two values of each item are latitude and longitude `lng`, `lat`.
+2. In [geo3D](~geo3D) and [globe](globe) ，the first two values of each item  are longitude `lng`, latitude `lat`,
 
-In addition to the default values for the coordinates,Each item can also be added with any number of values to [visualMap](~visualMap) the component for any other graphical property, such as color, etc.
+In addition to the default values for the coordinates, each item can be added with any number of values to [visualMap](~visualMap) the component for any other graphical property, such as color, etc.
 
 {{ use: common-data-option-desc() }}
 
@@ -90,10 +90,10 @@ In addition to the default values for the coordinates,Each item can also be adde
 ) }}
 
 #${prefix|default('##')} borderWidth(number)=0
-Sets the width of the border enclosing.
+Sets the width of the border.
 
 #${prefix|default('##')} borderColor(string)='#fff'
-Sets the color of the border enclosin.
+Sets the color of the border.
 
 
 {{ target: partial-label-scatter3D }}
