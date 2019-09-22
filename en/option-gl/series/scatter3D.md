@@ -22,7 +22,7 @@ This example is a 3D simplex noise drawn with a bubble chart.
 
 ## itemStyle(Object)
 
-Sets the style of scatter such as colors, strokes etc.
+Sets the style of scatter such as colors, strokes, etc.
 
 {{ use: partial-item-style-scatter3D(
     prefix="##"
@@ -53,7 +53,7 @@ Graphics and labels are highlighted.
 
 ## data(Array)
 
-The data array of scatter3D. Each item in the array is a piece of data. Usually this data stores each attribute/dimension of the data in an array. As Follows:
+The data array of scatter3D. Each item in the array is a piece of data. Usually, this data stores each attribute/dimension of the data in an array. As Follows:
 ```js
 data: [
     [[12, 14, 10], [34, 50, 15], [56, 30, 20], [10, 15, 12], [23, 10, 14]]

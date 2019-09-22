@@ -100,11 +100,11 @@ data: [
 
 ### coords(Array)
 
-An array of two or more latitude and longitude coordinates. More than two coordinates are supported when [polyline](~series-lines3D.polyline) is set to `true`.
+An array of two or more latitude and longitude coordinates. When [polyline](~series-lines3D.polyline) is set to `true`,  support more than two coordinates.
 
 ### value(Array|number)
 
-The value of data
+The value of data.
 
 ### lineStyle(Object)
 
