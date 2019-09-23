@@ -2,7 +2,7 @@
 
 # series.graphGL(Object)
 
-Uses WebGL to drawn the relational chart，support the layout and rendering of large-scale network/relational data.
+Uses WebGL to drawn the relational chart, support the layout and rendering of large-scale network/relational data.
 
 ## type(string) = 'graphGL'
 
@@ -14,7 +14,7 @@ The continuous graph layout algorithm supports the [forceAtlas2](https://github.
 
 ## forceAtlas2(Object)
 
-[forceAtlas2](https://github.com/gephi/gephi/wiki/Force-Atlas-2) a continuous graph layout algorithm。
+[forceAtlas2](https://github.com/gephi/gephi/wiki/Force-Atlas-2) a continuous graph layout algorithm.
 
 The algorithm has efficient layout efficiency and stable layout results for large-scale network data.
 

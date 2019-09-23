@@ -2,7 +2,7 @@
 
 # series.bar3D(Object)
 
-3D bar. It can be used to display data in [grid3D](~grid3D)，[ geo3D](~geo3D)，[globe](~globe) using attributes such as size 、color and so on.
+3D bar. It can be used to display data in [grid3D](~grid3D), [ geo3D](~geo3D), [globe](~globe) using attributes such as size 、color and so on.
 
 The figure below shows the population density data of the world through a 3D bar chart on [geo3D] (~geo3D).
 

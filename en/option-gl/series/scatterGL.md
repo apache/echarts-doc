@@ -4,7 +4,7 @@
 
 A 2D scatter/bubble plot drawn using WebGL.
 
-It is used in the same way as [scatter](http://echarts.baidu.com/option.html#series-scatter)。
+It is used in the same way as [scatter](http://echarts.baidu.com/option.html#series-scatter).
 
 ## type(string) = 'scatterGL'
 

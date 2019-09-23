@@ -44,7 +44,7 @@ Each graphic element can be basic shape (like `'circle'`, `'rect'`, ...), or [SV
 See the example below:
 ~[800x400](${galleryViewPath}doc-example/pictorialBar-graphicType&reset=1&edit=1)
 
-[symbolClip](~series-pictorialBar.symbolClip) can be used to clip graphic elements。
+[symbolClip](~series-pictorialBar.symbolClip) can be used to clip graphic elements.
 
 See the example below:
 ~[800x600](${galleryViewPath}doc-example/pictorialBar-clip&reset=1&edit=1)
@@ -227,7 +227,7 @@ When percent value is used, final size of the graphic element is calculated base
 
 For example, there is a reference bar based on x axis (that is, it is a vertical bar), and [symbolSize](~series-pictorialBar.symbolSize) is set as `['30%', '50%']`, the final size of its graphic elements is:
 
-+ width: `<width of reference bar> * 30%`。
++ width: `<width of reference bar> * 30%`.
 + height:
     + If [symbolRepeat](~series-pictorialBar.symbolRepeat) is used: `<height of reference bar> * 50%`.
     + If [symbolRepeat](~series-pictorialBar.symbolRepeat) is not used: `<height of reference bar> * 50%`.

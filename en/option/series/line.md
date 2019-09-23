@@ -101,7 +101,7 @@ The style of area.
 
 
 ## emphasis(Object)
-图形的高亮样式。
+Highlight style of the graphic.
 
 ### label(Object)
 {{use: partial-label(

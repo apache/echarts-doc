@@ -20,6 +20,7 @@ The delayed to update the transition animation, which supports callback function
 Example：
 ```js
 animationDelayUpdate: function (idx) {
+    // The more backward the data, the greater the delay of the animation
     return idx * 100;
 }
 ```

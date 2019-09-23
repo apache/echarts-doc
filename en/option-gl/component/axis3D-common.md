@@ -43,7 +43,7 @@ formatter: function (value, index) {
 #${prefix|default('#')} axisLine(Object)
 Settings related to axis line.
 ##${prefix|default('#')} show(boolean) = ${defaultShow|default(true)}
-Set this to `false` to prevent the axis line from showing.
+Set this to be `false` to prevent the axis line from showing.
 
 {{ if: ${hasLabelInterval|default(true)} }}
 ##${prefix|default('#')} interval(number|Function) = 'auto'
@@ -65,7 +65,7 @@ Set this to `false` to prevent the axis line from showing.
 #${prefix|default('#')} axisLabel(Object)
 Settings related to axis label.
 ##${prefix|default('#')} show(boolean) = ${defaultShow|default(true)}
-Set this to `false` to prevent the axis label from appearing.
+Set this to be `false` to prevent the axis label from appearing.
 
 ##${prefix|default('#')} margin(number) = 8
 The margin between the axis label and the axis line.
@@ -114,7 +114,7 @@ textStyle: {
 #${prefix|default('#')} axisTick(Object)
 Settings related to axis tick.
 ##${prefix|default('#')} show(boolean) = ${defaultShow|default(true)}
-Set this to `false` to prevent the axis tick from showing.
+Set this to be `false` to prevent the axis tick from showing.
 
 {{ if: ${hasLabelInterval|default(true)} }}
 ##${prefix|default('#')} interval(number|Function) = 'auto'
@@ -140,7 +140,7 @@ Color of axis label is set to be [axisLine.lineStyle.color](~${componentType}.ax
 #${prefix|default('#')} splitLine(Object)
 Settings related to axis line.
 ##${prefix|default('#')} show(boolean) = ${defaultShow|default(true)}
-Set this to `false` to prevent the axis line from showing.
+Set this to be `false` to prevent the axis line from showing.
 
 {{ if: ${hasLabelInterval|default(true)} }}
 ##${prefix|default('#')} interval(number|Function) = 'auto'
@@ -163,7 +163,7 @@ Set this to `false` to prevent the axis line from showing.
 Split area of axis in [grid](~grid) area.
 
 ##${prefix|default('#')} show(boolean) = ${defaultShow|default(false)}
-Set this to `true` to show the splitArea.
+Set this to be `true` to show the splitArea.
 
 {{ if: ${hasLabelInterval|default(true)} }}
 ##${prefix|default('#')} interval(number|Function) = 'auto'
@@ -191,7 +191,7 @@ Configurations for axis pointer.
 
 ##${prefix|default('#')} show(boolean) = ${defaultShow|default(true)}
 
-Whether to display the axisPointer. Set this to `true` to show the splitArea.
+Whether to display the axisPointer. Set this to be `true` to show the splitArea.
 
 ##${prefix|default('#')} lineStyle(Object)
 
@@ -203,10 +203,10 @@ The label of axisPointer.
 
 ###${prefix|default('#')} show(boolean) = true
 
-Whether to display the label of axisPointer. The default value axis is displayed, the category axis is not displayed.
+Whether to display the label of axisPointer. Value axes are displayed by default, while category axes are not.
 
 ###${prefix|default('#')} formatter(Function)
-The formatter of the label. . The first parameter to the function is the value of the current axis. The second parameter to the function is an array of values for all axes
+The formatter of the label. . The first parameter to the function is the value of the current axis. The second parameter to the function is an array of values for all axes.
 
 ```js
 (value: number, valueAll: Array) => string

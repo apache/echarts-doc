@@ -21,6 +21,7 @@
 如下示例：
 ```js
 animationDelayUpdate: function (idx) {
+    // 越往后的数据,动画的延迟越大
     return idx * 100;
 }
 ```

@@ -183,7 +183,7 @@ Defailt brush style, whose value is:
 
 ## throttleDelay(number) = 0
 
-`0` for disabling throttle。
+`0` for disabling throttle.
 
 {{use: partial-brush-throttle (galleryViewPath=${galleryViewPath})}}
 

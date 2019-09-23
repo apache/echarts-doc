@@ -60,7 +60,7 @@ The size of the in-focus area. The objects in this range are completely clear an
 
 ###${prefix|default('#')} fstop(number) = 2.8
 
-[F value] of the lens (https://zh.wikipedia.org/wiki/%E7%84%A6%E6%AF%94)，the smaller the value, the shallower the depth of field.
+[F value] of the lens (https://zh.wikipedia.org/wiki/%E7%84%A6%E6%AF%94), the smaller the value, the shallower the depth of field.
 
 ###${prefix|default('#')} blurRadius(number) = 10
 
@@ -132,7 +132,7 @@ Whether to enable the color correction.
 
 ###${prefix|default('#')} lookupTexture(string|HTMLImageElement|HTMLCanvasElement)
 
-Color correction lookup texture，recommended.
+Color correction lookup texture, recommended.
 
 The color correction lookup texture is a texture image like the one below.
 
@@ -169,7 +169,7 @@ The saturation of the image.
 
 ##${prefix|default('#')} FXAA(Object)
 
-After opening [postEffect](~${componentType}.postEffect), WebGL's default MSAA (Multi Sampling Anti Aliasing) will not work. At this time, FXAA (Fast Approximate Anti-Aliasing) can solve the anti-aliasing problem quickly and easily. FXAA blurs the edge of the scene to solve the problem of aliasing. It works well on some scenes，but in echarts-gl, you need to ensure that the edges of many texts and lines are sharp and clear, so FXAA is not suitable. At this point we can use supersampling by setting a higher `devicePixelRatio` as follows:
+After opening [postEffect](~${componentType}.postEffect), WebGL's default MSAA (Multi Sampling Anti Aliasing) will not work. At this time, FXAA (Fast Approximate Anti-Aliasing) can solve the anti-aliasing problem quickly and easily. FXAA blurs the edge of the scene to solve the problem of aliasing. It works well on some scenes, but in echarts-gl, you need to ensure that the edges of many texts and lines are sharp and clear, so FXAA is not suitable. At this point we can use supersampling by setting a higher `devicePixelRatio` as follows:
 
 ```js
 var chart = echarts.init(dom, null, {

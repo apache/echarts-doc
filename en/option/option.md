@@ -78,7 +78,7 @@ Global font style.
 
 # blendMode(string) = 'source-over'
 
-Sets the type of compositing operation to apply when drawing a new shape. See the different type: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation 。
+Sets the type of compositing operation to apply when drawing a new shape. See the different type: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation.
 
 The default is `'source-over'`. Support settings for each series.
 

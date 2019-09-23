@@ -150,7 +150,7 @@ Whether to show this layer.
 
 ### type(string) = 'overlay'
 
-Layper type，Optional：
+Layper type, Optional：
 
 + `'overlay'`
 
@@ -191,7 +191,7 @@ The intensity of the mixture.
 
 ### shading(string) = 'lambert'
 
-The coloring effect of the overlay is the same as [globe.shading](~globe.shading)， which supports `'color'`, `'lambert'`, `'realistic'`
+The coloring effect of the overlay is the same as [globe.shading](~globe.shading), which supports `'color'`, `'lambert'`, `'realistic'`
 
 Valid when [type](globe.layers.type) is `'overlay'`.
 

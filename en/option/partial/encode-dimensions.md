@@ -9,7 +9,7 @@ option = {
     dataset: {
         source: [
             // Each column is called a dimension.
-            // There are five dimensions: 0, 1, 2, 3, 4。
+            // There are five dimensions: 0, 1, 2, 3, 4.
             [12, 44, 55, 66, 2],
             [23, 6, 16, 23, 1],
             ...
