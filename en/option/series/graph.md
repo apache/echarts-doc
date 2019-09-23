@@ -282,10 +282,10 @@ links: [{
 }]
 ```
 
-### source(string)
-[name of source node](~series-graph.data.name) on edge
-### target(string)
-[name of target node](~series-graph.data.name) on edge
+### source(string|number)
+A string representing the [name of source node](~series-graph.data.name) on edge. Can also be a number representing the node index.
+### target(string|number)
+A string representing the [name of target node](~series-graph.data.name) on edge. Can also be a number representing node index.
 ### value(number)
 value of edge, can be mapped to edge length in force graph.
 
