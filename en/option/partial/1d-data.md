@@ -56,7 +56,7 @@ More likely, we need to assign name to each data item, in which case each item s
 }]
 ```
 
-Each data item can be further custerized:
+Each data item can be further customized:
 
 ```js
 [{

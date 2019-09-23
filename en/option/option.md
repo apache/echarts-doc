@@ -76,6 +76,13 @@ Global font style.
 
 {{import: partial-animation }}
 
+# blendMode(string) = 'source-over'
+
+Sets the type of compositing operation to apply when drawing a new shape. See the different type: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation 。
+
+The default is `'source-over'`. Support settings for each series.
+
+`'lighter'` is also a common type of compositing operation. In this mode, the area where the number of graphics is concentrated is superimposed into a high-brightness color (white). It often used to highlight the effect of the area. See example [Global airline](${galleryEditorPath}lines-airline)
 
 # useUTC(boolean) = false
 

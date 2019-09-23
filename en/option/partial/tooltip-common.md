@@ -123,7 +123,7 @@ Options:
 
 #${prefix} axisPointer(Object)
 
-Configuration item for axis indicator.
+Configuration item for axisPointer.
 
 `tooltip.axisPointer` is like syntactic sugar of axisPointer settings on axes (for example, [xAxis.axisPointer](~xAxis.axisPointer) or [angleAxis.axisPointer](~angleAxis.axisPointer)). More detailed features can be configured on `someAxis.axisPointer`. But in common cases, using `tooltip.axisPinter` is more convenient.
 
