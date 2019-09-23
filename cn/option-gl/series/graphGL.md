@@ -22,7 +22,7 @@
 
 CPU 实现的优势是兼容性好，而 GPU 实现在高端显卡中有着数十倍甚至上百倍的性能优势。
 
-下面是在 GTX1070 和 i7 4GHz 的电脑中对一个 2w 个节点，近 5w 条边的关系图一次布局的迭代的性能对比。
+下面是在 GTX1070 和 i7 4GHz 的电脑中对一个 2w 个节点(近 5w 条边)的关系图一次布局的迭代的性能对比。
 
 ![400xauto](~gpu-layout-perf.png)
 
@@ -124,7 +124,7 @@ CPU 实现的优势是兼容性好，而 GPU 实现在高端显卡中有着数�
 
 ### value(number|Array)
 
-数据项值
+数据项值。
 
 ### itemStyle(Object)
 
@@ -138,7 +138,7 @@ CPU 实现的优势是兼容性好，而 GPU 实现在高端显卡中有着数�
 
 ## nodes(Array)
 
-同 [graphGL.data](~series-graphGL.data)
+同 [graphGL.data](~series-graphGL.data)。
 
 ## links(Array)
 

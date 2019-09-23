@@ -163,7 +163,7 @@ textStyle: {
 #${prefix|default('#')} splitArea(Object)
 
 坐标轴在 [grid3D](~grid3D) 的平面上的分隔区域。
-##${prefix|default('#')} show(boolean) = ${defaultShow|default(true)}
+##${prefix|default('#')} show(boolean) = ${defaultShow|default(false)}
 是否显示分隔区域。
 
 {{ if: ${hasLabelInterval|default(true)} }}
@@ -206,7 +206,7 @@ textStyle: {
 
 ###${prefix|default('#')} formatter(Function)
 
-标签格式器，函数第一个参数是当前坐标轴的数值，第二个参数是所有坐标轴的数值数组
+标签格式器，函数第一个参数是当前坐标轴的数值，第二个参数是所有坐标轴的数值数组。
 
 ```js
 (value: number, valueAll: Array) => string

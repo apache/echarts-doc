@@ -14,7 +14,7 @@
 
 ## itemStyle(Object)
 
-图形样式，包括颜色，透明度，描边等。
+图形样式，包括颜色、透明度、描边等。
 
 {{ use: partial-item-style(
     prefix="##",
@@ -24,7 +24,7 @@
 
 ## emphasis(Object)
 
-鼠标 hover 高亮时图形和标签的样式
+鼠标 hover 高亮时图形和标签的样式。
 
 ### itemStyle(Object)
 
