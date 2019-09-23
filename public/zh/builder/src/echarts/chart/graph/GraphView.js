@@ -25,13 +25,15 @@ import * as roamHelper from '../../component/helper/roamHelper';
 import { onIrrelevantElement } from '../../component/helper/cursorHelper';
 import * as graphic from '../../util/graphic';
 import adjustEdge from './adjustEdge';
+import { getNodeGlobalScale } from './graphHelper';
 var FOCUS_ADJACENCY = '__focusNodeAdjacency';
 var UNFOCUS_ADJACENCY = '__unfocusNodeAdjacency';
 var nodeOpacityPath = ['itemStyle', 'opacity'];
 var lineOpacityPath = ['lineStyle', 'opacity'];
 
 function getItemOpacity(item, opacityPath) {
-  return item.getVisual('opacity') || item.getModel().get(opacityPath);
+  var opacity = item.getVisual('opacity');
+  return opacity != null ? opacity : item.getModel().get(opacityPath);
 }
 
 function fadeOutItem(item, opacityPath, opacityRatio) {
@@ -45,7 +47,7 @@ function fadeOutItem(item, opacityPath, opacityRatio) {
 
   el.downplay && el.downplay();
   el.traverse(function (child) {
-    if (child.type !== 'group') {
+    if (!child.isGroup) {
       var opct = child.lineLabelOriginalOpacity;
 
       if (opct == null || opacityRatio != null) {
@@ -59,13 +61,14 @@ function fadeOutItem(item, opacityPath, opacityRatio) {
 
 function fadeInItem(item, opacityPath) {
   var opacity = getItemOpacity(item, opacityPath);
-  var el = item.getGraphicEl();
-  el.highlight && el.highlight();
+  var el = item.getGraphicEl(); // Should go back to normal opacity first, consider hoverLayer,
+  // where current state is copied to elMirror, and support
+  // emphasis opacity here.
+
   el.traverse(function (child) {
-    if (child.type !== 'group') {
-      child.setStyle('opacity', opacity);
-    }
+    !child.isGroup && child.setStyle('opacity', opacity);
   });
+  el.highlight && el.highlight();
 }
 
 export default echarts.extendChartView({
@@ -87,7 +90,6 @@ export default echarts.extendChartView({
   render: function (seriesModel, ecModel, api) {
     var coordSys = seriesModel.coordinateSystem;
     this._model = seriesModel;
-    this._nodeScaleRatio = seriesModel.get('nodeScaleRatio');
     var symbolDraw = this._symbolDraw;
     var lineDraw = this._lineDraw;
     var group = this.group;
@@ -106,7 +108,7 @@ export default echarts.extendChartView({
     } // Fix edge contact point with node
 
 
-    adjustEdge(seriesModel.getGraph(), this._getNodeGlobalScale(seriesModel));
+    adjustEdge(seriesModel.getGraph(), getNodeGlobalScale(seriesModel));
     var data = seriesModel.getData();
     symbolDraw.updateData(data);
     var edgeData = seriesModel.getEdgeData();
@@ -191,6 +193,8 @@ export default echarts.extendChartView({
     var cx = data.getLayout('cx');
     var cy = data.getLayout('cy');
     data.eachItemGraphicEl(function (el, idx) {
+      var itemModel = data.getItemModel(idx);
+      var labelRotate = itemModel.get('label.rotate') || 0;
       var symbolPath = el.getSymbolPath();
 
       if (circularRotateLabel) {
@@ -208,15 +212,16 @@ export default echarts.extendChartView({
         }
 
         var textPosition = isLeft ? 'left' : 'right';
-        symbolPath.setStyle({
+        graphic.modifyLabelStyle(symbolPath, {
           textRotation: -rad,
           textPosition: textPosition,
           textOrigin: 'center'
+        }, {
+          textPosition: textPosition
         });
-        symbolPath.hoverStyle && (symbolPath.hoverStyle.textPosition = textPosition);
       } else {
-        symbolPath.setStyle({
-          textRotation: 0
+        graphic.modifyLabelStyle(symbolPath, {
+          textRotation: labelRotate *= Math.PI / 180
         });
       }
     });
@@ -323,7 +328,7 @@ export default echarts.extendChartView({
 
       this._updateNodeAndLinkScale();
 
-      adjustEdge(seriesModel.getGraph(), this._getNodeGlobalScale(seriesModel));
+      adjustEdge(seriesModel.getGraph(), getNodeGlobalScale(seriesModel));
 
       this._lineDraw.updateLayout();
     }, this);
@@ -331,31 +336,14 @@ export default echarts.extendChartView({
   _updateNodeAndLinkScale: function () {
     var seriesModel = this._model;
     var data = seriesModel.getData();
-
-    var nodeScale = this._getNodeGlobalScale(seriesModel);
-
+    var nodeScale = getNodeGlobalScale(seriesModel);
     var invScale = [nodeScale, nodeScale];
     data.eachItemGraphicEl(function (el, idx) {
       el.attr('scale', invScale);
     });
   },
-  _getNodeGlobalScale: function (seriesModel) {
-    var coordSys = seriesModel.coordinateSystem;
-
-    if (coordSys.type !== 'view') {
-      return 1;
-    }
-
-    var nodeScaleRatio = this._nodeScaleRatio;
-    var groupScale = coordSys.scale;
-    var groupZoom = groupScale && groupScale[0] || 1; // Scale node when zoom changes
-
-    var roamZoom = coordSys.getZoom();
-    var nodeScale = (roamZoom - 1) * nodeScaleRatio + 1;
-    return nodeScale / groupZoom;
-  },
   updateLayout: function (seriesModel) {
-    adjustEdge(seriesModel.getGraph(), this._getNodeGlobalScale(seriesModel));
+    adjustEdge(seriesModel.getGraph(), getNodeGlobalScale(seriesModel));
 
     this._symbolDraw.updateLayout();
 

@@ -16,11 +16,6 @@
 * specific language governing permissions and limitations
 * under the License.
 */
-
-/**
- * @file  Using layout algorithm transform the raw data to layout information.
- * @author Deqing Li(annong035@gmail.com)
- */
 import * as zrUtil from 'zrender/src/core/util';
 import * as numberUtil from '../../util/number';
 export default function (ecModel, api) {

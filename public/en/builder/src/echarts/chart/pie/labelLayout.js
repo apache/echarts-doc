@@ -18,6 +18,7 @@
 */
 // FIXME emphasis label position is not same with normal label position
 import * as textContain from 'zrender/src/contain/text';
+var RADIAN = Math.PI / 180;
 
 function adjustSingleSide(list, cx, cy, r, dir, viewWidth, viewHeight) {
   list.sort(function (a, b) {
@@ -154,12 +155,13 @@ function isPositionCenter(layout) {
   return layout.position === 'center';
 }
 
-export default function (seriesModel, r, viewWidth, viewHeight) {
+export default function (seriesModel, r, viewWidth, viewHeight, sum) {
   var data = seriesModel.getData();
   var labelLayoutList = [];
   var cx;
   var cy;
   var hasLabelRotate = false;
+  var minShowLabelRadian = (seriesModel.get('minShowLabelAngle') || 0) * RADIAN;
   data.each(function (idx) {
     var layout = data.getItemLayout(idx);
     var itemModel = data.getItemModel(idx);
@@ -169,6 +171,11 @@ export default function (seriesModel, r, viewWidth, viewHeight) {
     var labelLineModel = itemModel.getModel('labelLine');
     var labelLineLen = labelLineModel.get('length');
     var labelLineLen2 = labelLineModel.get('length2');
+
+    if (layout.angle < minShowLabelRadian) {
+      return;
+    }
+
     var midAngle = (layout.startAngle + layout.endAngle) / 2;
     var dx = Math.cos(midAngle);
     var dy = Math.sin(midAngle);
@@ -205,7 +212,15 @@ export default function (seriesModel, r, viewWidth, viewHeight) {
     }
 
     var font = labelModel.getFont();
-    var labelRotate = labelModel.get('rotate') ? dx < 0 ? -midAngle + Math.PI : -midAngle : 0;
+    var labelRotate;
+    var rotate = labelModel.get('rotate');
+
+    if (typeof rotate === 'number') {
+      labelRotate = rotate * (Math.PI / 180);
+    } else {
+      labelRotate = rotate ? dx < 0 ? -midAngle + Math.PI : -midAngle : 0;
+    }
+
     var text = seriesModel.getFormattedLabel(idx, 'normal') || data.getName(idx);
     var textRect = textContain.getBoundingRect(text, font, textAlign, 'top');
     hasLabelRotate = !!labelRotate;

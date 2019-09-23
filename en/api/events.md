@@ -271,7 +271,7 @@ Event triggered after action [brush](~action.brush) dispatched.
 
 Notice what are selected.
 
-See [brush component](option.html#brush)。
+See [brush component](option.html#brush).
 
 This event will be triggered when `dispatchAction` called, or use do brush behavior.
 But this event will not be triggered in `setOption`.

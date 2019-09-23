@@ -252,7 +252,7 @@ var PiecewiseModel = VisualMapModel.extend({
   /**
    * @public
    * @params {number} pieceIndex piece index in visualMapModel.getPieceList()
-   * @return {Array.<Object>} [{seriesId, dataIndices: <Array.<number>>}, ...]
+   * @return {Array.<Object>} [{seriesId, dataIndex: <Array.<number>>}, ...]
    */
   findTargetDataIndices: function (pieceIndex) {
     var result = [];
@@ -367,7 +367,7 @@ var PiecewiseModel = VisualMapModel.extend({
 /**
  * Key is this._mode
  * @type {Object}
- * @this {module:echarts/component/visualMap/PiecewiseMode}
+ * @this {module:echarts/component/viusalMap/PiecewiseMode}
  */
 
 var resetMethods = {

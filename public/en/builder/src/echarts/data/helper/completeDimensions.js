@@ -116,7 +116,7 @@ function completeDimensions(sysDims, source, opt) {
     // `{encode: {x: -1, y: 1}}`. Should not filter anything in
     // this case.
 
-    if (dataDims.length === 1 && dataDims[0] < 0) {
+    if (dataDims.length === 1 && !isString(dataDims[0]) && dataDims[0] < 0) {
       encodeDef.set(coordDim, false);
       return;
     }

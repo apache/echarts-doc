@@ -202,6 +202,7 @@ MapDraw.prototype = {
       // location calculation.
       var regionGroup = nameMap.get(region.name) || nameMap.set(region.name, new graphic.Group());
       var compoundPath = new graphic.CompoundPath({
+        segmentIgnoreThreshold: 1,
         shape: {
           paths: []
         }
@@ -235,6 +236,7 @@ MapDraw.prototype = {
         }
 
         compoundPath.shape.paths.push(new graphic.Polygon({
+          segmentIgnoreThreshold: 1,
           shape: {
             points: geometry.exterior
           }
@@ -242,6 +244,7 @@ MapDraw.prototype = {
 
         for (var i = 0; i < (geometry.interiors ? geometry.interiors.length : 0); i++) {
           compoundPath.shape.paths.push(new graphic.Polygon({
+            segmentIgnoreThreshold: 1,
             shape: {
               points: geometry.interiors[i]
             }
@@ -308,9 +311,8 @@ MapDraw.prototype = {
 
       var groupRegions = regionGroup.__regions || (regionGroup.__regions = []);
       groupRegions.push(region);
-      graphic.setHoverStyle(regionGroup, hoverItemStyle, {
-        hoverSilentOnTouch: !!mapOrGeoModel.get('selectedMode')
-      });
+      regionGroup.highDownSilentOnTouch = !!mapOrGeoModel.get('selectedMode');
+      graphic.setHoverStyle(regionGroup, hoverItemStyle);
       regionsGroup.add(regionGroup);
     });
 

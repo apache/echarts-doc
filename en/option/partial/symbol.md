@@ -9,7 +9,7 @@ Symbol of ${name}.
 {{ if: ${hasCallback} }}
 If symbols needs to be different, you can set with callback function in the following format:
 ```js
-(value: Array|number, params: Object) => number|Array
+(value: Array|number, params: Object) => string
 ```
 The first parameter `value` is the value in [data](~series-${seriesType}.data), and the second parameter `params` is the rest parameters of data item.
 {{ /if }}

@@ -12,11 +12,11 @@
 
 ## particleDensity(number) = 128
 
-粒子的密度，实际的粒子数量是设置数目的平方。粒子密度越大迹线效果越好，但是性能开销也会越大。除了该属性，将 [particleType](~series-flowGL.particleType) 也可以得到更加清晰连贯的迹线。
+粒子的密度，实际的粒子数量是设置数目的平方。粒子密度越大迹线效果越好，但是性能开销也会越大。除了该属性，使用 [particleType](~series-flowGL.particleType) 也可以得到更加清晰连贯的迹线。
 
 ## particleType(string) = 'point'
 
-粒子的类型，默认为点 `'point'`，可以设置成线 `'line'`，线类型的粒子会用一条线连接上个运动位置和当前运动位置。会让这个轨迹更加连贯。
+粒子的类型，默认为点 `'point'`，可以设置成线 `'line'`。线类型的粒子会用一条线连接上个运动的位置和当前运动的位置，这会让这个轨迹更加连贯。
 
 下面是类型分别是`'point'`和`'line'`的区别。
 
@@ -50,7 +50,7 @@
 
 ## gridWidth(number|string) = 'auto'
 
-传入的网格数据的网格宽度数量，`flowGL` 会根据这个值和 [gridHeight](~series-flowGL.gridHeight) 创建存储向量场的浮点纹理，用于粒子的轨迹计算。
+传入的网格数据的网格宽度数量。`flowGL` 会根据这个值和 [gridHeight](~series-flowGL.gridHeight) 创建存储向量场的浮点纹理，用于粒子的轨迹计算。
 
 ## gridHeight(number|string) = 'auto'
 
@@ -64,8 +64,8 @@
 
 ```js
 data: [
-    // 每个数据项包含四个值，表示位置的 lng, lat 以及相应维度上的速度 sLng, sLat.
-    // 如果是直角坐标系上的话则是表示位置的 x, y 以及相应维度上的速度 sx, sy
+    // 每个数据项包含四个值，表示位置的 lng、lat 以及相应维度上的速度 sLng、 sLat.
+    // 如果是直角坐标系上的话则是表示位置的 x、y 以及相应维度上的速度 sx、sy
     [0, 0, 1, 1], [1, 0, 1, 1],
     [0, 1, 1, 1], [1, 1, 1, 1]
 ];

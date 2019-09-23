@@ -33,7 +33,7 @@ echarts.registerVisual(visualSymbol('graph', 'circle', null));
 echarts.registerVisual(categoryVisual);
 echarts.registerVisual(edgeVisual);
 echarts.registerLayout(simpleLayout);
-echarts.registerLayout(circularLayout);
+echarts.registerLayout(echarts.PRIORITY.VISUAL.POST_CHART_LAYOUT, circularLayout);
 echarts.registerLayout(forceLayout); // Graph view coordinate system
 
 echarts.registerCoordinateSystem('graphView', {

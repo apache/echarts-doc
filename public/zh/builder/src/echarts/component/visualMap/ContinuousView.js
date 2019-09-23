@@ -617,9 +617,9 @@ var ContinuousView = VisualMapView.extend({
 
     var resultBatches = modelUtil.compressBatches(oldBatch, newBatch);
 
-    this._dispatchHighDown('downplay', helper.convertDataIndex(resultBatches[0]));
+    this._dispatchHighDown('downplay', helper.makeHighDownBatch(resultBatches[0], visualMapModel));
 
-    this._dispatchHighDown('highlight', helper.convertDataIndex(resultBatches[1]));
+    this._dispatchHighDown('highlight', helper.makeHighDownBatch(resultBatches[1], visualMapModel));
   },
 
   /**
@@ -664,7 +664,7 @@ var ContinuousView = VisualMapView.extend({
 
     var indices = this._hoverLinkDataIndices;
 
-    this._dispatchHighDown('downplay', helper.convertDataIndex(indices));
+    this._dispatchHighDown('downplay', helper.makeHighDownBatch(indices, this.visualMapModel));
 
     indices.length = 0;
   },

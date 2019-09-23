@@ -349,7 +349,7 @@ var PiecewiseModel = VisualMapModel.extend({
 /**
  * Key is this._mode
  * @type {Object}
- * @this {module:echarts/component/visualMap/PiecewiseMode}
+ * @this {module:echarts/component/viusalMap/PiecewiseMode}
  */
 
 var resetMethods = {

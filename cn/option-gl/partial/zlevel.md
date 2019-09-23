@@ -8,4 +8,4 @@
 
 `zlevel` 大的 Canvas 会放在 `zlevel` 小的 Canvas 的上面。
 
-**注:** echarts-gl 中组件的层需要跟 echarts 中组件的层分开。同一个 zlevel 不能同时用于 WebGL 和 Canvas 的绘制。
+**注:** echarts-gl 中组件的层需要跟 echarts 中组件的层分开。同一个 `zlevel` 不能同时用于 WebGL 和 Canvas 的绘制。

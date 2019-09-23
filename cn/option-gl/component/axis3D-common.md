@@ -5,7 +5,7 @@ ${name}的显示间隔，在类目轴中有效。{{ if: !${isAxisLabel} }}默认
 
 可以设置成 0 强制显示所有标签。
 
-如果设置为 `1`，表示『隔一个标签显示一个标签』，如果值为 `2`，表示隔两个标签显示一个标签，以此类推。
+如果设置为 `1`，表示『隔一个标签显示一个标签』，如果值为 `2`，表示『隔两个标签显示一个标签』，以此类推。
 
 可以用数值表示间隔的数据，也可以通过回调函数控制。回调函数格式如下：
 ```js
@@ -17,7 +17,7 @@ ${name}的显示间隔，在类目轴中有效。{{ if: !${isAxisLabel} }}默认
 
 {{target: component-axis3D-common-formatter-desc}}
 
-刻度标签的内容格式器，支持字符串模板和回调函数两种形式。
+刻度标签的内容格式器。支持字符串模板和回调函数两种形式。
 
 示例:
 ```js
@@ -163,7 +163,7 @@ textStyle: {
 #${prefix|default('#')} splitArea(Object)
 
 坐标轴在 [grid3D](~grid3D) 的平面上的分隔区域。
-##${prefix|default('#')} show(boolean) = ${defaultShow|default(true)}
+##${prefix|default('#')} show(boolean) = ${defaultShow|default(false)}
 是否显示分隔区域。
 
 {{ if: ${hasLabelInterval|default(true)} }}
@@ -206,7 +206,7 @@ textStyle: {
 
 ###${prefix|default('#')} formatter(Function)
 
-标签格式器，函数第一个参数是当前坐标轴的数值，第二个参数是所有坐标轴的数值数组
+标签格式器，函数第一个参数是当前坐标轴的数值，第二个参数是所有坐标轴的数值数组。
 
 ```js
 (value: number, valueAll: Array) => string

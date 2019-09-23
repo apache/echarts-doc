@@ -16,11 +16,6 @@
 * specific language governing permissions and limitations
 * under the License.
 */
-
-/**
- * @file Visual encoding for sankey view
- * @author  Deqing Li(annong035@gmail.com)
- */
 import VisualMapping from '../../visual/VisualMapping';
 import * as zrUtil from 'zrender/src/core/util';
 export default function (ecModel, payload) {
@@ -50,14 +45,8 @@ export default function (ecModel, payload) {
           visual: seriesModel.get('color')
         });
         var mapValueToColor = mapping.mapValueToVisual(node.getLayout().value);
-        node.setVisual('color', mapValueToColor); // If set itemStyle.normal.color
-
-        var itemModel = node.getModel();
-        var customColor = itemModel.get('itemStyle.color');
-
-        if (customColor != null) {
-          node.setVisual('color', customColor);
-        }
+        var customColor = node.getModel().get('itemStyle.color');
+        customColor != null ? node.setVisual('color', customColor) : node.setVisual('color', mapValueToColor);
       });
     }
   });

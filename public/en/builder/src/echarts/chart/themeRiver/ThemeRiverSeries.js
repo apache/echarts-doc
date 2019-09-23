@@ -16,11 +16,6 @@
 * specific language governing permissions and limitations
 * under the License.
 */
-
-/**
- * @file  Define the themeRiver view's series model
- * @author Deqing Li(annong035@gmail.com)
- */
 import SeriesModel from '../../model/Series';
 import createDimensions from '../../data/helper/createDimensions';
 import { getDimensionTypeByAxis } from '../../data/helper/dimensionHelper';
@@ -209,8 +204,7 @@ var ThemeRiverSeries = SeriesModel.extend({
 
   /**
    * Get data indices for show tooltip content
-   *
-   * @param {Array.<string>|string} dim  single coordinate dimension
+    * @param {Array.<string>|string} dim  single coordinate dimension
    * @param {number} value axis value
    * @param {module:echarts/coord/single/SingleAxis} baseAxis  single Axis used
    *     the themeRiver.

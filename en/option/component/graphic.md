@@ -278,7 +278,7 @@ For example:
 + Each element is transformed in the coordinate system of its parent, namely, transform of a element and its parent can be "stacked".
 
 + Transformation is performed by this order:
-    1. Translate [-el.origin[0], -el.origin[1]]。
+    1. Translate [-el.origin[0], -el.origin[1]].
     2. Scale according to el.scale.
     3. Rotate according to el.rotation.
     4. Translate back according to el.origin.

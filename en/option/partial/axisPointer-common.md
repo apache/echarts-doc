@@ -24,7 +24,7 @@ In the cases that more than one axis exist, axisPointer helps to look inside the
 > Generally, axisPointers is configured in each axes who need them (for example [xAxis.axisPointer](~xAxis.axisPointer)), or configured in `tooltip` (for example [tooltip.axisPointer](~tooltip.axisPointer)).
 
 > But these configurations can only be configured in global axisPointer:
-[axisPointer.triggerOn](~axisPointer.triggerOn), [axisPointer.link](~axisPointer.link)。
+[axisPointer.triggerOn](~axisPointer.triggerOn), [axisPointer.link](~axisPointer.link).
 
 ---
 

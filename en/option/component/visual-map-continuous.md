@@ -59,7 +59,7 @@ chart.setOption({
 
 ```javascript
 For instance:
-chart.setOption({visualMap: {min: 10, max: 300}}); // range is not set, then range is [min, max] by default, that is, [10, 300]。
+chart.setOption({visualMap: {min: 10, max: 300}}); // range is not set, then range is [min, max] by default, that is, [10, 300].
 
 chart.setOption({visualMap: {min: 0, max: 400}}); // Modify min and max using setOption again.
 // Then range will be auto-modified to the new [min, max], that is, [0, 400].
@@ -72,7 +72,7 @@ For instance:
 chart.setOption({visualMap: {min: 10, max: 300, range: [20, 80]}}); // range is set to [20, 80].
 
 chart.setOption({visualMap: {min: 0, max: 400}}); // min and max are modifies using setOption.
-// Then range keep the original value ([20, 80]) but will not do auto-adaption。
+// Then range keep the original value ([20, 80]) but will not do auto-adaption.
 
 chart.setOption({visualMap: {range: null}}); // Set range to null then.
 // Then auto-adaption of range turns on and range is auto modified to [min, max], that is, [0, 400].

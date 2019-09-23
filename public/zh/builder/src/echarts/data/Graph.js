@@ -16,13 +16,6 @@
 * specific language governing permissions and limitations
 * under the License.
 */
-
-/**
- * Graph data structure
- *
- * @module echarts/data/Graph
- * @author Yi Shen(https://www.github.com/pissang)
- */
 import { __DEV__ } from '../config';
 import * as zrUtil from 'zrender/src/core/util';
 import { enableClassCheck } from '../util/clazz'; // id may be function name of Object, add a prefix to avoid this problem.
@@ -104,7 +97,7 @@ graphProto.isDirected = function () {
 
 
 graphProto.addNode = function (id, dataIndex) {
-  id = id || '' + dataIndex;
+  id = id == null ? '' + dataIndex : '' + id;
   var nodesMap = this._nodesMap;
 
   if (nodesMap[generateNodeKey(id)]) {

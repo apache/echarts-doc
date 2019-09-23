@@ -161,7 +161,7 @@ OptionManager.prototype = {
     // (create a new object when modify itself).
 
 
-    rawOption = clone(rawOption, true); // FIXME
+    rawOption = clone(rawOption); // FIXME
     // 如果 timeline options 或者 media 中设置了某个属性，而baseOption中没有设置，则进行警告。
 
     var oldOptionBackup = this._optionBackup;

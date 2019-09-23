@@ -89,6 +89,7 @@ export function buildLabelElOption(elOption, axisModel, axisPointerModel, api, l
       textFont: font,
       textFill: labelModel.getTextColor(),
       textPosition: 'inside',
+      textPadding: paddings,
       fill: bgColor,
       stroke: labelModel.get('borderColor') || 'transparent',
       lineWidth: labelModel.get('borderWidth') || 0,
@@ -133,6 +134,8 @@ export function getValueLabel(value, axis, ecModel, seriesDataIndices, opt) {
   if (formatter) {
     var params = {
       value: axisHelper.getAxisRawValue(axis, value),
+      axisDimension: axis.dim,
+      axisIndex: axis.index,
       seriesData: []
     };
     zrUtil.each(seriesDataIndices, function (idxItem) {

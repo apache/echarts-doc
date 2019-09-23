@@ -219,7 +219,7 @@ if (!env.canvasSupported) {
     // if (style.lineCap != null) {
     //     el.endcap = style.lineCap;
     // }
-    if (style.lineDash != null) {
+    if (style.lineDash) {
       el.dashstyle = style.lineDash.join(' ');
     }
 
@@ -826,15 +826,14 @@ if (!env.canvasSupported) {
     }
 
     if (!fromTextEl) {
-      var textPosition = style.textPosition;
-      var distance = style.textDistance; // Text position represented by coord
+      var textPosition = style.textPosition; // Text position represented by coord
 
       if (textPosition instanceof Array) {
         x = rect.x + parsePercent(textPosition[0], rect.width);
         y = rect.y + parsePercent(textPosition[1], rect.height);
         align = align || 'left';
       } else {
-        var res = textContain.adjustTextPositionOnRect(textPosition, rect, distance);
+        var res = this.calculateTextPosition ? this.calculateTextPosition({}, style, rect) : textContain.calculateTextPosition({}, style, rect);
         x = res.x;
         y = res.y; // Default align and baseline when has textPosition
 
@@ -948,7 +947,8 @@ if (!env.canvasSupported) {
     updateFillAndStroke(textVmlEl, 'stroke', {
       stroke: style.textStroke,
       opacity: style.opacity,
-      lineDash: style.lineDash
+      lineDash: style.lineDash || null // style.lineDash can be `false`.
+
     }, this);
     textVmlEl.style.zIndex = getZIndex(this.zlevel, this.z, this.z2); // Attached to root
 

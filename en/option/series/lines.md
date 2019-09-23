@@ -29,14 +29,15 @@ ECharts 2.x uses the `markLine` to draw the migrating effect, while in ECharts 3
 ) }}
 
 ## polyline(boolean) = false
-If draw as polyline.
+If draw as a polyline.
 
 Default to be `false`. Can only draw a two end straight line.
 
 If it is set true, [data.coords](~series-lines.data.coords) can have more than two coord to draw a polyline. It is useful when visualizing GPS track data. See example [lines-bus](${galleryEditorPath}lines-bmap-bus).
 
 ## effect(Object)
-The setting about special effect of lines.
+The setting about the special effects of lines.
+
 
 **Tips: **All the graphs with trail effect should be put on a individual layer, which means that [zlevel](~series-lines.zlevel) need to be different with others. And the animation ([animation](~series-lines.animation): false)  of this layer is suggested to be turned off at the meanwhile. Otherwise, other graphic elements in other series and the [label](~series-lines.label) of animation would produce unnecessary ghosts.
 

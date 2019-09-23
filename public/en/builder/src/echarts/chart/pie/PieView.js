@@ -78,25 +78,15 @@ function PiePiece(data, idx) {
   this.add(sector);
   this.add(polyline);
   this.add(text);
-  this.updateData(data, idx, true); // Hover to change label and labelLine
-
-  function onEmphasis() {
-    polyline.ignore = polyline.hoverIgnore;
-    text.ignore = text.hoverIgnore;
-  }
-
-  function onNormal() {
-    polyline.ignore = polyline.normalIgnore;
-    text.ignore = text.normalIgnore;
-  }
-
-  this.on('emphasis', onEmphasis).on('normal', onNormal).on('mouseover', onEmphasis).on('mouseout', onNormal);
+  this.updateData(data, idx, true);
 }
 
 var piePieceProto = PiePiece.prototype;
 
 piePieceProto.updateData = function (data, idx, firstCreate) {
   var sector = this.childAt(0);
+  var labelLine = this.childAt(1);
+  var labelText = this.childAt(2);
   var seriesModel = data.hostModel;
   var itemModel = data.getItemModel(idx);
   var layout = data.getItemLayout(idx);
@@ -141,34 +131,31 @@ piePieceProto.updateData = function (data, idx, firstCreate) {
 
   toggleItemSelected(this, data.getItemLayout(idx), seriesModel.isSelected(null, idx), seriesModel.get('selectedOffset'), seriesModel.get('animation'));
 
-  function onEmphasis() {
-    // Sector may has animation of updating data. Force to move to the last frame
-    // Or it may stopped on the wrong shape
-    sector.stopAnimation(true);
-    sector.animateTo({
-      shape: {
-        r: layout.r + seriesModel.get('hoverOffset')
-      }
-    }, 300, 'elasticOut');
-  }
-
-  function onNormal() {
-    sector.stopAnimation(true);
-    sector.animateTo({
-      shape: {
-        r: layout.r
-      }
-    }, 300, 'elasticOut');
-  }
-
-  sector.off('mouseover').off('mouseout').off('emphasis').off('normal');
-
-  if (itemModel.get('hoverAnimation') && seriesModel.isAnimationEnabled()) {
-    sector.on('mouseover', onEmphasis).on('mouseout', onNormal).on('emphasis', onEmphasis).on('normal', onNormal);
-  }
-
   this._updateLabel(data, idx);
 
+  this.highDownOnUpdate = itemModel.get('hoverAnimation') && seriesModel.isAnimationEnabled() ? function (fromState, toState) {
+    if (toState === 'emphasis') {
+      labelLine.ignore = labelLine.hoverIgnore;
+      labelText.ignore = labelText.hoverIgnore; // Sector may has animation of updating data. Force to move to the last frame
+      // Or it may stopped on the wrong shape
+
+      sector.stopAnimation(true);
+      sector.animateTo({
+        shape: {
+          r: layout.r + seriesModel.get('hoverOffset')
+        }
+      }, 300, 'elasticOut');
+    } else {
+      labelLine.ignore = labelLine.normalIgnore;
+      labelText.ignore = labelText.normalIgnore;
+      sector.stopAnimation(true);
+      sector.animateTo({
+        shape: {
+          r: layout.r
+        }
+      }, 300, 'elasticOut');
+    }
+  } : null;
   graphic.setHoverStyle(this);
 };
 
@@ -180,6 +167,12 @@ piePieceProto._updateLabel = function (data, idx) {
   var layout = data.getItemLayout(idx);
   var labelLayout = layout.label;
   var visualColor = data.getItemVisual(idx, 'color');
+
+  if (!labelLayout || isNaN(labelLayout.x) || isNaN(labelLayout.y)) {
+    labelText.ignore = labelText.normalIgnore = labelText.hoverIgnore = labelLine.ignore = labelLine.normalIgnore = labelLine.hoverIgnore = true;
+    return;
+  }
+
   graphic.updateProps(labelLine, {
     shape: {
       points: labelLayout.linePoints || [[labelLayout.x, labelLayout.y], [labelLayout.x, labelLayout.y], [labelLayout.x, labelLayout.y]]
@@ -282,6 +275,11 @@ var PieView = ChartView.extend({
     if (hasAnimation && isFirstRender && data.count() > 0 // Default expansion animation
     && animationType !== 'scale') {
       var shape = data.getItemLayout(0);
+
+      for (var s = 1; isNaN(shape.startAngle) && s < data.count(); ++s) {
+        shape = data.getItemLayout(s);
+      }
+
       var r = Math.max(api.getWidth(), api.getHeight()) / 2;
       var removeClipPath = zrUtil.bind(group.removeClipPath, group);
       group.setClipPath(this._createClipPath(shape.cx, shape.cy, r, shape.startAngle, shape.clockwise, removeClipPath, seriesModel));

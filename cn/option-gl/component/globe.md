@@ -3,7 +3,7 @@
 
 # globe(Object)
 
-地球组件。组件提供了地球的绘制以及相应的坐标系，开发者可以在上面展示三维的散点图，气泡图，柱状图，飞线图。
+地球组件。组件提供了地球的绘制以及相应的坐标系，开发者可以在上面展示三维的散点图、气泡图、柱状图、飞线图。
 
 ## show(boolean) = true
 
@@ -13,7 +13,7 @@
 地球的半径。单位相对于三维空间，跟 [viewControl.distance](~globe.viewControl.distance) 相关。
 
 ## globeOuterRadius(number) = 150
-地球的外半径。`globeRadius` 到 `globeOuterRadius` 之间这篇区域会被用于展示三维柱状图，散点图等。
+地球的外半径。`globeRadius` 到 `globeOuterRadius` 之间这片区域会被用于展示三维柱状图，散点图等。
 
 {{ use: partial-environment(
     componentType="globe",
@@ -22,7 +22,7 @@
 
 ## baseTexture(string|HTMLImageElement|HTMLCanvasElement|EChartsInstance)
 
-地球的纹理。支持图片路径字符串，图片或者 Canvas 的对象。
+地球的纹理。支持图片路径的字符串，图片或者 Canvas 的对象。
 
 也支持直接使用 echarts 的实例作为纹理，此时在地球上的鼠标动作会跟纹理上使用的 echarts 实例有联动。
 
@@ -56,7 +56,7 @@ baseTexture: mapChart
 
 ## heightTexture(string|HTMLImageElement|HTMLCanvasElement)
 
-地球的高度纹理。高度纹理可以用于[凹凸贴图](https://zh.wikipedia.org/wiki/%E5%87%B9%E5%87%B8%E8%B4%B4%E5%9B%BE)表现地球表面的明暗细节。下面两图分别是使用`heightTexture`和未使用`heightTexuture`的效果区别。
+地球的高度纹理。高度纹理可以用于[凹凸贴图](https://zh.wikipedia.org/wiki/%E5%87%B9%E5%87%B8%E8%B4%B4%E5%9B%BE)表现地球表面的明暗细节。下面两张图分别是使用`heightTexture`和未使用`heightTexuture`的效果区别。
 
 ![400xauto](~heightmap-enable.png)
 
@@ -190,7 +190,7 @@ chart.setOption({
 
 ### texture(string|HTMLImageElement|HTMLCanvasElement|EChartsInstance)
 
-层的纹理，支持图片路径字符串，图片或者 Canvas 的对象。
+层的纹理，支持图片路径的字符串、图片对象或者 Canvas 的对象。
 
 也支持直接使用 echarts 的实例作为纹理，此时在地球上的鼠标动作会跟纹理上使用的 echarts 实例有联动。
 
@@ -202,7 +202,7 @@ chart.setOption({
 {{ target: partial-shading-globe(master=partial-shading) }}
 
 {{ block: shading-compare }}
-下面是不同着色效果的区别
+下面是不同着色效果的区别：
 
 ![250xauto](~globe-shading-color.png)
 ![250xauto](~globe-shading-lambert.png)

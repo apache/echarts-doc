@@ -19,6 +19,7 @@
 import * as zrUtil from 'zrender/src/core/util';
 import * as numberUtil from '../../util/number';
 import * as helper from './helper';
+import sliderMove from '../helper/sliderMove';
 var each = zrUtil.each;
 var asc = numberUtil.asc;
 /**
@@ -185,38 +186,36 @@ AxisProxy.prototype = {
     var rangePropMode = this._dataZoomModel.getRangePropMode();
 
     var percentExtent = [0, 100];
-    var percentWindow = [opt.start, opt.end];
+    var percentWindow = [];
     var valueWindow = [];
-    each(['startValue', 'endValue'], function (prop) {
-      valueWindow.push(opt[prop] != null ? scale.parse(opt[prop]) : null);
-    }); // Normalize bound.
-
-    each([0, 1], function (idx) {
-      var boundValue = valueWindow[idx];
-      var boundPercent = percentWindow[idx]; // Notice: dataZoom is based either on `percentProp` ('start', 'end') or
-      // on `valueProp` ('startValue', 'endValue'). The former one is suitable
-      // for cases that a dataZoom component controls multiple axes with different
-      // unit or extent, and the latter one is suitable for accurate zoom by pixel
-      // (e.g., in dataZoomSelect). `valueProp` can be calculated from `percentProp`,
-      // but it is awkward that `percentProp` can not be obtained from `valueProp`
-      // accurately (because all of values that are overflow the `dataExtent` will
-      // be calculated to percent '100%'). So we have to use
-      // `dataZoom.getRangePropMode()` to mark which prop is used.
-      // `rangePropMode` is updated only when setOption or dispatchAction, otherwise
-      // it remains its original value.
+    var hasPropModeValue;
+    each(['start', 'end'], function (prop, idx) {
+      var boundPercent = opt[prop];
+      var boundValue = opt[prop + 'Value']; // Notice: dataZoom is based either on `percentProp` ('start', 'end') or
+      // on `valueProp` ('startValue', 'endValue'). (They are based on the data extent
+      // but not min/max of axis, which will be calculated by data window then).
+      // The former one is suitable for cases that a dataZoom component controls multiple
+      // axes with different unit or extent, and the latter one is suitable for accurate
+      // zoom by pixel (e.g., in dataZoomSelect).
+      // we use `getRangePropMode()` to mark which prop is used. `rangePropMode` is updated
+      // only when setOption or dispatchAction, otherwise it remains its original value.
+      // (Why not only record `percentProp` and always map to `valueProp`? Because
+      // the map `valueProp` -> `percentProp` -> `valueProp` probably not the original
+      // `valueProp`. consider two axes constrolled by one dataZoom. They have different
+      // data extent. All of values that are overflow the `dataExtent` will be calculated
+      // to percent '100%').
 
       if (rangePropMode[idx] === 'percent') {
-        if (boundPercent == null) {
-          boundPercent = percentExtent[idx];
-        } // Use scale.parse to math round for category or time axis.
+        boundPercent == null && (boundPercent = percentExtent[idx]); // Use scale.parse to math round for category or time axis.
 
-
-        boundValue = scale.parse(numberUtil.linearMap(boundPercent, percentExtent, dataExtent, true));
+        boundValue = scale.parse(numberUtil.linearMap(boundPercent, percentExtent, dataExtent));
       } else {
-        // Calculating `percent` from `value` may be not accurate, because
+        hasPropModeValue = true;
+        boundValue = boundValue == null ? dataExtent[idx] : scale.parse(boundValue); // Calculating `percent` from `value` may be not accurate, because
         // This calculation can not be inversed, because all of values that
         // are overflow the `dataExtent` will be calculated to percent '100%'
-        boundPercent = numberUtil.linearMap(boundValue, dataExtent, percentExtent, true);
+
+        boundPercent = numberUtil.linearMap(boundValue, dataExtent, percentExtent);
       } // valueWindow[idx] = round(boundValue);
       // percentWindow[idx] = round(boundPercent);
 
@@ -224,9 +223,29 @@ AxisProxy.prototype = {
       valueWindow[idx] = boundValue;
       percentWindow[idx] = boundPercent;
     });
+    asc(valueWindow);
+    asc(percentWindow); // The windows from user calling of `dispatchAction` might be out of the extent,
+    // or do not obey the `min/maxSpan`, `min/maxValueSpan`. But we dont restrict window
+    // by `zoomLock` here, because we see `zoomLock` just as a interaction constraint,
+    // where API is able to initialize/modify the window size even though `zoomLock`
+    // specified.
+
+    var spans = this._minMaxSpan;
+    hasPropModeValue ? restrictSet(valueWindow, percentWindow, dataExtent, percentExtent, false) : restrictSet(percentWindow, valueWindow, percentExtent, dataExtent, true);
+
+    function restrictSet(fromWindow, toWindow, fromExtent, toExtent, toValue) {
+      var suffix = toValue ? 'Span' : 'ValueSpan';
+      sliderMove(0, fromWindow, fromExtent, 'all', spans['min' + suffix], spans['max' + suffix]);
+
+      for (var i = 0; i < 2; i++) {
+        toWindow[i] = numberUtil.linearMap(fromWindow[i], fromExtent, toExtent, true);
+        toValue && (toWindow[i] = scale.parse(toWindow[i]));
+      }
+    }
+
     return {
-      valueWindow: asc(valueWindow),
-      percentWindow: asc(percentWindow)
+      valueWindow: valueWindow,
+      percentWindow: percentWindow
     };
   },
 
@@ -253,11 +272,12 @@ AxisProxy.prototype = {
     // this.hasSeriesStacked = true;
     // }
     // }, this);
+    // `calculateDataWindow` uses min/maxSpan.
 
+    setMinMaxSpan(this);
     var dataWindow = this.calculateDataWindow(dataZoomModel.option);
     this._valueWindow = dataWindow.valueWindow;
-    this._percentWindow = dataWindow.percentWindow;
-    setMinMaxSpan(this); // Update axis setting then.
+    this._percentWindow = dataWindow.percentWindow; // Update axis setting then.
 
     setAxisModel(this);
   },
@@ -345,7 +365,7 @@ AxisProxy.prototype = {
       } else {
         each(dataDims, function (dim) {
           if (filterMode === 'empty') {
-            seriesModel.setData(seriesData.map(dim, function (value) {
+            seriesModel.setData(seriesData = seriesData.map(dim, function (value) {
               return !isInWindow(value) ? NaN : value;
             }));
           } else {
@@ -453,20 +473,20 @@ function setAxisModel(axisProxy, isRestore) {
 function setMinMaxSpan(axisProxy) {
   var minMaxSpan = axisProxy._minMaxSpan = {};
   var dataZoomModel = axisProxy._dataZoomModel;
+  var dataExtent = axisProxy._dataExtent;
   each(['min', 'max'], function (minMax) {
-    minMaxSpan[minMax + 'Span'] = dataZoomModel.get(minMax + 'Span'); // minValueSpan and maxValueSpan has higher priority than minSpan and maxSpan
-
+    var percentSpan = dataZoomModel.get(minMax + 'Span');
     var valueSpan = dataZoomModel.get(minMax + 'ValueSpan');
+    valueSpan != null && (valueSpan = axisProxy.getAxisModel().axis.scale.parse(valueSpan)); // minValueSpan and maxValueSpan has higher priority than minSpan and maxSpan
 
     if (valueSpan != null) {
-      minMaxSpan[minMax + 'ValueSpan'] = valueSpan;
-      valueSpan = axisProxy.getAxisModel().axis.scale.parse(valueSpan);
-
-      if (valueSpan != null) {
-        var dataExtent = axisProxy._dataExtent;
-        minMaxSpan[minMax + 'Span'] = numberUtil.linearMap(dataExtent[0] + valueSpan, dataExtent, [0, 100], true);
-      }
+      percentSpan = numberUtil.linearMap(dataExtent[0] + valueSpan, dataExtent, [0, 100], true);
+    } else if (percentSpan != null) {
+      valueSpan = numberUtil.linearMap(percentSpan, [0, 100], dataExtent, true) - dataExtent[0];
     }
+
+    minMaxSpan[minMax + 'Span'] = percentSpan;
+    minMaxSpan[minMax + 'ValueSpan'] = valueSpan;
   });
 }
 

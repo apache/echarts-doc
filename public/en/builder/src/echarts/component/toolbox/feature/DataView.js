@@ -398,22 +398,7 @@ DataView.prototype.onclick = function (ecModel, api) {
   refreshButton.style.cssText = buttonStyle;
   closeButton.style.cssText = buttonStyle;
   !model.get('readOnly') && buttonContainer.appendChild(refreshButton);
-  buttonContainer.appendChild(closeButton); // http://stackoverflow.com/questions/6637341/use-tab-to-indent-in-textarea
-
-  eventTool.addEventListener(textarea, 'keydown', function (e) {
-    if ((e.keyCode || e.which) === 9) {
-      // get caret position/selection
-      var val = this.value;
-      var start = this.selectionStart;
-      var end = this.selectionEnd; // set textarea value to: text before caret + tab + text after caret
-
-      this.value = val.substring(0, start) + ITEM_SPLITER + val.substring(end); // put caret at right position again
-
-      this.selectionStart = this.selectionEnd = start + 1; // prevent the focus lose
-
-      eventTool.stop(e);
-    }
-  });
+  buttonContainer.appendChild(closeButton);
   root.appendChild(header);
   root.appendChild(viewMain);
   root.appendChild(buttonContainer);

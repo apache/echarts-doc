@@ -56,9 +56,12 @@ var ToolboxModel = echarts.extendComponentModel({
     emphasis: {
       iconStyle: {
         borderColor: '#3E98C5'
-      } // textStyle: {},
-      // feature
-
+      }
+    },
+    // textStyle: {},
+    // feature
+    tooltip: {
+      show: false
     }
   }
 });

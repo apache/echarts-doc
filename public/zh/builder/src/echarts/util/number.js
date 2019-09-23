@@ -138,6 +138,14 @@ export function round(x, precision, returnStr) {
   x = (+x).toFixed(precision);
   return returnStr ? x : +x;
 }
+/**
+ * asc sort arr.
+ * The input arr will be modified.
+ *
+ * @param {Array} arr
+ * @return {Array} The input arr.
+ */
+
 export function asc(arr) {
   arr.sort(function (a, b) {
     return a - b;
