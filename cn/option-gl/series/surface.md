@@ -96,10 +96,11 @@ z 为关于 [x](~series-surface.equation.x), [y](~series-surface.equation.y) 的
 
 ## parametricEquation(Object)
 
-曲面的[参数方程](https://zh.wikipedia.org/wiki/%E5%8F%83%E6%95%B8%E6%96%B9%E7%A8%8B)。在不设置 [data](~series-surface.data)，可以通过 [parametricEquation](~series-surface.equation) 去声明参数参数方程。在 [parametric](~series-surface) 为`true`时有效。
+曲面的[参数方程](https://zh.wikipedia.org/wiki/%E5%8F%83%E6%95%B8%E6%96%B9%E7%A8%8B)。在[data](~series-surface.data)没被设置的时候，可以通过 [parametricEquation](~series-surface.equation) 去声明参数参数方程。在 [parametric](~series-surface) 为`true`时有效。
 
-参数方程是 [x](~series-surface.parametricEquation.x), [y](~series-surface.parametricEquation.y), [z](~series-surface.parametricEquation.z) 关于参数 [u](~series-surface.parametricEquation.u)，[v](~series-surface.parametricEquation.v) 的方程。
-下面的参数方程就是绘制前面图中类似一个金属零件的参数曲面的。
+参数方程是 [x](~series-surface.parametricEquation.x)、[y](~series-surface.parametricEquation.y)、 [z](~series-surface.parametricEquation.z) 关于参数 [u](~series-surface.parametricEquation.u)、[v](~series-surface.parametricEquation.v) 的方程。
+
+下面的参数方程就是绘制前面图中类似一个金属零件的参数曲面的：
 
 ```js
 var aa = 0.4;
@@ -183,7 +184,7 @@ x 为关于 [u](~series-surface.equation.u), [v](~series-surface.equation.v) 的
 
 ## itemStyle(Object)
 
-曲面的颜色和不透明度等样式。
+曲面的颜色、不透明度等样式。
 
 {{ use: partial-item-style(
     componentType='series-surface',

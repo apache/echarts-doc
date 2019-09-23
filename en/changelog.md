@@ -394,13 +394,13 @@ Fix the problem that bar progressive was blocked.
 ## v4.0.0
 <div class="time">2018-01-16</div>
 
-+ [+] Supported to render up to **tens millions of data** directly。ECharts4 has upgrade to stream architecture, and along with detailed optimization, it has supported to render incrementally loaded data and support progressive rendering.
++ [+] Supported to render up to **tens millions of data** directly. ECharts4 has upgrade to stream architecture, and along with detailed optimization, it has supported to render incrementally loaded data and support progressive rendering.
     + Ten millions of GIS data probably take up to about hundreds MB of space. In this case chunked data loading or WebStock is required for the purpose of display graphics as soon as possible and not blocking the browser while processing loaded data. The samples of incremental data loading can be checked here: [scatterGL-gps](https://ecomfe.github.io/echarts-examples/public/editor.html?c=scatterGL-gps&gl=1) and [linesGL-ny](https://ecomfe.github.io/echarts-examples/public/editor.html?c=linesGL-ny&gl=1), who use ECharts GL, and [lines-ny](https://ecomfe.github.io/echarts-examples/public/editor.html?c=lines-ny), who only uses ECharts.
     + Supported the human interactions in the big data scenario, where continuous interactions (e.g., roam in geo and cartesian) will not block the browser. Benefit from the using of GPU and avoiding of layout recalculation, ECharts GL provides smooth interactions, which has been demonstrated in the examples above. Without WebGL, the basic ECharts implements progressive rendering to support non-blocking interaction, which can be checked at the pan and zoom in [lines-airline](https://ecomfe.github.io/echarts-examples/public/editor.html?c=lines-airline) and [scatter-large](https://ecomfe.github.io/echarts-examples/public/editor.html?c=scatter-large).
 
 + [+] **Published ZRender SVG Rendering Engine** as an alternative backend of ECharts besides the existing Canvas Rendering Engine. The choice of rendering engine usually depends on the scenario, for example, benefit from the low memory cost, SVG Rendering Engine is suitable for mobile device, or the case that many ECharts instances exists in a single page, while the Canvas Rendering Engine is suitable for big data rendering or when visual effects required. Canvas Rendering Engine is default rendering engine. See [zrender](https://github.com/ecomfe/zrender).
 
-+ [+] **Published Sunburst Chart** to visualize hierarchical data efficiently with excellent interactions. See [examples] and (excellent) and [docs](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-sunburst)。
++ [+] **Published Sunburst Chart** to visualize hierarchical data efficiently with excellent interactions. See [examples] and (excellent) and [docs](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-sunburst).
 
 + [+] **Published [dataset](http://echarts.baidu.com/tutorial.html#%E6%95%B0%E6%8D%AE%E9%9B%86%EF%BC%88dataset%EF%BC%89) component** to support data based configuration, visual encoding and data sharing in different series.
 
@@ -564,7 +564,7 @@ Fix the problem that bar progressive was blocked.
 
 + [+] Supported [minInterval](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.minInterval) on time axis (that is, [axis.type](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.type) is `'time'`), and supported [maxInterval](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.maxInterval) on value axis (that is [axis.type](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.type) is `'value'`). So that it is enabled to controll the precision of label when data zooming.
 
-+ [+] Supported [xAxis.axisLine.onZeroAxisIndex](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.axisLine.onZeroAxisIndex), which enables specifing corresponding relationship when multiple axes used and `onZero` is required. See [#5069](https://github.com/ecomfe/echarts/issues/5069)。
++ [+] Supported [xAxis.axisLine.onZeroAxisIndex](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.axisLine.onZeroAxisIndex), which enables specifing corresponding relationship when multiple axes used and `onZero` is required. See [#5069](https://github.com/ecomfe/echarts/issues/5069). 
 
 + [+] Supported that do not use [coordinate system](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.coordinateSystems) in `custom series`.
 
@@ -592,7 +592,7 @@ Fix the problem that bar progressive was blocked.
 
 + [+] Fixed the incorrect rendering when the first entry was empty in [candlestick](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-candlestick). See [#6059](https://github.com/ecomfe/echarts/issues/6059).
 
-+ [^] Fixed that [series-bar.dimensions](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-bar.dimensions) did not work. See [#6252](https://github.com/ecomfe/echarts/issues/6252)。
++ [^] Fixed that [series-bar.dimensions](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-bar.dimensions) did not work. See [#6252](https://github.com/ecomfe/echarts/issues/6252). 
 
 + [^] Fixed that when chilren number of group was not fixed, they could not be removed correctly in [custom series](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom).
 
@@ -608,7 +608,7 @@ Fix the problem that bar progressive was blocked.
 ## v3.6.2
 <div class="time">2017-06-15</div>
 
-+ [+] Supported draw [custom series](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom) on [Baidu Map (bmap)](https://github.com/ecomfe/echarts/tree/master/extension/bmap). See [example 1](https://ecomfe.github.io/echarts-examples/public/editor.html?c=map-polygon) and [example 2](https://ecomfe.github.io/echarts-examples/public/editor.html?c=map-bin)。
++ [+] Supported draw [custom series](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom) on [Baidu Map (bmap)](https://github.com/ecomfe/echarts/tree/master/extension/bmap). See [example 1](https://ecomfe.github.io/echarts-examples/public/editor.html?c=map-polygon) and [example 2](https://ecomfe.github.io/echarts-examples/public/editor.html?c=map-bin). 
 
 + [+] Supported show parent labels in [treemap](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-treemap). See [example](https://ecomfe.github.io/echarts-examples/public/editor.html?c=treemap-show-parent). See [#5869](https://github.com/ecomfe/echarts/issues/5869) and [#5579](https://github.com/ecomfe/echarts/issues/5579).
 
@@ -650,9 +650,9 @@ Fix the problem that bar progressive was blocked.
 ## v3.6.0
 <div class="time">2017-05-25</div>
 
-+ **[+] Published [custom series](http://echarts.baidu.com/option.html#series-custom)**, which enables user to customize render logic and make new types of chart. See [samples](http://echarts.baidu.com/examples.html#chart-type-custom)。
++ **[+] Published [custom series](http://echarts.baidu.com/option.html#series-custom)**, which enables user to customize render logic and make new types of chart. See [samples](http://echarts.baidu.com/examples.html#chart-type-custom). 
 
-+ **[+] Supported polar bar chart**. See [sample1](https://ecomfe.github.io/echarts-examples/public/editor.html?c=bar-polar-stack), [sample2](https://ecomfe.github.io/echarts-examples/public/editor.html?c=bar-polar-stack-radial), [sample3](https://ecomfe.github.io/echarts-examples/public/editor.html?c=bar-polar-real-estate)。
++ **[+] Supported polar bar chart**. See [sample1](https://ecomfe.github.io/echarts-examples/public/editor.html?c=bar-polar-stack), [sample2](https://ecomfe.github.io/echarts-examples/public/editor.html?c=bar-polar-stack-radial), [sample3](https://ecomfe.github.io/echarts-examples/public/editor.html?c=bar-polar-real-estate). 
 
 + [+] Supported [encode](http://echarts.baidu.com/option.html#series-scatter.encode), which enable user to specify which dimensions in [data](http://echarts.baidu.com/option.html#series-scatter.data) are mapped to which axis of coordinate system. Or which dimensions will be displayed in [tooltip](http://echarts.baidu.com/option.html#tooltip) or [label](http://echarts.baidu.com/option.html#series-scatter.label). [Break Change]: The default name of the third dimension in `cartesian2d` is changed from `'z'` to `'value'`. If `'z'` is used in [visualMap.dimension](http://echarts.baidu.com/option.html#visualMap.dimension), please modify it to `'value'` or `2`.
 
@@ -715,13 +715,13 @@ Fix the problem that bar progressive was blocked.
 ## v3.5.2
 <div class="time">2017-04-05</div>
 
-+ [+] Supported [useUTC](https://ecomfe.github.io/echarts-doc/public/en/option.html#useUTC), which enables display `axisLabel` and `tooltip` in local time or UTC. Related default setttings are modified: `axisLabel` and `tooltip` display local time by default, and `data` recognize time string as local time if timezone not specified. See [the time part in series.data](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-line.data). Fixed the problem that when `axis.type` is `'time'` tick is determined by UTC and can not align with daytime. Fixed [#5396](https://github.com/ecomfe/echarts/issues/5396) and [#5393](https://github.com/ecomfe/echarts/issues/5393)。
++ [+] Supported [useUTC](https://ecomfe.github.io/echarts-doc/public/en/option.html#useUTC), which enables display `axisLabel` and `tooltip` in local time or UTC. Related default setttings are modified: `axisLabel` and `tooltip` display local time by default, and `data` recognize time string as local time if timezone not specified. See [the time part in series.data](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-line.data). Fixed the problem that when `axis.type` is `'time'` tick is determined by UTC and can not align with daytime. Fixed [#5396](https://github.com/ecomfe/echarts/issues/5396) and [#5393](https://github.com/ecomfe/echarts/issues/5393). 
 
 + [+] Supported [axisLabel.showMinLabel](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.axisLabel.showMinLabel) and [axisLabel.showMaxLabel](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.axisLabel.showMaxLabel).
 
 + [+] Supported [funnel.sort](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-funnel.sort), which enables sorting funnel by index or customized function.
 
-+ [^] Fixed float error of `axisTick`. See [#5041](https://github.com/ecomfe/echarts/issues/5041)。
++ [^] Fixed float error of `axisTick`. See [#5041](https://github.com/ecomfe/echarts/issues/5041). 
 
 + [^] Fixed that `axisTick` did not display when value was too small. See [#5386](https://github.com/ecomfe/echarts/issues/5386).
 
@@ -729,7 +729,7 @@ Fix the problem that bar progressive was blocked.
 
 + [^] Fixed that [visualMap](https://ecomfe.github.io/echarts-doc/public/en/option.html#visualMap) disabled `itemStyle` of [map](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-map). See [#5388](https://github.com/ecomfe/echarts/issues/5388).
 
-+ [^] Fixed that [tooltip.trigger](https://ecomfe.github.io/echarts-doc/public/en/option.html#tooltip.trigger) did not support `'none'`. See [#5400](https://github.com/ecomfe/echarts/issues/5400)。
++ [^] Fixed that [tooltip.trigger](https://ecomfe.github.io/echarts-doc/public/en/option.html#tooltip.trigger) did not support `'none'`. See [#5400](https://github.com/ecomfe/echarts/issues/5400).
 
 + [^] Fixed problem of [sankey](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-sankey) on ie11. See [#3306](https://github.com/ecomfe/echarts/issues/3306).
 
@@ -786,9 +786,9 @@ Recovery Build
 ## v3.4.0
 <div class="time">2017-01-12</div>
 
-+ **[+] Published `pictorialBar` chart：[pictorialBar](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-pictorialBar)。See [example](https://ecomfe.github.io/echarts-examples/public/index.html#chart-type-pictorialBar)。**
++ **[+] Published `pictorialBar` chart：[pictorialBar](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-pictorialBar). See [example](https://ecomfe.github.io/echarts-examples/public/index.html#chart-type-pictorialBar).**
 
-+ **[+] Published `themeRiver` chart：[themeRiver](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-themeRiver)。See [example](https://ecomfe.github.io/echarts-examples/public/index.html#chart-type-themeRiver)。**
++ **[+] Published `themeRiver` chart：[themeRiver](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-themeRiver).See [example](https://ecomfe.github.io/echarts-examples/public/index.html#chart-type-themeRiver).**
 
 + [+] A specified [geo coordinate system](https://ecomfe.github.io/echarts-doc/public/en/option.html#geo) has been able to be used in [map series](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-map). (In the past map series could only creat an inner exclusive geo coodinate system). Thus, [map series](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-map) can be used to control color of a geo component. Moreover, a geo coordinate system can be shared among [map series](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-map) and other series, like [scatter series](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-scatter). See [series-map.geoIndex](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-map.geoIndex).
 
@@ -846,7 +846,7 @@ Recovery Build
 
 + [^] Fix that erroneously forbiden default pan behavior in touch device. See [#4393](https://github.com/ecomfe/echarts/issues/4393).
 
-+ [^] Enhance user experience for [geo](https://ecomfe.github.io/echarts-doc/public/en/option.html#geo) / [map](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-map) in touche device。
++ [^] Enhance user experience for [geo](https://ecomfe.github.io/echarts-doc/public/en/option.html#geo) / [map](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-map) in touche device. 
 
 + [^] Fix calculation error of [containPixel](https://ecomfe.github.io/echarts-doc/public/en/api.html#echartsInstance.containPixel) in [geo](https://ecomfe.github.io/echarts-doc/public/en/option.html#geo) / [graph](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-graph). See [#4405](https://github.com/ecomfe/echarts/issues/4405).
 

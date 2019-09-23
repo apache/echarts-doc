@@ -2,7 +2,7 @@
 
 # series.lines3D(Object)
 
-三维的飞线图。跟二维的[飞线图](http://echarts.baidu.com/option.html#series-line)一样用于表现起点终点的线数据。更多用在地理可视化上。
+三维的飞线图。跟二维的[飞线图](https://echarts.apache.org/zh/option.html#series-line)一样用于表现起点终点的线数据。更多用在地理可视化上。
 
 下图是使用 [lines3D](~series-lines3D) 在 [globe](~globe) 上可视化飞机航班的一个例子。
 

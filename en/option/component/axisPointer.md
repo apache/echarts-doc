@@ -28,7 +28,7 @@ This is the global configurations of axisPointer.
 
 axisPointers can be linked to each other. The term "link" represents that axes are synchronized and move together. Axes are linked according to the value of axisPointer.
 
-See [sampleA](${galleryViewPath}candlestick-brush&edit=1&reset=1) and [sampleB](${galleryViewPath}scatter-nutrients-matrix&edit=1&reset=1)。
+See [sampleA](${galleryViewPath}candlestick-brush&edit=1&reset=1) and [sampleB](${galleryViewPath}scatter-nutrients-matrix&edit=1&reset=1).
 
 link is an array, where each item represents a "link group". Axes will be linked when they are refered in the same link group. For example:
 

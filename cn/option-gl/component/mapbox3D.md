@@ -55,7 +55,7 @@ Mapbox 地图的旋转角度。见 [https://www.mapbox.com/mapbox-gl-js/style-sp
 
 ## pitch(number) = 0
 
-视角俯视的倾斜角度。默认为`0`，也就是正对着地图。最大`60`。见 [https://www.mapbox.com/mapbox-gl-js/style-spec/#root-pitch](https://www.mapbox.com/mapbox-gl-js/style-spec/#root-pitch)
+视角俯视的倾斜角度。默认为`0`，也就是垂直于地图表面。最大的值是`60`。见 [https://www.mapbox.com/mapbox-gl-js/style-spec/#root-pitch](https://www.mapbox.com/mapbox-gl-js/style-spec/#root-pitch)
 
 ## altitudeScale(number) = 1
 

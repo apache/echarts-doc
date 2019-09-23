@@ -16,19 +16,19 @@ option = {
         show: true
     },
     title: {
-        text: '某站点用户访问来源',
+        text: 'Source of user access to a site',
         x: 'center'
     },
     series: [
         {
-            name: '访问来源',
+             Name: 'access source',
             type: 'pie',
             data: [
-                { value: 335, name: '直接访问' },
-                { value: 310, name: '邮件营销' },
-                { value: 234, name: '联盟广告' },
-                { value: 135, name: '视频广告' },
-                { value: 1548, name: '搜索引擎' }
+                { value: 335, name: 'direct access' },
+                { value: 310, name: 'mail marketing' },
+                { value: 234, name: 'union ad' },
+                { value: 135, name: 'video ad' },
+                { value: 1548, name: 'search engine' }
             ]
         }
     ]
@@ -40,9 +40,10 @@ option = {
 There should be an `aria-label` attribute on the chart DOM, which can help the disabled understand the content of charts with the help of certain devices. The value of the label is:
 
 ```
-这是一个关于“某站点用户访问来源”的图表。图表类型是饼图，表示访问来源。其数据是——直接访问的数据是335，邮件营销的数据是310，联盟广告的数据是234，视频广告的数据是135，搜索引擎的数据是1548。
+This is a chart of "Source of user access to a site." The chart type is a pie chart that indicates the source of the visit. The data is - direct access data is 335, mail marketing data is 310, union ad data is 234, video ad data is 135, search engine data is 1548.
 ```
 
 The default language is in Chinese, but you can configure it with templates.
 
 Please refer to [ARIA option](option.html#aria) for more detail.
+

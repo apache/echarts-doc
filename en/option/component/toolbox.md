@@ -13,11 +13,11 @@ The style setting of ${name} icon. Since icon label is displayed only when hover
 ##${prefix} iconStyle(Object)
 {{ use: partial-item-style(prefix="##" + ${prefix}) }}
 ###${prefix} textPosition(string) = 'bottom'
-Text position: `'left'` / `'right'` / `'top'` / `'bottom'`。
+Text position: `'left'` / `'right'` / `'top'` / `'bottom'`.
 ###${prefix} textFill(string) = '#000'
 Fill color of text. If it's not set, it will use in the order of icon's fill color, stroke color, and `'#000'`.
 ###${prefix} textAlign(string) = 'center'
-Text align: `'left'` / `'center'` / `'right'`。
+Text align: `'left'` / `'center'` / `'right'`.
 ###${prefix} textBackgroundColor(string)
 Text background color.
 ###${prefix} textBorderRadius(number)

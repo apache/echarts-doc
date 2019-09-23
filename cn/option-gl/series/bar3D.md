@@ -91,7 +91,7 @@ data: [
 对于数组中的每一项：
 
 1. 在 [grid3D](~grid3D) 中，每一项的前三个值分别是`x`, `y`, `z`。
-2. 在 [geo3D](~geo3D) 以及 [globe](globe) 中，每一项的前两个值分别是经纬度 `lng`, `lat`，第三个值表示数值大小，例如人口的大小。这个值会被映射到 [minHeight](~series-bar3D.minHeight) ~ [maxHeight](~series-bar3D.maxHeight) 的范围。
+2. 在 [geo3D](~geo3D) 以及 [globe](~globe) 中，每一项的前两个值分别是经纬度 `lng`, `lat`，第三个值表示数值大小，例如人口的多少。这个值会被映射到 [minHeight](~series-bar3D.minHeight) ~ [maxHeight](~series-bar3D.maxHeight) 的范围。
 
 除了默认给坐标系使用的三个值，每一项还可以加入任意多个值，用于给 [visualMap](~visualMap) 组件映射到颜色等其它图形属性。
 
