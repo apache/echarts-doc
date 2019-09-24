@@ -1,10 +1,39 @@
 /**
- * @usage
- * node watch.js
+ * ------------------------------------------------------------------------
+ * Usage:
+ *
+ * ```shell
+ * node watch.js --env dev
+ * node watch.js --env asf
+ * node watch.js --env echartsjs
+ * # Check `./config` to see the available env
+ * ```
+ * ------------------------------------------------------------------------
  */
 
 var path = require('path');
 var fs = require('fs');
+var argv = require('yargs').argv;
+
+function initEnv() {
+    var envType = argv.env;
+    var isDev = argv.dev != null || argv.debug != null || envType === 'debug';
+
+    if (isDev) {
+        console.warn('=============================');
+        console.warn('!!! THIS IS IN DEV MODE !!!');
+        console.warn('=============================');
+        envType = 'dev';
+    }
+
+    if (!envType) {
+        throw new Error('--env MUST be specified');
+    }
+
+    return envType;
+}
+
+var envType = initEnv();
 
 var docSrcDirCN = path.join(__dirname, '/cn');
 var docSrcDirEN = path.join(__dirname, '/en');
@@ -39,14 +68,13 @@ function onChange(event) {
 
         timer = setTimeout(function () {
             execBuild(); // Writing may be not finished yet, and throttle.
-            console.log('Done.');
         }, 1000);
     }
 }
 
 function execBuild() {
     require('child_process').exec(
-        'node build.js ' + (process.argv[2] || ''),
+        'node build.js --env ' + envType,
         function (error, stdout, stderr) {
             if (error !== null) {
                 console.log('exec error: ' + error);

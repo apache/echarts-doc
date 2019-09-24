@@ -6,6 +6,11 @@
     "type": "git",
     "url": "git@github.com:ecomfe/echarts-doc.git"
   },
+  "scripts": {
+    "build": "node build.js --env dev",
+    "watch": "node watch.js --env dev",
+    "server": "node server.js"
+  },
   "author": "shenyi",
   "license": "BSD",
   "devDependencies": {
