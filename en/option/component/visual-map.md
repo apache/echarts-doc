@@ -161,7 +161,7 @@ For instance, `[visualMap.min, visualMap.max]` is set to be `[0, 100]`, and ther
 
 We can also set the visual range inversely, such as `opacity: [1, 0.4]`, and the final mapping result for the given series.data above will be `[0.7, 0.96, 0.4]`.
 
-Notice: [visualMap.min, visualMap.max] should be set manually and is [0, 100] by defualt, but not `dataMin` and `dataMax` in series.data。
+Notice: [visualMap.min, visualMap.max] should be set manually and is [0, 100] by defualt, but not `dataMin` and `dataMax` in series.data.
 
 
 How to configure visualMap component to do Linear Mapping?
@@ -188,11 +188,11 @@ About the possible value range of visual value:
 
 + `opacity`、`colorAlpha`、`colorLightness`、`colorSaturation`，`visual value`
 
-    possible value range is `[0, 1]`。
+    possible value range is `[0, 1]`.
 
 + `colorHue`
 
-    possible value range is `[0, 360]`。
+    possible value range is `[0, 360]`.
 
 + `color`：
 

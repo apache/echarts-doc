@@ -37,7 +37,7 @@ Easing method used for animation.
 {{ if: !${noAnimationDelay} }}
 #${prefix} animationDelayUpdate(number|Function) = 0
 
-Delay before updating animation, which supports callback function for different data to have different animation effect.
+Delay before updating animation, which supports callback function for different data to have different animation effects.
 
 For example:
 ```js

@@ -14,7 +14,7 @@
 
 ---
 
-> **注意：** [xAxis3D](~xAxis3D)，[yAxis3D](~yAxis3D)，[zAxis3D](~zAxis3D) 上单独设置的`axisLine`, `axisTick`, `axisLabel`, `splitLine`, `splitArea`, `axisPointer`会覆盖`grid3D`下的相应配置项。
+> **注意：** [xAxis3D](~xAxis3D)，[yAxis3D](~yAxis3D)，[zAxis3D](~zAxis3D) 上单独设置的 [axisLine](~xAxis3D.axisLine), [axisTick](~xAxis3D.axisTick), [axisLabel](~xAxis3D.axisLabel), [splitLine](~xAxis3D.splitLine), [splitArea](~xAxis3D.splitArea), [axisPointer](~xAxis3D.axisPointer)` 会覆盖[grid3D](~grid3D) 下的相应配置项。
 
 
 

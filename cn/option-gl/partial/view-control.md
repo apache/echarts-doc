@@ -34,7 +34,7 @@
 
 旋转操作的灵敏度，值越大越灵敏。支持使用数组分别设置横向和纵向的旋转灵敏度。
 
-默认为`${defaultRotateSensitivitydefault(1)}`
+默认为`${defaultRotateSensitivity | default(1)}`。
 
 设置为`0`后无法旋转。
 
@@ -49,7 +49,7 @@ rotateSensitivity: [0, 1]
 
 ##${prefix|default('#')} zoomSensitivity(number) = ${defaultZoomSensitivity|default(1)}
 
-缩放操作的灵敏度，值越大越灵敏。默认为`${defaultRotateSensitivitydefault(1)}`
+缩放操作的灵敏度，值越大越灵敏。默认为`${defaultRotateSensitivity | default(1)}`。
 
 设置为`0`后无法缩放。
 
@@ -57,7 +57,7 @@ rotateSensitivity: [0, 1]
 
 平移操作的灵敏度，值越大越灵敏。支持使用数组分别设置横向和纵向的平移灵敏度
 
-默认为`${defaultRotateSensitivitydefault(1)}`
+默认为`${defaultRotateSensitivity | default(1)}`。
 
 设置为`0`后无法平移。
 

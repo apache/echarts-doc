@@ -34,7 +34,7 @@ The tree diagram is mainly used to visualize the tree data structure, which is a
 
 ## layout(string) = 'orthogonal'
 
-The layout of the tree, which can be `orthogonal` and `radial` 。Here the `orthogonal` layout is what we usually refer to the `horizontal` and `vertical` direction, the corresponding parameter value is `orthogonal`. The `radial` layout refers to the view that the root node as the center and each layer of nodes as the ring, the corresponding parameter value is `radial`.
+The layout of the tree, which can be `orthogonal` and `radial`. Here the `orthogonal` layout is what we usually refer to the `horizontal` and `vertical` direction, the corresponding parameter value is `orthogonal`. The `radial` layout refers to the view that the root node as the center and each layer of nodes as the ring, the corresponding parameter value is `radial`.
 
 **Orthogonal Example：**
 
@@ -165,7 +165,7 @@ The style of the leaf node in the tree.
         ...           // the format of the label is shown in the series-tree.label.
     },
     itemStyle: {      // the special itemStyle configuration (if necessary).
-        ...           // the format of the itemstyle is shown in the series-tree.itemStyle。
+        ...           // the format of the itemstyle is shown in the series-tree.itemStyle.
     },
     children: [
         {

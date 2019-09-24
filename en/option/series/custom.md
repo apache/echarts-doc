@@ -222,7 +222,7 @@ For example, in `cartesian2d`, suppose calling `api.size([2, 4])` returns `[12.4
 In some coordinate systems (for example, polar) or when log axis is used, the size is different in different point. So the second parameter is necessary to calculate size on the given point.
 
 ```
-@param {Array.<number>} dataSize Data range。
+@param {Array.<number>} dataSize Data range.
 @param {Array.<number>} dataItem The point where the size will be calculated.
 @return {Array.<number>} The size.
 ```
@@ -321,7 +321,7 @@ Obtain font string, which can be used on style setting directly.
 ##### getDevicePixelRatio(Function)
 
 ```
-@return {number} The current devicePixelRatio。
+@return {number} The current devicePixelRatio.
 ```
 
 

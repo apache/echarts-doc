@@ -28,7 +28,7 @@ The scope of the area is defined by `data`, which is an array with two item, rep
 1. Specify the coordinate in screen coordinate system using [x](~series-${seriesType}.markArea.data.0.x), [y](~series-${seriesType}.markArea.data.0.y), where the unit is pixel (e.g., the value is `5`), or percent (e.g., the value is `'35%'`).
 {{ if: ${hasCoord} }}
 2. Specify the coordinate in data coordinate system (i.e., cartesian) using
-[coord](~series-${seriesType}.markArea.data.0.coord), which can be also set as `'min'`, `'max'`, `'average'` (e.g, `coord: [23, 'min']`, or `coord: ['average', 'max']`)。
+[coord](~series-${seriesType}.markArea.data.0.coord), which can be also set as `'min'`, `'max'`, `'average'` (e.g, `coord: [23, 'min']`, or `coord: ['average', 'max']`).
 {{ /if }}
 {{ if: ${hasType} }}
 3. Locate the point on the min value or max value of `series.data` using [type](~series-${seriesType}.markArea.data.0.type), where [valueIndex](~series-${seriesType}.markArea.data.0.valueIndex) or [valueDim](~series-${seriesType}.markPoint.data.0.valueDim) can be used to specify the dimension on which the min, max or average are calculated.
@@ -125,9 +125,9 @@ Specify the right-bottom point.
 Specify this item is on min or max or average value.
 
 **Options:**
-+ `'min'` max value。
-+ `'max'` min value。
-+ `'average'` average value。
++ `'min'` max value.
++ `'max'` min value.
++ `'average'` average value.
 {{ /if }}
 {{ if: ${hasCoord} }}
 #${prefix} valueIndex(number)
