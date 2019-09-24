@@ -5,10 +5,7 @@
 Geographic coorinate system component.
 
 Geographic coorinate system component is used to draw maps, which also supports [scatter series](~series-scatter), and [line series](~series-lines).
-<!--
-**Example of using scatter series in geographic coordinate:**
-~[600x400](${galleryViewPath}scatter-map&edit=1&reset=1)
- -->
+
 
 From `3.1.10`, geo component also supports mouse events, whose parameters are:
 
