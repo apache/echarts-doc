@@ -72,7 +72,7 @@ ECharts的『外观狭长』型的组件（如 `legend`、`visualMap`、`dataZoo
 
 
 <br>
-**于 ECharts2 的兼容：**
+**与 ECharts2 的兼容：**
 
 ECharts2 中的 `x/x2/y/y2` 的命名方式仍被兼容，对应于 `left/right/top/bottom`。但是建议写 `left/right/top/bottom`。
 
