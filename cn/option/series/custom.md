@@ -431,6 +431,11 @@ renderItem 函数的第二个参数。
 )}}
 
 
+{{use:partial-clip(
+    prefix="#",
+    defaultClip=false
+) }}
+
 {{use:partial-z-zlevel(
     prefix="#",
     componentName="自定义图"

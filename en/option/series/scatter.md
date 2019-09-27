@@ -137,6 +137,10 @@ the style setting about single data point(bubble).
     hasType=true
 )}}
 
+{{use:partial-clip(
+    prefix="#"
+) }}
+
 {{use:partial-z-zlevel(
     prefix="#",
     componentName="scatter chart"

@@ -128,6 +128,10 @@ The style setting of the text label in a single bar.
     hasType=true
 )}}
 
+{{use:partial-clip(
+    prefix="#"
+) }}
+
 {{use:partial-z-zlevel(
     prefix="#",
     componentName="bar chart"

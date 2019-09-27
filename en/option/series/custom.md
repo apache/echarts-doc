@@ -433,6 +433,11 @@ Value of data item.
 )}}
 
 
+{{use:partial-clip(
+    prefix="#",
+    defaultClip='false'
+) }}
+
 {{use:partial-z-zlevel(
     prefix="#",
     componentName="custom series"

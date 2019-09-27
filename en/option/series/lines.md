@@ -162,6 +162,10 @@ The line style of this data item.
     seriesType="lines"
 )}}
 
+{{use:partial-clip(
+    prefix="#"
+) }}
+
 {{use:partial-z-zlevel(
     prefix="#",
     componentName="lines graph"
