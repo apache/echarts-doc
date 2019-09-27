@@ -47,10 +47,15 @@ for (var key in config) {
     }
 }
 
+function getDistLang(lang) {
+    return lang === 'cn' ? 'zh' : lang;
+}
+
 function run() {
     languages.forEach(function (language) {
-        if (!fs.existsSync('public/' + language + '/documents/' + language)) {
-            fs.mkdirSync('public/' + language + '/documents/' + language);
+        var distLang = getDistLang(language);
+        if (!fs.existsSync('public/' + distLang + '/documents/' + distLang)) {
+            fs.mkdirSync('public/' + distLang + '/documents/' + distLang);
         }
         md2json({
                 path: language + '/option/**/*.md',
@@ -101,15 +106,11 @@ function run() {
         );
 
         fs.writeFileSync(
-            'public/' + language + '/documents/' + language + '/changelog.html',
+            'public/' + distLang + '/documents/' + distLang + '/changelog.html',
             marked(fs.readFileSync(language + '/changelog.md', 'utf-8')),
             'utf-8'
         );
 
-        console.log('Please visit:');
-        console.log('echarts-doc/public/zh/');
-        console.log('echarts-doc/public/en/');
-        console.log();
 
         // var plainMarkDownTpl = fs.readFileSync('tool/plain-md.tpl', 'utf-8');
         // var codingStandardMD = fs.readFileSync('en' + '/coding-standard.md', 'utf-8');
@@ -124,21 +125,24 @@ function run() {
         // );
     });
 
+    console.log('Please visit:');
+    console.log('echarts-doc/public/zh/');
+    console.log('echarts-doc/public/en/');
+    console.log();
+
     fs.writeFileSync(
         'public/en/documents/en/coding-standard.html',
         marked(fs.readFileSync('en/coding-standard.md', 'utf-8')),
         'utf-8'
     );
 
-    copydir.sync('./asset', './public/cn/documents/asset');
+    copydir.sync('./asset', './public/zh/documents/asset');
     copydir.sync('./asset', './public/en/documents/asset');
 }
 
 function writeSingleSchema(schema, language, docName, format) {
-    if (language === 'cn') {
-        language = 'zh';
-    }
-    var path = 'public/documents/' + language + '/' + docName + '.json';
+    var distLang = getDistLang(language);
+    var path = 'public/documents/' + distLang + '/' + docName + '.json';
     console.log('output: ' + path);
     fs.writeFileSync(
         path,
