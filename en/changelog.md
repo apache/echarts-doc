@@ -1,4 +1,51 @@
-## v4.3.0-rc.1
+## v4.4.0
+
+<div class="time">2019-09-28</div>
+
++ [Feature] Support visual test, which is a powerfull test tool automating the regression test.
+It support recording user behaviors as test cases, comparing visual results between different
+version of echarts, dashboard UI, renderer switching, testing report ouput, and other detailed features.
+See `Run test cases` in `CONTRIBUTING.md` for more details.
+
++ [Feature] Add option `clip` for `line`, `bar`, `lines`, `scatter` and `custom series`,
+which prevents the shapes overflow the area of the coordinate system. And support setting
+`filterMode` on `toolbox.dataZoom`. Fix #9200, #10224, #10748, #11086.
+
++ [Feature] Support "select all" and "reverse select" buttons in `legend`. See `legend.selector` for details.
+
++ [Feature] Provide `echarts.graphic.registerShape` and `echarts.graphic.getShapeClass`.
+The registered shape classes can be used in `custom series` and `graphic component`.
+
++ [Feature] Support show border style on `legend` item. Support setting `itemStyle` on `legend`. Fix #7340.
+
++ [Feature] Support expansion animation for data update, support `pie-series.animationTypeUpdate`. Fix #11029.
+
++ [Feature] Support setting `rippleEffect.color` in `effectScatter`.
+
++ [Feature] Support using BaiduMap API version 3.0 in bmap by option `bmap.mapStyleV2`.
+
++ [Fix] Fix that the stacked bar exceed zoom limit.
+Fix #7534, #7672, #7732, #7872, #8069, #8520, #8935, #8955, #9200, #9237, #9847, #10359, #10518, #10972.
+
++ [Fix] Fix that sometimes when using "toolbox dataZoom" it can not return to the original state. Fix #11055.
+
++ [Fix] The shadow of `map` and `geo` is different between canvas renderer and SVG renderer. Fix #11055.
+
++ [Fix] Fix that data does not rendered after a `NaN` value in candlestick. Fix #11101.
+
++ [Fix] Fix `geo.label.formatter` does not work. Fix #8489.
+
++ [Fix] Fix the hover style incorrect in `custom series`. Fix #11103.
+
++ [Fix] Fix that tree root node disappears after roaming. Fix #10291, #10986, #10164, #9580, #9256, #9216.
+
++ [Fix] Fix that SVG renderer should render normally despite hover layer set. Fix #11054.
+
++ [Fix] Add dispose checking for chart instance.
+
+
+
+## v4.3.0
 
 <div class="time">2019-08-27</div>
 
@@ -564,7 +611,7 @@ Fix the problem that bar progressive was blocked.
 
 + [+] Supported [minInterval](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.minInterval) on time axis (that is, [axis.type](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.type) is `'time'`), and supported [maxInterval](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.maxInterval) on value axis (that is [axis.type](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.type) is `'value'`). So that it is enabled to controll the precision of label when data zooming.
 
-+ [+] Supported [xAxis.axisLine.onZeroAxisIndex](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.axisLine.onZeroAxisIndex), which enables specifing corresponding relationship when multiple axes used and `onZero` is required. See [#5069](https://github.com/ecomfe/echarts/issues/5069). 
++ [+] Supported [xAxis.axisLine.onZeroAxisIndex](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.axisLine.onZeroAxisIndex), which enables specifing corresponding relationship when multiple axes used and `onZero` is required. See [#5069](https://github.com/ecomfe/echarts/issues/5069).
 
 + [+] Supported that do not use [coordinate system](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.coordinateSystems) in `custom series`.
 
@@ -592,7 +639,7 @@ Fix the problem that bar progressive was blocked.
 
 + [+] Fixed the incorrect rendering when the first entry was empty in [candlestick](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-candlestick). See [#6059](https://github.com/ecomfe/echarts/issues/6059).
 
-+ [^] Fixed that [series-bar.dimensions](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-bar.dimensions) did not work. See [#6252](https://github.com/ecomfe/echarts/issues/6252). 
++ [^] Fixed that [series-bar.dimensions](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-bar.dimensions) did not work. See [#6252](https://github.com/ecomfe/echarts/issues/6252).
 
 + [^] Fixed that when chilren number of group was not fixed, they could not be removed correctly in [custom series](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom).
 
@@ -608,7 +655,7 @@ Fix the problem that bar progressive was blocked.
 ## v3.6.2
 <div class="time">2017-06-15</div>
 
-+ [+] Supported draw [custom series](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom) on [Baidu Map (bmap)](https://github.com/ecomfe/echarts/tree/master/extension/bmap). See [example 1](https://ecomfe.github.io/echarts-examples/public/editor.html?c=map-polygon) and [example 2](https://ecomfe.github.io/echarts-examples/public/editor.html?c=map-bin). 
++ [+] Supported draw [custom series](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom) on [Baidu Map (bmap)](https://github.com/ecomfe/echarts/tree/master/extension/bmap). See [example 1](https://ecomfe.github.io/echarts-examples/public/editor.html?c=map-polygon) and [example 2](https://ecomfe.github.io/echarts-examples/public/editor.html?c=map-bin).
 
 + [+] Supported show parent labels in [treemap](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-treemap). See [example](https://ecomfe.github.io/echarts-examples/public/editor.html?c=treemap-show-parent). See [#5869](https://github.com/ecomfe/echarts/issues/5869) and [#5579](https://github.com/ecomfe/echarts/issues/5579).
 
@@ -650,9 +697,9 @@ Fix the problem that bar progressive was blocked.
 ## v3.6.0
 <div class="time">2017-05-25</div>
 
-+ **[+] Published [custom series](http://echarts.baidu.com/option.html#series-custom)**, which enables user to customize render logic and make new types of chart. See [samples](http://echarts.baidu.com/examples.html#chart-type-custom). 
++ **[+] Published [custom series](http://echarts.baidu.com/option.html#series-custom)**, which enables user to customize render logic and make new types of chart. See [samples](http://echarts.baidu.com/examples.html#chart-type-custom).
 
-+ **[+] Supported polar bar chart**. See [sample1](https://ecomfe.github.io/echarts-examples/public/editor.html?c=bar-polar-stack), [sample2](https://ecomfe.github.io/echarts-examples/public/editor.html?c=bar-polar-stack-radial), [sample3](https://ecomfe.github.io/echarts-examples/public/editor.html?c=bar-polar-real-estate). 
++ **[+] Supported polar bar chart**. See [sample1](https://ecomfe.github.io/echarts-examples/public/editor.html?c=bar-polar-stack), [sample2](https://ecomfe.github.io/echarts-examples/public/editor.html?c=bar-polar-stack-radial), [sample3](https://ecomfe.github.io/echarts-examples/public/editor.html?c=bar-polar-real-estate).
 
 + [+] Supported [encode](http://echarts.baidu.com/option.html#series-scatter.encode), which enable user to specify which dimensions in [data](http://echarts.baidu.com/option.html#series-scatter.data) are mapped to which axis of coordinate system. Or which dimensions will be displayed in [tooltip](http://echarts.baidu.com/option.html#tooltip) or [label](http://echarts.baidu.com/option.html#series-scatter.label). [Break Change]: The default name of the third dimension in `cartesian2d` is changed from `'z'` to `'value'`. If `'z'` is used in [visualMap.dimension](http://echarts.baidu.com/option.html#visualMap.dimension), please modify it to `'value'` or `2`.
 
@@ -715,13 +762,13 @@ Fix the problem that bar progressive was blocked.
 ## v3.5.2
 <div class="time">2017-04-05</div>
 
-+ [+] Supported [useUTC](https://ecomfe.github.io/echarts-doc/public/en/option.html#useUTC), which enables display `axisLabel` and `tooltip` in local time or UTC. Related default setttings are modified: `axisLabel` and `tooltip` display local time by default, and `data` recognize time string as local time if timezone not specified. See [the time part in series.data](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-line.data). Fixed the problem that when `axis.type` is `'time'` tick is determined by UTC and can not align with daytime. Fixed [#5396](https://github.com/ecomfe/echarts/issues/5396) and [#5393](https://github.com/ecomfe/echarts/issues/5393). 
++ [+] Supported [useUTC](https://ecomfe.github.io/echarts-doc/public/en/option.html#useUTC), which enables display `axisLabel` and `tooltip` in local time or UTC. Related default setttings are modified: `axisLabel` and `tooltip` display local time by default, and `data` recognize time string as local time if timezone not specified. See [the time part in series.data](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-line.data). Fixed the problem that when `axis.type` is `'time'` tick is determined by UTC and can not align with daytime. Fixed [#5396](https://github.com/ecomfe/echarts/issues/5396) and [#5393](https://github.com/ecomfe/echarts/issues/5393).
 
 + [+] Supported [axisLabel.showMinLabel](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.axisLabel.showMinLabel) and [axisLabel.showMaxLabel](https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.axisLabel.showMaxLabel).
 
 + [+] Supported [funnel.sort](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-funnel.sort), which enables sorting funnel by index or customized function.
 
-+ [^] Fixed float error of `axisTick`. See [#5041](https://github.com/ecomfe/echarts/issues/5041). 
++ [^] Fixed float error of `axisTick`. See [#5041](https://github.com/ecomfe/echarts/issues/5041).
 
 + [^] Fixed that `axisTick` did not display when value was too small. See [#5386](https://github.com/ecomfe/echarts/issues/5386).
 
@@ -846,7 +893,7 @@ Recovery Build
 
 + [^] Fix that erroneously forbiden default pan behavior in touch device. See [#4393](https://github.com/ecomfe/echarts/issues/4393).
 
-+ [^] Enhance user experience for [geo](https://ecomfe.github.io/echarts-doc/public/en/option.html#geo) / [map](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-map) in touche device. 
++ [^] Enhance user experience for [geo](https://ecomfe.github.io/echarts-doc/public/en/option.html#geo) / [map](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-map) in touche device.
 
 + [^] Fix calculation error of [containPixel](https://ecomfe.github.io/echarts-doc/public/en/api.html#echartsInstance.containPixel) in [geo](https://ecomfe.github.io/echarts-doc/public/en/option.html#geo) / [graph](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-graph). See [#4405](https://github.com/ecomfe/echarts/issues/4405).
 
