@@ -1,11 +1,6 @@
 ## v4.4.0
 
-<div class="time">2019-09-28</div>
-
-+ [Feature] Support visual test, which is a powerfull test tool automating the regression test.
-It support recording user behaviors as test cases, comparing visual results between different
-version of echarts, dashboard UI, renderer switching, testing report ouput, and other detailed features.
-See `Run test cases` in `CONTRIBUTING.md` for more details.
+<div class="time">2019-09-29</div>
 
 + [Feature] Add option `clip` for `line`, `bar`, `lines`, `scatter` and `custom series`,
 which prevents the shapes overflow the area of the coordinate system. And support setting
@@ -29,7 +24,7 @@ Fix #7534, #7672, #7732, #7872, #8069, #8520, #8935, #8955, #9200, #9237, #9847,
 
 + [Fix] Fix that sometimes when using "toolbox dataZoom" it can not return to the original state. Fix #11055.
 
-+ [Fix] The shadow of `map` and `geo` is different between canvas renderer and SVG renderer. Fix #11055.
++ [Fix] Fix the texture pattern rendering in `map` and `geo`. And Fix that the the shadow of them are different between canvas renderer and SVG renderer. Fix #11055, #5429.
 
 + [Fix] Fix that data does not rendered after a `NaN` value in candlestick. Fix #11101.
 
