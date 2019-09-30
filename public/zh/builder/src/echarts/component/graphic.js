@@ -21,7 +21,17 @@ import * as echarts from '../echarts';
 import * as zrUtil from 'zrender/src/core/util';
 import * as modelUtil from '../util/model';
 import * as graphicUtil from '../util/graphic';
-import * as layoutUtil from '../util/layout'; // -------------
+import * as layoutUtil from '../util/layout';
+import { parsePercent } from '../util/number';
+var _nonShapeGraphicElements = {
+  // Reserved but not supported in graphic component.
+  path: null,
+  compoundPath: null,
+  // Supported in graphic component.
+  group: graphicUtil.Group,
+  image: graphicUtil.Image,
+  text: graphicUtil.Text
+}; // -------------
 // Preprocessor
 // -------------
 
@@ -292,8 +302,8 @@ echarts.extendComponentView({
       var el = elMap.get(id);
 
       if (el) {
-        el.__ecGraphicWidth = elOption.width;
-        el.__ecGraphicHeight = elOption.height;
+        el.__ecGraphicWidthOption = elOption.width;
+        el.__ecGraphicHeightOption = elOption.height;
         setEventData(el, graphicModel, elOption);
       }
     });
@@ -309,7 +319,25 @@ echarts.extendComponentView({
   _relocate: function (graphicModel, api) {
     var elOptions = graphicModel.option.elements;
     var rootGroup = this.group;
-    var elMap = this._elMap; // Bottom-up tranvese all elements (consider ec resize) to locate elements.
+    var elMap = this._elMap;
+    var apiWidth = api.getWidth();
+    var apiHeight = api.getHeight(); // Top-down to calculate percentage width/height of group
+
+    for (var i = 0; i < elOptions.length; i++) {
+      var elOption = elOptions[i];
+      var el = elMap.get(elOption.id);
+
+      if (!el || !el.isGroup) {
+        continue;
+      }
+
+      var parentEl = el.parent;
+      var isParentRoot = parentEl === rootGroup; // Like 'position:absolut' in css, default 0.
+
+      el.__ecGraphicWidth = parsePercent(el.__ecGraphicWidthOption, isParentRoot ? apiWidth : parentEl.__ecGraphicWidth) || 0;
+      el.__ecGraphicHeight = parsePercent(el.__ecGraphicHeightOption, isParentRoot ? apiHeight : parentEl.__ecGraphicHeight) || 0;
+    } // Bottom-up tranvese all elements (consider ec resize) to locate elements.
+
 
     for (var i = elOptions.length - 1; i >= 0; i--) {
       var elOption = elOptions[i];
@@ -321,13 +349,16 @@ echarts.extendComponentView({
 
       var parentEl = el.parent;
       var containerInfo = parentEl === rootGroup ? {
-        width: api.getWidth(),
-        height: api.getHeight()
+        width: apiWidth,
+        height: apiHeight
       } : {
-        // Like 'position:absolut' in css, default 0.
-        width: parentEl.__ecGraphicWidth || 0,
-        height: parentEl.__ecGraphicHeight || 0
-      };
+        width: parentEl.__ecGraphicWidth,
+        height: parentEl.__ecGraphicHeight
+      }; // PENDING
+      // Currently, when `bounding: 'all'`, the union bounding rect of the group
+      // does not include the rect of [0, 0, group.width, group.height], which
+      // is probably weird for users. Should we make a break change for it?
+
       layoutUtil.positionElement(el, elOption, containerInfo, null, {
         hv: elOption.hv,
         boundingMode: elOption.bounding
@@ -358,7 +389,9 @@ echarts.extendComponentView({
 
 function createEl(id, targetElParent, elOption, elMap) {
   var graphicType = elOption.type;
-  var Clz = graphicUtil[graphicType.charAt(0).toUpperCase() + graphicType.slice(1)];
+  var Clz = _nonShapeGraphicElements.hasOwnProperty(graphicType) // Those graphic elements are not shapes. They should not be
+  // overwritten by users, so do them first.
+  ? _nonShapeGraphicElements[graphicType] : graphicUtil.getShapeClass(graphicType);
   var el = new Clz(elOption);
   targetElParent.add(el);
   elMap.set(id, el);

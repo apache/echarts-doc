@@ -1,3 +1,4 @@
+/* global Float32Array */
 var ArrayCtor = typeof Float32Array === 'undefined' ? Array : Float32Array;
 /**
  * 创建一个向量

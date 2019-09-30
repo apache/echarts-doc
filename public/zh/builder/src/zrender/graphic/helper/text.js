@@ -494,8 +494,7 @@ export function getFill(fill) {
   return fill == null || fill === 'none' ? null // TODO pattern and gradient?
   : fill.image || fill.colorStops ? '#000' : fill;
 }
-
-function parsePercent(value, maxValue) {
+export function parsePercent(value, maxValue) {
   if (typeof value === 'string') {
     if (value.lastIndexOf('%') >= 0) {
       return parseFloat(value) / 100 * maxValue;

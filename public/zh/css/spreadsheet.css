@@ -5,7 +5,6 @@
   width: 30px;
   height: 30px;
   line-height: 30px;
-  -webkit-border-radius: 4px;
   border-radius: 4px;
   position: absolute;
   text-align: center;
@@ -40,7 +39,6 @@
   margin: 0 2px;
 }
 .dtui-btn {
-  -webkit-border-radius: 2px;
   border-radius: 2px;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -74,7 +72,6 @@
   *display: inline;
   *zoom: 1;
   vertical-align: middle;
-  -webkit-border-radius: 3px;
   border-radius: 3px;
   background: #fff;
   position: relative;
@@ -101,7 +98,6 @@
   top: 5px;
   right: 3px;
   text-align: center;
-  -webkit-border-radius: 8px;
   border-radius: 8px;
   height: 16px;
   line-height: 16px;
@@ -126,7 +122,6 @@
   font-size: 12px;
   padding: 6px;
   display: block;
-  -webkit-border-radius: 2px;
   border-radius: 2px;
 }
 .dtui-txipt-type-text {
@@ -185,7 +180,6 @@
   margin: 3px 5px;
   padding: 0 5px;
   font-size: 12px;
-  -webkit-border-radius: 2px;
   border-radius: 2px;
   border: 0 solid #828599;
   background: transparent;
@@ -271,7 +265,6 @@
   padding: 5px 10px;
   line-height: 25px;
   z-index: 9999;
-  -webkit-border-radius: 4px;
   border-radius: 4px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.6) 0px 1px 3px, rgba(255, 255, 255, 0.1) 0px 1px 0px inset, rgba(0, 0, 0, 0.2) 0px -1px 0px inset;
   box-shadow: rgba(0, 0, 0, 0.6) 0px 1px 3px, rgba(255, 255, 255, 0.1) 0px 1px 0px inset, rgba(0, 0, 0, 0.2) 0px -1px 0px inset;
@@ -299,7 +292,6 @@
   padding: 5px 10px;
   line-height: 25px;
   z-index: 99999;
-  -webkit-border-radius: 3px;
   border-radius: 3px;
 }
 body {
@@ -311,7 +303,6 @@ body {
   border: 1px solid transparent;
   height: 20px;
   line-height: 20px;
-  -webkit-border-radius: 2px;
   border-radius: 2px;
   color: #555;
 }
@@ -324,7 +315,6 @@ body {
   color: #eee;
 }
 .dtui-txipt {
-  -webkit-border-radius: 4px;
   border-radius: 4px;
   background-color: #FAFAFC;
   width: 100px;
@@ -354,7 +344,6 @@ body {
   color: #333;
   padding: 5px 10px;
   line-height: 25px;
-  -webkit-border-radius: 4px;
   border-radius: 4px;
 }
 .ecdoc-sprsht-datatable-ctrl {
@@ -389,7 +378,6 @@ body {
   font-size: 12px;
 }
 .ecdoc-sprsht-datatable .handsontable .dragdealer .handle {
-  -webkit-border-radius: 4px;
   border-radius: 4px;
 }
 .ecdoc-sprsht-datatable .handsontable table.htCore td.area {
@@ -409,7 +397,6 @@ body {
   padding: 5px 0;
   position: relative;
   border: 1px solid #ccc;
-  -webkit-border-radius: 4px;
   border-radius: 4px;
 }
 .ecdoc-sprsht-ctrl-area h1 {
@@ -452,7 +439,6 @@ body {
   line-height: 22px;
   font-size: 20px;
   font-family: Arial;
-  -webkit-border-radius: 11px;
   border-radius: 11px;
   padding: 0;
   background-color: #b03a5b;
@@ -511,9 +497,7 @@ body {
   border: 1px solid transparent;
   border-bottom-width: 0;
   bottom: -1px;
-  -webkit-border-top-left-radius: 4px;
   border-top-left-radius: 4px;
-  -webkit-border-top-right-radius: 4px;
   border-top-right-radius: 4px;
 }
 .ecdoc-sprsht-ctrl-area .ctrl-tab-hi:hover {

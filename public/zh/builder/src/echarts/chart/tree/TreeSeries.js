@@ -108,8 +108,8 @@ export default SeriesModel.extend({
     bottom: '12%',
     // the layout of the tree, two value can be selected, 'orthogonal' or 'radial'
     layout: 'orthogonal',
-    roam: false,
     // true | false | 'move' | 'scale', see module:component/helper/RoamController.
+    roam: false,
     // Symbol size scale ratio in roam
     nodeScaleRatio: 0.4,
     // Default on center of graph

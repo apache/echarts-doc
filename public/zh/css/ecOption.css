@@ -5,7 +5,6 @@
   width: 30px;
   height: 30px;
   line-height: 30px;
-  -webkit-border-radius: 4px;
   border-radius: 4px;
   position: absolute;
   text-align: center;
@@ -40,7 +39,6 @@
   margin: 0 2px;
 }
 .dtui-btn {
-  -webkit-border-radius: 2px;
   border-radius: 2px;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -74,7 +72,6 @@
   *display: inline;
   *zoom: 1;
   vertical-align: middle;
-  -webkit-border-radius: 3px;
   border-radius: 3px;
   background: #fff;
   position: relative;
@@ -101,7 +98,6 @@
   top: 5px;
   right: 3px;
   text-align: center;
-  -webkit-border-radius: 8px;
   border-radius: 8px;
   height: 16px;
   line-height: 16px;
@@ -126,7 +122,6 @@
   font-size: 12px;
   padding: 6px;
   display: block;
-  -webkit-border-radius: 2px;
   border-radius: 2px;
 }
 .dtui-txipt-type-text {
@@ -185,7 +180,6 @@
   margin: 3px 5px;
   padding: 0 5px;
   font-size: 12px;
-  -webkit-border-radius: 2px;
   border-radius: 2px;
   border: 0 solid #828599;
   background: transparent;
@@ -271,7 +265,6 @@
   padding: 5px 10px;
   line-height: 25px;
   z-index: 9999;
-  -webkit-border-radius: 4px;
   border-radius: 4px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.6) 0px 1px 3px, rgba(255, 255, 255, 0.1) 0px 1px 0px inset, rgba(0, 0, 0, 0.2) 0px -1px 0px inset;
   box-shadow: rgba(0, 0, 0, 0.6) 0px 1px 3px, rgba(255, 255, 255, 0.1) 0px 1px 0px inset, rgba(0, 0, 0, 0.2) 0px -1px 0px inset;
@@ -299,7 +292,6 @@
   padding: 5px 10px;
   line-height: 25px;
   z-index: 99999;
-  -webkit-border-radius: 3px;
   border-radius: 3px;
 }
 .iconfont {
@@ -326,8 +318,7 @@ code {
   color: #333;
   padding: 5px 10px;
   line-height: 25px;
-  -webkit-border-radius: 4px;
-          border-radius: 4px;
+  border-radius: 4px;
 }
 .ecdoc-normal-panel a,
 .ecdoc-normal-panel a:visited {
@@ -492,7 +483,6 @@ code {
   height: 95px;
   z-index: 1;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#FAFAFC), to(rgba(247, 247, 249, 0.1)));
-  background-image: -webkit-linear-gradient(top, #FAFAFC, rgba(247, 247, 249, 0.1));
   background-image: linear-gradient(to bottom, #FAFAFC, rgba(247, 247, 249, 0.1));
 }
 .ecdoc-api-tree-area .ps-scrollbar-y-rail {
@@ -569,8 +559,7 @@ code {
   background-color: #f5f5f5;
   border: none;
   padding: 15px;
-  -webkit-border-radius: 0;
-          border-radius: 0;
+  border-radius: 0;
 }
 .ecdoc-api-doc-group-content code * {
   font-family: Monaco, Consolas, 'Courier New';
@@ -595,8 +584,7 @@ code {
   color: #999;
 }
 .ecdoc-api-doc-sub-group .ecdoc-api-doc-group-line {
-  -webkit-border-radius: 4px;
-          border-radius: 4px;
+  border-radius: 4px;
 }
 .ecdoc-api-doc-line-expand {
   position: absolute;
@@ -615,8 +603,7 @@ code {
   padding: 0 10px;
   line-height: 2;
   display: inline-block;
-  -webkit-border-radius: 3px;
-          border-radius: 3px;
+  border-radius: 3px;
   cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -687,7 +674,6 @@ code {
   right: 0;
   height: 25px;
   background-image: -webkit-gradient(linear, left bottom, left top, from(#fff), color-stop(#fff), color-stop(#fff), to(rgba(255, 255, 255, 0.1)));
-  background-image: -webkit-linear-gradient(bottom, #fff, #fff, #fff, rgba(255, 255, 255, 0.1));
   background-image: linear-gradient(to top, #fff, #fff, #fff, rgba(255, 255, 255, 0.1));
   color: red;
 }

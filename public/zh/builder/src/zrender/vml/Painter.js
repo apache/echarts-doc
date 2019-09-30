@@ -3,7 +3,7 @@
  *
  * @module zrender/vml/Painter
  */
-import zrLog from '../core/log';
+import logError from '../core/log';
 import * as vmlCore from './core';
 import { each } from '../core/util';
 
@@ -159,7 +159,7 @@ VMLPainter.prototype = {
 
 function createMethodNotSupport(method) {
   return function () {
-    zrLog('In IE8.0 VML mode painter not support method "' + method + '"');
+    logError('In IE8.0 VML mode painter not support method "' + method + '"');
   };
 } // Unsupported methods
 

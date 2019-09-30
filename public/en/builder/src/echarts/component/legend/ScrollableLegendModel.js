@@ -64,15 +64,6 @@ var ScrollableLegendModel = LegendModel.extend({
   mergeOption: function (option, extraOpt) {
     ScrollableLegendModel.superCall(this, 'mergeOption', option, extraOpt);
     mergeAndNormalizeLayoutParams(this, this.option, option);
-  },
-  getOrient: function () {
-    return this.get('orient') === 'vertical' ? {
-      index: 1,
-      name: 'vertical'
-    } : {
-      index: 0,
-      name: 'horizontal'
-    };
   }
 }); // Do not `ignoreSize` to enable setting {left: 10, right: 10}.
 

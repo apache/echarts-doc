@@ -235,7 +235,9 @@ export function inherits(clazz, baseClazz) {
   clazz.prototype = new F();
 
   for (var prop in clazzPrototype) {
-    clazz.prototype[prop] = clazzPrototype[prop];
+    if (clazzPrototype.hasOwnProperty(prop)) {
+      clazz.prototype[prop] = clazzPrototype[prop];
+    }
   }
 
   clazz.prototype.constructor = clazz;
@@ -492,6 +494,7 @@ export function isDom(value) {
  */
 
 export function eqNaN(value) {
+  /* eslint-disable-next-line no-self-compare */
   return value !== value;
 }
 /**
@@ -624,10 +627,13 @@ HashMap.prototype = {
   // should not use the exposed keys, who are prefixed.
   each: function (cb, context) {
     context !== void 0 && (cb = bind(cb, context));
+    /* eslint-disable guard-for-in */
 
     for (var key in this.data) {
       this.data.hasOwnProperty(key) && cb(this.data[key], key);
     }
+    /* eslint-enable guard-for-in */
+
   },
   // Do not use this method if performance sensitive.
   removeKey: function (key) {

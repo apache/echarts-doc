@@ -5,6 +5,8 @@
  * @author firede[firede@firede.us]
  * @desc thanks zepto.
  */
+
+/* global wx */
 var env = {};
 
 if (typeof wx === 'object' && typeof wx.getSystemInfoSync === 'function') {

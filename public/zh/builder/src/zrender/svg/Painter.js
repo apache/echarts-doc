@@ -4,7 +4,7 @@
  */
 import { createElement } from './core';
 import * as util from '../core/util';
-import zrLog from '../core/log';
+import logError from '../core/log';
 import Path from '../graphic/Path';
 import ZImage from '../graphic/Image';
 import ZText from '../graphic/Text';
@@ -46,13 +46,12 @@ function prepend(parent, child) {
     var firstChild = parent.firstChild;
     firstChild ? parent.insertBefore(child, firstChild) : parent.appendChild(child);
   }
-}
+} // function append(parent, child) {
+//     if (checkParentAvailable(parent, child)) {
+//         parent.appendChild(child);
+//     }
+// }
 
-function append(parent, child) {
-  if (checkParentAvailable(parent, child)) {
-    parent.appendChild(child);
-  }
-}
 
 function remove(parent, child) {
   if (child && parent && child.parentNode === parent) {
@@ -331,7 +330,7 @@ SVGPainter.prototype = {
 
 function createMethodNotSupport(method) {
   return function () {
-    zrLog('In SVG mode painter not support method "' + method + '"');
+    logError('In SVG mode painter not support method "' + method + '"');
   };
 } // Unsuppoted methods
 

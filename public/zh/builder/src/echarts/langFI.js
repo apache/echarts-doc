@@ -16,7 +16,17 @@
 * specific language governing permissions and limitations
 * under the License.
 */
+
+/**
+ * Language: Finnish
+ */
 export default {
+  legend: {
+    selector: {
+      all: 'Kaikki',
+      inverse: 'Käänteinen'
+    }
+  },
   toolbox: {
     brush: {
       title: {
