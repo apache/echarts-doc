@@ -6,8 +6,6 @@
 
 可以应用在[直角坐标系](~grid)，[极坐标系](~polar)，[地理坐标系](~geo)上。
 
-**Tip:** ECharts 2.x 中在地图上通过 markPoint 标记大量数据点方式在 ECharts 3 中建议通过[地理坐标系](~geo)上的 scatter 实现。下面示例就是在中国地图上用散点图展现了空气质量的分布。并且用 [visualMap](~visualMap) 组件将 PM2.5 映射到了颜色。
-~[600x400](${galleryViewPath}scatter-map&edit=1&reset=1)
 
 ## type(string) = 'scatter'
 

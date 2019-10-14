@@ -8,4 +8,4 @@ require('http').createServer(function (request, response) {
     }).resume();
 }).listen(3001);
 
-open('http://127.0.0.1:3001/en/index.html');
+open('http://127.0.0.1:3001/en/option.html');

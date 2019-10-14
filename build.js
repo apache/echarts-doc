@@ -1,22 +1,22 @@
+/**
+ * ------------------------------------------------------------------------
+ * Usage:
+ *
+ * ```shell
+ * node build.js --env dev
+ * node build.js --env asf
+ * node build.js --env echartsjs
+ * # Check `./config` to see the available env
+ * ```
+ * ------------------------------------------------------------------------
+ */
+
 var md2json = require('./tool/md2json');
 var fs = require('fs');
 var marked = require('marked');
 var copydir = require('copy-dir');
 // var MarkDownTOCRenderer = require('./tool/MarkDownTOCRenderer');
 var argv = require('yargs').argv;
-
-/**
- * ------------------------------------------------------------------------
- * Usage:
- *
- * ```shell
- * ./nodule_modules/.bin/gulp release --env asf
- * ./nodule_modules/.bin/gulp release --env echartsjs
- * ./nodule_modules/.bin/gulp release --env dev # the same as "debug"
- * # Check `./config` to see the available env
- * ```
- * ------------------------------------------------------------------------
- */
 
 function initEnv() {
     var envType = argv.env;
@@ -106,6 +106,11 @@ function run() {
             'utf-8'
         );
 
+        console.log('Please visit:');
+        console.log('echarts-doc/public/zh/');
+        console.log('echarts-doc/public/en/');
+        console.log();
+
         // var plainMarkDownTpl = fs.readFileSync('tool/plain-md.tpl', 'utf-8');
         // var codingStandardMD = fs.readFileSync('en' + '/coding-standard.md', 'utf-8');
         // var codingStandardContent = marked(codingStandardMD);
@@ -130,7 +135,10 @@ function run() {
 }
 
 function writeSingleSchema(schema, language, docName, format) {
-    var path = 'public/' + language + '/documents/' + language + '/' + docName + '.json';
+    if (language === 'cn') {
+        language = 'zh';
+    }
+    var path = 'public/documents/' + language + '/' + docName + '.json';
     console.log('output: ' + path);
     fs.writeFileSync(
         path,

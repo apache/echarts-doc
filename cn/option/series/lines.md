@@ -9,9 +9,6 @@
 
 ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts 3 里建议使用单独的 `lines` 类型图表。
 
-**迁徙示例：**
-~[700x500](${galleryViewPath}geo-lines&edit=1&reset=1)
-
 
 ## type(string) = 'lines'
 

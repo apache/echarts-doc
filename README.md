@@ -16,9 +16,9 @@
 Dev:
 ```shell
 # should put <https://github.com/ecomfe/echarts-examples> on the same folder with echarts-doc
-node watch.js dev
+node watch.js --env dev
 # or
-node build.js dev
+node build.js --env dev
 
 # Run a static server (optional)
 node server.js

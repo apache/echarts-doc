@@ -146,7 +146,7 @@ echarts.registerMap('USA', usaJson, {
 (mapName: string)
 ```
 
-Get a registed map in the following format:
+Get a registered map in the following format:
 
 ```js
 {
