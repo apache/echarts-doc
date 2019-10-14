@@ -22,6 +22,14 @@
     geo=false
 ) }}
 
+## roundCap(boolean) = false
+
+是否在环形柱条两侧使用圆弧效果。
+
+仅对极坐标系柱状图有效。
+
+~[800x500](${galleryViewPath}polar-roundCap&reset=1&edit=1)
+
 ## label(Object)
 {{use:partial-label-desc}}
 {{use:partial-label(
