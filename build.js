@@ -38,7 +38,7 @@ function initEnv() {
 
 var config = initEnv();
 
-var languages = ['cn', 'en'];
+var languages = ['zh', 'en'];
 
 config.gl = config.gl || {};
 for (var key in config) {
@@ -130,16 +130,19 @@ function run() {
         'utf-8'
     );
 
-    copydir.sync('./asset', './public/cn/documents/asset');
+    copydir.sync('./asset', './public/zh/documents/asset');
     copydir.sync('./asset', './public/en/documents/asset');
 }
 
 function writeSingleSchema(schema, language, docName, format) {
-    if (language === 'cn') {
-        language = 'zh';
-    }
-    var path = 'public/documents/' + language + '/' + docName + '.json';
+    var dir = 'public/documents/' + language + '/';
+    var path = dir + docName + '.json';
     console.log('output: ' + path);
+
+    if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir);
+    }
+
     fs.writeFileSync(
         path,
         format ? JSON.stringify(schema, null, 2) : JSON.stringify(schema),
