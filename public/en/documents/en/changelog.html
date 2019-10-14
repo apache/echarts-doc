@@ -382,7 +382,7 @@ Fix that the line label can not be returned to its original opacity after <code>
 <div class="time">2018-01-16</div>
 
 <ul>
-<li><p>[+] Supported to render up to <strong>tens millions of data</strong> directly。ECharts4 has upgrade to stream architecture, and along with detailed optimization, it has supported to render incrementally loaded data and support progressive rendering.</p>
+<li><p>[+] Supported to render up to <strong>tens millions of data</strong> directly. ECharts4 has upgrade to stream architecture, and along with detailed optimization, it has supported to render incrementally loaded data and support progressive rendering.</p>
 <ul>
 <li>Ten millions of GIS data probably take up to about hundreds MB of space. In this case chunked data loading or WebStock is required for the purpose of display graphics as soon as possible and not blocking the browser while processing loaded data. The samples of incremental data loading can be checked here: <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=scatterGL-gps&amp;gl=1">scatterGL-gps</a> and <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=linesGL-ny&amp;gl=1">linesGL-ny</a>, who use ECharts GL, and <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=lines-ny">lines-ny</a>, who only uses ECharts.</li>
 <li>Supported the human interactions in the big data scenario, where continuous interactions (e.g., roam in geo and cartesian) will not block the browser. Benefit from the using of GPU and avoiding of layout recalculation, ECharts GL provides smooth interactions, which has been demonstrated in the examples above. Without WebGL, the basic ECharts implements progressive rendering to support non-blocking interaction, which can be checked at the pan and zoom in <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=lines-airline">lines-airline</a> and <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=scatter-large">scatter-large</a>.</li>
@@ -390,7 +390,7 @@ Fix that the line label can not be returned to its original opacity after <code>
 </li>
 <li><p>[+] <strong>Published ZRender SVG Rendering Engine</strong> as an alternative backend of ECharts besides the existing Canvas Rendering Engine. The choice of rendering engine usually depends on the scenario, for example, benefit from the low memory cost, SVG Rendering Engine is suitable for mobile device, or the case that many ECharts instances exists in a single page, while the Canvas Rendering Engine is suitable for big data rendering or when visual effects required. Canvas Rendering Engine is default rendering engine. See <a href="https://github.com/ecomfe/zrender">zrender</a>.</p>
 </li>
-<li><p>[+] <strong>Published Sunburst Chart</strong> to visualize hierarchical data efficiently with excellent interactions. See [examples] and (excellent) and <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-sunburst">docs</a>。</p>
+<li><p>[+] <strong>Published Sunburst Chart</strong> to visualize hierarchical data efficiently with excellent interactions. See [examples] and (excellent) and <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-sunburst">docs</a>.</p>
 </li>
 <li><p>[+] <strong>Published <a href="http://echarts.baidu.com/tutorial.html#%E6%95%B0%E6%8D%AE%E9%9B%86%EF%BC%88dataset%EF%BC%89">dataset</a> component</strong> to support data based configuration, visual encoding and data sharing in different series.</p>
 </li>
@@ -554,7 +554,7 @@ Fix that the line label can not be returned to its original opacity after <code>
 </li>
 <li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.minInterval">minInterval</a> on time axis (that is, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.type">axis.type</a> is <code>&#39;time&#39;</code>), and supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.maxInterval">maxInterval</a> on value axis (that is <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.type">axis.type</a> is <code>&#39;value&#39;</code>). So that it is enabled to controll the precision of label when data zooming.</p>
 </li>
-<li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.axisLine.onZeroAxisIndex">xAxis.axisLine.onZeroAxisIndex</a>, which enables specifing corresponding relationship when multiple axes used and <code>onZero</code> is required. See <a href="https://github.com/ecomfe/echarts/issues/5069">#5069</a>。</p>
+<li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.axisLine.onZeroAxisIndex">xAxis.axisLine.onZeroAxisIndex</a>, which enables specifing corresponding relationship when multiple axes used and <code>onZero</code> is required. See <a href="https://github.com/ecomfe/echarts/issues/5069">#5069</a>. </p>
 </li>
 <li><p>[+] Supported that do not use <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.coordinateSystems">coordinate system</a> in <code>custom series</code>.</p>
 </li>
@@ -582,7 +582,7 @@ Fix that the line label can not be returned to its original opacity after <code>
 </li>
 <li><p>[+] Fixed the incorrect rendering when the first entry was empty in <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-candlestick">candlestick</a>. See <a href="https://github.com/ecomfe/echarts/issues/6059">#6059</a>.</p>
 </li>
-<li><p>[^] Fixed that <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-bar.dimensions">series-bar.dimensions</a> did not work. See <a href="https://github.com/ecomfe/echarts/issues/6252">#6252</a>。</p>
+<li><p>[^] Fixed that <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-bar.dimensions">series-bar.dimensions</a> did not work. See <a href="https://github.com/ecomfe/echarts/issues/6252">#6252</a>. </p>
 </li>
 <li><p>[^] Fixed that when chilren number of group was not fixed, they could not be removed correctly in <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom">custom series</a>.</p>
 </li>
@@ -599,7 +599,7 @@ Fix that the line label can not be returned to its original opacity after <code>
 <div class="time">2017-06-15</div>
 
 <ul>
-<li><p>[+] Supported draw <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom">custom series</a> on <a href="https://github.com/ecomfe/echarts/tree/master/extension/bmap">Baidu Map (bmap)</a>. See <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=map-polygon">example 1</a> and <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=map-bin">example 2</a>。</p>
+<li><p>[+] Supported draw <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom">custom series</a> on <a href="https://github.com/ecomfe/echarts/tree/master/extension/bmap">Baidu Map (bmap)</a>. See <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=map-polygon">example 1</a> and <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=map-bin">example 2</a>. </p>
 </li>
 <li><p>[+] Supported show parent labels in <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-treemap">treemap</a>. See <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=treemap-show-parent">example</a>. See <a href="https://github.com/ecomfe/echarts/issues/5869">#5869</a> and <a href="https://github.com/ecomfe/echarts/issues/5579">#5579</a>.</p>
 </li>
@@ -640,9 +640,9 @@ Fix that the line label can not be returned to its original opacity after <code>
 <div class="time">2017-05-25</div>
 
 <ul>
-<li><p><strong>[+] Published <a href="http://echarts.baidu.com/option.html#series-custom">custom series</a></strong>, which enables user to customize render logic and make new types of chart. See <a href="http://echarts.baidu.com/examples.html#chart-type-custom">samples</a>。</p>
+<li><p><strong>[+] Published <a href="http://echarts.baidu.com/option.html#series-custom">custom series</a></strong>, which enables user to customize render logic and make new types of chart. See <a href="http://echarts.baidu.com/examples.html#chart-type-custom">samples</a>. </p>
 </li>
-<li><p><strong>[+] Supported polar bar chart</strong>. See <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=bar-polar-stack">sample1</a>, <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=bar-polar-stack-radial">sample2</a>, <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=bar-polar-real-estate">sample3</a>。</p>
+<li><p><strong>[+] Supported polar bar chart</strong>. See <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=bar-polar-stack">sample1</a>, <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=bar-polar-stack-radial">sample2</a>, <a href="https://ecomfe.github.io/echarts-examples/public/editor.html?c=bar-polar-real-estate">sample3</a>. </p>
 </li>
 <li><p>[+] Supported <a href="http://echarts.baidu.com/option.html#series-scatter.encode">encode</a>, which enable user to specify which dimensions in <a href="http://echarts.baidu.com/option.html#series-scatter.data">data</a> are mapped to which axis of coordinate system. Or which dimensions will be displayed in <a href="http://echarts.baidu.com/option.html#tooltip">tooltip</a> or <a href="http://echarts.baidu.com/option.html#series-scatter.label">label</a>. [Break Change]: The default name of the third dimension in <code>cartesian2d</code> is changed from <code>&#39;z&#39;</code> to <code>&#39;value&#39;</code>. If <code>&#39;z&#39;</code> is used in <a href="http://echarts.baidu.com/option.html#visualMap.dimension">visualMap.dimension</a>, please modify it to <code>&#39;value&#39;</code> or <code>2</code>.</p>
 </li>
@@ -706,13 +706,13 @@ Fix that the line label can not be returned to its original opacity after <code>
 <div class="time">2017-04-05</div>
 
 <ul>
-<li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#useUTC">useUTC</a>, which enables display <code>axisLabel</code> and <code>tooltip</code> in local time or UTC. Related default setttings are modified: <code>axisLabel</code> and <code>tooltip</code> display local time by default, and <code>data</code> recognize time string as local time if timezone not specified. See <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-line.data">the time part in series.data</a>. Fixed the problem that when <code>axis.type</code> is <code>&#39;time&#39;</code> tick is determined by UTC and can not align with daytime. Fixed <a href="https://github.com/ecomfe/echarts/issues/5396">#5396</a> and <a href="https://github.com/ecomfe/echarts/issues/5393">#5393</a>。</p>
+<li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#useUTC">useUTC</a>, which enables display <code>axisLabel</code> and <code>tooltip</code> in local time or UTC. Related default setttings are modified: <code>axisLabel</code> and <code>tooltip</code> display local time by default, and <code>data</code> recognize time string as local time if timezone not specified. See <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-line.data">the time part in series.data</a>. Fixed the problem that when <code>axis.type</code> is <code>&#39;time&#39;</code> tick is determined by UTC and can not align with daytime. Fixed <a href="https://github.com/ecomfe/echarts/issues/5396">#5396</a> and <a href="https://github.com/ecomfe/echarts/issues/5393">#5393</a>. </p>
 </li>
 <li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.axisLabel.showMinLabel">axisLabel.showMinLabel</a> and <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#xAxis.axisLabel.showMaxLabel">axisLabel.showMaxLabel</a>.</p>
 </li>
 <li><p>[+] Supported <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-funnel.sort">funnel.sort</a>, which enables sorting funnel by index or customized function.</p>
 </li>
-<li><p>[^] Fixed float error of <code>axisTick</code>. See <a href="https://github.com/ecomfe/echarts/issues/5041">#5041</a>。</p>
+<li><p>[^] Fixed float error of <code>axisTick</code>. See <a href="https://github.com/ecomfe/echarts/issues/5041">#5041</a>. </p>
 </li>
 <li><p>[^] Fixed that <code>axisTick</code> did not display when value was too small. See <a href="https://github.com/ecomfe/echarts/issues/5386">#5386</a>.</p>
 </li>
@@ -720,7 +720,7 @@ Fix that the line label can not be returned to its original opacity after <code>
 </li>
 <li><p>[^] Fixed that <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#visualMap">visualMap</a> disabled <code>itemStyle</code> of <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-map">map</a>. See <a href="https://github.com/ecomfe/echarts/issues/5388">#5388</a>.</p>
 </li>
-<li><p>[^] Fixed that <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#tooltip.trigger">tooltip.trigger</a> did not support <code>&#39;none&#39;</code>. See <a href="https://github.com/ecomfe/echarts/issues/5400">#5400</a>。</p>
+<li><p>[^] Fixed that <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#tooltip.trigger">tooltip.trigger</a> did not support <code>&#39;none&#39;</code>. See <a href="https://github.com/ecomfe/echarts/issues/5400">#5400</a>.</p>
 </li>
 <li><p>[^] Fixed problem of <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-sankey">sankey</a> on ie11. See <a href="https://github.com/ecomfe/echarts/issues/3306">#3306</a>.</p>
 </li>
@@ -778,9 +778,9 @@ Fix that the line label can not be returned to its original opacity after <code>
 <div class="time">2017-01-12</div>
 
 <ul>
-<li><p><strong>[+] Published <code>pictorialBar</code> chart：<a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-pictorialBar">pictorialBar</a>。See <a href="https://ecomfe.github.io/echarts-examples/public/index.html#chart-type-pictorialBar">example</a>。</strong></p>
+<li><p><strong>[+] Published <code>pictorialBar</code> chart：<a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-pictorialBar">pictorialBar</a>. See <a href="https://ecomfe.github.io/echarts-examples/public/index.html#chart-type-pictorialBar">example</a>.</strong></p>
 </li>
-<li><p><strong>[+] Published <code>themeRiver</code> chart：<a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-themeRiver">themeRiver</a>。See <a href="https://ecomfe.github.io/echarts-examples/public/index.html#chart-type-themeRiver">example</a>。</strong></p>
+<li><p><strong>[+] Published <code>themeRiver</code> chart：<a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-themeRiver">themeRiver</a>.See <a href="https://ecomfe.github.io/echarts-examples/public/index.html#chart-type-themeRiver">example</a>.</strong></p>
 </li>
 <li><p>[+] A specified <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#geo">geo coordinate system</a> has been able to be used in <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-map">map series</a>. (In the past map series could only creat an inner exclusive geo coodinate system). Thus, <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-map">map series</a> can be used to control color of a geo component. Moreover, a geo coordinate system can be shared among <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-map">map series</a> and other series, like <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-scatter">scatter series</a>. See <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-map.geoIndex">series-map.geoIndex</a>.</p>
 </li>
@@ -839,7 +839,7 @@ Fix that the line label can not be returned to its original opacity after <code>
 </li>
 <li><p>[^] Fix that erroneously forbiden default pan behavior in touch device. See <a href="https://github.com/ecomfe/echarts/issues/4393">#4393</a>.</p>
 </li>
-<li><p>[^] Enhance user experience for <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#geo">geo</a> / <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-map">map</a> in touche device。</p>
+<li><p>[^] Enhance user experience for <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#geo">geo</a> / <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-map">map</a> in touche device. </p>
 </li>
 <li><p>[^] Fix calculation error of <a href="https://ecomfe.github.io/echarts-doc/public/en/api.html#echartsInstance.containPixel">containPixel</a> in <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#geo">geo</a> / <a href="https://ecomfe.github.io/echarts-doc/public/en/option.html#series-graph">graph</a>. See <a href="https://github.com/ecomfe/echarts/issues/4405">#4405</a>.</p>
 </li>
