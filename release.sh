@@ -29,8 +29,8 @@ cd ${basepath}
 node ./build.js --env ${envType}
 cd ${currPath}
 # Do not rm, keep option3.json.
-cp -R ${basepath}/public/zh/documents/zh/ ${basepath}/../echarts-www/documents/zh/
-cp -R ${basepath}/public/en/documents/en/ ${basepath}/../echarts-www/documents/en/
+cp -R ${basepath}/public/documents/zh/ ${basepath}/../echarts-www/documents/zh/
+cp -R ${basepath}/public/documents/en/ ${basepath}/../echarts-www/documents/en/
 
 # Copy asset.
 # Do not rm, keep option3.json

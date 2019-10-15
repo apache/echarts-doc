@@ -57,7 +57,8 @@ function run() {
         if (!fs.existsSync('public/' + distLang + '/documents/' + distLang)) {
             fs.mkdirSync('public/' + distLang + '/documents/' + distLang);
         }
-        md2json({
+        md2json(
+            {
                 path: language + '/option/**/*.md',
                 sectionsAnyOf: ['visualMap', 'dataZoom', 'series', 'graphic.elements'],
                 entry: 'option',
@@ -70,7 +71,8 @@ function run() {
                 // writePartitionedOptionSchema(schema, language, 'option');
             }
         );
-        md2json({
+        md2json(
+            {
                 path: language + '/tutorial/**/*.md',
                 entry: 'tutorial',
                 tplEnv: config,
@@ -81,7 +83,8 @@ function run() {
                 writeSingleSchema(schema, language, 'tutorial');
             }
         );
-        md2json({
+        md2json(
+            {
                 path: language + '/api/**/*.md',
                 entry: 'api',
                 tplEnv: config,
@@ -92,7 +95,8 @@ function run() {
             }
         );
 
-        md2json({
+        md2json(
+            {
                 path: language + '/option-gl/**/*.md',
                 sectionsAnyOf: ['series'],
                 entry: 'option-gl',
