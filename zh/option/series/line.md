@@ -61,8 +61,9 @@
 ## connectNulls(boolean) = false
 是否连接空数据。
 
-## clipOverflow(boolean) = true
-是否对超出部分裁剪，默认裁剪。
+{{use:partial-clip(
+    prefix="#"
+) }}
 
 ## step(string|boolean) = false
 

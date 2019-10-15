@@ -205,6 +205,7 @@ function doCalBarWidthAndOffset(seriesInfoList) {
     var offset = -widthSum / 2;
     zrUtil.each(stacks, function (column, stackId) {
       result[coordSysName][stackId] = result[coordSysName][stackId] || {
+        bandWidth: bandWidth,
         offset: offset,
         width: column.width
       };
@@ -256,6 +257,7 @@ export function layout(seriesType, ecModel) {
     lastStackCoordsOrigin[stackId] = lastStackCoordsOrigin[stackId] || []; // Fix #4243
 
     data.setLayout({
+      bandWidth: columnLayoutInfo.bandWidth,
       offset: columnOffset,
       size: columnWidth
     });
@@ -404,20 +406,5 @@ function isInLargeMode(seriesModel) {
 
 
 function getValueAxisStart(baseAxis, valueAxis, stacked) {
-  var extent = valueAxis.getGlobalExtent();
-  var min;
-  var max;
-
-  if (extent[0] > extent[1]) {
-    min = extent[1];
-    max = extent[0];
-  } else {
-    min = extent[0];
-    max = extent[1];
-  }
-
-  var valueStart = valueAxis.toGlobalCoord(valueAxis.dataToCoord(0));
-  valueStart < min && (valueStart = min);
-  valueStart > max && (valueStart = max);
-  return valueStart;
+  return valueAxis.toGlobalCoord(valueAxis.dataToCoord(0));
 }

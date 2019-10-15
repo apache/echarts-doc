@@ -282,6 +282,9 @@ var LinesSeries = SeriesModel.extend({
     // If lines are polyline
     // polyline not support curveness, label, animation
     polyline: false,
+    // If clip the overflow.
+    // Available when coordinateSystem is cartesian or polar.
+    clip: true,
     label: {
       show: false,
       position: 'end' // distance: 5,

@@ -139,6 +139,10 @@
     hasType=true
 )}}
 
+{{use:partial-clip(
+    prefix="#"
+) }}
+
 {{use:partial-z-zlevel(
     prefix="#",
     componentName="柱状图"

@@ -16,7 +16,17 @@
 * specific language governing permissions and limitations
 * under the License.
 */
+
+/**
+ * Language: English.
+ */
 export default {
+  legend: {
+    selector: {
+      all: 'All',
+      inverse: 'Inv'
+    }
+  },
   toolbox: {
     brush: {
       title: {

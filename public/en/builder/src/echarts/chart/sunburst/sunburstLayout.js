@@ -17,8 +17,8 @@
 * under the License.
 */
 import { parsePercent } from '../../util/number';
-import * as zrUtil from 'zrender/src/core/util';
-var PI2 = Math.PI * 2;
+import * as zrUtil from 'zrender/src/core/util'; // var PI2 = Math.PI * 2;
+
 var RADIAN = Math.PI / 180;
 export default function (seriesType, ecModel, api, payload) {
   ecModel.eachSeriesByType(seriesType, function (seriesModel) {
@@ -63,9 +63,9 @@ export default function (seriesType, ecModel, api, payload) {
     var rPerLevel = (r - r0) / (levels || 1);
     var clockwise = seriesModel.get('clockwise');
     var stillShowZeroSum = seriesModel.get('stillShowZeroSum'); // In the case some sector angle is smaller than minAngle
+    // var restAngle = PI2;
+    // var valueSumLargerThanMinAngle = 0;
 
-    var restAngle = PI2;
-    var valueSumLargerThanMinAngle = 0;
     var dir = clockwise ? 1 : -1;
     /**
      * Render a tree
@@ -85,11 +85,11 @@ export default function (seriesType, ecModel, api, payload) {
         var angle = sum === 0 && stillShowZeroSum ? unitRadian : value * unitRadian;
 
         if (angle < minAngle) {
-          angle = minAngle;
-          restAngle -= minAngle;
-        } else {
-          valueSumLargerThanMinAngle += value;
-        }
+          angle = minAngle; // restAngle -= minAngle;
+        } // else {
+        //     valueSumLargerThanMinAngle += value;
+        // }
+
 
         endAngle = startAngle + dir * angle;
         var depth = node.depth - rootDepth - (renderRollupNode ? -1 : 1);

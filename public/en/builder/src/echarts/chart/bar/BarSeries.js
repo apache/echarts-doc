@@ -43,5 +43,10 @@ export default BaseBarSeries.extend({
     }
 
     return progressiveThreshold;
+  },
+  defaultOption: {
+    // If clipped
+    // Only available on cartesian2d
+    clip: true
   }
 });

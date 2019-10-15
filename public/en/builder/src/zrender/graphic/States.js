@@ -276,6 +276,7 @@ GraphicStates.prototype = {
           if (propName === 'style' || propName === 'shape') {
             if (state[propName]) {
               for (var key in state[propName]) {
+                /* eslint-disable max-depth */
                 if (!state[propName].hasOwnProperty(key)) {
                   continue;
                 }
@@ -285,6 +286,8 @@ GraphicStates.prototype = {
                 if (propPathMap[path]) {
                   continue;
                 }
+                /* eslint-enable max-depth */
+
 
                 propPathMap[path] = 1;
                 animatingCount += self._animProp(state, propName, key, transitionCfg, animationDone);

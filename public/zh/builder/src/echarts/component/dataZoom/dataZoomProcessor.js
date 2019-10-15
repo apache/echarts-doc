@@ -70,12 +70,12 @@ echarts.registerProcessor({
       var axisProxy = dataZoomModel.findRepresentativeAxisProxy();
       var percentRange = axisProxy.getDataPercentWindow();
       var valueRange = axisProxy.getDataValueWindow();
-      dataZoomModel.setRawRange({
+      dataZoomModel.setCalculatedRange({
         start: percentRange[0],
         end: percentRange[1],
         startValue: valueRange[0],
         endValue: valueRange[1]
-      }, true);
+      });
     });
   }
 });

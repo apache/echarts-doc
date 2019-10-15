@@ -327,7 +327,9 @@ function TimSort(array, compare) {
     }
 
     var _minGallop = minGallop;
-    var count1, count2, exit;
+    var count1;
+    var count2;
+    var exit;
 
     while (1) {
       count1 = 0;

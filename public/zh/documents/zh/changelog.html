@@ -1,4 +1,45 @@
-<h2 id="v4-3-0-rc-1">v4.3.0-rc.1</h2>
+<h2 id="v4-4-0-rc-1">v4.4.0-rc.1</h2>
+<div class="time">2019-09-29</div>
+
+<ul>
+<li><p>[Feature] Add option <code>clip</code> for <code>line</code>, <code>bar</code>, <code>lines</code>, <code>scatter</code> and <code>custom series</code>,
+which prevents the shapes overflow the area of the coordinate system. And support setting
+<code>filterMode</code> on <code>toolbox.dataZoom</code>. Fix #9200, #10224, #10748, #11086.</p>
+</li>
+<li><p>[Feature] Support &quot;select all&quot; and &quot;reverse select&quot; buttons in <code>legend</code>. See <code>legend.selector</code> for details.</p>
+</li>
+<li><p>[Feature] Provide <code>echarts.graphic.registerShape</code> and <code>echarts.graphic.getShapeClass</code>.
+The registered shape classes can be used in <code>custom series</code> and <code>graphic component</code>.</p>
+</li>
+<li><p>[Feature] Support show border style on <code>legend</code> item. Support setting <code>itemStyle</code> on <code>legend</code>. Fix #7340.</p>
+</li>
+<li><p>[Feature] Support expansion animation for data update, support <code>pie-series.animationTypeUpdate</code>. Fix #11029.</p>
+</li>
+<li><p>[Feature] Support setting <code>rippleEffect.color</code> in <code>effectScatter</code>.</p>
+</li>
+<li><p>[Feature] Support using BaiduMap API version 3.0 in bmap by option <code>bmap.mapStyleV2</code>.</p>
+</li>
+<li><p>[Fix] Fix that the stacked bar exceed zoom limit.
+Fix #7534, #7672, #7732, #7872, #8069, #8520, #8935, #8955, #9200, #9237, #9847, #10359, #10518, #10972.</p>
+</li>
+<li><p>[Fix] Fix that sometimes when using &quot;toolbox dataZoom&quot; it can not return to the original state. Fix #11055.</p>
+</li>
+<li><p>[Fix] Fix the texture pattern rendering in <code>map</code> and <code>geo</code>. And Fix that the the shadow of them are different between canvas renderer and SVG renderer. Fix #11055, #5429.</p>
+</li>
+<li><p>[Fix] Fix that data does not rendered after a <code>NaN</code> value in candlestick. Fix #11101.</p>
+</li>
+<li><p>[Fix] Fix <code>geo.label.formatter</code> does not work. Fix #8489.</p>
+</li>
+<li><p>[Fix] Fix the hover style incorrect in <code>custom series</code>. Fix #11103.</p>
+</li>
+<li><p>[Fix] Fix that tree root node disappears after roaming. Fix #10291, #10986, #10164, #9580, #9256, #9216.</p>
+</li>
+<li><p>[Fix] Fix that SVG renderer should render normally despite hover layer set. Fix #11054.</p>
+</li>
+<li><p>[Fix] Add dispose checking for chart instance.</p>
+</li>
+</ul>
+<h2 id="v4-3-0">v4.3.0</h2>
 <div class="time">2019-08-27</div>
 
 <ul>
@@ -884,7 +925,7 @@ Fix that the line label can not be returned to its original opacity after <code>
 <div class="time">2016-11-01</div>
 
 <ul>
-<li><p>[+] 开放坐标转换 API：<a href="http://echarts.baidu.com/api.html#echartsInstance.convertToPixel">convertToPixel</a> 和 <a href="http://echarts.baidu.com/api.html#echartsInstance.convertFromPixel">convertFromPixel</a>。参见例子 [<a href="http://echarts.baidu.com/gallery/editor.html?c=line-draggable">http://echarts.baidu.com/gallery/editor.html?c=line-draggable</a>] 和 [<a href="http://echarts.baidu.com/gallery/editor.html?c=line-pen">http://echarts.baidu.com/gallery/editor.html?c=line-pen</a>]</p>
+<li><p>[+] 开放坐标转换 API：<a href="http://echarts.baidu.com/api.html#echartsInstance.convertToPixel">convertToPixel</a> 和 <a href="http://echarts.baidu.com/api.html#echartsInstance.convertFromPixel">convertFromPixel</a>。参见例子 [<a href="http://echarts.baidu.com/gallery/editor.html?c=line-draggable]">http://echarts.baidu.com/gallery/editor.html?c=line-draggable]</a> 和 [<a href="http://echarts.baidu.com/gallery/editor.html?c=line-pen]">http://echarts.baidu.com/gallery/editor.html?c=line-pen]</a></p>
 </li>
 <li><p>[+] 开放坐标判断 API：<a href="http://echarts.baidu.com/api.html#echartsInstance.containPixel">containPixel</a>。</p>
 </li>
@@ -1075,7 +1116,7 @@ Fix that the line label can not be returned to its original opacity after <code>
 </li>
 <li><p>[^] 平行坐标优化</p>
 <ul>
-<li><p>[^] 新增 <a href="http://echarts.baidu.com/option.html#parallel.axisExpandable">parallel.axisExpandable</a>，改善高维数据（大量坐标轴）的展示。参见例子 [<a href="http://echarts.baidu.com/gallery/editor.html?c=map-parallel-prices">http://echarts.baidu.com/gallery/editor.html?c=map-parallel-prices</a>]</p>
+<li><p>[^] 新增 <a href="http://echarts.baidu.com/option.html#parallel.axisExpandable">parallel.axisExpandable</a>，改善高维数据（大量坐标轴）的展示。参见例子 [<a href="http://echarts.baidu.com/gallery/editor.html?c=map-parallel-prices]">http://echarts.baidu.com/gallery/editor.html?c=map-parallel-prices]</a></p>
 </li>
 <li><p>[^] 新增 <a href="http://echarts.baidu.com/option.html#parallelAxis.realtime">parallelAxis.realtime</a></p>
 </li>

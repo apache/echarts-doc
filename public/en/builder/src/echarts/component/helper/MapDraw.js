@@ -24,7 +24,7 @@ import * as graphic from '../../util/graphic';
 import geoSourceManager from '../../coord/geo/geoSourceManager';
 import { getUID } from '../../util/component';
 
-function getFixedItemStyle(model, scale) {
+function getFixedItemStyle(model) {
   var itemStyle = model.getItemStyle();
   var areaColor = model.get('areaColor'); // If user want the color not to be changed when hover,
   // they should both set areaColor and color to be null.
@@ -176,18 +176,14 @@ MapDraw.prototype = {
 
     var regionsGroup = this._regionsGroup;
     var group = this.group;
-    var scale = geo.scale;
-    var transform = {
-      position: geo.position,
-      scale: scale
-    }; // No animation when first draw or in action
 
-    if (!regionsGroup.childAt(0) || payload) {
-      group.attr(transform);
-    } else {
-      graphic.updateProps(group, transform, mapOrGeoModel);
+    if (geo._roamTransformable.transform) {
+      group.transform = geo._roamTransformable.transform.slice();
+      group.decomposeTransform();
     }
 
+    var scale = geo._rawTransformable.scale;
+    var position = geo._rawTransformable.position;
     regionsGroup.removeAll();
     var itemStyleAccessPath = ['itemStyle'];
     var hoverItemStyleAccessPath = ['emphasis', 'itemStyle'];
@@ -211,8 +207,8 @@ MapDraw.prototype = {
       var regionModel = mapOrGeoModel.getRegionModel(region.name) || mapOrGeoModel;
       var itemStyleModel = regionModel.getModel(itemStyleAccessPath);
       var hoverItemStyleModel = regionModel.getModel(hoverItemStyleAccessPath);
-      var itemStyle = getFixedItemStyle(itemStyleModel, scale);
-      var hoverItemStyle = getFixedItemStyle(hoverItemStyleModel, scale);
+      var itemStyle = getFixedItemStyle(itemStyleModel);
+      var hoverItemStyle = getFixedItemStyle(hoverItemStyleModel);
       var labelModel = regionModel.getModel(labelAccessPath);
       var hoverLabelModel = regionModel.getModel(hoverLabelAccessPath);
       var dataIdx; // Use the itemStyle in data if has data
@@ -230,23 +226,40 @@ MapDraw.prototype = {
         }
       }
 
+      var transformPoint = function (point) {
+        return [point[0] * scale[0] + position[0], point[1] * scale[1] + position[1]];
+      };
+
       zrUtil.each(region.geometries, function (geometry) {
         if (geometry.type !== 'polygon') {
           return;
         }
 
+        var points = [];
+
+        for (var i = 0; i < geometry.exterior.length; ++i) {
+          points.push(transformPoint(geometry.exterior[i]));
+        }
+
         compoundPath.shape.paths.push(new graphic.Polygon({
           segmentIgnoreThreshold: 1,
           shape: {
-            points: geometry.exterior
+            points: points
           }
         }));
 
-        for (var i = 0; i < (geometry.interiors ? geometry.interiors.length : 0); i++) {
+        for (var i = 0; i < (geometry.interiors ? geometry.interiors.length : 0); ++i) {
+          var interior = geometry.interiors[i];
+          var points = [];
+
+          for (var j = 0; j < interior.length; ++j) {
+            points.push(transformPoint(interior[j]));
+          }
+
           compoundPath.shape.paths.push(new graphic.Polygon({
             segmentIgnoreThreshold: 1,
             shape: {
-              points: geometry.interiors[i]
+              points: points
             }
           }));
         }
@@ -272,12 +285,12 @@ MapDraw.prototype = {
         }
 
         var textEl = new graphic.Text({
-          position: region.center.slice(),
+          position: transformPoint(region.center.slice()),
           // FIXME
           // label rotation is not support yet in geo or regions of series-map
           // that has no data. The rotation will be effected by this `scale`.
           // So needed to change to RectText?
-          scale: [1 / scale[0], 1 / scale[1]],
+          scale: [1 / group.scale[0], 1 / group.scale[1]],
           z2: 10,
           silent: true
         });

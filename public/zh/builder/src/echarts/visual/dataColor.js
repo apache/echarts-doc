@@ -44,10 +44,15 @@ export default function (seriesType) {
         var filteredIdx = idxMap[rawIdx]; // If series.itemStyle.normal.color is a function. itemVisual may be encoded
 
         var singleDataColor = filteredIdx != null && data.getItemVisual(filteredIdx, 'color', true);
+        var singleDataBorderColor = filteredIdx != null && data.getItemVisual(filteredIdx, 'borderColor', true);
+        var itemModel;
+
+        if (!singleDataColor || !singleDataBorderColor) {
+          // FIXME Performance
+          itemModel = dataAll.getItemModel(rawIdx);
+        }
 
         if (!singleDataColor) {
-          // FIXME Performance
-          var itemModel = dataAll.getItemModel(rawIdx);
           var color = itemModel.get('itemStyle.color') || seriesModel.getColorFromPalette(dataAll.getName(rawIdx) || rawIdx + '', seriesModel.__paletteScope, dataAll.count()); // Legend may use the visual info in data before processed
 
           dataAll.setItemVisual(rawIdx, 'color', color); // Data is not filtered
@@ -58,6 +63,19 @@ export default function (seriesType) {
         } else {
           // Set data all color for legend
           dataAll.setItemVisual(rawIdx, 'color', singleDataColor);
+        }
+
+        if (!singleDataBorderColor) {
+          var borderColor = itemModel.get('itemStyle.borderColor'); // Legend may use the visual info in data before processed
+
+          dataAll.setItemVisual(rawIdx, 'borderColor', borderColor); // Data is not filtered
+
+          if (filteredIdx != null) {
+            data.setItemVisual(filteredIdx, 'borderColor', borderColor);
+          }
+        } else {
+          // Set data all borderColor for legend
+          dataAll.setItemVisual(rawIdx, 'borderColor', singleDataBorderColor);
         }
       });
     }

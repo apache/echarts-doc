@@ -2,6 +2,8 @@
  * 3x2矩阵操作类
  * @exports zrender/tool/matrix
  */
+
+/* global Float32Array */
 var ArrayCtor = typeof Float32Array === 'undefined' ? Array : Float32Array;
 /**
  * Create a identity matrix.

@@ -1,4 +1,46 @@
-## v4.3.0-rc.1
+## v4.4.0-rc.1
+
+<div class="time">2019-09-29</div>
+
++ [Feature] Add option `clip` for `line`, `bar`, `lines`, `scatter` and `custom series`,
+which prevents the shapes overflow the area of the coordinate system. And support setting
+`filterMode` on `toolbox.dataZoom`. Fix #9200, #10224, #10748, #11086.
+
++ [Feature] Support "select all" and "reverse select" buttons in `legend`. See `legend.selector` for details.
+
++ [Feature] Provide `echarts.graphic.registerShape` and `echarts.graphic.getShapeClass`.
+The registered shape classes can be used in `custom series` and `graphic component`.
+
++ [Feature] Support show border style on `legend` item. Support setting `itemStyle` on `legend`. Fix #7340.
+
++ [Feature] Support expansion animation for data update, support `pie-series.animationTypeUpdate`. Fix #11029.
+
++ [Feature] Support setting `rippleEffect.color` in `effectScatter`.
+
++ [Feature] Support using BaiduMap API version 3.0 in bmap by option `bmap.mapStyleV2`.
+
++ [Fix] Fix that the stacked bar exceed zoom limit.
+Fix #7534, #7672, #7732, #7872, #8069, #8520, #8935, #8955, #9200, #9237, #9847, #10359, #10518, #10972.
+
++ [Fix] Fix that sometimes when using "toolbox dataZoom" it can not return to the original state. Fix #11055.
+
++ [Fix] Fix the texture pattern rendering in `map` and `geo`. And Fix that the the shadow of them are different between canvas renderer and SVG renderer. Fix #11055, #5429.
+
++ [Fix] Fix that data does not rendered after a `NaN` value in candlestick. Fix #11101.
+
++ [Fix] Fix `geo.label.formatter` does not work. Fix #8489.
+
++ [Fix] Fix the hover style incorrect in `custom series`. Fix #11103.
+
++ [Fix] Fix that tree root node disappears after roaming. Fix #10291, #10986, #10164, #9580, #9256, #9216.
+
++ [Fix] Fix that SVG renderer should render normally despite hover layer set. Fix #11054.
+
++ [Fix] Add dispose checking for chart instance.
+
+
+
+## v4.3.0
 
 <div class="time">2019-08-27</div>
 

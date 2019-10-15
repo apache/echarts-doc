@@ -49,12 +49,14 @@ var each = zrUtil.each;
 var isFunction = zrUtil.isFunction;
 var isObject = zrUtil.isObject;
 var parseClassType = ComponentModel.parseClassType;
-export var version = '4.3.0';
+export var version = '4.4.0';
 export var dependencies = {
-  zrender: '4.1.0'
+  zrender: '4.1.1'
 };
 var TEST_FRAME_REMAIN_TIME = 1;
 var PRIORITY_PROCESSOR_FILTER = 1000;
+var PRIORITY_PROCESSOR_SERIES_FILTER = 800;
+var PRIORITY_PROCESSOR_DATASTACK = 900;
 var PRIORITY_PROCESSOR_STATISTIC = 5000;
 var PRIORITY_VISUAL_LAYOUT = 1000;
 var PRIORITY_VISUAL_PROGRESSIVE_LAYOUT = 1100;
@@ -68,6 +70,7 @@ var PRIORITY_VISUAL_BRUSH = 5000;
 export var PRIORITY = {
   PROCESSOR: {
     FILTER: PRIORITY_PROCESSOR_FILTER,
+    SERIES_FILTER: PRIORITY_PROCESSOR_SERIES_FILTER,
     STATISTIC: PRIORITY_PROCESSOR_STATISTIC
   },
   VISUAL: {
@@ -89,9 +92,14 @@ var IN_MAIN_PROCESS = '__flagInMainProcess';
 var OPTION_UPDATED = '__optionUpdated';
 var ACTION_REG = /^[a-zA-Z0-9_]+$/;
 
-function createRegisterEventWithLowercaseName(method) {
+function createRegisterEventWithLowercaseName(method, ignoreDisposed) {
   return function (eventName, handler, context) {
-    // Event name is all lowercase
+    if (!ignoreDisposed && this._disposed) {
+      disposedWarning(this.id);
+      return;
+    } // Event name is all lowercase
+
+
     eventName = eventName && eventName.toLowerCase();
     Eventful.prototype[method].call(this, eventName, handler, context);
   };
@@ -105,9 +113,9 @@ function MessageCenter() {
   Eventful.call(this);
 }
 
-MessageCenter.prototype.on = createRegisterEventWithLowercaseName('on');
-MessageCenter.prototype.off = createRegisterEventWithLowercaseName('off');
-MessageCenter.prototype.one = createRegisterEventWithLowercaseName('one');
+MessageCenter.prototype.on = createRegisterEventWithLowercaseName('on', true);
+MessageCenter.prototype.off = createRegisterEventWithLowercaseName('off', true);
+MessageCenter.prototype.one = createRegisterEventWithLowercaseName('one', true);
 zrUtil.mixin(MessageCenter, Eventful);
 /**
  * @module echarts~ECharts
@@ -316,6 +324,11 @@ echartsProto.getZr = function () {
 
 
 echartsProto.setOption = function (option, notMerge, lazyUpdate) {
+  if (this._disposed) {
+    disposedWarning(this.id);
+    return;
+  }
+
   var silent;
 
   if (isObject(notMerge)) {
@@ -457,6 +470,11 @@ echartsProto.getSvgDataUrl = function () {
 
 
 echartsProto.getDataURL = function (opts) {
+  if (this._disposed) {
+    disposedWarning(this.id);
+    return;
+  }
+
   opts = opts || {};
   var excludeComponents = opts.excludeComponents;
   var ecModel = this._model;
@@ -490,6 +508,11 @@ echartsProto.getDataURL = function (opts) {
 
 
 echartsProto.getConnectedDataURL = function (opts) {
+  if (this._disposed) {
+    disposedWarning(this.id);
+    return;
+  }
+
   if (!env.canvasSupported) {
     return;
   }
@@ -605,6 +628,11 @@ echartsProto.convertToPixel = zrUtil.curry(doConvertPixel, 'convertToPixel');
 echartsProto.convertFromPixel = zrUtil.curry(doConvertPixel, 'convertFromPixel');
 
 function doConvertPixel(methodName, finder, value) {
+  if (this._disposed) {
+    disposedWarning(this.id);
+    return;
+  }
+
   var ecModel = this._model;
 
   var coordSysList = this._coordSysMgr.getCoordinateSystems();
@@ -640,6 +668,11 @@ function doConvertPixel(methodName, finder, value) {
 
 
 echartsProto.containPixel = function (finder, value) {
+  if (this._disposed) {
+    disposedWarning(this.id);
+    return;
+  }
+
   var ecModel = this._model;
   var result;
   finder = modelUtil.parseFinder(ecModel, finder);
@@ -941,6 +974,11 @@ function updateDirectly(ecIns, method, payload, mainType, subType) {
 
 
 echartsProto.resize = function (opts) {
+  if (this._disposed) {
+    disposedWarning(this.id);
+    return;
+  }
+
   this._zr.resize(opts);
 
   var ecModel = this._model; // Resize loading effect
@@ -976,6 +1014,11 @@ function updateStreamModes(ecIns, ecModel) {
 
 
 echartsProto.showLoading = function (name, cfg) {
+  if (this._disposed) {
+    disposedWarning(this.id);
+    return;
+  }
+
   if (isObject(name)) {
     cfg = name;
     name = '';
@@ -999,6 +1042,11 @@ echartsProto.showLoading = function (name, cfg) {
 
 
 echartsProto.hideLoading = function () {
+  if (this._disposed) {
+    disposedWarning(this.id);
+    return;
+  }
+
   this._loadingFX && this._zr.remove(this._loadingFX);
   this._loadingFX = null;
 };
@@ -1022,12 +1070,17 @@ echartsProto.makeActionFromEvent = function (eventObj) {
  * @param {boolean} [opt.flush=undefined]
  *                  true: Flush immediately, and then pixel in canvas can be fetched
  *                      immediately. Caution: it might affect performance.
- *                  false: Not not flush.
+ *                  false: Not flush.
  *                  undefined: Auto decide whether perform flush.
  */
 
 
 echartsProto.dispatchAction = function (payload, opt) {
+  if (this._disposed) {
+    disposedWarning(this.id);
+    return;
+  }
+
   if (!isObject(opt)) {
     opt = {
       silent: !!opt
@@ -1184,6 +1237,11 @@ function bindRenderedEvent(zr, ecIns) {
 
 
 echartsProto.appendData = function (params) {
+  if (this._disposed) {
+    disposedWarning(this.id);
+    return;
+  }
+
   var seriesIndex = params.seriesIndex;
   var ecModel = this.getModel();
   var seriesModel = ecModel.getSeriesByIndex(seriesIndex);
@@ -1203,9 +1261,9 @@ echartsProto.appendData = function (params) {
  */
 
 
-echartsProto.on = createRegisterEventWithLowercaseName('on');
-echartsProto.off = createRegisterEventWithLowercaseName('off');
-echartsProto.one = createRegisterEventWithLowercaseName('one');
+echartsProto.on = createRegisterEventWithLowercaseName('on', false);
+echartsProto.off = createRegisterEventWithLowercaseName('off', false);
+echartsProto.one = createRegisterEventWithLowercaseName('one', false);
 /**
  * Prepare view instances of charts and components
  * @param  {module:echarts/model/Global} ecModel
@@ -1442,6 +1500,11 @@ echartsProto.isDisposed = function () {
 
 
 echartsProto.clear = function () {
+  if (this._disposed) {
+    disposedWarning(this.id);
+    return;
+  }
+
   this.setOption({
     series: []
   }, true);
@@ -1453,6 +1516,7 @@ echartsProto.clear = function () {
 
 echartsProto.dispose = function () {
   if (this._disposed) {
+    disposedWarning(this.id);
     return;
   }
 
@@ -1473,6 +1537,8 @@ echartsProto.dispose = function () {
 };
 
 zrUtil.mixin(ECharts, Eventful);
+
+function disposedWarning(id) {}
 
 function updateHoverLayerStatus(ecIns, ecModel) {
   var zr = ecIns._zr;
@@ -2125,7 +2191,7 @@ export function getMap(mapName) {
 }
 registerVisual(PRIORITY_VISUAL_GLOBAL, seriesColor);
 registerPreprocessor(backwardCompat);
-registerProcessor(PRIORITY_PROCESSOR_STATISTIC, dataStack);
+registerProcessor(PRIORITY_PROCESSOR_DATASTACK, dataStack);
 registerLoading('default', loadingDefault); // Default actions
 
 registerAction({

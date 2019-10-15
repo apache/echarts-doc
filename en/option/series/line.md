@@ -60,8 +60,9 @@ The effect of the below example could be seen through stack switching of [toolbo
 ## connectNulls(boolean) = false
 Whether to connect the line across null points.
 
-## clipOverflow(boolean) = true
-Whether to clip the overflowing part, which defaults to clip.
+{{use:partial-clip(
+    prefix="#"
+) }}
 
 ## step(string|boolean) = false
 Whether to show as a step line. It can be `true`, `false`. Or `'start'`, `'middle'`, `'end'`. Which will configure the turn point of step line.

@@ -20,7 +20,7 @@ import { createHashMap, each } from 'zrender/src/core/util'; // (1) [Caution]: t
 //     data processing stage is blocked in stream.
 //     See <module:echarts/stream/Scheduler#performDataProcessorTasks>
 // (2) Only register once when import repeatly.
-//     Should be executed before after series filtered and before stack calculation.
+//     Should be executed after series filtered and before stack calculation.
 
 export default function (ecModel) {
   var stackInfoMap = createHashMap();

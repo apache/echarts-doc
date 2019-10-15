@@ -35,6 +35,7 @@ export default {
     var name = data.getName(dataIndex);
     var itemOpt = data.getRawDataItem(dataIndex);
     var color = data.getItemVisual(dataIndex, 'color');
+    var borderColor = data.getItemVisual(dataIndex, 'borderColor');
     var tooltipModel = this.ecModel.getComponent('tooltip');
     var renderModeOption = tooltipModel && tooltipModel.get('renderMode');
     var renderMode = getTooltipRenderMode(renderModeOption);
@@ -55,6 +56,7 @@ export default {
       dataType: dataType,
       value: rawValue,
       color: color,
+      borderColor: borderColor,
       dimensionNames: userOutput ? userOutput.dimensionNames : null,
       encode: userOutput ? userOutput.encode : null,
       marker: getTooltipMarker({

@@ -1,5 +1,5 @@
 import Animator from '../animation/Animator';
-import log from '../core/log';
+import logError from '../core/log';
 import { isString, isFunction, isObject, isArrayLike, indexOf } from '../core/util';
 /**
  * @alias modue:zrender/mixin/Animatable
@@ -57,7 +57,7 @@ Animatable.prototype = {
     }
 
     if (!target) {
-      log('Property "' + path + '" is not existed in element ' + el.id);
+      logError('Property "' + path + '" is not existed in element ' + el.id);
       return;
     }
 
