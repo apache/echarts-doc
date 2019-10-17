@@ -2,15 +2,15 @@
 
 # 自定义构建 ECharts
 
-一般来说，可以直接从 [echarts 下载页](http://echarts.baidu.com/download.html) 中获取构建好的 echarts，也可以从 [GitHub](https://github.com/ecomfe/echarts/releases) 中的 `echarts/dist` 文件夹中获取构建好的 echarts，这都可以直接在浏览器端项目中使用。这些构建好的 echarts 提供了下面这几种定制：
+一般来说，可以直接从 [echarts 下载页](${wesitePath}/zh/download.html) 中获取构建好的 echarts，也可以从 [GitHub](https://github.com/ecomfe/echarts/releases) 中的 `echarts/dist` 文件夹中获取构建好的 echarts，这都可以直接在浏览器端项目中使用。这些构建好的 echarts 提供了下面这几种定制：
 
 + 完全版：`echarts/dist/echarts.js`，体积最大，包含所有的图表和组件，所包含内容参见：`echarts/echarts.all.js`。
 + 常用版：`echarts/dist/echarts.common.js`，体积适中，包含常见的图表和组件，所包含内容参见：`echarts/echarts.common.js`。
 + 精简版：`echarts/dist/echarts.simple.js`，体积较小，仅包含最常用的图表和组件，所包含内容参见：`echarts/echarts.simple.js`。
 
-如果对文件体积有更严苛的要求，可以自己构建 echarts，能够仅仅包括自己所需要的图表和组件。自定义构建有几种方式：
+我们也可以自己构建 echarts，能够仅仅包括自己所需要的图表和组件。可以用这几种方式自定义构建：
 
-+ [在线自定义构建](http://echarts.baidu.com/builder.html)：比较方便。
++ [在线自定义构建](${wesitePath}/zh/builder.html)：比较方便。
 + 使用 `echarts/build/build.js` 脚本自定义构建：比在线构建更灵活一点，并且支持多语言。
 + 直接使用构建工具（如 [rollup](https://rollupjs.org/)、[webpack](https://webpack.github.io/)、[browserify](http://browserify.org/)）自己构建：也是一种选择。
 

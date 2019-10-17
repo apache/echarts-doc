@@ -4,20 +4,20 @@
 # Create Custom Build of ECharts
 
 
-In most cases, ECharts builds can be downloaded from the [download page](https://ecomfe.github.io/echarts-doc/public/en/download.html) or from the `echarts/dist` directory in our [GitHub project](https://github.com/ecomfe/echarts/releases), where
+In most cases, ECharts builds can be downloaded from the [download page](${wesitePath}/en/download.html) or from the `echarts/dist` directory in our [GitHub project](https://github.com/ecomfe/echarts/releases), where
 these pre-builds are provided:
 
 + Complete verion: `echarts/dist/echarts.js`, including all charts and components (see `echarts/echarts.all.js` for detail), but has maximum file size.
 + Common version: `echarts/dist/echarts.common.js`, including common charts and components (see `echarts/echarts.common.js` for detail), moderate file size.
 + Simple version: `echarts/dist/echarts.simple.js`, including a smaller subset of the most common charts and components (see `echarts/echarts.simple.js` for detail), small file size.
 
-If it is important for your use case to reduce the size of your ECharts dependency, you can customize your ECharts build by using one of these approaches:
+We can also build echarts ourselves, which enables to only include the charts and components you needed. You can customize your ECharts build by using one of these approaches:
 
-+ [Online custom build tool](http://echarts.baidu.com/builder.html) is relatively convenient (Currently available in Chinese only)
++ [Online custom build tool](${wesitePath}/en/builder.html) is relatively convenient.
 + The script `echarts/build/build.js` found in the project is flexible for module selecting, and supports multi-language builds
 + Build ECharts and your project directly by using tools such as [rollup](https://rollupjs.org/), [webpack](https://webpack.github.io/), [browserify](http://browserify.org/)
 
-Below are some examples to illustrate the latter two approaches.
+There are some examples to illustrate the latter two approaches below.
 
 ## Prepare: create our project and install echarts
 
