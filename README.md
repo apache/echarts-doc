@@ -26,3 +26,24 @@ node server.js
 
 Release:
 Check `incubator-echarts-website/README.md` please.
+
+## Tips about writing doc
+
+**Global variables can be used in doc:**
+
++ galleryViewPath
++ galleryEditorPath
++ websitePath
+
+For example:
+```md
+~[700x300](${galleryViewPath}doc-example/aria-pie&edit=1&reset=1)
+```
+
+**Reference of option**
+
+A `~` can be used to refer to a option item in the same doc. For example:
+
+```md
+[xAxis.name](~xAxis.name)
+```
