@@ -24,7 +24,7 @@ basepath=$(cd `dirname $0`; pwd)
 currPath=$(pwd)
 
 
-# Build cn doc for www.echartsjs.com.
+# Build zh doc for www.echartsjs.com.
 cd ${basepath}
 node ./build.js --env ${envType}
 cd ${currPath}
