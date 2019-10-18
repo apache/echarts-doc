@@ -97,6 +97,14 @@
 
 {{ use: partial-datasetIndex }}
 
+{{use:partial-series-dimensions(
+    prefix="#"
+)}}
+
+{{use:partial-series-encode(
+    prefix="#"
+)}}
+
 ## data(Array)
 {{ use: partial-1d-data-desc }}
 ### name(string)
