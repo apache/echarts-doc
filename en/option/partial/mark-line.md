@@ -166,6 +166,10 @@ Coordinates of the starting point or ending point, whose format depends on the c
 {{ use: marker-coord-explain }}
 
 {{ /if }}
+
+#${prefix} name(string) = '${name}'
+Name of the marker, which will display as a label.
+
 #${prefix} x(number)
 X position according to container, in pixel.
 

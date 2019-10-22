@@ -170,6 +170,10 @@ data: [
 {{ use: marker-coord-explain }}
 
 {{ /if }}
+
+#${prefix} name(string) = '${name}'
+标注名称，将会作为文字显示。
+
 #${prefix} x(number)
 相对容器的屏幕 x 坐标，单位像素。
 

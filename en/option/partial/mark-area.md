@@ -145,6 +145,10 @@ The value can be the name of the dimension (for example, the value can be `x`, `
 The format is [start coordinate, end coordinate], where the coordinate system can be `x`, `y` on [cartesian](~grid), or `radius`, `angle` on [polar](~polar).
 
 {{ /if }}
+
+#${prefix} name(string) = '${name}'
+Name of the marker, which will display as a label.
+
 #${prefix} x(number)
 x value on screen coordinate system, can be pixel number (like `5`), or percent value (like `'20%'`).
 
