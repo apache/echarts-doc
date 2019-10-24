@@ -219,12 +219,16 @@ option: {
 
 [${dataZoomName}.start](~${dataZoomName}.start) 和 [${dataZoomName}.end](~${dataZoomName}.end) 共同用 **百分比** 的形式定义了数据窗口范围。
 
+关于坐标轴范围（axis extent）和 `${dataZoomName}.start` 的关系的更多信息，请参见：[${dataZoomName}.rangeMode](~${dataZoomName}.rangeMode)。
+
 
 ## end(number) = 100
 
 数据窗口范围的结束百分比。范围是：0 ~ 100。
 
 [${dataZoomName}.start](~${dataZoomName}.start) 和 [${dataZoomName}.end](~${dataZoomName}.end) 共同用 **百分比** 的形式定义了数据窗口范围。
+
+关于坐标轴范围（axis extent）和 `${dataZoomName}.end` 的关系的更多信息，请参见：[${dataZoomName}.rangeMode](~${dataZoomName}.rangeMode)。
 
 
 ## startValue(number|string|Date) = null
@@ -236,6 +240,8 @@ option: {
 注意，如果轴的类型为 `category`，则 `startValue` 既可以设置为 `axis.data` 数组的 `index`，也可以设置为数组值本身。
 但是如果设置为数组值本身，会在内部自动转化为数组的 index。
 
+关于坐标轴范围（axis extent）和 `${dataZoomName}.startValue` 的关系的更多信息，请参见：[${dataZoomName}.rangeMode](~${dataZoomName}.rangeMode)。
+
 
 ## endValue(number|string|Date) = null
 
@@ -245,6 +251,9 @@ option: {
 
 注意，如果轴的类型为 `category`，则 `endValue` 即可以设置为 `axis.data` 数组的 `index`，也可以设置为数组值本身。
 但是如果设置为数组值本身，会在内部自动转化为数组的 index。
+
+关于坐标轴范围（axis extent）和 `${dataZoomName}.endValue` 的关系的更多信息，请参见：[${dataZoomName}.rangeMode](~${dataZoomName}.rangeMode)。
+
 
 ## minSpan(number) = null
 
@@ -304,6 +313,12 @@ option: {
 
 可选值为：`'value'`, `'percent'`
 
++ `'value'` 模式：处于此模式下，坐标轴范围（axis extent）总只会被`dataZoom.startValue` and `dataZoom.endValue` 决定，而不管数据是多少，以及不管，`axis.min` 和 `axis.max` 怎么设置。
++ `'percent'` 模式：处于此模式下，`100` 代表 100% 的 `[dMin, dMax]`。这里 `dMin` 表示，如果 `axis.min` 设置了就是 `axis.min`，否则是 `data.extent[0]`；`dMax` 表示，如果 `axis.max` 设置了就是 `axis.max`，否则是 `data.extent[1]`。`[dMin, dMax]` 乘以 percent 的结果得到坐标轴范围（axis extent）。
+
+默认情况下，`rangeMode` 总是被自动设定。如果指定了 `option.start`/`option.end` 那么就设定为 `'percent'`，如果指定了 `option.startValue`/`option.endValue` 那么就设定为 `'value'`。以及当用户用不用操作触发视图改变时，`rangeMode` 也可能会相应得变化（如，通过 `toolbox.dataZoom` 触发视图改变时，`rangeMode` 会自动被设置为 `value`，通过 `dataZoom-inside` 和 `dataZoom-slider` 触发视图改变时，会自动被设置为 `'percent'`）。而一旦我们手动在 `option` 中设定了 `rangeMode`，那么它就不会改变永远是这个值。所以，大多数情况下，我们不需要手动设定 `dataZoom.rangeMode`，除非我们确切知道设定它带来的影响。
+
+举例一个使用场景：当我们使用动态数据时（即，周期性得通过 `setOption` 来改变数据），如果 `rangeMode` 在 `'value`' 模式，`dataZoom` 的窗口会一直保持在一个固定的值区间，无论数据怎么改变添加了多少；如果 `rangeMode` 在 `'percent'` 模式，窗口会随着数据的添加而改变（假设 `axis.min` 和 `axis.max` 没有被设置）。
 
 
 {{target: partial-data-zoom-filterMode}}

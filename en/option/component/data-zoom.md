@@ -228,12 +228,16 @@ The start percentage of the window out of the data extent, in the range of 0 ~ 1
 
 [${dataZoomName}.start](~${dataZoomName}.start) and [${dataZoomName}.end](~${dataZoomName}.end) define the window of the data in **percent** form.
 
+More info about the relationship between `${dataZoomName}.start` and axis extent can be checked in [${dataZoomName}.rangeMode](~${dataZoomName}.rangeMode).
+
 
 ## end(number) = 100
 
 The end percentage of the window out of the data extent, in the range of 0 ~ 100.
 
 [${dataZoomName}.start](~${dataZoomName}.start) and [${dataZoomName}.end](~${dataZoomName}.end) define the window of the data in **percent** form.
+
+More info about the relationship between `${dataZoomName}.end` and axis extent can be checked in [${dataZoomName}.rangeMode](~${dataZoomName}.rangeMode).
 
 
 ## startValue(number|string|Date) = null
@@ -244,6 +248,8 @@ The start absolute value of the window, not works when [${dataZoomName}.start](~
 
 Notice, if an axis is set to be `category`, `startValue` could be set as `index` of the array of `axis.data` or as the array value itself. In the latter case, it will internally and automatically translate to the index of array.
 
+More info about the relationship between `${dataZoomName}.startValue` and axis extent can be checked in [${dataZoomName}.rangeMode](~${dataZoomName}.rangeMode).
+
 
 ## endValue(number|string|Date) = null
 
@@ -252,6 +258,8 @@ The end absolute value of the window, not works when [${dataZoomName}.end](~${da
 [${dataZoomName}.startValue](~${dataZoomName}.startValue) and [${dataZoomName}.endValue](~${dataZoomName}.endValue) define the window of the data window in **absolute value** form.
 
 Notice, if an axis is set to be `category`, `startValue` could be set as `index` of the array of `axis.data` or as the array value itself. In the latter case, it will internally and automatically translate to the index of array.
+
+More info about the relationship between `${dataZoomName}.endValue` and axis extent can be checked in [${dataZoomName}.rangeMode](~${dataZoomName}.rangeMode).
 
 
 ## minSpan(number) = null
@@ -315,6 +323,12 @@ For example `rangeMode: ['value', 'percent']` means that use absolute value in `
 
 Optional value: `'value'`, `'percent'`.
 
++ `'value'` mode: the axis extent will always only be determined by `dataZoom.startValue` and `dataZoom.endValue`, despite how data like and how `axis.min` and `axis.max` are.
++ `'percent'` mode: `100` represents 100% of the `[dMin, dMax]`, where `dMin` is `axis.min` if `axis.min` specified, otherwise `data.extent[0]`, and `dMax` is `axis.max` if `axis.max` specified, otherwise `data.extent[1]`. Axis extent will only be determined by the result of the percent of `[dMin, dMax]`.
+
+By default `rangeMode` are auto determined by whether `option.start`/`option.end` are specified (represents `'percent'` mode) or `option.startValue`/`option.endValue` specified (represents `'value'` mode). And when user behavior trigger the changing of the view, the `rangeMode` would be modified automatically. For example, if triggered by `toolbox.dataZoom`, it will be modefied to `'value'`, and if triggered by `dataZoom-inside` or `dataZoom-slider`, it will be modified to `'percent'`. But if we specify `rangeMode` manually in `option`, it will not be auto-modified any more. So in most cases we should not specify `dataZoom.rangeMode` manually, unless we know what we are doing.
+
+Take a scenario as an example. When we are using dynamic data (update data periodically via `setOption`), if in `'value`' mode, the window will be kept in a fixed value range despite how data are appended, while if in `'percent'` mode, whe window range will be changed alone with the appended data (suppose `axis.min` and `axis.max` are not specified).
 
 
 {{target: partial-data-zoom-filterMode}}
