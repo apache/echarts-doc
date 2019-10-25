@@ -319,14 +319,18 @@ If [animation](~animation) set as `false` or [animationDurationUpdate](~animatio
 
 ## rangeMode(Array)
 
+The format is `[rangeModeForStart, rangeModeForEnd]`.
+
 For example `rangeMode: ['value', 'percent']` means that use absolute value in `start` and percent value in `end`.
 
-Optional value: `'value'`, `'percent'`.
+Optional value for each item: `'value'`, `'percent'`.
 
 + `'value'` mode: the axis extent will always only be determined by `dataZoom.startValue` and `dataZoom.endValue`, despite how data like and how `axis.min` and `axis.max` are.
 + `'percent'` mode: `100` represents 100% of the `[dMin, dMax]`, where `dMin` is `axis.min` if `axis.min` specified, otherwise `data.extent[0]`, and `dMax` is `axis.max` if `axis.max` specified, otherwise `data.extent[1]`. Axis extent will only be determined by the result of the percent of `[dMin, dMax]`.
 
-By default `rangeMode` are auto determined by whether `option.start`/`option.end` are specified (represents `'percent'` mode) or `option.startValue`/`option.endValue` specified (represents `'value'` mode). And when user behavior trigger the changing of the view, the `rangeMode` would be modified automatically. For example, if triggered by `toolbox.dataZoom`, it will be modefied to `'value'`, and if triggered by `dataZoom-inside` or `dataZoom-slider`, it will be modified to `'percent'`. But if we specify `rangeMode` manually in `option`, it will not be auto-modified any more. So in most cases we should not specify `dataZoom.rangeMode` manually, unless we know what we are doing.
+`rangeMode` are auto determined by whether `option.start`/`option.end` are specified (represents `'percent'` mode) or `option.startValue`/`option.endValue` specified (represents `'value'` mode). And when user behavior trigger the changing of the view, the `rangeMode` would be modified automatically. For example, if triggered by `toolbox.dataZoom`, it will be modefied to `'value'`, and if triggered by `dataZoom-inside` or `dataZoom-slider`, it will be modified to `'percent'`.
+
+If we specify `rangeMode` manually in `option`, it only works when both `start` and `startValue` specified or both `end` and `endValue` specified. So usually we do not need to specify `dataZoom.rangeMode` manually.
 
 Take a scenario as an example. When we are using dynamic data (update data periodically via `setOption`), if in `'value`' mode, the window will be kept in a fixed value range despite how data are appended, while if in `'percent'` mode, whe window range will be changed alone with the appended data (suppose `axis.min` and `axis.max` are not specified).
 
