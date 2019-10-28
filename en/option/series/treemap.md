@@ -396,6 +396,11 @@ child nodes, recursive definition, configurations are the same as [series-treema
 )}}
 
 
+{{ use:partial-silent(
+    prefix="#"
+) }}
+
+
 {{use: partial-animation-init(
     prefix="#",
     defaultAnimationEasing='quinticInOut',
@@ -593,11 +598,6 @@ Height of label area.
     galleryEditorPath=${galleryEditorPath},
     itemStyleType='emphasis'
 )}}
-
-{{ use:partial-silent(
-    prefix="#"
-) }}
-
 
 
 
