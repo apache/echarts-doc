@@ -93,7 +93,7 @@
 ## lineStyle(Object)
 线条样式。
 
-**注：** 修改 `lineStyle` 中的颜色不会影响图例颜色，如果需要图例颜色和折线图颜色一致，需修改 [itemStyle.color](~series-line.itemStyle.color)，线条颜色默认也会取改颜色。
+**注：** 修改 `lineStyle` 中的颜色不会影响图例颜色，如果需要图例颜色和折线图颜色一致，需修改 [itemStyle.color](~series-line.itemStyle.color)，线条颜色默认也会取该颜色。
 
 {{use:partial-line-style(
     prefix="##",
