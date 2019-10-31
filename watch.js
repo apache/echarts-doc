@@ -36,7 +36,7 @@ function initEnv() {
 var envType = initEnv();
 
 var docSrcDirZH = path.join(__dirname, '/zh');
-var docSrcDirEN = path.join(__dirname, '/zh');
+var docSrcDirEN = path.join(__dirname, '/en');
 
 var watchDirs = [];
 getAllDirs(docSrcDirZH, watchDirs);

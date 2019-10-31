@@ -5,17 +5,17 @@
 
 First, install ECharts using one of the following methods:
 
-* The [official download page](https://ecomfe.github.io/echarts-doc/public/en/download.html), has different builds for most common use cases. If you would like to include all packages, you can download [the full minified version](http://echarts.baidu.com/dist/echarts.min.js).
+* Download official source release from [Apache ECharts (incubating) website](${websitePath}download.html). Then [build](https://github.com/apache/incubator-echarts#build) from the source release.
 
-* From the latest [GitHub](https://github.com/ecomfe/echarts) release, you can find the latest version of echarts in `dist` directory of the unzipped files.
+* Download from [GitHub](https://github.com/apache/incubator-echarts/releases)
 
-* Using npm: `npm install echarts --save`. [Using ECharts with webpack](https://ecomfe.github.io/echarts-doc/public/en/tutorial.html#Use%20ECharts%20with%20webpack)
+* Using npm: `npm install echarts --save`. [Using ECharts with webpack](${websitePath}tutorial.html#Use%20ECharts%20with%20webpack)
 
-* Using the [online build tool](http://echarts.baidu.com/builder.html) (Currently available in Chinese only).
+* Use CDN like [jsDelivr](https://www.jsdelivr.com/package/npm/echarts).
 
 ## Including ECharts
 
-ECharts 3 no longer requires using AMD to load packages, and the AMD loader is no longer included in ECharts. Instead, ECharts should be included using a traditional `<script>` tag:
+Load `echarts.min.js` with a script tag.
 
 ```html
 <!DOCTYPE html>

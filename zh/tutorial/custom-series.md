@@ -2,16 +2,16 @@
 
 # 自定义系列
 
-[自定义系列（custom series）](http://echarts.baidu.com/option.html#series-custom)，是一种系列的类型。它把绘制图形元素这一步留给开发者去做，从而开发者能在坐标系中自由绘制出自己需要的图表。
+[自定义系列（custom series）](option.html#series-custom)，是一种系列的类型。它把绘制图形元素这一步留给开发者去做，从而开发者能在坐标系中自由绘制出自己需要的图表。
 
-echarts 为什么会要支持 `自定义系列` 呢？echarts 内置支持的图表类型是最常见的图表类型，但是图表类型是难于穷举的，有很多小众的需求 echarts 并不能内置的支持。那么就需要提供一种方式来让开发者自己扩展。另一方面，所提供的扩展方式要尽可能得简单，例如图形元素创建和释放、过渡动画、tooltip、[数据区域缩放（dataZoom）](http://echarts.baidu.com/option.html#dataZoom)、[视觉映射（visualMap）](http://echarts.baidu.com/option.html#visualMap)等功能，尽量在 echarts 中内置得处理，使开发者不必纠结于这些细节。综上考虑形成了 [自定义系列（custom series）](http://echarts.baidu.com/option.html#series-custom)。
+echarts 为什么会要支持 `自定义系列` 呢？echarts 内置支持的图表类型是最常见的图表类型，但是图表类型是难于穷举的，有很多小众的需求 echarts 并不能内置的支持。那么就需要提供一种方式来让开发者自己扩展。另一方面，所提供的扩展方式要尽可能得简单，例如图形元素创建和释放、过渡动画、tooltip、[数据区域缩放（dataZoom）](option.html#dataZoom)、[视觉映射（visualMap）](option.html#visualMap)等功能，尽量在 echarts 中内置得处理，使开发者不必纠结于这些细节。综上考虑形成了 [自定义系列（custom series）](option.html#series-custom)。
 
 **例如，下面的例子使用 custom series 扩展出了 x-range 图：**
 ~[800x500](${galleryViewPath}custom-profile&reset=1&edit=1)
 
-**更多的例子参见：[custom examples](http://echarts.baidu.com/examples.html#chart-type-custom)**
+**更多的例子参见：[custom examples](${websitePath}examples.html#chart-type-custom)**
 
-下面来介绍开发者怎么使用 [自定义系列（custom series）](http://echarts.baidu.com/option.html#series-custom)。
+下面来介绍开发者怎么使用 [自定义系列（custom series）](option.html#series-custom)。
 
 
 <br>
@@ -32,7 +32,7 @@ var option = {
 }
 ```
 
-在渲染阶段，对于 [series.data](http://echarts.baidu.com/option.html#series-custom.data) 中的每个数据项（为方便描述，这里称为 `dataItem`)，会调用此 [renderItem](http://echarts.baidu.com/option.html#series-custom.renderItem) 函数。这个 `renderItem` 函数的职责，就是返回一个（或者一组）`图形元素定义`，`图形元素定义` 中包括图形元素的类型、位置、尺寸、样式等。echarts 会根据这些 `图形元素定义` 来渲染出图形元素。如下的示意：
+在渲染阶段，对于 [series.data](option.html#series-custom.data) 中的每个数据项（为方便描述，这里称为 `dataItem`)，会调用此 [renderItem](option.html#series-custom.renderItem) 函数。这个 `renderItem` 函数的职责，就是返回一个（或者一组）`图形元素定义`，`图形元素定义` 中包括图形元素的类型、位置、尺寸、样式等。echarts 会根据这些 `图形元素定义` 来渲染出图形元素。如下的示意：
 
 
 ```js
@@ -92,19 +92,19 @@ var option = {
 ```
 
 
-[renderItem](http://echarts.baidu.com/option.html#series-custom.renderItem) 函数提供了两个参数：
-+ [params](http://echarts.baidu.com/option.html#series-custom.renderItem.arguments.params)：包含了当前数据信息（如 `seriesIndex`、`dataIndex` 等等）和坐标系的信息（如坐标系包围盒的位置和尺寸）。
-+ [api](http://echarts.baidu.com/option.html#series-custom.renderItem.arguments.api)：是一些开发者可调用的方法集合（如 `api.value()`、`api.coord()`）。
+[renderItem](option.html#series-custom.renderItem) 函数提供了两个参数：
++ [params](option.html#series-custom.renderItem.arguments.params)：包含了当前数据信息（如 `seriesIndex`、`dataIndex` 等等）和坐标系的信息（如坐标系包围盒的位置和尺寸）。
++ [api](option.html#series-custom.renderItem.arguments.api)：是一些开发者可调用的方法集合（如 `api.value()`、`api.coord()`）。
 
-[renderItem](http://echarts.baidu.com/option.html#series-custom.renderItem) 函数须返回根据此 `dataItem` 绘制出的图形元素的定义信息，参见 [renderItem.return](http://echarts.baidu.com/option.html#series-custom.renderItem.return)。
+[renderItem](option.html#series-custom.renderItem) 函数须返回根据此 `dataItem` 绘制出的图形元素的定义信息，参见 [renderItem.return](option.html#series-custom.renderItem.return)。
 
-一般来说，[renderItem](http://echarts.baidu.com/option.html#series-custom.renderItem) 函数的主要逻辑，是将 `dataItem` 里的值映射到坐标系上的图形元素。这一般需要用到 [renderItem.arguments.api](http://echarts.baidu.com/option.html#series-custom.renderItem.arguments.api) 中的两个函数：
-+ [api.value(...)](http://echarts.baidu.com/option.html#series-custom.renderItem.arguments.api.value)，意思是取出 `dataItem` 中的数值。例如 `api.value(0)` 表示取出当前 `dataItem` 中第一个维度的数值。
-+ [api.coord(...)](http://echarts.baidu.com/option.html#series-custom.renderItem.arguments.api.coord)，意思是进行坐标转换计算。例如 `var point = api.coord([api.value(0), api.value(1)])` 表示 `dataItem` 中的数值转换成坐标系上的点。
+一般来说，[renderItem](option.html#series-custom.renderItem) 函数的主要逻辑，是将 `dataItem` 里的值映射到坐标系上的图形元素。这一般需要用到 [renderItem.arguments.api](option.html#series-custom.renderItem.arguments.api) 中的两个函数：
++ [api.value(...)](option.html#series-custom.renderItem.arguments.api.value)，意思是取出 `dataItem` 中的数值。例如 `api.value(0)` 表示取出当前 `dataItem` 中第一个维度的数值。
++ [api.coord(...)](option.html#series-custom.renderItem.arguments.api.coord)，意思是进行坐标转换计算。例如 `var point = api.coord([api.value(0), api.value(1)])` 表示 `dataItem` 中的数值转换成坐标系上的点。
 
-有时候还需要用到 [api.size(...)](http://echarts.baidu.com/option.html#series-custom.renderItem.arguments.api.size) 函数，表示得到坐标系上一段数值范围对应的长度。
+有时候还需要用到 [api.size(...)](option.html#series-custom.renderItem.arguments.api.size) 函数，表示得到坐标系上一段数值范围对应的长度。
 
-返回值中样式的设置可以使用 [api.style(...)](http://echarts.baidu.com/option.html#series-custom.renderItem.arguments.api.style) 函数，他能得到 [series.itemStyle](http://echarts.baidu.com/option.html#series-custom.itemStyle) 中定义的样式信息，以及视觉映射的样式信息。也可以用这种方式覆盖这些样式信息：`api.style({fill: 'green', stroke: 'yellow'})`。
+返回值中样式的设置可以使用 [api.style(...)](option.html#series-custom.renderItem.arguments.api.style) 函数，他能得到 [series.itemStyle](option.html#series-custom.itemStyle) 中定义的样式信息，以及视觉映射的样式信息。也可以用这种方式覆盖这些样式信息：`api.style({fill: 'green', stroke: 'yellow'})`。
 
 书写完 `renderItem` 方法后，自定义系列的 90% 工作就做完了。剩下的是一些精化工作。
 
@@ -114,7 +114,7 @@ var option = {
 <br>
 <h2>（二）使坐标轴的范围自适应数据范围</h2>
 
-在 [直角坐标系（grid）](http://echarts.baidu.com/option.html#grid)、[极坐标系（polar）](http://echarts.baidu.com/option.html#polar) 中都有坐标轴。坐标轴的刻度范围需要自适应当前显示出的数据的范围，否则绘制出的图形会超出去。所以，例如，在 [直角坐标系（grid）](http://echarts.baidu.com/option.html#grid) 中，使用自定义系列的开发者，需要设定，`data` 中的哪些维度会对应到 `x` 轴上，哪些维度会对应到 `y` 轴上。这件事通过 [encode](http://echarts.baidu.com/option.html#series-custom.encode) 来设定。例如：
+在 [直角坐标系（grid）](option.html#grid)、[极坐标系（polar）](option.html#polar) 中都有坐标轴。坐标轴的刻度范围需要自适应当前显示出的数据的范围，否则绘制出的图形会超出去。所以，例如，在 [直角坐标系（grid）](option.html#grid) 中，使用自定义系列的开发者，需要设定，`data` 中的哪些维度会对应到 `x` 轴上，哪些维度会对应到 `y` 轴上。这件事通过 [encode](option.html#series-custom.encode) 来设定。例如：
 
 ```js
 option = {
@@ -145,7 +145,7 @@ option = {
 <br>
 <h2>（三）设定 tooltip</h2>
 
-当然，使用 [tooltip.formatter](http://echarts.baidu.com/option.html#tooltip.formatter) 可以任意定制 tooltip 中的内容。但是还有更简单的方法，通过[encode](http://echarts.baidu.com/option.html#series-custom.encode) 和 [dimensions](http://echarts.baidu.com/option.html#series-custom.dimensions) 来设定：
+当然，使用 [tooltip.formatter](option.html#tooltip.formatter) 可以任意定制 tooltip 中的内容。但是还有更简单的方法，通过[encode](option.html#series-custom.encode) 和 [dimensions](option.html#series-custom.dimensions) 来设定：
 
 ```js
 option = {
@@ -188,7 +188,7 @@ option = {
 <br>
 <h2>（四）超出坐标系范围的截取</h2>
 
-与 [dataZoom](http://echarts.baidu.com/option.html#dataZoom) 结合使用的时候，常常使用会设置 [dataZoom.filterMode](http://echarts.baidu.com/option.html#dataZoom.filterMode) 为 'weakFilter'。这个设置的意思是：当 `dataItem` 部分超出坐标系边界的时候，`dataItem` 不会整体被过滤掉。例如：
+与 [dataZoom](option.html#dataZoom) 结合使用的时候，常常使用会设置 [dataZoom.filterMode](option.html#dataZoom.filterMode) 为 'weakFilter'。这个设置的意思是：当 `dataItem` 部分超出坐标系边界的时候，`dataItem` 不会整体被过滤掉。例如：
 
 ```js
 option = {
@@ -224,12 +224,12 @@ option = {
 <br>
 <h2>（五）关于 dataIndex</h2>
 
-开发者如果使用到的话应注意，[renderItem.arguments.params](http://echarts.baidu.com/option.html#series-custom.renderItem.arguments.params) 中的 `dataIndex` 和 `dataIndexInside` 是有区别的：
+开发者如果使用到的话应注意，[renderItem.arguments.params](option.html#series-custom.renderItem.arguments.params) 中的 `dataIndex` 和 `dataIndexInside` 是有区别的：
 
 + `dataIndex` 指的 `dataItem` 在原始数据中的 index。
-+ `dataIndexInside` 指的是 `dataItem` 在当前数据窗口（参见 [dataZoom](http://echarts.baidu.com/option.html#dataZoom)）中的 index。
++ `dataIndexInside` 指的是 `dataItem` 在当前数据窗口（参见 [dataZoom](option.html#dataZoom)）中的 index。
 
-[renderItem.arguments.api](http://echarts.baidu.com/option.html#series-custom.renderItem.arguments.api) 中使用的参数都是 `dataIndexInside` 而非 `dataIndex`，因为从 `dataIndex` 转换成 `dataIndexInside` 需要时间开销。
+[renderItem.arguments.api](option.html#series-custom.renderItem.arguments.api) 中使用的参数都是 `dataIndexInside` 而非 `dataIndex`，因为从 `dataIndex` 转换成 `dataIndexInside` 需要时间开销。
 
 
 
@@ -271,12 +271,12 @@ chart.on('click', {element: 'aaa'}, function (params) {
 <br>
 <h2>（七）自定义矢量图形</h2>
 
-自定义系列能支持使用 [SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData) 定义矢量路径。从而可以使用矢量图工具中做出的图形。参见：[path](http://echarts.baidu.com/option.html#series-custom.renderItem.return_path)，以及例子：[icons](http://echarts.baidu.com/examples/editor.html?c=custom-calendar-icon) 和 [shapes](http://echarts.baidu.com/examples/editor.html?c=custom-gantt-flight)。
+自定义系列能支持使用 [SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData) 定义矢量路径。从而可以使用矢量图工具中做出的图形。参见：[path](option.html#series-custom.renderItem.return_path)，以及例子：[icons](${websitePath}examples/editor.html?c=custom-calendar-icon) 和 [shapes](${websitePath}examples/editor.html?c=custom-gantt-flight)。
 
 
 
 
 <br>
 
-**更多的自定义系列的例子参见：[custom examples](http://echarts.baidu.com/examples.html#chart-type-custom)**
+**更多的自定义系列的例子参见：[custom examples](${websitePath}examples.html#chart-type-custom)**
 

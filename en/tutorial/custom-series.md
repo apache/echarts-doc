@@ -2,9 +2,9 @@
 
 # Custom Series
 
-[custom series](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom) is a type of series, which enable develpers to customize graphic elements rendering and generate new types of chart.
+[custom series](option.html#series-custom) is a type of series, which enable develpers to customize graphic elements rendering and generate new types of chart.
 
-Why echarts supports `custom series`? There are endless chart types in the world of data visualization, which are not enumerable. Thus only most common used chart types are built-in supported in echarts. For other chart types, it is necessary to provide an approach to make new types of chart for developers. This approach should be as simple as possible, which had better not to bothered developers with some details of implementation, such as creating and deleting graphic elements, transition animation, tooltip supporting, working with [dataZoom](https://ecomfe.github.io/echarts-doc/public/en/option.html#dataZoom) or [visualMap](https://ecomfe.github.io/echarts-doc/public/en/option.html#visualMap). Having considered the factors above, a solution [custom series](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom) is published.
+Why echarts supports `custom series`? There are endless chart types in the world of data visualization, which are not enumerable. Thus only most common used chart types are built-in supported in echarts. For other chart types, it is necessary to provide an approach to make new types of chart for developers. This approach should be as simple as possible, which had better not to bothered developers with some details of implementation, such as creating and deleting graphic elements, transition animation, tooltip supporting, working with [dataZoom](option.html#dataZoom) or [visualMap](option.html#visualMap). Having considered the factors above, a solution [custom series](option.html#series-custom) is published.
 
 **For example, a "x-range" chart is made by custom sereis:**
 ~[800x500](${galleryViewPath}custom-profile&reset=1&edit=1)
@@ -32,7 +32,7 @@ var option = {
 }
 ```
 
-In the rendering phase of echarts workflow, [renderItem](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.renderItem) is called respectively for each `dataItem` in [series.data](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.data). `renderItem` is responsible for build a group of definitions of graphic elements, including graphic type, size, location, style, etc. echarts will then build graphic elements according to those definitions. For example:
+In the rendering phase of echarts workflow, [renderItem](option.html#series-custom.renderItem) is called respectively for each `dataItem` in [series.data](option.html#series-custom.data). `renderItem` is responsible for build a group of definitions of graphic elements, including graphic type, size, location, style, etc. echarts will then build graphic elements according to those definitions. For example:
 
 ```js
 var option = {
@@ -99,19 +99,19 @@ var option = {
 ```
 
 
-[renderItem](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.renderItem) provides two parameters:
-+ [params](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.renderItem.arguments.params)：provides info about the current series (such as `seriesIndex`、`dataIndex`, etc.) and data (such as `dataIndex`, `dataIndexInside`, etc.) and coordinate system (such as location and size of bounding box of the current coordinate system)
-+ [api](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.renderItem.arguments.api) provides some methods to developers (such as `api.value()`, `api.coord()`).
+[renderItem](option.html#series-custom.renderItem) provides two parameters:
++ [params](option.html#series-custom.renderItem.arguments.params)：provides info about the current series (such as `seriesIndex`、`dataIndex`, etc.) and data (such as `dataIndex`, `dataIndexInside`, etc.) and coordinate system (such as location and size of bounding box of the current coordinate system)
++ [api](option.html#series-custom.renderItem.arguments.api) provides some methods to developers (such as `api.value()`, `api.coord()`).
 
-[renderItem](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.renderItem) method should return definitions of graphic elements for the current `dataItem`. See [renderItem.return](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.renderItem.return).
+[renderItem](option.html#series-custom.renderItem) method should return definitions of graphic elements for the current `dataItem`. See [renderItem.return](option.html#series-custom.renderItem.return).
 
-Generally, the main process of [renderItem](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.renderItem) is that retrieve value from data and convert them to graphic elements on the current coordinate system. Two methods in [renderItem.arguments.api](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.renderItem.arguments.api) are always used in this procedure:
-+ [api.value(...)](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.renderItem.arguments.api.value) is used to retrieve value from data. For example, `api.value(0)` retrieve the value of the first dimension in the current data item.
-+ [api.coord(...)](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.renderItem.arguments.api.coord) is used to convert data to coordinate. For example, `var point = api.coord([api.value(0), api.value(1)])` converet the data to the point on the current coordinate system.
+Generally, the main process of [renderItem](option.html#series-custom.renderItem) is that retrieve value from data and convert them to graphic elements on the current coordinate system. Two methods in [renderItem.arguments.api](option.html#series-custom.renderItem.arguments.api) are always used in this procedure:
++ [api.value(...)](option.html#series-custom.renderItem.arguments.api.value) is used to retrieve value from data. For example, `api.value(0)` retrieve the value of the first dimension in the current data item.
++ [api.coord(...)](option.html#series-custom.renderItem.arguments.api.coord) is used to convert data to coordinate. For example, `var point = api.coord([api.value(0), api.value(1)])` converet the data to the point on the current coordinate system.
 
-Sometimes [api.size(...)](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.renderItem.arguments.api.size) method is needed, which calculates the size on the coordinate system by a given data range.
+Sometimes [api.size(...)](option.html#series-custom.renderItem.arguments.api.size) method is needed, which calculates the size on the coordinate system by a given data range.
 
-Moreover, [api.style(...)](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.renderItem.arguments.api.style) method can be used to set style. It provides not only the style settings specified in [series.itemStyle](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.itemStyle), but also the result of visual mapping. This method can also be called like `api.style({fill: 'green', stroke: 'yellow'})` to override those style settings.
+Moreover, [api.style(...)](option.html#series-custom.renderItem.arguments.api.style) method can be used to set style. It provides not only the style settings specified in [series.itemStyle](option.html#series-custom.itemStyle), but also the result of visual mapping. This method can also be called like `api.style({fill: 'green', stroke: 'yellow'})` to override those style settings.
 
 Having `renderItem` provided, 90% of the work of creating custom series has been accomplished. The rest of this work is to refine and polish them.
 
@@ -120,7 +120,7 @@ Having `renderItem` provided, 90% of the work of creating custom series has been
 <br>
 <h2>(II) Make the extent of axes fit the data</h2>
 
-There is axes in some coordinate systems, such as [cartesian2d (grid)](https://ecomfe.github.io/echarts-doc/public/en/option.html#grid)and [polar](https://ecomfe.github.io/echarts-doc/public/en/option.html#polar). The extent of an axis should fit the data automatically, otherwise the graphic elements would be overflow the bounding box of the coordinate system. So, for example, in [cartesian2d (grid)](https://ecomfe.github.io/echarts-doc/public/en/option.html#grid), developers should specify that which dimensions correspond to `x` axis and which to `y` axis use the property [encode](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.encode):
+There is axes in some coordinate systems, such as [cartesian2d (grid)](option.html#grid)and [polar](option.html#polar). The extent of an axis should fit the data automatically, otherwise the graphic elements would be overflow the bounding box of the coordinate system. So, for example, in [cartesian2d (grid)](option.html#grid), developers should specify that which dimensions correspond to `x` axis and which to `y` axis use the property [encode](option.html#series-custom.encode):
 
 ```js
 option = {
@@ -151,7 +151,7 @@ option = {
 <br>
 <h2>(III) Set tooltip content</h2>
 
-Of course [tooltip.formatter](https://ecomfe.github.io/echarts-doc/public/en/option.html#tooltip.formatter) can be used to define the content in tooltip. But it is easier to do that by setting [encode](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.encode) and [dimensions](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.dimensions):
+Of course [tooltip.formatter](option.html#tooltip.formatter) can be used to define the content in tooltip. But it is easier to do that by setting [encode](option.html#series-custom.encode) and [dimensions](option.html#series-custom.dimensions):
 
 ```js
 option = {
@@ -192,7 +192,7 @@ Several other issues about `custom series` are introduced below.
 <br>
 <h2>(IV) Shape clipping when overflow the coordinates area</h2>
 
-When use `custom series` with [dataZoom](https://ecomfe.github.io/echarts-doc/public/en/option.html#dataZoom), [dataZoom.filterMode](https://ecomfe.github.io/echarts-doc/public/en/option.html#dataZoom.filterMode) usually be set as `'weakFilter'`, which prevent `dataItem` from being filtered when only part of its dimensions are out of the current data window. For example:
+When use `custom series` with [dataZoom](option.html#dataZoom), [dataZoom.filterMode](option.html#dataZoom.filterMode) usually be set as `'weakFilter'`, which prevent `dataItem` from being filtered when only part of its dimensions are out of the current data window. For example:
 
 
 ```js
@@ -231,13 +231,13 @@ See the example mentioned above [Profile](${galleryEditorPath}custom-profile).
 <h2>(V) About dataIndex</h2>
 
 
-Developers had better notice that in [renderItem.arguments.params](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.renderItem.arguments.params) `dataIndexInside` and `dataIndex` is different:
+Developers had better notice that in [renderItem.arguments.params](option.html#series-custom.renderItem.arguments.params) `dataIndexInside` and `dataIndex` is different:
 
 
 + `dataIndex` is the index of a `dataItem` in the original data.
-+ `dataIndexInside` is the index of a `dataItem` in the current data window (see [dataZoom](https://ecomfe.github.io/echarts-doc/public/en/option.html#dataZoom).
++ `dataIndexInside` is the index of a `dataItem` in the current data window (see [dataZoom](option.html#dataZoom).
 
-[renderItem.arguments.api](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.renderItem.arguments.api) uses `dataIndexInside` as the input parameter but not `dataIndex`, because conversion from `dataIndex` to `dataIndexInside` is time-consuming.
+[renderItem.arguments.api](option.html#series-custom.renderItem.arguments.api) uses `dataIndexInside` as the input parameter but not `dataIndex`, because conversion from `dataIndex` to `dataIndexInside` is time-consuming.
 
 
 <br>
@@ -280,7 +280,7 @@ chart.on('click', {element: 'aaa'}, function (params) {
 <h2>(VII) Custom vector shapes</h2>
 
 
-[SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData) is supported, which enables to use shapes that are created in vector tool. See [path](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-custom.renderItem.return_path), and examples: [icons](https://ecomfe.github.io/echarts-examples/public/index.html?c=custom-calendar-icon), [shapes](https://ecomfe.github.io/echarts-examples/public/index.html?c=custom-gantt-flight).
+[SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData) is supported, which enables to use shapes that are created in vector tool. See [path](option.html#series-custom.renderItem.return_path), and examples: [icons](https://ecomfe.github.io/echarts-examples/public/index.html?c=custom-calendar-icon), [shapes](https://ecomfe.github.io/echarts-examples/public/index.html?c=custom-gantt-flight).
 
 
 

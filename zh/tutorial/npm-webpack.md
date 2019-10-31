@@ -3,11 +3,9 @@
 
 # 在 webpack 中使用 ECharts
 
-[Webpack](https://webpack.github.io/) 是目前比较流行的模块打包工具，你可以在使用 webpack 的项目中轻松的引入和打包 ECharts，这里假设你已经对 webpack 具有一定的了解并且在自己的项目中使用。
+[Webpack](https://webpack.js.org//) 是目前比较流行的模块打包工具，你可以在使用 webpack 的项目中轻松的引入和打包 ECharts，这里假设你已经对 webpack 具有一定的了解并且在自己的项目中使用。
 
 ## npm 安装 ECharts
-
-在 `3.1.1` 版本之前 ECharts 在 npm 上的 package 是非官方维护的，从 `3.1.1` 开始由官方 [EFE](https://github.com/ecomfe/) 维护 npm 上 ECharts 和 zrender 的 package。
 
 你可以使用如下命令通过 npm 安装 ECharts
 
@@ -77,7 +75,7 @@ myChart.setOption({
 });
 ```
 
-可以按需引入的模块列表见 [https://github.com/ecomfe/echarts/blob/master/index.js](https://github.com/ecomfe/echarts/blob/master/index.js)
+可以按需引入的模块列表见 [https://github.com/apache/incubator-echarts/blob/master/index.js](https://github.com/apache/incubator-echarts/blob/master/index.js)
 
 
-对于流行的模块打包工具 [browserify](http://browserify.org/) 也是同样的用法，这里就不赘述了。而对于使用 [rollup](https://rollupjs.org/) 的自定义构建，参见 [自定义构建 ECharts](http://echarts.baidu.com/tutorial.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%9E%84%E5%BB%BA%20ECharts)。
+对于流行的模块打包工具 [browserify](http://browserify.org/) 也是同样的用法，这里就不赘述了。而对于使用 [rollup](https://rollupjs.org/) 的自定义构建，参见 [自定义构建 ECharts](${websitePath}/zh/tutorial.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%9E%84%E5%BB%BA%20ECharts)。

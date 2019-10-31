@@ -3,8 +3,7 @@
 
 # Create Custom Build of ECharts
 
-
-In most cases, ECharts builds can be downloaded from the [download page](${wesitePath}/en/download.html) or from the `echarts/dist` directory in our [GitHub project](https://github.com/ecomfe/echarts/releases), where
+In most cases, ECharts builds can be get from  [CDN](https://www.jsdelivr.com/package/npm/echarts) or from the `echarts/dist` directory in our [GitHub project](https://github.com/apache/incubator-echarts/releases), where
 these pre-builds are provided:
 
 + Complete verion: `echarts/dist/echarts.js`, including all charts and components (see `echarts/echarts.all.js` for detail), but has maximum file size.
@@ -13,9 +12,9 @@ these pre-builds are provided:
 
 We can also build echarts ourselves, which enables to only include the charts and components you needed. You can customize your ECharts build by using one of these approaches:
 
-+ [Online custom build tool](${wesitePath}/en/builder.html) is relatively convenient.
++ [Online custom build tool](${websitePath}builder.html) is relatively convenient.
 + The script `echarts/build/build.js` found in the project is flexible for module selecting, and supports multi-language builds
-+ Build ECharts and your project directly by using tools such as [rollup](https://rollupjs.org/), [webpack](https://webpack.github.io/), [browserify](http://browserify.org/)
++ Build ECharts and your project directly by using tools such as [rollup](https://rollupjs.org/), [webpack](https://webpack.js.org//), [browserify](http://browserify.org/)
 
 There are some examples to illustrate the latter two approaches below.
 
@@ -125,7 +124,7 @@ Open `myProject/pie.html` in a browser, we can see the pie chart:
 
 ## Modules that are permitted to be imported
 
-All of the permitted modules are declared in [`myProject/node_module/echarts/echarts.all.js`](https://github.com/ecomfe/echarts/blob/master/echarts.all.js) and [`myProject/node_module/echarts/src/export.js`](https://github.com/ecomfe/echarts/blob/master/src/export.js). Other modules in the source code of echarts and zrender **SHOULD NOT BE IMPORTED**, because they are inner modules, whose interfaces and functionalities may be modified in the subsequent upgrades of echarts.
+All of the permitted modules are declared in [`myProject/node_module/echarts/echarts.all.js`](https://github.com/apache/incubator-echarts/blob/master/echarts.all.js) and [`myProject/node_module/echarts/src/export.js`](https://github.com/apache/incubator-echarts/blob/master/src/export.js). Other modules in the source code of echarts and zrender **SHOULD NOT BE IMPORTED**, because they are inner modules, whose interfaces and functionalities may be modified in the subsequent upgrades of echarts.
 
 
 ## Use `echarts/lib/**` or `echarts/src/**`?
@@ -139,7 +138,7 @@ All of the permitted modules are declared in [`myProject/node_module/echarts/ech
 
 ## Build echarts and our project directly by rollup
 
-Now we have known that how to create custom build by `echarts/build/build.js`. Alternatively, we can bundle echarts and our project directly by the tool like [rollup](https://rollupjs.org/), [webpack](https://webpack.github.io/) or [browserify](http://browserify.org/). In some project, this approach is required. Next we only go with [rollup](https://rollupjs.org/), because [webpack](https://webpack.github.io/) and [browserify](http://browserify.org/) are in the similar way.
+Now we have known that how to create custom build by `echarts/build/build.js`. Alternatively, we can bundle echarts and our project directly by the tool like [rollup](https://rollupjs.org/), [webpack](https://webpack.js.org//) or [browserify](http://browserify.org/). In some project, this approach is required. Next we only go with [rollup](https://rollupjs.org/), because [webpack](https://webpack.js.org//) and [browserify](http://browserify.org/) are in the similar way.
 
 
 Firstly install [rollup](https://rollupjs.org/) in `myProject` directory:

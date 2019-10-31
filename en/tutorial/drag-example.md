@@ -13,7 +13,7 @@ This example mainly implements that dragging points of a curve and by which the 
 <br>
 <h2>[ Part 1 ] Implement basic dragging</h2>
 
-First of all, we create a basic [line chart (line series)](http://echarts.baidu.com/option.html#series-line):
+First of all, we create a basic [line chart (line series)](option.html#series-line):
 
 ```js
 var symbolSize = 20;
@@ -45,7 +45,7 @@ myChart.setOption({
 });
 ```
 
-Since the symbols in line is not draggable, we make them draggable by using [graphic component](http://echarts.baidu.com/option.html#graphic) to add draggable circular elements to symbols respectively.
+Since the symbols in line is not draggable, we make them draggable by using [graphic component](option.html#graphic) to add draggable circular elements to symbols respectively.
 
 ```js
 myChart.setOption({
@@ -86,7 +86,7 @@ myChart.setOption({
 });
 ```
 
-In the code above, API [convertToPixel](http://echarts.baidu.com/api.html#echartsInstance.convertToPixel) is used to convert data to its "pixel coodinate", based on which each graphic elements can be rendered on canvas. The term "pixel coodinate" means the coordinate is in canvas pixel, whose origin is the top-left of the canvas. In the sentence `myChart.convertToPixel('grid', dataItem)`, the first parameter `'grid'` indicates that `dataItem` should be converted in the first [grid component (cartesian)](http://echarts.baidu.com/option.html#grid).
+In the code above, API [convertToPixel](api.html#echartsInstance.convertToPixel) is used to convert data to its "pixel coodinate", based on which each graphic elements can be rendered on canvas. The term "pixel coodinate" means the coordinate is in canvas pixel, whose origin is the top-left of the canvas. In the sentence `myChart.convertToPixel('grid', dataItem)`, the first parameter `'grid'` indicates that `dataItem` should be converted in the first [grid component (cartesian)](option.html#grid).
 
 **Notice:** `convertToPixel` should not be called before the first time that `setOption` called. Namely, it can only be used after coordinate systems (grid/polar/...) initialized.
 
@@ -113,7 +113,7 @@ function onPointDragging(dataIndex) {
 }
 ```
 
-In the code above, API [convertFromPixel](http://echarts.baidu.com/api.html#echartsInstance.convertFromPixel) is used, which is the reversed process of [convertToPixel](http://echarts.baidu.com/api.html#echartsInstance.convertToPixel). `myChart.convertFromPixel('grid', this.position)` converts a pixel coordinate to data item in [grid (cartesian)](http://echarts.baidu.com/option.html#grid).
+In the code above, API [convertFromPixel](api.html#echartsInstance.convertFromPixel) is used, which is the reversed process of [convertToPixel](api.html#echartsInstance.convertToPixel). `myChart.convertFromPixel('grid', this.position)` converts a pixel coordinate to data item in [grid (cartesian)](option.html#grid).
 
 Finally, add those code to make graphic elements responsive to change of canvas size.
 
@@ -138,7 +138,7 @@ window.addEventListener('resize', function () {
 <br>
 <h2>[ Part 2 ] Add tooltip component</h2>
 
-Now basic functionality have been implemented by parte 1. If we need the data can be displayed realtime when dragging, we can use [tooltip component](http://echarts.baidu.com/option.html#tooltip) to do that. Nevertheless, tooltip component has its default "show/hide rule", which is not applicable in this case. So we need to customize the "show/hide rule" for our case.
+Now basic functionality have been implemented by parte 1. If we need the data can be displayed realtime when dragging, we can use [tooltip component](option.html#tooltip) to do that. Nevertheless, tooltip component has its default "show/hide rule", which is not applicable in this case. So we need to customize the "show/hide rule" for our case.
 
 Add these snippets to the code block above:
 
@@ -183,7 +183,7 @@ function hideTooltip(dataIndex) {
 }
 ```
 
-The API [dispatchAction](http://echarts.baidu.com/api.html#echartsInstance.dispatchAction) is used to show/hide tooltip content, where actions [showTip](http://echarts.baidu.com/api.html#action.tooltip.showTip) and [hideTip](http://echarts.baidu.com/api.html#action.tooltip.hideTip) is dispatched.
+The API [dispatchAction](api.html#echartsInstance.dispatchAction) is used to show/hide tooltip content, where actions [showTip](api.html#action.tooltip.showTip) and [hideTip](api.html#action.tooltip.hideTip) is dispatched.
 
 
 
@@ -197,7 +197,7 @@ Full code is shown as follow:
 <html>
 <head>
     <meta charset="utf-8">
-    <script src="http://echarts.baidu.com/dist/echarts.min.js"></script>
+    <script src="dist/echarts.min.js"></script>
 </head>
 <body>
     <div id="main" style="width: 600px;height:400px;"></div>
@@ -298,7 +298,7 @@ Full code is shown as follow:
 
 <br>
 
-With knowledge introduced above, more feature can be implemented. For example, [dataZoom component](http://echarts.baidu.com/option.html#dataZoom) can be added to cooperate with the cartesian, or we can make a plotting board on coordinate systems. Use your imagination ~
+With knowledge introduced above, more feature can be implemented. For example, [dataZoom component](option.html#dataZoom) can be added to cooperate with the cartesian, or we can make a plotting board on coordinate systems. Use your imagination ~
 
 
 

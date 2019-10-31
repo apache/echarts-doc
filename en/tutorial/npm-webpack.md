@@ -3,11 +3,9 @@
 
 # Use ECharts with webpack
 
-[Webpack](https://webpack.github.io/) is a popular module packaging tool, which can be used easily to import and packaging ECharts. Here we assume you already have certain understanding about webpack and used it in your project.
+[Webpack](https://webpack.js.org//) is a popular module packaging tool, which can be used easily to import and packaging ECharts. Here we assume you already have certain understanding about webpack and used it in your project.
 
 ## Use npm to install ECharts
-
-Before `3.1.1` version, ECharts package on npm was maintained by third-party. Since `3.1.1`, ECharts and zrender on npm are maintained officially by [EFE](https://github.com/ecomfe/) team.
 
 You can use the following command to install ECharts with npm.
 

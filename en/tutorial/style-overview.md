@@ -24,7 +24,7 @@ Other article about styling can be check in [Customized Chart Styles](~Customize
 
 **Theme**
 
-Setting a theme is the simplest way to change the color style. For example, in [Examples page](https://ecomfe.github.io/echarts-examples/public/index.html), "Theme" can be selected, and view the result directly.
+Setting a theme is the simplest way to change the color style. For example, in [Examples page](${websitePath}/examples), "Theme" can be selected, and view the result directly.
 
 Since ECharts4, besides the original default theme, ECharts provide another two built-in themes, named '`'light'` and `'dark'`. They can be used as follows:
 

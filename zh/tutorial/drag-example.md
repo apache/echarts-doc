@@ -14,7 +14,7 @@ echarts 本身没有提供封装好的『拖拽改变图表』功能，因为现
 <br>
 <h2>（一）实现基本的拖拽功能</h2>
 
-在这个例子中，基础的图表是一个 [折线图 (series-line)](http://echarts.baidu.com/option.html#series-line)。参见如下配置：
+在这个例子中，基础的图表是一个 [折线图 (series-line)](option.html#series-line)。参见如下配置：
 
 ```js
 var symbolSize = 20;
@@ -47,7 +47,7 @@ myChart.setOption({
 });
 ```
 
-既然折线中原生的点没有拖拽功能，我们就为它加上拖拽功能：用 [graphic](http://echarts.baidu.com/option.html#graphic) 组件，在每个点上面，覆盖一个隐藏的可拖拽的圆点。
+既然折线中原生的点没有拖拽功能，我们就为它加上拖拽功能：用 [graphic](option.html#graphic) 组件，在每个点上面，覆盖一个隐藏的可拖拽的圆点。
 
 ```js
 myChart.setOption({
@@ -82,9 +82,9 @@ myChart.setOption({
 });
 ```
 
-上面的代码中，使用 [convertToPixel](http://echarts.baidu.com/api.html#echartsInstance.convertToPixel) 这个 API，进行了从 data 到『像素坐标』的转换，从而得到了每个圆点应该在的位置，从而能绘制这些圆点。`myChart.convertToPixel('grid', dataItem)` 这句话中，第一个参数 `'grid'` 表示 `dataItem` 在 [grid](http://echarts.baidu.com/option.html#grid) 这个组件中（即直角坐标系）中进行转换。所谓『像素坐标』，就是以 echarts 容器 dom element 的左上角为零点的以像素为单位的坐标系中的坐标。
+上面的代码中，使用 [convertToPixel](api.html#echartsInstance.convertToPixel) 这个 API，进行了从 data 到『像素坐标』的转换，从而得到了每个圆点应该在的位置，从而能绘制这些圆点。`myChart.convertToPixel('grid', dataItem)` 这句话中，第一个参数 `'grid'` 表示 `dataItem` 在 [grid](option.html#grid) 这个组件中（即直角坐标系）中进行转换。所谓『像素坐标』，就是以 echarts 容器 dom element 的左上角为零点的以像素为单位的坐标系中的坐标。
 
-注意这件事需要在第一次 setOption 后再进行，也就是说，须在坐标系（[grid](http://echarts.baidu.com/option.html#grid)）初始化后才能调用 `myChart.convertToPixel('grid', dataItem)`。
+注意这件事需要在第一次 setOption 后再进行，也就是说，须在坐标系（[grid](option.html#grid)）初始化后才能调用 `myChart.convertToPixel('grid', dataItem)`。
 
 有了这段代码后，就有了诸个能拖拽的点。接下来要为每个点，加上拖拽响应的事件：
 
@@ -105,7 +105,7 @@ function onPointDragging(dataIndex) {
 }
 ```
 
-上面的代码中，使用了 [convertFromPixel](http://echarts.baidu.com/api.html#echartsInstance.convertFromPixel) 这个 API。它是 [convertToPixel](http://echarts.baidu.com/api.html#echartsInstance.convertToPixel) 的逆向过程。`myChart.convertFromPixel('grid', this.position)` 表示把当前像素坐标转换成 [grid](http://echarts.baidu.com/option.html#grid) 组件中直角坐标系的 dataItem 值。
+上面的代码中，使用了 [convertFromPixel](api.html#echartsInstance.convertFromPixel) 这个 API。它是 [convertToPixel](api.html#echartsInstance.convertToPixel) 的逆向过程。`myChart.convertFromPixel('grid', this.position)` 表示把当前像素坐标转换成 [grid](option.html#grid) 组件中直角坐标系的 dataItem 值。
 
 最后，为了使 dom 尺寸改变时，图中的元素能自适应得变化，加上这些代码：
 
@@ -130,7 +130,7 @@ window.addEventListener('resize', function () {
 <br>
 <h2>（二）添加 tooltip 组件</h2>
 
-到此，拖拽的基本功能就完成了。但是想要更进一步得实时看到拖拽过程中，被拖拽的点的 data 值的变化状况，我们可以使用 [tooltip](http://echarts.baidu.com/option.html#tooltip) 组件来实时显示这个值。但是，tooltip 有其默认的『显示』『隐藏』触发规则，在我们拖拽的场景中并不适用，所以我们还要手动定制 tooltip 的『显示』『隐藏』行为。
+到此，拖拽的基本功能就完成了。但是想要更进一步得实时看到拖拽过程中，被拖拽的点的 data 值的变化状况，我们可以使用 [tooltip](option.html#tooltip) 组件来实时显示这个值。但是，tooltip 有其默认的『显示』『隐藏』触发规则，在我们拖拽的场景中并不适用，所以我们还要手动定制 tooltip 的『显示』『隐藏』行为。
 
 在上述代码中分别添加如下定义：
 
@@ -175,7 +175,7 @@ function hideTooltip(dataIndex) {
 }
 ```
 
-这里使用了 [dispatchAction](http://echarts.baidu.com/api.html#echartsInstance.dispatchAction) 来显示隐藏 tooltip。用到了 [showTip](http://echarts.baidu.com/api.html#action.tooltip.showTip)、[hideTip](http://echarts.baidu.com/api.html#action.tooltip.hideTip)。
+这里使用了 [dispatchAction](api.html#echartsInstance.dispatchAction) 来显示隐藏 tooltip。用到了 [showTip](api.html#action.tooltip.showTip)、[hideTip](api.html#action.tooltip.hideTip)。
 
 
 
@@ -189,7 +189,7 @@ function hideTooltip(dataIndex) {
 <html>
 <head>
     <meta charset="utf-8">
-    <script src="http://echarts.baidu.com/dist/echarts.min.js"></script>
+    <script src="dist/echarts.min.js"></script>
 </head>
 <body>
     <div id="main" style="width: 600px;height:400px;"></div>
@@ -290,7 +290,7 @@ function hideTooltip(dataIndex) {
 
 <br>
 
-有了这些基础，就可以定制更多的功能了。可以加 [dataZoom](http://echarts.baidu.com/option.html#dataZoom) 组件，可以制作一个直角坐标系上的绘图板等等。可以发挥想象力。
+有了这些基础，就可以定制更多的功能了。可以加 [dataZoom](option.html#dataZoom) 组件，可以制作一个直角坐标系上的绘图板等等。可以发挥想象力。
 
 
 

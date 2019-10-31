@@ -8,7 +8,7 @@
 
 ## 引入相关文件
 
-旭日图是 ECharts 4.0 新增的图表类型，在[官网下载页面](http://echarts.baidu.com/download.html)下载“完整版” ECharts，并将下载的 JavaScript 文件引入即可创建旭日图。
+旭日图是 ECharts 4.0 新增的图表类型，从 [CDN](https://www.jsdelivr.com/package/npm/echarts) 引入完整版的 [echarts.min.js](https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js)
 
 ## 最简单的旭日图
 
