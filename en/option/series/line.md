@@ -121,26 +121,19 @@ If is typed in `boolean`, then it means whether to enable smoothing. If is typed
 Please refer to [smoothMonotone](~series-line.smoothMonotone) to change smoothing algorithm.
 
 ## smoothMonotone(string)
-Whether the broken line keep the monotonicity when it is smoothed. It can be set as `'x'`, `'y'` to keep the monotonicity on x axis or y axis. Or it can be set to be `'none'` to use non-monotone smoothing algorithm.
+Whether the broken line keep the monotonicity when it is smoothed. It can be set as `'x'`, `'y'` to keep the monotonicity on x axis or y axis.
 
-From ECharts 4.0.3, we improved our default smoothing algorithm. The old algorithm can be used by setting `smoothMonotone` to be `'none'`. Here's the difference between old and new algorithm. In the following chart, old algorithm is in green color, and new algorithm is in red color.
+It is usually used on dual value axis.
 
-![600xauto](~smooth-old-vs-new.png)
+Here are 2 examples of broken line chart with dual value axis, showing the differences when `smoothMonotone` is without any setting, and `smoothMonotone` is set as `'x'`.
 
-The old algorithm has many problems:
++ No setting about `smoothMonotone`:
 
-![600xauto](~smooth-old-problem.png)
+![300xauto](~smooth-monotone-none.png)
 
-Old algorithm uses the previous and next point to form control points' direction, while they are always horizontal (when the first dimension of data is monotone) or vertical (when the second dimension of data is monotone) in new algorithm.
++ It is set as `'x'`:
 
-![600xauto](~smooth-algorithm.png)
-
-But new algorithm doesn't work with non-monotone data.
-
-![600xauto](~smooth-non-monotone-x.png)
-
-So we suggest that default value of `smoothMonotone` be used in most situations. If data on Y axis is monotone, it should be set to be `'y'`. If data is non-monotone, it should be set to be `'none'` to use the old algorithm.
-
+![300xauto](~smooth-monotone-x.png)
 
 ## sampling(string)
 
