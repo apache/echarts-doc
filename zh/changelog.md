@@ -295,9 +295,9 @@ Recovery build
 
 + [Feature] 支持了中等规模数据量K线图和柱状图的渲染（200K 数据）。并且可以使用 [series-candlestick.progressiveChunkMode](option.html#series-candlestick.progressiveChunkMode) 设定渐进渲染的模式。 查看示例 [candlestick-large](http://echarts.baidu.com/examples/editor.html?c=candlestick-large)。
 
-+ [Feature] 支持树图的布局：从右向左，从下向上。[#7351](https://github.com/ecomfe/echarts/issues/7351) [#7154](https://github.com/ecomfe/echarts/issues/7154)。查看示例 [tree-orient-right-left](http://echarts.baidu.com/examples/editor.html?c=tree-orient-right-left)，[tree-vertical](http://echarts.baidu.com/examples/editor.html?c=tree-vertical)。
++ [Feature] 支持树图的布局：从右向左，从下向上。[#7351](https://github.com/apache/incubator-echarts/issues/7351) [#7154](https://github.com/apache/incubator-echarts/issues/7154)。查看示例 [tree-orient-right-left](http://echarts.baidu.com/examples/editor.html?c=tree-orient-right-left)，[tree-vertical](http://echarts.baidu.com/examples/editor.html?c=tree-vertical)。
 
-+ [Feature] 图例路径支持 keeping-aspect. [#7831](https://github.com/ecomfe/echarts/issues/7831)。
++ [Feature] 图例路径支持 keeping-aspect. [#7831](https://github.com/apache/incubator-echarts/issues/7831)。
 
 + [Feature] 桑基图支持节点拖拽。查看示例 [sankey-energy](http://echarts.baidu.com/examples/editor.html?c=sankey-energy)。
 
@@ -310,57 +310,57 @@ Recovery build
 
 + [Enhance] 刷选工具中，提高了被选中项的 z 层级，参见`visualMap.inRange.liftZ`。
 
-+ [Enhance] 解决桑基图的节点顺序改变问题。[#3390](https://github.com/ecomfe/echarts/issues/3390) [#3543](https://github.com/ecomfe/echarts/issues/3543) [#6365](https://github.com/ecomfe/echarts/issues/6365) [#4880](https://github.com/ecomfe/echarts/issues/4880) [#4986](https://github.com/ecomfe/echarts/issues/4986)
++ [Enhance] 解决桑基图的节点顺序改变问题。[#3390](https://github.com/apache/incubator-echarts/issues/3390) [#3543](https://github.com/apache/incubator-echarts/issues/3543) [#6365](https://github.com/apache/incubator-echarts/issues/6365) [#4880](https://github.com/apache/incubator-echarts/issues/4880) [#4986](https://github.com/apache/incubator-echarts/issues/4986)
 
 + [Enhance] 优化了折线图采样的性能。
 
 + [Enhance] 优化了平行坐标系的渐进渲染（progressive rendering）性能。
 
-+ [Enhance] 有数据过滤（dataZoom）时，对于折线图中断线的优化。[#7955](https://github.com/ecomfe/echarts/issues/7955)。
++ [Enhance] 有数据过滤（dataZoom）时，对于折线图中断线的优化。[#7955](https://github.com/apache/incubator-echarts/issues/7955)。
 
 + [Enhance] 支持 `toolbox.feature` 的融合模式的 `setOption`。
 
-+ [Fix] 修复有环图导致桑基图死循环的问题。[#7495](https://github.com/ecomfe/echarts/issues/7495) [#8117](https://github.com/ecomfe/echarts/issues/8117) [#7583](https://github.com/ecomfe/echarts/issues/7583) [#7325](https://github.com/ecomfe/echarts/issues/7325) [#6555](https://github.com/ecomfe/echarts/issues/6555)
++ [Fix] 修复有环图导致桑基图死循环的问题。[#7495](https://github.com/apache/incubator-echarts/issues/7495) [#8117](https://github.com/apache/incubator-echarts/issues/8117) [#7583](https://github.com/apache/incubator-echarts/issues/7583) [#7325](https://github.com/apache/incubator-echarts/issues/7325) [#6555](https://github.com/apache/incubator-echarts/issues/6555)
 
-+ [Fix] 修复了当使用数据堆叠（stack）时 `yAxis` 范围不改变的问题。[#8003](https://github.com/ecomfe/echarts/issues/8003)。
++ [Fix] 修复了当使用数据堆叠（stack）时 `yAxis` 范围不改变的问题。[#8003](https://github.com/apache/incubator-echarts/issues/8003)。
 
-+ [Fix] 优先从 `dateItem.name` 或许名称。[#7966](https://github.com/ecomfe/echarts/issues/7966)
++ [Fix] 优先从 `dateItem.name` 或许名称。[#7966](https://github.com/apache/incubator-echarts/issues/7966)
 
 + [Fix] 修复了微信小程序中，Typed array 使用的问题。
 
-+ [Fix] 修复了 axis data item 中的 `option` 无效。[#7954](https://github.com/ecomfe/echarts/issues/7954)
++ [Fix] 修复了 axis data item 中的 `option` 无效。[#7954](https://github.com/apache/incubator-echarts/issues/7954)
 
-+ [Fix] 修复了 `markArea` 只显示最后一个。[#7902](https://github.com/ecomfe/echarts/issues/7902)
++ [Fix] 修复了 `markArea` 只显示最后一个。[#7902](https://github.com/apache/incubator-echarts/issues/7902)
 
 + [Fix] 修复了微信小程序的环境检测不精确。
 
-+ [Fix] 折线图剪切（clip）图形时，修复了精度问题。[#7913](https://github.com/ecomfe/echarts/issues/7913)
++ [Fix] 折线图剪切（clip）图形时，修复了精度问题。[#7913](https://github.com/apache/incubator-echarts/issues/7913)
 
-+ [Fix] 修复了K线图默认的提示（tooltip）只显示一条. [#8149](https://github.com/ecomfe/echarts/issues/8149)
++ [Fix] 修复了K线图默认的提示（tooltip）只显示一条. [#8149](https://github.com/apache/incubator-echarts/issues/8149)
 
-+ [Fix] 当多个坐标轴存在时，修复了柱状图起始位置问题。[#7412](https://github.com/ecomfe/echarts/issues/7412)
++ [Fix] 当多个坐标轴存在时，修复了柱状图起始位置问题。[#7412](https://github.com/apache/incubator-echarts/issues/7412)
 
-+ [Fix] 修复了当使用 `string` 时 `markArea` 不显示问题。[#7849](https://github.com/ecomfe/echarts/issues/7849)
++ [Fix] 修复了当使用 `string` 时 `markArea` 不显示问题。[#7849](https://github.com/apache/incubator-echarts/issues/7849)
 
-+ [Fix] 修复了 `dataZoom` 系列为空的时候抛出异常的问题。[#7666](https://github.com/ecomfe/echarts/issues/7666)
++ [Fix] 修复了 `dataZoom` 系列为空的时候抛出异常的问题。[#7666](https://github.com/apache/incubator-echarts/issues/7666)
 
-+ [Fix] 桑基图提升兼容性。[#2867](https://github.com/ecomfe/echarts/issues/2867)
++ [Fix] 桑基图提升兼容性。[#2867](https://github.com/apache/incubator-echarts/issues/2867)
 
-+ [Fix] 修复了树图第二次渲染的抛出异常。[#8038](https://github.com/ecomfe/echarts/issues/8038) [#8040](https://github.com/ecomfe/echarts/issues/8040) [#7720](https://github.com/ecomfe/echarts/issues/7720) [#7363](https://github.com/ecomfe/echarts/issues/7363) [#7315](https://github.com/ecomfe/echarts/issues/7315)
++ [Fix] 修复了树图第二次渲染的抛出异常。[#8038](https://github.com/apache/incubator-echarts/issues/8038) [#8040](https://github.com/apache/incubator-echarts/issues/8040) [#7720](https://github.com/apache/incubator-echarts/issues/7720) [#7363](https://github.com/apache/incubator-echarts/issues/7363) [#7315](https://github.com/apache/incubator-echarts/issues/7315)
 
-+ [Fix] 修复了当 `chart.setOption` 调用时，旭日图（`sunburst`）上卷节点不消除的问题。[#8132](https://github.com/ecomfe/echarts/issues/8132)
++ [Fix] 修复了当 `chart.setOption` 调用时，旭日图（`sunburst`）上卷节点不消除的问题。[#8132](https://github.com/apache/incubator-echarts/issues/8132)
 
-+ [Fix] SVG axisPointer 文本位置问题。[#7947](https://github.com/ecomfe/echarts/issues/7947)
++ [Fix] SVG axisPointer 文本位置问题。[#7947](https://github.com/apache/incubator-echarts/issues/7947)
 
 + [Fix] 修复了线图（lines chart）大规模模式中的渲染问题。
 
-+ [Fix] 修复了日历坐标系中，最后一日不显示的问题。[#8045](https://github.com/ecomfe/echarts/issues/8045)
++ [Fix] 修复了日历坐标系中，最后一日不显示的问题。[#8045](https://github.com/apache/incubator-echarts/issues/8045)
 
 + [Fix] 修复了当数据有 NaN 时，折线图中数据采样导致错误的轴范围的问题。
 
-+ [Fix] 修复了设置了 `series.encode` 时，折线图采样中不正确的问题。[#8017](https://github.com/ecomfe/echarts/issues/8017)
++ [Fix] 修复了设置了 `series.encode` 时，折线图采样中不正确的问题。[#8017](https://github.com/apache/incubator-echarts/issues/8017)
 
-+ [Fix] 修复了同名的多个系列设置 `legendHoverLink: false` 时效果不对的问题。[#8010](https://github.com/ecomfe/echarts/issues/8010)
++ [Fix] 修复了同名的多个系列设置 `legendHoverLink: false` 时效果不对的问题。[#8010](https://github.com/apache/incubator-echarts/issues/8010)
 
 + [Fix] 修复了关系图（`graph`）的部分高亮样式（hover style）不正确的问题。
 
@@ -375,7 +375,7 @@ Recovery build
 
 [Recovery Build]
 
-+ [^] 修正柱状图布局的问题。参见 [#7831](https://github.com/ecomfe/echarts/issues/7831)。
++ [^] 修正柱状图布局的问题。参见 [#7831](https://github.com/apache/incubator-echarts/issues/7831)。
 
 
 
@@ -385,37 +385,37 @@ Recovery build
 
 + **[+] ECharts 可以在微信小程序中使用了**。我们接到了很多微信小程序开发者的反馈，表示他们强烈需要像 ECharts 这样的可视化工具。但是微信小程序是不支持 DOM 操作的，Canvas 接口也和浏览器不尽相同。因此，我们和微信小程序官方团队合作，提供了 ECharts 的微信小程序版本。开发者可以通过熟悉的 ECharts 配置方式，快速开发图表，满足各种可视化需求。参见 [教程](tutorial.html#%E5%9C%A8%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts)。
 
-+ [+] 优化折线图平滑算法. 参见 [series-line.smooth](option.html#series-line.smooth) 和 [series-line.smoothMonotone](option.html#series-line.smoothMonotone) 和 [#7158](https://github.com/ecomfe/echarts/issues/7158)。
++ [+] 优化折线图平滑算法. 参见 [series-line.smooth](option.html#series-line.smooth) 和 [series-line.smoothMonotone](option.html#series-line.smoothMonotone) 和 [#7158](https://github.com/apache/incubator-echarts/issues/7158)。
 
-+ [+] 支持坐标轴两端的箭头偏移值 [series-line.symbolOffset](option.html#series-line.symbolOffset) of axis arrow。参见 [#7422](https://github.com/ecomfe/echarts/issues/7422)。
++ [+] 支持坐标轴两端的箭头偏移值 [series-line.symbolOffset](option.html#series-line.symbolOffset) of axis arrow。参见 [#7422](https://github.com/apache/incubator-echarts/issues/7422)。
 
-+ [+] [旭日图（sunburst）](option.html#series-sunburst) 支持了 [series-sunburst.label.minAngle](option.html#series-sunburst.label.minAngle)。当一个扇形区的角度小于该值时，该扇形区对应的文字不显示。可以用来对较小的扇形区隐藏文字。参见 [#7614](https://github.com/ecomfe/echarts/issues/7614)。
++ [+] [旭日图（sunburst）](option.html#series-sunburst) 支持了 [series-sunburst.label.minAngle](option.html#series-sunburst.label.minAngle)。当一个扇形区的角度小于该值时，该扇形区对应的文字不显示。可以用来对较小的扇形区隐藏文字。参见 [#7614](https://github.com/apache/incubator-echarts/issues/7614)。
 
-+ [+] [旭日图（sunburst）](option.html#series-sunburst) 支持了 tooltip。参见 [#7691](https://github.com/ecomfe/echarts/issues/7691)。
++ [+] [旭日图（sunburst）](option.html#series-sunburst) 支持了 tooltip。参见 [#7691](https://github.com/apache/incubator-echarts/issues/7691)。
 
-+ [+] [旭日图（sunburst）](option.html#series-sunburst) 支持了再 level 和单个扇形块层级设置 [series-sunburst.nodeClick](option.html#series-sunburst.nodeClick)。参见 [#7541](https://github.com/ecomfe/echarts/issues/7541)。
++ [+] [旭日图（sunburst）](option.html#series-sunburst) 支持了再 level 和单个扇形块层级设置 [series-sunburst.nodeClick](option.html#series-sunburst.nodeClick)。参见 [#7541](https://github.com/apache/incubator-echarts/issues/7541)。
 
-+ [+] 支持了按值进行 [堆积](option.html#series-bar.stack)，原先是按照数据顺序堆积，在一些场景下不够合理。修复了 [dataset](option.html#dataset) 不能使用堆积的问题。参见 [#7535](https://github.com/ecomfe/echarts/issues/7535)，[#7560](https://github.com/ecomfe/echarts/issues/7560)， [#6861](https://github.com/ecomfe/echarts/issues/6861)。
++ [+] 支持了按值进行 [堆积](option.html#series-bar.stack)，原先是按照数据顺序堆积，在一些场景下不够合理。修复了 [dataset](option.html#dataset) 不能使用堆积的问题。参见 [#7535](https://github.com/apache/incubator-echarts/issues/7535)，[#7560](https://github.com/apache/incubator-echarts/issues/7560)， [#6861](https://github.com/apache/incubator-echarts/issues/6861)。
 
 + [^] 修正了 [折线图](option.html#series-line) 超出坐标系边界的问题。
 
-+ [^] 修复了 [splitArea](option.html#xAxis.splitArea) 最后一个区域不显示的问题。参见 [#7118](https://github.com/ecomfe/echarts/issues/7118)。
++ [^] 修复了 [splitArea](option.html#xAxis.splitArea) 最后一个区域不显示的问题。参见 [#7118](https://github.com/apache/incubator-echarts/issues/7118)。
 
-+ [^] 修复了 [旭日图（sunburst）](option.html#series-sunburst) 修改渐变色时引起的 bug。参见 [#7569](https://github.com/ecomfe/echarts/issues/7569)。
++ [^] 修复了 [旭日图（sunburst）](option.html#series-sunburst) 修改渐变色时引起的 bug。参见 [#7569](https://github.com/apache/incubator-echarts/issues/7569)。
 
-+ [^] 修复了 [旭日图（sunburst）](option.html#series-sunburst) 不引入 [视觉映射组件（visualMap）](option.html#visualMap) 会报错的问题。参见 [#7575](https://github.com/ecomfe/echarts/issues/7575)。
++ [^] 修复了 [旭日图（sunburst）](option.html#series-sunburst) 不引入 [视觉映射组件（visualMap）](option.html#visualMap) 会报错的问题。参见 [#7575](https://github.com/apache/incubator-echarts/issues/7575)。
 
-+ [^] 修复了当数据量小于 [progressive](option.html#series-scatter.progressive) 时 [apendData](api.html#echartsInstance.appendData) 无效的问题。参见 [#7718](https://github.com/ecomfe/echarts/issues/7718) 和 [#7625](https://github.com/ecomfe/echarts/issues/7625)。
++ [^] 修复了当数据量小于 [progressive](option.html#series-scatter.progressive) 时 [apendData](api.html#echartsInstance.appendData) 无效的问题。参见 [#7718](https://github.com/apache/incubator-echarts/issues/7718) 和 [#7625](https://github.com/apache/incubator-echarts/issues/7625)。
 
 + [^] 修复了 [apendData](api.html#echartsInstance.appendData) 导致系列颜色变化的问题。
 
-+ [^] 修复了 [tooltip.axisPointer.label.show](option.html#tooltip.axisPointer.label.show) 设置为 `false` 时无效的问题。参见 [#7725](https://github.com/ecomfe/echarts/issues/7725)。
++ [^] 修复了 [tooltip.axisPointer.label.show](option.html#tooltip.axisPointer.label.show) 设置为 `false` 时无效的问题。参见 [#7725](https://github.com/apache/incubator-echarts/issues/7725)。
 
-+ [^] 修复了 [地图系列](option.html#series-map) 无数据区域不能选中的问题。参见 [#7629](https://github.com/ecomfe/echarts/issues/7629)。
++ [^] 修复了 [地图系列](option.html#series-map) 无数据区域不能选中的问题。参见 [#7629](https://github.com/apache/incubator-echarts/issues/7629)。
 
-+ [^] 修复了 [K线图（candlestick）](option.html#series-candlestick) 的 `encode` 问题。参见 [#7715](https://github.com/ecomfe/echarts/issues/7715)。
++ [^] 修复了 [K线图（candlestick）](option.html#series-candlestick) 的 `encode` 问题。参见 [#7715](https://github.com/apache/incubator-echarts/issues/7715)。
 
-+ [^] 修复了数据项为空的判断逻辑。这钱的逻辑导致了当数据项长度不一时，自定义系列的 [renderItem](option.html#series-custom.renderItem) 可能不能进入，以及 [dataset](option.html#dataset) 被使用时可能不能渲染的问题。参见 [#7733](https://github.com/ecomfe/echarts/issues/7733)。
++ [^] 修复了数据项为空的判断逻辑。这钱的逻辑导致了当数据项长度不一时，自定义系列的 [renderItem](option.html#series-custom.renderItem) 可能不能进入，以及 [dataset](option.html#dataset) 被使用时可能不能渲染的问题。参见 [#7733](https://github.com/apache/incubator-echarts/issues/7733)。
 
 + [^] 修复了 `textStyle` 向后兼容的逻辑。
 
@@ -424,11 +424,11 @@ Recovery build
 ## v4.0.2
 <div class="time">2018-01-18</div>
 
-+ [^] 修复了可滚动图例（`legend.type: 'scroll'`）导致重影的问题。参见 [#7502](https://github.com/ecomfe/echarts/issues/7502)。
++ [^] 修复了可滚动图例（`legend.type: 'scroll'`）导致重影的问题。参见 [#7502](https://github.com/apache/incubator-echarts/issues/7502)。
 
-+ [^] 修复了 [饼图（pie）](option.html#series-pie) 中数据项设置 `selected` 无效的问题。参见 [#7515](https://github.com/ecomfe/echarts/issues/7515)。
++ [^] 修复了 [饼图（pie）](option.html#series-pie) 中数据项设置 `selected` 无效的问题。参见 [#7515](https://github.com/apache/incubator-echarts/issues/7515)。
 
-+ [^] 修复了 [时间线播放组件的播放按钮](option.html#timeline.controlStyle.showNextBtn) 不能隐去的问题。参见 [#7506](https://github.com/ecomfe/echarts/issues/7506)。
++ [^] 修复了 [时间线播放组件的播放按钮](option.html#timeline.controlStyle.showNextBtn) 不能隐去的问题。参见 [#7506](https://github.com/apache/incubator-echarts/issues/7506)。
 
 ## v4.0.1
 <div class="time">2018-01-17</div>
@@ -492,31 +492,31 @@ Recovery build
 
 + [+] 源代码的模块系统改用 ES Module。从而可以受益于 tree shaking，减小构建所得 bundle 的体积。
 
-+ [+] 提供了构建脚本，方便于灵活引用模块和多语言构建，参见 [自定义构建](http://echarts.baidu.com/tutorial.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%9E%84%E5%BB%BA%20ECharts)。并且加入了 [xvaara](https://github.com/xvaara) 提供的芬兰语（[PR #6863](https://github.com/ecomfe/echarts/pull/6863)）。
++ [+] 提供了构建脚本，方便于灵活引用模块和多语言构建，参见 [自定义构建](http://echarts.baidu.com/tutorial.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%9E%84%E5%BB%BA%20ECharts)。并且加入了 [xvaara](https://github.com/xvaara) 提供的芬兰语（[PR #6863](https://github.com/apache/incubator-echarts/pull/6863)）。
 
-+ [+] 支持了 [axis arrow](http://echarts.baidu.com/option.html#xAxis.axisLine.symbol). 参见 [#6675](https://github.com/ecomfe/echarts/issues/6675)。
++ [+] 支持了 [axis arrow](http://echarts.baidu.com/option.html#xAxis.axisLine.symbol). 参见 [#6675](https://github.com/apache/incubator-echarts/issues/6675)。
 
-+ [+] treemap 中支持了 [strokeWidth](http://echarts.baidu.com/option.html#series-treemap.levels.itemStyle.normal.strokeWidth) 和 [strokeColor](http://echarts.baidu.com/option.html#series-treemap.levels.itemStyle.normal.strokeColor)。参见 [#6804](https://github.com/ecomfe/echarts/issues/6804)。
++ [+] treemap 中支持了 [strokeWidth](http://echarts.baidu.com/option.html#series-treemap.levels.itemStyle.normal.strokeWidth) 和 [strokeColor](http://echarts.baidu.com/option.html#series-treemap.levels.itemStyle.normal.strokeColor)。参见 [#6804](https://github.com/apache/incubator-echarts/issues/6804)。
 
-+ [+] graph 图中支持了鼠标悬浮到边上时也 [显示相邻点](http://echarts.baidu.com/option.html#series-graph.focusNodeAdjacency) 的功能。参见 [#6772](https://github.com/ecomfe/echarts/issues/6772)。
++ [+] graph 图中支持了鼠标悬浮到边上时也 [显示相邻点](http://echarts.baidu.com/option.html#series-graph.focusNodeAdjacency) 的功能。参见 [#6772](https://github.com/apache/incubator-echarts/issues/6772)。
 
-+ [^] 修复了 [grid.containLabel](http://echarts.baidu.com/option.html#grid.containLabel) 为 `true` 且 [轴标签旋转](http://echarts.baidu.com/option.html#yAxis.axisLabel.rotate) 时的坐标系范围判断。感谢 [xvaara](https://github.com/xvaara) 提供的 [PR #6951](https://github.com/ecomfe/echarts/pull/6951)。
++ [^] 修复了 [grid.containLabel](http://echarts.baidu.com/option.html#grid.containLabel) 为 `true` 且 [轴标签旋转](http://echarts.baidu.com/option.html#yAxis.axisLabel.rotate) 时的坐标系范围判断。感谢 [xvaara](https://github.com/xvaara) 提供的 [PR #6951](https://github.com/apache/incubator-echarts/pull/6951)。
 
-+ [^] 修复设置了 [类目轴](http://echarts.baidu.com/option.html#xAxis.type) 中设置了 [axisLabel.rotate](http://echarts.baidu.com/option.html#xAxis.axisLabel.rotate) 以后，interval 计算有误的 bug。参见 [#4170](https://github.com/ecomfe/echarts/issues/4170)。感谢 [lanyuechen](https://github.com/lanyuechen) 提供的 [PR #6903](https://github.com/ecomfe/echarts/pull/6903)。
++ [^] 修复设置了 [类目轴](http://echarts.baidu.com/option.html#xAxis.type) 中设置了 [axisLabel.rotate](http://echarts.baidu.com/option.html#xAxis.axisLabel.rotate) 以后，interval 计算有误的 bug。参见 [#4170](https://github.com/apache/incubator-echarts/issues/4170)。感谢 [lanyuechen](https://github.com/lanyuechen) 提供的 [PR #6903](https://github.com/apache/incubator-echarts/pull/6903)。
 
-+ [^] 修复了 `dataTool.prepareBoxplotData` 的负值问题。感谢 [d-rudolf](https://github.com/d-rudolf) 提供的 [PR #6749](https://github.com/ecomfe/echarts/pull/6749)。
++ [^] 修复了 `dataTool.prepareBoxplotData` 的负值问题。感谢 [d-rudolf](https://github.com/d-rudolf) 提供的 [PR #6749](https://github.com/apache/incubator-echarts/pull/6749)。
 
-+ [^] 优化了 [时间类型坐标轴](http://echarts.baidu.com/option.html#xAxis.type) 的刻度显示。感谢 [xiaoshan00](https://github.com/xiaoshan00) 提供的 [PR #6808](https://github.com/ecomfe/echarts/pull/6808)。
++ [^] 优化了 [时间类型坐标轴](http://echarts.baidu.com/option.html#xAxis.type) 的刻度显示。感谢 [xiaoshan00](https://github.com/xiaoshan00) 提供的 [PR #6808](https://github.com/apache/incubator-echarts/pull/6808)。
 
-+ [^] 支持了 [radiusAxis.inverse](http://echarts.baidu.com/option.html#radiusAxis.inverse)。参见 [#6805](https://github.com/ecomfe/echarts/issues/6805) 和 [#4253](https://github.com/ecomfe/echarts/issues/4253)。
++ [^] 支持了 [radiusAxis.inverse](http://echarts.baidu.com/option.html#radiusAxis.inverse)。参见 [#6805](https://github.com/apache/incubator-echarts/issues/6805) 和 [#4253](https://github.com/apache/incubator-echarts/issues/4253)。
 
-+ [^] 修复了和 webpack 中约定特殊变量重名的问题。参见 [#6788](https://github.com/ecomfe/echarts/issues/6788)。
++ [^] 修复了和 webpack 中约定特殊变量重名的问题。参见 [#6788](https://github.com/apache/incubator-echarts/issues/6788)。
 
-+ [^] 修复了 [可滚动图例](http://echarts.baidu.com/demo.html#pie-legend) 定位不准确问题。参见 [#6756](https://github.com/ecomfe/echarts/issues/6756)。
++ [^] 修复了 [可滚动图例](http://echarts.baidu.com/demo.html#pie-legend) 定位不准确问题。参见 [#6756](https://github.com/apache/incubator-echarts/issues/6756)。
 
-+ [^] 修复了 [themeRiver](http://echarts.baidu.com/demo.html#themeRiver-basic) 图例颜色不正确的问题。参见 [#6932](https://github.com/ecomfe/echarts/issues/6932)。
++ [^] 修复了 [themeRiver](http://echarts.baidu.com/demo.html#themeRiver-basic) 图例颜色不正确的问题。参见 [#6932](https://github.com/apache/incubator-echarts/issues/6932)。
 
-+ [^] 修复了刷选时如果存在空值则报错的问题。参见 [#6892](https://github.com/ecomfe/echarts/issues/6892)。
++ [^] 修复了刷选时如果存在空值则报错的问题。参见 [#6892](https://github.com/apache/incubator-echarts/issues/6892)。
 
 + `dist/echarts/echarts.simple.js` 中不再包含 echarts 上所挂载的工具方法。如果需要使用工具方法，可使用 `dist/echarts/echarts.common.js` 或者 `dist/echarts/echarts.js`，或者 [自定义构建](http://echarts.baidu.com/tutorial.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%9E%84%E5%BB%BA%20ECharts)。
 
@@ -533,31 +533,31 @@ Recovery build
 ## v3.7.2
 <div class="time">2017-09-27</div>
 
-+ [+] 支持了纯英文版 echarts（即默认文字提示为英文）。在 <https://github.com/ecomfe/echarts/tree/master/dist> 中。参见 [#2321](https://github.com/ecomfe/echarts/issues/2321)。
++ [+] 支持了纯英文版 echarts（即默认文字提示为英文）。在 <https://github.com/apache/incubator-echarts/tree/master/dist> 中。参见 [#2321](https://github.com/apache/incubator-echarts/issues/2321)。
 
-+ [+] 支持了设置饼图高亮扇区偏移量：[pie.hoverOffset](http://echarts.baidu.com/option.html#series-pie.hoverOffset)。参见 [#3857](https://github.com/ecomfe/echarts/issues/3857)。
++ [+] 支持了设置饼图高亮扇区偏移量：[pie.hoverOffset](http://echarts.baidu.com/option.html#series-pie.hoverOffset)。参见 [#3857](https://github.com/apache/incubator-echarts/issues/3857)。
 
-+ [^] 修复了 [K线图（candlestick）](http://echarts.baidu.com/option.html#series-candlestick) 中 data 的兼容性。参见 [#6576](https://github.com/ecomfe/echarts/issues/6576)。
++ [^] 修复了 [K线图（candlestick）](http://echarts.baidu.com/option.html#series-candlestick) 中 data 的兼容性。参见 [#6576](https://github.com/apache/incubator-echarts/issues/6576)。
 
 + [^] 修复了 [showMaxLabel](http://echarts.baidu.com/option.html#xAxis.showMaxLabel) [showMinLabel](http://echarts.baidu.com/option.html#xAxis.showMinLabel)。
 
-+ [^] 修复了负值时区域图的朝向。参见 [#6707](https://github.com/ecomfe/echarts/issues/6707)。
++ [^] 修复了负值时区域图的朝向。参见 [#6707](https://github.com/apache/incubator-echarts/issues/6707)。
 
 + [^] 统一了 [axis.nameLocation](http://echarts.baidu.com/option.html#xAxis.nameLocation) 取值为 `'middle'` 和 `'center'` 的表现。
 
-+ [^] 修复了 [markArea.itemStyle.emphasis](http://echarts.baidu.com/option.html#series-line.markArea.itemStyle.emphasis) 无效的问题。参见 [#5245](https://github.com/ecomfe/echarts/issues/5245)。
++ [^] 修复了 [markArea.itemStyle.emphasis](http://echarts.baidu.com/option.html#series-line.markArea.itemStyle.emphasis) 无效的问题。参见 [#5245](https://github.com/apache/incubator-echarts/issues/5245)。
 
-+ [^] 修复了 [treemap](http://echarts.baidu.com/option.html#series-treemap) 右键点击问题。参见 [#6313](https://github.com/ecomfe/echarts/issues/6313)。
++ [^] 修复了 [treemap](http://echarts.baidu.com/option.html#series-treemap) 右键点击问题。参见 [#6313](https://github.com/apache/incubator-echarts/issues/6313)。
 
-+ [^] 修复了在有 DST (Day Saving Time) 的地区的 calendar 出错的问题。参见 [#6543](https://github.com/ecomfe/echarts/issues/6543)。
++ [^] 修复了在有 DST (Day Saving Time) 的地区的 calendar 出错的问题。参见 [#6543](https://github.com/apache/incubator-echarts/issues/6543)。
 
-+ [^] 优化了 IE 高版本保存为图片功能。参见 [#6279](https://github.com/ecomfe/echarts/issues/6279)。
++ [^] 优化了 IE 高版本保存为图片功能。参见 [#6279](https://github.com/apache/incubator-echarts/issues/6279)。
 
-+ [^] 修复了尾迹特效清除问题。参见 [#6577](https://github.com/ecomfe/echarts/issues/6577)。
++ [^] 修复了尾迹特效清除问题。参见 [#6577](https://github.com/apache/incubator-echarts/issues/6577)。
 
-+ [^] 修复了 [K线图（candlestick）](http://echarts.baidu.com/option.html#series-candlestick) 中开盘收盘相等时颜色问题。参见 [#6583](https://github.com/ecomfe/echarts/issues/6583)。
++ [^] 修复了 [K线图（candlestick）](http://echarts.baidu.com/option.html#series-candlestick) 中开盘收盘相等时颜色问题。参见 [#6583](https://github.com/apache/incubator-echarts/issues/6583)。
 
-+ [^] 修复了 `markPoint` 向后兼容的问题。参见 [#6503](https://github.com/ecomfe/echarts/issues/6503)。
++ [^] 修复了 `markPoint` 向后兼容的问题。参见 [#6503](https://github.com/apache/incubator-echarts/issues/6503)。
 
 
 
@@ -567,9 +567,9 @@ Recovery build
 
 [Recovery Build]
 
-+ [+] [axis.min](http://echarts.baidu.com/option.html#xAxis.min), [axis.max](http://echarts.baidu.com/option.html#xAxis.max) 支持了设置函数。参见 [#6465](https://github.com/ecomfe/echarts/issues/6465)。
++ [+] [axis.min](http://echarts.baidu.com/option.html#xAxis.min), [axis.max](http://echarts.baidu.com/option.html#xAxis.max) 支持了设置函数。参见 [#6465](https://github.com/apache/incubator-echarts/issues/6465)。
 
-+ [^] 修复了 textStyle 相关兼容性和 emphasis style 问题，参见 [#6491](https://github.com/ecomfe/echarts/issues/6491)、[#6529](https://github.com/ecomfe/echarts/issues/6529)、[#6516](https://github.com/ecomfe/echarts/issues/6516)、[#6532](https://github.com/ecomfe/echarts/issues/6532)、[#6237](https://github.com/ecomfe/echarts/issues/6237)。
++ [^] 修复了 textStyle 相关兼容性和 emphasis style 问题，参见 [#6491](https://github.com/apache/incubator-echarts/issues/6491)、[#6529](https://github.com/apache/incubator-echarts/issues/6529)、[#6516](https://github.com/apache/incubator-echarts/issues/6516)、[#6532](https://github.com/apache/incubator-echarts/issues/6532)、[#6237](https://github.com/apache/incubator-echarts/issues/6237)。
 
 + [^] 改善了 [K线图](http://echarts.baidu.com/option.html#series-candlestick) 边界模糊的问题。
 
@@ -617,78 +617,78 @@ Recovery build
 
 + [+] 对于时间坐标轴（即 [axis.type](http://echarts.baidu.com/option.html#xAxis.type) 为 `'time'`）支持了 [minInterval](http://echarts.baidu.com/option.html#xAxis.minInterval)。对于时间坐标轴和数值坐标轴（即 [axis.type](http://echarts.baidu.com/option.html#xAxis.type) 为 `'value'`）支持了 [maxInterval](http://echarts.baidu.com/option.html#xAxis.maxInterval)，从而能控制缩放（如 dataZoom）时刻度的最大最小范围。
 
-+ [+] 支持了 [xAxis.axisLine.onZeroAxisIndex](http://echarts.baidu.com/option.html#xAxis.axisLine.onZeroAxisIndex)，从而能在多轴并且需要轴 `onZero` 的场景下，灵活设置轴互相的对应关系。参见 [#5069](https://github.com/ecomfe/echarts/issues/5069)。
++ [+] 支持了 [xAxis.axisLine.onZeroAxisIndex](http://echarts.baidu.com/option.html#xAxis.axisLine.onZeroAxisIndex)，从而能在多轴并且需要轴 `onZero` 的场景下，灵活设置轴互相的对应关系。参见 [#5069](https://github.com/apache/incubator-echarts/issues/5069)。
 
 + [+] 支持了 `自定义系列(custom series)` 不使用 [坐标系](http://echarts.baidu.com/option.html#series-custom.coordinateSystems)。
 
-+ [+] 支持了柱状图标签的旋转。参见 [rotate](http://echarts.baidu.com/option.html#series-bar.label.normal.rotate)、[align](http://echarts.baidu.com/option.html#series-bar.label.normal.align)、[verticalAlign](http://echarts.baidu.com/option.html#series-bar.label.normal.verticalAlign)。参见 [例子](http://echarts.baidu.com/demo.html#bar-label-rotation)。参见 [#5309](https://github.com/ecomfe/echarts/issues/5309)。
++ [+] 支持了柱状图标签的旋转。参见 [rotate](http://echarts.baidu.com/option.html#series-bar.label.normal.rotate)、[align](http://echarts.baidu.com/option.html#series-bar.label.normal.align)、[verticalAlign](http://echarts.baidu.com/option.html#series-bar.label.normal.verticalAlign)。参见 [例子](http://echarts.baidu.com/demo.html#bar-label-rotation)。参见 [#5309](https://github.com/apache/incubator-echarts/issues/5309)。
 
-+ [+] 支持了 [radar.indicator.color](http://echarts.baidu.com/option.html#radar.indicator.color)，从而雷达每个标签能设置不同颜色。参见 [#6128](https://github.com/ecomfe/echarts/issues/6128)。
++ [+] 支持了 [radar.indicator.color](http://echarts.baidu.com/option.html#radar.indicator.color)，从而雷达每个标签能设置不同颜色。参见 [#6128](https://github.com/apache/incubator-echarts/issues/6128)。
 
-+ [+] 支持了 [dataZoom.rangeMode](http://echarts.baidu.com/option.html#dataZoom.rangeMode)，从而能在数据更新时固定缩放区域。参见 [#6128](https://github.com/ecomfe/echarts/issues/6040)。
++ [+] 支持了 [dataZoom.rangeMode](http://echarts.baidu.com/option.html#dataZoom.rangeMode)，从而能在数据更新时固定缩放区域。参见 [#6128](https://github.com/apache/incubator-echarts/issues/6040)。
 
-+ [+] 支持了 [action.legend.legendToggleSelect](http://echarts.baidu.com/api.html#action.legend.legendToggleSelect), [action.legend.legendSelect](http://echarts.baidu.com/api.html#action.legend.legendSelect), [action.legend.legendUnSelect](http://echarts.baidu.com/api.html#action.legend.legendUnSelect) 中使用 `dataIndex`。参见 [#4242](https://github.com/ecomfe/echarts/issues/4242)。
++ [+] 支持了 [action.legend.legendToggleSelect](http://echarts.baidu.com/api.html#action.legend.legendToggleSelect), [action.legend.legendSelect](http://echarts.baidu.com/api.html#action.legend.legendSelect), [action.legend.legendUnSelect](http://echarts.baidu.com/api.html#action.legend.legendUnSelect) 中使用 `dataIndex`。参见 [#4242](https://github.com/apache/incubator-echarts/issues/4242)。
 
 + [+] 支持了 [map.label.formatter](http://echarts.baidu.com/option.html#series-map.label.formatter)，从而方便于在地图系列中使用富文本标签。参见：[地图标签](http://echarts.baidu.com/demo.html#map-labels)。
 
 + [+] 支持了 [title.borderRadius](http://echarts.baidu.com/option.html#title.borderRadius) 和 [legend.borderRadius](http://echarts.baidu.com/option.html#legend.borderRadius)，从而他们能绘制圆角的背景或边框。
 
-+ [^] 修复了在 IE 某些版本中饼图和折线图中设置了阴影效果后偶见的异常。参见 [#5777](https://github.com/ecomfe/echarts/issues/5777)。
++ [^] 修复了在 IE 某些版本中饼图和折线图中设置了阴影效果后偶见的异常。参见 [#5777](https://github.com/apache/incubator-echarts/issues/5777)。
 
-+ [^] 修复了地图中如果 `nameMap` 被设置且某些区域没有数据时，`tooltip` 中得不到区域名的问题。参见 [#5633](https://github.com/ecomfe/echarts/issues/5633)。
++ [^] 修复了地图中如果 `nameMap` 被设置且某些区域没有数据时，`tooltip` 中得不到区域名的问题。参见 [#5633](https://github.com/apache/incubator-echarts/issues/5633)。
 
-+ [^] 修复了百度地图扩展中，地图平移后 tooltip 位置错误的问题。参见 [#6211](https://github.com/ecomfe/echarts/issues/6211)。
++ [^] 修复了百度地图扩展中，地图平移后 tooltip 位置错误的问题。参见 [#6211](https://github.com/apache/incubator-echarts/issues/6211)。
 
-+ [^] 修复了 `axisPointer` 偶发的报错。参见 [#6121](https://github.com/ecomfe/echarts/issues/6121)。
++ [^] 修复了 `axisPointer` 偶发的报错。参见 [#6121](https://github.com/apache/incubator-echarts/issues/6121)。
 
-+ [^] 修复了热力图高度为 0 时的报错。参见 [#6214](https://github.com/ecomfe/echarts/issues/6214)。
++ [^] 修复了热力图高度为 0 时的报错。参见 [#6214](https://github.com/apache/incubator-echarts/issues/6214)。
 
-+ [+] 修复了 [candlestick](http://echarts.baidu.com/option.html#series-candlestick) 第一个数据项为空时的异常。参见 [#6059](https://github.com/ecomfe/echarts/issues/6059)。
++ [+] 修复了 [candlestick](http://echarts.baidu.com/option.html#series-candlestick) 第一个数据项为空时的异常。参见 [#6059](https://github.com/apache/incubator-echarts/issues/6059)。
 
-+ [^] 修复了 [series-bar.dimensions](http://echarts.baidu.com/option.html#series-bar.dimensions) 无效的问题。参见 [#6252](https://github.com/ecomfe/echarts/issues/6252)。
++ [^] 修复了 [series-bar.dimensions](http://echarts.baidu.com/option.html#series-bar.dimensions) 无效的问题。参见 [#6252](https://github.com/apache/incubator-echarts/issues/6252)。
 
 + [^] 修复了 [自定义系列(custom series)](http://echarts.baidu.com/option.html#series-custom) 中 `group` 中子元素数目不确定时不能正确删除的问题。
 
-+ [^] 修复了 在 `setOption` 执行之前调用 `connect` 时会抛出的异常。参见 [#6281](https://github.com/ecomfe/echarts/issues/6281)。
++ [^] 修复了 在 `setOption` 执行之前调用 `connect` 时会抛出的异常。参见 [#6281](https://github.com/apache/incubator-echarts/issues/6281)。
 
-+ [^] 修复了 [tooltip.confine](http://echarts.baidu.com/option.html#tooltip.confine) 时的边界判断。参见 [#6277](https://github.com/ecomfe/echarts/issues/6277) 和 [0da06d8](https://github.com/ecomfe/echarts/commit/0da06d8)。
++ [^] 修复了 [tooltip.confine](http://echarts.baidu.com/option.html#tooltip.confine) 时的边界判断。参见 [#6277](https://github.com/apache/incubator-echarts/issues/6277) 和 [0da06d8](https://github.com/apache/incubator-echarts/commit/0da06d8)。
 
-+ [^] 修复了柱状图重叠（同时设置了 `barWidth` 和 `barGap: '-100%'`）时在窄窗中的不正常。参见 [#6312](https://github.com/ecomfe/echarts/issues/6312)。
++ [^] 修复了柱状图重叠（同时设置了 `barWidth` 和 `barGap: '-100%'`）时在窄窗中的不正常。参见 [#6312](https://github.com/apache/incubator-echarts/issues/6312)。
 
-+ [^] 修复了精度问题。参见 [#6371](https://github.com/ecomfe/echarts/issues/6371)。
++ [^] 修复了精度问题。参见 [#6371](https://github.com/apache/incubator-echarts/issues/6371)。
 
 
 
 ## v3.6.2
 <div class="time">2017-06-15</div>
 
-+ [+] [自定义系列（custom series）](http://echarts.baidu.com/option.html#series-custom) 支持 [百度地图插件（bmap）](https://github.com/ecomfe/echarts/tree/master/extension/bmap)。参见 [示例 1](http://echarts.baidu.com/demo.html#map-polygon) 和 [示例 2](http://echarts.baidu.com/demo.html#map-bin)。
++ [+] [自定义系列（custom series）](http://echarts.baidu.com/option.html#series-custom) 支持 [百度地图插件（bmap）](https://github.com/apache/incubator-echarts/tree/master/extension/bmap)。参见 [示例 1](http://echarts.baidu.com/demo.html#map-polygon) 和 [示例 2](http://echarts.baidu.com/demo.html#map-bin)。
 
-+ [+] [treemap](http://echarts.baidu.com/option.html#series-treemap) 支持父节点标签的显示。参见 [示例](http://echarts.baidu.com/demo.html#treemap-show-parent)。参见：[#5869](https://github.com/ecomfe/echarts/issues/5869)、[#5579](https://github.com/ecomfe/echarts/issues/5579)。
++ [+] [treemap](http://echarts.baidu.com/option.html#series-treemap) 支持父节点标签的显示。参见 [示例](http://echarts.baidu.com/demo.html#treemap-show-parent)。参见：[#5869](https://github.com/apache/incubator-echarts/issues/5869)、[#5579](https://github.com/apache/incubator-echarts/issues/5579)。
 
 + [+] 支持图形元素上的鼠标 cursor 样式指定：[series-line.cursor](http://echarts.baidu.com/option.html#series-line.cursor)、[series-bar.cursor](http://echarts.baidu.com/option.html#series-bar.cursor)、[series-pie.cursor](http://echarts.baidu.com/option.html#series-pie.cursor)、[series-scatter.cursor](http://echarts.baidu.com/option.html#series-scatter.cursor)、[series-effectScatter.cursor](http://echarts.baidu.com/option.html#series-effectScatter.cursor)、[series-graph.cursor](http://echarts.baidu.com/option.html#series-graph.cursor)、[series-pictorialBar.cursor](http://echarts.baidu.com/option.html#series-pictorialBar.cursor)。
 
-+ [+] 支持了 [series-pictorialBar.symbolBoundingData](http://echarts.baidu.com/option.html#series-pictorialBar.symbolBoundingData) 可以同时设置正向的值和负向的值。参见 [#5793](https://github.com/ecomfe/echarts/issues/5793)。
++ [+] 支持了 [series-pictorialBar.symbolBoundingData](http://echarts.baidu.com/option.html#series-pictorialBar.symbolBoundingData) 可以同时设置正向的值和负向的值。参见 [#5793](https://github.com/apache/incubator-echarts/issues/5793)。
 
-+ [+] `graph` 支持通过设置 [fixed](http://echarts.baidu.com/option.html#series-graph.data.fixed) 固定力引导布局中的指定节点。参见 [#5966](https://github.com/ecomfe/echarts/issues/5966)。
++ [+] `graph` 支持通过设置 [fixed](http://echarts.baidu.com/option.html#series-graph.data.fixed) 固定力引导布局中的指定节点。参见 [#5966](https://github.com/apache/incubator-echarts/issues/5966)。
 
-+ [+] `treemap` 支持了 [label.formatter](http://echarts.baidu.com/option.html#series-treemap.label.normal.formatter)。参见 [#5757](https://github.com/ecomfe/echarts/issues/5757)。
++ [+] `treemap` 支持了 [label.formatter](http://echarts.baidu.com/option.html#series-treemap.label.normal.formatter)。参见 [#5757](https://github.com/apache/incubator-echarts/issues/5757)。
 
-+ [+] `timeline` 支持了 [label.normal.textStyle.align](http://echarts.baidu.com/option.html#timeline.label.normal.textStyle.align) 和 [label.normal.textStyle.basealign](http://echarts.baidu.com/option.html#timeline.label.normal.textStyle.basealign)。参见 [#5960](https://github.com/ecomfe/echarts/issues/5960)。
++ [+] `timeline` 支持了 [label.normal.textStyle.align](http://echarts.baidu.com/option.html#timeline.label.normal.textStyle.align) 和 [label.normal.textStyle.basealign](http://echarts.baidu.com/option.html#timeline.label.normal.textStyle.basealign)。参见 [#5960](https://github.com/apache/incubator-echarts/issues/5960)。
 
-+ [^] 修正了当 [large scatter](http://echarts.baidu.com/demo.html#scatter-large) 缩放后，`tooltip` 不显示的问题。参见 [#5837](https://github.com/ecomfe/echarts/issues/5837)。
++ [^] 修正了当 [large scatter](http://echarts.baidu.com/demo.html#scatter-large) 缩放后，`tooltip` 不显示的问题。参见 [#5837](https://github.com/apache/incubator-echarts/issues/5837)。
 
-+ [^] 修正了触发 [showTip](http://echarts.baidu.com/api.html#action.tooltip.showTip) action 时 `position` 参数无效的问题。参见 [#5874](https://github.com/ecomfe/echarts/issues/5874)。
++ [^] 修正了触发 [showTip](http://echarts.baidu.com/api.html#action.tooltip.showTip) action 时 `position` 参数无效的问题。参见 [#5874](https://github.com/apache/incubator-echarts/issues/5874)。
 
-+ [^] 修正了因精度导致的有时 [pie](http://echarts.baidu.com/option.html#series-pie) 显示出的百分比总值不足 `100%` 的问题。参见 [#5850](https://github.com/ecomfe/echarts/issues/5850)。
++ [^] 修正了因精度导致的有时 [pie](http://echarts.baidu.com/option.html#series-pie) 显示出的百分比总值不足 `100%` 的问题。参见 [#5850](https://github.com/apache/incubator-echarts/issues/5850)。
 
-+ [^] 修正了当 `series.name` 相同时，只会显示最后一个系列的 `markPoint` 或 `markLine` 的问题。参见 [#5712](https://github.com/ecomfe/echarts/issues/5712)。
++ [^] 修正了当 `series.name` 相同时，只会显示最后一个系列的 `markPoint` 或 `markLine` 的问题。参见 [#5712](https://github.com/apache/incubator-echarts/issues/5712)。
 
-+ [^] 修正了 [barBorderRadius](http://echarts.baidu.com/option.html#series-bar.itemStyle.normal.barBorderRadius) 在水平条形图中不工作的问题。参见 [#5943](https://github.com/ecomfe/echarts/issues/5943)。
++ [^] 修正了 [barBorderRadius](http://echarts.baidu.com/option.html#series-bar.itemStyle.normal.barBorderRadius) 在水平条形图中不工作的问题。参见 [#5943](https://github.com/apache/incubator-echarts/issues/5943)。
 
-+ [^] 修正了 [dataZoom-inside](http://echarts.baidu.com/option.html#dataZoom-inside) 使用在 Y 轴时缩放点错误的问题。参见 [#5278](https://github.com/ecomfe/echarts/issues/5278)。
++ [^] 修正了 [dataZoom-inside](http://echarts.baidu.com/option.html#dataZoom-inside) 使用在 Y 轴时缩放点错误的问题。参见 [#5278](https://github.com/apache/incubator-echarts/issues/5278)。
 
-+ [^] 修正了 [radar](http://echarts.baidu.com/option.html#series-radar) 在某些数据中绘制不出的问题。参见 [#5986](https://github.com/ecomfe/echarts/issues/5986)。
++ [^] 修正了 [radar](http://echarts.baidu.com/option.html#series-radar) 在某些数据中绘制不出的问题。参见 [#5986](https://github.com/apache/incubator-echarts/issues/5986)。
 
 
 
@@ -712,25 +712,25 @@ Recovery build
 
 + [+] 支持了 [dimensions](http://echarts.baidu.com/option.html#series-scatter.dimensions) 设定，能指定 [data](http://echarts.baidu.com/option.html#series-scatter.data) 中每个维度的名称和类型。名称可以显示在默认 [tooltip](http://echarts.baidu.com/option.html#tooltip) 中。
 
-+ [+] `dataZoom` 支持了 [minSpan](http://echarts.baidu.com/option.html#dataZoom.minSpan) 和 [maxSpan](http://echarts.baidu.com/option.html#dataZoom.maxSpan)。参见 [#2843](https://github.com/ecomfe/echarts/issues/2843)。
++ [+] `dataZoom` 支持了 [minSpan](http://echarts.baidu.com/option.html#dataZoom.minSpan) 和 [maxSpan](http://echarts.baidu.com/option.html#dataZoom.maxSpan)。参见 [#2843](https://github.com/apache/incubator-echarts/issues/2843)。
 
-+ [+] `dataZoom` 支持了 [moveOnMouseMove](http://echarts.baidu.com/option.html#dataZoom-inside.moveOnMouseMove) 和 [zoomOnMouseWheel](http://echarts.baidu.com/option.html#dataZoom-inside.zoomOnMouseWheel)，从而能够设定按住 'ctrl' 键或者 'alt' 键或者 'shift' 键同时滚动滚轮触发 dataZoom。此外，支持了 [preventDefaultMouseMove](http://echarts.baidu.com/option.html#dataZoom-inside.preventDefaultMouseMove) 设置，参见 [#5769](https://github.com/ecomfe/echarts/issues/5769)。
++ [+] `dataZoom` 支持了 [moveOnMouseMove](http://echarts.baidu.com/option.html#dataZoom-inside.moveOnMouseMove) 和 [zoomOnMouseWheel](http://echarts.baidu.com/option.html#dataZoom-inside.zoomOnMouseWheel)，从而能够设定按住 'ctrl' 键或者 'alt' 键或者 'shift' 键同时滚动滚轮触发 dataZoom。此外，支持了 [preventDefaultMouseMove](http://echarts.baidu.com/option.html#dataZoom-inside.preventDefaultMouseMove) 设置，参见 [#5769](https://github.com/apache/incubator-echarts/issues/5769)。
 
 + [+] `dataZoom` 的 [handleIcon](http://echarts.baidu.com/option.html#dataZoom-slider.handleIcon) 支持使用 image。
 
 + [^] 修正了世界地图的边界问题。
 
-+ [^] 修正了当 [min](http://echarts.baidu.com/option.html#xAxis.min) 被设置时，[minInterval](http://echarts.baidu.com/option.html#xAxis.minInterval) 不能正常工作的问题。参见 [#4838](https://github.com/ecomfe/echarts/issues/4838)。
++ [^] 修正了当 [min](http://echarts.baidu.com/option.html#xAxis.min) 被设置时，[minInterval](http://echarts.baidu.com/option.html#xAxis.minInterval) 不能正常工作的问题。参见 [#4838](https://github.com/apache/incubator-echarts/issues/4838)。
 
-+ [^] 修正了 Object 默认属性导致的问题。参见 [#5576](https://github.com/ecomfe/echarts/issues/5576)。
++ [^] 修正了 Object 默认属性导致的问题。参见 [#5576](https://github.com/apache/incubator-echarts/issues/5576)。
 
-+ [^] 修正了 legend 选择变化时进行 `setOption` 时 [graphic](http://echarts.baidu.com/option.html#graphic) 导致的错误。参见 [#5783](https://github.com/ecomfe/echarts/issues/5783)。
++ [^] 修正了 legend 选择变化时进行 `setOption` 时 [graphic](http://echarts.baidu.com/option.html#graphic) 导致的错误。参见 [#5783](https://github.com/apache/incubator-echarts/issues/5783)。
 
-+ [^] 修正了 `parallel` 对 [axisLabel.interval](http://echarts.baidu.com/option.html#parallelAxis.axisLabel.interval) 的支持。参见 [#5694](https://github.com/ecomfe/echarts/issues/5694)。
++ [^] 修正了 `parallel` 对 [axisLabel.interval](http://echarts.baidu.com/option.html#parallelAxis.axisLabel.interval) 的支持。参见 [#5694](https://github.com/apache/incubator-echarts/issues/5694)。
 
 + [^] 增强了 `dataZoom` 控件的交互。
 
-+ [^] 修正了 [minAngle](http://echarts.baidu.com/option.html#series-pie.minAngle) 在玫瑰图上的问题。参见 [#5617](https://github.com/ecomfe/echarts/issues/5617)。
++ [^] 修正了 [minAngle](http://echarts.baidu.com/option.html#series-pie.minAngle) 在玫瑰图上的问题。参见 [#5617](https://github.com/apache/incubator-echarts/issues/5617)。
 
 + [^] 修正了 tooltip 更新时报错的问题。
 
@@ -746,13 +746,13 @@ Recovery build
 ## v3.5.3
 <div class="time">2017-04-14</div>
 
-+ [^] 修复了 `option` 中 `left` `right` `width` `top` `bottom` `height` 的默认选取问题。参见 [#5440](https://github.com/ecomfe/echarts/issues/5440)。
++ [^] 修复了 `option` 中 `left` `right` `width` `top` `bottom` `height` 的默认选取问题。参见 [#5440](https://github.com/apache/incubator-echarts/issues/5440)。
 
-+ [^] 修复了 [showTip](http://echarts.baidu.com/api.html#action.tooltip.showTip) 使用像素点位置传入时的问题。参见 [#5449](https://github.com/ecomfe/echarts/issues/5449)。
++ [^] 修复了 [showTip](http://echarts.baidu.com/api.html#action.tooltip.showTip) 使用像素点位置传入时的问题。参见 [#5449](https://github.com/apache/incubator-echarts/issues/5449)。
 
-+ [^] 优化了只有一个数据时 [boundaryGap](http://echarts.baidu.com/option.html#xAxis.boundaryGap) 的效果。参见 [#4417](https://github.com/ecomfe/echarts/issues/4417)。
++ [^] 优化了只有一个数据时 [boundaryGap](http://echarts.baidu.com/option.html#xAxis.boundaryGap) 的效果。参见 [#4417](https://github.com/apache/incubator-echarts/issues/4417)。
 
-+ [^] 修复了 [gauge](http://echarts.baidu.com/option.html#series-gauge.animationEasing) 的动画效果设置。参见 [#5451](https://github.com/ecomfe/echarts/issues/5451)。
++ [^] 修复了 [gauge](http://echarts.baidu.com/option.html#series-gauge.animationEasing) 的动画效果设置。参见 [#5451](https://github.com/apache/incubator-echarts/issues/5451)。
 
 + [^] 修复了 [treemap](http://echarts.baidu.com/option.html#series-treemap) 数据值相同时，排序不稳定的问题。
 
@@ -768,25 +768,25 @@ Recovery build
 ## v3.5.2
 <div class="time">2017-04-05</div>
 
-+ [+] 增加了 [useUTC](http://echarts.baidu.com/option.html#useUTC) 配置项，支持按照 UTC 或本地时间显示 `axisLabel` 和 `tooltip`。并且修改了时间解析和显示的默认设定：默认在 `axisLabel` 和 `tooltip` 中显示本地时间，`data` 中使用没指定时区的时间字符串时默认解析为本地时间。参见 [series.data 中时间类型部分](http://echarts.baidu.com/option.html#series-line.data)。修复了 `axis.type` 为 `'time'` 时默认按照 UTC 取刻度的问题。修复了 [#5396](https://github.com/ecomfe/echarts/issues/5396) 和 [#5393](https://github.com/ecomfe/echarts/issues/5393)。
++ [+] 增加了 [useUTC](http://echarts.baidu.com/option.html#useUTC) 配置项，支持按照 UTC 或本地时间显示 `axisLabel` 和 `tooltip`。并且修改了时间解析和显示的默认设定：默认在 `axisLabel` 和 `tooltip` 中显示本地时间，`data` 中使用没指定时区的时间字符串时默认解析为本地时间。参见 [series.data 中时间类型部分](http://echarts.baidu.com/option.html#series-line.data)。修复了 `axis.type` 为 `'time'` 时默认按照 UTC 取刻度的问题。修复了 [#5396](https://github.com/apache/incubator-echarts/issues/5396) 和 [#5393](https://github.com/apache/incubator-echarts/issues/5393)。
 
 + [+] 增加了 [axisLabel.showMinLabel](http://echarts.baidu.com/option.html#xAxis.axisLabel.showMinLabel) 和 [axisLabel.showMaxLabel](http://echarts.baidu.com/option.html#xAxis.axisLabel.showMaxLabel)。
 
 + [+] 支持 [funnel.sort](http://echarts.baidu.com/option.html#series-funnel.sort) 按照 index 排序或自定义排序。
 
-+ [^] 修复了 `axisTick` 浮点数精度错误的问题。参见 [#5041](https://github.com/ecomfe/echarts/issues/5041)。
++ [^] 修复了 `axisTick` 浮点数精度错误的问题。参见 [#5041](https://github.com/apache/incubator-echarts/issues/5041)。
 
-+ [^] 修复了 `axisTick` 数值过小时不显示的问题。参见 [#5386](https://github.com/ecomfe/echarts/issues/5386)。
++ [^] 修复了 `axisTick` 数值过小时不显示的问题。参见 [#5386](https://github.com/apache/incubator-echarts/issues/5386)。
 
-+ [^] 修复了 [tooltip.trigger](http://echarts.baidu.com/option.html#tooltip.trigger) 为 `'axis'` 时使用 `dispatchAction` 触发 [showTip](http://echarts.baidu.com/api.html#action.tooltip.showTip) 无效的问题。参见 [#5423](https://github.com/ecomfe/echarts/issues/5423)。
++ [^] 修复了 [tooltip.trigger](http://echarts.baidu.com/option.html#tooltip.trigger) 为 `'axis'` 时使用 `dispatchAction` 触发 [showTip](http://echarts.baidu.com/api.html#action.tooltip.showTip) 无效的问题。参见 [#5423](https://github.com/apache/incubator-echarts/issues/5423)。
 
-+ [^] 修复了 [visualMap](http://echarts.baidu.com/option.html#visualMap) 使 [map](http://echarts.baidu.com/option.html#series-map) 的 `itemStyle` 失效的问题。参见 [#5388](https://github.com/ecomfe/echarts/issues/5388)。
++ [^] 修复了 [visualMap](http://echarts.baidu.com/option.html#visualMap) 使 [map](http://echarts.baidu.com/option.html#series-map) 的 `itemStyle` 失效的问题。参见 [#5388](https://github.com/apache/incubator-echarts/issues/5388)。
 
-+ [^] 修复了 [tooltip.trigger](http://echarts.baidu.com/option.html#tooltip.trigger) 不支持 `'none'` 的问题。参见 [#5400](https://github.com/ecomfe/echarts/issues/5400)。
++ [^] 修复了 [tooltip.trigger](http://echarts.baidu.com/option.html#tooltip.trigger) 不支持 `'none'` 的问题。参见 [#5400](https://github.com/apache/incubator-echarts/issues/5400)。
 
-+ [^] 修复了 [sankey](http://echarts.baidu.com/option.html#series-sankey) 在 ie11 上的问题。参见 [#3306](https://github.com/ecomfe/echarts/issues/3306)。
++ [^] 修复了 [sankey](http://echarts.baidu.com/option.html#series-sankey) 在 ie11 上的问题。参见 [#3306](https://github.com/apache/incubator-echarts/issues/3306)。
 
-+ [^] 修复了 [parallel](http://echarts.baidu.com/option.html#series-parallel) 的 `data.lineStyle.color` 无效的问题。参见 [#5363](https://github.com/ecomfe/echarts/issues/5363)。
++ [^] 修复了 [parallel](http://echarts.baidu.com/option.html#series-parallel) 的 `data.lineStyle.color` 无效的问题。参见 [#5363](https://github.com/apache/incubator-echarts/issues/5363)。
 
 
 ## v3.5.1
@@ -794,9 +794,9 @@ Recovery build
 
 Recovery Build
 
-+ [^] 修复了 [tooltip.formatter](http://echarts.baidu.com/option.html#tooltip.formatter) 为函数时返回值为 `null`/`undefined` 时显示 `"undefined"` 的问题。参见 [#5352](https://github.com/ecomfe/echarts/issues/5352)。
++ [^] 修复了 [tooltip.formatter](http://echarts.baidu.com/option.html#tooltip.formatter) 为函数时返回值为 `null`/`undefined` 时显示 `"undefined"` 的问题。参见 [#5352](https://github.com/apache/incubator-echarts/issues/5352)。
 
-+ [^] 修复了 [visualMap 组件](http://echarts.baidu.com/option.html#visualMap) 处理 rgba 不正确的问题。参见 [#5350](https://github.com/ecomfe/echarts/issues/5350)。
++ [^] 修复了 [visualMap 组件](http://echarts.baidu.com/option.html#visualMap) 处理 rgba 不正确的问题。参见 [#5350](https://github.com/apache/incubator-echarts/issues/5350)。
 
 
 ## v3.5.0
@@ -806,33 +806,33 @@ Recovery Build
 
 + **[+] 发布统计插件 [echarts-stat](https://github.com/ecomfe/echarts-stat)**
 
-+ **[+] 坐标轴指示器增强** 参见示例：[联动](http://echarts.baidu.com/examples.html#candlestick-brush)、 [移动端（触屏）1](http://echarts.baidu.com/examples.html#line-tooltip-touch)、[移动端（触屏）2](http://echarts.baidu.com/examples.html#candlestick-touch)、[分析](http://echarts.baidu.com/examples.html#scatter-nutrients-matrix)、[多Y轴](http://echarts.baidu.com/examples.html#multiple-y-axis)、[多X轴](http://echarts.baidu.com/examples.html#multiple-x-axis)。支持和修复了 [#5040](https://github.com/ecomfe/echarts/issues/5040)，[#5039](https://github.com/ecomfe/echarts/issues/5039)，[#5102](https://github.com/ecomfe/echarts/issues/5102)，[#5262](https://github.com/ecomfe/echarts/issues/5262)，[#4905](https://github.com/ecomfe/echarts/issues/4905)，[#4921](https://github.com/ecomfe/echarts/issues/4921)，[#5091](https://github.com/ecomfe/echarts/issues/5091)
++ **[+] 坐标轴指示器增强** 参见示例：[联动](http://echarts.baidu.com/examples.html#candlestick-brush)、 [移动端（触屏）1](http://echarts.baidu.com/examples.html#line-tooltip-touch)、[移动端（触屏）2](http://echarts.baidu.com/examples.html#candlestick-touch)、[分析](http://echarts.baidu.com/examples.html#scatter-nutrients-matrix)、[多Y轴](http://echarts.baidu.com/examples.html#multiple-y-axis)、[多X轴](http://echarts.baidu.com/examples.html#multiple-x-axis)。支持和修复了 [#5040](https://github.com/apache/incubator-echarts/issues/5040)，[#5039](https://github.com/apache/incubator-echarts/issues/5039)，[#5102](https://github.com/apache/incubator-echarts/issues/5102)，[#5262](https://github.com/apache/incubator-echarts/issues/5262)，[#4905](https://github.com/apache/incubator-echarts/issues/4905)，[#4921](https://github.com/apache/incubator-echarts/issues/4921)，[#5091](https://github.com/apache/incubator-echarts/issues/5091)
 
 + [+] 增强了 `echarts.util.parseDate` 方法，支持多种日期表达式的统一解析成 UTC 时间。参见 [series.data 中时间类型部分](http://echarts.baidu.com/option.html#series-line.data)
 
 + [^] 优化了 GeoJSON 的处理。
 
-+ [^] 修复了 [toolbox 中 dataZoom](http://echarts.baidu.com/option.html#toolbox.feature.dataZoom) 不能同时控制多个 x 轴问题。参见 [#4896](https://github.com/ecomfe/echarts/issues/4896)。
++ [^] 修复了 [toolbox 中 dataZoom](http://echarts.baidu.com/option.html#toolbox.feature.dataZoom) 不能同时控制多个 x 轴问题。参见 [#4896](https://github.com/apache/incubator-echarts/issues/4896)。
 
-+ [^] 修复了 [dataZoom](http://echarts.baidu.com/option.html#dataZoom) 中 category 轴的默认范围。参见 [#5226](https://github.com/ecomfe/echarts/issues/5226)。
++ [^] 修复了 [dataZoom](http://echarts.baidu.com/option.html#dataZoom) 中 category 轴的默认范围。参见 [#5226](https://github.com/apache/incubator-echarts/issues/5226)。
 
-+ [^] disConnect 函数命名修改为 disconnect。参见 [#5208](https://github.com/ecomfe/echarts/issues/5208)。
++ [^] disConnect 函数命名修改为 disconnect。参见 [#5208](https://github.com/apache/incubator-echarts/issues/5208)。
 
-+ [^] 去除了指定 `width,height` 初始化 echarts 时的不正确提示。参见 [#4569](https://github.com/ecomfe/echarts/issues/4569)。
++ [^] 去除了指定 `width,height` 初始化 echarts 时的不正确提示。参见 [#4569](https://github.com/apache/incubator-echarts/issues/4569)。
 
-+ [^] 修复漏斗图 tooltip 不能支持百分比问题。参见 [#4347](https://github.com/ecomfe/echarts/issues/4347) 和 [#4332](https://github.com/ecomfe/echarts/pull/4332)。
++ [^] 修复漏斗图 tooltip 不能支持百分比问题。参见 [#4347](https://github.com/apache/incubator-echarts/issues/4347) 和 [#4332](https://github.com/apache/incubator-echarts/pull/4332)。
 
-+ [^] 修复了 [gauge](http://echarts.baidu.com/option.html#series.gauge) 指针颜色的 `'auto'` 模式。参见 [#5109](https://github.com/ecomfe/echarts/issues/5109)。
++ [^] 修复了 [gauge](http://echarts.baidu.com/option.html#series.gauge) 指针颜色的 `'auto'` 模式。参见 [#5109](https://github.com/apache/incubator-echarts/issues/5109)。
 
-+ [^] 修复了 [series-gauge.pointer.show](http://echarts.baidu.com/option.html#series-gauge.pointer.show) 为 `false` 时出错的问题。参见 [#4944](https://github.com/ecomfe/echarts/issues/4944)。
++ [^] 修复了 [series-gauge.pointer.show](http://echarts.baidu.com/option.html#series-gauge.pointer.show) 为 `false` 时出错的问题。参见 [#4944](https://github.com/apache/incubator-echarts/issues/4944)。
 
 + 修复 treemap 数据初始化使自动类型判断的不准确。
 
-+ 修复了 [toolbox](http://echarts.baidu.com/option.html#toolbox) 样式。参见 [#3591](https://github.com/ecomfe/echarts/issues/3591)。
++ 修复了 [toolbox](http://echarts.baidu.com/option.html#toolbox) 样式。参见 [#3591](https://github.com/apache/incubator-echarts/issues/3591)。
 
 + 改进了在类目轴（category axis）上的 [刷选](http://echarts.baidu.com/option.html#brush)行为。
 
-+ [^] 修复了 [visualMap-piecewise.categories](http://echarts.baidu.com/option.html#visualMap-piecewise.categories) 如果是数字字符串则不正常的问题。参见 [#4960](https://github.com/ecomfe/echarts/issues/4960)。
++ [^] 修复了 [visualMap-piecewise.categories](http://echarts.baidu.com/option.html#visualMap-piecewise.categories) 如果是数字字符串则不正常的问题。参见 [#4960](https://github.com/apache/incubator-echarts/issues/4960)。
 
 
 
@@ -861,11 +861,11 @@ Recovery Build
 
 + [+] 开放了 throttle 工具方法：`chart.util.throttle`。
 
-+ [+] [K 线图](http://echarts.baidu.com/option.html#series-candlestick) 支持了 [barWidth](http://echarts.baidu.com/option.html#series-candlestick.barWidth)，[barMinWidth](http://echarts.baidu.com/option.html#series-candlestick.barMinWidth)，[barMaxWidth](http://echarts.baidu.com/option.html#series-candlestick.barMaxWidth) 设置。参见 [#4783](https://github.com/ecomfe/echarts/issues/4783)。
++ [+] [K 线图](http://echarts.baidu.com/option.html#series-candlestick) 支持了 [barWidth](http://echarts.baidu.com/option.html#series-candlestick.barWidth)，[barMinWidth](http://echarts.baidu.com/option.html#series-candlestick.barMinWidth)，[barMaxWidth](http://echarts.baidu.com/option.html#series-candlestick.barMaxWidth) 设置。参见 [#4783](https://github.com/apache/incubator-echarts/issues/4783)。
 
 + [+] [线图](http://echarts.baidu.com/option.html#series-lines) 支持了 [symbol](http://echarts.baidu.com/option.html#series-lines.symbol), [symbolSize](http://echarts.baidu.com/option.html#series-lines.symbolSize) 设置。
 
-+ [+] 支持了 [visualMap-piecewise](http://echarts.baidu.com/option.html#visualMap-piecewise) 中数据标签和首尾的文本同时显示。参见 [visualMap-piecewise.showLabel](http://echarts.baidu.com/option.html#visualMap-piecewise.showLabel) 参见 [#4845](https://github.com/ecomfe/echarts/issues/4845)。
++ [+] 支持了 [visualMap-piecewise](http://echarts.baidu.com/option.html#visualMap-piecewise) 中数据标签和首尾的文本同时显示。参见 [visualMap-piecewise.showLabel](http://echarts.baidu.com/option.html#visualMap-piecewise.showLabel) 参见 [#4845](https://github.com/apache/incubator-echarts/issues/4845)。
 
 + [+] 一个系列使用 [visualMap](http://echarts.baidu.com/option.html#visualMap) 做视觉映射时，现在允许了系列中的某些数据项不受 `visualMap` 控制，从而能使用系列的自身的视觉定义定义（颜色、形状等）。参见 [visualMap](http://echarts.baidu.com/option.html#visualMap) 中 `视觉映射方式的配置` 一节的描述。
 
@@ -873,19 +873,19 @@ Recovery Build
 
 + [^] 在 [showTip](http://echarts.baidu.com/api.html#action.tooltip.showTip) 事件中开放了 `dataIndex` 参数。
 
-+ [^] 修复了 tooltip 中的 XSS 隐患。参见 [#4769](https://github.com/ecomfe/echarts/issues/4769)。
++ [^] 修复了 tooltip 中的 XSS 隐患。参见 [#4769](https://github.com/apache/incubator-echarts/issues/4769)。
 
-+ [^] 修复了 [series-graph.edgeLabel](http://echarts.baidu.com/option.html#series-graph.edgeLabel) 中部分属性无效的问题。参见 [#4555](https://github.com/ecomfe/echarts/issues/4555)。
++ [^] 修复了 [series-graph.edgeLabel](http://echarts.baidu.com/option.html#series-graph.edgeLabel) 中部分属性无效的问题。参见 [#4555](https://github.com/apache/incubator-echarts/issues/4555)。
 
-+ [^] 修复了 [series-gauge](http://echarts.baidu.com/option.html#series-gauge) 中 `min` `max` 是 `stirng` 时的 tick 渲染问题。参见 [#4617](https://github.com/ecomfe/echarts/issues/4617)。
++ [^] 修复了 [series-gauge](http://echarts.baidu.com/option.html#series-gauge) 中 `min` `max` 是 `stirng` 时的 tick 渲染问题。参见 [#4617](https://github.com/apache/incubator-echarts/issues/4617)。
 
-+ [^] 修复了 [series-gauge.pointer.show](http://echarts.baidu.com/option.html#series-gauge.pointer.show) 的问题。参见 [#4618](https://github.com/ecomfe/echarts/issues/4618)。
++ [^] 修复了 [series-gauge.pointer.show](http://echarts.baidu.com/option.html#series-gauge.pointer.show) 的问题。参见 [#4618](https://github.com/apache/incubator-echarts/issues/4618)。
 
 + [^] 修复了 [series-radar](http://echarts.baidu.com/option.html#series-radar) 在无数据时渲染可能抛错的问题。
 
-+ [^] 修复了 [markArea.label.normal.show](http://echarts.baidu.com/option.html#series-line.markArea.label.normal.show) 的问题。参见 [#4723](https://github.com/ecomfe/echarts/issues/4723)。
++ [^] 修复了 [markArea.label.normal.show](http://echarts.baidu.com/option.html#series-line.markArea.label.normal.show) 的问题。参见 [#4723](https://github.com/apache/incubator-echarts/issues/4723)。
 
-+ [^] 优化了 [log 数轴](http://echarts.baidu.com/option.html#yAxis.type) 中，数据小于等于 0 时的处理。参见 [#4743](https://github.com/ecomfe/echarts/issues/4743) 和 [#3161](https://github.com/ecomfe/echarts/issues/3161)。
++ [^] 优化了 [log 数轴](http://echarts.baidu.com/option.html#yAxis.type) 中，数据小于等于 0 时的处理。参见 [#4743](https://github.com/apache/incubator-echarts/issues/4743) 和 [#3161](https://github.com/apache/incubator-echarts/issues/3161)。
 
 
 ## v3.3.2
@@ -893,37 +893,37 @@ Recovery Build
 
 + **[+] 开放图形元素设置：[graphic](http://echarts.baidu.com/option.html#graphic)。参见<http://echarts.baidu.com/gallery/editor.html?c=line-y-category> 和 <http://echarts.baidu.com/gallery/editor.html?c=line-draggable> 和 <http://echarts.baidu.com/gallery/editor.html?c=map-province>。**
 
-+ [+] 增加了 [visualMin](http://echarts.baidu.com/option.html#series-treemap.visualMin) 和 [visualMax](http://echarts.baidu.com/option.html#series-treemap.visualMax)，增强了 [treemap](http://echarts.baidu.com/option.html#series-treemap) 的颜色映射能力。参见 [#2509](https://github.com/ecomfe/echarts/issues/2509)。
++ [+] 增加了 [visualMin](http://echarts.baidu.com/option.html#series-treemap.visualMin) 和 [visualMax](http://echarts.baidu.com/option.html#series-treemap.visualMax)，增强了 [treemap](http://echarts.baidu.com/option.html#series-treemap) 的颜色映射能力。参见 [#2509](https://github.com/apache/incubator-echarts/issues/2509)。
 
 + [+] 增加了 [tooltip.confine](http://echarts.baidu.com/option.html#tooltip.confine)，可以把 tooltip 限制在 chart 主容器范围中。这对于小屏、以及外层 dom 有设 `overflow:hidden` 的场景比较有用。
 
 + [^] 改善了 [geo](http://echarts.baidu.com/option.html#geo) / [map](http://echarts.baidu.com/option.html#series-map) 在触屏上的选择和 roam 体验。
 
-+ [^] 修复 [containPixel](http://echarts.baidu.com/api.html#echartsInstance.containPixel) 在 [geo](http://echarts.baidu.com/option.html#geo) / [graph](http://echarts.baidu.com/option.html#series-graph) 中的判断错误。参见 [#4405](https://github.com/ecomfe/echarts/issues/4405)。
++ [^] 修复 [containPixel](http://echarts.baidu.com/api.html#echartsInstance.containPixel) 在 [geo](http://echarts.baidu.com/option.html#geo) / [graph](http://echarts.baidu.com/option.html#series-graph) 中的判断错误。参见 [#4405](https://github.com/apache/incubator-echarts/issues/4405)。
 
 + [^] 增强了 [visualMap](http://echarts.baidu.com/option.html#visualMap) 对 [line](http://echarts.baidu.com/option.html#series-line) 图的映射。
 
 + [^] 修正了 [visualMap](http://echarts.baidu.com/option.html#visualMap) 对于 symbol 的映射问题。
 
-+ [^] 使 [dataZoom](http://echarts.baidu.com/option.html#dataZoom) 的 label 在非 [realtime](http://echarts.baidu.com/option.html#dataZoom.realtime) 情况下实时更新。参见 [#4434](https://github.com/ecomfe/echarts/issues/4434)。
++ [^] 使 [dataZoom](http://echarts.baidu.com/option.html#dataZoom) 的 label 在非 [realtime](http://echarts.baidu.com/option.html#dataZoom.realtime) 情况下实时更新。参见 [#4434](https://github.com/apache/incubator-echarts/issues/4434)。
 
-+ [^] 修复 [dataZoom](http://echarts.baidu.com/option.html#dataZoom) 缩放时高亮不正确问题。参见 [#4475](https://github.com/ecomfe/echarts/issues/4475)。
++ [^] 修复 [dataZoom](http://echarts.baidu.com/option.html#dataZoom) 缩放时高亮不正确问题。参见 [#4475](https://github.com/apache/incubator-echarts/issues/4475)。
 
-+ [^] 修复了移动端禁止了浏览器默认滑动的错误。参见 [#4393](https://github.com/ecomfe/echarts/issues/4393)。
++ [^] 修复了移动端禁止了浏览器默认滑动的错误。参见 [#4393](https://github.com/apache/incubator-echarts/issues/4393)。
 
-+ [^] 修复 MS Edge 浏览器中不能保存为图片的问题。参见 [#2451](https://github.com/ecomfe/echarts/issues/2451) 和 [#3586](https://github.com/ecomfe/echarts/issues/3586)。
++ [^] 修复 MS Edge 浏览器中不能保存为图片的问题。参见 [#2451](https://github.com/apache/incubator-echarts/issues/2451) 和 [#3586](https://github.com/apache/incubator-echarts/issues/3586)。
 
-+ [^] 修复 [tooltip](http://echarts.baidu.com/option.html#tooltip) 中对 `'time'` 类型的轴的格式化问题。参见 [#4398](https://github.com/ecomfe/echarts/issues/4398)。
++ [^] 修复 [tooltip](http://echarts.baidu.com/option.html#tooltip) 中对 `'time'` 类型的轴的格式化问题。参见 [#4398](https://github.com/apache/incubator-echarts/issues/4398)。
 
 + [^] 修复第一个系列为空数据的时候多系列 [tooltip](http://echarts.baidu.com/option.html#tooltip) 可能不显示的 bug。
 
-+ [^] 修复 [grid.containLabel](http://echarts.baidu.com/option.html#grid.containLabel) 对大 fontSize 无效的问题。参见 [#3805](https://github.com/ecomfe/echarts/issues/3805)。
++ [^] 修复 [grid.containLabel](http://echarts.baidu.com/option.html#grid.containLabel) 对大 fontSize 无效的问题。参见 [#3805](https://github.com/apache/incubator-echarts/issues/3805)。
 
-+ [^] 修复 `echarts.extendSeriesModel` 错误。参见 [#4397](https://github.com/ecomfe/echarts/issues/4397)。
++ [^] 修复 `echarts.extendSeriesModel` 错误。参见 [#4397](https://github.com/apache/incubator-echarts/issues/4397)。
 
-+ [^] 修复 [pie](http://echarts.baidu.com/option.html#series-pie) 中 `clockwise` 设置为 `false` 并且使用了 `minAngle` 时的渲染错误。参见 [#4414](https://github.com/ecomfe/echarts/issues/4414)。
++ [^] 修复 [pie](http://echarts.baidu.com/option.html#series-pie) 中 `clockwise` 设置为 `false` 并且使用了 `minAngle` 时的渲染错误。参见 [#4414](https://github.com/apache/incubator-echarts/issues/4414)。
 
-+ [^] 修复使用 gradient color 时 [tooltip](http://echarts.baidu.com/option.html#tooltip) 中圆点颜色错误，参见 [#3994](https://github.com/ecomfe/echarts/issues/3994)。
++ [^] 修复使用 gradient color 时 [tooltip](http://echarts.baidu.com/option.html#tooltip) 中圆点颜色错误，参见 [#3994](https://github.com/apache/incubator-echarts/issues/3994)。
 
 
 
@@ -932,7 +932,7 @@ Recovery Build
 
 Recovery Build
 
-+ [^] 修复移动端 touch 事件出错的问题，参见 [#4384](https://github.com/ecomfe/echarts/issues/4384)。
++ [^] 修复移动端 touch 事件出错的问题，参见 [#4384](https://github.com/apache/incubator-echarts/issues/4384)。
 
 
 ## v3.3.0
@@ -942,66 +942,66 @@ Recovery Build
 
 + [+] 开放坐标判断 API：[containPixel](http://echarts.baidu.com/api.html#echartsInstance.containPixel)。
 
-+ [+] [polar](http://echarts.baidu.com/option.html#polar) 支持了 [dataZoom](http://echarts.baidu.com/option.html#dataZoom)。参见 [#4090](https://github.com/ecomfe/echarts/issues/4090)。
++ [+] [polar](http://echarts.baidu.com/option.html#polar) 支持了 [dataZoom](http://echarts.baidu.com/option.html#dataZoom)。参见 [#4090](https://github.com/apache/incubator-echarts/issues/4090)。
 
 + [+] 支持在 echarts 初始化时直接显式指定 `width`/`height`，参见 [echarts.init](http://echarts.baidu.com/api.html#echarts.init)。这可以方便某些『在 container dom 渲染之前就需要初始化 echarts』的场景。
 
-+ [+] 在 [toolbox](http://echarts.baidu.com/option.html#toolbox) 中加入了 [textPosition](http://echarts.baidu.com/option.html#toolbox.iconStyle.normal.textPosition) 和 [textAlign](http://echarts.baidu.com/option.html#toolbox.iconStyle.normal.textAlign) 的设置。参见 [#4104](https://github.com/ecomfe/echarts/issues/4104)。
++ [+] 在 [toolbox](http://echarts.baidu.com/option.html#toolbox) 中加入了 [textPosition](http://echarts.baidu.com/option.html#toolbox.iconStyle.normal.textPosition) 和 [textAlign](http://echarts.baidu.com/option.html#toolbox.iconStyle.normal.textAlign) 的设置。参见 [#4104](https://github.com/apache/incubator-echarts/issues/4104)。
 
 + [+] visualMap 新加配置 [visualMap-piecewise.minOpen](http://echarts.baidu.com/option.html#visualMap-piecewise.minOpen) 和 [visualMap-piecewise.maxOpen](http://echarts.baidu.com/option.html#visualMap-piecewise.maxOpen)。
 
-+ [^] 修复 setOption 时 `series.name` 不更新的问题。参见 [#4033](https://github.com/ecomfe/echarts/issues/4033)。
++ [^] 修复 setOption 时 `series.name` 不更新的问题。参见 [#4033](https://github.com/apache/incubator-echarts/issues/4033)。
 
 + [^] 修复了对 echarts 使用 css-transform 后，鼠标响应位置错误的问题。
 
-+ [^] 修复了 JavaScript 的 `Object.prototype` 被扩展后，会出错的问题。参见 [#4129](https://github.com/ecomfe/echarts/issues/4129)。
++ [^] 修复了 JavaScript 的 `Object.prototype` 被扩展后，会出错的问题。参见 [#4129](https://github.com/apache/incubator-echarts/issues/4129)。
 
-+ [^] 修复了 ios10、macOS 上圆形 emptySymbol 被绘制为方形的问题。参见 [#4136](https://github.com/ecomfe/echarts/issues/4136) 和 [#4150](https://github.com/ecomfe/echarts/issues/4150)。
++ [^] 修复了 ios10、macOS 上圆形 emptySymbol 被绘制为方形的问题。参见 [#4136](https://github.com/apache/incubator-echarts/issues/4136) 和 [#4150](https://github.com/apache/incubator-echarts/issues/4150)。
 
-+ [^] 修复了 [lines](http://echarts.baidu.com/option.html#series-lines) 图中，使用 [polyLine](http://echarts.baidu.com/option.html#series-lines.polyline) 时图标不能朝向运行方向的问题。参见 [#4060](https://github.com/ecomfe/echarts/issues/4060)。以及其他小问题 [#4346](https://github.com/ecomfe/echarts/issues/4346)。
++ [^] 修复了 [lines](http://echarts.baidu.com/option.html#series-lines) 图中，使用 [polyLine](http://echarts.baidu.com/option.html#series-lines.polyline) 时图标不能朝向运行方向的问题。参见 [#4060](https://github.com/apache/incubator-echarts/issues/4060)。以及其他小问题 [#4346](https://github.com/apache/incubator-echarts/issues/4346)。
 
-+ [^] 修复了 对 [line](http://echarts.baidu.com/option.html#series-line) 释以 [visualMap](http://echarts.baidu.com/option.html#visualMap) 时区间过小导致线消失的问题。参见 [#4221](https://github.com/ecomfe/echarts/issues/4221)。
++ [^] 修复了 对 [line](http://echarts.baidu.com/option.html#series-line) 释以 [visualMap](http://echarts.baidu.com/option.html#visualMap) 时区间过小导致线消失的问题。参见 [#4221](https://github.com/apache/incubator-echarts/issues/4221)。
 
-+ [^] 修复了 [tooltip](http://echarts.baidu.com/option.html#tooltip) 在触屏上不灵便的问题。参见 [#3900](https://github.com/ecomfe/echarts/issues/3900)。
++ [^] 修复了 [tooltip](http://echarts.baidu.com/option.html#tooltip) 在触屏上不灵便的问题。参见 [#3900](https://github.com/apache/incubator-echarts/issues/3900)。
 
-+ [^] 修复了开启动画时区域图更细问题。参见 [#3956](https://github.com/ecomfe/echarts/issues/3956)。
++ [^] 修复了开启动画时区域图更细问题。参见 [#3956](https://github.com/apache/incubator-echarts/issues/3956)。
 
-+ [^] 修复了 [timelinechanged](http://echarts.baidu.com/api.html#events.timelinechanged) 事件中 currentIndex 不一致问题。参见 [#4161](https://github.com/ecomfe/echarts/issues/4161)。
++ [^] 修复了 [timelinechanged](http://echarts.baidu.com/api.html#events.timelinechanged) 事件中 currentIndex 不一致问题。参见 [#4161](https://github.com/apache/incubator-echarts/issues/4161)。
 
-+ [^] 修复了某些图中使用 [clear](http://echarts.baidu.com/api.html#echartsInstance.clear) 时内存不能释放的问题。参见 [#4105](https://github.com/ecomfe/echarts/issues/4105)。
++ [^] 修复了某些图中使用 [clear](http://echarts.baidu.com/api.html#echartsInstance.clear) 时内存不能释放的问题。参见 [#4105](https://github.com/apache/incubator-echarts/issues/4105)。
 
-+ [^] 修复了 [globalout](http://echarts.baidu.com/api.html#events.%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6.globalout) 事件无效的问题。参见 [#4169](https://github.com/ecomfe/echarts/issues/4169)。
++ [^] 修复了 [globalout](http://echarts.baidu.com/api.html#events.%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6.globalout) 事件无效的问题。参见 [#4169](https://github.com/apache/incubator-echarts/issues/4169)。
 
-+ [^] 修复了 [graph](http://echarts.baidu.com/option.html#graph) 在环形布局时可能节点重叠的问题。参见 [#4084](https://github.com/ecomfe/echarts/issues/4084)。
++ [^] 修复了 [graph](http://echarts.baidu.com/option.html#graph) 在环形布局时可能节点重叠的问题。参见 [#4084](https://github.com/apache/incubator-echarts/issues/4084)。
 
-+ [^] 修复了 [对数轴](http://echarts.baidu.com/option.html#xAxis.type) 的 label 的显示精度问题。参见 [#4158](https://github.com/ecomfe/echarts/issues/4158)。
++ [^] 修复了 [对数轴](http://echarts.baidu.com/option.html#xAxis.type) 的 label 的显示精度问题。参见 [#4158](https://github.com/apache/incubator-echarts/issues/4158)。
 
-+ [^] 当 [axis.type](http://echarts.baidu.com/option.html#xAxis.type) 为 `'time'` 时，支持 [axis.min](http://echarts.baidu.com/option.html#xAxis.min) / [axis.max](http://echarts.baidu.com/option.html#xAxis.max) 设置为 Date 类型。参见 [#4097](https://github.com/ecomfe/echarts/issues/4097)。
++ [^] 当 [axis.type](http://echarts.baidu.com/option.html#xAxis.type) 为 `'time'` 时，支持 [axis.min](http://echarts.baidu.com/option.html#xAxis.min) / [axis.max](http://echarts.baidu.com/option.html#xAxis.max) 设置为 Date 类型。参见 [#4097](https://github.com/apache/incubator-echarts/issues/4097)。
 
-+ [^] 修复了使用 [minInterval](http://echarts.baidu.com/option.html#xAxis.minInterval) 时轴的错误。参见 [#4162](https://github.com/ecomfe/echarts/issues/4162)。
++ [^] 修复了使用 [minInterval](http://echarts.baidu.com/option.html#xAxis.minInterval) 时轴的错误。参见 [#4162](https://github.com/apache/incubator-echarts/issues/4162)。
 
-+ [^] 优化 [treemap.breadcrumb](http://echarts.baidu.com/option.html#series-treemap.breadcrumb)。参见 [#4209](https://github.com/ecomfe/echarts/issues/4209) 和 [#4256](https://github.com/ecomfe/echarts/issues/4256) 和 [#4291](https://github.com/ecomfe/echarts/issues/4291)。
++ [^] 优化 [treemap.breadcrumb](http://echarts.baidu.com/option.html#series-treemap.breadcrumb)。参见 [#4209](https://github.com/apache/incubator-echarts/issues/4209) 和 [#4256](https://github.com/apache/incubator-echarts/issues/4256) 和 [#4291](https://github.com/apache/incubator-echarts/issues/4291)。
 
-+ [^] 修复了在 [map](http://echarts.baidu.com/option.html#series-map) 上使用 [showTip](http://echarts.baidu.com/api.html#action.tooltip.showTip) 时 tooltip 位置不正确的问题。参见 [#3490](https://github.com/ecomfe/echarts/issues/3490)。
++ [^] 修复了在 [map](http://echarts.baidu.com/option.html#series-map) 上使用 [showTip](http://echarts.baidu.com/api.html#action.tooltip.showTip) 时 tooltip 位置不正确的问题。参见 [#3490](https://github.com/apache/incubator-echarts/issues/3490)。
 
-+ [^] 修复了 [radar](http://echarts.baidu.com/option.html#series-radar) 的问题：[#4249](https://github.com/ecomfe/echarts/issues/4249) 和 [#3934](https://github.com/ecomfe/echarts/issues/3934)。
++ [^] 修复了 [radar](http://echarts.baidu.com/option.html#series-radar) 的问题：[#4249](https://github.com/apache/incubator-echarts/issues/4249) 和 [#3934](https://github.com/apache/incubator-echarts/issues/3934)。
 
-+ [^] 修正了事件参数中的`dataIndex`的含义，统一均为原始数据的 index。参见 [#2920](https://github.com/ecomfe/echarts/issues/2920)。
++ [^] 修正了事件参数中的`dataIndex`的含义，统一均为原始数据的 index。参见 [#2920](https://github.com/apache/incubator-echarts/issues/2920)。
 
-+ [^] 修复部分数据可能会抛出`RangeError`的异常。参见 [#4164](https://github.com/ecomfe/echarts/issues/4164)
++ [^] 修复部分数据可能会抛出`RangeError`的异常。参见 [#4164](https://github.com/apache/incubator-echarts/issues/4164)
 
-+ [^] 修复 IE8 中调用 resize 无效的 bug。参见 [#3923](https://github.com/ecomfe/echarts/issues/3923)
++ [^] 修复 IE8 中调用 resize 无效的 bug。参见 [#3923](https://github.com/apache/incubator-echarts/issues/3923)
 
-+ [^] 修复 IE8 中调用 dispose 报错的 bug。参见 [#3874](https://github.com/ecomfe/echarts/issues/3874)
++ [^] 修复 IE8 中调用 dispose 报错的 bug。参见 [#3874](https://github.com/apache/incubator-echarts/issues/3874)
 
 ## v3.2.3
 <div class="time">2016-08-16</div>
 
 + [^] [Graph](http://echarts.baidu.com/option.html#series-graph) 环形布局支持设置 [rotateLabel](http://echarts.baidu.com/option.html#series-graph.circular.rotateLabel) 旋转标签，见示例 [graph-circular-layout](http://echarts.baidu.com/gallery/editor.html?c=graph-circular-layout)
 
-+ [^] 修复雷达图中 indicator 无法同时设置 [min](http://echarts.baidu.com/option.html#radar.indicator.min), [max](http://echarts.baidu.com/option.html#radar.indicator.max) 的 bug。见 [#3628](https://github.com/ecomfe/echarts/issues/3628)
++ [^] 修复雷达图中 indicator 无法同时设置 [min](http://echarts.baidu.com/option.html#radar.indicator.min), [max](http://echarts.baidu.com/option.html#radar.indicator.max) 的 bug。见 [#3628](https://github.com/apache/incubator-echarts/issues/3628)
 
-+ [^] 修复关闭动画时阶梯线图刷新会变成普通折线图的 bug。见 [#3645](https://github.com/ecomfe/echarts/issues/3645)
++ [^] 修复关闭动画时阶梯线图刷新会变成普通折线图的 bug。见 [#3645](https://github.com/apache/incubator-echarts/issues/3645)
 
 + [^] [setOption](http://echarts.baidu.com/api.html#echartsInstance.setOption) 第三个参数调整为 lazyUpdate, 从原先的不立即重绘画布改为不立即更新图表，从而优化在多处地方多次 setOption 设置同一个图表会产生的性能问题。
 
@@ -1009,9 +1009,9 @@ Recovery Build
 
 + [^] 修复 [graph](http://echarts.baidu.com/option.html#series-graph) 中 [symbolSize](http://echarts.baidu.com/option.html#series-graph.symbolSize) 为数组时无法绘制带有 [edgeSymbol](http://echarts.baidu.com/option.html#series-graph.edgeSymbol) 的直线的 bug。
 
-+ [^] 修复饼图中关闭图例会导致颜色显示不一致的 bug。见 [#3735](https://github.com/ecomfe/echarts/issues/3735)
++ [^] 修复饼图中关闭图例会导致颜色显示不一致的 bug。见 [#3735](https://github.com/apache/incubator-echarts/issues/3735)
 
-+ [^] 优化对数轴，新加参数 [logBase](http://echarts.baidu.com/option.html#yAxis.logBase)。见 [#3749](https://github.com/ecomfe/echarts/issues/3749)
++ [^] 优化对数轴，新加参数 [logBase](http://echarts.baidu.com/option.html#yAxis.logBase)。见 [#3749](https://github.com/apache/incubator-echarts/issues/3749)
 
 + [^] 地图拖拽性能优化。
 
@@ -1031,15 +1031,15 @@ Recovery Build
 
 + [^] 修复系列数据和坐标轴类目数量不一致时 tooltip 显示错误的 bug。
 
-+ [^] 修复折线图和地图混搭时再使用多个 visualMap 组件可能会报错的 bug。见 [#3544](https://github.com/ecomfe/echarts/issues/3544)
++ [^] 修复折线图和地图混搭时再使用多个 visualMap 组件可能会报错的 bug。见 [#3544](https://github.com/apache/incubator-echarts/issues/3544)
 
-+ [^] 修复坐标轴轴线设置渐变色报错的 bug。见 [#3577](https://github.com/ecomfe/echarts/issues/3577)
++ [^] 修复坐标轴轴线设置渐变色报错的 bug。见 [#3577](https://github.com/apache/incubator-echarts/issues/3577)
 
-+ [^] 修复数据都相同的折线图中使用 visualMap 时可能会报错的 bug。见 [#3582](https://github.com/ecomfe/echarts/issues/3582)
++ [^] 修复数据都相同的折线图中使用 visualMap 时可能会报错的 bug。见 [#3582](https://github.com/apache/incubator-echarts/issues/3582)
 
 + [^] 优化坐标轴刻度的划分。
 
-+ [^] 修复当字符串类型数据 tooltip 默认显示为 `'-'` 的问题。见 [#3307](https://github.com/ecomfe/echarts/issues/3307)。优化时间类型数据的默认 tooltip。
++ [^] 修复当字符串类型数据 tooltip 默认显示为 `'-'` 的问题。见 [#3307](https://github.com/apache/incubator-echarts/issues/3307)。优化时间类型数据的默认 tooltip。
 
 + [^] 数据项支持 tooltip 配置为字符串。如下示例
 
@@ -1125,7 +1125,7 @@ Recovery Build
     + [^] 类目轴默认不显示分隔线 splitLine。
     + [^] 类目轴自动间隔的计算优化。修复类目轴在数据很多的时候有可能出现标签重叠的问题。
     + [^] [axisTick](http://echarts.baidu.com/option.html#xAxis.axisTick), [axisLabel](http://echarts.baidu.com/option.html#xAxis.axisLabel) 默认取 [axisLine](http://echarts.baidu.com/option.html#xAxis.axisLine) 的颜色。
-    + [^] 修复双类目轴时数据无法使用类目值的 bug。见 [#3494](https://github.com/ecomfe/echarts/issues/3494)
+    + [^] 修复双类目轴时数据无法使用类目值的 bug。见 [#3494](https://github.com/apache/incubator-echarts/issues/3494)
 
 + [^] 桑基图 优化
 
@@ -1140,7 +1140,7 @@ Recovery Build
 
     + [+] 新增 `silent` 配置项用于关闭交互。
     + [^] 数据配置更加灵活，支持每个维度 (xAxis, yAxis) 配置为`'min'`, `'max'`, `'average'`。
-    + [^] 平均值计算忽略控制。见 [#3367](https://github.com/ecomfe/echarts/issues/3367)
+    + [^] 平均值计算忽略控制。见 [#3367](https://github.com/apache/incubator-echarts/issues/3367)
 
 + [^] 散点图在 [large](http://echarts.baidu.com/option.html#series-scatter.large) 模式下也支持 tooltip 和鼠标事件触发。
 
@@ -1164,17 +1164,17 @@ Recovery Build
 
 + [^] 颜色支持配置为渐变色和纹理。见 [itemStyle.normal.color](http://echarts.baidu.com/option.html#series-pie.itemStyle.normal.color)。示例 [渐变](http://echarts.baidu.com/gallery/editor.html?c=bubble-gradient)，[纹理](http://echarts.baidu.com/gallery/editor.html?c=pie-pattern)
 
-+ [^] 修复多个系列的地图 tooltip 和 symbol 显示不正确的 bug。见 [#3436](https://github.com/ecomfe/echarts/issues/3436) [#3320](https://github.com/ecomfe/echarts/issues/3320)
++ [^] 修复多个系列的地图 tooltip 和 symbol 显示不正确的 bug。见 [#3436](https://github.com/apache/incubator-echarts/issues/3436) [#3320](https://github.com/apache/incubator-echarts/issues/3320)
 
-+ [^] 优化 effectScatter 在 setOption 更新数据时动画不连贯的问题。见 [#3439](https://github.com/ecomfe/echarts/issues/3439)
++ [^] 优化 effectScatter 在 setOption 更新数据时动画不连贯的问题。见 [#3439](https://github.com/apache/incubator-echarts/issues/3439)
 
 + [^] 优化 tooltip，返回空字符串的话不显示浮层。
 
 + [^] 修复 splitArea 会覆盖 splitLine 的问题。
 
-+ [^] 修复雷达图不能修改线条颜色的 bug。见 [#3441](https://github.com/ecomfe/echarts/issues/3441)
++ [^] 修复雷达图不能修改线条颜色的 bug。见 [#3441](https://github.com/apache/incubator-echarts/issues/3441)
 
-+ [^] 修复数据刷新可能会导致事件绑定的内存泄露。见 [#3500](https://github.com/ecomfe/echarts/issues/3500)
++ [^] 修复数据刷新可能会导致事件绑定的内存泄露。见 [#3500](https://github.com/apache/incubator-echarts/issues/3500)
 
 + [^] ZRender 性能优化，重绘性能为原先的 2x ~ 3x。
 
@@ -1189,11 +1189,11 @@ Recovery Build
     + [+] 支持通过 [regions](http://echarts.baidu.com/option.html#geo.regions) 配置每个区域的样式
     + [+] 支持通过 [selectedMode](http://echarts.baidu.com/option.html#geo.selectedMode) 配置是否区域可选，区域的选择会抛出 [geoselectchanged](http://echarts.baidu.com/api.html#events.geoselectchanged) 事件
 
-+ [^] 优化部分字体，例如微软雅黑的垂直对齐，见 [#2983](https://github.com/ecomfe/echarts/issues/2983)
++ [^] 优化部分字体，例如微软雅黑的垂直对齐，见 [#2983](https://github.com/apache/incubator-echarts/issues/2983)
 
 + [^] graph 动画优化，见示例 [graph-life-expectancy](http://echarts.baidu.com/gallery/editor.html?c=graph-life-expectancy)
 
-+ [+] 数值轴新加 [minInterval](http://echarts.baidu.com/option.html#xAxis.minInterval)，见 [#3115](https://github.com/ecomfe/echarts/issues/3115)
++ [+] 数值轴新加 [minInterval](http://echarts.baidu.com/option.html#xAxis.minInterval)，见 [#3115](https://github.com/apache/incubator-echarts/issues/3115)
 
 + [+] treemap 新增下钻功能，参见 [leafDepth](http://echarts.baidu.com/option.html#series-treemap.leafDepth)，和示例 [treemap-drill-down](http://echarts.baidu.com/gallery/editor.html?c=treemap-drill-down)
 
@@ -1212,11 +1212,11 @@ Recovery Build
 
 + [^] 修复单个 echarts 实例中有多个 geo 组件并且都没有指定 name 时可能会导致单个组件在拖拽时影响其它组件散点图位置的问题。
 
-+ [^] dataZoom 精度问题优化，见 [#3228](https://github.com/ecomfe/echarts/issues/3228)
++ [^] dataZoom 精度问题优化，见 [#3228](https://github.com/apache/incubator-echarts/issues/3228)
 
 + [^] 修复 3.1.8 中雷达图点显示为黑色的 bug。
 
-+ [^] 修复 3.1.8 中 graph 会在 safari 下报错的 bug。见 [#3220](https://github.com/ecomfe/echarts/issues/3220)
++ [^] 修复 3.1.8 中 graph 会在 safari 下报错的 bug。见 [#3220](https://github.com/apache/incubator-echarts/issues/3220)
 
 + [^] 修复 [effectScatter](http://echarts.baidu.com/option.html#series-effectScatter) 中特效图形不能设置旋转的问题。
 
@@ -1245,8 +1245,8 @@ Recovery Build
     + [^] 绘制性能优化
 
 + **[^] treemap 优化**
-    + [^] 修复无法只在高亮的时候显示 label 的问题。Fix [#2975](https://github.com/ecomfe/echarts/issues/2975)
-    + [^] 修复中事件参数不正确的 bug。见 [#3063](https://github.com/ecomfe/echarts/issues/3063)
+    + [^] 修复无法只在高亮的时候显示 label 的问题。Fix [#2975](https://github.com/apache/incubator-echarts/issues/2975)
+    + [^] 修复中事件参数不正确的 bug。见 [#3063](https://github.com/apache/incubator-echarts/issues/3063)
 
 + **[^] visualMap 组件优化**
     + [+] 支持映射到 `opacity`。见 [visualMap.inRange](http://echarts.baidu.com/option.html#visualMap-continuous.inRange)。
@@ -1255,7 +1255,7 @@ Recovery Build
     + [^] 修复使用 merge 模式第二次 setOption 时，viusal 配置无法保持的 bug。
     + [^] 修复使用 `colorHue` 时，visualMap 控制条颜色渐变不对的 bug。
 
-+ [+] 折线图加入 [connectNulls](http://echarts.baidu.com/option.html#series-line.connectNulls) 配置项，见 [#2579](https://github.com/ecomfe/echarts/issues/2579)
++ [+] 折线图加入 [connectNulls](http://echarts.baidu.com/option.html#series-line.connectNulls) 配置项，见 [#2579](https://github.com/apache/incubator-echarts/issues/2579)
 
 + [+] markLine 标签位置支持配置为中间 `'middle'`。
 
@@ -1265,7 +1265,7 @@ Recovery Build
 
 + [^] 修正了 [tooltip.show](http://echarts.baidu.com/option.html#tooltip.show) 功能,同时控制`提示框浮层`和`axisPointer`的隐藏和显示。[tooltip.showContent](http://echarts.baidu.com/option.html#tooltip.showContent) 仅控制`提示框浮层`的隐藏和显示。
 
-+ [^] 仪表盘优化超出范围的数据的展现。见 [#3067](https://github.com/ecomfe/echarts/issues/3067)
++ [^] 仪表盘优化超出范围的数据的展现。见 [#3067](https://github.com/apache/incubator-echarts/issues/3067)
 
 + [^] 修复 3.1.7 中多系列饼图图例绘制错误的 bug。
 
@@ -1275,13 +1275,13 @@ Recovery Build
 
 + [^] 修复 setOption 无法清除之前设置的阴影样式的 bug。
 
-+ [^] 修复柱状图中渐变色无法正确显示的 bug，见 [#3065](https://github.com/ecomfe/echarts/issues/3065)
++ [^] 修复柱状图中渐变色无法正确显示的 bug，见 [#3065](https://github.com/apache/incubator-echarts/issues/3065)
 
 + [^] 修复桑基图中关闭动画会导致右侧标签显示不全的 bug。
 
 + [^] 优化折线图中可能会裁剪掉一半最顶端水平线，使得顶端水平线看起来更细的情况。
 
-+ [^] 修复 IE8 中饼图 0 数据显示为圆形的 bug。见 [#3128](https://github.com/ecomfe/echarts/issues/3128)
++ [^] 修复 IE8 中饼图 0 数据显示为圆形的 bug。见 [#3128](https://github.com/apache/incubator-echarts/issues/3128)
 
 + [^] 修复 IE8 只有高亮显示标签可能会无效的 bug。
 
@@ -1297,22 +1297,22 @@ Recovery Build
 
 + [^] 修复数据精度很高时 dataZoom 会产生错误的截断的 bug。
 
-+ [^] 修复 k 线图联动的 bug。Fix [#2992](https://github.com/ecomfe/echarts/issues/2992)
++ [^] 修复 k 线图联动的 bug。Fix [#2992](https://github.com/apache/incubator-echarts/issues/2992)
 
-+ [^] 修复 resize 会错误的触发 tooltip 的 bug。 Fix [#2988](https://github.com/ecomfe/echarts/issues/2988)
++ [^] 修复 resize 会错误的触发 tooltip 的 bug。 Fix [#2988](https://github.com/apache/incubator-echarts/issues/2988)
 
-+ [^] `axisLabel.textStyle.color` 支持回调函数，见 [#2796](https://github.com/ecomfe/echarts/issues/2796)
++ [^] `axisLabel.textStyle.color` 支持回调函数，见 [#2796](https://github.com/apache/incubator-echarts/issues/2796)
 
 + [^] 修复 IE8 下 dataZoom 区间缩小后折线图会错误绘制的 bug。
 
-+ [^] 优化饼图，漏斗图的图例绘制，支持`''`, `'\n'`换行，见 [#3039](https://github.com/ecomfe/echarts/issues/3039)
++ [^] 优化饼图，漏斗图的图例绘制，支持`''`, `'\n'`换行，见 [#3039](https://github.com/apache/incubator-echarts/issues/3039)
 
 ## v3.1.6
 <div class="time">2016-04-11</div>
 
-+ [^] 环形图内标签 inside 位置优化。见 [#2949](https://github.com/ecomfe/echarts/issues/2949)
++ [^] 环形图内标签 inside 位置优化。见 [#2949](https://github.com/apache/incubator-echarts/issues/2949)
 
-+ [^] 修复 IE8 下单个数据的饼图无法显示的 bug。Fix [#2961](https://github.com/ecomfe/echarts/issues/2961)
++ [^] 修复 IE8 下单个数据的饼图无法显示的 bug。Fix [#2961](https://github.com/apache/incubator-echarts/issues/2961)
 
 + [^] 修复柱状图 `itemStyle.emphasis.barBorderWidth` 不生效的 bug。
 
@@ -1329,17 +1329,17 @@ Recovery Build
 
 + [\+] map 图表和 geo 组件加入配置项 [scaleLimit](http://echarts.baidu.com/option.html#geo.scaleLimit)
 
-+ [^] 修复 `toolbox.feature.magicType` 中 option 和 seriesIndex 不起作用的问题。Fix [#2855](https://github.com/ecomfe/echarts/issues/2855)
++ [^] 修复 `toolbox.feature.magicType` 中 option 和 seriesIndex 不起作用的问题。Fix [#2855](https://github.com/apache/incubator-echarts/issues/2855)
 
 + [^] 工具栏中折柱切换的时候自动调整类目轴的 boundaryGap。
 
-+ [^] 修复 3.1.4 中 timeline 节点 hover 报错的 bug。Fix [#2897](https://github.com/ecomfe/echarts/issues/2897)
++ [^] 修复 3.1.4 中 timeline 节点 hover 报错的 bug。Fix [#2897](https://github.com/apache/incubator-echarts/issues/2897)
 
-+ [^] 修复 inside 类型的 dataZoom 无法作用于多个直角坐标系中的坐标轴的 bug。Fix [#2752](https://github.com/ecomfe/echarts/issues/2752)
++ [^] 修复 inside 类型的 dataZoom 无法作用于多个直角坐标系中的坐标轴的 bug。Fix [#2752](https://github.com/apache/incubator-echarts/issues/2752)
 
-+ [^] 修复 3.1.4 中南丁格尔图标签布局的问题。Fix [#2910](https://github.com/ecomfe/echarts/issues/2910)
++ [^] 修复 3.1.4 中南丁格尔图标签布局的问题。Fix [#2910](https://github.com/apache/incubator-echarts/issues/2910)
 
-+ [^] 修复 connect 调用已经释放的图表实例报错的问题。Fix [#2908](https://github.com/ecomfe/echarts/issues/2908)
++ [^] 修复 connect 调用已经释放的图表实例报错的问题。Fix [#2908](https://github.com/apache/incubator-echarts/issues/2908)
 
 + [^] 修复 3.1.4 中地图上的 markPoint 无法跟随地图漫游的问题。
 
@@ -1352,7 +1352,7 @@ Recovery Build
 
 + [^] 修复 dataZoom 无法 resize 的 bug。
 
-+ [^] 修复多次执行`showLoading`导致的 bug。Fix [#2821](https://github.com/ecomfe/echarts/issues/2821)
++ [^] 修复多次执行`showLoading`导致的 bug。Fix [#2821](https://github.com/apache/incubator-echarts/issues/2821)
 
 + [^] 饼图，地图等非笛卡尔坐标系和极坐标系的图表支持 markPoint 和 markLine。
 
@@ -1362,9 +1362,9 @@ Recovery Build
 
 + [^] 修复 3.1.3 中 dataZoom 不设置坐标轴 min， max 的 bug。
 
-+ [^] 修复当纵轴为类目轴且 series 的 data 为二维数组时，tooltip 里无法取到正确的 name 的bug。Fix [#2822](https://github.com/ecomfe/echarts/issues/2822)
++ [^] 修复当纵轴为类目轴且 series 的 data 为二维数组时，tooltip 里无法取到正确的 name 的bug。Fix [#2822](https://github.com/apache/incubator-echarts/issues/2822)
 
-+ [^] 修复圆角的柱形图 hover 错误的 bug，Fix [#2806](https://github.com/ecomfe/echarts/issues/2806)
++ [^] 修复圆角的柱形图 hover 错误的 bug，Fix [#2806](https://github.com/apache/incubator-echarts/issues/2806)
 
 + [^] 雷达图 indicator 配置项默认值策略优化。
 
@@ -1373,23 +1373,23 @@ Recovery Build
 
 + **[+]加入雷达图，见 [http://echarts.baidu.com/option.html#series-radar](http://echarts.baidu.com/option.html#series-radar)**
 
-+ [^] 平均值，最小值，最大值 markLine 起点和终点位置优化。Fix [#2762](https://github.com/ecomfe/echarts/issues/2762)，[#2688](https://github.com/ecomfe/echarts/issues/2688)。
++ [^] 平均值，最小值，最大值 markLine 起点和终点位置优化。Fix [#2762](https://github.com/apache/incubator-echarts/issues/2762)，[#2688](https://github.com/apache/incubator-echarts/issues/2688)。
 
-+ [^] 修复 markLine 的 symbol 只有一个配置为 `'none'` 的 bug。见 [#2733](https://github.com/ecomfe/echarts/issues/2733)
++ [^] 修复 markLine 的 symbol 只有一个配置为 `'none'` 的 bug。见 [#2733](https://github.com/apache/incubator-echarts/issues/2733)
 
 + [^] 多行文本的垂直居中优化。
 
 + [^] 饼图等数据项中 label 的 emphasis 配置项默认取 normal 中的值。
 
-+ [^] 按需引入时，折线图，饼图，散点图默认引入 grid 组件。避免 [#2758](https://github.com/ecomfe/echarts/issues/2758) 中的问题。
++ [^] 按需引入时，折线图，饼图，散点图默认引入 grid 组件。避免 [#2758](https://github.com/apache/incubator-echarts/issues/2758) 中的问题。
 
-+ [^] 修复 dataZoom 组件浮点精度的 bug。Fix [#2757](https://github.com/ecomfe/echarts/issues/2757)
++ [^] 修复 dataZoom 组件浮点精度的 bug。Fix [#2757](https://github.com/apache/incubator-echarts/issues/2757)
 
-+ [^] 未选中的图例文本显示为灰色。见 [#2615](https://github.com/ecomfe/echarts/issues/2615)
++ [^] 未选中的图例文本显示为灰色。见 [#2615](https://github.com/apache/incubator-echarts/issues/2615)
 
-+ [^] 修复 3.1.1 中 media query 中 dataZoom 位置失效的 bug。Fix [#2710](https://github.com/ecomfe/echarts/issues/2710)
++ [^] 修复 3.1.1 中 media query 中 dataZoom 位置失效的 bug。Fix [#2710](https://github.com/apache/incubator-echarts/issues/2710)
 
-+ [^] 修复 3.1.1 中 firefox 无法触发滚轮事件的 bug，Fix [#2730](https://github.com/ecomfe/echarts/issues/2730)
++ [^] 修复 3.1.1 中 firefox 无法触发滚轮事件的 bug，Fix [#2730](https://github.com/apache/incubator-echarts/issues/2730)
 
 + [^] IE8 优化。
 
@@ -1403,23 +1403,23 @@ Recovery Build
 
 + [^] 修复 v3.1.1 中折线图空数据后 `setOption` 更新数据无法显示的 bug。
 
-+ [^] 修复 `setOption(chart.getOption())` 有可能报`id duplicates`的错误。Fix [#2635](https://github.com/ecomfe/echarts/issues/2635)
++ [^] 修复 `setOption(chart.getOption())` 有可能报`id duplicates`的错误。Fix [#2635](https://github.com/apache/incubator-echarts/issues/2635)
 
 + [^] 允许自定义 toolbox 工具栏。详见 [toolbox.feature](http://echarts.baidu.com/option.html#toolbox.feature)
 
 + [^] `'time'` 类型的坐标轴在大跨度时间范围的刻度优化。
 
-+ [^] 修复 label 的 formatter 返回 0 不显示的 bug。Fix [#2659](https://github.com/ecomfe/echarts/issues/2659)
++ [^] 修复 label 的 formatter 返回 0 不显示的 bug。Fix [#2659](https://github.com/apache/incubator-echarts/issues/2659)
 
-+ [^] 修复纵轴为类目轴的图表中 markPoint 标签显示错误的问题。Fix [#2641](https://github.com/ecomfe/echarts/issues/2641)
++ [^] 修复纵轴为类目轴的图表中 markPoint 标签显示错误的问题。Fix [#2641](https://github.com/apache/incubator-echarts/issues/2641)
 
-+ [^] 优化 dataZoom，修复有 dataZoom 的图表中动态数据更新错误的问题。Fix [#2667](https://github.com/ecomfe/echarts/issues/2667)
++ [^] 优化 dataZoom，修复有 dataZoom 的图表中动态数据更新错误的问题。Fix [#2667](https://github.com/apache/incubator-echarts/issues/2667)
 
-+ [^] 饼图所有数据为 0 时百分比取 0 而非 NaN。Fix [#2690](https://github.com/ecomfe/echarts/issues/2667)
++ [^] 饼图所有数据为 0 时百分比取 0 而非 NaN。Fix [#2690](https://github.com/apache/incubator-echarts/issues/2667)
 
 + [^] 标题对齐优化。
 
-+ [^] 图表刷新时保持 tooltip 显示。Fix [#2478](https://github.com/ecomfe/echarts/issues/2478)
++ [^] 图表刷新时保持 tooltip 显示。Fix [#2478](https://github.com/apache/incubator-echarts/issues/2478)
 
 + [^] 仪表盘 `splitLine.length`, `axisTick.length` 支持百分比。
 
@@ -1429,7 +1429,7 @@ Recovery Build
 
 + [^] 修复 IE8 下 markPoint 和 markLine 报错的 bug。
 
-+ [^] 修复 `'use strict'` 模式下报错的 bug。Fix [#2643](https://github.com/ecomfe/echarts/issues/2643)
++ [^] 修复 `'use strict'` 模式下报错的 bug。Fix [#2643](https://github.com/apache/incubator-echarts/issues/2643)
 
 
 ## v3.1.1
@@ -1437,41 +1437,41 @@ Recovery Build
 
 + **[+]新加入 npm 渠道获取 echarts，详细见 [webpack + echarts 教程](http://echarts.baidu.com/tutorial.html#%E5%9C%A8%20webpack%20%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts)**
 
-+ [^] 修复动态 markPoint 和 markLine 异常的 bug。Fix [#2522](https://github.com/ecomfe/echarts/issues/2522)
++ [^] 修复动态 markPoint 和 markLine 异常的 bug。Fix [#2522](https://github.com/apache/incubator-echarts/issues/2522)
 
-+ [^] 修复 axis interval 回调参数错误的 bug。Fix [#2470](https://github.com/ecomfe/echarts/issues/2470)
++ [^] 修复 axis interval 回调参数错误的 bug。Fix [#2470](https://github.com/apache/incubator-echarts/issues/2470)
 
-+ [^] 修复 graph 中无法自定义每条边的 lineStyle 的 bug。Fix [#2558](https://github.com/ecomfe/echarts/issues/2558)
++ [^] 修复 graph 中无法自定义每条边的 lineStyle 的 bug。Fix [#2558](https://github.com/apache/incubator-echarts/issues/2558)
 
 + [^] toolbox 中 saveAsImage 支持 IE9+ 和 FireFox。
 
-+ [^] 支持柱形圆角配置。[#2550](https://github.com/ecomfe/echarts/issues/2550)
++ [^] 支持柱形圆角配置。[#2550](https://github.com/apache/incubator-echarts/issues/2550)
 
-+ [^] 修复 dataZoom 定位配置项错误的 bug。Fix [#2619](https://github.com/ecomfe/echarts/issues/2619)
++ [^] 修复 dataZoom 定位配置项错误的 bug。Fix [#2619](https://github.com/apache/incubator-echarts/issues/2619)
 
-+ [^] 修复多次`setOption`有可能出现`id duplicate`的错误。Fix [#2452](https://github.com/ecomfe/echarts/issues/2452)
++ [^] 修复多次`setOption`有可能出现`id duplicate`的错误。Fix [#2452](https://github.com/apache/incubator-echarts/issues/2452)
 
-+ [^] candlestick 和 boxplot 图支持 markPoint 和 markLine。Fix [#2566](https://github.com/ecomfe/echarts/issues/2566)
++ [^] candlestick 和 boxplot 图支持 markPoint 和 markLine。Fix [#2566](https://github.com/apache/incubator-echarts/issues/2566)
 
-+ [^] 修复在非 merge 模式`setOption`之后再使用 toolbox 中的 reset 功能出错的 bug。Fix [#2596](https://github.com/ecomfe/echarts/issues/2596)
++ [^] 修复在非 merge 模式`setOption`之后再使用 toolbox 中的 reset 功能出错的 bug。Fix [#2596](https://github.com/apache/incubator-echarts/issues/2596)
 
-+ [^] 散点图以及 markPoint 支持在`emphasis`中配置`label`的`formatter`。Fix [#2596](https://github.com/ecomfe/echarts/issues/2596)
++ [^] 散点图以及 markPoint 支持在`emphasis`中配置`label`的`formatter`。Fix [#2596](https://github.com/apache/incubator-echarts/issues/2596)
 
 + [^] Treemap 支持`roam`配置项。
 
 + [^] time 类型的坐标轴支持使用字符串格式的时间数据。
 
-+ [^] 修复折线图和区域图无法切换的 bug 修复。Fix [#2625](https://github.com/ecomfe/echarts/issues/2625)
++ [^] 修复折线图和区域图无法切换的 bug 修复。Fix [#2625](https://github.com/apache/incubator-echarts/issues/2625)
 
-+ [^] 多系列柱状图 markPoint 的位置优化。Fix [#2623](https://github.com/ecomfe/echarts/issues/2623)
++ [^] 多系列柱状图 markPoint 的位置优化。Fix [#2623](https://github.com/apache/incubator-echarts/issues/2623)
 
-+ [^] 修复 init 时 theme 为字符串并且有 dataZoom 组件时的报错。Fix [#2619](https://github.com/ecomfe/echarts/issues/2619)
++ [^] 修复 init 时 theme 为字符串并且有 dataZoom 组件时的报错。Fix [#2619](https://github.com/apache/incubator-echarts/issues/2619)
 
-+ [^] legend 和 toolbox 支持通过 width 和 height 设置高宽并且自动换行。Fix [#2621](https://github.com/ecomfe/echarts/issues/2621)
++ [^] legend 和 toolbox 支持通过 width 和 height 设置高宽并且自动换行。Fix [#2621](https://github.com/apache/incubator-echarts/issues/2621)
 
-+ [^] 折线图平滑优化，加入`smoothMonotone`配置项，详见 [option.html#series-line.smoothMonotone](http://echarts.baidu.com/option.html#series-line.smoothMonotone)，Fix [#2612](https://github.com/ecomfe/echarts/issues/2612)
++ [^] 折线图平滑优化，加入`smoothMonotone`配置项，详见 [option.html#series-line.smoothMonotone](http://echarts.baidu.com/option.html#series-line.smoothMonotone)，Fix [#2612](https://github.com/apache/incubator-echarts/issues/2612)
 
-+ [^] 修复 Surface 等带有触屏的电脑上无法触发鼠标事件的 bug，Fix [#2569](https://github.com/ecomfe/echarts/issues/2569)
++ [^] 修复 Surface 等带有触屏的电脑上无法触发鼠标事件的 bug，Fix [#2569](https://github.com/apache/incubator-echarts/issues/2569)
 
 
 
@@ -1481,7 +1481,7 @@ Recovery Build
 
 + [^] 修复散点图无法高亮的问题。
 
-+ [^] 优化 tooltip 联动，Fix [#2445](https://github.com/ecomfe/echarts/issues/2445)
++ [^] 优化 tooltip 联动，Fix [#2445](https://github.com/apache/incubator-echarts/issues/2445)
 
 + [^] inside 类型的 dataZoom 支持 zoomLock。
 
@@ -1489,30 +1489,30 @@ Recovery Build
 
 + [^] 折线图图例开关的动画优化
 
-+ [^] 修复图例无法动态添加的问题，Fix [#2457](https://github.com/ecomfe/echarts/issues/2457)
++ [^] 修复图例无法动态添加的问题，Fix [#2457](https://github.com/apache/incubator-echarts/issues/2457)
 
 + [^] 修复 timeline 无法配置 show 的问题。
 
-+ [^] 修复 0 数据在 tooltip 中显示 undefined 的问题，Fix [#2463](https://github.com/ecomfe/echarts/issues/2463)
++ [^] 修复 0 数据在 tooltip 中显示 undefined 的问题，Fix [#2463](https://github.com/apache/incubator-echarts/issues/2463)
 
-+ [^] 修复 dataZoom 缩略图显示不正确的问题，Fix [#2462](https://github.com/ecomfe/echarts/issues/2462)
++ [^] 修复 dataZoom 缩略图显示不正确的问题，Fix [#2462](https://github.com/apache/incubator-echarts/issues/2462)
 
-+ [^] 修复坐标轴 `min` `max` 是字符串的问题，PR [#2481](https://github.com/ecomfe/echarts/pull/2481)
++ [^] 修复坐标轴 `min` `max` 是字符串的问题，PR [#2481](https://github.com/apache/incubator-echarts/pull/2481)
 
 ## v3.0.1
 <div class="time">2016-01-18</div>
 
 + [+] 添加回 [getOption](http://echarts.baidu.com/api.html#echartsInstance.getOption) 和 [clear](http://echarts.baidu.com/api.html#echartsInstance.clear) 方法
 
-+ [^] 修复平均值，最大值，最小值标注和标线的标签和 tooltip 无法显示正确值的问题，Fix [#2393](https://github.com/ecomfe/echarts/issues/2393)
++ [^] 修复平均值，最大值，最小值标注和标线的标签和 tooltip 无法显示正确值的问题，Fix [#2393](https://github.com/apache/incubator-echarts/issues/2393)
 
-+ [^] 修复柱状图在边框宽度大于高度的时候绘制不正确的问题，Fix [#2343](https://github.com/ecomfe/echarts/issues/2343)
++ [^] 修复柱状图在边框宽度大于高度的时候绘制不正确的问题，Fix [#2343](https://github.com/apache/incubator-echarts/issues/2343)
 
-+ [^] 修复图例的`show`配置项无法起作用的问题，Fix [#2371](https://github.com/ecomfe/echarts/issues/2371)
++ [^] 修复图例的`show`配置项无法起作用的问题，Fix [#2371](https://github.com/apache/incubator-echarts/issues/2371)
 
 + [^] 地图类型可选 data 属性。
 
-+ [^] 修复平均值标线和标注计算错误，Fix [#2367](https://github.com/ecomfe/echarts/issues/2367)
++ [^] 修复平均值标线和标注计算错误，Fix [#2367](https://github.com/apache/incubator-echarts/issues/2367)
 
 + [^] 折线图从`'-'`空数据变成有数据时的动画优化。
 
@@ -1524,9 +1524,9 @@ Recovery Build
 
 + [^] 坐标轴 splitArea 绘制错误修复。
 
-+ [^] 修复多个图表示例联动问题。Fix [#2391](https://github.com/ecomfe/echarts/issues/2391)
++ [^] 修复多个图表示例联动问题。Fix [#2391](https://github.com/apache/incubator-echarts/issues/2391)
 
-+ [^] 修复饼图的颜色是回调函数时 legend 上的颜色无法正确显示的问题。Fix [#2372](https://github.com/ecomfe/echarts/issues/2372)
++ [^] 修复饼图的颜色是回调函数时 legend 上的颜色无法正确显示的问题。Fix [#2372](https://github.com/apache/incubator-echarts/issues/2372)
 
 + [^] 修复饼图数据为 0 时候鼠标的 hover 错误。
 

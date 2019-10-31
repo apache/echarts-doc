@@ -124,7 +124,7 @@ Every data item (each line in the example above) in the two-dimensional array wi
 
 ECharts doesn't contain data processing modules, so the five statistic values should be calculated by yourself and then passes into `boxplot`.
 
-However, ECharts also provide some simple [raw data processing tools](https://github.com/ecomfe/echarts/tree/master/extension/dataTool). For example, this [example](${galleryEditorPath}boxplot-light-velocity&edit=1&reset=1) uses `echarts.dataTool.prepareBoxplotData` to proceed simple data statistics.
+However, ECharts also provide some simple [raw data processing tools](https://github.com/apache/incubator-echarts/tree/master/extension/dataTool). For example, this [example](${galleryEditorPath}boxplot-light-velocity&edit=1&reset=1) uses `echarts.dataTool.prepareBoxplotData` to proceed simple data statistics.
 
 
 ### name(string)
