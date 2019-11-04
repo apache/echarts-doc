@@ -1,4 +1,49 @@
-## v4.4.0-rc.1
+## v4.5.0
+<div class="time"></div>
+
++ [Feature] Add `roundCap` option for round corners on `bar` series width `polar` coordinate system. [#11393](https://github.com/apache/incubator-echarts/pull/11393) ([Wenli Zhang](https://github.com/Ovilia))
+
++ [Feature] Add event `brushEnd` for `brush` component [#11285](https://github.com/apache/incubator-echarts/pull/11285)([Jian Cui](https://github.com/cuijian-dexter))
+
++ [Feature] Add `friction` option in force layout of `graph`. [#11276](https://github.com/apache/incubator-echarts/pull/11276) ([Yi Shen](https://github.com/pissang))
+
++ [Feature] Add `ignoreFoceLayout` option in the `graph` links. [#11445](https://github.com/apache/incubator-echarts/pull/11445) ([TYzzt](https://github.com/TYzzt))
+
++ [Feature] Add `axisType` in the indicator of `radar` series. [#11324](https://github.com/apache/incubator-echarts/pull/11324)([zifix](https://github.com/zifix))
+
+
++ [Feature] Add `clip` option in `candllestick` series. [#11529](https://github.com/apache/incubator-echarts/pull/11529) ([Yi Shen](https://github.com/pissang))
+
++ [Fix] Fix lots of label positioning issues in SVG renderer. [ecomfe/zrender#519](https://github.com/ecomfe/zrender/pull/519) ([Shuang Su](https://github.com/100pah))
+
++ [Fix] Fix interval issues related to category axis tick. Like `areaStyle.color` is incorrect in [#10948](https://github.com/apache/incubator-echarts/issues/10948), `xAxis.axisTick.interval` is calculated incorrectly in [#11176](https://github.com/apache/incubator-echarts/pull/11176) . [#11186](https://github.com/apache/incubator-echarts/pull/11186) ([foolzhang](https://github.com/foolzhang))
+
++ [Fix] Fix tooltip may be covered by the canvas when `-webkit-overflow-scrolling: touch` on iOS 13. [ecomfe/zrender#522](https://github.com/ecomfe/zrender/pull/522) ([Shuang Su](https://github.com/100pah))
+
++ [Fix] Fix some of labels on category axis may disappear forever after chart resized. [#11536](https://github.com/apache/incubator-echarts/pull/11536) ([Shuang Su](https://github.com/100pah))
+
++ [Fix] Fix brush drag gets stuck when the mouse leaves the chart area. [#11516](https://github.com/apache/incubator-echarts/pull/11516) ([Shuang Su](https://github.com/100pah))
+
++ [Fix] Fix image symbol may disappear forever after legend toggled. [#11515](https://github.com/apache/incubator-echarts/pull/11515) ([Feng Yu](https://github.com/yufeng04))
+
++ [Fix] Fix changing from `'scroll'` type to `'plain'` type not work bug in legend. [#11504](https://github.com/apache/incubator-echarts/pull/11504) ([Feng Yu](https://github.com/yufeng04))
+
++ [Fix] Optimize bar layout on `time` axis and `value` axis.[#11479](https://github.com/apache/incubator-echarts/pull/11479) ([Wenli Zhang](https://github.com/Ovilia))
+
++ [Fix] Fix title on toolbox icon may be cut by the container. [#11456](https://github.com/apache/incubator-echarts/pull/11456) ([Wenli Zhang](https://github.com/Ovilia))
+
++ [Fix] Fix precision issue in the ticks calculating. [#11488](https://github.com/apache/incubator-echarts/pull/11488) ([Wenli Zhang](https://github.com/Ovilia))
+
++ [Fix] Fix `rotate` property of label not work in `tree` series. [#11457](https://github.com/apache/incubator-echarts/pull/11457) ([Deqing Li](https://github.com/apache/incubator-echarts/pull/11457))
+
++ [Fix] Fix edge won't disappear after collapsed if the `id` is duplicated in `tree` series. [#11447](https://github.com/apache/incubator-echarts/pull/11447) ([Deqing Li](https://github.com/apache/incubator-echarts/pull/11457))
+
++ [Fix] Fix data disappear when updating with `dataset` in `gauge` series. [#11373](https://github.com/apache/incubator-echarts/pull/11373) ([Wenli Zhang](https://github.com/Ovilia))
+
++ [Fix] Fix gradient on bar leaked to label in SVG Renderer. ([Wenli Zhang](https://github.com/Ovilia))
+
+
+## v4.4.0
 
 <div class="time">2019-09-29</div>
 
@@ -210,34 +255,6 @@ Fix that the line label can not be returned to its original opacity after `"focu
 + [Fix] Fix license statement.
 
 + [Fix] Fix rich text boundingRect bug.
-
-
-
-
-## v4.2.1.rc1
-
-<div class="time">2019-01-22</div>
-
-+ [Fix] Fix text cache problem. See [#9190](https://github.com/apache/incubator-echarts/issues/9190), [#9597](https://github.com/apache/incubator-echarts/issues/9597), [#9762](https://github.com/apache/incubator-echarts/issues/9762).
-
-+ [Fix] Fix that in some case re-`setOption` in event handler throws error. See [#9649](https://github.com/apache/incubator-echarts/issues/9649).
-
-+ [Fix] Fix that geo region problem causes `showTip` abnormal. See [#9156](https://github.com/apache/incubator-echarts/issues/9156).
-
-+ [Fix] Fix that stacked bars are over cartesian in some cases. See [#9346](https://github.com/apache/incubator-echarts/issues/9346).
-
-+ [Fix] Fix that legend is not able to scroll when the space is not enough to contain one item. See [#6743](https://github.com/apache/incubator-echarts/issues/6743), [#8971](https://github.com/apache/incubator-echarts/issues/8971), [#9471](https://github.com/apache/incubator-echarts/issues/9471).
-
-+ [Fix] Fix that the centered pie label might has some bias on some angles. See [#9657](https://github.com/apache/incubator-echarts/issues/9657).
-
-+ [Fix] Fix that Geo map panning is not working on MS Edge browser See [#9479](https://github.com/apache/incubator-echarts/issues/9479).
-
-+ [Fix] Fix that label dispaly problem in map series. See [#9682](https://github.com/apache/incubator-echarts/issues/9682).
-
-+ [Fix] Fix that `visualMap: false` set on data items makes subsequent items abnormal. See [#8799](https://github.com/apache/incubator-echarts/issues/8799).
-
-+ [Fix] When `axisLabel.interval` of a category axis is set as `0`, all labels show regardless of overlap. See [#9589](https://github.com/apache/incubator-echarts/issues/9589).
-
 
 
 
