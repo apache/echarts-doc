@@ -18,6 +18,8 @@
 
 + [Fix] Fix interval issues related to category axis tick. Like `areaStyle.color` is incorrect in [#10948](https://github.com/apache/incubator-echarts/issues/10948), `xAxis.axisTick.interval` is calculated incorrectly in [#11176](https://github.com/apache/incubator-echarts/pull/11176) . [#11186](https://github.com/apache/incubator-echarts/pull/11186) ([foolzhang](https://github.com/foolzhang))
 
++ [Fix] Fix `bar` series can't display on the `log` axis. [#11472](https://github.com/apache/incubator-echarts/pull/11472)([SnailSword](https://github.com/SnailSword))
+
 + [Fix] Fix tooltip may be covered by the canvas when `-webkit-overflow-scrolling: touch` on iOS 13. [ecomfe/zrender#522](https://github.com/ecomfe/zrender/pull/522) ([Shuang Su](https://github.com/100pah))
 
 + [Fix] Fix some of labels on category axis may disappear forever after chart resized. [#11536](https://github.com/apache/incubator-echarts/pull/11536) ([Shuang Su](https://github.com/100pah))
@@ -28,9 +30,9 @@
 
 + [Fix] Fix changing from `'scroll'` type to `'plain'` type not work bug in legend. [#11504](https://github.com/apache/incubator-echarts/pull/11504) ([Feng Yu](https://github.com/yufeng04))
 
-+ [Fix] Optimize bar layout on `time` axis and `value` axis.[#11479](https://github.com/apache/incubator-echarts/pull/11479) ([Wenli Zhang](https://github.com/Ovilia))
++ [Fix] Optimize layout of `bar` series on `time` axis and `value` axis.[#11479](https://github.com/apache/incubator-echarts/pull/11479) ([Wenli Zhang](https://github.com/Ovilia))
 
-+ [Fix] Fix title on toolbox icon may be cut by the container. [#11456](https://github.com/apache/incubator-echarts/pull/11456) ([Wenli Zhang](https://github.com/Ovilia))
++ [Fix] Fix title of toolbox icon may be cut by the container. [#11456](https://github.com/apache/incubator-echarts/pull/11456) ([Wenli Zhang](https://github.com/Ovilia))
 
 + [Fix] Fix precision issue in the ticks calculating. [#11488](https://github.com/apache/incubator-echarts/pull/11488) ([Wenli Zhang](https://github.com/Ovilia))
 
@@ -41,7 +43,6 @@
 + [Fix] Fix data disappear when updating with `dataset` in `gauge` series. [#11373](https://github.com/apache/incubator-echarts/pull/11373) ([Wenli Zhang](https://github.com/Ovilia))
 
 + [Fix] Fix gradient on bar leaked to label in SVG Renderer. ([Wenli Zhang](https://github.com/Ovilia))
-
 
 ## v4.4.0
 
