@@ -135,8 +135,7 @@ function run() {
         'utf-8'
     );
 
-    copydir.sync('./asset', './public/zh/documents/asset');
-    copydir.sync('./asset', './public/en/documents/asset');
+    copydir.sync('./asset', './public/documents/asset');
 }
 
 function writeSingleSchema(schema, language, docName, format) {

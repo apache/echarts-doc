@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+}
+
+#header {
+    border-bottom: 1px solid #ddd;
+    font-weight: 100;
+    font-family: Helvetica, sans-serif;
+    font-size: 20px;
+    line-height: 40px;
+    height: 40px;
+    margin: 0;
+
+    box-sizing: border-box;
+}
+
+#app {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 40px;
+    bottom: 0;;
+}
+
+
+::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    border-radius: 2px
+}
+
+::-webkit-scrollbar-button {
+    display: none
+}
+
+::-webkit-scrollbar-thumb {
+    width: 8px;
+    min-height: 15px;
+    background: rgba(50, 50, 50, 0.3) !important;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    border-radius: 2px
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.5) !important
+}
