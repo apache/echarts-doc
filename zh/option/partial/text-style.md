@@ -37,7 +37,7 @@
 
 在 `rich` 里面，可以自定义富文本样式。利用富文本样式，可以在标签中做出非常丰富的效果。
 
-例如：
+ **例如：** 
 
 ```js
 label: {
@@ -108,10 +108,10 @@ ${name}文本的颜色。
 
 ${name}文本字体的样式。
 
-可选：
-+ `'normal'` 正常的字体。
-+ `'italic'` 斜体，如果当前字体无可用的斜体版本，会选用倾斜体 (oblique) 替代。
-+ `'oblique'` 倾斜体，如果当前字体无可用的斜体版本，会选用斜体 (italic) 替代。
+**可选：**
++ `'normal'`：正常的字体。默认值。
++ `'italic'`：斜体，如果当前字体无可用的斜体版本，会选用倾斜体 (oblique) 替代。
++ `'oblique'`：倾斜体，如果当前字体无可用的斜体版本，会选用斜体 (italic) 替代。
 
 
 #${prefix} fontWeight(string)=${defaultFontWeight|default('normal')}
@@ -119,11 +119,11 @@ ${name}文本字体的样式。
 ${name}字体的粗细。
 
 **可选：**
-+ `'normal'` 默认值。正常粗细的字体。与 400 等值。
-+ `'bold'` 加粗的字体。与 700 等值。
-+ `'bolder'` 比正常字体更粗。
-+ `'lighter'` 比正常字体更细。
-+ 100 | 200 | 300 | 400... 更大的数值代表更粗的字体重量。400 等同于 normal 正常粗细。
++ `'normal'`：正常粗细的字体。与 400 等值。默认值。
++ `'bold'`：加粗的字体。与 700 等值。
++ `'bolder'`：比正常字体更粗。
++ `'lighter'`：比正常字体更细。
++ 100 | 200 | 300 | 400...：更大的数值代表更粗的字体重量。400 等同于 normal 正常粗细。
 
 
 #${prefix} fontFamily(string)='sans-serif'
@@ -134,7 +134,7 @@ ${name}文本的字体系列。
 
 #${prefix} fontSize(number)=${defaultFontSize|default(12)}
 
-${name}文本的字体大小
+${name}文本的字体大小。
 
 
  {{ if: !${noAlign} }}
@@ -143,9 +143,9 @@ ${name}文本的字体大小
 文本的水平的对齐方式，默认为自动。
 
 **可选：**
-+ `'left'` 文本在其左边缘对齐。
-+ `'center'` 文本水平居中。
-+ `'right'` 文本在其右边缘对齐。
++ `'left'`：文本在其左边缘对齐。
++ `'center'`：文本水平居中。
++ `'right'`：文本在其右边缘对齐。
 
 {{ use: partial-text-style-rich-inherit(
     name='align',
@@ -160,9 +160,9 @@ ${name}文本的字体大小
 文本的垂直的对齐方式，默认为自动。
 
 **可选：**
-+ `'top'` 文本在其顶部边缘对齐。
-+ `'middle'` 文本垂直居中。
-+ `'bottom'` 文本在其底部边缘对齐。
++ `'top'`：文本在其顶部边缘对齐。
++ `'middle'`：文本垂直居中。
++ `'bottom'`：文本在其底部边缘对齐。
 
 {{ use: partial-text-style-rich-inherit(
     name='verticalAlign',
@@ -190,7 +190,9 @@ ${name}文本的字体大小
 
 属性的值可以为颜色值，例如：`'#123234'`, `'red'`, `'rgba(0,23,11,0.3)'`。
 
-也支持使用图片作为背景，例如：
+也支持使用图片作为背景。
+
+ **例如：** 
 
 ```js
 backgroundColor: {
@@ -306,11 +308,10 @@ backgroundColor: {
 如果设置为 `'auto'`，则为视觉映射得到的颜色，如系列色。
 
 
-
-
-
 {{ target: partial-text-style-rich-inherit }}
-`rich` 中如果没有设置 `${name}`，则会取父层级的 `${name}`。例如：
+`rich` 中如果没有设置 `${name}`，则会取父层级的 `${name}`。
+
+ **例如：** 
 
 ```js
 {

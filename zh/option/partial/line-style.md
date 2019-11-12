@@ -22,7 +22,7 @@ ${name}线宽。
 
 ${name}线的类型。
 
-可选：
+**可选：**
 + `'solid'`
 + `'dashed'`
 + `'dotted'`
