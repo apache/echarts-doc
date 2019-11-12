@@ -8,7 +8,7 @@ import {
     Tree,
     Loading
 } from 'element-ui';
-import {preload} from './docJson';
+import {preload} from './docHelper';
 import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.use(Button);
@@ -18,8 +18,15 @@ Vue.use(Main);
 Vue.use(Tree);
 Vue.use(Loading);
 
+/**
+ *
+ * @param {HTMLDivElement|string} el
+ * @param {Object} option
+ * @param {string} option.baseUrl
+ * @param {string} option.rootName
+ */
 export function init(el, option) {
-    preload(option.jsonUrl);
+    preload(option.baseUrl, option.rootName);
 
     if (typeof el === 'string') {
         el = document.querySelector(el);

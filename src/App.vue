@@ -1,19 +1,23 @@
 <template>
     <el-container class="doc-main">
         <el-aside width="300px" style="height:100%">
-            <OptionNav></OptionNav>
+            <DocNav></DocNav>
         </el-aside>
-        <el-main>Hello World</el-main>
+        <el-main>
+            <DocMain></DocMain>
+        </el-main>
     </el-container>
 </template>
 
 <script>
 
-import OptionNav from './OptionNav.vue';
+import DocNav from './DocNav.vue';
+import DocMain from './DocMain.vue';
 
 export default {
     components: {
-        OptionNav
+        DocNav,
+        DocMain
     }
 };
 </script>
