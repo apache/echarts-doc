@@ -86,6 +86,16 @@ export function getPageOutlineAsync(targetPath) {
     });
 }
 
+export function getRootPageTotalDescAsync() {
+    let partionKey = rootName;
+    if (!descStorage[partionKey]) {
+        let url = `${baseUrl}/${partionKey}.json`;
+        descStorage[partionKey] = {
+            fetcher: fetch(url).then(response => response.json())
+        };
+    }
+    return descStorage[partionKey].fetcher;
+}
 
 /**
  * Get all description of page.

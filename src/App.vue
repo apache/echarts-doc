@@ -30,7 +30,7 @@ export default {
     // Reset
     font-family: "Helvetica Neue", "Segoe UI", Tahoma, Arial, "Hiragino Sans GB", STHeiti, "Microsoft Yahei", "WenQuanYi Micro Hei", sans-serif;
 
-    ul {
+    ul, ol {
         margin: 0;
         padding: 0;
     }

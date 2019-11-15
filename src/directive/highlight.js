@@ -5,8 +5,8 @@ import 'highlight.js/styles/github-gist.css';
 import Vue from 'vue';
 
 Vue.directive('highlight', {
-    inserted(el) {
-        el.querySelectorAll('pre').forEach((block) => {
+    update(el) {
+        el.querySelectorAll('pre code').forEach((block) => {
             hljs.highlightBlock(block);
         });
     }

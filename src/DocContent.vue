@@ -1,7 +1,12 @@
 <template>
     <div class="doc-content">
         <h2>{{pagePath}}</h2>
-        <div class="page-description" v-html="descMap[pagePath]"></div>
+        <div
+            class="item-description"
+            v-html="rootPageDescMap[pagePath]"
+            v-highlight
+            v-lazyload
+        ></div>
 
         <h3>Properties</h3>
         <DocContentItemCard
@@ -9,7 +14,7 @@
             v-for="child in pageOutline.children"
             :key="child.path"
             :node-data="child"
-            :desc-map="descMap"
+            :desc-map="pageDescMap"
             :max-depth="maxDepth"
             :depth="1"
         ></DocContentItemCard>
@@ -18,9 +23,16 @@
 </template>
 
 <script>
-import {getPageTotalDescAsync, getPageOutlineAsync, getOutlineAsync} from './docHelper';
+
+import {
+    getPageTotalDescAsync,
+    getRootPageTotalDescAsync,
+    getPageOutlineAsync,
+    getOutlineAsync
+} from './docHelper';
 import DocContentItemCard from './DocContentItemCard.vue'
 import store from './store';
+
 
 function getPagePathFromPath(val) {
     return val.split('.')[0];
@@ -38,14 +50,22 @@ export default {
 
             maxDepth: Infinity,
 
+            rootPageDescMap: {},
+
             // Outline of this page
             pageOutline: {},
 
-            descMap: Object.freeze({})
+            pageDescMap: {}
         }
     },
 
     computed: {
+    },
+
+    created() {
+        getRootPageTotalDescAsync().then(rootPageDescMap => {
+            this.rootPageDescMap = rootPageDescMap;
+        });
     },
 
     watch: {
@@ -60,9 +80,9 @@ export default {
             Promise.all([
                 getPageOutlineAsync(newVal),
                 getPageTotalDescAsync(newVal)
-            ]).then(([pageOutline, descMap]) => {
+            ]).then(([pageOutline, pageDescMap]) => {
                 this.pageOutline = Object.freeze(Object.assign({}, pageOutline));
-                this.descMap = Object.freeze(descMap);
+                this.pageDescMap = Object.freeze(pageDescMap);
                 this.maxDepth = this.pageOutline.isRoot  // Root page
                     ? 0 : Infinity
             });
@@ -88,5 +108,86 @@ export default {
         color: #999;
         font-size: 30px;
     }
+
+    .item-description {
+        margin: 0;
+        padding: 5px;
+
+        .hljs {
+            background: transparent;
+            padding: 0;
+        }
+
+        hr {
+            border: none;
+            border-bottom: 1px solid #eee;
+            width: 80%;
+        }
+
+        blockquote {
+            font-size: 12px;
+            color: #999;
+
+            p {
+                margin: 0;
+            }
+
+            pre {
+                font-size: 12px;
+            }
+        }
+
+        iframe {
+            border: 1px solid #ccc;
+        }
+
+        p {
+            line-height: 1.7em;
+            margin: 12px 0 0 0;
+            font-size: 14px;
+        }
+        pre {
+            margin: 5px 10px;
+            border-radius: 5px;
+            background-color: #f5f5f5;
+            border: none;
+            padding: 10px;
+            font-size: 13px;
+        }
+
+        .codespan {
+            padding: 2px 4px;
+            font-size: 14px;
+            color: #293C55;
+            background-color: #f9f2f4;
+            border-radius: 4px;
+        }
+
+        code *, code {
+            font-family: Monaco, Consolas, 'Courier New';
+        }
+
+        ul li {
+            list-style: disc;
+            margin: 10px 20px;
+            font-size: 14px;
+        }
+        ol li {
+            list-style: decimal;
+        }
+
+        a {
+            color: #337ab7;
+            text-decoration: none;
+            margin: 0 3px;
+
+            font-family: Monaco, Consolas, STHeiti, "Microsoft Yahei", "WenQuanYi Micro Hei", sans-serif;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
 }
 </style>
