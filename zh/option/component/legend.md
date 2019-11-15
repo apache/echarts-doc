@@ -5,7 +5,7 @@
 
 图表的图例组件。图表的每个系列都对应一个图例，图例组件中包含标记 (symbol)、颜色和系列名称。可以通过点击图例来控制系列是否在图表中显示。
 
-单个 echarts 实例中可以存在多个图例组件，会方便多个图例的布局。
+单个 ECharts 实例中可以存在多个图例组件，会方便多个图例的布局。
 当图例数量过多时，可以使用 [滚动图例（垂直）](${galleryEditorPath}pie-legend&edit=1&reset=1) 或 [滚动图例（水平）](${galleryEditorPath}radar2&edit=1&reset=1)，参见：[legend.type](~legend.type)
 
 
