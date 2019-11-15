@@ -4,7 +4,7 @@
             <DocNav></DocNav>
         </el-aside>
         <el-main>
-            <DocMain></DocMain>
+            <DocContent></DocContent>
         </el-main>
     </el-container>
 </template>
@@ -12,19 +12,29 @@
 <script>
 
 import DocNav from './DocNav.vue';
-import DocMain from './DocMain.vue';
+import DocContent from './DocContent.vue';
 
 export default {
     components: {
         DocNav,
-        DocMain
+        DocContent
     }
 };
 </script>
 
 <style lang="scss">
 
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
 .doc-main {
+    // Reset
+    font-family: "Helvetica Neue", "Segoe UI", Tahoma, Arial, "Hiragino Sans GB", STHeiti, "Microsoft Yahei", "WenQuanYi Micro Hei", sans-serif;
+
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+
     height: 100%;
 
     .el-aside {

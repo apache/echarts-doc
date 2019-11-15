@@ -10,7 +10,10 @@
             :indent="10"
             :expand-on-click-node="false"
             :load="loadTreeNode"
-            :data="treeData">
+            :data="treeData"
+
+            @current-change="selectNode"
+            >
 
             <div class="doc-nav-item" slot-scope="{ node, data }">
                 <span>{{ node.expanded ? (data.labelExpanded || data.label) : data.label }}</span>
@@ -28,42 +31,44 @@
 import {getOutlineAsync} from './docHelper';
 import store from './store';
 
+function joinPath(a, b, connector) {
+    return a ? (a + connector + b) : b;
+}
+
 export function createChildren(currentNode, currentSource) {
 
     function createNode(source, parentNode) {
         let childNode = {
-            type: source.type || typeof source.default
+            type: source.type || typeof source.default,
+            path: source.path
         };
 
+        childNode.path = source.path;
         if (source.arrayItemType) {
-            childNode.path = parentNode.path + '-' + source.arrayItemType;
             childNode.label = `{type: ${source.arrayItemType}, ...}`;
             childNode.labelExpanded = '{';
         }
+        // Array also may has properties.
+        else if (source.default != null) {
+            childNode.defaultValue = source.default;
+            // Leave the space to show default value.
+            childNode.label = source.prop + ': ';
+            childNode.leaf = true;
+        }
+        else if (source.isArray) {
+            childNode.label = source.prop + ': [{...}]';
+            childNode.labelExpanded = source.prop + ': [{';
+        }
+        else if (source.isObject) {
+            childNode.label = source.prop + ': {...}';
+            childNode.labelExpanded = source.prop + ': {';
+        }
         else {
-            childNode.path = parentNode.path + '.' + source.prop;
-
-            // Array also may has properties.
-            if (source.default != null) {
-                childNode.defaultValue = source.default;
-                // Leave the space to show default value.
-                childNode.label = source.prop + ': ';
-                childNode.leaf = true;
-            }
-            else if (source.isArray) {
-                childNode.label = source.prop + ': [{...}]';
-                childNode.labelExpanded = source.prop + ': [{';
-            }
-            else if (source.isObject) {
-                childNode.label = source.prop + ': {...}';
-                childNode.labelExpanded = source.prop + ': {';
-            }
-            else {
-                childNode.label = source.prop;
-                childNode.leaf = true;
-            }
+            childNode.label = source.prop;
+            childNode.leaf = true;
         }
 
+        // TODO. A better way to query source. Avoid `ref` and `freeze`
         childNode.$source = Object.freeze(source);
 
         return childNode;
@@ -88,7 +93,10 @@ export default {
 
             treeData: [],
 
+            expandedKeys: [],
+
             loading: true,
+
             shared: store
         }
     },
@@ -112,6 +120,10 @@ export default {
             else {
                 resolve([]);
             }
+        },
+
+        selectNode(nodeData, node) {
+            this.shared.currentPath = nodeData.path;
         }
     }
 }
@@ -140,7 +152,7 @@ export default {
             height: 24px;
         }
 
-        &.is-current, &:focus {
+        &.is-current {
             &>.el-tree-node__content {
                 background-color: #B03A5B;
                 color: #fff;
@@ -150,6 +162,12 @@ export default {
                 }
             }
         }
+
+        // &:focus {
+        //     &>.el-tree-node__content {
+        //         background-color: #B03A5B;
+        //     }
+        // }
     }
 
     .doc-nav-item {

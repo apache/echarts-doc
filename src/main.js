@@ -6,7 +6,8 @@ import {
     Aside,
     Main,
     Tree,
-    Loading
+    Loading,
+    Divider
 } from 'element-ui';
 import {preload} from './docHelper';
 import 'element-ui/lib/theme-chalk/index.css';
@@ -17,6 +18,7 @@ Vue.use(Aside);
 Vue.use(Main);
 Vue.use(Tree);
 Vue.use(Loading);
+Vue.use(Divider);
 
 /**
  *

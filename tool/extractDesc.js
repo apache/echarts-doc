@@ -70,7 +70,7 @@ function convertToTree(rootSchema, rootNode) {
     function createArrayItemNode(schema, parentNode) {
         let childNode = createNodeBase(schema, parentNode);
         if (schema.properties && schema.properties.type && schema.properties.type.default) {
-            childNode.arrayItemType = schema.properties.type.default;
+            childNode.arrayItemType = schema.properties.type.default.replace(/'/g, '');
         }
         else {
             throw new Error('Some thing wrong happens', schema);
