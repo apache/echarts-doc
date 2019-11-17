@@ -9,7 +9,7 @@
         <el-button plain circle size="mini"
             v-if="!isLeaf"
             :icon="expanded ? 'el-icon-minus' : 'el-icon-plus'"
-            @click="toggleExpand"
+            @click="toggleExpanded"
         ></el-button>
         <!-- <a v-else class="anchor" href="">#</a> -->
         <span class="path-parent">
@@ -29,7 +29,6 @@
     <div class="item-description"
         v-html="desc"
         v-highlight
-        v-lazyload
     ></div>
 
     <div class="children" v-if="!isLeaf">
@@ -41,6 +40,7 @@
             :desc-map="descMap"
             :depth="depth + 1"
             :max-depth="maxDepth"
+            @toggle-expanded="bubbleEvent"
         ></DocContentItemCard>
     </div>
 </div>
@@ -117,8 +117,12 @@ export default {
     },
 
     methods: {
-        toggleExpand() {
+        bubbleEvent() {
+            this.$emit('toggle-expanded');
+        },
+        toggleExpanded() {
             this.manualExpanded = !this.expanded;
+            this.$emit('toggle-expanded');
         }
     }
 }
@@ -187,24 +191,29 @@ $hierarchy-guider-color: #C592A0;
         }
 
         .path-parent {
-            color: #C592A0;
             font-size: 13px;
             padding-right: 20px;
             padding: 0;
             font-style: italic;
             font-weight: normal;
+
+            a {
+                color: #C592A0;
+            }
         }
         .path-base {
-            color: #B03A5B;
             font-size: 16px;
             padding-left: 5px;
             padding: 0;
             font-weight: normal;
+
+            a {
+                color: #B03A5B;
+            }
         }
 
         .path-parent, .path-base {
             a {
-                color: #C592A0;
                 text-decoration: none;
                 &:hover {
                     text-decoration: underline;

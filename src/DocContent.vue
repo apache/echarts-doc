@@ -1,11 +1,10 @@
 <template>
     <div class="doc-content" v-loading="loading">
-        <h2 :id="'#doc-content-' + pagePath.replace(/\./g, '-')">{{pagePath}}</h2>
+        <h2 :id="'doc-content-' + pagePath.replace(/\./g, '-')">{{pagePath}}</h2>
         <div
             class="item-description"
             v-html="rootPageDescMap[pagePath]"
             v-highlight
-            v-lazyload
         ></div>
 
         <div v-if="pageOutline.children && pageOutline.children && 1 <= maxDepth">
@@ -17,6 +16,7 @@
                 :desc-map="pageDescMap"
                 :max-depth="maxDepth"
                 :depth="1"
+                @toggle-expanded="handleCardExpandToggle"
             ></DocContentItemCard>
         </div>
 
@@ -36,6 +36,7 @@ import DocContentItemCard from './DocContentItemCard.vue'
 import store from './store';
 import VueScrollTo from 'vue-scrollto';
 import Vue from 'vue';
+import LazyLoad from 'vanilla-lazyload';
 
 
 function getPagePathFromPath(val) {
@@ -72,9 +73,21 @@ export default {
         getRootPageTotalDescAsync().then(rootPageDescMap => {
             this.rootPageDescMap = rootPageDescMap;
         });
+
+        this._lazyload = new LazyLoad({
+            elements_selector: 'iframe',
+            load_delay: 300
+        });
     },
 
     methods: {
+        handleCardExpandToggle() {
+            console.log('Update lazy load');
+            Vue.nextTick(() => {
+                this._lazyload.update();
+            });
+        },
+
         scrollTo(path, time) {
             // Scroll to.
             Vue.nextTick(() => {
@@ -112,6 +125,10 @@ export default {
                     this.loading = false;
 
                     this.scrollTo(newVal, 1000);
+
+                    Vue.nextTick(() => {
+                        this._lazyload.update();
+                    });
                 });
             }).catch(e => {
                 this.pageOutline = {};

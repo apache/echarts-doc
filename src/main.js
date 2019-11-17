@@ -13,7 +13,6 @@ import {preload} from './docHelper';
 import 'element-ui/lib/theme-chalk/index.css';
 
 import './directive/highlight';
-import './directive/lazyload';
 
 
 Vue.use(Button);
