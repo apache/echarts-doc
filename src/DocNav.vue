@@ -39,7 +39,7 @@ export function createChildren(currentNode, currentSource) {
 
     function createNode(source, parentNode) {
         let childNode = {
-            type: source.type || typeof source.default,
+            // type: source.type,
             path: source.path
         };
 

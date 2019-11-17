@@ -30,6 +30,14 @@ function processOutlines(json) {
         return a ? (a + connector + b) : b;
     }
     function processNode(node, parentNode) {
+        if (!node.type) {
+            node.type = typeof node.default;
+        }
+        if (!(node.type instanceof Array)) {
+            node.type = [node.type];
+        }
+
+
         if (node.arrayItemType) {
             node.path = joinPath(parentNode.path, node.arrayItemType, '-');
         }

@@ -1,10 +1,23 @@
 <template>
-<div class="doc-content-item-card">
+<div class="doc-content-item-card" :class="['level-' + depth, isLeaf ? 'leaf' : '']">
+    <div class="hierarchy-line" v-if="expanded"></div>
     <h4>
-        <a class="anchor" href="">#</a>
+        <span class="guider" v-if="depth > 1"></span>
+        <el-button plain circle size="mini"
+            v-if="!isLeaf"
+            :icon="expanded ? 'el-icon-minus' : 'el-icon-plus'"
+            @click="toggleExpand"
+        ></el-button>
+        <!-- <a v-else class="anchor" href="">#</a> -->
         <span class="path-parent" v-if="parentPath">{{parentPath}}.</span>
         <span class="path-base">{{baseName}}</span>
+
+        <span class="default-value" v-if="nodeData.default && nodeData.default !== '*'"> = {{nodeData.default}}</span>
     </h4>
+
+    <div class="prop-types">
+        <span :class="['prop-type', 'prop-type-' + type.toLowerCase()]" v-for="type in nodeData.type">{{type}}</span>
+    </div>
 
     <div class="item-description"
         v-html="desc"
@@ -34,15 +47,27 @@ export default {
 
     data() {
         return {
-            expanded: false
+            manualExpanded: null
         }
     },
 
     created() {
-        this.$el
     },
 
     computed: {
+        expanded() {
+            // Expanded at most 2 level.
+            if (this.isLeaf) {
+                return false;
+            }
+            else if (this.manualExpanded != null) {
+                return this.manualExpanded;
+            }
+            else {
+                return this.depth < 2;
+            }
+        },
+
         isLeaf() {
             return !(this.nodeData.children && this.nodeData.children.length);
         },
@@ -66,18 +91,41 @@ export default {
         baseName() {
             return this.nodeData.path.split('.').pop();
         }
+    },
+
+    methods: {
+        toggleExpand() {
+            this.manualExpanded = !this.expanded;
+        }
     }
 }
 </script>
 
 <style lang="scss">
 
+$card-padding: 15px;
+$children-padding: 10px;
+
+$hierarchy-guider-color: #C592A0;
+
 .doc-content-item-card {
 
     margin-top: 30px;
     border-top: 1px solid #ccc;
 
-    padding: 15px;
+    position: relative;
+
+    padding: $card-padding;
+
+    .hierarchy-line {
+        position: absolute;
+        top: 40px;
+        bottom: 0px;
+        left: 3px;
+        width: 50px;
+        border-left: 1px solid $hierarchy-guider-color;
+        // border-bottom: 1px solid $hierarchy-guider-color;
+    }
 
     h4 {
         margin: 0;
@@ -85,9 +133,29 @@ export default {
 
         font-family: Montserrat, sans-serif;
 
+        &>* {
+            vertical-align: middle;
+            display: inline-block;
+        }
+        // opacity: 0.9;
+
+        .el-button {
+            padding: 2px;
+            font-size: 12px;
+            margin-left: -20px;
+            color: #B03A5B;
+            border-color: #B03A5B;
+            border-radius: 4px;
+
+            background: #fff;
+
+
+            position: relative;
+        }
+
         .anchor {
             color: #C592A0;
-            font-size: 24px;
+            font-size: 16px;
             text-decoration: none;
 
             &:hover {
@@ -97,7 +165,7 @@ export default {
 
         .path-parent {
             color: #C592A0;
-            font-size: 16px;
+            font-size: 13px;
             padding-right: 20px;
             padding: 0;
             font-style: italic;
@@ -105,15 +173,136 @@ export default {
         }
         .path-base {
             color: #B03A5B;
-            font-size: 24px;
+            font-size: 16px;
             padding-left: 5px;
             padding: 0;
             font-weight: normal;
         }
+
+        .default-value {
+            color: #293c55;
+            font-size: 18px;
+            margin-left: 15px;
+            vertical-align: bottom;
+        }
     }
 
+    &.level-1 {
+        &>h4 {
+            // opacity: 1;
+            .anchor {
+                font-size: 26px;
+            }
+            .path-parent {
+                font-size: 16px;
+            }
+            .path-base {
+                font-size: 26px;
+            }
+        }
+    }
+    &.level-2 {
+        &>h4 {
+            .anchor {
+                font-size: 20px;
+            }
+            .path-parent {
+                font-size: 14px;
+            }
+            .path-base {
+                font-size: 20px;
+            }
+        }
+    }
+    &.level-3 {
+       &>h4 {
+            .anchor {
+                font-size: 18px;
+            }
+            .path-parent {
+                font-size: 13px;
+            }
+            .path-base {
+                font-size: 18px;
+            }
+        }
+    }
+
+
+    @for $i from 1 through 10 {
+        &.level-#{$i + 1} {
+
+            border-top: none;
+            margin-top: 10px;
+
+            // .el-button {
+            //     margin-left: -25px;
+            // }
+
+            .hierarchy-line {
+                top: 38px;
+            }
+            .guider {
+                width: $children-padding + $card-padding + 11;
+                margin-left: -$children-padding - $card-padding - 11;
+                // width: $i * ($children-padding + $card-padding);
+                // margin-left: -$i * ($children-padding + $card-padding);
+                border-top: 1px solid $hierarchy-guider-color;
+
+                position: relative;
+
+                // &::after {
+                //     content: '';
+                //     width: 5px;
+                //     height: 5px;
+                //     border-radius: 3px;
+                //     background-color: $hierarchy-guider-color;
+                //     position: absolute;
+                //     display: inline-block;
+                //     right: 0;
+                //     top: -3px;
+                // }
+            }
+        }
+    }
+
+    .prop-types {
+        margin-top: 5px;
+    }
+    .prop-type {
+        display: inline-block;
+        margin: 0 4px;
+        border-radius: 4px;
+        padding: 3px 5px;
+        color: #fff;
+        background-color: #a3a3a3;
+        font-size: 12px;
+    }
+
+    .prop-type-string {
+        background-color: #fd8888;
+    }
+
+    .prop-type-number {
+        background-color: #8fb9e4;
+    }
+
+    .prop-type-object {
+    }
+
+    .prop-type-array {
+    }
+
+    .prop-type-function {
+    }
+
+    .prop-type-boolean {
+        background-color: #e6a23c;
+    }
+
+
     .children {
-        padding: 10px;
+        padding: $children-padding;
     }
 }
 </style>

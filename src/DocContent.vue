@@ -128,6 +128,8 @@ export default {
             font-size: 12px;
             color: #999;
 
+            margin: 0 10px;
+
             p {
                 margin: 0;
             }
