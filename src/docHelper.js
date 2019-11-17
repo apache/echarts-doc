@@ -36,7 +36,12 @@ function processOutlines(json) {
         if (!(node.type instanceof Array)) {
             node.type = [node.type];
         }
-
+        // Normalize to any
+        for (let i = 0; i < node.type.length; i++) {
+            if (node.type[i] === '*') {
+                node.type[i] = 'any';
+            }
+        }
 
         if (node.arrayItemType) {
             node.path = joinPath(parentNode.path, node.arrayItemType, '-');

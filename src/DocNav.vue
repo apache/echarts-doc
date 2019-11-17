@@ -11,6 +11,7 @@
             :expand-on-click-node="false"
             :load="loadTreeNode"
             :data="treeData"
+            :current-node-key="initialSelectedNode"
 
             @current-change="selectNode"
             >
@@ -21,7 +22,6 @@
                 <span v-else-if="node.isLeaf" class="default-value">...</span>
                 <span v-if="!data.isRoot && !node.expanded">,</span>
             </div>
-
         </el-tree>
     </div>
 </template>
@@ -30,6 +30,7 @@
 
 import {getOutlineAsync} from './docHelper';
 import store from './store';
+import Vue from 'vue';
 
 function joinPath(a, b, connector) {
     return a ? (a + connector + b) : b;
@@ -97,10 +98,27 @@ export default {
 
             loading: true,
 
-            shared: store
+            shared: store,
+
+            initialSelectedNode: window.location.hash.slice(1) || 'title'
         }
     },
     created() {
+        // Init hash
+        window.addEventListener('hashchange', e => {
+            // TODO Validate path
+            this.shared.currentPath = window.location.hash.slice(1);
+        });
+
+        Vue.nextTick(() => {
+            this.shared.currentPath = this.initialSelectedNode;
+        });
+
+        let initialPathArr = this.initialSelectedNode.split(/[.-]/);
+        // Expand parent node of selected and ancestor nodes.
+        while (initialPathArr.pop() && initialPathArr.length > 0) {
+            this.expandedKeys.push(initialPathArr.join('.'));
+        }
     },
     methods: {
         loadTreeNode(node, resolve) {
@@ -124,6 +142,12 @@ export default {
 
         selectNode(nodeData, node) {
             this.shared.currentPath = nodeData.path;
+        }
+    },
+
+    watch: {
+        'shared.currentPath'(newVal) {
+            window.location.hash = '#' + newVal;
         }
     }
 }

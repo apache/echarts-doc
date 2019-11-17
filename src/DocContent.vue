@@ -1,6 +1,6 @@
 <template>
-    <div class="doc-content">
-        <h2>{{pagePath}}</h2>
+    <div class="doc-content" v-loading="loading">
+        <h2 :id="'#doc-content-' + pagePath.replace(/\./g, '-')">{{pagePath}}</h2>
         <div
             class="item-description"
             v-html="rootPageDescMap[pagePath]"
@@ -8,16 +8,18 @@
             v-lazyload
         ></div>
 
-        <h3>Properties</h3>
-        <DocContentItemCard
-            v-if="1 <= maxDepth"
-            v-for="child in pageOutline.children"
-            :key="child.path"
-            :node-data="child"
-            :desc-map="pageDescMap"
-            :max-depth="maxDepth"
-            :depth="1"
-        ></DocContentItemCard>
+        <div v-if="pageOutline.children && pageOutline.children && 1 <= maxDepth">
+            <h3>Properties</h3>
+            <DocContentItemCard
+                v-for="child in pageOutline.children"
+                :key="child.path"
+                :node-data="child"
+                :desc-map="pageDescMap"
+                :max-depth="maxDepth"
+                :depth="1"
+            ></DocContentItemCard>
+        </div>
+
     </div>
     </div>
 </template>
@@ -32,6 +34,8 @@ import {
 } from './docHelper';
 import DocContentItemCard from './DocContentItemCard.vue'
 import store from './store';
+import VueScrollTo from 'vue-scrollto';
+import Vue from 'vue';
 
 
 function getPagePathFromPath(val) {
@@ -44,6 +48,8 @@ export default {
 
     data() {
         return {
+            loading: false,
+
             pagePath: '',
 
             shared: store,
@@ -68,23 +74,48 @@ export default {
         });
     },
 
+    methods: {
+        scrollTo(path, time) {
+            // Scroll to.
+            Vue.nextTick(() => {
+                // console.log(document.querySelector('#doc-content-' + path.replace(/\./g, '-')), '#doc-content-' + path.replace(/\./g, '-'));
+                VueScrollTo.scrollTo(
+                    // Hard coded ID
+                    '#doc-content-' + path.replace(/\./g, '-'), time || 400, {
+                        easing: 'ease-in-out',
+                        container: this.$el.parentNode
+                    }
+                );
+            });
+        }
+    },
+
     watch: {
         'shared.currentPath'(newVal) {
             let newPagePath = getPagePathFromPath(newVal);
             if (newPagePath === this.pagePath) { // Use title as hash.
+                this.scrollTo(newVal);
                 return;
             }
+
+            this.loading = true;
+
             this.pagePath = newPagePath;
 
             // Fetch components.
-            Promise.all([
-                getPageOutlineAsync(newVal),
-                getPageTotalDescAsync(newVal)
-            ]).then(([pageOutline, pageDescMap]) => {
-                this.pageOutline = Object.freeze(Object.assign({}, pageOutline));
-                this.pageDescMap = Object.freeze(pageDescMap);
-                this.maxDepth = this.pageOutline.isRoot  // Root page
-                    ? 0 : Infinity
+            getPageOutlineAsync(newVal).then(pageOutline => {
+                return getPageTotalDescAsync(newVal).then(pageDescMap => {
+                    this.pageOutline = Object.freeze(Object.assign({}, pageOutline));
+                    this.pageDescMap = Object.freeze(pageDescMap);
+                    this.maxDepth = this.pageOutline.isRoot  // Root page
+                        ? 0 : Infinity
+                    this.loading = false;
+
+                    this.scrollTo(newVal, 1000);
+                });
+            }).catch(e => {
+                this.pageOutline = {};
+                this.loading = false;
             });
         }
     }
@@ -151,7 +182,7 @@ export default {
         pre {
             margin: 5px 10px;
             border-radius: 5px;
-            background-color: #f5f5f5;
+            background-color: #f5f7fa;
             border: none;
             padding: 10px;
             font-size: 13px;
@@ -169,6 +200,9 @@ export default {
             font-family: Monaco, Consolas, 'Courier New';
         }
 
+        ol {
+            margin-left: 20px;
+        }
         ul li {
             list-style: disc;
             margin: 10px 20px;

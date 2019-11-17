@@ -1,5 +1,8 @@
 <template>
-<div class="doc-content-item-card" :class="['level-' + depth, isLeaf ? 'leaf' : '']">
+<div
+    :class="['doc-content-item-card', 'level-' + depth, isLeaf ? 'leaf' : '']"
+    :id="'doc-content-' + nodeData.path.replace(/\./g, '-')"
+>
     <div class="hierarchy-line" v-if="expanded"></div>
     <h4>
         <span class="guider" v-if="depth > 1"></span>
@@ -9,8 +12,12 @@
             @click="toggleExpand"
         ></el-button>
         <!-- <a v-else class="anchor" href="">#</a> -->
-        <span class="path-parent" v-if="parentPath">{{parentPath}}.</span>
-        <span class="path-base">{{baseName}}</span>
+        <span class="path-parent">
+            <a :href="'#' + item.link" v-for="item in parentPath">{{item.text}}.</a>
+        </span>
+        <span class="path-base">
+            <a :href="'#' + baseName.link">{{baseName.text}}</a>
+        </span>
 
         <span class="default-value" v-if="nodeData.default && nodeData.default !== '*'"> = {{nodeData.default}}</span>
     </h4>
@@ -84,12 +91,28 @@ export default {
 
         parentPath() {
             let parts = this.nodeData.path.split('.');
-            parts.pop();
-            return parts.join('.');
+            let items = [];
+            let link = '';
+            for (let i = 0; i < parts.length - 1; i++) {
+                if (!link) {
+                    link += parts[i];
+                }
+                else {
+                    link += '.' + parts[i];
+                }
+                items.push({
+                    text: parts[i],
+                    link: link
+                });
+            }
+            return items;
         },
 
         baseName() {
-            return this.nodeData.path.split('.').pop();
+            return {
+                text: this.nodeData.path.split('.').pop(),
+                link: this.nodeData.path
+            }
         }
     },
 
@@ -179,11 +202,22 @@ $hierarchy-guider-color: #C592A0;
             font-weight: normal;
         }
 
+        .path-parent, .path-base {
+            a {
+                color: #C592A0;
+                text-decoration: none;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+
         .default-value {
             color: #293c55;
             font-size: 18px;
             margin-left: 15px;
             vertical-align: bottom;
+            font-weight: normal;
         }
     }
 
