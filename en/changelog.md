@@ -1,5 +1,5 @@
 ## v4.5.0
-<div class="time">2019-11-08</div>
+<div class="time">2019-11-18</div>
 
 + [Feature] Add `roundCap` option for round corners on `bar` series width `polar` coordinate system. [#11393](https://github.com/apache/incubator-echarts/pull/11393) ([Wenli Zhang](https://github.com/Ovilia))
 
@@ -44,9 +44,10 @@
 
 + [Fix] Fix gradient on bar leaked to label in SVG Renderer. ([Wenli Zhang](https://github.com/Ovilia))
 
+
 ## v4.4.0
 
-<div class="time">2019-09-29</div>
+<div class="time">2019-10-15</div>
 
 + [Feature] Add option `clip` for `line`, `bar`, `lines`, `scatter` and `custom series`,
 which prevents the shapes overflow the area of the coordinate system. And support setting
@@ -88,7 +89,7 @@ Fix #7534, #7672, #7732, #7872, #8069, #8520, #8935, #8955, #9200, #9237, #9847,
 
 ## v4.3.0
 
-<div class="time">2019-08-27</div>
+<div class="time">2019-09-16</div>
 
 + [Feature] Sankey diagram enhancement:
 Add left/right node align, right in sankey diagram.
