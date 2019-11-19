@@ -3,7 +3,7 @@
     <el-autocomplete
         class="search-input"
         popper-class="search-input-popper"
-        v-model="shared.searchQuery"
+        v-model="queryString"
         size="small"
         :fetch-suggestions="searchOptions"
         :debounce="200"
@@ -33,6 +33,8 @@ const MAX_SUGGESTIONS = 100;
 export default {
     data() {
         return {
+            queryString: store.searchQuery,
+
             shared: store
         }
     },
@@ -58,6 +60,7 @@ export default {
         },
 
         fuzzySearch(e) {
+            this.shared.searchQuery = this.queryString;
             directTo('/search/' + this.shared.searchQuery);
         }
     }

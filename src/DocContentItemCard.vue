@@ -184,8 +184,8 @@ $hierarchy-guider-color: #C592A0;
             padding: 2px;
             font-size: 12px;
             margin-left: -20px;
-            color: #B03A5B;
-            border-color: #B03A5B;
+            color: $hierarchy-guider-color;
+            border-color: $hierarchy-guider-color;
             border-radius: 4px;
 
             background: #fff;

@@ -12,14 +12,14 @@ function doMark(el, keywords) {
     }
     if (!instance) {
         el.__markInstance = new Mark(el);
+        doMark();
+    }
+    else {
         el.__markInstance.unmark({
             done() {
                 doMark();
             }
         });
-    }
-    else {
-        doMark();
     }
 }
 

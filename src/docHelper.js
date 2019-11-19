@@ -2,7 +2,7 @@
 // Not in the vue observer.
 import {fetch} from 'whatwg-fetch';
 import stripHtml from 'string-strip-html';
-import FlexSearch from 'flexsearch/flexsearch';
+// import Fuse from 'fuse.js';
 
 
 let baseUrl;
@@ -14,36 +14,6 @@ let outlineFetcher;
 let descStorage = {};
 let pageOutlines;
 
-FlexSearch.registerEncoder('strip-html', (str) => {
-    return stripHtml(str);
-});
-let searchIndex = new FlexSearch({
-    worker: false,
-    async: false,
-    profile: 'match',
-    encode: 'strip-html',
-    // doc: {
-    //     id: 'id',
-    //     field: ['path', 'content']
-    // }
-    doc: {
-        id: 'id',
-        field: {
-            path: {
-                tokenize(val) {
-                    return val.split(/[.-]/);
-                }
-            },
-            content: {
-                profile: 'match',
-                // Simple CJK tokenizer
-                tokenize: function(str){
-                    return str.replace(/[\x00-\x7F]/g, '').split('');
-                }
-            }
-        }
-    }
-});
 
 /**
  * Convert path to element id.
@@ -149,23 +119,39 @@ export function getRootPageTotalDescAsync() {
     return descStorage[partionKey].fetcher;
 }
 
-let _id = 0;
-function addPageDescMapToIndex(map, pagePath) {
+function createIndexer(map, pagePath) {
     let list = [];
     for (let path in map) {
-        list.push({
-            id: _id++,
+        list.push(Object.freeze({
             path: pagePath + '.' + path,
-            content: map[path]
-        });
+            content: map[path],
+            text: stripHtml(map[path])
+        }));
     }
-    searchIndex.add(list);
-    console.log(searchIndex.info());
+
+    return {
+        search(query) {
+            let results = [];
+            let tokens = query.split(/[ +,]/);
+            // TODO 常用词汇联想
+            for (let i = 0; i < tokens.length; i++) {
+                if (!tokens[i]) {
+                    continue;
+                }
+                // Case insensitive
+                let matcher = new RegExp(tokens[i], 'i');
+                for (let k = 0; k < list.length; k++) {
+                    if (matcher.test(list[k].text)) {
+                        results.push(list[k]);
+                    }
+                }
+            }
+            return results;
+        }
+    };
 }
-/**
- * Get all description of page.
- */
-export function getPageTotalDescAsync(targetPath) {
+
+function ensurePageDescStorage(targetPath) {
     if (!pageOutlines) {
         throw new Error('Outline data is not loaded.');
     }
@@ -185,20 +171,51 @@ export function getPageTotalDescAsync(targetPath) {
         };
 
         fetcher.then(map => {
-            addPageDescMapToIndex(map, pagePath);
+            descStorage[partionKey].indexer = createIndexer(map, pagePath);
         });
     }
 
-    return descStorage[partionKey].fetcher;
+    return descStorage[partionKey];
+}
+/**
+ * Get all description of page.
+ */
+export function getPageTotalDescAsync(targetPath) {
+    return ensurePageDescStorage(targetPath).fetcher;
 }
 
+// TODO Cancel
 /**
  * Do loading page desc files and searching progressively
  */
-export function searchAllAsync(queryString, onUpdate) {
-    return new Promise(resolve => {
-        searchIndex.search(queryString, (list) => {
-            resolve(list);
+export function searchAllAsync(queryString, onAdd) {
+    return getOutlineAsync().then(() => {
+        return new Promise(resolve => {
+            let asyncCount = 0;
+            function searchInPage(pagePath) {
+                let obj = ensurePageDescStorage(pagePath);
+                if (obj.indexer) {
+                    onAdd(obj.indexer.search(queryString));
+                }
+                else {
+                    asyncCount++;
+                    obj.fetcher.then(() => {
+                        asyncCount--;
+                        onAdd(obj.indexer.search(queryString));
+
+                        if (!asyncCount) {
+                            resolve();
+                        }
+                    });
+                }
+            }
+            for (let pagePath in pageOutlines) {
+                searchInPage(pagePath);
+            }
+
+            if (!asyncCount) {
+                resolve();
+            }
         });
     });
 }
