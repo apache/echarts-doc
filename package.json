@@ -42,11 +42,15 @@
   },
   "dependencies": {
     "element-ui": "^2.12.0",
+    "flexsearch": "^0.6.32",
     "highlight.js": "^9.16.2",
+    "mark.js": "^8.11.1",
+    "string-strip-html": "^4.3.8",
+    "vanilla-lazyload": "^12.3.0",
     "vue": "^2.6.10",
     "vue-custom-scrollbar": "^1.1.0",
-    "vanilla-lazyload": "^12.3.0",
     "vue-scrollto": "^2.17.1",
+    "vue-text-highlight": "^2.0.10",
     "whatwg-fetch": "^3.0.0"
   }
 }

@@ -31,6 +31,7 @@
 import {getOutlineAsync} from './docHelper';
 import store from './store';
 import Vue from 'vue';
+import {directTo} from './route';
 
 function joinPath(a, b, connector) {
     return a ? (a + connector + b) : b;
@@ -83,6 +84,10 @@ export function createChildren(currentNode, currentSource) {
     }
     return children;
 };
+
+function getPathFromURL() {
+}
+
 export default {
     data() {
         return {
@@ -100,20 +105,10 @@ export default {
 
             shared: store,
 
-            initialSelectedNode: window.location.hash.slice(1) || 'title'
+            initialSelectedNode: store.currentPath
         }
     },
     created() {
-        // Init hash
-        window.addEventListener('hashchange', e => {
-            // TODO Validate path
-            this.shared.currentPath = window.location.hash.slice(1);
-        });
-
-        Vue.nextTick(() => {
-            this.shared.currentPath = this.initialSelectedNode;
-        });
-
         let initialPathArr = this.initialSelectedNode.split(/[.-]/);
         // Expand parent node of selected and ancestor nodes.
         while (initialPathArr.pop() && initialPathArr.length > 0) {
@@ -147,7 +142,7 @@ export default {
 
     watch: {
         'shared.currentPath'(newVal) {
-            window.location.hash = '#' + newVal;
+            directTo(newVal);
         }
     }
 }

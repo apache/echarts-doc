@@ -1,7 +1,7 @@
 <template>
 <div
     :class="['doc-content-item-card', 'level-' + depth, isLeaf ? 'leaf' : '']"
-    :id="'doc-content-' + nodeData.path.replace(/\./g, '-')"
+    :id="itemId"
 >
     <div class="hierarchy-line" v-if="expanded"></div>
     <h4>
@@ -13,7 +13,7 @@
         ></el-button>
         <!-- <a v-else class="anchor" href="">#</a> -->
         <span class="path-parent">
-            <a :href="'#' + item.link" v-for="item in parentPath">{{item.text}}.</a>
+            <a :href="'#' + item.link" :key="item.link" v-for="item in parentPath">{{item.text}}.</a>
         </span>
         <span class="path-base">
             <a :href="'#' + baseName.link">{{baseName.text}}</a>
@@ -23,7 +23,11 @@
     </h4>
 
     <div class="prop-types">
-        <span :class="['prop-type', 'prop-type-' + type.toLowerCase()]" v-for="type in nodeData.type">{{type}}</span>
+        <span
+            :class="['prop-type', 'prop-type-' + type.toLowerCase()]"
+             :key="type"
+            v-for="type in nodeData.type"
+        >{{type}}</span>
     </div>
 
     <div class="item-description"
@@ -47,6 +51,11 @@
 </template>
 
 <script>
+
+import {
+    convertPathToId
+} from './docHelper';
+
 export default {
     name: 'DocContentItemCard',
 
@@ -62,6 +71,11 @@ export default {
     },
 
     computed: {
+
+        itemId() {
+            return convertPathToId(this.nodeData.path);
+        },
+
         expanded() {
             // Expanded at most 2 level.
             if (this.isLeaf) {
@@ -234,13 +248,13 @@ $hierarchy-guider-color: #C592A0;
         &>h4 {
             // opacity: 1;
             .anchor {
-                font-size: 26px;
+                font-size: 24px;
             }
             .path-parent {
                 font-size: 16px;
             }
             .path-base {
-                font-size: 26px;
+                font-size: 24px;
             }
         }
     }

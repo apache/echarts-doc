@@ -1,18 +1,57 @@
 // Global doc schema manager.
 // Not in the vue observer.
-const {fetch} = require('whatwg-fetch');
+import {fetch} from 'whatwg-fetch';
+import stripHtml from 'string-strip-html';
+import FlexSearch from 'flexsearch/flexsearch';
+
 
 let baseUrl;
 let rootName;
-
 
 // Cached data.
 let outlineFetcher;
 
 let descStorage = {};
-
 let pageOutlines;
 
+FlexSearch.registerEncoder('strip-html', (str) => {
+    return stripHtml(str);
+});
+let searchIndex = new FlexSearch({
+    worker: false,
+    async: false,
+    profile: 'match',
+    encode: 'strip-html',
+    // doc: {
+    //     id: 'id',
+    //     field: ['path', 'content']
+    // }
+    doc: {
+        id: 'id',
+        field: {
+            path: {
+                tokenize(val) {
+                    return val.split(/[.-]/);
+                }
+            },
+            content: {
+                profile: 'match',
+                // Simple CJK tokenizer
+                tokenize: function(str){
+                    return str.replace(/[\x00-\x7F]/g, '').split('');
+                }
+            }
+        }
+    }
+});
+
+/**
+ * Convert path to element id.
+ */
+export function convertPathToId(path) {
+    return 'doc-content-' + path
+        .replace(/[\. <>]/g, '-');
+}
 /**
  * Get doc json async
  */
@@ -110,6 +149,19 @@ export function getRootPageTotalDescAsync() {
     return descStorage[partionKey].fetcher;
 }
 
+let _id = 0;
+function addPageDescMapToIndex(map, pagePath) {
+    let list = [];
+    for (let path in map) {
+        list.push({
+            id: _id++,
+            path: pagePath + '.' + path,
+            content: map[path]
+        });
+    }
+    searchIndex.add(list);
+    console.log(searchIndex.info());
+}
 /**
  * Get all description of page.
  */
@@ -127,11 +179,50 @@ export function getPageTotalDescAsync(targetPath) {
 
     if (!descStorage[partionKey]) {
         let url = `${baseUrl}/${partionKey}.json`;
+        let fetcher = fetch(url).then(response => response.json());
         descStorage[partionKey] = {
-            fetcher: fetch(url).then(response => response.json())
+            fetcher
         };
+
+        fetcher.then(map => {
+            addPageDescMapToIndex(map, pagePath);
+        });
     }
 
     return descStorage[partionKey].fetcher;
 }
 
+/**
+ * Do loading page desc files and searching progressively
+ */
+export function searchAllAsync(queryString, onUpdate) {
+    return new Promise(resolve => {
+        searchIndex.search(queryString, (list) => {
+            resolve(list);
+        });
+    });
+}
+/**
+ * Search outline with given query. Return list of nodes
+ */
+export function searchOutlineAsync(queryString, numberLimit = Infinity) {
+    return getOutlineAsync().then(outline => {
+        let lists = [];
+        function search(node) {
+            if (lists.length >= numberLimit) {
+                return;
+            }
+            if (node.path && node.path.indexOf(queryString) >= 0) {
+                lists.push(node);
+            }
+            if (node.children) {
+                for (let i = 0; i < node.children.length; i++) {
+                    search(node.children[i]);
+                }
+            }
+        }
+        search(outline);
+
+        return lists;
+    });
+}

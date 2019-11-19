@@ -3,5 +3,6 @@ export default {
     currentPath: '',
 
     // Search content
+    fuzzySearch: false,
     searchQuery: ''
 };

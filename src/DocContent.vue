@@ -1,6 +1,6 @@
 <template>
     <div class="doc-content" v-loading="loading">
-        <h2 :id="'doc-content-' + pagePath.replace(/\./g, '-')">{{pagePath}}</h2>
+        <h2 :id="pageId">{{pagePath}}</h2>
         <div
             class="item-description"
             v-html="rootPageDescMap[pagePath]"
@@ -30,7 +30,8 @@ import {
     getPageTotalDescAsync,
     getRootPageTotalDescAsync,
     getPageOutlineAsync,
-    getOutlineAsync
+    getOutlineAsync,
+    convertPathToId
 } from './docHelper';
 import DocContentItemCard from './DocContentItemCard.vue'
 import store from './store';
@@ -67,6 +68,9 @@ export default {
     },
 
     computed: {
+        pageId() {
+            return convertPathToId(this.pagePath);
+        }
     },
 
     created() {
@@ -78,33 +82,39 @@ export default {
             elements_selector: 'iframe',
             load_delay: 300
         });
+
+        if (this.shared.currentPath) {
+            this.updateCurrentPath(this.shared.currentPath);
+        }
     },
 
     methods: {
-        handleCardExpandToggle() {
-            console.log('Update lazy load');
+        updateLazyload() {
+            // console.log('Update lazy load');
             Vue.nextTick(() => {
                 this._lazyload.update();
             });
         },
 
+        handleCardExpandToggle() {
+            this.updateLazyload();
+        },
+
         scrollTo(path, time) {
             // Scroll to.
             Vue.nextTick(() => {
-                // console.log(document.querySelector('#doc-content-' + path.replace(/\./g, '-')), '#doc-content-' + path.replace(/\./g, '-'));
+                // console.log(document.querySelector('#' + convertPathToId(path)), convertPathToId(path));
                 VueScrollTo.scrollTo(
-                    // Hard coded ID
-                    '#doc-content-' + path.replace(/\./g, '-'), time || 400, {
+                    '#' + convertPathToId(path), time || 400, {
+                        offset: -20,
                         easing: 'ease-in-out',
                         container: this.$el.parentNode
                     }
                 );
             });
-        }
-    },
+        },
 
-    watch: {
-        'shared.currentPath'(newVal) {
+        updateCurrentPath(newVal) {
             let newPagePath = getPagePathFromPath(newVal);
             if (newPagePath === this.pagePath) { // Use title as hash.
                 this.scrollTo(newVal);
@@ -125,15 +135,18 @@ export default {
                     this.loading = false;
 
                     this.scrollTo(newVal, 1000);
-
-                    Vue.nextTick(() => {
-                        this._lazyload.update();
-                    });
+                    this.updateLazyload();
                 });
             }).catch(e => {
                 this.pageOutline = {};
                 this.loading = false;
             });
+        }
+    },
+
+    watch: {
+        'shared.currentPath'(newVal) {
+            this.updateCurrentPath(newVal);
         }
     }
 }
@@ -141,6 +154,9 @@ export default {
 
 
 <style lang="scss">
+
+@import "./style/mixin.scss";
+
 .doc-content {
     h2 {
         color: #B03A5B;
@@ -161,85 +177,7 @@ export default {
         margin: 0;
         padding: 5px;
 
-        .hljs {
-            background: transparent;
-            padding: 0;
-        }
-
-        hr {
-            border: none;
-            border-bottom: 1px solid #eee;
-            width: 80%;
-        }
-
-        blockquote {
-            font-size: 12px;
-            color: #999;
-
-            margin: 0 10px;
-
-            p {
-                margin: 0;
-            }
-
-            pre {
-                font-size: 12px;
-            }
-        }
-
-        iframe {
-            border: 1px solid #ccc;
-        }
-
-        p {
-            line-height: 1.7em;
-            margin: 12px 0 0 0;
-            font-size: 14px;
-        }
-        pre {
-            margin: 5px 10px;
-            border-radius: 5px;
-            background-color: #f5f7fa;
-            border: none;
-            padding: 10px;
-            font-size: 13px;
-        }
-
-        .codespan {
-            padding: 2px 4px;
-            font-size: 14px;
-            color: #293C55;
-            background-color: #f9f2f4;
-            border-radius: 4px;
-        }
-
-        code *, code {
-            font-family: Monaco, Consolas, 'Courier New';
-        }
-
-        ol {
-            margin-left: 20px;
-        }
-        ul li {
-            list-style: disc;
-            margin: 10px 20px;
-            font-size: 14px;
-        }
-        ol li {
-            list-style: decimal;
-        }
-
-        a {
-            color: #337ab7;
-            text-decoration: none;
-            margin: 0 3px;
-
-            font-family: Monaco, Consolas, STHeiti, "Microsoft Yahei", "WenQuanYi Micro Hei", sans-serif;
-
-            &:hover {
-                text-decoration: underline;
-            }
-        }
+        @include description-html-formatter;
     }
 
 }

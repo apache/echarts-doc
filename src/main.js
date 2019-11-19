@@ -7,12 +7,13 @@ import {
     Main,
     Tree,
     Loading,
-    Divider
+    Autocomplete
 } from 'element-ui';
 import {preload} from './docHelper';
 import 'element-ui/lib/theme-chalk/index.css';
-
 import './directive/highlight';
+
+import {initRoute} from './route';
 
 
 Vue.use(Button);
@@ -21,8 +22,9 @@ Vue.use(Aside);
 Vue.use(Main);
 Vue.use(Tree);
 Vue.use(Loading);
-Vue.use(Divider);
+Vue.use(Autocomplete);
 
+initRoute();
 /**
  *
  * @param {HTMLDivElement|string} el
