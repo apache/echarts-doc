@@ -44,6 +44,7 @@
   "dependencies": {
     "element-ui": "^2.12.0",
     "highlight.js": "^9.16.2",
+    "lodash.throttle": "^4.1.1",
     "mark.js": "^8.11.1",
     "string-strip-html": "^4.3.8",
     "vanilla-lazyload": "^12.3.0",

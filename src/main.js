@@ -7,7 +7,8 @@ import {
     Main,
     Tree,
     Loading,
-    Autocomplete
+    Autocomplete,
+    Input
 } from 'element-ui';
 import {preload} from './docHelper';
 import 'element-ui/lib/theme-chalk/index.css';
@@ -23,6 +24,7 @@ Vue.use(Main);
 Vue.use(Tree);
 Vue.use(Loading);
 Vue.use(Autocomplete);
+Vue.use(Input);
 
 initRoute();
 /**

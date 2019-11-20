@@ -5,7 +5,7 @@
             <DocNav></DocNav>
         </el-aside>
         <el-main>
-            <SearchResult v-if="shared.fuzzySearch && shared.searchQuery"></SearchResult>
+            <SearchResult v-if="shared.fuzzySearch"></SearchResult>
             <DocContent v-else-if="shared.currentPath"></DocContent>
             <Home v-else></Home>
         </el-main>

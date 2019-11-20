@@ -1,6 +1,20 @@
 <template>
     <div class="doc-search-result">
-        <h3>Search: {{shared.searchQuery}}, Result: {{searchResult.length}} items</h3>
+        <h3>文档搜索</h3>
+        <el-input
+            v-model="shared.searchQuery"
+
+            prefix-icon="el-icon-search"
+        ></el-input>
+        <div class="result-summary">
+            找到 {{searchResultCount}} 条配置项,
+            <span v-if="searching" class="searching">
+                搜索中<i class="el-icon-loading"></i>
+            </span>
+            <span v-else>
+                显示 {{displayResultCount}} 条
+            </span>
+        </div>
         <div class="doc-search-result-item" :key="result.path" v-for="result in searchResult">
             <h4>
                 <a class="path" :href="'#' + result.path">{{result.path}}</a>
@@ -25,11 +39,53 @@ import {
 import store from './store';
 import './directive/mark';
 
+import throttle from 'lodash.throttle';
 
+function updateSearchResultsImmediate(searchQuery) {
+    this.searchResult = [];
+    this.searchResultCount = 0;
+    this.displayResultCount = 0;
+
+    this.static.searchResult.cache = {};
+
+    this.searching = true;
+    searchAllAsync(searchQuery, results => {
+        if (!this.noLimit && this.displayResultCount <= this.limitedResultCount) {
+            for (let i = 0; i < results.length; i++) {
+                let groupKey = results[i].text;
+                // Group results.
+                let similarResult = this.static.searchResult.cache[groupKey];
+                if (similarResult) {
+                    similarResult.similarPaths.push(results[i].path);
+                }
+                else {
+                    let obj = Object.freeze({
+                        path: results[i].path,
+                        content: results[i].content,
+                        similarPaths: []
+                    });
+                    this.searchResult.push(obj);
+                    this.static.searchResult.cache[groupKey] = obj;
+                }
+            }
+            this.displayResultCount += results.length;
+        }
+        this.searchResultCount += results.length;
+    }).then(() => {
+        this.searching = false;
+    });
+}
 export default {
     data() {
         return {
             searchResult: [],
+            searchResultCount: 0,
+            displayResultCount: 0,
+
+            noLimit: false,
+            limitedResultCount: 200,
+
+            searching: false,
 
             static: Object.freeze({
                 searchResult: {
@@ -42,33 +98,14 @@ export default {
     },
 
     created() {
-        this.updateSearchResults(this.shared.searchQuery);
+        this.updateSearchResultsImmediate(this.shared.searchQuery);
     },
 
     methods: {
-        updateSearchResults(searchQuery) {
-            this.searchResult = [];
-            this.static.searchResult.cache = {};
-            searchAllAsync(searchQuery, results => {
-                for (let i = 0; i < results.length; i++) {
-                    let groupKey = results[i].content;
-                    // Group results.
-                    let similarResult = this.static.searchResult.cache[groupKey];
-                    if (similarResult) {
-                        similarResult.similarPaths.push(results[i].path);
-                    }
-                    else {
-                        let obj = Object.freeze({
-                            path: results[i].path,
-                            content: results[i].content,
-                            similarPaths: []
-                        });
-                        this.searchResult.push(obj);
-                        this.static.searchResult.cache[obj.content] = obj;
-                    }
-                }
-            });
-        }
+        updateSearchResultsImmediate,
+        updateSearchResults: throttle(updateSearchResultsImmediate, 500, {
+            leading: false
+        })
     },
 
     watch: {
@@ -88,18 +125,31 @@ export default {
         font-weight: normal;
         font-size: 24px;
     }
+
+    .result-summary {
+        padding: 10px;
+        color: #999;
+
+        .searching {
+            color: #B03A5B;
+        }
+    }
 }
 
 .doc-search-result-item {
     margin: 30px 5px;
     padding: 5px;
-
     border-top: 1px solid #ccc;
+
+    // margin: 20px 5px;
+    // padding: 15px;
+    // box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    // border-radius: 10px;
 
 
     h4 {
         margin: 0;
-        padding: 10px 0;
+        padding: 5px 0;
 
         &>* {
             vertical-align: middle;
@@ -117,7 +167,10 @@ export default {
     }
 
     .item-description {
-        max-height: 200px;
+        -webkit-line-clamp: 10;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        // max-height: 200px;
         overflow-y: hidden;
     }
 
@@ -128,7 +181,7 @@ export default {
     }
 
     .other-result {
-        font-size: 14px;
+        font-size: 12px;
 
         padding: 0 10px 10px 10px;
 
@@ -138,5 +191,10 @@ export default {
     }
 
     @include description-html-formatter;
+
+    // Not dispay iframe, code, image
+    iframe, pre, image {
+        display: none;
+    }
 }
 </style>

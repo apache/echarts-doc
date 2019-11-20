@@ -18,6 +18,7 @@
             slot="append"
             icon="el-icon-search"
             type="primary"
+            @click="fuzzySearch"
         ></el-button>
     </el-autocomplete>
 </div>
@@ -56,10 +57,10 @@ export default {
         },
 
         selectPath(item) {
-            this.shared.currentPath = item.value;
+            this.shared.currentPath = item.path;
         },
 
-        fuzzySearch(e) {
+        fuzzySearch() {
             this.shared.searchQuery = this.queryString;
             directTo('/search/' + this.shared.searchQuery);
         }

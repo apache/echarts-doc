@@ -59,7 +59,8 @@ function processOutlines(json) {
             node.path = joinPath(parentNode.path, node.prop, '.');
         }
         if (node.children) {
-            if (node.path.indexOf('.') < 0) {
+            // Ignore option.series, option.dataZoom, option.visualMap
+            if (node.path.indexOf('.') < 0 && !node.children[0].arrayItemType) {
                 pageOutlines[node.path] = node;
             }
 
@@ -122,28 +123,34 @@ export function getRootPageTotalDescAsync() {
 function createIndexer(map, pagePath) {
     let list = [];
     for (let path in map) {
-        list.push(Object.freeze({
+        list.push({
             path: pagePath + '.' + path,
             content: map[path],
             text: stripHtml(map[path])
-        }));
+        });
     }
 
     return {
         search(query) {
             let results = [];
-            let tokens = query.split(/[ +,]/);
             // TODO 常用词汇联想
-            for (let i = 0; i < tokens.length; i++) {
-                if (!tokens[i]) {
-                    continue;
-                }
+            let tokens = query.split(/[ +,]/).filter(t => !!t).map(token => {
                 // Case insensitive
-                let matcher = new RegExp(tokens[i], 'i');
-                for (let k = 0; k < list.length; k++) {
-                    if (matcher.test(list[k].text)) {
-                        results.push(list[k]);
+                return new RegExp(token, 'i');
+            });
+            if (!tokens.length) {
+                return results;
+            }
+            for (let k = 0; k < list.length; k++) {
+                let searched = true;
+                for (let i = 0; i < tokens.length; i++) {
+                    if (!tokens[i].test(list[k].text)) {
+                        searched = false;
+                        break;
                     }
+                }
+                if (searched) {
+                    results.push(list[k]);
                 }
             }
             return results;
@@ -203,6 +210,11 @@ export function searchAllAsync(queryString, onAdd) {
                         asyncCount--;
                         onAdd(obj.indexer.search(queryString));
 
+                        if (!asyncCount) {
+                            resolve();
+                        }
+                    }).catch(e => {
+                        asyncCount--;
                         if (!asyncCount) {
                             resolve();
                         }
