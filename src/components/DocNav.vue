@@ -1,9 +1,13 @@
 <template>
     <div v-loading="loading" class="doc-nav">
         <h3>{{title}}</h3>
+        <div class="toolbox">
+            <span class="item" @click="collapseAll"><i class="el-icon-s-fold"></i>收起所有</span>
+        </div>
         <el-tree
             node-key="path"
             empty-text=""
+            ref="tree"
             :props="props"
             lazy
             :default-expanded-keys="expandedKeys"
@@ -13,7 +17,7 @@
             :data="treeData"
             :current-node-key="initialSelectedNode"
 
-            @current-change="selectNode"
+            @current-change="onSelectNode"
             >
 
             <div class="doc-nav-item" slot-scope="{ node, data }">
@@ -32,6 +36,7 @@ import {getOutlineAsync} from '../docHelper';
 import store from '../store';
 import Vue from 'vue';
 import {directTo} from '../route';
+import VueScrollTo from 'vue-scrollto';
 
 function joinPath(a, b, connector) {
     return a ? (a + connector + b) : b;
@@ -85,9 +90,6 @@ export function createChildren(currentNode, currentSource) {
     return children;
 };
 
-function getPathFromURL() {
-}
-
 export default {
     data() {
         return {
@@ -109,19 +111,35 @@ export default {
         }
     },
     created() {
-        let initialPathArr = this.initialSelectedNode.split(/[.-]/);
-        // Expand parent node of selected and ancestor nodes.
-        while (initialPathArr.pop() && initialPathArr.length > 0) {
-            this.expandedKeys.push(initialPathArr.join('.'));
-        }
+        this.updateTreeSelectionAndExpand();
     },
     methods: {
+        updateTreeSelectionAndExpand() {
+            this.expandedKeys = [];
+
+            // Expand parent node of selected and ancestor nodes.
+            let ancestorPath = this.shared.currentPath;
+            let idx;
+            while ((idx = ancestorPath.lastIndexOf('.')) >= 0
+                || (idx = ancestorPath.lastIndexOf('-')) >= 0
+            ) {
+                ancestorPath = ancestorPath.substr(0, idx);
+                this.expandedKeys.push(ancestorPath)
+            }
+        },
+
         loadTreeNode(node, resolve) {
             // Root node
             if (node.level === 0) {
                 this.loading = false;
                 getOutlineAsync().then(source => {
-                    resolve(createChildren(node.data, source))
+                    resolve(createChildren(node.data, source));
+
+                    // Scroll to current node.
+                    // FIXME Side effect.
+                    setTimeout(() => {
+                        this.scrollToCurrentTreeNode();
+                    }, 200);
                 });
             }
             else if (node.data.children && node.data.children.length) {
@@ -135,14 +153,51 @@ export default {
             }
         },
 
-        selectNode(nodeData, node) {
+        onSelectNode(nodeData, node) {
             this.shared.currentPath = nodeData.path;
+        },
+
+        scrollToCurrentTreeNode() {
+            let node = this.$el.querySelector('.el-tree-node.is-current');
+            if (node) {
+                let nodeRect = node.getBoundingClientRect();
+                let rootRect = this.$el.getBoundingClientRect();
+                if (nodeRect.top > rootRect.bottom || nodeRect.bottom < rootRect.top) {   // Not visible
+                    VueScrollTo.scrollTo(node, 500, {
+                        offset: -20,
+                        easing: 'ease-in-out',
+                        container: this.$el
+                    });
+                }
+            }
+        },
+
+        manualSelectNode(nodePath) {
+            this.updateTreeSelectionAndExpand();
+
+            // Highlight after all expanded nodes loaded.
+            setTimeout(() => {
+                // Cancel previous selection
+                this.$refs.tree.setCurrentKey(null);
+                this.$refs.tree.setCurrentKey(nodePath);
+
+                setTimeout(() => {  // Scroll to selected node after set.
+                    this.scrollToCurrentTreeNode();
+                }, 200);
+            }, 50);
+        },
+
+        collapseAll() {
+            for (let key in this.$refs.tree.store.nodesMap) {
+                this.$refs.tree.store.nodesMap[key].expanded = false;
+            }
         }
     },
 
     watch: {
         'shared.currentPath'(newVal) {
             directTo(newVal);
+            this.manualSelectNode(newVal);
         }
     }
 }
@@ -151,13 +206,28 @@ export default {
 <style lang="scss">
 
 .doc-nav {
-    min-height: 100%;
 
     h3 {
         margin: 0;
         padding: 5px;
         font-family: Monaco,Consolas,Courier new,monospace;
         font-size:14px;
+    }
+
+    .toolbox {
+        position: absolute;
+        right: 10px;
+        top: 5px;
+
+        .item {
+            font-size: 14px;
+            cursor: pointer;
+            color: #337ab7;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
     }
 
     .el-tree {

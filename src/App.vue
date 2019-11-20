@@ -45,7 +45,7 @@ export default {
 
 .ec-doc {
     // Reset
-    font-family: "Helvetica Neue", "Segoe UI", Tahoma, Arial, "Hiragino Sans GB", STHeiti, "Microsoft Yahei", "WenQuanYi Micro Hei", sans-serif;
+    font-family: "Source Sans Pro", "Helvetica Neue", "Segoe UI", Arial, "PingFang SC", STHeiti, "Microsoft Yahei", sans-serif;
 
     ul, ol {
         margin: 0;
@@ -56,6 +56,17 @@ export default {
 
     .el-aside {
         border-right: 1px solid #ddd;
+
+        position: relative;
+
+        .doc-nav {
+            position: absolute;
+            top: 40px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            overflow-y: scroll;
+        }
     }
 
     .el-main {
