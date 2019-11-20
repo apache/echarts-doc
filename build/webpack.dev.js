@@ -29,7 +29,9 @@ module.exports = {
             use: [{
                 loader: 'url-loader',
                 options: {
-                    limit: 10000
+                    limit: 10000,
+                    publicPath: 'asset',
+                    name: '../asset/[name].[ext]'
                 }
             }]
         }]

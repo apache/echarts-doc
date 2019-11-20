@@ -9,7 +9,7 @@
   "scripts": {
     "build": "node build.js --env dev",
     "watch": "node watch.js --env dev",
-    "build:site": "npx webpack",
+    "build:site": "npx webpack --config build/webpack.prod.js",
     "server": "npx webpack-dev-server --open --color --config build/webpack.dev.js"
   },
   "author": "shenyi",
