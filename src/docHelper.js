@@ -129,7 +129,7 @@ function createIndexer(map, pagePath) {
     let list = [];
     for (let path in map) {
         list.push({
-            path: pagePath + '.' + path,
+            path: pagePath ? (pagePath + '.' + path) : path,
             content: map[path],
             text: stripHtml(map[path])
         });
@@ -171,9 +171,9 @@ function ensurePageDescStorage(targetPath) {
 
     // Configuration like `option.color`, `option.backgroundColor` is in the `option` page.
     // Configuration like `option.series-bar` is in the `option.series-bar` page.
-    let partionKey = pageOutlines[pagePath]
-        ? rootName + '.' + pagePath
-        : rootName;
+    let partionKey = !pageOutlines[pagePath] || !targetPath
+        ? rootName
+        : rootName + '.' + pagePath;
 
     if (!descStorage[partionKey]) {
         let url = `${baseUrl}/${partionKey}.json`;
@@ -206,6 +206,7 @@ export function searchAllAsync(queryString, onAdd) {
             let asyncCount = 0;
             function searchInPage(pagePath) {
                 let obj = ensurePageDescStorage(pagePath);
+
                 if (obj.indexer) {
                     onAdd(obj.indexer.search(queryString));
                 }
@@ -226,6 +227,8 @@ export function searchAllAsync(queryString, onAdd) {
                     });
                 }
             }
+            // Search in root page.
+            searchInPage('');
             for (let pagePath in pageOutlines) {
                 searchInPage(pagePath);
             }

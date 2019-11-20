@@ -56,6 +56,8 @@ import {
     convertPathToId
 } from '../docHelper';
 
+import store from '../store';
+
 export default {
     name: 'DocContentItemCard',
 
@@ -85,7 +87,8 @@ export default {
                 return this.manualExpanded;
             }
             else {
-                return this.depth < 2;
+                return this.depth < 2
+                    || store.currentPath.indexOf(this.nodeData.path) >= 0;
             }
         },
 

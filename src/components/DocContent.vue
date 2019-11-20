@@ -84,7 +84,7 @@ export default {
         });
 
         if (this.shared.currentPath) {
-            this.updateCurrentPath(this.shared.currentPath);
+            this.updateCurrentPath(this.shared.currentPath, true);
         }
     },
 
@@ -100,9 +100,9 @@ export default {
             this.updateLazyload();
         },
 
-        scrollTo(path, time) {
+        scrollTo(path, time, timeDelay) {
             // Scroll to.
-            Vue.nextTick(() => {
+            setTimeout(() => {
                 // console.log(document.querySelector('#' + convertPathToId(path)), convertPathToId(path));
                 VueScrollTo.scrollTo(
                     '#' + convertPathToId(path), time || 400, {
@@ -111,10 +111,10 @@ export default {
                         container: this.$el.parentNode
                     }
                 );
-            });
+            }, timeDelay || 0);
         },
 
-        updateCurrentPath(newVal) {
+        updateCurrentPath(newVal, firstTime) {
             let newPagePath = getPagePathFromPath(newVal);
             if (newPagePath === this.pagePath) { // Use title as hash.
                 this.scrollTo(newVal);
@@ -134,7 +134,7 @@ export default {
                         ? 0 : Infinity
                     this.loading = false;
 
-                    this.scrollTo(newVal, 1000);
+                    this.scrollTo(newVal, 1000, firstTime ? 300: 50);
                     this.updateLazyload();
                 });
             }).catch(e => {
