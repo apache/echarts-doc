@@ -28,10 +28,10 @@
 
 <script>
 
-import {getOutlineAsync} from './docHelper';
-import store from './store';
+import {getOutlineAsync} from '../docHelper';
+import store from '../store';
 import Vue from 'vue';
-import {directTo} from './route';
+import {directTo} from '../route';
 
 function joinPath(a, b, connector) {
     return a ? (a + connector + b) : b;

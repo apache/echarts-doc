@@ -54,7 +54,7 @@
 
 import {
     convertPathToId
-} from './docHelper';
+} from '../docHelper';
 
 export default {
     name: 'DocContentItemCard',

@@ -1,7 +1,7 @@
 // Global doc schema manager.
 // Not in the vue observer.
 import {fetch} from 'whatwg-fetch';
-import stripHtml from 'string-strip-html';
+// import stripHtml from 'string-strip-html';
 // import Fuse from 'fuse.js';
 
 
@@ -15,6 +15,11 @@ let descStorage = {};
 let pageOutlines;
 
 
+function stripHtml(str) {
+    // Simple and fast regexp html replacer
+    // string-strip-html is toooo slow.
+    return str.replace(/<[^>]*>?/gm, '');
+}
 /**
  * Convert path to element id.
  */

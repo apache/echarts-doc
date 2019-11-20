@@ -13,6 +13,7 @@ import {
 import {preload} from './docHelper';
 import 'element-ui/lib/theme-chalk/index.css';
 import './directive/highlight';
+import './directive/mark';
 
 import {initRoute} from './route';
 

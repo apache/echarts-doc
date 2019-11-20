@@ -14,11 +14,11 @@
 
 <script>
 
-import DocNav from './DocNav.vue';
-import DocContent from './DocContent.vue';
-import Search from './Search.vue';
-import SearchResult from './SearchResult.vue';
-import Home from './Home.vue';
+import DocNav from './components/DocNav.vue';
+import DocContent from './components/DocContent.vue';
+import Search from './components/Search.vue';
+import SearchResult from './components/SearchResult.vue';
+import Home from './components/Home.vue';
 import store from './store';
 
 export default {

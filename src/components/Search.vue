@@ -25,13 +25,14 @@
 </template>
 
 <script>
-import store from './store';
-import {searchOutlineAsync} from './docHelper';
-import {directTo} from './route';
+import store from '../store';
+import {searchOutlineAsync} from '../docHelper';
+import {directTo} from '../route';
 
 const MAX_SUGGESTIONS = 100;
 
 export default {
+
     data() {
         return {
             queryString: store.searchQuery,

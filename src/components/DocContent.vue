@@ -32,9 +32,9 @@ import {
     getPageOutlineAsync,
     getOutlineAsync,
     convertPathToId
-} from './docHelper';
+} from '../docHelper';
 import DocContentItemCard from './DocContentItemCard.vue'
-import store from './store';
+import store from '../store';
 import VueScrollTo from 'vue-scrollto';
 import Vue from 'vue';
 import LazyLoad from 'vanilla-lazyload';
@@ -155,7 +155,7 @@ export default {
 
 <style lang="scss">
 
-@import "./style/mixin.scss";
+@import "../style/mixin.scss";
 
 .doc-content {
     h2 {
