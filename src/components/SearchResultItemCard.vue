@@ -49,8 +49,7 @@ export default {
 @import "../style/mixin.scss";
 
 .doc-search-result-item-card {
-    margin: 30px 5px;
-    padding: 5px;
+    margin: 30px 10px;
     border-top: 1px solid #ccc;
 
     // margin: 20px 5px;
@@ -60,8 +59,7 @@ export default {
 
 
     h4 {
-        margin: 0;
-        padding: 5px 0;
+        margin: 10px 0;
 
         &>* {
             vertical-align: middle;
@@ -90,7 +88,7 @@ export default {
     .other-result {
         font-size: 12px;
 
-        padding: 0 10px 10px 10px;
+        padding: 0 0 10px 0;
 
         &>div {
             font-family: Montserrat, sans-serif;

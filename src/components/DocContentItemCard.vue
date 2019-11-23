@@ -147,7 +147,7 @@ export default {
 
 <style lang="scss">
 
-$card-padding: 15px;
+$card-margin: 15px;
 $children-padding: 10px;
 
 $hierarchy-guider-color: #C592A0;
@@ -155,17 +155,18 @@ $hierarchy-guider-color: #C592A0;
 .doc-content-item-card {
 
     margin-top: 30px;
+    margin-left: $card-margin;
     border-top: 1px solid #ccc;
 
     position: relative;
 
-    padding: $card-padding;
+    padding: 15px 0;
 
     .hierarchy-line {
         position: absolute;
         top: 40px;
         bottom: 0px;
-        left: 3px;
+        left: -14px;
         width: 50px;
         border-left: 1px solid $hierarchy-guider-color;
         // border-bottom: 1px solid $hierarchy-guider-color;
@@ -178,7 +179,7 @@ $hierarchy-guider-color: #C592A0;
         font-family: Montserrat, sans-serif;
 
         &>* {
-            vertical-align: middle;
+            vertical-align: bottom;
             display: inline-block;
         }
         // opacity: 0.9;
@@ -186,7 +187,7 @@ $hierarchy-guider-color: #C592A0;
         .el-button {
             padding: 2px;
             font-size: 12px;
-            margin-left: -20px;
+            margin-left: -23px;
             color: $hierarchy-guider-color;
             border-color: $hierarchy-guider-color;
             border-radius: 4px;
@@ -211,8 +212,12 @@ $hierarchy-guider-color: #C592A0;
             font-size: 13px;
             padding-right: 20px;
             padding: 0;
-            font-style: italic;
             font-weight: normal;
+
+            .separator {
+                margin: 0 3px;
+                color: #B03A5B;
+            }
 
             a {
                 color: #C592A0;
@@ -254,7 +259,7 @@ $hierarchy-guider-color: #C592A0;
                 font-size: 24px;
             }
             .path-parent {
-                font-size: 16px;
+                font-size: 18px;
             }
             .path-base {
                 font-size: 24px;
@@ -267,7 +272,7 @@ $hierarchy-guider-color: #C592A0;
                 font-size: 20px;
             }
             .path-parent {
-                font-size: 14px;
+                font-size: 16px;
             }
             .path-base {
                 font-size: 20px;
@@ -280,7 +285,7 @@ $hierarchy-guider-color: #C592A0;
                 font-size: 18px;
             }
             .path-parent {
-                font-size: 13px;
+                font-size: 14px;
             }
             .path-base {
                 font-size: 18px;
@@ -303,8 +308,10 @@ $hierarchy-guider-color: #C592A0;
                 top: 38px;
             }
             .guider {
-                width: $children-padding + $card-padding + 11;
-                margin-left: -$children-padding - $card-padding - 11;
+                vertical-align: middle;
+                width: $children-padding + $card-margin + 9;
+                margin-left: -$children-padding - $card-margin - 14;
+                margin-right: 2px;
                 // width: $i * ($children-padding + $card-padding);
                 // margin-left: -$i * ($children-padding + $card-padding);
                 border-top: 1px solid $hierarchy-guider-color;
@@ -331,7 +338,7 @@ $hierarchy-guider-color: #C592A0;
     }
     .prop-type {
         display: inline-block;
-        margin: 0 4px;
+        margin-right: 4px;
         border-radius: 4px;
         padding: 3px 5px;
         color: #fff;

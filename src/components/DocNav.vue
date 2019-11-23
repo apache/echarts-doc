@@ -21,7 +21,9 @@
             >
 
             <div class="doc-nav-item" slot-scope="{ node, data }">
+                <!-- <el-tooltip :content="data.path" placement="top"> -->
                 <span>{{ node.expanded ? (data.labelExpanded || data.label) : data.label }}</span>
+                <!-- </el-tooltip> -->
                 <span v-if="data.defaultValue != null" class="default-value">{{data.defaultValue}}</span>
                 <span v-else-if="node.isLeaf" class="default-value">...</span>
                 <span v-if="!data.isRoot && !node.expanded">,</span>

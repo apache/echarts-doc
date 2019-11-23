@@ -124,7 +124,7 @@ export default {
     }
 
     .result-summary {
-        padding: 10px;
+        padding: 10px 0;
         color: #999;
 
         .searching {

@@ -2,7 +2,7 @@
     <div class="doc-content" v-loading="loading">
         <h2 :id="pageId">{{pagePath}}</h2>
         <div
-            class="item-description"
+            class="page-description"
             v-html="rootPageDescMap[pagePath]"
             v-highlight
         ></div>
@@ -162,20 +162,30 @@ export default {
         color: #B03A5B;
         font-size: 34px;
         border-bottom: 1px solid #ccc;
-        height: 40px;
-        line-height: 40px;
+        height: 45px;
+        line-height: 45px;
         margin: 0;
+
+        margin-left: 15px;
     }
 
     h3 {
         font-weight: normal;
         color: #999;
         font-size: 30px;
+        margin-left: 15px;
+    }
+
+    .page-description {
+        margin-left: 15px;
+        padding: 5px 0;
+
+        @include description-html-formatter;
     }
 
     .item-description {
         margin: 0;
-        padding: 5px;
+        padding: 5px 0;
 
         @include description-html-formatter;
     }
