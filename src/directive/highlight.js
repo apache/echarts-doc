@@ -1,6 +1,8 @@
 import hljs from 'highlight.js/lib/highlight';
 import javascript from 'highlight.js/lib/languages/javascript';
+// import html from 'highlight.js/lib/languages/html';
 hljs.registerLanguage('javascript', javascript);
+// hljs.registerLanguage('html', html);
 import 'highlight.js/styles/github-gist.css';
 import Vue from 'vue';
 

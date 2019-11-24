@@ -1,4 +1,4 @@
-function traverse(schema, cb) {
+function traverse(schema, rootName, cb) {
     function innerTraverse(schemaNode, path, noCallback) {
         if (!noCallback) {
             cb(path, schemaNode);
@@ -36,7 +36,7 @@ function traverse(schema, cb) {
         // Or it's a leaf node.
     }
 
-    innerTraverse(schema.option, 'option', false);
+    innerTraverse(schema.option, rootName, false);
 }
 
 
@@ -146,9 +146,9 @@ function convertToTree(rootSchema, rootNode) {
 //   "series-line": {"data"},
 //   "series-bar": {"data"}
 // }
-module.exports = function (schema) {
+module.exports = function (schema, docName) {
     let descriptionsMap = {};
-    traverse(schema, (schemaPath, schemaNode) => {
+    traverse(schema, docName, (schemaPath, schemaNode) => {
         if (schemaNode.description) {
             // Extract component level path
             let parts = schemaPath.split('.');

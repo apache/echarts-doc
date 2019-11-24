@@ -191,4 +191,15 @@ export default {
     }
 
 }
+
+.ec-doc-tutorial {
+    .page-description {
+        h2 {
+            font-weight: normal;
+            font-size: 22px;
+            margin-left: 0;
+            margin-top: 40px;
+        }
+    }
+}
 </style>

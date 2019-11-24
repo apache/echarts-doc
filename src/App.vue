@@ -1,6 +1,11 @@
 <template>
-    <el-container class="ec-doc">
+    <el-container :class="['ec-doc',  'ec-doc-' + shared.docType]">
         <el-aside width="300px" style="height:100%">
+            <div class="doc-type-nav">
+                <a :href="'option.html'" :class="{'selected': shared.docType === 'option'}">配置项</a>
+                <a :href="'api.html'" :class="{'selected': shared.docType === 'api'}">API</a>
+                <a :href="'tutorial.html'" :class="{'selected': shared.docType === 'tutorial'}">教程</a>
+            </div>
             <Search></Search>
             <DocNav></DocNav>
         </el-aside>
@@ -23,11 +28,19 @@ import store from './store';
 
 export default {
 
+    props: ['docType'],
+
     data() {
         return {
             shared: store
         };
     },
+
+    // computed: {
+    //     hash() {
+    //         return location.hash;
+    //     }
+    // },
 
     components: {
         DocNav,
@@ -59,9 +72,30 @@ export default {
 
         position: relative;
 
+        .doc-type-nav {
+            border-bottom: 1px solid #eee;
+            margin-bottom: 10px;
+            margin-left: 5px;
+
+            a {
+                display: inline-block;
+                line-height: 35px;
+                width: 30%;
+                text-align: center;
+                box-sizing: border-box;
+                text-decoration: none;
+                color: #000;
+                cursor: pointer;
+
+                &.selected {
+                    border-top: 3px solid #B03A5B;
+                }
+            }
+        }
+
         .doc-nav {
             position: absolute;
-            top: 40px;
+            top: 90px;
             bottom: 0;
             left: 0;
             right: 0;

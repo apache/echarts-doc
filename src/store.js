@@ -1,4 +1,6 @@
 export default {
+    docType: '',
+
     // Current selected option
     currentPath: '',
 

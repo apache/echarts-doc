@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ECharts Local Documents</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../lib/pace.min.js"></script>
+</head>
+<body>
+    <h1 id="header">ECharts Local Documents</h1>
+    <div id="app"></div>
+    <script src="../js/doc-bundle.js"></script>
+    <script>
+        echartsDoc.init('#app', {
+            baseUrl: '../documents/en/option-parts/',
+            docType: 'option'
+        });
+    </script>
+</body>
+</html>

@@ -164,12 +164,12 @@ $hierarchy-guider-color: #C592A0;
 
     .hierarchy-line {
         position: absolute;
-        top: 40px;
+        top: 35px;
         bottom: 0px;
         left: -14px;
-        width: 50px;
+        width: 10px;
         border-left: 1px solid $hierarchy-guider-color;
-        // border-bottom: 1px solid $hierarchy-guider-color;
+        border-bottom: 1px solid $hierarchy-guider-color;
     }
 
     h4 {
@@ -304,9 +304,6 @@ $hierarchy-guider-color: #C592A0;
             //     margin-left: -25px;
             // }
 
-            .hierarchy-line {
-                top: 38px;
-            }
             .guider {
                 vertical-align: middle;
                 width: $children-padding + $card-margin + 9;

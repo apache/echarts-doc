@@ -1,8 +1,8 @@
 <template>
     <div v-loading="loading" class="doc-nav">
-        <h3>{{title}}</h3>
+        <h3 v-if="isOption">{{title}}</h3>
         <div class="toolbox">
-            <span class="item" @click="collapseAll"><i class="el-icon-s-fold"></i>收起所有</span>
+            <span v-if="isOption" class="item" @click="collapseAll"><i class="el-icon-s-fold"></i>收起所有</span>
         </div>
         <el-tree
             node-key="path"
@@ -20,13 +20,16 @@
             @current-change="onSelectNode"
             >
 
-            <div class="doc-nav-item" slot-scope="{ node, data }">
+            <div class="doc-nav-item" slot-scope="{ node, data }" v-if="shared.docType !== 'tutorial'">
                 <!-- <el-tooltip :content="data.path" placement="top"> -->
                 <span>{{ node.expanded ? (data.labelExpanded || data.label) : data.label }}</span>
                 <!-- </el-tooltip> -->
                 <span v-if="data.defaultValue != null" class="default-value">{{data.defaultValue}}</span>
                 <span v-else-if="node.isLeaf" class="default-value">...</span>
                 <span v-if="!data.isRoot && !node.expanded">,</span>
+            </div>
+            <div class="doc-nav-item" slot-scope="{ node, data }"  v-else>
+                <span>{{ data.label }}</span>
             </div>
         </el-tree>
     </div>
@@ -115,6 +118,13 @@ export default {
     created() {
         this.updateTreeSelectionAndExpand();
     },
+
+    computed: {
+        isOption() {
+            return this.shared.docType === 'option'
+        }
+    },
+
     methods: {
         updateTreeSelectionAndExpand() {
             this.expandedKeys = [];
@@ -270,6 +280,33 @@ export default {
             color: #999;
         }
     }
+}
+
+
+// Special configuration for tutorial, option, api
+.ec-doc-tutorial, .ec-doc-api {
+    .doc-nav {
+        .el-tree {
+            padding-left: 0;
+            margin-top: 10px;
+        }
+    }
+}
+
+.ec-doc-tutorial {
+    .doc-nav {
+        .el-tree-node {
+            .el-tree-node__content {
+                height: 32px;
+            }
+
+            .doc-nav-item {
+                margin-left: -10px;
+                font-family: "Source Sans Pro", "Helvetica Neue", "Segoe UI", Arial, "PingFang SC", STHeiti, "Microsoft Yahei", sans-serif;
+            }
+        }
+    }
+
 }
 
 </style>

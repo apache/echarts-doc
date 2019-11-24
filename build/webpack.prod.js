@@ -30,7 +30,7 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                    publicPath: 'asset',
+                    publicPath: '../asset',
                     name: '../asset/[name].[ext]'
                 }
             }]

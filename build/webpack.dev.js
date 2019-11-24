@@ -30,7 +30,7 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                    publicPath: 'asset',
+                    publicPath: '../asset',
                     name: '../asset/[name].[ext]'
                 }
             }]
@@ -43,7 +43,7 @@ module.exports = {
     devServer: {
         compress: true,
         contentBase: path.resolve(__dirname, '../public'),
-        openPage: 'option.html',
+        openPage: 'zh/option.html',
         writeToDisk: true
     }
 };

@@ -78,6 +78,7 @@ function run() {
             },
             function (schema) {
                 writeSingleSchema(schema, language, 'tutorial');
+                writeSingleSchemaPartioned(schema, language, 'tutorial', false);
             }
         );
         md2json(
@@ -89,6 +90,7 @@ function run() {
             },
             function (schema) {
                 writeSingleSchema(schema, language, 'api');
+                writeSingleSchemaPartioned(schema, language, 'api', false);
             }
         );
 
@@ -102,7 +104,7 @@ function run() {
             },
             function (schema) {
                 writeSingleSchema(schema, language, 'option-gl');
-                // writePartitionedOptionSchema(schema, language, 'option-gl');
+                writeSingleSchemaPartioned(schema, language, 'option-gl', false);
             }
         );
 
@@ -151,7 +153,7 @@ function writeSingleSchema(schema, language, docName, format) {
 }
 
 function writeSingleSchemaPartioned(schema, language, docName, format) {
-    const {outline, descriptions} = extractDesc(schema);
+    const {outline, descriptions} = extractDesc(schema, docName);
 
     fse.outputFile(
         `public/documents/${language}/${docName}-parts/${docName}-outline.json`,
