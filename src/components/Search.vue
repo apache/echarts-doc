@@ -7,7 +7,7 @@
         size="small"
         :fetch-suggestions="searchOptions"
         :debounce="200"
-        placeholder="配置项搜索，回车查看更多结果"
+        :placeholder="$t('search.placeholder')"
         @select="selectPath"
         @keyup.enter.native="fuzzySearch"
     >

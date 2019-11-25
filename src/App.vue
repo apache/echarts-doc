@@ -2,9 +2,18 @@
     <el-container :class="['ec-doc',  'ec-doc-' + shared.docType]">
         <el-aside width="300px" style="height:100%">
             <div class="doc-type-nav">
-                <a :href="'option.html'" :class="{'selected': shared.docType === 'option'}">配置项</a>
-                <a :href="'api.html#echarts'" :class="{'selected': shared.docType === 'api'}">API</a>
-                <a :href="'tutorial.html'" :class="{'selected': shared.docType === 'tutorial'}">教程</a>
+                <a
+                    :href="'option.html'"
+                    :class="{'selected': shared.docType === 'option'}"
+                >{{$t('nav.option')}}</a>
+                <a
+                    :href="'api.html#echarts'"
+                    :class="{'selected': shared.docType === 'api'}"
+                >{{$t('nav.API')}}</a>
+                <a
+                    :href="'tutorial.html'"
+                    :class="{'selected': shared.docType === 'tutorial'}"
+                >{{$t('nav.tutorial')}}</a>
             </div>
             <Search></Search>
             <DocNav></DocNav>

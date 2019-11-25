@@ -1,18 +1,18 @@
 <template>
     <div class="doc-search-result">
-        <h3>文档搜索</h3>
+        <h3>{{$t('search.resultTitle')}}</h3>
         <el-input
             v-model="shared.searchQuery"
 
             prefix-icon="el-icon-search"
         ></el-input>
         <div class="result-summary">
-            找到 {{searchResultCount}} 条配置项,
+            {{ $t('search.foundCountBrief').replace('${searchResultCount}', searchResultCount) }},
             <span v-if="searching" class="searching">
                 搜索中<i class="el-icon-loading"></i>
             </span>
             <span v-else>
-                显示 {{displayResultCount}} 条
+                {{ $t('search.displayCountBrief').replace('${displayResultCount}', displayResultCount) }}
             </span>
         </div>
 

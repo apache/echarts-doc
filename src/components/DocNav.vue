@@ -2,7 +2,7 @@
     <div v-loading="loading" class="doc-nav">
         <h3 v-if="isOption">{{title}}</h3>
         <div class="toolbox">
-            <span v-if="isOption" class="item" @click="collapseAll"><i class="el-icon-s-fold"></i>收起所有</span>
+            <span v-if="isOption" class="item" @click="collapseAll"><i class="el-icon-s-fold"></i>{{$t('nav.collapseAll')}}</span>
         </div>
         <el-tree
             node-key="path"

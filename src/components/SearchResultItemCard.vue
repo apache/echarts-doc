@@ -13,7 +13,7 @@
     </div>
 
     <div class="show-more-button">
-        <el-button icon="el-icon-more" size="mini" @click="showMore">显示更多</el-button>
+        <el-button icon="el-icon-more" size="mini" @click="showMore">{{$t('search.showMore')}}</el-button>
     </div>
 </div>
 </template>
