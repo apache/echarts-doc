@@ -134,7 +134,7 @@ export default {
                         ? 0 : Infinity
                     this.loading = false;
 
-                    this.scrollTo(newVal, 1000, firstTime ? 300: 50);
+                    this.scrollTo(newVal, 600, firstTime ? 300: 50);
                     this.updateLazyload();
                 });
             }).catch(e => {

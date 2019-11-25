@@ -4,13 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ECharts Local Documents</title>
+    <title>Apache ECharts (incubating) Documents - Option</title>
     <link rel="stylesheet" href="../css/reset.css">
     <script src="../lib/pace.min.js"></script>
 </head>
 <body>
-    <h1 id="header">ECharts Local Documents</h1>
-    <div id="app"></div>
+    <div id="header">
+        <h1></h1>
+        <a class="lang" href="../zh/option.html">中文</a>
+    </div>
+    <script>
+        document.querySelector('#header h1').innerHTML = document.title;
+        document.querySelector('#header .lang').addEventListener('click', e => {
+            e.preventDefault();
+            window.location.href = '../zh/' + location.pathname.split('/').pop() + location.search + location.hash;
+        });
+    </script>
+
     <script src="../js/doc-bundle.js"></script>
     <script>
         echartsDoc.init('#app', {

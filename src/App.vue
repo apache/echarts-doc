@@ -3,7 +3,7 @@
         <el-aside width="300px" style="height:100%">
             <div class="doc-type-nav">
                 <a :href="'option.html'" :class="{'selected': shared.docType === 'option'}">配置项</a>
-                <a :href="'api.html'" :class="{'selected': shared.docType === 'api'}">API</a>
+                <a :href="'api.html#echarts'" :class="{'selected': shared.docType === 'api'}">API</a>
                 <a :href="'tutorial.html'" :class="{'selected': shared.docType === 'tutorial'}">教程</a>
             </div>
             <Search></Search>
@@ -86,6 +86,7 @@ export default {
                 text-decoration: none;
                 color: #000;
                 cursor: pointer;
+                font-size: 14px;
 
                 &.selected {
                     border-top: 3px solid #B03A5B;
