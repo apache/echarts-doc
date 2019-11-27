@@ -34,10 +34,10 @@ echarts v3.7 以后，支持了富文本标签，能够：
 
 开始下面的介绍之前，先说明一下下面会使用的两个名词的含义：
 + 文本块（Text Block）：文本标签块整体。
-+ 文本片段（Text Fregment）：文本标签块中的部分文本。
++ 文本片段（Text fragment）：文本标签块中的部分文本。
 
 如下图示例：
-~[340x240](${galleryViewPath}doc-example/text-block-fregment&edit=1&reset=1)
+~[340x240](${galleryViewPath}doc-example/text-block-fragment&edit=1&reset=1)
 
 
 <br>
@@ -199,7 +199,7 @@ label: {
 
 例如：
 
-~[800x220](${galleryViewPath}doc-example/text-fregment-align&edit=1&reset=1)
+~[800x220](${galleryViewPath}doc-example/text-fragment-align&edit=1&reset=1)
 
 
 <br>
