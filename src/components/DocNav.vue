@@ -38,7 +38,7 @@
 <script>
 
 import {getOutlineAsync} from '../docHelper';
-import store from '../store';
+import {store} from '../store';
 import Vue from 'vue';
 import {directTo} from '../route';
 import VueScrollTo from 'vue-scrollto';

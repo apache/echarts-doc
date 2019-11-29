@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
 import App from './App.vue';
+import AppMobile from './AppMobile.vue';
 import {
     Button,
     Container,
@@ -10,7 +11,8 @@ import {
     Loading,
     Autocomplete,
     Input,
-    Tooltip
+    Tooltip,
+    Drawer
 } from 'element-ui';
 import {preload} from './docHelper';
 import 'element-ui/lib/theme-chalk/index.css';
@@ -18,9 +20,9 @@ import './directive/highlight';
 import './directive/mark';
 
 import {initRoute} from './route';
-import store from './store';
+import {initResponsive} from './responsive';
+import {store} from './store';
 import messages from './i18n';
-
 
 Vue.use(Button);
 Vue.use(Container);
@@ -32,8 +34,8 @@ Vue.use(Autocomplete);
 Vue.use(Input);
 Vue.use(Tooltip);
 Vue.use(VueI18n);
+Vue.use(Drawer);
 
-initRoute();
 /**
  *
  * @param {HTMLDivElement|string} el
@@ -43,6 +45,10 @@ initRoute();
  * @param {string} option.locale
  */
 export function init(el, option) {
+
+    initRoute();
+    initResponsive();
+
     preload(option.baseUrl, option.docType);
 
     store.docType = option.docType;
@@ -67,6 +73,9 @@ export function init(el, option) {
     new Vue({
         i18n,
         el: container,
-        render: h => h(App)
+        render: h => {
+            console.log(store.isMobile);
+            return store.isMobile ? h(AppMobile) : h(App);
+        }
     });
 }

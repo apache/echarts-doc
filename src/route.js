@@ -1,5 +1,5 @@
 
-import store from './store';
+import {store} from './store';
 
 function handleHashUpdate() {
     let hash = decodeURIComponent(window.location.hash.slice(1));

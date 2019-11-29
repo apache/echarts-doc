@@ -34,15 +34,12 @@ import {
     convertPathToId
 } from '../docHelper';
 import DocContentItemCard from './DocContentItemCard.vue'
-import store from '../store';
+import {store, getPagePath} from '../store';
 import VueScrollTo from 'vue-scrollto';
 import Vue from 'vue';
 import LazyLoad from 'vanilla-lazyload';
 
 
-function getPagePathFromPath(val) {
-    return val.split('.')[0];
-}
 export default {
     components: {
         DocContentItemCard
@@ -115,7 +112,7 @@ export default {
         },
 
         updateCurrentPath(newVal, firstTime) {
-            let newPagePath = getPagePathFromPath(newVal);
+            let newPagePath = getPagePath();
             if (newPagePath === this.pagePath) { // Use title as hash.
                 this.scrollTo(newVal);
                 return;
@@ -124,14 +121,20 @@ export default {
             this.loading = true;
 
             this.pagePath = newPagePath;
-
             // Fetch components.
             getPageOutlineAsync(newVal).then(pageOutline => {
                 return getPageTotalDescAsync(newVal).then(pageDescMap => {
                     this.pageOutline = Object.freeze(Object.assign({}, pageOutline));
                     this.pageDescMap = Object.freeze(pageDescMap);
-                    this.maxDepth = this.pageOutline.isRoot  // Root page
-                        ? 0 : Infinity
+                    if (this.pageOutline.isRoot) {
+                        this.maxDepth = 0;  // No children
+                    }
+                    if (this.shared.isMobile) {
+                        this.maxDepth = 1;  // Only one level
+                    }
+                    else {
+                        this.maxDepth = Infinity;
+                    }
                     this.loading = false;
 
                     this.scrollTo(newVal, 600, firstTime ? 300: 50);
@@ -158,6 +161,7 @@ export default {
 @import "../style/mixin.scss";
 
 .doc-content {
+    margin-left: 10px;
     h2 {
         color: #B03A5B;
         font-size: 34px;
@@ -166,18 +170,15 @@ export default {
         line-height: 45px;
         margin: 0;
 
-        margin-left: 15px;
     }
 
     h3 {
         font-weight: normal;
         color: #999;
         font-size: 30px;
-        margin-left: 15px;
     }
 
     .page-description {
-        margin-left: 15px;
         padding: 5px 0;
 
         @include description-html-formatter;
@@ -200,6 +201,16 @@ export default {
             margin-left: 0;
             margin-top: 40px;
         }
+    }
+}
+
+.ec-doc-mobile {
+    h2 {
+        font-size: 22px;
+        font-weight: normal;
+    }
+    h3 {
+        font-size: 20px;
     }
 }
 </style>

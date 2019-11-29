@@ -29,7 +29,7 @@
 import {
     searchAllAsync
 } from '../docHelper';
-import store from '../store';
+import {store} from '../store';
 import SearchResultItemCard from './SearchResultItemCard.vue';
 
 import throttle from 'lodash.throttle';

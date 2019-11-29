@@ -1,4 +1,4 @@
-export default {
+export const store = {
     docType: '',
 
     // Current selected option
@@ -6,5 +6,21 @@ export default {
 
     // Search content
     fuzzySearch: false,
-    searchQuery: ''
+    searchQuery: '',
+
+    isMobile: false,
 };
+
+export function getPagePath() {
+    if (store.isMobile) {
+        // No hierarchy
+        let parts = store.currentPath.split('.');
+        if (parts.length > 1) {
+            parts.pop();
+        }
+        return parts.join('.');
+    }
+    else {
+        return store.currentPath.split('.')[0];
+    }
+}

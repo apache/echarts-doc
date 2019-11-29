@@ -37,7 +37,7 @@
 
     <div class="children" v-if="!isLeaf">
         <DocContentItemCard
-            v-if="(depth + 1) <= maxDepth && expanded"
+            v-if="!isLeaf && expanded"
             v-for="child in nodeData.children"
             :key="child.path"
             :node-data="child"
@@ -56,7 +56,7 @@ import {
     convertPathToId
 } from '../docHelper';
 
-import store from '../store';
+import {store} from '../store';
 
 export default {
     name: 'DocContentItemCard',
@@ -93,7 +93,8 @@ export default {
         },
 
         isLeaf() {
-            return !(this.nodeData.children && this.nodeData.children.length);
+            return !(this.nodeData.children && this.nodeData.children.length)
+                || (this.depth + 1) > this.maxDepth;
         },
 
         desc() {
@@ -368,5 +369,33 @@ $hierarchy-guider-color: #C592A0;
     .children {
         padding: $children-padding;
     }
+}
+
+
+.ec-doc-mobile {
+    .doc-content-item-card {
+        margin-left: 0;
+        margin-top: 20px;
+        padding: 5px 0;
+
+        &.level-1 {
+            &>h4 {
+                // opacity: 1;
+                .anchor {
+                    font-size: 16px;
+                }
+                .path-parent {
+                    font-size: 13px;
+                }
+                .path-base {
+                    font-size: 16px;
+                }
+                .default-value {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
 }
 </style>
