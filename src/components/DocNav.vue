@@ -222,7 +222,7 @@ export default {
     h3 {
         margin: 0;
         padding: 5px;
-        font-family: Monaco,Consolas,Courier new,monospace;
+        font-family: Monaco, 'Source Code Pro', monospace;
         font-size:14px;
     }
 
@@ -272,7 +272,7 @@ export default {
     }
 
     .doc-nav-item {
-        font-family: Monaco,Consolas,Courier new,monospace;
+        font-family: Monaco,'Source Code Pro', monospace;
         font-size: 13px;
         white-space: nowrap;
 

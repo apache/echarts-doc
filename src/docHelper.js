@@ -10,9 +10,12 @@ let rootName;
 
 // Cached data.
 let outlineFetcher;
+let outline;
 
 let descStorage = {};
 let pageOutlines;
+
+let outlineNodesMap = {};
 
 
 function stripHtml(str) {
@@ -38,6 +41,8 @@ export function getOutlineAsync() {
 }
 
 function processOutlines(json) {
+    outline = json;
+
     pageOutlines = {};
 
     function joinPath(a, b, connector) {
@@ -73,6 +78,7 @@ function processOutlines(json) {
                 processNode(node.children[i], node);
             }
         }
+        outlineNodesMap[node.path] = node;
     }
 
     for (let i = 0; i < json.children.length; i++) {
@@ -262,4 +268,8 @@ export function searchOutlineAsync(queryString, numberLimit = Infinity) {
 
         return lists;
     });
+}
+
+export function getOutlineNode(path) {
+    return outlineNodesMap[path];
 }

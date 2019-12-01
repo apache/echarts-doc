@@ -46,36 +46,37 @@ Vue.use(Drawer);
  */
 export function init(el, option) {
 
-    initRoute();
     initResponsive();
 
-    preload(option.baseUrl, option.docType);
+    preload(option.baseUrl, option.docType).then(() => {
+        initRoute();
 
-    store.docType = option.docType;
+        store.docType = option.docType;
 
-    if (typeof el === 'string') {
-        el = document.querySelector(el);
-    }
-    if (!el) {
-        throw new Error('Can\'t find el.');
-    }
-
-    let container = document.createElement('div');
-
-    el.appendChild(container);
-
-    let i18n = new VueI18n({
-        locale: option.locale,
-        fallbackLocale: 'en',
-        messages
-    });
-
-    new Vue({
-        i18n,
-        el: container,
-        render: h => {
-            console.log(store.isMobile);
-            return store.isMobile ? h(AppMobile) : h(App);
+        if (typeof el === 'string') {
+            el = document.querySelector(el);
         }
+        if (!el) {
+            throw new Error('Can\'t find el.');
+        }
+
+        let container = document.createElement('div');
+
+        el.appendChild(container);
+
+        let i18n = new VueI18n({
+            locale: option.locale,
+            fallbackLocale: 'en',
+            messages
+        });
+
+        new Vue({
+            i18n,
+            el: container,
+            render: h => {
+                console.log('iMobile: ', store.isMobile);
+                return store.isMobile ? h(AppMobile) : h(App);
+            }
+        });
     });
 }

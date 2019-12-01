@@ -14,6 +14,9 @@ export default {
 
             foundCountBrief: 'Found ${searchResultCount} items',
             displayCountBrief: '${displayResultCount} displayed'
+        },
+        content: {
+            properties: 'Properties'
         }
     },
     zh: {
@@ -31,6 +34,9 @@ export default {
 
             foundCountBrief: '找到 ${searchResultCount} 条配置项',
             displayCountBrief: '显示 ${displayResultCount} 条'
+        },
+        content: {
+            properties: '属性'
         }
     }
 };

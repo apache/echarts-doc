@@ -3,7 +3,7 @@
         <el-aside width="300px" style="height:100%">
             <div class="doc-type-nav">
                 <a
-                    :href="'option.html'"
+                    :href="'option.html#title'"
                     :class="{'selected': shared.docType === 'option'}"
                 >{{$t('nav.option')}}</a>
                 <a
@@ -65,6 +65,7 @@ export default {
 <style lang="scss">
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap');
 
 .ec-doc {
     // font-family: "Helvetica Neue", "Segoe UI", Arial, "PingFang SC", STHeiti, "Microsoft Yahei", sans-serif;
@@ -73,6 +74,16 @@ export default {
     ul, ol {
         margin: 0;
         padding: 0;
+    }
+
+    a {
+        color: #337ab7;
+        text-decoration: none;
+        margin: 0 3px;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 
     height: 100%;

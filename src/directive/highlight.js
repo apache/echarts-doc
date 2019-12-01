@@ -1,10 +1,12 @@
 import hljs from 'highlight.js/lib/highlight';
 import javascript from 'highlight.js/lib/languages/javascript';
-// import html from 'highlight.js/lib/languages/html';
+import xml from 'highlight.js/lib/languages/xml';
 hljs.registerLanguage('javascript', javascript);
-// hljs.registerLanguage('html', html);
+hljs.registerLanguage('xml', xml);
 import 'highlight.js/styles/github-gist.css';
 import Vue from 'vue';
+
+hljs.configure()
 
 function doHighlight(el) {
     el.querySelectorAll('pre code').forEach((block) => {

@@ -1,3 +1,5 @@
+import {getOutlineNode} from './docHelper';
+
 export const store = {
     docType: '',
 
@@ -15,7 +17,9 @@ export function getPagePath() {
     if (store.isMobile) {
         // No hierarchy
         let parts = store.currentPath.split('.');
-        if (parts.length > 1) {
+        let node = getOutlineNode(store.currentPath);
+        let isLeaf = node && (!node.children || !node.children.length);
+        if (isLeaf && parts.length > 1) {  // Is leaf
             parts.pop();
         }
         return parts.join('.');

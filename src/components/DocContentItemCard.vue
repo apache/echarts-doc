@@ -7,12 +7,12 @@
     <h4>
         <span class="guider" v-if="depth > 1"></span>
         <el-button plain circle size="mini"
-            v-if="!isLeaf"
+            v-if="supportsExpandable"
             :icon="expanded ? 'el-icon-minus' : 'el-icon-plus'"
             @click="toggleExpanded"
         ></el-button>
         <!-- <a v-else class="anchor" href="">#</a> -->
-        <span class="path-parent">
+        <span class="path-parent" v-if="!shared.isMobile">
             <a :href="'#' + item.link" :key="item.link" v-for="item in parentPath">{{item.text}}.</a>
         </span>
         <span class="path-base">
@@ -35,9 +35,9 @@
         v-highlight
     ></div>
 
-    <div class="children" v-if="!isLeaf">
+    <div class="children" v-if="supportsExpandable">
         <DocContentItemCard
-            v-if="!isLeaf && expanded"
+            v-if="expanded"
             v-for="child in nodeData.children"
             :key="child.path"
             :node-data="child"
@@ -47,6 +47,10 @@
             @toggle-expanded="bubbleEvent"
         ></DocContentItemCard>
     </div>
+    <PropertiesList
+        v-else-if="!isLeaf"
+        :nodeData="nodeData"
+    ></PropertiesList>
 </div>
 </template>
 
@@ -55,6 +59,7 @@
 import {
     convertPathToId
 } from '../docHelper';
+import PropertiesList from './PropertiesList.vue';
 
 import {store} from '../store';
 
@@ -63,9 +68,14 @@ export default {
 
     props: ['nodeData', 'descMap', 'maxDepth', 'depth'],
 
+    components: {
+        PropertiesList
+    },
+
     data() {
         return {
-            manualExpanded: null
+            manualExpanded: null,
+            shared: store
         }
     },
 
@@ -93,8 +103,11 @@ export default {
         },
 
         isLeaf() {
-            return !(this.nodeData.children && this.nodeData.children.length)
-                || (this.depth + 1) > this.maxDepth;
+            return !(this.nodeData.children && this.nodeData.children.length);
+        },
+
+        supportsExpandable() {
+            return (this.depth + 1) <= this.maxDepth && !this.isLeaf;
         },
 
         desc() {
@@ -375,20 +388,25 @@ $hierarchy-guider-color: #C592A0;
 .ec-doc-mobile {
     .doc-content-item-card {
         margin-left: 0;
-        margin-top: 20px;
-        padding: 5px 0;
+        margin-top: 10px;
+        padding: 10px 10px;
+        background: #fff;
+        border-top: none;
+        // box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        // border-top: 1px solid #eee;
+        // border-bottom: 1px solid #eee;
 
         &.level-1 {
             &>h4 {
                 // opacity: 1;
                 .anchor {
-                    font-size: 16px;
+                    font-size: 18px;
                 }
                 .path-parent {
                     font-size: 13px;
                 }
                 .path-base {
-                    font-size: 16px;
+                    font-size: 18px;
                 }
                 .default-value {
                     font-size: 14px;

@@ -149,7 +149,13 @@ body {
 
 
 @media (max-width: 600px) {
+    #app {
+        -webkit-overflow-scrolling: touch;
+    }
     #header h1 {
-        font-size: 16px;
+        font-size: 14px;
+    }
+    #header .lang {
+        font-size: 14px;;
     }
 }

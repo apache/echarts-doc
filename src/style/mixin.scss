@@ -58,7 +58,7 @@
     }
 
     code *, code {
-        font-family: Monaco, Consolas, 'Courier New';
+        font-family: Monaco, 'Source Code Pro', 'Courier New', monospace;
     }
 
     ol {
@@ -74,14 +74,6 @@
     }
 
     a {
-        color: #337ab7;
-        text-decoration: none;
-        margin: 0 3px;
-
-        font-family: Monaco, Consolas, STHeiti, "Microsoft Yahei", "WenQuanYi Micro Hei", sans-serif;
-
-        &:hover {
-            text-decoration: underline;
-        }
+        font-family: Monaco,'Source Code Pro', STHeiti, "Microsoft Yahei", "WenQuanYi Micro Hei", sans-serif;
     }
 }

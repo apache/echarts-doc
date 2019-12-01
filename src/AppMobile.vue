@@ -3,7 +3,7 @@
         <div class="top-bar">
             <div class="doc-type-nav">
                 <a
-                    :href="'option.html'"
+                    :href="'option.html#title'"
                     :class="{'selected': shared.docType === 'option'}"
                 >{{$t('nav.option')}}</a>
                 <a
@@ -37,6 +37,9 @@
             <DocContent v-else-if="shared.currentPath" :key="pagePath"></DocContent>
             <Home v-else></Home>
         </transition>
+        <div class="doc-breadcrumb" v-if="pagePathParts.length > 1">
+            <a :key="item.link" v-for="item in pagePathParts" :href="'#' + item.link">{{item.text}}</a>
+        </div>
     </div>
 </template>
 
@@ -63,6 +66,24 @@ export default {
     computed: {
         pagePath() {
             return getPagePath();
+        },
+        pagePathParts() {
+            let parts = this.pagePath.split('.');
+            let items = [];
+            let link = '';
+            for (let i = 0; i < parts.length; i++) {
+                if (!link) {
+                    link += parts[i];
+                }
+                else {
+                    link += '.' + parts[i];
+                }
+                items.push({
+                    text: parts[i] + (i === parts.length - 1 ? '' : '.'),
+                    link: link
+                });
+            }
+            return items;
         }
     },
 
@@ -101,6 +122,16 @@ export default {
     ul, ol {
         margin: 0;
         padding: 0;
+    }
+
+    a {
+        color: #337ab7;
+        text-decoration: none;
+        margin: 0 3px;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 
     .top-bar {
@@ -146,6 +177,23 @@ export default {
 
         .doc-search {
             flex: 1;
+        }
+    }
+
+    .doc-breadcrumb {
+        position: fixed;
+        text-align: center;
+        left: 50%;
+        transform: translate(-50%, 0);
+        bottom: 20px;
+        border-radius: 4px;
+        padding: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        background: #337ab7;
+
+        a {
+            display: inline-block;
+            color: #fff;
         }
     }
 }

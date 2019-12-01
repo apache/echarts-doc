@@ -1,16 +1,17 @@
 <template>
     <div class="doc-content" v-loading="loading">
-        <h2 :id="pageId">{{pagePath}}</h2>
+        <h2 :id="pageId">{{pageTitle}}</h2>
         <div
             class="page-description"
+            v-if="rootPageDescMap[pagePath]"
             v-html="rootPageDescMap[pagePath]"
             v-highlight
         ></div>
 
-        <div v-if="pageOutline.children && pageOutline.children && 1 <= maxDepth">
-            <h3>Properties</h3>
+        <div v-if="pageDisplayOutline.children && pageDisplayOutline.children && 1 <= maxDepth">
+            <h3>{{$t('content.properties')}}</h3>
             <DocContentItemCard
-                v-for="child in pageOutline.children"
+                v-for="child in pageDisplayOutline.children"
                 :key="child.path"
                 :node-data="child"
                 :desc-map="pageDescMap"
@@ -31,14 +32,14 @@ import {
     getRootPageTotalDescAsync,
     getPageOutlineAsync,
     getOutlineAsync,
-    convertPathToId
+    convertPathToId,
+    getOutlineNode
 } from '../docHelper';
 import DocContentItemCard from './DocContentItemCard.vue'
 import {store, getPagePath} from '../store';
 import VueScrollTo from 'vue-scrollto';
 import Vue from 'vue';
 import LazyLoad from 'vanilla-lazyload';
-
 
 export default {
     components: {
@@ -65,8 +66,21 @@ export default {
     },
 
     computed: {
+        pageTitle() {
+            return this.pagePath;
+        },
+
         pageId() {
             return convertPathToId(this.pagePath);
+        },
+
+        pageDisplayOutline() {
+            if (!this.shared.isMobile) {
+                return this.pageOutline;
+            }
+            else {
+                return getOutlineNode(getPagePath());
+            }
         }
     },
 
@@ -100,12 +114,14 @@ export default {
         scrollTo(path, time, timeDelay) {
             // Scroll to.
             setTimeout(() => {
+                let container = store.isMobile ? document.body : this.$el.parentNode;
+                let offset = store.isMobile ? -100 : -20;
                 // console.log(document.querySelector('#' + convertPathToId(path)), convertPathToId(path));
                 VueScrollTo.scrollTo(
                     '#' + convertPathToId(path), time || 400, {
-                        offset: -20,
+                        offset,
                         easing: 'ease-in-out',
-                        container: this.$el.parentNode
+                        container
                     }
                 );
             }, timeDelay || 0);
@@ -129,7 +145,7 @@ export default {
                     if (this.pageOutline.isRoot) {
                         this.maxDepth = 0;  // No children
                     }
-                    if (this.shared.isMobile) {
+                    else if (this.shared.isMobile) {
                         this.maxDepth = 1;  // Only one level
                     }
                     else {
@@ -205,12 +221,25 @@ export default {
 }
 
 .ec-doc-mobile {
+    .doc-content {
+        margin-left: 0;
+        background: #f2f2f2;
+        margin-bottom: 100px;
+    }
+    .page-description {
+        padding: 5px 10px;
+        background: #fff;
+        // box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    }
     h2 {
         font-size: 22px;
         font-weight: normal;
+        padding: 20px 10px;
+        border-bottom: none;
     }
     h3 {
         font-size: 20px;
+        padding-left: 10px;
     }
 }
 </style>
