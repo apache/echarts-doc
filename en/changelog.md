@@ -39,7 +39,7 @@
 
 + [Fix] Fix `label.formatter` of leaves in `tree` series not work. [#11556](https://github.com/apache/incubator-echarts/pull/11556) ([Deqing Li](https://github.com/apache/incubator-echarts/pull/11457))
 
-+ [Fix] Fix overflow symbol not display when `clip` is set `false` in `line` series. [#11552](https://github.com/apache/incubator-echarts/pull/11552)
++ [Fix] Fix overflow symbol not display when `clip` is set `false` in `line` series. [#11552](https://github.com/apache/incubator-echarts/pull/11552) ([SnailSword](https://github.com/SnailSword))
 
 ## v4.5.0
 <div class="time">2019-11-18</div>
@@ -85,7 +85,7 @@
 
 + [Fix] Fix data disappear when updating with `dataset` in `gauge` series. [#11373](https://github.com/apache/incubator-echarts/pull/11373) ([Wenli Zhang](https://github.com/Ovilia))
 
-+ [Fix] Fix gradient on bar leaked to label in SVG Renderer. ([Wenli Zhang](https://github.com/Ovilia))
++ [Fix] Fix gradient on bar leaked to label in SVG Renderer. ([Wenli Zhang](https://github.com/Ovilia)) 
 
 
 ## v4.4.0
