@@ -13,7 +13,8 @@
 
 ## Build and Run Locally
 
-Dev:
+### Dev
+
 ```shell
 # should put <https://github.com/ecomfe/echarts-examples> on the same folder with echarts-doc
 node watch.js --env dev
@@ -21,10 +22,14 @@ node watch.js --env dev
 node build.js --env dev
 
 # Run a static server (optional)
-node server.js
+cd ..
+http-server
 ```
 
-Release:
+Open [http://127.0.0.1:8080/echarts-doc/public/en/option.html#title](http://127.0.0.1:8080/echarts-doc/public/en/option.html#title) in a Web Browser.
+
+### Release
+
 Check `incubator-echarts-website/README.md` please.
 
 ## Tips about writing doc

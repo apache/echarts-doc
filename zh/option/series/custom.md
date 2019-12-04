@@ -11,9 +11,9 @@
 **例如，下面的例子使用 custom series 扩展出了 x-range 图：**
 ~[800x500](${galleryViewPath}custom-profile&reset=1&edit=1)
 
-**更多的例子参见：[custom examples](http://echarts.baidu.com/examples.html#chart-type-custom)**
+**更多的例子参见：[custom examples](examples.html#chart-type-custom)**
 
-**[这里是个教程](http://echarts.baidu.com/tutorial.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B3%BB%E5%88%97)**
+**[这里是个教程](tutorial.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B3%BB%E5%88%97)**
 
 <br>
 **开发者自定义渲染逻辑（renderItem 函数）**
