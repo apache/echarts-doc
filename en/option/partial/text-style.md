@@ -41,8 +41,8 @@
 
 ```js
 label: {
-    // Styles defined in 'rich' can be applied to some fregments
-    // of text by adding some markers to those fregment, like
+    // Styles defined in 'rich' can be applied to some fragments
+    // of text by adding some markers to those fragment, like
     // `{styleName|text content text content}`.
     // `'\n'` is the newline character.
     formatter: [
@@ -179,7 +179,7 @@ Options are:
 
 #${prefix} lineHeight(number)
 
-Line height of the text fregment.
+Line height of the text fragment.
 
 {{ use: partial-text-style-rich-inherit(
     name='lineHeight',
@@ -191,7 +191,7 @@ Line height of the text fregment.
 
 #${prefix} backgroundColor(string|Object)='transparent'
 
-Background color of the text fregment.
+Background color of the text fragment.
 
 Can be color string, like `'#123234'`, `'red'`, `'rgba(0,23,11,0.3)'`.
 
@@ -216,7 +216,7 @@ auto adapted by default.
 
 #${prefix} borderColor(string)='transparent'
 
-Border color of the text fregment.
+Border color of the text fragment.
 
 {{if: ${enableAutoColor} }}
 {{ use: partial-text-style-auto-color-desc }}
@@ -224,15 +224,15 @@ Border color of the text fregment.
 
 #${prefix} borderWidth(number)=0
 
-Border width of the text fregment.
+Border width of the text fragment.
 
 #${prefix} borderRadius(number)=0
 
-Border radius of the text fregment.
+Border radius of the text fragment.
 
 #${prefix} padding(number|Array)=0
 
-Padding of the text fregment, for example:
+Padding of the text fragment, for example:
 
 + `padding: [3, 4, 5, 6]`: represents padding of `[top, right, bottom, left]`.
 + `padding: 4`: represents `padding: [4, 4, 4, 4]`.
@@ -265,7 +265,7 @@ Width of the text block. It is the width of the text by default. In most cases, 
 
 Notice, `width` and `height` specifies the width and height of the content, without `padding`.
 
-`width` can also be percent string, like `'100%'`, which represents the percent of `contentWidth` (that is, the width without `padding`) of its container box. It is based on `contentWidth` because that each text fregment is layout based on the `content box`, where it makes no sense that calculating width based on `outerWith` in prectice.
+`width` can also be percent string, like `'100%'`, which represents the percent of `contentWidth` (that is, the width without `padding`) of its container box. It is based on `contentWidth` because that each text fragment is layout based on the `content box`, where it makes no sense that calculating width based on `outerWith` in prectice.
 
 
 Notice, `width` and `height` only work when `rich` specified.
