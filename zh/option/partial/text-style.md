@@ -77,7 +77,7 @@ label: {
 
 
 
-##${prefix} <user defined style name>(Object)
+##${prefix} <style_name>(Object)
 
 {{use:partial-text-style-base-item(
     prefix=${prefix} + '##',
