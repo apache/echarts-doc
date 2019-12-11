@@ -298,8 +298,8 @@ boundaryGap: ['20%', '20%']
 
 当设置成 `function` 形式时，可以根据计算得出的数据最大最小值设定坐标轴的最小值。如：
 
-```
-min: function(value) {
+```js
+min: function (value) {
     return value.min - 20;
 }
 ```
@@ -318,8 +318,8 @@ min: function(value) {
 
 当设置成 `function` 形式时，可以根据计算得出的数据最大最小值设定坐标轴的最小值。如：
 
-```
-max: function(value) {
+```js
+max: function (value) {
     return value.max - 20;
 }
 ```
