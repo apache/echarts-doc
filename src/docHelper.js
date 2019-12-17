@@ -210,6 +210,13 @@ export function searchAllAsync(queryString, onAdd) {
     return getOutlineAsync().then(() => {
         return new Promise(resolve => {
             let asyncCount = 0;
+
+            function decreaseAsyncCount() {
+                asyncCount--;
+                if (!asyncCount) {
+                    resolve();
+                }
+            }
             function searchInPage(pagePath) {
                 let obj = ensurePageDescStorage(pagePath);
 
@@ -219,17 +226,10 @@ export function searchAllAsync(queryString, onAdd) {
                 else {
                     asyncCount++;
                     obj.fetcher.then(() => {
-                        asyncCount--;
                         onAdd(obj.indexer.search(queryString));
-
-                        if (!asyncCount) {
-                            resolve();
-                        }
+                        decreaseAsyncCount();
                     }).catch(e => {
-                        asyncCount--;
-                        if (!asyncCount) {
-                            resolve();
-                        }
+                        decreaseAsyncCount();
                     });
                 }
             }

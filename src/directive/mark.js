@@ -1,5 +1,6 @@
 import Mark from 'mark.js';
 import Vue from 'vue';
+import debounce from 'lodash.debounce';
 
 function doMark(el, keywords) {
     let instance = el.__markInstance;
@@ -25,9 +26,13 @@ function doMark(el, keywords) {
 
 Vue.directive('mark', {
     inserted(el, binding) {
-        doMark(el, binding.value);
+        el.__doMarkDebounced = debounce(doMark, 500, {
+            trailing: true,
+            leading: false
+        });
+        el.__doMarkDebounced(el, binding.value);
     },
     update(el, binding) {
-        doMark(el, binding.value);
+        el.__doMarkDebounced(el, binding.value);
     }
 });

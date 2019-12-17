@@ -8,7 +8,7 @@
         ></el-input>
         <div class="result-summary">
             {{ $t('search.foundCountBrief').replace('${searchResultCount}', searchResultCount) }},
-            <span v-if="searching" class="searching">
+            <span v-if="!!searchToken" class="searching">
                 搜索中<i class="el-icon-loading"></i>
             </span>
             <span v-else>
@@ -30,19 +30,29 @@ import {
     searchAllAsync
 } from '../docHelper';
 import {store} from '../store';
+import {directTo} from '../route';
 import SearchResultItemCard from './SearchResultItemCard.vue';
 
 import throttle from 'lodash.throttle';
 
 function updateSearchResultsImmediate(searchQuery) {
+
+    console.log('Searching, ', searchQuery);
+
     this.searchResult = [];
     this.searchResultCount = 0;
     this.displayResultCount = 0;
 
     this.static.searchResult.cache = {};
 
-    this.searching = true;
+    this.searchToken = Date.now() + '';
+
+    let searchToken = this.searchToken;
     searchAllAsync(searchQuery, results => {
+        // Query changed.
+        if (searchToken !== this.searchToken) {
+            return;
+        }
         if (!this.noLimit && this.displayResultCount <= this.limitedResultCount) {
             for (let i = 0; i < results.length; i++) {
                 let groupKey = results[i].text;
@@ -65,8 +75,10 @@ function updateSearchResultsImmediate(searchQuery) {
         }
         this.searchResultCount += results.length;
     }).then(() => {
-        this.searching = false;
-    });
+        this.searchToken = '';
+    }).catch(() => {
+        this.searchToken = '';
+    })
 }
 export default {
 
@@ -83,7 +95,7 @@ export default {
             noLimit: false,
             limitedResultCount: 200,
 
-            searching: false,
+            searchToken: '',
 
             static: Object.freeze({
                 searchResult: {
@@ -109,6 +121,7 @@ export default {
     watch: {
         'shared.searchQuery'(newVal) {
             this.updateSearchResults(newVal);
+            directTo('/search/' + this.shared.searchQuery);
         }
     }
 }

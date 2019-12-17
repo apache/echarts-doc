@@ -76,7 +76,7 @@ export default {
 
     }
 
-    .item-description {
+    .item-description, h4 {
         mark {
             background-color: #fc0;
             border-radius: 3px;
