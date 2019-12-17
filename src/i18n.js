@@ -36,7 +36,7 @@ export default {
             displayCountBrief: '显示 ${displayResultCount} 条'
         },
         content: {
-            properties: '属性'
+            properties: '所有属性'
         }
     }
 };

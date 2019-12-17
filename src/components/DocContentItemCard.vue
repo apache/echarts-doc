@@ -48,8 +48,9 @@
         ></DocContentItemCard>
     </div>
     <PropertiesList
-        v-else-if="!isLeaf"
+        v-if="!expanded && !isLeaf"
         :nodeData="nodeData"
+        :descMap="descMap"
     ></PropertiesList>
 </div>
 </template>
@@ -378,6 +379,9 @@ $hierarchy-guider-color: #C592A0;
         background-color: #e6a23c;
     }
 
+    .properties-list-panel {
+        max-width: 700px;
+    }
 
     .children {
         padding: $children-padding;

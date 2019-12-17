@@ -155,7 +155,7 @@ function createIndexer(map, pagePath) {
             for (let k = 0; k < list.length; k++) {
                 let searched = true;
                 for (let i = 0; i < tokens.length; i++) {
-                    if (!tokens[i].test(list[k].text)) {
+                    if (!tokens[i].test(list[k].text) && !tokens[i].test(list[k].path)) {
                         searched = false;
                         break;
                     }

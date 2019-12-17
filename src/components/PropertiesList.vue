@@ -5,7 +5,20 @@
             {
             <span :key="child.path"
                 v-for="(child, index) in displayedProperties">
-                <a :href="'#' + child.path">{{child.path.split('.').pop()}}</a>
+                <el-popover
+                    :title="getName(child.path)"
+                    :close-delay="400"
+                    :open-delay="200"
+                    placement="top"
+                    trigger="hover"
+                    v-if="!shared.isMobile"
+                >
+                    <div class="property-popup-desc" v-html="getDesc(child.path)" v-highlight></div>
+                    <a :href="'#' + child.path" slot="reference">{{getName(child.path)}}</a>
+                </el-popover>
+                <span v-else>
+                    <a :href="'#' + child.path" slot="reference">{{getName(child.path)}}</a>
+                </span>
                 <span v-if="index < displayedProperties.length - 1">, </span>
             </span>
             }
@@ -14,18 +27,44 @@
 </template>
 
 <script>
+import {store} from '../store';
 export default {
-    props: ['nodeData'],
+    props: ['nodeData', 'descMap'],
+
+    data() {
+        return {
+            shared: store
+        }
+    },
 
     computed: {
         displayedProperties() {
             return this.nodeData.children;
+        }
+    },
+
+    methods: {
+        getDesc(path) {
+            let parts = path.split('.');
+            if (parts.length > 1) {
+                // Remove the top page path.
+                // For example: `series-bar.itemStyle` will be `itemStyle`
+                parts = parts.slice(1);
+            }
+            return this.descMap[parts.join('.')];
+        },
+
+        getName(path) {
+            return path.split('.').pop()
         }
     }
 }
 </script>
 
 <style lang="scss">
+
+@import "../style/mixin.scss";
+
 .properties-list-panel {
     h5 {
         font-weight: normal;
@@ -44,4 +83,33 @@ export default {
         }
     }
 }
+.property-popup-desc {
+    max-height: 300px;
+    overflow-y: auto;
+
+    @include description-html-formatter;
+
+    pre {
+        font-size: 12px
+    }
+    p {
+        font-size: 12px;
+    }
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+    ul li {
+        font-size: 12px;
+        margin: 5px 20px;
+        list-style: disc;
+    }
+    pre {
+        padding: 5px;
+    }
+    .codespan {
+        font-size: 12px
+    }
+}
+
 </style>

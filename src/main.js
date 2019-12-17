@@ -12,7 +12,8 @@ import {
     Autocomplete,
     Input,
     Tooltip,
-    Drawer
+    Drawer,
+    Popover
 } from 'element-ui';
 import {preload} from './docHelper';
 import 'element-ui/lib/theme-chalk/index.css';
@@ -35,6 +36,7 @@ Vue.use(Input);
 Vue.use(Tooltip);
 Vue.use(VueI18n);
 Vue.use(Drawer);
+Vue.use(Popover);
 
 /**
  *

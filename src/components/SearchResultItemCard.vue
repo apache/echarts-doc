@@ -1,6 +1,6 @@
 <template>
 <div :class="{'doc-search-result-item-card': true, 'needs-show-more' : needsShowMoreDesc}">
-    <h4>
+    <h4 v-mark="searchQuery">
         <a class="path" :href="'#' + itemData.path">{{itemData.path}}</a>
     </h4>
     <div v-if="itemData.similarPaths.length > 0" class="other-result">

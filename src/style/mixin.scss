@@ -13,8 +13,11 @@
     blockquote {
         font-size: 12px;
         color: #999;
+        background-color: #fdfdfd;
+        border-left: 2px solid #ddd;
+        margin-left: 0px;
 
-        margin: 0 10px;
+        padding: 5px 10px;
 
         p {
             margin: 0;
