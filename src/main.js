@@ -54,6 +54,7 @@ export function init(el, option) {
         initRoute();
 
         store.docType = option.docType;
+        store.locale = option.locale;
 
         if (typeof el === 'string') {
             el = document.querySelector(el);

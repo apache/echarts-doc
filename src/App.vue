@@ -1,5 +1,5 @@
 <template>
-    <el-container :class="['ec-doc',  'ec-doc-' + shared.docType]">
+    <el-container :class="['ec-doc',  'ec-doc-' + shared.docType, 'ec-doc-locale-' + shared.locale]">
         <el-aside width="300px" style="height:100%">
             <div class="doc-type-nav">
                 <a
@@ -14,6 +14,10 @@
                     :href="'tutorial.html'"
                     :class="{'selected': shared.docType === 'tutorial'}"
                 >{{$t('nav.tutorial')}}</a>
+                <a
+                    :href="'option-gl.html'"
+                    :class="{'selected': shared.docType === 'option-gl'}"
+                >{{$t('nav.optionGL')}}</a>
             </div>
             <Search></Search>
             <DocNav></DocNav>
@@ -65,7 +69,7 @@ export default {
 
 <style lang="scss">
 
-@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+// @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap');
 
 .ec-doc {
@@ -102,7 +106,9 @@ export default {
             a {
                 display: inline-block;
                 line-height: 35px;
-                width: 30%;
+                // width: 30%;
+                width: 20%;
+
                 text-align: center;
                 box-sizing: border-box;
                 text-decoration: none;
@@ -134,6 +140,14 @@ export default {
             margin: 0 auto;
             text-align: left;
             min-width: 100%;
+        }
+    }
+}
+
+.ec-doc.ec-doc-locale-zh {
+    .doc-type-nav {
+        a {
+            width: 20%;
         }
     }
 }

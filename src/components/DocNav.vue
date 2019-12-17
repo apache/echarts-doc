@@ -122,6 +122,7 @@ export default {
     computed: {
         isOption() {
             return this.shared.docType === 'option'
+                || this.shared.docType === 'option-gl';
         }
     },
 

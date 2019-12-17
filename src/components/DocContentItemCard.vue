@@ -191,7 +191,8 @@ $hierarchy-guider-color: #C592A0;
         margin: 0;
         padding: 0;
 
-        font-family: Montserrat, sans-serif;
+        // font-family: Montserrat, sans-serif;
+        font-family: Monaco, 'Source Code Pro', monospace;
 
         &>* {
             vertical-align: bottom;
@@ -224,8 +225,8 @@ $hierarchy-guider-color: #C592A0;
         }
 
         .path-parent {
-            font-size: 13px;
-            padding-right: 20px;
+            font-size: 12px;
+            // padding-right: 20px;
             padding: 0;
             font-weight: normal;
 
@@ -236,16 +237,19 @@ $hierarchy-guider-color: #C592A0;
 
             a {
                 color: #C592A0;
+                margin: 0;
             }
         }
         .path-base {
-            font-size: 16px;
-            padding-left: 5px;
+            font-size: 14px;
+            // padding-left: 5px;
             padding: 0;
+            margin-left: -4px;
             font-weight: normal;
 
             a {
                 color: #B03A5B;
+                margin: 0;
             }
         }
 
@@ -271,31 +275,18 @@ $hierarchy-guider-color: #C592A0;
         &>h4 {
             // opacity: 1;
             .anchor {
-                font-size: 24px;
-            }
-            .path-parent {
-                font-size: 18px;
-            }
-            .path-base {
-                font-size: 24px;
-            }
-        }
-    }
-    &.level-2 {
-        &>h4 {
-            .anchor {
-                font-size: 20px;
+                font-size: 22px;
             }
             .path-parent {
                 font-size: 16px;
             }
             .path-base {
-                font-size: 20px;
+                font-size: 22px;
             }
         }
     }
-    &.level-3 {
-       &>h4 {
+    &.level-2 {
+        &>h4 {
             .anchor {
                 font-size: 18px;
             }
@@ -304,6 +295,19 @@ $hierarchy-guider-color: #C592A0;
             }
             .path-base {
                 font-size: 18px;
+            }
+        }
+    }
+    &.level-3 {
+       &>h4 {
+            .anchor {
+                font-size: 16px;
+            }
+            .path-parent {
+                font-size: 13px;
+            }
+            .path-base {
+                font-size: 16px;
             }
         }
     }

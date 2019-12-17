@@ -4,6 +4,7 @@ export default {
             option: 'Option',
             API: 'API',
             tutorial: 'Tutorial',
+            optionGL: 'GL',
 
             collapseAll: 'Collapse All'
         },
@@ -24,6 +25,7 @@ export default {
             option: '配置项',
             API: 'API',
             tutorial: '教程',
+            optionGL: 'GL配置',
 
             collapseAll: '收起所有'
         },

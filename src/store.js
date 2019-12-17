@@ -11,6 +11,8 @@ export const store = {
     searchQuery: '',
 
     isMobile: false,
+
+    locale: 'zh'
 };
 
 export function getPagePath() {
