@@ -51,9 +51,7 @@ for (let key in config) {
 
 function run() {
     languages.forEach(function (language) {
-        if (!fs.existsSync('public/' + language + '/documents/' + language)) {
-            fs.mkdirSync('public/' + language + '/documents/' + language);
-        }
+        fse.ensureDirSync(`public/${language}/documents`);
         md2json(
             {
                 path: language + '/option/**/*.md',
@@ -109,7 +107,7 @@ function run() {
         );
 
         fse.outputFileSync(
-            'public/' + language + '/documents/' + language + '/changelog.html',
+            'public/' + language + '/documents/' + '/changelog.html',
             marked(fs.readFileSync(language + '/changelog.md', 'utf-8')),
             'utf-8'
         );
@@ -131,19 +129,19 @@ function run() {
     console.log('Please visit:');
     console.log('echarts-doc/public/zh/');
     console.log('echarts-doc/public/en/');
-    console.log();
 
     fse.outputFileSync(
-        'public/en/documents/en/coding-standard.html',
+        'public/en/documents/coding-standard.html',
         marked(fs.readFileSync('en/coding-standard.md', 'utf-8')),
         'utf-8'
     );
 
-    copydir.sync('./asset', './public/documents/asset');
+    copydir.sync('./asset', './public/en/documents/asset');
+    copydir.sync('./asset', './public/zh/documents/asset');
 }
 
 function writeSingleSchema(schema, language, docName, format) {
-    let path = `public/documents/${language}/${docName}.json`;
+    let path = `public/${language}/documents/${docName}.json`;
     console.log('output: ' + path);
     fse.outputFileSync(
         path,
@@ -156,7 +154,7 @@ function writeSingleSchemaPartioned(schema, language, docName, format) {
     const {outline, descriptions} = extractDesc(schema, docName);
 
     fse.outputFile(
-        `public/documents/${language}/${docName}-parts/${docName}-outline.json`,
+        `public/${language}/documents/${docName}-parts/${docName}-outline.json`,
         format ? JSON.stringify(outline, null, 2) : JSON.stringify(outline),
         'utf-8'
     );
@@ -164,7 +162,7 @@ function writeSingleSchemaPartioned(schema, language, docName, format) {
     for (let partKey in descriptions) {
         let partDescriptions = descriptions[partKey];
         fse.outputFile(
-            `public/documents/${language}/${docName}-parts/${partKey}.json`,
+            `public/${language}/documents/${docName}-parts/${partKey}.json`,
             // format ? JSON.stringify(partDescriptions, null, 2) : JSON.stringify(partDescriptions),
             JSON.stringify(partDescriptions, null, 2),
             'utf-8'

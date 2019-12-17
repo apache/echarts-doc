@@ -275,6 +275,9 @@ export function getOutlineNode(path) {
 }
 
 export function getDefaultPage(wrongPath) {
+    if (!wrongPath) {
+        return Object.keys(pageOutlines)[0];
+    }
     let firstKey;
     for (let key in pageOutlines) {
         if (!firstKey) {

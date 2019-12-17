@@ -104,6 +104,9 @@ export default {
             }
             this.updateCurrentPath(this.shared.currentPath, true);
         }
+        else {
+            directTo(getDefaultPage());
+        }
     },
 
     methods: {

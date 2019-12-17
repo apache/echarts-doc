@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Apache ECharts (incubating) 文档 - GL 配置项</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../lib/pace.min.js"></script>
+</head>
+<body>
+    <div id="header">
+        <h1></h1>
+        <a class="lang" href="../zh/option.html">EN</a>
+    </div>
+    <script>
+        document.querySelector('#header h1').innerHTML = document.title;
+        document.querySelector('#header .lang').addEventListener('click', e => {
+            e.preventDefault();
+            window.location.href = '../en/' + location.pathname.split('/').pop() + location.search + location.hash;
+        });
+    </script>
+
+    <div id="app"></div>
+    <script src="../js/doc-bundle.js"></script>
+    <script>
+        echartsDoc.init('#app', {
+            baseUrl: 'documents/option-gl-parts',
+            docType: 'option-gl',
+            locale: 'zh'
+        });
+    </script>
+</body>
+</html>
