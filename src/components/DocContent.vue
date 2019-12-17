@@ -33,10 +33,12 @@ import {
     getPageOutlineAsync,
     getOutlineAsync,
     convertPathToId,
-    getOutlineNode
+    getOutlineNode,
+    getDefaultPage
 } from '../docHelper';
-import DocContentItemCard from './DocContentItemCard.vue'
 import {store, getPagePath} from '../store';
+import {directTo} from '../route';
+import DocContentItemCard from './DocContentItemCard.vue'
 import VueScrollTo from 'vue-scrollto';
 import Vue from 'vue';
 import LazyLoad from 'vanilla-lazyload';
@@ -95,6 +97,11 @@ export default {
         });
 
         if (this.shared.currentPath) {
+            if (!getOutlineNode(this.shared.currentPath)) {
+                // Redirect to default node
+                directTo(getDefaultPage(this.shared.currentPath));
+                return;
+            }
             this.updateCurrentPath(this.shared.currentPath, true);
         }
     },

@@ -273,3 +273,17 @@ export function searchOutlineAsync(queryString, numberLimit = Infinity) {
 export function getOutlineNode(path) {
     return outlineNodesMap[path];
 }
+
+export function getDefaultPage(wrongPath) {
+    let firstKey;
+    for (let key in pageOutlines) {
+        if (!firstKey) {
+            firstKey = key;
+        }
+        // Find the page
+        if (wrongPath.indexOf(key) >= 0) {
+            return key;
+        }
+    }
+    return firstKey;
+}
