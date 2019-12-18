@@ -1,5 +1,50 @@
-<h2 id="v4-5-0">v4.5.0</h2>
+<h2 id="v4-6-0">v4.6.0</h2>
 <div class="time"></div>
+
+<ul>
+<li><p>[Feature] Optimize label layout on pie. Add new <code>alignTo</code> option for aligning the labels. Check more detail in PR <a href="https://github.com/apache/incubator-echarts/pull/11715">#11715</a> (<a href="https://github.com/Ovilia">Wenli Zhang</a>)</p>
+</li>
+<li><p>[Feature] Add <code>minorTick</code>, <code>minorSplitLine</code> on axis. Check more detail in the PR <a href="https://github.com/apache/incubator-echarts/pull/11705">#11705</a> (<a href="https://github.com/pissang">Yi Shen</a>)</p>
+</li>
+<li><p>[Feature] Added more themes. <a href="https://github.com/apache/incubator-echarts/pull/11566">#11566</a> (<a href="https://github.com/WebCodePro719">WebCodePro719</a>)</p>
+</li>
+<li><p>[Enhance] Chart will keep the dragging status when mouse is out of the area. Which will provide a much better dragging experience. <a href="https://github.com/apache/incubator-echarts/pull/11710">#11710</a> (<a href="https://github.com/100pah">Shuang Su</a>)</p>
+</li>
+<li><p>[Enhance] Legend will display colors from <code>visualMap</code> component in <code>pie</code>/<code>funnel</code>/<code>radar</code> series. <a href="https://github.com/apache/incubator-echarts/pull/11737">#11737</a> (<a href="https://github.com/pissang">Yi Shen</a>)</p>
+</li>
+<li><p>[Enhance] Enhance dataset default encode guess strategy. <a href="https://github.com/apache/incubator-echarts/pull/11746">#11746</a> (<a href="https://github.com/100pah">Shuang Su</a>)</p>
+</li>
+<li><p>[Enhance] Stack icon on toolbox now is a toggle button. Removed tiled icon. <a href="https://github.com/apache/incubator-echarts/pull/11367">#11367</a> (<a href="https://github.com/alex2wong">alex2wong</a>)</p>
+</li>
+<li><p>[Enhance] Add a delay to avoid flashing when hovering on nodes and edges of <code>graph</code> and <code>sankey</code> series. <a href="https://github.com/apache/incubator-echarts/pull/11572">11572</a> (<a href="https://github.com/apache/incubator-echarts/pull/11457">Deqing Li</a>)</p>
+</li>
+<li><p>[Fix] Fix bar width calculation with <code>barMaxWidth</code> constraint and negative <code>barGap</code>. <a href="https://github.com/apache/incubator-echarts/pull/11713">#11713</a> (<a href="https://github.com/pissang">Yi Shen</a>)</p>
+</li>
+<li><p>[Fix] Fix seams in <code>heatmap</code> series. Which may cause unexpected gray lines. <a href="https://github.com/apache/incubator-echarts/pull/11689">#11689</a> (<a href="https://github.com/pissang">Yi Shen</a>)</p>
+</li>
+<li><p>[Fix] Fix unexpected highlight state after inverse selection in <code>legend</code>. <a href="https://github.com/apache/incubator-echarts/pull/11547">#11547</a> (<a href="https://github.com/SnailSword">SnailSword</a>)</p>
+</li>
+<li><p>[Fix] Fix tooltip may highlight the point out of chart in <code>line</code> series. <a href="https://github.com/apache/incubator-echarts/pull/11548">#11548</a> (<a href="https://github.com/SnailSword">SnailSword</a>)</p>
+</li>
+<li><p>[Fix] Fix label may not disappear on SVG renderer. <a href="https://github.com/ecomfe/zrender/pull/535">ecomfe/zrender#535</a> (<a href="https://github.com/Ovilia">Wenli Zhang</a>)</p>
+</li>
+<li><p>[Fix] Not display bar on polar when value is <code>0</code>. <a href="https://github.com/apache/incubator-echarts/issues/11452">#11452</a> (<a href="https://github.com/foolzhang">foolzhang</a>)</p>
+</li>
+<li><p>[Fix] Fix logic issue in global <code>textStyle</code>. <a href="https://github.com/apache/incubator-echarts/pull/11653">#11653</a> (<a href="https://github.com/code4fan">code4fan</a>)</p>
+</li>
+<li><p>[Fix] Fix label color of <code>axisPointer</code> in dark theme. <a href="https://github.com/apache/incubator-echarts/pull/11656">#11656</a> (<a href="https://github.com/asiOvOtus">asiOvOtus</a>)</p>
+</li>
+<li><p>[Fix] Fix <code>markPoint</code> out of the chart may still display in the wrong position. <a href="https://github.com/apache/incubator-echarts/pull/11484">#11484</a> (<a href="https://github.com/susiwen8">susiwen8</a>)</p>
+</li>
+<li><p>[Fix] Fix tooltip shows multiple values around both sides of the pointer. <a href="https://github.com/apache/incubator-echarts/pull/11648">#11648</a> (<a href="https://github.com/100pah">Shuang Su</a>)</p>
+</li>
+<li><p>[Fix] Fix <code>label.formatter</code> of leaves in <code>tree</code> series not work. <a href="https://github.com/apache/incubator-echarts/pull/11556">#11556</a> (<a href="https://github.com/apache/incubator-echarts/pull/11457">Deqing Li</a>)</p>
+</li>
+<li><p>[Fix] Fix overflow symbol not display when <code>clip</code> is set <code>false</code> in <code>line</code> series. <a href="https://github.com/apache/incubator-echarts/pull/11552">#11552</a> (<a href="https://github.com/SnailSword">SnailSword</a>)</p>
+</li>
+</ul>
+<h2 id="v4-5-0">v4.5.0</h2>
+<div class="time">2019-11-18</div>
 
 <ul>
 <li><p>[Feature] Add <code>roundCap</code> option for round corners on <code>bar</code> series width <code>polar</code> coordinate system. <a href="https://github.com/apache/incubator-echarts/pull/11393">#11393</a> (<a href="https://github.com/Ovilia">Wenli Zhang</a>)</p>
@@ -32,7 +77,7 @@
 </li>
 <li><p>[Fix] Fix changing from <code>&#39;scroll&#39;</code> type to <code>&#39;plain&#39;</code> type not work bug in legend. <a href="https://github.com/apache/incubator-echarts/pull/11504">#11504</a> (<a href="https://github.com/yufeng04">Feng Yu</a>)</p>
 </li>
-<li><p>[Fix] Optimize layout of <code>bar</code> series on <code>time</code> axis and <code>value</code> axis.<a href="https://github.com/apache/incubator-echarts/pull/11479">#11479</a> (<a href="https://github.com/Ovilia">Wenli Zhang</a>)</p>
+<li><p>[Fix] Optimize layout and bar width of <code>bar</code> series on <code>time</code> axis and <code>value</code> axis. Make the <code>barMaxWidth</code> has higher priority than <code>barWidth</code>. Add <code>barMinWidth</code> for <code>bar</code> series on <code>time</code> axis and <code>value</code> axis. <a href="https://github.com/apache/incubator-echarts/pull/11479">#11479</a> (<a href="https://github.com/Ovilia">Wenli Zhang</a>, <a href="https://github.com/100pah">Shuang Su</a>)</p>
 </li>
 <li><p>[Fix] Fix title of toolbox icon may be cut by the container. <a href="https://github.com/apache/incubator-echarts/pull/11456">#11456</a> (<a href="https://github.com/Ovilia">Wenli Zhang</a>)</p>
 </li>
@@ -44,11 +89,11 @@
 </li>
 <li><p>[Fix] Fix data disappear when updating with <code>dataset</code> in <code>gauge</code> series. <a href="https://github.com/apache/incubator-echarts/pull/11373">#11373</a> (<a href="https://github.com/Ovilia">Wenli Zhang</a>)</p>
 </li>
-<li><p>[Fix] Fix gradient on bar leaked to label in SVG Renderer. (<a href="https://github.com/Ovilia">Wenli Zhang</a>)</p>
+<li><p>[Fix] Fix gradient on bar leaked to label in SVG Renderer. (<a href="https://github.com/Ovilia">Wenli Zhang</a>) </p>
 </li>
 </ul>
 <h2 id="v4-4-0">v4.4.0</h2>
-<div class="time">2019-09-29</div>
+<div class="time">2019-10-15</div>
 
 <ul>
 <li><p>[Feature] Add option <code>clip</code> for <code>line</code>, <code>bar</code>, <code>lines</code>, <code>scatter</code> and <code>custom series</code>,
@@ -89,7 +134,7 @@ Fix #7534, #7672, #7732, #7872, #8069, #8520, #8935, #8955, #9200, #9237, #9847,
 </li>
 </ul>
 <h2 id="v4-3-0">v4.3.0</h2>
-<div class="time">2019-08-27</div>
+<div class="time">2019-09-16</div>
 
 <ul>
 <li><p>[Feature] Sankey diagram enhancement:

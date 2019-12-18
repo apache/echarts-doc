@@ -85,7 +85,9 @@ export default {
 }
 .property-popup-desc {
     max-height: 300px;
+    max-width: 500px;
     overflow-y: auto;
+    overflow-x: auto;
 
     @include description-html-formatter;
 

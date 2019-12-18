@@ -16,7 +16,7 @@ import {
     Popover
 } from 'element-ui';
 import {preload} from './docHelper';
-import 'element-ui/lib/theme-chalk/index.css';
+// import 'element-ui/lib/theme-chalk/index.css';
 import './directive/highlight';
 import './directive/mark';
 
@@ -45,12 +45,13 @@ Vue.use(Popover);
  * @param {string} option.baseUrl
  * @param {string} option.docType
  * @param {string} option.locale
+ * @param {string} option.version
  */
 export function init(el, option) {
 
     initResponsive();
 
-    preload(option.baseUrl, option.docType).then(() => {
+    preload(option.baseUrl, option.docType, option.version).then(() => {
         initRoute();
 
         store.docType = option.docType;

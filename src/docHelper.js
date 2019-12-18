@@ -7,6 +7,7 @@ import {fetch} from 'whatwg-fetch';
 
 let baseUrl;
 let rootName;
+let docVersion;
 
 // Cached data.
 let outlineFetcher;
@@ -92,11 +93,12 @@ function processOutlines(json) {
 /**
  * Preload doc json
  */
-export function preload(_baseUrl, _rootName) {
+export function preload(_baseUrl, _rootName, _docVersion) {
     baseUrl = _baseUrl;
     rootName = _rootName;
+    docVersion = _docVersion || '1';
 
-    let outlineUrl = `${baseUrl}/${rootName}-outline.json`;
+    let outlineUrl = `${baseUrl}/${rootName}-outline.json?${docVersion}`;
 
     if (!outlineFetcher) {
         outlineFetcher = fetch(outlineUrl)
@@ -123,7 +125,7 @@ export function getPageOutlineAsync(targetPath) {
 export function getRootPageTotalDescAsync() {
     let partionKey = rootName;
     if (!descStorage[partionKey]) {
-        let url = `${baseUrl}/${partionKey}.json`;
+        let url = `${baseUrl}/${partionKey}.json?${docVersion}`;
         descStorage[partionKey] = {
             fetcher: fetch(url).then(response => response.json())
         };
@@ -182,7 +184,7 @@ function ensurePageDescStorage(targetPath) {
         : rootName + '.' + pagePath;
 
     if (!descStorage[partionKey]) {
-        let url = `${baseUrl}/${partionKey}.json`;
+        let url = `${baseUrl}/${partionKey}.json?${docVersion}`;
         let fetcher = fetch(url).then(response => response.json());
         descStorage[partionKey] = {
             fetcher
