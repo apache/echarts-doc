@@ -26,17 +26,17 @@ Before v3.7, the style options was only able to applied to the whole label text 
 Since v3.7, rich text has been supported:
 
 + Box styles (background, border, shadow, etc.), rotation, position of a text block can be specified.
-+ Styles (color, font, width/height, background, shadow, etc.) and alignment can be customzied on fregments of text.
++ Styles (color, font, width/height, background, shadow, etc.) and alignment can be customzied on fragments of text.
 + Image can be used in text as icon or background.
 + Combine these configurations, some special effects can be made, such as simple table, horizontal rule (hr).
 
 
 At the begining, the meanings of two terms that will be used below should be clarified:
 + Text Block: The whole block of label text.
-+ Text Fregment: Some piece of text in a text block.
++ Text fragment: Some piece of text in a text block.
 
 For example:
-~[340x240](${galleryViewPath}doc-example/text-block-fregment&edit=1&reset=1)
+~[340x240](${galleryViewPath}doc-example/text-block-fragment&edit=1&reset=1)
 
 
 <br>
@@ -54,26 +54,26 @@ echarts provides plenty of text options, including:
 + Fill of text: `color`.
 + Stroke of text: `textBorderColor`, `textBorderWidth`.
 + Shadow of text: `textShadowColor`, `textShadowBlur`, `textShadowOffsetX`, `textShadowOffsetY`.
-+ Box size of text block or text fregment: `lineHeight`, `width`, `height`, `padding`.
-+ Alignment of text block or text fregment: `align`, `verticalAlign`.
-+ Border, background (color or image) of text block or text fregment: `backgroundColor`, `borderColor`, `borderWidth`, `borderRadius`.
-+ Shadow of text block or text fregment: `shadowColor`, `shadowBlur`, `shadowOffsetX`, `shadowOffsetY`.
++ Box size of text block or text fragment: `lineHeight`, `width`, `height`, `padding`.
++ Alignment of text block or text fragment: `align`, `verticalAlign`.
++ Border, background (color or image) of text block or text fragment: `backgroundColor`, `borderColor`, `borderWidth`, `borderRadius`.
++ Shadow of text block or text fragment: `shadowColor`, `shadowBlur`, `shadowOffsetX`, `shadowOffsetY`.
 + Position and rotation of text block: `position`, `distance`, `rotate`.
 
 
-User can defined styles for text fregment in `rich` property. For example, [series-bar.label.rich](option.html#series-bar.label.rich)
+User can defined styles for text fragment in `rich` property. For example, [series-bar.label.rich](option.html#series-bar.label.rich)
 
 For example:
 
 ```js
 label: {
-    // Styles defined in 'rich' can be applied to some fregments
-    // of text by adding some markers to those fregment, like
+    // Styles defined in 'rich' can be applied to some fragments
+    // of text by adding some markers to those fragment, like
     // `{styleName|text content text content}`.
     // `'\n'` is the newline character.
     formatter: [
-        '{a|Style "a" is applied to this fregment}'
-        '{b|Style "b" is applied to this fregment}This fregment use default style{x|use style "x"}'
+        '{a|Style "a" is applied to this fragment}'
+        '{b|Style "b" is applied to this fragment}This fragment use default style{x|use style "x"}'
     ].join('\n'),
 
     // Styles for the whole text block are defined here:
@@ -85,7 +85,7 @@ label: {
     padding: [3, 10, 10, 5],
     lineHeight: 20,
 
-    // Styles for text fregments are defined here:
+    // Styles for text fragments are defined here:
     rich: {
         a: {
             color: 'red',
@@ -126,7 +126,7 @@ Fill color and stroke color can be set to text: `color`, `textBorderColor`, `tex
 
 Border style and background style can be set to text block: `borderColor`, `borderWidth`, `backgroundColor`, `padding`.
 
-Border style and background style can be set to text fregment too: `borderColor`, `borderWidth`, `backgroundColor`, `padding`.
+Border style and background style can be set to text fragment too: `borderColor`, `borderWidth`, `backgroundColor`, `padding`.
 
 For example:
 ~[700x300](${galleryViewPath}doc-example/text-options&edit=1&reset=1)
@@ -172,36 +172,36 @@ Notice, `align` and `verticalAlign` are applied firstly, then rotate.
 
 <br>
 
-**Layout and Alignment of Text Fregment**
+**Layout and Alignment of Text fragment**
 
-To understand the layout rule, every text fregment can be imagined as a `inline-block` dom element in CSS.
+To understand the layout rule, every text fragment can be imagined as a `inline-block` dom element in CSS.
 
-`content box size` of a text fregment is determined by its font size by default. It can also be specified directly by `width` and `height`, although they are rarely set. `border box size` of a text fregment is calculated by adding the `border box size` and `padding`.
+`content box size` of a text fragment is determined by its font size by default. It can also be specified directly by `width` and `height`, although they are rarely set. `border box size` of a text fragment is calculated by adding the `border box size` and `padding`.
 
 Only `'\n'` is the newline character, which breaks a line.
 
-Multiple text fregment exist in a single line. The height of a line is determined by the biggest `lineHeight` of text fregments. `lineHeight` of a text fregment can be specified in `rich`, or in the parent level of `rich`, otherwise using `box size` of the text fregment.
+Multiple text fragment exist in a single line. The height of a line is determined by the biggest `lineHeight` of text fragments. `lineHeight` of a text fragment can be specified in `rich`, or in the parent level of `rich`, otherwise using `box size` of the text fragment.
 
-Having `lineHeight` determined, the vertical position of text fregments can be determined by `verticalAlign` (there is a little different from the rule in CSS):
+Having `lineHeight` determined, the vertical position of text fragments can be determined by `verticalAlign` (there is a little different from the rule in CSS):
 
-+ `'bottom'`: The bottom edge of the text fregment sticks to the bottom edge of the line.
-+ `'top'`: The top edge of the text fregment sticks to the top edge of the line.
++ `'bottom'`: The bottom edge of the text fragment sticks to the bottom edge of the line.
++ `'top'`: The top edge of the text fragment sticks to the top edge of the line.
 + `'middle'`: In the middle of the line.
 
-The width of a text block can be specified by `width`, otherwise, by the longest line. Having the width determined, text fregment can be placed in each line, where the horizontal position of text fregments can be determined by its `align`.
+The width of a text block can be specified by `width`, otherwise, by the longest line. Having the width determined, text fragment can be placed in each line, where the horizontal position of text fragments can be determined by its `align`.
 
-+ Firstly, place text fregments whose `align` is `'left'` from left to right continuously.
-+ Secondly, place text fregments whose `align` is `'right'` from right to left continuously.
-+ Finally, the text fregments remained will be sticked and placed in the center of the rest of space.
++ Firstly, place text fragments whose `align` is `'left'` from left to right continuously.
++ Secondly, place text fragments whose `align` is `'right'` from right to left continuously.
++ Finally, the text fragments remained will be sticked and placed in the center of the rest of space.
 
-The position of text in a text fregment:
-+ If `align` is `'center'`, text aligns at the center of the text fregment box.
-+ If `align` is `'left'`, text aligns at the left of the text fregment box.
-+ If `align` is `'right'`, text aligns at the right of the text fregment box.
+The position of text in a text fragment:
++ If `align` is `'center'`, text aligns at the center of the text fragment box.
++ If `align` is `'left'`, text aligns at the left of the text fragment box.
++ If `align` is `'right'`, text aligns at the right of the text fragment box.
 
 For example:
 
-~[800x220](${galleryViewPath}doc-example/text-fregment-align&edit=1&reset=1)
+~[800x220](${galleryViewPath}doc-example/text-fragment-align&edit=1&reset=1)
 
 
 
@@ -283,7 +283,7 @@ rich: {
 }
 ```
 
-Simple table can be implemented by specify the same width to text fregments that are in the same column of different lines. See the [example](${galleryViewPath}pie-rich-text&edit=1&reset=1) at the mentioned above.
+Simple table can be implemented by specify the same width to text fragments that are in the same column of different lines. See the [example](${galleryViewPath}pie-rich-text&edit=1&reset=1) at the mentioned above.
 
 
 

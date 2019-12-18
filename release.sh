@@ -32,6 +32,9 @@ cd ${currPath}
 cp -R ${basepath}/public/documents/zh/ ${basepath}/../echarts-www/documents/zh/
 cp -R ${basepath}/public/documents/en/ ${basepath}/../echarts-www/documents/en/
 
+cp ${basepath}/public/en/documents/en/changelog.html ${basepath}/../echarts-www/documents/en/
+cp ${basepath}/public/zh/documents/zh/changelog.html ${basepath}/../echarts-www/documents/zh/
+
 # Copy asset.
 # Do not rm, keep option3.json
 cp -R ${basepath}/asset/ ${basepath}/../echarts-www/documents/asset/

@@ -259,8 +259,17 @@ renderItem 函数的第二个参数。
 ```
 @param {Object} opt
 @param {number} opt.count 每个簇有多少个 bar。
-@param {number} [opt.barWidth] bar 宽度。
-@param {number} [opt.barMaxWidth] bar 最大宽度。
+@param {number|string} [opt.barWidth] bar 宽度。
+        可以是绝对值例如 `40` 或者百分数例如 `'60%'`。
+        百分数基于自动计算出的每一类目的宽度。
+@param {number|string} [opt.barMaxWidth] bar 最大宽度。
+        可以是绝对值例如 `40` 或者百分数例如 `'60%'`。
+        百分数基于自动计算出的每一类目的宽度。
+        比 `opt.barWidth` 优先级高。
+@param {number|string} [opt.barMinWidth] bar 最小宽度。
+        可以是绝对值例如 `40` 或者百分数例如 `'60%'`。
+        百分数基于自动计算出的每一类目的宽度。
+        比 `opt.barWidth` 优先级高。
 @param {number} [opt.barGap] 每个簇的 bar 之间的宽度。
 @param {number} [opt.barCategoryGap] 不同簇间的宽度。
 @return {Array.<Object>} [{

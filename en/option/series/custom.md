@@ -267,8 +267,17 @@ See a [sample](${galleryEditorPath}custom-bar-trend).
 ```
 @param {Object} opt
 @param {number} opt.count How many bars in each group.
-@param {number} [opt.barWidth] Width of a bar.
-@param {number} [opt.barMaxWidth] Max width of a bar.
+@param {number|string} [opt.barWidth] Width of a bar.
+        Can be an absolute value like `40` or a percent value like `'60%'`.
+        The percent is based on the calculated category width.
+@param {number|string} [opt.barMaxWidth] Max width of a bar.
+        Can be an absolute value like `40` or a percent value like `'60%'`.
+        The percent is based on the calculated category width.
+        Has higer priority than `opt.barWidth`.
+@param {number|string} [opt.barMinWidth] Min width of a bar.
+        Can be an absolute value like `40` or a percent value like `'60%'`.
+        The percent is based on the calculated category width.
+        Has higer priority than `opt.barWidth`.
 @param {number} [opt.barGap] Gap of bars in a group.
 @param {number} [opt.barCategoryGap] Gap of groups.
 @return {Array.<Object>} [{
