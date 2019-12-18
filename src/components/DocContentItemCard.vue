@@ -48,7 +48,7 @@
         ></DocContentItemCard>
     </div>
     <PropertiesList
-        v-if="!expanded && !isLeaf"
+        v-if="(!expanded || shared.isMobile) && !isLeaf"
         :nodeData="nodeData"
         :descMap="descMap"
     ></PropertiesList>
@@ -275,13 +275,13 @@ $hierarchy-guider-color: #C592A0;
         &>h4 {
             // opacity: 1;
             .anchor {
-                font-size: 22px;
+                font-size: 20px;
             }
             .path-parent {
                 font-size: 16px;
             }
             .path-base {
-                font-size: 22px;
+                font-size: 20px;
             }
         }
     }

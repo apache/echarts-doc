@@ -195,7 +195,7 @@ export default {
         height: 45px;
         line-height: 45px;
         margin: 0;
-
+        font-weight: normal;
     }
 
     h3 {
