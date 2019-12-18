@@ -1,0 +1,1574 @@
+<h2 id="v4-4-0-rc-1">v4.4.0-rc.1</h2>
+<div class="time">2019-09-29</div>
+
+<ul>
+<li><p>[Feature] Add option <code>clip</code> for <code>line</code>, <code>bar</code>, <code>lines</code>, <code>scatter</code> and <code>custom series</code>,
+which prevents the shapes overflow the area of the coordinate system. And support setting
+<code>filterMode</code> on <code>toolbox.dataZoom</code>. Fix #9200, #10224, #10748, #11086.</p>
+</li>
+<li><p>[Feature] Support &quot;select all&quot; and &quot;reverse select&quot; buttons in <code>legend</code>. See <code>legend.selector</code> for details.</p>
+</li>
+<li><p>[Feature] Provide <code>echarts.graphic.registerShape</code> and <code>echarts.graphic.getShapeClass</code>.
+The registered shape classes can be used in <code>custom series</code> and <code>graphic component</code>.</p>
+</li>
+<li><p>[Feature] Support show border style on <code>legend</code> item. Support setting <code>itemStyle</code> on <code>legend</code>. Fix #7340.</p>
+</li>
+<li><p>[Feature] Support expansion animation for data update, support <code>pie-series.animationTypeUpdate</code>. Fix #11029.</p>
+</li>
+<li><p>[Feature] Support setting <code>rippleEffect.color</code> in <code>effectScatter</code>.</p>
+</li>
+<li><p>[Feature] Support using BaiduMap API version 3.0 in bmap by option <code>bmap.mapStyleV2</code>.</p>
+</li>
+<li><p>[Fix] Fix that the stacked bar exceed zoom limit.
+Fix #7534, #7672, #7732, #7872, #8069, #8520, #8935, #8955, #9200, #9237, #9847, #10359, #10518, #10972.</p>
+</li>
+<li><p>[Fix] Fix that sometimes when using &quot;toolbox dataZoom&quot; it can not return to the original state. Fix #11055.</p>
+</li>
+<li><p>[Fix] Fix the texture pattern rendering in <code>map</code> and <code>geo</code>. And Fix that the the shadow of them are different between canvas renderer and SVG renderer. Fix #11055, #5429.</p>
+</li>
+<li><p>[Fix] Fix that data does not rendered after a <code>NaN</code> value in candlestick. Fix #11101.</p>
+</li>
+<li><p>[Fix] Fix <code>geo.label.formatter</code> does not work. Fix #8489.</p>
+</li>
+<li><p>[Fix] Fix the hover style incorrect in <code>custom series</code>. Fix #11103.</p>
+</li>
+<li><p>[Fix] Fix that tree root node disappears after roaming. Fix #10291, #10986, #10164, #9580, #9256, #9216.</p>
+</li>
+<li><p>[Fix] Fix that SVG renderer should render normally despite hover layer set. Fix #11054.</p>
+</li>
+<li><p>[Fix] Add dispose checking for chart instance.</p>
+</li>
+</ul>
+<h2 id="v4-3-0">v4.3.0</h2>
+<div class="time">2019-08-27</div>
+
+<ul>
+<li><p>[Feature] Sankey diagram enhancement:
+Add left node align, right in sankey diagram.
+Support user to specify the depth of the node.
+Enhance sankey node tooltip formatter.
+Add depth layout info for each node.</p>
+</li>
+<li><p>[Feature] Support callback in <code>series.symbol</code>. Contributed by PR #9664 originally.</p>
+</li>
+<li><p>[Feature] Enhance Pie chart:
+Support <code>minShowLabelAngle</code>. Contributed by PR #8997 originally.
+Support label rotate in pie chart. Fix #10045.</p>
+</li>
+<li><p>[Feature] Support <code>backgroundColor</code> for connected charts in toolbox. <code>toolbox.feature.saveAsImage.connectedBackgroundColor</code> can be used to set the background color. Fix #10099.</p>
+</li>
+<li><p>[Feature] Enhance toolbox:
+Enable to set text style of toolbox.
+Support tooltip for toolbox. Fix #10202.</p>
+</li>
+<li><p>[Feature] Enhance dataZoom:
+Normalize illegal range setting and get accurate <code>start</code>/<code>end</code>/<code>startValue</code>/<code>endValue</code> in <code>&#39;dataZoom&#39;</code> event.</p>
+</li>
+<li><p>[Feature] Add <code>dimensionNames</code> and <code>encode</code> info to callback parameters of formatters. Fix #10248 and Close #10250.</p>
+</li>
+<li><p>[Feature] Funnel enhancement:
+<code>series.label.position</code> support to set <code>rightTop</code>, <code>rightBottom</code>, <code>leftTop</code>, <code>leftBottom</code>. And fix style in funnel text position.</p>
+</li>
+<li><p>[Fix] Support mouse event in iOS when css transform used. Fix #9434, #8326, #5009, #5921.</p>
+</li>
+<li><p>[Fix] Use a clearer warning message when initing dom without size. Fix #10478.</p>
+</li>
+<li><p>[Fix] Fix that the rgba opacity does not work in SVG renderer. Fix #9014</p>
+</li>
+<li><p>[Fix] Enhance funnel chart label display policy PR #8759</p>
+</li>
+<li><p>[Fix] Fix the highlight/downplay of pie graphic.</p>
+</li>
+<li><p>[Fix] Fix the mouse pointer in force graph. Fix #7764, contributed by PR #9134.</p>
+</li>
+<li><p>[Fix] Fix that <code>symbol</code> and <code>symbolSize</code> and <code>opacity</code> does not work in <code>series[i]-graph.categories[i]</code>. Fix #8009 and #5969, contributed by PR #9171.</p>
+</li>
+<li><p>[Fix] Fix that <code>axisLine.show</code> does not work in the gauge. Fix #9194, contributed by PR #9195.</p>
+</li>
+<li><p>[Fix] Fix a display error when the first data item is &#39;-&#39; in radar. Fix 8962.</p>
+</li>
+<li><p>[Fix] Fix polygon rendering bug when the first value is <code>NaN</code>. Fix #8962, contributed by PR #9162.</p>
+</li>
+<li><p>[Fix] Fix text truncate bug in treemap when using SVG renderer.</p>
+</li>
+<li><p>[Fix] Fix that <code>label.rotate</code> does not work in graph. Fix #9182, contributed by PR #9210.</p>
+</li>
+<li><p>[Fix] Fix the rich content hiding bug and confine bug in tooltip. Fix ecomfe/echarts-for-weixin#360, ecomfe/echarts-for-weixin#347.</p>
+</li>
+<li><p>[Fix] Fix that callback function params.color is incorrect in sunburst area. Fix #8952, contributed by PR #9238.</p>
+</li>
+<li><p>[Fix] Fix that when <code>axisLabel.interval</code> of a category axis is set as <code>0</code>, all labels are displayed regardless of overlap. Fix #9589.</p>
+</li>
+<li><p>[Fix] Fix sub-pixel in markLine. Move subPixelOptimize to zrender. Fix #9598.</p>
+</li>
+<li><p>[Fix] Fix that when doing clear on click handler error is thrown. Fix #9649.</p>
+</li>
+<li><p>[Fix] Fix that <code>false</code> value in data items effect subsequent items in <code>visualMap</code>. Fix #8799.</p>
+</li>
+<li><p>[Fix] Enhance <code>hoverStyle</code> and <code>highlight</code>/<code>downplay</code> API. Support keep highlighted when changing style (e.g., <code>setOption</code> or <code>hoverLink</code>). Fix the highlight conflict.</p>
+</li>
+<li><p>[Fix] Fix radar line disappear on hover when there is empty value in data.</p>
+</li>
+<li><p>[Fix] Fix that geo map panning not working on Edge browser. Fix #9479.</p>
+</li>
+<li><p>[Fix] Fix map label bugs:
+Fix map rich label missing when missing data.
+Fix map label miss to enter formatter when missing data.
+Fix #9682.</p>
+</li>
+<li><p>[Fix] Enable <code>triggerEvent</code> for label of <code>angleAxis</code>. Fix #9765.</p>
+</li>
+<li><p>[Fix] Fix that the hover style bugs of graph:
+Fix that the hover style is disabled by <code>focusNodeAdjacency</code> in graph.
+Fix that the line label can not be returned to its original opacity after <code>&quot;focusNodeAdjacency&quot;</code>.</p>
+</li>
+<li><p>[Fix] Lift the axis line arrow over splitLine and tick.</p>
+</li>
+<li><p>[Fix] Fix that the scrollable legend pager does not work when the target index is illegal. Fix #7568.</p>
+</li>
+<li><p>[Fix] Exclude padding from tooltip position, since it&#39;s included in clientWidth. Contributed by PR #9750.</p>
+</li>
+<li><p>[Fix] Fix <code>barWidth</code> calculation when stack on multiple polars. Fix #9626.</p>
+</li>
+<li><p>[Fix] Loop to find the first non-NaN angle for clipPath in pie.</p>
+</li>
+<li><p>[Fix] Fix line width in singleAxis. Fix #9965.</p>
+</li>
+<li><p>[Fix] Fix the label bounding rect calculation error when <code>rich</code> used (e.g., containLabel: true while axisLabel has rich).</p>
+</li>
+<li><p>[Fix] Part of emphasis in sunburst do not work. Fix #9563, constributed by PR #9993.</p>
+</li>
+<li><p>[Fix] Add <code>seriesId</code> in <code>pieselectchanged</code>. Fix #9830.</p>
+</li>
+<li><p>[Fix] Fix that axis name align does not work. Fix #9901.</p>
+</li>
+<li><p>[Fix] Fix taht the strange label position when the pie chart series data value is <code>null</code>. Fix #10088.</p>
+</li>
+<li><p>[Fix] Do not create an anchor element if you don&#39;t need to in <code>SaveAsImage</code>. Contributed by PR #10132.</p>
+</li>
+<li><p>[Fix] Fix that <code>axisLabel</code> dost not display correctly in radar. Fix #9282, contributed by PR #10036.</p>
+</li>
+<li><p>[Fix] Fix that bar chart is abnormal when <code>filterMode</code> of <code>dataZoom</code> is &#39;empty&#39;. Fix #9882.</p>
+</li>
+<li><p>[Fix] Fix <code>series.label.formatter</code> callback bug. Fix #10248, contributed by PR #10250.</p>
+</li>
+<li><p>[Fix] Fix that the last axis labels are duplicated. Fix #10304.</p>
+</li>
+<li><p>[Fix] Fix that setting <code>emphasis.lineStyle.type</code> as <code>solid</code> dose not work. Fix #9704, close #10129.</p>
+</li>
+<li><p>[Fix] Fix that if some negetive numbers or strings existing in the dimensions array, the corresponding line will not show. Fix #10343.</p>
+</li>
+<li><p>[Fix] Fix that when <code>&#39;0&#39;</code> existing in dimentions the chart do not work. Make backward compat when dimention is a number-like string. Fix #9363, contributed by PR #9388.</p>
+</li>
+<li><p>[Fix] Fix hover style on <code>textStroke</code> bug in custom series.</p>
+</li>
+<li><p>[Fix] Fix graph bug when data is number typed. Fix #10485.</p>
+</li>
+<li><p>[Fix] Fix that <code>axisPointer</code> label padding does not work. Fix #10569.</p>
+</li>
+<li><p>[Fix] Add <code>dimIndex</code> for callback formatter in radar. Close #10403, #10180, contributed PR #10437.</p>
+</li>
+<li><p>[Fix] Prevent treamap from using hover layer by default. Fix #10521. Ref #10635.</p>
+</li>
+<li><p>[Fix] Update pointer when type is none. Fix #10570.</p>
+</li>
+<li><p>[Fix] Enhance circular layout: based on symbol size and fix overlap when some value are very smaller than the max value. Fix #10462, Close #10615.</p>
+</li>
+<li><p>[Fix] Support click and tooltip in bar large mode. Fix #10699.</p>
+</li>
+</ul>
+<h2 id="v4-2-1">v4.2.1</h2>
+<div class="time">2019-03-21</div>
+
+<ul>
+<li><p>[Fix] 修复了文本缓存的问题. 参见 <a href="https://github.com/apache/incubator-echarts/issues/9190">#9190</a>，<a href="https://github.com/apache/incubator-echarts/issues/9597">#9597</a>，<a href="https://github.com/apache/incubator-echarts/issues/9762">#9762</a>。</p>
+</li>
+<li><p>[Fix] 修复了在一些情况下事件处理器中重新 <code>setOption</code> 时抛异常的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/9649">#9649</a>。</p>
+</li>
+<li><p>[Fix] 修复了 geo 中 <code>showTip</code> 异常的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/9156">#9156</a>。</p>
+</li>
+<li><p>[Fix] 修复了一些情况下堆叠柱状图超出直角坐标系范围的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/9346">#9346</a>。</p>
+</li>
+<li><p>[Fix] 修复了图例组件（legend）当空间只够显示一项时不能翻页的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/6743">#6743</a>，<a href="https://github.com/apache/incubator-echarts/issues/8971">#8971</a>，<a href="https://github.com/apache/incubator-echarts/issues/9471">#9471</a>。</p>
+</li>
+<li><p>[Fix] 修复了饼图标签（label）定位在中心时，在一些角度下有便宜的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/9657">#9657</a>。</p>
+</li>
+<li><p>[Fix] 修复了地图坐标系（geo）在 MS Edge 下不能拖动的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/9479">#9479</a>。</p>
+</li>
+<li><p>[Fix] 修复了地图系列（series.type: &#39;map&#39;）标签不能显示的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/9682">#9682</a>。</p>
+</li>
+<li><p>[Fix] 修复了设置了 <code>visualMap: false</code> 的数据项影响其他数据项的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/8799">#8799</a>。</p>
+</li>
+<li><p>[Fix] 使得 <code>axis.type: &#39;category&#39;</code> 且 <code>axisLabel.interval: 0</code> 时，所有标签（axisLabel）都能被显示。参见 <a href="https://github.com/apache/incubator-echarts/issues/9589">#9589</a>。</p>
+</li>
+<li><p>[Fix] 修复了 containLabel 和 axisLabel.rich 同时使用时，grid(cartesian) 不渲染的问题。</p>
+</li>
+<li><p>[Fix] 修复了 license 表述。</p>
+</li>
+<li><p>[Fix] 修复了 rich text boundingRect 问题。</p>
+</li>
+</ul>
+<h2 id="v4-2-1-rc1">v4.2.1.rc1</h2>
+<div class="time">2019-01-22</div>
+
+<ul>
+<li><p>[Fix] 修复了文本缓存的问题. 参见 <a href="https://github.com/apache/incubator-echarts/issues/9190">#9190</a>，<a href="https://github.com/apache/incubator-echarts/issues/9597">#9597</a>，<a href="https://github.com/apache/incubator-echarts/issues/9762">#9762</a>。</p>
+</li>
+<li><p>[Fix] 修复了在一些情况下事件处理器中重新 <code>setOption</code> 时抛异常的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/9649">#9649</a>。</p>
+</li>
+<li><p>[Fix] 修复了 geo 中 <code>showTip</code> 异常的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/9156">#9156</a>。</p>
+</li>
+<li><p>[Fix] 修复了一些情况下堆叠柱状图超出直角坐标系范围的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/9346">#9346</a>。</p>
+</li>
+<li><p>[Fix] 修复了图例组件（legend）当空间只够显示一项时不能翻页的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/6743">#6743</a>，<a href="https://github.com/apache/incubator-echarts/issues/8971">#8971</a>，<a href="https://github.com/apache/incubator-echarts/issues/9471">#9471</a>。</p>
+</li>
+<li><p>[Fix] 修复了饼图标签（label）定位在中心时，在一些角度下有便宜的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/9657">#9657</a>。</p>
+</li>
+<li><p>[Fix] 修复了地图坐标系（geo）在 MS Edge 下不能拖动的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/9479">#9479</a>。</p>
+</li>
+<li><p>[Fix] 修复了地图系列（series.type: &#39;map&#39;）标签不能显示的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/9682">#9682</a>。</p>
+</li>
+<li><p>[Fix] 修复了设置了 <code>visualMap: false</code> 的数据项影响其他数据项的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/8799">#8799</a>。</p>
+</li>
+<li><p>[Fix] 使得 <code>axis.type: &#39;category&#39;</code> 且 <code>axisLabel.interval: 0</code> 时，所有标签（axisLabel）都能被显示。参见 <a href="https://github.com/apache/incubator-echarts/issues/9589">#9589</a>。</p>
+</li>
+</ul>
+<h2 id="v4-2-0-rc2">v4.2.0.rc2</h2>
+<div class="time">2018-10-15</div>
+
+<p>Recovery build</p>
+<p>修复大数据柱状图渐进渲染阻塞问题。</p>
+<h2 id="v4-2-0-rc1">v4.2.0.rc1</h2>
+<div class="time">2018-09-11</div>
+
+<ul>
+<li><p><strong>[Feature] 支持了 non-html tooltip</strong>，在一些不支持 HTML 的环境中，会有用。如微信小程序中。使用 <a href="http://echarts.baidu.com/option.html#tooltip.renderMode">tooltip.renderMode</a> 开启这个功能。</p>
+</li>
+<li><p><strong>[Feature] 鼠标/触摸事件中支持了选择器</strong>，从而能够比较方便得监听指定的组件（component）、系列（series）、数据项（data item）。参见 <a href="http://echarts.baidu.com/api.html#echartsInstance.on">chart.on</a>，新加的 <code>query</code> 参数提供了这个筛选功能。并且为 <a href="http://echarts.baidu.com/option.html#series-custom">自定义系列（custom series）</a> 和 <a href="http://echarts.baidu.com/option.html#graphic.triggerEvent">图形元素组件（graphic component）</a> 支持了鼠标/触摸事件能力，可以用 <code>query</code> 监听指定图形元素的事件。</p>
+</li>
+<li><p><strong>[Feature] 能够使用 dataZoom 实现仿浏览器的滚动条</strong>，参见 <a href="http://echarts.baidu.com/option.html#dataZoom-inside.moveOnMouseWheel">dataZoom-inside.moveOnMouseWheel</a>，以及 <a href="http://echarts.baidu.com/examples/editor.html?c=custom-gantt-flight">甘特图例子（Gantt）</a>。</p>
+</li>
+<li><p>[Feature] 在桑基图（sankey）中，当鼠标悬浮到节点或边时，支持临接节点和边的高亮。参见 <a href="http://echarts.baidu.com/option.html#series-sankey.focusNodeAdjacency">focusNodeAdjacency</a>，以及 <a href="http://echarts.baidu.com/examples/editor.html?c=sankey-product">例子</a>。</p>
+</li>
+<li><p>[Feature] 支持树图（tree）的平移和缩放（roam）。参见 <a href="http://echarts.baidu.com/option.html#series-tree.roam">series-tree.roam</a>。</p>
+</li>
+<li><p>[Feature] 支持桑基图（sankey）的纵向布局（vertical）。参见 <a href="http://echarts.baidu.com/option.html#series-sankey.orient">series-sankey.orient</a> 和 <a href="http://echarts.baidu.com/examples/editor.html?c=sankey-vertical">纵向布局桑基图例子</a>。</p>
+</li>
+<li><p>[Feature] 能够在 <a href="http://echarts.baidu.com/option.html#series-custom">自定义系列（custom series）</a> 的 <a href="http://echarts.baidu.com/option.html#series-custom.encode">encode</a> 中设置某个轴为 <code>-1</code>，意思是这个轴，以及它所对应的 dataZoom 组件，不控制这个系列数据（不用此系列计算轴的范围也不缩放过滤此系列）。参见 <a href="http://echarts.baidu.com/examples/editor.html?c=custom-gantt-flight">甘特图例子（Gantt）</a>。</p>
+</li>
+<li><p>[Feature] 支持在 <a href="http://echarts.baidu.com/option.html#series-custom">自定义系列（custom series）</a> 的 <a href="http://echarts.baidu.com/option.html#series-custom.renderItem.return_path.shape.layout">path shape</a> 中使用 <code>&#39;cover&#39;</code> 模式，从而便捷得使用 <a href="http://www.w3.org/TR/SVG/paths.html#PathData">SVG PathData</a> 创建图形形状。参见 <a href="http://echarts.baidu.com/examples/editor.html?c=custom-gantt-flight">甘特图例子（Gantt）</a>。</p>
+</li>
+<li><p>[Feature] 增加了一些 <a href="http://echarts.baidu.com/option.html#series-custom">自定义系列（custom series）</a> 的属性和参数：增加了 <a href="http://echarts.baidu.com/option.html#series-custom.renderItem.arguments.params">params.actionType</a>，能够用此参数进行一些性能优化。在 geo 坐标系中增加了 <a href="http://echarts.baidu.com/option.html#series-custom.renderItem.arguments.params">params.coordSys.zoom</a>。在图形定义中增加了 <a href="http://echarts.baidu.com/option.html#series-custom.renderItem.return_text.invisible">invisible</a> 和<a href="http://echarts.baidu.com/option.html#series-custom.renderItem.return_text.ignore">ignore</a>，能够操作图形元素的显示和隐藏。</p>
+</li>
+<li><p>[Feature] 在 <a href="http://echarts.baidu.com/option.html#radar.radius">雷达图（radar）</a> 中支持了内半径设置。参见 <a href="https://github.com/apache/incubator-echarts/issues/8717">#8717</a>。</p>
+</li>
+<li><p>[Fix] 修复了极坐标（polar）中类目轴（category axis）interval 问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/8791">#8791</a>。</p>
+</li>
+<li><p>[Fix] 不再支持在系列中设置极坐标（polar）的 center。Center 应该设置在 <a href="http://echarts.baidu.com/option.html#polar.center">polar.center</a> 中。</p>
+</li>
+<li><p>[Fix] 更新了 <a href="http://echarts.baidu.com/option.html#series-sunburst">sunburst</a> 的默认阴影样式。参见 <a href="https://github.com/apache/incubator-echarts/issues/8583">#8583</a>。</p>
+</li>
+<li><p>[Fix] 修复了 <a href="http://echarts.baidu.com/option.html#dataset">dataset</a> 中的空值问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/8395">#8395</a>。</p>
+</li>
+<li><p>[Fix] 修复了柱状图（bar）中多轴存在时柱子起点的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/8747">#8747</a>。</p>
+</li>
+<li><p>[Fix] 为了动画扩展，移除了 clipPath。参见 <a href="https://github.com/apache/incubator-echarts/issues/8994">#8994</a>。</p>
+</li>
+<li><p>[Fix] 修复了当多个 Y 轴在同一 X 轴上时，Y 轴可能重叠的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/8975">#8975</a>。</p>
+</li>
+</ul>
+<h2 id="v4-1-0">v4.1.0</h2>
+<div class="time">2018-05-02</div>
+
+<ul>
+<li><p>[Feature] 支持了中等规模数据量K线图和柱状图的渲染（200K 数据）。并且可以使用 <a href="option.html#series-candlestick.progressiveChunkMode">series-candlestick.progressiveChunkMode</a> 设定渐进渲染的模式。 查看示例 <a href="http://echarts.baidu.com/examples/editor.html?c=candlestick-large">candlestick-large</a>。</p>
+</li>
+<li><p>[Feature] 支持树图的布局：从右向左，从下向上。<a href="https://github.com/apache/incubator-echarts/issues/7351">#7351</a> <a href="https://github.com/apache/incubator-echarts/issues/7154">#7154</a>。查看示例 <a href="http://echarts.baidu.com/examples/editor.html?c=tree-orient-right-left">tree-orient-right-left</a>，<a href="http://echarts.baidu.com/examples/editor.html?c=tree-vertical">tree-vertical</a>。</p>
+</li>
+<li><p>[Feature] 图例路径支持 keeping-aspect. <a href="https://github.com/apache/incubator-echarts/issues/7831">#7831</a>。</p>
+</li>
+<li><p>[Feature] 桑基图支持节点拖拽。查看示例 <a href="http://echarts.baidu.com/examples/editor.html?c=sankey-energy">sankey-energy</a>。</p>
+</li>
+<li><p>[Enhance] 类目轴优化：</p>
+<ul>
+<li>为中等规模数据 (&gt; 100K ~ 1M) 性能优化。</li>
+<li>当没有足够空间时，优化了轴的提示标志（axisTick）和标签（axisLabel）的展示策略。</li>
+<li>数据窗口改变时（使用 dataZoom），优化了轴的提示标志（axisTick）和轴的标签（axisLabel）的动画。</li>
+</ul>
+</li>
+<li><p>[Enhance] 折线图中，优化了图形的展示策略，参见<code>showAllSymbol:&#39;auto&#39;</code>。</p>
+</li>
+<li><p>[Enhance] 刷选工具中，提高了被选中项的 z 层级，参见<code>visualMap.inRange.liftZ</code>。</p>
+</li>
+<li><p>[Enhance] 解决桑基图的节点顺序改变问题。<a href="https://github.com/apache/incubator-echarts/issues/3390">#3390</a> <a href="https://github.com/apache/incubator-echarts/issues/3543">#3543</a> <a href="https://github.com/apache/incubator-echarts/issues/6365">#6365</a> <a href="https://github.com/apache/incubator-echarts/issues/4880">#4880</a> <a href="https://github.com/apache/incubator-echarts/issues/4986">#4986</a></p>
+</li>
+<li><p>[Enhance] 优化了折线图采样的性能。</p>
+</li>
+<li><p>[Enhance] 优化了平行坐标系的渐进渲染（progressive rendering）性能。</p>
+</li>
+<li><p>[Enhance] 有数据过滤（dataZoom）时，对于折线图中断线的优化。<a href="https://github.com/apache/incubator-echarts/issues/7955">#7955</a>。</p>
+</li>
+<li><p>[Enhance] 支持 <code>toolbox.feature</code> 的融合模式的 <code>setOption</code>。</p>
+</li>
+<li><p>[Fix] 修复有环图导致桑基图死循环的问题。<a href="https://github.com/apache/incubator-echarts/issues/7495">#7495</a> <a href="https://github.com/apache/incubator-echarts/issues/8117">#8117</a> <a href="https://github.com/apache/incubator-echarts/issues/7583">#7583</a> <a href="https://github.com/apache/incubator-echarts/issues/7325">#7325</a> <a href="https://github.com/apache/incubator-echarts/issues/6555">#6555</a></p>
+</li>
+<li><p>[Fix] 修复了当使用数据堆叠（stack）时 <code>yAxis</code> 范围不改变的问题。<a href="https://github.com/apache/incubator-echarts/issues/8003">#8003</a>。</p>
+</li>
+<li><p>[Fix] 优先从 <code>dateItem.name</code> 或许名称。<a href="https://github.com/apache/incubator-echarts/issues/7966">#7966</a></p>
+</li>
+<li><p>[Fix] 修复了微信小程序中，Typed array 使用的问题。</p>
+</li>
+<li><p>[Fix] 修复了 axis data item 中的 <code>option</code> 无效。<a href="https://github.com/apache/incubator-echarts/issues/7954">#7954</a></p>
+</li>
+<li><p>[Fix] 修复了 <code>markArea</code> 只显示最后一个。<a href="https://github.com/apache/incubator-echarts/issues/7902">#7902</a></p>
+</li>
+<li><p>[Fix] 修复了微信小程序的环境检测不精确。</p>
+</li>
+<li><p>[Fix] 折线图剪切（clip）图形时，修复了精度问题。<a href="https://github.com/apache/incubator-echarts/issues/7913">#7913</a></p>
+</li>
+<li><p>[Fix] 修复了K线图默认的提示（tooltip）只显示一条. <a href="https://github.com/apache/incubator-echarts/issues/8149">#8149</a></p>
+</li>
+<li><p>[Fix] 当多个坐标轴存在时，修复了柱状图起始位置问题。<a href="https://github.com/apache/incubator-echarts/issues/7412">#7412</a></p>
+</li>
+<li><p>[Fix] 修复了当使用 <code>string</code> 时 <code>markArea</code> 不显示问题。<a href="https://github.com/apache/incubator-echarts/issues/7849">#7849</a></p>
+</li>
+<li><p>[Fix] 修复了 <code>dataZoom</code> 系列为空的时候抛出异常的问题。<a href="https://github.com/apache/incubator-echarts/issues/7666">#7666</a></p>
+</li>
+<li><p>[Fix] 桑基图提升兼容性。<a href="https://github.com/apache/incubator-echarts/issues/2867">#2867</a></p>
+</li>
+<li><p>[Fix] 修复了树图第二次渲染的抛出异常。<a href="https://github.com/apache/incubator-echarts/issues/8038">#8038</a> <a href="https://github.com/apache/incubator-echarts/issues/8040">#8040</a> <a href="https://github.com/apache/incubator-echarts/issues/7720">#7720</a> <a href="https://github.com/apache/incubator-echarts/issues/7363">#7363</a> <a href="https://github.com/apache/incubator-echarts/issues/7315">#7315</a></p>
+</li>
+<li><p>[Fix] 修复了当 <code>chart.setOption</code> 调用时，旭日图（<code>sunburst</code>）上卷节点不消除的问题。<a href="https://github.com/apache/incubator-echarts/issues/8132">#8132</a></p>
+</li>
+<li><p>[Fix] SVG axisPointer 文本位置问题。<a href="https://github.com/apache/incubator-echarts/issues/7947">#7947</a></p>
+</li>
+<li><p>[Fix] 修复了线图（lines chart）大规模模式中的渲染问题。</p>
+</li>
+<li><p>[Fix] 修复了日历坐标系中，最后一日不显示的问题。<a href="https://github.com/apache/incubator-echarts/issues/8045">#8045</a></p>
+</li>
+<li><p>[Fix] 修复了当数据有 NaN 时，折线图中数据采样导致错误的轴范围的问题。</p>
+</li>
+<li><p>[Fix] 修复了设置了 <code>series.encode</code> 时，折线图采样中不正确的问题。<a href="https://github.com/apache/incubator-echarts/issues/8017">#8017</a></p>
+</li>
+<li><p>[Fix] 修复了同名的多个系列设置 <code>legendHoverLink: false</code> 时效果不对的问题。<a href="https://github.com/apache/incubator-echarts/issues/8010">#8010</a></p>
+</li>
+<li><p>[Fix] 修复了关系图（<code>graph</code>）的部分高亮样式（hover style）不正确的问题。</p>
+</li>
+<li><p>[Fix] 修复了堆叠数据时（stack）轴的范围计算不正确的问题。</p>
+</li>
+</ul>
+<h2 id="v4-0-4">v4.0.4</h2>
+<div class="time">2018-02-28</div>
+
+<p>[Recovery Build]</p>
+<ul>
+<li>[^] 修正柱状图布局的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/7831">#7831</a>。</li>
+</ul>
+<h2 id="v4-0-3">v4.0.3</h2>
+<div class="time">2018-02-26</div>
+
+
+<ul>
+<li><p><strong>[+] ECharts 可以在微信小程序中使用了</strong>。我们接到了很多微信小程序开发者的反馈，表示他们强烈需要像 ECharts 这样的可视化工具。但是微信小程序是不支持 DOM 操作的，Canvas 接口也和浏览器不尽相同。因此，我们和微信小程序官方团队合作，提供了 ECharts 的微信小程序版本。开发者可以通过熟悉的 ECharts 配置方式，快速开发图表，满足各种可视化需求。参见 <a href="tutorial.html#%E5%9C%A8%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts">教程</a>。</p>
+</li>
+<li><p>[+] 优化折线图平滑算法. 参见 <a href="option.html#series-line.smooth">series-line.smooth</a> 和 <a href="option.html#series-line.smoothMonotone">series-line.smoothMonotone</a> 和 <a href="https://github.com/apache/incubator-echarts/issues/7158">#7158</a>。</p>
+</li>
+<li><p>[+] 支持坐标轴两端的箭头偏移值 <a href="option.html#series-line.symbolOffset">series-line.symbolOffset</a> of axis arrow。参见 <a href="https://github.com/apache/incubator-echarts/issues/7422">#7422</a>。</p>
+</li>
+<li><p>[+] <a href="option.html#series-sunburst">旭日图（sunburst）</a> 支持了 <a href="option.html#series-sunburst.label.minAngle">series-sunburst.label.minAngle</a>。当一个扇形区的角度小于该值时，该扇形区对应的文字不显示。可以用来对较小的扇形区隐藏文字。参见 <a href="https://github.com/apache/incubator-echarts/issues/7614">#7614</a>。</p>
+</li>
+<li><p>[+] <a href="option.html#series-sunburst">旭日图（sunburst）</a> 支持了 tooltip。参见 <a href="https://github.com/apache/incubator-echarts/issues/7691">#7691</a>。</p>
+</li>
+<li><p>[+] <a href="option.html#series-sunburst">旭日图（sunburst）</a> 支持了再 level 和单个扇形块层级设置 <a href="option.html#series-sunburst.nodeClick">series-sunburst.nodeClick</a>。参见 <a href="https://github.com/apache/incubator-echarts/issues/7541">#7541</a>。</p>
+</li>
+<li><p>[+] 支持了按值进行 <a href="option.html#series-bar.stack">堆积</a>，原先是按照数据顺序堆积，在一些场景下不够合理。修复了 <a href="option.html#dataset">dataset</a> 不能使用堆积的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/7535">#7535</a>，<a href="https://github.com/apache/incubator-echarts/issues/7560">#7560</a>， <a href="https://github.com/apache/incubator-echarts/issues/6861">#6861</a>。</p>
+</li>
+<li><p>[^] 修正了 <a href="option.html#series-line">折线图</a> 超出坐标系边界的问题。</p>
+</li>
+<li><p>[^] 修复了 <a href="option.html#xAxis.splitArea">splitArea</a> 最后一个区域不显示的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/7118">#7118</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="option.html#series-sunburst">旭日图（sunburst）</a> 修改渐变色时引起的 bug。参见 <a href="https://github.com/apache/incubator-echarts/issues/7569">#7569</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="option.html#series-sunburst">旭日图（sunburst）</a> 不引入 <a href="option.html#visualMap">视觉映射组件（visualMap）</a> 会报错的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/7575">#7575</a>。</p>
+</li>
+<li><p>[^] 修复了当数据量小于 <a href="option.html#series-scatter.progressive">progressive</a> 时 <a href="api.html#echartsInstance.appendData">apendData</a> 无效的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/7718">#7718</a> 和 <a href="https://github.com/apache/incubator-echarts/issues/7625">#7625</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="api.html#echartsInstance.appendData">apendData</a> 导致系列颜色变化的问题。</p>
+</li>
+<li><p>[^] 修复了 <a href="option.html#tooltip.axisPointer.label.show">tooltip.axisPointer.label.show</a> 设置为 <code>false</code> 时无效的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/7725">#7725</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="option.html#series-map">地图系列</a> 无数据区域不能选中的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/7629">#7629</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="option.html#series-candlestick">K线图（candlestick）</a> 的 <code>encode</code> 问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/7715">#7715</a>。</p>
+</li>
+<li><p>[^] 修复了数据项为空的判断逻辑。这钱的逻辑导致了当数据项长度不一时，自定义系列的 <a href="option.html#series-custom.renderItem">renderItem</a> 可能不能进入，以及 <a href="option.html#dataset">dataset</a> 被使用时可能不能渲染的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/7733">#7733</a>。</p>
+</li>
+<li><p>[^] 修复了 <code>textStyle</code> 向后兼容的逻辑。</p>
+</li>
+</ul>
+<h2 id="v4-0-2">v4.0.2</h2>
+<div class="time">2018-01-18</div>
+
+<ul>
+<li><p>[^] 修复了可滚动图例（<code>legend.type: &#39;scroll&#39;</code>）导致重影的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/7502">#7502</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="option.html#series-pie">饼图（pie）</a> 中数据项设置 <code>selected</code> 无效的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/7515">#7515</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="option.html#timeline.controlStyle.showNextBtn">时间线播放组件的播放按钮</a> 不能隐去的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/7506">#7506</a>。</p>
+</li>
+</ul>
+<h2 id="v4-0-1">v4.0.1</h2>
+<div class="time">2018-01-17</div>
+
+<h2 id="v4-0-0">v4.0.0</h2>
+<div class="time">2018-01-16</div>
+
+<ul>
+<li><p>[+] <strong>支持最高达千万级数据量渲染</strong>。ECharts4 变更为流式结构，并且配合各种细致的优化，对于大数据量的渲染场景，支持了增量加载数据和渐进渲染。</p>
+<ul>
+<li>几千万的地理坐标数据就算使用二进制存储也要占上百 MB 的空间，增量加载数据可以支持用户对数据分块后加载，或者使用 WebSocket，从而能很快的渲染出结果并且不会阻塞浏览器。增量加载的例子可以参考使用了 ECharts GL 的 <a href="http://echarts.baidu.com/examples/editor.html?c=scatterGL-gps&amp;gl=1">scatterGL-gps</a> 和 <a href="http://echarts.baidu.com/examples/editor.html?c=linesGL-gps&amp;gl=1">linesGL-ny</a>，以及单使用 ECharts 基础库的 <a href="http://echarts.baidu.com/examples/editor.html?c=lines-ny">lines-ny</a>。</li>
+<li>对于大数据量下的用户交互，能做到浏览器中的布局重绘等计算不会阻塞连续交互操作（常见如持续的平移缩放等）。其中，ECharts GL 下因 GPU 计算和省去了重布局等操作，会有效果很平滑的效果的交互体验，参见上面的例子。而 ECharts 基础库也使用了渐进渲染来支持交互的无阻塞，参见 <a href="http://echarts.baidu.com/examples/editor.html?c=lines-airline">lines-airline</a> 和 <a href="http://echarts.baidu.com/examples/editor.html?c=scatter-large">scatter-large</a> 的缩放平移。</li>
+</ul>
+</li>
+<li><p>[+] <strong>ZRender SVG 渲染引擎发布</strong>，从而支持 Canvas / SVG 双引擎渲染，可进按照场景所需进行切换。例如，SVG 可适用于移动端、单页多图表等场景，Canvas 适用于大数据量、视觉特效需求等场景。Canvas 渲染引擎仍为默认引擎。参见 <a href="https://github.com/ecomfe/zrender">zrender</a>。</p>
+</li>
+<li><p>[+] <strong>发布旭日图（sunburst）</strong>，高效表达带有层次结构的数据占比情况，并有良好的交互体验。参见旭日图<a href="http://echarts.baidu.com/examples/index.html#chart-type-sunburst">例子</a>和<a href="http://echarts.baidu.com/option.html#series-sunburst">文档</a>。</p>
+</li>
+<li><p>[+] <strong>新增 <a href="http://echarts.baidu.com/tutorial.html#%E4%BD%BF%E7%94%A8%20dataset%20%E7%AE%A1%E7%90%86%E6%95%B0%E6%8D%AE">dataset</a> 组件</strong>，从而能够数据与样式分离，便于单独管理数据，支持数据映射到视觉配置，可以多个系列共享数据，也省去数据分割处理的步骤。</p>
+</li>
+<li><p>[+] <strong>支持无障碍富互联网应用规范集（WAI-ARIA，the Accessible Rich Internet Applications Suite）</strong>，致力于使得网⻚内容和网⻚应，用能够被更多残障人士访问。</p>
+</li>
+<li><p>[+] ECharts4 开始，<code>label</code>、<code>itemStyle</code> 等配置被扁平化了，去掉了原先的 <code>normal</code> 层级，使得 <code>option</code> 更为清爽。<strong>ECharts3 的配置方式也仍然被兼容</strong>。</p>
+</li>
+<li><p>[+] 新增了两套内置的颜色主题，名为 &#39;light&#39;, &#39;dark&#39;，可通过 <code>echarts.init(dom, themeName);</code> 来使用它们。</p>
+</li>
+<li><p>[+] 支持 <a href="http://echarts.baidu.com/option.html#legend.data">legend.data</a> 不指定时，自动根据系列生成。</p>
+</li>
+<li><p>[+] 支持类目轴（<code>axis.type: &#39;category&#39;</code>）中 <a href="http://echarts.baidu.com/option.html#xAxis.data">axis.data</a> 不指定时，自动根据数据生成。</p>
+</li>
+</ul>
+<p>[Break Changes]:</p>
+<p>总体而言，ECharts4 兼容之前的各种 option 和 API，除了以下这些细节：</p>
+<ul>
+<li>当第二次（或第三、四、... 次）调用 <code>chart.setOption(option);</code> 时（merge 模式），如果 option.series 中没有设置 <code>type</code> 属性，并且此 option 会 merge 到 type 为 <code>graph</code>，<code>gauge</code> 或者 <code>treemap</code> 的系列时，ECharts 2/3 的已被废弃的配置方式（如 itemStyle.normal 等）不会被兼容。当然，这种场景并不常见。</li>
+</ul>
+<h2 id="v3-8-4">v3.8.4</h2>
+<div class="time">2017-11-13</div>
+
+<ul>
+<li>[^] 修复了 <code>index*.js</code> 中的 <code>registerMap</code> 问题。</li>
+<li>[^] 修复了注入导致的个别 CommonJS 模块错误。</li>
+</ul>
+<h2 id="v3-8-2">v3.8.2</h2>
+<div class="time">2017-11-10</div>
+
+<ul>
+<li>[^] 修复了 <code>3.8.0</code> 中向后兼容的几个问题：<ul>
+<li><code>3.8.0</code> 的 <code>lib</code> 目录中和 <code>src</code> 是一样的内容（ES Module）。而老版本的 node 和 webpack 不能支持。所以 <code>3.8.2</code> 中 <code>lib</code> 仍然恢复为 commonJS 格式。</li>
+<li><code>3.8.0</code> 的 <code>src</code> 中的源代码含有 <code>__DEV__</code> 全局变量（这个标志里的代码段，用于为 echarts 的使用者打印开发帮助信息），全局变量的声明需要手动引入 <code>echarts/src/config.js</code> 或者在 <code>webpack</code>/<code>rollup</code> 中做相应配置（参见 <a href="http://echarts.baidu.com/tutorial.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%9E%84%E5%BB%BA%20ECharts">自定义构建</a>）。但是这并不向后兼容。所以在 <code>3.8.2</code> 中的 <code>echarts/lib/**</code> 中的代码，去掉了 <code>__DEV__</code> 变量。如果需要有开发者帮助的版本，请引用 <code>echarts/src/**</code>。</li>
+<li><code>3.8</code> 以后，<code>echarts/src/echarts.js</code>（即 <code>echarts/lib/echarts.js</code>）中并不会包括之前挂载于其上的工具方法，对外开放的工具方法汇总在 <code>echarts/src/export</code> 并挂载在 <code>echarts/echarts*.js</code>。但是这并不向后兼容。所以 <code>3.8.2</code> 改回为 <code>echarts/lib/echarts.js</code> 会像原来一样挂载这些方法。</li>
+<li><code>echarts/extension/dataTool</code> 的引用和挂载方式，改为为 <code>3.8</code> 之前的方式：必须手动引用，引用则会挂载到 <code>echarts</code> 名空间上。</li>
+</ul>
+</li>
+<li>[^] 修复了 SVG 渲染器的空值抛错问题。</li>
+</ul>
+<h2 id="v3-8-0">v3.8.0</h2>
+<div class="time">2017-11-07</div>
+
+<ul>
+<li><p>[+] <strong>新增 <a href="http://echarts.baidu.com/option.html#series-tree">树图</a></strong>。其中支持 <a href="http://echarts.baidu.com/demo.html#tree-basic">横向布局</a>、<a href="http://echarts.baidu.com/demo.html#tree-vertical">纵向布局</a>、<a href="http://echarts.baidu.com/demo.html#tree-radial">径向布局</a>。</p>
+</li>
+<li><p>[+] <strong>新增 <a href="http://echarts.baidu.com/tutorial.html#%E4%BD%BF%E7%94%A8%20Canvas%20%E6%88%96%E8%80%85%20SVG%20%E6%B8%B2%E6%9F%93">SVG 渲染支持（beta 版）</a></strong>。从而可以根据自己的需要，选择 SVG 或者 Canvas 作为渲染引擎。</p>
+</li>
+<li><p>[+] 源代码的模块系统改用 ES Module。从而可以受益于 tree shaking，减小构建所得 bundle 的体积。</p>
+</li>
+<li><p>[+] 提供了构建脚本，方便于灵活引用模块和多语言构建，参见 <a href="http://echarts.baidu.com/tutorial.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%9E%84%E5%BB%BA%20ECharts">自定义构建</a>。并且加入了 <a href="https://github.com/xvaara">xvaara</a> 提供的芬兰语（<a href="https://github.com/apache/incubator-echarts/pull/6863">PR #6863</a>）。</p>
+</li>
+<li><p>[+] 支持了 <a href="http://echarts.baidu.com/option.html#xAxis.axisLine.symbol">axis arrow</a>. 参见 <a href="https://github.com/apache/incubator-echarts/issues/6675">#6675</a>。</p>
+</li>
+<li><p>[+] treemap 中支持了 <a href="http://echarts.baidu.com/option.html#series-treemap.levels.itemStyle.normal.strokeWidth">strokeWidth</a> 和 <a href="http://echarts.baidu.com/option.html#series-treemap.levels.itemStyle.normal.strokeColor">strokeColor</a>。参见 <a href="https://github.com/apache/incubator-echarts/issues/6804">#6804</a>。</p>
+</li>
+<li><p>[+] graph 图中支持了鼠标悬浮到边上时也 <a href="http://echarts.baidu.com/option.html#series-graph.focusNodeAdjacency">显示相邻点</a> 的功能。参见 <a href="https://github.com/apache/incubator-echarts/issues/6772">#6772</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#grid.containLabel">grid.containLabel</a> 为 <code>true</code> 且 <a href="http://echarts.baidu.com/option.html#yAxis.axisLabel.rotate">轴标签旋转</a> 时的坐标系范围判断。感谢 <a href="https://github.com/xvaara">xvaara</a> 提供的 <a href="https://github.com/apache/incubator-echarts/pull/6951">PR #6951</a>。</p>
+</li>
+<li><p>[^] 修复设置了 <a href="http://echarts.baidu.com/option.html#xAxis.type">类目轴</a> 中设置了 <a href="http://echarts.baidu.com/option.html#xAxis.axisLabel.rotate">axisLabel.rotate</a> 以后，interval 计算有误的 bug。参见 <a href="https://github.com/apache/incubator-echarts/issues/4170">#4170</a>。感谢 <a href="https://github.com/lanyuechen">lanyuechen</a> 提供的 <a href="https://github.com/apache/incubator-echarts/pull/6903">PR #6903</a>。</p>
+</li>
+<li><p>[^] 修复了 <code>dataTool.prepareBoxplotData</code> 的负值问题。感谢 <a href="https://github.com/d-rudolf">d-rudolf</a> 提供的 <a href="https://github.com/apache/incubator-echarts/pull/6749">PR #6749</a>。</p>
+</li>
+<li><p>[^] 优化了 <a href="http://echarts.baidu.com/option.html#xAxis.type">时间类型坐标轴</a> 的刻度显示。感谢 <a href="https://github.com/xiaoshan00">xiaoshan00</a> 提供的 <a href="https://github.com/apache/incubator-echarts/pull/6808">PR #6808</a>。</p>
+</li>
+<li><p>[^] 支持了 <a href="http://echarts.baidu.com/option.html#radiusAxis.inverse">radiusAxis.inverse</a>。参见 <a href="https://github.com/apache/incubator-echarts/issues/6805">#6805</a> 和 <a href="https://github.com/apache/incubator-echarts/issues/4253">#4253</a>。</p>
+</li>
+<li><p>[^] 修复了和 webpack 中约定特殊变量重名的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/6788">#6788</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/demo.html#pie-legend">可滚动图例</a> 定位不准确问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/6756">#6756</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/demo.html#themeRiver-basic">themeRiver</a> 图例颜色不正确的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/6932">#6932</a>。</p>
+</li>
+<li><p>[^] 修复了刷选时如果存在空值则报错的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/6892">#6892</a>。</p>
+</li>
+<li><p><code>dist/echarts/echarts.simple.js</code> 中不再包含 echarts 上所挂载的工具方法。如果需要使用工具方法，可使用 <code>dist/echarts/echarts.common.js</code> 或者 <code>dist/echarts/echarts.js</code>，或者 <a href="http://echarts.baidu.com/tutorial.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%9E%84%E5%BB%BA%20ECharts">自定义构建</a>。</p>
+</li>
+<li><p>对于 dataTool 的变化：使用 <code>dist/echarts/echarts.simple.js</code> 和 <code>dist/echarts/echarts.common.js</code>，和之前相同，须自行引入 <code>dist/echarts/extension/dataTool.js</code>，但是不会挂载成 <code>echarts.dataTool</code>。使用 <code>dist/echarts/echarts.js</code> 时，默认包含 <code>echarts.dataTool</code>。</p>
+</li>
+</ul>
+<p>详细的介绍见 <a href="http://efe.baidu.com/blog/echarts-3.8.0/">ECharts 3.8.0 介绍</a></p>
+<h2 id="v3-7-2">v3.7.2</h2>
+<div class="time">2017-09-27</div>
+
+<ul>
+<li><p>[+] 支持了纯英文版 echarts（即默认文字提示为英文）。在 <a href="https://github.com/apache/incubator-echarts/tree/master/dist">https://github.com/apache/incubator-echarts/tree/master/dist</a> 中。参见 <a href="https://github.com/apache/incubator-echarts/issues/2321">#2321</a>。</p>
+</li>
+<li><p>[+] 支持了设置饼图高亮扇区偏移量：<a href="http://echarts.baidu.com/option.html#series-pie.hoverOffset">pie.hoverOffset</a>。参见 <a href="https://github.com/apache/incubator-echarts/issues/3857">#3857</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#series-candlestick">K线图（candlestick）</a> 中 data 的兼容性。参见 <a href="https://github.com/apache/incubator-echarts/issues/6576">#6576</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#xAxis.showMaxLabel">showMaxLabel</a> <a href="http://echarts.baidu.com/option.html#xAxis.showMinLabel">showMinLabel</a>。</p>
+</li>
+<li><p>[^] 修复了负值时区域图的朝向。参见 <a href="https://github.com/apache/incubator-echarts/issues/6707">#6707</a>。</p>
+</li>
+<li><p>[^] 统一了 <a href="http://echarts.baidu.com/option.html#xAxis.nameLocation">axis.nameLocation</a> 取值为 <code>&#39;middle&#39;</code> 和 <code>&#39;center&#39;</code> 的表现。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#series-line.markArea.itemStyle.emphasis">markArea.itemStyle.emphasis</a> 无效的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/5245">#5245</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#series-treemap">treemap</a> 右键点击问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/6313">#6313</a>。</p>
+</li>
+<li><p>[^] 修复了在有 DST (Day Saving Time) 的地区的 calendar 出错的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/6543">#6543</a>。</p>
+</li>
+<li><p>[^] 优化了 IE 高版本保存为图片功能。参见 <a href="https://github.com/apache/incubator-echarts/issues/6279">#6279</a>。</p>
+</li>
+<li><p>[^] 修复了尾迹特效清除问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/6577">#6577</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#series-candlestick">K线图（candlestick）</a> 中开盘收盘相等时颜色问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/6583">#6583</a>。</p>
+</li>
+<li><p>[^] 修复了 <code>markPoint</code> 向后兼容的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/6503">#6503</a>。</p>
+</li>
+</ul>
+<h2 id="v3-7-1">v3.7.1</h2>
+<div class="time">2017-08-31</div>
+
+<p>[Recovery Build]</p>
+<ul>
+<li><p>[+] <a href="http://echarts.baidu.com/option.html#xAxis.min">axis.min</a>, <a href="http://echarts.baidu.com/option.html#xAxis.max">axis.max</a> 支持了设置函数。参见 <a href="https://github.com/apache/incubator-echarts/issues/6465">#6465</a>。</p>
+</li>
+<li><p>[^] 修复了 textStyle 相关兼容性和 emphasis style 问题，参见 <a href="https://github.com/apache/incubator-echarts/issues/6491">#6491</a>、<a href="https://github.com/apache/incubator-echarts/issues/6529">#6529</a>、<a href="https://github.com/apache/incubator-echarts/issues/6516">#6516</a>、<a href="https://github.com/apache/incubator-echarts/issues/6532">#6532</a>、<a href="https://github.com/apache/incubator-echarts/issues/6237">#6237</a>。</p>
+</li>
+<li><p>[^] 改善了 <a href="http://echarts.baidu.com/option.html#series-candlestick">K线图</a> 边界模糊的问题。</p>
+</li>
+<li><p>[^] 修复了关系图在 <a href="http://echarts.baidu.com/option.html#series-graph.focusNodeAdjacency">focusNodeAdjacency</a> 状态下不能采用 emphasis style 的问题。</p>
+</li>
+</ul>
+<h2 id="v3-7-0">v3.7.0</h2>
+<div class="time">2017-08-16</div>
+
+<ul>
+<li><p><strong>[+] 支持了 <a href="http://echarts.baidu.com/tutorial.html#%E5%AF%8C%E6%96%87%E6%9C%AC%E6%A0%87%E7%AD%BE">富文本标签</a></strong>。富文本标签能够对文本块、文本的部分片段进行样式设置，以及支持在文本中使用图片，并且支持了更多的对齐、旋转能力，从而可以形成丰富的效果。</p>
+</li>
+<li><p><strong>[+] 支持了 <a href="http://echarts.baidu.com/option.html#legend.type">可翻页的图例</a></strong>，提供一种方案解决图例过多页面放不下或者难于自适应的问题。参见 <a href="http://echarts.baidu.com/demo.html#pie-legend">垂直图例</a> 或 <a href="http://echarts.baidu.com/demo.html#radar2">水平图例</a>。</p>
+</li>
+<li><p>[+] <code>textStyle</code> 配置项扁平化。在 echarts 中有众多的 <code>textStyle</code> 设置，例如 <a href="http://echarts.baidu.com/option.html#series-bar.label.normal.textStyle">series-bar.label.normal.textStyle</a>、<a href="http://echarts.baidu.com/option.html#xAxis.axisLabel.textStyle">xAxis.axisLabel.textStyle</a> 等等。这些 <code>textStyle</code> 有些层级过深和语法冗余，导致不方便，所以进行了扁平化，去掉了他们的 <code>textStyle</code> 这个层级。也就是从前是这种写法：<code>label.normal.textStyle.fontSize</code>、<code>axisLabel.textStyle.fontSize</code>，<code>v3.7</code> 之后，推荐这种写法 <code>label.normal.fontSize</code>、<code>axisLabel.fontSize</code>。当然，之前的写法仍然被兼容。有这些地方进行了扁平化：</p>
+<ul>
+<li><code>axisPointer.textStyle</code></li>
+<li><code>xAxis.axisLabel.textStyle</code></li>
+<li><code>yAxis.axisLabel.textStyle</code></li>
+<li><code>radar.axisLabel.textStyle</code></li>
+<li><code>singleAxis.axisLabel.textStyle</code></li>
+<li><code>radiusAxis.axisLabel.textStyle</code></li>
+<li><code>angleAxis.axisLabel.textStyle</code></li>
+<li><code>parallel.parallelAxisDefault.axisLabel.textStyle</code></li>
+<li><code>parallelAxis.axisLabel.textStyle</code></li>
+<li><code>series.label[normal|emphasis].textStyle</code></li>
+<li><code>series.data.label[normal|emphasis].textStyle</code></li>
+<li><code>series-gauge.axisLabel.textStyle</code></li>
+<li><code>series-gauge.title.textStyle</code></li>
+<li><code>series-gauge.detail.textStyle</code></li>
+<li><code>series-treemap.upperLabel[normal|emphasis].textStyle</code></li>
+<li><code>series-graph.edgeLabel[normal|emphasis].textStyle</code></li>
+<li><code>calendar.dayLabel.textStyle</code></li>
+<li><code>calendar.monthLabel.textStyle</code></li>
+<li><code>calendar.yearLabel.textStyle</code></li>
+<li><code>markPoint.label[normal|emphasis].textStyle</code></li>
+<li><code>markPoint.data.label[normal|emphasis].textStyle</code></li>
+<li><code>markLine.label[normal|emphasis].textStyle</code></li>
+<li><code>markLine.data.label[normal|emphasis].textStyle</code></li>
+<li><code>markArea.label[normal|emphasis].textStyle</code></li>
+<li><code>markArea.data.label[normal|emphasis].textStyle</code></li>
+<li><code>tooltip.axisPointer.crossStyle.textStyle</code></li>
+<li><code>axisPointer.label.textStyle</code></li>
+<li><code>timeline.label.textStyle</code></li>
+<li><code>radar.name.textStyle</code></li>
+</ul>
+</li>
+<li><p>[+] 对于时间坐标轴（即 <a href="http://echarts.baidu.com/option.html#xAxis.type">axis.type</a> 为 <code>&#39;time&#39;</code>）支持了 <a href="http://echarts.baidu.com/option.html#xAxis.minInterval">minInterval</a>。对于时间坐标轴和数值坐标轴（即 <a href="http://echarts.baidu.com/option.html#xAxis.type">axis.type</a> 为 <code>&#39;value&#39;</code>）支持了 <a href="http://echarts.baidu.com/option.html#xAxis.maxInterval">maxInterval</a>，从而能控制缩放（如 dataZoom）时刻度的最大最小范围。</p>
+</li>
+<li><p>[+] 支持了 <a href="http://echarts.baidu.com/option.html#xAxis.axisLine.onZeroAxisIndex">xAxis.axisLine.onZeroAxisIndex</a>，从而能在多轴并且需要轴 <code>onZero</code> 的场景下，灵活设置轴互相的对应关系。参见 <a href="https://github.com/apache/incubator-echarts/issues/5069">#5069</a>。</p>
+</li>
+<li><p>[+] 支持了 <code>自定义系列(custom series)</code> 不使用 <a href="http://echarts.baidu.com/option.html#series-custom.coordinateSystems">坐标系</a>。</p>
+</li>
+<li><p>[+] 支持了柱状图标签的旋转。参见 <a href="http://echarts.baidu.com/option.html#series-bar.label.normal.rotate">rotate</a>、<a href="http://echarts.baidu.com/option.html#series-bar.label.normal.align">align</a>、<a href="http://echarts.baidu.com/option.html#series-bar.label.normal.verticalAlign">verticalAlign</a>。参见 <a href="http://echarts.baidu.com/demo.html#bar-label-rotation">例子</a>。参见 <a href="https://github.com/apache/incubator-echarts/issues/5309">#5309</a>。</p>
+</li>
+<li><p>[+] 支持了 <a href="http://echarts.baidu.com/option.html#radar.indicator.color">radar.indicator.color</a>，从而雷达每个标签能设置不同颜色。参见 <a href="https://github.com/apache/incubator-echarts/issues/6128">#6128</a>。</p>
+</li>
+<li><p>[+] 支持了 <a href="http://echarts.baidu.com/option.html#dataZoom.rangeMode">dataZoom.rangeMode</a>，从而能在数据更新时固定缩放区域。参见 <a href="https://github.com/apache/incubator-echarts/issues/6040">#6128</a>。</p>
+</li>
+<li><p>[+] 支持了 <a href="http://echarts.baidu.com/api.html#action.legend.legendToggleSelect">action.legend.legendToggleSelect</a>, <a href="http://echarts.baidu.com/api.html#action.legend.legendSelect">action.legend.legendSelect</a>, <a href="http://echarts.baidu.com/api.html#action.legend.legendUnSelect">action.legend.legendUnSelect</a> 中使用 <code>dataIndex</code>。参见 <a href="https://github.com/apache/incubator-echarts/issues/4242">#4242</a>。</p>
+</li>
+<li><p>[+] 支持了 <a href="http://echarts.baidu.com/option.html#series-map.label.formatter">map.label.formatter</a>，从而方便于在地图系列中使用富文本标签。参见：<a href="http://echarts.baidu.com/demo.html#map-labels">地图标签</a>。</p>
+</li>
+<li><p>[+] 支持了 <a href="http://echarts.baidu.com/option.html#title.borderRadius">title.borderRadius</a> 和 <a href="http://echarts.baidu.com/option.html#legend.borderRadius">legend.borderRadius</a>，从而他们能绘制圆角的背景或边框。</p>
+</li>
+<li><p>[^] 修复了在 IE 某些版本中饼图和折线图中设置了阴影效果后偶见的异常。参见 <a href="https://github.com/apache/incubator-echarts/issues/5777">#5777</a>。</p>
+</li>
+<li><p>[^] 修复了地图中如果 <code>nameMap</code> 被设置且某些区域没有数据时，<code>tooltip</code> 中得不到区域名的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/5633">#5633</a>。</p>
+</li>
+<li><p>[^] 修复了百度地图扩展中，地图平移后 tooltip 位置错误的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/6211">#6211</a>。</p>
+</li>
+<li><p>[^] 修复了 <code>axisPointer</code> 偶发的报错。参见 <a href="https://github.com/apache/incubator-echarts/issues/6121">#6121</a>。</p>
+</li>
+<li><p>[^] 修复了热力图高度为 0 时的报错。参见 <a href="https://github.com/apache/incubator-echarts/issues/6214">#6214</a>。</p>
+</li>
+<li><p>[+] 修复了 <a href="http://echarts.baidu.com/option.html#series-candlestick">candlestick</a> 第一个数据项为空时的异常。参见 <a href="https://github.com/apache/incubator-echarts/issues/6059">#6059</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#series-bar.dimensions">series-bar.dimensions</a> 无效的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/6252">#6252</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#series-custom">自定义系列(custom series)</a> 中 <code>group</code> 中子元素数目不确定时不能正确删除的问题。</p>
+</li>
+<li><p>[^] 修复了 在 <code>setOption</code> 执行之前调用 <code>connect</code> 时会抛出的异常。参见 <a href="https://github.com/apache/incubator-echarts/issues/6281">#6281</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#tooltip.confine">tooltip.confine</a> 时的边界判断。参见 <a href="https://github.com/apache/incubator-echarts/issues/6277">#6277</a> 和 <a href="https://github.com/apache/incubator-echarts/commit/0da06d8">0da06d8</a>。</p>
+</li>
+<li><p>[^] 修复了柱状图重叠（同时设置了 <code>barWidth</code> 和 <code>barGap: &#39;-100%&#39;</code>）时在窄窗中的不正常。参见 <a href="https://github.com/apache/incubator-echarts/issues/6312">#6312</a>。</p>
+</li>
+<li><p>[^] 修复了精度问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/6371">#6371</a>。</p>
+</li>
+</ul>
+<h2 id="v3-6-2">v3.6.2</h2>
+<div class="time">2017-06-15</div>
+
+<ul>
+<li><p>[+] <a href="http://echarts.baidu.com/option.html#series-custom">自定义系列（custom series）</a> 支持 <a href="https://github.com/apache/incubator-echarts/tree/master/extension/bmap">百度地图插件（bmap）</a>。参见 <a href="http://echarts.baidu.com/demo.html#map-polygon">示例 1</a> 和 <a href="http://echarts.baidu.com/demo.html#map-bin">示例 2</a>。</p>
+</li>
+<li><p>[+] <a href="http://echarts.baidu.com/option.html#series-treemap">treemap</a> 支持父节点标签的显示。参见 <a href="http://echarts.baidu.com/demo.html#treemap-show-parent">示例</a>。参见：<a href="https://github.com/apache/incubator-echarts/issues/5869">#5869</a>、<a href="https://github.com/apache/incubator-echarts/issues/5579">#5579</a>。</p>
+</li>
+<li><p>[+] 支持图形元素上的鼠标 cursor 样式指定：<a href="http://echarts.baidu.com/option.html#series-line.cursor">series-line.cursor</a>、<a href="http://echarts.baidu.com/option.html#series-bar.cursor">series-bar.cursor</a>、<a href="http://echarts.baidu.com/option.html#series-pie.cursor">series-pie.cursor</a>、<a href="http://echarts.baidu.com/option.html#series-scatter.cursor">series-scatter.cursor</a>、<a href="http://echarts.baidu.com/option.html#series-effectScatter.cursor">series-effectScatter.cursor</a>、<a href="http://echarts.baidu.com/option.html#series-graph.cursor">series-graph.cursor</a>、<a href="http://echarts.baidu.com/option.html#series-pictorialBar.cursor">series-pictorialBar.cursor</a>。</p>
+</li>
+<li><p>[+] 支持了 <a href="http://echarts.baidu.com/option.html#series-pictorialBar.symbolBoundingData">series-pictorialBar.symbolBoundingData</a> 可以同时设置正向的值和负向的值。参见 <a href="https://github.com/apache/incubator-echarts/issues/5793">#5793</a>。</p>
+</li>
+<li><p>[+] <code>graph</code> 支持通过设置 <a href="http://echarts.baidu.com/option.html#series-graph.data.fixed">fixed</a> 固定力引导布局中的指定节点。参见 <a href="https://github.com/apache/incubator-echarts/issues/5966">#5966</a>。</p>
+</li>
+<li><p>[+] <code>treemap</code> 支持了 <a href="http://echarts.baidu.com/option.html#series-treemap.label.normal.formatter">label.formatter</a>。参见 <a href="https://github.com/apache/incubator-echarts/issues/5757">#5757</a>。</p>
+</li>
+<li><p>[+] <code>timeline</code> 支持了 <a href="http://echarts.baidu.com/option.html#timeline.label.normal.textStyle.align">label.normal.textStyle.align</a> 和 <a href="http://echarts.baidu.com/option.html#timeline.label.normal.textStyle.basealign">label.normal.textStyle.basealign</a>。参见 <a href="https://github.com/apache/incubator-echarts/issues/5960">#5960</a>。</p>
+</li>
+<li><p>[^] 修正了当 <a href="http://echarts.baidu.com/demo.html#scatter-large">large scatter</a> 缩放后，<code>tooltip</code> 不显示的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/5837">#5837</a>。</p>
+</li>
+<li><p>[^] 修正了触发 <a href="http://echarts.baidu.com/api.html#action.tooltip.showTip">showTip</a> action 时 <code>position</code> 参数无效的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/5874">#5874</a>。</p>
+</li>
+<li><p>[^] 修正了因精度导致的有时 <a href="http://echarts.baidu.com/option.html#series-pie">pie</a> 显示出的百分比总值不足 <code>100%</code> 的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/5850">#5850</a>。</p>
+</li>
+<li><p>[^] 修正了当 <code>series.name</code> 相同时，只会显示最后一个系列的 <code>markPoint</code> 或 <code>markLine</code> 的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/5712">#5712</a>。</p>
+</li>
+<li><p>[^] 修正了 <a href="http://echarts.baidu.com/option.html#series-bar.itemStyle.normal.barBorderRadius">barBorderRadius</a> 在水平条形图中不工作的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/5943">#5943</a>。</p>
+</li>
+<li><p>[^] 修正了 <a href="http://echarts.baidu.com/option.html#dataZoom-inside">dataZoom-inside</a> 使用在 Y 轴时缩放点错误的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/5278">#5278</a>。</p>
+</li>
+<li><p>[^] 修正了 <a href="http://echarts.baidu.com/option.html#series-radar">radar</a> 在某些数据中绘制不出的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/5986">#5986</a>。</p>
+</li>
+</ul>
+<h2 id="v3-6-1">v3.6.1</h2>
+<div class="time">2017-05-26</div>
+
+<p>[Recovery Build]</p>
+<ul>
+<li>[^] 修正了 <a href="http://echarts.baidu.com/option.html#series-line.sampling">data sampling</a> 的失效。</li>
+<li>[^] 修正了 使用 webpack 编译时在 ie11 中的问题。参见 <a href="https://github.com/ecomfe/zrender/issues/189">zrender/#189</a>。</li>
+</ul>
+<h2 id="v3-6-0">v3.6.0</h2>
+<div class="time">2017-05-25</div>
+
+<ul>
+<li><p><strong>[+] 发布自定义系列 <a href="http://echarts.baidu.com/option.html#series-custom">custom series</a></strong> 自定义系列能让用户定制渲染逻辑，从而在已有坐标系中绘制自定义的图表。参见 <a href="http://echarts.baidu.com/examples.html#chart-type-custom">示例</a>。</p>
+</li>
+<li><p><strong>[+] 支持极坐标柱状图</strong> 参见 <a href="http://echarts.baidu.com/demo.html#bar-polar-stack">示例1</a>、<a href="http://echarts.baidu.com/demo.html#bar-polar-stack-radial">示例2</a>、<a href="http://echarts.baidu.com/demo.html#bar-polar-real-estate">示例3</a>。</p>
+</li>
+<li><p>[+] 支持了 <a href="http://echarts.baidu.com/option.html#series-scatter.encode">encode</a> 设定，可以指定 <a href="http://echarts.baidu.com/option.html#series-scatter.data">data</a> 中哪些维度映射到坐标系中哪个轴，或者哪些维度在 <a href="http://echarts.baidu.com/option.html#tooltip">tooltip</a> 以及 <a href="http://echarts.baidu.com/option.html#series-scatter.label">label</a> 中显示。[Break Change]: <code>cartesian2d</code> 中的第三个维度的默认名称从 <code>&#39;z&#39;</code> 改为了 <code>&#39;value&#39;</code>，如果在 <a href="http://echarts.baidu.com/option.html#visualMap.dimension">visualMap.dimension</a> 中使用了 <code>&#39;z&#39;</code> 这个名称，请改为 <code>&#39;value&#39;</code> 或者 <code>2</code>。</p>
+</li>
+<li><p>[+] 支持了 <a href="http://echarts.baidu.com/option.html#series-scatter.dimensions">dimensions</a> 设定，能指定 <a href="http://echarts.baidu.com/option.html#series-scatter.data">data</a> 中每个维度的名称和类型。名称可以显示在默认 <a href="http://echarts.baidu.com/option.html#tooltip">tooltip</a> 中。</p>
+</li>
+<li><p>[+] <code>dataZoom</code> 支持了 <a href="http://echarts.baidu.com/option.html#dataZoom.minSpan">minSpan</a> 和 <a href="http://echarts.baidu.com/option.html#dataZoom.maxSpan">maxSpan</a>。参见 <a href="https://github.com/apache/incubator-echarts/issues/2843">#2843</a>。</p>
+</li>
+<li><p>[+] <code>dataZoom</code> 支持了 <a href="http://echarts.baidu.com/option.html#dataZoom-inside.moveOnMouseMove">moveOnMouseMove</a> 和 <a href="http://echarts.baidu.com/option.html#dataZoom-inside.zoomOnMouseWheel">zoomOnMouseWheel</a>，从而能够设定按住 &#39;ctrl&#39; 键或者 &#39;alt&#39; 键或者 &#39;shift&#39; 键同时滚动滚轮触发 dataZoom。此外，支持了 <a href="http://echarts.baidu.com/option.html#dataZoom-inside.preventDefaultMouseMove">preventDefaultMouseMove</a> 设置，参见 <a href="https://github.com/apache/incubator-echarts/issues/5769">#5769</a>。</p>
+</li>
+<li><p>[+] <code>dataZoom</code> 的 <a href="http://echarts.baidu.com/option.html#dataZoom-slider.handleIcon">handleIcon</a> 支持使用 image。</p>
+</li>
+<li><p>[^] 修正了世界地图的边界问题。</p>
+</li>
+<li><p>[^] 修正了当 <a href="http://echarts.baidu.com/option.html#xAxis.min">min</a> 被设置时，<a href="http://echarts.baidu.com/option.html#xAxis.minInterval">minInterval</a> 不能正常工作的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/4838">#4838</a>。</p>
+</li>
+<li><p>[^] 修正了 Object 默认属性导致的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/5576">#5576</a>。</p>
+</li>
+<li><p>[^] 修正了 legend 选择变化时进行 <code>setOption</code> 时 <a href="http://echarts.baidu.com/option.html#graphic">graphic</a> 导致的错误。参见 <a href="https://github.com/apache/incubator-echarts/issues/5783">#5783</a>。</p>
+</li>
+<li><p>[^] 修正了 <code>parallel</code> 对 <a href="http://echarts.baidu.com/option.html#parallelAxis.axisLabel.interval">axisLabel.interval</a> 的支持。参见 <a href="https://github.com/apache/incubator-echarts/issues/5694">#5694</a>。</p>
+</li>
+<li><p>[^] 增强了 <code>dataZoom</code> 控件的交互。</p>
+</li>
+<li><p>[^] 修正了 <a href="http://echarts.baidu.com/option.html#series-pie.minAngle">minAngle</a> 在玫瑰图上的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/5617">#5617</a>。</p>
+</li>
+<li><p>[^] 修正了 tooltip 更新时报错的问题。</p>
+</li>
+</ul>
+<h2 id="v3-5-4">v3.5.4</h2>
+<div class="time">2017-04-27</div>
+
+<ul>
+<li>[^] 修复了对 <a href="https://github.com/ecomfe/echarts-liquidfill">水球图</a> clipPath 的支持问题。</li>
+<li>[^] 修复了 <code>label</code> 设置为 <code>insideTop</code> 时的位置。</li>
+<li>[^] 修复了 <a href="http://www.w3.org/TR/SVG/paths.html#PathData">SVG PathData</a> transform 时的问题。</li>
+</ul>
+<h2 id="v3-5-3">v3.5.3</h2>
+<div class="time">2017-04-14</div>
+
+<ul>
+<li><p>[^] 修复了 <code>option</code> 中 <code>left</code> <code>right</code> <code>width</code> <code>top</code> <code>bottom</code> <code>height</code> 的默认选取问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/5440">#5440</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/api.html#action.tooltip.showTip">showTip</a> 使用像素点位置传入时的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/5449">#5449</a>。</p>
+</li>
+<li><p>[^] 优化了只有一个数据时 <a href="http://echarts.baidu.com/option.html#xAxis.boundaryGap">boundaryGap</a> 的效果。参见 <a href="https://github.com/apache/incubator-echarts/issues/4417">#4417</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#series-gauge.animationEasing">gauge</a> 的动画效果设置。参见 <a href="https://github.com/apache/incubator-echarts/issues/5451">#5451</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#series-treemap">treemap</a> 数据值相同时，排序不稳定的问题。</p>
+</li>
+<li><p>[^] 修正了组件重叠时 roam 以及 brush 之间的冲突。</p>
+</li>
+<li><p>[^] 扩大了 <a href="http://echarts.baidu.com/option.html#parallelAxis.nameRotate">parallel axis name</a> 倾斜时的文字可显示区域，能显示更长的维度标题。</p>
+</li>
+<li><p>[^] 使 <a href="http://echarts.baidu.com/option.html#toolbox.feature.brush.type">toolbox 清除选区按钮</a> 能够清除<a href="http://echarts.baidu.com/option.html#parallelAxis">parallelAxis</a> 的选区。</p>
+</li>
+<li><p>[^] 优化了 <code>zrender</code> 图形性能，最高提升 50%。</p>
+</li>
+</ul>
+<h2 id="v3-5-2">v3.5.2</h2>
+<div class="time">2017-04-05</div>
+
+<ul>
+<li><p>[+] 增加了 <a href="http://echarts.baidu.com/option.html#useUTC">useUTC</a> 配置项，支持按照 UTC 或本地时间显示 <code>axisLabel</code> 和 <code>tooltip</code>。并且修改了时间解析和显示的默认设定：默认在 <code>axisLabel</code> 和 <code>tooltip</code> 中显示本地时间，<code>data</code> 中使用没指定时区的时间字符串时默认解析为本地时间。参见 <a href="http://echarts.baidu.com/option.html#series-line.data">series.data 中时间类型部分</a>。修复了 <code>axis.type</code> 为 <code>&#39;time&#39;</code> 时默认按照 UTC 取刻度的问题。修复了 <a href="https://github.com/apache/incubator-echarts/issues/5396">#5396</a> 和 <a href="https://github.com/apache/incubator-echarts/issues/5393">#5393</a>。</p>
+</li>
+<li><p>[+] 增加了 <a href="http://echarts.baidu.com/option.html#xAxis.axisLabel.showMinLabel">axisLabel.showMinLabel</a> 和 <a href="http://echarts.baidu.com/option.html#xAxis.axisLabel.showMaxLabel">axisLabel.showMaxLabel</a>。</p>
+</li>
+<li><p>[+] 支持 <a href="http://echarts.baidu.com/option.html#series-funnel.sort">funnel.sort</a> 按照 index 排序或自定义排序。</p>
+</li>
+<li><p>[^] 修复了 <code>axisTick</code> 浮点数精度错误的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/5041">#5041</a>。</p>
+</li>
+<li><p>[^] 修复了 <code>axisTick</code> 数值过小时不显示的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/5386">#5386</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#tooltip.trigger">tooltip.trigger</a> 为 <code>&#39;axis&#39;</code> 时使用 <code>dispatchAction</code> 触发 <a href="http://echarts.baidu.com/api.html#action.tooltip.showTip">showTip</a> 无效的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/5423">#5423</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#visualMap">visualMap</a> 使 <a href="http://echarts.baidu.com/option.html#series-map">map</a> 的 <code>itemStyle</code> 失效的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/5388">#5388</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#tooltip.trigger">tooltip.trigger</a> 不支持 <code>&#39;none&#39;</code> 的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/5400">#5400</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#series-sankey">sankey</a> 在 ie11 上的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/3306">#3306</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#series-parallel">parallel</a> 的 <code>data.lineStyle.color</code> 无效的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/5363">#5363</a>。</p>
+</li>
+</ul>
+<h2 id="v3-5-1">v3.5.1</h2>
+<div class="time">2017-03-23</div>
+
+<p>Recovery Build</p>
+<ul>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#tooltip.formatter">tooltip.formatter</a> 为函数时返回值为 <code>null</code>/<code>undefined</code> 时显示 <code>&quot;undefined&quot;</code> 的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/5352">#5352</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#visualMap">visualMap 组件</a> 处理 rgba 不正确的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/5350">#5350</a>。</p>
+</li>
+</ul>
+<h2 id="v3-5-0">v3.5.0</h2>
+<div class="time">2017-03-23</div>
+
+<ul>
+<li><p><strong>[+] 发布日历图（日历坐标系）<a href="http://echarts.baidu.com/option.html#calendar">calendar</a></strong> 参见 <a href="http://echarts.baidu.com/examples.html#calendar">示例</a>。</p>
+</li>
+<li><p><strong>[+] 发布统计插件 <a href="https://github.com/ecomfe/echarts-stat">echarts-stat</a></strong></p>
+</li>
+<li><p><strong>[+] 坐标轴指示器增强</strong> 参见示例：<a href="http://echarts.baidu.com/examples.html#candlestick-brush">联动</a>、 <a href="http://echarts.baidu.com/examples.html#line-tooltip-touch">移动端（触屏）1</a>、<a href="http://echarts.baidu.com/examples.html#candlestick-touch">移动端（触屏）2</a>、<a href="http://echarts.baidu.com/examples.html#scatter-nutrients-matrix">分析</a>、<a href="http://echarts.baidu.com/examples.html#multiple-y-axis">多Y轴</a>、<a href="http://echarts.baidu.com/examples.html#multiple-x-axis">多X轴</a>。支持和修复了 <a href="https://github.com/apache/incubator-echarts/issues/5040">#5040</a>，<a href="https://github.com/apache/incubator-echarts/issues/5039">#5039</a>，<a href="https://github.com/apache/incubator-echarts/issues/5102">#5102</a>，<a href="https://github.com/apache/incubator-echarts/issues/5262">#5262</a>，<a href="https://github.com/apache/incubator-echarts/issues/4905">#4905</a>，<a href="https://github.com/apache/incubator-echarts/issues/4921">#4921</a>，<a href="https://github.com/apache/incubator-echarts/issues/5091">#5091</a></p>
+</li>
+<li><p>[+] 增强了 <code>echarts.util.parseDate</code> 方法，支持多种日期表达式的统一解析成 UTC 时间。参见 <a href="http://echarts.baidu.com/option.html#series-line.data">series.data 中时间类型部分</a></p>
+</li>
+<li><p>[^] 优化了 GeoJSON 的处理。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#toolbox.feature.dataZoom">toolbox 中 dataZoom</a> 不能同时控制多个 x 轴问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/4896">#4896</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#dataZoom">dataZoom</a> 中 category 轴的默认范围。参见 <a href="https://github.com/apache/incubator-echarts/issues/5226">#5226</a>。</p>
+</li>
+<li><p>[^] disConnect 函数命名修改为 disconnect。参见 <a href="https://github.com/apache/incubator-echarts/issues/5208">#5208</a>。</p>
+</li>
+<li><p>[^] 去除了指定 <code>width,height</code> 初始化 echarts 时的不正确提示。参见 <a href="https://github.com/apache/incubator-echarts/issues/4569">#4569</a>。</p>
+</li>
+<li><p>[^] 修复漏斗图 tooltip 不能支持百分比问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/4347">#4347</a> 和 <a href="https://github.com/apache/incubator-echarts/pull/4332">#4332</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#series.gauge">gauge</a> 指针颜色的 <code>&#39;auto&#39;</code> 模式。参见 <a href="https://github.com/apache/incubator-echarts/issues/5109">#5109</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#series-gauge.pointer.show">series-gauge.pointer.show</a> 为 <code>false</code> 时出错的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/4944">#4944</a>。</p>
+</li>
+<li><p>修复 treemap 数据初始化使自动类型判断的不准确。</p>
+</li>
+<li><p>修复了 <a href="http://echarts.baidu.com/option.html#toolbox">toolbox</a> 样式。参见 <a href="https://github.com/apache/incubator-echarts/issues/3591">#3591</a>。</p>
+</li>
+<li><p>改进了在类目轴（category axis）上的 <a href="http://echarts.baidu.com/option.html#brush">刷选</a>行为。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#visualMap-piecewise.categories">visualMap-piecewise.categories</a> 如果是数字字符串则不正常的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/4960">#4960</a>。</p>
+</li>
+</ul>
+<h2 id="v3-4-0">v3.4.0</h2>
+<div class="time">2017-01-12</div>
+
+<ul>
+<li><p><strong>[+] 发布象形柱图：<a href="http://echarts.baidu.com/option.html#series-pictorialBar">pictorialBar</a>。参见<a href="http://echarts.baidu.com/examples.html#chart-type-pictorialBar">例子</a>。</strong></p>
+</li>
+<li><p><strong>[+] 发布主题河流图：<a href="http://echarts.baidu.com/option.html#series-themeRiver">themeRiver</a>。参见<a href="http://echarts.baidu.com/examples.html#chart-type-themeRiver">例子</a>。</strong></p>
+</li>
+<li><p>[+] <a href="http://echarts.baidu.com/option.html#series-map">map series</a> 可以使用用户指定的 <a href="http://echarts.baidu.com/option.html#geo">geo 坐标系</a> 了（原先是只能使用内置的 geo 坐标系）。从而，geo 坐标系可以使用 <a href="http://echarts.baidu.com/option.html#series-map">map series</a> 控制自身的颜色，并且 <a href="http://echarts.baidu.com/option.html#series-map">map series</a> 可以和其他类型的 series（如 <a href="http://echarts.baidu.com/option.html#series-scatter">scatter series</a>）共享 geo 坐标系。参见 <a href="http://echarts.baidu.com/option.html#series-map.geoIndex">series-map.geoIndex</a>。</p>
+</li>
+<li><p>[+] 增加了 <a href="http://echarts.baidu.com/api.html#action.graph.focusNodeAdjacency">focusNodeAdjacency action</a>，从而能用 API 控制 <a href="http://echarts.baidu.com/option.html#series-geo">graph</a> 的连接高亮。</p>
+</li>
+<li><p>[+] 增加了 <a href="http://echarts.baidu.com/option.html#series-pie.animationType">series-pie.animationType</a>，支持不同的饼图动画效果。</p>
+</li>
+<li><p>[+] <a href="http://echarts.baidu.com/option.html#animationDuration">animationDuration</a> 增加了回调函数支持，可以根据不同的数据项得到不同的动画时长。</p>
+</li>
+<li><p>[+] <a href="http://echarts.baidu.com/option.html#xAxis.type">category axis</a> 支持了 <a href="http://echarts.baidu.com/option.html#xAxis.min">min</a> <a href="http://echarts.baidu.com/option.html#xAxis.max">max</a> 的设置。</p>
+</li>
+<li><p>[+] <a href="http://echarts.baidu.com/option.html#xAxis.type">category axis</a> 默认情况会显示所有的类目，不论是否有类目中没有数据（原先两端的没有数据的类目不会被显示）。</p>
+</li>
+<li><p>[+] 使用 <a href="http://echarts.baidu.com/option.html#singleAxis">singleAxis</a> 时，<code>series.data</code> 支持了一维数组的数据格式，如 <code>[11, 23, 44]</code>。</p>
+</li>
+<li><p>[+] <a href="http://echarts.baidu.com/option.html#dataZoom">dataZoom</a> 支持了 <a href="http://echarts.baidu.com/option.html#singleAxis">singleAxis</a>。</p>
+</li>
+<li><p>[+] 开放了 throttle 工具方法：<code>chart.util.throttle</code>。</p>
+</li>
+<li><p>[+] <a href="http://echarts.baidu.com/option.html#series-candlestick">K 线图</a> 支持了 <a href="http://echarts.baidu.com/option.html#series-candlestick.barWidth">barWidth</a>，<a href="http://echarts.baidu.com/option.html#series-candlestick.barMinWidth">barMinWidth</a>，<a href="http://echarts.baidu.com/option.html#series-candlestick.barMaxWidth">barMaxWidth</a> 设置。参见 <a href="https://github.com/apache/incubator-echarts/issues/4783">#4783</a>。</p>
+</li>
+<li><p>[+] <a href="http://echarts.baidu.com/option.html#series-lines">线图</a> 支持了 <a href="http://echarts.baidu.com/option.html#series-lines.symbol">symbol</a>, <a href="http://echarts.baidu.com/option.html#series-lines.symbolSize">symbolSize</a> 设置。</p>
+</li>
+<li><p>[+] 支持了 <a href="http://echarts.baidu.com/option.html#visualMap-piecewise">visualMap-piecewise</a> 中数据标签和首尾的文本同时显示。参见 <a href="http://echarts.baidu.com/option.html#visualMap-piecewise.showLabel">visualMap-piecewise.showLabel</a> 参见 <a href="https://github.com/apache/incubator-echarts/issues/4845">#4845</a>。</p>
+</li>
+<li><p>[+] 一个系列使用 <a href="http://echarts.baidu.com/option.html#visualMap">visualMap</a> 做视觉映射时，现在允许了系列中的某些数据项不受 <code>visualMap</code> 控制，从而能使用系列的自身的视觉定义定义（颜色、形状等）。参见 <a href="http://echarts.baidu.com/option.html#visualMap">visualMap</a> 中 <code>视觉映射方式的配置</code> 一节的描述。</p>
+</li>
+<li><p>[^] 优化了 <a href="http://echarts.baidu.com/option.html#grid">直角坐标系</a> 中数据全不显示时的显示效果。</p>
+</li>
+<li><p>[^] 在 <a href="http://echarts.baidu.com/api.html#action.tooltip.showTip">showTip</a> 事件中开放了 <code>dataIndex</code> 参数。</p>
+</li>
+<li><p>[^] 修复了 tooltip 中的 XSS 隐患。参见 <a href="https://github.com/apache/incubator-echarts/issues/4769">#4769</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#series-graph.edgeLabel">series-graph.edgeLabel</a> 中部分属性无效的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/4555">#4555</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#series-gauge">series-gauge</a> 中 <code>min</code> <code>max</code> 是 <code>stirng</code> 时的 tick 渲染问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/4617">#4617</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#series-gauge.pointer.show">series-gauge.pointer.show</a> 的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/4618">#4618</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#series-radar">series-radar</a> 在无数据时渲染可能抛错的问题。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#series-line.markArea.label.normal.show">markArea.label.normal.show</a> 的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/4723">#4723</a>。</p>
+</li>
+<li><p>[^] 优化了 <a href="http://echarts.baidu.com/option.html#yAxis.type">log 数轴</a> 中，数据小于等于 0 时的处理。参见 <a href="https://github.com/apache/incubator-echarts/issues/4743">#4743</a> 和 <a href="https://github.com/apache/incubator-echarts/issues/3161">#3161</a>。</p>
+</li>
+</ul>
+<h2 id="v3-3-2">v3.3.2</h2>
+<div class="time">2016-11-24</div>
+
+<ul>
+<li><p><strong>[+] 开放图形元素设置：<a href="http://echarts.baidu.com/option.html#graphic">graphic</a>。参见<a href="http://echarts.baidu.com/gallery/editor.html?c=line-y-category">http://echarts.baidu.com/gallery/editor.html?c=line-y-category</a> 和 <a href="http://echarts.baidu.com/gallery/editor.html?c=line-draggable">http://echarts.baidu.com/gallery/editor.html?c=line-draggable</a> 和 <a href="http://echarts.baidu.com/gallery/editor.html?c=map-province">http://echarts.baidu.com/gallery/editor.html?c=map-province</a>。</strong></p>
+</li>
+<li><p>[+] 增加了 <a href="http://echarts.baidu.com/option.html#series-treemap.visualMin">visualMin</a> 和 <a href="http://echarts.baidu.com/option.html#series-treemap.visualMax">visualMax</a>，增强了 <a href="http://echarts.baidu.com/option.html#series-treemap">treemap</a> 的颜色映射能力。参见 <a href="https://github.com/apache/incubator-echarts/issues/2509">#2509</a>。</p>
+</li>
+<li><p>[+] 增加了 <a href="http://echarts.baidu.com/option.html#tooltip.confine">tooltip.confine</a>，可以把 tooltip 限制在 chart 主容器范围中。这对于小屏、以及外层 dom 有设 <code>overflow:hidden</code> 的场景比较有用。</p>
+</li>
+<li><p>[^] 改善了 <a href="http://echarts.baidu.com/option.html#geo">geo</a> / <a href="http://echarts.baidu.com/option.html#series-map">map</a> 在触屏上的选择和 roam 体验。</p>
+</li>
+<li><p>[^] 修复 <a href="http://echarts.baidu.com/api.html#echartsInstance.containPixel">containPixel</a> 在 <a href="http://echarts.baidu.com/option.html#geo">geo</a> / <a href="http://echarts.baidu.com/option.html#series-graph">graph</a> 中的判断错误。参见 <a href="https://github.com/apache/incubator-echarts/issues/4405">#4405</a>。</p>
+</li>
+<li><p>[^] 增强了 <a href="http://echarts.baidu.com/option.html#visualMap">visualMap</a> 对 <a href="http://echarts.baidu.com/option.html#series-line">line</a> 图的映射。</p>
+</li>
+<li><p>[^] 修正了 <a href="http://echarts.baidu.com/option.html#visualMap">visualMap</a> 对于 symbol 的映射问题。</p>
+</li>
+<li><p>[^] 使 <a href="http://echarts.baidu.com/option.html#dataZoom">dataZoom</a> 的 label 在非 <a href="http://echarts.baidu.com/option.html#dataZoom.realtime">realtime</a> 情况下实时更新。参见 <a href="https://github.com/apache/incubator-echarts/issues/4434">#4434</a>。</p>
+</li>
+<li><p>[^] 修复 <a href="http://echarts.baidu.com/option.html#dataZoom">dataZoom</a> 缩放时高亮不正确问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/4475">#4475</a>。</p>
+</li>
+<li><p>[^] 修复了移动端禁止了浏览器默认滑动的错误。参见 <a href="https://github.com/apache/incubator-echarts/issues/4393">#4393</a>。</p>
+</li>
+<li><p>[^] 修复 MS Edge 浏览器中不能保存为图片的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/2451">#2451</a> 和 <a href="https://github.com/apache/incubator-echarts/issues/3586">#3586</a>。</p>
+</li>
+<li><p>[^] 修复 <a href="http://echarts.baidu.com/option.html#tooltip">tooltip</a> 中对 <code>&#39;time&#39;</code> 类型的轴的格式化问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/4398">#4398</a>。</p>
+</li>
+<li><p>[^] 修复第一个系列为空数据的时候多系列 <a href="http://echarts.baidu.com/option.html#tooltip">tooltip</a> 可能不显示的 bug。</p>
+</li>
+<li><p>[^] 修复 <a href="http://echarts.baidu.com/option.html#grid.containLabel">grid.containLabel</a> 对大 fontSize 无效的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/3805">#3805</a>。</p>
+</li>
+<li><p>[^] 修复 <code>echarts.extendSeriesModel</code> 错误。参见 <a href="https://github.com/apache/incubator-echarts/issues/4397">#4397</a>。</p>
+</li>
+<li><p>[^] 修复 <a href="http://echarts.baidu.com/option.html#series-pie">pie</a> 中 <code>clockwise</code> 设置为 <code>false</code> 并且使用了 <code>minAngle</code> 时的渲染错误。参见 <a href="https://github.com/apache/incubator-echarts/issues/4414">#4414</a>。</p>
+</li>
+<li><p>[^] 修复使用 gradient color 时 <a href="http://echarts.baidu.com/option.html#tooltip">tooltip</a> 中圆点颜色错误，参见 <a href="https://github.com/apache/incubator-echarts/issues/3994">#3994</a>。</p>
+</li>
+</ul>
+<h2 id="v3-3-1">v3.3.1</h2>
+<div class="time">2016-11-03</div>
+
+<p>Recovery Build</p>
+<ul>
+<li>[^] 修复移动端 touch 事件出错的问题，参见 <a href="https://github.com/apache/incubator-echarts/issues/4384">#4384</a>。</li>
+</ul>
+<h2 id="v3-3-0">v3.3.0</h2>
+<div class="time">2016-11-01</div>
+
+<ul>
+<li><p>[+] 开放坐标转换 API：<a href="http://echarts.baidu.com/api.html#echartsInstance.convertToPixel">convertToPixel</a> 和 <a href="http://echarts.baidu.com/api.html#echartsInstance.convertFromPixel">convertFromPixel</a>。参见例子 [<a href="http://echarts.baidu.com/gallery/editor.html?c=line-draggable">http://echarts.baidu.com/gallery/editor.html?c=line-draggable</a>] 和 [<a href="http://echarts.baidu.com/gallery/editor.html?c=line-pen">http://echarts.baidu.com/gallery/editor.html?c=line-pen</a>]</p>
+</li>
+<li><p>[+] 开放坐标判断 API：<a href="http://echarts.baidu.com/api.html#echartsInstance.containPixel">containPixel</a>。</p>
+</li>
+<li><p>[+] <a href="http://echarts.baidu.com/option.html#polar">polar</a> 支持了 <a href="http://echarts.baidu.com/option.html#dataZoom">dataZoom</a>。参见 <a href="https://github.com/apache/incubator-echarts/issues/4090">#4090</a>。</p>
+</li>
+<li><p>[+] 支持在 echarts 初始化时直接显式指定 <code>width</code>/<code>height</code>，参见 <a href="http://echarts.baidu.com/api.html#echarts.init">echarts.init</a>。这可以方便某些『在 container dom 渲染之前就需要初始化 echarts』的场景。</p>
+</li>
+<li><p>[+] 在 <a href="http://echarts.baidu.com/option.html#toolbox">toolbox</a> 中加入了 <a href="http://echarts.baidu.com/option.html#toolbox.iconStyle.normal.textPosition">textPosition</a> 和 <a href="http://echarts.baidu.com/option.html#toolbox.iconStyle.normal.textAlign">textAlign</a> 的设置。参见 <a href="https://github.com/apache/incubator-echarts/issues/4104">#4104</a>。</p>
+</li>
+<li><p>[+] visualMap 新加配置 <a href="http://echarts.baidu.com/option.html#visualMap-piecewise.minOpen">visualMap-piecewise.minOpen</a> 和 <a href="http://echarts.baidu.com/option.html#visualMap-piecewise.maxOpen">visualMap-piecewise.maxOpen</a>。</p>
+</li>
+<li><p>[^] 修复 setOption 时 <code>series.name</code> 不更新的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/4033">#4033</a>。</p>
+</li>
+<li><p>[^] 修复了对 echarts 使用 css-transform 后，鼠标响应位置错误的问题。</p>
+</li>
+<li><p>[^] 修复了 JavaScript 的 <code>Object.prototype</code> 被扩展后，会出错的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/4129">#4129</a>。</p>
+</li>
+<li><p>[^] 修复了 ios10、macOS 上圆形 emptySymbol 被绘制为方形的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/4136">#4136</a> 和 <a href="https://github.com/apache/incubator-echarts/issues/4150">#4150</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#series-lines">lines</a> 图中，使用 <a href="http://echarts.baidu.com/option.html#series-lines.polyline">polyLine</a> 时图标不能朝向运行方向的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/4060">#4060</a>。以及其他小问题 <a href="https://github.com/apache/incubator-echarts/issues/4346">#4346</a>。</p>
+</li>
+<li><p>[^] 修复了 对 <a href="http://echarts.baidu.com/option.html#series-line">line</a> 释以 <a href="http://echarts.baidu.com/option.html#visualMap">visualMap</a> 时区间过小导致线消失的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/4221">#4221</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#tooltip">tooltip</a> 在触屏上不灵便的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/3900">#3900</a>。</p>
+</li>
+<li><p>[^] 修复了开启动画时区域图更细问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/3956">#3956</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/api.html#events.timelinechanged">timelinechanged</a> 事件中 currentIndex 不一致问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/4161">#4161</a>。</p>
+</li>
+<li><p>[^] 修复了某些图中使用 <a href="http://echarts.baidu.com/api.html#echartsInstance.clear">clear</a> 时内存不能释放的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/4105">#4105</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/api.html#events.%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6.globalout">globalout</a> 事件无效的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/4169">#4169</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#graph">graph</a> 在环形布局时可能节点重叠的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/4084">#4084</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#xAxis.type">对数轴</a> 的 label 的显示精度问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/4158">#4158</a>。</p>
+</li>
+<li><p>[^] 当 <a href="http://echarts.baidu.com/option.html#xAxis.type">axis.type</a> 为 <code>&#39;time&#39;</code> 时，支持 <a href="http://echarts.baidu.com/option.html#xAxis.min">axis.min</a> / <a href="http://echarts.baidu.com/option.html#xAxis.max">axis.max</a> 设置为 Date 类型。参见 <a href="https://github.com/apache/incubator-echarts/issues/4097">#4097</a>。</p>
+</li>
+<li><p>[^] 修复了使用 <a href="http://echarts.baidu.com/option.html#xAxis.minInterval">minInterval</a> 时轴的错误。参见 <a href="https://github.com/apache/incubator-echarts/issues/4162">#4162</a>。</p>
+</li>
+<li><p>[^] 优化 <a href="http://echarts.baidu.com/option.html#series-treemap.breadcrumb">treemap.breadcrumb</a>。参见 <a href="https://github.com/apache/incubator-echarts/issues/4209">#4209</a> 和 <a href="https://github.com/apache/incubator-echarts/issues/4256">#4256</a> 和 <a href="https://github.com/apache/incubator-echarts/issues/4291">#4291</a>。</p>
+</li>
+<li><p>[^] 修复了在 <a href="http://echarts.baidu.com/option.html#series-map">map</a> 上使用 <a href="http://echarts.baidu.com/api.html#action.tooltip.showTip">showTip</a> 时 tooltip 位置不正确的问题。参见 <a href="https://github.com/apache/incubator-echarts/issues/3490">#3490</a>。</p>
+</li>
+<li><p>[^] 修复了 <a href="http://echarts.baidu.com/option.html#series-radar">radar</a> 的问题：<a href="https://github.com/apache/incubator-echarts/issues/4249">#4249</a> 和 <a href="https://github.com/apache/incubator-echarts/issues/3934">#3934</a>。</p>
+</li>
+<li><p>[^] 修正了事件参数中的<code>dataIndex</code>的含义，统一均为原始数据的 index。参见 <a href="https://github.com/apache/incubator-echarts/issues/2920">#2920</a>。</p>
+</li>
+<li><p>[^] 修复部分数据可能会抛出<code>RangeError</code>的异常。参见 <a href="https://github.com/apache/incubator-echarts/issues/4164">#4164</a></p>
+</li>
+<li><p>[^] 修复 IE8 中调用 resize 无效的 bug。参见 <a href="https://github.com/apache/incubator-echarts/issues/3923">#3923</a></p>
+</li>
+<li><p>[^] 修复 IE8 中调用 dispose 报错的 bug。参见 <a href="https://github.com/apache/incubator-echarts/issues/3874">#3874</a></p>
+</li>
+</ul>
+<h2 id="v3-2-3">v3.2.3</h2>
+<div class="time">2016-08-16</div>
+
+<ul>
+<li><p>[^] <a href="http://echarts.baidu.com/option.html#series-graph">Graph</a> 环形布局支持设置 <a href="http://echarts.baidu.com/option.html#series-graph.circular.rotateLabel">rotateLabel</a> 旋转标签，见示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=graph-circular-layout">graph-circular-layout</a></p>
+</li>
+<li><p>[^] 修复雷达图中 indicator 无法同时设置 <a href="http://echarts.baidu.com/option.html#radar.indicator.min">min</a>, <a href="http://echarts.baidu.com/option.html#radar.indicator.max">max</a> 的 bug。见 <a href="https://github.com/apache/incubator-echarts/issues/3628">#3628</a></p>
+</li>
+<li><p>[^] 修复关闭动画时阶梯线图刷新会变成普通折线图的 bug。见 <a href="https://github.com/apache/incubator-echarts/issues/3645">#3645</a></p>
+</li>
+<li><p>[^] <a href="http://echarts.baidu.com/api.html#echartsInstance.setOption">setOption</a> 第三个参数调整为 lazyUpdate, 从原先的不立即重绘画布改为不立即更新图表，从而优化在多处地方多次 setOption 设置同一个图表会产生的性能问题。</p>
+</li>
+<li><p>[^] 修复 <a href="http://echarts.baidu.com/option.html#series-graph">graph</a> 中曲线两边的 <a href="http://echarts.baidu.com/option.html#series-graph.edgeSymbol">edgeSymbol</a> 有可能无法对齐节点的 bug。</p>
+</li>
+<li><p>[^] 修复 <a href="http://echarts.baidu.com/option.html#series-graph">graph</a> 中 <a href="http://echarts.baidu.com/option.html#series-graph.symbolSize">symbolSize</a> 为数组时无法绘制带有 <a href="http://echarts.baidu.com/option.html#series-graph.edgeSymbol">edgeSymbol</a> 的直线的 bug。</p>
+</li>
+<li><p>[^] 修复饼图中关闭图例会导致颜色显示不一致的 bug。见 <a href="https://github.com/apache/incubator-echarts/issues/3735">#3735</a></p>
+</li>
+<li><p>[^] 优化对数轴，新加参数 <a href="http://echarts.baidu.com/option.html#yAxis.logBase">logBase</a>。见 <a href="https://github.com/apache/incubator-echarts/issues/3749">#3749</a></p>
+</li>
+<li><p>[^] 地图拖拽性能优化。</p>
+</li>
+</ul>
+<h2 id="v3-2-2">v3.2.2</h2>
+<div class="time">2016-07-11</div>
+
+<ul>
+<li><p>[+] <a href="http://echarts.baidu.com/option.html#xAxis">xAxis</a> 和 <a href="http://echarts.baidu.com/option.html#yAxis">yAxis</a> 新增 <a href="http://echarts.baidu.com/option.html#yAxis.offset">offset</a> 属性用于多 Y 轴场景。见 <a href="http://echarts.baidu.com/gallery/editor.html?c=multiple-y-axis">多 Y 轴示例</a></p>
+</li>
+<li><p>[+] 类目轴新增 <a href="http://echarts.baidu.com/option.html#xAxis.axisTick.alignWithLabel">axisTick.alignWithLabel</a> 属性保证刻度线与刻度标签的对齐。见 <a href="http://echarts.baidu.com/gallery/editor.html?c=bar-tick-align">坐标轴刻度与标签对齐示例</a></p>
+</li>
+<li><p>[+] <a href="http://echarts.baidu.com/option.html#legend">legend</a> 支持显示 <a href="http://echarts.baidu.com/option.html#legend.tooltip">tooltip</a>。</p>
+</li>
+</ul>
+<ul>
+<li><p>[+] <a href="http://echarts.baidu.com/option.html#geo">geo</a> 组件和 <a href="http://echarts.baidu.com/option.html#series-map">map</a> 系列新增 <a href="http://echarts.baidu.com/option.html#geo.layoutCenter">layoutCenter</a> 和 <a href="http://echarts.baidu.com/option.html#geo.layoutSize">layoutSize</a> 属性用于基于中心位置的布局。</p>
+</li>
+<li><p>[^] 支持在<code>time</code>类型的坐标轴上显示柱状图。</p>
+</li>
+<li><p>[^] 修复系列数据和坐标轴类目数量不一致时 tooltip 显示错误的 bug。</p>
+</li>
+<li><p>[^] 修复折线图和地图混搭时再使用多个 visualMap 组件可能会报错的 bug。见 <a href="https://github.com/apache/incubator-echarts/issues/3544">#3544</a></p>
+</li>
+<li><p>[^] 修复坐标轴轴线设置渐变色报错的 bug。见 <a href="https://github.com/apache/incubator-echarts/issues/3577">#3577</a></p>
+</li>
+<li><p>[^] 修复数据都相同的折线图中使用 visualMap 时可能会报错的 bug。见 <a href="https://github.com/apache/incubator-echarts/issues/3582">#3582</a></p>
+</li>
+<li><p>[^] 优化坐标轴刻度的划分。</p>
+</li>
+<li><p>[^] 修复当字符串类型数据 tooltip 默认显示为 <code>&#39;-&#39;</code> 的问题。见 <a href="https://github.com/apache/incubator-echarts/issues/3307">#3307</a>。优化时间类型数据的默认 tooltip。</p>
+</li>
+<li><p>[^] 数据项支持 tooltip 配置为字符串。如下示例</p>
+<pre><code class="lang-js">  data: [{
+      name: &#39;First&#39;,
+      tooltip: &#39;First tooltip&#39;,
+      value: 0
+  }]
+</code></pre>
+</li>
+<li><p>[^] 保证图形的绘制顺序与数据数组的顺序相同。</p>
+</li>
+<li><p>[^] 修复 3.2.1 中散点图边框无法设置的 bug。</p>
+</li>
+<li><p>[^] 坐标轴鼠标事件触发改为通过 <a href="http://echarts.baidu.com/option.html#xAxis.triggerEvent">triggerEvent</a> 配置</p>
+</li>
+</ul>
+<h2 id="v3-2-1">v3.2.1</h2>
+<div class="time">2016-07-04</div>
+
+<ul>
+<li><p>[^] 修复 <code>brushAction</code> 文件名大小写错误导致 linux 和 windows 环境下无法正确引用模块的 bug。</p>
+</li>
+<li><p>[^] 修复散点图 <code>large</code> 为 <code>true</code> 时可能导致圆形绘制错误的问题。</p>
+</li>
+<li><p>[^] 移除默认柱状图边框样式。</p>
+</li>
+<li><p>[^] dataZoom 对 xAxisIndex 的处理更鲁棒。</p>
+</li>
+</ul>
+<h2 id="v3-2-0">v3.2.0</h2>
+<div class="time">2016-06-30</div>
+
+<p>详细的变动介绍见 <a href="http://efe.baidu.com/blog/echarts-3.2.0/">ECharts 3.2.0 变动介绍</a></p>
+<ul>
+<li><p><strong>[+] 新加刷选 <a href="http://echarts.baidu.com/option.html#brush">brush</a> 组件。</strong> 见下面几个 Brushing and Linking 的例子：</p>
+<ul>
+<li><a href="http://echarts.baidu.com/gallery/editor.html?c=map-parallel-prices">地图与平行坐标</a>，<a href="http://echarts.baidu.com/gallery/editor.html?c=candlestick-brush">K线图与柱状图</a>，<a href="http://echarts.baidu.com/gallery/editor.html?c=scatter-matrix">散点矩阵与平行坐标</a></li>
+</ul>
+</li>
+<li><p><strong>[+] 新加标域 <a href="http://echarts.baidu.com/option.html#markArea">markArea</a> 组件。</strong> 见示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=line-sections">用电量分布</a>，<a href="http://echarts.baidu.com/gallery/editor.html?c=scatter-weight">男女身高体重分布</a></p>
+</li>
+<li><p><strong>[+] 新加单轴 <a href="http://echarts.baidu.com/option.html#singleAxis">singleAxis</a> 组件。</strong> 见示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=scatter-single-axis">单轴散点图</a></p>
+</li>
+<li><p>[^] 折线图优化</p>
+<ul>
+<li>[+] 新增 <a href="http://echarts.baidu.com/option#series-line.step">step</a> 属性显示成阶梯线图。见示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=line-step">Step Line</a></li>
+<li>[^] 优化与 visualMap 的结合，支持分段显示不同颜色。见示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=line-aqi">北京 AQI</a>，<a href="http://echarts.baidu.com/gallery/editor.html?c=line-sections">用电量分布</a></li>
+</ul>
+</li>
+<li><p>[^] 线图优化</p>
+<ul>
+<li><p>[+] 新增 <code>polyline</code> 属性，支持显示多段的轨迹路线。见示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=lines-bmap-bus">北京公交路线图</a>，以及 <a href="http://echarts.baidu.com/gallery/editor.html?c=lines-bmap-effect">带有特效的北京公交路线图</a></p>
+</li>
+<li><p>[+] 新增 <a href="http://echarts.baidu.com/option.html#series-lines.large">large</a> 和 <a href="http://echarts.baidu.com/option.html#series-lines.largeThreshold">largeThreshold</a> 配置项支持大规模线图的绘制。见示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=lines-airline">65k 条飞机航线的可视化</a></p>
+</li>
+<li><p>[+] <a href="http://echarts.baidu.com/option.html#series-lines.effect">effect</a> 新增 <a href="http://echarts.baidu.com/option.html#series-lines.effect.constantSpeed">constantSpeed</a> 和 <a href="http://echarts.baidu.com/option.html#series-lines.effect.loop">loop</a></p>
+</li>
+<li><p>[^] 数据格式变动，从原先的 <code>data: [ [{ coord: [lng, lat] }, { coord: [lng, lat]}] ]</code> 改为 <code>data: [ { coords: [[lng, lat], [lng, lat]] } ]</code>。统一在一个属性里存放坐标点是为了更好的支持 <code>polyline</code> 为 true 的时候配置多个坐标点。原先的方式也兼容，但是不建议继续使用。</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>[^] Graph 优化</p>
+<ul>
+<li>[+] 新加 <a href="http://echarts.baidu.com/option.html#series-graph.focusNodeAdjacency">focusNodeAdjacency</a> 配置项用于开启鼠标 hover 高亮节点及相邻边和节点的效果。</li>
+<li>[+] 边颜色 <a href="http://echarts.baidu.com/option.html#series-graph.lineStyle.normal.color">lineStyle.normal.color</a> 支持配置为 <code>&#39;source&#39;</code> 或者 <code>&#39;target&#39;</code> 取源节点和目标节点的颜色。见示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=graph">Les Miserables</a></li>
+<li>[+] 改为使用默认取全局的调色盘</li>
+<li>修复 <a href="http://echarts.baidu.com/option.html#series-graph.edgeSymbolSize">edgeSymbolSize</a> 为数组时边无法显示的 bug。</li>
+<li>修复同时配置 <a href="http://echarts.baidu.com/option.html#series-graph.edgeSymbol">edgeSymbol</a> 和 <a href="http://echarts.baidu.com/option.html#series-graph.layout">force layout</a> 时会导致布局抽搐的 bug。</li>
+</ul>
+</li>
+<li><p>[^] dataZoom 优化</p>
+<ul>
+<li><p>[+] 新增 <a href="http://echarts.baidu.com/option.html#dataZoom-slider.handleIcon">handleIcon</a> 配置项用于配置手柄形状。<a href="http://echarts.baidu.com/option.html#dataZoom-slider.handleIcon">handleSize</a> 修改为相对于 dataZoom 高度的百分比大小。见示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=candlestick-sh-2015">2015 年上证指数</a></p>
+</li>
+<li><p>[+] 新增 <a href="http://echarts.baidu.com/option.html#dataZoom-slider.handleStyle">handleStyle</a> 配置项用于配置更丰富的手柄细节样式。取代原先的 <code>handleColor</code> 配置项。</p>
+</li>
+<li><p>[+] 新增 <a href="http://echarts.baidu.com/option.html#dataZoom-slider.dataBackground">dataBackground</a> 配置项用于配置更丰富的数据预览样式。取代原先的 <code>dataBackgroundColor</code> 配置项。</p>
+</li>
+</ul>
+</li>
+<li><p>[^] 平行坐标优化</p>
+<ul>
+<li><p>[^] 新增 <a href="http://echarts.baidu.com/option.html#parallel.axisExpandable">parallel.axisExpandable</a>，改善高维数据（大量坐标轴）的展示。参见例子 [<a href="http://echarts.baidu.com/gallery/editor.html?c=map-parallel-prices">http://echarts.baidu.com/gallery/editor.html?c=map-parallel-prices</a>]</p>
+</li>
+<li><p>[^] 新增 <a href="http://echarts.baidu.com/option.html#parallelAxis.realtime">parallelAxis.realtime</a></p>
+</li>
+</ul>
+</li>
+<li><p>[^] 坐标轴优化</p>
+<ul>
+<li>[^] 坐标轴支持过渡动画。见示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=dynamic-data2">动态数据</a></li>
+<li>[^] 优化坐标轴轴线和刻度线的绘制效果。</li>
+<li>[^] 类目轴默认不显示分隔线 splitLine。</li>
+<li>[^] 类目轴自动间隔的计算优化。修复类目轴在数据很多的时候有可能出现标签重叠的问题。</li>
+<li>[^] <a href="http://echarts.baidu.com/option.html#xAxis.axisTick">axisTick</a>, <a href="http://echarts.baidu.com/option.html#xAxis.axisLabel">axisLabel</a> 默认取 <a href="http://echarts.baidu.com/option.html#xAxis.axisLine">axisLine</a> 的颜色。</li>
+<li>[^] 修复双类目轴时数据无法使用类目值的 bug。见 <a href="https://github.com/apache/incubator-echarts/issues/3494">#3494</a></li>
+</ul>
+</li>
+<li><p>[^] 桑基图 优化</p>
+<ul>
+<li>[+] 边颜色 <a href="http://echarts.baidu.com/option.html#series-sankey.lineStyle.normal.color">lineStyle.normal.color</a> 支持配置为 <code>&#39;source&#39;</code> 或者 <code>&#39;target&#39;</code> 取源节点和目标节点的颜色。</li>
+</ul>
+</li>
+<li><p>[^] visualMap 组件优化</p>
+<ul>
+<li>[+] 新增 <a href="http://echarts.baidu.com/option.html#visualMap-continuous.realtime">realtime</a> 配置项。</li>
+<li>[^] 分段区间配置 <a href="http://echarts.baidu.com/option.html#visualMap-piecewise.pieces">pieces</a> 改为通过 <code>lt</code>, <code>lte</code>, <code>gt</code>, <code>gte</code> 更细致的配置区间和区间的开闭。</li>
+</ul>
+</li>
+<li><p>[^] markPoint 和 markLine 优化</p>
+<ul>
+<li>[+] 新增 <code>silent</code> 配置项用于关闭交互。</li>
+<li>[^] 数据配置更加灵活，支持每个维度 (xAxis, yAxis) 配置为<code>&#39;min&#39;</code>, <code>&#39;max&#39;</code>, <code>&#39;average&#39;</code>。</li>
+<li>[^] 平均值计算忽略控制。见 <a href="https://github.com/apache/incubator-echarts/issues/3367">#3367</a></li>
+</ul>
+</li>
+<li><p>[^] 散点图在 <a href="http://echarts.baidu.com/option.html#series-scatter.large">large</a> 模式下也支持 tooltip 和鼠标事件触发。</p>
+</li>
+<li><p>[^] 工具栏组件的 <a href="http://echarts.baidu.com/option.html#toolbox.feature.dataZoom">dataZoom</a> 支持通过配置 <code>yAxisIndex: &#39;none&#39;</code> 或者 <code>yAxisIndex: &#39;none&#39;</code> 设置单轴上的框选。</p>
+</li>
+<li><p>[+] 图例新增 <a href="http://echarts.baidu.com/option.html#legend.inactiveColor">inactiveColor</a> 配置图例关闭时的颜色。</p>
+</li>
+<li><p>[+] 标题组件新增 <a href="http://echarts.baidu.com/option.html#title.textBaseline">textBaseline</a> 用于配置标题文字的垂直对齐。</p>
+</li>
+<li><p>[+] 新增 <a href="http://echarts.baidu.com/option.html#hoverLayerThreshold">hoverLayerThreshold</a> 配置项</p>
+</li>
+<li><p>[+] 新增 <a href="http://echarts.baidu.com/option.html#progressive">progressive</a> 和 <a href="http://echarts.baidu.com/option.html#progressiveThreshold">progressiveThreshold</a> 配置用于配置渐进式渲染。见示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=parallel-nutrients">parallel-nutrients</a></p>
+</li>
+<li><p>[+] 新增 <a href="http://echarts.baidu.com/option.html#blendMode">blendMode</a> 配置图形的混合模式。</p>
+</li>
+<li><p>[+] <code>itemStyle</code> 新增 <a href="http://echarts.baidu.com/option.html#series-bar.itemStyle.normal.borderType">borderType</a> 配置边框类型。</p>
+</li>
+<li><p>[+] 调色盘取色优化，相同名称的数据默认取相同的颜色。</p>
+</li>
+<li><p>[+] 仪表盘新增 <a href="http://echarts.baidu.com/option.html#xAxis.axisLabel.distance">axisLabel.distance</a> 配置项。</p>
+</li>
+<li><p>[^] 颜色支持配置为渐变色和纹理。见 <a href="http://echarts.baidu.com/option.html#series-pie.itemStyle.normal.color">itemStyle.normal.color</a>。示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=bubble-gradient">渐变</a>，<a href="http://echarts.baidu.com/gallery/editor.html?c=pie-pattern">纹理</a></p>
+</li>
+<li><p>[^] 修复多个系列的地图 tooltip 和 symbol 显示不正确的 bug。见 <a href="https://github.com/apache/incubator-echarts/issues/3436">#3436</a> <a href="https://github.com/apache/incubator-echarts/issues/3320">#3320</a></p>
+</li>
+<li><p>[^] 优化 effectScatter 在 setOption 更新数据时动画不连贯的问题。见 <a href="https://github.com/apache/incubator-echarts/issues/3439">#3439</a></p>
+</li>
+<li><p>[^] 优化 tooltip，返回空字符串的话不显示浮层。</p>
+</li>
+<li><p>[^] 修复 splitArea 会覆盖 splitLine 的问题。</p>
+</li>
+<li><p>[^] 修复雷达图不能修改线条颜色的 bug。见 <a href="https://github.com/apache/incubator-echarts/issues/3441">#3441</a></p>
+</li>
+<li><p>[^] 修复数据刷新可能会导致事件绑定的内存泄露。见 <a href="https://github.com/apache/incubator-echarts/issues/3500">#3500</a></p>
+</li>
+<li><p>[^] ZRender 性能优化，重绘性能为原先的 2x ~ 3x。</p>
+</li>
+<li><p>[^] 构建文件调整，压缩前的<a href="http://echarts.baidu.com/dist/echarts.js">开发版本</a>加入了更细致的错误提示和警告，压缩后的<a href="http://echarts.baidu.com/dist/echarts.min.js">生产版本</a>去掉了这些错误提示和警告。因此建议开发环境中使用<a href="http://echarts.baidu.com/dist/echarts.js">开发版本</a></p>
+</li>
+</ul>
+<h2 id="v3-1-10">v3.1.10</h2>
+<div class="time">2016-05-19</div>
+
+<ul>
+<li><p><strong>[^] <a href="http://echarts.baidu.com/option.html#geo">geo</a> 优化</strong></p>
+<ul>
+<li>[+] 支持监听鼠标事件，见 <a href="http://echarts.baidu.com/option.html#geo">geo</a></li>
+<li>[+] 支持通过 <a href="http://echarts.baidu.com/option.html#geo.regions">regions</a> 配置每个区域的样式</li>
+<li>[+] 支持通过 <a href="http://echarts.baidu.com/option.html#geo.selectedMode">selectedMode</a> 配置是否区域可选，区域的选择会抛出 <a href="http://echarts.baidu.com/api.html#events.geoselectchanged">geoselectchanged</a> 事件</li>
+</ul>
+</li>
+<li><p>[^] 优化部分字体，例如微软雅黑的垂直对齐，见 <a href="https://github.com/apache/incubator-echarts/issues/2983">#2983</a></p>
+</li>
+<li><p>[^] graph 动画优化，见示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=graph-life-expectancy">graph-life-expectancy</a></p>
+</li>
+<li><p>[+] 数值轴新加 <a href="http://echarts.baidu.com/option.html#xAxis.minInterval">minInterval</a>，见 <a href="https://github.com/apache/incubator-echarts/issues/3115">#3115</a></p>
+</li>
+<li><p>[+] treemap 新增下钻功能，参见 <a href="http://echarts.baidu.com/option.html#series-treemap.leafDepth">leafDepth</a>，和示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=treemap-drill-down">treemap-drill-down</a></p>
+</li>
+<li><p>[^] markLine 优化，支持在直角坐标系中如下设置成水平线或者垂直线。</p>
+<pre><code class="lang-js">  data: [{
+      // Y 轴值为 100 的水平线
+      yAxis: 100
+  }]
+</code></pre>
+<p>  方便柱状图只有单个值的时候能够正确设置显示成某个值的水平标线。</p>
+</li>
+<li><p>[^] 桑基图支持单个节点自定义样式。</p>
+</li>
+<li><p>[^] 修复单个 echarts 实例中有多个 geo 组件并且都没有指定 name 时可能会导致单个组件在拖拽时影响其它组件散点图位置的问题。</p>
+</li>
+<li><p>[^] dataZoom 精度问题优化，见 <a href="https://github.com/apache/incubator-echarts/issues/3228">#3228</a></p>
+</li>
+<li><p>[^] 修复 3.1.8 中雷达图点显示为黑色的 bug。</p>
+</li>
+<li><p>[^] 修复 3.1.8 中 graph 会在 safari 下报错的 bug。见 <a href="https://github.com/apache/incubator-echarts/issues/3220">#3220</a></p>
+</li>
+<li><p>[^] 修复 <a href="http://echarts.baidu.com/option.html#series-effectScatter">effectScatter</a> 中特效图形不能设置旋转的问题。</p>
+</li>
+<li><p>[^] 修复 timeline、mediaQuery 在进行第二次 setOption 时会失效的 bug。</p>
+</li>
+</ul>
+<h2 id="v3-1-9">v3.1.9</h2>
+<div class="time">2016-05-12</div>
+
+<ul>
+<li><p>[^] 修复 3.1.8 中<code>image://</code>类型的 symbol 无法显示的 bug。</p>
+</li>
+<li><p>[^] 修复使用笛卡尔坐标系的 graph 第二次 setOption 会报错的 bug。</p>
+</li>
+</ul>
+<h2 id="v3-1-8">v3.1.8</h2>
+<div class="time">2016-05-11</div>
+
+<ul>
+<li><p><strong>[^] Graph 优化</strong></p>
+<ul>
+<li>[+] 支持通过 <a href="http://echarts.baidu.com/option.html#series-graph.edgeLabel">edgeLabel</a> 配置边标签，见示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=graph-simple">graph-simple</a></li>
+<li>[+] 支持通过 <a href="http://echarts.baidu.com/option.html#series-graph.edgeSymbol">edgeSymbol</a> 配置边两端的图形，见示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=graph-simple">graph-simple</a></li>
+<li>[^] 支持笛卡尔坐标系，极坐标与地理坐标系，见示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=graph-grid">graph-grid</a></li>
+<li>[^] 鼠标事件参数新加<code>dataType</code>参数用于判断是<code>&#39;node&#39;</code>还是<code>&#39;edge&#39;</code></li>
+</ul>
+</li>
+<li><p><strong>[^] 地图优化</strong></p>
+<ul>
+<li>[+] 加入 <a href="http://echarts.baidu.com/option.html#series-map.zoom">zoom</a> 和 <a href="http://echarts.baidu.com/option.html#series-map.center">center</a> 配置项用于定位，参见示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=map-locate">map-locate</a></li>
+<li>[^] 修复 <code>scaleLimit.min</code> 大于 1 时可能导致散点图布局错误的 bug。</li>
+<li>[^] 绘制性能优化</li>
+</ul>
+</li>
+<li><p><strong>[^] treemap 优化</strong></p>
+<ul>
+<li>[^] 修复无法只在高亮的时候显示 label 的问题。Fix <a href="https://github.com/apache/incubator-echarts/issues/2975">#2975</a></li>
+<li>[^] 修复中事件参数不正确的 bug。见 <a href="https://github.com/apache/incubator-echarts/issues/3063">#3063</a></li>
+</ul>
+</li>
+<li><p><strong>[^] visualMap 组件优化</strong></p>
+<ul>
+<li>[+] 支持映射到 <code>opacity</code>。见 <a href="http://echarts.baidu.com/option.html#visualMap-continuous.inRange">visualMap.inRange</a>。</li>
+<li>[+] 加入配置项 <a href="http://echarts.baidu.com/option.html#visualMap-continuous.hoverLink">visualMap.hoverLink</a>，支持 visualMap 组件与图表图形的联动。</li>
+<li>[^] visual 的值之前支持设置为单个数字，例如 <code>0.2</code>。</li>
+<li>[^] 修复使用 merge 模式第二次 setOption 时，viusal 配置无法保持的 bug。</li>
+<li>[^] 修复使用 <code>colorHue</code> 时，visualMap 控制条颜色渐变不对的 bug。</li>
+</ul>
+</li>
+<li><p>[+] 折线图加入 <a href="http://echarts.baidu.com/option.html#series-line.connectNulls">connectNulls</a> 配置项，见 <a href="https://github.com/apache/incubator-echarts/issues/2579">#2579</a></p>
+</li>
+<li><p>[+] markLine 标签位置支持配置为中间 <code>&#39;middle&#39;</code>。</p>
+</li>
+<li><p>[+] 加入 <a href="http://echarts.baidu.com/option.html#animationDelay">animationDelay</a> 和 <a href="(http://echarts.baidu.com/option.html#animationDelayUpdate">animationDelayUpdate</a> 配置项用于展现更丰富和戏剧性的动画效果，参见示例 <a href="http://echarts.baidu.com/gallery/editor.html?c=bar-animation-delay">bar-animation-delay</a></p>
+</li>
+<li><p>[^] 修正 markPoint 、markLine、timeLine 鼠标事件参数中的<code>componentType</code>属性，可以通过该判断鼠标事件的触发对象。</p>
+</li>
+<li><p>[^] 修正了 <a href="http://echarts.baidu.com/option.html#tooltip.show">tooltip.show</a> 功能,同时控制<code>提示框浮层</code>和<code>axisPointer</code>的隐藏和显示。<a href="http://echarts.baidu.com/option.html#tooltip.showContent">tooltip.showContent</a> 仅控制<code>提示框浮层</code>的隐藏和显示。</p>
+</li>
+<li><p>[^] 仪表盘优化超出范围的数据的展现。见 <a href="https://github.com/apache/incubator-echarts/issues/3067">#3067</a></p>
+</li>
+<li><p>[^] 修复 3.1.7 中多系列饼图图例绘制错误的 bug。</p>
+</li>
+<li><p>[^] markPoint 和 markLine 的位置属性<code>x</code>, <code>y</code>支持百分比。</p>
+</li>
+<li><p>[^] 修复图形高亮时刷新整个图表会导致高亮图形样式错误的 bug。</p>
+</li>
+<li><p>[^] 修复 setOption 无法清除之前设置的阴影样式的 bug。</p>
+</li>
+<li><p>[^] 修复柱状图中渐变色无法正确显示的 bug，见 <a href="https://github.com/apache/incubator-echarts/issues/3065">#3065</a></p>
+</li>
+<li><p>[^] 修复桑基图中关闭动画会导致右侧标签显示不全的 bug。</p>
+</li>
+<li><p>[^] 优化折线图中可能会裁剪掉一半最顶端水平线，使得顶端水平线看起来更细的情况。</p>
+</li>
+<li><p>[^] 修复 IE8 中饼图 0 数据显示为圆形的 bug。见 <a href="https://github.com/apache/incubator-echarts/issues/3128">#3128</a></p>
+</li>
+<li><p>[^] 修复 IE8 只有高亮显示标签可能会无效的 bug。</p>
+</li>
+</ul>
+<h2 id="v3-1-7">v3.1.7</h2>
+<div class="time">2016-04-21</div>
+
+<ul>
+<li><p>[+] visualMap 组件新加入 <a href="http://echarts.baidu.com/option.html#visualMap-continuous.align">align</a> 属性。</p>
+</li>
+<li><p>[+] 坐标轴刻度标签支持可点击的配置，见 <a href="http://echarts.baidu.com/option.html#xAxis.silent">xAxis.silent</a>。</p>
+</li>
+<li><p>[+] tooltip 加入 <a href="http://echarts.baidu.com/option.html#tooltip.showDelay">showDelay</a>。</p>
+</li>
+<li><p>[^] 修复数据精度很高时 dataZoom 会产生错误的截断的 bug。</p>
+</li>
+<li><p>[^] 修复 k 线图联动的 bug。Fix <a href="https://github.com/apache/incubator-echarts/issues/2992">#2992</a></p>
+</li>
+<li><p>[^] 修复 resize 会错误的触发 tooltip 的 bug。 Fix <a href="https://github.com/apache/incubator-echarts/issues/2988">#2988</a></p>
+</li>
+<li><p>[^] <code>axisLabel.textStyle.color</code> 支持回调函数，见 <a href="https://github.com/apache/incubator-echarts/issues/2796">#2796</a></p>
+</li>
+<li><p>[^] 修复 IE8 下 dataZoom 区间缩小后折线图会错误绘制的 bug。</p>
+</li>
+<li><p>[^] 优化饼图，漏斗图的图例绘制，支持<code>&#39;&#39;</code>, <code>&#39;\n&#39;</code>换行，见 <a href="https://github.com/apache/incubator-echarts/issues/3039">#3039</a></p>
+</li>
+</ul>
+<h2 id="v3-1-6">v3.1.6</h2>
+<div class="time">2016-04-11</div>
+
+<ul>
+<li><p>[^] 环形图内标签 inside 位置优化。见 <a href="https://github.com/apache/incubator-echarts/issues/2949">#2949</a></p>
+</li>
+<li><p>[^] 修复 IE8 下单个数据的饼图无法显示的 bug。Fix <a href="https://github.com/apache/incubator-echarts/issues/2961">#2961</a></p>
+</li>
+<li><p>[^] 修复柱状图 <code>itemStyle.emphasis.barBorderWidth</code> 不生效的 bug。</p>
+</li>
+<li><p>[^] 修复工具栏堆叠和平铺切换导致类目轴 boundaryGap 错误设置的 bug。</p>
+</li>
+</ul>
+<h2 id="v3-1-5">v3.1.5</h2>
+<div class="time">2016-03-29</div>
+
+<ul>
+<li><p>[+] heatmap 加入配置项 <a href="http://echarts.baidu.com/option.html#series-heatmap.minOpacity">minOpacity</a>, <a href="http://echarts.baidu.com/option.html#series-heatmap.maxOpacity">maxOpacity</a>。</p>
+</li>
+<li><p>[+] <code>toolbox.feature.dataView</code> 加入配置项 <a href="http://echarts.baidu.com/option.html#toolbox.feature.dataView.optionToContent">optionToContent</a>, <a href="http://echarts.baidu.com/option.html#toolbox.feature.dataView.contentToOption">contentToOption</a>。</p>
+</li>
+<li><p>[+] map 图表和 geo 组件加入配置项 <a href="http://echarts.baidu.com/option.html#geo.scaleLimit">scaleLimit</a></p>
+</li>
+<li><p>[^] 修复 <code>toolbox.feature.magicType</code> 中 option 和 seriesIndex 不起作用的问题。Fix <a href="https://github.com/apache/incubator-echarts/issues/2855">#2855</a></p>
+</li>
+<li><p>[^] 工具栏中折柱切换的时候自动调整类目轴的 boundaryGap。</p>
+</li>
+<li><p>[^] 修复 3.1.4 中 timeline 节点 hover 报错的 bug。Fix <a href="https://github.com/apache/incubator-echarts/issues/2897">#2897</a></p>
+</li>
+<li><p>[^] 修复 inside 类型的 dataZoom 无法作用于多个直角坐标系中的坐标轴的 bug。Fix <a href="https://github.com/apache/incubator-echarts/issues/2752">#2752</a></p>
+</li>
+<li><p>[^] 修复 3.1.4 中南丁格尔图标签布局的问题。Fix <a href="https://github.com/apache/incubator-echarts/issues/2910">#2910</a></p>
+</li>
+<li><p>[^] 修复 connect 调用已经释放的图表实例报错的问题。Fix <a href="https://github.com/apache/incubator-echarts/issues/2908">#2908</a></p>
+</li>
+<li><p>[^] 修复 3.1.4 中地图上的 markPoint 无法跟随地图漫游的问题。</p>
+</li>
+<li><p>[^] 修复 visualMap 组件中 color 无法被动态修改的问题。</p>
+</li>
+</ul>
+<h2 id="v3-1-4">v3.1.4</h2>
+<div class="time">2016-03-21</div>
+
+<ul>
+<li><p>[^] 优化默认的 tooltip，加入图形的颜色提示，回调加入 color 参数。</p>
+</li>
+<li><p>[^] 修复 dataZoom 无法 resize 的 bug。</p>
+</li>
+<li><p>[^] 修复多次执行<code>showLoading</code>导致的 bug。Fix <a href="https://github.com/apache/incubator-echarts/issues/2821">#2821</a></p>
+</li>
+<li><p>[^] 饼图，地图等非笛卡尔坐标系和极坐标系的图表支持 markPoint 和 markLine。</p>
+</li>
+<li><p>[^] 饼图标签布局优化。</p>
+</li>
+<li><p>[^] tooltip 加入 extraCssText 配置项用于配置浮层样式，见 <a href="http://echarts.baidu.com/option.html#tooltip.extraCssText">http://echarts.baidu.com/option.html#tooltip.extraCssText</a></p>
+</li>
+<li><p>[^] 修复 3.1.3 中 dataZoom 不设置坐标轴 min， max 的 bug。</p>
+</li>
+<li><p>[^] 修复当纵轴为类目轴且 series 的 data 为二维数组时，tooltip 里无法取到正确的 name 的bug。Fix <a href="https://github.com/apache/incubator-echarts/issues/2822">#2822</a></p>
+</li>
+<li><p>[^] 修复圆角的柱形图 hover 错误的 bug，Fix <a href="https://github.com/apache/incubator-echarts/issues/2806">#2806</a></p>
+</li>
+<li><p>[^] 雷达图 indicator 配置项默认值策略优化。</p>
+</li>
+</ul>
+<h2 id="v3-1-3">v3.1.3</h2>
+<div class="time">2016-03-10</div>
+
+<ul>
+<li><p><strong>[+]加入雷达图，见 <a href="http://echarts.baidu.com/option.html#series-radar">http://echarts.baidu.com/option.html#series-radar</a></strong></p>
+</li>
+<li><p>[^] 平均值，最小值，最大值 markLine 起点和终点位置优化。Fix <a href="https://github.com/apache/incubator-echarts/issues/2762">#2762</a>，<a href="https://github.com/apache/incubator-echarts/issues/2688">#2688</a>。</p>
+</li>
+<li><p>[^] 修复 markLine 的 symbol 只有一个配置为 <code>&#39;none&#39;</code> 的 bug。见 <a href="https://github.com/apache/incubator-echarts/issues/2733">#2733</a></p>
+</li>
+<li><p>[^] 多行文本的垂直居中优化。</p>
+</li>
+<li><p>[^] 饼图等数据项中 label 的 emphasis 配置项默认取 normal 中的值。</p>
+</li>
+<li><p>[^] 按需引入时，折线图，饼图，散点图默认引入 grid 组件。避免 <a href="https://github.com/apache/incubator-echarts/issues/2758">#2758</a> 中的问题。</p>
+</li>
+<li><p>[^] 修复 dataZoom 组件浮点精度的 bug。Fix <a href="https://github.com/apache/incubator-echarts/issues/2757">#2757</a></p>
+</li>
+<li><p>[^] 未选中的图例文本显示为灰色。见 <a href="https://github.com/apache/incubator-echarts/issues/2615">#2615</a></p>
+</li>
+<li><p>[^] 修复 3.1.1 中 media query 中 dataZoom 位置失效的 bug。Fix <a href="https://github.com/apache/incubator-echarts/issues/2710">#2710</a></p>
+</li>
+<li><p>[^] 修复 3.1.1 中 firefox 无法触发滚轮事件的 bug，Fix <a href="https://github.com/apache/incubator-echarts/issues/2730">#2730</a></p>
+</li>
+<li><p>[^] IE8 优化。</p>
+</li>
+<li><p>[^] 代码改用 webpack 构建。</p>
+</li>
+</ul>
+<h2 id="v3-1-2">v3.1.2</h2>
+<div class="time">2016-03-01</div>
+
+<ul>
+<li><p><strong>[+]提供主题下载，详细见 <a href="http://echarts.baidu.com/download-theme.html">http://echarts.baidu.com/download-theme.html</a></strong></p>
+</li>
+<li><p>[^] 修复 v3.1.1 中折线图空数据后 <code>setOption</code> 更新数据无法显示的 bug。</p>
+</li>
+<li><p>[^] 修复 <code>setOption(chart.getOption())</code> 有可能报<code>id duplicates</code>的错误。Fix <a href="https://github.com/apache/incubator-echarts/issues/2635">#2635</a></p>
+</li>
+<li><p>[^] 允许自定义 toolbox 工具栏。详见 <a href="http://echarts.baidu.com/option.html#toolbox.feature">toolbox.feature</a></p>
+</li>
+<li><p>[^] <code>&#39;time&#39;</code> 类型的坐标轴在大跨度时间范围的刻度优化。</p>
+</li>
+<li><p>[^] 修复 label 的 formatter 返回 0 不显示的 bug。Fix <a href="https://github.com/apache/incubator-echarts/issues/2659">#2659</a></p>
+</li>
+<li><p>[^] 修复纵轴为类目轴的图表中 markPoint 标签显示错误的问题。Fix <a href="https://github.com/apache/incubator-echarts/issues/2641">#2641</a></p>
+</li>
+<li><p>[^] 优化 dataZoom，修复有 dataZoom 的图表中动态数据更新错误的问题。Fix <a href="https://github.com/apache/incubator-echarts/issues/2667">#2667</a></p>
+</li>
+<li><p>[^] 饼图所有数据为 0 时百分比取 0 而非 NaN。Fix <a href="https://github.com/apache/incubator-echarts/issues/2667">#2690</a></p>
+</li>
+<li><p>[^] 标题对齐优化。</p>
+</li>
+<li><p>[^] 图表刷新时保持 tooltip 显示。Fix <a href="https://github.com/apache/incubator-echarts/issues/2478">#2478</a></p>
+</li>
+<li><p>[^] 仪表盘 <code>splitLine.length</code>, <code>axisTick.length</code> 支持百分比。</p>
+</li>
+<li><p>[^] 折线动画性能优化。</p>
+</li>
+<li><p>[^] 大数据量的类目轴性能优化。</p>
+</li>
+<li><p>[^] 修复 IE8 下 markPoint 和 markLine 报错的 bug。</p>
+</li>
+<li><p>[^] 修复 <code>&#39;use strict&#39;</code> 模式下报错的 bug。Fix <a href="https://github.com/apache/incubator-echarts/issues/2643">#2643</a></p>
+</li>
+</ul>
+<h2 id="v3-1-1">v3.1.1</h2>
+<div class="time">2016-02-22</div>
+
+<ul>
+<li><p><strong>[+]新加入 npm 渠道获取 echarts，详细见 <a href="http://echarts.baidu.com/tutorial.html#%E5%9C%A8%20webpack%20%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts">webpack + echarts 教程</a></strong></p>
+</li>
+<li><p>[^] 修复动态 markPoint 和 markLine 异常的 bug。Fix <a href="https://github.com/apache/incubator-echarts/issues/2522">#2522</a></p>
+</li>
+<li><p>[^] 修复 axis interval 回调参数错误的 bug。Fix <a href="https://github.com/apache/incubator-echarts/issues/2470">#2470</a></p>
+</li>
+<li><p>[^] 修复 graph 中无法自定义每条边的 lineStyle 的 bug。Fix <a href="https://github.com/apache/incubator-echarts/issues/2558">#2558</a></p>
+</li>
+<li><p>[^] toolbox 中 saveAsImage 支持 IE9+ 和 FireFox。</p>
+</li>
+<li><p>[^] 支持柱形圆角配置。<a href="https://github.com/apache/incubator-echarts/issues/2550">#2550</a></p>
+</li>
+<li><p>[^] 修复 dataZoom 定位配置项错误的 bug。Fix <a href="https://github.com/apache/incubator-echarts/issues/2619">#2619</a></p>
+</li>
+<li><p>[^] 修复多次<code>setOption</code>有可能出现<code>id duplicate</code>的错误。Fix <a href="https://github.com/apache/incubator-echarts/issues/2452">#2452</a></p>
+</li>
+<li><p>[^] candlestick 和 boxplot 图支持 markPoint 和 markLine。Fix <a href="https://github.com/apache/incubator-echarts/issues/2566">#2566</a></p>
+</li>
+<li><p>[^] 修复在非 merge 模式<code>setOption</code>之后再使用 toolbox 中的 reset 功能出错的 bug。Fix <a href="https://github.com/apache/incubator-echarts/issues/2596">#2596</a></p>
+</li>
+<li><p>[^] 散点图以及 markPoint 支持在<code>emphasis</code>中配置<code>label</code>的<code>formatter</code>。Fix <a href="https://github.com/apache/incubator-echarts/issues/2596">#2596</a></p>
+</li>
+<li><p>[^] Treemap 支持<code>roam</code>配置项。</p>
+</li>
+<li><p>[^] time 类型的坐标轴支持使用字符串格式的时间数据。</p>
+</li>
+<li><p>[^] 修复折线图和区域图无法切换的 bug 修复。Fix <a href="https://github.com/apache/incubator-echarts/issues/2625">#2625</a></p>
+</li>
+<li><p>[^] 多系列柱状图 markPoint 的位置优化。Fix <a href="https://github.com/apache/incubator-echarts/issues/2623">#2623</a></p>
+</li>
+<li><p>[^] 修复 init 时 theme 为字符串并且有 dataZoom 组件时的报错。Fix <a href="https://github.com/apache/incubator-echarts/issues/2619">#2619</a></p>
+</li>
+<li><p>[^] legend 和 toolbox 支持通过 width 和 height 设置高宽并且自动换行。Fix <a href="https://github.com/apache/incubator-echarts/issues/2621">#2621</a></p>
+</li>
+<li><p>[^] 折线图平滑优化，加入<code>smoothMonotone</code>配置项，详见 <a href="http://echarts.baidu.com/option.html#series-line.smoothMonotone">option.html#series-line.smoothMonotone</a>，Fix <a href="https://github.com/apache/incubator-echarts/issues/2612">#2612</a></p>
+</li>
+<li><p>[^] 修复 Surface 等带有触屏的电脑上无法触发鼠标事件的 bug，Fix <a href="https://github.com/apache/incubator-echarts/issues/2569">#2569</a></p>
+</li>
+</ul>
+<h2 id="v3-0-2">v3.0.2</h2>
+<div class="time">2016-01-23</div>
+
+<ul>
+<li><p>[^] 修复散点图无法高亮的问题。</p>
+</li>
+<li><p>[^] 优化 tooltip 联动，Fix <a href="https://github.com/apache/incubator-echarts/issues/2445">#2445</a></p>
+</li>
+<li><p>[^] inside 类型的 dataZoom 支持 zoomLock。</p>
+</li>
+<li><p>[^] 添加地图类型不存在的错误提示。</p>
+</li>
+<li><p>[^] 折线图图例开关的动画优化</p>
+</li>
+<li><p>[^] 修复图例无法动态添加的问题，Fix <a href="https://github.com/apache/incubator-echarts/issues/2457">#2457</a></p>
+</li>
+<li><p>[^] 修复 timeline 无法配置 show 的问题。</p>
+</li>
+<li><p>[^] 修复 0 数据在 tooltip 中显示 undefined 的问题，Fix <a href="https://github.com/apache/incubator-echarts/issues/2463">#2463</a></p>
+</li>
+<li><p>[^] 修复 dataZoom 缩略图显示不正确的问题，Fix <a href="https://github.com/apache/incubator-echarts/issues/2462">#2462</a></p>
+</li>
+<li><p>[^] 修复坐标轴 <code>min</code> <code>max</code> 是字符串的问题，PR <a href="https://github.com/apache/incubator-echarts/pull/2481">#2481</a></p>
+</li>
+</ul>
+<h2 id="v3-0-1">v3.0.1</h2>
+<div class="time">2016-01-18</div>
+
+<ul>
+<li><p>[+] 添加回 <a href="http://echarts.baidu.com/api.html#echartsInstance.getOption">getOption</a> 和 <a href="http://echarts.baidu.com/api.html#echartsInstance.clear">clear</a> 方法</p>
+</li>
+<li><p>[^] 修复平均值，最大值，最小值标注和标线的标签和 tooltip 无法显示正确值的问题，Fix <a href="https://github.com/apache/incubator-echarts/issues/2393">#2393</a></p>
+</li>
+<li><p>[^] 修复柱状图在边框宽度大于高度的时候绘制不正确的问题，Fix <a href="https://github.com/apache/incubator-echarts/issues/2343">#2343</a></p>
+</li>
+<li><p>[^] 修复图例的<code>show</code>配置项无法起作用的问题，Fix <a href="https://github.com/apache/incubator-echarts/issues/2371">#2371</a></p>
+</li>
+<li><p>[^] 地图类型可选 data 属性。</p>
+</li>
+<li><p>[^] 修复平均值标线和标注计算错误，Fix <a href="https://github.com/apache/incubator-echarts/issues/2367">#2367</a></p>
+</li>
+<li><p>[^] 折线图从<code>&#39;-&#39;</code>空数据变成有数据时的动画优化。</p>
+</li>
+<li><p>[^] 鼠标滚轮缩放方向改为常用的习惯方向。</p>
+</li>
+<li><p>[^] 工具栏中的数据区域缩放工具支持指定坐标轴，详见<a href="http://echarts.baidu.com/option.html#toolbox.feature.dataZoom.yAxisIndex"> toolbox 文档</a></p>
+</li>
+<li><p>[^] 时间轴上无数据的错误修复，数值轴无数据时的刻度从<code>[-1, 1]</code>改为<code>[0, 1]</code></p>
+</li>
+<li><p>[^] 坐标轴 splitArea 绘制错误修复。</p>
+</li>
+<li><p>[^] 修复多个图表示例联动问题。Fix <a href="https://github.com/apache/incubator-echarts/issues/2391">#2391</a></p>
+</li>
+<li><p>[^] 修复饼图的颜色是回调函数时 legend 上的颜色无法正确显示的问题。Fix <a href="https://github.com/apache/incubator-echarts/issues/2372">#2372</a></p>
+</li>
+<li><p>[^] 修复饼图数据为 0 时候鼠标的 hover 错误。</p>
+</li>
+<li><p>[^] 饼图数据项都为 0 时扇区改为均匀分布。</p>
+</li>
+<li><p>[^] 修复 IE 8 下背景色设置的错误。</p>
+</li>
+<li><p>[^] 修复 tooltip 组件 dispose 中释放事件不正确的错误。</p>
+</li>
+</ul>
+<h2 id="v3-0-0">v3.0.0</h2>
+<div class="time">2016-01-12</div>
+
+<ul>
+<li>The new echarts</li>
+</ul>

@@ -1,6 +1,6 @@
 module.exports = {
-    galleryViewPath: '../../../echarts-examples/public/view.html?c=',
-    galleryEditorPath: '../../../echarts-examples/public/editor.html?c=',
+    galleryViewPath: 'https://www.echartsjs.com/examples/zh/view.html?c=',
+    galleryEditorPath: 'https://www.echartsjs.com/examples/zh/editor.html?c=',
     websitePath: './',
 
     imagePath: 'asset/img/',

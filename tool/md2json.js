@@ -136,9 +136,13 @@ function mdToJsonSchema(mdStr, maxDepth, imagePath) {
         }
     };
 
+    renderer.codespan = function (code) {
+        return '<code class="codespan">' + code + '</code>';
+    };
+
     var currentLevel = 0;
     var result = {
-        '$schema': 'http://echarts.baidu.com/doc/json-schem',
+        '$schema': 'https://echarts.apache.org/doc/json-schem',
         'option': {
             'type': 'Object',
             'properties': {},

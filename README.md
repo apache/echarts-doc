@@ -13,15 +13,22 @@
 
 ## Build and Run Locally
 
-Dev:
+Writing doc:
 ```shell
 # should put <https://github.com/ecomfe/echarts-examples> on the same folder with echarts-doc
 node watch.js --env dev
 # or
 node build.js --env dev
+```
 
-# Run a static server (optional)
-node server.js
+Developing doc site:
+```shell
+npm run server
+```
+
+Build doc site:
+```shell
+npm run build:site
 ```
 
 Release:
