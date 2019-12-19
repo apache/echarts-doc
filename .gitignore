@@ -171,4 +171,10 @@ pip-log.txt
 .DS_Store
 
 node_modules
-configshenyi.js
+
+
+public/js/doc-bundle.js.map
+public/css/doc-bundle.css.map
+
+
+slides/webgl

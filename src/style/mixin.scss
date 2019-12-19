@@ -1,0 +1,82 @@
+@mixin description-html-formatter {
+    .hljs {
+        background: transparent;
+        padding: 0;
+    }
+
+    hr {
+        border: none;
+        border-bottom: 1px solid #eee;
+        width: 80%;
+    }
+
+    blockquote {
+        font-size: 12px;
+        color: #999;
+        background-color: #fdfdfd;
+        border-left: 2px solid #ddd;
+        margin-left: 0px;
+
+        padding: 5px 10px;
+
+        p {
+            margin: 0;
+        }
+
+        pre {
+            font-size: 12px;
+        }
+    }
+
+    iframe {
+        border: 1px solid #ccc;
+        display: block;
+        margin-top: 5px;
+        max-width: 100%;
+    }
+    img {
+        max-width: 100%;
+    }
+
+    p {
+        line-height: 1.7em;
+        margin: 12px 0 0 0;
+        font-size: 14px;
+    }
+    pre {
+        margin: 5px 0;
+        border-radius: 5px;
+        background-color: #f5f7fa;
+        border: none;
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    .codespan {
+        padding: 2px 4px;
+        font-size: 14px;
+        color: #293C55;
+        background-color: #f9f2f4;
+        border-radius: 4px;
+    }
+
+    code *, code {
+        font-family: Monaco, 'Source Code Pro', 'Courier New', monospace;
+    }
+
+    ol {
+        margin-left: 20px;
+    }
+    ul li {
+        list-style: disc;
+        margin: 10px 20px;
+        font-size: 14px;
+    }
+    ol li {
+        list-style: decimal;
+    }
+
+    a {
+        font-family: Monaco,'Source Code Pro', STHeiti, "Microsoft Yahei", "WenQuanYi Micro Hei", sans-serif;
+    }
+}

@@ -13,28 +13,37 @@
 
 ## Build and Run Locally
 
-### Dev
+#### Start developing environment:
 
 ```shell
-# should put <https://github.com/ecomfe/echarts-examples> on the same folder with echarts-doc
-node watch.js --env dev
-# or
-node build.js --env dev
-
-# Run a static server (optional)
-cd ..
-http-server
+npm run dev
 ```
 
-Open [http://127.0.0.1:8080/echarts-doc/public/en/option.html#title](http://127.0.0.1:8080/echarts-doc/public/en/option.html#title) in a Web Browser.
+It will:
 
-### Release
++ Start a static server
++ Watch doc site src change and rebuild.
++ Watch doc markdown change and rebuild.
+
+#### Build doc markdown:
+
+```shell
+npm run build
+```
+
+#### Build doc site:
+
+```shell
+npm run build:site
+```
+
+#### Release:
 
 Check `incubator-echarts-website/README.md` please.
 
 ## Tips about writing doc
 
-**Global variables can be used in doc:**
+#### Global variables can be used in doc:
 
 + galleryViewPath
 + galleryEditorPath
@@ -45,7 +54,7 @@ For example:
 ~[700x300](${galleryViewPath}doc-example/aria-pie&edit=1&reset=1)
 ```
 
-**Reference of option**
+#### Reference of option
 
 A `~` can be used to refer to a option item in the same doc. For example:
 

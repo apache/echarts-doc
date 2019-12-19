@@ -1,11 +1,14 @@
-var static = require('node-static');
-var open = require('open');
+const nStatic = require('node-static');
+const open = require('open');
 
-var fileServer = new static.Server('./public');
+const fileServer = new nStatic.Server('./public');
 require('http').createServer(function (request, response) {
     request.addListener('end', function () {
         fileServer.serve(request, response);
     }).resume();
 }).listen(3001);
 
-open('http://127.0.0.1:3001/en/option.html');
+// Wait bundling to be finished
+setTimeout(() => {
+    open('http://127.0.0.1:3001/en/option.html');
+}, 7000);

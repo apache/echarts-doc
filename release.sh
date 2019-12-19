@@ -27,17 +27,29 @@ currPath=$(pwd)
 # Build zh doc for www.echartsjs.com.
 cd ${basepath}
 node ./build.js --env ${envType}
+# Build doc site
+npm run build:site
 cd ${currPath}
 # Do not rm, keep option3.json.
-cp -R ${basepath}/public/documents/zh/ ${basepath}/../echarts-www/documents/zh/
-cp -R ${basepath}/public/documents/en/ ${basepath}/../echarts-www/documents/en/
+mkdir -p ${basepath}/../echarts-www/release/ \
+    ${basepath}/../echarts-www/release/zh \
+    ${basepath}/../echarts-www/release/zh/js \
+    ${basepath}/../echarts-www/release/zh/css \
+    ${basepath}/../echarts-www/release/en \
+    ${basepath}/../echarts-www/release/en/js \
+    ${basepath}/../echarts-www/release/en/css
 
-cp ${basepath}/public/en/documents/en/changelog.html ${basepath}/../echarts-www/documents/en/
-cp ${basepath}/public/zh/documents/zh/changelog.html ${basepath}/../echarts-www/documents/zh/
+cp -R ${basepath}/public/zh/documents/ ${basepath}/../echarts-www/release/zh/documents/
+cp -R ${basepath}/public/en/documents/ ${basepath}/../echarts-www/release/en/documents/
 
-# Copy asset.
-# Do not rm, keep option3.json
-cp -R ${basepath}/asset/ ${basepath}/../echarts-www/documents/asset/
+cp ${basepath}/public/js/doc-bundle.js ${basepath}/../echarts-www/release/zh/js/doc-bundle.js
+cp ${basepath}/public/js/doc-bundle.js ${basepath}/../echarts-www/release/en/js/doc-bundle.js
+
+cp -R ${basepath}/public/css/ ${basepath}/../echarts-www/release/zh/css/
+cp -R ${basepath}/public/css/ ${basepath}/../echarts-www/release/en/css/
+
+cp ${basepath}/public/en/documents/changelog.html ${basepath}/../echarts-www/release/en/documents/
+cp ${basepath}/public/zh/documents/changelog.html ${basepath}/../echarts-www/release/zh/documents/
 
 
 # Copy blog.
