@@ -13,17 +13,28 @@
 
 ## Build and Run Locally
 
-#### Start developing environment:
+#### Start developing environment (one way):
 
 ```shell
 npm run dev
 ```
-
 It will:
 
 + Start a static server
 + Watch doc site src change and rebuild.
 + Watch doc markdown change and rebuild.
+
+#### Start developing environment (another way):
+
+```shell
+npm run watch
+# It will not start a web server.
+```
+It will:
+
++ Only watch doc site src change and rebuild.
+
+The entry site will be in "/public/en/" and "/public/zh/".
 
 #### Build doc markdown:
 
