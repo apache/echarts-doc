@@ -316,7 +316,7 @@ $hierarchy-guider-color: #C592A0;
     @for $i from 1 through 10 {
         &.level-#{$i + 1} {
 
-            border-top: none;
+            border-top: 1px solid #eee;
             margin-top: 10px;
 
             // .el-button {
@@ -325,7 +325,7 @@ $hierarchy-guider-color: #C592A0;
 
             .guider {
                 vertical-align: middle;
-                width: $children-padding + $card-margin + 9;
+                width: $children-padding + $card-margin + 3;
                 margin-left: -$children-padding - $card-margin - 14;
                 margin-right: 2px;
                 // width: $i * ($children-padding + $card-padding);
