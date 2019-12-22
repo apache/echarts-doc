@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/echarts/theme/vintage.js"></script>
+    </head>
+    <body>
+        <style>
+            .chart {
+                width: 650px;
+                height: 300px;
+                margin: 200px auto;
+            }
+            .chart1 {
+                height: 180px;
+            }
+            .bone {
+                color: #aaa;
+                margin: 0 20px;
+            }
+            body {
+                /* background: #ddd; */
+                padding: 20px;
+            }
+        </style>
+
+
+
+        <div id="main0" class="chart"></div>
+
+
+
+
+        <script>
+            var dom0 = document.getElementById('main0');
+
+            var chart0 = echarts.init(dom0, 'vintage');
+
+            var option0 = {
+                backgroundColor: '#eee',
+                xAxis: [{
+                    type: 'time',
+                    splitLine: {show: false}
+                }],
+                yAxis: [{
+                    splitLine: {show: false}
+                }],
+                grid: [{
+                    left: 130,
+                    right: '30%',
+                    height: '40%',
+                    bottom: 110
+                }],
+                dataset: {
+                    source: [
+                        ['2012-09-01', 34, 20, 623],
+                        ['2012-09-02', 28, 14, 414],
+                        ['2012-09-03', 45, 32, 355],
+                        ['2012-09-04', 69, 46, 471],
+                        ['2012-09-05', 39, 24, 519],
+                        ['2012-09-06', 43, 23, 813],
+                        ['2012-09-07', 33, 23, 901],
+                        ['2012-09-08', 23, 13, 791],
+                        ['2012-09-09', 23, 16, 413],
+                        ['2012-09-10', 33, 20, 215],
+                        ['2012-09-11', 39, 24, 316],
+                        ['2012-09-12', 42, 32, 613],
+                        ['2012-09-13', 34, 25, 812],
+                        ['2012-09-14', 30, 21, 710],
+                        ['2012-09-15', 22, 15, 601],
+                        ['2012-09-16', 19, 11, 400],
+                        ['2012-09-17', 24, 15, 231],
+                        ['2012-09-18', 29, 19, 124],
+                        ['2012-09-19', 35, 23, 301],
+                        ['2012-09-20', 21, 10, 401],
+                        ['2012-09-21', 26, 19, 501],
+                        ['2012-09-22', 43, 32, 601],
+                        ['2012-09-23', 34, 21, 701]
+                    ]
+                },
+                series: [{
+                    name: 'MGT',
+                    type: 'line',
+                    showSymbol: false,
+                    encode: {
+                        x: 0,
+                        y: 1
+                    }
+                }, {
+                    name: 'QEL',
+                    type: 'bar',
+                    encode: {
+                        x: 0,
+                        y: 2
+                    }
+                }]
+            };
+
+            chart0.setOption(option0);
+
+
+        </script>
+
+
+
+
+    </body>
+</html>
