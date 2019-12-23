@@ -201,6 +201,11 @@ K 线图的高亮图形样式。
     hasType=true
 )}}
 
+{{use: partial-clip(
+    prefix="#",
+    version="4.5.0"
+) }}
+
 {{use:partial-z-zlevel(
     prefix="#",
     componentName="K线图"
