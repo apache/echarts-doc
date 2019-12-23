@@ -96,17 +96,7 @@ export default {
             load_delay: 300
         });
 
-        if (this.shared.currentPath) {
-            if (!getOutlineNode(this.shared.currentPath)) {
-                // Redirect to default node
-                directTo(getDefaultPage(this.shared.currentPath));
-                return;
-            }
-            this.updateCurrentPath(this.shared.currentPath, true);
-        }
-        else {
-            directTo(getDefaultPage());
-        }
+        this.updateCurrentPath(this.shared.currentPath, true);
     },
 
     methods: {
@@ -138,6 +128,20 @@ export default {
         },
 
         updateCurrentPath(newVal, firstTime) {
+            // Handling page count find issue.
+            if (newVal) {
+                if (!getOutlineNode(newVal)) {
+                    // Redirect to default node
+                    directTo(getDefaultPage(newVal));
+                    return;
+                }
+            }
+            else {
+                directTo(getDefaultPage());
+                return;
+            }
+
+
             let newPagePath = getPagePath();
             if (newPagePath === this.pagePath) { // Use title as hash.
                 this.scrollTo(newVal);

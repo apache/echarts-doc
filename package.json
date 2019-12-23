@@ -53,6 +53,7 @@
     "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",
     "mark.js": "^8.11.1",
+    "string-similarity-js": "^2.1.2",
     "vanilla-lazyload": "^12.3.0",
     "vue": "^2.6.10",
     "vue-custom-scrollbar": "^1.1.0",
