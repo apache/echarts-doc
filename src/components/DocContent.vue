@@ -20,8 +20,6 @@
                 @toggle-expanded="handleCardExpandToggle"
             ></DocContentItemCard>
         </div>
-
-    </div>
     </div>
 </template>
 
@@ -39,7 +37,7 @@ import {
 import {store, getPagePath} from '../store';
 import {directTo} from '../route';
 import DocContentItemCard from './DocContentItemCard.vue'
-import VueScrollTo from 'vue-scrollto';
+import scrollIntoView from 'scroll-into-view';
 import Vue from 'vue';
 import LazyLoad from 'vanilla-lazyload';
 
@@ -117,13 +115,13 @@ export default {
                 let container = store.isMobile ? document.body : this.$el.parentNode;
                 let offset = store.isMobile ? -100 : -20;
                 // console.log(document.querySelector('#' + convertPathToId(path)), convertPathToId(path));
-                VueScrollTo.scrollTo(
-                    '#' + convertPathToId(path), time || 400, {
-                        offset,
-                        easing: 'ease-in-out',
-                        container
+                scrollIntoView(document.querySelector('#' + convertPathToId(path)), {
+                    time: time || 400,
+                    align: {
+                        top: 0,
+                        topOffset: -offset
                     }
-                );
+                });
             }, timeDelay || 0);
         },
 
