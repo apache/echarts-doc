@@ -264,7 +264,7 @@ $hierarchy-guider-color: #C592A0;
 
         .default-value {
             color: #293c55;
-            font-size: 18px;
+            font-size: 16px;
             margin-left: 15px;
             vertical-align: bottom;
             font-weight: normal;

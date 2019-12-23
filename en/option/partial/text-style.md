@@ -114,7 +114,7 @@ Options are:
 + `'oblique'`
 
 
-#${prefix} fontWeight(string)=${defaultFontWeight|default('normal')}
+#${prefix} fontWeight(string)=${defaultFontWeight|default('\'normal\'')}
 
 ${name} font thick weight
 

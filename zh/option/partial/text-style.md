@@ -114,7 +114,7 @@ ${name}文字字体的风格
 + `'oblique'`
 
 
-#${prefix} fontWeight(string)=${defaultFontWeight|default('normal')}
+#${prefix} fontWeight(string)=${defaultFontWeight|default('\'normal\'')}
 
 ${name}文字字体的粗细
 
