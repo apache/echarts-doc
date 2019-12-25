@@ -20,6 +20,10 @@
         </span>
 
         <span class="default-value" v-if="nodeData.default && nodeData.default !== '*'"> = {{nodeData.default}}</span>
+        <span
+            v-if="shared.currentPath === nodeData.path"
+            style="font-size: 20px; user-select: none"
+        >🤛</span>
     </h4>
 
     <div class="prop-types">
