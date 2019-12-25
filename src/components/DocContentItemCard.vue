@@ -112,13 +112,7 @@ export default {
         },
 
         desc() {
-            let parts = this.nodeData.path.split('.');
-            if (parts.length > 1) {
-                // Remove the top page path.
-                // For example: `series-bar.itemStyle` will be `itemStyle`
-                parts = parts.slice(1);
-            }
-            return this.descMap[parts.join('.')];
+            return this.descMap[this.nodeData.path];
         },
 
         parentPath() {

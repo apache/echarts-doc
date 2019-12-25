@@ -3,8 +3,8 @@
         <h2 :id="pageId">{{pageTitle}}</h2>
         <div
             class="page-description"
-            v-if="rootPageDescMap[pagePath]"
-            v-html="rootPageDescMap[pagePath]"
+            v-if="pageDesc"
+            v-html="pageDesc"
             v-highlight
         ></div>
 
@@ -72,6 +72,11 @@ export default {
 
         pageId() {
             return convertPathToId(this.pagePath);
+        },
+
+        pageDesc() {
+            return this.rootPageDescMap[this.pagePath]
+                || this.pageDescMap[this.pagePath]; // In mobile.
         },
 
         pageDisplayOutline() {
@@ -151,9 +156,18 @@ export default {
             this.pagePath = newPagePath;
             // Fetch components.
             getPageOutlineAsync(newVal).then(pageOutline => {
+                this.pageOutline = Object.freeze(Object.assign({}, pageOutline));
+
                 return getPageTotalDescAsync(newVal).then(pageDescMap => {
-                    this.pageOutline = Object.freeze(Object.assign({}, pageOutline));
-                    this.pageDescMap = Object.freeze(pageDescMap);
+                    let newPageDescMap = {};
+                    let outlineRootName = newVal.split('.')[0];
+                    for (let key in pageDescMap) {
+                        // Add key prefix
+                        // For example: `series-bar.itemStyle` is `itemStyle` in the storage
+                        newPageDescMap[outlineRootName + '.' + key] = pageDescMap[key];
+                    }
+
+                    this.pageDescMap = Object.freeze(newPageDescMap);
                     if (this.pageOutline.isRoot) {
                         this.maxDepth = 0;  // No children
                     }
