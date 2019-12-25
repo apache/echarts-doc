@@ -184,6 +184,14 @@ Settings related minor ticks.
 
 Note: `minorTick` is not available in the `cateogry` type axis.
 
+Examples:
+
+1) Using minor ticks in function plotting.
+~[600x350](${galleryViewPath}line-function&edit=1&reset=1)
+
+2) Using minor ticks in log axis.
+~[600x350](${galleryViewPath}line-log&edit=1&reset=1)
+
 ##${prefix} show(boolean) = ${defaultShow|default(false)}
 If show minor ticks.
 
