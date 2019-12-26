@@ -168,6 +168,14 @@ textStyle: {
 
 注意：次刻度线无法在类目轴（[type](~${componentType}.type): `'category'`）中使用。
 
+示例：
+
+1) 函数绘图中使用次刻度线
+~[600x350](${galleryViewPath}line-function&edit=1&reset=1)
+
+2) 在对数轴中使用次刻度线
+~[600x350](${galleryViewPath}line-log&edit=1&reset=1)
+
 ##${prefix} show(boolean) = ${defaultShow|default(false)}
 是否显示次刻度线。
 
