@@ -166,9 +166,9 @@ export default {
                     this.maxDepth = Infinity;
                 }
 
-                this.pageOutline = Object.freeze(Object.assign({}, pageOutline));
-
                 return getPageTotalDescAsync(newVal).then(pageDescMap => {
+                    this.pageOutline = Object.freeze(Object.assign({}, pageOutline));
+
                     let newPageDescMap = {};
                     let outlineRootName = newVal.split('.')[0];
                     for (let key in pageDescMap) {
