@@ -91,7 +91,7 @@ export default {
     created() {
         // Root page.
         getPageTotalDescAsync('').then(rootPageDescMap => {
-            this.rootPageDescMap = rootPageDescMap;
+            this.rootPageDescMap = Object.freeze(rootPageDescMap);
         });
 
         this._lazyload = new LazyLoad({
@@ -156,6 +156,16 @@ export default {
             this.pagePath = newPagePath;
             // Fetch components.
             getPageOutlineAsync(newVal).then(pageOutline => {
+                if (pageOutline.isRoot) {
+                    this.maxDepth = 0;  // No children
+                }
+                else if (this.shared.isMobile) {
+                    this.maxDepth = 1;  // Only one level
+                }
+                else {
+                    this.maxDepth = Infinity;
+                }
+
                 this.pageOutline = Object.freeze(Object.assign({}, pageOutline));
 
                 return getPageTotalDescAsync(newVal).then(pageDescMap => {
@@ -168,15 +178,6 @@ export default {
                     }
 
                     this.pageDescMap = Object.freeze(newPageDescMap);
-                    if (this.pageOutline.isRoot) {
-                        this.maxDepth = 0;  // No children
-                    }
-                    else if (this.shared.isMobile) {
-                        this.maxDepth = 1;  // Only one level
-                    }
-                    else {
-                        this.maxDepth = Infinity;
-                    }
                     this.loading = false;
 
                     this.scrollTo(newVal, 600, firstTime ? 300: 50);
