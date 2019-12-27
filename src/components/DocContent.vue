@@ -27,7 +27,6 @@
 
 import {
     getPageTotalDescAsync,
-    getRootPageTotalDescAsync,
     getPageOutlineAsync,
     getOutlineAsync,
     convertPathToId,
@@ -90,7 +89,8 @@ export default {
     },
 
     created() {
-        getRootPageTotalDescAsync().then(rootPageDescMap => {
+        // Root page.
+        getPageTotalDescAsync('').then(rootPageDescMap => {
             this.rootPageDescMap = rootPageDescMap;
         });
 

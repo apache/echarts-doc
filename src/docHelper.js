@@ -20,7 +20,7 @@ let descStorage = {};
 let pageOutlines;
 
 let outlineNodesMap = {};
-let allNodesPathes = [];
+let allNodesPaths = [];
 
 
 function stripHtml(str) {
@@ -92,7 +92,7 @@ function processOutlines(json) {
 
     json.isRoot = true;
 
-    allNodesPathes = Object.keys(outlineNodesMap);
+    allNodesPaths = Object.keys(outlineNodesMap);
 
     return json;
 }
@@ -126,17 +126,6 @@ export function getPageOutlineAsync(targetPath) {
             // Use top outline for `option.color`, etc.
             || getOutlineAsync();
     });
-}
-
-export function getRootPageTotalDescAsync() {
-    let partionKey = rootName;
-    if (!descStorage[partionKey]) {
-        let url = `${baseUrl}/${partionKey}.json?${docVersion}`;
-        descStorage[partionKey] = {
-            fetcher: fetch(url).then(response => response.json())
-        };
-    }
-    return descStorage[partionKey].fetcher;
 }
 
 function createIndexer(map, pagePath) {
@@ -262,11 +251,11 @@ export function searchOutlineAsync(queryString, numberLimit = 50) {
     return getOutlineAsync().then(() => {
         let lists = [];
 
-        for (let i = 0; i < allNodesPathes.length; i++) {
+        for (let i = 0; i < allNodesPaths.length; i++) {
             if (lists.length >= numberLimit) {
                 return lists;
             }
-            let p = allNodesPathes[i];
+            let p = allNodesPaths[i];
             if (p.indexOf(queryString) >= 0) {
                 lists.push(getOutlineNode(p));
             }
@@ -274,11 +263,11 @@ export function searchOutlineAsync(queryString, numberLimit = 50) {
 
         if (lists.length < numberLimit) {
             if (!querySearchScores) {
-                querySearchScores = new Uint8Array(allNodesPathes.length);
+                querySearchScores = new Uint8Array(allNodesPaths.length);
             }
             let matchScoreCount = 0;
-            for (let i = 0; i < allNodesPathes.length; i++) {
-                querySearchScores[i] = stringSimilarity(allNodesPathes[i], queryString) * 255;
+            for (let i = 0; i < allNodesPaths.length; i++) {
+                querySearchScores[i] = stringSimilarity(allNodesPaths[i], queryString) * 255;
                 if (querySearchScores[i] > 50) {
                     matchScoreCount++;
                 }
@@ -298,7 +287,7 @@ export function searchOutlineAsync(queryString, numberLimit = 50) {
                 }
                 if (maxScore > 50) {   // Threshold
                     picked[maxIndex] = true;
-                    lists.push(getOutlineNode(allNodesPathes[maxIndex]));
+                    lists.push(getOutlineNode(allNodesPaths[maxIndex]));
                     matchScoreCount--;
                 }
                 safeCount++;
@@ -318,7 +307,7 @@ export function getOutlineNode(path) {
 
 export function getDefaultPage(wrongPath) {
     if (!wrongPath) {
-        return Object.keys(outlineNodesMap)[0];
+        return Object.keys(pageOutlines)[0];
     }
     // Compatitable with series-line.data[i]
     if (getOutlineNode(wrongPath.replace('[i]', ''))) {
@@ -341,8 +330,8 @@ export function getDefaultPage(wrongPath) {
     // Else find the nearest
     let mostLikeKey;
     let maxSimilarity = -Infinity;
-    for (let i = 0; i < allNodesPathes.length; i++) {
-        let p = allNodesPathes[i];
+    for (let i = 0; i < allNodesPaths.length; i++) {
+        let p = allNodesPaths[i];
         let similarity = stringSimilarity(wrongPath, p);
         if (similarity > maxSimilarity) {
             maxSimilarity = similarity;
