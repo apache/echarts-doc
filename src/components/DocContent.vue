@@ -219,6 +219,7 @@ export default {
         font-weight: normal;
         color: #999;
         font-size: 30px;
+        margin-left: 15px;
     }
 
     .page-description {
