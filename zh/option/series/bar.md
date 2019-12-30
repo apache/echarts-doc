@@ -28,7 +28,7 @@
 
 仅对极坐标系柱状图有效。
 
-~[800x500](${galleryViewPath}polar-roundCap&reset=1&edit=1)
+~[800x500](${galleryViewPath}doc-example/polar-roundCap&reset=1&edit=1)
 
 ## label(Object)
 {{use:partial-label-desc}}
