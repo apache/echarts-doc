@@ -230,7 +230,7 @@ function copyBlog() {
 }
 
 function writeSingleSchema(schema, language, docName, format) {
-    const destPath = path.resolve(__dirname, `public/${language}/documents/${docName}.json`);
+    const destPath = path.resolve(config.releaseDestDir, `${language}/documents/${docName}.json`);
     fse.ensureDirSync(path.dirname(destPath));
     fse.outputFileSync(
         destPath,
@@ -243,7 +243,7 @@ function writeSingleSchema(schema, language, docName, format) {
 function writeSingleSchemaPartioned(schema, language, docName, format) {
     const {outline, descriptions} = extractDesc(schema, docName);
 
-    const outlineDestPath = path.resolve(__dirname, `public/${language}/documents/${docName}-parts/${docName}-outline.json`);
+    const outlineDestPath = path.resolve(config.releaseDestDir, `${language}/documents/${docName}-parts/${docName}-outline.json`);
     fse.ensureDirSync(path.dirname(outlineDestPath));
     fse.outputFile(
         outlineDestPath,
@@ -254,7 +254,7 @@ function writeSingleSchemaPartioned(schema, language, docName, format) {
 
     for (let partKey in descriptions) {
         let partDescriptions = descriptions[partKey];
-        let descDestPath = path.resolve(__dirname, `public/${language}/documents/${docName}-parts/${partKey}.json`);
+        let descDestPath = path.resolve(config.releaseDestDir, `${language}/documents/${docName}-parts/${partKey}.json`);
         fse.ensureDirSync(path.dirname(descDestPath));
         fse.outputFile(
             descDestPath,
