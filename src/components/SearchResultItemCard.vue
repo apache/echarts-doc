@@ -126,4 +126,10 @@ export default {
         display: none;
     }
 }
+
+.ec-doc-mobile {
+    .doc-search-result-item-card {
+        margin: 30px 0;
+    }
+}
 </style>

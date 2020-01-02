@@ -213,13 +213,14 @@ export default {
         line-height: 45px;
         margin: 0;
         font-weight: normal;
+        box-sizing: content-box;
     }
 
     h3 {
         font-weight: normal;
         color: #999;
         font-size: 30px;
-        margin-left: 15px;
+        margin: 20px 20px 20px 0;
     }
 
     .page-description {

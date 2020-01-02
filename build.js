@@ -22,12 +22,14 @@ const chalk = require('chalk');
 const argv = require('yargs').argv;
 const path = require('path');
 const assert = require('assert');
+const chokidar = require('chokidar');
+const debounce = require('lodash.debounce');
 
 const projectDir = __dirname;
 
 function initEnv() {
     let envType = argv.env;
-    let isDev = argv.dev != null || argv.debug != null || envType === 'debug';
+    let isDev = argv.dev != null || argv.debug != null || argv.env === 'dev';
 
     if (isDev) {
         console.warn('=============================');
@@ -61,84 +63,115 @@ for (let key in config) {
 }
 
 async function md2jsonAsync(opt) {
-    return await new Promise((resolve, reject) => {
-        md2json(opt, schema => {
-            resolve(schema);
+    var newOpt = Object.assign({
+        path: path.join(opt.language, opt.entry, '**/*.md'),
+        tplEnv: config,
+        imageRoot: config.imagePath
+    }, opt);
+
+    function run(cb) {
+        md2json(newOpt, schema => {
+            writeSingleSchema(schema, opt.language, opt.entry, false);
+            writeSingleSchemaPartioned(schema, opt.language, opt.entry, false);
+            console.log(chalk.green('generated: ' + opt.language + '/' + opt.entry));
+            cb && cb();
         });
+    }
+
+    var runDebounced = debounce(run, 500, {
+        leading: false,
+        trailing: true
     });
+    return await new Promise((resolve, reject) => {
+        run(resolve);
+
+        if (argv.watch) {
+            chokidar.watch(path.resolve(__dirname, opt.language, opt.entry), {
+                ignoreInitial: true
+            }).on('all', (event, path) => {
+                console.log(path, event);
+                runDebounced();
+            });
+        }
+    });
+}
+
+function copyAsset() {
+
+    const assetSrcDir = path.resolve(projectDir, 'asset');
+
+    function doCopy() {
+        for (let lang of languages) {
+            const assetDestDir = path.resolve(config.releaseDestDir, `${lang}/documents/asset`);
+            copydir.sync(assetSrcDir, assetDestDir);
+        }
+    }
+    var doCopyDebounced = debounce(doCopy, 500, {
+        leading: false,
+        trailing: true
+    });
+
+    doCopy();
+
+    if (argv.watch) {
+        chokidar.watch(assetSrcDir, {
+            ignoreInitial: true
+        }).on('all', (event, path) => {
+            console.log(path, event);
+            doCopyDebounced();
+        });
+    }
+    console.log('Copy asset done.');
 }
 
 async function run() {
 
     for (let language of languages) {
-        let schema;
-
-        schema = await md2jsonAsync({
-            path: language + '/option/**/*.md',
+        await md2jsonAsync({
             sectionsAnyOf: ['visualMap', 'dataZoom', 'series', 'graphic.elements'],
             entry: 'option',
-            tplEnv: config,
-            imageRoot: config.imagePath
+            language
         });
-        // Always print single option.html file for some third part usage (e.g., dataV).
-        writeSingleSchema(schema, language, 'option', false);
-        writeSingleSchemaPartioned(schema, language, 'option', false);
 
-        schema = await md2jsonAsync({
-            path: language + '/tutorial/**/*.md',
+        await md2jsonAsync({
             entry: 'tutorial',
-            tplEnv: config,
             maxDepth: 1,
-            imageRoot: config.imagePath
+            language
         });
-        writeSingleSchema(schema, language, 'tutorial');
-        writeSingleSchemaPartioned(schema, language, 'tutorial', false);
 
-        schema = await md2jsonAsync({
-            path: language + '/api/**/*.md',
+        await md2jsonAsync({
             entry: 'api',
-            tplEnv: config,
-            imageRoot: config.imagePath
+            language
         });
-        writeSingleSchema(schema, language, 'api');
-        writeSingleSchemaPartioned(schema, language, 'api', false);
 
-        schema = await md2jsonAsync({
-            path: language + '/option-gl/**/*.md',
+        await md2jsonAsync({
             sectionsAnyOf: ['series'],
             entry: 'option-gl',
+            // Overwrite
             tplEnv: config.gl,
-            imageRoot: config.gl.imagePath
+            imageRoot: config.gl.imagePath,
+            language
         });
-        writeSingleSchema(schema, language, 'option-gl');
-        writeSingleSchemaPartioned(schema, language, 'option-gl', false);
-
-
-
-        // let plainMarkDownTpl = fs.readFileSync('tool/plain-md.tpl', 'utf-8');
-        // let codingStandardMD = fs.readFileSync('en' + '/coding-standard.md', 'utf-8');
-        // let codingStandardContent = marked(codingStandardMD);
-        // let codingStandardTOC = marked(codingStandardMD, {renderer: new MarkDownTOCRenderer()});
-        // fse.outputFileSync(
-        //     'public/' + language + '/documents/' + language + '/coding-standard.html',
-        //     plainMarkDownTpl
-        //         .replace('{{toc}}', codingStandardTOC)
-        //         .replace('{{content}}', codingStandardContent),
-        //     'utf-8'
-        // );
     }
 
     console.log('Build doc done.');
 
-    buildChangelog();
-
-    buildCodeStandard();
-
     copyAsset();
 
-    copySite();
+    if (!argv.watch) {  // Not in watch dev mode
+        try {
+            // TODO Do we need to debug changelog in the doc folder?
+            buildChangelog();
+            buildCodeStandard();
 
-    // copyBlog();
+            copySite();
+        }
+        catch (e) {
+            console.log('Error happens when copying to dest folders.');
+            console.log(e);
+        }
+        // copyBlog();
+    }
 
     console.log('All done.');
 }
@@ -170,29 +203,16 @@ function buildCodeStandard() {
     console.log('Build code standard done.');
 }
 
-function copyAsset() {
-    for (let lang of languages) {
-        const assetSrcDir = path.resolve(projectDir, 'asset');
-        const assetDestDir = path.resolve(config.releaseDestDir, `${lang}/documents/asset`);
-        copydir.sync(assetSrcDir, assetDestDir);
-    }
-    console.log('Copy asset done.');
-}
-
 function copySite() {
-    // `npm run build:site` have generated the boundle files to `public/`
-    if (config.envType === 'dev') {
-        return;
-    }
+    const jsSrcPath = path.resolve(projectDir, 'public/js/doc-bundle.js');
+    const cssSrcDir = path.resolve(projectDir, 'public/css');
 
     // Copy js and css of doc site.
     for (let lang of languages) {
-        const jsSrcPath = path.resolve(projectDir, 'public/js/doc-bundle.js')
         const jsDestPath = path.resolve(config.releaseDestDir, `${lang}/js/doc-bundle.js`);
         fse.copySync(jsSrcPath, jsDestPath);
         console.log(chalk.green(`js copied to: ${jsDestPath}`));
 
-        const cssSrcDir = path.resolve(projectDir, 'public/css');
         const cssDestDir = path.resolve(config.releaseDestDir, `${lang}/css`);
         fse.copySync(cssSrcDir, cssDestDir);
         console.log(chalk.green(`css copied to: ${cssDestDir}`));
@@ -210,31 +230,31 @@ function copyBlog() {
 }
 
 function writeSingleSchema(schema, language, docName, format) {
-    const destPath = path.resolve(config.releaseDestDir, `${language}/documents/${docName}.json`);
+    const destPath = path.resolve(__dirname, `public/${language}/documents/${docName}.json`);
     fse.ensureDirSync(path.dirname(destPath));
     fse.outputFileSync(
         destPath,
         format ? JSON.stringify(schema, null, 2) : JSON.stringify(schema),
         'utf-8'
     );
-    console.log(chalk.green('generated: ' + destPath));
+    // console.log(chalk.green('generated: ' + destPath));
 }
 
 function writeSingleSchemaPartioned(schema, language, docName, format) {
     const {outline, descriptions} = extractDesc(schema, docName);
 
-    const outlineDestPath = path.resolve(config.releaseDestDir, `${language}/documents/${docName}-parts/${docName}-outline.json`);
+    const outlineDestPath = path.resolve(__dirname, `public/${language}/documents/${docName}-parts/${docName}-outline.json`);
     fse.ensureDirSync(path.dirname(outlineDestPath));
     fse.outputFile(
         outlineDestPath,
         format ? JSON.stringify(outline, null, 2) : JSON.stringify(outline),
         'utf-8'
     );
-    console.log(chalk.green('generated: ' + outlineDestPath));
+    // console.log(chalk.green('generated: ' + outlineDestPath));
 
     for (let partKey in descriptions) {
         let partDescriptions = descriptions[partKey];
-        let descDestPath = path.resolve(config.releaseDestDir, `${language}/documents/${docName}-parts/${partKey}.json`);
+        let descDestPath = path.resolve(__dirname, `public/${language}/documents/${docName}-parts/${partKey}.json`);
         fse.ensureDirSync(path.dirname(descDestPath));
         fse.outputFile(
             descDestPath,
@@ -242,7 +262,7 @@ function writeSingleSchemaPartioned(schema, language, docName, format) {
             JSON.stringify(partDescriptions, null, 2),
             'utf-8'
         );
-        console.log(chalk.green('generated: ' + descDestPath));
+        // console.log(chalk.green('generated: ' + descDestPath));
     }
 };
 

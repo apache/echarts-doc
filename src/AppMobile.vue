@@ -14,6 +14,10 @@
                     :href="'tutorial.html'"
                     :class="{'selected': shared.docType === 'tutorial'}"
                 >{{$t('nav.tutorial')}}</a>
+                <a
+                    :href="'option-gl.html'"
+                    :class="{'selected': shared.docType === 'option-gl'}"
+                >{{$t('nav.optionGL')}}</a>
             </div>
             <div class="doc-mobile-toolbar">
                 <el-button
@@ -22,15 +26,15 @@
                 ></el-button>
                 <Search></Search>
             </div>
-            <el-drawer
-                direction="ltr"
-                size="80%"
-                :visible.sync="navShown"
-                :show-close="false"
-            >
-                <DocNav></DocNav>
-            </el-drawer>
         </div>
+        <el-drawer
+            direction="ltr"
+            size="80%"
+            :visible.sync="navShown"
+            :show-close="false"
+        >
+            <DocNav></DocNav>
+        </el-drawer>
         <transition>
             <SearchResult v-if="shared.fuzzySearch"></SearchResult>
             <!-- Always create a new component if page is changed -->
@@ -153,7 +157,7 @@ export default {
         a {
             display: inline-block;
             line-height: 30px;
-            width: 30%;
+            width: 22%;
             text-align: center;
             box-sizing: border-box;
             text-decoration: none;
@@ -208,4 +212,5 @@ export default {
         overflow-y: scroll;
     }
 }
+
 </style>
