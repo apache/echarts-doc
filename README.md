@@ -26,18 +26,6 @@ It will:
 + Watch doc site src change and rebuild.
 + Watch doc markdown change and rebuild.
 
-### Website development
-Need project `incubator-echarts-website`, `echarts-www`, `echarts-examples` existing on the same same directory with this project.
-
-```shell
-npm run localsite
-```
-And then check the result in `incubator-echarts-website` with your own web server.
-
-### Release
-
-Check `incubator-echarts-website/README.md` please.
-
 
 ## Tips about writing doc
 
