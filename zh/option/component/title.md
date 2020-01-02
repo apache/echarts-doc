@@ -94,7 +94,7 @@
 
 是否触发事件。
 
-## padding(number) = 5
+## padding(number|Array) = 5
 
 {{ use: partial-padding(componentName="标题")}}
 
@@ -102,7 +102,7 @@
 
 主副标题之间的间距。
 
-{{use: partial-rect-layout(componentName="grid ")}}
+{{use: partial-rect-layout(componentName="title ")}}
 
 {{ use: partial-component-common-style(
     componentName="标题",
