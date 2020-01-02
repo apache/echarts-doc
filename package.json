@@ -12,7 +12,8 @@
     "build:site": "npx webpack --config build/webpack.config.js --mode production",
     "watch:site": "npx webpack --config build/webpack.config.js --mode development --devtool sourcemap --watch",
     "server": "node server.js",
-    "dev": "npx concurrently --kill-others \"npm run watch\" \"npm run watch:site\" \"npm run server\""
+    "dev": "npx concurrently --kill-others \"npm run watch\" \"npm run watch:site\" \"npm run server\"",
+    "localsite": "npm run build:site && node build.js --env localsite"
   },
   "author": "shenyi",
   "license": "BSD",

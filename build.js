@@ -3,9 +3,10 @@
  * Usage:
  *
  * ```shell
- * node build.js --env dev
- * node build.js --env asf
- * node build.js --env echartsjs
+ * node build.js --env asf # build all for asf
+ * node build.js --env echartsjs # build all for echartsjs.
+ * node build.js --env localsite # build all for localsite.
+ * node build.js --env dev # the same as "debug", dev the content of docs.
  * # Check `./config` to see the available env
  * ```
  * ------------------------------------------------------------------------

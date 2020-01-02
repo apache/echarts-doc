@@ -11,9 +11,11 @@
     + [API](https://echarts.apache.org/zh/api.html)
     + [Chart Configuration](https://echarts.apache.org/zh/option.html)
 
-## Build and Run Locally
+## Development
 
-#### Start developing environment (one way):
+### Document content development
+
+Do not need other project.
 
 ```shell
 npm run dev
@@ -24,33 +26,18 @@ It will:
 + Watch doc site src change and rebuild.
 + Watch doc markdown change and rebuild.
 
-#### Start developing environment (another way):
+### Website development
+Need project `incubator-echarts-website`, `echarts-www`, `echarts-examples` existing on the same same directory with this project.
 
 ```shell
-npm run watch
-# It will not start a web server.
+npm run localsite
 ```
-It will:
+And then check the result in `incubator-echarts-website` with your own web server.
 
-+ Only watch doc site src change and rebuild.
-
-The entry site will be in "/public/en/" and "/public/zh/".
-
-#### Build doc markdown:
-
-```shell
-npm run build
-```
-
-#### Build doc site:
-
-```shell
-npm run build:site
-```
-
-#### Release:
+### Release
 
 Check `incubator-echarts-website/README.md` please.
+
 
 ## Tips about writing doc
 
