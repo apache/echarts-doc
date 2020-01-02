@@ -786,6 +786,7 @@
 .ec-doc {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "Helvetica Neue", Helvetica, Arial, sans-serif;
   height: 100%;
+  margin-top: 50px;
 }
 .ec-doc ul, .ec-doc ol {
     margin: 0;
