@@ -49,7 +49,7 @@
     "yargs": "^14.0.0"
   },
   "dependencies": {
-    "element-ui": "^2.12.0",
+    "element-ui": "^2.13.0",
     "highlight.js": "^9.16.2",
     "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",
