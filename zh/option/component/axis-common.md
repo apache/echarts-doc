@@ -144,14 +144,58 @@ textStyle: {
 
 ##${prefix} length(number) = 5
 坐标轴刻度的长度。
+
 ##${prefix} lineStyle(Object)
-{{ use: partial-line-style(prefix='##' + ${prefix}, defaultColor="'#333'", defaultWidth=1, defaultType="'solid'", name="坐标轴刻度") }}
+刻度线的样式设置。
+
+{{ use: partial-line-style(
+    prefix='##' + ${prefix},
+    defaultWidth=1,
+    defaultType="'solid'",
+    name="坐标轴刻度"
+) }}
 <!-- Overwrite color -->
 ###${prefix} color(Color)
 
+刻度线的颜色，默认取 [axisTick.lineStyle.color](~${componentType}.axisTick.lineStyle.color)。
+
+
+
+{{target: partial-axis-common-minor-tick}}
+
+#${prefix} minorTick(Object)
+坐标轴次刻度线相关设置。
+
+注意：次刻度线无法在类目轴（[type](~${componentType}.type): `'category'`）中使用。
+
+示例：
+
+1) 函数绘图中使用次刻度线
+~[600x350](${galleryViewPath}line-function&edit=1&reset=1)
+
+2) 在对数轴中使用次刻度线
+~[600x350](${galleryViewPath}line-log&edit=1&reset=1)
+
+##${prefix} show(boolean) = ${defaultShow|default(false)}
+是否显示次刻度线。
+
+##${prefix} splitNumber(number) = 5
+次刻度线分割数，默认会分割成 5 段
+
+##${prefix} length(number) = 3
+次刻度线的长度。
+
+##${prefix} lineStyle(Object)
+
+{{ use: partial-line-style(
+    prefix='##' + ${prefix},
+    defaultWidth=1,
+    defaultType="'solid'",
+    name="次刻度线"
+) }}
+<!-- Overwrite color -->
+###${prefix} color(Color)
 刻度线的颜色，默认取 [axisLine.lineStyle.color](~${componentType}.axisLine.lineStyle.color)。
-
-
 
 
 
@@ -169,9 +213,15 @@ textStyle: {
     componentType=${componentType}
 ) }}
 {{ /if }}
-##${prefix} lineStyle(Object)
 
-{{ use: partial-line-style(prefix='##' + ${prefix}, defaultColor="'#333'", defaultWidth=1, defaultType="'solid'", name="分隔线") }}
+##${prefix} lineStyle(Object)
+{{ use: partial-line-style(
+    prefix='##' + ${prefix},
+    defaultColor="'#333'",
+    defaultWidth=1,
+    defaultType="'solid'",
+    name="分隔线"
+) }}
 
 <!-- overwrite color -->
 ###${prefix} color(Array|string) = ['#ccc']
@@ -189,8 +239,22 @@ splitLine: {
 }
 ```
 
+{{target: partial-axis-common-minor-split-line}}
+
+#${prefix} minorSplitLine(Object)
+坐标轴在 [grid](~grid) 区域中的次分隔线。次分割线会对齐次刻度线 [minorTick](~${componentType}.minorTick)
+
+##${prefix} show(boolean) = ${defaultShow|default(false)}
+是否显示次分隔线。默认不显示。
 
 
+{{ use: partial-line-style(
+    prefix='##' + ${prefix},
+    defaultColor="'#eee'",
+    defaultWidth=1,
+    defaultType="'solid'",
+    name="次分隔线"
+) }}
 
 
 {{target: partial-axis-common-split-area}}
@@ -298,8 +362,8 @@ boundaryGap: ['20%', '20%']
 
 当设置成 `function` 形式时，可以根据计算得出的数据最大最小值设定坐标轴的最小值。如：
 
-```
-min: function(value) {
+```js
+min: function (value) {
     return value.min - 20;
 }
 ```
@@ -318,8 +382,8 @@ min: function(value) {
 
 当设置成 `function` 形式时，可以根据计算得出的数据最大最小值设定坐标轴的最小值。如：
 
-```
-max: function(value) {
+```js
+max: function (value) {
     return value.max - 20;
 }
 ```
@@ -391,6 +455,11 @@ max: function(value) {
     componentType=${componentType}
 ) }}
 
+{{ use: partial-axis-common-minor-tick(
+    prefix=${prefix},
+    componentType=${componentType}
+) }}
+
 {{ use: partial-axis-common-axis-label(
     prefix=${prefix},
     componentType=${componentType}
@@ -399,6 +468,11 @@ max: function(value) {
 {{ if: ${hasSplitLineAndArea} }}
 
 {{ use: partial-axis-common-split-line(
+    prefix=${prefix},
+    componentType=${componentType}
+) }}
+
+{{ use: partial-axis-common-minor-split-line(
     prefix=${prefix},
     componentType=${componentType}
 ) }}

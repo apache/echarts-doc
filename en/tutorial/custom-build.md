@@ -12,7 +12,7 @@ these pre-builds are provided:
 
 We can also build echarts ourselves, which enables to only include the charts and components you needed. You can customize your ECharts build by using one of these approaches:
 
-+ [Online custom build tool](${websitePath}builder.html) is relatively convenient.
++ [Online custom build tool](${websitePath}/builder.html) is relatively convenient.
 + The script `echarts/build/build.js` found in the project is flexible for module selecting, and supports multi-language builds
 + Build ECharts and your project directly by using tools such as [rollup](https://rollupjs.org/), [webpack](https://webpack.js.org//), [browserify](http://browserify.org/)
 

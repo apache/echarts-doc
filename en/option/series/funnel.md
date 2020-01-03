@@ -85,7 +85,7 @@ The visual guide line style of label. When [label position](~series-funnel.label
 {{use:partial-item-style(prefix="###")}}
 
 
-{{ use: component-rect-layout-width-height(
+{{ use: partial-rect-layout-width-height(
     componentName="funnel chart",
     defaultLeft=80,
     defaultTop=60,

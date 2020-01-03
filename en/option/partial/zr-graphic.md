@@ -1174,7 +1174,7 @@ Whether use progressive render to improve performance. Usually used when number 
 {{ target: partial-graphic-cpt-style-prop-common }}
 
 
-More attributes in `style` (for example, [rich text](https://ecomfe.github.io/echarts-doc/public/en/tutorial.html#Rich%20Text)), see the `style` related attributes in [zrender/graphic/Displayable](https://ecomfe.github.io/zrender-doc/public/api.html#zrenderdisplayable).
+More attributes in `style` (for example, [rich text](tutorial.html#Rich%20Text)), see the `style` related attributes in [zrender/graphic/Displayable](https://ecomfe.github.io/zrender-doc/public/api.html#zrenderdisplayable).
 
 Notice, the attribute names of the `style` of graphic elements is derived from `zrender`, which may be different from the attribute names in `echarts label`, `echarts itemStyle`, etc., although they have the same meaning. For example:
 

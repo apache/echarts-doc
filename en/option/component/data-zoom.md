@@ -128,9 +128,6 @@ What is the exact meaning of `start: 20, end: 80` in `dataZoomY` in the example 
 <br>
 
 
-Detailed configurations are listed as follows.
-
-
 
 {{import: component-data-zoom-inside}}
 {{import: component-data-zoom-slider}}

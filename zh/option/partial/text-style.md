@@ -77,7 +77,7 @@ label: {
 
 
 
-##${prefix} <user defined style name>(Object)
+##${prefix} <style_name>(Object)
 
 {{use:partial-text-style-base-item(
     prefix=${prefix} + '##',
@@ -114,7 +114,7 @@ ${name}文字字体的风格
 + `'oblique'`
 
 
-#${prefix} fontWeight(string)=${defaultFontWeight|default('normal')}
+#${prefix} fontWeight(string)=${defaultFontWeight|default('\'normal\'')}
 
 ${name}文字字体的粗细
 

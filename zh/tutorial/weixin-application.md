@@ -20,7 +20,7 @@
 
 其中，`ec-canvas` 是我们提供的组件，其他文件是如何使用该组件的示例。
 
-`ec-canvas` 目录下有一个 `echarts.js`，默认我们会在每次 `echarts-for-weixin` 项目发版的时候替换成最新版的 ECharts。如有必要，可以自行从 ECharts 项目中下载[最新发布版](https://github.com/apache/incubator-echarts/releases)，或者从[官网自定义构建](${websitePath}builder.html)以减小文件大小。
+`ec-canvas` 目录下有一个 `echarts.js`，默认我们会在每次 `echarts-for-weixin` 项目发版的时候替换成最新版的 ECharts。如有必要，可以自行从 ECharts 项目中下载[最新发布版](https://github.com/apache/incubator-echarts/releases)，或者从[官网自定义构建](${websitePath}/builder.html)以减小文件大小。
 
 ## 引入组件
 
@@ -83,7 +83,7 @@ Page({
 });
 ```
 
-这对于所有 ECharts 图表都是通用的，用户只需要修改上面 `option` 的内容，即可改变图表。`option` 的使用方法参见 [ECharts 配置项文档](${websitePath}option.html)。对于不熟悉 ECharts 的用户，可以参见 [5 分钟上手 ECharts](${websitePath}tutorial.html#5%20%E5%88%86%E9%92%9F%E4%B8%8A%E6%89%8B%20ECharts) 教程。
+这对于所有 ECharts 图表都是通用的，用户只需要修改上面 `option` 的内容，即可改变图表。`option` 的使用方法参见 [ECharts 配置项文档](${websitePath}/option.html)。对于不熟悉 ECharts 的用户，可以参见 [5 分钟上手 ECharts](${websitePath}/tutorial.html#5%20%E5%88%86%E9%92%9F%E4%B8%8A%E6%89%8B%20ECharts) 教程。
 
 完整的例子请参见 [ecomfe/echarts-for-weixin](https://github.com/ecomfe/echarts-for-weixin) 项目。
 

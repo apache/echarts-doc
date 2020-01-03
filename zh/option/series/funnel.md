@@ -85,7 +85,7 @@
 {{use:partial-item-style(prefix="###")}}
 
 
-{{ use: component-rect-layout-width-height(
+{{ use: partial-rect-layout-width-height(
     componentName="漏斗图",
     defaultLeft=80,
     defaultTop=60,

@@ -12,6 +12,7 @@ module.exports = {
         library: 'echartsDoc',
         libraryTarget: 'umd'
     },
+    stats: 'minimal',
     module: {
         rules: [{
             test: /\.vue$/,

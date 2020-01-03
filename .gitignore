@@ -171,10 +171,11 @@ pip-log.txt
 .DS_Store
 
 node_modules
-
-
-public/js/doc-bundle.js.map
-public/css/doc-bundle.css.map
-
-
 slides/webgl
+
+# Generated distributions
+public/js
+public/css
+public/zh/documents
+public/en/documents
+public/*.html

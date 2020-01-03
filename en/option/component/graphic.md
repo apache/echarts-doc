@@ -354,13 +354,6 @@ For example:
 Note, [bounding](graphic.elements.bounding) can be used to specify whether the entire transformed element (containing children if is group) is confined in its container.
 
 
-<br>
-
----
-
-
-Detailed configurations are listed as follows.
-
 {{use: partial-component-id(prefix="#")}}
 
 ## elements(Array)
