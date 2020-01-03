@@ -35,7 +35,7 @@ Open the hyper link of main title in specified tab.
 
 + `'blank'` opening it in a new tab
 
-## textStyle
+## textStyle(Object)
 
 {{ use: partial-text-style(
     prefix="##",
@@ -68,7 +68,7 @@ The hyper link of subtitle text.
 + `'blank'` opening it in a new tab
 
 
-## subtextStyle
+## subtextStyle(Object)
 
 {{ use: partial-text-style(
     prefix='##',

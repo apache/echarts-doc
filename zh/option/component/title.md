@@ -35,7 +35,7 @@
 
 + `'blank'` 新窗口打开
 
-## textStyle
+## textStyle(Object)
 
 {{ use: partial-text-style(
     prefix="##",
@@ -68,7 +68,7 @@
 + `'blank'` 新窗口打开
 
 
-## subtextStyle
+## subtextStyle(Object)
 
 {{ use: partial-text-style(
     prefix='##',
