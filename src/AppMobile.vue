@@ -38,8 +38,8 @@
         <transition>
             <SearchResult v-if="shared.fuzzySearch"></SearchResult>
             <!-- Always create a new component if page is changed -->
-            <DocContent v-else-if="shared.currentPath" :key="pagePath"></DocContent>
-            <Home v-else></Home>
+            <DocContent v-else :key="pagePath"></DocContent>
+            <!-- <Home v-else></Home> -->
         </transition>
         <div class="doc-breadcrumb" v-if="pagePathParts.length > 1">
             <a :key="item.link" v-for="item in pagePathParts" :href="'#' + item.link">{{item.text}}</a>
