@@ -60,7 +60,7 @@ Option:
 + 'left'
 + 'right'
 
-## padding(number) = 5
+## padding(number|Array) = 5
 
 {{ use: partial-padding(componentName="legend")}}
 
