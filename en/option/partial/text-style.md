@@ -114,7 +114,7 @@ Options are:
 + `'oblique'`
 
 
-#${prefix} fontWeight(string)=${defaultFontWeight|default('\'normal\'')}
+#${prefix} fontWeight(string|number)=${defaultFontWeight|default('normal')}
 
 ${name} font thick weight
 
@@ -279,7 +279,7 @@ Notice, `width` and `height` specifies the width and height of the content, with
 Notice, `width` and `height` only work when `rich` specified.
 
 
-#${prefix} textBorderColor(string)='transparent'
+#${prefix} textBorderColor(Color)='transparent'
 
 Storke color of the text.
 
@@ -292,7 +292,7 @@ Storke color of the text.
 
 Storke line width of the text.
 
-#${prefix} textShadowColor(string)='transparent'
+#${prefix} textShadowColor(Color)='transparent'
 
 Shadow color of the text itself.
 

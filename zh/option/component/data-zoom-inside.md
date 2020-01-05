@@ -32,7 +32,7 @@
     galleryViewPath=${galleryViewPath}
 ) }}
 
-## zoomOnMouseWheel(boolean) = true
+## zoomOnMouseWheel(boolean|string) = true
 
 如何触发缩放。可选值为：
 
@@ -42,7 +42,7 @@
 + `'ctrl'`：表示按住 `ctrl` 和鼠标滚轮能触发缩放。
 + `'alt'`：表示按住 `alt` 和鼠标滚轮能触发缩放。
 
-## moveOnMouseMove(boolean) = true
+## moveOnMouseMove(boolean|string) = true
 
 如何触发数据窗口平移。可选值为：
 
@@ -52,7 +52,7 @@
 + `'ctrl'`：表示按住 `ctrl` 和鼠标移动能触发数据窗口平移。
 + `'alt'`：表示按住 `alt` 和鼠标移动能触发数据窗口平移。
 
-## moveOnMouseWheel(boolean) = true
+## moveOnMouseWheel(boolean|string) = true
 
 如何触发数据窗口平移。可选值为：
 

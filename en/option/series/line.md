@@ -37,7 +37,7 @@ Broken line chart relates all the data points [symbol](~series-line.symbol) by b
 ## showSymbol(boolean) = true
 Whether to show symbol. It would be shown during tooltip hover.
 
-## showAllSymbol(boolean) = 'auto'
+## showAllSymbol(boolean|string) = 'auto'
 Only work when main axis is `'category'` axis (`axis.type` is `'category'`). Optional values:
 + `'auto'`: Default value. Show all symbols if there is enough space. Otherwise follow the interval strategy with with [axisLabel.interval](~xAxis.axisLabel.interval).
 + `true`: Show all symbols.

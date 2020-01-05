@@ -180,11 +180,11 @@ You can understand the order of items in `text` array just by a simple trial. Se
 The rule, that labels will not show when `text` is use, is retained for compatibility with ECharts2.
 
 
-## textGap(Array) = 10
+## textGap(number) = 10
 
 The distance between the ends of the graphical elements for pieces and the labels, with unit px. See [visualMap-piecewise.text](~visualMap-piecewise.text)
 
-## showLabel(boolean)
+## showLabel(boolean) = true
 
 Whether to show label of each item. By defualt, label will not be shown when [visualMap-piecewise.text](~visualMap-piecewise.text) used, otherwise label will be shown.
 

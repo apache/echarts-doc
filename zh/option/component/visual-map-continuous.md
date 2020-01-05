@@ -136,7 +136,7 @@ chart.setOption({visualMap: {range: null}}); // 再把 range 设为 null。
 `text` 中的顺序，其实试试就知道。若要看详细的规则，参见 [visualMap.inverse](~visualMap.inverse)。
 
 
-## textGap(Array) = 10
+## textGap(number) = 10
 
 两端文字主体之间的距离，单位为px。参见 [visualMap-continuous.text](~visualMap-continuous.text)
 

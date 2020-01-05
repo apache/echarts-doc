@@ -37,7 +37,7 @@
 ## showSymbol(boolean) = true
 是否显示 symbol, 如果 `false` 则只有在 tooltip hover 的时候显示。
 
-## showAllSymbol(boolean) = 'auto'
+## showAllSymbol(boolean|string) = 'auto'
 只在主轴为类目轴（`axis.type` 为 `'category'`）时有效。
 可选值：
 + `'auto'`：默认，如果有足够空间则显示标志图形，否则随主轴标签间隔隐藏策略。

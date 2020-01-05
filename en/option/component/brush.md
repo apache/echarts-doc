@@ -182,7 +182,7 @@ Defailt brush style, whose value is:
 
 {{use: partial-brush-throttle (galleryViewPath=${galleryViewPath})}}
 
-## removeOnClick(number) = true
+## removeOnClick(boolean) = true
 
 Defined whether *clearing all select-boxes on click* is enabled when [brush.brushMode](~brush.brushMode) is `'single'`.
 

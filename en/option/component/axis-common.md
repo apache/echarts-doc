@@ -389,8 +389,7 @@ min: function (value) {
 }
 ```
 
-
-#${prefix} max(number|string) = null
+#${prefix} max(number|string|function) = null
 
 The maximum value of axis.
 
@@ -406,7 +405,6 @@ max: function (value) {
     return value.max - 20;
 }
 ```
-
 
 #${prefix} scale(boolean) = false
 
