@@ -187,7 +187,7 @@ myChart.dispatchAction({
 
 {{use: partial-brush-throttle (galleryViewPath=${galleryViewPath})}}
 
-## removeOnClick(number) = true
+## removeOnClick(boolean) = true
 
 在 [brush.brushMode](~brush.brushMode) 为 `'single'` 的情况下，是否支持『单击清除所有选框』。
 

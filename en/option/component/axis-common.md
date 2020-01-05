@@ -307,7 +307,7 @@ For non-category axis, including time, numerical value, and log axes, `boundaryG
 boundaryGap: ['20%', '20%']
 ```
 
-#${prefix} min(number|string) = null
+#${prefix} min(number|string|function) = null
 
 The minimun value of axis.
 
@@ -317,7 +317,15 @@ It will be automatically computed to make sure axis tick is equally distributed 
 
 In category axis, it can also be set as the ordinal number. For example, if a catergory axis has `data: ['categoryA', 'categoryB', 'categoryC']`, and the ordinal `2` represents `'categoryC'`. Moreover, it can be set as negative number, like `-3`.
 
-#${prefix} max(number|string) = null
+When set `min` as `function`, set return value of the function as the minimun value.
+
+```
+min: function(value) {
+    return value.min - 20;
+}
+```
+
+#${prefix} max(number|string|function) = null
 
 The maximum value of axis.
 
@@ -326,6 +334,14 @@ It can be set to a special value `'dataMax'` so that the minimum value on this a
 It will be automatically computed to make sure axis tick is equally distributed when not set.
 
 In category axis, it can also be set as the ordinal number. For example, if a catergory axis has `data: ['categoryA', 'categoryB', 'categoryC']`, and the ordinal `2` represents `'categoryC'`. Moreover, it can be set as negative number, like `-3`.
+
+When set `max` as `function`, set return value of the function as the maximum value.
+
+```
+max: function(value) {
+    return value.max - 20;
+}
+```
 
 #${prefix} scale(boolean) = false
 

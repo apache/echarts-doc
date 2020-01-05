@@ -142,7 +142,7 @@ The label text on both ends, such as `['High', 'Low']`. [sample](${galleryEditor
 You can understand the order of items in `text` array just by a simple trial. See [visualMap.inverse](~visualMap.inverse).
 
 
-## textGap(Array) = 10
+## textGap(number) = 10
 
 The distance between the ends of the main bar and the label, with unit px. See [visualMap-continuous.text](~visualMap-continuous.text)
 

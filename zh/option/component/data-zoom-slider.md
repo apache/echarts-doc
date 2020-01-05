@@ -71,7 +71,7 @@
 
 自定义 icon 见 [示例 area-simple](${galleryEditorPath}area-simple)
 
-## handleSize(number) = '100%'
+## handleSize(number|string) = '100%'
 
 控制手柄的尺寸，可以是像素大小，也可以是相对于 dataZoom 组件宽度的百分比，默认跟 dataZoom 宽度相同。
 
@@ -85,7 +85,7 @@
 )}}
 
 
-## labelPrecision(number) = 'auto'
+## labelPrecision(number|string) = 'auto'
 
 显示label的小数精度。默认根据数据自动决定。
 

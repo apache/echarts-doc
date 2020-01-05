@@ -114,7 +114,7 @@ ${name}文字字体的风格
 + `'oblique'`
 
 
-#${prefix} fontWeight(string)=${defaultFontWeight|default('normal')}
+#${prefix} fontWeight(string|number)=${defaultFontWeight|default('normal')}
 
 ${name}文字字体的粗细
 
@@ -271,7 +271,7 @@ backgroundColor: {
 
 注意，如果不定义 `rich` 属性，则不能指定 `width` 和 `height`。
 
-#${prefix} textBorderColor(string)='transparent'
+#${prefix} textBorderColor(Color)='transparent'
 
 文字本身的描边颜色。
 
@@ -283,7 +283,7 @@ backgroundColor: {
 
 文字本身的描边宽度。
 
-#${prefix} textShadowColor(string)='transparent'
+#${prefix} textShadowColor(Color)='transparent'
 
 文字本身的阴影颜色。
 
