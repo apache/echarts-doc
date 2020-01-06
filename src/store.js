@@ -30,3 +30,8 @@ export function getPagePath() {
         return store.currentPath.split('.')[0];
     }
 }
+
+export function isOptionDoc() {
+    return store.docType === 'option'
+        || store.docType === 'option-gl';
+}

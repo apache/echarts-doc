@@ -1,6 +1,9 @@
 // Global doc schema manager.
 // Not in the vue observer.
 import {fetch} from 'whatwg-fetch';
+// import levenshtein from 'js-levenshtein';
+// stringSimilarity has better result than levenshtein when handling typo
+import { stringSimilarity } from 'string-similarity-js';
 // import stripHtml from 'string-strip-html';
 // import Fuse from 'fuse.js';
 
@@ -17,6 +20,7 @@ let descStorage = {};
 let pageOutlines;
 
 let outlineNodesMap = {};
+let allNodesPaths = [];
 
 
 function stripHtml(str) {
@@ -88,6 +92,8 @@ function processOutlines(json) {
 
     json.isRoot = true;
 
+    allNodesPaths = Object.keys(outlineNodesMap);
+
     return json;
 }
 /**
@@ -120,17 +126,6 @@ export function getPageOutlineAsync(targetPath) {
             // Use top outline for `option.color`, etc.
             || getOutlineAsync();
     });
-}
-
-export function getRootPageTotalDescAsync() {
-    let partionKey = rootName;
-    if (!descStorage[partionKey]) {
-        let url = `${baseUrl}/${partionKey}.json?${docVersion}`;
-        descStorage[partionKey] = {
-            fetcher: fetch(url).then(response => response.json())
-        };
-    }
-    return descStorage[partionKey].fetcher;
 }
 
 function createIndexer(map, pagePath) {
@@ -247,26 +242,60 @@ export function searchAllAsync(queryString, onAdd) {
         });
     });
 }
+
+let querySearchScores;
 /**
  * Search outline with given query. Return list of nodes
  */
-export function searchOutlineAsync(queryString, numberLimit = Infinity) {
-    return getOutlineAsync().then(outline => {
+export function searchOutlineAsync(queryString, numberLimit = 50) {
+    return getOutlineAsync().then(() => {
         let lists = [];
-        function search(node) {
+
+        for (let i = 0; i < allNodesPaths.length; i++) {
             if (lists.length >= numberLimit) {
-                return;
+                return lists;
             }
-            if (node.path && node.path.indexOf(queryString) >= 0) {
-                lists.push(node);
+            let p = allNodesPaths[i];
+            if (p.indexOf(queryString) >= 0) {
+                lists.push(getOutlineNode(p));
             }
-            if (node.children) {
-                for (let i = 0; i < node.children.length; i++) {
-                    search(node.children[i]);
+        }
+
+        if (lists.length < numberLimit) {
+            if (!querySearchScores) {
+                querySearchScores = new Uint8Array(allNodesPaths.length);
+            }
+            let matchScoreCount = 0;
+            for (let i = 0; i < allNodesPaths.length; i++) {
+                querySearchScores[i] = stringSimilarity(allNodesPaths[i], queryString) * 255;
+                if (querySearchScores[i] > 50) {
+                    matchScoreCount++;
+                }
+            }
+
+            let picked = {};
+            let safeCount = 0;
+            let safeProtect = 200;
+            while (lists.length < numberLimit && matchScoreCount > 0) {
+                let maxScore = 0;
+                let maxIndex;
+                for (let i = 0; i < querySearchScores.length; i++) {
+                    if (querySearchScores[i] > maxScore && !picked[i]) {
+                        maxIndex = i;
+                        maxScore = querySearchScores[i];
+                    }
+                }
+                if (maxScore > 50) {   // Threshold
+                    picked[maxIndex] = true;
+                    lists.push(getOutlineNode(allNodesPaths[maxIndex]));
+                    matchScoreCount--;
+                }
+                safeCount++;
+                if (safeCount > safeProtect) {
+                    break;
                 }
             }
         }
-        search(outline);
 
         return lists;
     });
@@ -280,15 +309,34 @@ export function getDefaultPage(wrongPath) {
     if (!wrongPath) {
         return Object.keys(pageOutlines)[0];
     }
-    let firstKey;
-    for (let key in pageOutlines) {
-        if (!firstKey) {
-            firstKey = key;
+    // Compatitable with series-line.data[i]
+    if (getOutlineNode(wrongPath.replace('[i]', ''))) {
+        return wrongPath.replace('[i]', '');
+    }
+    // Compatitable with series.data. Convert to series-line.data
+    let wrongPathParts = wrongPath.split('.');
+    let correctedPath = wrongPathParts.map(pathItem => {
+        let itemNode = getOutlineNode(pathItem);
+        let firstChild = itemNode && itemNode.children && itemNode && itemNode.children[0];
+        if (firstChild && firstChild.arrayItemType) {
+            return pathItem + '-' + firstChild.arrayItemType;
         }
-        // Find the page
-        if (wrongPath.indexOf(key) >= 0) {
-            return key;
+        return pathItem;
+    });
+    if (getOutlineNode(correctedPath.join('.'))) {
+        return correctedPath.join('.');
+    }
+
+    // Else find the nearest
+    let mostLikeKey;
+    let maxSimilarity = -Infinity;
+    for (let i = 0; i < allNodesPaths.length; i++) {
+        let p = allNodesPaths[i];
+        let similarity = stringSimilarity(wrongPath, p);
+        if (similarity > maxSimilarity) {
+            maxSimilarity = similarity;
+            mostLikeKey = p;
         }
     }
-    return firstKey;
+    return mostLikeKey;
 }

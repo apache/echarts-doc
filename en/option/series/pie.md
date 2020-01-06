@@ -9,6 +9,12 @@ The pie chart is mainly used for showing proportion of different categories. Eac
 
 **Tip:** The pie chart is more suitable for illustrating the numerical proportion. If you just to present the numerical differences of various categories, the [bar graph](bar) chart is more suggested. Because compared to tiny length difference,  people is less sensitive to the minor radian difference. Otherwise, it can also be shown as Nightingale chart by using the [roseType](~series-pie.roseType) to distinguish different data through radius.
 
+Since ECharts v4.6.0, we provide `'labelLine'` and `'edge'` two extra layouts. Check [label.alignTo](~series-pie.label.alignTo) for more information.
+
+~[900x250](${galleryViewPath}pie-alignTo&reset=1&edit=1)
+
+For multiple pie series in a single chart, you may use [left](~series-pie.left), [right](~series-pie.right), [top](~series-pie.top), [bottom](~series-pie.bottom), [width](~series-pie.width), and [height](~series-pie.height) to locate the pies. Percetage values like [radius](~series-pie.radius) or [label.margin](~series-pie.label.margin) are relative to the viewport defined by this setting.
+
 ** The below example shows a customized Nightingale chart: **
 ~[500x400](${galleryViewPath}pie-custom&edit=1&reset=1)
 
@@ -61,6 +67,13 @@ Whether to show sector when all data are zero.
 
 {{ use: partial-cursor }}
 
+{{ use: partial-rect-layout-width-height(
+    componentName="pie chart",
+    defaultLeft=0,
+    defaultTop=0,
+    defaultRight=0,
+    defaultBottom=0
+) }}
 
 ## label(Object)
 {{use:partial-label-desc(name="pie chart")}}
@@ -70,6 +83,38 @@ Whether to show sector when all data are zero.
     position=true,
     formatter=true
 )}}
+
+### alignTo(string) = 'none'
+
+Label aligning policy. Valid only when `position` is `'outer'`.
+
+Since ECharts v4.6.0, we provide `'labelLine'` and `'edge'` two extra valid `alignTo` values.
+
++ `'none'` (default): label lines have fixed length as [labelLine.length](~series-pie.labelLine.length) and [labelLine.length2](~series-pie.labelLine.length2).
++ `'labelLine'`: aligning to the end of label lines and the length of the shortest horizontal label lines is configured by [labelLine.length2](~series-pie.labelLine.length2).
++ `'edge'`: aligning to text and the distance between the edges of text and the viewport is configured by [label.margin](~series-pie.label.margin).
+
+~[900x250](${galleryViewPath}pie-alignTo&reset=1&edit=1)
+
+### margin(string|number) = '25%'
+
+The horitontal distance between text edges and viewport when [label.position](~series-pie.label.position) is `'outer'` and [label.alignTo](~series-pie.label.alignTo) is `'edge'`.
+
+~[900x250](${galleryViewPath}doc-example/pie-label-margin&edit=1&reset=1)
+
+In most cases, you need a small `margin` value like `10` for mobile devices to make sure more text can be shown instead of being `...`. But on larger resolutions, a percentage value should be applied so that the label lines won't be too long. If your chart is used in varied resolutions, it is advised to set [responsive design](tutorial.html#Responsive%20Mobile-End) for different resolutions.
+
+### bleedMargin(number) = 10
+
+The horitontal distance between text and viewport when [label.position](~series-pie.label.position) is `'outer'` and [label.alignTo](~series-pie.label.alignTo) is `'none'` or `'labelLine'`. Longer text will be truncated into `'...'`.
+
+~[800x250](${galleryViewPath}doc-example/pie-label-bleedMargin&edit=1&reset=1)
+
+### distanceToLabelLine(number) = 5
+
+Distance between label line and text.
+
+~[800x250](${galleryViewPath}doc-example/pie-label-distanceToLabelLine&edit=1&reset=1)
 
 ## labelLine(Object)
 The style of visual guide line. Will show when [label position](~series-pie.label.position) is set as `'outside'`.

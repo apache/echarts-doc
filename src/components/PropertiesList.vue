@@ -45,13 +45,7 @@ export default {
 
     methods: {
         getDesc(path) {
-            let parts = path.split('.');
-            if (parts.length > 1) {
-                // Remove the top page path.
-                // For example: `series-bar.itemStyle` will be `itemStyle`
-                parts = parts.slice(1);
-            }
-            return this.descMap[parts.join('.')];
+            return this.descMap[path];
         },
 
         getName(path) {

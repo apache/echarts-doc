@@ -163,7 +163,13 @@ Set this to `true` so the axis labels face the `inside` direction.
 The length of the axis tick.
 
 ##${prefix} lineStyle(Object)
-{{ use: partial-line-style(prefix='##' + ${prefix}, defaultColor="'#333'", defaultWidth=1, defaultType="'solid'", name="axisTick") }}
+{{ use: partial-line-style(
+    prefix='##' + ${prefix},
+    defaultColor="'#333'",
+    defaultWidth=1,
+    defaultType="'solid'",
+    name="axisTick"
+) }}
 <!-- Overwrite color -->
 ###${prefix} color(Color)
 
@@ -171,11 +177,48 @@ Color of axis label is set to be [axisLine.lineStyle.color](~${componentType}.ax
 
 
 
+{{target: partial-axis-common-minor-tick}}
+
+#${prefix} minorTick(Object)
+Settings related minor ticks.
+
+Note: `minorTick` is not available in the `cateogry` type axis.
+
+Examples:
+
+1) Using minor ticks in function plotting.
+~[600x350](${galleryViewPath}line-function&edit=1&reset=1)
+
+2) Using minor ticks in log axis.
+~[600x350](${galleryViewPath}line-log&edit=1&reset=1)
+
+##${prefix} show(boolean) = ${defaultShow|default(false)}
+If show minor ticks.
+
+##${prefix} splitNumber(number) = 5
+Number of interval splited by minor ticks.
+
+##${prefix} length(number) = 3
+Length of minor ticks lines。
+
+##${prefix} lineStyle(Object)
+
+{{ use: partial-line-style(
+    prefix='##' + ${prefix},
+    defaultWidth=1,
+    defaultType="'solid'",
+    name="minorTick"
+) }}
+<!-- Overwrite color -->
+###${prefix} color(Color)
+Style configuration of minor ticks lines [axisLine.lineStyle.color](~${componentType}.axisLine.lineStyle.color)。
+
+
 
 {{target: partial-axis-common-split-line}}
 
 #${prefix} splitLine(Object)
-SplitLine of axis in [grid](~grid) area.
+Split line of axis in [grid](~grid) area.
 
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
 
@@ -188,10 +231,16 @@ Set this to `false` to prevent the splitLine from showing.
     name="Axis splitLine",
     componentType=${componentType}
 ) }}
-##${prefix} lineStyle(Object)
 {{ /if }}
 
-{{ use: partial-line-style(prefix='##' + ${prefix}, defaultColor="'#333'", defaultWidth=1, defaultType="'solid'", name="splitLine") }}
+##${prefix} lineStyle(Object)
+{{ use: partial-line-style(
+    prefix='##' + ${prefix},
+    defaultColor="'#333'",
+    defaultWidth=1,
+    defaultType="'solid'",
+    name="splitLine"
+) }}
 
 <!-- overwrite color -->
 ###${prefix} color(Array|string) = ['#ccc']
@@ -210,6 +259,22 @@ splitLine: {
 ```
 
 
+{{target: partial-axis-common-minor-split-line}}
+
+#${prefix} minorSplitLine(Object)
+Minor split lines of axis in the [grid](~grid) area。It will align to the [minorTick](~${componentType}.minorTick)
+
+##${prefix} show(boolean) = ${defaultShow|default(false)}
+If show minor split lines.
+
+##${prefix} lineStyle(Object)
+{{ use: partial-line-style(
+    prefix='##' + ${prefix},
+    defaultColor="'#eee'",
+    defaultWidth=1,
+    defaultType="'solid'",
+    name="minorSplitLine"
+) }}
 
 
 
@@ -317,10 +382,9 @@ It will be automatically computed to make sure axis tick is equally distributed 
 
 In category axis, it can also be set as the ordinal number. For example, if a catergory axis has `data: ['categoryA', 'categoryB', 'categoryC']`, and the ordinal `2` represents `'categoryC'`. Moreover, it can be set as negative number, like `-3`.
 
-When set `min` as `function`, set return value of the function as the minimun value.
-
-```
-min: function(value) {
+If `min` is specified as a function, it should return a min value, like:
+```js
+min: function (value) {
     return value.min - 20;
 }
 ```
@@ -335,10 +399,9 @@ It will be automatically computed to make sure axis tick is equally distributed 
 
 In category axis, it can also be set as the ordinal number. For example, if a catergory axis has `data: ['categoryA', 'categoryB', 'categoryC']`, and the ordinal `2` represents `'categoryC'`. Moreover, it can be set as negative number, like `-3`.
 
-When set `max` as `function`, set return value of the function as the maximum value.
-
-```
-max: function(value) {
+If `max` is specified as a function, it should return a max value, like:
+```js
+max: function (value) {
     return value.max - 20;
 }
 ```
@@ -406,6 +469,11 @@ Base of logarithm, which is valid only for numeric axes with [type](~${component
     componentType=${componentType}
 ) }}
 
+{{ use: partial-axis-common-minor-tick(
+    prefix=${prefix},
+    componentType=${componentType}
+) }}
+
 {{ use: partial-axis-common-axis-label(
     prefix=${prefix},
     componentType=${componentType}
@@ -414,6 +482,11 @@ Base of logarithm, which is valid only for numeric axes with [type](~${component
 {{ if: ${hasSplitLineAndArea} }}
 
 {{ use: partial-axis-common-split-line(
+    prefix=${prefix},
+    componentType=${componentType}
+) }}
+
+{{ use: partial-axis-common-minor-split-line(
     prefix=${prefix},
     componentType=${componentType}
 ) }}
@@ -488,7 +561,7 @@ axisPointer settings on the axis.
 
 
 
-{ target: partial-axis-interval }}
+{{ target: partial-axis-interval }}
 Interval of ${name}, which is available in category axis. {{ if: !${isAxisLabel} }} is set to be the same as [axisLabel.interval](~${componentType}.axisLabel.interval) by default.{{ /if }}
 
 It uses a strategy that labels do not overlap by default.

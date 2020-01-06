@@ -5,11 +5,11 @@
 
 First, install ECharts using one of the following methods:
 
-* Download official source release from [Apache ECharts (incubating) website](${websitePath}download.html). Then [build](https://github.com/apache/incubator-echarts#build) from the source release.
+* Download official source release from [Apache ECharts (incubating) website](${websitePath}/download.html). Then [build](https://github.com/apache/incubator-echarts#build) from the source release.
 
 * Download from [GitHub](https://github.com/apache/incubator-echarts/releases)
 
-* Using npm: `npm install echarts --save`. [Using ECharts with webpack](${websitePath}tutorial.html#Use%20ECharts%20with%20webpack)
+* Using npm: `npm install echarts --save`. [Using ECharts with webpack](${websitePath}/tutorial.html#Use%20ECharts%20with%20webpack)
 
 * Use CDN like [jsDelivr](https://www.jsdelivr.com/package/npm/echarts).
 

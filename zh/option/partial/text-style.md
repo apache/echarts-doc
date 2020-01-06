@@ -77,7 +77,7 @@ label: {
 
 
 
-##${prefix} <user defined style name>(Object)
+##${prefix} <style_name>(Object)
 
 {{use:partial-text-style-base-item(
     prefix=${prefix} + '##',
@@ -112,7 +112,6 @@ ${name}文字字体的风格
 + `'normal'`
 + `'italic'`
 + `'oblique'`
-
 
 #${prefix} fontWeight(string|number)=${defaultFontWeight|default('normal')}
 

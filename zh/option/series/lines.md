@@ -3,7 +3,7 @@
 
 # series.lines(Object)
 
-**线图**
+**路径图**
 
 用于带有起点和终点信息的线数据的绘制，主要用于地图上的航线，路线的可视化。
 
@@ -69,7 +69,7 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 是否循环显示特效。
 
 ## large(boolean) = false
-是否启用大规模线图的优化，在数据图形特别多的时候（>=5k）可以开启。
+是否启用大规模路径图的优化，在数据图形特别多的时候（>=5k）可以开启。
 
 开启后配合 [largeThreshold](~series-lines.largeThreshold) 在数据量大于指定阈值的时候对绘制进行优化。
 
@@ -191,7 +191,7 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 
 {{use:partial-z-zlevel(
     prefix="#",
-    componentName="线图"
+    componentName="路径图"
 ) }}
 
 {{ use:partial-silent(

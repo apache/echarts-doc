@@ -77,7 +77,7 @@ For more details, see [Rich Text](tutorial.html#Rich%20Text) please.
 
 
 
-##${prefix} <user defined style name>(Object)
+##${prefix} <style_name>(Object)
 
 {{use:partial-text-style-base-item(
     prefix=${prefix} + '##',
@@ -112,7 +112,6 @@ Options are:
 + `'normal'`
 + `'italic'`
 + `'oblique'`
-
 
 #${prefix} fontWeight(string|number)=${defaultFontWeight|default('normal')}
 

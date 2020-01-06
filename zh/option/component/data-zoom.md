@@ -122,9 +122,6 @@ option = {
 <br>
 
 
-下面是详细介绍：
-
-
 
 {{import: component-data-zoom-inside}}
 {{import: component-data-zoom-slider}}

@@ -134,6 +134,7 @@ export default {
     h3 {
         font-weight: normal;
         font-size: 24px;
+        margin: 20px 20px 20px 0;
     }
 
     .result-summary {
@@ -146,4 +147,9 @@ export default {
     }
 }
 
+.ec-doc-mobile {
+    .doc-search-result {
+        padding: 0 10px;
+    }
+}
 </style>
