@@ -1,6 +1,11 @@
 <template>
 <div
-    :class="['doc-content-item-card', 'level-' + depth, isLeaf ? 'leaf' : '']"
+    :class="[
+        'doc-content-item-card',
+        'level-' + depth,
+        isLeaf ? 'leaf' : '',
+        shared.currentPath === nodeData.path ? 'current' : ''
+    ]"
     :id="itemId"
 >
     <div class="hierarchy-line" v-if="expanded"></div>
@@ -20,10 +25,6 @@
         </span>
 
         <span class="default-value" v-if="nodeData.default && nodeData.default !== '*'"> = {{nodeData.default}}</span>
-        <span
-            v-if="shared.currentPath === nodeData.path"
-            style="font-size: 20px; user-select: none"
-        >🤛</span>
     </h4>
 
     <div class="prop-types">
@@ -174,6 +175,10 @@ $hierarchy-guider-color: #C592A0;
     position: relative;
 
     padding: 15px 0;
+
+    &.current {
+        border-top: 1px solid #b03a5b;
+    }
 
     .hierarchy-line {
         position: absolute;
