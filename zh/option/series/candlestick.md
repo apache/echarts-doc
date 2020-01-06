@@ -63,11 +63,11 @@
 
 指定柱宽度。可以使用绝对数值（如 `10`）或百分比（如 `'20%'`，表示 band width 的百分之多少）。默认自适应。
 
-## barMinWidth(number)
+## barMinWidth(number|string)
 
 指定柱最小宽度。可以使用绝对数值（如 `10`）或百分比（如 `'20%'`，表示 band width 的百分之多少）。默认自适应。
 
-## barMaxWidth(number)
+## barMaxWidth(number|string)
 
 指定柱最大宽度。可以使用绝对数值（如 `10`）或百分比（如 `'20%'`，表示 band width 的百分之多少）。默认自适应。
 

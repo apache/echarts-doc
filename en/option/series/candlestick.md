@@ -67,11 +67,11 @@ The default value is decided by:
 
 Specify bar width. Absolute value (like `10`) or percentage (like `'20%'`, according to band width) can be used. Auto adapt by default.
 
-## barMinWidth(number)
+## barMinWidth(number|string)
 
 Specify bar min width. Absolute value (like `10`) or percentage (like `'20%'`, according to band width) can be used. Auto adapt by default.
 
-## barMaxWidth(number)
+## barMaxWidth(number|string)
 
 Specify bar max width. Absolute value (like `10`) or percentage (like `'20%'`, according to band width) can be used. Auto adapt by default.
 
