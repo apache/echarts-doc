@@ -22,11 +22,11 @@
 
 数据更新动画的时长。
 
-支持回调函数，可以通过每个数据返回不同的 delay 时间实现更戏剧的更新动画效果：
+支持回调函数，可以通过每个数据返回不同的时长实现更戏剧的更新动画效果：
 
 ```js
 animationDurationUpdate: function (idx) {
-    // 越往后的数据延迟越大
+    // 越往后的数据时长越大
     return idx * 100;
 }
 ```
@@ -56,11 +56,11 @@ animationDelayUpdate: function (idx) {
 
 #${prefix} animationDuration(number) = ${defaultAnimationDuration|default(1000)}
 
-初始动画的时长，支持回调函数，可以通过每个数据返回不同的 delay 时间实现更戏剧的初始动画效果：
+初始动画的时长，支持回调函数，可以通过每个数据返回不同的时长实现更戏剧的初始动画效果：
 
 ```js
 animationDuration: function (idx) {
-    // 越往后的数据延迟越大
+    // 越往后的数据时长越大
     return idx * 100;
 }
 ```

@@ -7,7 +7,7 @@
     hasCoord=${hasCoord},
     hasType=${hasType},
     galleryEditorPath=${galleryEditorPath}
-)}}prefix
+)}}
 {{use: partial-mark-line(
     prefix=${prefix},
     seriesType=${seriesType},
