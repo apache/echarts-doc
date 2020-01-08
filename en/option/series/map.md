@@ -69,6 +69,8 @@ Whether the are selected.
 Style of item polygon
 #### areaColor(Color)
 Color of the area.
+{{ use: partial-color-desc }}
+
 {{ use: partial-item-style(prefix='####') }}
 
 
@@ -85,6 +87,10 @@ Color of the area.
 ### emphasis(Object)
 #### itemStyle(Object)
 ##### areaColor(Color)
+Area color in the map.
+
+{{ use: partial-color-desc }}
+
 {{ use: partial-item-style(prefix='####') }}
 #### label(Object)
 {{use: partial-label(

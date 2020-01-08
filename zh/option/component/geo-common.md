@@ -110,6 +110,7 @@ boundingCoords: [
 
 ##${prefix} areaColor(Color) = '#eee'
 地图区域的颜色。
+{{ use: partial-color-desc }}
 
 {{ use: partial-item-style(prefix=${prefix} + '#') }}
 
@@ -126,6 +127,8 @@ boundingCoords: [
 ##${prefix} itemStyle(Object)
 ###${prefix} areaColor(Color) = '#eee'
 地图区域的颜色。
+{{ use: partial-color-desc }}
+
 {{ use: partial-item-style(prefix=${prefix} + '##') }}
 
 

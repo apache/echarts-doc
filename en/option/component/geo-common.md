@@ -102,11 +102,6 @@ Selected mode decides whether multiple selecting is supported. By default, `fals
     prefix="#" + ${prefix},
     formatter=true
 )}}
-##${prefix} emphasis(Object)
-{{use: partial-label(
-    prefix="##" + ${prefix},
-    formatter=true
-)}}
 
 
 
@@ -118,16 +113,28 @@ Selected mode decides whether multiple selecting is supported. By default, `fals
 ##${prefix} areaColor(Color) = '#eee'
 Area filling color.
 
-{{ use: partial-item-style(prefix=${prefix} + '##') }}
+{{ use: partial-color-desc }}
 
-##${prefix} emphasis(Object)
+{{ use: partial-item-style(prefix=${prefix} + '#') }}
+
+#${prefix} emphasis(Object)
 
 Map area style in highlighted state.
+
+##${prefix} itemStyle(Object)
 
 ###${prefix} areaColor(Color) = '#eee'
 Area filling color.
 
+{{ use: partial-color-desc }}
+
 {{ use: partial-item-style(prefix=${prefix} + '##') }}
+
+##${prefix} label(Object)
+{{use: partial-label(
+    prefix="##" + ${prefix},
+    formatter=true
+)}}
 
 {{ use: partial-rect-layout(prefix=${prefix}) }}
 
