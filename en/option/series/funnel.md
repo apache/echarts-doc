@@ -20,17 +20,17 @@ The specified minimum value.
 ## max(number) = 100
 The specified maximum value.
 
-## minSize(string) = '0%'
+## minSize(number|string) = '0%'
 The mapped width from minimum data value [min](~series-funnel.min).
 
 It can be absolute pixel and also the percentage of [layout width](~series-funnel.width). If you don't want the graph of minimum value to be a triangle, you can set up this property larger than 0.
 
-## maxSize(string) = '100%'
+## maxSize(number|string) = '100%'
 The mapped width from maximum data value [max](~series-funnel.max).
 
 It can be absolute pixel and also the percentage of [layout width](~series-funnel.width).
 
-## sort(string) = 'descending'
+## sort(string|Function) = 'descending'
 Data sorting, which can be whether `'ascending'`, `'descending'`, `'none'`(in data order) or a function, which is the same as `Array.prototype.sort(function (a, b) { ... })`;
 
 ## gap(number) = 0

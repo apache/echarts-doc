@@ -418,7 +418,7 @@ itemStyle: {
 
 {{ /if }}
 
-#${prefix} hoverAnimation(boolean) = false
+#${prefix} hoverAnimation(Object)
 
 是否开启 hover 在图形上的提示动画效果。
 
