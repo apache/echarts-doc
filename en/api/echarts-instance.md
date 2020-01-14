@@ -589,7 +589,7 @@ Notice:
 
 ## clear
 
-Clears current instance; removes all components and charts in current instance. After clearing, [getOption](~echartsInstance.getOption) returns an empty object `{}`.
+Clears current instance; removes all components and series in current instance.
 
 ## isDisposed
 ```js

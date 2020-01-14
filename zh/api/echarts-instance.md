@@ -578,7 +578,7 @@ img.src = myChart.getDataURL({
 
 ## clear
 
-清空当前实例，会移除实例中所有的组件和图表。清空后调用 [getOption](~echartsInstance.getOption) 方法返回一个`{}`空对象。
+清空当前实例，会移除实例中所有的组件和图表。
 
 ## isDisposed
 ```js
