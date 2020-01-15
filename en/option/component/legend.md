@@ -317,6 +317,20 @@ Whether to use animation when page scrolll.
 
 Duration of the page scroll animation.
 
+
+## emphasis(Object)
+
+### selectorLabel(Object)
+
+{{use:partial-label(
+    prefix='###',
+    defaultShowLabel=true,
+    noPosition=true,
+    formatter=false,
+    formatter1d=false
+)}}
+
+
 ## selector(boolean|Array) = false
 
 The selector button in the legend component. Currently includes both a full selection and an inverse selection. The selector button doesn't display by default, the user can manually configure it.

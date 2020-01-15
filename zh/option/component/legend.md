@@ -319,6 +319,20 @@ data: [{
 
 图例翻页时的动画时长。
 
+
+## emphasis(Object)
+
+### selectorLabel(Object)
+
+{{use:partial-label(
+    prefix='###',
+    defaultShowLabel=true,
+    noPosition=true,
+    formatter=false,
+    formatter1d=false
+)}}
+
+
 ## selector(boolean|Array) = false
 
 图例组件中的选择器按钮，目前包括全选和反选两种功能。默认不显示，用户可手动开启，也可以手动配置每个按钮的标题。
