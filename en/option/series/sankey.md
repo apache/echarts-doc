@@ -198,6 +198,10 @@ data: [{
 
 The name of the node.
 
+### value(number)
+
+The value of the node, which can used to determine the height of the node in horizontal orient or width in the vertical orient.
+
 ### depth(number)
 
 The layer of the node, value starts from 0.
