@@ -20,7 +20,9 @@
 
 <br>
 **排序：**
-如果想指定结果的纵向顺序，那么可以把 [layoutIterations](~series-sankey.layoutIterations) 设为 `0`，此时纵向的顺序依照数据在 [links](~series-sankey.links) 中出现的顺序。
+
+如果想指定每层节点的顺序是按照 [data](~series-sankey.data) 中的顺序排列的。可以设置 [layoutIterations](~series-sankey.layoutIterations) 为 `0`。
+
 
 ## type(string) = 'sankey'
 
@@ -54,11 +56,8 @@
 
 ## layoutIterations(number) = 32
 
-布局的迭代次数，用来不断优化图中节点的位置，以减少节点和边之间的相互遮盖。
+布局的迭代次数，目的是不断迭代优化图中节点和边的位置，以减少节点和边之间的相互遮盖，默认值是 `32`。如果希望图中节点的顺序是按照原始 [data](~series-sankey.data) 中的顺序排列的，可设该值为 `0`。
 
-默认布局迭代次数：`32`。
-
-经测试，布局迭代次数不要低于默认值。
 
 ## orient(string) = 'horizontal'
 
