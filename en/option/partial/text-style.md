@@ -214,7 +214,7 @@ auto adapted by default.
 {{ use: partial-text-style-auto-color-desc }}
 {{/if}}
 
-#${prefix} borderColor(string)='transparent'
+#${prefix} borderColor(Color)='transparent'
 
 Border color of the text fragment.
 
@@ -240,7 +240,7 @@ Padding of the text fragment, for example:
 
 Notice, `width` and `height` specifies the width and height of the content, without `padding`.
 
-#${prefix} shadowColor(string)='transparent'
+#${prefix} shadowColor(Color)='transparent'
 
 Shadow color of the text block.
 

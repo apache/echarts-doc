@@ -208,7 +208,7 @@ backgroundColor: {
 {{ use: partial-text-style-auto-color-desc }}
 {{/if}}
 
-#${prefix} borderColor(string)='transparent'
+#${prefix} borderColor(Color)='transparent'
 
 文字块边框颜色。
 
@@ -234,7 +234,7 @@ backgroundColor: {
 
 注意，文字块的 `width` 和 `height` 指定的是内容高宽，不包含 `padding`。
 
-#${prefix} shadowColor(string)='transparent'
+#${prefix} shadowColor(Color)='transparent'
 
 文字块的背景阴影颜色。
 
