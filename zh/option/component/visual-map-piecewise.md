@@ -187,7 +187,7 @@ series.data 的 `dataMin` 和 `dataMax`）。
 
 两端文字主体之间的距离，单位为px。参见 [visualMap-piecewise.text](~visualMap-piecewise.text)
 
-## showLabel(boolean) = true
+## showLabel(boolean)
 
 是否显示每项的文本标签。默认情况是，如果 [visualMap-piecewise.text](~visualMap-piecewise.text) 被使用则不显示文本标签，否则显示。
 

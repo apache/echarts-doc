@@ -350,7 +350,7 @@ splitLine: {
 boundaryGap: ['20%', '20%']
 ```
 
-#${prefix} min(number|string|function) = null
+#${prefix} min(number|string|Function) = null
 
 坐标轴刻度最小值。
 
@@ -370,7 +370,7 @@ min: function (value) {
 
 其中 `value` 是一个包含 `min` 和 `max` 的对象，分别表示数据的最大最小值，这个函数应该返回坐标轴的最小值。
 
-#${prefix} max(number|string|function) = null
+#${prefix} max(number|string|Function) = null
 
 坐标轴刻度最大值。
 

@@ -372,7 +372,7 @@ For non-category axis, including time, numerical value, and log axes, `boundaryG
 boundaryGap: ['20%', '20%']
 ```
 
-#${prefix} min(number|string|function) = null
+#${prefix} min(number|string|Function) = null
 
 The minimun value of axis.
 
@@ -389,7 +389,7 @@ min: function (value) {
 }
 ```
 
-#${prefix} max(number|string|function) = null
+#${prefix} max(number|string|Function) = null
 
 The maximum value of axis.
 

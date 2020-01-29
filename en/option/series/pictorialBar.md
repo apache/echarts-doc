@@ -429,7 +429,7 @@ Specify the relationship of overlap between gaphic elements. A bigger value mean
 
 {{ /if }}
 
-#${prefix} hoverAnimation(Object)
+#${prefix} hoverAnimation(boolean) = false
 
 Whether to enable hover animation.
 

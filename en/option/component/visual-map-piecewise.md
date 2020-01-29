@@ -184,7 +184,7 @@ The rule, that labels will not show when `text` is use, is retained for compatib
 
 The distance between the ends of the graphical elements for pieces and the labels, with unit px. See [visualMap-piecewise.text](~visualMap-piecewise.text)
 
-## showLabel(boolean) = true
+## showLabel(boolean)
 
 Whether to show label of each item. By defualt, label will not be shown when [visualMap-piecewise.text](~visualMap-piecewise.text) used, otherwise label will be shown.
 
