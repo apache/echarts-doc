@@ -1,6 +1,6 @@
 {{ target: partial-mark-line }}
 
-#${prefix} markLine
+#${prefix} markLine(Object)
 Use a line in the chart to illustrate.
 
 {{ use: partial-silent(prefix="#" + ${prefix}) }}

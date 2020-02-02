@@ -1,6 +1,6 @@
 {{ target: partial-mark-line }}
 
-#${prefix} markLine
+#${prefix} markLine(Object)
 图表标线。
 
 {{ use: partial-silent(prefix="#" + ${prefix}) }}

@@ -59,7 +59,7 @@ ECharts 3 中单个 echarts 实例中可以存在多个图例组件，会方便�
 + `'left'`
 + `'right'`
 
-## padding(number) = 5
+## padding(number|Array) = 5
 
 {{ use: partial-padding(componentName="图例")}}
 

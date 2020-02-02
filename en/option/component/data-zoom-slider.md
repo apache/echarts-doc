@@ -69,7 +69,7 @@ Icon shape of handle, which supports path string. Its default value is:
 Refer to [area-simple example](${galleryEditorPath}area-simple) for customized icon.
 
 
-## handleSize(number) = '100%'
+## handleSize(number|string) = '100%'
 
 The size of control handle. It can be in pixels, or in percentage relative to the width of dataZoom component. By default, it's the same as the width of dataZoom component.
 
@@ -82,7 +82,7 @@ Style of handle. Please refer to [area-simple example](${galleryEditorPath}area-
     defaultColor="#a7b7cc"
 )}}
 
-## labelPrecision(number) = 'auto'
+## labelPrecision(number|string) = 'auto'
 
 Precision of label if in number form. By default, it is decided based on the number of data.
 

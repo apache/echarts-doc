@@ -26,7 +26,7 @@ tooltip can be configured on different places:
 
 {{target: partial-tooltip-in-coords}}
 
-## tooltip
+## tooltip(Object)
 
 tooltip settings in the coordinate system component.
 

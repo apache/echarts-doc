@@ -54,7 +54,7 @@ animationDelayUpdate: function (idx) {
 
 {{ target: partial-animation-init}}
 
-#${prefix} animationDuration(number) = ${defaultAnimationDuration|default(1000)}
+#${prefix} animationDuration(number|Function) = ${defaultAnimationDuration|default(1000)}
 
 初始动画的时长，支持回调函数，可以通过每个数据返回不同的时长实现更戏剧的初始动画效果：
 

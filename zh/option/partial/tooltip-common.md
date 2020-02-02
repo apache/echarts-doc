@@ -24,7 +24,7 @@
 
 {{target: partial-tooltip-in-coords}}
 
-## tooltip
+## tooltip(Object)
 
 本坐标系特定的 tooltip 设定。
 
@@ -53,7 +53,7 @@
 
 {{target: partial-tooltip-in-series}}
 
-## tooltip
+## tooltip(Object)
 
 本系列特定的 tooltip 设定。
 
