@@ -474,7 +474,7 @@ dataset: {
 }
 ```
 
-Q: How to encode the fourth column in bubble size in bubble plot?
+Q: How to encode the third column in bubble size in bubble plot?
 
 A:
 ```js
