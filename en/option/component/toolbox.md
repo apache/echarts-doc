@@ -112,7 +112,7 @@ Notes: User-defined tool name could only start with `my`, like `myTool1` and `my
 ### saveAsImage(Object)
 Save as image.
 #### type(string) = 'png'
-Format to save the image in, which supports`'png'` and `'jpeg'`.
+File suffix of the image saved. If the `renderer` is set to be `'canvas'` when it is [inited](api.html#echarts.init) (default), then `'png'` (default) and `'jpeg'` are supported. If `renderer` is `svg`, then only `'svg'` is supported for `type`.
 #### name(string)
 Name to save the image, whose default value is [title.text](~title.text).
 #### backgroundColor(Color) = 'auto'
