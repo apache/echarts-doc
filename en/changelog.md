@@ -1,3 +1,40 @@
+## v4.7.0
+<div class="time"></div>
+
++ [Fix] Radar chart data may appear outside of the radar component. [#11841](https://github.com/apache/incubator-echarts/pull/11841) ([Siwen Su](https://github.com/susiwen8))
+
++ [Fix] Fix treemap highlight action not triggered. [#12050](https://github.com/apache/incubator-echarts/pull/12050) ([Shuang Su](https://github.com/100pah))
+
++ [Fix] Fix geo cannot be restored. [#12035](https://github.com/apache/incubator-echarts/pull/12035) ([Shuang Su](https://github.com/100pah))
+
++ [Feature] Support background option for bar series. [#11951](https://github.com/apache/incubator-echarts/pull/11951) ([Wenli Zhang](https://github.com/Ovilia))
+
++ [Fix] Fix candlestick throw error when some series are filtered by legend. [#12027](https://github.com/apache/incubator-echarts/pull/12027) ([Shuang Su](https://github.com/100pah))
+
++ [Feature] Support appending tooltip DOM to HTML body. [#8049](https://github.com/apache/incubator-echarts/pull/8049) [#12024](https://github.com/apache/incubator-echarts/pull/12024) ([xinpureZhu](https://github.com/xinpureZhu), [Shuang Su](https://github.com/100pah))
+
++ [Fix] Fix brush component not roam with the coordinate system. [#11998](https://github.com/apache/incubator-echarts/pull/11998) ([Shuang Su](https://github.com/100pah))
+
++ [Feature] Add draggable support to group elements. [#11959](https://github.com/apache/incubator-echarts/pull/11959) ([Yi Shen](https://github.com/pissang))
+
++ [Fix] Fix action `'showTip'` dispatched in radar chart. [#11985](https://github.com/apache/incubator-echarts/pull/11985) ([Feng Yu](https://github.com/yufeng04))
+
++ [Fix] Fix singleAxis support splitArea option. [#11890](https://github.com/apache/incubator-echarts/pull/11890) ([newraina](https://github.com/newraina))
+
++ [Enhance] Enhance continuity line trail for effect line. [#11893](https://github.com/apache/incubator-echarts/pull/11893) ([alex2wong](https://github.com/alex2wong))
+
++ [Fix] Fix markPoint position with stack line/bar. [#11965](https://github.com/apache/incubator-echarts/pull/11965) ([yikuangli](https://github.com/yikuangli))
+
++ [Fix] Fix legend pagination may disappear. [#11952](https://github.com/apache/incubator-echarts/pull/11952) ([Feng Yu](https://github.com/yufeng04))
+
++ [Feature] Provide new layouts for markLine labels. [#11843](https://github.com/apache/incubator-echarts/pull/11843) ([Wenli Zhang](https://github.com/Ovilia))
+
++ [Fix] Emphasis line style options with sankey chart. [#11729](https://github.com/apache/incubator-echarts/pull/11729) ([Deqing Li](https://github.com/deqingli))
+
++ [Feature] Add polyline edge layout for the tree chart. [#11808](https://github.com/apache/incubator-echarts/pull/11808) ([Deqing Li](https://github.com/deqingli))
+
++ [Fix] Fix formatter tooltip has no value in sankey chart. [#11752](https://github.com/apache/incubator-echarts/pull/11752) ([Deqing Li](https://github.com/deqingli))
+
 ## v4.6.0
 <div class="time"></div>
 
@@ -85,7 +122,7 @@
 
 + [Fix] Fix data disappear when updating with `dataset` in `gauge` series. [#11373](https://github.com/apache/incubator-echarts/pull/11373) ([Wenli Zhang](https://github.com/Ovilia))
 
-+ [Fix] Fix gradient on bar leaked to label in SVG Renderer. ([Wenli Zhang](https://github.com/Ovilia)) 
++ [Fix] Fix gradient on bar leaked to label in SVG Renderer. ([Wenli Zhang](https://github.com/Ovilia))
 
 
 ## v4.4.0
