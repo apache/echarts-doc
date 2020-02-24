@@ -113,6 +113,7 @@ data: [
 {{ use: mark-line-data-item-item(
     name="起点",
     prefix="###"+${prefix},
+    seriesType=${seriesType},
     hasCoord=${hasCoord},
     hasType=${hasType},
     index=0
@@ -123,6 +124,7 @@ data: [
 {{ use: mark-line-data-item-item(
     name="终点",
     prefix="###"+${prefix},
+    seriesType=${seriesType},
     hasCoord=${hasCoord},
     hasType=${hasType},
     index=1
