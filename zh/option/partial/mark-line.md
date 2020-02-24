@@ -137,11 +137,24 @@ data: [
 {{ target: mark-line-label }}
 #${prefix} show(boolean) = ${defaultShowLabel|default(true)}
 是否显示标签。
+
 #${prefix} position(string) = 'end'
 标签位置，可选：
 + `'start'` 线的起始点。
 + `'middle'` 线的中点。
-+ `'end'`   线的结束点。
++ `'end'` 线的结束点。
+
+4.7.0 版本起，支持更多标签位置：`'start'`, `'middle'`, `'end'`, `'insideStartTop'`, `'insideStartBottom'`, `'insideMiddleTop'`, `'insideMiddleBottom'`, `'insideEndTop'`, `'insideEndBottom'`。
+
+其中，`'insideMiddleBottom'` 等同于 `'middle'`。具体位置参见下图。
+
+文字与线的间距可以通过 [label.distance](~series-${seriesType}.markLine.label.distance) 调整。
+
+~[800x500](${galleryViewPath}bar-markline&reset=1&edit=1)
+
+#${prefix} distance(number|Array)
+标签与线之间的间距。如果是数组，第一项为横向间距，第二项为纵向间距。如果是数字，则表示横向纵向使用相同的间距。
+
 #${prefix} formatter(string|Function)
 {{ use: partial-1d-data-label-formatter }}
 

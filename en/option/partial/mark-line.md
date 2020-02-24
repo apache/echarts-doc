@@ -138,6 +138,18 @@ Positions of labels can be:
 + `'start'` starting point of the line.
 + `'middle'` middle point of the line.
 + `'end'` ending point of the line.
+
+Since version 4.7.0, more label positions are supported: `'start'`, `'middle'`, `'end'`, `'insideStartTop'`, `'insideStartBottom'`, `'insideMiddleTop'`, `'insideMiddleBottom'`, `'insideEndTop'`, `'insideEndBottom'`.
+
+`'insideMiddleBottom'` is the same as `'middle'`. Position is as the following chart.
+
+The distance between labels and mark lines can be set with [label.distance](~series-${seriesType}.markLine.label.distance).
+
+~[800x500](${galleryViewPath}bar-markline&reset=1&edit=1)
+
+#${prefix} distance(number|Array)
+The distance between labels and mark lines. If it's an array, then the first element is the horizontal distance, and the second element is the vertical distance. If it's a number, then the horizontal and vertical disntances are the same.
+
 #${prefix} formatter(string|Function)
 {{ use: partial-1d-data-label-formatter }}
 
@@ -201,7 +213,14 @@ Label of this data item, which will be merged with `label` of starting point and
 {{ use: mark-line-label(
     prefix='#'+${prefix}
 ) }}
-##${prefix} emphasis(Object)
+
+#${prefix} emphasis(Object)
+##${prefix} lineStyle(Object)
+{{ use: partial-line-style(
+    prefix="##"+${prefix},
+    hasCurveness=true
+) }}
+##${prefix} label(Object)
 {{ use: mark-line-label(
     prefix='##'+${prefix}
 ) }}
