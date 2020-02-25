@@ -109,6 +109,7 @@ Data of the starting point.
 {{ use: mark-line-data-item-item(
     name="starting point",
     prefix="###"+${prefix},
+    seriesType=${seriesType},
     hasCoord=${hasCoord},
     hasType=${hasType},
     index=0
@@ -119,6 +120,7 @@ Data of the ending point.
 {{ use: mark-line-data-item-item(
     name="ending point",
     prefix="###"+${prefix},
+    seriesType=${seriesType},
     hasCoord=${hasCoord},
     hasType=${hasType},
     index=1

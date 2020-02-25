@@ -96,6 +96,7 @@ Specify the left-top point.
 {{ use: mark-area-data-item-item(
     name="start",
     prefix="###"+${prefix},
+    seriesType=${seriesType},
     hasCoord=${hasCoord},
     hasType=${hasType},
     index=0
@@ -106,6 +107,7 @@ Specify the right-bottom point.
 {{ use: mark-area-data-item-item(
     name="end",
     prefix="###"+${prefix},
+    seriesType=${seriesType},
     hasCoord=${hasCoord},
     hasType=${hasType},
     index=1
