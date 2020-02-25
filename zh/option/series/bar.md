@@ -47,6 +47,26 @@
     barBorderRadius=true
 )}}
 
+## showBackground(boolean) = false
+
+是否显示柱条的背景色。通过 [backgroundStyle](~series-bar.backgroundStyle) 配置背景样式。
+
+~[800x400](${galleryViewPath}bar-background&reset=1&edit=1)
+
+## backgroundStyle(Object)
+
+每一个柱条的背景样式。需要将 [showBackground](~series-bar.showBackground) 设置为 `true` 时才有效。
+
+~[800x400](${galleryViewPath}bar-background&reset=1&edit=1)
+
+{{use:partial-bar-item-style(
+    prefix="##",
+    useColorPalatte=false,
+    hasCallback=true,
+    barBorderRadius=true,
+    defaultColor="'rgba(180, 180, 180, 0.2)'"
+)}}
+
 ## emphasis(Object)
 
 高亮的图形样式和标签样式。
@@ -172,7 +192,7 @@
 
 {{ target:partial-bar-item-style }}
 
-#${prefix} color(Color) = 自适应
+#${prefix} color(Color) = ${defaultColor|default('自适应')}
 
 柱条的颜色。{{ if: ${useColorPalatte} }} 默认从全局调色盘 [option.color](~color) 获取颜色 {{/if}}
 

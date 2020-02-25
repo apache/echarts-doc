@@ -45,6 +45,26 @@ If to add round caps at the end of the bar sectors. Valid only for bar series on
     barBorderRadius=true
 )}}
 
+## showBackground(boolean) = false
+
+Whether to show background behind each bar. Use [backgroundStyle](~series-bar.backgroundStyle) to set background style.
+
+~[800x400](${galleryViewPath}bar-background&reset=1&edit=1)
+
+## backgroundStyle(Object)
+
+Background style of each bar if [showBackground](~series-bar.showBackground) is set to be `true`.
+
+~[800x400](${galleryViewPath}bar-background&reset=1&edit=1)
+
+{{use:partial-bar-item-style(
+    prefix="##",
+    useColorPalatte=false,
+    hasCallback=true,
+    barBorderRadius=true,
+    defaultColor="'rgba(180, 180, 180, 0.2)'"
+)}}
+
 ## emphasis(Object)
 
 ### label(Object)
@@ -158,9 +178,9 @@ The style setting of the text label in a single bar.
 
 {{ target:partial-bar-item-style }}
 
-#${prefix} color(Color) = 'auto'
+#${prefix} color(Color) = ${defaultColor|default('auto')}
 
-Bar color.{{ if: ${useColorPalatte} }} defaults to acquire colors from global palette [option.color](~color) {{/if}}.
+Bar color. {{ if: ${useColorPalatte} }} By default, colors from global palette [option.color](~color) is used. {{/if}}
 
 #${prefix} barBorderColor(Color) = '#000'
 
