@@ -21,6 +21,8 @@
 
 + [Fix] Fix geo cannot be restored. [#12035](https://github.com/apache/incubator-echarts/pull/12035) ([Shuang Su](https://github.com/100pah))
 
++ [Fix] Fix Array.prototype.slice is not defined on typed array [#11956](https://github.com/apache/incubator-echarts/pull/11956) ([Yi Shen](https://github.com/pissang))
+
 + [Fix] Fix candlestick throw error when some series are filtered by legend. [#12027](https://github.com/apache/incubator-echarts/pull/12027) ([Shuang Su](https://github.com/100pah))
 
 + [Fix] Fix brush component not roam with the coordinate system. [#11998](https://github.com/apache/incubator-echarts/pull/11998) ([Shuang Su](https://github.com/100pah))
