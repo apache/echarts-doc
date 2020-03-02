@@ -1,70 +1,70 @@
 ## v4.7.0
 <div class="time"></div>
 
-+ [Feature] Provide new layouts for markLine labels. [#11843](https://github.com/apache/incubator-echarts/pull/11843) ([Wenli Zhang](https://github.com/Ovilia))
++ [Feature] Provide new layouts for markLine labels. [#11843](https://github.com/apache/incubator-echarts/pull/11843) ([Zhang Wenli](https://github.com/Ovilia))
 
-+ [Feature] Support background option for bar series. [#11951](https://github.com/apache/incubator-echarts/pull/11951) ([Wenli Zhang](https://github.com/Ovilia))
++ [Feature] Support background option for bar series. [#11951](https://github.com/apache/incubator-echarts/pull/11951) ([Zhang Wenli](https://github.com/Ovilia))
 
-+ [Feature] Support appending tooltip DOM to HTML body. [#8049](https://github.com/apache/incubator-echarts/pull/8049) [#12024](https://github.com/apache/incubator-echarts/pull/12024) ([xinpureZhu](https://github.com/xinpureZhu), [Shuang Su](https://github.com/100pah))
++ [Feature] Support appending tooltip DOM to HTML body. [#8049](https://github.com/apache/incubator-echarts/pull/8049) [#12024](https://github.com/apache/incubator-echarts/pull/12024) ([xinpureZhu](https://github.com/xinpureZhu), [Su Shuang](https://github.com/100pah))
 
-+ [Feature] Add draggable support to group elements. [#11959](https://github.com/apache/incubator-echarts/pull/11959) ([Yi Shen](https://github.com/pissang))
++ [Feature] Add draggable support to group elements. [#11959](https://github.com/apache/incubator-echarts/pull/11959) ([Shen Yi](https://github.com/pissang))
 
-+ [Feature] Add polyline edge layout for the tree chart. [#11808](https://github.com/apache/incubator-echarts/pull/11808) ([Deqing Li](https://github.com/deqingli))
++ [Feature] Add polyline edge layout for the tree chart. [#11808](https://github.com/apache/incubator-echarts/pull/11808) ([Li Deqing](https://github.com/deqingli))
 
 + [Enhance] Enhance continuity line trail for effect line. [#11893](https://github.com/apache/incubator-echarts/pull/11893) ([alex2wong](https://github.com/alex2wong))
 
 + [Fix] Fix markPoint position with stack line/bar. [#11965](https://github.com/apache/incubator-echarts/pull/11965) ([yikuangli](https://github.com/yikuangli))
 
-+ [Fix] Radar chart data may appear outside of the radar component. [#11841](https://github.com/apache/incubator-echarts/pull/11841) ([Siwen Su](https://github.com/susiwen8))
++ [Fix] Radar chart data may appear outside of the radar component. [#11841](https://github.com/apache/incubator-echarts/pull/11841) ([Su Siwen](https://github.com/susiwen8))
 
-+ [Fix] Fix treemap highlight action not triggered. [#12050](https://github.com/apache/incubator-echarts/pull/12050) ([Shuang Su](https://github.com/100pah))
++ [Fix] Fix treemap highlight action not triggered. [#12050](https://github.com/apache/incubator-echarts/pull/12050) ([Su Shuang](https://github.com/100pah))
 
-+ [Fix] Fix geo cannot be restored. [#12035](https://github.com/apache/incubator-echarts/pull/12035) ([Shuang Su](https://github.com/100pah))
++ [Fix] Fix geo cannot be restored. [#12035](https://github.com/apache/incubator-echarts/pull/12035) ([Su Shuang](https://github.com/100pah))
 
-+ [Fix] Fix Array.prototype.slice is not defined on typed array [#11956](https://github.com/apache/incubator-echarts/pull/11956) ([Yi Shen](https://github.com/pissang))
++ [Fix] Fix Array.prototype.slice is not defined on typed array [#11956](https://github.com/apache/incubator-echarts/pull/11956) ([Shen Yi](https://github.com/pissang))
 
-+ [Fix] Fix candlestick throw error when some series are filtered by legend. [#12027](https://github.com/apache/incubator-echarts/pull/12027) ([Shuang Su](https://github.com/100pah))
++ [Fix] Fix candlestick throw error when some series are filtered by legend. [#12027](https://github.com/apache/incubator-echarts/pull/12027) ([Su Shuang](https://github.com/100pah))
 
-+ [Fix] Fix brush component not roam with the coordinate system. [#11998](https://github.com/apache/incubator-echarts/pull/11998) ([Shuang Su](https://github.com/100pah))
++ [Fix] Fix brush component not roam with the coordinate system. [#11998](https://github.com/apache/incubator-echarts/pull/11998) ([Su Shuang](https://github.com/100pah))
 
-+ [Fix] Fix action `'showTip'` dispatched in radar chart. [#11985](https://github.com/apache/incubator-echarts/pull/11985) ([Feng Yu](https://github.com/yufeng04))
++ [Fix] Fix action `'showTip'` dispatched in radar chart. [#11985](https://github.com/apache/incubator-echarts/pull/11985) ([Yu Feng](https://github.com/yufeng04))
 
 + [Fix] Fix singleAxis support splitArea option. [#11890](https://github.com/apache/incubator-echarts/pull/11890) ([newraina](https://github.com/newraina))
 
-+ [Fix] Fix legend pagination may disappear. [#11952](https://github.com/apache/incubator-echarts/pull/11952) ([Feng Yu](https://github.com/yufeng04))
++ [Fix] Fix legend pagination may disappear. [#11952](https://github.com/apache/incubator-echarts/pull/11952) ([Yu Feng](https://github.com/yufeng04))
 
-+ [Fix] Emphasis line style options with sankey chart. [#11729](https://github.com/apache/incubator-echarts/pull/11729) ([Deqing Li](https://github.com/deqingli))
++ [Fix] Emphasis line style options with sankey chart. [#11729](https://github.com/apache/incubator-echarts/pull/11729) ([Li Deqing](https://github.com/deqingli))
 
-+ [Fix] Fix formatter tooltip has no value in sankey chart. [#11752](https://github.com/apache/incubator-echarts/pull/11752) ([Deqing Li](https://github.com/deqingli))
++ [Fix] Fix formatter tooltip has no value in sankey chart. [#11752](https://github.com/apache/incubator-echarts/pull/11752) ([Li Deqing](https://github.com/deqingli))
 
 ## v4.6.0
 <div class="time"></div>
 
-+ [Feature] Optimize label layout on pie. Add new `alignTo` option for aligning the labels. Check more detail in PR [#11715](https://github.com/apache/incubator-echarts/pull/11715) ([Wenli Zhang](https://github.com/Ovilia))
++ [Feature] Optimize label layout on pie. Add new `alignTo` option for aligning the labels. Check more detail in PR [#11715](https://github.com/apache/incubator-echarts/pull/11715) ([Zhang Wenli](https://github.com/Ovilia))
 
-+ [Feature] Add `minorTick`, `minorSplitLine` on axis. Check more detail in the PR [#11705](https://github.com/apache/incubator-echarts/pull/11705) ([Yi Shen](https://github.com/pissang))
++ [Feature] Add `minorTick`, `minorSplitLine` on axis. Check more detail in the PR [#11705](https://github.com/apache/incubator-echarts/pull/11705) ([Shen Yi](https://github.com/pissang))
 
 + [Feature] Added more themes. [#11566](https://github.com/apache/incubator-echarts/pull/11566) ([WebCodePro719](https://github.com/WebCodePro719))
 
-+ [Enhance] Chart will keep the dragging status when mouse is out of the area. Which will provide a much better dragging experience. [#11710](https://github.com/apache/incubator-echarts/pull/11710) ([Shuang Su](https://github.com/100pah))
++ [Enhance] Chart will keep the dragging status when mouse is out of the area. Which will provide a much better dragging experience. [#11710](https://github.com/apache/incubator-echarts/pull/11710) ([Su Shuang](https://github.com/100pah))
 
-+ [Enhance] Legend will display colors from `visualMap` component in `pie`/`funnel`/`radar` series. [#11737](https://github.com/apache/incubator-echarts/pull/11737) ([Yi Shen](https://github.com/pissang))
++ [Enhance] Legend will display colors from `visualMap` component in `pie`/`funnel`/`radar` series. [#11737](https://github.com/apache/incubator-echarts/pull/11737) ([Shen Yi](https://github.com/pissang))
 
-+ [Enhance] Enhance dataset default encode guess strategy. [#11746](https://github.com/apache/incubator-echarts/pull/11746) ([Shuang Su](https://github.com/100pah))
++ [Enhance] Enhance dataset default encode guess strategy. [#11746](https://github.com/apache/incubator-echarts/pull/11746) ([Su Shuang](https://github.com/100pah))
 
 + [Enhance] Stack icon on toolbox now is a toggle button. Removed tiled icon. [#11367](https://github.com/apache/incubator-echarts/pull/11367) ([alex2wong](https://github.com/alex2wong))
 
-+ [Enhance] Add a delay to avoid flashing when hovering on nodes and edges of `graph` and `sankey` series. [11572](https://github.com/apache/incubator-echarts/pull/11572) ([Deqing Li](https://github.com/apache/incubator-echarts/pull/11457))
++ [Enhance] Add a delay to avoid flashing when hovering on nodes and edges of `graph` and `sankey` series. [11572](https://github.com/apache/incubator-echarts/pull/11572) ([Li Deqing](https://github.com/apache/incubator-echarts/pull/11457))
 
-+ [Fix] Fix bar width calculation with `barMaxWidth` constraint and negative `barGap`. [#11713](https://github.com/apache/incubator-echarts/pull/11713) ([Yi Shen](https://github.com/pissang))
++ [Fix] Fix bar width calculation with `barMaxWidth` constraint and negative `barGap`. [#11713](https://github.com/apache/incubator-echarts/pull/11713) ([Shen Yi](https://github.com/pissang))
 
-+ [Fix] Fix seams in `heatmap` series. Which may cause unexpected gray lines. [#11689](https://github.com/apache/incubator-echarts/pull/11689) ([Yi Shen](https://github.com/pissang))
++ [Fix] Fix seams in `heatmap` series. Which may cause unexpected gray lines. [#11689](https://github.com/apache/incubator-echarts/pull/11689) ([Shen Yi](https://github.com/pissang))
 
 + [Fix] Fix unexpected highlight state after inverse selection in `legend`. [#11547](https://github.com/apache/incubator-echarts/pull/11547) ([SnailSword](https://github.com/SnailSword))
 
 + [Fix] Fix tooltip may highlight the point out of chart in `line` series. [#11548](https://github.com/apache/incubator-echarts/pull/11548) ([SnailSword](https://github.com/SnailSword))
 
-+ [Fix] Fix label may not disappear on SVG renderer. [ecomfe/zrender#535](https://github.com/ecomfe/zrender/pull/535) ([Wenli Zhang](https://github.com/Ovilia))
++ [Fix] Fix label may not disappear on SVG renderer. [ecomfe/zrender#535](https://github.com/ecomfe/zrender/pull/535) ([Zhang Wenli](https://github.com/Ovilia))
 
 + [Fix] Not display bar on polar when value is `0`. [#11452](https://github.com/apache/incubator-echarts/issues/11452) ([foolzhang](https://github.com/foolzhang))
 
@@ -74,57 +74,57 @@
 
 + [Fix] Fix `markPoint` out of the chart may still display in the wrong position. [#11484](https://github.com/apache/incubator-echarts/pull/11484) ([susiwen8](https://github.com/susiwen8))
 
-+ [Fix] Fix tooltip shows multiple values around both sides of the pointer. [#11648](https://github.com/apache/incubator-echarts/pull/11648) ([Shuang Su](https://github.com/100pah))
++ [Fix] Fix tooltip shows multiple values around both sides of the pointer. [#11648](https://github.com/apache/incubator-echarts/pull/11648) ([Su Shuang](https://github.com/100pah))
 
-+ [Fix] Fix `label.formatter` of leaves in `tree` series not work. [#11556](https://github.com/apache/incubator-echarts/pull/11556) ([Deqing Li](https://github.com/apache/incubator-echarts/pull/11457))
++ [Fix] Fix `label.formatter` of leaves in `tree` series not work. [#11556](https://github.com/apache/incubator-echarts/pull/11556) ([Li Deqing](https://github.com/apache/incubator-echarts/pull/11457))
 
 + [Fix] Fix overflow symbol not display when `clip` is set `false` in `line` series. [#11552](https://github.com/apache/incubator-echarts/pull/11552) ([SnailSword](https://github.com/SnailSword))
 
 ## v4.5.0
 <div class="time">2019-11-18</div>
 
-+ [Feature] Add `roundCap` option for round corners on `bar` series width `polar` coordinate system. [#11393](https://github.com/apache/incubator-echarts/pull/11393) ([Wenli Zhang](https://github.com/Ovilia))
++ [Feature] Add `roundCap` option for round corners on `bar` series width `polar` coordinate system. [#11393](https://github.com/apache/incubator-echarts/pull/11393) ([Zhang Wenli](https://github.com/Ovilia))
 
 + [Feature] Add event `brushEnd` for `brush` component [#11285](https://github.com/apache/incubator-echarts/pull/11285)([Jian Cui](https://github.com/cuijian-dexter))
 
-+ [Feature] Add `friction` option in force layout of `graph`. [#11276](https://github.com/apache/incubator-echarts/pull/11276) ([Yi Shen](https://github.com/pissang))
++ [Feature] Add `friction` option in force layout of `graph`. [#11276](https://github.com/apache/incubator-echarts/pull/11276) ([Shen Yi](https://github.com/pissang))
 
 + [Feature] Add `ignoreFoceLayout` option in the `graph` links. [#11445](https://github.com/apache/incubator-echarts/pull/11445) ([TYzzt](https://github.com/TYzzt))
 
 + [Feature] Add `axisType` in the indicator of `radar` series. [#11324](https://github.com/apache/incubator-echarts/pull/11324)([zifix](https://github.com/zifix))
 
 
-+ [Feature] Add `clip` option in `candllestick` series. [#11529](https://github.com/apache/incubator-echarts/pull/11529) ([Yi Shen](https://github.com/pissang))
++ [Feature] Add `clip` option in `candllestick` series. [#11529](https://github.com/apache/incubator-echarts/pull/11529) ([Shen Yi](https://github.com/pissang))
 
-+ [Fix] Fix lots of label positioning issues in SVG renderer. [ecomfe/zrender#519](https://github.com/ecomfe/zrender/pull/519) ([Shuang Su](https://github.com/100pah))
++ [Fix] Fix lots of label positioning issues in SVG renderer. [ecomfe/zrender#519](https://github.com/ecomfe/zrender/pull/519) ([Su Shuang](https://github.com/100pah))
 
 + [Fix] Fix interval issues related to category axis tick. Like `areaStyle.color` is incorrect in [#10948](https://github.com/apache/incubator-echarts/issues/10948), `xAxis.axisTick.interval` is calculated incorrectly in [#11176](https://github.com/apache/incubator-echarts/pull/11176) . [#11186](https://github.com/apache/incubator-echarts/pull/11186) ([foolzhang](https://github.com/foolzhang))
 
 + [Fix] Fix `bar` series can't display on the `log` axis. [#11472](https://github.com/apache/incubator-echarts/pull/11472)([SnailSword](https://github.com/SnailSword))
 
-+ [Fix] Fix tooltip may be covered by the canvas when `-webkit-overflow-scrolling: touch` on iOS 13. [ecomfe/zrender#522](https://github.com/ecomfe/zrender/pull/522) ([Shuang Su](https://github.com/100pah))
++ [Fix] Fix tooltip may be covered by the canvas when `-webkit-overflow-scrolling: touch` on iOS 13. [ecomfe/zrender#522](https://github.com/ecomfe/zrender/pull/522) ([Su Shuang](https://github.com/100pah))
 
-+ [Fix] Fix some of labels on category axis may disappear forever after chart resized. [#11536](https://github.com/apache/incubator-echarts/pull/11536) ([Shuang Su](https://github.com/100pah))
++ [Fix] Fix some of labels on category axis may disappear forever after chart resized. [#11536](https://github.com/apache/incubator-echarts/pull/11536) ([Su Shuang](https://github.com/100pah))
 
-+ [Fix] Fix brush drag gets stuck when the mouse leaves the chart area. [#11516](https://github.com/apache/incubator-echarts/pull/11516) ([Shuang Su](https://github.com/100pah))
++ [Fix] Fix brush drag gets stuck when the mouse leaves the chart area. [#11516](https://github.com/apache/incubator-echarts/pull/11516) ([Su Shuang](https://github.com/100pah))
 
-+ [Fix] Fix image symbol may disappear forever after legend toggled. [#11515](https://github.com/apache/incubator-echarts/pull/11515) ([Feng Yu](https://github.com/yufeng04))
++ [Fix] Fix image symbol may disappear forever after legend toggled. [#11515](https://github.com/apache/incubator-echarts/pull/11515) ([Yu Feng](https://github.com/yufeng04))
 
-+ [Fix] Fix changing from `'scroll'` type to `'plain'` type not work bug in legend. [#11504](https://github.com/apache/incubator-echarts/pull/11504) ([Feng Yu](https://github.com/yufeng04))
++ [Fix] Fix changing from `'scroll'` type to `'plain'` type not work bug in legend. [#11504](https://github.com/apache/incubator-echarts/pull/11504) ([Yu Feng](https://github.com/yufeng04))
 
-+ [Fix] Optimize layout and bar width of `bar` series on `time` axis and `value` axis. Make the `barMaxWidth` has higher priority than `barWidth`. Add `barMinWidth` for `bar` series on `time` axis and `value` axis. [#11479](https://github.com/apache/incubator-echarts/pull/11479) ([Wenli Zhang](https://github.com/Ovilia), [Shuang Su](https://github.com/100pah))
++ [Fix] Optimize layout and bar width of `bar` series on `time` axis and `value` axis. Make the `barMaxWidth` has higher priority than `barWidth`. Add `barMinWidth` for `bar` series on `time` axis and `value` axis. [#11479](https://github.com/apache/incubator-echarts/pull/11479) ([Zhang Wenli](https://github.com/Ovilia), [Su Shuang](https://github.com/100pah))
 
-+ [Fix] Fix title of toolbox icon may be cut by the container. [#11456](https://github.com/apache/incubator-echarts/pull/11456) ([Wenli Zhang](https://github.com/Ovilia))
++ [Fix] Fix title of toolbox icon may be cut by the container. [#11456](https://github.com/apache/incubator-echarts/pull/11456) ([Zhang Wenli](https://github.com/Ovilia))
 
-+ [Fix] Fix precision issue in the ticks calculating. [#11488](https://github.com/apache/incubator-echarts/pull/11488) ([Wenli Zhang](https://github.com/Ovilia))
++ [Fix] Fix precision issue in the ticks calculating. [#11488](https://github.com/apache/incubator-echarts/pull/11488) ([Zhang Wenli](https://github.com/Ovilia))
 
-+ [Fix] Fix `rotate` property of label not work in `tree` series. [#11457](https://github.com/apache/incubator-echarts/pull/11457) ([Deqing Li](https://github.com/apache/incubator-echarts/pull/11457))
++ [Fix] Fix `rotate` property of label not work in `tree` series. [#11457](https://github.com/apache/incubator-echarts/pull/11457) ([Li Deqing](https://github.com/apache/incubator-echarts/pull/11457))
 
-+ [Fix] Fix edge won't disappear after collapsed if the `id` is duplicated in `tree` series. [#11447](https://github.com/apache/incubator-echarts/pull/11447) ([Deqing Li](https://github.com/apache/incubator-echarts/pull/11457))
++ [Fix] Fix edge won't disappear after collapsed if the `id` is duplicated in `tree` series. [#11447](https://github.com/apache/incubator-echarts/pull/11447) ([Li Deqing](https://github.com/apache/incubator-echarts/pull/11457))
 
-+ [Fix] Fix data disappear when updating with `dataset` in `gauge` series. [#11373](https://github.com/apache/incubator-echarts/pull/11373) ([Wenli Zhang](https://github.com/Ovilia))
++ [Fix] Fix data disappear when updating with `dataset` in `gauge` series. [#11373](https://github.com/apache/incubator-echarts/pull/11373) ([Zhang Wenli](https://github.com/Ovilia))
 
-+ [Fix] Fix gradient on bar leaked to label in SVG Renderer. ([Wenli Zhang](https://github.com/Ovilia))
++ [Fix] Fix gradient on bar leaked to label in SVG Renderer. ([Zhang Wenli](https://github.com/Ovilia))
 
 
 ## v4.4.0
