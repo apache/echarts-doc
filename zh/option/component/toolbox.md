@@ -189,6 +189,9 @@ optionToContent: function(opt) {
 数据区域缩放。目前只支持直角坐标系的缩放。
 {{ use: feature-common(title="数据区域缩放") }}
 
+#### filterMode(string) = 'filter'
+与 [dataZoom.filterMode](~dataZoom.filterMode) 含义和取值相同。
+
 #### xAxisIndex(number|Array|boolean)
 指定哪些 [xAxis](~xAxis) 被控制。如果缺省则控制所有的x轴。如果设置为 `false` 则不控制任何x轴。如果设置成 `3` 则控制 axisIndex 为 `3` 的x轴。如果设置为 `[0, 3]` 则控制 axisIndex 为 `0` 和 `3` 的x轴。
 #### yAxisIndex(number|Array|boolean)

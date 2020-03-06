@@ -37,10 +37,6 @@ A single chart instance can contains several `dataZoom` components, each of whic
 
 **✦ How dataZoom componets operates axes and data ✦**
 
-Generally `dataZoom` component zoom or roam coordinate system through data filtering and set the windows of axes internally.
-
-Its behaviours vary according to filtering mode settings ([dataZoom.filterMode](~dataZoom.filterMode)).
-
 {{use: partial-data-zoom-filterMode}}
 
 Moreover, when `min`, `max` of an axis is set (e.g., `yAxis: {min: 0, max: 400}`), this extent of the axis will not be modified by the behaviour of dataZoom of other axis any more.
@@ -212,10 +208,6 @@ Specify which [angleAxis](~angleAxis) is/are controlled by the `${dataZoomName}`
 
 ## filterMode(string) = 'filter'
 
-Generally `dataZoom` component zoom or roam coordinate system through data filtering and set the windows of axes internally.
-
-Its behaviours vary according to filtering mode settings ([dataZoom.filterMode](~dataZoom.filterMode)).
-
 {{use: partial-data-zoom-filterMode}}
 
 
@@ -333,6 +325,10 @@ Take a scenario as an example. When we are using dynamic data (update data perio
 
 
 {{target: partial-data-zoom-filterMode}}
+
+Generally `dataZoom` component zoom or roam coordinate system through data filtering and set the windows of axes internally.
+
+Its behaviours vary according to filtering mode settings ([dataZoom.filterMode](~dataZoom.filterMode)).
 
 Possible values:
 
