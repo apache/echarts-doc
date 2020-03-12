@@ -91,6 +91,22 @@ Name mapping for customized areas. For example:
 }
 ```
 
+#${prefix} nameProperty(string) = 'name'
+
+customized property key for GeoJSON feature. By default, 'name' is used as primary key to identify GeoJSON feature.
+For example: 
+```js
+{
+    nameProperty: 'NAME', // key to connect following data point to GeoJSON region {"type":"Feature","id":"01","properties":{"NAME":"Alabama"}, "geometry": { ... }}
+    data:[
+        {name: 'Alabama', value: 4822023},
+        {name: 'Alaska', value: 731449},
+    ]
+}
+```
+
+
+
 ## selectedMode(boolean|string) = false
 Selected mode decides whether multiple selecting is supported. By default, `false` is used for disabling selection. Its value can also be `'single'` for selecting single area, or `'multiple'` for selecting multiple areas.
 
