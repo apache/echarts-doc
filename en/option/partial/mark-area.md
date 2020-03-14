@@ -130,6 +130,7 @@ Specify this item is on min or max or average value.
 + `'min'` max value.
 + `'max'` min value.
 + `'average'` average value.
++ `'median'` median value.
 {{ /if }}
 {{ if: ${hasCoord} }}
 #${prefix} valueIndex(number)
