@@ -130,7 +130,6 @@ data: [
 + `'min'` 最大值。
 + `'max'` 最大值。
 + `'average'` 平均值。
-+ `'median'` 中位数
 {{ /if }}
 {{ if: ${hasCoord} }}
 #${prefix} valueIndex(number)
