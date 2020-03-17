@@ -131,7 +131,7 @@ var option = {
 
 其中，他们每个值都可以是：
 + 绝对数值（例如 `bottom: 54` 表示：距离 echarts 容器底边界 `54` 像素）。
-+ 或者基于 echarts 容器高宽的百分比（例如 `right: '20%'` 表示：距离 echarts 容器右边界的距离是 echarts 容器高度的 `20%`）。
++ 或者基于 echarts 容器高宽的百分比（例如 `right: '20%'` 表示：距离 echarts 容器右边界的距离是 echarts 容器宽度的 `20%`）。
 
 如下图的例子，对 [grid](option.html#grid) 组件（也就是直角坐标系的底板）设置 `left`、`right`、`height`、`bottom` 达到的效果。
 
