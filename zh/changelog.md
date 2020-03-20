@@ -1,5 +1,5 @@
 ## v4.7.0
-<div class="time"></div>
+<div class="time">2020-03-18</div>
 
 + [Feature] markLine 新增更多标签位置配置. [#11843](https://github.com/apache/incubator-echarts/pull/11843) ([Zhang Wenli](https://github.com/Ovilia))
 
@@ -38,7 +38,7 @@
 + [Fix] 修复 sankey 桑基图的 tooltip formatter 中没有 value 属性的 bug. [#11752](https://github.com/apache/incubator-echarts/pull/11752) ([Li Deqing](https://github.com/deqingli))
 
 ## v4.6.0
-<div class="time"></div>
+<div class="time">2019-12-29</div>
 
 + [Feature] Optimize label layout on pie. Add new `alignTo` option for aligning the labels. Check more detail in PR [#11715](https://github.com/apache/incubator-echarts/pull/11715) ([Zhang Wenli](https://github.com/Ovilia))
 
