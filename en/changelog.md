@@ -1,5 +1,5 @@
 ## v4.7.0
-<div class="time"></div>
+<div class="time">2020-03-18</div>
 
 + [Feature] Provide new layouts for markLine labels. [#11843](https://github.com/apache/incubator-echarts/pull/11843) ([Zhang Wenli](https://github.com/Ovilia))
 
@@ -7,13 +7,13 @@
 
 + [Feature] Support appending tooltip DOM to HTML body. [#8049](https://github.com/apache/incubator-echarts/pull/8049) [#12024](https://github.com/apache/incubator-echarts/pull/12024) ([xinpureZhu](https://github.com/xinpureZhu), [Su Shuang](https://github.com/100pah))
 
-+ [Feature] Add draggable support to group elements. [#11959](https://github.com/apache/incubator-echarts/pull/11959) ([Shen Yi](https://github.com/pissang))
++ [Feature] Add draggable support to group elements on graphic component. [#11959](https://github.com/apache/incubator-echarts/pull/11959) ([Shen Yi](https://github.com/pissang))
 
 + [Feature] Add polyline edge layout for the tree chart. [#11808](https://github.com/apache/incubator-echarts/pull/11808) ([Li Deqing](https://github.com/deqingli))
 
 + [Enhance] Enhance continuity line trail for effect line. [#11893](https://github.com/apache/incubator-echarts/pull/11893) ([alex2wong](https://github.com/alex2wong))
 
-+ [Fix] Fix markPoint position with stack line/bar. [#11965](https://github.com/apache/incubator-echarts/pull/11965) ([yikuangli](https://github.com/yikuangli))
++ [Fix] Fix markPoint position in stacked line/bar series. [#11965](https://github.com/apache/incubator-echarts/pull/11965) ([yikuangli](https://github.com/yikuangli))
 
 + [Fix] Radar chart data may appear outside of the radar component. [#11841](https://github.com/apache/incubator-echarts/pull/11841) ([Su Siwen](https://github.com/susiwen8))
 
@@ -25,20 +25,20 @@
 
 + [Fix] Fix candlestick throw error when some series are filtered by legend. [#12027](https://github.com/apache/incubator-echarts/pull/12027) ([Su Shuang](https://github.com/100pah))
 
-+ [Fix] Fix brush component not roam with the coordinate system. [#11998](https://github.com/apache/incubator-echarts/pull/11998) ([Su Shuang](https://github.com/100pah))
++ [Fix] Fix brush component not follow the pan and zoom of coordinate system. [#11998](https://github.com/apache/incubator-echarts/pull/11998) ([Su Shuang](https://github.com/100pah))
 
 + [Fix] Fix action `'showTip'` dispatched in radar chart. [#11985](https://github.com/apache/incubator-echarts/pull/11985) ([Yu Feng](https://github.com/yufeng04))
 
-+ [Fix] Fix singleAxis support splitArea option. [#11890](https://github.com/apache/incubator-echarts/pull/11890) ([newraina](https://github.com/newraina))
++ [Fix] Fix splitArea not work in singleAxis. [#11890](https://github.com/apache/incubator-echarts/pull/11890) ([newraina](https://github.com/newraina))
 
 + [Fix] Fix legend pagination may disappear. [#11952](https://github.com/apache/incubator-echarts/pull/11952) ([Yu Feng](https://github.com/yufeng04))
 
-+ [Fix] Emphasis line style options with sankey chart. [#11729](https://github.com/apache/incubator-echarts/pull/11729) ([Li Deqing](https://github.com/deqingli))
++ [Fix] Fix emphasis lineStyle options do not work in sankey chart. [#11729](https://github.com/apache/incubator-echarts/pull/11729) ([Li Deqing](https://github.com/deqingli))
 
-+ [Fix] Fix formatter tooltip has no value in sankey chart. [#11752](https://github.com/apache/incubator-echarts/pull/11752) ([Li Deqing](https://github.com/deqingli))
++ [Fix] Fix tooltip formatter has no value in sankey chart. [#11752](https://github.com/apache/incubator-echarts/pull/11752) ([Li Deqing](https://github.com/deqingli))
 
 ## v4.6.0
-<div class="time"></div>
+<div class="time">2019-12-29</div>
 
 + [Feature] Optimize label layout on pie. Add new `alignTo` option for aligning the labels. Check more detail in PR [#11715](https://github.com/apache/incubator-echarts/pull/11715) ([Zhang Wenli](https://github.com/Ovilia))
 
