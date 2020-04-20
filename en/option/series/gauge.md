@@ -163,6 +163,14 @@ The height of detail.
 The background color of detail.
 ### borderWidth(number) = 0
 The border width of detail.
+### formatter(Function|string)
+Formatter is used to format detail, which supports string template and callback function.
+
+```js
+formatter: function (value) {
+    return value.toFixed(0);
+}
+```
 ### borderColor(Color) = '#ccc'
 The border color of detail.
 ### offsetCenter(Array) = [0, '40%']
