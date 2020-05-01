@@ -166,6 +166,7 @@ Special label types, are used to label maximum value, minimum value and so on.
 + `'min'` minimum value.
 + `'max'` maximum value.
 + `'average'` average value.
++ `'median'` median value.
 {{ /if }}
 {{ if: ${hasCoord} }}
 #${prefix} valueIndex(number)

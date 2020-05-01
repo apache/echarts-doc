@@ -32,6 +32,17 @@ Graph is a diagram to represent [nodes](~series-graph.nodes) and the [links](~se
 ## hoverAnimation(boolean)
 Whether to enable the highlight animation effect of mousr hover node.
 
+## center(Array)
+Center of current view-port.
+
+Example:
+```js
+center: [115.97, 29.71]
+```
+
+## zoom(number) = 1
+Zoom rate of current view-port.
+
 ## layout(string) = 'none'
 Graph layout.
 

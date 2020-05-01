@@ -103,7 +103,7 @@ boundingCoords: [
 }
 ```
 
-##${prefix} selectedMode(boolean|string) = false
+#${prefix} selectedMode(boolean|string) = false
 选中模式，表示是否支持多个选中，默认关闭，支持布尔值和字符串，字符串取值可选`'single'`表示单选，或者`'multiple'`表示多选。
 
 

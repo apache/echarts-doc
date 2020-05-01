@@ -32,6 +32,17 @@
 ## hoverAnimation(boolean)
 是否开启鼠标 hover 节点的提示动画效果。
 
+## center(Array)
+当前视角的中心点
+
+例如：
+```js
+center: [115.97, 29.71]
+```
+
+## zoom(number) = 1
+当前视角的缩放比例。
+
 ## layout(string) = 'none'
 图的布局。
 
