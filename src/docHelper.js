@@ -9,6 +9,7 @@ import { stringSimilarity } from 'string-similarity-js';
 
 
 let baseUrl;
+let cdnRoot;
 let rootName;
 let docVersion;
 
@@ -99,12 +100,13 @@ function processOutlines(json) {
 /**
  * Preload doc json
  */
-export function preload(_baseUrl, _rootName, _docVersion) {
+export function preload(_baseUrl, _cdnRoot, _rootName, _docVersion) {
     baseUrl = _baseUrl;
+    cdnRoot = _cdnRoot;
     rootName = _rootName;
     docVersion = _docVersion || '1';
 
-    let outlineUrl = `${baseUrl}/${rootName}-outline.json?${docVersion}`;
+    let outlineUrl = `${cdnRoot}/${rootName}-outline.json?${docVersion}`;
 
     if (!outlineFetcher) {
         outlineFetcher = fetch(outlineUrl)
@@ -179,7 +181,7 @@ function ensurePageDescStorage(targetPath) {
         : rootName + '.' + pagePath;
 
     if (!descStorage[partionKey]) {
-        let url = `${baseUrl}/${partionKey}.json?${docVersion}`;
+        let url = `${cdnRoot}/${partionKey}.json?${docVersion}`;
         let fetcher = fetch(url).then(response => response.json());
         descStorage[partionKey] = {
             fetcher
