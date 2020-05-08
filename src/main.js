@@ -43,6 +43,7 @@ Vue.use(Popover);
  * @param {HTMLDivElement|string} el
  * @param {Object} option
  * @param {string} option.baseUrl
+ * @param {string} [option.cdnRoot] If not provided, use `option.baseUrl`.
  * @param {string} option.docType
  * @param {string} option.locale
  * @param {string} option.version
@@ -51,7 +52,9 @@ export function init(el, option) {
 
     initResponsive();
 
-    preload(option.baseUrl, option.docType, option.version).then(() => {
+    const cdnRoot = option.cdnRoot || option.baseUrl;
+
+    preload(option.baseUrl, cdnRoot, option.docType, option.version).then(() => {
         initRoute();
 
         store.docType = option.docType;

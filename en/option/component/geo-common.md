@@ -107,7 +107,7 @@ For example:
 
 
 
-## selectedMode(boolean|string) = false
+#${prefix} selectedMode(boolean|string) = false
 Selected mode decides whether multiple selecting is supported. By default, `false` is used for disabling selection. Its value can also be `'single'` for selecting single area, or `'multiple'` for selecting multiple areas.
 
 

@@ -31,7 +31,7 @@ Since v3.7, rich text has been supported:
 + Combine these configurations, some special effects can be made, such as simple table, horizontal rule (hr).
 
 
-At the begining, the meanings of two terms that will be used below should be clarified:
+At the beginning, the meanings of two terms that will be used below should be clarified:
 + Text Block: The whole block of label text.
 + Text fragment: Some piece of text in a text block.
 
