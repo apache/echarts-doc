@@ -129,7 +129,7 @@
 
 坐标轴指示器配置项。
 
-`tooltip.axisPointer` 是配置坐标轴指示器的快捷方式。实际上坐标轴指示器的全部功能，都可以通过轴上的 axisPointer 配置项完成（例如 [xAxis.axisPointer](~xAxis.axisPointer) 或 [angleAxis.axisPointer](~angleAxis.axisPointer)）。但是使用 `tooltip.axisPinter` 在简单场景下会更方便一些。
+`tooltip.axisPointer` 是配置坐标轴指示器的快捷方式。实际上坐标轴指示器的全部功能，都可以通过轴上的 axisPointer 配置项完成（例如 [xAxis.axisPointer](~xAxis.axisPointer) 或 [angleAxis.axisPointer](~angleAxis.axisPointer)）。但是使用 `tooltip.axisPointer` 在简单场景下会更方便一些。
 
 > **注意：** `tooltip.axisPointer` 中诸配置项的优先级低于轴上的 axisPointer 的配置项。
 
