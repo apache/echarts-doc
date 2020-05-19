@@ -328,6 +328,9 @@ links: [{
 ### symbolSize(Array|string)
 边两端的标记大小，可以是一个数组分别指定两端，也可以是单个统一指定。
 
+### ignoreForceLayout(boolean) = false
+是否使边忽略力引导布局，避免受其影响。
+
 ## edges(Array)
 别名，同 [links](~series-graph.links)
 

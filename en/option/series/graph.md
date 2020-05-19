@@ -329,6 +329,9 @@ Symbol of edge ends. Can be an array with two item to specify two ends, or a str
 ### symbolSize(Array|string)
 Symbol size of edge ends. Can be an array with two item to specify two ends, or a string specifies both ends.
 
+### ignoreForceLayout(boolean) = false
+Whether to edge should ignore force layout to avoid being influenced by it.
+
 ## edges(Array)
 Alias of [links](~series-graph.links)
 
