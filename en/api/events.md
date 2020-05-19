@@ -124,6 +124,32 @@ Event emitted after unselecting legend.
 }
 ```
 
+## legendselectall(Event)
+**ACTION:** [legendAllSelect](~action.legend.legendAllSelect)
+Event emitted after all legends are selected.
+
+```js
+{
+    type: 'legendselectall',
+    // table of all legend selecting states
+    selected: Object
+}
+```
+
+
+## legendinverseselect(Event)
+**ACTION:** [legendInverseSelect](~action.legend.legendInverseSelect)
+Event emitted after unselecting all legends.
+
+```js
+{
+    type: 'legendinverseselect',
+    // table of all legend selecting states
+    selected: Object
+}
+```
+
+
 ## legendscroll(Event)
 **ACTION:** [legendscroll](~action.legend.legendScroll)
 Event when trigger legend scroll.

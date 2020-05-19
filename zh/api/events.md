@@ -123,6 +123,32 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
 ```
 
 
+## legendselectall(Event)
+**ACTION:** [legendAllSelect](~action.legend.legendAllSelect)
+图例全选后的事件。
+
+```js
+{
+    type: 'legendselectall',
+    // 所有图例的选中状态表。
+    selected: Object
+}
+```
+
+
+## legendinverseselect(Event)
+**ACTION:** [legendInverseSelect](~action.legend.legendInverseSelect)
+图例反选后的事件。
+
+```js
+{
+    type: 'legendinverseselect',
+    // 所有图例的选中状态表。
+    selected: Object
+}
+```
+
+
 ## legendscroll(Event)
 **ACTION:** [legendscroll](~action.legend.legendScroll)
 图例滚动事件。
