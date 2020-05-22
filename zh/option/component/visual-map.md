@@ -176,11 +176,11 @@ visual 范围也可以反向，例如上例，可以设定 `opacity` 范围为 `
 
 visual value 的取值范围：
 
-+ `透明度（opacity）`、`颜色透明度（colorAlpha）`、`颜色明暗度（colorLightness）`、`颜色饱和度（colorSaturation）`，`visual value`
++ `透明度（opacity）`、`颜色透明度（colorAlpha）`、`颜色明暗度（colorLightness）`、`颜色饱和度（colorSaturation）`、`visual value`
 
     取值范围是 `[0, 1]`。
 
-+ `色调（colorHue）`
++ `色调（colorHue）`：
 
     取值范围是 `[0, 360]`。
 

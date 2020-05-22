@@ -8,12 +8,12 @@
 Before ECharts 4, data was only able to declared in each series, for example:
 
 ```js
-option: {
+option = {
     xAxis: {
         type: 'category',
         data: ['Matcha Latte', 'Milk Tea', 'Cheese Cocoa', 'Walnut Brownie']
     },
-    yAxis: {}
+    yAxis: {},
     series: [
         {
             type: 'bar',

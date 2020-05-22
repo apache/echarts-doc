@@ -8,12 +8,12 @@ ECharts 4 开始支持了 `dataset` 组件用于单独的数据集声明，从�
 ECharts 4 以前，数据只能声明在各个“系列（series）”中，例如：
 
 ```js
-option: {
+option = {
     xAxis: {
         type: 'category',
         data: ['Matcha Latte', 'Milk Tea', 'Cheese Cocoa', 'Walnut Brownie']
     },
-    yAxis: {}
+    yAxis: {},
     series: [
         {
             type: 'bar',

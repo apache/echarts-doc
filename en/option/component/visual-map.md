@@ -186,11 +186,11 @@ About the value of visual channel (visual value):
 
 About the possible value range of visual value:
 
-+ `opacity`、`colorAlpha`、`colorLightness`、`colorSaturation`，`visual value`
++ `opacity`、`colorAlpha`、`colorLightness`、`colorSaturation`、`visual value`
 
     possible value range is `[0, 1]`.
 
-+ `colorHue`
++ `colorHue`：
 
     possible value range is `[0, 360]`.
 
