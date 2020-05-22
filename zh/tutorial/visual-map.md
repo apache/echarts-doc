@@ -111,7 +111,7 @@ option = {
 option = {
     visualMap: [
         {
-            type: 'piecewise'
+            type: 'piecewise',
             min: 0,
             max: 5000,
             dimension: 3,       // series.data 的第四个维度（即 value[3]）被映射

@@ -115,7 +115,7 @@ Example A:
 option = {
     visualMap: [
         {
-            type: 'piecewise'
+            type: 'piecewise',
             min: 0,
             max: 5000,
             dimension: 3,       // the fourth dimension of series.data, or value[3], is mapped
