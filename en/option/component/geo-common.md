@@ -91,7 +91,23 @@ Name mapping for customized areas. For example:
 }
 ```
 
-## selectedMode(boolean|string) = false
+#${prefix} nameProperty(string) = 'name'
+
+customized property key for GeoJSON feature. By default, 'name' is used as primary key to identify GeoJSON feature.
+For example: 
+```js
+{
+    nameProperty: 'NAME', // key to connect following data point to GeoJSON region {"type":"Feature","id":"01","properties":{"NAME":"Alabama"}, "geometry": { ... }}
+    data:[
+        {name: 'Alabama', value: 4822023},
+        {name: 'Alaska', value: 731449},
+    ]
+}
+```
+
+
+
+#${prefix} selectedMode(boolean|string) = false
 Selected mode decides whether multiple selecting is supported. By default, `false` is used for disabling selection. Its value can also be `'single'` for selecting single area, or `'multiple'` for selecting multiple areas.
 
 
@@ -100,11 +116,6 @@ Selected mode decides whether multiple selecting is supported. By default, `fals
 {{use: partial-label-desc}}
 {{use: partial-label(
     prefix="#" + ${prefix},
-    formatter=true
-)}}
-##${prefix} emphasis(Object)
-{{use: partial-label(
-    prefix="##" + ${prefix},
     formatter=true
 )}}
 
@@ -118,16 +129,28 @@ Selected mode decides whether multiple selecting is supported. By default, `fals
 ##${prefix} areaColor(Color) = '#eee'
 Area filling color.
 
-{{ use: partial-item-style(prefix=${prefix} + '##') }}
+{{ use: partial-color-desc }}
 
-##${prefix} emphasis(Object)
+{{ use: partial-item-style(prefix=${prefix} + '#') }}
+
+#${prefix} emphasis(Object)
 
 Map area style in highlighted state.
+
+##${prefix} itemStyle(Object)
 
 ###${prefix} areaColor(Color) = '#eee'
 Area filling color.
 
+{{ use: partial-color-desc }}
+
 {{ use: partial-item-style(prefix=${prefix} + '##') }}
+
+##${prefix} label(Object)
+{{use: partial-label(
+    prefix="##" + ${prefix},
+    formatter=true
+)}}
 
 {{ use: partial-rect-layout(prefix=${prefix}) }}
 

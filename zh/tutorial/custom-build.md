@@ -10,7 +10,7 @@
 
 我们也可以自己构建 echarts，能够仅仅包括自己所需要的图表和组件。可以用这几种方式自定义构建：
 
-+ [在线自定义构建](${websitePath}builder.html)：比较方便。
++ [在线自定义构建](${websitePath}/builder.html)：比较方便。
 + 使用 `echarts/build/build.js` 脚本自定义构建：比在线构建更灵活一点，并且支持多语言。
 + 直接使用构建工具（如 [rollup](https://rollupjs.org/)、[webpack](https://webpack.js.org//)、[browserify](http://browserify.org/)）自己构建：也是一种选择。
 

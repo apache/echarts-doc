@@ -89,7 +89,21 @@ boundingCoords: [
 }
 ```
 
-## selectedMode(boolean|string) = false
+#${prefix} nameProperty(string) = 'name'
+
+默认是 `'name'`，针对 GeoJSON 要素的自定义属性名称，作为主键用于关联数据点和 GeoJSON 地理要素。
+例如： 
+```js
+{
+    nameProperty: 'NAME', // 数据点中的 name：Alabama 会关联到 GeoJSON 中 NAME 属性值为 Alabama 的地理要素{"type":"Feature","id":"01","properties":{"NAME":"Alabama"}, "geometry": { ... }}
+    data:[
+        {name: 'Alabama', value: 4822023},
+        {name: 'Alaska', value: 731449},
+    ]
+}
+```
+
+#${prefix} selectedMode(boolean|string) = false
 选中模式，表示是否支持多个选中，默认关闭，支持布尔值和字符串，字符串取值可选`'single'`表示单选，或者`'multiple'`表示多选。
 
 
@@ -110,6 +124,7 @@ boundingCoords: [
 
 ##${prefix} areaColor(Color) = '#eee'
 地图区域的颜色。
+{{ use: partial-color-desc }}
 
 {{ use: partial-item-style(prefix=${prefix} + '#') }}
 
@@ -126,6 +141,8 @@ boundingCoords: [
 ##${prefix} itemStyle(Object)
 ###${prefix} areaColor(Color) = '#eee'
 地图区域的颜色。
+{{ use: partial-color-desc }}
+
 {{ use: partial-item-style(prefix=${prefix} + '##') }}
 
 

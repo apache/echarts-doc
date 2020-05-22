@@ -112,7 +112,7 @@ ${name} icon 样式设置。由于 icon 的文本信息只在 icon hover 时候�
 ### saveAsImage(Object)
 保存为图片。
 #### type(string) = 'png'
-保存的图片格式。支持 `'png'` 和 `'jpeg'`。
+保存的图片格式。如果[初始化图表](api.html#echarts.init)时 `renderer` 的类型是 `'canvas'`（默认），则支持 `'png'`（默认）和 `'jpeg'`；如果 `renderer` 的类型是 `'svg'`，则 `type` 只支持 `'svg'`。
 #### name(string)
 保存的文件名称，默认使用 [title.text](~title.text) 作为名称。
 #### backgroundColor(Color) = 'auto'
@@ -188,6 +188,9 @@ optionToContent: function(opt) {
 ### dataZoom(Object)
 数据区域缩放。目前只支持直角坐标系的缩放。
 {{ use: feature-common(title="数据区域缩放") }}
+
+#### filterMode(string) = 'filter'
+与 [dataZoom.filterMode](~dataZoom.filterMode) 含义和取值相同。
 
 #### xAxisIndex(number|Array|boolean)
 指定哪些 [xAxis](~xAxis) 被控制。如果缺省则控制所有的x轴。如果设置为 `false` 则不控制任何x轴。如果设置成 `3` 则控制 axisIndex 为 `3` 的x轴。如果设置为 `[0, 3]` 则控制 axisIndex 为 `0` 和 `3` 的x轴。

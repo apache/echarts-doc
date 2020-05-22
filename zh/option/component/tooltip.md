@@ -68,6 +68,19 @@
 
 当图表外层的 dom 被设置为 `'overflow: hidden'`，或者移动端窄屏，导致 tooltip 超出外界被截断时，此配置比较有用。
 
+## appendToBody(boolean) = false
+
+> 从 4.7.0 开始支持。
+
+是否将 tooltip 的 DOM 节点添加为 HTML 的 `<body>` 的子节点。只有当 [renderMode](~tooltip.renderMode) 为 `'html'` 是有意义的。
+
+默认值是 `false`。`false` 表示，tooltip 的 DOM 节点会被添加为本图表的 DOM container 的一个子孙节点。但是这种方式导致，如果本图表的 DOM container 的祖先节点有设置 `overflow: hidden`，那么当 tooltip 超出 container 范围使可能被截断。这个问题一定程度上可以用 [tooltip.confine](~tooltip.confine) 来解决，但是不一定能解决所有场景。
+
+所以这里我们提供了 `appendToBody: true` 来解决这件事。这也是常见的解决此类问题的一种方式。但是 `true` 并不定为默认值，因为要避免 break change，尤其是一些对于 tooltip 深入定制的使用。并且也避免一些未知的 bad case。
+
+注：CSS transform 的场景，这也可以使用。
+
+
 ## transitionDuration(number) = 0.4
 
 提示框浮层的移动动画过渡时间，单位是 s，设置为 0 的时候会紧跟着鼠标移动。

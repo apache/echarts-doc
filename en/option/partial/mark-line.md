@@ -1,6 +1,6 @@
 {{ target: partial-mark-line }}
 
-#${prefix} markLine
+#${prefix} markLine(Object)
 Use a line in the chart to illustrate.
 
 {{ use: partial-silent(prefix="#" + ${prefix}) }}
@@ -109,6 +109,7 @@ Data of the starting point.
 {{ use: mark-line-data-item-item(
     name="starting point",
     prefix="###"+${prefix},
+    seriesType=${seriesType},
     hasCoord=${hasCoord},
     hasType=${hasType},
     index=0
@@ -119,6 +120,7 @@ Data of the ending point.
 {{ use: mark-line-data-item-item(
     name="ending point",
     prefix="###"+${prefix},
+    seriesType=${seriesType},
     hasCoord=${hasCoord},
     hasType=${hasType},
     index=1
@@ -138,6 +140,18 @@ Positions of labels can be:
 + `'start'` starting point of the line.
 + `'middle'` middle point of the line.
 + `'end'` ending point of the line.
+
+Since version 4.7.0, more label positions are supported: `'start'`, `'middle'`, `'end'`, `'insideStartTop'`, `'insideStartBottom'`, `'insideMiddleTop'`, `'insideMiddleBottom'`, `'insideEndTop'`, `'insideEndBottom'`.
+
+`'insideMiddleBottom'` is the same as `'middle'`. Position is as the following chart.
+
+The distance between labels and mark lines can be set with [label.distance](~series-${seriesType}.markLine.label.distance).
+
+~[800x500](${galleryViewPath}bar-markline&reset=1&edit=1)
+
+#${prefix} distance(number|Array)
+The distance between labels and mark lines. If it's an array, then the first element is the horizontal distance, and the second element is the vertical distance. If it's a number, then the horizontal and vertical disntances are the same.
+
 #${prefix} formatter(string|Function)
 {{ use: partial-1d-data-label-formatter }}
 
@@ -152,6 +166,7 @@ Special label types, are used to label maximum value, minimum value and so on.
 + `'min'` minimum value.
 + `'max'` maximum value.
 + `'average'` average value.
++ `'median'` median value.
 {{ /if }}
 {{ if: ${hasCoord} }}
 #${prefix} valueIndex(number)
@@ -201,7 +216,14 @@ Label of this data item, which will be merged with `label` of starting point and
 {{ use: mark-line-label(
     prefix='#'+${prefix}
 ) }}
-##${prefix} emphasis(Object)
+
+#${prefix} emphasis(Object)
+##${prefix} lineStyle(Object)
+{{ use: partial-line-style(
+    prefix="##"+${prefix},
+    hasCurveness=true
+) }}
+##${prefix} label(Object)
 {{ use: mark-line-label(
     prefix='##'+${prefix}
 ) }}

@@ -35,7 +35,7 @@ Open the hyper link of main title in specified tab.
 
 + `'blank'` opening it in a new tab
 
-## textStyle
+## textStyle(Object)
 
 {{ use: partial-text-style(
     prefix="##",
@@ -68,7 +68,7 @@ The hyper link of subtitle text.
 + `'blank'` opening it in a new tab
 
 
-## subtextStyle
+## subtextStyle(Object)
 
 {{ use: partial-text-style(
     prefix='##',
@@ -93,7 +93,7 @@ Optional values: `'auto'`, `'top'`, `'bottom'`, `'middle'`.
 
 Set this to `true` to enable triggering events
 
-## padding(number) = 5
+## padding(number|Array) = 5
 
 {{ use: partial-padding(componentName="title")}}
 
@@ -101,7 +101,7 @@ Set this to `true` to enable triggering events
 
 The gap between the main title and subtitle.
 
-{{use: partial-rect-layout(componentName="grid ")}}
+{{use: partial-rect-layout(componentName="title ")}}
 
 {{ use: partial-component-common-style(
     componentName="title",

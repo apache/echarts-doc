@@ -9,7 +9,7 @@ echarts 为什么会要支持 `自定义系列` 呢？echarts 内置支持的图
 **例如，下面的例子使用 custom series 扩展出了 x-range 图：**
 ~[800x500](${galleryViewPath}custom-profile&reset=1&edit=1)
 
-**更多的例子参见：[custom examples](${websitePath}examples.html#chart-type-custom)**
+**更多的例子参见：[custom examples](${websitePath}/examples.html#chart-type-custom)**
 
 下面来介绍开发者怎么使用 [自定义系列（custom series）](option.html#series-custom)。
 
@@ -271,12 +271,12 @@ chart.on('click', {element: 'aaa'}, function (params) {
 <br>
 <h2>（七）自定义矢量图形</h2>
 
-自定义系列能支持使用 [SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData) 定义矢量路径。从而可以使用矢量图工具中做出的图形。参见：[path](option.html#series-custom.renderItem.return_path)，以及例子：[icons](${websitePath}examples/editor.html?c=custom-calendar-icon) 和 [shapes](${websitePath}examples/editor.html?c=custom-gantt-flight)。
+自定义系列能支持使用 [SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData) 定义矢量路径。从而可以使用矢量图工具中做出的图形。参见：[path](option.html#series-custom.renderItem.return_path)，以及例子：[icons](${websitePath}/examples/editor.html?c=custom-calendar-icon) 和 [shapes](${websitePath}/examples/editor.html?c=custom-gantt-flight)。
 
 
 
 
 <br>
 
-**更多的自定义系列的例子参见：[custom examples](${websitePath}examples.html#chart-type-custom)**
+**更多的自定义系列的例子参见：[custom examples](${websitePath}/examples.html#chart-type-custom)**
 

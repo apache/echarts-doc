@@ -60,7 +60,7 @@ Option:
 + 'left'
 + 'right'
 
-## padding(number) = 5
+## padding(number|Array) = 5
 
 {{ use: partial-padding(componentName="legend")}}
 
@@ -316,6 +316,20 @@ Whether to use animation when page scrolll.
 ## animationDurationUpdate(number) = 800
 
 Duration of the page scroll animation.
+
+
+## emphasis(Object)
+
+### selectorLabel(Object)
+
+{{use:partial-label(
+    prefix='###',
+    defaultShowLabel=true,
+    noPosition=true,
+    formatter=false,
+    formatter1d=false
+)}}
+
 
 ## selector(boolean|Array) = false
 

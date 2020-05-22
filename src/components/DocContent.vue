@@ -3,8 +3,8 @@
         <h2 :id="pageId">{{pageTitle}}</h2>
         <div
             class="page-description"
-            v-if="rootPageDescMap[pagePath]"
-            v-html="rootPageDescMap[pagePath]"
+            v-if="pageDesc"
+            v-html="pageDesc"
             v-highlight
         ></div>
 
@@ -20,8 +20,6 @@
                 @toggle-expanded="handleCardExpandToggle"
             ></DocContentItemCard>
         </div>
-
-    </div>
     </div>
 </template>
 
@@ -29,7 +27,6 @@
 
 import {
     getPageTotalDescAsync,
-    getRootPageTotalDescAsync,
     getPageOutlineAsync,
     getOutlineAsync,
     convertPathToId,
@@ -39,7 +36,7 @@ import {
 import {store, getPagePath} from '../store';
 import {directTo} from '../route';
 import DocContentItemCard from './DocContentItemCard.vue'
-import VueScrollTo from 'vue-scrollto';
+import scrollIntoView from 'scroll-into-view';
 import Vue from 'vue';
 import LazyLoad from 'vanilla-lazyload';
 
@@ -76,6 +73,11 @@ export default {
             return convertPathToId(this.pagePath);
         },
 
+        pageDesc() {
+            return this.rootPageDescMap[this.pagePath]
+                || this.pageDescMap[this.pagePath]; // In mobile.
+        },
+
         pageDisplayOutline() {
             if (!this.shared.isMobile) {
                 return this.pageOutline;
@@ -87,8 +89,9 @@ export default {
     },
 
     created() {
-        getRootPageTotalDescAsync().then(rootPageDescMap => {
-            this.rootPageDescMap = rootPageDescMap;
+        // Root page.
+        getPageTotalDescAsync('').then(rootPageDescMap => {
+            this.rootPageDescMap = Object.freeze(rootPageDescMap);
         });
 
         this._lazyload = new LazyLoad({
@@ -96,17 +99,7 @@ export default {
             load_delay: 300
         });
 
-        if (this.shared.currentPath) {
-            if (!getOutlineNode(this.shared.currentPath)) {
-                // Redirect to default node
-                directTo(getDefaultPage(this.shared.currentPath));
-                return;
-            }
-            this.updateCurrentPath(this.shared.currentPath, true);
-        }
-        else {
-            directTo(getDefaultPage());
-        }
+        this.updateCurrentPath(this.shared.currentPath, true);
     },
 
     methods: {
@@ -127,17 +120,31 @@ export default {
                 let container = store.isMobile ? document.body : this.$el.parentNode;
                 let offset = store.isMobile ? -100 : -20;
                 // console.log(document.querySelector('#' + convertPathToId(path)), convertPathToId(path));
-                VueScrollTo.scrollTo(
-                    '#' + convertPathToId(path), time || 400, {
-                        offset,
-                        easing: 'ease-in-out',
-                        container
+                scrollIntoView(document.querySelector('#' + convertPathToId(path)), {
+                    time: time || 400,
+                    align: {
+                        top: 0,
+                        topOffset: -offset
                     }
-                );
+                });
             }, timeDelay || 0);
         },
 
         updateCurrentPath(newVal, firstTime) {
+            // Handling page count find issue.
+            if (newVal) {
+                if (!getOutlineNode(newVal)) {
+                    // Redirect to default node
+                    directTo(getDefaultPage(newVal));
+                    return;
+                }
+            }
+            else {
+                directTo(getDefaultPage());
+                return;
+            }
+
+
             let newPagePath = getPagePath();
             if (newPagePath === this.pagePath) { // Use title as hash.
                 this.scrollTo(newVal);
@@ -149,18 +156,28 @@ export default {
             this.pagePath = newPagePath;
             // Fetch components.
             getPageOutlineAsync(newVal).then(pageOutline => {
+                if (pageOutline.isRoot) {
+                    this.maxDepth = 0;  // No children
+                }
+                else if (this.shared.isMobile) {
+                    this.maxDepth = 1;  // Only one level
+                }
+                else {
+                    this.maxDepth = Infinity;
+                }
+
                 return getPageTotalDescAsync(newVal).then(pageDescMap => {
                     this.pageOutline = Object.freeze(Object.assign({}, pageOutline));
-                    this.pageDescMap = Object.freeze(pageDescMap);
-                    if (this.pageOutline.isRoot) {
-                        this.maxDepth = 0;  // No children
+
+                    let newPageDescMap = {};
+                    let outlineRootName = newVal.split('.')[0];
+                    for (let key in pageDescMap) {
+                        // Add key prefix
+                        // For example: `series-bar.itemStyle` is `itemStyle` in the storage
+                        newPageDescMap[outlineRootName + '.' + key] = pageDescMap[key];
                     }
-                    else if (this.shared.isMobile) {
-                        this.maxDepth = 1;  // Only one level
-                    }
-                    else {
-                        this.maxDepth = Infinity;
-                    }
+
+                    this.pageDescMap = Object.freeze(newPageDescMap);
                     this.loading = false;
 
                     this.scrollTo(newVal, 600, firstTime ? 300: 50);
@@ -196,12 +213,14 @@ export default {
         line-height: 45px;
         margin: 0;
         font-weight: normal;
+        box-sizing: content-box;
     }
 
     h3 {
         font-weight: normal;
         color: #999;
         font-size: 30px;
+        margin: 20px 20px 20px 0;
     }
 
     .page-description {

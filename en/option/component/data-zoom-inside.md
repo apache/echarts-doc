@@ -34,7 +34,7 @@ Whether disable inside zoom.
 ) }}
 
 
-## zoomOnMouseWheel(boolean) = true
+## zoomOnMouseWheel(boolean|string) = true
 
 How to trigger zoom. Optional values:
 
@@ -44,7 +44,7 @@ How to trigger zoom. Optional values:
 + `'ctrl'`：Holding `ctrl` and mouse wheel triggers zoom.
 + `'alt'`：Holding `alt` and mouse wheel triggers zoom.
 
-## moveOnMouseMove(boolean) = true
+## moveOnMouseMove(boolean|string) = true
 
 How to trigger data window move. Optional values:
 
@@ -54,7 +54,7 @@ How to trigger data window move. Optional values:
 + `'ctrl'`：Holding `ctrl` and mouse move triggers data window move.
 + `'alt'`：Holding `alt` and mouse move triggers data window move.
 
-## moveOnMouseWheel(boolean) = false
+## moveOnMouseWheel(boolean|string) = false
 
 How to trigger data window move. Optional values:
 

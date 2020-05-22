@@ -68,6 +68,19 @@ Whether confine tooltip content in the view rect of chart instance.
 
 Useful when tooltip is cut because of `'overflow: hidden'` set on outer dom of chart instance, or because of narrow screen on mobile.
 
+## appendToBody(boolean) = false
+
+> Since 4.7.0
+
+Whether to append the tooltip DOM element as a child of the `<body>` of the HTML page, when using [renderMode](~tooltip.renderMode) `'html'`.
+
+By default `false`, means that the tooltip DOM element will be one of a descendant of its echarts DOM container. But that means that the tooltip might be cut when overflow the container if some of the ancestors DOM element of the echarts container are styled with `overflow: hidden`. This case could also be resolved by setting [tooltip.confine](~tooltip.confine), but it might not suitable for all scenarios.
+
+Here we provide `appendToBody: true` to auto append the tooltip element to `<body>`, which is a common way to resolve this kind of issue. But `true` is not set as a default value because to void to bring break change for some cases where tooltip is deeply customized and to void some unexpected bad cases.
+
+Note that it also works when CSS transform used.
+
+
 ## transitionDuration(number) = 0.4
 
 The transition duration of tooltip's animation, in seconds. When it is set to be 0, it would move closely with the mouse.

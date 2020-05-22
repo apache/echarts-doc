@@ -26,7 +26,7 @@ tooltip can be configured on different places:
 
 {{target: partial-tooltip-in-coords}}
 
-## tooltip
+## tooltip(Object)
 
 tooltip settings in the coordinate system component.
 
@@ -125,7 +125,7 @@ Options:
 
 Configuration item for axisPointer.
 
-`tooltip.axisPointer` is like syntactic sugar of axisPointer settings on axes (for example, [xAxis.axisPointer](~xAxis.axisPointer) or [angleAxis.axisPointer](~angleAxis.axisPointer)). More detailed features can be configured on `someAxis.axisPointer`. But in common cases, using `tooltip.axisPinter` is more convenient.
+`tooltip.axisPointer` is like syntactic sugar of axisPointer settings on axes (for example, [xAxis.axisPointer](~xAxis.axisPointer) or [angleAxis.axisPointer](~angleAxis.axisPointer)). More detailed features can be configured on `someAxis.axisPointer`. But in common cases, using `tooltip.axisPointer` is more convenient.
 
 > **Notice:** configurations of `tooltip.axisPointer` has lower priority than that of `someAxis.axisPointer`.
 

@@ -64,6 +64,9 @@
 该数据所在区域的多边形样式设置
 #### areaColor(Color)
 地图区域的颜色。
+
+{{ use: partial-color-desc }}
+
 {{ use: partial-item-style(prefix='###') }}
 
 ### label(Object)
@@ -81,6 +84,9 @@
 #### itemStyle(Object)
 ##### areaColor(Color)
 地图区域的颜色。
+
+{{ use: partial-color-desc }}
+
 {{ use: partial-item-style(prefix='####') }}
 #### label(Object)
 {{use: partial-label(

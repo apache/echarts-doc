@@ -20,17 +20,17 @@
 ## max(number) = 100
 指定的数据最大值。
 
-## minSize(string) = '0%'
+## minSize(number|string) = '0%'
 数据最小值 [min](~series-funnel.min) 映射的宽度。
 
 可以是绝对的像素大小，也可以是相对[布局宽度](~series-funnel.width)的百分比，如果需要最小值的图形并不是尖端三角，可通过设置该属性实现。
 
-## maxSize(string) = '100%'
+## maxSize(number|string) = '100%'
 数据最大值 [max](~series-funnel.max) 映射的宽度。
 
 可以是绝对的像素大小，也可以是相对[布局宽度](~series-funnel.width)的百分比。
 
-## sort(string) = 'descending'
+## sort(string|Function) = 'descending'
 数据排序， 可以取 `'ascending'`，`'descending'`，`'none'`（表示按 data 顺序），或者一个函数（即 `Array.prototype.sort(function (a, b) { ... })`）。
 
 ## gap(number) = 0
@@ -85,7 +85,7 @@
 {{use:partial-item-style(prefix="###")}}
 
 
-{{ use: component-rect-layout-width-height(
+{{ use: partial-rect-layout-width-height(
     componentName="漏斗图",
     defaultLeft=80,
     defaultTop=60,

@@ -112,7 +112,7 @@ Notes: User-defined tool name could only start with `my`, like `myTool1` and `my
 ### saveAsImage(Object)
 Save as image.
 #### type(string) = 'png'
-Format to save the image in, which supports`'png'` and `'jpeg'`.
+File suffix of the image saved. If the `renderer` is set to be `'canvas'` when it is [inited](api.html#echarts.init) (default), then `'png'` (default) and `'jpeg'` are supported. If `renderer` is `svg`, then only `'svg'` is supported for `type`.
 #### name(string)
 Name to save the image, whose default value is [title.text](~title.text).
 #### backgroundColor(Color) = 'auto'
@@ -190,6 +190,9 @@ Color of button text.
 ### dataZoom(Object)
 Data area zooming, which only supports rectangular coordinate by now.
 {{ use: feature-common(title="data area zooming") }}
+
+#### filterMode(string) = 'filter'
+The same meaning as [dataZoom.filterMode](~dataZoom.filterMode).
 
 #### xAxisIndex(number|Array|boolean)
 Defines which [xAxis](~xAxis) should be controlled. By default, it controls all x axes. If it is set to be `false`, then no x axis is controlled. If it is set to be then it controls axis with axisIndex of `3`. If it is set to be `[0, 3]`, it controls the x-axes with axisIndex of `0` and `3`.

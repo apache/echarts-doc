@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/echarts/theme/vintage.js"></script>
+    </head>
+    <body>
+        <style>
+            .chart {
+                width: 500px;
+                height: 300px;
+                margin: 20px 0;
+            }
+            .chart1 {
+                height: 180px;
+            }
+            .bone {
+                color: #aaa;
+                margin: 0 20px;
+            }
+            body {
+                background: #ddd;
+                padding: 20px;
+            }
+        </style>
+
+
+        <div class="bone">
+            <div>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</div>
+            <div>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</div>
+        </div>
+
+        <div id="main0" class="chart"></div>
+
+        <div class="bone">
+            <div>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</div>
+            <div>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</div>
+            <div>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</div>
+            <div>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</div>
+            <div>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</div>
+        </div>
+
+        <div id="main1" class="chart chart1"></div>
+
+        <div class="bone">
+            <div>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</div>
+            <div>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</div>
+        </div>
+
+
+        <script>
+            var dom0 = document.getElementById('main0');
+            var dom1 = document.getElementById('main1');
+
+            var chart0 = echarts.init(dom0, 'vintage');
+            var chart1 = echarts.init(dom1, 'vintage');
+
+            var option0 = {
+                backgroundColor: '#fff',
+                xAxis: [{
+                    type: 'category',
+                    splitLine: {show: false}
+                }, {
+                    type: 'category',
+                    splitLine: {show: false},
+                    gridIndex: 1
+                }],
+                yAxis: [{
+                    splitLine: {show: false}
+                }, {
+                    splitLine: {show: false},
+                    gridIndex: 1
+                }],
+                grid: [{
+                    top: 25,
+                    bottom: '55%'
+                }, {
+                    top: '55%',
+                    bottom: 40
+                }],
+                dataset: {
+                    source: [
+                        ['Jan', 25, 24, 54],
+                        ['Feb', 22, 14, 64],
+                        ['Mar', 42, 39, 43],
+                        ['Apr', 65, 50, 74],
+                        ['May', 34, 25, 94],
+                        ['Jun', 43, 23, 64],
+                        ['Jul', 33, 23, 44],
+                        ['Aug', 23, 13, 30],
+                        ['Sep', 23, 20, 21],
+                        ['Oct', 33, 24, 28],
+                        ['Nov', 39, 33, 34],
+                        ['Dec', 45, 39, 44],
+                    ]
+                },
+                series: [{
+                    type: 'line'
+                }, {
+                    type: 'bar'
+                }, {
+                    type: 'bar',
+                    xAxisIndex: 1,
+                    yAxisIndex: 1
+                }, {
+                    type: 'pie',
+                    center: ['68%', 50],
+                    radius: 25,
+                    labelLine: {
+                        length: 5
+                    },
+                    data: [
+                        {name: 'XX', value: 52},
+                        {name: 'YY', value: 54},
+                        {name: 'ZZ', value: 42}
+                    ]
+                }]
+            };
+
+            var option1 = {
+                backgroundColor: '#fff',
+                xAxis: [{
+                    type: 'category',
+                    splitLine: {show: false}
+                }],
+                yAxis: [{
+                    splitLine: {show: false}
+                }],
+                grid: [{
+                    top: 30,
+                    bottom: 30
+                }],
+                legend: {},
+                dataset: {
+                    source: [
+                        ['Jan', 25, 24, 54],
+                        ['Feb', 22, 14, 64],
+                        ['Mar', 42, 39, 43],
+                        ['Apr', 65, 50, 74],
+                        ['May', 34, 25, 94],
+                        ['Jun', 43, 23, 64],
+                        ['Jul', 33, 23, 44],
+                        ['Aug', 23, 13, 30],
+                        ['Sep', 23, 20, 21],
+                        ['Oct', 33, 24, 28],
+                        ['Nov', 39, 33, 34],
+                        ['Dec', 45, 39, 44],
+                    ]
+                },
+                series: [{
+                    name: 'A',
+                    type: 'bar'
+                }, {
+                    name: 'B',
+                    type: 'bar'
+                }]
+            };
+
+            chart0.setOption(option0);
+            chart1.setOption(option1);
+
+
+        </script>
+
+
+
+    </body>
+</html>

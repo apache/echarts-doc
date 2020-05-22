@@ -1,6 +1,11 @@
 <template>
 <div
-    :class="['doc-content-item-card', 'level-' + depth, isLeaf ? 'leaf' : '']"
+    :class="[
+        'doc-content-item-card',
+        'level-' + depth,
+        isLeaf ? 'leaf' : '',
+        shared.currentPath === nodeData.path ? 'current' : ''
+    ]"
     :id="itemId"
 >
     <div class="hierarchy-line" v-if="expanded"></div>
@@ -112,13 +117,7 @@ export default {
         },
 
         desc() {
-            let parts = this.nodeData.path.split('.');
-            if (parts.length > 1) {
-                // Remove the top page path.
-                // For example: `series-bar.itemStyle` will be `itemStyle`
-                parts = parts.slice(1);
-            }
-            return this.descMap[parts.join('.')];
+            return this.descMap[this.nodeData.path];
         },
 
         parentPath() {
@@ -176,6 +175,10 @@ $hierarchy-guider-color: #C592A0;
     position: relative;
 
     padding: 15px 0;
+
+    &.current {
+        border-top: 1px solid #b03a5b;
+    }
 
     .hierarchy-line {
         position: absolute;
@@ -264,7 +267,7 @@ $hierarchy-guider-color: #C592A0;
 
         .default-value {
             color: #293c55;
-            font-size: 18px;
+            font-size: 16px;
             margin-left: 15px;
             vertical-align: bottom;
             font-weight: normal;
@@ -316,7 +319,7 @@ $hierarchy-guider-color: #C592A0;
     @for $i from 1 through 10 {
         &.level-#{$i + 1} {
 
-            border-top: none;
+            border-top: 1px solid #eee;
             margin-top: 10px;
 
             // .el-button {
@@ -325,7 +328,7 @@ $hierarchy-guider-color: #C592A0;
 
             .guider {
                 vertical-align: middle;
-                width: $children-padding + $card-margin + 9;
+                width: $children-padding + $card-margin + 3;
                 margin-left: -$children-padding - $card-margin - 14;
                 margin-right: 2px;
                 // width: $i * ($children-padding + $card-padding);

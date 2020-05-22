@@ -6,6 +6,12 @@
 
 饼图主要用于表现不同类目的数据在总和中的占比。每个的弧度表示数据数量的比例。
 
+从 ECharts v4.6.0 版本起，我们提供了 `'labelLine'` 与 `'edge'` 两种新的布局方式。详情参见 [label.alignTo](~series-pie.label.alignTo)。
+
+~[900x250](${galleryViewPath}pie-alignTo&reset=1&edit=1)
+
+对于一个图表中有多个饼图的场景，可以使用 [left](~series-pie.left)、[right](~series-pie.right)、[top](~series-pie.top)、[bottom](~series-pie.bottom)、[width](~series-pie.width)、[height](~series-pie.height) 配置每个饼图系列的位置和视口大小。[radius](~series-pie.radius)、[label.margin](~series-pie.label.margin) 等支持百分比的配置项，是相对于该配置项决定的矩形的大小而言的。
+
 **Tip:** 饼图更适合表现数据相对于总数的百分比等关系。如果只是表示不同类目数据间的大小，建议使用 [柱状图](bar)，人们对于微小的弧度差别相比于微小的长度差别更不敏感，或者也可以通过配置 [roseType](~series-pie.roseType) 显示成南丁格尔图，通过半径大小区分数据的大小。
 
 **下面是自定义南丁格尔图的示例：**
@@ -59,6 +65,14 @@
 
 {{ use: partial-cursor }}
 
+{{ use: partial-rect-layout-width-height(
+    componentName="pie chart",
+    defaultLeft=0,
+    defaultTop=0,
+    defaultRight=0,
+    defaultBottom=0
+) }}
+
 ## label(Object)
 {{use:partial-label-desc(name="饼图")}}
 {{use:partial-pie-label(
@@ -67,6 +81,38 @@
     position=true,
     formatter=true
 )}}
+
+### alignTo(string) = 'none'
+
+标签的对齐方式，仅当 `position` 值为 `'outer'` 时有效。
+
+从 ECharts v4.6.0 版本起，我们提供了 `'labelLine'` 与 `'edge'` 两种新的布局方式。
+
++ `'none'`（默认值）：label line 的长度为固定值，分别为 [labelLine.length](~series-pie.labelLine.length) 及 [labelLine.length2](~series-pie.labelLine.length2)。
++ `'labelLine'`：label line 的末端对齐，其中最短的长度由 [labelLine.length2](~series-pie.labelLine.length2) 决定。
++ `'edge'`：文字对齐，文字的边距由 [label.margin](~series-pie.label.margin) 决定。
+
+~[900x250](${galleryViewPath}pie-alignTo&reset=1&edit=1)
+
+### margin(string|number) = '25%'
+
+文字边距，仅当 [label.position](~series-pie.label.position) 为 `'outer'` 并且 [label.alignTo](~series-pie.label.alignTo) 为 `'edge'` 时有效。
+
+~[900x250](${galleryViewPath}doc-example/pie-label-margin&edit=1&reset=1)
+
+通常来说，对于移动端等分辨率较小的情况，`margin` 值设为比较小的值（比如 `10`）能在有限的空间内显示更多文字，而不是被裁剪为 `...`。但是对于分辨率更大的场景，百分比的值可以避免 label line 过长。如果你需要在不同分辨率下使用，建议使用[响应式图表设计](tutorial.html#移动端自适应)为不同的分辨率设置不同的 `margin` 值。
+
+### bleedMargin(number) = 10
+
+文字的出血线大小，超过出血线的文字将被裁剪为 `'...'`。仅当 [label.position](~series-pie.label.position) 为 `'outer'` 并且 [label.alignTo](~series-pie.label.alignTo) 为 `'none'` 或 `'labelLine'` 的情况有效。
+
+~[800x250](${galleryViewPath}doc-example/pie-label-bleedMargin&edit=1&reset=1)
+
+### distanceToLabelLine(number) = 5
+
+文字与 label line 之间的距离。
+
+~[800x250](${galleryViewPath}doc-example/pie-label-distanceToLabelLine&edit=1&reset=1)
 
 ## labelLine(Object)
 标签的视觉引导线样式，在 [label 位置](~series-pie.label.position) 设置为`'outside'`的时候会显示视觉引导线。

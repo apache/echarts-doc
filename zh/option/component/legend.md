@@ -21,7 +21,7 @@ ECharts 3 中单个 echarts 实例中可以存在多个图例组件，会方便�
 
 参见 [滚动图例（垂直）](${galleryEditorPath}pie-legend&edit=1&reset=1) 或 [滚动图例（水平）](${galleryEditorPath}radar2&edit=1&reset=1)。
 
-当使用 `'scroll'` 时，这些使用这些设置进行细节配置：
+当使用 `'scroll'` 时，使用这些设置进行细节配置：
 + [legend.scrollDataIndex](~legend.scrollDataIndex)
 + [legend.pageButtonItemGap](~legend.pageButtonItemGap)
 + [legend.pageButtonGap](~legend.pageButtonGap)
@@ -59,7 +59,7 @@ ECharts 3 中单个 echarts 实例中可以存在多个图例组件，会方便�
 + `'left'`
 + `'right'`
 
-## padding(number) = 5
+## padding(number|Array) = 5
 
 {{ use: partial-padding(componentName="图例")}}
 
@@ -318,6 +318,20 @@ data: [{
 ## animationDurationUpdate(number) = 800
 
 图例翻页时的动画时长。
+
+
+## emphasis(Object)
+
+### selectorLabel(Object)
+
+{{use:partial-label(
+    prefix='###',
+    defaultShowLabel=true,
+    noPosition=true,
+    formatter=false,
+    formatter1d=false
+)}}
+
 
 ## selector(boolean|Array) = false
 

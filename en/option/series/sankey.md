@@ -48,11 +48,7 @@ The gap between any two regtangles in each column of the Sankey diagram.
 
 ## layoutIterations(number) = 32
 
-The iterations of layout, which is used to continuously optimize the positions of nodes in Sankey diagram, decreasing the overlapping between nodes and edges.
-
-The default iterations of layout: `32`.
-
-The test shows that iterations of layout could not be less than the default value.
+The iterations of layout, which is used to iteratively optimize the position of the nodes and edges in the Sankey diagram to reduce the overlapping between nodes and edges. The default value is `32`. If you want the order of the nodes in the chart to be the same with the order in the original [data](~series-sankey.data), you can set the value to be `0`.
 
 ## orient(string) = 'horizontal'
 
@@ -197,6 +193,10 @@ data: [{
 ### name(string)
 
 The name of the node.
+
+### value(number)
+
+The value of the node, which can used to determine the height of the node in horizontal orient or width in the vertical orient.
 
 ### depth(number)
 

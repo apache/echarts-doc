@@ -38,10 +38,11 @@
 <script>
 
 import {getOutlineAsync} from '../docHelper';
-import {store} from '../store';
+import {store, isOptionDoc} from '../store';
 import Vue from 'vue';
 import {directTo} from '../route';
-import VueScrollTo from 'vue-scrollto';
+import scrollIntoView from 'scroll-into-view';
+
 
 function joinPath(a, b, connector) {
     return a ? (a + connector + b) : b;
@@ -121,8 +122,7 @@ export default {
 
     computed: {
         isOption() {
-            return this.shared.docType === 'option'
-                || this.shared.docType === 'option-gl';
+            return isOptionDoc();
         }
     },
 
@@ -176,10 +176,14 @@ export default {
                 let nodeRect = node.getBoundingClientRect();
                 let rootRect = this.$el.getBoundingClientRect();
                 if (nodeRect.top > rootRect.bottom || nodeRect.bottom < rootRect.top) {   // Not visible
-                    VueScrollTo.scrollTo(node, 500, {
-                        offset: -20,
-                        easing: 'ease-in-out',
-                        container: this.$el
+                    // node.scrollIntoView(true, {
+                    //     behavior: 'smooth'
+                    // });
+                    scrollIntoView(node, {
+                        time: 500,
+                        align: {
+                            top: 0.1
+                        }
                     });
                 }
             }

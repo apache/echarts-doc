@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/echarts/theme/vintage.js"></script>
+    </head>
+    <body>
+        <style>
+            .chart {
+                width: 650px;
+                height: 300px;
+                margin: 200px auto;
+            }
+            .chart1 {
+                height: 180px;
+            }
+            .bone {
+                color: #aaa;
+                margin: 0 20px;
+            }
+            body {
+                /* background: #ddd; */
+                padding: 20px;
+            }
+            .chart-coord-sys {
+                width: 400px;
+                height: 400px;
+            }
+            .chart-coord-sys2 {
+                width: 500px;
+                height: 400px;
+            }
+        </style>
+
+
+
+        <div id="series-0" class="chart"></div>
+        <div id="series-1" class="chart"></div>
+        <div id="components" class="chart"></div>
+        <div id="locate" class="chart"></div>
+        <div id="coord-sys0" class="chart chart-coord-sys"></div>
+        <div id="coord-sys1" class="chart chart-coord-sys"></div>
+        <div id="coord-sys2" class="chart chart-coord-sys2"></div>
+
+
+
+
+
+
+
+
+        <script>
+            var dom0 = document.getElementById('series-0');
+
+            var chart0 = echarts.init(dom0, 'vintage');
+
+            var option0 = {
+                backgroundColor: '#fff',
+                xAxis: [{
+                    type: 'category',
+                    splitLine: {show: false}
+                }],
+                yAxis: [{
+                    splitLine: {show: false}
+                }],
+                grid: [{
+                }],
+                // legend: {},
+                dataset: {
+                    source: [
+                        ['Jan', 34, 20, 54],
+                        ['Feb', 28, 14, 64],
+                        ['Mar', 45, 32, 43],
+                        ['Apr', 69, 46, 74],
+                        ['May', 39, 24, 94],
+                        ['Jun', 43, 23, 64],
+                        ['Jul', 33, 23, 44],
+                        ['Aug', 23, 13, 30],
+                        ['Sep', 23, 16, 21],
+                        ['Oct', 33, 20, 28],
+                        ['Nov', 39, 24, 34],
+                        ['Dec', 22, 15, 25],
+                    ]
+                },
+                series: [{
+                    name: 'series0',
+                    type: 'line'
+                }, {
+                    name: 'series1',
+                    type: 'bar'
+                }, {
+                    name: 'series2',
+                    type: 'pie',
+                    center: ['65%', 60],
+                    radius: 35,
+                    data: [
+                        {name: 'XX', value: 52},
+                        {name: 'YY', value: 54},
+                        {name: 'ZZ', value: 42}
+                    ]
+                }]
+            };
+
+            chart0.setOption(option0);
+
+
+        </script>
+
+
+
+
+
+
+
+        <script>
+            var dom = document.getElementById('series-1');
+
+            var chart = echarts.init(dom, 'vintage');
+
+            var option = {
+                backgroundColor: '#fff',
+                xAxis: [{
+                    type: 'category',
+                    splitLine: {show: false}
+                }],
+                yAxis: [{
+                    splitLine: {show: false}
+                }],
+                dataset: {
+                    source: [
+                        ['Jan', 34, 20, 'XX', 52],
+                        ['Feb', 28, 14, 'YY', 54],
+                        ['Mar', 45, 32, 'ZZ', 42],
+                        ['Apr', 69, 46],
+                        ['May', 39, 24],
+                        ['Jun', 43, 23],
+                        ['Jul', 33, 23],
+                        ['Aug', 23, 13],
+                        ['Sep', 23, 16],
+                        ['Oct', 33, 20],
+                        ['Nov', 39, 24],
+                        ['Dec', 22, 15],
+                    ]
+                },
+                series: [{
+                    type: 'line',
+                    encode: {x:0, y: 1}
+                }, {
+                    type: 'bar',
+                    encode: {x:0, y: 2}
+                }, {
+                    type: 'pie',
+                    center: ['65%', 60],
+                    radius: 35,
+                    encode: {
+                        itemName: 3,
+                        value: 4
+                    }
+                }]
+            };
+
+            chart.setOption(option);
+
+
+        </script>
+
+
+
+
+
+        <script>
+            var dom0 = document.getElementById('components');
+
+            var chart0 = echarts.init(dom0, 'vintage');
+
+            var option0 = {
+                backgroundColor: '#fff',
+                xAxis: [{
+                    type: 'time',
+                    splitLine: {show: false},
+                    axisLabel: {
+                        formatter: function (params) {
+                            return echarts.format.formatTime('yyyy-MM-dd', params);
+                        }
+                    }
+                }],
+                yAxis: [{
+                    splitLine: {show: false}
+                }],
+                grid: [{
+                    bottom: 85,
+                    right: 100
+                }],
+                legend: {
+                    data: ['MGT', 'QEL']
+                },
+                toolbox: {
+                    right: 5,
+                    feature: {
+                        dataZoom: {},
+                        restore: {},
+                        saveAsImage: {}
+                    }
+                },
+                dataZoom: {
+                    showDetail: true
+                },
+                visualMap: {
+                    type: 'continuous',
+                    dimension: 3,
+                    seriesIndex: 1,
+                    min: 0,
+                    max: 1000,
+                    inRange: {
+                        color: ['#E5F9E0', '#2F9C95']
+                    },
+                    outOfRange: {
+                        color: '#aaa'
+                    },
+                    calculable: true,
+                    right: 5,
+                    top: 'center'
+                },
+                tooltip: {
+                    trigger: 'axis'
+                },
+                dataset: {
+                    source: [
+                        ['2012-09-01', 34, 20, 623],
+                        ['2012-09-02', 28, 14, 414],
+                        ['2012-09-03', 45, 32, 355],
+                        ['2012-09-04', 69, 46, 471],
+                        ['2012-09-05', 39, 24, 519],
+                        ['2012-09-06', 43, 23, 813],
+                        ['2012-09-07', 33, 23, 901],
+                        ['2012-09-08', 23, 13, 791],
+                        ['2012-09-09', 23, 16, 413],
+                        ['2012-09-10', 33, 20, 215],
+                        ['2012-09-11', 39, 24, 316],
+                        ['2012-09-12', 42, 32, 613],
+                        ['2012-09-13', 34, 25, 812],
+                        ['2012-09-14', 30, 21, 710],
+                        ['2012-09-15', 22, 15, 601],
+                        ['2012-09-16', 19, 11, 400],
+                        ['2012-09-17', 24, 15, 231],
+                        ['2012-09-18', 29, 19, 124],
+                        ['2012-09-19', 35, 23, 301],
+                        ['2012-09-20', 21, 10, 401],
+                        ['2012-09-21', 26, 19, 501],
+                        ['2012-09-22', 43, 32, 601],
+                        ['2012-09-23', 34, 21, 701]
+                    ]
+                },
+                series: [{
+                    name: 'MGT',
+                    type: 'line',
+                    showSymbol: false,
+                    encode: {
+                        x: 0,
+                        y: 1
+                    }
+                }, {
+                    name: 'QEL',
+                    type: 'bar',
+                    encode: {
+                        x: 0,
+                        y: 2
+                    }
+                }]
+            };
+
+            chart0.setOption(option0);
+        </script>
+
+
+
+
+
+
+
+        <script>
+            var dom0 = document.getElementById('locate');
+
+            var chart0 = echarts.init(dom0, 'vintage');
+
+            var option0 = {
+                backgroundColor: '#eee',
+                xAxis: [{
+                    type: 'time',
+                    splitLine: {show: false}
+                }],
+                yAxis: [{
+                    splitLine: {show: false}
+                }],
+                grid: [{
+                    left: 130,
+                    right: '30%',
+                    height: '40%',
+                    bottom: 110
+                }],
+                dataset: {
+                    source: [
+                        ['2012-09-01', 34, 20, 623],
+                        ['2012-09-02', 28, 14, 414],
+                        ['2012-09-03', 45, 32, 355],
+                        ['2012-09-04', 69, 46, 471],
+                        ['2012-09-05', 39, 24, 519],
+                        ['2012-09-06', 43, 23, 813],
+                        ['2012-09-07', 33, 23, 901],
+                        ['2012-09-08', 23, 13, 791],
+                        ['2012-09-09', 23, 16, 413],
+                        ['2012-09-10', 33, 20, 215],
+                        ['2012-09-11', 39, 24, 316],
+                        ['2012-09-12', 42, 32, 613],
+                        ['2012-09-13', 34, 25, 812],
+                        ['2012-09-14', 30, 21, 710],
+                        ['2012-09-15', 22, 15, 601],
+                        ['2012-09-16', 19, 11, 400],
+                        ['2012-09-17', 24, 15, 231],
+                        ['2012-09-18', 29, 19, 124],
+                        ['2012-09-19', 35, 23, 301],
+                        ['2012-09-20', 21, 10, 401],
+                        ['2012-09-21', 26, 19, 501],
+                        ['2012-09-22', 43, 32, 601],
+                        ['2012-09-23', 34, 21, 701]
+                    ]
+                },
+                series: [{
+                    name: 'MGT',
+                    type: 'line',
+                    showSymbol: false,
+                    encode: {
+                        x: 0,
+                        y: 1
+                    }
+                }, {
+                    name: 'QEL',
+                    type: 'bar',
+                    encode: {
+                        x: 0,
+                        y: 2
+                    }
+                }]
+            };
+
+            chart0.setOption(option0);
+        </script>
+
+
+
+
+
+        <script>
+            var dom0 = document.getElementById('coord-sys0');
+
+            var chart0 = echarts.init(dom0, 'vintage');
+
+            var option = {
+                color: ['blue'],
+                backgroundColor: '#fff',
+                xAxis: {},
+                yAxis: {},
+                series: {
+                    type: 'scatter',
+                    data: [
+                        [13, 44],
+                        [51, 51],
+                        [51, 32],
+                        [67, 19],
+                        [19, 33]
+                    ]
+                }
+            }
+
+            chart0.setOption(option);
+
+
+        </script>
+
+
+
+
+
+
+        <script>
+            var dom0 = document.getElementById('coord-sys1');
+
+            var chart0 = echarts.init(dom0, 'vintage');
+
+            var option = {
+                color: ['#f0cf85', '#61a0a8'],
+                backgroundColor: '#fff',
+                xAxis: {
+                    axisLine: {lineStyle: {color: '#aaa'}},
+                    axisLabel: {color: '#000'},
+                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                },
+                yAxis: [
+                    {
+                        splitLine: {show: false},
+                        axisLine: {lineStyle: {width: 4, color: '#f0cf85'}},
+                        axisLabel: {color: '#000'}
+                    },
+                    {
+                        splitLine: {show: false},
+                        axisLine: {lineStyle: {width: 4, color: '#61a0a8'}},
+                        axisLabel: {color: '#000'}
+                    }
+                ],
+                series: [{
+                    type: 'bar',
+                    data: [242, 344, 324, 475, 264, 467, 531],
+                    barWidth: '60%'
+                }, {
+                    type: 'line',
+                    data: [44, 51, 32, 19, 33, 24, 12],
+                    lineStyle: {width: 8},
+                    symbolSize: 12,
+                    yAxisIndex: 1
+                }]
+            };
+
+            chart0.setOption(option);
+
+
+        </script>
+
+
+
+
+
+        <script>
+            var dom0 = document.getElementById('coord-sys2');
+
+            var chart0 = echarts.init(dom0, 'vintage');
+
+            var option = {
+                dataset: {
+                    source: [
+                        ['Jan', 25, 54, 24],
+                        ['Feb', 22, 64, 14],
+                        ['Mar', 62, 43, 39],
+                        ['Apr', 45, 74, 50],
+                        ['May', 34, 94, 25],
+                        ['Jun', 43, 64, 23],
+                        ['Jul', 33, 44, 23],
+                        ['Aug', 23, 30, 13],
+                        ['Sep', 43, 21, 20],
+                        ['Oct', 33, 28, 24],
+                        ['Nov', 39, 34, 33],
+                        ['Dec', 45, 44, 39],
+                    ]
+                },
+                grid: [{
+                    top: 40,
+                    bottom: '58%',
+                    borderColor: '#ccc',
+                    borderWidth: 1,
+                    show: true
+                }, {
+                    top: '58%',
+                    bottom: 40,
+                    borderColor: '#ccc',
+                    borderWidth: 1,
+                    show: true
+                }],
+                xAxis: [{
+                    type: 'category',
+                    splitLine: {show: false},
+                    gridIndex: 0
+                }, {
+                    type: 'category',
+                    splitLine: {show: false},
+                    gridIndex: 1
+                }],
+                yAxis: [{
+                    splitLine: {show: false},
+                    gridIndex: 0
+                }, {
+                    splitLine: {show: false},
+                    gridIndex: 1
+                }],
+                series: [{
+                    type: 'line',
+                    xAxisIndex: 0,
+                    yAxisIndex: 0
+                }, {
+                    type: 'line',
+                    xAxisIndex: 1,
+                    yAxisIndex: 1
+                }, {
+                    type: 'bar',
+                    xAxisIndex: 1,
+                    yAxisIndex: 1
+                }]
+            };
+
+            chart0.setOption(option);
+
+
+        </script>
+
+
+
+
+
+
+
+
+        <template>
+
+
+
+            var dom1 = document.getElementById('id1');
+            var instance1 = echarts.init(dom1);
+            var option1 = {
+              xAxis: [{...}, {...}],
+              yAxis: [{...}, {...}],
+              grid: [{...}, {...}],
+              series: [
+                {type: 'line', data: [...]},
+                {type: 'bar', data: [...]},
+                {type: 'bar', data: [...]},
+                {type: 'pie', data: [...]}
+              }]
+            };
+            instance1.setOption(option1);
+
+
+            var dom2 = document.getElementById('id2');
+            var chart2 = echarts.init(dom2);
+            var option2 = {
+              xAxis: {...},
+              yAxis: {...},
+              grid: {...},
+              series: {type: 'bar', data: [...]}
+            };
+            chart2.setOption(option2);
+
+
+
+            var option = {
+              xAxis: {
+                data: [
+                  'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                  'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+                ]
+              },
+              yAxis: {},
+              series: [{
+                type: 'pie',
+                center: ['65%', 60],
+                radius: 35,
+                data: [
+                  {name: 'XX', value: 52},
+                  {name: 'YY', value: 54},
+                  {name: 'ZZ', value: 42}
+                ]
+              }, {
+                type: 'line',
+                data: [34, 28, 45, 69, 39, 43, 33, 23, 23, 33, 39, 22]
+              }, {
+                type: 'bar',
+                data: [20, 14, 32, 46, 24, 23, 23, 13, 16, 20, 24, 15]
+              }]
+            };
+
+
+
+            var option = {
+              xAxis: {type: 'category'},
+              yAxis: {},
+              dataset: {
+                source: [
+                  [ 'Jan' ,  34 ,  20 ,  'XX' ,  52 ],
+                  [ 'Feb' ,  28 ,  14 ,  'YY' ,  54 ],
+                  [ 'Mar' ,  45 ,  32 ,  'ZZ' ,  42 ],
+                  [ 'Apr' ,  69 ,  46 ],
+                  [ 'May' ,  39 ,  24 ],
+                  [ 'Jun' ,  43 ,  23 ],
+                  [ 'Jul' ,  33 ,  23 ],
+                  [ 'Aug' ,  23 ,  13 ],
+                  [ 'Sep' ,  23 ,  16 ],
+                  [ 'Oct' ,  33 ,  20 ],
+                  [ 'Nov' ,  39 ,  24 ],
+                  [ 'Dec' ,  22 ,  15 ],
+                ]
+              },
+              series: [{
+                type: 'pie',
+                center: ['65%', 60],
+                radius: 35,
+                encode: {itemName: 3, value: 4}
+              }, {
+                type: 'line',
+                encode: {x:0, y: 1}
+              }, {
+                type: 'bar',
+                encode: {x:0, y: 2}
+              }]
+            };
+
+
+
+            var option = {
+              legend: {...},
+              toolbox: {...},
+              tooltip: {...},
+              dataZoom: [{...}, {...}],
+              visualMap: {...},
+              xAxis: [{...}],
+              yAxis: [{...}],
+              grid: [{...}],
+              dataset: {
+                source: [...]
+              },
+              series: [{
+                type: 'line',
+                ...
+              }, {
+                type: 'bar',
+                ...
+              }]
+            };
+
+
+            var option = {
+              grid: {
+                left: 130,
+                right: '30%',
+                height: '40%',
+                bottom: 110
+              },
+              xAxis: {...},
+              yAxis: {...},
+              series: [{...}, {...}]
+            };
+
+
+
+            var option = {
+              xAxis: {},
+              yAxis: {},
+              series: {
+                type: 'scatter',
+                data: [
+                  [13, 44],
+                  [51, 51],
+                  [51, 32],
+                  [67, 19],
+                  [19, 33]
+                ]
+              }
+            }
+
+
+
+            var option = {
+              xAxis: {
+                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+              },
+              yAxis: [
+                {...},
+                {...}
+              ],
+              series: [{
+                type: 'bar',
+                data: [242, 344, 324, 475, 264, 467, 531],
+                yAxisIndex: 0
+              }, {
+                type: 'line',
+                data: [44, 51, 32, 19, 33, 24, 12],
+                yAxisIndex: 1
+              }]
+            };
+
+
+
+            var option = {
+              dataset: {source: [...]},
+              grid: [
+                {top: 40, bottom: '58%'},
+                {top: '58%', bottom: 40}
+              ],
+              xAxis: [
+                {type: 'category', gridIndex: 0},
+                {type: 'category', gridIndex: 1}
+              ],
+              yAxis: [
+                {type: 'value', gridIndex: 0},
+                {type: 'value', gridIndex: 1}
+              ],
+              series: [{
+                type: 'line',
+                xAxisIndex: 0,
+                yAxisIndex: 0
+              }, {
+                type: 'line',
+                xAxisIndex: 1,
+                yAxisIndex: 1
+              }, {
+                type: 'bar',
+                xAxisIndex: 1,
+                yAxisIndex: 1
+              }]
+            };
+        </template>
+
+    </body>
+</html>

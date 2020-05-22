@@ -67,11 +67,11 @@ The default value is decided by:
 
 Specify bar width. Absolute value (like `10`) or percentage (like `'20%'`, according to band width) can be used. Auto adapt by default.
 
-## barMinWidth(number)
+## barMinWidth(number|string)
 
 Specify bar min width. Absolute value (like `10`) or percentage (like `'20%'`, according to band width) can be used. Auto adapt by default.
 
-## barMaxWidth(number)
+## barMaxWidth(number|string)
 
 Specify bar max width. Absolute value (like `10`) or percentage (like `'20%'`, according to band width) can be used. Auto adapt by default.
 
@@ -203,6 +203,11 @@ Emphasis style of a candle box.
     hasCoord=true,
     hasType=true
 )}}
+
+{{use: partial-clip(
+    prefix="#",
+    version="4.5.0"
+) }}
 
 {{use:partial-z-zlevel(
     prefix="#",
