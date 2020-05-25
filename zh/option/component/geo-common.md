@@ -91,8 +91,10 @@ boundingCoords: [
 
 #${prefix} nameProperty(string) = 'name'
 
+{{ use: partial-version(version="4.8.0") }}
+
 默认是 `'name'`，针对 GeoJSON 要素的自定义属性名称，作为主键用于关联数据点和 GeoJSON 地理要素。
-例如： 
+例如：
 ```js
 {
     nameProperty: 'NAME', // 数据点中的 name：Alabama 会关联到 GeoJSON 中 NAME 属性值为 Alabama 的地理要素{"type":"Feature","id":"01","properties":{"NAME":"Alabama"}, "geometry": { ... }}

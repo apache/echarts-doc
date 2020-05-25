@@ -1,3 +1,3 @@
 {{ target: partial-version }}
 
-> 从 ${version} 开始支持
+> 从 `v${version}` 开始支持

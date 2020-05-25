@@ -368,7 +368,7 @@ min: function (value) {
 }
 ```
 
-其中 `value` 是一个包含 `min` 和 `max` 的对象，分别表示数据的最大最小值，这个函数应该返回坐标轴的最小值。
+其中 `value` 是一个包含 `min` 和 `max` 的对象，分别表示数据的最大最小值，这个函数可返回坐标轴的最小值，也可返回 `null`/`undefined` 来表示“自动计算最小值”（返回 `null`/`undefined` 从 `v4.8.0` 开始支持）。
 
 #${prefix} max(number|string|Function) = null
 
@@ -388,7 +388,7 @@ max: function (value) {
 }
 ```
 
-其中 `value` 是一个包含 `min` 和 `max` 的对象，分别表示数据的最大最小值，这个函数应该返回坐标轴的最大值。
+其中 `value` 是一个包含 `min` 和 `max` 的对象，分别表示数据的最大最小值，这个函数可返回坐标轴的最大值，也可返回 `null`/`undefined` 来表示“自动计算最大值”（返回 `null`/`undefined` 从 `v4.8.0` 开始支持）。
 
 #${prefix} scale(boolean) = false
 

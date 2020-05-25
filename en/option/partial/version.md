@@ -1,3 +1,3 @@
 {{ target: partial-version }}
 
-> Since ${version}
+> Since `v${version}`

@@ -389,6 +389,8 @@ min: function (value) {
 }
 ```
 
+`value` is an object, containing the `min` value and `max` value of the data. This function should return the min value of axis, or return `null`/`undefined` to make echarts use the auto calculated min value (`null`/`undefined` return is only supported since `v4.8.0`).
+
 #${prefix} max(number|string|Function) = null
 
 The maximum value of axis.
@@ -405,6 +407,9 @@ max: function (value) {
     return value.max - 20;
 }
 ```
+
+`value` is an object, containing the `min` value and `max` value of the data. This function should return the max value of axis, or return `null`/`undefined` to make echarts use the auto calculated max value (`null`/`undefined` return is only supported since `v4.8.0`).
+
 
 #${prefix} scale(boolean) = false
 

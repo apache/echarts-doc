@@ -512,7 +512,7 @@ Shows loading animation. You can call this interface manually before data is loa
 
 + `opts`
 
-    Optional; configuration item of loading animation, which is related to `type`. Following shows the default configuration item :
+    Optional; configuration item of loading animation, which is related to `type`. Following shows the available configuration items and their default values:
 
     ```js
 default: {
@@ -520,7 +520,16 @@ default: {
     color: '#c23531',
     textColor: '#000',
     maskColor: 'rgba(255, 255, 255, 0.8)',
-    zlevel: 0
+    zlevel: 0,
+
+    // Font size. Available since `v4.8.0`.
+    fontSize: 12,
+    // Show an animated "spinner" or not. Available since `v4.8.0`.
+    showSpinner: true,
+    // Radius of the "spinner". Available since `v4.8.0`.
+    spinnerRadius: 10,
+    // Line width of the "spinner". Available since `v4.8.0`.
+    lineWidth: 5
 }
     ```
 

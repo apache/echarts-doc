@@ -93,8 +93,10 @@ Name mapping for customized areas. For example:
 
 #${prefix} nameProperty(string) = 'name'
 
+{{ use: partial-version(version="4.8.0") }}
+
 customized property key for GeoJSON feature. By default, 'name' is used as primary key to identify GeoJSON feature.
-For example: 
+For example:
 ```js
 {
     nameProperty: 'NAME', // key to connect following data point to GeoJSON region {"type":"Feature","id":"01","properties":{"NAME":"Alabama"}, "geometry": { ... }}

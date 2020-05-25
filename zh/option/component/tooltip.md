@@ -70,7 +70,7 @@
 
 ## appendToBody(boolean) = false
 
-> 从 4.7.0 开始支持。
+{{ use: partial-version(version="4.7.0") }}
 
 是否将 tooltip 的 DOM 节点添加为 HTML 的 `<body>` 的子节点。只有当 [renderMode](~tooltip.renderMode) 为 `'html'` 是有意义的。
 
