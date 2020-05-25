@@ -1,5 +1,5 @@
 ## v4.8.0
-<div class="time">2020-05-04</div>
+<div class="time">2020-05-25</div>
 
 + [Feature] [toolbox] 支持 SVG 渲染模式下 toolbox 下载成 SVG 文件。 [#12144](https://github.com/apache/incubator-echarts/pull/12144) ([Zhang Wenli](https://github.com/Ovilia))
 
