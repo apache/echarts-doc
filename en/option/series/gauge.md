@@ -189,7 +189,8 @@ The text color. Defaults to use [the color of section](~series-gauge.axisLine.li
 {{use: partial-marker(
     prefix="#",
     galleryEditorPath=${galleryEditorPath},
-    seriesType="gauge"
+    seriesType="gauge",
+    name="mark point"
 )}}
 
 {{use:partial-animation(prefix="#")}}

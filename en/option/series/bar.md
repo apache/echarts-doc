@@ -151,7 +151,8 @@ The style setting of the text label in a single bar.
     galleryEditorPath=${galleryEditorPath},
     seriesType="bar",
     hasCoord=true,
-    hasType=true
+    hasType=true,
+    name="mark point"
 )}}
 
 {{use:partial-clip(

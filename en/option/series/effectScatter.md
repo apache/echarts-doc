@@ -49,6 +49,8 @@ The brush type for ripples. options: `'stroke'` and `'fill'`.
 )}}
 
 {{ use:partial-symbol(
+    name="effectScatter",
+    seriesType="effectScatter",
     defaultSymbol="'circle'",
     defaultSymbolSize=10,
     prefix="#",
@@ -110,6 +112,7 @@ The brush type for ripples. options: `'stroke'` and `'fill'`.
 ) }}
 
 {{ use:partial-symbol(
+    seriesType="effectScatter",
     defaultSymbol="'circle'",
     defaultSymbolSize=4,
     prefix="##",
@@ -144,7 +147,8 @@ The brush type for ripples. options: `'stroke'` and `'fill'`.
     prefix="#",
     seriesType="effectScatter",
     hasCoord=true,
-    hasType=true
+    hasType=true,
+    name="mark point"
 )}}
 
 
