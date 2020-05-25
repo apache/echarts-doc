@@ -322,6 +322,8 @@ Duration of the page scroll animation.
 
 ### selectorLabel(Object)
 
+{{ use: partial-version(version = "4.4.0") }}
+
 {{use:partial-label(
     prefix='###',
     defaultShowLabel=true,
@@ -332,6 +334,8 @@ Duration of the page scroll animation.
 
 
 ## selector(boolean|Array) = false
+
+{{ use: partial-version(version = "4.4.0") }}
 
 The selector button in the legend component. Currently includes both a full selection and an inverse selection. The selector button doesn't display by default, the user can manually configure it.
 
@@ -359,6 +363,8 @@ selector: ['all', 'inverse']
 
 ## selectorLabel(Object)
 
+{{ use: partial-version(version = "4.4.0") }}
+
 The text label style of the selector button, which is displayed by default.
 
 {{use:partial-label(
@@ -371,12 +377,18 @@ The text label style of the selector button, which is displayed by default.
 
 ## selectorPosition(string) = 'auto'
 
+{{ use: partial-version(version = "4.4.0") }}
+
 The position of the selector button, which can be placed at the end or start of the legend component, the corresponding values are `'end'` and `'start'`. By default, when the legend is laid out horizontally, the selector is placed at the end of it, and when the legend is laid out vertically, the selector is placed at the start of it.
 
 ## selectorItemGap(number) = 7
 
+{{ use: partial-version(version = "4.4.0") }}
+
 The gap between the selector button.
 
 ## selectorButtonGap(number) = 10
+
+{{ use: partial-version(version = "4.4.0") }}
 
 The gap between selector button and legend component.

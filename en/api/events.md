@@ -264,7 +264,11 @@ See [unfocusNodeAdjacency](~action.graph.unfocusNodeAdjacency).
 
 ## brush(Event)
 
-Event triggered after action [brush](~action.brush) dispatched.
+Event triggered after action [brush](~action.brush.brush) dispatched.
+
+## brushEnd(Event)
+{{ use: partial-version(version = "4.5.0") }}
+Event triggered after action [brushEnd](~action.brush.brushEnd) dispatched.
 
 
 ## brushselected(Event)

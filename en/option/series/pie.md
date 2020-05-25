@@ -241,6 +241,7 @@ Initial animation type.
 + `'scale'` Scale animation. You can use it with `animationEasing='elasticOut'` to have popup effect.
 
 ## animationTypeUpdate(string) = 'transition'
+{{ use: partial-version(version = "4.4.0") }}
 Animation type when data updates.
 + `'transition'` Changing start and end angle of each sector from the old value to new value.
 + `'expansion'` The whole pie expands again.

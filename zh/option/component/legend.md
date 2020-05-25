@@ -324,6 +324,8 @@ data: [{
 
 ### selectorLabel(Object)
 
+{{ use: partial-version(version = "4.4.0") }}
+
 {{use:partial-label(
     prefix='###',
     defaultShowLabel=true,
@@ -334,6 +336,8 @@ data: [{
 
 
 ## selector(boolean|Array) = false
+
+{{ use: partial-version(version = "4.4.0") }}
 
 图例组件中的选择器按钮，目前包括全选和反选两种功能。默认不显示，用户可手动开启，也可以手动配置每个按钮的标题。
 
@@ -361,6 +365,8 @@ selector: ['all', 'inverse']
 
 ## selectorLabel(Object)
 
+{{ use: partial-version(version = "4.4.0") }}
+
 选择器按钮的文本标签样式，默认显示。
 
 {{use:partial-label(
@@ -373,12 +379,18 @@ selector: ['all', 'inverse']
 
 ## selectorPosition(string) = 'auto'
 
+{{ use: partial-version(version = "4.4.0") }}
+
 选择器的位置，可以放在图例的尾部或者头部，对应的值分别为 `'end'` 和 `'start'`。默认情况下，图例横向布局的时候，选择器放在图例的尾部；图例纵向布局的时候，选择器放在图例的头部。
 
 ## selectorItemGap(number) = 7
 
+{{ use: partial-version(version = "4.4.0") }}
+
 选择器按钮之间的间隔。
 
 ## selectorButtonGap(number) = 10
+
+{{ use: partial-version(version = "4.4.0") }}
 
 选择器按钮与图例组件之间的间隔。

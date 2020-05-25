@@ -23,7 +23,7 @@
 ) }}
 
 ## roundCap(boolean) = false
-
+{{ use: partial-version(version = "4.5.0") }}
 是否在环形柱条两侧使用圆弧效果。
 
 仅对极坐标系柱状图有效。

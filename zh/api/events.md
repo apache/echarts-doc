@@ -269,7 +269,11 @@ chart.on('axisareaselected', function () {
 
 ## brush(Event)
 
-选框添加事件。即发出 [brush](~action.brush) action 得到的事件。
+“选框正在添加”事件。即发出 [brush action](~action.brush.brush) 得到的事件。
+
+## brushEnd(Event)
+{{ use: partial-version(version = "4.5.0") }}
+“选框添加完毕”事件。即发出 [brushEnd action](~action.brush.brushEnd) 得到的事件。
 
 ## brushselected(Event)
 

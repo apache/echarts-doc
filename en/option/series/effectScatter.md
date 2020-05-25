@@ -29,6 +29,7 @@ When to show the effect.
 Related configurations about ripple effect.
 
 ### color(string)
+{{ use: partial-version(version = "4.4.0") }}
 Color of the ripple rings. The default value is the color of scatter.
 
 ### period(number) = 4

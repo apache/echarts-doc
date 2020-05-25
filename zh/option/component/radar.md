@@ -53,6 +53,10 @@ formatter: function (value, indicator) {
 
 指示器名称和指示器轴的距离。
 
+## axisType(string) = 'value'
+{{ use: partial-version(version = "4.5.0") }}
+{{ use: partial-axis-type-content() }}
+
 ## splitNumber(number) = 5
 
 指示器轴的分割段数。

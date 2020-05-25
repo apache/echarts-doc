@@ -92,6 +92,12 @@ edgeLength: [10, 50]
 ### layoutAnimation(boolean) = true
 因为力引导布局会在多次迭代后才会稳定，这个参数决定是否显示布局的迭代动画，在浏览器端节点数据较多（>100）的时候不建议关闭，布局过程会造成浏览器假死。
 
+### friction(number) = 0.6
+{{ use: partial-version(version = "4.5.0") }}
+这个参数能减缓节点的移动速度。取值范围 0 到 1。
+
+但是仍然是个试验性的参数，参见 [#11024](https://github.com/apache/incubator-echarts/issues/11024)。
+
 ## roam(boolean|string) = false
 {{ use: partial-roam }}
 
@@ -327,6 +333,10 @@ links: [{
 
 ### symbolSize(Array|string)
 边两端的标记大小，可以是一个数组分别指定两端，也可以是单个统一指定。
+
+### ignoreForceLayout(boolean) = false
+{{ use: partial-version(version = "4.5.0") }}
+使此边不进行力导图布局的计算。
 
 ## edges(Array)
 别名，同 [links](~series-graph.links)

@@ -240,6 +240,7 @@
 + `'scale'` 缩放效果，配合设置 `animationEasing='elasticOut'` 可以做成 popup 的效果。
 
 ## animationTypeUpdate(string) = 'transition'
+{{ use: partial-version(version = "4.4.0") }}
 更新数据时的动画效果，可选：
 + `'transition'` 通过改变起始和终止角度，从之前的数据过渡到新的数据。
 + `'expansion'` 数据将整体重新沿圆弧展开。

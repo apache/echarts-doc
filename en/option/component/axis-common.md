@@ -304,24 +304,29 @@ SplitArea color could also be set in color array, which the split lines would ta
 
 
 
-{{target: axis-common}}
-
-#${prefix} type(string) = ${axisTypeDefault|default('value')}
-
-Type of axis
+{{target: partial-axis-type-content}}
+Type of axis.
 
 Option:
 + `'value'`
     Numerical axis, suitable for continuous data.
 
 + `'category'`
-    Category axis, suitable for discrete category data. Data should only be set via [data](~${componentType}.data) for this type.
+    Category axis, suitable for discrete category data. Category data can be auto retrieved from [series.data](~series.data) or [dataset.source](~dataset.source){{if: ${componentType} }}, or can be specified via [${componentType}.data](~${componentType}.data){{/if}}.
 
 + `'time'`
     Time axis, suitable for continuous time series data. As compared to value axis, it has a better formatting for time and a different tick calculation method. For example, it decides to use month, week, day or hour for tick based on the range of span.
 
 + `'log'`
     Log axis, suitable for log data.
+
+
+{{target: axis-common}}
+
+#${prefix} type(string) = ${axisTypeDefault|default('value')}
+{{use: partial-axis-type-content(
+    componentType=${componentType}
+) }}
 
 {{ if: ${componentType} !== 'angleAxis' }}
 #${prefix} name(string)

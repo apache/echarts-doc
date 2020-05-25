@@ -23,7 +23,7 @@ Bar chart shows different data through the height of a bar, which is used in [re
 ) }}
 
 ## roundCap(boolean) = false
-
+{{ use: partial-version(version = "4.5.0") }}
 If to add round caps at the end of the bar sectors. Valid only for bar series on polar coordinates.
 
 ~[800x500](${galleryViewPath}polar-roundCap&reset=1&edit=1)

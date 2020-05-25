@@ -351,7 +351,8 @@ Event [unfocusNodeAdjacency](~event.unfocusNodeAdjacency) will be thrown finally
 
 ### brush
 
-This action sets select-boxes (areas) in this chart. For example:
+This action is dispatched when the "brush" behavior is performing.
+It sets select-boxes (areas) in this chart. For example:
 
 ```javascript
 myChart.dispatchAction({
@@ -408,6 +409,11 @@ The difference between `range` and `coordRange` is:
 + If the area is "coordinate system area" (i.e., `geoIndex` or `xAxisIndex` or `yAxisIndex` is specified), we should use `coordRange`.
 + The unit of `range` is "pixel", while the unit of `coordRange` should be the save as the unit of the coordinate system. For example, in geo coordinate system, `coordRange` should be [`longitude`, `latitude`], and in cartesian, it should be [`axis A value`, `axis B value`, `axis C value`, ...].
 
+
+### brushEnd
+{{ use: partial-version(version = "4.5.0") }}
+This action is dispatched when the "brush" behavior finished.
+The parameters are the same as [action brush](~action.brush.brush).
 
 
 ### takeGlobalCursor

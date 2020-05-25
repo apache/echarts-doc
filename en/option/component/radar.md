@@ -53,6 +53,10 @@ formatter: function (value, indicator) {
 
 Distance between the indicator's name and axis.
 
+## axisType(string) = 'value'
+{{ use: partial-version(version = "4.5.0") }}
+{{ use: partial-axis-type-content() }}
+
 ## splitNumber(number) = 5
 
 Segments of indicator axis.
