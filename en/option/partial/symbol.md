@@ -29,7 +29,7 @@ The first parameter `value` is the value in [data](~series-${seriesType}.data), 
 
 #${prefix} symbolRotate(number{{ if: ${hasCallback} }}|Function{{ /if}})
 
-Rotate degree of ${name} symbol. Note that when `symbol` is set to be `'arrow'` in `markLine`, `symbolRotate` value will be ignored, and compulsively use tangent angle.
+Rotate degree of ${name} symbol. The negative value represents clockwise. Note that when `symbol` is set to be `'arrow'` in `markLine`, `symbolRotate` value will be ignored, and compulsively use tangent angle.
 
 {{ if: ${hasCallback} }}
 If rotation of symbols needs to be different, you can set with callback function in the following format:

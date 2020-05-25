@@ -48,7 +48,8 @@
 {{ use:partial-symbol(
     defaultSymbol="'circle'",
     defaultSymbolSize=10,
-    prefix="#"
+    prefix="#",
+    hasCallback=true
 ) }}
 
 {{ use: partial-cursor }}

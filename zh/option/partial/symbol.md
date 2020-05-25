@@ -28,7 +28,7 @@ ${name}标记的大小，可以设置成诸如 `10` 这样单一的数字，也�
 
 #${prefix} symbolRotate(number{{ if: ${hasCallback} }}|Function{{ /if}})
 
-${name}标记的旋转角度。注意在 `markLine` 中当 `symbol` 为 `'arrow'` 时会忽略 `symbolRotate` 强制设置为切线的角度。
+${name}标记的旋转角度（而非弧度）。正值表示逆时针旋转。注意在 `markLine` 中当 `symbol` 为 `'arrow'` 时会忽略 `symbolRotate` 强制设置为切线的角度。
 
 {{ if: ${hasCallback} }}
 如果需要每个数据的旋转角度不一样，可以设置为如下格式的回调函数：
