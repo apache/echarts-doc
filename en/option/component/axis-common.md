@@ -180,6 +180,7 @@ Color of axis label is set to be [axisLine.lineStyle.color](~${componentType}.ax
 {{target: partial-axis-common-minor-tick}}
 
 #${prefix} minorTick(Object)
+{{ use: partial-version(version = "4.6.0") }}
 Settings related minor ticks.
 
 Note: `minorTick` is not available in the `cateogry` type axis.
@@ -262,6 +263,7 @@ splitLine: {
 {{target: partial-axis-common-minor-split-line}}
 
 #${prefix} minorSplitLine(Object)
+{{ use: partial-version(version = "4.6.0") }}
 Minor split lines of axis in the [grid](~grid) area。It will align to the [minorTick](~${componentType}.minorTick)
 
 ##${prefix} show(boolean) = ${defaultShow|default(false)}

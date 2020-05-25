@@ -48,13 +48,13 @@
 )}}
 
 ## showBackground(boolean) = false
-
+{{ use: partial-version(version = "4.7.0") }}
 是否显示柱条的背景色。通过 [backgroundStyle](~series-bar.backgroundStyle) 配置背景样式。
 
 ~[800x400](${galleryViewPath}bar-background&reset=1&edit=1)
 
 ## backgroundStyle(Object)
-
+{{ use: partial-version(version = "4.7.0") }}
 每一个柱条的背景样式。需要将 [showBackground](~series-bar.showBackground) 设置为 `true` 时才有效。
 
 ~[800x400](${galleryViewPath}bar-background&reset=1&edit=1)

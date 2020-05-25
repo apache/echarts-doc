@@ -164,6 +164,7 @@ textStyle: {
 {{target: partial-axis-common-minor-tick}}
 
 #${prefix} minorTick(Object)
+{{ use: partial-version(version = "4.6.0") }}
 坐标轴次刻度线相关设置。
 
 注意：次刻度线无法在类目轴（[type](~${componentType}.type): `'category'`）中使用。
@@ -242,6 +243,7 @@ splitLine: {
 {{target: partial-axis-common-minor-split-line}}
 
 #${prefix} minorSplitLine(Object)
+{{ use: partial-version(version = "4.6.0") }}
 坐标轴在 [grid](~grid) 区域中的次分隔线。次分割线会对齐次刻度线 [minorTick](~${componentType}.minorTick)
 
 ##${prefix} show(boolean) = ${defaultShow|default(false)}

@@ -62,6 +62,7 @@
 
 
 ## edgeShape(string) = 'curve'
+{{ use: partial-version(version = "4.7.0") }}
 
 树图在 `正交布局` 下，边的形状。分别有曲线和折线两种，对应的取值是 `curve` 和 `polyline`.
 

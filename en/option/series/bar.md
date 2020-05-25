@@ -46,13 +46,13 @@ If to add round caps at the end of the bar sectors. Valid only for bar series on
 )}}
 
 ## showBackground(boolean) = false
-
+{{ use: partial-version(version = "4.7.0") }}
 Whether to show background behind each bar. Use [backgroundStyle](~series-bar.backgroundStyle) to set background style.
 
 ~[800x400](${galleryViewPath}bar-background&reset=1&edit=1)
 
 ## backgroundStyle(Object)
-
+{{ use: partial-version(version = "4.7.0") }}
 Background style of each bar if [showBackground](~series-bar.showBackground) is set to be `true`.
 
 ~[800x400](${galleryViewPath}bar-background&reset=1&edit=1)

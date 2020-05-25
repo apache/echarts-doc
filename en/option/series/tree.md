@@ -62,6 +62,7 @@ The direction of the `orthogonal` layout in the tree diagram. That means this co
 
 
 # edgeShape(string) = 'curve'
+{{ use: partial-version(version = "4.7.0") }}
 
 The shape of the edge which is under the tree `orthogonal layout`. There are two types of shape, curve and polyline, the corresponding values are `'curve'` and `'polyline'`.
 
