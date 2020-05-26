@@ -175,7 +175,8 @@ Value of data item.
     seriesType="boxplot",
     galleryEditorPath=${galleryEditorPath},
     hasCoord=true,
-    hasType=true
+    hasType=true,
+    name="mark point"
 )}}
 
 {{use:partial-z-zlevel(

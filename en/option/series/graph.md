@@ -346,7 +346,8 @@ Alias of [links](~series-graph.links)
     prefix="#",
     seriesType="graph",
     hasType=true,
-    hasCoord=true
+    hasCoord=true,
+    name="mark point"
 )}}
 
 {{ use: partial-rect-layout-width-height(

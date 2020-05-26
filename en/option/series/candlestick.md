@@ -201,7 +201,8 @@ Emphasis style of a candle box.
     seriesType="candlestick",
     galleryEditorPath=${galleryEditorPath},
     hasCoord=true,
-    hasType=true
+    hasType=true,
+    name="mark point"
 )}}
 
 {{use: partial-clip(

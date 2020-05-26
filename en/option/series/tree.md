@@ -57,7 +57,8 @@ The direction of the `orthogonal` layout in the tree diagram. That means this co
     defaultSymbol="'emptyCircle'",
     defaultSymbolSize=7,
     prefix="#",
-    hasCallback=true
+    hasCallback=true,
+    name="tree node"
 ) }}
 
 

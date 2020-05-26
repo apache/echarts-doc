@@ -4,10 +4,12 @@
 图表标注。
 
 {{ use:partial-symbol(
+    seriesType=${seriesType},
     defaultSymbol="'pin'",
     defaultSymbolSize=50,
     prefix="#" + ${prefix},
-    hasCallback=true
+    hasCallback=true,
+    name=${name}
 ) }}
 
 {{ use: partial-silent(prefix="#" + ${prefix}) }}
@@ -105,7 +107,8 @@ data: [{{if: ${hasType} }}
 标注值，可以不设。
 
 {{ use:partial-symbol(
-    prefix="##" + ${prefix}
+    prefix="##" + ${prefix},
+    seriesType=${seriesType}
 ) }}
 
 ###${prefix} itemStyle(Object)
