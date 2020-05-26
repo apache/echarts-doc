@@ -92,6 +92,28 @@ dispatchAction({
 
 **EVENT:** [legendselectchanged](~events.legendselectchanged)
 
+### legendAllSelect(Action)
+Selects all legends.
+
+```js
+dispatchAction({
+    type: 'legendAllSelect'
+})
+```
+
+**EVENT:** [legendselectall](~events.legendselectall)
+
+### legendInverseSelect(Action)
+Inverses all legends.
+
+```js
+dispatchAction({
+    type: 'legendInverseSelect'
+})
+```
+
+**EVENT:** [legendinverseselect](~events.legendinverseselect)
+
 ### legendScroll(Action)
 Controll the scrolling of legend. It works when [legend.type](option.html#legend.type) is `'scroll'`.
 ```js
