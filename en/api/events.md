@@ -139,7 +139,7 @@ Event emitted after all legends are selected.
 
 ## legendinverseselect(Event)
 **ACTION:** [legendInverseSelect](~action.legend.legendInverseSelect)
-Event emitted after unselecting all legends.
+Event emitted after inversing all legends.
 
 ```js
 {

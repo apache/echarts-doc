@@ -104,7 +104,7 @@ dispatchAction({
 **EVENT:** [legendselectall](~events.legendselectall)
 
 ### legendInverseSelect(Action)
-Unselects all legends.
+Inverses all legends.
 
 ```js
 dispatchAction({
