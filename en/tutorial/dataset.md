@@ -3,7 +3,7 @@
 
 # Dataset
 
-`dataset` component is published since ECharts 4. `dataset` brings convenience in data management separated with styles and enables data reuse by different series. More importantly, is enables data encoding from data to visual, which brings convenience in some scenarios.
+`dataset` component is published since ECharts 4. `dataset` brings convenience in data management separated with styles and enables data reuse by different series. More importantly, it enables data encoding from data to visual, which brings convenience in some scenarios.
 
 Before ECharts 4, data was only able to declared in each series, for example:
 

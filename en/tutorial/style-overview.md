@@ -32,7 +32,7 @@ Since ECharts4, besides the original default theme, ECharts provide another two 
 var chart = echarts.init(dom, 'light');
 ```
 
-或者
+or
 
 ```js
 var chart = echarts.init(dom, 'dark');
