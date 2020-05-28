@@ -194,7 +194,7 @@ function buildChangelog() {
 function buildCodeStandard() {
     // support for Chinese character
     const customRenderer = new marked.Renderer();
-    customRenderer.heading = (text, level, raw) => {
+    customRenderer.heading = function(text, level, raw) {
         const id = raw.toLowerCase().replace(/[^\w\u4e00-\u9fa5]+/g, '-');
         return `<h${level} id="${id}">${text}</h${level}>\n`;
     };
