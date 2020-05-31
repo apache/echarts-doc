@@ -106,7 +106,7 @@ ${name}文字的颜色。
 
 #${prefix} fontStyle(string)='normal'
 
-${name}文字字体的风格
+${name}文字字体的风格。
 
 可选：
 + `'normal'`
@@ -116,7 +116,7 @@ ${name}文字字体的风格
 
 #${prefix} fontWeight(string|number)=${defaultFontWeight|default('normal')}
 
-${name}文字字体的粗细
+${name}文字字体的粗细。
 
 可选：
 + `'normal'`
@@ -128,13 +128,13 @@ ${name}文字字体的粗细
 
 #${prefix} fontFamily(string)='sans-serif'
 
-${name}文字的字体系列
+${name}文字的字体系列。
 
 还可以是 'serif' , 'monospace', 'Arial', 'Courier New', 'Microsoft YaHei', ...
 
 #${prefix} fontSize(number)=${defaultFontSize|default(12)}
 
-${name}文字的字体大小
+${name}文字的字体大小。
 
 
  {{ if: !${noAlign} }}
@@ -188,9 +188,9 @@ ${name}文字的字体大小
 
 文字块背景色。
 
-可以是直接的颜色值，例如：`'#123234'`, `'red'`, `'rgba(0,23,11,0.3)'`。
+可以使用颜色值，例如：`'#123234'`, `'red'`, `'rgba(0,23,11,0.3)'`。
 
-可以支持使用图片，例如：
+也可以直接使用图片，例如：
 
 ```js
 backgroundColor: {

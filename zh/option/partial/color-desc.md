@@ -32,6 +32,6 @@
 > // 纹理填充
 > color: {
 >     image: imageDom, // 支持为 HTMLImageElement, HTMLCanvasElement，不支持路径字符串
->     repeat: 'repeat' // 是否平铺, 可以是 'repeat-x', 'repeat-y', 'no-repeat'
+>     repeat: 'repeat' // 是否平铺，可以是 'repeat-x', 'repeat-y', 'no-repeat'
 > }
 > ```

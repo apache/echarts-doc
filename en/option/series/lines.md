@@ -159,7 +159,8 @@ The line style of this data item.
 {{use: partial-marker(
     prefix="#",
     galleryEditorPath=${galleryEditorPath},
-    seriesType="lines"
+    seriesType="lines",
+    name="mark point"
 )}}
 
 {{use:partial-clip(

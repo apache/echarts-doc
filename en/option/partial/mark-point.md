@@ -4,6 +4,8 @@
 Mark point in a chart.
 
 {{ use:partial-symbol(
+    name=${name},
+    seriesType=${seriesType},
     defaultSymbol="'pin'",
     defaultSymbolSize=50,
     prefix="#" + ${prefix},
@@ -101,7 +103,9 @@ Y position according to container, in pixel.
 Label value, which can be ignored.
 
 {{ use:partial-symbol(
-    prefix="##" + ${prefix}
+    prefix="##" + ${prefix},
+    seriesType=${seriesType},
+    name=${name}
 ) }}
 
 ###${prefix} itemStyle(Object)

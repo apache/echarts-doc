@@ -47,6 +47,7 @@
 )}}
 
 {{ use:partial-symbol(
+    seriesType="effectScatter",
     defaultSymbol="'circle'",
     defaultSymbolSize=10,
     prefix="#",
@@ -111,6 +112,7 @@
 ) }}
 
 {{ use:partial-symbol(
+    seriesType="effectScatter",
     defaultSymbol="'circle'",
     defaultSymbolSize=4,
     prefix="##",

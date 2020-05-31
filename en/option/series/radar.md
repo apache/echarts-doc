@@ -21,6 +21,7 @@ Here is the example of AQI data which is presented in radar chart.
 Index of [radar](~radar) component that radar chart uses.
 
 {{ use:partial-symbol(
+    name="radar",
     seriesType="radar",
     defaultSymbol="'circle'",
     defaultSymbolSize=4,

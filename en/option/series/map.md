@@ -108,7 +108,8 @@ Area color in the map.
     prefix="#",
     seriesType="map",
     galleryEditorPath=${galleryEditorPath},
-    hasCoord=true
+    hasCoord=true,
+    name="mark point"
 )}}
 
 {{ use:partial-silent(

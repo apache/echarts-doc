@@ -6,7 +6,8 @@
     seriesType=${seriesType},
     hasCoord=${hasCoord},
     hasType=${hasType},
-    galleryEditorPath=${galleryEditorPath}
+    galleryEditorPath=${galleryEditorPath},
+    name=${name}
 )}}prefix
 {{use: partial-mark-line(
     prefix=${prefix},

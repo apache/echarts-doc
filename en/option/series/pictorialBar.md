@@ -165,7 +165,8 @@ The style setting of the text label in a single bar.
     galleryEditorPath=${galleryEditorPath},
     seriesType="pictorialBar",
     hasCoord=true,
-    hasType=true
+    hasType=true,
+    name="mark point"
 )}}
 
 {{use:partial-z-zlevel(

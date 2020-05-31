@@ -106,7 +106,8 @@ Style of a single data point. It is valid with [coordinateSystem](~series-heatma
 {{use: partial-marker(
     prefix="#",
     galleryEditorPath=${galleryEditorPath},
-    seriesType="heatmap"
+    seriesType="heatmap",
+    name="mark point"
 )}}
 
 {{use:partial-z-zlevel(

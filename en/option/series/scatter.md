@@ -28,6 +28,7 @@ Whether to enable the animation effect when mouse is on the symbol.
 {{ use: partial-legend-hover-link }}
 
 {{ use:partial-symbol(
+    name="scatter",
     seriesType="scatter",
     defaultSymbol="'circle'",
     defaultSymbolSize=10,
@@ -134,7 +135,8 @@ the style setting about single data point(bubble).
     galleryEditorPath=${galleryEditorPath},
     seriesType="scatter",
     hasCoord=true,
-    hasType=true
+    hasType=true,
+    name="mark point"
 )}}
 
 {{use:partial-clip(

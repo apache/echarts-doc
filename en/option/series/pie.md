@@ -228,7 +228,8 @@ The label configuration of a single sector.
 {{use: partial-marker(
     prefix="#",
     galleryEditorPath=${galleryEditorPath},
-    seriesType="pie"
+    seriesType="pie",
+    name="mark point"
 )}}
 
 {{ use:partial-silent(

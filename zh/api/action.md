@@ -92,6 +92,26 @@ dispatchAction({
 
 **EVENT:** [legendselectchanged](~events.legendselectchanged)
 
+### legendAllSelect(Action)
+将图例全选。
+```js
+dispatchAction({
+    type: 'legendAllSelect'
+})
+```
+
+**EVENT:** [legendselectall](~events.legendselectall)
+
+### legendInverseSelect(Action)
+将图例反选。
+```js
+dispatchAction({
+    type: 'legendInverseSelect'
+})
+```
+
+**EVENT:** [legendinverseselect](~events.legendinverseselect)
+
 ### legendScroll(Action)
 控制图例的滚动。当 [legend.type](option.html#legend.type) 为 `'scroll'` 时有效。
 ```js
