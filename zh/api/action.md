@@ -324,13 +324,14 @@ dispatchAction({
 dispatchAction({
     type: 'focusNodeAdjacency',
 
-    // 使用 seriesId 或 seriesIndex 或 seriesName 来定位 series.
+    // 使用 seriesId 或 seriesIndex 或 seriesName 来指定 series.
     seriesId: 'xxx',
     seriesIndex: 0,
     seriesName: 'nnn',
 
-    // 使用 dataIndex 来定位节点。
-    dataIndex: 12
+    // 使用 dataIndex 来指定目标节点，或者使用 edgeDataIndex 来指定目标边。
+    dataIndex: 12,
+    edgeDataIndex: 5
 })
 ```
 
