@@ -34,7 +34,7 @@ formatter: '{b}: {@score}'
 + 'column'：默认，`dataset` 的列对应于系列，从而 `dataset` 中每一列是一个维度（dimension）。
 + 'row'：`dataset` 的行对应于系列，从而 `dataset` 中每一行是一个维度（dimension）。
 
-参见这个 [示例](http://echarts.baidu.com/examples/editor.html?c=dataset-series-layout-by&theme=lite)
+参见这个 [示例](${galleryEditorPath}dataset-series-layout-by&theme=lite)
 
 {{ target: partial-datasetIndex }}
 

@@ -9,7 +9,7 @@ Why echarts supports `custom series`? There are endless chart types in the world
 **For example, a "x-range" chart is made by custom sereis:**
 ~[800x500](${galleryViewPath}custom-profile&reset=1&edit=1)
 
-**[More samples of custom series](https://ecomfe.github.io/echarts-examples/public/index.html#chart-type-custom)**
+**[More samples of custom series](${websitePath}/examples/en/index.html#chart-type-custom)**
 
 Let's begin the tutorial.
 
@@ -280,12 +280,12 @@ chart.on('click', {element: 'aaa'}, function (params) {
 <h2>(VII) Custom vector shapes</h2>
 
 
-[SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData) is supported, which enables to use shapes that are created in vector tool. See [path](option.html#series-custom.renderItem.return_path), and examples: [icons](https://ecomfe.github.io/echarts-examples/public/index.html?c=custom-calendar-icon), [shapes](https://ecomfe.github.io/echarts-examples/public/index.html?c=custom-gantt-flight).
+[SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData) is supported, which enables to use shapes that are created in vector tool. See [path](option.html#series-custom.renderItem.return_path), and examples: [icons](${galleryEditorPath}custom-calendar-icon), [shapes](${galleryEditorPath}custom-gantt-flight).
 
 
 
 
 <br>
 
-**[More examples about custom series](https://ecomfe.github.io/echarts-examples/public/index.html#chart-type-custom)**
+**[More examples about custom series](${websitePath}/examples/en/index.html#chart-type-custom)**
 
