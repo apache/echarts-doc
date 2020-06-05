@@ -213,7 +213,7 @@
 
 + `Function`
 
-    回调函数，格式如下
+    回调函数，格式如下：
     ```js
     (point: Array, params: Object|Array.<Object>, dom: HTMLDomElement, rect: Object, size: Object) => Array
     ```

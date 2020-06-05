@@ -92,6 +92,28 @@ dispatchAction({
 
 **EVENT:** [legendselectchanged](~events.legendselectchanged)
 
+### legendAllSelect(Action)
+Selects all legends.
+
+```js
+dispatchAction({
+    type: 'legendAllSelect'
+})
+```
+
+**EVENT:** [legendselectall](~events.legendselectall)
+
+### legendInverseSelect(Action)
+Inverses all legends.
+
+```js
+dispatchAction({
+    type: 'legendInverseSelect'
+})
+```
+
+**EVENT:** [legendinverseselect](~events.legendinverseselect)
+
 ### legendScroll(Action)
 Controll the scrolling of legend. It works when [legend.type](option.html#legend.type) is `'scroll'`.
 ```js
@@ -313,13 +335,16 @@ Highlight the specified node and all of its adjacent nodes.
 dispatchAction({
     type: 'focusNodeAdjacency',
 
-    // Use seriesId or seriesIndex or seriesName to location the series.
+    // Use seriesId or seriesIndex or seriesName to specify
+    // the target series.
     seriesId: 'xxx',
     seriesIndex: 0,
     seriesName: 'nnn',
 
-    // Use dataIndex to location the node.
+    // Use either `dataIndex` or `edgeDataIndex` to specify
+    // the target node or target edge.
     dataIndex: 12
+    edgeDataIndex: 5
 })
 ```
 

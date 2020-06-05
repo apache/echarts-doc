@@ -172,7 +172,7 @@ The style of the leaf node in the tree.
 
 ## data(Object)
 
-[series-tree.data](~series-tree.data) the data format is a tree structure，for example：
+[series-tree.data](~series-tree.data) the data format is a tree structure, for example：
 
 ```javascript
 { // note that the outermost layer is an object that represents the root node of the tree.
