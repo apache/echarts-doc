@@ -40,14 +40,7 @@ echarts v3.7 以后，支持了富文本标签，能够：
 ~[340x240](${galleryViewPath}doc-example/text-block-fragment&edit=1&reset=1)
 
 
-<br>
-
----
-
-<br>
-
-
-**文本样式相关的配置项**
+## 文本样式相关的配置项
 
 echarts 提供了丰富的文本标签配置项，包括：
 
@@ -112,13 +105,7 @@ label: {
 > 注意：如果不定义 `rich`，不能指定文字块的 `width` 和 `height`。
 
 
-<br>
-
----
-
-<br>
-
-**文本、文本框、文本片段的基本样式和装饰**
+## 文本、文本框、文本片段的基本样式和装饰
 
 每个文本可以设置基本的字体样式：`fontStyle`、`fontWeight`、`fontSize`、`fontFamily`。
 
@@ -132,13 +119,7 @@ label: {
 ~[700x300](${galleryViewPath}doc-example/text-options&edit=1&reset=1)
 
 
-<br>
-
----
-
-<br>
-
-**标签的位置**
+## 标签的位置
 
 对于折线图、柱状图、散点图等，均可以使用 `label` 来设置标签。标签的相对于图形元素的位置，一般使用 [label.position](option.html#series-scatter.label.position)、[label.distance](option.html#series-scatter.label.distance) 来配置。
 
@@ -148,13 +129,7 @@ label: {
 > 注意：`position` 在不同的图中可取值有所不同。`distance` 并不是在每个图中都支持。详情请参见 [option 文档](option.html)。
 
 
-<br>
-
----
-
-<br>
-
-**标签的旋转**
+## 标签的旋转
 
 某些图中，为了能有足够长的空间来显示标签，需要对标签进行旋转。例如：
 
@@ -164,13 +139,8 @@ label: {
 
 注意，逻辑是，先使用 `align` 和 `verticalAlign` 定位，再旋转。
 
-<br>
 
----
-
-<br>
-
-**文本片段的排版和对齐**
+## 文本片段的排版和对齐
 
 关于排版方式，每个文本片段，可以想象成 CSS 中的 `inline-block`，在文档流中按行放置。
 
@@ -202,13 +172,7 @@ label: {
 ~[800x220](${galleryViewPath}doc-example/text-fragment-align&edit=1&reset=1)
 
 
-<br>
-
----
-
-<br>
-
-**特殊效果：图标、分割线、标题块、简单表格**
+## 特殊效果：图标、分割线、标题块、简单表格
 
 看下面的例子：
 
@@ -278,7 +242,5 @@ rich: {
 ```
 
 简单表格的设定，其实就是给不同行上纵向对应的文本片段设定同样的宽度就可以了。参见本文最开始的 [例子](${galleryViewPath}pie-rich-text&edit=1&reset=1)。
-
-
 
 

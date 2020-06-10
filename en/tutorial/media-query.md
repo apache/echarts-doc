@@ -10,11 +10,10 @@ Besides, sometimes one chart may need to be displayed on both PC and mobile-end,
 To solve this problem, ECharts improved component location algorithm, and implemented responsive ability similar to [CSS Media Query](http://www.w3.org/TR/css3-mediaqueries/).
 
 
-<br>
-<h2>Location and layout of ECharts components</h2>
+## Location and layout of ECharts components
 
 
-Most *component* and *series* follow two locating methods: 
+Most *component* and *series* follow two locating methods:
 
 <br>
 **left/right/top/bottom/width/height locating method:**
@@ -35,7 +34,7 @@ Each of those six parameters can be *absolute value* or *percentage* or *locatio
     + can be set to `top: 'middle'`, for vertically centering.
 
 
-The concept of these six parameters is similar to that in CSS: 
+The concept of these six parameters is similar to that in CSS:
 
 + left: distance to left border of DOM container.
 + right: distance to right border of DOM container.
@@ -77,13 +76,11 @@ Naming of `x/x2/y/y2` in ECharts2 is still compatible, as well as the newly adde
 To be compatible with ECharts2, there may be settings that seems to be odd, e.g.: `left: 'right'`, `left: 'left'`, `top: 'bottom'`, `top: 'top'`, which are equal to: `right: 0`, `left: 0`, `bottom: 0`, `top: 0`, in a more normal expression.
 
 
-
-<br>
-<h2>Media Query</h2>
+## Media Query
 
 [Media Query](http://www.w3.org/TR/css3-mediaqueries/#media1) provides the ability to be responsive with container size.
 
-As shown in the following example, you may drag **the circle in bottom-right corner** to see the legend and series change layout position and method with container size. 
+As shown in the following example, you may drag **the circle in bottom-right corner** to see the legend and series change layout position and method with container size.
 ~[750x600](${galleryViewPath}doc-example/pie-media&edit=1&reset=1)
 
 The following format should be followed if you need to set Media Query in option:
@@ -126,7 +123,7 @@ In the above example, `baseOption` and every option in `media` are all *simple o
 
 **query: **
 
-A `query` is in the following format: 
+A `query` is in the following format:
 
 ```javascript
 {

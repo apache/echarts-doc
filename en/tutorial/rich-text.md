@@ -39,14 +39,7 @@ For example:
 ~[340x240](${galleryViewPath}doc-example/text-block-fragment&edit=1&reset=1)
 
 
-<br>
-
----
-
-<br>
-
-
-**Options about Text**
+## Options about Text
 
 echarts provides plenty of text options, including:
 
@@ -111,14 +104,7 @@ label: {
 > Notice: `width` 和 `height` only work when `rich` specified.
 
 
-
-<br>
-
----
-
-<br>
-
-**Basic Styles of Text, Text Block and Text Fragment**
+## Basic Styles of Text, Text Block and Text Fragment
 
 Basic font style can be set to text: `fontStyle`, `fontWeight`, `fontSize`, `fontFamily`.
 
@@ -132,14 +118,7 @@ For example:
 ~[700x300](${galleryViewPath}doc-example/text-options&edit=1&reset=1)
 
 
-
-<br>
-
----
-
-<br>
-
-**Label Position**
+## Label Position
 
 `label` option can be use in charts like `bar`, `line`, `scatter`, etc. The position of a label, can be specified by [label.position](option.html#series-scatter.label.position)、[label.distance](option.html#series-scatter.label.distance).
 
@@ -149,14 +128,7 @@ For example:
 > Notice, there are different optional values of `position` by different chart types. And `distance` is not supported in every chart. More detailed info can be checked in [option doc](option.html).
 
 
-
-<br>
-
----
-
-<br>
-
-**Label Rotation**
+## Label Rotation
 
 Sometimes label is needed to be rotated. For example:
 
@@ -166,13 +138,8 @@ Sometimes label is needed to be rotated. For example:
 
 Notice, `align` and `verticalAlign` are applied firstly, then rotate.
 
-<br>
 
----
-
-<br>
-
-**Layout and Alignment of Text fragment**
+## Layout and Alignment of Text fragment
 
 To understand the layout rule, every text fragment can be imagined as a `inline-block` dom element in CSS.
 
@@ -205,13 +172,7 @@ For example:
 
 
 
-<br>
-
----
-
-<br>
-
-**Effects: Icon, Horizontal Rule, Title Block, Simple Table**
+## Effects: Icon, Horizontal Rule, Title Block, Simple Table
 
 
 See example:

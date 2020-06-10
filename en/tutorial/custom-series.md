@@ -14,8 +14,7 @@ Why echarts supports `custom series`? There are endless chart types in the world
 Let's begin the tutorial.
 
 
-<br>
-<h2>(I) The method `renderItem`</h2>
+## (I) The method `renderItem`
 
 The snippet of graphic elements rendering should be written in `renderItem` method my developers. For example:
 
@@ -117,8 +116,7 @@ Having `renderItem` provided, 90% of the work of creating custom series has been
 
 
 
-<br>
-<h2>(II) Make the extent of axes fit the data</h2>
+## (II) Make the extent of axes fit the data
 
 There is axes in some coordinate systems, such as [cartesian2d (grid)](option.html#grid)and [polar](option.html#polar). The extent of an axis should fit the data automatically, otherwise the graphic elements would be overflow the bounding box of the coordinate system. So, for example, in [cartesian2d (grid)](option.html#grid), developers should specify that which dimensions correspond to `x` axis and which to `y` axis use the property [encode](option.html#series-custom.encode):
 
@@ -148,8 +146,7 @@ option = {
 
 
 
-<br>
-<h2>(III) Set tooltip content</h2>
+## (III) Set tooltip content
 
 Of course [tooltip.formatter](option.html#tooltip.formatter) can be used to define the content in tooltip. But it is easier to do that by setting [encode](option.html#series-custom.encode) and [dimensions](option.html#series-custom.dimensions):
 
@@ -189,8 +186,7 @@ option = {
 Several other issues about `custom series` are introduced below.
 
 
-<br>
-<h2>(IV) Shape clipping when overflow the coordinates area</h2>
+## (IV) Shape clipping when overflow the coordinates area
 
 When use `custom series` with [dataZoom](option.html#dataZoom), [dataZoom.filterMode](option.html#dataZoom.filterMode) usually be set as `'weakFilter'`, which prevent `dataItem` from being filtered when only part of its dimensions are out of the current data window. For example:
 
@@ -224,11 +220,9 @@ option = {
 In the example above, `dim` and `dim2` corresponds to `x` axis, and the `dataZoom` component constrols the data window of `x` axis. If part of a `dataItem` is overflow the extent of `x` axis (the value on `dim1` is overflow and the value on `dim2` is not) while zooming, the `dataItem` will not be filtered if `dataZoom.filterMode = 'weakFilter'` set. Thus the `dataItem` can be still rendered (usually be partially rendered by using `echarts.graphic.clipRectByRect` to clip the exceeding part).
 See the example mentioned above [Profile](${galleryEditorPath}custom-profile).
 
-<br>
 
 
-<br>
-<h2>(V) About dataIndex</h2>
+## (V) About dataIndex
 
 
 Developers had better notice that in [renderItem.arguments.params](option.html#series-custom.renderItem.arguments.params) `dataIndexInside` and `dataIndex` is different:
@@ -240,8 +234,7 @@ Developers had better notice that in [renderItem.arguments.params](option.html#s
 [renderItem.arguments.api](option.html#series-custom.renderItem.arguments.api) uses `dataIndexInside` as the input parameter but not `dataIndex`, because conversion from `dataIndex` to `dataIndexInside` is time-consuming.
 
 
-<br>
-<h2>(VI) Event listener</h2>
+## (VI) Event listener
 
 
 ```js
@@ -276,8 +269,7 @@ chart.on('click', {element: 'aaa'}, function (params) {
 ```
 
 
-<br>
-<h2>(VII) Custom vector shapes</h2>
+## (VII) Custom vector shapes
 
 
 [SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData) is supported, which enables to use shapes that are created in vector tool. See [path](option.html#series-custom.renderItem.return_path), and examples: [icons](https://ecomfe.github.io/echarts-examples/public/index.html?c=custom-calendar-icon), [shapes](https://ecomfe.github.io/echarts-examples/public/index.html?c=custom-gantt-flight).
