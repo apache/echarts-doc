@@ -97,6 +97,8 @@ The length of tick line, can be a pecentage value relative to radius.
 Axis tick label.
 ### show(boolean) = true
 Whether to show the label.
+### distance(number) = 5
+The distance between the label and tick line.
 ### formatter(string|Function)
 The content formatter of scale label, which supports both string template and callback function.
 Example:
