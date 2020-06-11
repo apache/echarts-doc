@@ -11,9 +11,9 @@ echarts manages the creation, deletion, animation and interaction with other com
 **For example, a "x-range" chart is made by custom sereis:**
 ~[800x400](${galleryViewPath}custom-profile&reset=1&edit=1)
 
-**[More samples of custom series](https://ecomfe.github.io/echarts-examples/public/index.html#chart-type-custom)**
+**[More samples of custom series](${websitePath}/examples/en/index.html#chart-type-custom)**
 
-**[A tutotial of custom series](https://ecomfe.github.io/echarts-doc/public/en/tutorial.html#Custom%20Series)**
+**[A tutotial of custom series](tutorial.html#Custom%20Series)**
 
 <br>
 **Customize the render logic (in renderItem method)**
