@@ -117,6 +117,14 @@ selected: {
 }
 ```
 
+## itemStyle(Object)
+图例的公用图形样式。
+
+{{ use: partial-item-style(
+    componentName='图例',
+    prefix='##'
+) }}
+
 ## textStyle(Object)
 
 图例的公用文本样式。
@@ -124,7 +132,7 @@ selected: {
 {{ use: partial-text-style(
     componentName='图例',
     prefix='##',
-    defaultColor="#333",
+    defaultColor='#333',
     noAlign=true,
     noVerticalAlign=true
 ) }}

@@ -118,6 +118,14 @@ selected: {
 }
 ```
 
+## itemStyle(Object)
+Legend symbol style.
+
+{{ use: partial-item-style(
+    componentName='legend',
+    prefix='##'
+) }}
+
 ## textStyle(Object)
 
 Legend text style.
