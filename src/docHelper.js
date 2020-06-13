@@ -136,7 +136,7 @@ function createIndexer(map, pagePath) {
         list.push({
             path: pagePath ? (pagePath + '.' + path) : path,
             content: map[path],
-            text: stripHtml(map[path])
+            text: stripHtml(map[path].desc)
         });
     }
 

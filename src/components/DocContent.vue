@@ -1,25 +1,28 @@
 <template>
-    <div class="doc-content" v-loading="loading">
-        <h2 :id="pageId">{{pageTitle}}</h2>
-        <div
-            class="page-description"
-            v-if="pageDesc"
-            v-html="pageDesc"
-            v-highlight
-        ></div>
+    <div class="doc-main" v-loading="loading">
+        <div class="doc-content">
+            <h2 :id="pageId">{{pageTitle}}</h2>
+            <div
+                class="page-description"
+                v-if="pageDesc"
+                v-html="pageDesc"
+                v-highlight
+            ></div>
 
-        <div v-if="pageDisplayOutline.children && pageDisplayOutline.children && 1 <= maxDepth">
-            <h3>{{$t('content.properties')}}</h3>
-            <DocContentItemCard
-                v-for="child in pageDisplayOutline.children"
-                :key="child.path"
-                :node-data="child"
-                :desc-map="pageDescMap"
-                :max-depth="maxDepth"
-                :depth="1"
-                @toggle-expanded="handleCardExpandToggle"
-            ></DocContentItemCard>
+            <div v-if="pageDisplayOutline.children && pageDisplayOutline.children && 1 <= maxDepth">
+                <h3>{{$t('content.properties')}}</h3>
+                <DocContentItemCard
+                    v-for="child in pageDisplayOutline.children"
+                    :key="child.path"
+                    :node-data="child"
+                    :desc-map="pageDescMap"
+                    :max-depth="maxDepth"
+                    :depth="1"
+                    @toggle-expanded="handleCardExpandToggle"
+                ></DocContentItemCard>
+            </div>
         </div>
+        <LiveExample></LiveExample>
     </div>
 </template>
 
@@ -39,10 +42,12 @@ import DocContentItemCard from './DocContentItemCard.vue'
 import scrollIntoView from 'scroll-into-view';
 import Vue from 'vue';
 import LazyLoad from 'vanilla-lazyload';
+import LiveExample from './LiveExample.vue'
 
 export default {
     components: {
-        DocContentItemCard
+        DocContentItemCard,
+        LiveExample
     },
 
     data() {
@@ -74,8 +79,15 @@ export default {
         },
 
         pageDesc() {
-            return this.rootPageDescMap[this.pagePath]
-                || this.pageDescMap[this.pagePath]; // In mobile.
+            const item = this.rootPageDescMap[this.pagePath]
+                || this.pageDescMap[this.pagePath];
+            return item && item.desc; // In mobile.
+        },
+
+        pageExampleCode() {
+            const item = this.rootPageDescMap[this.pagePath]
+                || this.pageDescMap[this.pagePath];
+            return item && item.exampleBaseOptions;
         },
 
         pageDisplayOutline() {
@@ -193,6 +205,15 @@ export default {
     watch: {
         'shared.currentPath'(newVal) {
             this.updateCurrentPath(newVal);
+        },
+        'pageExampleCode'(newVal) {
+            // { code, title, name }
+            // TODO: Code switch
+            const code = newVal && newVal[0] && newVal[0].code;
+            if (code) {
+                const func = new Function(code + '\n return option');
+                this.shared.previewOption = func();
+            }
         }
     }
 }
@@ -203,8 +224,13 @@ export default {
 
 @import "../style/mixin.scss";
 
-.doc-content {
+.doc-main {
     margin-left: 10px;
+}
+
+.doc-content {
+    margin-right: 45%;
+    text-align: left;
     h2 {
         color: #B03A5B;
         font-size: 34px;
@@ -235,7 +261,6 @@ export default {
 
         @include description-html-formatter;
     }
-
 }
 
 .ec-doc-tutorial {

@@ -25,9 +25,24 @@
         <el-main>
             <SearchResult v-if="shared.fuzzySearch"></SearchResult>
             <!-- Always create a new component if page is changed -->
-            <!-- <DocContent v-else-if="shared.currentPath" :key="pagePath"></DocContent>
-            <Home v-else></Home> -->
-            <DocContent v-else :key="pagePath"></DocContent>
+            <DocContent v-else-if="shared.currentPath" :key="pagePath"></DocContent>
+            <!--  <Home v-else></Home> -->
+            <!-- <template v-else>
+                <el-container v-if="!isExampleTopDownPlayout">
+                    <el-main style="padding: 0 0 0 0">
+                        <DocContent :key="pagePath"></DocContent>
+                    </el-main>
+                    <el-aside width="45%" style="padding: 10px;">
+                        <LiveExample></LiveExample>
+                    </el-aside>
+                </el-container>
+                <div v-else>
+                    <DocContent :key="pagePath"></DocContent>
+                    <div class="live-example-bottom-container">
+                        <LiveExample></LiveExample>
+                    </div>
+                </div>
+            </template> -->
         </el-main>
     </el-container>
 </template>
@@ -38,6 +53,7 @@ import DocNav from './components/DocNav.vue';
 import DocContent from './components/DocContent.vue';
 import Search from './components/Search.vue';
 import SearchResult from './components/SearchResult.vue';
+import LiveExample from './components/LiveExample.vue'
 import Home from './components/Home.vue';
 import {store, getPagePath} from './store';
 
@@ -54,6 +70,10 @@ export default {
     computed: {
         pagePath() {
             return getPagePath();
+        },
+        isExampleTopDownPlayout() {
+            // TODO
+            return false;
         }
     },
 
@@ -62,6 +82,7 @@ export default {
         DocContent,
         Search,
         SearchResult,
+        LiveExample,
         Home
     }
 };
@@ -93,7 +114,7 @@ export default {
 
     height: 100%;
 
-    .el-aside {
+    &>.el-aside {
         border-right: 1px solid #ddd;
 
         position: relative;
@@ -132,7 +153,7 @@ export default {
         }
     }
 
-    .el-main {
+    &>.el-main {
         text-align: center;
 
         &>div {
@@ -141,6 +162,11 @@ export default {
             text-align: left;
             min-width: 100%;
         }
+
+        // .live-example-bottom-container {
+        //     position: fixed;
+        //     height: ;
+        // }
     }
 }
 

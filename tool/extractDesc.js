@@ -157,7 +157,11 @@ module.exports = function (schema, docName) {
             let subKey = parts.slice(divider).join('.');
 
             descriptionsMap[partionKey] = descriptionsMap[partionKey] || {};
-            descriptionsMap[partionKey][subKey] = schemaNode.description;
+            descriptionsMap[partionKey][subKey] = {
+                desc: schemaNode.description,
+                exampleBaseOptions: schemaNode.exampleBaseOptions,
+                uiControl: schemaNode.uiControl
+            };
         }
     });
 

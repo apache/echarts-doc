@@ -13,7 +13,11 @@ import {
     Input,
     Tooltip,
     Drawer,
-    Popover
+    Popover,
+    Footer,
+    Switch,
+    ColorPicker,
+    InputNumber
 } from 'element-ui';
 import {preload} from './docHelper';
 // import 'element-ui/lib/theme-chalk/index.css';
@@ -28,6 +32,7 @@ import messages from './i18n';
 Vue.use(Button);
 Vue.use(Container);
 Vue.use(Aside);
+Vue.use(Footer);
 Vue.use(Main);
 Vue.use(Tree);
 Vue.use(Loading);
@@ -37,6 +42,9 @@ Vue.use(Tooltip);
 Vue.use(VueI18n);
 Vue.use(Drawer);
 Vue.use(Popover);
+Vue.use(Switch);
+Vue.use(ColorPicker);
+Vue.use(InputNumber);
 
 /**
  *

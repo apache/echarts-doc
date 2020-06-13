@@ -1,16 +1,18 @@
-var fs = require('fs');
-var marked = require('marked');
-var etpl = require('etpl');
-var glob = require('glob');
-
+const fs = require('fs');
+const marked = require('marked');
+const etpl = require('etpl');
+const glob = require('glob');
+const htmlparser2 = require('htmlparser2');
+const Entities = require('html-entities').AllHtmlEntities;
+const entities = new Entities();
 
 function convert(opts, cb) {
-    var mdPath = opts.path;
-    var sectionsAnyOf = opts.sectionsAnyOf;
-    var entry = opts.entry;
-    var tplEnv = opts.tplEnv;
-    var maxDepth = opts.maxDepth || 10;
-    var etplEngine = new etpl.Engine({
+    const mdPath = opts.path;
+    const sectionsAnyOf = opts.sectionsAnyOf;
+    const entry = opts.entry;
+    const tplEnv = opts.tplEnv;
+    const maxDepth = opts.maxDepth || 10;
+    const etplEngine = new etpl.Engine({
         commandOpen: '{{',
         commandClose: '}}',
         missTarget: 'error'
@@ -35,7 +37,6 @@ function convert(opts, cb) {
         // I know this approach is ugly, but I am sorry that I have no time to make
         // a pull request to ETPL yet.
         Object.keys(tplEnv).forEach(function (key) {
-            var originalItem = [key];
             if (Object.prototype.hasOwnProperty(key)) {
                 throw new Error(key + ' can not be used in tpl config');
             }
@@ -107,7 +108,6 @@ function convert(opts, cb) {
 }
 
 function mdToJsonSchema(mdStr, maxDepth, imagePath) {
-
     var renderer = new marked.Renderer();
     renderer.link = function (href, title, text) {
         if (href.match(/^~/)) { // Property link
@@ -120,7 +120,7 @@ function mdToJsonSchema(mdStr, maxDepth, imagePath) {
     };
 
     renderer.image = function (href, title, text) {
-        var size = (text || '').split('x');
+        let size = (text || '').split('x');
         if (isNaN(size[0])) {
             size[0] = 'auto';
         }
@@ -140,16 +140,16 @@ function mdToJsonSchema(mdStr, maxDepth, imagePath) {
         return '<code class="codespan">' + code + '</code>';
     };
 
-    var currentLevel = 0;
-    var result = {
+    let currentLevel = 0;
+    const result = {
         '$schema': 'https://echarts.apache.org/doc/json-schem',
         'option': {
             'type': 'Object',
             'properties': {},
         }
     };
-    var current = result.option;
-    var stacks = [current];
+    let current = result.option;
+    const stacks = [current];
 
     function top() {
         return stacks[stacks.length - 1];
@@ -197,14 +197,14 @@ function mdToJsonSchema(mdStr, maxDepth, imagePath) {
             //     properties = top().items = top().items || [];
             // }
             // else {
-                top().items = top().items || {
-                    type: 'Object',
-                    properties: {}
-                };
-                if (top().items instanceof Array) {
-                    throw new Error('Can\'t mix number indices with string properties');
-                }
-                properties = top().items.properties;
+            top().items = top().items || {
+                type: 'Object',
+                properties: {}
+            };
+            if (top().items instanceof Array) {
+                throw new Error('Can\'t mix number indices with string properties');
+            }
+            properties = top().items.properties;
             // }
         }
         else {
@@ -212,6 +212,55 @@ function mdToJsonSchema(mdStr, maxDepth, imagePath) {
             properties = top().properties;
         }
         properties[name] = property;
+    }
+
+    function parseUIControl(html, property) {
+        let currentExampleCode;
+        let out = '';
+        const parser = new htmlparser2.Parser({
+            onopentag(tagName, attrib) {
+                if (tagName === 'examplebaseoption') {
+                    currentExampleCode = attrib;
+                }
+                else if (tagName.startsWith('exampleuicontrol')) {
+                    property.uiControl = {
+                        type: tagName.replace('exampleuicontrol', '').toLowerCase(),
+                        ...attrib
+                    };
+                }
+                else {
+                    let attribStr = '';
+                    for (let key in attrib) {
+                        attribStr += ` ${key}="${attrib[key]}"`;
+                    }
+                    out += `<${tagName} ${attribStr}>`;
+                }
+
+            },
+            ontext(data) {
+                if (currentExampleCode) {
+                    currentExampleCode.code = entities.decode(data);
+                }
+                else {
+                    out += data;
+                }
+            },
+            onclosetag(tagName) {
+                if (tagName === 'examplebaseoption') {
+                    property.exampleBaseOptions = property.exampleBaseOptions || [];
+                    property.exampleBaseOptions.push(currentExampleCode);
+
+                    currentExampleCode = null;
+                }
+                else if (!tagName.startsWith('exampleuicontrol')) {
+                    out += `<${tagName} />`;
+                }
+            }
+        });
+        parser.write(html);
+        parser.end();
+
+        return out;
     }
 
     function repeat(str, count) {
@@ -225,7 +274,6 @@ function mdToJsonSchema(mdStr, maxDepth, imagePath) {
 
     var headers = [];
 
-    // FIXME
     mdStr.replace(
         new RegExp('(?:^|\n) *(#{1,' + maxDepth + '}) *([^#][^\n]+)', 'g'),
         function (header, headerPrefix, text) {
@@ -236,7 +284,7 @@ function mdToJsonSchema(mdStr, maxDepth, imagePath) {
         }
     );
 
-    mdStr.split(new RegExp('(?:^|\n) *(?:#{1,' + maxDepth + '}) *(?:[^#][^\n]+)','g'))
+    mdStr.split(new RegExp('(?:^|\n) *(?:#{1,' + maxDepth + '}) *(?:[^#][^\n]+)', 'g'))
         .slice(1).forEach(move);
 
     function move(section, idx) {
@@ -260,10 +308,17 @@ function mdToJsonSchema(mdStr, maxDepth, imagePath) {
 
         key = key.trim();
 
+        var property = {
+            'type': types,
+            // exampleBaseOptions
+            // uiControl
+            'description': ''
+        };
+
+        // section = parseUIControl(section, property);
+
         section = section.replace(/~\[(.*)\]\((.*)\)/g, function (text, size, href) {
             size = size.split('x');
-            var width = +size[0];
-            var height = +size[1];
             var iframe = ['<iframe data-src="', href, '"'];
             if (size[0].match(/[0-9%]/)) {
                 iframe.push(' width="', size[0], '"');
@@ -274,12 +329,14 @@ function mdToJsonSchema(mdStr, maxDepth, imagePath) {
             iframe.push(' ></iframe>\n');
             return iframe.join('');
         });
-        var property = {
-            'type': types,
-            'description': marked(section, {
-                renderer: renderer
-            })
+
+        renderer.html = function (html) {
+            return parseUIControl(html, property);
         };
+
+        property.description = marked(section, {
+            renderer: renderer
+        });
 
         if (defaultValue != null) {
             property['default'] = convertType(defaultValue);

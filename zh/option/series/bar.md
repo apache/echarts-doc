@@ -6,6 +6,74 @@
 
 柱状/条形图 通过 柱形的高度/条形的宽度 来表现数据的大小，用于有至少一个类目轴或时间轴的[直角坐标系](~grid)上。
 
+
+<ExampleBaseOption name="cartesian-bar" title="直角坐标系上的单系列柱状图">
+const option = {
+    tooltip: {},
+    legend: {
+        data:['销量']
+    },
+    xAxis: {
+        data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+    },
+    yAxis: {},
+    series: [{
+        name: '销量',
+        type: 'bar',
+        data: [5, 20, 36, 10, 10, 20]
+    }]
+};
+</ExampleBaseOption>
+
+<ExampleBaseOption name="cartesian-bar-multiple-series" title="直角坐标系上的多系列柱状图">
+option = {
+    legend: {
+        data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis: {
+        type: 'category',
+        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [
+        {
+            name: '直接访问',
+            type: 'bar',
+            data: [320, 302, 301, 334, 390, 330, 320]
+        },
+        {
+            name: '邮件营销',
+            type: 'bar',
+            data: [120, 132, 101, 134, 90, 230, 210]
+        },
+        {
+            name: '联盟广告',
+            type: 'bar',
+            data: [220, 182, 191, 234, 290, 330, 310]
+        },
+        {
+            name: '视频广告',
+            type: 'bar',
+            data: [150, 212, 201, 154, 190, 330, 410]
+        },
+        {
+            name: '搜索引擎',
+            type: 'bar',
+            data: [820, 832, 901, 934, 1290, 1330, 1320]
+        }
+    ]
+};
+</ExampleBaseOption>
+
+
 ## type(string) = 'bar'
 
 {{use: partial-component-id(prefix="#")}}
@@ -23,7 +91,11 @@
 ) }}
 
 ## roundCap(boolean) = false
+
 {{ use: partial-version(version = "4.5.0") }}
+
+<ExampleUIControlBoolean />
+
 是否在环形柱条两侧使用圆弧效果。
 
 仅对极坐标系柱状图有效。
@@ -49,6 +121,9 @@
 
 ## showBackground(boolean) = false
 {{ use: partial-version(version = "4.7.0") }}
+
+<ExampleUIControlBoolean />
+
 是否显示柱条的背景色。通过 [backgroundStyle](~series-bar.backgroundStyle) 配置背景样式。
 
 ~[800x400](${galleryViewPath}bar-background&reset=1&edit=1)
@@ -194,13 +269,19 @@
 
 #${prefix} color(Color) = ${defaultColor|default('自适应')}
 
+<ExampleUIControlColor />
+
 柱条的颜色。{{ if: ${useColorPalatte} }} 默认从全局调色盘 [option.color](~color) 获取颜色 {{/if}}
 
 #${prefix} borderColor(Color) = '#000'
 
+<ExampleUIControlColor value="#000" />
+
 柱条的描边颜色。
 
 #${prefix} borderWidth(number) = 0
+
+<ExampleUIControlNumber value="0" min="0" step="0.5" />
 
 柱条的描边宽度，默认不描边。
 
@@ -209,6 +290,7 @@
 柱条的描边类型，默认为实线，支持 `'dashed'`, `'dotted'`。
 
 {{ if: ${barBorderRadius} }}
+
 {{use: partial-border-radius(
     propName: 'barBorderRadius',
     prefix: ${prefix}

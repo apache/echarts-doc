@@ -12,7 +12,9 @@ export const store = {
 
     isMobile: false,
 
-    locale: 'zh'
+    locale: 'zh',
+
+    previewOption: ''
 };
 
 export function getPagePath() {

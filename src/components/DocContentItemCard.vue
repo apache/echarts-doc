@@ -25,6 +25,10 @@
         </span>
 
         <span class="default-value" v-if="nodeData.default && nodeData.default !== '*'"> = {{nodeData.default}}</span>
+
+        <span class="control-toggle" v-if="uiControl">
+            <el-switch :active-text="$t('example.tryDesc')" v-model="enableUIControl"></el-switch>
+        </span>
     </h4>
 
     <div class="prop-types">
@@ -34,6 +38,8 @@
             v-for="type in nodeData.type"
         >{{type}}</span>
     </div>
+
+    <OptionControl v-if="enableUIControl" :controlConfig="uiControl"></OptionControl>
 
     <div class="item-description"
         v-html="desc"
@@ -66,6 +72,7 @@ import {
     convertPathToId
 } from '../docHelper';
 import PropertiesList from './PropertiesList.vue';
+import OptionControl from './OptionControl.vue';
 
 import {store} from '../store';
 
@@ -75,12 +82,14 @@ export default {
     props: ['nodeData', 'descMap', 'maxDepth', 'depth'],
 
     components: {
-        PropertiesList
+        PropertiesList,
+        OptionControl
     },
 
     data() {
         return {
             manualExpanded: null,
+            enableUIControl: false,
             shared: store
         }
     },
@@ -117,7 +126,13 @@ export default {
         },
 
         desc() {
-            return this.descMap[this.nodeData.path];
+            const descItem = this.descMap[this.nodeData.path];
+            return descItem && descItem.desc;
+        },
+
+        uiControl() {
+            const descItem = this.descMap[this.nodeData.path];
+            return descItem && descItem.uiControl;
         },
 
         parentPath() {
@@ -272,6 +287,11 @@ $hierarchy-guider-color: #C592A0;
             vertical-align: bottom;
             font-weight: normal;
         }
+
+        .control-toggle {
+            float: right;
+            font-size: 14px;
+        }
     }
 
     &.level-1 {
@@ -354,7 +374,12 @@ $hierarchy-guider-color: #C592A0;
 
     .prop-types {
         margin-top: 5px;
+        display: inline-block;
     }
+    .option-control {
+        display: inline-block;
+    }
+
     .prop-type {
         display: inline-block;
         margin-right: 4px;

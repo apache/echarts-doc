@@ -18,6 +18,13 @@ export default {
         },
         content: {
             properties: 'Properties'
+        },
+        example: {
+            title: 'Preview the Option',
+            tryDesc: 'Try It',
+
+            defaultColor: 'Default Color',
+            booleanDesc: 'Enable'
         }
     },
     zh: {
@@ -39,6 +46,14 @@ export default {
         },
         content: {
             properties: '所有属性'
+        },
+        example: {
+            title: '示例预览',
+            intro: '在左侧配置项选择试一试后调整看示例效果',
+
+            tryDesc: '试一试',
+            defaultColor: '默认颜色',
+            booleanDesc: '开启该功能'
         }
     }
 };

@@ -41,6 +41,9 @@ ${componentName}的边框线宽。
 {{target: partial-border-radius}}
 
 #${prefix} ${propName|default('borderRadius')}(number|Array) = 0
+
+<ExampleUIControlVector value="0" min="0" dims="Top, Right, Bottom, Left"  />
+
 圆角半径，单位px，支持传入数组分别指定 4 个圆角半径。
 如:
 ```
