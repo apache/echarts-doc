@@ -77,7 +77,7 @@ import {
 import PropertiesList from './PropertiesList.vue';
 import OptionControl from './OptionControl.vue';
 
-import {store} from '../store';
+import {store, changeOption} from '../store';
 
 export default {
     name: 'DocContentItemCard',
@@ -98,6 +98,16 @@ export default {
     },
 
     created() {
+    },
+
+    watch: {
+        enableUIControl(newVal) {
+            if (!newVal) {
+                this.shared.previewOption = Object.freeze(changeOption(
+                    this.shared.previewOption, this.nodeData.path, undefined
+                ));
+            }
+        }
     },
 
     computed: {

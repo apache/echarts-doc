@@ -7,9 +7,10 @@
             v-model="value[index]"
             controls-position="right"
             :min="+min"
-            :max="max == null ? Infinity : +max"
+            :max="max == null ? 1e4 : +max"
             :step="step == null ? 1 : +step"
             size="mini"
+             @change="onValueChange"
         ></el-input-number>
     </div>
 </div>
@@ -21,12 +22,26 @@ export default {
     props: ['value', 'min', 'max', "step", 'dims'],
 
     data() {
-        return {};
+        return {
+            innerValue: this.value
+        };
     },
 
     computed: {
         dimsArr() {
             return this.dims.split(',').map(dim => dim.trim());
+        }
+    },
+
+    watch:  {
+        value(newVal) {
+            this.innerValue = newVal;
+        }
+    },
+
+    methods: {
+        onValueChange() {
+            this.$emit('change', this.innerValue);
         }
     }
 }

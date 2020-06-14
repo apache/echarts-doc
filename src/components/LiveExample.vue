@@ -23,6 +23,7 @@ import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/paraiso-dark.css';
 import 'codemirror/mode/javascript/javascript.js'
 import beautify from 'js-beautify';
+import throttle from 'lodash.throttle';
 
 let echartsLoadPromise;
 
@@ -37,6 +38,38 @@ function fetchECharts() {
         }
         document.body.appendChild(script);
     }));
+}
+
+function updateOption(option) {
+    const viewport = this.$el.querySelector('.preview-main');
+    if (typeof echarts === 'undefined') {
+        fetchECharts().then(() => {
+            if (!this.echartsInstance) {
+                this.chartInstance = echarts.init(viewport);
+            }
+            this.chartInstance.setOption(option);
+        })
+    }
+    else {
+        if (!this.echartsInstance) {
+            this.chartInstance = echarts.init(viewport);
+        }
+        this.chartInstance.setOption(option);
+    }
+
+    if (!this.cmInstance) {
+        this.cmInstance = CodeMirror(this.$el.querySelector('.codemirror-main'), {
+            value: this.formattedOptionCodeStr,
+            mode: 'javascript',
+            theme: 'paraiso-dark',
+            readOnly: true
+        });
+    }
+    else {
+        // TODO: Highlight the diff lines.
+        // TODO: Only change the changed line. optimize
+        this.cmInstance.setValue(this.formattedOptionCodeStr);
+    }
 }
 
 export default {
@@ -65,43 +98,17 @@ export default {
     watch: {
         'shared.previewOption'(newVal) {
             if (newVal) {
-                this.updateOption(newVal);
-                this.updateCode();
+                this.updateOptionThrottled(newVal);
             }
         }
     },
 
     methods: {
-        updateOption(option) {
-            const viewport = this.$el.querySelector('.preview-main');
-            if (typeof echarts === 'undefined') {
-                fetchECharts().then(() => {
-                    if (!this.echartsInstance) {
-                        this.chartInstance = echarts.init(viewport);
-                    }
-                    this.chartInstance.setOption(option);
-                })
-            }
-            else {
-                if (!this.echartsInstance) {
-                    this.chartInstance = echarts.init(viewport);
-                }
-                this.chartInstance.setOption(option);
-            }
-        },
+        updateOption,
 
-        updateCode() {
-            if (!this.cmInstance) {
-                this.cmInstance = CodeMirror(this.$el.querySelector('.codemirror-main'), {
-                    value: this.formattedOptionCodeStr,
-                    mode: 'javascript',
-                    theme: 'paraiso-dark'
-                });
-            }
-            else {
-                this.cmInstance.setValue(this.formattedOptionCodeStr);
-            }
-        }
+        updateOptionThrottled: throttle(updateOption, 300, {
+            leading: false
+        })
     },
 
     computed: {
@@ -110,7 +117,9 @@ export default {
         },
 
         formattedOptionCodeStr() {
-            return beautify.js(this.optionCodeStr.replace(/"(\w+)"\s*:/g, '$1:'));
+            return beautify.js(this.optionCodeStr.replace(/"(\w+)"\s*:/g, '$1:'), {
+                indent_size: 2
+            });
         }
     }
 }

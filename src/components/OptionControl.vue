@@ -3,7 +3,8 @@
     <component
         :is="uiComponent"
         v-bind="uiAttrs"
-        value="default">
+        :value="defaultValue"
+         @change="onValueChange">
     </component>
 </div>
 </template>
@@ -13,7 +14,7 @@ import ControlColor from '../controls/ControlColor.vue';
 import ControlBoolean from '../controls/ControlBoolean.vue';
 import ControlNumber from '../controls/ControlNumber.vue';
 import ControlVector from '../controls/ControlVector.vue';
-import {store} from '../store';
+import {store, changeOption} from '../store';
 
 const uiComponentMap = {
     boolean: ControlBoolean,
@@ -45,6 +46,7 @@ function omitTypeAndDefault(obj) {
     return newObj;
 }
 
+
 export default {
     name: 'OptionControl',
 
@@ -65,11 +67,22 @@ export default {
             return omitTypeAndDefault(this.controlConfig);
         },
 
-        default() {
+        defaultValue() {
             const controlConfig = this.controlConfig;
             return controlConfig.default != null
                 ? controlConfig.default
                 : (uiComponentDefault[controlConfig.type] && uiComponentDefault[controlConfig.type](controlConfig));
+        }
+    },
+
+    methods: {
+        onValueChange(value) {
+            // console.log(this.optionPath, value);
+            if (this.shared.previewOption) {
+                this.shared.previewOption = Object.freeze(
+                    changeOption(this.shared.previewOption, this.optionPath, value)
+                );
+            }
         }
     }
 }

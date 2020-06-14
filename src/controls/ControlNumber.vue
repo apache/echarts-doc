@@ -1,12 +1,13 @@
 <template>
 <div class="control-number">
     <el-input-number
-        v-model="value"
+        v-model="innerValue"
         controls-position="right"
         :min="+min"
-        :max="max == null ? Infinity : +max"
+        :max="max == null ? 1e4 : +max"
         :step="step == null ? 1 : +step"
         size="mini"
+         @change="onValueChange"
     ></el-input-number>
 </div>
 </template>
@@ -17,7 +18,21 @@ export default {
     props: ['value', 'min', 'max', 'step'],
 
     data() {
-        return {}
+        return {
+            innerValue: this.value
+        }
+    },
+
+    watch: {
+        value(val) {
+            this.innerValue = val;
+        }
+    },
+
+    methods: {
+        onValueChange() {
+            this.$emit('change', this.innerValue);
+        }
     }
 }
 </script>
