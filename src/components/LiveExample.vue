@@ -110,7 +110,7 @@ export default {
         },
 
         formattedOptionCodeStr() {
-            return beautify.js(this.optionCodeStr);
+            return beautify.js(this.optionCodeStr.replace(/"(\w+)"\s*:/g, '$1:'));
         }
     }
 }
