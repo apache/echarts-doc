@@ -1,6 +1,10 @@
 <template>
 <div class="option-control">
-    <component :is="uiComponent" v-bind="uiAttrs"></component>
+    <component
+        :is="uiComponent"
+        v-bind="uiAttrs"
+        value="default">
+    </component>
 </div>
 </template>
 
@@ -9,6 +13,7 @@ import ControlColor from '../controls/ControlColor.vue';
 import ControlBoolean from '../controls/ControlBoolean.vue';
 import ControlNumber from '../controls/ControlNumber.vue';
 import ControlVector from '../controls/ControlVector.vue';
+import {store} from '../store';
 
 const uiComponentMap = {
     boolean: ControlBoolean,
@@ -17,10 +22,23 @@ const uiComponentMap = {
     vector: ControlVector
 };
 
-function omitType(obj) {
+const uiComponentDefault = {
+    boolean: () => false,
+    color: () => null,
+    number: () => 0,
+    vector: (conntrolConfig) => {
+        if (!conntrolConfig.dims) {
+            throw new Error('Must specify dims in vector');
+        }
+        return conntrolConfig.dims.split(',')
+            .map(dim => 0)
+    }
+}
+
+function omitTypeAndDefault(obj) {
     const newObj = {};
     for (let key in obj) {
-        if (obj.hasOwnProperty(key) && key !== 'type') {
+        if (obj.hasOwnProperty(key) && key !== 'type' && key !== 'default') {
             newObj[key] = obj[key];
         }
     }
@@ -34,6 +52,7 @@ export default {
 
     data() {
         return {
+            shared: store
         };
     },
 
@@ -43,7 +62,14 @@ export default {
         },
 
         uiAttrs() {
-            return omitType(this.controlConfig);
+            return omitTypeAndDefault(this.controlConfig);
+        },
+
+        default() {
+            const controlConfig = this.controlConfig;
+            return controlConfig.default != null
+                ? controlConfig.default
+                : (uiComponentDefault[controlConfig.type] && uiComponentDefault[controlConfig.type](controlConfig));
         }
     }
 }

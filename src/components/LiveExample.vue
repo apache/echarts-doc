@@ -3,7 +3,12 @@
 <div id="example-panel">
     <h2>{{$t('example.title')}}</h2>
     <p class="intro">{{$t('example.intro')}}</p>
-    <div class="preview-main"></div>
+    <div class="preview-and-code">
+        <div class="preview-main"></div>
+        <div class="example-code">
+            <div class="codemirror-main"></div>
+        </div>
+    </div>
 </div>
 </template>
 
@@ -13,8 +18,11 @@
 // 代码不能编辑，可以跳转到 examples 带上 base64，在 examples 页面编辑
 
 import {store, getPagePath} from '../store';
-
-let chartInstance;
+import CodeMirror from 'codemirror';
+import 'codemirror/lib/codemirror.css';
+import 'codemirror/theme/paraiso-dark.css';
+import 'codemirror/mode/javascript/javascript.js'
+import beautify from 'js-beautify';
 
 let echartsLoadPromise;
 
@@ -40,12 +48,15 @@ export default {
     },
 
     mounted() {
+        const self = this;
         const examplePanel = this.$el;
         const previewMain = examplePanel.querySelector('.preview-main');
         // TODO use css?
         function resize() {
             examplePanel.style.width = examplePanel.parentNode.clientWidth * 0.45 + 'px';
-            previewMain.style.height = previewMain.clientWidth * 3 / 4 + 'px';
+            if (self.chartInstance) {
+                self.chartInstance.resize();
+            }
         }
         window.addEventListener('resize', resize);
         resize();
@@ -55,21 +66,51 @@ export default {
         'shared.previewOption'(newVal) {
             if (newVal) {
                 this.updateOption(newVal);
+                this.updateCode();
             }
         }
     },
 
     methods: {
         updateOption(option) {
+            const viewport = this.$el.querySelector('.preview-main');
             if (typeof echarts === 'undefined') {
                 fetchECharts().then(() => {
-                    chartInstance = echarts.init(this.$el.querySelector('.preview-main'));
-                    chartInstance.setOption(option);
+                    if (!this.echartsInstance) {
+                        this.chartInstance = echarts.init(viewport);
+                    }
+                    this.chartInstance.setOption(option);
                 })
             }
             else {
-                chartInstance.setOption(option);
+                if (!this.echartsInstance) {
+                    this.chartInstance = echarts.init(viewport);
+                }
+                this.chartInstance.setOption(option);
             }
+        },
+
+        updateCode() {
+            if (!this.cmInstance) {
+                this.cmInstance = CodeMirror(this.$el.querySelector('.codemirror-main'), {
+                    value: this.formattedOptionCodeStr,
+                    mode: 'javascript',
+                    theme: 'paraiso-dark'
+                });
+            }
+            else {
+                this.cmInstance.setValue(this.formattedOptionCodeStr);
+            }
+        }
+    },
+
+    computed: {
+        optionCodeStr() {
+            return `const option = ${JSON.stringify(this.shared.previewOption)}`;
+        },
+
+        formattedOptionCodeStr() {
+            return beautify.js(this.optionCodeStr);
         }
     }
 }
@@ -100,11 +141,42 @@ export default {
     p.intro {
         color: #aaa;
         padding-left: 20px;
+        margin: 5px 0;
+        font-size: 12px;
+    }
+
+    .preview-and-code {
+        position: absolute;
+        top: 90px;
+        bottom: 0;
+        left: 0;
+        right: 0;
     }
 
     .preview-main {
         width: 100%;
         background: #fefefe;
+        height: 50%;
+    }
+
+    .example-code {
+        width: 100%;
+        height: 50%;
+        position: relative;
+
+        // h4 {
+        //     margin: 0 10px;
+        //     padding: 0;
+        // }
+
+        .codemirror-main {
+            height: 100%;
+
+            .CodeMirror {
+                height: 100%;
+                overflow-y: scroll;
+            }
+        }
     }
 }
 

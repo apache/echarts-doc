@@ -39,7 +39,10 @@
         >{{type}}</span>
     </div>
 
-    <OptionControl v-if="enableUIControl" :controlConfig="uiControl"></OptionControl>
+    <OptionControl v-if="enableUIControl"
+        :controlConfig="uiControl"
+        :optionPath="nodeData.path"
+    ></OptionControl>
 
     <div class="item-description"
         v-html="desc"

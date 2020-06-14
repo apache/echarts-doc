@@ -6,7 +6,7 @@
         :min="+min"
         :max="max == null ? Infinity : +max"
         :step="step == null ? 1 : +step"
-        size="small"
+        size="mini"
     ></el-input-number>
 </div>
 </template>
@@ -14,12 +14,10 @@
 <script>
 export default {
 
-    props: ['min', 'max', "step"],
+    props: ['value', 'min', 'max', 'step'],
 
     data() {
-        return {
-            value: 0
-        }
+        return {}
     }
 }
 </script>

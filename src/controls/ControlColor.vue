@@ -10,11 +10,10 @@
 <script>
 export default {
 
-    props: ['default'],
+    props: ['value'],
 
     data() {
         return {
-            value: this.default
         }
     }
 }

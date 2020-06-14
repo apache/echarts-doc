@@ -6,9 +6,9 @@
 
 <script>
 export default {
+    props: ['value'],
     data() {
         return {
-            value: null
         }
     }
 }

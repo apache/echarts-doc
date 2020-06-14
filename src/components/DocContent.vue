@@ -212,7 +212,7 @@ export default {
             const code = newVal && newVal[0] && newVal[0].code;
             if (code) {
                 const func = new Function(code + '\n return option');
-                this.shared.previewOption = func();
+                this.shared.previewOption = Object.freeze(func());
             }
         }
     }

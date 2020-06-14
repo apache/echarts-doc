@@ -2,7 +2,7 @@
 <div class="control-vector">
     <div v-for="(dim, index) in dimsArr"
         :key="index">
-        {{dim}}:
+        <label>{{dim}}:</label>
         <el-input-number
             v-model="value[index]"
             controls-position="right"
@@ -18,19 +18,10 @@
 <script>
 export default {
 
-    props: ['min', 'max', "step", 'default', 'dims'],
+    props: ['value', 'min', 'max', "step", 'dims'],
 
     data() {
-        if (!this.dims) {
-            throw new Error('Must specify dims in vector');
-        }
-        const arr = this.default
-            ? this.default.split(',').map(num => +num.trim())
-            : this.dims.split(',').map(dim => 0);
-
-        return {
-            value: arr,
-        };
+        return {};
     },
 
     computed: {
@@ -46,7 +37,8 @@ export default {
     &>div {
         display: inline-block;
         margin-left: 8px;
-        font-size: 14px;
+        font-size: 12px;
+        font-weight: bold;
     }
     .el-input-number {
         width: 90px;
