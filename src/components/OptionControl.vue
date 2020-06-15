@@ -78,9 +78,9 @@ export default {
     methods: {
         onValueChange(value) {
             // console.log(this.optionPath, value);
-            if (this.shared.previewOption) {
-                this.shared.previewOption = Object.freeze(
-                    changeOption(this.shared.previewOption, this.optionPath, value)
+            if (this.shared.currentPreviewOption) {
+                this.shared.currentPreviewOption = Object.freeze(
+                    changeOption(this.shared.currentPreviewOption, this.optionPath, value)
                 );
             }
         }

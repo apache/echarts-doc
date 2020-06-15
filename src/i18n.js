@@ -28,7 +28,10 @@ export default {
 
             vectorSetSeparate: 'Separately',
 
-            setOptionError: 'Something Unexpected Happerns. Click refresh to try again!'
+            setOptionError: 'Something Unexpected Happerns. Click refresh to try again!',
+
+            refresh: 'Refresh',
+            close: 'Close'
         }
     },
     zh: {
@@ -61,7 +64,10 @@ export default {
 
             vectorSetSeparate: '分别设置',
 
-            setOptionError: '发生了一些意料之外的错误，点击刷新再试试！'
+            setOptionError: '发生了一些意料之外的错误，点击刷新再试试！',
+
+            refresh: '刷新',
+            close: '关闭'
         }
     }
 };

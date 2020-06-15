@@ -19,6 +19,7 @@ import {
     ColorPicker,
     InputNumber,
     Select,
+    Option,
     Alert
 } from 'element-ui';
 import {preload} from './docHelper';
@@ -48,6 +49,7 @@ Vue.use(Switch);
 Vue.use(ColorPicker);
 Vue.use(InputNumber);
 Vue.use(Select);
+Vue.use(Option);
 Vue.use(Alert);
 
 /**

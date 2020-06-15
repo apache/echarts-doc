@@ -1,9 +1,9 @@
 
 <template>
-<div id="example-panel">
+<div id="example-panel" v-if="shared.allOptionExamples">
     <h2>{{$t('example.title')}}</h2>
     <p class="intro">{{$t('example.intro')}}</p>
-    <div class="preview-and-code">
+    <div class="preview-and-code" v-if="shared.currentPreviewOption">
         <div class="preview-main"></div>
         <div class="example-code">
             <div class="codemirror-main"></div>
@@ -16,9 +16,16 @@
         </el-alert>
     </div>
     <div class="toolbar">
-        <el-select size='mini' class="example-list"></el-select>
-        <el-button type="primary" icon="el-icon-refresh" size="mini" @click="refreshForce">刷新</el-button>
-        <el-button size='mini' @click="closeExamplePanel">关闭</el-button>
+        <el-select size='mini' class="example-list" v-model="exampleName"
+            :popper-append-to-body="false">
+            <el-option v-for="item in shared.allOptionExamples"
+                :key="item.name"
+                :value="item.name"
+                :label="item.title"
+            ></el-option>
+        </el-select>
+        <el-button type="primary" icon="el-icon-refresh" size="mini" @click="refreshForce">{{$t('example.refresh')}}</el-button>
+        <el-button size='mini' @click="closeExamplePanel">{{$t('example.close')}}</el-button>
     </div>
 </div>
 </template>
@@ -52,10 +59,18 @@ function fetchECharts() {
 }
 
 function updateOption(option) {
+    if (this.exampleName !== this.lastUpdateExampleName) {
+        this.lastUpdateExampleName = this.exampleName;
+        // Refresh all if example base option is changed.
+        this.refreshForce();
+        return;
+    }
+
     const viewport = this.$el.querySelector('.preview-main');
     // Clear error msg.
     this.hasError = false;
     if (typeof echarts === 'undefined') {
+        // TODO Put fetch charts when component is initialized.
         fetchECharts().then(() => {
             if (!this.echartsInstance) {
                 this.chartInstance = echarts.init(viewport);
@@ -82,6 +97,7 @@ function updateOption(option) {
             value: this.formattedOptionCodeStr,
             mode: 'javascript',
             theme: 'paraiso-dark',
+            lineNumbers: true,
             readOnly: true
         });
     }
@@ -90,6 +106,8 @@ function updateOption(option) {
         // TODO: Only change the changed line. optimize
         this.cmInstance.setValue(this.formattedOptionCodeStr);
     }
+
+    this.lastUpdateExampleName = this.exampleName;
 }
 
 export default {
@@ -98,7 +116,11 @@ export default {
         return {
             shared: store,
 
-            hasError: false
+            hasError: false,
+
+            exampleName: '',
+
+            lastUpdateExampleName: ''
         };
     },
 
@@ -116,8 +138,12 @@ export default {
         window.addEventListener('resize', resize);
         resize();
 
-        if (this.shared.previewOption) {
-            this.updateOptionThrottled(this.shared.previewOption);
+        if (this.shared.currentPreviewOption) {
+            this.updateOptionThrottled(this.shared.currentPreviewOption);
+        }
+
+        if (this.shared.allOptionExamples) {
+            this.exampleName = this.shared.allOptionExamples[0].name;
         }
     },
 
@@ -129,10 +155,18 @@ export default {
     },
 
     watch: {
-        'shared.previewOption'(newVal) {
+        'shared.currentPreviewOption'(newVal) {
             if (newVal) {
                 this.updateOptionThrottled(newVal);
             }
+        },
+
+        'shared.allOptionExamples'(newVal) {
+            // Use the first example as default.
+            this.exampleName = newVal[0].name;
+        },
+        'exampleName'(newVal) {
+            this.changeExample(newVal);
         }
     },
 
@@ -145,23 +179,35 @@ export default {
 
         refreshForce: function () {
             // Dispose first
-            if (this.shared.previewOption) {
+            if (this.shared.currentPreviewOption) {
                 if (this.chartInstance) {
                     this.chartInstance.dispose();
                     this.chartInstance = null;
                 }
-                this.updateOption(this.shared.previewOption);
+                this.updateOption(this.shared.currentPreviewOption);
             }
         },
 
         closeExamplePanel() {
             this.shared.showOptionExample = false;
+        },
+
+        changeExample(exampleName) {
+            const example = this.shared.allOptionExamples &&
+                this.shared.allOptionExamples.find(item => item.name === exampleName);
+            if (!example) {
+                this.shared.currentPreviewOption = null;
+                return false;
+            }
+            const code = example.code;
+            const func = new Function(code + '\n return option');
+            this.shared.currentPreviewOption = Object.freeze(func());
         }
     },
 
     computed: {
         optionCodeStr() {
-            return `const option = ${JSON.stringify(this.shared.previewOption)}`;
+            return `const option = ${JSON.stringify(this.shared.currentPreviewOption)}`;
         },
 
         formattedOptionCodeStr() {

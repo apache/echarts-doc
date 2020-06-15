@@ -103,8 +103,8 @@ export default {
     watch: {
         enableUIControl(newVal) {
             if (!newVal) {
-                this.shared.previewOption = Object.freeze(changeOption(
-                    this.shared.previewOption, this.nodeData.path, undefined
+                this.shared.currentPreviewOption = Object.freeze(changeOption(
+                    this.shared.currentPreviewOption, this.nodeData.path, undefined
                 ));
             }
             else {

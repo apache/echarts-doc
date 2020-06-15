@@ -84,7 +84,7 @@ export default {
             return item && item.desc; // In mobile.
         },
 
-        pageExampleCode() {
+        pageExamples() {
             const item = this.rootPageDescMap[this.pagePath]
                 || this.pageDescMap[this.pagePath];
             return item && item.exampleBaseOptions;
@@ -206,13 +206,14 @@ export default {
         'shared.currentPath'(newVal) {
             this.updateCurrentPath(newVal);
         },
-        'pageExampleCode'(newVal) {
+        'pageExamples'(newVal) {
             // { code, title, name }
             // TODO: Code switch
-            const code = newVal && newVal[0] && newVal[0].code;
-            if (code) {
-                const func = new Function(code + '\n return option');
-                this.shared.previewOption = Object.freeze(func());
+            if (newVal && newVal.length) {
+                this.shared.allOptionExamples = Object.freeze(newVal);
+            }
+            else {
+                this.shared.allOptionExamples = null;
             }
         }
     }

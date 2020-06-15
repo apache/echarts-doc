@@ -15,8 +15,8 @@ export const store = {
     locale: 'zh',
 
     showOptionExample: false,
-
-    previewOption: ''
+    allOptionExamples: null,
+    currentPreviewOption: ''
 };
 
 export function getPagePath() {

@@ -28,7 +28,7 @@ const option = {
 <ExampleBaseOption name="cartesian-bar-multiple-series" title="直角坐标系上的多系列柱状图">
 option = {
     legend: {
-        data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+        data: ['直接访问', '联盟广告', '搜索引擎']
     },
     grid: {
         left: '3%',
@@ -48,16 +48,6 @@ option = {
             name: '直接访问',
             type: 'bar',
             data: [320, 302, 301, 334, 390, 330, 320]
-        },
-        {
-            name: '邮件营销',
-            type: 'bar',
-            data: [120, 132, 101, 134, 90, 230, 210]
-        },
-        {
-            name: '联盟广告',
-            type: 'bar',
-            data: [220, 182, 191, 234, 290, 330, 310]
         },
         {
             name: '视频广告',
