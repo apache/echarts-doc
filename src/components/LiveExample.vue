@@ -1,9 +1,8 @@
-
 <template>
-<div id="example-panel" v-if="shared.allOptionExamples">
+<div id="example-panel" :class="[isDownLayout ? 'down-layout' : 'right-layout']">
     <h2>{{$t('example.title')}}</h2>
     <p class="intro">{{$t('example.intro')}}</p>
-    <div class="preview-and-code" v-if="shared.currentPreviewOption">
+    <div class="preview-and-code" v-if="shared.currentExampleOption">
         <div class="preview-main"></div>
         <div class="example-code">
             <div class="codemirror-main"></div>
@@ -16,7 +15,7 @@
         </el-alert>
     </div>
     <div class="toolbar">
-        <el-select size='mini' class="example-list" v-model="exampleName"
+        <el-select size='mini' v-if="shared.allOptionExamples" class="example-list" v-model="shared.currentExampleName"
             :popper-append-to-body="false">
             <el-option v-for="item in shared.allOptionExamples"
                 :key="item.name"
@@ -59,8 +58,8 @@ function fetchECharts() {
 }
 
 function updateOption(option) {
-    if (this.exampleName !== this.lastUpdateExampleName) {
-        this.lastUpdateExampleName = this.exampleName;
+    if (this.shared.currentExampleName !== this.lastUpdateExampleName) {
+        this.lastUpdateExampleName = this.shared.currentExampleName;
         // Refresh all if example base option is changed.
         this.refreshForce();
         return;
@@ -107,10 +106,12 @@ function updateOption(option) {
         this.cmInstance.setValue(this.formattedOptionCodeStr);
     }
 
-    this.lastUpdateExampleName = this.exampleName;
+    this.lastUpdateExampleName = this.shared.currentExampleName;
 }
 
 export default {
+
+    props: ['isDownLayout'],
 
     data() {
         return {
@@ -118,32 +119,22 @@ export default {
 
             hasError: false,
 
-            exampleName: '',
-
             lastUpdateExampleName: ''
         };
     },
 
     mounted() {
-        const self = this;
-        const examplePanel = this.$el;
-        const previewMain = examplePanel.querySelector('.preview-main');
         // TODO use css?
-        function resize() {
-            examplePanel.style.width = examplePanel.parentNode.clientWidth * 0.45 + 'px';
-            if (self.chartInstance) {
-                self.chartInstance.resize();
-            }
-        }
-        window.addEventListener('resize', resize);
-        resize();
+        this.resize = this.resize.bind(this);
+        window.addEventListener('resize', this.resize);
+        this.resize();
 
-        if (this.shared.currentPreviewOption) {
-            this.updateOptionThrottled(this.shared.currentPreviewOption);
+        if (this.shared.currentExampleOption) {
+            this.updateOptionThrottled(this.shared.currentExampleOption);
         }
 
         if (this.shared.allOptionExamples) {
-            this.exampleName = this.shared.allOptionExamples[0].name;
+            this.shared.currentExampleName = this.shared.allOptionExamples[0].name;
         }
     },
 
@@ -152,10 +143,11 @@ export default {
             this.chartInstance.dispose();
             this.chartInstance = null;
         }
+        window.removeEventListener('resize', this.resize);
     },
 
     watch: {
-        'shared.currentPreviewOption'(newVal) {
+        'shared.currentExampleOption'(newVal) {
             if (newVal) {
                 this.updateOptionThrottled(newVal);
             }
@@ -163,9 +155,9 @@ export default {
 
         'shared.allOptionExamples'(newVal) {
             // Use the first example as default.
-            this.exampleName = newVal[0].name;
+            this.shared.currentExampleName = newVal[0].name;
         },
-        'exampleName'(newVal) {
+        'shared.currentExampleName'(newVal) {
             this.changeExample(newVal);
         }
     },
@@ -177,14 +169,30 @@ export default {
             leading: false
         }),
 
+        resize() {
+            const examplePanel = this.$el;
+            const previewMain = examplePanel.querySelector('.preview-main');
+            if (this.isDownLayout) {
+                examplePanel.style.height = (window.innerHeight * 0.45 - 60) + 'px';
+                examplePanel.style.width = 'auto';
+            }
+            else {
+                examplePanel.style.width = examplePanel.parentNode.clientWidth * 0.45 + 'px';
+                examplePanel.style.height = 'auto';
+            }
+            if (this.chartInstance) {
+                this.chartInstance.resize();
+            }
+        },
+
         refreshForce: function () {
             // Dispose first
-            if (this.shared.currentPreviewOption) {
+            if (this.shared.currentExampleOption) {
                 if (this.chartInstance) {
                     this.chartInstance.dispose();
                     this.chartInstance = null;
                 }
-                this.updateOption(this.shared.currentPreviewOption);
+                this.updateOption(this.shared.currentExampleOption);
             }
         },
 
@@ -196,18 +204,18 @@ export default {
             const example = this.shared.allOptionExamples &&
                 this.shared.allOptionExamples.find(item => item.name === exampleName);
             if (!example) {
-                this.shared.currentPreviewOption = null;
+                this.shared.currentExampleOption = null;
                 return false;
             }
             const code = example.code;
             const func = new Function(code + '\n return option');
-            this.shared.currentPreviewOption = Object.freeze(func());
+            this.shared.currentExampleOption = Object.freeze(func());
         }
     },
 
     computed: {
         optionCodeStr() {
-            return `const option = ${JSON.stringify(this.shared.currentPreviewOption)}`;
+            return `const option = ${JSON.stringify(this.shared.currentExampleOption)}`;
         },
 
         formattedOptionCodeStr() {
@@ -223,13 +231,10 @@ export default {
 
 #example-panel {
     position: fixed;
-    top: 0;
-    bottom: 0;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-    top: 40px;
     padding: 10px 0px;
-    right: 10px;
     text-align: left;
+    background: #fff;
 
     // background: #162436;
     // border-left: 1px solid #ddd;
@@ -262,14 +267,10 @@ export default {
         top: 0;
     }
     .preview-main {
-        width: 100%;
         background: #fefefe;
-        height: 50%;
     }
 
     .example-code {
-        width: 100%;
-        height: 50%;
         position: relative;
 
         // h4 {
@@ -291,6 +292,39 @@ export default {
         position: absolute;
         top: 20px;
         right: 10px;
+    }
+
+
+    &.right-layout {
+        bottom: 0;
+        top: 40px;
+        right: 10px;
+
+        .preview-main {
+            width: 100%;
+            height: 50%;
+        }
+        .example-code {
+            width: 100%;
+            height: 50%;
+        }
+    }
+
+    &.down-layout {
+        left: 300px;
+        bottom: 0;
+        right: 0;
+
+        .preview-main {
+            width: 50%;
+            height: 100%;
+            float: left;
+        }
+        .example-code {
+            width: 50%;
+            height: 100%;
+            float: left;
+        }
     }
 }
 

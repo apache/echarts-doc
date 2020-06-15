@@ -27,22 +27,6 @@
             <!-- Always create a new component if page is changed -->
             <DocContent v-else-if="shared.currentPath" :key="pagePath"></DocContent>
             <!--  <Home v-else></Home> -->
-            <!-- <template v-else>
-                <el-container v-if="!isExampleTopDownPlayout">
-                    <el-main style="padding: 0 0 0 0">
-                        <DocContent :key="pagePath"></DocContent>
-                    </el-main>
-                    <el-aside width="45%" style="padding: 10px;">
-                        <LiveExample></LiveExample>
-                    </el-aside>
-                </el-container>
-                <div v-else>
-                    <DocContent :key="pagePath"></DocContent>
-                    <div class="live-example-bottom-container">
-                        <LiveExample></LiveExample>
-                    </div>
-                </div>
-            </template> -->
         </el-main>
     </el-container>
 </template>
@@ -70,10 +54,6 @@ export default {
     computed: {
         pagePath() {
             return getPagePath();
-        },
-        isExampleTopDownPlayout() {
-            // TODO
-            return false;
         }
     },
 

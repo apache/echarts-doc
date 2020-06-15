@@ -103,8 +103,8 @@ export default {
     watch: {
         enableUIControl(newVal) {
             if (!newVal) {
-                this.shared.currentPreviewOption = Object.freeze(changeOption(
-                    this.shared.currentPreviewOption, this.nodeData.path, undefined
+                this.shared.currentExampleOption = Object.freeze(changeOption(
+                    this.shared.currentExampleOption, this.nodeData.path, undefined
                 ));
             }
             else {
@@ -327,13 +327,13 @@ $hierarchy-guider-color: #C592A0;
     &.level-2 {
         &>h4 {
             .anchor {
-                font-size: 18px;
+                font-size: 16px;
             }
             .path-parent {
                 font-size: 14px;
             }
             .path-base {
-                font-size: 18px;
+                font-size: 16px;
             }
         }
     }

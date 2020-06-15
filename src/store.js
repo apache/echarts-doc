@@ -14,9 +14,10 @@ export const store = {
 
     locale: 'zh',
 
-    showOptionExample: false,
+    showOptionExample: true,
     allOptionExamples: null,
-    currentPreviewOption: ''
+    currentExampleName: '',
+    currentExampleOption: ''
 };
 
 export function getPagePath() {

@@ -1,6 +1,10 @@
 <template>
     <div class="doc-main" v-loading="loading">
-        <div :class="['doc-content', shared.showOptionExample ? 'option-example-actived' : '']">
+        <div :class="[
+            'doc-content',
+            shared.showOptionExample ? 'option-example-actived' : '',
+            isExampleTopDownPlayout ? 'option-example-down-layout' : 'option-example-right-layout'
+        ]">
             <h2 :id="pageId">{{pageTitle}}</h2>
             <div
                 class="page-description"
@@ -22,7 +26,10 @@
                 ></DocContentItemCard>
             </div>
         </div>
-        <LiveExample v-if="shared.showOptionExample"></LiveExample>
+        <LiveExample
+            v-if="shared.showOptionExample && !shared.isMobile"
+            :isDownLayout="isExampleTopDownPlayout"
+        ></LiveExample>
     </div>
 </template>
 
@@ -65,7 +72,9 @@ export default {
             // Outline of this page
             pageOutline: {},
 
-            pageDescMap: {}
+            pageDescMap: {},
+
+            isExampleTopDownPlayout: false
         }
     },
 
@@ -112,9 +121,22 @@ export default {
         });
 
         this.updateCurrentPath(this.shared.currentPath, true);
+
+        this.resize = this.resize.bind(this);
+        window.addEventListener('resize', this.resize);
+
+        this.resize();
+    },
+
+    destroyed() {
+        window.removeEventListener('resize', this.resize);
     },
 
     methods: {
+        resize() {
+            this.isExampleTopDownPlayout = window.innerWidth < 1400;
+        },
+
         updateLazyload() {
             // console.log('Update lazy load');
             Vue.nextTick(() => {
@@ -233,8 +255,15 @@ export default {
     text-align: left;
 
     &.option-example-actived {
-        margin-right: 45%;
+
+        &.option-example-down-layout {
+            // margin-bottom: 45%;
+        }
+        &.option-example-right-layout {
+            margin-right: 45%;
+        }
     }
+
 
     h2 {
         color: #B03A5B;
