@@ -58,7 +58,8 @@
             :desc-map="descMap"
             :depth="depth + 1"
             :max-depth="maxDepth"
-            @toggle-expanded="bubbleEvent"
+            @toggle-expanded="bubbleEventToggleExapndedEvent"
+            @scroll-to-self="bubbleScrollToSelfEvent"
         ></DocContentItemCard>
     </div>
     <PropertiesList
@@ -108,6 +109,12 @@ export default {
                 ));
             }
             else {
+                // Let container scroll to the path because layout may be changed
+                // after control is open.
+                if (!this.shared.showOptionExample) {
+                    this.$emit('scroll-to-self', this.nodeData.path, 300, 100);
+                }
+
                 this.shared.showOptionExample = true;
             }
         }
@@ -179,12 +186,16 @@ export default {
     },
 
     methods: {
-        bubbleEvent() {
+        bubbleEventToggleExapndedEvent() {
             this.$emit('toggle-expanded');
         },
         toggleExpanded() {
             this.manualExpanded = !this.expanded;
             this.$emit('toggle-expanded');
+        },
+
+        bubbleScrollToSelfEvent(path, time, delay) {
+            this.$emit('scroll-to-self', path, time, delay);
         }
     }
 }

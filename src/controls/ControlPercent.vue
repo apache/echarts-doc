@@ -1,34 +1,49 @@
 <template>
 <div class="control-percent">
-    <el-slider
-        v-model="innerValue"
-        :min="min == null ? 0 : +min"
-        :max="max == null ? 100 : +max"
-        :step="step == null ? 1 : +step"
-        :format-tooltip="formatTooltip"
-         @change="onValueChange"
-    ></el-slider>
     <el-input-number
+        v-if="absoluteMode"
         controls-position="right"
-        v-model="innerValue"
+        v-model="absoluteValue"
         size="mini"
-        :min="min == null ? 0 : +min"
-        :max="max == null ? 100 : +max"
+        :min="min == null ? -1e4 : +min"
+        :max="max == null ? 1e4 : +max"
         :step="step == null ? 1 : +step"
          @change="onValueChange"
     >
     </el-input-number>
+    <div v-else>
+        <el-slider
+            v-model="innerValue"
+            :min="0"
+            :max="100"
+            :step="1"
+            :format-tooltip="formatTooltip"
+            @change="onValueChange"
+        ></el-slider>
+        <el-input-number
+            controls-position="right"
+            v-model="innerValue"
+            size="mini"
+            :min="0"
+            :max="100"
+            :step="1"
+            @change="onValueChange"
+        >
+        </el-input-number>
+    </div>
 </div>
 </template>
 
 <script>
 export default {
 
-    props: ['value', 'min', 'max', 'step'],
+    props: ['value', 'min', 'max', 'absolute', 'step'],
 
     data() {
         return {
-            innerValue: +this.value.replace('%', '')
+            innerValue: +this.value.replace('%', ''),
+            absoluteValue: 0,
+            absoluteMode: this.value.indexOf('%') >= 0
         }
     },
 

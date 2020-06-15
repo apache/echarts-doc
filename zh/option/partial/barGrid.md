@@ -1,3 +1,4 @@
+
 {{target:partial-barGrid}}
 
 ## barWidth(number|string) = 自适应
@@ -34,7 +35,7 @@
 
 ## barGap(string) = ${barGapDefault|default('30%')}
 
-<ExampleUIControlPercent default="30" min="-100" max="100" />
+<ExampleUIControlPercent default="30%"/>
 
 不同系列的柱间距离，为百分比（如 `'30%'`，表示柱子宽度的 `30%`）。
 
@@ -47,7 +48,7 @@
 
 ## barCategoryGap(string) = '20%'
 
-<ExampleUIControlPercent default="20" min="-100" max="100" />
+<ExampleUIControlPercent default="20%"/>
 
 同一系列的柱间距离，默认为类目间距的20%，可设固定值
 

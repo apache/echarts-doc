@@ -22,6 +22,7 @@
                     :desc-map="pageDescMap"
                     :max-depth="maxDepth"
                     :depth="1"
+                    @scroll-to-self="scrollTo"
                     @toggle-expanded="handleCardExpandToggle"
                 ></DocContentItemCard>
             </div>
