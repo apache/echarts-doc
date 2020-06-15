@@ -107,6 +107,9 @@ export default {
                     this.shared.previewOption, this.nodeData.path, undefined
                 ));
             }
+            else {
+                this.shared.showOptionExample = true;
+            }
         }
     },
 

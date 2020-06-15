@@ -1,6 +1,6 @@
 <template>
     <div class="doc-main" v-loading="loading">
-        <div class="doc-content">
+        <div :class="['doc-content', shared.showOptionExample ? 'option-example-actived' : '']">
             <h2 :id="pageId">{{pageTitle}}</h2>
             <div
                 class="page-description"
@@ -22,7 +22,7 @@
                 ></DocContentItemCard>
             </div>
         </div>
-        <LiveExample></LiveExample>
+        <LiveExample v-if="shared.showOptionExample"></LiveExample>
     </div>
 </template>
 
@@ -229,8 +229,12 @@ export default {
 }
 
 .doc-content {
-    margin-right: 45%;
     text-align: left;
+
+    &.option-example-actived {
+        margin-right: 45%;
+    }
+
     h2 {
         color: #B03A5B;
         font-size: 34px;

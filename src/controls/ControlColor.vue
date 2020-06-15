@@ -46,7 +46,8 @@ export default {
     }
 
     span {
-        font-size: 14px;
+        font-size: 12px;
+        font-weight: bold;
     }
 }
 </style>

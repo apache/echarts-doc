@@ -1,29 +1,42 @@
 <template>
 <div class="control-vector">
-    <div v-for="(dim, index) in dimsArr"
-        :key="index">
-        <label>{{dim}}:</label>
-        <el-input-number
-            v-model="innerValue[index]"
-            controls-position="right"
-            :min="+min"
-            :max="max == null ? 1e4 : +max"
-            :step="step == null ? 1 : +step"
-            size="mini"
-             @change="onValueChange"
-        ></el-input-number>
+    <el-switch v-model="innerSeparate" :active-text="$t('example.vectorSetSeparate')"></el-switch>
+    <div v-if="innerSeparate" class="control-vector-group">
+        <div v-for="(dim, index) in dimsArr"
+            :key="index">
+            <label>{{dim}}:</label>
+            <el-input-number
+                v-model="innerValueArr[index]"
+                controls-position="right"
+                :min="+min"
+                :max="max == null ? 1e4 : +max"
+                :step="step == null ? 1 : +step"
+                size="mini"
+                @change="onValueChange"
+            ></el-input-number>
+        </div>
     </div>
+    <el-input-number v-else
+        v-model="innerValueArr[0]"
+        controls-position="right"
+        size="mini"
+        :min="+min"
+        :max="max == null ? 1e4 : +max"
+        :step="step == null ? 1 : +step"
+        @change="onValueChange"
+    ></el-input-number>
 </div>
 </template>
 
 <script>
 export default {
 
-    props: ['value', 'min', 'max', "step", 'dims'],
+    props: ['value', 'separate', 'min', 'max', "step", 'dims'],
 
     data() {
         return {
-            innerValue: this.value.slice()
+            innerSeparate: this.separate || false,
+            innerValueArr: this.value.slice()
         };
     },
 
@@ -35,13 +48,18 @@ export default {
 
     watch:  {
         value(newVal) {
-            this.innerValue = newVal;
+            this.innerValueArr = newVal;
         }
     },
 
     methods: {
         onValueChange() {
-            this.$emit('change', this.innerValue);
+            if (!this.innerSeparate) {
+                for (let i = 1; i < this.innerValueArr.length; i++) {
+                    this.innerValueArr[i] = this.innerValueArr[0];
+                }
+            }
+            this.$emit('change', this.innerValueArr.slice());
         }
     }
 }
@@ -54,6 +72,13 @@ export default {
         margin-left: 8px;
         font-size: 12px;
         font-weight: bold;
+    }
+
+    .control-vector-group {
+        &>div {
+            display: inline-block;
+            margin-left: 5px;
+        }
     }
     .el-input-number {
         width: 90px;

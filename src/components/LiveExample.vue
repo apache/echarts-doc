@@ -8,6 +8,17 @@
         <div class="example-code">
             <div class="codemirror-main"></div>
         </div>
+        <el-alert
+            :title="$t('example.setOptionError')"
+            v-if="hasError"
+            type="error"
+        >
+        </el-alert>
+    </div>
+    <div class="toolbar">
+        <el-select size='mini' class="example-list"></el-select>
+        <el-button type="primary" icon="el-icon-refresh" size="mini" @click="refreshForce">刷新</el-button>
+        <el-button size='mini' @click="closeExamplePanel">关闭</el-button>
     </div>
 </div>
 </template>
@@ -42,6 +53,8 @@ function fetchECharts() {
 
 function updateOption(option) {
     const viewport = this.$el.querySelector('.preview-main');
+    // Clear error msg.
+    this.hasError = false;
     if (typeof echarts === 'undefined') {
         fetchECharts().then(() => {
             if (!this.echartsInstance) {
@@ -54,7 +67,14 @@ function updateOption(option) {
         if (!this.echartsInstance) {
             this.chartInstance = echarts.init(viewport);
         }
-        this.chartInstance.setOption(option, true);
+        try {
+            this.chartInstance.setOption(option, true);
+        }
+        catch (e) {
+            // 一些属性切换的时候可能会出现一些位置的错误
+            console.error(e);
+            this.hasError = true
+        }
     }
 
     if (!this.cmInstance) {
@@ -76,7 +96,9 @@ export default {
 
     data() {
         return {
-            shared: store
+            shared: store,
+
+            hasError: false
         };
     },
 
@@ -93,6 +115,17 @@ export default {
         }
         window.addEventListener('resize', resize);
         resize();
+
+        if (this.shared.previewOption) {
+            this.updateOptionThrottled(this.shared.previewOption);
+        }
+    },
+
+    destroyed() {
+        if (this.chartInstance) {
+            this.chartInstance.dispose();
+            this.chartInstance = null;
+        }
     },
 
     watch: {
@@ -108,7 +141,22 @@ export default {
 
         updateOptionThrottled: throttle(updateOption, 300, {
             leading: false
-        })
+        }),
+
+        refreshForce: function () {
+            // Dispose first
+            if (this.shared.previewOption) {
+                if (this.chartInstance) {
+                    this.chartInstance.dispose();
+                    this.chartInstance = null;
+                }
+                this.updateOption(this.shared.previewOption);
+            }
+        },
+
+        closeExamplePanel() {
+            this.shared.showOptionExample = false;
+        }
     },
 
     computed: {
@@ -154,6 +202,7 @@ export default {
         font-size: 12px;
     }
 
+
     .preview-and-code {
         position: absolute;
         top: 90px;
@@ -162,6 +211,10 @@ export default {
         right: 0;
     }
 
+    .el-alert {
+        position: absolute;
+        top: 0;
+    }
     .preview-main {
         width: 100%;
         background: #fefefe;
@@ -186,6 +239,12 @@ export default {
                 overflow-y: scroll;
             }
         }
+    }
+
+    .toolbar {
+        position: absolute;
+        top: 20px;
+        right: 10px;
     }
 }
 

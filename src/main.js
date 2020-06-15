@@ -17,7 +17,9 @@ import {
     Footer,
     Switch,
     ColorPicker,
-    InputNumber
+    InputNumber,
+    Select,
+    Alert
 } from 'element-ui';
 import {preload} from './docHelper';
 // import 'element-ui/lib/theme-chalk/index.css';
@@ -45,6 +47,8 @@ Vue.use(Popover);
 Vue.use(Switch);
 Vue.use(ColorPicker);
 Vue.use(InputNumber);
+Vue.use(Select);
+Vue.use(Alert);
 
 /**
  *

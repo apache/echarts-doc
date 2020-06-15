@@ -14,6 +14,8 @@ export const store = {
 
     locale: 'zh',
 
+    showOptionExample: false,
+
     previewOption: ''
 };
 

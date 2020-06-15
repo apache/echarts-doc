@@ -24,7 +24,11 @@ export default {
             tryDesc: 'Try It',
 
             defaultColor: 'Default Color',
-            booleanDesc: 'Enable'
+            booleanDesc: 'Enable',
+
+            vectorSetSeparate: 'Separately',
+
+            setOptionError: 'Something Unexpected Happerns. Click refresh to try again!'
         }
     },
     zh: {
@@ -53,7 +57,11 @@ export default {
 
             tryDesc: '试一试',
             defaultColor: '默认颜色',
-            booleanDesc: '开启该功能'
+            booleanDesc: '开启该功能',
+
+            vectorSetSeparate: '分别设置',
+
+            setOptionError: '发生了一些意料之外的错误，点击刷新再试试！'
         }
     }
 };
