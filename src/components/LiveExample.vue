@@ -47,14 +47,14 @@ function updateOption(option) {
             if (!this.echartsInstance) {
                 this.chartInstance = echarts.init(viewport);
             }
-            this.chartInstance.setOption(option);
+            this.chartInstance.setOption(option, true);
         })
     }
     else {
         if (!this.echartsInstance) {
             this.chartInstance = echarts.init(viewport);
         }
-        this.chartInstance.setOption(option);
+        this.chartInstance.setOption(option, true);
     }
 
     if (!this.cmInstance) {

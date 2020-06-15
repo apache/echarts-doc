@@ -4,7 +4,7 @@
         :key="index">
         <label>{{dim}}:</label>
         <el-input-number
-            v-model="value[index]"
+            v-model="innerValue[index]"
             controls-position="right"
             :min="+min"
             :max="max == null ? 1e4 : +max"
@@ -23,7 +23,7 @@ export default {
 
     data() {
         return {
-            innerValue: this.value
+            innerValue: this.value.slice()
         };
     },
 
