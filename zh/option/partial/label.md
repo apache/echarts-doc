@@ -13,7 +13,7 @@ ${name}图形上的文本标签，可用于说明图形的一些数据信息，�
 {{ if: !${noPosition} }}
 #${prefix} position(string|Array) = ${defaultPosition}
 
-<ExampleUIControlEnum default="${defaultPosition|default('inside')}" options="top,left,right,bottom,inside,insideLeft,insideRight,insideTop,insideBottom,insideTopLeft,insideBottomLeft,insideTopRight,insideBottomRight" />
+<ExampleUIControlEnum options="top,left,right,bottom,inside,insideLeft,insideRight,insideTop,insideBottom,insideTopLeft,insideBottomLeft,insideTopRight,insideBottomRight" />
 
 {{use:partial-label-position}}
 {{ /if }}

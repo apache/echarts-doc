@@ -22,7 +22,7 @@ ${name} line width.
 
 ${name} line type.
 
-Options are: 
+Options are:
 + `'solid'`
 + `'dashed'`
 + `'dotted'`

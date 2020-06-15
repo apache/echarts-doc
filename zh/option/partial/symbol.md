@@ -2,6 +2,8 @@
 
 #${prefix} symbol(string{{ if: ${hasCallback} }}|Function{{ /if}}) = ${defaultSymbol}
 
+<ExampleUIControlEnum default="circle" options="circle,rect,roundRect,triangle,diamond,pin,arrow,none" />
+
 ${name}标记的图形。
 
 {{ use: partial-icon }}
@@ -16,6 +18,8 @@ ${name}标记的图形。
 
 #${prefix} symbolSize(number|Array{{ if: ${hasCallback} }}|Function{{ /if}}) = ${defaultSymbolSize}
 
+<ExampleUIControlNumber min="0" />
+
 ${name}标记的大小，可以设置成诸如 `10` 这样单一的数字，也可以用数组分开表示宽和高，例如 `[20, 10]` 表示标记宽为`20`，高为`10`。
 
 {{ if: ${hasCallback} }}
@@ -27,6 +31,8 @@ ${name}标记的大小，可以设置成诸如 `10` 这样单一的数字，也�
 {{ /if }}
 
 #${prefix} symbolRotate(number{{ if: ${hasCallback} }}|Function{{ /if}})
+
+<ExampleUIControlAngle min="-180" max="180" step="1" />
 
 ${name}标记的旋转角度（而非弧度）。正值表示逆时针旋转。注意在 `markLine` 中当 `symbol` 为 `'arrow'` 时会忽略 `symbolRotate` 强制设置为切线的角度。
 
@@ -45,6 +51,8 @@ ${name}标记的旋转角度（而非弧度）。正值表示逆时针旋转。�
 如果 `symbol` 是 `path://` 的形式，是否在缩放时保持该图形的长宽比。
 
 #${prefix} symbolOffset(Array) = [0, 0]
+
+<ExampleUIControlVector separate="true" dims="x,y" />
 
 ${name}标记相对于原本位置的偏移。默认情况下，标记会居中置放在数据对应的位置，但是如果 symbol 是自定义的矢量路径或者图片，就有可能不希望 symbol 居中。这时候可以使用该配置项配置 symbol 相对于原本居中的偏移，可以是绝对的像素值，也可以是相对的百分比。
 
