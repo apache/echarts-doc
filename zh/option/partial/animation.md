@@ -2,6 +2,8 @@
 
 #${prefix} animation(boolean) = ${defaultAnimation|default(true)}
 
+<ExampleUIControlBoolean default="${defaultAnimation|default(true)}" />
+
 是否开启动画。
 
 
@@ -19,6 +21,8 @@
 
 
 #${prefix} animationDurationUpdate(number|Function) = ${defaultAnimationDurationUpdate|default(300)}
+
+<ExampleUIControlNumber min="0" default="${defaultAnimationDuration|default(1000)}" step="20" />
 
 数据更新动画的时长。
 
@@ -55,6 +59,8 @@ animationDelayUpdate: function (idx) {
 {{ target: partial-animation-init}}
 
 #${prefix} animationDuration(number|Function) = ${defaultAnimationDuration|default(1000)}
+
+<ExampleUIControlNumber min="0" default="${defaultAnimationDuration|default(1000)}" step="20" />
 
 初始动画的时长，支持回调函数，可以通过每个数据返回不同的时长实现更戏剧的初始动画效果：
 

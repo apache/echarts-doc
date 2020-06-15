@@ -157,4 +157,9 @@ export default {
         }
     }
 }
+
+// For dropdown select in global
+.el-select-dropdown.el-popper {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 </style>

@@ -309,8 +309,11 @@ export default {
 }
 
 .ec-doc-mobile {
-    .doc-content {
+    .doc-main {
         margin-left: 0;
+    }
+
+    .doc-content {
         background: #f2f2f2;
         margin-bottom: 100px;
     }

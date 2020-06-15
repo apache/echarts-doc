@@ -3,7 +3,7 @@
     <el-input-number
         v-model="innerValue"
         controls-position="right"
-        :min="+min"
+        :min="min == null ? -1e4 : +min"
         :max="max == null ? 1e4 : +max"
         :step="step == null ? 1 : +step"
         size="mini"
@@ -40,7 +40,7 @@ export default {
 <style lang="scss">
 .control-number {
     .el-input-number {
-        width: 90px;
+        width: 120px;
     }
 }
 </style>

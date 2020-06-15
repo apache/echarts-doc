@@ -14,7 +14,7 @@ export const store = {
 
     locale: 'zh',
 
-    showOptionExample: true,
+    showOptionExample: false,
     allOptionExamples: null,
     currentExampleName: '',
     currentExampleOption: ''

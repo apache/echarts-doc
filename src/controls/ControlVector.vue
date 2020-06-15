@@ -8,7 +8,7 @@
             <el-input-number
                 v-model="innerValueArr[index]"
                 controls-position="right"
-                :min="+min"
+                :min="min == null ? -1e4 : +min"
                 :max="max == null ? 1e4 : +max"
                 :step="step == null ? 1 : +step"
                 size="mini"
@@ -20,7 +20,7 @@
         v-model="innerValueArr[0]"
         controls-position="right"
         size="mini"
-        :min="+min"
+        :min="min == null ? -1e4 : +min"
         :max="max == null ? 1e4 : +max"
         :step="step == null ? 1 : +step"
         @change="onValueChange"
@@ -35,7 +35,7 @@ export default {
 
     data() {
         return {
-            innerSeparate: this.separate || false,
+            innerSeparate: this.separate === 'true',
             innerValueArr: this.value.slice()
         };
     },

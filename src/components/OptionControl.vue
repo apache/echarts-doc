@@ -14,19 +14,30 @@ import ControlColor from '../controls/ControlColor.vue';
 import ControlBoolean from '../controls/ControlBoolean.vue';
 import ControlNumber from '../controls/ControlNumber.vue';
 import ControlVector from '../controls/ControlVector.vue';
+import ControlEnum from '../controls/ControlEnum.vue';
+import ControlPercent from '../controls/ControlPercent.vue';
 import {store, changeOption} from '../store';
 
 const uiComponentMap = {
     boolean: ControlBoolean,
     color: ControlColor,
     number: ControlNumber,
-    vector: ControlVector
+    vector: ControlVector,
+    enum: ControlEnum,
+    // Use number for angle temporary
+    angle: ControlNumber,
+    percent: ControlPercent
 };
 
 const uiComponentDefault = {
     boolean: () => false,
     color: () => null,
     number: () => 0,
+    angle: () => 0,
+    percent: () => '50',
+    enum: (controlConfig) => {
+        return controlConfig.options.split(',')[0].trim();
+    },
     vector: (conntrolConfig) => {
         if (!conntrolConfig.dims) {
             throw new Error('Must specify dims in vector');
@@ -89,7 +100,5 @@ export default {
 </script>
 
 <style lang="scss">
-.option-control {
-    margin-top: 10px;
-}
+
 </style>

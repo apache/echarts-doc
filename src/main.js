@@ -20,7 +20,8 @@ import {
     InputNumber,
     Select,
     Option,
-    Alert
+    Alert,
+    Slider
 } from 'element-ui';
 import {preload} from './docHelper';
 // import 'element-ui/lib/theme-chalk/index.css';
@@ -51,6 +52,7 @@ Vue.use(InputNumber);
 Vue.use(Select);
 Vue.use(Option);
 Vue.use(Alert);
+Vue.use(Slider);
 
 /**
  *

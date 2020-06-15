@@ -2,7 +2,7 @@
 
 #${prefix} shadowBlur(number) = ${defaultShadowBlur}
 
-<ExampleUIControlNumber value="0" min="0" step="0.5" />
+<ExampleUIControlNumber default="${defaultShadowBlur}" min="0" step="0.5" />
 
 图形阴影的模糊大小。该属性配合 `shadowColor`,`shadowOffsetX`, `shadowOffsetY` 一起设置图形的阴影效果。
 
@@ -21,7 +21,7 @@
 
 #${prefix} shadowColor(Color) = ${defaultShadowColor}
 
-<ExampleUIControlColor value="#000" />
+<ExampleUIControlColor default="${defaultShadowColor}" />
 
 阴影颜色。支持的格式同`color`。
 
@@ -32,7 +32,7 @@
 
 #${prefix} shadowOffsetX(number) = ${defaultShadowOffsetX|default(0)}
 
-<ExampleUIControlNumber value="0" step="0.5" />
+<ExampleUIControlNumber default="${defaultShadowOffsetX|default(0)}" step="0.5" />
 
 阴影水平方向上的偏移距离。
 
@@ -43,7 +43,7 @@
 
 #${prefix} shadowOffsetY(number) = ${defaultShadowOffsetY|default(0)}
 
-<ExampleUIControlNumber value="0" step="0.5" />
+<ExampleUIControlNumber default="${defaultShadowOffsetY|default(0)}" step="0.5" />
 
 阴影垂直方向上的偏移距离。
 
@@ -55,9 +55,9 @@
 
 {{target:partial-style-opacity}}
 
-#${prefix} opacity(number) = ${defaultOpacity}
+#${prefix} opacity(number) = ${defaultOpacity|default(1)}
 
-<ExampleUIControlNumber value="0" min="0" max="1" />
+<ExampleUIControlNumber default="${defaultOpacity|default(1)}" min="0" max="1" step="0.01" />
 
 图形透明度。支持从 0 到 1 的数字，为 0 时不绘制该图形。
 

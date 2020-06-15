@@ -7,7 +7,7 @@
 柱状/条形图 通过 柱形的高度/条形的宽度 来表现数据的大小，用于有至少一个类目轴或时间轴的[直角坐标系](~grid)上。
 
 
-<ExampleBaseOption name="cartesian-bar" title="直角坐标系上的单系列柱状图">
+<ExampleBaseOption name="cartesian-bar" title="直角坐标系上的柱状图">
 const option = {
     tooltip: {},
     legend: {
@@ -22,6 +22,29 @@ const option = {
         type: 'bar',
         data: [5, 20, 36, 10, 10, 20]
     }]
+};
+</ExampleBaseOption>
+
+<ExampleBaseOption name="polar-bar" title="极坐标系上的柱状图">
+const option = {
+    angleAxis: {
+        max: 30
+    },
+    radiusAxis: {
+        type: 'category',
+        data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"],
+        z: 10
+    },
+    polar: {},
+    series: [{
+        name: '销量',
+        type: 'bar',
+        data: [5, 20, 36, 10, 10, 20],
+        coordinateSystem: 'polar'
+    }],
+    legend: {
+        data: ['销量']
+    },
 };
 </ExampleBaseOption>
 
@@ -276,6 +299,8 @@ option = {
 柱条的描边宽度，默认不描边。
 
 #${prefix} borderType(string) = 'solid'
+
+<ExampleUIControlEnum default="solid" options="solid,dashed,dotted" />
 
 柱条的描边类型，默认为实线，支持 `'dashed'`, `'dotted'`。
 

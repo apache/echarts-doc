@@ -173,7 +173,7 @@ export default {
             const examplePanel = this.$el;
             const previewMain = examplePanel.querySelector('.preview-main');
             if (this.isDownLayout) {
-                examplePanel.style.height = (window.innerHeight * 0.45 - 60) + 'px';
+                examplePanel.style.height = (window.innerHeight * 0.5 - 60) + 'px';
                 examplePanel.style.width = 'auto';
             }
             else {
@@ -292,6 +292,10 @@ export default {
         position: absolute;
         top: 20px;
         right: 10px;
+
+        .example-list {
+            width: 220px;
+        }
     }
 
 

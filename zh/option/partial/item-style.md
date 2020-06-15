@@ -28,6 +28,8 @@ ${name}描边线宽。为 0 时无描边。
 
 #${prefix} borderType(string) = 'solid'
 
+<ExampleUIControlEnum default="solid" options="solid,dashed,dotted" />
+
 柱条的描边类型，默认为实线，支持 `'solid'`, `'dashed'`, `'dotted'`。
 
 {{ use:partial-style-shadow-opacity(

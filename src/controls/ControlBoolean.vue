@@ -9,7 +9,7 @@ export default {
     props: ['value'],
     data() {
         return {
-            innerValue: this.value
+            innerValue: this.value === 'true'
         }
     },
 
