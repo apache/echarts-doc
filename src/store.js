@@ -43,8 +43,10 @@ export function isOptionDoc() {
 
 export function changeOption(option, path, value) {
 
-    function changeOptionRecursive(obj, pathParts, objKey) {
+    function changeOptionRecursive(obj, pathParts, objKey, nodePath) {
         const itemStr = pathParts.shift();
+        nodePath = (nodePath ? (nodePath + '.') : '') + itemStr;
+
         if (typeof obj !== 'object' && objKey === 'data') {
             // Convert number to object
             obj = {
@@ -69,29 +71,36 @@ export function changeOption(option, path, value) {
         const key = subtypeItems[0];
         const subtype = subtypeItems[1];
         // TODO: If prop not exists and it should be an array.
-        const prop = obj[key] == null ? {} : obj[key];
+        if (obj[key] == null) {
+            const outlineNode = getOutlineNode(nodePath);
+            obj[key] = (outlineNode && outlineNode.isArray) ? [] : {};
+        }
+        const prop = obj[key];
         if (Array.isArray(prop)) {
             if (key === 'series') { // Only set all on series.
                 obj[key] = prop.map(function (childObj, idx) {
                     if (subtype && childObj.type !== subtype) {
                         return childObj;
                     }
-                    return changeOptionRecursive(childObj, pathParts.slice(), key);
+                    return changeOptionRecursive(childObj, pathParts.slice(), key, nodePath);
                 });
             }
-            // Only change the first one.
-            // TODO: Should be able to choose the index.
-            prop[0] && (prop[0] = changeOptionRecursive(prop[0], pathParts.slice(), key));
+            else {
+                // Only change the first one.
+                // TODO: Should be able to choose the index.
+                obj[key] = prop.slice();
+                obj[key][0] = changeOptionRecursive(obj[key][0] || {}, pathParts.slice(), key, nodePath);
+            }
         }
         else {
             if (subtype && prop.type !== subtype) {
                 obj[key] = prop;
             }
-            obj[key] = changeOptionRecursive(prop, pathParts.slice(), key);
+            obj[key] = changeOptionRecursive(prop, pathParts.slice(), key, nodePath);
         }
 
         return obj;
     }
 
-    return changeOptionRecursive(option, path.split('.'), '');
+    return changeOptionRecursive(option, path.split('.'), '', '');
 }

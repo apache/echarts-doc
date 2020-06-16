@@ -464,7 +464,7 @@ function(nodeA, nodeB) {
 
 
 
-## levels(Array) = []
+## levels(Array)
 
 **多层配置**
 

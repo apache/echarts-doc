@@ -200,8 +200,7 @@ const data = [{
 const option = {
     series: {
         type: 'treemap',
-        data: data,
-        levels: [{}, {}, {}]
+        data: data
     }
 };
 
@@ -280,7 +279,7 @@ const option = {
 点击某个节点，会自动放大那个节点到合适的比例（节点占可视区域的面积比例），这个配置项就是这个比例。
 
 
-## levels(Array) = []
+## levels(Array)
 
 **多层配置**
 
