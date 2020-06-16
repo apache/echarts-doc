@@ -43,42 +43,55 @@ export function isOptionDoc() {
 
 export function changeOption(option, path, value) {
 
-    function changeOptionRecursive(obj, pathParts) {
-        const item = pathParts.shift();
+    function changeOptionRecursive(obj, pathParts, objKey) {
+        const itemStr = pathParts.shift();
+        if (typeof obj !== 'object' && objKey === 'data') {
+            // Convert number to object
+            obj = {
+                value: obj
+            };
+        }
+
         // Clone a new object because the original one is freezed and cant be changed.
         obj = Object.assign({}, obj);
         if (!pathParts.length) {
             if (value === undefined) {
-                delete obj[item];
+                delete obj[itemStr];
                 return obj;
             }
             else {
-                obj[item] = value;
+                obj[itemStr] = value;
                 return obj;
             }
         }
 
-        const subtypeItems = item.split('-');
+        const subtypeItems = itemStr.split('-');
         const key = subtypeItems[0];
         const subtype = subtypeItems[1];
-        const prop = obj[key] || {};
+        // TODO: If prop not exists and it should be an array.
+        const prop = obj[key] == null ? {} : obj[key];
         if (Array.isArray(prop)) {
-            obj[key] = prop.map(function (childObj, idx) {
-                if (subtype && childObj.type !== subtype) {
-                    return childObj;
-                }
-                return changeOptionRecursive(childObj, pathParts.slice());
-            });
+            if (key === 'series') { // Only set all on series.
+                obj[key] = prop.map(function (childObj, idx) {
+                    if (subtype && childObj.type !== subtype) {
+                        return childObj;
+                    }
+                    return changeOptionRecursive(childObj, pathParts.slice(), key);
+                });
+            }
+            // Only change the first one.
+            // TODO: Should be able to choose the index.
+            prop[0] && (prop[0] = changeOptionRecursive(prop[0], pathParts.slice(), key));
         }
         else {
             if (subtype && prop.type !== subtype) {
                 obj[key] = prop;
             }
-            obj[key] = changeOptionRecursive(prop, pathParts.slice());
+            obj[key] = changeOptionRecursive(prop, pathParts.slice(), key);
         }
 
         return obj;
     }
 
-    return changeOptionRecursive(option, path.split('.'));
+    return changeOptionRecursive(option, path.split('.'), '');
 }

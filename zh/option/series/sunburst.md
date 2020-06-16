@@ -282,7 +282,6 @@ const data = [{
 
 const option = {
     series: {
-        radius: ['15%', '80%'],
         type: 'sunburst',
         data: data
     }
