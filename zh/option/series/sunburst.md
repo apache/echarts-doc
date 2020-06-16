@@ -2,6 +2,8 @@
 
 #${prefix} rotate(string|number) = 'radial'
 
+<ExampleUIControlEnum options="radial,tangential" default="radial" />
+
 如果是 `number` 类型，则表示标签的旋转角，从 -90 度到 90 度，正值是逆时针。
 
 除此之外，还可以是字符串 `'radial'` 表示径向旋转、`'tangential'` 表示切向旋转。
@@ -14,11 +16,15 @@
 
 #${prefix} align(string) = 'center'
 
+<ExampleUIControlEnum options="left,center,right" default="center" />
+
 文字对齐方式，可取值为：`'left'`、 `'center'`、 `'right'`。注意，`'left'` 是指靠近内圈，而 `'right'` 是指靠近外圈。
 
 ~[700x400](${galleryViewPath}doc-example/sunburst-label-align&edit=1&reset=1)
 
 #${prefix} minAngle(number) = null
+
+<ExampleUIControlAngle min="0" step="1" max="360" />
 
 当某个扇形块的角度小于该值（角度制）时，扇形块对应的文字不显示。该值用以隐藏过小扇形块中的文字。
 
@@ -125,6 +131,164 @@ ECharts 中，通常使用 *emphasis* 表示鼠标移动到图形上后的高亮
 
 旭日图默认支持数据下钻，也就是说，当用户点击了某个扇形块之后，将会以该节点作为根结点显示，并且在中间出现一个返回上层节点的圆。如果不希望有数据下钻功能，可以通过将 [series-sunburst.nodeClick](~series-treemap.nodeClick) 设置为 `false` 实现。
 
+<ExampleBaseOption name="sunburst" title="基础旭日图">
+const data = [{
+    name: 'Food',
+    children: [{
+        value: 5,
+        name: 'Fruit',
+        children: [{
+            value: 1,
+            name: 'Apple'
+        }, {
+            value: 2,
+            name: 'Orange',
+            children: [{
+                name: 'Seville Orange',
+                value: 1
+            }]
+        }, {
+            children: [{
+                name: 'Blood Orange',
+                value: 1
+            }]
+        }]
+    }, {
+        value: 10,
+        name: 'Meat',
+        children: [{
+            value: 6,
+            name: 'Beaf',
+            children: [{
+                name: 'Sirloin',
+                value: 1
+            }, {
+                name: 'Rib',
+                value: 1
+            }, {
+                name: 'Chuck',
+                value: 1
+            }, {
+                name: 'Shank',
+                value: 1
+            }]
+        }, {
+            value: 2,
+            name: 'Chicken',
+            children: [{
+                name: 'Wings',
+                value: 1
+            }]
+        }, {
+            children: [{
+                name: 'Breast',
+                value: 1
+            }]
+        }]
+    }]
+}, {
+    value: 9,
+    name: 'Drinks',
+    children: [{
+        value: 4,
+        name: 'Wine',
+        children: [{
+            name: 'USA',
+            value: 2
+        }, {
+            name: 'Europe',
+            children: [{
+                name: 'Germany',
+                value: 1
+            }]
+        }]
+    }, {
+        name: 'Soft Drink',
+        children: [{
+            value: 3,
+            name: 'Juice',
+            children: [{
+                name: 'Apple Juice',
+                value: 1
+            }, {
+                name: 'Orange Juice',
+                value: 1
+            }]
+        }]
+    }]
+}, {
+    value: 7,
+    name: 'Fashion',
+    children: [{
+        name: 'Clothing',
+        children: [{
+            name: 'Shirts',
+            value: 1
+        }, {
+            name: 'Jackets',
+            value: 3,
+            children: [{
+                name: 'Men',
+                value: 1
+            }, {
+                name: 'Woman',
+                value: 1
+            }]
+        }, {
+            value: 2,
+            name: 'Coats',
+            children: [{
+                name: 'Men',
+                value: 1
+            }, {
+                name: 'Woman',
+                value: 1
+            }]
+        }]
+    }]
+}, {
+    name: 'Computers',
+    children: [{
+        name: 'Components',
+        value: 6,
+        children: [{
+            name: 'Barebones',
+            value: 1
+        }, {
+            value: 2,
+            name: 'External',
+            children: [{
+                name: 'Hard Drives',
+                value: 2
+            }]
+        }, {
+            name: 'Monitors',
+            value: 1
+        }]
+    }, {
+        value: 3,
+        name: 'Other',
+        children: [{
+            name: 'USB',
+            value: 1,
+        }, {
+            name: 'Cases'
+        }, {
+            name: 'Sound Cards',
+            value: 1
+        }]
+    }]
+}];
+
+const option = {
+    series: {
+        radius: ['15%', '80%'],
+        type: 'sunburst',
+        data: data
+    }
+};
+
+</ExampleBaseOption>
 
 ## type(string) = 'sunburst'
 
@@ -219,6 +383,8 @@ ECharts 中，通常使用 *emphasis* 表示鼠标移动到图形上后的高亮
 
 ## highlightPolicy(string) = 'descendant'
 
+<ExampleUIControlEnum default="descendant" options="descendant,ancestor,none" />
+
 当鼠标移动到一个扇形块时，可以高亮相关的扇形块。**如果其值为 `'descendant'`，则会高亮该扇形块和后代元素，其他元素将被淡化（*downplay*，参见 [itemStyle](~series-sunburst.itemStyle)）；如果其值为 `'ancestor'`，则会高亮该扇形块和祖先元素；如果其值为 `'self'` 则只高亮自身；`'none'` 则不会淡化其他元素。**
 
 ~[700x350](${galleryViewPath}doc-example/sunburst-highlight-descendant&edit=1&reset=1)
@@ -255,6 +421,8 @@ downplay: {
 
 ## nodeClick(boolean|string) = 'rootToNode'
 
+<ExampleUIControlEnum default="rootToNode" options="rootToNode,link" />
+
 点击节点后的行为。可取值为：
 
 + `false`：节点点击无反应。
@@ -264,6 +432,8 @@ downplay: {
 
 
 ## sort(string|Function) = 'desc'
+
+<ExampleUIControlEnum default="desc" options="desc,asc" />
 
 扇形块根据数据 [`value`](~series-sunburst.data.value) 的排序方式，如果未指定 `value`，则其值为子元素 `value` 之和。默认值 `'desc'` 表示降序排序；还可以设置为 `'asc'` 表示升序排序；`null` 表示不排序，使用原始数据的顺序；或者用回调函数进行排列：
 
@@ -276,6 +446,8 @@ function(nodeA, nodeB) {
 
 
 ## renderLabelForZeroData(boolean) = false
+
+<ExampleUIControlBoolean />
 
 如果数据没有 `name`，是否需要渲染文字。
 

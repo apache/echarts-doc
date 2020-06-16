@@ -136,6 +136,9 @@ export default {
         if (this.shared.allOptionExamples) {
             this.shared.currentExampleName = this.shared.allOptionExamples[0].name;
         }
+        else {
+            this.shared.currentExampleName = ''
+        }
     },
 
     destroyed() {
@@ -155,7 +158,12 @@ export default {
 
         'shared.allOptionExamples'(newVal) {
             // Use the first example as default.
-            this.shared.currentExampleName = newVal[0].name;
+            if (newVal) {
+                this.shared.currentExampleName = newVal[0].name;
+            }
+            else {
+                this.shared.currentExampleName = '';
+            }
         },
         'shared.currentExampleName'(newVal) {
             this.changeExample(newVal);

@@ -223,8 +223,12 @@ function mdToJsonSchema(mdStr, maxDepth, imagePath) {
                     currentExampleCode = attrib;
                 }
                 else if (tagName.startsWith('exampleuicontrol')) {
+                    const type = tagName.replace('exampleuicontrol', '').toLowerCase();
+                    if (['boolean', 'color', 'number', 'vector', 'enum', 'angle', 'percent', 'percentvector'].indexOf(type) < 0) {
+                        console.error(`Unkown ExampleUIControl Type ${type}`);
+                    }
                     property.uiControl = {
-                        type: tagName.replace('exampleuicontrol', '').toLowerCase(),
+                        type,
                         ...attrib
                     };
                 }

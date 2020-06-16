@@ -55,6 +55,10 @@ export default {
     watch: {
         value(val) {
             this.percentValue = +this.value.replace('%', '');
+        },
+        mode() {
+            // Emit after mode changed.
+            this.onValueChange();
         }
     },
 
