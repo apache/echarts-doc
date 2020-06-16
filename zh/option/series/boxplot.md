@@ -15,6 +15,49 @@
 <br>
 <br>
 
+<ExampleBaseOption name="boxplot" title="盒须图">
+const option = {
+     title: [{
+             text: "Michelson-Morley Experiment",
+             left: "center"
+         }
+     ],
+     xAxis: {
+         type: "category",
+         data: ["0", "1", "2", "3", "4"],
+         boundaryGap: true,
+         nameGap: 30,
+         splitArea: {
+             show: false
+         },
+         axisLabel: {
+             formatter: "expr {value}"
+         },
+         splitLine: {
+             show: false
+         },
+     },
+     yAxis: {
+         type: "value",
+         name: "km/s minus 299,000",
+         splitArea: {
+             show: true,
+         },
+     },
+     series: [{
+         name: "boxplot",
+         type: "boxplot",
+         data: [
+             [655, 850, 940, 980, 1070],
+             [760, 800, 845, 885, 960],
+             [780, 840, 855, 880, 940],
+             [720, 767.5, 815, 865, 920],
+             [740, 807.5, 810, 870, 950],
+         ]
+     }]
+}
+</ExampleBaseOption>
+
 ## type(string) = 'boxplot'
 
 {{use: partial-component-id(prefix="#")}}
@@ -37,6 +80,8 @@
 
 ## layout(string) = null
 
+<ExampleUIControlEnum options="horizontal,vertical">
+
 布局方式，可选值：
 
 + `'horizontal'`：水平排布各个 box。
@@ -47,6 +92,8 @@
 
 
 ## boxWidth(Array) = [7, 50]
+
+<ExampleUIControlPercentVector default="7,50" min="0" dims="min,max" />
 
 box 的宽度的上下限。数组的意思是：`[min, max]`。
 

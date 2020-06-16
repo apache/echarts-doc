@@ -45,16 +45,22 @@ export default {
     props: ['value', 'min', 'max', 'step'],
 
     data() {
+        const isAbsolute = this.value.indexOf('%') < 0;
         return {
-            percentValue: +this.value.replace('%', ''),
-            absoluteValue: 0,
-            mode: this.value.indexOf('%') < 0 ? 'absolute' : 'percent'
+            percentValue: isAbsolute ? 50 : +this.value.replace('%', ''),
+            absoluteValue: isAbsolute ? +this.value : 0,
+            mode: isAbsolute ? 'absolute' : 'percent'
         }
     },
 
     watch: {
         value(val) {
-            this.percentValue = +this.value.replace('%', '');
+            if (this.mode === 'absolute') {
+                this.absoluteValue = + val;
+            }
+            else {
+                this.percentValue = +val.replace('%', '');
+            }
         },
         mode() {
             // Emit after mode changed.

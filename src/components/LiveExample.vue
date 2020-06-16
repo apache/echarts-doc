@@ -216,8 +216,15 @@ export default {
                 return false;
             }
             const code = example.code;
-            const func = new Function(code + '\n return option');
-            this.shared.currentExampleOption = Object.freeze(func());
+
+            try {
+                const func = new Function(code + '\n return option');
+                this.shared.currentExampleOption = Object.freeze(func());
+            }
+            catch(e) {
+                console.error(e);
+                console.log(code);
+            }
         }
     },
 
