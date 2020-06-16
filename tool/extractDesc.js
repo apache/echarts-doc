@@ -58,7 +58,7 @@ function convertToTree(rootSchema, rootNode) {
         if (schema.default != null) {
             nodeBase.default = schema.default;
         }
-        else if (schema.items) {    // Array also may has properties.
+        if (schema.items) {    // Array also may has properties.
             nodeBase.isArray = true;
         }
         else if (schema.properties && Object.keys(schema.properties).length) {
