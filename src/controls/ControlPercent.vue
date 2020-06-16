@@ -1,5 +1,6 @@
 <template>
 <div class="control-percent">
+    <el-switch v-model="absoluteMode" :active-text="$t('example.absoluteMode')"></el-switch>
     <el-input-number
         v-if="absoluteMode"
         controls-position="right"
@@ -13,7 +14,7 @@
     </el-input-number>
     <div v-else>
         <el-slider
-            v-model="innerValue"
+            v-model="percentValue"
             :min="0"
             :max="100"
             :step="1"
@@ -22,7 +23,7 @@
         ></el-slider>
         <el-input-number
             controls-position="right"
-            v-model="innerValue"
+            v-model="percentValue"
             size="mini"
             :min="0"
             :max="100"
@@ -41,7 +42,7 @@ export default {
 
     data() {
         return {
-            innerValue: +this.value.replace('%', ''),
+            percentValue: +this.value.replace('%', ''),
             absoluteValue: 0,
             absoluteMode: this.value.indexOf('%') >= 0
         }
@@ -49,13 +50,13 @@ export default {
 
     watch: {
         value(val) {
-            this.innerValue = +this.value.replace('%', '');
+            this.percentValue = +this.value.replace('%', '');
         }
     },
 
     methods: {
         onValueChange() {
-            this.$emit('change', this.innerValue + '%');
+            this.$emit('change', this.absoluteMode ? this.absoluteValue : this.percentValue + '%');
         },
         formatTooltip(val) {
             return val + '%';
@@ -66,6 +67,9 @@ export default {
 
 <style lang="scss">
 .control-percent {
+    &>div {
+        display: inline-block;
+    }
     .el-slider {
         width: 200px;
         display: inline-block;

@@ -404,7 +404,8 @@ $hierarchy-guider-color: #C592A0;
         display: inline-block;
     }
     .option-control {
-        display: inline-block;
+        // display: inline-block;
+        float: right;
     }
 
     .prop-type {

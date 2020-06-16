@@ -47,10 +47,5 @@ export default {
         display: inline-block;
         vertical-align: middle;
     }
-
-    span {
-        font-size: 12px;
-        font-weight: bold;
-    }
 }
 </style>

@@ -87,7 +87,7 @@ function updateOption(option) {
         catch (e) {
             // 一些属性切换的时候可能会出现一些位置的错误
             console.error(e);
-            this.hasError = true
+            this.hasError = true;
         }
     }
 

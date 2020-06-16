@@ -100,5 +100,7 @@ export default {
 </script>
 
 <style lang="scss">
-
+.option-control {
+    margin-top: 10px;
+}
 </style>

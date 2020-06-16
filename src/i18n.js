@@ -27,6 +27,7 @@ export default {
             booleanDesc: 'Enable',
 
             vectorSetSeparate: 'Separately',
+            absoluteMode: 'Absolute',
 
             setOptionError: 'Something Unexpected Happerns. Click refresh to try again!',
 
@@ -63,6 +64,7 @@ export default {
             booleanDesc: '开启该功能',
 
             vectorSetSeparate: '分别设置',
+            absoluteMode: '绝对值',
 
             setOptionError: '发生了一些意料之外的错误，点击刷新再试试！',
 
