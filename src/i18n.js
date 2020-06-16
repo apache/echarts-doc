@@ -26,8 +26,9 @@ export default {
             defaultColor: 'Default Color',
             booleanDesc: 'Enable',
 
-            vectorSetSeparate: 'Separately',
-            absoluteMode: 'Absolute',
+            vectorSetSeparate: 'SEPARATE',
+            absoluteMode: 'ABSOLUTE',
+            percentMode: 'PERCENT',
 
             setOptionError: 'Something Unexpected Happerns. Click refresh to try again!',
 
@@ -61,10 +62,11 @@ export default {
 
             tryDesc: '试一试',
             defaultColor: '默认颜色',
-            booleanDesc: '开启该功能',
+            booleanDesc: '开启',
 
             vectorSetSeparate: '分别设置',
             absoluteMode: '绝对值',
+            percentMode: '百分比',
 
             setOptionError: '发生了一些意料之外的错误，点击刷新再试试！',
 

@@ -4,7 +4,7 @@
     <div v-if="innerSeparate" class="control-vector-group">
         <div v-for="(dim, index) in dimsArr"
             :key="index">
-            <label>{{dim}}:</label>
+            <label>{{dim}}</label>
             <el-input-number
                 v-model="innerValueArr[index]"
                 controls-position="right"
@@ -36,7 +36,7 @@ export default {
     data() {
         return {
             innerSeparate: this.separate === 'true',
-            innerValueArr: this.value.slice()
+            innerValueArr: this.value.split(',').map(val => +val.trim())
         };
     },
 
@@ -48,7 +48,7 @@ export default {
 
     watch:  {
         value(newVal) {
-            this.innerValueArr = newVal;
+            this.innerValueArr = this.value.split(',').map(val => +val.trim());
         }
     },
 
@@ -82,6 +82,11 @@ export default {
     }
     .el-input-number {
         width: 90px;
+    }
+
+    label {
+        text-transform: uppercase;
+        margin-right: 5px;
     }
 }
 </style>

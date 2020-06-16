@@ -1,8 +1,12 @@
 <template>
 <div class="control-percent">
-    <el-switch v-model="absoluteMode" :active-text="$t('example.absoluteMode')"></el-switch>
+    <el-radio-group v-model="mode" size="mini">
+        <el-radio-button label="absolute">{{$t('example.absoluteMode')}}</el-radio-button>
+        <el-radio-button label="percent">{{$t('example.percentMode')}}</el-radio-button>
+    </el-radio-group>
+    <!-- <el-switch v-model="absoluteMode" :active-text="$t('example.absoluteMode')"></el-switch> -->
     <el-input-number
-        v-if="absoluteMode"
+        v-if="mode === 'absolute'"
         controls-position="right"
         v-model="absoluteValue"
         size="mini"
@@ -38,13 +42,13 @@
 <script>
 export default {
 
-    props: ['value', 'min', 'max', 'absolute', 'step'],
+    props: ['value', 'min', 'max', 'step'],
 
     data() {
         return {
             percentValue: +this.value.replace('%', ''),
             absoluteValue: 0,
-            absoluteMode: this.value.indexOf('%') >= 0
+            mode: this.value.indexOf('%') < 0 ? 'absolute' : 'percent'
         }
     },
 
@@ -56,7 +60,7 @@ export default {
 
     methods: {
         onValueChange() {
-            this.$emit('change', this.absoluteMode ? this.absoluteValue : this.percentValue + '%');
+            this.$emit('change', this.mode === 'absolute' ? this.absoluteValue : this.percentValue + '%');
         },
         formatTooltip(val) {
             return val + '%';
@@ -79,6 +83,13 @@ export default {
         display: inline-block;
         width: 90px;
         margin-left: 10px;
+    }
+    .el-radio-group {
+        margin-right: 10px;
+    }
+    .el-radio-button--mini .el-radio-button__inner {
+        padding: 5px 4px;
+        font-size: 10px;
     }
 }
 </style>

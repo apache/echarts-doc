@@ -21,7 +21,9 @@ import {
     Select,
     Option,
     Alert,
-    Slider
+    Slider,
+    RadioGroup,
+    RadioButton
 } from 'element-ui';
 import {preload} from './docHelper';
 // import 'element-ui/lib/theme-chalk/index.css';
@@ -53,6 +55,8 @@ Vue.use(Select);
 Vue.use(Option);
 Vue.use(Alert);
 Vue.use(Slider);
+Vue.use(RadioGroup);
+Vue.use(RadioButton);
 
 /**
  *

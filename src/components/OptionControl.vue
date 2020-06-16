@@ -17,6 +17,7 @@ import ControlVector from '../controls/ControlVector.vue';
 import ControlEnum from '../controls/ControlEnum.vue';
 import ControlPercent from '../controls/ControlPercent.vue';
 import {store, changeOption} from '../store';
+import ControlPercentVector from '../controls/ControlPercentVector.vue';
 
 const uiComponentMap = {
     boolean: ControlBoolean,
@@ -26,7 +27,8 @@ const uiComponentMap = {
     enum: ControlEnum,
     // Use number for angle temporary
     angle: ControlNumber,
-    percent: ControlPercent
+    percent: ControlPercent,
+    percentvector: ControlPercentVector
 };
 
 const uiComponentDefault = {
@@ -43,7 +45,15 @@ const uiComponentDefault = {
             throw new Error('Must specify dims in vector');
         }
         return conntrolConfig.dims.split(',')
-            .map(dim => 0)
+            .map(dim => 0).join(',');
+    },
+
+    percentvector: (conntrolConfig) => {
+        if (!conntrolConfig.dims) {
+            throw new Error('Must specify dims in vector');
+        }
+        return conntrolConfig.dims.split(',')
+            .map(dim => '50%').join(',');
     }
 }
 
