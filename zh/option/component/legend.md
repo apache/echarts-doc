@@ -44,6 +44,8 @@ ECharts 3 中单个 echarts 实例中可以存在多个图例组件，会方便�
 
 ## orient(string) = 'horizontal'
 
+<ExampleUIControlEnum options="vertical,horizontal" default="horizontal" />
+
 图例列表的布局朝向。
 
 可选：
@@ -51,6 +53,8 @@ ECharts 3 中单个 echarts 实例中可以存在多个图例组件，会方便�
 + `'vertical'`
 
 ## align(string) = 'auto'
+
+<ExampleUIControlEnum options="auto,left,right" default="auto" />
 
 图例标记和文本的对齐。默认自动，根据组件的位置和 orient 决定，当组件的 [left](~legend.left) 值为 `'right'` 以及纵向布局（[orient](~legend.orient) 为 `'vertical'`）的时候为右对齐，即为 `'right'`。
 
@@ -61,17 +65,25 @@ ECharts 3 中单个 echarts 实例中可以存在多个图例组件，会方便�
 
 ## padding(number|Array) = 5
 
+<ExampleUIControlVector dims="T,R,B,L" default="5" min="0" step="0.5" />
+
 {{ use: partial-padding(componentName="图例")}}
 
 ## itemGap(number) = 10
+
+<ExampleUIControlNumber default="10" min="0" step="0.5" />
 
 图例每项之间的间隔。横向布局时为水平间隔，纵向布局时为纵向间隔。
 
 ## itemWidth(number) = 25
 
+<ExampleUIControlNumber default="25" min="0" step="0.5" />
+
 图例标记的图形宽度。
 
 ## itemHeight(number) = 14
+
+<ExampleUIControlNumber default="14" min="0" step="0.5" />
 
 图例标记的图形高度。
 

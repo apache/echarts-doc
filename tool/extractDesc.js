@@ -148,6 +148,8 @@ function convertToTree(rootSchema, rootNode) {
 // }
 module.exports = function (schema, docName) {
     let descriptionsMap = {};
+    let propWithUIControlCount = 0;
+    let propTotalCount = 0;
     traverse(schema, docName, (schemaPath, schemaNode) => {
         if (schemaNode.description) {
             // Extract component level path
@@ -162,8 +164,15 @@ module.exports = function (schema, docName) {
                 exampleBaseOptions: schemaNode.exampleBaseOptions,
                 uiControl: schemaNode.uiControl
             };
+
+            propTotalCount++;
+            if (schemaNode.uiControl) {
+                propWithUIControlCount++;
+            }
         }
     });
+
+    console.log(`Options with UIControl ${propWithUIControlCount} / ${propTotalCount} (${propWithUIControlCount/propTotalCount})`);
 
     return {
         outline: convertToTree(schema.option, {}),

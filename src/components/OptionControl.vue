@@ -18,6 +18,7 @@ import ControlEnum from '../controls/ControlEnum.vue';
 import ControlPercent from '../controls/ControlPercent.vue';
 import {store, changeOption} from '../store';
 import ControlPercentVector from '../controls/ControlPercentVector.vue';
+import ControlText from '../controls/ControlText.vue';
 
 const uiComponentMap = {
     boolean: ControlBoolean,
@@ -28,7 +29,8 @@ const uiComponentMap = {
     // Use number for angle temporary
     angle: ControlNumber,
     percent: ControlPercent,
-    percentvector: ControlPercentVector
+    percentvector: ControlPercentVector,
+    text: ControlText
 };
 
 const uiComponentDefault = {

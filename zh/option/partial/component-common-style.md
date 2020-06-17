@@ -3,6 +3,8 @@
 
 #${prefix} backgroundColor(Color) = 'transparent'
 
+<ExampleUIControlColor />
+
 ${componentName}背景色，默认透明。
 
 > 颜色可以使用 RGB 表示，比如 `'rgb(128, 128, 128)'`   ，如果想要加上 alpha 通道，可以使用 RGBA，比如 `'rgba(128, 128, 128, 0.5)'`，也可以使用十六进制格式，比如 `'#ccc'`
@@ -13,6 +15,8 @@ ${componentName}背景色，默认透明。
 
 #${prefix} borderColor(Color) = '#ccc'
 
+<ExampleUIControlColor default="#ccc" />
+
 ${componentName}的边框颜色。支持的颜色格式同 backgroundColor。
 
 {{if: ${needShow} }}
@@ -20,6 +24,8 @@ ${componentName}的边框颜色。支持的颜色格式同 backgroundColor。
 {{/if}}
 
 #${prefix} borderWidth(number) = ${defaultBorderWidth|default(1)}
+
+<ExampleUIControlNumber default="${defaultBorderWidth|default(1)}" min="0" step="0.5" />
 
 ${componentName}的边框线宽。
 
@@ -42,7 +48,7 @@ ${componentName}的边框线宽。
 
 #${prefix} ${propName|default('borderRadius')}(number|Array) = 0
 
-<ExampleUIControlVector min="0" dims="LT, RT, RB, LB"  />
+<ExampleUIControlVector min="0" dims="LT,RT,RB,LB"  />
 
 圆角半径，单位px，支持传入数组分别指定 4 个圆角半径。
 如:

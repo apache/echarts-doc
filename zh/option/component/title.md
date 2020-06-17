@@ -11,13 +11,34 @@
 **例如下面不同缓动函数效果的示例，每一个缓动效果图都带有一个标题组件：**
 ~[700x400](${galleryViewPath}line-easing&edit=1&reset=1)
 
+<ExampleBaseOption name="title-only" title="只有标题的实例">
+const option = {
+    title: {
+        text: 'Main Title',
+        subtext: 'Sub Title',
+        left: 'center',
+        top: 'center',
+        textStyle: {
+            fontSize: 30
+        },
+        subtextStyle: {
+            fontSize: 20
+        }
+    }
+}
+</ExampleBaseOption>
+
 {{use: partial-component-id(prefix="#")}}
 
 ## show(boolean) = true
 
+<ExampleUIControlBoolean default="true" />
+
 是否显示标题组件。
 
 ## text(string) = ''
+
+<ExampleUIControlText />
 
 主标题文本，支持使用 `\n` 换行。
 
@@ -51,6 +72,8 @@
 
 ## subtext(string) = ''
 
+<ExampleUIControlText />
+
 副标题文本，支持使用 `\n` 换行。
 
 
@@ -80,11 +103,15 @@
 
 ## textAlign(string) = 'auto'
 
+<ExampleUIControlEnum options="auto,left,center,right" default="auto" />
+
 整体（包括 text 和 subtext）的水平对齐。
 
 可选值：`'auto'`、`'left'`、`'right'`、`'center'`。
 
 ## textVerticalAlign(string) = 'auto'
+
+<ExampleUIControlEnum options="auto,top,middle,bottom" default="auto" />
 
 整体（包括 text 和 subtext）的垂直对齐。
 
@@ -99,6 +126,9 @@
 {{ use: partial-padding(componentName="标题")}}
 
 ## itemGap(number) = 10
+
+<ExampleUIControlNumber min="0" default="10" step="1" />
+
 
 主副标题之间的间距。
 
