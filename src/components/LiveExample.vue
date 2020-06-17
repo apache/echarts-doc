@@ -240,11 +240,22 @@ export default {
 
     computed: {
         optionCodeStr() {
-            return `const option = ${JSON.stringify(this.shared.currentExampleOption)}`;
+            const optStr = JSON.stringify(this.shared.currentExampleOption, function (key, value) {
+                if (typeof value === 'function') {
+                    return "__functionstart__" + value.toString() + "__functionend__";
+                }
+                return value;
+            });
+            return `const option = ${optStr}`;
         },
 
         formattedOptionCodeStr() {
-            return beautify.js(this.optionCodeStr.replace(/"(\w+)"\s*:/g, '$1:'), {
+            return beautify.js(this.optionCodeStr
+                .replace(/"(\w+)"\s*:/g, '$1:')
+                .replace(/"__functionstart__/g, "")
+                .replace(/__functionend__"/g, "")
+                // newline from function
+                .replace(/\\n/g, '\n'), {
                 indent_size: 2
             });
         }
