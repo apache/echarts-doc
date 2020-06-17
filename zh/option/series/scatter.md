@@ -12,7 +12,7 @@ const option = {
     title: {
         text: '身高体重分布',
         subtext: '抽样调查来自: Heinz  2003',
-        left: 'center
+        left: 'center'
     },
     grid: {
         left: '3%',

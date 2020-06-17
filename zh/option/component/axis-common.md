@@ -22,11 +22,18 @@
 
 #${prefix} axisLine(Object)
 坐标轴轴线相关设置。
+
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
+
+<ExampleUIControlBoolean default="true" />
+
 是否显示坐标轴轴线。
 
 {{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
 ##${prefix} onZero(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
+
 X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一个轴为数值轴且包含 0 刻度时有效。
 
 ##${prefix} onZeroAxisIndex(number)
@@ -34,12 +41,20 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 {{ /if }}
 
 ##${prefix} symbol(string|Array) = 'none'
+
+<ExampleUIControlEnum default="none" options="none,circle,rect,roundRect,triangle,diamond,pin,arrow" />
+
 轴线两边的箭头。可以是字符串，表示两端使用同样的箭头；或者长度为 2 的字符串数组，分别表示两端的箭头。默认不显示箭头，即 `'none'`。两端都显示箭头可以设置为 `'arrow'`，只在末端显示箭头可以设置为 `['none', 'arrow']`。
 
 ##${prefix} symbolSize(Array) = [10, 15]
+
+<ExampleUIControlVector default="10,15" />
+
 轴线两边的箭头的大小，第一个数字表示宽度（垂直坐标轴方向），第二个数字表示高度（平行坐标轴方向）。
 
 ##${prefix} symbolOffset(Array|number) = [0, 0]
+
+<ExampleUIControlVector default="0,0" />
 
 轴线两边的箭头的偏移，如果是数组，第一个数字表示起始箭头的偏移，第二个数字表示末端箭头的偏移；如果是数字，表示这两个箭头使用同样的偏移。
 
@@ -53,11 +68,17 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 
 {{if: !${hideShow} }}
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
+
+<ExampleUIControlBoolean default="${defaultShow|default(true)}" />
+
 是否显示刻度标签。
 {{ /if }}
 
 {{ if: ${hasLabelInterval|default(true)} }}
 ##${prefix} interval(number|Function) = 'auto'
+
+<ExampleUIControlNumber min="0" step="1" />
+
 {{ use: partial-axis-interval(
     name="坐标轴刻度标签",
     isAxisLabel=true,
@@ -67,26 +88,41 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 
 {{ if: ${hasInside|default(true)} }}
 ##${prefix} inside(boolean) = false
+
+<ExampleUIControlBoolean />
+
 刻度标签是否朝内，默认朝外。
 {{ /if }}
 
 {{ if: ${componentType} !== 'angleAxis' }}
 ##${prefix} rotate(number) = 0
+
+<ExampleUIControlAngle min="-90" max="90" step="1" />
+
 刻度标签旋转的角度，在类目轴的类目标签显示不下的时候可以通过旋转防止标签之间重叠。
 
 旋转的角度从 -90 度到 90 度。
 {{ /if }}
 
 ##${prefix} margin(number) = 8
+
+<ExampleUIControlNumber default="8" step="0.5" />
+
 刻度标签与轴线之间的距离。
 ##${prefix} formatter(string|Function) = null
 
 {{use: axis-common-formatter-desc}}
 
 ##${prefix} showMinLabel(boolean) = null
+
+<ExampleUIControlBoolean />
+
 是否显示最小 tick 的 label。可取值 `true`, `false`, `null`。默认自动判定（即如果标签重叠，不会显示最小 tick 的 label）。
 
 ##${prefix} showMaxLabel(boolean) = null
+
+<ExampleUIControlBoolean />
+
 是否显示最大 tick 的 label。可取值 `true`, `false`, `null`。默认自动判定（即如果标签重叠，不会显示最大 tick 的 label）。
 
 {{ use: partial-text-style(
@@ -98,6 +134,8 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 
 <!-- Overwrite color -->
 ##${prefix} color(Color|Function)
+
+<ExampleUIControlColor />
 
 刻度标签文字的颜色，默认取 [axisLine.lineStyle.color](~${componentType}.axisLine.lineStyle.color)。支持回调函数，格式如下
 
@@ -120,10 +158,16 @@ textStyle: {
 #${prefix} axisTick(Object)
 坐标轴刻度相关设置。
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
+
+<ExampleUIControlBoolean default="${defaultShow|default(true)}" />
+
 是否显示坐标轴刻度。
 
 {{ if: ${hasAlignWithLabel|default(true)} }}
 ##${prefix} alignWithLabel(boolean) = false
+
+<ExampleUIControlBoolean default="false" />
+
 类目轴中在 `boundaryGap` 为 `true` 的时候有效，可以保证刻度线和标签对齐。如下图：
 
 ![600xauto](~axis-align-with-label.png)
@@ -131,6 +175,9 @@ textStyle: {
 
 {{ if: ${hasLabelInterval|default(true)} }}
 ##${prefix} interval(number|Function) = 'auto'
+
+<ExampleUIControlNumber min="0" step="1" />
+
 {{ use: partial-axis-interval(
     name="坐标轴刻度",
     componentType=${componentType}
@@ -139,10 +186,16 @@ textStyle: {
 
 {{ if: ${hasInside|default(true)} }}
 ##${prefix} inside(boolean) = false
+
+<ExampleUIControlBoolean />
+
 坐标轴刻度是否朝内，默认朝外。
 {{ /if }}
 
 ##${prefix} length(number) = 5
+
+<ExampleUIControlNumber min="0" step="0.5" default="5" />
+
 坐标轴刻度的长度。
 
 ##${prefix} lineStyle(Object)
@@ -178,12 +231,21 @@ textStyle: {
 ~[600x350](${galleryViewPath}line-log&edit=1&reset=1)
 
 ##${prefix} show(boolean) = ${defaultShow|default(false)}
+
+<ExampleUIControlBoolean default="${defaultShow|default(true)}" />
+
 是否显示次刻度线。
 
 ##${prefix} splitNumber(number) = 5
+
+<ExampleUIControlNumber min="1" step="1" default="5" />
+
 次刻度线分割数，默认会分割成 5 段
 
 ##${prefix} length(number) = 3
+
+<ExampleUIControlNumber min="0" step="0.5" default="3" />
+
 次刻度线的长度。
 
 ##${prefix} lineStyle(Object)
@@ -196,6 +258,9 @@ textStyle: {
 ) }}
 <!-- Overwrite color -->
 ###${prefix} color(Color)
+
+<ExampleUIControlColor />
+
 刻度线的颜色，默认取 [axisLine.lineStyle.color](~${componentType}.axisLine.lineStyle.color)。
 
 
@@ -204,11 +269,18 @@ textStyle: {
 
 #${prefix} splitLine(Object)
 坐标轴在 [grid](~grid) 区域中的分隔线。
+
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
+
+<ExampleUIControlBoolean default="${defaultShow|default(true)}" />
+
 是否显示分隔线。默认数值轴显示，类目轴不显示。
 
 {{ if: ${hasLabelInterval|default(true)} }}
 ##${prefix} interval(number|Function) = 'auto'
+
+<ExampleUIControlNumber min="0" step="1" />
+
 {{ use: partial-axis-interval(
     name="坐标轴分隔线",
     componentType=${componentType}
@@ -226,6 +298,9 @@ textStyle: {
 
 <!-- overwrite color -->
 ###${prefix} color(Array|string) = ['#ccc']
+
+<ExampleUIControlColor />
+
 分隔线颜色，可以设置成单个颜色。
 
 也可以设置成颜色数组，分隔线会按数组中颜色的顺序依次循环设置颜色。
@@ -247,6 +322,9 @@ splitLine: {
 坐标轴在 [grid](~grid) 区域中的次分隔线。次分割线会对齐次刻度线 [minorTick](~${componentType}.minorTick)
 
 ##${prefix} show(boolean) = ${defaultShow|default(false)}
+
+<ExampleUIControlBoolean default="${defaultShow|default(true)}" />
+
 是否显示次分隔线。默认不显示。
 
 
@@ -267,6 +345,9 @@ splitLine: {
 
 {{ if: ${hasLabelInterval|default(true)} }}
 ##${prefix} interval(number|Function) = 'auto'
+
+<ExampleUIControlNumber min="0" step="1" />
+
 {{ use: partial-axis-interval(
     name="坐标轴分隔区域",
     componentType=${componentType}
@@ -274,7 +355,11 @@ splitLine: {
 {{ /if }}
 
 ##${prefix} show(boolean) = ${defaultShow|default(false)}
+
+<ExampleUIControlBoolean default="${defaultShow|default(true)}" />
+
 是否显示分隔区域。
+
 ##${prefix} areaStyle(Object)
 分隔区域的样式设置。
 ###${prefix} color(Array) = ['rgba(250,250,250,0.3)','rgba(200,200,200,0.3)']
@@ -310,9 +395,13 @@ splitLine: {
 {{ if: ${componentType} !== 'angleAxis' }}
 #${prefix} name(string)
 
+<ExampleUIControlText />
+
 坐标轴名称。
 
 #${prefix} nameLocation(string) = 'end'
+
+<ExampleUIControlEnum options="start,middle,end" default="end" />
 
 坐标轴名称显示位置。
 
@@ -334,19 +423,28 @@ splitLine: {
 
 #${prefix} nameGap(number) = 15
 
+<ExampleUIControlNumber step="0.5" default="15" />
+
 坐标轴名称与轴线之间的距离。
 
 #${prefix} nameRotate(number) = null
+
+<ExampleUIControlAngle min="-360" max="360" step="1" />
 
 坐标轴名字旋转，角度值。
 
 #${prefix} inverse(boolean) = false
 
-是否是反向坐标轴。ECharts 3 中新加。
+<ExampleUIControlBoolean />
+
+是否是反向坐标轴。
 
 {{/if}}
 
 #${prefix} boundaryGap(boolean|Array)
+
+<ExampleUIControlBoolean />
+
 坐标轴两边留白策略，类目轴和非类目轴的设置和表现不一样。
 
 类目轴中 `boundaryGap` 可以配置为 `true` 和 `false`。默认为 `true`，这时候[刻度](~${componentType}.axisTick)只是作为分隔线，标签和数据点都会在两个[刻度](~${componentType}.axisTick)之间的带(band)中间。
@@ -358,6 +456,8 @@ boundaryGap: ['20%', '20%']
 ```
 
 #${prefix} min(number|string|Function) = null
+
+<ExampleUIControlNumber />
 
 坐标轴刻度最小值。
 
@@ -379,6 +479,8 @@ min: function (value) {
 
 #${prefix} max(number|string|Function) = null
 
+<ExampleUIControlNumber />
+
 坐标轴刻度最大值。
 
 可以设置成特殊值 `'dataMax'`，此时取数据在该轴上的最大值作为最大刻度。
@@ -399,6 +501,8 @@ max: function (value) {
 
 #${prefix} scale(boolean) = false
 
+<ExampleUIControlBoolean />
+
 只在数值轴中（[type](~${componentType}.type): 'value'）有效。
 
 是否是脱离 0 值比例。设置成 `true` 后坐标刻度不会强制包含零刻度。在双数值轴的散点图中比较有用。
@@ -407,11 +511,15 @@ max: function (value) {
 
 #${prefix} splitNumber(number) = 5
 
+<ExampleUIControlNumber min="1" step="1" default="5" />
+
 坐标轴的分割段数，需要注意的是这个分割段数只是个预估值，最后实际显示的段数会在这个基础上根据分割后坐标轴刻度显示的易读程度作调整。
 
 在类目轴中无效。
 
 #${prefix} minInterval(number) = 0
+
+<ExampleUIControlNumber />
 
 自动计算的坐标轴最小间隔大小。
 
@@ -427,6 +535,8 @@ max: function (value) {
 
 #${prefix} maxInterval(number)
 
+<ExampleUIControlNumber />
+
 自动计算的坐标轴最大间隔大小。
 
 例如，在时间轴（（[type](~${componentType}.type): 'time'））可以设置成 `3600 * 24 * 1000` 保证坐标轴分割刻度最大为一天。
@@ -441,6 +551,8 @@ max: function (value) {
 
 #${prefix} interval(number)
 
+<ExampleUIControlNumber />
+
 强制设置坐标轴分割间隔。
 
 因为 [splitNumber](~${componentType}.splitNumber) 是预估的值，实际根据策略计算出来的刻度可能无法达到想要的效果，这时候可以使用 interval 配合 [min](~${componentType}.min)、[max](~${componentType}.max) 强制设定刻度划分，一般不建议使用。
@@ -448,6 +560,8 @@ max: function (value) {
 无法在类目轴中使用。在时间轴（[type](~${componentType}.type): 'time'）中需要传时间戳，在对数轴（[type](~${componentType}.type): 'log'）中需要传指数值。
 
 #${prefix} logBase(number) = 10
+
+<ExampleUIControlNumber default="10" />
 
 对数轴的底数，只在对数轴中（[type](~${componentType}.type): 'log'）有效。
 

@@ -12,7 +12,92 @@ ECharts 3 中单个 echarts 实例中可以存在多个图例组件，会方便�
 当图例数量过多时，可以使用 [滚动图例（垂直）](${galleryEditorPath}pie-legend&edit=1&reset=1) 或 [滚动图例（水平）](${galleryEditorPath}radar2&edit=1&reset=1)，参见：[legend.type](~legend.type)
 
 
+<ExampleBaseOption name="legend" title="基础图例">
+
+option = {
+    color: ['#003366', '#006699', '#4cabce', '#e5323e'],
+    dataset: {
+        source: [
+            ['type', '2012', '2013', '2014', '2015', '2016'],
+            ['Forest', 320, 332, 301, 334, 390],
+            ['Steppe', 220, 182, 191, 234, 290],
+            ['Desert', 150, 232, 201, 154, 190],
+            ['Wetland', 98, 77, 101, 99, 40]
+        ]
+    },
+    legend: {
+    },
+    xAxis: {
+        type: 'category',
+        axisTick: {show: false}
+    },
+    yAxis: {},
+    series: [
+        {
+            type: 'bar',
+            seriesLayoutBy: 'row'
+        },
+        {
+            type: 'bar',
+            seriesLayoutBy: 'row'
+        },
+        {
+            type: 'bar',
+            seriesLayoutBy: 'row'
+        },
+        {
+            type: 'bar',
+            seriesLayoutBy: 'row'
+        }
+    ]
+};
+</ExampleBaseOption>
+
+<ExampleBaseOption name="legend-more" title="多源图例">
+const option = {
+    legend: {
+        width: 350,
+        left: 0
+    },
+    tooltip: {},
+    dataset: {
+        source: [
+            ['product', '2012', '2013', '2014', '2015'],
+            ['Matcha Latte', 41.1, 30.4, 65.1, 53.3],
+            ['Milk Tea', 86.5, 92.1, 85.7, 83.1],
+            ['Cheese Cocoa', 24.1, 67.2, 79.5, 86.4]
+        ]
+    },
+    xAxis: [
+        {type: 'category', gridIndex: 0},
+        {type: 'category', gridIndex: 1}
+    ],
+    yAxis: [
+        {gridIndex: 0},
+        {gridIndex: 1}
+    ],
+    grid: [
+        {bottom: '55%'},
+        {top: '55%'}
+    ],
+    series: [
+        // These series are in the first grid.
+        {type: 'bar', seriesLayoutBy: 'row'},
+        {type: 'bar', seriesLayoutBy: 'row'},
+        {type: 'bar', seriesLayoutBy: 'row'},
+        // These series are in the second grid.
+        {type: 'bar', xAxisIndex: 1, yAxisIndex: 1},
+        {type: 'bar', xAxisIndex: 1, yAxisIndex: 1},
+        {type: 'bar', xAxisIndex: 1, yAxisIndex: 1},
+        {type: 'bar', xAxisIndex: 1, yAxisIndex: 1}
+    ]
+};
+
+</ExampleBaseOption>
+
 ## type(string)
+
+<ExampleUIControlEnum options="plain,scroll" />
 
 图例的类型。可选值：
 
@@ -39,6 +124,7 @@ ECharts 3 中单个 echarts 实例中可以存在多个图例组件，会方便�
 
 ## show(boolean) = true
 
+<ExampleUIControlBoolean default="true" />
 
 {{use: partial-rect-layout-width-height(componentName="图例")}}
 
@@ -107,11 +193,15 @@ formatter: function (name) {
 
 ## selectedMode(string|boolean) = true
 
+<ExampleUIControlBoolean options="true,false,single,multiple" />
+
 图例选择的模式，控制是否可以通过点击图例改变系列的显示状态。默认开启图例选择，可以设成 `false` 关闭。
 
 除此之外也可以设成 `'single'` 或者  `'multiple'` 使用单选或者多选模式。
 
 ## inactiveColor(Color) = '#ccc'
+
+<ExampleUIControlColor default="#ccc" />
 
 图例关闭时的颜色。
 
@@ -293,6 +383,8 @@ data: [{
 
 ## pageIconColor(string) = '#2f4554'
 
+<ExampleUIControlColor default="#2f4554" />
+
 [legend.type](~legend.type) 为 `'scroll'` 时有效。
 
 翻页按钮的颜色。
@@ -301,6 +393,8 @@ data: [{
 
 ## pageIconInactiveColor(string) = '#aaa'
 
+<ExampleUIControlColor default="#aaa" />
+
 [legend.type](~legend.type) 为 `'scroll'` 时有效。
 
 翻页按钮不激活时（即翻页到头时）的颜色。
@@ -308,6 +402,8 @@ data: [{
 参见 [滚动图例（垂直）](${galleryEditorPath}pie-legend&edit=1&reset=1) 或 [滚动图例（水平）](${galleryEditorPath}radar2&edit=1&reset=1)。
 
 ## pageIconSize(number|Array) = 15
+
+<ExampleUIControlVector default="15,15" dims="w,h" />
 
 [legend.type](~legend.type) 为 `'scroll'` 时有效。
 
@@ -325,9 +421,13 @@ data: [{
 
 ## animation(boolean)
 
+<ExampleUIControlBoolean default="true" />
+
 图例翻页是否使用动画。
 
 ## animationDurationUpdate(number) = 800
+
+<ExampleUIControlNumber min="0" default="800" step="20" />
 
 图例翻页时的动画时长。
 
@@ -391,17 +491,23 @@ selector: ['all', 'inverse']
 
 ## selectorPosition(string) = 'auto'
 
+<ExampleUIControlEnum options="auto,start,end" />
+
 {{ use: partial-version(version = "4.4.0") }}
 
 选择器的位置，可以放在图例的尾部或者头部，对应的值分别为 `'end'` 和 `'start'`。默认情况下，图例横向布局的时候，选择器放在图例的尾部；图例纵向布局的时候，选择器放在图例的头部。
 
 ## selectorItemGap(number) = 7
 
+<ExampleUIControlNumber min="0" default="7" step="0.5" />
+
 {{ use: partial-version(version = "4.4.0") }}
 
 选择器按钮之间的间隔。
 
 ## selectorButtonGap(number) = 10
+
+<ExampleUIControlNumber min="0" default="10" step="0.5" />
 
 {{ use: partial-version(version = "4.4.0") }}
 
