@@ -78,6 +78,9 @@ function updateOption(option) {
             if (!this.echartsInstance) {
                 this.chartInstance = echarts.init(viewport);
             }
+            if (this.shared.cleanMode) {
+                this.chartInstance.clear();
+            }
             this.chartInstance.setOption(option, true);
         })
     }
@@ -86,6 +89,9 @@ function updateOption(option) {
             this.chartInstance = echarts.init(viewport);
         }
         try {
+            if (this.shared.cleanMode) {
+                this.chartInstance.clear();
+            }
             this.chartInstance.setOption(option, true);
         }
         catch (e) {

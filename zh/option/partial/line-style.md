@@ -41,5 +41,8 @@ ${name}线的类型。
 ) }}
 {{ if: ${hasCurveness} }}
 #${prefix} curveness(number) = 0
+
+<ExampleUIControlNumber min="0" max="1" step="0.01" default="0" />
+
 边的曲度，支持从 0 到 1 的值，值越大曲度越大。
 {{ /if }}

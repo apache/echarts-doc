@@ -98,6 +98,8 @@ export default {
 
     methods: {
         onValueChange(value) {
+            // If clean before setOption.
+            this.shared.cleanMode = this.controlConfig.clean;
             // console.log(this.optionPath, value);
             if (this.shared.currentExampleOption) {
                 this.shared.currentExampleOption = Object.freeze(

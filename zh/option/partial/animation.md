@@ -2,7 +2,7 @@
 
 #${prefix} animation(boolean) = ${defaultAnimation|default(true)}
 
-<ExampleUIControlBoolean default="${defaultAnimation|default(true)}" />
+<ExampleUIControlBoolean default="${defaultAnimation|default(true)}" clean="true" />
 
 是否开启动画。
 
@@ -38,6 +38,8 @@ animationDurationUpdate: function (idx) {
 
 #${prefix} animationEasingUpdate(string) = ${defaultAnimationEasingUpdate|default('cubicOut')}
 
+<ExampleUIControlEnum options="linear,quadraticIn,quadraticOut,quadraticInOut,cubicIn,cubicOut,cubicInOut,quarticIn,quarticOut,quarticInOut,quinticIn,quinticOut,quinticInOut,sinusoidalIn,sinusoidalOut,sinusoidalInOut,exponentialIn,exponentialOut,exponentialInOut,circularIn,circularOut,circularInOut,elasticIn,elasticOut,elasticInOut,backIn,backOut,backInOut,bounceIn,bounceOut,bounceInOut" />
+
 数据更新动画的缓动效果。
 
 {{ if: !${noAnimationDelay} }}
@@ -60,7 +62,7 @@ animationDelayUpdate: function (idx) {
 
 #${prefix} animationDuration(number|Function) = ${defaultAnimationDuration|default(1000)}
 
-<ExampleUIControlNumber min="0" default="${defaultAnimationDuration|default(1000)}" step="20" />
+<ExampleUIControlNumber min="0" default="${defaultAnimationDuration|default(1000)}" step="20" clean="true" />
 
 初始动画的时长，支持回调函数，可以通过每个数据返回不同的时长实现更戏剧的初始动画效果：
 
@@ -72,6 +74,8 @@ animationDuration: function (idx) {
 ```
 
 #${prefix} animationEasing(string) = ${defaultAnimationEasing|default('cubicOut')}
+
+<ExampleUIControlEnum options="linear,quadraticIn,quadraticOut,quadraticInOut,cubicIn,cubicOut,cubicInOut,quarticIn,quarticOut,quarticInOut,quinticIn,quinticOut,quinticInOut,sinusoidalIn,sinusoidalOut,sinusoidalInOut,exponentialIn,exponentialOut,exponentialInOut,circularIn,circularOut,circularInOut,elasticIn,elasticOut,elasticInOut,backIn,backOut,backInOut,bounceIn,bounceOut,bounceInOut" clean="true" />
 
 初始动画的缓动效果。不同的缓动效果可以参考 [缓动示例](${galleryEditorPath}line-easing)。
 

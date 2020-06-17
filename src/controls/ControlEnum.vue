@@ -4,13 +4,20 @@
     <el-option v-for="item in optionsArr"
         :key="item"
         :value="item"
-        :label="item"
-    ></el-option>
+        :class="{'control-enum-special': specialValues[item] != null}"
+    >{{item}}</el-option>
 </el-select>
 </div>
 </template>
 
 <script>
+
+// Convert to special value.
+const specialValues = {
+    'true': true,
+    'false': false
+}
+
 export default {
 
     props: ['value', 'options'],
@@ -18,6 +25,9 @@ export default {
     computed: {
         optionsArr() {
             return this.options.split(',').map(item => item.trim());
+        },
+        specialValues() {
+            return specialValues;
         }
     },
 
@@ -35,17 +45,14 @@ export default {
 
     methods: {
         onValueChange() {
-            this.$emit('change', this.innerValue);
+            this.$emit('change', specialValues.hasOwnProperty(this.innerValue) ? specialValues[this.innerValue] : this.innerValue);
         }
     }
 }
 </script>
 
 <style lang="scss">
-.control-color {
-    &>* {
-        display: inline-block;
-        vertical-align: middle;
-    }
+.control-enum-special {
+    font-style: italic;
 }
 </style>

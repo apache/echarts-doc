@@ -26,7 +26,7 @@
 
         <span class="default-value" v-if="nodeData.default && nodeData.default !== '*'"> = {{nodeData.default}}</span>
 
-        <span class="control-toggle" v-if="uiControl">
+        <span class="control-toggle" v-if="uiControl && shared.allOptionExamples">
             <el-switch :active-text="$t('example.tryDesc')" v-model="enableUIControl"></el-switch>
         </span>
     </h4>

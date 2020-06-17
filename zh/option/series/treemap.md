@@ -252,7 +252,7 @@ const option = {
 
 ## roam(boolean|string) = true
 
-<ExampleUIControlEnum options="scale,move">
+<ExampleUIControlEnum options="true,false,scale,move">
 
 是否开启拖拽漫游（移动和缩放）。可取值有：
 

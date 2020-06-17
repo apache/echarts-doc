@@ -16,6 +16,8 @@ export const store = {
 
     showOptionExample: false,
     allOptionExamples: null,
+    // Clear before setOption
+    cleanMode: false,
     currentExampleName: '',
     currentExampleOption: ''
 };
