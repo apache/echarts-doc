@@ -8,6 +8,28 @@
 **示例：**
 ~[600x400](${galleryViewPath}funnel&reset=1&edit=1)
 
+<ExampleBaseOption name="funnel" tilte="基础漏斗图">
+option = {
+    legend: {
+        data: ['Display','Click','Visit','Consulting','Order']
+    },
+    series: [
+        {
+            name:'漏斗图',
+            type:'funnel',
+            data: [
+                {value: 60, name: 'Visit'},
+                {value: 40, name: 'Consulting'},
+                {value: 20, name: 'Order'},
+                {value: 80, name: 'Click'},
+                {value: 100, name: 'Display'}
+            ]
+        }
+    ]
+};
+
+</ExampleBaseOption>
+
 ## type(string) = 'funnel'
 
 {{use: partial-component-id(prefix="#")}}
@@ -15,30 +37,51 @@
 {{ use: partial-series-name() }}
 
 ## min(number) = 0
+
+<ExampleUIControlNumber default="0" step="1" />
+
 指定的数据最小值。
 
 ## max(number) = 100
+
+<ExampleUIControlNumber default="100" step="1" />
+
 指定的数据最大值。
 
 ## minSize(number|string) = '0%'
+
+<ExampleUIControlPercent default="0%" />
+
 数据最小值 [min](~series-funnel.min) 映射的宽度。
 
 可以是绝对的像素大小，也可以是相对[布局宽度](~series-funnel.width)的百分比，如果需要最小值的图形并不是尖端三角，可通过设置该属性实现。
 
 ## maxSize(number|string) = '100%'
+
+<ExampleUIControlPercent default="100%" />
+
 数据最大值 [max](~series-funnel.max) 映射的宽度。
 
 可以是绝对的像素大小，也可以是相对[布局宽度](~series-funnel.width)的百分比。
 
 ## sort(string|Function) = 'descending'
+
+<ExampleUIControlEnum options="none,descending,ascending" default="descending" />
+
 数据排序， 可以取 `'ascending'`，`'descending'`，`'none'`（表示按 data 顺序），或者一个函数（即 `Array.prototype.sort(function (a, b) { ... })`）。
 
 ## gap(number) = 0
+
+<ExampleUIControlNumber default="0" min="0" step="0.5" />
+
 数据图形间距。
 
 {{ use: partial-legend-hover-link }}
 
 ## funnelAlign(string) = 'center'
+
+<ExampleUIControlEnum options="left,center,right" default="center" />
+
 水平方向对齐布局类型，默认居中对齐，可用选项还有：'left' | 'right' | 'center'
 
 
