@@ -41,6 +41,7 @@ formatter: function (value, indicator) {
     return '【' + value + '】';
 }
 ```
+## textStyle(Object)
 
 {{ use: partial-text-style(
     prefix='##',
