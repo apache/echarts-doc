@@ -1,7 +1,7 @@
 <template>
 <div id="example-panel" :class="[isDownLayout ? 'down-layout' : 'right-layout']">
     <h2>{{$t('example.title')}}</h2>
-    <p class="intro">{{$t('example.intro')}}</p>
+    <p class="intro">{{ shared.allOptionExamples ? $t('example.intro') : $t('example.noExample')}}</p>
     <div class="preview-and-code" v-if="shared.currentExampleOption">
         <div class="preview-main"></div>
         <div class="example-code">
@@ -23,7 +23,7 @@
                 :label="item.title"
             ></el-option>
         </el-select>
-        <el-button type="primary" icon="el-icon-refresh" size="mini" @click="refreshForce">{{$t('example.refresh')}}</el-button>
+        <el-button v-if="shared.currentExampleOption" type="primary" icon="el-icon-refresh" size="mini" @click="refreshForce">{{$t('example.refresh')}}</el-button>
         <el-button size='mini' @click="closeExamplePanel">{{$t('example.close')}}</el-button>
     </div>
 </div>
@@ -66,6 +66,10 @@ function updateOption(option) {
     }
 
     const viewport = this.$el.querySelector('.preview-main');
+    if (!viewport) {
+        return;
+    }
+
     // Clear error msg.
     this.hasError = false;
     if (typeof echarts === 'undefined') {

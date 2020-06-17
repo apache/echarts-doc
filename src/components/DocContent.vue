@@ -97,7 +97,8 @@ export default {
         pageExamples() {
             const item = this.rootPageDescMap[this.pagePath]
                 || this.pageDescMap[this.pagePath];
-            return item && item.exampleBaseOptions;
+            // Return an empty array by default. Or may not trigger it changed.
+            return (item && item.exampleBaseOptions) || [];
         },
 
         pageDisplayOutline() {

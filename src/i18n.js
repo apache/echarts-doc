@@ -21,6 +21,9 @@ export default {
         },
         example: {
             title: 'Preview the Option',
+            intro: 'Try different values of the option and preview the effects!',
+            noExample: 'No example available for current component.',
+
             tryDesc: 'Try It',
 
             defaultColor: 'Default Color',
@@ -57,8 +60,9 @@ export default {
             properties: '所有属性'
         },
         example: {
-            title: '示例预览',
-            intro: '在左侧配置项选择试一试后调整看示例效果',
+            title: '配置项效果预览',
+            intro: '在左侧调节控件预览配置项不同取值的效果',
+            noExample: '当前组件暂无可用的示例',
 
             tryDesc: '试一试',
             defaultColor: '默认颜色',
