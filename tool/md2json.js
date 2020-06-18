@@ -243,7 +243,7 @@ function mdToJsonSchema(mdStr, maxDepth, imagePath) {
             },
             ontext(data) {
                 if (currentExampleCode) {
-                    currentExampleCode.code = entities.decode(data);
+                    currentExampleCode.code += entities.decode(data);
                 }
                 else {
                     out += data;
