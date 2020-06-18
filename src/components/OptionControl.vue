@@ -19,6 +19,8 @@ import ControlPercent from '../controls/ControlPercent.vue';
 import {store, changeOption} from '../store';
 import ControlPercentVector from '../controls/ControlPercentVector.vue';
 import ControlText from '../controls/ControlText.vue';
+import ControlIcon from '../controls/ControlIcon.vue';
+
 
 const uiComponentMap = {
     boolean: ControlBoolean,
@@ -30,7 +32,8 @@ const uiComponentMap = {
     angle: ControlNumber,
     percent: ControlPercent,
     percentvector: ControlPercentVector,
-    text: ControlText
+    text: ControlText,
+    icon: ControlIcon
 };
 
 const uiComponentDefault = {

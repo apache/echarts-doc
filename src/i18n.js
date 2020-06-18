@@ -33,6 +33,9 @@ export default {
             absoluteMode: 'ABSOLUTE',
             percentMode: 'PERCENT',
 
+            builtin: 'Builtin',
+            upload: 'Upload SVG or PNG',
+
             setOptionError: 'Something Unexpected Happerns. Click refresh to try again!',
 
             refresh: 'Refresh',
@@ -71,6 +74,9 @@ export default {
             vectorSetSeparate: '分别设置',
             absoluteMode: '绝对值',
             percentMode: '百分比',
+
+            builtin: '内置',
+            upload: '上传 SVG 或 PNG',
 
             setOptionError: '发生了一些意料之外的错误，点击刷新再试试！',
 

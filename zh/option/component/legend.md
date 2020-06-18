@@ -175,6 +175,8 @@ const option = {
 
 ## symbolKeepAspect(boolean) = true
 
+<ExampleUIControlBoolean />
+
 如果图标（可能来自系列的 `symbol` 或用户自定义的 `legend.data.icon`）是 `path://` 的形式，是否在缩放时保持该图形的长宽比。
 
 ## formatter(string|Function) = null
@@ -247,6 +249,8 @@ legend: {
 ```
 
 ## icon(string)
+
+<ExampleUIControlIcon />
 
 图例项的 icon。
 

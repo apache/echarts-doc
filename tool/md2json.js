@@ -224,7 +224,8 @@ function mdToJsonSchema(mdStr, maxDepth, imagePath) {
                 }
                 else if (tagName.startsWith('exampleuicontrol')) {
                     const type = tagName.replace('exampleuicontrol', '').toLowerCase();
-                    if (['boolean', 'color', 'number', 'vector', 'enum', 'angle', 'percent', 'percentvector', 'text']
+                    if (['boolean', 'color', 'number', 'vector', 'enum', 'angle', 'percent', 'percentvector', 'text',
+                        'icon']
                         .indexOf(type) < 0) {
                         console.error(`Unkown ExampleUIControl Type ${type}`);
                     }
@@ -246,7 +247,7 @@ function mdToJsonSchema(mdStr, maxDepth, imagePath) {
                 if (currentExampleCode) {
                     // Get code from map;
                     if (!codeMap[data]) {
-                        throw new Error('Can\'t find code.', codeMap, data);
+                        console.error('Can\'t find code.', codeMap, data);
                     }
                     currentExampleCode.code = codeMap[data];
                 }
