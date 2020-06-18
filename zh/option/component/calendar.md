@@ -44,6 +44,59 @@
 
 ---
 
+<ExampleBaseOption name="calendar" title="日历图">
+function getVirtulData(year) {
+    year = year || '2017';
+    var date = +new Date(year + '-01-01');
+    var end = +new Date((+year + 1) + '-01-01');
+    var dayTime = 3600 * 24 * 1000;
+    var data = [];
+    for (var time = date; time < end; time += dayTime) {
+        data.push([
+            time,
+            Math.floor(Math.random() * 10000)
+        ]);
+    }
+    return data;
+}
+
+const option = {
+    title: {
+        top: 30,
+        left: 'center',
+        text: '2016年某人每天的步数'
+    },
+    tooltip: {},
+    visualMap: {
+        min: 0,
+        max: 10000,
+        type: 'piecewise',
+        orient: 'horizontal',
+        left: 'center',
+        top: 65,
+        textStyle: {
+            color: '#000'
+        }
+    },
+    calendar: {
+        top: 120,
+        left: 30,
+        right: 30,
+        cellSize: ['auto', 13],
+        range: '2016',
+        itemStyle: {
+            borderWidth: 0.5
+        },
+        yearLabel: {show: false}
+    },
+    series: {
+        type: 'heatmap',
+        coordinateSystem: 'calendar',
+        data: getVirtulData(2016)
+    }
+};
+</ExampleBaseOption>
+
 {{use: partial-component-id(prefix="#")}}
 
 {{ use: partial-rect-layout-width-height(
@@ -75,6 +128,8 @@ range: ['2017-01', '2017-02']
 
 ## cellSize(number|Array) = 20
 
+<ExampleUIControlNumber min="0" step="1" default="20" />
+
 日历每格框的大小，可设置单值 或数组  第一个元素是宽 第二个元素是高。
 支持设置自适应：`auto`, 默认为高宽均为20
 
@@ -99,17 +154,27 @@ cellSize: ['auto', 40]
 ```
 
 ## width(number|string) = auto
+
+<ExampleUIControlNumber min="0" step="1" />
+
 日历坐标的整体宽度
 
 注意: 默认cellSize 为20，若设置了`width`的值, 则`cellSize`中的宽度强制转为`auto`;
 
 ## height(number|string) = auto
+
+<ExampleUIControlNumber min="0" step="1" />
+
 日历坐标的整体高度，
 
 注意: 默认cellSize 为20，若设置了`height`的值, 则`cellSize`中的高度强制转为`auto`;
 
 
 ## orient(string) = 'horizontal'
+
+
+<ExampleUIControlEnum options="horizontal,vertical" default="horizontal" />
+
 日历坐标的布局朝向。
 
 可选：
@@ -120,6 +185,9 @@ cellSize: ['auto', 40]
 设置日历坐标分隔线的样式。
 
 ### show(boolean) = ${defaultShow|default(true)}
+
+<ExampleUIControlBoolean show="${defaultShow|default(true)}" />
+
 是否显示分隔线。默认显示。
 
 ### lineStyle(Object)
@@ -173,9 +241,15 @@ calendar: [{
 设置日历坐标中 星期轴的样式
 
 ### show(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
+
 是否在普通状态下显示标签。
 
 ### firstDay(number) = 0
+
+<ExampleUIControlNumber min="0" max="6" step="1" />
+
 一周从周几开始，默认从周日开始
 
 例如：
@@ -191,9 +265,15 @@ calendar: [{
 ```
 
 ### margin(number) = 0
+
+<ExampleUIControlNumber min="0" step="1" />
+
 星期标签与轴线之间的距离
 
 ### position(string) = 'start'
+
+<ExampleUIControlEnum options="start,end" default="start" />
+
 星期的位置 在星期轴的开头还是结尾。
 
 可选：
@@ -201,6 +281,9 @@ calendar: [{
 + 'end'
 
 ### nameMap(string|Array) = 'en'
+
+<ExampleUIControlEnum options="en,cn" default="en" />
+
 星期显示的效果，默认为'en'
 可设置中英文以及自定义
 下标0为对应星期天的文字显示
@@ -228,9 +311,15 @@ calendar: [{
 设置日历坐标中 月份轴的样式
 
 ### show(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
+
 是否在普通状态下显示标签。
 
 ### align(string) = 'center'
+
+<ExampleUIControlEnum options="left,center" default="center" />
+
 设置月份区间内的月份文字位置。
 
 可选：
@@ -238,9 +327,15 @@ calendar: [{
 + 'left'  // 区间内的左边
 
 ### margin(number) = 5
+
+<ExampleUIControlNumber min="0" step="5" />
+
 月份标签与轴线之间的距离
 
 ### position(string) = 'start'
+
+<ExampleUIControlEnum options="start,end" default="start" />
+
 月份的位置 在开头还是结尾。
 
 可选：
@@ -248,6 +343,9 @@ calendar: [{
 + 'end'
 
 ### nameMap(string|Array) = 'en'
+
+<ExampleUIControlEnum options="en,cn" default="en" />
+
 月份显示的效果，默认为'en'
 可设置中英文以及自定义
 下标0为对应一月的文字显示
@@ -318,12 +416,21 @@ formatter: function (param) {
 设置日历坐标中 年的样式
 
 ### show(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
+
 是否在普通状态下显示标签。
 
 ### margin(number) = 30
+
+<ExampleUIControlNumber min="0" step="1" />
+
 年份与轴线之间的距离
 
 ### position(string)
+
+<ExampleUIControlEnum options="top,bottom,left,right" />
+
 年份的位置
 默认横向是'left' 竖向是'top'
 
