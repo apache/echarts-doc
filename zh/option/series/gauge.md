@@ -6,7 +6,7 @@
 **仪表盘**
 
 **示例：**
-~[600x500](${galleryViewPath}gauge-car)
+~[600x500](${galleryViewPath}gauge-car&reset=1&edit=1)
 
 ## type(string) = 'gauge'
 
