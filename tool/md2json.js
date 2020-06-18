@@ -3,8 +3,6 @@ const marked = require('marked');
 const etpl = require('etpl');
 const glob = require('glob');
 const htmlparser2 = require('htmlparser2');
-const Entities = require('html-entities').AllHtmlEntities;
-const entities = new Entities();
 
 function convert(opts, cb) {
     const mdPath = opts.path;
@@ -214,17 +212,20 @@ function mdToJsonSchema(mdStr, maxDepth, imagePath) {
         properties[name] = property;
     }
 
-    function parseUIControl(html, property) {
+    function parseUIControl(html, property, codeMap) {
         let currentExampleCode;
         let out = '';
         const parser = new htmlparser2.Parser({
             onopentag(tagName, attrib) {
                 if (tagName === 'examplebaseoption') {
-                    currentExampleCode = attrib;
+                    currentExampleCode = Object.assign({
+                        code: ''
+                    }, attrib);
                 }
                 else if (tagName.startsWith('exampleuicontrol')) {
                     const type = tagName.replace('exampleuicontrol', '').toLowerCase();
-                    if (['boolean', 'color', 'number', 'vector', 'enum', 'angle', 'percent', 'percentvector'].indexOf(type) < 0) {
+                    if (['boolean', 'color', 'number', 'vector', 'enum', 'angle', 'percent', 'percentvector', 'text']
+                        .indexOf(type) < 0) {
                         console.error(`Unkown ExampleUIControl Type ${type}`);
                     }
                     property.uiControl = {
@@ -243,7 +244,11 @@ function mdToJsonSchema(mdStr, maxDepth, imagePath) {
             },
             ontext(data) {
                 if (currentExampleCode) {
-                    currentExampleCode.code += entities.decode(data);
+                    // Get code from map;
+                    if (!codeMap[data]) {
+                        throw new Error('Can\'t find code.', codeMap, data);
+                    }
+                    currentExampleCode.code = codeMap[data];
                 }
                 else {
                     out += data;
@@ -261,6 +266,7 @@ function mdToJsonSchema(mdStr, maxDepth, imagePath) {
                 }
             }
         });
+
         parser.write(html);
         parser.end();
 
@@ -334,8 +340,21 @@ function mdToJsonSchema(mdStr, maxDepth, imagePath) {
             return iframe.join('');
         });
 
+        const codeMap = {};
+        const codeKeyPrefx = 'example_base_option_code_';
+        let codeIndex=  0;
+        // Convert the code the a simple key.
+        // Avoid marked converting the markers in the code unexpectly.
+        // Like convert * to em.
+        // Also no need to decode entity
+        section = section.replace(/(<\s*ExampleBaseOption[^>]*>)([\s\S]*?)(<\s*\/ExampleBaseOption\s*>)/g, function (text, openTag, code, closeTag) {
+            const codeKey = codeKeyPrefx + (codeIndex++);
+            codeMap[codeKey] = code;
+            return openTag + codeKey + closeTag
+        });
+
         renderer.html = function (html) {
-            return parseUIControl(html, property);
+            return parseUIControl(html, property, codeMap);
         };
 
         property.description = marked(section, {

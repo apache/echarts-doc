@@ -418,6 +418,8 @@ splitLine: {
 <!-- Overwrite color -->
 ##${prefix} color(Color)
 
+<ExampleUIControlColor />
+
 坐标轴名称的颜色，默认取 [axisLine.lineStyle.color](~${componentType}.axisLine.lineStyle.color)。
 
 
