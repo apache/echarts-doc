@@ -25,7 +25,6 @@ const option = {
         }
     },
     dataZoom: [{
-        start: 80
     }],
     series: {
         name: 'Beijing AQI',
@@ -96,6 +95,8 @@ const option = {
 
 
 ## handleIcon(string)
+
+<ExampleUIControlIcon />
 
 手柄的 icon 形状，支持路径字符串，默认为：
 ```js

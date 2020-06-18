@@ -48,7 +48,7 @@ ${name}标记的旋转角度（而非弧度）。正值表示逆时针旋转。�
 
 #${prefix} symbolKeepAspect(boolean) = false
 
-<ExampleUIControlBoolean />
+<ExampleUIControlBoolean clean="true" />
 
 如果 `symbol` 是 `path://` 的形式，是否在缩放时保持该图形的长宽比。
 

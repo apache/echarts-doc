@@ -81,9 +81,13 @@ axisPointer 的 label 默认不显示（也就是默认只显示指示线），�
 
 #${prefix} show(boolean) = false
 
+<ExampleUIControlBoolean />
+
 默认不显示。但是如果 [tooltip.trigger](~tooltip.trigger) 设置为 `'axis'` 或者 [tooltip.axisPointer.type](~tooltip.axisPointer.type) 设置为 `'cross'`，则自动显示 axisPointer。坐标系会自动选择显示显示哪个轴的 axisPointer，也可以使用 [tooltip.axisPointer.axis](~tooltip.axisPointer.axis) 改变这种选择。
 
 #${prefix} type(string) = 'line'
+
+<ExampleUIControlEnum options="line,shadow,none" />
 
 指示器类型。
 
@@ -103,6 +107,8 @@ axisPointer 的 label 默认不显示（也就是默认只显示指示线），�
 
 #${prefix} triggerTooltip(boolean) = true
 
+<ExampleUIControlBoolean default="true" />
+
 是否触发 tooltip。如果不想触发 tooltip 可以关掉。
 
 #${prefix} value(number) = null
@@ -110,6 +116,8 @@ axisPointer 的 label 默认不显示（也就是默认只显示指示线），�
 当前的 value。在使用 [axisPointer.handle](xAxisPointer.handle) 时，可以设置此值进行初始值设定，从而决定 axisPointer 的初始位置。
 
 #${prefix} status(boolean)
+
+<ExampleUIControlEnum options="show,hide" />
 
 当前的状态，可取值为 `'show'` 和 `'hide'`。
 
@@ -119,9 +127,13 @@ axisPointer 的 label 默认不显示（也就是默认只显示指示线），�
 
 ##${prefix} show(boolean) = false
 
+<ExampleUIControlBoolean />
+
 当 show 设为 `true` 时开启，这时显示手柄，并且 axisPointer 会一直显示。
 
 ##${prefix} icon
+
+<ExampleUIControlIcon clean="true" />
 
 手柄的图标。
 
@@ -131,17 +143,25 @@ axisPointer 的 label 默认不显示（也就是默认只显示指示线），�
 
 ##${prefix} size(number|Array) = 45
 
+<ExampleUIControlVector default="45,45" min="0" step="0.5" dims="width,height" />
+
 手柄的尺寸，可以设置单值，如 `45`，也可以设置为数组：`[width, height]`。
 
 ##${prefix} margin(number) = 50
+
+<ExampleUIControlNumber default="50" min="0" step="0.5" />
 
 手柄与轴的距离。注意，这是手柄中心点和轴的距离。
 
 ##${prefix} color(string) = '#333'
 
+<ExampleUIControlColor />
+
 手柄颜色。
 
 ##${prefix} throttle(number) = 40
+
+<ExampleUIControlNumber default="40" min="0" step="10" />
 
 手柄拖拽时触发视图更新周期，单位毫秒，调大这个数值可以改善性能，但是降低体验。
 

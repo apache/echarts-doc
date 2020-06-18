@@ -43,6 +43,8 @@ export function isOptionDoc() {
         || store.docType === 'option-gl';
 }
 
+const componentCanHost = ['markPoint', 'markLine', 'markArea', 'tooltip', 'axisPointer'];
+
 export function changeOption(option, path, value) {
 
     function changeOptionRecursive(obj, pathParts, objKey, nodePath) {
@@ -102,6 +104,41 @@ export function changeOption(option, path, value) {
         }
 
         return obj;
+    }
+    // For the components can be hosted on other components, like axisPointer, markers.
+    function findAndSetHostComponentRecursively(root, componentKey) {
+        if (root[componentKey]) {
+            return changeOptionRecursive(root, path.split('.'), '', '');
+        }
+
+        if (Array.isArray(root)) {
+            const newArr = [];
+            for (let i = 0; i < root.length; i++) {
+                newArr.push(findAndSetHostComponentRecursively(root[i], componentKey));
+            }
+            return newArr;
+        }
+        else if (typeof root === 'object') {
+            const newObj = {};
+            for (let key in root) {
+                if (root.hasOwnProperty(key)) {
+                    newObj[key] = findAndSetHostComponentRecursively(root[key], componentKey);
+                }
+            }
+            return newObj;
+        }
+
+        return root;
+    }
+
+    const componentKey = path.split('.')[0];
+    if (componentKey === 'timeline' && option.baseOption) {
+        return Object.assign({}, option, {
+            baseOption: changeOptionRecursive(option.baseOption, path.split('.'), '', '')
+        });
+    }
+    else if (componentCanHost.indexOf(componentKey) >= 0) {
+        return findAndSetHostComponentRecursively(option, componentKey);
     }
 
     return changeOptionRecursive(option, path.split('.'), '', '');

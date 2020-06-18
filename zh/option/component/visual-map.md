@@ -56,11 +56,6 @@ series: {
 
 `visualMap` 是由 ECharts2 中的 `dataRange` 组件改名以及扩展而来。ECharts3里 `option` 中的 `dataRange` 配置项仍然被兼容，会自动转换成 `visualMap` 配置项。在option中推荐写 `visualMap` 而非 `dataRange`。
 
-<br>
-**✦ 以下是visualMap各组件的详细介绍 ✦**
-
-<br>
-<br>
 
 
 {{import: component-visual-map-continuous}}
