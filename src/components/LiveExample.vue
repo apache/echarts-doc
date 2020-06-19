@@ -151,7 +151,6 @@ function updateOption(option, isRefreshForce) {
             value: this.formattedOptionCodeStr,
             mode: 'javascript',
             theme: 'paraiso-dark',
-            lineNumbers: true,
             readOnly: true
         });
     }
@@ -379,11 +378,16 @@ export default {
         // }
 
         .codemirror-main {
-            height: 100%;
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            right: 0;
+            bottom: 10px;
 
             .CodeMirror {
                 height: 100%;
                 overflow-y: scroll;
+                border-radius: 5px;
                 // font-family: Monaco, 'Source Code Pro', monospace;
 
                 ::-webkit-scrollbar-thumb {
@@ -398,6 +402,10 @@ export default {
                 .option-changed {
                     background: rgba(255, 255, 255, 0.1);
                     // border-left: 3px solid #32dde6;
+                }
+
+                .CodeMirror-cursor {
+                    display: none;
                 }
             }
         }

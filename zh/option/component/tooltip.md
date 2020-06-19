@@ -140,7 +140,7 @@ const option = {
 
 ## triggerOn(string) = 'mousemove|click'
 
-<ExampleUIControlEnum options="mousemove|click,mousemove,click" />
+<ExampleUIControlEnum options="mousemove,click" />
 
 提示框触发的条件，可选：
 
