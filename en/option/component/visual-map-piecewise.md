@@ -186,7 +186,7 @@ The distance between the ends of the graphical elements for pieces and the label
 
 ## showLabel(boolean)
 
-Whether to show label of each item. By defualt, label will not be shown when [visualMap-piecewise.text](~visualMap-piecewise.text) used, otherwise label will be shown.
+Whether to show label of each item. By default, label will not be shown when [visualMap-piecewise.text](~visualMap-piecewise.text) used, otherwise label will be shown.
 
 ## itemGap = 10
 
