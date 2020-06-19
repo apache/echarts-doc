@@ -39955,7 +39955,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     *                                            visual data can be array or object
 	     *                                            (like: {cate1: '#222', none: '#fff'})
 	     *                                            or primary types (which represents
-	     *                                            defualt category visual), otherwise visual
+	     *                                            default category visual), otherwise visual
 	     *                                            can be array or primary (which will be
 	     *                                            normalized to array).
 	     *
@@ -40988,7 +40988,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        rect[wh[idx1WhenH]] -= rowOtherLength;
 	    }
 
-	    // Return [containerWidth, containerHeight] as defualt.
+	    // Return [containerWidth, containerHeight] as default.
 	    function estimateRootSize(seriesModel, targetInfo, viewRoot, containerWidth, containerHeight) {
 	        // If targetInfo.node exists, we zoom to the node,
 	        // so estimate whold width and heigth by target node.
@@ -51718,7 +51718,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            symbolPosition: null, // 'start' or 'end' or 'center', null means auto.
 	            symbolOffset: null,
 	            symbolMargin: null,   // start margin and end margin. Can be a number or a percent string.
-	                                  // Auto margin by defualt.
+	                                  // Auto margin by default.
 	            symbolRepeat: false,  // false/null/undefined, means no repeat.
 	                                  // Can be true, means auto calculate repeat times and cut by data.
 	                                  // Can be a number, specifies repeat times, and do not cut by data.
@@ -53503,7 +53503,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var snapToValue = payloadInfo.snapToValue;
 
 	        // Fill content of event obj for echarts.connect.
-	        // By defualt use the first involved series data as a sample to connect.
+	        // By default use the first involved series data as a sample to connect.
 	        if (payloadBatch[0] && outputFinder.seriesIndex == null) {
 	            zrUtil.extend(outputFinder, payloadBatch[0]);
 	        }
@@ -67356,7 +67356,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                // Originally we use visualMap.color as the default color, but setOption at
 	                // the second time the default color will be erased. So we change to use
 	                // constant DEFAULT_COLOR.
-	                // If user do not want the defualt color, set inRange: {color: null}.
+	                // If user do not want the default color, set inRange: {color: null}.
 	                base.inRange = base.inRange || {color: DEFAULT_COLOR};
 
 	                // If using shortcut like: {inRange: 'symbol'}, complete default value.

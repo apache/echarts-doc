@@ -43,15 +43,15 @@ chart.setOption(option, {
 
 + `notMerge`
 
-    Optional; states whether not to merge with previous `option`; `false` by defualt, stating merging.
+    Optional; states whether not to merge with previous `option`; `false` by default, stating merging.
 
 + `lazyUpdate`
 
-    Optional; states whether not to update chart immediately; `false` by defualt, stating update immediately.
+    Optional; states whether not to update chart immediately; `false` by default, stating update immediately.
 
 + `silent`
 
-    Optional; states whether not to prevent triggering events when calling `setOption`; `false` by defualt, stating trigger events.
+    Optional; states whether not to prevent triggering events when calling `setOption`; `false` by default, stating trigger events.
 
 
 ## getWidth(Function)

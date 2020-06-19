@@ -4,7 +4,7 @@
 The style setting of ${name} icon. Since icon label is displayed only when hovering on the icon, the label configuration options are available under `emphasis`.
 {{ use: partial-item-style(
     defaultBorderColor = '#666',
-    defualtColor = 'none',
+    defaultColor = 'none',
     defaultBorderWidth = 1,
     prefix="#" + ${prefix}
 ) }}
