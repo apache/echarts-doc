@@ -45,6 +45,32 @@ export function isOptionDoc() {
 
 const componentCanHost = ['markPoint', 'markLine', 'markArea', 'tooltip', 'axisPointer'];
 
+function makeDefaultOption(key) {
+    if (key === 'markPoint') {
+        return {
+            data: [{
+                type: 'max'
+            }]
+        };
+    }
+    else if (key === 'markLine') {
+        return {
+            data: [{
+                type: 'average'
+            }]
+        };
+    }
+    else if (key === 'markArea') {
+        return {
+            data: [ [{
+                type: 'min'
+            }, {
+                type: 'max'
+            }] ]
+        };
+    }
+}
+
 export function changeOption(option, path, value) {
 
     function changeOptionRecursive(obj, pathParts, objKey, nodePath) {
@@ -77,7 +103,8 @@ export function changeOption(option, path, value) {
         // TODO: If prop not exists and it should be an array.
         if (obj[key] == null) {
             const outlineNode = getOutlineNode(nodePath);
-            obj[key] = (outlineNode && outlineNode.isArray) ? [] : {};
+            obj[key] = makeDefaultOption(key) ||
+                ((outlineNode && outlineNode.isArray) ? [] : {});
         }
         const prop = obj[key];
         if (Array.isArray(prop)) {

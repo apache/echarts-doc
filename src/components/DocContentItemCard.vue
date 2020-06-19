@@ -98,9 +98,6 @@ export default {
         }
     },
 
-    created() {
-    },
-
     watch: {
         enableUIControl(newVal) {
             if (!newVal) {
@@ -116,6 +113,14 @@ export default {
                 }
 
                 this.shared.showOptionExample = true;
+            }
+        },
+
+        'shared.currentExampleName'(newVal, oldVal) {
+            // Reset after example changed.
+            // NOTE: it may be the first time example panel is opened. So need to check the old value.
+            if (newVal && oldVal) {
+                this.enableUIControl = false;
             }
         }
     },

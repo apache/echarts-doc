@@ -92,36 +92,10 @@ function diffUpdateCode(oldCode, newCode, cmInstance) {
 
     if (len) {
         setTimeout(() => {
-            // const existsEl = cmInstance.getWrapperElement().querySelector('.option-changed');
-            // if (existsEl) {
-            //     // If the element is near to the view and has been rendered.
-            //     scrollIntoView(existsEl, {
-            //         time: 400,
-            //         align: {
-            //             top: 0,
-            //             topOffset: -50
-            //         }
-            //     });
-            // }
-            // else {
-            if (window.scrollTo) {
-                const {top} = cmInstance.charCoords({line: changedLines[0], ch: 0});
-                const el = cmInstance.getScrollerElement();
-                // Because the
-                // el.style.top = oldTop + 'px';
-                el.scrollTo({
-                    top,
-                    left: 0,
-                    behavior: 'smooth'
-                });
-            }
-            else {
-                cmInstance.scrollIntoView({
-                    line: changedLines[0],
-                    ch: 0
-                }, cmInstance.getWrapperElement().clientHeight - 50);
-            }
-            // }
+            cmInstance.scrollIntoView({
+                line: changedLines[0],
+                ch: 0
+            }, cmInstance.getWrapperElement().clientHeight - 50);
         }, 20);
     }
 
@@ -423,8 +397,7 @@ export default {
 
                 .option-changed {
                     background: rgba(255, 255, 255, 0.1);
-                    border-left: 3px solid #32dde6;
-                    margin-left: -3px;
+                    // border-left: 3px solid #32dde6;
                 }
             }
         }
