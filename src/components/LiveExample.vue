@@ -41,6 +41,8 @@ import 'codemirror/theme/paraiso-dark.css';
 import 'codemirror/mode/javascript/javascript.js'
 import beautify from 'js-beautify';
 import throttle from 'lodash.throttle';
+import arrayDiff from 'zrender/src/core/arrayDiff';
+import scrollIntoView from 'scroll-into-view';
 
 let echartsLoadPromise;
 
@@ -57,7 +59,76 @@ function fetchECharts() {
     }));
 }
 
-function updateOption(option) {
+function diffUpdateCode(oldCode, newCode, cmInstance) {
+    const oldLines = oldCode.split(/\n/);
+    const newLines = newCode.split(/\n/);
+    const result = arrayDiff(oldLines, newLines);
+
+    const changedLines = [];
+    const len = result.length;
+
+    for (let i = len - 1; i >= 0; i--) {
+        const item = result[i];
+        if (item.cmd === '-') {
+            cmInstance.replaceRange(
+                '', {line: item.idx, ch: 0}, {line: item.idx + 1, ch: 0}
+            );
+        }
+    }
+
+    for (let i = 0; i < len; i++) {
+        const item = result[i];
+        if (item.cmd === '+') {
+            cmInstance.replaceRange(
+                newLines[item.idx] + '\n', {line: item.idx, ch: 0}
+            );
+            changedLines.push(item.idx);
+        }
+    }
+
+    changedLines.forEach(function (idx) {
+        cmInstance.addLineClass(idx, 'wrap', 'option-changed');
+    });
+
+    if (len) {
+        setTimeout(() => {
+            // const existsEl = cmInstance.getWrapperElement().querySelector('.option-changed');
+            // if (existsEl) {
+            //     // If the element is near to the view and has been rendered.
+            //     scrollIntoView(existsEl, {
+            //         time: 400,
+            //         align: {
+            //             top: 0,
+            //             topOffset: -50
+            //         }
+            //     });
+            // }
+            // else {
+            if (window.scrollTo) {
+                const {top} = cmInstance.charCoords({line: changedLines[0], ch: 0});
+                const el = cmInstance.getScrollerElement();
+                // Because the
+                // el.style.top = oldTop + 'px';
+                el.scrollTo({
+                    top,
+                    left: 0,
+                    behavior: 'smooth'
+                });
+            }
+            else {
+                cmInstance.scrollIntoView({
+                    line: changedLines[0],
+                    ch: 0
+                }, cmInstance.getWrapperElement().clientHeight - 50);
+            }
+            // }
+        }, 20);
+    }
+
+    return changedLines;
+}
+
+function updateOption(option, isRefreshForce) {
     if (this.shared.currentExampleName !== this.lastUpdateExampleName) {
         this.lastUpdateExampleName = this.shared.currentExampleName;
         // Refresh all if example base option is changed.
@@ -113,7 +184,22 @@ function updateOption(option) {
     else {
         // TODO: Highlight the diff lines.
         // TODO: Only change the changed line. optimize
-        this.cmInstance.setValue(this.formattedOptionCodeStr);
+        const oldCode = this.cmInstance.getValue();
+        const newCode = this.formattedOptionCodeStr;
+
+        if (this.oldHighlightedLines) {
+            this.oldHighlightedLines.forEach((idx) => {
+                this.cmInstance.removeLineClass(idx, 'wrap', 'option-changed');
+            });
+        }
+
+        if (!isRefreshForce) {
+            this.oldHighlightedLines = diffUpdateCode(oldCode, newCode, this.cmInstance);
+        }
+        else {
+            this.cmInstance.setValue(newCode);
+            this.oldHighlightedLines = [];
+        }
     }
 
     this.lastUpdateExampleName = this.shared.currentExampleName;
@@ -129,7 +215,9 @@ export default {
 
             hasError: false,
 
-            lastUpdateExampleName: ''
+            lastUpdateExampleName: '',
+
+            oldHighlightedLines: []
         };
     },
 
@@ -210,7 +298,7 @@ export default {
                     this.chartInstance.dispose();
                     this.chartInstance = null;
                 }
-                this.updateOption(this.shared.currentExampleOption);
+                this.updateOption(this.shared.currentExampleOption, true);
             }
         },
 
@@ -322,6 +410,22 @@ export default {
             .CodeMirror {
                 height: 100%;
                 overflow-y: scroll;
+                // font-family: Monaco, 'Source Code Pro', monospace;
+
+                ::-webkit-scrollbar-thumb {
+                    width: 8px;
+                    min-height: 15px;
+                    background: rgba(255, 255, 255, 0.3) !important;
+                    -webkit-transition: all 0.3s ease-in-out;
+                    transition: all 0.3s ease-in-out;
+                    border-radius: 2px
+                }
+
+                .option-changed {
+                    background: rgba(255, 255, 255, 0.1);
+                    border-left: 3px solid #32dde6;
+                    margin-left: -3px;
+                }
             }
         }
     }
