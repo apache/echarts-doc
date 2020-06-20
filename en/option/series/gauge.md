@@ -19,7 +19,7 @@
 ## radius(number|string) = '75%'
 The radius of gauge chart. It can be a percentage value of the smaller of container half width and half height, also can be an absolute value.
 
-{{ use partial-legend-hover-link }}
+{{ use: partial-legend-hover-link }}
 
 ## startAngle(number) = 225
 The start angle of gauge chart. The direct right side of [circle center](~series-gauge.center) is `0` degree, the right above it is `90` degree, the direct left side of it is `180` degree.
