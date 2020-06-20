@@ -19,7 +19,7 @@
 ## radius(number|string) = '75%'
 仪表盘半径，可以是相对于容器高宽中较小的一项的一半的百分比，也可以是绝对的数值。
 
-{{ use partial-legend-hover-link }}
+{{ use: partial-legend-hover-link }}
 
 ## startAngle(number) = 225
 仪表盘起始角度。[圆心](~series-gauge.center) 正右手侧为`0`度，正上方为`90`度，正左手侧为`180`度。
