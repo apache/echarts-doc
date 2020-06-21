@@ -12,9 +12,9 @@ these pre-builds are provided:
 
 We can also build echarts ourselves, which enables to only include the charts and components you needed. You can customize your ECharts build by using one of these approaches:
 
-+ [Online custom build tool](${websitePath}/builder.html) is relatively convenient.
++ [Online custom build tool](${websitePath}/en/builder.html) is relatively convenient.
 + The script `echarts/build/build.js` found in the project is flexible for module selecting, and supports multi-language builds
-+ Build ECharts and your project directly by using tools such as [rollup](https://rollupjs.org/), [webpack](https://webpack.js.org//), [browserify](http://browserify.org/)
++ Build ECharts and your project directly by using tools such as [rollup](https://rollupjs.org/), [webpack](https://webpack.js.org/), [browserify](http://browserify.org/)
 
 There are some examples to illustrate the latter two approaches below.
 
@@ -138,7 +138,7 @@ All of the permitted modules are declared in [`myProject/node_module/echarts/ech
 
 ## Build echarts and our project directly by rollup
 
-Now we have known that how to create custom build by `echarts/build/build.js`. Alternatively, we can bundle echarts and our project directly by the tool like [rollup](https://rollupjs.org/), [webpack](https://webpack.js.org//) or [browserify](http://browserify.org/). In some project, this approach is required. Next we only go with [rollup](https://rollupjs.org/), because [webpack](https://webpack.js.org//) and [browserify](http://browserify.org/) are in the similar way.
+Now we have known that how to create custom build by `echarts/build/build.js`. Alternatively, we can bundle echarts and our project directly by the tool like [rollup](https://rollupjs.org/), [webpack](https://webpack.js.org/) or [browserify](http://browserify.org/). In some project, this approach is required. Next we only go with [rollup](https://rollupjs.org/), because [webpack](https://webpack.js.org/) and [browserify](http://browserify.org/) are in the similar way.
 
 
 Firstly install [rollup](https://rollupjs.org/) in `myProject` directory:
