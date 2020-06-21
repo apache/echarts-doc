@@ -6,10 +6,10 @@
 ## init(Function)
 ```js
 (dom: HTMLDivElement|HTMLCanvasElement, theme?: Object|string, opts?: {
-    devicePixelRatio?: number
-    renderer?: string
-    width?: number|string
-    height?: number|string
+    devicePixelRatio?: number;
+    renderer?: string;
+    width?: number|string;
+    height?: number|string;
 }) => ECharts
 ```
 创建一个 ECharts 实例，返回 [echartsInstance](~echartsInstance)，不能在单个容器上初始化多个 ECharts 实例。

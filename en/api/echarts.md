@@ -6,10 +6,10 @@ Global echarts object, which can be accessed after including `echarts.js` in scr
 ## init(Function)
 ```js
 (dom: HTMLDivElement|HTMLCanvasElement, theme?: Object|string, opts?: {
-    devicePixelRatio?: number
-    renderer?: string
-    width?: number|string
-    height?: number|string
+    devicePixelRatio?: number;
+    renderer?: string;
+    width?: number|string;
+    height?: number|string;
 }) => ECharts
 ```
 Creates an ECharts instance, and returns an [echartsInstance](~echartsInstance). You shall not initialize multiple ECharts instances on a single container.
