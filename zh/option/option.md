@@ -77,7 +77,7 @@
 
 # blendMode(string) = 'source-over'
 
-图形的混合模式，不同的混合模式见 https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation 。
+图形的混合模式，不同的混合模式见 https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation 。
 
 默认为 `'source-over'`。 支持每个系列单独设置。
 
