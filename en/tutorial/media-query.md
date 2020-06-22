@@ -7,7 +7,7 @@ ECharts works in DOM nodes with user defined width and height. ECharts *componen
 
 Besides, sometimes one chart may need to be displayed on both PC and mobile-end, which involves the ability of ECharts inner components to be responsive with different container sizes.
 
-To solve this problem, ECharts improved component location algorithm, and implemented responsive ability similar to [CSS Media Query](http://www.w3.org/TR/css3-mediaqueries/).
+To solve this problem, ECharts improved component location algorithm, and implemented responsive ability similar to [CSS Media Query](https://www.w3.org/TR/css3-mediaqueries/).
 
 
 ## Location and layout of ECharts components
@@ -78,7 +78,7 @@ To be compatible with ECharts2, there may be settings that seems to be odd, e.g.
 
 ## Media Query
 
-[Media Query](http://www.w3.org/TR/css3-mediaqueries/#media1) provides the ability to be responsive with container size.
+[Media Query](https://www.w3.org/TR/css3-mediaqueries/#media1) provides the ability to be responsive with container size.
 
 As shown in the following example, you may drag **the circle in bottom-right corner** to see the legend and series change layout position and method with container size.
 ~[750x600](${galleryViewPath}doc-example/pie-media&edit=1&reset=1)

@@ -10,7 +10,7 @@ ECharts has been using Canvas as its renderer (use VML for IE8-) from the begini
 
 ## How to make a choice?
 
-Generally speaking, Canvas is suitable for the case that there is a large amount of grpahic elements (which basically due to a large amount of data), like heatmap and lines or scatter plot with large data in geo or parallel coordinates. Besides it supports some [special visual effect](examples/editor.html?c=lines-bmap-effect). But in some other scenarios SVG has some critical advantages: it consumes less memory then Canvas (especially in mobile device), and gives better performance in rendering. Moreover, it never blurs when zooming the viewport of browser whereas Canvas may blurs. For example, we have tried to render line, bar, pie charts with the Canvas renderer and the SVG renderer, and recorded the frame rate during the the stage that the initial animation performed:
+Generally speaking, Canvas is suitable for the case that there is a large amount of grpahic elements (which basically due to a large amount of data), like heatmap and lines or scatter plot with large data in geo or parallel coordinates. Besides it supports some [special visual effect](${websitePath}/examples/en/editor.html?c=lines-bmap-effect). But in some other scenarios SVG has some critical advantages: it consumes less memory then Canvas (especially in mobile device), and gives better performance in rendering. Moreover, it never blurs when zooming the viewport of browser whereas Canvas may blurs. For example, we have tried to render line, bar, pie charts with the Canvas renderer and the SVG renderer, and recorded the frame rate during the the stage that the initial animation performed:
 
 ~[90%x400](${galleryViewPath}doc-example/canvas-vs-svg-en&reset=1)
 
@@ -34,8 +34,8 @@ Notice: The features of rich text, shadow and texture have not been supported ye
 ECharts uses Canvas by default. If user intends to use the SVG renderer, the module of the SVG renderer should be included in ECharts bundle.
 
 + In the [pre-build](https://www.jsdelivr.com/package/npm/echarts) of ECharts, the SVG renderer has been included in [common version](https://cdn.jsdelivr.net/npm/echarts/dist/echarts.common.min.js) and [complete version](https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js). But not in [simple version](https://cdn.jsdelivr.net/npm/echarts/dist/echarts.simple.min.js).
-+ If [build ECharts online](http://echarts.baidu.com/builder.html), the checkbox "SVG 渲染" should be checked.
-+ If [build ECharts offline](http://echarts.baidu.com/tutorial.html#Create%20Custom%20Build%20of%20ECharts), the module of the SVG renderer should be imported:
++ If [build ECharts online](${websitePath}/en/builder.html), the checkbox "SVG Renderer" should be checked.
++ If [build ECharts offline](tutorial.html#Create%20Custom%20Build%20of%20ECharts), the module of the SVG renderer should be imported:
 
 ```js
 import 'zrender/lib/svg/svg';
