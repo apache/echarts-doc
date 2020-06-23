@@ -313,7 +313,7 @@ $hierarchy-guider-color: #C592A0;
         }
 
         .default-value {
-            color: #293c55;
+            color: #434343;
             font-size: 16px;
             margin-left: 15px;
             vertical-align: bottom;
@@ -418,17 +418,17 @@ $hierarchy-guider-color: #C592A0;
         margin-right: 4px;
         border-radius: 4px;
         padding: 3px 5px;
-        color: #fff;
-        background-color: #a3a3a3;
+        color: #333;
+        background-color: #f9f2f4;
         font-size: 12px;
     }
-
+    
     .prop-type-string {
-        background-color: #fd8888;
+        background-color: #f9f2f4;
     }
 
     .prop-type-number {
-        background-color: #8fb9e4;
+        background-color: #f9f2f4;
     }
 
     .prop-type-object {
@@ -441,7 +441,7 @@ $hierarchy-guider-color: #C592A0;
     }
 
     .prop-type-boolean {
-        background-color: #e6a23c;
+        background-color: #f9f2f4;
     }
 
     .properties-list-panel {

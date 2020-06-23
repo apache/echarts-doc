@@ -21,6 +21,7 @@
 
         p {
             margin: 0;
+            font-size: 12px;
         }
 
         pre {
@@ -41,7 +42,7 @@
     p {
         line-height: 1.7em;
         margin: 12px 0 12px 0;
-        font-size: 14px;
+        font-size: 16px;
     }
     pre {
         margin: 5px 0;
@@ -53,10 +54,10 @@
     }
 
     .codespan {
-        padding: 2px 4px;
+        padding: 1px 5px;
         font-size: 14px;
-        color: #293C55;
-        background-color: #f9f2f4;
+        //color: #293C55;
+        background-color: #f4f4f4;
         border-radius: 4px;
     }
 

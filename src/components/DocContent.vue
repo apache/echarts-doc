@@ -280,9 +280,9 @@ export default {
 
     h3 {
         font-weight: normal;
-        color: #999;
-        font-size: 30px;
-        margin: 20px 20px 20px 0;
+        color: rgb(150, 150, 150);
+        font-size: 28px;
+        margin: 20px 0px 20px 20px;
     }
 
     .page-description {

@@ -64,8 +64,8 @@ export default {
         },
         example: {
             title: '配置项效果预览',
-            intro: '在左侧调节控件预览配置项不同取值的效果',
-            noExample: '当前组件暂无可用的示例',
+            intro: '调节控件可预览配置项不同取值的效果',
+            noExample: '当前组件暂无可用示例',
 
             tryDesc: '试一试',
             defaultColor: '默认颜色',

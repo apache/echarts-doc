@@ -37,7 +37,8 @@
 import {store, getPagePath} from '../store';
 import CodeMirror from 'codemirror';
 import 'codemirror/lib/codemirror.css';
-import 'codemirror/theme/paraiso-dark.css';
+// import 'codemirror/theme/paraiso-dark.css';
+import 'codemirror/theme/dracula.css';
 import 'codemirror/mode/javascript/javascript.js'
 import beautify from 'js-beautify';
 import throttle from 'lodash.throttle';
@@ -150,7 +151,8 @@ function updateOption(option, isRefreshForce) {
         this.cmInstance = CodeMirror(this.$el.querySelector('.codemirror-main'), {
             value: this.formattedOptionCodeStr,
             mode: 'javascript',
-            theme: 'paraiso-dark',
+            // theme: 'paraiso-dark',
+            theme: 'dracula',
             readOnly: true
         });
     }
@@ -330,7 +332,7 @@ export default {
 
 #example-panel {
     position: fixed;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     padding: 10px 0px;
     text-align: left;
     background: #fff;
@@ -340,9 +342,11 @@ export default {
 
     h2 {
         font-weight: normal;
-        font-size: 18px;
-        color: #B03A5B;
+        font-size: 20px;
+        color: #333;
         padding-left: 20px;
+        font-weight: bold;
+        margin: 5px 0;
     }
 
     p.intro {
@@ -381,13 +385,16 @@ export default {
             position: absolute;
             left: 10px;
             top: 10px;
-            right: 0;
-            bottom: 10px;
-
+            right: 10px;
+            bottom: 15px;
+            box-shadow: -5px -5px 15px rgba(0, 0, 0, 0.1);
             .CodeMirror {
                 height: 100%;
                 overflow-y: scroll;
-                border-radius: 5px;
+                border-radius: 6px;
+                .CodeMirror-scroll {
+                    padding: 15px;
+                }
                 // font-family: Monaco, 'Source Code Pro', monospace;
 
                 ::-webkit-scrollbar-thumb {

@@ -280,9 +280,9 @@ export default {
         font-family: Monaco,'Source Code Pro', monospace;
         font-size: 13px;
         white-space: nowrap;
-
+        
         .default-value {
-            color: #999;
+            color: #f4f4f4;
         }
     }
 }
