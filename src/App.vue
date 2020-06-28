@@ -73,6 +73,18 @@ export default {
 // @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap');
 
+@font-face {
+  font-family: 'iconfont';
+  src:  url('./asset/icon.eot');
+  src:  url('./asset/icon.eot#iefix') format('embedded-opentype'),
+    url('./asset/icon.ttf') format('truetype'),
+    url('./asset/icon.woff') format('woff'),
+    url('./asset/icon.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
 .ec-doc {
     // font-family: "Helvetica Neue", "Segoe UI", Arial, "PingFang SC", STHeiti, "Microsoft Yahei", sans-serif;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "Helvetica Neue", Helvetica, Arial, sans-serif;

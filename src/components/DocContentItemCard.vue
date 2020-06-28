@@ -26,8 +26,13 @@
 
         <span class="default-value" v-if="nodeData.default && nodeData.default !== '*'"> = {{nodeData.default}}</span>
 
-        <span class="control-toggle" v-if="uiControl && shared.allOptionExamples">
-            <el-switch :active-text="$t('example.tryDesc')" v-model="enableUIControl"></el-switch>
+        <span
+            :class="['control-toggle', enableUIControl ? 'active' : '']"
+            v-if="uiControl && shared.allOptionExamples"
+            @click="toggleUIControl"
+        >
+            &#xe900; {{$t('example.tryDesc')}}
+            <!-- <el-switch :active-text="$t('example.tryDesc')" v-model="enableUIControl"></el-switch> -->
         </span>
     </h4>
 
@@ -198,7 +203,9 @@ export default {
             this.manualExpanded = !this.expanded;
             this.$emit('toggle-expanded');
         },
-
+        toggleUIControl() {
+            this.enableUIControl = !this.enableUIControl;
+        },
         bubbleScrollToSelfEvent(path, time, delay) {
             this.$emit('scroll-to-self', path, time, delay);
         }
@@ -323,6 +330,18 @@ $hierarchy-guider-color: #C592A0;
         .control-toggle {
             float: right;
             font-size: 14px;
+            font-family: iconfont;
+            cursor: pointer;
+
+            color: #555;
+
+            &:hover {
+                color: #999;
+            }
+
+            &.active {
+                color: #409eff;
+            }
         }
     }
 
@@ -422,7 +441,7 @@ $hierarchy-guider-color: #C592A0;
         background-color: #f9f2f4;
         font-size: 12px;
     }
-    
+
     .prop-type-string {
         background-color: #f9f2f4;
     }

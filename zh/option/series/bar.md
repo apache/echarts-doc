@@ -107,7 +107,7 @@ option = {
 
 {{ use: partial-version(version = "4.5.0") }}
 
-<ExampleUIControlBoolean />
+<ExampleUIControlBoolean clean="true" />
 
 是否在环形柱条两侧使用圆弧效果。
 

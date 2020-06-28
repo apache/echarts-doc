@@ -24,7 +24,7 @@
             ></el-option>
         </el-select>
         <el-button v-if="shared.currentExampleOption" type="primary" icon="el-icon-refresh" size="mini" @click="refreshForce">{{$t('example.refresh')}}</el-button>
-        <el-button size='mini' @click="closeExamplePanel">{{$t('example.close')}}</el-button>
+        <el-button size='mini' circle icon="el-icon-close" @click="closeExamplePanel"></el-button>
     </div>
 </div>
 </template>
@@ -311,7 +311,7 @@ export default {
                 }
                 return value;
             });
-            return `const option = ${optStr}`;
+            return `option = ${optStr}`;
         },
 
         formattedOptionCodeStr() {
