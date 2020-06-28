@@ -21,6 +21,7 @@ export default {
         },
         example: {
             title: 'Preview the Option',
+            titleShort: 'Preview',
             intro: 'Try different values of the option and preview the effects!',
             noExample: 'No example available for current component.',
 
@@ -32,6 +33,8 @@ export default {
             vectorSetSeparate: 'SEPARATE',
             absoluteMode: 'ABSOLUTE',
             percentMode: 'PERCENT',
+
+            inputPlaceholder: 'Input to change the text content',
 
             builtin: 'Builtin',
             upload: 'Upload SVG or PNG',
@@ -64,6 +67,8 @@ export default {
         },
         example: {
             title: '配置项效果预览',
+            titleShort: '预览',
+
             intro: '调节控件可预览配置项不同取值的效果',
             noExample: '当前组件暂无可用示例',
 
@@ -74,6 +79,8 @@ export default {
             vectorSetSeparate: '分别设置',
             absoluteMode: '绝对值',
             percentMode: '百分比',
+
+            inputPlaceholder: '输入改变文本',
 
             builtin: '内置',
             upload: '上传 SVG 或 PNG',

@@ -27,10 +27,15 @@
                 ></DocContentItemCard>
             </div>
         </div>
-        <LiveExample
-            v-if="shared.showOptionExample && !shared.isMobile"
-            :isDownLayout="isExampleTopDownPlayout"
-        ></LiveExample>
+        <template v-if="!shared.isMobile">
+            <LiveExample
+                v-if="shared.showOptionExample"
+                :isDownLayout="isExampleTopDownPlayout"
+            ></LiveExample>
+            <div v-else class="open-option-example" @click="openOptionExample">
+                <i class="el-icon-data-line"></i> {{ $t('example.titleShort') }}
+            </div>
+        </template>
     </div>
 </template>
 
@@ -223,6 +228,10 @@ export default {
                 this.pageOutline = {};
                 this.loading = false;
             });
+        },
+
+        openOptionExample() {
+            this.shared.showOptionExample = true;
         }
     },
 
@@ -251,10 +260,35 @@ export default {
 
 .doc-main {
     margin-left: 10px;
+
+    .open-option-example {
+        position: fixed;
+        right: 0;
+        // bottom: 50px;
+        top: 50%;
+        padding: 10px;
+        border-radius: 20px 0 0 20px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        background: #fff;
+        cursor: pointer;
+
+        font-size: 12px;
+
+        &:hover {
+            background: #eee;
+        }
+
+        i {
+            font-size: 16px;
+            vertical-align: middle;
+        }
+    }
 }
 
 .doc-content {
     text-align: left;
+
+    // transition: margin-right 500ms cubic-bezier(0.215, 0.610, 0.355, 1);
 
     &.option-example-actived {
 
@@ -265,6 +299,7 @@ export default {
             margin-right: 45%;
         }
     }
+
 
 
     h2 {
@@ -297,6 +332,7 @@ export default {
 
         @include description-html-formatter;
     }
+
 }
 
 .ec-doc-tutorial {

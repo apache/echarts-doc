@@ -1,6 +1,6 @@
 <template>
 <div class="control-text">
-<el-input v-model="innerValue" size="mini" @change="onValueChange"></el-input>
+<el-input v-model="innerValue" size="mini" :placeholder="$t('example.inputPlaceholder')" @change="onValueChange"></el-input>
 </div>
 </template>
 

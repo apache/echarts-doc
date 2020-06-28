@@ -337,6 +337,9 @@ export default {
     text-align: left;
     background: #fff;
 
+    // transition: width 500ms cubic-bezier(0.215, 0.610, 0.355, 1);
+
+
     // background: #162436;
     // border-left: 1px solid #ddd;
 
@@ -375,11 +378,6 @@ export default {
 
     .example-code {
         position: relative;
-
-        // h4 {
-        //     margin: 0 10px;
-        //     padding: 0;
-        // }
 
         .codemirror-main {
             position: absolute;
