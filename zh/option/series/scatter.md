@@ -54,6 +54,7 @@
 {{use:partial-item-style-desc}}
 {{use:partial-item-style(
     prefix="##",
+    defaultOpacity=0.8,
     useColorPalatte=true,
     hasCallback=true
 )}}
