@@ -61,11 +61,6 @@ function getVirtulData(year) {
 }
 
 const option = {
-    title: {
-        top: 30,
-        left: 'center',
-        text: '2016年某人每天的步数'
-    },
     tooltip: {},
     visualMap: {
         min: 0,

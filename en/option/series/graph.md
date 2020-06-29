@@ -5,8 +5,6 @@
 
 Graph is a diagram to represent [nodes](~series-graph.nodes) and the [links](~series-graph.links) connecting nodes.
 
-**Tips: ** In ECharts 2.x , the diagram of `force` type will not be available in ECharts 3 any more, which has been changed to use `graph` to show graph data. If you want to use force to lead the layout, you can set the  [layout](~series-graph.layout) configuration as `'force'`.
-
 **Example: **
 
 ~[600x400](${galleryViewPath}graph&reset=1&edit=1)

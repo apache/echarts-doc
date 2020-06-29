@@ -22,9 +22,6 @@ myChart.setOption(
                 ...,
                 data: ['2002-01-01', '2003-01-01', '2004-01-01']
             },
-            title: {
-                subtext: '数据来自国家统计局'
-            },
             grid: {...},
             xAxis: [...],
             yAxis: [...],

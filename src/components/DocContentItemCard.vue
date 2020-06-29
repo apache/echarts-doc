@@ -31,7 +31,7 @@
             v-if="uiControl && shared.allOptionExamples"
             @click="toggleUIControl"
         >
-            &#xe900; {{$t('example.tryDesc')}}
+            <i>&#xe900;</i> {{$t('example.tryDesc')}}
             <!-- <el-switch :active-text="$t('example.tryDesc')" v-model="enableUIControl"></el-switch> -->
         </span>
     </h4>
@@ -330,10 +330,15 @@ $hierarchy-guider-color: #C592A0;
         .control-toggle {
             float: right;
             font-size: 14px;
-            font-family: iconfont;
             cursor: pointer;
 
             color: #555;
+
+            i {
+                font-family: iconfont;
+                font-style: normal;
+                vertical-align: middle;
+            }
 
             &:hover {
                 color: #999;

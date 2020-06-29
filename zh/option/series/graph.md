@@ -5,8 +5,6 @@
 
 用于展现节点以及节点之间的关系数据。
 
-**注意：** ECharts 2.x 中 `force` 类型的图表不再在 ECharts 3 中提供支持，转为统一使用 `graph` 去展现关系数据。如果要使用力引导布局，可以将 [layout](~series-graph.layout) 配置项设为`'force'`。
-
 **示例：**
 
 ~[600x400](${galleryViewPath}graph&reset=1&edit=1)

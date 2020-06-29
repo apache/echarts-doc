@@ -287,6 +287,8 @@ export default {
 
 .doc-content {
     text-align: left;
+    // color: #59636f;
+    color: #4d555e;
 
     // transition: margin-right 500ms cubic-bezier(0.215, 0.610, 0.355, 1);
 
