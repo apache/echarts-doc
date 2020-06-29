@@ -12,10 +12,10 @@
 const option = {
     series: [
         {
-            name: '业务指标',
+            name: 'Indicator',
             type: 'gauge',
             detail: {formatter: '{value}%'},
-            data: [{value: 50, name: '完成率'}]
+            data: [{value: 50, name: 'Percent'}]
         }
     ]
 };

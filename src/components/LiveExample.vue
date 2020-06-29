@@ -393,7 +393,8 @@ export default {
                 .CodeMirror-scroll {
                     padding: 15px;
                 }
-                // font-family: Monaco, 'Source Code Pro', monospace;
+                font-family: 'Source Code Pro', monospace;
+                font-size: 13px;
 
                 ::-webkit-scrollbar-thumb {
                     width: 8px;

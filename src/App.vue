@@ -71,7 +71,7 @@ export default {
 <style lang="scss">
 
 // @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap');
+// @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap');
 
 @font-face {
   font-family: 'iconfont';
@@ -83,6 +83,13 @@ export default {
   font-weight: normal;
   font-style: normal;
   font-display: block;
+}
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./asset/SourceCodePro-Regular.woff') format('woff');
 }
 
 .ec-doc {

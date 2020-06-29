@@ -10,17 +10,15 @@
 <ExampleBaseOption name="cartesian-bar" title="直角坐标系上的柱状图">
 const option = {
     tooltip: {},
-    legend: {
-        data:['销量']
-    },
+    legend: {},
     xAxis: {
-        data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
     },
     yAxis: {},
     series: [{
-        name: '销量',
+        name: 'Sale',
         type: 'bar',
-        data: [5, 20, 36, 10, 10, 20]
+        data: [5, 20, 36, 10, 10, 20, 4]
     }]
 };
 </ExampleBaseOption>
@@ -32,26 +30,24 @@ const option = {
     },
     radiusAxis: {
         type: 'category',
-        data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"],
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
         z: 10
     },
     polar: {},
     series: [{
-        name: '销量',
+        name: 'Sale',
         type: 'bar',
-        data: [5, 20, 36, 10, 10, 20],
+        data: [5, 20, 36, 10, 10, 20, 4],
         coordinateSystem: 'polar'
     }],
-    legend: {
-        data: ['销量']
-    },
+    legend: {},
 };
 </ExampleBaseOption>
 
 <ExampleBaseOption name="cartesian-bar-multiple-series" title="直角坐标系上的多系列柱状图">
 option = {
     legend: {
-        data: ['直接访问', '联盟广告', '搜索引擎']
+        data: ['Food', 'Cloth', 'Book']
     },
     grid: {
         left: '3%',
@@ -61,24 +57,24 @@ option = {
     },
     xAxis: {
         type: 'category',
-        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
     },
     yAxis: {
         type: 'value'
     },
     series: [
         {
-            name: '直接访问',
+            name: 'Food',
             type: 'bar',
             data: [320, 302, 301, 334, 390, 330, 320]
         },
         {
-            name: '视频广告',
+            name: 'Cloth',
             type: 'bar',
             data: [150, 212, 201, 154, 190, 330, 410]
         },
         {
-            name: '搜索引擎',
+            name: 'Book',
             type: 'bar',
             data: [820, 832, 901, 934, 1290, 1330, 1320]
         }
@@ -135,7 +131,7 @@ option = {
 ## showBackground(boolean) = false
 {{ use: partial-version(version = "4.7.0") }}
 
-<ExampleUIControlBoolean />
+<ExampleUIControlBoolean clean="true" />
 
 是否显示柱条的背景色。通过 [backgroundStyle](~series-bar.backgroundStyle) 配置背景样式。
 

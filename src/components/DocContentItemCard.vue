@@ -249,7 +249,7 @@ $hierarchy-guider-color: #C592A0;
         padding: 0;
 
         // font-family: Montserrat, sans-serif;
-        font-family: Monaco, 'Source Code Pro', monospace;
+        font-family: 'Source Code Pro', monospace;
 
         &>* {
             vertical-align: bottom;
