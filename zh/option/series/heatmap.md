@@ -13,7 +13,7 @@
 **直角坐标系：**
 ~[600x400](${galleryViewPath}heatmap-cartesian&edit=1&reset=1)
 
-<ExampleBaseOption name="heatmap" title="直角坐标系热力图">
+<ExampleBaseOption name="heatmap" title="直角坐标系热力图" title-en="Heatmap on Cartesian">
 const hours = ['12a', '1a', '2a', '3a', '4a', '5a', '6a',
         '7a', '8a', '9a','10a','11a',
         '12p', '1p', '2p', '3p', '4p', '5p',

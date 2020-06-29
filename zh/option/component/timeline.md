@@ -98,7 +98,7 @@ myChart.setOption(
 + ECharts 3 和 ECharts 2 相比，timeline 属性的定义位置有所不同，移到了 `baseOption` 中，统一作为一个普通的组件看待。但是，仍然兼容 ECharts2 的 timeline 定义位置，只是不再推荐这样写。
 
 
-<ExampleBaseOption name="timeline" title="时间轴">
+<ExampleBaseOption name="timeline" title="时间轴" title-en="Timeline">
 var dataMap = {};
 function dataFormatter(obj) {
     var pList = ['北京','天津','河北','山西','内蒙古','辽宁','吉林','黑龙江','上海','江苏','浙江','安徽','福建','江西','山东','河南','湖北','湖南','广东','广西','海南','重庆','四川','贵州','云南','西藏','陕西','甘肃','青海','宁夏','新疆'];

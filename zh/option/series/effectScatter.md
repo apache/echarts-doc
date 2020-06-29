@@ -7,7 +7,7 @@
 
 **Tip:** ECharts 2.x 中在地图上通过 markPoint 实现地图特效在 ECharts 3 中建议通过地理坐标系上的 effectScatter 实现。
 
-<ExampleBaseOption name="effectScatter-bubble" title="特效气泡图">
+<ExampleBaseOption name="effectScatter-bubble" title="特效气泡图" title-en="Bubble Chart with Effect">
 const option = {
     xAxis: {},
     yAxis: {

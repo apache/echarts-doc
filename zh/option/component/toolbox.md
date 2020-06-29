@@ -74,7 +74,7 @@ ${name} icon 样式设置。由于 icon 的文本信息只在 icon hover 时候�
 
 ~[600x400](${galleryViewPath}line-marker&reset=1&edit=1)
 
-<ExampleBaseOption title="工具栏" title="toolbox">
+<ExampleBaseOption title="工具栏" title="toolbox" title-en="Toolbox">
 option = {
     toolbox: {
         show: true,

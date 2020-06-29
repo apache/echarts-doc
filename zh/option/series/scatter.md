@@ -7,7 +7,7 @@
 可以应用在[直角坐标系](~grid)，[极坐标系](~polar)，[地理坐标系](~geo)上。
 
 
-<ExampleBaseOption name="scatter" title="基础散点图">
+<ExampleBaseOption name="scatter" title="基础散点图" title-en="Basic Scatter">
 const option = {
     legend: {},
     grid: {

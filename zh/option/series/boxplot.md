@@ -15,7 +15,7 @@
 <br>
 <br>
 
-<ExampleBaseOption name="boxplot" title="盒须图">
+<ExampleBaseOption name="boxplot" title="盒须图" title-en="Boxplot">
 const option = {
      title: [{
              text: "Michelson-Morley Experiment",

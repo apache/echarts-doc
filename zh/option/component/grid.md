@@ -11,7 +11,7 @@
 
 ~[600x400](${galleryViewPath}scatter-anscombe-quartet&edit=1&reset=1)
 
-<ExampleBaseOption title="基础网格示例" name="grid">
+<ExampleBaseOption title="基础网格示例" name="grid" title-en="Basic Grid">
 const option = {
     color: ['#3398DB'],
     tooltip: {

@@ -11,7 +11,7 @@
 
 ~[400x400](${galleryViewPath}doc-example/radar&edit=1&reset=1)
 
-<ExampleBaseOption name="radar" title="基础雷达图">
+<ExampleBaseOption name="radar" title="基础雷达图" title-en="Radar">
 const option = {
     title: {
         text: '基础雷达图'

@@ -28,7 +28,7 @@
 <br>
 <br>
 
-<ExampleBaseOption name="candlestick" title="K 线图">
+<ExampleBaseOption name="candlestick" title="K 线图" title-en="Candlestick">
 var upColor = '#ec0000';
 var upBorderColor = '#8A0000';
 var downColor = '#00da3c';

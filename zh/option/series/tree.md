@@ -18,7 +18,7 @@
 ~[800x680](${galleryViewPath}tree-legend&edit=1&reset=1)
 
 
-<ExampleBaseOption name="tree" title="基础树图">
+<ExampleBaseOption name="tree" title="基础树图" title-en="Basic Tree">
 const option = {
     series: [{
         type: 'tree',

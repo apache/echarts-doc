@@ -44,7 +44,7 @@
 
 ---
 
-<ExampleBaseOption name="calendar" title="日历图">
+<ExampleBaseOption name="calendar" title="日历图" title-en="Calendar">
 function getVirtulData(year) {
     year = year || '2017';
     var date = +new Date(year + '-01-01');

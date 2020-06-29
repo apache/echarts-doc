@@ -5,7 +5,7 @@
 
 极坐标系的径向轴。
 
-<ExampleBaseOption name="two-number-axis" title="双数值轴">
+<ExampleBaseOption name="two-number-axis" title="双数值轴" title-en="Tow Number Axes">
 const data = [];
 
 for (let i = 0; i <= 360; i++) {
@@ -42,7 +42,7 @@ const option = {
 };
 </ExampleBaseOption>
 
-<ExampleBaseOption name="two-category-axis" title="双类目轴">
+<ExampleBaseOption name="two-category-axis" title="双类目轴" title-en="Tow Category Axes">
 
 const hours = ['12a', '1a', '2a', '3a', '4a', '5a', '6a',
         '7a', '8a', '9a','10a','11a',

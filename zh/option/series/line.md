@@ -12,7 +12,7 @@
 
 ~[600x400](${galleryViewPath}line-aqi&edit=1&reset=1)
 
-<ExampleBaseOption name="cartesian-line" title="基础折线图">
+<ExampleBaseOption name="cartesian-line" title="基础折线图" title-en="Basic Line Chart">
 const option = {
     xAxis: {
         type: 'category',
@@ -26,7 +26,7 @@ const option = {
 };
 </ExampleBaseOption>
 
-<ExampleBaseOption name="cartesian-line-empty-data" title="有空数据的折线图">
+<ExampleBaseOption name="cartesian-line-empty-data" title="有空数据的折线图" title-en="Line with Empty Data">
 const option = {
     xAxis: {
         type: 'category',

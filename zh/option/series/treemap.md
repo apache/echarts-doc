@@ -48,7 +48,7 @@ treemap 首先是把数值映射到『面积』这种视觉元素上。
 <br>
 <br>
 
-<ExampleBaseOption name="sunburst" title="基础旭日图">
+<ExampleBaseOption name="treemap" title="基础矩形树图" title-en="Basic Treemap">
 const data = [{
     name: 'Food',
     children: [{

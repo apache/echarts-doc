@@ -20,7 +20,7 @@
             <el-option v-for="item in shared.allOptionExamples"
                 :key="item.name"
                 :value="item.name"
-                :label="item.title"
+                :label="shared.locale === 'en' ? item['title-en'] : item.title"
             ></el-option>
         </el-select>
         <el-button v-if="shared.currentExampleOption" type="primary" icon="el-icon-refresh" size="mini" @click="refreshForce">{{$t('example.refresh')}}</el-button>

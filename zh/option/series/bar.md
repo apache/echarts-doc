@@ -7,7 +7,7 @@
 柱状/条形图 通过 柱形的高度/条形的宽度 来表现数据的大小，用于有至少一个类目轴或时间轴的[直角坐标系](~grid)上。
 
 
-<ExampleBaseOption name="cartesian-bar" title="直角坐标系上的柱状图">
+<ExampleBaseOption name="cartesian-bar" title="直角坐标系上的柱状图" title-en="Bar on Cartesian">
 const option = {
     tooltip: {},
     legend: {},
@@ -23,7 +23,7 @@ const option = {
 };
 </ExampleBaseOption>
 
-<ExampleBaseOption name="polar-bar" title="极坐标系上的柱状图">
+<ExampleBaseOption name="polar-bar" title="极坐标系上的柱状图" title-en="Bar on Polar">
 const option = {
     angleAxis: {
         max: 30
@@ -44,7 +44,7 @@ const option = {
 };
 </ExampleBaseOption>
 
-<ExampleBaseOption name="cartesian-bar-multiple-series" title="直角坐标系上的多系列柱状图">
+<ExampleBaseOption name="cartesian-bar-multiple-series" title="多系列柱状图" title-en="Multiple Series">
 option = {
     legend: {
         data: ['Food', 'Cloth', 'Book']

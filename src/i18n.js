@@ -22,7 +22,7 @@ export default {
         example: {
             title: 'Preview the Option',
             titleShort: 'Preview',
-            intro: 'Try different values of the option and preview the effects!',
+            intro: 'Try different values of the option and preview!',
             noExample: 'No example available for current component.',
 
             tryDesc: 'Try It',

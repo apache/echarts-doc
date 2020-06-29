@@ -9,7 +9,7 @@
 
 ~[600x400](${galleryViewPath}scatter-polar-punchCard&edit=1&reset=1)
 
-<ExampleBaseOption name="polar" title="极坐标系">
+<ExampleBaseOption name="polar" title="极坐标系" title-en="Polar">
 
 const hours = ['12a', '1a', '2a', '3a', '4a', '5a', '6a',
         '7a', '8a', '9a','10a','11a',

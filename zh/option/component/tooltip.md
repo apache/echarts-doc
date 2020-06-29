@@ -10,7 +10,7 @@
 {{use: partial-tooltip-introduction}}
 
 
-<ExampleBaseOption name="tooltip" title="提示框">
+<ExampleBaseOption name="tooltip" title="提示框" title-en="Tooltip">
 var base = +new Date(2016, 9, 3);
 var oneDay = 24 * 3600 * 1000;
 var valueBase = Math.random() * 300;

@@ -8,7 +8,7 @@
 **示例：**
 ~[600x500](${galleryViewPath}gauge-car)
 
-<ExampleBaseOption name="gauge" title="基础仪表盘">
+<ExampleBaseOption name="gauge" title="基础仪表盘" title-en="Basic Gauge">
 const option = {
     series: [
         {

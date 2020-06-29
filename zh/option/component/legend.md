@@ -12,7 +12,7 @@ ECharts 3 中单个 echarts 实例中可以存在多个图例组件，会方便�
 当图例数量过多时，可以使用 [滚动图例（垂直）](${galleryEditorPath}pie-legend&edit=1&reset=1) 或 [滚动图例（水平）](${galleryEditorPath}radar2&edit=1&reset=1)，参见：[legend.type](~legend.type)
 
 
-<ExampleBaseOption name="legend" title="基础图例">
+<ExampleBaseOption name="legend" title="基础图例" title-en="Basic Legend">
 
 option = {
     color: ['#003366', '#006699', '#4cabce', '#e5323e'],
@@ -53,7 +53,7 @@ option = {
 };
 </ExampleBaseOption>
 
-<ExampleBaseOption name="legend-more" title="多源图例">
+<ExampleBaseOption name="legend-more" title="多源图例" title-en="Legend on Multiple Source">
 const option = {
     legend: {
         width: 350,

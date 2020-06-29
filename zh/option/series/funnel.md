@@ -8,7 +8,7 @@
 **示例：**
 ~[600x400](${galleryViewPath}funnel&reset=1&edit=1)
 
-<ExampleBaseOption name="funnel" tilte="基础漏斗图">
+<ExampleBaseOption name="funnel" tilte="基础漏斗图" title-en="Basic Funnel">
 option = {
     legend: {
         data: ['Display','Click','Visit','Consulting','Order']

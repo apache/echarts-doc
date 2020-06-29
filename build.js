@@ -256,15 +256,15 @@ function writeSingleSchemaPartioned(schema, language, docName, format) {
     function copyUIControlConfigs(source, target) {
         for (let key in source) {
             if (target[key]) {
-                if (source[key].uiControl) {
+                if (source[key].uiControl && !target[key].uiControl) {
                     target[key].uiControl = source[key].uiControl;
                 }
-                if (source[key].exampleBaseOptions) {
+                if (source[key].exampleBaseOptions && !target[key].exampleBaseOptions) {
                     target[key].exampleBaseOptions = source[key].exampleBaseOptions;
                 }
             }
             else {
-                console.error(`Unmatched option path ${key}`);
+                // console.error(`Unmatched option path ${key}`);
             }
         }
     }

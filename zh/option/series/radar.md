@@ -11,7 +11,7 @@
 
 ~[600x500](${galleryViewPath}radar-aqi&edit=1&reset=1)
 
-<ExampleBaseOption name="radar" title="基础雷达图">
+<ExampleBaseOption name="radar" title="基础雷达图" title-en="Basic Radar">
 const option = {
     title: {
         text: '基础雷达图'

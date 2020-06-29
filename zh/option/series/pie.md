@@ -17,7 +17,7 @@
 **下面是自定义南丁格尔图的示例：**
 ~[500x400](${galleryViewPath}pie-custom&edit=1&reset=1)
 
-<ExampleBaseOption name="pie" title="基础饼图">
+<ExampleBaseOption name="pie" title="基础饼图" title-en="Basic Pie">
 const option = {
     legend: {
         orient: 'vertical',

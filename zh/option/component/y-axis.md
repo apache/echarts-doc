@@ -5,7 +5,7 @@
 
 直角坐标系 grid 中的 y 轴，一般情况下单个 grid 组件最多只能放左右两个 y 轴，多于两个 y 轴需要通过配置 [offset](~yAxis.offset) 属性防止同个位置多个 Y 轴的重叠。
 
-<ExampleBaseOption title="基础 y 轴示例" name="y-axis">
+<ExampleBaseOption title="基础 y 轴示例" name="y-axis" title-en="Basic Y Axis">
 const option = {
     color: ['#3398DB'],
     tooltip: {
@@ -37,7 +37,7 @@ const option = {
 };
 </ExampleBaseOption>
 
-<ExampleBaseOption title="Log 轴示例" name="y-axis-log">
+<ExampleBaseOption title="Log 轴示例" name="y-axis-log" title-en="Log Axis">
 option = {
     legend: {
         left: 'left',

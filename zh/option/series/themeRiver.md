@@ -19,7 +19,7 @@
 
 此外，原数据集中的时间属性，映射到单个时间轴上。
 
-<ExampleBaseOption name="themeRiver" title="主题河流图">
+<ExampleBaseOption name="themeRiver" title="主题河流图" title-en="Basic Theme River">
 
 const option = {
     singleAxis: {

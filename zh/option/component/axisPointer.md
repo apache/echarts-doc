@@ -5,7 +5,7 @@
 
 这是坐标轴指示器（axisPointer）的全局公用设置。
 
-<ExampleBaseOption name="axis-pointer" title="坐标轴指示器">
+<ExampleBaseOption name="axis-pointer" title="坐标轴指示器" title-en="Axis Pointer">
 var base = +new Date(2016, 9, 3);
 var oneDay = 24 * 3600 * 1000;
 var valueBase = Math.random() * 300;

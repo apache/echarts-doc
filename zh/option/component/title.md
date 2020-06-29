@@ -11,7 +11,7 @@
 **例如下面不同缓动函数效果的示例，每一个缓动效果图都带有一个标题组件：**
 ~[700x400](${galleryViewPath}line-easing&edit=1&reset=1)
 
-<ExampleBaseOption name="title-only" title="只有标题的实例">
+<ExampleBaseOption name="title-only" title="只有标题的实例" title-en="Title">
 const option = {
     title: {
         text: 'Main Title',

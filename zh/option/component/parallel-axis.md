@@ -9,7 +9,7 @@
     galleryViewPath=${galleryViewPath}
 )}}
 
-<ExampleBaseOption name="parallel-axis" title="平行坐标">
+<ExampleBaseOption name="parallel-axis" title="平行坐标" title-en="Parallel">
 const dataBJ = [
     [1,55,9,56,0.46,18,6,"良"],
     [2,25,11,21,0.65,34,9,"优"],
