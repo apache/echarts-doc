@@ -406,7 +406,7 @@ try {
 ### Statement
 
 
-**[MUST]** The comma must not be ignored at the end of a statement.
+**[MUST]** The semicolon must not be ignored at the end of a statement.
 
 
 **[MUST]** The `{}` must not be ignored even if there is only one line.
@@ -424,7 +424,7 @@ if (condition)
 ```
 
 
-**[MUST]** Place no comma at the end of a function definition.
+**[MUST]** Place no semicolon at the end of a function definition.
 
 ```js
 // good
@@ -435,7 +435,7 @@ function funcName() {
 function funcName() {
 };
 
-// For function expression, the comma must not be ignored.
+// For function expression, the semicolon must not be ignored.
 var funcName = function () {
 };
 ```
