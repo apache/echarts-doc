@@ -96,6 +96,8 @@ label: {
 
 #${prefix} color(Color)=${defaultColor|default('"#fff"')}
 
+<ExampleUIControlColor default="${defaultColor|default(null)}" />
+
 ${name}文字的颜色。
 
 
@@ -106,6 +108,8 @@ ${name}文字的颜色。
 
 #${prefix} fontStyle(string)='normal'
 
+<ExampleUIControlEnum default="normal" options="normal,italic,oblique" />
+
 ${name}文字字体的风格。
 
 可选：
@@ -115,6 +119,8 @@ ${name}文字字体的风格。
 
 
 #${prefix} fontWeight(string|number)=${defaultFontWeight|default('normal')}
+
+<ExampleUIControlEnum default="normal" options="normal,bold,bolder,lighter" />
 
 ${name}文字字体的粗细。
 
@@ -128,17 +134,23 @@ ${name}文字字体的粗细。
 
 #${prefix} fontFamily(string)='sans-serif'
 
+<ExampleUIControlEnum default="sans-serif" options="sans-serif,serif,monospace,Arial,Courier New" />
+
 ${name}文字的字体系列。
 
 还可以是 'serif' , 'monospace', 'Arial', 'Courier New', 'Microsoft YaHei', ...
 
 #${prefix} fontSize(number)=${defaultFontSize|default(12)}
 
+<ExampleUIControlNumber default="${defaultFontSize|default(12)}" min="1" step="1" />
+
 ${name}文字的字体大小。
 
 
  {{ if: !${noAlign} }}
 #${prefix} align(string)=${defaultAlign}
+
+<ExampleUIControlEnum options="left,center,right" />
 
 文字水平对齐方式，默认自动。
 
@@ -156,6 +168,8 @@ ${name}文字的字体大小。
 
 {{ if: !${noVerticalAlign} }}
 #${prefix} verticalAlign(string)=${defaultVerticalAlign}
+
+<ExampleUIControlEnum options="top,middle,bottom" />
 
 文字垂直对齐方式，默认自动。
 
@@ -175,6 +189,8 @@ ${name}文字的字体大小。
 
 #${prefix} lineHeight(number)
 
+<ExampleUIControlNumber min="0" step="1" default="12" />
+
 行高。
 
 {{ use: partial-text-style-rich-inherit(
@@ -185,6 +201,8 @@ ${name}文字的字体大小。
 {{ if: !${noBox} }}
 
 #${prefix} backgroundColor(string|Object)='transparent'
+
+<ExampleUIControlColor default="#fff" />
 
 文字块背景色。
 
@@ -210,6 +228,8 @@ backgroundColor: {
 
 #${prefix} borderColor(Color)='transparent'
 
+<ExampleUIControlColor default="#fff" />
+
 文字块边框颜色。
 
 {{if: ${enableAutoColor} }}
@@ -218,13 +238,19 @@ backgroundColor: {
 
 #${prefix} borderWidth(number)=0
 
+<ExampleUIControlNumber min="0" step="0.5" />
+
 文字块边框宽度。
 
 #${prefix} borderRadius(number|Array)=0
 
+<ExampleUIControlVector min="0" dims="LT,RT, RB, LB"  />
+
 文字块的圆角。
 
 #${prefix} padding(number|Array)=0
+
+<ExampleUIControlVector min="0" dims="T,R,B,L"  />
 
 文字块的内边距。例如：
 
@@ -236,17 +262,25 @@ backgroundColor: {
 
 #${prefix} shadowColor(Color)='transparent'
 
+<ExampleUIControlColor />
+
 文字块的背景阴影颜色。
 
 #${prefix} shadowBlur(number)=0
+
+<ExampleUIControlNumber min="0" step="0.5" />
 
 文字块的背景阴影长度。
 
 #${prefix} shadowOffsetX(number)=0
 
+<ExampleUIControlNumber step="0.5" />
+
 文字块的背景阴影 X 偏移。
 
 #${prefix} shadowOffsetY(number)=0
+
+<ExampleUIControlNumber step="0.5" />
 
 文字块的背景阴影 Y 偏移。
 
@@ -273,6 +307,8 @@ backgroundColor: {
 
 #${prefix} textBorderColor(Color)='transparent'
 
+<ExampleUIControlColor />
+
 文字本身的描边颜色。
 
 {{if: ${enableAutoColor} }}
@@ -281,21 +317,31 @@ backgroundColor: {
 
 #${prefix} textBorderWidth(number)=0
 
+<ExampleUIControlNumber min="0" step="0.5" />
+
 文字本身的描边宽度。
 
 #${prefix} textShadowColor(Color)='transparent'
+
+<ExampleUIControlColor default="#000" />
 
 文字本身的阴影颜色。
 
 #${prefix} textShadowBlur(number)=0
 
+<ExampleUIControlNumber min="0" step="0.5" />
+
 文字本身的阴影长度。
 
 #${prefix} textShadowOffsetX(number)=0
 
+<ExampleUIControlNumber step="0.5" />
+
 文字本身的阴影 X 偏移。
 
 #${prefix} textShadowOffsetY(number)=0
+
+<ExampleUIControlNumber step="0.5" />
 
 文字本身的阴影 Y 偏移。
 

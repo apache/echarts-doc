@@ -2,6 +2,8 @@
 
 #${prefix} color(Color)={{ if: !${useColorPalatte} }} ${defaultColor|default('"#000"')} {{ else }}'自适应'{{ /if }}
 
+<ExampleUIControlColor />
+
 ${name}线的颜色。{{ if: ${useColorPalatte} }} 默认从[option.color 调色盘](~color) 获取颜色{{/if}}
 
 {{ if: ${hasCallback} }}
@@ -16,9 +18,13 @@ ${name}线的颜色。{{ if: ${useColorPalatte} }} 默认从[option.color 调色
 
 #${prefix} width(number) = ${defaultWidth|default(1)}
 
+<ExampleUIControlNumber value="${defaultWidth|default(1)}" min="0" step="0.5" />
+
 ${name}线宽。
 
 #${prefix} type(string) = ${defaultType|default('solid')}
+
+<ExampleUIControlEnum default="solid" options="solid,dashed,dotted" />
 
 ${name}线的类型。
 
@@ -35,5 +41,8 @@ ${name}线的类型。
 ) }}
 {{ if: ${hasCurveness} }}
 #${prefix} curveness(number) = 0
+
+<ExampleUIControlNumber min="0" max="1" step="0.01" default="0" />
+
 边的曲度，支持从 0 到 1 的值，值越大曲度越大。
 {{ /if }}

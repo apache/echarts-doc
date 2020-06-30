@@ -18,6 +18,31 @@ export default {
         },
         content: {
             properties: 'Properties'
+        },
+        example: {
+            title: 'Preview the Option',
+            titleShort: 'Preview',
+            intro: 'Try different values of the option and preview!',
+            noExample: 'No example available for current component.',
+
+            tryDesc: 'Try It',
+
+            defaultColor: 'Default Color',
+            booleanDesc: 'Enable',
+
+            vectorSetSeparate: 'SEPARATE',
+            absoluteMode: 'ABSOLUTE',
+            percentMode: 'PERCENT',
+
+            inputPlaceholder: 'Input to change the text content',
+
+            builtin: 'Builtin',
+            upload: 'Upload SVG or PNG',
+
+            setOptionError: 'Something Unexpected Happerns. Click refresh to try again!',
+
+            refresh: 'Refresh',
+            close: 'Close'
         }
     },
     zh: {
@@ -39,6 +64,31 @@ export default {
         },
         content: {
             properties: '所有属性'
+        },
+        example: {
+            title: '配置项效果预览',
+            titleShort: '预览',
+
+            intro: '调节控件可预览配置项不同取值的效果',
+            noExample: '当前组件暂无可用示例',
+
+            tryDesc: '试一试',
+            defaultColor: '默认颜色',
+            booleanDesc: '开启',
+
+            vectorSetSeparate: '分别设置',
+            absoluteMode: '绝对值',
+            percentMode: '百分比',
+
+            inputPlaceholder: '输入改变文本',
+
+            builtin: '内置',
+            upload: '上传 SVG 或 PNG',
+
+            setOptionError: '发生了一些意料之外的错误，点击刷新再试试！',
+
+            refresh: '刷新',
+            close: '关闭'
         }
     }
 };

@@ -12,6 +12,34 @@
 
 ~[600x400](${galleryViewPath}line-aqi&edit=1&reset=1)
 
+<ExampleBaseOption name="cartesian-line" title="基础折线图" title-en="Basic Line Chart">
+const option = {
+    xAxis: {
+        type: 'category',
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    },
+    yAxis: {},
+    series: [{
+        data: [820, 932, 901, 934, 1290, 1330, 1320],
+        type: 'line'
+    }]
+};
+</ExampleBaseOption>
+
+<ExampleBaseOption name="cartesian-line-empty-data" title="有空数据的折线图" title-en="Line with Empty Data">
+const option = {
+    xAxis: {
+        type: 'category',
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    },
+    yAxis: {},
+    series: [{
+        data: [820, 932, 901, '-', 1290, 1330, 1320],
+        type: 'line'
+    }]
+};
+</ExampleBaseOption>
+
 ## type(string) = 'line'
 
 {{use: partial-component-id(prefix="#")}}
@@ -35,9 +63,15 @@
 ) }}
 
 ## showSymbol(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
+
 是否显示 symbol, 如果 `false` 则只有在 tooltip hover 的时候显示。
 
 ## showAllSymbol(boolean) = 'auto'
+
+<ExampleUIControlBoolean />
+
 只在主轴为类目轴（`axis.type` 为 `'category'`）时有效。
 可选值：
 + `'auto'`：默认，如果有足够空间则显示标志图形，否则随主轴标签间隔隐藏策略。
@@ -45,6 +79,9 @@
 + `false`：随主轴标签间隔隐藏策略。
 
 ## hoverAnimation(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
+
 是否开启 hover 在拐点标志上的提示动画效果。
 
 {{ use: partial-legend-hover-link }}
@@ -59,6 +96,9 @@
 {{ use: partial-cursor }}
 
 ## connectNulls(boolean) = false
+
+<ExampleUIControlBoolean />
+
 是否连接空数据。
 
 {{use:partial-clip(
@@ -66,6 +106,8 @@
 ) }}
 
 ## step(string|boolean) = false
+
+<ExampleUIControlEnum options='start,middle,end' />
 
 是否是阶梯线图。可以设置为 `true` 显示成阶梯线图，也支持设置成 `'start'`, `'middle'`, `'end'` 分别配置在当前点，当前点与下个点的中间点，下个点拐弯。
 

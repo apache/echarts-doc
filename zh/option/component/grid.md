@@ -11,9 +11,48 @@
 
 ~[600x400](${galleryViewPath}scatter-anscombe-quartet&edit=1&reset=1)
 
+<ExampleBaseOption title="基础网格示例" name="grid" title-en="Basic Grid">
+const option = {
+    color: ['#3398DB'],
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        }
+    },
+    grid: {
+    },
+    xAxis: [
+        {
+            type: 'category',
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            axisTick: {
+                alignWithLabel: true
+            }
+        }
+    ],
+    yAxis: [
+        {
+            type: 'value'
+        }
+    ],
+    series: [
+        {
+            name: '直接访问',
+            type: 'bar',
+            barWidth: '60%',
+            data: [10, 52, 200, 334, 390, 330, 220]
+        }
+    ]
+};
+
+</ExampleBaseOption>
+
 {{use: partial-component-id(prefix="#")}}
 
 ## show(boolean) = false
+
+<ExampleUIControlBoolean default="false" />
 
 是否显示直角坐标系网格。
 
@@ -26,6 +65,8 @@
 ) }}
 
 ## containLabel(boolean) = false
+
+<ExampleUIControlBoolean default="false" />
 
 grid 区域是否包含坐标轴的[刻度标签](~yAxis.axisLabel)。
 

@@ -183,11 +183,11 @@ The style setting of the text label in a single bar.
 
 Bar color. {{ if: ${useColorPalatte} }} By default, colors from global palette [option.color](~color) is used. {{/if}}
 
-#${prefix} barBorderColor(Color) = '#000'
+#${prefix} borderColor(Color) = '#000'
 
 The border color of bar.
 
-#${prefix} barBorderWidth(number) = 0
+#${prefix} borderWidth(number) = 0
 
 The border width of bar. defaults to have no border.
 

@@ -6,6 +6,83 @@
 
 柱状/条形图 通过 柱形的高度/条形的宽度 来表现数据的大小，用于有至少一个类目轴或时间轴的[直角坐标系](~grid)上。
 
+
+<ExampleBaseOption name="cartesian-bar" title="直角坐标系上的柱状图" title-en="Bar on Cartesian">
+const option = {
+    tooltip: {},
+    legend: {},
+    xAxis: {
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    },
+    yAxis: {},
+    series: [{
+        name: 'Sale',
+        type: 'bar',
+        data: [5, 20, 36, 10, 10, 20, 4]
+    }]
+};
+</ExampleBaseOption>
+
+<ExampleBaseOption name="polar-bar" title="极坐标系上的柱状图" title-en="Bar on Polar">
+const option = {
+    angleAxis: {
+        max: 30
+    },
+    radiusAxis: {
+        type: 'category',
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        z: 10
+    },
+    polar: {},
+    series: [{
+        name: 'Sale',
+        type: 'bar',
+        data: [5, 20, 36, 10, 10, 20, 4],
+        coordinateSystem: 'polar'
+    }],
+    legend: {},
+};
+</ExampleBaseOption>
+
+<ExampleBaseOption name="cartesian-bar-multiple-series" title="多系列柱状图" title-en="Multiple Series">
+option = {
+    legend: {
+        data: ['Food', 'Cloth', 'Book']
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis: {
+        type: 'category',
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [
+        {
+            name: 'Food',
+            type: 'bar',
+            data: [320, 302, 301, 334, 390, 330, 320]
+        },
+        {
+            name: 'Cloth',
+            type: 'bar',
+            data: [150, 212, 201, 154, 190, 330, 410]
+        },
+        {
+            name: 'Book',
+            type: 'bar',
+            data: [820, 832, 901, 934, 1290, 1330, 1320]
+        }
+    ]
+};
+</ExampleBaseOption>
+
+
 ## type(string) = 'bar'
 
 {{use: partial-component-id(prefix="#")}}
@@ -23,7 +100,11 @@
 ) }}
 
 ## roundCap(boolean) = false
+
 {{ use: partial-version(version = "4.5.0") }}
+
+<ExampleUIControlBoolean clean="true" />
+
 是否在环形柱条两侧使用圆弧效果。
 
 仅对极坐标系柱状图有效。
@@ -49,6 +130,9 @@
 
 ## showBackground(boolean) = false
 {{ use: partial-version(version = "4.7.0") }}
+
+<ExampleUIControlBoolean clean="true" />
+
 是否显示柱条的背景色。通过 [backgroundStyle](~series-bar.backgroundStyle) 配置背景样式。
 
 ~[800x400](${galleryViewPath}bar-background&reset=1&edit=1)
@@ -194,21 +278,30 @@
 
 #${prefix} color(Color) = ${defaultColor|default('自适应')}
 
+<ExampleUIControlColor />
+
 柱条的颜色。{{ if: ${useColorPalatte} }} 默认从全局调色盘 [option.color](~color) 获取颜色 {{/if}}
 
 #${prefix} borderColor(Color) = '#000'
+
+<ExampleUIControlColor value="#000" />
 
 柱条的描边颜色。
 
 #${prefix} borderWidth(number) = 0
 
+<ExampleUIControlNumber value="0" min="0" step="0.5" />
+
 柱条的描边宽度，默认不描边。
 
 #${prefix} borderType(string) = 'solid'
 
+<ExampleUIControlEnum default="solid" options="solid,dashed,dotted" />
+
 柱条的描边类型，默认为实线，支持 `'dashed'`, `'dotted'`。
 
 {{ if: ${barBorderRadius} }}
+
 {{use: partial-border-radius(
     propName: 'barBorderRadius',
     prefix: ${prefix}
