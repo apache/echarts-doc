@@ -25,7 +25,7 @@
         <el-main>
             <SearchResult v-if="shared.fuzzySearch"></SearchResult>
             <!-- Always create a new component if page is changed -->
-            <DocContent v-else-if="shared.currentPath" :key="pagePath"></DocContent>
+            <DocContent v-else :key="pagePath"></DocContent>
             <!--  <Home v-else></Home> -->
         </el-main>
     </el-container>
