@@ -28,7 +28,7 @@
 
         <span
             :class="['control-toggle', enableUIControl ? 'active' : '']"
-            v-if="uiControl && shared.allOptionExamples"
+            v-if="uiControl && shared.allOptionExamples && !shared.isMobile"
             @click="toggleUIControl"
         >
             <i>&#xe900;</i> {{$t('example.tryDesc')}}
