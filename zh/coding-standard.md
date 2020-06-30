@@ -1,22 +1,22 @@
-## Code Style
+## 代码规范
 
 
 
-### File
+### 源文件
 
-**[MUST]** JavaScript Source files must be encoded in UTF-8 without BOM.
-
-
-
-### Indentation
-
-**[MUST]** 4 space indentation. tabs and 2 space are not allowed.
+**[强制]** JavaScript源文件必须以无BOM的UTF-8编码。
 
 
-**[MUST]** `case` and `default` in `switch` must be indented.
+
+### 缩进
+
+**[强制]** 必须采用4个空格缩进，不允许以Tab制表符或2个空格代替。
+
+
+**[强制]** `switch` 中的 `case` 和 `default` 必须保持缩进。
 
 ```js
-// good
+// 正例
 switch (variable) {
     case '1':
         // do...
@@ -28,7 +28,7 @@ switch (variable) {
         // do...
 }
 
-// bad
+// 反例
 switch (variable) {
 case '1':
     // do...
@@ -43,10 +43,10 @@ default:
 
 
 
-### Space
+### 空格
 
 
-**[MUST]** Set off binary operator with spaces. But place no space between unary operator and its operand.
+**[强制]** 二元运算符两个操作数之间必须使用空格，但一元运算符与其操作数间不能有空格。 
 
 ```js
 var a = !arr.length;
@@ -55,10 +55,10 @@ a = b + c;
 ```
 
 
-**[MUST]** Place 1 space before the leading brace.
+**[强制]** 在 `{` 前必须有1个空格。
 
 ```js
-// good
+// 正例
 
 if (condition) {
 }
@@ -72,7 +72,7 @@ function funcName() {
 }
 
 
-// bad
+// 反例
 
 if (condition){
 }
@@ -87,10 +87,10 @@ function funcName(){
 ```
 
 
-**[MUST]** Place 1 space after `if` / `else` / `for` / `while` / `function` / `switch` / `do` / `try` / `catch` / `finally`.
+**[强制]** `if` / `else` / `for` / `while` / `function` / `switch` / `do` / `try` / `catch` / `finally` 等关键字与括号之间都必须加一个空格。
 
 ```js
-// good
+// 正例
 
 if (condition) {
 }
@@ -102,7 +102,7 @@ while (condition) {
 })();
 
 
-// bad
+// 反例
 
 if(condition) {
 }
@@ -115,17 +115,17 @@ while(condition) {
 ```
 
 
-**[MUST]** In the object creating statement, place 1 space after `:`, but no space before it.
+**[强制]** 在创建对象的语句中，`:` 后必须加一个空格，`:` 前不能有空格。
 
 ```js
-// good
+// 正例
 var obj = {
     a: 1,
     b: 2,
     c: 3
 };
 
-// bad
+// 反例
 var obj = {
     a : 1,
     b:2,
@@ -134,10 +134,10 @@ var obj = {
 ```
 
 
-**[MUST]** Place no space between the function name and `(` in function declaration, expression of named function and function call.
+**[强制]** 在函数声明、命名函数表达式和函数调用时，函数名称和 `(` 间不能有空格。
 
 ```js
-// good
+// 正例
 
 function funcName() {
 }
@@ -148,7 +148,7 @@ var funcName = function funcName() {
 funcName();
 
 
-// bad
+// 反例
 
 function funcName () {
 }
@@ -160,21 +160,21 @@ funcName ();
 ```
 
 
-**[MUST]** Place no space between `,` and `;`.
+**[强制]** `,` 和 `;` 前不能有空格。
 
 ```js
-// good
+// 正例
 callFunc(a, b);
 
-// bad
+// 反例
 callFunc(a , b) ;
 ```
 
 
-**[MUST]** Place no space after `(` and `[` and before `)` and `]`.
+**[强制]** `(` 和 `[` 之后、 `)` 和 `]` 之前不能有空格。
 
 ```js
-// good
+// 正例
 
 callFunc(param1, param2, param3);
 
@@ -189,7 +189,7 @@ while (len--) {
 }
 
 
-// bad
+// 反例
 
 callFunc( param1, param2, param3 );
 
@@ -204,7 +204,7 @@ while ( len-- ) {
 }
 
 
-// good
+// 正例
 var arr1 = [];
 var arr2 = [1, 2, 3];
 var obj1 = {};
@@ -215,7 +215,7 @@ var obj3 = {
     sex: 1
 };
 
-// bad
+// 反例
 var arr1 = [ ];
 var arr2 = [ 1, 2, 3 ];
 var obj1 = { };
@@ -224,24 +224,24 @@ var obj3 = {name: 'obj', age: 20, sex: 1};
 ```
 
 
-**[MUST]** Must no trailing space in each line.
+**[强制]** 每行代码后不能有尾随空格。
 
 
 
 
-### Line Break
+### 换行
 
 
-**[MUST]** Place line break in the end of a statement.
+**[强制]** 必须在语句的结尾换行。
 
 
-**[MUST]** No more than 120 characters per line.
+**[强制]** 单行字符数不能超过120个，超出则需要换行。
 
 
-**[MUST]** Place operator at the beginning of a line if it break lines.
+**[强制]** 如果需要换行，运算符必须放在新行的开头。
 
 ```js
-// good
+// 正例
 if (user.isAuthenticated()
     && user.isInRole('admin')
     && user.hasAuthority('add-admin')
@@ -254,7 +254,7 @@ var result = number1 + number2 + number3
     + number4 + number5;
 
 
-// bad
+// 反例
 if (user.isAuthenticated() &&
     user.isInRole('admin') &&
     user.hasAuthority('add-admin') ||
@@ -267,11 +267,10 @@ var result = number1 + number2 + number3 +
 ```
 
 
-**[MUST]** Start a new line for `)`, `]`, `}` if the content inside the brackets occupies multiple lines.
-Make the same indent as the line where the corresponding `(`, `[`, `{` placed.
+**[强制]** 如果括号中的内容有多行，必须为 `)`、 `]`、 `}` 另开一个新行，并使新行与 `(`、 `[`、 `{` 所在行的缩进相对应。
 
 ```js
-// good
+// 正例
 if (product) {
     product.load();
     if (user.isAuthenticated()
@@ -285,7 +284,7 @@ var arr = [
     'candy', 'sugar'
 ];
 
-// bad
+// 反例
 if (product) {
     product.load();
     if (user.isAuthenticated()
@@ -300,10 +299,10 @@ var arr = [
 ```
 
 
-**[MUST]** Must not break lines before `,` or `;`.
+**[强制]** `,` 或 `;` 前不能有换行。 
 
 ```js
-// good
+// 正例
 var obj = {
     a: 1,
     b: 2,
@@ -317,7 +316,7 @@ foo(
 );
 
 
-// bad
+// 反例
 var obj = {
     a: 1
     , b: 2
@@ -332,7 +331,7 @@ foo(
 ```
 
 
-**[SUGGEST]** Suggestion about line break and indent:
+**[推荐]** 建议换行和缩进遵循如下风格：
 
 ```js
 if (user.isAuthenticated()
@@ -367,10 +366,10 @@ var result = condition
 ```
 
 
-**[MUST]** Start a new line for `else` and `catch` if using multi-line blocks.
+**[强制]** 如果使用多行代码块，`else` 和 `catch` 必须另开一个新行。
 
 ```js
-// good
+// 正例
 
 if (condition) {
     // some statements;
@@ -387,7 +386,7 @@ catch (ex) {
 }
 
 
-// bad
+// 反例
 
 if (condition) {
     // some statements;
@@ -403,49 +402,49 @@ try {
 ```
 
 
-### Statement
+### 语句
 
 
-**[MUST]** The semicolon must not be ignored at the end of a statement.
+**[强制]** 语句必须以 `;` 结尾。
 
 
-**[MUST]** The `{}` must not be ignored even if there is only one line.
+**[强制]** 如果只有一行，`{}` 不能被省略。
 
 ```js
-// good
+// 正例
 if (condition) {
     callFunc();
 }
 
-// bad
+// 反例
 if (condition) callFunc();
 if (condition)
     callFunc();
 ```
 
 
-**[MUST]** Place no semicolon at the end of a function definition.
+**[强制]** 函数定义的末尾不能有分号 `;`。
 
 ```js
-// good
+// 正例
 function funcName() {
 }
 
-// bad
+// 反例
 function funcName() {
 };
 
-// For function expression, the semicolon must not be ignored.
+// 对于函数表达式，不能忽略分号
 var funcName = function () {
 };
 ```
 
 
-**[MUST]** No trailing comma in object and array declarations.
+**[强制]** 对象和数组的声明中不能有尾随逗号。
 
 
 ```js
-// good
+// 正例
 
 var obj = {
     attr1: 'xxx',
@@ -458,7 +457,7 @@ var arr = [
 ];
 
 
-// bad
+// 反例
 
 var obj = {
     attr1: 'xxx',
@@ -473,9 +472,9 @@ var arr = [
 
 
 
-### Naming Conventions
+### 命名规约
 
-**[MUST]** Use lowerCamelCase for variables, properties and function names.
+**[强制]** 变量名、属性名及函数名的命名必须遵循 lowerCamelCase（小骆驼拼写法）。
 
 ```js
 var loadingModules = {};
@@ -484,7 +483,7 @@ function loadProduct() {
 ```
 
 
-**[MUST]** Use UpperCamelCase (Pascal) for class names.
+**[强制]** class类的命名必须遵循 UpperCamelCase (Pascal)，即大骆驼拼写法（帕斯卡拼写法）。
 
 ```js
 function Element(options) {
@@ -492,7 +491,7 @@ function Element(options) {
 ```
 
 
-**[SUGGEST]** All of the letters of a abbreviation should be both upper cases or both lower cases.
+**[推荐]** 缩略词的所有字符应当一并大写或一并小写。
 
 ```js
 function parseSVG() {
@@ -505,20 +504,20 @@ var svgParser;
 
 
 
-## Language features
+## 语法特性
 
 
-### Compatibility
+### 兼容性
 
-**[MUST]** The JavaScript code of ECharts should be based on `ECMAScript Language Specification Edition 3 (ES3)`. The language features that not supported by ES3 (namely, features that are only supported by ES5, ES6 or upper versions) must not be used.
+**[强制]** ECharts的JavaScript源代码应基于 `ECMAScript Language Specification Edition 3 (ES3)`，不能使用ES3不支持的语法特性（即不能使用ES5、ES6或更高版本的语法特性）。
 
-But there is an exception that ES Module can be used.
+但允许使用ES Module。
 
-Language features can be polyfilled by some utilities, but must not by modifying the prototype of the built-in JS objects.
+语法特性可以通过一些工具方法进行弥补，但不能通过修改内置JavaScript对象的原型来实现。
 
 
 ```js
-// good
+// 正例
 
 import * as zrUtil from 'zrender/src/core/util';
 
@@ -539,7 +538,7 @@ function Element() {
 }
 
 
-// bad
+// 反例
 
 array.forEach(function (val, index) {
     sum += val;
@@ -562,18 +561,18 @@ String.prototype.trim = function () {
 ```
 
 
-### Variable
+### 变量
 
-**[MUST]** Variables must be declared by `var`. And a `var` can not declares more than one variable.
+**[强制]** 变量必须用 `var` 声明，且一个 `var` 不能同时声明多个变量。
 
 ```js
-// good
+// 正例
 var name = 'MyName';
 var hangModules = [];
 var missModules = [];
 var visited = {};
 
-// bad
+// 反例
 name = 'MyName';
 var hangModules = [],
     missModules = [],
@@ -581,12 +580,12 @@ var hangModules = [],
 ```
 
 
-### Condition
+### 条件判断
 
-**[MUST]** In equality expression, `==` can only be used on `null` or `undefined` detection. `===` should be used in the rest of cases .
+**[强制]** 对于相等运算符，`==` 只能用于检查是否为 `null` 或者 `undefined`，其余情况必须使用 `===`。
 
 ```js
-// good
+// 正例
 if (age === 30) {
     // ...
 }
@@ -594,23 +593,23 @@ if (type == null) {
     // ...
 }
 
-// bad
+// 反例
 if (age == 30) {
     // ......
 }
 ```
 
 
-**[SUGGEST]** Use `xxx == null` to determine `null` or `undefined`.
+**[推荐]** 建议使用 `xxx == null` 来判断 `null` 或 `undefined`。
 
 
-**[SUGGEST]** Try best to make the meaning of `null` and `undefined` the same, namely, do not make users or developers distinguishing whether a variable is `null` or `undefined`.
+**[推荐]** 尽量让 `null` 和 `undefined` 的含义相同。也就是说，不要让用户或开发者去区分变量是 `null` 还是 `undefined`。
 
 
-**[SUGGEST]** The function expression or function declaration should not be placed inside a loop body.
+**[推荐]** 函数表达式或者函数声明不应该放在循环体中。
 
 ```js
-// good
+// 正例
 function clicker() {
     // ......
 }
@@ -621,7 +620,7 @@ for (var i = 0, len = elements.length; i < len; i++) {
 }
 
 
-// bad
+// 反例
 for (var i = 0, len = elements.length; i < len; i++) {
     var element = elements[i];
     addListener(element, 'click', function () {});
@@ -630,70 +629,70 @@ for (var i = 0, len = elements.length; i < len; i++) {
 
 
 
-### Type Conversion
+### 类型转换
 
 
-**[SUGGEST]** Use `+ ''` to convert a value to string.
+**[推荐]** 建议使用 `+ ''` 将值转为字符串。
 
 ```js
-// good
+// 正例
 num + '';
 
-// bad
+// 反例
 new String(num);
 num.toString();
 String(num);
 ```
 
 
-**[SUGGEST]** Use `+` to convert a value to number.
+**[推荐]** 建议使用 `+` 将值转为数值。
 
 ```js
-// good
+// 正例
 +str;
 
-// bad
+// 反例
 Number(str);
 ```
 
 
-**[MUST]** The second parameter must not be ignored when using `parseInt`.
+**[强制]** 在使用 `parseInt` 时，必须传入第二个参数。
 
 ```js
-// good
+// 正例
 parseInt(str, 10);
 
-// bad
+// 反例
 parseInt(str);
 ```
 
 
-### String, Object, Array
+### 字符串，对象，数组
 
-**[MUST]** Use `'` but not `"` to define a string.
+**[强制]** 必须使用 `'` 而不是 `"` 定义字符串。
 
 
-**[MUST]** Use object literal `{}` to create a plain object.
+**[强制]** 必须使用对象字面量 `{}` 来创建简单对象。
 
 ```js
-// good
+// 正例
 var obj = {};
 
-// bad
+// 反例
 var obj = new Object();
 ```
 
 
-**[MUST]** If all of the properties of an object literal do not need quotation marks, they should ignore them. If quotation marks is necessary, use `'` but not `"`.
+**[强制]** 如果一个对象字面量的所有属性都不需要引号，引号必须省略。如果需要加引号，须使用 `'` 而不是 `"`。
 
 ```js
-// good
+// 正例
 var info = {
     name: 'someone',
     age: 28
 };
 
-// bad
+// 反例
 var info = {
     'name': 'someone',
     'age': 28
@@ -704,19 +703,19 @@ var info2 = {
 ```
 
 
-**[MUST]** The prototype of built-in objects must not be modified.
+**[强制]** 禁止修改内置对象的原型。
 
 ```js
-// Forbidden
+// 禁止
 String.prototype.trim = function () {
 };
 ```
 
 
-**[SUGGEST]** Try best to use `.` but not `[]` to visit properties of an object.
+**[推荐]** 尽可能使用 `.` 而不是 `[]` 访问对象的属性。
 
 
-**[SUGGEST]** `hasOwnProperty` should be used to when using `for ... in ...`, in case that some extra properties is added on the prototype of `Object` in some runtime environment.
+**[推荐]** 使用 `for ... in ...` 时，应当注意使用 `hasOwnProperty` 以防 `Object` 的原型在某些运行时环境中被添加一些额外属性的情况。
 
 ```js
 var newInfo = {};
@@ -728,23 +727,23 @@ for (var key in info) {
 ```
 
 
-**[MUST]** Use array literal `[]` to create an array, except intending to create an array with a given length.
+**[强制]** 除非需要创建指定长度的数组，否则必须使用数组字面量 `[]` 创建数组。
 
 ```js
-// good
+// 正例
 var arr = [];
 var arr2 = new Array(1e4);
 
-// bad
+// 反例
 var arr = new Array();
 ```
 
 
-**[MUST]** Do not use `for in` in array traverse.
+**[强制]** 不要使用 `for in` 语句对数组进行遍历。
 
 
 
-### Others
+### 其他
 
-**[MUST]** Do not use `eval` and `with`. `new Function` can be used.
+**[强制]** 不要使用 `eval` 和 `with`。允许使用`new Function`。
 

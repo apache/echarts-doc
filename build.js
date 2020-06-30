@@ -192,14 +192,23 @@ function buildChangelog() {
 }
 
 function buildCodeStandard() {
-    const codeStandardDestPath = path.resolve(config.ecWWWGeneratedDir, 'coding-standard-content.html');
-    fse.ensureDirSync(path.dirname(codeStandardDestPath));
-    fse.outputFileSync(
-        codeStandardDestPath,
-        marked(fs.readFileSync('en/coding-standard.md', 'utf-8')),
-        'utf-8'
-    );
-    console.log(chalk.green('generated: ' + codeStandardDestPath));
+    // support for Chinese character
+    const customRenderer = new marked.Renderer();
+    customRenderer.heading = function(text, level, raw) {
+        const id = raw.toLowerCase().replace(/[^\w\u4e00-\u9fa5]+/g, '-');
+        return `<h${level} id="${id}">${text}</h${level}>\n`;
+    };
+
+    for (let lang of languages) {
+        const codeStandardDestPath = path.resolve(config.ecWWWGeneratedDir, `${lang}/coding-standard-content.html`);
+        fse.ensureDirSync(path.dirname(codeStandardDestPath));
+        fse.outputFileSync(
+            codeStandardDestPath,
+            marked(fs.readFileSync(`${lang}/coding-standard.md`, 'utf-8'), { renderer: customRenderer }),
+            'utf-8'
+        );
+        console.log(chalk.green('generated: ' + codeStandardDestPath));
+    }
 
     console.log('Build code standard done.');
 }
