@@ -419,11 +419,11 @@ export default {
 
     .toolbar {
         position: absolute;
-        top: 20px;
+        top: 15px;
         right: 10px;
 
         .example-list {
-            width: 220px;
+            width: 180px;
         }
     }
 
