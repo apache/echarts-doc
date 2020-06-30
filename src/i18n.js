@@ -20,7 +20,7 @@ export default {
             properties: 'Properties'
         },
         example: {
-            title: 'Preview the Option',
+            title: 'Preview',
             titleShort: 'Preview',
             intro: 'Try different values of the option and preview!',
             noExample: 'No example available for current component.',
