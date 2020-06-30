@@ -43,15 +43,15 @@ chart.setOption(option, {
 
 + `notMerge`
 
-    Optional; states whether not to merge with previous `option`; `false` by defualt, stating merging.
+    Optional; states whether not to merge with previous `option`; `false` by default, stating merging.
 
 + `lazyUpdate`
 
-    Optional; states whether not to update chart immediately; `false` by defualt, stating update immediately.
+    Optional; states whether not to update chart immediately; `false` by default, stating update immediately.
 
 + `silent`
 
-    Optional; states whether not to prevent triggering events when calling `setOption`; `false` by defualt, stating trigger events.
+    Optional; states whether not to prevent triggering events when calling `setOption`; `false` by default, stating trigger events.
 
 
 ## getWidth(Function)
@@ -357,7 +357,7 @@ Unbind event-handler function.
         yAxisId?: string,
         yAxisName?: string,
         gridIndex?: number,
-        gridId?: string
+        gridId?: string,
         gridName?: string
     },
     // The value to be converted.
@@ -439,7 +439,7 @@ chart.convertToPixel({seriesId: 'k2'}, [128.3324, 89.5344]);
         yAxisId?: string,
         yAxisName?: string,
         gridIndex?: number,
-        gridId?: string
+        gridId?: string,
         gridName?: string
     },
     // The value to be converted, in pixel coordinate system, where the origin ([0, 0])
@@ -471,7 +471,7 @@ Convert a point from pixel coordinate to logical coordinate (e.g., in geo, carte
         yAxisId?: string,
         yAxisName?: string,
         gridIndex?: number,
-        gridId?: string
+        gridId?: string,
         gridName?: string
     },
     // The value to be judged, in pixel coordinate system, where the origin ([0, 0])
@@ -584,7 +584,7 @@ Exports connected chart image; returns a base64 url; can be set to `src` of `Ima
     // Specify which series the data will be appended to.
     seriesIndex?: string,
     // The data to be appended.
-    data?: Array|TypedArray,
+    data?: Array|TypedArray
 }) => string
 ```
 

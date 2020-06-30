@@ -32,7 +32,9 @@ const option = {"tooltip":{"trigger":"item","triggerOn":"mousemove"},"series":[{
 
 {{use: partial-component-id(prefix="#")}}
 
-{{ use: partial-rect-layout-width-height(
+{{use: partial-series-name()}}
+
+{{use: partial-rect-layout-width-height(
     componentName='sankey',
     defaultLeft: '5%',
     defaultRight: '20%',
@@ -40,7 +42,7 @@ const option = {"tooltip":{"trigger":"item","triggerOn":"mousemove"},"series":[{
     defaultBottom: '5%',
     defaultWidth: 'null',
     defaultHeight: 'null'
-) }}
+)}}
 
 ## nodeWidth(number) = 20
 

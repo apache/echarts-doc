@@ -37,7 +37,7 @@ When [dataset](~dataset) is used, `seriesLayoutBy` specifies whether the column 
 + 'column': by default, the columns of `dataset` are mapped the series. In this case, each column represents a dimension.
 + 'row'：the rows of `dataset` are mapped to the series. In this case, each row represents a dimension.
 
-Check this [example](https://ecomfe.github.io/echarts-examples/public/editor.html?c=dataset-series-layout-by).
+Check this [example](${galleryEditorPath}dataset-series-layout-by).
 
 
 {{ target: partial-datasetIndex }}

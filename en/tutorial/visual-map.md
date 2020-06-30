@@ -14,8 +14,8 @@ Besides, ECharts provides [visualMap component](option.html#visualMap) for gener
 
 Next, we are going to introduce how to use `visualMap` component.
 
-<br>
-<h2>Data and Dimension</h2>
+
+## Data and Dimension
 
 Data are usually stored in [series.data](option.html#series.data) in ECharts. Depending on chart types, like list, tree, graph, and so on, the form of data may vary somehow. But they have one common feature, that they are a collection of `dataItem`s. Every data item contains data value, and other information if needed. Every data value can be a single value (one dimension) or an array (multiple dimensions).
 
@@ -55,13 +55,7 @@ series: {
 Usually the first one or two dimensions are used for mapping. For example, map the first dimension to x axis, and the second dimension to y axis. If you want to represent more dimensions, `visualMap` is what you need. Most likely, [scatter charts](option.html#series-scatter) use radius to represent the third dimension.
 
 
-
-
-
-
-
-<br>
-<h2>visualMap Component</h2>
+## visualMap Component
 
 visualMap component defines the mapping from *which dimension of data* to *what visual elements*.
 

@@ -4,7 +4,7 @@
 ${name} icon 样式设置。由于 icon 的文本信息只在 icon hover 时候才显示，所以文字相关的配置项请在 `emphasis` 下设置。
 {{ use: partial-item-style(
     defaultBorderColor = '#666',
-    defualtColor = 'none',
+    defaultColor = 'none',
     defaultBorderWidth = 1,
     prefix="#" + ${prefix}
 ) }}

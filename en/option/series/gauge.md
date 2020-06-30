@@ -6,7 +6,7 @@
 **Gauge chart**
 
 **Example: **
-~[600x500](${galleryViewPath}gauge-car)
+~[600x500](${galleryViewPath}gauge-car&reset=1&edit=1)
 
 ## type(string) = 'gauge'
 
@@ -19,7 +19,7 @@
 ## radius(number|string) = '75%'
 The radius of gauge chart. It can be a percentage value of the smaller of container half width and half height, also can be an absolute value.
 
-{{ use partial-legend-hover-link }}
+{{ use: partial-legend-hover-link }}
 
 ## startAngle(number) = 225
 The start angle of gauge chart. The direct right side of [circle center](~series-gauge.center) is `0` degree, the right above it is `90` degree, the direct left side of it is `180` degree.
@@ -97,6 +97,8 @@ The length of tick line, can be a pecentage value relative to radius.
 Axis tick label.
 ### show(boolean) = true
 Whether to show the label.
+### distance(number) = 5
+The distance between the label and tick line.
 ### formatter(string|Function)
 The content formatter of scale label, which supports both string template and callback function.
 Example:

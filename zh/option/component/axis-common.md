@@ -648,7 +648,7 @@ data: [{
 {{if: !${noAxisPointer} }}
 #${prefix} axisPointer(Object)
 
-axisPointer settings on axis.
+坐标轴指示器配置项。
 
 {{ use: partial-axisPointer-common(
     prefix="#" + ${prefix},

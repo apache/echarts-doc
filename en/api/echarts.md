@@ -6,10 +6,10 @@ Global echarts object, which can be accessed after including `echarts.js` in scr
 ## init(Function)
 ```js
 (dom: HTMLDivElement|HTMLCanvasElement, theme?: Object|string, opts?: {
-    devicePixelRatio?: number
-    renderer?: string
-    width?: number|string
-    height? number|string
+    devicePixelRatio?: number,
+    renderer?: string,
+    width?: number|string,
+    height?: number|string
 }) => ECharts
 ```
 Creates an ECharts instance, and returns an [echartsInstance](~echartsInstance). You shall not initialize multiple ECharts instances on a single container.
@@ -19,7 +19,7 @@ Creates an ECharts instance, and returns an [echartsInstance](~echartsInstance).
 
     Instance container, usually is a `div` element with height and width defined.
 
-    **Attention: **If `div` is hidden, ECharts initialization tends to fail due to the lack of width and height information. In this case, you can explicitly specify `style.width` and `style.height` of `div`, or manually call [echartsInstance.resize](echartsInstance.resize) after showing `div`.
+    **Attention: **If `div` is hidden, ECharts initialization tends to fail due to the lack of width and height information. In this case, you can explicitly specify `style.width` and `style.height` of `div`, or manually call [echartsInstance.resize](~echartsInstance.resize) after showing `div`.
 
     ECharts 3 supports using `canvas` element as container directly, thus the canvas can be used somewhere else as image directly after rendering the chart. For example, canvas can be used as a texture in WebGL, which enables updating charts in real-time, as compared to using images generated with [echartsInstance.getDataURL](~echartsInstance.getDataURL).
 
@@ -37,7 +37,7 @@ Creates an ECharts instance, and returns an [echartsInstance](~echartsInstance).
 
     + `renderer`
 
-        Supports `'canvas'` or `'svg'`. See [Render by Canvas or SVG](https://ecomfe.github.io/echarts-doc/public/en/tutorial.html#Render%20by%20Canvas%20or%20SVG).
+        Supports `'canvas'` or `'svg'`. See [Render by Canvas or SVG](tutorial.html#Render%20by%20Canvas%20or%20SVG).
 
     + `width`
 
@@ -108,7 +108,7 @@ Please refer to [option.geo](option.html#geo.map) for usage.
 
 + `geoJson`
 
-    Data in GeoJson format. See [http://geojson.org/](http://geojson.org/) for more format information.
+    Data in GeoJson format. See [https://geojson.org/](https://geojson.org/) for more format information.
 
 + `specialAreas`
 

@@ -353,7 +353,7 @@ ECharts 中的事件有两种，一种是鼠标事件，在鼠标点击某个图
         yAxisId?: string,
         yAxisName?: string,
         gridIndex?: number,
-        gridId?: string
+        gridId?: string,
         gridName?: string
     },
     // 要被转换的值。
@@ -430,7 +430,7 @@ chart.convertToPixel({seriesId: 'k2'}, [128.3324, 89.5344]);
         yAxisId?: string,
         yAxisName?: string,
         gridIndex?: number,
-        gridId?: string
+        gridId?: string,
         gridName?: string
     },
     // 要被转换的值，为像素坐标值，以 echarts 实例的 dom 节点的左上角为坐标 [0, 0] 点。
@@ -462,7 +462,7 @@ chart.convertToPixel({seriesId: 'k2'}, [128.3324, 89.5344]);
         yAxisId?: string,
         yAxisName?: string,
         gridIndex?: number,
-        gridId?: string
+        gridId?: string,
         gridName?: string
     },
     // 要被判断的点，为像素坐标值，以 echarts 实例的 dom 节点的左上角为坐标 [0, 0] 点。
@@ -573,7 +573,7 @@ img.src = myChart.getDataURL({
     // 要增加数据的系列序号。
     seriesIndex?: string,
     // 增加的数据。
-    data?: Array|TypedArray,
+    data?: Array|TypedArray
 }) => string
 ```
 

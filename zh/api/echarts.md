@@ -6,10 +6,10 @@
 ## init(Function)
 ```js
 (dom: HTMLDivElement|HTMLCanvasElement, theme?: Object|string, opts?: {
-    devicePixelRatio?: number
-    renderer?: string
-    width?: number|string
-    height? number|string
+    devicePixelRatio?: number,
+    renderer?: string,
+    width?: number|string,
+    height?: number|string
 }) => ECharts
 ```
 创建一个 ECharts 实例，返回 [echartsInstance](~echartsInstance)，不能在单个容器上初始化多个 ECharts 实例。
@@ -19,7 +19,7 @@
 
     实例容器，一般是一个具有高宽的`div`元素。
 
-    **注：**如果`div`是隐藏的，ECharts 可能会获取不到`div`的高宽导致初始化失败，这时候可以明确指定`div`的`style.width`和`style.height`，或者在`div`显示后手动调用 [echartsInstance.resize](echartsInstance.resize) 调整尺寸。
+    **注：**如果`div`是隐藏的，ECharts 可能会获取不到`div`的高宽导致初始化失败，这时候可以明确指定`div`的`style.width`和`style.height`，或者在`div`显示后手动调用 [echartsInstance.resize](~echartsInstance.resize) 调整尺寸。
 
     ECharts 3 中支持直接使用`canvas`元素作为容器，这样绘制完图表可以直接将 canvas 作为图片应用到其它地方，例如在 WebGL 中作为贴图，这跟使用 [echartsInstance.getDataURL](~echartsInstance.getDataURL) 生成图片链接相比可以支持图表的实时刷新。
 
@@ -37,7 +37,7 @@
 
     + `renderer`
 
-        渲染器，支持 `'canvas'` 或者 `'svg'`。参见 [使用 Canvas 或者 SVG 渲染](http://echarts.baidu.com/tutorial.html#%E4%BD%BF%E7%94%A8%20Canvas%20%E6%88%96%E8%80%85%20SVG%20%E6%B8%B2%E6%9F%93)。
+        渲染器，支持 `'canvas'` 或者 `'svg'`。参见 [使用 Canvas 或者 SVG 渲染](tutorial.html#%E4%BD%BF%E7%94%A8%20Canvas%20%E6%88%96%E8%80%85%20SVG%20%E6%B8%B2%E6%9F%93)。
 
     + `width`
 
@@ -106,7 +106,7 @@ echarts.connect([chart1, chart2]);
 
 + `geoJson`
 
-    GeoJson 格式的数据，具体格式见 [http://geojson.org/](http://geojson.org/)。
+    GeoJson 格式的数据，具体格式见 [https://geojson.org/](https://geojson.org/)。
 
 + `specialAreas`
 

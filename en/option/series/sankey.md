@@ -4,26 +4,27 @@
 # series.sankey(Object)
 
 ** Sankey diagram **
-
-Sankey diagram is a specific type of streamgraphs(can also be seen as a directed acyclic graph). In which the width of each branch is shown proportionally to the flow quantity. These graphs are typically used to visualize energy or material or cost transfers between processes. They can also visualize the energy accounts, material flow accounts on a regional or national level, and also the breakdown of cost of item or services.
+Sankey diagram is a specific type of streamgraph (can also be seen as a directed acyclic graph) in which the width of each branch is shown proportionally to the flow quantity. These graphs are typically used to visualize energy or material or cost transfers between processes. They can also visualize the energy accounts, material flow accounts on a regional or national level, and also the breakdown of cost of item or services.
 
 **Example: **
 
 ~[700x580](${galleryViewPath}sankey-energy&edit=1&reset=1)
 
 
-<br>
+<br> 
 **Visual Encoding: **
 
-The Sankey diagram encodes each `node` of the raw data into a small rectangular. And different nodes are presented in different colors as far as possible. The `label` next to the small rectangular, which encoding the name of the node.
+The Sankey diagram encodes each `node` of the raw data into a small rectangle. Different nodes are presented in different colors as far as possible. The `label` next to the small rectangul encodes the name of the node.
 
-In addition, the edge between two small rectangulars in the diagram encoding the `link` of the raw data. The width of edge is shown proportionally to the `value` of `link`.
+In addition, the edge between two small rectangles in the diagram encodes the `link` of the raw data. The width of edge is shown proportionally to the `value` of `link`.
 
 
 
 ## type(string) = 'sankey'
 
 {{use: partial-component-id(prefix="#")}}
+
+{{ use: partial-series-name() }}
 
 {{ use: partial-rect-layout-width-height(
     componentName='sankey',
@@ -43,8 +44,21 @@ The node width of rectangle in Sankey diagram.
 
 ## nodeGap(number) = 8
 
-The gap between any two regtangles in each column of the Sankey diagram.
+The gap between any two rectangles in each column of the Sankey diagram.
 
+## nodeAlign(string) = 'justify'
+
+Controls the horizontal alignment of nodes in the diagram. 
+
+May be:
+
++ `left`: initial nodes (those with no incoming links) are aligned to the left of the diagram.
+
++ `right`: terminal nodes (those with no outgoing links) are aligned to the right of the diagram.
+
++ `justify`: initial and terminal nodes are aligned on the left and right edges. 
+
+Note when [orient](~series-sankey.orient) is `vertical`, `nodeAlign` controls vertical alignment.
 
 ## layoutIterations(number) = 32
 

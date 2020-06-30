@@ -6,7 +6,7 @@
 **仪表盘**
 
 **示例：**
-~[600x500](${galleryViewPath}gauge-car)
+~[600x500](${galleryViewPath}gauge-car&reset=1&edit=1)
 
 <ExampleBaseOption name="gauge" title="基础仪表盘" title-en="Basic Gauge">
 const option = {
@@ -35,7 +35,7 @@ const option = {
 
 仪表盘半径，可以是相对于容器高宽中较小的一项的一半的百分比，也可以是绝对的数值。
 
-{{ use partial-legend-hover-link }}
+{{ use: partial-legend-hover-link }}
 
 ## startAngle(number) = 225
 

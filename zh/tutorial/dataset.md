@@ -38,19 +38,13 @@ option = {
 
 于是，ECharts 4 提供了 `数据集`（`dataset`）组件来单独声明数据，它带来了这些效果：
 
-+ 能够贴近这样的数据可视化常见思维方式：基于数据（`dataset` 组件来提供数据），指定数据到视觉的映射（由 [encode](option.html#series.encode) 属性来指定映射），形成图表。
-+ 数据和其他配置可以被分离开来，使用者相对便于进行单独管理，也省去了一些数据处理的步骤。
-+ 数据可以被多个系列或者组件复用，对于大数据，不必为每个系列创建一份。
++ 能够贴近这样的数据可视化常见思维方式：(I) 提供数据，(II) 指定数据到视觉的映射，从而形成图表。
++ 数据和其他配置可以被分离开来。数据常变，其他配置常不变。分开易于分别管理。
++ 数据可以被多个系列或者组件复用，对于大数据量的场景，不必为每个系列创建一份数据。
 + 支持更多的数据的常用格式，例如二维数组、对象数组等，一定程度上避免使用者为了数据格式而进行转换。
 
 
-<br>
-
----
-
-<br>
-
-**入门例子**
+## 入门例子
 
 下面是一个最简单的 `dataset` 的例子：
 
@@ -91,8 +85,10 @@ option = {
     legend: {},
     tooltip: {},
     dataset: {
-        // 这里指定了维度名的顺序，从而可以利用默认的维度到坐标轴的映射。
-        // 如果不指定 dimensions，也可以通过指定 series.encode 完成映射，参见后文。
+        // 用 dimensions 指定了维度的顺序。直角坐标系中，
+        // 默认把第一个维度映射到 X 轴上，第二个维度映射到 Y 轴上。
+        // 如果不指定 dimensions，也可以通过指定 series.encode
+        // 完成映射，参见后文。
         dimensions: ['product', '2015', '2016', '2017'],
         source: [
             {product: 'Matcha Latte', '2015': 43.3, '2016': 85.8, '2017': 93.7},
@@ -112,13 +108,7 @@ option = {
 ```
 
 
-<br>
-
----
-
-<br>
-
-**数据到图形的映射**
+## 数据到图形的映射
 
 本篇里，我们制作数据可视化图表的逻辑是这样的：基于数据，在配置项中指定如何映射到图形。
 
@@ -132,13 +122,7 @@ option = {
 
 
 
-<br>
-
----
-
-<br>
-
-**按行还是按列做映射**
+## 把数据集（ dataset ）的行或列映射为系列（series）
 
 
 有了数据表之后，使用者可以灵活得配置：数据如何对应到轴和图形系列。
@@ -192,14 +176,7 @@ option = {
 ~[800x600](${galleryViewPath}dataset-series-layout-by&edit=1&reset=1)
 
 
-
-<br>
-
----
-
-<br>
-
-**维度（dimension）**
+## 维度（dimension）
 
 介绍 `encode` 之前，首先要介绍“维度（dimension）”的概念。
 
@@ -251,16 +228,7 @@ var option2 = {
 + `'int'`: 如果设置成 `'int'`，在存储时候会使用 `TypedArray`，对性能优化有好处。
 
 
-
-
-<br>
-
----
-
-<br>
-
-
-**数据到图形的映射（encode）**
+## 数据到图形的映射（ series.encode ）
 
 了解了维度的概念后，我们就可以使用 [encode](option.html#series.encode) 来做映射。总体是这样的感觉：
 
@@ -301,9 +269,9 @@ var option = {
 ~[500x300](${galleryViewPath}doc-example/dataset-encode-simple0&edit=1&reset=1)
 
 
-`encode` 声明的基本结构如下，其中冒号左边是坐标系、标签等特定名称，如 `'x'`, `'y'`, `'tooltip'` 等，冒号右边是数据中的维度名（string 格式）或者维度的序号（number 格式，从 0 开始计数），可以指定一个或多个维度（使用数组）。通常情况下，下面各种信息不需要所有的都写，按需写即可。
+`series.encode` 声明的基本结构如下，其中冒号左边是坐标系、标签等特定名称，如 `'x'`, `'y'`, `'tooltip'` 等，冒号右边是数据中的维度名（string 格式）或者维度的序号（number 格式，从 0 开始计数），可以指定一个或多个维度（使用数组）。通常情况下，下面各种信息不需要所有的都写，按需写即可。
 
-下面是 encode 支持的属性：
+下面是 `series.encode` 支持的属性：
 
 ```js
 // 在任何坐标系和系列中，都支持：
@@ -349,38 +317,21 @@ encode: {
 }
 ```
 
-下面给出个更丰富的 `encode` 的示例：
+下面给出个更丰富的 `series.encode` 的示例：
 
 ~[800x600](${galleryViewPath}dataset-encode1&edit=1&reset=1)
 
 
-
-
-<br>
-
----
-
-<br>
-
-
-**视觉通道（颜色、尺寸等）的映射**
+## 视觉通道（颜色、尺寸等）的映射
 
 我们可以使用 [visualMap](option.html#visualMap) 组件进行视觉通道的映射。详见 `visualMap` 文档的介绍。这是一个示例：
 
 ~[500x400](${galleryViewPath}dataset-encode0&edit=1&reset=1)
 
 
+## 默认的 encode
 
-<br>
-
----
-
-<br>
-
-
-**默认的映射**
-
-指的一提的是，ECharts 针对最常见直角坐标系中的图表（折线图、柱状图、散点图、K线图等）、饼图、漏斗图，给出了简单的默认的映射，从而不需要配置 `encode` 也可以出现图表（一旦给出了 `encode`，那么就不会采用默认映射）。默认的映射规则不易做得复杂，基本规则大体是：
+值得一提的是，当 `series.encode` 并没有指定时，ECharts 针对最常见直角坐标系中的图表（折线图、柱状图、散点图、K线图等）、饼图、漏斗图，会采用一些默认的映射规则。默认的映射规则比较简单，大体是：
 + 在坐标系中（如直角坐标系、极坐标系等）
     + 如果有类目轴（axis.type 为 'category'），则将第一列（行）映射到这个轴上，后续每一列（行）对应一个系列。
     + 如果没有类目轴，假如坐标系有两个轴（例如直角坐标系的 X Y 轴），则每两列对应一个系列，这两列分别映射到这两个轴上。
@@ -392,14 +343,7 @@ encode: {
 ~[800x400](${galleryViewPath}dataset-default&edit=1&reset=1)
 
 
-<br>
-
----
-
-<br>
-
-
-**几个常见的映射设置方式**
+## 几个常见的 series.encode 设置方式举例
 
 问：如何把第三列设置为 X 轴，第五列设置为 Y 轴？
 
@@ -503,14 +447,7 @@ var option = {
 答：可以查查有没有拼错，比如，维度名是：`'Life Expectancy'`，encode 中拼成了 `'Life Expectency'`。
 
 
-
-<br>
-
----
-
-<br>
-
-**数据的各种格式**
+## 数据的各种格式
 
 多数常见图表中，数据适于用二维表的形式描述。广为使用的数据表格软件（如 MS Excel、Numbers）或者关系数据数据库都是二维表。他们的数据可以导出成 JSON 格式，输入到 `dataset.source` 中，在不少情况下可以免去一些数据处理的步骤。
 
@@ -540,13 +477,7 @@ dataset: [{
 ```
 
 
-<br>
-
----
-
-<br>
-
-**多个 dataset 和他们的引用**
+## 多个 dataset 以及如何引用他们
 
 可以同时定义多个 dataset。系列可以通过 [series.datasetIndex](option.html#series.datasetIndex) 来指定引用哪个 dataset。例如：
 
@@ -573,14 +504,7 @@ var option = {
 ```
 
 
-
-<br>
-
----
-
-<br>
-
-**ECharts 3 的数据设置方式（series.data）仍正常使用**
+## ECharts 3 的数据设置方式（series.data）仍正常使用
 
 ECharts 4 之前一直以来的数据声明方式仍然被正常支持，如果系列已经声明了 [series.data](option.html#series.data)， 那么就会使用 [series.data](option.html#series.data) 而非 `dataset`。
 
@@ -610,14 +534,7 @@ ECharts 4 之前一直以来的数据声明方式仍然被正常支持，如果�
 其实，[series.data](option.html#series.data) 也是种会一直存在的重要设置方式。一些特殊的非 table 格式的图表，如 [treemap](option.html#series-treemap)、[graph](option.html#series-graph)、[lines](option.html#series-lines) 等，现在仍不支持在 dataset 中设置，仍然需要使用 [series.data](option.html#series.data)。另外，对于巨大数据量的渲染（如百万以上的数据量），需要使用 [appendData](api.html#echartsInstance.appendData) 进行增量加载，这种情况不支持使用 `dataset`。
 
 
-<br>
-
----
-
-<br>
-
-
-**其他**
+## 其他
 
 目前并非所有图表都支持 dataset。支持 dataset 的图表有：
 `line`、`bar`、`pie`、`scatter`、`effectScatter`、`parallel`、`candlestick`、`map`、`funnel`、`custom`。

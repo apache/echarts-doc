@@ -55,6 +55,7 @@ Whether to enable the animation effect when mouse is on the symbol.
 {{use:partial-item-style-desc}}
 {{use:partial-item-style(
     prefix="##",
+    defaultOpacity=0.8,
     useColorPalatte=true,
     hasCallback=true
 )}}

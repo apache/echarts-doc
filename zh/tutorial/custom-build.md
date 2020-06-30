@@ -10,9 +10,9 @@
 
 我们也可以自己构建 echarts，能够仅仅包括自己所需要的图表和组件。可以用这几种方式自定义构建：
 
-+ [在线自定义构建](${websitePath}/builder.html)：比较方便。
++ [在线自定义构建](${websitePath}/zh/builder.html)：比较方便。
 + 使用 `echarts/build/build.js` 脚本自定义构建：比在线构建更灵活一点，并且支持多语言。
-+ 直接使用构建工具（如 [rollup](https://rollupjs.org/)、[webpack](https://webpack.js.org//)、[browserify](http://browserify.org/)）自己构建：也是一种选择。
++ 直接使用构建工具（如 [rollup](https://rollupjs.org/)、[webpack](https://webpack.js.org/)、[browserify](http://browserify.org/)）自己构建：也是一种选择。
 
 下面我们举些小例子，介绍后两种方式。
 
@@ -136,7 +136,7 @@ node node_modules/echarts/build/build.js --min -i echarts.custom.js -o lib/echar
 
 ## 直接使用 rollup 自定义构建
 
-上文中介绍了如何使用 echarts 提供的脚本 `echarts/build/build.js` 自定义构建。与此并列的另一种选择是，我们直接使用构建工具（如 [rollup](https://rollupjs.org/)、[webpack](https://webpack.js.org//)、[browserify](http://browserify.org/)）自定义构建，并且把 echarts 代码和项目代码在构建成一体。在一些项目中可能需要这么做。下面我们仅仅介绍如何使用 [rollup](https://rollupjs.org/) 来构建。[webpack](https://webpack.js.org//) 和 [browserify](http://browserify.org/) 与此类同，不赘述。
+上文中介绍了如何使用 echarts 提供的脚本 `echarts/build/build.js` 自定义构建。与此并列的另一种选择是，我们直接使用构建工具（如 [rollup](https://rollupjs.org/)、[webpack](https://webpack.js.org/)、[browserify](http://browserify.org/)）自定义构建，并且把 echarts 代码和项目代码在构建成一体。在一些项目中可能需要这么做。下面我们仅仅介绍如何使用 [rollup](https://rollupjs.org/) 来构建。[webpack](https://webpack.js.org/) 和 [browserify](http://browserify.org/) 与此类同，不赘述。
 
 首先我们在 `myProject` 目录下使用 npm 安装 [rollup](https://rollupjs.org/)：
 

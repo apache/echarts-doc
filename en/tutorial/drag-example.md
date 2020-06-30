@@ -10,8 +10,7 @@ This example mainly implements that dragging points of a curve and by which the 
 
 
 
-<br>
-<h2>[ Part 1 ] Implement basic dragging</h2>
+## [ Part 1 ] Implement basic dragging
 
 First of all, we create a basic [line chart (line series)](option.html#series-line):
 
@@ -134,9 +133,7 @@ window.addEventListener('resize', function () {
 
 
 
-
-<br>
-<h2>[ Part 2 ] Add tooltip component</h2>
+## [ Part 2 ] Add tooltip component
 
 Now basic functionality have been implemented by parte 1. If we need the data can be displayed realtime when dragging, we can use [tooltip component](option.html#tooltip) to do that. Nevertheless, tooltip component has its default "show/hide rule", which is not applicable in this case. So we need to customize the "show/hide rule" for our case.
 
@@ -186,9 +183,7 @@ function hideTooltip(dataIndex) {
 The API [dispatchAction](api.html#echartsInstance.dispatchAction) is used to show/hide tooltip content, where actions [showTip](api.html#action.tooltip.showTip) and [hideTip](api.html#action.tooltip.hideTip) is dispatched.
 
 
-
-<br>
-<h2>[ Part 3 ] Full code</h2>
+## [ Part 3 ] Full code
 
 Full code is shown as follow:
 

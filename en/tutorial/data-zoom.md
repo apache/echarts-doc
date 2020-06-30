@@ -11,10 +11,7 @@ Following is an example of `datazoom component` [dataZoom](option.html#dataZoom)
 
 
 
-
-
-<br>
-<h2>Introduction of data zoom component (dataZoom)</h2>
+## Introduction of data zoom component (dataZoom)
 
 Data overview by default, and detail by requirement is a basic interaction need of data visualization. `dataZoom` component can implement this function in rectangular coordinate ([grid](option.html#grid)) and polar coordinate ([polar](option.html#polar).
 
@@ -52,9 +49,7 @@ Data overview by default, and detail by requirement is a basic interaction need 
 
 
 
-
-<br>
-<h2>Adding dataZoom component</h2>
+## Adding dataZoom component
 
 First, only add dataZoom component to x-axis. Following examples shows the code.
 

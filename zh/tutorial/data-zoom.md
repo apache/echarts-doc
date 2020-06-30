@@ -12,9 +12,7 @@
 
 
 
-
-<br>
-<h2>数据区域缩放组件（dataZoom）介绍</h2>
+## 数据区域缩放组件（dataZoom）介绍
 
 『概览数据整体，按需关注数据细节』是数据可视化的基本交互需求。`dataZoom` 组件能够在直角坐标系（[grid](option.html#grid)）、极坐标系（[polar](option.html#polar)）中实现这一功能。
 
@@ -53,8 +51,7 @@
 
 
 
-<br>
-<h2>在代码加入 dataZoom 组件</h2>
+## 在代码加入 dataZoom 组件
 
 先只在对单独一个横轴，加上 dataZoom 组件，代码示例如下：
 
