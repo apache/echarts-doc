@@ -3,7 +3,7 @@
         <div :class="[
             'doc-content',
             shared.showOptionExample ? 'option-example-actived' : '',
-            isExampleTopDownPlayout ? 'option-example-down-layout' : 'option-example-right-layout'
+            'option-example-' + shared.computedOptionExampleLayout + '-layout'
         ]">
             <h2 :id="pageId">{{pageTitle}}</h2>
             <div
@@ -28,10 +28,7 @@
             </div>
         </div>
         <template v-if="showLiveExample">
-            <LiveExample
-                v-if="shared.showOptionExample"
-                :isDownLayout="isExampleTopDownPlayout"
-            ></LiveExample>
+            <LiveExample v-if="shared.showOptionExample" ref="liveExample"></LiveExample>
             <div v-else class="open-option-example" @click="openOptionExample">
                 <i class="el-icon-data-line"></i> {{ $t('example.titleShort') }}
             </div>
@@ -49,7 +46,7 @@ import {
     getOutlineNode,
     getDefaultPage
 } from '../docHelper';
-import {store, getPagePath, isOptionDoc} from '../store';
+import {store, getPagePath, isOptionDoc, updateOptionExampleLayout} from '../store';
 import {directTo} from '../route';
 import DocContentItemCard from './DocContentItemCard.vue'
 import scrollIntoView from 'scroll-into-view';
@@ -78,9 +75,7 @@ export default {
             // Outline of this page
             pageOutline: {},
 
-            pageDescMap: {},
-
-            isExampleTopDownPlayout: false
+            pageDescMap: {}
         }
     },
 
@@ -117,6 +112,11 @@ export default {
 
         showLiveExample() {
             return !this.shared.isMobile && isOptionDoc();
+        },
+
+        needScrollOffset() {
+            return this.shared.showOptionExample && !this.shared.isMobile 
+                && this.shared.computedOptionExampleLayout === 'top';
         }
     },
 
@@ -145,7 +145,7 @@ export default {
 
     methods: {
         resize() {
-            this.isExampleTopDownPlayout = window.innerWidth < 1400;
+           this.shared.optionExampleLayout === 'auto' && updateOptionExampleLayout('auto');
         },
 
         updateLazyload() {
@@ -162,14 +162,17 @@ export default {
         scrollTo(path, time, timeDelay) {
             // Scroll to.
             setTimeout(() => {
-                let container = store.isMobile ? document.body : this.$el.parentNode;
-                let offset = store.isMobile ? -100 : -20;
+                //let container = store.isMobile ? document.body : this.$el.parentNode;
+                let offset = store.isMobile ? 100 : 20;
+                if (this.needScrollOffset) {
+                    offset += this.$refs.liveExample.$el.offsetHeight;
+                }
                 // console.log(document.querySelector('#' + convertPathToId(path)), convertPathToId(path));
                 scrollIntoView(document.querySelector('#' + convertPathToId(path)), {
                     time: time || 400,
                     align: {
                         top: 0,
-                        topOffset: -offset
+                        topOffset: offset
                     }
                 });
             }, timeDelay || 0);
@@ -252,7 +255,13 @@ export default {
             else {
                 this.shared.allOptionExamples = null;
             }
-        }
+        },
+        // 'shared.currentOptionExampleLayout'() {
+        //     this.scrollTo(this.shared.currentPath);
+        // },
+        // 'shared.showOptionExample'() {
+        //     this.scrollTo(this.shared.currentPath);
+        // }
     }
 }
 </script>
@@ -297,9 +306,11 @@ export default {
     // transition: margin-right 500ms cubic-bezier(0.215, 0.610, 0.355, 1);
 
     &.option-example-actived {
-
-        &.option-example-down-layout {
-            // margin-bottom: 45%;
+        &.option-example-top-layout {
+            margin-top: 42%;
+        }
+        &.option-example-bottom-layout {
+            margin-bottom: 42%;
         }
         &.option-example-right-layout {
             margin-right: 45%;

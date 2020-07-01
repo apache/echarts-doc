@@ -1,5 +1,35 @@
 import {getOutlineNode} from './docHelper';
 
+const OPTION_EXAMPLE_LAYOUT = '_ec_option_example_layout';
+
+export const optionExampleLayouts = ['auto', 'top', 'bottom', 'right'];
+
+export function updateOptionExampleLayout(layout) {
+    if (layout === 'auto') {
+        store.computedOptionExampleLayout = window.innerWidth < 1400 ? 'bottom' : 'right';
+    }
+    else {
+        store.computedOptionExampleLayout = layout;
+    }
+    store.optionExampleLayout = layout;
+    window.localStorage && window.localStorage.setItem(OPTION_EXAMPLE_LAYOUT, layout);
+}
+
+function getInitialOptionExampleLayout() {
+    const layout = {};
+    const savedLayout = window.localStorage && window.localStorage.getItem(OPTION_EXAMPLE_LAYOUT);
+    if (!savedLayout || savedLayout === 'auto' || optionExampleLayouts.indexOf(savedLayout) < 0) {
+        layout.mode = 'auto';
+        layout.computedMode = window.innerWidth < 1400 ? 'bottom' : 'right';
+    }
+    else {
+        layout.mode = layout.computedMode = savedLayout;
+    }
+    return layout;
+}
+
+const initialOptionExampleLayout = getInitialOptionExampleLayout();
+
 export const store = {
     docType: '',
 
@@ -19,7 +49,11 @@ export const store = {
     // Clear before setOption
     cleanMode: false,
     currentExampleName: '',
-    currentExampleOption: ''
+    currentExampleOption: '',
+    // Can be `top`, `bottom`, `right`, `auto`
+    optionExampleLayout: initialOptionExampleLayout.mode,
+    // Can be `top`, `bottom`, `right`
+    computedOptionExampleLayout: initialOptionExampleLayout.computedMode
 };
 
 export function getPagePath() {

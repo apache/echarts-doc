@@ -42,7 +42,14 @@ export default {
             setOptionError: 'Something Unexpected Happerns. Click refresh to try again!',
 
             refresh: 'Refresh',
-            close: 'Close'
+            close: 'Close',
+            changeLayout: 'Change Layout',
+            layout: {
+                auto: 'Auto',
+                right: 'Right',
+                top: 'Top',
+                bottom: 'Bottom'
+            }
         }
     },
     zh: {
@@ -88,7 +95,14 @@ export default {
             setOptionError: '发生了一些意料之外的错误，点击刷新再试试！',
 
             refresh: '刷新',
-            close: '关闭'
+            close: '关闭',
+            changeLayout: '切换布局',
+            layout: {
+                auto: '自动',
+                right: '右侧',
+                top: '顶部',
+                bottom: '底部'
+            }
         }
     }
 };
