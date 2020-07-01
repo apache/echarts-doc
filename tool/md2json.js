@@ -349,7 +349,7 @@ function mdToJsonSchema(mdStr, maxDepth, imagePath, entry) {
         // Avoid marked converting the markers in the code unexpectly.
         // Like convert * to em.
         // Also no need to decode entity
-        if (entry === 'option') {
+        if (entry === 'option' || entry === 'option-gl') {
             section = section.replace(/(<\s*ExampleBaseOption[^>]*>)([\s\S]*?)(<\s*\/ExampleBaseOption\s*>)/g, function (text, openTag, code, closeTag) {
                 const codeKey = codeKeyPrefx + (codeIndex++);
                 codeMap[codeKey] = code;

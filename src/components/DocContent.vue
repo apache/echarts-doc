@@ -27,7 +27,7 @@
                 ></DocContentItemCard>
             </div>
         </div>
-        <template v-if="!shared.isMobile">
+        <template v-if="showLiveExample">
             <LiveExample
                 v-if="shared.showOptionExample"
                 :isDownLayout="isExampleTopDownPlayout"
@@ -49,7 +49,7 @@ import {
     getOutlineNode,
     getDefaultPage
 } from '../docHelper';
-import {store, getPagePath} from '../store';
+import {store, getPagePath, isOptionDoc} from '../store';
 import {directTo} from '../route';
 import DocContentItemCard from './DocContentItemCard.vue'
 import scrollIntoView from 'scroll-into-view';
@@ -113,6 +113,10 @@ export default {
             else {
                 return getOutlineNode(getPagePath());
             }
+        },
+
+        showLiveExample() {
+            return !this.shared.isMobile && isOptionDoc();
         }
     },
 
