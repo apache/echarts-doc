@@ -50,7 +50,7 @@ function convert(opts, cb) {
         });
 
         // Markdown to JSON
-        var schema = mdToJsonSchema(mdStr, maxDepth, opts.imageRoot);
+        var schema = mdToJsonSchema(mdStr, maxDepth, opts.imageRoot, entry);
         // console.log(mdStr);
         var topLevel = schema.option.properties;
 
@@ -105,8 +105,9 @@ function convert(opts, cb) {
     });
 }
 
-function mdToJsonSchema(mdStr, maxDepth, imagePath) {
-    var renderer = new marked.Renderer();
+function mdToJsonSchema(mdStr, maxDepth, imagePath, entry) {
+    const renderer = new marked.Renderer();
+    const originalHTMLRenderer = renderer.html;
     renderer.link = function (href, title, text) {
         if (href.match(/^~/)) { // Property link
             return '<a href="#' + href.slice(1) + '">' + text + '</a>';
@@ -348,15 +349,20 @@ function mdToJsonSchema(mdStr, maxDepth, imagePath) {
         // Avoid marked converting the markers in the code unexpectly.
         // Like convert * to em.
         // Also no need to decode entity
-        section = section.replace(/(<\s*ExampleBaseOption[^>]*>)([\s\S]*?)(<\s*\/ExampleBaseOption\s*>)/g, function (text, openTag, code, closeTag) {
-            const codeKey = codeKeyPrefx + (codeIndex++);
-            codeMap[codeKey] = code;
-            return openTag + codeKey + closeTag
-        });
+        if (entry === 'option') {
+            section = section.replace(/(<\s*ExampleBaseOption[^>]*>)([\s\S]*?)(<\s*\/ExampleBaseOption\s*>)/g, function (text, openTag, code, closeTag) {
+                const codeKey = codeKeyPrefx + (codeIndex++);
+                codeMap[codeKey] = code;
+                return openTag + codeKey + closeTag;
+            });
+            renderer.html = function (html) {
+                return parseUIControl(html, property, codeMap);
+            };
+        }
+        else {
+            renderer.html = originalHTMLRenderer;
+        }
 
-        renderer.html = function (html) {
-            return parseUIControl(html, property, codeMap);
-        };
 
         property.description = marked(section, {
             renderer: renderer
