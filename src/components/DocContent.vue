@@ -167,8 +167,10 @@ export default {
                 if (this.needScrollOffset) {
                     offset += this.$refs.liveExample.$el.offsetHeight;
                 }
-                // console.log(document.querySelector('#' + convertPathToId(path)), convertPathToId(path));
-                scrollIntoView(document.querySelector('#' + convertPathToId(path)), {
+                // previous usage: document.querySelector('#' + convertPathToId(path))
+                // `$` can't exist in selector when using `document.querySelector`,
+                // use `document.getElementById` insead.
+                scrollIntoView(document.getElementById(convertPathToId(path)), {
                     time: time || 400,
                     align: {
                         top: 0,
