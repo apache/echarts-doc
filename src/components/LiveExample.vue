@@ -1,5 +1,5 @@
 <template>
-<div id="example-panel" :class="[isDownLayout ? 'down-layout' : 'right-layout']">
+<div id="example-panel" :class="shared.computedOptionExampleLayout + '-layout'">
     <h2>{{$t('example.title')}}</h2>
     <p class="intro">{{ shared.allOptionExamples ? $t('example.intro') : $t('example.noExample')}}</p>
     <div class="preview-and-code" v-if="shared.currentExampleOption">
@@ -23,9 +23,38 @@
                 :label="shared.locale === 'en' ? item['title-en'] : item.title"
             ></el-option>
         </el-select>
-        <el-button v-if="shared.currentExampleOption" type="primary" icon="el-icon-refresh" size="mini" @click="refreshForce">{{$t('example.refresh')}}</el-button>
+        <el-button v-if="shared.currentExampleOption" 
+            type="primary" 
+            icon="el-icon-refresh" 
+            size="mini" 
+            :title="$t('example.refresh')"
+            @click="refreshForce"></el-button>
+        <el-button 
+            style="margin-left: 0"
+            type="primary" 
+            icon="el-icon-s-operation" 
+            size="mini" 
+            :title="$t('example.changeLayout')"
+            v-popover:changeLayoutPopover></el-button>
         <el-button size='mini' circle icon="el-icon-close" @click="closeExamplePanel"></el-button>
     </div>
+    <el-popover
+        ref="changeLayoutPopover"
+        placement="bottom"
+        trigger="click"
+        v-model="showChangeLayoutPopover">
+        <div class="example-change-layout">
+            <div class="layout-title"><i class="el-icon-s-operation"></i>{{$t('example.changeLayout')}}</div>
+            <div class="layout-mode">
+                <el-radio-group v-model="shared.optionExampleLayout" @change="changeLayout" size="mini">
+                    <el-radio-button 
+                        v-for="layout in optionExampleLayouts" 
+                        :key="layout" 
+                        :label="layout">{{$t('example.layout.' + layout)}}</el-radio-button>
+                </el-radio-group>
+            </div>
+        </div>
+    </el-popover>
 </div>
 </template>
 
@@ -34,7 +63,7 @@
 // Remarks:
 // 代码不能编辑，可以跳转到 examples 带上 base64，在 examples 页面编辑
 
-import {store, getPagePath} from '../store';
+import {store, getPagePath, updateOptionExampleLayout, optionExampleLayouts} from '../store';
 import CodeMirror from 'codemirror';
 import 'codemirror/lib/codemirror.css';
 // import 'codemirror/theme/paraiso-dark.css';
@@ -182,8 +211,6 @@ function updateOption(option, isRefreshForce) {
 
 export default {
 
-    props: ['isDownLayout'],
-
     data() {
         return {
             shared: store,
@@ -192,7 +219,11 @@ export default {
 
             lastUpdateExampleName: '',
 
-            oldHighlightedLines: []
+            oldHighlightedLines: [],
+
+            showChangeLayoutPopover: false,
+
+            optionExampleLayouts
         };
     },
 
@@ -253,7 +284,7 @@ export default {
         resize() {
             const examplePanel = this.$el;
             const previewMain = examplePanel.querySelector('.preview-main');
-            if (this.isDownLayout) {
+            if (this.shared.computedOptionExampleLayout !== 'right') {
                 examplePanel.style.height = (window.innerHeight * 0.5 - 60) + 'px';
                 examplePanel.style.width = 'auto';
             }
@@ -298,6 +329,14 @@ export default {
                 console.error(e);
                 console.log(code);
             }
+        },
+
+        changeLayout(layout) {
+            this.showChangeLayoutPopover = false;
+            updateOptionExampleLayout(layout);
+            this.$nextTick(() => {
+                this.resize();
+            });
         }
     },
 
@@ -362,7 +401,7 @@ export default {
 
     .preview-and-code {
         position: absolute;
-        top: 90px;
+        top: 75px;
         bottom: 0;
         left: 0;
         right: 0;
@@ -373,7 +412,9 @@ export default {
         top: 0;
     }
     .preview-main {
+        padding: 0 10px;
         background: #fefefe;
+        box-sizing: border-box;
     }
 
     .example-code {
@@ -443,10 +484,10 @@ export default {
         }
     }
 
-    &.down-layout {
+    &.bottom-layout {
         left: 300px;
         bottom: 0;
-        right: 0;
+        right: 10px;
 
         .preview-main {
             width: 50%;
@@ -458,6 +499,36 @@ export default {
             height: 100%;
             float: left;
         }
+    }
+
+
+    &.top-layout {
+        left: 300px;
+        // dev
+        // top: 40px;
+        top: 50px;
+        right: 10px;
+
+        .preview-main {
+            width: 50%;
+            height: 100%;
+            float: left;
+        }
+        .example-code {
+            width: 50%;
+            height: 100%;
+            float: left;
+        }
+    }
+}
+
+.example-change-layout {
+    .layout-title > i {
+        font-size: 14px;
+        margin-right: 5px;
+    }
+    .layout-mode {
+        margin-top: 10px;
     }
 }
 
