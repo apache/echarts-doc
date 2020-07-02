@@ -168,8 +168,8 @@ export default {
                     offset += this.$refs.liveExample.$el.offsetHeight;
                 }
                 // previous usage: document.querySelector('#' + convertPathToId(path))
-                // `$` can't exist in selector when using `document.querySelector`,
-                // use `document.getElementById` insead.
+                // Some special characters like `$` are not allowed in selector when using `document.querySelector`,
+                // use `document.getElementById` instead.
                 scrollIntoView(document.getElementById(convertPathToId(path)), {
                     time: time || 400,
                     align: {
