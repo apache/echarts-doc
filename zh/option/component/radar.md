@@ -11,6 +11,42 @@
 
 ~[400x400](${galleryViewPath}doc-example/radar&edit=1&reset=1)
 
+<ExampleBaseOption name="radar" title="基础雷达图" title-en="Radar">
+const option = {
+    title: {
+        text: '基础雷达图'
+    },
+    tooltip: {},
+    legend: {
+        data: ['Allocated Budget', 'Actual Spending']
+    },
+    radar: {
+        indicator: [
+            { name: 'sales', max: 6500},
+            { name: 'Administration', max: 16000},
+            { name: 'Information Techology', max: 30000},
+            { name: 'Customer Support', max: 38000},
+            { name: 'Development', max: 52000},
+            { name: 'Marketing', max: 25000}
+        ]
+    },
+    series: [{
+        name: '预算 vs 开销（Budget vs spending）',
+        type: 'radar',
+        data: [
+            {
+                value: [4300, 10000, 28000, 35000, 50000, 19000],
+                name: 'Allocated Budget'
+            },
+            {
+                value: [5000, 14000, 28000, 31000, 42000, 21000],
+                name: 'Actual Spending'
+            }
+        ]
+    }]
+};
+</ExampleBaseOption>
+
 {{use: partial-component-id(prefix="#")}}
 
 {{use: component-circular-layout(
@@ -52,21 +88,25 @@ formatter: function (value, indicator) {
 
 ## nameGap(number) = 15
 
+<ExampleUIControlNumber default="15" step="1" />
+
 指示器名称和指示器轴的距离。
 
-## axisType(string) = 'value'
-{{ use: partial-version(version = "4.5.0") }}
-{{ use: partial-axis-type-content() }}
-
 ## splitNumber(number) = 5
+
+<ExampleUIControlNumber default="15" step="1" />
 
 指示器轴的分割段数。
 
 ## shape(string) = 'polygon'
 
+<ExampleUIControlEnum options="polygon,circle" />
+
 雷达图绘制类型，支持 `'polygon'` 和 `'circle'`。
 
 ## scale(boolean) = false
+
+<ExampleUIControlBoolean />
 
 是否是脱离 0 值比例。设置成 `true` 后坐标刻度不会强制包含零刻度。在双数值轴的散点图中比较有用。
 
@@ -119,12 +159,18 @@ indicator: [
 
 ### max(number)
 
+<ExampleUIControlNumber default="100" step="1" />
+
 指示器的最大值，可选，建议设置
 
 ### min(number)
 
+<ExampleUIControlNumber step="1" />
+
 指示器的最小值，可选，默认为 0。
 
 ### color(string)
+
+<ExampleUIControlColor />
 
 标签特定的颜色。

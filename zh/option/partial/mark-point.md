@@ -76,6 +76,9 @@ data: [{{if: ${hasType} }}
 标注名称。
 {{ if: ${hasType} }}
 ###${prefix} type(string)
+
+<ExampleUIControlEnum options="min,max,average" />
+
 特殊的标注类型，用于标注最大值最小值等。
 
 **可选:**
@@ -85,6 +88,9 @@ data: [{{if: ${hasType} }}
 {{ /if }}
 {{ if: ${hasCoord} }}
 ###${prefix} valueIndex(number)
+
+<ExampleUIControlNumber min="0" max="1" step="1"  />
+
 在使用 [type](~series-${seriesType}.markPoint.data.type) 时有效，用于指定在哪个维度上指定最大值最小值，可以是 `0`（xAxis, radiusAxis），`1`（yAxis, angleAxis），默认使用第一个数值轴所在的维度。
 
 ###${prefix} valueDim(string)
@@ -95,12 +101,17 @@ data: [{{if: ${hasType} }}
 
 {{ use: marker-coord-explain }}
 
-**注：**在 ECharts 2.x 中会使用 `xAxis`，`yAxis` 标注直角坐标系上的位置，ECharts 3 中不再推荐使用。
 {{ /if }}
 ###${prefix} x(number)
+
+<ExampleUIControlPercent default="0" />
+
 相对容器的屏幕 x 坐标，单位像素。
 
 ###${prefix} y(number)
+
+<ExampleUIControlPercent default="0" />
+
 相对容器的屏幕 y 坐标，单位像素。
 
 ###${prefix} value(number)

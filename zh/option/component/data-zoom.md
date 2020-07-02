@@ -114,11 +114,6 @@ option = {
         如果需要改变这种处理顺序，那么改变 `dataZoomX` 和 `dataZoomY` 在 option 中的出现顺序即可。
 
 
-<br>
-<br>
-
-
-
 {{import: component-data-zoom-inside}}
 {{import: component-data-zoom-slider}}
 
@@ -200,10 +195,14 @@ option: {
 
 ## filterMode(string) = 'filter'
 
+<ExampleUIControlEnum options="filter,weakFilter,empty,none" default="filter" />
+
 {{use: partial-data-zoom-filterMode}}
 
 
 ## start(number) = 0
+
+<ExampleUIControlNumber min="0" max="100" step="0.5" />
 
 数据窗口范围的起始百分比。范围是：0 ~ 100。表示 0% ~ 100%。
 
@@ -213,6 +212,8 @@ option: {
 
 
 ## end(number) = 100
+
+<ExampleUIControlNumber min="0" max="100" default="100" step="0.5" />
 
 数据窗口范围的结束百分比。范围是：0 ~ 100。
 
@@ -247,11 +248,15 @@ option: {
 
 ## minSpan(number) = null
 
+<ExampleUIControlNumber min="0" max="100" step="0.5" />
+
 用于限制窗口大小的最小值（百分比值），取值范围是 `0` ~ `100`。
 
 如果设置了 [${dataZoomName}.minValueSpan](~${dataZoomName}.minValueSpan) 则 `minSpan` 失效。
 
 ## maxSpan(number) = null
+
+<ExampleUIControlNumber min="0" max="100" step="0.5" />
 
 用于限制窗口大小的最大值（百分比值），取值范围是 `0` ~ `100`。
 
@@ -273,6 +278,8 @@ option: {
 
 ## orient(string) = null
 
+<ExampleUIControlEnum options="horizontal,vertical" />
+
 布局方式是横还是竖。不仅是布局方式，对于直角坐标系而言，也决定了，缺省情况控制横向数轴还是纵向数轴。
 
 可选值为：
@@ -284,12 +291,16 @@ option: {
 
 ## zoomLock(boolean) = false
 
+<ExampleUIControlBoolean />
+
 是否锁定选择区域（或叫做数据窗口）的大小。
 
 如果设置为 `true` 则锁定选择区域的大小，也就是说，只能平移，不能缩放。
 
 
 ## throttle(number) = 100
+
+<ExampleUIControlNumber default="100" min="0" step="20" />
 
 设置触发视图刷新的频率。单位为毫秒（ms）。
 

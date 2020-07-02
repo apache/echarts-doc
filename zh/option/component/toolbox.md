@@ -12,18 +12,41 @@ ${name} icon 样式设置。由于 icon 的文本信息只在 icon hover 时候�
 
 #${prefix} emphasis(Object)
 ##${prefix} iconStyle(Object)
+
 {{ use: partial-item-style(prefix="##" + ${prefix}) }}
+
 ###${prefix} textPosition(string) = 'bottom'
 文本位置，`'left'` / `'right'` / `'top'` / `'bottom'`。
+
 ###${prefix} textFill(string) = '#000'
+
+<ExampleUIControlColor />
+
 文本颜色，如果未设定，则依次取图标 emphasis 时候的填充色、描边色，如果都不存在，则为 `'#000'`。
+
 ###${prefix} textAlign(string) = 'center'
+
+<ExampleUIControlEnum options="left,center,right" />
+
 文本对齐方式，`'left'` / `'center'` / `'right'`。
+
 ###${prefix} textBackgroundColor(string)
+
+<ExampleUIControlColor />
+
 文本区域填充色。
+
 ###${prefix} textBorderRadius(number)
+
+<ExampleUIControlVector min="0" dims="LT,RT,RB,LB"  />
+
+
 文本区域圆角大小。
+
 ###${prefix} textPadding(number)
+
+<ExampleUIControlVector min="0" dims="T,R,B,L" />
+
 文本区域内边距。
 
 
@@ -51,13 +74,91 @@ ${name} icon 样式设置。由于 icon 的文本信息只在 icon hover 时候�
 
 ~[600x400](${galleryViewPath}line-marker&reset=1&edit=1)
 
+<ExampleBaseOption title="工具栏" title="toolbox" title-en="Toolbox">
+option = {
+    toolbox: {
+        show: true,
+        feature: {
+            dataZoom: {
+                yAxisIndex: 'none'
+            },
+            dataView: {readOnly: false},
+            magicType: {type: ['line', 'bar']},
+            restore: {},
+            saveAsImage: {}
+        }
+    },
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    },
+    yAxis: {
+        type: 'value',
+        axisLabel: {
+            formatter: '{value} °C'
+        }
+    },
+    series: [
+        {
+            name: '最高气温',
+            type: 'line',
+            data: [11, 11, 15, 13, 12, 13, 10],
+            markPoint: {
+                data: [
+                    {type: 'max', name: 'Max'},
+                    {type: 'min', name: 'Min'}
+                ]
+            },
+            markLine: {
+                data: [
+                    {type: 'average', name: 'Avg'}
+                ]
+            }
+        },
+        {
+            name: '最低气温',
+            type: 'line',
+            data: [1, -2, 2, 5, 3, 2, 0],
+            markPoint: {
+                data: [
+                    {name: '周最低', value: -2, xAxis: 1, yAxis: -1.5}
+                ]
+            },
+            markLine: {
+                data: [
+                    {type: 'average', name: 'Avg'},
+                    [{
+                        symbol: 'none',
+                        x: '90%',
+                        yAxis: 'max'
+                    }, {
+                        symbol: 'circle',
+                        label: {
+                            position: 'start',
+                            formatter: 'Max'
+                        },
+                        type: 'max',
+                        name: 'Top'
+                    }]
+                ]
+            }
+        }
+    ]
+};
+</ExampleBaseOption>
+
 {{use: partial-component-id(prefix="#")}}
 
 ## show(boolean) = true
 
+<ExampleUIControlBoolean />
+
 是否显示工具栏组件。
 
 ## orient(string) = 'horizontal'
+
+<ExampleUIControlEnum options="vertical,horizontal" />
 
 工具栏 icon 的布局朝向。
 
@@ -67,13 +168,19 @@ ${name} icon 样式设置。由于 icon 的文本信息只在 icon hover 时候�
 
 ## itemSize(number) = 15
 
+<ExampleUIControlNumber min="0" default="15" />
+
 工具栏 icon 的大小。
 
 ## itemGap(number) = 10
 
+<ExampleUIControlNumber min="0" default="10" />
+
 工具栏 icon 每项之间的间隔。横向布局时为水平间隔，纵向布局时为纵向间隔。
 
 ## showTitle(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
 
 是否在鼠标 hover 的时候显示每个工具 icon 的标题。
 
@@ -113,18 +220,30 @@ ${name} icon 样式设置。由于 icon 的文本信息只在 icon hover 时候�
 保存为图片。
 
 #### type(string) = 'png'
+
+<ExampleUIControlEnum options="png,jpg" />
+
 保存的图片格式。
 
 + 如果 `renderer` 的类型在 [初始化图表](api.html#echarts.init) 时被设为 `'canvas'`（默认），则支持 `'png'`（默认）和 `'jpeg'`；
 + 如果 `renderer` 的类型在 [初始化图表](api.html#echarts.init) 时被设为 `'svg'`，则 `type` 只支持 `'svg'`（`'svg'` 格式的图片从 `v4.8.0` 开始支持）。
 
 #### name(string)
+
+<ExampleUIControlText />
+
 保存的文件名称，默认使用 [title.text](~title.text) 作为名称。
 
 #### backgroundColor(Color) = 'auto'
+
+<ExampleUIControlColor />
+
 保存的图片背景色，默认使用 [backgroundColor](~backgroundColor)，如果`backgroundColor`不存在的话会取白色。
 
 #### connectedBackgroundColor(Color) = '#fff'
+
+<ExampleUIControlColor />
+
 如果图表使用了 [echarts.connect](api.html#echarts.connect) 对多个图表进行联动，则在导出图片时会导出这些联动的图表。该配置项决定了图表与图表之间间隙处的填充色。
 
 #### excludeComponents(Array) = ['toolbox']
@@ -132,6 +251,9 @@ ${name} icon 样式设置。由于 icon 的文本信息只在 icon hover 时候�
 {{ use: feature-common(title="保存为图片") }}
 
 #### pixelRatio(number) = 1
+
+<ExampleUIControlNumber min="0.5" max="5" step="0.5" />
+
 保存图片的分辨率比例，默认跟容器相同大小，如果需要保存更高分辨率的，可以设置为大于 1 的值，例如 2。
 
 ### restore(Object)
@@ -141,7 +263,11 @@ ${name} icon 样式设置。由于 icon 的文本信息只在 icon hover 时候�
 ### dataView(Object)
 数据视图工具，可以展现当前图表所用的数据，编辑后可以动态更新。
 {{ use: feature-common(title="数据视图") }}
+
 #### readOnly(boolean) = false
+
+<ExampleUIControlBoolean />
+
 是否不可编辑（只读）。
 #### optionToContent(Function)
 ```js
@@ -181,17 +307,41 @@ optionToContent: function(opt) {
 
 #### lang(Array) = ['数据视图', '关闭', '刷新']
 数据视图上有三个话术，默认是`['数据视图', '关闭', '刷新']`。
+
 #### backgroundColor(string) = '#fff'
+
+<ExampleUIControlColor default="#fff" />
+
 数据视图浮层背景色。
+
 #### textareaColor(string) = '#fff'
+
+<ExampleUIControlColor default="#fff" />
+
 数据视图浮层文本输入区背景色。
+
 #### textareaBorderColor(string) = '#333'
+
+<ExampleUIControlColor default="#333" />
+
 数据视图浮层文本输入区边框颜色。
+
 #### textColor(string) = '#000'
+
+<ExampleUIControlColor default="#000" />
+
 文本颜色。
+
 #### buttonColor(string) = '#c23531'
+
+<ExampleUIControlColor default="#c23531" />
+
 按钮颜色。
+
 #### buttonTextColor(string) = '#fff'
+
+<ExampleUIControlColor default="#fff" />
+
 按钮文本颜色。
 
 ### dataZoom(Object)
@@ -199,6 +349,7 @@ optionToContent: function(opt) {
 {{ use: feature-common(title="数据区域缩放") }}
 
 #### filterMode(string) = 'filter'
+
 与 [dataZoom.filterMode](~dataZoom.filterMode) 含义和取值相同。
 
 #### xAxisIndex(number|Array|boolean)
@@ -344,3 +495,4 @@ option = {
     ...
 }
 ```
+

@@ -124,6 +124,9 @@ data: [
 {{ target: mark-area-data-item-item }}
 {{ if: ${hasType} }}
 #${prefix} type(string)
+
+<ExampleUIControlEnum options="min,max,average" />
+
 特殊的标注类型，用于标注最大值最小值等。
 
 **可选:**
@@ -133,6 +136,9 @@ data: [
 {{ /if }}
 {{ if: ${hasCoord} }}
 #${prefix} valueIndex(number)
+
+<ExampleUIControlNumber min="0" max="1" step="1"  />
+
 在使用 [type](~series-${seriesType}.markArea.data.type) 时有效，用于指定在哪个维度上指定最大值最小值，可以是 `0`（xAxis, radiusAxis），`1`（yAxis, angleAxis），默认使用第一个数值轴所在的维度。
 
 #${prefix} valueDim(string)
@@ -147,9 +153,15 @@ data: [
 标注名称，将会作为文字显示。
 
 #${prefix} x(number)
+
+<ExampleUIControlPercent default="0" />
+
 相对容器的屏幕 x 坐标，单位像素，支持百分比形式，例如 `'20%'`。
 
 #${prefix} y(number)
+
+<ExampleUIControlPercent default="0" />
+
 相对容器的屏幕 y 坐标，单位像素，支持百分比形式，例如 `'20%'`。
 
 #${prefix} value(number)

@@ -110,7 +110,7 @@ The behaviour when clicking a node. Optional values are:
 The treemap will be auto zoomed to a appropriate ratio when a node is clicked (when [nodeClick](~series-treemap.nodeClick) is set as `'zoomToNode'` and no drill down happens). This configuration item indicates the ratio.
 
 
-## levels(Array) = []
+## levels(Array)
 
 **Multiple Levels Configuration**
 

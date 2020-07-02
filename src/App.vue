@@ -25,9 +25,8 @@
         <el-main>
             <SearchResult v-if="shared.fuzzySearch"></SearchResult>
             <!-- Always create a new component if page is changed -->
-            <!-- <DocContent v-else-if="shared.currentPath" :key="pagePath"></DocContent>
-            <Home v-else></Home> -->
             <DocContent v-else :key="pagePath"></DocContent>
+            <!--  <Home v-else></Home> -->
         </el-main>
     </el-container>
 </template>
@@ -38,6 +37,7 @@ import DocNav from './components/DocNav.vue';
 import DocContent from './components/DocContent.vue';
 import Search from './components/Search.vue';
 import SearchResult from './components/SearchResult.vue';
+import LiveExample from './components/LiveExample.vue'
 import Home from './components/Home.vue';
 import {store, getPagePath} from './store';
 
@@ -62,6 +62,7 @@ export default {
         DocContent,
         Search,
         SearchResult,
+        LiveExample,
         Home
     }
 };
@@ -70,7 +71,26 @@ export default {
 <style lang="scss">
 
 // @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap');
+// @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap');
+
+@font-face {
+  font-family: 'iconfont';
+  src:  url('./asset/icon.eot');
+  src:  url('./asset/icon.eot#iefix') format('embedded-opentype'),
+    url('./asset/icon.ttf') format('truetype'),
+    url('./asset/icon.woff') format('woff'),
+    url('./asset/icon.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./asset/SourceCodePro-Regular.woff') format('woff');
+}
 
 .ec-doc {
     // font-family: "Helvetica Neue", "Segoe UI", Arial, "PingFang SC", STHeiti, "Microsoft Yahei", sans-serif;
@@ -93,7 +113,7 @@ export default {
 
     height: 100%;
 
-    .el-aside {
+    &>.el-aside {
         border-right: 1px solid #ddd;
 
         position: relative;
@@ -132,7 +152,7 @@ export default {
         }
     }
 
-    .el-main {
+    &>.el-main {
         text-align: center;
 
         &>div {
@@ -141,6 +161,11 @@ export default {
             text-align: left;
             min-width: 100%;
         }
+
+        // .live-example-bottom-container {
+        //     position: fixed;
+        //     height: ;
+        // }
     }
 }
 
@@ -150,5 +175,10 @@ export default {
             width: 20%;
         }
     }
+}
+
+// For dropdown select in global
+.el-select-dropdown.el-popper {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 </style>

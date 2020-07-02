@@ -103,10 +103,14 @@
 
 #${prefix} show(boolean) = true
 
+<ExampleUIControlBoolean default="true" />
+
 是否显示提示框组件，包括提示框浮层和 [axisPointer](~tooltip.axisPointer)。
 
 
 #${prefix} trigger(string) = 'item'
+
+<ExampleUIControlEnum default="item,axis,none" />
 
 触发类型。
 
@@ -142,6 +146,8 @@
 
 
 ##${prefix} type(string) = 'line'
+
+<ExampleUIControlEnum default="none,line,shadow,cross" />
 
 指示器类型。
 
@@ -340,17 +346,23 @@ formatter: function (params, ticket, callback) {
 
 #${prefix} borderColor(Color) = '#333'
 
+<ExampleUIControlColor default="#333" />
+
 {{use: partial-tooltip-scope-tip(scope=${scope})}}
 
 提示框浮层的边框颜色。
 
 #${prefix} borderWidth(number) = 0
 
+<ExampleUIControlNumber default="0" step="0.5" />
+
 {{use: partial-tooltip-scope-tip(scope=${scope})}}
 
 提示框浮层的边框宽。
 
 #${prefix} padding(number) = 5
+
+<ExampleUIControlVector dims="T,R,B,L" default="5,5,5,5" />
 
 {{use: partial-tooltip-scope-tip(scope=${scope})}}
 
