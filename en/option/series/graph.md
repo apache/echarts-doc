@@ -217,9 +217,9 @@ The label style of node in this category.
 
 For the situation where there are multiple links between nodes, the curveness of each links is automatically calculated.
 
-When set to Number, it indicates the length of the edge curveness array between two points, and the calculation result is given by the internal algorithm.
+When set to `Number`, it indicates the length of the edge curveness array between two points, and the calculation result is given by the internal algorithm.
 
-When set to Array, it means that the curveness array is directly specified, and the multilateral curvature is directly selected from the array.
+When set to `Array`, it means that the curveness array is directly specified, and the multilateral curvature is directly selected from the array.
 
 **Notice：** if [lineStyle.curveness](~series-graph.lineStyle.curveness) has been setted, this property is invalid.
 
