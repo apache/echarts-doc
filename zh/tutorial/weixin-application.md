@@ -24,7 +24,7 @@
 
 ## 引入组件
 
-微信小程序的项目创建可以参见[微信公众平台官方文档](https://mp.weixin.qq.com/debug/wxadoc/dev/quickstart/basic/getting-started.html)。
+微信小程序的项目创建可以参见[微信公众平台官方文档](https://developers.weixin.qq.com/miniprogram/dev/framework/quickstart/)。
 
 在创建项目之后，可以将下载的 [ecomfe/echarts-for-weixin](https://github.com/ecomfe/echarts-for-weixin) 项目完全替换新建的项目，然后将修改代码；或者仅拷贝 `ec-canvas` 目录到新建的项目下，然后做相应的调整。
 
@@ -83,7 +83,7 @@ Page({
 });
 ```
 
-这对于所有 ECharts 图表都是通用的，用户只需要修改上面 `option` 的内容，即可改变图表。`option` 的使用方法参见 [ECharts 配置项文档](${websitePath}/option.html)。对于不熟悉 ECharts 的用户，可以参见 [5 分钟上手 ECharts](${websitePath}/tutorial.html#5%20%E5%88%86%E9%92%9F%E4%B8%8A%E6%89%8B%20ECharts) 教程。
+这对于所有 ECharts 图表都是通用的，用户只需要修改上面 `option` 的内容，即可改变图表。`option` 的使用方法参见 [ECharts 配置项文档](option.html)。对于不熟悉 ECharts 的用户，可以参见 [5 分钟上手 ECharts](tutorial.html#5%20%E5%88%86%E9%92%9F%E4%B8%8A%E6%89%8B%20ECharts) 教程。
 
 完整的例子请参见 [ecomfe/echarts-for-weixin](https://github.com/ecomfe/echarts-for-weixin) 项目。
 

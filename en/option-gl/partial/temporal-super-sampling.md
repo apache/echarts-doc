@@ -16,4 +16,4 @@ The following is the difference between not opening `temporalSuperSampling` and 
 
 ##${prefix|default('#')} enable(boolean) = 'auto'
 
-Whether to enable temporal supersampling. By default, temporal supersampling is also turned on synchronously when [postEffect] (~${componentType}.postEffect) is turned on.
+Whether to enable temporal supersampling. By default, temporal supersampling is also turned on synchronously when [postEffect](~${componentType}.postEffect) is turned on.
