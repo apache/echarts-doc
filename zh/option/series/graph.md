@@ -269,7 +269,7 @@ edgeSymbol: ['circle', 'arrow']
 
 设置为 `Array` 时，表示直接指定曲率数组，多边曲率会从数组中直接按顺序选取。
 
-**注意：** 如果设置[lineStyle.curveness](~series-graph.lineStyle.curveness)则此属性失效。
+**注意：** 如果设置 [lineStyle.curveness](~series-graph.lineStyle.curveness) 则此属性失效。
 
 ## data(Array)
 
