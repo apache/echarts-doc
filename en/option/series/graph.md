@@ -213,6 +213,15 @@ The label style of node in this category.
 #### label(Object)
 {{ use:partial-label(prefix="####") }}
 
+## autoCurveness(number|Array) = 20
+
+For the situation where there are multiple links between nodes, the curveness of each link is automatically calculated.
+
+When set to `number`, it indicates the length of the edge curvenness array between two nodes, and the calculation result is given by the internal algorithm.
+
+When set to `Array`, it means that the curveness array is directly specified, and the multilateral curveness is directly selected from the array.
+
+**Notice：** if [lineStyle.curveness](~series-graph.lineStyle.curveness) has been set, this property is invalid.
 
 
 ## data(Array)
