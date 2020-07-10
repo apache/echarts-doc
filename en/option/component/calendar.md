@@ -16,7 +16,7 @@ Example of using effectScatter in calendar coordinates:
 Example of using graph in calendar coordinates:
 ~[600x600](${galleryViewPath}calendar-graph&edit=1&reset=1)
 
-Combination calendar coordinate system and charts, you may be able to create more wonderful effects.
+By combining calendar coordinate system and charts, you may be able to create more wonderful effects.
 
 [Display Text in Calendar](${galleryEditorPath}calendar-lunar&edit=1&reset=1),
 [Display Pies in Calendar](${galleryEditorPath}calendar-pie&edit=1&reset=1)
