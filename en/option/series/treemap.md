@@ -3,7 +3,7 @@
 
 # series.treemap(Object)
 
-[Treemap](https://en.wikipedia.org/wiki/Treemapping) is a common way to present "hierarchical data" or "tree data".It primarily highlights the important nodes at all hierarchies in 『Tree』with area.
+[Treemap](https://en.wikipedia.org/wiki/Treemapping) is a common way to present "hierarchical data" or "tree data". It primarily highlights the important nodes at all hierarchies in 『Tree』with area.
 
 
 
@@ -697,7 +697,7 @@ Stroke width of each rect.
 
 If all of the border/gaps are set with the same color, confusion might occur when rectangulars in different levels display at the same time.
 
-See the [example](${galleryEditorPath}doc-example/treemap-borderColor&edit=1&reset=1). Noticed that the child rectangles in the red area are in the deeper level than rectangles that are saparated by white gap. So in the red area, basically we set gap color with red, and use `borderColorSaturation` to lift the saturation.
+See the [example](${galleryEditorPath}doc-example/treemap-borderColor&edit=1&reset=1). Notice that the child rectangles in the red area are in the deeper level than rectangles that are saparated by white gap. So in the red area, basically we set gap color with red, and use `borderColorSaturation` to lift the saturation.
 
 
 
