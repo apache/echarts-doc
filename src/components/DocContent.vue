@@ -1,6 +1,7 @@
 <template>
     <div class="doc-main" v-loading="loading">
-        <div :class="[
+        <div ref="docContentDom"
+            :class="[
             'doc-content',
             shared.showOptionExample ? 'option-example-actived' : '',
             'option-example-' + shared.computedOptionExampleLayout + '-layout'
@@ -145,7 +146,10 @@ export default {
 
     methods: {
         resize() {
-           this.shared.optionExampleLayout === 'auto' && updateOptionExampleLayout('auto');
+            this.shared.optionExampleLayout === 'auto' && updateOptionExampleLayout('auto');
+            Vue.nextTick(() => {
+                this.updateDocContentMargin();
+            });
         },
 
         updateLazyload() {
@@ -241,12 +245,31 @@ export default {
 
         openOptionExample() {
             this.shared.showOptionExample = true;
+        },
+
+        updateDocContentMargin(isClose) {
+            if (!this.$refs.liveExample && !isClose) {
+                return;
+            }
+            // update margin of doc content
+            this.$refs.docContentDom.style.margin = '';
+            if (!isClose) {
+                const marginDir = this.shared.computedOptionExampleLayout;
+                if (marginDir !== 'right') {
+                    const marginStyleName = 'margin' + marginDir[0].toUpperCase() + marginDir.slice(1);
+                    const marginValue = this.$refs.liveExample.$el.clientHeight;
+                    this.$refs.docContentDom.style[marginStyleName] = marginValue + 'px';
+                }
+            }
         }
     },
 
     watch: {
         'shared.currentPath'(newVal) {
             this.updateCurrentPath(newVal);
+            Vue.nextTick(() => {
+                this.updateDocContentMargin();
+            });
         },
         'pageExamples'(newVal) {
             // { code, title, name }
@@ -258,12 +281,16 @@ export default {
                 this.shared.allOptionExamples = null;
             }
         },
-        // 'shared.currentOptionExampleLayout'() {
-        //     this.scrollTo(this.shared.currentPath);
-        // },
-        // 'shared.showOptionExample'() {
-        //     this.scrollTo(this.shared.currentPath);
-        // }
+        'shared.computedOptionExampleLayout'() {
+            Vue.nextTick(() => {
+                this.updateDocContentMargin();
+            });
+        },
+        'shared.showOptionExample'(newVal) {
+            Vue.nextTick(() => {
+                this.updateDocContentMargin(!newVal);
+            });
+        }
     }
 }
 </script>
@@ -309,10 +336,10 @@ export default {
 
     &.option-example-actived {
         &.option-example-top-layout {
-            margin-top: 42%;
+           // margin-top: 42%;
         }
         &.option-example-bottom-layout {
-            margin-bottom: 42%;
+           // margin-bottom: 42%;
         }
         &.option-example-right-layout {
             margin-right: 45%;
