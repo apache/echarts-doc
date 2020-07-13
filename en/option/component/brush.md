@@ -3,7 +3,7 @@
 
 # brush(Object)
 
-`brush` is an area-selecting component, with which user can select part of data from a chart to display in detail, or doing calculations with them.
+`brush` is an area-selecting component, with which user can select part of data from a chart to display in detail, or do calculations with them.
 
 <br>
 
@@ -28,7 +28,7 @@ Button for `brush` can be assigned in [`toolbox`](~toolbox.feature.brush.type) o
 
 The following types of brushes are supported: `rect`, `polygon`, `lineX`, `lineY`. See [brush.toolbox](~brush.toolbox) for more information.
 
-`keep` button can be used to toggle single or multiple selection.
+`keep` button can be used to toggle a single or multiple selections.
 
 + Only one select box is available in single selection mode, and the select-box can be removed by clicking on the blank area.
 + Multiple select boxes are available in multiple selection mode, and the select-boxes cannot be removed by click on the blank area. Instead, you need to click the *clear* button.
@@ -99,7 +99,7 @@ Refer to [brush.inBrush](~brush.inBrush) and [brush.outOfBrush](~brush.outOfBrus
 
 ---
 
-Here is the configuration in details.
+Here is the configuration in detail.
 
 
 {{use: partial-component-id(prefix="#")}}
@@ -162,7 +162,7 @@ Determines whether a selected box can be changed in shape or translated.
 
 ## brushStyle(Object)
 
-Defailt brush style, whose value is:
+Default brush style, whose value is:
 
 ```javascript
 {
@@ -194,7 +194,7 @@ Available visual effects include:
 
 {{use: partial-visual-map-visual-type}}
 
-In most cases, inBrush can be left unassigned, in which case default visual configuration is remained.
+In most cases, inBrush can be left unassigned, in which case default visual configuration remains.
 
 
 

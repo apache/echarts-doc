@@ -21,7 +21,7 @@ The following shows an example with startAngle of 45 deg.
 
 ## clockwise(boolean) = true
 
-Whether the positive position of axis is in clockwise. True for clockwise by default.
+Whether the positive position of axis is clockwise. True for clockwise by default.
 
 The following shows an example with clockwise as `false`.
 

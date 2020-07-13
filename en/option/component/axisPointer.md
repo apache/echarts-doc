@@ -66,7 +66,7 @@ As illustrated above, axes can be refered in these approaches in a link group:
 
 **How to link axes with different [axis.type](~xAxis.type)?**
 
-For example, the type of axisA is 'category', and the type of axisB type is 'time', we can write conversion function (mapper) in link group to convert values from an axie to another axis. For example:
+For example, the type of axisA is 'category', and the type of axisB type is 'time', we can write conversion function (mapper) in link group to convert values from an axis to another axis. For example:
 
 ```js
 link: [{

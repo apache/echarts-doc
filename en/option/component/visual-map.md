@@ -400,7 +400,7 @@ Inversely, when mouse hovers a graphical element of chart, its value label will 
 
 ## controller(Object)
 
-Property `inRange` and `outOfRange` can be set within property `controller`, which means those `inRange` and `outOfRange` are only used on the controller (`visualMap` component itself), but are not used on chart (series). This property is useful in some scenario that the view of controller need to be customized in detail.
+Property `inRange` and `outOfRange` can be set within property `controller`, which means those `inRange` and `outOfRange` are only used on the controller (`visualMap` component itself), but are not used on chart (series). This property is useful in some scenarios when the view of controller needs to be customized in detail.
 
 
 {{use: partial-visual-map-inRange-outOfRange(
@@ -448,7 +448,7 @@ border width of visualMap component, with unit: px.
 
 ## color(Array) = ['#bf444c', '#d88273', '#f6efa6']
 
-This property is remained only for compatibility with ECharts2, and is not recommended in ECharts3. It is recommended to configure color in [${visualMapName}.inRange](~${visualMapName}.inRange), or [${visualMapName}.outOfRange](~${visualMapName}.outOfRange) if needed.
+This property remains only for compatibility with ECharts2, and is not recommended in ECharts3. It is recommended to configure color in [${visualMapName}.inRange](~${visualMapName}.inRange), or [${visualMapName}.outOfRange](~${visualMapName}.outOfRange) if needed.
 
 If you persist in using it, the following issue should be noticed: the sequence of dataValues that are mapped to colorValues in property `color` is from `large` to `small`, whereas that in [${visualMapName}.inRange](~${visualMapName}.inRange) or [${visualMapName}.outOfRange](~${visualMapName}.outOfRange) is from `small` to `large`.
 

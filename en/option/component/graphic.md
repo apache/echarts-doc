@@ -3,7 +3,7 @@
 
 # graphic
 
-`graphic` component enable creating graphic elements in echarts.
+`graphic` component enables creating graphic elements in ECharts.
 
 Those graphic type are supported.
 
@@ -99,7 +99,7 @@ myChart.setOption({
 });
 ```
 
-Notice, when using `setOption` to modify existing elements, if id is not specified, new options will be mapped to exsiting elements by their order, which might bring unexpected result sometimes. So, generally, using id is recommended.
+Notice, when using `setOption` to modify existing elements, if id is not specified, new options will be mapped to existing elements by their order, which might bring unexpected result sometimes. So, generally, using id is recommended.
 
 
 

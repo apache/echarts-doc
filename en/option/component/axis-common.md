@@ -183,7 +183,7 @@ Color of axis label is set to be [axisLine.lineStyle.color](~${componentType}.ax
 {{ use: partial-version(version = "4.6.0") }}
 Settings related minor ticks.
 
-Note: `minorTick` is not available in the `cateogry` type axis.
+Note: `minorTick` is not available in the `category` type axis.
 
 Examples:
 

@@ -4,7 +4,7 @@
 
 **pictorial bar chart**
 
-Pictorial bar chart is a type of bar chart that custimzed glyph (like images, [SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData)) can be used instead of rectangular bar. This kind of chart is usually used in infographic.
+Pictorial bar chart is a type of bar chart that customized glyph (like images, [SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData)) can be used instead of rectangular bar. This kind of chart is usually used in infographic.
 
 Pictorial bar chart can only be used in [rectangular coordinate](~grid) with at least 1 category axis.
 
@@ -296,7 +296,7 @@ For example:
 
 #${prefix} symbolRepeatDirection(string) = 'start'
 
-When [symbolRepeat](~series-pictorialBar.symbolRepeat) is used, `symbolRepeatDirection` specifies the render order of the repeatd graphic elements. The setting is useful in these cases below:
+When [symbolRepeat](~series-pictorialBar.symbolRepeat) is used, `symbolRepeatDirection` specifies the render order of the repeated graphic elements. The setting is useful in these cases below:
 
 + If [symbolMargin](~series-pictorialBar.symbolMargin) is set as a negative value, repeated elements will overlap with each other. `symbolRepeatDirection` can be used to specify the order of overlap.
 
@@ -340,7 +340,7 @@ Whether to clip graphic elements.
 + `false`/null/undefined: The whole graphic elements represent the size of value.
 + `true`: The clipped graphic elements reperent the size of value.
 
-`symbolClip` is usually used in this case: both "amont value" and "current value" should be displayed. In this case, tow series can be used. One for background, using complete graphic elements, while another for current value, using clipped graphic elements.
+`symbolClip` is usually used in this case: both "amount value" and "current value" should be displayed. In this case, tow series can be used. One for background, using complete graphic elements, while another for current value, using clipped graphic elements.
 
 For example:
 ~[800x600](${galleryViewPath}doc-example/pictorialBar-clip&reset=1&edit=1)
@@ -426,7 +426,7 @@ For example:
 {{ if: ${useZ2} }}
 #${prefix} z(number)
 
-Specify the relationship of overlap between gaphic elements. A bigger value means higher.
+Specify the relationship of overlap between graphic elements. A bigger value means higher.
 
 {{ /if }}
 
