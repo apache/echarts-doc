@@ -249,6 +249,8 @@ option = {
 
 #${prefix} symbol(string) = 'circle'
 
+<ExampleUIControlIcon >
+
 图形类型。
 
 {{ use: partial-icon }}
