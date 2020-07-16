@@ -3,7 +3,7 @@
 
 # Add interaction to the chart component
 
-Echarts provides many interaction components besides chart. For example:
+Apache ECharts (incubating)<sup>TM</sup> provides many interaction components besides chart. For example:
 
 `legend component` [legend](option.html#legend)、`title component` [title](option.html#title)、`visualmap component` [visualMap](option.html#visualMap)、`datazoom component` [dataZoom](option.html#dataZoom)、`dataline component` [timeline](option.html#timeline)
 

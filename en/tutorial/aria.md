@@ -2,7 +2,7 @@
 
 # Supporting ARIA in Charts
 
-W3C defined the Accessible Rich Internet Applications Suite ([WAI-ARIA](https://www.w3.org/WAI/intro/aria)) to make Web content and Web applications more accessible to the disabled. From ECharts 4.0, we support ARIA by generating description for charts automatically.
+W3C defined the Accessible Rich Internet Applications Suite ([WAI-ARIA](https://www.w3.org/WAI/intro/aria)) to make Web content and Web applications more accessible to the disabled. From Apache ECharts (incubating)<sup>TM</sup> 4.0, we support ARIA by generating description for charts automatically.
 
 By default, ARIA is disabled. To enable it, you should set [aria.show](~aria.show) to be `true`. After enabling, it will generate descriptions based on charts, series, data, and so on. Users may change the generated description.
 

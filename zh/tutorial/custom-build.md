@@ -2,7 +2,7 @@
 
 # 自定义构建 ECharts
 
-一般来说，可以直接从 [CDN](https://www.jsdelivr.com/package/npm/echarts) 中获取构建后的 echarts，也可以从 [GitHub](https://github.com/apache/incubator-echarts/releases) 中的 `echarts/dist` 文件夹中获取构建好的 echarts，这都可以直接在浏览器端项目中使用。这些构建好的 echarts 提供了下面这几种定制：
+一般来说，可以直接从 [CDN](https://www.jsdelivr.com/package/npm/echarts) 中获取构建后的 Apache ECharts (incubating)<sup>TM</sup>，也可以从 [GitHub](https://github.com/apache/incubator-echarts/releases) 中的 `echarts/dist` 文件夹中获取构建好的 echarts，这都可以直接在浏览器端项目中使用。这些构建好的 echarts 提供了下面这几种定制：
 
 + 完全版：`echarts/dist/echarts.js`，体积最大，包含所有的图表和组件，所包含内容参见：`echarts/echarts.all.js`。
 + 常用版：`echarts/dist/echarts.common.js`，体积适中，包含常见的图表和组件，所包含内容参见：`echarts/echarts.common.js`。

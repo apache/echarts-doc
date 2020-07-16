@@ -3,7 +3,7 @@
 
 # 在图表中加入交互组件
 
-除了图表外 ECharts 中，提供了很多交互组件。例如：
+除了图表外 Apache ECharts (incubating)<sup>TM</sup> 中，提供了很多交互组件。例如：
 
 `图例组件` [legend](option.html#legend)、`标题组件` [title](option.html#title)、`视觉映射组件` [visualMap](option.html#visualMap)、`数据区域缩放组件` [dataZoom](option.html#dataZoom)、`时间线组件` [timeline](option.html#timeline)
 

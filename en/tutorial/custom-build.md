@@ -3,7 +3,7 @@
 
 # Create Custom Build of ECharts
 
-In most cases, ECharts builds can be get from  [CDN](https://www.jsdelivr.com/package/npm/echarts) or from the `echarts/dist` directory in our [GitHub project](https://github.com/apache/incubator-echarts/releases), where
+In most cases, Apache ECharts (incubating)<sup>TM</sup> builds can be get from  [CDN](https://www.jsdelivr.com/package/npm/echarts) or from the `echarts/dist` directory in our [GitHub project](https://github.com/apache/incubator-echarts/releases), where
 these pre-builds are provided:
 
 + Complete verion: `echarts/dist/echarts.js`, including all charts and components (see `echarts/echarts.all.js` for detail), but has maximum file size.

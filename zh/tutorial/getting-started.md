@@ -3,7 +3,7 @@
 
 ## 获取 ECharts
 
-你可以通过以下几种方式获取 ECharts。
+你可以通过以下几种方式获取 Apache ECharts (incubating)<sup>TM</sup>。
 
 * 从 [Apache ECharts (incubating) 官网下载界面](${websitePath}/zh/download.html) 获取官方源码包后构建。
 

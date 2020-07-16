@@ -4,7 +4,7 @@
 
 ## Asynchronous Loading
 
-Data in [Get started](~getting-started) is directly filled in `setOption` after initialization, but in some cases, data may be filled after asynchronous loading. Data updating asynchronously in `ECharts` is very easy. After initialization, you can pass in data and configuration item through `setOption` after data obtained through  jQuery and other tools at any time.
+Data in [Get started](~getting-started) is directly filled in `setOption` after initialization, but in some cases, data may be filled after asynchronous loading. Data updating asynchronously in Apache ECharts (incubating)<sup>TM</sup> is very easy. After initialization, you can pass in data and configuration item through `setOption` after data obtained through  jQuery and other tools at any time.
 
 ```js
 var myChart = echarts.init(document.getElementById('main'));
@@ -55,7 +55,7 @@ myChart.setOption({
     }]
 });
 
-// Asynchronous data loading 
+// Asynchronous data loading
 $.get('data.json').done(function (data) {
     // fill in data
     myChart.setOption({
@@ -71,15 +71,15 @@ $.get('data.json').done(function (data) {
 });
 ```
 
-For example: 
+For example:
 
 ~[400x300](${galleryViewPath}doc-example/tutorial-async&edit=1&reset=1)
 
-In ECharts, updating data need to find the corresponding series through `name`. In the above example, updating can be performed correctly according to series order if `name` is not defined. But in most cases, it is recommended to update data with series `name` information. 
+In ECharts, updating data need to find the corresponding series through `name`. In the above example, updating can be performed correctly according to series order if `name` is not defined. But in most cases, it is recommended to update data with series `name` information.
 
 ## Loading Animation
 
-If data loading time is too long, an empty axis on the canvas may confuse users. In this case, a loading animation is needed to tell the user that it's still loading. 
+If data loading time is too long, an empty axis on the canvas may confuse users. In this case, a loading animation is needed to tell the user that it's still loading.
 
 ECharts provides a simple loading animation by default. You only need [showLoading](api.html#echartsInstance.showLoading) to show, and then use [hideLoading](api.html#echartsInstance.hideLoading) to hide loading animation after data loading.
 ```js
@@ -90,7 +90,7 @@ $.get('data.json').done(function (data) {
 });
 ```
 
-Effects are as followed: 
+Effects are as followed:
 
 ~[400x300](${galleryViewPath}doc-example/tutorial-loading&edit=1&reset=1)
 
@@ -98,7 +98,7 @@ Effects are as followed:
 
 ECharts is driven by data. Change of data changes the presentation of chart, therefore, implementing dynamic data updating is extremely easy.
 
-All data updating are through [setOption](~api.html#echartsInstance.setOption). You only need to get data as you wish, fill in data to [setOption](~api.html#echartsInstance.setOption) without considering the changes brought by data, ECharts will find the difference between two group of data and present the difference through proper animation. 
+All data updating are through [setOption](~api.html#echartsInstance.setOption). You only need to get data as you wish, fill in data to [setOption](~api.html#echartsInstance.setOption) without considering the changes brought by data, ECharts will find the difference between two group of data and present the difference through proper animation.
 
 >In ECharts 3, addData in ECharts 2 is removed.If a single data needs to be added, you can first data.push(value) and then setOption.
 
