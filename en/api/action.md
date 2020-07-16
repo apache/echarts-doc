@@ -92,8 +92,30 @@ dispatchAction({
 
 **EVENT:** [legendselectchanged](~events.legendselectchanged)
 
+### legendAllSelect(Action)
+Selects all legends.
+
+```js
+dispatchAction({
+    type: 'legendAllSelect'
+})
+```
+
+**EVENT:** [legendselectall](~events.legendselectall)
+
+### legendInverseSelect(Action)
+Inverses all legends.
+
+```js
+dispatchAction({
+    type: 'legendInverseSelect'
+})
+```
+
+**EVENT:** [legendinverseselect](~events.legendinverseselect)
+
 ### legendScroll(Action)
-Controll the scrolling of legend. It works when [legend.type](option.html#legend.type) is `'scroll'`.
+Control the scrolling of legend. It works when [legend.type](option.html#legend.type) is `'scroll'`.
 ```js
 dispatchAction({
     type: 'legendScroll',
@@ -313,13 +335,16 @@ Highlight the specified node and all of its adjacent nodes.
 dispatchAction({
     type: 'focusNodeAdjacency',
 
-    // Use seriesId or seriesIndex or seriesName to location the series.
+    // Use seriesId or seriesIndex or seriesName to specify
+    // the target series.
     seriesId: 'xxx',
     seriesIndex: 0,
     seriesName: 'nnn',
 
-    // Use dataIndex to location the node.
+    // Use either `dataIndex` or `edgeDataIndex` to specify
+    // the target node or target edge.
     dataIndex: 12
+    edgeDataIndex: 5
 })
 ```
 
@@ -351,7 +376,8 @@ Event [unfocusNodeAdjacency](~event.unfocusNodeAdjacency) will be thrown finally
 
 ### brush
 
-This action sets select-boxes (areas) in this chart. For example:
+This action is dispatched when the "brush" behavior is performing.
+It sets select-boxes (areas) in this chart. For example:
 
 ```javascript
 myChart.dispatchAction({
@@ -408,6 +434,11 @@ The difference between `range` and `coordRange` is:
 + If the area is "coordinate system area" (i.e., `geoIndex` or `xAxisIndex` or `yAxisIndex` is specified), we should use `coordRange`.
 + The unit of `range` is "pixel", while the unit of `coordRange` should be the save as the unit of the coordinate system. For example, in geo coordinate system, `coordRange` should be [`longitude`, `latitude`], and in cartesian, it should be [`axis A value`, `axis B value`, `axis C value`, ...].
 
+
+### brushEnd
+{{ use: partial-version(version = "4.5.0") }}
+This action is dispatched when the "brush" behavior finished.
+The parameters are the same as [action brush](~action.brush.brush).
 
 
 ### takeGlobalCursor

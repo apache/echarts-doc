@@ -19,7 +19,7 @@
 
 ## 颜色主题（Theme）
 
-最简单的更改全局样式的方式，是直接采用颜色主题（theme）。例如，在 [示例集合](http://echarts.baidu.com/examples/index.html) 中，可以选择 “Theme”，直接看到采用主题的效果。
+最简单的更改全局样式的方式，是直接采用颜色主题（theme）。例如，在 [示例集合](${websitePath}/examples/zh/index.html) 中，可以选择 “Theme”，直接看到采用主题的效果。
 
 ECharts4 开始，除了一贯的默认主题外，新内置了两套主题，分别为 `'light'` 和 `'dark'`。可以这么来使用它们：
 
@@ -33,7 +33,7 @@ var chart = echarts.init(dom, 'light');
 var chart = echarts.init(dom, 'dark');
 ```
 
-其他的主题，没有内置在 ECharts 中，需要自己加载。这些主题可以在 [主题编辑器](http://echarts.baidu.com/theme-builder/) 里访问到。也可以使用这个主题编辑器，自己编辑主题。下载下来的主题可以这样使用：
+其他的主题，没有内置在 ECharts 中，需要自己加载。这些主题可以在 [主题编辑器](https://www.echartsjs.com/theme-builder/) 里访问到。也可以使用这个主题编辑器，自己编辑主题。下载下来的主题可以这样使用：
 
 如果主题保存为 JSON 文件，那么可以自行加载和注册，例如：
 ```js

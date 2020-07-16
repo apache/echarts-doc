@@ -92,6 +92,26 @@ dispatchAction({
 
 **EVENT:** [legendselectchanged](~events.legendselectchanged)
 
+### legendAllSelect(Action)
+将图例全选。
+```js
+dispatchAction({
+    type: 'legendAllSelect'
+})
+```
+
+**EVENT:** [legendselectall](~events.legendselectall)
+
+### legendInverseSelect(Action)
+将图例反选。
+```js
+dispatchAction({
+    type: 'legendInverseSelect'
+})
+```
+
+**EVENT:** [legendinverseselect](~events.legendinverseselect)
+
 ### legendScroll(Action)
 控制图例的滚动。当 [legend.type](option.html#legend.type) 为 `'scroll'` 时有效。
 ```js
@@ -324,13 +344,14 @@ dispatchAction({
 dispatchAction({
     type: 'focusNodeAdjacency',
 
-    // 使用 seriesId 或 seriesIndex 或 seriesName 来定位 series.
+    // 使用 seriesId 或 seriesIndex 或 seriesName 来指定 series.
     seriesId: 'xxx',
     seriesIndex: 0,
     seriesName: 'nnn',
 
-    // 使用 dataIndex 来定位节点。
-    dataIndex: 12
+    // 使用 dataIndex 来指定目标节点，或者使用 edgeDataIndex 来指定目标边。
+    dataIndex: 12,
+    edgeDataIndex: 5
 })
 ```
 
@@ -360,7 +381,8 @@ dispatchAction({
 [区域选择](option.html#brush)相关的行为。
 
 ### brush
-触发此 action 可设置或删除 chart 中的选框，例如：
+“刷选”动作进行中时，会触发此 action。
+此 action 能设置或删除 chart 中的选框，例如：
 
 ```javascript
 myChart.dispatchAction({
@@ -410,6 +432,12 @@ myChart.dispatchAction({
 + 当此选框为『全局选框』时，使用 `range`。
 + 当此选框为『坐标系选框』时（即指定了 `geoIndex` 或 `xAxisIndex` 或 `yAxisIndex` 时），使用 `coordRange`。
 + `range` 的单位为 *像素*，`coordRange` 的单位为 *坐标系单位*，比如 geo 中，`coordRange` 单位为经纬度，直角坐标系中，coordRange 单位为对应轴的数据的单位。
+
+### brushEnd
+{{ use: partial-version(version = "4.5.0") }}
+“刷选” 动作完毕时，会自动触发此 action。
+其参数和 [brush action](~action.brush.brush) 完全相同。
+
 
 ### takeGlobalCursor
 

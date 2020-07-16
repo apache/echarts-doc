@@ -1,3 +1,44 @@
+## v4.8.0
+<div class="time">2020-05-25</div>
+
++ [Feature] [toolbox] 支持 SVG 渲染模式下 toolbox 下载成 SVG 文件。 [#12144](https://github.com/apache/incubator-echarts/pull/12144) ([Zhang Wenli](https://github.com/Ovilia))
+
++ [Feature] 加载动画支持更多配置参数。 [#12414](https://github.com/apache/incubator-echarts/pull/12414) ([Yu Feng](https://github.com/yufeng04))
+
++ [Feature] `symbolRotate` 支持回调函数。 [#12348](https://github.com/apache/incubator-echarts/pull/12348) [#12354](https://github.com/apache/incubator-echarts/pull/12354) ([plainheart](https://github.com/plainheart))
+
++ [Feature] [axis] 坐标轴中的 `min`, `max` 在回调函数的时候，可以返回 null 空继续使用默认值。 [#11829](https://github.com/apache/incubator-echarts/pull/12215) ([Su Siwen](https://github.com/susiwen8)), [#12371](https://github.com/apache/incubator-echarts/pull/12371) ([Su Shuang](https://github.com/100pah))
+
++ [Feature] [geo] 添加 `nameProperty` 配置支持指定 GeoJSON 数据中的名字字段。 [#12156](https://github.com/apache/incubator-echarts/pull/12156)  ([alex2wong](https://github.com/alex2wong))
+
++ [Fix] [sankey] 修复桑基图边无法触发 tooltip 的问题。 [#12011](https://github.com/apache/incubator-echarts/pull/12011) ([Su Siwen](https://github.com/susiwen8))
+
++ [Fix] [sankey] 修复桑基图在边数据为 0 的时候节点无法显示的问题。 [#12191](https://github.com/apache/incubator-echarts/pull/12191) ([Su Siwen](https://github.com/susiwen8)), [#12472](https://github.com/apache/incubator-echarts/pull/12472) ([Su Shuang](https://github.com/100pah))
+
++ [Fix] [treemap] 修复矩形树图中回调函数参数不全的问题. [#11854](https://github.com/apache/incubator-echarts/pull/11854) ([Su Siwen](https://github.com/susiwen8), [Su Shuang](https://github.com/100pah))
+
++ [Fix] [calendar] 修复夏令制时区用户使用日历图的问题. [#12172](https://github.com/apache/incubator-echarts/pull/12172) ([mikeyshing88](https://github.com/mikeyshing88)), [#12466](https://github.com/apache/incubator-echarts/pull/12466) ([Su Shuang](https://github.com/100pah))
+
++ [Fix] [line] 修复带有阴影和渐变的折线图在数据大范围变动时动画可能导致 safari 崩溃的问题。 [#12410](https://github.com/apache/incubator-echarts/pull/12410) ([Shen Yi](https://github.com/pissang))
+
++ [Fix] [line] 修复 chromium 中尺寸大于 18000px 的图表 clip 的问题. [#12393](https://github.com/apache/incubator-echarts/pull/12393) ([Zhan Fang](https://github.com/zhanfang))
+
++ [Fix] [pie] 修复饼图中关闭动画后标签可能不显示的问题. [#12243](https://github.com/apache/incubator-echarts/issues/12243) ([Zhang Wenli](https://github.com/Ovilia))
+
++ [Fix] [title] 修复链接使用`'_blank'`潜在的安全问题. [#12380](https://github.com/apache/incubator-echarts/issues/12380) ([Su Siwen](https://github.com/susiwen8))
+
++ [Fix] [geo] 修复通过地图中通过`setOption`修改`center`， `zoom`属性没有动画过渡的问题. [#12340](https://github.com/apache/incubator-echarts/pull/12340) ([Zhang Wenli](https://github.com/Ovilia))
+
++ [Fix] [heatmap] 优化热力图的显示，移除可能出现的 1 像素白线. [#12342](https://github.com/apache/incubator-echarts/pull/12342) ([SnailSword](https://github.com/SnailSword))
+
++ [Fix] [sunburst] 修复旭日图中默认的淡出样式无效的问题. [#12264](https://github.com/apache/incubator-echarts/pull/12264) ([Shen Yi](https://github.com/pissang))
+
++ [Fix] [visualMap] 开启的 `minOpen` 和 `maxOpen` 现在改为不被计入分段列表. [#12147](https://github.com/apache/incubator-echarts/pull/12147) ([Su Siwen](https://github.com/susiwen8))
+
++ [Fix] [bmap] [extension] 修复在百度地图扩展中使用渐进渲染中，可能无法清除图表的问题. ([Shen Yi](https://github.com/pissang))
+
++ [Fix] [bmap] [extension] 修复多余的刷新问题.[#12411](https://github.com/apache/incubator-echarts/pull/12411) ([Shen Yi](https://github.com/pissang))
+
 ## v4.7.0
 <div class="time">2020-03-18</div>
 
@@ -90,7 +131,7 @@
 
 + [Feature] Add `friction` option in force layout of `graph`. [#11276](https://github.com/apache/incubator-echarts/pull/11276) ([Shen Yi](https://github.com/pissang))
 
-+ [Feature] Add `ignoreFoceLayout` option in the `graph` links. [#11445](https://github.com/apache/incubator-echarts/pull/11445) ([TYzzt](https://github.com/TYzzt))
++ [Feature] Add `ignoreForceLayout` option in the `graph` links. [#11445](https://github.com/apache/incubator-echarts/pull/11445) ([TYzzt](https://github.com/TYzzt))
 
 + [Feature] Add `axisType` in the indicator of `radar` series. [#11324](https://github.com/apache/incubator-echarts/pull/11324)([zifix](https://github.com/zifix))
 

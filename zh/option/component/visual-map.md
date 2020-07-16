@@ -56,11 +56,6 @@ series: {
 
 `visualMap` 是由 ECharts2 中的 `dataRange` 组件改名以及扩展而来。ECharts3里 `option` 中的 `dataRange` 配置项仍然被兼容，会自动转换成 `visualMap` 配置项。在option中推荐写 `visualMap` 而非 `dataRange`。
 
-<br>
-**✦ 以下是visualMap各组件的详细介绍 ✦**
-
-<br>
-<br>
 
 
 {{import: component-visual-map-continuous}}
@@ -176,11 +171,11 @@ visual 范围也可以反向，例如上例，可以设定 `opacity` 范围为 `
 
 visual value 的取值范围：
 
-+ `透明度（opacity）`、`颜色透明度（colorAlpha）`、`颜色明暗度（colorLightness）`、`颜色饱和度（colorSaturation）`，`visual value`
++ `透明度（opacity）`、`颜色透明度（colorAlpha）`、`颜色明暗度（colorLightness）`、`颜色饱和度（colorSaturation）`、`visual value`
 
     取值范围是 `[0, 1]`。
 
-+ `色调（colorHue）`
++ `色调（colorHue）`：
 
     取值范围是 `[0, 360]`。
 

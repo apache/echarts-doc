@@ -48,6 +48,160 @@ treemap 首先是把数值映射到『面积』这种视觉元素上。
 <br>
 <br>
 
+<ExampleBaseOption name="treemap" title="基础矩形树图" title-en="Basic Treemap">
+const data = [{
+    name: 'Food',
+    children: [{
+        value: 3,
+        name: 'Fruit',
+        children: [{
+            value: 1,
+            name: 'Apple'
+        }, {
+            value: 2,
+            name: 'Orange',
+            children: [{
+                name: 'Seville Orange',
+                value: 1
+            }, {
+                name: 'Blood Orange',
+                value: 1
+            }]
+        }]
+    }, {
+        value: 9,
+        name: 'Meat',
+        children: [{
+            value: 6,
+            name: 'Beaf',
+            children: [{
+                name: 'Sirloin',
+                value: 1
+            }, {
+                name: 'Rib',
+                value: 1
+            }, {
+                name: 'Chuck',
+                value: 1
+            }, {
+                name: 'Shank',
+                value: 1
+            }]
+        }, {
+            value: 2,
+            name: 'Chicken',
+            children: [{
+                name: 'Wings',
+                value: 1
+            }]
+        }, {
+            name: 'Breast',
+            value: 1
+        }]
+    }]
+}, {
+    value: 6,
+    name: 'Drinks',
+    children: [{
+        value: 3,
+        name: 'Wine',
+        children: [{
+            name: 'USA',
+            value: 2
+        }, {
+            name: 'Europe',
+            children: [{
+                name: 'Germany',
+                value: 1
+            }]
+        }]
+    }, {
+        name: 'Soft Drink',
+        children: [{
+            value: 3,
+            name: 'Juice',
+            children: [{
+                name: 'Apple Juice',
+                value: 1
+            }, {
+                name: 'Orange Juice',
+                value: 2
+            }]
+        }]
+    }]
+}, {
+    value: 6,
+    name: 'Fashion',
+    children: [{
+        name: 'Clothing',
+        children: [{
+            name: 'Shirts',
+            value: 1
+        }, {
+            name: 'Jackets',
+            value: 3,
+            children: [{
+                name: 'Men',
+                value: 1
+            }, {
+                name: 'Woman',
+                value: 1
+            }]
+        }, {
+            value: 2,
+            name: 'Coats',
+            children: [{
+                name: 'Men',
+                value: 1
+            }, {
+                name: 'Woman',
+                value: 1
+            }]
+        }]
+    }]
+}, {
+    name: 'Computers',
+    children: [{
+        name: 'Components',
+        value: 4,
+        children: [{
+            name: 'Barebones',
+            value: 1
+        }, {
+            value: 2,
+            name: 'External',
+            children: [{
+                name: 'Hard Drives',
+                value: 2
+            }]
+        }, {
+            name: 'Monitors',
+            value: 1
+        }]
+    }, {
+        value: 3,
+        name: 'Other',
+        children: [{
+            name: 'USB',
+            value: 1,
+        }, {
+            name: 'Cases'
+        }, {
+            name: 'Sound Cards',
+            value: 1
+        }]
+    }]
+}];
+
+const option = {
+    series: {
+        type: 'treemap',
+        data: data
+    }
+};
+
+</ExampleBaseOption>
+
 ## type(string) = 'treemap'
 
 {{use: partial-component-id(prefix="#")}}
@@ -66,12 +220,16 @@ treemap 首先是把数值映射到『面积』这种视觉元素上。
 
 ## squareRatio(number)
 
+<ExampleUIControlNumber min="0.1" default="0.75" step="0.1" />
+
 期望矩形长宽比率。布局计算时会尽量向这个比率靠近。
 
 默认为黄金比：`0.5 * (1 + Math.sqrt(5))`。
 
 
 ## leafDepth(number) = null
+
+<ExampleUIControlNumber min="1" step="1" />
 
 设置了 `leafDepth` 后，下钻（`drill down`）功能开启。`drill down` 功能即点击后才展示子层级。
 
@@ -89,6 +247,8 @@ treemap 首先是把数值映射到『面积』这种视觉元素上。
 当节点可以下钻时的提示符。只能是字符。
 
 ## roam(boolean|string) = true
+
+<ExampleUIControlEnum options="true,false,scale,move">
 
 是否开启拖拽漫游（移动和缩放）。可取值有：
 
@@ -110,10 +270,12 @@ treemap 首先是把数值映射到『面积』这种视觉元素上。
 
 ## zoomToNodeRatio(number) = 0.32*0.32
 
+<ExampleUIControlNumber min="0" default="0.1" step="0.01" />
+
 点击某个节点，会自动放大那个节点到合适的比例（节点占可视区域的面积比例），这个配置项就是这个比例。
 
 
-## levels(Array) = []
+## levels(Array)
 
 **多层配置**
 
@@ -232,6 +394,8 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 ### show(boolean) = true
 
+<ExampleUIControlBoolean default="true" />
+
 是否显示面包屑。
 
 
@@ -246,10 +410,14 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 ### height(number) = 22
 
+<ExampleUIControlNumber min="0" default="22" step="1" />
+
 面包屑的高度。
 
 
 ### emptyItemWidth(number) = 25
+
+<ExampleUIControlNumber min="0" default="25" step="1" />
 
 当面包屑没有内容时候，设个最小宽度。
 
@@ -421,11 +589,15 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 #${prefix} visualMin(number) = null
 
+<ExampleUIControlNumber default="0" />
+
 当前层级的最小 value 值。如果不设置则自动统计。
 
 手动指定 `visualMin`、`visualMax` ，即手动控制了 visual mapping 的值域（当 [colorMappingBy](~series-treemap.levels.colorMappingBy) 为 `'value'` 时有意义）。
 
 #${prefix} visualMax(number) = null
+
+<ExampleUIControlNumber default="100" />
 
 当前层级的最大 value 值。如果不设置则自动统计。
 
@@ -462,6 +634,8 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 #${prefix} colorMappingBy(string) = 'index'
 
+<ExampleUIControlEnum options="index,value,id" />
+
 表示同一层级节点，在颜色列表中（参见 `color` 属性）选择时，按照什么来选择。可选值：
 
 * `'value'`：
@@ -488,6 +662,8 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 #${prefix} visibleMin(number) = 10
 
+<ExampleUIControlNumber default="10" min="0" />
+
 如果某个节点的矩形的面积，小于这个数值（单位：px平方），这个节点就不显示。
 
 如果不加这个限制，很小的节点会影响显示效果。
@@ -497,6 +673,8 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 
 #${prefix} childrenVisibleMin(number) = null
+
+<ExampleUIControlNumber default="10" min="0" step="0.5" />
 
 如果某个节点的矩形面积，小于这个数值（单位：px平方），则不显示这个节点的子节点。
 
@@ -547,6 +725,8 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 ###${prefix} height(number) = 20
 
+<ExampleUIControlNumber default="20" min="0" step="0.5" />
+
 父节点标签区的高度。
 
 #${prefix} itemStyle(Object)
@@ -591,14 +771,9 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 {{target: partial-treemap-prop-location-desc}}
 <br>
 > 注：treemap中 `${name}` 属性可能在多处地方存在：
-
-{{ if: ${name} !== 'color' }}
-> * 可以存在于 [sereis-treemap](~series-treemap) 根下，表示本系列全局的统一设置。
-
-{{ /if }}
-> * 可以存在于 [series-treemap.levels](~series-treemap.levels) 的每个数组元素中，表示树每个层级的统一设置。
-
-> * 存在于 [series-treemap.data](~series-treemap.data) 的每个节点中，表示每个节点的特定设置。
+{{ if: ${name} !== 'color' }}> * 于 [sereis-treemap](~series-treemap) 根下，表示本系列全局的统一设置。{{ /if }}
+> * 于 [series-treemap.levels](~series-treemap.levels) 的每个数组元素中，表示树每个层级的统一设置。
+> * 于 [series-treemap.data](~series-treemap.data) 的每个节点中，表示每个节点的特定设置。
 
 
 
@@ -617,26 +792,35 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 #${prefix} color(Color) =  null
 
+<ExampleUIControlColor />
+
 矩形的颜色。默认从全局调色盘 [option.color](~color) 获取颜色。
 
 {{if: ${itemStyleType} === 'normal' }}
 
 #${prefix} colorAlpha(number) = null
 
+<ExampleUIControlNumber step="0.01" min="0" max="1" default="1" />
+
 矩形颜色的透明度。取值范围是 0 ~ 1 之间的浮点数。
 
 
 #${prefix} colorSaturation(number) = null
 
+<ExampleUIControlNumber step="0.01" min="0" max="1" default="0.5" />
+
 矩形颜色的饱和度。取值范围是 0 ~ 1 之间的浮点数。
 
-
 #${prefix} borderWidth(number) = 0
+
+<ExampleUIControlNumber step="0.5" min="0" />
 
 矩形边框线宽。为 0 时无边框。而矩形的内部子矩形（子节点）的间隔距离是由 [gapWidth](~series-treemap.levels.gapWidth) 指定的。
 
 
 #${prefix} gapWidth(number) = 0
+
+<ExampleUIControlNumber step="0.5" min="0" />
 
 矩形内部子矩形（子节点）的间隔距离。
 
@@ -645,10 +829,14 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 #${prefix} borderColor(Color) = '#fff',
 
+<ExampleUIControlColor default="#fff" />
+
 矩形边框 和 矩形间隔（gap）的颜色。
 
 
 #${prefix} borderColorSaturation(Color) = null
+
+<ExampleUIControlNumber step="0.01" min="0" max="1" default="0.5" />
 
 矩形边框的颜色的饱和度。取值范围是 0 ~ 1 之间的浮点数。
 
@@ -659,13 +847,9 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 <br>
 {{ use: partial-treemap-borderColor-setting(galleryEditorPath=${galleryEditorPath}) }}
 
-#${prefix} strokeColor(Color) = null
-
-每个矩形的描边颜色。
-
-#${prefix} strokeWidth(number) = null
-
-每个矩形的描边宽度。
+{{ use:partial-style-shadow-opacity(
+    prefix=${prefix}
+) }}
 
 {{/if }}
 

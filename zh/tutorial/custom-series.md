@@ -9,13 +9,12 @@ echarts 为什么会要支持 `自定义系列` 呢？echarts 内置支持的图
 **例如，下面的例子使用 custom series 扩展出了 x-range 图：**
 ~[800x500](${galleryViewPath}custom-profile&reset=1&edit=1)
 
-**更多的例子参见：[custom examples](${websitePath}/examples.html#chart-type-custom)**
+**更多的例子参见：[custom examples](${websitePath}/examples/zh/index.html#chart-type-custom)**
 
 下面来介绍开发者怎么使用 [自定义系列（custom series）](option.html#series-custom)。
 
 
-<br>
-<h2>（一）renderItem 方法</h2>
+## （一）renderItem 方法
 
 开发者自定义的图形元素渲染逻辑，是通过书写 `renderItem` 函数实现的，例如：
 
@@ -111,8 +110,7 @@ var option = {
 
 
 
-<br>
-<h2>（二）使坐标轴的范围自适应数据范围</h2>
+## （二）使坐标轴的范围自适应数据范围
 
 在 [直角坐标系（grid）](option.html#grid)、[极坐标系（polar）](option.html#polar) 中都有坐标轴。坐标轴的刻度范围需要自适应当前显示出的数据的范围，否则绘制出的图形会超出去。所以，例如，在 [直角坐标系（grid）](option.html#grid) 中，使用自定义系列的开发者，需要设定，`data` 中的哪些维度会对应到 `x` 轴上，哪些维度会对应到 `y` 轴上。这件事通过 [encode](option.html#series-custom.encode) 来设定。例如：
 
@@ -142,8 +140,7 @@ option = {
 
 
 
-<br>
-<h2>（三）设定 tooltip</h2>
+## （三）设定 tooltip
 
 当然，使用 [tooltip.formatter](option.html#tooltip.formatter) 可以任意定制 tooltip 中的内容。但是还有更简单的方法，通过[encode](option.html#series-custom.encode) 和 [dimensions](option.html#series-custom.dimensions) 来设定：
 
@@ -185,8 +182,7 @@ option = {
 下面介绍几个其他细节要点。
 
 
-<br>
-<h2>（四）超出坐标系范围的截取</h2>
+## （四）超出坐标系范围的截取
 
 与 [dataZoom](option.html#dataZoom) 结合使用的时候，常常使用会设置 [dataZoom.filterMode](option.html#dataZoom.filterMode) 为 'weakFilter'。这个设置的意思是：当 `dataItem` 部分超出坐标系边界的时候，`dataItem` 不会整体被过滤掉。例如：
 
@@ -221,8 +217,7 @@ option = {
 
 
 
-<br>
-<h2>（五）关于 dataIndex</h2>
+## （五）关于 dataIndex
 
 开发者如果使用到的话应注意，[renderItem.arguments.params](option.html#series-custom.renderItem.arguments.params) 中的 `dataIndex` 和 `dataIndexInside` 是有区别的：
 
@@ -233,8 +228,7 @@ option = {
 
 
 
-<br>
-<h2>（六）事件监听</h2>
+## （六）事件监听
 
 
 ```js
@@ -268,15 +262,14 @@ chart.on('click', {element: 'aaa'}, function (params) {
 
 
 
+## （七）自定义矢量图形
+
+自定义系列能支持使用 [SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData) 定义矢量路径。从而可以使用矢量图工具中做出的图形。参见：[path](option.html#series-custom.renderItem.return_path)，以及例子：[icons](${galleryEditorPath}custom-calendar-icon) 和 [shapes](${galleryEditorPath}custom-gantt-flight)。
+
+
+
+
 <br>
-<h2>（七）自定义矢量图形</h2>
 
-自定义系列能支持使用 [SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData) 定义矢量路径。从而可以使用矢量图工具中做出的图形。参见：[path](option.html#series-custom.renderItem.return_path)，以及例子：[icons](${websitePath}/examples/editor.html?c=custom-calendar-icon) 和 [shapes](${websitePath}/examples/editor.html?c=custom-gantt-flight)。
-
-
-
-
-<br>
-
-**更多的自定义系列的例子参见：[custom examples](${websitePath}/examples.html#chart-type-custom)**
+**更多的自定义系列的例子参见：[custom examples](${websitePath}/examples/zh/index.html#chart-type-custom)**
 

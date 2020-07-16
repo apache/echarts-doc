@@ -106,7 +106,7 @@ ${name} text color.
 
 #${prefix} fontStyle(string)='normal'
 
-${name} font style
+${name} font style.
 
 Options are:
 + `'normal'`
@@ -116,7 +116,7 @@ Options are:
 
 #${prefix} fontWeight(string|number)=${defaultFontWeight|default('normal')}
 
-${name} font thick weight
+${name} font thick weight.
 
 Options are:
 + `'normal'`
@@ -128,13 +128,13 @@ Options are:
 
 #${prefix} fontFamily(string)='sans-serif'
 
-${name} font family
+${name} font family.
 
 Can also be 'serif' , 'monospace', ...
 
 #${prefix} fontSize(number)=${defaultFontSize|default(12)}
 
-${name} font size
+${name} font size.
 
 
 {{ if: !${noAlign} }}

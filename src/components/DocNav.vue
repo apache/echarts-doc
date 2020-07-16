@@ -277,7 +277,7 @@ export default {
     }
 
     .doc-nav-item {
-        font-family: Monaco,'Source Code Pro', monospace;
+        font-family: 'Source Code Pro', monospace;
         font-size: 13px;
         white-space: nowrap;
 

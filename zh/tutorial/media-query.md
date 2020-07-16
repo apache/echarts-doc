@@ -7,11 +7,10 @@ ECharts 工作在用户指定高宽的 DOM 节点（容器）中。ECharts 的�
 
 另外，有时会出现一个图表需要同时在PC、移动端上展现的场景。这需要 ECharts 内部组件随着容器尺寸变化而变化的能力。
 
-为了解决这个问题，ECharts 完善了组件的定位设置，并且实现了类似 [CSS Media Query](http://www.w3.org/TR/css3-mediaqueries/) 的自适应能力。
+为了解决这个问题，ECharts 完善了组件的定位设置，并且实现了类似 [CSS Media Query](https://www.w3.org/TR/css3-mediaqueries/) 的自适应能力。
 
 
-<br>
-<h2>ECharts组件的定位和布局</h2>
+## ECharts组件的定位和布局
 
 
 大部分『组件』和『系列』会遵循两种定位方式：
@@ -80,10 +79,9 @@ ECharts2 中的 `x/x2/y/y2` 的命名方式仍被兼容，对应于 `left/right/
 
 
 
-<br>
-<h2>Media Query</h2>
+## Media Query
 
-[Media Query](http://www.w3.org/TR/css3-mediaqueries/#media1) 提供了『随着容器尺寸改变而改变』的能力。
+[Media Query](https://www.w3.org/TR/css3-mediaqueries/#media1) 提供了『随着容器尺寸改变而改变』的能力。
 
 如下例子，可尝试拖动**右下角的圆点**，随着尺寸变化，legend 和 系列会自动改变布局位置和方式。
 ~[750x600](${galleryViewPath}doc-example/pie-media&edit=1&reset=1)

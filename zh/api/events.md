@@ -64,7 +64,7 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
 鼠标事件包括 `'click'`、`'dblclick'`、`'mousedown'`、`'mousemove'`、`'mouseup'`、`'mouseover'`、`'mouseout'`、`'globalout'`、`'contextmenu'`。
 
 
-参见 [ECharts 中的事件和行为](http://echarts.baidu.com/tutorial.html#ECharts%20%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%92%8C%E8%A1%8C%E4%B8%BA)
+参见 [ECharts 中的事件和行为](tutorial.html#ECharts%20%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%92%8C%E8%A1%8C%E4%B8%BA)
 
 
 ### click(Event)
@@ -117,6 +117,32 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
     type: 'legendunselected',
     // 取消选中的图例名称
     name: string
+    // 所有图例的选中状态表。
+    selected: Object
+}
+```
+
+
+## legendselectall(Event)
+**ACTION:** [legendAllSelect](~action.legend.legendAllSelect)
+图例全选后的事件。
+
+```js
+{
+    type: 'legendselectall',
+    // 所有图例的选中状态表。
+    selected: Object
+}
+```
+
+
+## legendinverseselect(Event)
+**ACTION:** [legendInverseSelect](~action.legend.legendInverseSelect)
+图例反选后的事件。
+
+```js
+{
+    type: 'legendinverseselect',
     // 所有图例的选中状态表。
     selected: Object
 }
@@ -269,7 +295,11 @@ chart.on('axisareaselected', function () {
 
 ## brush(Event)
 
-选框添加事件。即发出 [brush](~action.brush) action 得到的事件。
+“选框正在添加”事件。即发出 [brush action](~action.brush.brush) 得到的事件。
+
+## brushEnd(Event)
+{{ use: partial-version(version = "4.5.0") }}
+“选框添加完毕”事件。即发出 [brushEnd action](~action.brush.brushEnd) 得到的事件。
 
 ## brushselected(Event)
 

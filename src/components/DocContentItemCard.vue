@@ -25,6 +25,15 @@
         </span>
 
         <span class="default-value" v-if="nodeData.default && nodeData.default !== '*'"> = {{nodeData.default}}</span>
+
+        <span
+            :class="['control-toggle', enableUIControl ? 'active' : '']"
+            v-if="uiControl && shared.allOptionExamples && !shared.isMobile"
+            @click="toggleUIControl"
+        >
+            <i>&#xe900;</i> {{$t('example.tryDesc')}}
+            <!-- <el-switch :active-text="$t('example.tryDesc')" v-model="enableUIControl"></el-switch> -->
+        </span>
     </h4>
 
     <div class="prop-types">
@@ -34,6 +43,11 @@
             v-for="type in nodeData.type"
         >{{type}}</span>
     </div>
+
+    <OptionControl v-if="enableUIControl"
+        :controlConfig="uiControl"
+        :optionPath="nodeData.path"
+    ></OptionControl>
 
     <div class="item-description"
         v-html="desc"
@@ -49,7 +63,8 @@
             :desc-map="descMap"
             :depth="depth + 1"
             :max-depth="maxDepth"
-            @toggle-expanded="bubbleEvent"
+            @toggle-expanded="bubbleEventToggleExapndedEvent"
+            @scroll-to-self="bubbleScrollToSelfEvent"
         ></DocContentItemCard>
     </div>
     <PropertiesList
@@ -66,8 +81,9 @@ import {
     convertPathToId
 } from '../docHelper';
 import PropertiesList from './PropertiesList.vue';
+import OptionControl from './OptionControl.vue';
 
-import {store} from '../store';
+import {store, changeOption} from '../store';
 
 export default {
     name: 'DocContentItemCard',
@@ -75,17 +91,43 @@ export default {
     props: ['nodeData', 'descMap', 'maxDepth', 'depth'],
 
     components: {
-        PropertiesList
+        PropertiesList,
+        OptionControl
     },
 
     data() {
         return {
             manualExpanded: null,
+            enableUIControl: false,
             shared: store
         }
     },
 
-    created() {
+    watch: {
+        enableUIControl(newVal) {
+            if (!newVal) {
+                this.shared.currentExampleOption = Object.freeze(changeOption(
+                    this.shared.currentExampleOption, this.nodeData.path, undefined
+                ));
+            }
+            else {
+                // Let container scroll to the path because layout may be changed
+                // after control is open.
+                if (!this.shared.showOptionExample) {
+                    this.$emit('scroll-to-self', this.nodeData.path, 300, 100);
+                }
+
+                this.shared.showOptionExample = true;
+            }
+        },
+
+        'shared.currentExampleName'(newVal, oldVal) {
+            // Reset after example changed.
+            // NOTE: it may be the first time example panel is opened. So need to check the old value.
+            if (newVal && oldVal) {
+                this.enableUIControl = false;
+            }
+        }
     },
 
     computed: {
@@ -117,7 +159,13 @@ export default {
         },
 
         desc() {
-            return this.descMap[this.nodeData.path];
+            const descItem = this.descMap[this.nodeData.path];
+            return descItem && descItem.desc;
+        },
+
+        uiControl() {
+            const descItem = this.descMap[this.nodeData.path];
+            return descItem && descItem.uiControl;
         },
 
         parentPath() {
@@ -148,12 +196,18 @@ export default {
     },
 
     methods: {
-        bubbleEvent() {
+        bubbleEventToggleExapndedEvent() {
             this.$emit('toggle-expanded');
         },
         toggleExpanded() {
             this.manualExpanded = !this.expanded;
             this.$emit('toggle-expanded');
+        },
+        toggleUIControl() {
+            this.enableUIControl = !this.enableUIControl;
+        },
+        bubbleScrollToSelfEvent(path, time, delay) {
+            this.$emit('scroll-to-self', path, time, delay);
         }
     }
 }
@@ -195,7 +249,7 @@ $hierarchy-guider-color: #C592A0;
         padding: 0;
 
         // font-family: Montserrat, sans-serif;
-        font-family: Monaco, 'Source Code Pro', monospace;
+        font-family: 'Source Code Pro', monospace;
 
         &>* {
             vertical-align: bottom;
@@ -266,11 +320,33 @@ $hierarchy-guider-color: #C592A0;
         }
 
         .default-value {
-            color: #293c55;
+            color: #434343;
             font-size: 16px;
             margin-left: 15px;
             vertical-align: bottom;
             font-weight: normal;
+        }
+
+        .control-toggle {
+            float: right;
+            font-size: 14px;
+            cursor: pointer;
+
+            color: #555;
+
+            i {
+                font-family: iconfont;
+                font-style: normal;
+                vertical-align: middle;
+            }
+
+            &:hover {
+                color: #999;
+            }
+
+            &.active {
+                color: #409eff;
+            }
         }
     }
 
@@ -291,13 +367,13 @@ $hierarchy-guider-color: #C592A0;
     &.level-2 {
         &>h4 {
             .anchor {
-                font-size: 18px;
+                font-size: 16px;
             }
             .path-parent {
                 font-size: 14px;
             }
             .path-base {
-                font-size: 18px;
+                font-size: 16px;
             }
         }
     }
@@ -354,23 +430,29 @@ $hierarchy-guider-color: #C592A0;
 
     .prop-types {
         margin-top: 5px;
+        display: inline-block;
     }
+    .option-control {
+        // display: inline-block;
+        float: right;
+    }
+
     .prop-type {
         display: inline-block;
         margin-right: 4px;
         border-radius: 4px;
         padding: 3px 5px;
-        color: #fff;
-        background-color: #a3a3a3;
+        color: #333;
+        background-color: #f9f2f4;
         font-size: 12px;
     }
 
     .prop-type-string {
-        background-color: #fd8888;
+        background-color: #f9f2f4;
     }
 
     .prop-type-number {
-        background-color: #8fb9e4;
+        background-color: #f9f2f4;
     }
 
     .prop-type-object {
@@ -383,7 +465,7 @@ $hierarchy-guider-color: #C592A0;
     }
 
     .prop-type-boolean {
-        background-color: #e6a23c;
+        background-color: #f9f2f4;
     }
 
     .properties-list-panel {

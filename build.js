@@ -192,14 +192,23 @@ function buildChangelog() {
 }
 
 function buildCodeStandard() {
-    const codeStandardDestPath = path.resolve(config.ecWWWGeneratedDir, 'coding-standard-content.html');
-    fse.ensureDirSync(path.dirname(codeStandardDestPath));
-    fse.outputFileSync(
-        codeStandardDestPath,
-        marked(fs.readFileSync('en/coding-standard.md', 'utf-8')),
-        'utf-8'
-    );
-    console.log(chalk.green('generated: ' + codeStandardDestPath));
+    // support for Chinese character
+    const customRenderer = new marked.Renderer();
+    customRenderer.heading = function(text, level, raw) {
+        const id = raw.toLowerCase().replace(/[^\w\u4e00-\u9fa5]+/g, '-');
+        return `<h${level} id="${id}">${text}</h${level}>\n`;
+    };
+
+    for (let lang of languages) {
+        const codeStandardDestPath = path.resolve(config.ecWWWGeneratedDir, `${lang}/coding-standard-content.html`);
+        fse.ensureDirSync(path.dirname(codeStandardDestPath));
+        fse.outputFileSync(
+            codeStandardDestPath,
+            marked(fs.readFileSync(`${lang}/coding-standard.md`, 'utf-8'), { renderer: customRenderer }),
+            'utf-8'
+        );
+        console.log(chalk.green('generated: ' + codeStandardDestPath));
+    }
 
     console.log('Build code standard done.');
 }
@@ -253,16 +262,69 @@ function writeSingleSchemaPartioned(schema, language, docName, format) {
     );
     // console.log(chalk.green('generated: ' + outlineDestPath));
 
-    for (let partKey in descriptions) {
-        let partDescriptions = descriptions[partKey];
-        let descDestPath = path.resolve(config.releaseDestDir, `${language}/documents/${docName}-parts/${partKey}.json`);
+    function copyUIControlConfigs(source, target) {
+        for (let key in source) {
+            if (target[key]) {
+                if (source[key].uiControl && !target[key].uiControl) {
+                    target[key].uiControl = source[key].uiControl;
+                }
+                if (source[key].exampleBaseOptions && !target[key].exampleBaseOptions) {
+                    target[key].exampleBaseOptions = source[key].exampleBaseOptions;
+                }
+            }
+            else {
+                // console.error(`Unmatched option path ${key}`);
+            }
+        }
+    }
+
+    function readOptionDesc(language, partKey) {
+        const descDestPath = path.resolve(config.releaseDestDir, `${language}/documents/${docName}-parts/${partKey}.json`);
+        try {
+            const text = fs.readFileSync(descDestPath, 'utf-8');
+            return JSON.parse(text);
+        }
+        catch(e) {
+            return;
+        }
+    }
+
+    function writeOptionDesc(language, partKey, json) {
+        const descDestPath = path.resolve(config.releaseDestDir, `${language}/documents/${docName}-parts/${partKey}.json`);
         fse.ensureDirSync(path.dirname(descDestPath));
+
         fse.outputFile(
             descDestPath,
             // format ? JSON.stringify(partDescriptions, null, 2) : JSON.stringify(partDescriptions),
-            JSON.stringify(partDescriptions, null, 2),
+            JSON.stringify(json, null, 2),
             'utf-8'
         );
+    }
+
+    for (let partKey in descriptions) {
+        let partDescriptions = descriptions[partKey];
+
+        // Copy ui control config from zh to english.
+        if (language === 'zh') {
+            languages.forEach(function (otherLang) {
+                if (otherLang === 'zh') {
+                    return;
+                }
+                const json = readOptionDesc(otherLang, partKey);
+                if (json) {
+                    copyUIControlConfigs(partDescriptions, json);
+                    writeOptionDesc(otherLang, partKey, json);
+                }
+            });
+        }
+        else {
+            const json = readOptionDesc('zh', partKey);
+            if (json) {
+                copyUIControlConfigs(json, partDescriptions);
+            }
+        }
+
+        writeOptionDesc(language, partKey, partDescriptions);
         // console.log(chalk.green('generated: ' + descDestPath));
     }
 };

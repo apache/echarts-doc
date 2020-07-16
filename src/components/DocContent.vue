@@ -1,25 +1,39 @@
 <template>
-    <div class="doc-content" v-loading="loading">
-        <h2 :id="pageId">{{pageTitle}}</h2>
-        <div
-            class="page-description"
-            v-if="pageDesc"
-            v-html="pageDesc"
-            v-highlight
-        ></div>
+    <div class="doc-main" v-loading="loading">
+        <div ref="docContentDom"
+            :class="[
+            'doc-content',
+            shared.showOptionExample ? 'option-example-actived' : '',
+            'option-example-' + shared.computedOptionExampleLayout + '-layout'
+        ]">
+            <h2 :id="pageId">{{pageTitle}}</h2>
+            <div
+                class="page-description"
+                v-if="pageDesc"
+                v-html="pageDesc"
+                v-highlight
+            ></div>
 
-        <div v-if="pageDisplayOutline.children && pageDisplayOutline.children && 1 <= maxDepth">
-            <h3>{{$t('content.properties')}}</h3>
-            <DocContentItemCard
-                v-for="child in pageDisplayOutline.children"
-                :key="child.path"
-                :node-data="child"
-                :desc-map="pageDescMap"
-                :max-depth="maxDepth"
-                :depth="1"
-                @toggle-expanded="handleCardExpandToggle"
-            ></DocContentItemCard>
+            <div v-if="pageDisplayOutline.children && pageDisplayOutline.children && 1 <= maxDepth">
+                <h3>{{$t('content.properties')}}</h3>
+                <DocContentItemCard
+                    v-for="child in pageDisplayOutline.children"
+                    :key="child.path"
+                    :node-data="child"
+                    :desc-map="pageDescMap"
+                    :max-depth="maxDepth"
+                    :depth="1"
+                    @scroll-to-self="scrollTo"
+                    @toggle-expanded="handleCardExpandToggle"
+                ></DocContentItemCard>
+            </div>
         </div>
+        <template v-if="showLiveExample">
+            <LiveExample v-if="shared.showOptionExample" ref="liveExample"></LiveExample>
+            <div v-else class="open-option-example" @click="openOptionExample">
+                <i class="el-icon-data-line"></i> {{ $t('example.titleShort') }}
+            </div>
+        </template>
     </div>
 </template>
 
@@ -33,16 +47,18 @@ import {
     getOutlineNode,
     getDefaultPage
 } from '../docHelper';
-import {store, getPagePath} from '../store';
+import {store, getPagePath, isOptionDoc, updateOptionExampleLayout} from '../store';
 import {directTo} from '../route';
 import DocContentItemCard from './DocContentItemCard.vue'
 import scrollIntoView from 'scroll-into-view';
 import Vue from 'vue';
 import LazyLoad from 'vanilla-lazyload';
+import LiveExample from './LiveExample.vue'
 
 export default {
     components: {
-        DocContentItemCard
+        DocContentItemCard,
+        LiveExample
     },
 
     data() {
@@ -74,8 +90,16 @@ export default {
         },
 
         pageDesc() {
-            return this.rootPageDescMap[this.pagePath]
-                || this.pageDescMap[this.pagePath]; // In mobile.
+            const item = this.rootPageDescMap[this.pagePath]
+                || this.pageDescMap[this.pagePath];
+            return item && item.desc; // In mobile.
+        },
+
+        pageExamples() {
+            const item = this.rootPageDescMap[this.pagePath]
+                || this.pageDescMap[this.pagePath];
+            // Return an empty array by default. Or may not trigger it changed.
+            return (item && item.exampleBaseOptions) || [];
         },
 
         pageDisplayOutline() {
@@ -85,6 +109,15 @@ export default {
             else {
                 return getOutlineNode(getPagePath());
             }
+        },
+
+        showLiveExample() {
+            return !this.shared.isMobile && isOptionDoc();
+        },
+
+        needScrollOffset() {
+            return this.shared.showOptionExample && !this.shared.isMobile 
+                && this.shared.computedOptionExampleLayout === 'top';
         }
     },
 
@@ -100,9 +133,25 @@ export default {
         });
 
         this.updateCurrentPath(this.shared.currentPath, true);
+
+        this.resize = this.resize.bind(this);
+        window.addEventListener('resize', this.resize);
+
+        this.resize();
+    },
+
+    destroyed() {
+        window.removeEventListener('resize', this.resize);
     },
 
     methods: {
+        resize() {
+            this.shared.optionExampleLayout === 'auto' && updateOptionExampleLayout('auto');
+            Vue.nextTick(() => {
+                this.updateDocContentMargin();
+            });
+        },
+
         updateLazyload() {
             // console.log('Update lazy load');
             Vue.nextTick(() => {
@@ -117,14 +166,19 @@ export default {
         scrollTo(path, time, timeDelay) {
             // Scroll to.
             setTimeout(() => {
-                let container = store.isMobile ? document.body : this.$el.parentNode;
-                let offset = store.isMobile ? -100 : -20;
-                // console.log(document.querySelector('#' + convertPathToId(path)), convertPathToId(path));
-                scrollIntoView(document.querySelector('#' + convertPathToId(path)), {
+                //let container = store.isMobile ? document.body : this.$el.parentNode;
+                let offset = store.isMobile ? 100 : 20;
+                if (this.needScrollOffset) {
+                    offset += this.$refs.liveExample.$el.offsetHeight;
+                }
+                // previous usage: document.querySelector('#' + convertPathToId(path))
+                // Some special characters like `$` are not allowed in selector when using `document.querySelector`,
+                // use `document.getElementById` instead.
+                scrollIntoView(document.getElementById(convertPathToId(path)), {
                     time: time || 400,
                     align: {
                         top: 0,
-                        topOffset: -offset
+                        topOffset: offset
                     }
                 });
             }, timeDelay || 0);
@@ -187,12 +241,55 @@ export default {
                 this.pageOutline = {};
                 this.loading = false;
             });
+        },
+
+        openOptionExample() {
+            this.shared.showOptionExample = true;
+        },
+
+        updateDocContentMargin(isClose) {
+            if (!this.$refs.liveExample && !isClose) {
+                return;
+            }
+            // update margin of doc content
+            this.$refs.docContentDom.style.margin = '';
+            if (!isClose) {
+                const marginDir = this.shared.computedOptionExampleLayout;
+                if (marginDir !== 'right') {
+                    const marginStyleName = 'margin' + marginDir[0].toUpperCase() + marginDir.slice(1);
+                    const marginValue = this.$refs.liveExample.$el.clientHeight;
+                    this.$refs.docContentDom.style[marginStyleName] = marginValue + 'px';
+                }
+            }
         }
     },
 
     watch: {
         'shared.currentPath'(newVal) {
             this.updateCurrentPath(newVal);
+            Vue.nextTick(() => {
+                this.updateDocContentMargin();
+            });
+        },
+        'pageExamples'(newVal) {
+            // { code, title, name }
+            // TODO: Code switch
+            if (newVal && newVal.length) {
+                this.shared.allOptionExamples = Object.freeze(newVal);
+            }
+            else {
+                this.shared.allOptionExamples = null;
+            }
+        },
+        'shared.computedOptionExampleLayout'() {
+            Vue.nextTick(() => {
+                this.updateDocContentMargin();
+            });
+        },
+        'shared.showOptionExample'(newVal) {
+            Vue.nextTick(() => {
+                this.updateDocContentMargin(!newVal);
+            });
         }
     }
 }
@@ -203,8 +300,54 @@ export default {
 
 @import "../style/mixin.scss";
 
-.doc-content {
+.doc-main {
     margin-left: 10px;
+
+    .open-option-example {
+        position: fixed;
+        right: 0;
+        // bottom: 50px;
+        top: 50%;
+        padding: 10px;
+        border-radius: 20px 0 0 20px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        background: #fff;
+        cursor: pointer;
+
+        font-size: 12px;
+
+        &:hover {
+            background: #eee;
+        }
+
+        i {
+            font-size: 16px;
+            vertical-align: middle;
+        }
+    }
+}
+
+.doc-content {
+    text-align: left;
+    // color: #59636f;
+    color: #4d555e;
+
+    // transition: margin-right 500ms cubic-bezier(0.215, 0.610, 0.355, 1);
+
+    &.option-example-actived {
+        &.option-example-top-layout {
+           // margin-top: 42%;
+        }
+        &.option-example-bottom-layout {
+           // margin-bottom: 42%;
+        }
+        &.option-example-right-layout {
+            margin-right: 45%;
+        }
+    }
+
+
+
     h2 {
         color: #B03A5B;
         font-size: 34px;
@@ -218,9 +361,9 @@ export default {
 
     h3 {
         font-weight: normal;
-        color: #999;
-        font-size: 30px;
-        margin: 20px 20px 20px 0;
+        color: rgb(150, 150, 150);
+        font-size: 28px;
+        margin: 20px 0px 20px 20px;
     }
 
     .page-description {
@@ -250,8 +393,11 @@ export default {
 }
 
 .ec-doc-mobile {
-    .doc-content {
+    .doc-main {
         margin-left: 0;
+    }
+
+    .doc-content {
         background: #f2f2f2;
         margin-bottom: 100px;
     }

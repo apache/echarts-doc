@@ -4,9 +4,8 @@ import xml from 'highlight.js/lib/languages/xml';
 hljs.registerLanguage('javascript', javascript);
 hljs.registerLanguage('xml', xml);
 import 'highlight.js/styles/github-gist.css';
+// import 'highlight.js/styles/monokai.css';
 import Vue from 'vue';
-
-hljs.configure()
 
 function doHighlight(el) {
     el.querySelectorAll('pre code').forEach((block) => {

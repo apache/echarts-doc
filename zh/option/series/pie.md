@@ -17,6 +17,30 @@
 **下面是自定义南丁格尔图的示例：**
 ~[500x400](${galleryViewPath}pie-custom&edit=1&reset=1)
 
+<ExampleBaseOption name="pie" title="基础饼图" title-en="Basic Pie">
+const option = {
+    legend: {
+        orient: 'vertical',
+        left: 'left',
+        data: ['Apple', 'Grapes', 'Pineapples', 'Oranges', 'Bananas']
+    },
+    series: [
+        {
+            type: 'pie',
+            data: [
+                {value: 335, name: 'Apple'},
+                {value: 310, name: 'Grapes'},
+                {value: 234, name: 'Pineapples'},
+                {value: 135, name: 'Oranges'},
+                {value: 1548, name: 'Bananas'}
+            ]
+        }
+    ]
+};
+
+</ExampleBaseOption>
+
+
 ## type(string) = 'pie'
 
 {{use: partial-component-id(prefix="#")}}
@@ -26,41 +50,75 @@
 {{ use: partial-legend-hover-link }}
 
 ## hoverAnimation(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
+
 是否开启 hover 在扇区上的放大动画效果。
 
 ## hoverOffset(number) = 10
+
+<ExampleUIControlNumber min="0" default="10" />
+
 高亮扇区的偏移距离。
 
 ## selectedMode(boolean|string) = false
+
+<ExampleUIControlEnum options="true,false,single,multiple" />
+
 选中模式，表示是否支持多个选中，默认关闭，支持布尔值和字符串，字符串取值可选`'single'`，`'multiple'`，分别表示单选还是多选。
 
 ## selectedOffset(number) = 10
+
+<ExampleUIControlNumber min="0" default="10" />
+
 选中扇区的偏移距离。
 
 ## clockwise(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
+
 饼图的扇区是否是顺时针排布。
 
 ## startAngle(number) = 90
+
+
+<ExampleUIControlAngle step="1" min="0" max="360" default="90" />
+
 起始角度，支持范围[0, 360]。
 
 ## minAngle(number) = 0
+
+<ExampleUIControlAngle step="1" min="0" max="360" default="0" />
+
 最小的扇区角度（0 ~ 360），用于防止某个值过小导致扇区太小影响交互。
 
 ## minShowLabelAngle(number) = 0
+
+<ExampleUIControlAngle step="1" min="0" max="360" default="0" />
+
 小于这个角度（0 ~ 360）的扇区，不显示标签（label 和 labelLine）。
 
 ## roseType(boolean|string) = false
+
+<ExampleUIControlEnum options="radius,area" />
+
 是否展示成南丁格尔图，通过半径区分数据大小。可选择两种模式：
 
 + `'radius'` 扇区圆心角展现数据的百分比，半径展现数据的大小。
 + `'area'` 所有扇区圆心角相同，仅通过半径展现数据大小。
 
 ## avoidLabelOverlap(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
+
 是否启用防止标签重叠策略，默认开启，在标签拥挤重叠的情况下会挪动各个标签的位置，防止标签间的重叠。
 
 如果不需要开启该策略，例如[圆环图](${galleryEditorPath}pie-doughnut)这个例子中需要强制所有标签放在中心位置，可以将该值设为 `false`。
 
 ## stillShowZeroSum(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
+
 是否在数据和为`0`（一般情况下所有数据为`0`） 的时候不显示扇区。
 
 {{ use: partial-cursor }}
@@ -84,6 +142,8 @@
 
 ### alignTo(string) = 'none'
 
+<ExampleUIControlEnum options="labelLine,edge" />
+
 标签的对齐方式，仅当 `position` 值为 `'outer'` 时有效。
 
 从 ECharts v4.6.0 版本起，我们提供了 `'labelLine'` 与 `'edge'` 两种新的布局方式。
@@ -96,6 +156,8 @@
 
 ### margin(string|number) = '25%'
 
+<ExampleUIControlPercent default="20%" />
+
 文字边距，仅当 [label.position](~series-pie.label.position) 为 `'outer'` 并且 [label.alignTo](~series-pie.label.alignTo) 为 `'edge'` 时有效。
 
 ~[900x250](${galleryViewPath}doc-example/pie-label-margin&edit=1&reset=1)
@@ -104,11 +166,15 @@
 
 ### bleedMargin(number) = 10
 
+<ExampleUIControlNumber default="10" min="0" step="1" />
+
 文字的出血线大小，超过出血线的文字将被裁剪为 `'...'`。仅当 [label.position](~series-pie.label.position) 为 `'outer'` 并且 [label.alignTo](~series-pie.label.alignTo) 为 `'none'` 或 `'labelLine'` 的情况有效。
 
 ~[800x250](${galleryViewPath}doc-example/pie-label-bleedMargin&edit=1&reset=1)
 
 ### distanceToLabelLine(number) = 5
+
+<ExampleUIControlNumber default="5" min="0" step="0.5" />
 
 文字与 label line 之间的距离。
 
@@ -235,11 +301,18 @@
 ) }}
 
 ## animationType(string) = 'expansion'
+
+<ExampleUIControlEnum options="expansion,scale" />
+
 初始动画效果，可选
 + `'expansion'` 默认沿圆弧展开的效果。
 + `'scale'` 缩放效果，配合设置 `animationEasing='elasticOut'` 可以做成 popup 的效果。
 
 ## animationTypeUpdate(string) = 'transition'
+
+<ExampleUIControlEnum options="expansion,transition" />
+
+{{ use: partial-version(version = "4.4.0") }}
 更新数据时的动画效果，可选：
 + `'transition'` 通过改变起始和终止角度，从之前的数据过渡到新的数据。
 + `'expansion'` 数据将整体重新沿圆弧展开。
@@ -296,17 +369,27 @@
 
 {{ target: partial-pie-label-line }}
 #${prefix} show(boolean)
+
+<ExampleUIControlBoolean />
+
 是否显示视觉引导线。
 {{ if: ${length} }}
 #${prefix} length(number)
+
+<ExampleUIControlNumber default="15" min="0" step="1" />
+
 视觉引导线第一段的长度。
 {{ /if }}
 {{ if: ${length2} }}
 #${prefix} length2(number)
+<ExampleUIControlNumber default="15" min="0" step="1" />
 视觉引导项第二段的长度。
 {{ /if }}
 {{ if: ${smooth} }}
 #${prefix} smooth(boolean|number) = false
+
+<ExampleUIControlBoolean />
+
 是否平滑视觉引导线，默认不平滑，可以设置成 `true` 平滑显示，也可以设置为 0 到 1 的值，表示平滑程度。
 {{ /if }}
 #${prefix} lineStyle(Object)

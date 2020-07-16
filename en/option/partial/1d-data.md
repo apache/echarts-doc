@@ -40,7 +40,7 @@ Or, if need extra dimensions for components like [visualMap](~visualMap) to map 
 [[12, 14], [34, 50], [56, 30], [10, 15], [23, 10]]
 ```
 
-In this case, we can assgin the second value in each arrary item to [visualMap](~visualMap) component.
+In this case, we can assgin the second value in each array item to [visualMap](~visualMap) component.
 
 
 More likely, we need to assign name to each data item, in which case each item should be an object:

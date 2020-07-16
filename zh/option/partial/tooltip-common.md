@@ -103,10 +103,14 @@
 
 #${prefix} show(boolean) = true
 
+<ExampleUIControlBoolean default="true" />
+
 是否显示提示框组件，包括提示框浮层和 [axisPointer](~tooltip.axisPointer)。
 
 
 #${prefix} trigger(string) = 'item'
+
+<ExampleUIControlEnum default="item,axis,none" />
 
 触发类型。
 
@@ -129,7 +133,7 @@
 
 坐标轴指示器配置项。
 
-`tooltip.axisPointer` 是配置坐标轴指示器的快捷方式。实际上坐标轴指示器的全部功能，都可以通过轴上的 axisPointer 配置项完成（例如 [xAxis.axisPointer](~xAxis.axisPointer) 或 [angleAxis.axisPointer](~angleAxis.axisPointer)）。但是使用 `tooltip.axisPinter` 在简单场景下会更方便一些。
+`tooltip.axisPointer` 是配置坐标轴指示器的快捷方式。实际上坐标轴指示器的全部功能，都可以通过轴上的 axisPointer 配置项完成（例如 [xAxis.axisPointer](~xAxis.axisPointer) 或 [angleAxis.axisPointer](~angleAxis.axisPointer)）。但是使用 `tooltip.axisPointer` 在简单场景下会更方便一些。
 
 > **注意：** `tooltip.axisPointer` 中诸配置项的优先级低于轴上的 axisPointer 的配置项。
 
@@ -142,6 +146,8 @@
 
 
 ##${prefix} type(string) = 'line'
+
+<ExampleUIControlEnum default="none,line,shadow,cross" />
 
 指示器类型。
 
@@ -213,7 +219,7 @@
 
 + `Function`
 
-    回调函数，格式如下
+    回调函数，格式如下：
     ```js
     (point: Array, params: Object|Array.<Object>, dom: HTMLDomElement, rect: Object, size: Object) => Array
     ```
@@ -340,17 +346,23 @@ formatter: function (params, ticket, callback) {
 
 #${prefix} borderColor(Color) = '#333'
 
+<ExampleUIControlColor default="#333" />
+
 {{use: partial-tooltip-scope-tip(scope=${scope})}}
 
 提示框浮层的边框颜色。
 
 #${prefix} borderWidth(number) = 0
 
+<ExampleUIControlNumber default="0" step="0.5" />
+
 {{use: partial-tooltip-scope-tip(scope=${scope})}}
 
 提示框浮层的边框宽。
 
 #${prefix} padding(number) = 5
+
+<ExampleUIControlVector dims="T,R,B,L" default="5,5,5,5" />
 
 {{use: partial-tooltip-scope-tip(scope=${scope})}}
 

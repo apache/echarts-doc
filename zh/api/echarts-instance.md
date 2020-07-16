@@ -353,7 +353,7 @@ ECharts 中的事件有两种，一种是鼠标事件，在鼠标点击某个图
         yAxisId?: string,
         yAxisName?: string,
         gridIndex?: number,
-        gridId?: string
+        gridId?: string,
         gridName?: string
     },
     // 要被转换的值。
@@ -430,7 +430,7 @@ chart.convertToPixel({seriesId: 'k2'}, [128.3324, 89.5344]);
         yAxisId?: string,
         yAxisName?: string,
         gridIndex?: number,
-        gridId?: string
+        gridId?: string,
         gridName?: string
     },
     // 要被转换的值，为像素坐标值，以 echarts 实例的 dom 节点的左上角为坐标 [0, 0] 点。
@@ -462,7 +462,7 @@ chart.convertToPixel({seriesId: 'k2'}, [128.3324, 89.5344]);
         yAxisId?: string,
         yAxisName?: string,
         gridIndex?: number,
-        gridId?: string
+        gridId?: string,
         gridName?: string
     },
     // 要被判断的点，为像素坐标值，以 echarts 实例的 dom 节点的左上角为坐标 [0, 0] 点。
@@ -508,7 +508,16 @@ default: {
     color: '#c23531',
     textColor: '#000',
     maskColor: 'rgba(255, 255, 255, 0.8)',
-    zlevel: 0
+    zlevel: 0,
+
+    // 字体大小。从 `v4.8.0` 开始支持。
+    fontSize: 12,
+    // 是否显示旋转动画（spinner）。从 `v4.8.0` 开始支持。
+    showSpinner: true,
+    // 旋转动画（spinner）的半径。从 `v4.8.0` 开始支持。
+    spinnerRadius: 10,
+    // 旋转动画（spinner）的线宽。从 `v4.8.0` 开始支持。
+    lineWidth: 5
 }
     ```
 
@@ -564,7 +573,7 @@ img.src = myChart.getDataURL({
     // 要增加数据的系列序号。
     seriesIndex?: string,
     // 增加的数据。
-    data?: Array|TypedArray,
+    data?: Array|TypedArray
 }) => string
 ```
 

@@ -5,8 +5,6 @@
 
 Graph is a diagram to represent [nodes](~series-graph.nodes) and the [links](~series-graph.links) connecting nodes.
 
-**Tips: ** In ECharts 2.x , the diagram of `force` type will not be available in ECharts 3 any more, which has been changed to use `graph` to show graph data. If you want to use force to lead the layout, you can set the  [layout](~series-graph.layout) configuration as `'force'`.
-
 **Example: **
 
 ~[600x400](${galleryViewPath}graph&reset=1&edit=1)
@@ -86,6 +84,12 @@ It can be an array to represent the range of edge length. In this case edge with
 
 ### layoutAnimation(boolean) = true
 Because the force-directed layout will be steady after several iterations, this parameter will be decide whether to show the iteration animation of layout. It is not recommended to be closed on browser when there are a lot of node data (>100) as the layout process will cause browser to hang.
+
+### friction(number) = 0.6
+{{ use: partial-version(version = "4.5.0") }}
+It will slow down the nodes' movement. The value range is from 0 to 1.
+
+But it is still an experimental option, see [#11024](https://github.com/apache/incubator-echarts/issues/11024).
 
 ## roam(boolean|string) = false
 {{ use: partial-roam }}
@@ -329,6 +333,10 @@ Symbol of edge ends. Can be an array with two item to specify two ends, or a str
 ### symbolSize(Array|string)
 Symbol size of edge ends. Can be an array with two item to specify two ends, or a string specifies both ends.
 
+### ignoreForceLayout(boolean) = false
+{{ use: partial-version(version = "4.5.0") }}
+Prevent this edge from force layout calculating.
+
 ## edges(Array)
 Alias of [links](~series-graph.links)
 
@@ -336,7 +344,8 @@ Alias of [links](~series-graph.links)
     prefix="#",
     seriesType="graph",
     hasType=true,
-    hasCoord=true
+    hasCoord=true,
+    name="mark point"
 )}}
 
 {{ use: partial-rect-layout-width-height(

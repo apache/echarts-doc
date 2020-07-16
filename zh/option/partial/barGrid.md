@@ -1,7 +1,10 @@
+
 {{target:partial-barGrid}}
 
 ## barWidth(number|string) = 自适应
 柱条的宽度，不设时自适应。
+
+<ExampleUIControlPercent />
 
 {{use: partial-barGrid-value-absolute-or-percent}}
 
@@ -28,7 +31,12 @@
 ## barMinHeight(number) = 0
 柱条最小高度，可用于防止某数据项的值过小而影响交互。
 
+<ExampleUIControlNumber min="0" />
+
 ## barGap(string) = ${barGapDefault|default('30%')}
+
+<ExampleUIControlPercent default="30%"/>
+
 不同系列的柱间距离，为百分比（如 `'30%'`，表示柱子宽度的 `30%`）。
 
 如果想要两个系列的柱子重叠，可以设置 barGap 为 `'-100%'`。这在用柱子做背景的时候有用。
@@ -39,6 +47,9 @@
 ~[600x400](${galleryViewPath}doc-example/barGrid-barGap&reset=1&edit=1)
 
 ## barCategoryGap(string) = '20%'
+
+<ExampleUIControlPercent default="20%"/>
+
 同一系列的柱间距离，默认为类目间距的20%，可设固定值
 
 {{use:partial-barGrid-share-desc(seriesType=${seriesType})}}

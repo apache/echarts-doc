@@ -4,7 +4,7 @@
 The style setting of ${name} icon. Since icon label is displayed only when hovering on the icon, the label configuration options are available under `emphasis`.
 {{ use: partial-item-style(
     defaultBorderColor = '#666',
-    defualtColor = 'none',
+    defaultColor = 'none',
     defaultBorderWidth = 1,
     prefix="#" + ${prefix}
 ) }}
@@ -111,17 +111,26 @@ Notes: User-defined tool name could only start with `my`, like `myTool1` and `my
 
 ### saveAsImage(Object)
 Save as image.
+
 #### type(string) = 'png'
-File suffix of the image saved. If the `renderer` is set to be `'canvas'` when it is [inited](api.html#echarts.init) (default), then `'png'` (default) and `'jpeg'` are supported. If `renderer` is `svg`, then only `'svg'` is supported for `type`.
+File suffix of the image saved.
+
++ If the `renderer` is set to be `'canvas'` when chart [initialized](api.html#echarts.init) (default), then `'png'` (default) and `'jpeg'` are supported.
++ If the `renderer` is set to be `'svg'` when when chart [initialized](api.html#echarts.init), then only `'svg'` is supported for `type` (`'svg'` type is supported since `v4.8.0`).
+
 #### name(string)
 Name to save the image, whose default value is [title.text](~title.text).
+
 #### backgroundColor(Color) = 'auto'
 Background color to save the image, whose default value is [backgroundColor](~backgroundColor). If `backgroundColor` is not set, white color is used.
+
 #### connectedBackgroundColor(Color) = '#fff'
 When [echarts.connect](api.html#echarts.connect) is used to connect the interaction of multiple chart series, they will all be included in the exported image. This option sets the background color between these charts.
+
 #### excludeComponents(Array) = ['toolbox']
 Components to be excluded when export. By default, toolbox is excluded.
 {{ use: feature-common(title="save as image") }}
+
 #### pixelRatio(number) = 1
 Resolution ratio to save image, whose default value is that of the container. Values larger than 1 (e.g.: 2) is supported when you need higher resolution.
 

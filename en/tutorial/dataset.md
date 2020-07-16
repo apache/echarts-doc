@@ -3,17 +3,17 @@
 
 # Dataset
 
-`dataset` component is published since ECharts 4. `dataset` brings convenience in data management separated with styles and enables data reuse by different series. More importantly, is enables data encoding from data to visual, which brings convenience in some scenarios.
+`dataset` component is published since ECharts 4. `dataset` brings convenience in data management separated with styles and enables data reuse by different series. More importantly, it enables data encoding from data to visual, which brings convenience in some scenarios.
 
 Before ECharts 4, data was only able to declared in each series, for example:
 
 ```js
-option: {
+option = {
     xAxis: {
         type: 'category',
         data: ['Matcha Latte', 'Milk Tea', 'Cheese Cocoa', 'Walnut Brownie']
     },
-    yAxis: {}
+    yAxis: {},
     series: [
         {
             type: 'bar',
@@ -44,13 +44,7 @@ ECharts4 starts to provide `dataset` component, which brings benefits below:
 + Support more common data format (like 2d-array, object-array), to avoid data transform works for users.
 
 
-<br>
-
----
-
-<br>
-
-**Get started**
+## Get started
 
 This is a simplest example of `dataset`:
 
@@ -117,13 +111,7 @@ option = {
 };
 ```
 
-<br>
-
----
-
-<br>
-
-**Mapping from data to graphic**
+## Mapping from data to graphic
 
 In this tutorial, we make charts following this methodology: base on data, config the rule to map data to graphic, namely, encode the data to graphic.
 
@@ -135,13 +123,7 @@ Generally, this mapping can be performed:
 Let's illustrate them in detail below.
 
 
-<br>
-
----
-
-<br>
-
-**Mapping by column or row**
+## Mapping by column or row
 
 Giving dataset, users can configure whether columns or rows of a dataset will be mapped to series, namely, the series layout on the columns or rows of a dataset. This can be specified by [series.seriesLayoutBy](option.html#series.seriesLayoutBy). The optional values are:
 
@@ -195,14 +177,7 @@ This is the result:
 ~[800x600](${galleryViewPath}dataset-series-layout-by&edit=1&reset=1)
 
 
-
-<br>
-
----
-
-<br>
-
-**Dimension**
+## Dimension
 
 Before introducing `encode`, we should clarify the concept of `dimension`.
 
@@ -256,15 +231,7 @@ The optional values of dimension types can be:
 
 
 
-
-<br>
-
----
-
-<br>
-
-
-**Mapping from data to graphic (encode)**
+## Mapping from data to graphic (encode)
 
 Having the concept of dimension clarified, we can use [encode](option.html#series.encode) to map data to graphic:
 
@@ -362,14 +329,7 @@ There is an other example for `encode`:
 
 
 
-<br>
-
----
-
-<br>
-
-
-**Visual encoding (color, symbol, etc.)**
+## Visual encoding (color, symbol, etc.)
 
 We can use [visualMap](option.html#visualMap) component to map data to visual channel like color, symbol size, etc.. More info about it can be checked in its [doc](option.html#visualMap).
 
@@ -377,14 +337,7 @@ We can use [visualMap](option.html#visualMap) component to map data to visual ch
 
 
 
-<br>
-
----
-
-<br>
-
-
-**Default encoding**
+## Default encoding
 
 For some common cases (line chart, bar chart, scatter plot, candlestick, pie, funnel, etc.), EChart provides default encoding settings, by which chart will be displayed even if no `encode` option is specified. (If `encode` option is specified, default encoding will not be applied.) The rule of default encoding should not be too complicated. Basically it is:
 
@@ -399,14 +352,7 @@ If the default rule does not meet the requirements, configure the `encode` yours
 ~[800x400](${galleryViewPath}dataset-default&edit=1&reset=1)
 
 
-<br>
-
----
-
-<br>
-
-
-**Q & A**
+## Q & A
 
 Q: How to map the third column to X axis, and map the fifth column to Y axis?
 
@@ -512,14 +458,7 @@ Q: We have specified `encode`, but why it does not work?
 A: Maybe we can try to check typo, for example, the dimension name is `'Life Expectancy'`, be we typed `'Life Expectency'` in `encode` option.
 
 
-
-<br>
-
----
-
-<br>
-
-**Various formats in dataset**
+## Various formats in dataset
 
 In lots of cases, data is described in 2d-table. For example, some data processing software like MS Excel, Numbers are based on 2d-table. The data can be exported as JSON format and input to `dataset.source`.
 
@@ -549,13 +488,7 @@ dataset: [{
 ```
 
 
-<br>
-
----
-
-<br>
-
-**Multiple datasets and references**
+## Multiple datasets and references
 
 Multiple datasets can be defined, and series can refer them by [series.datasetIndex](option.html#series.datasetIndex).
 
@@ -579,14 +512,7 @@ var option = {
 ```
 
 
-
-<br>
-
----
-
-<br>
-
-**ECharts3 data setting approach (series.data) can be used normally**
+## ECharts3 data setting approach (series.data) can be used normally
 
 The data setting approach before ECharts4 can still be used normally. If a series has declared [series.data](option.html#series.data), it will be used but not `dataset`.
 
@@ -616,14 +542,7 @@ The data setting approach before ECharts4 can still be used normally. If a serie
 In fact, setting data via [series.data](option.html#series.data) is not deprecated and useful in some cases. For example, for some charts, like [treemap](option.html#series-treemap), [graph](option.html#series-graph), [lines](option.html#series-lines), that do not apply table data, `dataset` is not supported for yet. Moreover, for the case of large data rendering (for example, millions of data), [appendData](api.html#echartsInstance.appendData) is probably needed to load data incrementally. `dataset` is not supported in the case.
 
 
-<br>
-
----
-
-<br>
-
-
-**Others**
+## Others
 
 Currently, not all types of series support dataset. Series that support dataset includes:
 

@@ -43,7 +43,7 @@ The configuration item of the realistic material is valid when [shading](~${comp
 The `roughness` attribute is used to indicate the roughness of the material, `0` is completely smooth, `1` is completely rough, and the middle value is between the two.
 
 {{ block: roughness-compare }}
-The following images show the effect of `roughness` in `globe](~globe) `0.2` (smooth) and `0.8` (rough).
+The following images show the effect of `roughness` in [`globe`](~globe) `0.2` (smooth) and `0.8` (rough).
 
 ![autox280](~globe-gloss.png)
 ![autox280](~globe-rough.png)

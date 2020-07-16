@@ -1,5 +1,7 @@
 {{target: partial-padding}}
 
+<ExampleUIControlVector min="0" dims="T,R,B,L"  />
+
 ${componentName}内边距，单位px，默认各方向内边距为5，接受数组分别设定上右下左边距。
 
 使用示例：

@@ -28,7 +28,7 @@ Basically `dataZoom` component operates "window" on axis to zoom or roam coordin
 
 > Use [dataZoom.xAxisIndex](~dataZoom.xAxisIndex) or [dataZoom.yAxisIndex](~dataZoom.yAxisIndex) or [dataZoom.radiusAxisIndex](~dataZoom.radiusAxisIndex) or [dataZoom.angleAxisIndex](~dataZoom.angleAxisIndex) to specify which axes are operated by `dataZoom`.
 
-A single chart instance can contains several `dataZoom` components, each of which controls different axes. The `dataZoom` components that control the same axis will be automatically linked (i.e., all of them will be updated when one of them is updated by user action or API call).
+A single chart instance can contain several `dataZoom` components, each of which controls different axes. The `dataZoom` components that control the same axis will be automatically linked (i.e., all of them will be updated when one of them is updated by user action or API call).
 
 <br>
 
@@ -53,7 +53,7 @@ You can set the current window in two forms:
 
 + absolute value: see [dataZoom.startValue](~dataZoom.startValue) and [dataZoom.endValue](~dataZoom.endValue).
 
-Notice: If use percent value form, and it is in the senario below, the result of dataZoom depends on the sequence of dataZoom definitions appearing in `option`.
+Notice: If use percent value form, and it is in the scenario below, the result of dataZoom depends on the sequence of dataZoom definitions appearing in `option`.
 
 
 ```javascript
@@ -242,7 +242,7 @@ More info about the relationship between `${dataZoomName}.startValue` and axis e
 
 ## endValue(number|string|Date) = null
 
-The end absolute value of the window, not works when [${dataZoomName}.end](~${dataZoomName}.end) is set.
+The end absolute value of the window, doesn't work when [${dataZoomName}.end](~${dataZoomName}.end) is set.
 
 [${dataZoomName}.startValue](~${dataZoomName}.startValue) and [${dataZoomName}.endValue](~${dataZoomName}.endValue) define the window of the data window in **absolute value** form.
 
@@ -348,9 +348,9 @@ How to set `filterMode` is up to users, depending on the requirments and scenari
 
     + If `xAxis` and `yAxis` should not effect mutually (e.g. a scatter chart with both axes on the type of `'value'`), they should be set to be `filterMode: 'empty'`.
 
-    + If `xAxis` is the main axis and `yAxis` is the auxiliary axis (or vise versa) (e.g., in a bar chart, when dragging `dataZoomX` to change the window of xAxis, we need the yAxis to adapt to the clipped data, but when dragging `dataZoomY` to change the window of yAxis, we need the xAxis not to be changed), in this case, `xAxis` should be set to be `fiterMode: 'filter'`, while `yAxis` shoule be set to be `fiterMode: 'empty'`.
+    + If `xAxis` is the main axis and `yAxis` is the auxiliary axis (or vise versa) (e.g., in a bar chart, when dragging `dataZoomX` to change the window of xAxis, we need the yAxis to adapt to the clipped data, but when dragging `dataZoomY` to change the window of yAxis, we need the xAxis not to be changed), in this case, `xAxis` should be set to be `fiterMode: 'filter'`, while `yAxis` should be set to be `fiterMode: 'empty'`.
 
-It can be demostrated by the sample:
+It can be demonstrated by the sample:
 
 ```javascript
 option = {
@@ -399,7 +399,7 @@ Before filtering, the second column, which corresponds to yAxis, has values `24`
 
 So `filterMode: 'filter'` can be used to enable the other axis to auto adapt the filtered data.
 
-Then let's review the sample from the beginning, `dataZoomY` is set as `filterMode: 'empty'`. So if user drags `dataZoomY` (do not touch `dataZoomX`) and its window is changed to `[10, 60]` consequently, `dataZoomY` travels the second column of series.data and set NaN to all of the values that outside the window (NaN cause the graphical elements, i.e., bar elements, do not show, but sill hold the place). The series.data turns out to be:
+Then let's review the sample from the beginning, `dataZoomY` is set as `filterMode: 'empty'`. So if user drags `dataZoomY` (do not touch `dataZoomX`) and its window is changed to `[10, 60]` consequently, `dataZoomY` travels the second column of series.data and set NaN to all of the values that outside the window (NaN cause the graphical elements, i.e., bar elements, do not show, but still hold the place). The series.data turns out to be:
 
 ```javascript
 [
@@ -410,7 +410,7 @@ Then let's review the sample from the beginning, `dataZoomY` is set as `filterMo
 ]
 ```
 
-In this case, the first colum (i.e., `12`, `90`, `3`, `1`, which corresponds to `xAxis`), will not be changed at all. So dragging `yAxis` will not change extent of `xAxis`, which is good for requirements like outlier filtering.
+In this case, the first column (i.e., `12`, `90`, `3`, `1`, which corresponds to `xAxis`), will not be changed at all. So dragging `yAxis` will not change extent of `xAxis`, which is good for requirements like outlier filtering.
 
 See this example:
 ~[600x400](${galleryViewPath}doc-example/bar-dataZoom-filterMode&edit=1&reset=1)

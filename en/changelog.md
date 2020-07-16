@@ -1,3 +1,45 @@
+## v4.8.0
+<div class="time">2020-05-25</div>
+
++ [Feature] [toolbox] Support download SVG file in toolbox when using SVG render mode. [#12144](https://github.com/apache/incubator-echarts/pull/12144) ([Zhang Wenli](https://github.com/Ovilia))
+
++ [Feature] Add more parameters in the loading effect. [#12414](https://github.com/apache/incubator-echarts/pull/12414) ([Yu Feng](https://github.com/yufeng04))
+
++ [Feature] Support callback for `symbolRotate`. [#12348](https://github.com/apache/incubator-echarts/pull/12348) [#12354](https://github.com/apache/incubator-echarts/pull/12354) ([plainheart](https://github.com/plainheart))
+
++ [Feature] [axis] Callbacks of `min`, `max` can return `null` to use the default value now. [#11829](https://github.com/apache/incubator-echarts/pull/12215) ([Su Siwen](https://github.com/susiwen8)), [#12371](https://github.com/apache/incubator-echarts/pull/12371) ([Su Shuang](https://github.com/100pah))
+
++ [Feature] [geo] Add `nameProperty` to specify the name field of GeoJSON source. [#12156](https://github.com/apache/incubator-echarts/pull/12156)  ([alex2wong](https://github.com/alex2wong))
+
++ [Fix] [sankey] Fix tooltip not displayed on edges. [#12011](https://github.com/apache/incubator-echarts/pull/12011) ([Su Siwen](https://github.com/susiwen8))
+
++ [Fix] [sankey] Fix node may disappear when link value is 0. [#12191](https://github.com/apache/incubator-echarts/pull/12191) ([Su Siwen](https://github.com/susiwen8)), [#12472](https://github.com/apache/incubator-echarts/pull/12472) ([Su Shuang](https://github.com/100pah))
+
++ [Fix] [treemap] Add missing params in the foramtter callback. [#11854](https://github.com/apache/incubator-echarts/pull/11854) ([Su Siwen](https://github.com/susiwen8), [Su Shuang](https://github.com/100pah))
+
++ [Fix] [calendar] Fix calendar chart layout when user is in a timezone with DST. [#12172](https://github.com/apache/incubator-echarts/pull/12172) ([mikeyshing88](https://github.com/mikeyshing88)), [#12466](https://github.com/apache/incubator-echarts/pull/12466) ([Su Shuang](https://github.com/100pah))
+
++ [Fix] [line] Fix safari may crash because of memory explosion when using gradient, shadow with large wide-range animation. [#12410](https://github.com/apache/incubator-echarts/pull/12410) ([Shen Yi](https://github.com/pissang))
+
++ [Fix] [line] Fix clip bug in chromium when chart size over 18000px. [#12393](https://github.com/apache/incubator-echarts/pull/12393) ([Zhan Fang](https://github.com/zhanfang))
+
++ [Fix] [pie] Fix label may disappear when animation is disabled. [#12243](https://github.com/apache/incubator-echarts/issues/12243) ([Zhang Wenli](https://github.com/Ovilia))
+
++ [Fix] [title] Fix potential security risk when `'_blank'`  target for link. [#12380](https://github.com/apache/incubator-echarts/issues/12380) ([Su Siwen](https://github.com/susiwen8))
+
++ [Fix] [geo] Fix animation not work when change `center` or `zoom` with `setOption`. [#12340](https://github.com/apache/incubator-echarts/pull/12340) ([Zhang Wenli](https://github.com/Ovilia))
+
++ [Fix] [heatmap] Remove the 1px gap. [#12342](https://github.com/apache/incubator-echarts/pull/12342) ([SnailSword](https://github.com/SnailSword))
+
++ [Fix] [sunburst] Fix default downplay style not work bug. [#12264](https://github.com/apache/incubator-echarts/pull/12264) ([Shen Yi](https://github.com/pissang))
+
++ [Fix] [visualMap] `minOpen` and `maxOpen` is not counted into pieces number now. [#12147](https://github.com/apache/incubator-echarts/pull/12147) ([Su Siwen](https://github.com/susiwen8))
+
++ [Fix] [bmap] [extension] Fix layer may not been cleared when using progressive rendering. ([Shen Yi](https://github.com/pissang))
+
++ [Fix] [bmap] [extension] Fix unexpected refresh bug.[#12411](https://github.com/apache/incubator-echarts/pull/12411) ([Shen Yi](https://github.com/pissang))
+
+
 ## v4.7.0
 <div class="time">2020-03-18</div>
 
@@ -89,7 +131,7 @@
 
 + [Feature] Add `friction` option in force layout of `graph`. [#11276](https://github.com/apache/incubator-echarts/pull/11276) ([Shen Yi](https://github.com/pissang))
 
-+ [Feature] Add `ignoreFoceLayout` option in the `graph` links. [#11445](https://github.com/apache/incubator-echarts/pull/11445) ([TYzzt](https://github.com/TYzzt))
++ [Feature] Add `ignoreForceLayout` option in the `graph` links. [#11445](https://github.com/apache/incubator-echarts/pull/11445) ([TYzzt](https://github.com/TYzzt))
 
 + [Feature] Add `axisType` in the indicator of `radar` series. [#11324](https://github.com/apache/incubator-echarts/pull/11324)([zifix](https://github.com/zifix))
 

@@ -4,13 +4,13 @@
 
 浏览器端图表库大多会选择 SVG 或者 Canvas 进行渲染。对于绘制图表来说，这两种技术往往是可替换的，效果相近。但是在一些场景中，他们的表现和能力又有一定差异。于是，对它们的选择取舍，就成为了一个一直存在的不易有标准答案的话题。
 
-ECharts 从初始一直使用 Canvas 绘制图表（除了对 IE8- 使用 VML）。而 [ECharts v4.0](https://github.com/apache/incubator-echarts/releases) 发布了 SVG 渲染器，从而提供了一种新的选择。只须在初始化一个图表实例时，设置 [renderer 参数](http://echarts.baidu.com/api.html#echarts.init) 为 `'canvas'` 或 `'svg'` 即可指定渲染器，比较方便。
+ECharts 从初始一直使用 Canvas 绘制图表（除了对 IE8- 使用 VML）。而 [ECharts v4.0](https://github.com/apache/incubator-echarts/releases) 发布了 SVG 渲染器，从而提供了一种新的选择。只须在初始化一个图表实例时，设置 [renderer 参数](api.html#echarts.init) 为 `'canvas'` 或 `'svg'` 即可指定渲染器，比较方便。
 
 > SVG 和 Canvas 这两种使用方式差异很大的技术，能够做到同时被透明支持，主要归功于 ECharts 底层库 [ZRender](https://github.com/ecomfe/zrender) 的抽象和实现，形成可互换的 SVG 渲染器和 Canvas 渲染器。
 
 ## 选择哪种渲染器
 
-一般来说，Canvas 更适合绘制图形元素数量非常大（这一般是由数据量大导致）的图表（如热力图、地理坐标系或平行坐标系上的大规模线图或散点图等），也利于实现某些视觉 [特效](examples/editor.html?c=lines-bmap-effect)。但是，在不少场景中，SVG 具有重要的优势：它的内存占用更低（这对移动端尤其重要）、渲染性能略高、并且用户使用浏览器内置的缩放功能时不会模糊。例如，我们在一些硬件环境中分别使用 Canvas 渲染器和 SVG 渲染器绘制中等数据量的折、柱、饼，统计初始动画阶段的帧率，得到了一个性能对比图：
+一般来说，Canvas 更适合绘制图形元素数量非常大（这一般是由数据量大导致）的图表（如热力图、地理坐标系或平行坐标系上的大规模线图或散点图等），也利于实现某些视觉 [特效](${galleryEditorPath}lines-bmap-effect)。但是，在不少场景中，SVG 具有重要的优势：它的内存占用更低（这对移动端尤其重要）、渲染性能略高、并且用户使用浏览器内置的缩放功能时不会模糊。例如，我们在一些硬件环境中分别使用 Canvas 渲染器和 SVG 渲染器绘制中等数据量的折、柱、饼，统计初始动画阶段的帧率，得到了一个性能对比图：
 
 ~[90%x400](${galleryViewPath}doc-example/canvas-vs-svg&reset=1)
 
@@ -25,7 +25,7 @@ ECharts 从初始一直使用 Canvas 绘制图表（除了对 IE8- 使用 VML）
 我们强烈欢迎开发者们 [反馈](https://github.com/apache/incubator-echarts/issues/new) 给我们使用的体验和场景，帮助我们更好的做优化。
 
 
-注：除了某些特殊的渲染可能依赖 Canvas：如[炫光尾迹特效](option.html#series-lines.effect)、[带有混合效果的热力图](examples/editor.html?c=heatmap-bmap)等，绝大部分功能 SVG 都是支持的。此外，目前的 SVG 版中，富文本、材质功能尚未实现。
+注：除了某些特殊的渲染可能依赖 Canvas：如[炫光尾迹特效](option.html#series-lines.effect)、[带有混合效果的热力图](${galleryEditorPath}heatmap-bmap)等，绝大部分功能 SVG 都是支持的。此外，目前的 SVG 版中，富文本、材质功能尚未实现。
 
 
 ## 如何使用渲染器
@@ -33,7 +33,7 @@ ECharts 从初始一直使用 Canvas 绘制图表（除了对 IE8- 使用 VML）
 ECharts 默认使用 Canvas 渲染。如果想使用 SVG 渲染，ECharts 代码中须包括有 SVG 渲染器模块。
 
 + ECharts 的 [预构建文件](https://www.jsdelivr.com/package/npm/echarts) 中，[常用版](https://cdn.jsdelivr.net/npm/echarts/dist/echarts.common.min.js) 和 [完整版](https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js) 已经包含了 SVG 渲染器，可直接使用。而 [精简版](https://cdn.jsdelivr.net/npm/echarts/dist/echarts.simple.min.js) 没有包括。
-+ 如果 [在线自定义构建 ECharts](builder.html)，则需要勾上页面下方的 “SVG 渲染”。
++ 如果 [在线自定义构建 ECharts](${websitePath}/zh/builder.html)，则需要勾上页面下方的 “SVG 渲染”。
 + 如果 [线下自定义构建 ECharts](tutorial.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%9E%84%E5%BB%BA%20ECharts)，则须引入 SVG 渲染器模块，即：
 
 ```js

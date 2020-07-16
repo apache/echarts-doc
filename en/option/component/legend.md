@@ -53,7 +53,7 @@ Options:
 
 ## align(string) = 'auto'
 
-Legend mrker and text aligning. By default, it automatically calculates from component location and orient. When [left](~legend.left) value of this component is 'right', and the vertical layout ([orient](~legend.orient) is 'vertical'), it would be aligned to 'right'.
+Legend marker and text aligning. By default, it automatically calculates from component location and orientation. When [left](~legend.left) value of this component is 'right', and the vertical layout ([orient](~legend.orient) is 'vertical'), it would be aligned to 'right'.
 
 Option:
 + 'auto'
@@ -96,7 +96,7 @@ formatter: function (name) {
 
 ## selectedMode(string|boolean) = true
 
-Selected mode of legend, which controls whether series can be toggled displaying by clicking legends. It is enabled by default, and you may set it to be `false` to disabled it.
+Selected mode of legend, which controls whether series can be toggled displaying by clicking legends. It is enabled by default, and you may set it to be `false` to disable it.
 
 Besides, it can be set to `'single'` or `'multiple'`, for single selection and multiple selection.
 
@@ -186,7 +186,7 @@ It works when [legend.type](~legend.type) is `'scroll'`.
 
 `dataIndex` of the left top most displayed item.
 
-Although the scrolling of legend items can be controlled by calling `setOption` and specifying this property, we suggest that do not controll legend in this way unless necessary (`setOption` might be time-consuming), but just use action [legendScroll](api.html#action.legend.legendScroll) to do that.
+Although the scrolling of legend items can be controlled by calling `setOption` and specifying this property, we suggest that do not control legend in this way unless necessary (`setOption` might be time-consuming), but just use action [legendScroll](api.html#action.legend.legendScroll) to do that.
 
 See [vertically scrollable legend](${galleryEditorPath}pie-legend&edit=1&reset=1) or [horizontally scrollable legend](${galleryEditorPath}radar2&edit=1&reset=1).
 
@@ -311,7 +311,7 @@ The text style of page info.
 
 ## animation(boolean)
 
-Whether to use animation when page scrolll.
+Whether to use animation when page scrolls.
 
 ## animationDurationUpdate(number) = 800
 
@@ -321,6 +321,8 @@ Duration of the page scroll animation.
 ## emphasis(Object)
 
 ### selectorLabel(Object)
+
+{{ use: partial-version(version = "4.4.0") }}
 
 {{use:partial-label(
     prefix='###',
@@ -332,6 +334,8 @@ Duration of the page scroll animation.
 
 
 ## selector(boolean|Array) = false
+
+{{ use: partial-version(version = "4.4.0") }}
 
 The selector button in the legend component. Currently includes both a full selection and an inverse selection. The selector button doesn't display by default, the user can manually configure it.
 
@@ -359,6 +363,8 @@ selector: ['all', 'inverse']
 
 ## selectorLabel(Object)
 
+{{ use: partial-version(version = "4.4.0") }}
+
 The text label style of the selector button, which is displayed by default.
 
 {{use:partial-label(
@@ -371,12 +377,18 @@ The text label style of the selector button, which is displayed by default.
 
 ## selectorPosition(string) = 'auto'
 
+{{ use: partial-version(version = "4.4.0") }}
+
 The position of the selector button, which can be placed at the end or start of the legend component, the corresponding values are `'end'` and `'start'`. By default, when the legend is laid out horizontally, the selector is placed at the end of it, and when the legend is laid out vertically, the selector is placed at the start of it.
 
 ## selectorItemGap(number) = 7
 
+{{ use: partial-version(version = "4.4.0") }}
+
 The gap between the selector button.
 
 ## selectorButtonGap(number) = 10
+
+{{ use: partial-version(version = "4.4.0") }}
 
 The gap between selector button and legend component.

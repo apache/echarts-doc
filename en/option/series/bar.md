@@ -23,7 +23,7 @@ Bar chart shows different data through the height of a bar, which is used in [re
 ) }}
 
 ## roundCap(boolean) = false
-
+{{ use: partial-version(version = "4.5.0") }}
 If to add round caps at the end of the bar sectors. Valid only for bar series on polar coordinates.
 
 ~[800x500](${galleryViewPath}polar-roundCap&reset=1&edit=1)
@@ -46,13 +46,13 @@ If to add round caps at the end of the bar sectors. Valid only for bar series on
 )}}
 
 ## showBackground(boolean) = false
-
+{{ use: partial-version(version = "4.7.0") }}
 Whether to show background behind each bar. Use [backgroundStyle](~series-bar.backgroundStyle) to set background style.
 
 ~[800x400](${galleryViewPath}bar-background&reset=1&edit=1)
 
 ## backgroundStyle(Object)
-
+{{ use: partial-version(version = "4.7.0") }}
 Background style of each bar if [showBackground](~series-bar.showBackground) is set to be `true`.
 
 ~[800x400](${galleryViewPath}bar-background&reset=1&edit=1)
@@ -151,7 +151,8 @@ The style setting of the text label in a single bar.
     galleryEditorPath=${galleryEditorPath},
     seriesType="bar",
     hasCoord=true,
-    hasType=true
+    hasType=true,
+    name="mark point"
 )}}
 
 {{use:partial-clip(
@@ -182,11 +183,11 @@ The style setting of the text label in a single bar.
 
 Bar color. {{ if: ${useColorPalatte} }} By default, colors from global palette [option.color](~color) is used. {{/if}}
 
-#${prefix} barBorderColor(Color) = '#000'
+#${prefix} borderColor(Color) = '#000'
 
 The border color of bar.
 
-#${prefix} barBorderWidth(number) = 0
+#${prefix} borderWidth(number) = 0
 
 The border width of bar. defaults to have no border.
 

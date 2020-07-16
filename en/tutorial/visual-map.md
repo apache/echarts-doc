@@ -14,8 +14,8 @@ Besides, ECharts provides [visualMap component](option.html#visualMap) for gener
 
 Next, we are going to introduce how to use `visualMap` component.
 
-<br>
-<h2>Data and Dimension</h2>
+
+## Data and Dimension
 
 Data are usually stored in [series.data](option.html#series.data) in ECharts. Depending on chart types, like list, tree, graph, and so on, the form of data may vary somehow. But they have one common feature, that they are a collection of `dataItem`s. Every data item contains data value, and other information if needed. Every data value can be a single value (one dimension) or an array (multiple dimensions).
 
@@ -55,13 +55,7 @@ series: {
 Usually the first one or two dimensions are used for mapping. For example, map the first dimension to x axis, and the second dimension to y axis. If you want to represent more dimensions, `visualMap` is what you need. Most likely, [scatter charts](option.html#series-scatter) use radius to represent the third dimension.
 
 
-
-
-
-
-
-<br>
-<h2>visualMap Component</h2>
+## visualMap Component
 
 visualMap component defines the mapping from *which dimension of data* to *what visual elements*.
 
@@ -93,10 +87,7 @@ option = {
 
 <br>
 
-Piecewise visual map component has three types:
-
-
-分段型视觉映射组件（visualMapPiecewise），有三种模式：
+Piecewise visual map component（visualMapPiecewise）has three types:
 
 + Equal division of continuous data: divide equally based on [visualMap-piecewise.splitNumber](option.html#visualMap-piecewise.splitNumber);
 + User-defined division of continuous data: divide with range in [visualMap-piecewise.pieces](option.html#visualMap-piecewise.pieces);
@@ -115,7 +106,7 @@ Example A:
 option = {
     visualMap: [
         {
-            type: 'piecewise'
+            type: 'piecewise',
             min: 0,
             max: 5000,
             dimension: 3,       // the fourth dimension of series.data, or value[3], is mapped

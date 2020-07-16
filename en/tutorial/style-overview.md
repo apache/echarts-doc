@@ -24,7 +24,7 @@ Other article about styling can be check in [Customized Chart Styles](~Customize
 
 **Theme**
 
-Setting a theme is the simplest way to change the color style. For example, in [Examples page](${websitePath}/examples), "Theme" can be selected, and view the result directly.
+Setting a theme is the simplest way to change the color style. For example, in [Examples page](${websitePath}/examples/en/index.html), "Theme" can be selected, and view the result directly.
 
 Since ECharts4, besides the original default theme, ECharts provide another two built-in themes, named '`'light'` and `'dark'`. They can be used as follows:
 
@@ -32,13 +32,13 @@ Since ECharts4, besides the original default theme, ECharts provide another two 
 var chart = echarts.init(dom, 'light');
 ```
 
-或者
+or
 
 ```js
 var chart = echarts.init(dom, 'dark');
 ```
 
-Other themes are not included in ECharts package by default, and need to load them ourselves if we want to use them. Themes can be visited and downloaded in [Theme Builder](http://echarts.baidu.com/theme-builder/). Theme can also be created or edited in it. The downloaded theme can be used as follows:
+Other themes are not included in ECharts package by default, and need to load them ourselves if we want to use them. Themes can be visited and downloaded in [Theme Builder](https://www.echartsjs.com/theme-builder/). Theme can also be created or edited in it. The downloaded theme can be used as follows:
 
 If a theme is downloaded as a JSON file, we should register it by ourselves, for example:
 ```js

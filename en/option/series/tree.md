@@ -57,11 +57,13 @@ The direction of the `orthogonal` layout in the tree diagram. That means this co
     defaultSymbol="'emptyCircle'",
     defaultSymbolSize=7,
     prefix="#",
-    hasCallback=true
+    hasCallback=true,
+    name="tree node"
 ) }}
 
 
-# edgeShape(string) = 'curve'
+## edgeShape(string) = 'curve'
+{{ use: partial-version(version = "4.7.0") }}
 
 The shape of the edge which is under the tree `orthogonal layout`. There are two types of shape, curve and polyline, the corresponding values are `'curve'` and `'polyline'`.
 
@@ -72,7 +74,7 @@ The shape of the edge which is under the tree `orthogonal layout`. There are two
 
 This is the position where the polyline branches in the subtree when the shape of the edge is a polyline in the `orthogonal layout`. The position here refers to the percentage of the distance between the bifurcation point and the parent node of the subtree to the height of the entire subtree. The default value is `'50%'`, which can be between ['0', '100%'].
 
-** Note: This configuration item is only valid when `edgeShape = 'curve'`. **
+** Note: This configuration item is only valid when `edgeShape = 'polyline'`. **
 
 
 ## roam(boolean|string) = false
@@ -170,7 +172,7 @@ The style of the leaf node in the tree.
 
 ## data(Object)
 
-[series-tree.data](~series-tree.data) the data format is a tree structure，for example：
+[series-tree.data](~series-tree.data) the data format is a tree structure, for example：
 
 ```javascript
 { // note that the outermost layer is an object that represents the root node of the tree.

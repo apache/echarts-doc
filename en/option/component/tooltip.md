@@ -70,7 +70,7 @@ Useful when tooltip is cut because of `'overflow: hidden'` set on outer dom of c
 
 ## appendToBody(boolean) = false
 
-> Since 4.7.0
+{{ use: partial-version(version="4.7.0") }}
 
 Whether to append the tooltip DOM element as a child of the `<body>` of the HTML page, when using [renderMode](~tooltip.renderMode) `'html'`.
 

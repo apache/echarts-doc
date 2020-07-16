@@ -58,7 +58,7 @@ function convertToTree(rootSchema, rootNode) {
         if (schema.default != null) {
             nodeBase.default = schema.default;
         }
-        else if (schema.items) {    // Array also may has properties.
+        if (schema.items) {    // Array also may has properties.
             nodeBase.isArray = true;
         }
         else if (schema.properties && Object.keys(schema.properties).length) {
@@ -148,6 +148,8 @@ function convertToTree(rootSchema, rootNode) {
 // }
 module.exports = function (schema, docName) {
     let descriptionsMap = {};
+    let propWithUIControlCount = 0;
+    let propTotalCount = 0;
     traverse(schema, docName, (schemaPath, schemaNode) => {
         if (schemaNode.description) {
             // Extract component level path
@@ -157,9 +159,20 @@ module.exports = function (schema, docName) {
             let subKey = parts.slice(divider).join('.');
 
             descriptionsMap[partionKey] = descriptionsMap[partionKey] || {};
-            descriptionsMap[partionKey][subKey] = schemaNode.description;
+            descriptionsMap[partionKey][subKey] = {
+                desc: schemaNode.description,
+                exampleBaseOptions: schemaNode.exampleBaseOptions,
+                uiControl: schemaNode.uiControl
+            };
+
+            propTotalCount++;
+            if (schemaNode.uiControl) {
+                propWithUIControlCount++;
+            }
         }
     });
+
+    console.log(`Options with UIControl ${propWithUIControlCount} / ${propTotalCount} (${propWithUIControlCount/propTotalCount})`);
 
     return {
         outline: convertToTree(schema.option, {}),

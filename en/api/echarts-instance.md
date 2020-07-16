@@ -43,15 +43,15 @@ chart.setOption(option, {
 
 + `notMerge`
 
-    Optional; states whether not to merge with previous `option`; `false` by defualt, stating merging.
+    Optional; states whether not to merge with previous `option`; `false` by default, stating merging.
 
 + `lazyUpdate`
 
-    Optional; states whether not to update chart immediately; `false` by defualt, stating update immediately.
+    Optional; states whether not to update chart immediately; `false` by default, stating update immediately.
 
 + `silent`
 
-    Optional; states whether not to prevent triggering events when calling `setOption`; `false` by defualt, stating trigger events.
+    Optional; states whether not to prevent triggering events when calling `setOption`; `false` by default, stating trigger events.
 
 
 ## getWidth(Function)
@@ -357,7 +357,7 @@ Unbind event-handler function.
         yAxisId?: string,
         yAxisName?: string,
         gridIndex?: number,
-        gridId?: string
+        gridId?: string,
         gridName?: string
     },
     // The value to be converted.
@@ -439,7 +439,7 @@ chart.convertToPixel({seriesId: 'k2'}, [128.3324, 89.5344]);
         yAxisId?: string,
         yAxisName?: string,
         gridIndex?: number,
-        gridId?: string
+        gridId?: string,
         gridName?: string
     },
     // The value to be converted, in pixel coordinate system, where the origin ([0, 0])
@@ -471,7 +471,7 @@ Convert a point from pixel coordinate to logical coordinate (e.g., in geo, carte
         yAxisId?: string,
         yAxisName?: string,
         gridIndex?: number,
-        gridId?: string
+        gridId?: string,
         gridName?: string
     },
     // The value to be judged, in pixel coordinate system, where the origin ([0, 0])
@@ -512,7 +512,7 @@ Shows loading animation. You can call this interface manually before data is loa
 
 + `opts`
 
-    Optional; configuration item of loading animation, which is related to `type`. Following shows the default configuration item :
+    Optional; configuration item of loading animation, which is related to `type`. Following shows the available configuration items and their default values:
 
     ```js
 default: {
@@ -520,7 +520,16 @@ default: {
     color: '#c23531',
     textColor: '#000',
     maskColor: 'rgba(255, 255, 255, 0.8)',
-    zlevel: 0
+    zlevel: 0,
+
+    // Font size. Available since `v4.8.0`.
+    fontSize: 12,
+    // Show an animated "spinner" or not. Available since `v4.8.0`.
+    showSpinner: true,
+    // Radius of the "spinner". Available since `v4.8.0`.
+    spinnerRadius: 10,
+    // Line width of the "spinner". Available since `v4.8.0`.
+    lineWidth: 5
 }
     ```
 
@@ -575,16 +584,16 @@ Exports connected chart image; returns a base64 url; can be set to `src` of `Ima
     // Specify which series the data will be appended to.
     seriesIndex?: string,
     // The data to be appended.
-    data?: Array|TypedArray,
+    data?: Array|TypedArray
 }) => string
 ```
 
-The method is used in rendering millions of data (e.g. rendering geo data). In these scenario, the entire size of data is probably up to 10 or 100 MB, even using binary format. So chunked load data and rendering is required. When using `appendData`, the graphic elements that have been rendered will not be cleared, but keep rendering new graphic elements.
+The method is used in rendering millions of data (e.g. rendering geo data). In these scenarios, the entire size of data is probably up to 10 or 100 MB, even using binary format. So chunked load data and rendering is required. When using `appendData`, the graphic elements that have been rendered will not be cleared, but keep rendering new graphic elements.
 
 Notice:
 
 + Currently, when a series is using `dataset`, it is not supported to use `appendData`.
-+ Currently not all types of series supported incremental rendering when using `appendData`. Only these types of series support it: scatter and lines of pure echarts, and scatterGL, linesGL and polygons3D of echarts-gl.
++ Currently, not all types of series support incremental rendering when using `appendData`. Only these types of series support it: scatter and lines of pure echarts, and scatterGL, linesGL and polygons3D of echarts-gl.
 
 
 ## clear

@@ -15,8 +15,7 @@ ECharts 的每种图表本身就内置了这种映射过程，比如折线图把
 下面对 `visualMap` 组件的使用方式进行简要的介绍。
 
 
-<br>
-<h2>数据和维度</h2>
+## 数据和维度
 
 ECharts中的数据，一般存放于 [series.data](option.html#series.data) 中。根据图表类型不同，数据的具体形式也可能有些许差异。比如可能是『线性表』、『树』、『图』等。但他们都有个共性：都是『数据项（dataItem）』的集合。每个数据项含有『数据值（value）』和其他信息（如果需要的话）。每个数据值，可以是单一的数值（一维）或者一个数组（多维）。
 
@@ -58,10 +57,7 @@ series: {
 
 
 
-
-
-<br>
-<h2>visualMap 组件</h2>
+## visualMap 组件
 
 visualMap 组件定义了把数据的『哪个维度』映射到『什么视觉元素上』。
 
@@ -111,7 +107,7 @@ option = {
 option = {
     visualMap: [
         {
-            type: 'piecewise'
+            type: 'piecewise',
             min: 0,
             max: 5000,
             dimension: 3,       // series.data 的第四个维度（即 value[3]）被映射

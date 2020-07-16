@@ -180,9 +180,10 @@ Color of axis label is set to be [axisLine.lineStyle.color](~${componentType}.ax
 {{target: partial-axis-common-minor-tick}}
 
 #${prefix} minorTick(Object)
+{{ use: partial-version(version = "4.6.0") }}
 Settings related minor ticks.
 
-Note: `minorTick` is not available in the `cateogry` type axis.
+Note: `minorTick` is not available in the `category` type axis.
 
 Examples:
 
@@ -262,6 +263,7 @@ splitLine: {
 {{target: partial-axis-common-minor-split-line}}
 
 #${prefix} minorSplitLine(Object)
+{{ use: partial-version(version = "4.6.0") }}
 Minor split lines of axis in the [grid](~grid) area。It will align to the [minorTick](~${componentType}.minorTick)
 
 ##${prefix} show(boolean) = ${defaultShow|default(false)}
@@ -304,24 +306,29 @@ SplitArea color could also be set in color array, which the split lines would ta
 
 
 
-{{target: axis-common}}
-
-#${prefix} type(string) = ${axisTypeDefault|default('value')}
-
-Type of axis
+{{target: partial-axis-type-content}}
+Type of axis.
 
 Option:
 + `'value'`
     Numerical axis, suitable for continuous data.
 
 + `'category'`
-    Category axis, suitable for discrete category data. Data should only be set via [data](~${componentType}.data) for this type.
+    Category axis, suitable for discrete category data. Category data can be auto retrieved from [series.data](~series.data) or [dataset.source](~dataset.source){{if: ${componentType} }}, or can be specified via [${componentType}.data](~${componentType}.data){{/if}}.
 
 + `'time'`
     Time axis, suitable for continuous time series data. As compared to value axis, it has a better formatting for time and a different tick calculation method. For example, it decides to use month, week, day or hour for tick based on the range of span.
 
 + `'log'`
     Log axis, suitable for log data.
+
+
+{{target: axis-common}}
+
+#${prefix} type(string) = ${axisTypeDefault|default('value')}
+{{use: partial-axis-type-content(
+    componentType=${componentType}
+) }}
 
 {{ if: ${componentType} !== 'angleAxis' }}
 #${prefix} name(string)
@@ -389,6 +396,8 @@ min: function (value) {
 }
 ```
 
+`value` is an object, containing the `min` value and `max` value of the data. This function should return the min value of axis, or return `null`/`undefined` to make echarts use the auto calculated min value (`null`/`undefined` return is only supported since `v4.8.0`).
+
 #${prefix} max(number|string|Function) = null
 
 The maximum value of axis.
@@ -405,6 +414,9 @@ max: function (value) {
     return value.max - 20;
 }
 ```
+
+`value` is an object, containing the `min` value and `max` value of the data. This function should return the max value of axis, or return `null`/`undefined` to make echarts use the auto calculated max value (`null`/`undefined` return is only supported since `v4.8.0`).
+
 
 #${prefix} scale(boolean) = false
 

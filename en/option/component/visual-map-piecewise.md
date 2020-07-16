@@ -186,7 +186,7 @@ The distance between the ends of the graphical elements for pieces and the label
 
 ## showLabel(boolean)
 
-Whether to show label of each item. By defualt, label will not be shown when [visualMap-piecewise.text](~visualMap-piecewise.text) used, otherwise label will be shown.
+Whether to show label of each item. By default, label will not be shown when [visualMap-piecewise.text](~visualMap-piecewise.text) used, otherwise label will be shown.
 
 ## itemGap = 10
 
@@ -215,7 +215,7 @@ When they are not specified, `itemSymbol` is adopted as the default value (but j
 
 the formatter tool for label.
 
-+ If it was set as a `string`, it refers to a template, for instance: `aaaa{value}bbbb{value2}`, where `{value}` and `{value2}` represents the current seleted range of dataValues.
++ If it was set as a `string`, it refers to a template, for instance: `aaaa{value}bbbb{value2}`, where `{value}` and `{value2}` represents the current selected range of dataValues.
 
 + If it was set as a `Function`, it refers to a callback function, for instance:
 

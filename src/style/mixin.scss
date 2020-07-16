@@ -21,6 +21,7 @@
 
         p {
             margin: 0;
+            font-size: 12px;
         }
 
         pre {
@@ -43,6 +44,7 @@
         margin: 12px 0 12px 0;
         font-size: 14px;
     }
+
     pre {
         margin: 5px 0;
         border-radius: 5px;
@@ -53,15 +55,15 @@
     }
 
     .codespan {
-        padding: 2px 4px;
+        padding: 1px 5px;
         font-size: 14px;
-        color: #293C55;
-        background-color: #f9f2f4;
+        //color: #293C55;
+        background-color: #f4f4f4;
         border-radius: 4px;
     }
 
     code *, code {
-        font-family: Monaco, 'Source Code Pro', 'Courier New', monospace;
+        font-family: 'Source Code Pro', 'Courier New', monospace;
     }
 
     ol {
@@ -78,6 +80,6 @@
     }
 
     a {
-        font-family: Monaco,'Source Code Pro', STHeiti, "Microsoft Yahei", "WenQuanYi Micro Hei", sans-serif;
+        font-family: 'Source Code Pro', STHeiti, "Microsoft Yahei", "WenQuanYi Micro Hei", sans-serif;
     }
 }

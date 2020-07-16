@@ -11,6 +11,42 @@
 
 ~[600x500](${galleryViewPath}radar-aqi&edit=1&reset=1)
 
+<ExampleBaseOption name="radar" title="基础雷达图" title-en="Basic Radar">
+const option = {
+    title: {
+        text: '基础雷达图'
+    },
+    tooltip: {},
+    legend: {
+        data: ['Allocated Budget', 'Actual Spending']
+    },
+    radar: {
+        indicator: [
+            { name: 'sales', max: 6500},
+            { name: 'Administration', max: 16000},
+            { name: 'Information Techology', max: 30000},
+            { name: 'Customer Support', max: 38000},
+            { name: 'Development', max: 52000},
+            { name: 'Marketing', max: 25000}
+        ]
+    },
+    series: [{
+        name: '预算 vs 开销（Budget vs spending）',
+        type: 'radar',
+        data: [
+            {
+                value: [4300, 10000, 28000, 35000, 50000, 19000],
+                name: 'Allocated Budget'
+            },
+            {
+                value: [5000, 14000, 28000, 31000, 42000, 21000],
+                name: 'Actual Spending'
+            }
+        ]
+    }]
+};
+</ExampleBaseOption>
+
 ## type(string) = 'radar'
 
 {{use: partial-component-id(prefix="#")}}

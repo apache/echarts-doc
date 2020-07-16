@@ -162,7 +162,8 @@ The label configuration of a single data item.
 {{use: partial-marker(
     prefix="#",
     galleryEditorPath=${galleryEditorPath},
-    seriesType="funnel"
+    seriesType="funnel",
+    name="mark point"
 )}}
 
 {{use:partial-animation(prefix="#")}}

@@ -13,7 +13,7 @@ Symbol size at the two ends of the mark line. It can be an array for two ends, o
 **Attention: ** You cannot assgin width and height seperately as normal `symbolSize`.
 
 ##${prefix} precision(number) = 2
-Precison of marking line value, which is useful when displaying average value mark line.
+Precision of marking line value, which is useful when displaying average value mark line.
 
 ##${prefix} label(Object)
 Mark line text.
@@ -150,7 +150,7 @@ The distance between labels and mark lines can be set with [label.distance](~ser
 ~[800x500](${galleryViewPath}bar-markline&reset=1&edit=1)
 
 #${prefix} distance(number|Array)
-The distance between labels and mark lines. If it's an array, then the first element is the horizontal distance, and the second element is the vertical distance. If it's a number, then the horizontal and vertical disntances are the same.
+The distance between labels and mark lines. If it's an array, then the first element is the horizontal distance, and the second element is the vertical distance. If it's a number, then the horizontal and vertical distances are the same.
 
 #${prefix} formatter(string|Function)
 {{ use: partial-1d-data-label-formatter }}

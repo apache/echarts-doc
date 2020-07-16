@@ -31,7 +31,8 @@ Broken line chart relates all the data points [symbol](~series-line.symbol) by b
     defaultSymbol="'circle'",
     defaultSymbolSize=4,
     prefix="#",
-    hasCallback=true
+    hasCallback=true,
+    name="line point"
 ) }}
 
 ## showSymbol(boolean) = true
@@ -206,7 +207,8 @@ The style of the symbol of single data point.
     galleryEditorPath=${galleryEditorPath},
     seriesType="line",
     hasCoord=true,
-    hasType=true
+    hasType=true,
+    name="mark point"
 )}}
 
 {{use:partial-z-zlevel(
