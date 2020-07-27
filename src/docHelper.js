@@ -109,7 +109,7 @@ export function preload(_baseUrl, _cdnRoot, _rootName, _docVersion) {
     let outlineUrl = `${cdnRoot}/${rootName}-outline.json?${docVersion}`;
 
     if (!outlineFetcher) {
-        outlineFetcher = fetch(outlineUrl)
+        outlineFetcher = fetch(outlineUrl, {mode: 'cors'})
             .then(response => response.json())
             .then(_json => processOutlines(_json));
     }
@@ -182,7 +182,7 @@ function ensurePageDescStorage(targetPath) {
 
     if (!descStorage[partionKey]) {
         let url = `${cdnRoot}/${partionKey}.json?${docVersion}`;
-        let fetcher = fetch(url).then(response => response.json());
+        let fetcher = fetch(url, {mode: 'cors'}).then(response => response.json());
         descStorage[partionKey] = {
             fetcher
         };
