@@ -96,5 +96,5 @@ The default value of `useUTC` is false, for sake of considering:
 + In many cases, labels should be displayed in local time (whether the time is stored in server in local time or UTC).
 + If user uses time string (like '2012-01-02') in data, it usually means local time if time zone is not specified. Time should be displayed in its original time zone by default.
 
-Notice: the setting only effects "display time", but not "parse time".
-About how time value (like `1491339540396`, `'2013-01-04'`, ...) is parsed in echarts, see [the time part in date](~series-line.data).
+Notice: the setting only affects "display time", not "parse time".
+For how time value (like `1491339540396`, `'2013-01-04'`, ...) is parsed in echarts, see [the time part in date](~series-line.data).
