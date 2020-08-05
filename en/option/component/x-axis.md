@@ -32,6 +32,19 @@ The first x axis in grid defaults to be on the bottom of the grid, and the secon
 Offset of x axis relative to default position. Useful when multiple x axis has same [position](~xAxis.position) value.
 
 
+## realtimeSort = false
+
+`realtimeSort` is used to enable bar race if set to be `true`. It is only valid if the [type](~xAxis.type) of xAxis is `'value'`.
+
+It should be used along with other options to enable bar race. Please refer to [bar race](tutorial.html#Bar%20Race) tutorial for more details.
+
+## sortSeriesIndex = 0
+
+The index of series used to sort in bar race. Since only one series is supported in bar race, `sortSeriesIndex` should always be `0`. It is only valid if [realtimeSort](~xAxis.realtimeSort) is `true` and [type](~xAxis.type) is `'value'`.
+
+It should be used along with other options to enable bar race. Please refer to [bar race](tutorial.html#Bar%20Race) tutorial for more details.
+
+
 {{ use: axis-common(
     prefix='#',
     componentType='xAxis',

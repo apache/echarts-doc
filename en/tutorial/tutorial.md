@@ -12,6 +12,7 @@
 {{ import: media-query }}
 {{ import: visual-map }}
 {{ import: event }}
+{{ import: bar-race }}
 {{ import: drag-example }}
 {{ import: custom-series }}
 {{ import: rich-text }}
