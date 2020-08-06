@@ -1,9 +1,10 @@
 const path = require('path');
 
 module.exports = {
-    galleryViewPath: 'http://localhost/incubator-echarts-website/examples/en/view.html?c=',
-    galleryEditorPath: 'http://localhost/incubator-echarts-website/examples/en/editor.html?c=',
-    websitePath: './',
+    galleryViewPath: 'http://localhost/incubator-echarts-website/next/examples/view.html?c=',
+    galleryEditorPath: 'http://localhost/incubator-echarts-website/next/examples/editor.html?c=',
+    websitePath: 'http://localhost/incubator-echarts-website',
+
 
     imagePath: 'asset/img/',
     gl: {

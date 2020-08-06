@@ -116,6 +116,18 @@ y 轴的位置。
 
 Y 轴相对于默认位置的偏移，在相同的 `position` 上有多个 Y 轴的时候有用。
 
+## realtimeSort = false
+
+用于制作动态排序柱状图。设为 `true` 时，表示 Y 轴开启实时排序效果，仅当 X 轴的 [type](~yAxis.type) 是 `'value'` 时有效。
+
+需要配合其他配置项共同实现动态排序柱状图效果，具体参见[动态排序柱状图](tutorial.html#%E5%8A%A8%E6%80%81%E6%8E%92%E5%BA%8F%E6%9F%B1%E7%8A%B6%E5%9B%BE)教程。
+
+## sortSeriesIndex = 0
+
+动态排序柱状图用于排序的系列 id。目前只支持一个系列的柱状图排序效果，所以这个值只能取 0。仅当 Y 轴 [realtimeSort](~yAxis.realtimeSort) 为 `true` 并且 [type](~yAxis.type) 是 `'value'` 时有效。
+
+需要配合其他配置项共同实现动态排序柱状图效果，具体参见[动态排序柱状图](tutorial.html#%E5%8A%A8%E6%80%81%E6%8E%92%E5%BA%8F%E6%9F%B1%E7%8A%B6%E5%9B%BE)教程。
+
 {{ use: axis-common(
     prefix='#',
     componentType='yAxis',

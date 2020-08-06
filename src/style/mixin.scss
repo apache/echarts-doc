@@ -31,10 +31,12 @@
 
     iframe {
         border: 1px solid #ccc;
+        border-radius: 5px;
         display: block;
         margin-top: 5px;
         max-width: 100%;
     }
+
     img {
         max-width: 100%;
     }
@@ -75,6 +77,7 @@
         font-size: 14px;
     }
     ol li {
+        margin: 1em 0;
         list-style: decimal;
         font-size: 14px;
     }

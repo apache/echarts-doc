@@ -1,9 +1,10 @@
 // Global doc schema manager.
 // Not in the vue observer.
-import {fetch} from 'whatwg-fetch';
+// import {fetch} from 'whatwg-fetch';
 // import levenshtein from 'js-levenshtein';
 // stringSimilarity has better result than levenshtein when handling typo
 import { stringSimilarity } from 'string-similarity-js';
+import {getDocJSONPVarNname} from './shared';
 // import stripHtml from 'string-strip-html';
 // import Fuse from 'fuse.js';
 
@@ -23,6 +24,24 @@ let pageOutlines;
 let outlineNodesMap = {};
 let allNodesPaths = [];
 
+function fetchDocContentJS(basename) {
+    return new Promise(function (resolve, reject) {
+        const varname = getDocJSONPVarNname(basename);
+        const url = `${cdnRoot}/${basename}?${docVersion}`;
+        const script = document.createElement('script');
+        script.async = true;
+        script.onload = function () {
+            if (window[varname]) {
+                resolve(window[varname]);
+            }
+            else {
+                reject(`Load failed. ${varname}`);
+            }
+        };
+        script.src = url;
+        document.body.appendChild(script);
+    });
+}
 
 function stripHtml(str) {
     // Simple and fast regexp html replacer
@@ -106,11 +125,8 @@ export function preload(_baseUrl, _cdnRoot, _rootName, _docVersion) {
     rootName = _rootName;
     docVersion = _docVersion || '1';
 
-    let outlineUrl = `${cdnRoot}/${rootName}-outline.json?${docVersion}`;
-
     if (!outlineFetcher) {
-        outlineFetcher = fetch(outlineUrl, {mode: 'cors'})
-            .then(response => response.json())
+        outlineFetcher = fetchDocContentJS(`${rootName}-outline.js`)
             .then(_json => processOutlines(_json));
     }
 
@@ -181,8 +197,7 @@ function ensurePageDescStorage(targetPath) {
         : rootName + '.' + pagePath;
 
     if (!descStorage[partionKey]) {
-        let url = `${cdnRoot}/${partionKey}.json?${docVersion}`;
-        let fetcher = fetch(url, {mode: 'cors'}).then(response => response.json());
+        let fetcher = fetchDocContentJS(`${partionKey}.js`);
         descStorage[partionKey] = {
             fetcher
         };

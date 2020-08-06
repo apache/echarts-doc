@@ -1,8 +1,8 @@
 const path = require('path');
 
 module.exports = {
-    galleryViewPath: 'https://www.echartsjs.com/examples/en/view.html?c=',
-    galleryEditorPath: 'https://www.echartsjs.com/examples/en/editor.html?c=',
+    galleryViewPath: 'https://echarts.apache.org/next/examples/view.html?c=',
+    galleryEditorPath: 'https://echarts.apache.org/next/examples/editor.html?c=',
     websitePath: 'https://www.echartsjs.com',
 
     imagePath: 'asset/img/',
