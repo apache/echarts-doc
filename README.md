@@ -36,9 +36,19 @@ It will:
 + websitePath
 
 For example:
+Embed a example in doc:
 ```md
 ~[700x300](${galleryViewPath}doc-example/aria-pie&edit=1&reset=1)
 ```
+Provide a example link in doc:
+```md
+[vertically scrollable legend](${galleryEditorPath}pie-legend&edit=1&reset=1)
+```
+Provide a website link in doc:
+```md
+[Apache ECharts (incubating) website](${websitePath}/en/download.html)
+```
+
 
 #### Reference of option
 
