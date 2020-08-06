@@ -1,3 +1,49 @@
+## v4.9.0
+<div class="time">2020-08-06</div>
+
++ [Feature] [graph] 关系图支持节点间多条关系边. [#12590](https://github.com/apache/incubator-echarts/pull/12590) ([Zak Wu](https://github.com/wf123537200))
+
++ [Feature] [funnel] 漏斗图添加`orient`配置，支持水平布局. [#12754](https://github.com/apache/incubator-echarts/pull/12754) ([regrex](https://github.com/regrex))
+
++ [Enhancement] [tooltip] 添加文字阴影相关的配置. [#12664](https://github.com/apache/incubator-echarts/pull/12664) ([Ovilia](https://github.com/Ovilia))
+
++ [Enhancement] [toolbox] toolbox 中的 dataZoom 添加`brushStyle`配置刷选框样式. [#12550](https://github.com/apache/incubator-echarts/pull/12550) ([zhiyuc123](https://github.com/zhiyuc123))
+
++ [Fix] [themeRiver] 优化事件河流图中的数据预处理. [#12022](https://github.com/apache/incubator-echarts/pull/12022) ([Zaynex](https://github.com/Zaynex))
+
++ [Fix] [toolbox] 修复饼图可能在数据视图(dataView)修改完后渲染不正确的问题. [#12561](https://github.com/apache/incubator-echarts/pull/12561) ([Zhongxiang Wang](https://github.com/plainheart))
+
++ [Fix] [toolbox] 修复在使用`dataset`的时候数据视图(dataView)显示`NaN`的问题. [#11849](https://github.com/apache/incubator-echarts/pull/11849) ([Su Siwen](https://github.com/susiwen8))
+
++ [Fix] [toolbox] 修复`saveAsImage`在部分平台上无法使用的问题. [#12643](https://github.com/apache/incubator-echarts/pull/12643) ([lzr900515](https://github.com/lzr900515))
+
++ [Fix] [lines] 修复再次 setOption 的时候不设置数据会导致数据和图形丢失的问题. [#12850](https://github.com/apache/incubator-echarts/pull/12850) ([Zhongxiang Wang](https://github.com/plainheart))
+
++ [Fix] [sunburst] [treemap] 修复`levels`下的`label.formatter`无法起作用的问题. [#12742](https://github.com/apache/incubator-echarts/pull/12742) ([Ovilia](https://github.com/Ovilia))
+
++ [Fix] [bmap] 修复百度地图插件中拖动的时候`moveend`事件一直被触发的问题. [#12558](https://github.com/apache/incubator-echarts/pull/12558) ([Zhongxiang Wang](https://github.com/plainheart))
+
++ [Fix] [grid] 修复在配置`containLabel`时候网格边距可能计算不正确的问题. [#12259](https://github.com/apache/incubator-echarts/issues/12259) ([Ling310](https://github.com/Ling310))
+
++ [Fix] [tooltip] 修复富文本模式下雷达图和地图的换行不正确的问题. [#12664](https://github.com/apache/incubator-echarts/pull/12664) ([Ovilia](https://github.com/Ovilia))
+
++ [Fix] [tooltip] 在图表高宽发生改变的时候能够更新提示框的位置. [#12834](https://github.com/apache/incubator-echarts/pull/12834) ([liulinboyi](https://github.com/liulinboyi))
+
++ [Fix] [tooltip] 修复富文本模式下提示框释放的问题. [#12608](https://github.com/apache/incubator-echarts/pull/12608) ([Zhongxiang Wang](https://github.com/plainheart))
+
++ [Fix] [tree] 修复树图下节点使用图片的时候在第一次渲染无法显示的问题. [#12367](https://github.com/apache/incubator-echarts/pull/12367) ([Zhongxiang Wang](https://github.com/plainheart))
+
++ [Fix] [geo] 修复标签的`formatter`无法起作用的问题. [#12762](https://github.com/apache/incubator-echarts/pull/12762) ([Zhongxiang Wang](https://github.com/plainheart))
+
++ [Fix] [bar] 修复通过`showBackground`动态开启背景可能会报错的问题. [#13085](https://github.com/apache/incubator-echarts/pull/13085) ([easonyq](https://github.com/easonyq))
+
++ [Fix] [markArea] 不显示在坐标轴外的标域(markArea)的标签. [#12669](https://github.com/apache/incubator-echarts/pull/12669) ([Ovilia](https://github.com/Ovilia))
+
++ [Fix] [markLine] [markPoint] 修复`symbolRotate`配置无法起作用的问题. [#12737](https://github.com/apache/incubator-echarts/pull/12737) [#12392](https://github.com/apache/incubator-echarts/pull/12392) ([Zhongxiang Wang](https://github.com/plainheart))
+
++ [Fix] [polar] 修复柱状图在有负值的刻度线的极坐标系上显示的问题. [#12418](https://github.com/apache/incubator-echarts/pull/12418) ([gracelia](https://github.com/gracelia))
+
+
 ## v4.8.0
 <div class="time">2020-05-25</div>
 

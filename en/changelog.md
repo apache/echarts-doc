@@ -1,3 +1,50 @@
+## v4.9.0
+<div class="time">2020-08-06</div>
+
++ [Feature] [graph] Support multiple edges to link nodes in graph. [#12590](https://github.com/apache/incubator-echarts/pull/12590) ([Zak Wu](https://github.com/wf123537200))
+
++ [Feature] [funnel] Add `orient` option in funnel. Support horizontal layout. [#12754](https://github.com/apache/incubator-echarts/pull/12754) ([regrex](https://github.com/regrex))
+
++ [Enhancement] [tooltip] Add text shadow options. [#12664](https://github.com/apache/incubator-echarts/pull/12664) ([Ovilia](https://github.com/Ovilia))
+
++ [Enhancement] [toolbox] Add `brushStyle` option to configuration style of brush rect in the dataZoom feature. [#12550](https://github.com/apache/incubator-echarts/pull/12550) ([zhiyuc123](https://github.com/zhiyuc123))
+
++ [Fix] [themeRiver] Optimize data process in themeRiver. [#12022](https://github.com/apache/incubator-echarts/pull/12022) ([Zaynex](https://github.com/Zaynex))
+
++ [Fix] [toolbox] Fix pie series render incorrectly after editing its data in the dataView feature. [#12561](https://github.com/apache/incubator-echarts/pull/12561) ([Zhongxiang Wang](https://github.com/plainheart))
+
++ [Fix] [toolbox] Fix dataView shows NaN when using dataset. [#11849](https://github.com/apache/incubator-echarts/pull/11849) ([Su Siwen](https://github.com/susiwen8))
+
++ [Fix] [toolbox] Fix saveAsImage may have error in some special environments. [#12643](https://github.com/apache/incubator-echarts/pull/12643) ([lzr900515](https://github.com/lzr900515))
+
++ [Fix] [lines] Fix lines disappear if setOption again without data. [#12850](https://github.com/apache/incubator-echarts/pull/12850) ([Zhongxiang Wang](https://github.com/plainheart))
+
++ [Fix] [sunburst] [treemap] Fix label formatter in `levels` not work bug. [#12742](https://github.com/apache/incubator-echarts/pull/12742) ([Ovilia](https://github.com/Ovilia))
+
++ [Fix] [bmap] Fix bmap event `moveend` is always triggered when dragging or zoomend. [#12558](https://github.com/apache/incubator-echarts/pull/12558) ([Zhongxiang Wang](https://github.com/plainheart))
+
++ [Fix] [grid] Fix wrong gap calculation when `containLabel`is set in grid. [#12259](https://github.com/apache/incubator-echarts/issues/12259) ([Ling310](https://github.com/Ling310))
+
++ [Fix] [tooltip] Fix newline in tooltip of radar and map series when using `ricText` render mode. [#12664](https://github.com/apache/incubator-echarts/pull/12664) ([Ovilia](https://github.com/Ovilia))
+
++ [Fix] [tooltip] Update tooltip position proportionally when chart resized. [#12834](https://github.com/apache/incubator-echarts/pull/12834) ([liulinboyi](https://github.com/liulinboyi))
+
++ [Fix] [tooltip] Fix tooltip dispose in `richText` render mode. [#12608](https://github.com/apache/incubator-echarts/pull/12608) ([Zhongxiang Wang](https://github.com/plainheart))
+
++ [Fix] [tree] Fix image symbol not display on first render. [#12367](https://github.com/apache/incubator-echarts/pull/12367) ([Zhongxiang Wang](https://github.com/plainheart))
+
++ [Fix] [geo] Fix label formatter not work bug. [#12762](https://github.com/apache/incubator-echarts/pull/12762) ([Zhongxiang Wang](https://github.com/plainheart))
+
++ [Fix] [bar] Fix error when switching `showBackground` from `false` to `true`. [#13085](https://github.com/apache/incubator-echarts/pull/13085) ([easonyq](https://github.com/easonyq))
+
++ [Fix] [markArea] Fix label is not hidden when markArea is outside the grid. [#12669](https://github.com/apache/incubator-echarts/pull/12669) ([Ovilia](https://github.com/Ovilia))
+
++ [Fix] [markLine] [markPoint] Fix `symbolRotate` not work bug. [#12737](https://github.com/apache/incubator-echarts/pull/12737) [#12392](https://github.com/apache/incubator-echarts/pull/12392) ([Zhongxiang Wang](https://github.com/plainheart))
+
++ [Fix] [polar] Fix bar layout on polar with nagive axis. [#12418](https://github.com/apache/incubator-echarts/pull/12418) ([gracelia](https://github.com/gracelia))
+
+
+
 ## v4.8.0
 <div class="time">2020-05-25</div>
 
@@ -5,7 +52,7 @@
 
 + [Feature] Add more parameters in the loading effect. [#12414](https://github.com/apache/incubator-echarts/pull/12414) ([Yu Feng](https://github.com/yufeng04))
 
-+ [Feature] Support callback for `symbolRotate`. [#12348](https://github.com/apache/incubator-echarts/pull/12348) [#12354](https://github.com/apache/incubator-echarts/pull/12354) ([plainheart](https://github.com/plainheart))
++ [Feature] Support callback for `symbolRotate`. [#12348](https://github.com/apache/incubator-echarts/pull/12348) [#12354](https://github.com/apache/incubator-echarts/pull/12354) ([Zhongxiang Wang](https://github.com/plainheart))
 
 + [Feature] [axis] Callbacks of `min`, `max` can return `null` to use the default value now. [#11829](https://github.com/apache/incubator-echarts/pull/12215) ([Su Siwen](https://github.com/susiwen8)), [#12371](https://github.com/apache/incubator-echarts/pull/12371) ([Su Shuang](https://github.com/100pah))
 
