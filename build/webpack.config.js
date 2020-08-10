@@ -39,6 +39,11 @@ module.exports = {
             }]
         }]
     },
+    externals: {
+        vue: 'Vue',
+        codemirror: 'CodeMirror',
+        'js-beautify': 'beautifier'
+    },
     plugins: [
         new webpack.IgnorePlugin(/^fs$/),
         new VueLoaderPlugin(),
