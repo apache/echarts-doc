@@ -50,8 +50,8 @@
     "yargs": "^14.2.3"
   },
   "dependencies": {
+    "codemirror": "^5.54.0",
     "highlight.js": "^9.18.1",
-    "jsonpack": "^1.1.5",
     "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",
     "mark.js": "^8.11.1",
