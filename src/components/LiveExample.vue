@@ -68,18 +68,19 @@ import CodeMirror from 'codemirror';
 import 'codemirror/lib/codemirror.css';
 // import 'codemirror/theme/paraiso-dark.css';
 import 'codemirror/theme/dracula.css';
-import 'codemirror/mode/javascript/javascript.js'
-import beautify from 'js-beautify';
+// import 'codemirror/mode/javascript/javascript.js'
+import beautifier from 'js-beautify';
 import throttle from 'lodash.throttle';
 import arrayDiff from 'zrender/src/core/arrayDiff';
 import scrollIntoView from 'scroll-into-view';
+import {EChartsLib} from '../config';
 
 let echartsLoadPromise;
 
 function fetchECharts() {
     return echartsLoadPromise || (echartsLoadPromise = new Promise(function (resolve) {
         const script = document.createElement('script');
-        script.src = 'https://cdn.jsdelivr.net/npm/echarts@5.0.0-alpha.1/dist/echarts.min.js';
+        script.src = EChartsLib;
         script.async = true;
         script.onload = function () {
             resolve();
@@ -354,7 +355,7 @@ export default {
         },
 
         formattedOptionCodeStr() {
-            return beautify.js(this.optionCodeStr
+            return beautifier.js(this.optionCodeStr
                 .replace(/"(\w+)"\s*:/g, '$1:')
                 .replace(/"__functionstart__/g, "")
                 .replace(/__functionend__"/g, "")

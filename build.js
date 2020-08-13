@@ -256,7 +256,7 @@ function writeSingleSchemaPartioned(schema, language, docName, format) {
     const outlineBasename = `${docName}-outline.json`;
     const outlineDestPath = path.resolve(config.releaseDestDir, `${language}/documents/${docName}-parts/${outlineBasename}`);
     fse.ensureDirSync(path.dirname(outlineDestPath));
-    fse.outputFile(
+    fse.outputFileSync(
         outlineDestPath,
         format ? JSON.stringify(outline, null, 2) : JSON.stringify(outline),
         'utf-8'
@@ -295,7 +295,7 @@ function writeSingleSchemaPartioned(schema, language, docName, format) {
         const descDestPath = path.resolve(config.releaseDestDir, `${language}/documents/${docName}-parts/${descBasename}`);
         fse.ensureDirSync(path.dirname(descDestPath));
         const content = JSON.stringify(json, null, 2);
-        fse.outputFile(
+        fse.outputFileSync(
             descDestPath,
             // format ? JSON.stringify(partDescriptions, null, 2) : JSON.stringify(partDescriptions),
             content,

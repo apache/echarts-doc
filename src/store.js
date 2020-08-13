@@ -111,7 +111,7 @@ export function changeOption(option, path, value) {
         const itemStr = pathParts.shift();
         nodePath = (nodePath ? (nodePath + '.') : '') + itemStr;
 
-        if (typeof obj !== 'object' && objKey === 'data') {
+        if (objKey === 'data' && (typeof obj !== 'object' || Array.isArray(obj))) {
             // Convert number to object
             obj = {
                 value: obj
