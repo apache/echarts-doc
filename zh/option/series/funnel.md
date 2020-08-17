@@ -93,6 +93,11 @@ option = {
     formatter=true
 )}}
 
+## labelLayout(Object)
+{{ use: partial-label-layout(
+    prefix="##"
+) }}
+
 ## labelLine(Object)
 标签的视觉引导线样式，在 [label 位置](~series-funnel.label.position) 设置为`'left'`或者`'right'`的时候会显示视觉引导线。
 {{ use: partial-funnel-label-line(

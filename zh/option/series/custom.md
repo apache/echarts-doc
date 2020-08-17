@@ -389,6 +389,12 @@ renderItem 函数的第二个参数。
     hasCallback=false
 )}}
 
+## labelLayout(Object)
+{{ use: partial-label-layout(
+    prefix="##"
+) }}
+
+
 ## emphasis(Object)
 
 高亮图形样式

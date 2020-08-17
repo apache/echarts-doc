@@ -209,6 +209,12 @@ edgeSymbol: ['circle', 'arrow']
     prefix="##"
 )}}
 
+## labelLayout(Object)
+{{ use: partial-label-layout(
+    prefix="##"
+) }}
+
+
 ## emphasis(Object)
 高亮的图形样式。
 ### itemStyle(Object)

@@ -119,6 +119,12 @@ option = {
     formatter=true
 )}}
 
+## labelLayout(Object)
+
+{{ use: partial-label-layout(
+    prefix="##"
+) }}
+
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
 {{use:partial-bar-item-style(
@@ -234,7 +240,6 @@ option = {
 #### label(Object)
 
 {{ use:partial-label(prefix="####") }}
-
 
 #### itemStyle(Object)
 {{use:partial-bar-item-style(prefix="####")}}

@@ -169,6 +169,11 @@ const option = {
     formatter1d=true
 )}}
 
+## labelLayout(Object)
+{{ use: partial-label-layout(
+    prefix="##"
+) }}
+
 
 ## lineStyle(Object)
 

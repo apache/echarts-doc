@@ -48,6 +48,11 @@
 
 {{ use: partial-datasetIndex }}
 
+## labelLayout(Object)
+{{ use: partial-label-layout(
+    prefix="##"
+) }}
+
 ## data(Array)
 {{ use: partial-1d-data-desc(name="地图") }}
 

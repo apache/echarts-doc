@@ -142,6 +142,11 @@ const option = {
     defaultFontSize=11,
 )}}
 
+## labelLayout(Object)
+{{ use: partial-label-layout(
+    prefix="##"
+) }}
+
 ## itemStyle(Object)
 
 主题河流中每个带状河流分支的样式。
