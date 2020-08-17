@@ -73,14 +73,14 @@ import beautifier from 'js-beautify';
 import throttle from 'lodash.throttle';
 import arrayDiff from 'zrender/src/core/arrayDiff';
 import scrollIntoView from 'scroll-into-view';
-import {EChartsLib} from '../config';
+import {ECHARTS_LIB} from '../config';
 
 let echartsLoadPromise;
 
 function fetchECharts() {
     return echartsLoadPromise || (echartsLoadPromise = new Promise(function (resolve) {
         const script = document.createElement('script');
-        script.src = EChartsLib;
+        script.src = ECHARTS_LIB;
         script.async = true;
         script.onload = function () {
             resolve();
