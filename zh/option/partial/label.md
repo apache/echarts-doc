@@ -67,16 +67,6 @@ ${name}图形上的文本标签，可用于说明图形的一些数据信息，�
 ) }}
 {{ /if }}
 
-
-{{ if: ${ellipsis} }}
-#${prefix} ellipsis(boolean) = true
-
-<ExampleUIControlBoolean />
-
-当文字超出的时候，是否超出部分替换为省略号。
-{{ /if }}
-
-
 {{ target:partial-label-position }}
 标签的位置。
 

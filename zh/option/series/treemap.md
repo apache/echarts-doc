@@ -693,8 +693,7 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 {{use:partial-label(
     prefix=${prefix} + "#",
     defaultPosition="'inside'",
-    formatter=true,
-    ellipsis=true
+    formatter=true
 )}}
 
 #${prefix} upperLabel(Object)
@@ -717,8 +716,7 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 {{use:partial-label(
     prefix=${prefix} + "#",
     defaultPosition="'inside'",
-    formatter=true,
-    ellipsis=true
+    formatter=true
 )}}
 
 ###${prefix} height(number) = 20
@@ -744,15 +742,13 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 {{use:partial-label(
     prefix=${prefix} + "##",
     defaultPosition="'inside'",
-    formatter=true,
-    ellipsis=true
+    formatter=true
 )}}
 ##${prefix} upperLabel(Object)
 {{use:partial-label(
     prefix=${prefix} + "##",
     defaultPosition="'inside'",
-    formatter=true,
-    ellipsis=true
+    formatter=true
 )}}
 ##${prefix} itemStyle(Object)
 {{use: partial-treemap-item-style(

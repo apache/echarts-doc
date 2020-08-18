@@ -530,8 +530,7 @@ This can hide the details of nodes when the rectangular area is not large enough
 {{use:partial-label(
     prefix=${prefix} + "#",
     defaultPosition="'inside'",
-    formatter=true,
-    ellipsis=true
+    formatter=true
 )}}
 
 
@@ -556,8 +555,7 @@ See:
 {{use:partial-label(
     prefix=${prefix} + "#",
     defaultPosition="'inside'",
-    formatter=true,
-    ellipsis=true
+    formatter=true
 )}}
 
 ##${prefix} height(number) = 20
@@ -582,15 +580,13 @@ Height of label area.
 {{use:partial-label(
     prefix=${prefix} + "##",
     defaultPosition="'inside'",
-    formatter=true,
-    ellipsis=true
+    formatter=true
 )}}
 ##${prefix} upperLabel(Object)
 {{use:partial-label(
     prefix=${prefix} + "##",
     defaultPosition="'inside'",
-    formatter=true,
-    ellipsis=true
+    formatter=true
 )}}
 ##${prefix} itemStyle(Object)
 {{use: partial-treemap-item-style(

@@ -88,6 +88,14 @@ labelLayout(params) {
 
 标签旋转角度。
 
+#${prefix} width(number)
+
+标签显示的宽度。可以配合`overflow`使用控制标签显示在固定宽度内
+
+#${prefix} height(number)
+
+标签显示的高度。可以配合`lineOverflow`使用控制标签显示在固定高度内
+
 #${prefix} align(string)
 
 标签水平对齐。可以设置`'left'`, `'center'`, `'right'`。
