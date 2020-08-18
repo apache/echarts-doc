@@ -139,7 +139,7 @@ var option = {
 
 `dimensions` can be used to define dimension info for `series.data` or `dataset.source`.
 
-Notice: if [dataset](~dataset) is used, we can provide dimension names in the first column/row of [dataset.source](~dataset.source), and not need to specify `dimensions` here. But if `dimensions` is specified here, echarts will not retrieve dimension names from the first row/column of `dataset.source` any more.
+Notice: if [dataset](~dataset) is used, we can definite dimensions in [dataset.dimensions](~dataset.dimensions), or provide dimension names in the first column/row of [dataset.source](~dataset.source), and not need to specify `dimensions` here. But if `dimensions` is specified here, it will be used despite the dimension definitions in dataset.
 
 
 For example:
