@@ -80,7 +80,8 @@ export default {
 }
 
 .el-autocomplete-suggestion.search-input-popper {
-    width: 300px!important;
+    min-width: 300px !important;
+    width: max-content !important;
     li {
         line-height: 28px;
         padding: 0 10px;
