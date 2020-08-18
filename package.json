@@ -9,6 +9,7 @@
   "scripts": {
     "build": "node build.js --env asf",
     "watch": "node build.js --env dev --watch",
+    "localsite": "node build.js --env localsite",
     "build:site": "npx webpack --config build/webpack.config.js --mode production",
     "watch:site": "npx webpack --config build/webpack.config.js --mode development --devtool sourcemap --watch",
     "server": "node server.js",

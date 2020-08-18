@@ -3,6 +3,7 @@ const marked = require('marked');
 const etpl = require('etpl');
 const glob = require('glob');
 const htmlparser2 = require('htmlparser2');
+const chalk = require('chalk');
 
 function convert(opts, cb) {
     const mdPath = opts.path;
@@ -42,7 +43,18 @@ function convert(opts, cb) {
             Object.prototype[key] = tplEnv[key];
         });
 
-        var mdStr = etplEngine.getRenderer(entry)({});
+        var mdStr;
+        var compileErr;
+        try {
+            mdStr = etplEngine.getRenderer(entry)({});
+        }
+        catch (err) {
+            compileErr = err;
+        }
+        if (compileErr) {
+            console.error(chalk.red('There is something illegal in doc md!'));
+            throw err;
+        }
 
         // Restore the global variables.
         Object.keys(tplEnv).forEach(function (key) {

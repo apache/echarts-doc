@@ -133,7 +133,7 @@ A `query` is in the following format:
 }
 ```
 
-Currently there are three supported attributes:`width`, `height`, `aspectRatio` (length-to-width ratio), each of which can add `min` or `max` as prefix. E.g., `minWidth: 200` stands for when width is greater than or equal to 200px. When two attributes are written together, it means *and* in Bool logic. For example, `{minWidth: 200, maxHeight: 300}` stands for when width is greater than or equal to 200px and height is smaller than or equal to 300px.
+Currently there are three supported attributes:`width`, `height`, `aspectRatio` (height / width), each of which can add `min` or `max` as prefix. E.g., `minWidth: 200` stands for when width is greater than or equal to 200px. When two attributes are written together, it means *and* in Bool logic. For example, `{minWidth: 200, maxHeight: 300}` stands for when width is greater than or equal to 200px and height is smaller than or equal to 300px.
 
 
 **option: **
