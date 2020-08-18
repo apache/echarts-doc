@@ -297,6 +297,12 @@ const option = {
 )}}
 
 
+## labelLayout(Object)
+{{ use: partial-label-layout(
+    prefix="##"
+) }}
+
+
 ## data(Array)
 
 [series-sunburst.data](~series-sunburst.data) 的数据格式是树状的，例如：

@@ -118,8 +118,6 @@ boundingCoords: [
     formatter=true
 )}}
 
-
-
 #${prefix} itemStyle(Object)
 
 {{ use: partial-item-style-desc(name= '地图区域的多边形') }}

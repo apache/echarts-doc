@@ -84,6 +84,7 @@ import PropertiesList from './PropertiesList.vue';
 import OptionControl from './OptionControl.vue';
 
 import {store, changeOption} from '../store';
+import {PROPERTIES_NOT_EXPAND} from '../config';
 
 export default {
     name: 'DocContentItemCard',
@@ -145,7 +146,9 @@ export default {
                 return this.manualExpanded;
             }
             else {
-                return this.depth < 2
+                // Default expanded logic
+                const parts = this.nodeData.path.split('.');
+                return (this.depth < 2 && PROPERTIES_NOT_EXPAND.indexOf(parts.pop()) < 0)
                     || store.currentPath.indexOf(this.nodeData.path) >= 0;
             }
         },

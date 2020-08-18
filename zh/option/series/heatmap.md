@@ -102,6 +102,11 @@ option = {
     defaultPosition="inside"
 ) }}
 
+## labelLayout(Object)
+{{ use: partial-label-layout(
+    prefix="##"
+) }}
+
 ## itemStyle(Object)
 样式设置，在直角坐标系([coordinateSystem](~series-heatmap.coordinateSystem): 'cartesian2d')上有效。
 {{use:partial-item-style(prefix="##")}}

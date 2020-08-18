@@ -109,7 +109,7 @@ option = {
 
 仅对极坐标系柱状图有效。
 
-~[800x500](${galleryViewPath}doc-example/polar-roundCap&reset=1&edit=1)
+~[800x500](${galleryViewPath}polar-roundCap&reset=1&edit=1)
 
 ## label(Object)
 {{use:partial-label-desc}}
@@ -118,6 +118,12 @@ option = {
     defaultPosition="'inside'",
     formatter=true
 )}}
+
+## labelLayout(Object)
+
+{{ use: partial-label-layout(
+    prefix="##"
+) }}
 
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}
@@ -234,7 +240,6 @@ option = {
 #### label(Object)
 
 {{ use:partial-label(prefix="####") }}
-
 
 #### itemStyle(Object)
 {{use:partial-bar-item-style(prefix="####")}}

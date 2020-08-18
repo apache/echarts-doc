@@ -170,6 +170,11 @@ levels: [{
     formatter1d=true
 )}}
 
+## labelLayout(Object)
+{{ use: partial-label-layout(
+    prefix="##"
+) }}
+
 ## itemStyle(Object)
 
 桑基图节点矩形的样式。

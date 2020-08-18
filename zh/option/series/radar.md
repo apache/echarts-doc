@@ -74,6 +74,11 @@ const option = {
     formatter=true
 )}}
 
+## labelLayout(Object)
+{{ use: partial-label-layout(
+    prefix="##"
+) }}
+
 ## itemStyle(Object)
 折线拐点标志的样式。
 {{use: partial-item-style(

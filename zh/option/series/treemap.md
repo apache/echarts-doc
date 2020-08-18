@@ -10,7 +10,6 @@
 ~[700x580](${galleryViewPath}treemap-obama&edit=1&reset=1)
 
 
-<br>
 **视觉映射：**
 
 treemap 首先是把数值映射到『面积』这种视觉元素上。
@@ -20,7 +19,6 @@ treemap 首先是把数值映射到『面积』这种视觉元素上。
 {{ use: partial-treemap-visual-detial }}
 
 
-<br>
 **下钻（drill down）：**
 
 `drill down` 功能即点击后才展示子层级。
@@ -30,9 +28,6 @@ treemap 首先是把数值映射到『面积』这种视觉元素上。
 ~[800x500](${galleryViewPath}treemap-drill-down&edit=1&reset=1)
 
 
-<br>
-<br>
-<br>
 注：treemap 的配置项 和 ECharts2 相比有一些变化，一些不太成熟的配置方式不再支持或不再兼容：
 
 + `center/size` 方式的定位不再支持，而是统一使用 `left/top/bottom/right/width/height` 方式定位。
@@ -45,8 +40,6 @@ treemap 首先是把数值映射到『面积』这种视觉元素上。
 
 + `itemStyle.childBorderWidth`、`itemStyle.childBorderColor`不再支持（因为这个配置方式只能定义两层的treemap）。统一使用 [series-treemap.levels](~series-treemap.levels) 来进行各层级的定义。
 
-<br>
-<br>
 
 <ExampleBaseOption name="treemap" title="基础矩形树图" title-en="Basic Treemap">
 const data = [{
@@ -469,6 +462,11 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 )}}
 
 
+## labelLayout(Object)
+{{ use: partial-label-layout(
+    prefix="##"
+) }}
+
 ## data(Array)
 
 [series-treemap.data](~series-treemap.data) 的数据格式是树状的，例如：
@@ -695,8 +693,7 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 {{use:partial-label(
     prefix=${prefix} + "#",
     defaultPosition="'inside'",
-    formatter=true,
-    ellipsis=true
+    formatter=true
 )}}
 
 #${prefix} upperLabel(Object)
@@ -719,8 +716,7 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 {{use:partial-label(
     prefix=${prefix} + "#",
     defaultPosition="'inside'",
-    formatter=true,
-    ellipsis=true
+    formatter=true
 )}}
 
 ###${prefix} height(number) = 20
@@ -746,15 +742,13 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 {{use:partial-label(
     prefix=${prefix} + "##",
     defaultPosition="'inside'",
-    formatter=true,
-    ellipsis=true
+    formatter=true
 )}}
 ##${prefix} upperLabel(Object)
 {{use:partial-label(
     prefix=${prefix} + "##",
     defaultPosition="'inside'",
-    formatter=true,
-    ellipsis=true
+    formatter=true
 )}}
 ##${prefix} itemStyle(Object)
 {{use: partial-treemap-item-style(

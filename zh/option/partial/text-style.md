@@ -32,6 +32,35 @@
     enableAutoColor=${enableAutoColor}
 )}}
 
+#${prefix} width(number)
+
+文本显示宽度。
+
+#${prefix} height(number)
+
+文本显示高度。
+
+
+#${prefix} overflow(string) = 'none'
+
+<ExampleUIControlEnum options="truncate,break,breakAll" />
+
+文字超出宽度是否截断或者换行。配置`width`时有效
+
++ `'truncate'` 截断，并在末尾显示`ellipsis`配置的文本，默认为`...`
++ `'break'` 换行
++ `'breakAll'` 换行，跟`'break'`不同的是，在英语等拉丁文中，`'breakAll'`还会强制单词内换行
+
+#${prefix} ellipsis(string) = '...'
+
+在`overflow`配置为`'truncate'`的时候，可以通过该属性配置末尾显示的文本。
+
+#${prefix} lineOverflow(string) = 'none'
+
+文本超出高度部分是否截断，配置`height`时有效。
+
++ `'truncate'` 在文本行数超出高度部分截断。
+
 {{ if: !${noRich} }}
 #${prefix} rich(Object)
 
