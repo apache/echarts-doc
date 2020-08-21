@@ -84,6 +84,14 @@ The default is `'source-over'`. Support settings for each series.
 
 `'lighter'` is also a common type of compositing operation. In this mode, the area where the number of graphics is concentrated is superimposed into a high-brightness color (white). It often used to highlight the effect of the area. See example [Global airline](${galleryEditorPath}lines-airline)
 
+# hoverLayerThreshold(number) = 3000
+
+When the number of element of the whole chart is larger than `hoverLayerThreshold`, a seperate hover layer is used to render hovered elements.
+
+The seperate hover layer is used to avoid re-painting the whole canvas when hovering on elements. Instead, the hovered elements are rendered in a seperate layer so that other elements don't have to be rendered again.
+
+ECharts 2 use seperate layer for all cases. But it brings some problems like the hovered elements may not covering everything else correctly, or translucent elements may not overlay correctly to each other. And it brings extra member cost due to the extra canvas and may bring burden on mobile devices. So since ECharts 3, the hover layer is not used by default. Only when the element amount is large enough will the hover layer used.
+
 # useUTC(boolean) = false
 
 Whether to use UTC in display.
