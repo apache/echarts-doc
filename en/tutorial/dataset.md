@@ -511,6 +511,13 @@ var option = {
 }
 ```
 
+## Data transform
+
+`Data transform` has been supported since Apache ECharts (incubating)<sup>TM</sup> 5. In echarts, the term `data transform` means that generate new data from user provided source data and transform functions. This feature is enable users to process data in declarative way, and provides users some common "transform functions" to make that kind of tasks "out-of-the-box".
+
+See the details of data transform in this [doc](~data-transform).
+
+
 
 ## ECharts3 data setting approach (series.data) can be used normally
 
@@ -540,6 +547,11 @@ The data setting approach before ECharts4 can still be used normally. If a serie
 ```
 
 In fact, setting data via [series.data](option.html#series.data) is not deprecated and useful in some cases. For example, for some charts, like [treemap](option.html#series-treemap), [graph](option.html#series-graph), [lines](option.html#series-lines), that do not apply table data, `dataset` is not supported for yet. Moreover, for the case of large data rendering (for example, millions of data), [appendData](api.html#echartsInstance.appendData) is probably needed to load data incrementally. `dataset` is not supported in the case.
+
+
+## Data transform
+
+See [datat transform](~Data%20Transform).
 
 
 ## Others

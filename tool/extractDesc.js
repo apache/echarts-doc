@@ -73,7 +73,8 @@ function convertToTree(rootSchema, rootNode) {
             childNode.arrayItemType = schema.properties.type.default.replace(/'/g, '');
         }
         else {
-            throw new Error('Some thing wrong happens', schema);
+            console.error('schema', schema);
+            throw new Error('Some thing wrong happens');
         }
         return childNode;
     }

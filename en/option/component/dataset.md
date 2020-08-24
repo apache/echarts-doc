@@ -7,7 +7,6 @@
 
 More details about `dataset` can be checked in the [tutorial](tutorial.html#Dataset).
 
----
 
 {{use: partial-component-id(prefix="#")}}
 
@@ -64,3 +63,12 @@ Whether the first row/column of `dataset.source` represents [dimension names](da
 + `false`: data start from the first row/column.
 
 Note: "the first row/column" means that if [series.seriesLayoutBy](~series.seriesLayoutBy) is set as `'column'`, pick the first row, otherwise, if it is set as `'row'`, pick the first column.
+
+
+## transform(Object)
+
+{{ use: partial-data-transform-tutorial-ref }}
+
+{{ import: component-data-transform-filter }}
+{{ import: component-data-transform-sort }}
+{{ import: component-data-transform-external }}

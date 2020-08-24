@@ -534,6 +534,10 @@ ECharts 4 之前一直以来的数据声明方式仍然被正常支持，如果�
 其实，[series.data](option.html#series.data) 也是种会一直存在的重要设置方式。一些特殊的非 table 格式的图表，如 [treemap](option.html#series-treemap)、[graph](option.html#series-graph)、[lines](option.html#series-lines) 等，现在仍不支持在 dataset 中设置，仍然需要使用 [series.data](option.html#series.data)。另外，对于巨大数据量的渲染（如百万以上的数据量），需要使用 [appendData](api.html#echartsInstance.appendData) 进行增量加载，这种情况不支持使用 `dataset`。
 
 
+## 数据转换器（ data transform ）
+
+参见 [datat transform](~%E4%BD%BF%E7%94%A8%20transform%20%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E8%BD%AC%E6%8D%A2)。
+
 ## 其他
 
 目前并非所有图表都支持 dataset。支持 dataset 的图表有：

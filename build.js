@@ -131,7 +131,7 @@ async function run() {
 
     for (let language of languages) {
         await md2jsonAsync({
-            sectionsAnyOf: ['visualMap', 'dataZoom', 'series', 'graphic.elements'],
+            sectionsAnyOf: ['visualMap', 'dataZoom', 'series', 'graphic.elements', 'dataset.transform'],
             entry: 'option',
             language
         });

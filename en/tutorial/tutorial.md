@@ -8,6 +8,7 @@
 {{ import: style-overview }}
 {{ import: dynamic-data }}
 {{ import: dataset }}
+{{ import: data-transform }}
 {{ import: data-zoom }}
 {{ import: media-query }}
 {{ import: visual-map }}
