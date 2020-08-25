@@ -72,3 +72,24 @@ Note: "the first row/column" means that if [series.seriesLayoutBy](~series.serie
 {{ import: component-data-transform-filter }}
 {{ import: component-data-transform-sort }}
 {{ import: component-data-transform-external }}
+
+## fromDatasetIndex(number)
+
+Specify the input dataset for [dataset.transform](~dataset.transform).
+If [dataset.transform](~dataset.transform) specified but both `fromDatasetIndex` and `fromDatasetId` are not specified, `fromDatasetIndex: 0` will be used by default.
+
+{{ use: partial-data-transform-tutorial-ref }}
+
+## fromDatasetId(string)
+
+Specify the input dataset for [dataset.transform](~dataset.transform).
+
+{{ use: partial-data-transform-tutorial-ref }}
+
+## fromTransformResult(number)
+
+If a [dataset.transform](~dataset.transform) produces more than one result, we can use `fromTransformResult` to retrieve some certain result.
+
+In most cases, `fromTransformResult` do not need to be specified because most transforms only produce one result. If `fromTransformResult` is not specified, we use `fromTransformResult: 0` by default.
+
+{{ use: partial-data-transform-tutorial-ref }}

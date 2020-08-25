@@ -148,6 +148,7 @@ In most cases, transform functions only need to produce one data. But there is i
 
 For example, in the built-in boxplot transform, besides boxplot data produced, the outlier data are also produced, which can be used in a scatter series. See the [example](${galleryEditorPath}boxplot-light-velocity&edit=1&reset=1).
 
+We use prop [dataset.fromTransformResult](option.html#dataset.fromTransformResult) to satisfy this requirement. For example:
 
 ```js
 option = {
@@ -189,6 +190,19 @@ option = {
         datasetIndex: 2
     }]
 };
+```
+
+What more, [dataset.fromTransformResult](option.html#dataset.fromTransformResult) and [dataset.transform](option.html#dataset.transform) can both appear in one dataset, which means that the input of the transform is from retrieved from the upstream result specified by `fromTransformResult`. For example:
+
+```js
+{
+    fromDatasetIndex: 1,
+    fromTransformResult: 1,
+    transform: {
+        type: 'sort',
+        config: { dimension: 2, order: 'desc' }
+    }
+}
 ```
 
 

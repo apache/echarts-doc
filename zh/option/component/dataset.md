@@ -74,3 +74,24 @@ ECharts 4 开始支持了 `数据集`（`dataset`）组件用于单独的数据�
 {{ import: component-data-transform-sort }}
 {{ import: component-data-transform-external }}
 
+
+## fromDatasetIndex(number)
+
+指定 [dataset.transform](~dataset.transform) 以哪个 dataset 作为输入。如果 [dataset.transform](~dataset.transform) 被指定了，但是 `fromDatasetIndex` 和 `fromDatasetId` 都没有被指定，那么默认会使用 `fromDatasetIndex: 0`.
+
+{{ use: partial-data-transform-tutorial-ref }}
+
+## fromDatasetId(string)
+
+指定 [dataset.transform](~dataset.transform) 以哪个 dataset 作为输入。
+
+{{ use: partial-data-transform-tutorial-ref }}
+
+## fromTransformResult(number)
+
+如果一个 [dataset.transform](~dataset.transform) 会产出多个结果 data ，我们可以使用 `fromTransformResult` 获得特定的结果。
+
+大多数场景下，transform 只会产出一个结果，所以大多数情况下 `fromTransformResult` 并不需要指定。当不指定 `fromTransformResult` 时，默认使用 `fromTransformResult: 0`。
+
+{{ use: partial-data-transform-tutorial-ref }}
+

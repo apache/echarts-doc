@@ -139,6 +139,7 @@ option: {
 
 例如，在内置的 "boxplot" transform 中，除了 boxplot 系列所需要的 data 外，离群点（ outlier ）也会被生成，并且可以用例如散点图系列显示出来。例如，[example](${galleryEditorPath}boxplot-light-velocity&edit=1&reset=1)。
 
+我们提供配置 [dataset.fromTransformResult](option.html#dataset.fromTransformResult) 来满足这种情况，例如：
 
 ```js
 option = {
@@ -182,6 +183,19 @@ option = {
         datasetIndex: 2
     }]
 };
+```
+
+另外，[dataset.fromTransformResult](option.html#dataset.fromTransformResult) 和 [dataset.transform](option.html#dataset.transform) 能同时出现在一个 dataset 中，这表示，这个 transform 的输入，是上游的结果中以 `fromTransformResult` 获取的结果。例如：
+
+```js
+{
+    fromDatasetIndex: 1,
+    fromTransformResult: 1,
+    transform: {
+        type: 'sort',
+        config: { dimension: 2, order: 'desc' }
+    }
+}
 ```
 
 
