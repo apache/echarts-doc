@@ -116,7 +116,7 @@ export default {
         },
 
         needScrollOffset() {
-            return this.shared.showOptionExample && !this.shared.isMobile 
+            return this.shared.showOptionExample && !this.shared.isMobile
                 && this.shared.computedOptionExampleLayout === 'top';
         }
     },
@@ -355,6 +355,7 @@ export default {
         height: 45px;
         line-height: 45px;
         margin: 0;
+        margin-left: 15px;
         font-weight: normal;
         box-sizing: content-box;
     }
@@ -363,11 +364,12 @@ export default {
         font-weight: normal;
         color: rgb(150, 150, 150);
         font-size: 28px;
-        margin: 20px 0px 20px 20px;
+        margin: 20px 0px 20px 15px;
     }
 
     .page-description {
         padding: 5px 0;
+        margin-left: 15px;
 
         @include description-html-formatter;
     }
