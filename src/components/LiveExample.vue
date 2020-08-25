@@ -413,6 +413,7 @@ export default {
         top: 0;
     }
     .preview-main {
+        position: relative;
         padding: 0 10px;
         background: #fefefe;
         box-sizing: border-box;
