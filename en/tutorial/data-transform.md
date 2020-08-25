@@ -547,9 +547,6 @@ option = {
                 method: 'exponential'
             }
         }
-    }, {
-        fromDatasetIndex: 1,
-        fromTransformResult: 1
     }],
     xAxis: { type: 'category' },
     yAxis: {},
