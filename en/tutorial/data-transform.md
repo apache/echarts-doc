@@ -111,7 +111,7 @@ Let's summarize the key points of using data transform:
 
 ## Advanced usage
 
-### Piped transform
+#### Piped transform
 
 There is a syntactic sugar that pipe transforms like:
 ```js
@@ -142,7 +142,7 @@ option: {
 
 
 
-### Output multiple data
+#### Output multiple data
 
 In most cases, transform functions only need to produce one data. But there is indeed scenarios that a transform function needs to produce multiple data, each of whom might be used by different series.
 
@@ -206,7 +206,7 @@ What more, [dataset.fromTransformResult](option.html#dataset.fromTransformResult
 ```
 
 
-### Debug in develop environment
+#### Debug in develop environment
 
 When using data transform, we might run into the trouble that the final chart do not display correctly but we do not know where the config is wrong. There is a property `transform.print` might help in such case. (`transform.print` is only available in dev environment).
 
