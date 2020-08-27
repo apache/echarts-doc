@@ -111,7 +111,7 @@ Style setting of the text on single inflection point.
 
 ### itemStyle(Object)
 Style setting of the symbol on single inflection point.
-{{use: partial-bar-item-style(prefix="###")}}
+{{use: partial-item-style(prefix="###")}}
 
 ### lineStyle(Object)
 Line style of a single item.
@@ -127,7 +127,7 @@ Area filling style of a single item.
     prefix="####", defaultPosition="top"
 ) }}
 #### itemStyle(Object)
-{{use: partial-bar-item-style(prefix="####")}}
+{{use: partial-item-style(prefix="####")}}
 #### lineStyle(Object)
 {{use: partial-line-style(prefix="####")}}
 #### areaStyle(Object)

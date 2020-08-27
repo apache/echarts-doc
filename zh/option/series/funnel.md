@@ -93,11 +93,6 @@ option = {
     formatter=true
 )}}
 
-## labelLayout(Object)
-{{ use: partial-label-layout(
-    prefix="##"
-) }}
-
 ## labelLine(Object)
 标签的视觉引导线样式，在 [label 位置](~series-funnel.label.position) 设置为`'left'`或者`'right'`的时候会显示视觉引导线。
 {{ use: partial-funnel-label-line(
@@ -113,8 +108,37 @@ option = {
     hasCallback=true
 )}}
 
+## labelLayout(Object)
+{{ use: partial-label-layout(
+    prefix="##"
+) }}
+
 ## emphasis(Object)
+
 高亮的标签和图形样式。
+
+{{use:partial-focus-blur-scope()}}
+
+### label(Object)
+{{use:partial-funnel-label(
+    prefix="###",
+    position=false,
+    formatter=true
+)}}
+
+### labelLine(Object)
+{{ use: partial-funnel-label-line(
+    prefix='###',
+    length=false
+)}}
+
+### itemStyle(Object)
+{{use:partial-item-style(prefix="###")}}
+
+
+## blur(Object)
+
+淡出时的图形样式和标签样式。开启 [emphasis.focus](~series-funnel.emphasis.focus) 后有效
 
 ### label(Object)
 {{use:partial-funnel-label(

@@ -26,7 +26,6 @@ const assert = require('assert');
 const chokidar = require('chokidar');
 const debounce = require('lodash.debounce');
 const {getDocJSONPVarNname} = require('./src/shared');
-const { basename } = require('path');
 
 const projectDir = __dirname;
 

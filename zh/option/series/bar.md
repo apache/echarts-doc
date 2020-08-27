@@ -111,28 +111,6 @@ option = {
 
 ~[800x500](${galleryViewPath}polar-roundCap&reset=1&edit=1)
 
-## label(Object)
-{{use:partial-label-desc}}
-{{use:partial-label(
-    prefix="##",
-    defaultPosition="'inside'",
-    formatter=true
-)}}
-
-## labelLayout(Object)
-
-{{ use: partial-label-layout(
-    prefix="##"
-) }}
-
-## itemStyle(Object)
-{{use:partial-item-style-desc}}
-{{use:partial-bar-item-style(
-    prefix="##",
-    useColorPalatte=true,
-    hasCallback=true,
-    barBorderRadius=true
-)}}
 
 ## showBackground(boolean) = false
 {{ use: partial-version(version = "4.7.0") }}
@@ -153,25 +131,57 @@ option = {
     prefix="##",
     useColorPalatte=false,
     hasCallback=true,
-    barBorderRadius=true,
     defaultColor="'rgba(180, 180, 180, 0.2)'"
 )}}
+
+<!-- NORMAL STATE -->
+{{ use: partial-bar-state(
+    prefix="#",
+    topLevel=true,
+    isNormal=true
+) }}
+
+## labelLayout(Object)
+{{ use: partial-label-layout(
+    prefix="#" + ${prefix}
+) }}
 
 ## emphasis(Object)
 
 高亮的图形样式和标签样式。
 
-### label(Object)
-{{use:partial-label(
-    prefix="###",
-    formatter=true
-)}}
+{{use:partial-focus-blur-scope()}}
 
-### itemStyle(Object)
-{{use:partial-bar-item-style(prefix="###")}}
+{{ use: partial-bar-state(
+    prefix="##",
+    topLevel=true,
+    isNormal=false
+) }}
 
+## blur(Object)
 
+淡出时的图形样式和标签样式。开启 [emphasis.focus](~series-bar.emphasis.focus) 后有效
 
+{{ use: partial-bar-state(
+    prefix="##",
+    topLevel=true,
+    isNormal=false
+) }}
+
+## select(Object)
+
+数据选中时的图形样式和标签样式。开启 [selectedMode](~series-bar.selectedMode) 后有效。
+
+{{ use: partial-bar-state(
+    prefix="##",
+    topLevel=true,
+    isNormal=false
+) }}
+
+<!-- SELECTED MODE -->
+{{ use: partial-selected-mode(
+    version='5.0.0'
+) }}
 
 ## stack(string) = null
 数据堆叠，同个类目轴上系列配置相同的`stack`值可以堆叠放置。
@@ -219,42 +229,42 @@ option = {
 ### value(number)
 单个数据项的数值。
 
-### label(Object)
-单个柱条文本的样式设置。
-{{ use:partial-label(
-    prefix="###",
-    defaultPosition="inside"
+{{ use: partial-bar-state(
+    prefix="##",
+    topLevel=false,
+    isNormal=true
 ) }}
-
-### itemStyle(Object)
-{{use:partial-bar-item-style(
-    prefix="###",
-    barBorderRadius=true
-)}}
-
 
 ### emphasis(Object)
 
-高亮状态的柱状图图形与标签样式。
+单个数据的高亮状态配置。
 
-#### label(Object)
+{{ use: partial-bar-state(
+    prefix="###",
+    topLevel=false,
+    isNormal=false
+) }}
 
-{{ use:partial-label(prefix="####") }}
+### blur(Object)
 
-#### itemStyle(Object)
-{{use:partial-bar-item-style(prefix="####")}}
+单个数据的淡出状态配置。
 
-{{use: partial-tooltip-in-series-data(
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-bar-state(
+    prefix="###",
+    topLevel=false,
+    isNormal=false
+) }}
 
-{{use: partial-marker(
-    prefix="#",
-    seriesType="bar",
-    galleryEditorPath=${galleryEditorPath},
-    hasCoord=true,
-    hasType=true
-)}}
+### select(Object)
+
+单个数据的选中状态配置。
+
+{{ use: partial-bar-state(
+    prefix="###",
+    topLevel=false,
+    isNormal=false
+) }}
+
 
 {{use:partial-clip(
     prefix="#"
@@ -276,6 +286,34 @@ option = {
 
 {{use: partial-tooltip-in-series(
     galleryViewPath=${galleryViewPath}
+)}}
+
+
+{{ target:partial-bar-state }}
+
+#${prefix} label(Object)
+{{ if: ${topLevel} }}
+{{use:partial-label-desc}}
+{{ else: }}
+单个数据的文本配置。
+{{ /if }}
+
+{{use:partial-label(
+    prefix="#" + ${prefix},
+    defaultPosition="'inside'",
+    formatter=${topLevel}
+)}}
+
+#${prefix} itemStyle(Object)
+{{ if: ${topLevel} }}
+{{use:partial-item-style-desc}}
+{{ else: }}
+单个数据的图形样式设置。
+{{ /if }}
+{{use:partial-bar-item-style(
+    prefix="#" + ${prefix},
+    useColorPalatte=${topLevel && isNormal},
+    hasCallback=${topLevel && isNormal},
 )}}
 
 
@@ -305,13 +343,9 @@ option = {
 
 柱条的描边类型，默认为实线，支持 `'dashed'`, `'dotted'`。
 
-{{ if: ${barBorderRadius} }}
-
 {{use: partial-border-radius(
-    propName: 'barBorderRadius',
     prefix: ${prefix}
 )}}
-{{ /if }}
 
 {{ use:partial-style-shadow-opacity(prefix=${prefix}) }}
 

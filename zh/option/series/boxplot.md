@@ -9,11 +9,7 @@
 
 ~[600x400](${galleryViewPath}boxplot-light-velocity&edit=1&reset=1)
 
-<br>
 也支持多个 `series` 在同一个坐标系中，参见 [例子](${galleryEditorPath}boxplot-multi&edit=1&reset=1)。
-
-<br>
-<br>
 
 <ExampleBaseOption name="boxplot" title="盒须图" title-en="Boxplot">
 const option = {

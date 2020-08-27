@@ -1,5 +1,7 @@
 {{target: partial-label-layout}}
 
+{{ use: partial-version(version = "5.0.0") }}
+
 标签的统一布局配置。
 
 该配置项是在每个系列默认的标签布局基础上，统一调整标签的`(x, y)`位置，标签对齐等属性以实现想要的标签布局效果。
@@ -59,6 +61,10 @@ labelLayout(params) {
 
 是否隐藏重叠的标签。
 
+下面示例演示了在关系图中开启该配置后，在缩放时可以实现自动的标签隐藏。
+
+~[600x400](${galleryViewPath}graph-label-overlap&edit=1&reset=1)
+
 #${prefix} moveOverlap(string)
 
 在标签重叠的时候是否挪动标签位置以防止重叠。
@@ -67,6 +73,10 @@ labelLayout(params) {
 
 + `'shiftX'` 水平方向依次位移，在水平方向对齐时使用
 + `'shiftY'` 垂直方向依次位移，在垂直方向对齐时使用
+
+下面是标签右对齐并配置垂直方向依次位移以防止重叠的示例。
+
+~[600x400](${galleryViewPath}scatter-label-align-right&edit=1&reset=1)
 
 #${prefix} x(number|string)
 
@@ -112,7 +122,7 @@ labelLayout(params) {
 
 标签是否可以允许用户通过拖拽二次调整位置。
 
-#${prefix} labelLinePoints(Array.<Array.<number>>)
+#${prefix} labelLinePoints(Array)
 
 标签引导线三个点的位置。格式为：
 
