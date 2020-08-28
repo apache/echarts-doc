@@ -66,6 +66,8 @@ option = {
 
 ## orient(string) = 'vertical'
 
+<ExampleUIControlEnum options="vertical,horizontal" />
+
 漏斗图朝向，支持配置为`'vertical'`或者`'horizontal'`。
 
 ## sort(string|Function) = 'descending'

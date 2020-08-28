@@ -33,6 +33,8 @@ It can be absolute pixel and also the percentage of [layout width](~series-funne
 
 ## orient(string) = 'vertical'
 
+<ExampleUIControlEnum options="vertical,horizontal" />
+
 Orient of funnel，Can be `'vertical'` or `'horizontal'`.
 
 ## sort(string|Function) = 'descending'
