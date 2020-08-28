@@ -354,18 +354,27 @@ optionToContent: function(opt) {
 
 #### xAxisIndex(number|Array|boolean)
 指定哪些 [xAxis](~xAxis) 被控制。如果缺省则控制所有的x轴。如果设置为 `false` 则不控制任何x轴。如果设置成 `3` 则控制 axisIndex 为 `3` 的x轴。如果设置为 `[0, 3]` 则控制 axisIndex 为 `0` 和 `3` 的x轴。
+
 #### yAxisIndex(number|Array|boolean)
 指定哪些 [yAxis](~yAxis) 被控制。如果缺省则控制所有的y轴。如果设置为 `false` 则不控制任何y轴。如果设置成 `3` 则控制 axisIndex 为 `3` 的y轴。如果设置为 `[0, 3]` 则控制 axisIndex 为 `0` 和 `3` 的y轴。
+
 #### icon(Object)
 缩放和还原的 icon path。
 ##### zoom(string)
 {{ use: partial-icon-image-path }}
 ##### back(string)
 {{ use: partial-icon-image-path }}
+
 #### title(Object)
 缩放和还原的标题文本。
 ##### zoom(string) = '区域缩放'
 ##### back(string) = '区域缩放还原'
+
+#### brushStyle(Object)
+刷选框样式
+{{ use: partial-item-style(
+    prefix="####"
+) }}
 
 
 ### magicType(Object)
