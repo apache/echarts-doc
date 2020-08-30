@@ -134,7 +134,6 @@ option = {
     defaultColor="'rgba(180, 180, 180, 0.2)'"
 )}}
 
-<!-- NORMAL STATE -->
 {{ use: partial-bar-state(
     prefix="#",
     topLevel=true,
@@ -178,7 +177,6 @@ option = {
     isNormal=false
 ) }}
 
-<!-- SELECTED MODE -->
 {{ use: partial-selected-mode(
     version='5.0.0'
 ) }}

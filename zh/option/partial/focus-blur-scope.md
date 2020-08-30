@@ -9,13 +9,12 @@
 + `'none'` 不淡出其它图形，默认使用该配置。
 + `'self'` 只聚焦（不淡出）当前高亮的数据的图形。
 + `'series'` 聚焦当前高亮的数据所在的系列的所有图形。
-{{if: ${isGraph} }}
+{{ if: ${isGraph} }}
 + `'adjacency'` 聚焦关系图中的邻接点和边的图形
-{{/if}}
-{{if: ${isTree} }}
+{{ elif: ${isTree} }}
 + `'ancestor'` 聚焦所有祖先节点
 + `'descendant'` 聚焦所有子孙节点
-{{/if}}
+{{ /if }}
 
 **示例：**
 

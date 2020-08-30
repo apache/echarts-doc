@@ -174,8 +174,13 @@ node_modules
 slides/webgl
 
 # Generated distributions
-public/js
-public/css
-public/zh/documents
-public/en/documents
-public/*.html
+/public/js
+/public/css
+/public/zh/documents
+/public/en/documents
+/public/*.html
+
+
+# Editor temporal files
+/editor/server/blocks.json
+/editor/server/test.json
