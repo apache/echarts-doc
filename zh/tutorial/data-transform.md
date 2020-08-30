@@ -103,7 +103,7 @@ var option = {
 
 ## 数据转换的进阶使用
 
-### 链式声明 transform
+#### 链式声明 transform
 
 `transform` 可以被链式声明，这是一个语法糖。
 ```js
@@ -133,7 +133,7 @@ option: {
 
 
 
-### 一个 transform 输出多个 data
+#### 一个 transform 输出多个 data
 
 在大多数场景下，transform 只需输出一个 data 。但是也有一些场景，需要输出多个 data ，每个 data 可以被不同的 series 或者 dataset 所使用。
 
@@ -199,7 +199,7 @@ option = {
 ```
 
 
-### 在开发环境中 debug
+#### 在开发环境中 debug
 
 使用 transform 时，有时候我们会配不对，显示不出来结果，并且不知道哪里错了。所以，这里提供了一个配置项 `transform.print` 方便 debug 。这个配置项只在开发环境中生效。如下例：
 

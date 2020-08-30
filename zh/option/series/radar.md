@@ -151,7 +151,7 @@ data : [
 
 ### itemStyle(Object)
 单个拐点标志的样式设置。
-{{use: partial-bar-item-style(prefix="###")}}
+{{use: partial-item-style(prefix="###")}}
 
 ### lineStyle(Object)
 单项线条样式。
@@ -168,7 +168,7 @@ data : [
     prefix="####", defaultPosition="top"
 ) }}
 #### itemStyle(Object)
-{{use: partial-bar-item-style(prefix="####")}}
+{{use: partial-item-style(prefix="####")}}
 #### lineStyle(Object)
 {{use: partial-line-style(prefix="####")}}
 #### areaStyle(Object)

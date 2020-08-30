@@ -41,8 +41,7 @@ If to add round caps at the end of the bar sectors. Valid only for bar series on
 {{use:partial-bar-item-style(
     prefix="##",
     useColorPalatte=true,
-    hasCallback=true,
-    barBorderRadius=true
+    hasCallback=true
 )}}
 
 ## showBackground(boolean) = false
@@ -61,7 +60,6 @@ Background style of each bar if [showBackground](~series-bar.showBackground) is 
     prefix="##",
     useColorPalatte=false,
     hasCallback=true,
-    barBorderRadius=true,
     defaultColor="'rgba(180, 180, 180, 0.2)'"
 )}}
 
@@ -135,8 +133,7 @@ The style setting of the text label in a single bar.
 
 ### itemStyle(Object)
 {{use:partial-bar-item-style(
-    prefix="###",
-    barBorderRadius=true
+    prefix="###"
 )}}
 #### emphasis(Object)
 {{use:partial-bar-item-style(prefix="####")}}
@@ -191,12 +188,10 @@ The border color of bar.
 
 The border width of bar. defaults to have no border.
 
-{{ if: ${barBorderRadius} }}
 {{use: partial-border-radius(
     propName: 'barBorderRadius',
     prefix: ${prefix}
 )}}
-{{ /if }}
 
 {{ use:partial-style-shadow-opacity(prefix=${prefix}) }}
 

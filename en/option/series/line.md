@@ -187,13 +187,13 @@ The style of the text of single data point.
 
 ### itemStyle(Object)
 The style of the symbol of single data point.
-{{use: partial-bar-item-style(prefix="###")}}
+{{use: partial-item-style(prefix="###")}}
 
 
 ### emphasis(Object)
 
 #### itemStyle(Object)
-{{use: partial-bar-item-style(prefix="####")}}
+{{use: partial-item-style(prefix="####")}}
 #### label(Object)
 {{ use: partial-label(prefix="####") }}
 
