@@ -13,10 +13,19 @@ module.exports.parseArgs = function (argsStr) {
     const argsArr = [];
     let itemStr = '';
     let inStr = false;
+    let startQuot = '';
     for (let i = 0; i < argsStr.length; i++) {
         const ch = argsStr[i];
         if (ch === '"' || ch === '\'') {
-            inStr = !inStr;
+            if (inStr) {
+                if (startQuot === ch) {
+                    inStr = false;
+                }
+            }
+            else {
+                startQuot = ch;
+                inStr = true;
+            }
             itemStr += ch;
         }
         else if (ch === ',' && !inStr) {
@@ -27,7 +36,7 @@ module.exports.parseArgs = function (argsStr) {
             itemStr += ch;
         }
     }
-    if (itemStr) {
+    if (itemStr.trim()) {
         argsArr.push(parseArgKv(itemStr));
     }
     return argsArr;
@@ -110,7 +119,8 @@ module.exports.updateLevelAndKeyInBlocks = function (blocks, targetsMap) {
             break;
         // Content and use command following header has same level.
         case 'content':
-            block.level = currentLevel;
+            // Indent description content by default
+            block.level = currentLevel + 1;
             baseKey = 'content:' + stacks.join('.');
             contentKeyCountMap[baseKey] = contentKeyCountMap[baseKey] || 0;
             if (contentKeyCountMap[baseKey]) {
@@ -126,10 +136,14 @@ module.exports.updateLevelAndKeyInBlocks = function (blocks, targetsMap) {
                 if (targetObj) {
                     const prefixParam = block.args && block.args.find(item => item[0] === 'prefix');
                     const prefixVal = prefixParam && prefixParam[1].replace(/['"]/g, '');
-                    if (!targetObj.topLevelHasPrefix || (prefixVal && prefixVal.match(/#+/))) {
+                    if (targetObj.topLevel === 0) {
                         // Target has no header if topLevel is 0.
-                        targetObj.topLevel > 0 &&
-                            (block.level = targetObj.topLevel + module.exports.countLevel(prefixVal || ''));
+                        // Assume it's only description
+                        // Indent by default.
+                        block.level = currentLevel + 1;
+                    }
+                    else if (!targetObj.topLevelHasPrefix || (prefixVal && prefixVal.match(/#+/))) {
+                        (block.level = targetObj.topLevel + module.exports.countLevel(prefixVal || ''));
                     }
                 }
                 else {

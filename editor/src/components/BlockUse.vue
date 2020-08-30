@@ -1,5 +1,5 @@
 <template>
-<q-card flat>
+<q-card flat class="block-use">
     <!-- <q-card-section class="q-pt-xs"> -->
     <q-select
         filled
@@ -21,7 +21,15 @@
         </template>
     </q-select>
 
-    <q-input label="Parameters" v-model="block.args"></q-input>
+    <div class="text-overline">Parameters</div>
+    <div class="args row items-center">
+        <div v-for="arg in block.args" :key="arg[0]" class="row items-center">
+            <q-icon name="label" class="text-blue-8 q-mx-md" style="font-size:20px;"></q-icon>
+            <q-input v-model="arg[0]"></q-input>
+            <div class="q-mx-md equal">=</div>
+            <q-input v-model="arg[1]"></q-input>
+        </div>
+    </div>
        <!-- {{block.target}} -->
     <!-- </q-card-section> -->
 </q-card>
@@ -69,11 +77,21 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.q-card {
+<style lang="scss">
+.q-card.block-use {
     margin: 10px 0;
     padding: 5px 10px;
     border-left: 3px solid $deep-purple-8;
+
+    .args {
+        .equal {
+            font-size: 18px;
+        }
+
+        .q-field__control {
+            height: 30px;
+        }
+    }
     // background-color: #e8effc;
 }
 </style>

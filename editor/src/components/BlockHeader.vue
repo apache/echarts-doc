@@ -1,6 +1,6 @@
 <template>
 <!-- <q-card> -->
-<h5>
+<h5 class="block-header">
     <q-input
         type="text"
         v-model="block.value"
@@ -42,11 +42,11 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
 
-h5 {
+h5.block-header {
     margin: 10px 0 10px 0;
 
     .q-field {
@@ -95,8 +95,5 @@ h5 {
         width: 100%;
         border: none;
     }
-}
-.q-card {
-    margin: 10px;
 }
 </style>

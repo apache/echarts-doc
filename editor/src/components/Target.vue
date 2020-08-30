@@ -40,7 +40,7 @@ export default {
 
     @for $level from 1 through 5 {
         .block-level-#{$level} {
-            margin-left: 10px * ($level - 1);
+            margin-left: 15px * ($level - 1);
         }
     }
 

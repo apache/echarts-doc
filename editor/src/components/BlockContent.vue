@@ -1,5 +1,5 @@
 <template>
-<q-card bordered flat v-if="block.value">
+<q-card bordered flat v-if="block.value" class="block-content">
     <div class="text-overline">Description</div>
     <div class="editor-main"></div>
 </q-card>
@@ -37,17 +37,19 @@ export default {
 </script>
 
 <style lang="scss">
-.CodeMirror {
-    height: auto;
-    border-radius: 5px;
 
-    .CodeMirror-wrap pre {
-        word-break: break-all;
-    }
-}
-.q-card {
+.q-card.block-content {
     margin: 10px 0;
     padding: 5px;
+
+    .CodeMirror {
+        height: auto;
+        border-radius: 5px;
+
+        .CodeMirror-wrap pre {
+            word-break: break-all;
+        }
+    }
     .text-overline {
         color: #aaa;
         margin-left: 5px;
