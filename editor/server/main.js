@@ -9,7 +9,7 @@ console.log('Server Started');
 const fileModified = {};
 
 function initBlocks() {
-    return parseBlocks(path.resolve(__dirname, '../../zh/option'));
+    return parseBlocks(path.resolve(__dirname, '../../zh-src/option'));
 }
 
 let globalSocket;
@@ -34,5 +34,11 @@ io.on('connection', function (socket) {
 
     initBlocks().then(data => {
         socket.emit('initial-blocks', data);
+    });
+
+    socket.on('save', data => {
+        for (let fileName in data ) {
+
+        }
     });
 });

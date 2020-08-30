@@ -39,7 +39,8 @@ module.exports.parseArgs = function (argsStr) {
     if (itemStr.trim()) {
         argsArr.push(parseArgKv(itemStr));
     }
-    return argsArr;
+    // Ignore galleryViewPath and galleryEditorPath
+    return argsArr.filter(item => item[0] !== 'galleryViewPath' && item[0] !== 'galleryEditorPath');
 }
 
 module.exports.countLevel = function (prefix) {
@@ -53,11 +54,12 @@ module.exports.countLevel = function (prefix) {
 }
 
 module.exports.parseHeader = function (text) {
-    let parts = /(\$\{prefix.*?\})?(.*)\(([\w|*]*)\)(\s*=\s*(.*))*/.exec(text);
+    const [mainPart, propertyDefault] = text.split(/\s*=\s*/);
+    // #${prefix} show(boolean) = ${defaultShow|default(true)}
+    let parts = /(\$\{prefix.*?\})?(.*)\(([\w|*]*)\)/.exec(mainPart);
     if (parts) {
         const propertyName = parts[2].trim();
         const propertyType = parts[3];
-        const propertyDefault = parts[5];
 
         return {
             hasPrefix: !!parts[1],
@@ -66,16 +68,17 @@ module.exports.parseHeader = function (text) {
             propertyDefault
         };
     }
-    parts = /(\$\{prefix\})?(.*)(\s*=\s*(.*))*/.exec(text);
+    // #${prefix} show = ${defaultShow|default(true)}
+    parts = /(\$\{prefix.*?\})?\s*(.*)/.exec(mainPart);
     if (parts) {
         const propertyName = parts[2].trim();
-        const propertyDefault = parts[4];
         return {
             hasPrefix: !!parts[1],
             propertyName,
             propertyDefault
         }
     }
+
 
     // const prefix = parts[1];
 };
@@ -170,5 +173,49 @@ module.exports.updateLevelAndKeyInBlocks = function (blocks, targetsMap) {
 };
 
 module.exports.buildBlockHierarchy = function (blocks) {
+
+};
+
+module.exports.blockCompositors = {
+    header(block) {
+        /* eslint-disable-next-line */
+        const prefix = '#'.repeat(block.level) + (block.hasPrefix ? '${prefix}' : '');
+        let ret = `${prefix} ${block.propertyName}(${block.propertyType || '*'})`;
+        if (block.propertyDefault) {
+            ret = ret + ' = ' + block.propertyDefault;
+        }
+        return ret;
+    },
+    use(block) {
+        // Do some format and code indention
+        let argsStr = block.args.map(item => item.join(' = ')).join(`,
+    `);
+        if (argsStr) {
+            argsStr = `
+    ${argsStr}
+`;
+        }
+        return `
+{{ use: ${block.target}(${argsStr}) }}
+`;
+    },
+    content(block) {
+        return `
+${block.value}
+`;
+    }
+}
+
+module.exports.compositeBlocks = function (blocks) {
+    return blocks.map(block => module.exports.blockCompositors[block.type](block))
+        .join('\n');
+};
+
+module.exports.compositeTargets = function (targets) {
+    return targets.map(target => `
+{{ target: ${target.name} }}
+
+${module.exports.compositeBlocks(target.blocks)}
+`).join('\n\n');
 
 };

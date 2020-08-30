@@ -3,9 +3,9 @@
         <div class="editor-main">
             <Target v-for="target in targets" :key="target.name" :target="target"></Target>
         </div>
-        <q-drawer :persistent="true" v-model="hierarchyOpen" side="right" overlay behavior="desktop" bordered>
-            <!-- drawer content -->
-        </q-drawer>
+        <!-- <q-drawer :persistent="true" v-model="hierarchyOpen" side="right" overlay behavior="desktop" bordered>
+            <Hierarchy :targets="targets"></Hierarchy>
+        </q-drawer> -->
     </q-page>
 </template>
 
@@ -13,13 +13,17 @@
 
 import { store } from '../store/store';
 import Target from '../components/Target';
+// import Hierarchy from '../components/Hierarchy';
 
 export default {
     name: 'Editor',
 
     components: {
         Target
+        // Hierarchy
     },
+
+    props: ['docPath'],
 
     data() {
         return {
@@ -30,7 +34,7 @@ export default {
 
     computed: {
         targets() {
-            return store.blocks[this.$route.params.docPath];
+            return store.blocks[this.docPath];
         }
     }
 };

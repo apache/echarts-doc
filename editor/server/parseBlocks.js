@@ -80,7 +80,7 @@ function compositeIfCommand(command) {
     }
     // ElifCommand and ElseCommand also is subclass of IfCommand
     else if (command instanceof IfCommand) {
-        text += `{{ if:${command.value} }}`;
+        text += `{{ if: ${command.value.trim()} }}`;
     }
 
     for (const subCmd of command.children) {
@@ -170,8 +170,9 @@ function parseSingleFileBlocks(fileName, root, blocksStore) {
             else if (command instanceof ImportCommand) {
                 closeTextBlock();
                 outBlocks.push({
-                    type: 'import',
-                    target: command.name
+                    type: 'use',
+                    target: command.name,
+                    args: []
                 });
             }
             else if (command instanceof TextNode) {

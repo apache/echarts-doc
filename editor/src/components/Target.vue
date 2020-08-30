@@ -38,7 +38,7 @@ export default {
     margin-top: 10px;
     margin-bottom: 50px;
 
-    @for $level from 1 through 5 {
+    @for $level from 1 through 7 {
         .block-level-#{$level} {
             margin-left: 15px * ($level - 1);
         }
