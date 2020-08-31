@@ -8,7 +8,7 @@
 
 ## 引入相关文件
 
-旭日图是 ECharts 4.0 新增的图表类型，从 [CDN](https://www.jsdelivr.com/package/npm/echarts) 引入完整版的 [echarts.min.js](https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js)
+旭日图是 Apache ECharts (incubating)<sup>TM</sup> 4.0 新增的图表类型，从 [CDN](https://www.jsdelivr.com/package/npm/echarts) 引入完整版的 [echarts.min.js](https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js)
 
 ## 最简单的旭日图
 

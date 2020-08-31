@@ -1099,7 +1099,7 @@ See sample:
 Optional values:
 
 + `'all'`: (default)
-    Use the transformed bounding box of itself and its descentants to perform position calculation, which confine the entire body in the boundary of its parent.
+    Use the transformed bounding box of itself and its descendants to perform position calculation, which confine the entire body in the boundary of its parent.
 
 + `'raw'`:
     Only use the untransformed bounding box of itself (without its descentant) to perform position calculation, which is suitable when the content in the element need to be overflow its parent.
@@ -1251,7 +1251,7 @@ Only works when `smooth` is `number` (bezier smooth).
 
 Specify how to be positioned in its parent.
 
-When the element is at the top level, the parent is the contianer of the chart instance.
+When the element is at the top level, the parent is the container of the chart instance.
 Otherwise, the parent is a `group` element.
 
 Optional values:

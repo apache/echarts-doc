@@ -25,6 +25,8 @@ const path = require('path');
 const assert = require('assert');
 const chokidar = require('chokidar');
 const debounce = require('lodash.debounce');
+const {getDocJSONPVarNname} = require('./src/shared');
+const { basename } = require('path');
 
 const projectDir = __dirname;
 
@@ -171,7 +173,6 @@ async function run() {
             console.log('Error happens when copying to dest folders.');
             console.log(e);
         }
-        // copyBlog();
     }
 
     console.log('All done.');
@@ -231,14 +232,6 @@ function copySite() {
     console.log('Copy site done.');
 }
 
-function copyBlog() {
-    const blogSrcDir = path.resolve(projectDir, 'blog');
-    const blogDestDir = path.resolve(config.releaseDestDir, 'blog');
-    fse.copySync(blogSrcDir, blogDestDir);
-    console.log(chalk.green(`blog copied to: ${blogDestDir}`));
-    console.log('Copy blog done.');
-}
-
 function writeSingleSchema(schema, language, docName, format) {
     const destPath = path.resolve(config.releaseDestDir, `${language}/documents/${docName}.json`);
     fse.ensureDirSync(path.dirname(destPath));
@@ -253,14 +246,22 @@ function writeSingleSchema(schema, language, docName, format) {
 function writeSingleSchemaPartioned(schema, language, docName, format) {
     const {outline, descriptions} = extractDesc(schema, docName);
 
-    const outlineDestPath = path.resolve(config.releaseDestDir, `${language}/documents/${docName}-parts/${docName}-outline.json`);
+    function convertToJS(basename, filePath) {
+        const content = fs.readFileSync(filePath, 'utf-8');
+        const varName = getDocJSONPVarNname(basename);
+        const code = `window.${varName} = ${content}`;
+        fs.writeFileSync(filePath.replace(/\.json$/, '.js'), code, 'utf-8');
+    }
+
+    const outlineBasename = `${docName}-outline.json`;
+    const outlineDestPath = path.resolve(config.releaseDestDir, `${language}/documents/${docName}-parts/${outlineBasename}`);
     fse.ensureDirSync(path.dirname(outlineDestPath));
-    fse.outputFile(
+    fse.outputFileSync(
         outlineDestPath,
         format ? JSON.stringify(outline, null, 2) : JSON.stringify(outline),
         'utf-8'
     );
-    // console.log(chalk.green('generated: ' + outlineDestPath));
+    convertToJS(outlineBasename, outlineDestPath);
 
     function copyUIControlConfigs(source, target) {
         for (let key in source) {
@@ -290,15 +291,18 @@ function writeSingleSchemaPartioned(schema, language, docName, format) {
     }
 
     function writeOptionDesc(language, partKey, json) {
-        const descDestPath = path.resolve(config.releaseDestDir, `${language}/documents/${docName}-parts/${partKey}.json`);
+        const descBasename = `${partKey}.json`;
+        const descDestPath = path.resolve(config.releaseDestDir, `${language}/documents/${docName}-parts/${descBasename}`);
         fse.ensureDirSync(path.dirname(descDestPath));
-
-        fse.outputFile(
+        const content = JSON.stringify(json, null, 2);
+        fse.outputFileSync(
             descDestPath,
             // format ? JSON.stringify(partDescriptions, null, 2) : JSON.stringify(partDescriptions),
-            JSON.stringify(json, null, 2),
+            content,
             'utf-8'
         );
+        // Convnert to JS
+        convertToJS(descBasename, descDestPath);
     }
 
     for (let partKey in descriptions) {

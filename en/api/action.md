@@ -115,7 +115,7 @@ dispatchAction({
 **EVENT:** [legendinverseselect](~events.legendinverseselect)
 
 ### legendScroll(Action)
-Controll the scrolling of legend. It works when [legend.type](option.html#legend.type) is `'scroll'`.
+Control the scrolling of legend. It works when [legend.type](option.html#legend.type) is `'scroll'`.
 ```js
 dispatchAction({
     type: 'legendScroll',

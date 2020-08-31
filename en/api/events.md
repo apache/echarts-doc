@@ -262,7 +262,7 @@ Switching event of [magic type tool in toolbox](option.html#toolbox.feature.magi
 ## axisareaselected(Event)
 Selecting event of range of [parallel axis](option.html#parallelAxis).
 
-When selecting axis range, the following method can be used to get data indices of currently highlight lines, which is the list of indices in `data` of `series`.
+When selecting axis range, the following method can be used to get data indices of currently highlighted lines, which is the list of indices in `data` of `series`.
 
 ```javascript
 chart.on('axisareaselected', function () {

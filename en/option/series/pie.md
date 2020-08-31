@@ -36,7 +36,7 @@ The offset distance of hovered sector.
 
 Selected mode of pie.  It is enabled by default, and you may set it to be `false` to disabled it.
 
-Besides, it can be set to `'single'` or `'multiple'`, for single selection and multiple selection.
+Besides, it can be set to `'single'` or `'multiple'`, for single selection and multiple selections.
 
 ## selectedOffset(number) = 10
 The offset distance of selected sector.
@@ -98,7 +98,7 @@ Since ECharts v4.6.0, we provide `'labelLine'` and `'edge'` two extra valid `ali
 
 ### margin(string|number) = '25%'
 
-The horitontal distance between text edges and viewport when [label.position](~series-pie.label.position) is `'outer'` and [label.alignTo](~series-pie.label.alignTo) is `'edge'`.
+The horizontal distance between text edges and viewport when [label.position](~series-pie.label.position) is `'outer'` and [label.alignTo](~series-pie.label.alignTo) is `'edge'`.
 
 ~[900x250](${galleryViewPath}doc-example/pie-label-margin&edit=1&reset=1)
 
@@ -106,7 +106,7 @@ In most cases, you need a small `margin` value like `10` for mobile devices to m
 
 ### bleedMargin(number) = 10
 
-The horitontal distance between text and viewport when [label.position](~series-pie.label.position) is `'outer'` and [label.alignTo](~series-pie.label.alignTo) is `'none'` or `'labelLine'`. Longer text will be truncated into `'...'`.
+The horizontal distance between text and viewport when [label.position](~series-pie.label.position) is `'outer'` and [label.alignTo](~series-pie.label.alignTo) is `'none'` or `'labelLine'`. Longer text will be truncated into `'...'`.
 
 ~[800x250](${galleryViewPath}doc-example/pie-label-bleedMargin&edit=1&reset=1)
 

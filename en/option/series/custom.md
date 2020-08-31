@@ -6,7 +6,7 @@
 
 `custom series` supports customizing graphic elements, and then generate more types of charts.
 
-echarts manages the creation, deletion, animation and interaction with other components (like [dataZoom](~dataZoom)、[visualMap](~visualMap)), which frees developers from handle those issue themselves.
+echarts manages the creation, deletion, animation and interaction with other components (like [dataZoom](~dataZoom)、[visualMap](~visualMap)), which frees developers from handling those issue themselves.
 
 **For example, a "x-range" chart is made by custom sereis:**
 ~[800x400](${galleryViewPath}custom-profile&reset=1&edit=1)
@@ -25,7 +25,7 @@ echarts manages the creation, deletion, animation and interaction with other com
 <br>
 **Dimension mapping (by encode and dimension option)**
 
-In most cases, [series.encode](~series-custom.encode) is needed to be specified when using `custom series` serise, which indicate the mapping of dimensions, and then echarts can render appropriate axis by the extent of those data.
+In most cases, [series.encode](~series-custom.encode) needs to be specified when using `custom series` series, which indicate the mapping of dimensions, and then echarts can render appropriate axis by the extent of those data.
 
 `encode.tooltip` and `encode.label` can also be specified to define the content of default `tooltip` and `label`.
 [series.dimensions](~series-custom.dimensions) can also be specified to defined names of each dimensions, which will be displayed in tooltip.

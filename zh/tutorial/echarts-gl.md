@@ -2,7 +2,7 @@
 
 # 使用 ECharts GL 实现基础的三维可视化
 
-ECharts GL （后面统一简称 GL）为 ECharts 补充了丰富的三维可视化组件，这篇文章我们会简单介绍如何基于 GL 实现一些常见的三维可视化作品。实际上如果你对 ECharts 有一定了解的话，也可以很快的上手 GL，GL 的配置项完全是按照 ECharts 的标准和上手难度来设计的。
+ECharts GL （后面统一简称 GL）为 Apache ECharts (incubating)<sup>TM</sup> 补充了丰富的三维可视化组件，这篇文章我们会简单介绍如何基于 GL 实现一些常见的三维可视化作品。实际上如果你对 ECharts 有一定了解的话，也可以很快的上手 GL，GL 的配置项完全是按照 ECharts 的标准和上手难度来设计的。
 
 在看完文章之后，你可以前往 [官方示例](${websitePath}/examples/zh/index.html#chart-type-globe) 和 [Gallery](https://gallery.echartsjs.com/explore.html#tags=echarts-gl) 去了解更多使用 GL 制作的示例，对于文章中我们没法解释到的代码，也可以前往 [GL 配置项手册](option-gl.html) 查看具体的配置项使用方法。
 

@@ -10,7 +10,7 @@
 
 {{use: partial-parallel-data-example}}
 
-Parallel coordinates are much used to visualize multi-dimension data shown above. Each axis represents a dimension (namely, a column), and each line represents a data item. Data can be brush-selected on axes. For example:
+Parallel coordinates are often used to visualize multi-dimension data shown above. Each axis represents a dimension (namely, a column), and each line represents a data item. Data can be brush-selected on axes. For example:
 
 ~[600x400](${galleryViewPath}doc-example/parallel-all&edit=1&reset=1)
 

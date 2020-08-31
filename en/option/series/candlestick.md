@@ -15,7 +15,7 @@ ECharts3 supports both `'candlestick'` and `'k'` in [series.type](~(series.type)
 <br>
 **About color of increase and decrease**
 
-Different countries or regions have different implications on the color of candle stick chart. It may use red to imply increasing with red and decreasing with blue (in China mainland, Taiwan, Japan, Koera, and so on), or to imply increasing with green and decreasing with red (in Europ, North America, Hong Kong, Singapore, and so on). Besides color, the increase and decrease of stock may also be represented with candle stick with or without filling colors.
+Different countries or regions have different implications on the color of candle stick chart. It may use red to imply increasing with red and decreasing with blue (in China mainland, Taiwan, Japan, Koera, and so on), or to imply increasing with green and decreasing with red (in Europe, North America, Hong Kong, Singapore, and so on). Besides color, the increase and decrease of stock may also be represented with candle stick with or without filling colors.
 
 We use red to represent increasing and blue decreasing by default. If you want to change the configuration, you may change the following parameters.
 
@@ -45,7 +45,7 @@ We use red to represent increasing and blue decreasing by default. If you want t
 
 ## hoverAnimation(boolean) = true
 
-Whether to enable animitation when hovering on box.
+Whether to enable animation when hovering on box.
 
 
 ## layout(string) = null
@@ -130,7 +130,7 @@ Emphasis style of candlestick.
 
 ## data(Array)
 
-Data should be the two-dimensional array shown as follow.
+Data should be the two-dimensional array shown as follows.
 
 ```javascript
 [

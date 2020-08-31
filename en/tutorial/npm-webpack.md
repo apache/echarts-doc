@@ -3,7 +3,7 @@
 
 # Use ECharts with webpack
 
-[Webpack](https://webpack.js.org//) is a popular module packaging tool, which can be used easily to import and packaging ECharts. Here we assume you already have certain understanding about webpack and used it in your project.
+[Webpack](https://webpack.js.org//) is a popular module packaging tool, which can be used easily to import and packaging Apache ECharts (incubating)<sup>TM</sup>. Here we assume you already have certain understanding about webpack and used it in your project.
 
 ## Use npm to install ECharts
 

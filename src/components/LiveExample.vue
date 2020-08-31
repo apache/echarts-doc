@@ -23,17 +23,17 @@
                 :label="shared.locale === 'en' ? item['title-en'] : item.title"
             ></el-option>
         </el-select>
-        <el-button v-if="shared.currentExampleOption" 
-            type="primary" 
-            icon="el-icon-refresh" 
-            size="mini" 
+        <el-button v-if="shared.currentExampleOption"
+            type="primary"
+            icon="el-icon-refresh"
+            size="mini"
             :title="$t('example.refresh')"
             @click="refreshForce"></el-button>
-        <el-button 
+        <el-button
             style="margin-left: 0"
-            type="primary" 
-            icon="el-icon-s-operation" 
-            size="mini" 
+            type="primary"
+            icon="el-icon-s-operation"
+            size="mini"
             :title="$t('example.changeLayout')"
             v-popover:changeLayoutPopover></el-button>
         <el-button size='mini' circle icon="el-icon-close" @click="closeExamplePanel"></el-button>
@@ -47,9 +47,9 @@
             <div class="layout-title"><i class="el-icon-s-operation"></i>{{$t('example.changeLayout')}}</div>
             <div class="layout-mode">
                 <el-radio-group v-model="shared.optionExampleLayout" @change="changeLayout" size="mini">
-                    <el-radio-button 
-                        v-for="layout in optionExampleLayouts" 
-                        :key="layout" 
+                    <el-radio-button
+                        v-for="layout in optionExampleLayouts"
+                        :key="layout"
                         :label="layout">{{$t('example.layout.' + layout)}}</el-radio-button>
                 </el-radio-group>
             </div>
@@ -68,18 +68,19 @@ import CodeMirror from 'codemirror';
 import 'codemirror/lib/codemirror.css';
 // import 'codemirror/theme/paraiso-dark.css';
 import 'codemirror/theme/dracula.css';
-import 'codemirror/mode/javascript/javascript.js'
-import beautify from 'js-beautify';
+// import 'codemirror/mode/javascript/javascript.js'
+import beautifier from 'js-beautify';
 import throttle from 'lodash.throttle';
 import arrayDiff from 'zrender/src/core/arrayDiff';
 import scrollIntoView from 'scroll-into-view';
+import {EChartsLib} from '../config';
 
 let echartsLoadPromise;
 
 function fetchECharts() {
     return echartsLoadPromise || (echartsLoadPromise = new Promise(function (resolve) {
         const script = document.createElement('script');
-        script.src = 'https://cdn.jsdelivr.net/npm/echarts@4.8.0/dist/echarts.min.js';
+        script.src = EChartsLib;
         script.async = true;
         script.onload = function () {
             resolve();
@@ -354,7 +355,7 @@ export default {
         },
 
         formattedOptionCodeStr() {
-            return beautify.js(this.optionCodeStr
+            return beautifier.js(this.optionCodeStr
                 .replace(/"(\w+)"\s*:/g, '$1:')
                 .replace(/"__functionstart__/g, "")
                 .replace(/__functionend__"/g, "")
@@ -412,6 +413,7 @@ export default {
         top: 0;
     }
     .preview-main {
+        position: relative;
         padding: 0 10px;
         background: #fefefe;
         box-sizing: border-box;

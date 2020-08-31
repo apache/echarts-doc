@@ -57,7 +57,7 @@ Notice, if no `data` specified in series, and there is [dataset](~dataset) in op
 `series.datasetIndex` can be used to specify other [dataset](~dataset).
 
 
-Basically, data is represented by a two-dimension array, like the example below, where each colum is named as a "dimension".
+Basically, data is represented by a two-dimension array, like the example below, where each column is named as a "dimension".
 ```js
 series: [{
     data: [
@@ -70,10 +70,10 @@ series: [{
 }]
 ```
 
-+ In [cartesian (grid)](~grid), "dimX" and "dimY" correspond to [xAxis](~xAxis) and [yAxis](~yAxis) repectively.
-+ In [polar](~polar) "dimX" and "dimY" correspond to [radiusAxis](~radiusAxis) 和 [angleAxis](~anbleAxis) repectively.
-+ Other dimensions are optional, which can be used in other place. For example:
-    + [visualMap](~visualMap) can map one or more dimensions to viusal (color, symbol size ...).
++ In [cartesian (grid)](~grid), "dimX" and "dimY" correspond to [xAxis](~xAxis) and [yAxis](~yAxis) respectively.
++ In [polar](~polar) "dimX" and "dimY" correspond to [radiusAxis](~radiusAxis) 和 [angleAxis](~anbleAxis) respectively.
++ Other dimensions are optional, which can be used in other places. For example:
+    + [visualMap](~visualMap) can map one or more dimensions to visual (color, symbol size ...).
     + [series.symbolSize](~series.symbolSize) can be set as a callback function, where symbol size can be calculated by values of a certain dimension.
     + Values in other dimensions can be shown by [tooltip.formatter](~tooltip.formatter) or [series.label.formatter](~series.label.formatter).
 
@@ -173,7 +173,7 @@ When needing to customize a data item, it can be set as an object, where propert
 <br>
 **Empty value:**
 
-`'-'` or `null` or `undefined` or `NaN` can be used to describe that a data item is not exists (ps：*not exist* does not means its value is `0`).
+`'-'` or `null` or `undefined` or `NaN` can be used to describe that a data item does not exist (ps：*not exist* does not means its value is `0`).
 
 For example, line chart can break when encounter an empty value, and scatter chart do not display graphic elements for empty values.
 

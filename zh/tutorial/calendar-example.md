@@ -2,13 +2,13 @@
 
 # 小例子：实现日历图
 
-在ECharts中，我们新增了日历坐标系，如何快速写出一个日历图呢？
+在 Apache ECharts (incubating)<sup>TM</sup> 中，我们新增了日历坐标系，如何快速写出一个日历图呢？
 ~[800x300](${galleryViewPath}calendar-simple&edit=1&reset=1)
 
 通过以下三个步骤即可实现上述效果：
 
 ## 第一步：引入js文件
-下载的最新完整版本echarts.min.js即可，无需再单独引入其他文件哦
+下载的最新完整版本 echarts.min.js 即可，无需再单独引入其他文件哦
 
 ```html
 <script src="echarts.min.js"></script>

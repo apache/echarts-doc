@@ -53,7 +53,7 @@ Options:
 
 ## align(string) = 'auto'
 
-Legend mrker and text aligning. By default, it automatically calculates from component location and orient. When [left](~legend.left) value of this component is 'right', and the vertical layout ([orient](~legend.orient) is 'vertical'), it would be aligned to 'right'.
+Legend marker and text aligning. By default, it automatically calculates from component location and orientation. When [left](~legend.left) value of this component is 'right', and the vertical layout ([orient](~legend.orient) is 'vertical'), it would be aligned to 'right'.
 
 Option:
 + 'auto'
@@ -96,7 +96,7 @@ formatter: function (name) {
 
 ## selectedMode(string|boolean) = true
 
-Selected mode of legend, which controls whether series can be toggled displaying by clicking legends. It is enabled by default, and you may set it to be `false` to disabled it.
+Selected mode of legend, which controls whether series can be toggled displaying by clicking legends. It is enabled by default, and you may set it to be `false` to disable it.
 
 Besides, it can be set to `'single'` or `'multiple'`, for single selection and multiple selection.
 
@@ -186,7 +186,7 @@ It works when [legend.type](~legend.type) is `'scroll'`.
 
 `dataIndex` of the left top most displayed item.
 
-Although the scrolling of legend items can be controlled by calling `setOption` and specifying this property, we suggest that do not controll legend in this way unless necessary (`setOption` might be time-consuming), but just use action [legendScroll](api.html#action.legend.legendScroll) to do that.
+Although the scrolling of legend items can be controlled by calling `setOption` and specifying this property, we suggest that do not control legend in this way unless necessary (`setOption` might be time-consuming), but just use action [legendScroll](api.html#action.legend.legendScroll) to do that.
 
 See [vertically scrollable legend](${galleryEditorPath}pie-legend&edit=1&reset=1) or [horizontally scrollable legend](${galleryEditorPath}radar2&edit=1&reset=1).
 
@@ -311,7 +311,7 @@ The text style of page info.
 
 ## animation(boolean)
 
-Whether to use animation when page scrolll.
+Whether to use animation when page scrolls.
 
 ## animationDurationUpdate(number) = 800
 

@@ -1,7 +1,7 @@
 {{ target: styling }}
 # Customized Chart Styles
 
-ECharts provides a rich amount of configurable items, which can be set in global, series, and data three different levels. Next, let's see an example of how to use ECharts to implement the following Nightingale rose chart:
+Apache ECharts (incubating)<sup>TM</sup> provides a rich amount of configurable items, which can be set in global, series, and data three different levels. Next, let's see an example of how to use ECharts to implement the following Nightingale rose chart:
 
 ~[500x400](${galleryViewPath}doc-example/tutorial-styling-step5&edit=1&reset=1)
 

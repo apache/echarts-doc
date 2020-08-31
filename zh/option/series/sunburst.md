@@ -135,7 +135,7 @@ ECharts 中，通常使用 *emphasis* 表示鼠标移动到图形上后的高亮
 const data = [{
     name: 'Food',
     children: [{
-        value: 5,
+        value: 3,
         name: 'Fruit',
         children: [{
             value: 1,
@@ -146,15 +146,13 @@ const data = [{
             children: [{
                 name: 'Seville Orange',
                 value: 1
-            }]
-        }, {
-            children: [{
+            }, {
                 name: 'Blood Orange',
                 value: 1
             }]
         }]
     }, {
-        value: 10,
+        value: 9,
         name: 'Meat',
         children: [{
             value: 6,
@@ -180,17 +178,15 @@ const data = [{
                 value: 1
             }]
         }, {
-            children: [{
-                name: 'Breast',
-                value: 1
-            }]
+            name: 'Breast',
+            value: 1
         }]
     }]
 }, {
-    value: 9,
+    value: 6,
     name: 'Drinks',
     children: [{
-        value: 4,
+        value: 3,
         name: 'Wine',
         children: [{
             name: 'USA',
@@ -212,12 +208,12 @@ const data = [{
                 value: 1
             }, {
                 name: 'Orange Juice',
-                value: 1
+                value: 2
             }]
         }]
     }]
 }, {
-    value: 7,
+    value: 6,
     name: 'Fashion',
     children: [{
         name: 'Clothing',
@@ -250,7 +246,7 @@ const data = [{
     name: 'Computers',
     children: [{
         name: 'Components',
-        value: 6,
+        value: 4,
         children: [{
             name: 'Barebones',
             value: 1

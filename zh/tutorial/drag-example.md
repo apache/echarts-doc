@@ -2,7 +2,7 @@
 
 # 小例子：自己实现拖拽
 
-介绍一个实现拖拽的小例子。这个例子是在原生 echarts 基础上做了些小小扩展，带有一定的交互性。通过这个例子，我们可以了解到，如何使用 echarts 提供的 API 实现定制化的富交互的功能。
+介绍一个实现拖拽的小例子。这个例子是在原生 Apache ECharts (incubating)<sup>TM</sup> 基础上做了些小小扩展，带有一定的交互性。通过这个例子，我们可以了解到，如何使用 ECharts 提供的 API 实现定制化的富交互的功能。
 
 ~[600x400](${galleryViewPath}line-draggable&edit=1&reset=1)
 

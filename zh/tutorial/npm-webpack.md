@@ -3,7 +3,7 @@
 
 # 在 webpack 中使用 ECharts
 
-[Webpack](https://webpack.js.org//) 是目前比较流行的模块打包工具，你可以在使用 webpack 的项目中轻松的引入和打包 ECharts，这里假设你已经对 webpack 具有一定的了解并且在自己的项目中使用。
+[Webpack](https://webpack.js.org//) 是目前比较流行的模块打包工具，你可以在使用 webpack 的项目中轻松的引入和打包 Apache ECharts (incubating)<sup>TM</sup>，这里假设你已经对 webpack 具有一定的了解并且在自己的项目中使用。
 
 ## npm 安装 ECharts
 
