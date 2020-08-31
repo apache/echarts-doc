@@ -105,6 +105,7 @@ function compositeForCommand(command) {
     for (const subCmd of command.children) {
         text += compositeCommand(subCmd);
     }
+    text += `{{ /for }}`;
     return text;
 }
 

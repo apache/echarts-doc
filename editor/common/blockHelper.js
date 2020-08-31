@@ -1,5 +1,8 @@
 function parseArgKv(str) {
-    const idx = str.indexOf('=');
+    let idx = str.indexOf('=');
+    if (idx < 0) {
+        idx = str.indexOf(':');
+    }
     return [
         str.substr(0, idx).trim(),
         str.substr(idx + 1).trim()
@@ -184,7 +187,7 @@ module.exports.blockCompositors = {
         if (block.propertyDefault) {
             ret = ret + ' = ' + block.propertyDefault;
         }
-        return ret;
+        return ret + '\n';
     },
     use(block) {
         // Do some format and code indention
@@ -195,13 +198,11 @@ module.exports.blockCompositors = {
     ${argsStr}
 `;
         }
-        return `
-{{ use: ${block.target}(${argsStr}) }}
+        return `{{ use: ${block.target}(${argsStr}) }}
 `;
     },
     content(block) {
-        return `
-${block.value}
+        return `${block.value}
 `;
     }
 }
