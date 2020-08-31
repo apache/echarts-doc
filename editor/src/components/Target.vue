@@ -8,8 +8,59 @@
             <q-input dark color="white" v-model="editingLabel" autofocus counter></q-input>
         </q-popup-edit>
     </template>
-    <div v-for="block in target.blocks" :key="block.key" :class="['block', 'block-level-' + block.level || 0]">
+    <div v-for="block in target.blocks" :key="block.key" :class="[
+        'block-container', 'block-level-' + block.level || 0, 'block-container-' + block.type
+    ]">
         <Block :block="block"></Block>
+        <div class="block-ops">
+            <q-btn icon="more_vert" color="grey-6" flat round size="xs">
+                <q-menu
+                    transition-show="flip-right"
+                    transition-hide="flip-left"
+                >
+                    <q-list>
+                        <q-item clickable @click="removeBlock(block)">
+                            <q-item-section avatar><q-icon name="delete" /></q-item-section>
+                            <q-item-section>Delete</q-item-section>
+                        </q-item>
+                        <q-separator spaced />
+                        <q-item clickable @click="copyBlock(block)">
+                            <q-item-section avatar><q-icon name="content_copy" /></q-item-section>
+                            <q-item-section>Copy</q-item-section>
+                        </q-item>
+                    </q-list>
+                </q-menu>
+            </q-btn>
+        </div>
+        <!-- Add block toolbar -->
+        <div class="add-block">
+            <q-btn class="add-btn" color="grey-6" flat round icon="add" size="xs">
+                <q-menu
+                    transition-show="flip-right"
+                    transition-hide="flip-left"
+                >
+                    <q-list>
+                        <q-item clickable @click="addBlock(block, 'header')">
+                            <q-item-section avatar><q-icon name="view_headline" /></q-item-section>
+                            <q-item-section>Header Block</q-item-section>
+                        </q-item>
+                        <q-item clickable @click="addBlock(block, 'content')">
+                            <q-item-section avatar><q-icon name="text_fields" /></q-item-section>
+                            <q-item-section>Content Block</q-item-section>
+                        </q-item>
+                        <q-item clickable @click="addBlock(block, 'use')">
+                            <q-item-section avatar><q-icon name="link" /></q-item-section>
+                            <q-item-section>Use Block</q-item-section>
+                        </q-item>
+                        <q-separator spaced />
+                        <q-item clickable @click="pasteBlock(block)">
+                            <q-item-section avatar><q-icon name="content_paste" /></q-item-section>
+                            <q-item-section>Paste</q-item-section>
+                        </q-item>
+                    </q-list>
+                </q-menu>
+            </q-btn>
+        </div>
     </div>
 </q-expansion-item>
 </template>
@@ -17,6 +68,8 @@
 <script>
 
 import Block from './Block.vue';
+import _ from 'lodash';
+import { store } from '../store/store';
 
 export default {
     props: ['target'],
@@ -38,6 +91,50 @@ export default {
         },
         saveEdit() {
             this.target.name = this.editingLabel;
+        },
+
+        removeBlock(block) {
+            const idx = this.target.blocks.indexOf(block);
+            if (idx >= 0) {
+                this.target.blocks.splice(idx, 1);
+            }
+        },
+
+        copyBlock(block) {
+            store.blockToCopy = Object.freeze(_.cloneDeep(block));
+        },
+
+        pasteBlock(blockBefore) {
+            if (store.blockToCopy) {
+                const idx = this.target.blocks.indexOf(blockBefore);
+                if (idx >= 0) {
+                    this.target.blocks.splice(idx + 1, 0, _.cloneDeep(store.blockToCopy));
+                }
+            }
+        },
+
+        addBlock(blockBefore, blockType) {
+            const idx = this.target.blocks.indexOf(blockBefore);
+            if (idx >= 0) {
+                const block = {
+                    type: blockType,
+                    // Default has same level of previous block
+                    level: blockBefore.level
+                }
+                switch (blockType) {
+                case 'header':
+                    block.propertyName = '';
+                    break;
+                case 'use':
+                    block.target = '';
+                    block.args = [];
+                    break;
+                case 'content':
+                    block.value = 'Enter the description.';
+                    break;
+                }
+                this.target.blocks.splice(idx + 1, 0, block);
+            }
         }
     }
 }
@@ -57,6 +154,48 @@ export default {
         font-size: 30px;
         width: 100%;
         margin: 0;
+    }
+
+    .block-container {
+        position: relative;
+
+        .block-ops {
+            position: absolute;
+            right: -30px;
+            top: 0px;
+            // opacity: 0;
+            // transition: opacity 0.5s linear;
+        }
+
+        // &:hover {
+        //     .block-ops {
+        //         opacity: 1;
+        //     }
+        // }
+    }
+
+    // .block-container-header {
+    //     .block-ops {
+    //         top: 15px;
+    //     }
+    // }
+
+    .add-block {
+        height: 1px;
+        position: relative;
+        margin: 15px 0;
+
+        &:hover {
+            border-bottom: 1px solid $grey-4;
+            cursor: pointer;
+        }
+
+        .add-btn {
+            position: absolute;
+            right: -30px;
+            margin-top: -12px;
+            top: 0;
+        }
     }
 }
 </style>

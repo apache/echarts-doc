@@ -6,7 +6,7 @@ function parseArgKv(str) {
     return [
         str.substr(0, idx).trim(),
         str.substr(idx + 1).trim()
-    ]
+    ];
 }
 
 module.exports.parseArgs = function (argsStr) {
@@ -44,7 +44,7 @@ module.exports.parseArgs = function (argsStr) {
     }
     // Ignore galleryViewPath and galleryEditorPath
     return argsArr.filter(item => item[0] !== 'galleryViewPath' && item[0] !== 'galleryEditorPath');
-}
+};
 
 module.exports.countLevel = function (prefix) {
     let level = 0;
@@ -54,7 +54,7 @@ module.exports.countLevel = function (prefix) {
         }
     }
     return level;
-}
+};
 
 module.exports.parseHeader = function (text) {
     const [mainPart, propertyDefault] = text.split(/\s*=\s*/);
@@ -79,7 +79,7 @@ module.exports.parseHeader = function (text) {
             prefixCode: (parts[1] || '').trim(),
             propertyName,
             propertyDefault
-        }
+        };
     }
     // const prefix = parts[1];
 };
@@ -139,7 +139,7 @@ module.exports.updateBlocksLevels = function (blocks, targetsMap) {
         topLevel,
         topLevelHasPrefix
     };
-}
+};
 
 module.exports.updateBlocksKeys = function (blocks) {
     let currentLevel = 0;
@@ -214,7 +214,7 @@ module.exports.blockCompositors = {
     content(block) {
         return `${block.value}\n`;
     }
-}
+};
 
 module.exports.compositeBlocks = function (blocks) {
     return blocks.map(block => module.exports.blockCompositors[block.type](block))

@@ -4,10 +4,12 @@ import { Notify } from 'quasar';
 
 export const store = {
     blocks: {},
+
     originalBlocks: null,
 
-    targets: [],
+    blockToCopy: null,
 
+    targets: [],
     targetsMap: {},
 
     editorExists: false

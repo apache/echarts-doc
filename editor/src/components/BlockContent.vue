@@ -1,5 +1,5 @@
 <template>
-<q-card bordered flat v-if="block.value" class="block-content">
+<q-card bordered flat class="block-content">
     <div class="text-overline">Description</div>
     <div class="editor-main"></div>
 </q-card>

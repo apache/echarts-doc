@@ -4,14 +4,13 @@
         <q-header elevated class="bg-primary text-white" height-hint="98">
             <q-toolbar>
                 <!-- <q-btn dense flat round icon="menu" @click="left = !left" /> -->
-
                 <q-toolbar-title>
                 <!-- <q-avatar>
                 </q-avatar> -->
                 Apache ECharts Doc Editor
                 </q-toolbar-title>
 
-                <q-btn flat icon="clear" @click="restore" v-if="hasUnsaved">Clear Editing Content</q-btn>
+                <q-btn flat icon="refresh" @click="restore" v-if="hasUnsaved">Reset Editing</q-btn>
                 <q-btn flat icon="save" @click="save"> {{ hasUnsaved ? 'Unsaved' : ''}}</q-btn>
                 <q-btn flat icon="arrow_downward" @click="fetchFromServer"></q-btn>
             </q-toolbar>
