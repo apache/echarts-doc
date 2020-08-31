@@ -478,7 +478,6 @@
             },
 
             function (text) {
-                console.log(text);
                 code.push(
                     wrapHead,
                     forText ? stringLiteralize(text) : text,
