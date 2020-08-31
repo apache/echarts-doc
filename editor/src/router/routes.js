@@ -8,11 +8,16 @@ const routes = [
 
     {
         path: '/',
-        component: () => import('layouts/MainLayout.vue'),
+        component: () => import('layouts/EditorLayout.vue'),
         children: [
             // { path: 'index', component: () => import('pages/Index.vue') },
             { path: 'edit/:docPath', component: () => import('pages/DocBlockEditor.vue'), props: true }
         ]
+    },
+
+    {
+        path: '/conflicts',
+        component: () => import('pages/Conflicts.vue')
     },
 
     // Always leave this as last one,

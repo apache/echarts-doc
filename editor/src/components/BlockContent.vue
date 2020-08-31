@@ -32,6 +32,18 @@ export default {
         editor.on('change', () => {
             this.block.value = editor.getValue();
         });
+
+        this.editor = editor;
+    },
+
+    watch: {
+        'block.value'(newVal) {
+            if (this.editor) {
+                if (newVal !== this.editor.getValue()) {
+                    this.editor.setValue(newVal);
+                }
+            }
+        }
     }
 }
 </script>

@@ -16,6 +16,7 @@
     "@quasar/extras": "^1.0.0",
     "codemirror": "^5.57.0",
     "core-js": "^3.6.5",
+    "lodash": "^4.17.20",
     "quasar": "^1.0.0",
     "socket.io": "^2.3.0"
   },

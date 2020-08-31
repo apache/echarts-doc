@@ -4,29 +4,24 @@
         <q-input label="Target" v-model="target.name"></q-input>
     </template>
     <div v-for="block in target.blocks" :key="block.key" :class="['block', 'block-level-' + block.level || 0]">
-        <component :is="BlockComponentsMap[block.type]" :block="block"></component>
+        <Block :block="block"></Block>
     </div>
 </q-expansion-item>
 </template>
 
 <script>
 
-import BlockContent from '../components/BlockContent';
-import BlockHeader from '../components/BlockHeader';
-import BlockUse from '../components/BlockUse';
+import Block from './Block.vue';
 
 export default {
     props: ['target'],
 
+    components: {
+        Block
+    },
+
     data() {
         return {
-            BlockComponentsMap: {
-                content: BlockContent,
-                header: BlockHeader,
-                use: BlockUse,
-                import: BlockUse
-            },
-
             expanded: true
         };
     }

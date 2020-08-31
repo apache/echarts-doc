@@ -39,9 +39,14 @@ export default {
 
     watch: {
         selected(newVal) {
-            this.$router.push({
-                path: `/edit/${newVal}`
-            });
+            if (newVal) {
+                const newPath = `/edit/${newVal}`;
+                if (this.$route.path !== newPath) {
+                    this.$router.push({
+                        path: newPath
+                    });
+                }
+            }
         }
     },
 

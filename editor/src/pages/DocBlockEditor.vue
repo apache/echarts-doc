@@ -27,14 +27,24 @@ export default {
 
     data() {
         return {
-            hierarchyOpen: true
-            // shared: store
+            hierarchyOpen: true,
+            shared: store
         };
     },
 
     computed: {
         targets() {
             return store.blocks[this.docPath];
+        }
+    },
+
+    watch: {
+        'shared.editorExists'(newVal) {
+            if (newVal) {
+                this.$router.push({
+                    path: '/conflicts'
+                });
+            }
         }
     }
 };
