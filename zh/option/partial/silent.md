@@ -1,5 +1,5 @@
 {{ target: partial-silent }}
-${prefix}# silent(boolean) = false
+#${prefix} silent(boolean) = false
 
 <ExampleUIControlBoolean />
 
