@@ -297,11 +297,10 @@ const option = {
 )}}
 
 
-## labelLayout(Object)
+## labelLayout(Object|Function)
 {{ use: partial-label-layout(
     prefix="##"
 ) }}
-
 
 ## data(Array)
 

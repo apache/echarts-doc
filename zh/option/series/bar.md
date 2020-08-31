@@ -140,9 +140,9 @@ option = {
     isNormal=true
 ) }}
 
-## labelLayout(Object)
+## labelLayout(Object|Function)
 {{ use: partial-label-layout(
-    prefix="#" + ${prefix}
+    prefix="##"
 ) }}
 
 ## emphasis(Object)

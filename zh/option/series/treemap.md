@@ -462,7 +462,7 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 )}}
 
 
-## labelLayout(Object)
+## labelLayout(Object|Function)
 {{ use: partial-label-layout(
     prefix="##"
 ) }}

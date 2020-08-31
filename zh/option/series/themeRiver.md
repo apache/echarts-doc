@@ -142,7 +142,7 @@ const option = {
     defaultFontSize=11,
 )}}
 
-## labelLayout(Object)
+## labelLayout(Object|Function)
 {{ use: partial-label-layout(
     prefix="##"
 ) }}

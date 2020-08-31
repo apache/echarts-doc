@@ -121,11 +121,10 @@ const option = {
     formatter=true
 )}}
 
-## labelLayout(Object)
+## labelLayout(Object|Function)
 {{ use: partial-label-layout(
     prefix="##"
 ) }}
-
 
 ## itemStyle(Object)
 {{use:partial-item-style-desc}}

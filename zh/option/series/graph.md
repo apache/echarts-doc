@@ -209,7 +209,7 @@ edgeSymbol: ['circle', 'arrow']
     prefix="##"
 )}}
 
-## labelLayout(Object)
+## labelLayout(Object|Function)
 {{ use: partial-label-layout(
     prefix="##"
 ) }}

@@ -101,7 +101,7 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 标签相关配置。在 [polyline](~series-lines.polyline) 设置为 `true` 时无效。
 {{ use: lines-label(prefix="##")}}
 
-## labelLayout(Object)
+## labelLayout(Object|Function)
 {{ use: partial-label-layout(
     prefix="##"
 ) }}

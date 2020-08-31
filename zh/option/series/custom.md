@@ -389,10 +389,11 @@ renderItem 函数的第二个参数。
     hasCallback=false
 )}}
 
-## labelLayout(Object)
+## labelLayout(Object|Function)
 {{ use: partial-label-layout(
     prefix="##"
 ) }}
+
 
 
 ## emphasis(Object)

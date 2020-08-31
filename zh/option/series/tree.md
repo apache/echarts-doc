@@ -169,7 +169,7 @@ const option = {
     formatter1d=true
 )}}
 
-## labelLayout(Object)
+## labelLayout(Object|Function)
 {{ use: partial-label-layout(
     prefix="##"
 ) }}
