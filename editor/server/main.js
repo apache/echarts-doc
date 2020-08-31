@@ -12,7 +12,7 @@ console.log('Server Started');
 const fileModified = {};
 
 function fetchBlocks() {
-    return parseBlocks(path.resolve(__dirname, '../../zh-src/option'));
+    return parseBlocks(path.resolve(__dirname, '../../zh/option'));
 }
 
 let globalSocket;

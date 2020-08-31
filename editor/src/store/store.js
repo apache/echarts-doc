@@ -7,7 +7,7 @@ export const store = {
 
     originalBlocks: null,
 
-    blockToCopy: null,
+    blocksToCopy: [],
 
     targets: [],
     targetsMap: {},
