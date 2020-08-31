@@ -27,7 +27,7 @@
             <q-icon name="label" class="text-blue-8 q-mx-md" style="font-size:20px;"></q-icon>
             <q-input v-model="arg[0]"></q-input>
             <div class="q-mx-md equal">=</div>
-            <q-input v-model="arg[1]"></q-input>
+            <q-input v-model="arg[1]" @keyup="onArgValEditing(arg)"></q-input>
         </div>
     </div>
        <!-- {{block.target}} -->
@@ -38,6 +38,7 @@
 <script>
 
 import { store } from '../store/store';
+import { countLevel } from '../../common/blockHelper';
 
 export default {
     props: ['block'],
@@ -72,6 +73,15 @@ export default {
                     ref.moveOptionSelection(1, true) // focus the first selectable option and do not update the input-value
                 }
             });
+        },
+
+        onArgValEditing(arg) {
+            const usedTarget = store.targetsMap[this.block.target];
+            if (arg[0] === 'prefix' && usedTarget) {
+                if (arg[1].match(/#+/)) {
+                    this.block.level = countLevel(arg[1]) + usedTarget.topLevel;
+                }
+            }
         }
     }
 }

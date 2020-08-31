@@ -1,7 +1,12 @@
 <template>
 <q-expansion-item v-model="expanded" :expand-icon-toggle="true">
     <template v-slot:header>
-        <q-input label="Target" v-model="target.name"></q-input>
+        <h5>{{target.name}}</h5>
+        <q-popup-edit v-model="editingLabel" content-class="bg-dark text-white" buttons
+            @before-show="startEdit" @save="saveEdit"
+        >
+            <q-input dark color="white" v-model="editingLabel" autofocus counter></q-input>
+        </q-popup-edit>
     </template>
     <div v-for="block in target.blocks" :key="block.key" :class="['block', 'block-level-' + block.level || 0]">
         <Block :block="block"></Block>
@@ -22,16 +27,25 @@ export default {
 
     data() {
         return {
+            editingLabel: '',
             expanded: true
         };
+    },
+
+    methods: {
+        startEdit() {
+            this.editingLabel = this.target.name
+        },
+        saveEdit() {
+            this.target.name = this.editingLabel;
+        }
     }
 }
 </script>
 
 <style lang="scss" scoped>
 .q-expansion-item {
-    margin-top: 10px;
-    margin-bottom: 50px;
+    margin-top: 50px;
 
     @for $level from 1 through 7 {
         .block-level-#{$level} {
@@ -39,9 +53,10 @@ export default {
         }
     }
 
-    .q-input {
+    h5 {
         font-size: 30px;
         width: 100%;
+        margin: 0;
     }
 }
 </style>

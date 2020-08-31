@@ -41,7 +41,8 @@ export default {
             navOpen: true,
             shared: store,
 
-            hasUnsaved: false
+            hasUnsaved: false,
+            showClearConfirm: false
         };
     },
 
@@ -51,9 +52,20 @@ export default {
             this.hasUnsaved = false;
         },
         restore() {
-            restore();
-            clearLocalStorage();
-            this.hasUnsaved = false;
+            this.$q.dialog({
+                title: 'Confirm',
+                message: 'Are you sure to clear the editing content?',
+                cancel: true,
+                persistent: true,
+                dark: true
+                // position: 'bottom'
+            }).onOk(() => {
+                restore();
+                clearLocalStorage();
+                this.hasUnsaved = false;
+            }).onCancel(() => {
+            }).onDismiss(() => {
+            })
         }
     },
 

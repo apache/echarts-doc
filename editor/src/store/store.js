@@ -8,17 +8,22 @@ export const store = {
 
     targets: [],
 
+    targetsMap: {},
+
     editorExists: false
 };
 
 function updateTargets() {
     const targets = [];
+    const targetsMap = {};
     for (const fileName in store.blocks) {
         for (const target of store.blocks[fileName]) {
             targets.push(target);
+            targetsMap[target.name] = target;
         }
     }
-    store.targets = targets;
+    store.targets = Object.freeze(targets);
+    store.targetsMap = Object.freeze(targetsMap);
 }
 
 socket.on('initial-blocks', function (blocks) {
@@ -82,6 +87,7 @@ export const detectChangeAndSaveToLocal = _.debounce((changed, unchanged) => {
         changed();
     }
     else {
+        clearLocalStorage();
         unchanged();
     }
 }, 1000);
