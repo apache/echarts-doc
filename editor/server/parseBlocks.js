@@ -34,7 +34,7 @@ function parseMarkDown(mdStr) {
                     const headerText = headers[idx - 1].text.trim();
                     const headerLevel = headers[idx - 1].level;
 
-                    const {propertyName, propertyDefault, propertyType, hasPrefix} = parseHeader(headerText);
+                    const {propertyName, propertyDefault, propertyType, prefixCode} = parseHeader(headerText);
 
                     blocks.push({
                         type: 'header',
@@ -43,7 +43,7 @@ function parseMarkDown(mdStr) {
                         propertyName,
                         propertyDefault,
                         propertyType,
-                        hasPrefix
+                        prefixCode
                     });
                 }
                 const text = section.trim();

@@ -65,7 +65,7 @@ module.exports.parseHeader = function (text) {
         const propertyType = parts[3];
 
         return {
-            hasPrefix: !!parts[1],
+            prefixCode: (parts[1] || '').trim(),
             propertyName,
             propertyType,
             propertyDefault
@@ -76,7 +76,7 @@ module.exports.parseHeader = function (text) {
     if (parts) {
         const propertyName = parts[2].trim();
         return {
-            hasPrefix: !!parts[1],
+            prefixCode: (parts[1] || '').trim(),
             propertyName,
             propertyDefault
         }
@@ -116,10 +116,10 @@ module.exports.updateLevelAndKeyInBlocks = function (blocks, targetsMap) {
             if (topLevel === 0) {
                 topLevel = currentLevel;
                 // TODO Not all have prefix?
-                topLevelHasPrefix = block.hasPrefix;
+                topLevelHasPrefix = !!block.prefixCode;
             }
 
-            if (topLevelHasPrefix !== block.hasPrefix) {
+            if (topLevelHasPrefix !== !!block.prefixCode) {
                 throw new Error(`[${block.propertyName}] Must all includes prefix or not`);
             }
             break;
@@ -182,7 +182,7 @@ module.exports.buildBlockHierarchy = function (blocks) {
 module.exports.blockCompositors = {
     header(block) {
         /* eslint-disable-next-line */
-        const prefix = '#'.repeat(block.level) + (block.hasPrefix ? '${prefix}' : '');
+        const prefix = '#'.repeat(block.level) + (block.prefixCode ? block.prefixCode : '');
         let ret = `${prefix} ${block.propertyName}(${block.propertyType || '*'})`;
         if (block.propertyDefault) {
             ret = ret + ' = ' + block.propertyDefault;
