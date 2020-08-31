@@ -13,6 +13,7 @@
 
                 <q-btn flat icon="clear" @click="restore" v-if="hasUnsaved">Clear Editing Content</q-btn>
                 <q-btn flat icon="save" @click="save"> {{ hasUnsaved ? 'Unsaved' : ''}}</q-btn>
+                <q-btn flat icon="arrow_downward" @click="fetchFromServer"></q-btn>
             </q-toolbar>
         </q-header>
 
@@ -29,8 +30,16 @@
 <script>
 
 import Nav from '../components/Nav';
-import { store, saveToServer, detectChangeAndSaveToLocal, clearLocalStorage, restore } from '../store/store';
+import {
+    store,
+    saveToServer,
+    detectChangeAndSaveToLocal,
+    clearLocalStorage,
+    fetchFromServer,
+    restore
+} from '../store/store';
 import { socket } from '../store/socket';
+import { Notify } from 'quasar';
 
 export default {
     components: {
@@ -48,9 +57,18 @@ export default {
 
     methods: {
         save() {
-            saveToServer();
-            this.hasUnsaved = false;
+            saveToServer().then(() => {
+                this.hasUnsaved = false;
+                Notify.create({
+                    message: 'Saved Successfuly'
+                });
+            }).catch(reason => {
+                Notify.create({
+                    message: 'Failed to Save ' + reason
+                });
+            });
         },
+
         restore() {
             this.$q.dialog({
                 title: 'Confirm',
@@ -58,14 +76,31 @@ export default {
                 cancel: true,
                 persistent: true,
                 dark: true
-                // position: 'bottom'
             }).onOk(() => {
                 restore();
                 clearLocalStorage();
                 this.hasUnsaved = false;
-            }).onCancel(() => {
-            }).onDismiss(() => {
-            })
+            });
+        },
+
+        fetchFromServer() {
+            this.$q.dialog({
+                title: 'Confirm',
+                message: 'Pull from server will override the content you are editing. Are sure to do this?',
+                cancel: true,
+                persistent: true,
+                dark: true
+            }).onOk(() => {
+                fetchFromServer().then(() => {
+                    Notify.create({
+                        message: 'Fetched Successfuly'
+                    });
+                }).catch(reason => {
+                    Notify.create({
+                        message: 'Failed to Fetch ' + reason
+                    });
+                });
+            });
         }
     },
 

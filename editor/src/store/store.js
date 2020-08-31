@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { socket } from './socket';
+import { socket, socketRequest } from './socket';
 import { Notify } from 'quasar';
 
 export const store = {
@@ -26,28 +26,32 @@ function updateTargets() {
     store.targetsMap = Object.freeze(targetsMap);
 }
 
-socket.on('initial-blocks', function (blocks) {
-    store.blocks = blocks;
-    store.originalBlocks = Object.freeze(_.cloneDeep(blocks));
-
+fetchFromServer(() => {
     // Try restore from local storage.
     restoreFromLocalStorage();
-
-    updateTargets();
 });
 
 socket.on('editor-exists', function () {
     store.editorExists = true;
 });
 
-socket.on('saved', function () {
-    // Reset the base
-    store.originalBlocks = Object.freeze(_.cloneDeep(store.blocks));
-    clearLocalStorage();
-});
+export function fetchFromServer(extraProcess) {
+    return socketRequest('fetch').then((blocks) => {
+        store.blocks = blocks;
+        store.originalBlocks = Object.freeze(_.cloneDeep(blocks));
+
+        extraProcess && extraProcess(blocks);
+
+        updateTargets();
+    });
+}
 
 export function saveToServer() {
-    socket.emit('save', store.blocks);
+    return socketRequest('save').then(() => {
+        // Reset the base
+        store.originalBlocks = Object.freeze(_.cloneDeep(store.blocks));
+        clearLocalStorage();
+    });
 }
 
 export function restore() {

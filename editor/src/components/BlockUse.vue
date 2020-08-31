@@ -26,7 +26,7 @@
         <q-btn flat round icon="add" size="xs" @click="addArg"></q-btn>
     </q-toolbar>
     <div class="args row items-center">
-        <div v-for="(arg, index) in block.args" :key="arg[0]" class="row items-center">
+        <div v-for="(arg, index) in block.args" :key="arg[0] || index" class="row items-center">
             <q-icon name="label" class="text-blue-8 q-mx-md" style="font-size:20px;"></q-icon>
             <q-input v-model="arg[0]"></q-input>
             <div class="q-mx-md equal">=</div>
