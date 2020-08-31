@@ -21,13 +21,17 @@
         </template>
     </q-select>
 
-    <div class="text-overline">Parameters</div>
+    <q-toolbar>
+        <q-toolbar-title class="text-overline">Parameters</q-toolbar-title>
+        <q-btn flat round icon="add" size="xs" @click="addArg"></q-btn>
+    </q-toolbar>
     <div class="args row items-center">
-        <div v-for="arg in block.args" :key="arg[0]" class="row items-center">
+        <div v-for="(arg, index) in block.args" :key="arg[0]" class="row items-center">
             <q-icon name="label" class="text-blue-8 q-mx-md" style="font-size:20px;"></q-icon>
             <q-input v-model="arg[0]"></q-input>
             <div class="q-mx-md equal">=</div>
             <q-input v-model="arg[1]" @keyup="onArgValEditing(arg)"></q-input>
+            <q-btn round flat icon="close" size="xs" @click="removeArg(index)"></q-btn>
         </div>
     </div>
        <!-- {{block.target}} -->
@@ -82,6 +86,14 @@ export default {
                     this.block.level = countLevel(arg[1]) + usedTarget.topLevel;
                 }
             }
+        },
+
+        removeArg(index) {
+            this.block.args.splice(index, 1);
+        },
+
+        addArg() {
+            this.block.args.push(['', '']);
         }
     }
 }
