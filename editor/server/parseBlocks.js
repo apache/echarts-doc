@@ -2,8 +2,7 @@ const etpl = require('../../dep/etpl');
 const fs = require('fs');
 const globby = require('globby');
 const path = require('path');
-const {updateLevelAndKeyInBlocks, parseHeader, parseArgs} = require('../common/blockHelper');
-const { targets } = require('../../dep/etpl');
+const {updateBlocksLevels, parseHeader, parseArgs, updateBlocksKeys} = require('../common/blockHelper');
 
 const IfCommand = etpl.commandTypes.if;
 const UseCommand = etpl.commandTypes.use;
@@ -198,7 +197,8 @@ function parseSingleFileBlocks(fileName, root, blocksStore) {
             }
         }
 
-        const {topLevel, topLevelHasPrefix} = updateLevelAndKeyInBlocks(outBlocks);
+        const {topLevel, topLevelHasPrefix} = updateBlocksLevels(outBlocks);
+        updateBlocksKeys(outBlocks);
 
         targets.push({
             name: targetName,
@@ -236,7 +236,7 @@ module.exports.parseBlocks = async function parseBlocks(root) {
     for (let targetName in targetsMap) {
         const target = targetsMap[targetName];
         // Update level again based on other blocks info.
-        updateLevelAndKeyInBlocks(target.blocks, targetsMap);
+        updateBlocksLevels(target.blocks, targetsMap);
     }
 
     fs.writeFileSync(__dirname + '/blocks.json', JSON.stringify(blocksStore, null, 2), 'utf-8');

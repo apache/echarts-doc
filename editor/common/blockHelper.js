@@ -81,36 +81,17 @@ module.exports.parseHeader = function (text) {
             propertyDefault
         }
     }
-
-
     // const prefix = parts[1];
 };
 
-module.exports.updateLevelAndKeyInBlocks = function (blocks, targetsMap) {
+module.exports.updateBlocksLevels = function (blocks, targetsMap) {
     let topLevel = 0;
     let topLevelHasPrefix = false;
-
     let currentLevel = 0;
 
-    const stacks = ['top'];
-
-    let duplicateKeyCount = 0;
-
-    const keyMap = {};
-
-    const contentKeyCountMap = {};
-
     for (const block of blocks) {
-        let baseKey = '';
         switch (block.type) {
         case 'header':
-            for (let i = block.level; i <= currentLevel; i++) {
-                stacks.pop();
-            }
-            if (block.level >= currentLevel) {
-                stacks.push(block.propertyName);
-            }
-            baseKey = 'header:' + stacks.join('.');
             currentLevel = block.level;
 
             if (topLevel === 0) {
@@ -127,12 +108,6 @@ module.exports.updateLevelAndKeyInBlocks = function (blocks, targetsMap) {
         case 'content':
             // Indent description content by default
             block.level = currentLevel + 1;
-            baseKey = 'content:' + stacks.join('.');
-            contentKeyCountMap[baseKey] = contentKeyCountMap[baseKey] || 0;
-            if (contentKeyCountMap[baseKey]) {
-                baseKey += '-' + contentKeyCountMap[baseKey];
-            }
-            contentKeyCountMap[baseKey]++;
             break;
         case 'use':
         case 'import':
@@ -156,7 +131,51 @@ module.exports.updateLevelAndKeyInBlocks = function (blocks, targetsMap) {
                     console.warn(`Block ${block.target} not exists`);
                 }
             }
+            break;
+        }
+    }
 
+    return {
+        topLevel,
+        topLevelHasPrefix
+    };
+}
+
+module.exports.updateBlocksKeys = function (blocks) {
+    let currentLevel = 0;
+
+    const stacks = ['top'];
+
+    let duplicateKeyCount = 0;
+
+    const keyMap = {};
+
+    const contentKeyCountMap = {};
+
+    for (const block of blocks) {
+        let baseKey = '';
+        switch (block.type) {
+        case 'header':
+            for (let i = block.level; i <= currentLevel; i++) {
+                stacks.pop();
+            }
+            if (block.level >= currentLevel) {
+                stacks.push(block.propertyName);
+            }
+            baseKey = 'header:' + stacks.join('.');
+            currentLevel = block.level;
+            break;
+            // Content and use command following header has same level.
+        case 'content':
+            baseKey = 'content:' + stacks.join('.');
+            contentKeyCountMap[baseKey] = contentKeyCountMap[baseKey] || 0;
+            if (contentKeyCountMap[baseKey]) {
+                baseKey += '-' + contentKeyCountMap[baseKey];
+            }
+            contentKeyCountMap[baseKey]++;
+            break;
+        case 'use':
+        case 'import':
             baseKey = 'use:' + stacks.join('.') + ':' + block.target;
             break;
         }
@@ -168,11 +187,6 @@ module.exports.updateLevelAndKeyInBlocks = function (blocks, targetsMap) {
 
         block.key = keyNoDuplicate;
     }
-
-    return {
-        topLevel,
-        topLevelHasPrefix
-    };
 };
 
 module.exports.buildBlockHierarchy = function (blocks) {
@@ -191,19 +205,14 @@ module.exports.blockCompositors = {
     },
     use(block) {
         // Do some format and code indention
-        let argsStr = block.args.map(item => item.join(' = ')).join(`,
-    `);
+        let argsStr = block.args.map(item => item.join(' = ')).join(',\n    ');
         if (argsStr) {
-            argsStr = `
-    ${argsStr}
-`;
+            argsStr = `\n    ${argsStr}\n`;
         }
-        return `{{ use: ${block.target}(${argsStr}) }}
-`;
+        return `{{ use: ${block.target}(${argsStr}) }}\n`;
     },
     content(block) {
-        return `${block.value}
-`;
+        return `${block.value}\n`;
     }
 }
 
@@ -218,5 +227,4 @@ module.exports.compositeTargets = function (targets) {
 
 ${module.exports.compositeBlocks(target.blocks)}
 `).join('\n\n');
-
 };
