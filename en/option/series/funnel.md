@@ -30,6 +30,13 @@ The mapped width from maximum data value [max](~series-funnel.max).
 
 It can be absolute pixel and also the percentage of [layout width](~series-funnel.width).
 
+
+## orient(string) = 'vertical'
+
+<ExampleUIControlEnum options="vertical,horizontal" />
+
+Orient of funnel，Can be `'vertical'` or `'horizontal'`.
+
 ## sort(string|Function) = 'descending'
 Data sorting, which can be whether `'ascending'`, `'descending'`, `'none'`(in data order) or a function, which is the same as `Array.prototype.sort(function (a, b) { ... })`;
 
@@ -182,44 +189,22 @@ The label configuration of a single data item.
 Label position.
 
 **Options: **
-+ `'left'`
-
-    Left side of funnel chart. The corresponding trapezoid would be related to through [visual guide line](~series-funnel.labelLine).
-
-+ `'right'`
-
-   Right side of funnel chart. The corresponding trapezoid would be related to through [visual guide line](~series-funnel.labelLine).
-
-+ `'inside'`
-
-    Inside the trapezoid of funnel chart.
-
-+ `'insideRight'`
-
-    Right inside the trapezoid of funnel chart.
-
-+ `'insideLeft'`
-
-    Left inside the trapezoid of funnel chart.
-
-+ `'leftTop'`
-
-    Top-left of funnel chart.
-
-+ `'leftBottom'`
-
-    Bottom-left of funnel chart.
-
-+ `'rightTop'`
-
-    Top-right side of funnel chart.
-
-+ `'rightBottom'`
-
-    Bottom-right side of funnel chart.
-
++ `'left'`Left side of funnel chart. Available when [orient](~series-funnel.orient) is `'vertical'`.
++ `'right'` Right side of funnel chart. Available when [orient](~series-funnel.orient) is `'horizontal'`.
++ `'top'` Top side of funnel chart. Available when [orient](~series-funnel.orient) is `'vertical'`.
++ `'bottom'` Bottom side of funnel chart. Available when [orient](~series-funnel.orient) is `'vertical'`.
++ `'inside'`Inside the trapezoid of funnel chart.
++ `'insideRight'`Right inside the trapezoid of funnel chart.
++ `'insideLeft'`Left inside the trapezoid of funnel chart.
++ `'leftTop'`Top-left of funnel chart.
++ `'leftBottom'`Bottom-left of funnel chart.
++ `'rightTop'`Top-right side of funnel chart.
++ `'rightBottom'`Bottom-right side of funnel chart.
 + `'inner'` equals to `'inside'`.
 + `'center'` equals to `'inside'`.
+
+[labelLine](~series-funnel.labelLine) can be used to guide to the corresponding trapezoid when label is not inside.
+
 
 {{ /if }}
 {{ if: ${formatter} }}

@@ -215,10 +215,17 @@ Zooming and restore icon path.
 {{ use: partial-icon-image-path }}
 ##### back(string)
 {{ use: partial-icon-image-path }}
+
 #### title(Object)
 Restored and zoomed title text.
 ##### zoom(string) = 'area zooming'
 ##### back(string) = 'restore area zooming'
+
+#### brushStyle(Object)
+Style of brush rectangle.
+{{ use: partial-item-style(
+    prefix="####"
+) }}
 
 
 ### magicType(Object)
