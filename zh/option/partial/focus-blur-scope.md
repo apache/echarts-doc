@@ -14,7 +14,7 @@
 + `'series'` 聚焦当前高亮的数据所在的系列的所有图形。
 {{ if: ${isGraph} }}
 + `'adjacency'` 聚焦关系图中的邻接点和边的图形
-{{ elif: ${isTree}   }}
+{{ elif:${isTree} }}
 + `'ancestor'` 聚焦所有祖先节点
 + `'descendant'` 聚焦所有子孙节点
 {{ /if }}

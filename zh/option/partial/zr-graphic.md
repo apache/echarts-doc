@@ -73,7 +73,7 @@ group 是唯一的可以有子节点的容器。group 可以用来整体定位�
 关于制定尺寸、拉伸还是平铺，参见 [layout](~${optionPath}.${hostName}${symbolVisit}path.shape.layout)。
 
 
-{{ use:   partial-graphic-cpt-common-props(
+{{ use: partial-graphic-cpt-common-props(
     type='path',
     prefix=${prefix},
     optionPath=${optionPath},
@@ -81,7 +81,7 @@ group 是唯一的可以有子节点的容器。group 可以用来整体定位�
     hostName=${hostName},
     symbolVisit=${symbolVisit},
     symbolDeclare=${symbolDeclare}
-)   }}
+) }}
 
 ##${prefix} shape(Object)
 
@@ -113,51 +113,51 @@ group 是唯一的可以有子节点的容器。group 可以用来整体定位�
 + `'cover'`：PathData 拉伸为矩形的长宽比，完全填满矩形，不会超出矩形。
 
 
-{{ use:   partial-graphic-cpt-sub-prop-xy(
+{{ use: partial-graphic-cpt-sub-prop-xy(
     prefix=${prefix},
     optionPath=${optionPath},
     usageType=${usageType},
     hostName=${hostName},
     symbolVisit=${symbolVisit},
     symbolDeclare=${symbolDeclare}
-)   }}
-{{ use:   partial-graphic-cpt-sub-prop-wh(
+) }}
+{{ use: partial-graphic-cpt-sub-prop-wh(
     prefix=${prefix},
     optionPath=${optionPath},
     usageType=${usageType},
     hostName=${hostName},
     symbolVisit=${symbolVisit},
     symbolDeclare=${symbolDeclare}
-)   }}
+) }}
 
 ##${prefix} style(Object)
 
-{{ use:   partial-graphic-cpt-style-prop-common(
+{{ use: partial-graphic-cpt-style-prop-common(
     prefix=${prefix},
     optionPath=${optionPath},
     usageType=${usageType},
     hostName=${hostName},
     symbolVisit=${symbolVisit},
     symbolDeclare=${symbolDeclare}
-)   }}
+) }}
 
-{{ use:   partial-graphic-cpt-style-emphasis(
+{{ use: partial-graphic-cpt-style-emphasis(
     prefix=${prefix},
     optionPath=${optionPath},
     usageType=${usageType},
     hostName=${hostName},
     symbolVisit=${symbolVisit},
     symbolDeclare=${symbolDeclare}
-)   }}
+) }}
 
-{{ use:   partial-graphic-cpt-event-handlers(
+{{ use: partial-graphic-cpt-event-handlers(
     prefix=${prefix},
     optionPath=${optionPath},
     usageType=${usageType},
     hostName=${hostName},
     symbolVisit=${symbolVisit},
     symbolDeclare=${symbolDeclare}
-)   }}
+) }}
 
 {{ /if }}
 
@@ -948,7 +948,7 @@ setOption 时指定本次对该图形元素的操作行为。
 
 ##${prefix} left(number|string) = undefined
 
-{{ use:   partial-graphic-cpt-location-prop-desc-common (
+{{ use: partial-graphic-cpt-location-prop-desc-common (
     hv = 'h',
     prefix=${prefix},
     optionPath=${optionPath},
@@ -956,11 +956,11 @@ setOption 时指定本次对该图形元素的操作行为。
     hostName=${hostName},
     symbolVisit=${symbolVisit},
     symbolDeclare=${symbolDeclare}
-)   }}
+) }}
 
 ##${prefix} right(number|string) = undefined
 
-{{ use:   partial-graphic-cpt-location-prop-desc-common (
+{{ use: partial-graphic-cpt-location-prop-desc-common (
     hv = 'h',
     prefix=${prefix},
     optionPath=${optionPath},
@@ -968,11 +968,11 @@ setOption 时指定本次对该图形元素的操作行为。
     hostName=${hostName},
     symbolVisit=${symbolVisit},
     symbolDeclare=${symbolDeclare}
-)   }}
+) }}
 
 ##${prefix} top(number|string) = undefined
 
-{{ use:   partial-graphic-cpt-location-prop-desc-common (
+{{ use: partial-graphic-cpt-location-prop-desc-common (
     hv = 'v',
     prefix=${prefix},
     optionPath=${optionPath},
@@ -980,11 +980,11 @@ setOption 时指定本次对该图形元素的操作行为。
     hostName=${hostName},
     symbolVisit=${symbolVisit},
     symbolDeclare=${symbolDeclare}
-)   }}
+) }}
 
 ##${prefix} bottom(number|string) = undefined
 
-{{ use:   partial-graphic-cpt-location-prop-desc-common (
+{{ use: partial-graphic-cpt-location-prop-desc-common (
     hv = 'v',
     prefix=${prefix},
     optionPath=${optionPath},
@@ -992,7 +992,7 @@ setOption 时指定本次对该图形元素的操作行为。
     hostName=${hostName},
     symbolVisit=${symbolVisit},
     symbolDeclare=${symbolDeclare}
-)   }}
+) }}
 
 ##${prefix} bounding(strin) = 'all'
 
@@ -1061,7 +1061,7 @@ chart.on('click', function (params) {
 
 {{ if: ${usageType} === 'graphicComponent' }}
 
-{{ use:   partial-cursor(prefix="##")   }}
+{{ use: partial-cursor(prefix="##") }}
 
 ##${prefix} draggable(boolean) = false
 

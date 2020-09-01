@@ -112,7 +112,7 @@ Works only when [type](~series-${seriesType}.markPoint.data.type) is assigned. I
 
 Coordinates of the starting point or ending point, whose format depends on the coordinate of the series. It can be `x`, and `y` for [rectangular coordinates](~grid), or `radius`, and `angle` for [polar coordinates](~polar).
 
-{{ use:   marker-coord-explain   }}
+{{ use: marker-coord-explain }}
 
 {{ /if }}
 

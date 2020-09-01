@@ -301,7 +301,7 @@ option = {
 #${prefix} label(Object)
 
 {{ if: ${topLevel} }}
-{{ use:  partial-label-desc  }}
+{{ use: partial-label-desc }}
 {{ else }}
 单个数据的文本配置。
 {{ /if }}
@@ -315,7 +315,7 @@ option = {
 #${prefix} itemStyle(Object)
 
 {{ if: ${topLevel} }}
-{{ use:  partial-item-style-desc  }}
+{{ use: partial-item-style-desc }}
 {{ else }}
 单个数据的图形样式设置。
 {{ /if }}

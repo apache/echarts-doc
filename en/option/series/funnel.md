@@ -252,12 +252,12 @@ Label position.
 
 #${prefix} formatter(string|Function)
 
-{{ use:   partial-1d-data-label-formatter(extra = {
+{{ use: partial-1d-data-label-formatter(extra = {
     percent: {
         desc: 'percentage',
         type: 'number'
     }
-})   }}
+}) }}
 {{ /if }}
 
 {{ use: partial-text-style(

@@ -581,8 +581,8 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 表示同一层级的节点的 颜色 选取列表（选择规则见 [colorMappingBy](~series-treemap.colorMappingBy)）。默认为空时，选取系统color列表。
 
-{{ use:   partial-treemap-visual-detial   }}
-{{ use:   partial-treemap-prop-location-desc(name="color")  }}
+{{ use: partial-treemap-visual-detial }}
+{{ use: partial-treemap-prop-location-desc(name="color") }}
 
 {{ /if }}
 
@@ -826,11 +826,11 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 如果设置此属性，则 `borderColor` 的设置无效，而是：取当前节点计算出的颜色（比如从父节点遗传而来），在此颜色值上设置 `borderColorSaturation` 得到最终颜色。这种方式，能够做出『不同区块有不同色调的矩形间隔线』的效果，能够便于区分层级。
 
 <br>
-{{ use:   partial-treemap-borderColor-setting(galleryEditorPath=${galleryEditorPath})   }}
+{{ use: partial-treemap-borderColor-setting(galleryEditorPath=${galleryEditorPath}) }}
 
-{{ use:  partial-style-shadow-opacity(
+{{ use: partial-style-shadow-opacity(
     prefix=${prefix}
-)   }}
+) }}
 
 {{ /if }}
 

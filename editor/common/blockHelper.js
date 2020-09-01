@@ -196,23 +196,29 @@ module.exports.buildBlockHierarchy = function (blocks) {
 module.exports.blockCompositors = {
     header(block) {
         /* eslint-disable-next-line */
-        const prefix = '#'.repeat(block.level) + (block.prefixCode ? block.prefixCode : '');
-        let ret = `${prefix} ${block.propertyName}(${block.propertyType || '*'})`;
-        if (block.propertyDefault) {
-            ret = ret + ' = ' + block.propertyDefault;
+        const prefix = '#'.repeat(block.level) + (block.prefixCode.trim() ? block.prefixCode.trim() : '');
+        let ret = `${prefix} ${block.propertyName.trim()}(${(block.propertyType || '*').trim()})`;
+        const propertyDefault = block.propertyDefault && block.propertyDefault.trim();
+        if (propertyDefault) {
+            ret = ret + ' = ' + propertyDefault;
         }
         return ret + '\n';
     },
     use(block) {
         // Do some format and code indention
-        let argsStr = block.args.map(item => item.join(' = ')).join(',\n    ');
+        block.args.forEach(item => {
+            item[0].trim();
+            item[1].trim();
+        })
+        let argsStr = block.args.filter(item => !!item[0])
+            .map(item => item.join(' = ')).join(',\n    ');
         if (argsStr) {
             argsStr = `\n    ${argsStr}\n`;
         }
-        return `{{ use: ${block.target}(${argsStr}) }}\n`;
+        return `{{ use: ${block.target.trim()}(${argsStr}) }}\n`;
     },
     content(block) {
-        return `${block.value}\n`;
+        return `${block.value.trim()}\n`;
     }
 };
 
@@ -223,7 +229,7 @@ module.exports.compositeBlocks = function (blocks) {
 
 module.exports.compositeTargets = function (targets) {
     return targets.map(target => `
-{{ target: ${target.name} }}
+{{ target: ${target.name.trim()} }}
 
 ${module.exports.compositeBlocks(target.blocks)}
 `).join('\n\n');

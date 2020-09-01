@@ -87,11 +87,11 @@ Set this to `false` to prevent the axis label from appearing.
 
 ##${prefix} interval(number|Function) = 'auto'
 
-{{ use:   partial-axis-interval(
+{{ use: partial-axis-interval(
     name="Axis label",
     isAxisLabel=true,
     componentType=${componentType}
-)   }}
+) }}
 {{ /if }}
 
 {{ if: ${hasInside|default(true)} }}
@@ -178,10 +178,10 @@ Align axis tick with label, which is available only when `boundaryGap` is set to
 
 ##${prefix} interval(number|Function) = 'auto'
 
-{{ use:   partial-axis-interval(
+{{ use: partial-axis-interval(
     name="axisTick",
     componentType=${componentType}
-)   }}
+) }}
 {{ /if }}
 
 {{ if: ${hasInside|default(true)} }}
@@ -279,10 +279,10 @@ Set this to `false` to prevent the splitLine from showing.
 
 ##${prefix} interval(number|Function) = 'auto'
 
-{{ use:   partial-axis-interval(
+{{ use: partial-axis-interval(
     name="Axis splitLine",
     componentType=${componentType}
-)   }}
+) }}
 {{ /if }}
 
 ##${prefix} lineStyle(Object)
@@ -354,10 +354,10 @@ Split area of axis in [grid](~grid) area, not shown by default.
 
 ##${prefix} interval(number|Function) = 'auto'
 
-{{ use:   partial-axis-interval(
+{{ use: partial-axis-interval(
     name="Axis splitArea",
     componentType=${componentType}
-)   }}
+) }}
 {{ /if }}
 
 ##${prefix} show(boolean) = ${defaultShow|default(false)}
@@ -427,7 +427,7 @@ Location of axis name.
 
 Text style of axis name.
 
-{{ use:   partial-text-style(prefix='#' + ${prefix}, name="axis name")  }}
+{{ use: partial-text-style(prefix='#' + ${prefix}, name="axis name") }}
 <!-- Overwrite color -->
 
 ##${prefix} color(Color)
@@ -575,20 +575,20 @@ Base of logarithm, which is valid only for numeric axes with [type](~${component
 
 {{ if: ${hasSplitLineAndArea} }}
 
-{{ use:   partial-axis-common-split-line(
+{{ use: partial-axis-common-split-line(
     prefix=${prefix},
     componentType=${componentType}
-)   }}
+) }}
 
-{{ use:   partial-axis-common-minor-split-line(
+{{ use: partial-axis-common-minor-split-line(
     prefix=${prefix},
     componentType=${componentType}
-)   }}
+) }}
 
-{{ use:   partial-axis-common-split-area(
+{{ use: partial-axis-common-split-area(
     prefix=${prefix},
     componentType=${componentType}
-)   }}
+) }}
 
 {{ /if }}
 
@@ -636,11 +636,11 @@ Text style of the category.
 
 axisPointer settings on the axis.
 
-{{ use:   partial-axisPointer-common(
+{{ use: partial-axisPointer-common(
     prefix="#" + ${prefix},
     galleryViewPath=${galleryViewPath},
     galleryEditorPath=${galleryEditorPath}
-)  }}
+) }}
 {{ /if }}
 
 

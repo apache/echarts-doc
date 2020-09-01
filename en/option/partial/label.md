@@ -16,7 +16,7 @@ Whether to show label.
 
 #${prefix} position(string|Array) = ${defaultPosition}
 
-{{ use:  partial-label-position  }}
+{{ use: partial-label-position }}
 {{ /if }}
 
 #${prefix} distance(number) = 5
@@ -41,17 +41,17 @@ Whether to move text slightly. For example: `[30, 40]` means move `30` horizonta
 
 #${prefix} formatter(string|Function)
 
-{{ use:  partial-2d-data-label-formatter  }}
-{{ elif: ${formatter1d}   }}
+{{ use: partial-2d-data-label-formatter }}
+{{ elif:${formatter1d} }}
 
 #${prefix} formatter(string|Function)
 
-{{ use:  partial-1d-data-label-formatter  }}
+{{ use: partial-1d-data-label-formatter }}
 {{ /if }}
 
 
 {{ if: !${noTextStyle} }}
-{{ use:  partial-text-style(
+{{ use: partial-text-style(
     prefix=${prefix},
     noAlign=${noAlign},
     noVerticalAlign=${noVerticalAlign},
@@ -61,7 +61,7 @@ Whether to move text slightly. For example: `[30, 40]` means move `30` horizonta
     noRich=${noRich},
     noBox=${noBox},
     enableAutoColor=true
-)   }}
+) }}
 {{ /if }}
 
 

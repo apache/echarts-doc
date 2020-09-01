@@ -34,7 +34,7 @@ ${componentName}的边框线宽。
 {{ /if }}
 
 {{ if: ${hasBorderRadius} }}
-{{ use:   partial-border-radius(prefix=${prefix})  }}
+{{ use: partial-border-radius(prefix=${prefix}) }}
 {{ /if }}
 
 {{ use: partial-style-shadow(

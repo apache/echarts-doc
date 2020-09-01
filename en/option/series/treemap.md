@@ -417,8 +417,8 @@ When [colorMappingBy](~series-treemap.levels.colorMappingBy) is set to `'value'`
 
 A color list for a level. Each node in the level will obtain a color from the color list (the rule see [colorMappingBy](~series-treemap.levels.colorMappingBy)). It is empty by default, which means the global color list will be used.
 
-{{ use:   partial-treemap-visual-detial   }}
-{{ use:   partial-treemap-prop-location-desc(name="color")  }}
+{{ use: partial-treemap-visual-detial }}
+{{ use: partial-treemap-prop-location-desc(name="color") }}
 
 {{ /if }}
 
@@ -650,7 +650,7 @@ When `borderColorSaturation` is set, the `borderColor` is disabled, and, instead
 In this way, a effect can be implemented: different sections have different hue of gap color repectively, which makes users easy to distinguish both sections and levels.
 
 <br>
-{{ use:   partial-treemap-borderColor-setting(galleryEditorPath=${galleryEditorPath})   }}
+{{ use: partial-treemap-borderColor-setting(galleryEditorPath=${galleryEditorPath}) }}
 
 #${prefix} strokeColor(Color) = null
 

@@ -74,7 +74,7 @@ tooltip settings in this series data.
 {{ if: ${scope} === 'series' }}
 <br>
 > **Notice：**series.tooltip only works when [tooltip.trigger](~tooltip.trigger) is `'item'`.<br>
-{{ elif: ${scope} === 'seriesData'  }}
+{{ elif:${scope} === 'seriesData' }}
 > **Notice：**series.data.tooltip only works when [tooltip.trigger](~tooltip.trigger) is `'item'`.<br>
 {{ /if }}
 

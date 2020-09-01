@@ -74,10 +74,10 @@ For more details, see [Rich Text](tutorial.html#Rich%20Text) please.
 
 ##${prefix} <style_name>(Object)
 
-{{ use:  partial-text-style-base-item(
+{{ use: partial-text-style-base-item(
     prefix=${prefix} + '##',
     enableAutoColor=${enableAutoColor}
-)  }}
+) }}
 
 {{ /if }}
 
@@ -92,7 +92,7 @@ ${name} text color.
 
 
 {{ if: ${enableAutoColor} }}
-{{ use:   partial-text-style-auto-color-desc   }}
+{{ use: partial-text-style-auto-color-desc }}
 {{ /if }}
 
 #${prefix} fontStyle(string) = 'normal'
@@ -137,10 +137,10 @@ Options are:
 + `'center'`
 + `'right'`
 
-{{ use:   partial-text-style-rich-inherit(
+{{ use: partial-text-style-rich-inherit(
     name='align',
     value='right'
-)   }}
+) }}
 
 {{ /if }}
 
@@ -155,10 +155,10 @@ Options are:
 + `'middle'`
 + `'bottom'`
 
-{{ use:   partial-text-style-rich-inherit(
+{{ use: partial-text-style-rich-inherit(
     name='verticalAlign',
     value='bottom'
-)   }}
+) }}
 
 {{ /if }}
 
@@ -195,7 +195,7 @@ backgroundColor: {
 auto adapted by default.
 
 {{ if: ${enableAutoColor} }}
-{{ use:   partial-text-style-auto-color-desc   }}
+{{ use: partial-text-style-auto-color-desc }}
 {{ /if }}
 
 #${prefix} borderColor(Color) = 'transparent'
@@ -203,7 +203,7 @@ auto adapted by default.
 Border color of the text fragment.
 
 {{ if: ${enableAutoColor} }}
-{{ use:   partial-text-style-auto-color-desc   }}
+{{ use: partial-text-style-auto-color-desc }}
 {{ /if }}
 
 #${prefix} borderWidth(number) = 0
@@ -266,7 +266,7 @@ Notice, `width` and `height` only work when `rich` specified.
 Storke color of the text.
 
 {{ if: ${enableAutoColor} }}
-{{ use:   partial-text-style-auto-color-desc   }}
+{{ use: partial-text-style-auto-color-desc }}
 {{ /if }}
 
 #${prefix} textBorderWidth(number) = 0

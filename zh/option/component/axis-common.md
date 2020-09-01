@@ -98,11 +98,11 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 
 <ExampleUIControlNumber min="0" step="1" />
 
-{{ use:   partial-axis-interval(
+{{ use: partial-axis-interval(
     name="坐标轴刻度标签",
     isAxisLabel=true,
     componentType=${componentType}
-)   }}
+) }}
 {{ /if }}
 
 {{ if: ${hasInside|default(true)} }}
@@ -206,10 +206,10 @@ textStyle: {
 
 <ExampleUIControlNumber min="0" step="1" />
 
-{{ use:   partial-axis-interval(
+{{ use: partial-axis-interval(
     name="坐标轴刻度",
     componentType=${componentType}
-)   }}
+) }}
 {{ /if }}
 
 {{ if: ${hasInside|default(true)} }}
@@ -323,10 +323,10 @@ textStyle: {
 
 <ExampleUIControlNumber min="0" step="1" />
 
-{{ use:   partial-axis-interval(
+{{ use: partial-axis-interval(
     name="坐标轴分隔线",
     componentType=${componentType}
-)   }}
+) }}
 {{ /if }}
 
 ##${prefix} lineStyle(Object)
@@ -402,10 +402,10 @@ splitLine: {
 
 <ExampleUIControlNumber min="0" step="1" />
 
-{{ use:   partial-axis-interval(
+{{ use: partial-axis-interval(
     name="坐标轴分隔区域",
     componentType=${componentType}
-)   }}
+) }}
 {{ /if }}
 
 ##${prefix} show(boolean) = ${defaultShow|default(false)}
@@ -480,7 +480,7 @@ splitLine: {
 
 坐标轴名称的文字样式。
 
-{{ use:   partial-text-style(prefix='#' + ${prefix}, name="坐标轴名称")  }}
+{{ use: partial-text-style(prefix='#' + ${prefix}, name="坐标轴名称") }}
 <!-- Overwrite color -->
 
 ##${prefix} color(Color)
@@ -655,20 +655,20 @@ max: function (value) {
 
 {{ if: ${hasSplitLineAndArea} }}
 
-{{ use:   partial-axis-common-split-line(
+{{ use: partial-axis-common-split-line(
     prefix=${prefix},
     componentType=${componentType}
-)   }}
+) }}
 
-{{ use:   partial-axis-common-minor-split-line(
+{{ use: partial-axis-common-minor-split-line(
     prefix=${prefix},
     componentType=${componentType}
-)   }}
+) }}
 
-{{ use:   partial-axis-common-split-area(
+{{ use: partial-axis-common-split-area(
     prefix=${prefix},
     componentType=${componentType}
-)   }}
+) }}
 
 {{ /if }}
 
@@ -714,11 +714,11 @@ data: [{
 
 坐标轴指示器配置项。
 
-{{ use:   partial-axisPointer-common(
+{{ use: partial-axisPointer-common(
     prefix="#" + ${prefix},
     galleryViewPath=${galleryViewPath},
     galleryEditorPath=${galleryEditorPath}
-)  }}
+) }}
 {{ /if }}
 
 

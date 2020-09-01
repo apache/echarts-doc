@@ -82,7 +82,7 @@ About width/height, cover/contain, see
 [layout](~${optionPath}.${hostName}${symbolVisit}path.shape.layout).
 
 
-{{ use:   partial-graphic-cpt-common-props(
+{{ use: partial-graphic-cpt-common-props(
     type='path',
     prefix=${prefix},
     optionPath=${optionPath},
@@ -90,7 +90,7 @@ About width/height, cover/contain, see
     hostName=${hostName},
     symbolVisit=${symbolVisit},
     symbolDeclare=${symbolDeclare}
-)   }}
+) }}
 
 ##${prefix} shape(Object)
 
@@ -122,51 +122,51 @@ Optional value:
 + `'cover'`: Transform the path according to the aspect ratio of the rect, fill the rect and do not overflow.
 
 
-{{ use:   partial-graphic-cpt-sub-prop-xy(
+{{ use: partial-graphic-cpt-sub-prop-xy(
     prefix=${prefix},
     optionPath=${optionPath},
     usageType=${usageType},
     hostName=${hostName},
     symbolVisit=${symbolVisit},
     symbolDeclare=${symbolDeclare}
-)   }}
-{{ use:   partial-graphic-cpt-sub-prop-wh(
+) }}
+{{ use: partial-graphic-cpt-sub-prop-wh(
     prefix=${prefix},
     optionPath=${optionPath},
     usageType=${usageType},
     hostName=${hostName},
     symbolVisit=${symbolVisit},
     symbolDeclare=${symbolDeclare}
-)   }}
+) }}
 
 ##${prefix} style(Object)
 
-{{ use:   partial-graphic-cpt-style-prop-common(
+{{ use: partial-graphic-cpt-style-prop-common(
     prefix=${prefix},
     optionPath=${optionPath},
     usageType=${usageType},
     hostName=${hostName},
     symbolVisit=${symbolVisit},
     symbolDeclare=${symbolDeclare}
-)   }}
+) }}
 
-{{ use:   partial-graphic-cpt-style-emphasis(
+{{ use: partial-graphic-cpt-style-emphasis(
     prefix=${prefix},
     optionPath=${optionPath},
     usageType=${usageType},
     hostName=${hostName},
     symbolVisit=${symbolVisit},
     symbolDeclare=${symbolDeclare}
-)   }}
+) }}
 
-{{ use:   partial-graphic-cpt-event-handlers(
+{{ use: partial-graphic-cpt-event-handlers(
     prefix=${prefix},
     optionPath=${optionPath},
     usageType=${usageType},
     hostName=${hostName},
     symbolVisit=${symbolVisit},
     symbolDeclare=${symbolDeclare}
-)   }}
+) }}
 
 {{ /if }}
 
@@ -967,7 +967,7 @@ Optional values:
 
 ##${prefix} left(number|string) = undefined
 
-{{ use:   partial-graphic-cpt-location-prop-desc-common (
+{{ use: partial-graphic-cpt-location-prop-desc-common (
     hv = 'h',
     prefix=${prefix},
     optionPath=${optionPath},
@@ -975,11 +975,11 @@ Optional values:
     hostName=${hostName},
     symbolVisit=${symbolVisit},
     symbolDeclare=${symbolDeclare}
-)   }}
+) }}
 
 ##${prefix} right(number|string) = undefined
 
-{{ use:   partial-graphic-cpt-location-prop-desc-common (
+{{ use: partial-graphic-cpt-location-prop-desc-common (
     hv = 'h',
     prefix=${prefix},
     optionPath=${optionPath},
@@ -987,11 +987,11 @@ Optional values:
     hostName=${hostName},
     symbolVisit=${symbolVisit},
     symbolDeclare=${symbolDeclare}
-)   }}
+) }}
 
 ##${prefix} top(number|string) = undefined
 
-{{ use:   partial-graphic-cpt-location-prop-desc-common (
+{{ use: partial-graphic-cpt-location-prop-desc-common (
     hv = 'v',
     prefix=${prefix},
     optionPath=${optionPath},
@@ -999,11 +999,11 @@ Optional values:
     hostName=${hostName},
     symbolVisit=${symbolVisit},
     symbolDeclare=${symbolDeclare}
-)   }}
+) }}
 
 ##${prefix} bottom(number|string) = undefined
 
-{{ use:   partial-graphic-cpt-location-prop-desc-common (
+{{ use: partial-graphic-cpt-location-prop-desc-common (
     hv = 'v',
     prefix=${prefix},
     optionPath=${optionPath},
@@ -1011,7 +1011,7 @@ Optional values:
     hostName=${hostName},
     symbolVisit=${symbolVisit},
     symbolDeclare=${symbolDeclare}
-)   }}
+) }}
 
 ##${prefix} bounding(strin) = 'all'
 
@@ -1079,7 +1079,7 @@ Whether the element is totally ignored (neither render nor listen events).
 
 {{ if: ${usageType} === 'graphicComponent' }}
 
-{{ use:   partial-cursor(prefix="##")   }}
+{{ use: partial-cursor(prefix="##") }}
 
 ##${prefix} draggable(boolean) = false
 

@@ -28,7 +28,7 @@ Border width of ${componentName}.
 {{ /if }}
 
 {{ if: ${hasBorderRadius} }}
-{{ use:   partial-border-radius(prefix=${prefix})  }}
+{{ use: partial-border-radius(prefix=${prefix}) }}
 {{ /if }}
 
 {{ use: partial-style-shadow(

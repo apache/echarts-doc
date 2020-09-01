@@ -104,10 +104,10 @@ label: {
 
 ##${prefix} <style_name>(Object)
 
-{{ use:  partial-text-style-base-item(
+{{ use: partial-text-style-base-item(
     prefix=${prefix} + '##',
     enableAutoColor=${enableAutoColor}
-)  }}
+) }}
 
 {{ /if }}
 
@@ -124,7 +124,7 @@ ${name}文字的颜色。
 
 
 {{ if: ${enableAutoColor} }}
-{{ use:   partial-text-style-auto-color-desc   }}
+{{ use: partial-text-style-auto-color-desc }}
 {{ /if }}
 
 #${prefix} fontStyle(string) = 'normal'
@@ -179,10 +179,10 @@ ${name}文字的字体大小。
 + `'center'`
 + `'right'`
 
-{{ use:   partial-text-style-rich-inherit(
+{{ use: partial-text-style-rich-inherit(
     name='align',
     value='right'
-)   }}
+) }}
 
 {{ /if }}
 
@@ -199,10 +199,10 @@ ${name}文字的字体大小。
 + `'middle'`
 + `'bottom'`
 
-{{ use:   partial-text-style-rich-inherit(
+{{ use: partial-text-style-rich-inherit(
     name='verticalAlign',
     value='bottom'
-)   }}
+) }}
 
 {{ /if }}
 
@@ -242,7 +242,7 @@ backgroundColor: {
 当使用图片的时候，可以使用 `width` 或 `height` 指定高宽，也可以不指定自适应。
 
 {{ if: ${enableAutoColor} }}
-{{ use:   partial-text-style-auto-color-desc   }}
+{{ use: partial-text-style-auto-color-desc }}
 {{ /if }}
 
 #${prefix} borderColor(Color) = 'transparent'
@@ -252,7 +252,7 @@ backgroundColor: {
 文字块边框颜色。
 
 {{ if: ${enableAutoColor} }}
-{{ use:   partial-text-style-auto-color-desc   }}
+{{ use: partial-text-style-auto-color-desc }}
 {{ /if }}
 
 #${prefix} borderWidth(number) = 0
@@ -330,7 +330,7 @@ backgroundColor: {
 文字本身的描边颜色。
 
 {{ if: ${enableAutoColor} }}
-{{ use:   partial-text-style-auto-color-desc   }}
+{{ use: partial-text-style-auto-color-desc }}
 {{ /if }}
 
 #${prefix} textBorderWidth(number) = 0

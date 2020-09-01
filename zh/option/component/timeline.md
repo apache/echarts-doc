@@ -857,16 +857,16 @@ const option = {
 {{ use: axis-common-formatter-desc() }}
 
 {{ if: ${state} }}
-{{ use:   partial-text-style(
+{{ use: partial-text-style(
     prefix=${prefix},
     name="timeline.lable." + ${state},
     defaultColor=${textStyleDefaultColor}
-)   }}
+) }}
 {{ else }}
-{{ use:   partial-text-style(
+{{ use: partial-text-style(
     prefix=${prefix},
     name="timeline.lable",
     defaultColor=${textStyleDefaultColor}
-)   }}
+) }}
 {{ /if }}
 

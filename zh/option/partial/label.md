@@ -20,7 +20,7 @@ ${name}图形上的文本标签，可用于说明图形的一些数据信息，�
 
 <ExampleUIControlEnum options="top,left,right,bottom,inside,insideLeft,insideRight,insideTop,insideBottom,insideTopLeft,insideBottomLeft,insideTopRight,insideBottomRight,outside" />
 
-{{ use:  partial-label-position  }}
+{{ use: partial-label-position }}
 {{ /if }}
 
 #${prefix} distance(number) = 5
@@ -53,17 +53,17 @@ ${name}图形上的文本标签，可用于说明图形的一些数据信息，�
 
 #${prefix} formatter(string|Function)
 
-{{ use:  partial-2d-data-label-formatter  }}
-{{ elif: ${formatter1d}   }}
+{{ use: partial-2d-data-label-formatter }}
+{{ elif:${formatter1d} }}
 
 #${prefix} formatter(string|Function)
 
-{{ use:  partial-1d-data-label-formatter  }}
+{{ use: partial-1d-data-label-formatter }}
 {{ /if }}
 
 
 {{ if: !${noTextStyle} }}
-{{ use:  partial-text-style(
+{{ use: partial-text-style(
     prefix=${prefix},
     noAlign=${noAlign},
     noVerticalAlign=${noVerticalAlign},
@@ -73,7 +73,7 @@ ${name}图形上的文本标签，可用于说明图形的一些数据信息，�
     noRich=${noRich},
     noBox=${noBox},
     enableAutoColor=true
-)   }}
+) }}
 {{ /if }}
 
 

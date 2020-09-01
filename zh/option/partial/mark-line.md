@@ -221,7 +221,7 @@ data: [
 
 起点或终点的坐标。坐标格式视系列的坐标系而定，可以是[直角坐标系](~grid)上的 `x`, `y`，也可以是[极坐标系](~polar)上的 `radius`, `angle`。
 
-{{ use:   marker-coord-explain   }}
+{{ use: marker-coord-explain }}
 
 {{ /if }}
 

@@ -2,11 +2,11 @@
 {{ target: partial-rect-layout }}
 
 {{ if: !${noZ} }}
-{{ use:   partial-z-zlevel(
+{{ use: partial-z-zlevel(
     prefix=${prefix},
     defaultZLevel=${defaultZLevel},
     defaultZ=${defaultZ}
-)   }}
+) }}
 {{ /if }}
 
 #${prefix|default("#")} left(string|number) = ${defaultLeft|default("'auto'")}
