@@ -1,7 +1,7 @@
-{{target: component-circular-layout}}
 
-{{use: partial-z-zlevel}}
+{{ target: component-circular-layout }}
 
+{{ use: partial-z-zlevel() }}
 
 ## center(Array) = ${defaultCenter|default("['50%', '50%']")}
 
@@ -30,3 +30,4 @@ ${componentName}的半径。可以为如下类型：
 {{ if: !${disableArray} }}
 + `Array.<number|string>`：数组的第一项是内半径，第二项是外半径。每一项遵从上述 `number` `string` 的描述。
 {{ /if }}
+

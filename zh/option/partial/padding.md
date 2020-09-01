@@ -1,4 +1,5 @@
-{{target: partial-padding}}
+
+{{ target: partial-padding }}
 
 <ExampleUIControlVector min="0" dims="T,R,B,L"  />
 
@@ -18,3 +19,4 @@ padding: [
     10, // 左
 ]
 ```
+

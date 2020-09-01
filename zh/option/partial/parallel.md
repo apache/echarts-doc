@@ -1,4 +1,5 @@
-{{target: partial-parallel-introduce}}
+
+{{ target: partial-parallel-introduce }}
 
 <br>
 
@@ -8,7 +9,7 @@
 
 [平行坐标系（Parallel Coordinates）](https://en.wikipedia.org/wiki/Parallel_coordinates) 是一种常用的可视化高维数据的图表。
 
-{{use: partial-parallel-data-example}}
+{{ use: partial-parallel-data-example() }}
 
 平行坐标系适用于对这种多维数据进行可视化分析。每一个维度（每一列）对应一个坐标轴，每一个『数据项』是一条线，贯穿多个坐标轴。在坐标轴上，可以进行数据选取等操作。如下：
 
@@ -108,7 +109,7 @@ option = {
 
 **配置注意和最佳实践**
 
-{{use: partial-parallel-axis-default}}
+{{ use: partial-parallel-axis-default() }}
 
 **如果数据量很大并且发生卡顿**
 
@@ -121,11 +122,13 @@ option = {
 
 **高维数据的显示**
 
-{{use: partial-parallel-high-dim (galleryViewPath=${galleryViewPath})}}
+{{ use: partial-parallel-high-dim() }}
 
 
 
-{{target: partial-parallel-data-example}}
+
+{{ target: partial-parallel-data-example }}
+
 例如 [series-parallel.data](~series-parallel.data) 中有如下数据：
 
 ```javascript
@@ -146,14 +149,16 @@ option = {
 
 
 
-{{target: partial-parallel-axis-default}}
+{{ target: partial-parallel-axis-default }}
 
 配置多个 [parallelAxis](~parallelAxis) 时，有些值一样的属性，如果书写多遍则比较繁琐，那么可以放置在 [parallel.parallelAxisDefault](~parallel.parallelAxisDefault) 里。在坐标轴初始化前，[parallel.parallelAxisDefault](~parallel.parallelAxisDefault) 里的配置项，会分别融合进 [parallelAxis](~parallelAxis)，形成最终的坐标轴的配置。
 
 
 
-{{target: partial-parallel-high-dim}}
+
+{{ target: partial-parallel-high-dim }}
 
 维度比较多时，比如有 50+ 的维度，那么就会有 50+ 个轴。那么可能会页面显示不下。
 
 可以通过 [parallel.axisExpandable](~parallel.axisExpandable) 来改善显示效果。
+

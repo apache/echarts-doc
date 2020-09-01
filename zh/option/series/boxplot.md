@@ -1,5 +1,5 @@
 
-{{target: series-boxplot}}
+{{ target: series-boxplot }}
 
 # series.boxplot(Object)
 
@@ -56,23 +56,23 @@ const option = {
 
 ## type(string) = 'boxplot'
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
-{{use: partial-coord-sys(
-    seriesType="cartesian2d",
-    coordSysDefault="'cartesian2d'",
-    cartesian2d=true
-)}}
+{{ use: partial-coord-sys(
+    seriesType = "cartesian2d",
+    coordSysDefault = "'cartesian2d'",
+    cartesian2d = true
+) }}
 
+{{ use: partial-series-name() }}
 
-{{ use: partial-series-name }}
-
-{{ use: partial-legend-hover-link }}
+{{ use: partial-legend-hover-link() }}
 
 ## hoverAnimation(boolean) = true
 
 是否开启 hover 在 box 上的动画效果。
-
 
 ## layout(string) = null
 
@@ -86,7 +86,6 @@ const option = {
 
 默认值根据当前坐标系状况决定：如果 `category` 轴为横轴，则水平排布；否则竖直排布；如果没有 `category` 轴则水平排布。
 
-
 ## boxWidth(Array) = [7, 50]
 
 <ExampleUIControlPercentVector default="7,50" min="0" dims="min,max" />
@@ -95,18 +94,17 @@ box 的宽度的上下限。数组的意思是：`[min, max]`。
 
 可以是绝对数值，如 `[7, 50]`，也可以是百分比，如 `['40%', '90%']`。百分比的意思是，最大可能宽度（bandWidth）的百分之多少。
 
-
 ## itemStyle(Object)
 
 盒须图样式。
 
-{{use: partial-item-style(
-    prefix="##",
-    useColorPalatte=true,
-    name="boxplot",
-    defaultColor="#fff",
-    defaultBorderWidth=1
-)}}
+{{ use: partial-item-style(
+    prefix = "##",
+    useColorPalatte = true,
+    name = "boxplot",
+    defaultColor = "#fff",
+    defaultBorderWidth = 1
+) }}
 
 ## emphasis(Object)
 
@@ -114,27 +112,25 @@ box 的宽度的上下限。数组的意思是：`[min, max]`。
 
 ### itemStyle(Object)
 
-{{use: partial-item-style(
-    prefix="###",
-    useColorPalatte=true,
-    name="boxplot",
-    defaultColor="#fff",
-    defaultBorderWidth=2,
-    defaultShadowBlur=5,
-    defaultShadowOffsetX=2,
-    defaultShadowOffsetY=2,
-    defaultShadowColor="rgba(0,0,0,0.4)"
-)}}
+{{ use: partial-item-style(
+    prefix = "###",
+    useColorPalatte = true,
+    name = "boxplot",
+    defaultColor = "#fff",
+    defaultBorderWidth = 2,
+    defaultShadowBlur = 5,
+    defaultShadowOffsetX = 2,
+    defaultShadowOffsetY = 2,
+    defaultShadowColor = "rgba(0,0,0,0.4)"
+) }}
 
+{{ use: partial-series-dimensions(
+    prefix = "#"
+) }}
 
-{{use:partial-series-dimensions(
-    prefix="#"
-)}}
-
-{{use:partial-series-encode(
-    prefix="#"
-)}}
-
+{{ use: partial-series-encode(
+    prefix = "#"
+) }}
 
 ## data(Array)
 
@@ -166,7 +162,6 @@ ECharts 并不内置对原始数据的处理，输入给 `boxplot` 的数据须�
 
 但是 ECharts 也额外提供了简单的 [原始数据处理函数](https://github.com/apache/incubator-echarts/tree/master/extension/dataTool)，如这个 [例子](${galleryEditorPath}boxplot-light-velocity&edit=1&reset=1) 使用了`echarts.dataTool.prepareBoxplotData` 来进行简单的数据统计。
 
-
 ### name(string)
 
 数据项名称。
@@ -179,18 +174,17 @@ ECharts 并不内置对原始数据的处理，输入给 `boxplot` 的数据须�
 [min,  Q1,  median (or Q2),  Q3,  max]
 ```
 
-
 ### itemStyle(Object)
 
 单个数据盒须图样式。
 
-{{use: partial-item-style(
-    prefix="###",
-    useColorPalatte=true,
-    name="boxplot",
-    defaultColor="#fff",
-    defaultBorderWidth=1
-)}}
+{{ use: partial-item-style(
+    prefix = "###",
+    useColorPalatte = true,
+    name = "boxplot",
+    defaultColor = "#fff",
+    defaultBorderWidth = 1
+) }}
 
 ### emphasis(Object)
 
@@ -198,48 +192,41 @@ ECharts 并不内置对原始数据的处理，输入给 `boxplot` 的数据须�
 
 #### itemStyle(Object)
 
-{{use: partial-item-style(
-    prefix="####",
-    useColorPalatte=true,
-    name="boxplot",
-    defaultColor="#fff",
-    defaultBorderWidth=2,
-    defaultShadowBlur=5,
-    defaultShadowOffsetX=2,
-    defaultShadowOffsetY=2,
-    defaultShadowColor="rgba(0,0,0,0.4)"
-)}}
-
-
-{{use: partial-tooltip-in-series-data(
-    galleryViewPath=${galleryViewPath}
-)}}
-
-
-{{use: partial-marker(
-    prefix="#",
-    seriesType="boxplot",
-    galleryEditorPath=${galleryEditorPath},
-    hasCoord=true,
-    hasType=true
-)}}
-
-{{use:partial-z-zlevel(
-    prefix="#",
-    componentName="盒须图"
+{{ use: partial-item-style(
+    prefix = "####",
+    useColorPalatte = true,
+    name = "boxplot",
+    defaultColor = "#fff",
+    defaultBorderWidth = 2,
+    defaultShadowBlur = 5,
+    defaultShadowOffsetX = 2,
+    defaultShadowOffsetY = 2,
+    defaultShadowColor = "rgba(0,0,0,0.4)"
 ) }}
 
-{{ use:partial-silent(
-    prefix="#"
+{{ use: partial-tooltip-in-series-data() }}
+
+{{ use: partial-marker(
+    prefix = "#",
+    seriesType = "boxplot",
+    hasCoord = true,
+    hasType = true
 ) }}
 
-{{use: partial-animation-init(
-    prefix="#",
-    defaultAnimationEasing='elasticOut',
-    defaultAnimationDuration=800,
-    galleryEditorPath=${galleryEditorPath}
-)}}
+{{ use: partial-z-zlevel(
+    prefix = "#",
+    componentName = "盒须图"
+) }}
 
-{{use: partial-tooltip-in-series(
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-silent(
+    prefix = "#"
+) }}
+
+{{ use: partial-animation-init(
+    prefix = "#",
+    defaultAnimationEasing = 'elasticOut',
+    defaultAnimationDuration = 800
+) }}
+
+{{ use: partial-tooltip-in-series() }}
+

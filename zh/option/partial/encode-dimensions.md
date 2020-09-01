@@ -1,4 +1,5 @@
-{{target:partial-series-encode}}
+
+{{ target: partial-series-encode }}
 
 #${prefix} encode(Object)
 
@@ -130,7 +131,8 @@ var option = {
 
 
 
-{{target:partial-series-dimensions}}
+
+{{ target: partial-series-dimensions }}
 
 #${prefix} dimensions(Array)
 
@@ -186,8 +188,4 @@ series: {
     + displayName: 一般用于 tooltip 中维度名的展示。`string` 如果没有指定，默认使用 name 来展示。
 
 值得一提的是，当定义了 `dimensions` 后，默认 `tooltip` 中对个维度的显示，会变为『竖排』，从而方便显示每个维度的名称。如果没有定义 `dimensions`，则默认 `tooltip` 会横排显示，且只显示数值没有维度名称可显示。
-
-
-
-
 

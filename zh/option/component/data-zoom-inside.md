@@ -1,4 +1,5 @@
-{{target: component-data-zoom-inside}}
+
+{{ target: component-data-zoom-inside }}
 
 # dataZoom.inside(Object)
 
@@ -51,10 +52,11 @@ const option = {
 };
 </ExampleBaseOption>
 
-
 ## type(string) = 'inside'
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 ## disabled(boolean) = false
 
@@ -63,9 +65,7 @@ const option = {
 是否停止组件的功能。
 
 {{ use: partial-data-zoom-common(
-    dataZoomName='dataZoom-inside',
-    galleryEditorPath=${galleryEditorPath},
-    galleryViewPath=${galleryViewPath}
+    dataZoomName = 'dataZoom-inside'
 ) }}
 
 ## zoomOnMouseWheel(boolean|string) = true
@@ -109,3 +109,4 @@ const option = {
 <ExampleUIControlBoolean default="true" />
 
 是否阻止 mousemove 事件的默认行为。
+

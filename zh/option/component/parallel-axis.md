@@ -1,13 +1,11 @@
 
-{{target: component-parallel-axis}}
+{{ target: component-parallel-axis }}
 
 # parallelAxis(Object)
 
 这个组件是平行坐标系中的坐标轴。
 
-{{ use: partial-parallel-introduce(
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-parallel-introduce() }}
 
 <ExampleBaseOption name="parallel-axis" title="平行坐标" title-en="Parallel">
 const dataBJ = [
@@ -178,19 +176,19 @@ const option = {
 };
 </ExampleBaseOption>
 
-
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 ## dim(number)
 
 坐标轴的维度序号。
 
-{{use: partial-parallel-data-example}}
+{{ use: partial-parallel-data-example() }}
 
 `dim` 定义了数据的哪个维度（即哪个『列』）会对应到此坐标轴上。
 
 从 `0` 开始计数。例如，假设坐标轴的 `dim` 为 `1`，则表示数据中的第二列会对应到此坐标轴上。
-
 
 ## parallelIndex(number) = 0
 
@@ -224,7 +222,6 @@ myChart.setOption({
 
 大数据量时，建议设置成 `false`，从而避免卡顿。
 
-
 ## areaSelectStyle(Object)
 
 在坐标轴上可以进行框选，这里是一些框选的设置。
@@ -235,13 +232,11 @@ myChart.setOption({
 
 框选范围的宽度。
 
-
 ### borderWidth(number) = 1
 
 <ExampleUIControlNumber min="0" default="1" step="0.5" />
 
 选框的边框宽度。
-
 
 ### borderColor(Color) = 'rgba(160,197,232)'
 
@@ -249,13 +244,11 @@ myChart.setOption({
 
 选框的边框颜色。
 
-
 ### color(Color) = 'rgba(160,197,232)'
 
 <ExampleUIControlColor default="rgba(160,197,232)" />
 
 选框的填充色。
-
 
 ### opacity(number) = 0.3
 
@@ -263,12 +256,9 @@ myChart.setOption({
 
 选框的透明度。
 
-
-
 {{ use: axis-common(
-    prefix='#',
-    componentType='parallelAxis',
-    noAxisPointer=true,
-    galleryViewPath=${galleryViewPath},
-    galleryEditorPath=${galleryEditorPath}
+    prefix = '#',
+    componentType = 'parallelAxis',
+    noAxisPointer = true
 ) }}
+

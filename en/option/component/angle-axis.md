@@ -1,11 +1,13 @@
 
-{{target: component-angle-axis}}
+{{ target: component-angle-axis }}
 
 # angleAxis(Object)
 
 The angle axis in Polar Coordinate.
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 ## polarIndex(number) = 0
 
@@ -28,17 +30,15 @@ The following shows an example with clockwise as `false`.
 ~[400x400](${galleryViewPath}doc-example/polar-anticlockwise&edit=1&reset=1)
 
 {{ use: axis-common(
-    prefix='#',
-    componentType='angleAxis',
-    axisTypeDefault="'category'",
-    hasSplitLineAndArea=true,
-    galleryViewPath=${galleryViewPath},
-    galleryEditorPath=${galleryEditorPath}
-)}}
-
-
-{{use:partial-z-zlevel(
-    prefix="#",
-    componentName="Angle Axis",
-    defaultZ=0
+    prefix = '#',
+    componentType = 'angleAxis',
+    axisTypeDefault = "'category'",
+    hasSplitLineAndArea = true
 ) }}
+
+{{ use: partial-z-zlevel(
+    prefix = "#",
+    componentName = "Angle Axis",
+    defaultZ = 0
+) }}
+

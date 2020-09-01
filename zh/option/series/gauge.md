@@ -1,5 +1,5 @@
 
-{{target: series-gauge}}
+{{ target: series-gauge }}
 
 # series.gauge(Object)
 
@@ -23,22 +23,25 @@ const option = {
 
 ## type(string) = 'gauge'
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 {{ use: partial-series-name() }}
 
-{{ use: partial-circular-layout }}
+{{ use: partial-circular-layout() }}
+
 <!-- overwrite radius -->
+
 ## radius(number|string) = '75%'
 
 <ExampleUIControlPercent default="75%" />
 
 仪表盘半径，可以是相对于容器高宽中较小的一项的一半的百分比，也可以是绝对的数值。
 
-{{ use: partial-legend-hover-link }}
+{{ use: partial-legend-hover-link() }}
 
 ## startAngle(number) = 225
-
 
 <ExampleUIControlAngle min="-360" max="360" default="225" step="1" />
 
@@ -46,7 +49,6 @@ const option = {
 仪表盘起始角度。[圆心](~series-gauge.center) 正右手侧为`0`度，正上方为`90`度，正左手侧为`180`度。
 
 ## endAngle(number) = -45
-
 
 <ExampleUIControlAngle min="-360" max="360" default="-45" step="1" />
 
@@ -59,9 +61,13 @@ const option = {
 仪表盘刻度是否是顺时针增长。
 
 ## data(Array)
-{{ use: partial-1d-data-desc }}
+
+{{ use: partial-1d-data-desc() }}
+
 ### name(string)
+
 数据项名称。
+
 ### value(number)
 
 <ExampleUIControlNumber default="0" step="1" />
@@ -87,7 +93,9 @@ const option = {
 仪表盘刻度的分割段数。
 
 ## axisLine(Object)
+
 仪表盘轴线相关配置。
+
 ### show(boolean) = true
 
 <ExampleUIControlBoolean default="true" />
@@ -95,20 +103,30 @@ const option = {
 是否显示仪表盘轴线。
 
 ### lineStyle(Object)
+
 仪表盘轴线样式。
+
 #### color(Array)
+
 仪表盘的轴线可以被分成不同颜色的多段。每段的结束位置和颜色可以通过一个数组来表示。
 
 默认取值：
 ```js
 [[0.2, '#91c7ae'], [0.8, '#63869e'], [1, '#c23531']]
 ```
+
 #### width(number) = 30
+
 轴线宽度。
-{{ use: partial-style-shadow-opacity(prefix="###") }}
+
+{{ use: partial-style-shadow-opacity(
+    prefix = "###"
+) }}
 
 ## splitLine(Object)
+
 分隔线样式。
+
 ### show(boolean) = true
 
 <ExampleUIControlBoolean default="true" />
@@ -122,15 +140,18 @@ const option = {
 分隔线线长。支持相对半径的百分比。
 
 ### lineStyle(Object)
+
 {{ use: partial-line-style(
-    prefix='###',
-    defaultColor='#eee',
-    defaultWidth=2,
-    defaultType="'solid'"
+    prefix = '###',
+    defaultColor = '#eee',
+    defaultWidth = 2,
+    defaultType = "'solid'"
 ) }}
 
 ## axisTick(Object)
+
 刻度样式。
+
 ### show(boolean) = true
 
 <ExampleUIControlBoolean default="true" />
@@ -150,15 +171,18 @@ const option = {
 刻度线长。支持相对半径的百分比。
 
 ### lineStyle(Object)
+
 {{ use: partial-line-style(
-    prefix='###',
-    defaultColor='#eee',
-    defaultWidth=1,
-    defaultType="'solid'"
+    prefix = '###',
+    defaultColor = '#eee',
+    defaultWidth = 1,
+    defaultType = "'solid'"
 ) }}
 
 ## axisLabel(Object)
+
 刻度标签。
+
 ### show(boolean) = true
 
 <ExampleUIControlBoolean default="true" />
@@ -172,6 +196,7 @@ const option = {
 标签与刻度线的距离。
 
 ### formatter(string|Function)
+
 刻度标签的内容格式器，支持字符串模板和回调函数两种形式。
 示例:
 ```js
@@ -183,14 +208,15 @@ formatter: function (value) {
     return value + 'km/h';
 }
 ```
+
 {{ use: partial-text-style(
-    prefix="##",
-    noAlign=true,
-    noVerticalAlign=true
+    prefix = "##",
+    noAlign = true,
+    noVerticalAlign = true
 ) }}
 
-
 ## pointer(Object)
+
 仪表盘指针。
 
 ### show(boolean) = true
@@ -212,20 +238,31 @@ formatter: function (value) {
 指针宽度。
 
 ## itemStyle(Object)
+
 仪表盘指针样式。
-{{ use: partial-item-style(prefix="##") }}
+
+{{ use: partial-item-style(
+    prefix = "##"
+) }}
+
 <!-- overwrite color -->
+
 ### color(Color) = 'auto'
+
 指针颜色，默认取数值所在的[区间的颜色](~series-gauge.axisLine.lineStyle.color)
 
-
 ## emphasis(Object)
+
 高亮的仪表盘指针样式
 
-### itemStyle
-{{ use: partial-item-style(prefix="###") }}
+### itemStyle(*)
+
+{{ use: partial-item-style(
+    prefix = "###"
+) }}
 
 ## title(Object)
+
 仪表盘标题。
 
 ### show(boolean) = true
@@ -233,21 +270,24 @@ formatter: function (value) {
 <ExampleUIControlBoolean default="true" />
 
 是否显示标题。
+
 ### offsetCenter(Array) = [0, '-40%']
 
 <ExampleUIControlPercentVector default="0,-40%" dims="x,y" />
 
 
 相对于仪表盘中心的偏移位置，数组第一项是水平方向的偏移，第二项是垂直方向的偏移。可以是绝对的数值，也可以是相对于仪表盘半径的百分比。
+
 {{ use: partial-text-style(
-    prefix="##",
+    prefix = "##",
     defaultColor = "'#333'",
     defaultFontSize = 15,
-    noAlign=true,
-    noVerticalAlign=true
+    noAlign = true,
+    noVerticalAlign = true
 ) }}
 
 ## detail(Object)
+
 仪表盘详情，用于显示数据。
 
 ### show(boolean) = true
@@ -291,7 +331,9 @@ formatter: function (value) {
 <ExampleUIControlPercentVector default="0,-40%" dims="x,y" />
 
 相对于仪表盘中心的偏移位置，数组第一项是水平方向的偏移，第二项是垂直方向的偏移。可以是绝对的数值，也可以是相对于仪表盘半径的百分比。
+
 ### formatter(Function|string)
+
 格式化函数或者字符串
 
 ```js
@@ -301,35 +343,33 @@ formatter: function (value) {
 ```
 
 {{ use: partial-text-style(
-    prefix="##",
+    prefix = "##",
     defaultColor = "'auto'",
     defaultFontSize = 15,
-    noAlign=true,
-    noVerticalAlign=true
+    noAlign = true,
+    noVerticalAlign = true
 ) }}
 
 <!-- overwrite color -->
+
 #### color(Color) = 'auto'
 
 <ExampleUIControlColor />
 
 文本颜色，默认取数值所在的[区间的颜色](~series-gauge.axisLine.lineStyle.color)
 
-{{use: partial-marker(
-    prefix="#",
-    galleryEditorPath=${galleryEditorPath},
-    seriesType="gauge"
-)}}
-
-{{ use:partial-silent(
-    prefix="#"
+{{ use: partial-marker(
+    prefix = "#",
+    seriesType = "gauge"
 ) }}
-{{use:partial-animation(
-    prefix="#",
-    galleryEditorPath=${galleryEditorPath}
-)}}
 
-{{use: partial-tooltip-in-series(
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-silent(
+    prefix = "#"
+) }}
+
+{{ use: partial-animation(
+    prefix = "#"
+) }}
+
+{{ use: partial-tooltip-in-series() }}
 

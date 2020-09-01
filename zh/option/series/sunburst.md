@@ -1,3 +1,4 @@
+
 {{ target: partial-sunburst-label-helper }}
 
 #${prefix} rotate(string|number) = 'radial'
@@ -28,28 +29,32 @@
 
 当某个扇形块的角度小于该值（角度制）时，扇形块对应的文字不显示。该值用以隐藏过小扇形块中的文字。
 
+{{ use: partial-label(
+    prefix = ${prefix},
+    defaultPosition = "'inside'",
+    formatter = true,
+    defaultShowLabel = "true",
+    noRotate = true,
+    noAlign = true
+) }}
 
-{{use:partial-label(
-    prefix=${prefix},
-    defaultPosition="'inside'",
-    formatter=true,
-    defaultShowLabel="true",
-    noRotate=true,
-    noAlign=true
-)}}
 
 
 
 {{ target: partial-sunburst-label-props }}
+
 ${prefix} label(Object)
 
 `label` 描述了每个扇形块中，文本标签的样式。
 
 **优先级：[series.data.label](~series-sunburst.data.label) > [series.levels.label](~series-sunburst.levels.label) > [series.label](~series-sunburst.label)。**
 
-{{ use: partial-label-desc }}
+{{ use: partial-label-desc() }}
 
-{{ use: partial-sunburst-label-helper(prefix=${prefix}) }}
+{{ use: partial-sunburst-label-helper(
+    prefix = ${prefix}
+) }}
+
 
 
 
@@ -65,13 +70,14 @@ ${prefix} itemStyle(Object)
 
 ECharts 中，通常使用 *emphasis* 表示鼠标移动到图形上后的高亮状态。对于旭日图而言，我们引入了另两种状态：*highlight* 表示由于高亮了某个扇形块引起的其他相关扇形块的高亮；*downplay* 表示除了 highlight 扇形块之外的被淡化的扇形块。参见 [highlightPolicy](~series-sunburst.highlightPolicy)。
 
-{{use: partial-item-style(
-    prefix=${prefix},
-    useColorPalatte=true,
-    defaultBorderWidth=1,
-    defaultBorderColor="'white'",
-    defaultOpacity=1
-)}}
+{{ use: partial-item-style(
+    prefix = ${prefix},
+    useColorPalatte = true,
+    defaultBorderWidth = 1,
+    defaultBorderColor = "'white'",
+    defaultOpacity = 1
+) }}
+
 
 
 
@@ -81,37 +87,38 @@ ECharts 中，通常使用 *emphasis* 表示鼠标移动到图形上后的高亮
 
 鼠标悬停后的配置项。
 
-{{use: partial-sunburst-label-props(
-    prefix="##" + ${prefix}
-)}}
+{{ use: partial-sunburst-label-props(
+    prefix = "##" + ${prefix}
+) }}
 
-{{use: partial-sunburst-itemStyle-props(
-    prefix="##" + ${prefix}
-)}}
+{{ use: partial-sunburst-itemStyle-props(
+    prefix = "##" + ${prefix}
+) }}
 
 #${prefix} highlight(Object)
 
 鼠标悬停后相关扇形块的配置项。参见 [highlightPolicy](~series-sunburst.highlightPolicy)。
 
-{{use: partial-sunburst-label-props(
-    prefix="##" + ${prefix}
-)}}
+{{ use: partial-sunburst-label-props(
+    prefix = "##" + ${prefix}
+) }}
 
-{{use: partial-sunburst-itemStyle-props(
-    prefix="##" + ${prefix}
-)}}
+{{ use: partial-sunburst-itemStyle-props(
+    prefix = "##" + ${prefix}
+) }}
 
 #${prefix} downplay(Object)
 
 鼠标悬停后不相关扇形块的配置项。参见 [highlightPolicy](~series-sunburst.highlightPolicy)。
 
-{{use: partial-sunburst-label-props(
-    prefix="##" + ${prefix}
-)}}
+{{ use: partial-sunburst-label-props(
+    prefix = "##" + ${prefix}
+) }}
 
-{{use: partial-sunburst-itemStyle-props(
-    prefix="##" + ${prefix}
-)}}
+{{ use: partial-sunburst-itemStyle-props(
+    prefix = "##" + ${prefix}
+) }}
+
 
 
 
@@ -287,19 +294,21 @@ const option = {
 
 ## type(string) = 'sunburst'
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 {{ use: partial-series-name() }}
 
-{{use: component-circular-layout(
-    componentName="旭日图",
-    defaultRadius="[0, '75%']"
-)}}
-
+{{ use: component-circular-layout(
+    componentName = "旭日图",
+    defaultRadius = "[0, '75%']"
+) }}
 
 ## labelLayout(Object|Function)
+
 {{ use: partial-label-layout(
-    prefix="##"
+    prefix = "##"
 ) }}
 
 ## data(Array)
@@ -358,28 +367,29 @@ const option = {
 
 意义同 HTML `<a>` 标签中的 `target`，参见 [series-sunburst.data.link](~series-sunburst.data.link)。可选值为：`'blank'` 或 `'self'`。
 
+{{ use: partial-sunburst-label-props(
+    prefix = "###"
+) }}
 
-{{use: partial-sunburst-label-props(
-    prefix="###"
-)}}
+{{ use: partial-sunburst-itemStyle-props(
+    prefix = "###"
+) }}
 
-{{use: partial-sunburst-itemStyle-props(
-    prefix="###"
-)}}
-
-{{ use: partial-sunburst-other-state(prefix="##") }}
+{{ use: partial-sunburst-other-state(
+    prefix = "##"
+) }}
 
 ### children(Array)
 
 子节点，递归定义，格式同 [series-sunburst.data](~series-sunburst.data)。
 
-{{use: partial-sunburst-label-props(
-    prefix="##"
-)}}
+{{ use: partial-sunburst-label-props(
+    prefix = "##"
+) }}
 
-{{use: partial-sunburst-itemStyle-props(
-    prefix="##"
-)}}
+{{ use: partial-sunburst-itemStyle-props(
+    prefix = "##"
+) }}
 
 ## highlightPolicy(string) = 'descendant'
 
@@ -417,8 +427,6 @@ downplay: {
 
 ~[700x350](${galleryViewPath}doc-example/sunburst-highlight-ancestor&edit=1&reset=1)
 
-
-
 ## nodeClick(boolean|string) = 'rootToNode'
 
 <ExampleUIControlEnum default="rootToNode" options="rootToNode,link" />
@@ -428,8 +436,6 @@ downplay: {
 + `false`：节点点击无反应。
 + `'rootToNode'`：点击节点后以该节点为根结点。
 + `'link'`：如果节点数据中有 [link](~series-sunburst.data.link) 点击节点后会进行超链接跳转。
-
-
 
 ## sort(string|Function) = 'desc'
 
@@ -443,27 +449,23 @@ function(nodeA, nodeB) {
 }
 ```
 
-
-
 ## renderLabelForZeroData(boolean) = false
 
 <ExampleUIControlBoolean />
 
 如果数据没有 `name`，是否需要渲染文字。
 
+{{ use: partial-sunburst-label-props(
+    prefix = "##"
+) }}
 
-{{use: partial-sunburst-label-props(
-    prefix="##"
-)}}
+{{ use: partial-sunburst-itemStyle-props(
+    prefix = "##"
+) }}
 
-{{use: partial-sunburst-itemStyle-props(
-    prefix="##"
-)}}
-
-{{ use: partial-sunburst-other-state(prefix="#") }}
-
-
-
+{{ use: partial-sunburst-other-state(
+    prefix = "#"
+) }}
 
 ## levels(Array)
 
@@ -496,20 +498,22 @@ series: {
 }
 ```
 
-{{use: partial-sunburst-label-props(
-    prefix="###"
-)}}
+{{ use: partial-sunburst-label-props(
+    prefix = "###"
+) }}
 
-{{use: partial-sunburst-itemStyle-props(
-    prefix="###"
-)}}
+{{ use: partial-sunburst-itemStyle-props(
+    prefix = "###"
+) }}
 
-{{ use: partial-sunburst-other-state(prefix="##") }}
+{{ use: partial-sunburst-other-state(
+    prefix = "##"
+) }}
 
-{{use: partial-animation(
-    prefix="#",
-    defaultAnimationEasing="'cubicOut'",
-    defaultAnimationDuration=1000,
-    defaultAnimationDurationUpdate=500,
-    galleryEditorPath=${galleryEditorPath}
-)}}
+{{ use: partial-animation(
+    prefix = "#",
+    defaultAnimationEasing = "'cubicOut'",
+    defaultAnimationDuration = 1000,
+    defaultAnimationDurationUpdate = 500
+) }}
+

@@ -1,36 +1,34 @@
-{{target:partial-simple-text-style}}
 
-{{ use:partial-text-style(
-    prefix=${prefix},
-    name=${name},
-    defaultColor=${defaultColor},
-    defaultFontSize=${defaultFontSize},
-    noAlign=true,
-    noVerticalAlign=true,
-    noRich=true,
-    noBox=true
+{{ target: partial-simple-text-style }}
+
+{{ use: partial-text-style(
+    prefix = ${prefix},
+    name = ${name},
+    defaultColor = ${defaultColor},
+    defaultFontSize = ${defaultFontSize},
+    noAlign = true,
+    noVerticalAlign = true,
+    noRich = true,
+    noBox = true
 ) }}
 
 
 
 
+{{ target: partial-text-style }}
 
-
-
-{{target:partial-text-style}}
-
-{{use:partial-text-style-base-item(
-    prefix=${prefix},
-    name=${name},
-    defaultColor=${defaultColor},
-    defaultFontSize=${defaultFontSize},
-    defaultAlign=${defaultAlign},
-    defaultVerticalAlign=${defaultVerticalAlign},
-    noAlign=${noAlign},
-    noVerticalAlign=${noVerticalAlign},
-    noBox=${noBox},
-    enableAutoColor=${enableAutoColor}
-)}}
+{{ use: partial-text-style-base-item(
+    prefix = ${prefix},
+    name = ${name},
+    defaultColor = ${defaultColor},
+    defaultFontSize = ${defaultFontSize},
+    defaultAlign = ${defaultAlign},
+    defaultVerticalAlign = ${defaultVerticalAlign},
+    noAlign = ${noAlign},
+    noVerticalAlign = ${noVerticalAlign},
+    noBox = ${noBox},
+    enableAutoColor = ${enableAutoColor}
+) }}
 
 #${prefix} width(number)
 
@@ -39,7 +37,6 @@
 #${prefix} height(number)
 
 文本显示高度。
-
 
 #${prefix} overflow(string) = 'none'
 
@@ -62,6 +59,7 @@
 + `'truncate'` 在文本行数超出高度部分截断。
 
 {{ if: !${noRich} }}
+
 #${prefix} rich(Object)
 
 在 `rich` 里面，可以自定义富文本样式。利用富文本样式，可以在标签中做出非常丰富的效果。
@@ -104,38 +102,32 @@ label: {
 
 详情参见教程：[富文本标签](tutorial.html#%E5%AF%8C%E6%96%87%E6%9C%AC%E6%A0%87%E7%AD%BE)
 
-
-
 ##${prefix} <style_name>(Object)
 
-{{use:partial-text-style-base-item(
+{{ use:  partial-text-style-base-item(
     prefix=${prefix} + '##',
     enableAutoColor=${enableAutoColor}
-)}}
+)  }}
 
 {{ /if }}
 
 
 
 
+{{ target: partial-text-style-base-item }}
 
-
-
-{{target:partial-text-style-base-item}}
-
-#${prefix} color(Color)=${defaultColor|default('"#fff"')}
+#${prefix} color(Color) = ${defaultColor|default('"#fff"')}
 
 <ExampleUIControlColor default="${defaultColor|default(null)}" />
 
 ${name}文字的颜色。
 
 
-{{if: ${enableAutoColor} }}
-{{ use: partial-text-style-auto-color-desc }}
-{{/if}}
+{{ if: ${enableAutoColor} }}
+{{ use:   partial-text-style-auto-color-desc   }}
+{{ /if }}
 
-
-#${prefix} fontStyle(string)='normal'
+#${prefix} fontStyle(string) = 'normal'
 
 <ExampleUIControlEnum default="normal" options="normal,italic,oblique" />
 
@@ -146,8 +138,7 @@ ${name}文字字体的风格。
 + `'italic'`
 + `'oblique'`
 
-
-#${prefix} fontWeight(string|number)=${defaultFontWeight|default('normal')}
+#${prefix} fontWeight(string|number) = ${defaultFontWeight|default('normal')}
 
 <ExampleUIControlEnum default="normal" options="normal,bold,bolder,lighter" />
 
@@ -160,8 +151,7 @@ ${name}文字字体的粗细。
 + `'lighter'`
 + 100 | 200 | 300 | 400...
 
-
-#${prefix} fontFamily(string)='sans-serif'
+#${prefix} fontFamily(string) = 'sans-serif'
 
 <ExampleUIControlEnum default="sans-serif" options="sans-serif,serif,monospace,Arial,Courier New" />
 
@@ -169,7 +159,7 @@ ${name}文字的字体系列。
 
 还可以是 'serif' , 'monospace', 'Arial', 'Courier New', 'Microsoft YaHei', ...
 
-#${prefix} fontSize(number)=${defaultFontSize|default(12)}
+#${prefix} fontSize(number) = ${defaultFontSize|default(12)}
 
 <ExampleUIControlNumber default="${defaultFontSize|default(12)}" min="1" step="1" />
 
@@ -177,7 +167,8 @@ ${name}文字的字体大小。
 
 
  {{ if: !${noAlign} }}
-#${prefix} align(string)=${defaultAlign}
+
+#${prefix} align(string) = ${defaultAlign}
 
 <ExampleUIControlEnum options="left,center,right" />
 
@@ -188,15 +179,16 @@ ${name}文字的字体大小。
 + `'center'`
 + `'right'`
 
-{{ use: partial-text-style-rich-inherit(
+{{ use:   partial-text-style-rich-inherit(
     name='align',
     value='right'
-) }}
+)   }}
 
 {{ /if }}
 
 {{ if: !${noVerticalAlign} }}
-#${prefix} verticalAlign(string)=${defaultVerticalAlign}
+
+#${prefix} verticalAlign(string) = ${defaultVerticalAlign}
 
 <ExampleUIControlEnum options="top,middle,bottom" />
 
@@ -207,14 +199,12 @@ ${name}文字的字体大小。
 + `'middle'`
 + `'bottom'`
 
-{{ use: partial-text-style-rich-inherit(
+{{ use:   partial-text-style-rich-inherit(
     name='verticalAlign',
     value='bottom'
-) }}
+)   }}
 
 {{ /if }}
-
-
 
 #${prefix} lineHeight(number)
 
@@ -223,13 +213,13 @@ ${name}文字的字体大小。
 行高。
 
 {{ use: partial-text-style-rich-inherit(
-    name='lineHeight',
-    value=56
+    name = 'lineHeight',
+    value = 56
 ) }}
 
 {{ if: !${noBox} }}
 
-#${prefix} backgroundColor(string|Object)='transparent'
+#${prefix} backgroundColor(string|Object) = 'transparent'
 
 <ExampleUIControlColor default="#fff" />
 
@@ -251,33 +241,33 @@ backgroundColor: {
 
 当使用图片的时候，可以使用 `width` 或 `height` 指定高宽，也可以不指定自适应。
 
-{{if: ${enableAutoColor} }}
-{{ use: partial-text-style-auto-color-desc }}
-{{/if}}
+{{ if: ${enableAutoColor} }}
+{{ use:   partial-text-style-auto-color-desc   }}
+{{ /if }}
 
-#${prefix} borderColor(Color)='transparent'
+#${prefix} borderColor(Color) = 'transparent'
 
 <ExampleUIControlColor default="#fff" />
 
 文字块边框颜色。
 
-{{if: ${enableAutoColor} }}
-{{ use: partial-text-style-auto-color-desc }}
-{{/if}}
+{{ if: ${enableAutoColor} }}
+{{ use:   partial-text-style-auto-color-desc   }}
+{{ /if }}
 
-#${prefix} borderWidth(number)=0
+#${prefix} borderWidth(number) = 0
 
 <ExampleUIControlNumber min="0" step="0.5" />
 
 文字块边框宽度。
 
-#${prefix} borderRadius(number|Array)=0
+#${prefix} borderRadius(number|Array) = 0
 
 <ExampleUIControlVector min="0" dims="LT,RT, RB, LB"  />
 
 文字块的圆角。
 
-#${prefix} padding(number|Array)=0
+#${prefix} padding(number|Array) = 0
 
 <ExampleUIControlVector min="0" dims="T,R,B,L"  />
 
@@ -289,32 +279,31 @@ backgroundColor: {
 
 注意，文字块的 `width` 和 `height` 指定的是内容高宽，不包含 `padding`。
 
-#${prefix} shadowColor(Color)='transparent'
+#${prefix} shadowColor(Color) = 'transparent'
 
 <ExampleUIControlColor />
 
 文字块的背景阴影颜色。
 
-#${prefix} shadowBlur(number)=0
+#${prefix} shadowBlur(number) = 0
 
 <ExampleUIControlNumber min="0" step="0.5" />
 
 文字块的背景阴影长度。
 
-#${prefix} shadowOffsetX(number)=0
+#${prefix} shadowOffsetX(number) = 0
 
 <ExampleUIControlNumber step="0.5" />
 
 文字块的背景阴影 X 偏移。
 
-#${prefix} shadowOffsetY(number)=0
+#${prefix} shadowOffsetY(number) = 0
 
 <ExampleUIControlNumber step="0.5" />
 
 文字块的背景阴影 Y 偏移。
 
 {{ /if }}
-
 
 #${prefix} width(number|string)
 
@@ -334,41 +323,41 @@ backgroundColor: {
 
 注意，如果不定义 `rich` 属性，则不能指定 `width` 和 `height`。
 
-#${prefix} textBorderColor(Color)='transparent'
+#${prefix} textBorderColor(Color) = 'transparent'
 
 <ExampleUIControlColor />
 
 文字本身的描边颜色。
 
-{{if: ${enableAutoColor} }}
-{{ use: partial-text-style-auto-color-desc }}
-{{/if}}
+{{ if: ${enableAutoColor} }}
+{{ use:   partial-text-style-auto-color-desc   }}
+{{ /if }}
 
-#${prefix} textBorderWidth(number)=0
+#${prefix} textBorderWidth(number) = 0
 
 <ExampleUIControlNumber min="0" step="0.5" />
 
 文字本身的描边宽度。
 
-#${prefix} textShadowColor(Color)='transparent'
+#${prefix} textShadowColor(Color) = 'transparent'
 
 <ExampleUIControlColor default="#000" />
 
 文字本身的阴影颜色。
 
-#${prefix} textShadowBlur(number)=0
+#${prefix} textShadowBlur(number) = 0
 
 <ExampleUIControlNumber min="0" step="0.5" />
 
 文字本身的阴影长度。
 
-#${prefix} textShadowOffsetX(number)=0
+#${prefix} textShadowOffsetX(number) = 0
 
 <ExampleUIControlNumber step="0.5" />
 
 文字本身的阴影 X 偏移。
 
-#${prefix} textShadowOffsetY(number)=0
+#${prefix} textShadowOffsetY(number) = 0
 
 <ExampleUIControlNumber step="0.5" />
 
@@ -376,14 +365,16 @@ backgroundColor: {
 
 
 
+
 {{ target: partial-text-style-auto-color-desc }}
+
 如果设置为 `'auto'`，则为视觉映射得到的颜色，如系列色。
 
 
 
 
-
 {{ target: partial-text-style-rich-inherit }}
+
 `rich` 中如果没有设置 `${name}`，则会取父层级的 `${name}`。例如：
 
 ```js
@@ -396,3 +387,4 @@ backgroundColor: {
     }
 }
 ```
+

@@ -1,5 +1,5 @@
 
-{{target: series-treemap}}
+{{ target: series-treemap }}
 
 # series.treemap(Object)
 
@@ -16,8 +16,7 @@ treemap 首先是把数值映射到『面积』这种视觉元素上。
 
 此外，也支持对数据的其他维度进行视觉映射，例如映射到颜色、颜色明暗度上。
 
-{{ use: partial-treemap-visual-detial }}
-
+{{ use: partial-treemap-visual-detial() }}
 
 **下钻（drill down）：**
 
@@ -197,18 +196,20 @@ const option = {
 
 ## type(string) = 'treemap'
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 {{ use: partial-series-name() }}
 
 {{ use: partial-rect-layout-width-height(
-    componentName='treemap ',
-    defaultLeft: 'center',
-    defaultRight: null,
-    defaultTop: 'middle',
-    defaultBottom: null,
-    defaultWidth: '80%',
-    defaultHeight: '80%'
+    componentName = 'treemap ',
+    defaultLeft = 'center',
+    defaultRight = null,
+    defaultTop = 'middle',
+    defaultBottom = null,
+    defaultWidth = '80%',
+    defaultHeight = '80%'
 ) }}
 
 ## squareRatio(number)
@@ -218,7 +219,6 @@ const option = {
 期望矩形长宽比率。布局计算时会尽量向这个比率靠近。
 
 默认为黄金比：`0.5 * (1 + Math.sqrt(5))`。
-
 
 ## leafDepth(number) = null
 
@@ -250,7 +250,6 @@ const option = {
 + `'move'` 或 `'pan'`：只能够平移。
 + `true`：缩放和平移均可。
 
-
 ## nodeClick(boolean|string) = 'zoomToNode'
 
 点击节点后的行为。可取值为：
@@ -259,14 +258,11 @@ const option = {
 + `'zoomToNode'`：点击节点后缩放到节点。
 + `'link'`：如果节点数据中有 [link](~series-treemap.data.link) 点击节点后会进行超链接跳转。
 
-
-
 ## zoomToNodeRatio(number) = 0.32*0.32
 
 <ExampleUIControlNumber min="0" default="0.1" step="0.01" />
 
 点击某个节点，会自动放大那个节点到合适的比例（节点占可视区域的面积比例），这个配置项就是这个比例。
-
 
 ## levels(Array)
 
@@ -356,34 +352,25 @@ treemap中首要关注的是如何在视觉上较好得区分『不同层级』�
 treemap 默认把第一个维度（Array 第一项）映射到『面积』上。而如果想表达更多信息，用户可以把其他的某一个维度（[series-treemap.visualDimension](~series-treemap.viusalDimension)），映射到其他的『视觉元素』上，比如颜色明暗等。参见[例子](${galleryEditorPath}treemap-obama&edit=1&reset=1)中，legend选择 `Growth`时的状态。
 
 <br>
-{{ use: partial-treemap-borderColor-setting(galleryEditorPath=${galleryEditorPath}) }}
 
+{{ use: partial-treemap-borderColor-setting() }}
 
 <br>
 **borderWidth, gapWidth, borderColor 的解释**
 
 ![500xauto](~treemap-border-gap.png)
 
+{{ use: partial-treemap-level-props(
+    prefix = "##"
+) }}
 
-{{use: partial-treemap-level-props(
-    prefix="##",
-    galleryEditorPath=${galleryEditorPath},
-    galleryViewPath=${galleryViewPath}
-)}}
-
-
-
-{{use: partial-treemap-level-props(
-    prefix="#",
-    galleryEditorPath=${galleryEditorPath},
-    galleryViewPath=${galleryViewPath}
-)}}
-
+{{ use: partial-treemap-level-props(
+    prefix = "#"
+) }}
 
 ## breadcrumb(Object)
 
 面包屑，能够显示当前节点的路径。
-
 
 ### show(boolean) = true
 
@@ -391,15 +378,13 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 是否显示面包屑。
 
-
 {{ use: partial-rect-layout(
-    componentName="asdf ",
-    prefix="##",
-    noZ=true,
-    defaultLeft="'center'",
-    defaultBottom=0
+    componentName = "asdf ",
+    prefix = "##",
+    noZ = true,
+    defaultLeft = "'center'",
+    defaultBottom = 0
 ) }}
-
 
 ### height(number) = 22
 
@@ -407,64 +392,62 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 面包屑的高度。
 
-
 ### emptyItemWidth(number) = 25
 
 <ExampleUIControlNumber min="0" default="25" step="1" />
 
 当面包屑没有内容时候，设个最小宽度。
 
-
 ### itemStyle(Object)
 
-{{ use: partial-item-style-desc }}
+{{ use: partial-item-style-desc() }}
 
-
-{{use: partial-item-style(
-    prefix="###",
-    name="boxplot",
-    defaultColor="rgba(0,0,0,0.7)",
-    defaultBorderColor="rgba(255,255,255,0.7)",
-    defaultBorderWidth=1,
-    defaultShadowColor='rgba(150,150,150,1)',
-    defaultShadowBlur=3,
-    defaultShadowOffsetX=0,
-    defaultShadowOffsetY=0
-)}}
-
+{{ use: partial-item-style(
+    prefix = "###",
+    name = "boxplot",
+    defaultColor = "rgba(0,0,0,0.7)",
+    defaultBorderColor = "rgba(255,255,255,0.7)",
+    defaultBorderWidth = 1,
+    defaultShadowColor = 'rgba(150,150,150,1)',
+    defaultShadowBlur = 3,
+    defaultShadowOffsetX = 0,
+    defaultShadowOffsetY = 0
+) }}
 
 #### textStyle(Object)
 
-{{use: partial-text-style(
-    prefix="####",
-    defaultColor="#fff"
-)}}
+{{ use: partial-text-style(
+    prefix = "####",
+    defaultColor = "#fff"
+) }}
 
+### emphasis(*)
 
-### emphasis
 #### itemStyle(Object)
-{{use: partial-item-style(
-    prefix="####",
-    name="boxplot",
-    defaultColor="rgba(0,0,0,0.7)",
-    defaultBorderColor="rgba(255,255,255,0.7)",
-    defaultBorderWidth=1,
-    defaultShadowColor='rgba(150,150,150,1)',
-    defaultShadowBlur=3,
-    defaultShadowOffsetX=0,
-    defaultShadowOffsetY=0
-)}}
+
+{{ use: partial-item-style(
+    prefix = "####",
+    name = "boxplot",
+    defaultColor = "rgba(0,0,0,0.7)",
+    defaultBorderColor = "rgba(255,255,255,0.7)",
+    defaultBorderWidth = 1,
+    defaultShadowColor = 'rgba(150,150,150,1)',
+    defaultShadowBlur = 3,
+    defaultShadowOffsetX = 0,
+    defaultShadowOffsetY = 0
+) }}
+
 ##### textStyle(Object)
 
-{{use: partial-text-style(
-    prefix="#####",
-    defaultColor="#fff"
-)}}
-
+{{ use: partial-text-style(
+    prefix = "#####",
+    defaultColor = "#fff"
+) }}
 
 ## labelLayout(Object|Function)
+
 {{ use: partial-label-layout(
-    prefix="##"
+    prefix = "##"
 ) }}
 
 ## data(Array)
@@ -527,12 +510,9 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 显示在矩形中的描述文字。
 
-
-{{use: partial-treemap-level-props(
-    prefix="##",
-    galleryEditorPath=${galleryEditorPath},
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-treemap-level-props(
+    prefix = "##"
+) }}
 
 ### link(string)
 
@@ -548,33 +528,24 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 子节点，递归定义，格式同 [series-treemap.data](~series-treemap.data)。
 
-{{use: partial-tooltip-in-series-data(
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-tooltip-in-series-data() }}
 
-
-{{ use:partial-silent(
-    prefix="#"
+{{ use: partial-silent(
+    prefix = "#"
 ) }}
 
+{{ use: partial-animation-init(
+    prefix = "#",
+    defaultAnimationEasing = 'quinticInOut',
+    defaultAnimationDuration = 1500
+) }}
 
-{{use: partial-animation-init(
-    prefix="#",
-    defaultAnimationEasing='quinticInOut',
-    defaultAnimationDuration=1500,
-    galleryEditorPath=${galleryEditorPath}
-)}}
-
-{{use: partial-tooltip-in-series(
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-tooltip-in-series() }}
 
 
 
 
-
-
-{{target: partial-treemap-level-props}}
+{{ target: partial-treemap-level-props }}
 
 #${prefix} visualDimension(number) = 0
 
@@ -582,8 +553,11 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 首先，treemap的数据格式（参见 [series-treemap.data](~series-treemap.data)）中，每个节点的 `value` 都可以是数组。数组每项是一个『维度』（dimension）。`visualDimension` 指定了额外的『视觉映射』使用的是数组的哪一项。默认为第 `0` 项。
 
-{{ use: partial-treemap-visual-detial }}
-{{use: partial-treemap-prop-location-desc(name="visualDimension")}}
+{{ use: partial-treemap-visual-detial() }}
+
+{{ use: partial-treemap-prop-location-desc(
+    name = "visualDimension"
+) }}
 
 #${prefix} visualMin(number) = null
 
@@ -602,23 +576,27 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 手动指定 `visualMin`、`visualMax` ，即手动控制了 visual mapping 的值域（当 [colorMappingBy](~series-treemap.levels.colorMappingBy) 为 `'value'` 时有意义）。
 
 {{ if: ${prefix} !== '#' }}
+
 #${prefix} color(Array)
 
 表示同一层级的节点的 颜色 选取列表（选择规则见 [colorMappingBy](~series-treemap.colorMappingBy)）。默认为空时，选取系统color列表。
 
-{{ use: partial-treemap-visual-detial }}
-{{use: partial-treemap-prop-location-desc(name="color")}}
+{{ use:   partial-treemap-visual-detial   }}
+{{ use:   partial-treemap-prop-location-desc(name="color")  }}
 
 {{ /if }}
+
 #${prefix} colorAlpha(Array) = null
 
 {{ if: ${prefix} !== '#' }}表示同一层级的节点的{{ else }}本系列默认的{{ /if }} 颜色透明度 选取范围。数值范围 0 ~ 1。
 
 例如, `colorAlpha` 可以是 `[0.3, 1]`.
 
-{{ use: partial-treemap-visual-detial }}
-{{use: partial-treemap-prop-location-desc(name="colorAlpha")}}
+{{ use: partial-treemap-visual-detial() }}
 
+{{ use: partial-treemap-prop-location-desc(
+    name = "colorAlpha"
+) }}
 
 #${prefix} colorSaturation(number) = null
 
@@ -626,9 +604,11 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 例如, `colorSaturation` 可以是 `[0.3, 1]`.
 
-{{ use: partial-treemap-visual-detial }}
-{{use: partial-treemap-prop-location-desc(name="colorSaturation")}}
+{{ use: partial-treemap-visual-detial() }}
 
+{{ use: partial-treemap-prop-location-desc(
+    name = "colorSaturation"
+) }}
 
 #${prefix} colorMappingBy(string) = 'index'
 
@@ -654,9 +634,11 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 将节点的 `id`（即 [series-treemap.data.id](~series-treemap.data.id)）映射到颜色列表中。`id` 是用户指定的，这样能够使得，在treemap 通过 setOption 变化数值时，同一 `id` 映射到同一颜色，保持一致性。参见 [例子](${galleryEditorPath}treemap-obama&edit=1&reset=1)。
 
-{{ use: partial-treemap-visual-detial }}
-{{use: partial-treemap-prop-location-desc(name="colorMappingBy")}}
+{{ use: partial-treemap-visual-detial() }}
 
+{{ use: partial-treemap-prop-location-desc(
+    name = "colorMappingBy"
+) }}
 
 #${prefix} visibleMin(number) = 10
 
@@ -666,9 +648,11 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 如果不加这个限制，很小的节点会影响显示效果。
 
-{{ use: partial-treemap-visual-detial }}
-{{use: partial-treemap-prop-location-desc(name="visibleMin")}}
+{{ use: partial-treemap-visual-detial() }}
 
+{{ use: partial-treemap-prop-location-desc(
+    name = "visibleMin"
+) }}
 
 #${prefix} childrenVisibleMin(number) = null
 
@@ -678,23 +662,27 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 这能够在矩形面积不足够大时候，隐藏节点的细节。当用户用鼠标缩放节点时，如果面积大于此阈值，又会显示子节点。
 
-{{ use: partial-treemap-visual-detial }}
-{{use: partial-treemap-prop-location-desc(name="childrenVisibleMin")}}
+{{ use: partial-treemap-visual-detial() }}
 
+{{ use: partial-treemap-prop-location-desc(
+    name = "childrenVisibleMin"
+) }}
 
 #${prefix} label(Object)
 
 `label` 描述了每个矩形中，文本标签的样式。
 
-{{use: partial-treemap-prop-location-desc(name="label")}}
+{{ use: partial-treemap-prop-location-desc(
+    name = "label"
+) }}
 
 <br>
 
-{{use:partial-label(
-    prefix=${prefix} + "#",
-    defaultPosition="'inside'",
-    formatter=true
-)}}
+{{ use: partial-label(
+    prefix = ${prefix} + "#",
+    defaultPosition = "'inside'",
+    formatter = true
+) }}
 
 #${prefix} upperLabel(Object)
 
@@ -708,16 +696,17 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 ~[700x500](${galleryViewPath}treemap-show-parent&edit=1&reset=1)
 
-
-{{use: partial-treemap-prop-location-desc(name="label")}}
+{{ use: partial-treemap-prop-location-desc(
+    name = "label"
+) }}
 
 <br>
 
-{{use:partial-label(
-    prefix=${prefix} + "#",
-    defaultPosition="'inside'",
-    formatter=true
-)}}
+{{ use: partial-label(
+    prefix = ${prefix} + "#",
+    defaultPosition = "'inside'",
+    formatter = true
+) }}
 
 ###${prefix} height(number) = 20
 
@@ -727,42 +716,47 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 #${prefix} itemStyle(Object)
 
-{{use: partial-treemap-prop-location-desc(name="itemStyle")}}
+{{ use: partial-treemap-prop-location-desc(
+    name = "itemStyle"
+) }}
 
 <br>
 
-{{use: partial-treemap-item-style(
-    prefix=${prefix} + "#",
-    galleryEditorPath=${galleryEditorPath},
-    itemStyleType='normal'
-)}}
+{{ use: partial-treemap-item-style(
+    prefix = ${prefix} + "#",
+    itemStyleType = 'normal'
+) }}
 
 #${prefix} emphasis(Object)
+
 ##${prefix} label(Object)
-{{use:partial-label(
-    prefix=${prefix} + "##",
-    defaultPosition="'inside'",
-    formatter=true
-)}}
+
+{{ use: partial-label(
+    prefix = ${prefix} + "##",
+    defaultPosition = "'inside'",
+    formatter = true
+) }}
+
 ##${prefix} upperLabel(Object)
-{{use:partial-label(
-    prefix=${prefix} + "##",
-    defaultPosition="'inside'",
-    formatter=true
-)}}
+
+{{ use: partial-label(
+    prefix = ${prefix} + "##",
+    defaultPosition = "'inside'",
+    formatter = true
+) }}
+
 ##${prefix} itemStyle(Object)
-{{use: partial-treemap-item-style(
-    prefix=${prefix} + "##",
-    galleryEditorPath=${galleryEditorPath},
-    itemStyleType='emphasis'
-)}}
+
+{{ use: partial-treemap-item-style(
+    prefix = ${prefix} + "##",
+    itemStyleType = 'emphasis'
+) }}
 
 
 
 
+{{ target: partial-treemap-prop-location-desc }}
 
-
-{{target: partial-treemap-prop-location-desc}}
 <br>
 > 注：treemap中 `${name}` 属性可能在多处地方存在：
 {{ if: ${name} !== 'color' }}> * 于 [sereis-treemap](~series-treemap) 根下，表示本系列全局的统一设置。{{ /if }}
@@ -772,32 +766,28 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 
 
-
-{{target: partial-treemap-visual-detial}}
+{{ target: partial-treemap-visual-detial }}
 
 关于视觉设置，详见 [series-treemap.levels](~series-treemap.levels)。
 
 
 
 
+{{ target: partial-treemap-item-style }}
 
-
-{{target: partial-treemap-item-style}}
-
-#${prefix} color(Color) =  null
+#${prefix} color(Color) = null
 
 <ExampleUIControlColor />
 
 矩形的颜色。默认从全局调色盘 [option.color](~color) 获取颜色。
 
-{{if: ${itemStyleType} === 'normal' }}
+{{ if: ${itemStyleType} === 'normal' }}
 
 #${prefix} colorAlpha(number) = null
 
 <ExampleUIControlNumber step="0.01" min="0" max="1" default="1" />
 
 矩形颜色的透明度。取值范围是 0 ~ 1 之间的浮点数。
-
 
 #${prefix} colorSaturation(number) = null
 
@@ -811,7 +801,6 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 矩形边框线宽。为 0 时无边框。而矩形的内部子矩形（子节点）的间隔距离是由 [gapWidth](~series-treemap.levels.gapWidth) 指定的。
 
-
 #${prefix} gapWidth(number) = 0
 
 <ExampleUIControlNumber step="0.5" min="0" />
@@ -820,13 +809,11 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 ![700xauto](~treemap-border-gap.png)
 
-
 #${prefix} borderColor(Color) = '#fff',
 
 <ExampleUIControlColor default="#fff" />
 
 矩形边框 和 矩形间隔（gap）的颜色。
-
 
 #${prefix} borderColorSaturation(Color) = null
 
@@ -839,25 +826,22 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 如果设置此属性，则 `borderColor` 的设置无效，而是：取当前节点计算出的颜色（比如从父节点遗传而来），在此颜色值上设置 `borderColorSaturation` 得到最终颜色。这种方式，能够做出『不同区块有不同色调的矩形间隔线』的效果，能够便于区分层级。
 
 <br>
-{{ use: partial-treemap-borderColor-setting(galleryEditorPath=${galleryEditorPath}) }}
+{{ use:   partial-treemap-borderColor-setting(galleryEditorPath=${galleryEditorPath})   }}
 
-{{ use:partial-style-shadow-opacity(
+{{ use:  partial-style-shadow-opacity(
     prefix=${prefix}
-) }}
+)   }}
 
-{{/if }}
-
-
-
+{{ /if }}
 
 
 
 
 {{ target: partial-treemap-borderColor-setting }}
+
 **矩形边框（border）/缝隙（gap）设置如何避免混淆**
 
 如果统一用一种颜色设置矩形的缝隙（gap），那么当不同层级的矩形同时展示时可能会出现混淆。
 
 参见 [例子](${galleryEditorPath}doc-example/treemap-borderColor&edit=1&reset=1)，注意其中红色的区块中的子矩形其实是更深层级，和其他用白色缝隙区分的矩形不是在一个层级。所以，红色区块中矩形的分割线的颜色，我们在 `borderColorSaturation` 中设置为『加了饱和度变化的红颜色』，以示区别。
-
 

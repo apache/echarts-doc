@@ -1,5 +1,5 @@
 
-{{target: component-dataset}}
+{{ target: component-dataset }}
 
 # dataset(Object)
 
@@ -7,8 +7,9 @@
 
 More details about `dataset` can be checked in the [tutorial](tutorial.html#Dataset).
 
-
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 ## source(Array|Object)
 
@@ -49,10 +50,9 @@ Column based key-value format, where each value represents a column of a table.
 
 More details about `dataset` can be checked in the [tutorial](tutorial.html#dataset).
 
-
-{{use:partial-series-dimensions(
-    prefix="#"
-)}}
+{{ use: partial-series-dimensions(
+    prefix = "#"
+) }}
 
 ## sourceHeader(boolean)
 
@@ -64,27 +64,28 @@ Whether the first row/column of `dataset.source` represents [dimension names](da
 
 Note: "the first row/column" means that if [series.seriesLayoutBy](~series.seriesLayoutBy) is set as `'column'`, pick the first row, otherwise, if it is set as `'row'`, pick the first column.
 
-
 ## transform(Object)
 
-{{ use: partial-data-transform-tutorial-ref }}
+{{ use: partial-data-transform-tutorial-ref() }}
 
-{{ import: component-data-transform-filter }}
-{{ import: component-data-transform-sort }}
-{{ import: component-data-transform-external }}
+{{ use: component-data-transform-filter() }}
+
+{{ use: component-data-transform-sort() }}
+
+{{ use: component-data-transform-external() }}
 
 ## fromDatasetIndex(number)
 
 Specify the input dataset for [dataset.transform](~dataset.transform).
 If [dataset.transform](~dataset.transform) specified but both `fromDatasetIndex` and `fromDatasetId` are not specified, `fromDatasetIndex: 0` will be used by default.
 
-{{ use: partial-data-transform-tutorial-ref }}
+{{ use: partial-data-transform-tutorial-ref() }}
 
 ## fromDatasetId(string)
 
 Specify the input dataset for [dataset.transform](~dataset.transform).
 
-{{ use: partial-data-transform-tutorial-ref }}
+{{ use: partial-data-transform-tutorial-ref() }}
 
 ## fromTransformResult(number)
 
@@ -92,4 +93,5 @@ If a [dataset.transform](~dataset.transform) produces more than one result, we c
 
 In most cases, `fromTransformResult` do not need to be specified because most transforms only produce one result. If `fromTransformResult` is not specified, we use `fromTransformResult: 0` by default.
 
-{{ use: partial-data-transform-tutorial-ref }}
+{{ use: partial-data-transform-tutorial-ref() }}
+

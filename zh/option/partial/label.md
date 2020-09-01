@@ -1,9 +1,13 @@
-{{target:partial-label-desc}}
+
+{{ target: partial-label-desc }}
 
 ${name}图形上的文本标签，可用于说明图形的一些数据信息，比如值，名称等。
 
 
-{{target:partial-label}}
+
+
+{{ target: partial-label }}
+
 #${prefix} show(boolean) = ${defaultShowLabel|default("false")}
 
 <ExampleUIControlBoolean default="${defaultShowLabel|default(false)}" />
@@ -11,11 +15,12 @@ ${name}图形上的文本标签，可用于说明图形的一些数据信息，�
 是否显示标签。
 
 {{ if: !${noPosition} }}
+
 #${prefix} position(string|Array) = ${defaultPosition}
 
 <ExampleUIControlEnum options="top,left,right,bottom,inside,insideLeft,insideRight,insideTop,insideBottom,insideTopLeft,insideBottomLeft,insideTopRight,insideBottomRight,outside" />
 
-{{use:partial-label-position}}
+{{ use:  partial-label-position  }}
 {{ /if }}
 
 #${prefix} distance(number) = 5
@@ -28,6 +33,7 @@ ${name}图形上的文本标签，可用于说明图形的一些数据信息，�
 
 
 {{ if: !${noRotate} }}
+
 #${prefix} rotate(number) = ${defaultRotate}
 
 <ExampleUIControlAngle default="${defaultRotate|default(0)}" min="-90" max="90" step="1" />
@@ -37,7 +43,6 @@ ${name}图形上的文本标签，可用于说明图形的一些数据信息，�
 参见：[label rotation](${galleryEditorPath}bar-label-rotation)。
 {{ /if }}
 
-
 #${prefix} offset(Array)
 
 <ExampleUIControlVector dims="x,y" step="0.5" separate="true" />
@@ -45,16 +50,20 @@ ${name}图形上的文本标签，可用于说明图形的一些数据信息，�
 是否对文字进行偏移。默认不偏移。例如：`[30, 40]` 表示文字在横向上偏移 `30`，纵向上偏移 `40`。
 
 {{ if: ${formatter} }}
+
 #${prefix} formatter(string|Function)
-{{use:partial-2d-data-label-formatter}}
-{{ elif: ${formatter1d} }}
+
+{{ use:  partial-2d-data-label-formatter  }}
+{{ elif: ${formatter1d}   }}
+
 #${prefix} formatter(string|Function)
-{{use:partial-1d-data-label-formatter}}
+
+{{ use:  partial-1d-data-label-formatter  }}
 {{ /if }}
 
 
 {{ if: !${noTextStyle} }}
-{{ use:partial-text-style(
+{{ use:  partial-text-style(
     prefix=${prefix},
     noAlign=${noAlign},
     noVerticalAlign=${noVerticalAlign},
@@ -64,10 +73,14 @@ ${name}图形上的文本标签，可用于说明图形的一些数据信息，�
     noRich=${noRich},
     noBox=${noBox},
     enableAutoColor=true
-) }}
+)   }}
 {{ /if }}
 
-{{ target:partial-label-position }}
+
+
+
+{{ target: partial-label-position }}
+
 标签的位置。
 
 + 可以通过内置的语义声明位置：
@@ -90,3 +103,4 @@ ${name}图形上的文本标签，可用于说明图形的一些数据信息，�
     ```
 
 参见：[label position](${galleryViewPath}doc-example/label-position)。
+

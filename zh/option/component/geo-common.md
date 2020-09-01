@@ -1,3 +1,4 @@
+
 {{ target: geo-common }}
 
 #${prefix} map(string) = ''
@@ -44,9 +45,11 @@ $.get('map/json/china.json', function (chinaJson) {
 ECharts 使用 [geoJSON](http://geojson.org/) 格式的数据作为地图的轮廓，除了上述数据，你也可以通过其它手段获取地图的 [geoJSON](http://geojson.org/) 数据注册到 ECharts 中。参见示例 [USA Population Estimates](${galleryEditorPath}map-usa)
 
 #${prefix} roam(boolean|string) = false
-{{ use: partial-roam }}
+
+{{ use: partial-roam() }}
 
 #${prefix} center(Array)
+
 当前视角的中心点，用经纬度表示
 
 例如：
@@ -61,6 +64,7 @@ center: [115.97, 29.71]
 最终的 `aspect` 的计算方式是：`geoBoundingRect.width / geoBoundingRect.height * aspectScale`
 
 #${prefix} boundingCoords(Array) = null
+
 二维数组，定义定位的左上角以及右下角分别所对应的经纬度。例如
 ```js
 // 设置为一张完整经纬度的世界地图
@@ -75,10 +79,14 @@ boundingCoords: [
 ```
 
 #${prefix} zoom(number) = 1
+
 当前视角的缩放比例。
 
 #${prefix} scaleLimit(Object)
-{{ use: partial-scale-limit(prefix="#" + ${prefix}) }}
+
+{{ use: partial-scale-limit(
+    prefix = "#" + ${prefix}
+) }}
 
 #${prefix} nameMap(Object)
 
@@ -91,7 +99,9 @@ boundingCoords: [
 
 #${prefix} nameProperty(string) = 'name'
 
-{{ use: partial-version(version="4.8.0") }}
+{{ use: partial-version(
+    version = "4.8.0"
+) }}
 
 默认是 `'name'`，针对 GeoJSON 要素的自定义属性名称，作为主键用于关联数据点和 GeoJSON 地理要素。
 例如：
@@ -106,49 +116,60 @@ boundingCoords: [
 ```
 
 #${prefix} selectedMode(boolean|string) = false
+
 选中模式，表示是否支持多个选中，默认关闭，支持布尔值和字符串，字符串取值可选`'single'`表示单选，或者`'multiple'`表示多选。
 
-
-
-
 #${prefix} label(Object)
-{{use: partial-label-desc}}
-{{use: partial-label(
-    prefix="#" + ${prefix},
-    formatter=true
-)}}
+
+{{ use: partial-label-desc() }}
+
+{{ use: partial-label(
+    prefix = "#" + ${prefix},
+    formatter = true
+) }}
 
 #${prefix} itemStyle(Object)
 
-{{ use: partial-item-style-desc(name= '地图区域的多边形') }}
+{{ use: partial-item-style-desc(
+    name = '地图区域的多边形'
+) }}
 
 ##${prefix} areaColor(Color) = '#eee'
+
 地图区域的颜色。
-{{ use: partial-color-desc }}
 
-{{ use: partial-item-style(prefix=${prefix} + '#') }}
+{{ use: partial-color-desc() }}
 
+{{ use: partial-item-style(
+    prefix = ${prefix} + '#'
+) }}
 
 #${prefix} emphasis(Object)
+
 高亮状态下的多边形和标签样式。
 
 ##${prefix} label(Object)
-{{use: partial-label(
-    prefix="##" + ${prefix},
-    formatter=true
-)}}
+
+{{ use: partial-label(
+    prefix = "##" + ${prefix},
+    formatter = true
+) }}
 
 ##${prefix} itemStyle(Object)
+
 ###${prefix} areaColor(Color) = '#eee'
+
 地图区域的颜色。
-{{ use: partial-color-desc }}
 
-{{ use: partial-item-style(prefix=${prefix} + '##') }}
+{{ use: partial-color-desc() }}
 
+{{ use: partial-item-style(
+    prefix = ${prefix} + '##'
+) }}
 
-
-{{ use: partial-rect-layout(prefix=${prefix}) }}
-
+{{ use: partial-rect-layout(
+    prefix = ${prefix}
+) }}
 
 #${prefix} layoutCenter(Array) = null
 

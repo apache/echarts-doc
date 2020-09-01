@@ -1,11 +1,9 @@
 
-{{target: component-parallel}}
+{{ target: component-parallel }}
 
 # parallel(Object)
 
-{{ use: partial-parallel-introduce(
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-parallel-introduce() }}
 
 <ExampleBaseOption name="parallel" title="平行坐标" title-en="Parallel">
 const dataBJ = [
@@ -442,14 +440,16 @@ const option = {
 
 </ExampleBaseOption>
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 {{ use: partial-rect-layout-width-height(
-    componentName='parallel ',
-    defaultLeft: 80,
-    defaultRight: 80,
-    defaultTop: 60,
-    defaultBottom: 60
+    componentName = 'parallel ',
+    defaultLeft = 80,
+    defaultRight = 80,
+    defaultTop = 60,
+    defaultBottom = 60
 ) }}
 
 ## layout(string) = 'horizontal'
@@ -466,9 +466,7 @@ const option = {
 
 <ExampleUIControlBoolean />
 
-{{use: partial-parallel-high-dim (
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-parallel-high-dim() }}
 
 是否允许点击展开折叠 axis。
 
@@ -505,19 +503,17 @@ const option = {
 + `'click'`：鼠标点击的时候 expand。
 + `'mousemove'`：鼠标悬浮的时候 expand。
 
-
 ## parallelAxisDefault(Object)
 
-{{use: partial-parallel-axis-default}}
+{{ use: partial-parallel-axis-default() }}
 
 [参见示例](${galleryEditorPath}doc-example/parallel-all&edit=1&reset=1)
 
 <br>
 
 {{ use: axis-common(
-    prefix='##',
-    componentType='parallelAxis',
-    noAxisPointer=true,
-    galleryViewPath=${galleryViewPath},
-    galleryEditorPath=${galleryEditorPath}
+    prefix = '##',
+    componentType = 'parallelAxis',
+    noAxisPointer = true
 ) }}
+

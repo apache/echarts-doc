@@ -1,4 +1,6 @@
+
 {{ target: partial-formatter-params-structure }}
+
 ```js
 {
     componentType: 'series',
@@ -32,7 +34,7 @@
     dimensionIndex: number,
     // 数据图形的颜色
     color: string,
-{{ for: ${extra} as ${obj}, ${name} }}{{ if: ${extra}.hasOwnProperty(${name}) }}
+{{ for:   ${extra} as ${obj}, ${name}   }}{{ if: ${extra}.hasOwnProperty(${name}) }}
     // ${obj.desc}
     ${name}: ${obj.type},
 {{ /if }}{{ /for }}
@@ -74,4 +76,3 @@ dataset: {
 params.value[params.dimensionNames[params.encode.y[0]]]
 ```
 
-{{ /target }}

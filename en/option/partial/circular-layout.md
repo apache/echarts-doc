@@ -1,7 +1,7 @@
-{{target: component-circular-layout}}
 
-{{use: partial-z-zlevel}}
+{{ target: component-circular-layout }}
 
+{{ use: partial-z-zlevel() }}
 
 ## center(Array) = ${defaultCenter|default("['50%', '50%']")}
 
@@ -26,3 +26,4 @@ Radius of ${componentName}. Value can be:
 {{ if: !${disableArray} }}
 + `Array.<number|string>`: The first item specifies the inside radius, and the second item specifies the outside radius. Each item follows the definitions above.
 {{ /if }}
+

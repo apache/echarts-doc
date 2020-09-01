@@ -1,5 +1,5 @@
 
-{{target: series-boxplot}}
+{{ target: series-boxplot }}
 
 # series.boxplot(Object)
 
@@ -17,23 +17,23 @@ Multiple `series` can be displayed in the same coordinate system. Please refer t
 
 ## type(string) = 'boxplot'
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
-{{use: partial-coord-sys(
-    seriesType="cartesian2d",
-    coordSysDefault="'cartesian2d'",
-    cartesian2d=true
-)}}
+{{ use: partial-coord-sys(
+    seriesType = "cartesian2d",
+    coordSysDefault = "'cartesian2d'",
+    cartesian2d = true
+) }}
 
+{{ use: partial-series-name() }}
 
-{{ use: partial-series-name }}
-
-{{ use: partial-legend-hover-link }}
+{{ use: partial-legend-hover-link() }}
 
 ## hoverAnimation(boolean) = true
 
 Whether to enable the animation when hovering on box.
-
 
 ## layout(string) = null
 
@@ -50,51 +50,45 @@ The default value is decided by:
     + otherwise use `'vertical'`;
 + otherwise use `'horizontal'`.
 
-
 ## boxWidth(Array) = [7, 50]
 
 Up and bottom boundary of box width. The array is in the form of `[min, max]`.
 
 It could be absolute value in pixel, such as `[7, 50]`, or percentage, such as `['40%', '90%']`. The percentage means the percentage to the maximum possible width.
 
-
-
 ## itemStyle(Object)
 
-{{use: partial-item-style(
-    prefix="##",
-    useColorPalatte=true,
-    name="boxplot",
-    defaultColor="#fff",
-    defaultBorderWidth=1
-)}}
+{{ use: partial-item-style(
+    prefix = "##",
+    useColorPalatte = true,
+    name = "boxplot",
+    defaultColor = "#fff",
+    defaultBorderWidth = 1
+) }}
 
 ## emphasis(Object)
 
 ### itemStyle(Object)
 
-{{use: partial-item-style(
-    prefix="###",
-    useColorPalatte=true,
-    name="boxplot",
-    defaultColor="#fff",
-    defaultBorderWidth=2,
-    defaultShadowBlur=5,
-    defaultShadowOffsetX=2,
-    defaultShadowOffsetY=2,
-    defaultShadowColor="rgba(0,0,0,0.4)"
-)}}
+{{ use: partial-item-style(
+    prefix = "###",
+    useColorPalatte = true,
+    name = "boxplot",
+    defaultColor = "#fff",
+    defaultBorderWidth = 2,
+    defaultShadowBlur = 5,
+    defaultShadowOffsetX = 2,
+    defaultShadowOffsetY = 2,
+    defaultShadowColor = "rgba(0,0,0,0.4)"
+) }}
 
+{{ use: partial-series-dimensions(
+    prefix = "#"
+) }}
 
-
-{{use:partial-series-dimensions(
-    prefix="#"
-)}}
-
-{{use:partial-series-encode(
-    prefix="#"
-)}}
-
+{{ use: partial-series-encode(
+    prefix = "#"
+) }}
 
 ## data(Array)
 
@@ -126,7 +120,6 @@ ECharts doesn't contain data processing modules, so the five statistic values sh
 
 However, ECharts also provide some simple [raw data processing tools](https://github.com/apache/incubator-echarts/tree/master/extension/dataTool). For example, this [example](${galleryEditorPath}boxplot-light-velocity&edit=1&reset=1) uses `echarts.dataTool.prepareBoxplotData` to proceed simple data statistics.
 
-
 ### name(string)
 
 Name of data item.
@@ -141,62 +134,54 @@ Value of data item.
 
 ### itemStyle(Object)
 
-{{use: partial-item-style(
-    prefix="###",
-    useColorPalatte=true,
-    name="boxplot",
-    defaultColor="#fff",
-    defaultBorderWidth=1
-)}}
+{{ use: partial-item-style(
+    prefix = "###",
+    useColorPalatte = true,
+    name = "boxplot",
+    defaultColor = "#fff",
+    defaultBorderWidth = 1
+) }}
 
 ### emphasis(Object)
 
 #### itemStyle(Object)
 
-{{use: partial-item-style(
-    prefix="####",
-    useColorPalatte=true,
-    name="boxplot",
-    defaultColor="#fff",
-    defaultBorderWidth=2,
-    defaultShadowBlur=5,
-    defaultShadowOffsetX=2,
-    defaultShadowOffsetY=2,
-    defaultShadowColor="rgba(0,0,0,0.4)"
-)}}
-
-
-{{use: partial-tooltip-in-series-data(
-    galleryViewPath=${galleryViewPath}
-)}}
-
-{{use: partial-marker(
-    prefix="#",
-    seriesType="boxplot",
-    galleryEditorPath=${galleryEditorPath},
-    hasCoord=true,
-    hasType=true,
-    name="mark point"
-)}}
-
-{{use:partial-z-zlevel(
-    prefix="#",
-    componentName="Box plot"
+{{ use: partial-item-style(
+    prefix = "####",
+    useColorPalatte = true,
+    name = "boxplot",
+    defaultColor = "#fff",
+    defaultBorderWidth = 2,
+    defaultShadowBlur = 5,
+    defaultShadowOffsetX = 2,
+    defaultShadowOffsetY = 2,
+    defaultShadowColor = "rgba(0,0,0,0.4)"
 ) }}
 
-{{ use:partial-silent(
-    prefix="#"
+{{ use: partial-tooltip-in-series-data() }}
+
+{{ use: partial-marker(
+    prefix = "#",
+    seriesType = "boxplot",
+    hasCoord = true,
+    hasType = true,
+    name = "mark point"
 ) }}
 
-{{use: partial-animation-init(
-    prefix="#",
-    defaultAnimationEasing='elasticOut',
-    defaultAnimationDuration=800,
-    galleryEditorPath=${galleryEditorPath}
-)}}
+{{ use: partial-z-zlevel(
+    prefix = "#",
+    componentName = "Box plot"
+) }}
 
+{{ use: partial-silent(
+    prefix = "#"
+) }}
 
-{{use: partial-tooltip-in-series(
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-animation-init(
+    prefix = "#",
+    defaultAnimationEasing = 'elasticOut',
+    defaultAnimationDuration = 800
+) }}
+
+{{ use: partial-tooltip-in-series() }}
 

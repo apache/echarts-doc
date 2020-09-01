@@ -1,11 +1,11 @@
 
-{{target: component-visual-map}}
+{{ target: component-visual-map }}
 
 # visualMap(Array|Object)
 
 `visualMap` is a type of component for visual encoding, which maps the data to visual channels, including:
 
-{{use: partial-visual-map-visual-type}}
+{{ use: partial-visual-map-visual-type() }}
 
 Myltiple `visualMap` component could be defined in a chart instance, which enable that different dimensions of a series data are mapped to different visual channels.
 
@@ -60,20 +60,15 @@ series: {
 <br>
 <br>
 
+{{ use: component-visual-map-continuous() }}
 
-{{import: component-visual-map-continuous}}
-{{import: component-visual-map-piecewise}}
-
-
+{{ use: component-visual-map-piecewise() }}
 
 
 
 
+{{ target: partial-visual-map-range }}
 
-
-
-
-{{target: partial-visual-map-range}}
 `${rangeType}` could customize visual channels both in series (by [${visualMapName}.seriesIndex](~${visualMapName}.seriesIndex)) and in `${visualMapName}` itself.
 
 For instance, if a `${visualMapName}` component is used on a scatter chart, the mapping approach from data to `color` (or `symbol`, `size`, ...) can be both customized in the scatter chart and `${visualMapName}` component itself. See the code as following:
@@ -200,7 +195,7 @@ About the possible value range of visual value:
 
 + `symbol`：
 
-    {{ use: partial-icon }}
+{{ use: partial-icon() }}
 
 <br>
 
@@ -250,11 +245,7 @@ visualMap: {
 
 
 
-
-
-
-
-{{target: partial-visual-map-merge}}
+{{ target: partial-visual-map-merge }}
 
 **✦ How to modity configurations of vsiual encoding? ✦**
 
@@ -292,11 +283,7 @@ chart.setOption(option); // set the modified option back.
 
 
 
-
-
-
-
-{{target: partial-visual-map-inRange-outOfRange}}
+{{ target: partial-visual-map-inRange-outOfRange }}
 
 ##${prefix} inRange(Object)
 
@@ -304,24 +291,22 @@ Define visual channels that will mapped from dataValues that are **in selected r
 
 Possiable visual channels includes:
 
-{{use: partial-visual-map-visual-type}}
+{{ use: partial-visual-map-visual-type() }}
 
 ---
 
-{{use: partial-visual-map-range(
-    rangeType='inRange',
-    visualMapName=${visualMapName},
-    galleryEditorPath=${galleryEditorPath}
-)}}
+{{ use: partial-visual-map-range(
+    rangeType = 'inRange',
+    visualMapName = ${visualMapName}
+) }}
 
 ---
 
-{{use: partial-visual-map-merge(
-    componentMainType='visualMap'
-)}}
+{{ use: partial-visual-map-merge(
+    componentMainType = 'visualMap'
+) }}
 
 **Notice:** There is default color `['#f6efa6', '#d88273', '#bf444c']` in `inRange` if you not set `inRange`. If you dont want it, set `inRange: {color: null}` to disable it.
-
 
 ##${prefix} outOfRange(Object)
 
@@ -329,33 +314,27 @@ Define visual channels that will mapped from dataValues that are **out of select
 
 Possiable visual channels includes:
 
-{{use: partial-visual-map-visual-type}}
+{{ use: partial-visual-map-visual-type() }}
 
-{{use: partial-visual-map-range(
-    rangeType='outOfRange',
-    visualMapName=${visualMapName},
-    galleryEditorPath=${galleryEditorPath}
-)}}
+{{ use: partial-visual-map-range(
+    rangeType = 'outOfRange',
+    visualMapName = ${visualMapName}
+) }}
 
 ---
 
-{{use: partial-visual-map-merge(
-    componentMainType='visualMap'
-)}}
+{{ use: partial-visual-map-merge(
+    componentMainType = 'visualMap'
+) }}
 
 
 
 
-
-
-
-{{target: partial-visual-map-common}}
-
+{{ target: partial-visual-map-common }}
 
 ## show(boolean) = true
 
 Whether to show ${visualMapName} component. If set as `false`, ${visualMapName} component will not show, but it can still perform visual mapping from dataValue to visual channel in chart.
-
 
 ## dimension(string)
 
@@ -383,68 +362,56 @@ Specify visual mapping should be performed on which series, from which
 
 All series are used by default.
 
-
 ## hoverLink(boolean) = true
 
 `hoverLink` enable highlight certain graphical elements of chart when mouse hovers on some place of `visualMap` component that is coresponding to those graphical elements by visual mapping.
 
 Inversely, when mouse hovers a graphical element of chart, its value label will be displayed on its corresponding position in `visualMap`.
 
-
-{{use: partial-visual-map-inRange-outOfRange(
-    prefix="",
-    visualMapName=${visualMapName},
-    galleryEditorPath=${galleryEditorPath}
-)}}
-
+{{ use: partial-visual-map-inRange-outOfRange(
+    prefix = "",
+    visualMapName = ${visualMapName}
+) }}
 
 ## controller(Object)
 
 Property `inRange` and `outOfRange` can be set within property `controller`, which means those `inRange` and `outOfRange` are only used on the controller (`visualMap` component itself), but are not used on chart (series). This property is useful in some scenarios when the view of controller needs to be customized in detail.
 
-
-{{use: partial-visual-map-inRange-outOfRange(
-    prefix="#",
-    visualMapName=${visualMapName},
-    galleryEditorPath=${galleryEditorPath}
-)}}
-
-
-
-{{ use: partial-rect-layout(
-    componentName="visualMap ",
-    defaultZ="4",
-    defaultLeft="0",
-    defaultRight="auto",
-    defaultTop="auto",
-    defaultBottom="0"
+{{ use: partial-visual-map-inRange-outOfRange(
+    prefix = "#",
+    visualMapName = ${visualMapName}
 ) }}
 
+{{ use: partial-rect-layout(
+    componentName = "visualMap ",
+    defaultZ = "4",
+    defaultLeft = "0",
+    defaultRight = "auto",
+    defaultTop = "auto",
+    defaultBottom = "0"
+) }}
 
 ## orient(string) = 'vertical'
 
 How to layout the visualMap component, `'horizontal'` or `'vertical'`.
 
-
 ## padding(number|Array) = 5
 
-{{ use: partial-padding(componentName=${visualMapName})}}
-
+{{ use: partial-padding(
+    componentName = ${visualMapName}
+) }}
 
 ## backgroundColor(Color) = 'rgba(0,0,0,0)'
 
 background color of visualMap component.
 
-
 ## borderColor(Color) = '#ccc'
 
 border color of visualMap component.
 
-
 ## borderWidth(number) = 0
 
 border width of visualMap component, with unit: px.
-
 
 ## color(Array) = ['#bf444c', '#d88273', '#f6efa6']
 
@@ -452,11 +419,11 @@ This property remains only for compatibility with ECharts2, and is not recommend
 
 If you persist in using it, the following issue should be noticed: the sequence of dataValues that are mapped to colorValues in property `color` is from `large` to `small`, whereas that in [${visualMapName}.inRange](~${visualMapName}.inRange) or [${visualMapName}.outOfRange](~${visualMapName}.outOfRange) is from `small` to `large`.
 
+## textStyle(*)
 
-## textStyle
-
-{{ use:partial-simple-text-style(
-    prefix='##',
-    name='visualMap ',
-    defaultColor='#333'
+{{ use: partial-simple-text-style(
+    prefix = '##',
+    name = 'visualMap ',
+    defaultColor = '#333'
 ) }}
+

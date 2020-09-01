@@ -1,5 +1,5 @@
 
-{{target: series-funnel}}
+{{ target: series-funnel }}
 
 # series.funnel(Object)
 
@@ -32,7 +32,9 @@ option = {
 
 ## type(string) = 'funnel'
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 {{ use: partial-series-name() }}
 
@@ -82,7 +84,7 @@ option = {
 
 数据图形间距。
 
-{{ use: partial-legend-hover-link }}
+{{ use: partial-legend-hover-link() }}
 
 ## funnelAlign(string) = 'center'
 
@@ -90,180 +92,215 @@ option = {
 
 水平方向对齐布局类型，默认居中对齐，可用选项还有：'left' | 'right' | 'center'
 
-
 ## label(Object)
-{{use:partial-label-desc(name="漏斗图")}}
-{{use:partial-funnel-label(
-    prefix="##",
-    position=true,
-    formatter=true
-)}}
+
+{{ use: partial-label-desc(
+    name = "漏斗图"
+) }}
+
+{{ use: partial-funnel-label(
+    prefix = "##",
+    position = true,
+    formatter = true
+) }}
 
 ## labelLine(Object)
+
 标签的视觉引导线样式，在 [label 位置](~series-funnel.label.position) 设置为`'left'`或者`'right'`的时候会显示视觉引导线。
+
 {{ use: partial-funnel-label-line(
-    prefix='##',
-    length=true
-)}}
+    prefix = '##',
+    length = true
+) }}
 
 ## itemStyle(Object)
-{{use:partial-item-style-desc}}
-{{use:partial-item-style(
-    prefix="##",
-    useColorPalatte=true,
-    hasCallback=true
-)}}
+
+{{ use: partial-item-style-desc() }}
+
+{{ use: partial-item-style(
+    prefix = "##",
+    useColorPalatte = true,
+    hasCallback = true
+) }}
 
 ## labelLayout(Object|Function)
+
 {{ use: partial-label-layout(
-    prefix="##"
+    prefix = "##"
 ) }}
 
 ## emphasis(Object)
 
 高亮的标签和图形样式。
 
-{{use:partial-focus-blur-scope()}}
+{{ use: partial-focus-blur-scope() }}
 
 ### label(Object)
-{{use:partial-funnel-label(
-    prefix="###",
-    position=false,
-    formatter=true
-)}}
+
+{{ use: partial-funnel-label(
+    prefix = "###",
+    position = false,
+    formatter = true
+) }}
 
 ### labelLine(Object)
+
 {{ use: partial-funnel-label-line(
-    prefix='###',
-    length=false
-)}}
+    prefix = '###',
+    length = false
+) }}
 
 ### itemStyle(Object)
-{{use:partial-item-style(prefix="###")}}
 
+{{ use: partial-item-style(
+    prefix = "###"
+) }}
 
 ## blur(Object)
 
 淡出时的图形样式和标签样式。开启 [emphasis.focus](~series-funnel.emphasis.focus) 后有效
 
 ### label(Object)
-{{use:partial-funnel-label(
-    prefix="###",
-    position=false,
-    formatter=true
-)}}
 
-### labelLine(Object)
-{{ use: partial-funnel-label-line(
-    prefix='###',
-    length=false
-)}}
-
-### itemStyle(Object)
-{{use:partial-item-style(prefix="###")}}
-
-
-{{ use: partial-rect-layout-width-height(
-    componentName="漏斗图",
-    defaultLeft=80,
-    defaultTop=60,
-    defaultRight=80,
-    defaultBottom=60
+{{ use: partial-funnel-label(
+    prefix = "###",
+    position = false,
+    formatter = true
 ) }}
 
-{{ use: partial-seriesLayoutBy }}
+### labelLine(Object)
 
-{{ use: partial-datasetIndex }}
+{{ use: partial-funnel-label-line(
+    prefix = '###',
+    length = false
+) }}
 
-{{use:partial-series-dimensions(
-    prefix="#"
-)}}
+### itemStyle(Object)
 
-{{use:partial-series-encode(
-    prefix="#"
-)}}
+{{ use: partial-item-style(
+    prefix = "###"
+) }}
+
+{{ use: partial-rect-layout-width-height(
+    componentName = "漏斗图",
+    defaultLeft = 80,
+    defaultTop = 60,
+    defaultRight = 80,
+    defaultBottom = 60
+) }}
+
+{{ use: partial-seriesLayoutBy() }}
+
+{{ use: partial-datasetIndex() }}
+
+{{ use: partial-series-dimensions(
+    prefix = "#"
+) }}
+
+{{ use: partial-series-encode(
+    prefix = "#"
+) }}
 
 ## data(Array)
-{{ use: partial-1d-data-desc }}
+
+{{ use: partial-1d-data-desc() }}
+
 ### name(string)
+
 数据项名称。
+
 ### value(number)
+
 数据值。
+
 ### itemStyle(Object)
-{{use:partial-item-style-desc}}
-{{use:partial-item-style(prefix="###")}}
+
+{{ use: partial-item-style-desc() }}
+
+{{ use: partial-item-style(
+    prefix = "###"
+) }}
+
 #### height(string|number)
+
 该数据项的高度。默认平均分配高度，如果需要修改，可以将其设为百分比（如：`'10%'`）或像素值（如：`20px`）。需要注意总和应为 100%。
 
 ### label(Object)
-单个数据的标签配置。
-{{use:partial-funnel-label(
-    prefix="###",
-    position=true,
-    formatter=false
-)}}
 
+单个数据的标签配置。
+
+{{ use: partial-funnel-label(
+    prefix = "###",
+    position = true,
+    formatter = false
+) }}
 
 ### labelLine(Object)
+
 {{ use: partial-funnel-label-line(
-    prefix='###',
-    length=true
-)}}
+    prefix = '###',
+    length = true
+) }}
 
 ### itemStyle(Object)
-{{use:partial-item-style-desc}}
-{{use:partial-item-style(prefix="###")}}
 
+{{ use: partial-item-style-desc() }}
+
+{{ use: partial-item-style(
+    prefix = "###"
+) }}
 
 ### emphasis(Object)
 
 #### itemStyle(Object)
-{{use:partial-item-style(prefix="####")}}
 
-#### label(Object)
-{{use:partial-funnel-label(
-    prefix="####",
-    position=false,
-    formatter=false
-)}}
-
-#### labelLine(Object)
-{{use:partial-funnel-label-line(
-    prefix="####",
-    length=false
-)}}
-
-
-
-{{use: partial-tooltip-in-series-data(
-    galleryViewPath=${galleryViewPath}
-)}}
-
-{{use: partial-marker(
-    prefix="#",
-    galleryEditorPath=${galleryEditorPath},
-    seriesType="funnel"
-)}}
-
-{{ use:partial-silent(
-    prefix="#"
+{{ use: partial-item-style(
+    prefix = "####"
 ) }}
 
-{{use:partial-animation(
-    prefix="#",
-    galleryEditorPath=${galleryEditorPath}
-)}}
+#### label(Object)
 
-{{use: partial-tooltip-in-series(
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-funnel-label(
+    prefix = "####",
+    position = false,
+    formatter = false
+) }}
+
+#### labelLine(Object)
+
+{{ use: partial-funnel-label-line(
+    prefix = "####",
+    length = false
+) }}
+
+{{ use: partial-tooltip-in-series-data() }}
+
+{{ use: partial-marker(
+    prefix = "#",
+    seriesType = "funnel"
+) }}
+
+{{ use: partial-silent(
+    prefix = "#"
+) }}
+
+{{ use: partial-animation(
+    prefix = "#"
+) }}
+
+{{ use: partial-tooltip-in-series() }}
+
 
 
 
 {{ target: partial-funnel-label }}
+
 #${prefix} show(boolean) = false
+
 {{ if: ${position} }}
+
 #${prefix} position(string) = 'outside'
+
 标签的位置。
 
 **可选：**
@@ -286,24 +323,39 @@ option = {
 
 {{ /if }}
 {{ if: ${formatter} }}
+
 #${prefix} formatter(string|Function)
-{{ use: partial-1d-data-label-formatter(extra = {
+
+{{ use:   partial-1d-data-label-formatter(extra = {
     percent: {
         desc: '百分比',
         type: 'number'
     }
-}) }}
+})   }}
 {{ /if }}
 
-{{ use:partial-text-style(prefix=${prefix}) }}
+{{ use: partial-text-style(
+    prefix = ${prefix}
+) }}
+
+
 
 
 {{ target: partial-funnel-label-line }}
+
 #${prefix} show(boolean)
+
 是否显示视觉引导线。
 {{ if: ${length} }}
+
 #${prefix} length(number)
+
 视觉引导线的长度。
 {{ /if }}
+
 #${prefix} lineStyle(Object)
-{{use:partial-line-style(prefix="#" + ${prefix})}}
+
+{{ use: partial-line-style(
+    prefix = "#" + ${prefix}
+) }}
+

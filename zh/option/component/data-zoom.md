@@ -1,8 +1,7 @@
 
-{{target: component-data-zoom}}
+{{ target: component-data-zoom }}
 
 # dataZoom(Array|Object)
-
 
 `dataZoom` 组件 用于区域缩放，从而能自由关注细节的数据信息，或者概览数据整体，或者去除离群点的影响。
 
@@ -37,7 +36,7 @@
 
 **✦ dataZoom 组件如何影响轴和数据 ✦**
 
-{{use: partial-data-zoom-filterMode}}
+{{ use: partial-data-zoom-filterMode() }}
 
 另外，如果在任一个数轴上设置了 `min`、`max`（如设置 `yAxis: {min: 0, max: 400}`），那么这个数轴无论如何也不会被其他数轴的 dataZoom 行为影响了。
 
@@ -113,16 +112,15 @@ option = {
 
         如果需要改变这种处理顺序，那么改变 `dataZoomX` 和 `dataZoomY` 在 option 中的出现顺序即可。
 
+{{ use: component-data-zoom-inside() }}
 
-{{import: component-data-zoom-inside}}
-{{import: component-data-zoom-slider}}
-
-
+{{ use: component-data-zoom-slider() }}
 
 
 
 
-{{target: partial-data-zoom-axis-example}}
+{{ target: partial-data-zoom-axis-example }}
+
 如果是 `number` 表示控制一个轴，如果是 `Array` 表示控制多个轴。
 
 例如有如下 ECharts option：
@@ -149,9 +147,7 @@ option: {
 
 
 
-{{target: partial-data-zoom-common}}
-
-
+{{ target: partial-data-zoom-common }}
 
 ## xAxisIndex(number|Array) = null
 
@@ -159,10 +155,9 @@ option: {
 
 不指定时，当 [${dataZoomName}.orient](~${dataZoomName}.orient) 为 `'horizontal'`时，默认控制和 dataZoom 平行的第一个 `xAxis`。但是不建议使用默认值，建议显式指定。
 
-{{use: partial-data-zoom-axis-example(
-    axisName='xAxis'
-)}}
-
+{{ use: partial-data-zoom-axis-example(
+    axisName = 'xAxis'
+) }}
 
 ## yAxisIndex(number|Array) = null
 
@@ -170,35 +165,31 @@ option: {
 
 不指定时，当 [${dataZoomName}.orient](~${dataZoomName}.orient) 为 `'vertical'`时，默认控制和 dataZoom 平行的第一个 `yAxis`。但是不建议使用默认值，建议显式指定。
 
-{{use: partial-data-zoom-axis-example(
-    axisName='yAxis'
-)}}
-
+{{ use: partial-data-zoom-axis-example(
+    axisName = 'yAxis'
+) }}
 
 ## radiusAxisIndex(number|Array) = null
 
 设置 `${dataZoomName}` 组件控制的 `radius 轴`（即[radiusAxis](~radiusAxis)，是直角坐标系中的概念，参见 [polar](~polar)）。
 
-{{use: partial-data-zoom-axis-example(
-    axisName='radiusAxis'
-)}}
-
+{{ use: partial-data-zoom-axis-example(
+    axisName = 'radiusAxis'
+) }}
 
 ## angleAxisIndex(number|Array) = null
 
 设置 `${dataZoomName}` 组件控制的 `angle 轴`（即[angleAxis](~angleAxis)，是直角坐标系中的概念，参见 [polar](~polar)）。
 
-{{use: partial-data-zoom-axis-example(
-    axisName='angleAxis'
-)}}
-
+{{ use: partial-data-zoom-axis-example(
+    axisName = 'angleAxis'
+) }}
 
 ## filterMode(string) = 'filter'
 
 <ExampleUIControlEnum options="filter,weakFilter,empty,none" default="filter" />
 
-{{use: partial-data-zoom-filterMode}}
-
+{{ use: partial-data-zoom-filterMode() }}
 
 ## start(number) = 0
 
@@ -210,7 +201,6 @@ option: {
 
 关于坐标轴范围（axis extent）和 `${dataZoomName}.start` 的关系的更多信息，请参见：[${dataZoomName}.rangeMode](~${dataZoomName}.rangeMode)。
 
-
 ## end(number) = 100
 
 <ExampleUIControlNumber min="0" max="100" default="100" step="0.5" />
@@ -220,7 +210,6 @@ option: {
 [${dataZoomName}.start](~${dataZoomName}.start) 和 [${dataZoomName}.end](~${dataZoomName}.end) 共同用 **百分比** 的形式定义了数据窗口范围。
 
 关于坐标轴范围（axis extent）和 `${dataZoomName}.end` 的关系的更多信息，请参见：[${dataZoomName}.rangeMode](~${dataZoomName}.rangeMode)。
-
 
 ## startValue(number|string|Date) = null
 
@@ -233,7 +222,6 @@ option: {
 
 关于坐标轴范围（axis extent）和 `${dataZoomName}.startValue` 的关系的更多信息，请参见：[${dataZoomName}.rangeMode](~${dataZoomName}.rangeMode)。
 
-
 ## endValue(number|string|Date) = null
 
 数据窗口范围的结束数值。如果设置了 [${dataZoomName}.end](~${dataZoomName}.end) 则 `endValue` 失效。
@@ -244,7 +232,6 @@ option: {
 但是如果设置为数组值本身，会在内部自动转化为数组的 index。
 
 关于坐标轴范围（axis extent）和 `${dataZoomName}.endValue` 的关系的更多信息，请参见：[${dataZoomName}.rangeMode](~${dataZoomName}.rangeMode)。
-
 
 ## minSpan(number) = null
 
@@ -288,7 +275,6 @@ option: {
 
 + `'vertical'`：竖直。
 
-
 ## zoomLock(boolean) = false
 
 <ExampleUIControlBoolean />
@@ -296,7 +282,6 @@ option: {
 是否锁定选择区域（或叫做数据窗口）的大小。
 
 如果设置为 `true` 则锁定选择区域的大小，也就是说，只能平移，不能缩放。
-
 
 ## throttle(number) = 100
 
@@ -326,7 +311,9 @@ option: {
 举例一个使用场景：当我们使用动态数据时（即，周期性得通过 `setOption` 来改变数据），如果 `rangeMode` 在 `'value`' 模式，`dataZoom` 的窗口会一直保持在一个固定的值区间，无论数据怎么改变添加了多少；如果 `rangeMode` 在 `'percent'` 模式，窗口会随着数据的添加而改变（假设 `axis.min` 和 `axis.max` 没有被设置）。
 
 
-{{target: partial-data-zoom-filterMode}}
+
+
+{{ target: partial-data-zoom-filterMode }}
 
 `dataZoom` 的运行原理是通过 `数据过滤` 以及在内部设置轴的显示窗口来达到 `数据窗口缩放` 的效果。
 
@@ -416,3 +403,4 @@ option = {
 
 如下面的例子：
 ~[600x400](${galleryViewPath}doc-example/bar-dataZoom-filterMode&edit=1&reset=1)
+

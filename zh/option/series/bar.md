@@ -1,4 +1,5 @@
-{{target:series-bar}}
+
+{{ target: series-bar }}
 
 # series.bar(Object)
 
@@ -82,26 +83,29 @@ option = {
 };
 </ExampleBaseOption>
 
-
 ## type(string) = 'bar'
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 {{ use: partial-series-name() }}
 
 {{ use: partial-legend-hover-link() }}
 
 {{ use: partial-coord-sys(
-    seriesType="bar",
-    coordSysDefault="'cartesian2d'",
-    cartesian2d=true,
-    polar=false,
-    geo=false
+    seriesType = "bar",
+    coordSysDefault = "'cartesian2d'",
+    cartesian2d = true,
+    polar = false,
+    geo = false
 ) }}
 
 ## roundCap(boolean) = false
 
-{{ use: partial-version(version = "4.5.0") }}
+{{ use: partial-version(
+    version = "4.5.0"
+) }}
 
 <ExampleUIControlBoolean clean="true" />
 
@@ -111,9 +115,11 @@ option = {
 
 ~[800x500](${galleryViewPath}polar-roundCap&reset=1&edit=1)
 
-
 ## showBackground(boolean) = false
-{{ use: partial-version(version = "4.7.0") }}
+
+{{ use: partial-version(
+    version = "4.7.0"
+) }}
 
 <ExampleUIControlBoolean clean="true" />
 
@@ -122,39 +128,44 @@ option = {
 ~[800x400](${galleryViewPath}bar-background&reset=1&edit=1)
 
 ## backgroundStyle(Object)
-{{ use: partial-version(version = "4.7.0") }}
+
+{{ use: partial-version(
+    version = "4.7.0"
+) }}
+
 每一个柱条的背景样式。需要将 [showBackground](~series-bar.showBackground) 设置为 `true` 时才有效。
 
 ~[800x400](${galleryViewPath}bar-background&reset=1&edit=1)
 
-{{use:partial-bar-item-style(
-    prefix="##",
-    useColorPalatte=false,
-    hasCallback=true,
-    defaultColor="'rgba(180, 180, 180, 0.2)'"
-)}}
+{{ use: partial-bar-item-style(
+    prefix = "##",
+    useColorPalatte = false,
+    hasCallback = true,
+    defaultColor = "'rgba(180, 180, 180, 0.2)'"
+) }}
 
 {{ use: partial-bar-state(
-    prefix="#",
-    topLevel=true,
-    isNormal=true
+    prefix = "#",
+    topLevel = true,
+    isNormal = true
 ) }}
 
 ## labelLayout(Object|Function)
+
 {{ use: partial-label-layout(
-    prefix="##"
+    prefix = "##"
 ) }}
 
 ## emphasis(Object)
 
 高亮的图形样式和标签样式。
 
-{{use:partial-focus-blur-scope()}}
+{{ use: partial-focus-blur-scope() }}
 
 {{ use: partial-bar-state(
-    prefix="##",
-    topLevel=true,
-    isNormal=false
+    prefix = "##",
+    topLevel = true,
+    isNormal = false
 ) }}
 
 ## blur(Object)
@@ -162,9 +173,9 @@ option = {
 淡出时的图形样式和标签样式。开启 [emphasis.focus](~series-bar.emphasis.focus) 后有效
 
 {{ use: partial-bar-state(
-    prefix="##",
-    topLevel=true,
-    isNormal=false
+    prefix = "##",
+    topLevel = true,
+    isNormal = false
 ) }}
 
 ## select(Object)
@@ -172,65 +183,65 @@ option = {
 数据选中时的图形样式和标签样式。开启 [selectedMode](~series-bar.selectedMode) 后有效。
 
 {{ use: partial-bar-state(
-    prefix="##",
-    topLevel=true,
-    isNormal=false
+    prefix = "##",
+    topLevel = true,
+    isNormal = false
 ) }}
 
 {{ use: partial-selected-mode(
-    version='5.0.0'
+    version = '5.0.0'
 ) }}
 
 ## stack(string) = null
+
 数据堆叠，同个类目轴上系列配置相同的`stack`值可以堆叠放置。
 
-{{ use: partial-cursor }}
+{{ use: partial-cursor() }}
 
-{{use: partial-barGrid(
-    seriesType='bar',
-    galleryViewPath=${galleryViewPath}
-)}}
-
-{{use: partial-large(
-    prefix="#",
-    defaultLargeThreshold=400
-)}}
-
-{{ use:partial-progressive(
-    prefix='#',
-    supportProgressiveChunkMode=true,
-    defaultProgressive=5000,
-    defaultProgressiveChunkMode='mod'
+{{ use: partial-barGrid(
+    seriesType = 'bar'
 ) }}
 
-{{use:partial-series-dimensions(
-    prefix="#"
-)}}
+{{ use: partial-large(
+    prefix = "#",
+    defaultLargeThreshold = 400
+) }}
 
-{{use:partial-series-encode(
-    prefix="#"
-)}}
+{{ use: partial-progressive(
+    prefix = '#',
+    supportProgressiveChunkMode = true,
+    defaultProgressive = 5000,
+    defaultProgressiveChunkMode = 'mod'
+) }}
 
-{{ use: partial-seriesLayoutBy }}
+{{ use: partial-series-dimensions(
+    prefix = "#"
+) }}
 
-{{ use: partial-datasetIndex }}
+{{ use: partial-series-encode(
+    prefix = "#"
+) }}
+
+{{ use: partial-seriesLayoutBy() }}
+
+{{ use: partial-datasetIndex() }}
 
 ## data(Array)
 
-{{ use: partial-2d-data-desc(
-    galleryEditorPath = ${galleryEditorPath}
-) }}
+{{ use: partial-2d-data-desc() }}
 
 ### name(string)
+
 数据项名称。
 
 ### value(number)
+
 单个数据项的数值。
 
 {{ use: partial-bar-state(
-    prefix="##",
-    topLevel=false,
-    isNormal=true
+    prefix = "##",
+    topLevel = false,
+    isNormal = true
 ) }}
 
 ### emphasis(Object)
@@ -238,9 +249,9 @@ option = {
 单个数据的高亮状态配置。
 
 {{ use: partial-bar-state(
-    prefix="###",
-    topLevel=false,
-    isNormal=false
+    prefix = "###",
+    topLevel = false,
+    isNormal = false
 ) }}
 
 ### blur(Object)
@@ -248,9 +259,9 @@ option = {
 单个数据的淡出状态配置。
 
 {{ use: partial-bar-state(
-    prefix="###",
-    topLevel=false,
-    isNormal=false
+    prefix = "###",
+    topLevel = false,
+    isNormal = false
 ) }}
 
 ### select(Object)
@@ -258,70 +269,73 @@ option = {
 单个数据的选中状态配置。
 
 {{ use: partial-bar-state(
-    prefix="###",
-    topLevel=false,
-    isNormal=false
+    prefix = "###",
+    topLevel = false,
+    isNormal = false
 ) }}
 
-
-{{use:partial-clip(
-    prefix="#"
+{{ use: partial-clip(
+    prefix = "#"
 ) }}
 
-{{use:partial-z-zlevel(
-    prefix="#",
-    componentName="柱状图"
-) }}
-{{ use:partial-silent(
-    prefix="#"
+{{ use: partial-z-zlevel(
+    prefix = "#",
+    componentName = "柱状图"
 ) }}
 
-{{use:partial-animation(
-    prefix="#",
-    galleryEditorPath=${galleryEditorPath}
-)}}
+{{ use: partial-silent(
+    prefix = "#"
+) }}
+
+{{ use: partial-animation(
+    prefix = "#"
+) }}
+
+{{ use: partial-tooltip-in-series() }}
 
 
-{{use: partial-tooltip-in-series(
-    galleryViewPath=${galleryViewPath}
-)}}
 
 
-{{ target:partial-bar-state }}
+{{ target: partial-bar-state }}
 
 #${prefix} label(Object)
+
 {{ if: ${topLevel} }}
-{{use:partial-label-desc}}
-{{ else: }}
+{{ use:  partial-label-desc  }}
+{{ else }}
 单个数据的文本配置。
 {{ /if }}
 
-{{use:partial-label(
-    prefix="#" + ${prefix},
-    defaultPosition="'inside'",
-    formatter=${topLevel}
-)}}
+{{ use: partial-label(
+    prefix = "#" + ${prefix},
+    defaultPosition = "'inside'",
+    formatter = ${topLevel}
+) }}
 
 #${prefix} itemStyle(Object)
+
 {{ if: ${topLevel} }}
-{{use:partial-item-style-desc}}
-{{ else: }}
+{{ use:  partial-item-style-desc  }}
+{{ else }}
 单个数据的图形样式设置。
 {{ /if }}
-{{use:partial-bar-item-style(
-    prefix="#" + ${prefix},
-    useColorPalatte=${topLevel && isNormal},
-    hasCallback=${topLevel && isNormal},
-)}}
+
+{{ use: partial-bar-item-style(
+    prefix = "#" + ${prefix},
+    useColorPalatte = ${topLevel && isNormal},
+    hasCallback = ${topLevel && isNormal}
+) }}
 
 
-{{ target:partial-bar-item-style }}
+
+
+{{ target: partial-bar-item-style }}
 
 #${prefix} color(Color) = ${defaultColor|default('自适应')}
 
 <ExampleUIControlColor />
 
-柱条的颜色。{{ if: ${useColorPalatte} }} 默认从全局调色盘 [option.color](~color) 获取颜色 {{/if}}
+柱条的颜色。{{ if: ${useColorPalatte} }} 默认从全局调色盘 [option.color](~color) 获取颜色 {{ /if }}
 
 #${prefix} borderColor(Color) = '#000'
 
@@ -341,9 +355,11 @@ option = {
 
 柱条的描边类型，默认为实线，支持 `'dashed'`, `'dotted'`。
 
-{{use: partial-border-radius(
-    prefix: ${prefix}
-)}}
+{{ use: partial-border-radius(
+    prefix = ${prefix}
+) }}
 
-{{ use:partial-style-shadow-opacity(prefix=${prefix}) }}
+{{ use: partial-style-shadow-opacity(
+    prefix = ${prefix}
+) }}
 

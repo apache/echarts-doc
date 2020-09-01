@@ -1,5 +1,5 @@
 
-{{target: component-visual-map-continuous}}
+{{ target: component-visual-map-continuous }}
 
 # visualMap.continuous(Object)
 
@@ -12,13 +12,13 @@ You can set [visualMap.calculable](~visualMap.calculable) to show or hide the ha
 <br>
 <br>
 
-
 ## type(string) = continuous
 
 Used to determine that it is a continuous visualMap component.
 
-
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 ## min(number)
 
@@ -26,13 +26,11 @@ Specify the min dataValue for the visualMap component. `[visualMap.min, visualMa
 
 Notice that `min` and `max` should be specified explicitly, and be `[0, 200]` by default, but not `dataMin` and `dataMax` in series.data.
 
-
 ## max(number)
 
 Specify the max dataValue for the visualMap component. `[visualMap.min, visualMax.max]` make up the domain of viusul mapping.
 
 Notice that `min` and `max` should be specified explicitly, and be `[0, 200]` by default, but not `dataMin` and `dataMax` in series.data.
-
 
 ## range(Array)
 
@@ -78,15 +76,11 @@ chart.setOption({visualMap: {range: null}}); // Set range to null then.
 
 `range` gotten by `getOption` is always an `Array`, but not `null` or `undefined`.
 
-
-
-
 ## calculable(boolean) = false
 
 Whether show handles, which can be dragged to adjust "selected range".
 
 Notes: In order to be compatible with ECharts2, the rule, which seems to be a little odd, is retained: when [visualMap.type](~visualMap.type) is not set, and [visualMap.calculable](~visualMap-continuous.calculable) was set to be `true`, [visualMap.type](~visualMap.type) will be automatically set as `'continuous'`, regardless of some settings such as [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber). Therefore, it is recommended to set [visualMap.type](~visualMap.type) explicitly, which avoids ambiguity.
-
 
 ## realtime(boolean) = true
 
@@ -95,7 +89,6 @@ Whether to update view in real time when dragging a handle.
 + If `ture`, the chart view will be updated in real time when dragging.
 
 + If `false`, the chart view will be updated at the end of the handle dragging.
-
 
 ## inverse(boolean) = false
 
@@ -108,21 +101,17 @@ As `inverse` is `false`, the layout direction is the same as [cartesian coordina
 
 As `inverse` is `true`, the result is opposite.
 
-
 ## precision(number) = 0
 
 The decimal precision of label, defaults to be 0 (no decimals).
-
 
 ## itemWidth(number) = 20
 
 The width of the main bar of visualMap component.
 
-
 ## itemHeight(number) = 140
 
 The height of the main bar of visualMap component.
-
 
 ## align(string) = 'auto'
 
@@ -134,25 +123,19 @@ Specify the position of handles and labels, against the main bar. The possible v
 + `'top'` the handles and labels are at the bottom, which is valid when `orient` is set as  `'vertical'`.
 + `'bottom'` the handles and labels are at the top, which is valid when `orient` is set as `'vertical'`.
 
-
 ## text(Array) = null
 
 The label text on both ends, such as `['High', 'Low']`. [sample](${galleryEditorPath}doc-example/map-visualMap-continuous-text&edit=1&reset=1).
 
 You can understand the order of items in `text` array just by a simple trial. See [visualMap.inverse](~visualMap.inverse).
 
-
 ## textGap(number) = 10
 
 The distance between the ends of the main bar and the label, with unit px. See [visualMap-continuous.text](~visualMap-continuous.text)
 
-
 {{ use: partial-visual-map-common(
-    visualMapName='visualMap-continuous',
-    galleryEditorPath=${galleryEditorPath}
+    visualMapName = 'visualMap-continuous'
 ) }}
-
-
 
 ## formatter(string|Function)
 

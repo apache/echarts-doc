@@ -1,4 +1,5 @@
-{{target:partial-style-shadow}}
+
+{{ target: partial-style-shadow }}
 
 #${prefix} shadowBlur(number) = ${defaultShadowBlur}
 
@@ -14,10 +15,9 @@
 }
 ```
 
-{{if: ${needShow} }}
+{{ if: ${needShow} }}
 **注意**：此配置项生效的前提是，设置了 `show: true` 以及值不为 `tranparent` 的背景色 `backgroundColor`。
-{{/if}}
-
+{{ /if }}
 
 #${prefix} shadowColor(Color) = ${defaultShadowColor}
 
@@ -25,10 +25,9 @@
 
 阴影颜色。支持的格式同`color`。
 
-{{if: ${needShow} }}
+{{ if: ${needShow} }}
 **注意**：此配置项生效的前提是，设置了 `show: true`。
-{{/if}}
-
+{{ /if }}
 
 #${prefix} shadowOffsetX(number) = ${defaultShadowOffsetX|default(0)}
 
@@ -36,10 +35,9 @@
 
 阴影水平方向上的偏移距离。
 
-{{if: ${needShow} }}
+{{ if: ${needShow} }}
 **注意**：此配置项生效的前提是，设置了 `show: true`。
-{{/if}}
-
+{{ /if }}
 
 #${prefix} shadowOffsetY(number) = ${defaultShadowOffsetY|default(0)}
 
@@ -47,13 +45,14 @@
 
 阴影垂直方向上的偏移距离。
 
-{{if: ${needShow} }}
+{{ if: ${needShow} }}
 **注意**：此配置项生效的前提是，设置了 `show: true`。
-{{/if}}
+{{ /if }}
 
 
 
-{{target:partial-style-opacity}}
+
+{{ target: partial-style-opacity }}
 
 #${prefix} opacity(number) = ${defaultOpacity|default(1)}
 
@@ -64,21 +63,23 @@
 
 
 
-{{target:partial-style-shadow-opacity}}
+{{ target: partial-style-shadow-opacity }}
 
-{{use: partial-style-shadow(
-    prefix=${prefix},
-    defaultOpacity=${defaultOpacity},
-    defaultShadowColor=${defaultShadowColor},
-    defaultShadowBlur=${defaultShadowBlur},
-    defaultShadowOffsetX=${defaultShadowOffsetX},
-    defaultShadowOffsetY=${defaultShadowOffsetY}
-)}}
-{{use: partial-style-opacity(
-    prefix=${prefix},
-    defaultOpacity=${defaultOpacity},
-    defaultShadowColor=${defaultShadowColor},
-    defaultShadowBlur=${defaultShadowBlur},
-    defaultShadowOffsetX=${defaultShadowOffsetX},
-    defaultShadowOffsetY=${defaultShadowOffsetY}
-)}}
+{{ use: partial-style-shadow(
+    prefix = ${prefix},
+    defaultOpacity = ${defaultOpacity},
+    defaultShadowColor = ${defaultShadowColor},
+    defaultShadowBlur = ${defaultShadowBlur},
+    defaultShadowOffsetX = ${defaultShadowOffsetX},
+    defaultShadowOffsetY = ${defaultShadowOffsetY}
+) }}
+
+{{ use: partial-style-opacity(
+    prefix = ${prefix},
+    defaultOpacity = ${defaultOpacity},
+    defaultShadowColor = ${defaultShadowColor},
+    defaultShadowBlur = ${defaultShadowBlur},
+    defaultShadowOffsetX = ${defaultShadowOffsetX},
+    defaultShadowOffsetY = ${defaultShadowOffsetY}
+) }}
+

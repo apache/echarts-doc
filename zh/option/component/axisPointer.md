@@ -1,5 +1,5 @@
 
-{{target: component-axisPointer}}
+{{ target: component-axisPointer }}
 
 # axisPointer(Object)
 
@@ -116,20 +116,17 @@ option = {
 
 ---
 
-{{ use: partial-axisPointer-introduction(
-    galleryViewPath=${galleryViewPath},
-    galleryEditorPath=${galleryEditorPath}
-) }}
+{{ use: partial-axisPointer-introduction() }}
 
 ---
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 {{ use: partial-axisPointer-common(
-    prefix="#",
-    galleryViewPath=${galleryViewPath},
-    galleryEditorPath=${galleryEditorPath}
-)}}
+    prefix = "#"
+) }}
 
 ## link(Array)
 
@@ -204,8 +201,6 @@ mapper 的返回值：
 
 `{number}` 转换结果
 
-
-
 ## triggerOn(string) = 'mousemove|click'
 
 <ExampleUIControlEnum options="mousemove,click,none" />
@@ -223,3 +218,4 @@ mapper 的返回值：
 + `'none'`
 
     不在 `'mousemove'` 或 `'click'` 时触发。
+

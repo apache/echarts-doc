@@ -1,3 +1,4 @@
+
 {{ target: component-geo }}
 
 # geo(Object)
@@ -22,20 +23,20 @@
 **Tip:**
 geo 区域的颜色也可以被 map series 所控制，参见 [series-map.geoIndex](~series-map.geoIndex)。
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 ## show(boolean) = true
 
 是否显示地理坐标系组件。
 
 {{ use: geo-common(
-    prefix='#',
-    galleryEditorPath=${galleryEditorPath},
-    galleryViewPath=${galleryViewPath}
+    prefix = '#'
 ) }}
 
-
 ## regions(Array)
+
 在地图中对特定的区域配置样式。
 
 例如：
@@ -51,44 +52,60 @@ regions: [{
 geo 区域的颜色也可以被 map series 所控制，参见 [series-map.geoIndex](~series-map.geoIndex)。
 
 ### name(string)
+
 地图区域的名称，例如 `'广东'`，`'浙江'`。
 
 ### selected(boolean) = false
+
 该区域是否选中。
 
 ### itemStyle(Object)
+
 该区域的多边形样式设置
+
 #### areaColor(Color)
+
 地图区域的颜色。
 
-{{ use: partial-color-desc }}
+{{ use: partial-color-desc() }}
 
-{{ use: partial-item-style(prefix='###') }}
+{{ use: partial-item-style(
+    prefix = '###'
+) }}
 
 ### label(Object)
-{{use: partial-label-desc}}
-{{use: partial-label(
-    prefix="###",
-    formatter=true
-)}}
 
+{{ use: partial-label-desc() }}
 
+{{ use: partial-label(
+    prefix = "###",
+    formatter = true
+) }}
 
 ### emphasis(Object)
+
 高亮的样式。
+
 #### itemStyle(Object)
+
 ##### areaColor(Color)
+
 地图区域的颜色。
-{{ use: partial-color-desc }}
 
-{{ use: partial-item-style(prefix='####') }}
-#### label(Object)
-{{use: partial-label(
-    prefix="####",
-    formatter=true
-)}}
+{{ use: partial-color-desc() }}
 
-
-{{ use:partial-silent(
-    prefix="#"
+{{ use: partial-item-style(
+    prefix = '####'
 ) }}
+
+#### label(Object)
+
+{{ use: partial-label(
+    prefix = "####",
+    formatter = true
+) }}
+
+{{ use: partial-silent(
+    prefix = "#"
+) }}
+

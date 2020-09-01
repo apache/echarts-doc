@@ -1,5 +1,5 @@
 
-{{target: component-angle-axis}}
+{{ target: component-angle-axis }}
 
 # angleAxis(Object)
 
@@ -72,7 +72,9 @@ const option = {
 };
 </ExampleBaseOption>
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 ## polarIndex(number) = 0
 
@@ -99,17 +101,15 @@ const option = {
 ~[400x400](${galleryViewPath}doc-example/polar-anticlockwise&edit=1&reset=1)
 
 {{ use: axis-common(
-    prefix='#',
-    componentType='angleAxis',
-    axisTypeDefault="'category'",
-    hasSplitLineAndArea=true,
-    galleryViewPath=${galleryViewPath},
-    galleryEditorPath=${galleryEditorPath}
-)}}
-
-
-{{use:partial-z-zlevel(
-    prefix="#",
-    componentName="角度轴",
-    defaultZ=0
+    prefix = '#',
+    componentType = 'angleAxis',
+    axisTypeDefault = "'category'",
+    hasSplitLineAndArea = true
 ) }}
+
+{{ use: partial-z-zlevel(
+    prefix = "#",
+    componentName = "角度轴",
+    defaultZ = 0
+) }}
+

@@ -1,4 +1,5 @@
-{{target: series-scatter}}
+
+{{ target: series-scatter }}
 
 # series.scatter(Object)
 
@@ -78,18 +79,20 @@ const option = {
 
 ## type(string) = 'scatter'
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 {{ use: partial-series-name() }}
 
-{{use: partial-coord-sys(
-    seriesType="bar",
-    coordSysDefault="'cartesian2d'",
-    cartesian2d=true,
-    polar=true,
-    geo=true,
-    calendar=true
-)}}
+{{ use: partial-coord-sys(
+    seriesType = "bar",
+    coordSysDefault = "'cartesian2d'",
+    cartesian2d = true,
+    polar = true,
+    geo = true,
+    calendar = true
+) }}
 
 ## hoverAnimation(boolean)
 
@@ -97,142 +100,155 @@ const option = {
 
 是否开启鼠标 hover 的提示动画效果。
 
-{{ use: partial-legend-hover-link }}
+{{ use: partial-legend-hover-link() }}
 
-{{ use:partial-symbol(
-    seriesType="scatter",
-    defaultSymbol="'circle'",
-    defaultSymbolSize=10,
-    prefix="#",
-    hasCallback=true
+{{ use: partial-symbol(
+    seriesType = "scatter",
+    defaultSymbol = "'circle'",
+    defaultSymbolSize = 10,
+    prefix = "#",
+    hasCallback = true
 ) }}
 
-{{use: partial-large(
-    prefix="#"
-)}}
+{{ use: partial-large(
+    prefix = "#"
+) }}
 
-{{ use: partial-cursor }}
+{{ use: partial-cursor() }}
 
 ## label(Object)
-{{use:partial-label-desc}}
-{{use:partial-label(
-    prefix="##",
-    defaultPosition="'inside'",
-    formatter=true
-)}}
+
+{{ use: partial-label-desc() }}
+
+{{ use: partial-label(
+    prefix = "##",
+    defaultPosition = "'inside'",
+    formatter = true
+) }}
 
 ## labelLayout(Object|Function)
+
 {{ use: partial-label-layout(
-    prefix="##"
+    prefix = "##"
 ) }}
 
 ## itemStyle(Object)
-{{use:partial-item-style-desc}}
-{{use:partial-item-style(
-    prefix="##",
-    defaultOpacity=0.8,
-    useColorPalatte=true,
-    hasCallback=true
-)}}
 
+{{ use: partial-item-style-desc() }}
 
-## emphasis(Object)
-高亮的图形和标签样式。
-### label(Object)
-{{use:partial-label(
-    prefix="###",
-    formatter=true
-)}}
-### itemStyle(Object)
-{{use:partial-item-style(prefix="###")}}
-
-
-
-
-{{ use:partial-progressive(
-    prefix='#'
+{{ use: partial-item-style(
+    prefix = "##",
+    defaultOpacity = 0.8,
+    useColorPalatte = true,
+    hasCallback = true
 ) }}
 
+## emphasis(Object)
 
+高亮的图形和标签样式。
 
-{{use:partial-series-dimensions(
-    prefix="#"
-)}}
+### label(Object)
 
-{{use:partial-series-encode(
-    prefix="#"
-)}}
+{{ use: partial-label(
+    prefix = "###",
+    formatter = true
+) }}
 
-{{ use: partial-seriesLayoutBy }}
+### itemStyle(Object)
 
-{{ use: partial-datasetIndex }}
+{{ use: partial-item-style(
+    prefix = "###"
+) }}
+
+{{ use: partial-progressive(
+    prefix = '#'
+) }}
+
+{{ use: partial-series-dimensions(
+    prefix = "#"
+) }}
+
+{{ use: partial-series-encode(
+    prefix = "#"
+) }}
+
+{{ use: partial-seriesLayoutBy() }}
+
+{{ use: partial-datasetIndex() }}
 
 ## data(Array)
 
-{{ use: partial-2d-data-desc(
-    galleryEditorPath = ${galleryEditorPath}
-) }}
+{{ use: partial-2d-data-desc() }}
 
 ### name(string)
+
 数据项名称。
 
 ### value(Array)
+
 数据项值。
 
-{{ use:partial-symbol(
-    prefix="##",
-    name="单个数据"
+{{ use: partial-symbol(
+    prefix = "##",
+    name = "单个数据"
 ) }}
 
 ### label(Object)
-{{ use:partial-label(
-    prefix="###",
-    defaultPosition="inside"
+
+{{ use: partial-label(
+    prefix = "###",
+    defaultPosition = "inside"
 ) }}
 
 ### itemStyle(Object)
+
 单个数据点（气泡）的样式设置。
-{{use:partial-item-style(prefix="###")}}
+
+{{ use: partial-item-style(
+    prefix = "###"
+) }}
 
 ### emphasis(Object)
+
 单个数据的高亮图形和标签样式。
+
 #### label(Object)
-{{ use:partial-label(prefix="####") }}
+
+{{ use: partial-label(
+    prefix = "####"
+) }}
+
 #### itemStyle(Object)
-{{use:partial-item-style(prefix="####")}}
 
-
-{{use: partial-tooltip-in-series-data(
-    galleryViewPath=${galleryViewPath}
-)}}
-
-{{use: partial-marker(
-    prefix="#",
-    seriesType="scatter",
-    galleryEditorPath=${galleryEditorPath},
-    hasCoord=true,
-    hasType=true
-)}}
-
-{{use:partial-clip(
-    prefix="#"
+{{ use: partial-item-style(
+    prefix = "####"
 ) }}
 
-{{use:partial-z-zlevel(
-    prefix="#",
-    componentName="散点图"
+{{ use: partial-tooltip-in-series-data() }}
+
+{{ use: partial-marker(
+    prefix = "#",
+    seriesType = "scatter",
+    hasCoord = true,
+    hasType = true
 ) }}
 
-{{ use:partial-silent(
-    prefix="#"
+{{ use: partial-clip(
+    prefix = "#"
 ) }}
 
-{{use: partial-animation(
-    prefix="#",
-    galleryEditorPath=${galleryEditorPath}
-)}}
+{{ use: partial-z-zlevel(
+    prefix = "#",
+    componentName = "散点图"
+) }}
 
-{{use: partial-tooltip-in-series(
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-silent(
+    prefix = "#"
+) }}
+
+{{ use: partial-animation(
+    prefix = "#"
+) }}
+
+{{ use: partial-tooltip-in-series() }}
 

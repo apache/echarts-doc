@@ -1,5 +1,5 @@
 
-{{target: series-candlestick}}
+{{ target: series-candlestick }}
 
 # series.candlestick(Object)
 
@@ -219,23 +219,23 @@ const option = {
 
 ## type(string) = 'candlestick'
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
-{{use: partial-coord-sys(
-    seriesType="cartesian2d",
-    coordSysDefault="'cartesian2d'",
-    cartesian2d=true
-)}}
+{{ use: partial-coord-sys(
+    seriesType = "cartesian2d",
+    coordSysDefault = "'cartesian2d'",
+    cartesian2d = true
+) }}
 
-{{ use: partial-series-name }}
+{{ use: partial-series-name() }}
 
-{{ use: partial-legend-hover-link }}
-
+{{ use: partial-legend-hover-link() }}
 
 ## hoverAnimation(boolean) = true
 
 是否开启 hover 在 box 上的动画效果。
-
 
 ## layout(string) = null
 
@@ -248,7 +248,6 @@ const option = {
 + `'vertical'`：竖直排布各个 box。
 
 默认值根据当前坐标系状况决定：如果 `category` 轴为横轴，则水平排布；否则竖直排布；如果没有 `category` 轴则水平排布。
-
 
 ## barWidth(number)
 
@@ -268,15 +267,14 @@ const option = {
 
 K 线图的图形样式。
 
-{{use: partial-candlestick-item-style-detail(
-    prefix="##",
-    defaultColor="#c23531",
-    defaultColor0="#314656",
-    defaultBorderColor="#c23531",
-    defaultBorderColor0="#314656",
-    defaultBorderWidth=1
-)}}
-
+{{ use: partial-candlestick-item-style-detail(
+    prefix = "##",
+    defaultColor = "#c23531",
+    defaultColor0 = "#314656",
+    defaultBorderColor = "#c23531",
+    defaultBorderColor0 = "#314656",
+    defaultBorderWidth = 1
+) }}
 
 ## emphasis(Object)
 
@@ -284,38 +282,36 @@ K 线图的高亮图形样式。
 
 ### itemStyle(Object)
 
-{{use: partial-candlestick-item-style-detail(
-    prefix="###",
-    defaultColor="#c23531",
-    defaultColor0="#314656",
-    defaultBorderColor="#c23531",
-    defaultBorderColor0="#314656",
-    defaultBorderWidth=2
-)}}
-
-
-{{use: partial-large(
-    prefix="#",
-    defaultLarge=true,
-    defaultLargeThreshold=600
-)}}
-
-{{ use:partial-progressive(
-    prefix='#',
-    supportProgressiveChunkMode=true,
-    defaultProgressive=3000,
-    defaultProgressiveThreshold=10000,
-    defaultProgressiveChunkMode='mod'
+{{ use: partial-candlestick-item-style-detail(
+    prefix = "###",
+    defaultColor = "#c23531",
+    defaultColor0 = "#314656",
+    defaultBorderColor = "#c23531",
+    defaultBorderColor0 = "#314656",
+    defaultBorderWidth = 2
 ) }}
 
-{{use:partial-series-dimensions(
-    prefix="#"
-)}}
+{{ use: partial-large(
+    prefix = "#",
+    defaultLarge = true,
+    defaultLargeThreshold = 600
+) }}
 
-{{use:partial-series-encode(
-    prefix="#"
-)}}
+{{ use: partial-progressive(
+    prefix = '#',
+    supportProgressiveChunkMode = true,
+    defaultProgressive = 3000,
+    defaultProgressiveThreshold = 10000,
+    defaultProgressiveChunkMode = 'mod'
+) }}
 
+{{ use: partial-series-dimensions(
+    prefix = "#"
+) }}
+
+{{ use: partial-series-encode(
+    prefix = "#"
+) }}
 
 ## data(Array)
 
@@ -356,14 +352,14 @@ K 线图的高亮图形样式。
 
 单个 K 线图数据的图形样式。
 
-{{use: partial-candlestick-item-style-detail(
-    prefix="###",
-    defaultColor="#c23531",
-    defaultColor0="#314656",
-    defaultBorderColor="#c23531",
-    defaultBorderColor0="#314656",
-    defaultBorderWidth=1
-)}}
+{{ use: partial-candlestick-item-style-detail(
+    prefix = "###",
+    defaultColor = "#c23531",
+    defaultColor0 = "#314656",
+    defaultBorderColor = "#c23531",
+    defaultBorderColor0 = "#314656",
+    defaultBorderWidth = 1
+) }}
 
 ### emphasis(Object)
 
@@ -371,76 +367,66 @@ K 线图的高亮图形样式。
 
 #### itemStyle(Object)
 
-{{use: partial-candlestick-item-style-detail(
-    prefix="####",
-    defaultColor="#c23531",
-    defaultColor0="#314656",
-    defaultBorderColor="#c23531",
-    defaultBorderColor0="#314656",
-    defaultBorderWidth=2
-)}}
-
-
-{{use: partial-tooltip-in-series-data(
-    galleryViewPath=${galleryViewPath}
-)}}
-
-
-{{use: partial-marker(
-    prefix="#",
-    seriesType="candlestick",
-    galleryEditorPath=${galleryEditorPath},
-    hasCoord=true,
-    hasType=true
-)}}
-
-{{use: partial-clip(
-    prefix="#",
-    version="4.5.0"
+{{ use: partial-candlestick-item-style-detail(
+    prefix = "####",
+    defaultColor = "#c23531",
+    defaultColor0 = "#314656",
+    defaultBorderColor = "#c23531",
+    defaultBorderColor0 = "#314656",
+    defaultBorderWidth = 2
 ) }}
 
-{{use:partial-z-zlevel(
-    prefix="#",
-    componentName="K线图"
+{{ use: partial-tooltip-in-series-data() }}
+
+{{ use: partial-marker(
+    prefix = "#",
+    seriesType = "candlestick",
+    hasCoord = true,
+    hasType = true
 ) }}
 
-{{ use:partial-silent(
-    prefix="#"
+{{ use: partial-clip(
+    prefix = "#",
+    version = "4.5.0"
 ) }}
 
-{{use: partial-animation-init(
-    prefix="#",
-    defaultAnimationEasing='linear',
-    defaultAnimationDuration=300,
-    galleryEditorPath=${galleryEditorPath}
-)}}
+{{ use: partial-z-zlevel(
+    prefix = "#",
+    componentName = "K线图"
+) }}
 
-{{use: partial-tooltip-in-series(
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-silent(
+    prefix = "#"
+) }}
+
+{{ use: partial-animation-init(
+    prefix = "#",
+    defaultAnimationEasing = 'linear',
+    defaultAnimationDuration = 300
+) }}
+
+{{ use: partial-tooltip-in-series() }}
 
 
 
 
+{{ target: partial-candlestick-item-style-detail }}
 
-
-{{target: partial-candlestick-item-style-detail}}
-
-#${prefix} color(Color)=${defaultColor}
+#${prefix} color(Color) = ${defaultColor}
 
 <ExampleUIControlColor />
 
 `阳线` 图形的颜色。
 
-{{ use: partial-color-desc }}
+{{ use: partial-color-desc() }}
 
-#${prefix} color0(Color)=${defaultColor0}
+#${prefix} color0(Color) = ${defaultColor0}
 
 <ExampleUIControlColor />
 
 `阴线` 图形的颜色。
 
-{{ use: partial-color-desc }}
+{{ use: partial-color-desc() }}
 
 #${prefix} borderColor(Color) = ${defaultBorderColor}
 
@@ -448,7 +434,7 @@ K 线图的高亮图形样式。
 
 `阳线` 图形的描边颜色。
 
-{{ use: partial-color-desc }}
+{{ use: partial-color-desc() }}
 
 #${prefix} borderColor0(Color) = ${defaultBorderColor0}
 
@@ -456,7 +442,7 @@ K 线图的高亮图形样式。
 
 `阴线` 图形的描边颜色。
 
-{{ use: partial-color-desc }}
+{{ use: partial-color-desc() }}
 
 #${prefix} borderWidth(number) = ${defaultBorderWidth}
 
@@ -464,11 +450,12 @@ K 线图的高亮图形样式。
 
 candlestick 描边线宽。为 0 时无描边。
 
-{{ use:partial-style-shadow-opacity(
-    prefix=${prefix},
-    defaultOpacity=${defaultOpacity},
-    defaultShadowBlur=${defaultShadowBlur},
-    defaultShadowColor=${defaultShadowColor},
-    defaultShadowOffsetX=${defaultShadowOffsetX},
-    defaultShadowOffsetY=${defaultShadowOffsetY}
+{{ use: partial-style-shadow-opacity(
+    prefix = ${prefix},
+    defaultOpacity = ${defaultOpacity},
+    defaultShadowBlur = ${defaultShadowBlur},
+    defaultShadowColor = ${defaultShadowColor},
+    defaultShadowOffsetX = ${defaultShadowOffsetX},
+    defaultShadowOffsetY = ${defaultShadowOffsetY}
 ) }}
+

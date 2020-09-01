@@ -1,4 +1,5 @@
-{{target:series-line}}
+
+{{ target: series-line }}
 
 # series.line(Object)
 
@@ -14,107 +15,129 @@ Broken line chart relates all the data points [symbol](~series-line.symbol) by b
 
 ## type(string) = 'line'
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 {{ use: partial-series-name() }}
 
 {{ use: partial-coord-sys(
-    seriesType="bar",
-    coordSysDefault="'cartesian2d'",
-    cartesian2d=true,
-    polar=true,
-    geo=false
+    seriesType = "bar",
+    coordSysDefault = "'cartesian2d'",
+    cartesian2d = true,
+    polar = true,
+    geo = false
 ) }}
 
-{{ use:partial-symbol(
-    seriesType="line",
-    defaultSymbol="'circle'",
-    defaultSymbolSize=4,
-    prefix="#",
-    hasCallback=true,
-    name="line point"
+{{ use: partial-symbol(
+    seriesType = "line",
+    defaultSymbol = "'circle'",
+    defaultSymbolSize = 4,
+    prefix = "#",
+    hasCallback = true,
+    name = "line point"
 ) }}
 
 ## showSymbol(boolean) = true
+
 Whether to show symbol. It would be shown during tooltip hover.
 
 ## showAllSymbol(boolean) = 'auto'
+
 Only work when main axis is `'category'` axis (`axis.type` is `'category'`). Optional values:
 + `'auto'`: Default value. Show all symbols if there is enough space. Otherwise follow the interval strategy with with [axisLabel.interval](~xAxis.axisLabel.interval).
 + `true`: Show all symbols.
 + `false`: Follow the interval strategy with [axisLabel.interval](~xAxis.axisLabel.interval).
 
 ## hoverAnimation(boolean) = true
+
 Set this to `false` to prevent the animation effect when the mouse is hovering over a symbol
 
-{{ use: partial-legend-hover-link }}
+{{ use: partial-legend-hover-link() }}
 
 ## stack(string) = null
+
 If stack the value. On the same category axis, the series with the same `stack` name would be put on top of each other.
 
 The effect of the below example could be seen through stack switching of [toolbox](~toolbox) on the top right corner:
 
 ~[600x400](${galleryViewPath}doc-example/line-stack-tiled&edit=1&reset=1)
 
-{{ use: partial-cursor }}
+{{ use: partial-cursor() }}
 
 ## connectNulls(boolean) = false
+
 Whether to connect the line across null points.
 
-{{use:partial-clip(
-    prefix="#"
+{{ use: partial-clip(
+    prefix = "#"
 ) }}
 
 ## step(string|boolean) = false
+
 Whether to show as a step line. It can be `true`, `false`. Or `'start'`, `'middle'`, `'end'`. Which will configure the turn point of step line.
 
 See the example using different `step` options:
 
 ~[600x400](${galleryViewPath}line-step&edit=1&reset=1)
 
-
 ## label(Object)
-{{use: partial-label-desc}}
-{{use: partial-label(
-    prefix="##",
-    defaultPosition="'top'",
-    formatter=true
-)}}
+
+{{ use: partial-label-desc() }}
+
+{{ use: partial-label(
+    prefix = "##",
+    defaultPosition = "'top'",
+    formatter = true
+) }}
 
 ## itemStyle(Object)
+
 The style of the symbol point of broken line.
-{{use: partial-item-style(
-    prefix="##",
-    useColorPalatte=true,
-    hasCallback=true
-)}}
+
+{{ use: partial-item-style(
+    prefix = "##",
+    useColorPalatte = true,
+    hasCallback = true
+) }}
 
 ## lineStyle(Object)
+
 Line style.
 
-{{use:partial-line-style(
-    prefix="##",
-    defaultWidth=2
-)}}
+{{ use: partial-line-style(
+    prefix = "##",
+    defaultWidth = 2
+) }}
 
 ## areaStyle(Object)
-The style of area.
-{{use: partial-area-style(prefix="##", hasOrigin=true)}}
 
+The style of area.
+
+{{ use: partial-area-style(
+    prefix = "##",
+    hasOrigin = true
+) }}
 
 ## emphasis(Object)
+
 Highlight style of the graphic.
 
 ### label(Object)
-{{use: partial-label(
-    prefix="###",
-    formatter=true
-)}}
-### itemStyle(Object)
-{{use: partial-item-style(prefix="###")}}
 
+{{ use: partial-label(
+    prefix = "###",
+    formatter = true
+) }}
+
+### itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "###"
+) }}
 
 ## smooth(boolean|number) = false
+
 Whether to show as smooth curve.
 
 If is typed in `boolean`, then it means whether to enable smoothing. If is typed in `number`, valued from 0 to 1, then it means smoothness. A smaller value makes it less smooth.
@@ -122,6 +145,7 @@ If is typed in `boolean`, then it means whether to enable smoothing. If is typed
 Please refer to [smoothMonotone](~series-line.smoothMonotone) to change smoothing algorithm.
 
 ## smoothMonotone(string)
+
 Whether the broken line keep the monotonicity when it is smoothed. It can be set as `'x'`, `'y'` to keep the monotonicity on x axis or y axis.
 
 It is usually used on dual value axis.
@@ -146,86 +170,91 @@ Options:
 + `'min'` Use minimum value of filter points
 + `'sum'` Use sum of filter points
 
+{{ use: partial-series-dimensions(
+    prefix = "#"
+) }}
 
-{{use:partial-series-dimensions(
-    prefix="#"
-)}}
+{{ use: partial-series-encode(
+    prefix = "#"
+) }}
 
-{{use:partial-series-encode(
-    prefix="#"
-)}}
+{{ use: partial-seriesLayoutBy() }}
 
-{{ use: partial-seriesLayoutBy }}
-
-{{ use: partial-datasetIndex }}
+{{ use: partial-datasetIndex() }}
 
 ## data(Array)
 
-{{ use: partial-2d-data-desc(
-    galleryEditorPath = ${galleryEditorPath}
-) }}
+{{ use: partial-2d-data-desc() }}
 
 ### name(string)
+
 The name of data item.
 
 ### value(number)
+
 The value of a single data item.
 
-{{ use:partial-symbol(
-    defaultSymbol="'circle'",
-    defaultSymbolSize=4,
-    prefix="##",
-    name="single data"
+{{ use: partial-symbol(
+    defaultSymbol = "'circle'",
+    defaultSymbolSize = 4,
+    prefix = "##",
+    name = "single data"
 ) }}
 
 ### label(Object)
+
 The style of the text of single data point.
+
 {{ use: partial-label(
-    prefix="###",
-    defaultPosition="top"
+    prefix = "###",
+    defaultPosition = "top"
 ) }}
 
 ### itemStyle(Object)
-The style of the symbol of single data point.
-{{use: partial-item-style(prefix="###")}}
 
+The style of the symbol of single data point.
+
+{{ use: partial-item-style(
+    prefix = "###"
+) }}
 
 ### emphasis(Object)
 
 #### itemStyle(Object)
-{{use: partial-item-style(prefix="####")}}
+
+{{ use: partial-item-style(
+    prefix = "####"
+) }}
+
 #### label(Object)
-{{ use: partial-label(prefix="####") }}
 
-
-{{use: partial-tooltip-in-series-data(
-    galleryViewPath=${galleryViewPath}
-)}}
-
-{{use: partial-marker(
-    prefix="#",
-    galleryEditorPath=${galleryEditorPath},
-    seriesType="line",
-    hasCoord=true,
-    hasType=true,
-    name="mark point"
-)}}
-
-{{use:partial-z-zlevel(
-    prefix="#",
-    componentName="broken line graph"
+{{ use: partial-label(
+    prefix = "####"
 ) }}
 
-{{ use:partial-silent(
-    prefix="#"
+{{ use: partial-tooltip-in-series-data() }}
+
+{{ use: partial-marker(
+    prefix = "#",
+    seriesType = "line",
+    hasCoord = true,
+    hasType = true,
+    name = "mark point"
 ) }}
 
-{{use: partial-animation(
-    prefix="#",
-    defaultAnimationEasing='linear'
-)}}
+{{ use: partial-z-zlevel(
+    prefix = "#",
+    componentName = "broken line graph"
+) }}
 
+{{ use: partial-silent(
+    prefix = "#"
+) }}
 
-{{use: partial-tooltip-in-series(
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-animation(
+    prefix = "#",
+    defaultAnimationEasing = 'linear'
+) }}
+
+{{ use: partial-tooltip-in-series() }}
+

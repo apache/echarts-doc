@@ -1,5 +1,5 @@
 
-{{target: series-map}}
+{{ target: series-map }}
 
 # series.map(Object)
 
@@ -9,18 +9,17 @@ Map is mainly used in the visualization of geographic area data, which can be us
 
 Series of same [map type](~series-map.map) will show in one map. At this point, the configuration of the first series will be used for the map configuration.
 
-
 ## type(string) = 'map'
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 {{ use: partial-series-name() }}
 
 {{ use: geo-common(
-    prefix='#',
-    inMap=true,
-    galleryEditorPath=${galleryEditorPath},
-    galleryViewPath=${galleryViewPath}
+    prefix = '#',
+    inMap = true
 ) }}
 
 ## geoIndex(number) = null
@@ -33,6 +32,7 @@ For example:
 ~[600x400](${galleryViewPath}geo-map-scatter&reset=1&edit=1)
 
 ## mapValueCalculation(string) = 'sum'
+
 Value of multiple series with the same [map type](~series-map.map) can use this option to get a statistical value.
 
 Supported statistical methods:
@@ -43,80 +43,96 @@ Supported statistical methods:
 + `'min'`
 
 ## showLegendSymbol(boolean)
+
 Show the symbol in related area (dot of series symbol). Available when [legend](~legend) component exists.
 
 ## roam(boolean|string) = false
-{{ use: partial-roam }}
 
-{{ use: partial-seriesLayoutBy }}
+{{ use: partial-roam() }}
 
-{{ use: partial-datasetIndex }}
+{{ use: partial-seriesLayoutBy() }}
+
+{{ use: partial-datasetIndex() }}
 
 ## data(Array)
-{{ use: partial-1d-data-desc(name="map") }}
+
+{{ use: partial-1d-data-desc(
+    name = "map"
+) }}
 
 ### name(string)
+
 The name of the map area where the data belongs to, such as `'China'` or `'United Kingdom'` .
 
 ### value(number)
+
 The numerical value of this area.
 
 ### selected(boolean) = false
+
 Whether the are selected.
 
-
 ### itemStyle(Object)
+
 Style of item polygon
+
 #### areaColor(Color)
+
 Color of the area.
-{{ use: partial-color-desc }}
 
-{{ use: partial-item-style(prefix='####') }}
+{{ use: partial-color-desc() }}
 
-
-### label(Object)
-{{use: partial-label-desc}}
-{{use: partial-label(
-    prefix="###",
-    defaultPosition="'bottom'",
-    formatter=true,
-    noAlign=true,
-    noVerticalAlign=true
-)}}
-
-### emphasis(Object)
-#### itemStyle(Object)
-##### areaColor(Color)
-Area color in the map.
-
-{{ use: partial-color-desc }}
-
-{{ use: partial-item-style(prefix='####') }}
-#### label(Object)
-{{use: partial-label(
-    prefix="####",
-    formatter=true,
-    noAlign=true,
-    noVerticalAlign=true
-)}}
-
-{{use: partial-tooltip-in-series-data(
-    galleryViewPath=${galleryViewPath}
-)}}
-
-{{use: partial-marker(
-    prefix="#",
-    seriesType="map",
-    galleryEditorPath=${galleryEditorPath},
-    hasCoord=true,
-    name="mark point"
-)}}
-
-{{ use:partial-silent(
-    prefix="#"
+{{ use: partial-item-style(
+    prefix = '####'
 ) }}
 
+### label(Object)
 
-{{use: partial-tooltip-in-series(
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-label-desc() }}
+
+{{ use: partial-label(
+    prefix = "###",
+    defaultPosition = "'bottom'",
+    formatter = true,
+    noAlign = true,
+    noVerticalAlign = true
+) }}
+
+### emphasis(Object)
+
+#### itemStyle(Object)
+
+##### areaColor(Color)
+
+Area color in the map.
+
+{{ use: partial-color-desc() }}
+
+{{ use: partial-item-style(
+    prefix = '####'
+) }}
+
+#### label(Object)
+
+{{ use: partial-label(
+    prefix = "####",
+    formatter = true,
+    noAlign = true,
+    noVerticalAlign = true
+) }}
+
+{{ use: partial-tooltip-in-series-data() }}
+
+{{ use: partial-marker(
+    prefix = "#",
+    seriesType = "map",
+    hasCoord = true,
+    name = "mark point"
+) }}
+
+{{ use: partial-silent(
+    prefix = "#"
+) }}
+
+{{ use: partial-tooltip-in-series() }}
+

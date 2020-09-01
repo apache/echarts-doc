@@ -1,3 +1,4 @@
+
 {{ target: partial-1d-data-label-formatter }}
 
 标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 `\n` 换行。
@@ -26,7 +27,11 @@ formatter: '{b}: {d}'
 (params: Object|Array) => string
 ```
 参数 `params` 是 formatter 需要的单个数据集。格式如下：
-{{ use: partial-formatter-params-structure(extra = ${extra}) }}
+
+{{ use: partial-formatter-params-structure(
+    extra = ${extra}
+) }}
+
 
 
 
@@ -74,3 +79,4 @@ ${name}系列中的数据内容数组。数组项可以为单个数值，如：
     itemStyle:{}
 }]
 ```
+

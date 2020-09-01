@@ -1,12 +1,13 @@
-{{target: partial-rect-layout}}
 
-{{if: !${noZ} }}
-{{ use: partial-z-zlevel(
+{{ target: partial-rect-layout }}
+
+{{ if: !${noZ} }}
+{{ use:   partial-z-zlevel(
     prefix=${prefix},
     defaultZLevel=${defaultZLevel},
     defaultZ=${defaultZ}
-) }}
-{{/if}}
+)   }}
+{{ /if }}
 
 #${prefix|default("#")} left(string|number) = ${defaultLeft|default("'auto'")}
 
@@ -47,3 +48,4 @@ ${componentName}组件离容器下侧的距离。
 bottom 的值可以是像 `20` 这样的具体像素值，可以是像 `'20%'` 这样相对于容器高宽的百分比。
 
 {{ if: !${defaultBottom} }}默认自适应。{{ /if }}
+

@@ -1,3 +1,4 @@
+
 {{ target: component-calendar }}
 
 # calendar(Object)
@@ -92,15 +93,18 @@ const option = {
 };
 </ExampleBaseOption>
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 {{ use: partial-rect-layout-width-height(
-    componentName="calendar",
-    defaultLeft="80",
-    defaultTop="60"
+    componentName = "calendar",
+    defaultLeft = "80",
+    defaultTop = "60"
 ) }}
 
 ## range(number|string|Array)
+
 必填，日历坐标的范围 支持多种格式
 
 使用示例：
@@ -119,7 +123,6 @@ range: ['2017-01-02', '2017-02-23']
 range: ['2017-01', '2017-02']
 
 ```
-
 
 ## cellSize(number|Array) = 20
 
@@ -164,9 +167,7 @@ cellSize: ['auto', 40]
 
 注意: 默认cellSize 为20，若设置了`height`的值, 则`cellSize`中的高度强制转为`auto`;
 
-
 ## orient(string) = 'horizontal'
-
 
 <ExampleUIControlEnum options="horizontal,vertical" default="horizontal" />
 
@@ -177,6 +178,7 @@ cellSize: ['auto', 40]
 + 'vertical'
 
 ## splitLine(Object)
+
 设置日历坐标分隔线的样式。
 
 ### show(boolean) = ${defaultShow|default(true)}
@@ -188,13 +190,12 @@ cellSize: ['auto', 40]
 ### lineStyle(Object)
 
 {{ use: partial-line-style(
-    prefix='###',
-    defaultColor="#000",
-    defaultWidth=1,
-    defaultType="solid",
-    name="分隔线"
+    prefix = '###',
+    defaultColor = "#000",
+    defaultWidth = 1,
+    defaultType = "solid",
+    name = "分隔线"
 ) }}
-
 
 例如：
 ```js
@@ -211,15 +212,16 @@ calendar: [{
 ```
 
 ## itemStyle(Object)
-设置日历格的样式
-{{ use:partial-item-style(
-    prefix="##",
-    name="calendar",
-    defaultColor="#fff",
-    defaultBorderWidth=1,
-    defaultBorderColor="'#ccc'"
-) }}
 
+设置日历格的样式
+
+{{ use: partial-item-style(
+    prefix = "##",
+    name = "calendar",
+    defaultColor = "#fff",
+    defaultBorderWidth = 1,
+    defaultBorderColor = "'#ccc'"
+) }}
 
 例如：
 ```js
@@ -233,6 +235,7 @@ calendar: [{
 ```
 
 ## dayLabel(Object)
+
 设置日历坐标中 星期轴的样式
 
 ### show(boolean) = true
@@ -299,10 +302,13 @@ calendar: [{
 }]
 ```
 
-{{ use: partial-text-style(prefix='##', defaultColor="#000",) }}
-
+{{ use: partial-text-style(
+    prefix = '##',
+    defaultColor = "#000"
+) }}
 
 ## monthLabel(Object)
+
 设置日历坐标中 月份轴的样式
 
 ### show(boolean) = true
@@ -405,9 +411,13 @@ formatter: function (param) {
 }
 ```
 
-{{ use: partial-text-style(prefix='##', defaultColor="#000") }}
+{{ use: partial-text-style(
+    prefix = '##',
+    defaultColor = "#000"
+) }}
 
 ## yearLabel(Object)
+
 设置日历坐标中 年的样式
 
 ### show(boolean) = true
@@ -462,11 +472,13 @@ formatter: function (param) {
 }
 ```
 
-{{ use: partial-text-style(prefix='##') }}
-
-
-{{ use:partial-silent(
-    prefix="#",
-    defaultFontWeight="bolder",
-    defaultFontSize="20"
+{{ use: partial-text-style(
+    prefix = '##'
 ) }}
+
+{{ use: partial-silent(
+    prefix = "#",
+    defaultFontWeight = "bolder",
+    defaultFontSize = "20"
+) }}
+

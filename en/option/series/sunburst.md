@@ -1,3 +1,4 @@
+
 {{ target: partial-sunburst-label-helper }}
 
 #${prefix} rotate(string|number) = 'radial'
@@ -22,28 +23,32 @@ Align of text, which can be `'left'`, `'center'`, or `'right'`. Note that `'left
 
 If angle of data piece is smaller than this value (in degrees), then text is not displayed. This is used for hiding text for small piece of data.
 
-{{use:partial-label(
-    prefix=${prefix},
-    defaultPosition="'inside'",
-    formatter=true,
-    defaultShowLabel="true",
-    noRotate=true,
-    noAlign=true
-)}}
+{{ use: partial-label(
+    prefix = ${prefix},
+    defaultPosition = "'inside'",
+    formatter = true,
+    defaultShowLabel = "true",
+    noRotate = true,
+    noAlign = true
+) }}
+
 
 
 
 {{ target: partial-sunburst-label-props }}
+
 ${prefix} label(Object)
 
 `label` sets the text style for every sectors.
 
 **Priority: [series.data.label](~series-sunburst.data.label) > [series.levels.label](~series-sunburst.levels.label) > [series.label](~series-sunburst.label).**
 
+{{ use: partial-label-desc() }}
 
-{{use:partial-label-desc}}
+{{ use: partial-sunburst-label-helper(
+    prefix = ${prefix}
+) }}
 
-{{ use: partial-sunburst-label-helper(prefix=${prefix}) }}
 
 
 
@@ -59,13 +64,14 @@ Style can be set in [series.itemStyle](~series-sunburst.itemStyle) for sectors o
 
 In ECharts, *emphasis* is for styles when mouse hovers. For Sunburst charts, there are two extra states: *highlight* for highlighting items that relates to the emphasized one, and *downplay* for others when emphasizing an item. See [highlightPolicy](~series-sunburst.highlightPolicy).
 
-{{use: partial-item-style(
-    prefix=${prefix},
-    useColorPalatte=true,
-    defaultBorderWidth=1,
-    defaultBorderColor="'white'",
-    defaultOpacity=1
-)}}
+{{ use: partial-item-style(
+    prefix = ${prefix},
+    useColorPalatte = true,
+    defaultBorderWidth = 1,
+    defaultBorderColor = "'white'",
+    defaultOpacity = 1
+) }}
+
 
 
 
@@ -75,37 +81,40 @@ In ECharts, *emphasis* is for styles when mouse hovers. For Sunburst charts, the
 
 Item style when mouse is hovering. See [highlightPolicy](~series-sunburst.highlightPolicy).
 
-{{use: partial-sunburst-label-props(
-    prefix="##" + ${prefix}
-)}}
+{{ use: partial-sunburst-label-props(
+    prefix = "##" + ${prefix}
+) }}
 
-{{use: partial-sunburst-itemStyle-props(
-    prefix="##" + ${prefix}
-)}}
+{{ use: partial-sunburst-itemStyle-props(
+    prefix = "##" + ${prefix}
+) }}
 
 #${prefix} highlight(Object)
 
 Item style when mouse is hovering related items. See [highlightPolicy](~series-sunburst.highlightPolicy).
 
-{{use: partial-sunburst-label-props(
-    prefix="##" + ${prefix}
-)}}
+{{ use: partial-sunburst-label-props(
+    prefix = "##" + ${prefix}
+) }}
 
-{{use: partial-sunburst-itemStyle-props(
-    prefix="##" + ${prefix}
-)}}
+{{ use: partial-sunburst-itemStyle-props(
+    prefix = "##" + ${prefix}
+) }}
 
 #${prefix} downplay(Object)
 
 Item style when mouse is hovering unrelated items. See [highlightPolicy](~series-sunburst.highlightPolicy).
 
-{{use: partial-sunburst-label-props(
-    prefix="##" + ${prefix}
-)}}
+{{ use: partial-sunburst-label-props(
+    prefix = "##" + ${prefix}
+) }}
 
-{{use: partial-sunburst-itemStyle-props(
-    prefix="##" + ${prefix}
-)}}
+{{ use: partial-sunburst-itemStyle-props(
+    prefix = "##" + ${prefix}
+) }}
+
+
+
 
 {{ target: series-sunburst }}
 
@@ -123,18 +132,18 @@ Item style when mouse is hovering unrelated items. See [highlightPolicy](~series
 
 Sunburst charts support data mining by default. That means, when a user clicks a sector, it will be used as root node, and there will be a circle in the center for return to parent node. If data mining is not needed, it can be disabled by [series-sunburst.nodeClick](~series-treemap.nodeClick).
 
-
 ## type(string) = 'sunburst'
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 {{ use: partial-series-name() }}
 
-{{use: component-circular-layout(
-    componentName="Sunburst chart",
-    defaultRadius="[0, '75%']"
-)}}
-
+{{ use: component-circular-layout(
+    componentName = "Sunburst chart",
+    defaultRadius = "[0, '75%']"
+) }}
 
 ## data(Array)
 
@@ -195,29 +204,29 @@ See [series-sunburst.data.target](~series-sunburst.data.target).
 
 Like `target` attribute of HTML `<a>`, which can either be `'blank'` or `'self'`. See [series-sunburst.data.link](~series-sunburst.data.link).
 
+{{ use: partial-sunburst-label-props(
+    prefix = "###"
+) }}
 
-{{use: partial-sunburst-label-props(
-    prefix="###"
-)}}
+{{ use: partial-sunburst-itemStyle-props(
+    prefix = "###"
+) }}
 
-{{use: partial-sunburst-itemStyle-props(
-    prefix="###"
-)}}
-
-{{ use: partial-sunburst-other-state(prefix="##") }}
-
+{{ use: partial-sunburst-other-state(
+    prefix = "##"
+) }}
 
 ### children(Array)
 
 Children nodes, which is recursively defined. In the same format to [series-sunburst.data](~series-sunburst.data).
 
-{{use: partial-sunburst-label-props(
-    prefix="##"
-)}}
+{{ use: partial-sunburst-label-props(
+    prefix = "##"
+) }}
 
-{{use: partial-sunburst-itemStyle-props(
-    prefix="##"
-)}}
+{{ use: partial-sunburst-itemStyle-props(
+    prefix = "##"
+) }}
 
 ## highlightPolicy(string) = 'descendant'
 
@@ -247,8 +256,6 @@ If `highlightPolicy` is set to be `'ancestor'`, then the result looks like:
 
 ~[700x350](${galleryViewPath}doc-example/sunburst-highlight-ancestor&edit=1&reset=1)
 
-
-
 ## nodeClick(boolean|string) = 'rootToNode'
 
 The action of clicking a sector, which can be:
@@ -256,8 +263,6 @@ The action of clicking a sector, which can be:
 + `false`: nothing happens.
 + `'rootToNode'`: use the clicked sector as root.
 + `'link'`：if [link](~series-sunburst.data.link) is set, the page will redirect to it.
-
-
 
 ## sort(string|Function) = 'desc'
 
@@ -269,22 +274,21 @@ function(nodeA, nodeB) {
 }
 ```
 
-
 ## renderLabelForZeroData(boolean) = false
 
 If there is no `name`, whether need to render it.
 
-{{use: partial-sunburst-label-props(
-    prefix="##"
-)}}
+{{ use: partial-sunburst-label-props(
+    prefix = "##"
+) }}
 
-{{use: partial-sunburst-itemStyle-props(
-    prefix="##"
-)}}
+{{ use: partial-sunburst-itemStyle-props(
+    prefix = "##"
+) }}
 
-{{ use: partial-sunburst-other-state(prefix="#") }}
-
-
+{{ use: partial-sunburst-other-state(
+    prefix = "#"
+) }}
 
 ## levels(Array)
 
@@ -317,20 +321,22 @@ series: {
 }
 ```
 
-{{use: partial-sunburst-label-props(
-    prefix="###"
-)}}
+{{ use: partial-sunburst-label-props(
+    prefix = "###"
+) }}
 
-{{use: partial-sunburst-itemStyle-props(
-    prefix="###"
-)}}
+{{ use: partial-sunburst-itemStyle-props(
+    prefix = "###"
+) }}
 
-{{ use: partial-sunburst-other-state(prefix="##") }}
+{{ use: partial-sunburst-other-state(
+    prefix = "##"
+) }}
 
-{{use: partial-animation(
-    prefix="#",
-    defaultAnimationEasing="'cubicOut'",
-    defaultAnimationDuration=1000,
-    defaultAnimationDurationUpdate=500,
-    galleryEditorPath=${galleryEditorPath}
-)}}
+{{ use: partial-animation(
+    prefix = "#",
+    defaultAnimationEasing = "'cubicOut'",
+    defaultAnimationDuration = 1000,
+    defaultAnimationDurationUpdate = 500
+) }}
+

@@ -1,4 +1,5 @@
-{{target:partial-series-encode}}
+
+{{ target: partial-series-encode }}
 
 #${prefix} encode(Object)
 
@@ -133,7 +134,7 @@ var option = {
 
 
 
-{{target:partial-series-dimensions}}
+{{ target: partial-series-dimensions }}
 
 #${prefix} dimensions(Array)
 
@@ -189,3 +190,4 @@ Each data item of `dimensions` can be:
     + displayName: `string`, generally used in tooltip for dimension display. If not specified, use `name` by default.
 
 When `dimensions` is specified, the default `tooltip` will be displayed vertically, which is better to show diemsion names. Otherwise, `tooltip` will displayed only value horizontally.
+

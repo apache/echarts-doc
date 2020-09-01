@@ -1,3 +1,4 @@
+
 {{ target: partial-1d-data-label-formatter }}
 
 Data label formatter, which supports string template and callback function. In either form, `\n` is supported to represent a new line.
@@ -24,7 +25,11 @@ Callback function is in form of:
 (params: Object|Array) => string
 ```
 where `params` is the single dataset needed by formatter, which is formed as:
-{{ use: partial-formatter-params-structure(extra = ${extra}) }}
+
+{{ use: partial-formatter-params-structure(
+    extra = ${extra}
+) }}
+
 
 
 
@@ -72,3 +77,4 @@ Each data item can be further customized:
     itemStyle:{}
 }]
 ```
+

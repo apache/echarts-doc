@@ -1,3 +1,7 @@
+/**
+ * Format zh/en option docs
+ */
+
 const fs = require('fs');
 const path = require('path');
 const {compositeTargets} = require('../editor/common/blockHelper');

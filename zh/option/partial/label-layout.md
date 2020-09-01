@@ -1,6 +1,9 @@
-{{target: partial-label-layout}}
 
-{{ use: partial-version(version = "5.0.0") }}
+{{ target: partial-label-layout }}
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 标签的统一布局配置。
 
@@ -55,7 +58,6 @@ labelLayout(params) {
     };
 }
 ```
-
 
 #${prefix} hideOverlap(boolean)
 
@@ -131,3 +133,4 @@ labelLayout(params) {
 ```
 
 在饼图中常用来微调已经计算好的引导线，其它情况一般不建议设置。
+

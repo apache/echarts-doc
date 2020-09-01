@@ -1,5 +1,5 @@
 
-{{target: component-title}}
+{{ target: component-title }}
 
 # title(Object)
 
@@ -10,8 +10,9 @@ In ECharts 2.x, a single instance of ECharts could contains one title component 
 **Here are some instances of different animation easing functions, among which every instance has a title component: **
 ~[700x400](${galleryViewPath}line-easing&edit=1&reset=1)
 
-
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 ## show(boolean) = true
 
@@ -38,43 +39,39 @@ Open the hyper link of main title in specified tab.
 ## textStyle(Object)
 
 {{ use: partial-text-style(
-    prefix="##",
-    name="main title",
-    defaultFontSize=18,
-    defaultFontWeight="'bolder'",
-    defaultColor="'#333'",
-    noAlign=true,
-    noVerticalAlign=true,
-    noBox=true
+    prefix = "##",
+    name = "main title",
+    defaultFontSize = 18,
+    defaultFontWeight = "'bolder'",
+    defaultColor = "'#333'",
+    noAlign = true,
+    noVerticalAlign = true,
+    noBox = true
 ) }}
-
 
 ## subtext(string) = ''
 
 Subtitle text, supporting for `\n` for newlines.
 
-
 ## sublink(string) = ''
 
 The hyper link of subtitle text.
 
-
 ## subtarget(string) = 'blank'
 
- Open the hyper link of subtitle in specified tab, options:
+Open the hyper link of subtitle in specified tab, options:
 
 + `'self'` opening it in current tab
 
 + `'blank'` opening it in a new tab
 
-
 ## subtextStyle(Object)
 
 {{ use: partial-text-style(
-    prefix='##',
-    name="subtitle",
-    defaultColor="'#aaa'",
-    noBox=true
+    prefix = '##',
+    name = "subtitle",
+    defaultColor = "'#aaa'",
+    noBox = true
 ) }}
 
 ## textAlign(string) = 'auto'
@@ -95,20 +92,22 @@ Set this to `true` to enable triggering events
 
 ## padding(number|Array) = 5
 
-{{ use: partial-padding(componentName="title")}}
+{{ use: partial-padding(
+    componentName = "title"
+) }}
 
 ## itemGap(number) = 10
 
 The gap between the main title and subtitle.
 
-{{use: partial-rect-layout(componentName="title ")}}
+{{ use: partial-rect-layout(
+    componentName = "title "
+) }}
 
 {{ use: partial-component-common-style(
-    componentName="title",
-    prefix='#',
-    defaultBorderWidth="0",
-    hasBorderRadius=true
-)}}
-
-
+    componentName = "title",
+    prefix = '#',
+    defaultBorderWidth = "0",
+    hasBorderRadius = true
+) }}
 

@@ -1,5 +1,5 @@
 
-{{target: component-polar}}
+{{ target: component-polar }}
 
 # polar(Object)
 
@@ -9,15 +9,14 @@ Polar coordinate can be used in scatter and line chart. Every polar coordinate h
 
 ~[600x400](${galleryViewPath}scatter-polar-punchCard&edit=1&reset=1)
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
-{{use: component-circular-layout(
-    componentName="Polar coordinate",
-    disableArray=false
-)}}
+{{ use: component-circular-layout(
+    componentName = "Polar coordinate",
+    disableArray = false
+) }}
 
+{{ use: partial-tooltip-in-coords() }}
 
-{{use: partial-tooltip-in-coords(
-    galleryViewPath=${galleryViewPath},
-    galleryEditorPath=${galleryEditorPath}
-)}}

@@ -1,3 +1,4 @@
+
 {{ target: partial-2d-data-label-formatter }}
 
 标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 `\n` 换行。
@@ -22,7 +23,12 @@ formatter: '{b}: {@score}'
 (params: Object|Array) => string
 ```
 参数 `params` 是 formatter 需要的单个数据集。格式如下：
-{{ use: partial-formatter-params-structure(extra = ${extra}) }}
+
+{{ use: partial-formatter-params-structure(
+    extra = ${extra}
+) }}
+
+
 
 
 {{ target: partial-seriesLayoutBy }}
@@ -36,11 +42,15 @@ formatter: '{b}: {@score}'
 
 参见这个 [示例](${galleryEditorPath}dataset-series-layout-by&theme=lite)
 
+
+
+
 {{ target: partial-datasetIndex }}
 
 ## datasetIndex(number) = 0
 
 如果 [series.data](~series.data) 没有指定，并且 [dataset](~dataset) 存在，那么就会使用 [dataset](~dataset)。`datasetIndex` 指定本系列使用那个 [dataset](~dataset)。
+
 
 
 
@@ -169,3 +179,4 @@ series: [{
 例如，无数据在折线图中可表现为该点是断开的，在其它图中可表示为图形不存在。
 
 <br><br>
+

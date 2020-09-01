@@ -1,30 +1,28 @@
 
-{{target: component-parallel-axis}}
+{{ target: component-parallel-axis }}
 
 # parallelAxis(Object)
 
 This component is the coordinate axis for parallel coordinate.
 
-{{ use: partial-parallel-introduce(
-    galleryViewPath=${galleryViewPath}
-)}}
-
+{{ use: partial-parallel-introduce() }}
 
 <br>
 <br>
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 ## dim(number)
 
 Dimension index of coordinate axis.
 
-{{use: partial-parallel-data-example}}
+{{ use: partial-parallel-data-example() }}
 
 `dim` defines which dimension (which *row*) of data would map to this axis.
 
 Started from `0`. For example, if the `dim` of coordinate axis is `1`, it indicates that the second row of data would map to this axis.
-
 
 ## parallelIndex(number) = 0
 
@@ -62,38 +60,29 @@ Area selecting is available on axes. Here is some configurations.
 
 <br>
 
-
 ### width(number) = 20
 
 Width of selecting box.
 
-
 ### borderWidth(number) = 1
 
-
 Border width of the select box.
-
 
 ### borderColor(Color) = 'rgba(160,197,232)'
 
 Border color of the select box.
 
-
 ### color(Color) = 'rgba(160,197,232)'
 
 Border fill color of the select box.
-
 
 ### opacity(number) = 0.3
 
 Opacity of the select box.
 
-
-
 {{ use: axis-common(
-    prefix='#',
-    componentType='parallelAxis',
-    noAxisPointer=true,
-    galleryViewPath=${galleryViewPath},
-    galleryEditorPath=${galleryEditorPath}
+    prefix = '#',
+    componentType = 'parallelAxis',
+    noAxisPointer = true
 ) }}
+

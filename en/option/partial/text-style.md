@@ -1,40 +1,37 @@
-{{target:partial-simple-text-style}}
 
-{{ use:partial-text-style(
-    prefix=${prefix},
-    name=${name},
-    defaultColor=${defaultColor},
-    defaultFontSize=${defaultFontSize},
-    noAlign=true,
-    noVerticalAlign=true,
-    noRich=true,
-    noBox=true
+{{ target: partial-simple-text-style }}
+
+{{ use: partial-text-style(
+    prefix = ${prefix},
+    name = ${name},
+    defaultColor = ${defaultColor},
+    defaultFontSize = ${defaultFontSize},
+    noAlign = true,
+    noVerticalAlign = true,
+    noRich = true,
+    noBox = true
 ) }}
 
 
 
 
+{{ target: partial-text-style }}
 
-
-
-
-
-{{target:partial-text-style}}
-
-{{use:partial-text-style-base-item(
-    prefix=${prefix},
-    name=${name},
-    defaultColor=${defaultColor},
-    defaultFontSize=${defaultFontSize},
-    defaultAlign=${defaultAlign},
-    defaultVerticalAlign=${defaultVerticalAlign},
-    noAlign=${noAlign},
-    noVerticalAlign=${noVerticalAlign},
-    noBox=${noBox},
-    enableAutoColor=${enableAutoColor}
-)}}
+{{ use: partial-text-style-base-item(
+    prefix = ${prefix},
+    name = ${name},
+    defaultColor = ${defaultColor},
+    defaultFontSize = ${defaultFontSize},
+    defaultAlign = ${defaultAlign},
+    defaultVerticalAlign = ${defaultVerticalAlign},
+    noAlign = ${noAlign},
+    noVerticalAlign = ${noVerticalAlign},
+    noBox = ${noBox},
+    enableAutoColor = ${enableAutoColor}
+) }}
 
 {{ if: !${noRich} }}
+
 #${prefix} rich(Object)
 
 "Rich text styles" can be defined in this `rich` property. For example:
@@ -75,36 +72,30 @@ label: {
 
 For more details, see [Rich Text](tutorial.html#Rich%20Text) please.
 
-
-
 ##${prefix} <style_name>(Object)
 
-{{use:partial-text-style-base-item(
+{{ use:  partial-text-style-base-item(
     prefix=${prefix} + '##',
     enableAutoColor=${enableAutoColor}
-)}}
+)  }}
 
 {{ /if }}
 
 
 
 
+{{ target: partial-text-style-base-item }}
 
-
-
-{{target:partial-text-style-base-item}}
-
-#${prefix} color(Color)=${defaultColor|default('"#fff"')}
+#${prefix} color(Color) = ${defaultColor|default('"#fff"')}
 
 ${name} text color.
 
 
-{{if: ${enableAutoColor} }}
-{{ use: partial-text-style-auto-color-desc }}
-{{/if}}
+{{ if: ${enableAutoColor} }}
+{{ use:   partial-text-style-auto-color-desc   }}
+{{ /if }}
 
-
-#${prefix} fontStyle(string)='normal'
+#${prefix} fontStyle(string) = 'normal'
 
 ${name} font style.
 
@@ -113,8 +104,7 @@ Options are:
 + `'italic'`
 + `'oblique'`
 
-
-#${prefix} fontWeight(string|number)=${defaultFontWeight|default('normal')}
+#${prefix} fontWeight(string|number) = ${defaultFontWeight|default('normal')}
 
 ${name} font thick weight.
 
@@ -125,20 +115,20 @@ Options are:
 + `'lighter'`
 + 100 | 200 | 300 | 400...
 
-
-#${prefix} fontFamily(string)='sans-serif'
+#${prefix} fontFamily(string) = 'sans-serif'
 
 ${name} font family.
 
 Can also be 'serif' , 'monospace', ...
 
-#${prefix} fontSize(number)=${defaultFontSize|default(12)}
+#${prefix} fontSize(number) = ${defaultFontSize|default(12)}
 
 ${name} font size.
 
 
 {{ if: !${noAlign} }}
-#${prefix} align(string)=${defaultAlign}
+
+#${prefix} align(string) = ${defaultAlign}
 
 Horizontal alignment of text, automatic by default.
 
@@ -147,15 +137,16 @@ Options are:
 + `'center'`
 + `'right'`
 
-{{ use: partial-text-style-rich-inherit(
+{{ use:   partial-text-style-rich-inherit(
     name='align',
     value='right'
-) }}
+)   }}
 
 {{ /if }}
 
 {{ if: !${noVerticalAlign} }}
-#${prefix} verticalAlign(string)=${defaultVerticalAlign}
+
+#${prefix} verticalAlign(string) = ${defaultVerticalAlign}
 
 Vertical alignment of text, automatic by default.
 
@@ -164,32 +155,25 @@ Options are:
 + `'middle'`
 + `'bottom'`
 
-{{ use: partial-text-style-rich-inherit(
+{{ use:   partial-text-style-rich-inherit(
     name='verticalAlign',
     value='bottom'
-) }}
+)   }}
 
 {{ /if }}
-
-
-
-
-
-
 
 #${prefix} lineHeight(number)
 
 Line height of the text fragment.
 
 {{ use: partial-text-style-rich-inherit(
-    name='lineHeight',
-    value=56
+    name = 'lineHeight',
+    value = 56
 ) }}
-
 
 {{ if: !${noBox} }}
 
-#${prefix} backgroundColor(string|Object)='transparent'
+#${prefix} backgroundColor(string|Object) = 'transparent'
 
 Background color of the text fragment.
 
@@ -210,27 +194,27 @@ backgroundColor: {
 `width` or `height` can be specified when using background image, or
 auto adapted by default.
 
-{{if: ${enableAutoColor} }}
-{{ use: partial-text-style-auto-color-desc }}
-{{/if}}
+{{ if: ${enableAutoColor} }}
+{{ use:   partial-text-style-auto-color-desc   }}
+{{ /if }}
 
-#${prefix} borderColor(Color)='transparent'
+#${prefix} borderColor(Color) = 'transparent'
 
 Border color of the text fragment.
 
-{{if: ${enableAutoColor} }}
-{{ use: partial-text-style-auto-color-desc }}
-{{/if}}
+{{ if: ${enableAutoColor} }}
+{{ use:   partial-text-style-auto-color-desc   }}
+{{ /if }}
 
-#${prefix} borderWidth(number)=0
+#${prefix} borderWidth(number) = 0
 
 Border width of the text fragment.
 
-#${prefix} borderRadius(number)=0
+#${prefix} borderRadius(number) = 0
 
 Border radius of the text fragment.
 
-#${prefix} padding(number|Array)=0
+#${prefix} padding(number|Array) = 0
 
 Padding of the text fragment, for example:
 
@@ -240,24 +224,23 @@ Padding of the text fragment, for example:
 
 Notice, `width` and `height` specifies the width and height of the content, without `padding`.
 
-#${prefix} shadowColor(Color)='transparent'
+#${prefix} shadowColor(Color) = 'transparent'
 
 Shadow color of the text block.
 
-#${prefix} shadowBlur(number)=0
+#${prefix} shadowBlur(number) = 0
 
 Show blur of the text block.
 
-#${prefix} shadowOffsetX(number)=0
+#${prefix} shadowOffsetX(number) = 0
 
 Shadow X offset of the text block.
 
-#${prefix} shadowOffsetY(number)=0
+#${prefix} shadowOffsetY(number) = 0
 
 Shadow Y offset of the text block.
 
 {{ /if }}
-
 
 #${prefix} width(number|string)
 
@@ -278,43 +261,40 @@ Notice, `width` and `height` specifies the width and height of the content, with
 
 Notice, `width` and `height` only work when `rich` specified.
 
-
-#${prefix} textBorderColor(Color)='transparent'
+#${prefix} textBorderColor(Color) = 'transparent'
 
 Storke color of the text.
 
-{{if: ${enableAutoColor} }}
-{{ use: partial-text-style-auto-color-desc }}
-{{/if}}
+{{ if: ${enableAutoColor} }}
+{{ use:   partial-text-style-auto-color-desc   }}
+{{ /if }}
 
-
-#${prefix} textBorderWidth(number)=0
+#${prefix} textBorderWidth(number) = 0
 
 Storke line width of the text.
 
-#${prefix} textShadowColor(Color)='transparent'
+#${prefix} textShadowColor(Color) = 'transparent'
 
 Shadow color of the text itself.
 
-#${prefix} textShadowBlur(number)=0
+#${prefix} textShadowBlur(number) = 0
 
 Shadow blue of the text itself.
 
-#${prefix} textShadowOffsetX(number)=0
+#${prefix} textShadowOffsetX(number) = 0
 
 Shadow X offset of the text itself.
 
-#${prefix} textShadowOffsetY(number)=0
+#${prefix} textShadowOffsetY(number) = 0
 
 Shadow Y offset of the text itself.
 
 
 
 
-
 {{ target: partial-text-style-auto-color-desc }}
-If set as `'auto'`, the color will assigned as visual color, such as series color.
 
+If set as `'auto'`, the color will assigned as visual color, such as series color.
 
 
 
@@ -333,3 +313,4 @@ If `${name}` is not set in `rich`, `${name}` in parent level will be used. For e
     }
 }
 ```
+

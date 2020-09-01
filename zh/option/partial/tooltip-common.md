@@ -1,5 +1,5 @@
 
-{{target: partial-tooltip-introduction}}
+{{ target: partial-tooltip-introduction }}
 
 **提示框组件的通用介绍：**
 
@@ -19,10 +19,7 @@
 
 
 
-
-
-
-{{target: partial-tooltip-in-coords}}
+{{ target: partial-tooltip-in-coords }}
 
 ## tooltip(Object)
 
@@ -30,83 +27,67 @@
 
 ---
 
-{{use: partial-tooltip-introduction}}
+{{ use: partial-tooltip-introduction() }}
 
-{{use: partial-tooltip-coords-common(
-    prefix='##',
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-tooltip-coords-common(
+    prefix = '##'
+) }}
 
-{{ use: partial-tooltip-common(scope='coordSys', prefix='##') }}
-
-
-
-
+{{ use: partial-tooltip-common(
+    scope = 'coordSys',
+    prefix = '##'
+) }}
 
 
 
 
-
-
-
-
-
-{{target: partial-tooltip-in-series}}
+{{ target: partial-tooltip-in-series }}
 
 ## tooltip(Object)
 
 本系列特定的 tooltip 设定。
 
-{{ use: partial-tooltip-common(scope='series', prefix='##') }}
+{{ use: partial-tooltip-common(
+    scope = 'series',
+    prefix = '##'
+) }}
 
 
 
 
+{{ target: partial-tooltip-in-series-data }}
 
-
-
-
-{{target: partial-tooltip-in-series-data}}
-
-### tooltip
+### tooltip(*)
 
 本系列每个数据项中特定的 tooltip 设定。
 
-{{ use: partial-tooltip-common(scope='seriesData', prefix='###') }}
+{{ use: partial-tooltip-common(
+    scope = 'seriesData',
+    prefix = '###'
+) }}
 
 
 
 
+{{ target: partial-tooltip-scope-tip }}
 
-
-
-
-{{target: partial-tooltip-scope-tip}}
-
-{{if: ${scope} === 'series' }}
+{{ if: ${scope} === 'series' }}
 <br>
 > **注意：**`series.tooltip` 仅在 [tooltip.trigger](~tooltip.trigger) 为 `'item'` 时有效。<br>
-{{elif: ${scope} === 'seriesData' }}
+{{ elif: ${scope} === 'seriesData'   }}
 > **注意：**`series.data.tooltip` 仅在 [tooltip.trigger](~tooltip.trigger) 为 `'item'` 时有效。<br>
-{{/if}}
+{{ /if }}
 
 
 
 
-
-
-
-
-
-{{target: partial-tooltip-coords-common}}
-
+{{ target: partial-tooltip-coords-common }}
 
 #${prefix} show(boolean) = true
 
 <ExampleUIControlBoolean default="true" />
 
 是否显示提示框组件，包括提示框浮层和 [axisPointer](~tooltip.axisPointer)。
-
 
 #${prefix} trigger(string) = 'item'
 
@@ -139,11 +120,7 @@
 
 ---
 
-{{ use: partial-axisPointer-introduction(
-    galleryViewPath=${galleryViewPath},
-    galleryEditorPath=${galleryEditorPath}
-) }}
-
+{{ use: partial-axisPointer-introduction() }}
 
 ##${prefix} type(string) = 'line'
 
@@ -160,7 +137,6 @@
 
 + `'cross'` 十字准星指示器。其实是种简写，表示启用两个正交的轴的 axisPointer。
 
-
 ##${prefix} axis(string) = 'auto'
 
 指示器的坐标轴。
@@ -170,35 +146,36 @@
 可以是 `'x'`, `'y'`, `'radius'`, `'angle'`。
 
 {{ use: partial-axisPointer-tooltip-shared(
-    prefix="#" + ${prefix},
-    galleryViewPath=${galleryViewPath},
-    galleryEditorPath=${galleryEditorPath}
+    prefix = "#" + ${prefix}
 ) }}
 
 ##${prefix} crossStyle(Object)
 
 [axisPointer.type](~tooltip.axisPointer.type) 为 `'cross'` 时有效。
 
-{{ use: partial-line-style(prefix="##" + ${prefix}, defaultColor="#555", defaultWidth=1, defaultType="dashed") }}
-
+{{ use: partial-line-style(
+    prefix = "##" + ${prefix},
+    defaultColor = "#555",
+    defaultWidth = 1,
+    defaultType = "dashed"
+) }}
 
 {{ use: partial-animation(
-    prefix='#' + ${prefix},
-    defaultAnimationEasingUpdate='exponentialOut',
-    defaultAnimationDurationUpdate=200
+    prefix = '#' + ${prefix},
+    defaultAnimationEasingUpdate = 'exponentialOut',
+    defaultAnimationDurationUpdate = 200
 ) }}
 
 
 
 
-
-
-
-{{target: partial-tooltip-common}}
+{{ target: partial-tooltip-common }}
 
 #${prefix} position(string|Array|Function)
 
-{{use: partial-tooltip-scope-tip(scope=${scope})}}
+{{ use: partial-tooltip-scope-tip(
+    scope = ${scope}
+) }}
 
 提示框浮层的位置，默认不设置时位置会跟随鼠标的位置。
 
@@ -273,10 +250,11 @@
 
     鼠标所在图形底侧，只在 [trigger](~tooltip.trigger) 为`'item'`的时候有效。
 
-
 #${prefix} formatter(string|Function)
 
-{{use: partial-tooltip-scope-tip(scope=${scope})}}
+{{ use: partial-tooltip-scope-tip(
+    scope = ${scope}
+) }}
 
 提示框浮层内容格式器，支持字符串模板和回调函数两种形式。
 
@@ -312,16 +290,19 @@ formatter: '{b0}: {c0}<br />{b1}: {c1}'
 ```
 
 第一个参数 `params` 是 formatter 需要的数据集。格式如下：
-{{ use: partial-formatter-params-structure(extra = {
+
+{{ use: partial-formatter-params-structure(
+    extra = {
     percent: {
         desc: '饼图的百分比',
-        type: 'number'
+    type = 'number'
     }
-}) }}
+}
+) }}
 
 在 [trigger](~tooltip.trigger) 为 `'axis'` 的时候，或者 tooltip 被 [axisPointer](~xAxis.axisPointer) 触发的时候，`params` 是多个系列的数据数组。其中每项内容格式同上，并且，
 
-{{ use: partial-formatter-params-structure}}
+{{ use: partial-formatter-params-structure() }}
 
 **注：** ECharts 2.x 使用数组表示各参数的方式不再支持。
 
@@ -340,7 +321,9 @@ formatter: function (params, ticket, callback) {
 
 #${prefix} backgroundColor(Color) = 'rgba(50,50,50,0.7)'
 
-{{use: partial-tooltip-scope-tip(scope=${scope})}}
+{{ use: partial-tooltip-scope-tip(
+    scope = ${scope}
+) }}
 
 提示框浮层的背景颜色。
 
@@ -348,7 +331,9 @@ formatter: function (params, ticket, callback) {
 
 <ExampleUIControlColor default="#333" />
 
-{{use: partial-tooltip-scope-tip(scope=${scope})}}
+{{ use: partial-tooltip-scope-tip(
+    scope = ${scope}
+) }}
 
 提示框浮层的边框颜色。
 
@@ -356,7 +341,9 @@ formatter: function (params, ticket, callback) {
 
 <ExampleUIControlNumber default="0" step="0.5" />
 
-{{use: partial-tooltip-scope-tip(scope=${scope})}}
+{{ use: partial-tooltip-scope-tip(
+    scope = ${scope}
+) }}
 
 提示框浮层的边框宽。
 
@@ -364,31 +351,37 @@ formatter: function (params, ticket, callback) {
 
 <ExampleUIControlVector dims="T,R,B,L" default="5,5,5,5" />
 
-{{use: partial-tooltip-scope-tip(scope=${scope})}}
+{{ use: partial-tooltip-scope-tip(
+    scope = ${scope}
+) }}
 
-{{ use: partial-padding(componentName='提示框浮层') }}
+{{ use: partial-padding(
+    componentName = '提示框浮层'
+) }}
 
 #${prefix} textStyle(Object)
 
-{{use: partial-tooltip-scope-tip(scope=${scope})}}
+{{ use: partial-tooltip-scope-tip(
+    scope = ${scope}
+) }}
 
 提示框浮层的文本样式。
 
-{{ use: partial-simple-text-style(prefix="#" + ${prefix}, defaultColor="'#fff'", defaultFontSize=14) }}
+{{ use: partial-simple-text-style(
+    prefix = "#" + ${prefix},
+    defaultColor = "'#fff'",
+    defaultFontSize = 14
+) }}
 
 #${prefix} extraCssText(string)
 
-{{use: partial-tooltip-scope-tip(scope=${scope})}}
+{{ use: partial-tooltip-scope-tip(
+    scope = ${scope}
+) }}
 
 额外附加到浮层的 css 样式。如下为浮层添加阴影的示例：
 
 ```js
 extraCssText: 'box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);'
 ```
-
-
-
-
-
-
 

@@ -1,4 +1,6 @@
-{{target: partial-axis-common-axis-line}}
+
+{{ target: partial-axis-common-axis-line }}
+
 #${prefix} silent(boolean) = false
 
 Set this to `true`, to prevent interaction with the axis.
@@ -23,7 +25,6 @@ Parameters of the event include:
 }
 ```
 
-
 #${prefix} axisLine(Object)
 
 Settings related to axis line.
@@ -33,32 +34,48 @@ Settings related to axis line.
 Set this to `false` to prevent the axis line from showing.
 
 {{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
+
 ##${prefix} onZero(boolean) = true
+
 Specifies whether X or Y axis lies on the other's origin position, where value is 0 on axis. Valid only if the other axis is of value type, and contains 0 value.
 
 ##${prefix} onZeroAxisIndex(number)
+
 When mutiple axes exists, this option can be used to specify which axis can be "onZero" to.
 {{ /if }}
 
 ##${prefix} symbol(string|Array) = 'none'
+
 Symbol of the two ends of the axis. It could be a string, representing the same symbol for two ends; or an array with two string elements, representing the two ends separately. It's set to be `'none'` by default, meaning no arrow for either end. If it is set to be `'arrow'`, there shall be two arrows. If there should only one arrow at the end, it should set to be `['none', 'arrow']`.
 
 ##${prefix} symbolSize(Array) = [10, 15]
+
 Size of the arrows at two ends. The first is the width perpendicular to the axis, the next is the width parallel to the axis.
 
 ##${prefix} symbolOffset(Array|number) = [0, 0]
+
 Arrow offset of axis. If is array, the first number is the offset of the arrow at the beginning, and the second number is the offset of the arrow at the end. If is number, it means the arrows have the same offset.
 
 ##${prefix} lineStyle(Object)
-{{ use: partial-line-style(prefix='##' + ${prefix}, defaultColor="'#333'", defaultWidth=1, defaultType="'solid'", name="line style") }}
+
+{{ use: partial-line-style(
+    prefix = '##' + ${prefix},
+    defaultColor = "'#333'",
+    defaultWidth = 1,
+    defaultType = "'solid'",
+    name = "line style"
+) }}
 
 
-{{target: partial-axis-common-axis-label}}
+
+
+{{ target: partial-axis-common-axis-label }}
+
 #${prefix} axisLabel(Object)
 
 Settings related to axis label.
 
-{{if: !${hideShow} }}
+{{ if: !${hideShow} }}
 
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
 
@@ -67,22 +84,27 @@ Set this to `false` to prevent the axis label from appearing.
 {{ /if }}
 
 {{ if: ${hasLabelInterval|default(true)} }}
+
 ##${prefix} interval(number|Function) = 'auto'
-{{ use: partial-axis-interval(
+
+{{ use:   partial-axis-interval(
     name="Axis label",
     isAxisLabel=true,
     componentType=${componentType}
-) }}
+)   }}
 {{ /if }}
 
 {{ if: ${hasInside|default(true)} }}
+
 ##${prefix} inside(boolean) = false
 
 Set this to `true` so the axis labels face the `inside` direction.
 {{ /if }}
 
 {{ if: ${componentType} !== 'angleAxis' }}
+
 ##${prefix} rotate(number) = 0
+
 Rotation degree of axis label, which is especially useful when there is no enough space for category axis.
 
 Rotation degree is from -90 to 90.
@@ -95,21 +117,23 @@ The margin between the axis label and the axis line.
 
 ##${prefix} formatter(string|Function) = null
 
-{{use: axis-common-formatter-desc}}
+{{ use: axis-common-formatter-desc() }}
 
 ##${prefix} showMinLabel(boolean) = null
+
 Whether to show the label of the min tick. Optional values: `true`, `false`, `null`. It is auto determined by default, that is, if labels are overlapped, the label of the min tick will not be displayed.
 
 ##${prefix} showMaxLabel(boolean) = null
+
 Whether to show the label of the max tick. Optional values: `true`, `false`, `null`. It is auto determined by default, that is, if labels are overlapped, the label of the max tick will not be displayed.
 
 {{ use: partial-text-style(
-    prefix='#' + ${prefix},
-    defaultColor="'#333'"
-)}}
-
+    prefix = '#' + ${prefix},
+    defaultColor = "'#333'"
+) }}
 
 <!-- Overwrite color -->
+
 ##${prefix} color(Color|Function)
 
 Color of axis label is set to be [axisLine.lineStyle.color](~${componentType}.axisLine.lineStyle.color) by default. Callback function is supported, in the following format:
@@ -130,9 +154,11 @@ textStyle: {
 
 
 
-{{target: partial-axis-common-axis-tick}}
+
+{{ target: partial-axis-common-axis-tick }}
 
 #${prefix} axisTick(Object)
+
 Settings related to axis tick.
 
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
@@ -140,47 +166,62 @@ Settings related to axis tick.
 Set this to `false` to prevent the axis tick from showing.
 
 {{ if: ${hasAlignWithLabel|default(true)} }}
+
 ##${prefix} alignWithLabel(boolean) = false
+
 Align axis tick with label, which is available only when `boundaryGap` is set to be `true` in category axis. See the following picture:
 
 ![600xauto](~axis-align-with-label.png)
 {{ /if }}
 
 {{ if: ${hasLabelInterval|default(true)} }}
+
 ##${prefix} interval(number|Function) = 'auto'
-{{ use: partial-axis-interval(
+
+{{ use:   partial-axis-interval(
     name="axisTick",
     componentType=${componentType}
-) }}
+)   }}
 {{ /if }}
 
 {{ if: ${hasInside|default(true)} }}
+
 ##${prefix} inside(boolean) = false
+
 Set this to `true` so the axis labels face the `inside` direction.
 {{ /if }}
 
 ##${prefix} length(number) = 5
+
 The length of the axis tick.
 
 ##${prefix} lineStyle(Object)
+
 {{ use: partial-line-style(
-    prefix='##' + ${prefix},
-    defaultColor="'#333'",
-    defaultWidth=1,
-    defaultType="'solid'",
-    name="axisTick"
+    prefix = '##' + ${prefix},
+    defaultColor = "'#333'",
+    defaultWidth = 1,
+    defaultType = "'solid'",
+    name = "axisTick"
 ) }}
+
 <!-- Overwrite color -->
+
 ###${prefix} color(Color)
 
 Color of axis label is set to be [axisLine.lineStyle.color](~${componentType}.axisLine.lineStyle.color) by default.
 
 
 
-{{target: partial-axis-common-minor-tick}}
+
+{{ target: partial-axis-common-minor-tick }}
 
 #${prefix} minorTick(Object)
-{{ use: partial-version(version = "4.6.0") }}
+
+{{ use: partial-version(
+    version = "4.6.0"
+) }}
+
 Settings related minor ticks.
 
 Note: `minorTick` is not available in the `category` type axis.
@@ -194,31 +235,39 @@ Examples:
 ~[600x350](${galleryViewPath}line-log&edit=1&reset=1)
 
 ##${prefix} show(boolean) = ${defaultShow|default(false)}
+
 If show minor ticks.
 
 ##${prefix} splitNumber(number) = 5
+
 Number of interval splited by minor ticks.
 
 ##${prefix} length(number) = 3
+
 Length of minor ticks lines。
 
 ##${prefix} lineStyle(Object)
 
 {{ use: partial-line-style(
-    prefix='##' + ${prefix},
-    defaultWidth=1,
-    defaultType="'solid'",
-    name="minorTick"
+    prefix = '##' + ${prefix},
+    defaultWidth = 1,
+    defaultType = "'solid'",
+    name = "minorTick"
 ) }}
+
 <!-- Overwrite color -->
+
 ###${prefix} color(Color)
+
 Style configuration of minor ticks lines [axisLine.lineStyle.color](~${componentType}.axisLine.lineStyle.color)。
 
 
 
-{{target: partial-axis-common-split-line}}
+
+{{ target: partial-axis-common-split-line }}
 
 #${prefix} splitLine(Object)
+
 Split line of axis in [grid](~grid) area.
 
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
@@ -227,24 +276,29 @@ Set this to `false` to prevent the splitLine from showing.
 `value` type axes are shown by default, while `category` type axes are hidden.
 
 {{ if: ${hasLabelInterval|default(true)} }}
+
 ##${prefix} interval(number|Function) = 'auto'
-{{ use: partial-axis-interval(
+
+{{ use:   partial-axis-interval(
     name="Axis splitLine",
     componentType=${componentType}
-) }}
+)   }}
 {{ /if }}
 
 ##${prefix} lineStyle(Object)
+
 {{ use: partial-line-style(
-    prefix='##' + ${prefix},
-    defaultColor="'#333'",
-    defaultWidth=1,
-    defaultType="'solid'",
-    name="splitLine"
+    prefix = '##' + ${prefix},
+    defaultColor = "'#333'",
+    defaultWidth = 1,
+    defaultType = "'solid'",
+    name = "splitLine"
 ) }}
 
 <!-- overwrite color -->
+
 ###${prefix} color(Array|string) = ['#ccc']
+
 The color of the splitLine, which could be set separately.
 
 SplitLine color could also be set in color array, which the split lines would take as their colors in turns.
@@ -260,27 +314,36 @@ splitLine: {
 ```
 
 
-{{target: partial-axis-common-minor-split-line}}
+
+
+{{ target: partial-axis-common-minor-split-line }}
 
 #${prefix} minorSplitLine(Object)
-{{ use: partial-version(version = "4.6.0") }}
+
+{{ use: partial-version(
+    version = "4.6.0"
+) }}
+
 Minor split lines of axis in the [grid](~grid) area。It will align to the [minorTick](~${componentType}.minorTick)
 
 ##${prefix} show(boolean) = ${defaultShow|default(false)}
+
 If show minor split lines.
 
 ##${prefix} lineStyle(Object)
+
 {{ use: partial-line-style(
-    prefix='##' + ${prefix},
-    defaultColor="'#eee'",
-    defaultWidth=1,
-    defaultType="'solid'",
-    name="minorSplitLine"
+    prefix = '##' + ${prefix},
+    defaultColor = "'#eee'",
+    defaultWidth = 1,
+    defaultType = "'solid'",
+    name = "minorSplitLine"
 ) }}
 
 
 
-{{target: partial-axis-common-split-area}}
+
+{{ target: partial-axis-common-split-area }}
 
 #${prefix} splitArea(Object)
 
@@ -288,25 +351,37 @@ Split area of axis in [grid](~grid) area, not shown by default.
 
 
 {{ if: ${hasLabelInterval|default(true)} }}
+
 ##${prefix} interval(number|Function) = 'auto'
-{{ use: partial-axis-interval(
+
+{{ use:   partial-axis-interval(
     name="Axis splitArea",
     componentType=${componentType}
-) }}
+)   }}
 {{ /if }}
 
 ##${prefix} show(boolean) = ${defaultShow|default(false)}
+
 Set this to `true` to show the splitArea.
+
 ##${prefix} areaStyle(Object)
+
 Split area style.
+
 ###${prefix} color(Array) = ['rgba(250,250,250,0.3)','rgba(200,200,200,0.3)']
+
 Color of split area.
 SplitArea color could also be set in color array, which the split lines would take as their colors in turns. Dark and light colors in turns are used by default.
-{{ use:partial-style-shadow-opacity(prefix='##' + ${prefix}) }}
+
+{{ use: partial-style-shadow-opacity(
+    prefix = '##' + ${prefix}
+) }}
 
 
 
-{{target: partial-axis-type-content}}
+
+{{ target: partial-axis-type-content }}
+
 Type of axis.
 
 Option:
@@ -314,7 +389,7 @@ Option:
     Numerical axis, suitable for continuous data.
 
 + `'category'`
-    Category axis, suitable for discrete category data. Category data can be auto retrieved from [series.data](~series.data) or [dataset.source](~dataset.source){{if: ${componentType} }}, or can be specified via [${componentType}.data](~${componentType}.data){{/if}}.
+    Category axis, suitable for discrete category data. Category data can be auto retrieved from [series.data](~series.data) or [dataset.source](~dataset.source){{ if: ${componentType} }}, or can be specified via [${componentType}.data](~${componentType}.data){{ /if }}.
 
 + `'time'`
     Time axis, suitable for continuous time series data. As compared to value axis, it has a better formatting for time and a different tick calculation method. For example, it decides to use month, week, day or hour for tick based on the range of span.
@@ -323,14 +398,18 @@ Option:
     Log axis, suitable for log data.
 
 
-{{target: axis-common}}
+
+
+{{ target: axis-common }}
 
 #${prefix} type(string) = ${axisTypeDefault|default('value')}
-{{use: partial-axis-type-content(
-    componentType=${componentType}
+
+{{ use: partial-axis-type-content(
+    componentType = ${componentType}
 ) }}
 
 {{ if: ${componentType} !== 'angleAxis' }}
+
 #${prefix} name(string)
 
 Name of axis.
@@ -348,9 +427,11 @@ Location of axis name.
 
 Text style of axis name.
 
-{{use: partial-text-style(prefix='#' + ${prefix}, name="axis name")}}
+{{ use:   partial-text-style(prefix='#' + ${prefix}, name="axis name")  }}
 <!-- Overwrite color -->
+
 ##${prefix} color(Color)
+
 Color of axis name uses [axisLine.lineStyle.color](~${componentType}.axisLine.lineStyle.color) by default.
 
 #${prefix} nameGap(number) = 15
@@ -366,9 +447,10 @@ Rotation of axis name.
 Set this to `true` to invert the axis.
 This is a new option available from Echarts 3 and newer.
 
-{{/if}}
+{{ /if }}
 
 #${prefix} boundaryGap(boolean|Array)
+
 The boundary gap on both sides of a coordinate axis. The setting and behavior of category axes and non-category axes are different.
 
 The `boundaryGap` of category axis can be set to either `true` or `false`. Default value is set to be `true`, in which case [axisTick](~${componentType}.axisTick) is served only as a separation line, and labels and data appear only in the center part of two [axis ticks](~${componentType}.axisTick), which is called *band*.
@@ -416,7 +498,6 @@ max: function (value) {
 ```
 
 `value` is an object, containing the `min` value and `max` value of the data. This function should return the max value of axis, or return `null`/`undefined` to make echarts use the auto calculated max value (`null`/`undefined` return is only supported since `v4.8.0`).
-
 
 #${prefix} scale(boolean) = false
 
@@ -469,48 +550,47 @@ As [splitNumber](~${componentType}.splitNumber) is a recommendation value, the c
 This is unavailable for category axis. Timestamp should be passed for [type](~${componentType}.type): 'time' axis. Logged value should be passed for [type](~${componentType}.type): 'log' axis.
 
 #${prefix} logBase(number) = 10
+
 Base of logarithm, which is valid only for numeric axes with [type](~${componentType}.type): 'log'.
 
 {{ use: partial-axis-common-axis-line(
-    prefix=${prefix},
-    componentType=${componentType}
+    prefix = ${prefix},
+    componentType = ${componentType}
 ) }}
 
 {{ use: partial-axis-common-axis-tick(
-    prefix=${prefix},
-    componentType=${componentType}
+    prefix = ${prefix},
+    componentType = ${componentType}
 ) }}
 
 {{ use: partial-axis-common-minor-tick(
-    prefix=${prefix},
-    componentType=${componentType}
+    prefix = ${prefix},
+    componentType = ${componentType}
 ) }}
 
 {{ use: partial-axis-common-axis-label(
-    prefix=${prefix},
-    componentType=${componentType}
+    prefix = ${prefix},
+    componentType = ${componentType}
 ) }}
 
 {{ if: ${hasSplitLineAndArea} }}
 
-{{ use: partial-axis-common-split-line(
+{{ use:   partial-axis-common-split-line(
     prefix=${prefix},
     componentType=${componentType}
-) }}
+)   }}
 
-{{ use: partial-axis-common-minor-split-line(
+{{ use:   partial-axis-common-minor-split-line(
     prefix=${prefix},
     componentType=${componentType}
-) }}
+)   }}
 
-{{ use: partial-axis-common-split-area(
+{{ use:   partial-axis-common-split-area(
     prefix=${prefix},
     componentType=${componentType}
-) }}
+)   }}
 
 {{ /if }}
-
-
 
 #${prefix} data(Array)
 
@@ -546,34 +626,28 @@ Name of a category.
 
 Text style of the category.
 
-{{ use:partial-text-style(
-    prefix='##' + ${prefix}
+{{ use: partial-text-style(
+    prefix = '##' + ${prefix}
 ) }}
 
-{{if: !${noAxisPointer} }}
+{{ if: !${noAxisPointer} }}
+
 #${prefix} axisPointer(Object)
 
 axisPointer settings on the axis.
 
-{{ use: partial-axisPointer-common(
+{{ use:   partial-axisPointer-common(
     prefix="#" + ${prefix},
     galleryViewPath=${galleryViewPath},
     galleryEditorPath=${galleryEditorPath}
-)}}
-{{/if}}
-
-
-
-
-
-
-
-
+)  }}
+{{ /if }}
 
 
 
 
 {{ target: partial-axis-interval }}
+
 Interval of ${name}, which is available in category axis. {{ if: !${isAxisLabel} }} is set to be the same as [axisLabel.interval](~${componentType}.axisLabel.interval) by default.{{ /if }}
 
 It uses a strategy that labels do not overlap by default.
@@ -589,7 +663,9 @@ On the other hand, you can control by callback function, whose format is shown b
 The first parameter is index of category, and the second parameter is the name of category. The return values decides whether to display label.
 
 
-{{target: axis-common-formatter-desc}}
+
+
+{{ target: axis-common-formatter-desc }}
 
 Formatter of axis label, which supports string template and callback function.
 
@@ -609,3 +685,4 @@ formatter: function (value, index) {
     return texts.join('/');
 }
 ```
+

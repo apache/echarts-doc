@@ -1,4 +1,5 @@
-{{ target: partial-axisPointer-introduction}}
+
+{{ target: partial-axisPointer-introduction }}
 
 坐标轴指示器是指示坐标轴当前刻度的工具。
 
@@ -71,13 +72,7 @@ axisPointer 的 label 默认不显示（也就是默认只显示指示线），�
 
 
 
-
-
-
-
-
-
-{{ target: partial-axisPointer-common}}
+{{ target: partial-axisPointer-common }}
 
 #${prefix} show(boolean) = false
 
@@ -100,10 +95,8 @@ axisPointer 的 label 默认不显示（也就是默认只显示指示线），�
 + `'none'` 无指示器
 
 {{ use: partial-axisPointer-tooltip-shared(
-    prefix=${prefix},
-    galleryViewPath=${galleryViewPath},
-    galleryEditorPath=${galleryEditorPath}
-)}}
+    prefix = ${prefix}
+) }}
 
 #${prefix} triggerTooltip(boolean) = true
 
@@ -131,13 +124,13 @@ axisPointer 的 label 默认不显示（也就是默认只显示指示线），�
 
 当 show 设为 `true` 时开启，这时显示手柄，并且 axisPointer 会一直显示。
 
-##${prefix} icon
+##${prefix} icon(*)
 
 <ExampleUIControlIcon clean="true" />
 
 手柄的图标。
 
-{{ use: partial-icon-image-path }}
+{{ use: partial-icon-image-path() }}
 
 参见 [使用图片的例子](${galleryEditorPath}doc-example/axisPointer-handle-image&edit=1&reset=1)
 
@@ -165,29 +158,17 @@ axisPointer 的 label 默认不显示（也就是默认只显示指示线），�
 
 手柄拖拽时触发视图更新周期，单位毫秒，调大这个数值可以改善性能，但是降低体验。
 
-{{ use:partial-style-shadow(
-    prefix='#' + ${prefix},
-    defaultShadowBlur=3,
-    defaultShadowColor='#aaa',
-    defaultShadowOffsetX=2
+{{ use: partial-style-shadow(
+    prefix = '#' + ${prefix},
+    defaultShadowBlur = 3,
+    defaultShadowColor = '#aaa',
+    defaultShadowOffsetX = 2
 ) }}
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-{{ target: partial-axisPointer-tooltip-shared}}
+{{ target: partial-axisPointer-tooltip-shared }}
 
 #${prefix} snap(boolean)
 
@@ -231,10 +212,9 @@ axisPointer 的 label 默认不显示（也就是默认只显示指示线），�
 
 `{number}` params.axisIndex: 轴的 index，`0`、`1`、`2`、...
 
-{{ use: partial-formatter-params-structure }}
+{{ use: partial-formatter-params-structure() }}
 
-{{ use: partial-formatter-params-axisPointer }}
-
+{{ use: partial-formatter-params-axisPointer() }}
 
 **返回值：**
 
@@ -252,16 +232,16 @@ formatter: function (params) {
 
 label 距离轴的距离。
 
-
 {{ use: partial-simple-text-style(
-    prefix='#' + ${prefix},
-    defaultColor="'#fff'"
-)}}
+    prefix = '#' + ${prefix},
+    defaultColor = "'#fff'"
+) }}
 
 ##${prefix} padding(string|Array) = [5, 7, 5, 7]
 
-{{ use: partial-padding(componentName='axisPointer')}}
-
+{{ use: partial-padding(
+    componentName = 'axisPointer'
+) }}
 
 ##${prefix} backgroundColor(string) = 'auto'
 
@@ -275,28 +255,31 @@ label 距离轴的距离。
 
 文本标签的边框宽度。
 
-{{ use:partial-style-shadow(
-    prefix='#' + ${prefix},
-    defaultShadowBlur=3,
-    defaultShadowColor='#aaa'
+{{ use: partial-style-shadow(
+    prefix = '#' + ${prefix},
+    defaultShadowBlur = 3,
+    defaultShadowColor = '#aaa'
 ) }}
-
 
 #${prefix} lineStyle(Object)
 
 [axisPointer.type](~tooltip.axisPointer.type) 为 `'line'` 时有效。
 
-{{ use: partial-line-style(prefix="#" + ${prefix}, defaultColor="#555", defaultWidth=1, defaultType='solid') }}
+{{ use: partial-line-style(
+    prefix = "#" + ${prefix},
+    defaultColor = "#555",
+    defaultWidth = 1,
+    defaultType = 'solid'
+) }}
 
 #${prefix} shadowStyle(Object)
 
 [axisPointer.type](~tooltip.axisPointer.type) 为 `'shadow'` 时有效。
 
-{{ use: partial-area-style(prefix="#" + ${prefix}, defaultColor="'rgba(150,150,150,0.3)") }}
-
-
-
-
+{{ use: partial-area-style(
+    prefix = "#" + ${prefix},
+    defaultColor = "'rgba(150,150,150,0.3)"
+) }}
 
 
 
@@ -315,3 +298,4 @@ label 距离轴的距离。
     axisValueLabel: '文本'
 }
 ```
+

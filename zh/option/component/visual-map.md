@@ -1,12 +1,13 @@
 
-{{target: component-visual-map}}
+{{ target: component-visual-map }}
 
 # visualMap(Array|Object)
 
 `visualMap` 是视觉映射组件，用于进行『视觉编码』，也就是将数据映射到视觉元素（视觉通道）。
 
 视觉元素可以是：<br>
-{{use: partial-visual-map-visual-type}}
+
+{{ use: partial-visual-map-visual-type() }}
 
 `visualMap` 组件可以定义多个，从而可以同时对数据中的多个维度进行视觉映射。
 
@@ -56,21 +57,15 @@ series: {
 
 `visualMap` 是由 ECharts2 中的 `dataRange` 组件改名以及扩展而来。ECharts3里 `option` 中的 `dataRange` 配置项仍然被兼容，会自动转换成 `visualMap` 配置项。在option中推荐写 `visualMap` 而非 `dataRange`。
 
+{{ use: component-visual-map-continuous() }}
 
-
-{{import: component-visual-map-continuous}}
-{{import: component-visual-map-piecewise}}
-
-
+{{ use: component-visual-map-piecewise() }}
 
 
 
 
+{{ target: partial-visual-map-range }}
 
-
-
-
-{{target: partial-visual-map-range}}
 `${rangeType}` 能定义目标系列（参见 [${visualMapName}.seriesIndex](~${visualMapName}.seriesIndex)）视觉形式，也同时定义了 `${visualMapName}` 本身的视觉样式。通俗来讲就是，假如 `${visualMapName}`控制的是散点图，那么 `${rangeType}` 同时定义了散点图的 `颜色`、`尺寸` 等，也定义了 `${visualMapName}` 本身的 `颜色`、`尺寸` 等。这二者能对应上。
 
 定义方式，例如：
@@ -185,8 +180,7 @@ visual value 的取值范围：
 
 + `图形类别（symbol）`：
 
-    {{ use: partial-icon }}
-
+{{ use: partial-icon() }}
 
 **✦ 视觉通道 -- 查表映射 ✦**
 
@@ -226,8 +220,7 @@ visualMap: {
 
 
 
-
-{{target: partial-visual-map-merge}}
+{{ target: partial-visual-map-merge }}
 
 **✦ 修改视觉编码 ✦**
 
@@ -262,9 +255,7 @@ chart.setOption(option); // option设置回 ${componentMainType}
 
 
 
-
-
-{{target: partial-visual-map-inRange-outOfRange}}
+{{ target: partial-visual-map-inRange-outOfRange }}
 
 ##${prefix} inRange(Object)
 
@@ -272,25 +263,23 @@ chart.setOption(option); // option设置回 ${componentMainType}
 
 可选的视觉元素有：
 
-{{use: partial-visual-map-visual-type}}
+{{ use: partial-visual-map-visual-type() }}
 
 ---
 
-{{use: partial-visual-map-range(
-    rangeType='inRange',
-    visualMapName=${visualMapName},
-    galleryEditorPath=${galleryEditorPath}
-)}}
+{{ use: partial-visual-map-range(
+    rangeType = 'inRange',
+    visualMapName = ${visualMapName}
+) }}
 
 ---
 
-{{use: partial-visual-map-merge(
-    componentMainType='visualMap'
-)}}
+{{ use: partial-visual-map-merge(
+    componentMainType = 'visualMap'
+) }}
 
 **注意**，inRange 没有指定，则会默认会设置 color: `['#f6efa6', '#d88273', '#bf444c']`，如果你不想要这个color，可以
 `inRange: {color: null}` 来去除。
-
 
 ##${prefix} outOfRange(Object)
 
@@ -298,32 +287,29 @@ chart.setOption(option); // option设置回 ${componentMainType}
 
 可选的视觉元素有：
 
-{{use: partial-visual-map-visual-type}}
+{{ use: partial-visual-map-visual-type() }}
 
 ---
 
-{{use: partial-visual-map-range(
-    rangeType='outOfRange',
-    visualMapName=${visualMapName},
-    galleryEditorPath=${galleryEditorPath}
-)}}
+{{ use: partial-visual-map-range(
+    rangeType = 'outOfRange',
+    visualMapName = ${visualMapName}
+) }}
 
 ---
 
-{{use: partial-visual-map-merge(
-    componentMainType='visualMap'
-)}}
+{{ use: partial-visual-map-merge(
+    componentMainType = 'visualMap'
+) }}
 
 
 
 
-{{target: partial-visual-map-common}}
-
+{{ target: partial-visual-map-common }}
 
 ## show(boolean) = true
 
 是否显示 ${visualMapName} 组件。如果设置为 `false`，不会显示，但是数据映射的功能还存在。
-
 
 ## dimension(number)
 
@@ -344,13 +330,11 @@ chart.setOption(option); // option设置回 ${componentMainType}
 
 默认取 `data` 中最后一个维度。
 
-
 ## seriesIndex(number|Array)
 
 指定取哪个系列的数据，即哪个系列的 [series.data](~series.data)。
 
 默认取所有系列。
-
 
 ## hoverLink(boolean) = true
 
@@ -358,62 +342,50 @@ chart.setOption(option); // option设置回 ${componentMainType}
 
 反之，鼠标悬浮到图表中的图形元素上时，在 `visualMap` 组件的相应位置会有三角提示其所对应的数值。
 
-
-{{use: partial-visual-map-inRange-outOfRange(
-    prefix="",
-    visualMapName=${visualMapName},
-    galleryEditorPath=${galleryEditorPath}
-)}}
-
+{{ use: partial-visual-map-inRange-outOfRange(
+    prefix = "",
+    visualMapName = ${visualMapName}
+) }}
 
 ## controller(Object)
 
 visualMap 组件中，`控制器` 的 `inRange` `outOfRange` 设置。如果没有这个 `controller` 设置，`控制器` 会使用外层的 `inRange` `outOfRange` 设置；如果有这个 `controller` 设置，则会采用这个设置。适用于一些控制器视觉效果需要特殊定制或调整的场景。
 
-{{use: partial-visual-map-inRange-outOfRange(
-    prefix="#",
-    visualMapName=${visualMapName},
-    galleryEditorPath=${galleryEditorPath}
-)}}
-
-
-
-{{ use: partial-rect-layout(
-    componentName="visualMap ",
-    defaultZ="4",
-    defaultLeft="0",
-    defaultRight="auto",
-    defaultTop="auto",
-    defaultBottom="0"
+{{ use: partial-visual-map-inRange-outOfRange(
+    prefix = "#",
+    visualMapName = ${visualMapName}
 ) }}
 
-
-
+{{ use: partial-rect-layout(
+    componentName = "visualMap ",
+    defaultZ = "4",
+    defaultLeft = "0",
+    defaultRight = "auto",
+    defaultTop = "auto",
+    defaultBottom = "0"
+) }}
 
 ## orient(string) = 'vertical'
 
 如何放置 visualMap 组件，水平（`'horizontal'`）或者竖直（`'vertical'`）。
 
-
 ## padding(number|Array) = 5
 
-{{ use: partial-padding(componentName=${visualMapName})}}
-
+{{ use: partial-padding(
+    componentName = ${visualMapName}
+) }}
 
 ## backgroundColor(Color) = 'rgba(0,0,0,0)'
 
 背景色。
 
-
 ## borderColor(Color) = '#ccc'
 
 边框颜色。
 
-
 ## borderWidth(number) = 0
 
 边框线宽，单位px。
-
 
 ## color(Array) = ['#bf444c', '#d88273', '#f6efa6']
 
@@ -421,11 +393,11 @@ visualMap 组件中，`控制器` 的 `inRange` `outOfRange` 设置。如果没�
 
 如果要使用，则须注意，`color`属性中的顺序是由数值 `大` 到 `小`，但是 [${visualMapName}.inRange](~${visualMapName}.inRange) 或 [${visualMapName}.outOfRange](~${visualMapName}.outOfRange) 中 `color` 的顺序，总是由数值 `小` 到 `大`。二者不一致。
 
-
 ## textStyle(Object)
 
-{{ use:partial-simple-text-style(
-    prefix='##',
-    name='visualMap ',
-    defaultColor='#333'
+{{ use: partial-simple-text-style(
+    prefix = '##',
+    name = 'visualMap ',
+    defaultColor = '#333'
 ) }}
+

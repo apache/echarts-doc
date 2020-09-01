@@ -26,6 +26,7 @@
     "concurrently": "^5.2.0",
     "copy-dir": "^0.3.0",
     "css-loader": "^3.5.3",
+    "diff": "^4.0.2",
     "file-loader": "^4.3.0",
     "fs-extra": "^8.1.0",
     "glob": "^6.0.3",

@@ -1,5 +1,5 @@
 
-{{target: component-single-axis}}
+{{ target: component-single-axis }}
 
 # singleAxis(Object)
 
@@ -7,14 +7,16 @@
 
 ~[700x500](${galleryViewPath}scatter-single-axis&edit=1&reset=1)
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 {{ use: partial-rect-layout-width-height(
-    componentName="single",
-    defaultLeft="'5%'",
-    defaultTop="'5%'",
-    defaultRight="'5%'",
-    defaultBottom="'5%'"
+    componentName = "single",
+    defaultLeft = "'5%'",
+    defaultTop = "'5%'",
+    defaultRight = "'5%'",
+    defaultBottom = "'5%'"
 ) }}
 
 ## orient(string) = 'horizontal'
@@ -22,16 +24,11 @@
 轴的朝向，默认水平朝向，可以设置成 `'vertical'` 垂直朝向。
 
 {{ use: axis-common(
-    prefix='#',
-    componentType='singleAxis',
-    axisTypeDefault="'value'",
-    hasSplitLineAndArea=true,
-    galleryViewPath=${galleryViewPath},
-    galleryEditorPath=${galleryEditorPath}
-)}}
+    prefix = '#',
+    componentType = 'singleAxis',
+    axisTypeDefault = "'value'",
+    hasSplitLineAndArea = true
+) }}
 
+{{ use: partial-tooltip-in-coords() }}
 
-{{use: partial-tooltip-in-coords(
-    galleryViewPath=${galleryViewPath},
-    galleryEditorPath=${galleryEditorPath}
-)}}

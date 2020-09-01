@@ -1,5 +1,5 @@
 
-{{target: series-effectScatter}}
+{{ target: series-effectScatter }}
 
 # series.effectScatter(Object)
 
@@ -26,7 +26,9 @@ const option = {
 
 ## type(string) = 'effectScatter'
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 {{ use: partial-series-name() }}
 
@@ -49,70 +51,81 @@ const option = {
 + `'emphasis'` 高亮（hover）的时候显示特效。
 
 ## rippleEffect(Object)
+
 涟漪特效相关配置。
+
 ### color(string)
-{{ use: partial-version(version = "4.4.0") }}
+
+{{ use: partial-version(
+    version = "4.4.0"
+) }}
 
 <ExampleUIControlColor />
 
 涟漪的颜色，默认为散点的颜色。
+
 ### period(number) = 4
 
 <ExampleUIControlNumber min="0" default="4" step="0.1" />
 
 动画的周期，秒数。
+
 ### scale(number) = 2.5
 
 <ExampleUIControlNumber min="1" default="2.5" step="0.1" />
 
 动画中波纹的最大缩放比例。
+
 ### brushType(string) = 'fill'
 
 <ExampleUIControlEnum options="stroke,fill" default="fill" />
 
 波纹的绘制方式，可选 `'stroke'` 和 `'fill'`。
 
-{{use: partial-coord-sys(
-    seriesType="bar",
-    coordSysDefault="'cartesian2d'",
-    cartesian2d=true,
-    polar=true,
-    geo=true,
-    calendar=true
-)}}
-
-{{ use:partial-symbol(
-    seriesType="effectScatter",
-    defaultSymbol="'circle'",
-    defaultSymbolSize=10,
-    prefix="#",
-    hasCallback=true
+{{ use: partial-coord-sys(
+    seriesType = "bar",
+    coordSysDefault = "'cartesian2d'",
+    cartesian2d = true,
+    polar = true,
+    geo = true,
+    calendar = true
 ) }}
 
-{{ use: partial-cursor }}
+{{ use: partial-symbol(
+    seriesType = "effectScatter",
+    defaultSymbol = "'circle'",
+    defaultSymbolSize = 10,
+    prefix = "#",
+    hasCallback = true
+) }}
+
+{{ use: partial-cursor() }}
 
 ## label(Object)
-{{use:partial-label-desc}}
-{{use:partial-label(
-    prefix="##",
-    defaultPosition="'inside'",
-    formatter=true
-)}}
 
-## labelLayout(Object|Function)
-{{ use: partial-label-layout(
-    prefix="##"
+{{ use: partial-label-desc() }}
+
+{{ use: partial-label(
+    prefix = "##",
+    defaultPosition = "'inside'",
+    formatter = true
 ) }}
 
+## labelLayout(Object|Function)
+
+{{ use: partial-label-layout(
+    prefix = "##"
+) }}
 
 ## itemStyle(Object)
-{{use:partial-item-style-desc}}
-{{use:partial-item-style(
-    prefix="##",
-    useColorPalatte=true,
-    hasCallback=true
-)}}
 
+{{ use: partial-item-style-desc() }}
+
+{{ use: partial-item-style(
+    prefix = "##",
+    useColorPalatte = true,
+    hasCallback = true
+) }}
 
 ## emphasis(Object)
 
@@ -120,55 +133,55 @@ const option = {
 
 ### label(Object)
 
-{{use:partial-label(
-    prefix="###",
-    formatter=true
-)}}
+{{ use: partial-label(
+    prefix = "###",
+    formatter = true
+) }}
 
 ### itemStyle(Object)
 
-{{use:partial-item-style(
-    prefix="###",
-    useColorPalatte=true,
-    hasCallback=true
-)}}
+{{ use: partial-item-style(
+    prefix = "###",
+    useColorPalatte = true,
+    hasCallback = true
+) }}
 
-{{ use: partial-seriesLayoutBy }}
+{{ use: partial-seriesLayoutBy() }}
 
-{{ use: partial-datasetIndex }}
+{{ use: partial-datasetIndex() }}
 
-{{use:partial-series-dimensions(
-    prefix="#"
-)}}
+{{ use: partial-series-dimensions(
+    prefix = "#"
+) }}
 
-{{use:partial-series-encode(
-    prefix="#"
-)}}
-
+{{ use: partial-series-encode(
+    prefix = "#"
+) }}
 
 ## data(Array)
 
-{{ use: partial-2d-data-desc(
-    galleryEditorPath = ${galleryEditorPath}
-) }}
+{{ use: partial-2d-data-desc() }}
 
-{{ use:partial-symbol(
-    seriesType="effectScatter",
-    defaultSymbol="'circle'",
-    defaultSymbolSize=4,
-    prefix="##",
-    name="单个数据"
+{{ use: partial-symbol(
+    seriesType = "effectScatter",
+    defaultSymbol = "'circle'",
+    defaultSymbolSize = 4,
+    prefix = "##",
+    name = "单个数据"
 ) }}
 
 ### label(Object)
 
-{{ use:partial-label(
-    prefix="###",
-    defaultPosition="inside"
+{{ use: partial-label(
+    prefix = "###",
+    defaultPosition = "inside"
 ) }}
 
 ### itemStyle(Object)
-{{use:partial-item-style(prefix="###")}}
+
+{{ use: partial-item-style(
+    prefix = "###"
+) }}
 
 ### emphasis(Object)
 
@@ -176,38 +189,36 @@ const option = {
 
 #### label(Object)
 
-{{ use:partial-label(prefix="####") }}
+{{ use: partial-label(
+    prefix = "####"
+) }}
 
 #### itemStyle(Object)
 
-{{use:partial-item-style(prefix="####")}}
-
-
-{{use: partial-tooltip-in-series-data(
-    galleryViewPath=${galleryViewPath}
-)}}
-
-
-{{use: partial-marker(
-    prefix="#",
-    seriesType="effectScatter",
-    hasCoord=true,
-    hasType=true
-)}}
-
-{{use:partial-z-zlevel(
-    prefix="#"
+{{ use: partial-item-style(
+    prefix = "####"
 ) }}
 
-{{ use:partial-silent(
-    prefix="#"
+{{ use: partial-tooltip-in-series-data() }}
+
+{{ use: partial-marker(
+    prefix = "#",
+    seriesType = "effectScatter",
+    hasCoord = true,
+    hasType = true
 ) }}
 
-{{use: partial-animation(
-    prefix="#",
-    galleryEditorPath=${galleryEditorPath}
-)}}
+{{ use: partial-z-zlevel(
+    prefix = "#"
+) }}
 
-{{use: partial-tooltip-in-series(
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-silent(
+    prefix = "#"
+) }}
+
+{{ use: partial-animation(
+    prefix = "#"
+) }}
+
+{{ use: partial-tooltip-in-series() }}
+

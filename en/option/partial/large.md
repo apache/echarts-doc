@@ -1,4 +1,5 @@
-{{target: partial-large }}
+
+{{ target: partial-large }}
 
 #${prefix} large(boolean) = ${defaultLarge|default(false)}
 
@@ -11,3 +12,4 @@ But when the optimization enabled, the style of single data item can't be custom
 #${prefix} largeThreshold(number) = ${defaultLargeThreshold|default(2000)}
 
 The threshold enabling the drawing optimization.
+

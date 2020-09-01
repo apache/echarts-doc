@@ -1,4 +1,5 @@
-{{target: partial-large }}
+
+{{ target: partial-large }}
 
 #${prefix} large(boolean) = ${defaultLarge|default(false)}
 
@@ -15,3 +16,4 @@
 <ExampleUIControlNumber min="1" default="${defaultLargeThreshold|default(2000)}" />
 
 开启绘制优化的阈值。
+

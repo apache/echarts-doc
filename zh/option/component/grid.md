@@ -1,5 +1,5 @@
 
-{{target: component-grid}}
+{{ target: component-grid }}
 
 # grid(Object)
 
@@ -48,7 +48,9 @@ const option = {
 
 </ExampleBaseOption>
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 ## show(boolean) = false
 
@@ -57,11 +59,11 @@ const option = {
 是否显示直角坐标系网格。
 
 {{ use: partial-rect-layout-width-height(
-    componentName="grid ",
-    defaultLeft="'10%'",
-    defaultTop=60,
-    defaultRight="'10%'",
-    defaultBottom=60
+    componentName = "grid ",
+    defaultLeft = "'10%'",
+    defaultTop = 60,
+    defaultRight = "'10%'",
+    defaultBottom = 60
 ) }}
 
 ## containLabel(boolean) = false
@@ -77,9 +79,11 @@ grid 区域是否包含坐标轴的[刻度标签](~yAxis.axisLabel)。
     + `grid.left` `grid.right` `grid.top` `grid.bottom` `grid.width` `grid.height` 决定的是包括了坐标轴标签在内的所有内容所形成的矩形的位置。
     + 这常用于『防止标签溢出』的场景，标签溢出指的是，标签长度动态变化时，可能会溢出容器或者覆盖其他组件。
 
-{{ use:partial-component-common-style(componentName="网格", prefix='#', needShow=true) }}
+{{ use: partial-component-common-style(
+    componentName = "网格",
+    prefix = '#',
+    needShow = true
+) }}
 
-{{use: partial-tooltip-in-coords(
-    galleryViewPath=${galleryViewPath},
-    galleryEditorPath=${galleryEditorPath}
-)}}
+{{ use: partial-tooltip-in-coords() }}
+

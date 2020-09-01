@@ -1,5 +1,5 @@
 
-{{target: component-brush}}
+{{ target: component-brush }}
 
 # brush(Object)
 
@@ -39,7 +39,7 @@ The following types of brushes are supported: `rect`, `polygon`, `lineX`, `lineY
 
 **Relationship between brush-selecting and coordinates**
 
-{{use: partial-brush-coord}}
+{{ use: partial-brush-coord() }}
 
 <br>
 
@@ -71,7 +71,7 @@ Please refer to [action.brush](api.html#action.brush) for more information.
 
 **brushLink**
 
-{{use: partial-brush-brushLink (galleryViewPath=${galleryViewPath})}}
+{{ use: partial-brush-brushLink() }}
 
 Please refer to [brush.brushLink](~brush.brushLink).
 
@@ -83,8 +83,7 @@ Please refer to [brush.brushLink](~brush.brushLink).
 
 **throttle / debounce**
 
-{{use: partial-brush-throttle (galleryViewPath=${galleryViewPath})}}
-
+{{ use: partial-brush-throttle() }}
 
 <br>
 
@@ -101,19 +100,19 @@ Refer to [brush.inBrush](~brush.inBrush) and [brush.outOfBrush](~brush.outOfBrus
 
 Here is the configuration in detail.
 
-
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 ## toolbox(Array) = ['rect', 'polygon', 'keep', 'clear']
 
 Use the buttons in toolbox.
 
-{{use: partial-brush-toolbox-buttons}}
-
+{{ use: partial-brush-toolbox-buttons() }}
 
 ## brushLink(Array|string) = null
 
-{{use: partial-brush-brushLink (galleryViewPath=${galleryViewPath})}}
+{{ use: partial-brush-brushLink() }}
 
 ## seriesIndex(Array|number|string) = 'all'
 
@@ -127,27 +126,25 @@ Assigns which of the series can use brush selecting, whose value can be:
 
 Assigns which of the geo can use brush selecting.
 
-{{use: partial-brush-coord}}
+{{ use: partial-brush-coord() }}
 
 ## xAxisIndex(Array|number|string) = null
 
 Assigns which of the xAxisIndex can use brush selecting.
 
-{{use: partial-brush-coord}}
+{{ use: partial-brush-coord() }}
 
 ## yAxisIndex(Array|number|string) = null
 
 Assigns which of the yAxisIndex can use brush selecting.
 
-{{use: partial-brush-coord}}
-
+{{ use: partial-brush-coord() }}
 
 ## brushType(string) = 'rect'
 
 Default type of brush.
 
-{{use: partial-brush-type}}
-
+{{ use: partial-brush-type() }}
 
 ## brushMode(string) = 'single'
 
@@ -174,13 +171,13 @@ Default brush style, whose value is:
 
 ## throttleType(string) = 'fixRate'
 
-{{use: partial-brush-throttle (galleryViewPath=${galleryViewPath})}}
+{{ use: partial-brush-throttle() }}
 
 ## throttleDelay(number) = 0
 
 `0` for disabling throttle.
 
-{{use: partial-brush-throttle (galleryViewPath=${galleryViewPath})}}
+{{ use: partial-brush-throttle() }}
 
 ## removeOnClick(boolean) = true
 
@@ -192,11 +189,9 @@ Defines visual effects of items in selection.
 
 Available visual effects include:
 
-{{use: partial-visual-map-visual-type}}
+{{ use: partial-visual-map-visual-type() }}
 
 In most cases, inBrush can be left unassigned, in which case default visual configuration remains.
-
-
 
 ## outOfBrush(Object)
 
@@ -204,7 +199,7 @@ Defines visual effects of items out of selection.
 
 Available visual effects include:
 
-{{use: partial-visual-map-visual-type}}
+{{ use: partial-visual-map-visual-type() }}
 
 **Note:** If `outOfBrush` is not assigned, `color` will be set to be `'#ddd'` by default. If the color is not desired, you can use:
 
@@ -224,24 +219,7 @@ z-index of brush cover box. It can be adjust when incorrect overlap occurs.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{{target: partial-brush-coord}}
+{{ target: partial-brush-coord }}
 
 `brush` can be set to be *global*, or *belonging to a particular coordinate*.
 
@@ -297,7 +275,10 @@ option = {
 };
 ```
 
-{{target: partial-brush-brushLink}}
+
+
+
+{{ target: partial-brush-brushLink }}
 
 Links interaction between selected items in different series.
 
@@ -333,7 +314,9 @@ option = {
 ```
 
 
-{{target: partial-brush-throttle}}
+
+
+{{ target: partial-brush-throttle }}
 
 By default, `brushSelected` is always triggered when selection-box is selected or moved, to tell the outside about the event.
 
@@ -349,7 +332,7 @@ In this [example](${galleryViewPath}scatter-map-brush&edit=1&reset=1), `debounce
 
 
 
-{{target: partial-brush-toolbox-buttons}}
+{{ target: partial-brush-toolbox-buttons }}
 
 Buttons in toolbox that is related to brush includes:
 
@@ -361,7 +344,9 @@ Buttons in toolbox that is related to brush includes:
 + `'clear'`: for clearing all selections.
 
 
-{{target: partial-brush-type}}
+
+
+{{ target: partial-brush-type }}
 
 + `'rect'`: for selection-box in rectangle shape;
 + `'polygon'`: for selection-box in polygon shape;

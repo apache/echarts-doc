@@ -1,5 +1,5 @@
 
-{{target: series-radar}}
+{{ target: series-radar }}
 
 # series.radar(Object)
 
@@ -49,7 +49,9 @@ const option = {
 
 ## type(string) = 'radar'
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 {{ use: partial-series-name() }}
 
@@ -57,58 +59,84 @@ const option = {
 
 雷达图所使用的 [radar](~radar) 组件的 index。
 
-{{ use:partial-symbol(
-    seriesType="radar",
-    defaultSymbol="'circle'",
-    defaultSymbolSize=4,
-    prefix="#",
-    hasCallback=true
+{{ use: partial-symbol(
+    seriesType = "radar",
+    defaultSymbol = "'circle'",
+    defaultSymbolSize = 4,
+    prefix = "#",
+    hasCallback = true
 ) }}
 
 ## label(Object)
-{{use: partial-label-desc}}
 
-{{use: partial-label(
-    prefix="##",
-    defaultPosition="'top'",
-    formatter=true
-)}}
+{{ use: partial-label-desc() }}
+
+{{ use: partial-label(
+    prefix = "##",
+    defaultPosition = "'top'",
+    formatter = true
+) }}
 
 ## labelLayout(Object|Function)
+
 {{ use: partial-label-layout(
-    prefix="##"
+    prefix = "##"
 ) }}
 
 ## itemStyle(Object)
+
 折线拐点标志的样式。
-{{use: partial-item-style(
-    prefix="##",
-    useColorPalatte=true,
-    hasCallback=true
-)}}
+
+{{ use: partial-item-style(
+    prefix = "##",
+    useColorPalatte = true,
+    hasCallback = true
+) }}
 
 ## lineStyle(Object)
+
 线条样式。
-{{use:partial-line-style(prefix="##")}}
+
+{{ use: partial-line-style(
+    prefix = "##"
+) }}
 
 ## areaStyle(Object)
+
 区域填充样式。
-{{use: partial-area-style(prefix="##")}}
+
+{{ use: partial-area-style(
+    prefix = "##"
+) }}
 
 ## emphasis(Object)
-高亮的样式设置
-### itemStyle(Object)
-{{use: partial-item-style(prefix="###")}}
-### label(Object)
-{{use: partial-label(
-    prefix="###",
-    formatter=true
-)}}
-### lineStyle(Object)
-{{use: partial-line-style(prefix="###")}}
-### areaStyle(Object)
-{{use: partial-area-style(prefix="###")}}
 
+高亮的样式设置
+
+### itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "###"
+) }}
+
+### label(Object)
+
+{{ use: partial-label(
+    prefix = "###",
+    formatter = true
+) }}
+
+### lineStyle(Object)
+
+{{ use: partial-line-style(
+    prefix = "###"
+) }}
+
+### areaStyle(Object)
+
+{{ use: partial-area-style(
+    prefix = "###"
+) }}
 
 ## data(Array)
 
@@ -130,71 +158,96 @@ data : [
 其中的`value`项数组是具体的数据，每个值跟 [radar.indicator](~radar.indicator) 一一对应。
 
 ### name(string)
+
 数据项名称
 
 ### value(number)
+
 单个数据项的数值。
 
-{{ use:partial-symbol(
-    defaultSymbol="'circle'",
-    defaultSymbolSize=4,
-    prefix="##",
-    name="单个数据"
+{{ use: partial-symbol(
+    defaultSymbol = "'circle'",
+    defaultSymbolSize = 4,
+    prefix = "##",
+    name = "单个数据"
 ) }}
 
 ### label(Object)
+
 单个拐点文本的样式设置。
+
 {{ use: partial-label(
-    prefix="###",
-    defaultPosition="top"
+    prefix = "###",
+    defaultPosition = "top"
 ) }}
 
 ### itemStyle(Object)
+
 单个拐点标志的样式设置。
-{{use: partial-item-style(prefix="###")}}
+
+{{ use: partial-item-style(
+    prefix = "###"
+) }}
 
 ### lineStyle(Object)
+
 单项线条样式。
-{{use:partial-line-style(prefix="###")}}
+
+{{ use: partial-line-style(
+    prefix = "###"
+) }}
 
 ### areaStyle(Object)
+
 单项区域填充样式。
-{{use: partial-area-style(prefix="###")}}
+
+{{ use: partial-area-style(
+    prefix = "###"
+) }}
 
 ### emphasis(Object)
+
 单个数据项样式的高亮设置。
+
 #### label(Object)
+
 {{ use: partial-label(
-    prefix="####", defaultPosition="top"
+    prefix = "####",
+    defaultPosition = "top"
 ) }}
+
 #### itemStyle(Object)
-{{use: partial-item-style(prefix="####")}}
+
+{{ use: partial-item-style(
+    prefix = "####"
+) }}
+
 #### lineStyle(Object)
-{{use: partial-line-style(prefix="####")}}
+
+{{ use: partial-line-style(
+    prefix = "####"
+) }}
+
 #### areaStyle(Object)
-{{use: partial-area-style(prefix="####")}}
 
-
-
-{{use: partial-tooltip-in-series-data(
-    galleryViewPath=${galleryViewPath}
-)}}
-
-
-{{use:partial-z-zlevel(
-    prefix="#",
-    componentName="雷达图"
+{{ use: partial-area-style(
+    prefix = "####"
 ) }}
 
-{{ use:partial-silent(
-    prefix="#"
+{{ use: partial-tooltip-in-series-data() }}
+
+{{ use: partial-z-zlevel(
+    prefix = "#",
+    componentName = "雷达图"
 ) }}
 
-{{use: partial-animation(
-    prefix="#",
-    galleryEditorPath=${galleryEditorPath}
-)}}
+{{ use: partial-silent(
+    prefix = "#"
+) }}
 
-{{use: partial-tooltip-in-series(
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-animation(
+    prefix = "#"
+) }}
+
+{{ use: partial-tooltip-in-series() }}
+

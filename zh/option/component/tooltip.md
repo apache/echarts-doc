@@ -1,5 +1,5 @@
 
-{{target: component-tooltip}}
+{{ target: component-tooltip }}
 
 # tooltip(Object)
 
@@ -7,8 +7,7 @@
 
 ---
 
-{{use: partial-tooltip-introduction}}
-
+{{ use: partial-tooltip-introduction() }}
 
 <ExampleBaseOption name="tooltip" title="提示框" title-en="Tooltip">
 var base = +new Date(2016, 9, 3);
@@ -118,11 +117,9 @@ const option = {
 };
 </ExampleBaseOption>
 
-{{use: partial-tooltip-coords-common(
-    prefix='#',
-    galleryViewPath=${galleryViewPath}
-)}}
-
+{{ use: partial-tooltip-coords-common(
+    prefix = '#'
+) }}
 
 ## showContent(boolean) = true
 
@@ -198,7 +195,9 @@ const option = {
 
 <ExampleUIControlBoolean default="false" />
 
-{{ use: partial-version(version="4.7.0") }}
+{{ use: partial-version(
+    version = "4.7.0"
+) }}
 
 是否将 tooltip 的 DOM 节点添加为 HTML 的 `<body>` 的子节点。只有当 [renderMode](~tooltip.renderMode) 为 `'html'` 是有意义的。
 
@@ -208,13 +207,14 @@ const option = {
 
 注：CSS transform 的场景，这也可以使用。
 
-
 ## transitionDuration(number) = 0.4
 
 <ExampleUIControlNumber min="0" step="0.1" default="0.4" />
 
 提示框浮层的移动动画过渡时间，单位是 s，设置为 0 的时候会紧跟着鼠标移动。
 
-
-{{ use: partial-tooltip-common(scope='global', prefix='#') }}
+{{ use: partial-tooltip-common(
+    scope = 'global',
+    prefix = '#'
+) }}
 

@@ -1,5 +1,5 @@
 
-{{target: component-dataset}}
+{{ target: component-dataset }}
 
 # dataset(Object)
 
@@ -7,9 +7,9 @@ ECharts 4 开始支持了 `数据集`（`dataset`）组件用于单独的数据�
 
 关于 `dataset` 的详情，请参见[教程](tutorial.html#%E4%BD%BF%E7%94%A8%20dataset%20%E7%AE%A1%E7%90%86%E6%95%B0%E6%8D%AE)。
 
-
-
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 ## source(Array|Object)
 
@@ -49,11 +49,9 @@ ECharts 4 开始支持了 `数据集`（`dataset`）组件用于单独的数据�
 
 关于 `dataset` 的详情，请参见[教程](tutorial.html#%E4%BD%BF%E7%94%A8%20dataset%20%E7%AE%A1%E7%90%86%E6%95%B0%E6%8D%AE)。
 
-
-{{use:partial-series-dimensions(
-    prefix="#"
-)}}
-
+{{ use: partial-series-dimensions(
+    prefix = "#"
+) }}
 
 ## sourceHeader(boolean)
 
@@ -65,27 +63,27 @@ ECharts 4 开始支持了 `数据集`（`dataset`）组件用于单独的数据�
 
 注意：“第一行/列” 的意思是，如果 [series.seriesLayoutBy](~series.seriesLayoutBy) 设置为 `'column'`（默认值），则取第一行，如果 `series.seriesLayoutBy` 设置为 `'row'`，则取第一列。
 
-
 ## transform(Object)
 
-{{ use: partial-data-transform-tutorial-ref }}
+{{ use: partial-data-transform-tutorial-ref() }}
 
-{{ import: component-data-transform-filter }}
-{{ import: component-data-transform-sort }}
-{{ import: component-data-transform-external }}
+{{ use: component-data-transform-filter() }}
 
+{{ use: component-data-transform-sort() }}
+
+{{ use: component-data-transform-external() }}
 
 ## fromDatasetIndex(number)
 
 指定 [dataset.transform](~dataset.transform) 以哪个 dataset 作为输入。如果 [dataset.transform](~dataset.transform) 被指定了，但是 `fromDatasetIndex` 和 `fromDatasetId` 都没有被指定，那么默认会使用 `fromDatasetIndex: 0`.
 
-{{ use: partial-data-transform-tutorial-ref }}
+{{ use: partial-data-transform-tutorial-ref() }}
 
 ## fromDatasetId(string)
 
 指定 [dataset.transform](~dataset.transform) 以哪个 dataset 作为输入。
 
-{{ use: partial-data-transform-tutorial-ref }}
+{{ use: partial-data-transform-tutorial-ref() }}
 
 ## fromTransformResult(number)
 
@@ -93,5 +91,5 @@ ECharts 4 开始支持了 `数据集`（`dataset`）组件用于单独的数据�
 
 大多数场景下，transform 只会产出一个结果，所以大多数情况下 `fromTransformResult` 并不需要指定。当不指定 `fromTransformResult` 时，默认使用 `fromTransformResult: 0`。
 
-{{ use: partial-data-transform-tutorial-ref }}
+{{ use: partial-data-transform-tutorial-ref() }}
 

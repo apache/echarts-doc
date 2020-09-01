@@ -1,9 +1,10 @@
+
 {{ target: partial-clip }}
 
 #${prefix|default('#')} clip(boolean) = ${defaultClip|default(true)}
 
 {{ use: partial-version(
-    version=${version|default("4.4.0")}
+    version = ${version|default("4.4.0")}
 ) }}
 
 If clip the overflow on the coordinate system. Clip results varies between series:
@@ -16,3 +17,4 @@ If clip the overflow on the coordinate system. Clip results varies between serie
 + Custom: Clip all the olverflowed.
 
 All these series have default value `true` except custom series. Set it to `false` if you don't want to clip.
+

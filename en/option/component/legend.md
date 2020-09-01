@@ -1,4 +1,5 @@
-{{target: component-legend}}
+
+{{ target: component-legend }}
 
 # legend(Object)
 
@@ -9,7 +10,6 @@ Legend component shows symbol, color and name of different series. You can click
 In ECharts 3, a single echarts instance may contain multiple legend components, which makes it easier for the layout of multiple legend components.
 
 If there have to be too many legend items, [vertically scrollable legend](${galleryEditorPath}pie-legend&edit=1&reset=1) or [horizontally scrollable legend](${galleryEditorPath}radar2&edit=1&reset=1) are options to paginate them. Check [legend.type](~legend.type) please.
-
 
 ## type(string)
 
@@ -35,13 +35,15 @@ When `'scroll'` used, these options below can be used for detailed configuration
 + [legend.animation](~legend.animation)
 + [legend.animationDurationUpdate](~legend.animationDurationUpdate)
 
-
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 ## show(boolean) = true
 
-
-{{use: partial-rect-layout-width-height(componentName="legend")}}
+{{ use: partial-rect-layout-width-height(
+    componentName = "legend"
+) }}
 
 ## orient(string) = 'horizontal'
 
@@ -62,7 +64,9 @@ Option:
 
 ## padding(number|Array) = 5
 
-{{ use: partial-padding(componentName="legend")}}
+{{ use: partial-padding(
+    componentName = "legend"
+) }}
 
 ## itemGap(number) = 10
 
@@ -122,7 +126,10 @@ selected: {
 
 Legend text style.
 
-{{ use: partial-text-style(componentName='legend', prefix='##') }}
+{{ use: partial-text-style(
+    componentName = 'legend',
+    prefix = '##'
+) }}
 
 ## tooltip(Object)
 
@@ -132,7 +139,7 @@ Tooltip configuration for legend tooltip, which is similar to [tooltip](~tooltip
 
 Icon of the legend items.
 
-{{ use: partial-icon }}
+{{ use: partial-icon() }}
 
 ## data(Array)
 
@@ -156,29 +163,25 @@ data: [{
 ```
 
 ### name(string)
+
 Name of legend, which should be the `name` value of a certain series. If it is a pie chart, legend name can also be the name of a single data item.
 
 ### icon(string)
 
 Icon of the legend.
 
-{{ use: partial-icon }}
+{{ use: partial-icon() }}
 
 ### textStyle(Object)
 
 Text style of legend.
 
 {{ use: partial-component-common-style(
-    componentName='legend',
-    prefix='#',
-    defaultBorderColor="'#ccc'",
-    hasBorderRadius=true
+    componentName = 'legend',
+    prefix = '#',
+    defaultBorderColor = "'#ccc'",
+    hasBorderRadius = true
 ) }}
-
-
-
-
-
 
 ## scrollDataIndex(number) = 0
 
@@ -198,7 +201,6 @@ The gap between page buttons and page info text.
 
 See [vertically scrollable legend](${galleryEditorPath}pie-legend&edit=1&reset=1) or [horizontally scrollable legend](${galleryEditorPath}radar2&edit=1&reset=1).
 
-
 ## pageButtonGap(number) = null
 
 It works when [legend.type](~legend.type) is `'scroll'`.
@@ -206,7 +208,6 @@ It works when [legend.type](~legend.type) is `'scroll'`.
 The gap between page buttons and legend items.
 
 See [vertically scrollable legend](${galleryEditorPath}pie-legend&edit=1&reset=1) or [horizontally scrollable legend](${galleryEditorPath}radar2&edit=1&reset=1).
-
 
 ## pageButtonPosition(string) = 'end'
 
@@ -218,7 +219,6 @@ The position of page buttons and page info. Optional values:
 + `'end'`: on the right or bottom.
 
 See [vertically scrollable legend](${galleryEditorPath}pie-legend&edit=1&reset=1) or [horizontally scrollable legend](${galleryEditorPath}radar2&edit=1&reset=1).
-
 
 ## pageFormatter(string|Function) = '{current}/{total}'
 
@@ -237,7 +237,6 @@ If `pageFormatter` is a function, it should return a string. The parameters is:
 
 See [vertically scrollable legend](${galleryEditorPath}pie-legend&edit=1&reset=1) or [horizontally scrollable legend](${galleryEditorPath}radar2&edit=1&reset=1).
 
-
 ## pageIcons(Object)
 
 It works when [legend.type](~legend.type) is `'scroll'`.
@@ -252,10 +251,9 @@ It should be an array, `[previous page button, next page button]`, `['M0,0L12,-1
 
 For the each item of the array,
 
-{{ use: partial-icon-image-path }}
+{{ use: partial-icon-image-path() }}
 
 See [vertically scrollable legend](${galleryEditorPath}pie-legend&edit=1&reset=1) or [horizontally scrollable legend](${galleryEditorPath}radar2&edit=1&reset=1).
-
 
 ### vertical(Array)
 
@@ -265,10 +263,9 @@ It should be an array, `[previous page button, next page button]`, `['M0,0L20,0L
 
 For the each item of the array,
 
-{{ use: partial-icon-image-path }}
+{{ use: partial-icon-image-path() }}
 
 See [vertically scrollable legend](${galleryEditorPath}pie-legend&edit=1&reset=1) or [horizontally scrollable legend](${galleryEditorPath}radar2&edit=1&reset=1).
-
 
 ## pageIconColor(string) = '#2f4554'
 
@@ -278,7 +275,6 @@ The color of page buttons.
 
 See [vertically scrollable legend](${galleryEditorPath}pie-legend&edit=1&reset=1) or [horizontally scrollable legend](${galleryEditorPath}radar2&edit=1&reset=1).
 
-
 ## pageIconInactiveColor(string) = '#aaa'
 
 It works when [legend.type](~legend.type) is `'scroll'`.
@@ -286,7 +282,6 @@ It works when [legend.type](~legend.type) is `'scroll'`.
 The color of page buttons when they are inactive.
 
 See [vertically scrollable legend](${galleryEditorPath}pie-legend&edit=1&reset=1) or [horizontally scrollable legend](${galleryEditorPath}radar2&edit=1&reset=1).
-
 
 ## pageIconSize(number|Array) = 15
 
@@ -296,7 +291,6 @@ The size of page buttons. It can be a number, or an array, like `[10, 3]`, repre
 
 See [vertically scrollable legend](${galleryEditorPath}pie-legend&edit=1&reset=1) or [horizontally scrollable legend](${galleryEditorPath}radar2&edit=1&reset=1).
 
-
 ## pageTextStyle(Object)
 
 It works when [legend.type](~legend.type) is `'scroll'`.
@@ -304,10 +298,10 @@ It works when [legend.type](~legend.type) is `'scroll'`.
 The text style of page info.
 
 {{ use: partial-simple-text-style(
-    componentName='图例页信息',
-    prefix='##',
-    defaultColor="#333"
-)}}
+    componentName = '图例页信息',
+    prefix = '##',
+    defaultColor = "#333"
+) }}
 
 ## animation(boolean)
 
@@ -317,25 +311,27 @@ Whether to use animation when page scrolls.
 
 Duration of the page scroll animation.
 
-
 ## emphasis(Object)
 
 ### selectorLabel(Object)
 
-{{ use: partial-version(version = "4.4.0") }}
+{{ use: partial-version(
+    version = "4.4.0"
+) }}
 
-{{use:partial-label(
-    prefix='###',
-    defaultShowLabel=true,
-    noPosition=true,
-    formatter=false,
-    formatter1d=false
-)}}
-
+{{ use: partial-label(
+    prefix = '###',
+    defaultShowLabel = true,
+    noPosition = true,
+    formatter = false,
+    formatter1d = false
+) }}
 
 ## selector(boolean|Array) = false
 
-{{ use: partial-version(version = "4.4.0") }}
+{{ use: partial-version(
+    version = "4.4.0"
+) }}
 
 The selector button in the legend component. Currently includes both a full selection and an inverse selection. The selector button doesn't display by default, the user can manually configure it.
 
@@ -363,32 +359,41 @@ selector: ['all', 'inverse']
 
 ## selectorLabel(Object)
 
-{{ use: partial-version(version = "4.4.0") }}
+{{ use: partial-version(
+    version = "4.4.0"
+) }}
 
 The text label style of the selector button, which is displayed by default.
 
-{{use:partial-label(
-    prefix='##',
-    defaultShowLabel=true,
-    noPosition=true,
-    formatter=false,
-    formatter1d=false
-)}}
+{{ use: partial-label(
+    prefix = '##',
+    defaultShowLabel = true,
+    noPosition = true,
+    formatter = false,
+    formatter1d = false
+) }}
 
 ## selectorPosition(string) = 'auto'
 
-{{ use: partial-version(version = "4.4.0") }}
+{{ use: partial-version(
+    version = "4.4.0"
+) }}
 
 The position of the selector button, which can be placed at the end or start of the legend component, the corresponding values are `'end'` and `'start'`. By default, when the legend is laid out horizontally, the selector is placed at the end of it, and when the legend is laid out vertically, the selector is placed at the start of it.
 
 ## selectorItemGap(number) = 7
 
-{{ use: partial-version(version = "4.4.0") }}
+{{ use: partial-version(
+    version = "4.4.0"
+) }}
 
 The gap between the selector button.
 
 ## selectorButtonGap(number) = 10
 
-{{ use: partial-version(version = "4.4.0") }}
+{{ use: partial-version(
+    version = "4.4.0"
+) }}
 
 The gap between selector button and legend component.
+

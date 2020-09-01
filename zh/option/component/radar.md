@@ -1,4 +1,5 @@
-{{target: component-radar}}
+
+{{ target: component-radar }}
 
 # radar(Object)
 
@@ -47,11 +48,13 @@ const option = {
 };
 </ExampleBaseOption>
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
-{{use: component-circular-layout(
-    defaultRadius="75%"
-)}}
+{{ use: component-circular-layout(
+    defaultRadius = "75%"
+) }}
 
 ## startAngle(number) = 90
 
@@ -77,14 +80,15 @@ formatter: function (value, indicator) {
     return '【' + value + '】';
 }
 ```
+
 ## textStyle(Object)
 
 {{ use: partial-text-style(
-    prefix='##',
-    defaultColor="'#333'",
-    noAlign=true,
-    noVerticalAlign=true
-)}}
+    prefix = '##',
+    defaultColor = "'#333'",
+    noAlign = true,
+    noVerticalAlign = true
+) }}
 
 ## nameGap(number) = 15
 
@@ -111,32 +115,32 @@ formatter: function (value, indicator) {
 是否是脱离 0 值比例。设置成 `true` 后坐标刻度不会强制包含零刻度。在双数值轴的散点图中比较有用。
 
 {{ use: partial-axis-common-axis-line(
-    prefix="#"
-)}}
+    prefix = "#"
+) }}
 
 {{ use: partial-axis-common-axis-tick(
-    prefix="#",
-    hasLabelInterval=false,
-    hasAlignWithLabel=false,
-    hasInside=false
+    prefix = "#",
+    hasLabelInterval = false,
+    hasAlignWithLabel = false,
+    hasInside = false
 ) }}
 
 {{ use: partial-axis-common-axis-label(
-    prefix="#",
-    hasLabelInterval=false,
-    hasInside=false
+    prefix = "#",
+    hasLabelInterval = false,
+    hasInside = false
 ) }}
 
 {{ use: partial-axis-common-split-line(
-    prefix="#",
-    hasLabelInterval=false
-)}}
+    prefix = "#",
+    hasLabelInterval = false
+) }}
 
 {{ use: partial-axis-common-split-area(
-    prefix="#",
-    hasLabelInterval=false,
-    defaultShow=true
-)}}
+    prefix = "#",
+    hasLabelInterval = false,
+    defaultShow = true
+) }}
 
 ## indicator(Array)
 
@@ -174,3 +178,4 @@ indicator: [
 <ExampleUIControlColor />
 
 标签特定的颜色。
+

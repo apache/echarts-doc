@@ -1,3 +1,4 @@
+
 {{ target: component-calendar }}
 
 # calendar(Object)
@@ -38,15 +39,18 @@ Calendar coordinate system can be configured to adapt to container size, which i
 
 ---
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 {{ use: partial-rect-layout-width-height(
-    componentName="calendar",
-    defaultLeft="80",
-    defaultTop="60"
+    componentName = "calendar",
+    defaultLeft = "80",
+    defaultTop = "60"
 ) }}
 
 ## range(number|string|Array)
+
 Required, range of Calendar coordinates, support multiple formats.
 
 Examples:
@@ -65,7 +69,6 @@ range: ['2017-01-02', '2017-02-23']
 range: ['2017-01', '2017-02']
 
 ```
-
 
 ## cellSize(number|Array) = 20
 
@@ -95,17 +98,18 @@ cellSize: ['auto', 40]
 ```
 
 ## width(number|string) = auto
+
 The height of calendar coordinates.
 
 Note: `cellSize` is 20 by default. If `width` is set,
   `cellSize[0]` will be forced to `auto`;
 
 ## height(number|string) = auto
+
 The height of calendar coordinates.
 
 Note: `cellSize` is 20 by default. If `height` is set,
   `cellSize[1]` will be forced to `auto`;
-
 
 ## orient(string) = 'horizontal'
 
@@ -115,8 +119,8 @@ Options:
 + 'horizontal'
 + 'vertical'
 
-
 ## splitLine(Object)
+
 Calendar coordinates splitLine style.
 
 ### show(boolean) = ${defaultShow|default(true)}
@@ -126,13 +130,12 @@ Set this to `false` to prevent the splitLine from showing
 ### lineStyle(Object)
 
 {{ use: partial-line-style(
-    prefix='###',
-    defaultColor="#000",
-    defaultWidth=1,
-    defaultType="solid",
-    name="splitLine"
+    prefix = '###',
+    defaultColor = "#000",
+    defaultWidth = 1,
+    defaultType = "solid",
+    name = "splitLine"
 ) }}
-
 
 Examples:
 ```js
@@ -149,16 +152,16 @@ calendar: [{
 ```
 
 ## itemStyle(Object)
+
 Every rect style in calendar coordinates.
 
-{{ use:partial-item-style(
-    prefix="##",
-    name="calendar",
-    defaultColor="#fff",
-    defaultBorderWidth=1,
-    defaultBorderColor="'#ccc'"
+{{ use: partial-item-style(
+    prefix = "##",
+    name = "calendar",
+    defaultColor = "#fff",
+    defaultBorderWidth = 1,
+    defaultBorderColor = "'#ccc'"
 ) }}
-
 
 Examples:
 ```js
@@ -172,6 +175,7 @@ calendar: [{
 ```
 
 ## dayLabel(Object)
+
 Day style in calendar coordinates.
 
 ### show(boolean) = true
@@ -179,6 +183,7 @@ Day style in calendar coordinates.
 Set this to `false` to prevent dayLabel from showing.
 
 ### firstDay(number) = 0
+
 A week from the beginning of the week, the default starting on Sunday.
 
 Examples:
@@ -194,9 +199,11 @@ calendar: [{
 ```
 
 ### margin(number) = 0
+
 The margin between the day label and the axis line.
 
 ### position(string) = 'start'
+
 Position of week, at the beginning or end of the range.
 
 Options:
@@ -204,6 +211,7 @@ Options:
 + 'end'
 
 ### nameMap(string|Array) = 'en'
+
 Week text content, defaults to 'en';
 It supports Chinese, English, and custom;
 index 0 always means Sunday;
@@ -227,10 +235,13 @@ calendar: [{
 }]
 ```
 
-{{ use: partial-text-style(prefix='##', defaultColor="#000",) }}
-
+{{ use: partial-text-style(
+    prefix = '##',
+    defaultColor = "#000"
+) }}
 
 ## monthLabel(Object)
+
 Month label in calendar coordinates.
 
 ### show(boolean) = true
@@ -238,6 +249,7 @@ Month label in calendar coordinates.
 Set this to `false` to prevent monthLabel from showing.
 
 ### align(string) = 'center'
+
 Set the month text location in the month interval.
 
 Options:
@@ -245,9 +257,11 @@ Options:
 + 'left'
 
 ### margin(number) = 5
+
 The margin between the month label and the axis line.
 
 ### position(string) = 'start'
+
 Position of week, at the beginning or end of the range.
 
 Options:
@@ -255,6 +269,7 @@ Options:
 + 'end'
 
 ### nameMap(string|Array) = 'en'
+
 Month text content, defaults to 'en';
 It supports Chinese, English, and custom;
 Index 0 always means Jan;
@@ -295,6 +310,7 @@ calendar: [{
 ```
 
 ### formatter(string|Function) = null
+
 Formatter of month text label, which supports string template and callback function.
 
 
@@ -326,10 +342,13 @@ formatter: function (param) {
 }
 ```
 
-{{ use: partial-text-style(prefix='##', defaultColor="#000") }}
-
+{{ use: partial-text-style(
+    prefix = '##',
+    defaultColor = "#000"
+) }}
 
 ## yearLabel(Object)
+
 Year label in calendar coordinates.
 
 ### show(boolean) = true
@@ -337,9 +356,11 @@ Year label in calendar coordinates.
 Set this to `false` to stop yearLabel from showing
 
 ### margin(number) = 30
+
 The margin between the month label and the axis line.
 
 ### position(string)
+
 Position of year.
 
 Default:
@@ -353,6 +374,7 @@ Options:
 + 'right'
 
 ### formatter(string|Function) = null
+
 Formatter of year text label, which supports string template and callback function.
 
 By default, the current range of the year, if the interval across the year, showing the first year and the last year
@@ -382,11 +404,13 @@ formatter: function (param) {
 }
 ```
 
-{{ use: partial-text-style(prefix='##') }}
-
-
-{{ use:partial-silent(
-    prefix="#",
-    defaultFontWeight="bolder",
-    defaultFontSize="20"
+{{ use: partial-text-style(
+    prefix = '##'
 ) }}
+
+{{ use: partial-silent(
+    prefix = "#",
+    defaultFontWeight = "bolder",
+    defaultFontSize = "20"
+) }}
+

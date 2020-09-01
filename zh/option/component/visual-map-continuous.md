@@ -1,5 +1,5 @@
 
-{{target: component-visual-map-continuous}}
+{{ target: component-visual-map-continuous }}
 
 # visualMap.continuous(Object)
 
@@ -19,7 +19,9 @@ option = {"tooltip":{},"xAxis":{"type":"category","data":[0,1,2,3,4,5,6,7,8,9,10
 
 类型为连续型。
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 ## min(number)
 
@@ -27,13 +29,11 @@ option = {"tooltip":{},"xAxis":{"type":"category","data":[0,1,2,3,4,5,6,7,8,9,10
 
 指定 visualMapContinuous 组件的允许的最小值。`'min'` 必须用户指定。`[visualMap.min, visualMax.max]` 形成了视觉映射的『定义域』。
 
-
 ## max(number)
 
 <ExampleUIControlNumber />
 
 指定 visualMapContinuous 组件的允许的最大值。`'max'` 必须用户指定。`[visualMap.min, visualMax.max]` 形成了视觉映射的『定义域』。
-
 
 ## range(Array)
 
@@ -81,7 +81,6 @@ chart.setOption({visualMap: {range: null}}); // 再把 range 设为 null。
 
 `getOption` 得到的 `range` 总是 `Array`，不会为 `null` 或 `undefined`。
 
-
 ## calculable(boolean) = false
 
 <ExampleUIControlBoolean />
@@ -89,7 +88,6 @@ chart.setOption({visualMap: {range: null}}); // 再把 range 设为 null。
 是否显示拖拽用的手柄（手柄能拖拽调整选中范围）。
 
 （注：为兼容 ECharts2，当 [visualMap.type](~visualMap.type) 未指定时，假如设置了 `'calculable'`，则`type`自动被设置为`'continuous'`，无视 [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber) 等设置。所以，建议使用者不要不指定 [visualMap.type](~visualMap.type)，否则表意不清晰。）
-
 
 ## realtime(boolean) = true
 
@@ -100,7 +98,6 @@ chart.setOption({visualMap: {range: null}}); // 再把 range 设为 null。
 + 如果为`ture`则拖拽手柄过程中实时更新图表视图。
 
 + 如果为`false`则拖拽结束时，才更新视图。
-
 
 ## inverse(boolean) = false
 
@@ -115,13 +112,11 @@ chart.setOption({visualMap: {range: null}}); // 再把 range 设为 null。
 
 当`inverse`为`true`时，相反。
 
-
 ## precision(number) = 0
 
 <ExampleUIControlNumber min="0" step="1" />
 
 数据展示的小数精度，默认为0，无小数点。
-
 
 ## itemWidth(number) = 20
 
@@ -129,13 +124,11 @@ chart.setOption({visualMap: {range: null}}); // 再把 range 设为 null。
 
 图形的宽度，即长条的宽度。
 
-
 ## itemHeight(number) = 140
 
 <ExampleUIControlNumber default="140" min="0" />
 
 图形的高度，即长条的高度。
-
 
 ## align(string) = 'auto'
 
@@ -149,13 +142,11 @@ chart.setOption({visualMap: {range: null}}); // 再把 range 设为 null。
 + `'top'` 手柄和label在下，orient 为 vertical 时有效。
 + `'bottom'` 手柄和label在上，orient 为 vertical 时有效。
 
-
 ## text(Array) = null
 
 两端的文本，如 `['High', 'Low']`。[参见例子](${galleryEditorPath}doc-example/map-visualMap-continuous-text&edit=1&reset=1)。
 
 `text` 中的顺序，其实试试就知道。若要看详细的规则，参见 [visualMap.inverse](~visualMap.inverse)。
-
 
 ## textGap(number) = 10
 
@@ -163,12 +154,9 @@ chart.setOption({visualMap: {range: null}}); // 再把 range 设为 null。
 
 两端文字主体之间的距离，单位为px。参见 [visualMap-continuous.text](~visualMap-continuous.text)
 
-
 {{ use: partial-visual-map-common(
-    visualMapName='visualMap-continuous',
-    galleryEditorPath=${galleryEditorPath}
+    visualMapName = 'visualMap-continuous'
 ) }}
-
 
 ## formatter(string|Function)
 
@@ -182,3 +170,4 @@ formatter: function (value) {
     return 'aaaa' + value; // 范围标签显示内容。
 }
 ```
+

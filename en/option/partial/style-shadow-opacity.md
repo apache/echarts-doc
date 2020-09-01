@@ -1,4 +1,5 @@
-{{target:partial-style-shadow}}
+
+{{ target: partial-style-shadow }}
 
 #${prefix} shadowBlur(number) = ${defaultShadowBlur}
 
@@ -12,39 +13,38 @@ For example:
 }
 ```
 
-{{if: ${needShow} }}
+{{ if: ${needShow} }}
 **Attention**: This property works only if `show: true` is configured and `backgroundColor` is defined other than `transparent`.
-{{/if}}
-
+{{ /if }}
 
 #${prefix} shadowColor(Color) = ${defaultShadowColor}
 
 Shadow color. Support same format as `color`.
 
-{{if: ${needShow} }}
+{{ if: ${needShow} }}
 **Attention**: This property works only if `show: true` configured.
-{{/if}}
-
+{{ /if }}
 
 #${prefix} shadowOffsetX(number) = ${defaultShadowOffsetX|default(0)}
 
 Offset distance on the horizontal direction of shadow.
 
-{{if: ${needShow} }}
+{{ if: ${needShow} }}
 **Attention**: This property works only if `show: true` configured.
-{{/if}}
-
+{{ /if }}
 
 #${prefix} shadowOffsetY(number) = ${defaultShadowOffsetY|default(0)}
 
 Offset distance on the vertical direction of shadow.
 
-{{if: ${needShow} }}
+{{ if: ${needShow} }}
 **Attention**: This property works only if `show: true` configured.
-{{/if}}
+{{ /if }}
 
 
-{{target:partial-style-opacity}}
+
+
+{{ target: partial-style-opacity }}
 
 #${prefix} opacity(number) = ${defaultOpacity}
 
@@ -53,21 +53,23 @@ Opacity of the component. Supports value from 0 to 1, and the component will not
 
 
 
-{{target:partial-style-shadow-opacity}}
+{{ target: partial-style-shadow-opacity }}
 
-{{use: partial-style-shadow(
-    prefix=${prefix},
-    defaultOpacity=${defaultOpacity},
-    defaultShadowColor=${defaultShadowColor},
-    defaultShadowBlur=${defaultShadowBlur},
-    defaultShadowOffsetX=${defaultShadowOffsetX},
-    defaultShadowOffsetY=${defaultShadowOffsetY}
-)}}
-{{use: partial-style-opacity(
-    prefix=${prefix},
-    defaultOpacity=${defaultOpacity},
-    defaultShadowColor=${defaultShadowColor},
-    defaultShadowBlur=${defaultShadowBlur},
-    defaultShadowOffsetX=${defaultShadowOffsetX},
-    defaultShadowOffsetY=${defaultShadowOffsetY}
-)}}
+{{ use: partial-style-shadow(
+    prefix = ${prefix},
+    defaultOpacity = ${defaultOpacity},
+    defaultShadowColor = ${defaultShadowColor},
+    defaultShadowBlur = ${defaultShadowBlur},
+    defaultShadowOffsetX = ${defaultShadowOffsetX},
+    defaultShadowOffsetY = ${defaultShadowOffsetY}
+) }}
+
+{{ use: partial-style-opacity(
+    prefix = ${prefix},
+    defaultOpacity = ${defaultOpacity},
+    defaultShadowColor = ${defaultShadowColor},
+    defaultShadowBlur = ${defaultShadowBlur},
+    defaultShadowOffsetX = ${defaultShadowOffsetX},
+    defaultShadowOffsetY = ${defaultShadowOffsetY}
+) }}
+

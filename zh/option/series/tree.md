@@ -1,5 +1,5 @@
 
-{{target: series-tree}}
+{{ target: series-tree }}
 
 # series.tree(Object)
 
@@ -62,18 +62,20 @@ const option = {
 
 ## type(string) = 'tree'
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 {{ use: partial-series-name() }}
 
 {{ use: partial-rect-layout-width-height(
-    componentName='tree',
-    defaultLeft: '12%',
-    defaultRight: '12%',
-    defaultTop: '12%',
-    defaultBottom: '12%',
-    defaultWidth: 'null',
-    defaultHeight: 'null'
+    componentName = 'tree',
+    defaultLeft = '12%',
+    defaultRight = '12%',
+    defaultTop = '12%',
+    defaultBottom = '12%',
+    defaultWidth = 'null',
+    defaultHeight = 'null'
 ) }}
 
 ## layout(string) = 'orthogonal'
@@ -91,7 +93,6 @@ const option = {
 
 ~[800x800](${galleryViewPath}tree-radial&edit=1&reset=1)
 
-
 ## orient(string) = 'LR'
 
 <ExampleUIControlEnum options="LR,RL,TB,BT" default="LR" />
@@ -99,26 +100,25 @@ const option = {
 
 树图中 `正交布局` 的方向，也就是说只有在 `layout = 'orthogonal'` 的时候，该配置项才生效。对应有 `水平` 方向的 `从左到右`，`从右到左`；以及垂直方向的 `从上到下`，`从下到上`。取值分别为 `'LR'` , `'RL'`, `'TB'`, `'BT'`。**注意**，之前的配置项值 `'horizontal'` 等同于 `'LR'`， `'vertical'` 等同于 `'TB'`。
 
-
-{{ use:partial-symbol(
-    seriesType="tree",
-    defaultSymbol="'emptyCircle'",
-    defaultSymbolSize=7,
-    prefix="#",
-    hasCallback=true
+{{ use: partial-symbol(
+    seriesType = "tree",
+    defaultSymbol = "'emptyCircle'",
+    defaultSymbolSize = 7,
+    prefix = "#",
+    hasCallback = true
 ) }}
-
 
 ## edgeShape(string) = 'curve'
 
 <ExampleUIControlEnum options="curve,polyline" default="curve" />
 
-{{ use: partial-version(version = "4.7.0") }}
+{{ use: partial-version(
+    version = "4.7.0"
+) }}
 
 树图在 `正交布局` 下，边的形状。分别有曲线和折线两种，对应的取值是 `curve` 和 `polyline`.
 
 **注意：该配置项只在 `正交布局` 下有效，在经向布局下的开发环境中会报错。**
-
 
 ## edgeForkPosition(string) = '50%'
 
@@ -128,10 +128,9 @@ const option = {
 
 **注意：该配置项只有在 `edgeShape = 'polyline'` 时才有效。**
 
-
 ## roam(boolean|string) = false
-{{ use: partial-roam }}
 
+{{ use: partial-roam() }}
 
 ## expandAndCollapse(boolean) = true
 
@@ -151,53 +150,59 @@ const option = {
 
 树图中每个节点的样式，其中 [itemStyle.color](~series-tree.itemStyle.color) 表示节点的填充色，用来区别当前节点所对应的子树折叠或展开的状态。
 
-{{use: partial-item-style(
-    prefix="##",
-    useColorPalatte=true,
-    defaultBorderWidth=1.5,
-    defaultBorderColor="'#c23531'"
-)}}
-
+{{ use: partial-item-style(
+    prefix = "##",
+    useColorPalatte = true,
+    defaultBorderWidth = 1.5,
+    defaultBorderColor = "'#c23531'"
+) }}
 
 ## label(Object)
 
 `label` 描述了每个节点所对应的文本标签的样式。
 
-{{use:partial-label(
-    prefix="##",
-    defaultShowLabel=true,
-    formatter1d=true
-)}}
-
-## labelLayout(Object|Function)
-{{ use: partial-label-layout(
-    prefix="##"
+{{ use: partial-label(
+    prefix = "##",
+    defaultShowLabel = true,
+    formatter1d = true
 ) }}
 
+## labelLayout(Object|Function)
+
+{{ use: partial-label-layout(
+    prefix = "##"
+) }}
 
 ## lineStyle(Object)
 
 定义了树图边的样式。
 
-{{use: partial-tree-line-style(prefix="##")}}
-
+{{ use: partial-tree-line-style(
+    prefix = "##"
+) }}
 
 ## emphasis(Object)
 
 树图中个图形和标签高亮的样式。
 
 ### itemStyle(Object)
-{{use: partial-item-style(prefix="###")}}
-### lineStyle(Object)
-{{use: partial-tree-line-style(
-    prefix="###"
-)}}
-### label(Object)
-{{use:partial-label(
-    prefix="###",
-    formatter1d=true
-)}}
 
+{{ use: partial-item-style(
+    prefix = "###"
+) }}
+
+### lineStyle(Object)
+
+{{ use: partial-tree-line-style(
+    prefix = "###"
+) }}
+
+### label(Object)
+
+{{ use: partial-label(
+    prefix = "###",
+    formatter1d = true
+) }}
 
 ## leaves(Object)
 
@@ -207,32 +212,37 @@ const option = {
 
 描述了叶子节点所对应的文本标签的样式。
 
-{{use:partial-label(
-    prefix="###",
-    defaultShowLabel=true,
-    formatter1d=true
-)}}
+{{ use: partial-label(
+    prefix = "###",
+    defaultShowLabel = true,
+    formatter1d = true
+) }}
 
 ### itemStyle(Object)
 
 树图中叶子节点的样式。
 
-{{use: partial-item-style(
-    prefix="###",
-    useColorPalatte=true
-)}}
-
+{{ use: partial-item-style(
+    prefix = "###",
+    useColorPalatte = true
+) }}
 
 ### emphasis(Object)
-叶子节点高亮的样式。
-#### label(Object)
-{{use:partial-label(
-    prefix="####",
-    formatter1d=true
-)}}
-#### itemStyle(Object)
-{{use: partial-item-style(prefix="####")}}
 
+叶子节点高亮的样式。
+
+#### label(Object)
+
+{{ use: partial-label(
+    prefix = "####",
+    formatter1d = true
+) }}
+
+#### itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "####"
+) }}
 
 ## data(Object)
 
@@ -277,45 +287,49 @@ const option = {
 
 该节点的样式。
 
-{{use:partial-item-style(prefix="###", useColorPalatte=true)}}
+{{ use: partial-item-style(
+    prefix = "###",
+    useColorPalatte = true
+) }}
 
 ### label(Object)
 
 该节点的标签。
 
-{{ use:partial-label(
-    prefix="###"
+{{ use: partial-label(
+    prefix = "###"
 ) }}
-
 
 ### emphasis(Object)
+
 高亮的节点样式
+
 #### label(Object)
-{{ use:partial-label(
-    prefix="####"
+
+{{ use: partial-label(
+    prefix = "####"
 ) }}
+
 #### itemStyle(Object)
-{{use:partial-item-style(prefix="####")}}
+
+{{ use: partial-item-style(
+    prefix = "####"
+) }}
+
+{{ use: partial-tooltip-in-series-data() }}
+
+{{ use: partial-animation(
+    prefix = "##",
+    defaultAnimationEasing = "'linear'",
+    defaultAnimationDuration = 1000
+) }}
+
+{{ use: partial-tooltip-in-series() }}
 
 
-{{use: partial-tooltip-in-series-data(
-    galleryViewPath=${galleryViewPath}
-)}}
 
 
-{{use: partial-animation(
-    prefix="##",
-    defaultAnimationEasing="'linear'",
-    defaultAnimationDuration=1000,
-    galleryEditorPath=${galleryEditorPath}
-)}}
-
-{{use: partial-tooltip-in-series(
-    galleryViewPath=${galleryViewPath}
-)}}
-
-
-{{target: partial-tree-line-style}}
+{{ target: partial-tree-line-style }}
 
 #${prefix} color(Color) = "'#ccc'"
 
@@ -335,4 +349,7 @@ const option = {
 
 树图边的曲度。
 
-{{use: partial-style-shadow(prefix=${prefix})}}
+{{ use: partial-style-shadow(
+    prefix = ${prefix}
+) }}
+

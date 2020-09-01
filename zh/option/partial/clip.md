@@ -1,3 +1,4 @@
+
 {{ target: partial-clip }}
 
 #${prefix|default('#')} clip(boolean) = ${defaultClip|default(true)}
@@ -5,7 +6,7 @@
 <ExampleUIControlBoolean default="${defaultClip|default(true)}" />
 
 {{ use: partial-version(
-    version=${version|default("4.4.0")}
+    version = ${version|default("4.4.0")}
 ) }}
 
 是否裁剪超出坐标系部分的图形，具体裁剪效果根据系列决定：
@@ -18,3 +19,4 @@
 + 自定义系列：裁掉所有超出坐标系的部分
 
 除了自定义系列，其它系列的默认值都为 true，及开启裁剪，如果你觉得不想要裁剪的话，可以设置成 false 关闭。
+

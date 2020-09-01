@@ -1,8 +1,11 @@
-{{target:partial-focus-blur-scope}}
+
+{{ target: partial-focus-blur-scope }}
 
 ### focus(string) = 'none'
 
-{{ use: partial-version(version = "5.0.0") }}
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 在高亮图形时，是否淡出其它数据的图形已达到聚焦的效果。支持如下配置：
 
@@ -11,7 +14,7 @@
 + `'series'` 聚焦当前高亮的数据所在的系列的所有图形。
 {{ if: ${isGraph} }}
 + `'adjacency'` 聚焦关系图中的邻接点和边的图形
-{{ elif: ${isTree} }}
+{{ elif: ${isTree}   }}
 + `'ancestor'` 聚焦所有祖先节点
 + `'descendant'` 聚焦所有子孙节点
 {{ /if }}
@@ -31,10 +34,13 @@ emphasis: {
 
 ### blurScope(string) = 'coordinateSystem'
 
-{{ use: partial-version(version = "5.0.0") }}
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 在开启`focus`的时候，可以通过`blurScope`配置淡出的范围。支持如下配置
 
 + `'coordinateSystem'` 淡出范围为坐标系，默认使用该配置。
 + `'series'` 淡出范围为系列。
 + `'global'` 淡出范围为全局。
+

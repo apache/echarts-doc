@@ -1,5 +1,5 @@
 
-{{target: component-polar}}
+{{ target: component-polar }}
 
 # polar(Object)
 
@@ -67,15 +67,14 @@ const option = {
 };
 </ExampleBaseOption>
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
-{{use: component-circular-layout(
-    componentName="极坐标系",
-    disableArray=false
-)}}
+{{ use: component-circular-layout(
+    componentName = "极坐标系",
+    disableArray = false
+) }}
 
+{{ use: partial-tooltip-in-coords() }}
 
-{{use: partial-tooltip-in-coords(
-    galleryViewPath=${galleryViewPath},
-    galleryEditorPath=${galleryEditorPath}
-)}}

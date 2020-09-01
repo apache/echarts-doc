@@ -1,5 +1,5 @@
 
-{{target: series-sankey}}
+{{ target: series-sankey }}
 
 # series.sankey(Object)
 
@@ -18,29 +18,27 @@ The Sankey diagram encodes each `node` of the raw data into a small rectangle. D
 
 In addition, the edge between two small rectangles in the diagram encodes the `link` of the raw data. The width of edge is shown proportionally to the `value` of `link`.
 
-
-
 ## type(string) = 'sankey'
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 {{ use: partial-series-name() }}
 
 {{ use: partial-rect-layout-width-height(
-    componentName='sankey',
-    defaultLeft: '5%',
-    defaultRight: '20%',
-    defaultTop: '5%',
-    defaultBottom: '5%',
-    defaultWidth: 'null',
-    defaultHeight: 'null'
+    componentName = 'sankey',
+    defaultLeft = '5%',
+    defaultRight = '20%',
+    defaultTop = '5%',
+    defaultBottom = '5%',
+    defaultWidth = 'null',
+    defaultHeight = 'null'
 ) }}
-
 
 ## nodeWidth(number) = 20
 
 The node width of rectangle in Sankey diagram.
-
 
 ## nodeGap(number) = 8
 
@@ -83,7 +81,6 @@ Optional values:
 + `'allEdges'`: When hovering over a node, all of the adjacent edges and nodes are highlighted. When hovering over an edge, the adjacent nodes are highlighted.
 + `'outEdges'`: When hovering over a node, the outcoming edges and its adjacent nodes are highlighted. When hovering over an edge, the adjacent nodes are highlighted.
 + `'inEdges'`: When hovering over a node, the incoming edges and its adjacent nodes are highlighted. When hovering over an edge, the adjacent nodes are highlighted.
-
 
 ## levels(Array)
 
@@ -134,58 +131,69 @@ Specify which layer is set, value starts from 0.
 
 Specify the node style of the specific layer.
 
-{{use:partial-item-style(prefix="###", useColorPalatte=true)}}
+{{ use: partial-item-style(
+    prefix = "###",
+    useColorPalatte = true
+) }}
 
 ### lineStyle(Object)
 
 Specify the outEdge style of the specific layer. in which [lineStyle.color](~series-sankey.lineStyle.color) can be assigned to the value of `'source'` of `'target'`, then the OutEdge will automatically take the source node or target node color as its own color.
 
-{{use: partial-sankey-line-style(prefix="###")}}
-
+{{ use: partial-sankey-line-style(
+    prefix = "###"
+) }}
 
 ## label(Object)
 
 `label` describes the text label style in each rectangular node.
 
-{{use:partial-label(
-    prefix="##",
-    defaultShowLabel=true,
-    defaultPosition="'right'",
-    formatter1d=true
-)}}
+{{ use: partial-label(
+    prefix = "##",
+    defaultShowLabel = true,
+    defaultPosition = "'right'",
+    formatter1d = true
+) }}
 
 ## itemStyle(Object)
 
 The style of node rectangle in Sankey diagram.
 
-{{use: partial-item-style(
-    prefix="##",
-    useColorPalatte=true,
-    defaultBorderWidth=1,
-    defaultBorderColor="'#aaa'"
-)}}
-
+{{ use: partial-item-style(
+    prefix = "##",
+    useColorPalatte = true,
+    defaultBorderWidth = 1,
+    defaultBorderColor = "'#aaa'"
+) }}
 
 ## lineStyle(Object)
 
 The edge style of Sankey diagram, in which [lineStyle.color](~series-sankey.lineStyle.color) can be assigned to the value of `'source'` of `'target'`, then the edge will automatically take the source node or target node color as its own color.
 
-{{use: partial-sankey-line-style(prefix="##")}}
-
+{{ use: partial-sankey-line-style(
+    prefix = "##"
+) }}
 
 ## emphasis(Object)
-### label(Object)
-{{use:partial-label(
-    prefix="###",
-    formatter1d=true
-)}}
-### itemStyle(Object)
-{{use: partial-item-style(prefix="###")}}
-### lineStyle(Object)
-{{use: partial-sankey-line-style(
-    prefix="###"
-)}}
 
+### label(Object)
+
+{{ use: partial-label(
+    prefix = "###",
+    formatter1d = true
+) }}
+
+### itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "###"
+) }}
+
+### lineStyle(Object)
+
+{{ use: partial-sankey-line-style(
+    prefix = "###"
+) }}
 
 ## data(Array)
 
@@ -219,31 +227,35 @@ The layer of the node, value starts from 0.
 ### itemStyle(Object)
 
 The style of this node.
-{{use:partial-item-style(prefix="###", useColorPalatte=true)}}
+
+{{ use: partial-item-style(
+    prefix = "###",
+    useColorPalatte = true
+) }}
 
 ### label(Object)
 
 The lable style of this node.
-{{ use:partial-label(
-    prefix="###"
+
+{{ use: partial-label(
+    prefix = "###"
 ) }}
 
 ### emphasis(Object)
 
 #### itemStyle(Object)
 
-{{use:partial-item-style(prefix="####")}}
+{{ use: partial-item-style(
+    prefix = "####"
+) }}
 
 #### label(Object)
 
-{{ use:partial-label(
-    prefix="####"
+{{ use: partial-label(
+    prefix = "####"
 ) }}
 
-{{use: partial-tooltip-in-series-data(
-    galleryViewPath=${galleryViewPath}
-)}}
-
+{{ use: partial-tooltip-in-series-data() }}
 
 ## nodes(Array)
 
@@ -278,40 +290,39 @@ The value of edge, which decides the width of edge.
 ### lineStyle(Object)
 
 The line stlye of edge.
-{{use:partial-sankey-line-style(
-    prefix="###"
-)}}
+
+{{ use: partial-sankey-line-style(
+    prefix = "###"
+) }}
 
 ### emphasis(Object)
 
 #### lineStyle(Object)
 
-{{ use:partial-sankey-line-style(
-    prefix="####"
+{{ use: partial-sankey-line-style(
+    prefix = "####"
 ) }}
 
 ## edges(Array)
 
 Equals to [links](~series-sankey.links)
 
-{{ use:partial-silent(
-    prefix="#"
-)}}
+{{ use: partial-silent(
+    prefix = "#"
+) }}
 
-{{use: partial-animation(
-    prefix="#",
-    defaultAnimationEasing="'linear'",
-    defaultAnimationDuration=1000,
-    galleryEditorPath=${galleryEditorPath}
-)}}
+{{ use: partial-animation(
+    prefix = "#",
+    defaultAnimationEasing = "'linear'",
+    defaultAnimationDuration = 1000
+) }}
 
-
-{{use: partial-tooltip-in-series(
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-tooltip-in-series() }}
 
 
-{{target: partial-sankey-line-style}}
+
+
+{{ target: partial-sankey-line-style }}
 
 #${prefix} color(Color) = "'#314656'"
 
@@ -325,4 +336,7 @@ The opacity of the edge in Sankey diagram.
 
 The curveness of the edge in Sankey diagram.
 
-{{use: partial-style-shadow(prefix=${prefix})}}
+{{ use: partial-style-shadow(
+    prefix = ${prefix}
+) }}
+

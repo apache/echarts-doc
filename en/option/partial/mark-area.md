@@ -1,28 +1,44 @@
+
 {{ target: partial-mark-area }}
 
 #${prefix} markArea(Object)
 
 Used to mark an area in chart. For example, mark a time interval.
 
-{{ use: partial-silent(prefix="#" + ${prefix}) }}
+{{ use: partial-silent(
+    prefix = "#" + ${prefix}
+) }}
 
 ##${prefix} label(Object)
+
 Label in mark area.
+
 {{ use: partial-label(
-    prefix=${prefix} + '##'
+    prefix = ${prefix} + '##'
 ) }}
+
 ###${prefix} emphasis(Object)
+
 {{ use: partial-label(
-    prefix=${prefix} + '###'
+    prefix = ${prefix} + '###'
 ) }}
 
 ##${prefix} itemStyle(Object)
-Style of the mark area.
-{{ use: partial-item-style(prefix="##" + ${prefix}) }}
-###${prefix} emphasis(Object)
-{{ use: partial-item-style(prefix="###" + ${prefix}) }}
 
-##${prefix} data
+Style of the mark area.
+
+{{ use: partial-item-style(
+    prefix = "##" + ${prefix}
+) }}
+
+###${prefix} emphasis(Object)
+
+{{ use: partial-item-style(
+    prefix = "###" + ${prefix}
+) }}
+
+##${prefix} data(*)
+
 The scope of the area is defined by `data`, which is an array with two item, representing the left-top point and the right-bottom point of rectangle area. Each item can be defined as follows:
 
 1. Specify the coordinate in screen coordinate system using [x](~series-${seriesType}.markArea.data.0.x), [y](~series-${seriesType}.markArea.data.0.y), where the unit is pixel (e.g., the value is `5`), or percent (e.g., the value is `'35%'`).
@@ -37,12 +53,12 @@ The scope of the area is defined by `data`, which is an array with two item, rep
 
 The priority follows as above if more than one above definition used.
 
-{{if: ${hasType} }}
+{{ if: ${hasType} }}
 
 {{ /if }}
 ```
 data: [
-    {{if: ${hasType} }}
+    {{ if: ${hasType} }}
     [
         {
             name: 'From average to max',
@@ -52,7 +68,7 @@ data: [
             type: 'max'
         }
     ],
-    {{/if}}{{if: ${hasCoord} }}
+    {{ /if }}{{ if: ${hasCoord} }}
     [
         {
             name: 'Mark area between two points in data coordiantes',
@@ -78,7 +94,7 @@ data: [
             coord: ['max', 'max']
         }
     ],
-    {{/if}}[
+    {{ /if }}[
         {
             name: 'Mark area in two screen points',
             x: 100,
@@ -92,36 +108,43 @@ data: [
 ```
 
 ###${prefix} 0(Object)
+
 Specify the left-top point.
+
 {{ use: mark-area-data-item-item(
-    name="start",
-    prefix="###"+${prefix},
-    seriesType=${seriesType},
-    hasCoord=${hasCoord},
-    hasType=${hasType},
-    index=0
+    name = "start",
+    prefix = "###"+${prefix},
+    seriesType = ${seriesType},
+    hasCoord = ${hasCoord},
+    hasType = ${hasType},
+    index = 0
 ) }}
 
 ###${prefix} 1(Object)
+
 Specify the right-bottom point.
+
 {{ use: mark-area-data-item-item(
-    name="end",
-    prefix="###"+${prefix},
-    seriesType=${seriesType},
-    hasCoord=${hasCoord},
-    hasType=${hasType},
-    index=1
+    name = "end",
+    prefix = "###"+${prefix},
+    seriesType = ${seriesType},
+    hasCoord = ${hasCoord},
+    hasType = ${hasType},
+    index = 1
 ) }}
 
 {{ use: partial-animation(
-    prefix="#" + ${prefix},
-    defaultAnimation='false',
-    galleryEditorPath=${galleryEditorPath},
+    prefix = "#" + ${prefix},
+    defaultAnimation = 'false'
 ) }}
 
 
+
+
 {{ target: mark-area-data-item-item }}
+
 {{ if: ${hasType} }}
+
 #${prefix} type(string)
 
 Specify this item is on min or max or average value.
@@ -132,52 +155,69 @@ Specify this item is on min or max or average value.
 + `'average'` average value.
 {{ /if }}
 {{ if: ${hasCoord} }}
+
 #${prefix} valueIndex(number)
+
 Specify the dimension on which min, max, average are calculated,
 available when [type](~series-${seriesType}.markArea.data.type) used.
 The value can be `0` (means xAxis, radiusAxis) or `1` (means yAxis, angleAxis),
 using the dimension of the first axis by default.
 
 #${prefix} valueDim(string)
+
 Specify the dimension on which min, max, average are calculated,
 available when [type](~series-${seriesType}.markArea.data.type) used.
 The value can be the name of the dimension (for example, the value can be `x`, `angle` in line chart, and `open`, `close` in candlestick).
 
 #${prefix} coord(Array)
+
 The format is [start coordinate, end coordinate], where the coordinate system can be `x`, `y` on [cartesian](~grid), or `radius`, `angle` on [polar](~polar).
 
 {{ /if }}
 
 #${prefix} name(string) = '${name}'
+
 Name of the marker, which will display as a label.
 
 #${prefix} x(number)
+
 x value on screen coordinate system, can be pixel number (like `5`), or percent value (like `'20%'`).
 
 #${prefix} y(number)
+
 y value on screen coordinate system, can be pixel number (like `5`), or percent value (like `'20%'`).
 
 #${prefix} value(number)
+
 value of the item, not necessary.
 
 #${prefix} itemStyle(Object)
+
 Style of the item.
 `itemStyle` of start point and end point will be merged together.
+
 {{ use: partial-item-style(
-    prefix="#"+${prefix}
+    prefix = "#"+${prefix}
 ) }}
+
 ##${prefix} emphasis(Object)
+
 {{ use: partial-item-style(
-    prefix="##"+${prefix}
+    prefix = "##"+${prefix}
 ) }}
 
 #${prefix} label(Object)
+
 Label style of the item.
 Label style of start point and end point will be merged together.
+
 {{ use: partial-label(
-    prefix='#'+${prefix}
+    prefix = '#'+${prefix}
 ) }}
+
 ##${prefix} emphasis(Object)
+
 {{ use: partial-label(
-    prefix='##'+${prefix}
+    prefix = '##'+${prefix}
 ) }}
+

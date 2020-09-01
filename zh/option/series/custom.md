@@ -1,4 +1,5 @@
-{{target:series-custom}}
+
+{{ target: series-custom }}
 
 # series.custom(Object)
 
@@ -18,9 +19,7 @@
 <br>
 **开发者自定义渲染逻辑（renderItem 函数）**
 
-{{use: partial-custom-renderItem-common(
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-custom-renderItem-common() }}
 
 <br>
 **维度的映射（encode 和 dimensions 属性）**
@@ -51,8 +50,8 @@ series: {
 
 <br>
 **关于 `dataIndex` 和 `dataIndexInside` 的区别**
-{{use: partial-custom-dataIndex-dataIndexInside}}
 
+{{ use: partial-custom-dataIndex-dataIndexInside() }}
 
 <br>
 **Event listener**
@@ -86,32 +85,31 @@ chart.on('click', {element: 'aaa'}, function (params) {
 });
 ```
 
-
 ## type(string) = 'custom'
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 {{ use: partial-series-name() }}
 
 {{ use: partial-legend-hover-link() }}
 
 {{ use: partial-coord-sys(
-    seriesType="custom",
-    coordSysDefault="'cartesian2d'",
-    cartesian2d=true,
-    polar=true,
-    geo=true,
-    calendar=true,
-    none=true
+    seriesType = "custom",
+    coordSysDefault = "'cartesian2d'",
+    cartesian2d = true,
+    polar = true,
+    geo = true,
+    calendar = true,
+    none = true
 ) }}
 
 ## renderItem(Function)
 
-{{use: partial-custom-renderItem-common(
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-custom-renderItem-common() }}
 
-### arguments
+### arguments(*)
 
 renderItem 函数的参数。
 
@@ -178,8 +176,8 @@ renderItem 函数的第一个参数，含有：
 ```
 
 其中，关于 `dataIndex` 和 `dataIndexInside` 的区别：
-{{use: partial-custom-dataIndex-dataIndexInside}}
 
+{{ use: partial-custom-dataIndex-dataIndexInside() }}
 
 #### api(Object)
 
@@ -250,7 +248,6 @@ renderItem 函数的第二个参数。
 @return {string|number} 视觉映射的样式值。
 ```
 
-
 ##### barLayout(Function)
 
 当需要采用 barLayout 的时候，比如向柱状图上附加些东西，可以用这个方法得到 layout 信息。
@@ -278,7 +275,6 @@ renderItem 函数的第二个参数。
         offsetCenter: number bar 的偏移量，以bar中心为基准。
     }, ...]
 ```
-
 
 ##### currentSeriesIndices(Function)
 
@@ -325,7 +321,6 @@ renderItem 函数的第二个参数。
 @return {number} 得到当前 devicePixelRatio。
 ```
 
-
 ### return(Object)
 
 图形元素。每个图形元素是一个 object。详细信息参见：[graphic](~graphic.elements)。（width\height\top\bottom 不支持）
@@ -367,119 +362,105 @@ renderItem 函数的第二个参数。
 }
 ```
 
-
-{{use: partial-zr-graphic-elements(
-    prefix='##',
-    hostName='return',
-    symbolVisit='_',
-    symbolDeclare='_',
-    optionPath='series-custom.renderItem',
-    usageType='customSeries'
-)}}
-
-
+{{ use: partial-zr-graphic-elements(
+    prefix = '##',
+    hostName = 'return',
+    symbolVisit = '_',
+    symbolDeclare = '_',
+    optionPath = 'series-custom.renderItem',
+    usageType = 'customSeries'
+) }}
 
 ## itemStyle(Object)
 
-{{use:partial-item-style-desc}}
+{{ use: partial-item-style-desc() }}
 
-{{use:partial-item-style(
-    prefix="##",
-    useColorPalatte=true,
-    hasCallback=false
-)}}
-
-## labelLayout(Object|Function)
-{{ use: partial-label-layout(
-    prefix="##"
+{{ use: partial-item-style(
+    prefix = "##",
+    useColorPalatte = true,
+    hasCallback = false
 ) }}
 
+## labelLayout(Object|Function)
 
+{{ use: partial-label-layout(
+    prefix = "##"
+) }}
 
 ## emphasis(Object)
 
 高亮图形样式
 
 ### itemStyle(Object)
-{{use:partial-item-style(
-    prefix="###"
-)}}
 
+{{ use: partial-item-style(
+    prefix = "###"
+) }}
 
-{{use:partial-series-dimensions(
-    prefix="#"
-)}}
+{{ use: partial-series-dimensions(
+    prefix = "#"
+) }}
 
-{{use:partial-series-encode(
-    prefix="#"
-)}}
+{{ use: partial-series-encode(
+    prefix = "#"
+) }}
 
-{{ use: partial-seriesLayoutBy }}
+{{ use: partial-seriesLayoutBy() }}
 
-{{ use: partial-datasetIndex }}
+{{ use: partial-datasetIndex() }}
 
 ## data(Array)
 
-{{ use: partial-2d-data-desc(
-    galleryEditorPath = ${galleryEditorPath}
-)}}
+{{ use: partial-2d-data-desc() }}
 
 ### name(string)
+
 数据项名称。
 
 ### value(number)
+
 单个数据项的数值。
 
 ### itemStyle(Object)
-{{use:partial-item-style(
-    prefix="###"
-)}}
+
+{{ use: partial-item-style(
+    prefix = "###"
+) }}
 
 ### emphasis(Object)
 
 #### itemStyle(Object)
-{{use:partial-item-style(
-    prefix="####"
-)}}
 
-{{use: partial-tooltip-in-series-data(
-    galleryViewPath=${galleryViewPath}
-)}}
-
-
-{{use:partial-clip(
-    prefix="#",
-    defaultClip=false
+{{ use: partial-item-style(
+    prefix = "####"
 ) }}
 
-{{use:partial-z-zlevel(
-    prefix="#",
-    componentName="自定义图"
+{{ use: partial-tooltip-in-series-data() }}
+
+{{ use: partial-clip(
+    prefix = "#",
+    defaultClip = false
 ) }}
-{{ use:partial-silent(
-    prefix="#"
+
+{{ use: partial-z-zlevel(
+    prefix = "#",
+    componentName = "自定义图"
 ) }}
 
-{{use:partial-animation(
-    prefix="#",
-    galleryEditorPath=${galleryEditorPath}
-)}}
+{{ use: partial-silent(
+    prefix = "#"
+) }}
 
-{{use: partial-tooltip-in-series(
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-animation(
+    prefix = "#"
+) }}
 
-
-
+{{ use: partial-tooltip-in-series() }}
 
 
 
 
-
-
-
-
-{{target: partial-custom-renderItem-common}}
+{{ target: partial-custom-renderItem-common }}
 
 custom 系列需要开发者自己提供图形渲染的逻辑。这个渲染逻辑一般命名为 [renderItem](~series-custom.renderItem)。例如：
 
@@ -536,11 +517,8 @@ var option = {
 
 
 
+{{ target: partial-custom-dataIndex-dataIndexInside }}
 
-
-
-
-{{target: partial-custom-dataIndex-dataIndexInside}}
 + `dataIndex` 指的 `dataItem` 在原始数据中的 index。
 + `dataIndexInside` 指的是 `dataItem` 在当前数据窗口（参见 [dataZoom](~dataZoom)）中的 index。
 

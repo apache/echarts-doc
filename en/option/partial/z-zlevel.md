@@ -1,4 +1,5 @@
-{{target: partial-z-zlevel}}
+
+{{ target: partial-z-zlevel }}
 
 #${prefix|default("#")} zlevel(number) = ${defaultZLevel|default(0)}
 
@@ -13,3 +14,4 @@ Canvases with bigger `zlevel` will be placed on Canvases with smaller `zlevel`.
 `z` value of all graphical elements in ${componentName}, which controls order of drawing graphical components. Components with smaller `z` values may be overwritten by those with larger `z` values.
 
 `z` has a lower priority to `zlevel`, and will not create new Canvas.
+

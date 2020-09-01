@@ -1,28 +1,27 @@
+
 {{ target: partial-marker }}
 
+{{ use: partial-mark-point(
+    prefix = ${prefix},
+    seriesType = ${seriesType},
+    hasCoord = ${hasCoord},
+    hasType = ${hasType},
+    name = ${name}
+) }}
 
-{{use: partial-mark-point(
-    prefix=${prefix},
-    seriesType=${seriesType},
-    hasCoord=${hasCoord},
-    hasType=${hasType},
-    galleryEditorPath=${galleryEditorPath},
-    name=${name}
-)}}
-{{use: partial-mark-line(
-    prefix=${prefix},
-    seriesType=${seriesType},
-    hasCoord=${hasCoord},
-    hasType=${hasType},
-    galleryEditorPath=${galleryEditorPath}
-)}}
-{{use: partial-mark-area(
-    prefix=${prefix},
-    seriesType=${seriesType},
-    hasCoord=${hasCoord},
-    hasType=${hasType},
-    galleryEditorPath=${galleryEditorPath}
-)}}
+{{ use: partial-mark-line(
+    prefix = ${prefix},
+    seriesType = ${seriesType},
+    hasCoord = ${hasCoord},
+    hasType = ${hasType}
+) }}
+
+{{ use: partial-mark-area(
+    prefix = ${prefix},
+    seriesType = ${seriesType},
+    hasCoord = ${hasCoord},
+    hasType = ${hasType}
+) }}
 
 
 
@@ -56,3 +55,4 @@
     }
 }
 ```
+

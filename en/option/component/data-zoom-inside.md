@@ -1,4 +1,5 @@
-{{target: component-data-zoom-inside}}
+
+{{ target: component-data-zoom-inside }}
 
 # dataZoom.inside(Object)
 
@@ -18,21 +19,19 @@ The *inside* means it's inside the coordinates.
 <br>
 <br>
 
-
 ## type(string) = 'inside'
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 ## disabled(boolean) = false
 
 Whether disable inside zoom.
 
 {{ use: partial-data-zoom-common(
-    dataZoomName='dataZoom-inside',
-    galleryEditorPath=${galleryEditorPath},
-    galleryViewPath=${galleryViewPath}
+    dataZoomName = 'dataZoom-inside'
 ) }}
-
 
 ## zoomOnMouseWheel(boolean|string) = true
 
@@ -67,3 +66,4 @@ How to trigger data window move. Optional values:
 ## preventDefaultMouseMove(boolean) = true
 
 Whether to prevent default behavior of mouse move event.
+

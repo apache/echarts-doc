@@ -1,4 +1,6 @@
-{{target: series-graph}}
+
+{{ target: series-graph }}
+
 # series.graph(Object)
 
 **关系图**
@@ -20,23 +22,26 @@ option.series[0].data.forEach(function (item) {
 
 ## type(string) = 'graph'
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 {{ use: partial-series-name() }}
 
 {{ use: partial-legend-hover-link() }}
 
 {{ use: partial-coord-sys(
-    seriesType="graph",
-    coordSysDefault="null",
-    none=true,
-    cartesian2d=true,
-    polar=true,
-    geo=true,
-    calendar=true
+    seriesType = "graph",
+    coordSysDefault = "null",
+    none = true,
+    cartesian2d = true,
+    polar = true,
+    geo = true,
+    calendar = true
 ) }}
 
 ## hoverAnimation(boolean)
+
 是否开启鼠标 hover 节点的提示动画效果。
 
 ## center(Array)
@@ -70,6 +75,7 @@ center: [115.97, 29.71]
 + `'force'` 采用力引导布局，见示例 [Force](${galleryEditorPath}graph-force)，布局相关的配置项见 [graph.force](~series-graph.force)
 
 ## circular(Object)
+
 环形布局相关配置
 
 ### rotateLabel(boolean) = false
@@ -79,11 +85,13 @@ center: [115.97, 29.71]
 是否旋转标签，默认不旋转
 
 ## force(Object)
+
 力引导布局相关的配置项，力引导布局是模拟弹簧电荷模型在每两个节点之间添加一个斥力，每条边的两个节点之间添加一个引力，每次迭代节点会在各个斥力和引力的作用下移动位置，多次迭代后节点会静止在一个受力平衡的位置，达到整个模型的能量最小化。
 
 力引导布局的结果有良好的对称性和局部聚合性，也比较美观。
 
 ### initLayout(string)
+
 进行力引导布局前的初始化布局，初始化布局会影响到力引导的效果。
 
 默认不进行任何布局，使用[节点](~series-graph.data)中提供的 [x](~series-graph.data.x)， [y](~series-graph.data.y) 作为节点的位置。如果不存在的话会随机生成一个位置。
@@ -127,13 +135,17 @@ edgeLength: [10, 50]
 
 <ExampleUIControlNumber min="0" max="1" step="0.01" default="0.6" />
 
-{{ use: partial-version(version = "4.5.0") }}
+{{ use: partial-version(
+    version = "4.5.0"
+) }}
+
 这个参数能减缓节点的移动速度。取值范围 0 到 1。
 
 但是仍然是个试验性的参数，参见 [#11024](https://github.com/apache/incubator-echarts/issues/11024)。
 
 ## roam(boolean|string) = false
-{{ use: partial-roam }}
+
+{{ use: partial-roam() }}
 
 ## nodeScaleRatio(number) = 0.6
 
@@ -154,14 +166,15 @@ edgeLength: [10, 50]
 是否在鼠标移到节点上的时候突出显示节点以及节点的边和邻接节点。
 
 {{ use: partial-symbol(
-    prefix='#',
-    defaultSymbol="'circle'",
-    defaultSymbolSize=10,
-    name='关系图节点',
-    hasCallback=true
+    prefix = '#',
+    defaultSymbol = "'circle'",
+    defaultSymbolSize = 10,
+    name = '关系图节点',
+    hasCallback = true
 ) }}
 
 ## edgeSymbol(Array|string) = ['none', 'none']
+
 边两端的标记类型，可以是一个数组分别指定两端，也可以是单个统一指定。默认不显示标记，常见的可以设置为箭头，如下：
 
 ```js
@@ -174,98 +187,129 @@ edgeSymbol: ['circle', 'arrow']
 
 边两端的标记大小，可以是一个数组分别指定两端，也可以是单个统一指定。
 
-{{ use: partial-cursor }}
+{{ use: partial-cursor() }}
 
 ## itemStyle(Object)
-{{use:partial-item-style-desc}}
-{{use:partial-item-style(
-    prefix="##",
-    useColorPalatte=true,
-    hasCallback=true
-)}}
+
+{{ use: partial-item-style-desc() }}
+
+{{ use: partial-item-style(
+    prefix = "##",
+    useColorPalatte = true,
+    hasCallback = true
+) }}
 
 ## lineStyle(Object)
+
 关系边的公用线条样式。其中 [lineStyle.color](~series-graph.lineStyle.color) 支持设置为`'source'`或者`'target'`特殊值，此时边会自动取源节点或目标节点的颜色作为自己的颜色。
 
-{{use:partial-line-style(
-    prefix="##",
-    defaultColor="'#aaa'",
-    defaultWidth=1,
-    defaultOpacity=0.5,
-    hasCurveness=true
-)}}
-
+{{ use: partial-line-style(
+    prefix = "##",
+    defaultColor = "'#aaa'",
+    defaultWidth = 1,
+    defaultOpacity = 0.5,
+    hasCurveness = true
+) }}
 
 ## label(Object)
-{{use:partial-label-desc}}
-{{use:partial-label(
-    prefix="##",
-    defaultPosition="'inside'",
-    formatter2d=true
-)}}
+
+{{ use: partial-label-desc() }}
+
+{{ use: partial-label(
+    prefix = "##",
+    defaultPosition = "'inside'",
+    formatter2d = true
+) }}
 
 ## edgeLabel(Object)
-{{use: graph-edge-label(
-    prefix="##"
-)}}
+
+{{ use: graph-edge-label(
+    prefix = "##"
+) }}
 
 ## labelLayout(Object|Function)
-{{ use: partial-label-layout(
-    prefix="##"
-) }}
 
+{{ use: partial-label-layout(
+    prefix = "##"
+) }}
 
 ## emphasis(Object)
-高亮的图形样式。
-### itemStyle(Object)
-{{use:partial-item-style(prefix="###")}}
-### lineStyle(Object)
-{{ use:partial-line-style(
-    prefix="###"
-) }}
-### label(Object)
-{{use:partial-label(
-    prefix="###",
-    defaultShow=true,
-    formatter2d=true
-)}}
-### edgeLabel(Object)
-{{use: graph-edge-label(
-    prefix="###"
-)}}
 
+高亮的图形样式。
+
+### itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "###"
+) }}
+
+### lineStyle(Object)
+
+{{ use: partial-line-style(
+    prefix = "###"
+) }}
+
+### label(Object)
+
+{{ use: partial-label(
+    prefix = "###",
+    defaultShow = true,
+    formatter2d = true
+) }}
+
+### edgeLabel(Object)
+
+{{ use: graph-edge-label(
+    prefix = "###"
+) }}
 
 ## categories(Array)
+
 节点分类的类目，可选。
 
 如果节点有分类的话可以通过 [data[i].category](~series-graph.data.category) 指定每个节点的类目，类目的样式会被应用到节点样式上。[图例](~legend)也可以基于`categories`名字展现和筛选。
 
 ### name(string)
+
 类目名称，用于和 [legend](~legend) 对应以及格式化 [tooltip](~tooltip) 的内容。
 
 {{ use: partial-symbol(
-    prefix='##',
-    name='该类目节点'
+    prefix = '##',
+    name = '该类目节点'
 ) }}
 
 ### itemStyle(Object)
+
 该类目节点的样式。
-{{use:partial-item-style(prefix="###", useColorPalatte=true)}}
+
+{{ use: partial-item-style(
+    prefix = "###",
+    useColorPalatte = true
+) }}
 
 ### label(Object)
+
 该类目节点标签的样式。
-{{ use:partial-label(
-    prefix="###",
-    defaultPosition="inside",
-    formatter2d=true
+
+{{ use: partial-label(
+    prefix = "###",
+    defaultPosition = "inside",
+    formatter2d = true
 ) }}
 
 ### emphasis(Object)
-#### itemStyle(Object)
-{{use:partial-item-style(prefix="####")}}
-#### label(Object)
-{{ use:partial-label(prefix="####") }}
 
+#### itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "####"
+) }}
+
+#### label(Object)
+
+{{ use: partial-label(
+    prefix = "####"
+) }}
 
 ## autoCurveness(number|Array) = 20
 
@@ -302,54 +346,73 @@ data: [{
 **注意:** 节点的`name`不能重复。
 
 ### name(string)
+
 数据项名称。
 
 ### x(number)
+
 节点的初始 x 值。在不指定的时候需要指明`layout`属性选择布局方式。
+
 ### y(number)
+
 节点的初始 y 值。在不指定的时候需要指明`layout`属性选择布局方式。
+
 ### fixed(boolean)
+
 节点在力引导布局中是否固定。
 
 ### value(number|Array)
+
 数据项值。
+
 ### category(number)
+
 数据项所在类目的 index。
 
 {{ use: partial-symbol(
-    prefix='##',
-    name='该类目节点'
+    prefix = '##',
+    name = '该类目节点'
 ) }}
 
 ### itemStyle(Object)
+
 该节点的样式。
-{{use:partial-item-style(prefix="###", useColorPalatte=true)}}
+
+{{ use: partial-item-style(
+    prefix = "###",
+    useColorPalatte = true
+) }}
 
 ### label(Object)
+
 该节点标签的样式。
-{{ use:partial-label(
-    prefix="###"
+
+{{ use: partial-label(
+    prefix = "###"
 ) }}
 
 ### emphasis(Object)
 
 #### itemStyle(Object)
-{{use:partial-item-style(prefix="####")}}
-#### label(Object)
-{{ use:partial-label(
-    prefix="####"
+
+{{ use: partial-item-style(
+    prefix = "####"
 ) }}
 
+#### label(Object)
 
-{{use: partial-tooltip-in-series-data(
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-label(
+    prefix = "####"
+) }}
 
+{{ use: partial-tooltip-in-series-data() }}
 
 ## nodes(Array)
+
 别名，同 [data](~series-graph.data)
 
 ## links(Array)
+
 节点间的关系数据。示例：
 ```js
 links: [{
@@ -360,18 +423,27 @@ links: [{
     target: 'n3'
 }]
 ```
+
 ### source(string|number)
+
 边的[源节点名称](~series-graph.data.name)的字符串，也支持使用数字表示源节点的索引。
+
 ### target(string|number)
+
 边的[目标节点名称](~series-graph.data.name)的字符串，也支持使用数字表示源节点的索引。
+
 ### value(number)
+
 边的数值，可以在力引导布局中用于映射到边的长度。
 
 ### lineStyle(Object)
+
 关系边的线条样式。
-{{use:partial-line-style(
-    prefix="###"
-)}}
+
+{{ use: partial-line-style(
+    prefix = "###"
+) }}
+
 #### curveness(number) = 0
 
 <ExampleUIControlNumber min="0" max="1" step="0.01" default="0" />
@@ -379,71 +451,90 @@ links: [{
 边的曲度，支持从 0 到 1 的值，值越大曲度越大。
 
 ### label(Object)
-{{use: graph-edge-label(
-    prefix="###"
-)}}
+
+{{ use: graph-edge-label(
+    prefix = "###"
+) }}
 
 ### emphasis(Object)
+
 #### label(Object)
-{{use: graph-edge-label(
-    prefix="####"
-)}}
+
+{{ use: graph-edge-label(
+    prefix = "####"
+) }}
+
 #### lineStyle(Object)
-{{use:partial-line-style(
-    prefix="####"
-)}}
+
+{{ use: partial-line-style(
+    prefix = "####"
+) }}
 
 ### symbol(Array|string)
+
 边两端的标记类型，可以是一个数组分别指定两端，也可以是单个统一指定。
 
 ### symbolSize(Array|string)
+
 边两端的标记大小，可以是一个数组分别指定两端，也可以是单个统一指定。
 
 ### ignoreForceLayout(boolean) = false
-{{ use: partial-version(version = "4.5.0") }}
+
+{{ use: partial-version(
+    version = "4.5.0"
+) }}
+
 使此边不进行力导图布局的计算。
 
 ## edges(Array)
+
 别名，同 [links](~series-graph.links)
 
-{{use: partial-marker(
-    prefix="#",
-    seriesType="graph",
-    hasType=true,
-    hasCoord=true
-)}}
-
+{{ use: partial-marker(
+    prefix = "#",
+    seriesType = "graph",
+    hasType = true,
+    hasCoord = true
+) }}
 
 {{ use: partial-rect-layout-width-height(
-    defaultLeft="'center'",
-    defaultTop="'middle'",
-    defaultWidth='自适应',
-    defaultHeight='自适应'
+    defaultLeft = "'center'",
+    defaultTop = "'middle'",
+    defaultWidth = '自适应',
+    defaultHeight = '自适应'
 ) }}
 
-{{ use:partial-silent(
-    prefix="#"
+{{ use: partial-silent(
+    prefix = "#"
 ) }}
+
 {{ use: partial-animation(
-    prefix="#",
-    galleryEditorPath=${galleryEditorPath}
+    prefix = "#"
 ) }}
 
-{{use: partial-tooltip-in-series(
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-tooltip-in-series() }}
+
+
 
 
 {{ target: graph-edge-label }}
 
 #${prefix} show(boolean) = ${defaultShowLabel|default(false)}
+
 是否显示标签。
+
 #${prefix} position(string) = 'middle'
+
 标签位置，可选：
 + `'start'` 线的起始点。
 + `'middle'` 线的中点。
 + `'end'`   线的结束点。
-#${prefix} formatter(string|Function)
-{{ use: partial-2d-data-label-formatter }}
 
-{{ use: partial-text-style(prefix=${prefix}) }}
+#${prefix} formatter(string|Function)
+
+{{ use: partial-2d-data-label-formatter() }}
+
+{{ use: partial-text-style(
+    prefix = ${prefix}
+) }}
+

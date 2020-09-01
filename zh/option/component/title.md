@@ -1,6 +1,5 @@
 
-{{target: component-title}}
-
+{{ target: component-title }}
 
 # title(Object)
 
@@ -28,7 +27,9 @@ const option = {
 }
 </ExampleBaseOption>
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 ## show(boolean) = true
 
@@ -59,16 +60,15 @@ const option = {
 ## textStyle(Object)
 
 {{ use: partial-text-style(
-    prefix="##",
-    name="主标题",
-    defaultFontSize=18,
-    defaultFontWeight="'bolder'",
-    defaultColor="'#333'",
-    noAlign=true,
-    noVerticalAlign=true,
-    noBox=true
+    prefix = "##",
+    name = "主标题",
+    defaultFontSize = 18,
+    defaultFontWeight = "'bolder'",
+    defaultColor = "'#333'",
+    noAlign = true,
+    noVerticalAlign = true,
+    noBox = true
 ) }}
-
 
 ## subtext(string) = ''
 
@@ -76,11 +76,9 @@ const option = {
 
 副标题文本，支持使用 `\n` 换行。
 
-
 ## sublink(string) = ''
 
 副标题文本超链接。
-
 
 ## subtarget(string) = 'blank'
 
@@ -90,16 +88,14 @@ const option = {
 
 + `'blank'` 新窗口打开
 
-
 ## subtextStyle(Object)
 
 {{ use: partial-text-style(
-    prefix='##',
-    name="副标题",
-    defaultColor="'#aaa'",
-    noBox=true
+    prefix = '##',
+    name = "副标题",
+    defaultColor = "'#aaa'",
+    noBox = true
 ) }}
-
 
 ## textAlign(string) = 'auto'
 
@@ -123,7 +119,9 @@ const option = {
 
 ## padding(number|Array) = 5
 
-{{ use: partial-padding(componentName="标题")}}
+{{ use: partial-padding(
+    componentName = "标题"
+) }}
 
 ## itemGap(number) = 10
 
@@ -132,14 +130,14 @@ const option = {
 
 主副标题之间的间距。
 
-{{use: partial-rect-layout(componentName="title ")}}
-
-{{ use: partial-component-common-style(
-    componentName="标题",
-    prefix='#',
-    defaultBorderWidth="0",
-    hasBorderRadius=true
+{{ use: partial-rect-layout(
+    componentName = "title "
 ) }}
 
-
+{{ use: partial-component-common-style(
+    componentName = "标题",
+    prefix = '#',
+    defaultBorderWidth = "0",
+    hasBorderRadius = true
+) }}
 

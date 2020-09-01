@@ -1,4 +1,5 @@
-{{target: component-radar}}
+
+{{ target: component-radar }}
 
 # radar(Object)
 
@@ -11,11 +12,13 @@ Here is a custom example of radar component.
 
 ~[400x400](${galleryViewPath}doc-example/radar&edit=1&reset=1)
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
-{{use: component-circular-layout(
-    defaultRadius="75%"
-)}}
+{{ use: component-circular-layout(
+    defaultRadius = "75%"
+) }}
 
 ## startAngle(number) = 90
 
@@ -41,14 +44,15 @@ formatter: function (value, indicator) {
     return '【' + value + '】';
 }
 ```
+
 ## textStyle(Object)
 
 {{ use: partial-text-style(
-    prefix='##',
-    defaultColor="'#333'",
-    noAlign=true,
-    noVerticalAlign=true
-)}}
+    prefix = '##',
+    defaultColor = "'#333'",
+    noAlign = true,
+    noVerticalAlign = true
+) }}
 
 ## nameGap(number) = 15
 
@@ -67,32 +71,32 @@ Radar render type, in which `'polygon'` and `'circle'` are supported.
 Whether to prevent calculating the scaling relative to zero. If it is set to be `true`, the coordinate tick would not compulsorily contain zero value, which is usually useful in scatter diagram of double numerical values axis.
 
 {{ use: partial-axis-common-axis-line(
-    prefix="#"
-)}}
+    prefix = "#"
+) }}
 
 {{ use: partial-axis-common-axis-tick(
-    prefix="#",
-    hasLabelInterval=false,
-    hasAlignWithLabel=false,
-    hasInside=false
+    prefix = "#",
+    hasLabelInterval = false,
+    hasAlignWithLabel = false,
+    hasInside = false
 ) }}
 
 {{ use: partial-axis-common-axis-label(
-    prefix="#",
-    hasLabelInterval=false,
-    hasInside=false
+    prefix = "#",
+    hasLabelInterval = false,
+    hasInside = false
 ) }}
 
 {{ use: partial-axis-common-split-line(
-    prefix="#",
-    hasLabelInterval=false
-)}}
+    prefix = "#",
+    hasLabelInterval = false
+) }}
 
 {{ use: partial-axis-common-split-area(
-    prefix="#",
-    hasLabelInterval=false,
-    defaultShow=true
-)}}
+    prefix = "#",
+    hasLabelInterval = false,
+    defaultShow = true
+) }}
 
 ## indicator(Array)
 
@@ -124,3 +128,4 @@ The minimum value of indicator. It it an optional configuration, with default va
 ## color(string)
 
 Specfy a color the the indicator.
+

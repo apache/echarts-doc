@@ -1,5 +1,5 @@
 
-{{target: component-tooltip}}
+{{ target: component-tooltip }}
 
 # tooltip(Object)
 
@@ -7,12 +7,11 @@ Tooltip component.
 
 ---
 
-{{use: partial-tooltip-introduction}}
+{{ use: partial-tooltip-introduction() }}
 
-{{use: partial-tooltip-coords-common(
-    prefix='#',
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-tooltip-coords-common(
+    prefix = '#'
+) }}
 
 ## showContent(boolean) = true
 
@@ -70,7 +69,9 @@ Useful when tooltip is cut because of `'overflow: hidden'` set on outer dom of c
 
 ## appendToBody(boolean) = false
 
-{{ use: partial-version(version="4.7.0") }}
+{{ use: partial-version(
+    version = "4.7.0"
+) }}
 
 Whether to append the tooltip DOM element as a child of the `<body>` of the HTML page, when using [renderMode](~tooltip.renderMode) `'html'`.
 
@@ -80,10 +81,12 @@ Here we provide `appendToBody: true` to auto append the tooltip element to `<bod
 
 Note that it also works when CSS transform used.
 
-
 ## transitionDuration(number) = 0.4
 
 The transition duration of tooltip's animation, in seconds. When it is set to be 0, it would move closely with the mouse.
 
-{{ use: partial-tooltip-common(scope='global', prefix='#') }}
+{{ use: partial-tooltip-common(
+    scope = 'global',
+    prefix = '#'
+) }}
 

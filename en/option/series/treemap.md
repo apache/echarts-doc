@@ -1,5 +1,5 @@
 
-{{target: series-treemap}}
+{{ target: series-treemap }}
 
 # series.treemap(Object)
 
@@ -19,8 +19,7 @@ treemap maps the numerical values to area.
 
 Moreover, it is able to map some dimensions of data to other visual channel, like colors, lightness of colors and etc.
 
-{{ use: partial-treemap-visual-detial }}
-
+{{ use: partial-treemap-visual-detial() }}
 
 <br>
 **Drill Down:**
@@ -50,18 +49,20 @@ Notice: There are some difference in treemap configuration between ECharts3 and 
 
 ## type(string) = 'treemap'
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 {{ use: partial-series-name() }}
 
 {{ use: partial-rect-layout-width-height(
-    componentName='treemap ',
-    defaultLeft: 'center',
-    defaultRight: null,
-    defaultTop: 'middle',
-    defaultBottom: null,
-    defaultWidth: '80%',
-    defaultHeight: '80%'
+    componentName = 'treemap ',
+    defaultLeft = 'center',
+    defaultRight = null,
+    defaultTop = 'middle',
+    defaultBottom = null,
+    defaultWidth = '80%',
+    defaultHeight = '80%'
 ) }}
 
 ## squareRatio(number)
@@ -69,7 +70,6 @@ Notice: There are some difference in treemap configuration between ECharts3 and 
 The expected square ratio. Layout would approach the ratio as close as possible.
 
 It defaults to be the golden ratio: `0.5 * (1 + Math.sqrt(5))`.
-
 
 ## leafDepth(number) = null
 
@@ -95,7 +95,6 @@ Whether to enable dragging roam (move and zoom). Optional values are:
 + `'move'` or `'pan'`: move (translation) only.
 + `true`: both zoom and move (translation) are avaliable.
 
-
 ## nodeClick(boolean|string) = 'zoomToNode'
 
 The behaviour when clicking a node. Optional values are:
@@ -104,11 +103,9 @@ The behaviour when clicking a node. Optional values are:
 + `'zoomToNode'`: Zoom to clicked node.
 + `'link'`: If there is [link](~series-treemap.data.link) in node data, do hyperlink jump after clicked.
 
-
 ## zoomToNodeRatio(number) = 0.32*0.32
 
 The treemap will be auto zoomed to a appropriate ratio when a node is clicked (when [nodeClick](~series-treemap.nodeClick) is set as `'zoomToNode'` and no drill down happens). This configuration item indicates the ratio.
-
 
 ## levels(Array)
 
@@ -202,108 +199,91 @@ See the example below: every `value` field is set as an Array, in which each ite
 `treemap` will map the first dimension (the first item of the array) to "area". If we want to express more information, we could map another dimension (specified by [series-treemap.visualDimension](~series-treemap.viusalDimension)) to another visual types, such as `colorSaturation` and so on. See the [example](${galleryEditorPath}treemap-obama&edit=1&reset=1) and select the legend 'Growth'.
 
 <br>
-{{ use: partial-treemap-borderColor-setting(galleryEditorPath=${galleryEditorPath}) }}
 
+{{ use: partial-treemap-borderColor-setting() }}
 
 <br>
 **Explanation about borderWidth, gapWidth, borderColor**
 
 ![500xauto](~treemap-border-gap.png)
 
+{{ use: partial-treemap-level-props(
+    prefix = "##"
+) }}
 
-
-{{use: partial-treemap-level-props(
-    prefix="##",
-    galleryEditorPath=${galleryEditorPath},
-    galleryViewPath=${galleryViewPath}
-)}}
-
-
-
-{{use: partial-treemap-level-props(
-    prefix="#",
-    galleryEditorPath=${galleryEditorPath},
-    galleryViewPath=${galleryViewPath}
-)}}
-
+{{ use: partial-treemap-level-props(
+    prefix = "#"
+) }}
 
 ## breadcrumb(Object)
 
 breadcrumb, showing the path of the current node.
 
-
 ### show(boolean) = true
 
 Whether to show the breadcrumb.
 
-
 {{ use: partial-rect-layout(
-    componentName="asdf ",
-    prefix="##",
-    noZ=true,
-    defaultLeft="'center'",
-    defaultBottom=0
+    componentName = "asdf ",
+    prefix = "##",
+    noZ = true,
+    defaultLeft = "'center'",
+    defaultBottom = 0
 ) }}
-
 
 ### height(number) = 22
 
 The height of breadcrumb.
 
-
 ### emptyItemWidth(number) = 25
 
 When is no content in breadcrumb, this minimal width need to be set up.
 
-
 ### itemStyle(Object)
 
-{{ use: partial-item-style-desc }}
+{{ use: partial-item-style-desc() }}
 
-
-{{use: partial-item-style(
-    prefix="###",
-    name="boxplot",
-    defaultColor="rgba(0,0,0,0.7)",
-    defaultBorderColor="rgba(255,255,255,0.7)",
-    defaultBorderWidth=1,
-    defaultShadowColor='rgba(150,150,150,1)',
-    defaultShadowBlur=3,
-    defaultShadowOffsetX=0,
-    defaultShadowOffsetY=0
-)}}
-
+{{ use: partial-item-style(
+    prefix = "###",
+    name = "boxplot",
+    defaultColor = "rgba(0,0,0,0.7)",
+    defaultBorderColor = "rgba(255,255,255,0.7)",
+    defaultBorderWidth = 1,
+    defaultShadowColor = 'rgba(150,150,150,1)',
+    defaultShadowBlur = 3,
+    defaultShadowOffsetX = 0,
+    defaultShadowOffsetY = 0
+) }}
 
 #### textStyle(Object)
 
-{{use: partial-text-style(
-    prefix="####",
-    defaultColor="#fff"
-)}}
+{{ use: partial-text-style(
+    prefix = "####",
+    defaultColor = "#fff"
+) }}
 
-### emphasis
+### emphasis(*)
+
 #### itemStyle(Object)
-{{use: partial-item-style(
-    prefix="####",
-    name="boxplot",
-    defaultColor="rgba(0,0,0,0.7)",
-    defaultBorderColor="rgba(255,255,255,0.7)",
-    defaultBorderWidth=1,
-    defaultShadowColor='rgba(150,150,150,1)',
-    defaultShadowBlur=3,
-    defaultShadowOffsetX=0,
-    defaultShadowOffsetY=0
-)}}
 
+{{ use: partial-item-style(
+    prefix = "####",
+    name = "boxplot",
+    defaultColor = "rgba(0,0,0,0.7)",
+    defaultBorderColor = "rgba(255,255,255,0.7)",
+    defaultBorderWidth = 1,
+    defaultShadowColor = 'rgba(150,150,150,1)',
+    defaultShadowBlur = 3,
+    defaultShadowOffsetX = 0,
+    defaultShadowOffsetY = 0
+) }}
 
 ##### textStyle(Object)
 
-{{use: partial-text-style(
-    prefix="#####",
-    defaultColor="#fff"
-)}}
-
-
+{{ use: partial-text-style(
+    prefix = "#####",
+    defaultColor = "#fff"
+) }}
 
 ## data(Array)
 
@@ -370,12 +350,9 @@ But if using API, id is used to locate node.
 
 Show the description text in rectangle.
 
-
-{{use: partial-treemap-level-props(
-    prefix="##",
-    galleryEditorPath=${galleryEditorPath},
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-treemap-level-props(
+    prefix = "##"
+) }}
 
 ### link(string)
 
@@ -391,34 +368,24 @@ The same meaning as `target` in `html` `<a>` label, See [series-treemap.data.lin
 
 child nodes, recursive definition, configurations are the same as [series-treemap.data](~series-treemap.data).
 
-{{use: partial-tooltip-in-series-data(
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-tooltip-in-series-data() }}
 
-
-{{ use:partial-silent(
-    prefix="#"
+{{ use: partial-silent(
+    prefix = "#"
 ) }}
 
+{{ use: partial-animation-init(
+    prefix = "#",
+    defaultAnimationEasing = 'quinticInOut',
+    defaultAnimationDuration = 1500
+) }}
 
-{{use: partial-animation-init(
-    prefix="#",
-    defaultAnimationEasing='quinticInOut',
-    defaultAnimationDuration=1500,
-    galleryEditorPath=${galleryEditorPath}
-)}}
-
-
-{{use: partial-tooltip-in-series(
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-tooltip-in-series() }}
 
 
 
 
-
-
-{{target: partial-treemap-level-props}}
+{{ target: partial-treemap-level-props }}
 
 #${prefix} visualDimension(number) = 0
 
@@ -426,8 +393,11 @@ child nodes, recursive definition, configurations are the same as [series-treema
 
 The value of [series-treemap.data](~series-treemap.data) can be an array. And each item of the array represents a "dimension". `visualDimension` specifies the dimension on which visual mapping will be performed.
 
-{{ use: partial-treemap-visual-detial }}
-{{use: partial-treemap-prop-location-desc(name="visualDimension")}}
+{{ use: partial-treemap-visual-detial() }}
+
+{{ use: partial-treemap-prop-location-desc(
+    name = "visualDimension"
+) }}
 
 #${prefix} visualMin(number) = null
 
@@ -442,23 +412,27 @@ The maximal value of current level. Auto-statistics by default.
 When [colorMappingBy](~series-treemap.levels.colorMappingBy) is set to `'value'`, you are able to specify extent manually for visual mapping by specifying `visualMin` or `visualMax`.
 
 {{ if: ${prefix} !== '#' }}
+
 #${prefix} color(Array)
 
 A color list for a level. Each node in the level will obtain a color from the color list (the rule see [colorMappingBy](~series-treemap.levels.colorMappingBy)). It is empty by default, which means the global color list will be used.
 
-{{ use: partial-treemap-visual-detial }}
-{{use: partial-treemap-prop-location-desc(name="color")}}
+{{ use:   partial-treemap-visual-detial   }}
+{{ use:   partial-treemap-prop-location-desc(name="color")  }}
 
 {{ /if }}
+
 #${prefix} colorAlpha(Array) = null
 
 It indicates the range of tranparent rate (color alpha) {{ if: ${prefix} !== '#' }}for nodes in a level {{ else }} of the series{{ /if }}. The range of values is 0 ~ 1.
 
 For example, `colorAlpha` can be `[0.3, 1]`.
 
-{{ use: partial-treemap-visual-detial }}
-{{use: partial-treemap-prop-location-desc(name="colorAlpha")}}
+{{ use: partial-treemap-visual-detial() }}
 
+{{ use: partial-treemap-prop-location-desc(
+    name = "colorAlpha"
+) }}
 
 #${prefix} colorSaturation(number) = null
 
@@ -466,9 +440,11 @@ It indicates the range of saturation (color alpha) {{ if: ${prefix} !== '#' }}fo
 
 For example, `colorSaturation` can be `[0.3, 1]`.
 
-{{ use: partial-treemap-visual-detial }}
-{{use: partial-treemap-prop-location-desc(name="colorSaturation")}}
+{{ use: partial-treemap-visual-detial() }}
 
+{{ use: partial-treemap-prop-location-desc(
+    name = "colorSaturation"
+) }}
 
 #${prefix} colorMappingBy(string) = 'index'
 
@@ -495,9 +471,11 @@ Map [series-treemap.data.id](~series-treemap.data.id) to color.
 
 Since `id` is used to identify node, if user call `setOption` to modify the tree, each node will remain the original color before and after `setOption` called. See this [example](${galleryEditorPath}treemap-obama&edit=1&reset=1).
 
-{{ use: partial-treemap-visual-detial }}
-{{use: partial-treemap-prop-location-desc(name="colorMappingBy")}}
+{{ use: partial-treemap-visual-detial() }}
 
+{{ use: partial-treemap-prop-location-desc(
+    name = "colorMappingBy"
+) }}
 
 #${prefix} visibleMin(number) = 10
 
@@ -505,9 +483,11 @@ A node will not be shown when its area size is smaller than this value (unit: px
 
 In this way, tiny nodes will be hidden, otherwise they will huddle together. When user zoom the treemap, the area size will increase and the rectangle will be shown if the area size is larger than this threshold.
 
-{{ use: partial-treemap-visual-detial }}
-{{use: partial-treemap-prop-location-desc(name="visibleMin")}}
+{{ use: partial-treemap-visual-detial() }}
 
+{{ use: partial-treemap-prop-location-desc(
+    name = "visibleMin"
+) }}
 
 #${prefix} childrenVisibleMin(number) = null
 
@@ -515,25 +495,27 @@ Children will not be shown when area size of a node is smaller than this value (
 
 This can hide the details of nodes when the rectangular area is not large enough. When users zoom nodes, the child node would show if the area is larger than this threshold.
 
-{{ use: partial-treemap-visual-detial }}
-{{use: partial-treemap-prop-location-desc(name="childrenVisibleMin")}}
+{{ use: partial-treemap-visual-detial() }}
 
+{{ use: partial-treemap-prop-location-desc(
+    name = "childrenVisibleMin"
+) }}
 
 #${prefix} label(Object)
 
 `label` decribes the style of the label in each node.
 
-{{use: partial-treemap-prop-location-desc(name="label")}}
+{{ use: partial-treemap-prop-location-desc(
+    name = "label"
+) }}
 
 <br>
 
-{{use:partial-label(
-    prefix=${prefix} + "#",
-    defaultPosition="'inside'",
-    formatter=true
-)}}
-
-
+{{ use: partial-label(
+    prefix = ${prefix} + "#",
+    defaultPosition = "'inside'",
+    formatter = true
+) }}
 
 #${prefix} upperLabel(Object)
 
@@ -547,60 +529,65 @@ See:
 
 ~[700x500](${galleryViewPath}treemap-show-parent&edit=1&reset=1)
 
-
-{{use: partial-treemap-prop-location-desc(name="label")}}
+{{ use: partial-treemap-prop-location-desc(
+    name = "label"
+) }}
 
 <br>
 
-{{use:partial-label(
-    prefix=${prefix} + "#",
-    defaultPosition="'inside'",
-    formatter=true
-)}}
+{{ use: partial-label(
+    prefix = ${prefix} + "#",
+    defaultPosition = "'inside'",
+    formatter = true
+) }}
 
 ##${prefix} height(number) = 20
 
 Height of label area.
 
-
 #${prefix} itemStyle(Object)
 
-{{use: partial-treemap-prop-location-desc(name="itemStyle")}}
+{{ use: partial-treemap-prop-location-desc(
+    name = "itemStyle"
+) }}
 
 <br>
 
-{{use: partial-treemap-item-style(
-    prefix=${prefix} + "#",
-    galleryEditorPath=${galleryEditorPath},
-    itemStyleType='normal'
-)}}
+{{ use: partial-treemap-item-style(
+    prefix = ${prefix} + "#",
+    itemStyleType = 'normal'
+) }}
 
 #${prefix} emphasis(Object)
+
 ##${prefix} label(Object)
-{{use:partial-label(
-    prefix=${prefix} + "##",
-    defaultPosition="'inside'",
-    formatter=true
-)}}
+
+{{ use: partial-label(
+    prefix = ${prefix} + "##",
+    defaultPosition = "'inside'",
+    formatter = true
+) }}
+
 ##${prefix} upperLabel(Object)
-{{use:partial-label(
-    prefix=${prefix} + "##",
-    defaultPosition="'inside'",
-    formatter=true
-)}}
+
+{{ use: partial-label(
+    prefix = ${prefix} + "##",
+    defaultPosition = "'inside'",
+    formatter = true
+) }}
+
 ##${prefix} itemStyle(Object)
-{{use: partial-treemap-item-style(
-    prefix=${prefix} + "##",
-    galleryEditorPath=${galleryEditorPath},
-    itemStyleType='emphasis'
-)}}
+
+{{ use: partial-treemap-item-style(
+    prefix = ${prefix} + "##",
+    itemStyleType = 'emphasis'
+) }}
 
 
 
 
+{{ target: partial-treemap-prop-location-desc }}
 
-
-{{target: partial-treemap-prop-location-desc}}
 <br>
 > Tps: In treemap, `${name}` attribute could appear in more than one places:
 
@@ -615,32 +602,28 @@ Height of label area.
 
 
 
-
-{{target: partial-treemap-visual-detial}}
+{{ target: partial-treemap-visual-detial }}
 
 About visual encoding, see details in [series-treemap.levels](~series-treemap.levels).
 
 
 
 
+{{ target: partial-treemap-item-style }}
 
-{{target: partial-treemap-item-style}}
-
-#${prefix} color(Color) =  null
+#${prefix} color(Color) = null
 
 The color of a node. It use global palette [option.color](~color) by default.
 
-{{if: ${itemStyleType} === 'normal' }}
+{{ if: ${itemStyleType} === 'normal' }}
 
 #${prefix} colorAlpha(number) = null
 
 The tranparent rate of a node, the range is between 0 ~ 1.
 
-
 #${prefix} colorSaturation(number) = null
 
 The color saturation of a node. The range is between 0 ~ 1.
-
 
 #${prefix} borderWidth(number) = 0
 
@@ -648,16 +631,13 @@ The border width of a node. There is no border when it is set as `0`.
 
 Tip, gaps between child nodes are specified by [gapWidth](~series-treemap.levels.gapWidth)
 
-
 #${prefix} gapWidth(number) = 0
 
 Gaps between child nodes.
 
-
 #${prefix} borderColor(Color) = '#fff',
 
 The border color and gap color of a node.
-
 
 #${prefix} borderColorSaturation(Color) = null
 
@@ -670,7 +650,7 @@ When `borderColorSaturation` is set, the `borderColor` is disabled, and, instead
 In this way, a effect can be implemented: different sections have different hue of gap color repectively, which makes users easy to distinguish both sections and levels.
 
 <br>
-{{ use: partial-treemap-borderColor-setting(galleryEditorPath=${galleryEditorPath}) }}
+{{ use:   partial-treemap-borderColor-setting(galleryEditorPath=${galleryEditorPath})   }}
 
 #${prefix} strokeColor(Color) = null
 
@@ -680,21 +660,16 @@ Stroke color of each rect.
 
 Stroke width of each rect.
 
-{{/if }}
-
-
-
+{{ /if }}
 
 
 
 
 {{ target: partial-treemap-borderColor-setting }}
+
 **How to avoid confusion by setting border/gap of node**
 
 If all of the border/gaps are set with the same color, confusion might occur when rectangulars in different levels display at the same time.
 
 See the [example](${galleryEditorPath}doc-example/treemap-borderColor&edit=1&reset=1). Notice that the child rectangles in the red area are in the deeper level than rectangles that are saparated by white gap. So in the red area, basically we set gap color with red, and use `borderColorSaturation` to lift the saturation.
-
-
-
 

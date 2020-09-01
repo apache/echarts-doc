@@ -1,5 +1,5 @@
 
-{{target: series-map}}
+{{ target: series-map }}
 
 # series.map(Object)
 
@@ -13,15 +13,15 @@
 
 ## type(string) = 'map'
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 {{ use: partial-series-name() }}
 
 {{ use: geo-common(
-    prefix='#',
-    inMap=true,
-    galleryEditorPath=${galleryEditorPath},
-    galleryViewPath=${galleryViewPath}
+    prefix = '#',
+    inMap = true
 ) }}
 
 ## geoIndex(number) = null
@@ -31,6 +31,7 @@
 当设定了 `geoIndex` 后，[series-map.map](~series-map.map) 属性，以及 [series-map.itemStyle](~series-map.itemStyle) 等样式配置不再起作用，而是采用 [geo](~geo) 中的相应属性。
 
 ## mapValueCalculation(string) = 'sum'
+
 多个拥有相同[地图类型](~series-map.map)的系列会使用同一个地图展现，如果多个系列都在同一个区域有值，ECharts 会对这些值统计得到一个数据。这个配置项就是用于配置统计的方式，目前有：
 
 + `'sum'`   取和。
@@ -39,83 +40,103 @@
 + `'min'`   取最小值。
 
 ## showLegendSymbol(boolean)
+
 在图例相应区域显示图例的颜色标识（系列标识的小圆点），存在 [legend](~legend) 组件时生效。
 
 ## roam(boolean|string) = false
-{{ use: partial-roam }}
 
-{{ use: partial-seriesLayoutBy }}
+{{ use: partial-roam() }}
 
-{{ use: partial-datasetIndex }}
+{{ use: partial-seriesLayoutBy() }}
+
+{{ use: partial-datasetIndex() }}
 
 ## labelLayout(Object|Function)
+
 {{ use: partial-label-layout(
-    prefix="##"
+    prefix = "##"
 ) }}
 
 ## data(Array)
-{{ use: partial-1d-data-desc(name="地图") }}
+
+{{ use: partial-1d-data-desc(
+    name = "地图"
+) }}
 
 ### name(string)
+
 数据所对应的地图区域的名称，例如 `'广东'`，`'浙江'`。
 
 ### value(number)
+
 该区域的数据值。
 
 ### selected(boolean) = false
+
 该区域是否选中。
 
 ### itemStyle(Object)
+
 该数据所在区域的多边形样式设置
+
 #### areaColor(Color)
+
 地图区域的颜色。
 
-{{ use: partial-color-desc }}
+{{ use: partial-color-desc() }}
 
-{{ use: partial-item-style(prefix='###') }}
-
-### label(Object)
-{{use: partial-label-desc}}
-{{use: partial-label(
-    prefix="###",
-    defaultPosition="'bottom'",
-    formatter=true,
-    noAlign=true,
-    noVerticalAlign=true
-)}}
-
-### emphasis(Object)
-该数据所在区域的多边形高亮样式设置
-#### itemStyle(Object)
-##### areaColor(Color)
-地图区域的颜色。
-
-{{ use: partial-color-desc }}
-
-{{ use: partial-item-style(prefix='####') }}
-#### label(Object)
-{{use: partial-label(
-    prefix="####",
-    formatter=true,
-    noAlign=true,
-    noVerticalAlign=true
-)}}
-
-{{use: partial-tooltip-in-series-data(
-    galleryViewPath=${galleryViewPath}
-)}}
-
-{{use: partial-marker(
-    prefix="#",
-    seriesType="map",
-    galleryEditorPath=${galleryEditorPath},
-    hasCoord=true
-)}}
-
-{{ use:partial-silent(
-    prefix="#"
+{{ use: partial-item-style(
+    prefix = '###'
 ) }}
 
-{{use: partial-tooltip-in-series(
-    galleryViewPath=${galleryViewPath}
-)}}
+### label(Object)
+
+{{ use: partial-label-desc() }}
+
+{{ use: partial-label(
+    prefix = "###",
+    defaultPosition = "'bottom'",
+    formatter = true,
+    noAlign = true,
+    noVerticalAlign = true
+) }}
+
+### emphasis(Object)
+
+该数据所在区域的多边形高亮样式设置
+
+#### itemStyle(Object)
+
+##### areaColor(Color)
+
+地图区域的颜色。
+
+{{ use: partial-color-desc() }}
+
+{{ use: partial-item-style(
+    prefix = '####'
+) }}
+
+#### label(Object)
+
+{{ use: partial-label(
+    prefix = "####",
+    formatter = true,
+    noAlign = true,
+    noVerticalAlign = true
+) }}
+
+{{ use: partial-tooltip-in-series-data() }}
+
+{{ use: partial-marker(
+    prefix = "#",
+    seriesType = "map",
+    hasCoord = true
+) }}
+
+{{ use: partial-silent(
+    prefix = "#"
+) }}
+
+{{ use: partial-tooltip-in-series() }}
+

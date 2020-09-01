@@ -1,21 +1,27 @@
+
 {{ target: feature-icon-style }}
 
 #${prefix} iconStyle(Object)
+
 ${name} icon 样式设置。由于 icon 的文本信息只在 icon hover 时候才显示，所以文字相关的配置项请在 `emphasis` 下设置。
+
 {{ use: partial-item-style(
     defaultBorderColor = '#666',
     defaultColor = 'none',
     defaultBorderWidth = 1,
-    prefix="#" + ${prefix}
+    prefix = "#" + ${prefix}
 ) }}
 
-
 #${prefix} emphasis(Object)
+
 ##${prefix} iconStyle(Object)
 
-{{ use: partial-item-style(prefix="##" + ${prefix}) }}
+{{ use: partial-item-style(
+    prefix = "##" + ${prefix}
+) }}
 
 ###${prefix} textPosition(string) = 'bottom'
+
 文本位置，`'left'` / `'right'` / `'top'` / `'bottom'`。
 
 ###${prefix} textFill(string) = '#000'
@@ -50,17 +56,25 @@ ${name} icon 样式设置。由于 icon 的文本信息只在 icon hover 时候�
 文本区域内边距。
 
 
-{{ target: feature-common}}
+
+
+{{ target: feature-common }}
 
 #### show(boolean) = true
+
 是否显示该工具。
 
 #### title(boolean) = '${title}'
 
-#### icon
-{{ use: partial-icon-image-path }}
+#### icon(*)
 
-{{ use: feature-icon-style(name=${title}, prefix="###") }}
+{{ use: partial-icon-image-path() }}
+
+{{ use: feature-icon-style(
+    name = ${title},
+    prefix = "###"
+) }}
+
 
 
 
@@ -148,7 +162,9 @@ option = {
 };
 </ExampleBaseOption>
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 ## show(boolean) = true
 
@@ -185,6 +201,7 @@ option = {
 是否在鼠标 hover 的时候显示每个工具 icon 的标题。
 
 ## feature(Object)
+
 各工具配置项。
 
 除了各个内置的工具按钮外，还可以自定义工具按钮。
@@ -217,6 +234,7 @@ option = {
 ```
 
 ### saveAsImage(Object)
+
 保存为图片。
 
 #### type(string) = 'png'
@@ -247,8 +265,12 @@ option = {
 如果图表使用了 [echarts.connect](api.html#echarts.connect) 对多个图表进行联动，则在导出图片时会导出这些联动的图表。该配置项决定了图表与图表之间间隙处的填充色。
 
 #### excludeComponents(Array) = ['toolbox']
+
 保存为图片时忽略的组件列表，默认忽略工具栏。
-{{ use: feature-common(title="保存为图片") }}
+
+{{ use: feature-common(
+    title = "保存为图片"
+) }}
 
 #### pixelRatio(number) = 1
 
@@ -257,19 +279,29 @@ option = {
 保存图片的分辨率比例，默认跟容器相同大小，如果需要保存更高分辨率的，可以设置为大于 1 的值，例如 2。
 
 ### restore(Object)
+
 配置项还原。
-{{ use: feature-common(title="还原") }}
+
+{{ use: feature-common(
+    title = "还原"
+) }}
 
 ### dataView(Object)
+
 数据视图工具，可以展现当前图表所用的数据，编辑后可以动态更新。
-{{ use: feature-common(title="数据视图") }}
+
+{{ use: feature-common(
+    title = "数据视图"
+) }}
 
 #### readOnly(boolean) = false
 
 <ExampleUIControlBoolean />
 
 是否不可编辑（只读）。
+
 #### optionToContent(Function)
+
 ```js
 (option:Object) => HTMLDomElement|string
 ```
@@ -299,6 +331,7 @@ optionToContent: function(opt) {
 ```
 
 #### contentToOption(Function)
+
 ```js
 (container:HTMLDomElement, option:Object) => Object
 ```
@@ -306,6 +339,7 @@ optionToContent: function(opt) {
 在使用 optionToContent 的情况下，如果支持数据编辑后的刷新，需要自行通过该函数实现组装 option 的逻辑。
 
 #### lang(Array) = ['数据视图', '关闭', '刷新']
+
 数据视图上有三个话术，默认是`['数据视图', '关闭', '刷新']`。
 
 #### backgroundColor(string) = '#fff'
@@ -345,39 +379,55 @@ optionToContent: function(opt) {
 按钮文本颜色。
 
 ### dataZoom(Object)
+
 数据区域缩放。目前只支持直角坐标系的缩放。
-{{ use: feature-common(title="数据区域缩放") }}
+
+{{ use: feature-common(
+    title = "数据区域缩放"
+) }}
 
 #### filterMode(string) = 'filter'
 
 与 [dataZoom.filterMode](~dataZoom.filterMode) 含义和取值相同。
 
 #### xAxisIndex(number|Array|boolean)
+
 指定哪些 [xAxis](~xAxis) 被控制。如果缺省则控制所有的x轴。如果设置为 `false` 则不控制任何x轴。如果设置成 `3` 则控制 axisIndex 为 `3` 的x轴。如果设置为 `[0, 3]` 则控制 axisIndex 为 `0` 和 `3` 的x轴。
 
 #### yAxisIndex(number|Array|boolean)
+
 指定哪些 [yAxis](~yAxis) 被控制。如果缺省则控制所有的y轴。如果设置为 `false` 则不控制任何y轴。如果设置成 `3` 则控制 axisIndex 为 `3` 的y轴。如果设置为 `[0, 3]` 则控制 axisIndex 为 `0` 和 `3` 的y轴。
 
 #### icon(Object)
+
 缩放和还原的 icon path。
+
 ##### zoom(string)
-{{ use: partial-icon-image-path }}
+
+{{ use: partial-icon-image-path() }}
+
 ##### back(string)
-{{ use: partial-icon-image-path }}
+
+{{ use: partial-icon-image-path() }}
 
 #### title(Object)
+
 缩放和还原的标题文本。
+
 ##### zoom(string) = '区域缩放'
+
 ##### back(string) = '区域缩放还原'
 
 #### brushStyle(Object)
+
 刷选框样式
+
 {{ use: partial-item-style(
-    prefix="####"
+    prefix = "####"
 ) }}
 
-
 ### magicType(Object)
+
 动态类型切换
 **示例：**
 ```js
@@ -387,47 +437,83 @@ feature: {
     }
 }
 ```
+
 #### show(boolean) = true
+
 是否显示该动态类型切换。
+
 #### type(Array)
+
 启用的动态类型，包括`'line'`（切换为折线图）, `'bar'`（切换为柱状图）, `'stack'`（切换为堆叠模式）, `'tiled'`（切换为平铺模式）。
-{{ use: feature-common(title="动态类型切换") }}
+
+{{ use: feature-common(
+    title = "动态类型切换"
+) }}
+
 #### icon(Object)
+
 各个类型的 icon path，可以分别配置。
+
 ##### line(string)
-{{ use: partial-icon-image-path }}
+
+{{ use: partial-icon-image-path() }}
+
 ##### bar(string)
-{{ use: partial-icon-image-path }}
+
+{{ use: partial-icon-image-path() }}
+
 ##### stack(string)
-{{ use: partial-icon-image-path }}
+
+{{ use: partial-icon-image-path() }}
+
 ##### tiled(string)
-{{ use: partial-icon-image-path }}
+
+{{ use: partial-icon-image-path() }}
+
 #### title(Object)
+
 各个类型的标题文本，可以分别配置。
+
 ##### line(string) = '切换为折线图'
+
 ##### bar(string) = '切换为柱状图'
+
 ##### stack(string) = '切换为堆叠'
+
 ##### tiled(string) = '切换为平铺'
+
 #### option(Object)
+
 各个类型的专有配置项。在切换到某类型的时候会合并相应的配置项。
+
 ##### line(Object)
+
 ##### bar(Object)
+
 ##### stack(Object)
+
 ##### tiled(Object)
+
 #### seriesIndex(Object)
+
 各个类型对应的系列的列表。
+
 ##### line(Array)
+
 ##### bar(Array)
+
 ##### stack(Array)
+
 ##### tiled(Array)
 
-
 ### brush(Object)
+
 选框组件的控制按钮。
 
 也可以不在这里指定，而是在 [brush.toolbox](~brush.toolbox) 中指定。
 
 #### type(Array)
+
 使用的按钮，取值：
 
 + `'rect'`：开启矩形选框选择功能。
@@ -437,35 +523,58 @@ feature: {
 + `'keep'`：切换『单选』和『多选』模式。后者可支持同时画多个选框。前者支持单击清除所有选框。
 + `'clear'`：清空所有选框。
 
-
 #### icon(Object)
+
 每个按钮的 icon path。
+
 ##### rect(string)
-{{ use: partial-icon-image-path }}
+
+{{ use: partial-icon-image-path() }}
+
 ##### polygon(string)
-{{ use: partial-icon-image-path }}
+
+{{ use: partial-icon-image-path() }}
+
 ##### lineX(string)
-{{ use: partial-icon-image-path }}
+
+{{ use: partial-icon-image-path() }}
+
 ##### lineY(string)
-{{ use: partial-icon-image-path }}
+
+{{ use: partial-icon-image-path() }}
+
 ##### keep(string)
-{{ use: partial-icon-image-path }}
+
+{{ use: partial-icon-image-path() }}
+
 ##### clear(string)
-{{ use: partial-icon-image-path }}
+
+{{ use: partial-icon-image-path() }}
+
 #### title(Object)
+
 标题文本。
+
 ##### rect(string) = '矩形选择'
+
 ##### polygon(string) = '圈选'
+
 ##### lineX(string) = '横向选择'
+
 ##### lineY(string) = '纵向选择'
+
 ##### keep(string) = '保持选择'
+
 ##### clear(string) = '清除选择'
 
+{{ use: feature-icon-style(
+    name = "公用的",
+    prefix = "#"
+) }}
 
-{{ use: feature-icon-style(name="公用的", prefix="#") }}
-
-{{ use: partial-rect-layout-width-height(componentName="工具栏") }}
-
+{{ use: partial-rect-layout-width-height(
+    componentName = "工具栏"
+) }}
 
 ## tooltip(Object)
 

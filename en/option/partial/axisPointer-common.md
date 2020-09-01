@@ -1,4 +1,5 @@
-{{ target: partial-axisPointer-introduction}}
+
+{{ target: partial-axisPointer-introduction }}
 
 `axisPointer` is a tool for displaying reference line and axis value under mouse pointer.
 
@@ -75,11 +76,7 @@ In value axis and time axis, if [snap](~xAxis.axisPointer.snap) is set as true, 
 
 
 
-
-
-
-
-{{ target: partial-axisPointer-common}}
+{{ target: partial-axisPointer-common }}
 
 #${prefix} show(boolean) = false
 
@@ -96,12 +93,9 @@ Options:
 
 + `'none'` no indicator displayed.
 
-
 {{ use: partial-axisPointer-tooltip-shared(
-    prefix=${prefix},
-    galleryViewPath=${galleryViewPath},
-    galleryEditorPath=${galleryEditorPath}
-)}}
+    prefix = ${prefix}
+) }}
 
 #${prefix} triggerTooltip(boolean) = true
 
@@ -110,7 +104,6 @@ Whether to trigger tooltip.
 #${prefix} value(number) = null
 
 current value. When using [axisPointer.handle](xAxisPointer.handle), `value` can be set to define the initail position of axisPointer.
-
 
 #${prefix} status(boolean)
 
@@ -124,11 +117,11 @@ A button used to drag axisPointer. This feature is applicable in touch device. S
 
 Set to `true` to use handle.
 
-##${prefix} icon
+##${prefix} icon(*)
 
 The icon of the handle.
 
-{{ use: partial-icon-image-path }}
+{{ use: partial-icon-image-path() }}
 
 See the [example of using image](${galleryEditorPath}doc-example/axisPointer-handle-image&edit=1&reset=1)
 
@@ -148,20 +141,17 @@ The color of the handle.
 
 Throttle rate of trigger view update when dragging handle, in ms. Increase the value to improve performance, but decrease the experience.
 
-{{ use:partial-style-shadow(
-    prefix='#' + ${prefix},
-    defaultShadowBlur=3,
-    defaultShadowColor='#aaa',
-    defaultShadowOffsetX=2
+{{ use: partial-style-shadow(
+    prefix = '#' + ${prefix},
+    defaultShadowBlur = 3,
+    defaultShadowColor = '#aaa',
+    defaultShadowOffsetX = 2
 ) }}
 
 
 
 
-
-
-
-{{ target: partial-axisPointer-tooltip-shared}}
+{{ target: partial-axisPointer-tooltip-shared }}
 
 #${prefix} snap(boolean)
 
@@ -205,9 +195,9 @@ If set as `function`:
 
 `{number}` params.axisIndex: The index of the axis, for example, `0`,`1`, `2`, ...
 
-{{ use: partial-formatter-params-structure }}
+{{ use: partial-formatter-params-structure() }}
 
-{{ use: partial-formatter-params-axisPointer }}
+{{ use: partial-formatter-params-axisPointer() }}
 
 **Return:**
 
@@ -221,60 +211,58 @@ formatter: function (params) {
 }
 ```
 
-
 ##${prefix} margin(boolean) = 3
 
 Distance between label and axis.
 
-
 {{ use: partial-simple-text-style(
-    prefix='#' + ${prefix},
-    defaultColor="'#fff'"
-)}}
+    prefix = '#' + ${prefix},
+    defaultColor = "'#fff'"
+) }}
 
 ##${prefix} padding(string|Array) = [5, 7, 5, 7]
 
-{{ use: partial-padding(componentName='axisPointer')}}
+{{ use: partial-padding(
+    componentName = 'axisPointer'
+) }}
 
-
-##${prefix}backgroundColor(string) = 'auto'
+##${prefix} backgroundColor(string) = 'auto'
 
 Background color of label, the same as [axis.axisLine.lineStyle.color](~xAxis.axisLine.lineStyle.color) by default.
 
-##${prefix}borderColor(string) = null
+##${prefix} borderColor(string) = null
 
 Border color of label.
 
-##${prefix}borderWidth(string) = 0
+##${prefix} borderWidth(string) = 0
 
 Border width of label.
 
-{{ use:partial-style-shadow(
-    prefix='#' + ${prefix},
-    defaultShadowBlur=3,
-    defaultShadowColor='#aaa'
+{{ use: partial-style-shadow(
+    prefix = '#' + ${prefix},
+    defaultShadowBlur = 3,
+    defaultShadowColor = '#aaa'
 ) }}
-
 
 #${prefix} lineStyle(Object)
 
 It is valid when [axisPointer.type](~tooltip.axisPointer.type) is `'line'`.
 
-{{ use: partial-line-style(prefix="#" + ${prefix}, defaultColor="#555", defaultWidth=1, defaultType='solid') }}
-
+{{ use: partial-line-style(
+    prefix = "#" + ${prefix},
+    defaultColor = "#555",
+    defaultWidth = 1,
+    defaultType = 'solid'
+) }}
 
 #${prefix} shadowStyle(Object)
 
 It is valid when [axisPointer.type](~tooltip.axisPointer.type) is `'shadow'`.
 
-{{ use: partial-area-style(prefix="#" + ${prefix}, defaultColor="'rgba(150,150,150,0.3)") }}
-
-
-
-
-
-
-
+{{ use: partial-area-style(
+    prefix = "#" + ${prefix},
+    defaultColor = "'rgba(150,150,150,0.3)"
+) }}
 
 
 

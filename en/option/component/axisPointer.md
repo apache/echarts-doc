@@ -1,5 +1,5 @@
 
-{{target: component-axisPointer}}
+{{ target: component-axisPointer }}
 
 # axisPointer(Object)
 
@@ -8,21 +8,17 @@ This is the global configurations of axisPointer.
 
 ---
 
-{{ use: partial-axisPointer-introduction(
-    galleryViewPath=${galleryViewPath},
-    galleryEditorPath=${galleryEditorPath}
-) }}
+{{ use: partial-axisPointer-introduction() }}
 
 ---
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 {{ use: partial-axisPointer-common(
-    prefix="#",
-    galleryViewPath=${galleryViewPath},
-    galleryEditorPath=${galleryEditorPath}
-)}}
-
+    prefix = "#"
+) }}
 
 ## link(Array)
 
@@ -100,7 +96,6 @@ Return of mapper:
 
 `{number}` The result of conversion.
 
-
 ## triggerOn(string) = 'mousemove|click'
 
 Conditions to trigger tooltip. Options:
@@ -120,3 +115,4 @@ Conditions to trigger tooltip. Options:
 + `'none'`
 
     Do not triggered by `'mousemove'` and `'click'`
+

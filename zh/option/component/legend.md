@@ -1,5 +1,5 @@
 
-{{target: component-legend}}
+{{ target: component-legend }}
 
 # legend(Object)
 
@@ -120,13 +120,17 @@ const option = {
 + [legend.animation](~legend.animation)
 + [legend.animationDurationUpdate](~legend.animationDurationUpdate)
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 ## show(boolean) = true
 
 <ExampleUIControlBoolean default="true" />
 
-{{use: partial-rect-layout-width-height(componentName="图例")}}
+{{ use: partial-rect-layout-width-height(
+    componentName = "图例"
+) }}
 
 ## orient(string) = 'horizontal'
 
@@ -153,7 +157,9 @@ const option = {
 
 <ExampleUIControlVector dims="T,R,B,L" default="5" min="0" step="0.5" />
 
-{{ use: partial-padding(componentName="图例")}}
+{{ use: partial-padding(
+    componentName = "图例"
+) }}
 
 ## itemGap(number) = 10
 
@@ -226,11 +232,11 @@ selected: {
 图例的公用文本样式。
 
 {{ use: partial-text-style(
-    componentName='图例',
-    prefix='##',
-    defaultColor="#333",
-    noAlign=true,
-    noVerticalAlign=true
+    componentName = '图例',
+    prefix = '##',
+    defaultColor = "#333",
+    noAlign = true,
+    noVerticalAlign = true
 ) }}
 
 ## tooltip(Object)
@@ -254,7 +260,7 @@ legend: {
 
 图例项的 icon。
 
-{{ use: partial-icon }}
+{{ use: partial-icon() }}
 
 ## data(Array)
 
@@ -278,26 +284,25 @@ data: [{
 ```
 
 ### name(string)
+
 图例项的名称，应等于某系列的`name`值（如果是饼图，也可以是饼图单个数据的 `name`）。
 
 ### icon(string)
 
 图例项的 icon。
 
-{{ use: partial-icon }}
+{{ use: partial-icon() }}
 
 ### textStyle(Object)
 
 图例项的文本样式。
 
 {{ use: partial-component-common-style(
-    componentName='图例',
-    prefix='#',
-    defaultBorderColor="'#ccc'",
-    hasBorderRadius=true
+    componentName = '图例',
+    prefix = '#',
+    defaultBorderColor = "'#ccc'",
+    hasBorderRadius = true
 ) }}
-
-
 
 ## scrollDataIndex(number) = 0
 
@@ -369,7 +374,7 @@ data: [{
 
 数组中每项，
 
-{{ use: partial-icon-image-path }}
+{{ use: partial-icon-image-path() }}
 
 参见 [滚动图例（垂直）](${galleryEditorPath}pie-legend&edit=1&reset=1) 或 [滚动图例（水平）](${galleryEditorPath}radar2&edit=1&reset=1)。
 
@@ -381,7 +386,7 @@ data: [{
 
 数组中每项，
 
-{{ use: partial-icon-image-path }}
+{{ use: partial-icon-image-path() }}
 
 参见 [滚动图例（垂直）](${galleryEditorPath}pie-legend&edit=1&reset=1) 或 [滚动图例（水平）](${galleryEditorPath}radar2&edit=1&reset=1)。
 
@@ -421,7 +426,11 @@ data: [{
 
 图例页信息的文字样式。
 
-{{ use: partial-simple-text-style(componentName='图例页信息', prefix='##', defaultColor="#333") }}
+{{ use: partial-simple-text-style(
+    componentName = '图例页信息',
+    prefix = '##',
+    defaultColor = "#333"
+) }}
 
 ## animation(boolean)
 
@@ -435,25 +444,27 @@ data: [{
 
 图例翻页时的动画时长。
 
-
 ## emphasis(Object)
 
 ### selectorLabel(Object)
 
-{{ use: partial-version(version = "4.4.0") }}
+{{ use: partial-version(
+    version = "4.4.0"
+) }}
 
-{{use:partial-label(
-    prefix='###',
-    defaultShowLabel=true,
-    noPosition=true,
-    formatter=false,
-    formatter1d=false
-)}}
-
+{{ use: partial-label(
+    prefix = '###',
+    defaultShowLabel = true,
+    noPosition = true,
+    formatter = false,
+    formatter1d = false
+) }}
 
 ## selector(boolean|Array) = false
 
-{{ use: partial-version(version = "4.4.0") }}
+{{ use: partial-version(
+    version = "4.4.0"
+) }}
 
 图例组件中的选择器按钮，目前包括全选和反选两种功能。默认不显示，用户可手动开启，也可以手动配置每个按钮的标题。
 
@@ -481,23 +492,27 @@ selector: ['all', 'inverse']
 
 ## selectorLabel(Object)
 
-{{ use: partial-version(version = "4.4.0") }}
+{{ use: partial-version(
+    version = "4.4.0"
+) }}
 
 选择器按钮的文本标签样式，默认显示。
 
-{{use:partial-label(
-    prefix='##',
-    defaultShowLabel=true,
-    noPosition=true,
-    formatter=false,
-    formatter1d=false
-)}}
+{{ use: partial-label(
+    prefix = '##',
+    defaultShowLabel = true,
+    noPosition = true,
+    formatter = false,
+    formatter1d = false
+) }}
 
 ## selectorPosition(string) = 'auto'
 
 <ExampleUIControlEnum options="auto,start,end" />
 
-{{ use: partial-version(version = "4.4.0") }}
+{{ use: partial-version(
+    version = "4.4.0"
+) }}
 
 选择器的位置，可以放在图例的尾部或者头部，对应的值分别为 `'end'` 和 `'start'`。默认情况下，图例横向布局的时候，选择器放在图例的尾部；图例纵向布局的时候，选择器放在图例的头部。
 
@@ -505,7 +520,9 @@ selector: ['all', 'inverse']
 
 <ExampleUIControlNumber min="0" default="7" step="0.5" />
 
-{{ use: partial-version(version = "4.4.0") }}
+{{ use: partial-version(
+    version = "4.4.0"
+) }}
 
 选择器按钮之间的间隔。
 
@@ -513,6 +530,9 @@ selector: ['all', 'inverse']
 
 <ExampleUIControlNumber min="0" default="10" step="0.5" />
 
-{{ use: partial-version(version = "4.4.0") }}
+{{ use: partial-version(
+    version = "4.4.0"
+) }}
 
 选择器按钮与图例组件之间的间隔。
+

@@ -1,5 +1,5 @@
 
-{{target: partial-tooltip-introduction}}
+{{ target: partial-tooltip-introduction }}
 
 **General Introduction:**
 
@@ -19,12 +19,7 @@ tooltip can be configured on different places:
 
 
 
-
-
-
-
-
-{{target: partial-tooltip-in-coords}}
+{{ target: partial-tooltip-in-coords }}
 
 ## tooltip(Object)
 
@@ -32,75 +27,65 @@ tooltip settings in the coordinate system component.
 
 ---
 
-{{use: partial-tooltip-introduction}}
+{{ use: partial-tooltip-introduction() }}
 
-{{use: partial-tooltip-coords-common(
-    prefix='##',
-    galleryViewPath=${galleryViewPath},
-    galleryEditorPath=${galleryEditorPath}
-)}}
+{{ use: partial-tooltip-coords-common(
+    prefix = '##'
+) }}
 
-{{ use: partial-tooltip-common(scope='coordSys', prefix='##') }}
-
-
-
+{{ use: partial-tooltip-common(
+    scope = 'coordSys',
+    prefix = '##'
+) }}
 
 
 
 
+{{ target: partial-tooltip-in-series }}
 
-
-
-{{target: partial-tooltip-in-series}}
-
-## tooltip
+## tooltip(*)
 
 tooltip settings in this series.
 
-{{ use: partial-tooltip-common(scope='series', prefix='##') }}
+{{ use: partial-tooltip-common(
+    scope = 'series',
+    prefix = '##'
+) }}
 
 
 
 
+{{ target: partial-tooltip-in-series-data }}
 
-
-{{target: partial-tooltip-in-series-data}}
-
-### tooltip
+### tooltip(*)
 
 tooltip settings in this series data.
 
-{{ use: partial-tooltip-common(scope='seriesData', prefix='###') }}
+{{ use: partial-tooltip-common(
+    scope = 'seriesData',
+    prefix = '###'
+) }}
 
 
 
 
+{{ target: partial-tooltip-scope-tip }}
 
-
-
-
-{{target: partial-tooltip-scope-tip}}
-
-{{if: ${scope} === 'series'}}
+{{ if: ${scope} === 'series' }}
 <br>
 > **Notice：**series.tooltip only works when [tooltip.trigger](~tooltip.trigger) is `'item'`.<br>
-{{elif: ${scope} === 'seriesData'}}
+{{ elif: ${scope} === 'seriesData'  }}
 > **Notice：**series.data.tooltip only works when [tooltip.trigger](~tooltip.trigger) is `'item'`.<br>
-{{/if}}
+{{ /if }}
 
 
 
 
-
-
-
-
-{{target: partial-tooltip-coords-common}}
+{{ target: partial-tooltip-coords-common }}
 
 #${prefix} show(boolean) = true
 
 Whether to show the tooltip component, including tooltip floating layer and [axisPointer](~tooltip.axisPointer).
-
 
 #${prefix} trigger(string) = 'item'
 
@@ -131,8 +116,7 @@ Configuration item for axisPointer.
 
 ---
 
-{{ use: partial-axisPointer-introduction(galleryViewPath=${galleryViewPath}) }}
-
+{{ use: partial-axisPointer-introduction() }}
 
 ##${prefix} type(string) = 'line'
 
@@ -147,39 +131,41 @@ Options:
 
 + `'cross'` crosshair indicator, which is actually the shortcut of enable two axisPointers of two orthometric axes.
 
-
 ##${prefix} axis(string) = 'auto'
 
 The coordinate axis, which could be `'x'`, `'y'`, `'radius'`, or `'angle'`. By default, each coordinate system will automatically chose the axes whose will display its axisPointer (category axis or time axis is used by default).
 
 {{ use: partial-axisPointer-tooltip-shared(
-    prefix="#" + ${prefix},
-    galleryViewPath=${galleryViewPath},
-    galleryEditorPath=${galleryEditorPath}
+    prefix = "#" + ${prefix}
 ) }}
-
 
 ##${prefix} crossStyle(Object)
 
 It is valid when [axisPointer.type](~tooltip.axisPointer.type) is `'cross'`.
 
-{{ use: partial-line-style(prefix="##" + ${prefix}, defaultColor="#555", defaultWidth=1, defaultType="dashed") }}
-
+{{ use: partial-line-style(
+    prefix = "##" + ${prefix},
+    defaultColor = "#555",
+    defaultWidth = 1,
+    defaultType = "dashed"
+) }}
 
 {{ use: partial-animation(
-    prefix='#' + ${prefix},
-    defaultAnimationEasingUpdate='exponentialOut',
-    defaultAnimationDurationUpdate=200
+    prefix = '#' + ${prefix},
+    defaultAnimationEasingUpdate = 'exponentialOut',
+    defaultAnimationDurationUpdate = 200
 ) }}
 
 
 
 
-{{target: partial-tooltip-common}}
+{{ target: partial-tooltip-common }}
 
 #${prefix} position(string|Array)
 
-{{use: partial-tooltip-scope-tip(scope=${scope})}}
+{{ use: partial-tooltip-scope-tip(
+    scope = ${scope}
+) }}
 
 The position of the tooltip's floating layer, which would follow the position of mouse by default.
 
@@ -254,10 +240,11 @@ Options:
 
     Bottom position of the graphic element where the mouse is in, which is only valid when [trigger](~tooltip.trigger) is `'item'`.
 
-
 #${prefix} formatter(string|Function)
 
-{{use: partial-tooltip-scope-tip(scope=${scope})}}
+{{ use: partial-tooltip-scope-tip(
+    scope = ${scope}
+) }}
 
 The content formatter of tooltip's floating layer which supports string template and callback function.
 
@@ -290,16 +277,19 @@ The format of callback function:
 ```
 
 The first parameter `params` is the data that the formatter needs. Its format is shown as follows:
-{{ use: partial-formatter-params-structure(extra = {
+
+{{ use: partial-formatter-params-structure(
+    extra = {
     percent: {
         desc: 'the percentage of pie chart',
-        type: 'number'
+    type = 'number'
     }
-}) }}
+}
+) }}
 
 When [trigger](~tooltip.trigger) is `'axis'`, or when tooltip is triggered by [axisPointer](~xAxis.axisPointer), `params` is the data array of multiple series. The content of each item of the array is the same as above. Besides,
 
-{{ use: partial-formatter-params-structure}}
+{{ use: partial-formatter-params-structure() }}
 
 **Note: **Using array to present all the parameters in ECharts 2.x is not supported anymore.
 
@@ -317,46 +307,63 @@ formatter: function (params, ticket, callback) {
 }
 ```
 
-
-
 #${prefix} backgroundColor(Color) = 'rgba(50,50,50,0.7)'
 
-{{use: partial-tooltip-scope-tip(scope=${scope})}}
+{{ use: partial-tooltip-scope-tip(
+    scope = ${scope}
+) }}
 
 The background color of tooltip's floating layer.
 
 #${prefix} borderColor(Color) = '#333'
 
-{{use: partial-tooltip-scope-tip(scope=${scope})}}
+{{ use: partial-tooltip-scope-tip(
+    scope = ${scope}
+) }}
 
 The border color of tooltip's floating layer.
 
 #${prefix} borderWidth(number) = 0
 
-{{use: partial-tooltip-scope-tip(scope=${scope})}}
+{{ use: partial-tooltip-scope-tip(
+    scope = ${scope}
+) }}
 
 The border width of tooltip's floating layer.
 
 #${prefix} padding(number) = 5
 
-{{use: partial-tooltip-scope-tip(scope=${scope})}}
+{{ use: partial-tooltip-scope-tip(
+    scope = ${scope}
+) }}
 
-{{ use: partial-padding(componentName='The floating layer of tooltip') }}
+{{ use: partial-padding(
+    componentName = 'The floating layer of tooltip'
+) }}
 
 #${prefix} textStyle(Object)
 
-{{use: partial-tooltip-scope-tip(scope=${scope})}}
+{{ use: partial-tooltip-scope-tip(
+    scope = ${scope}
+) }}
 
 The text syle of tooltip's floating layer.
 
-{{ use: partial-simple-text-style(prefix="#" + ${prefix}, defaultColor="'#fff'", defaultFontSize=14) }}
+{{ use: partial-simple-text-style(
+    prefix = "#" + ${prefix},
+    defaultColor = "'#fff'",
+    defaultFontSize = 14
+) }}
 
 #${prefix} extraCssText(string)
 
-{{use: partial-tooltip-scope-tip(scope=${scope})}}
+{{ use: partial-tooltip-scope-tip(
+    scope = ${scope}
+) }}
 
 Extra CSS style for floating layer. The following is an example for adding shadow.
 
 ```js
 extraCssText: 'box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);'
 ```
+

@@ -1,4 +1,5 @@
-{{target:series-pictorialBar}}
+
+{{ target: series-pictorialBar }}
 
 # series.pictoialBar(Object)
 
@@ -100,158 +101,161 @@ option = {
 
 ## type(string) = 'pictorialBar'
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 {{ use: partial-series-name() }}
 
 {{ use: partial-legend-hover-link() }}
 
 {{ use: partial-coord-sys(
-    seriesType="pictorialBar",
-    coordSysDefault="'cartesian2d'",
-    cartesian2d=true,
-    polar=false,
-    geo=false
+    seriesType = "pictorialBar",
+    coordSysDefault = "'cartesian2d'",
+    cartesian2d = true,
+    polar = false,
+    geo = false
 ) }}
 
-{{ use: partial-cursor }}
+{{ use: partial-cursor() }}
 
 ## label(Object)
-{{use:partial-label-desc}}
-{{use:partial-label(
-    prefix="##",
-    defaultPosition="'inside'",
-    formatter=true
-)}}
+
+{{ use: partial-label-desc() }}
+
+{{ use: partial-label(
+    prefix = "##",
+    defaultPosition = "'inside'",
+    formatter = true
+) }}
 
 ## labelLayout(Object|Function)
+
 {{ use: partial-label-layout(
-    prefix="##"
+    prefix = "##"
 ) }}
 
 ## itemStyle(Object)
-{{use:partial-item-style-desc}}
-{{use:partial-item-style(
-    prefix="##",
-    useColorPalatte=true,
-    hasCallback=false
-)}}
+
+{{ use: partial-item-style-desc() }}
+
+{{ use: partial-item-style(
+    prefix = "##",
+    useColorPalatte = true,
+    hasCallback = false
+) }}
 
 ## emphasis(Object)
 
 ### label(Object)
-{{use:partial-label(
-    prefix="###",
-    formatter=true
-)}}
+
+{{ use: partial-label(
+    prefix = "###",
+    formatter = true
+) }}
 
 ### itemStyle(Object)
-{{use:partial-item-style(
-    prefix="###"
-)}}
 
-{{use: partial-barGrid(
-    seriesType='pictorialBar',
-    galleryViewPath=${galleryViewPath},
-    barGapDefault="-100%"
-)}}
+{{ use: partial-item-style(
+    prefix = "###"
+) }}
 
-{{use: pictorialBar-symbol-attrs(
-    prefix="#",
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-barGrid(
+    seriesType = 'pictorialBar',
+    barGapDefault = "-100%"
+) }}
 
+{{ use: pictorialBar-symbol-attrs(
+    prefix = "#"
+) }}
 
-{{use:partial-series-dimensions(
-    prefix="#"
-)}}
+{{ use: partial-series-dimensions(
+    prefix = "#"
+) }}
 
-{{use:partial-series-encode(
-    prefix="#"
-)}}
-
+{{ use: partial-series-encode(
+    prefix = "#"
+) }}
 
 ## data(Array)
 
-{{ use: partial-2d-data-desc(
-    galleryEditorPath = ${galleryEditorPath}
-)}}
+{{ use: partial-2d-data-desc() }}
 
 ### name(string)
+
 数据项名称。
 
 ### value(number)
+
 单个数据项的数值。
 
-{{use: pictorialBar-symbol-attrs(
-    prefix="##",
-    useZ2=true,
-    galleryEditorPath=${galleryEditorPath}
-)}}
-
+{{ use: pictorialBar-symbol-attrs(
+    prefix = "##",
+    useZ2 = true
+) }}
 
 ### label(Object)
-单个柱条文本的样式设置。
-{{ use:partial-label(
-    prefix="###",
-    defaultPosition="inside"
-) }}
-### itemStyle(Object)
-{{use:partial-item-style(
-    prefix="###"
-)}}
 
+单个柱条文本的样式设置。
+
+{{ use: partial-label(
+    prefix = "###",
+    defaultPosition = "inside"
+) }}
+
+### itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "###"
+) }}
 
 ### emphasis(Object)
+
 #### label(Object)
-{{ use:partial-label(prefix="####") }}
+
+{{ use: partial-label(
+    prefix = "####"
+) }}
+
 #### itemStyle(Object)
-{{use:partial-item-style(
-    prefix="####"
-)}}
 
-{{use: partial-tooltip-in-series-data(
-    galleryViewPath=${galleryViewPath}
-)}}
-
-
-{{use: partial-marker(
-    prefix="#",
-    seriesType="pictorialBar",
-    galleryEditorPath=${galleryEditorPath},
-    hasCoord=true,
-    hasType=true
-)}}
-
-{{use:partial-z-zlevel(
-    prefix="#",
-    componentName="象形柱图"
-) }}
-{{ use:partial-silent(
-    prefix="#"
+{{ use: partial-item-style(
+    prefix = "####"
 ) }}
 
-{{use:partial-animation(
-    prefix="#",
-    noAnimationDelay=true,
-    galleryEditorPath=${galleryEditorPath}
-)}}
+{{ use: partial-tooltip-in-series-data() }}
 
-{{use:pictorialBar-animation-delay(
-    prefix="##",
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-marker(
+    prefix = "#",
+    seriesType = "pictorialBar",
+    hasCoord = true,
+    hasType = true
+) }}
 
-{{use: partial-tooltip-in-series(
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-z-zlevel(
+    prefix = "#",
+    componentName = "象形柱图"
+) }}
+
+{{ use: partial-silent(
+    prefix = "#"
+) }}
+
+{{ use: partial-animation(
+    prefix = "#",
+    noAnimationDelay = true
+) }}
+
+{{ use: pictorialBar-animation-delay(
+    prefix = "##"
+) }}
+
+{{ use: partial-tooltip-in-series() }}
 
 
 
 
-
-
-{{target: pictorialBar-symbol-attrs}}
+{{ target: pictorialBar-symbol-attrs }}
 
 #${prefix} symbol(string) = 'circle'
 
@@ -259,13 +263,14 @@ option = {
 
 图形类型。
 
-{{ use: partial-icon }}
+{{ use: partial-icon() }}
 
 例子：
 ~[800x400](${galleryViewPath}doc-example/pictorialBar-graphicType&reset=1&edit=1)
 
-{{ use: pictorialBar-symbol-attrs-cascade(attrName='symbol') }}
-
+{{ use: pictorialBar-symbol-attrs-cascade(
+    attrName = 'symbol'
+) }}
 
 #${prefix} symbolSize(number|Array) = ['100%', '100%']
 
@@ -291,8 +296,9 @@ option = {
 例子：
 ~[800x600](${galleryViewPath}doc-example/pictorialBar-symbolSize&reset=1&edit=1)
 
-{{ use: pictorialBar-symbol-attrs-cascade(attrName='symbolSize') }}
-
+{{ use: pictorialBar-symbol-attrs-cascade(
+    attrName = 'symbolSize'
+) }}
 
 #${prefix} symbolPosition(string) = 'start'
 
@@ -307,8 +313,9 @@ option = {
 例子：
 ~[800x600](${galleryViewPath}doc-example/pictorialBar-position&reset=1&edit=1)
 
-{{ use: pictorialBar-symbol-attrs-cascade(attrName='symbolPosition') }}
-
+{{ use: pictorialBar-symbol-attrs-cascade(
+    attrName = 'symbolPosition'
+) }}
 
 #${prefix} symbolOffset(Array) = [0, 0]
 
@@ -325,8 +332,9 @@ option = {
 例子：
 ~[800x600](${galleryViewPath}doc-example/pictorialBar-position&reset=1&edit=1)
 
-{{ use: pictorialBar-symbol-attrs-cascade(attrName='symbolOffset') }}
-
+{{ use: pictorialBar-symbol-attrs-cascade(
+    attrName = 'symbolOffset'
+) }}
 
 #${prefix} symbolRotate(number)
 
@@ -336,8 +344,9 @@ option = {
 
 注意，`symbolRotate` 并不会影响图形的定位（哪怕超出基准柱的边界），而只是单纯得绕自身中心旋转。
 
-{{ use: pictorialBar-symbol-attrs-cascade(attrName='symbolRotate') }}
-
+{{ use: pictorialBar-symbol-attrs-cascade(
+    attrName = 'symbolRotate'
+) }}
 
 #${prefix} symbolRepeat(boolean|number|string)
 
@@ -353,8 +362,9 @@ option = {
 例子：
 ~[800x400](${galleryViewPath}doc-example/pictorialBar-repeat&reset=1&edit=1)
 
-{{ use: pictorialBar-symbol-attrs-cascade(attrName='symbolRepeat') }}
-
+{{ use: pictorialBar-symbol-attrs-cascade(
+    attrName = 'symbolRepeat'
+) }}
 
 #${prefix} symbolRepeatDirection(string) = 'start'
 
@@ -371,8 +381,9 @@ option = {
 例子：
 ~[800x400](${galleryViewPath}doc-example/pictorialBar-repeatDirection&reset=1&edit=1)
 
-{{ use: pictorialBar-symbol-attrs-cascade(attrName='symbolRepeatDirection') }}
-
+{{ use: pictorialBar-symbol-attrs-cascade(
+    attrName = 'symbolRepeatDirection'
+) }}
 
 #${prefix} symbolMargin(number|string)
 
@@ -394,8 +405,9 @@ option = {
 例子：
 ~[800x600](${galleryViewPath}doc-example/pictorialBar-repeatLayout&reset=1&edit=1)
 
-{{ use: pictorialBar-symbol-attrs-cascade(attrName='symbolMargin') }}
-
+{{ use: pictorialBar-symbol-attrs-cascade(
+    attrName = 'symbolMargin'
+) }}
 
 #${prefix} symbolClip(boolean) = false
 
@@ -416,9 +428,9 @@ option = {
 + 『背景系列』和『当前值系列』使用相同的 [symbolBoundingData](~series.pictorialBar.symbolBoundingData)，使得绘制出的图形的大小是一样的。
 + 『当前值系列』设置了比『背景系列』更高的 [z](~series.pictorialBar.z)，使得其覆盖在『背景系列』上。
 
-
-{{ use: pictorialBar-symbol-attrs-cascade(attrName='symbolClip') }}
-
+{{ use: pictorialBar-symbol-attrs-cascade(
+    attrName = 'symbolClip'
+) }}
 
 #${prefix} symbolBoundingData(number|Array)
 
@@ -458,9 +470,9 @@ option = {
 参见例子：
 ~[800x400](${galleryViewPath}doc-example/pictorialBar-symbolBoundingDataArray&reset=1&edit=1)
 
-
-{{ use: pictorialBar-symbol-attrs-cascade(attrName='symbolBoundingData') }}
-
+{{ use: pictorialBar-symbol-attrs-cascade(
+    attrName = 'symbolBoundingData'
+) }}
 
 #${prefix} symbolPatternSize(number) = 400
 
@@ -487,9 +499,12 @@ itemStyle: {
 例子：
 ~[800x400](${galleryViewPath}doc-example/pictorialBar-patternSize&reset=1&edit=1)
 
-{{ use: pictorialBar-symbol-attrs-cascade(attrName='symbolPatternSize') }}
+{{ use: pictorialBar-symbol-attrs-cascade(
+    attrName = 'symbolPatternSize'
+) }}
 
 {{ if: ${useZ2} }}
+
 #${prefix} z(number)
 
 指定图形元素间的覆盖关系。数值越大，越在层叠的上方。
@@ -502,28 +517,23 @@ itemStyle: {
 
 是否开启 hover 在图形上的提示动画效果。
 
-{{ use: pictorialBar-symbol-attrs-cascade(attrName='hoverAnimation') }}
+{{ use: pictorialBar-symbol-attrs-cascade(
+    attrName = 'hoverAnimation'
+) }}
 
+{{ use: partial-animation(
+    prefix = "##",
+    noAnimationDelay = true
+) }}
 
-{{use:partial-animation(
-    prefix="##",
-    noAnimationDelay=true,
-    galleryEditorPath=${galleryEditorPath}
-)}}
-
-{{use:pictorialBar-animation-delay(
-    prefix="##",
-    galleryViewPath=${galleryViewPath}
-)}}
-
-
+{{ use: pictorialBar-animation-delay(
+    prefix = "##"
+) }}
 
 
 
 
-
-
-{{target: pictorialBar-animation-delay}}
+{{ target: pictorialBar-animation-delay }}
 
 #${prefix} animationDelay(number|Function) = 0
 
@@ -542,7 +552,6 @@ animationDelay: function (dataIndex, params) {
 
 例子：
 ~[800x400](${galleryViewPath}doc-example/pictorialBar-repeatDirection&reset=1&edit=1)
-
 
 #${prefix} animationDelayUpdate(number|Function) = 0
 
@@ -565,7 +574,7 @@ animationDelay: function (dataIndex, params) {
 
 
 
-{{target: pictorialBar-symbol-attrs-cascade}}
+{{ target: pictorialBar-symbol-attrs-cascade }}
 
 此属性可以被设置在系列的 [根部](~series-pictorialBar.${attrName})，表示对此系列中所有数据都生效；也可以被设置在 [data](series-pictorialBar.data) 中的 [每个数据项中](~series-pictorialBar.data.${attrName})，表示只对此数据项生效。
 
@@ -586,3 +595,4 @@ series: [{
     }]
 }]
 ```
+

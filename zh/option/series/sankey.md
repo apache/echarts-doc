@@ -1,5 +1,5 @@
 
-{{target: series-sankey}}
+{{ target: series-sankey }}
 
 # series.sankey(Object)
 
@@ -27,22 +27,23 @@
 const option = {"tooltip":{"trigger":"item","triggerOn":"mousemove"},"series":[{"type":"sankey","data":[{"name":"Agricultural 'waste'"},{"name":"Bio-conversion"},{"name":"Liquid"},{"name":"Losses"},{"name":"Solid"},{"name":"Gas"},{"name":"Biofuel imports"},{"name":"Biomass imports"},{"name":"Coal imports"},{"name":"Coal"},{"name":"Coal reserves"},{"name":"District heating"},{"name":"Industry"},{"name":"Heating and cooling - commercial"},{"name":"Heating and cooling - homes"},{"name":"Electricity grid"},{"name":"Over generation / exports"},{"name":"H2 conversion"},{"name":"Road transport"},{"name":"Agriculture"},{"name":"Rail transport"},{"name":"Lighting & appliances - commercial"},{"name":"Lighting & appliances - homes"},{"name":"Gas imports"},{"name":"Ngas"},{"name":"Gas reserves"},{"name":"Thermal generation"},{"name":"Geothermal"},{"name":"H2"},{"name":"Hydro"},{"name":"International shipping"},{"name":"Domestic aviation"},{"name":"International aviation"},{"name":"National navigation"},{"name":"Marine algae"},{"name":"Nuclear"},{"name":"Oil imports"},{"name":"Oil"},{"name":"Oil reserves"},{"name":"Other waste"},{"name":"Pumped heat"},{"name":"Solar PV"},{"name":"Solar Thermal"},{"name":"Solar"},{"name":"Tidal"},{"name":"UK land based bioenergy"},{"name":"Wave"},{"name":"Wind"}],"links":[{"source":"Agricultural 'waste'","target":"Bio-conversion","value":124.729},{"source":"Bio-conversion","target":"Liquid","value":0.597},{"source":"Bio-conversion","target":"Losses","value":26.862},{"source":"Bio-conversion","target":"Solid","value":280.322},{"source":"Bio-conversion","target":"Gas","value":81.144},{"source":"Biofuel imports","target":"Liquid","value":35},{"source":"Biomass imports","target":"Solid","value":35},{"source":"Coal imports","target":"Coal","value":11.606},{"source":"Coal reserves","target":"Coal","value":63.965},{"source":"Coal","target":"Solid","value":75.571},{"source":"District heating","target":"Industry","value":10.639},{"source":"District heating","target":"Heating and cooling - commercial","value":22.505},{"source":"District heating","target":"Heating and cooling - homes","value":46.184},{"source":"Electricity grid","target":"Over generation / exports","value":104.453},{"source":"Electricity grid","target":"Heating and cooling - homes","value":113.726},{"source":"Electricity grid","target":"H2 conversion","value":27.14},{"source":"Electricity grid","target":"Industry","value":342.165},{"source":"Electricity grid","target":"Road transport","value":37.797},{"source":"Electricity grid","target":"Agriculture","value":4.412},{"source":"Electricity grid","target":"Heating and cooling - commercial","value":40.858},{"source":"Electricity grid","target":"Losses","value":56.691},{"source":"Electricity grid","target":"Rail transport","value":7.863},{"source":"Electricity grid","target":"Lighting & appliances - commercial","value":90.008},{"source":"Electricity grid","target":"Lighting & appliances - homes","value":93.494},{"source":"Gas imports","target":"Ngas","value":40.719},{"source":"Gas reserves","target":"Ngas","value":82.233},{"source":"Gas","target":"Heating and cooling - commercial","value":0.129},{"source":"Gas","target":"Losses","value":1.401},{"source":"Gas","target":"Thermal generation","value":151.891},{"source":"Gas","target":"Agriculture","value":2.096},{"source":"Gas","target":"Industry","value":48.58},{"source":"Geothermal","target":"Electricity grid","value":7.013},{"source":"H2 conversion","target":"H2","value":20.897},{"source":"H2 conversion","target":"Losses","value":6.242},{"source":"H2","target":"Road transport","value":20.897},{"source":"Hydro","target":"Electricity grid","value":6.995},{"source":"Liquid","target":"Industry","value":121.066},{"source":"Liquid","target":"International shipping","value":128.69},{"source":"Liquid","target":"Road transport","value":135.835},{"source":"Liquid","target":"Domestic aviation","value":14.458},{"source":"Liquid","target":"International aviation","value":206.267},{"source":"Liquid","target":"Agriculture","value":3.64},{"source":"Liquid","target":"National navigation","value":33.218},{"source":"Liquid","target":"Rail transport","value":4.413},{"source":"Marine algae","target":"Bio-conversion","value":4.375},{"source":"Ngas","target":"Gas","value":122.952},{"source":"Nuclear","target":"Thermal generation","value":839.978},{"source":"Oil imports","target":"Oil","value":504.287},{"source":"Oil reserves","target":"Oil","value":107.703},{"source":"Oil","target":"Liquid","value":611.99},{"source":"Other waste","target":"Solid","value":56.587},{"source":"Other waste","target":"Bio-conversion","value":77.81},{"source":"Pumped heat","target":"Heating and cooling - homes","value":193.026},{"source":"Pumped heat","target":"Heating and cooling - commercial","value":70.672},{"source":"Solar PV","target":"Electricity grid","value":59.901},{"source":"Solar Thermal","target":"Heating and cooling - homes","value":19.263},{"source":"Solar","target":"Solar Thermal","value":19.263},{"source":"Solar","target":"Solar PV","value":59.901},{"source":"Solid","target":"Agriculture","value":0.882},{"source":"Solid","target":"Thermal generation","value":400.12},{"source":"Solid","target":"Industry","value":46.477},{"source":"Thermal generation","target":"Electricity grid","value":525.531},{"source":"Thermal generation","target":"Losses","value":787.129},{"source":"Thermal generation","target":"District heating","value":79.329},{"source":"Tidal","target":"Electricity grid","value":9.452},{"source":"UK land based bioenergy","target":"Bio-conversion","value":182.01},{"source":"Wave","target":"Electricity grid","value":19.013},{"source":"Wind","target":"Electricity grid","value":289.366}]}]}
 </ExampleBaseOption>
 
-
 ## type(string) = 'sankey'
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
-{{use: partial-series-name()}}
+{{ use: partial-series-name() }}
 
-{{use: partial-rect-layout-width-height(
-    componentName='sankey',
-    defaultLeft: '5%',
-    defaultRight: '20%',
-    defaultTop: '5%',
-    defaultBottom: '5%',
-    defaultWidth: 'null',
-    defaultHeight: 'null'
-)}}
+{{ use: partial-rect-layout-width-height(
+    componentName = 'sankey',
+    defaultLeft = '5%',
+    defaultRight = '20%',
+    defaultTop = '5%',
+    defaultBottom = '5%',
+    defaultWidth = 'null',
+    defaultHeight = 'null'
+) }}
 
 ## nodeWidth(number) = 20
 
@@ -71,7 +72,6 @@ const option = {"tooltip":{"trigger":"item","triggerOn":"mousemove"},"series":[{
 <ExampleUIControlNumber default="32" min="0" max="100" step="1" />
 
 布局的迭代次数，目的是不断迭代优化图中节点和边的位置，以减少节点和边之间的相互遮盖，默认值是 `32`。如果希望图中节点的顺序是按照原始 [data](~series-sankey.data) 中的顺序排列的，可设该值为 `0`。
-
 
 ## orient(string) = 'horizontal'
 
@@ -150,47 +150,54 @@ levels: [{
 
 桑基图指定层节点的样式。
 
-{{use:partial-item-style(prefix="###", useColorPalatte=true)}}
+{{ use: partial-item-style(
+    prefix = "###",
+    useColorPalatte = true
+) }}
 
 ### lineStyle(Object)
 
 桑基图指定层出边的样式。其中 [lineStyle.color](~series-sankey.lineStyle.color) 支持设置为`'source'`或者`'target'`特殊值，此时出边会自动取源节点或目标节点的颜色作为自己的颜色。
 
-{{use: partial-sankey-line-style(prefix="###")}}
-
+{{ use: partial-sankey-line-style(
+    prefix = "###"
+) }}
 
 ## label(Object)
 
 `label` 描述了每个矩形节点中文本标签的样式。
 
-{{use:partial-label(
-    prefix="##",
-    defaultShowLabel=true,
-    defaultPosition="'right'",
-    formatter1d=true
-)}}
+{{ use: partial-label(
+    prefix = "##",
+    defaultShowLabel = true,
+    defaultPosition = "'right'",
+    formatter1d = true
+) }}
 
 ## labelLayout(Object|Function)
+
 {{ use: partial-label-layout(
-    prefix="##"
+    prefix = "##"
 ) }}
 
 ## itemStyle(Object)
 
 桑基图节点矩形的样式。
 
-{{use: partial-item-style(
-    prefix="##",
-    useColorPalatte=true,
-    defaultBorderWidth=1,
-    defaultBorderColor="'#aaa'"
-)}}
+{{ use: partial-item-style(
+    prefix = "##",
+    useColorPalatte = true,
+    defaultBorderWidth = 1,
+    defaultBorderColor = "'#aaa'"
+) }}
 
 ## lineStyle(Object)
 
 桑基图边的样式，其中 [lineStyle.color](~series-sankey.lineStyle.color) 支持设置为`'source'`或者`'target'`特殊值，此时边会自动取源节点或目标节点的颜色作为自己的颜色。
 
-{{use: partial-sankey-line-style(prefix="##")}}
+{{ use: partial-sankey-line-style(
+    prefix = "##"
+) }}
 
 ## emphasis(Object)
 
@@ -198,20 +205,22 @@ levels: [{
 
 ### label(Object)
 
-{{use:partial-label(
-    prefix="###",
-    formatter1d=true
-)}}
+{{ use: partial-label(
+    prefix = "###",
+    formatter1d = true
+) }}
 
 ### itemStyle(Object)
 
-{{use: partial-item-style(prefix="###")}}
+{{ use: partial-item-style(
+    prefix = "###"
+) }}
 
 ### lineStyle(Object)
 
-{{use: partial-sankey-line-style(
-    prefix="###"
-)}}
+{{ use: partial-sankey-line-style(
+    prefix = "###"
+) }}
 
 ## data(Array)
 
@@ -245,31 +254,35 @@ data: [{
 ### itemStyle(Object)
 
 该节点的样式。
-{{use:partial-item-style(prefix="###", useColorPalatte=true)}}
+
+{{ use: partial-item-style(
+    prefix = "###",
+    useColorPalatte = true
+) }}
 
 ### label(Object)
 
 该节点标签的样式。
-{{ use:partial-label(
-    prefix="###"
+
+{{ use: partial-label(
+    prefix = "###"
 ) }}
 
 ### emphasis(Object)
 
 #### itemStyle(Object)
 
-{{use:partial-item-style(prefix="####")}}
+{{ use: partial-item-style(
+    prefix = "####"
+) }}
 
 #### label(Object)
 
-{{ use:partial-label(
-    prefix="####"
+{{ use: partial-label(
+    prefix = "####"
 ) }}
 
-{{use: partial-tooltip-in-series-data(
-    galleryViewPath=${galleryViewPath}
-)}}
-
+{{ use: partial-tooltip-in-series-data() }}
 
 ## nodes(Array)
 
@@ -304,40 +317,39 @@ links: [{
 ### lineStyle(Object)
 
 关系边的线条样式。
-{{use:partial-sankey-line-style(
-    prefix="###"
-)}}
+
+{{ use: partial-sankey-line-style(
+    prefix = "###"
+) }}
 
 ### emphasis(Object)
 
 #### lineStyle(Object)
 
-{{ use:partial-sankey-line-style(
-    prefix="####"
+{{ use: partial-sankey-line-style(
+    prefix = "####"
 ) }}
 
 ## edges(Array)
 
 同 [links](~series-sankey.links)
 
-{{ use:partial-silent(
-    prefix="#"
+{{ use: partial-silent(
+    prefix = "#"
 ) }}
 
-{{use: partial-animation(
-    prefix="#",
-    defaultAnimationEasing="'linear'",
-    defaultAnimationDuration=1000,
-    galleryEditorPath=${galleryEditorPath}
-)}}
+{{ use: partial-animation(
+    prefix = "#",
+    defaultAnimationEasing = "'linear'",
+    defaultAnimationDuration = 1000
+) }}
 
-{{use: partial-tooltip-in-series(
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-tooltip-in-series() }}
 
 
 
-{{target: partial-sankey-line-style}}
+
+{{ target: partial-sankey-line-style }}
 
 #${prefix} color(Color) = "'#314656'"
 
@@ -351,4 +363,7 @@ links: [{
 
 桑基图边的曲度。
 
-{{use: partial-style-shadow(prefix=${prefix})}}
+{{ use: partial-style-shadow(
+    prefix = ${prefix}
+) }}
+

@@ -1,12 +1,13 @@
-{{target:partial-area-style}}
 
-#${prefix} color(Color)={{ if: !${useColorPalatte} }} ${defaultColor|default('"#000"')} {{ else }}'自适应'{{ /if }}
+{{ target: partial-area-style }}
+
+#${prefix} color(Color) = {{ if: !${useColorPalatte} }} ${defaultColor|default('"#000"')} {{ else }}'自适应'{{ /if }}
 
 <ExampleUIControlColor />
 
-填充的颜色。{{ if: ${useColorPalatte} }} 默认从[option.color 调色盘](~color)获取颜色 {{/if}}
+填充的颜色。{{ if: ${useColorPalatte} }} 默认从[option.color 调色盘](~color)获取颜色 {{ /if }}
 
-{{ use: partial-color-desc }}
+{{ use: partial-color-desc() }}
 
 {{ if: ${hasCallback} }}
 支持使用回调函数。回调函数格式如下：
@@ -14,9 +15,10 @@
 (params: Object) => Color
 ```
 传入的是数据项 `seriesIndex`, `dataIndex`, `data`, `value` 等各个参数。
-{{ /if}}
+{{ /if }}
 
-{{if: ${hasOrigin} }}
+{{ if: ${hasOrigin} }}
+
 #${prefix|default('##')} origin(string) = 'auto'
 
 图形区域的起始位置。
@@ -28,13 +30,12 @@
 - `'auto'` 填充坐标轴轴线到数据间的区域；
 - `'start'` 填充坐标轴底部（非 `inverse` 情况是最小值）到数据间的区域；
 - `'end'` 填充坐标轴顶部（非 `inverse` 情况是最大值）到数据间的区域。
-{{/if}}
+{{ /if }}
 
-
-
-{{ use:partial-style-shadow-opacity(
-    prefix=${prefix},
-    defaultOpacity=${defaultOpacity},
-    defaultShadowBlur=${defaultShadowBlur},
-    defaultShadowColor=${defaultShadowColor}
+{{ use: partial-style-shadow-opacity(
+    prefix = ${prefix},
+    defaultOpacity = ${defaultOpacity},
+    defaultShadowBlur = ${defaultShadowBlur},
+    defaultShadowColor = ${defaultShadowColor}
 ) }}
+

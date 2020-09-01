@@ -1,3 +1,4 @@
+
 {{ target: partial-2d-data-label-formatter }}
 
 Data label formatter, which supports string template and callback function. In either form, `\n` is supported to represent a new line.
@@ -24,7 +25,11 @@ Callback function is in form of:
 (params: Object|Array) => string
 ```
 where `params` is the single dataset needed by formatter, which is formed as:
-{{ use: partial-formatter-params-structure(extra = ${extra}) }}
+
+{{ use: partial-formatter-params-structure(
+    extra = ${extra}
+) }}
+
 
 
 
@@ -40,11 +45,14 @@ When [dataset](~dataset) is used, `seriesLayoutBy` specifies whether the column 
 Check this [example](${galleryEditorPath}dataset-series-layout-by).
 
 
+
+
 {{ target: partial-datasetIndex }}
 
 ## datasetIndex(number) = 0
 
 If [series.data](~series.data) is not specified, and [dataset](~dataset) exists, the series will use `dataset`. `datasetIndex` specifies which dataset will be used.
+
 
 
 
@@ -178,3 +186,4 @@ When needing to customize a data item, it can be set as an object, where propert
 For example, line chart can break when encounter an empty value, and scatter chart do not display graphic elements for empty values.
 
 <br><br>
+

@@ -1,3 +1,4 @@
+
 {{ target: component-geo }}
 
 # geo(Object)
@@ -24,19 +25,20 @@ From `3.1.10`, geo component also supports mouse events, whose parameters are:
 **Tip:**
 The region color can also be controlled by map series. See [series-map.geoIndex](~series-map.geoIndex).
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 ## show(boolean) = true
 
 Whether to show the geo component.
 
 {{ use: geo-common(
-    prefix='#',
-    galleryEditorPath=${galleryEditorPath},
-    galleryViewPath=${galleryViewPath}
+    prefix = '#'
 ) }}
 
 ## regions(Array)
+
 Configure style for specified regions.
 For example:
 ```js
@@ -51,43 +53,57 @@ regions: [{
 
 The region color can also be controlled by map series. See [series-map.geoIndex](~series-map.geoIndex).
 
-
 ### name(string)
+
 Name of area in map, like `'Guangdong'`, or `'Zhejiang'`.
 
 ### selected(boolean) = false
+
 Whether this area is selected.
 
 ### itemStyle(Object)
-Item style of this area.
-#### areaColor(Color)
-Area color in the map.
-{{ use: partial-color-desc }}
 
-{{ use: partial-item-style(prefix='###') }}
+Item style of this area.
+
+#### areaColor(Color)
+
+Area color in the map.
+
+{{ use: partial-color-desc() }}
+
+{{ use: partial-item-style(
+    prefix = '###'
+) }}
 
 #### emphasis(Object)
+
 ##### areaColor(Color)
+
 Area color in the map.
-{{ use: partial-color-desc }}
 
-{{ use: partial-item-style(prefix='####') }}
+{{ use: partial-color-desc() }}
 
+{{ use: partial-item-style(
+    prefix = '####'
+) }}
 
 ### label(Object)
-{{use: partial-label-desc}}
-{{use: partial-label(
-    prefix="###",
-    formatter=true
-)}}
-#### emphasis(Object)
-{{use: partial-label(
-    prefix="####",
-    formatter=true
-)}}
 
+{{ use: partial-label-desc() }}
 
-
-{{ use:partial-silent(
-    prefix="#"
+{{ use: partial-label(
+    prefix = "###",
+    formatter = true
 ) }}
+
+#### emphasis(Object)
+
+{{ use: partial-label(
+    prefix = "####",
+    formatter = true
+) }}
+
+{{ use: partial-silent(
+    prefix = "#"
+) }}
+

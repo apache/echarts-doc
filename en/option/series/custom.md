@@ -1,4 +1,5 @@
-{{target:series-custom}}
+
+{{ target: series-custom }}
 
 # series.custom(Object)
 
@@ -18,9 +19,7 @@ echarts manages the creation, deletion, animation and interaction with other com
 <br>
 **Customize the render logic (in renderItem method)**
 
-{{use: partial-custom-renderItem-common(
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-custom-renderItem-common() }}
 
 <br>
 **Dimension mapping (by encode and dimension option)**
@@ -55,8 +54,8 @@ When use `custom series` with [dataZoom](~dataZoom), [dataZoom.filterMode](~data
 <br>
 <br>
 **Difference between `dataIndex` and `dataIndexInside`**
-{{use: partial-custom-dataIndex-dataIndexInside}}
 
+{{ use: partial-custom-dataIndex-dataIndexInside() }}
 
 <br>
 **Event listener**
@@ -92,33 +91,31 @@ chart.on('click', {element: 'aaa'}, function (params) {
 });
 ```
 
-
-
 ## type(string) = 'custom'
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 {{ use: partial-series-name() }}
 
 {{ use: partial-legend-hover-link() }}
 
 {{ use: partial-coord-sys(
-    seriesType="custom",
-    coordSysDefault="'cartesian2d'",
-    cartesian2d=true,
-    polar=true,
-    geo=true,
-    calendar=true,
-    none=true
+    seriesType = "custom",
+    coordSysDefault = "'cartesian2d'",
+    cartesian2d = true,
+    polar = true,
+    geo = true,
+    calendar = true,
+    none = true
 ) }}
 
 ## renderItem(Function)
 
-{{use: partial-custom-renderItem-common(
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-custom-renderItem-common() }}
 
-### arguments
+### arguments(*)
 
 Parameters of `renderItem`.
 
@@ -185,8 +182,8 @@ The first parameter of `renderItem`, including:
 ```
 
 Difference between `dataIndex` and `dataIndexInside`:
-{{use: partial-custom-dataIndex-dataIndexInside}}
 
+{{ use: partial-custom-dataIndex-dataIndexInside() }}
 
 #### api(Object)
 
@@ -257,7 +254,6 @@ Get the visual info. It is rarely be used.
 @return {string|number} The value of visual.
 ```
 
-
 ##### barLayout(Function)
 
 When `barLayout` is needed, (for example, when attaching some extra graphic elements to bar chart), this method can be used to obtain bar layout info.
@@ -286,7 +282,6 @@ See a [sample](${galleryEditorPath}custom-bar-trend).
         offsetCenter: {number} bar Offset of a bar, based on the center of the bar.
     }, ...]
 ```
-
 
 ##### currentSeriesIndices(Function)
 
@@ -333,7 +328,6 @@ Obtain font string, which can be used on style setting directly.
 @return {number} The current devicePixelRatio.
 ```
 
-
 ### return(Object)
 
 `renderItem` should returns graphic element definitions. Each graphic element is an object. See [graphic](~graphic.elements) for detailed info. (But width\height\top\bottom is not supported here)
@@ -376,48 +370,48 @@ For example:
 }
 ```
 
-
-{{use: partial-zr-graphic-elements(
-    prefix='##',
-    hostName='return',
-    symbolVisit='_',
-    symbolDeclare='_',
-    optionPath='series-custom.renderItem',
-    usageType='customSeries'
-)}}
-
+{{ use: partial-zr-graphic-elements(
+    prefix = '##',
+    hostName = 'return',
+    symbolVisit = '_',
+    symbolDeclare = '_',
+    optionPath = 'series-custom.renderItem',
+    usageType = 'customSeries'
+) }}
 
 ## itemStyle(Object)
-{{use:partial-item-style-desc}}
-{{use:partial-item-style(
-    prefix="##",
-    useColorPalatte=true,
-    hasCallback=false
-)}}
+
+{{ use: partial-item-style-desc() }}
+
+{{ use: partial-item-style(
+    prefix = "##",
+    useColorPalatte = true,
+    hasCallback = false
+) }}
+
 ## emphasis(Object)
+
 ### itemStyle(Object)
-{{use:partial-item-style(
-    prefix="###"
-)}}
 
+{{ use: partial-item-style(
+    prefix = "###"
+) }}
 
-{{use:partial-series-dimensions(
-    prefix="#"
-)}}
+{{ use: partial-series-dimensions(
+    prefix = "#"
+) }}
 
-{{use:partial-series-encode(
-    prefix="#"
-)}}
+{{ use: partial-series-encode(
+    prefix = "#"
+) }}
 
-{{ use: partial-seriesLayoutBy }}
+{{ use: partial-seriesLayoutBy() }}
 
-{{ use: partial-datasetIndex }}
+{{ use: partial-datasetIndex() }}
 
 ## data(Array)
 
-{{ use: partial-2d-data-desc(
-    galleryEditorPath = ${galleryEditorPath}
-)}}
+{{ use: partial-2d-data-desc() }}
 
 ### name(string)
 
@@ -428,53 +422,45 @@ Name of data item.
 Value of data item.
 
 ### itemStyle(Object)
-{{use:partial-item-style(
-    prefix="###"
-)}}
+
+{{ use: partial-item-style(
+    prefix = "###"
+) }}
+
 ### emphasis(Object)
+
 #### itemStyle(Object)
-{{use:partial-item-style(
-    prefix="####"
-)}}
 
-{{use: partial-tooltip-in-series-data(
-    galleryViewPath=${galleryViewPath}
-)}}
-
-
-{{use:partial-clip(
-    prefix="#",
-    defaultClip='false'
+{{ use: partial-item-style(
+    prefix = "####"
 ) }}
 
-{{use:partial-z-zlevel(
-    prefix="#",
-    componentName="custom series"
+{{ use: partial-tooltip-in-series-data() }}
+
+{{ use: partial-clip(
+    prefix = "#",
+    defaultClip = 'false'
 ) }}
-{{ use:partial-silent(
-    prefix="#"
+
+{{ use: partial-z-zlevel(
+    prefix = "#",
+    componentName = "custom series"
 ) }}
 
-{{use:partial-animation(
-    prefix="#",
-    galleryEditorPath=${galleryEditorPath}
-)}}
+{{ use: partial-silent(
+    prefix = "#"
+) }}
 
-{{use: partial-tooltip-in-series(
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-animation(
+    prefix = "#"
+) }}
 
-
-
+{{ use: partial-tooltip-in-series() }}
 
 
 
 
-
-
-
-
-{{target: partial-custom-renderItem-common}}
+{{ target: partial-custom-renderItem-common }}
 
 `custom series` requires developers to write a render logic by themselves. This render logic is called [renderItem](~series-custom.renderItem).
 
@@ -533,14 +519,10 @@ Moreover, [api.style(...)](~series-custom.renderItem.arguments.api.style) method
 
 
 
+{{ target: partial-custom-dataIndex-dataIndexInside }}
 
-
-
-
-
-
-{{target: partial-custom-dataIndex-dataIndexInside}}
 + `dataIndex` is the index of a `dataItem` in the original data.
 + `dataIndexInside` is the index of a `dataItem` in the current data window (see [dataZoom](~dataZoom).
 
 [renderItem.arguments.api](~series-custom.renderItem.arguments.api) uses `dataIndexInside` as the input parameter but not `dataIndex`, because conversion from `dataIndex` to `dataIndexInside` is time-consuming.
+

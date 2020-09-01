@@ -1,3 +1,4 @@
+
 {{ target: geo-common }}
 
 #${prefix} map(string) = ''
@@ -45,9 +46,11 @@ $.get('map/json/china.json', function (chinaJson) {
 ECharts uses [geoJSON](http://geojson.org/) format as map outline. Besides the methods introduced above, you can also get [geoJSON](http://geojson.org/) data through in other methods if you like and register it in ECharts. Reference to [USA Population Estimates](${galleryEditorPath}map-usa) for more information.
 
 #${prefix} roam(boolean|string) = false
-{{ use: partial-roam }}
+
+{{ use: partial-roam() }}
 
 #${prefix} center(Array)
+
 Center of current view-port, in longitude and latitude.
 
 Example:
@@ -62,6 +65,7 @@ Used to scale aspect of geo.
 The final aspect is calculated by: `geoBoundingRect.width / geoBoundingRect.height * aspectScale`.
 
 #${prefix} boundingCoords(Array) = null
+
 Two dimension array. Define coord of left-top, right-bottom in layout box.
 
 ```js
@@ -77,10 +81,14 @@ boundingCoords: [
 ```
 
 #${prefix} zoom(number) = 1
+
 Zoom rate of current view-port.
 
 #${prefix} scaleLimit(Object)
-{{ use: partial-scale-limit(prefix="#" + ${prefix}) }}
+
+{{ use: partial-scale-limit(
+    prefix = "#" + ${prefix}
+) }}
 
 #${prefix} nameMap(Object)
 
@@ -93,7 +101,9 @@ Name mapping for customized areas. For example:
 
 #${prefix} nameProperty(string) = 'name'
 
-{{ use: partial-version(version="4.8.0") }}
+{{ use: partial-version(
+    version = "4.8.0"
+) }}
 
 customized property key for GeoJSON feature. By default, 'name' is used as primary key to identify GeoJSON feature.
 For example:
@@ -107,33 +117,34 @@ For example:
 }
 ```
 
-
-
 #${prefix} selectedMode(boolean|string) = false
+
 Selected mode decides whether multiple selecting is supported. By default, `false` is used for disabling selection. Its value can also be `'single'` for selecting single area, or `'multiple'` for selecting multiple areas.
 
-
-
 #${prefix} label(Object)
-{{use: partial-label-desc}}
-{{use: partial-label(
-    prefix="#" + ${prefix},
-    formatter=true
-)}}
 
+{{ use: partial-label-desc() }}
 
+{{ use: partial-label(
+    prefix = "#" + ${prefix},
+    formatter = true
+) }}
 
 #${prefix} itemStyle(Object)
 
-{{ use: partial-item-style-desc(name='Map Area Border') }}
-
+{{ use: partial-item-style-desc(
+    name = 'Map Area Border'
+) }}
 
 ##${prefix} areaColor(Color) = '#eee'
+
 Area filling color.
 
-{{ use: partial-color-desc }}
+{{ use: partial-color-desc() }}
 
-{{ use: partial-item-style(prefix=${prefix} + '#') }}
+{{ use: partial-item-style(
+    prefix = ${prefix} + '#'
+) }}
 
 #${prefix} emphasis(Object)
 
@@ -142,20 +153,25 @@ Map area style in highlighted state.
 ##${prefix} itemStyle(Object)
 
 ###${prefix} areaColor(Color) = '#eee'
+
 Area filling color.
 
-{{ use: partial-color-desc }}
+{{ use: partial-color-desc() }}
 
-{{ use: partial-item-style(prefix=${prefix} + '##') }}
+{{ use: partial-item-style(
+    prefix = ${prefix} + '##'
+) }}
 
 ##${prefix} label(Object)
-{{use: partial-label(
-    prefix="##" + ${prefix},
-    formatter=true
-)}}
 
-{{ use: partial-rect-layout(prefix=${prefix}) }}
+{{ use: partial-label(
+    prefix = "##" + ${prefix},
+    formatter = true
+) }}
 
+{{ use: partial-rect-layout(
+    prefix = ${prefix}
+) }}
 
 #${prefix} layoutCenter(Array) = null
 

@@ -1,51 +1,53 @@
+
 {{ target: partial-coord-sys }}
 
 ## coordinateSystem(string) = ${coordSysDefault}
 
 The coordinate used in the series, whose options are:
 
-{{if: ${none} }}
+{{ if: ${none} }}
 + `null` or `'none'`
 
     No coordinate.
-{{/if}}
+{{ /if }}
 
-{{if: ${cartesian2d} }}
+{{ if: ${cartesian2d} }}
 
 + `'cartesian2d'`
 
     Use a two-dimensional rectangular coordinate (also known as Cartesian coordinate), with [xAxisIndex](~series-${seriesType}.xAxisIndex) and [yAxisIndex](~series-${seriesType}.yAxisIndex) to assign the corresponding axis component.
-{{/if}}
+{{ /if }}
 
-{{if: ${polar} }}
+{{ if: ${polar} }}
 
 + `'polar'`
 
     Use polar coordinates, with [polarIndex](~series-${seriesType}.polarIndex) to assign the corresponding polar coordinate component.
-{{/if}}
+{{ /if }}
 
-{{if: ${geo} }}
+{{ if: ${geo} }}
 
 + `'geo'`
 
     Use geographic coordinate, with [geoIndex](~series-${seriesType}.geoIndex) to assign the corresponding geographic coordinate components.
-{{/if}}
+{{ /if }}
 
-{{if: ${parallel} }}
+{{ if: ${parallel} }}
 
 + `'parallel'`
 
     Use parallel coordinates, with [parallelIndex](~series-${seriesType}.parallelIndex) to assign the corresponding parallel coordinate components.
-{{/if}}
+{{ /if }}
 
-{{if: ${none} }}
+{{ if: ${none} }}
 
 + `'none'`
 
     Do not use coordinate system.
-{{/if}}
+{{ /if }}
 
-{{if: ${cartesian2d} }}
+{{ if: ${cartesian2d} }}
+
 ## xAxisIndex(number) = 0
 
 Index of [x axis](~xAxis) to combine with, which is  useful for multiple x axes in one chart.
@@ -53,41 +55,44 @@ Index of [x axis](~xAxis) to combine with, which is  useful for multiple x axes 
 ## yAxisIndex(number) = 0
 
 Index of [y axis](~yAxis) to combine with, which is  useful for multiple y axes in one chart.
-{{/if}}
+{{ /if }}
 
 
 
-{{if: ${polar} }}
+{{ if: ${polar} }}
+
 ## polarIndex(number) = 0
 
 Index of [polar coordinate](~polar) to combine with, which is useful for multiple polar axes in one chart.
 
-{{/if}}
+{{ /if }}
 
 
 
-{{if: ${geo} }}
+{{ if: ${geo} }}
+
 ## geoIndex(number) = 0
 
 Index of [geographic coordinate](~geo) to combine with, which is useful for multiple geographic axes in one chart.
 
-{{/if}}
+{{ /if }}
 
 
 
-{{if: ${parallel} }}
+{{ if: ${parallel} }}
+
 ## parallelIndex(number) = 0
 
 Index of [parallel coordinates](~parallel) to combine with, which is useful for multiple parallel axes in one chart.
 
-{{/if}}
+{{ /if }}
 
 
-{{if: ${calendar} }}
+{{ if: ${calendar} }}
+
 ## calendarIndex(number) = 0
 
 Index of [calendar coordinates](~calendar) to combine with, which is useful for multiple calendar coordinates in one chart.
 
-{{/if}}
-
+{{ /if }}
 

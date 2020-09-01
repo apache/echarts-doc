@@ -1,15 +1,14 @@
 
-{{target: component-graphic}}
+{{ target: component-graphic }}
 
-# graphic
+# graphic(*)
 
 `graphic` 是原生图形元素组件。可以支持的图形元素包括：
 
 {{ use: partial-graphic-cpt-type-list(
-    optionPath='graphic',
-    hostName='elements'
+    optionPath = 'graphic',
+    hostName = 'elements'
 ) }}
-
 
 下面示例中，使用图形元素做了水印，和文本块：
 ~[600x400](${galleryViewPath}line-graphic&edit=1&reset=1)
@@ -325,9 +324,9 @@ myChart.setOption({
 
 注意，可以用 [bounding](graphic.elements.bounding) 来设置是否整体限制在父节点范围内。
 
-
-
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 ## elements(Array)
 
@@ -365,14 +364,12 @@ myChart.setOption({
 }
 ```
 
+{{ use: partial-zr-graphic-elements(
+    prefix = '#',
+    optionPath = 'graphic',
+    hostName = 'elements',
+    symbolVisit = '-',
+    symbolDeclare = '.',
+    usageType = 'graphicComponent'
+) }}
 
-
-
-{{use: partial-zr-graphic-elements(
-    prefix='#',
-    optionPath='graphic',
-    hostName='elements',
-    symbolVisit='-',
-    symbolDeclare='.',
-    usageType='graphicComponent'
-)}}

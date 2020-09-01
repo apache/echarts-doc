@@ -1,5 +1,5 @@
 
-{{target: component-brush}}
+{{ target: component-brush }}
 
 # brush(Object)
 
@@ -41,7 +41,7 @@
 
 **刷选和坐标系的关系**
 
-{{use: partial-brush-coord}}
+{{ use: partial-brush-coord() }}
 
 <br>
 
@@ -73,7 +73,7 @@ myChart.dispatchAction({
 
 ** brushLink **
 
-{{use: partial-brush-brushLink (galleryViewPath=${galleryViewPath})}}
+{{ use: partial-brush-brushLink() }}
 
 参见 [brush.brushLink](~brush.brushLink)。
 
@@ -85,8 +85,7 @@ myChart.dispatchAction({
 
 ** throttle / debounce / 事件延迟 **
 
-{{use: partial-brush-throttle (galleryViewPath=${galleryViewPath})}}
-
+{{ use: partial-brush-throttle() }}
 
 <br>
 
@@ -104,21 +103,19 @@ myChart.dispatchAction({
 
 下面是详细配置。
 
-
-{{use: partial-component-id(prefix="#")}}
-
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 ## toolbox(Array) = ['rect', 'polygon', 'keep', 'clear']
 
 使用在 toolbox 中的按钮。
 
-{{use: partial-brush-toolbox-buttons}}
-
+{{ use: partial-brush-toolbox-buttons() }}
 
 ## brushLink(Array|string) = null
 
-{{use: partial-brush-brushLink (galleryViewPath=${galleryViewPath})}}
-
+{{ use: partial-brush-brushLink() }}
 
 ## seriesIndex(Array|number|string) = 'all'
 
@@ -132,27 +129,25 @@ myChart.dispatchAction({
 
 指定哪些 geo 可以被刷选。
 
-{{use: partial-brush-coord}}
+{{ use: partial-brush-coord() }}
 
 ## xAxisIndex(Array|number|string) = null
 
 指定哪些 xAxisIndex 可以被刷选。
 
-{{use: partial-brush-coord}}
+{{ use: partial-brush-coord() }}
 
 ## yAxisIndex(Array|number|string) = null
 
 指定哪些 yAxisIndex 可以被刷选。
 
-{{use: partial-brush-coord}}
-
+{{ use: partial-brush-coord() }}
 
 ## brushType(string) = 'rect'
 
 默认的刷子类型。
 
-{{use: partial-brush-type}}
-
+{{ use: partial-brush-type() }}
 
 ## brushMode(string) = 'single'
 
@@ -179,13 +174,13 @@ myChart.dispatchAction({
 
 ## throttleType(string) = 'fixRate'
 
-{{use: partial-brush-throttle (galleryViewPath=${galleryViewPath})}}
+{{ use: partial-brush-throttle() }}
 
 ## throttleDelay(number) = 0
 
 默认为 `0` 表示不开启 throttle。
 
-{{use: partial-brush-throttle (galleryViewPath=${galleryViewPath})}}
+{{ use: partial-brush-throttle() }}
 
 ## removeOnClick(boolean) = true
 
@@ -197,11 +192,9 @@ myChart.dispatchAction({
 
 可选的视觉元素有：
 
-{{use: partial-visual-map-visual-type}}
+{{ use: partial-visual-map-visual-type() }}
 
 大多数情况下，inBrush 可以不指定，维持本来的视觉配置。
-
-
 
 ## outOfBrush(Object)
 
@@ -209,7 +202,7 @@ myChart.dispatchAction({
 
 可选的视觉元素有：
 
-{{use: partial-visual-map-visual-type}}
+{{ use: partial-visual-map-visual-type() }}
 
 **注意**，如果 outOfBrush 没有指定，默认会设置 color: `'#ddd'`，如果你不想要这个color，比如可以
 换成：
@@ -230,23 +223,7 @@ brush 选框的 z-index。当有和不想管组件有不正确的重叠时，可
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{{target: partial-brush-coord}}
+{{ target: partial-brush-coord }}
 
 可以设置 `brush` 是『全局的』还是『属于坐标系的』。
 
@@ -304,7 +281,10 @@ option = {
 };
 ```
 
-{{target: partial-brush-brushLink}}
+
+
+
+{{ target: partial-brush-brushLink }}
 
 不同系列间，选中的项可以联动。
 
@@ -341,7 +321,9 @@ option = {
 ```
 
 
-{{target: partial-brush-throttle}}
+
+
+{{ target: partial-brush-throttle }}
 
 默认情况，刷选或者移动选区的时候，会不断得发 `brushSelected` 事件，从而告诉外界选中的内容。
 
@@ -353,7 +335,8 @@ throttleType 取值可以是：
 
 
 
-{{target: partial-brush-toolbox-buttons}}
+
+{{ target: partial-brush-toolbox-buttons }}
 
 brush 相关的 toolbox 按钮有：
 
@@ -365,12 +348,12 @@ brush 相关的 toolbox 按钮有：
 + `'clear'`：清空所有选框。
 
 
-{{target: partial-brush-type}}
+
+
+{{ target: partial-brush-type }}
 
 + `'rect'`：矩形选框。
 + `'polygon'`：任意形状选框。
 + `'lineX'`：横向选择。
 + `'lineY'`：纵向选择。
-
-
 

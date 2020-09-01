@@ -1,4 +1,5 @@
-{{target: series-radar}}
+
+{{ target: series-radar }}
 
 # series.radar(Object)
 
@@ -12,7 +13,9 @@ Here is the example of AQI data which is presented in radar chart.
 
 ## type(string) = 'radar'
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 {{ use: partial-series-name() }}
 
@@ -20,55 +23,77 @@ Here is the example of AQI data which is presented in radar chart.
 
 Index of [radar](~radar) component that radar chart uses.
 
-{{ use:partial-symbol(
-    name="radar",
-    seriesType="radar",
-    defaultSymbol="'circle'",
-    defaultSymbolSize=4,
-    prefix="#",
-    hasCallback=true
+{{ use: partial-symbol(
+    name = "radar",
+    seriesType = "radar",
+    defaultSymbol = "'circle'",
+    defaultSymbolSize = 4,
+    prefix = "#",
+    hasCallback = true
 ) }}
 
-
 ## label(Object)
-{{use: partial-label-desc}}
-{{use: partial-label(
-    prefix="##",
-    defaultPosition="'top'",
-    formatter=true
-)}}
+
+{{ use: partial-label-desc() }}
+
+{{ use: partial-label(
+    prefix = "##",
+    defaultPosition = "'top'",
+    formatter = true
+) }}
 
 ## itemStyle(Object)
+
 Item style of the inflection point of the lines.
-{{use: partial-item-style(
-    prefix="##",
-    useColorPalatte=true,
-    hasCallback=true
-)}}
+
+{{ use: partial-item-style(
+    prefix = "##",
+    useColorPalatte = true,
+    hasCallback = true
+) }}
 
 ## lineStyle(Object)
+
 Line style.
-{{use:partial-line-style(prefix="##")}}
+
+{{ use: partial-line-style(
+    prefix = "##"
+) }}
 
 ## areaStyle(Object)
-Area filling style.
-{{use: partial-area-style(prefix="##")}}
 
+Area filling style.
+
+{{ use: partial-area-style(
+    prefix = "##"
+) }}
 
 ## emphasis(Object)
+
 ### itemStyle(Object)
-{{use: partial-item-style(prefix="###")}}
+
+{{ use: partial-item-style(
+    prefix = "###"
+) }}
+
 ### label(Object)
-{{use: partial-label(
-    prefix="###",
-    formatter=true
-)}}
+
+{{ use: partial-label(
+    prefix = "###",
+    formatter = true
+) }}
+
 ### lineStyle(Object)
-{{use: partial-line-style(prefix="###")}}
+
+{{ use: partial-line-style(
+    prefix = "###"
+) }}
+
 ### areaStyle(Object)
-{{use: partial-area-style(prefix="###")}}
 
-
+{{ use: partial-area-style(
+    prefix = "###"
+) }}
 
 ## data(Array)
 
@@ -90,75 +115,98 @@ data : [
 Among them, `value` item array contains data that is corresponding to [radar.indicator](~radar.indicator).
 
 ### name(string)
+
 Data item name
 
 ### value(number)
+
 Numerical value of a single data item.
 
-{{ use:partial-symbol(
-    defaultSymbol="'circle'",
-    defaultSymbolSize=4,
-    prefix="##",
-    name="single data"
+{{ use: partial-symbol(
+    defaultSymbol = "'circle'",
+    defaultSymbolSize = 4,
+    prefix = "##",
+    name = "single data"
 ) }}
 
 ### label(Object)
+
 Style setting of the text on single inflection point.
+
 {{ use: partial-label(
-    prefix="###",
-    defaultPosition="top"
+    prefix = "###",
+    defaultPosition = "top"
 ) }}
 
 ### itemStyle(Object)
+
 Style setting of the symbol on single inflection point.
-{{use: partial-item-style(prefix="###")}}
+
+{{ use: partial-item-style(
+    prefix = "###"
+) }}
 
 ### lineStyle(Object)
+
 Line style of a single item.
-{{use:partial-line-style(prefix="###")}}
+
+{{ use: partial-line-style(
+    prefix = "###"
+) }}
 
 ### areaStyle(Object)
+
 Area filling style of a single item.
-{{use: partial-area-style(prefix="###")}}
+
+{{ use: partial-area-style(
+    prefix = "###"
+) }}
 
 ### emphasis(Object)
+
 #### label(Object)
+
 {{ use: partial-label(
-    prefix="####", defaultPosition="top"
+    prefix = "####",
+    defaultPosition = "top"
 ) }}
+
 #### itemStyle(Object)
-{{use: partial-item-style(prefix="####")}}
+
+{{ use: partial-item-style(
+    prefix = "####"
+) }}
+
 #### lineStyle(Object)
-{{use: partial-line-style(prefix="####")}}
+
+{{ use: partial-line-style(
+    prefix = "####"
+) }}
+
 #### areaStyle(Object)
-{{use: partial-area-style(prefix="####")}}
 
-
-
-{{use: partial-tooltip-in-series-data(
-    galleryViewPath=${galleryViewPath}
-)}}
-
-
-{{use:partial-z-zlevel(
-    prefix="#",
-    componentName="radar chart"
+{{ use: partial-area-style(
+    prefix = "####"
 ) }}
 
-{{ use:partial-silent(
-    prefix="#"
+{{ use: partial-tooltip-in-series-data() }}
+
+{{ use: partial-z-zlevel(
+    prefix = "#",
+    componentName = "radar chart"
 ) }}
 
-{{use: partial-animation(
-    prefix="#"
-)}}
+{{ use: partial-silent(
+    prefix = "#"
+) }}
 
-{{use: partial-animation(
-    prefix="#",
-    galleryEditorPath=${galleryEditorPath}
-)}}
+{{ use: partial-animation(
+    prefix = "#"
+) }}
 
+{{ use: partial-animation(
+    prefix = "#"
+) }}
 
-{{use: partial-tooltip-in-series(
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-tooltip-in-series() }}
+

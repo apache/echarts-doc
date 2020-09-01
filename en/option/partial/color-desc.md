@@ -1,3 +1,4 @@
+
 {{ target: partial-color-desc }}
 
 > Color can be represented in RGB, for example `'rgb(128, 128, 128)'`. RGBA can be used when you need alpha channel, for example `'rgba(128, 128, 128, 0.5)'`. You may also use hexadecimal format, for example `'#ccc'`. Gradient color and texture are also supported besides single colors.
@@ -35,3 +36,4 @@
 >     repeat: 'repeat' // whether to repeat texture, whose value can be repeat-x, repeat-y, or no-repeat
 > }
 > ```
+

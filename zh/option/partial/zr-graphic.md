@@ -1,18 +1,18 @@
 
-{{target: partial-zr-graphic-elements}}
+{{ target: partial-zr-graphic-elements }}
 
 #${prefix} ${hostName}${symbolDeclare}group(Object)
 
 group 是唯一的可以有子节点的容器。group 可以用来整体定位一组图形元素。
 
 {{ use: partial-graphic-cpt-common-props(
-    type='group',
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    type = 'group',
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ##${prefix} width(number) = 0
@@ -23,7 +23,6 @@ group 是唯一的可以有子节点的容器。group 可以用来整体定位�
 
 即便当宽度为零的时候，子节点也可以使用 `left: 'center'` 相对于父节点水平居中。
 
-
 ##${prefix} height(number) = 0
 
 用于描述此 `group` 的高。
@@ -32,39 +31,34 @@ group 是唯一的可以有子节点的容器。group 可以用来整体定位�
 
 即便当高度为零的时候，子节点也可以使用 `top: 'middle'` 相对于父节点垂直居中。
 
-
 ##${prefix} diffChildrenByName(boolean) = false
 
 在 [自定义系列](~series-custom) 中，当 `diffChildrenByName: true` 时，对于 [renderItem](~series-custom.renderItem) 返回值中的每一个 [group](~${optionPath}.${hostName}${symbolVisit}group)，会根据其 [children](~${optionPath}.${hostName}${symbolVisit}group.children) 中每个图形元素的 [name](~${optionPath}.${hostName}${symbolVisit}polygon.name) 属性进行 "diff"。在这里，"diff" 的意思是，重绘的时候，在已存在的图形元素和新的图形元素之间建立对应关系（依据 `name` 是否相同），从如果数据有更新，能够形成的过渡动画。
 
 但是注意，这会有性能开销。如果数据量较大，不要开启这个功能。
 
-
 ##${prefix} children(Array)
 
 子节点列表，其中项都是一个图形元素定义。
 
 {{ use: partial-graphic-cpt-common-props(
-    type='group',
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
-
+    type = 'group',
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 {{ use: partial-graphic-cpt-event-handlers(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
-
-
 
 {{ if: ${usageType} === 'customSeries' }}
 
@@ -79,7 +73,7 @@ group 是唯一的可以有子节点的容器。group 可以用来整体定位�
 关于制定尺寸、拉伸还是平铺，参见 [layout](~${optionPath}.${hostName}${symbolVisit}path.shape.layout)。
 
 
-{{ use: partial-graphic-cpt-common-props(
+{{ use:   partial-graphic-cpt-common-props(
     type='path',
     prefix=${prefix},
     optionPath=${optionPath},
@@ -87,7 +81,7 @@ group 是唯一的可以有子节点的容器。group 可以用来整体定位�
     hostName=${hostName},
     symbolVisit=${symbolVisit},
     symbolDeclare=${symbolDeclare}
-) }}
+)   }}
 
 ##${prefix} shape(Object)
 
@@ -104,11 +98,9 @@ group 是唯一的可以有子节点的容器。group 可以用来整体定位�
 参见例子：
 [icons](${galleryEditorPath}custom-calendar-icon) 和 [shapes](${galleryEditorPath}custom-gantt-flight)。
 
-
 ###${prefix} d(string)
 
 同 [pathData](~${optionPath}.${hostName}${symbolVisit}path.shape.pathData)，别名。
-
 
 ###${prefix} layout(string) = 'center'
 
@@ -121,69 +113,64 @@ group 是唯一的可以有子节点的容器。group 可以用来整体定位�
 + `'cover'`：PathData 拉伸为矩形的长宽比，完全填满矩形，不会超出矩形。
 
 
-{{ use: partial-graphic-cpt-sub-prop-xy(
+{{ use:   partial-graphic-cpt-sub-prop-xy(
     prefix=${prefix},
     optionPath=${optionPath},
     usageType=${usageType},
     hostName=${hostName},
     symbolVisit=${symbolVisit},
     symbolDeclare=${symbolDeclare}
-) }}
-{{ use: partial-graphic-cpt-sub-prop-wh(
+)   }}
+{{ use:   partial-graphic-cpt-sub-prop-wh(
     prefix=${prefix},
     optionPath=${optionPath},
     usageType=${usageType},
     hostName=${hostName},
     symbolVisit=${symbolVisit},
     symbolDeclare=${symbolDeclare}
-) }}
-
-
+)   }}
 
 ##${prefix} style(Object)
 
-{{ use: partial-graphic-cpt-style-prop-common(
+{{ use:   partial-graphic-cpt-style-prop-common(
     prefix=${prefix},
     optionPath=${optionPath},
     usageType=${usageType},
     hostName=${hostName},
     symbolVisit=${symbolVisit},
     symbolDeclare=${symbolDeclare}
-) }}
+)   }}
 
-{{ use: partial-graphic-cpt-style-emphasis(
+{{ use:   partial-graphic-cpt-style-emphasis(
     prefix=${prefix},
     optionPath=${optionPath},
     usageType=${usageType},
     hostName=${hostName},
     symbolVisit=${symbolVisit},
     symbolDeclare=${symbolDeclare}
-) }}
+)   }}
 
-{{ use: partial-graphic-cpt-event-handlers(
+{{ use:   partial-graphic-cpt-event-handlers(
     prefix=${prefix},
     optionPath=${optionPath},
     usageType=${usageType},
     hostName=${hostName},
     symbolVisit=${symbolVisit},
     symbolDeclare=${symbolDeclare}
-) }}
+)   }}
 
 {{ /if }}
-
-
-
 
 #${prefix} ${hostName}${symbolDeclare}image(Object)
 
 {{ use: partial-graphic-cpt-common-props(
-    type='image',
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    type = 'image',
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ##${prefix} style(Object)
@@ -193,64 +180,62 @@ group 是唯一的可以有子节点的容器。group 可以用来整体定位�
 图片的内容，可以是图片的 URL，也可以是 [dataURI](https://tools.ietf.org/html/rfc2397).
 
 {{ use: partial-graphic-cpt-sub-prop-xy(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
+
 {{ use: partial-graphic-cpt-sub-prop-wh(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
+
 {{ use: partial-graphic-cpt-style-prop-common(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 {{ use: partial-graphic-cpt-style-emphasis(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 {{ use: partial-graphic-cpt-event-handlers(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
-
-
-
-
 
 #${prefix} ${hostName}${symbolDeclare}text(Object)
 
 文本块。
 
 {{ use: partial-graphic-cpt-common-props(
-    type='text',
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    type = 'text',
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ##${prefix} style(Object)
@@ -260,12 +245,12 @@ group 是唯一的可以有子节点的容器。group 可以用来整体定位�
 文本块文字。可以使用 `\n` 来换行。
 
 {{ use: partial-graphic-cpt-sub-prop-xy(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ###${prefix} font(string)
@@ -295,68 +280,64 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
 垂直对齐方式，取值：`'top'`, `'middle'`, `'bottom'`。
 
 {{ use: partial-graphic-cpt-style-prop-common(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 {{ use: partial-graphic-cpt-style-emphasis(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 {{ use: partial-graphic-cpt-event-handlers(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
-
-
-
-
-
 
 #${prefix} ${hostName}${symbolDeclare}rect(Object)
 
 矩形。
 
 {{ use: partial-graphic-cpt-common-props(
-    type='rect',
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    type = 'rect',
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ##${prefix} shape(Object)
 
 {{ use: partial-graphic-cpt-sub-prop-xy(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
+
 {{ use: partial-graphic-cpt-sub-prop-wh(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ###${prefix} r(Array)
@@ -370,292 +351,274 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
 + `r` 缩写为 `[1, 2]`    相当于 `[1, 2, 1, 2]`
 + `r` 缩写为 `[1, 2, 3]1 相当于 `[1, 2, 3, 2]`
 
-
 ##${prefix} style(Object)
 
 {{ use: partial-graphic-cpt-style-prop-common(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 {{ use: partial-graphic-cpt-style-emphasis(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 {{ use: partial-graphic-cpt-event-handlers(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
-
-
-
 
 #${prefix} ${hostName}${symbolDeclare}circle(Object)
 
 圆。
 
 {{ use: partial-graphic-cpt-common-props(
-    type='circle',
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    type = 'circle',
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ##${prefix} shape(Object)
 
 {{ use: partial-graphic-cpt-sub-prop-cxy(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
+
 {{ use: partial-graphic-cpt-sub-prop-r(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ##${prefix} style(Object)
 
 {{ use: partial-graphic-cpt-style-prop-common(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 {{ use: partial-graphic-cpt-style-emphasis(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 {{ use: partial-graphic-cpt-event-handlers(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
-
-
-
-
-
 
 #${prefix} ${hostName}${symbolDeclare}ring(Object)
 
 圆环。
 
 {{ use: partial-graphic-cpt-common-props(
-    type='ring',
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    type = 'ring',
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
-
 
 ##${prefix} shape(Object)
 
 {{ use: partial-graphic-cpt-sub-prop-cxy(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
-) }}
-{{ use: partial-graphic-cpt-sub-prop-rr0(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
+{{ use: partial-graphic-cpt-sub-prop-rr0(
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
 
 ##${prefix} style(Object)
 
 {{ use: partial-graphic-cpt-style-prop-common(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 {{ use: partial-graphic-cpt-style-emphasis(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 {{ use: partial-graphic-cpt-event-handlers(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
-
-
-
-
-
-
 
 #${prefix} ${hostName}${symbolDeclare}sector(Object)
 
 扇形。
 
 {{ use: partial-graphic-cpt-common-props(
-    type='sector',
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    type = 'sector',
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ##${prefix} shape(Object)
 
 {{ use: partial-graphic-cpt-sub-prop-cxy(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
+
 {{ use: partial-graphic-cpt-sub-prop-rr0(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
+
 {{ use: partial-graphic-cpt-sub-prop-angle(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ##${prefix} style(Object)
 
 {{ use: partial-graphic-cpt-style-prop-common(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 {{ use: partial-graphic-cpt-style-emphasis(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 {{ use: partial-graphic-cpt-event-handlers(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
-
-
-
-
-
-
-
 
 #${prefix} ${hostName}${symbolDeclare}arc(Object)
 
 圆弧。
 
 {{ use: partial-graphic-cpt-common-props(
-    type='arc',
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    type = 'arc',
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ##${prefix} shape(Object)
 
 {{ use: partial-graphic-cpt-sub-prop-cxy(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
+
 {{ use: partial-graphic-cpt-sub-prop-rr0(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
+
 {{ use: partial-graphic-cpt-sub-prop-angle(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ##${prefix} style(Object)
@@ -664,124 +627,109 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     fill = 'null',
     stroke = '"#000"',
     lineWidth = 1,
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 {{ use: partial-graphic-cpt-style-emphasis(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 {{ use: partial-graphic-cpt-event-handlers(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
-
-
-
-
-
-
-
-
-
 
 #${prefix} ${hostName}${symbolDeclare}polygon(Object)
 
 多边形。
 
 {{ use: partial-graphic-cpt-common-props(
-    type='polygon',
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    type = 'polygon',
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ##${prefix} shape(Object)
 
 {{ use: partial-graphic-cpt-path-common(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ##${prefix} style(Object)
 
 {{ use: partial-graphic-cpt-style-prop-common(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 {{ use: partial-graphic-cpt-style-emphasis(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 {{ use: partial-graphic-cpt-event-handlers(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
-
-
-
-
-
-
 
 #${prefix} ${hostName}${symbolDeclare}polyline(Object)
 
 折线。
 
 {{ use: partial-graphic-cpt-common-props(
-    type='polyline',
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    type = 'polyline',
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ##${prefix} shape(Object)
 
 {{ use: partial-graphic-cpt-path-common(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ##${prefix} style(Object)
@@ -790,63 +738,55 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     fill = 'null',
     stroke = '"#000"',
     lineWidth = 5,
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 {{ use: partial-graphic-cpt-style-emphasis(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 {{ use: partial-graphic-cpt-event-handlers(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
-
-
-
-
-
-
-
-
 
 #${prefix} ${hostName}${symbolDeclare}line(Object)
 
 直线。
 
 {{ use: partial-graphic-cpt-common-props(
-    type='line',
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    type = 'line',
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ##${prefix} shape(Object)
 
 {{ use: partial-graphic-cpt-sub-prop-x1y1x2y2(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ###${prefix} percent(number) = 1
@@ -859,62 +799,55 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     fill = 'null',
     stroke = '"#000"',
     lineWidth = 5,
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 {{ use: partial-graphic-cpt-style-emphasis(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 {{ use: partial-graphic-cpt-event-handlers(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
-
-
-
-
-
-
-
 
 #${prefix} ${hostName}${symbolDeclare}bezierCurve(Object)
 
 二次或三次贝塞尔曲线。
 
 {{ use: partial-graphic-cpt-common-props(
-    type='bezierCurve',
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    type = 'bezierCurve',
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ##${prefix} shape(Object)
 
 {{ use: partial-graphic-cpt-sub-prop-x1y1x2y2(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ###${prefix} cpx1(number) = 0
@@ -940,41 +873,31 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
 ##${prefix} style(Object)
 
 {{ use: partial-graphic-cpt-style-prop-common(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 {{ use: partial-graphic-cpt-style-emphasis(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 {{ use: partial-graphic-cpt-event-handlers(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -987,11 +910,11 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
 可取值：
 
 {{ use: partial-graphic-cpt-type-list(
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ##${prefix} id(string) = undefined
@@ -1012,22 +935,20 @@ setOption 时指定本次对该图形元素的操作行为。
 
 {{ /if }}
 
-
 {{ use: partial-graphic-transform(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
-
 
 {{ if: ${usageType} === 'graphicComponent' }}
 
 ##${prefix} left(number|string) = undefined
 
-{{ use: partial-graphic-cpt-location-prop-desc-common (
+{{ use:   partial-graphic-cpt-location-prop-desc-common (
     hv = 'h',
     prefix=${prefix},
     optionPath=${optionPath},
@@ -1035,11 +956,11 @@ setOption 时指定本次对该图形元素的操作行为。
     hostName=${hostName},
     symbolVisit=${symbolVisit},
     symbolDeclare=${symbolDeclare}
-) }}
+)   }}
 
 ##${prefix} right(number|string) = undefined
 
-{{ use: partial-graphic-cpt-location-prop-desc-common (
+{{ use:   partial-graphic-cpt-location-prop-desc-common (
     hv = 'h',
     prefix=${prefix},
     optionPath=${optionPath},
@@ -1047,11 +968,11 @@ setOption 时指定本次对该图形元素的操作行为。
     hostName=${hostName},
     symbolVisit=${symbolVisit},
     symbolDeclare=${symbolDeclare}
-) }}
+)   }}
 
 ##${prefix} top(number|string) = undefined
 
-{{ use: partial-graphic-cpt-location-prop-desc-common (
+{{ use:   partial-graphic-cpt-location-prop-desc-common (
     hv = 'v',
     prefix=${prefix},
     optionPath=${optionPath},
@@ -1059,11 +980,11 @@ setOption 时指定本次对该图形元素的操作行为。
     hostName=${hostName},
     symbolVisit=${symbolVisit},
     symbolDeclare=${symbolDeclare}
-) }}
+)   }}
 
 ##${prefix} bottom(number|string) = undefined
 
-{{ use: partial-graphic-cpt-location-prop-desc-common (
+{{ use:   partial-graphic-cpt-location-prop-desc-common (
     hv = 'v',
     prefix=${prefix},
     optionPath=${optionPath},
@@ -1071,7 +992,7 @@ setOption 时指定本次对该图形元素的操作行为。
     hostName=${hostName},
     symbolVisit=${symbolVisit},
     symbolDeclare=${symbolDeclare}
-) }}
+)   }}
 
 ##${prefix} bounding(strin) = 'all'
 
@@ -1089,8 +1010,6 @@ setOption 时指定本次对该图形元素的操作行为。
 + `'raw'`：
     表示仅仅用自身（不包括子节点）的没经过 tranform 的包围盒进行定位。
     这种方式易于内容超出父元素范围的定位方式。
-
-
 
 ##${prefix} z(number) = 0
 
@@ -1116,8 +1035,7 @@ z 方向的高度，决定层叠关系。
 
 {{ /if }}
 
-
-##${prefix} info
+##${prefix} info(*)
 
 用户定义的任意数据，可以在 event listener 中访问，如：
 
@@ -1143,7 +1061,7 @@ chart.on('click', function (params) {
 
 {{ if: ${usageType} === 'graphicComponent' }}
 
-{{ use: partial-cursor(prefix="##") }}
+{{ use:   partial-cursor(prefix="##")   }}
 
 ##${prefix} draggable(boolean) = false
 
@@ -1154,8 +1072,6 @@ chart.on('click', function (params) {
 是否渐进式渲染。当图形元素过多时才使用。
 
 {{ /if }}
-
-
 
 
 
@@ -1171,7 +1087,6 @@ chart.on('click', function (params) {
 + [label.color](~series-scatter.label.color) => `style.textFill`
 + [label.textBorderColor](~series-scatter.label.textBorderColor) => `style.textStroke`
 + ...
-
 
 ###${prefix} fill(string) = ${fill|default("'#000'")}
 
@@ -1204,10 +1119,6 @@ chart.on('click', function (params) {
 
 
 
-
-
-
-
 {{ target: partial-graphic-cpt-path-common }}
 
 ###${prefix} points(Array)
@@ -1224,11 +1135,6 @@ chart.on('click', function (params) {
 ###${prefix} smoothConstraint(boolean) = false
 
 是否将平滑曲线约束在包围盒中。`smooth` 为 `number`（bezier）时生效。
-
-
-
-
-
 
 
 
@@ -1258,7 +1164,6 @@ chart.on('click', function (params) {
 
 
 
-
 {{ target: partial-graphic-cpt-sub-prop-xy }}
 
 ###${prefix} x(number) = 0
@@ -1268,6 +1173,8 @@ chart.on('click', function (params) {
 ###${prefix} y(numbr) = 0
 
 图形元素的左上角在父节点坐标系（以父节点左上角为原点）中的纵坐标值。
+
+
 
 
 {{ target: partial-graphic-cpt-sub-prop-cxy }}
@@ -1281,6 +1188,8 @@ chart.on('click', function (params) {
 图形元素的中心在父节点坐标系（以父节点左上角为原点）中的纵坐标值。
 
 
+
+
 {{ target: partial-graphic-cpt-sub-prop-wh }}
 
 ###${prefix} width(number) = 0
@@ -1292,6 +1201,8 @@ chart.on('click', function (params) {
 图形元素的高度。
 
 
+
+
 {{ target: partial-graphic-cpt-sub-prop-r }}
 
 ###${prefix} r(number) = 0
@@ -1299,20 +1210,24 @@ chart.on('click', function (params) {
 外半径。
 
 
+
+
 {{ target: partial-graphic-cpt-sub-prop-rr0 }}
 
 {{ use: partial-graphic-cpt-sub-prop-r(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ###${prefix} r0(number) = 0
 
 内半径。
+
+
 
 
 {{ target: partial-graphic-cpt-sub-prop-x1y1x2y2 }}
@@ -1334,6 +1249,8 @@ chart.on('click', function (params) {
 结束点的 y 值。
 
 
+
+
 {{ target: partial-graphic-cpt-sub-prop-angle }}
 
 ###${prefix} startAngle(number) = 0
@@ -1347,9 +1264,6 @@ chart.on('click', function (params) {
 ###${prefix} clockwise(boolean) = true
 
 是否顺时针。
-
-
-
 
 
 
@@ -1396,42 +1310,44 @@ chart.on('click', function (params) {
 ##${prefix} position(Array) = [0, 0]
 
 {{ use: partial-graphic-transform-common-desc(
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ##${prefix} rotation(number) = 0
 
 {{ use: partial-graphic-transform-common-desc(
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ##${prefix} scale(Array) = [1, 1]
 
 {{ use: partial-graphic-transform-common-desc(
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ##${prefix} origin(number) = [0, 0]
 
 {{ use: partial-graphic-transform-common-desc(
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
+
+
 
 
 {{ target: partial-graphic-transform-common-desc }}
@@ -1450,8 +1366,6 @@ chart.on('click', function (params) {
 
 
 
-
-
 {{ target: partial-graphic-cpt-style-emphasis }}
 
 {{ if: ${usageType} === 'customSeries' }}
@@ -1462,6 +1376,7 @@ chart.on('click', function (params) {
 结构同 [style](~${optionPath}.${hostName}${symbolVisit}polygon.style) 相同。
 
 {{ /if }}
+
 
 
 
@@ -1479,6 +1394,4 @@ chart.on('click', function (params) {
 [bezierCurve](~${optionPath}.${hostName}${symbolVisit}bezierCurve),
 [arc](~${optionPath}.${hostName}${symbolVisit}arc),
 [group](~${optionPath}.${hostName}${symbolVisit}group),
-
-
 

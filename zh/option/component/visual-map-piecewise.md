@@ -1,5 +1,5 @@
 
-{{target: component-visual-map-piecewise}}
+{{ target: component-visual-map-piecewise }}
 
 # visualMap.piecewise(Object)
 
@@ -30,7 +30,9 @@ option = {"tooltip":{},"xAxis":{"type":"category","data":[0,1,2,3,4,5,6,7,8,9,10
 
 类型为分段型。
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 ## splitNumber(number) = 5
 
@@ -40,7 +42,6 @@ option = {"tooltip":{},"xAxis":{"type":"category","data":[0,1,2,3,4,5,6,7,8,9,10
 连续数据的范围需要 [max](~visualMap-piecewise.max) 和 [min](~visualMap-piecewise.min) 来指定。
 
 如果设置了 [visualMap-piecewise.pieces](~visualMap-piecewise.pieces) 或者 [visualMap-piecewise.categories](~visualMap-piecewise.categories)，则 `splitNumber` 无效。
-
 
 ## pieces(Array)
 
@@ -77,14 +78,13 @@ pieces: [
 
 在每个 piece 中支持的 visualMap 属性有：
 
-{{use: partial-visual-map-visual-type}}
+{{ use: partial-visual-map-visual-type() }}
 
 [参见示例](${galleryEditorPath}doc-example/map-visualMap-pieces&edit=1&reset=1)
 
 （注：在 ECharts2 中，`pieces` 叫做 `splitList`。现在后者仍兼容，但推荐使用 `pieces`）
 
 `pieces` 中的顺序，其实试试就知道。若要看详细的规则，参见 [visualMap.inverse](~visualMap.inverse)。
-
 
 ## categories(Array)
 
@@ -99,7 +99,6 @@ categories: ['严重污染', '重度污染', '中度污染', '轻度污染', '�
 [参见示例](${galleryEditorPath}doc-example/scatter-visualMap-categories&edit=1&reset=1)
 
 `categories` 中的顺序，其实试试就知道。若要看详细的规则，参见 [visualMap.inverse](~visualMap.inverse)。
-
 
 ## min(number)
 
@@ -144,7 +143,6 @@ series.data 的 `dataMin` 和 `dataMax`）。
 + `'multiple'`（多选）。
 + `'single'`（单选）。
 
-
 ## inverse(boolean) = false
 
 <ExampleUIControlBoolean />
@@ -165,7 +163,6 @@ series.data 的 `dataMin` 和 `dataMax`）。
 
 其实没有那么复杂，使用时候，试试就知道了。
 
-
 ## precision(number) = null
 
 <ExampleUIControlNumber min="0" step="1" />
@@ -176,20 +173,17 @@ series.data 的 `dataMin` 和 `dataMax`）。
 
 + **连续型数据自定义分段** 模式（即 [visualMap-piecewise.pieces](~visualMap-piecewise.pieces) 被使用）或 **离散数据根据类别分段** 模式（即 [visualMap-piecewise.categories](~visualMap-piecewise.categories) 被使用），精度默认为0（没有小数）。
 
-
 ## itemWidth(number) = 20
 
 <ExampleUIControlNumber default="20" min="0" />
 
 图形的宽度，即每个小块的宽度。
 
-
 ## itemHeight(number) = 14
 
 <ExampleUIControlNumber default="14" min="0" />
 
 图形的高度，即每个小块的高度。
-
 
 ## align(string) = 'auto'
 
@@ -200,7 +194,6 @@ series.data 的 `dataMin` 和 `dataMax`）。
 + `'auto'` 自动决定。
 + `'left'` 图形在左文字在右。
 + `'right'` 图形在右文字在左。
-
 
 ## text(Array) = null
 
@@ -228,21 +221,21 @@ series.data 的 `dataMin` 和 `dataMax`）。
 
 每两个图元之间的间隔距离，单位为px。
 
-
 ## itemSymbol(string) = 'roundRect'
 
-默认的图形。可选值为：{{ import: partial-icon-buildin}}。
+默认的图形。可选值为：
+
+{{ use: partial-icon-buildin() }}
+
+。
 
 symbol的设置参见 [visualMap-piecewise.inRange](~visualMap-piecewise.inRange) 和 [visualMap-piecewise.outOfRange](~visualMap-piecewise.outOfRange)。
 
 当他们没有进行指定时，取此 `itemSymbol` 为默认值（但是只在 visualMap 组件上使用，不在 chart 中使用）。
 
-
 {{ use: partial-visual-map-common(
-    visualMapName='visualMap-piecewise',
-    galleryEditorPath=${galleryEditorPath}
+    visualMapName = 'visualMap-piecewise'
 ) }}
-
 
 ## formatter(string|Function)
 
@@ -256,3 +249,4 @@ formatter: function (value, value2) {
     return 'aaaa' + value + 'bbbb' + value2; // 范围标签显示内容。
 }
 ```
+

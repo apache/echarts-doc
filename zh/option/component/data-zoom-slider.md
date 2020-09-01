@@ -1,4 +1,5 @@
-{{target: component-data-zoom-slider}}
+
+{{ target: component-data-zoom-slider }}
 
 # dataZoom.slider(Object)
 
@@ -36,10 +37,11 @@ const option = {
 };
 </ExampleBaseOption>
 
-
 ## type(string) = 'slider'
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 ## show(boolean) = true
 
@@ -47,13 +49,11 @@ const option = {
 
 是否显示 ${dataZoomName} 组件。如果设置为 `false`，不会显示，但是数据过滤的功能还存在。
 
-
 ## backgroundColor(Color) = 'rgba(47,69,84,0)'
 
 <ExampleUIControlColor default="rgba(47,69,84,0)" />
 
 组件的背景颜色。
-
 
 ## dataBackground(Object)
 
@@ -63,23 +63,22 @@ const option = {
 
 阴影的线条样式
 
-{{use:partial-line-style(
-    prefix="###",
-    defaultWidth=0.5,
-    defaultOpacity=0.3,
-    defaultColor='#2f4554'
-)}}
+{{ use: partial-line-style(
+    prefix = "###",
+    defaultWidth = 0.5,
+    defaultOpacity = 0.3,
+    defaultColor = '#2f4554'
+) }}
 
 ### areaStyle(Object)
 
 阴影的填充样式
 
-{{use:partial-area-style(
-    prefix="###",
-    defaultOpacity=0.3,
-    defaultColor='rgba(47,69,84,0.3)'
-)}}
-
+{{ use: partial-area-style(
+    prefix = "###",
+    defaultOpacity = 0.3,
+    defaultColor = 'rgba(47,69,84,0.3)'
+) }}
 
 ## fillerColor(Color) = 'rgba(167,183,204,0.4)'
 
@@ -93,7 +92,6 @@ const option = {
 
 边框颜色。
 
-
 ## handleIcon(string)
 
 <ExampleUIControlIcon />
@@ -103,7 +101,7 @@ const option = {
 'M8.2,13.6V3.9H6.3v9.7H3.1v14.9h3.3v9.7h1.8v-9.7h3.3V13.6H8.2z M9.7,24.4H4.8v-1.4h4.9V24.4z M9.7,19.1H4.8v-1.4h4.9V19.1z'
 ```
 
-{{ use: partial-icon-image-path }}
+{{ use: partial-icon-image-path() }}
 
 自定义 icon 见 [示例 area-simple](${galleryEditorPath}area-simple)
 
@@ -117,18 +115,16 @@ const option = {
 
 手柄的样式配置，见 [示例 area-simple](${galleryEditorPath}area-simple)
 
-{{use: partial-item-style(
-    prefix="##",
-    defaultColor="#a7b7cc"
-)}}
-
+{{ use: partial-item-style(
+    prefix = "##",
+    defaultColor = "#a7b7cc"
+) }}
 
 ## labelPrecision(number|string) = 'auto'
 
 <ExampleUIControlNumber min="0" step="1" />
 
 显示label的小数精度。默认根据数据自动决定。
-
 
 ## labelFormatter(string|Function) = null
 
@@ -150,13 +146,11 @@ labelFormatter: function (value) {
 }
 ```
 
-
 ## showDetail(boolean) = true
 
 <ExampleUIControlBoolean default="true" />
 
 是否显示detail，即拖拽时候显示详细数值信息。
-
 
 ## showDataShadow(string) = 'auto'
 
@@ -164,32 +158,25 @@ labelFormatter: function (value) {
 
 是否在 `dataZoom-silder` 组件中显示数据阴影。数据阴影可以简单地反应数据走势。
 
-
 ## realtime(boolean) = true
 
 <ExampleUIControlBoolean default="true" />
 
 拖动时，是否实时更新系列的视图。如果设置为 `false`，则只在拖拽结束的时候更新。
 
+## textStyle(*)
 
-## textStyle
-
-{{ use:partial-simple-text-style(
-    prefix='##',
-    name='dataZoom ',
-    defaultColor='#333'
+{{ use: partial-simple-text-style(
+    prefix = '##',
+    name = 'dataZoom ',
+    defaultColor = '#333'
 ) }}
 
-
-
-
-
 {{ use: partial-data-zoom-common(
-    dataZoomName='dataZoom-slider',
-    galleryEditorPath=${galleryEditorPath},
-    galleryViewPath=${galleryViewPath}
+    dataZoomName = 'dataZoom-slider'
 ) }}
 
 {{ use: partial-rect-layout(
-    componentName='dataZoom-slider'
+    componentName = 'dataZoom-slider'
 ) }}
+

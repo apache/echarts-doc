@@ -1,4 +1,6 @@
+
 {{ target: partial-formatter-params-structure }}
+
 ```js
 {
     componentType: 'series',
@@ -32,7 +34,7 @@
     dimensionIndex: number,
     // Color of data
     color: string,
-{{ for: ${extra} as ${obj}, ${name} }}{{ if: ${extra}.hasOwnProperty(${name}) }}
+{{ for:   ${extra} as ${obj}, ${name}   }}{{ if: ${extra}.hasOwnProperty(${name}) }}
     // ${obj.desc}
     ${name}: ${obj.type},
 {{ /if }}{{ /for }}
@@ -74,5 +76,3 @@ We can get values that corresponding to y axis by:
 params.value[params.dimensionNames[params.encode.y[0]]]
 ```
 
-
-{{ /target }}

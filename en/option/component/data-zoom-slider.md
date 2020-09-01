@@ -1,4 +1,5 @@
-{{target: component-data-zoom-slider}}
+
+{{ target: component-data-zoom-slider }}
 
 # dataZoom.slider(Object)
 
@@ -10,15 +11,15 @@
 <br>
 <br>
 
-
 ## type(string) = 'slider'
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 ## show(boolean) = true
 
 Whether to show the ${dataZoomName} component. If is set to be `false`, it will not show, but its data filtering function still works.
-
 
 ## backgroundColor(Color) = 'rgba(47,69,84,0)'
 
@@ -32,22 +33,22 @@ The style of data shadow.
 
 Line style of shadow
 
-{{use:partial-line-style(
-    prefix="###",
-    defaultWidth=0.5,
-    defaultOpacity=0.3,
-    defaultColor='#2f4554'
-)}}
+{{ use: partial-line-style(
+    prefix = "###",
+    defaultWidth = 0.5,
+    defaultOpacity = 0.3,
+    defaultColor = '#2f4554'
+) }}
 
 ### areaStyle(Object)
 
 Area style of shadow
 
-{{use:partial-area-style(
-    prefix="###",
-    defaultOpacity=0.3,
-    defaultColor='rgba(47,69,84,0.3)'
-)}}
+{{ use: partial-area-style(
+    prefix = "###",
+    defaultOpacity = 0.3,
+    defaultColor = 'rgba(47,69,84,0.3)'
+) }}
 
 ## fillerColor(Color) = 'rgba(47,69,84,0.25)'
 
@@ -64,10 +65,9 @@ Icon shape of handle, which supports path string. Its default value is:
 'M8.2,13.6V3.9H6.3v9.7H3.1v14.9h3.3v9.7h1.8v-9.7h3.3V13.6H8.2z M9.7,24.4H4.8v-1.4h4.9V24.4z M9.7,19.1H4.8v-1.4h4.9V19.1z'
 ```
 
-{{ use: partial-icon-image-path }}
+{{ use: partial-icon-image-path() }}
 
 Refer to [area-simple example](${galleryEditorPath}area-simple) for customized icon.
-
 
 ## handleSize(number|string) = '100%'
 
@@ -77,15 +77,14 @@ The size of control handle. It can be in pixels, or in percentage relative to th
 
 Style of handle. Please refer to [area-simple example](${galleryEditorPath}area-simple).
 
-{{use: partial-item-style(
-    prefix="##",
-    defaultColor="#a7b7cc"
-)}}
+{{ use: partial-item-style(
+    prefix = "##",
+    defaultColor = "#a7b7cc"
+) }}
 
 ## labelPrecision(number|string) = 'auto'
 
 Precision of label if in number form. By default, it is decided based on the number of data.
-
 
 ## labelFormatter(string|Function) = null
 
@@ -107,11 +106,9 @@ labelFormatter: function (value, valueStr) {
 }
 ```
 
-
 ## showDetail(boolean) = true
 
 Whether to show detail, that is, show the detailed data information when dragging.
-
 
 ## showDataShadow(string) = 'auto'
 
@@ -121,25 +118,19 @@ Whether to show data shadow in `dataZoom-silder` component, to indicate the data
 
 Whether to update view while dragging. If it is set as `false`, the view will be updated only at the end of dragging.
 
+## textStyle(*)
 
-## textStyle
-
-{{ use:partial-simple-text-style(
-    prefix='##',
-    name='dataZoom ',
-    defaultColor='#333'
+{{ use: partial-simple-text-style(
+    prefix = '##',
+    name = 'dataZoom ',
+    defaultColor = '#333'
 ) }}
 
-
-
-
-
 {{ use: partial-data-zoom-common(
-    dataZoomName='dataZoom-slider',
-    galleryEditorPath=${galleryEditorPath},
-    galleryViewPath=${galleryViewPath}
+    dataZoomName = 'dataZoom-slider'
 ) }}
 
 {{ use: partial-rect-layout(
-    componentName='dataZoom-slider'
+    componentName = 'dataZoom-slider'
 ) }}
+

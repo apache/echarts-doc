@@ -1,5 +1,5 @@
 
-{{target: component-timeline}}
+{{ target: component-timeline }}
 
 # timeline(Object)
 
@@ -462,11 +462,9 @@ const option = {
 
 是否显示 `timeline` 组件。如果设置为`false`，不会显示，但是功能还存在。
 
-
 ## type(string) = 'slider'
 
 这个属性目前只支持为 `slider`，不需要更改。
-
 
 ## axisType(string) = 'time'
 
@@ -481,13 +479,11 @@ const option = {
 + `'time'`
     时间轴，适用于连续的时序数据，与数值轴相比时间轴带有时间的格式化，在刻度计算上也有所不同，例如会根据跨度的范围来决定使用月，星期，日还是小时范围的刻度。
 
-
 ## currentIndex(number) = 0
 
 <ExampleUIControlNumber min="0" step="1" />
 
 表示当前选中项是哪项。比如，`currentIndex` 为 `0` 时，表示当前选中项为 `timeline.data[0]`（即使用 `options[0]`）。
-
 
 ## autoPlay(boolean) = false
 
@@ -495,13 +491,11 @@ const option = {
 
 表示是否自动播放。
 
-
 ## rewind(boolean) = false
 
 <ExampleUIControlBoolean />
 
 表示是否反向播放。
-
 
 ## loop(boolean) = true
 
@@ -509,13 +503,11 @@ const option = {
 
 表示是否循环播放。
 
-
 ## playInterval(number) = 2000
 
 <ExampleUIControlNumber min="0" step="20" default="2000" />
 
 表示播放的速度（跳动的间隔），单位毫秒（ms）。
-
 
 ## realtime(boolean) = true
 
@@ -523,25 +515,23 @@ const option = {
 
 拖动圆点的时候，是否实时更新视图。
 
-
 ## controlPosition(string) = 'left'
 
 <ExampleUIControlEnum options="left,right" />
 
 表示『播放』按钮的位置。可选值：`'left'`、`'right'`。
 
-
 {{ use: partial-rect-layout(
-    componentName='timeline'
+    componentName = 'timeline'
 ) }}
-
 
 ## padding(number|Array) = 5
 
 <ExampleUIControlVector default="5,5,5,5" dims="T,R,B,L" />
 
-{{ use: partial-padding(componentName='timeline')}}
-
+{{ use: partial-padding(
+    componentName = 'timeline'
+) }}
 
 ## orient(string) = 'horizontal'
 
@@ -552,24 +542,20 @@ const option = {
 + `'vertical'`：竖直放置。
 + `'horizontal'`：水平放置。
 
-
 ## inverse(boolean) = false
 
 <ExampleUIControlBoolean />
 
 + 是否反向放置 `timeline`，反向则首位颠倒过来。
 
-
 {{ use: partial-symbol(
-    prefix='#',
-    defaultSymbol="'emptyCircle'",
-    defaultSymbolSize=10,
-    name='timeline'
+    prefix = '#',
+    defaultSymbol = "'emptyCircle'",
+    defaultSymbolSize = 10,
+    name = 'timeline'
 ) }}
 
-
 ## lineStyle(Object)
-
 
 ### show(boolean) = true
 
@@ -577,13 +563,12 @@ const option = {
 
 是否显示轴线。可以设置为 `false` 不显示轴线，则可以做出不同的样式效果。
 
-{{ use:partial-line-style(
-    prefix="##",
-    name="timeline ",
-    defaultWidth=2,
-    defaultColor="'#304654'"
-)}}
-
+{{ use: partial-line-style(
+    prefix = "##",
+    name = "timeline ",
+    defaultWidth = 2,
+    defaultColor = "'#304654'"
+) }}
 
 ## label(Object)
 
@@ -618,41 +603,34 @@ const option = {
 + `number`：
     指定某个数值时，表示 `label` 和轴的距离。为 `0` 时则和坐标轴重合，可以为正负值，决定 `label` 在坐标轴的哪一边。
 
-
 {{ use: partial-timeline-label(
-    prefix="##",
-    textStyleDefaultColor="'#304654'"
+    prefix = "##",
+    textStyleDefaultColor = "'#304654'"
 ) }}
-
 
 ## itemStyle(Object)
 
-{{use:partial-item-style-desc(
-    name="timeline "
+{{ use: partial-item-style-desc(
+    name = "timeline "
 ) }}
 
-
-
-{{ use:partial-item-style(
-    prefix="##",
-    name="timeline ",
-    defaultColor="'#304654'",
-    defaultBorderWidth=1
+{{ use: partial-item-style(
+    prefix = "##",
+    name = "timeline ",
+    defaultColor = "'#304654'",
+    defaultBorderWidth = 1
 ) }}
-
-
 
 ## checkpointStyle(Object)
 
 『当前项』（`checkpoint`）的图形样式。
 
 {{ use: partial-symbol(
-    prefix='##',
-    defaultSymbol="'circle'",
-    defaultSymbolSize=13,
-    name='timeline.checkpointStyle '
+    prefix = '##',
+    defaultSymbol = "'circle'",
+    defaultSymbolSize = 13,
+    name = 'timeline.checkpointStyle '
 ) }}
-
 
 ### color(Color) = '#c23531'
 
@@ -660,13 +638,11 @@ const option = {
 
 `timeline`组件中『当前项』（`checkpoint`）的颜色。
 
-
 ### borderWidth(number) = 5
 
 <ExampleUIControlNumber min="0" step="0.5" default="5" />
 
 `timeline`组件中『当前项』（`checkpoint`）的边框宽度。
-
 
 ### borderColor(Color) = 'rgba(194,53,49, 0.5)'
 
@@ -680,13 +656,11 @@ const option = {
 
 `timeline`组件中『当前项』（`checkpoint`）在 `timeline` 播放切换中的移动，是否有动画。
 
-
 ### animationDuration(number) = 300
 
 <ExampleUIControlNumber min="0" step="20" default="300" />
 
 `timeline`组件中『当前项』（`checkpoint`）的动画时长。
-
 
 ### animationEasing(string) = 'quinticInOut'
 
@@ -694,11 +668,9 @@ const option = {
 
 `timeline`组件中『当前项』（`checkpoint`）的动画的缓动效果。不同的缓动效果可以参考 [缓动示例](${galleryViewPath}line-easing)。
 
-
 ## controlStyle(Object)
 
 『控制按钮』的样式。『控制按钮』包括：『播放按钮』、『前进按钮』、『后退按钮』。
-
 
 ### show(boolean) = true
 
@@ -706,13 +678,11 @@ const option = {
 
 是否显示『控制按钮』。设置为 `false` 则全不显示。
 
-
 ### showPlayBtn(boolean) = true
 
 <ExampleUIControlBoolean default="true" />
 
 是否显示『播放按钮』。
-
 
 ### showPrevBtn(boolean) = true
 
@@ -720,13 +690,11 @@ const option = {
 
 是否显示『后退按钮』。
 
-
 ### showNextBtn(boolean) = true
 
 <ExampleUIControlBoolean default="true" />
 
 是否显示『前进按钮』。
-
 
 ### itemSize(number) = 22
 
@@ -734,13 +702,11 @@ const option = {
 
 『控制按钮』的尺寸，单位为像素（px）。
 
-
 ### itemGap(number) = 12
 
 <ExampleUIControlNumber min="0" step="0.5" default="12" />
 
 『控制按钮』的间隔，单位为像素（px）。
-
 
 ### position(string) = 'left'
 
@@ -752,15 +718,13 @@ const option = {
 
 + 当 [timeline.orient](~timeline.orient) 为 `'vertical'`时，`'top'`、`'bottom'`有效。
 
-
 ### playIcon(string)
 
 <ExampleUIControlIcon />
 
 『播放按钮』的『可播放状态』的图形。
 
-{{ use: partial-icon-image-path }}
-
+{{ use: partial-icon-image-path() }}
 
 ### stopIcon(string)
 
@@ -768,8 +732,7 @@ const option = {
 
 『播放按钮』的『可停止状态』的图形。
 
-{{ use: partial-icon-image-path }}
-
+{{ use: partial-icon-image-path() }}
 
 ### prevIcon(string)
 
@@ -777,8 +740,7 @@ const option = {
 
 『后退按钮』的图形
 
-{{ use: partial-icon-image-path }}
-
+{{ use: partial-icon-image-path() }}
 
 ### nextIcon(string)
 
@@ -786,8 +748,7 @@ const option = {
 
 『前进按钮』的图形
 
-{{ use: partial-icon-image-path }}
-
+{{ use: partial-icon-image-path() }}
 
 ### color(Color) = '#304654'
 
@@ -795,13 +756,11 @@ const option = {
 
 按钮颜色。
 
-
 ### borderColor(Color) = '#304654'
 
 <ExampleUIControlColor default="#304654" />
 
 按钮边框颜色。
-
 
 ### borderWidth(number) = 1
 
@@ -809,33 +768,32 @@ const option = {
 
 按钮边框线宽。
 
-
-
-
-
 ## emphasis(Object)
 
 ### label(Object)
+
 {{ use: partial-timeline-label(
-    prefix="###",
-    state="emphasis",
-    textStyleDefaultColor="'#c23531'"
+    prefix = "###",
+    state = "emphasis",
+    textStyleDefaultColor = "'#c23531'"
 ) }}
 
 ### itemStyle(Object)
-{{ use:partial-item-style(
-    prefix="###",
-    name="timeline ",
-    defaultColor="'#c23531'",
-    defaultBorderWidth=1
+
+{{ use: partial-item-style(
+    prefix = "###",
+    name = "timeline ",
+    defaultColor = "'#c23531'",
+    defaultBorderWidth = 1
 ) }}
 
 ### checkpointStyle(Object)
+
 当前项『高亮状态』的样式（hover时）。
 
 ### controlStyle(Object)
-控制按钮的『高亮状态』的样式（hover时）。
 
+控制按钮的『高亮状态』的样式（hover时）。
 
 ## data(Array)
 
@@ -878,8 +836,7 @@ const option = {
 
 
 
-
-{{target: partial-timeline-label}}
+{{ target: partial-timeline-label }}
 
 #${prefix} show(boolean) = true
 
@@ -887,11 +844,9 @@ const option = {
 
 是否显示 label。
 
-
 #${prefix} interval(string|number) = 'auto'
 
 `label` 的间隔。当指定为数值时，例如指定为 `2`，则每隔两个显示一个 label。
-
 
 #${prefix} rotate(prefix) = 0
 
@@ -899,18 +854,19 @@ const option = {
 
 #${prefix} formatter(string|Function) = null
 
-{{use: axis-common-formatter-desc}}
+{{ use: axis-common-formatter-desc() }}
 
 {{ if: ${state} }}
-{{ use: partial-text-style(
+{{ use:   partial-text-style(
     prefix=${prefix},
     name="timeline.lable." + ${state},
     defaultColor=${textStyleDefaultColor}
-) }}
+)   }}
 {{ else }}
-{{ use: partial-text-style(
+{{ use:   partial-text-style(
     prefix=${prefix},
     name="timeline.lable",
     defaultColor=${textStyleDefaultColor}
-) }}
+)   }}
 {{ /if }}
+

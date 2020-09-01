@@ -1,7 +1,7 @@
-{{target: component-data-zoom}}
+
+{{ target: component-data-zoom }}
 
 # dataZoom(Array|Object)
-
 
 `dataZoom` component is used for zooming a specific area, which enables user to investigate data in detail, or get an overview of the data, or get rid of outlier points.
 
@@ -37,7 +37,7 @@ A single chart instance can contain several `dataZoom` components, each of which
 
 **✦ How dataZoom componets operates axes and data ✦**
 
-{{use: partial-data-zoom-filterMode}}
+{{ use: partial-data-zoom-filterMode() }}
 
 Moreover, when `min`, `max` of an axis is set (e.g., `yAxis: {min: 0, max: 400}`), this extent of the axis will not be modified by the behaviour of dataZoom of other axis any more.
 
@@ -123,17 +123,15 @@ What is the exact meaning of `start: 20, end: 80` in `dataZoomY` in the example 
 <br>
 <br>
 
+{{ use: component-data-zoom-inside() }}
 
-
-{{import: component-data-zoom-inside}}
-{{import: component-data-zoom-slider}}
-
-
+{{ use: component-data-zoom-slider() }}
 
 
 
 
-{{target: partial-data-zoom-axis-example}}
+{{ target: partial-data-zoom-axis-example }}
+
 If it is set as a single `number`, one axis is controlled, while if it is set as an `Array` , multiple axes are controlled.
 
 For example:
@@ -162,9 +160,7 @@ option: {
 
 
 
-{{target: partial-data-zoom-common}}
-
-
+{{ target: partial-data-zoom-common }}
 
 ## xAxisIndex(number|Array) = null
 
@@ -172,10 +168,9 @@ Specify which [xAxis](~xAxis) is/are controlled by the `${dataZoomName}` when [c
 
 By default the first `xAxis` that parallel to `dataZoom` are controlled when [${dataZoomName}.orient](~${dataZoomName}.orient) is set as `'horizontal'`. But it is recommended to specify it explicitly but not use default value.
 
-{{use: partial-data-zoom-axis-example(
-    axisName='xAxis'
-)}}
-
+{{ use: partial-data-zoom-axis-example(
+    axisName = 'xAxis'
+) }}
 
 ## yAxisIndex(number|Array) = null
 
@@ -183,33 +178,29 @@ Specify which [yAxis](~yAxis) is/are controlled by the `${dataZoomName}` when [c
 
 By default the first `yAxis` that parallel to `dataZoom` are controlled when [${dataZoomName}.orient](~${dataZoomName}.orient) is set as `'vertical'`. But it is recommended to specify it explicitly but not use default value.
 
-{{use: partial-data-zoom-axis-example(
-    axisName='yAxis'
-)}}
-
+{{ use: partial-data-zoom-axis-example(
+    axisName = 'yAxis'
+) }}
 
 ## radiusAxisIndex(number|Array) = null
 
 Specify which [radiusAxis](~radiusAxis) is/are controlled by the `${dataZoomName}` when [polar coordinate system](~polar) is used.
 
-{{use: partial-data-zoom-axis-example(
-    axisName='radiusAxis'
-)}}
-
+{{ use: partial-data-zoom-axis-example(
+    axisName = 'radiusAxis'
+) }}
 
 ## angleAxisIndex(number|Array) = null
 
 Specify which [angleAxis](~angleAxis) is/are controlled by the `${dataZoomName}` when [polar coordinate system](~polar) is used.
 
-{{use: partial-data-zoom-axis-example(
-    axisName='angleAxis'
-)}}
-
+{{ use: partial-data-zoom-axis-example(
+    axisName = 'angleAxis'
+) }}
 
 ## filterMode(string) = 'filter'
 
-{{use: partial-data-zoom-filterMode}}
-
+{{ use: partial-data-zoom-filterMode() }}
 
 ## start(number) = 0
 
@@ -219,7 +210,6 @@ The start percentage of the window out of the data extent, in the range of 0 ~ 1
 
 More info about the relationship between `${dataZoomName}.start` and axis extent can be checked in [${dataZoomName}.rangeMode](~${dataZoomName}.rangeMode).
 
-
 ## end(number) = 100
 
 The end percentage of the window out of the data extent, in the range of 0 ~ 100.
@@ -227,7 +217,6 @@ The end percentage of the window out of the data extent, in the range of 0 ~ 100
 [${dataZoomName}.start](~${dataZoomName}.start) and [${dataZoomName}.end](~${dataZoomName}.end) define the window of the data in **percent** form.
 
 More info about the relationship between `${dataZoomName}.end` and axis extent can be checked in [${dataZoomName}.rangeMode](~${dataZoomName}.rangeMode).
-
 
 ## startValue(number|string|Date) = null
 
@@ -239,7 +228,6 @@ Notice, if an axis is set to be `category`, `startValue` could be set as `index`
 
 More info about the relationship between `${dataZoomName}.startValue` and axis extent can be checked in [${dataZoomName}.rangeMode](~${dataZoomName}.rangeMode).
 
-
 ## endValue(number|string|Date) = null
 
 The end absolute value of the window, doesn't work when [${dataZoomName}.end](~${dataZoomName}.end) is set.
@@ -249,7 +237,6 @@ The end absolute value of the window, doesn't work when [${dataZoomName}.end](~$
 Notice, if an axis is set to be `category`, `startValue` could be set as `index` of the array of `axis.data` or as the array value itself. In the latter case, it will internally and automatically translate to the index of array.
 
 More info about the relationship between `${dataZoomName}.endValue` and axis extent can be checked in [${dataZoomName}.rangeMode](~${dataZoomName}.rangeMode).
-
 
 ## minSpan(number) = null
 
@@ -289,13 +276,11 @@ Valid values:
 
 + `'vertical'`: vertical.
 
-
 ## zoomLock(boolean) = false
 
 Specify whether to lock the size of window (selected area).
 
 When set as `true`, the size of window is locked, that is, only the translation (by mouse drag or touch drag) is avialable but zoom is not.
-
 
 ## throttle(number) = 100
 
@@ -324,7 +309,9 @@ If we specify `rangeMode` manually in `option`, it only works when both `start` 
 Take a scenario as an example. When we are using dynamic data (update data periodically via `setOption`), if in `'value`' mode, the window will be kept in a fixed value range despite how data are appended, while if in `'percent'` mode, whe window range will be changed alone with the appended data (suppose `axis.min` and `axis.max` are not specified).
 
 
-{{target: partial-data-zoom-filterMode}}
+
+
+{{ target: partial-data-zoom-filterMode }}
 
 Generally `dataZoom` component zoom or roam coordinate system through data filtering and set the windows of axes internally.
 
@@ -414,3 +401,4 @@ In this case, the first column (i.e., `12`, `90`, `3`, `1`, which corresponds to
 
 See this example:
 ~[600x400](${galleryViewPath}doc-example/bar-dataZoom-filterMode&edit=1&reset=1)
+

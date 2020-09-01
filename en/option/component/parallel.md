@@ -1,25 +1,24 @@
 
-{{target: component-parallel}}
+{{ target: component-parallel }}
 
 # parallel(Object)
 
-{{ use: partial-parallel-introduce(
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-parallel-introduce() }}
 
 <br>
 <br>
 
-{{use: partial-component-id(prefix="#")}}
-
-{{ use: partial-rect-layout-width-height(
-    componentName='parallel ',
-    defaultLeft: 80,
-    defaultRight: 80,
-    defaultTop: 60,
-    defaultBottom: 60
+{{ use: partial-component-id(
+    prefix = "#"
 ) }}
 
+{{ use: partial-rect-layout-width-height(
+    componentName = 'parallel ',
+    defaultLeft = 80,
+    defaultRight = 80,
+    defaultTop = 60,
+    defaultBottom = 60
+) }}
 
 ## layout(string) = 'horizontal'
 
@@ -29,12 +28,9 @@ Layout modes, whose optional values are:
 
 + `'vertical'`: place each axis vertically.
 
-
 ## axisExpandable(boolean) = false
 
-{{use: partial-parallel-high-dim (
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-parallel-high-dim() }}
 
 Whether to enable toggling axis on clicking.
 
@@ -62,19 +58,17 @@ Optional values:
 + `'click'`: Trigger expanding when mouse clicking.
 + `'mousemove'`: Trigger expanding when mouse hovering.
 
-
 ## parallelAxisDefault(Object)
 
-{{use: partial-parallel-axis-default}}
+{{ use: partial-parallel-axis-default() }}
 
 [See the sample](${galleryEditorPath}doc-example/parallel-all&edit=1&reset=1).
 
 <br>
 
 {{ use: axis-common(
-    prefix='##',
-    componentType='parallelAxis',
-    noAxisPointer=true,
-    galleryViewPath=${galleryViewPath},
-    galleryEditorPath=${galleryEditorPath}
+    prefix = '##',
+    componentType = 'parallelAxis',
+    noAxisPointer = true
 ) }}
+

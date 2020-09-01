@@ -1,20 +1,19 @@
 
-{{target: component-graphic}}
+{{ target: component-graphic }}
 
-# graphic
+# graphic(*)
 
 `graphic` component enables creating graphic elements in ECharts.
 
 Those graphic type are supported.
 
 {{ use: partial-graphic-cpt-type-list(
-    optionPath='graphic',
-    hostName='elements',
-    symbolVisit='-',
-    symbolDeclare='.',
-    usageType='graphicComponent'
+    optionPath = 'graphic',
+    hostName = 'elements',
+    symbolVisit = '-',
+    symbolDeclare = '.',
+    usageType = 'graphicComponent'
 ) }}
-
 
 This example shows how to make a watermark and text block:
 ~[600x400](${galleryViewPath}line-graphic&edit=1&reset=1)
@@ -353,8 +352,9 @@ For example:
 
 Note, [bounding](graphic.elements.bounding) can be used to specify whether the entire transformed element (containing children if is group) is confined in its container.
 
-
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 ## elements(Array)
 
@@ -390,12 +390,12 @@ Or:
 }
 ```
 
+{{ use: partial-zr-graphic-elements(
+    prefix = '#',
+    optionPath = 'graphic',
+    hostName = 'elements',
+    symbolVisit = '-',
+    symbolDeclare = '.',
+    usageType = 'graphicComponent'
+) }}
 
-{{use: partial-zr-graphic-elements(
-    prefix='#',
-    optionPath='graphic',
-    hostName='elements',
-    symbolVisit='-',
-    symbolDeclare='.',
-    usageType='graphicComponent'
-)}}

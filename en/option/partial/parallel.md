@@ -1,4 +1,5 @@
-{{target: partial-parallel-introduce}}
+
+{{ target: partial-parallel-introduce }}
 
 <br>
 
@@ -8,7 +9,7 @@
 
 [Parallel Coordinates](https://en.wikipedia.org/wiki/Parallel_coordinates) is a common way of visualizing high-dimensional geometry and analyzing multivariate data.
 
-{{use: partial-parallel-data-example}}
+{{ use: partial-parallel-data-example() }}
 
 Parallel coordinates are often used to visualize multi-dimension data shown above. Each axis represents a dimension (namely, a column), and each line represents a data item. Data can be brush-selected on axes. For example:
 
@@ -106,7 +107,7 @@ Three components are involved here: [parallel](~parallel), [parallelAxis](~paral
 
 **Notes and Best Practices**
 
-{{use: partial-parallel-axis-default}}
+{{ use: partial-parallel-axis-default() }}
 
 **If data is too large and cause bad performance**
 
@@ -118,10 +119,13 @@ It is suggested to set [series-parallel.lineStyle.width](~series-parallel.lineSt
 
 **Display High-Dimension Data**
 
-{{use: partial-parallel-high-dim (galleryViewPath=${galleryViewPath})}}
+{{ use: partial-parallel-high-dim() }}
 
 
-{{target: partial-parallel-data-example}}
+
+
+{{ target: partial-parallel-data-example }}
+
 For example, [series-parallel.data](~series-parallel.data) is the following data:
 
 ```javascript
@@ -142,16 +146,18 @@ In data above, each row is a "data item", and each column represents a "dimensio
 
 
 
-{{target: partial-parallel-axis-default}}
+{{ target: partial-parallel-axis-default }}
 
 When configuring multiple [parallelAxis](~parallelAxis), there might be some common attributes in each axis configuration. To avoid writing them repeatly, they can be put under [parallel.parallelAxisDefault](~parallel.parallelAxisDefault). Before initializing axis, configurations in [parallel.parallelAxisDefault](~parallel.parallelAxisDefault) will be merged into [parallelAxis](~parallelAxis) to generate the final axis configuration.
 
 
 
-{{target: partial-parallel-high-dim}}
+
+{{ target: partial-parallel-high-dim }}
 
 When dimension number is extremely large, say, more than 50 dimensions, there will be more than 50 axes, which may hardly display in a page.
 
 In this case, you may use [parallel.axisExpandable](~parallel.axisExpandable) to improve the display. See this example:
 
 ~[600x460](${galleryViewPath}map-parallel-prices&edit=1&reset=1)
+

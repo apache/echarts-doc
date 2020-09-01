@@ -1,4 +1,5 @@
-{{target: series-tree}}
+
+{{ target: series-tree }}
 
 # series.tree(Object)
 
@@ -18,18 +19,20 @@ The tree diagram is mainly used to visualize the tree data structure, which is a
 
 ## type(string) = 'tree'
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 {{ use: partial-series-name() }}
 
 {{ use: partial-rect-layout-width-height(
-    componentName='tree',
-    defaultLeft: '12%',
-    defaultRight: '12%',
-    defaultTop: '12%',
-    defaultBottom: '12%',
-    defaultWidth: 'null',
-    defaultHeight: 'null'
+    componentName = 'tree',
+    defaultLeft = '12%',
+    defaultRight = '12%',
+    defaultTop = '12%',
+    defaultBottom = '12%',
+    defaultWidth = 'null',
+    defaultHeight = 'null'
 ) }}
 
 ## layout(string) = 'orthogonal'
@@ -45,30 +48,29 @@ The layout of the tree, which can be `orthogonal` and `radial`. Here the `orthog
 
 ~[800x800](${galleryViewPath}tree-radial&edit=1&reset=1)
 
-
 ## orient(string) = 'LR'
 
 The direction of the `orthogonal` layout in the tree diagram. That means this configuration takes effect only if `layout = 'orthogonal'`. The corresponding directions are `from left to right`, `from right to left`, `from top to bottom`, `from bottom to top`, with shorthand values `'LR'`, `'RL'`, `'TB'`, `'BT'`.
 **Note: The previous configuration value `'horizontal'` is equivalent to `'LR'`, `'vertical'` is equivalent to `'TB'`.**
 
-
-{{ use:partial-symbol(
-    seriesType="tree",
-    defaultSymbol="'emptyCircle'",
-    defaultSymbolSize=7,
-    prefix="#",
-    hasCallback=true,
-    name="tree node"
+{{ use: partial-symbol(
+    seriesType = "tree",
+    defaultSymbol = "'emptyCircle'",
+    defaultSymbolSize = 7,
+    prefix = "#",
+    hasCallback = true,
+    name = "tree node"
 ) }}
 
-
 ## edgeShape(string) = 'curve'
-{{ use: partial-version(version = "4.7.0") }}
+
+{{ use: partial-version(
+    version = "4.7.0"
+) }}
 
 The shape of the edge which is under the tree `orthogonal layout`. There are two types of shape, curve and polyline, the corresponding values are `'curve'` and `'polyline'`.
 
 ** Note: This configuration item is only valid under the `orthogonal layout`. Errors will be reported in the development environment under the `radial layout`. **
-
 
 ## edgeForkPosition(string) = '50%'
 
@@ -76,10 +78,9 @@ This is the position where the polyline branches in the subtree when the shape o
 
 ** Note: This configuration item is only valid when `edgeShape = 'polyline'`. **
 
-
 ## roam(boolean|string) = false
-{{ use: partial-roam }}
 
+{{ use: partial-roam() }}
 
 ## expandAndCollapse(boolean) = true
 
@@ -91,51 +92,55 @@ Subtree collapses and expands interaction, `default true`. As the drawing area i
 
 The initial level (depth) of the tree. The root node is the 0th layer, then the first layer, the second layer, ... , until the leaf node. This configuration item is primarily used in conjunction with `collapsing and expansion` interactions. The purpose is to prevent the nodes from obscuring each other. If set as -1 or `null` or `undefined`, all nodes are expanded.
 
-
 ## itemStyle(Object)
 
 The style of each node in the tree, where [itemStyle.color] (~ series-tree.itemStyle.color) represents the fill color of the node, to distinguish the state of the subtree corresponding to `collapsing` or `expansion`.
 
-{{use: partial-item-style(
-    prefix="##",
-    useColorPalatte=true,
-    defaultBorderWidth=1.5,
-    defaultBorderColor="'#c23531'"
-)}}
-
+{{ use: partial-item-style(
+    prefix = "##",
+    useColorPalatte = true,
+    defaultBorderWidth = 1.5,
+    defaultBorderColor = "'#c23531'"
+) }}
 
 ## label(Object)
 
 `label` describes the style of the text corresponding to each node.
 
-{{use:partial-label(
-    prefix="##",
-    defaultShowLabel=true,
-    formatter1d=true
-)}}
-
+{{ use: partial-label(
+    prefix = "##",
+    defaultShowLabel = true,
+    formatter1d = true
+) }}
 
 ## lineStyle(Object)
 
 Defines the style of the tree edge.
 
-{{use: partial-tree-line-style(prefix="##")}}
-
+{{ use: partial-tree-line-style(
+    prefix = "##"
+) }}
 
 ## emphasis(Object)
 
 ### itemStyle(Object)
-{{use: partial-item-style(prefix="###")}}
-### lineStyle(Object)
-{{use: partial-tree-line-style(
-    prefix="###"
-)}}
-### label(Object)
-{{use:partial-label(
-    prefix="###",
-    formatter1d=true
-)}}
 
+{{ use: partial-item-style(
+    prefix = "###"
+) }}
+
+### lineStyle(Object)
+
+{{ use: partial-tree-line-style(
+    prefix = "###"
+) }}
+
+### label(Object)
+
+{{ use: partial-label(
+    prefix = "###",
+    formatter1d = true
+) }}
 
 ## leaves(Object)
 
@@ -145,30 +150,35 @@ Leaf node special configuration, such as the above tree diagram example, the lea
 
 Describes the style of the text label corresponding to the leaf node.
 
-{{use:partial-label(
-    prefix="###",
-    defaultShowLabel=true,
-    formatter1d=true
-)}}
+{{ use: partial-label(
+    prefix = "###",
+    defaultShowLabel = true,
+    formatter1d = true
+) }}
 
 ### itemStyle(Object)
 
 The style of the leaf node in the tree.
 
-{{use: partial-item-style(
-    prefix="###",
-    useColorPalatte=true
-)}}
+{{ use: partial-item-style(
+    prefix = "###",
+    useColorPalatte = true
+) }}
 
 ### emphasis(Object)
-#### label(Object)
-{{use:partial-label(
-    prefix="####",
-    formatter1d=true
-)}}
-#### itemStyle(Object)
-{{use: partial-item-style(prefix="####")}}
 
+#### label(Object)
+
+{{ use: partial-label(
+    prefix = "####",
+    formatter1d = true
+) }}
+
+#### itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "####"
+) }}
 
 ## data(Object)
 
@@ -213,45 +223,47 @@ The value of the node, displayed in the tooltip.
 
 The style of the node.
 
-{{use:partial-item-style(prefix="###", useColorPalatte=true)}}
+{{ use: partial-item-style(
+    prefix = "###",
+    useColorPalatte = true
+) }}
 
 ### label(Object)
 
 The label of the node.
 
-
-{{ use:partial-label(
-    prefix="###"
+{{ use: partial-label(
+    prefix = "###"
 ) }}
-
 
 ### emphasis(Object)
+
 #### label(Object)
-{{ use:partial-label(
-    prefix="####"
+
+{{ use: partial-label(
+    prefix = "####"
 ) }}
+
 #### itemStyle(Object)
-{{use:partial-item-style(prefix="####")}}
+
+{{ use: partial-item-style(
+    prefix = "####"
+) }}
+
+{{ use: partial-tooltip-in-series-data() }}
+
+{{ use: partial-animation(
+    prefix = "##",
+    defaultAnimationEasing = "'linear'",
+    defaultAnimationDuration = 1000
+) }}
+
+{{ use: partial-tooltip-in-series() }}
 
 
-{{use: partial-tooltip-in-series-data(
-    galleryViewPath=${galleryViewPath}
-)}}
 
 
-{{use: partial-animation(
-    prefix="##",
-    defaultAnimationEasing="'linear'",
-    defaultAnimationDuration=1000,
-    galleryEditorPath=${galleryEditorPath}
-)}}
-
-{{use: partial-tooltip-in-series(
-    galleryViewPath=${galleryViewPath}
-)}}
-
-
-{{target: partial-tree-line-style}}
+{{ target: partial-tree-line-style }}
 
 #${prefix} color(Color) = "'#ccc'"
 
@@ -265,5 +277,7 @@ The width of the tree edge.
 
 The curvature of the tree edge.
 
-{{use: partial-style-shadow(prefix=${prefix})}}
+{{ use: partial-style-shadow(
+    prefix = ${prefix}
+) }}
 

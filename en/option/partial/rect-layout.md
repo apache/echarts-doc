@@ -1,12 +1,13 @@
-{{target: partial-rect-layout}}
 
-{{if: !${noZ} }}
-{{ use: partial-z-zlevel(
+{{ target: partial-rect-layout }}
+
+{{ if: !${noZ} }}
+{{ use:   partial-z-zlevel(
     prefix=${prefix},
     defaultZLevel=${defaultZLevel},
     defaultZ=${defaultZ}
-) }}
-{{/if}}
+)   }}
+{{ /if }}
 
 #${prefix|default("#")} left(string|number) = ${defaultLeft|default("'auto'")}
 
@@ -39,3 +40,4 @@ Distance between ${componentName} component and the bottom side of the container
 `bottom` value can be instant pixel value like `20`; it can also be a percentage value relative to container width like `'20%'`.
 
 {{ if: !${defaultBottom} }}Adaptive by default.{{ /if }}
+

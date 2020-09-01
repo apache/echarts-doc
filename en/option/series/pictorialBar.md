@@ -1,4 +1,5 @@
-{{target:series-pictorialBar}}
+
+{{ target: series-pictorialBar }}
 
 # series.pictoialBar(Object)
 
@@ -49,172 +50,171 @@ See the example below:
 See the example below:
 ~[800x600](${galleryViewPath}doc-example/pictorialBar-clip&reset=1&edit=1)
 
-
 ## type(string) = 'pictorialBar'
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
 {{ use: partial-series-name() }}
 
 {{ use: partial-legend-hover-link() }}
 
 {{ use: partial-coord-sys(
-    seriesType="pictorialBar",
-    coordSysDefault="'cartesian2d'",
-    cartesian2d=true,
-    polar=false,
-    geo=false
+    seriesType = "pictorialBar",
+    coordSysDefault = "'cartesian2d'",
+    cartesian2d = true,
+    polar = false,
+    geo = false
 ) }}
 
-{{ use: partial-cursor }}
+{{ use: partial-cursor() }}
 
 ## label(Object)
-{{use:partial-label-desc}}
-{{use:partial-label(
-    prefix="##",
-    defaultPosition="'inside'",
-    formatter=true
-)}}
+
+{{ use: partial-label-desc() }}
+
+{{ use: partial-label(
+    prefix = "##",
+    defaultPosition = "'inside'",
+    formatter = true
+) }}
 
 ## itemStyle(Object)
-{{use:partial-item-style-desc}}
-{{use:partial-item-style(
-    prefix="##",
-    useColorPalatte=true,
-    hasCallback=false
-)}}
+
+{{ use: partial-item-style-desc() }}
+
+{{ use: partial-item-style(
+    prefix = "##",
+    useColorPalatte = true,
+    hasCallback = false
+) }}
 
 ## emphasis(Object)
 
 ### label(Object)
-{{use:partial-label(
-    prefix="###",
-    formatter=true
-)}}
+
+{{ use: partial-label(
+    prefix = "###",
+    formatter = true
+) }}
+
 ### itemStyle(Object)
-{{use:partial-item-style(
-    prefix="###"
-)}}
 
-{{use: partial-barGrid(
-    seriesType='bar',
-    galleryViewPath=${galleryViewPath},
-    barGapDefault="-100%"
-)}}
+{{ use: partial-item-style(
+    prefix = "###"
+) }}
 
-{{use: pictorialBar-symbol-attrs(
-    prefix="#",
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-barGrid(
+    seriesType = 'bar',
+    barGapDefault = "-100%"
+) }}
 
+{{ use: pictorialBar-symbol-attrs(
+    prefix = "#"
+) }}
 
-{{use:partial-series-dimensions(
-    prefix="#"
-)}}
+{{ use: partial-series-dimensions(
+    prefix = "#"
+) }}
 
-{{use:partial-series-encode(
-    prefix="#"
-)}}
-
+{{ use: partial-series-encode(
+    prefix = "#"
+) }}
 
 ## data(Array)
 
-{{ use: partial-2d-data-desc(
-    galleryEditorPath = ${galleryEditorPath}
-) }}
+{{ use: partial-2d-data-desc() }}
 
 ### name(string)
+
 The name of data item.
 
 ### value(number)
+
 The value of a single data item.
 
-{{use: pictorialBar-symbol-attrs(
-    prefix="##",
-    useZ2=true,
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: pictorialBar-symbol-attrs(
+    prefix = "##",
+    useZ2 = true
+) }}
 
 ### label(Object)
+
 The style setting of the text label in a single bar.
 
-{{ use:partial-label(
-    prefix="###",
-    defaultPosition="inside"
+{{ use: partial-label(
+    prefix = "###",
+    defaultPosition = "inside"
 ) }}
 
 ### itemStyle(Object)
-{{use:partial-item-style(
-    prefix="###"
-)}}
+
+{{ use: partial-item-style(
+    prefix = "###"
+) }}
 
 ### emphasis(Object)
+
 #### label(Object)
-{{ use:partial-label(prefix="####") }}
+
+{{ use: partial-label(
+    prefix = "####"
+) }}
+
 #### itemStyle(Object)
-{{use:partial-item-style(
-    prefix="####"
-)}}
 
-{{use: partial-tooltip-in-series-data(
-    galleryViewPath=${galleryViewPath}
-)}}
-
-{{use: partial-marker(
-    prefix="#",
-    galleryEditorPath=${galleryEditorPath},
-    seriesType="pictorialBar",
-    hasCoord=true,
-    hasType=true,
-    name="mark point"
-)}}
-
-{{use:partial-z-zlevel(
-    prefix="#",
-    componentName="pictorial bar chart"
-) }}
-{{ use:partial-silent(
-    prefix="#"
+{{ use: partial-item-style(
+    prefix = "####"
 ) }}
 
-{{use:partial-animation(
-    prefix="#",
-    noAnimationDelay=true,
-    galleryEditorPath=${galleryEditorPath}
-)}}
+{{ use: partial-tooltip-in-series-data() }}
 
-{{use:pictorialBar-animation-delay(
-    prefix="##",
-    galleryViewPath=${galleryViewPath}
-)}}
+{{ use: partial-marker(
+    prefix = "#",
+    seriesType = "pictorialBar",
+    hasCoord = true,
+    hasType = true,
+    name = "mark point"
+) }}
+
+{{ use: partial-z-zlevel(
+    prefix = "#",
+    componentName = "pictorial bar chart"
+) }}
+
+{{ use: partial-silent(
+    prefix = "#"
+) }}
+
+{{ use: partial-animation(
+    prefix = "#",
+    noAnimationDelay = true
+) }}
+
+{{ use: pictorialBar-animation-delay(
+    prefix = "##"
+) }}
+
+{{ use: partial-tooltip-in-series() }}
 
 
-{{use: partial-tooltip-in-series(
-    galleryViewPath=${galleryViewPath}
-)}}
 
 
-
-
-
-
-
-
-
-
-{{target: pictorialBar-symbol-attrs}}
+{{ target: pictorialBar-symbol-attrs }}
 
 #${prefix} symbol(string) = 'circle'
 
 Specify the type of graphic elements.
 
-{{ use: partial-icon }}
+{{ use: partial-icon() }}
 
 Example:
 ~[800x400](${galleryViewPath}doc-example/pictorialBar-graphicType&reset=1&edit=1)
 
-{{ use: pictorialBar-symbol-attrs-cascade(attrName='symbol') }}
-
+{{ use: pictorialBar-symbol-attrs-cascade(
+    attrName = 'symbol'
+) }}
 
 #${prefix} symbolSize(number|Array) = ['100%', '100%']
 
@@ -238,9 +238,9 @@ Analogously, the case that based on y axis can be obtained by exchanging them.
 For example:
 ~[800x600](${galleryViewPath}doc-example/pictorialBar-symbolSize&reset=1&edit=1)
 
-{{ use: pictorialBar-symbol-attrs-cascade(attrName='symbolSize') }}
-
-
+{{ use: pictorialBar-symbol-attrs-cascade(
+    attrName = 'symbolSize'
+) }}
 
 #${prefix} symbolPosition(string) = 'start'
 
@@ -253,8 +253,9 @@ Specify the location of the graphic elements. Optional values:
 For example:
 ~[800x600](${galleryViewPath}doc-example/pictorialBar-position&reset=1&edit=1)
 
-{{ use: pictorialBar-symbol-attrs-cascade(attrName='symbolPosition') }}
-
+{{ use: pictorialBar-symbol-attrs-cascade(
+    attrName = 'symbolPosition'
+) }}
 
 #${prefix} symbolOffset(Array) = [0, 0]
 
@@ -267,8 +268,9 @@ For example, `[0, '-50%']` means the graphic element will be adjusted upward hal
 For example:
 ~[800x600](${galleryViewPath}doc-example/pictorialBar-position&reset=1&edit=1)
 
-{{ use: pictorialBar-symbol-attrs-cascade(attrName='symbolOffset') }}
-
+{{ use: pictorialBar-symbol-attrs-cascade(
+    attrName = 'symbolOffset'
+) }}
 
 #${prefix} symbolRotate(number)
 
@@ -276,8 +278,9 @@ The degree of the rotation of a graphic element.
 
 Notice, `symbolRotate` will not affect the position of the graphic element, but just rotating by its center.
 
-{{ use: pictorialBar-symbol-attrs-cascade(attrName='symbolRotate') }}
-
+{{ use: pictorialBar-symbol-attrs-cascade(
+    attrName = 'symbolRotate'
+) }}
 
 #${prefix} symbolRepeat(boolean|number|string)
 
@@ -291,8 +294,9 @@ Whether to repeat a graphic element. Optional values:
 For example:
 ~[800x400](${galleryViewPath}doc-example/pictorialBar-repeat&reset=1&edit=1)
 
-{{ use: pictorialBar-symbol-attrs-cascade(attrName='symbolRepeat') }}
-
+{{ use: pictorialBar-symbol-attrs-cascade(
+    attrName = 'symbolRepeat'
+) }}
 
 #${prefix} symbolRepeatDirection(string) = 'start'
 
@@ -307,8 +311,9 @@ Optional values can be `'start'` and `'end'`.
 For example:
 ~[800x400](${galleryViewPath}doc-example/pictorialBar-repeatDirection&reset=1&edit=1)
 
-{{ use: pictorialBar-symbol-attrs-cascade(attrName='symbolRepeatDirection') }}
-
+{{ use: pictorialBar-symbol-attrs-cascade(
+    attrName = 'symbolRepeatDirection'
+) }}
 
 #${prefix} symbolMargin(number|string)
 
@@ -330,8 +335,9 @@ Notice:
 For example:
 ~[800x600](${galleryViewPath}doc-example/pictorialBar-repeatLayout&reset=1&edit=1)
 
-{{ use: pictorialBar-symbol-attrs-cascade(attrName='symbolMargin') }}
-
+{{ use: pictorialBar-symbol-attrs-cascade(
+    attrName = 'symbolMargin'
+) }}
 
 #${prefix} symbolClip(boolean) = false
 
@@ -350,9 +356,9 @@ Notice, in the example above,
 + The same [symbolBoundingData](~series.pictorialBar.symbolBoundingData) is used in "background series" and "current value seires", which makes their graphic elements are the same size.
 + A bigger [z](~series.pictorialBar.z) is set on "current value series", which makes it is over "background series".
 
-
-{{ use: pictorialBar-symbol-attrs-cascade(attrName='symbolClip') }}
-
+{{ use: pictorialBar-symbol-attrs-cascade(
+    attrName = 'symbolClip'
+) }}
 
 #${prefix} symbolBoundingData(number)
 
@@ -392,11 +398,9 @@ For example:
 Check this example:
 ~[800x400](${galleryViewPath}doc-example/pictorialBar-symbolBoundingDataArray&reset=1&edit=1)
 
-
-
-
-{{ use: pictorialBar-symbol-attrs-cascade(attrName='symbolBoundingData') }}
-
+{{ use: pictorialBar-symbol-attrs-cascade(
+    attrName = 'symbolBoundingData'
+) }}
 
 #${prefix} symbolPatternSize(number) = 400
 
@@ -421,9 +425,12 @@ itemStyle: {
 For example:
 ~[800x400](${galleryViewPath}doc-example/pictorialBar-patternSize&reset=1&edit=1)
 
-{{ use: pictorialBar-symbol-attrs-cascade(attrName='symbolPatternSize') }}
+{{ use: pictorialBar-symbol-attrs-cascade(
+    attrName = 'symbolPatternSize'
+) }}
 
 {{ if: ${useZ2} }}
+
 #${prefix} z(number)
 
 Specify the relationship of overlap between graphic elements. A bigger value means higher.
@@ -434,28 +441,23 @@ Specify the relationship of overlap between graphic elements. A bigger value mea
 
 Whether to enable hover animation.
 
-{{ use: pictorialBar-symbol-attrs-cascade(attrName='hoverAnimation') }}
+{{ use: pictorialBar-symbol-attrs-cascade(
+    attrName = 'hoverAnimation'
+) }}
 
+{{ use: partial-animation(
+    prefix = "##",
+    noAnimationDelay = true
+) }}
 
-{{use:partial-animation(
-    prefix="##",
-    noAnimationDelay=true,
-    galleryEditorPath=${galleryEditorPath}
-)}}
-
-{{use:pictorialBar-animation-delay(
-    prefix="##",
-    galleryViewPath=${galleryViewPath}
-)}}
-
-
+{{ use: pictorialBar-animation-delay(
+    prefix = "##"
+) }}
 
 
 
 
-
-
-{{target: pictorialBar-animation-delay}}
+{{ target: pictorialBar-animation-delay }}
 
 #${prefix} animationDelay(number|Function) = 0
 
@@ -474,7 +476,6 @@ animationDelay: function (dataIndex, params) {
 
 For example:
 ~[800x400](${galleryViewPath}doc-example/pictorialBar-repeatDirection&reset=1&edit=1)
-
 
 #${prefix} animationDelayUpdate(number|Function) = 0
 
@@ -497,9 +498,7 @@ For example:
 
 
 
-
-
-{{target: pictorialBar-symbol-attrs-cascade}}
+{{ target: pictorialBar-symbol-attrs-cascade }}
 
 This attribute can be set at the [root level of a series](~series-pictorialBar.${attrName}), where all data items in the series will be affected by this attribute. And this attribute can also be set at [each data item](~series-pictorialBar.data.${attrName}) in [series-pictorialBar.data](series-pictorialBar.data), where only the data item is affected by this attribute.
 
@@ -520,3 +519,4 @@ series: [{
     }]
 }]
 ```
+

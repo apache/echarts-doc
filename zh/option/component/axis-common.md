@@ -1,5 +1,8 @@
-{{target: partial-axis-common-axis-line}}
+
+{{ target: partial-axis-common-axis-line }}
+
 #${prefix} silent(boolean) = false
+
 坐标轴是否是静态无法交互。
 
 #${prefix} triggerEvent(boolean) = false
@@ -21,6 +24,7 @@
 ```
 
 #${prefix} axisLine(Object)
+
 坐标轴轴线相关设置。
 
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
@@ -30,6 +34,7 @@
 是否显示坐标轴轴线。
 
 {{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
+
 ##${prefix} onZero(boolean) = true
 
 <ExampleUIControlBoolean default="true" />
@@ -37,6 +42,7 @@
 X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一个轴为数值轴且包含 0 刻度时有效。
 
 ##${prefix} onZeroAxisIndex(number)
+
 当有双轴时，可以用这个属性手动指定，在哪个轴的 0 刻度上。
 {{ /if }}
 
@@ -59,14 +65,26 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 轴线两边的箭头的偏移，如果是数组，第一个数字表示起始箭头的偏移，第二个数字表示末端箭头的偏移；如果是数字，表示这两个箭头使用同样的偏移。
 
 ##${prefix} lineStyle(Object)
-{{ use: partial-line-style(prefix='##' + ${prefix}, defaultColor="'#333'", defaultWidth=1, defaultType="'solid'", name="坐标轴线") }}
+
+{{ use: partial-line-style(
+    prefix = '##' + ${prefix},
+    defaultColor = "'#333'",
+    defaultWidth = 1,
+    defaultType = "'solid'",
+    name = "坐标轴线"
+) }}
 
 
-{{target: partial-axis-common-axis-label}}
+
+
+{{ target: partial-axis-common-axis-label }}
+
 #${prefix} axisLabel(Object)
+
 坐标轴刻度标签的相关设置。
 
-{{if: !${hideShow} }}
+{{ if: !${hideShow} }}
+
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
 
 <ExampleUIControlBoolean default="${defaultShow|default(true)}" />
@@ -75,18 +93,20 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 {{ /if }}
 
 {{ if: ${hasLabelInterval|default(true)} }}
+
 ##${prefix} interval(number|Function) = 'auto'
 
 <ExampleUIControlNumber min="0" step="1" />
 
-{{ use: partial-axis-interval(
+{{ use:   partial-axis-interval(
     name="坐标轴刻度标签",
     isAxisLabel=true,
     componentType=${componentType}
-) }}
+)   }}
 {{ /if }}
 
 {{ if: ${hasInside|default(true)} }}
+
 ##${prefix} inside(boolean) = false
 
 <ExampleUIControlBoolean />
@@ -95,6 +115,7 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 {{ /if }}
 
 {{ if: ${componentType} !== 'angleAxis' }}
+
 ##${prefix} rotate(number) = 0
 
 <ExampleUIControlAngle min="-90" max="90" step="1" />
@@ -109,9 +130,10 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 <ExampleUIControlNumber default="8" step="0.5" />
 
 刻度标签与轴线之间的距离。
+
 ##${prefix} formatter(string|Function) = null
 
-{{use: axis-common-formatter-desc}}
+{{ use: axis-common-formatter-desc() }}
 
 ##${prefix} showMinLabel(boolean) = null
 
@@ -126,13 +148,12 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 是否显示最大 tick 的 label。可取值 `true`, `false`, `null`。默认自动判定（即如果标签重叠，不会显示最大 tick 的 label）。
 
 {{ use: partial-text-style(
-    prefix='#' + ${prefix},
-    defaultColor="'#333'"
-)}}
-
-
+    prefix = '#' + ${prefix},
+    defaultColor = "'#333'"
+) }}
 
 <!-- Overwrite color -->
+
 ##${prefix} color(Color|Function)
 
 <ExampleUIControlColor />
@@ -153,10 +174,15 @@ textStyle: {
 }
 ```
 
-{{target: partial-axis-common-axis-tick}}
+
+
+
+{{ target: partial-axis-common-axis-tick }}
 
 #${prefix} axisTick(Object)
+
 坐标轴刻度相关设置。
+
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
 
 <ExampleUIControlBoolean default="${defaultShow|default(true)}" />
@@ -164,6 +190,7 @@ textStyle: {
 是否显示坐标轴刻度。
 
 {{ if: ${hasAlignWithLabel|default(true)} }}
+
 ##${prefix} alignWithLabel(boolean) = false
 
 <ExampleUIControlBoolean default="false" />
@@ -174,17 +201,19 @@ textStyle: {
 {{ /if }}
 
 {{ if: ${hasLabelInterval|default(true)} }}
+
 ##${prefix} interval(number|Function) = 'auto'
 
 <ExampleUIControlNumber min="0" step="1" />
 
-{{ use: partial-axis-interval(
+{{ use:   partial-axis-interval(
     name="坐标轴刻度",
     componentType=${componentType}
-) }}
+)   }}
 {{ /if }}
 
 {{ if: ${hasInside|default(true)} }}
+
 ##${prefix} inside(boolean) = false
 
 <ExampleUIControlBoolean />
@@ -199,25 +228,33 @@ textStyle: {
 坐标轴刻度的长度。
 
 ##${prefix} lineStyle(Object)
+
 刻度线的样式设置。
 
 {{ use: partial-line-style(
-    prefix='##' + ${prefix},
-    defaultWidth=1,
-    defaultType="'solid'",
-    name="坐标轴刻度"
+    prefix = '##' + ${prefix},
+    defaultWidth = 1,
+    defaultType = "'solid'",
+    name = "坐标轴刻度"
 ) }}
+
 <!-- Overwrite color -->
+
 ###${prefix} color(Color)
 
 刻度线的颜色，默认取 [axisTick.lineStyle.color](~${componentType}.axisTick.lineStyle.color)。
 
 
 
-{{target: partial-axis-common-minor-tick}}
+
+{{ target: partial-axis-common-minor-tick }}
 
 #${prefix} minorTick(Object)
-{{ use: partial-version(version = "4.6.0") }}
+
+{{ use: partial-version(
+    version = "4.6.0"
+) }}
+
 坐标轴次刻度线相关设置。
 
 注意：次刻度线无法在类目轴（[type](~${componentType}.type): `'category'`）中使用。
@@ -251,12 +288,14 @@ textStyle: {
 ##${prefix} lineStyle(Object)
 
 {{ use: partial-line-style(
-    prefix='##' + ${prefix},
-    defaultWidth=1,
-    defaultType="'solid'",
-    name="次刻度线"
+    prefix = '##' + ${prefix},
+    defaultWidth = 1,
+    defaultType = "'solid'",
+    name = "次刻度线"
 ) }}
+
 <!-- Overwrite color -->
+
 ###${prefix} color(Color)
 
 <ExampleUIControlColor />
@@ -265,9 +304,11 @@ textStyle: {
 
 
 
-{{target: partial-axis-common-split-line}}
+
+{{ target: partial-axis-common-split-line }}
 
 #${prefix} splitLine(Object)
+
 坐标轴在 [grid](~grid) 区域中的分隔线。
 
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
@@ -277,26 +318,29 @@ textStyle: {
 是否显示分隔线。默认数值轴显示，类目轴不显示。
 
 {{ if: ${hasLabelInterval|default(true)} }}
+
 ##${prefix} interval(number|Function) = 'auto'
 
 <ExampleUIControlNumber min="0" step="1" />
 
-{{ use: partial-axis-interval(
+{{ use:   partial-axis-interval(
     name="坐标轴分隔线",
     componentType=${componentType}
-) }}
+)   }}
 {{ /if }}
 
 ##${prefix} lineStyle(Object)
+
 {{ use: partial-line-style(
-    prefix='##' + ${prefix},
-    defaultColor="'#333'",
-    defaultWidth=1,
-    defaultType="'solid'",
-    name="分隔线"
+    prefix = '##' + ${prefix},
+    defaultColor = "'#333'",
+    defaultWidth = 1,
+    defaultType = "'solid'",
+    name = "分隔线"
 ) }}
 
 <!-- overwrite color -->
+
 ###${prefix} color(Array|string) = ['#ccc']
 
 <ExampleUIControlColor />
@@ -315,10 +359,17 @@ splitLine: {
 }
 ```
 
-{{target: partial-axis-common-minor-split-line}}
+
+
+
+{{ target: partial-axis-common-minor-split-line }}
 
 #${prefix} minorSplitLine(Object)
-{{ use: partial-version(version = "4.6.0") }}
+
+{{ use: partial-version(
+    version = "4.6.0"
+) }}
+
 坐标轴在 [grid](~grid) 区域中的次分隔线。次分割线会对齐次刻度线 [minorTick](~${componentType}.minorTick)
 
 ##${prefix} show(boolean) = ${defaultShow|default(false)}
@@ -327,31 +378,34 @@ splitLine: {
 
 是否显示次分隔线。默认不显示。
 
-
 {{ use: partial-line-style(
-    prefix='##' + ${prefix},
-    defaultColor="'#eee'",
-    defaultWidth=1,
-    defaultType="'solid'",
-    name="次分隔线"
+    prefix = '##' + ${prefix},
+    defaultColor = "'#eee'",
+    defaultWidth = 1,
+    defaultType = "'solid'",
+    name = "次分隔线"
 ) }}
 
 
-{{target: partial-axis-common-split-area}}
+
+
+{{ target: partial-axis-common-split-area }}
 
 #${prefix} splitArea(Object)
+
 坐标轴在 [grid](~grid) 区域中的分隔区域，默认不显示。
 
 
 {{ if: ${hasLabelInterval|default(true)} }}
+
 ##${prefix} interval(number|Function) = 'auto'
 
 <ExampleUIControlNumber min="0" step="1" />
 
-{{ use: partial-axis-interval(
+{{ use:   partial-axis-interval(
     name="坐标轴分隔区域",
     componentType=${componentType}
-) }}
+)   }}
 {{ /if }}
 
 ##${prefix} show(boolean) = ${defaultShow|default(false)}
@@ -361,14 +415,22 @@ splitLine: {
 是否显示分隔区域。
 
 ##${prefix} areaStyle(Object)
+
 分隔区域的样式设置。
+
 ###${prefix} color(Array) = ['rgba(250,250,250,0.3)','rgba(200,200,200,0.3)']
+
 分隔区域颜色。分隔区域会按数组中颜色的顺序依次循环设置颜色。默认是一个深浅的间隔色。
-{{ use:partial-style-shadow-opacity(prefix='##' + ${prefix}) }}
+
+{{ use: partial-style-shadow-opacity(
+    prefix = '##' + ${prefix}
+) }}
 
 
 
-{{target: partial-axis-type-content}}
+
+{{ target: partial-axis-type-content }}
+
 坐标轴类型。
 
 可选：
@@ -376,7 +438,7 @@ splitLine: {
     数值轴，适用于连续数据。
 
 + `'category'`
-    类目轴，适用于离散的类目数据。为该类型时类目数据可自动从 [series.data](~series.data) 或 [dataset.source](~dataset.source) 中取{{if: ${componentType} }}，或者可通过 [${componentType}.data](~${componentType}.data) 设置类目数据{{/if}}。
+    类目轴，适用于离散的类目数据。为该类型时类目数据可自动从 [series.data](~series.data) 或 [dataset.source](~dataset.source) 中取{{ if: ${componentType} }}，或者可通过 [${componentType}.data](~${componentType}.data) 设置类目数据{{ /if }}。
 
 + `'time'`
     时间轴，适用于连续的时序数据，与数值轴相比时间轴带有时间的格式化，在刻度计算上也有所不同，例如会根据跨度的范围来决定使用月，星期，日还是小时范围的刻度。
@@ -385,14 +447,18 @@ splitLine: {
     对数轴。适用于对数数据。
 
 
-{{target: axis-common}}
+
+
+{{ target: axis-common }}
 
 #${prefix} type(string) = ${axisTypeDefault|default('value')}
-{{use: partial-axis-type-content(
-    componentType=${componentType}
+
+{{ use: partial-axis-type-content(
+    componentType = ${componentType}
 ) }}
 
 {{ if: ${componentType} !== 'angleAxis' }}
+
 #${prefix} name(string)
 
 <ExampleUIControlText />
@@ -414,14 +480,14 @@ splitLine: {
 
 坐标轴名称的文字样式。
 
-{{use: partial-text-style(prefix='#' + ${prefix}, name="坐标轴名称")}}
+{{ use:   partial-text-style(prefix='#' + ${prefix}, name="坐标轴名称")  }}
 <!-- Overwrite color -->
+
 ##${prefix} color(Color)
 
 <ExampleUIControlColor />
 
 坐标轴名称的颜色，默认取 [axisLine.lineStyle.color](~${componentType}.axisLine.lineStyle.color)。
-
 
 #${prefix} nameGap(number) = 15
 
@@ -441,7 +507,7 @@ splitLine: {
 
 是否是反向坐标轴。
 
-{{/if}}
+{{ /if }}
 
 #${prefix} boundaryGap(boolean|Array)
 
@@ -567,47 +633,44 @@ max: function (value) {
 
 对数轴的底数，只在对数轴中（[type](~${componentType}.type): 'log'）有效。
 
-
 {{ use: partial-axis-common-axis-line(
-    prefix=${prefix},
-    componentType=${componentType}
+    prefix = ${prefix},
+    componentType = ${componentType}
 ) }}
 
 {{ use: partial-axis-common-axis-tick(
-    prefix=${prefix},
-    componentType=${componentType}
+    prefix = ${prefix},
+    componentType = ${componentType}
 ) }}
 
 {{ use: partial-axis-common-minor-tick(
-    prefix=${prefix},
-    componentType=${componentType}
+    prefix = ${prefix},
+    componentType = ${componentType}
 ) }}
 
 {{ use: partial-axis-common-axis-label(
-    prefix=${prefix},
-    componentType=${componentType}
+    prefix = ${prefix},
+    componentType = ${componentType}
 ) }}
 
 {{ if: ${hasSplitLineAndArea} }}
 
-{{ use: partial-axis-common-split-line(
+{{ use:   partial-axis-common-split-line(
     prefix=${prefix},
     componentType=${componentType}
-) }}
+)   }}
 
-{{ use: partial-axis-common-minor-split-line(
+{{ use:   partial-axis-common-minor-split-line(
     prefix=${prefix},
     componentType=${componentType}
-) }}
+)   }}
 
-{{ use: partial-axis-common-split-area(
+{{ use:   partial-axis-common-split-area(
     prefix=${prefix},
     componentType=${componentType}
-) }}
+)   }}
 
 {{ /if }}
-
-
 
 #${prefix} data(Array)
 
@@ -641,25 +704,28 @@ data: [{
 
 类目标签的文字样式。
 
-{{ use:partial-text-style(
-    prefix='##' + ${prefix}
+{{ use: partial-text-style(
+    prefix = '##' + ${prefix}
 ) }}
 
-{{if: !${noAxisPointer} }}
+{{ if: !${noAxisPointer} }}
+
 #${prefix} axisPointer(Object)
 
 坐标轴指示器配置项。
 
-{{ use: partial-axisPointer-common(
+{{ use:   partial-axisPointer-common(
     prefix="#" + ${prefix},
     galleryViewPath=${galleryViewPath},
     galleryEditorPath=${galleryEditorPath}
-)}}
-{{/if}}
+)  }}
+{{ /if }}
+
 
 
 
 {{ target: partial-axis-interval }}
+
 ${name}的显示间隔，在类目轴中有效。{{ if: !${isAxisLabel} }}默认同 [axisLabel.interval](~${componentType}.axisLabel.interval) 一样。{{ /if }}
 
 默认会采用标签不重叠的策略间隔显示标签。
@@ -676,7 +742,8 @@ ${name}的显示间隔，在类目轴中有效。{{ if: !${isAxisLabel} }}默认
 
 
 
-{{target: axis-common-formatter-desc}}
+
+{{ target: axis-common-formatter-desc }}
 
 刻度标签的内容格式器，支持字符串模板和回调函数两种形式。
 
@@ -696,3 +763,4 @@ formatter: function (value, index) {
     return texts.join('/');
 }
 ```
+

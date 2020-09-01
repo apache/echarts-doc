@@ -1,5 +1,5 @@
 
-{{target: series-candlestick}}
+{{ target: series-candlestick }}
 
 # series.candlestick(Object)
 
@@ -30,23 +30,23 @@ We use red to represent increasing and blue decreasing by default. If you want t
 
 ## type(string) = 'candlestick'
 
-{{use: partial-component-id(prefix="#")}}
+{{ use: partial-component-id(
+    prefix = "#"
+) }}
 
-{{use: partial-coord-sys(
-    seriesType="cartesian2d",
-    coordSysDefault="'cartesian2d'",
-    cartesian2d=true
-)}}
+{{ use: partial-coord-sys(
+    seriesType = "cartesian2d",
+    coordSysDefault = "'cartesian2d'",
+    cartesian2d = true
+) }}
 
-{{ use: partial-series-name }}
+{{ use: partial-series-name() }}
 
-{{ use: partial-legend-hover-link }}
-
+{{ use: partial-legend-hover-link() }}
 
 ## hoverAnimation(boolean) = true
 
 Whether to enable animation when hovering on box.
-
 
 ## layout(string) = null
 
@@ -79,15 +79,14 @@ Specify bar max width. Absolute value (like `10`) or percentage (like `'20%'`, a
 
 Item style of candlestick.
 
-{{use: partial-candlestick-item-style-detail(
-    prefix="##",
-    defaultColor="#c23531",
-    defaultColor0="#314656",
-    defaultBorderColor="#c23531",
-    defaultBorderColor0="#314656",
-    defaultBorderWidth=1
-)}}
-
+{{ use: partial-candlestick-item-style-detail(
+    prefix = "##",
+    defaultColor = "#c23531",
+    defaultColor0 = "#314656",
+    defaultBorderColor = "#c23531",
+    defaultBorderColor0 = "#314656",
+    defaultBorderWidth = 1
+) }}
 
 ## emphasis(Object)
 
@@ -95,38 +94,36 @@ Emphasis style of candlestick.
 
 ### itemStyle(Object)
 
-{{use: partial-candlestick-item-style-detail(
-    prefix="###",
-    defaultColor="#c23531",
-    defaultColor0="#314656",
-    defaultBorderColor="#c23531",
-    defaultBorderColor0="#314656",
-    defaultBorderWidth=2
-)}}
-
-
-{{use: partial-large(
-    prefix="#",
-    defaultLarge=true,
-    defaultLargeThreshold=600
-)}}
-
-{{ use:partial-progressive(
-    prefix='#',
-    supportProgressiveChunkMode=true,
-    defaultProgressive=3000,
-    defaultProgressiveThreshold=10000,
-    defaultProgressiveChunkMode='mod'
+{{ use: partial-candlestick-item-style-detail(
+    prefix = "###",
+    defaultColor = "#c23531",
+    defaultColor0 = "#314656",
+    defaultBorderColor = "#c23531",
+    defaultBorderColor0 = "#314656",
+    defaultBorderWidth = 2
 ) }}
 
-{{use:partial-series-dimensions(
-    prefix="#"
-)}}
+{{ use: partial-large(
+    prefix = "#",
+    defaultLarge = true,
+    defaultLargeThreshold = 600
+) }}
 
-{{use:partial-series-encode(
-    prefix="#"
-)}}
+{{ use: partial-progressive(
+    prefix = '#',
+    supportProgressiveChunkMode = true,
+    defaultProgressive = 3000,
+    defaultProgressiveThreshold = 10000,
+    defaultProgressiveChunkMode = 'mod'
+) }}
 
+{{ use: partial-series-dimensions(
+    prefix = "#"
+) }}
+
+{{ use: partial-series-encode(
+    prefix = "#"
+) }}
 
 ## data(Array)
 
@@ -166,14 +163,14 @@ Value of data item.
 
 Style of a candle box.
 
-{{use: partial-candlestick-item-style-detail(
-    prefix="###",
-    defaultColor="#c23531",
-    defaultColor0="#314656",
-    defaultBorderColor="#c23531",
-    defaultBorderColor0="#314656",
-    defaultBorderWidth=1
-)}}
+{{ use: partial-candlestick-item-style-detail(
+    prefix = "###",
+    defaultColor = "#c23531",
+    defaultColor0 = "#314656",
+    defaultBorderColor = "#c23531",
+    defaultBorderColor0 = "#314656",
+    defaultBorderWidth = 1
+) }}
 
 ### emphasis(Object)
 
@@ -181,101 +178,90 @@ Emphasis style of a candle box.
 
 #### itemStyle(Object)
 
-{{use: partial-candlestick-item-style-detail(
-    prefix="####",
-    defaultColor="#c23531",
-    defaultColor0="#314656",
-    defaultBorderColor="#c23531",
-    defaultBorderColor0="#314656",
-    defaultBorderWidth=2
-)}}
-
-
-{{use: partial-tooltip-in-series-data(
-    galleryViewPath=${galleryViewPath}
-)}}
-
-
-{{use: partial-marker(
-    prefix="#",
-    seriesType="candlestick",
-    galleryEditorPath=${galleryEditorPath},
-    hasCoord=true,
-    hasType=true,
-    name="mark point"
-)}}
-
-{{use: partial-clip(
-    prefix="#",
-    version="4.5.0"
+{{ use: partial-candlestick-item-style-detail(
+    prefix = "####",
+    defaultColor = "#c23531",
+    defaultColor0 = "#314656",
+    defaultBorderColor = "#c23531",
+    defaultBorderColor0 = "#314656",
+    defaultBorderWidth = 2
 ) }}
 
-{{use:partial-z-zlevel(
-    prefix="#",
-    componentName="candlestick"
+{{ use: partial-tooltip-in-series-data() }}
+
+{{ use: partial-marker(
+    prefix = "#",
+    seriesType = "candlestick",
+    hasCoord = true,
+    hasType = true,
+    name = "mark point"
 ) }}
 
-{{ use:partial-silent(
-    prefix="#"
+{{ use: partial-clip(
+    prefix = "#",
+    version = "4.5.0"
 ) }}
 
-{{ use:partial-silent(
-    prefix="#"
+{{ use: partial-z-zlevel(
+    prefix = "#",
+    componentName = "candlestick"
 ) }}
 
-{{use: partial-animation-init(
-    prefix="#",
-    defaultAnimationEasing='linear',
-    defaultAnimationDuration=300,
-    galleryEditorPath=${galleryEditorPath}
-)}}
+{{ use: partial-silent(
+    prefix = "#"
+) }}
+
+{{ use: partial-silent(
+    prefix = "#"
+) }}
+
+{{ use: partial-animation-init(
+    prefix = "#",
+    defaultAnimationEasing = 'linear',
+    defaultAnimationDuration = 300
+) }}
+
+{{ use: partial-tooltip-in-series() }}
 
 
-{{use: partial-tooltip-in-series(
-    galleryViewPath=${galleryViewPath}
-)}}
 
 
+{{ target: partial-candlestick-item-style-detail }}
 
-
-
-
-{{target: partial-candlestick-item-style-detail}}
-
-#${prefix} color(Color)=${defaultColor}
+#${prefix} color(Color) = ${defaultColor}
 
 Fill color of bullish candle stick.
 
-{{ use: partial-color-desc }}
+{{ use: partial-color-desc() }}
 
-#${prefix} color0(Color)=${defaultColor0}
+#${prefix} color0(Color) = ${defaultColor0}
 
 Fill color of bearish candle stick.
 
-{{ use: partial-color-desc }}
+{{ use: partial-color-desc() }}
 
 #${prefix} borderColor(Color) = ${defaultBorderColor}
 
 Border color of bullish candle stick.
 
-{{ use: partial-color-desc }}
+{{ use: partial-color-desc() }}
 
 #${prefix} borderColor0(Color) = ${defaultBorderColor0}
 
 Border color of bearish candle stick.
 
-{{ use: partial-color-desc }}
+{{ use: partial-color-desc() }}
 
 #${prefix} borderWidth(number) = ${defaultBorderWidth}
 
 Border width of candlestick. There is no border when it is `0`.
 
-{{ use:partial-style-shadow-opacity(
-    prefix=${prefix},
-    defaultOpacity=${defaultOpacity},
-    defaultShadowBlur=${defaultShadowBlur},
-    defaultShadowColor=${defaultShadowColor},
-    defaultShadowOffsetX=${defaultShadowOffsetX},
-    defaultShadowOffsetY=${defaultShadowOffsetY}
+{{ use: partial-style-shadow-opacity(
+    prefix = ${prefix},
+    defaultOpacity = ${defaultOpacity},
+    defaultShadowBlur = ${defaultShadowBlur},
+    defaultShadowColor = ${defaultShadowColor},
+    defaultShadowOffsetX = ${defaultShadowOffsetX},
+    defaultShadowOffsetY = ${defaultShadowOffsetY}
 ) }}
 
