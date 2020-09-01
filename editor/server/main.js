@@ -1,9 +1,8 @@
-const { parseBlocks } = require('./parseBlocks');
+const { parseBlocks } = require('../common/parseBlocks');
 const {compositeTargets} = require('../common/blockHelper');
 const config = require('../common/config');
 const path = require('path');
 const fs = require('fs');
-const { fail } = require('assert');
 
 const io = require('socket.io').listen(config.SOCKET_PORT);
 

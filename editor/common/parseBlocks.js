@@ -2,7 +2,7 @@ const etpl = require('../../dep/etpl');
 const fs = require('fs');
 const globby = require('globby');
 const path = require('path');
-const {updateBlocksLevels, parseHeader, parseArgs, updateBlocksKeys} = require('../common/blockHelper');
+const {updateBlocksLevels, parseHeader, parseArgs, updateBlocksKeys} = require('./blockHelper');
 
 const IfCommand = etpl.commandTypes.if;
 const UseCommand = etpl.commandTypes.use;

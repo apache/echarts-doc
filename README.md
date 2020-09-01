@@ -49,6 +49,15 @@ Provide a website link in doc:
 [Apache ECharts (incubating) website](${websitePath}/en/download.html)
 ```
 
+#### Format Option Docs
+
+Option docs needs to be formatted before commit.
+
+Run
+```shell
+npm run format
+```
+
 
 #### Reference of option
 

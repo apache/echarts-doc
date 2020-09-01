@@ -13,6 +13,7 @@
     "build:site": "npx webpack --config build/webpack.config.js --mode production",
     "watch:site": "npx webpack --config build/webpack.config.js --mode development --devtool sourcemap --watch",
     "server": "node server.js",
+    "format": "node tool/format.js",
     "dev": "npx concurrently --kill-others \"npm run watch\" \"npm run watch:site\" \"npm run server\""
   },
   "author": "shenyi",
