@@ -141,7 +141,7 @@ export default {
 
     methods: {
         startEdit() {
-            this.editingLabel = this.target.name
+            this.editingLabel = this.target.name;
         },
         saveEdit() {
             this.target.name = this.editingLabel;
@@ -192,7 +192,7 @@ export default {
                     type: blockType,
                     // Default has same level of previous block
                     level: blockBefore.level
-                }
+                };
                 switch (blockType) {
                 case 'header':
                     block.propertyName = '';
@@ -209,7 +209,7 @@ export default {
             }
         }
     }
-}
+};
 </script>
 
 <style lang="scss">

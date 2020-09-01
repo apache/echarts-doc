@@ -3,15 +3,16 @@ const routes = [
     {
         path: '/',
         // TODO
-        redirect: '/edit/series.bar'
+        redirect: '/edit/en/series.bar'
     },
 
     {
-        path: '/',
+        path: '/edit/:language/',
         component: () => import('layouts/EditorLayout.vue'),
+        props: true,
         children: [
             // { path: 'index', component: () => import('pages/Index.vue') },
-            { path: 'edit/:docPath', component: () => import('pages/DocBlockEditor.vue'), props: true }
+            { path: '/edit/:language/:docPath', component: () => import('pages/DocBlockEditor.vue'), props: true }
         ]
     },
 

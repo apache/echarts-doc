@@ -50,7 +50,7 @@ export default {
     data() {
         return {
             targetFilterKeyword: ''
-        }
+        };
     },
 
     mounted() {
@@ -73,8 +73,8 @@ export default {
                 this.targetFilterKeyword = val;
             }, ref => {
                 if (val !== '' && ref.options.length > 0) {
-                    ref.setOptionIndex(-1) // reset optionIndex in case there is something selected
-                    ref.moveOptionSelection(1, true) // focus the first selectable option and do not update the input-value
+                    ref.setOptionIndex(-1); // reset optionIndex in case there is something selected
+                    ref.moveOptionSelection(1, true); // focus the first selectable option and do not update the input-value
                 }
             });
         },
@@ -96,7 +96,7 @@ export default {
             this.block.args.push(['', '']);
         }
     }
-}
+};
 </script>
 
 <style lang="scss">

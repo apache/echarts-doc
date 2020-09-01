@@ -11,10 +11,6 @@ console.log('Server Started');
 
 const fileModified = {};
 
-function fetchBlocks() {
-    return parseBlocks(path.resolve(__dirname, '../../zh/option'));
-}
-
 let globalSocket;
 
 function manageFilesStatus(socket) {
@@ -61,16 +57,18 @@ io.on('connection', function (socket) {
 
 
 const requestActions = {
-    save(data) {
-        for (let fileName in data) {
-            const fileTargets = data[fileName];
-            const filePath = path.resolve(__dirname, '../../zh/option/', fileName.replace('.', '/')) + '.md';
+    save({ blocks, lang }) {
+        lang = lang === 'zh' ? 'zh' : 'en';
+        for (let fileName in blocks) {
+            const fileTargets = blocks[fileName];
+            const filePath = path.resolve(__dirname, `../../${lang}/option/`, fileName.replace('.', '/')) + '.md';
             fs.writeFileSync(filePath, compositeTargets(fileTargets), 'utf-8');
         }
         console.log('Saved');
     },
 
-    fetch() {
-        return fetchBlocks();
+    fetch({ lang }) {
+        lang = lang === 'zh' ? 'zh' : 'en';
+        return parseBlocks(path.resolve(__dirname, `../../${lang}/option`));
     }
 }

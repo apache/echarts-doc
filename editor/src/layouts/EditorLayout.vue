@@ -13,11 +13,12 @@
                 <q-btn flat icon="refresh" @click="restore" v-if="hasUnsaved">Reset Editing</q-btn>
                 <q-btn flat icon="save" @click="save"> {{ hasUnsaved ? 'Unsaved' : ''}}</q-btn>
                 <q-btn flat icon="arrow_downward" @click="fetchFromServer"></q-btn>
+                <q-btn flat icon="language" @click="switchLanguage">{{language}}</q-btn>
             </q-toolbar>
         </q-header>
 
         <q-drawer :persistent="true" v-model="navOpen" side="left" overlay behavior="desktop" bordered>
-            <Nav />
+            <Nav :language="language" />
         </q-drawer>
 
         <q-page-container>
@@ -33,14 +34,16 @@ import {
     store,
     saveToServer,
     detectChangeAndSaveToLocal,
+    restoreFromLocalStorage,
     clearLocalStorage,
     fetchFromServer,
     restore
 } from '../store/store';
-import { socket } from '../store/socket';
 import { Notify } from 'quasar';
 
 export default {
+    props: ['language'],
+
     components: {
         Nav
     },
@@ -54,9 +57,16 @@ export default {
         };
     },
 
+    mounted() {
+        fetchFromServer(this.language, () => {
+            // Try restore from local storage.
+            restoreFromLocalStorage();
+        });
+    },
+
     methods: {
         save() {
-            saveToServer().then(() => {
+            saveToServer(this.language).then(() => {
                 this.hasUnsaved = false;
                 Notify.create({
                     message: 'Saved Successfuly'
@@ -90,7 +100,8 @@ export default {
                 persistent: true,
                 dark: true
             }).onOk(() => {
-                fetchFromServer().then(() => {
+                fetchFromServer(this.language).then(() => {
+                    clearLocalStorage();
                     Notify.create({
                         message: 'Fetched Successfuly'
                     });
@@ -99,6 +110,25 @@ export default {
                         message: 'Failed to Fetch ' + reason
                     });
                 });
+            });
+        },
+
+        switchLanguage() {
+            this.$q.dialog({
+                title: 'Confirm',
+                message: 'Switch language will override the content you are editing. Are sure to do this?',
+                cancel: true,
+                persistent: true,
+                dark: true
+            }).onOk(() => {
+                const lang = this.language === 'zh' ? 'en' : 'zh';
+
+                const newPath = `/edit/${lang}/${this.$route.params.docPath}`;
+                if (this.$route.path !== newPath) {
+                    this.$router.push({
+                        path: newPath
+                    });
+                }
             });
         }
     },
@@ -109,10 +139,17 @@ export default {
                 detectChangeAndSaveToLocal(() => {
                     this.hasUnsaved = true;
                 }, () => {
-                    this.hasUnsaved = false
+                    this.hasUnsaved = false;
                 });
             },
             deep: true
+        },
+
+        language() {
+            fetchFromServer(this.language, () => {
+                // Try restore from local storage.
+                restoreFromLocalStorage();
+            });
         }
     }
 };

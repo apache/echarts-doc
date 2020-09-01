@@ -4,7 +4,6 @@ import { Notify } from 'quasar';
 
 export const store = {
     blocks: {},
-
     originalBlocks: null,
 
     blocksToCopy: [],
@@ -28,17 +27,14 @@ function updateTargets() {
     store.targetsMap = Object.freeze(targetsMap);
 }
 
-fetchFromServer(() => {
-    // Try restore from local storage.
-    restoreFromLocalStorage();
-});
-
 socket.on('editor-exists', function () {
     store.editorExists = true;
 });
 
-export function fetchFromServer(extraProcess) {
-    return socketRequest('fetch').then((blocks) => {
+export function fetchFromServer(lang, extraProcess) {
+    return socketRequest('fetch', {
+        lang
+    }).then((blocks) => {
         store.blocks = blocks;
         store.originalBlocks = Object.freeze(_.cloneDeep(blocks));
 
@@ -48,8 +44,11 @@ export function fetchFromServer(extraProcess) {
     });
 }
 
-export function saveToServer() {
-    return socketRequest('save').then(() => {
+export function saveToServer(lang) {
+    return socketRequest('save', {
+        blocks: store.blocks,
+        lang
+    }).then(() => {
         // Reset the base
         store.originalBlocks = Object.freeze(_.cloneDeep(store.blocks));
         clearLocalStorage();

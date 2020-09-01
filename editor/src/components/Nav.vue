@@ -27,6 +27,9 @@
 import { store } from '../store/store';
 
 export default {
+
+    props: ['language'],
+
     data() {
         return {
             shared: store,
@@ -40,7 +43,7 @@ export default {
     watch: {
         selected(newVal) {
             if (newVal) {
-                const newPath = `/edit/${newVal}`;
+                const newPath = `/edit/${this.language}/${newVal}`;
                 if (this.$route.path !== newPath) {
                     this.$router.push({
                         path: newPath
