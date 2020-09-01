@@ -13,6 +13,7 @@
             'block-container', 'block-level-' + block.level || 0, 'block-container-' + block.type
         ]">
             <Block :block="block"></Block>
+
             <div class="block-ops row">
                 <q-btn icon="more_vert" color="grey-6" flat round size="xs">
                     <q-menu
@@ -24,6 +25,13 @@
                                 <q-item clickable v-close-popup @click="goToTarget(block)">
                                     <q-item-section avatar><q-icon name="forward" /></q-item-section>
                                     <q-item-section>Jump To</q-item-section>
+                                </q-item>
+                                <q-separator spaced />
+                            </template>
+                            <template v-if="block.type === 'content'">
+                                <q-item clickable v-close-popup @click="translateContentBlock(block)">
+                                    <q-item-section avatar><q-icon name="translate" /></q-item-section>
+                                    <q-item-section>Translate to English</q-item-section>
                                 </q-item>
                                 <q-separator spaced />
                             </template>
@@ -84,6 +92,11 @@
 import Block from './Block.vue';
 import _ from 'lodash';
 import { store } from '../store/store';
+import { setCORS } from 'google-translate-api-browser';
+import { Notify } from 'quasar';
+// setting up cors-anywhere server address
+const translate = setCORS('http://cors-anywhere.herokuapp.com/');
+
 // import Selection from '@simonwep/selection-js';
 
 export default {
@@ -149,6 +162,22 @@ export default {
 
         goToTarget() {
 
+        },
+
+        translateContentBlock(block) {
+            block.value = translate(block.value, {
+                to: 'en'
+            }).then(res => {
+                block.value = res.text;
+
+                Notify({
+                    message: 'Translation Success'
+                });
+            }).catch(err => {
+                Notify({
+                    message: 'Translation Failed ' + err
+                });
+            })
         },
 
         removeBlock(block) {
