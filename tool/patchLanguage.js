@@ -83,7 +83,10 @@ function applyTargetsPatch(fromJson, toJson) {
     const blocksByLang = {};
 
     for (let lang of [fromLang, toLang]) {
-        const json = await parseBlocks(path.resolve(__dirname, `../${lang}/option`));
+        const json = await parseBlocks(
+            path.resolve(__dirname, `../${lang}/option`),
+            true
+        );
         blocksByLang[lang] = json;
     }
 

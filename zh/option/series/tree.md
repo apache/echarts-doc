@@ -97,7 +97,6 @@ const option = {
 
 <ExampleUIControlEnum options="LR,RL,TB,BT" default="LR" />
 
-
 树图中 `正交布局` 的方向，也就是说只有在 `layout = 'orthogonal'` 的时候，该配置项才生效。对应有 `水平` 方向的 `从左到右`，`从右到左`；以及垂直方向的 `从上到下`，`从下到上`。取值分别为 `'LR'` , `'RL'`, `'TB'`, `'BT'`。**注意**，之前的配置项值 `'horizontal'` 等同于 `'LR'`， `'vertical'` 等同于 `'TB'`。
 
 {{ use: partial-symbol(

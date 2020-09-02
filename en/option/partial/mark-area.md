@@ -97,9 +97,7 @@ data: [
             coord: ['max', 'max']
         }
     ],
-{{ /if }}
-
-[
+{{ /if }}[
         {
             name: 'Mark area in two screen points',
             x: 100,

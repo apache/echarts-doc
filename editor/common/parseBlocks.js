@@ -23,18 +23,10 @@ function hasNewlineBefore(value) {
     return startSpaces && startSpaces[0].indexOf('\n') >= 0;
 }
 
-function parseMarkDown(mdStr, isInline) {
-    const headers = [];
+function parseMarkDown(mdStr, parseExampleUI) {
     const blocks = [];
-    mdStr.replace(
-        new RegExp('(?:^|\n) *(#{1,' + MAX_DEPTH + '}) *([^#][^\n]+)', 'g'),
-        function (header, headerPrefix, text) {
-            headers.push({
-                text: text,
-                level: headerPrefix.length
-            });
-        }
-    );
+
+    const EXAMPLE_CONTROL_REGEX = /<ExampleUIControl.* \/>/;
 
     function removeNewline(mdStr) {
         // Keep leading and trailing space and remove newline. Newline will be added when compositing.
@@ -47,42 +39,44 @@ function parseMarkDown(mdStr, isInline) {
         });
     }
 
-    if (headers.length) {
-        mdStr.split(new RegExp('(?:^|\n) *(?:#{1,' + MAX_DEPTH + '}) *(?:[^#][^\n]+)', 'g'))
-            .forEach((section, idx) => {
-                if (idx > 0) {
-                    const headerText = headers[idx - 1].text.trim();
-                    const headerLevel = headers[idx - 1].level;
+    mdStr.split(new RegExp('(?:^|\n) *((?:#{1,' + MAX_DEPTH + '}) *(?:[^#][^\n]+)|<ExampleUIControl.* \/>)'))
+        .forEach((section, idx) => {
+            const headerParts = new RegExp('(?:^|\n) *(#{1,' + MAX_DEPTH + '}) *([^#][^\n]+)', 'g').exec(section);
+            if (headerParts) {
+                const headerText = headerParts[2];
+                const headerLevel = headerParts[1].length;
 
-                    const {propertyName, propertyDefault, propertyType, prefixCode} = parseHeader(headerText);
+                const {propertyName, propertyDefault, propertyType, prefixCode} = parseHeader(headerText);
 
-                    blocks.push({
-                        type: 'header',
-                        level: headerLevel,
-                        value: headerText,
-                        propertyName,
-                        propertyDefault,
-                        propertyType,
-                        prefixCode,
-                        inline: false
-                    });
-                }
-                const text = removeNewline(section);
-                text && blocks.push({
-                    type: 'content',
-                    value: text,
+                blocks.push({
+                    type: 'header',
+                    level: headerLevel,
+                    value: headerText,
+                    propertyName,
+                    propertyDefault,
+                    propertyType,
+                    prefixCode,
                     inline: false
                 });
-            });
-    }
-    else {
-        const text = removeNewline(mdStr);
-        text && blocks.push({
-            type: 'content',
-            value: text,
-            inline: !hasNewlineBefore(mdStr)
+            }
+            else {
+                const controlParts = /<ExampleUIControl.* \/>/.exec(section);
+                if (controlParts) {
+                    blocks.push({
+                        type: 'uicontrol',
+                        html: section
+                    });
+                }
+                else {
+                    const text = removeNewline(section);
+                    text && blocks.push({
+                        type: 'content',
+                        value: text,
+                        inline: !hasNewlineBefore(section)
+                    });
+                }
+            }
         });
-    }
     return blocks;
 }
 
@@ -119,7 +113,7 @@ function compositeIfCommand(command) {
     if (isIf) {
         texts.push(etplCommandCompositors.endif());
     }
-    return texts('');
+    return texts.join('');
 }
 
 function compositeForCommand(command) {
@@ -174,7 +168,7 @@ function parseSingleFileBlocks(fileName, root, detailed, blocksStore) {
 
         function closeTextBlock() {
             if (textBlockText) {
-                const mdBlocks = parseMarkDown(textBlockText);
+                const mdBlocks = parseMarkDown(textBlockText, detailed);
                 for (let i = 0; i < mdBlocks.length; i++) {
                     outBlocks.push(mdBlocks[i]);
                 }

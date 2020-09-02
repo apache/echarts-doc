@@ -45,7 +45,6 @@ const option = {
 
 <ExampleUIControlAngle min="-360" max="360" default="225" step="1" />
 
-
 仪表盘起始角度。[圆心](~series-gauge.center) 正右手侧为`0`度，正上方为`90`度，正左手侧为`180`度。
 
 ## endAngle(number) = -45
@@ -274,7 +273,6 @@ formatter: function (value) {
 ### offsetCenter(Array) = [0, '-40%']
 
 <ExampleUIControlPercentVector default="0,-40%" dims="x,y" />
-
 
 相对于仪表盘中心的偏移位置，数组第一项是水平方向的偏移，第二项是垂直方向的偏移。可以是绝对的数值，也可以是相对于仪表盘半径的百分比。
 

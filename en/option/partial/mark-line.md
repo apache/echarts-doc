@@ -111,9 +111,7 @@ data: [
     }, {
         type: 'max'
     }],
-{{ /if }}
-
-[
+{{ /if }}[
         {
             name: 'Mark line between two points',
             x: 100,

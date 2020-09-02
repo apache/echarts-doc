@@ -152,7 +152,7 @@ module.exports.updateBlocksLevels = function (blocks, targetsMap) {
                     if (targetObj.topLevel === 0) {
                         // Target has no header if topLevel is 0.
                         // Assume it's only description
-                        // Indent by default.
+                        // Indent== by default.
                         block.level = currentLevel + 1;
                     }
                     else if (!targetObj.topLevelHasPrefix || (prefixVal && prefixVal.match(/#+/))) {
@@ -183,6 +183,7 @@ module.exports.updateBlocksKeys = function (blocks) {
     const keyMap = {};
 
     const contentKeyCountMap = {};
+    const uiControlKeyCountMap = {};
 
     for (const block of blocks) {
         let baseKey = '';
@@ -222,6 +223,13 @@ module.exports.updateBlocksKeys = function (blocks) {
                 baseKey = `${baseKey}:${block.expr}`
             }
             break;
+        case 'exampleuicontrol':
+            baseKey = `uicontrol:${scopeKey}`;
+            uiControlKeyCountMap[baseKey] = uiControlKeyCountMap[baseKey] || 0;
+            if (uiControlKeyCountMap[baseKey]) {
+                baseKey += '-' + uiControlKeyCountMap[baseKey];
+            }
+            uiControlKeyCountMap[baseKey]++;
         }
         let keyNoDuplicate = baseKey;
         while (keyMap[keyNoDuplicate]) {
@@ -312,6 +320,9 @@ module.exports.blockCompositors = {
     },
     endfor(block) {
         return module.exports.etplCommandCompositors.endfor();
+    },
+    uicontrol(block) {
+        return block.html;
     }
 };
 
@@ -324,8 +335,8 @@ module.exports.compositeBlocks = function (blocks) {
         if (str && !block.inline) {
             let prefix = '\n\n';
             // A bit format here. No extra newline between if/for block.
-            if ((prevBlock && (prevBlock.type === 'if' || prevBlock.type === 'elif' || prevBlock.type == 'else' || prevBlock.type === 'for'))
-                || block.type === 'endif' || block.type === 'endfor') {
+            if ((prevBlock && (prevBlock.type === 'if' || prevBlock.type === 'elif' || prevBlock.type === 'else' || prevBlock.type === 'for')) ||
+                block.type === 'endif' || block.type === 'endfor') {
                 prefix = '\n';
             }
             blockStr = prefix + blockStr;

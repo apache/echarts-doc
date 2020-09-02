@@ -1,7 +1,7 @@
 
 {{ target: partial-line-style }}
 
-#${prefix} color(Color) ={{ if: !${useColorPalatte} }} ${defaultColor|default('"#000"')} {{ else }}'self-adaptive'{{ /if }}
+#${prefix} color(Color) = {{ if: !${useColorPalatte} }} ${defaultColor|default('"#000"')} {{ else }}'self-adaptive'{{ /if }}
 
 ${name}Line color. {{ if: ${useColorPalatte} }} Color is taken from [option.color Palette](~color) by default. {{ /if }}
 

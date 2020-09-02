@@ -46,7 +46,6 @@ ${name} icon 样式设置。由于 icon 的文本信息只在 icon hover 时候�
 
 <ExampleUIControlVector min="0" dims="LT,RT,RB,LB"  />
 
-
 文本区域圆角大小。
 
 ###${prefix} textPadding(number)

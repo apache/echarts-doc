@@ -127,7 +127,6 @@ const option = {
 
 <ExampleUIControlNumber min="0" default="10" step="1" />
 
-
 主副标题之间的间距。
 
 {{ use: partial-rect-layout(
