@@ -46,16 +46,11 @@ function parseMarkDown(mdStr, parseExampleUI) {
                 const headerText = headerParts[2];
                 const headerLevel = headerParts[1].length;
 
-                const {propertyName, propertyDefault, propertyType, prefixCode} = parseHeader(headerText);
 
                 blocks.push({
                     type: 'header',
                     level: headerLevel,
                     value: headerText,
-                    propertyName,
-                    propertyDefault,
-                    propertyType,
-                    prefixCode,
                     inline: false
                 });
             }
@@ -201,39 +196,42 @@ function parseSingleFileBlocks(fileName, root, detailed, blocksStore) {
 
         let previousCommand;
 
+        let headerPendingInlining = null;
+
         function addBlocks(parentCommand) {
             for (const command of parentCommand.children) {
-                if (command instanceof UseCommand) {
+                if ((command instanceof UseCommand) || (command instanceof ImportCommand)) {
                     closeTextBlock();
                     outBlocks.push({
                         type: 'use',
                         target: command.name.trim(),
-                        args: parseArgs(command.args),
+                        args: command.args ? parseArgs(command.args) : [],
                         // use command can't be used inline
                         inline: false
                     });
                     previousCommand = command;
-                }
-                else if (command instanceof ImportCommand) {
-                    closeTextBlock();
-                    outBlocks.push({
-                        type: 'use',
-                        target: command.name.trim(),
-                        args: [],
-                        // use command can't be used inline
-                        inline: false
-                    });
-                    previousCommand = command;
+                    headerPendingInlining = null;
                 }
                 else if (command instanceof TextNode) {
                     if (detailed) {
-                        textBlockText = command.value;
+                        let text = command.value;
+                        if (headerPendingInlining) {
+                            const lines = text.split('\n');
+                            headerPendingInlining.value += lines.shift();
+                            if (lines.length > 0) {
+                                headerPendingInlining = null;
+                            }
+                            text = lines.join('\n');
+                        }
+
+                        textBlockText = text;
                         closeTextBlock();
                     }
                     else {
                         textBlockText += command.value;
                     }
                     previousCommand = command;
+
                 }
                 else if (command instanceof IfCommand) {
                     if (detailed) {
@@ -241,32 +239,41 @@ function parseSingleFileBlocks(fileName, root, detailed, blocksStore) {
                             // There is always an ElseCommand inserted between IfCommand and ElifCommand
                             return addBlocks(command);
                         }
+                        // DONT parse inline if block in header
+                        let prevBlock = outBlocks[outBlocks.length - 1];
+                        if (headerPendingInlining || (prevBlock && prevBlock.type === 'header' && isInlineCommand())) {
+                            prevBlock.value += compositeIfCommand(command);
+                            headerPendingInlining = prevBlock;
+                        }
+                        else {
+                            const type = command instanceof ElseCommand
+                                ? 'else' : command instanceof ElifCommand ? 'elif' : 'if';
 
-                        const type = command instanceof ElseCommand
-                            ? 'else' : command instanceof ElifCommand ? 'elif' : 'if';
-
-                        outBlocks.push({
-                            type,
-                            inline: isInlineCommand(),
-                            expr: command.value && formatExpr(command.value)
-                        });
-                        previousCommand = command;
-                        addBlocks(command);
-                        if (type === 'if') {
                             outBlocks.push({
-                                type: 'endif',
-                                inline: isInlineCommand()
+                                type,
+                                inline: isInlineCommand(),
+                                expr: command.value && formatExpr(command.value)
                             });
-                            previousCommand = new CloseIfCommand();
+                            previousCommand = command;
+                            addBlocks(command);
+                            if (type === 'if') {
+                                outBlocks.push({
+                                    type: 'endif',
+                                    inline: isInlineCommand()
+                                });
+                                previousCommand = new CloseIfCommand();
+                            }
                         }
                     }
                     else {
                         // Display if, for in the text block.
-                        textBlockText += compositeCommand(command);
+                        textBlockText += compositeIfCommand(command);
                     }
                 }
                 else if (command instanceof ForCommand) {
                     if (detailed) {
+                        headerPendingInlining = null;
+
                         outBlocks.push({
                             type: 'for',
                             inline: isInlineCommand(),
@@ -281,7 +288,7 @@ function parseSingleFileBlocks(fileName, root, detailed, blocksStore) {
                         });
                     }
                     else {
-                        textBlockText += compositeCommand(command);
+                        textBlockText += compositeForCommand(command);
                     }
                 }
                 else {
@@ -293,6 +300,18 @@ function parseSingleFileBlocks(fileName, root, detailed, blocksStore) {
         addBlocks(targetObj);
 
         closeTextBlock();
+
+        for (let block of outBlocks) {
+            if (block.type === 'header') {
+                const {propertyName, propertyDefault, propertyType, prefixCode} = parseHeader(block.value);
+                Object.assign(block, {
+                    propertyName,
+                    propertyDefault,
+                    propertyType,
+                    prefixCode
+                });
+            }
+        }
 
         const {topLevel, topLevelHasPrefix} = updateBlocksLevels(outBlocks);
         updateBlocksKeys(outBlocks);
