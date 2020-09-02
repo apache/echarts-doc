@@ -62,6 +62,7 @@
 
 标线的数据数组。每个数组项可以是一个两个值的数组，分别表示线的起点和终点，每一项是一个对象，有下面几种方式指定起点或终点的位置。
 1. 通过 [x](~series-${seriesType}.markLine.data.0.x), [y](~series-${seriesType}.markLine.data.0.y) 属性指定相对容器的屏幕坐标，单位像素，支持百分比。
+
 {{ if: ${hasCoord} }}
 2. 用 [coord](~series-${seriesType}.markLine.data.0.coord) 属性指定数据在相应坐标系上的坐标位置，单个维度支持设置 `'min'`, `'max'`, `'average'`。
 {{ /if }}{{ if: ${hasType} }}
@@ -69,14 +70,17 @@
 
 4. 如果是笛卡尔坐标系的话，也可以通过只指定 `xAxis` 或者 `yAxis` 来实现 X 轴或者 Y 轴为某值的标线，见示例 [scatter-weight](${galleryEditorPath}scatter-weight)
 {{ /if }}
+
 当多个属性同时存在时，优先级按上述的顺序。
 
 {{ if: ${hasType} }}
 也可以是直接通过 `type` 设置该标线的类型，是最大值的线还是平均线。同样的，这时候可以通过使用 `valueIndex` 指定维度。
 {{ /if }}
+
 ```
 data: [
-    {{ if: ${hasType} }}{
+
+{{ if: ${hasType} }}{
         name: '平均线',
         // 支持 'average', 'min', 'max'
         type: 'average'
@@ -95,7 +99,7 @@ data: [
             type: 'max'
         }
     ],
-    {{ /if }}{{ if: ${hasCoord} }}[
+{{ /if }}{{ if: ${hasCoord} }}[
         {
             name: '两个坐标之间的标线',
             coord: [10, 20]
@@ -110,7 +114,9 @@ data: [
     }, {
         type: 'max'
     }],
-    {{ /if }}[
+{{ /if }}
+
+[
         {
             name: '两个屏幕坐标之间的标线',
             x: 100,
@@ -156,7 +162,6 @@ data: [
 
 
 
-
 {{ target: mark-line-label }}
 
 #${prefix} show(boolean) = ${defaultShowLabel|default(true)}
@@ -188,11 +193,9 @@ data: [
 
 
 
-
 {{ target: mark-line-data-item-item }}
 
 {{ if: ${hasType} }}
-
 #${prefix} type(string)
 
 <ExampleUIControlEnum options="min,max,average" />
@@ -205,8 +208,8 @@ data: [
 + `'average'` 平均值。
 + `'median'` 中位数。
 {{ /if }}
-{{ if: ${hasCoord} }}
 
+{{ if: ${hasCoord} }}
 #${prefix} valueIndex(number)
 
 <ExampleUIControlNumber min="0" max="1" step="1"  />
@@ -221,8 +224,7 @@ data: [
 
 起点或终点的坐标。坐标格式视系列的坐标系而定，可以是[直角坐标系](~grid)上的 `x`, `y`，也可以是[极坐标系](~polar)上的 `radius`, `angle`。
 
-{{ use: marker-coord-explain }}
-
+{{ use: marker-coord-explain() }}
 {{ /if }}
 
 #${prefix} name(string) = '${name}'

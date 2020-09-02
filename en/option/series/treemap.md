@@ -384,7 +384,6 @@ child nodes, recursive definition, configurations are the same as [series-treema
 
 
 
-
 {{ target: partial-treemap-level-props }}
 
 #${prefix} visualDimension(number) = 0
@@ -412,14 +411,15 @@ The maximal value of current level. Auto-statistics by default.
 When [colorMappingBy](~series-treemap.levels.colorMappingBy) is set to `'value'`, you are able to specify extent manually for visual mapping by specifying `visualMin` or `visualMax`.
 
 {{ if: ${prefix} !== '#' }}
-
 #${prefix} color(Array)
 
 A color list for a level. Each node in the level will obtain a color from the color list (the rule see [colorMappingBy](~series-treemap.levels.colorMappingBy)). It is empty by default, which means the global color list will be used.
 
-{{ use: partial-treemap-visual-detial }}
-{{ use: partial-treemap-prop-location-desc(name="color") }}
+{{ use: partial-treemap-visual-detial() }}
 
+{{ use: partial-treemap-prop-location-desc(
+    name = "color"
+) }}
 {{ /if }}
 
 #${prefix} colorAlpha(Array) = null
@@ -585,7 +585,6 @@ Height of label area.
 
 
 
-
 {{ target: partial-treemap-prop-location-desc }}
 
 <br>
@@ -593,19 +592,17 @@ Height of label area.
 
 {{ if: ${name} !== 'color' }}
 > * It could appear in [sereis-treemap](~series-treemap), indicating the unified setting of the series.
-
 {{ /if }}
+
 > * It could appear in each array element of  [series-treemap.levels](~series-treemap.levels), indicating the unified setting of each level of the tree.
 
 > * It could appear in each node of [series-treemap.data](~series-treemap.data), indicating the particular setting of each node.
 
 
 
-
 {{ target: partial-treemap-visual-detial }}
 
 About visual encoding, see details in [series-treemap.levels](~series-treemap.levels).
-
 
 
 
@@ -616,7 +613,6 @@ About visual encoding, see details in [series-treemap.levels](~series-treemap.le
 The color of a node. It use global palette [option.color](~color) by default.
 
 {{ if: ${itemStyleType} === 'normal' }}
-
 #${prefix} colorAlpha(number) = null
 
 The tranparent rate of a node, the range is between 0 ~ 1.
@@ -650,7 +646,8 @@ When `borderColorSaturation` is set, the `borderColor` is disabled, and, instead
 In this way, a effect can be implemented: different sections have different hue of gap color repectively, which makes users easy to distinguish both sections and levels.
 
 <br>
-{{ use: partial-treemap-borderColor-setting(galleryEditorPath=${galleryEditorPath}) }}
+
+{{ use: partial-treemap-borderColor-setting() }}
 
 #${prefix} strokeColor(Color) = null
 
@@ -659,9 +656,7 @@ Stroke color of each rect.
 #${prefix} strokeWidth(number) = null
 
 Stroke width of each rect.
-
 {{ /if }}
-
 
 
 

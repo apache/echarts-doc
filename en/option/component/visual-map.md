@@ -66,7 +66,6 @@ series: {
 
 
 
-
 {{ target: partial-visual-map-range }}
 
 `${rangeType}` could customize visual channels both in series (by [${visualMapName}.seriesIndex](~${visualMapName}.seriesIndex)) and in `${visualMapName}` itself.
@@ -244,7 +243,6 @@ visualMap: {
 
 
 
-
 {{ target: partial-visual-map-merge }}
 
 **✦ How to modity configurations of vsiual encoding? ✦**
@@ -279,7 +277,6 @@ chart.setOption(option); // set the modified option back.
 // You should not use this approach, but use the
 // approach demostrated before this example.
 ```
-
 
 
 
@@ -326,7 +323,6 @@ Possiable visual channels includes:
 {{ use: partial-visual-map-merge(
     componentMainType = 'visualMap'
 ) }}
-
 
 
 

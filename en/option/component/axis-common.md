@@ -34,7 +34,6 @@ Settings related to axis line.
 Set this to `false` to prevent the axis line from showing.
 
 {{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
-
 ##${prefix} onZero(boolean) = true
 
 Specifies whether X or Y axis lies on the other's origin position, where value is 0 on axis. Valid only if the other axis is of value type, and contains 0 value.
@@ -68,7 +67,6 @@ Arrow offset of axis. If is array, the first number is the offset of the arrow a
 
 
 
-
 {{ target: partial-axis-common-axis-label }}
 
 #${prefix} axisLabel(Object)
@@ -76,39 +74,33 @@ Arrow offset of axis. If is array, the first number is the offset of the arrow a
 Settings related to axis label.
 
 {{ if: !${hideShow} }}
-
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
 
 Set this to `false` to prevent the axis label from appearing.
-
 {{ /if }}
 
 {{ if: ${hasLabelInterval|default(true)} }}
-
 ##${prefix} interval(number|Function) = 'auto'
 
 {{ use: partial-axis-interval(
-    name="Axis label",
-    isAxisLabel=true,
-    componentType=${componentType}
+    name = "Axis label",
+    isAxisLabel = true,
+    componentType = ${componentType}
 ) }}
 {{ /if }}
 
 {{ if: ${hasInside|default(true)} }}
-
 ##${prefix} inside(boolean) = false
 
 Set this to `true` so the axis labels face the `inside` direction.
 {{ /if }}
 
 {{ if: ${componentType} !== 'angleAxis' }}
-
 ##${prefix} rotate(number) = 0
 
 Rotation degree of axis label, which is especially useful when there is no enough space for category axis.
 
 Rotation degree is from -90 to 90.
-
 {{ /if }}
 
 ##${prefix} margin(number) = 8
@@ -154,7 +146,6 @@ textStyle: {
 
 
 
-
 {{ target: partial-axis-common-axis-tick }}
 
 #${prefix} axisTick(Object)
@@ -166,7 +157,6 @@ Settings related to axis tick.
 Set this to `false` to prevent the axis tick from showing.
 
 {{ if: ${hasAlignWithLabel|default(true)} }}
-
 ##${prefix} alignWithLabel(boolean) = false
 
 Align axis tick with label, which is available only when `boundaryGap` is set to be `true` in category axis. See the following picture:
@@ -175,17 +165,15 @@ Align axis tick with label, which is available only when `boundaryGap` is set to
 {{ /if }}
 
 {{ if: ${hasLabelInterval|default(true)} }}
-
 ##${prefix} interval(number|Function) = 'auto'
 
 {{ use: partial-axis-interval(
-    name="axisTick",
-    componentType=${componentType}
+    name = "axisTick",
+    componentType = ${componentType}
 ) }}
 {{ /if }}
 
 {{ if: ${hasInside|default(true)} }}
-
 ##${prefix} inside(boolean) = false
 
 Set this to `true` so the axis labels face the `inside` direction.
@@ -210,7 +198,6 @@ The length of the axis tick.
 ###${prefix} color(Color)
 
 Color of axis label is set to be [axisLine.lineStyle.color](~${componentType}.axisLine.lineStyle.color) by default.
-
 
 
 
@@ -263,7 +250,6 @@ Style configuration of minor ticks lines [axisLine.lineStyle.color](~${component
 
 
 
-
 {{ target: partial-axis-common-split-line }}
 
 #${prefix} splitLine(Object)
@@ -276,12 +262,11 @@ Set this to `false` to prevent the splitLine from showing.
 `value` type axes are shown by default, while `category` type axes are hidden.
 
 {{ if: ${hasLabelInterval|default(true)} }}
-
 ##${prefix} interval(number|Function) = 'auto'
 
 {{ use: partial-axis-interval(
-    name="Axis splitLine",
-    componentType=${componentType}
+    name = "Axis splitLine",
+    componentType = ${componentType}
 ) }}
 {{ /if }}
 
@@ -315,7 +300,6 @@ splitLine: {
 
 
 
-
 {{ target: partial-axis-common-minor-split-line }}
 
 #${prefix} minorSplitLine(Object)
@@ -342,21 +326,18 @@ If show minor split lines.
 
 
 
-
 {{ target: partial-axis-common-split-area }}
 
 #${prefix} splitArea(Object)
 
 Split area of axis in [grid](~grid) area, not shown by default.
 
-
 {{ if: ${hasLabelInterval|default(true)} }}
-
 ##${prefix} interval(number|Function) = 'auto'
 
 {{ use: partial-axis-interval(
-    name="Axis splitArea",
-    componentType=${componentType}
+    name = "Axis splitArea",
+    componentType = ${componentType}
 ) }}
 {{ /if }}
 
@@ -379,7 +360,6 @@ SplitArea color could also be set in color array, which the split lines would ta
 
 
 
-
 {{ target: partial-axis-type-content }}
 
 Type of axis.
@@ -399,7 +379,6 @@ Option:
 
 
 
-
 {{ target: axis-common }}
 
 #${prefix} type(string) = ${axisTypeDefault|default('value')}
@@ -409,7 +388,6 @@ Option:
 ) }}
 
 {{ if: ${componentType} !== 'angleAxis' }}
-
 #${prefix} name(string)
 
 Name of axis.
@@ -427,7 +405,11 @@ Location of axis name.
 
 Text style of axis name.
 
-{{ use: partial-text-style(prefix='#' + ${prefix}, name="axis name") }}
+{{ use: partial-text-style(
+    prefix = '#' + ${prefix},
+    name = "axis name"
+) }}
+
 <!-- Overwrite color -->
 
 ##${prefix} color(Color)
@@ -446,7 +428,6 @@ Rotation of axis name.
 
 Set this to `true` to invert the axis.
 This is a new option available from Echarts 3 and newer.
-
 {{ /if }}
 
 #${prefix} boundaryGap(boolean|Array)
@@ -574,22 +555,20 @@ Base of logarithm, which is valid only for numeric axes with [type](~${component
 ) }}
 
 {{ if: ${hasSplitLineAndArea} }}
-
 {{ use: partial-axis-common-split-line(
-    prefix=${prefix},
-    componentType=${componentType}
+    prefix = ${prefix},
+    componentType = ${componentType}
 ) }}
 
 {{ use: partial-axis-common-minor-split-line(
-    prefix=${prefix},
-    componentType=${componentType}
+    prefix = ${prefix},
+    componentType = ${componentType}
 ) }}
 
 {{ use: partial-axis-common-split-area(
-    prefix=${prefix},
-    componentType=${componentType}
+    prefix = ${prefix},
+    componentType = ${componentType}
 ) }}
-
 {{ /if }}
 
 #${prefix} data(Array)
@@ -631,18 +610,14 @@ Text style of the category.
 ) }}
 
 {{ if: !${noAxisPointer} }}
-
 #${prefix} axisPointer(Object)
 
 axisPointer settings on the axis.
 
 {{ use: partial-axisPointer-common(
-    prefix="#" + ${prefix},
-    galleryViewPath=${galleryViewPath},
-    galleryEditorPath=${galleryEditorPath}
+    prefix = "#" + ${prefix}
 ) }}
 {{ /if }}
-
 
 
 
@@ -661,7 +636,6 @@ On the other hand, you can control by callback function, whose format is shown b
 (index:number, value: string) => boolean
 ```
 The first parameter is index of category, and the second parameter is the name of category. The return values decides whether to display label.
-
 
 
 

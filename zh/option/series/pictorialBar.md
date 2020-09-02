@@ -254,7 +254,6 @@ option = {
 
 
 
-
 {{ target: pictorialBar-symbol-attrs }}
 
 #${prefix} symbol(string) = 'circle'
@@ -504,11 +503,9 @@ itemStyle: {
 ) }}
 
 {{ if: ${useZ2} }}
-
 #${prefix} z(number)
 
 指定图形元素间的覆盖关系。数值越大，越在层叠的上方。
-
 {{ /if }}
 
 #${prefix} hoverAnimation(boolean) = false
@@ -529,7 +526,6 @@ itemStyle: {
 {{ use: pictorialBar-animation-delay(
     prefix = "##"
 ) }}
-
 
 
 
@@ -570,7 +566,6 @@ animationDelay: function (dataIndex, params) {
 
 例子：
 ~[800x400](${galleryViewPath}doc-example/pictorialBar-repeatDirection&reset=1&edit=1)
-
 
 
 

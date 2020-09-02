@@ -225,7 +225,6 @@ Emphasis style of a candle box.
 
 
 
-
 {{ target: partial-candlestick-item-style-detail }}
 
 #${prefix} color(Color) = ${defaultColor}

@@ -409,7 +409,6 @@ K 线图的高亮图形样式。
 
 
 
-
 {{ target: partial-candlestick-item-style-detail }}
 
 #${prefix} color(Color) = ${defaultColor}

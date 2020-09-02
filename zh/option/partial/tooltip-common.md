@@ -18,7 +18,6 @@
 
 
 
-
 {{ target: partial-tooltip-in-coords }}
 
 ## tooltip(Object)
@@ -40,7 +39,6 @@
 
 
 
-
 {{ target: partial-tooltip-in-series }}
 
 ## tooltip(Object)
@@ -51,7 +49,6 @@
     scope = 'series',
     prefix = '##'
 ) }}
-
 
 
 
@@ -68,16 +65,15 @@
 
 
 
-
 {{ target: partial-tooltip-scope-tip }}
 
 {{ if: ${scope} === 'series' }}
 <br>
 > **注意：**`series.tooltip` 仅在 [tooltip.trigger](~tooltip.trigger) 为 `'item'` 时有效。<br>
-{{ elif:${scope} === 'seriesData' }}
+
+{{ elif: ${scope} === 'seriesData' }}
 > **注意：**`series.data.tooltip` 仅在 [tooltip.trigger](~tooltip.trigger) 为 `'item'` 时有效。<br>
 {{ /if }}
-
 
 
 
@@ -165,7 +161,6 @@
     defaultAnimationEasingUpdate = 'exponentialOut',
     defaultAnimationDurationUpdate = 200
 ) }}
-
 
 
 

@@ -123,7 +123,6 @@ It is suggested to set [series-parallel.lineStyle.width](~series-parallel.lineSt
 
 
 
-
 {{ target: partial-parallel-data-example }}
 
 For example, [series-parallel.data](~series-parallel.data) is the following data:
@@ -145,11 +144,9 @@ In data above, each row is a "data item", and each column represents a "dimensio
 
 
 
-
 {{ target: partial-parallel-axis-default }}
 
 When configuring multiple [parallelAxis](~parallelAxis), there might be some common attributes in each axis configuration. To avoid writing them repeatly, they can be put under [parallel.parallelAxisDefault](~parallel.parallelAxisDefault). Before initializing axis, configurations in [parallel.parallelAxisDefault](~parallel.parallelAxisDefault) will be merged into [parallelAxis](~parallelAxis) to generate the final axis configuration.
-
 
 
 

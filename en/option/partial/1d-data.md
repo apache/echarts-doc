@@ -32,7 +32,6 @@ where `params` is the single dataset needed by formatter, which is formed as:
 
 
 
-
 {{ target: partial-1d-data-desc }}
 
 Data array of ${name} series, which can be a single data value, like:

@@ -61,7 +61,6 @@ group 是唯一的可以有子节点的容器。group 可以用来整体定位�
 ) }}
 
 {{ if: ${usageType} === 'customSeries' }}
-
 #${prefix} ${hostName}${symbolDeclare}path(Object)
 
 可使用 [SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData) 做路径。
@@ -72,15 +71,14 @@ group 是唯一的可以有子节点的容器。group 可以用来整体定位�
 
 关于制定尺寸、拉伸还是平铺，参见 [layout](~${optionPath}.${hostName}${symbolVisit}path.shape.layout)。
 
-
 {{ use: partial-graphic-cpt-common-props(
-    type='path',
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    type = 'path',
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ##${prefix} shape(Object)
@@ -112,53 +110,52 @@ group 是唯一的可以有子节点的容器。group 可以用来整体定位�
 + `'center'`：保持原来的 PathData 的长宽比，居于矩形中，尽可能撑大但不会超出矩形。
 + `'cover'`：PathData 拉伸为矩形的长宽比，完全填满矩形，不会超出矩形。
 
-
 {{ use: partial-graphic-cpt-sub-prop-xy(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
+
 {{ use: partial-graphic-cpt-sub-prop-wh(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ##${prefix} style(Object)
 
 {{ use: partial-graphic-cpt-style-prop-common(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 {{ use: partial-graphic-cpt-style-emphasis(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 {{ use: partial-graphic-cpt-event-handlers(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
-
 {{ /if }}
 
 #${prefix} ${hostName}${symbolDeclare}image(Object)
@@ -901,7 +898,6 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
 
 
 
-
 {{ target: partial-graphic-cpt-common-props }}
 
 ##${prefix} type(string) = ${type}
@@ -921,9 +917,7 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
 
 id 用于在更新或删除图形元素时指定更新哪个图形元素，如果不需要用可以忽略。
 
-
 {{ if: ${usageType} === 'graphicComponent' }}
-
 ##${prefix} $action(string) = 'merge'
 
 setOption 时指定本次对该图形元素的操作行为。
@@ -932,7 +926,6 @@ setOption 时指定本次对该图形元素的操作行为。
 + `'merge'`：如果已有元素，则新的配置项和已有的设定进行 merge。如果没有则新建。
 + `'replace'`：如果已有元素，删除之，新建元素替代之。
 + `'remove'`：删除元素。
-
 {{ /if }}
 
 {{ use: partial-graphic-transform(
@@ -945,53 +938,52 @@ setOption 时指定本次对该图形元素的操作行为。
 ) }}
 
 {{ if: ${usageType} === 'graphicComponent' }}
-
 ##${prefix} left(number|string) = undefined
 
-{{ use: partial-graphic-cpt-location-prop-desc-common (
+{{ use: partial-graphic-cpt-location-prop-desc-common(
     hv = 'h',
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ##${prefix} right(number|string) = undefined
 
-{{ use: partial-graphic-cpt-location-prop-desc-common (
+{{ use: partial-graphic-cpt-location-prop-desc-common(
     hv = 'h',
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ##${prefix} top(number|string) = undefined
 
-{{ use: partial-graphic-cpt-location-prop-desc-common (
+{{ use: partial-graphic-cpt-location-prop-desc-common(
     hv = 'v',
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ##${prefix} bottom(number|string) = undefined
 
-{{ use: partial-graphic-cpt-location-prop-desc-common (
+{{ use: partial-graphic-cpt-location-prop-desc-common(
     hv = 'v',
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ##${prefix} bounding(strin) = 'all'
@@ -1018,12 +1010,9 @@ z 方向的高度，决定层叠关系。
 ##${prefix} zlevel(number) = 0
 
 决定此元素绘制在哪个 canvas 层中。注意，越多 canvas 层会占用越多资源。
-
 {{ /if }}
 
-
 {{ if: ${usageType} === 'customSeries' }}
-
 ##${prefix} z2(number) = undefined
 
 用于决定图形元素的覆盖关系。
@@ -1031,8 +1020,6 @@ z 方向的高度，决定层叠关系。
 ##${prefix} name(string) = undefined
 
 参见 [diffChildrenByName](~${optionPath}.${hostName}${symbolVisit}polygon.diffChildrenByName)。
-
-
 {{ /if }}
 
 ##${prefix} info(*)
@@ -1057,11 +1044,10 @@ chart.on('click', function (params) {
 
 节点是否完全被忽略（既不渲染，也不响应事件）。
 
-
-
 {{ if: ${usageType} === 'graphicComponent' }}
-
-{{ use: partial-cursor(prefix="##") }}
+{{ use: partial-cursor(
+    prefix = "##"
+) }}
 
 ##${prefix} draggable(boolean) = false
 
@@ -1070,9 +1056,7 @@ chart.on('click', function (params) {
 ##${prefix} progressive(boolean) = false
 
 是否渐进式渲染。当图形元素过多时才使用。
-
 {{ /if }}
-
 
 
 
@@ -1118,7 +1102,6 @@ chart.on('click', function (params) {
 
 
 
-
 {{ target: partial-graphic-cpt-path-common }}
 
 ###${prefix} points(Array)
@@ -1138,7 +1121,6 @@ chart.on('click', function (params) {
 
 
 
-
 {{ target: partial-graphic-cpt-location-prop-desc-common }}
 
 描述怎么根据父元素进行定位。
@@ -1155,12 +1137,12 @@ chart.on('click', function (params) {
 [left](~${optionPath}.${hostName}${symbolVisit}polygon.left) 和 [right](~${optionPath}.${hostName}${symbolVisit}polygon.right) 只有一个可以生效。
 
 如果指定 [left](~${optionPath}.${hostName}${symbolVisit}polygon.left) 或 [right](~${optionPath}.${hostName}${symbolVisit}polygon.right)，则 [shape](~${optionPath}.${hostName}${symbolVisit}polygon.shape) 里的 `x`、`cx` 等定位属性不再生效。
+
 {{ else }}
 [top](~${optionPath}.${hostName}${symbolVisit}polygon.top) 和 [bottom](~${optionPath}.${hostName}${symbolVisit}polygon.bottom) 只有一个可以生效。
 
 如果指定 [top](~${optionPath}.${hostName}${symbolVisit}polygon.top) 或 [bottom](~${optionPath}.${hostName}${symbolVisit}polygon.bottom)，则 [shape](~${optionPath}.${hostName}${symbolVisit}polygon.shape) 里的 `y`、`cy` 等定位属性不再生效。
 {{ /if }}
-
 
 
 
@@ -1176,7 +1158,6 @@ chart.on('click', function (params) {
 
 
 
-
 {{ target: partial-graphic-cpt-sub-prop-cxy }}
 
 ###${prefix} cx(number) = 0
@@ -1186,7 +1167,6 @@ chart.on('click', function (params) {
 ###${prefix} cy(numbr) = 0
 
 图形元素的中心在父节点坐标系（以父节点左上角为原点）中的纵坐标值。
-
 
 
 
@@ -1202,13 +1182,11 @@ chart.on('click', function (params) {
 
 
 
-
 {{ target: partial-graphic-cpt-sub-prop-r }}
 
 ###${prefix} r(number) = 0
 
 外半径。
-
 
 
 
@@ -1226,7 +1204,6 @@ chart.on('click', function (params) {
 ###${prefix} r0(number) = 0
 
 内半径。
-
 
 
 
@@ -1250,7 +1227,6 @@ chart.on('click', function (params) {
 
 
 
-
 {{ target: partial-graphic-cpt-sub-prop-angle }}
 
 ###${prefix} startAngle(number) = 0
@@ -1267,11 +1243,9 @@ chart.on('click', function (params) {
 
 
 
-
 {{ target: partial-graphic-cpt-event-handlers }}
 
 {{ if: ${usageType} === 'graphicComponent' }}
-
 ##${prefix} onclick(Function)
 
 ##${prefix} onmouseover(Function)
@@ -1299,9 +1273,7 @@ chart.on('click', function (params) {
 ##${prefix} ondragover(Function)
 
 ##${prefix} ondrop(Function)
-
 {{ /if }}
-
 
 
 
@@ -1349,7 +1321,6 @@ chart.on('click', function (params) {
 
 
 
-
 {{ target: partial-graphic-transform-common-desc }}
 
 图形元素可以进行标准的 `2D transform`，其中包含：
@@ -1365,18 +1336,14 @@ chart.on('click', function (params) {
 
 
 
-
 {{ target: partial-graphic-cpt-style-emphasis }}
 
 {{ if: ${usageType} === 'customSeries' }}
-
 ##${prefix} styleEmphasis(Object)
 
 图形元素高亮时的样式。
 结构同 [style](~${optionPath}.${hostName}${symbolVisit}polygon.style) 相同。
-
 {{ /if }}
-
 
 
 

@@ -262,7 +262,6 @@ The label of the node.
 
 
 
-
 {{ target: partial-tree-line-style }}
 
 #${prefix} color(Color) = "'#ccc'"

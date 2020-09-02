@@ -212,7 +212,6 @@ The line style of this data item.
 
 
 
-
 {{ target: lines-label }}
 
 #${prefix} show(boolean) = ${defaultShowLabel|default(false)}

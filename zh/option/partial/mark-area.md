@@ -46,6 +46,7 @@
 标域的数据数组。每个数组项是一个两个项的数组，分别表示标域左上角和右下角的位置，每个项支持通过下面几种方式指定自己的位置
 
 1. 通过 [x](~series-${seriesType}.markArea.data.0.x), [y](~series-${seriesType}.markArea.data.0.y) 属性指定相对容器的屏幕坐标，单位像素，支持百分比。
+
 {{ if: ${hasCoord} }}
 2. 用 [coord](~series-${seriesType}.markArea.data.0.coord) 属性指定数据在相应坐标系上的坐标位置，单个维度支持设置 `'min'`, `'max'`, `'average'`。
 {{ /if }}{{ if: ${hasType} }}
@@ -53,14 +54,16 @@
 
 4. 如果是笛卡尔坐标系的话，也可以通过只指定 `xAxis` 或者 `yAxis` 来实现 X 轴或者 Y 轴为某值的标域，见示例 [scatter-weight](${galleryEditorPath}scatter-weight)
 {{ /if }}
+
 当多个属性同时存在时，优先级按上述的顺序。
 
 {{ if: ${hasType} }}
-
 {{ /if }}
+
 ```
 data: [
-    {{ if: ${hasType} }}
+
+{{ if: ${hasType} }}
     [
         {
             name: '平均值到最大值',
@@ -70,7 +73,7 @@ data: [
             type: 'max'
         }
     ],
-    {{ /if }}{{ if: ${hasCoord} }}
+{{ /if }}{{ if: ${hasCoord} }}
     [
         {
             name: '两个坐标之间的标域',
@@ -96,7 +99,9 @@ data: [
             coord: ['max', 'max']
         }
     ],
-    {{ /if }}[
+{{ /if }}
+
+[
         {
             name: '两个屏幕坐标之间的标域',
             x: 100,
@@ -142,11 +147,9 @@ data: [
 
 
 
-
 {{ target: mark-area-data-item-item }}
 
 {{ if: ${hasType} }}
-
 #${prefix} type(string)
 
 <ExampleUIControlEnum options="min,max,average" />
@@ -158,8 +161,8 @@ data: [
 + `'max'` 最大值。
 + `'average'` 平均值。
 {{ /if }}
-{{ if: ${hasCoord} }}
 
+{{ if: ${hasCoord} }}
 #${prefix} valueIndex(number)
 
 <ExampleUIControlNumber min="0" max="1" step="1"  />
@@ -173,7 +176,6 @@ data: [
 #${prefix} coord(Array)
 
 起点或终点的坐标。坐标格式视系列的坐标系而定，可以是[直角坐标系](~grid)上的 `x`, `y`，也可以是[极坐标系](~polar)上的 `radius`, `angle`。
-
 {{ /if }}
 
 #${prefix} name(string) = '${name}'

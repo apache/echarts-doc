@@ -222,7 +222,6 @@ brush 选框的 z-index。当有和不想管组件有不正确的重叠时，可
 
 
 
-
 {{ target: partial-brush-coord }}
 
 可以设置 `brush` 是『全局的』还是『属于坐标系的』。
@@ -283,7 +282,6 @@ option = {
 
 
 
-
 {{ target: partial-brush-brushLink }}
 
 不同系列间，选中的项可以联动。
@@ -322,7 +320,6 @@ option = {
 
 
 
-
 {{ target: partial-brush-throttle }}
 
 默认情况，刷选或者移动选区的时候，会不断得发 `brushSelected` 事件，从而告诉外界选中的内容。
@@ -332,7 +329,6 @@ option = {
 throttleType 取值可以是：
 + `'debounce'`：表示只有停止动作了（即一段时间没有操作了），才会触发事件。时间阈值由 [brush.throttleDelay](~brush.throttleDelay) 指定。
 + `'fixRate'`：表示按照一定的频率触发事件，时间间隔由 [brush.throttleDelay](~brush.throttleDelay) 指定。
-
 
 
 
@@ -346,7 +342,6 @@ brush 相关的 toolbox 按钮有：
 + `'lineY'`：开启纵向选择功能。
 + `'keep'`：切换『单选』和『多选』模式。后者可支持同时画多个选框。前者支持单击清除所有选框。
 + `'clear'`：清空所有选框。
-
 
 
 

@@ -328,7 +328,6 @@ const option = {
 
 
 
-
 {{ target: partial-tree-line-style }}
 
 #${prefix} color(Color) = "'#ccc'"

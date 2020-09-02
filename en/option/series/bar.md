@@ -197,7 +197,6 @@ The style setting of the text label in a single bar.
 
 
 
-
 {{ target: partial-bar-item-style }}
 
 #${prefix} color(Color) = ${defaultColor|default('auto')}

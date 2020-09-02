@@ -5,7 +5,6 @@ ${name}图形上的文本标签，可用于说明图形的一些数据信息，�
 
 
 
-
 {{ target: partial-label }}
 
 #${prefix} show(boolean) = ${defaultShowLabel|default("false")}
@@ -15,12 +14,11 @@ ${name}图形上的文本标签，可用于说明图形的一些数据信息，�
 是否显示标签。
 
 {{ if: !${noPosition} }}
-
 #${prefix} position(string|Array) = ${defaultPosition}
 
 <ExampleUIControlEnum options="top,left,right,bottom,inside,insideLeft,insideRight,insideTop,insideBottom,insideTopLeft,insideBottomLeft,insideTopRight,insideBottomRight,outside" />
 
-{{ use: partial-label-position }}
+{{ use: partial-label-position() }}
 {{ /if }}
 
 #${prefix} distance(number) = 5
@@ -31,9 +29,7 @@ ${name}图形上的文本标签，可用于说明图形的一些数据信息，�
 
 参见：[label position](${galleryEditorPath}doc-example/label-position)。
 
-
 {{ if: !${noRotate} }}
-
 #${prefix} rotate(number) = ${defaultRotate}
 
 <ExampleUIControlAngle default="${defaultRotate|default(0)}" min="-90" max="90" step="1" />
@@ -50,32 +46,29 @@ ${name}图形上的文本标签，可用于说明图形的一些数据信息，�
 是否对文字进行偏移。默认不偏移。例如：`[30, 40]` 表示文字在横向上偏移 `30`，纵向上偏移 `40`。
 
 {{ if: ${formatter} }}
-
 #${prefix} formatter(string|Function)
 
-{{ use: partial-2d-data-label-formatter }}
-{{ elif:${formatter1d} }}
+{{ use: partial-2d-data-label-formatter() }}
 
+{{ elif: ${formatter1d} }}
 #${prefix} formatter(string|Function)
 
-{{ use: partial-1d-data-label-formatter }}
+{{ use: partial-1d-data-label-formatter() }}
 {{ /if }}
-
 
 {{ if: !${noTextStyle} }}
 {{ use: partial-text-style(
-    prefix=${prefix},
-    noAlign=${noAlign},
-    noVerticalAlign=${noVerticalAlign},
-    name=${name},
-    defaultColor=${defaultColor},
-    defaultFontSize=${defaultFontSize},
-    noRich=${noRich},
-    noBox=${noBox},
-    enableAutoColor=true
+    prefix = ${prefix},
+    noAlign = ${noAlign},
+    noVerticalAlign = ${noVerticalAlign},
+    name = ${name},
+    defaultColor = ${defaultColor},
+    defaultFontSize = ${defaultFontSize},
+    noRich = ${noRich},
+    noBox = ${noBox},
+    enableAutoColor = true
 ) }}
 {{ /if }}
-
 
 
 

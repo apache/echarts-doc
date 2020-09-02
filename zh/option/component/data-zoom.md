@@ -118,7 +118,6 @@ option = {
 
 
 
-
 {{ target: partial-data-zoom-axis-example }}
 
 如果是 `number` 表示控制一个轴，如果是 `Array` 表示控制多个轴。
@@ -143,7 +142,6 @@ option: {
     ]
 }
 ```
-
 
 
 
@@ -309,7 +307,6 @@ option: {
 如果我们手动在 `option` 中设定了 `rangeMode`，那么它只在 `start` 和 `startValue` 都设置了或者 `end` 和 `endValue` 都设置了才有意义。所以通常我们没必要在 `option` 中指定 `rangeMode`。
 
 举例一个使用场景：当我们使用动态数据时（即，周期性得通过 `setOption` 来改变数据），如果 `rangeMode` 在 `'value`' 模式，`dataZoom` 的窗口会一直保持在一个固定的值区间，无论数据怎么改变添加了多少；如果 `rangeMode` 在 `'percent'` 模式，窗口会随着数据的添加而改变（假设 `axis.min` 和 `axis.max` 没有被设置）。
-
 
 
 

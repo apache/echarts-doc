@@ -4,7 +4,9 @@
 ## selectedMode(boolean|string) = false
 
 {{ if: ${version} }}
-{{ use: partial-version(version = ${version}) }}
+{{ use: partial-version(
+    version = ${version}
+) }}
 {{ /if }}
 
 <ExampleUIControlEnum options="true,false,single,multiple" />

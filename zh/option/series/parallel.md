@@ -256,7 +256,6 @@ const option = {
 
 
 
-
 {{ target: partial-parallel-line-style }}
 
 #${prefix} lineStyle(Object)

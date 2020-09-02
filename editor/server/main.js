@@ -63,6 +63,7 @@ const requestActions = {
             const filePath = path.resolve(__dirname, `../../${lang}/option/`, fileName.replace('.', '/')) + '.md';
             fs.writeFileSync(filePath, compositeTargets(fileTargets), 'utf-8');
         }
+        // TODO format
         console.log('Saved');
     },
 

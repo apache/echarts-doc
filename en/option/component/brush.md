@@ -218,7 +218,6 @@ z-index of brush cover box. It can be adjust when incorrect overlap occurs.
 
 
 
-
 {{ target: partial-brush-coord }}
 
 `brush` can be set to be *global*, or *belonging to a particular coordinate*.
@@ -277,7 +276,6 @@ option = {
 
 
 
-
 {{ target: partial-brush-brushLink }}
 
 Links interaction between selected items in different series.
@@ -315,7 +313,6 @@ option = {
 
 
 
-
 {{ target: partial-brush-throttle }}
 
 By default, `brushSelected` is always triggered when selection-box is selected or moved, to tell the outside about the event.
@@ -331,7 +328,6 @@ In this [example](${galleryViewPath}scatter-map-brush&edit=1&reset=1), `debounce
 
 
 
-
 {{ target: partial-brush-toolbox-buttons }}
 
 Buttons in toolbox that is related to brush includes:
@@ -342,7 +338,6 @@ Buttons in toolbox that is related to brush includes:
 + `'lineY'`: for vertical selection-box;
 + `'keep'`: for setting mode between `single` and `multiple` selection, the former of which supports clearing selection on click, and the latter selecting multiple areas;
 + `'clear'`: for clearing all selections.
-
 
 
 

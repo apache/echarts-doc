@@ -27,7 +27,6 @@ prefix
 
 
 
-
 {{ target: marker-coord-explain }}
 
 **Notice:** For axis with [axis.type](~xAixs.type) `'category'`:

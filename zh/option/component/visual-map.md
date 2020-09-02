@@ -63,7 +63,6 @@ series: {
 
 
 
-
 {{ target: partial-visual-map-range }}
 
 `${rangeType}` 能定义目标系列（参见 [${visualMapName}.seriesIndex](~${visualMapName}.seriesIndex)）视觉形式，也同时定义了 `${visualMapName}` 本身的视觉样式。通俗来讲就是，假如 `${visualMapName}`控制的是散点图，那么 `${rangeType}` 同时定义了散点图的 `颜色`、`尺寸` 等，也定义了 `${visualMapName}` 本身的 `颜色`、`尺寸` 等。这二者能对应上。
@@ -219,7 +218,6 @@ visualMap: {
 
 
 
-
 {{ target: partial-visual-map-merge }}
 
 **✦ 修改视觉编码 ✦**
@@ -251,7 +249,6 @@ option.${componentMainType}.controller.inRange.color = ['red', 'blue'];
 
 chart.setOption(option); // option设置回 ${componentMainType}
 ```
-
 
 
 
@@ -301,7 +298,6 @@ chart.setOption(option); // option设置回 ${componentMainType}
 {{ use: partial-visual-map-merge(
     componentMainType = 'visualMap'
 ) }}
-
 
 
 

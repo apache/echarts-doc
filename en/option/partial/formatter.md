@@ -34,10 +34,12 @@
     dimensionIndex: number,
     // Color of data
     color: string,
+
 {{ for: ${extra} as ${obj}, ${name} }}{{ if: ${extra}.hasOwnProperty(${name}) }}
     // ${obj.desc}
     ${name}: ${obj.type},
 {{ /if }}{{ /for }}
+
 }
 ```
 

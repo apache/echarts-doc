@@ -34,7 +34,6 @@ formatter: '{b}: {d}'
 
 
 
-
 {{ target: partial-1d-data-desc }}
 
 ${name}系列中的数据内容数组。数组项可以为单个数值，如：

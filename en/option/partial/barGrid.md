@@ -62,11 +62,9 @@ The bar gap of a single series, defaults to be `20%` of the category gap, can be
 
 
 
-
 {{ target: partial-barGrid-share-desc }}
 
 In a single coodinate system, this attribute is shared by multiple `'${seriesType}'` series. This attribute should be set on the last `'${seriesType}'` series in the coodinate system, then it will be adopted by all `'${seriesType}'` series in the coordinate system.
-
 
 
 

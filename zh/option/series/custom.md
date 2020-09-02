@@ -459,7 +459,6 @@ renderItem 函数的第二个参数。
 
 
 
-
 {{ target: partial-custom-renderItem-common }}
 
 custom 系列需要开发者自己提供图形渲染的逻辑。这个渲染逻辑一般命名为 [renderItem](~series-custom.renderItem)。例如：
@@ -513,7 +512,6 @@ var option = {
 有时候还需要用到 [api.size(...)](~series-custom.renderItem.arguments.api.size) 函数，表示得到坐标系上一段数值范围对应的长度。
 
 返回值中样式的设置可以使用 [api.style(...)](~series-custom.renderItem.arguments.api.style) 函数，他能得到 [series.itemStyle](~series-custom.itemStyle) 中定义的样式信息，以及视觉映射的样式信息。也可以用这种方式覆盖这些样式信息：`api.style({fill: 'green', stroke: 'yellow'})`。
-
 
 
 

@@ -1,7 +1,7 @@
 
 {{ target: partial-area-style }}
 
-#${prefix} color(Color) = {{ if: !${useColorPalatte} }} ${defaultColor|default('"#000"')} {{ else }}'adaptive'{{ /if }}
+#${prefix} color(Color) ={{ if: !${useColorPalatte} }} ${defaultColor|default('"#000"')} {{ else }}'adaptive'{{ /if }}
 
 Fill color. {{ if: ${useColorPalatte} }} Color is taken from [option.color Palette](~color) by default. {{ /if }}
 
@@ -15,10 +15,7 @@ Supports callback functions, in the form of:
 Input parameters are `seriesIndex`, `dataIndex`, `data`, `value`, and etc. of data item.
 {{ /if }}
 
-
-
 {{ if: ${hasOrigin} }}
-
 #${prefix|default('##')} origin(string) = 'auto'
 
 Origin position of area.

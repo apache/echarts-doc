@@ -70,11 +70,9 @@
 
 
 
-
 {{ target: partial-barGrid-share-desc }}
 
 在同一坐标系上，此属性会被多个 `'${seriesType}'` 系列共享。此属性应设置于此坐标系中最后一个 `'${seriesType}'` 系列上才会生效，并且是对此坐标系中所有 `'${seriesType}'` 系列生效。
-
 
 
 

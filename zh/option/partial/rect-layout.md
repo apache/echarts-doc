@@ -3,9 +3,9 @@
 
 {{ if: !${noZ} }}
 {{ use: partial-z-zlevel(
-    prefix=${prefix},
-    defaultZLevel=${defaultZLevel},
-    defaultZ=${defaultZ}
+    prefix = ${prefix},
+    defaultZLevel = ${defaultZLevel},
+    defaultZ = ${defaultZ}
 ) }}
 {{ /if }}
 

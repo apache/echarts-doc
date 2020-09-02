@@ -1,7 +1,7 @@
 
 {{ target: partial-line-style }}
 
-#${prefix} color(Color) = {{ if: !${useColorPalatte} }} ${defaultColor|default('"#000"')} {{ else }}'自适应'{{ /if }}
+#${prefix} color(Color) ={{ if: !${useColorPalatte} }} ${defaultColor|default('"#000"')} {{ else }}'自适应'{{ /if }}
 
 <ExampleUIControlColor />
 
@@ -42,7 +42,6 @@ ${name}线的类型。
 ) }}
 
 {{ if: ${hasCurveness} }}
-
 #${prefix} curveness(number) = 0
 
 <ExampleUIControlNumber min="0" max="1" step="0.01" default="0" />

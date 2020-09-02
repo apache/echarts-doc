@@ -292,13 +292,11 @@ option = {
 
 
 
-
 {{ target: partial-funnel-label }}
 
 #${prefix} show(boolean) = false
 
 {{ if: ${position} }}
-
 #${prefix} position(string) = 'outside'
 
 标签的位置。
@@ -320,18 +318,19 @@ option = {
 
 在不是配置为内部的时候标签可以通过[视觉引导线](~series-funnel.labelLine)连到相应的梯形。
 通过[视觉引导线](~series-funnel.labelLine)连到相应的梯形。
-
 {{ /if }}
-{{ if: ${formatter} }}
 
+{{ if: ${formatter} }}
 #${prefix} formatter(string|Function)
 
-{{ use: partial-1d-data-label-formatter(extra = {
+{{ use: partial-1d-data-label-formatter(
+    extra = {
     percent: {
         desc: '百分比',
         type: 'number'
     }
-}) }}
+}
+) }}
 {{ /if }}
 
 {{ use: partial-text-style(
@@ -340,14 +339,13 @@ option = {
 
 
 
-
 {{ target: partial-funnel-label-line }}
 
 #${prefix} show(boolean)
 
 是否显示视觉引导线。
-{{ if: ${length} }}
 
+{{ if: ${length} }}
 #${prefix} length(number)
 
 视觉引导线的长度。

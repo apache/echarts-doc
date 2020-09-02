@@ -9,7 +9,6 @@ Icon types provided by ECharts includes
 
 
 
-
 {{ target: partial-icon-image-path }}
 
 It can be set to an image with `'image://url'` , in which URL is the link to an image, or `dataURI` of an image.
@@ -31,11 +30,9 @@ A `dataURI` example:
 
 
 
-
 {{ target: partial-icon-buildin }}
 
 `'circle'`, `'rect'`, `'roundRect'`, `'triangle'`, `'diamond'`, `'pin'`, `'arrow'`, `'none'`
-
 
 
 

@@ -129,7 +129,6 @@ What is the exact meaning of `start: 20, end: 80` in `dataZoomY` in the example 
 
 
 
-
 {{ target: partial-data-zoom-axis-example }}
 
 If it is set as a single `number`, one axis is controlled, while if it is set as an `Array` , multiple axes are controlled.
@@ -156,7 +155,6 @@ option: {
     ]
 }
 ```
-
 
 
 
@@ -307,7 +305,6 @@ Optional value for each item: `'value'`, `'percent'`.
 If we specify `rangeMode` manually in `option`, it only works when both `start` and `startValue` specified or both `end` and `endValue` specified. So usually we do not need to specify `dataZoom.rangeMode` manually.
 
 Take a scenario as an example. When we are using dynamic data (update data periodically via `setOption`), if in `'value`' mode, the window will be kept in a fixed value range despite how data are appended, while if in `'percent'` mode, whe window range will be changed alone with the appended data (suppose `axis.min` and `axis.max` are not specified).
-
 
 
 

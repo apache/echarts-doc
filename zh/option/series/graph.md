@@ -516,7 +516,6 @@ links: [{
 
 
 
-
 {{ target: graph-edge-label }}
 
 #${prefix} show(boolean) = ${defaultShowLabel|default(false)}

@@ -9,7 +9,6 @@ ECharts 提供的标记类型包括
 
 
 
-
 {{ target: partial-icon-image-path }}
 
 可以通过 `'image://url'` 设置为图片，其中 URL 为图片的链接，或者 `dataURI`。
@@ -28,11 +27,9 @@ URL 为 `dataURI` 例如：
 
 
 
-
 {{ target: partial-icon-buildin }}
 
 `'circle'`, `'rect'`, `'roundRect'`, `'triangle'`, `'diamond'`, `'pin'`, `'arrow'`, `'none'`
-
 
 
 

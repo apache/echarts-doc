@@ -14,12 +14,10 @@ Set `progressive: 0` to disable progressive permanently. By default, progressive
 If current data amount is over the threshold, "progressive rendering" is enabled.
 
 {{ if: ${supportProgressiveChunkMode} }}
-
 #${prefix} progressiveChunkMode(string) = ${defaultProgressiveChunkMode|default('sequential')}
 
 Chunk approach, optional values:
 + `'sequential'`: slice data by data index.
 + `'mod'`: slice data by mod, which make the data items of each chunk coming from all over the data, bringing better visual effect while progressive rendering.
-
 {{ /if }}
 

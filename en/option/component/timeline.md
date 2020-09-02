@@ -417,7 +417,6 @@ as follows:
 
 
 
-
 {{ target: partial-timeline-label }}
 
 #${prefix} show(boolean) = true
@@ -438,15 +437,16 @@ Rotation angle of `label`, in which positive values refer to counter clockwise r
 
 {{ if: ${state} }}
 {{ use: partial-text-style(
-    prefix=${prefix},
-    name="timeline.lable." + ${state},
-    defaultColor=${textStyleDefaultColor}
+    prefix = ${prefix},
+    name = "timeline.lable." + ${state},
+    defaultColor = ${textStyleDefaultColor}
 ) }}
+
 {{ else }}
 {{ use: partial-text-style(
-    prefix=${prefix},
-    name="timeline.lable",
-    defaultColor=${textStyleDefaultColor}
+    prefix = ${prefix},
+    name = "timeline.lable",
+    defaultColor = ${textStyleDefaultColor}
 ) }}
 {{ /if }}
 

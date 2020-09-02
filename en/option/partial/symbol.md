@@ -38,7 +38,6 @@ If rotation of symbols needs to be different, you can set with callback function
 ```
 The first parameter `value` is the value in [data](~series-${seriesType}.data), and the second parameter `params` is the rest parameters of data item.
 > Callback is supported since 4.8.0 .
-
 {{ /if }}
 
 #${prefix} symbolKeepAspect(boolean) = false

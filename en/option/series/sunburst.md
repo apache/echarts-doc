@@ -34,7 +34,6 @@ If angle of data piece is smaller than this value (in degrees), then text is not
 
 
 
-
 {{ target: partial-sunburst-label-props }}
 
 ${prefix} label(Object)
@@ -48,7 +47,6 @@ ${prefix} label(Object)
 {{ use: partial-sunburst-label-helper(
     prefix = ${prefix}
 ) }}
-
 
 
 
@@ -71,7 +69,6 @@ In ECharts, *emphasis* is for styles when mouse hovers. For Sunburst charts, the
     defaultBorderColor = "'white'",
     defaultOpacity = 1
 ) }}
-
 
 
 
@@ -112,7 +109,6 @@ Item style when mouse is hovering unrelated items. See [highlightPolicy](~series
 {{ use: partial-sunburst-itemStyle-props(
     prefix = "##" + ${prefix}
 ) }}
-
 
 
 

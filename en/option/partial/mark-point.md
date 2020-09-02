@@ -54,11 +54,13 @@ Mark point style.
 
 Data array for mark points, each of which is an object. Here are some ways to assign mark point position.
 1. Assign coordinate according to container with [x](~series-${seriesType}.markPoint.data.x), [y](~series-${seriesType}.markPoint.data.y) attribute, in which pixel values and percentage are supported.
+
 {{ if: ${hasCoord} }}
 2. Assign coordinate position with [coord](~series-${seriesType}.markPoint.data.coord) attribute, in which `'min'`, `'max'`, `'average'` are supported for each dimension.
 {{ /if }}{{ if: ${hasType} }}
 3. Use [type](~series-${seriesType}.markPoint.data.type) attribute to mark the maximum and minimum values in the series, in which [valueIndex](~series-${seriesType}.markPoint.data.valueIndex) or [valueDim](~series-${seriesType}.markPoint.data.valueDim) can be used to assign the dimension.
 {{ /if }}
+
 When multiple attributes exist, priority is as the above order.
 
 **For example: **
@@ -76,6 +78,7 @@ data: [{{ if: ${hasType} }}
         yAxis: 10,
         x: '90%'
     }, {{ /if }}
+
     {
         name: 'screen coordinate',
         x: 100,
@@ -87,8 +90,8 @@ data: [{{ if: ${hasType} }}
 ###${prefix} name(string) = ''
 
 Mark point name.
-{{ if: ${hasType} }}
 
+{{ if: ${hasType} }}
 ###${prefix} type(string)
 
 Special label types, are used to label maximum value, minimum value and so on.
@@ -98,8 +101,8 @@ Special label types, are used to label maximum value, minimum value and so on.
 + `'max'` minimum value.
 + `'average'` average value.
 {{ /if }}
-{{ if: ${hasCoord} }}
 
+{{ if: ${hasCoord} }}
 ###${prefix} valueIndex(number)
 
 Available when using [type](~series-${seriesType}.markPoint.data.type) it is used to assign maximum value and minimum value in dimensions, it could be `0` (xAxis, radiusAxis), `1` (yAxis, angleAxis), and use the first value axis dimension by default.
@@ -112,8 +115,7 @@ Works only when [type](~series-${seriesType}.markPoint.data.type) is assigned. I
 
 Coordinates of the starting point or ending point, whose format depends on the coordinate of the series. It can be `x`, and `y` for [rectangular coordinates](~grid), or `radius`, and `angle` for [polar coordinates](~polar).
 
-{{ use: marker-coord-explain }}
-
+{{ use: marker-coord-explain() }}
 {{ /if }}
 
 ###${prefix} x(number)

@@ -81,7 +81,6 @@ The value of a data item.
 
 
 
-
 {{ target: partial-parallel-line-style }}
 
 #${prefix} lineStyle(Object)

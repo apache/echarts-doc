@@ -46,7 +46,6 @@ Padding of text area.
 
 
 
-
 {{ target: feature-common }}
 
 #### show(boolean) = true
@@ -63,7 +62,6 @@ Whether to show the tool.
     name = ${title},
     prefix = "###"
 ) }}
-
 
 
 

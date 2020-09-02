@@ -200,7 +200,6 @@ The style setting of the text label in a single bar.
 
 
 
-
 {{ target: pictorialBar-symbol-attrs }}
 
 #${prefix} symbol(string) = 'circle'
@@ -430,11 +429,9 @@ For example:
 ) }}
 
 {{ if: ${useZ2} }}
-
 #${prefix} z(number)
 
 Specify the relationship of overlap between graphic elements. A bigger value means higher.
-
 {{ /if }}
 
 #${prefix} hoverAnimation(boolean) = false
@@ -453,7 +450,6 @@ Whether to enable hover animation.
 {{ use: pictorialBar-animation-delay(
     prefix = "##"
 ) }}
-
 
 
 
@@ -494,7 +490,6 @@ animationDelay: function (dataIndex, params) {
 
 For example:
 ~[800x400](${galleryViewPath}doc-example/pictorialBar-repeatDirection&reset=1&edit=1)
-
 
 
 

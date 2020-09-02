@@ -59,6 +59,7 @@ Mark line style.
 Data array of marking line. Every array item can be an array of one or two values, representing starting and ending point of the line, and every item is an object. Here are several ways to assign the positions of starting and ending point.
 
 1. Assign coordinate according to container with [x](~series-${seriesType}.markLine.data.0.x), [y](~series-${seriesType}.markLine.data.0.y) attribute, in which pixel values and percentage are supported.
+
 {{ if: ${hasCoord} }}
 2. Assign coordinate position with [coord](~series-${seriesType}.markLine.data.0.coord) attribute, in which `'min'`, `'max'`, `'average'` are supported for each dimension.
 {{ /if }}{{ if: ${hasType} }}
@@ -66,14 +67,17 @@ Data array of marking line. Every array item can be an array of one or two value
 
 4. You may also create a mark line in Cartesian coordinate at a specific position in X or Y axis by assigning `xAxis` or `yAxis`. See [scatter-weight](${galleryEditorPath}scatter-weight) for example.
 {{ /if }}
+
 When multiple attributes exist, priority is as the above order.
 
 {{ if: ${hasType} }}
 You may also set the type of mark line through `type`, stating whether it is for the maximum value or average value. Likewise, dimensions can be assigned through `valueIndex`.
 {{ /if }}
+
 ```
 data: [
-    {{ if: ${hasType} }}{
+
+{{ if: ${hasType} }}{
         name: 'average line',
         // 'average', 'min', and 'max' are supported
         type: 'average'
@@ -92,7 +96,7 @@ data: [
             type: 'max'
         }
     ],
-    {{ /if }}{{ if: ${hasCoord} }}[
+{{ /if }}{{ if: ${hasCoord} }}[
         {
             name: 'Markline between two points',
             coord: [10, 20]
@@ -107,7 +111,9 @@ data: [
     }, {
         type: 'max'
     }],
-    {{ /if }}[
+{{ /if }}
+
+[
         {
             name: 'Mark line between two points',
             x: 100,
@@ -153,7 +159,6 @@ Data of the ending point.
 
 
 
-
 {{ target: mark-line-label }}
 
 #${prefix} show(boolean) = ${defaultShowLabel|default(true)}
@@ -185,11 +190,9 @@ The distance between labels and mark lines. If it's an array, then the first ele
 
 
 
-
 {{ target: mark-line-data-item-item }}
 
 {{ if: ${hasType} }}
-
 #${prefix} type(string)
 
 Special label types, are used to label maximum value, minimum value and so on.
@@ -200,8 +203,8 @@ Special label types, are used to label maximum value, minimum value and so on.
 + `'average'` average value.
 + `'median'` median value.
 {{ /if }}
-{{ if: ${hasCoord} }}
 
+{{ if: ${hasCoord} }}
 #${prefix} valueIndex(number)
 
 Works only when [type](~series-${seriesType}.markLine.data.type) is assigned. It is used to state the dimension used to calculate maximum value or minimum value. It may be `0` (for xAxis, or radiusAxis), or `1` (for yAxis, or angleAxis). Dimension of the first numeric axis is used by default.
@@ -214,8 +217,7 @@ Works only when [type](~series-${seriesType}.markLine.data.type) is assigned. It
 
 Coordinates of the starting point or ending point, whose format depends on the coordinate of the series. It can be `x`, and `y` for [rectangular coordinates](~grid), or `radius`, and `angle` for [polar coordinates](~polar).
 
-{{ use: marker-coord-explain }}
-
+{{ use: marker-coord-explain() }}
 {{ /if }}
 
 #${prefix} name(string) = '${name}'

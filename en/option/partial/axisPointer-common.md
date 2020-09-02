@@ -75,7 +75,6 @@ In value axis and time axis, if [snap](~xAxis.axisPointer.snap) is set as true, 
 
 
 
-
 {{ target: partial-axisPointer-common }}
 
 #${prefix} show(boolean) = false
@@ -147,7 +146,6 @@ Throttle rate of trigger view update when dragging handle, in ms. Increase the v
     defaultShadowColor = '#aaa',
     defaultShadowOffsetX = 2
 ) }}
-
 
 
 
@@ -263,7 +261,6 @@ It is valid when [axisPointer.type](~tooltip.axisPointer.type) is `'shadow'`.
     prefix = "#" + ${prefix},
     defaultColor = "'rgba(150,150,150,0.3)"
 ) }}
-
 
 
 

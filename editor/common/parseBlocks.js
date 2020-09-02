@@ -2,7 +2,7 @@ const etpl = require('../../dep/etpl');
 const fs = require('fs');
 const globby = require('globby');
 const path = require('path');
-const {updateBlocksLevels, parseHeader, parseArgs, updateBlocksKeys} = require('./blockHelper');
+const {updateBlocksLevels, parseHeader, parseArgs, updateBlocksKeys, etplCommandCompositors, formatExpr} = require('./blockHelper');
 
 const IfCommand = etpl.commandTypes.if;
 const UseCommand = etpl.commandTypes.use;
@@ -13,7 +13,17 @@ const ImportCommand = etpl.commandTypes.import;
 const TextNode = etpl.TextNode;
 const MAX_DEPTH = 10;
 
-function parseMarkDown(mdStr) {
+function hasNewlineEnd(value) {
+    const endSpaces = /\s+$/.exec(value);
+    return endSpaces && endSpaces[0].indexOf('\n') >= 0;
+}
+
+function hasNewlineBefore(value) {
+    const startSpaces = /^\s+/.exec(value);
+    return startSpaces && startSpaces[0].indexOf('\n') >= 0;
+}
+
+function parseMarkDown(mdStr, isInline) {
     const headers = [];
     const blocks = [];
     mdStr.replace(
@@ -25,6 +35,17 @@ function parseMarkDown(mdStr) {
             });
         }
     );
+
+    function removeNewline(mdStr) {
+        // Keep leading and trailing space and remove newline. Newline will be added when compositing.
+        return mdStr.replace(/^\s+/, function (val) {
+            const idx =  val.lastIndexOf('\n');
+            return idx >= 0 ? val.substr(idx + 1) : val;
+        }).replace(/\s+$/, function (val) {
+            const idx =  val.indexOf('\n');
+            return idx >= 0 ? val.substr(0, idx) : val;
+        });
+    }
 
     if (headers.length) {
         mdStr.split(new RegExp('(?:^|\n) *(?:#{1,' + MAX_DEPTH + '}) *(?:[^#][^\n]+)', 'g'))
@@ -42,21 +63,24 @@ function parseMarkDown(mdStr) {
                         propertyName,
                         propertyDefault,
                         propertyType,
-                        prefixCode
+                        prefixCode,
+                        inline: false
                     });
                 }
-                const text = section.trim();
+                const text = removeNewline(section);
                 text && blocks.push({
                     type: 'content',
-                    value: text
+                    value: text,
+                    inline: false
                 });
             });
     }
     else {
-        const text = mdStr.trim();
+        const text = removeNewline(mdStr);
         text && blocks.push({
             type: 'content',
-            value: text
+            value: text,
+            inline: !hasNewlineBefore(mdStr)
         });
     }
     return blocks;
@@ -64,55 +88,55 @@ function parseMarkDown(mdStr) {
 
 function compositeIfCommand(command) {
     if (command instanceof ElseCommand && command.children[0] instanceof ElifCommand) {
-    // There is always an ElseCommand inserted between IfCommand and ElifCommand
-        if (command.children[0] instanceof ElifCommand) {
-            return compositeIfCommand(command.children[0]);
-        }
+        // There is always an ElseCommand inserted between IfCommand and ElifCommand
+        return compositeIfCommand(command.children[0]);
     }
 
-    let text = '';
+    let texts = [];
+    let isIf = false;
     if (command instanceof ElifCommand) {
-        text += `{{ elif:${command.value} }}`;
+        texts.push(etplCommandCompositors.elif(command.value));
     }
     else if (command instanceof ElseCommand) {
-        text += '{{ else }}';
+        texts.push(etplCommandCompositors.else());
     }
     // ElifCommand and ElseCommand also is subclass of IfCommand
     else if (command instanceof IfCommand) {
-        text += `{{ if: ${command.value.trim()} }}`;
+        isIf = true;
+        texts.push(etplCommandCompositors.if(command.value));
     }
 
     for (const subCmd of command.children) {
         // ElifCommand and ElseCommand also is subclass of IfCommand
         if (subCmd instanceof IfCommand) {
-            text += compositeIfCommand(subCmd);
+            texts.push(compositeIfCommand(subCmd));
         }
         else {
-            text += compositeCommand(subCmd);
+            texts.push(compositeCommand(subCmd));
         }
     }
 
-    if ((command instanceof IfCommand)
-        && !((command instanceof ElifCommand) || (command instanceof ElseCommand))) {
-        text += '{{ /if }}';
+    if (isIf) {
+        texts.push(etplCommandCompositors.endif());
     }
-    return text;
+    return texts('');
 }
 
 function compositeForCommand(command) {
-    let text = `{{ for: ${command.value} }}`;
+    let texts = [etplCommandCompositors.for(command.value)];
     for (const subCmd of command.children) {
-        text += compositeCommand(subCmd);
+        texts.push(compositeCommand(subCmd));
     }
-    text += `{{ /for }}`;
-    return text;
+    texts.push(etplCommandCompositors.endfor());
+    return texts.join('');
 }
 
 function compositeCommand(command) {
     if (command instanceof UseCommand) {
-        return `{{ use: ${command.value} }}`;
+        return etplCommandCompositors.use(command.name.trim(), parseArgs(command.args));
     }
     else if (command instanceof TextNode) {
+        // Not trim here. keep newline.
         return command.value;
     }
     else if (command instanceof IfCommand) {
@@ -127,7 +151,7 @@ function compositeCommand(command) {
 }
 
 
-function parseSingleFileBlocks(fileName, root, blocksStore) {
+function parseSingleFileBlocks(fileName, root, detailed, blocksStore) {
     const engine = new etpl.Engine({
         commandOpen: '{{',
         commandClose: '}}',
@@ -158,44 +182,123 @@ function parseSingleFileBlocks(fileName, root, blocksStore) {
             }
         }
 
-        for (const command of targetObj.children) {
-            if (command instanceof UseCommand) {
-                closeTextBlock();
-                outBlocks.push({
-                    type: 'use',
-                    target: command.name,
-                    args: parseArgs(command.args)
-                });
+        /**
+         * If command is inline. For example
+         * xxxxx {{ if }} xxxx {{ /if}}
+         */
+        function isInlineCommand() {
+            if (!previousCommand) {
+                return false;
             }
-            else if (command instanceof ImportCommand) {
-                closeTextBlock();
-                outBlocks.push({
-                    type: 'use',
-                    target: command.name,
-                    args: []
-                });
-            }
-            else if (command instanceof TextNode) {
-                textBlockText += command.value;
-            }
-            // TODO support if and for block
 
-            else if ((command instanceof IfCommand) || (command instanceof ForCommand)) {
-                textBlockText += compositeCommand(command);
+            if (previousCommand instanceof TextNode) {
+                // Prev command has newline at the end.
+                return !hasNewlineEnd(previousCommand.value);
             }
             else {
-                throw new Error(`Unkown block ${command.toString()}`);
+                // has no space between the prev command.
+                // {{for:}}{{if:}}xxx{{/if}}{{/for}}
+                return true;
             }
         }
+
+        class CloseIfCommand {};
+        class CloseForCommnand {};
+
+        let previousCommand;
+
+        function addBlocks(parentCommand) {
+            for (const command of parentCommand.children) {
+                if (command instanceof UseCommand) {
+                    closeTextBlock();
+                    outBlocks.push({
+                        type: 'use',
+                        target: command.name.trim(),
+                        args: parseArgs(command.args),
+                        // use command can't be used inline
+                        inline: false
+                    });
+                    previousCommand = command;
+                }
+                else if (command instanceof ImportCommand) {
+                    closeTextBlock();
+                    outBlocks.push({
+                        type: 'use',
+                        target: command.name.trim(),
+                        args: [],
+                        // use command can't be used inline
+                        inline: false
+                    });
+                    previousCommand = command;
+                }
+                else if (command instanceof TextNode) {
+                    if (detailed) {
+                        textBlockText = command.value;
+                        closeTextBlock();
+                    }
+                    else {
+                        textBlockText += command.value;
+                    }
+                    previousCommand = command;
+                }
+                else if (command instanceof IfCommand) {
+                    if (detailed) {
+                        if ((command instanceof ElseCommand) && (command.children[0] instanceof ElifCommand)) {
+                            // There is always an ElseCommand inserted between IfCommand and ElifCommand
+                            return addBlocks(command);
+                        }
+
+                        const type = command instanceof ElseCommand
+                            ? 'else' : command instanceof ElifCommand ? 'elif' : 'if';
+
+                        outBlocks.push({
+                            type,
+                            inline: isInlineCommand(),
+                            expr: command.value && formatExpr(command.value)
+                        });
+                        previousCommand = command;
+                        addBlocks(command);
+                        if (type === 'if') {
+                            outBlocks.push({
+                                type: 'endif',
+                                inline: isInlineCommand()
+                            });
+                            previousCommand = new CloseIfCommand();
+                        }
+                    }
+                    else {
+                        // Display if, for in the text block.
+                        textBlockText += compositeCommand(command);
+                    }
+                }
+                else if (command instanceof ForCommand) {
+                    if (detailed) {
+                        outBlocks.push({
+                            type: 'for',
+                            inline: isInlineCommand(),
+                            expr: formatExpr(command.value)
+                        });
+                        previousCommand = command;
+                        addBlocks(command);
+                        previousCommand = new CloseForCommnand();
+                        outBlocks.push({
+                            type: 'endfor',
+                            inline: isInlineCommand()
+                        });
+                    }
+                    else {
+                        textBlockText += compositeCommand(command);
+                    }
+                }
+                else {
+                    throw new Error(`Unkown block ${command.toString()}`);
+                }
+            }
+        }
+
+        addBlocks(targetObj);
 
         closeTextBlock();
-
-        let contentBlockCount = 0;
-        for (let i = 0; i < outBlocks.length; i++) {
-            if (outBlocks[i].type === 'content') {
-                outBlocks[i].key = ['content', contentBlockCount++].join(':');
-            }
-        }
 
         const {topLevel, topLevelHasPrefix} = updateBlocksLevels(outBlocks);
         updateBlocksKeys(outBlocks);
@@ -214,7 +317,14 @@ function parseSingleFileBlocks(fileName, root, blocksStore) {
     return targets;
 }
 
-module.exports.parseBlocks = async function parseBlocks(root) {
+/**
+ * @param {string} root Root folder path of option
+ * @param {boolean} detailed If include all types of blocks.
+ *      For example if, for command of etpl.
+ *      By default this will be composed into content.
+ *      But in diff mode we need everything to be block so it can be more accurate
+ */
+module.exports.parseBlocks = async function parseBlocks(root, detailed) {
     const blocksStore = {};
     const targetsMap = {};
 
@@ -226,7 +336,7 @@ module.exports.parseBlocks = async function parseBlocks(root) {
     // const files = await globby([root + '/partial/item-style.md']);
 
     for (const fileName of files) {
-        const targets = parseSingleFileBlocks(fileName, root, blocksStore);
+        const targets = parseSingleFileBlocks(fileName, root, detailed, blocksStore);
 
         for (let target of targets) {
             targetsMap[target.name] = target;

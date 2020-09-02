@@ -51,7 +51,6 @@
 
 
 
-
 {{ target: partial-style-opacity }}
 
 #${prefix} opacity(number) = ${defaultOpacity|default(1)}
@@ -59,7 +58,6 @@
 <ExampleUIControlNumber default="${defaultOpacity|default(1)}" min="0" max="1" step="0.01" />
 
 图形透明度。支持从 0 到 1 的数字，为 0 时不绘制该图形。
-
 
 
 

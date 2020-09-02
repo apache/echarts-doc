@@ -14,7 +14,6 @@
 
 
 
-
 {{ target: partial-text-style }}
 
 {{ use: partial-text-style-base-item(
@@ -31,7 +30,6 @@
 ) }}
 
 {{ if: !${noRich} }}
-
 #${prefix} rich(Object)
 
 "Rich text styles" can be defined in this `rich` property. For example:
@@ -75,12 +73,10 @@ For more details, see [Rich Text](tutorial.html#Rich%20Text) please.
 ##${prefix} <style_name>(Object)
 
 {{ use: partial-text-style-base-item(
-    prefix=${prefix} + '##',
-    enableAutoColor=${enableAutoColor}
+    prefix = ${prefix} + '##',
+    enableAutoColor = ${enableAutoColor}
 ) }}
-
 {{ /if }}
-
 
 
 
@@ -90,9 +86,8 @@ For more details, see [Rich Text](tutorial.html#Rich%20Text) please.
 
 ${name} text color.
 
-
 {{ if: ${enableAutoColor} }}
-{{ use: partial-text-style-auto-color-desc }}
+{{ use: partial-text-style-auto-color-desc() }}
 {{ /if }}
 
 #${prefix} fontStyle(string) = 'normal'
@@ -125,9 +120,7 @@ Can also be 'serif' , 'monospace', ...
 
 ${name} font size.
 
-
 {{ if: !${noAlign} }}
-
 #${prefix} align(string) = ${defaultAlign}
 
 Horizontal alignment of text, automatic by default.
@@ -138,14 +131,12 @@ Options are:
 + `'right'`
 
 {{ use: partial-text-style-rich-inherit(
-    name='align',
-    value='right'
+    name = 'align',
+    value = 'right'
 ) }}
-
 {{ /if }}
 
 {{ if: !${noVerticalAlign} }}
-
 #${prefix} verticalAlign(string) = ${defaultVerticalAlign}
 
 Vertical alignment of text, automatic by default.
@@ -156,10 +147,9 @@ Options are:
 + `'bottom'`
 
 {{ use: partial-text-style-rich-inherit(
-    name='verticalAlign',
-    value='bottom'
+    name = 'verticalAlign',
+    value = 'bottom'
 ) }}
-
 {{ /if }}
 
 #${prefix} lineHeight(number)
@@ -172,7 +162,6 @@ Line height of the text fragment.
 ) }}
 
 {{ if: !${noBox} }}
-
 #${prefix} backgroundColor(string|Object) = 'transparent'
 
 Background color of the text fragment.
@@ -195,7 +184,7 @@ backgroundColor: {
 auto adapted by default.
 
 {{ if: ${enableAutoColor} }}
-{{ use: partial-text-style-auto-color-desc }}
+{{ use: partial-text-style-auto-color-desc() }}
 {{ /if }}
 
 #${prefix} borderColor(Color) = 'transparent'
@@ -203,7 +192,7 @@ auto adapted by default.
 Border color of the text fragment.
 
 {{ if: ${enableAutoColor} }}
-{{ use: partial-text-style-auto-color-desc }}
+{{ use: partial-text-style-auto-color-desc() }}
 {{ /if }}
 
 #${prefix} borderWidth(number) = 0
@@ -239,7 +228,6 @@ Shadow X offset of the text block.
 #${prefix} shadowOffsetY(number) = 0
 
 Shadow Y offset of the text block.
-
 {{ /if }}
 
 #${prefix} width(number|string)
@@ -266,7 +254,7 @@ Notice, `width` and `height` only work when `rich` specified.
 Storke color of the text.
 
 {{ if: ${enableAutoColor} }}
-{{ use: partial-text-style-auto-color-desc }}
+{{ use: partial-text-style-auto-color-desc() }}
 {{ /if }}
 
 #${prefix} textBorderWidth(number) = 0
@@ -291,11 +279,9 @@ Shadow Y offset of the text itself.
 
 
 
-
 {{ target: partial-text-style-auto-color-desc }}
 
 If set as `'auto'`, the color will assigned as visual color, such as series color.
-
 
 
 

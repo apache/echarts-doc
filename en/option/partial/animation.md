@@ -32,7 +32,6 @@ animationDurationUpdate: function (idx) {
 Easing method used for animation.
 
 {{ if: !${noAnimationDelay} }}
-
 #${prefix} animationDelayUpdate(number|Function) = 0
 
 Delay before updating animation, which supports callback function for different data to have different animation effects.
@@ -47,7 +46,6 @@ animationDelayUpdate: function (idx) {
 
 See [this example](${galleryEditorPath}bar-animation-delay) for more information.
 {{ /if }}
-
 
 
 
@@ -68,9 +66,7 @@ animationDuration: function (idx) {
 
 Easing method used for the first animation. Varied easing effects can be found at [easing effect example](${galleryEditorPath}line-easing).
 
-
 {{ if: !${noAnimationDelay} }}
-
 #${prefix} animationDelay(number|Function) = 0
 
 Delay before updating the first animation, which supports callback function for different data to have different animation effect.

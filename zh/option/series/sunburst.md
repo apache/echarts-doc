@@ -40,7 +40,6 @@
 
 
 
-
 {{ target: partial-sunburst-label-props }}
 
 ${prefix} label(Object)
@@ -54,7 +53,6 @@ ${prefix} label(Object)
 {{ use: partial-sunburst-label-helper(
     prefix = ${prefix}
 ) }}
-
 
 
 
@@ -77,7 +75,6 @@ ECharts 中，通常使用 *emphasis* 表示鼠标移动到图形上后的高亮
     defaultBorderColor = "'white'",
     defaultOpacity = 1
 ) }}
-
 
 
 
@@ -118,7 +115,6 @@ ECharts 中，通常使用 *emphasis* 表示鼠标移动到图形上后的高亮
 {{ use: partial-sunburst-itemStyle-props(
     prefix = "##" + ${prefix}
 ) }}
-
 
 
 

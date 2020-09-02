@@ -5,7 +5,6 @@ See the tutorial of [datat transform](tutorial.html#Data%20Transform).
 
 
 
-
 {{ target: partial-data-transform-print }}
 
 ### print(boolean) = false

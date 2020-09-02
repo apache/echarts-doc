@@ -544,7 +544,6 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 
 
-
 {{ target: partial-treemap-level-props }}
 
 #${prefix} visualDimension(number) = 0
@@ -576,14 +575,15 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 手动指定 `visualMin`、`visualMax` ，即手动控制了 visual mapping 的值域（当 [colorMappingBy](~series-treemap.levels.colorMappingBy) 为 `'value'` 时有意义）。
 
 {{ if: ${prefix} !== '#' }}
-
 #${prefix} color(Array)
 
 表示同一层级的节点的 颜色 选取列表（选择规则见 [colorMappingBy](~series-treemap.colorMappingBy)）。默认为空时，选取系统color列表。
 
-{{ use: partial-treemap-visual-detial }}
-{{ use: partial-treemap-prop-location-desc(name="color") }}
+{{ use: partial-treemap-visual-detial() }}
 
+{{ use: partial-treemap-prop-location-desc(
+    name = "color"
+) }}
 {{ /if }}
 
 #${prefix} colorAlpha(Array) = null
@@ -754,22 +754,21 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 
 
-
 {{ target: partial-treemap-prop-location-desc }}
 
 <br>
 > 注：treemap中 `${name}` 属性可能在多处地方存在：
+
 {{ if: ${name} !== 'color' }}> * 于 [sereis-treemap](~series-treemap) 根下，表示本系列全局的统一设置。{{ /if }}
+
 > * 于 [series-treemap.levels](~series-treemap.levels) 的每个数组元素中，表示树每个层级的统一设置。
 > * 于 [series-treemap.data](~series-treemap.data) 的每个节点中，表示每个节点的特定设置。
-
 
 
 
 {{ target: partial-treemap-visual-detial }}
 
 关于视觉设置，详见 [series-treemap.levels](~series-treemap.levels)。
-
 
 
 
@@ -782,7 +781,6 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 矩形的颜色。默认从全局调色盘 [option.color](~color) 获取颜色。
 
 {{ if: ${itemStyleType} === 'normal' }}
-
 #${prefix} colorAlpha(number) = null
 
 <ExampleUIControlNumber step="0.01" min="0" max="1" default="1" />
@@ -826,14 +824,13 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 如果设置此属性，则 `borderColor` 的设置无效，而是：取当前节点计算出的颜色（比如从父节点遗传而来），在此颜色值上设置 `borderColorSaturation` 得到最终颜色。这种方式，能够做出『不同区块有不同色调的矩形间隔线』的效果，能够便于区分层级。
 
 <br>
-{{ use: partial-treemap-borderColor-setting(galleryEditorPath=${galleryEditorPath}) }}
+
+{{ use: partial-treemap-borderColor-setting() }}
 
 {{ use: partial-style-shadow-opacity(
-    prefix=${prefix}
+    prefix = ${prefix}
 ) }}
-
 {{ /if }}
-
 
 
 

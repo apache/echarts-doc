@@ -301,13 +301,11 @@ Animation type when data updates.
 
 
 
-
 {{ target: partial-pie-label }}
 
 #${prefix} show(boolean) = false
 
 {{ if: ${position} }}
-
 #${prefix} position(string) = 'outside'
 
 The position of label.
@@ -325,18 +323,19 @@ The position of label.
 + `'center'`
 
     In the center of pie chart. See [pie-doughnut example](${galleryEditorPath}pie-doughnut)
-
 {{ /if }}
-{{ if: ${formatter} }}
 
+{{ if: ${formatter} }}
 #${prefix} formatter(string|Function)
 
-{{ use: partial-1d-data-label-formatter(extra = {
+{{ use: partial-1d-data-label-formatter(
+    extra = {
     percent: {
         desc: 'percentage',
         type: 'number'
     }
-}) }}
+}
+) }}
 {{ /if }}
 
 #${prefix} rotate(boolean|number) = null
@@ -352,7 +351,6 @@ Label rotation.
 
 
 
-
 {{ target: partial-pie-label-line }}
 
 The style of visual guide line.
@@ -360,20 +358,20 @@ The style of visual guide line.
 #${prefix} show(boolean)
 
 Whether to show the visual guide ine.
-{{ if: ${length} }}
 
+{{ if: ${length} }}
 #${prefix} length(number)
 
 The length of the first segment of visual guide line.
 {{ /if }}
-{{ if: ${length2} }}
 
+{{ if: ${length2} }}
 #${prefix} length2(number)
 
 The length of the second segment of visual guide line.
 {{ /if }}
-{{ if: ${smooth} }}
 
+{{ if: ${smooth} }}
 #${prefix} smooth(boolean|number) = false
 
 Whether to smooth the visual guide line. It defaults to be `false` and can be set as `true` or the values from 0 to 1 which indicating the smoothness.

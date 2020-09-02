@@ -1,7 +1,7 @@
 
 {{ target: partial-area-style }}
 
-#${prefix} color(Color) = {{ if: !${useColorPalatte} }} ${defaultColor|default('"#000"')} {{ else }}'自适应'{{ /if }}
+#${prefix} color(Color) ={{ if: !${useColorPalatte} }} ${defaultColor|default('"#000"')} {{ else }}'自适应'{{ /if }}
 
 <ExampleUIControlColor />
 
@@ -18,7 +18,6 @@
 {{ /if }}
 
 {{ if: ${hasOrigin} }}
-
 #${prefix|default('##')} origin(string) = 'auto'
 
 图形区域的起始位置。

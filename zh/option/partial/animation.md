@@ -40,7 +40,6 @@ animationDurationUpdate: function (idx) {
 数据更新动画的缓动效果。
 
 {{ if: !${noAnimationDelay} }}
-
 #${prefix} animationDelayUpdate(number|Function) = 0
 
 数据更新动画的延迟，支持回调函数，可以通过每个数据返回不同的 delay 时间实现更戏剧的更新动画效果。
@@ -55,7 +54,6 @@ animationDelayUpdate: function (idx) {
 
 也可以看[该示例](${galleryEditorPath}bar-animation-delay)
 {{ /if }}
-
 
 
 
@@ -81,7 +79,6 @@ animationDuration: function (idx) {
 初始动画的缓动效果。不同的缓动效果可以参考 [缓动示例](${galleryEditorPath}line-easing)。
 
 {{ if: !${noAnimationDelay} }}
-
 #${prefix} animationDelay(number|Function) = 0
 
 初始动画的延迟，支持回调函数，可以通过每个数据返回不同的 delay 时间实现更戏剧的初始动画效果。

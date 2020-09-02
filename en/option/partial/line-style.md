@@ -1,7 +1,7 @@
 
 {{ target: partial-line-style }}
 
-#${prefix} color(Color) = {{ if: !${useColorPalatte} }} ${defaultColor|default('"#000"')} {{ else }}'self-adaptive'{{ /if }}
+#${prefix} color(Color) ={{ if: !${useColorPalatte} }} ${defaultColor|default('"#000"')} {{ else }}'self-adaptive'{{ /if }}
 
 ${name}Line color. {{ if: ${useColorPalatte} }} Color is taken from [option.color Palette](~color) by default. {{ /if }}
 
@@ -36,7 +36,6 @@ Options are:
 ) }}
 
 {{ if: ${hasCurveness} }}
-
 #${prefix} curveness(number) = 0
 
 Edge curvature, which supports value from 0 to 1. The larger the value, the greater the curvature.

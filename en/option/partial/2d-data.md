@@ -32,7 +32,6 @@ where `params` is the single dataset needed by formatter, which is formed as:
 
 
 
-
 {{ target: partial-seriesLayoutBy }}
 
 ## seriesLayoutBy(string) = 'column'
@@ -46,13 +45,11 @@ Check this [example](${galleryEditorPath}dataset-series-layout-by).
 
 
 
-
 {{ target: partial-datasetIndex }}
 
 ## datasetIndex(number) = 0
 
 If [series.data](~series.data) is not specified, and [dataset](~dataset) exists, the series will use `dataset`. `datasetIndex` specifies which dataset will be used.
-
 
 
 

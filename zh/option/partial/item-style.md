@@ -5,7 +5,6 @@ ${name} 图形样式。
 
 
 
-
 {{ target: partial-item-style }}
 
 #${prefix} color(Color{{ if: ${hasCallback} }}|Function{{ /if }})(*) = ${defaultColor|default('自适应')}

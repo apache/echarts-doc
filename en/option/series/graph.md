@@ -473,7 +473,6 @@ Alias of [links](~series-graph.links)
 
 
 
-
 {{ target: graph-edge-label }}
 
 #${prefix} show(boolean) = ${defaultShowLabel|default(false)}

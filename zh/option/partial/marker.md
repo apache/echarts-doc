@@ -25,7 +25,6 @@
 
 
 
-
 {{ target: marker-coord-explain }}
 
 **注：**对于 [axis.type](~xAixs.type) 为 `'category'` 类型的轴

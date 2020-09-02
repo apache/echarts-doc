@@ -58,6 +58,7 @@
 
 标注的数据数组。每个数组项是一个对象，有下面几种方式指定标注的位置。
 1. 通过 [x](~series-${seriesType}.markPoint.data.x), [y](~series-${seriesType}.markPoint.data.y) 属性指定相对容器的屏幕坐标，单位像素，支持百分比。
+
 {{ if: ${hasCoord} }}
 2. 用 [coord](~series-${seriesType}.markPoint.data.coord) 属性指定数据在相应坐标系上的坐标位置，单个维度支持设置 `'min'`, `'max'`, `'average'`。
 {{ /if }}{{ if: ${hasType} }}
@@ -81,6 +82,7 @@ data: [{{ if: ${hasType} }}
         yAxis: 10,
         x: '90%'
     }, {{ /if }}
+
     {
         name: '某个屏幕坐标',
         x: 100,
@@ -92,8 +94,8 @@ data: [{{ if: ${hasType} }}
 ###${prefix} name(string) = ''
 
 标注名称。
-{{ if: ${hasType} }}
 
+{{ if: ${hasType} }}
 ###${prefix} type(string)
 
 <ExampleUIControlEnum options="min,max,average" />
@@ -105,8 +107,8 @@ data: [{{ if: ${hasType} }}
 + `'max'` 最大值。
 + `'average'` 平均值。
 {{ /if }}
-{{ if: ${hasCoord} }}
 
+{{ if: ${hasCoord} }}
 ###${prefix} valueIndex(number)
 
 <ExampleUIControlNumber min="0" max="1" step="1"  />
@@ -121,8 +123,7 @@ data: [{{ if: ${hasType} }}
 
 标注的坐标。坐标格式视系列的坐标系而定，可以是[直角坐标系](~grid)上的 `x`, `y`，也可以是[极坐标系](~polar)上的 `radius`, `angle`。例如 [121, 2323]、['aa', 998]。
 
-{{ use: marker-coord-explain }}
-
+{{ use: marker-coord-explain() }}
 {{ /if }}
 
 ###${prefix} x(number)

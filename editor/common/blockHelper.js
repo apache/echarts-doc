@@ -16,7 +16,10 @@ module.exports.parseArgs = function (argsStr) {
     const argsArr = [];
     let itemStr = '';
     let inStr = false;
+    let inVariable = false;
+    let inObjectLevel = 0;
     let startQuot = '';
+    let prevCh;
     for (let i = 0; i < argsStr.length; i++) {
         const ch = argsStr[i];
         if (ch === '"' || ch === '\'') {
@@ -31,13 +34,36 @@ module.exports.parseArgs = function (argsStr) {
             }
             itemStr += ch;
         }
-        else if (ch === ',' && !inStr) {
+        else if (inStr) {
+            itemStr += ch;
+        }
+        else if (ch === '{') {
+            itemStr += ch;
+            if (prevCh === '$') {
+                inVariable = true;
+            }
+            else {
+                // Value may be an object.
+                inObjectLevel++;
+            }
+        }
+        else if (ch === '}') {
+            itemStr += ch;
+            if (inVariable) {
+                inVariable = false;
+            }
+            else {
+                inObjectLevel--;
+            }
+        }
+        else if (ch === ',' && inObjectLevel === 0) {
             argsArr.push(parseArgKv(itemStr));
             itemStr = '';
         }
         else {
             itemStr += ch;
         }
+        prevCh = ch;
     }
     if (itemStr.trim()) {
         argsArr.push(parseArgKv(itemStr));
@@ -106,6 +132,12 @@ module.exports.updateBlocksLevels = function (blocks, targetsMap) {
             break;
         // Content and use command following header has same level.
         case 'content':
+        case 'if':
+        case 'elif':
+        case 'else':
+        case 'endif':
+        case 'for':
+        case 'endfor':
             // Indent description content by default
             block.level = currentLevel + 1;
             break;
@@ -154,6 +186,7 @@ module.exports.updateBlocksKeys = function (blocks) {
 
     for (const block of blocks) {
         let baseKey = '';
+        const scopeKey = stacks.join('.');
         switch (block.type) {
         case 'header':
             for (let i = block.level; i <= currentLevel; i++) {
@@ -162,12 +195,12 @@ module.exports.updateBlocksKeys = function (blocks) {
             if (block.level >= currentLevel) {
                 stacks.push(block.propertyName);
             }
-            baseKey = 'header:' + stacks.join('.');
+            baseKey = `header:${scopeKey}`;
             currentLevel = block.level;
             break;
             // Content and use command following header has same level.
         case 'content':
-            baseKey = 'content:' + stacks.join('.');
+            baseKey = `content:${scopeKey}`;
             contentKeyCountMap[baseKey] = contentKeyCountMap[baseKey] || 0;
             if (contentKeyCountMap[baseKey]) {
                 baseKey += '-' + contentKeyCountMap[baseKey];
@@ -176,7 +209,18 @@ module.exports.updateBlocksKeys = function (blocks) {
             break;
         case 'use':
         case 'import':
-            baseKey = 'use:' + stacks.join('.') + ':' + block.target;
+            baseKey = `use:${scopeKey}:${block.target}`;
+            break;
+        case 'if':
+        case 'elif':
+        case 'else':
+        case 'endif':
+        case 'for':
+        case 'endfor':
+            baseKey = `${block.type}:${scopeKey}`;
+            if (block.expr) {
+                baseKey = `${baseKey}:${block.expr}`
+            }
             break;
         }
         let keyNoDuplicate = baseKey;
@@ -193,38 +237,103 @@ module.exports.buildBlockHierarchy = function (blocks) {
 
 };
 
-module.exports.blockCompositors = {
-    header(block) {
-        /* eslint-disable-next-line */
-        const prefix = '#'.repeat(block.level) + (block.prefixCode.trim() ? block.prefixCode.trim() : '');
-        let ret = `${prefix} ${block.propertyName.trim()}(${(block.propertyType || '*').trim()})`;
-        const propertyDefault = block.propertyDefault && block.propertyDefault.trim();
-        if (propertyDefault) {
-            ret = ret + ' = ' + propertyDefault;
-        }
-        return ret + '\n';
+function formatExpr(value) {
+    return value.trim().replace(/\s+/g, ' ');
+}
+module.exports.formatExpr = formatExpr;
+
+module.exports.etplCommandCompositors = {
+    if(expr) {
+        return `{{ if: ${formatExpr(expr)} }}`;
     },
-    use(block) {
-        // Do some format and code indention
-        block.args.forEach(item => {
+    elif(expr) {
+        return `{{ elif: ${formatExpr(expr)} }}`;
+    },
+    else() {
+        return '{{ else }}';
+    },
+    endif() {
+        return '{{ /if }}';
+    },
+    for(expr) {
+        return `{{ for: ${formatExpr(expr)} }}`;
+    },
+    endfor() {
+        return '{{ /for }}';
+    },
+    use(target, args) {
+        args.forEach(item => {
             item[0].trim();
             item[1].trim();
         })
-        let argsStr = block.args.filter(item => !!item[0])
+        let argsStr = args.filter(item => !!item[0])
             .map(item => item.join(' = ')).join(',\n    ');
         if (argsStr) {
             argsStr = `\n    ${argsStr}\n`;
         }
-        return `{{ use: ${block.target.trim()}(${argsStr}) }}\n`;
+        return `{{ use: ${target.trim()}(${argsStr}) }}`;
+    }
+};
+
+module.exports.blockCompositors = {
+    header(block) {
+        /* eslint-disable-next-line */
+        // const prefix = '#'.repeat(block.level) + (block.prefixCode.trim() ? block.prefixCode.trim() : '');
+        // let ret = `${prefix} ${block.propertyName.trim()}(${(block.propertyType || '*').trim()})`;
+        // const propertyDefault = block.propertyDefault && block.propertyDefault.trim();
+        // if (propertyDefault) {
+        //     ret = ret + ' = ' + propertyDefault;
+        // }
+        // return ret;
+        return '#'.repeat(block.level) + (block.prefixCode.trim() ? '' : ' ') + block.value;
+    },
+    use(block) {
+        // Do some format and code indention
+        return module.exports.etplCommandCompositors.use(block.target, block.args);
     },
     content(block) {
-        return `${block.value.trim()}\n`;
+        // Not trim here.
+        return `${block.value}`;
+    },
+    if(block) {
+        return module.exports.etplCommandCompositors.if(block.expr);
+    },
+    elif(block) {
+        return module.exports.etplCommandCompositors.elif(block.expr);
+    },
+    else(block) {
+        return module.exports.etplCommandCompositors.else();
+    },
+    endif(block) {
+        return module.exports.etplCommandCompositors.endif();
+    },
+    for(block) {
+        return module.exports.etplCommandCompositors.for(block.expr);
+    },
+    endfor(block) {
+        return module.exports.etplCommandCompositors.endfor();
     }
 };
 
 module.exports.compositeBlocks = function (blocks) {
-    return blocks.map(block => module.exports.blockCompositors[block.type](block))
-        .join('\n');
+    let str = '';
+    let prevBlock;
+    for (let i = 0; i < blocks.length; i++) {
+        const block = blocks[i];
+        let blockStr = module.exports.blockCompositors[block.type](block);
+        if (str && !block.inline) {
+            let prefix = '\n\n';
+            // A bit format here. No extra newline between if/for block.
+            if ((prevBlock && (prevBlock.type === 'if' || prevBlock.type === 'elif' || prevBlock.type == 'else' || prevBlock.type === 'for'))
+                || block.type === 'endif' || block.type === 'endfor') {
+                prefix = '\n';
+            }
+            blockStr = prefix + blockStr;
+        }
+        str += blockStr;
+        prevBlock = block;
+    }
+    return str;
 };
 
 module.exports.compositeTargets = function (targets) {
@@ -232,5 +341,5 @@ module.exports.compositeTargets = function (targets) {
 {{ target: ${target.name.trim()} }}
 
 ${module.exports.compositeBlocks(target.blocks)}
-`).join('\n\n');
+`).join('\n\n') + '\n';
 };

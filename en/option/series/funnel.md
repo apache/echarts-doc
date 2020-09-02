@@ -218,13 +218,11 @@ The label configuration of a single data item.
 
 
 
-
 {{ target: partial-funnel-label }}
 
 #${prefix} show(boolean) = false
 
 {{ if: ${position} }}
-
 #${prefix} position(string) = 'outside'
 
 Label position.
@@ -245,19 +243,19 @@ Label position.
 + `'center'` equals to `'inside'`.
 
 [labelLine](~series-funnel.labelLine) can be used to guide to the corresponding trapezoid when label is not inside.
-
-
 {{ /if }}
-{{ if: ${formatter} }}
 
+{{ if: ${formatter} }}
 #${prefix} formatter(string|Function)
 
-{{ use: partial-1d-data-label-formatter(extra = {
+{{ use: partial-1d-data-label-formatter(
+    extra = {
     percent: {
         desc: 'percentage',
         type: 'number'
     }
-}) }}
+}
+) }}
 {{ /if }}
 
 {{ use: partial-text-style(
@@ -266,14 +264,13 @@ Label position.
 
 
 
-
 {{ target: partial-funnel-label-line }}
 
 #${prefix} show(boolean)
 
 Whether to show visual guide line.
-{{ if: ${length} }}
 
+{{ if: ${length} }}
 #${prefix} length(number)
 
 The length of the first part from visual guide line.

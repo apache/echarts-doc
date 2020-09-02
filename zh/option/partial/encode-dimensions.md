@@ -131,7 +131,6 @@ var option = {
 
 
 
-
 {{ target: partial-series-dimensions }}
 
 #${prefix} dimensions(Array)

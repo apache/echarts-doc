@@ -362,13 +362,11 @@ const option = {
 
 
 
-
 {{ target: partial-pie-label }}
 
 #${prefix} show(boolean) = false
 
 {{ if: ${position} }}
-
 #${prefix} position(string) = 'outside'
 
 标签的位置。
@@ -386,18 +384,19 @@ const option = {
 + `'center'`
 
     在饼图中心位置。见[圆环图示例](${galleryEditorPath}pie-doughnut)
-
 {{ /if }}
-{{ if: ${formatter} }}
 
+{{ if: ${formatter} }}
 #${prefix} formatter(string|Function)
 
-{{ use: partial-1d-data-label-formatter(extra = {
+{{ use: partial-1d-data-label-formatter(
+    extra = {
     percent: {
         desc: '百分比',
         type: 'number'
     }
-}) }}
+}
+) }}
 {{ /if }}
 
 #${prefix} rotate(boolean|number) = null
@@ -413,7 +412,6 @@ const option = {
 
 
 
-
 {{ target: partial-pie-label-line }}
 
 #${prefix} show(boolean)
@@ -421,23 +419,23 @@ const option = {
 <ExampleUIControlBoolean />
 
 是否显示视觉引导线。
-{{ if: ${length} }}
 
+{{ if: ${length} }}
 #${prefix} length(number)
 
 <ExampleUIControlNumber default="15" min="0" step="1" />
 
 视觉引导线第一段的长度。
 {{ /if }}
-{{ if: ${length2} }}
 
+{{ if: ${length2} }}
 #${prefix} length2(number)
 
 <ExampleUIControlNumber default="15" min="0" step="1" />
 视觉引导项第二段的长度。
 {{ /if }}
-{{ if: ${smooth} }}
 
+{{ if: ${smooth} }}
 #${prefix} smooth(boolean|number) = false
 
 <ExampleUIControlBoolean />

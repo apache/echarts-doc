@@ -43,13 +43,11 @@ Offset distance on the vertical direction of shadow.
 
 
 
-
 {{ target: partial-style-opacity }}
 
 #${prefix} opacity(number) = ${defaultOpacity}
 
 Opacity of the component. Supports value from 0 to 1, and the component will not be drawn when set to 0.
-
 
 
 

@@ -5,7 +5,6 @@ Whether to enable mouse zooming and translating. `false` by default. If either z
 
 
 
-
 {{ target: partial-scale-limit }}
 
 Limit of scaling, with `min` and `max`. `1` by default.

@@ -49,6 +49,19 @@ Provide a website link in doc:
 [Apache ECharts (incubating) website](${websitePath}/en/download.html)
 ```
 
+Notes: formatter will treat {{use}} as a block. So don't use it inline.
+
+Some examples.
+
+```js
+// Good
+Some description
+{{ use: partial-xxx }}
+Some other description
+// Bad
+Some description about {{ use: partial-inline-xxx }}
+```
+
 #### Format Option Docs
 
 Option docs needs to be formatted before commit.
@@ -57,7 +70,6 @@ Run
 ```shell
 npm run format
 ```
-
 
 #### Reference of option
 

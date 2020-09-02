@@ -42,10 +42,12 @@ Style of the mark area.
 The scope of the area is defined by `data`, which is an array with two item, representing the left-top point and the right-bottom point of rectangle area. Each item can be defined as follows:
 
 1. Specify the coordinate in screen coordinate system using [x](~series-${seriesType}.markArea.data.0.x), [y](~series-${seriesType}.markArea.data.0.y), where the unit is pixel (e.g., the value is `5`), or percent (e.g., the value is `'35%'`).
+
 {{ if: ${hasCoord} }}
 2. Specify the coordinate in data coordinate system (i.e., cartesian) using
 [coord](~series-${seriesType}.markArea.data.0.coord), which can be also set as `'min'`, `'max'`, `'average'` (e.g, `coord: [23, 'min']`, or `coord: ['average', 'max']`).
 {{ /if }}
+
 {{ if: ${hasType} }}
 3. Locate the point on the min value or max value of `series.data` using [type](~series-${seriesType}.markArea.data.0.type), where [valueIndex](~series-${seriesType}.markArea.data.0.valueIndex) or [valueDim](~series-${seriesType}.markPoint.data.0.valueDim) can be used to specify the dimension on which the min, max or average are calculated.
 4. If in cartesian, you can only specify `xAxis` or `yAxis` to define a mark area based on only X or Y axis, see sample [scatter-weight](${galleryEditorPath}scatter-weight)
@@ -54,11 +56,12 @@ The scope of the area is defined by `data`, which is an array with two item, rep
 The priority follows as above if more than one above definition used.
 
 {{ if: ${hasType} }}
-
 {{ /if }}
+
 ```
 data: [
-    {{ if: ${hasType} }}
+
+{{ if: ${hasType} }}
     [
         {
             name: 'From average to max',
@@ -68,7 +71,7 @@ data: [
             type: 'max'
         }
     ],
-    {{ /if }}{{ if: ${hasCoord} }}
+{{ /if }}{{ if: ${hasCoord} }}
     [
         {
             name: 'Mark area between two points in data coordiantes',
@@ -94,7 +97,9 @@ data: [
             coord: ['max', 'max']
         }
     ],
-    {{ /if }}[
+{{ /if }}
+
+[
         {
             name: 'Mark area in two screen points',
             x: 100,
@@ -140,11 +145,9 @@ Specify the right-bottom point.
 
 
 
-
 {{ target: mark-area-data-item-item }}
 
 {{ if: ${hasType} }}
-
 #${prefix} type(string)
 
 Specify this item is on min or max or average value.
@@ -154,8 +157,8 @@ Specify this item is on min or max or average value.
 + `'max'` min value.
 + `'average'` average value.
 {{ /if }}
-{{ if: ${hasCoord} }}
 
+{{ if: ${hasCoord} }}
 #${prefix} valueIndex(number)
 
 Specify the dimension on which min, max, average are calculated,
@@ -172,7 +175,6 @@ The value can be the name of the dimension (for example, the value can be `x`, `
 #${prefix} coord(Array)
 
 The format is [start coordinate, end coordinate], where the coordinate system can be `x`, `y` on [cartesian](~grid), or `radius`, `angle` on [polar](~polar).
-
 {{ /if }}
 
 #${prefix} name(string) = '${name}'

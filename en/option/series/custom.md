@@ -459,7 +459,6 @@ Value of data item.
 
 
 
-
 {{ target: partial-custom-renderItem-common }}
 
 `custom series` requires developers to write a render logic by themselves. This render logic is called [renderItem](~series-custom.renderItem).
@@ -515,7 +514,6 @@ Generally, the main process of [renderItem](~series-custom.renderItem) is that r
 Sometimes [api.size(...)](~series-custom.renderItem.arguments.api.size) method is needed, which calculates the size on the coordinate system by a given data range.
 
 Moreover, [api.style(...)](~series-custom.renderItem.arguments.api.style) method can be used to set style. It provides not only the style settings specified in [series.itemStyle](~series-custom.itemStyle), but also the result of visual mapping. This method can also be called like `api.style({fill: 'green', stroke: 'yellow'})` to override those style settings.
-
 
 
 

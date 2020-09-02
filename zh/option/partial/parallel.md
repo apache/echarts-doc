@@ -126,7 +126,6 @@ option = {
 
 
 
-
 {{ target: partial-parallel-data-example }}
 
 例如 [series-parallel.data](~series-parallel.data) 中有如下数据：
@@ -148,11 +147,9 @@ option = {
 
 
 
-
 {{ target: partial-parallel-axis-default }}
 
 配置多个 [parallelAxis](~parallelAxis) 时，有些值一样的属性，如果书写多遍则比较繁琐，那么可以放置在 [parallel.parallelAxisDefault](~parallel.parallelAxisDefault) 里。在坐标轴初始化前，[parallel.parallelAxisDefault](~parallel.parallelAxisDefault) 里的配置项，会分别融合进 [parallelAxis](~parallelAxis)，形成最终的坐标轴的配置。
-
 
 
 

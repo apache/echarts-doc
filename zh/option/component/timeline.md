@@ -835,7 +835,6 @@ const option = {
 
 
 
-
 {{ target: partial-timeline-label }}
 
 #${prefix} show(boolean) = true
@@ -858,15 +857,16 @@ const option = {
 
 {{ if: ${state} }}
 {{ use: partial-text-style(
-    prefix=${prefix},
-    name="timeline.lable." + ${state},
-    defaultColor=${textStyleDefaultColor}
+    prefix = ${prefix},
+    name = "timeline.lable." + ${state},
+    defaultColor = ${textStyleDefaultColor}
 ) }}
+
 {{ else }}
 {{ use: partial-text-style(
-    prefix=${prefix},
-    name="timeline.lable",
-    defaultColor=${textStyleDefaultColor}
+    prefix = ${prefix},
+    name = "timeline.lable",
+    defaultColor = ${textStyleDefaultColor}
 ) }}
 {{ /if }}
 

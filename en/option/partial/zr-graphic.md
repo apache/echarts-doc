@@ -70,7 +70,6 @@ A list of children, each item is a declaration of an element.
 ) }}
 
 {{ if: ${usageType} === 'customSeries' }}
-
 #${prefix} ${hostName}${symbolDeclare}path(Object)
 
 Use [SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData) to describe a path. Can be used to draw icons or any other shapes fitting the specified size by auto transforming.
@@ -81,15 +80,14 @@ See examples:
 About width/height, cover/contain, see
 [layout](~${optionPath}.${hostName}${symbolVisit}path.shape.layout).
 
-
 {{ use: partial-graphic-cpt-common-props(
-    type='path',
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    type = 'path',
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ##${prefix} shape(Object)
@@ -121,53 +119,52 @@ Optional value:
 + `'center'`: Keep aspect ratio, put the path in the center of the rect, expand as far as possible but never overflow.
 + `'cover'`: Transform the path according to the aspect ratio of the rect, fill the rect and do not overflow.
 
-
 {{ use: partial-graphic-cpt-sub-prop-xy(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
+
 {{ use: partial-graphic-cpt-sub-prop-wh(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ##${prefix} style(Object)
 
 {{ use: partial-graphic-cpt-style-prop-common(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 {{ use: partial-graphic-cpt-style-emphasis(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 {{ use: partial-graphic-cpt-event-handlers(
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
-
 {{ /if }}
 
 #${prefix} ${hostName}${symbolDeclare}image(Object)
@@ -917,7 +914,6 @@ Value range: [0, 1].
 
 
 
-
 {{ target: partial-graphic-cpt-common-props }}
 
 ##${prefix} type(string) = ${type}
@@ -940,7 +936,6 @@ id is used to specifying element when willing to update it.
 id can be ignored if you do not need it.
 
 {{ if: ${usageType} === 'graphicComponent' }}
-
 ##${prefix} $action(string) = 'merge'
 
 Specify the operation should be performed to the element when calling `setOption`.
@@ -951,7 +946,6 @@ Optional values:
 + `'merge'`: merge the given option to existing element (if any), otherwise create a new element.
 + `'replace'`: create a new element according to the given option and replace the existing element (if any).
 + `'remove'`: delete the existing element (if any).
-
 {{ /if }}
 
 {{ use: partial-graphic-transform(
@@ -964,53 +958,52 @@ Optional values:
 ) }}
 
 {{ if: ${usageType} === 'graphicComponent' }}
-
 ##${prefix} left(number|string) = undefined
 
-{{ use: partial-graphic-cpt-location-prop-desc-common (
+{{ use: partial-graphic-cpt-location-prop-desc-common(
     hv = 'h',
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ##${prefix} right(number|string) = undefined
 
-{{ use: partial-graphic-cpt-location-prop-desc-common (
+{{ use: partial-graphic-cpt-location-prop-desc-common(
     hv = 'h',
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ##${prefix} top(number|string) = undefined
 
-{{ use: partial-graphic-cpt-location-prop-desc-common (
+{{ use: partial-graphic-cpt-location-prop-desc-common(
     hv = 'v',
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ##${prefix} bottom(number|string) = undefined
 
-{{ use: partial-graphic-cpt-location-prop-desc-common (
+{{ use: partial-graphic-cpt-location-prop-desc-common(
     hv = 'v',
-    prefix=${prefix},
-    optionPath=${optionPath},
-    usageType=${usageType},
-    hostName=${hostName},
-    symbolVisit=${symbolVisit},
-    symbolDeclare=${symbolDeclare}
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
 ) }}
 
 ##${prefix} bounding(strin) = 'all'
@@ -1037,13 +1030,9 @@ z value of the elements, determine the overlap order.
 Determine which canvas layer this element should be in.
 
 Notice: Multiple canvas layer may affect performance.
-
 {{ /if }}
 
-
-
 {{ if: ${usageType} === 'customSeries' }}
-
 ##${prefix} z2(number) = undefined
 
 Define the overlap relationship between graphic elements.
@@ -1051,7 +1040,6 @@ Define the overlap relationship between graphic elements.
 ##${prefix} name(string) = undefined
 
 See [diffChildrenByName](~${optionPath}.${hostName}${symbolVisit}polygon.diffChildrenByName).
-
 {{ /if }}
 
 ##${prefix} info(*)
@@ -1076,10 +1064,10 @@ Whether the element is visible.
 
 Whether the element is totally ignored (neither render nor listen events).
 
-
 {{ if: ${usageType} === 'graphicComponent' }}
-
-{{ use: partial-cursor(prefix="##") }}
+{{ use: partial-cursor(
+    prefix = "##"
+) }}
 
 ##${prefix} draggable(boolean) = false
 
@@ -1088,9 +1076,7 @@ Can be dragged or not.
 ##${prefix} progressive(boolean) = false
 
 Whether use progressive render to improve performance. Usually used when number of element is too large.
-
 {{ /if }}
-
 
 
 
@@ -1136,7 +1122,6 @@ color of shadow.
 
 
 
-
 {{ target: partial-graphic-cpt-path-common }}
 
 ###${prefix} points(Array)
@@ -1158,7 +1143,6 @@ Only works when `smooth` is `number` (bezier smooth).
 
 
 
-
 {{ target: partial-graphic-cpt-location-prop-desc-common }}
 
 Specify how to be positioned in its parent.
@@ -1176,12 +1160,12 @@ Optional values:
 Only one between [left](~${optionPath}.${hostName}${symbolVisit}polygon.left) and [right](~${optionPath}.${hostName}${symbolVisit}polygon.right) can work.
 
 If [left](~${optionPath}.${hostName}${symbolVisit}polygon.left) or [right](~${optionPath}.${hostName}${symbolVisit}polygon.right) is specified, positioning attributes in [shape](~${optionPath}.${hostName}${symbolVisit}polygon.shape) (like `x`, `cx`) will not work.
+
 {{ else }}
 Only one between [top](~${optionPath}.${hostName}${symbolVisit}polygon.top) and [bottom](~${optionPath}.${hostName}${symbolVisit}polygon.bottom) can work.
 
 If [top](~${optionPath}.${hostName}${symbolVisit}polygon.top) or [bottom](~${optionPath}.${hostName}${symbolVisit}polygon.bottom) is specified, positioning attributes in [shape](~${optionPath}.${hostName}${symbolVisit}polygon.shape) (like `y`, `cy`) will not work.
 {{ /if }}
-
 
 
 
@@ -1197,7 +1181,6 @@ The y value of the left-top corner of the element in the coordinate system of it
 
 
 
-
 {{ target: partial-graphic-cpt-sub-prop-cxy }}
 
 ###${prefix} cx(number) = 0
@@ -1207,7 +1190,6 @@ The x value of the center of the element in the coordinate system of its parent.
 ###${prefix} cy(numbr) = 0
 
 The y value of the center of the element in the coordinate system of its parent.
-
 
 
 
@@ -1223,13 +1205,11 @@ The height of the shape of the element.
 
 
 
-
 {{ target: partial-graphic-cpt-sub-prop-r }}
 
 ###${prefix} r(number) = 0
 
 Outside radius.
-
 
 
 
@@ -1247,7 +1227,6 @@ Outside radius.
 ###${prefix} r0(number) = 0
 
 Inside radius.
-
 
 
 
@@ -1271,7 +1250,6 @@ y value of the end point.
 
 
 
-
 {{ target: partial-graphic-cpt-sub-prop-angle }}
 
 ###${prefix} startAngle(number) = 0
@@ -1288,11 +1266,9 @@ Whether draw clockwise.
 
 
 
-
 {{ target: partial-graphic-cpt-event-handlers }}
 
 {{ if: ${usageType} === 'graphicComponent' }}
-
 ##${prefix} onclick(Function)
 
 ##${prefix} onmouseover(Function)
@@ -1320,9 +1296,7 @@ Whether draw clockwise.
 ##${prefix} ondragover(Function)
 
 ##${prefix} ondrop(Function)
-
 {{ /if }}
-
 
 
 
@@ -1370,7 +1344,6 @@ Whether draw clockwise.
 
 
 
-
 {{ target: partial-graphic-transform-common-desc }}
 
 `2D transform` can be applied to graphic elements, including:
@@ -1386,17 +1359,13 @@ Notice:
 
 
 
-
 {{ target: partial-graphic-cpt-style-emphasis }}
 
 {{ if: ${usageType} === 'customSeries' }}
-
 ##${prefix} styleEmphasis(Object)
 
 Empahsis style of the graphic element, whose structure is the same as [style](~${optionPath}.${hostName}${symbolVisit}polygon.style).
-
 {{ /if }}
-
 
 
 

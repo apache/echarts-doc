@@ -18,7 +18,6 @@ tooltip can be configured on different places:
 
 
 
-
 {{ target: partial-tooltip-in-coords }}
 
 ## tooltip(Object)
@@ -40,7 +39,6 @@ tooltip settings in the coordinate system component.
 
 
 
-
 {{ target: partial-tooltip-in-series }}
 
 ## tooltip(*)
@@ -51,7 +49,6 @@ tooltip settings in this series.
     scope = 'series',
     prefix = '##'
 ) }}
-
 
 
 
@@ -68,16 +65,15 @@ tooltip settings in this series data.
 
 
 
-
 {{ target: partial-tooltip-scope-tip }}
 
 {{ if: ${scope} === 'series' }}
 <br>
 > **Notice：**series.tooltip only works when [tooltip.trigger](~tooltip.trigger) is `'item'`.<br>
-{{ elif:${scope} === 'seriesData' }}
+
+{{ elif: ${scope} === 'seriesData' }}
 > **Notice：**series.data.tooltip only works when [tooltip.trigger](~tooltip.trigger) is `'item'`.<br>
 {{ /if }}
-
 
 
 
@@ -155,7 +151,6 @@ It is valid when [axisPointer.type](~tooltip.axisPointer.type) is `'cross'`.
     defaultAnimationEasingUpdate = 'exponentialOut',
     defaultAnimationDurationUpdate = 200
 ) }}
-
 
 
 

@@ -321,7 +321,6 @@ Equals to [links](~series-sankey.links)
 
 
 
-
 {{ target: partial-sankey-line-style }}
 
 #${prefix} color(Color) = "'#314656'"
