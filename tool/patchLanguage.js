@@ -26,6 +26,10 @@ function applyBlocksPatch(fromBlocks, toBlocks) {
         else {
             for (let i = 0; i < part.indices.length; i++) {
                 const fromBlock = fromBlocks[part.indices[i]];
+                // Just ignore uicontrol block.
+                if (fromBlock.type === 'uicontrol') {
+                    continue;
+                }
                 const block = _.clone(
                     part.added ? fromBlock    // New added content in zh doc
                         : toBlocks.find(a => a.key === fromBlock.key) // Keep not change
