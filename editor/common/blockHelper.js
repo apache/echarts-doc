@@ -185,17 +185,23 @@ module.exports.updateBlocksKeys = function (blocks) {
     const contentKeyCountMap = {};
     const uiControlKeyCountMap = {};
 
+    let scopeKey = stacks.join('.');
+
     for (const block of blocks) {
         let baseKey = '';
-        const scopeKey = stacks.join('.');
         switch (block.type) {
         case 'header':
-            for (let i = block.level; i <= currentLevel; i++) {
-                stacks.pop();
-            }
-            if (block.level >= currentLevel) {
+            if (block.level <= currentLevel) {
+                for (let i = block.level; i <= currentLevel; i++) {
+                    stacks.pop();
+                }
                 stacks.push(block.propertyName);
             }
+            else {
+                stacks.push(block.propertyName);
+            }
+
+            scopeKey = stacks.join('.');
             baseKey = `header:${scopeKey}`;
             currentLevel = block.level;
             break;

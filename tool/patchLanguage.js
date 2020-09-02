@@ -26,6 +26,9 @@ function applyBlocksPatch(fromBlocks, toBlocks) {
         else {
             for (let i = 0; i < part.indices.length; i++) {
                 const fromBlock = fromBlocks[part.indices[i]];
+                // if (fromBlock.key === 'content:top.calendar.splitLine.lineStyle') {
+                //     console.log(part);
+                // }
                 // Just ignore uicontrol block.
                 if (fromBlock.type === 'uicontrol') {
                     continue;
@@ -92,6 +95,9 @@ function applyTargetsPatch(fromJson, toJson) {
             true
         );
         blocksByLang[lang] = json;
+
+        fs.writeFileSync(__dirname + `/blocks-${lang}.json`, JSON.stringify(json, null, 2), 'utf-8');
+
     }
 
     await applyTargetsPatch(blocksByLang[fromLang], blocksByLang[toLang]);
