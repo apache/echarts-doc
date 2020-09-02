@@ -13,7 +13,7 @@
 
 外部数据转换器须有名空间（如 `type: 'ecStat:regression'`）。
 
-### config(*)
+### config(Object)
 
 这里设置每个数据转换器所须的参数。每种数据转换器有自己的参数格式定义。
 

@@ -1,7 +1,7 @@
 
 {{ target: partial-symbol }}
 
-#${prefix} symbol(string{{ if: ${hasCallback} }}|Function{{ /if }})(*) = ${defaultSymbol}
+#${prefix} symbol(string{{ if: ${hasCallback} }}|Function{{ /if }}) = ${defaultSymbol}
 
 Symbol of ${name}.
 
@@ -15,7 +15,7 @@ If symbols needs to be different, you can set with callback function in the foll
 The first parameter `value` is the value in [data](~series-${seriesType}.data), and the second parameter `params` is the rest parameters of data item.
 {{ /if }}
 
-#${prefix} symbolSize(number|Array{{ if: ${hasCallback} }}|Function{{ /if }})(*) = ${defaultSymbolSize}
+#${prefix} symbolSize(number|Array{{ if: ${hasCallback} }}|Function{{ /if }}) = ${defaultSymbolSize}
 
 ${name} symbol size. It can be set to single numbers like `10`, or use an array to represent width and height. For example, `[20, 10]` means symbol width is `20`, and height is`10`.
 
@@ -27,7 +27,7 @@ If size of symbols needs to be different, you can set with callback function in 
 The first parameter `value` is the value in [data](~series-${seriesType}.data), and the second parameter `params` is the rest parameters of data item.
 {{ /if }}
 
-#${prefix} symbolRotate(number{{ if: ${hasCallback} }}|Function{{ /if }})(*)
+#${prefix} symbolRotate(number{{ if: ${hasCallback} }}|Function{{ /if }})
 
 Rotate degree of ${name} symbol. The negative value represents clockwise. Note that when `symbol` is set to be `'arrow'` in `markLine`, `symbolRotate` value will be ignored, and compulsively use tangent angle.
 

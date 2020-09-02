@@ -1,7 +1,7 @@
 
 {{ target: partial-symbol }}
 
-#${prefix} symbol(string{{ if: ${hasCallback} }}|Function{{ /if }})(*) = ${defaultSymbol}
+#${prefix} symbol(string{{ if: ${hasCallback} }}|Function{{ /if }}) = ${defaultSymbol}
 
 <ExampleUIControlIcon default="circle" />
 
@@ -17,7 +17,7 @@ ${name}标记的图形。
 其中第一个参数 `value` 为 [data](~series-${seriesType}.data) 中的数据值。第二个参数`params` 是其它的数据项参数。
 {{ /if }}
 
-#${prefix} symbolSize(number|Array{{ if: ${hasCallback} }}|Function{{ /if }})(*) = ${defaultSymbolSize}
+#${prefix} symbolSize(number|Array{{ if: ${hasCallback} }}|Function{{ /if }}) = ${defaultSymbolSize}
 
 <ExampleUIControlNumber min="0" />
 
@@ -31,7 +31,7 @@ ${name}标记的大小，可以设置成诸如 `10` 这样单一的数字，也�
 其中第一个参数 `value` 为 [data](~series-${seriesType}.data) 中的数据值。第二个参数`params` 是其它的数据项参数。
 {{ /if }}
 
-#${prefix} symbolRotate(number{{ if: ${hasCallback} }}|Function{{ /if }})(*)
+#${prefix} symbolRotate(number{{ if: ${hasCallback} }}|Function{{ /if }})
 
 <ExampleUIControlAngle min="-180" max="180" step="1" />
 

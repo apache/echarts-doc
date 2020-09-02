@@ -343,8 +343,6 @@ module.exports.parseBlocks = async function parseBlocks(root, detailed) {
         updateBlocksLevels(target.blocks, targetsMap);
     }
 
-    fs.writeFileSync(__dirname + '/blocks.json', JSON.stringify(blocksStore, null, 2), 'utf-8');
-
     return blocksStore;
 };
 

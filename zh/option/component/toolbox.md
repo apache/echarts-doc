@@ -64,7 +64,7 @@ ${name} icon 样式设置。由于 icon 的文本信息只在 icon hover 时候�
 
 #### title(boolean) = '${title}'
 
-#### icon(*)
+#### icon(string)
 
 {{ use: partial-icon-image-path() }}
 

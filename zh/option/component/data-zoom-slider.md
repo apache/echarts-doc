@@ -164,7 +164,7 @@ labelFormatter: function (value) {
 
 拖动时，是否实时更新系列的视图。如果设置为 `false`，则只在拖拽结束的时候更新。
 
-## textStyle(*)
+## textStyle(Object)
 
 {{ use: partial-simple-text-style(
     prefix = '##',

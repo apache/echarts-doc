@@ -7,7 +7,7 @@ Graphic style of ${name}, `emphasis` is the style when it is highlighted, like b
 
 {{ target: partial-item-style }}
 
-#${prefix} color(Color{{ if: ${hasCallback} }}|Function{{ /if }})(*) = ${defaultColor|default(null)}
+#${prefix} color(Color{{ if: ${hasCallback} }}|Function{{ /if }}) = ${defaultColor|default(null)}
 
 ${name} color. {{ if: ${useColorPalatte} }} Color is taken from [option.color Palette](~color) by default. {{ /if }}
 

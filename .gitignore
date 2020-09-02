@@ -182,9 +182,10 @@ slides/webgl
 
 
 # Editor temporal files
-/editor/common/blocks.json
 /editor/server/blocks.json
 /editor/server/test
+/tool/blocks-en.json
+/tool/blocks-zh.json
 
 /zh-src
 /en-src
