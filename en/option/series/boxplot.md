@@ -58,6 +58,8 @@ It could be absolute value in pixel, such as `[7, 50]`, or percentage, such as `
 
 ## itemStyle(Object)
 
+Style of boxplot.
+
 {{ use: partial-item-style(
     prefix = "##",
     useColorPalatte = true,
@@ -67,6 +69,8 @@ It could be absolute value in pixel, such as `[7, 50]`, or percentage, such as `
 ) }}
 
 ## emphasis(Object)
+
+Configurations of emphasis state.
 
 ### itemStyle(Object)
 
@@ -134,6 +138,8 @@ Value of data item.
 
 ### itemStyle(Object)
 
+Style of a single data.
+
 {{ use: partial-item-style(
     prefix = "###",
     useColorPalatte = true,
@@ -143,6 +149,8 @@ Value of data item.
 ) }}
 
 ### emphasis(Object)
+
+Emphasis state of a single data.
 
 #### itemStyle(Object)
 

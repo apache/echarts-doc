@@ -60,6 +60,12 @@ Work for [coordinateSystem](~series-heatmap.coordinateSystem): 'cartesian2d'.
     defaultPosition = "inside"
 ) }}
 
+## labelLayout(Object|Function)
+
+{{ use: partial-label-layout(
+    prefix = "##"
+) }}
+
 ## itemStyle(Object)
 
 Work for [coordinateSystem](~series-heatmap.coordinateSystem): 'cartesian2d'.

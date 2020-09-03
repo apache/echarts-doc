@@ -211,10 +211,6 @@ Emphasis style of a candle box.
     prefix = "#"
 ) }}
 
-{{ use: partial-silent(
-    prefix = "#"
-) }}
-
 {{ use: partial-animation-init(
     prefix = "#",
     defaultAnimationEasing = 'linear',

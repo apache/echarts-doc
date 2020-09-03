@@ -11,7 +11,7 @@ Sankey diagram is a specific type of streamgraph (can also be seen as a directed
 ~[700x580](${galleryViewPath}sankey-energy&edit=1&reset=1)
 
 
-<br> 
+<br>
 **Visual Encoding: **
 
 The Sankey diagram encodes each `node` of the raw data into a small rectangle. Different nodes are presented in different colors as far as possible. The `label` next to the small rectangul encodes the name of the node.
@@ -46,7 +46,7 @@ The gap between any two rectangles in each column of the Sankey diagram.
 
 ## nodeAlign(string) = 'justify'
 
-Controls the horizontal alignment of nodes in the diagram. 
+Controls the horizontal alignment of nodes in the diagram.
 
 May be:
 
@@ -54,7 +54,7 @@ May be:
 
 + `right`: terminal nodes (those with no outgoing links) are aligned to the right of the diagram.
 
-+ `justify`: initial and terminal nodes are aligned on the left and right edges. 
++ `justify`: initial and terminal nodes are aligned on the left and right edges.
 
 Note when [orient](~series-sankey.orient) is `vertical`, `nodeAlign` controls vertical alignment.
 
@@ -155,6 +155,12 @@ Specify the outEdge style of the specific layer. in which [lineStyle.color](~ser
     formatter1d = true
 ) }}
 
+## labelLayout(Object|Function)
+
+{{ use: partial-label-layout(
+    prefix = "##"
+) }}
+
 ## itemStyle(Object)
 
 The style of node rectangle in Sankey diagram.
@@ -175,6 +181,8 @@ The edge style of Sankey diagram, in which [lineStyle.color](~series-sankey.line
 ) }}
 
 ## emphasis(Object)
+
+Configurations of emphasis state.
 
 ### label(Object)
 

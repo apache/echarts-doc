@@ -125,6 +125,12 @@ Label settings. Does not work when [polyline](~series-lines.polyline) is `true`.
     prefix = "##"
 ) }}
 
+## labelLayout(Object|Function)
+
+{{ use: partial-label-layout(
+    prefix = "##"
+) }}
+
 ## emphasis(Object)
 
 Emphasis style.
@@ -167,6 +173,8 @@ The line style of this data item.
 ) }}
 
 ### label(Object)
+
+Label of a single line. Available when [polyline](~series-lines.polyline) is not `true`.
 
 {{ use: lines-label(
     prefix = "###"
@@ -227,7 +235,7 @@ the position of label, options:
 
 #${prefix} formatter(string|Function)
 
-{{ use: partial-1d-data-label-formatter() }}
+{{ use: partial-2d-data-label-formatter() }}
 
 {{ use: partial-text-style(
     prefix = ${prefix}

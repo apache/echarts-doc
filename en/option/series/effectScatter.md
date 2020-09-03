@@ -83,6 +83,12 @@ The brush type for ripples. options: `'stroke'` and `'fill'`.
     formatter = true
 ) }}
 
+## labelLayout(Object|Function)
+
+{{ use: partial-label-layout(
+    prefix = "##"
+) }}
+
 ## itemStyle(Object)
 
 {{ use: partial-item-style-desc() }}
@@ -94,6 +100,8 @@ The brush type for ripples. options: `'stroke'` and `'fill'`.
 ) }}
 
 ## emphasis(Object)
+
+Configurations of emphasis state.
 
 ### label(Object)
 
@@ -149,6 +157,8 @@ The brush type for ripples. options: `'stroke'` and `'fill'`.
 
 ### emphasis(Object)
 
+Emphasis state of the specified single data.
+
 #### label(Object)
 
 {{ use: partial-label(
@@ -172,6 +182,10 @@ The brush type for ripples. options: `'stroke'` and `'fill'`.
 ) }}
 
 {{ use: partial-z-zlevel(
+    prefix = "#"
+) }}
+
+{{ use: partial-silent(
     prefix = "#"
 ) }}
 

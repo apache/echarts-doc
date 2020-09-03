@@ -51,15 +51,6 @@ A list of children, each item is a declaration of an element.
     symbolDeclare = ${symbolDeclare}
 ) }}
 
-{{ use: partial-graphic-cpt-style-emphasis(
-    prefix = ${prefix},
-    optionPath = ${optionPath},
-    usageType = ${usageType},
-    hostName = ${hostName},
-    symbolVisit = ${symbolVisit},
-    symbolDeclare = ${symbolDeclare}
-) }}
-
 {{ use: partial-graphic-cpt-event-handlers(
     prefix = ${prefix},
     optionPath = ${optionPath},

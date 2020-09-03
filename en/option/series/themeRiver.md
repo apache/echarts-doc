@@ -67,6 +67,12 @@ The index of single time axis, which defaults to be 0 because it contains only o
     defaultFontSize = 11
 ) }}
 
+## labelLayout(Object|Function)
+
+{{ use: partial-label-layout(
+    prefix = "##"
+) }}
+
 ## itemStyle(Object)
 
 style of each ribbon-shape river branch in theme river.
@@ -76,6 +82,8 @@ style of each ribbon-shape river branch in theme river.
 ) }}
 
 ## emphasis(Object)
+
+Configurations of emphasis state.
 
 ### label(Object)
 

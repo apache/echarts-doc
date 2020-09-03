@@ -29,6 +29,32 @@
     enableAutoColor = ${enableAutoColor}
 ) }}
 
+#${prefix} width(number)
+
+Width of text block.
+
+#${prefix} height(number)
+
+Height of text block.
+
+#${prefix} overflow(string) = 'none'
+
+Determine how to display the text when it's overflow. Available when `width` is set.
+
++ `'truncate'` Truncate the text and trailing with `ellipsis`.
++ `'break'` Break by word
++ `'breakAll'` Break by character.
+
+#${prefix} ellipsis(string) = '...'
+
+Ellipsis to be displayed when `overflow` is set to `truncate`.
+
+#${prefix} lineOverflow(string) = 'none'
+
+Determine how to display the text when it's overflow on height.
+
++ `'truncate'` Truncate the overflow lines.
+
 {{ if: !${noRich} }}
 #${prefix} rich(Object)
 

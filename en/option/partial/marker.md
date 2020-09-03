@@ -9,8 +9,6 @@
     name = ${name}
 ) }}
 
-prefix
-
 {{ use: partial-mark-line(
     prefix = ${prefix},
     seriesType = ${seriesType},

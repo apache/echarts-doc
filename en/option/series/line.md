@@ -91,6 +91,12 @@ See the example using different `step` options:
     formatter = true
 ) }}
 
+## labelLayout(Object|Function)
+
+{{ use: partial-label-layout(
+    prefix = "##"
+) }}
+
 ## itemStyle(Object)
 
 The style of the symbol point of broken line.
@@ -219,6 +225,8 @@ The style of the symbol of single data point.
 ) }}
 
 ### emphasis(Object)
+
+Emphasis state of specified single data.
 
 #### itemStyle(Object)
 

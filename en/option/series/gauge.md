@@ -201,6 +201,8 @@ The color of pointer. Defaults to use [the color of section](~series-gauge.axisL
 
 ## emphasis(Object)
 
+Configurations of emphasis state.
+
 ### itemStyle(*)
 
 {{ use: partial-item-style(
@@ -251,6 +253,14 @@ The background color of detail.
 
 The border width of detail.
 
+### borderColor(Color) = '#ccc'
+
+The border color of detail.
+
+### offsetCenter(Array) = [0, '40%']
+
+The offset position relative to the center of gauge chart. The first item of array is the horizontal offset; the second item of array is the vertical offset. It could be absolute value and also the percentage relative to the radius of gauge chart.
+
 ### formatter(Function|string)
 
 Formatter is used to format detail, which supports string template and callback function.
@@ -260,14 +270,6 @@ formatter: function (value) {
     return value.toFixed(0);
 }
 ```
-
-### borderColor(Color) = '#ccc'
-
-The border color of detail.
-
-### offsetCenter(Array) = [0, '40%']
-
-The offset position relative to the center of gauge chart. The first item of array is the horizontal offset; the second item of array is the vertical offset. It could be absolute value and also the percentage relative to the radius of gauge chart.
 
 {{ use: partial-text-style(
     prefix = "##",
@@ -285,8 +287,11 @@ The text color. Defaults to use [the color of section](~series-gauge.axisLine.li
 
 {{ use: partial-marker(
     prefix = "#",
-    seriesType = "gauge",
-    name = "mark point"
+    seriesType = "gauge"
+) }}
+
+{{ use: partial-silent(
+    prefix = "#"
 ) }}
 
 {{ use: partial-animation(

@@ -31,12 +31,6 @@ Mark line text.
     prefix = ${prefix} + '##'
 ) }}
 
-###${prefix} emphasis(Object)
-
-{{ use: mark-line-label(
-    prefix = ${prefix} + '###'
-) }}
-
 ##${prefix} lineStyle(Object)
 
 Mark line style.
@@ -48,7 +42,17 @@ Mark line style.
     hasCurveness = true
 ) }}
 
-###${prefix} emphasis(Object)
+##${prefix} emphasis(Object)
+
+Emphasis status of mark line.
+
+###${prefix} label(Object)
+
+{{ use: mark-line-label(
+    prefix = ${prefix} + '###'
+) }}
+
+###${prefix} lineStyle(Object)
 
 {{ use: partial-line-style(
     prefix = "###" + ${prefix}
@@ -245,13 +249,6 @@ Line style of this data item, which will be merged with `lineStyle` of starting 
 
 {{ use: partial-line-style(
     prefix = "#"+${prefix},
-    hasCurveness = true
-) }}
-
-##${prefix} emphasis(Object)
-
-{{ use: partial-line-style(
-    prefix = "##"+${prefix},
     hasCurveness = true
 ) }}
 

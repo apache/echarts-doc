@@ -42,6 +42,12 @@ Index of [radar](~radar) component that radar chart uses.
     formatter = true
 ) }}
 
+## labelLayout(Object|Function)
+
+{{ use: partial-label-layout(
+    prefix = "##"
+) }}
+
 ## itemStyle(Object)
 
 Item style of the inflection point of the lines.
@@ -69,6 +75,8 @@ Area filling style.
 ) }}
 
 ## emphasis(Object)
+
+高亮的样式设置
 
 ### itemStyle(Object)
 
@@ -164,6 +172,8 @@ Area filling style of a single item.
 
 ### emphasis(Object)
 
+Configurations of emphasis state.
+
 #### label(Object)
 
 {{ use: partial-label(
@@ -197,10 +207,6 @@ Area filling style of a single item.
 ) }}
 
 {{ use: partial-silent(
-    prefix = "#"
-) }}
-
-{{ use: partial-animation(
     prefix = "#"
 ) }}
 

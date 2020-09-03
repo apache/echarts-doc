@@ -113,6 +113,12 @@ The style of each node in the tree, where [itemStyle.color] (~ series-tree.itemS
     formatter1d = true
 ) }}
 
+## labelLayout(Object|Function)
+
+{{ use: partial-label-layout(
+    prefix = "##"
+) }}
+
 ## lineStyle(Object)
 
 Defines the style of the tree edge.
@@ -122,6 +128,8 @@ Defines the style of the tree edge.
 ) }}
 
 ## emphasis(Object)
+
+Configurations of emphasis state.
 
 ### itemStyle(Object)
 
@@ -166,6 +174,8 @@ The style of the leaf node in the tree.
 ) }}
 
 ### emphasis(Object)
+
+Emphasis state of leaves nodes.
 
 #### label(Object)
 
@@ -237,6 +247,8 @@ The label of the node.
 ) }}
 
 ### emphasis(Object)
+
+Emphasis state of a single node.
 
 #### label(Object)
 

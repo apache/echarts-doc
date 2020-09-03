@@ -38,8 +38,6 @@ It can be absolute pixel and also the percentage of [layout width](~series-funne
 
 ## orient(string) = 'vertical'
 
-<ExampleUIControlEnum options="vertical,horizontal" />
-
 Orient of funnel，Can be `'vertical'` or `'horizontal'`.
 
 ## sort(string|Function) = 'descending'
@@ -87,7 +85,42 @@ The visual guide line style of label. When [label position](~series-funnel.label
     hasCallback = true
 ) }}
 
+## labelLayout(Object|Function)
+
+{{ use: partial-label-layout(
+    prefix = "##"
+) }}
+
 ## emphasis(Object)
+
+高亮的标签和图形样式。
+
+{{ use: partial-focus-blur-scope() }}
+
+### label(Object)
+
+{{ use: partial-funnel-label(
+    prefix = "###",
+    position = false,
+    formatter = true
+) }}
+
+### labelLine(Object)
+
+{{ use: partial-funnel-label-line(
+    prefix = '###',
+    length = false
+) }}
+
+### itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "###"
+) }}
+
+## blur(Object)
+
+淡出时的图形样式和标签样式。开启 [emphasis.focus](~series-funnel.emphasis.focus) 后有效
 
 ### label(Object)
 
@@ -111,7 +144,7 @@ The visual guide line style of label. When [label position](~series-funnel.label
 ) }}
 
 {{ use: partial-rect-layout-width-height(
-    componentName = "funnel chart",
+    componentName = "漏斗图",
     defaultLeft = 80,
     defaultTop = 60,
     defaultRight = 80,
@@ -208,6 +241,10 @@ The label configuration of a single data item.
     prefix = "#",
     seriesType = "funnel",
     name = "mark point"
+) }}
+
+{{ use: partial-silent(
+    prefix = "#"
 ) }}
 
 {{ use: partial-animation(

@@ -39,9 +39,7 @@ The offset distance of hovered sector.
 
 ## selectedMode(boolean|string) = false
 
-Selected mode of pie.  It is enabled by default, and you may set it to be `false` to disabled it.
-
-Besides, it can be set to `'single'` or `'multiple'`, for single selection and multiple selections.
+{{ use: partial-selected-mode() }}
 
 ## selectedOffset(number) = 10
 
@@ -143,6 +141,12 @@ The style of visual guide line. Will show when [label position](~series-pie.labe
     smooth = true
 ) }}
 
+## labelLayout(Object|Function)
+
+{{ use: partial-label-layout(
+    prefix = "##"
+) }}
+
 ## itemStyle(Object)
 
 {{ use: partial-item-style-desc() }}
@@ -154,6 +158,8 @@ The style of visual guide line. Will show when [label position](~series-pie.labe
 ) }}
 
 ## emphasis(Object)
+
+Configurations of emphasis state.
 
 ### label(Object)
 
@@ -352,8 +358,6 @@ Label rotation.
 
 
 {{ target: partial-pie-label-line }}
-
-The style of visual guide line.
 
 #${prefix} show(boolean)
 

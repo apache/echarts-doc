@@ -29,13 +29,6 @@ Label of mark point.
     formatter = true
 ) }}
 
-###${prefix} emphasis(Object)
-
-{{ use: partial-label(
-    prefix = "###" + ${prefix},
-    formatter = true
-) }}
-
 ##${prefix} itemStyle(Object)
 
 Mark point style.
@@ -44,7 +37,18 @@ Mark point style.
     prefix = "##" + ${prefix}
 ) }}
 
-###${prefix} emphasis(Object)
+##${prefix} emphasis(Object)
+
+Emphasis status of mark point.
+
+###${prefix} label(Object)
+
+{{ use: partial-label(
+    prefix = "###" + ${prefix},
+    formatter = true
+) }}
+
+###${prefix} itemStyle(Object)
 
 {{ use: partial-item-style(
     prefix = "###" + ${prefix}
@@ -144,22 +148,24 @@ Mark point style.
     prefix = "###" + ${prefix}
 ) }}
 
-####${prefix} emphasis(Object)
-
-{{ use: partial-item-style(
-    prefix = "####" + ${prefix}
-) }}
-
 ###${prefix} label(Object)
 
 {{ use: partial-label(
     prefix = ${prefix} + '###'
 ) }}
 
-####${prefix} emphasis(Object)
+###${prefix} emphasis(Object)
+
+####${prefix} label(Object)
 
 {{ use: partial-label(
     prefix = ${prefix} + '####'
+) }}
+
+####${prefix} itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "####" + ${prefix}
 ) }}
 
 {{ use: partial-animation(

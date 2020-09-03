@@ -80,6 +80,12 @@ See the example below:
     formatter = true
 ) }}
 
+## labelLayout(Object|Function)
+
+{{ use: partial-label-layout(
+    prefix = "##"
+) }}
+
 ## itemStyle(Object)
 
 {{ use: partial-item-style-desc() }}

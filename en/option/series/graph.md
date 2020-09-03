@@ -123,6 +123,10 @@ Related zooming ratio of nodes when mouse zooming in or out. When it is set as 0
 
 If node is draggable. Only available when using force-directed layout.
 
+## focusNodeAdjacency(boolean) = false
+
+Whether to focus/highlight the hover node and it's adjacencies.
+
 {{ use: partial-symbol(
     prefix = '#',
     defaultSymbol = "'circle'",
@@ -130,10 +134,6 @@ If node is draggable. Only available when using force-directed layout.
     name = 'node of relation graph',
     hasCallback = true
 ) }}
-
-## focusNodeAdjacency(boolean) = false
-
-Whether to focus/highlight the hover node and it's adjacencies.
 
 ## edgeSymbol(Array|string) = ['none', 'none']
 
@@ -196,7 +196,15 @@ The style of edge line. [lineStyle.color](~series-graph.lineStyle.color) can be 
     prefix = "##"
 ) }}
 
+## labelLayout(Object|Function)
+
+{{ use: partial-label-layout(
+    prefix = "##"
+) }}
+
 ## emphasis(Object)
+
+Configurations of emphasis state.
 
 ### itemStyle(Object)
 

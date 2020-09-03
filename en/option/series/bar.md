@@ -35,26 +35,6 @@ If to add round caps at the end of the bar sectors. Valid only for bar series on
 
 ~[800x500](${galleryViewPath}polar-roundCap&reset=1&edit=1)
 
-## label(Object)
-
-{{ use: partial-label-desc() }}
-
-{{ use: partial-label(
-    prefix = "##",
-    defaultPosition = "'inside'",
-    formatter = true
-) }}
-
-## itemStyle(Object)
-
-{{ use: partial-item-style-desc() }}
-
-{{ use: partial-bar-item-style(
-    prefix = "##",
-    useColorPalatte = true,
-    hasCallback = true
-) }}
-
 ## showBackground(boolean) = false
 
 {{ use: partial-version(
@@ -82,19 +62,52 @@ Background style of each bar if [showBackground](~series-bar.showBackground) is 
     defaultColor = "'rgba(180, 180, 180, 0.2)'"
 ) }}
 
-## emphasis(Object)
-
-### label(Object)
-
-{{ use: partial-label(
-    prefix = "###",
-    formatter = true
+{{ use: partial-bar-state(
+    prefix = "#",
+    topLevel = true,
+    isNormal = true
 ) }}
 
-### itemStyle(Object)
+## labelLayout(Object|Function)
 
-{{ use: partial-bar-item-style(
-    prefix = "###"
+{{ use: partial-label-layout(
+    prefix = "##"
+) }}
+
+## emphasis(Object)
+
+高亮的图形样式和标签样式。
+
+{{ use: partial-focus-blur-scope() }}
+
+{{ use: partial-bar-state(
+    prefix = "##",
+    topLevel = true,
+    isNormal = false
+) }}
+
+## blur(Object)
+
+淡出时的图形样式和标签样式。开启 [emphasis.focus](~series-bar.emphasis.focus) 后有效
+
+{{ use: partial-bar-state(
+    prefix = "##",
+    topLevel = true,
+    isNormal = false
+) }}
+
+## select(Object)
+
+数据选中时的图形样式和标签样式。开启 [selectedMode](~series-bar.selectedMode) 后有效。
+
+{{ use: partial-bar-state(
+    prefix = "##",
+    topLevel = true,
+    isNormal = false
+) }}
+
+{{ use: partial-selected-mode(
+    version = '5.0.0'
 ) }}
 
 ## stack(string) = null
@@ -143,41 +156,40 @@ The name of data item.
 
 The value of a single data item.
 
-### label(Object)
+{{ use: partial-bar-state(
+    prefix = "##",
+    topLevel = false,
+    isNormal = true
+) }}
 
-The style setting of the text label in a single bar.
+### emphasis(Object)
 
-{{ use: partial-label(
+单个数据的高亮状态配置。
+
+{{ use: partial-bar-state(
     prefix = "###",
-    defaultPosition = "inside"
+    topLevel = false,
+    isNormal = false
 ) }}
 
-#### emphasis(Object)
+### blur(Object)
 
-{{ use: partial-label(
-    prefix = "####"
+单个数据的淡出状态配置。
+
+{{ use: partial-bar-state(
+    prefix = "###",
+    topLevel = false,
+    isNormal = false
 ) }}
 
-### itemStyle(Object)
+### select(Object)
 
-{{ use: partial-bar-item-style(
-    prefix = "###"
-) }}
+单个数据的选中状态配置。
 
-#### emphasis(Object)
-
-{{ use: partial-bar-item-style(
-    prefix = "####"
-) }}
-
-{{ use: partial-tooltip-in-series-data() }}
-
-{{ use: partial-marker(
-    prefix = "#",
-    seriesType = "bar",
-    hasCoord = true,
-    hasType = true,
-    name = "mark point"
+{{ use: partial-bar-state(
+    prefix = "###",
+    topLevel = false,
+    isNormal = false
 ) }}
 
 {{ use: partial-clip(
@@ -186,7 +198,11 @@ The style setting of the text label in a single bar.
 
 {{ use: partial-z-zlevel(
     prefix = "#",
-    componentName = "bar chart"
+    componentName = "柱状图"
+) }}
+
+{{ use: partial-silent(
+    prefix = "#"
 ) }}
 
 {{ use: partial-animation(
@@ -194,6 +210,40 @@ The style setting of the text label in a single bar.
 ) }}
 
 {{ use: partial-tooltip-in-series() }}
+
+
+
+{{ target: partial-bar-state }}
+
+#${prefix} label(Object)
+
+{{ if: ${topLevel} }}
+{{ use: partial-label-desc() }}
+
+{{ else }}
+单个数据的文本配置。
+{{ /if }}
+
+{{ use: partial-label(
+    prefix = "#" + ${prefix},
+    defaultPosition = "'inside'",
+    formatter = ${topLevel}
+) }}
+
+#${prefix} itemStyle(Object)
+
+{{ if: ${topLevel} }}
+{{ use: partial-item-style-desc() }}
+
+{{ else }}
+单个数据的图形样式设置。
+{{ /if }}
+
+{{ use: partial-bar-item-style(
+    prefix = "#" + ${prefix},
+    useColorPalatte = ${topLevel && isNormal},
+    hasCallback = ${topLevel && isNormal}
+) }}
 
 
 
@@ -211,8 +261,11 @@ The border color of bar.
 
 The border width of bar. defaults to have no border.
 
+#${prefix} borderType(string) = 'solid'
+
+柱条的描边类型，默认为实线，支持 `'dashed'`, `'dotted'`。
+
 {{ use: partial-border-radius(
-    propName = 'barBorderRadius',
     prefix = ${prefix}
 ) }}
 

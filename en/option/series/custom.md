@@ -389,7 +389,15 @@ For example:
     hasCallback = false
 ) }}
 
+## labelLayout(Object|Function)
+
+{{ use: partial-label-layout(
+    prefix = "##"
+) }}
+
 ## emphasis(Object)
+
+Emphasis state.
 
 ### itemStyle(Object)
 

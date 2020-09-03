@@ -17,12 +17,6 @@ Label in mark area.
     prefix = ${prefix} + '##'
 ) }}
 
-###${prefix} emphasis(Object)
-
-{{ use: partial-label(
-    prefix = ${prefix} + '###'
-) }}
-
 ##${prefix} itemStyle(Object)
 
 Style of the mark area.
@@ -31,7 +25,17 @@ Style of the mark area.
     prefix = "##" + ${prefix}
 ) }}
 
-###${prefix} emphasis(Object)
+##${prefix} emphasis(Object)
+
+Emphasis status of mark area.
+
+###${prefix} label(Object)
+
+{{ use: partial-label(
+    prefix = ${prefix} + '###'
+) }}
+
+###${prefix} itemStyle(*)
 
 {{ use: partial-item-style(
     prefix = "###" + ${prefix}
@@ -46,9 +50,7 @@ The scope of the area is defined by `data`, which is an array with two item, rep
 {{ if: ${hasCoord} }}
 2. Specify the coordinate in data coordinate system (i.e., cartesian) using
 [coord](~series-${seriesType}.markArea.data.0.coord), which can be also set as `'min'`, `'max'`, `'average'` (e.g, `coord: [23, 'min']`, or `coord: ['average', 'max']`).
-{{ /if }}
-
-{{ if: ${hasType} }}
+{{ /if }}{{ if: ${hasType} }}
 3. Locate the point on the min value or max value of `series.data` using [type](~series-${seriesType}.markArea.data.0.type), where [valueIndex](~series-${seriesType}.markArea.data.0.valueIndex) or [valueDim](~series-${seriesType}.markPoint.data.0.valueDim) can be used to specify the dimension on which the min, max or average are calculated.
 4. If in cartesian, you can only specify `xAxis` or `yAxis` to define a mark area based on only X or Y axis, see sample [scatter-weight](${galleryEditorPath}scatter-weight)
 {{ /if }}
@@ -200,12 +202,6 @@ Style of the item.
     prefix = "#"+${prefix}
 ) }}
 
-##${prefix} emphasis(Object)
-
-{{ use: partial-item-style(
-    prefix = "##"+${prefix}
-) }}
-
 #${prefix} label(Object)
 
 Label style of the item.
@@ -215,7 +211,15 @@ Label style of start point and end point will be merged together.
     prefix = '#'+${prefix}
 ) }}
 
-##${prefix} emphasis(Object)
+#${prefix} emphasis(Object)
+
+##${prefix} itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "##"+${prefix}
+) }}
+
+##${prefix} label(Object)
 
 {{ use: partial-label(
     prefix = '##'+${prefix}

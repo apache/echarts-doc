@@ -141,6 +141,12 @@ Sunburst charts support data mining by default. That means, when a user clicks a
     defaultRadius = "[0, '75%']"
 ) }}
 
+## labelLayout(Object|Function)
+
+{{ use: partial-label-layout(
+    prefix = "##"
+) }}
+
 ## data(Array)
 
 The data structure of [series-sunburst.data](~series-sunburst.data) is like tree. For example:

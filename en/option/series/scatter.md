@@ -56,6 +56,12 @@ Whether to enable the animation effect when mouse is on the symbol.
     formatter = true
 ) }}
 
+## labelLayout(Object|Function)
+
+{{ use: partial-label-layout(
+    prefix = "##"
+) }}
+
 ## itemStyle(Object)
 
 {{ use: partial-item-style-desc() }}
@@ -68,6 +74,8 @@ Whether to enable the animation effect when mouse is on the symbol.
 ) }}
 
 ## emphasis(Object)
+
+Configurations of emphasis state.
 
 ### label(Object)
 
@@ -131,6 +139,8 @@ the style setting about single data point(bubble).
 ) }}
 
 ### emphasis(Object)
+
+Emphasis state of single data.
 
 #### label(Object)
 
