@@ -138,6 +138,7 @@ module.exports.updateBlocksLevels = function (blocks, targetsMap) {
         case 'endif':
         case 'for':
         case 'endfor':
+        case 'uicontrol':
             // Indent description content by default
             block.level = currentLevel + 1;
             break;
@@ -178,14 +179,25 @@ module.exports.updateBlocksKeys = function (blocks) {
 
     const stacks = ['top'];
 
-    let duplicateKeyCount = 0;
-
-    const keyMap = {};
-
-    const contentKeyCountMap = {};
-    const uiControlKeyCountMap = {};
-
     let scopeKey = stacks.join('.');
+
+    function keyNoDuplicate() {
+        const keyCount = {};
+        const keyMap = {};
+        return function (baseKey) {
+            let keyNoDuplicate = baseKey;
+            keyCount[baseKey] = keyCount[baseKey] || 1;
+            while (keyMap[keyNoDuplicate]) {
+                keyNoDuplicate = baseKey + '-' + keyCount[baseKey]++;
+            }
+            keyMap[keyNoDuplicate] = true;
+            return keyNoDuplicate;
+        }
+    }
+
+    const contentKeyNoDuplicate = keyNoDuplicate();
+    const uiControlKeyNoDuplicate = keyNoDuplicate();
+    const allKeyNoDuplicate = keyNoDuplicate();
 
     for (const block of blocks) {
         let baseKey = '';
@@ -207,12 +219,7 @@ module.exports.updateBlocksKeys = function (blocks) {
             break;
             // Content and use command following header has same level.
         case 'content':
-            baseKey = `content:${scopeKey}`;
-            contentKeyCountMap[baseKey] = contentKeyCountMap[baseKey] || 0;
-            if (contentKeyCountMap[baseKey]) {
-                baseKey += '-' + contentKeyCountMap[baseKey];
-            }
-            contentKeyCountMap[baseKey]++;
+            baseKey = contentKeyNoDuplicate(`content:${scopeKey}`);
             break;
         case 'use':
         case 'import':
@@ -229,21 +236,11 @@ module.exports.updateBlocksKeys = function (blocks) {
                 baseKey = `${baseKey}:${block.expr}`
             }
             break;
-        case 'exampleuicontrol':
-            baseKey = `uicontrol:${scopeKey}`;
-            uiControlKeyCountMap[baseKey] = uiControlKeyCountMap[baseKey] || 0;
-            if (uiControlKeyCountMap[baseKey]) {
-                baseKey += '-' + uiControlKeyCountMap[baseKey];
-            }
-            uiControlKeyCountMap[baseKey]++;
+        case 'uicontrol':
+            baseKey = uiControlKeyNoDuplicate(`uicontrol:${scopeKey}`);
         }
-        let keyNoDuplicate = baseKey;
-        while (keyMap[keyNoDuplicate]) {
-            keyNoDuplicate = baseKey + '-' + (duplicateKeyCount++);
-        }
-        keyMap[keyNoDuplicate] = true;
 
-        block.key = keyNoDuplicate;
+        block.key = allKeyNoDuplicate(baseKey) ;
     }
 };
 
