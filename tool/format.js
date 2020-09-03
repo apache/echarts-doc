@@ -13,7 +13,10 @@ const {parseBlocks} = require('../editor/common/parseBlocks');
         for (let fileName in json) {
             const fileTargets = json[fileName];
             const filePath = path.resolve(__dirname, `../${lang}/option/`, fileName.replace('.', '/')) + '.md';
-            fs.writeFileSync(filePath, compositeTargets(fileTargets), 'utf-8');
+            const fileContent = compositeTargets(fileTargets)
+                // Convert CRLF to LF
+                .replace(new RegExp(String.fromCharCode(0x000D) + String.fromCharCode(0x000A), 'g'), '\n');
+            fs.writeFileSync(filePath, fileContent, 'utf-8');
         }
     }
 })()

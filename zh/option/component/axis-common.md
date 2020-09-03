@@ -364,6 +364,8 @@ splitLine: {
 
 是否显示次分隔线。默认不显示。
 
+##${prefix} lineStyle(Object)
+
 {{ use: partial-line-style(
     prefix = '##' + ${prefix},
     defaultColor = "'#eee'",
