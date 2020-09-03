@@ -125,7 +125,7 @@ The maximum value of indicator. It is an optional configuration, but we recommen
 
 The minimum value of indicator. It it an optional configuration, with default value of 0.
 
-## color(string)
+### color(string)
 
-Specfy a color the the indicator.
+Specfy a color of the indicator.
 

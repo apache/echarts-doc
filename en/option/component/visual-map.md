@@ -313,6 +313,8 @@ Possiable visual channels includes:
 
 {{ use: partial-visual-map-visual-type() }}
 
+---
+
 {{ use: partial-visual-map-range(
     rangeType = 'outOfRange',
     visualMapName = ${visualMapName}

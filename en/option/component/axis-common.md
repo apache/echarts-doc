@@ -185,6 +185,8 @@ The length of the axis tick.
 
 ##${prefix} lineStyle(Object)
 
+Line style of axis ticks.
+
 {{ use: partial-line-style(
     prefix = '##' + ${prefix},
     defaultColor = "'#333'",

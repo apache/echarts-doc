@@ -150,6 +150,13 @@ Area filling color.
 
 Map area style in highlighted state.
 
+##${prefix} label(Object)
+
+{{ use: partial-label(
+    prefix = "##" + ${prefix},
+    formatter = true
+) }}
+
 ##${prefix} itemStyle(Object)
 
 ###${prefix} areaColor(Color) = '#eee'
@@ -160,13 +167,6 @@ Area filling color.
 
 {{ use: partial-item-style(
     prefix = ${prefix} + '##'
-) }}
-
-##${prefix} label(Object)
-
-{{ use: partial-label(
-    prefix = "##" + ${prefix},
-    formatter = true
 ) }}
 
 {{ use: partial-rect-layout(

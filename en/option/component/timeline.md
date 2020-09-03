@@ -223,14 +223,6 @@ Configurations:
     textStyleDefaultColor = "'#304654'"
 ) }}
 
-### emphasis(Object)
-
-{{ use: partial-timeline-label(
-    prefix = "###",
-    state = "emphasis",
-    textStyleDefaultColor = "'#c23531'"
-) }}
-
 ## itemStyle(Object)
 
 {{ use: partial-item-style-desc(
@@ -241,15 +233,6 @@ Configurations:
     prefix = "##",
     name = "timeline ",
     defaultColor = "'#304654'",
-    defaultBorderWidth = 1
-) }}
-
-### emphasis(Object)
-
-{{ use: partial-item-style(
-    prefix = "###",
-    name = "timeline ",
-    defaultColor = "'#c23531'",
     defaultBorderWidth = 1
 ) }}
 
@@ -360,21 +343,32 @@ Color of button border.
 
 Border width of button.
 
-### emphasis(Object)
+## emphasis(Object)
 
-Button style in *highlighted state* (when it's hovered by mouse).
+### label(Object)
 
-#### color(Color) = '#c23531'
+{{ use: partial-timeline-label(
+    prefix = "###",
+    state = "emphasis",
+    textStyleDefaultColor = "'#c23531'"
+) }}
 
-Button color.
+### itemStyle(Object)
 
-#### borderColor(Color) = '#c23531'
+{{ use: partial-item-style(
+    prefix = "###",
+    name = "timeline ",
+    defaultColor = "'#c23531'",
+    defaultBorderWidth = 1
+) }}
 
-Color of button border.
+### checkpointStyle(Object)
 
-#### borderWidth(number) = 2
+Style of the checkpoint.
 
-Width of button border.
+### controlStyle(Object)
+
+Style of the control button.
 
 ## data(Array)
 

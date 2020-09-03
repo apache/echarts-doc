@@ -75,7 +75,20 @@ Area color in the map.
     prefix = '###'
 ) }}
 
-#### emphasis(Object)
+### label(Object)
+
+{{ use: partial-label-desc() }}
+
+{{ use: partial-label(
+    prefix = "###",
+    formatter = true
+) }}
+
+### emphasis(Object)
+
+Style of emphasis region.
+
+#### itemStyle(Object)
 
 ##### areaColor(Color)
 
@@ -87,16 +100,7 @@ Area color in the map.
     prefix = '####'
 ) }}
 
-### label(Object)
-
-{{ use: partial-label-desc() }}
-
-{{ use: partial-label(
-    prefix = "###",
-    formatter = true
-) }}
-
-#### emphasis(Object)
+#### label(Object)
 
 {{ use: partial-label(
     prefix = "####",

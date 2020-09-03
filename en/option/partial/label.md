@@ -60,12 +60,6 @@ Whether to move text slightly. For example: `[30, 40]` means move `30` horizonta
 ) }}
 {{ /if }}
 
-{{ if: ${ellipsis} }}
-#${prefix} ellipsis(boolean) = true
-
-When the text is overflow, whether to replace the excess part with apostrophe.
-{{ /if }}
-
 
 
 {{ target: partial-label-position }}
