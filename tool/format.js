@@ -10,6 +10,7 @@ const {parseBlocks} = require('../editor/common/parseBlocks');
 (async function () {
     for (let lang of ['en', 'zh']) {
         const json = await parseBlocks(path.resolve(__dirname, `../${lang}/option`), true);
+        fs.writeFileSync(__dirname + `/blocks-${lang}.json`, JSON.stringify(json, null, 2), 'utf-8');
         for (let fileName in json) {
             const fileTargets = json[fileName];
             const filePath = path.resolve(__dirname, `../${lang}/option/`, fileName.replace('.', '/')) + '.md';
@@ -19,4 +20,4 @@ const {parseBlocks} = require('../editor/common/parseBlocks');
             fs.writeFileSync(filePath, fileContent, 'utf-8');
         }
     }
-})()
+})();

@@ -8,10 +8,12 @@ const {compositeTargets} = require('../editor/common/blockHelper');
 const {parseBlocks} = require('../editor/common/parseBlocks');
 const _ = require('lodash');
 const arrayDiff = require('zrender/lib/core/arrayDiff2');
+const {argv} = require('yargs');
 
+const fromLang = argv.from || 'zh';
+const toLang = argv.to || 'en';
 
-const fromLang = 'zh';
-const toLang = 'en';
+console.log(`Patching from ${fromLang.toUpperCase()} to ${toLang.toUpperCase()}`);
 
 function applyBlocksPatch(fromBlocks, toBlocks) {
     const patchedBlocks = [];
@@ -22,6 +24,13 @@ function applyBlocksPatch(fromBlocks, toBlocks) {
     for (let part of diffResult) {
         if (part.removed) {
             // Just ignore
+            for (let i = 0; i < part.indices.length; i++) {
+                const toBlock = toBlocks[part.indices[i]];
+                if (toBlock.type === 'uicontrol') {
+                    // Not remove ui control block when patching from en to zh
+                    patchedBlocks.push(_.clone(toBlock));
+                }
+            }
         }
         else {
             for (let i = 0; i < part.indices.length; i++) {
@@ -29,7 +38,7 @@ function applyBlocksPatch(fromBlocks, toBlocks) {
                 // if (fromBlock.key === 'content:top.calendar.splitLine.lineStyle') {
                 //     console.log(part);
                 // }
-                // Just ignore uicontrol block.
+                // Ignore uicontrol block.
                 if (fromBlock.type === 'uicontrol') {
                     continue;
                 }

@@ -97,6 +97,23 @@ Run
 npm run format
 ```
 
+Make sure have a double review on the git diff after formatted.
+
+#### Sync docs between different languages.
+
+After you finished editing doc of one language. You can use following script to sync it to another language.
+
+```shell
+# zh to en
+node tool/patchLanguage --from=zh --to=en
+# en to zh
+node tool/patchLanguage --from=en --to=zh
+```
+
+Sync will move the structure. It will make editing of other languages much easier.
+
+Again make sure have a double review on the git diff after syncing.
+
 #### Reference of option
 
 A `~` can be used to refer to a option item in the same doc. For example:
