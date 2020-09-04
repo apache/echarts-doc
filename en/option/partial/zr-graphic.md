@@ -1151,7 +1151,6 @@ Optional values:
 Only one between [left](~${optionPath}.${hostName}${symbolVisit}polygon.left) and [right](~${optionPath}.${hostName}${symbolVisit}polygon.right) can work.
 
 If [left](~${optionPath}.${hostName}${symbolVisit}polygon.left) or [right](~${optionPath}.${hostName}${symbolVisit}polygon.right) is specified, positioning attributes in [shape](~${optionPath}.${hostName}${symbolVisit}polygon.shape) (like `x`, `cx`) will not work.
-
 {{ else }}
 Only one between [top](~${optionPath}.${hostName}${symbolVisit}polygon.top) and [bottom](~${optionPath}.${hostName}${symbolVisit}polygon.bottom) can work.
 

@@ -339,7 +339,7 @@ module.exports.compositeBlocks = function (blocks) {
             let prefix = '\n\n';
             // A bit format here. No extra newline between if/for block.
             if ((prevBlock && (prevBlock.type === 'if' || prevBlock.type === 'elif' || prevBlock.type === 'else' || prevBlock.type === 'for')) ||
-                block.type === 'endif' || block.type === 'endfor') {
+                block.type === 'endif' || block.type === 'endfor' || block.type === 'else') {
                 prefix = '\n';
             }
             blockStr = prefix + blockStr;

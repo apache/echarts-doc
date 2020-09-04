@@ -285,6 +285,12 @@ When is no content in breadcrumb, this minimal width need to be set up.
     defaultColor = "#fff"
 ) }}
 
+## labelLayout(Object|Function)
+
+{{ use: partial-label-layout(
+    prefix = "##"
+) }}
+
 ## data(Array)
 
 the the data format of [series-treemap.data](~series-treemap.data) is a forest. For example:
@@ -424,7 +430,14 @@ A color list for a level. Each node in the level will obtain a color from the co
 
 #${prefix} colorAlpha(Array) = null
 
-It indicates the range of tranparent rate (color alpha) {{ if: ${prefix} !== '#' }}for nodes in a level {{ else }} of the series{{ /if }}. The range of values is 0 ~ 1.
+{{ if: ${prefix} !== '#' }}
+It indicates the range of tranparent rate (color alpha) for nodes in a level
+{{ else }}
+It indicates the range of tranparent rate (color alpha) for nodes of the series
+{{ /if }}
+
+.
+The range of values is 0 ~ 1.
 
 For example, `colorAlpha` can be `[0.3, 1]`.
 
@@ -436,7 +449,13 @@ For example, `colorAlpha` can be `[0.3, 1]`.
 
 #${prefix} colorSaturation(number) = null
 
-It indicates the range of saturation (color alpha) {{ if: ${prefix} !== '#' }}for nodes in a level {{ else }} of the series{{ /if }}. The range of values is 0 ~ 1.
+{{ if: ${prefix} !== '#' }}
+It indicates the range of saturation (color alpha) for nodes in a level.
+{{ else }}
+It indicates the range of saturation (color alpha) for nodes  of the series.
+{{ /if }}
+
+The range of values is 0 ~ 1.
 
 For example, `colorSaturation` can be `[0.3, 1]`.
 
@@ -590,9 +609,7 @@ Height of label area.
 <br>
 > Tps: In treemap, `${name}` attribute could appear in more than one places:
 
-{{ if: ${name} !== 'color' }}
-> * It could appear in [sereis-treemap](~series-treemap), indicating the unified setting of the series.
-{{ /if }}
+{{ if: ${name} !== 'color' }}> * It could appear in [sereis-treemap](~series-treemap), indicating the unified setting of the series.{{ /if }}
 
 > * It could appear in each array element of  [series-treemap.levels](~series-treemap.levels), indicating the unified setting of each level of the tree.
 
@@ -649,13 +666,9 @@ In this way, a effect can be implemented: different sections have different hue 
 
 {{ use: partial-treemap-borderColor-setting() }}
 
-#${prefix} strokeColor(Color) = null
-
-Stroke color of each rect.
-
-#${prefix} strokeWidth(number) = null
-
-Stroke width of each rect.
+{{ use: partial-style-shadow-opacity(
+    prefix = ${prefix}
+) }}
 {{ /if }}
 
 
