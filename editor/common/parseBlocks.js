@@ -26,8 +26,6 @@ function hasNewlineBefore(value) {
 function parseMarkDown(mdStr, parseExampleUI) {
     const blocks = [];
 
-    const EXAMPLE_CONTROL_REGEX = /<ExampleUIControl.* \/>/;
-
     function removeNewline(mdStr) {
         // Keep leading and trailing space and remove newline. Newline will be added when compositing.
         return mdStr.replace(/^\s+/, function (val) {
@@ -39,13 +37,15 @@ function parseMarkDown(mdStr, parseExampleUI) {
         });
     }
 
-    mdStr.split(new RegExp('(?:^|\n) *((?:#{1,' + MAX_DEPTH + '}) *(?:[^#][^\n]+)|<ExampleUIControl.* \/>)'))
+    mdStr.split(new RegExp(
+        parseExampleUI ? '(?:^|\n) *((?:#{1,' + MAX_DEPTH + '}) *(?:[^#][^\n]+)|<ExampleUIControl.* \/>)'
+            : '(?:^|\n) *((?:#{1,' + MAX_DEPTH + '}) *(?:[^#][^\n]+))'
+    ))
         .forEach((section, idx) => {
             const headerParts = new RegExp('(?:^|\n) *(#{1,' + MAX_DEPTH + '}) *([^#][^\n]+)', 'g').exec(section);
             if (headerParts) {
                 const headerText = headerParts[2];
                 const headerLevel = headerParts[1].length;
-
 
                 blocks.push({
                     type: 'header',
@@ -56,7 +56,7 @@ function parseMarkDown(mdStr, parseExampleUI) {
             }
             else {
                 const controlParts = /<ExampleUIControl.* \/>/.exec(section);
-                if (controlParts) {
+                if (parseExampleUI && controlParts) {
                     blocks.push({
                         type: 'uicontrol',
                         html: section
@@ -67,6 +67,7 @@ function parseMarkDown(mdStr, parseExampleUI) {
                     text && blocks.push({
                         type: 'content',
                         value: text,
+                        hasNewlineEnd: hasNewlineEnd(section),
                         inline: !hasNewlineBefore(section)
                     });
                 }
@@ -76,7 +77,7 @@ function parseMarkDown(mdStr, parseExampleUI) {
 }
 
 function compositeIfCommand(command) {
-    if (command instanceof ElseCommand && command.children[0] instanceof ElifCommand) {
+    if ((command instanceof ElseCommand) && (command.children[0] instanceof ElifCommand)) {
         // There is always an ElseCommand inserted between IfCommand and ElifCommand
         return compositeIfCommand(command.children[0]);
     }
@@ -160,8 +161,10 @@ function parseSingleFileBlocks(fileName, root, detailed, blocksStore) {
         const targetObj = engine.targets[targetName];
         const outBlocks = [];
         let textBlockText = '';
+        let prevTextBlockText = '';
 
         function closeTextBlock() {
+            prevTextBlockText = textBlockText;
             if (textBlockText) {
                 const mdBlocks = parseMarkDown(textBlockText, detailed);
                 for (let i = 0; i < mdBlocks.length; i++) {
@@ -176,27 +179,29 @@ function parseSingleFileBlocks(fileName, root, detailed, blocksStore) {
          * xxxxx {{ if }} xxxx {{ /if}}
          */
         function isInlineCommand() {
-            if (!previousCommand) {
-                return false;
-            }
-
-            if (previousCommand instanceof TextNode) {
+            if (textBlockText) {
                 // Prev command has newline at the end.
-                return !hasNewlineEnd(previousCommand.value);
+                return !hasNewlineEnd(textBlockText);
             }
             else {
-                // has no space between the prev command.
-                // {{for:}}{{if:}}xxx{{/if}}{{/for}}
-                return true;
+                const lastBlock = outBlocks[outBlocks.length - 1];
+                if (!lastBlock) {
+                    return false;
+                }
+                if (lastBlock.type === 'header' || lastBlock.type === 'use') {
+                    return false;
+                }
+                else if (lastBlock.type === 'content') {
+                    return !lastBlock.hasNewlineEnd;
+                }
+                else {
+                    // has no space between the prev command.
+                    // {{for:}}{{if:}}xxx{{/if}}{{/for}}
+                    return true;
+                }
             }
         }
 
-        class CloseIfCommand {};
-        class CloseForCommnand {};
-
-        let previousCommand;
-
-        let headerPendingInlining = null;
 
         function addBlocks(parentCommand) {
             for (const command of parentCommand.children) {
@@ -209,86 +214,61 @@ function parseSingleFileBlocks(fileName, root, detailed, blocksStore) {
                         // use command can't be used inline
                         inline: false
                     });
-                    previousCommand = command;
-                    headerPendingInlining = null;
                 }
                 else if (command instanceof TextNode) {
-                    if (detailed) {
-                        let text = command.value;
-                        if (headerPendingInlining) {
-                            const lines = text.split('\n');
-                            headerPendingInlining.value += lines.shift();
-                            if (lines.length > 0) {
-                                headerPendingInlining = null;
-                            }
-                            text = lines.join('\n');
-                        }
-
-                        textBlockText = text;
-                        closeTextBlock();
-                    }
-                    else {
-                        textBlockText += command.value;
-                    }
-                    previousCommand = command;
-
+                    textBlockText += command.value;
                 }
                 else if (command instanceof IfCommand) {
-                    if (detailed) {
-                        if ((command instanceof ElseCommand) && (command.children[0] instanceof ElifCommand)) {
-                            // There is always an ElseCommand inserted between IfCommand and ElifCommand
-                            return addBlocks(command);
-                        }
-                        // DONT parse inline if block in header
-                        let prevBlock = outBlocks[outBlocks.length - 1];
-                        if (headerPendingInlining || (prevBlock && prevBlock.type === 'header' && isInlineCommand())) {
-                            prevBlock.value += compositeIfCommand(command);
-                            headerPendingInlining = prevBlock;
-                        }
-                        else {
-                            const type = command instanceof ElseCommand
-                                ? 'else' : command instanceof ElifCommand ? 'elif' : 'if';
+                    if ((command instanceof ElseCommand) && (command.children[0] instanceof ElifCommand)) {
+                        // There is always an ElseCommand inserted between IfCommand and ElifCommand
+                        return addBlocks(command);
+                    }
 
-                            outBlocks.push({
-                                type,
-                                inline: isInlineCommand(),
-                                expr: command.value && formatExpr(command.value)
-                            });
-                            previousCommand = command;
-                            addBlocks(command);
-                            if (type === 'if') {
-                                outBlocks.push({
-                                    type: 'endif',
-                                    inline: isInlineCommand()
-                                });
-                                previousCommand = new CloseIfCommand();
-                            }
-                        }
+                    // // DONT parse inline if block in the content
+                    if (isInlineCommand() || !detailed) {
+                        textBlockText += compositeIfCommand(command);
                     }
                     else {
-                        // Display if, for in the text block.
-                        textBlockText += compositeIfCommand(command);
+                        closeTextBlock();
+
+                        const type = command instanceof ElseCommand
+                            ? 'else' : command instanceof ElifCommand ? 'elif' : 'if';
+
+                        outBlocks.push({
+                            type,
+                            inline: false,
+                            expr: command.value && formatExpr(command.value)
+                        });
+                        addBlocks(command);
+                        const isCloseNeedsToInline = isInlineCommand();
+                        closeTextBlock();
+                        if (type === 'if') {
+                            outBlocks.push({
+                                type: 'endif',
+                                inline: isCloseNeedsToInline
+                            });
+                        }
                     }
                 }
                 else if (command instanceof ForCommand) {
-                    if (detailed) {
-                        headerPendingInlining = null;
+                    if (isInlineCommand() || !detailed) {
+                        textBlockText += compositeForCommand(command);
+                    }
+                    else {
+                        closeTextBlock();
 
                         outBlocks.push({
                             type: 'for',
-                            inline: isInlineCommand(),
+                            inline: false,
                             expr: formatExpr(command.value)
                         });
-                        previousCommand = command;
                         addBlocks(command);
-                        previousCommand = new CloseForCommnand();
+                        const isCloseNeedsToInline = isInlineCommand();
+                        closeTextBlock();
                         outBlocks.push({
                             type: 'endfor',
-                            inline: isInlineCommand()
+                            inline: isCloseNeedsToInline
                         });
-                    }
-                    else {
-                        textBlockText += compositeForCommand(command);
                     }
                 }
                 else {
