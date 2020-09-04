@@ -49,7 +49,15 @@ Provide a website link in doc:
 [Apache ECharts (incubating) website](${websitePath}/en/download.html)
 ```
 
-Notes:
+#### Reference of option
+
+A `~` can be used to refer to a option item in the same doc. For example:
+
+```md
+[xAxis.name](~xAxis.name)
+```
+
+#### Notes:
 
 1. Formatter will treat {{use}} as a block. So don't use it **inline**.
 
@@ -88,7 +96,7 @@ The range of values is 0 ~ 1.
 It indicates the range of saturation (color alpha) {{ if: ${prefix} !== '#' }}for nodes in a level {{ else }} of the series{{ /if }}. The range of values is 0 ~ 1.
 
 ```
-#### Format Option Docs
+## Format Option Docs
 
 Option docs needs to be formatted before commit.
 
@@ -99,7 +107,7 @@ npm run format
 
 Make sure have a double review on the git diff after formatted.
 
-#### Sync docs between different languages.
+## Sync docs between different languages.
 
 After you finished editing doc of one language. You can use following script to sync it to another language.
 
@@ -113,11 +121,3 @@ node tool/patchLanguage --from=en --to=zh
 Sync will move the structure. It will make editing of other languages much easier.
 
 Again make sure have a double review on the git diff after syncing.
-
-#### Reference of option
-
-A `~` can be used to refer to a option item in the same doc. For example:
-
-```md
-[xAxis.name](~xAxis.name)
-```
