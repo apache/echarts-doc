@@ -72,11 +72,13 @@ async function md2jsonAsync(opt) {
     }, opt);
 
     function run(cb) {
-        md2json(newOpt, schema => {
+        md2json(newOpt).then(schema => {
             writeSingleSchema(schema, opt.language, opt.entry, false);
             writeSingleSchemaPartioned(schema, opt.language, opt.entry, false);
             console.log(chalk.green('generated: ' + opt.language + '/' + opt.entry));
             cb && cb();
+        }).catch(e => {
+            console.log(e);
         });
     }
 

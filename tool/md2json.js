@@ -1,11 +1,11 @@
 const fs = require('fs');
 const marked = require('marked');
 const etpl = require('../dep/etpl');
-const glob = require('glob');
+const globby = require('globby');
 const htmlparser2 = require('htmlparser2');
 const chalk = require('chalk');
 
-function convert(opts, cb) {
+async function convert(opts) {
     const mdPath = opts.path;
     const sectionsAnyOf = opts.sectionsAnyOf;
     const entry = opts.entry;
@@ -19,98 +19,89 @@ function convert(opts, cb) {
     etplEngine.addFilter('default', function (source, defaultVal) {
         return (source === '' || source == null) ? defaultVal : source;
     });
-    glob(mdPath, function (err, files) {
-        var mdTpl = files.filter(function (fileName) {
-            return fileName.indexOf('__') !== 0;
-        }).map(function (fileName) {
-            return fs.readFileSync(fileName, 'utf-8');
-        });
 
-        // Render tpl
-        etplEngine.compile(mdTpl.join('\n'));
+    const files = await globby([mdPath]);
 
-        // ETPL do not support global variables, without which we have to pass
-        // parameters like `galleryViewPath` each time `{{use: ...}}` used, which
-        // is easy to forget. So we mount global variables on Object prototype when
-        // ETPL rendering.
-        // I know this approach is ugly, but I am sorry that I have no time to make
-        // a pull request to ETPL yet.
-        Object.keys(tplEnv).forEach(function (key) {
-            if (Object.prototype.hasOwnProperty(key)) {
-                throw new Error(key + ' can not be used in tpl config');
-            }
-
-            Object.prototype[key] = tplEnv[key];
-        });
-
-        var mdStr;
-        // try {
-            mdStr = etplEngine.getRenderer(entry)({});
-        // }
-        // catch (err) {
-        //     console.error(chalk.red('There is something illegal in doc md!'));
-        //     throw err;
-        // }
-
-        // Restore the global variables.
-        Object.keys(tplEnv).forEach(function (key) {
-            delete Object.prototype[key];
-        });
-
-        // Markdown to JSON
-        var schema = mdToJsonSchema(mdStr, maxDepth, opts.imageRoot, entry);
-        // console.log(mdStr);
-        var topLevel = schema.option.properties;
-
-        (sectionsAnyOf || []).forEach(function (componentName) {
-            var newProperties = schema.option.properties = {};
-            var componentNameParsed = componentName.split('.');
-            componentName = componentNameParsed[0];
-
-            for (var name in topLevel) {
-                if (componentNameParsed.length > 1) {
-                    newProperties[name] = topLevel[name];
-                    var secondLevel = topLevel[name].properties;
-                    var secondNewProps = topLevel[name].properties = {};
-                    for (var secondName in secondLevel) {
-                        makeOptionArr(
-                            secondName, componentNameParsed[1], secondNewProps, secondLevel
-                        );
-                    }
-                }
-                else {
-                    makeOptionArr(name, componentName, newProperties, topLevel);
-                }
-            }
-            topLevel = newProperties;
-
-            function makeOptionArr(nm, cptName, newProps, level) {
-                var nmParsed = nm.split('.');
-                if (nmParsed[0] === cptName) {
-                    newProps[cptName] = newProps[cptName] || {
-                        'type': 'Array',
-                        'items': {
-                            'anyOf': []
-                        }
-                    };
-                    // Use description in excatly #series
-                    if (cptName === nm) {
-                        newProps[cptName].description = level[nm].description;
-                    }
-                    else {
-                        newProps[cptName].items.anyOf.push(level[nm]);
-                    }
-                }
-                else {
-                    newProps[nm] = level[nm];
-                }
-            }
-        });
-
-        cb && cb(schema);
-        // console.log(JSON.stringify(schema, null, 2));
-
+    const mdTpl = files.filter(function (fileName) {
+        return fileName.indexOf('__') !== 0;
+    }).map(function (fileName) {
+        return fs.readFileSync(fileName, 'utf-8');
     });
+
+    // Render tpl
+    etplEngine.compile(mdTpl.join('\n'));
+
+    // ETPL do not support global variables, without which we have to pass
+    // parameters like `galleryViewPath` each time `{{use: ...}}` used, which
+    // is easy to forget. So we mount global variables on Object prototype when
+    // ETPL rendering.
+    // I know this approach is ugly, but I am sorry that I have no time to make
+    // a pull request to ETPL yet.
+    Object.keys(tplEnv).forEach(function (key) {
+        if (Object.prototype.hasOwnProperty(key)) {
+            throw new Error(key + ' can not be used in tpl config');
+        }
+
+        Object.prototype[key] = tplEnv[key];
+    });
+
+    const mdStr = etplEngine.getRenderer(entry)({});
+
+    // Restore the global variables.
+    Object.keys(tplEnv).forEach(function (key) {
+        delete Object.prototype[key];
+    });
+
+    // Markdown to JSON
+    const schema = mdToJsonSchema(mdStr, maxDepth, opts.imageRoot, entry);
+    // console.log(mdStr);
+    let topLevel = schema.option.properties;
+
+    (sectionsAnyOf || []).forEach(function (componentName) {
+        const newProperties = schema.option.properties = {};
+        const componentNameParsed = componentName.split('.');
+        componentName = componentNameParsed[0];
+
+        for (const name in topLevel) {
+            if (componentNameParsed.length > 1) {
+                newProperties[name] = topLevel[name];
+                const secondLevel = topLevel[name].properties;
+                const secondNewProps = topLevel[name].properties = {};
+                for (const secondName in secondLevel) {
+                    makeOptionArr(
+                        secondName, componentNameParsed[1], secondNewProps, secondLevel
+                    );
+                }
+            }
+            else {
+                makeOptionArr(name, componentName, newProperties, topLevel);
+            }
+        }
+        topLevel = newProperties;
+
+        function makeOptionArr(nm, cptName, newProps, level) {
+            const nmParsed = nm.split('.');
+            if (nmParsed[0] === cptName) {
+                newProps[cptName] = newProps[cptName] || {
+                    'type': 'Array',
+                    'items': {
+                        'anyOf': []
+                    }
+                };
+                // Use description in excatly #series
+                if (cptName === nm) {
+                    newProps[cptName].description = level[nm].description;
+                }
+                else {
+                    newProps[cptName].items.anyOf.push(level[nm]);
+                }
+            }
+            else {
+                newProps[nm] = level[nm];
+            }
+        }
+    });
+    return schema;
 }
 
 function mdToJsonSchema(mdStr, maxDepth, imagePath, entry) {
