@@ -264,6 +264,96 @@ const option = {
 
 点击某个节点，会自动放大那个节点到合适的比例（节点占可视区域的面积比例），这个配置项就是这个比例。
 
+{{ use: partial-treemap-level-props(
+    prefix = "#"
+) }}
+
+{{ use: partial-selected-mode(
+    version = '5.0.0'
+) }}
+
+## breadcrumb(Object)
+
+面包屑，能够显示当前节点的路径。
+
+### show(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
+
+是否显示面包屑。
+
+{{ use: partial-rect-layout(
+    componentName = "asdf ",
+    prefix = "##",
+    noZ = true,
+    defaultLeft = "'center'",
+    defaultBottom = 0
+) }}
+
+### height(number) = 22
+
+<ExampleUIControlNumber min="0" default="22" step="1" />
+
+面包屑的高度。
+
+### emptyItemWidth(number) = 25
+
+<ExampleUIControlNumber min="0" default="25" step="1" />
+
+当面包屑没有内容时候，设个最小宽度。
+
+### itemStyle(Object)
+
+{{ use: partial-item-style-desc() }}
+
+{{ use: partial-item-style(
+    prefix = "###",
+    name = "boxplot",
+    defaultColor = "rgba(0,0,0,0.7)",
+    defaultBorderColor = "rgba(255,255,255,0.7)",
+    defaultBorderWidth = 1,
+    defaultShadowColor = 'rgba(150,150,150,1)',
+    defaultShadowBlur = 3,
+    defaultShadowOffsetX = 0,
+    defaultShadowOffsetY = 0
+) }}
+
+#### textStyle(Object)
+
+{{ use: partial-text-style(
+    prefix = "####",
+    defaultColor = "#fff"
+) }}
+
+### emphasis(Object)
+
+#### itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "####",
+    name = "boxplot",
+    defaultColor = "rgba(0,0,0,0.7)",
+    defaultBorderColor = "rgba(255,255,255,0.7)",
+    defaultBorderWidth = 1,
+    defaultShadowColor = 'rgba(150,150,150,1)',
+    defaultShadowBlur = 3,
+    defaultShadowOffsetX = 0,
+    defaultShadowOffsetY = 0
+) }}
+
+##### textStyle(Object)
+
+{{ use: partial-text-style(
+    prefix = "#####",
+    defaultColor = "#fff"
+) }}
+
+## labelLayout(Object|Function)
+
+{{ use: partial-label-layout(
+    prefix = "##"
+) }}
+
 ## levels(Array)
 
 **多层配置**
@@ -354,96 +444,6 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 ![500xauto](~treemap-border-gap.png)
 
 {{ use: partial-treemap-level-props(
-    prefix = "##"
-) }}
-
-{{ use: partial-treemap-level-props(
-    prefix = "#"
-) }}
-
-{{ use: partial-selected-mode(
-    version = '5.0.0'
-) }}
-
-## breadcrumb(Object)
-
-面包屑，能够显示当前节点的路径。
-
-### show(boolean) = true
-
-<ExampleUIControlBoolean default="true" />
-
-是否显示面包屑。
-
-{{ use: partial-rect-layout(
-    componentName = "asdf ",
-    prefix = "##",
-    noZ = true,
-    defaultLeft = "'center'",
-    defaultBottom = 0
-) }}
-
-### height(number) = 22
-
-<ExampleUIControlNumber min="0" default="22" step="1" />
-
-面包屑的高度。
-
-### emptyItemWidth(number) = 25
-
-<ExampleUIControlNumber min="0" default="25" step="1" />
-
-当面包屑没有内容时候，设个最小宽度。
-
-### itemStyle(Object)
-
-{{ use: partial-item-style-desc() }}
-
-{{ use: partial-item-style(
-    prefix = "###",
-    name = "boxplot",
-    defaultColor = "rgba(0,0,0,0.7)",
-    defaultBorderColor = "rgba(255,255,255,0.7)",
-    defaultBorderWidth = 1,
-    defaultShadowColor = 'rgba(150,150,150,1)',
-    defaultShadowBlur = 3,
-    defaultShadowOffsetX = 0,
-    defaultShadowOffsetY = 0
-) }}
-
-#### textStyle(Object)
-
-{{ use: partial-text-style(
-    prefix = "####",
-    defaultColor = "#fff"
-) }}
-
-### emphasis(Object)
-
-#### itemStyle(Object)
-
-{{ use: partial-item-style(
-    prefix = "####",
-    name = "boxplot",
-    defaultColor = "rgba(0,0,0,0.7)",
-    defaultBorderColor = "rgba(255,255,255,0.7)",
-    defaultBorderWidth = 1,
-    defaultShadowColor = 'rgba(150,150,150,1)',
-    defaultShadowBlur = 3,
-    defaultShadowOffsetX = 0,
-    defaultShadowOffsetY = 0
-) }}
-
-##### textStyle(Object)
-
-{{ use: partial-text-style(
-    prefix = "#####",
-    defaultColor = "#fff"
-) }}
-
-## labelLayout(Object|Function)
-
-{{ use: partial-label-layout(
     prefix = "##"
 ) }}
 
@@ -795,6 +795,12 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 <ExampleUIControlNumber step="0.01" min="0" max="1" default="0.5" />
 
 矩形颜色的饱和度。取值范围是 0 ~ 1 之间的浮点数。
+
+#${prefix} borderRadius(number|Array) = 0
+
+<ExampleUIControlVector min="0" dims="LT,RT, RB, LB" clean="true"  />
+
+矩形圆角。
 
 #${prefix} borderWidth(number) = 0
 
