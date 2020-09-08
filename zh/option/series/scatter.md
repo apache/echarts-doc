@@ -153,20 +153,6 @@ const option = {
     prefix="##"
 ) }}
 
-## emphasis(Object)
-
-高亮的图形和标签样式。
-
-### scale(boolean) = true
-
-<ExampleUIControlBoolean default="true" />
-
-是否开启高亮后的放大效果。
-
-{{ use: scatter-state(
-    prefix="##"
-) }}
-
 ## blur(Object)
 
 淡出状态的配置。开启 [emphasis.focus](~series-scatter.emphasis.focus) 后有效。
@@ -295,7 +281,7 @@ const option = {
 
 {{ use: partial-label(
     prefix = "#" + ${prefix},
-    formatter = ${prefix === '##'}
+    formatter = ${prefix} === '##'
 ) }}
 
 #${prefix} itemStyle(Object)

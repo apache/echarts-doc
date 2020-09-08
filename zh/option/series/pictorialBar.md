@@ -147,17 +147,32 @@ option = {
 
 ## emphasis(Object)
 
-### label(Object)
+高亮状态配置。
 
-{{ use: partial-label(
-    prefix = "###",
-    formatter = true
+{{ use: partial-focus-blur-scope() }}
+
+{{ use: pictoialBar-state(
+    prefix="##"
 ) }}
 
-### itemStyle(Object)
+## blur(Object)
 
-{{ use: partial-item-style(
-    prefix = "###"
+淡出状态配置。开启 [emphasis.focus](~series-pictoialBar.emphasis.focus) 后有效。
+
+{{ use: pictoialBar-state(
+    prefix="##"
+) }}
+
+## select(Object)
+
+选中状态配置。开启 [selectedMode](~series-bar.selectedMode) 后有效。
+
+{{ use: partial-selected-mode(
+    version = '5.0.0'
+) }}
+
+{{ use: pictoialBar-state(
+    prefix="##"
 ) }}
 
 {{ use: partial-barGrid(
@@ -211,16 +226,26 @@ option = {
 
 ### emphasis(Object)
 
-#### label(Object)
+单个数据的高亮状态配置。
 
-{{ use: partial-label(
-    prefix = "####"
+{{ use: partial-bar-state(
+    prefix = "###"
 ) }}
 
-#### itemStyle(Object)
+### blur(Object)
 
-{{ use: partial-item-style(
-    prefix = "####"
+单个数据的淡出状态配置。
+
+{{ use: partial-bar-state(
+    prefix = "###"
+) }}
+
+### select(Object)
+
+单个数据的选中状态配置。
+
+{{ use: partial-bar-state(
+    prefix = "###"
 ) }}
 
 {{ use: partial-tooltip-in-series-data() }}
@@ -591,3 +616,17 @@ series: [{
 }]
 ```
 
+{{ target: pictoialBar-state }}
+
+#${prefix} label(Object)
+
+{{ use: partial-label(
+    prefix = "#" + ${prefix},
+    formatter = ${prefix} === '##'
+) }}
+
+#${prefix} itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "#" + ${prefix}
+) }}

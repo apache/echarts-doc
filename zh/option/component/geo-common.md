@@ -148,23 +148,16 @@ boundingCoords: [
 
 高亮状态下的多边形和标签样式。
 
-##${prefix} label(Object)
-
-{{ use: partial-label(
-    prefix = "##" + ${prefix},
-    formatter = true
+{{ use: partial-geo-common-state(
+    prefix='#' + ${prefix}
 ) }}
 
-##${prefix} itemStyle(Object)
+#${prefix} select(Object)
 
-###${prefix} areaColor(Color) = '#eee'
+选中状态下的多边形和标签样式。
 
-地图区域的颜色。
-
-{{ use: partial-color-desc() }}
-
-{{ use: partial-item-style(
-    prefix = ${prefix} + '##'
+{{ use: partial-geo-common-state(
+    prefix='#' + ${prefix}
 ) }}
 
 {{ use: partial-rect-layout(
@@ -189,3 +182,23 @@ layoutSize: 100
 
 地图的大小，见 `layoutCenter`。支持相对于屏幕宽高的百分比或者绝对的像素大小。
 
+{{ target: partial-geo-common-state }}
+
+#${prefix} label(Object)
+
+{{ use: partial-label(
+    prefix = "#" + ${prefix},
+    formatter = true
+) }}
+
+#${prefix} itemStyle(Object)
+
+##${prefix} areaColor(Color) = '#eee'
+
+地图区域的颜色。
+
+{{ use: partial-color-desc() }}
+
+{{ use: partial-item-style(
+    prefix = "#" + ${prefix}
+) }}

@@ -111,31 +111,33 @@ const option = {
 
 ## emphasis(Object)
 
-高亮的样式设置
+高亮状态的配置。
 
-### itemStyle(Object)
+{{ use: partial-focus-blur-scope() }}
 
-{{ use: partial-item-style(
-    prefix = "###"
+{{ use: radar-state(
+    prefix="##"
 ) }}
 
-### label(Object)
+## blur(Object)
 
-{{ use: partial-label(
-    prefix = "###",
-    formatter = true
+淡出状态的配置。开启 [emphasis.focus](~series-radar.emphasis.focus) 后有效。
+
+{{ use: radar-state(
+    prefix="##"
 ) }}
 
-### lineStyle(Object)
+## select(Object)
 
-{{ use: partial-line-style(
-    prefix = "###"
+选中状态的配置。开启 [selectedMode](~series-radar.selectedMode) 后有效。
+
+{{ use: radar-state(
+    prefix="##"
 ) }}
 
-### areaStyle(Object)
 
-{{ use: partial-area-style(
-    prefix = "###"
+{{ use: partial-selected-mode(
+    version = '5.0.0'
 ) }}
 
 ## data(Array)
@@ -207,31 +209,26 @@ data : [
 
 ### emphasis(Object)
 
-单个数据项样式的高亮设置。
+单个数据项样式的高亮状态。
 
-#### label(Object)
-
-{{ use: partial-label(
-    prefix = "####",
-    defaultPosition = "top"
+{{ use: radar-state(
+    prefix="###"
 ) }}
 
-#### itemStyle(Object)
+### blur(Object)
 
-{{ use: partial-item-style(
-    prefix = "####"
+单个数据项样式的淡出状态。
+
+{{ use: radar-state(
+    prefix="###"
 ) }}
 
-#### lineStyle(Object)
+### select(Object)
 
-{{ use: partial-line-style(
-    prefix = "####"
-) }}
+单个数据项样式的选中状态。
 
-#### areaStyle(Object)
-
-{{ use: partial-area-style(
-    prefix = "####"
+{{ use: radar-state(
+    prefix="###"
 ) }}
 
 {{ use: partial-tooltip-in-series-data() }}
@@ -251,3 +248,30 @@ data : [
 
 {{ use: partial-tooltip-in-series() }}
 
+
+{{ target: radar-state }}
+
+#${prefix} itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "#" + ${prefix}
+) }}
+
+#${prefix} label(Object)
+
+{{ use: partial-label(
+    prefix = "#" + ${prefix},
+    formatter = ${prefix} === '##'
+) }}
+
+#${prefix} lineStyle(Object)
+
+{{ use: partial-line-style(
+    prefix = "#" + ${prefix}
+) }}
+
+#${prefix} areaStyle(Object)
+
+{{ use: partial-area-style(
+    prefix = "#" + ${prefix}
+) }}

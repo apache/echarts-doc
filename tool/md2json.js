@@ -45,12 +45,22 @@ async function convert(opts) {
         Object.prototype[key] = tplEnv[key];
     });
 
-    const mdStr = etplEngine.getRenderer(entry)({});
+    function clearEnvVariables() {
+        // Restore the global variables.
+        Object.keys(tplEnv).forEach(function (key) {
+            delete Object.prototype[key];
+        });
+    }
 
-    // Restore the global variables.
-    Object.keys(tplEnv).forEach(function (key) {
-        delete Object.prototype[key];
-    });
+    let mdStr;
+    try {
+        mdStr = etplEngine.getRenderer(entry)({});
+        clearEnvVariables();
+    }
+    catch (e) {
+        clearEnvVariables();
+        throw e;
+    }
 
     // Markdown to JSON
     const schema = mdToJsonSchema(mdStr, maxDepth, opts.imageRoot, entry);

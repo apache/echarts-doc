@@ -264,7 +264,7 @@ const option = {
 
 {{ use: partial-label(
     prefix = "#" + ${prefix},
-    formatter = ${prefix === '##'}
+    formatter = ${prefix} === '##'
 ) }}
 
 #${prefix} itemStyle(Object)

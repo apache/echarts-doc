@@ -103,7 +103,32 @@
 
 ### emphasis(Object)
 
-该数据所在区域的多边形高亮样式设置
+该数据所在区域的多边形高亮状态
+
+{{ use: map-region-state() }}
+
+### select(Object)
+
+该数据所在区域的多边形选中状态
+
+{{ use: map-region-state() }}
+
+{{ use: partial-tooltip-in-series-data() }}
+
+{{ use: partial-marker(
+    prefix = "#",
+    seriesType = "map",
+    hasCoord = true
+) }}
+
+{{ use: partial-silent(
+    prefix = "#"
+) }}
+
+{{ use: partial-tooltip-in-series() }}
+
+
+{{ target: map-region-state }}
 
 #### itemStyle(Object)
 
@@ -125,18 +150,3 @@
     noAlign = true,
     noVerticalAlign = true
 ) }}
-
-{{ use: partial-tooltip-in-series-data() }}
-
-{{ use: partial-marker(
-    prefix = "#",
-    seriesType = "map",
-    hasCoord = true
-) }}
-
-{{ use: partial-silent(
-    prefix = "#"
-) }}
-
-{{ use: partial-tooltip-in-series() }}
-

@@ -134,16 +134,30 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 
 高亮的线条和标签样式。
 
-### lineStyle(Object)
+{{ use: partial-focus-blur-scope() }}
 
-{{ use: partial-line-style(
-    prefix = '###'
+{{ use: lines-state(
+    prefix="##"
 ) }}
 
-### label(Object)
+## blur(Object)
 
-{{ use: lines-label(
-    prefix = "###"
+淡出的线条和标签样式。开启 [emphasis.focus](~series-lines.emphasis.focus) 后有效。
+
+{{ use: lines-state(
+    prefix="##"
+) }}
+
+## select(Object)
+
+选中的线条和标签样式。开启 [selectedMode](~series-lines.selectedMode) 后有效。
+
+{{ use: lines-state(
+    prefix="##"
+) }}
+
+{{ use: partial-selected-mode(
+    version = '5.0.0'
 ) }}
 
 {{ use: partial-progressive(
@@ -206,18 +220,21 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 
 ### emphasis(Object)
 
-#### lineStyle(Object)
+{{ use: lines-state(
+    prefix="###"
+)}}
 
-{{ use: partial-line-style(
-    prefix = "####",
-    hasCurveness = true
-) }}
+### blur(Object)
 
-#### label(Object)
+{{ use: lines-state(
+    prefix="###"
+)}}
 
-{{ use: lines-label(
-    prefix = "####"
-) }}
+### select(Object)
+
+{{ use: lines-state(
+    prefix="###"
+)}}
 
 {{ use: partial-marker(
     prefix = "#",
@@ -262,5 +279,20 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 
 {{ use: partial-text-style(
     prefix = ${prefix}
+) }}
+
+
+{{ target: lines-state }}
+
+#${prefix} lineStyle(Object)
+
+{{ use: partial-line-style(
+    prefix = '#' + ${prefix}
+) }}
+
+#${prefix} label(Object)
+
+{{ use: lines-label(
+    prefix = "#" + ${prefix}
 ) }}
 

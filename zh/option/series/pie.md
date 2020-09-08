@@ -449,7 +449,7 @@ const option = {
 {{ use: partial-pie-label(
     prefix = "#" + ${prefix},
     position = false,
-    formatter = ${prefix === '##'}
+    formatter = ${prefix} === '##'
 ) }}
 
 #${prefix} labelLine(Object)

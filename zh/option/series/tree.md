@@ -184,23 +184,32 @@ const option = {
 
 树图中个图形和标签高亮的样式。
 
-### itemStyle(Object)
-
-{{ use: partial-item-style(
-    prefix = "###"
+{{ use: partial-focus-blur-scope(
+    isTree=true
 ) }}
 
-### lineStyle(Object)
-
-{{ use: partial-tree-line-style(
-    prefix = "###"
+{{ use: tree-state(
+    prefix="##"
 ) }}
 
-### label(Object)
+## blur(Object)
 
-{{ use: partial-label(
-    prefix = "###",
-    formatter1d = true
+淡出状态的相关配置。开启 [emphasis.focus](~series-tree.emphasis.focus) 后有效。
+
+{{ use: tree-state(
+    prefix="##"
+) }}
+
+## select(Object)
+
+选中状态的相关配置。开启 [selectedMode](~series-tree.selectedMode) 后有效。
+
+{{ use: tree-state(
+    prefix="##"
+) }}
+
+{{ use: partial-selected-mode(
+    version = '5.0.0'
 ) }}
 
 ## leaves(Object)
@@ -228,20 +237,28 @@ const option = {
 
 ### emphasis(Object)
 
-叶子节点高亮的样式。
+叶子节点高亮状态的配置。
 
-#### label(Object)
-
-{{ use: partial-label(
-    prefix = "####",
-    formatter1d = true
+{{ use: tree-node-state(
+    prefix="###"
 ) }}
 
-#### itemStyle(Object)
+### blur(Object)
 
-{{ use: partial-item-style(
-    prefix = "####"
+叶子节点淡出状态的配置。
+
+{{ use: tree-node-state(
+    prefix="###"
 ) }}
+
+### select(Object)
+
+叶子节点选中状态的配置。
+
+{{ use: tree-node-state(
+    prefix="###"
+) }}
+
 
 ## data(Object)
 
@@ -301,19 +318,28 @@ const option = {
 
 ### emphasis(Object)
 
-高亮的节点样式
+节点高亮状态的配置。
 
-#### label(Object)
-
-{{ use: partial-label(
-    prefix = "####"
+{{ use: tree-node-state(
+    prefix="###"
 ) }}
 
-#### itemStyle(Object)
+### blur(Object)
 
-{{ use: partial-item-style(
-    prefix = "####"
+节点淡出状态的配置。
+
+{{ use: tree-node-state(
+    prefix="###"
 ) }}
+
+### select(Object)
+
+节点选中状态的配置。
+
+{{ use: tree-node-state(
+    prefix="###"
+) }}
+
 
 {{ use: partial-tooltip-in-series-data() }}
 
@@ -351,3 +377,36 @@ const option = {
     prefix = ${prefix}
 ) }}
 
+
+
+{{ target: tree-node-state }}
+
+#${prefix} itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "#" + ${prefix}
+) }}
+
+#${prefix} label(Object)
+
+{{ use: partial-label(
+    prefix = "#" + ${prefix},
+    formatter1d = ${prefix} === '##'
+) }}
+
+{{ target: tree-edge-state }}
+
+#${prefix} lineStyle(Object)
+
+{{ use: partial-tree-line-style(
+    prefix = "#" + ${prefix}
+) }}
+
+{{ target: tree-state }}
+
+{{ use: tree-node-state(
+    prefix = ${prefix}
+) }}
+{{ use: tree-edge-state(
+    prefix = ${prefix}
+) }}

@@ -84,7 +84,22 @@ geo 区域的颜色也可以被 map series 所控制，参见 [series-map.geoInd
 
 ### emphasis(Object)
 
-高亮的样式。
+高亮状态的设置。
+
+{{ use: geo-region-state() }}
+
+### select(Object)
+
+高亮状态的设置。
+
+{{ use: geo-region-state() }}
+
+{{ use: partial-silent(
+    prefix = "#"
+) }}
+
+
+{{ target: geo-region-state }}
 
 #### itemStyle(Object)
 
@@ -104,8 +119,3 @@ geo 区域的颜色也可以被 map series 所控制，参见 [series-map.geoInd
     prefix = "####",
     formatter = true
 ) }}
-
-{{ use: partial-silent(
-    prefix = "#"
-) }}
-

@@ -303,8 +303,6 @@ levels: [
     ...
 ]
 ```
-
-<br>
 **视觉映射的规则**
 
 treemap中首要关注的是如何在视觉上较好得区分『不同层级』、『同层级中不同类别』。这需要合理得设置不同层级的『矩形颜色』、『边界粗细』、『边界颜色』甚至『矩形颜色饱和度』等。
@@ -315,8 +313,6 @@ treemap中首要关注的是如何在视觉上较好得区分『不同层级』�
 
 这样，可以做到：父层级配置 `color` 列表，子层级配置 `colorSaturation`。父层级的每个节点会从 `color` 列表中得到一个颜色，子层级的节点会从 `colorSaturation` 中得到一个值，并且继承父节点得到的颜色，合成得到自己的最终颜色。
 
-
-<br>
 **维度与『额外的视觉映射』**
 
 例子：每一个 `value` 字段是一个 Array，其中每个项对应一个维度（dimension）。
@@ -351,11 +347,8 @@ treemap中首要关注的是如何在视觉上较好得区分『不同层级』�
 
 treemap 默认把第一个维度（Array 第一项）映射到『面积』上。而如果想表达更多信息，用户可以把其他的某一个维度（[series-treemap.visualDimension](~series-treemap.viusalDimension)），映射到其他的『视觉元素』上，比如颜色明暗等。参见[例子](${galleryEditorPath}treemap-obama&edit=1&reset=1)中，legend选择 `Growth`时的状态。
 
-<br>
-
 {{ use: partial-treemap-borderColor-setting() }}
 
-<br>
 **borderWidth, gapWidth, borderColor 的解释**
 
 ![500xauto](~treemap-border-gap.png)
@@ -366,6 +359,10 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 {{ use: partial-treemap-level-props(
     prefix = "#"
+) }}
+
+{{ use: partial-selected-mode(
+    version = '5.0.0'
 ) }}
 
 ## breadcrumb(Object)
@@ -421,7 +418,7 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
     defaultColor = "#fff"
 ) }}
 
-### emphasis(*)
+### emphasis(Object)
 
 #### itemStyle(Object)
 
@@ -686,8 +683,6 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
     name = "label"
 ) }}
 
-<br>
-
 {{ use: partial-label(
     prefix = ${prefix} + "#",
     defaultPosition = "'inside'",
@@ -710,8 +705,6 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
     name = "label"
 ) }}
 
-<br>
-
 {{ use: partial-label(
     prefix = ${prefix} + "#",
     defaultPosition = "'inside'",
@@ -730,8 +723,6 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
     name = "itemStyle"
 ) }}
 
-<br>
-
 {{ use: partial-treemap-item-style(
     prefix = ${prefix} + "#",
     itemStyleType = 'normal'
@@ -739,34 +730,36 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 #${prefix} emphasis(Object)
 
-##${prefix} label(Object)
+高亮状态配置。
 
-{{ use: partial-label(
-    prefix = ${prefix} + "##",
-    defaultPosition = "'inside'",
-    formatter = true
+{{ if: ${prefix} === '#' }}
+{{ use: partial-focus-blur-scope(
+    isTree=true
+) }}
+{{ /if }}
+
+{{ use: treemap-state(
+    prefix="#" + ${prefix}
 ) }}
 
-##${prefix} upperLabel(Object)
+#${prefix} blur(Object)
 
-{{ use: partial-label(
-    prefix = ${prefix} + "##",
-    defaultPosition = "'inside'",
-    formatter = true
+淡出状态配置。
+
+{{ use: treemap-state(
+    prefix="#" + ${prefix}
 ) }}
 
-##${prefix} itemStyle(Object)
+#${prefix} select(Object)
 
-{{ use: partial-treemap-item-style(
-    prefix = ${prefix} + "##",
-    itemStyleType = 'emphasis'
+选中状态配置。
+
+{{ use: treemap-state(
+    prefix="#" + ${prefix}
 ) }}
-
 
 
 {{ target: partial-treemap-prop-location-desc }}
-
-<br>
 > 注：treemap中 `${name}` 属性可能在多处地方存在：
 
 {{ if: ${name} !== 'color' }}> * 于 [sereis-treemap](~series-treemap) 根下，表示本系列全局的统一设置。{{ /if }}
@@ -833,8 +826,6 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 如果设置此属性，则 `borderColor` 的设置无效，而是：取当前节点计算出的颜色（比如从父节点遗传而来），在此颜色值上设置 `borderColorSaturation` 得到最终颜色。这种方式，能够做出『不同区块有不同色调的矩形间隔线』的效果，能够便于区分层级。
 
-<br>
-
 {{ use: partial-treemap-borderColor-setting() }}
 
 {{ use: partial-style-shadow-opacity(
@@ -852,3 +843,28 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 参见 [例子](${galleryEditorPath}doc-example/treemap-borderColor&edit=1&reset=1)，注意其中红色的区块中的子矩形其实是更深层级，和其他用白色缝隙区分的矩形不是在一个层级。所以，红色区块中矩形的分割线的颜色，我们在 `borderColorSaturation` 中设置为『加了饱和度变化的红颜色』，以示区别。
 
+
+{{ target: treemap-state }}
+
+#${prefix} label(Object)
+
+{{ use: partial-label(
+    prefix = ${prefix} + "#",
+    defaultPosition = "'inside'",
+    formatter = true
+) }}
+
+#${prefix} upperLabel(Object)
+
+{{ use: partial-label(
+    prefix = ${prefix} + "#",
+    defaultPosition = "'inside'",
+    formatter = true
+) }}
+
+#${prefix} itemStyle(Object)
+
+{{ use: partial-treemap-item-style(
+    prefix = ${prefix} + "#",
+    itemStyleType = 'emphasis'
+) }}

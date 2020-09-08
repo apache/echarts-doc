@@ -156,26 +156,32 @@ const option = {
 
 ## emphasis(Object)
 
-高亮的图形和标签样式。
+高亮状态的配置。
 
-### label(Object)
+{{ use: partial-focus-blur-scope() }}
 
-{{ use: partial-label(
-    prefix = "###",
-    defaultPosition = "'left'",
-    defaultMargin = 4,
-    noAlign = true,
-    noVerticalAlign = true,
-    defaultColor = "'#000'",
-    defaultFontSize = 11
-) }}
+{{ use: themeRiver-state(
+    prefix="##"
+)}}
 
-### itemStyle(Object)
+## blur(Object)
 
-{{ use: partial-item-style(
-    prefix = "###",
-    defaultShadowBlur = 20,
-    defaultShadowColor = "'rgba(0,0,0,0.8)'"
+淡出状态的配置。
+
+{{ use: themeRiver-state(
+    prefix="##"
+)}}
+
+## select(Object)
+
+选中状态的配置。
+
+{{ use: themeRiver-state(
+    prefix="##"
+)}}
+
+{{ use: partial-selected-mode(
+    version = '5.0.0'
 ) }}
 
 ## data(Array)
@@ -214,3 +220,22 @@ data: [
 
 {{ use: partial-tooltip-in-series() }}
 
+{{ target: themeRiver-state }}
+
+#${prefix} label(Object)
+
+{{ use: partial-label(
+    prefix = "#" + ${prefix},
+    defaultPosition = "'left'",
+    defaultMargin = 4,
+    noAlign = true,
+    noVerticalAlign = true,
+    defaultColor = "'#000'",
+    defaultFontSize = 11
+) }}
+
+#${prefix} itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "#" + ${prefix}
+) }}

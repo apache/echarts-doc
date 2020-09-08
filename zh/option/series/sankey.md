@@ -85,20 +85,6 @@ const option = {"tooltip":{"trigger":"item","triggerOn":"mousemove"},"series":[{
 
 控制节点拖拽的交互，默认开启。开启后，用户可以将图中任意节点拖拽到任意位置。若想关闭此交互，只需将值设为 `false` 就行了。
 
-## focusNodeAdjacency(boolean|string) = false
-
-<ExampleUIControlEnum options="false,true,allEdges,outEdges,inEdges" />
-
-鼠标 hover 到节点或边上，相邻接的节点和边高亮的交互，默认关闭，可手动开启。
-
-可选值为：
-
-+ `false`：hover 到节点或边时，只有被 hover 的节点或边高亮。
-+ `true`：同 `'allEdges'`。
-+ `'allEdges'`：hover 到节点时，与节点邻接的所有边以及边对应的节点全部高亮。hover 到边时，边和相邻节点高亮。
-+ `'outEdges'`：hover 的节点、节点的出边、出边邻接的另一节点 会被高亮。hover 到边时，边和相邻节点高亮。
-+ `'inEdges'`：hover 的节点、节点的入边、入边邻接的另一节点 会被高亮。hover 到边时，边和相邻节点高亮。
-
 ## levels(Array)
 
 桑基图每一层的设置。可以逐层设置，如下：
@@ -146,22 +132,28 @@ levels: [{
 
 指定设置的是桑基图哪一层，取值从 0 开始。
 
-### itemStyle(Object)
-
-桑基图指定层节点的样式。
-
-{{ use: partial-item-style(
-    prefix = "###",
-    useColorPalatte = true
+{{ use: sankey-state(
+    prefix="##"
 ) }}
 
-### lineStyle(Object)
+### emphasis(Object)
 
-桑基图指定层出边的样式。其中 [lineStyle.color](~series-sankey.lineStyle.color) 支持设置为`'source'`或者`'target'`特殊值，此时出边会自动取源节点或目标节点的颜色作为自己的颜色。
-
-{{ use: partial-sankey-line-style(
-    prefix = "###"
+{{ use: sankey-state(
+    prefix="###"
 ) }}
+
+### blur(Object)
+
+{{ use: sankey-state(
+    prefix="###"
+) }}
+
+### select(Object)
+
+{{ use: sankey-state(
+    prefix="###"
+) }}
+
 
 ## label(Object)
 
@@ -203,25 +195,34 @@ levels: [{
 
 ## emphasis(Object)
 
-桑基图的高亮样式设置。
+桑基图的高亮状态。
 
-### label(Object)
-
-{{ use: partial-label(
-    prefix = "###",
-    formatter1d = true
+{{ use: partial-focus-blur-scope(
+    isTree=true
 ) }}
 
-### itemStyle(Object)
-
-{{ use: partial-item-style(
-    prefix = "###"
+{{ use: sankey-state(
+    prefix="##"
 ) }}
 
-### lineStyle(Object)
+## blur(Object)
 
-{{ use: partial-sankey-line-style(
-    prefix = "###"
+桑基图的淡出状态。开启 [emphasis.focus](~series-sankey.emphasis.focus) 后有效。
+
+{{ use: sankey-state(
+    prefix="##"
+) }}
+
+## select(Object)
+
+桑基图的选中状态。开启 [selectedMode](~series-sankey.selectedMode) 后有效。
+
+{{ use: sankey-state(
+    prefix="##"
+) }}
+
+{{ use: partial-selected-mode(
+    version = '5.0.0'
 ) }}
 
 ## data(Array)
@@ -272,16 +273,20 @@ data: [{
 
 ### emphasis(Object)
 
-#### itemStyle(Object)
-
-{{ use: partial-item-style(
-    prefix = "####"
+{{ use: sankey-node-state(
+    prefix="###"
 ) }}
 
-#### label(Object)
+### blur(Object)
 
-{{ use: partial-label(
-    prefix = "####"
+{{ use: sankey-node-state(
+    prefix="###"
+) }}
+
+### select(Object)
+
+{{ use: sankey-node-state(
+    prefix="###"
 ) }}
 
 {{ use: partial-tooltip-in-series-data() }}
@@ -332,6 +337,22 @@ links: [{
     prefix = "####"
 ) }}
 
+### blur(Object)
+
+#### lineStyle(Object)
+
+{{ use: partial-sankey-line-style(
+    prefix = "####"
+) }}
+
+### select(Object)
+
+#### lineStyle(Object)
+
+{{ use: partial-sankey-line-style(
+    prefix = "####"
+) }}
+
 ## edges(Array)
 
 同 [links](~series-sankey.links)
@@ -347,7 +368,6 @@ links: [{
 ) }}
 
 {{ use: partial-tooltip-in-series() }}
-
 
 
 {{ target: partial-sankey-line-style }}
@@ -368,3 +388,37 @@ links: [{
     prefix = ${prefix}
 ) }}
 
+{{ target: sankey-node-state }}
+
+#${prefix} label(Object)
+
+{{ use: partial-label(
+    prefix = "#" + ${prefix}
+) }}
+
+#${prefix} itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "#" + ${prefix}
+) }}
+
+{{ target: sankey-state }}
+
+#${prefix} label(Object)
+
+{{ use: partial-label(
+    prefix = "#" + ${prefix},
+    formatter1d = ${prefix} === '##'
+) }}
+
+#${prefix} itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "#" + ${prefix}
+) }}
+
+#${prefix} lineStyle(Object)
+
+{{ use: partial-sankey-line-style(
+    prefix = "#" + ${prefix}
+) }}

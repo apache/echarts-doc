@@ -155,20 +155,6 @@ edgeLength: [10, 50]
 
 节点是否可拖拽，只在使用力引导布局的时候有用。
 
-## focusNodeAdjacency(boolean) = false
-
-<ExampleUIControlBoolean default="false" />
-
-是否在鼠标移到节点上的时候突出显示节点以及节点的边和邻接节点。
-
-{{ use: partial-symbol(
-    prefix = '#',
-    defaultSymbol = "'circle'",
-    defaultSymbolSize = 10,
-    name = '关系图节点',
-    hasCallback = true
-) }}
-
 ## edgeSymbol(Array|string) = ['none', 'none']
 
 边两端的标记类型，可以是一个数组分别指定两端，也可以是单个统一指定。默认不显示标记，常见的可以设置为箭头，如下：

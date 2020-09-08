@@ -7,6 +7,7 @@
 
 如果是 `number` 类型，则表示标签的旋转角，从 -90 度到 90 度，正值是逆时针。
 
+{{ if: ${prefix} === '##' }}
 除此之外，还可以是字符串 `'radial'` 表示径向旋转、`'tangential'` 表示切向旋转。
 
 默认径向旋转，如果不需要文字旋转，可以将其设为 `0`。
@@ -14,6 +15,9 @@
 下面的例子展示了不同的 `rotate` 设置方法：
 
 ~[700x400](${galleryViewPath}sunburst-label-rotate&edit=1&reset=1)
+{{ else }}
+同 [label.rotate](~sunburst.label.rotate)
+{{ /if }}
 
 #${prefix} align(string) = 'center'
 
@@ -21,7 +25,11 @@
 
 文字对齐方式，可取值为：`'left'`、 `'center'`、 `'right'`。注意，`'left'` 是指靠近内圈，而 `'right'` 是指靠近外圈。
 
+{{ if: ${prefix} === '##' }}
 ~[700x400](${galleryViewPath}doc-example/sunburst-label-align&edit=1&reset=1)
+{{ else }}
+同 [label.align](~sunburst.label.align)
+{{ /if }}
 
 #${prefix} minAngle(number) = null
 
@@ -42,7 +50,7 @@
 
 {{ target: partial-sunburst-label-props }}
 
-${prefix} label(Object)
+#${prefix} label(Object)
 
 `label` 描述了每个扇形块中，文本标签的样式。
 
@@ -51,14 +59,14 @@ ${prefix} label(Object)
 {{ use: partial-label-desc() }}
 
 {{ use: partial-sunburst-label-helper(
-    prefix = ${prefix}
+    prefix = ${prefix} + '#'
 ) }}
 
 
 
 {{ target: partial-sunburst-itemStyle-props }}
 
-${prefix} itemStyle(Object)
+#${prefix} itemStyle(Object)
 
 旭日图扇形块的样式。
 
@@ -66,10 +74,8 @@ ${prefix} itemStyle(Object)
 
 **优先级：[series.data.itemStyle](~series-sunburst.data.itemStyle) > [series.levels.itemStyle](~series-sunburst.levels.itemStyle) > [series.itemStyle](~series-sunburst.itemStyle)。**
 
-ECharts 中，通常使用 *emphasis* 表示鼠标移动到图形上后的高亮状态。对于旭日图而言，我们引入了另两种状态：*highlight* 表示由于高亮了某个扇形块引起的其他相关扇形块的高亮；*downplay* 表示除了 highlight 扇形块之外的被淡化的扇形块。参见 [highlightPolicy](~series-sunburst.highlightPolicy)。
-
 {{ use: partial-item-style(
-    prefix = ${prefix},
+    prefix = ${prefix} + '#',
     useColorPalatte = true,
     defaultBorderWidth = 1,
     defaultBorderColor = "'white'",
@@ -78,44 +84,15 @@ ECharts 中，通常使用 *emphasis* 表示鼠标移动到图形上后的高亮
 
 
 
-{{ target: partial-sunburst-other-state }}
-
-#${prefix} emphasis(Object)
-
-鼠标悬停后的配置项。
+{{ target: partial-sunburst-state }}
 
 {{ use: partial-sunburst-label-props(
-    prefix = "##" + ${prefix}
+    prefix = ${prefix}
 ) }}
 
 {{ use: partial-sunburst-itemStyle-props(
-    prefix = "##" + ${prefix}
+    prefix = ${prefix}
 ) }}
-
-#${prefix} highlight(Object)
-
-鼠标悬停后相关扇形块的配置项。参见 [highlightPolicy](~series-sunburst.highlightPolicy)。
-
-{{ use: partial-sunburst-label-props(
-    prefix = "##" + ${prefix}
-) }}
-
-{{ use: partial-sunburst-itemStyle-props(
-    prefix = "##" + ${prefix}
-) }}
-
-#${prefix} downplay(Object)
-
-鼠标悬停后不相关扇形块的配置项。参见 [highlightPolicy](~series-sunburst.highlightPolicy)。
-
-{{ use: partial-sunburst-label-props(
-    prefix = "##" + ${prefix}
-) }}
-
-{{ use: partial-sunburst-itemStyle-props(
-    prefix = "##" + ${prefix}
-) }}
-
 
 
 {{ target: series-sunburst }}
@@ -301,12 +278,6 @@ const option = {
     defaultRadius = "[0, '75%']"
 ) }}
 
-## labelLayout(Object|Function)
-
-{{ use: partial-label-layout(
-    prefix = "##"
-) }}
-
 ## data(Array)
 
 [series-sunburst.data](~series-sunburst.data) 的数据格式是树状的，例如：
@@ -364,64 +335,48 @@ const option = {
 意义同 HTML `<a>` 标签中的 `target`，参见 [series-sunburst.data.link](~series-sunburst.data.link)。可选值为：`'blank'` 或 `'self'`。
 
 {{ use: partial-sunburst-label-props(
-    prefix = "###"
+    prefix = "##"
+) }}
+
+## labelLayout(Object|Function)
+
+{{ use: partial-label-layout(
+    prefix = "##"
 ) }}
 
 {{ use: partial-sunburst-itemStyle-props(
+    prefix = "##"
+) }}
+
+### emphasis
+
+高亮状态配置。
+
+{{ use: partial-sunburst-state(
     prefix = "###"
 ) }}
 
-{{ use: partial-sunburst-other-state(
-    prefix = "##"
+### blur
+
+淡出状态配置。
+
+{{ use: partial-sunburst-state(
+    prefix = "###"
 ) }}
+
+### select
+
+选中状态配置。
+
+{{ use: partial-sunburst-state(
+    prefix = "###"
+) }}
+
 
 ### children(Array)
 
 子节点，递归定义，格式同 [series-sunburst.data](~series-sunburst.data)。
 
-{{ use: partial-sunburst-label-props(
-    prefix = "##"
-) }}
-
-{{ use: partial-sunburst-itemStyle-props(
-    prefix = "##"
-) }}
-
-## highlightPolicy(string) = 'descendant'
-
-<ExampleUIControlEnum default="descendant" options="descendant,ancestor,none" />
-
-当鼠标移动到一个扇形块时，可以高亮相关的扇形块。**如果其值为 `'descendant'`，则会高亮该扇形块和后代元素，其他元素将被淡化（*downplay*，参见 [itemStyle](~series-sunburst.itemStyle)）；如果其值为 `'ancestor'`，则会高亮该扇形块和祖先元素；如果其值为 `'self'` 则只高亮自身；`'none'` 则不会淡化其他元素。**
-
-~[700x350](${galleryViewPath}doc-example/sunburst-highlight-descendant&edit=1&reset=1)
-
-上面的例子 `highlightPolicy` 是默认值 `'descendant'`，我们通过 `dispatchAction` 触发了旭日图中某个数据块的高亮操作（相当于将鼠标移动到下图中的 `target` 扇形块中）。目标扇形块将采用 `emphasis` 的样式（在本例中是为红色），和目标扇形块相关的扇形块（由 `highlightPolicy` 决定哪些扇形块是相关的）采用 `highlight` 的样式（橙色），其他扇形块采用 `downplay` 的样式（灰色）。而如果没有高亮对象，则所有扇形块都采用默认的样式。样式定义是类似这样的：
-
-```js
-itemStyle: {
-    color: 'yellow',
-    borderWidth: 2
-},
-emphasis: {
-    itemStyle: {
-        color: 'red'
-    }
-},
-highlight: {
-    itemStyle: {
-        color: 'orange'
-    }
-},
-downplay: {
-    itemStyle: {
-        color: '#ccc'
-    }
-}
-```
-
-而如果将 `highlightPolicy` 设为 `'ancestor'`，则会得到这样的效果：
-
-~[700x350](${galleryViewPath}doc-example/sunburst-highlight-ancestor&edit=1&reset=1)
 
 ## nodeClick(boolean|string) = 'rootToNode'
 
@@ -452,15 +407,43 @@ function(nodeA, nodeB) {
 如果数据没有 `name`，是否需要渲染文字。
 
 {{ use: partial-sunburst-label-props(
-    prefix = "##"
+    prefix = "#"
 ) }}
 
 {{ use: partial-sunburst-itemStyle-props(
+    prefix = "#"
+) }}
+
+## emphasis
+
+高亮状态配置。
+
+{{ use: partial-focus-blur-scope(
+    isTree=true
+) }}
+
+{{ use: partial-sunburst-state(
     prefix = "##"
 ) }}
 
-{{ use: partial-sunburst-other-state(
-    prefix = "#"
+## blur
+
+淡出状态配置。开启 [emphasis.focus](~series-sunburst.emphasis.focus) 后有效。
+
+{{ use: partial-sunburst-state(
+    prefix = "##"
+) }}
+
+## select
+
+选中状态配置。开启 [selectedMode](~series-sunburst.selectedMode) 后有效。
+
+{{ use: partial-sunburst-state(
+    prefix = "##"
+) }}
+
+{{ use: partial-selected-mode(
+    version = '5.0.0'
 ) }}
 
 ## levels(Array)
@@ -495,15 +478,35 @@ series: {
 ```
 
 {{ use: partial-sunburst-label-props(
-    prefix = "###"
+    prefix = "##"
 ) }}
 
 {{ use: partial-sunburst-itemStyle-props(
+    prefix = "##"
+) }}
+
+### emphasis
+
+高亮状态配置。
+
+{{ use: partial-sunburst-state(
     prefix = "###"
 ) }}
 
-{{ use: partial-sunburst-other-state(
-    prefix = "##"
+### blur
+
+淡出状态配置。
+
+{{ use: partial-sunburst-state(
+    prefix = "###"
+) }}
+
+### select
+
+选中状态配置。
+
+{{ use: partial-sunburst-state(
+    prefix = "###"
 ) }}
 
 {{ use: partial-animation(
