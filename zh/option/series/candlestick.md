@@ -278,24 +278,52 @@ K 线图的图形样式。
 
 ## emphasis(Object)
 
-K 线图的高亮图形样式。
+K 线图的高亮状态。
+
+{{ use: partial-focus-blur-scope() }}
 
 ### itemStyle(Object)
 
 {{ use: partial-candlestick-item-style-detail(
     prefix = "###",
-    defaultColor = "#c23531",
-    defaultColor0 = "#314656",
-    defaultBorderColor = "#c23531",
-    defaultBorderColor0 = "#314656",
     defaultBorderWidth = 2
 ) }}
+
+## blur(Object)
+
+K 线图的淡出状态。开启 [emphasis.focus](~series-candlestick.emphasis.focus) 后有效
+
+### itemStyle(Object)
+
+{{ use: partial-candlestick-item-style-detail(
+    prefix = "###",
+    defaultBorderWidth = 2
+) }}
+
+## select(Object)
+
+K 线图的选中状态。开启 [selectedMode](~series-candlestick.selectedMode) 后有效。
+
+### itemStyle(Object)
+
+{{ use: partial-candlestick-item-style-detail(
+    prefix = "###",
+    defaultBorderWidth = 2
+) }}
+
+
+{{ use: partial-selected-mode(
+    version = '5.0.0'
+) }}
+
 
 {{ use: partial-large(
     prefix = "#",
     defaultLarge = true,
     defaultLargeThreshold = 600
 ) }}
+
+
 
 {{ use: partial-progressive(
     prefix = '#',
@@ -353,27 +381,37 @@ K 线图的高亮图形样式。
 单个 K 线图数据的图形样式。
 
 {{ use: partial-candlestick-item-style-detail(
-    prefix = "###",
-    defaultColor = "#c23531",
-    defaultColor0 = "#314656",
-    defaultBorderColor = "#c23531",
-    defaultBorderColor0 = "#314656",
-    defaultBorderWidth = 1
+    prefix = "###"
 ) }}
 
 ### emphasis(Object)
 
-单个 K 线图数据的高亮图形样式。
+单个 K 线图数据的高亮状态配置。
 
 #### itemStyle(Object)
 
 {{ use: partial-candlestick-item-style-detail(
-    prefix = "####",
-    defaultColor = "#c23531",
-    defaultColor0 = "#314656",
-    defaultBorderColor = "#c23531",
-    defaultBorderColor0 = "#314656",
-    defaultBorderWidth = 2
+    prefix = "####"
+) }}
+
+### blur(Object)
+
+单个 K 线图数据的淡出状态配置。
+
+#### itemStyle(Object)
+
+{{ use: partial-candlestick-item-style-detail(
+    prefix = "####"
+) }}
+
+### select(Object)
+
+单个 K 线图数据的选中状态配置。
+
+#### itemStyle(Object)
+
+{{ use: partial-candlestick-item-style-detail(
+    prefix = "####"
 ) }}
 
 {{ use: partial-tooltip-in-series-data() }}

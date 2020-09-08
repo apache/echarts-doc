@@ -51,20 +51,6 @@ const option = {
 
 {{ use: partial-legend-hover-link() }}
 
-## hoverAnimation(boolean) = true
-
-<ExampleUIControlBoolean default="true" />
-
-是否开启 hover 在扇区上的放大动画效果。
-
-## hoverOffset(number) = 10
-
-<ExampleUIControlNumber min="0" default="10" />
-
-高亮扇区的偏移距离。
-
-## selectedMode(boolean|string) = false
-
 {{ use: partial-selected-mode() }}
 
 ## selectedOffset(number) = 10
@@ -211,29 +197,40 @@ const option = {
 
 ## emphasis(Object)
 
-高亮的扇区和标签样式。
+高亮状态的扇区和标签样式。
 
-### label(Object)
+### scale(boolean) = true
 
-{{ use: partial-pie-label(
-    prefix = "###",
-    position = false,
-    formatter = true
+<ExampleUIControlBoolean default="true" />
+
+是否开启高亮后扇区的放大效果。
+
+### scaleSize(number) = 10
+
+<ExampleUIControlNumber min="0" default="10" />
+
+高亮后扇区的放大尺寸, 在开启 [emphasis.scale](~series-pie.emphasis.scale) 后有效。
+
+{{ use: partial-focus-blur-scope() }}
+
+{{ use: pie-state(
+    prefix="##"
 ) }}
 
-### labelLine(Object)
+## blur(Object)
 
-{{ use: partial-pie-label-line(
-    prefix = '###',
-    length = false,
-    length2 = false,
-    smooth = false
+淡出状态的扇区和标签样式。开启 [emphasis.focus](~series-pie.emphasis.focus) 后有效。
+
+{{ use: pie-state(
+    prefix="##"
 ) }}
 
-### itemStyle(Object)
+## select(Object)
 
-{{ use: partial-item-style(
-    prefix = "###"
+选中状态的扇区和标签样式。开启 [selectedMode](~series-pie.selectedMode) 后有效。
+
+{{ use: pie-state(
+    prefix="##"
 ) }}
 
 {{ use: component-circular-layout(
@@ -300,28 +297,23 @@ const option = {
 
 ### emphasis(Object)
 
-#### label(Object)
-
-{{ use: partial-pie-label(
-    prefix = "####",
-    position = false,
-    formatter = false
+{{ use: pie-state(
+    prefix="###"
 ) }}
 
-#### labelLine(Object)
 
-{{ use: partial-pie-label-line(
-    prefix = '####',
-    length = false,
-    length2 = false,
-    smooth = false
+### blur(Object)
+
+{{ use: pie-state(
+    prefix="###"
 ) }}
 
-#### itemStyle(Object)
+### select(Object)
 
-{{ use: partial-item-style(
-    prefix = "####"
+{{ use: pie-state(
+    prefix="###"
 ) }}
+
 
 {{ use: partial-tooltip-in-series-data() }}
 
@@ -450,3 +442,27 @@ const option = {
     prefix = "#" + ${prefix}
 ) }}
 
+{{ target: pie-state }}
+
+#${prefix} label(Object)
+
+{{ use: partial-pie-label(
+    prefix = "#" + ${prefix},
+    position = false,
+    formatter = ${prefix === '##'}
+) }}
+
+#${prefix} labelLine(Object)
+
+{{ use: partial-pie-label-line(
+    prefix = "#" + ${prefix},
+    length = false,
+    length2 = false,
+    smooth = false
+) }}
+
+#${prefix} itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "#" + ${prefix}
+) }}

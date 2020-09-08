@@ -110,19 +110,46 @@ box 的宽度的上下限。数组的意思是：`[min, max]`。
 
 盒须图高亮样式
 
+{{ use: partial-focus-blur-scope() }}
+
 ### itemStyle(Object)
 
 {{ use: partial-item-style(
     prefix = "###",
-    useColorPalatte = true,
     name = "boxplot",
     defaultColor = "#fff",
     defaultBorderWidth = 2,
     defaultShadowBlur = 5,
-    defaultShadowOffsetX = 2,
-    defaultShadowOffsetY = 2,
-    defaultShadowColor = "rgba(0,0,0,0.4)"
+    defaultShadowOffsetX = 1,
+    defaultShadowOffsetY = 1,
+    defaultShadowColor = "rgba(0,0,0,0.2)"
 ) }}
+
+## blur(Object)
+
+淡出时的图形样式和标签样式。开启 [emphasis.focus](~series-boxplot.emphasis.focus) 后有效
+
+### itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "###",
+    name = "boxplot"
+) }}
+
+## select(Object)
+
+数据选中时的图形样式和标签样式。开启 [selectedMode](~series-funnel.selectedMode) 后有效。
+
+### itemStyle(Object)
+{{ use: partial-item-style(
+    prefix = "###",
+    name = "boxplot"
+) }}
+
+{{ use: partial-selected-mode(
+    version = '5.0.0'
+) }}
+
 
 {{ use: partial-series-dimensions(
     prefix = "#"
@@ -176,32 +203,44 @@ ECharts 并不内置对原始数据的处理，输入给 `boxplot` 的数据须�
 
 ### itemStyle(Object)
 
-单个数据盒须图样式。
+盒须图单个数据样式。
 
 {{ use: partial-item-style(
     prefix = "###",
-    useColorPalatte = true,
-    name = "boxplot",
-    defaultColor = "#fff",
-    defaultBorderWidth = 1
+    name = "boxplot"
 ) }}
 
 ### emphasis(Object)
 
-单个数据盒须图高亮样式
+盒须图单个数据高亮状态配置。
 
 #### itemStyle(Object)
 
 {{ use: partial-item-style(
     prefix = "####",
-    useColorPalatte = true,
-    name = "boxplot",
-    defaultColor = "#fff",
-    defaultBorderWidth = 2,
-    defaultShadowBlur = 5,
-    defaultShadowOffsetX = 2,
-    defaultShadowOffsetY = 2,
-    defaultShadowColor = "rgba(0,0,0,0.4)"
+    name = "boxplot"
+) }}
+
+### blur(Object)
+
+盒须图单个数据淡出状态配置。
+
+#### itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "####",
+    name = "boxplot"
+) }}
+
+### select(Object)
+
+盒须图单个数据选中状态配置。
+
+#### itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "####",
+    name = "boxplot"
 ) }}
 
 {{ use: partial-tooltip-in-series-data() }}

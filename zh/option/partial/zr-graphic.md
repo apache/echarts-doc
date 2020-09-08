@@ -1339,10 +1339,55 @@ chart.on('click', function (params) {
 {{ target: partial-graphic-cpt-style-emphasis }}
 
 {{ if: ${usageType} === 'customSeries' }}
-##${prefix} styleEmphasis(Object)
+##${prefix} emphasis(Object)
 
-图形元素高亮时的样式。
-结构同 [style](~${optionPath}.${hostName}${symbolVisit}polygon.style) 相同。
+图形元素的高亮状态
+
+###${prefix} focus(string) = 'none'
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+在高亮图形时，是否淡出其它数据的图形已达到聚焦的效果。支持如下配置：
+
++ `'none'` 不淡出其它图形，默认使用该配置。
++ `'self'` 只聚焦（不淡出）当前高亮的数据的图形。
++ `'series'` 聚焦当前高亮的数据所在的系列的所有图形。
+
+###${prefix} blurScope(string) = 'coordinateSystem'
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+在开启`focus`的时候，可以通过`blurScope`配置淡出的范围。支持如下配置
+
++ `'coordinateSystem'` 淡出范围为坐标系，默认使用该配置。
++ `'series'` 淡出范围为系列。
++ `'global'` 淡出范围为全局。
+
+
+###${prefix} style(Object)
+
+结构同 [style](~${optionPath}.${hostName}${symbolVisit}polygon.style)。
+
+##${prefix} blur(Object)
+
+图形元素的淡出状态，配置`focus`时有效。
+
+###${prefix} style(Object)
+
+结构同 [style](~${optionPath}.${hostName}${symbolVisit}polygon.style)。
+
+##${prefix} select(Object)
+
+图形元素的选中状态，配置自定义系列的 [selectedMode](~series-custom.selectedMode) 时有效。
+
+###${prefix} style(Object)
+
+结构同 [style](~${optionPath}.${hostName}${symbolVisit}polygon.style)。
+
 {{ /if }}
 
 

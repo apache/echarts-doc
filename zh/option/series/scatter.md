@@ -94,12 +94,6 @@ const option = {
     calendar = true
 ) }}
 
-## hoverAnimation(boolean)
-
-<ExampleUIControlBoolean default="true" />
-
-是否开启鼠标 hover 的提示动画效果。
-
 {{ use: partial-legend-hover-link() }}
 
 {{ use: partial-symbol(
@@ -147,17 +141,50 @@ const option = {
 
 高亮的图形和标签样式。
 
-### label(Object)
+### scale(boolean) = true
 
-{{ use: partial-label(
-    prefix = "###",
-    formatter = true
+<ExampleUIControlBoolean default="true" />
+
+是否开启高亮后的放大效果。
+
+{{ use: partial-focus-blur-scope() }}
+
+{{ use: scatter-state(
+    prefix="##"
 ) }}
 
-### itemStyle(Object)
+## emphasis(Object)
 
-{{ use: partial-item-style(
-    prefix = "###"
+高亮的图形和标签样式。
+
+### scale(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
+
+是否开启高亮后的放大效果。
+
+{{ use: scatter-state(
+    prefix="##"
+) }}
+
+## blur(Object)
+
+淡出状态的配置。开启 [emphasis.focus](~series-scatter.emphasis.focus) 后有效。
+
+{{ use: scatter-state(
+    prefix="##"
+) }}
+
+## select(Object)
+
+选中状态的配置。开启 [selectedMode](~series-scatter.selectedMode) 后有效。
+
+{{ use: scatter-state(
+    prefix="##"
+) }}
+
+{{ use: partial-selected-mode(
+    version = '5.0.0'
 ) }}
 
 {{ use: partial-progressive(
@@ -212,17 +239,26 @@ const option = {
 
 单个数据的高亮图形和标签样式。
 
-#### label(Object)
-
-{{ use: partial-label(
-    prefix = "####"
+{{ use: scatter-state(
+    prefix = "###"
 ) }}
 
-#### itemStyle(Object)
+### blur(Object)
 
-{{ use: partial-item-style(
-    prefix = "####"
+单个数据的淡出图形和标签样式。
+
+{{ use: scatter-state(
+    prefix = "###"
 ) }}
+
+### select(Object)
+
+单个数据的选中图形和标签样式。
+
+{{ use: scatter-state(
+    prefix = "###"
+) }}
+
 
 {{ use: partial-tooltip-in-series-data() }}
 
@@ -252,3 +288,18 @@ const option = {
 
 {{ use: partial-tooltip-in-series() }}
 
+
+{{ target: scatter-state }}
+
+#${prefix} label(Object)
+
+{{ use: partial-label(
+    prefix = "#" + ${prefix},
+    formatter = ${prefix === '##'}
+) }}
+
+#${prefix} itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "#" + ${prefix}
+) }}

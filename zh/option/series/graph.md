@@ -40,10 +40,6 @@ option.series[0].data.forEach(function (item) {
     calendar = true
 ) }}
 
-## hoverAnimation(boolean)
-
-是否开启鼠标 hover 节点的提示动画效果。
-
 ## center(Array)
 
 <ExampleUIControlVector default="0,0" dims="x,y" />
@@ -235,32 +231,34 @@ edgeSymbol: ['circle', 'arrow']
 
 ## emphasis(Object)
 
-高亮的图形样式。
+高亮状态的图形样式。
 
-### itemStyle(Object)
+### scale(boolean) = true
 
-{{ use: partial-item-style(
-    prefix = "###"
+<ExampleUIControlBoolean default="true" />
+
+是否开启高亮后节点的放大效果。
+
+{{ use: partial-focus-blur-scope(
+    isGraph = true
 ) }}
 
-### lineStyle(Object)
+{{ use: graph-state() }}
 
-{{ use: partial-line-style(
-    prefix = "###"
-) }}
+## blur(Object)
 
-### label(Object)
+淡出状态的图形样式。开启 [emphasis.focus](~series-graph.emphasis.focus) 后有效。
 
-{{ use: partial-label(
-    prefix = "###",
-    defaultShow = true,
-    formatter2d = true
-) }}
+{{ use: graph-state() }}
 
-### edgeLabel(Object)
+## select(Object)
 
-{{ use: graph-edge-label(
-    prefix = "###"
+选中状态的图形样式。开启 [selectedMode](~series-graph.selectedMode) 后有效。
+
+{{ use: graph-state() }}
+
+{{ use: partial-selected-mode(
+    version = '5.0.0'
 ) }}
 
 ## categories(Array)
@@ -299,17 +297,21 @@ edgeSymbol: ['circle', 'arrow']
 
 ### emphasis(Object)
 
-#### itemStyle(Object)
+该类目节点的高亮状态。
 
-{{ use: partial-item-style(
-    prefix = "####"
-) }}
+{{ use: graph-node-state() }}
 
-#### label(Object)
+### blur(Object)
 
-{{ use: partial-label(
-    prefix = "####"
-) }}
+该类目节点的淡出状态。
+
+{{ use: graph-node-state() }}
+
+### select(Object)
+
+该类目节点的选中状态。
+
+{{ use: graph-node-state() }}
 
 ## autoCurveness(number|Array) = 20
 
@@ -393,17 +395,21 @@ data: [{
 
 ### emphasis(Object)
 
-#### itemStyle(Object)
+该节点的高亮状态。
 
-{{ use: partial-item-style(
-    prefix = "####"
-) }}
+{{ use: graph-node-state() }}
 
-#### label(Object)
+### blur(Object)
 
-{{ use: partial-label(
-    prefix = "####"
-) }}
+该节点的淡出状态。
+
+{{ use: graph-node-state() }}
+
+### select(Object)
+
+该节点的选中状态。
+
+{{ use: graph-node-state() }}
 
 {{ use: partial-tooltip-in-series-data() }}
 
@@ -458,17 +464,21 @@ links: [{
 
 ### emphasis(Object)
 
-#### label(Object)
+该关系边的高亮状态。
 
-{{ use: graph-edge-label(
-    prefix = "####"
-) }}
+{{ use: graph-edge-state() }}
 
-#### lineStyle(Object)
+### blur(Object)
 
-{{ use: partial-line-style(
-    prefix = "####"
-) }}
+该关系边的淡出状态。
+
+{{ use: graph-edge-state() }}
+
+### select(Object)
+
+该关系边的选中状态。
+
+{{ use: graph-edge-state() }}
 
 ### symbol(Array|string)
 
@@ -537,3 +547,65 @@ links: [{
     prefix = ${prefix}
 ) }}
 
+
+{{ target: graph-state }}
+
+### itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "###"
+) }}
+
+### lineStyle(Object)
+
+{{ use: partial-line-style(
+    prefix = "###",
+    hasCurveness = true
+) }}
+
+### label(Object)
+
+{{ use: partial-label(
+    prefix = "###",
+    defaultShow = true,
+    formatter2d = true
+) }}
+
+### edgeLabel(Object)
+
+{{ use: graph-edge-label(
+    prefix = "###"
+) }}
+
+
+{{ target: graph-node-state }}
+
+#### itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "####"
+) }}
+
+#### label(Object)
+
+{{ use: partial-label(
+    prefix = "####",
+    defaultShow = true
+) }}
+
+
+{{ target: graph-edge-state }}
+
+#### lineStyle(Object)
+
+{{ use: partial-line-style(
+    prefix = "####",
+    hasCurveness = true
+) }}
+
+#### label(Object)
+
+{{ use: partial-label(
+    prefix = "####",
+    defaultShow = true
+) }}

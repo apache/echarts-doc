@@ -127,17 +127,32 @@ option = {
 
 ## emphasis(Object)
 
-### itemStyle(Object)
+高亮状态的图形样式。
 
-{{ use: partial-item-style(
-    prefix = "###"
+{{ use: partial-focus-blur-scope() }}
+
+{{ use: heatmap-state(
+    prefix = "##"
 ) }}
 
-### label(Object)
+## blur(Object)
 
-{{ use: partial-label(
-    prefix = "###",
-    defaultPosition = "inside"
+淡出状态的图形样式。开启 [emphasis.focus](~series-heatmap.emphasis.focus) 后有效。
+
+{{ use: heatmap-state(
+    prefix = "##"
+) }}
+
+## select(Object)
+
+选中状态的图形样式。开启 [selectedMode](~series-heatmap.selectedMode) 后有效。
+
+{{ use: heatmap-state(
+    prefix = "##"
+) }}
+
+{{ use: partial-selected-mode(
+    version = '5.0.0'
 ) }}
 
 ## data(Array)
@@ -200,3 +215,17 @@ option = {
 
 {{ use: partial-tooltip-in-series() }}
 
+{{ target: heatmap-state }}
+
+#${prefix} itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "#" + ${prefix}
+) }}
+
+#${prefix} label(Object)
+
+{{ use: partial-label(
+    prefix = "#" + ${prefix},
+    defaultPosition = "inside"
+) }}

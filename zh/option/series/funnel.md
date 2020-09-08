@@ -135,51 +135,28 @@ option = {
 
 {{ use: partial-focus-blur-scope() }}
 
-### label(Object)
-
-{{ use: partial-funnel-label(
-    prefix = "###",
-    position = false,
-    formatter = true
-) }}
-
-### labelLine(Object)
-
-{{ use: partial-funnel-label-line(
-    prefix = '###',
-    length = false
-) }}
-
-### itemStyle(Object)
-
-{{ use: partial-item-style(
-    prefix = "###"
-) }}
 
 ## blur(Object)
 
 淡出时的图形样式和标签样式。开启 [emphasis.focus](~series-funnel.emphasis.focus) 后有效
 
-### label(Object)
-
-{{ use: partial-funnel-label(
-    prefix = "###",
-    position = false,
-    formatter = true
+{{ use: partial-funnel-state(
+    prefix = "##"
 ) }}
 
-### labelLine(Object)
+## select(Object)
 
-{{ use: partial-funnel-label-line(
-    prefix = '###',
-    length = false
+数据选中时的图形样式和标签样式。开启 [selectedMode](~series-funnel.selectedMode) 后有效。
+
+{{ use: partial-funnel-state(
+    prefix = "##"
 ) }}
 
-### itemStyle(Object)
 
-{{ use: partial-item-style(
-    prefix = "###"
+{{ use: partial-selected-mode(
+    version = '5.0.0'
 ) }}
+
 
 {{ use: partial-rect-layout-width-height(
     componentName = "漏斗图",
@@ -252,25 +229,20 @@ option = {
 
 ### emphasis(Object)
 
-#### itemStyle(Object)
-
-{{ use: partial-item-style(
-    prefix = "####"
+{{ use: partial-funnel-state(
+    prefix = "###"
 ) }}
 
-#### label(Object)
+### blur(Object)
 
-{{ use: partial-funnel-label(
-    prefix = "####",
-    position = false,
-    formatter = false
+{{ use: partial-funnel-state(
+    prefix = "###"
 ) }}
 
-#### labelLine(Object)
+### select(Object)
 
-{{ use: partial-funnel-label-line(
-    prefix = "####",
-    length = false
+{{ use: partial-funnel-state(
+    prefix = "###"
 ) }}
 
 {{ use: partial-tooltip-in-series-data() }}
@@ -290,6 +262,29 @@ option = {
 
 {{ use: partial-tooltip-in-series() }}
 
+
+{{ target: partial-funnel-state }}
+
+#${prefix} label(Object)
+
+{{ use: partial-funnel-label(
+    prefix = "#" + ${prefix},
+    position = false,
+    formatter = true
+) }}
+
+#${prefix} labelLine(Object)
+
+{{ use: partial-funnel-label-line(
+    prefix = "#" + ${prefix},
+    length = false
+) }}
+
+#${prefix} itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "#" + ${prefix}
+) }}
 
 
 {{ target: partial-funnel-label }}
@@ -338,7 +333,6 @@ option = {
 ) }}
 
 
-
 {{ target: partial-funnel-label-line }}
 
 #${prefix} show(boolean)
@@ -356,4 +350,5 @@ option = {
 {{ use: partial-line-style(
     prefix = "#" + ${prefix}
 ) }}
+
 

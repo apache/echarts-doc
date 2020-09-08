@@ -170,7 +170,7 @@ option = {
 
 ## blur(Object)
 
-淡出时的图形样式和标签样式。开启 [emphasis.focus](~series-bar.emphasis.focus) 后有效
+淡出时的图形样式和标签样式。开启 [emphasis.focus](~series-bar.emphasis.focus) 后有效。
 
 {{ use: partial-bar-state(
     prefix = "##",

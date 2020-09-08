@@ -81,12 +81,6 @@ const option = {
 + `true`：显示所有图形。
 + `false`：随主轴标签间隔隐藏策略。
 
-## hoverAnimation(boolean) = true
-
-<ExampleUIControlBoolean default="true" />
-
-是否开启 hover 在拐点标志上的提示动画效果。
-
 {{ use: partial-legend-hover-link() }}
 
 ## stack(string) = null
@@ -158,7 +152,7 @@ const option = {
 
 ## areaStyle(Object)
 
-区域填充样式。
+区域填充样式。设置后显示成区域面积图。
 
 {{ use: partial-area-style(
     prefix = "##",
@@ -167,19 +161,30 @@ const option = {
 
 ## emphasis(Object)
 
-图形的高亮样式。
+折线图的高亮状态。
 
-### label(Object)
+### scale(boolean) = true
 
-{{ use: partial-label(
-    prefix = "###",
-    formatter = true
-) }}
+是否开启 hover 在拐点标志上的放大效果。
 
-### itemStyle(Object)
+{{ use: partial-focus-blur-scope() }}
 
-{{ use: partial-item-style(
-    prefix = "###"
+{{ use: line-state() }}
+
+## blur(Object)
+
+折线图的淡出状态。开启 [emphasis.focus](~series-line.emphasis.focus) 后有效。
+
+{{ use: line-state() }}
+
+## select(Object)
+
+折线图的选中状态。开启 [selectedMode](~series-line.selectedMode) 后有效。
+
+{{ use: line-state() }}
+
+{{ use: partial-selected-mode(
+    version = '5.0.0'
 ) }}
 
 ## smooth(boolean|number) = false
@@ -268,17 +273,20 @@ const option = {
 
 单个拐点的高亮样式和标签设置。
 
-#### itemStyle(Object)
+{{ use: line-item-state() }}
 
-{{ use: partial-item-style(
-    prefix = "####"
-) }}
+### blur(Object)
 
-#### label(Object)
+单个拐点的淡出样式和标签设置。
 
-{{ use: partial-label(
-    prefix = "####"
-) }}
+{{ use: line-item-state() }}
+
+### select(Object)
+
+单个拐点的选中样式和标签设置。
+
+{{ use: line-item-state() }}
+
 
 {{ use: partial-tooltip-in-series-data() }}
 
@@ -305,3 +313,46 @@ const option = {
 
 {{ use: partial-tooltip-in-series() }}
 
+
+{{ target: line-state }}
+
+### label(Object)
+
+{{ use: partial-label(
+    prefix = "###",
+    formatter = true
+) }}
+
+### itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "###"
+) }}
+
+### lineStyle(Object)
+
+{{ use: partial-line-style(
+    prefix = "###",
+    defaultWidth = 2
+) }}
+
+### areaStyle(Object)
+
+{{ use: partial-area-style(
+    prefix = "###"
+) }}
+
+
+{{ target: line-item-state }}
+
+#### label(Object)
+
+{{ use: partial-label(
+    prefix = "####"
+) }}
+
+#### itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "####"
+) }}

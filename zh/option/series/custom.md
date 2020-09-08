@@ -397,6 +397,10 @@ renderItem 函数的第二个参数。
     prefix = "###"
 ) }}
 
+{{ use: partial-selected-mode(
+    version = '5.0.0'
+) }}
+
 {{ use: partial-series-dimensions(
     prefix = "#"
 ) }}
