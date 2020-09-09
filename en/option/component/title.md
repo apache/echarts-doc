@@ -16,9 +16,13 @@ In ECharts 2.x, a single instance of ECharts could contains one title component 
 
 ## show(boolean) = true
 
+<ExampleUIControlBoolean default="true" />
+
 Set this to `false` to prevent the title from showing
 
 ## text(string) = ''
+
+<ExampleUIControlText />
 
 The main title text, supporting for `\n` for newlines.
 
@@ -51,6 +55,8 @@ Open the hyper link of main title in specified tab.
 
 ## subtext(string) = ''
 
+<ExampleUIControlText />
+
 Subtitle text, supporting for `\n` for newlines.
 
 ## sublink(string) = ''
@@ -76,11 +82,15 @@ Open the hyper link of subtitle in specified tab, options:
 
 ## textAlign(string) = 'auto'
 
+<ExampleUIControlEnum options="auto,left,center,right" default="auto" />
+
 The horizontal align of the component (including "text" and "subtext").
 
 Optional values: `'auto'`, `'left'`, `'right'`, `'center'`.
 
 ## textVerticalAlign(string) = 'auto'
+
+<ExampleUIControlEnum options="auto,top,middle,bottom" default="auto" />
 
 The vertical align of the component (including "text" and "subtext").
 
@@ -97,6 +107,8 @@ Set this to `true` to enable triggering events
 ) }}
 
 ## itemGap(number) = 10
+
+<ExampleUIControlNumber min="0" default="10" step="1" />
 
 The gap between the main title and subtitle.
 

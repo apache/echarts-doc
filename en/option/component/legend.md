@@ -13,6 +13,8 @@ If there have to be too many legend items, [vertically scrollable legend](${gall
 
 ## type(string)
 
+<ExampleUIControlEnum options="plain,scroll" />
+
 Type of legend. Optional values:
 
 + `'plain'`: Simple legend. (default)
@@ -41,11 +43,15 @@ When `'scroll'` used, these options below can be used for detailed configuration
 
 ## show(boolean) = true
 
+<ExampleUIControlBoolean default="true" />
+
 {{ use: partial-rect-layout-width-height(
     componentName = "legend"
 ) }}
 
 ## orient(string) = 'horizontal'
+
+<ExampleUIControlEnum options="vertical,horizontal" default="horizontal" />
 
 The layout orientation of legend.
 
@@ -54,6 +60,8 @@ Options:
 + 'vertical'
 
 ## align(string) = 'auto'
+
+<ExampleUIControlEnum options="auto,left,right" default="auto" />
 
 Legend marker and text aligning. By default, it automatically calculates from component location and orientation. When [left](~legend.left) value of this component is 'right', and the vertical layout ([orient](~legend.orient) is 'vertical'), it would be aligned to 'right'.
 
@@ -64,23 +72,33 @@ Option:
 
 ## padding(number|Array) = 5
 
+<ExampleUIControlVector dims="T,R,B,L" default="5" min="0" step="0.5" />
+
 {{ use: partial-padding(
     componentName = "legend"
 ) }}
 
 ## itemGap(number) = 10
 
+<ExampleUIControlNumber default="10" min="0" step="0.5" />
+
 The distance between each legend, horizontal distance in horizontal layout, and vertical distance in vertical layout.
 
 ## itemWidth(number) = 25
+
+<ExampleUIControlNumber default="25" min="0" step="0.5" />
 
 Image width of legend symbol.
 
 ## itemHeight(number) = 14
 
+<ExampleUIControlNumber default="14" min="0" step="0.5" />
+
 Image height of legend symbol.
 
 ## symbolKeepAspect(boolean) = true
+
+<ExampleUIControlBoolean />
 
 Whether to keep aspect for icons (from `series.symbol` or user-defined `legend.data.icon`) in the form of `path://`.
 
@@ -100,11 +118,15 @@ formatter: function (name) {
 
 ## selectedMode(string|boolean) = true
 
+<ExampleUIControlBoolean options="true,false,single,multiple" />
+
 Selected mode of legend, which controls whether series can be toggled displaying by clicking legends. It is enabled by default, and you may set it to be `false` to disable it.
 
 Besides, it can be set to `'single'` or `'multiple'`, for single selection and multiple selection.
 
 ## inactiveColor(Color) = '#ccc'
+
+<ExampleUIControlColor default="#ccc" />
 
 Legend color when not selected.
 
@@ -128,7 +150,10 @@ Legend text style.
 
 {{ use: partial-text-style(
     componentName = 'legend',
-    prefix = '##'
+    prefix = '##',
+    defaultColor = "#333",
+    noAlign = true,
+    noVerticalAlign = true
 ) }}
 
 ## tooltip(Object)
@@ -136,6 +161,8 @@ Legend text style.
 Tooltip configuration for legend tooltip, which is similar to [tooltip](~tooltip).
 
 ## icon(string)
+
+<ExampleUIControlIcon />
 
 Icon of the legend items.
 
@@ -269,6 +296,8 @@ See [vertically scrollable legend](${galleryEditorPath}pie-legend&edit=1&reset=1
 
 ## pageIconColor(string) = '#2f4554'
 
+<ExampleUIControlColor default="#2f4554" />
+
 It works when [legend.type](~legend.type) is `'scroll'`.
 
 The color of page buttons.
@@ -277,6 +306,8 @@ See [vertically scrollable legend](${galleryEditorPath}pie-legend&edit=1&reset=1
 
 ## pageIconInactiveColor(string) = '#aaa'
 
+<ExampleUIControlColor default="#aaa" />
+
 It works when [legend.type](~legend.type) is `'scroll'`.
 
 The color of page buttons when they are inactive.
@@ -284,6 +315,8 @@ The color of page buttons when they are inactive.
 See [vertically scrollable legend](${galleryEditorPath}pie-legend&edit=1&reset=1) or [horizontally scrollable legend](${galleryEditorPath}radar2&edit=1&reset=1).
 
 ## pageIconSize(number|Array) = 15
+
+<ExampleUIControlVector default="15,15" dims="w,h" />
 
 It works when [legend.type](~legend.type) is `'scroll'`.
 
@@ -305,9 +338,13 @@ The text style of page info.
 
 ## animation(boolean)
 
+<ExampleUIControlBoolean default="true" />
+
 Whether to use animation when page scrolls.
 
 ## animationDurationUpdate(number) = 800
+
+<ExampleUIControlNumber min="0" default="800" step="20" />
 
 Duration of the page scroll animation.
 
@@ -375,6 +412,8 @@ The text label style of the selector button, which is displayed by default.
 
 ## selectorPosition(string) = 'auto'
 
+<ExampleUIControlEnum options="auto,start,end" />
+
 {{ use: partial-version(
     version = "4.4.0"
 ) }}
@@ -383,6 +422,8 @@ The position of the selector button, which can be placed at the end or start of 
 
 ## selectorItemGap(number) = 7
 
+<ExampleUIControlNumber min="0" default="7" step="0.5" />
+
 {{ use: partial-version(
     version = "4.4.0"
 ) }}
@@ -390,6 +431,8 @@ The position of the selector button, which can be placed at the end or start of 
 The gap between the selector button.
 
 ## selectorButtonGap(number) = 10
+
+<ExampleUIControlNumber min="0" default="10" step="0.5" />
 
 {{ use: partial-version(
     version = "4.4.0"

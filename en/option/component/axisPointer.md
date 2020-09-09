@@ -98,6 +98,8 @@ Return of mapper:
 
 ## triggerOn(string) = 'mousemove|click'
 
+<ExampleUIControlEnum options="mousemove,click,none" />
+
 Conditions to trigger tooltip. Options:
 
 + `'mousemove'`

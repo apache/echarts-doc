@@ -81,9 +81,13 @@ tooltip settings in this series data.
 
 #${prefix} show(boolean) = true
 
+<ExampleUIControlBoolean default="true" />
+
 Whether to show the tooltip component, including tooltip floating layer and [axisPointer](~tooltip.axisPointer).
 
 #${prefix} trigger(string) = 'item'
+
+<ExampleUIControlEnum default="item,axis,none" />
 
 Type of triggering.
 
@@ -115,6 +119,8 @@ Configuration item for axisPointer.
 {{ use: partial-axisPointer-introduction() }}
 
 ##${prefix} type(string) = 'line'
+
+<ExampleUIControlEnum default="none,line,shadow,cross" />
 
 Indicator type.
 
@@ -312,6 +318,8 @@ The background color of tooltip's floating layer.
 
 #${prefix} borderColor(Color) = '#333'
 
+<ExampleUIControlColor default="#333" />
+
 {{ use: partial-tooltip-scope-tip(
     scope = ${scope}
 ) }}
@@ -320,6 +328,8 @@ The border color of tooltip's floating layer.
 
 #${prefix} borderWidth(number) = 0
 
+<ExampleUIControlNumber default="0" step="0.5" />
+
 {{ use: partial-tooltip-scope-tip(
     scope = ${scope}
 ) }}
@@ -327,6 +337,8 @@ The border color of tooltip's floating layer.
 The border width of tooltip's floating layer.
 
 #${prefix} padding(number) = 5
+
+<ExampleUIControlVector dims="T,R,B,L" default="5,5,5,5" />
 
 {{ use: partial-tooltip-scope-tip(
     scope = ${scope}

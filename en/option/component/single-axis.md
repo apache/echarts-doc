@@ -12,7 +12,7 @@ An axis with a single dimension. It can be used to display data in one dimension
 ) }}
 
 {{ use: partial-rect-layout-width-height(
-    componentName = "grid ",
+    componentName = "single",
     defaultLeft = "'5%'",
     defaultTop = "'5%'",
     defaultRight = "'5%'",

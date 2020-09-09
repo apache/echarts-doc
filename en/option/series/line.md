@@ -31,18 +31,21 @@ Broken line chart relates all the data points [symbol](~series-line.symbol) by b
 
 {{ use: partial-symbol(
     seriesType = "line",
-    defaultSymbol = "'circle'",
+    defaultSymbol = "'emptyCircle'",
     defaultSymbolSize = 4,
     prefix = "#",
-    hasCallback = true,
-    name = "line point"
+    hasCallback = true
 ) }}
 
 ## showSymbol(boolean) = true
 
+<ExampleUIControlBoolean default="true" />
+
 Whether to show symbol. It would be shown during tooltip hover.
 
 ## showAllSymbol(boolean) = 'auto'
+
+<ExampleUIControlBoolean />
 
 Only work when main axis is `'category'` axis (`axis.type` is `'category'`). Optional values:
 + `'auto'`: Default value. Show all symbols if there is enough space. Otherwise follow the interval strategy with with [axisLabel.interval](~xAxis.axisLabel.interval).
@@ -50,6 +53,8 @@ Only work when main axis is `'category'` axis (`axis.type` is `'category'`). Opt
 + `false`: Follow the interval strategy with [axisLabel.interval](~xAxis.axisLabel.interval).
 
 ## hoverAnimation(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
 
 Set this to `false` to prevent the animation effect when the mouse is hovering over a symbol
 
@@ -67,6 +72,8 @@ The effect of the below example could be seen through stack switching of [toolbo
 
 ## connectNulls(boolean) = false
 
+<ExampleUIControlBoolean />
+
 Whether to connect the line across null points.
 
 {{ use: partial-clip(
@@ -74,6 +81,8 @@ Whether to connect the line across null points.
 ) }}
 
 ## step(string|boolean) = false
+
+<ExampleUIControlEnum options='start,middle,end' />
 
 Whether to show as a step line. It can be `true`, `false`. Or `'start'`, `'middle'`, `'end'`. Which will configure the turn point of step line.
 
@@ -246,8 +255,7 @@ Emphasis state of specified single data.
     prefix = "#",
     seriesType = "line",
     hasCoord = true,
-    hasType = true,
-    name = "mark point"
+    hasType = true
 ) }}
 
 {{ use: partial-z-zlevel(

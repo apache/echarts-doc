@@ -101,6 +101,8 @@ In the above example, each item in `timeline.data` corresponds to each `option` 
 
 ## show(boolean) = true
 
+<ExampleUIControlBoolean default="true" />
+
 Whether to show the `timeline` component. It would not show with a setting of `false`, but its functions still remain.
 
 ## type(string) = 'slider'
@@ -120,29 +122,43 @@ Type of axis, whose values may be:
 
 ## currentIndex(number) = 0
 
+<ExampleUIControlNumber min="0" step="1" />
+
 Indicates which is the currently selected item. For instance, if `currentIndex` is `0`, it indicates that the currently selected item is `timeline.data[0]` (namely, using `options[0]`).
 
 ## autoPlay(boolean) = false
+
+<ExampleUIControlBoolean />
 
 Whether to play automatically.
 
 ## rewind(boolean) = false
 
+<ExampleUIControlBoolean />
+
 Whether supports playing reversely.
 
 ## loop(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
 
 Whether to loop playing.
 
 ## playInterval(number) = 2000
 
+<ExampleUIControlNumber min="0" step="20" default="2000" />
+
 Indicates play speed (gap time between two state), whose unit is millisecond.
 
 ## realtime(boolean) = true
 
+<ExampleUIControlBoolean default="true" />
+
 Whether the view updates in real time during dragging the control dot.
 
 ## controlPosition(string) = 'left'
+
+<ExampleUIControlEnum options="left,right" />
 
 Position of the play button, whose valid values are `'left'` and `'right'`.
 
@@ -152,11 +168,15 @@ Position of the play button, whose valid values are `'left'` and `'right'`.
 
 ## padding(number|Array) = 5
 
+<ExampleUIControlVector default="5,5,5,5" dims="T,R,B,L" />
+
 {{ use: partial-padding(
     componentName = 'timeline'
 ) }}
 
 ## orient(string) = 'horizontal'
+
+<ExampleUIControlEnum options="horizontal,vertical" default="horizontal" />
 
 Orientation of the component, whose valid values are:
 
@@ -164,6 +184,8 @@ Orientation of the component, whose valid values are:
 + `'horizontal'`: horizontal layout.
 
 ## inverse(boolean) = false
+
+<ExampleUIControlBoolean />
 
 + Whether to put the `timeline` component reversely, which makes the elements in the front to be at the end.
 
@@ -177,6 +199,8 @@ Orientation of the component, whose valid values are:
 ## lineStyle(Object)
 
 ### show(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
 
 Whether to show the axis. It can be set to be `false` to hide the axis line to make a different style.
 
@@ -192,6 +216,10 @@ Whether to show the axis. It can be set to be `false` to hide the axis line to m
 Label axis, `emphasis` is the highlighted style of text. For instance, text style in `emphasis` would be used when mouse hovers or legend connects.
 
 ### position(string|number) = 'auto'
+
+<ExampleUIControlBoolean default="true" />
+
+<ExampleUIControlEnum options="auto,left,right,top,bottom" />
 
 Configurations:
 
@@ -219,7 +247,6 @@ Configurations:
 
 {{ use: partial-timeline-label(
     prefix = "##",
-    state = "normal",
     textStyleDefaultColor = "'#304654'"
 ) }}
 
@@ -249,25 +276,37 @@ Style of the selected item (`checkpoint`).
 
 ### color(Color) = '#c23531'
 
+<ExampleUIControlColor default="#c23531" />
+
 Color of `checkpoint` in `timeline` component.
 
 ### borderWidth(number) = 5
+
+<ExampleUIControlNumber min="0" step="0.5" default="5" />
 
 The border-width of `checkpoint` in `timeline` component.
 
 ### borderColor(Color) = 'rgba(194,53,49, 0.5)'
 
+<ExampleUIControlColor default="rgba(194,53,49, 0.5)" />
+
 The border-color of `checkpoint` in `timeline` component.
 
 ### animation(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
 
 In `timeline` component, whether there is animation in `checkpoint` moving during the process of `timeline` playing and switching.
 
 ### animationDuration(number) = 300
 
+<ExampleUIControlNumber min="0" step="20" default="300" />
+
 The animation duration of `checkpoint` in `timeline` component.
 
 ### animationEasing(string) = 'quinticInOut'
+
+<ExampleUIControlEnum default="quinticInOut" options="linear,quadraticIn,quadraticOut,quadraticInOut,cubicIn,cubicOut,cubicInOut,quarticIn,quarticOut,quarticInOut,quinticIn,quinticOut,quinticInOut,sinusoidalIn,sinusoidalOut,sinusoidalInOut,exponentialIn,exponentialOut,exponentialInOut,circularIn,circularOut,circularInOut,elasticIn,elasticOut,elasticInOut,backIn,backOut,backInOut,bounceIn,bounceOut,bounceInOut" />
 
 The easing effect of animation of `checkpoint` in `timeline` component. Refers to [easing sample](${galleryViewPath}line-easing) for different easing effects.
 
@@ -277,29 +316,43 @@ The style of *control button*, which includes: *play button*, *previous button*,
 
 ### show(boolean) = true
 
+<ExampleUIControlBoolean default="true" />
+
 Whether to show control button. `false` for hide all.
 
 ### showPlayBtn(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
 
 Whether to show play button.
 
 ### showPrevBtn(boolean) = true
 
+<ExampleUIControlBoolean default="true" />
+
 Whether to show previous button.
 
 ### showNextBtn(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
 
 Whether to show next button.
 
 ### itemSize(number) = 22
 
+<ExampleUIControlNumber min="0" step="0.5" default="22" />
+
 Size of *control button*, in pixels (px).
 
 ### itemGap(number) = 12
 
+<ExampleUIControlNumber min="0" step="0.5" default="12" />
+
 Interval between *control button*, in pixels (px).
 
 ### position(string) = 'left'
+
+<ExampleUIControlEnum options="left,right,top,bottom" />
 
 the location of *control button*.
 
@@ -309,11 +362,15 @@ the location of *control button*.
 
 ### playIcon(string)
 
+<ExampleUIControlIcon />
+
 Icon of *play status* for *play button*.
 
 {{ use: partial-icon-image-path() }}
 
 ### stopIcon(string)
+
+<ExampleUIControlIcon />
 
 Icon of *stop status* for *play button*.
 
@@ -321,11 +378,15 @@ Icon of *stop status* for *play button*.
 
 ### prevIcon(string)
 
+<ExampleUIControlIcon />
+
 Icon of *previous button*.
 
 {{ use: partial-icon-image-path() }}
 
 ### nextIcon(string)
+
+<ExampleUIControlIcon />
 
 Icon of *next button*.
 
@@ -333,13 +394,19 @@ Icon of *next button*.
 
 ### color(Color) = '#304654'
 
+<ExampleUIControlColor default="#304654" />
+
 Button color.
 
 ### borderColor(Color) = '#304654'
 
+<ExampleUIControlColor default="#304654" />
+
 Color of button border.
 
 ### borderWidth(number) = 1
+
+<ExampleUIControlNumber min="0" step="0.5" default="1" />
 
 Border width of button.
 
@@ -414,6 +481,8 @@ as follows:
 {{ target: partial-timeline-label }}
 
 #${prefix} show(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
 
 Whether to show the label.
 

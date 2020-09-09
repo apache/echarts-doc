@@ -11,6 +11,8 @@ The x axis in cartesian(rectangular) coordinate. Usually a single grid component
 
 ## show(boolean) = true
 
+<ExampleUIControlBoolean default="true" />
+
 Set this to `false` to prevent the axis from showing.
 
 ## gridIndex(number) = 0
@@ -18,6 +20,8 @@ Set this to `false` to prevent the axis from showing.
 The index of grid which the x axis belongs to. Defaults to be in the first grid.
 
 ## position(string)
+
+<ExampleUIControlEnum options="top,bottom" default="bottom" />
 
 The position of x axis.
 
@@ -28,6 +32,8 @@ options:
 The first x axis in grid defaults to be on the bottom of the grid, and the second x axis is on the other side against the first x axis.
 
 ## offset(number) = 0
+
+<ExampleUIControlNumber step="0.5" />
 
 Offset of x axis relative to default position. Useful when multiple x axis has same [position](~xAxis.position) value.
 

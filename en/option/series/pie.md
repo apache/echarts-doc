@@ -31,9 +31,13 @@ For multiple pie series in a single chart, you may use [left](~series-pie.left),
 
 ## hoverAnimation(boolean) = true
 
+<ExampleUIControlBoolean default="true" />
+
 Whether to enable the zoom animation effects when hovering sectors.
 
 ## hoverOffset(number) = 10
+
+<ExampleUIControlNumber min="0" default="10" />
 
 The offset distance of hovered sector.
 
@@ -43,25 +47,37 @@ The offset distance of hovered sector.
 
 ## selectedOffset(number) = 10
 
+<ExampleUIControlNumber min="0" default="10" />
+
 The offset distance of selected sector.
 
 ## clockwise(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
 
 Whether the layout of sectors of pie chart is clockwise.
 
 ## startAngle(number) = 90
 
+<ExampleUIControlAngle step="1" min="0" max="360" default="90" />
+
 The start angle, which range is [0, 360].
 
 ## minAngle(number) = 0
+
+<ExampleUIControlAngle step="1" min="0" max="360" default="0" />
 
 The minimum angle of sector (0 ~ 360). It prevents some sector from being too small when value is small, which will affect user interaction.
 
 ## minShowLabelAngle(number) = 0
 
+<ExampleUIControlAngle step="1" min="0" max="360" default="0" />
+
 If a sector is less than this angle (0 ~ 360), label and labelLine will not be displayed.
 
 ## roseType(boolean|string) = false
+
+<ExampleUIControlEnum options="radius,area" />
 
 Whether to show as Nightingale chart, which distinguishs data through radius. There are 2 optional modes:
 
@@ -70,9 +86,13 @@ Whether to show as Nightingale chart, which distinguishs data through radius. Th
 
 ## avoidLabelOverlap(boolean) = true
 
+<ExampleUIControlBoolean default="true" />
+
 Whether to enable the strategy to avoid labels overlap. Defaults to be enabled, which will move the label positions in the case of labels overlapping
 
 ## stillShowZeroSum(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
 
 Whether to show sector when all data are zero.
 
@@ -100,6 +120,8 @@ Whether to show sector when all data are zero.
 
 ### alignTo(string) = 'none'
 
+<ExampleUIControlEnum options="labelLine,edge" />
+
 Label aligning policy. Valid only when `position` is `'outer'`.
 
 Since ECharts v4.6.0, we provide `'labelLine'` and `'edge'` two extra valid `alignTo` values.
@@ -112,6 +134,8 @@ Since ECharts v4.6.0, we provide `'labelLine'` and `'edge'` two extra valid `ali
 
 ### margin(string|number) = '25%'
 
+<ExampleUIControlPercent default="20%" />
+
 The horizontal distance between text edges and viewport when [label.position](~series-pie.label.position) is `'outer'` and [label.alignTo](~series-pie.label.alignTo) is `'edge'`.
 
 ~[900x250](${galleryViewPath}doc-example/pie-label-margin&edit=1&reset=1)
@@ -120,11 +144,15 @@ In most cases, you need a small `margin` value like `10` for mobile devices to m
 
 ### bleedMargin(number) = 10
 
+<ExampleUIControlNumber default="10" min="0" step="1" />
+
 The horizontal distance between text and viewport when [label.position](~series-pie.label.position) is `'outer'` and [label.alignTo](~series-pie.label.alignTo) is `'none'` or `'labelLine'`. Longer text will be truncated into `'...'`.
 
 ~[800x250](${galleryViewPath}doc-example/pie-label-bleedMargin&edit=1&reset=1)
 
 ### distanceToLabelLine(number) = 5
+
+<ExampleUIControlNumber default="5" min="0" step="0.5" />
 
 Distance between label line and text.
 
@@ -275,8 +303,7 @@ The label configuration of a single sector.
 
 {{ use: partial-marker(
     prefix = "#",
-    seriesType = "pie",
-    name = "mark point"
+    seriesType = "pie"
 ) }}
 
 {{ use: partial-silent(
@@ -285,11 +312,15 @@ The label configuration of a single sector.
 
 ## animationType(string) = 'expansion'
 
+<ExampleUIControlEnum options="expansion,scale" />
+
 Initial animation type.
 + `'expansion'` Default expansion animation.
 + `'scale'` Scale animation. You can use it with `animationEasing='elasticOut'` to have popup effect.
 
 ## animationTypeUpdate(string) = 'transition'
+
+<ExampleUIControlEnum options="expansion,transition" />
 
 {{ use: partial-version(
     version = "4.4.0"
@@ -361,10 +392,14 @@ Label rotation.
 
 #${prefix} show(boolean)
 
+<ExampleUIControlBoolean />
+
 Whether to show the visual guide ine.
 
 {{ if: ${length} }}
 #${prefix} length(number)
+
+<ExampleUIControlNumber default="15" min="0" step="1" />
 
 The length of the first segment of visual guide line.
 {{ /if }}
@@ -372,11 +407,15 @@ The length of the first segment of visual guide line.
 {{ if: ${length2} }}
 #${prefix} length2(number)
 
+<ExampleUIControlNumber default="15" min="0" step="1" />
+
 The length of the second segment of visual guide line.
 {{ /if }}
 
 {{ if: ${smooth} }}
 #${prefix} smooth(boolean|number) = false
+
+<ExampleUIControlBoolean />
 
 Whether to smooth the visual guide line. It defaults to be `false` and can be set as `true` or the values from 0 to 1 which indicating the smoothness.
 {{ /if }}

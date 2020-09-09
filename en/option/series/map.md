@@ -89,7 +89,7 @@ Color of the area.
 {{ use: partial-color-desc() }}
 
 {{ use: partial-item-style(
-    prefix = '####'
+    prefix = '###'
 ) }}
 
 ### label(Object)
@@ -134,8 +134,7 @@ Area color in the map.
 {{ use: partial-marker(
     prefix = "#",
     seriesType = "map",
-    hasCoord = true,
-    name = "mark point"
+    hasCoord = true
 ) }}
 
 {{ use: partial-silent(

@@ -38,13 +38,19 @@ In addition, the edge between two small rectangles in the diagram encodes the `l
 
 ## nodeWidth(number) = 20
 
+<ExampleUIControlNumber default="20" min="0" step="0.5" />
+
 The node width of rectangle in Sankey diagram.
 
 ## nodeGap(number) = 8
 
+<ExampleUIControlNumber default="8" min="0" step="0.5" />
+
 The gap between any two rectangles in each column of the Sankey diagram.
 
 ## nodeAlign(string) = 'justify'
+
+<ExampleUIControlEnum options="justify,left,right" />
 
 Controls the horizontal alignment of nodes in the diagram.
 
@@ -60,17 +66,25 @@ Note when [orient](~series-sankey.orient) is `vertical`, `nodeAlign` controls ve
 
 ## layoutIterations(number) = 32
 
+<ExampleUIControlNumber default="32" min="0" max="100" step="1" />
+
 The iterations of layout, which is used to iteratively optimize the position of the nodes and edges in the Sankey diagram to reduce the overlapping between nodes and edges. The default value is `32`. If you want the order of the nodes in the chart to be the same with the order in the original [data](~series-sankey.data), you can set the value to be `0`.
 
 ## orient(string) = 'horizontal'
+
+<ExampleUIControlEnum options="horizontal,vertical" />
 
 The layout direction of the nodes in the Sankey diagram, which can be horizontal from left to right or vertical from top to bottom. The corresponding parameter values ​​are `horizontal` or `vertical`.
 
 ## draggable(boolean) = true
 
+<ExampleUIControlBoolean default="true" />
+
 The drag-and-drop interaction of the node, which is enabled by default. After opening, the user can drag any node in the Sankey diagram to any position. To turn this interaction off, simply set the value to `false`.
 
 ## focusNodeAdjacency(boolean|string) = false
+
+<ExampleUIControlEnum options="false,true,allEdges,outEdges,inEdges" />
 
 Support when mouse hovering over a node or an edge, the adjacent nodes and edges are also highlighted. Default off, can be manually opened.
 
@@ -124,6 +138,8 @@ levels: [{
 ```
 
 ### depth(number)
+
+<ExampleUIControlNumber default="0" min="0" step="1" />
 
 Specify which layer is set, value starts from 0.
 

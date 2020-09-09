@@ -31,6 +31,8 @@ Used to determine it is a piecewise visualMap component.
 
 ## splitNumber(number) = 5
 
+<ExampleUIControlNumber default="5" min="1" step="1" />
+
 Continuous data can be divide into pieces averagely according to splitNumber, that is, if splitNumber is 5, data will be sliced into 5 pieces.
 
 The range of continuous data should be defined by [max](~visualMap-piecewise.max) and [min](~visualMap-piecewise.min).
@@ -84,6 +86,8 @@ You would realize the sequence in `categories` by a simple trial. See more detai
 
 ## min(number)
 
+<ExampleUIControlNumber />
+
 Specify the min dataValue for the visualMap component. `[visualMap.min, visualMax.max]` make up the domain of viusul mapping.
 
 In **CONTINUOUS-CUSTOMIZED** mode (i.e., [visualMap-piecewise.pieces](~visualMap-piecewise.pieces) is used) or **CATEGORY** mode (i.e., [visualMap-piecewise.categories](~visualMap-piecewise.categories) is used), `max` and `min` doesn't need to be specified.
@@ -91,6 +95,8 @@ In **CONTINUOUS-CUSTOMIZED** mode (i.e., [visualMap-piecewise.pieces](~visualMap
 In **CONTINUOUS-AVERAGE** mode (i.e., [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber) is used), they should be specified explicitly, and be `[0, 200]` by default, but not `dataMin` and `dataMax` in series.data.
 
 ## max(number)
+
+<ExampleUIControlNumber />
 
 Specify the max dataValue for the visualMap component. `[visualMap.min, visualMax.max]` make up the domain of viusul mapping.
 
@@ -100,11 +106,15 @@ In **CONTINUOUS-AVERAGE** mode (i.e., [visualMap-piecewise.splitNumber](~visualM
 
 ## minOpen(boolean)
 
+<ExampleUIControlBoolean />
+
 This option works when `type` is `piecewise` and `min`/`max`/`splitNumber` are set.
 
 If it is set as `true`, an extra piece labeled with "< min" will show.
 
 ## maxOpen(boolean)
+
+<ExampleUIControlBoolean />
 
 This option works when `type` is `piecewise` and `min`/`max`/`splitNumber` are set.
 
@@ -112,12 +122,16 @@ If it is set as `true`, an extra piece labeled with "> max" will show.
 
 ## selectedMode(string) = 'multiple'
 
+<ExampleUIControlEnum options="single,multiple" />
+
 Selected Mode could be:
 
 + `'multiple'` (multiple selection).
 + `'single'` (single selection).
 
 ## inverse(boolean) = false
+
+<ExampleUIControlBoolean />
 
 Whether to inverse the layout of visualMap component.
 
@@ -137,6 +151,8 @@ If you just have a try, you'll know it is not so complicated.
 
 ## precision(number) = null
 
+<ExampleUIControlNumber min="0" step="1" />
+
 The decimal precision of label, defaults to be 0 (no decimals).
 
 + In **CONTINUOUS-AVERAGE** mode (i.e., [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber) is used), the rule of data layout is the same as [visualMap-continuous.inverse](~visualMap-continuous.inverse), decimal percision auto adapts to series.data.
@@ -145,13 +161,19 @@ The decimal precision of label, defaults to be 0 (no decimals).
 
 ## itemWidth(number) = 20
 
+<ExampleUIControlNumber default="20" min="0" />
+
 The width of each graphical element that represents a piece.
 
 ## itemHeight(number) = 14
 
+<ExampleUIControlNumber default="14" min="0" />
+
 The height of each graphical element that represents a piece.
 
 ## align(string) = 'auto'
+
+<ExampleUIControlEnum options="auto,left,right" />
 
 The layout relationship between the graphical elements for pieces and their labels. Possible values are:
 
@@ -169,13 +191,19 @@ The rule, that labels will not show when `text` is use, is retained for compatib
 
 ## textGap(number) = 10
 
+<ExampleUIControlNumber default="10" />
+
 The distance between the ends of the graphical elements for pieces and the labels, with unit px. See [visualMap-piecewise.text](~visualMap-piecewise.text)
 
 ## showLabel(boolean)
 
+<ExampleUIControlBoolean />
+
 Whether to show label of each item. By default, label will not be shown when [visualMap-piecewise.text](~visualMap-piecewise.text) used, otherwise label will be shown.
 
 ## itemGap(*) = 10
+
+<ExampleUIControlNumber default="10" />
 
 Its the distance between each two graphical elements for pieces. The unit is px.
 

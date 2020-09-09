@@ -150,6 +150,8 @@ Specify the right-bottom point.
 {{ if: ${hasType} }}
 #${prefix} type(string)
 
+<ExampleUIControlEnum options="min,max,average" />
+
 Specify this item is on min or max or average value.
 
 **Options:**
@@ -160,6 +162,8 @@ Specify this item is on min or max or average value.
 
 {{ if: ${hasCoord} }}
 #${prefix} valueIndex(number)
+
+<ExampleUIControlNumber min="0" max="1" step="1"  />
 
 Specify the dimension on which min, max, average are calculated,
 available when [type](~series-${seriesType}.markArea.data.type) used.
@@ -183,9 +187,13 @@ Name of the marker, which will display as a label.
 
 #${prefix} x(number)
 
+<ExampleUIControlPercent default="0" />
+
 x value on screen coordinate system, can be pixel number (like `5`), or percent value (like `'20%'`).
 
 #${prefix} y(number)
+
+<ExampleUIControlPercent default="0" />
 
 y value on screen coordinate system, can be pixel number (like `5`), or percent value (like `'20%'`).
 

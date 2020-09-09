@@ -11,6 +11,8 @@ The y axis in cartesian(rectangular) coordinate. Usually a single grid component
 
 ## show(boolean) = true
 
+<ExampleUIControlBoolean default="true" />
+
 Set this to `false` to prevent the axis from showing.
 
 ## gridIndex(number) = 0
@@ -18,6 +20,8 @@ Set this to `false` to prevent the axis from showing.
 The index of grid which the y axis belongs to. Defaults to be in the first grid.
 
 ## position(string)
+
+<ExampleUIControlEnum options="left,right" default="left" />
 
 the position of y axis.
 
@@ -28,6 +32,8 @@ options:
 The first y axis in grid defaults to be the left (`'left'`)  of the grid, and the second y axis is on the other side against the first y axis.
 
 ## offset(number) = 0
+
+<ExampleUIControlNumber step="0.5" />
 
 Offset of y axis relative to default position. Useful when multiple y axis has same [position](~yAxis.position) value.
 

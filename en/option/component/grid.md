@@ -17,6 +17,8 @@ In ECharts 2.x, there could only be one single grid component at most in a singl
 
 ## show(boolean) = false
 
+<ExampleUIControlBoolean default="false" />
+
 Whether to show the grid in rectangular coordinate.
 
 {{ use: partial-rect-layout-width-height(
@@ -28,6 +30,8 @@ Whether to show the grid in rectangular coordinate.
 ) }}
 
 ## containLabel(boolean) = false
+
+<ExampleUIControlBoolean default="false" />
 
 Whether the grid region contains [axis tick label](~yAxis.axisLabel) of axis.
 

@@ -198,9 +198,13 @@ Specify which [angleAxis](~angleAxis) is/are controlled by the `${dataZoomName}`
 
 ## filterMode(string) = 'filter'
 
+<ExampleUIControlEnum options="filter,weakFilter,empty,none" default="filter" />
+
 {{ use: partial-data-zoom-filterMode() }}
 
 ## start(number) = 0
+
+<ExampleUIControlNumber min="0" max="100" step="0.5" />
 
 The start percentage of the window out of the data extent, in the range of 0 ~ 100.
 
@@ -209,6 +213,8 @@ The start percentage of the window out of the data extent, in the range of 0 ~ 1
 More info about the relationship between `${dataZoomName}.start` and axis extent can be checked in [${dataZoomName}.rangeMode](~${dataZoomName}.rangeMode).
 
 ## end(number) = 100
+
+<ExampleUIControlNumber min="0" max="100" default="100" step="0.5" />
 
 The end percentage of the window out of the data extent, in the range of 0 ~ 100.
 
@@ -238,11 +244,15 @@ More info about the relationship between `${dataZoomName}.endValue` and axis ext
 
 ## minSpan(number) = null
 
+<ExampleUIControlNumber min="0" max="100" step="0.5" />
+
 Used to restrict minimal window size, in percent, which value is in the range of [0, 100].
 
 If [${dataZoomName}.minValueSpan](~${dataZoomName}.minValueSpan) is set, `minSpan` does not work any more.
 
 ## maxSpan(number) = null
+
+<ExampleUIControlNumber min="0" max="100" step="0.5" />
 
 Used to restrict maximal window size, in percent, which value is in the range of [0, 100].
 
@@ -266,6 +276,8 @@ In category axis it can be set as `5` to represent 5 categories.
 
 ## orient(string) = null
 
+<ExampleUIControlEnum options="horizontal,vertical" />
+
 Specify whether the layout of `dataZoom` component is horizontal or vertical. What's more, it indicates whether the horizontal axis or vertical axis is controlled by default in catesian coordinate system.
 
 Valid values:
@@ -276,11 +288,15 @@ Valid values:
 
 ## zoomLock(boolean) = false
 
+<ExampleUIControlBoolean />
+
 Specify whether to lock the size of window (selected area).
 
 When set as `true`, the size of window is locked, that is, only the translation (by mouse drag or touch drag) is avialable but zoom is not.
 
 ## throttle(number) = 100
+
+<ExampleUIControlNumber default="100" min="0" step="20" />
 
 Specify the frame rate of views refreshing, with unit millisecond (ms).
 

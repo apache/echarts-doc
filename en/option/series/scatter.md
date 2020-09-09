@@ -27,12 +27,13 @@ It could be used with [rectangular coordinate](~grid) and [polar coordinate](~po
 
 ## hoverAnimation(boolean)
 
+<ExampleUIControlBoolean default="true" />
+
 Whether to enable the animation effect when mouse is on the symbol.
 
 {{ use: partial-legend-hover-link() }}
 
 {{ use: partial-symbol(
-    name = "scatter",
     seriesType = "scatter",
     defaultSymbol = "'circle'",
     defaultSymbolSize = 10,
@@ -160,8 +161,7 @@ Emphasis state of single data.
     prefix = "#",
     seriesType = "scatter",
     hasCoord = true,
-    hasType = true,
-    name = "mark point"
+    hasType = true
 ) }}
 
 {{ use: partial-clip(

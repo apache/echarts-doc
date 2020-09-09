@@ -112,7 +112,7 @@ See the example below:
 ) }}
 
 {{ use: partial-barGrid(
-    seriesType = 'bar',
+    seriesType = 'pictorialBar',
     barGapDefault = "-100%"
 ) }}
 
@@ -180,8 +180,7 @@ The style setting of the text label in a single bar.
     prefix = "#",
     seriesType = "pictorialBar",
     hasCoord = true,
-    hasType = true,
-    name = "mark point"
+    hasType = true
 ) }}
 
 {{ use: partial-z-zlevel(
@@ -223,6 +222,8 @@ Example:
 
 #${prefix} symbolSize(number|Array) = ['100%', '100%']
 
+<ExampleUIControlPercent default="100%,100%" dims="W,H" />
+
 Symbol size.
 
 It can be set as a array, which means [width, height]. For example, `[20, 10]` means width `20` and height `10`. It can also be set as a single number, like `10`, which is equivalent to `[10, 10]`.
@@ -249,6 +250,8 @@ For example:
 
 #${prefix} symbolPosition(string) = 'start'
 
+<ExampleUIControlEnum options="start,end,center" default="start" />
+
 Specify the location of the graphic elements. Optional values:
 
 + `'start'`: The edge of graphic element inscribes with the start of the reference bar.
@@ -263,6 +266,8 @@ For example:
 ) }}
 
 #${prefix} symbolOffset(Array) = [0, 0]
+
+<ExampleUIControlPercentVector default="0,0" dims="x,y" />
 
 Specify the offset of graphic element according to its original position. Adopting `symbolOffset` is the final step in layout, which enables adjustment of graphic element position.
 
@@ -279,6 +284,8 @@ For example:
 
 #${prefix} symbolRotate(number)
 
+<ExampleUIControlAngle min="-360" max="360" step="1" />
+
 The degree of the rotation of a graphic element.
 
 Notice, `symbolRotate` will not affect the position of the graphic element, but just rotating by its center.
@@ -288,6 +295,8 @@ Notice, `symbolRotate` will not affect the position of the graphic element, but 
 ) }}
 
 #${prefix} symbolRepeat(boolean|number|string)
+
+<ExampleUIControlEnum options="true,false,fixed" />
 
 Whether to repeat a graphic element. Optional values:
 
@@ -305,6 +314,8 @@ For example:
 
 #${prefix} symbolRepeatDirection(string) = 'start'
 
+<ExampleUIControlEnum options="start,end" default="start" />
+
 When [symbolRepeat](~series-pictorialBar.symbolRepeat) is used, `symbolRepeatDirection` specifies the render order of the repeated graphic elements. The setting is useful in these cases below:
 
 + If [symbolMargin](~series-pictorialBar.symbolMargin) is set as a negative value, repeated elements will overlap with each other. `symbolRepeatDirection` can be used to specify the order of overlap.
@@ -321,6 +332,8 @@ For example:
 ) }}
 
 #${prefix} symbolMargin(number|string)
+
+<ExampleUIControlPercentVector default="0,0" dims="x,y" />
 
 Specify margin of both sides of a graphic element. ("both sides" means the two sides in the direction of its value axis). It works only when [symbolRepeat](~series-pictorialBar.symbolRepeat) is used.
 
@@ -345,6 +358,8 @@ For example:
 ) }}
 
 #${prefix} symbolClip(boolean) = false
+
+<ExampleUIControlBoolean />
 
 Whether to clip graphic elements.
 
@@ -409,6 +424,8 @@ Check this example:
 
 #${prefix} symbolPatternSize(number) = 400
 
+<ExampleUIControlNumber default="400" step="10" min="0" />
+
 Image can be used as the pattern of graphic elements.
 
 ```js
@@ -441,6 +458,8 @@ Specify the relationship of overlap between graphic elements. A bigger value mea
 {{ /if }}
 
 #${prefix} hoverAnimation(boolean) = false
+
+<ExampleUIControlBoolean />
 
 Whether to enable hover animation.
 

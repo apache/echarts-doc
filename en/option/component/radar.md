@@ -56,17 +56,25 @@ formatter: function (value, indicator) {
 
 ## nameGap(number) = 15
 
+<ExampleUIControlNumber default="15" step="1" />
+
 Distance between the indicator's name and axis.
 
 ## splitNumber(number) = 5
+
+<ExampleUIControlNumber default="15" step="1" />
 
 Segments of indicator axis.
 
 ## shape(string) = 'polygon'
 
+<ExampleUIControlEnum options="polygon,circle" />
+
 Radar render type, in which `'polygon'` and `'circle'` are supported.
 
 ## scale(boolean) = false
+
+<ExampleUIControlBoolean />
 
 Whether to prevent calculating the scaling relative to zero. If it is set to be `true`, the coordinate tick would not compulsorily contain zero value, which is usually useful in scatter diagram of double numerical values axis.
 
@@ -119,13 +127,19 @@ Indicator's name.
 
 ### max(number)
 
+<ExampleUIControlNumber default="100" step="1" />
+
 The maximum value of indicator. It is an optional configuration, but we recommend to set it manually.
 
 ### min(number)
 
+<ExampleUIControlNumber step="1" />
+
 The minimum value of indicator. It it an optional configuration, with default value of 0.
 
 ### color(string)
+
+<ExampleUIControlColor />
 
 Specfy a color of the indicator.
 

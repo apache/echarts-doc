@@ -52,6 +52,8 @@ The default value is decided by:
 
 ## boxWidth(Array) = [7, 50]
 
+<ExampleUIControlPercentVector default="7,50" min="0" dims="min,max" />
+
 Up and bottom boundary of box width. The array is in the form of `[min, max]`.
 
 It could be absolute value in pixel, such as `[7, 50]`, or percentage, such as `['40%', '90%']`. The percentage means the percentage to the maximum possible width.
@@ -172,8 +174,7 @@ Emphasis state of a single data.
     prefix = "#",
     seriesType = "boxplot",
     hasCoord = true,
-    hasType = true,
-    name = "mark point"
+    hasType = true
 ) }}
 
 {{ use: partial-z-zlevel(

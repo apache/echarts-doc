@@ -447,7 +447,7 @@ Value of data item.
 
 {{ use: partial-clip(
     prefix = "#",
-    defaultClip = 'false'
+    defaultClip = false
 ) }}
 
 {{ use: partial-z-zlevel(

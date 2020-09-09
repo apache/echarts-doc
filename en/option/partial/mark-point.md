@@ -6,12 +6,12 @@
 Mark point in a chart.
 
 {{ use: partial-symbol(
-    name = ${name},
     seriesType = ${seriesType},
     defaultSymbol = "'pin'",
     defaultSymbolSize = 50,
     prefix = "#" + ${prefix},
-    hasCallback = true
+    hasCallback = true,
+    name = ${name}
 ) }}
 
 {{ use: partial-silent(
@@ -98,6 +98,8 @@ Mark point name.
 {{ if: ${hasType} }}
 ###${prefix} type(string)
 
+<ExampleUIControlEnum options="min,max,average" />
+
 Special label types, are used to label maximum value, minimum value and so on.
 
 **Options are:**
@@ -108,6 +110,8 @@ Special label types, are used to label maximum value, minimum value and so on.
 
 {{ if: ${hasCoord} }}
 ###${prefix} valueIndex(number)
+
+<ExampleUIControlNumber min="0" max="1" step="1"  />
 
 Available when using [type](~series-${seriesType}.markPoint.data.type) it is used to assign maximum value and minimum value in dimensions, it could be `0` (xAxis, radiusAxis), `1` (yAxis, angleAxis), and use the first value axis dimension by default.
 
@@ -124,9 +128,13 @@ Coordinates of the starting point or ending point, whose format depends on the c
 
 ###${prefix} x(number)
 
+<ExampleUIControlPercent default="0" />
+
 X position according to container, in pixel.
 
 ###${prefix} y(number)
+
+<ExampleUIControlPercent default="0" />
 
 Y position according to container, in pixel.
 
@@ -136,8 +144,7 @@ Label value, which can be ignored.
 
 {{ use: partial-symbol(
     prefix = "##" + ${prefix},
-    seriesType = ${seriesType},
-    name = ${name}
+    seriesType = ${seriesType}
 ) }}
 
 ###${prefix} itemStyle(Object)

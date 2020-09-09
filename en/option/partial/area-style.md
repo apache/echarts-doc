@@ -3,6 +3,8 @@
 
 #${prefix} color(Color) = {{ if: !${useColorPalatte} }} ${defaultColor|default('"#000"')} {{ else }}'adaptive'{{ /if }}
 
+<ExampleUIControlColor />
+
 Fill color. {{ if: ${useColorPalatte} }} Color is taken from [option.color Palette](~color) by default. {{ /if }}
 
 {{ use: partial-color-desc() }}

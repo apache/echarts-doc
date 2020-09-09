@@ -5,6 +5,8 @@
 
 The width of the bar. Adaptive when not specified.
 
+<ExampleUIControlPercent />
+
 {{ use: partial-barGrid-value-absolute-or-percent() }}
 
 {{ use: partial-barGrid-share-desc(
@@ -38,6 +40,8 @@ Has higer priority than [barWidth](~series-bar.barWidth).
 ## barMinHeight(number) = 0
 
 The minimum width of bar. It could be used to avoid the following situation: the interaction would be affected when the value of some data item is too small.
+
+<ExampleUIControlNumber min="0" />
 
 ## barGap(string) = ${barGapDefault|default('30%')}
 

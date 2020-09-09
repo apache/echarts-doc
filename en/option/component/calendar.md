@@ -72,6 +72,8 @@ range: ['2017-01', '2017-02']
 
 ## cellSize(number|Array) = 20
 
+<ExampleUIControlNumber min="0" step="1" default="20" />
+
 The size of each rect of calendar coordinates, can be set to a single value or array, the first element is width and the second element is height.
 
 Support setting self-adaptation: `auto`, the default width and height to be 20.
@@ -99,6 +101,8 @@ cellSize: ['auto', 40]
 
 ## width(number|string) = auto
 
+<ExampleUIControlNumber min="0" step="1" />
+
 The height of calendar coordinates.
 
 Note: `cellSize` is 20 by default. If `width` is set,
@@ -106,12 +110,16 @@ Note: `cellSize` is 20 by default. If `width` is set,
 
 ## height(number|string) = auto
 
+<ExampleUIControlNumber min="0" step="1" />
+
 The height of calendar coordinates.
 
 Note: `cellSize` is 20 by default. If `height` is set,
   `cellSize[1]` will be forced to `auto`;
 
 ## orient(string) = 'horizontal'
+
+<ExampleUIControlEnum options="horizontal,vertical" default="horizontal" />
 
 The layout orientation of calendar.
 
@@ -124,6 +132,8 @@ Options:
 Calendar coordinates splitLine style.
 
 ### show(boolean) = ${defaultShow|default(true)}
+
+<ExampleUIControlBoolean show="${defaultShow|default(true)}" />
 
 Set this to `false` to prevent the splitLine from showing
 
@@ -180,9 +190,13 @@ Day style in calendar coordinates.
 
 ### show(boolean) = true
 
+<ExampleUIControlBoolean default="true" />
+
 Set this to `false` to prevent dayLabel from showing.
 
 ### firstDay(number) = 0
+
+<ExampleUIControlNumber min="0" max="6" step="1" />
 
 A week from the beginning of the week, the default starting on Sunday.
 
@@ -200,9 +214,13 @@ calendar: [{
 
 ### margin(number) = 0
 
+<ExampleUIControlNumber min="0" step="1" />
+
 The margin between the day label and the axis line.
 
 ### position(string) = 'start'
+
+<ExampleUIControlEnum options="start,end" default="start" />
 
 Position of week, at the beginning or end of the range.
 
@@ -211,6 +229,8 @@ Options:
 + 'end'
 
 ### nameMap(string|Array) = 'en'
+
+<ExampleUIControlEnum options="en,cn" default="en" />
 
 Week text content, defaults to 'en';
 It supports Chinese, English, and custom;
@@ -246,9 +266,13 @@ Month label in calendar coordinates.
 
 ### show(boolean) = true
 
+<ExampleUIControlBoolean default="true" />
+
 Set this to `false` to prevent monthLabel from showing.
 
 ### align(string) = 'center'
+
+<ExampleUIControlEnum options="left,center" default="center" />
 
 Set the month text location in the month interval.
 
@@ -258,9 +282,13 @@ Options:
 
 ### margin(number) = 5
 
+<ExampleUIControlNumber min="0" step="5" />
+
 The margin between the month label and the axis line.
 
 ### position(string) = 'start'
+
+<ExampleUIControlEnum options="start,end" default="start" />
 
 Position of week, at the beginning or end of the range.
 
@@ -269,6 +297,8 @@ Options:
 + 'end'
 
 ### nameMap(string|Array) = 'en'
+
+<ExampleUIControlEnum options="en,cn" default="en" />
 
 Month text content, defaults to 'en';
 It supports Chinese, English, and custom;
@@ -353,13 +383,19 @@ Year label in calendar coordinates.
 
 ### show(boolean) = true
 
+<ExampleUIControlBoolean default="true" />
+
 Set this to `false` to stop yearLabel from showing
 
 ### margin(number) = 30
 
+<ExampleUIControlNumber min="0" step="1" />
+
 The margin between the month label and the axis line.
 
 ### position(string)
+
+<ExampleUIControlEnum options="top,bottom,left,right" />
 
 Position of year.
 

@@ -37,6 +37,8 @@ Whether to enable the highlight animation effect of mousr hover node.
 
 ## center(Array)
 
+<ExampleUIControlVector default="0,0" dims="x,y" />
+
 Center of current view-port.
 
 Example:
@@ -46,9 +48,13 @@ center: [115.97, 29.71]
 
 ## zoom(number) = 1
 
+<ExampleUIControlNumber default="1" min="0" step="0.1" />
+
 Zoom rate of current view-port.
 
 ## layout(string) = 'none'
+
+<ExampleUIControlEnum options="none,force,circular" />
 
 Graph layout.
 
@@ -64,6 +70,8 @@ Graph layout.
 Configuration about circular layout.
 
 ### rotateLabel(boolean) = false
+
+<ExampleUIControlBoolean />
 
 Whether to rotate the label automatically.
 
@@ -83,15 +91,21 @@ You can also use circular layout `'circular'`.
 
 ### repulsion(Array|number) = 50
 
+<ExampleUIControlNumber min="0" step="5" default="50" />
+
 The repulsion factor between nodes. The repulsion will be stronger and the distance between 2 nodes becomes further as this value becomes larger.
 
 It can be an array to represent the range of repulsion. In this case larger value have larger repulsion and smaller value will have smaller repulsion.
 
 ### gravity(number) = 0.1
 
+<ExampleUIControlNumber min="0" step="0.01" default="0.1" />
+
 The gravity factor enforcing nodes approach to the center. The nodes will be closer to the center as the value becomes larger.
 
 ### edgeLength(Array|number) = 30
+
+<ExampleUIControlNumber min="0" step="5" default="30" />
 
 The distance between 2 nodes on edge. This distance is also affected by [repulsion](~series-graph.force.repulsion).
 
@@ -99,9 +113,13 @@ It can be an array to represent the range of edge length. In this case edge with
 
 ### layoutAnimation(boolean) = true
 
+<ExampleUIControlBoolean default="true" />
+
 Because the force-directed layout will be steady after several iterations, this parameter will be decide whether to show the iteration animation of layout. It is not recommended to be closed on browser when there are a lot of node data (>100) as the layout process will cause browser to hang.
 
 ### friction(number) = 0.6
+
+<ExampleUIControlNumber min="0" max="1" step="0.01" default="0.6" />
 
 {{ use: partial-version(
     version = "4.5.0"
@@ -117,13 +135,19 @@ But it is still an experimental option, see [#11024](https://github.com/apache/i
 
 ## nodeScaleRatio(number) = 0.6
 
+<ExampleUIControlNumber min="0" max="1" step="0.01" default="0.6" />
+
 Related zooming ratio of nodes when mouse zooming in or out. When it is set as 0, the node will not zoom as the mouse zooms.
 
 ## draggable(boolean) = false
 
+<ExampleUIControlBoolean default="false" />
+
 If node is draggable. Only available when using force-directed layout.
 
 ## focusNodeAdjacency(boolean) = false
+
+<ExampleUIControlBoolean default="false" />
 
 Whether to focus/highlight the hover node and it's adjacencies.
 
@@ -145,6 +169,8 @@ edgeSymbol: ['circle', 'arrow']
 ```
 
 ## edgeSymbolSize(Array|number) = 10
+
+<ExampleUIControlVector min="0" default="10" />
 
 Size of symbol of two ends of edge line. Can be an array or a single number.
 
@@ -187,7 +213,7 @@ The style of edge line. [lineStyle.color](~series-graph.lineStyle.color) can be 
 {{ use: partial-label(
     prefix = "##",
     defaultPosition = "'inside'",
-    formatter1d = true
+    formatter2d = true
 ) }}
 
 ## edgeLabel(Object)
@@ -262,7 +288,7 @@ The label style of node in this category.
 {{ use: partial-label(
     prefix = "###",
     defaultPosition = "inside",
-    formatter1d = true
+    formatter2d = true
 ) }}
 
 ### emphasis(Object)
@@ -412,6 +438,8 @@ Line style of edges.
 
 #### curveness(number) = 0
 
+<ExampleUIControlNumber min="0" max="1" step="0.01" default="0" />
+
 The curveness of edge, supporting values from 0 to 1. The curveness will be larger as the value becomes lager.
 
 ### label(Object)
@@ -458,8 +486,7 @@ Alias of [links](~series-graph.links)
     prefix = "#",
     seriesType = "graph",
     hasType = true,
-    hasCoord = true,
-    name = "mark point"
+    hasCoord = true
 ) }}
 
 {{ use: partial-rect-layout-width-height(

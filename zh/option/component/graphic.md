@@ -7,7 +7,10 @@
 
 {{ use: partial-graphic-cpt-type-list(
     optionPath = 'graphic',
-    hostName = 'elements'
+    hostName = 'elements',
+    symbolVisit = '-',
+    symbolDeclare = '.',
+    usageType = 'graphicComponent'
 ) }}
 
 下面示例中，使用图形元素做了水印，和文本块：

@@ -123,15 +123,21 @@ const option = {
 
 ## showContent(boolean) = true
 
+<ExampleUIControlBoolean default="true" />
+
 Whether to show the tooltip floating layer, whose default value is true. It should be configurated to be `false`, if you only need tooltip to trigger the event or show the axisPointer without content.
 
 ## alwaysShowContent(boolean) = false
+
+<ExampleUIControlBoolean default="false" />
 
 Whether to show tooltip content all the time. By default, it will be hidden [after some time](~tooltip.hideDelay). It can be set to be `true` to preserve displaying.
 
 This attribute is newly added to ECharts 3.0.
 
 ## triggerOn(string) = 'mousemove|click'
+
+<ExampleUIControlEnum options="mousemove,click" />
 
 Conditions to trigger tooltip. Options:
 
@@ -155,27 +161,39 @@ This attribute is new to ECharts 3.0.
 
 ## showDelay(number) = 0
 
+<ExampleUIControlNumber min="0" step="20" />
+
 Delay time for showing tooltip, in ms. No delay by default, and it is not recommended to set. Only valid when [triggerOn](~tooltip.triggerOn) is set to be `'mousemove'`.
 
 ## hideDelay(number) = 100
+
+<ExampleUIControlNumber min="0" step="20" default="100" />
 
 Delay time for hiding tooltip, in ms. It will be invalid when [alwaysShowContent](~tooltip.alwaysShowContent) is `true`.
 
 ## enterable(boolean) = true
 
+<ExampleUIControlBoolean default="false" />
+
 Whether mouse is allowed to enter the floating layer of tooltip, whose default value is false. If you need to interact in the tooltip like with links or buttons, it can be set as `true`.
 
 ## renderMode(string) = 'html'
 
+<ExampleUIControlEnum options="html,richText" default="html" />
+
 Render mode for tooltip. By default, it is set to be `'html'` so that extra DOM element is used for tooltip. It can also set to be `'richText'` so that the tooltip will be rendered inside Canvas (SVG rich text is not implemented yet). This is very useful for environments that don't have DOM, such as Wechat applications.
 
 ## confine(boolean) = false
+
+<ExampleUIControlBoolean default="false" />
 
 Whether confine tooltip content in the view rect of chart instance.
 
 Useful when tooltip is cut because of `'overflow: hidden'` set on outer dom of chart instance, or because of narrow screen on mobile.
 
 ## appendToBody(boolean) = false
+
+<ExampleUIControlBoolean default="false" />
 
 {{ use: partial-version(
     version = "4.7.0"
@@ -190,6 +208,8 @@ Here we provide `appendToBody: true` to auto append the tooltip element to `<bod
 Note that it also works when CSS transform used.
 
 ## transitionDuration(number) = 0.4
+
+<ExampleUIControlNumber min="0" step="0.1" default="0.4" />
 
 The transition duration of tooltip's animation, in seconds. When it is set to be 0, it would move closely with the mouse.
 

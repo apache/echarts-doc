@@ -19,9 +19,13 @@ The scatter (bubble) graph with ripple animation. The special animation effect c
 
 ## effectType(string) = 'ripple'
 
+<ExampleUIControlEnum options="ripple" />
+
 Type of effect. Only ripple effect of `'ripple'` is supported currently.
 
 ## showEffectOn(string) = 'render'
+
+<ExampleUIControlEnum options="render,emphasis" default="render" />
 
 When to show the effect.
 
@@ -39,17 +43,25 @@ Related configurations about ripple effect.
     version = "4.4.0"
 ) }}
 
+<ExampleUIControlColor />
+
 Color of the ripple rings. The default value is the color of scatter.
 
 ### period(number) = 4
+
+<ExampleUIControlNumber min="0" default="4" step="0.1" />
 
 The period duration of animation, in seconds.
 
 ### scale(number) = 2.5
 
+<ExampleUIControlNumber min="1" default="2.5" step="0.1" />
+
 The maximum zooming scale of ripples in animation.
 
 ### brushType(string) = 'fill'
+
+<ExampleUIControlEnum options="stroke,fill" default="fill" />
 
 The brush type for ripples. options: `'stroke'` and `'fill'`.
 
@@ -63,7 +75,6 @@ The brush type for ripples. options: `'stroke'` and `'fill'`.
 ) }}
 
 {{ use: partial-symbol(
-    name = "effectScatter",
     seriesType = "effectScatter",
     defaultSymbol = "'circle'",
     defaultSymbolSize = 10,
@@ -177,8 +188,7 @@ Emphasis state of the specified single data.
     prefix = "#",
     seriesType = "effectScatter",
     hasCoord = true,
-    hasType = true,
-    name = "mark point"
+    hasType = true
 ) }}
 
 {{ use: partial-z-zlevel(

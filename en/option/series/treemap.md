@@ -67,11 +67,15 @@ Notice: There are some difference in treemap configuration between ECharts3 and 
 
 ## squareRatio(number)
 
+<ExampleUIControlNumber min="0.1" default="0.75" step="0.1" />
+
 The expected square ratio. Layout would approach the ratio as close as possible.
 
 It defaults to be the golden ratio: `0.5 * (1 + Math.sqrt(5))`.
 
 ## leafDepth(number) = null
+
+<ExampleUIControlNumber min="1" step="1" />
 
 When `leafDepth` is set, the feature "drill down" is enabled, which means when clicking a tree node, this node will be set as root and its children will be shown.
 
@@ -104,6 +108,8 @@ The behaviour when clicking a node. Optional values are:
 + `'link'`: If there is [link](~series-treemap.data.link) in node data, do hyperlink jump after clicked.
 
 ## zoomToNodeRatio(number) = 0.32*0.32
+
+<ExampleUIControlNumber min="0" default="0.1" step="0.01" />
 
 The treemap will be auto zoomed to a appropriate ratio when a node is clicked (when [nodeClick](~series-treemap.nodeClick) is set as `'zoomToNode'` and no drill down happens). This configuration item indicates the ratio.
 
@@ -221,6 +227,8 @@ breadcrumb, showing the path of the current node.
 
 ### show(boolean) = true
 
+<ExampleUIControlBoolean default="true" />
+
 Whether to show the breadcrumb.
 
 {{ use: partial-rect-layout(
@@ -233,9 +241,13 @@ Whether to show the breadcrumb.
 
 ### height(number) = 22
 
+<ExampleUIControlNumber min="0" default="22" step="1" />
+
 The height of breadcrumb.
 
 ### emptyItemWidth(number) = 25
+
+<ExampleUIControlNumber min="0" default="25" step="1" />
 
 When is no content in breadcrumb, this minimal width need to be set up.
 
@@ -406,11 +418,15 @@ The value of [series-treemap.data](~series-treemap.data) can be an array. And ea
 
 #${prefix} visualMin(number) = null
 
+<ExampleUIControlNumber default="0" />
+
 The minimal value of current level. Auto-statistics by default.
 
 When [colorMappingBy](~series-treemap.levels.colorMappingBy) is set to `'value'`, you are able to specify extent manually for visual mapping by specifying `visualMin` or `visualMax`.
 
 #${prefix} visualMax(number) = null
+
+<ExampleUIControlNumber default="100" />
 
 The maximal value of current level. Auto-statistics by default.
 
@@ -467,6 +483,8 @@ For example, `colorSaturation` can be `[0.3, 1]`.
 
 #${prefix} colorMappingBy(string) = 'index'
 
+<ExampleUIControlEnum options="index,value,id" />
+
 Specify the rule according to which each node obtain color from [color list](~series-treemap.levels.color). Optional values:
 
 * `'value'`:
@@ -498,6 +516,8 @@ Since `id` is used to identify node, if user call `setOption` to modify the tree
 
 #${prefix} visibleMin(number) = 10
 
+<ExampleUIControlNumber default="10" min="0" />
+
 A node will not be shown when its area size is smaller than this value (unit: px square).
 
 In this way, tiny nodes will be hidden, otherwise they will huddle together. When user zoom the treemap, the area size will increase and the rectangle will be shown if the area size is larger than this threshold.
@@ -509,6 +529,8 @@ In this way, tiny nodes will be hidden, otherwise they will huddle together. Whe
 ) }}
 
 #${prefix} childrenVisibleMin(number) = null
+
+<ExampleUIControlNumber default="10" min="0" step="0.5" />
 
 Children will not be shown when area size of a node is smaller than this value (unit: px square).
 
@@ -561,6 +583,8 @@ See:
 ) }}
 
 ##${prefix} height(number) = 20
+
+<ExampleUIControlNumber default="20" min="0" step="0.5" />
 
 Height of label area.
 
@@ -627,18 +651,26 @@ About visual encoding, see details in [series-treemap.levels](~series-treemap.le
 
 #${prefix} color(Color) = null
 
+<ExampleUIControlColor />
+
 The color of a node. It use global palette [option.color](~color) by default.
 
 {{ if: ${itemStyleType} === 'normal' }}
 #${prefix} colorAlpha(number) = null
 
+<ExampleUIControlNumber step="0.01" min="0" max="1" default="1" />
+
 The tranparent rate of a node, the range is between 0 ~ 1.
 
 #${prefix} colorSaturation(number) = null
 
+<ExampleUIControlNumber step="0.01" min="0" max="1" default="0.5" />
+
 The color saturation of a node. The range is between 0 ~ 1.
 
 #${prefix} borderWidth(number) = 0
+
+<ExampleUIControlNumber step="0.5" min="0" />
 
 The border width of a node. There is no border when it is set as `0`.
 
@@ -646,13 +678,19 @@ Tip, gaps between child nodes are specified by [gapWidth](~series-treemap.levels
 
 #${prefix} gapWidth(number) = 0
 
+<ExampleUIControlNumber step="0.5" min="0" />
+
 Gaps between child nodes.
 
 #${prefix} borderColor(Color) = '#fff',
 
+<ExampleUIControlColor default="#fff" />
+
 The border color and gap color of a node.
 
 #${prefix} borderColorSaturation(Color) = null
+
+<ExampleUIControlNumber step="0.01" min="0" max="1" default="0.5" />
 
 The color saturation of a border or gap. The value range is between 0 ~ 1.
 

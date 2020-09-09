@@ -27,6 +27,8 @@ The *inside* means it's inside the coordinates.
 
 ## disabled(boolean) = false
 
+<ExampleUIControlBoolean />
+
 Whether disable inside zoom.
 
 {{ use: partial-data-zoom-common(
@@ -34,6 +36,8 @@ Whether disable inside zoom.
 ) }}
 
 ## zoomOnMouseWheel(boolean|string) = true
+
+<ExampleUIControlEnum options="true,false,shift,ctrl,alt" default="true" />
 
 How to trigger zoom. Optional values:
 
@@ -45,6 +49,8 @@ How to trigger zoom. Optional values:
 
 ## moveOnMouseMove(boolean|string) = true
 
+<ExampleUIControlEnum options="true,false,shift,ctrl,alt" default="true" />
+
 How to trigger data window move. Optional values:
 
 + `true`：Mouse move triggers data window move.
@@ -55,6 +61,8 @@ How to trigger data window move. Optional values:
 
 ## moveOnMouseWheel(boolean|string) = false
 
+<ExampleUIControlEnum options="true,false,shift,ctrl,alt" default="true" />
+
 How to trigger data window move. Optional values:
 
 + `true`：Mouse wheel triggers data window move.
@@ -64,6 +72,8 @@ How to trigger data window move. Optional values:
 + `'alt'`：Holding `alt` and mouse wheel triggers data window move.
 
 ## preventDefaultMouseMove(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
 
 Whether to prevent default behavior of mouse move event.
 

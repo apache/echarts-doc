@@ -3,6 +3,8 @@
 
 #${prefix} rotate(string|number) = 'radial'
 
+<ExampleUIControlEnum options="radial,tangential" default="radial" />
+
 If it is `number` type, then is stands for rotation, from -90 degrees to 90 degrees, and positive values stand for counterclockwise.
 
 Besides, it can be string `'radial'`, standing for radial rotation; or `'tangential'`, standing for tangential rotation.
@@ -15,11 +17,15 @@ The following example shows different `rotate` settings:
 
 #${prefix} align(string) = 'center'
 
+<ExampleUIControlEnum options="left,center,right" default="center" />
+
 Align of text, which can be `'left'`, `'center'`, or `'right'`. Note that `'left'` stands for inner side, and `'right'` stands for outer side.
 
 ~[700x400](${galleryViewPath}doc-example/sunburst-label-align&edit=1&reset=1)
 
 #${prefix} minAngle(number) = null
+
+<ExampleUIControlAngle min="0" step="1" max="360" />
 
 If angle of data piece is smaller than this value (in degrees), then text is not displayed. This is used for hiding text for small piece of data.
 
@@ -232,6 +238,8 @@ Children nodes, which is recursively defined. In the same format to [series-sunb
 
 ## highlightPolicy(string) = 'descendant'
 
+<ExampleUIControlEnum default="descendant" options="descendant,ancestor,none" />
+
 When mouse hovers a sector, the sector is emphasized. **If `highlightPolicy` is set to be `'descendant'`, then the sector and its descendant will be *highlighted*, and others will be *downplayed*. If `highlightPolicy` is `'ancestor'`, then the sector and its ancestors will be highlighted. If it is set to be `'self'`, then the sector will be highlighted and others downplayed. If it is set to be `'none'`, then others will not be downplayed.**
 
 ~[700x350](${galleryViewPath}doc-example/sunburst-highlight-descendant&edit=1&reset=1)
@@ -260,6 +268,8 @@ If `highlightPolicy` is set to be `'ancestor'`, then the result looks like:
 
 ## nodeClick(boolean|string) = 'rootToNode'
 
+<ExampleUIControlEnum default="rootToNode" options="rootToNode,link" />
+
 The action of clicking a sector, which can be:
 
 + `false`: nothing happens.
@@ -267,6 +277,8 @@ The action of clicking a sector, which can be:
 + `'link'`：if [link](~series-sunburst.data.link) is set, the page will redirect to it.
 
 ## sort(string|Function) = 'desc'
+
+<ExampleUIControlEnum default="desc" options="desc,asc" />
 
 Sorting method that sectors use based on [`value`](~series-sunburst.data.value), which is the sum of children when not set. The default value `'desc'` states for descending order, while it can also be set to be `'asc'` for ascending order, or `null` for not sorting, or callback function like:
 
@@ -277,6 +289,8 @@ function(nodeA, nodeB) {
 ```
 
 ## renderLabelForZeroData(boolean) = false
+
+<ExampleUIControlBoolean />
 
 If there is no `name`, whether need to render it.
 

@@ -3,6 +3,8 @@
 
 #${prefix} symbol(string{{ if: ${hasCallback} }}|Function{{ /if }}) = ${defaultSymbol}
 
+<ExampleUIControlIcon default="circle" />
+
 Symbol of ${name}.
 
 {{ use: partial-icon() }}
@@ -17,6 +19,8 @@ The first parameter `value` is the value in [data](~series-${seriesType}.data), 
 
 #${prefix} symbolSize(number|Array{{ if: ${hasCallback} }}|Function{{ /if }}) = ${defaultSymbolSize}
 
+<ExampleUIControlNumber min="0" />
+
 ${name} symbol size. It can be set to single numbers like `10`, or use an array to represent width and height. For example, `[20, 10]` means symbol width is `20`, and height is`10`.
 
 {{ if: ${hasCallback} }}
@@ -28,6 +32,8 @@ The first parameter `value` is the value in [data](~series-${seriesType}.data), 
 {{ /if }}
 
 #${prefix} symbolRotate(number{{ if: ${hasCallback} }}|Function{{ /if }})
+
+<ExampleUIControlAngle min="-180" max="180" step="1" />
 
 Rotate degree of ${name} symbol. The negative value represents clockwise. Note that when `symbol` is set to be `'arrow'` in `markLine`, `symbolRotate` value will be ignored, and compulsively use tangent angle.
 
@@ -42,9 +48,13 @@ The first parameter `value` is the value in [data](~series-${seriesType}.data), 
 
 #${prefix} symbolKeepAspect(boolean) = false
 
+<ExampleUIControlBoolean clean="true" />
+
 Whether to keep aspect for symbols in the form of `path://`.
 
 #${prefix} symbolOffset(Array) = [0, 0]
+
+<ExampleUIControlVector separate="true" dims="x,y" />
 
 Offset of ${name} symbol relative to original position. By default, symbol will be put in the center position of data. But if symbol is from user-defined vector path or image, you may not expect symbol to be in center. In this case, you may use this attribute to set offset to default position. It can be in absolute pixel value, or in relative percentage value.
 

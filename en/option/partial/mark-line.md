@@ -197,6 +197,8 @@ The distance between labels and mark lines. If it's an array, then the first ele
 {{ if: ${hasType} }}
 #${prefix} type(string)
 
+<ExampleUIControlEnum options="min,max,average" />
+
 Special label types, are used to label maximum value, minimum value and so on.
 
 **Options are:**
@@ -208,6 +210,8 @@ Special label types, are used to label maximum value, minimum value and so on.
 
 {{ if: ${hasCoord} }}
 #${prefix} valueIndex(number)
+
+<ExampleUIControlNumber min="0" max="1" step="1"  />
 
 Works only when [type](~series-${seriesType}.markLine.data.type) is assigned. It is used to state the dimension used to calculate maximum value or minimum value. It may be `0` (for xAxis, or radiusAxis), or `1` (for yAxis, or angleAxis). Dimension of the first numeric axis is used by default.
 
@@ -228,9 +232,13 @@ Name of the marker, which will display as a label.
 
 #${prefix} x(number)
 
+<ExampleUIControlPercent default="0" />
+
 X position according to container, in pixel.
 
 #${prefix} y(number)
+
+<ExampleUIControlPercent default="0" />
 
 Y position according to container, in pixel.
 

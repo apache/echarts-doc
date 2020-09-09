@@ -3,6 +3,8 @@
 
 #${prefix} backgroundColor(Color) = 'transparent'
 
+<ExampleUIControlColor />
+
 Background color of ${componentName}, which is transparent by default.
 
 > Color can be represented in RGB, for example `'rgb(128, 128, 128)'`. RGBA can be used when you need alpha channel, for example `'rgba(128, 128, 128, 0.5)'`. You may also use hexadecimal format, for example `'#ccc'`.
@@ -13,6 +15,8 @@ Background color of ${componentName}, which is transparent by default.
 
 #${prefix} borderColor(Color) = '#ccc'
 
+<ExampleUIControlColor default="#ccc" />
+
 Border color of ${componentName}. Support the same color format as backgroundColor.
 
 {{ if: ${needShow} }}
@@ -20,6 +24,8 @@ Border color of ${componentName}. Support the same color format as backgroundCol
 {{ /if }}
 
 #${prefix} borderWidth(number) = 1
+
+<ExampleUIControlNumber default="${defaultBorderWidth|default(1)}" min="0" step="0.5" />
 
 Border width of ${componentName}.
 
@@ -43,6 +49,8 @@ Border width of ${componentName}.
 {{ target: partial-border-radius }}
 
 #${prefix} ${propName|default('borderRadius')}(number|Array) = 0
+
+<ExampleUIControlVector min="0" dims="LT,RT,RB,LB"  />
 
 The radius of rounded corner. Its unit is px. And it supports use array to respectively specify the 4 corner radiuses.
 

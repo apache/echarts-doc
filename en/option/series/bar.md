@@ -31,6 +31,8 @@ Bar chart shows different data through the height of a bar, which is used in [re
     version = "4.5.0"
 ) }}
 
+<ExampleUIControlBoolean clean="true" />
+
 If to add round caps at the end of the bar sectors. Valid only for bar series on polar coordinates.
 
 ~[800x500](${galleryViewPath}polar-roundCap&reset=1&edit=1)
@@ -40,6 +42,8 @@ If to add round caps at the end of the bar sectors. Valid only for bar series on
 {{ use: partial-version(
     version = "4.7.0"
 ) }}
+
+<ExampleUIControlBoolean clean="true" />
 
 Whether to show background behind each bar. Use [backgroundStyle](~series-bar.backgroundStyle) to set background style.
 
@@ -249,17 +253,25 @@ The value of a single data item.
 
 #${prefix} color(Color) = ${defaultColor|default('auto')}
 
+<ExampleUIControlColor />
+
 Bar color. {{ if: ${useColorPalatte} }} By default, colors from global palette [option.color](~color) is used. {{ /if }}
 
 #${prefix} borderColor(Color) = '#000'
+
+<ExampleUIControlColor value="#000" />
 
 The border color of bar.
 
 #${prefix} borderWidth(number) = 0
 
+<ExampleUIControlNumber value="0" min="0" step="0.5" />
+
 The border width of bar. defaults to have no border.
 
 #${prefix} borderType(string) = 'solid'
+
+<ExampleUIControlEnum default="solid" options="solid,dashed,dotted" />
 
 柱条的描边类型，默认为实线，支持 `'dashed'`, `'dotted'`。
 

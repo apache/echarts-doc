@@ -196,17 +196,25 @@ const option = {
 
 ## inactiveOpacity(number) = 0.05
 
+<ExampleUIControlNumber min="0" max="1" default="0.05" step="0.01" />
+
 When perform brush selection, the unselected lines will be set as this transparency rate (which could darken those lines).
 
 ## activeOpacity(number) = 1
+
+<ExampleUIControlNumber min="0" max="1" default="1" step="0.01" />
 
 When perform brush selection, the selected lines will be set as this transparency rate (which could highlight those lines).
 
 ## realtime(boolean) = true
 
+<ExampleUIControlBoolean default="true" />
+
 Whether to update view in realtime.
 
 ## smooth(boolean|number) = false
+
+<ExampleUIControlBoolean />
 
 Whether to smooth the line. It defaults to be `false` and can be set as `true` or the values from 0 to 1 which indicating the smoothness.
 

@@ -19,9 +19,13 @@
 
 ## show(boolean) = true
 
+<ExampleUIControlBoolean default="true" />
+
 Whether to show the ${dataZoomName} component. If is set to be `false`, it will not show, but its data filtering function still works.
 
 ## backgroundColor(Color) = 'rgba(47,69,84,0)'
+
+<ExampleUIControlColor default="rgba(47,69,84,0)" />
 
 The background color of the component.
 
@@ -52,13 +56,19 @@ Area style of shadow
 
 ## fillerColor(Color) = 'rgba(47,69,84,0.25)'
 
+<ExampleUIControlColor default="rgba(167,183,204,0.4)" />
+
 The color to fill selected area.
 
 ## borderColor(Color) = '#ddd'
 
+<ExampleUIControlColor default="#ddd" />
+
 The color of border.
 
 ## handleIcon(string)
+
+<ExampleUIControlIcon />
 
 Icon shape of handle, which supports path string. Its default value is:
 ```js
@@ -70,6 +80,8 @@ Icon shape of handle, which supports path string. Its default value is:
 Refer to [area-simple example](${galleryEditorPath}area-simple) for customized icon.
 
 ## handleSize(number|string) = '100%'
+
+<ExampleUIControlPercent min="0" step="1" default="100%" />
 
 The size of control handle. It can be in pixels, or in percentage relative to the width of dataZoom component. By default, it's the same as the width of dataZoom component.
 
@@ -83,6 +95,8 @@ Style of handle. Please refer to [area-simple example](${galleryEditorPath}area-
 ) }}
 
 ## labelPrecision(number|string) = 'auto'
+
+<ExampleUIControlNumber min="0" step="1" />
 
 Precision of label if in number form. By default, it is decided based on the number of data.
 
@@ -108,13 +122,19 @@ labelFormatter: function (value, valueStr) {
 
 ## showDetail(boolean) = true
 
+<ExampleUIControlBoolean default="true" />
+
 Whether to show detail, that is, show the detailed data information when dragging.
 
 ## showDataShadow(string) = 'auto'
 
+<ExampleUIControlBoolean />
+
 Whether to show data shadow in `dataZoom-silder` component, to indicate the data tendency in brief.
 
 ## realtime(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
 
 Whether to update view while dragging. If it is set as `false`, the view will be updated only at the end of dragging.
 

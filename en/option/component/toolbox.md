@@ -26,21 +26,31 @@ Text position: `'left'` / `'right'` / `'top'` / `'bottom'`.
 
 ###${prefix} textFill(string) = '#000'
 
+<ExampleUIControlColor />
+
 Fill color of text. If it's not set, it will use in the order of icon's fill color, stroke color, and `'#000'`.
 
 ###${prefix} textAlign(string) = 'center'
+
+<ExampleUIControlEnum options="left,center,right" />
 
 Text align: `'left'` / `'center'` / `'right'`.
 
 ###${prefix} textBackgroundColor(string)
 
+<ExampleUIControlColor />
+
 Text background color.
 
 ###${prefix} textBorderRadius(number)
 
+<ExampleUIControlVector min="0" dims="LT,RT,RB,LB"  />
+
 Border radius of text area.
 
 ###${prefix} textPadding(number)
+
+<ExampleUIControlVector min="0" dims="T,R,B,L" />
 
 Padding of text area.
 
@@ -81,9 +91,13 @@ A group of utility tools, which includes [export](~toolbox.feature.saveAsImage),
 
 ## show(boolean) = true
 
+<ExampleUIControlBoolean />
+
 Whether to show toolbox component.
 
 ## orient(string) = 'horizontal'
+
+<ExampleUIControlEnum options="vertical,horizontal" />
 
 The layout orientation of toolbox's icon.
 
@@ -93,13 +107,19 @@ Options:
 
 ## itemSize(number) = 15
 
+<ExampleUIControlNumber min="0" default="15" />
+
 The size of toolbox's icon.
 
 ## itemGap(number) = 10
 
+<ExampleUIControlNumber min="0" default="10" />
+
 The gap between each icon of toolbox. It is horizontal gap in horizontal layout, while vertical gap in vertical layout.
 
 ## showTitle(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
 
 Whether to show the title of each tool icon when mouse hovers.
 
@@ -142,6 +162,8 @@ Save as image.
 
 #### type(string) = 'png'
 
+<ExampleUIControlEnum options="png,jpg" />
+
 File suffix of the image saved.
 
 + If the `renderer` is set to be `'canvas'` when chart [initialized](api.html#echarts.init) (default), then `'png'` (default) and `'jpeg'` are supported.
@@ -149,13 +171,19 @@ File suffix of the image saved.
 
 #### name(string)
 
+<ExampleUIControlText />
+
 Name to save the image, whose default value is [title.text](~title.text).
 
 #### backgroundColor(Color) = 'auto'
 
+<ExampleUIControlColor />
+
 Background color to save the image, whose default value is [backgroundColor](~backgroundColor). If `backgroundColor` is not set, white color is used.
 
 #### connectedBackgroundColor(Color) = '#fff'
+
+<ExampleUIControlColor />
 
 When [echarts.connect](api.html#echarts.connect) is used to connect the interaction of multiple chart series, they will all be included in the exported image. This option sets the background color between these charts.
 
@@ -168,6 +196,8 @@ Components to be excluded when export. By default, toolbox is excluded.
 ) }}
 
 #### pixelRatio(number) = 1
+
+<ExampleUIControlNumber min="0.5" max="5" step="0.5" />
 
 Resolution ratio to save image, whose default value is that of the container. Values larger than 1 (e.g.: 2) is supported when you need higher resolution.
 
@@ -188,6 +218,8 @@ Data view tool, which could display data in current chart and updates chart afte
 ) }}
 
 #### readOnly(boolean) = false
+
+<ExampleUIControlBoolean />
 
 Whether it is read-only.
 
@@ -235,25 +267,37 @@ There are 3 names in data view, which are `['data view', 'turn off' and 'refresh
 
 #### backgroundColor(string) = '#fff'
 
+<ExampleUIControlColor default="#fff" />
+
 Background color of the floating layer in data view.
 
 #### textareaColor(string) = '#fff'
+
+<ExampleUIControlColor default="#fff" />
 
 Background color of input area of the floating layer in data view.
 
 #### textareaBorderColor(string) = '#333'
 
+<ExampleUIControlColor default="#333" />
+
 Border color of input area of the floating layer in data view.
 
 #### textColor(string) = '#000'
+
+<ExampleUIControlColor default="#000" />
 
 Text color.
 
 #### buttonColor(string) = '#c23531'
 
+<ExampleUIControlColor default="#c23531" />
+
 Button color.
 
 #### buttonTextColor(string) = '#fff'
+
+<ExampleUIControlColor default="#fff" />
 
 Color of button text.
 

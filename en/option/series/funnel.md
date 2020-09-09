@@ -18,13 +18,19 @@
 
 ## min(number) = 0
 
+<ExampleUIControlNumber default="0" step="1" />
+
 The specified minimum value.
 
 ## max(number) = 100
 
+<ExampleUIControlNumber default="100" step="1" />
+
 The specified maximum value.
 
 ## minSize(number|string) = '0%'
+
+<ExampleUIControlPercent default="0%" />
 
 The mapped width from minimum data value [min](~series-funnel.min).
 
@@ -32,25 +38,35 @@ It can be absolute pixel and also the percentage of [layout width](~series-funne
 
 ## maxSize(number|string) = '100%'
 
+<ExampleUIControlPercent default="100%" />
+
 The mapped width from maximum data value [max](~series-funnel.max).
 
 It can be absolute pixel and also the percentage of [layout width](~series-funnel.width).
 
 ## orient(string) = 'vertical'
 
+<ExampleUIControlEnum options="vertical,horizontal" />
+
 Orient of funnel，Can be `'vertical'` or `'horizontal'`.
 
 ## sort(string|Function) = 'descending'
 
+<ExampleUIControlEnum options="none,descending,ascending" default="descending" />
+
 Data sorting, which can be whether `'ascending'`, `'descending'`, `'none'`(in data order) or a function, which is the same as `Array.prototype.sort(function (a, b) { ... })`;
 
 ## gap(number) = 0
+
+<ExampleUIControlNumber default="0" min="0" step="0.5" />
 
 Gap between each trapezoid.
 
 {{ use: partial-legend-hover-link() }}
 
 ## funnelAlign(string) = 'center'
+
+<ExampleUIControlEnum options="left,center,right" default="center" />
 
 Horizontal align. Defaults to align center. Can be 'left', 'right', 'center'.
 
@@ -239,8 +255,7 @@ The label configuration of a single data item.
 
 {{ use: partial-marker(
     prefix = "#",
-    seriesType = "funnel",
-    name = "mark point"
+    seriesType = "funnel"
 ) }}
 
 {{ use: partial-silent(

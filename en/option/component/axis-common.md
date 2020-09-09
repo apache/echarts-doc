@@ -31,10 +31,14 @@ Settings related to axis line.
 
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
 
+<ExampleUIControlBoolean default="true" />
+
 Set this to `false` to prevent the axis line from showing.
 
 {{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
 ##${prefix} onZero(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
 
 Specifies whether X or Y axis lies on the other's origin position, where value is 0 on axis. Valid only if the other axis is of value type, and contains 0 value.
 
@@ -45,13 +49,19 @@ When mutiple axes exists, this option can be used to specify which axis can be "
 
 ##${prefix} symbol(string|Array) = 'none'
 
+<ExampleUIControlIcon default="none" />
+
 Symbol of the two ends of the axis. It could be a string, representing the same symbol for two ends; or an array with two string elements, representing the two ends separately. It's set to be `'none'` by default, meaning no arrow for either end. If it is set to be `'arrow'`, there shall be two arrows. If there should only one arrow at the end, it should set to be `['none', 'arrow']`.
 
 ##${prefix} symbolSize(Array) = [10, 15]
 
+<ExampleUIControlVector default="10,15" />
+
 Size of the arrows at two ends. The first is the width perpendicular to the axis, the next is the width parallel to the axis.
 
 ##${prefix} symbolOffset(Array|number) = [0, 0]
+
+<ExampleUIControlVector default="0,0" />
 
 Arrow offset of axis. If is array, the first number is the offset of the arrow at the beginning, and the second number is the offset of the arrow at the end. If is number, it means the arrows have the same offset.
 
@@ -76,11 +86,15 @@ Settings related to axis label.
 {{ if: !${hideShow} }}
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
 
+<ExampleUIControlBoolean default="${defaultShow|default(true)}" />
+
 Set this to `false` to prevent the axis label from appearing.
 {{ /if }}
 
 {{ if: ${hasLabelInterval|default(true)} }}
 ##${prefix} interval(number|Function) = 'auto'
+
+<ExampleUIControlNumber min="0" step="1" />
 
 {{ use: partial-axis-interval(
     name = "Axis label",
@@ -92,11 +106,15 @@ Set this to `false` to prevent the axis label from appearing.
 {{ if: ${hasInside|default(true)} }}
 ##${prefix} inside(boolean) = false
 
+<ExampleUIControlBoolean />
+
 Set this to `true` so the axis labels face the `inside` direction.
 {{ /if }}
 
 {{ if: ${componentType} !== 'angleAxis' }}
 ##${prefix} rotate(number) = 0
+
+<ExampleUIControlAngle min="-90" max="90" step="1" />
 
 Rotation degree of axis label, which is especially useful when there is no enough space for category axis.
 
@@ -104,6 +122,8 @@ Rotation degree is from -90 to 90.
 {{ /if }}
 
 ##${prefix} margin(number) = 8
+
+<ExampleUIControlNumber default="8" step="0.5" />
 
 The margin between the axis label and the axis line.
 
@@ -113,9 +133,13 @@ The margin between the axis label and the axis line.
 
 ##${prefix} showMinLabel(boolean) = null
 
+<ExampleUIControlBoolean />
+
 Whether to show the label of the min tick. Optional values: `true`, `false`, `null`. It is auto determined by default, that is, if labels are overlapped, the label of the min tick will not be displayed.
 
 ##${prefix} showMaxLabel(boolean) = null
+
+<ExampleUIControlBoolean />
 
 Whether to show the label of the max tick. Optional values: `true`, `false`, `null`. It is auto determined by default, that is, if labels are overlapped, the label of the max tick will not be displayed.
 
@@ -127,6 +151,8 @@ Whether to show the label of the max tick. Optional values: `true`, `false`, `nu
 <!-- Overwrite color -->
 
 ##${prefix} color(Color|Function)
+
+<ExampleUIControlColor />
 
 Color of axis label is set to be [axisLine.lineStyle.color](~${componentType}.axisLine.lineStyle.color) by default. Callback function is supported, in the following format:
 
@@ -154,10 +180,14 @@ Settings related to axis tick.
 
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
 
+<ExampleUIControlBoolean default="${defaultShow|default(true)}" />
+
 Set this to `false` to prevent the axis tick from showing.
 
 {{ if: ${hasAlignWithLabel|default(true)} }}
 ##${prefix} alignWithLabel(boolean) = false
+
+<ExampleUIControlBoolean default="false" />
 
 Align axis tick with label, which is available only when `boundaryGap` is set to be `true` in category axis. See the following picture:
 
@@ -166,6 +196,8 @@ Align axis tick with label, which is available only when `boundaryGap` is set to
 
 {{ if: ${hasLabelInterval|default(true)} }}
 ##${prefix} interval(number|Function) = 'auto'
+
+<ExampleUIControlNumber min="0" step="1" />
 
 {{ use: partial-axis-interval(
     name = "axisTick",
@@ -176,10 +208,14 @@ Align axis tick with label, which is available only when `boundaryGap` is set to
 {{ if: ${hasInside|default(true)} }}
 ##${prefix} inside(boolean) = false
 
+<ExampleUIControlBoolean />
+
 Set this to `true` so the axis labels face the `inside` direction.
 {{ /if }}
 
 ##${prefix} length(number) = 5
+
+<ExampleUIControlNumber min="0" step="0.5" default="5" />
 
 The length of the axis tick.
 
@@ -189,7 +225,6 @@ Line style of axis ticks.
 
 {{ use: partial-line-style(
     prefix = '##' + ${prefix},
-    defaultColor = "'#333'",
     defaultWidth = 1,
     defaultType = "'solid'",
     name = "axisTick"
@@ -225,13 +260,19 @@ Examples:
 
 ##${prefix} show(boolean) = ${defaultShow|default(false)}
 
+<ExampleUIControlBoolean default="${defaultShow|default(true)}" />
+
 If show minor ticks.
 
 ##${prefix} splitNumber(number) = 5
 
+<ExampleUIControlNumber min="1" step="1" default="5" />
+
 Number of interval splited by minor ticks.
 
 ##${prefix} length(number) = 3
+
+<ExampleUIControlNumber min="0" step="0.5" default="3" />
 
 Length of minor ticks lines。
 
@@ -248,6 +289,8 @@ Length of minor ticks lines。
 
 ###${prefix} color(Color)
 
+<ExampleUIControlColor />
+
 Style configuration of minor ticks lines [axisLine.lineStyle.color](~${componentType}.axisLine.lineStyle.color)。
 
 
@@ -260,11 +303,15 @@ Split line of axis in [grid](~grid) area.
 
 ##${prefix} show(boolean) = ${defaultShow|default(true)}
 
+<ExampleUIControlBoolean default="${defaultShow|default(true)}" />
+
 Set this to `false` to prevent the splitLine from showing.
 `value` type axes are shown by default, while `category` type axes are hidden.
 
 {{ if: ${hasLabelInterval|default(true)} }}
 ##${prefix} interval(number|Function) = 'auto'
+
+<ExampleUIControlNumber min="0" step="1" />
 
 {{ use: partial-axis-interval(
     name = "Axis splitLine",
@@ -285,6 +332,8 @@ Set this to `false` to prevent the splitLine from showing.
 <!-- overwrite color -->
 
 ###${prefix} color(Array|string) = ['#ccc']
+
+<ExampleUIControlColor />
 
 The color of the splitLine, which could be set separately.
 
@@ -314,6 +363,8 @@ Minor split lines of axis in the [grid](~grid) area。It will align to the [mino
 
 ##${prefix} show(boolean) = ${defaultShow|default(false)}
 
+<ExampleUIControlBoolean default="${defaultShow|default(true)}" />
+
 If show minor split lines.
 
 ##${prefix} lineStyle(Object)
@@ -337,6 +388,8 @@ Split area of axis in [grid](~grid) area, not shown by default.
 {{ if: ${hasLabelInterval|default(true)} }}
 ##${prefix} interval(number|Function) = 'auto'
 
+<ExampleUIControlNumber min="0" step="1" />
+
 {{ use: partial-axis-interval(
     name = "Axis splitArea",
     componentType = ${componentType}
@@ -344,6 +397,8 @@ Split area of axis in [grid](~grid) area, not shown by default.
 {{ /if }}
 
 ##${prefix} show(boolean) = ${defaultShow|default(false)}
+
+<ExampleUIControlBoolean default="${defaultShow|default(true)}" />
 
 Set this to `true` to show the splitArea.
 
@@ -392,9 +447,13 @@ Option:
 {{ if: ${componentType} !== 'angleAxis' }}
 #${prefix} name(string)
 
+<ExampleUIControlText />
+
 Name of axis.
 
 #${prefix} nameLocation(string) = 'end'
+
+<ExampleUIControlEnum options="start,middle,end" default="end" />
 
 Location of axis name.
 
@@ -416,23 +475,33 @@ Text style of axis name.
 
 ##${prefix} color(Color)
 
+<ExampleUIControlColor />
+
 Color of axis name uses [axisLine.lineStyle.color](~${componentType}.axisLine.lineStyle.color) by default.
 
 #${prefix} nameGap(number) = 15
+
+<ExampleUIControlNumber step="0.5" default="15" />
 
 Gap between axis name and axis line.
 
 #${prefix} nameRotate(number) = null
 
+<ExampleUIControlAngle min="-360" max="360" step="1" />
+
 Rotation of axis name.
 
 #${prefix} inverse(boolean) = false
+
+<ExampleUIControlBoolean />
 
 Set this to `true` to invert the axis.
 This is a new option available from Echarts 3 and newer.
 {{ /if }}
 
 #${prefix} boundaryGap(boolean|Array)
+
+<ExampleUIControlBoolean />
 
 The boundary gap on both sides of a coordinate axis. The setting and behavior of category axes and non-category axes are different.
 
@@ -445,6 +514,8 @@ boundaryGap: ['20%', '20%']
 ```
 
 #${prefix} min(number|string|Function) = null
+
+<ExampleUIControlNumber />
 
 The minimun value of axis.
 
@@ -465,6 +536,8 @@ min: function (value) {
 
 #${prefix} max(number|string|Function) = null
 
+<ExampleUIControlNumber />
+
 The maximum value of axis.
 
 It can be set to a special value `'dataMax'` so that the minimum value on this axis is set to be the maximum label.
@@ -484,6 +557,8 @@ max: function (value) {
 
 #${prefix} scale(boolean) = false
 
+<ExampleUIControlBoolean />
+
 It is available only in numerical axis, i.e., [type](~${componentType}.type): 'value'.
 
 It specifies whether not to contain zero position of axis compulsively. When it is set to be `true`, the axis may not contain zero position, which is useful in the scatter chart for both value axes.
@@ -492,11 +567,15 @@ This configuration item is unavailable when the [min](~${componentType}.min) and
 
 #${prefix} splitNumber(number) = 5
 
+<ExampleUIControlNumber min="1" step="1" default="5" />
+
 Number of segments that the axis is split into. Note that this number serves only as a recommendation, and the true segments may be adjusted based on readability.
 
 This is unavailable for category axis.
 
 #${prefix} minInterval(number) = 0
+
+<ExampleUIControlNumber />
 
 Minimum gap between split lines.
 
@@ -512,6 +591,8 @@ It is available only for axis of [type](~${componentType}.type) 'value' or 'time
 
 #${prefix} maxInterval(number)
 
+<ExampleUIControlNumber />
+
 Maximum gap between split lines.
 
 For example, in time axis ([type](~${componentType}.type) is 'time'), it can be set to be `3600 * 24 * 1000` to make sure that the gap between axis labels is less than or equal to one day.
@@ -526,6 +607,8 @@ It is available only for axis of [type](~${componentType}.type) 'value' or 'time
 
 #${prefix} interval(number)
 
+<ExampleUIControlNumber />
+
 Compulsively set segmentation interval for axis.
 
 As [splitNumber](~${componentType}.splitNumber) is a recommendation value, the calculated tick may not be the same as expected. In this case, interval should be used along with [min](~${componentType}.min) and [max](~${componentType}.max) to compulsively set tickings. But in most cases, we do not suggest using this, out automatic calculation is enough for most situations.
@@ -533,6 +616,8 @@ As [splitNumber](~${componentType}.splitNumber) is a recommendation value, the c
 This is unavailable for category axis. Timestamp should be passed for [type](~${componentType}.type): 'time' axis. Logged value should be passed for [type](~${componentType}.type): 'log' axis.
 
 #${prefix} logBase(number) = 10
+
+<ExampleUIControlNumber default="10" />
 
 Base of logarithm, which is valid only for numeric axes with [type](~${componentType}.type): 'log'.
 

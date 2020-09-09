@@ -1,6 +1,8 @@
 
 {{ target: partial-roam }}
 
+<ExampleUIControlEnum options="true,false,scale,move" />
+
 Whether to enable mouse zooming and translating. `false` by default. If either zooming or translating is wanted, it can be set to `'scale'` or `'move'`. Otherwise, set it to be `true` to enable both.
 
 

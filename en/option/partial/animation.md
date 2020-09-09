@@ -3,6 +3,8 @@
 
 #${prefix} animation(boolean) = true
 
+<ExampleUIControlBoolean default="${defaultAnimation|default(true)}" clean="true" />
+
 Whether to enable animation.
 
 #${prefix} animationThreshold(number) = ${defaultAnimationThreshold|default(2000)}
@@ -18,6 +20,8 @@ Whether to set graphic number threshold to animation. Animation will be disabled
 
 #${prefix} animationDurationUpdate(number|Function) = ${defaultAnimationDurationUpdate|default(300)}
 
+<ExampleUIControlNumber min="0" default="${defaultAnimationDuration|default(1000)}" step="20" />
+
 Time for animation to complete, which supports callback function for different data to have different animation effect:
 
 ```js
@@ -28,6 +32,8 @@ animationDurationUpdate: function (idx) {
 ```
 
 #${prefix} animationEasingUpdate(string) = ${defaultAnimationEasingUpdate|default('cubicOut')}
+
+<ExampleUIControlEnum options="linear,quadraticIn,quadraticOut,quadraticInOut,cubicIn,cubicOut,cubicInOut,quarticIn,quarticOut,quarticInOut,quinticIn,quinticOut,quinticInOut,sinusoidalIn,sinusoidalOut,sinusoidalInOut,exponentialIn,exponentialOut,exponentialInOut,circularIn,circularOut,circularInOut,elasticIn,elasticOut,elasticInOut,backIn,backOut,backInOut,bounceIn,bounceOut,bounceInOut" />
 
 Easing method used for animation.
 
@@ -53,6 +59,8 @@ See [this example](${galleryEditorPath}bar-animation-delay) for more information
 
 #${prefix} animationDuration(number|Function) = ${defaultAnimationDuration|default(1000)}
 
+<ExampleUIControlNumber min="0" default="${defaultAnimationDuration|default(1000)}" step="20" clean="true" />
+
 Duration of the first animation, which supports callback function for different data to have different animation effect:
 
 ```js
@@ -63,6 +71,8 @@ animationDuration: function (idx) {
 ```
 
 #${prefix} animationEasing(string) = ${defaultAnimationEasing|default('cubicOut')}
+
+<ExampleUIControlEnum options="linear,quadraticIn,quadraticOut,quadraticInOut,cubicIn,cubicOut,cubicInOut,quarticIn,quarticOut,quarticInOut,quinticIn,quinticOut,quinticInOut,sinusoidalIn,sinusoidalOut,sinusoidalInOut,exponentialIn,exponentialOut,exponentialInOut,circularIn,circularOut,circularInOut,elasticIn,elasticOut,elasticInOut,backIn,backOut,backInOut,bounceIn,bounceOut,bounceInOut" clean="true" />
 
 Easing method used for the first animation. Varied easing effects can be found at [easing effect example](${galleryEditorPath}line-easing).
 

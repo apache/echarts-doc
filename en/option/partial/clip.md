@@ -3,6 +3,8 @@
 
 #${prefix|default('#')} clip(boolean) = ${defaultClip|default(true)}
 
+<ExampleUIControlBoolean default="${defaultClip|default(true)}" />
+
 {{ use: partial-version(
     version = ${version|default("4.4.0")}
 ) }}

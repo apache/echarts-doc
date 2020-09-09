@@ -79,9 +79,13 @@ In value axis and time axis, if [snap](~xAxis.axisPointer.snap) is set as true, 
 
 #${prefix} show(boolean) = false
 
+<ExampleUIControlBoolean />
+
 axisPointer will not be displayed by default. But if [tooltip.trigger](~tooltip.trigger) is set as `'axis'` or [tooltip.axisPointer.type](~tooltip.axisPointer.type) is set as  `'cross'`, axisPointer will be displayed automatically. Each coordinate system will automatically chose the axes whose will display its axisPointer. [tooltip.axisPointer.axis](~tooltip.axisPointer.axis) can be used to change the choice.
 
 #${prefix} type(string) = 'line'
+
+<ExampleUIControlEnum options="line,shadow,none" />
 
 Indicator type.
 
@@ -98,6 +102,8 @@ Options:
 
 #${prefix} triggerTooltip(boolean) = true
 
+<ExampleUIControlBoolean default="true" />
+
 Whether to trigger tooltip.
 
 #${prefix} value(number) = null
@@ -105,6 +111,8 @@ Whether to trigger tooltip.
 current value. When using [axisPointer.handle](xAxisPointer.handle), `value` can be set to define the initail position of axisPointer.
 
 #${prefix} status(boolean)
+
+<ExampleUIControlEnum options="show,hide" />
 
 Current status, can be `'show'` 和 `'hide'`.
 
@@ -114,9 +122,13 @@ A button used to drag axisPointer. This feature is applicable in touch device. S
 
 ##${prefix} show(boolean) = false
 
+<ExampleUIControlBoolean />
+
 Set to `true` to use handle.
 
 ##${prefix} icon(*)
+
+<ExampleUIControlIcon clean="true" />
 
 The icon of the handle.
 
@@ -126,17 +138,25 @@ See the [example of using image](${galleryEditorPath}doc-example/axisPointer-han
 
 ##${prefix} size(number|Array) = 45
 
+<ExampleUIControlVector default="45,45" min="0" step="0.5" dims="width,height" />
+
 The size of the handle, which can be set as a single value or an array (`[width, height]`).
 
 ##${prefix} margin(number) = 50
+
+<ExampleUIControlNumber default="50" min="0" step="0.5" />
 
 Distance from handle center to axis.
 
 ##${prefix} color(string) = '#333'
 
+<ExampleUIControlColor />
+
 The color of the handle.
 
 ##${prefix} throttle(number) = 40
+
+<ExampleUIControlNumber default="40" min="0" step="10" />
 
 Throttle rate of trigger view update when dragging handle, in ms. Increase the value to improve performance, but decrease the experience.
 

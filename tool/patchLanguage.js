@@ -1,13 +1,12 @@
 /**
  * Patch zh option doc to en option doc.
  */
-
+/* global Map */
 const fs = require('fs');
 const path = require('path');
 const {compositeTargets} = require('../editor/common/blockHelper');
 const {parseBlocks} = require('../editor/common/parseBlocks');
 const _ = require('lodash');
-const arrayDiff = require('zrender/lib/core/arrayDiff2');
 const {argv} = require('yargs');
 
 const fromLang = argv.from || 'zh';
@@ -15,47 +14,89 @@ const toLang = argv.to || 'en';
 
 console.log(`Patching from ${fromLang.toUpperCase()} to ${toLang.toUpperCase()}`);
 
-function applyBlocksPatch(fromBlocks, toBlocks) {
-    const patchedBlocks = [];
-    const diffResult = arrayDiff(toBlocks, fromBlocks, function (a, b) {
-        return a.key === b.key;
-    });
+function patchArray(fromArr, toArr, getKey, patchers) {
+    const toArrMap = new Map();
+    const result = [];
+    for (let i = 0; i < toArr.length; i++) {
+        const key = getKey(toArr[i]);
+        if (toArrMap.get(key)) {
+            throw new Error(`Duplicate key ${key}`);
+        }
+        toArrMap.set(key, toArr[i]);
+    }
 
-    for (let part of diffResult) {
-        if (part.removed) {
-            // Just ignore
-            for (let i = 0; i < part.indices.length; i++) {
-                const toBlock = toBlocks[part.indices[i]];
-                if (toBlock.type === 'uicontrol') {
-                    // Not remove ui control block when patching from en to zh
-                    patchedBlocks.push(_.clone(toBlock));
-                }
-            }
+    for (let i = 0; i < fromArr.length; i++) {
+        const key = getKey(fromArr[i]);
+        if (toArrMap.get(key)) {
+            result.push(
+                patchers.update(fromArr[i], toArrMap.get(key))
+            );
         }
         else {
-            for (let i = 0; i < part.indices.length; i++) {
-                const fromBlock = fromBlocks[part.indices[i]];
-                // if (fromBlock.key === 'content:top.calendar.splitLine.lineStyle') {
-                //     console.log(part);
-                // }
-                // Ignore uicontrol block.
-                if (fromBlock.type === 'uicontrol') {
-                    continue;
-                }
-                const block = _.clone(
-                    part.added ? fromBlock    // New added content in zh doc
-                        : toBlocks.find(a => a.key === fromBlock.key) // Keep not change
-                );
-                block.inline = fromBlock.inline;
-                patchedBlocks.push(block);
-            }
+            result.push(
+                patchers.add(fromArr[i])
+            );
         }
     }
-    return patchedBlocks;
+    return result;
+}
+
+function isSimpleChar(str) {
+    for (let i = 0; i < str.length; i++) {
+        if (str.charCodeAt(i) > 128) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function applyArgsPatch(fromArgs, toArgs) {
+    return patchArray(fromArgs, toArgs, (a) => a[0], {
+        add(fromArg) {
+            return fromArg.slice();
+        },
+        update(fromArg, toArg) {
+            if (fromArg[1] === toArg[1]) {
+                return fromArg.slice();
+            }
+            if (typeof fromArg[1] !== 'string') {
+                return fromArg.slice();
+            }
+            // A simple strategy to determine if the string is a term can be different in each language.
+            // Or if it's a code.
+            if (!isSimpleChar(fromArg[1]) || !isSimpleChar(toArg[1] + '')) {
+                // Keep the same if it's translated term.
+                return toArg.slice();
+            }
+            else {
+                return fromArg.slice();
+            }
+        }
+    });
+}
+
+function applyBlocksPatch(fromBlocks, toBlocks) {
+    return patchArray(fromBlocks, toBlocks, (a) => a.key, {
+        add(fromBlock) {
+            return _.clone(fromBlock);
+        },
+        update(fromBlock, toBlock) {
+            if (fromBlock.type === 'uicontrol') {
+                // Move uicontrol directly.
+                return _.clone(fromBlock);
+            }
+
+            const newBlock = _.clone(toBlock);
+            newBlock.inline = fromBlock.inline;
+            if (newBlock.type === 'use') {
+                newBlock.args = applyArgsPatch(fromBlock.args || [], toBlock.args || []);
+            }
+            return newBlock;
+        }
+    });
 }
 
 function applyTargetsPatch(fromJson, toJson) {
-
     for (let fileName in fromJson) {
         const fromTargets = fromJson[fileName];
         const toTargets = toJson[fileName];
@@ -64,34 +105,17 @@ function applyTargetsPatch(fromJson, toJson) {
             continue;
         }
 
-        const diffResult = arrayDiff(toTargets, fromTargets, function (a, b) {
-            return a.name === b.name;
+        toJson[fileName] = patchArray(fromTargets, toTargets, (a) => a.name, {
+            add(fromTarget) {
+                return _.clone(fromTarget);
+            },
+            update(fromTarget, toTarget) {
+                return {
+                    name: fromTarget.name,
+                    blocks: applyBlocksPatch(fromTarget.blocks, toTarget.blocks)
+                };
+            }
         });
-
-        const patchedTargets = [];
-        for (let part of diffResult) {
-            // New added content in zh doc
-            if (part.added) {
-                for (let i = 0; i < part.indices.length; i++) {
-                    patchedTargets.push(_.clone(fromTargets[part.indices[i]]));
-                }
-            }
-            else if (part.removed) {
-                // Just ignore
-            }
-            else {
-                for (let i = 0; i < part.indices.length; i++) {
-                    const fromTarget = fromTargets[part.indices[i]];
-                    const toTarget = toTargets.find(a => a.name === fromTarget.name);
-                    patchedTargets.push({
-                        name: fromTarget.name,
-                        blocks: applyBlocksPatch(fromTarget.blocks, toTarget.blocks)
-                    });
-                }
-            }
-        }
-
-        toJson[fileName] = patchedTargets;
     }
 }
 

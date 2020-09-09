@@ -22,11 +22,15 @@ Used to determine that it is a continuous visualMap component.
 
 ## min(number)
 
+<ExampleUIControlNumber />
+
 Specify the min dataValue for the visualMap component. `[visualMap.min, visualMax.max]` make up the domain of viusul mapping.
 
 Notice that `min` and `max` should be specified explicitly, and be `[0, 200]` by default, but not `dataMin` and `dataMax` in series.data.
 
 ## max(number)
+
+<ExampleUIControlNumber />
 
 Specify the max dataValue for the visualMap component. `[visualMap.min, visualMax.max]` make up the domain of viusul mapping.
 
@@ -78,11 +82,15 @@ chart.setOption({visualMap: {range: null}}); // Set range to null then.
 
 ## calculable(boolean) = false
 
+<ExampleUIControlBoolean />
+
 Whether show handles, which can be dragged to adjust "selected range".
 
 Notes: In order to be compatible with ECharts2, the rule, which seems to be a little odd, is retained: when [visualMap.type](~visualMap.type) is not set, and [visualMap.calculable](~visualMap-continuous.calculable) was set to be `true`, [visualMap.type](~visualMap.type) will be automatically set as `'continuous'`, regardless of some settings such as [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber). Therefore, it is recommended to set [visualMap.type](~visualMap.type) explicitly, which avoids ambiguity.
 
 ## realtime(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
 
 Whether to update view in real time when dragging a handle.
 
@@ -91,6 +99,8 @@ Whether to update view in real time when dragging a handle.
 + If `false`, the chart view will be updated at the end of the handle dragging.
 
 ## inverse(boolean) = false
+
+<ExampleUIControlBoolean />
 
 Whether to inverse the layout of visualMap component.
 
@@ -103,17 +113,25 @@ As `inverse` is `true`, the result is opposite.
 
 ## precision(number) = 0
 
+<ExampleUIControlNumber min="0" step="1" />
+
 The decimal precision of label, defaults to be 0 (no decimals).
 
 ## itemWidth(number) = 20
+
+<ExampleUIControlNumber default="20" min="0" />
 
 The width of the main bar of visualMap component.
 
 ## itemHeight(number) = 140
 
+<ExampleUIControlNumber default="140" min="0" />
+
 The height of the main bar of visualMap component.
 
 ## align(string) = 'auto'
+
+<ExampleUIControlEnum options="auto,left,right,top,bottom" />
 
 Specify the position of handles and labels, against the main bar. The possible values are:
 
@@ -130,6 +148,8 @@ The label text on both ends, such as `['High', 'Low']`. [sample](${galleryEditor
 You can understand the order of items in `text` array just by a simple trial. See [visualMap.inverse](~visualMap.inverse).
 
 ## textGap(number) = 10
+
+<ExampleUIControlNumber default="10" step="0.5" />
 
 The distance between the ends of the main bar and the label, with unit px. See [visualMap-continuous.text](~visualMap-continuous.text)
 

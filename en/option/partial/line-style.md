@@ -3,6 +3,8 @@
 
 #${prefix} color(Color) = {{ if: !${useColorPalatte} }} ${defaultColor|default('"#000"')} {{ else }}'self-adaptive'{{ /if }}
 
+<ExampleUIControlColor />
+
 ${name}Line color. {{ if: ${useColorPalatte} }} Color is taken from [option.color Palette](~color) by default. {{ /if }}
 
 {{ if: ${hasCallback} }}
@@ -17,9 +19,13 @@ Input parameters are `seriesIndex`, `dataIndex`, `data`, `value`, and etc. of da
 
 #${prefix} width(number) = ${defaultWidth|default(0)}
 
+<ExampleUIControlNumber value="${defaultWidth|default(1)}" min="0" step="0.5" />
+
 ${name} line width.
 
 #${prefix} type(string) = ${defaultType|default('solid')}
+
+<ExampleUIControlEnum default="solid" options="solid,dashed,dotted" />
 
 ${name} line type.
 
@@ -37,6 +43,8 @@ Options are:
 
 {{ if: ${hasCurveness} }}
 #${prefix} curveness(number) = 0
+
+<ExampleUIControlNumber min="0" max="1" step="0.01" default="0" />
 
 Edge curvature, which supports value from 0 to 1. The larger the value, the greater the curvature.
 {{ /if }}

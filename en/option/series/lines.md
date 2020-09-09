@@ -197,8 +197,7 @@ Label of a single line. Available when [polyline](~series-lines.polyline) is not
 
 {{ use: partial-marker(
     prefix = "#",
-    seriesType = "lines",
-    name = "mark point"
+    seriesType = "lines"
 ) }}
 
 {{ use: partial-clip(

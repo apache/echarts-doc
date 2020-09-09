@@ -65,6 +65,8 @@ The default value is decided by:
 
 ## barWidth(number)
 
+<ExampleUIControlPercent default="70%" min="0" />
+
 Specify bar width. Absolute value (like `10`) or percentage (like `'20%'`, according to band width) can be used. Auto adapt by default.
 
 ## barMinWidth(number|string)
@@ -193,8 +195,7 @@ Emphasis style of a candle box.
     prefix = "#",
     seriesType = "candlestick",
     hasCoord = true,
-    hasType = true,
-    name = "mark point"
+    hasType = true
 ) }}
 
 {{ use: partial-clip(
@@ -225,11 +226,15 @@ Emphasis style of a candle box.
 
 #${prefix} color(Color) = ${defaultColor}
 
+<ExampleUIControlColor />
+
 Fill color of bullish candle stick.
 
 {{ use: partial-color-desc() }}
 
 #${prefix} color0(Color) = ${defaultColor0}
+
+<ExampleUIControlColor />
 
 Fill color of bearish candle stick.
 
@@ -237,17 +242,23 @@ Fill color of bearish candle stick.
 
 #${prefix} borderColor(Color) = ${defaultBorderColor}
 
+<ExampleUIControlColor />
+
 Border color of bullish candle stick.
 
 {{ use: partial-color-desc() }}
 
 #${prefix} borderColor0(Color) = ${defaultBorderColor0}
 
+<ExampleUIControlColor />
+
 Border color of bearish candle stick.
 
 {{ use: partial-color-desc() }}
 
 #${prefix} borderWidth(number) = ${defaultBorderWidth}
+
+<ExampleUIControlNumber min="0" step="0.5" default="${defaultBorderWidth}" />
 
 Border width of candlestick. There is no border when it is `0`.
 

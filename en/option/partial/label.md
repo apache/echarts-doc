@@ -9,15 +9,21 @@ Text label of ${name}, to explain some data information about graphic item like 
 
 #${prefix} show(boolean) = ${defaultShowLabel|default("false")}
 
+<ExampleUIControlBoolean default="${defaultShowLabel|default(false)}" />
+
 Whether to show label.
 
 {{ if: !${noPosition} }}
 #${prefix} position(string|Array) = ${defaultPosition}
 
+<ExampleUIControlEnum options="top,left,right,bottom,inside,insideLeft,insideRight,insideTop,insideBottom,insideTopLeft,insideBottomLeft,insideTopRight,insideBottomRight,outside" />
+
 {{ use: partial-label-position() }}
 {{ /if }}
 
 #${prefix} distance(number) = 5
+
+<ExampleUIControlNumber default="5" min="0" step="0.5" />
 
 Distance to the host graphic element. Works when position is string value (like `'top'`、`'insideRight'`).
 
@@ -26,12 +32,16 @@ See: [label position](${galleryEditorPath}doc-example/label-position).
 {{ if: !${noRotate} }}
 #${prefix} rotate(number) = ${defaultRotate}
 
+<ExampleUIControlAngle default="${defaultRotate|default(0)}" min="-90" max="90" step="1" />
+
 Rotate label, from -90 degree to 90, positive value represents rotate anti-clockwise.
 
 See: [label rotation](${galleryEditorPath}bar-label-rotation).
 {{ /if }}
 
 #${prefix} offset(Array)
+
+<ExampleUIControlVector dims="x,y" step="0.5" separate="true" />
 
 Whether to move text slightly. For example: `[30, 40]` means move `30` horizontally and move `40` vertically.
 

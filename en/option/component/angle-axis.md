@@ -15,6 +15,8 @@ The index of angle axis in Polar Coordinate. The first axis is used by default.
 
 ## startAngle(number) = 90
 
+<ExampleUIControlAngle default="90" min="-360" max="360" step="1" />
+
 Starting angle of axis. 90 degrees by default, standing for top position of center. 0 degree stands for right position of center.
 
 The following shows an example with startAngle of 45 deg.
@@ -22,6 +24,8 @@ The following shows an example with startAngle of 45 deg.
 ~[400x400](${galleryViewPath}doc-example/polar-start-angle&edit=1&reset=1)
 
 ## clockwise(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
 
 Whether the positive position of axis is clockwise. True for clockwise by default.
 

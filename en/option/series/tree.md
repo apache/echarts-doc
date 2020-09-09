@@ -37,6 +37,8 @@ The tree diagram is mainly used to visualize the tree data structure, which is a
 
 ## layout(string) = 'orthogonal'
 
+<ExampleUIControlEnum options="orthogonal,radial" default="orthogonal" />
+
 The layout of the tree, which can be `orthogonal` and `radial`. Here the `orthogonal` layout is what we usually refer to the `horizontal` and `vertical` direction, the corresponding parameter value is `orthogonal`. The `radial` layout refers to the view that the root node as the center and each layer of nodes as the ring, the corresponding parameter value is `radial`.
 
 **Orthogonal Example：**
@@ -50,6 +52,8 @@ The layout of the tree, which can be `orthogonal` and `radial`. Here the `orthog
 
 ## orient(string) = 'LR'
 
+<ExampleUIControlEnum options="LR,RL,TB,BT" default="LR" />
+
 The direction of the `orthogonal` layout in the tree diagram. That means this configuration takes effect only if `layout = 'orthogonal'`. The corresponding directions are `from left to right`, `from right to left`, `from top to bottom`, `from bottom to top`, with shorthand values `'LR'`, `'RL'`, `'TB'`, `'BT'`.
 **Note: The previous configuration value `'horizontal'` is equivalent to `'LR'`, `'vertical'` is equivalent to `'TB'`.**
 
@@ -58,11 +62,12 @@ The direction of the `orthogonal` layout in the tree diagram. That means this co
     defaultSymbol = "'emptyCircle'",
     defaultSymbolSize = 7,
     prefix = "#",
-    hasCallback = true,
-    name = "tree node"
+    hasCallback = true
 ) }}
 
 ## edgeShape(string) = 'curve'
+
+<ExampleUIControlEnum options="curve,polyline" default="curve" />
 
 {{ use: partial-version(
     version = "4.7.0"
@@ -74,6 +79,8 @@ The shape of the edge which is under the tree `orthogonal layout`. There are two
 
 ## edgeForkPosition(string) = '50%'
 
+<ExampleUIControlPercent default="50%" />
+
 This is the position where the polyline branches in the subtree when the shape of the edge is a polyline in the `orthogonal layout`. The position here refers to the percentage of the distance between the bifurcation point and the parent node of the subtree to the height of the entire subtree. The default value is `'50%'`, which can be between ['0', '100%'].
 
 ** Note: This configuration item is only valid when `edgeShape = 'polyline'`. **
@@ -84,11 +91,15 @@ This is the position where the polyline branches in the subtree when the shape o
 
 ## expandAndCollapse(boolean) = true
 
+<ExampleUIControlBoolean default="true" />
+
 Subtree collapses and expands interaction, `default true`. As the drawing area is limited, and usually the nodes of a tree may be more, so there will be hidden between the nodes. In order to avoid this problem, you can put a temporary unrelated subtree folded away, until you need to start when necessary. Such as the above radial layout tree example, the center of the node is filled with blue is the folded away subtree, you can click to expand it.
 
 **Note: If you configure a custom image as the tag for a node, it is not possible to distinguish whether the current node has a collapsed subtree by the fill color. And currently do not support, upload two pictures, respectively represent the collapsing and expansion state of the node. So, if you want to explicitly show the two states of the node, it is recommended to use `ECharts` regular tag types, such as `emptyCircle`.**
 
 ## initialTreeDepth(number) = 2
+
+<ExampleUIControlNumber default="2" min="0" step="1" />
 
 The initial level (depth) of the tree. The root node is the 0th layer, then the first layer, the second layer, ... , until the leaf node. This configuration item is primarily used in conjunction with `collapsing and expansion` interactions. The purpose is to prevent the nodes from obscuring each other. If set as -1 or `null` or `undefined`, all nodes are expanded.
 
@@ -278,13 +289,19 @@ Emphasis state of a single node.
 
 #${prefix} color(Color) = "'#ccc'"
 
+<ExampleUIControlColor default="#ccc" />
+
 The color of the tree edge.
 
 #${prefix} width(number) = 1.5
 
+<ExampleUIControlNumber default="1.5" min="0" />
+
 The width of the tree edge.
 
 #${prefix} curveness(number) = 0.5
+
+<ExampleUIControlNumber default="0.5" min="0" />
 
 The curvature of the tree edge.
 

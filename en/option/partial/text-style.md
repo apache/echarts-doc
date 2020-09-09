@@ -39,6 +39,8 @@ Height of text block.
 
 #${prefix} overflow(string) = 'none'
 
+<ExampleUIControlEnum options="truncate,break,breakAll" />
+
 Determine how to display the text when it's overflow. Available when `width` is set.
 
 + `'truncate'` Truncate the text and trailing with `ellipsis`.
@@ -110,6 +112,8 @@ For more details, see [Rich Text](tutorial.html#Rich%20Text) please.
 
 #${prefix} color(Color) = ${defaultColor|default('"#fff"')}
 
+<ExampleUIControlColor default="${defaultColor|default(null)}" />
+
 ${name} text color.
 
 {{ if: ${enableAutoColor} }}
@@ -117,6 +121,8 @@ ${name} text color.
 {{ /if }}
 
 #${prefix} fontStyle(string) = 'normal'
+
+<ExampleUIControlEnum default="normal" options="normal,italic,oblique" />
 
 ${name} font style.
 
@@ -126,6 +132,8 @@ Options are:
 + `'oblique'`
 
 #${prefix} fontWeight(string|number) = ${defaultFontWeight|default('normal')}
+
+<ExampleUIControlEnum default="normal" options="normal,bold,bolder,lighter" />
 
 ${name} font thick weight.
 
@@ -138,16 +146,22 @@ Options are:
 
 #${prefix} fontFamily(string) = 'sans-serif'
 
+<ExampleUIControlEnum default="sans-serif" options="sans-serif,serif,monospace,Arial,Courier New" />
+
 ${name} font family.
 
 Can also be 'serif' , 'monospace', ...
 
 #${prefix} fontSize(number) = ${defaultFontSize|default(12)}
 
+<ExampleUIControlNumber default="${defaultFontSize|default(12)}" min="1" step="1" />
+
 ${name} font size.
 
 {{ if: !${noAlign} }}
 #${prefix} align(string) = ${defaultAlign}
+
+<ExampleUIControlEnum options="left,center,right" />
 
 Horizontal alignment of text, automatic by default.
 
@@ -165,6 +179,8 @@ Options are:
 {{ if: !${noVerticalAlign} }}
 #${prefix} verticalAlign(string) = ${defaultVerticalAlign}
 
+<ExampleUIControlEnum options="top,middle,bottom" />
+
 Vertical alignment of text, automatic by default.
 
 Options are:
@@ -180,6 +196,8 @@ Options are:
 
 #${prefix} lineHeight(number)
 
+<ExampleUIControlNumber min="0" step="1" default="12" />
+
 Line height of the text fragment.
 
 {{ use: partial-text-style-rich-inherit(
@@ -189,6 +207,8 @@ Line height of the text fragment.
 
 {{ if: !${noBox} }}
 #${prefix} backgroundColor(string|Object) = 'transparent'
+
+<ExampleUIControlColor default="#fff" />
 
 Background color of the text fragment.
 
@@ -215,6 +235,8 @@ auto adapted by default.
 
 #${prefix} borderColor(Color) = 'transparent'
 
+<ExampleUIControlColor default="#fff" />
+
 Border color of the text fragment.
 
 {{ if: ${enableAutoColor} }}
@@ -223,13 +245,19 @@ Border color of the text fragment.
 
 #${prefix} borderWidth(number) = 0
 
+<ExampleUIControlNumber min="0" step="0.5" />
+
 Border width of the text fragment.
 
 #${prefix} borderRadius(number) = 0
 
+<ExampleUIControlVector min="0" dims="LT,RT, RB, LB"  />
+
 Border radius of the text fragment.
 
 #${prefix} padding(number|Array) = 0
+
+<ExampleUIControlVector min="0" dims="T,R,B,L"  />
 
 Padding of the text fragment, for example:
 
@@ -241,17 +269,25 @@ Notice, `width` and `height` specifies the width and height of the content, with
 
 #${prefix} shadowColor(Color) = 'transparent'
 
+<ExampleUIControlColor />
+
 Shadow color of the text block.
 
 #${prefix} shadowBlur(number) = 0
+
+<ExampleUIControlNumber min="0" step="0.5" />
 
 Show blur of the text block.
 
 #${prefix} shadowOffsetX(number) = 0
 
+<ExampleUIControlNumber step="0.5" />
+
 Shadow X offset of the text block.
 
 #${prefix} shadowOffsetY(number) = 0
+
+<ExampleUIControlNumber step="0.5" />
 
 Shadow Y offset of the text block.
 {{ /if }}
@@ -277,6 +313,8 @@ Notice, `width` and `height` only work when `rich` specified.
 
 #${prefix} textBorderColor(Color) = 'transparent'
 
+<ExampleUIControlColor />
+
 Storke color of the text.
 
 {{ if: ${enableAutoColor} }}
@@ -285,21 +323,31 @@ Storke color of the text.
 
 #${prefix} textBorderWidth(number) = 0
 
+<ExampleUIControlNumber min="0" step="0.5" />
+
 Storke line width of the text.
 
 #${prefix} textShadowColor(Color) = 'transparent'
+
+<ExampleUIControlColor default="#000" />
 
 Shadow color of the text itself.
 
 #${prefix} textShadowBlur(number) = 0
 
+<ExampleUIControlNumber min="0" step="0.5" />
+
 Shadow blue of the text itself.
 
 #${prefix} textShadowOffsetX(number) = 0
 
+<ExampleUIControlNumber step="0.5" />
+
 Shadow X offset of the text itself.
 
 #${prefix} textShadowOffsetY(number) = 0
+
+<ExampleUIControlNumber step="0.5" />
 
 Shadow Y offset of the text itself.
 
