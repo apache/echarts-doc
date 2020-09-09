@@ -95,7 +95,6 @@ Configurations of blur state. Available when [emphasis.focus](~series-radar.emph
 
 Configurations of select state. Available when [selectedMode](~series-radar.selectedMode) is set.
 
-
 {{ use: radar-state(
     prefix = "##"
 ) }}

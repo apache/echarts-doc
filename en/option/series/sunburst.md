@@ -16,8 +16,9 @@ The following example shows different `rotate` settings:
 
 ~[700x400](${galleryViewPath}sunburst-label-rotate&edit=1&reset=1)
 
-{{ else }}
 Same to [label.rotate](~sunburst.label.rotate)
+{{ else }}
+同 [label.rotate](~sunburst.label.rotate)
 {{ /if }}
 
 #${prefix} align(string) = 'center'

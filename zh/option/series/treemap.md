@@ -713,7 +713,7 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
     formatter = true
 ) }}
 
-###${prefix} height(number) = 20
+##${prefix} height(number) = 20
 
 <ExampleUIControlNumber default="20" min="0" step="0.5" />
 
