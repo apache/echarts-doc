@@ -311,19 +311,15 @@ K 线图的选中状态。开启 [selectedMode](~series-candlestick.selectedMode
     defaultBorderWidth = 2
 ) }}
 
-
 {{ use: partial-selected-mode(
     version = '5.0.0'
 ) }}
-
 
 {{ use: partial-large(
     prefix = "#",
     defaultLarge = true,
     defaultLargeThreshold = 600
 ) }}
-
-
 
 {{ use: partial-progressive(
     prefix = '#',

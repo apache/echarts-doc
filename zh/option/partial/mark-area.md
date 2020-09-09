@@ -41,6 +41,22 @@
     prefix = "###" + ${prefix}
 ) }}
 
+##${prefix} blur(Object)
+
+淡出的标域样式。淡出的规则跟随所在系列。
+
+###${prefix} label(Object)
+
+{{ use: partial-label(
+    prefix = ${prefix} + '###'
+) }}
+
+###${prefix} itemStyle(*)
+
+{{ use: partial-item-style(
+    prefix = "###" + ${prefix}
+) }}
+
 ##${prefix} data(*)
 
 标域的数据数组。每个数组项是一个两个项的数组，分别表示标域左上角和右下角的位置，每个项支持通过下面几种方式指定自己的位置
@@ -213,6 +229,20 @@ data: [
 ) }}
 
 #${prefix} emphasis(Object)
+
+##${prefix} itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "##"+${prefix}
+) }}
+
+##${prefix} label(Object)
+
+{{ use: partial-label(
+    prefix = '##'+${prefix}
+) }}
+
+#${prefix} blur(Object)
 
 ##${prefix} itemStyle(Object)
 

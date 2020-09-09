@@ -134,7 +134,7 @@ const option = {
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: effectScatter-state(
-    prefix="##"
+    prefix = "##"
 ) }}
 
 ## emphasis(Object)
@@ -148,7 +148,7 @@ const option = {
 是否开启高亮后的放大效果。
 
 {{ use: effectScatter-state(
-    prefix="##"
+    prefix = "##"
 ) }}
 
 ## blur(Object)
@@ -156,7 +156,7 @@ const option = {
 淡出状态的配置。开启 [emphasis.focus](~series-effectScatter.emphasis.focus) 后有效。
 
 {{ use: effectScatter-state(
-    prefix="##"
+    prefix = "##"
 ) }}
 
 ## select(Object)
@@ -164,7 +164,7 @@ const option = {
 选中状态的配置。开启 [selectedMode](~series-effectScatter.selectedMode) 后有效。
 
 {{ use: effectScatter-state(
-    prefix="##"
+    prefix = "##"
 ) }}
 
 {{ use: partial-selected-mode(
@@ -232,8 +232,6 @@ const option = {
     prefix = "###"
 ) }}
 
-
-
 {{ use: partial-tooltip-in-series-data() }}
 
 {{ use: partial-marker(
@@ -258,6 +256,7 @@ const option = {
 {{ use: partial-tooltip-in-series() }}
 
 
+
 {{ target: effectScatter-state }}
 
 #${prefix} label(Object)
@@ -272,3 +271,4 @@ const option = {
 {{ use: partial-item-style(
     prefix = "#" + ${prefix}
 ) }}
+

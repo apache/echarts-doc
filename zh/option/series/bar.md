@@ -301,7 +301,6 @@ option = {
 
 {{ if: ${topLevel} }}
 {{ use: partial-label-desc() }}
-
 {{ else }}
 单个数据的文本配置。
 {{ /if }}
@@ -316,7 +315,6 @@ option = {
 
 {{ if: ${topLevel} }}
 {{ use: partial-item-style-desc() }}
-
 {{ else }}
 单个数据的图形样式设置。
 {{ /if }}

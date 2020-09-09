@@ -161,24 +161,24 @@ const option = {
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: themeRiver-state(
-    prefix="##"
-)}}
+    prefix = "##"
+) }}
 
 ## blur(Object)
 
 淡出状态的配置。
 
 {{ use: themeRiver-state(
-    prefix="##"
-)}}
+    prefix = "##"
+) }}
 
 ## select(Object)
 
 选中状态的配置。
 
 {{ use: themeRiver-state(
-    prefix="##"
-)}}
+    prefix = "##"
+) }}
 
 {{ use: partial-selected-mode(
     version = '5.0.0'
@@ -220,6 +220,8 @@ data: [
 
 {{ use: partial-tooltip-in-series() }}
 
+
+
 {{ target: themeRiver-state }}
 
 #${prefix} label(Object)
@@ -239,3 +241,4 @@ data: [
 {{ use: partial-item-style(
     prefix = "#" + ${prefix}
 ) }}
+

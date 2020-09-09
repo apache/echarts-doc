@@ -135,7 +135,6 @@ option = {
 
 {{ use: partial-focus-blur-scope() }}
 
-
 ## blur(Object)
 
 淡出时的图形样式和标签样式。开启 [emphasis.focus](~series-funnel.emphasis.focus) 后有效
@@ -152,11 +151,9 @@ option = {
     prefix = "##"
 ) }}
 
-
 {{ use: partial-selected-mode(
     version = '5.0.0'
 ) }}
-
 
 {{ use: partial-rect-layout-width-height(
     componentName = "漏斗图",
@@ -263,6 +260,7 @@ option = {
 {{ use: partial-tooltip-in-series() }}
 
 
+
 {{ target: partial-funnel-state }}
 
 #${prefix} label(Object)
@@ -285,6 +283,7 @@ option = {
 {{ use: partial-item-style(
     prefix = "#" + ${prefix}
 ) }}
+
 
 
 {{ target: partial-funnel-label }}
@@ -333,6 +332,7 @@ option = {
 ) }}
 
 
+
 {{ target: partial-funnel-label-line }}
 
 #${prefix} show(boolean)
@@ -350,5 +350,4 @@ option = {
 {{ use: partial-line-style(
     prefix = "#" + ${prefix}
 ) }}
-
 

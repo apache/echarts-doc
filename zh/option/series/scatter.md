@@ -150,7 +150,7 @@ const option = {
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: scatter-state(
-    prefix="##"
+    prefix = "##"
 ) }}
 
 ## blur(Object)
@@ -158,7 +158,7 @@ const option = {
 淡出状态的配置。开启 [emphasis.focus](~series-scatter.emphasis.focus) 后有效。
 
 {{ use: scatter-state(
-    prefix="##"
+    prefix = "##"
 ) }}
 
 ## select(Object)
@@ -166,7 +166,7 @@ const option = {
 选中状态的配置。开启 [selectedMode](~series-scatter.selectedMode) 后有效。
 
 {{ use: scatter-state(
-    prefix="##"
+    prefix = "##"
 ) }}
 
 {{ use: partial-selected-mode(
@@ -245,7 +245,6 @@ const option = {
     prefix = "###"
 ) }}
 
-
 {{ use: partial-tooltip-in-series-data() }}
 
 {{ use: partial-marker(
@@ -275,6 +274,7 @@ const option = {
 {{ use: partial-tooltip-in-series() }}
 
 
+
 {{ target: scatter-state }}
 
 #${prefix} label(Object)
@@ -289,3 +289,4 @@ const option = {
 {{ use: partial-item-style(
     prefix = "#" + ${prefix}
 ) }}
+

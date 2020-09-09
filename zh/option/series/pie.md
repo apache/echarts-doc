@@ -214,7 +214,7 @@ const option = {
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: pie-state(
-    prefix="##"
+    prefix = "##"
 ) }}
 
 ## blur(Object)
@@ -222,7 +222,7 @@ const option = {
 淡出状态的扇区和标签样式。开启 [emphasis.focus](~series-pie.emphasis.focus) 后有效。
 
 {{ use: pie-state(
-    prefix="##"
+    prefix = "##"
 ) }}
 
 ## select(Object)
@@ -230,7 +230,7 @@ const option = {
 选中状态的扇区和标签样式。开启 [selectedMode](~series-pie.selectedMode) 后有效。
 
 {{ use: pie-state(
-    prefix="##"
+    prefix = "##"
 ) }}
 
 {{ use: component-circular-layout(
@@ -298,22 +298,20 @@ const option = {
 ### emphasis(Object)
 
 {{ use: pie-state(
-    prefix="###"
+    prefix = "###"
 ) }}
-
 
 ### blur(Object)
 
 {{ use: pie-state(
-    prefix="###"
+    prefix = "###"
 ) }}
 
 ### select(Object)
 
 {{ use: pie-state(
-    prefix="###"
+    prefix = "###"
 ) }}
-
 
 {{ use: partial-tooltip-in-series-data() }}
 
@@ -442,6 +440,8 @@ const option = {
     prefix = "#" + ${prefix}
 ) }}
 
+
+
 {{ target: pie-state }}
 
 #${prefix} label(Object)
@@ -466,3 +466,4 @@ const option = {
 {{ use: partial-item-style(
     prefix = "#" + ${prefix}
 ) }}
+

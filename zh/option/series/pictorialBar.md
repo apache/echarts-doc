@@ -152,7 +152,7 @@ option = {
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: pictoialBar-state(
-    prefix="##"
+    prefix = "##"
 ) }}
 
 ## blur(Object)
@@ -160,7 +160,7 @@ option = {
 淡出状态配置。开启 [emphasis.focus](~series-pictoialBar.emphasis.focus) 后有效。
 
 {{ use: pictoialBar-state(
-    prefix="##"
+    prefix = "##"
 ) }}
 
 ## select(Object)
@@ -172,7 +172,7 @@ option = {
 ) }}
 
 {{ use: pictoialBar-state(
-    prefix="##"
+    prefix = "##"
 ) }}
 
 {{ use: partial-barGrid(
@@ -616,6 +616,8 @@ series: [{
 }]
 ```
 
+
+
 {{ target: pictoialBar-state }}
 
 #${prefix} label(Object)
@@ -630,3 +632,4 @@ series: [{
 {{ use: partial-item-style(
     prefix = "#" + ${prefix}
 ) }}
+

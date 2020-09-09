@@ -149,7 +149,7 @@ boundingCoords: [
 高亮状态下的多边形和标签样式。
 
 {{ use: partial-geo-common-state(
-    prefix='#' + ${prefix}
+    prefix = '#' + ${prefix}
 ) }}
 
 #${prefix} select(Object)
@@ -157,7 +157,7 @@ boundingCoords: [
 选中状态下的多边形和标签样式。
 
 {{ use: partial-geo-common-state(
-    prefix='#' + ${prefix}
+    prefix = '#' + ${prefix}
 ) }}
 
 {{ use: partial-rect-layout(
@@ -182,6 +182,8 @@ layoutSize: 100
 
 地图的大小，见 `layoutCenter`。支持相对于屏幕宽高的百分比或者绝对的像素大小。
 
+
+
 {{ target: partial-geo-common-state }}
 
 #${prefix} label(Object)
@@ -202,3 +204,4 @@ layoutSize: 100
 {{ use: partial-item-style(
     prefix = "#" + ${prefix}
 ) }}
+

@@ -1137,7 +1137,6 @@ chart.on('click', function (params) {
 [left](~${optionPath}.${hostName}${symbolVisit}polygon.left) 和 [right](~${optionPath}.${hostName}${symbolVisit}polygon.right) 只有一个可以生效。
 
 如果指定 [left](~${optionPath}.${hostName}${symbolVisit}polygon.left) 或 [right](~${optionPath}.${hostName}${symbolVisit}polygon.right)，则 [shape](~${optionPath}.${hostName}${symbolVisit}polygon.shape) 里的 `x`、`cx` 等定位属性不再生效。
-
 {{ else }}
 [top](~${optionPath}.${hostName}${symbolVisit}polygon.top) 和 [bottom](~${optionPath}.${hostName}${symbolVisit}polygon.bottom) 只有一个可以生效。
 
@@ -1367,7 +1366,6 @@ chart.on('click', function (params) {
 + `'series'` 淡出范围为系列。
 + `'global'` 淡出范围为全局。
 
-
 ###${prefix} style(Object)
 
 结构同 [style](~${optionPath}.${hostName}${symbolVisit}polygon.style)。
@@ -1387,7 +1385,6 @@ chart.on('click', function (params) {
 ###${prefix} style(Object)
 
 结构同 [style](~${optionPath}.${hostName}${symbolVisit}polygon.style)。
-
 {{ /if }}
 
 

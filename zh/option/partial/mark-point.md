@@ -54,6 +54,23 @@
     prefix = "###" + ${prefix}
 ) }}
 
+##${prefix} blur(Object)
+
+标注的淡出样式。淡出的规则跟随所在系列。
+
+###${prefix} label(Object)
+
+{{ use: partial-label(
+    prefix = "###" + ${prefix},
+    formatter = true
+) }}
+
+###${prefix} itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "###" + ${prefix}
+) }}
+
 ##${prefix} data(Array)
 
 标注的数据数组。每个数组项是一个对象，有下面几种方式指定标注的位置。
@@ -162,6 +179,24 @@ data: [{{ if: ${hasType} }}
 ) }}
 
 ###${prefix} emphasis(Object)
+
+####${prefix} label(Object)
+
+{{ use: partial-label(
+    prefix = ${prefix} + '####'
+) }}
+
+####${prefix} itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "####" + ${prefix}
+) }}
+
+{{ use: partial-animation(
+    prefix = "#" + ${prefix}
+) }}
+
+###${prefix} blur(Object)
 
 ####${prefix} label(Object)
 

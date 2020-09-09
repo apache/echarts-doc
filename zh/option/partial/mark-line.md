@@ -58,6 +58,22 @@
     prefix = "###" + ${prefix}
 ) }}
 
+##${prefix} blur(Object)
+
+标线的淡出样式。淡出的规则跟随所在系列。
+
+###${prefix} label(Object)
+
+{{ use: mark-line-label(
+    prefix = ${prefix} + '###'
+) }}
+
+###${prefix} lineStyle(Object)
+
+{{ use: partial-line-style(
+    prefix = "###" + ${prefix}
+) }}
+
 ##${prefix} data(*)
 
 标线的数据数组。每个数组项可以是一个两个值的数组，分别表示线的起点和终点，每一项是一个对象，有下面几种方式指定起点或终点的位置。
@@ -268,6 +284,21 @@ data: [
 ) }}
 
 #${prefix} emphasis(Object)
+
+##${prefix} lineStyle(Object)
+
+{{ use: partial-line-style(
+    prefix = "##"+${prefix},
+    hasCurveness = true
+) }}
+
+##${prefix} label(Object)
+
+{{ use: mark-line-label(
+    prefix = '##'+${prefix}
+) }}
+
+#${prefix} blur(Object)
 
 ##${prefix} lineStyle(Object)
 

@@ -861,7 +861,6 @@ const option = {
     name = "timeline.lable." + ${state},
     defaultColor = ${textStyleDefaultColor}
 ) }}
-
 {{ else }}
 {{ use: partial-text-style(
     prefix = ${prefix},

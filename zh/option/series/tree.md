@@ -185,11 +185,11 @@ const option = {
 树图中个图形和标签高亮的样式。
 
 {{ use: partial-focus-blur-scope(
-    isTree=true
+    isTree = true
 ) }}
 
 {{ use: tree-state(
-    prefix="##"
+    prefix = "##"
 ) }}
 
 ## blur(Object)
@@ -197,7 +197,7 @@ const option = {
 淡出状态的相关配置。开启 [emphasis.focus](~series-tree.emphasis.focus) 后有效。
 
 {{ use: tree-state(
-    prefix="##"
+    prefix = "##"
 ) }}
 
 ## select(Object)
@@ -205,7 +205,7 @@ const option = {
 选中状态的相关配置。开启 [selectedMode](~series-tree.selectedMode) 后有效。
 
 {{ use: tree-state(
-    prefix="##"
+    prefix = "##"
 ) }}
 
 {{ use: partial-selected-mode(
@@ -240,7 +240,7 @@ const option = {
 叶子节点高亮状态的配置。
 
 {{ use: tree-node-state(
-    prefix="###"
+    prefix = "###"
 ) }}
 
 ### blur(Object)
@@ -248,7 +248,7 @@ const option = {
 叶子节点淡出状态的配置。
 
 {{ use: tree-node-state(
-    prefix="###"
+    prefix = "###"
 ) }}
 
 ### select(Object)
@@ -256,9 +256,8 @@ const option = {
 叶子节点选中状态的配置。
 
 {{ use: tree-node-state(
-    prefix="###"
+    prefix = "###"
 ) }}
-
 
 ## data(Object)
 
@@ -321,7 +320,7 @@ const option = {
 节点高亮状态的配置。
 
 {{ use: tree-node-state(
-    prefix="###"
+    prefix = "###"
 ) }}
 
 ### blur(Object)
@@ -329,7 +328,7 @@ const option = {
 节点淡出状态的配置。
 
 {{ use: tree-node-state(
-    prefix="###"
+    prefix = "###"
 ) }}
 
 ### select(Object)
@@ -337,9 +336,8 @@ const option = {
 节点选中状态的配置。
 
 {{ use: tree-node-state(
-    prefix="###"
+    prefix = "###"
 ) }}
-
 
 {{ use: partial-tooltip-in-series-data() }}
 
@@ -394,6 +392,8 @@ const option = {
     formatter1d = ${prefix} === '##'
 ) }}
 
+
+
 {{ target: tree-edge-state }}
 
 #${prefix} lineStyle(Object)
@@ -402,11 +402,15 @@ const option = {
     prefix = "#" + ${prefix}
 ) }}
 
+
+
 {{ target: tree-state }}
 
 {{ use: tree-node-state(
     prefix = ${prefix}
 ) }}
+
 {{ use: tree-edge-state(
     prefix = ${prefix}
 ) }}
+

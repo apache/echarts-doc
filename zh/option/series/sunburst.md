@@ -95,6 +95,7 @@
 ) }}
 
 
+
 {{ target: series-sunburst }}
 
 # series.sunburst(Object)
@@ -372,11 +373,9 @@ const option = {
     prefix = "###"
 ) }}
 
-
 ### children(Array)
 
 子节点，递归定义，格式同 [series-sunburst.data](~series-sunburst.data)。
-
 
 ## nodeClick(boolean|string) = 'rootToNode'
 
@@ -419,7 +418,7 @@ function(nodeA, nodeB) {
 高亮状态配置。
 
 {{ use: partial-focus-blur-scope(
-    isTree=true
+    isTree = true
 ) }}
 
 {{ use: partial-sunburst-state(

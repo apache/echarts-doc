@@ -590,6 +590,7 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 {{ else }}
 本系列默认的颜色透明度选取范围。
 {{ /if }}
+
 数值范围 0 ~ 1
 
 例如, `colorAlpha` 可以是 `[0.3, 1]`.
@@ -607,6 +608,7 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 {{ else }}
 本系列默认的节点的颜色饱和度 选取范围。
 {{ /if }}
+
 数值范围 0 ~ 1。
 
 例如, `colorSaturation` 可以是 `[0.3, 1]`.
@@ -734,12 +736,12 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 {{ if: ${prefix} === '#' }}
 {{ use: partial-focus-blur-scope(
-    isTree=true
+    isTree = true
 ) }}
 {{ /if }}
 
 {{ use: treemap-state(
-    prefix="#" + ${prefix}
+    prefix = "#" + ${prefix}
 ) }}
 
 #${prefix} blur(Object)
@@ -747,7 +749,7 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 淡出状态配置。
 
 {{ use: treemap-state(
-    prefix="#" + ${prefix}
+    prefix = "#" + ${prefix}
 ) }}
 
 #${prefix} select(Object)
@@ -755,11 +757,13 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 选中状态配置。
 
 {{ use: treemap-state(
-    prefix="#" + ${prefix}
+    prefix = "#" + ${prefix}
 ) }}
 
 
+
 {{ target: partial-treemap-prop-location-desc }}
+
 > 注：treemap中 `${name}` 属性可能在多处地方存在：
 
 {{ if: ${name} !== 'color' }}> * 于 [sereis-treemap](~series-treemap) 根下，表示本系列全局的统一设置。{{ /if }}
@@ -850,6 +854,7 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 参见 [例子](${galleryEditorPath}doc-example/treemap-borderColor&edit=1&reset=1)，注意其中红色的区块中的子矩形其实是更深层级，和其他用白色缝隙区分的矩形不是在一个层级。所以，红色区块中矩形的分割线的颜色，我们在 `borderColorSaturation` 中设置为『加了饱和度变化的红颜色』，以示区别。
 
 
+
 {{ target: treemap-state }}
 
 #${prefix} label(Object)
@@ -874,3 +879,4 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
     prefix = ${prefix} + "#",
     itemStyleType = 'emphasis'
 ) }}
+

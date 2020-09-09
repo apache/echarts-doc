@@ -137,7 +137,7 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: lines-state(
-    prefix="##"
+    prefix = "##"
 ) }}
 
 ## blur(Object)
@@ -145,7 +145,7 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 淡出的线条和标签样式。开启 [emphasis.focus](~series-lines.emphasis.focus) 后有效。
 
 {{ use: lines-state(
-    prefix="##"
+    prefix = "##"
 ) }}
 
 ## select(Object)
@@ -153,7 +153,7 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 选中的线条和标签样式。开启 [selectedMode](~series-lines.selectedMode) 后有效。
 
 {{ use: lines-state(
-    prefix="##"
+    prefix = "##"
 ) }}
 
 {{ use: partial-selected-mode(
@@ -221,20 +221,20 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 ### emphasis(Object)
 
 {{ use: lines-state(
-    prefix="###"
-)}}
+    prefix = "###"
+) }}
 
 ### blur(Object)
 
 {{ use: lines-state(
-    prefix="###"
-)}}
+    prefix = "###"
+) }}
 
 ### select(Object)
 
 {{ use: lines-state(
-    prefix="###"
-)}}
+    prefix = "###"
+) }}
 
 {{ use: partial-marker(
     prefix = "#",
@@ -280,6 +280,7 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 {{ use: partial-text-style(
     prefix = ${prefix}
 ) }}
+
 
 
 {{ target: lines-state }}

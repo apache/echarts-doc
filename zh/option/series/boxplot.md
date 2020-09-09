@@ -141,6 +141,7 @@ box 的宽度的上下限。数组的意思是：`[min, max]`。
 数据选中时的图形样式和标签样式。开启 [selectedMode](~series-funnel.selectedMode) 后有效。
 
 ### itemStyle(Object)
+
 {{ use: partial-item-style(
     prefix = "###",
     name = "boxplot"
@@ -149,7 +150,6 @@ box 的宽度的上下限。数组的意思是：`[min, max]`。
 {{ use: partial-selected-mode(
     version = '5.0.0'
 ) }}
-
 
 {{ use: partial-series-dimensions(
     prefix = "#"

@@ -116,7 +116,7 @@ const option = {
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: radar-state(
-    prefix="##"
+    prefix = "##"
 ) }}
 
 ## blur(Object)
@@ -124,7 +124,7 @@ const option = {
 淡出状态的配置。开启 [emphasis.focus](~series-radar.emphasis.focus) 后有效。
 
 {{ use: radar-state(
-    prefix="##"
+    prefix = "##"
 ) }}
 
 ## select(Object)
@@ -132,9 +132,8 @@ const option = {
 选中状态的配置。开启 [selectedMode](~series-radar.selectedMode) 后有效。
 
 {{ use: radar-state(
-    prefix="##"
+    prefix = "##"
 ) }}
-
 
 {{ use: partial-selected-mode(
     version = '5.0.0'
@@ -212,7 +211,7 @@ data : [
 单个数据项样式的高亮状态。
 
 {{ use: radar-state(
-    prefix="###"
+    prefix = "###"
 ) }}
 
 ### blur(Object)
@@ -220,7 +219,7 @@ data : [
 单个数据项样式的淡出状态。
 
 {{ use: radar-state(
-    prefix="###"
+    prefix = "###"
 ) }}
 
 ### select(Object)
@@ -228,7 +227,7 @@ data : [
 单个数据项样式的选中状态。
 
 {{ use: radar-state(
-    prefix="###"
+    prefix = "###"
 ) }}
 
 {{ use: partial-tooltip-in-series-data() }}
@@ -247,6 +246,7 @@ data : [
 ) }}
 
 {{ use: partial-tooltip-in-series() }}
+
 
 
 {{ target: radar-state }}
@@ -275,3 +275,4 @@ data : [
 {{ use: partial-area-style(
     prefix = "#" + ${prefix}
 ) }}
+

@@ -133,27 +133,26 @@ levels: [{
 指定设置的是桑基图哪一层，取值从 0 开始。
 
 {{ use: sankey-state(
-    prefix="##"
+    prefix = "##"
 ) }}
 
 ### emphasis(Object)
 
 {{ use: sankey-state(
-    prefix="###"
+    prefix = "###"
 ) }}
 
 ### blur(Object)
 
 {{ use: sankey-state(
-    prefix="###"
+    prefix = "###"
 ) }}
 
 ### select(Object)
 
 {{ use: sankey-state(
-    prefix="###"
+    prefix = "###"
 ) }}
-
 
 ## label(Object)
 
@@ -198,11 +197,11 @@ levels: [{
 桑基图的高亮状态。
 
 {{ use: partial-focus-blur-scope(
-    isTree=true
+    isTree = true
 ) }}
 
 {{ use: sankey-state(
-    prefix="##"
+    prefix = "##"
 ) }}
 
 ## blur(Object)
@@ -210,7 +209,7 @@ levels: [{
 桑基图的淡出状态。开启 [emphasis.focus](~series-sankey.emphasis.focus) 后有效。
 
 {{ use: sankey-state(
-    prefix="##"
+    prefix = "##"
 ) }}
 
 ## select(Object)
@@ -218,7 +217,7 @@ levels: [{
 桑基图的选中状态。开启 [selectedMode](~series-sankey.selectedMode) 后有效。
 
 {{ use: sankey-state(
-    prefix="##"
+    prefix = "##"
 ) }}
 
 {{ use: partial-selected-mode(
@@ -274,19 +273,19 @@ data: [{
 ### emphasis(Object)
 
 {{ use: sankey-node-state(
-    prefix="###"
+    prefix = "###"
 ) }}
 
 ### blur(Object)
 
 {{ use: sankey-node-state(
-    prefix="###"
+    prefix = "###"
 ) }}
 
 ### select(Object)
 
 {{ use: sankey-node-state(
-    prefix="###"
+    prefix = "###"
 ) }}
 
 {{ use: partial-tooltip-in-series-data() }}
@@ -370,9 +369,10 @@ links: [{
 {{ use: partial-tooltip-in-series() }}
 
 
+
 {{ target: partial-sankey-line-style }}
 
-#${prefix} color(Color) = "'#314656'"
+#${prefix} color(Color) = '#314656'
 
 桑基图边的颜色。
 
@@ -382,11 +382,15 @@ links: [{
 
 #${prefix} curveness(number) = 0.5
 
+<ExampleUIControlNumber min="0" max="1" default="0.5" step="0.1" />
+
 桑基图边的曲度。
 
 {{ use: partial-style-shadow(
     prefix = ${prefix}
 ) }}
+
+
 
 {{ target: sankey-node-state }}
 
@@ -401,6 +405,8 @@ links: [{
 {{ use: partial-item-style(
     prefix = "#" + ${prefix}
 ) }}
+
+
 
 {{ target: sankey-state }}
 
@@ -422,3 +428,4 @@ links: [{
 {{ use: partial-sankey-line-style(
     prefix = "#" + ${prefix}
 ) }}
+

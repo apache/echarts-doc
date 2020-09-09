@@ -128,6 +128,7 @@
 {{ use: partial-tooltip-in-series() }}
 
 
+
 {{ target: map-region-state }}
 
 #### itemStyle(Object)
@@ -150,3 +151,4 @@
     noAlign = true,
     noVerticalAlign = true
 ) }}
+

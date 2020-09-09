@@ -215,6 +215,8 @@ option = {
 
 {{ use: partial-tooltip-in-series() }}
 
+
+
 {{ target: heatmap-state }}
 
 #${prefix} itemStyle(Object)
@@ -229,3 +231,4 @@ option = {
     prefix = "#" + ${prefix},
     defaultPosition = "inside"
 ) }}
+

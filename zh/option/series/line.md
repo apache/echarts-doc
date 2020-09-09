@@ -287,7 +287,6 @@ const option = {
 
 {{ use: line-item-state() }}
 
-
 {{ use: partial-tooltip-in-series-data() }}
 
 {{ use: partial-marker(
@@ -312,6 +311,7 @@ const option = {
 ) }}
 
 {{ use: partial-tooltip-in-series() }}
+
 
 
 {{ target: line-state }}
@@ -343,6 +343,7 @@ const option = {
 ) }}
 
 
+
 {{ target: line-item-state }}
 
 #### label(Object)
@@ -356,3 +357,4 @@ const option = {
 {{ use: partial-item-style(
     prefix = "####"
 ) }}
+
