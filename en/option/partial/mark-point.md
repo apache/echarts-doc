@@ -54,6 +54,23 @@ Emphasis status of mark point.
     prefix = "###" + ${prefix}
 ) }}
 
+##${prefix} blur(Object)
+
+Configurations of blur state. Whether to blur follows the series.
+
+###${prefix} label(Object)
+
+{{ use: partial-label(
+    prefix = "###" + ${prefix},
+    formatter = true
+) }}
+
+###${prefix} itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "###" + ${prefix}
+) }}
+
 ##${prefix} data(Array)
 
 Data array for mark points, each of which is an object. Here are some ways to assign mark point position.
@@ -162,6 +179,24 @@ Mark point style.
 ) }}
 
 ###${prefix} emphasis(Object)
+
+####${prefix} label(Object)
+
+{{ use: partial-label(
+    prefix = ${prefix} + '####'
+) }}
+
+####${prefix} itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "####" + ${prefix}
+) }}
+
+{{ use: partial-animation(
+    prefix = "#" + ${prefix}
+) }}
+
+###${prefix} blur(Object)
 
 ####${prefix} label(Object)
 

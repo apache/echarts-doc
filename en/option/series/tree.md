@@ -142,23 +142,32 @@ Defines the style of the tree edge.
 
 Configurations of emphasis state.
 
-### itemStyle(Object)
-
-{{ use: partial-item-style(
-    prefix = "###"
+{{ use: partial-focus-blur-scope(
+    isTree = true
 ) }}
 
-### lineStyle(Object)
-
-{{ use: partial-tree-line-style(
-    prefix = "###"
+{{ use: tree-state(
+    prefix = "##"
 ) }}
 
-### label(Object)
+## blur(Object)
 
-{{ use: partial-label(
-    prefix = "###",
-    formatter1d = true
+Configurations of blur state. Available when [emphasis.focus](~series-tree.emphasis.focus) is set.
+
+{{ use: tree-state(
+    prefix = "##"
+) }}
+
+## select(Object)
+
+Configurations of select state. Available when [selectedMode](~series-tree.selectedMode) is set.
+
+{{ use: tree-state(
+    prefix = "##"
+) }}
+
+{{ use: partial-selected-mode(
+    version = '5.0.0'
 ) }}
 
 ## leaves(Object)
@@ -188,17 +197,24 @@ The style of the leaf node in the tree.
 
 Emphasis state of leaves nodes.
 
-#### label(Object)
-
-{{ use: partial-label(
-    prefix = "####",
-    formatter1d = true
+{{ use: tree-node-state(
+    prefix = "###"
 ) }}
 
-#### itemStyle(Object)
+### blur(Object)
 
-{{ use: partial-item-style(
-    prefix = "####"
+Blur state of leaves nodes.
+
+{{ use: tree-node-state(
+    prefix = "###"
+) }}
+
+### select(Object)
+
+Select state of leaves nodes.
+
+{{ use: tree-node-state(
+    prefix = "###"
 ) }}
 
 ## data(Object)
@@ -261,16 +277,24 @@ The label of the node.
 
 Emphasis state of a single node.
 
-#### label(Object)
-
-{{ use: partial-label(
-    prefix = "####"
+{{ use: tree-node-state(
+    prefix = "###"
 ) }}
 
-#### itemStyle(Object)
+### blur(Object)
 
-{{ use: partial-item-style(
-    prefix = "####"
+Blur state of a single node.
+
+{{ use: tree-node-state(
+    prefix = "###"
+) }}
+
+### select(Object)
+
+Select state of a single node.
+
+{{ use: tree-node-state(
+    prefix = "###"
 ) }}
 
 {{ use: partial-tooltip-in-series-data() }}
@@ -306,6 +330,45 @@ The width of the tree edge.
 The curvature of the tree edge.
 
 {{ use: partial-style-shadow(
+    prefix = ${prefix}
+) }}
+
+
+
+{{ target: tree-node-state }}
+
+#${prefix} itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "#" + ${prefix}
+) }}
+
+#${prefix} label(Object)
+
+{{ use: partial-label(
+    prefix = "#" + ${prefix},
+    formatter1d = ${prefix} === '##'
+) }}
+
+
+
+{{ target: tree-edge-state }}
+
+#${prefix} lineStyle(Object)
+
+{{ use: partial-tree-line-style(
+    prefix = "#" + ${prefix}
+) }}
+
+
+
+{{ target: tree-state }}
+
+{{ use: tree-node-state(
+    prefix = ${prefix}
+) }}
+
+{{ use: tree-edge-state(
     prefix = ${prefix}
 ) }}
 

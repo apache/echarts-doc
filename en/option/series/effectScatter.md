@@ -114,19 +114,36 @@ The brush type for ripples. options: `'stroke'` and `'fill'`.
 
 Configurations of emphasis state.
 
-### label(Object)
+### scale(boolean) = true
 
-{{ use: partial-label(
-    prefix = "###",
-    formatter = true
+<ExampleUIControlBoolean default="true" />
+
+Whether to scale to highlight the data in emphasis state.
+
+{{ use: partial-focus-blur-scope() }}
+
+{{ use: effectScatter-state(
+    prefix = "##"
 ) }}
 
-### itemStyle(Object)
+## blur(Object)
 
-{{ use: partial-item-style(
-    prefix = "###",
-    useColorPalatte = true,
-    hasCallback = true
+Configurations of blur state. Available when [emphasis.focus](~series-effectScatter.emphasis.focus) is set.
+
+{{ use: effectScatter-state(
+    prefix = "##"
+) }}
+
+## select(Object)
+
+Configurations of select state. Available when [selectedMode](~series-effectScatter.selectedMode) is set.
+
+{{ use: effectScatter-state(
+    prefix = "##"
+) }}
+
+{{ use: partial-selected-mode(
+    version = '5.0.0'
 ) }}
 
 {{ use: partial-seriesLayoutBy() }}
@@ -170,16 +187,24 @@ Configurations of emphasis state.
 
 Emphasis state of the specified single data.
 
-#### label(Object)
-
-{{ use: partial-label(
-    prefix = "####"
+{{ use: effectScatter-state(
+    prefix = "###"
 ) }}
 
-#### itemStyle(Object)
+### blur(Object)
 
-{{ use: partial-item-style(
-    prefix = "####"
+Blur state of the specified single data.
+
+{{ use: effectScatter-state(
+    prefix = "###"
+) }}
+
+### select(Object)
+
+Select state of the specified single data.
+
+{{ use: effectScatter-state(
+    prefix = "###"
 ) }}
 
 {{ use: partial-tooltip-in-series-data() }}
@@ -204,4 +229,21 @@ Emphasis state of the specified single data.
 ) }}
 
 {{ use: partial-tooltip-in-series() }}
+
+
+
+{{ target: effectScatter-state }}
+
+#${prefix} label(Object)
+
+{{ use: partial-label(
+    prefix = "#" + ${prefix},
+    formatter = ${prefix} === '##'
+) }}
+
+#${prefix} itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "#" + ${prefix}
+) }}
 

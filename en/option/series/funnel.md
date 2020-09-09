@@ -109,58 +109,36 @@ The visual guide line style of label. When [label position](~series-funnel.label
 
 ## emphasis(Object)
 
-高亮的标签和图形样式。
+Configurations of emphasis state.
 
 {{ use: partial-focus-blur-scope() }}
 
-### label(Object)
-
-{{ use: partial-funnel-label(
-    prefix = "###",
-    position = false,
-    formatter = true
-) }}
-
-### labelLine(Object)
-
-{{ use: partial-funnel-label-line(
-    prefix = '###',
-    length = false
-) }}
-
-### itemStyle(Object)
-
-{{ use: partial-item-style(
-    prefix = "###"
+{{ use: partial-funnel-state(
+    prefix = "##"
 ) }}
 
 ## blur(Object)
 
-淡出时的图形样式和标签样式。开启 [emphasis.focus](~series-funnel.emphasis.focus) 后有效
+Configurations of blur state. Available when [emphasis.focus](~series-funnel.emphasis.focus) is set.
 
-### label(Object)
-
-{{ use: partial-funnel-label(
-    prefix = "###",
-    position = false,
-    formatter = true
+{{ use: partial-funnel-state(
+    prefix = "##"
 ) }}
 
-### labelLine(Object)
+## select(Object)
 
-{{ use: partial-funnel-label-line(
-    prefix = '###',
-    length = false
+Configurations of select state. Available when [selectedMode](~series-funnel.selectedMode) is set.
+
+{{ use: partial-funnel-state(
+    prefix = "##"
 ) }}
 
-### itemStyle(Object)
-
-{{ use: partial-item-style(
-    prefix = "###"
+{{ use: partial-selected-mode(
+    version = '5.0.0'
 ) }}
 
 {{ use: partial-rect-layout-width-height(
-    componentName = "漏斗图",
+    componentName = "Funnel",
     defaultLeft = 80,
     defaultTop = 60,
     defaultRight = 80,
@@ -230,25 +208,20 @@ The label configuration of a single data item.
 
 ### emphasis(Object)
 
-#### itemStyle(Object)
-
-{{ use: partial-item-style(
-    prefix = "####"
+{{ use: partial-funnel-state(
+    prefix = "###"
 ) }}
 
-#### label(Object)
+### blur(Object)
 
-{{ use: partial-funnel-label(
-    prefix = "####",
-    position = false,
-    formatter = false
+{{ use: partial-funnel-state(
+    prefix = "###"
 ) }}
 
-#### labelLine(Object)
+### select(Object)
 
-{{ use: partial-funnel-label-line(
-    prefix = "####",
-    length = false
+{{ use: partial-funnel-state(
+    prefix = "###"
 ) }}
 
 {{ use: partial-tooltip-in-series-data() }}
@@ -267,6 +240,31 @@ The label configuration of a single data item.
 ) }}
 
 {{ use: partial-tooltip-in-series() }}
+
+
+
+{{ target: partial-funnel-state }}
+
+#${prefix} label(Object)
+
+{{ use: partial-funnel-label(
+    prefix = "#" + ${prefix},
+    position = false,
+    formatter = true
+) }}
+
+#${prefix} labelLine(Object)
+
+{{ use: partial-funnel-label-line(
+    prefix = "#" + ${prefix},
+    length = false
+) }}
+
+#${prefix} itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "#" + ${prefix}
+) }}
 
 
 

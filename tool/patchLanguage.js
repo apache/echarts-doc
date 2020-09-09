@@ -65,7 +65,7 @@ function applyArgsPatch(fromArgs, toArgs) {
             // A simple strategy to determine if the string is a term can be different in each language.
             // Or if it's a code.
             if (!isSimpleChar(fromArg[1]) || !isSimpleChar(toArg[1] + '')) {
-                // Keep the same if it's translated term.
+                // Keep the same if it's a translated term. For example componentName arg should always keep not changed.
                 return toArg.slice();
             }
             else {

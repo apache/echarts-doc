@@ -7,23 +7,21 @@
     version = "5.0.0"
 ) }}
 
-在高亮图形时，是否淡出其它数据的图形已达到聚焦的效果。支持如下配置：
+When the data is highlighted, whether to fade out of other data to focus the highlighted. The following configurations are supported:
 
-+ `'none'` 不淡出其它图形，默认使用该配置。
-+ `'self'` 只聚焦（不淡出）当前高亮的数据的图形。
-+ `'series'` 聚焦当前高亮的数据所在的系列的所有图形。
++ `'none'` Do not fade out other data, it's by default.
++ `'self'` Only focus (not fade out) the element of the currently highlighted data.
++ `'series'` Focus on all elements of the series which the currently highlighted data belongs to.
 
 {{ if: ${isGraph} }}
-+ `'adjacency'` 聚焦关系图中的邻接点和边的图形
++ `'adjacency'` Focus on the elements of adjacent nodes and edges in the graph.
 
 {{ elif: ${isTree} }}
-+ `'ancestor'` 聚焦所有祖先节点
-+ `'descendant'` 聚焦所有子孙节点
++ `'ancestor'` Focus on all ancestor nodes.
++ `'descendant'` Focus on all descendants nodes.
 {{ /if }}
 
-**示例：**
-
-下面代码配置了柱状图在高亮一个图形的时候，淡出当前直角坐标系所有其它的系列。
+**Example: **
 
 ```js
 emphasis: {
@@ -40,9 +38,9 @@ emphasis: {
     version = "5.0.0"
 ) }}
 
-在开启`focus`的时候，可以通过`blurScope`配置淡出的范围。支持如下配置
+The range of fade out when `focus` is enabled. Support the following configurations
 
-+ `'coordinateSystem'` 淡出范围为坐标系，默认使用该配置。
-+ `'series'` 淡出范围为系列。
-+ `'global'` 淡出范围为全局。
++ `'coordinateSystem'`
++ `'series'`
++ `'global'`
 

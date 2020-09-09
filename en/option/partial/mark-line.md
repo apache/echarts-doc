@@ -58,6 +58,22 @@ Emphasis status of mark line.
     prefix = "###" + ${prefix}
 ) }}
 
+##${prefix} blur(Object)
+
+Configurations of blur state. Whether to blur follows the series.
+
+###${prefix} label(Object)
+
+{{ use: mark-line-label(
+    prefix = ${prefix} + '###'
+) }}
+
+###${prefix} lineStyle(Object)
+
+{{ use: partial-line-style(
+    prefix = "###" + ${prefix}
+) }}
+
 ##${prefix} data(*)
 
 Data array of marking line. Every array item can be an array of one or two values, representing starting and ending point of the line, and every item is an object. Here are several ways to assign the positions of starting and ending point.
@@ -269,6 +285,21 @@ Label of this data item, which will be merged with `label` of starting point and
 ) }}
 
 #${prefix} emphasis(Object)
+
+##${prefix} lineStyle(Object)
+
+{{ use: partial-line-style(
+    prefix = "##"+${prefix},
+    hasCurveness = true
+) }}
+
+##${prefix} label(Object)
+
+{{ use: mark-line-label(
+    prefix = '##'+${prefix}
+) }}
+
+#${prefix} blur(Object)
 
 ##${prefix} lineStyle(Object)
 

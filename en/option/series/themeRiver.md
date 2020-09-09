@@ -85,24 +85,30 @@ style of each ribbon-shape river branch in theme river.
 
 Configurations of emphasis state.
 
-### label(Object)
+{{ use: partial-focus-blur-scope() }}
 
-{{ use: partial-label(
-    prefix = "###",
-    defaultPosition = "'left'",
-    defaultMargin = 4,
-    noAlign = true,
-    noVerticalAlign = true,
-    defaultColor = "'#000'",
-    defaultFontSize = 11
+{{ use: themeRiver-state(
+    prefix = "##"
 ) }}
 
-### itemStyle(Object)
+## blur(Object)
 
-{{ use: partial-item-style(
-    prefix = "###",
-    defaultShadowBlur = 20,
-    defaultShadowColor = "'rgba(0,0,0,0.8)'"
+Configurations of blur state.
+
+{{ use: themeRiver-state(
+    prefix = "##"
+) }}
+
+## select(Object)
+
+Configurations of select state.
+
+{{ use: themeRiver-state(
+    prefix = "##"
+) }}
+
+{{ use: partial-selected-mode(
+    version = '5.0.0'
 ) }}
 
 ## data(Array)
@@ -140,4 +146,26 @@ the value of an event or theme at a time point.
 the name of an event or theme.
 
 {{ use: partial-tooltip-in-series() }}
+
+
+
+{{ target: themeRiver-state }}
+
+#${prefix} label(Object)
+
+{{ use: partial-label(
+    prefix = "#" + ${prefix},
+    defaultPosition = "'left'",
+    defaultMargin = 4,
+    noAlign = true,
+    noVerticalAlign = true,
+    defaultColor = "'#000'",
+    defaultFontSize = 11
+) }}
+
+#${prefix} itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "#" + ${prefix}
+) }}
 

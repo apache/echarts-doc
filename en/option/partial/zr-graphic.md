@@ -1352,9 +1352,53 @@ Notice:
 {{ target: partial-graphic-cpt-style-emphasis }}
 
 {{ if: ${usageType} === 'customSeries' }}
-##${prefix} styleEmphasis(Object)
+##${prefix} emphasis(Object)
 
-Empahsis style of the graphic element, whose structure is the same as [style](~${optionPath}.${hostName}${symbolVisit}polygon.style).
+Emphasis state of the element.
+
+###${prefix} focus(string) = 'none'
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+When it's highlighted, whether to fade out of other data to focus the highlighted. The following configurations are supported:
+
++ `'none'` Do not fade out other data, it's by default.
++ `'self'` Only focus (not fade out) the element of the currently highlighted data.
++ `'series'` Focus on all elements of the series which the currently highlighted data belongs to.
+
+###${prefix} blurScope(string) = 'coordinateSystem'
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+The range of fade out when `focus` is enabled. Support the following configurations
+
++ `'coordinateSystem'`
++ `'series'`
++ `'global'`
+
+###${prefix} style(Object)
+
+Same to [style](~${optionPath}.${hostName}${symbolVisit}polygon.style).
+
+##${prefix} blur(Object)
+
+Blur state, available when `focus` is set.
+
+###${prefix} style(Object)
+
+Same to [style](~${optionPath}.${hostName}${symbolVisit}polygon.style).
+
+##${prefix} select(Object)
+
+Select state, available when [selectedMode](~series-custom.selectedMode) is set.
+
+###${prefix} style(Object)
+
+Same to [style](~${optionPath}.${hostName}${symbolVisit}polygon.style).
 {{ /if }}
 
 

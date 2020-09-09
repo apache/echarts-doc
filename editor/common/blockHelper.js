@@ -240,7 +240,7 @@ module.exports.updateBlocksKeys = function (blocks) {
             baseKey = uiControlKeyNoDuplicate(`uicontrol:${scopeKey}`);
         }
 
-        block.key = allKeyNoDuplicate(baseKey) ;
+        block.key = allKeyNoDuplicate(baseKey);
     }
 };
 

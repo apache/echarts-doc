@@ -52,12 +52,6 @@ Only work when main axis is `'category'` axis (`axis.type` is `'category'`). Opt
 + `true`: Show all symbols.
 + `false`: Follow the interval strategy with [axisLabel.interval](~xAxis.axisLabel.interval).
 
-## hoverAnimation(boolean) = true
-
-<ExampleUIControlBoolean default="true" />
-
-Set this to `false` to prevent the animation effect when the mouse is hovering over a symbol
-
 {{ use: partial-legend-hover-link() }}
 
 ## stack(string) = null
@@ -138,17 +132,28 @@ The style of area.
 
 Highlight style of the graphic.
 
-### label(Object)
+### scale(boolean) = true
 
-{{ use: partial-label(
-    prefix = "###",
-    formatter = true
-) }}
+Whether to scale to highlight the data in emphasis state.
 
-### itemStyle(Object)
+{{ use: partial-focus-blur-scope() }}
 
-{{ use: partial-item-style(
-    prefix = "###"
+{{ use: line-state() }}
+
+## blur(Object)
+
+Configurations of blur state. Available when [emphasis.focus](~series-line.emphasis.focus) is set.
+
+{{ use: line-state() }}
+
+## select(Object)
+
+Configurations of select state. Available when [selectedMode](~series-line.selectedMode) is set.
+
+{{ use: line-state() }}
+
+{{ use: partial-selected-mode(
+    version = '5.0.0'
 ) }}
 
 ## smooth(boolean|number) = false
@@ -237,17 +242,19 @@ The style of the symbol of single data point.
 
 Emphasis state of specified single data.
 
-#### itemStyle(Object)
+{{ use: line-item-state() }}
 
-{{ use: partial-item-style(
-    prefix = "####"
-) }}
+### blur(Object)
 
-#### label(Object)
+Blur state of specified single data.
 
-{{ use: partial-label(
-    prefix = "####"
-) }}
+{{ use: line-item-state() }}
+
+### select(Object)
+
+Select state of specified single data.
+
+{{ use: line-item-state() }}
 
 {{ use: partial-tooltip-in-series-data() }}
 
@@ -260,7 +267,7 @@ Emphasis state of specified single data.
 
 {{ use: partial-z-zlevel(
     prefix = "#",
-    componentName = "broken line graph"
+    componentName = "Line"
 ) }}
 
 {{ use: partial-silent(
@@ -273,4 +280,50 @@ Emphasis state of specified single data.
 ) }}
 
 {{ use: partial-tooltip-in-series() }}
+
+
+
+{{ target: line-state }}
+
+### label(Object)
+
+{{ use: partial-label(
+    prefix = "###",
+    formatter = true
+) }}
+
+### itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "###"
+) }}
+
+### lineStyle(Object)
+
+{{ use: partial-line-style(
+    prefix = "###",
+    defaultWidth = 2
+) }}
+
+### areaStyle(Object)
+
+{{ use: partial-area-style(
+    prefix = "###"
+) }}
+
+
+
+{{ target: line-item-state }}
+
+#### label(Object)
+
+{{ use: partial-label(
+    prefix = "####"
+) }}
+
+#### itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "####"
+) }}
 

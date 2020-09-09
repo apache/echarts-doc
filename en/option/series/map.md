@@ -108,11 +108,37 @@ Color of the area.
 
 Emphasis state of specified region.
 
+{{ use: map-region-state() }}
+
+### select(Object)
+
+Select state of polygon.
+
+{{ use: map-region-state() }}
+
+{{ use: partial-tooltip-in-series-data() }}
+
+{{ use: partial-marker(
+    prefix = "#",
+    seriesType = "map",
+    hasCoord = true
+) }}
+
+{{ use: partial-silent(
+    prefix = "#"
+) }}
+
+{{ use: partial-tooltip-in-series() }}
+
+
+
+{{ target: map-region-state }}
+
 #### itemStyle(Object)
 
 ##### areaColor(Color)
 
-Area color in the map.
+The color of the map area.
 
 {{ use: partial-color-desc() }}
 
@@ -128,18 +154,4 @@ Area color in the map.
     noAlign = true,
     noVerticalAlign = true
 ) }}
-
-{{ use: partial-tooltip-in-series-data() }}
-
-{{ use: partial-marker(
-    prefix = "#",
-    seriesType = "map",
-    hasCoord = true
-) }}
-
-{{ use: partial-silent(
-    prefix = "#"
-) }}
-
-{{ use: partial-tooltip-in-series() }}
 

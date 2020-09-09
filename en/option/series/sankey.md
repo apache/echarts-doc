@@ -82,20 +82,6 @@ The layout direction of the nodes in the Sankey diagram, which can be horizontal
 
 The drag-and-drop interaction of the node, which is enabled by default. After opening, the user can drag any node in the Sankey diagram to any position. To turn this interaction off, simply set the value to `false`.
 
-## focusNodeAdjacency(boolean|string) = false
-
-<ExampleUIControlEnum options="false,true,allEdges,outEdges,inEdges" />
-
-Support when mouse hovering over a node or an edge, the adjacent nodes and edges are also highlighted. Default off, can be manually opened.
-
-Optional values:
-
-+ `false`: When hovering over a node or an edge, only the hovered node or edge is highlighted.
-+ `true`: the same as `'allEdges'`.
-+ `'allEdges'`: When hovering over a node, all of the adjacent edges and nodes are highlighted. When hovering over an edge, the adjacent nodes are highlighted.
-+ `'outEdges'`: When hovering over a node, the outcoming edges and its adjacent nodes are highlighted. When hovering over an edge, the adjacent nodes are highlighted.
-+ `'inEdges'`: When hovering over a node, the incoming edges and its adjacent nodes are highlighted. When hovering over an edge, the adjacent nodes are highlighted.
-
 ## levels(Array)
 
 The setting of each layer of Sankey diagram. Can be set layer by layer, as follows:
@@ -143,20 +129,25 @@ levels: [{
 
 Specify which layer is set, value starts from 0.
 
-### itemStyle(Object)
-
-Specify the node style of the specific layer.
-
-{{ use: partial-item-style(
-    prefix = "###",
-    useColorPalatte = true
+{{ use: sankey-state(
+    prefix = "##"
 ) }}
 
-### lineStyle(Object)
+### emphasis(Object)
 
-Specify the outEdge style of the specific layer. in which [lineStyle.color](~series-sankey.lineStyle.color) can be assigned to the value of `'source'` of `'target'`, then the OutEdge will automatically take the source node or target node color as its own color.
+{{ use: sankey-state(
+    prefix = "###"
+) }}
 
-{{ use: partial-sankey-line-style(
+### blur(Object)
+
+{{ use: sankey-state(
+    prefix = "###"
+) }}
+
+### select(Object)
+
+{{ use: sankey-state(
     prefix = "###"
 ) }}
 
@@ -200,23 +191,32 @@ The edge style of Sankey diagram, in which [lineStyle.color](~series-sankey.line
 
 Configurations of emphasis state.
 
-### label(Object)
-
-{{ use: partial-label(
-    prefix = "###",
-    formatter1d = true
+{{ use: partial-focus-blur-scope(
+    isTree = true
 ) }}
 
-### itemStyle(Object)
-
-{{ use: partial-item-style(
-    prefix = "###"
+{{ use: sankey-state(
+    prefix = "##"
 ) }}
 
-### lineStyle(Object)
+## blur(Object)
 
-{{ use: partial-sankey-line-style(
-    prefix = "###"
+桑基图的淡出状态。开启 [emphasis.focus](~series-sankey.emphasis.focus) 后有效。
+
+{{ use: sankey-state(
+    prefix = "##"
+) }}
+
+## select(Object)
+
+桑基图的选中状态。开启 [selectedMode](~series-sankey.selectedMode) 后有效。
+
+{{ use: sankey-state(
+    prefix = "##"
+) }}
+
+{{ use: partial-selected-mode(
+    version = '5.0.0'
 ) }}
 
 ## data(Array)
@@ -267,16 +267,20 @@ The lable style of this node.
 
 ### emphasis(Object)
 
-#### itemStyle(Object)
-
-{{ use: partial-item-style(
-    prefix = "####"
+{{ use: sankey-node-state(
+    prefix = "###"
 ) }}
 
-#### label(Object)
+### blur(Object)
 
-{{ use: partial-label(
-    prefix = "####"
+{{ use: sankey-node-state(
+    prefix = "###"
+) }}
+
+### select(Object)
+
+{{ use: sankey-node-state(
+    prefix = "###"
 ) }}
 
 {{ use: partial-tooltip-in-series-data() }}
@@ -327,6 +331,22 @@ The line stlye of edge.
     prefix = "####"
 ) }}
 
+### blur(Object)
+
+#### lineStyle(Object)
+
+{{ use: partial-sankey-line-style(
+    prefix = "####"
+) }}
+
+### select(Object)
+
+#### lineStyle(Object)
+
+{{ use: partial-sankey-line-style(
+    prefix = "####"
+) }}
+
 ## edges(Array)
 
 Equals to [links](~series-sankey.links)
@@ -357,9 +377,50 @@ The opacity of the edge in Sankey diagram.
 
 #${prefix} curveness(number) = 0.5
 
+<ExampleUIControlNumber min="0" max="1" default="0.5" step="0.1" />
+
 The curveness of the edge in Sankey diagram.
 
 {{ use: partial-style-shadow(
     prefix = ${prefix}
+) }}
+
+
+
+{{ target: sankey-node-state }}
+
+#${prefix} label(Object)
+
+{{ use: partial-label(
+    prefix = "#" + ${prefix}
+) }}
+
+#${prefix} itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "#" + ${prefix}
+) }}
+
+
+
+{{ target: sankey-state }}
+
+#${prefix} label(Object)
+
+{{ use: partial-label(
+    prefix = "#" + ${prefix},
+    formatter1d = ${prefix} === '##'
+) }}
+
+#${prefix} itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "#" + ${prefix}
+) }}
+
+#${prefix} lineStyle(Object)
+
+{{ use: partial-sankey-line-style(
+    prefix = "#" + ${prefix}
 ) }}
 

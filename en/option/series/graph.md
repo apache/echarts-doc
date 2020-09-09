@@ -31,10 +31,6 @@ Graph is a diagram to represent [nodes](~series-graph.nodes) and the [links](~se
     calendar = true
 ) }}
 
-## hoverAnimation(boolean)
-
-Whether to enable the highlight animation effect of mousr hover node.
-
 ## center(Array)
 
 <ExampleUIControlVector default="0,0" dims="x,y" />
@@ -145,20 +141,6 @@ Related zooming ratio of nodes when mouse zooming in or out. When it is set as 0
 
 If node is draggable. Only available when using force-directed layout.
 
-## focusNodeAdjacency(boolean) = false
-
-<ExampleUIControlBoolean default="false" />
-
-Whether to focus/highlight the hover node and it's adjacencies.
-
-{{ use: partial-symbol(
-    prefix = '#',
-    defaultSymbol = "'circle'",
-    defaultSymbolSize = 10,
-    name = 'node of relation graph',
-    hasCallback = true
-) }}
-
 ## edgeSymbol(Array|string) = ['none', 'none']
 
 Symbol of two ends of edge line.
@@ -232,30 +214,32 @@ The style of edge line. [lineStyle.color](~series-graph.lineStyle.color) can be 
 
 Configurations of emphasis state.
 
-### itemStyle(Object)
+### scale(boolean) = true
 
-{{ use: partial-item-style(
-    prefix = "###"
+<ExampleUIControlBoolean default="true" />
+
+Whether to scale to highlight the node in emphasis state.
+
+{{ use: partial-focus-blur-scope(
+    isGraph = true
 ) }}
 
-### lineStyle(Object)
+{{ use: graph-state() }}
 
-{{ use: partial-line-style(
-    prefix = "###"
-) }}
+## blur(Object)
 
-### label(Object)
+Configurations of blur state. Available when [emphasis.focus](~series-graph.emphasis.focus) is set.
 
-{{ use: partial-label(
-    prefix = "###",
-    defaultShow = true,
-    formatter2d = true
-) }}
+{{ use: graph-state() }}
 
-### edgeLabel(Object)
+## select(Object)
 
-{{ use: graph-edge-label(
-    prefix = "###"
+Configurations of select state. Available when [selectedMode](~series-graph.selectedMode) is set.
+
+{{ use: graph-state() }}
+
+{{ use: partial-selected-mode(
+    version = '5.0.0'
 ) }}
 
 ## categories(Array)
@@ -293,17 +277,21 @@ The label style of node in this category.
 
 ### emphasis(Object)
 
-#### itemStyle(Object)
+Emphasis state of nodes in this category.
 
-{{ use: partial-item-style(
-    prefix = "####"
-) }}
+{{ use: graph-node-state() }}
 
-#### label(Object)
+### blur(Object)
 
-{{ use: partial-label(
-    prefix = "####"
-) }}
+Blur state of nodes in this category.
+
+{{ use: graph-node-state() }}
+
+### select(Object)
+
+Select state of nodes in this category.
+
+{{ use: graph-node-state() }}
 
 ## autoCurveness(number|Array) = 20
 
@@ -385,17 +373,21 @@ The label style of this node.
 
 ### emphasis(Object)
 
-#### itemStyle(Object)
+Emphasis state of specified node.
 
-{{ use: partial-item-style(
-    prefix = "####"
-) }}
+{{ use: graph-node-state() }}
 
-#### label(Object)
+### blur(Object)
 
-{{ use: partial-label(
-    prefix = "####"
-) }}
+Blur state of specified node.
+
+{{ use: graph-node-state() }}
+
+### select(Object)
+
+Select state of specified node.
+
+{{ use: graph-node-state() }}
 
 {{ use: partial-tooltip-in-series-data() }}
 
@@ -450,17 +442,21 @@ The curveness of edge, supporting values from 0 to 1. The curveness will be larg
 
 ### emphasis(Object)
 
-#### label(Object)
+Emphasis state of specified edge.
 
-{{ use: graph-edge-label(
-    prefix = "####"
-) }}
+{{ use: graph-edge-state() }}
 
-#### lineStyle(Object)
+### blur(Object)
 
-{{ use: partial-line-style(
-    prefix = "####"
-) }}
+Blur state of specified edge.
+
+{{ use: graph-edge-state() }}
+
+### select(Object)
+
+Select state of specified edge.
+
+{{ use: graph-edge-state() }}
 
 ### symbol(Array|string)
 
@@ -527,5 +523,71 @@ Label position, options：
 
 {{ use: partial-text-style(
     prefix = ${prefix}
+) }}
+
+
+
+{{ target: graph-state }}
+
+### itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "###"
+) }}
+
+### lineStyle(Object)
+
+{{ use: partial-line-style(
+    prefix = "###",
+    hasCurveness = true
+) }}
+
+### label(Object)
+
+{{ use: partial-label(
+    prefix = "###",
+    defaultShow = true,
+    formatter2d = true
+) }}
+
+### edgeLabel(Object)
+
+{{ use: graph-edge-label(
+    prefix = "###"
+) }}
+
+
+
+{{ target: graph-node-state }}
+
+#### itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "####"
+) }}
+
+#### label(Object)
+
+{{ use: partial-label(
+    prefix = "####",
+    defaultShow = true
+) }}
+
+
+
+{{ target: graph-edge-state }}
+
+#### lineStyle(Object)
+
+{{ use: partial-line-style(
+    prefix = "####",
+    hasCurveness = true
+) }}
+
+#### label(Object)
+
+{{ use: partial-label(
+    prefix = "####",
+    defaultShow = true
 ) }}
 

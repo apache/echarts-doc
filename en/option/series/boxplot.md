@@ -74,18 +74,45 @@ Style of boxplot.
 
 Configurations of emphasis state.
 
+{{ use: partial-focus-blur-scope() }}
+
 ### itemStyle(Object)
 
 {{ use: partial-item-style(
     prefix = "###",
-    useColorPalatte = true,
     name = "boxplot",
     defaultColor = "#fff",
     defaultBorderWidth = 2,
     defaultShadowBlur = 5,
-    defaultShadowOffsetX = 2,
-    defaultShadowOffsetY = 2,
-    defaultShadowColor = "rgba(0,0,0,0.4)"
+    defaultShadowOffsetX = 1,
+    defaultShadowOffsetY = 1,
+    defaultShadowColor = "rgba(0,0,0,0.2)"
+) }}
+
+## blur(Object)
+
+Configurations of blur state. Available when [emphasis.focus](~series-boxplot.emphasis.focus) is set.
+
+### itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "###",
+    name = "boxplot"
+) }}
+
+## select(Object)
+
+Configurations of select state. Available when [selectedMode](~series-boxplot.selectedMode) is set.
+
+### itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "###",
+    name = "boxplot"
+) }}
+
+{{ use: partial-selected-mode(
+    version = '5.0.0'
 ) }}
 
 {{ use: partial-series-dimensions(
@@ -144,10 +171,7 @@ Style of a single data.
 
 {{ use: partial-item-style(
     prefix = "###",
-    useColorPalatte = true,
-    name = "boxplot",
-    defaultColor = "#fff",
-    defaultBorderWidth = 1
+    name = "boxplot"
 ) }}
 
 ### emphasis(Object)
@@ -158,14 +182,29 @@ Emphasis state of a single data.
 
 {{ use: partial-item-style(
     prefix = "####",
-    useColorPalatte = true,
-    name = "boxplot",
-    defaultColor = "#fff",
-    defaultBorderWidth = 2,
-    defaultShadowBlur = 5,
-    defaultShadowOffsetX = 2,
-    defaultShadowOffsetY = 2,
-    defaultShadowColor = "rgba(0,0,0,0.4)"
+    name = "boxplot"
+) }}
+
+### blur(Object)
+
+Blur state of single data.
+
+#### itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "####",
+    name = "boxplot"
+) }}
+
+### select(Object)
+
+Select state of single data.
+
+#### itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "####",
+    name = "boxplot"
 ) }}
 
 {{ use: partial-tooltip-in-series-data() }}
@@ -179,7 +218,7 @@ Emphasis state of a single data.
 
 {{ use: partial-z-zlevel(
     prefix = "#",
-    componentName = "Box plot"
+    componentName = "Boxplot "
 ) }}
 
 {{ use: partial-silent(

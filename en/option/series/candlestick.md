@@ -94,15 +94,39 @@ Item style of candlestick.
 
 Emphasis style of candlestick.
 
+{{ use: partial-focus-blur-scope() }}
+
 ### itemStyle(Object)
 
 {{ use: partial-candlestick-item-style-detail(
     prefix = "###",
-    defaultColor = "#c23531",
-    defaultColor0 = "#314656",
-    defaultBorderColor = "#c23531",
-    defaultBorderColor0 = "#314656",
     defaultBorderWidth = 2
+) }}
+
+## blur(Object)
+
+Configurations of blur state. Available when [emphasis.focus](~series-candlestick.emphasis.focus) is set.
+
+### itemStyle(Object)
+
+{{ use: partial-candlestick-item-style-detail(
+    prefix = "###",
+    defaultBorderWidth = 2
+) }}
+
+## select(Object)
+
+Configurations of select state. Available when [selectedMode](~series-candlestick.selectedMode) is set.
+
+### itemStyle(Object)
+
+{{ use: partial-candlestick-item-style-detail(
+    prefix = "###",
+    defaultBorderWidth = 2
+) }}
+
+{{ use: partial-selected-mode(
+    version = '5.0.0'
 ) }}
 
 {{ use: partial-large(
@@ -166,12 +190,7 @@ Value of data item.
 Style of a candle box.
 
 {{ use: partial-candlestick-item-style-detail(
-    prefix = "###",
-    defaultColor = "#c23531",
-    defaultColor0 = "#314656",
-    defaultBorderColor = "#c23531",
-    defaultBorderColor0 = "#314656",
-    defaultBorderWidth = 1
+    prefix = "###"
 ) }}
 
 ### emphasis(Object)
@@ -181,12 +200,27 @@ Emphasis style of a candle box.
 #### itemStyle(Object)
 
 {{ use: partial-candlestick-item-style-detail(
-    prefix = "####",
-    defaultColor = "#c23531",
-    defaultColor0 = "#314656",
-    defaultBorderColor = "#c23531",
-    defaultBorderColor0 = "#314656",
-    defaultBorderWidth = 2
+    prefix = "####"
+) }}
+
+### blur(Object)
+
+Blur state of single data.
+
+#### itemStyle(Object)
+
+{{ use: partial-candlestick-item-style-detail(
+    prefix = "####"
+) }}
+
+### select(Object)
+
+Select state of single data.
+
+#### itemStyle(Object)
+
+{{ use: partial-candlestick-item-style-detail(
+    prefix = "####"
 ) }}
 
 {{ use: partial-tooltip-in-series-data() }}
@@ -205,7 +239,7 @@ Emphasis style of a candle box.
 
 {{ use: partial-z-zlevel(
     prefix = "#",
-    componentName = "candlestick"
+    componentName = "Candlestick "
 ) }}
 
 {{ use: partial-silent(

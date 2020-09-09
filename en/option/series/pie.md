@@ -29,20 +29,6 @@ For multiple pie series in a single chart, you may use [left](~series-pie.left),
 
 {{ use: partial-legend-hover-link() }}
 
-## hoverAnimation(boolean) = true
-
-<ExampleUIControlBoolean default="true" />
-
-Whether to enable the zoom animation effects when hovering sectors.
-
-## hoverOffset(number) = 10
-
-<ExampleUIControlNumber min="0" default="10" />
-
-The offset distance of hovered sector.
-
-## selectedMode(boolean|string) = false
-
 {{ use: partial-selected-mode() }}
 
 ## selectedOffset(number) = 10
@@ -189,27 +175,38 @@ The style of visual guide line. Will show when [label position](~series-pie.labe
 
 Configurations of emphasis state.
 
-### label(Object)
+### scale(boolean) = true
 
-{{ use: partial-pie-label(
-    prefix = "###",
-    position = false,
-    formatter = true
+<ExampleUIControlBoolean default="true" />
+
+Whether to scale to highlight the data in emphasis state.
+
+### scaleSize(number) = 10
+
+<ExampleUIControlNumber min="0" default="10" />
+
+Size of scale. Available when [emphasis.scale](~series-pie.emphasis.scale) is set `true`.
+
+{{ use: partial-focus-blur-scope() }}
+
+{{ use: pie-state(
+    prefix = "##"
 ) }}
 
-### labelLine(Object)
+## blur(Object)
 
-{{ use: partial-pie-label-line(
-    prefix = '###',
-    length = false,
-    length2 = false,
-    smooth = false
+Configurations of blur state. Available when [emphasis.focus](~series-pie.emphasis.focus) is set.
+
+{{ use: pie-state(
+    prefix = "##"
 ) }}
 
-### itemStyle(Object)
+## select(Object)
 
-{{ use: partial-item-style(
-    prefix = "###"
+Configurations of select state. Available when [selectedMode](~series-pie.selectedMode) is set.
+
+{{ use: pie-state(
+    prefix = "##"
 ) }}
 
 {{ use: component-circular-layout(
@@ -217,7 +214,7 @@ Configurations of emphasis state.
     defaultRadius = "[0, '75%']"
 ) }}
 
-You can set a large inner radius for a Donut chart.
+Donut chart can be achieved by setting a inner radius.
 
 {{ use: partial-seriesLayoutBy() }}
 
@@ -276,27 +273,20 @@ The label configuration of a single sector.
 
 ### emphasis(Object)
 
-#### label(Object)
-
-{{ use: partial-pie-label(
-    prefix = "####",
-    position = false,
-    formatter = false
+{{ use: pie-state(
+    prefix = "###"
 ) }}
 
-#### labelLine(Object)
+### blur(Object)
 
-{{ use: partial-pie-label-line(
-    prefix = '####',
-    length = false,
-    length2 = false,
-    smooth = false
+{{ use: pie-state(
+    prefix = "###"
 ) }}
 
-#### itemStyle(Object)
+### select(Object)
 
-{{ use: partial-item-style(
-    prefix = "####"
+{{ use: pie-state(
+    prefix = "###"
 ) }}
 
 {{ use: partial-tooltip-in-series-data() }}
@@ -423,6 +413,33 @@ Whether to smooth the visual guide line. It defaults to be `false` and can be se
 #${prefix} lineStyle(Object)
 
 {{ use: partial-line-style(
+    prefix = "#" + ${prefix}
+) }}
+
+
+
+{{ target: pie-state }}
+
+#${prefix} label(Object)
+
+{{ use: partial-pie-label(
+    prefix = "#" + ${prefix},
+    position = false,
+    formatter = ${prefix} === '##'
+) }}
+
+#${prefix} labelLine(Object)
+
+{{ use: partial-pie-label-line(
+    prefix = "#" + ${prefix},
+    length = false,
+    length2 = false,
+    smooth = false
+) }}
+
+#${prefix} itemStyle(Object)
+
+{{ use: partial-item-style(
     prefix = "#" + ${prefix}
 ) }}
 

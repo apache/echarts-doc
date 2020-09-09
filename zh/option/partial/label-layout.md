@@ -110,15 +110,15 @@ labelLayout(params) {
 
 #${prefix} align(string)
 
-标签水平对齐。可以设置`'left'`, `'center'`, `'right'`。
+标签水平对齐方式。可以设置`'left'`, `'center'`, `'right'`。
 
 #${prefix} verticalAlign(string)
 
-标签垂直对齐。可以设置`'top'`, `'middle'`, `'bottom'`。
+标签垂直对齐方式。可以设置`'top'`, `'middle'`, `'bottom'`。
 
 #${prefix} fontSize(number)
 
-标签的文本大小，可以根据
+The text size of the label.
 
 #${prefix} draggable(boolean)
 

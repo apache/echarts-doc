@@ -80,7 +80,7 @@ Background style of each bar if [showBackground](~series-bar.showBackground) is 
 
 ## emphasis(Object)
 
-高亮的图形样式和标签样式。
+Configurations of emphasis state.
 
 {{ use: partial-focus-blur-scope() }}
 
@@ -92,7 +92,7 @@ Background style of each bar if [showBackground](~series-bar.showBackground) is 
 
 ## blur(Object)
 
-淡出时的图形样式和标签样式。开启 [emphasis.focus](~series-bar.emphasis.focus) 后有效
+Configurations of blur state. Available when [emphasis.focus](~series-bar.emphasis.focus) is set.
 
 {{ use: partial-bar-state(
     prefix = "##",
@@ -102,7 +102,7 @@ Background style of each bar if [showBackground](~series-bar.showBackground) is 
 
 ## select(Object)
 
-数据选中时的图形样式和标签样式。开启 [selectedMode](~series-bar.selectedMode) 后有效。
+Configurations of select state. Available when [selectedMode](~series-bar.selectedMode) is set.
 
 {{ use: partial-bar-state(
     prefix = "##",
@@ -168,7 +168,7 @@ The value of a single data item.
 
 ### emphasis(Object)
 
-单个数据的高亮状态配置。
+Emphasis state of single data.
 
 {{ use: partial-bar-state(
     prefix = "###",
@@ -178,7 +178,7 @@ The value of a single data item.
 
 ### blur(Object)
 
-单个数据的淡出状态配置。
+Blur state of single data.
 
 {{ use: partial-bar-state(
     prefix = "###",
@@ -188,7 +188,7 @@ The value of a single data item.
 
 ### select(Object)
 
-单个数据的选中状态配置。
+Select state of single data.
 
 {{ use: partial-bar-state(
     prefix = "###",
@@ -202,7 +202,7 @@ The value of a single data item.
 
 {{ use: partial-z-zlevel(
     prefix = "#",
-    componentName = "柱状图"
+    componentName = "Bar chart "
 ) }}
 
 {{ use: partial-silent(
@@ -224,7 +224,7 @@ The value of a single data item.
 {{ if: ${topLevel} }}
 {{ use: partial-label-desc() }}
 {{ else }}
-单个数据的文本配置。
+Label style configurations of single data.
 {{ /if }}
 
 {{ use: partial-label(
@@ -238,7 +238,7 @@ The value of a single data item.
 {{ if: ${topLevel} }}
 {{ use: partial-item-style-desc() }}
 {{ else }}
-单个数据的图形样式设置。
+Rectangle style configurations of single data.
 {{ /if }}
 
 {{ use: partial-bar-item-style(
@@ -273,7 +273,7 @@ The border width of bar. defaults to have no border.
 
 <ExampleUIControlEnum default="solid" options="solid,dashed,dotted" />
 
-柱条的描边类型，默认为实线，支持 `'dashed'`, `'dotted'`。
+Border type. Can be `'dashed'`, `'dotted'`.
 
 {{ use: partial-border-radius(
     prefix = ${prefix}

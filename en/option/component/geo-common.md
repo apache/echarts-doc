@@ -150,23 +150,16 @@ Area filling color.
 
 Map area style in highlighted state.
 
-##${prefix} label(Object)
-
-{{ use: partial-label(
-    prefix = "##" + ${prefix},
-    formatter = true
+{{ use: partial-geo-common-state(
+    prefix = '#' + ${prefix}
 ) }}
 
-##${prefix} itemStyle(Object)
+#${prefix} select(Object)
 
-###${prefix} areaColor(Color) = '#eee'
+Map area style in selected state.
 
-Area filling color.
-
-{{ use: partial-color-desc() }}
-
-{{ use: partial-item-style(
-    prefix = ${prefix} + '##'
+{{ use: partial-geo-common-state(
+    prefix = '#' + ${prefix}
 ) }}
 
 {{ use: partial-rect-layout(
@@ -192,4 +185,27 @@ After setting these two values, `left/right/top/bottom/width/height` becomes inv
 #${prefix} layoutSize(number|string)
 
 Size of map, see `layoutCenter` for more information. Percentage relative to screen width, and absolute pixel values are supported.
+
+
+
+{{ target: partial-geo-common-state }}
+
+#${prefix} label(Object)
+
+{{ use: partial-label(
+    prefix = "#" + ${prefix},
+    formatter = true
+) }}
+
+#${prefix} itemStyle(Object)
+
+##${prefix} areaColor(Color) = '#eee'
+
+The color of the map area.
+
+{{ use: partial-color-desc() }}
+
+{{ use: partial-item-style(
+    prefix = "#" + ${prefix}
+) }}
 

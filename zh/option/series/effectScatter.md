@@ -129,16 +129,6 @@ const option = {
 
 ## emphasis(Object)
 
-高亮的标签和图形样式。
-
-{{ use: partial-focus-blur-scope() }}
-
-{{ use: effectScatter-state(
-    prefix = "##"
-) }}
-
-## emphasis(Object)
-
 高亮的图形和标签样式。
 
 ### scale(boolean) = true
@@ -146,6 +136,8 @@ const option = {
 <ExampleUIControlBoolean default="true" />
 
 是否开启高亮后的放大效果。
+
+{{ use: partial-focus-blur-scope() }}
 
 {{ use: effectScatter-state(
     prefix = "##"

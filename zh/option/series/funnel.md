@@ -135,6 +135,10 @@ option = {
 
 {{ use: partial-focus-blur-scope() }}
 
+{{ use: partial-funnel-state(
+    prefix = "##"
+) }}
+
 ## blur(Object)
 
 淡出时的图形样式和标签样式。开启 [emphasis.focus](~series-funnel.emphasis.focus) 后有效

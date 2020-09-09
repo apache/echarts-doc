@@ -76,17 +76,32 @@ Work for [coordinateSystem](~series-heatmap.coordinateSystem): 'cartesian2d'.
 
 ## emphasis(Object)
 
-### itemStyle(Object)
+Configurations of emphasis state.
 
-{{ use: partial-item-style(
-    prefix = "###"
+{{ use: partial-focus-blur-scope() }}
+
+{{ use: heatmap-state(
+    prefix = "##"
 ) }}
 
-### label(Object)
+## blur(Object)
 
-{{ use: partial-label(
-    prefix = "###",
-    defaultPosition = "inside"
+Configurations of blur state. Available when [emphasis.focus](~series-heatmap.emphasis.focus) is set.
+
+{{ use: heatmap-state(
+    prefix = "##"
+) }}
+
+## select(Object)
+
+Configurations of select state. Available when [selectedMode](~series-heatmap.selectedMode) is set.
+
+{{ use: heatmap-state(
+    prefix = "##"
+) }}
+
+{{ use: partial-selected-mode(
+    version = '5.0.0'
 ) }}
 
 ## data(Array)
@@ -148,4 +163,21 @@ Style of a single data point. It is valid with [coordinateSystem](~series-heatma
 ) }}
 
 {{ use: partial-tooltip-in-series() }}
+
+
+
+{{ target: heatmap-state }}
+
+#${prefix} itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "#" + ${prefix}
+) }}
+
+#${prefix} label(Object)
+
+{{ use: partial-label(
+    prefix = "#" + ${prefix},
+    defaultPosition = "inside"
+) }}
 

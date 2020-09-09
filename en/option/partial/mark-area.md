@@ -41,6 +41,22 @@ Emphasis status of mark area.
     prefix = "###" + ${prefix}
 ) }}
 
+##${prefix} blur(Object)
+
+Configurations of blur state. Whether to blur follows the series.
+
+###${prefix} label(Object)
+
+{{ use: partial-label(
+    prefix = ${prefix} + '###'
+) }}
+
+###${prefix} itemStyle(*)
+
+{{ use: partial-item-style(
+    prefix = "###" + ${prefix}
+) }}
+
 ##${prefix} data(*)
 
 The scope of the area is defined by `data`, which is an array with two item, representing the left-top point and the right-bottom point of rectangle area. Each item can be defined as follows:
@@ -220,6 +236,20 @@ Label style of start point and end point will be merged together.
 ) }}
 
 #${prefix} emphasis(Object)
+
+##${prefix} itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "##"+${prefix}
+) }}
+
+##${prefix} label(Object)
+
+{{ use: partial-label(
+    prefix = '##'+${prefix}
+) }}
+
+#${prefix} blur(Object)
 
 ##${prefix} itemStyle(Object)
 

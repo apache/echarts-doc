@@ -5,37 +5,37 @@
     version = "5.0.0"
 ) }}
 
-标签的统一布局配置。
+Unified layout configuration of labels.
 
-该配置项是在每个系列默认的标签布局基础上，统一调整标签的`(x, y)`位置，标签对齐等属性以实现想要的标签布局效果。
+It provide a chance to adjust the labels' `(x, y)` position, alignment based on the original layout each series provides.
 
-该配置项也可以是一个有如下参数的回调函数
+This option can be a callback with following parameters.
 
 ```js
-// 标签对应数据的 dataIndex
+// corresponding index of data
 dataIndex: number
-// 标签对应的数据类型，只在关系图中会有 node 和 edge 数据类型的区分
+// corresponding type of data. Only available in graph, in which it can be 'node' or 'edge'
 dataType?: string
-// 标签对应的系列的 index
+// corresponding index of series
 seriesIndex: number
-// 标签显示的文本
+// Displayed text of label.
 text: string
-// 默认的标签的包围盒，由系列默认的标签布局决定
+// Bounding rectangle of label.
 labelRect: {x: number, y: number, width: number, height: number}
-// 默认的标签水平对齐
+// Horizontal alignment of label.
 align: 'left' | 'center' | 'right'
-// 默认的标签垂直对齐
+// Vertical alignment of label.
 verticalAlign: 'top' | 'middle' | 'bottom'
-// 标签所对应的数据图形的包围盒，可用于定位标签位置
+// Bounding rectangle of the element corresponding to.
 rect: {x: number, y: number, width: number, height: number}
-// 默认引导线的位置，目前只有饼图(pie)和漏斗图(funnel)有默认标签位置
-// 如果没有该值则为 null
+// Default points array of labelLine. Currently only provided in pie and funnel series.
+// It's null in other series.
 labelLinePoints?: number[][]
 ```
 
-**示例：**
+**Example:**
 
-将标签显示在图形右侧 10px 的位置，并且垂直居中：
+Align the labels on the right. Left 10px margin to the edge.
 
 ```js
 labelLayout(params) {
@@ -48,7 +48,7 @@ labelLayout(params) {
 }
 ```
 
-根据图形的包围盒尺寸决定文本尺寸
+Set the text size based on the size of element bounding rectangle.
 
 ```js
 
@@ -61,76 +61,76 @@ labelLayout(params) {
 
 #${prefix} hideOverlap(boolean)
 
-是否隐藏重叠的标签。
+If hide the overlapped labels.
 
-下面示例演示了在关系图中开启该配置后，在缩放时可以实现自动的标签隐藏。
+The following example shows how to hide the overlapped labels in graph automatically when zooming.
 
 ~[600x400](${galleryViewPath}graph-label-overlap&edit=1&reset=1)
 
 #${prefix} moveOverlap(string)
 
-在标签重叠的时候是否挪动标签位置以防止重叠。
+If move the overlapped labels to avoid overlapping.
 
-目前支持配置为：
+Currently supported configurations:
 
-+ `'shiftX'` 水平方向依次位移，在水平方向对齐时使用
-+ `'shiftY'` 垂直方向依次位移，在垂直方向对齐时使用
++ `'shiftX'` Place the labels on horizontal direction sequencely, used when aligned horizontally.
++ `'shiftY'` Place the labels on vertial direction sequencely, used when aligned vertically.
 
-下面是标签右对齐并配置垂直方向依次位移以防止重叠的示例。
+The following example shows how to use `moverOverlap: 'shiftY'` to place the labels aligned vertically.
 
 ~[600x400](${galleryViewPath}scatter-label-align-right&edit=1&reset=1)
 
 #${prefix} x(number|string)
 
-标签的 x 位置。支持绝对的像素值或者`'20%'`这样的相对值。
+The x position of the label. Support absolute pixel values ​​or relative values ​​such as `'20%'`.
 
 #${prefix} y(number|string)
 
-标签的 y 位置。支持绝对的像素值或者`'20%'`这样的相对值。
+The y position of the label. Support absolute pixel values ​​or relative values ​​such as `'20%'`.
 
 #${prefix} dx(number)
 
-标签在 x 方向上的像素偏移。可以和`x`一起使用。
+The pixel offset of the label in the x direction. Can be used with `x`.
 
 #${prefix} dy(number)
 
-标签在 y 方向上的像素偏移。可以和`y`一起使用
+The pixel offset of the label in the y direction. Can be used with `y`
 
 #${prefix} rotate(number)
 
-标签旋转角度。
+Label rotation angle.
 
 #${prefix} width(number)
 
-标签显示的宽度。可以配合`overflow`使用控制标签显示在固定宽度内
+The width of displayed label. Can be used with `overflow` to constraint the label in a fixed width
 
 #${prefix} height(number)
 
-标签显示的高度。可以配合`lineOverflow`使用控制标签显示在固定高度内
+The height of displayed label. Can be used with `lineOverflow` to constraint the label in a fixed height.
 
 #${prefix} align(string)
 
-标签水平对齐。可以设置`'left'`, `'center'`, `'right'`。
+The horizontal alignment of the label. Can be `'left'`, `'center'`, `'right'`.
 
 #${prefix} verticalAlign(string)
 
-标签垂直对齐。可以设置`'top'`, `'middle'`, `'bottom'`。
+The vertical alignment of the label. Can be `'top'`, `'middle'`, `'bottom'`.
 
 #${prefix} fontSize(number)
 
-标签的文本大小，可以根据
+The text size of the label.
 
 #${prefix} draggable(boolean)
 
-标签是否可以允许用户通过拖拽二次调整位置。
+Whether to allow the user to adjust the position by dragging.
 
 #${prefix} labelLinePoints(Array)
 
-标签引导线三个点的位置。格式为：
+The array of the three points of the label guide line. The format is:
 
 ```js
 [[x, y], [x, y], [x, y]]
 ```
 
-在饼图中常用来微调已经计算好的引导线，其它情况一般不建议设置。
+It is often used in pie charts to fine-tune the guide line that has been calculated. Usually not recommended to set it in other situations.
 

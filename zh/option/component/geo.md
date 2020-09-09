@@ -90,7 +90,7 @@ geo 区域的颜色也可以被 map series 所控制，参见 [series-map.geoInd
 
 ### select(Object)
 
-高亮状态的设置。
+选中状态的设置。
 
 {{ use: geo-region-state() }}
 

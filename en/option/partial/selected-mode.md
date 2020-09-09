@@ -9,7 +9,7 @@
 ) }}
 {{ /if }}
 
-<ExampleUIControlEnum options="true,false,single,multiple" />
+<ExampleUIControlEnum options="false,true,single,multiple" />
 
 Selected mode.  It is enabled by default, and you may set it to be `false` to disabled it.
 

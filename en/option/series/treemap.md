@@ -12,7 +12,7 @@
 ~[700x580](${galleryViewPath}treemap-obama&edit=1&reset=1)
 
 
-<br>
+
 **Visual Mapping:**
 
 treemap maps the numerical values to area.
@@ -21,7 +21,6 @@ Moreover, it is able to map some dimensions of data to other visual channel, lik
 
 {{ use: partial-treemap-visual-detial() }}
 
-<br>
 **Drill Down:**
 
 The feature `drill down` means: when clicking a tree node, this node will be set as root and its children will be shown. When [leafDepth](~series-treemap.leafDepth) is set, this feature is enabled.
@@ -29,9 +28,7 @@ The feature `drill down` means: when clicking a tree node, this node will be set
 **An example about drill down:**
 ~[800x500](${galleryViewPath}treemap-drill-down&edit=1&reset=1)
 
-<br>
-<br>
-<br>
+
 Notice: There are some difference in treemap configuration between ECharts3 and ECharts2. Some immature configuration ways are no longer supported:
 
 + The position method using `center/size` is no longer supported, and `left/top/bottom/right/width/height` are used to position treemap, as other components do.
@@ -43,9 +40,6 @@ Notice: There are some difference in treemap configuration between ECharts3 and 
 + The configuration item `label` is moved outside the `itemStyle/itemStyle.emphasis`, and it is in the same level with `itemStyle` now.
 
 + The configuration items `itemStyle.childBorderWidth` and `itemStyle.childBorderColor` are not supported anymore (because in this way only 2 levels can be defined). [series-treemap.levels](~series-treemap.levels) is used to define all levels now.
-
-<br>
-<br>
 
 ## type(string) = 'treemap'
 
@@ -113,112 +107,12 @@ The behaviour when clicking a node. Optional values are:
 
 The treemap will be auto zoomed to a appropriate ratio when a node is clicked (when [nodeClick](~series-treemap.nodeClick) is set as `'zoomToNode'` and no drill down happens). This configuration item indicates the ratio.
 
-## levels(Array)
-
-**Multiple Levels Configuration**
-
-treemap adopts 4-level configuration:
-
-```
-"each node" --> "each level" --> "each series".
-```
-
-That is, we can configurate each node, can also configurate each level of the tree, or set overall configurations on each series. The highest priority is node configuration.
-
-`levels` is configurations on each levels, which is used most.
-
-For example:
-
-```javascript
-// Notice that in fact the data structure is not "tree", but is "forest".
-data: [
-    {
-        name: 'nodeA',
-        children: [
-            {name: 'nodeAA'},
-            {name: 'nodeAB'},
-        ]
-    },
-    {
-        name: 'nodeB',
-        children: [
-            {name: 'nodeBA'}
-        ]
-    }
-],
-levels: [
-    {...}, // configurations of the top level of the data structure "forest"
-        // (the level that contains 'nodeA', 'nodeB' shown above).
-    {...}, // configurations of the next level
-        // (the level that contains 'nodeAA', 'nodeAB', 'nodeBA' shown above)
-    {...}, // configurations of the next level
-    ...
-]
-```
-
-<br>
-**The Rules about Visual Mapping**
-
-When designing a treemap, we primarily focus on how to visually distinguish "different levels", "different categories in the same level", which requires appropriate settings of "rectangular color", "border thickness", "border color" and even "color saturation of rectangular" and so on on each level.
-
-See [example](${galleryEditorPath}treemap-disk&edit=1&reset=1). The top level is divided into several parts by colors "red", "green", "blue", and etc ... In each color block, `colorSaturation` is used to distinguish nodes in sublevel. The border color of the top level is "white", while the border color of the sublevel is the color that based on the current block color and processed by `borderColorSaturation`.
-
-`treemap` uses this rule of visual configuration: each level computes its visual value based on the configurations (`color`, `colorSaturation`, `borderColor`, `borderColorSaturation`) on this level. If there is no certain configuration in a node, it inherits the configuration from its parent.
-
-In this way, this effect can be configured: set a `color` list on the parent level, and set `colorSaturation` on the child level, and then each node in the parent level would obtain a color from the `color` list, and each node in the child level would obtain a value from `colorSaturation` and compound it with the color inherited from its parent node to get its final color.
-
-
-
-<br>
-**Dimensions and "Extra Visual Mapping"**
-
-See the example below: every `value` field is set as an Array, in which each item in the array represents a dimension respectively.
-
-```javascript
-[
-    {
-        value: [434, 6969, 8382],
-        children: [
-            {
-                value: [1212, 4943, 5453],
-                id: 'someid-1',
-                name: 'description of this node',
-                children: [...]
-            },
-            {
-                value: [4545, 192, 439],
-                id: 'someid-2',
-                name: 'description of this node',
-                children: [...]
-            },
-            ...
-        ]
-    },
-    {
-        value: [23, 59, 12],
-        children: [...]
-    },
-    ...
-]
-```
-
-`treemap` will map the first dimension (the first item of the array) to "area". If we want to express more information, we could map another dimension (specified by [series-treemap.visualDimension](~series-treemap.viusalDimension)) to another visual types, such as `colorSaturation` and so on. See the [example](${galleryEditorPath}treemap-obama&edit=1&reset=1) and select the legend 'Growth'.
-
-<br>
-
-{{ use: partial-treemap-borderColor-setting() }}
-
-<br>
-**Explanation about borderWidth, gapWidth, borderColor**
-
-![500xauto](~treemap-border-gap.png)
-
-{{ use: partial-treemap-level-props(
-    prefix = "##"
-) }}
-
 {{ use: partial-treemap-level-props(
     prefix = "#"
+) }}
+
+{{ use: partial-selected-mode(
+    version = '5.0.0'
 ) }}
 
 ## breadcrumb(Object)
@@ -300,6 +194,105 @@ When is no content in breadcrumb, this minimal width need to be set up.
 ## labelLayout(Object|Function)
 
 {{ use: partial-label-layout(
+    prefix = "##"
+) }}
+
+## levels(Array)
+
+**Multiple Levels Configuration**
+
+treemap adopts 4-level configuration:
+
+```
+"each node" --> "each level" --> "each series".
+```
+
+That is, we can configurate each node, can also configurate each level of the tree, or set overall configurations on each series. The highest priority is node configuration.
+
+`levels` is configurations on each levels, which is used most.
+
+For example:
+
+```javascript
+// Notice that in fact the data structure is not "tree", but is "forest".
+data: [
+    {
+        name: 'nodeA',
+        children: [
+            {name: 'nodeAA'},
+            {name: 'nodeAB'},
+        ]
+    },
+    {
+        name: 'nodeB',
+        children: [
+            {name: 'nodeBA'}
+        ]
+    }
+],
+levels: [
+    {...}, // configurations of the top level of the data structure "forest"
+        // (the level that contains 'nodeA', 'nodeB' shown above).
+    {...}, // configurations of the next level
+        // (the level that contains 'nodeAA', 'nodeAB', 'nodeBA' shown above)
+    {...}, // configurations of the next level
+    ...
+]
+```
+
+**The Rules about Visual Mapping**
+
+When designing a treemap, we primarily focus on how to visually distinguish "different levels", "different categories in the same level", which requires appropriate settings of "rectangular color", "border thickness", "border color" and even "color saturation of rectangular" and so on on each level.
+
+See [example](${galleryEditorPath}treemap-disk&edit=1&reset=1). The top level is divided into several parts by colors "red", "green", "blue", and etc ... In each color block, `colorSaturation` is used to distinguish nodes in sublevel. The border color of the top level is "white", while the border color of the sublevel is the color that based on the current block color and processed by `borderColorSaturation`.
+
+`treemap` uses this rule of visual configuration: each level computes its visual value based on the configurations (`color`, `colorSaturation`, `borderColor`, `borderColorSaturation`) on this level. If there is no certain configuration in a node, it inherits the configuration from its parent.
+
+In this way, this effect can be configured: set a `color` list on the parent level, and set `colorSaturation` on the child level, and then each node in the parent level would obtain a color from the `color` list, and each node in the child level would obtain a value from `colorSaturation` and compound it with the color inherited from its parent node to get its final color.
+
+
+
+**Dimensions and "Extra Visual Mapping"**
+
+See the example below: every `value` field is set as an Array, in which each item in the array represents a dimension respectively.
+
+```javascript
+[
+    {
+        value: [434, 6969, 8382],
+        children: [
+            {
+                value: [1212, 4943, 5453],
+                id: 'someid-1',
+                name: 'description of this node',
+                children: [...]
+            },
+            {
+                value: [4545, 192, 439],
+                id: 'someid-2',
+                name: 'description of this node',
+                children: [...]
+            },
+            ...
+        ]
+    },
+    {
+        value: [23, 59, 12],
+        children: [...]
+    },
+    ...
+]
+```
+
+`treemap` will map the first dimension (the first item of the array) to "area". If we want to express more information, we could map another dimension (specified by [series-treemap.visualDimension](~series-treemap.viusalDimension)) to another visual types, such as `colorSaturation` and so on. See the [example](${galleryEditorPath}treemap-obama&edit=1&reset=1) and select the legend 'Growth'.
+
+{{ use: partial-treemap-borderColor-setting() }}
+
+**Explanation about borderWidth, gapWidth, borderColor**
+
+![500xauto](~treemap-border-gap.png)
+
+{{ use: partial-treemap-level-props(
     prefix = "##"
 ) }}
 
@@ -550,8 +543,6 @@ This can hide the details of nodes when the rectangular area is not large enough
     name = "label"
 ) }}
 
-<br>
-
 {{ use: partial-label(
     prefix = ${prefix} + "#",
     defaultPosition = "'inside'",
@@ -574,8 +565,6 @@ See:
     name = "label"
 ) }}
 
-<br>
-
 {{ use: partial-label(
     prefix = ${prefix} + "#",
     defaultPosition = "'inside'",
@@ -594,8 +583,6 @@ Height of label area.
     name = "itemStyle"
 ) }}
 
-<br>
-
 {{ use: partial-treemap-item-style(
     prefix = ${prefix} + "#",
     itemStyleType = 'normal'
@@ -603,34 +590,38 @@ Height of label area.
 
 #${prefix} emphasis(Object)
 
-##${prefix} label(Object)
+Emphasis state.
 
-{{ use: partial-label(
-    prefix = ${prefix} + "##",
-    defaultPosition = "'inside'",
-    formatter = true
+{{ if: ${prefix} === '#' }}
+{{ use: partial-focus-blur-scope(
+    isTree = true
+) }}
+{{ /if }}
+
+{{ use: treemap-state(
+    prefix = "#" + ${prefix}
 ) }}
 
-##${prefix} upperLabel(Object)
+#${prefix} blur(Object)
 
-{{ use: partial-label(
-    prefix = ${prefix} + "##",
-    defaultPosition = "'inside'",
-    formatter = true
+Blur state.
+
+{{ use: treemap-state(
+    prefix = "#" + ${prefix}
 ) }}
 
-##${prefix} itemStyle(Object)
+#${prefix} select(Object)
 
-{{ use: partial-treemap-item-style(
-    prefix = ${prefix} + "##",
-    itemStyleType = 'emphasis'
+Select state.
+
+{{ use: treemap-state(
+    prefix = "#" + ${prefix}
 ) }}
 
 
 
 {{ target: partial-treemap-prop-location-desc }}
 
-<br>
 > Tps: In treemap, `${name}` attribute could appear in more than one places:
 
 {{ if: ${name} !== 'color' }}> * It could appear in [sereis-treemap](~series-treemap), indicating the unified setting of the series.{{ /if }}
@@ -668,6 +659,12 @@ The tranparent rate of a node, the range is between 0 ~ 1.
 
 The color saturation of a node. The range is between 0 ~ 1.
 
+#${prefix} borderRadius(number|Array) = 0
+
+<ExampleUIControlVector min="0" dims="LT,RT, RB, LB" clean="true"  />
+
+Border radius.
+
 #${prefix} borderWidth(number) = 0
 
 <ExampleUIControlNumber step="0.5" min="0" />
@@ -700,8 +697,6 @@ When `borderColorSaturation` is set, the `borderColor` is disabled, and, instead
 
 In this way, a effect can be implemented: different sections have different hue of gap color repectively, which makes users easy to distinguish both sections and levels.
 
-<br>
-
 {{ use: partial-treemap-borderColor-setting() }}
 
 {{ use: partial-style-shadow-opacity(
@@ -718,4 +713,31 @@ In this way, a effect can be implemented: different sections have different hue 
 If all of the border/gaps are set with the same color, confusion might occur when rectangulars in different levels display at the same time.
 
 See the [example](${galleryEditorPath}doc-example/treemap-borderColor&edit=1&reset=1). Notice that the child rectangles in the red area are in the deeper level than rectangles that are saparated by white gap. So in the red area, basically we set gap color with red, and use `borderColorSaturation` to lift the saturation.
+
+
+
+{{ target: treemap-state }}
+
+#${prefix} label(Object)
+
+{{ use: partial-label(
+    prefix = ${prefix} + "#",
+    defaultPosition = "'inside'",
+    formatter = true
+) }}
+
+#${prefix} upperLabel(Object)
+
+{{ use: partial-label(
+    prefix = ${prefix} + "#",
+    defaultPosition = "'inside'",
+    formatter = true
+) }}
+
+#${prefix} itemStyle(Object)
+
+{{ use: partial-treemap-item-style(
+    prefix = ${prefix} + "#",
+    itemStyleType = 'emphasis'
+) }}
 

@@ -133,18 +133,32 @@ Label settings. Does not work when [polyline](~series-lines.polyline) is `true`.
 
 ## emphasis(Object)
 
-Emphasis style.
+Emphasis state.
 
-### lineStyle(Object)
+{{ use: partial-focus-blur-scope() }}
 
-{{ use: partial-line-style(
-    prefix = '###'
+{{ use: lines-state(
+    prefix = "##"
 ) }}
 
-### label(Object)
+## blur(Object)
 
-{{ use: lines-label(
-    prefix = "###"
+Configurations of blur state. Available when [emphasis.focus](~series-lines.emphasis.focus) is set.
+
+{{ use: lines-state(
+    prefix = "##"
+) }}
+
+## select(Object)
+
+Configurations of select state. Available when [selectedMode](~series-lines.selectedMode) is set.
+
+{{ use: lines-state(
+    prefix = "##"
+) }}
+
+{{ use: partial-selected-mode(
+    version = '5.0.0'
 ) }}
 
 {{ use: partial-progressive(
@@ -182,17 +196,20 @@ Label of a single line. Available when [polyline](~series-lines.polyline) is not
 
 ### emphasis(Object)
 
-#### lineStyle(Object)
-
-{{ use: partial-line-style(
-    prefix = "####",
-    hasCurveness = true
+{{ use: lines-state(
+    prefix = "###"
 ) }}
 
-#### label(Object)
+### blur(Object)
 
-{{ use: lines-label(
-    prefix = "####"
+{{ use: lines-state(
+    prefix = "###"
+) }}
+
+### select(Object)
+
+{{ use: lines-state(
+    prefix = "###"
 ) }}
 
 {{ use: partial-marker(
@@ -206,7 +223,7 @@ Label of a single line. Available when [polyline](~series-lines.polyline) is not
 
 {{ use: partial-z-zlevel(
     prefix = "#",
-    componentName = "lines graph"
+    componentName = "路径图"
 ) }}
 
 {{ use: partial-silent(
@@ -238,5 +255,21 @@ the position of label, options:
 
 {{ use: partial-text-style(
     prefix = ${prefix}
+) }}
+
+
+
+{{ target: lines-state }}
+
+#${prefix} lineStyle(Object)
+
+{{ use: partial-line-style(
+    prefix = '#' + ${prefix}
+) }}
+
+#${prefix} label(Object)
+
+{{ use: lines-label(
+    prefix = "#" + ${prefix}
 ) }}
 

@@ -98,17 +98,32 @@ See the example below:
 
 ## emphasis(Object)
 
-### label(Object)
+Configurations of emphasis state.
 
-{{ use: partial-label(
-    prefix = "###",
-    formatter = true
+{{ use: partial-focus-blur-scope() }}
+
+{{ use: pictoialBar-state(
+    prefix = "##"
 ) }}
 
-### itemStyle(Object)
+## blur(Object)
 
-{{ use: partial-item-style(
-    prefix = "###"
+Configurations of blur state. Available when [emphasis.focus](~series-pictoialBar.emphasis.focus) is set.
+
+{{ use: pictoialBar-state(
+    prefix = "##"
+) }}
+
+## select(Object)
+
+Configurations of select state. Available when [selectedMode](~series-pictoialBar.selectedMode) is set.
+
+{{ use: partial-selected-mode(
+    version = '5.0.0'
+) }}
+
+{{ use: pictoialBar-state(
+    prefix = "##"
 ) }}
 
 {{ use: partial-barGrid(
@@ -162,16 +177,26 @@ The style setting of the text label in a single bar.
 
 ### emphasis(Object)
 
-#### label(Object)
+Emphasis state of the specified single data.
 
-{{ use: partial-label(
-    prefix = "####"
+{{ use: partial-bar-state(
+    prefix = "###"
 ) }}
 
-#### itemStyle(Object)
+### blur(Object)
 
-{{ use: partial-item-style(
-    prefix = "####"
+Blur state of the specified single data.
+
+{{ use: partial-bar-state(
+    prefix = "###"
+) }}
+
+### select(Object)
+
+Select state of the specified single data.
+
+{{ use: partial-bar-state(
+    prefix = "###"
 ) }}
 
 {{ use: partial-tooltip-in-series-data() }}
@@ -185,7 +210,7 @@ The style setting of the text label in a single bar.
 
 {{ use: partial-z-zlevel(
     prefix = "#",
-    componentName = "pictorial bar chart"
+    componentName = "Pictorial bar chart "
 ) }}
 
 {{ use: partial-silent(
@@ -539,4 +564,21 @@ series: [{
     }]
 }]
 ```
+
+
+
+{{ target: pictoialBar-state }}
+
+#${prefix} label(Object)
+
+{{ use: partial-label(
+    prefix = "#" + ${prefix},
+    formatter = ${prefix} === '##'
+) }}
+
+#${prefix} itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "#" + ${prefix}
+) }}
 

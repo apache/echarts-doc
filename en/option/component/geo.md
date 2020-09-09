@@ -88,11 +88,27 @@ Area color in the map.
 
 Style of emphasis region.
 
+{{ use: geo-region-state() }}
+
+### select(Object)
+
+Style of selected region.
+
+{{ use: geo-region-state() }}
+
+{{ use: partial-silent(
+    prefix = "#"
+) }}
+
+
+
+{{ target: geo-region-state }}
+
 #### itemStyle(Object)
 
 ##### areaColor(Color)
 
-Area color in the map.
+The color of the map area.
 
 {{ use: partial-color-desc() }}
 
@@ -105,9 +121,5 @@ Area color in the map.
 {{ use: partial-label(
     prefix = "####",
     formatter = true
-) }}
-
-{{ use: partial-silent(
-    prefix = "#"
 ) }}
 

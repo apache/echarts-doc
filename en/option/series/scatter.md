@@ -25,12 +25,6 @@ It could be used with [rectangular coordinate](~grid) and [polar coordinate](~po
     calendar = true
 ) }}
 
-## hoverAnimation(boolean)
-
-<ExampleUIControlBoolean default="true" />
-
-Whether to enable the animation effect when mouse is on the symbol.
-
 {{ use: partial-legend-hover-link() }}
 
 {{ use: partial-symbol(
@@ -78,17 +72,36 @@ Whether to enable the animation effect when mouse is on the symbol.
 
 Configurations of emphasis state.
 
-### label(Object)
+### scale(boolean) = true
 
-{{ use: partial-label(
-    prefix = "###",
-    formatter = true
+<ExampleUIControlBoolean default="true" />
+
+Whether to scale to highlight the data in emphasis state.
+
+{{ use: partial-focus-blur-scope() }}
+
+{{ use: scatter-state(
+    prefix = "##"
 ) }}
 
-### itemStyle(Object)
+## blur(Object)
 
-{{ use: partial-item-style(
-    prefix = "###"
+Configurations of blur state. Available when [emphasis.focus](~series-scatter.emphasis.focus) is set.
+
+{{ use: scatter-state(
+    prefix = "##"
+) }}
+
+## select(Object)
+
+Configurations of select state. Available when [selectedMode](~series-scatter.selectedMode) is set.
+
+{{ use: scatter-state(
+    prefix = "##"
+) }}
+
+{{ use: partial-selected-mode(
+    version = '5.0.0'
 ) }}
 
 {{ use: partial-progressive(
@@ -143,16 +156,24 @@ the style setting about single data point(bubble).
 
 Emphasis state of single data.
 
-#### label(Object)
-
-{{ use: partial-label(
-    prefix = "####"
+{{ use: scatter-state(
+    prefix = "###"
 ) }}
 
-#### itemStyle(Object)
+### blur(Object)
 
-{{ use: partial-item-style(
-    prefix = "####"
+Blur state of single data.
+
+{{ use: scatter-state(
+    prefix = "###"
+) }}
+
+### select(Object)
+
+Select state of single data.
+
+{{ use: scatter-state(
+    prefix = "###"
 ) }}
 
 {{ use: partial-tooltip-in-series-data() }}
@@ -170,7 +191,7 @@ Emphasis state of single data.
 
 {{ use: partial-z-zlevel(
     prefix = "#",
-    componentName = "scatter chart"
+    componentName = "Scatter"
 ) }}
 
 {{ use: partial-silent(
@@ -182,4 +203,21 @@ Emphasis state of single data.
 ) }}
 
 {{ use: partial-tooltip-in-series() }}
+
+
+
+{{ target: scatter-state }}
+
+#${prefix} label(Object)
+
+{{ use: partial-label(
+    prefix = "#" + ${prefix},
+    formatter = ${prefix} === '##'
+) }}
+
+#${prefix} itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "#" + ${prefix}
+) }}
 

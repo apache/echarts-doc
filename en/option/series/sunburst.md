@@ -5,6 +5,7 @@
 
 <ExampleUIControlEnum options="radial,tangential" default="radial" />
 
+{{ if: ${prefix} === '##' }}
 If it is `number` type, then is stands for rotation, from -90 degrees to 90 degrees, and positive values stand for counterclockwise.
 
 Besides, it can be string `'radial'`, standing for radial rotation; or `'tangential'`, standing for tangential rotation.
@@ -15,13 +16,21 @@ The following example shows different `rotate` settings:
 
 ~[700x400](${galleryViewPath}sunburst-label-rotate&edit=1&reset=1)
 
+{{ else }}
+Same to [label.rotate](~sunburst.label.rotate)
+{{ /if }}
+
 #${prefix} align(string) = 'center'
 
 <ExampleUIControlEnum options="left,center,right" default="center" />
 
 Align of text, which can be `'left'`, `'center'`, or `'right'`. Note that `'left'` stands for inner side, and `'right'` stands for outer side.
 
+{{ if: ${prefix} === '##' }}
 ~[700x400](${galleryViewPath}doc-example/sunburst-label-align&edit=1&reset=1)
+{{ else }}
+Same to [label.align](~sunburst.label.align)
+{{ /if }}
 
 #${prefix} minAngle(number) = null
 
@@ -42,34 +51,32 @@ If angle of data piece is smaller than this value (in degrees), then text is not
 
 {{ target: partial-sunburst-label-props }}
 
-${prefix} label(Object)
+#${prefix} label(Object)
 
-`label` sets the text style for every sectors.
+`label` 描述了每个扇形块中，文本标签的样式。
 
-**Priority: [series.data.label](~series-sunburst.data.label) > [series.levels.label](~series-sunburst.levels.label) > [series.label](~series-sunburst.label).**
+**优先级：[series.data.label](~series-sunburst.data.label) > [series.levels.label](~series-sunburst.levels.label) > [series.label](~series-sunburst.label)。**
 
 {{ use: partial-label-desc() }}
 
 {{ use: partial-sunburst-label-helper(
-    prefix = ${prefix}
+    prefix = ${prefix} + '#'
 ) }}
 
 
 
 {{ target: partial-sunburst-itemStyle-props }}
 
-${prefix} itemStyle(Object)
+#${prefix} itemStyle(Object)
 
-Style of Sunburst sectors.
+旭日图扇形块的样式。
 
-Style can be set in [series.itemStyle](~series-sunburst.itemStyle) for sectors of this series, or [series.levels.itemStyle](~series-sunburst.levels.itemStyle) for the whole level, or[series.data.itemStyle](~series-sunburst.data.itemStyle) for single sector. If [series.data.itemStyle](~series-sunburst.data.itemStyle) is defined, it will cover the setting of [series.itemStyle](~series-sunburst.itemStyle) and [series.levels.itemStyle](~series-sunburst.levels.itemStyle).
+可以在 [series.itemStyle](~series-sunburst.itemStyle) 定义所有扇形块的样式，也可以在 [series.levels.itemStyle](~series-sunburst.levels.itemStyle) 定义每一层扇形块的样式，还可以在 [series.data.itemStyle](~series-sunburst.data.itemStyle) 定义每个扇形块单独的样式，这三者的优先级从低到高。也就是说，如果定义了 [series.data.itemStyle](~series-sunburst.data.itemStyle)，将会覆盖 [series.itemStyle](~series-sunburst.itemStyle) 和 [series.levels.itemStyle](~series-sunburst.levels.itemStyle)。
 
-**Priority: [series.data.itemStyle](~series-sunburst.data.itemStyle) > [series.levels.itemStyle](~series-sunburst.levels.itemStyle) > [series.itemStyle](~series-sunburst.itemStyle).**
-
-In ECharts, *emphasis* is for styles when mouse hovers. For Sunburst charts, there are two extra states: *highlight* for highlighting items that relates to the emphasized one, and *downplay* for others when emphasizing an item. See [highlightPolicy](~series-sunburst.highlightPolicy).
+**优先级：[series.data.itemStyle](~series-sunburst.data.itemStyle) > [series.levels.itemStyle](~series-sunburst.levels.itemStyle) > [series.itemStyle](~series-sunburst.itemStyle)。**
 
 {{ use: partial-item-style(
-    prefix = ${prefix},
+    prefix = ${prefix} + '#',
     useColorPalatte = true,
     defaultBorderWidth = 1,
     defaultBorderColor = "'white'",
@@ -78,42 +85,14 @@ In ECharts, *emphasis* is for styles when mouse hovers. For Sunburst charts, the
 
 
 
-{{ target: partial-sunburst-other-state }}
-
-#${prefix} emphasis(Object)
-
-Item style when mouse is hovering. See [highlightPolicy](~series-sunburst.highlightPolicy).
+{{ target: partial-sunburst-state }}
 
 {{ use: partial-sunburst-label-props(
-    prefix = "##" + ${prefix}
+    prefix = ${prefix}
 ) }}
 
 {{ use: partial-sunburst-itemStyle-props(
-    prefix = "##" + ${prefix}
-) }}
-
-#${prefix} highlight(Object)
-
-Item style when mouse is hovering related items. See [highlightPolicy](~series-sunburst.highlightPolicy).
-
-{{ use: partial-sunburst-label-props(
-    prefix = "##" + ${prefix}
-) }}
-
-{{ use: partial-sunburst-itemStyle-props(
-    prefix = "##" + ${prefix}
-) }}
-
-#${prefix} downplay(Object)
-
-Item style when mouse is hovering unrelated items. See [highlightPolicy](~series-sunburst.highlightPolicy).
-
-{{ use: partial-sunburst-label-props(
-    prefix = "##" + ${prefix}
-) }}
-
-{{ use: partial-sunburst-itemStyle-props(
-    prefix = "##" + ${prefix}
+    prefix = ${prefix}
 ) }}
 
 
@@ -145,12 +124,6 @@ Sunburst charts support data mining by default. That means, when a user clicks a
 {{ use: component-circular-layout(
     componentName = "Sunburst chart",
     defaultRadius = "[0, '75%']"
-) }}
-
-## labelLayout(Object|Function)
-
-{{ use: partial-label-layout(
-    prefix = "##"
 ) }}
 
 ## data(Array)
@@ -213,58 +186,46 @@ See [series-sunburst.data.target](~series-sunburst.data.target).
 Like `target` attribute of HTML `<a>`, which can either be `'blank'` or `'self'`. See [series-sunburst.data.link](~series-sunburst.data.link).
 
 {{ use: partial-sunburst-label-props(
-    prefix = "###"
+    prefix = "##"
+) }}
+
+## labelLayout(Object|Function)
+
+{{ use: partial-label-layout(
+    prefix = "##"
 ) }}
 
 {{ use: partial-sunburst-itemStyle-props(
+    prefix = "##"
+) }}
+
+### emphasis
+
+Emphasis state.
+
+{{ use: partial-sunburst-state(
     prefix = "###"
 ) }}
 
-{{ use: partial-sunburst-other-state(
-    prefix = "##"
+### blur
+
+Blur state.
+
+{{ use: partial-sunburst-state(
+    prefix = "###"
+) }}
+
+### select
+
+Select state.
+
+{{ use: partial-sunburst-state(
+    prefix = "###"
 ) }}
 
 ### children(Array)
 
-Children nodes, which is recursively defined. In the same format to [series-sunburst.data](~series-sunburst.data).
-
-{{ use: partial-sunburst-label-props(
-    prefix = "##"
-) }}
-
-{{ use: partial-sunburst-itemStyle-props(
-    prefix = "##"
-) }}
-
-## highlightPolicy(string) = 'descendant'
-
-<ExampleUIControlEnum default="descendant" options="descendant,ancestor,none" />
-
-When mouse hovers a sector, the sector is emphasized. **If `highlightPolicy` is set to be `'descendant'`, then the sector and its descendant will be *highlighted*, and others will be *downplayed*. If `highlightPolicy` is `'ancestor'`, then the sector and its ancestors will be highlighted. If it is set to be `'self'`, then the sector will be highlighted and others downplayed. If it is set to be `'none'`, then others will not be downplayed.**
-
-~[700x350](${galleryViewPath}doc-example/sunburst-highlight-descendant&edit=1&reset=1)
-
-The `highlightPolicy` value above is the default value `'descendant'`. We use `dispatchAction` to highlight certain sector. Target sector will use the style of `emphasis`, and related sectors decided by `highlightPolicy` uses the style of `highlight`, and others use `downplay`.
-
-```js
-itemStyle: {
-    color: 'yellow',
-    borderWidth: 2,
-    emphasis: {
-        color: 'red'
-    },
-    highlight: {
-        color: 'orange'
-    },
-    downplay: {
-        color: '#ccc'
-    }
-}
-```
-
-If `highlightPolicy` is set to be `'ancestor'`, then the result looks like:
-
-~[700x350](${galleryViewPath}doc-example/sunburst-highlight-ancestor&edit=1&reset=1)
+子节点，递归定义，格式同 [series-sunburst.data](~series-sunburst.data)。
 
 ## nodeClick(boolean|string) = 'rootToNode'
 
@@ -295,15 +256,43 @@ function(nodeA, nodeB) {
 If there is no `name`, whether need to render it.
 
 {{ use: partial-sunburst-label-props(
-    prefix = "##"
+    prefix = "#"
 ) }}
 
 {{ use: partial-sunburst-itemStyle-props(
+    prefix = "#"
+) }}
+
+## emphasis
+
+Configurations of emphasis state.
+
+{{ use: partial-focus-blur-scope(
+    isTree = true
+) }}
+
+{{ use: partial-sunburst-state(
     prefix = "##"
 ) }}
 
-{{ use: partial-sunburst-other-state(
-    prefix = "#"
+## blur
+
+Configurations of blur state. Available when [emphasis.focus](~series-sunburst.emphasis.focus) is set.
+
+{{ use: partial-sunburst-state(
+    prefix = "##"
+) }}
+
+## select
+
+Configurations of select state. Available when [selectedMode](~series-sunburst.selectedMode) is set.
+
+{{ use: partial-sunburst-state(
+    prefix = "##"
+) }}
+
+{{ use: partial-selected-mode(
+    version = '5.0.0'
 ) }}
 
 ## levels(Array)
@@ -338,15 +327,35 @@ series: {
 ```
 
 {{ use: partial-sunburst-label-props(
-    prefix = "###"
+    prefix = "##"
 ) }}
 
 {{ use: partial-sunburst-itemStyle-props(
+    prefix = "##"
+) }}
+
+### emphasis
+
+Emphasis state.
+
+{{ use: partial-sunburst-state(
     prefix = "###"
 ) }}
 
-{{ use: partial-sunburst-other-state(
-    prefix = "##"
+### blur
+
+Blur state.
+
+{{ use: partial-sunburst-state(
+    prefix = "###"
+) }}
+
+### select
+
+Select state.
+
+{{ use: partial-sunburst-state(
+    prefix = "###"
 ) }}
 
 {{ use: partial-animation(

@@ -75,31 +75,33 @@ Area filling style.
 
 ## emphasis(Object)
 
-高亮的样式设置
+Configurations of emphasis state.
 
-### itemStyle(Object)
+{{ use: partial-focus-blur-scope() }}
 
-{{ use: partial-item-style(
-    prefix = "###"
+{{ use: radar-state(
+    prefix = "##"
 ) }}
 
-### label(Object)
+## blur(Object)
 
-{{ use: partial-label(
-    prefix = "###",
-    formatter = true
+Configurations of blur state. Available when [emphasis.focus](~series-radar.emphasis.focus) is set.
+
+{{ use: radar-state(
+    prefix = "##"
 ) }}
 
-### lineStyle(Object)
+## select(Object)
 
-{{ use: partial-line-style(
-    prefix = "###"
+Configurations of select state. Available when [selectedMode](~series-radar.selectedMode) is set.
+
+
+{{ use: radar-state(
+    prefix = "##"
 ) }}
 
-### areaStyle(Object)
-
-{{ use: partial-area-style(
-    prefix = "###"
+{{ use: partial-selected-mode(
+    version = '5.0.0'
 ) }}
 
 ## data(Array)
@@ -173,36 +175,31 @@ Area filling style of a single item.
 
 Configurations of emphasis state.
 
-#### label(Object)
-
-{{ use: partial-label(
-    prefix = "####",
-    defaultPosition = "top"
+{{ use: radar-state(
+    prefix = "###"
 ) }}
 
-#### itemStyle(Object)
+### blur(Object)
 
-{{ use: partial-item-style(
-    prefix = "####"
+单个数据项样式的淡出状态。
+
+{{ use: radar-state(
+    prefix = "###"
 ) }}
 
-#### lineStyle(Object)
+### select(Object)
 
-{{ use: partial-line-style(
-    prefix = "####"
-) }}
+单个数据项样式的选中状态。
 
-#### areaStyle(Object)
-
-{{ use: partial-area-style(
-    prefix = "####"
+{{ use: radar-state(
+    prefix = "###"
 ) }}
 
 {{ use: partial-tooltip-in-series-data() }}
 
 {{ use: partial-z-zlevel(
     prefix = "#",
-    componentName = "radar chart"
+    componentName = "Radar"
 ) }}
 
 {{ use: partial-silent(
@@ -214,4 +211,33 @@ Configurations of emphasis state.
 ) }}
 
 {{ use: partial-tooltip-in-series() }}
+
+
+
+{{ target: radar-state }}
+
+#${prefix} itemStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "#" + ${prefix}
+) }}
+
+#${prefix} label(Object)
+
+{{ use: partial-label(
+    prefix = "#" + ${prefix},
+    formatter = ${prefix} === '##'
+) }}
+
+#${prefix} lineStyle(Object)
+
+{{ use: partial-line-style(
+    prefix = "#" + ${prefix}
+) }}
+
+#${prefix} areaStyle(Object)
+
+{{ use: partial-area-style(
+    prefix = "#" + ${prefix}
+) }}
 
