@@ -41,10 +41,11 @@ formatter: function (value, indicator) {
     return '【' + value + '】';
 }
 ```
-## textStyle(Object)
+
+### textStyle(Object)
 
 {{ use: partial-text-style(
-    prefix='##',
+    prefix='###',
     defaultColor="'#333'",
     noAlign=true,
     noVerticalAlign=true
