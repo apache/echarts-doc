@@ -105,7 +105,7 @@ The initial level (depth) of the tree. The root node is the 0th layer, then the 
 
 ## itemStyle(Object)
 
-The style of each node in the tree, where [itemStyle.color] (~ series-tree.itemStyle.color) represents the fill color of the node, to distinguish the state of the subtree corresponding to `collapsing` or `expansion`.
+The style of each node in the tree, where [itemStyle.color](~series-tree.itemStyle.color) represents the fill color of the node, to distinguish the state of the subtree corresponding to `collapsing` or `expansion`.
 
 {{ use: partial-item-style(
     prefix = "##",
@@ -265,6 +265,14 @@ The style of the node.
     useColorPalatte = true
 ) }}
 
+### lineStyle(Object)
+
+Defines the style of the tree edge.
+
+{{ use: partial-tree-line-style(
+    prefix = "###"
+) }}
+
 ### label(Object)
 
 The label of the node.
@@ -311,7 +319,7 @@ Select state of a single node.
 
 {{ target: partial-tree-line-style }}
 
-#${prefix} color(Color) = "'#ccc'"
+#${prefix} color(Color) = '#ccc'
 
 <ExampleUIControlColor default="#ccc" />
 
@@ -343,6 +351,14 @@ The curvature of the tree edge.
     prefix = "#" + ${prefix}
 ) }}
 
+#${prefix} lineStyle(Object)
+
+Defines the style of the tree edge.
+
+{{ use: partial-tree-line-style(
+    prefix = "#" + ${prefix}
+) }}
+
 #${prefix} label(Object)
 
 {{ use: partial-label(
@@ -355,6 +371,8 @@ The curvature of the tree edge.
 {{ target: tree-edge-state }}
 
 #${prefix} lineStyle(Object)
+
+Defines the style of the tree edge.
 
 {{ use: partial-tree-line-style(
     prefix = "#" + ${prefix}

@@ -174,7 +174,7 @@ const option = {
 
 ## lineStyle(Object)
 
-定义了树图边的样式。
+定义树图边的样式。
 
 {{ use: partial-tree-line-style(
     prefix = "##"
@@ -307,6 +307,15 @@ const option = {
     useColorPalatte = true
 ) }}
 
+### lineStyle(Object)
+
+该节点对应的边的样式。
+
+{{ use: partial-tree-line-style(
+    prefix = "###"
+) }}
+
+
 ### label(Object)
 
 该节点的标签。
@@ -353,7 +362,7 @@ const option = {
 
 {{ target: partial-tree-line-style }}
 
-#${prefix} color(Color) = "'#ccc'"
+#${prefix} color(Color) = '#ccc'
 
 <ExampleUIControlColor default="#ccc" />
 
@@ -381,7 +390,17 @@ const option = {
 
 #${prefix} itemStyle(Object)
 
+该节点的样式。
+
 {{ use: partial-item-style(
+    prefix = "#" + ${prefix}
+) }}
+
+#${prefix} lineStyle(Object)
+
+定义树图边的样式。
+
+{{ use: partial-tree-line-style(
     prefix = "#" + ${prefix}
 ) }}
 
@@ -397,6 +416,8 @@ const option = {
 {{ target: tree-edge-state }}
 
 #${prefix} lineStyle(Object)
+
+定义树图边的样式。
 
 {{ use: partial-tree-line-style(
     prefix = "#" + ${prefix}

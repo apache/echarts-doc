@@ -23,7 +23,7 @@ ${name}图形的颜色。{{ if: ${useColorPalatte} }} 默认从全局调色盘 [
 传入的是数据项 `seriesIndex`, `dataIndex`, `data`, `value` 等各个参数。
 {{ /if }}
 
-#${prefix} borderColor(Color) = ${defaultBorderColor|default('"#000"')}
+#${prefix} borderColor(Color) = ${defaultBorderColor|default("'#000'")}
 
 <ExampleUIControlColor />
 
