@@ -6,6 +6,8 @@
     name = ${name},
     defaultColor = ${defaultColor},
     defaultFontSize = ${defaultFontSize},
+    defaultFontWeight = ${defaultFontWeight},
+    defaultLineHeight = ${defaultLineHeight},
     noAlign = true,
     noVerticalAlign = true,
     noRich = true,
@@ -21,6 +23,8 @@
     name = ${name},
     defaultColor = ${defaultColor},
     defaultFontSize = ${defaultFontSize},
+    defaultFontWeight = ${defaultFontWeight},
+    defaultLineHeight = ${defaultLineHeight},
     defaultAlign = ${defaultAlign},
     defaultVerticalAlign = ${defaultVerticalAlign},
     noAlign = ${noAlign},
@@ -196,7 +200,7 @@ ${name}文字的字体大小。
 ) }}
 {{ /if }}
 
-#${prefix} lineHeight(number)
+#${prefix} lineHeight(number) = ${defaultLineHeight|default('')}
 
 <ExampleUIControlNumber min="0" step="1" default="12" />
 

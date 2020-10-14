@@ -6,6 +6,8 @@
     name = ${name},
     defaultColor = ${defaultColor},
     defaultFontSize = ${defaultFontSize},
+    defaultFontWeight = ${defaultFontWeight},
+    defaultLineHeight = ${defaultLineHeight},
     noAlign = true,
     noVerticalAlign = true,
     noRich = true,
@@ -21,6 +23,8 @@
     name = ${name},
     defaultColor = ${defaultColor},
     defaultFontSize = ${defaultFontSize},
+    defaultFontWeight = ${defaultFontWeight},
+    defaultLineHeight = ${defaultLineHeight},
     defaultAlign = ${defaultAlign},
     defaultVerticalAlign = ${defaultVerticalAlign},
     noAlign = ${noAlign},
@@ -194,7 +198,7 @@ Options are:
 ) }}
 {{ /if }}
 
-#${prefix} lineHeight(number)
+#${prefix} lineHeight(number) = ${defaultLineHeight|default('')}
 
 <ExampleUIControlNumber min="0" step="1" default="12" />
 

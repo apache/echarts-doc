@@ -63,6 +63,10 @@ const option = {
 
 {{ use: partial-1d-data-desc() }}
 
+{{ use: partial-gauge-title-detail(
+    prefix = "##"
+) }}
+
 ### name(string)
 
 数据项名称。
@@ -101,6 +105,10 @@ const option = {
 
 是否显示仪表盘轴线。
 
+{{ use: partial-roundCap(
+    prefix = "##"
+) }}
+
 ### lineStyle(Object)
 
 仪表盘轴线样式。
@@ -111,14 +119,63 @@ const option = {
 
 默认取值：
 ```js
-[[0.2, '#91c7ae'], [0.8, '#63869e'], [1, '#c23531']]
+[[1, '#E6EBF8']]
 ```
 
-#### width(number) = 30
+#### width(number) = 10
 
 轴线宽度。
 
 {{ use: partial-style-shadow-opacity(
+    prefix = "###"
+) }}
+
+## progress(Object)
+
+{{ use: partial-version(
+    version = "5.0"
+) }}
+
+展示当前进度。
+
+### show(boolean) = false
+
+<ExampleUIControlBoolean default="true" />
+
+是否显示进度条。
+
+### overlap(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
+
+多组数据时进度条是否重叠。
+
+### width(number) = 10
+
+<ExampleUIControlBoolean default="true" />
+
+进度条宽度。
+
+{{ use: partial-roundCap(
+    prefix = "##"
+) }}
+
+### silent(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
+
+收否响应鼠标事件。
+
+{{ use: partial-clip(
+    prefix = "##",
+    version = "5.0"
+) }}
+
+### itemStyle(Object)
+
+进度条样式。
+
+{{ use: partial-item-style(
     prefix = "###"
 ) }}
 
@@ -132,18 +189,28 @@ const option = {
 
 是否显示分隔线。
 
-### length(number|string) = 30
+### length(number|string) = 10
 
-<ExampleUIControlPercent default="30" min="0" step="0.5" />
+<ExampleUIControlPercent default="10" min="0" step="0.5" />
 
 分隔线线长。支持相对半径的百分比。
+
+### distance(number) = 10
+
+{{ use: partial-version(
+    version = "5.0"
+) }}
+
+<ExampleUIControlNumber default="10" min="0" step="0.5" />
+
+分隔线与轴线的距离。
 
 ### lineStyle(Object)
 
 {{ use: partial-line-style(
     prefix = '###',
-    defaultColor = '#eee',
-    defaultWidth = 2,
+    defaultColor = '#63677A',
+    defaultWidth = 3,
     defaultType = "'solid'"
 ) }}
 
@@ -163,17 +230,27 @@ const option = {
 
 分隔线之间分割的刻度数。
 
-### length(number|string) = 8
+### length(number|string) = 6
 
-<ExampleUIControlPercent default="8" min="0" step="0.5" />
+<ExampleUIControlPercent default="6" min="0" step="0.5" />
 
 刻度线长。支持相对半径的百分比。
+
+### distance(number) = 10
+
+{{ use: partial-version(
+    version = "5.0"
+) }}
+
+<ExampleUIControlNumber default="10" min="0" step="0.5" />
+
+刻度线与轴线的距离。
 
 ### lineStyle(Object)
 
 {{ use: partial-line-style(
     prefix = '###',
-    defaultColor = '#eee',
+    defaultColor = '#63677A',
     defaultWidth = 1,
     defaultType = "'solid'"
 ) }}
@@ -188,9 +265,9 @@ const option = {
 
 是否显示标签。
 
-### distance(number) = 5
+### distance(number) = 15
 
-<ExampleUIControlNumber default="5" min="0" step="0.5" />
+<ExampleUIControlNumber default="15" min="0" step="0.5" />
 
 标签与刻度线的距离。
 
@@ -211,7 +288,8 @@ formatter: function (value) {
 {{ use: partial-text-style(
     prefix = "##",
     noAlign = true,
-    noVerticalAlign = true
+    noVerticalAlign = true,
+    defaultColor = "'#464646'"
 ) }}
 
 ## pointer(Object)
@@ -224,17 +302,88 @@ formatter: function (value) {
 
 是否显示指针。
 
-### length(string|number) = '80%'
+### icon(string) = 'default'
 
-<ExampleUIControlPercent default="80%" min="0" step="0.5" />
+{{ use: partial-version(
+    version = "5.0"
+) }}
+
+{{ use: partial-icon-path() }}
+
+### offsetCenter(Array) = [0, 0]
+
+{{ use: partial-version(
+    version = "5.0"
+) }}
+
+<ExampleUIControlPercentVector default="0,0" dims="x,y" />
+
+相对于仪表盘中心的偏移位置，数组第一项是水平方向的偏移，第二项是垂直方向的偏移。可以是绝对的数值，也可以是相对于仪表盘半径的百分比。
+
+### length(string|number) = '60%'
+
+<ExampleUIControlPercent default="60%" min="0" step="0.5" />
 
 指针长度，可以是绝对数值，也可以是相对于[半径](~series-gauge.radius)的半分比。
 
-### width(number) = 8
+### width(number) = 6
 
-<ExampleUIControlNumber default="8" min="0" step="0.5" />
+<ExampleUIControlNumber default="6" min="0" step="0.5" />
 
 指针宽度。
+
+### keepAspect(boolean) = false
+
+{{ use: partial-version(
+    version = "5.0"
+) }}
+
+<ExampleUIControlBoolean default="false" />
+
+如果图标是 `path://` 的形式，是否在缩放时保持该图形的长宽比。
+
+### itemStyle(Object)
+
+指针样式。
+
+{{ use: partial-item-style(
+    prefix = "###"
+) }}
+
+## anchor(Object)
+
+{{ use: partial-version(
+    version = "5.0"
+) }}
+
+表盘中指针的固定点。
+
+### show(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
+
+是否显示固定点。
+
+### anchorSize(number) = 6
+
+<ExampleUIControlNumber default="6" min="0" step="0.5" />
+
+固定点大小。
+
+### itemStyle(Object)
+
+指针固定点样式。
+
+{{ use: partial-item-style(
+    prefix = "###",
+    defaultColor = "'#fff'",
+) }}
+<!-- overwrite borderColor -->
+#### borderColor(Color) = '#5470c6'
+
+<ExampleUIControlColor default="#5470c6" />
+
+固定点边框颜色。
 
 ## itemStyle(Object)
 
@@ -260,101 +409,9 @@ formatter: function (value) {
     prefix = "###"
 ) }}
 
-## title(Object)
-
-仪表盘标题。
-
-### show(boolean) = true
-
-<ExampleUIControlBoolean default="true" />
-
-是否显示标题。
-
-### offsetCenter(Array) = [0, '-40%']
-
-<ExampleUIControlPercentVector default="0,-40%" dims="x,y" />
-
-相对于仪表盘中心的偏移位置，数组第一项是水平方向的偏移，第二项是垂直方向的偏移。可以是绝对的数值，也可以是相对于仪表盘半径的百分比。
-
-{{ use: partial-text-style(
-    prefix = "##",
-    defaultColor = "'#333'",
-    defaultFontSize = 15,
-    noAlign = true,
-    noVerticalAlign = true
+{{ use: partial-gauge-title-detail(
+    prefix = "#"
 ) }}
-
-## detail(Object)
-
-仪表盘详情，用于显示数据。
-
-### show(boolean) = true
-
-<ExampleUIControlBoolean default="true" />
-
-是否显示详情。
-
-### width(number) = 100
-
-<ExampleUIControlPercent default="100" min="0" step="1" />
-
-详情宽度。
-
-### height(number) = 40
-
-<ExampleUIControlPercent default="40" min="0" step="1" />
-
-详情高度。
-
-### backgroundColor(Color) = 'transparent'
-
-<ExampleUIControlColor />
-
-详情背景色。
-
-### borderWidth(number) = 0
-
-<ExampleUIControlNumber min="0" step="0.5" />
-
-详情边框宽度。
-
-### borderColor(Color) = '#ccc'
-
-<ExampleUIControlColor default="#ccc" />
-
-详情边框颜色。
-
-### offsetCenter(Array) = [0, '40%']
-
-<ExampleUIControlPercentVector default="0,-40%" dims="x,y" />
-
-相对于仪表盘中心的偏移位置，数组第一项是水平方向的偏移，第二项是垂直方向的偏移。可以是绝对的数值，也可以是相对于仪表盘半径的百分比。
-
-### formatter(Function|string)
-
-格式化函数或者字符串
-
-```js
-formatter: function (value) {
-    return value.toFixed(0);
-}
-```
-
-{{ use: partial-text-style(
-    prefix = "##",
-    defaultColor = "'auto'",
-    defaultFontSize = 15,
-    noAlign = true,
-    noVerticalAlign = true
-) }}
-
-<!-- overwrite color -->
-
-#### color(Color) = 'auto'
-
-<ExampleUIControlColor />
-
-文本颜色，默认取数值所在的[区间的颜色](~series-gauge.axisLine.lineStyle.color)
 
 {{ use: partial-marker(
     prefix = "#",
