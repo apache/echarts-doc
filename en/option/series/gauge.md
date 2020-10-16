@@ -352,11 +352,33 @@ The fixed point of a pointer in a dial.
 
 Whether to show the anchor.
 
+### showAbove(boolean) = false
+
+<ExampleUIControlBoolean default="false" />
+
+Whether the anchor is showed above the pointer.
+
 ### anchorSize(number) = 6
 
 <ExampleUIControlNumber default="6" min="0" step="0.5" />
 
 The size of anchor.
+
+### icon(string) = 'default'
+
+{{ use: partial-icon() }}
+
+### offsetCenter(Array) = [0, 0]
+
+<ExampleUIControlPercentVector default="0,0" dims="x,y" />
+
+The offset position relative to the center of gauge chart. The first item of array is the horizontal offset; the second item of array is the vertical offset. It could be absolute value and also the percentage relative to the radius of gauge chart.
+
+### keepAspect(boolean) = false
+
+<ExampleUIControlBoolean default="false" />
+
+Whether to keep aspect for icons in the form of `path://`.
 
 ### itemStyle(Object)
 

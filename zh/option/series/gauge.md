@@ -364,11 +364,33 @@ formatter: function (value) {
 
 是否显示固定点。
 
+### showAbove(boolean) = false
+
+<ExampleUIControlBoolean default="false" />
+
+固定点是否显示在指针上面。
+
 ### anchorSize(number) = 6
 
 <ExampleUIControlNumber default="6" min="0" step="0.5" />
 
 固定点大小。
+
+### icon(string) = 'circle'
+
+{{ use: partial-icon() }}
+
+### offsetCenter(Array) = [0, 0]
+
+<ExampleUIControlPercentVector default="0,0" dims="x,y" />
+
+相对于仪表盘中心的偏移位置，数组第一项是水平方向的偏移，第二项是垂直方向的偏移。可以是绝对的数值，也可以是相对于仪表盘半径的百分比。
+
+### keepAspect(boolean) = false
+
+<ExampleUIControlBoolean default="false" />
+
+如果图标是 `path://` 的形式，是否在缩放时保持该图形的长宽比。
 
 ### itemStyle(Object)
 
