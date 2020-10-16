@@ -160,12 +160,6 @@ const option = {
     prefix = "##"
 ) }}
 
-### silent(boolean) = true
-
-<ExampleUIControlBoolean default="true" />
-
-收否响应鼠标事件。
-
 {{ use: partial-clip(
     prefix = "##",
     version = "5.0"
@@ -302,13 +296,13 @@ formatter: function (value) {
 
 是否显示指针。
 
-### icon(string) = 'default'
+### icon(string) = null
 
 {{ use: partial-version(
     version = "5.0"
 ) }}
 
-{{ use: partial-icon-path() }}
+{{ use: partial-icon() }}
 
 ### offsetCenter(Array) = [0, 0]
 
@@ -370,7 +364,7 @@ formatter: function (value) {
 
 固定点是否显示在指针上面。
 
-### anchorSize(number) = 6
+### size(number) = 6
 
 <ExampleUIControlNumber default="6" min="0" step="0.5" />
 

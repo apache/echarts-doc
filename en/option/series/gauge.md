@@ -148,12 +148,6 @@ The width of progress.
     version = "5.0"
 ) }}
 
-### silent(boolean) = true
-
-<ExampleUIControlBoolean default="true" />
-
-Set this to `false`, to allow interaction with the progress.
-
 {{ use: partial-clip(
     prefix = "##",
     version = "5.0"
@@ -290,13 +284,13 @@ Gauge chart pointer.
 
 Whether to show the pointer.
 
-### icon(string) = 'default'
+### icon(string) = null
 
 {{ use: partial-version(
     version = "5.0"
 ) }}
 
-{{ use: partial-icon-path() }}
+{{ use: partial-icon() }}
 
 ### offsetCenter(Array) = [0, 0]
 
@@ -358,7 +352,7 @@ Whether to show the anchor.
 
 Whether the anchor is showed above the pointer.
 
-### anchorSize(number) = 6
+### size(number) = 6
 
 <ExampleUIControlNumber default="6" min="0" step="0.5" />
 
