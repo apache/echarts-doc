@@ -50,6 +50,10 @@ Whether the scale in gauge chart increases clockwise.
 
 {{ use: partial-1d-data-desc() }}
 
+{{ use: partial-gauge-title-detail(
+    prefix = "##"
+) }}
+
 ### name(string)
 
 Data name.
@@ -88,6 +92,10 @@ The related configuration about the axis line of gauge chart.
 
 Whether to show the axis line of gauge chart.
 
+{{ use: partial-roundCap(
+    prefix = "##"
+) }}
+
 ### lineStyle(Object)
 
 The style of the axis line of gauge chart.
@@ -98,14 +106,58 @@ The axis line of gauge chart can be divided to several segments in different col
 
 Default value:
 ```js
-[[0.2, '#91c7ae'], [0.8, '#63869e'], [1, '#c23531']]
+[[1, '#E6EBF8']]
 ```
 
-#### width(number) = 30
+#### width(number) = 10
 
 The width of axis line.
 
 {{ use: partial-style-shadow-opacity(
+    prefix = "###"
+) }}
+
+## progress(Object)
+
+{{ use: partial-version(
+    version = "5.0"
+) }}
+
+Used to show current progress.
+
+### show(boolean) = false
+
+<ExampleUIControlBoolean default="true" />
+
+Whether to show the progress of gauge chart.
+
+### overlap(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
+
+Whether the progress overlaps when there are multiple groups of data.
+
+### width(number) = 10
+
+<ExampleUIControlNumber default="10" min="0" step="0.5" />
+
+The width of progress.
+
+{{ use: partial-roundCap(
+    prefix = "##",
+    version = "5.0"
+) }}
+
+{{ use: partial-clip(
+    prefix = "##",
+    version = "5.0"
+) }}
+
+### itemStyle(Object)
+
+The style of progress.
+
+{{ use: partial-item-style(
     prefix = "###"
 ) }}
 
@@ -119,18 +171,28 @@ The style of split line.
 
 Whether to show the split line.
 
-### length(number|string) = 30
+### length(number|string) = 10
 
-<ExampleUIControlPercent default="30" min="0" step="0.5" />
+<ExampleUIControlPercent default="10" min="0" step="0.5" />
 
 The length of split line, can be a pecentage value relative to radius.
+
+### distance(number) = 10
+
+{{ use: partial-version(
+    version = "5.0"
+) }}
+
+<ExampleUIControlNumber default="10" min="0" step="0.5" />
+
+The distance between the split line and axis line.
 
 ### lineStyle(Object)
 
 {{ use: partial-line-style(
     prefix = '###',
-    defaultColor = '#eee',
-    defaultWidth = 2,
+    defaultColor = '#63677A',
+    defaultWidth = 3,
     defaultType = "'solid'"
 ) }}
 
@@ -150,17 +212,27 @@ Whether to show the scale.
 
 The split scale number between split line.
 
-### length(number|string) = 8
+### length(number|string) = 6
 
-<ExampleUIControlPercent default="8" min="0" step="0.5" />
+<ExampleUIControlPercent default="6" min="0" step="0.5" />
 
 The length of tick line, can be a pecentage value relative to radius.
+
+### distance(number) = 10
+
+{{ use: partial-version(
+    version = "5.0"
+) }}
+
+<ExampleUIControlNumber default="10" min="0" step="0.5" />
+
+The distance between the tick line and axis line.
 
 ### lineStyle(Object)
 
 {{ use: partial-line-style(
     prefix = '###',
-    defaultColor = '#eee',
+    defaultColor = '#63677A',
     defaultWidth = 1,
     defaultType = "'solid'"
 ) }}
@@ -175,9 +247,9 @@ Axis tick label.
 
 Whether to show the label.
 
-### distance(number) = 5
+### distance(number) = 15
 
-<ExampleUIControlNumber default="5" min="0" step="0.5" />
+<ExampleUIControlNumber default="15" min="0" step="0.5" />
 
 The distance between the label and tick line.
 
@@ -198,7 +270,8 @@ formatter: function (value) {
 {{ use: partial-text-style(
     prefix = "##",
     noAlign = true,
-    noVerticalAlign = true
+    noVerticalAlign = true,
+    defaultColor = "'#464646'"
 ) }}
 
 ## pointer(Object)
@@ -211,17 +284,110 @@ Gauge chart pointer.
 
 Whether to show the pointer.
 
-### length(string|number) = '80%'
+### icon(string) = null
 
-<ExampleUIControlPercent default="80%" min="0" step="0.5" />
+{{ use: partial-version(
+    version = "5.0"
+) }}
+
+{{ use: partial-icon() }}
+
+### offsetCenter(Array) = [0, 0]
+
+{{ use: partial-version(
+    version = "5.0"
+) }}
+
+<ExampleUIControlPercentVector default="0,0" dims="x,y" />
+
+The offset position relative to the center of gauge chart. The first item of array is the horizontal offset; the second item of array is the vertical offset. It could be absolute value and also the percentage relative to the radius of gauge chart.
+
+### length(string|number) = '60%'
+
+<ExampleUIControlPercent default="60%" min="0" step="0.5" />
 
 The length of pointer which could be absolute value and also the percentage relative to [radius](~series-gauge.radius).
 
-### width(number) = 8
+### width(number) = 6
 
-<ExampleUIControlNumber default="8" min="0" step="0.5" />
+<ExampleUIControlNumber default="6" min="0" step="0.5" />
 
 The width of pointer.
+
+### keepAspect(boolean) = false
+
+{{ use: partial-version(
+    version = "5.0"
+) }}
+
+<ExampleUIControlBoolean default="false" />
+
+Whether to keep aspect for icons in the form of `path://`.
+
+### itemStyle(Object)
+
+The style of pointer.
+
+{{ use: partial-item-style(
+    prefix = "###"
+) }}
+
+## anchor(Object)
+
+{{ use: partial-version(
+    version = "5.0"
+) }}
+
+The fixed point of a pointer in a dial.
+
+### show(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
+
+Whether to show the anchor.
+
+### showAbove(boolean) = false
+
+<ExampleUIControlBoolean default="false" />
+
+Whether the anchor is showed above the pointer.
+
+### size(number) = 6
+
+<ExampleUIControlNumber default="6" min="0" step="0.5" />
+
+The size of anchor.
+
+### icon(string) = 'default'
+
+{{ use: partial-icon() }}
+
+### offsetCenter(Array) = [0, 0]
+
+<ExampleUIControlPercentVector default="0,0" dims="x,y" />
+
+The offset position relative to the center of gauge chart. The first item of array is the horizontal offset; the second item of array is the vertical offset. It could be absolute value and also the percentage relative to the radius of gauge chart.
+
+### keepAspect(boolean) = false
+
+<ExampleUIControlBoolean default="false" />
+
+Whether to keep aspect for icons in the form of `path://`.
+
+### itemStyle(Object)
+
+The style of anchor.
+
+{{ use: partial-item-style(
+    prefix = "###",
+    defaultColor = "'#fff'",
+) }}
+
+#### borderColor(Color) = '#5470c6'
+
+<ExampleUIControlColor default="#5470c6" />
+
+The border color of anchor.
 
 ## itemStyle(Object)
 
@@ -247,101 +413,9 @@ Configurations of emphasis state.
     prefix = "###"
 ) }}
 
-## title(Object)
-
-The title of gauge chart.
-
-### show(boolean) = true
-
-<ExampleUIControlBoolean default="true" />
-
-Whether to show the title.
-
-### offsetCenter(Array) = [0, '-40%']
-
-<ExampleUIControlPercentVector default="0,-40%" dims="x,y" />
-
-The offset position relative to the center of gauge chart. The first item of array is the horizontal offset; the second item of array is the vertical offset. It could be absolute value and also the percentage relative to the radius of gauge chart.
-
-{{ use: partial-text-style(
-    prefix = "##",
-    defaultColor = "'#333'",
-    defaultFontSize = 15,
-    noAlign = true,
-    noVerticalAlign = true
+{{ use: partial-gauge-title-detail(
+    prefix = "#"
 ) }}
-
-## detail(Object)
-
-The detail about gauge chart which is used to show data.
-
-### show(boolean) = true
-
-<ExampleUIControlBoolean default="true" />
-
-Whether to show the details.
-
-### width(number) = 100
-
-<ExampleUIControlPercent default="100" min="0" step="1" />
-
-The width of detail.
-
-### height(number) = 40
-
-<ExampleUIControlPercent default="40" min="0" step="1" />
-
-The height of detail.
-
-### backgroundColor(Color) = 'transparent'
-
-<ExampleUIControlColor />
-
-The background color of detail.
-
-### borderWidth(number) = 0
-
-<ExampleUIControlNumber min="0" step="0.5" />
-
-The border width of detail.
-
-### borderColor(Color) = '#ccc'
-
-<ExampleUIControlColor default="#ccc" />
-
-The border color of detail.
-
-### offsetCenter(Array) = [0, '40%']
-
-<ExampleUIControlPercentVector default="0,-40%" dims="x,y" />
-
-The offset position relative to the center of gauge chart. The first item of array is the horizontal offset; the second item of array is the vertical offset. It could be absolute value and also the percentage relative to the radius of gauge chart.
-
-### formatter(Function|string)
-
-Formatter is used to format detail, which supports string template and callback function.
-
-```js
-formatter: function (value) {
-    return value.toFixed(0);
-}
-```
-
-{{ use: partial-text-style(
-    prefix = "##",
-    defaultColor = "'auto'",
-    defaultFontSize = 15,
-    noAlign = true,
-    noVerticalAlign = true
-) }}
-
-<!-- overwrite color -->
-
-#### color(Color) = 'auto'
-
-<ExampleUIControlColor />
-
-The text color. Defaults to use [the color of section](~series-gauge.axisLine.lineStyle.color) where the numerical value belongs to.
 
 {{ use: partial-marker(
     prefix = "#",
