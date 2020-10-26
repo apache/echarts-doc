@@ -25,9 +25,19 @@ Bar chart shows different data through the height of a bar, which is used in [re
     geo = false
 ) }}
 
-{{ use: partial-roundCap(
-    prefix = "#"
+## roundCap(boolean) = false
+
+<ExampleUIControlBoolean default="${defaultRoundCap|default(false)}" />
+
+{{ use: partial-version(
+    version = "5.0"
 ) }}
+
+<ExampleUIControlBoolean clean="true" />
+
+Whether to add round caps at the end of the bar sectors. Valid only for bar series on polar coordinates.
+
+~[800x500](${galleryViewPath}polar-roundCap&reset=1&edit=1)
 
 ## showBackground(boolean) = false
 

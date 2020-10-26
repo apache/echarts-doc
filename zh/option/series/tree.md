@@ -315,7 +315,6 @@ const option = {
     prefix = "###"
 ) }}
 
-
 ### label(Object)
 
 该节点的标签。

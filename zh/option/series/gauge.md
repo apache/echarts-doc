@@ -6,7 +6,7 @@
 **仪表盘**
 
 **示例：**
-~[600x500](${galleryViewPath}gauge-car&reset=1&edit=1)
+~[600x500](${galleryViewPath}gauge&reset=1&edit=1)
 
 <ExampleBaseOption name="gauge" title="基础仪表盘" title-en="Basic Gauge">
 const option = {
@@ -29,7 +29,7 @@ const option = {
 
 {{ use: partial-series-name() }}
 
-{{ use: partial-circular-layout() }}
+{{ use: component-circular-layout() }}
 
 <!-- overwrite radius -->
 
@@ -105,9 +105,13 @@ const option = {
 
 是否显示仪表盘轴线。
 
-{{ use: partial-roundCap(
-    prefix = "##"
+### roundCap(boolean) = false
+
+{{ use: partial-version(
+    version = "5.0.0"
 ) }}
+
+是否在两端显示成圆形。
 
 ### lineStyle(Object)
 
@@ -156,14 +160,13 @@ const option = {
 
 进度条宽度。
 
-{{ use: partial-roundCap(
-    prefix = "##"
-) }}
+### roundCap(boolean) = false
 
-{{ use: partial-clip(
-    prefix = "##",
-    version = "5.0"
-) }}
+是否在两端显示成圆形。
+
+### clip(boolean) = false
+
+是否裁掉超出部分。
 
 ### itemStyle(Object)
 
@@ -392,9 +395,11 @@ formatter: function (value) {
 
 {{ use: partial-item-style(
     prefix = "###",
-    defaultColor = "'#fff'",
+    defaultColor = "'#fff'"
 ) }}
+
 <!-- overwrite borderColor -->
+
 #### borderColor(Color) = '#5470c6'
 
 <ExampleUIControlColor default="#5470c6" />
@@ -443,4 +448,104 @@ formatter: function (value) {
 ) }}
 
 {{ use: partial-tooltip-in-series() }}
+
+
+
+{{ target: partial-gauge-title-detail }}
+
+#${prefix|default('#')} title(Object)
+
+仪表盘标题。
+
+##${prefix} show(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
+
+是否显示标题。
+
+##${prefix} offsetCenter(Array) = [0, '20%']
+
+<ExampleUIControlPercentVector default="0,20%" dims="x,y" />
+
+相对于仪表盘中心的偏移位置，数组第一项是水平方向的偏移，第二项是垂直方向的偏移。可以是绝对的数值，也可以是相对于仪表盘半径的百分比。
+
+{{ use: partial-text-style(
+    prefix = ${prefix} + '#',
+    defaultColor = "'#464646'",
+    defaultFontSize = 16,
+    noAlign = true,
+    noVerticalAlign = true
+) }}
+
+#${prefix|default('#')} detail(Object)
+
+仪表盘详情，用于显示数据。
+
+##${prefix} show(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
+
+是否显示详情。
+
+{{ use: partial-text-style(
+    prefix = ${prefix} + '#',
+    defaultColor = "'#464646'",
+    defaultFontSize = 30,
+    defaultFontWeight = "'bold'",
+    defaultLineHeight = 30,
+    noAlign = true,
+    noVerticalAlign = true
+) }}
+
+##${prefix} width(number) = 100
+
+<ExampleUIControlPercent default="100" min="0" step="1" />
+
+详情宽度。
+
+##${prefix} height(number) = 40
+
+<ExampleUIControlPercent default="40" min="0" step="1" />
+
+详情高度。
+
+##${prefix} color(Color) = '#464646'
+
+<ExampleUIControlColor />
+
+文本颜色，默认取数值所在的[区间的颜色](~series-gauge.axisLine.lineStyle.color)
+
+##${prefix} backgroundColor(Color) = 'transparent'
+
+<ExampleUIControlColor />
+
+详情背景色。
+
+##${prefix} borderWidth(number) = 0
+
+<ExampleUIControlNumber min="0" step="0.5" />
+
+详情边框宽度。
+
+##${prefix} borderColor(Color) = '#ccc'
+
+<ExampleUIControlColor default="#ccc" />
+
+详情边框颜色。
+
+##${prefix} offsetCenter(Array) = [0, '40%']
+
+<ExampleUIControlPercentVector default="0,-40%" dims="x,y" />
+
+相对于仪表盘中心的偏移位置，数组第一项是水平方向的偏移，第二项是垂直方向的偏移。可以是绝对的数值，也可以是相对于仪表盘半径的百分比。
+
+##${prefix} formatter(Function|string)
+
+格式化函数或者字符串
+
+```js
+formatter: function (value) {
+    return value.toFixed(0);
+}
+```
 
