@@ -348,6 +348,20 @@ const option = {
     defaultColor = "#fff"
 ) }}
 
+
+## labelLine(Object)
+
+{{ use: partial-label-line-desc() }}
+
+{{ use: partial-label-line(
+    prefix = '##',
+    length2 = true,
+    minTurnAngle = true,
+    showAbove = true,
+    smooth = true
+) }}
+
+
 ## labelLayout(Object|Function)
 
 {{ use: partial-label-layout(
@@ -857,12 +871,21 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 {{ target: treemap-state }}
 
+
 #${prefix} label(Object)
 
 {{ use: partial-label(
     prefix = ${prefix} + "#",
     defaultPosition = "'inside'",
     formatter = true
+) }}
+
+#${prefix} labelLine(Object)
+
+{{ use: partial-label-line-desc() }}
+
+{{ use: partial-label-line(
+    prefix = ${prefix} + "#"
 ) }}
 
 #${prefix} upperLabel(Object)

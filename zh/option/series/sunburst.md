@@ -62,6 +62,18 @@
     prefix = ${prefix} + '#'
 ) }}
 
+#${prefix} labelLine(Object)
+
+{{ use: partial-label-line-desc() }}
+
+{{ use: partial-label-line(
+    prefix = '#' + ${prefix},
+    length2 = ${isNormal},
+    minTurnAngle = ${isNormal},
+    showAbove = ${isNormal},
+    smooth = ${isNormal}
+) }}
+
 
 
 {{ target: partial-sunburst-itemStyle-props }}
@@ -87,11 +99,13 @@
 {{ target: partial-sunburst-state }}
 
 {{ use: partial-sunburst-label-props(
-    prefix = ${prefix}
+    prefix = ${prefix},
+    isNormal = ${isNormal}
 ) }}
 
 {{ use: partial-sunburst-itemStyle-props(
-    prefix = ${prefix}
+    prefix = ${prefix},
+    isNormal = ${isNormal}
 ) }}
 
 
@@ -336,7 +350,8 @@ const option = {
 意义同 HTML `<a>` 标签中的 `target`，参见 [series-sunburst.data.link](~series-sunburst.data.link)。可选值为：`'blank'` 或 `'self'`。
 
 {{ use: partial-sunburst-label-props(
-    prefix = "##"
+    prefix = "##",
+    isNormal = true
 ) }}
 
 ## labelLayout(Object|Function)
@@ -406,7 +421,8 @@ function(nodeA, nodeB) {
 如果数据没有 `name`，是否需要渲染文字。
 
 {{ use: partial-sunburst-label-props(
-    prefix = "#"
+    prefix = "#",
+    isNormal = true
 ) }}
 
 {{ use: partial-sunburst-itemStyle-props(
