@@ -313,6 +313,18 @@ option = {
     formatter = ${topLevel}
 ) }}
 
+#${prefix} labelLine(Object)
+
+{{ use: partial-label-line-desc() }}
+
+{{ use: partial-label-line(
+    prefix = '#' + ${prefix},
+    length2 = ${isNormal},
+    minTurnAngle = ${isNormal},
+    showAbove = ${isNormal},
+    smooth = ${isNormal}
+) }}
+
 #${prefix} itemStyle(Object)
 
 {{ if: ${topLevel} }}

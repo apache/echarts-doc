@@ -92,7 +92,6 @@ series: [{
 }]
 ```
 
-<br>
 **『值』与 [轴类型](~xAxis.type) 的关系：**
 
 + 当某维度对应于数值轴（axis.type 为 `'value'` 或者 `'log'`）的时候：
@@ -138,7 +137,6 @@ series: [{
         + 例如：在 chrome 中，`new Date('2012-01-01')` 表示 UTC 时间的 2012 年 1 月 1 日，而 `new Date('2012-1-1')` 和 `new Date('2012/01/01')` 表示本地时间的 2012 年 1 月 1 日。在 safari 中，不支持 `new Date('2012-1-1')` 这种表示方法。
         + 所以，使用 `new Date(dataString)` 时，可使用第三方库解析（如 [moment](https://momentjs.com/)），或者使用 `echarts.number.parseDate`，或者参见 [这里](http://dygraphs.com/date-formats.html)。
 
-<br>
 **当需要对个别数据进行个性化定义时：**
 
 数组项可用对象，其中的 `value` 像表示具体的数值，如：
@@ -168,12 +166,9 @@ series: [{
 ]
 ```
 
-<br>
 **空值：**
 
 当某数据不存在时（ps：*不存在*不代表值为 0），可以用 `'-'` 或者 `null` 或者 `undefined` 或者 `NaN` 表示。
 
 例如，无数据在折线图中可表现为该点是断开的，在其它图中可表示为图形不存在。
-
-<br><br>
 

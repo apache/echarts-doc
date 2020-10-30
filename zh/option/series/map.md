@@ -57,6 +57,18 @@
     prefix = "##"
 ) }}
 
+## labelLine(Object)
+
+{{ use: partial-label-line-desc() }}
+
+{{ use: partial-label-line(
+    prefix = '##',
+    length2 = true,
+    minTurnAngle = true,
+    showAbove = true,
+    smooth = true
+) }}
+
 ## data(Array)
 
 {{ use: partial-1d-data-desc(
@@ -99,6 +111,18 @@
     formatter = true,
     noAlign = true,
     noVerticalAlign = true
+) }}
+
+### labelLine(Object)
+
+{{ use: partial-label-line-desc() }}
+
+{{ use: partial-label-line(
+    prefix = '###',
+    length2 = true,
+    minTurnAngle = true,
+    showAbove = true,
+    smooth = true
 ) }}
 
 ### emphasis(Object)
@@ -152,3 +176,10 @@
     noVerticalAlign = true
 ) }}
 
+#### labelLine(Object)
+
+{{ use: partial-label-line-desc() }}
+
+{{ use: partial-label-line(
+    prefix = '####'
+) }}
