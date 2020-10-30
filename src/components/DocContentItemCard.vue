@@ -221,7 +221,7 @@ export default {
 $card-margin: 15px;
 $children-padding: 10px;
 
-$hierarchy-guider-color: #C592A0;
+$hierarchy-guider-color: #E0E6F1;
 
 .doc-content-item-card {
 
@@ -264,13 +264,11 @@ $hierarchy-guider-color: #C592A0;
             padding: 2px;
             font-size: 12px;
             margin-left: -23px;
-            color: $hierarchy-guider-color;
-            border-color: $hierarchy-guider-color;
-            border-radius: 4px;
+            color: darken($hierarchy-guider-color, 30%);
+            border-color: darken($hierarchy-guider-color, 10%);
+            border-radius: 10px;
 
             background: #fff;
-
-
             position: relative;
         }
 
