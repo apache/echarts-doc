@@ -141,6 +141,10 @@ option = {
 
 ## blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 淡出时的图形样式和标签样式。开启 [emphasis.focus](~series-funnel.emphasis.focus) 后有效
 
 {{ use: partial-funnel-state(
@@ -148,6 +152,10 @@ option = {
 ) }}
 
 ## select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 数据选中时的图形样式和标签样式。开启 [selectedMode](~series-funnel.selectedMode) 后有效。
 
@@ -236,11 +244,19 @@ option = {
 
 ### blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 {{ use: partial-funnel-state(
     prefix = "###"
 ) }}
 
 ### select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 {{ use: partial-funnel-state(
     prefix = "###"

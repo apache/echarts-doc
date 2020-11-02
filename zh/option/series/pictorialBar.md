@@ -169,6 +169,10 @@ option = {
 
 ## blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 淡出状态配置。开启 [emphasis.focus](~series-pictoialBar.emphasis.focus) 后有效。
 
 {{ use: pictoialBar-state(
@@ -176,6 +180,10 @@ option = {
 ) }}
 
 ## select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 选中状态配置。开启 [selectedMode](~series-bar.selectedMode) 后有效。
 
@@ -258,6 +266,10 @@ option = {
 
 ### blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 单个数据的淡出状态配置。
 
 {{ use: partial-bar-state(
@@ -265,6 +277,10 @@ option = {
 ) }}
 
 ### select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 单个数据的选中状态配置。
 

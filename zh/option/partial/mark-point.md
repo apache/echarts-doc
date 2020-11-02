@@ -56,6 +56,10 @@
 
 ##${prefix} blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 标注的淡出样式。淡出的规则跟随所在系列。
 
 ###${prefix} label(Object)

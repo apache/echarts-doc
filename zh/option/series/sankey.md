@@ -144,11 +144,19 @@ levels: [{
 
 ### blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 {{ use: sankey-state(
     prefix = "###"
 ) }}
 
 ### select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 {{ use: sankey-state(
     prefix = "###"
@@ -206,6 +214,10 @@ levels: [{
 
 ## blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 桑基图的淡出状态。开启 [emphasis.focus](~series-sankey.emphasis.focus) 后有效。
 
 {{ use: sankey-state(
@@ -213,6 +225,10 @@ levels: [{
 ) }}
 
 ## select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 桑基图的选中状态。开启 [selectedMode](~series-sankey.selectedMode) 后有效。
 
@@ -278,11 +294,19 @@ data: [{
 
 ### blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 {{ use: sankey-node-state(
     prefix = "###"
 ) }}
 
 ### select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 {{ use: sankey-node-state(
     prefix = "###"
@@ -338,6 +362,10 @@ links: [{
 
 ### blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 #### lineStyle(Object)
 
 {{ use: partial-sankey-line-style(
@@ -345,6 +373,10 @@ links: [{
 ) }}
 
 ### select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 #### lineStyle(Object)
 

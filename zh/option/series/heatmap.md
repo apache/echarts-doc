@@ -137,6 +137,10 @@ option = {
 
 ## blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 淡出状态的图形样式。开启 [emphasis.focus](~series-heatmap.emphasis.focus) 后有效。
 
 {{ use: heatmap-state(
@@ -144,6 +148,10 @@ option = {
 ) }}
 
 ## select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 选中状态的图形样式。开启 [selectedMode](~series-heatmap.selectedMode) 后有效。
 

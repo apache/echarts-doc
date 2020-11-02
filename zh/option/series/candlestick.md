@@ -291,6 +291,10 @@ K 线图的高亮状态。
 
 ## blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 K 线图的淡出状态。开启 [emphasis.focus](~series-candlestick.emphasis.focus) 后有效
 
 ### itemStyle(Object)
@@ -301,6 +305,10 @@ K 线图的淡出状态。开启 [emphasis.focus](~series-candlestick.emphasis.f
 ) }}
 
 ## select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 K 线图的选中状态。开启 [selectedMode](~series-candlestick.selectedMode) 后有效。
 
@@ -392,6 +400,10 @@ K 线图的选中状态。开启 [selectedMode](~series-candlestick.selectedMode
 
 ### blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 单个 K 线图数据的淡出状态配置。
 
 #### itemStyle(Object)
@@ -401,6 +413,10 @@ K 线图的选中状态。开启 [selectedMode](~series-candlestick.selectedMode
 ) }}
 
 ### select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 单个 K 线图数据的选中状态配置。
 

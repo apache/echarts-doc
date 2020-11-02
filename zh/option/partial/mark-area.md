@@ -43,6 +43,10 @@
 
 ##${prefix} blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 淡出的标域样式。淡出的规则跟随所在系列。
 
 ###${prefix} label(Object)
@@ -243,6 +247,10 @@ data: [
 ) }}
 
 #${prefix} blur(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 ##${prefix} itemStyle(Object)
 

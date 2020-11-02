@@ -123,6 +123,19 @@ const option = {
     formatter = true
 ) }}
 
+## endLabel(Object)
+
+折线端点的标签。
+
+{{ use: partial-label(
+    prefix = "##",
+    formatter = true
+) }}
+
+### valueAnimation(boolean)
+
+是否开启标签的数字动画。
+
 ## labelLine(Object)
 
 {{ use: partial-label-line-desc() }}
@@ -183,17 +196,50 @@ const option = {
 
 {{ use: line-state() }}
 
+### endLabel(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+{{ use: partial-label(
+    prefix = "###",
+    formatter = true
+) }}
+
 ## blur(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 折线图的淡出状态。开启 [emphasis.focus](~series-line.emphasis.focus) 后有效。
 
 {{ use: line-state() }}
 
+### endLabel(Object)
+
+{{ use: partial-label(
+    prefix = "###",
+    formatter = true
+) }}
+
 ## select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 折线图的选中状态。开启 [selectedMode](~series-line.selectedMode) 后有效。
 
 {{ use: line-state() }}
+
+### endLabel(Object)
+
+{{ use: partial-label(
+    prefix = "###",
+    formatter = true
+) }}
 
 {{ use: partial-selected-mode(
     version = '5.0.0'

@@ -178,6 +178,10 @@ const option = {
 
 ## blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 淡出状态的配置。
 
 {{ use: themeRiver-state(
@@ -185,6 +189,10 @@ const option = {
 ) }}
 
 ## select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 选中状态的配置。
 

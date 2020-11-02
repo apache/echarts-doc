@@ -50,6 +50,13 @@
 {{import: series-themeRiver}}
 {{import: series-custom}}
 
+# darkMode(boolean)
+
+是否是暗黑模式，默认会根据背景色 [backgroundColor](~backgroundColor) 的亮度自动设置。
+如果是设置了容器的背景色而无法判断到，就可以使用该配置手动指定，echarts 会根据是否是暗黑模式调整文本等的颜色。
+
+该配置通常会被用于主题中。
+
 # color(Array)
 
 调色盘颜色列表。如果系列没有设置颜色，则会依次循环从该列表中取颜色作为系列颜色。
@@ -73,6 +80,14 @@
 ) }}
 
 {{import: partial-animation }}
+
+# stateAnimation(Object)
+
+状态切换的动画配置，支持在每个系列里设置单独针对该系列的配置。
+
+{{use: partial-state-animation(
+    prefix = '#'
+) }}
 
 
 # blendMode(string) = 'source-over'

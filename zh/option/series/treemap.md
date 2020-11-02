@@ -760,6 +760,10 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 #${prefix} blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 淡出状态配置。
 
 {{ use: treemap-state(
@@ -767,6 +771,10 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 ) }}
 
 #${prefix} select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 选中状态配置。
 

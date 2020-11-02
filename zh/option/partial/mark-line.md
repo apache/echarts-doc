@@ -60,6 +60,10 @@
 
 ##${prefix} blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 标线的淡出样式。淡出的规则跟随所在系列。
 
 ###${prefix} label(Object)
@@ -299,6 +303,10 @@ data: [
 ) }}
 
 #${prefix} blur(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 ##${prefix} lineStyle(Object)
 

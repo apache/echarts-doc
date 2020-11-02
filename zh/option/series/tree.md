@@ -194,6 +194,10 @@ const option = {
 
 ## blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 淡出状态的相关配置。开启 [emphasis.focus](~series-tree.emphasis.focus) 后有效。
 
 {{ use: tree-state(
@@ -201,6 +205,10 @@ const option = {
 ) }}
 
 ## select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 选中状态的相关配置。开启 [selectedMode](~series-tree.selectedMode) 后有效。
 
@@ -245,6 +253,10 @@ const option = {
 
 ### blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 叶子节点淡出状态的配置。
 
 {{ use: tree-node-state(
@@ -252,6 +264,10 @@ const option = {
 ) }}
 
 ### select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 叶子节点选中状态的配置。
 
@@ -333,6 +349,10 @@ const option = {
 
 ### blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 节点淡出状态的配置。
 
 {{ use: tree-node-state(
@@ -340,6 +360,10 @@ const option = {
 ) }}
 
 ### select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 节点选中状态的配置。
 

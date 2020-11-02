@@ -127,6 +127,10 @@ box 的宽度的上下限。数组的意思是：`[min, max]`。
 
 ## blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 淡出时的图形样式和标签样式。开启 [emphasis.focus](~series-boxplot.emphasis.focus) 后有效
 
 ### itemStyle(Object)
@@ -137,6 +141,10 @@ box 的宽度的上下限。数组的意思是：`[min, max]`。
 ) }}
 
 ## select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 数据选中时的图形样式和标签样式。开启 [selectedMode](~series-funnel.selectedMode) 后有效。
 
@@ -223,6 +231,10 @@ ECharts 并不内置对原始数据的处理，输入给 `boxplot` 的数据须�
 
 ### blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 盒须图单个数据淡出状态配置。
 
 #### itemStyle(Object)
@@ -233,6 +245,10 @@ ECharts 并不内置对原始数据的处理，输入给 `boxplot` 的数据须�
 ) }}
 
 ### select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 盒须图单个数据选中状态配置。
 

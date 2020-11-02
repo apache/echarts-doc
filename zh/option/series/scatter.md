@@ -168,6 +168,10 @@ const option = {
 
 ## blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 淡出状态的配置。开启 [emphasis.focus](~series-scatter.emphasis.focus) 后有效。
 
 {{ use: scatter-state(
@@ -175,6 +179,10 @@ const option = {
 ) }}
 
 ## select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 选中状态的配置。开启 [selectedMode](~series-scatter.selectedMode) 后有效。
 
@@ -256,6 +264,10 @@ const option = {
 
 ### blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 单个数据的淡出图形和标签样式。
 
 {{ use: scatter-state(
@@ -263,6 +275,10 @@ const option = {
 ) }}
 
 ### select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 单个数据的选中图形和标签样式。
 

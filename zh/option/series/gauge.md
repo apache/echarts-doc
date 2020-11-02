@@ -453,7 +453,7 @@ formatter: function (value) {
 
 {{ target: partial-gauge-title-detail }}
 
-#${prefix|default('#')} title(Object)
+#${prefix} title(Object)
 
 仪表盘标题。
 
@@ -477,7 +477,11 @@ formatter: function (value) {
     noVerticalAlign = true
 ) }}
 
-#${prefix|default('#')} detail(Object)
+##${prefix} valueAnimation(boolean) = true
+
+是否开启标签的数字动画。
+
+#${prefix} detail(Object)
 
 仪表盘详情，用于显示数据。
 
@@ -496,6 +500,10 @@ formatter: function (value) {
     noAlign = true,
     noVerticalAlign = true
 ) }}
+
+##${prefix} valueAnimation(boolean) = true
+
+是否开启标签的数字动画。
 
 ##${prefix} width(number) = 100
 

@@ -121,6 +121,10 @@ const option = {
 
 ## blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 淡出状态的配置。开启 [emphasis.focus](~series-radar.emphasis.focus) 后有效。
 
 {{ use: radar-state(
@@ -128,6 +132,10 @@ const option = {
 ) }}
 
 ## select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 选中状态的配置。开启 [selectedMode](~series-radar.selectedMode) 后有效。
 
@@ -216,6 +224,10 @@ data : [
 
 ### blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 单个数据项样式的淡出状态。
 
 {{ use: radar-state(
@@ -223,6 +235,10 @@ data : [
 ) }}
 
 ### select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 单个数据项样式的选中状态。
 

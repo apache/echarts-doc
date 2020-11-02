@@ -228,6 +228,10 @@ const option = {
 
 ## blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 淡出状态的扇区和标签样式。开启 [emphasis.focus](~series-pie.emphasis.focus) 后有效。
 
 {{ use: pie-state(
@@ -235,6 +239,10 @@ const option = {
 ) }}
 
 ## select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 选中状态的扇区和标签样式。开启 [selectedMode](~series-pie.selectedMode) 后有效。
 
@@ -312,11 +320,19 @@ const option = {
 
 ### blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 {{ use: pie-state(
     prefix = "###"
 ) }}
 
 ### select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 {{ use: pie-state(
     prefix = "###"

@@ -170,7 +170,7 @@ option = {
     isNormal = false
 ) }}
 
-## blur(Object)
+## ct)
 
 淡出时的图形样式和标签样式。开启 [emphasis.focus](~series-bar.emphasis.focus) 后有效。
 
@@ -258,6 +258,10 @@ option = {
 
 ### blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 单个数据的淡出状态配置。
 
 {{ use: partial-bar-state(
@@ -267,6 +271,10 @@ option = {
 ) }}
 
 ### select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 单个数据的选中状态配置。
 
@@ -312,6 +320,12 @@ option = {
     defaultPosition = "'inside'",
     formatter = ${topLevel}
 ) }}
+
+{{ if: ${topLevel && isNormal} }}
+##${prefix} valueAnimation(boolean)
+
+是否开启标签的数字动画。
+{{/if}}
 
 #${prefix} labelLine(Object)
 

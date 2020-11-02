@@ -233,11 +233,19 @@ edgeSymbol: ['circle', 'arrow']
 
 ## blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 淡出状态的图形样式。开启 [emphasis.focus](~series-graph.emphasis.focus) 后有效。
 
 {{ use: graph-state() }}
 
 ## select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 选中状态的图形样式。开启 [selectedMode](~series-graph.selectedMode) 后有效。
 
@@ -289,11 +297,19 @@ edgeSymbol: ['circle', 'arrow']
 
 ### blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 该类目节点的淡出状态。
 
 {{ use: graph-node-state() }}
 
 ### select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 该类目节点的选中状态。
 
@@ -387,11 +403,19 @@ data: [{
 
 ### blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 该节点的淡出状态。
 
 {{ use: graph-node-state() }}
 
 ### select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 该节点的选中状态。
 
@@ -456,11 +480,19 @@ links: [{
 
 ### blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 该关系边的淡出状态。
 
 {{ use: graph-edge-state() }}
 
 ### select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 该关系边的选中状态。
 

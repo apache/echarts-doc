@@ -1372,6 +1372,10 @@ chart.on('click', function (params) {
 
 ##${prefix} blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 图形元素的淡出状态，配置`focus`时有效。
 
 ###${prefix} style(Object)
@@ -1379,6 +1383,10 @@ chart.on('click', function (params) {
 结构同 [style](~${optionPath}.${hostName}${symbolVisit}polygon.style)。
 
 ##${prefix} select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 图形元素的选中状态，配置自定义系列的 [selectedMode](~series-custom.selectedMode) 时有效。
 
