@@ -30,7 +30,7 @@ Bar chart shows different data through the height of a bar, which is used in [re
 <ExampleUIControlBoolean default="${defaultRoundCap|default(false)}" />
 
 {{ use: partial-version(
-    version = "5.0"
+    version = "4.5.0"
 ) }}
 
 <ExampleUIControlBoolean clean="true" />

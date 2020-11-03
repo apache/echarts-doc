@@ -106,7 +106,7 @@ option = {
 <ExampleUIControlBoolean default="${defaultRoundCap|default(false)}" />
 
 {{ use: partial-version(
-    version = "5.0"
+    version = "4.5.0"
 ) }}
 
 <ExampleUIControlBoolean clean="true" />
@@ -170,7 +170,7 @@ option = {
     isNormal = false
 ) }}
 
-## ct)
+## blur(Object)
 
 淡出时的图形样式和标签样式。开启 [emphasis.focus](~series-bar.emphasis.focus) 后有效。
 
