@@ -81,8 +81,6 @@ formatter: function (value, indicator) {
 }
 ```
 
-## textStyle(Object)
-
 {{ use: partial-text-style(
     prefix = '##',
     defaultColor = "'#333'",
