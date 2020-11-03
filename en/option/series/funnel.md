@@ -50,6 +50,10 @@ It can be absolute pixel and also the percentage of [layout width](~series-funne
 
 Orient of funnel，Can be `'vertical'` or `'horizontal'`.
 
+{{ use: partial-version(
+    version = "4.9.0"
+) }}
+
 ## sort(string|Function) = 'descending'
 
 <ExampleUIControlEnum options="none,descending,ascending" default="descending" />

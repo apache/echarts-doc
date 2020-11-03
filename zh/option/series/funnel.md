@@ -72,6 +72,10 @@ option = {
 
 漏斗图朝向，支持配置为`'vertical'`或者`'horizontal'`。
 
+{{ use: partial-version(
+    version = "4.9.0"
+) }}
+
 ## sort(string|Function) = 'descending'
 
 <ExampleUIControlEnum options="none,descending,ascending" default="descending" />
