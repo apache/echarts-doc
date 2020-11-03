@@ -252,55 +252,6 @@ chart.setOption(option); // option设置回 ${componentMainType}
 
 
 
-{{ target: partial-visual-map-inRange-outOfRange }}
-
-##${prefix} inRange(Object)
-
-定义 **在选中范围中** 的视觉元素。（用户可以和 visualMap 组件交互，用鼠标或触摸选择范围）
-
-可选的视觉元素有：
-
-{{ use: partial-visual-map-visual-type() }}
-
----
-
-{{ use: partial-visual-map-range(
-    rangeType = 'inRange',
-    visualMapName = ${visualMapName}
-) }}
-
----
-
-{{ use: partial-visual-map-merge(
-    componentMainType = 'visualMap'
-) }}
-
-**注意**，inRange 没有指定，则会默认会设置 color: `['#f6efa6', '#d88273', '#bf444c']`，如果你不想要这个color，可以
-`inRange: {color: null}` 来去除。
-
-##${prefix} outOfRange(Object)
-
-定义 **在选中范围外** 的视觉元素。（用户可以和 visualMap 组件交互，用鼠标或触摸选择范围）
-
-可选的视觉元素有：
-
-{{ use: partial-visual-map-visual-type() }}
-
----
-
-{{ use: partial-visual-map-range(
-    rangeType = 'outOfRange',
-    visualMapName = ${visualMapName}
-) }}
-
----
-
-{{ use: partial-visual-map-merge(
-    componentMainType = 'visualMap'
-) }}
-
-
-
 {{ target: partial-visual-map-common }}
 
 ## show(boolean) = true
@@ -338,6 +289,33 @@ chart.setOption(option); // option设置回 ${componentMainType}
 
 反之，鼠标悬浮到图表中的图形元素上时，在 `visualMap` 组件的相应位置会有三角提示其所对应的数值。
 
+
+## inRange(Object)
+
+定义 **在选中范围中** 的视觉元素。（用户可以和 visualMap 组件交互，用鼠标或触摸选择范围）
+
+可选的视觉元素有：
+
+{{ use: partial-visual-map-visual-type() }}
+
+{{ use: partial-visual-map-range(
+    rangeType = 'inRange',
+    visualMapName = ${visualMapName}
+) }}
+
+{{ use: partial-visual-map-merge(
+    componentMainType = 'visualMap'
+) }}
+
+**注意**，inRange 没有指定，则会默认会设置 color: `['#f6efa6', '#d88273', '#bf444c']`，如果你不想要这个color，可以
+`inRange: {color: null}` 来去除。
+
+## outOfRange(Object)
+
+定义 **在选中范围外** 的视觉元素。（用户可以和 visualMap 组件交互，用鼠标或触摸选择范围）
+
+配置参考 [${visualMapName}.inRange](~${visualMapName}.inRange)
+
 {{ use: partial-visual-map-inRange-outOfRange(
     prefix = "",
     visualMapName = ${visualMapName}
@@ -347,8 +325,20 @@ chart.setOption(option); // option设置回 ${componentMainType}
 
 visualMap 组件中，`控制器` 的 `inRange` `outOfRange` 设置。如果没有这个 `controller` 设置，`控制器` 会使用外层的 `inRange` `outOfRange` 设置；如果有这个 `controller` 设置，则会采用这个设置。适用于一些控制器视觉效果需要特殊定制或调整的场景。
 
+### inRange(Object)
+
+定义 **在选中范围中** 的视觉元素。（用户可以和 visualMap 组件交互，用鼠标或触摸选择范围）
+
+配置参考 [${visualMapName}.inRange](~${visualMapName}.inRange)
+
+### outOfRange(Object)
+
+定义 **在选中范围外** 的视觉元素。（用户可以和 visualMap 组件交互，用鼠标或触摸选择范围）
+
+配置参考 [${visualMapName}.inRange](~${visualMapName}.inRange)
+
 {{ use: partial-visual-map-inRange-outOfRange(
-    prefix = "#",
+    prefix = "",
     visualMapName = ${visualMapName}
 ) }}
 
