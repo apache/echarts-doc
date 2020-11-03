@@ -24,6 +24,7 @@
         <span class="path-base">
             <a :href="'#' + baseName.link">{{baseName.text}}</a>
         </span>
+        <span class="current-flag" v-if="shared.currentPath === nodeData.path"><i class="el-icon-s-flag"></i></span>
 
         <span class="default-value" v-if="nodeData.default && nodeData.default !== '*'"> = {{nodeData.default}}</span>
 
@@ -235,7 +236,7 @@ $hierarchy-guider-color: #E0E6F1;
     padding: 15px 0;
 
     &.current {
-        border-top: 1px solid #b03a5b;
+        // border-top: 1px solid #b03a5b;
     }
 
     .hierarchy-line {
@@ -316,6 +317,11 @@ $hierarchy-guider-color: #E0E6F1;
                     text-decoration: underline;
                 }
             }
+        }
+
+        .current-flag {
+            color: #434343;
+            font-size: 16px;
         }
 
         .default-value {
