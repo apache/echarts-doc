@@ -275,6 +275,12 @@ option = {
 };
 ```
 
+<br>
+<br>
+This is another example of filter transform:
+~[600x350](${galleryViewPath}data-transform-filter&reset=1&edit=1)
+
+
 **About dimension:**
 
 The `config.dimension` can be:
@@ -563,5 +569,12 @@ option = {
 };
 ```
 
-example: ecState regression
+Examples with echarts-stat:
+
++ [Bar histogram](${galleryEditorPath}bar-histogram&edit=1&reset=1)
++ [Scatter clustering](${galleryEditorPath}scatter-clustering&edit=1&reset=1)
++ [Scatter linear regression](${galleryEditorPath}scatter-linear-regression&edit=1&reset=1)
++ [Scatter exponential regression](${galleryEditorPath}scatter-exponential-regression&edit=1&reset=1)
++ [Scatter logarithmic regression](${galleryEditorPath}scatter-logarithmic-regression&edit=1&reset=1)
++ [Scatter polynomial regression](${galleryEditorPath}scatter-polynomial-regression&edit=1&reset=1)
 

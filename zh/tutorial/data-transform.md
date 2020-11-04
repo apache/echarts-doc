@@ -266,6 +266,12 @@ option = {
 };
 ```
 
+<br>
+<br>
+这是 filter 的另一个例子的效果：
+~[600x350](${galleryViewPath}data-transform-filter&reset=1&edit=1)
+
+
 在 "filter" transform 中，有这些要素：
 
 **关于维度（ dimension ）：**
@@ -552,5 +558,12 @@ option = {
 };
 ```
 
-example: ecState regression
+一些使用 echarts-stat 的例子：
+
++ [直方图](${galleryEditorPath}bar-histogram&edit=1&reset=1)
++ [简单聚类](${galleryEditorPath}scatter-clustering&edit=1&reset=1)
++ [线性回归线](${galleryEditorPath}scatter-linear-regression&edit=1&reset=1)
++ [指数回归线](${galleryEditorPath}scatter-exponential-regression&edit=1&reset=1)
++ [对数回归线](${galleryEditorPath}scatter-logarithmic-regression&edit=1&reset=1)
++ [多项式回归线](${galleryEditorPath}scatter-polynomial-regression&edit=1&reset=1)
 
