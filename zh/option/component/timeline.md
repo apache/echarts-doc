@@ -567,7 +567,7 @@ const option = {
     prefix = "##",
     name = "timeline ",
     defaultWidth = 2,
-    defaultColor = "'#304654'"
+    defaultColor = "'#DAE1F5'"
 ) }}
 
 ## label(Object)
@@ -605,7 +605,7 @@ const option = {
 
 {{ use: partial-timeline-label(
     prefix = "##",
-    textStyleDefaultColor = "'#304654'"
+    textStyleDefaultColor = "'#A4B1D7'"
 ) }}
 
 ## itemStyle(Object)
@@ -617,7 +617,7 @@ const option = {
 {{ use: partial-item-style(
     prefix = "##",
     name = "timeline ",
-    defaultColor = "'#304654'",
+    defaultColor = "'#A4B1D7'",
     defaultBorderWidth = 1
 ) }}
 
@@ -632,23 +632,16 @@ const option = {
     name = 'timeline.checkpointStyle '
 ) }}
 
-### color(Color) = '#c23531'
-
-<ExampleUIControlColor default="#c23531" />
-
-`timeline`组件中『当前项』（`checkpoint`）的颜色。
-
-### borderWidth(number) = 5
-
-<ExampleUIControlNumber min="0" step="0.5" default="5" />
-
-`timeline`组件中『当前项』（`checkpoint`）的边框宽度。
-
-### borderColor(Color) = 'rgba(194,53,49, 0.5)'
-
-<ExampleUIControlColor default="rgba(194,53,49, 0.5)" />
-
-`timeline`组件中『当前项』（`checkpoint`）的边框颜色。
+{{ use: partial-item-style(
+    prefix = '##',
+    defaultColor = "'#316bf3'",
+    defaultBorderColor = "'#fff'",
+    defaultBorderWidth = 2,
+    defaultShadowBlur = 2,
+    defaultShadowOffsetX = 1,
+    defaultShadowOffsetY = 1,
+    defaultShadowColor = "'rgba(0, 0, 0, 0.3)'"
+) }}
 
 ### animation(boolean) = true
 
@@ -696,7 +689,7 @@ const option = {
 
 是否显示『前进按钮』。
 
-### itemSize(number) = 22
+### itemSize(number) = 24
 
 <ExampleUIControlNumber min="0" step="0.5" default="22" />
 
@@ -750,23 +743,38 @@ const option = {
 
 {{ use: partial-icon-image-path() }}
 
-### color(Color) = '#304654'
+{{ use: partial-item-style(
+    prefix = '##',
+    defaultColor = "'#A4B1D7'",
+    defaultBorderColor = "'#A4B1D7'",
+    defaultBorderWidth = 1
+) }}
 
-<ExampleUIControlColor default="#304654" />
+## progress(Object)
 
-按钮颜色。
+进度条中的线条，拐点，标签的样式。
 
-### borderColor(Color) = '#304654'
+### lineStyle(Object)
 
-<ExampleUIControlColor default="#304654" />
+{{ use: partial-line-style(
+    prefix = "###",
+    defaultColor = "'#316BF3'"
+) }}
 
-按钮边框颜色。
+### itemStyle(Object)
 
-### borderWidth(number) = 1
+{{ use: partial-item-style(
+    prefix = "###",
+    defaultColor = "'#316BF3'"
+) }}
 
-<ExampleUIControlNumber min="0" step="0.5" default="1" />
+### label(Object)
 
-按钮边框线宽。
+{{ use: partial-timeline-label(
+    prefix = "###",
+    textStyleDefaultColor = "'#6f778d'"
+) }}
+
 
 ## emphasis(Object)
 
@@ -775,7 +783,7 @@ const option = {
 {{ use: partial-timeline-label(
     prefix = "###",
     state = "emphasis",
-    textStyleDefaultColor = "'#c23531'"
+    textStyleDefaultColor = "'#6f778d'"
 ) }}
 
 ### itemStyle(Object)
@@ -783,7 +791,7 @@ const option = {
 {{ use: partial-item-style(
     prefix = "###",
     name = "timeline ",
-    defaultColor = "'#c23531'",
+    defaultColor = "'#316BF3'",
     defaultBorderWidth = 1
 ) }}
 

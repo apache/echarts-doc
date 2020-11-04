@@ -479,6 +479,10 @@ formatter: function (value) {
 
 ##${prefix} valueAnimation(boolean) = true
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 是否开启标签的数字动画。
 
 #${prefix} detail(Object)
@@ -502,6 +506,10 @@ formatter: function (value) {
 ) }}
 
 ##${prefix} valueAnimation(boolean) = true
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 是否开启标签的数字动画。
 

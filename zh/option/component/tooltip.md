@@ -88,7 +88,7 @@ const option = {
             smooth: true,
             symbol: 'circle',
             symbolSize: 5,
-            sampling: 'average',
+            sampling: 'lttb',
             itemStyle: {
                 color: '#8ec6ad'
             },
@@ -104,7 +104,7 @@ const option = {
             stack: 'a',
             symbol: 'circle',
             symbolSize: 5,
-            sampling: 'average',
+            sampling: 'lttb',
             itemStyle: {
                 color: '#d68262'
             },

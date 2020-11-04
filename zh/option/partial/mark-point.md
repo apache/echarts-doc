@@ -83,7 +83,7 @@
 {{ if: ${hasCoord} }}
 2. 用 [coord](~series-${seriesType}.markPoint.data.coord) 属性指定数据在相应坐标系上的坐标位置，单个维度支持设置 `'min'`, `'max'`, `'average'`。
 {{ /if }}{{ if: ${hasType} }}
-3. 直接用 [type](~series-${seriesType}.markPoint.data.type) 属性标注系列中的最大值，最小值。这时候可以使用 [valueIndex](~series-${seriesType}.markPoint.data.valueIndex) 指定是在哪个维度上的最大值、最小值、平均值。或者可以使用 [valueDim](~series-${seriesType}.markPoint.data.valueDim) 指定在哪个维度上的最大值、最小值、平均值。
+3. 直接用 [type](~series-${seriesType}.markPoint.data.type) 属性标注系列中的最大值，最小值。这时候可以使用 [valueIndex](~series-${seriesType}.markPoint.data.valueIndex) 或者 [valueDim](~series-${seriesType}.markPoint.data.valueDim) 指定是在哪个维度上的最大值、最小值、平均值。
 {{ /if }}
 
 当多个属性同时存在时，优先级按上述的顺序。

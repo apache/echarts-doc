@@ -171,3 +171,73 @@ formatter: function (value) {
 }
 ```
 
+## handleIcon(string)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+<ExampleUIControlIcon />
+
+两端手柄的形状。默认为
+```js
+'M-11.39,9.77h0a3.5,3.5,0,0,1-3.5,3.5h-22a3.5,3.5,0,0,1-3.5-3.5h0a3.5,3.5,0,0,1,3.5-3.5h22A3.5,3.5,0,0,1-11.39,9.77Z'
+```
+
+{{ use: partial-icon-image-path() }}
+
+## handleSize(number|string) = '120%'
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+手柄的大小。可以是相对于组件尺寸的百分比大小。
+
+## handleStyle(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+手柄的样式配置。
+
+{{ use: partial-item-style(
+    prefix = "##",
+    defaultBorderColor = "#fff",
+    defaultBorderWidth = 1
+) }}
+
+
+## indicatorIcon(string) = 'circle'
+
+指示器的形状，默认为圆形。指示器在鼠标移到组件上，或者在移到系列图形上联动高亮的时候出现。
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+<ExampleUIControlIcon />
+
+
+## indicatorSize(number|string) = '50%'
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+指示器的大小。可以是相对于组件尺寸的百分比大小。
+
+## indicatorStyle(Object)
+
+指示器样式。
+
+{{ use: partial-item-style(
+    prefix = "##",
+    defaultBorderColor = "#fff",
+    defaultBorderWidth = 2,
+    defaultShadowBlur = 2,
+    defaultShadowOffsetX = 1,
+    defaultShadowOffsetY = 1,
+    defaultShadowColor = 'rgba(0,0,0,0.2)'
+) }}
