@@ -91,6 +91,10 @@ Configurations of emphasis state.
 
 ## blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 Configurations of blur state. Available when [emphasis.focus](~series-boxplot.emphasis.focus) is set.
 
 ### itemStyle(Object)
@@ -101,6 +105,10 @@ Configurations of blur state. Available when [emphasis.focus](~series-boxplot.em
 ) }}
 
 ## select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 Configurations of select state. Available when [selectedMode](~series-boxplot.selectedMode) is set.
 
@@ -187,6 +195,10 @@ Emphasis state of a single data.
 
 ### blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 Blur state of single data.
 
 #### itemStyle(Object)
@@ -197,6 +209,10 @@ Blur state of single data.
 ) }}
 
 ### select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 Select state of single data.
 

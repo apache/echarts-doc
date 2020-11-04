@@ -148,12 +148,21 @@ Distance between label line and text.
 
 The style of visual guide line. Will show when [label position](~series-pie.label.position) is set as `'outside'`.
 
-{{ use: partial-pie-label-line(
+{{ use: partial-label-line(
     prefix = '##',
     length = true,
     length2 = true,
+    minTurnAngle = true,
+    showAbove = true,
+    defaultMinTurnAngle = 90,
     smooth = true
 ) }}
+
+### maxSurfaceAngle(number)
+
+Max angle between guide line and surface normal. To prevent guide line overlapping with sector.
+
+Can be 0 - 180 degree.
 
 ## labelLayout(Object|Function)
 
@@ -195,6 +204,10 @@ Size of scale. Available when [emphasis.scale](~series-pie.emphasis.scale) is se
 
 ## blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 Configurations of blur state. Available when [emphasis.focus](~series-pie.emphasis.focus) is set.
 
 {{ use: pie-state(
@@ -202,6 +215,10 @@ Configurations of blur state. Available when [emphasis.focus](~series-pie.emphas
 ) }}
 
 ## select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 Configurations of select state. Available when [selectedMode](~series-pie.selectedMode) is set.
 
@@ -279,11 +296,19 @@ The label configuration of a single sector.
 
 ### blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 {{ use: pie-state(
     prefix = "###"
 ) }}
 
 ### select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 {{ use: pie-state(
     prefix = "###"
@@ -374,46 +399,6 @@ Label rotation.
 
 {{ use: partial-text-style(
     prefix = ${prefix}
-) }}
-
-
-
-{{ target: partial-pie-label-line }}
-
-#${prefix} show(boolean)
-
-<ExampleUIControlBoolean />
-
-Whether to show the visual guide ine.
-
-{{ if: ${length} }}
-#${prefix} length(number)
-
-<ExampleUIControlNumber default="15" min="0" step="1" />
-
-The length of the first segment of visual guide line.
-{{ /if }}
-
-{{ if: ${length2} }}
-#${prefix} length2(number)
-
-<ExampleUIControlNumber default="15" min="0" step="1" />
-
-The length of the second segment of visual guide line.
-{{ /if }}
-
-{{ if: ${smooth} }}
-#${prefix} smooth(boolean|number) = false
-
-<ExampleUIControlBoolean />
-
-Whether to smooth the visual guide line. It defaults to be `false` and can be set as `true` or the values from 0 to 1 which indicating the smoothness.
-{{ /if }}
-
-#${prefix} lineStyle(Object)
-
-{{ use: partial-line-style(
-    prefix = "#" + ${prefix}
 ) }}
 
 

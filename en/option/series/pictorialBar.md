@@ -80,6 +80,18 @@ See the example below:
     formatter = true
 ) }}
 
+## labelLine(Object)
+
+{{ use: partial-label-line-desc() }}
+
+{{ use: partial-label-line(
+    prefix = '##',
+    length2 = true,
+    minTurnAngle = true,
+    showAbove = true,
+    smooth = true
+) }}
+
 ## labelLayout(Object|Function)
 
 {{ use: partial-label-layout(
@@ -108,6 +120,10 @@ Configurations of emphasis state.
 
 ## blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 Configurations of blur state. Available when [emphasis.focus](~series-pictoialBar.emphasis.focus) is set.
 
 {{ use: pictoialBar-state(
@@ -115,6 +131,10 @@ Configurations of blur state. Available when [emphasis.focus](~series-pictoialBa
 ) }}
 
 ## select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 Configurations of select state. Available when [selectedMode](~series-pictoialBar.selectedMode) is set.
 
@@ -169,6 +189,18 @@ The style setting of the text label in a single bar.
     defaultPosition = "inside"
 ) }}
 
+### labelLine(Object)
+
+{{ use: partial-label-line-desc() }}
+
+{{ use: partial-label-line(
+    prefix = '###',
+    length2 = true,
+    minTurnAngle = true,
+    showAbove = true,
+    smooth = true
+) }}
+
 ### itemStyle(Object)
 
 {{ use: partial-item-style(
@@ -185,6 +217,10 @@ Emphasis state of the specified single data.
 
 ### blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 Blur state of the specified single data.
 
 {{ use: partial-bar-state(
@@ -192,6 +228,10 @@ Blur state of the specified single data.
 ) }}
 
 ### select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 Select state of the specified single data.
 
@@ -574,6 +614,14 @@ series: [{
 {{ use: partial-label(
     prefix = "#" + ${prefix},
     formatter = ${prefix} === '##'
+) }}
+
+#${prefix} labelLine(Object)
+
+{{ use: partial-label-line-desc() }}
+
+{{ use: partial-label-line(
+    prefix = "#" + ${prefix}
 ) }}
 
 #${prefix} itemStyle(Object)

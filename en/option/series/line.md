@@ -94,6 +94,31 @@ See the example using different `step` options:
     formatter = true
 ) }}
 
+## endLabel(Object)
+
+Label on the end of line.
+
+{{ use: partial-label(
+    prefix = "##",
+    formatter = true
+) }}
+
+### valueAnimation(boolean)
+
+Whether to enable text animation of value change.
+
+## labelLine(Object)
+
+{{ use: partial-label-line-desc() }}
+
+{{ use: partial-label-line(
+    prefix = '##',
+    length2 = true,
+    minTurnAngle = true,
+    showAbove = true,
+    smooth = true
+) }}
+
 ## labelLayout(Object|Function)
 
 {{ use: partial-label-layout(
@@ -140,17 +165,50 @@ Whether to scale to highlight the data in emphasis state.
 
 {{ use: line-state() }}
 
+### endLabel(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+{{ use: partial-label(
+    prefix = "###",
+    formatter = true
+) }}
+
 ## blur(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 Configurations of blur state. Available when [emphasis.focus](~series-line.emphasis.focus) is set.
 
 {{ use: line-state() }}
 
+### endLabel(Object)
+
+{{ use: partial-label(
+    prefix = "###",
+    formatter = true
+) }}
+
 ## select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 Configurations of select state. Available when [selectedMode](~series-line.selectedMode) is set.
 
 {{ use: line-state() }}
+
+### endLabel(Object)
+
+{{ use: partial-label(
+    prefix = "###",
+    formatter = true
+) }}
 
 {{ use: partial-selected-mode(
     version = '5.0.0'
@@ -231,6 +289,18 @@ The style of the text of single data point.
     defaultPosition = "top"
 ) }}
 
+### labelLine(Object)
+
+{{ use: partial-label-line-desc() }}
+
+{{ use: partial-label-line(
+    prefix = '###',
+    length2 = true,
+    minTurnAngle = true,
+    showAbove = true,
+    smooth = true
+) }}
+
 ### itemStyle(Object)
 
 The style of the symbol of single data point.
@@ -291,6 +361,14 @@ Select state of specified single data.
 {{ use: partial-label(
     prefix = "###",
     formatter = true
+) }}
+
+### labelLine(Object)
+
+{{ use: partial-label-line-desc() }}
+
+{{ use: partial-label-line(
+    prefix = '###'
 ) }}
 
 ### itemStyle(Object)

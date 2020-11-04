@@ -85,6 +85,10 @@ Configurations of emphasis state.
 
 ## blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 Configurations of blur state. Available when [emphasis.focus](~series-radar.emphasis.focus) is set.
 
 {{ use: radar-state(
@@ -92,6 +96,10 @@ Configurations of blur state. Available when [emphasis.focus](~series-radar.emph
 ) }}
 
 ## select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 Configurations of select state. Available when [selectedMode](~series-radar.selectedMode) is set.
 
@@ -180,7 +188,11 @@ Configurations of emphasis state.
 
 ### blur(Object)
 
-单个数据项样式的淡出状态。
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+Configurations of blur state.
 
 {{ use: radar-state(
     prefix = "###"
@@ -188,7 +200,11 @@ Configurations of emphasis state.
 
 ### select(Object)
 
-单个数据项样式的选中状态。
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+Configurations of selected state.
 
 {{ use: radar-state(
     prefix = "###"

@@ -43,6 +43,10 @@ Emphasis status of mark area.
 
 ##${prefix} blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 Configurations of blur state. Whether to blur follows the series.
 
 ###${prefix} label(Object)
@@ -250,6 +254,10 @@ Label style of start point and end point will be merged together.
 ) }}
 
 #${prefix} blur(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 ##${prefix} itemStyle(Object)
 

@@ -228,11 +228,19 @@ Whether to scale to highlight the node in emphasis state.
 
 ## blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 Configurations of blur state. Available when [emphasis.focus](~series-graph.emphasis.focus) is set.
 
 {{ use: graph-state() }}
 
 ## select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 Configurations of select state. Available when [selectedMode](~series-graph.selectedMode) is set.
 
@@ -283,11 +291,19 @@ Emphasis state of nodes in this category.
 
 ### blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 Blur state of nodes in this category.
 
 {{ use: graph-node-state() }}
 
 ### select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 Select state of nodes in this category.
 
@@ -379,11 +395,19 @@ Emphasis state of specified node.
 
 ### blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 Blur state of specified node.
 
 {{ use: graph-node-state() }}
 
 ### select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 Select state of specified node.
 
@@ -448,11 +472,19 @@ Emphasis state of specified edge.
 
 ### blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 Blur state of specified edge.
 
 {{ use: graph-edge-state() }}
 
 ### select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 Select state of specified edge.
 

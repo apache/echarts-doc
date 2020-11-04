@@ -208,7 +208,7 @@ Whether to show the axis. It can be set to be `false` to hide the axis line to m
     prefix = "##",
     name = "timeline ",
     defaultWidth = 2,
-    defaultColor = "'#304654'"
+    defaultColor = "'#DAE1F5'"
 ) }}
 
 ## label(Object)
@@ -247,7 +247,7 @@ Configurations:
 
 {{ use: partial-timeline-label(
     prefix = "##",
-    textStyleDefaultColor = "'#304654'"
+    textStyleDefaultColor = "'#A4B1D7'"
 ) }}
 
 ## itemStyle(Object)
@@ -259,7 +259,7 @@ Configurations:
 {{ use: partial-item-style(
     prefix = "##",
     name = "timeline ",
-    defaultColor = "'#304654'",
+    defaultColor = "'#A4B1D7'",
     defaultBorderWidth = 1
 ) }}
 
@@ -274,23 +274,16 @@ Style of the selected item (`checkpoint`).
     name = 'timeline.checkpointStyle '
 ) }}
 
-### color(Color) = '#c23531'
-
-<ExampleUIControlColor default="#c23531" />
-
-Color of `checkpoint` in `timeline` component.
-
-### borderWidth(number) = 5
-
-<ExampleUIControlNumber min="0" step="0.5" default="5" />
-
-The border-width of `checkpoint` in `timeline` component.
-
-### borderColor(Color) = 'rgba(194,53,49, 0.5)'
-
-<ExampleUIControlColor default="rgba(194,53,49, 0.5)" />
-
-The border-color of `checkpoint` in `timeline` component.
+{{ use: partial-item-style(
+    prefix = '##',
+    defaultColor = "'#316bf3'",
+    defaultBorderColor = "'#fff'",
+    defaultBorderWidth = 2,
+    defaultShadowBlur = 2,
+    defaultShadowOffsetX = 1,
+    defaultShadowOffsetY = 1,
+    defaultShadowColor = "'rgba(0, 0, 0, 0.3)'"
+) }}
 
 ### animation(boolean) = true
 
@@ -392,23 +385,37 @@ Icon of *next button*.
 
 {{ use: partial-icon-image-path() }}
 
-### color(Color) = '#304654'
+{{ use: partial-item-style(
+    prefix = '##',
+    defaultColor = "'#A4B1D7'",
+    defaultBorderColor = "'#A4B1D7'",
+    defaultBorderWidth = 1
+) }}
 
-<ExampleUIControlColor default="#304654" />
+## progress(Object)
 
-Button color.
+Styles of line, labels and symbols in progress.
 
-### borderColor(Color) = '#304654'
+### lineStyle(Object)
 
-<ExampleUIControlColor default="#304654" />
+{{ use: partial-line-style(
+    prefix = "###",
+    defaultColor = "'#316BF3'"
+) }}
 
-Color of button border.
+### itemStyle(Object)
 
-### borderWidth(number) = 1
+{{ use: partial-item-style(
+    prefix = "###",
+    defaultColor = "'#316BF3'"
+) }}
 
-<ExampleUIControlNumber min="0" step="0.5" default="1" />
+### label(Object)
 
-Border width of button.
+{{ use: partial-timeline-label(
+    prefix = "###",
+    textStyleDefaultColor = "'#6f778d'"
+) }}
 
 ## emphasis(Object)
 
@@ -417,7 +424,7 @@ Border width of button.
 {{ use: partial-timeline-label(
     prefix = "###",
     state = "emphasis",
-    textStyleDefaultColor = "'#c23531'"
+    textStyleDefaultColor = "'#6f778d'"
 ) }}
 
 ### itemStyle(Object)
@@ -425,7 +432,7 @@ Border width of button.
 {{ use: partial-item-style(
     prefix = "###",
     name = "timeline ",
-    defaultColor = "'#c23531'",
+    defaultColor = "'#316BF3'",
     defaultBorderWidth = 1
 ) }}
 

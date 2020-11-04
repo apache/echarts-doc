@@ -60,6 +60,10 @@ Emphasis status of mark line.
 
 ##${prefix} blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 Configurations of blur state. Whether to blur follows the series.
 
 ###${prefix} label(Object)
@@ -300,6 +304,10 @@ Label of this data item, which will be merged with `label` of starting point and
 ) }}
 
 #${prefix} blur(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 ##${prefix} lineStyle(Object)
 

@@ -280,54 +280,6 @@ chart.setOption(option); // set the modified option back.
 
 
 
-{{ target: partial-visual-map-inRange-outOfRange }}
-
-##${prefix} inRange(Object)
-
-Define visual channels that will mapped from dataValues that are **in selected range**. (User can interact with visualMap component and make a seleced range by mouse or touch.)
-
-Possiable visual channels includes:
-
-{{ use: partial-visual-map-visual-type() }}
-
----
-
-{{ use: partial-visual-map-range(
-    rangeType = 'inRange',
-    visualMapName = ${visualMapName}
-) }}
-
----
-
-{{ use: partial-visual-map-merge(
-    componentMainType = 'visualMap'
-) }}
-
-**Notice:** There is default color `['#f6efa6', '#d88273', '#bf444c']` in `inRange` if you not set `inRange`. If you dont want it, set `inRange: {color: null}` to disable it.
-
-##${prefix} outOfRange(Object)
-
-Define visual channels that will mapped from dataValues that are **out of selected range**. (User can interact with visualMap component and make a seleced range by mouse or touch.)
-
-Possiable visual channels includes:
-
-{{ use: partial-visual-map-visual-type() }}
-
----
-
-{{ use: partial-visual-map-range(
-    rangeType = 'outOfRange',
-    visualMapName = ${visualMapName}
-) }}
-
----
-
-{{ use: partial-visual-map-merge(
-    componentMainType = 'visualMap'
-) }}
-
-
-
 {{ target: partial-visual-map-common }}
 
 ## show(boolean) = true
@@ -366,19 +318,44 @@ All series are used by default.
 
 Inversely, when mouse hovers a graphical element of chart, its value label will be displayed on its corresponding position in `visualMap`.
 
-{{ use: partial-visual-map-inRange-outOfRange(
-    prefix = "",
+## inRange(Object)
+
+Define visual channels that will mapped from dataValues that are **in selected range**. User can interact with visualMap component and make a seleced range by mouse or touch.
+
+{{ use: partial-visual-map-visual-type() }}
+
+{{ use: partial-visual-map-range(
+    rangeType = 'inRange',
     visualMapName = ${visualMapName}
 ) }}
+
+{{ use: partial-visual-map-merge(
+    componentMainType = 'visualMap'
+) }}
+
+**Notice:** There is default color `['#f6efa6', '#d88273', '#bf444c']` in `inRange` if you not set `inRange`. If you dont want it, set `inRange: {color: null}` to disable it.
+
+## outOfRange(Object)
+
+Define visual channels that will mapped from dataValues that are **out of selected range**. User can interact with visualMap component and make a seleced range by mouse or touch.
+
+See available configurations in [${visualMapName}.inRange](~${visualMapName}.inRange)
 
 ## controller(Object)
 
 Property `inRange` and `outOfRange` can be set within property `controller`, which means those `inRange` and `outOfRange` are only used on the controller (`visualMap` component itself), but are not used on chart (series). This property is useful in some scenarios when the view of controller needs to be customized in detail.
 
-{{ use: partial-visual-map-inRange-outOfRange(
-    prefix = "#",
-    visualMapName = ${visualMapName}
-) }}
+### inRange(Object)
+
+Define visual channels that will mapped from dataValues that are **in selected range**. User can interact with visualMap component and make a seleced range by mouse or touch.
+
+See available configurations in [${visualMapName}.inRange](~${visualMapName}.inRange)
+
+### outOfRange(Object)
+
+Define visual channels that will mapped from dataValues that are **out of selected range**. User can interact with visualMap component and make a seleced range by mouse or touch.
+
+See available configurations in [${visualMapName}.inRange](~${visualMapName}.inRange)
 
 {{ use: partial-rect-layout(
     componentName = "visualMap ",

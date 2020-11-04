@@ -1386,6 +1386,10 @@ Same to [style](~${optionPath}.${hostName}${symbolVisit}polygon.style).
 
 ##${prefix} blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 Blur state, available when `focus` is set.
 
 ###${prefix} style(Object)
@@ -1393,6 +1397,10 @@ Blur state, available when `focus` is set.
 Same to [style](~${optionPath}.${hostName}${symbolVisit}polygon.style).
 
 ##${prefix} select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 Select state, available when [selectedMode](~series-custom.selectedMode) is set.
 

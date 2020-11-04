@@ -67,6 +67,18 @@ The index of single time axis, which defaults to be 0 because it contains only o
     defaultFontSize = 11
 ) }}
 
+## labelLine(Object)
+
+{{ use: partial-label-line-desc() }}
+
+{{ use: partial-label-line(
+    prefix = '##',
+    length2 = true,
+    minTurnAngle = true,
+    showAbove = true,
+    smooth = true
+) }}
+
 ## labelLayout(Object|Function)
 
 {{ use: partial-label-layout(
@@ -93,6 +105,10 @@ Configurations of emphasis state.
 
 ## blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 Configurations of blur state.
 
 {{ use: themeRiver-state(
@@ -100,6 +116,10 @@ Configurations of blur state.
 ) }}
 
 ## select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 Configurations of select state.
 
@@ -161,6 +181,14 @@ the name of an event or theme.
     noVerticalAlign = true,
     defaultColor = "'#000'",
     defaultFontSize = 11
+) }}
+
+#${prefix} labelLine(Object)
+
+{{ use: partial-label-line-desc() }}
+
+{{ use: partial-label-line(
+    prefix = '#' + ${prefix}
 ) }}
 
 #${prefix} itemStyle(Object)

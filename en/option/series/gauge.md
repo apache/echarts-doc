@@ -464,6 +464,14 @@ The offset position relative to the center of gauge chart. The first item of arr
     noVerticalAlign = true
 ) }}
 
+##${prefix} valueAnimation(boolean) = true
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+Whether to enable text animation of value change.
+
 #${prefix|default('#')} detail(Object)
 
 The detail about gauge chart which is used to show data.
@@ -483,6 +491,14 @@ Whether to show the details.
     noAlign = true,
     noVerticalAlign = true
 ) }}
+
+##${prefix} valueAnimation(boolean) = true
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+Whether to enable text animation of value change.
 
 ##${prefix} width(number) = 100
 

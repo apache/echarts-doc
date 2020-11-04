@@ -191,6 +191,18 @@ When is no content in breadcrumb, this minimal width need to be set up.
     defaultColor = "#fff"
 ) }}
 
+## labelLine(Object)
+
+{{ use: partial-label-line-desc() }}
+
+{{ use: partial-label-line(
+    prefix = '##',
+    length2 = true,
+    minTurnAngle = true,
+    showAbove = true,
+    smooth = true
+) }}
+
 ## labelLayout(Object|Function)
 
 {{ use: partial-label-layout(
@@ -604,6 +616,10 @@ Emphasis state.
 
 #${prefix} blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 Blur state.
 
 {{ use: treemap-state(
@@ -611,6 +627,10 @@ Blur state.
 ) }}
 
 #${prefix} select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 Select state.
 
@@ -724,6 +744,14 @@ See the [example](${galleryEditorPath}doc-example/treemap-borderColor&edit=1&res
     prefix = ${prefix} + "#",
     defaultPosition = "'inside'",
     formatter = true
+) }}
+
+#${prefix} labelLine(Object)
+
+{{ use: partial-label-line-desc() }}
+
+{{ use: partial-label-line(
+    prefix = ${prefix} + "#"
 ) }}
 
 #${prefix} upperLabel(Object)

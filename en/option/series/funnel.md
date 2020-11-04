@@ -123,6 +123,10 @@ Configurations of emphasis state.
 
 ## blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 Configurations of blur state. Available when [emphasis.focus](~series-funnel.emphasis.focus) is set.
 
 {{ use: partial-funnel-state(
@@ -130,6 +134,10 @@ Configurations of blur state. Available when [emphasis.focus](~series-funnel.emp
 ) }}
 
 ## select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 Configurations of select state. Available when [selectedMode](~series-funnel.selectedMode) is set.
 
@@ -218,11 +226,19 @@ The label configuration of a single data item.
 
 ### blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 {{ use: partial-funnel-state(
     prefix = "###"
 ) }}
 
 ### select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 {{ use: partial-funnel-state(
     prefix = "###"

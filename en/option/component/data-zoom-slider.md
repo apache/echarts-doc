@@ -3,13 +3,12 @@
 
 # dataZoom.slider(Object)
 
-**dataZoomSlider**
 
-(Please refer to the [introduction of dataZoom](~dataZoom).)
+Slider type dataZoom component provides functions like data thumbnail, zoom, brush to select, drag to move, click to locate.
 
+The followling picture shows areas to interact.
 
-<br>
-<br>
+![600xauto](~dataZoom-zone.png)
 
 ## type(string) = 'slider'
 
@@ -35,23 +34,50 @@ The style of data shadow.
 
 ### lineStyle(Object)
 
-Line style of shadow
+Line style of data shadow
 
 {{ use: partial-line-style(
     prefix = "###",
     defaultWidth = 0.5,
-    defaultOpacity = 0.3,
-    defaultColor = '#2f4554'
+    defaultColor = '#d2dbee'
 ) }}
 
 ### areaStyle(Object)
 
-Area style of shadow
+Area style of data shadow
 
 {{ use: partial-area-style(
     prefix = "###",
-    defaultOpacity = 0.3,
-    defaultColor = 'rgba(47,69,84,0.3)'
+    defaultOpacity = 0.2,
+    defaultColor = 'd2dbee'
+) }}
+
+## selectedDataBackground(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+Styles of selected data shadow.
+
+### lineStyle(Object)
+
+Line style of selected data shadow.
+
+{{ use: partial-line-style(
+    prefix = "###",
+    defaultWidth = 0.5,
+    defaultColor = '#8fb0f7'
+) }}
+
+### areaStyle(Object)
+
+Area style of selected data shadow.
+
+{{ use: partial-area-style(
+    prefix = "###",
+    defaultOpacity = 0.2,
+    defaultColor = '#8fb0f7'
 ) }}
 
 ## fillerColor(Color) = 'rgba(47,69,84,0.25)'
@@ -77,8 +103,6 @@ Icon shape of handle, which supports path string. Its default value is:
 
 {{ use: partial-icon-image-path() }}
 
-Refer to [area-simple example](${galleryEditorPath}area-simple) for customized icon.
-
 ## handleSize(number|string) = '100%'
 
 <ExampleUIControlPercent min="0" step="1" default="100%" />
@@ -91,7 +115,47 @@ Style of handle. Please refer to [area-simple example](${galleryEditorPath}area-
 
 {{ use: partial-item-style(
     prefix = "##",
-    defaultColor = "#a7b7cc"
+    defaultColor = "#fff",
+    defaultBorderColor = "#ACB8D1"
+) }}
+
+## moveHandleIcon(string)
+
+<ExampleUIControlIcon />
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+Icon of move handle.
+
+```js
+'M-320.9-50L-320.9-50c18.1,0,27.1,9,27.1,27.1V85.7c0,18.1-9,27.1-27.1,27.1l0,0c-18.1,0-27.1-9-27.1-27.1V-22.9C-348-41-339-50-320.9-50z M-212.3-50L-212.3-50c18.1,0,27.1,9,27.1,27.1V85.7c0,18.1-9,27.1-27.1,27.1l0,0c-18.1,0-27.1-9-27.1-27.1V-22.9C-239.4-41-230.4-50-212.3-50z M-103.7-50L-103.7-50c18.1,0,27.1,9,27.1,27.1V85.7c0,18.1-9,27.1-27.1,27.1l0,0c-18.1,0-27.1-9-27.1-27.1V-22.9C-130.9-41-121.8-50-103.7-50z'
+```
+
+{{ use: partial-icon-image-path() }}
+
+## moveHandleSize(number) = 7
+
+<ExampleUIControlNumber min="0" step="1" default="7" />
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+Size of move handle.
+
+## moveHandleStyle(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+
+
+{{ use: partial-item-style(
+    prefix = "##",
+    defaultColor = "#D2DBEE"
 ) }}
 
 ## labelPrecision(number|string) = 'auto'
@@ -152,5 +216,46 @@ Whether to update view while dragging. If it is set as `false`, the view will be
 
 {{ use: partial-rect-layout(
     componentName = 'dataZoom-slider'
+) }}
+
+## brushSelect(boolean) = true
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+Whether to enable brush to select.
+
+## brushStyle(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+Style of brushing area.
+
+{{ use: partial-item-style(
+    prefix = "##",
+    defaultColor = "rgba(135,175,274,0.15)"
+) }}
+
+## emphasis(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+Style when highlighted.
+
+### handleStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "###"
+) }}
+
+### moveHandleStyle(Object)
+
+{{ use: partial-item-style(
+    prefix = "###"
 ) }}
 

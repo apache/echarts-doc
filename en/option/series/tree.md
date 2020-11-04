@@ -152,6 +152,10 @@ Configurations of emphasis state.
 
 ## blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 Configurations of blur state. Available when [emphasis.focus](~series-tree.emphasis.focus) is set.
 
 {{ use: tree-state(
@@ -159,6 +163,10 @@ Configurations of blur state. Available when [emphasis.focus](~series-tree.empha
 ) }}
 
 ## select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 Configurations of select state. Available when [selectedMode](~series-tree.selectedMode) is set.
 
@@ -203,6 +211,10 @@ Emphasis state of leaves nodes.
 
 ### blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 Blur state of leaves nodes.
 
 {{ use: tree-node-state(
@@ -210,6 +222,10 @@ Blur state of leaves nodes.
 ) }}
 
 ### select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 Select state of leaves nodes.
 
@@ -291,6 +307,10 @@ Emphasis state of a single node.
 
 ### blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 Blur state of a single node.
 
 {{ use: tree-node-state(
@@ -298,6 +318,10 @@ Blur state of a single node.
 ) }}
 
 ### select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 Select state of a single node.
 

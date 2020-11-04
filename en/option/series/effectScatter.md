@@ -94,6 +94,18 @@ The brush type for ripples. options: `'stroke'` and `'fill'`.
     formatter = true
 ) }}
 
+## labelLine(Object)
+
+{{ use: partial-label-line-desc() }}
+
+{{ use: partial-label-line(
+    prefix = '##',
+    length2 = true,
+    minTurnAngle = true,
+    showAbove = true,
+    smooth = true
+) }}
+
 ## labelLayout(Object|Function)
 
 {{ use: partial-label-layout(
@@ -128,6 +140,10 @@ Whether to scale to highlight the data in emphasis state.
 
 ## blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 Configurations of blur state. Available when [emphasis.focus](~series-effectScatter.emphasis.focus) is set.
 
 {{ use: effectScatter-state(
@@ -135,6 +151,10 @@ Configurations of blur state. Available when [emphasis.focus](~series-effectScat
 ) }}
 
 ## select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 Configurations of select state. Available when [selectedMode](~series-effectScatter.selectedMode) is set.
 
@@ -177,6 +197,18 @@ Configurations of select state. Available when [selectedMode](~series-effectScat
     defaultPosition = "inside"
 ) }}
 
+### labelLine(Object)
+
+{{ use: partial-label-line-desc() }}
+
+{{ use: partial-label-line(
+    prefix = '###',
+    length2 = true,
+    minTurnAngle = true,
+    showAbove = true,
+    smooth = true
+) }}
+
 ### itemStyle(Object)
 
 {{ use: partial-item-style(
@@ -192,6 +224,10 @@ Emphasis state of the specified single data.
 ) }}
 
 ### blur(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 Blur state of the specified single data.
 
@@ -239,6 +275,14 @@ Select state of the specified single data.
 {{ use: partial-label(
     prefix = "#" + ${prefix},
     formatter = ${prefix} === '##'
+) }}
+
+#${prefix} labelLine(Object)
+
+{{ use: partial-label-line-desc() }}
+
+{{ use: partial-label-line(
+    prefix = '#' + ${prefix}
 ) }}
 
 #${prefix} itemStyle(Object)

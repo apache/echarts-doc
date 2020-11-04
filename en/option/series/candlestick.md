@@ -105,6 +105,10 @@ Emphasis style of candlestick.
 
 ## blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 Configurations of blur state. Available when [emphasis.focus](~series-candlestick.emphasis.focus) is set.
 
 ### itemStyle(Object)
@@ -115,6 +119,10 @@ Configurations of blur state. Available when [emphasis.focus](~series-candlestic
 ) }}
 
 ## select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 Configurations of select state. Available when [selectedMode](~series-candlestick.selectedMode) is set.
 
@@ -205,6 +213,10 @@ Emphasis style of a candle box.
 
 ### blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 Blur state of single data.
 
 #### itemStyle(Object)
@@ -214,6 +226,10 @@ Blur state of single data.
 ) }}
 
 ### select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 Select state of single data.
 

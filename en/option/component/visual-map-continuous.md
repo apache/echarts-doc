@@ -171,3 +171,72 @@ formatter: function (value) {
 }
 ```
 
+## handleIcon(string)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+<ExampleUIControlIcon />
+
+Icon of drag handle.
+```js
+'M-11.39,9.77h0a3.5,3.5,0,0,1-3.5,3.5h-22a3.5,3.5,0,0,1-3.5-3.5h0a3.5,3.5,0,0,1,3.5-3.5h22A3.5,3.5,0,0,1-11.39,9.77Z'
+```
+
+{{ use: partial-icon-image-path() }}
+
+## handleSize(number|string) = '120%'
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+Size of drag handle. It can be a percent string.
+
+## handleStyle(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+Style of drag handle.
+
+{{ use: partial-item-style(
+    prefix = "##",
+    defaultBorderColor = "#fff",
+    defaultBorderWidth = 1
+) }}
+
+## indicatorIcon(string) = 'circle'
+
+Icon of indicator.
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+<ExampleUIControlIcon />
+
+## indicatorSize(number|string) = '50%'
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+Size of indicator. It can be a percent string.
+
+## indicatorStyle(Object)
+
+Style of indicator.
+
+{{ use: partial-item-style(
+    prefix = "##",
+    defaultBorderColor = "#fff",
+    defaultBorderWidth = 2,
+    defaultShadowBlur = 2,
+    defaultShadowOffsetX = 1,
+    defaultShadowOffsetY = 1,
+    defaultShadowColor = 'rgba(0,0,0,0.2)'
+) }}
+

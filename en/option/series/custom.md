@@ -389,20 +389,22 @@ For example:
     hasCallback = false
 ) }}
 
+## labelLine(Object)
+
+{{ use: partial-label-line-desc() }}
+
+{{ use: partial-label-line(
+    prefix = '##',
+    length2 = true,
+    minTurnAngle = true,
+    showAbove = true,
+    smooth = true
+) }}
+
 ## labelLayout(Object|Function)
 
 {{ use: partial-label-layout(
     prefix = "##"
-) }}
-
-## emphasis(Object)
-
-Emphasis state.
-
-### itemStyle(Object)
-
-{{ use: partial-item-style(
-    prefix = "###"
 ) }}
 
 {{ use: partial-selected-mode(

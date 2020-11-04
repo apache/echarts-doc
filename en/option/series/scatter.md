@@ -51,6 +51,18 @@ It could be used with [rectangular coordinate](~grid) and [polar coordinate](~po
     formatter = true
 ) }}
 
+## labelLine(Object)
+
+{{ use: partial-label-line-desc() }}
+
+{{ use: partial-label-line(
+    prefix = '##',
+    length2 = true,
+    minTurnAngle = true,
+    showAbove = true,
+    smooth = true
+) }}
+
 ## labelLayout(Object|Function)
 
 {{ use: partial-label-layout(
@@ -81,10 +93,15 @@ Whether to scale to highlight the data in emphasis state.
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: scatter-state(
-    prefix = "##"
+    prefix = "##",
+    isNormal = true
 ) }}
 
 ## blur(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 Configurations of blur state. Available when [emphasis.focus](~series-scatter.emphasis.focus) is set.
 
@@ -93,6 +110,10 @@ Configurations of blur state. Available when [emphasis.focus](~series-scatter.em
 ) }}
 
 ## select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 Configurations of select state. Available when [selectedMode](~series-scatter.selectedMode) is set.
 
@@ -144,6 +165,18 @@ the value of data item.
     defaultPosition = "inside"
 ) }}
 
+### labelLine(Object)
+
+{{ use: partial-label-line-desc() }}
+
+{{ use: partial-label-line(
+    prefix = '###',
+    length2 = true,
+    minTurnAngle = true,
+    showAbove = true,
+    smooth = true
+) }}
+
 ### itemStyle(Object)
 
 the style setting about single data point(bubble).
@@ -162,6 +195,10 @@ Emphasis state of single data.
 
 ### blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 Blur state of single data.
 
 {{ use: scatter-state(
@@ -169,6 +206,10 @@ Blur state of single data.
 ) }}
 
 ### select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 Select state of single data.
 
@@ -213,6 +254,14 @@ Select state of single data.
 {{ use: partial-label(
     prefix = "#" + ${prefix},
     formatter = ${prefix} === '##'
+) }}
+
+#${prefix} labelLine(Object)
+
+{{ use: partial-label-line-desc() }}
+
+{{ use: partial-label-line(
+    prefix = '#' + ${prefix}
 ) }}
 
 #${prefix} itemStyle(Object)

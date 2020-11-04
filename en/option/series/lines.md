@@ -143,6 +143,10 @@ Emphasis state.
 
 ## blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 Configurations of blur state. Available when [emphasis.focus](~series-lines.emphasis.focus) is set.
 
 {{ use: lines-state(
@@ -150,6 +154,10 @@ Configurations of blur state. Available when [emphasis.focus](~series-lines.emph
 ) }}
 
 ## select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 Configurations of select state. Available when [selectedMode](~series-lines.selectedMode) is set.
 
@@ -202,11 +210,19 @@ Label of a single line. Available when [polyline](~series-lines.polyline) is not
 
 ### blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 {{ use: lines-state(
     prefix = "###"
 ) }}
 
 ### select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 {{ use: lines-state(
     prefix = "###"

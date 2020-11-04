@@ -64,6 +64,18 @@ If angle of data piece is smaller than this value (in degrees), then text is not
     prefix = ${prefix} + '#'
 ) }}
 
+#${prefix} labelLine(Object)
+
+{{ use: partial-label-line-desc() }}
+
+{{ use: partial-label-line(
+    prefix = '#' + ${prefix},
+    length2 = ${isNormal},
+    minTurnAngle = ${isNormal},
+    showAbove = ${isNormal},
+    smooth = ${isNormal}
+) }}
+
 
 
 {{ target: partial-sunburst-itemStyle-props }}
@@ -89,11 +101,13 @@ If angle of data piece is smaller than this value (in degrees), then text is not
 {{ target: partial-sunburst-state }}
 
 {{ use: partial-sunburst-label-props(
-    prefix = ${prefix}
+    prefix = ${prefix},
+    isNormal = ${isNormal}
 ) }}
 
 {{ use: partial-sunburst-itemStyle-props(
-    prefix = ${prefix}
+    prefix = ${prefix},
+    isNormal = ${isNormal}
 ) }}
 
 
@@ -187,7 +201,8 @@ See [series-sunburst.data.target](~series-sunburst.data.target).
 Like `target` attribute of HTML `<a>`, which can either be `'blank'` or `'self'`. See [series-sunburst.data.link](~series-sunburst.data.link).
 
 {{ use: partial-sunburst-label-props(
-    prefix = "##"
+    prefix = "##",
+    isNormal = true
 ) }}
 
 ## labelLayout(Object|Function)
@@ -257,7 +272,8 @@ function(nodeA, nodeB) {
 If there is no `name`, whether need to render it.
 
 {{ use: partial-sunburst-label-props(
-    prefix = "#"
+    prefix = "#",
+    isNormal = true
 ) }}
 
 {{ use: partial-sunburst-itemStyle-props(

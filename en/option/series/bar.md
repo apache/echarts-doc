@@ -191,6 +191,10 @@ Emphasis state of single data.
 
 ### blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 Blur state of single data.
 
 {{ use: partial-bar-state(
@@ -200,6 +204,10 @@ Blur state of single data.
 ) }}
 
 ### select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 Select state of single data.
 
@@ -244,6 +252,24 @@ Label style configurations of single data.
     prefix = "#" + ${prefix},
     defaultPosition = "'inside'",
     formatter = ${topLevel}
+) }}
+
+{{ if: ${topLevel && isNormal} }}
+##${prefix} valueAnimation(boolean)
+
+Whether to enable text animation of value change.
+{{ /if }}
+
+#${prefix} labelLine(Object)
+
+{{ use: partial-label-line-desc() }}
+
+{{ use: partial-label-line(
+    prefix = '#' + ${prefix},
+    length2 = ${isNormal},
+    minTurnAngle = ${isNormal},
+    showAbove = ${isNormal},
+    smooth = ${isNormal}
 ) }}
 
 #${prefix} itemStyle(Object)

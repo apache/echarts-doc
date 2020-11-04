@@ -141,11 +141,19 @@ Specify which layer is set, value starts from 0.
 
 ### blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 {{ use: sankey-state(
     prefix = "###"
 ) }}
 
 ### select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 {{ use: sankey-state(
     prefix = "###"
@@ -201,7 +209,11 @@ Configurations of emphasis state.
 
 ## blur(Object)
 
-桑基图的淡出状态。开启 [emphasis.focus](~series-sankey.emphasis.focus) 后有效。
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+Configurations of blur state. Available when [emphasis.focus](~series-sankey.emphasis.focus) is set.
 
 {{ use: sankey-state(
     prefix = "##"
@@ -209,7 +221,11 @@ Configurations of emphasis state.
 
 ## select(Object)
 
-桑基图的选中状态。开启 [selectedMode](~series-sankey.selectedMode) 后有效。
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+Configurations of selected state. Available when [selectedMode](~series-sankey.selectedMode) is set.
 
 {{ use: sankey-state(
     prefix = "##"
@@ -273,11 +289,19 @@ The lable style of this node.
 
 ### blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 {{ use: sankey-node-state(
     prefix = "###"
 ) }}
 
 ### select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 {{ use: sankey-node-state(
     prefix = "###"
@@ -333,6 +357,10 @@ The line stlye of edge.
 
 ### blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 #### lineStyle(Object)
 
 {{ use: partial-sankey-line-style(
@@ -340,6 +368,10 @@ The line stlye of edge.
 ) }}
 
 ### select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 #### lineStyle(Object)
 

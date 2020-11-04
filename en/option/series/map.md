@@ -60,6 +60,18 @@ Show the symbol in related area (dot of series symbol). Available when [legend](
     prefix = "##"
 ) }}
 
+## labelLine(Object)
+
+{{ use: partial-label-line-desc() }}
+
+{{ use: partial-label-line(
+    prefix = '##',
+    length2 = true,
+    minTurnAngle = true,
+    showAbove = true,
+    smooth = true
+) }}
+
 ## data(Array)
 
 {{ use: partial-1d-data-desc(
@@ -102,6 +114,18 @@ Color of the area.
     formatter = true,
     noAlign = true,
     noVerticalAlign = true
+) }}
+
+### labelLine(Object)
+
+{{ use: partial-label-line-desc() }}
+
+{{ use: partial-label-line(
+    prefix = '###',
+    length2 = true,
+    minTurnAngle = true,
+    showAbove = true,
+    smooth = true
 ) }}
 
 ### emphasis(Object)
@@ -153,5 +177,13 @@ The color of the map area.
     formatter = true,
     noAlign = true,
     noVerticalAlign = true
+) }}
+
+#### labelLine(Object)
+
+{{ use: partial-label-line-desc() }}
+
+{{ use: partial-label-line(
+    prefix = '####'
 ) }}
 

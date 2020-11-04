@@ -86,6 +86,10 @@ Configurations of emphasis state.
 
 ## blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 Configurations of blur state. Available when [emphasis.focus](~series-heatmap.emphasis.focus) is set.
 
 {{ use: heatmap-state(
@@ -93,6 +97,10 @@ Configurations of blur state. Available when [emphasis.focus](~series-heatmap.em
 ) }}
 
 ## select(Object)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 Configurations of select state. Available when [selectedMode](~series-heatmap.selectedMode) is set.
 

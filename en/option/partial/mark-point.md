@@ -56,6 +56,10 @@ Emphasis status of mark point.
 
 ##${prefix} blur(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 Configurations of blur state. Whether to blur follows the series.
 
 ###${prefix} label(Object)
