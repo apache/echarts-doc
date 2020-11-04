@@ -9,7 +9,8 @@ Global echarts object, which can be accessed after including `echarts.js` in scr
     devicePixelRatio?: number,
     renderer?: string,
     width?: number|string,
-    height?: number|string
+    height?: number|string,
+    locale?: string
 }) => ECharts
 ```
 Creates an ECharts instance, and returns an [echartsInstance](~echartsInstance). You shall not initialize multiple ECharts instances on a single container.
@@ -31,22 +32,11 @@ Creates an ECharts instance, and returns an [echartsInstance](~echartsInstance).
 
     Optional chart configurations; which may contain:
 
-    + `devicePixelRatio`
-
-       Ratio of one physical pixel to the size of one device independent pixels. Browser's `window.devicePixelRatio` is used by default.
-
-    + `renderer`
-
-        Supports `'canvas'` or `'svg'`. See [Render by Canvas or SVG](tutorial.html#Render%20by%20Canvas%20or%20SVG).
-
-    + `width`
-
-        Specify width explicitly, in pixel. If setting to `null`/`undefined`/`'auto'`, width of `dom` (instance container) will be used.
-
-    + `height`
-
-        Specify height explicitly, in pixel. If setting to `null`/`undefined`/`'auto'`, height of `dom` (instance container) will be used.
-
+    + `devicePixelRatio` Ratio of one physical pixel to the size of one device independent pixels. Browser's `window.devicePixelRatio` is used by default.
+    + `renderer`  Supports `'canvas'` or `'svg'`. See [Render by Canvas or SVG](tutorial.html#Render%20by%20Canvas%20or%20SVG).
+    + `width`  Specify width explicitly, in pixel. If setting to `null`/`undefined`/`'auto'`, width of `dom` (instance container) will be used.
+    + `height`  Specify height explicitly, in pixel. If setting to `null`/`undefined`/`'auto'`, height of `dom` (instance container) will be used.
+    + `locale` Specify the locale. There are two builtins: `'ZH'` and `'EN'`. Or you can use [echarts.registerLocale](~echarts.registerLocale) to register a new locale. Or supported locales can be referenced in [src/i18n](https://github.com/apache/incubator-echarts/tree/release/src/i18n)
 
 ## connect(Function)
 ```js
@@ -163,6 +153,15 @@ Get a registered map in the following format:
 ```
 
 Registers a theme, should be specified when [initialize the chart instance](~echarts.init).
+
+
+## registerLocale(Function)
+
+```js
+(locale: string, localeCfg: Object)
+```
+
+Registers a locale, should be specified when [initialize the chart instance](~echarts.init). See the format in [src/i18n/langEN.ts](https://github.com/apache/incubator-echarts/blob/release/src/i18n/langEN.ts)
 
 
 {{ use: echarts-graphic }}
