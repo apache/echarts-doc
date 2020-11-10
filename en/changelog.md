@@ -1,3 +1,94 @@
+
+## v5.0.0
+<div class="time">2020-11-10</div>
+
++ Migrate code base to TypeScript:
+    + The entire code base have been migrated to TypeScript.
+    + Provide `types/dist/echarts.d.ts` for the upper TS based applications, where the TS version supported is down to 3.4.
+    + See more details in [#13563](https://github.com/apache/incubator-echarts/pull/13563)
++ [Feature] States enhancement:
+    + Support state transition animation, which brings better interaction effect when highlighting or downplaying some part of the chart.
+    + Besides the state "emphasis" we already have, v5.0 provides two more configurable state: "select" and "blur" in all series. The option of them are the same as the existing "emphasis". "blur" is used the elements need to fade out when focusing some other elements. "select" is used when the element is selected by mouse/touch click or API triggering.
+    + Support to blur other graphic elements when highlighting specified data through mouseover or hover linking. See examples [bar-label-rotation](https://echarts.apache.org/next/examples/en/editor.html?c=bar-label-rotation), [bar-polar-stack](https://echarts.apache.org/next/examples/en/editor.html?c=bar-polar-stack), [bar-stack](https://echarts.apache.org/next/examples/en/editor.html?c=bar-stack), [area-stack](https://echarts.apache.org/next/examples/en/editor.html?c=area-stack), [dataset-link](https://echarts.apache.org/next/examples/en/editor.html?c=dataset-link), [scatter-weight](https://echarts.apache.org/next/examples/en/editor.html?c=scatter-weight), [tree-basic](https://echarts.apache.org/next/examples/en/editor.html?c=tree-basic).
+    + Unify the previous different state configurations in series, like `highlightPolicy`, `focusNodeAdjacency`, `hoverOffset`, by the option `focus`, `blurScope` and `scale`. See examples [sankey-energy](https://echarts.apache.org/next/examples/en/editor.html?c=sankey-energy), [graph](https://echarts.apache.org/next/examples/en/editor.html?c=graph), [sunburst-drink](https://echarts.apache.org/next/examples/en/editor.html?c=sunburst-drink).
+    + See more details in [#12925](https://github.com/apache/incubator-echarts/pull/12925) and [#12911](https://github.com/apache/incubator-echarts/pull/12911).
++ [Feature] Provide a more powerful label support:
+    + Use some strategies to bring better displayed labels, including:
+        + Smarter text color strategy to make labels more easy to be distinguished from different background.
+        + Smarter label layout in pie chart, especially when there are too many labels or insufficient space. And related issue: [#6050](https://github.com/apache/incubator-echarts/issues/6050).
+        + Provide more overflow configurations.
+    + Provide option set `labelLayout` to enable more abilities for developers to tweak the layout of the labels after it's originally positioned by the chart itself. With the options in `labelLayout`, developers can:
+        + Avoid labels overlap (see [scatter-label-align-right](https://echarts.apache.org/next/examples/en/editor.html?c=graph-label-overlap)),
+        + Make special label alignment, and adjust label position, etc.. See the examples [pie-alignTo](https://echarts.apache.org/next/examples/en/editor.html?c=pie-alignTo), [pie-labelLine-adjust](https://echarts.apache.org/next/examples/en/editor.html?c=pie-labelLine-adjust), [pie-label-distanceToLabelLine](https://echarts.apache.org/next/examples/en/editor.html?c=doc-example/pie-label-distanceToLabelLine), [pie-label-bleedMargin](https://echarts.apache.org/next/examples/en/editor.html?c=doc-example/pie-label-bleedMargin).
+        + Make label draggable.
+    + Support `labelLine` for all series, which is very useful for guiding element to related labels when labels have to be far away from the elements. See examples [scatter-label-align-right](https://echarts.apache.org/next/examples/en/editor.html?c=scatter-label-align-right), [scatter-label-align-top](https://echarts.apache.org/next/examples/en/editor.html?c=scatter-label-align-top). Related issues: [#11534](https://github.com/apache/incubator-echarts/issues/11534), [#12971](https://github.com/apache/incubator-echarts/issues/12971).
+    + See more details in [#12911](https://github.com/apache/incubator-echarts/pull/12911).
++ [Feature] Chart racing, bar realtime sorting and label animation:
+    + Bar race and line race is a popular way to show time series data, and visualize the change in trends over time.
+        + We provide this capability by bar sorting (`series.sort` and `series.realtimeSort`) and end label animation (`series.label.valueAnimation`, `series.endLabel`). And this individual options can be used in other related scenarios.
+        + See examples [bar-race](https://echarts.apache.org/next/examples/en/editor.html?c=bar-race), and see more details in the original pull request [#12484](https://github.com/apache/incubator-echarts/pull/12484), [#13246](https://github.com/apache/incubator-echarts/pull/13246) and [#13045](https://github.com/apache/incubator-echarts/pull/13045).
+    + Other the racing of some special customized chart can be implemented by custom series and the callback of renderItem `during`. See the example [custom-spiral-race](https://echarts.apache.org/next/examples/en/editor.html?c=custom-spiral-race), and see more details in [#12775](https://github.com/apache/incubator-echarts/pull/12775).
++ [Feature] Support data transform plug-in:
+    + Data transform is a new set of configurations and APIs to enable data transformation based on `dataset` in declarative way. Built-in or third-party data transformer can be made as plug-ins to provide various transform algorithms. ECharts users can use those transformers in ECharts option.
+    + See examples [data-transform-filter](https://echarts.apache.org/next/examples/en/editor.html?c=data-transform-filter), [data-transform-sort-bar](https://echarts.apache.org/next/examples/en/editor.html?c=data-transform-sort-bar), [data-transform-multiple-pie](https://echarts.apache.org/next/examples/en/editor.html?c=data-transform-multiple-pie), [doc-example/data-transform-multiple-sort-bar](https://echarts.apache.org/next/examples/en/editor.html?c=doc-example/, data-transform-multiple-sort-bar), [boxplot-light-velocity](https://echarts.apache.org/next/examples/en/editor.html?c=boxplot-light-velocity), [bar-histogram](https://echarts.apache.org/next/examples/en/editor.html?c=bar-histogram), [scatter-clustering](https://echarts.apache.org/next/examples/en/editor.html?c=scatter-clustering), [scatter-exponential-regression](https://echarts.apache.org/next/examples/en/editor.html?c=scatter-exponential-regression), [scatter-linear-regression](https://echarts.apache.org/next/examples/en/editor.html?c=scatter-linear-regression), [scatter-logarithmic-regression](https://echarts.apache.org/next/examples/en/editor.html?c=scatter-logarithmic-regression), [scatter-polynomial-regression](https://echarts.apache.org/next/examples/en/editor.html?c=scatter-polynomial-regression). See more details in [#13065](https://github.com/apache/incubator-echarts/pull/13065), #13127](https://github.com/apache/incubator-echarts/pull/13127).
++ [Feature] Provide more smarter time axis label and tick arrangement:
+    + See more details in [#12859](https://github.com/apache/incubator-echarts/pull/12859).
++ [Feature] Support `decal`:
+    + Decal provides a new visual type that does not only augment aria scenarios but also enrich visual effects.
+    + See more details in [#13304](https://github.com/apache/incubator-echarts/pull/13304).
++ [Feature] Provide custom series animation configuration in transform, style, shape morphing/combining/separating.
+    + See examples [custom-combine-separate-morph](https://echarts.apache.org/next/examples/en/editor.html?c=custom-combine-separate-morph), [custom-one-to-one-morph](https://echarts.apache.org/next/examples/en/editor.html?c=custom-one-to-one-morph), [custom-story-transition](https://echarts.apache.org/next/examples/en/editor.html?c=custom-story-transition), [custom-spiral-race](https://echarts.apache.org/next/examples/en/editor.html?c=custom-spiral-race), [custom-gauge](https://echarts.apache.org/next/examples/en/editor.html?c=custom-gauge).
+    + See more details in [#12775](https://github.com/apache/incubator-echarts/pull/12775), [#13468](https://github.com/apache/incubator-echarts/pull/13468), [#13271](https://github.com/apache/incubator-echarts/pull/13271).
++ [Feature] Provide a more powerful gauge:
+    + See examples [gauge-barometer](https://echarts.apache.org/next/examples/en/editor.html?c=gauge-barometer), [gauge-clock](https://echarts.apache.org/next/examples/en/editor.html?c=gauge-clock), [gauge-multi-title](https://echarts.apache.org/next/examples/en/editor.html?c=gauge-multi-title), [gauge-progress](https://echarts.apache.org/next/examples/en/editor.html?c=gauge-progress), [gauge-ring](https://echarts.apache.org/next/examples/en/editor.html?c=gauge-ring), [gauge-grade](https://echarts.apache.org/next/examples/en/editor.html?c=gauge-grade), [gauge-simple](https://echarts.apache.org/next/examples/en/editor.html?c=gauge-simple), [gauge-temperature](https://echarts.apache.org/next/examples/en/editor.html?c=gauge-temperature).
+    + See more details in [#13416](https://github.com/apache/incubator-echarts/pull/13416).
++ [Feature] The default theme and interaction have been greatly enhanced. Some new options are provide for the style and interaction configuration:
+    + Tooltip style enhancement: [#12947](https://github.com/apache/incubator-echarts/pull/12947), [#13398](https://github.com/apache/incubator-echarts/pull/13398), [#13242](https://github.com/apache/incubator-echarts/pull/13242).
+    + Provide configurable dash style: [#12961](https://github.com/apache/incubator-echarts/pull/12961).
+    + Axis style enhancement: [#13046](https://github.com/apache/incubator-echarts/pull/13046).
+    + DataZoom support both brush and drag: [#13025](https://github.com/apache/incubator-echarts/pull/13025).
+    + Support `darkMode`. [12911](https://github.com/apache/incubator-echarts/pull/12911).
+    + Enhance resize & dataZoom animation: [#12965](https://github.com/apache/incubator-echarts/pull/12965)
+    + Change the closing direction of a single bar, [#12543](https://github.com/apache/incubator-echarts/issues/12543).
+    + Enhance pie chart animation [#12553](https://github.com/apache/incubator-echarts/issues/12553).
+    + Other component style enhancement: [#13008](https://github.com/apache/incubator-echarts/pull/13008), [#13013](https://github.com/apache/incubator-echarts/pull/13013).
++ [Feature] Make i18n registerable and change the product.
+    + Build: [#13038](https://github.com/apache/incubator-echarts/pull/13038).
+    + Japanese: [#13470](https://github.com/apache/incubator-echarts/pull/13470).
+    + German: [#13315](https://github.com/apache/incubator-echarts/pull/13315).
+    + French: [#13056](https://github.com/apache/incubator-echarts/pull/13056).
+    + FI/ES/TH: [#13055](https://github.com/apache/incubator-echarts/pull/13055).
++ [Feature] Support rounded conner in pie and sunburst:
+    + See [#13390](https://github.com/apache/incubator-echarts/pull/13390) and [#13378](https://github.com/apache/incubator-echarts/pull/13378).
++ [Feature] Make tooltip more configurable:
+    + Support to add CSS class to tooltip. [#13383](https://github.com/apache/incubator-echarts/pull/13383).
+    + Support to return DOM in tooltip formatter. [#13469](https://github.com/apache/incubator-echarts/pull/13469).
++ [Feature] Support to partially remove components or replace components:
+    + See detials in [#12987](https://github.com/apache/incubator-echarts/pull/12987).
++ [Enhancement] Enhance performance in some scenarios:
+    + Improve large line performance, and support data sampling in largest-triangle-three-buckets algorithm.
+        + See more details in [#13314](https://github.com/apache/incubator-echarts/pull/13314), [#13317](https://github.com/apache/incubator-echarts/pull/13317), [#13337](https://github.com/apache/incubator-echarts/pull/13337).
+        + Fix issues [#12249](https://github.com/apache/incubator-echarts/issues/12249), [#10200](https://github.com/apache/incubator-echarts/issues/10200), [#4556](https://github.com/apache/incubator-echarts/issues/4556).
+    + Support dirty rect: [#13170](https://github.com/apache/incubator-echarts/pull/13170)
+    + Others: [#13339](https://github.com/apache/incubator-echarts/pull/13339).
++ Others small bug-fix or enhancement:
+    + [Feature] Enhance `parseData` [#13044](https://github.com/apache/incubator-echarts/pull/13044).
+    + https://github.com/apache/incubator-echarts/pull/13013
+    + [Feature] Support axis filter in specific cases. [#12832](https://github.com/apache/incubator-echarts/pull/12832).
+    + [Fix] Fix bmap first layout may be incorrect if container's layout is flex or grid. [#13432](https://github.com/apache/incubator-echarts/pull/13432).
+    + [Fix] Hide tooltip when mouse leaves the chart [#13382](https://github.com/apache/incubator-echarts/pull/13382).
+    + [Fix] Fix bmap personalization style does not work. [#13214](https://github.com/apache/incubator-echarts/pull/13214).
+    + [Fix] Fix the bug of overriding title when click the stack button. [#13372](https://github.com/apache/incubator-echarts/pull/13372).
+    + [Fix] Fix Echarts keeps rendering white blanks with large datasets on single canvas mode [#13283](https://github.com/apache/incubator-echarts/pull/13283).
+    + [Fix] Make `contentToOption` totally optional. [#13139](https://github.com/apache/incubator-echarts/pull/13139).
+    + [Fix] Keep axis tooltip open on refresh. [#13100](https://github.com/apache/incubator-echarts/pull/13100).
+    + [Fix] Skip rendering for data out of axis content in heatmap. [#12991](https://github.com/apache/incubator-echarts/pull/12991).
++ [Break] remove built-in map geoJSON.
+    + [#13565](https://github.com/apache/incubator-echarts/pull/13565).
+
+
+
+
 ## v4.9.0
 <div class="time">2020-08-06</div>
 
