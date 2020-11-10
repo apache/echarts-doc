@@ -18,7 +18,7 @@ Chart actions supported by ECharts are triggered through [dispatchAction](~echar
 
 ## highlight(Action)
 
-Highlights the given graphic element.
+Highlights specified data.
 
 Series is specified through `seriesName` or `seriesIndex`. If another data needs to be specified, then use `dataIndex` or `name`.
 ```js
@@ -34,7 +34,7 @@ dispatchAction({
 
 ## downplay(Action)
 
-Cancels highlighting graphic element.
+Downplay specified data.
 
 Series is specified through `seriesName` or `seriesIndex`. If another data needs to be specified, then use `dataIndex` or `name`.
 ```js
@@ -48,11 +48,48 @@ dispatchAction({
 })
 ```
 
+## select(Action)
 
-<!--============= legend ==========-->
+Select specified data. Selected data will apply the style of [select](option.html#series-bar.select).
+
+```js
+dispatchAction({
+    type: 'select',
+    // 图例名称
+    {{ use: action-series-query }}
+    {{ use: action-data-query }}
+})
+```
+
+## unselect(Action)
+
+Unselect specified data.
+
+```js
+dispatchAction({
+    type: 'unselect',
+    // 图例名称
+    {{ use: action-series-query }}
+    {{ use: action-data-query }}
+})
+```
+
+## toggleSelected(Action)
+
+Toggle selected status of specified data.
+
+```js
+dispatchAction({
+    type: 'toggleSelected',
+    // 图例名称
+    {{ use: action-series-query }}
+    {{ use: action-data-query }}
+})
+```
+
 ## legend
 
-Actions related to [legend component](option.html#legend), which should include [legend component](option.html#legend) before use.
+Actions related to [legend component](option.html#legend), [legend component](option.html#legend) should be imported before use.
 
 ### legendSelect(Action)
 Selects legend.
@@ -126,10 +163,9 @@ dispatchAction({
 
 **EVENT:** [legendscroll](~events.legendscroll)
 
-<!--============= tooltip ==========-->
 ## tooltip
 
-Actions related to [tooltip component](option.html#tooltip), which should include [tooltip component](option.html#tooltip) before use.
+Actions related to [tooltip component](option.html#tooltip), [tooltip component](option.html#tooltip) should be imported before use.
 
 ### showTip(Action)
 
@@ -177,10 +213,9 @@ dispatchAction({
 })
 ```
 
-<!--============= dataZoom ==========-->
 ## dataZoom
 
-Actions related to [data region zoom component](option.html#dataZoom), which should include [data region zoom component](option.html#dataZoom) before use.
+Actions related to [data region zoom component](option.html#dataZoom), [data region zoom component](option.html#dataZoom) should be imported before use.
 
 ### dataZoom(Action)
 
@@ -219,10 +254,9 @@ myChart.dispatchAction({
 
 
 
-<!--============= visualMap ==========-->
 ## visualMap
 
-Actions related to [visual mapping component](option.html#visualMap), which should include [visual mapping component](option.html#visualMap) before use.
+Actions related to [visual mapping component](option.html#visualMap), [visual mapping component](option.html#visualMap) should be imported before use.
 
 ### selectDataRange(Action)
 
@@ -256,10 +290,9 @@ myChart.dispatchAction({
 
 **EVENT:** [datarangeselected](~events.datarangeselected)
 
-<!--============= timeline ==========-->
 ## timeline
 
-Actions related to [timeline component](option.html#timeline), which should include [timeline component](option.html#timeline) before use.
+Actions related to [timeline component](option.html#timeline), [timeline component](option.html#timeline) should be imported before use.
 
 ### timelineChange(Action)
 
@@ -289,10 +322,9 @@ dispatchAction({
 
 **EVENT:** [timelineplaychanged](~events.timelineplaychanged)
 
-<!--============= toolbox ==========-->
 ## toolbox
 
-Actions related to [toolbox component](option.html#toolbox), which should include [toolbox component](option.html#toolbox) before use.
+Actions related to [toolbox component](option.html#toolbox), [toolbox component](option.html#toolbox) should be imported before use.
 
 ### restore(Action)
 Resets option.
@@ -304,28 +336,19 @@ dispatchAction({
 ```
 
 **EVENT:** [restore](~events.restore)
-<!--============= pie ==========-->
-## pie
 
-Actions related to [pie chart](option.html#series-pie), which should include [pie chart](option.html#series-pie) before use.
+## geo
+
+Actions related to [geo](option.html#geo) component, [geo](option.html#geo) should be imported before use.
 
 {{ use: action-select(
-    componentType='pie',
-    name='pie chart'
-) }}
-
-<!--============= map ==========-->
-## map
-Actions related to [map](option.html#series-map), which should include [map](option.html#series-map) before use.
-{{ use: action-select(
-    componentType='map',
-    name='map area'
+    componentType='geo',
+    name='geo region'
 ) }}
 
 
-<!--============= graph ==========-->
 ## graph
-Actions related to [graph](option.html#series-graph), which should include [graph](option.html#series-graph) before use.
+Actions related to [graph](option.html#series-graph), [graph](option.html#series-graph) should be imported before use.
 
 ### focusNodeAdjacency(Action)
 
@@ -370,7 +393,6 @@ Event [unfocusNodeAdjacency](~event.unfocusNodeAdjacency) will be thrown finally
 
 
 
-<!--============= brush ==========-->
 ## brush
 [brush](option.html#brush) related actions.
 

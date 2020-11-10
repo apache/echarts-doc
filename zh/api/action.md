@@ -48,8 +48,46 @@ dispatchAction({
 })
 ```
 
+## select(Action)
 
-<!--============= legend ==========-->
+选中指定的数据。选中数据会使用 [select](option.html#series-bar.select) 配置的样式。
+
+```js
+dispatchAction({
+    type: 'select',
+    // 图例名称
+    {{ use: action-series-query }}
+    {{ use: action-data-query }}
+})
+```
+
+## unselect(Action)
+
+取消选中指定的数据。
+
+```js
+dispatchAction({
+    type: 'unselect',
+    // 图例名称
+    {{ use: action-series-query }}
+    {{ use: action-data-query }}
+})
+```
+
+## toggleSelected(Action)
+
+切换选中状态
+
+```js
+dispatchAction({
+    type: 'toggleSelected',
+    // 图例名称
+    {{ use: action-series-query }}
+    {{ use: action-data-query }}
+})
+```
+
+
 ## legend
 
 [图例组件](option.html#legend)相关的行为，必须引入[图例组件](option.html#legend)后才能使用。
@@ -124,7 +162,6 @@ dispatchAction({
 
 **EVENT:** [legendscroll](~events.legendscroll)
 
-<!--============= tooltip ==========-->
 ## tooltip
 
 [提示框组件](option.html#tooltip)相关的行为，必须引入[提示框组件](option.html#tooltip)后才能使用。
@@ -176,7 +213,6 @@ dispatchAction({
 })
 ```
 
-<!--============= dataZoom ==========-->
 ## dataZoom
 
 [数据区域缩放组件](option.html#dataZoom)相关的行为，必须引入[数据区域缩放组件](option.html#dataZoom)后才能使用。
@@ -217,7 +253,6 @@ myChart.dispatchAction({
 ```
 
 
-<!--============= visualMap ==========-->
 ## visualMap
 
 [视觉映射组件](option.html#visualMap)相关的行为，必须引入[视觉映射组件](option.html#visualMap)后才能使用。
@@ -254,7 +289,6 @@ myChart.dispatchAction({
 
 **EVENT:** [datarangeselected](~events.datarangeselected)
 
-<!--============= timeline ==========-->
 ## timeline
 
 [时间轴组件](option.html#timeline)相关的行为，必须引入[时间轴组件](option.html#timeline)后才能使用。
@@ -287,7 +321,6 @@ dispatchAction({
 
 **EVENT:** [timelineplaychanged](~events.timelineplaychanged)
 
-<!--============= toolbox ==========-->
 ## toolbox
 
 [工具栏组件](option.html#toolbox)相关的行为，必须引入[工具栏组件](option.html#toolbox)后才能使用。
@@ -302,17 +335,6 @@ dispatchAction({
 ```
 
 **EVENT:** [restore](~events.restore)
-<!--============= pie ==========-->
-## pie
-
-[饼图](option.html#series-pie)相关的行为，必须引入[饼图](option.html#series-pie)后才能使用。
-
-{{ use: action-select(
-    componentType='pie',
-    name='饼图扇形'
-) }}
-
-<!--============= geo ==========-->
 ## geo
 [地图组件](option.html#series-geo)相关的行为，必须引入[地图组件](option.html#geo)后才能使用。
 
@@ -321,62 +343,6 @@ dispatchAction({
     name='地图区域'
 ) }}
 
-
-<!--============= map ==========-->
-## map
-[地图图表](option.html#series-map)相关的行为，必须引入[地图图表](option.html#series-map)后才能使用。
-
-{{ use: action-select(
-    componentType='map',
-    name='地图区域'
-) }}
-
-
-<!--============= graph ==========-->
-## graph
-[关系图](option.html#series-graph) 相关的行为，必须引入 [关系图](option.html#series-graph) 后才能使用。
-
-### focusNodeAdjacency(Action)
-
-将指定的节点以及其所有邻接节点高亮。
-
-```js
-dispatchAction({
-    type: 'focusNodeAdjacency',
-
-    // 使用 seriesId 或 seriesIndex 或 seriesName 来指定 series.
-    seriesId: 'xxx',
-    seriesIndex: 0,
-    seriesName: 'nnn',
-
-    // 使用 dataIndex 来指定目标节点，或者使用 edgeDataIndex 来指定目标边。
-    dataIndex: 12,
-    edgeDataIndex: 5
-})
-```
-
-最后会抛出 [focusNodeAdjacency](~event.focusNodeAdjacency) 事件。
-
-### unfocusNodeAdjacency(Action)
-
-将指定的节点以及其所有邻接节点高亮。
-
-```js
-dispatchAction({
-    type: 'unfocusNodeAdjacency',
-
-    // 使用 seriesId 或 seriesIndex 或 seriesName 来定位 series.
-    seriesId: 'xxx',
-    seriesIndex: 0,
-    seriesName: 'nnn'
-})
-```
-
-最后会抛出 [unfocusNodeAdjacency](~event.unfocusNodeAdjacency) 事件。
-
-
-
-<!--============= brush ==========-->
 ## brush
 [区域选择](option.html#brush)相关的行为。
 

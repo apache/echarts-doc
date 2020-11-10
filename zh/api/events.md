@@ -77,6 +77,35 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
 ### globalout(Event)
 ### contextmenu(Event)
 
+## highlight(Event)
+
+**ACTION:** [highlight](~action.highlight)
+
+高亮事件。
+
+## downplay(Event)
+
+**ACTION:** [downplay](~action.downplay)
+
+取消高亮事件。
+
+## selectchanged(Event)
+
+**ACTION:** [toggleSelected](~action.toggleSelected), [select](~action.select), [unselect](~action.unselect)
+
+在数据选中状态发生变化时触发的事件
+
+```js
+{
+    type: 'selectchanged',
+    fromAction: 'select' | 'toggleSelected' | 'unselect',
+    // 按系列分组的选中项列表
+    selected: ({
+        dataIndex: number[], seriesIndex: number
+    })[]
+}
+```
+
 ## legendselectchanged(Event)
 **ACTION:** [legendToggleSelect](~action.legend.legendToggleSelect)
 切换图例选中状态后的事件。
@@ -250,19 +279,6 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
     componentTypeFull='geo',
     name='地图区域'
 ) }}
-
-{{ use: event-select(
-    componentType='pie',
-    componentTypeFull='series-pie',
-    name='饼图扇形'
-) }}
-
-{{ use: event-select(
-    componentType='map',
-    componentTypeFull='series-map',
-    name='地图区域'
-) }}
-
 
 
 ## axisareaselected(Event)

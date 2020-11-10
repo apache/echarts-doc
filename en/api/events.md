@@ -80,6 +80,35 @@ See [Events and actions in ECharts](tutorial.html#Events%20and%20actions%20in%20
 ### globalout(Event)
 ### contextmenu(Event)
 
+## highlight(Event)
+
+**ACTION:** [highlight](~action.highlight)
+
+Event of data highlight.
+
+## downplay(Event)
+
+**ACTION:** [downplay](~action.downplay)
+
+Event of data downplay.
+
+## selectchanged(Event)
+
+**ACTION:** [toggleSelected](~action.toggleSelected), [select](~action.select), [unselect](~action.unselect)
+
+Event emitted when data selection is changed.
+
+```js
+{
+    type: 'selectchanged',
+    fromAction: 'select' | 'toggleSelected' | 'unselect',
+    // Grouped by series.
+    selected: ({
+        dataIndex: number[], seriesIndex: number
+    })[]
+}
+```
+
 ## legendselectchanged(Event)
 **ACTION:** [legendToggleSelect](~action.legend.legendToggleSelect)
 Event emitted after legend selecting state changes.
@@ -249,13 +278,9 @@ Switching event of [magic type tool in toolbox](option.html#toolbox.feature.magi
 
 
 {{ use: event-select(
-    componentType='pie',
-    name='pie chart'
-) }}
-
-{{ use: event-select(
-    componentType='map',
-    name='map region'
+    componentType='geo',
+    componentTypeFull='geo',
+    name=''
 ) }}
 
 
