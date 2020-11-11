@@ -65,9 +65,13 @@ for (let key in config) {
 }
 
 async function md2jsonAsync(opt) {
+
     var newOpt = Object.assign({
         path: path.join(opt.language, opt.entry, '**/*.md'),
-        tplEnv: config,
+        tplEnv: Object.assign({}, config, {
+            galleryViewPath: config.galleryViewPath.replace('${lang}', opt.language),
+            galleryEditorPath: config.galleryEditorPath.replace('${lang}', opt.language)
+        }),
         imageRoot: config.imagePath
     }, opt);
 
