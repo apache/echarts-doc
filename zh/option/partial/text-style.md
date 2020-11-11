@@ -35,9 +35,13 @@
 
 #${prefix} width(number)
 
+<ExampleUIControlNumber default="100" min="1" max="500" step="1" />
+
 文本显示宽度。
 
 #${prefix} height(number)
+
+<ExampleUIControlNumber default="50" min="1" max="500" step="1" />
 
 文本显示高度。
 
