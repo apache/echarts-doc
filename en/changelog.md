@@ -30,7 +30,7 @@
     + Other the racing of some special customized chart can be implemented by custom series and the callback of renderItem `during`. See the example [custom-spiral-race](https://echarts.apache.org/next/examples/en/editor.html?c=custom-spiral-race), and see more details in [#12775](https://github.com/apache/incubator-echarts/pull/12775).
 + [Feature] Support data transform plug-in:
     + Data transform is a new set of configurations and APIs to enable data transformation based on `dataset` in declarative way. Built-in or third-party data transformer can be made as plug-ins to provide various transform algorithms. ECharts users can use those transformers in ECharts option.
-    + See examples [data-transform-filter](https://echarts.apache.org/next/examples/en/editor.html?c=data-transform-filter), [data-transform-sort-bar](https://echarts.apache.org/next/examples/en/editor.html?c=data-transform-sort-bar), [data-transform-multiple-pie](https://echarts.apache.org/next/examples/en/editor.html?c=data-transform-multiple-pie), [doc-example/data-transform-multiple-sort-bar](https://echarts.apache.org/next/examples/en/editor.html?c=doc-example/, data-transform-multiple-sort-bar), [boxplot-light-velocity](https://echarts.apache.org/next/examples/en/editor.html?c=boxplot-light-velocity), [bar-histogram](https://echarts.apache.org/next/examples/en/editor.html?c=bar-histogram), [scatter-clustering](https://echarts.apache.org/next/examples/en/editor.html?c=scatter-clustering), [scatter-exponential-regression](https://echarts.apache.org/next/examples/en/editor.html?c=scatter-exponential-regression), [scatter-linear-regression](https://echarts.apache.org/next/examples/en/editor.html?c=scatter-linear-regression), [scatter-logarithmic-regression](https://echarts.apache.org/next/examples/en/editor.html?c=scatter-logarithmic-regression), [scatter-polynomial-regression](https://echarts.apache.org/next/examples/en/editor.html?c=scatter-polynomial-regression). See more details in [#13065](https://github.com/apache/incubator-echarts/pull/13065), #13127](https://github.com/apache/incubator-echarts/pull/13127).
+    + See examples [data-transform-filter](https://echarts.apache.org/next/examples/en/editor.html?c=data-transform-filter), [data-transform-sort-bar](https://echarts.apache.org/next/examples/en/editor.html?c=data-transform-sort-bar), [data-transform-multiple-pie](https://echarts.apache.org/next/examples/en/editor.html?c=data-transform-multiple-pie), [doc-example/data-transform-multiple-sort-bar](https://echarts.apache.org/next/examples/en/editor.html?c=doc-example/data-transform-multiple-sort-bar), [boxplot-light-velocity](https://echarts.apache.org/next/examples/en/editor.html?c=boxplot-light-velocity), [bar-histogram](https://echarts.apache.org/next/examples/en/editor.html?c=bar-histogram), [scatter-clustering](https://echarts.apache.org/next/examples/en/editor.html?c=scatter-clustering), [scatter-exponential-regression](https://echarts.apache.org/next/examples/en/editor.html?c=scatter-exponential-regression), [scatter-linear-regression](https://echarts.apache.org/next/examples/en/editor.html?c=scatter-linear-regression), [scatter-logarithmic-regression](https://echarts.apache.org/next/examples/en/editor.html?c=scatter-logarithmic-regression), [scatter-polynomial-regression](https://echarts.apache.org/next/examples/en/editor.html?c=scatter-polynomial-regression). See more details in [#13065](https://github.com/apache/incubator-echarts/pull/13065), #13127](https://github.com/apache/incubator-echarts/pull/13127).
 + [Feature] Provide more smarter time axis label and tick arrangement:
     + See more details in [#12859](https://github.com/apache/incubator-echarts/pull/12859).
 + [Feature] Support `decal`:
@@ -42,7 +42,7 @@
 + [Feature] Provide a more powerful gauge:
     + See examples [gauge-barometer](https://echarts.apache.org/next/examples/en/editor.html?c=gauge-barometer), [gauge-clock](https://echarts.apache.org/next/examples/en/editor.html?c=gauge-clock), [gauge-multi-title](https://echarts.apache.org/next/examples/en/editor.html?c=gauge-multi-title), [gauge-progress](https://echarts.apache.org/next/examples/en/editor.html?c=gauge-progress), [gauge-ring](https://echarts.apache.org/next/examples/en/editor.html?c=gauge-ring), [gauge-grade](https://echarts.apache.org/next/examples/en/editor.html?c=gauge-grade), [gauge-simple](https://echarts.apache.org/next/examples/en/editor.html?c=gauge-simple), [gauge-temperature](https://echarts.apache.org/next/examples/en/editor.html?c=gauge-temperature).
     + See more details in [#13416](https://github.com/apache/incubator-echarts/pull/13416).
-+ [Feature] The default theme and interaction have been greatly enhanced. Some new options are provide for the style and interaction configuration:
++ [Feature] The default theme and interaction have been greatly enhanced. Some new options are provided for the style and interaction configuration:
     + Tooltip style enhancement: [#12947](https://github.com/apache/incubator-echarts/pull/12947), [#13398](https://github.com/apache/incubator-echarts/pull/13398), [#13242](https://github.com/apache/incubator-echarts/pull/13242).
     + Provide configurable dash style: [#12961](https://github.com/apache/incubator-echarts/pull/12961).
     + Axis style enhancement: [#13046](https://github.com/apache/incubator-echarts/pull/13046).
@@ -58,7 +58,7 @@
     + German: [#13315](https://github.com/apache/incubator-echarts/pull/13315).
     + French: [#13056](https://github.com/apache/incubator-echarts/pull/13056).
     + FI/ES/TH: [#13055](https://github.com/apache/incubator-echarts/pull/13055).
-+ [Feature] Support rounded conner in pie and sunburst:
++ [Feature] Support rounded corner in pie and sunburst:
     + See [#13390](https://github.com/apache/incubator-echarts/pull/13390) and [#13378](https://github.com/apache/incubator-echarts/pull/13378).
 + [Feature] Make tooltip more configurable:
     + Support to add CSS class to tooltip. [#13383](https://github.com/apache/incubator-echarts/pull/13383).
@@ -72,8 +72,8 @@
     + Support dirty rect: [#13170](https://github.com/apache/incubator-echarts/pull/13170)
     + Others: [#13339](https://github.com/apache/incubator-echarts/pull/13339).
 + Others small bug-fix or enhancement:
-    + [Feature] Enhance `parseData` [#13044](https://github.com/apache/incubator-echarts/pull/13044).
-    + https://github.com/apache/incubator-echarts/pull/13013
+    + [Feature] Enhance `parseDate` [#13044](https://github.com/apache/incubator-echarts/pull/13044).
+    + [Feature] Make line bolder when line is in emphasis state [#13013](https://github.com/apache/incubator-echarts/pull/13013).
     + [Feature] Support axis filter in specific cases. [#12832](https://github.com/apache/incubator-echarts/pull/12832).
     + [Fix] Fix bmap first layout may be incorrect if container's layout is flex or grid. [#13432](https://github.com/apache/incubator-echarts/pull/13432).
     + [Fix] Hide tooltip when mouse leaves the chart [#13382](https://github.com/apache/incubator-echarts/pull/13382).
