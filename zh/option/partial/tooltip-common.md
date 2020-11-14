@@ -120,7 +120,7 @@
 
 ##${prefix} type(string) = 'line'
 
-<ExampleUIControlEnum default="none,line,shadow,cross" />
+<ExampleUIControlEnum options="none,line,shadow,cross" default="line" />
 
 指示器类型。
 

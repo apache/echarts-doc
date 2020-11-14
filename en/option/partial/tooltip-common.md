@@ -120,7 +120,7 @@ Configuration item for axisPointer.
 
 ##${prefix} type(string) = 'line'
 
-<ExampleUIControlEnum default="none,line,shadow,cross" />
+<ExampleUIControlEnum options="none,line,shadow,cross" default="line" />
 
 Indicator type.
 
