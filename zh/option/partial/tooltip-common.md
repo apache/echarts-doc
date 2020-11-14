@@ -87,7 +87,7 @@
 
 #${prefix} trigger(string) = 'item'
 
-<ExampleUIControlEnum default="item,axis,none" />
+<ExampleUIControlEnum options="item,axis,none" default="item" />
 
 触发类型。
 
