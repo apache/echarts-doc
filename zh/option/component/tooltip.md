@@ -218,3 +218,31 @@ const option = {
     prefix = '#'
 ) }}
 
+## order(string) = 'seriesAsc'
+
+<ExampleUIControlEnum options="seriesAsc,seriesDesc,valueAsc,valueDesc" default="seriesAsc" />
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+多系列提示框浮层排列顺序。默认值为 `'seriesAsc'`
+
+提示框排列顺序可选值:
+
++ `'seriesAsc'`
+
+    根据系列声明, 升序排列。
+
++ `'seriesDesc'`
+
+    根据系列声明, 降序排列。
+
++ `'valueAsc'`
+
+    根据数据值, 升序排列。
+
++ `'valueDesc'`
+
+    根据数据值, 降序排列。
+
