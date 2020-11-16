@@ -87,7 +87,7 @@
 
 #${prefix} trigger(string) = 'item'
 
-<ExampleUIControlEnum default="item,axis,none" />
+<ExampleUIControlEnum options="item,axis,none" default="item" />
 
 触发类型。
 
@@ -120,7 +120,7 @@
 
 ##${prefix} type(string) = 'line'
 
-<ExampleUIControlEnum default="none,line,shadow,cross" />
+<ExampleUIControlEnum options="none,line,shadow,cross" default="line" />
 
 指示器类型。
 

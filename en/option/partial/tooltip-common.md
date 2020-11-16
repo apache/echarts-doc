@@ -87,7 +87,7 @@ Whether to show the tooltip component, including tooltip floating layer and [axi
 
 #${prefix} trigger(string) = 'item'
 
-<ExampleUIControlEnum default="item,axis,none" />
+<ExampleUIControlEnum options="item,axis,none" default="item" />
 
 Type of triggering.
 
@@ -120,7 +120,7 @@ Configuration item for axisPointer.
 
 ##${prefix} type(string) = 'line'
 
-<ExampleUIControlEnum default="none,line,shadow,cross" />
+<ExampleUIControlEnum options="none,line,shadow,cross" default="line" />
 
 Indicator type.
 
