@@ -246,3 +246,30 @@ myChart.on('legendselectchanged', function (params) {
 下面示例演示了如何通过`dispatchAction`去轮流高亮饼图的每个扇形。
 
 ~[600x400](${galleryViewPath}doc-example/pie-highlight&edit=1&reset=1)
+
+
+## 监听“空白处”的事件
+
+有时候，开发者需要监听画布的“空白处”所触发的事件。比如，当需要在用户点击“空白处”的时候重置图表时。
+
+在讨论这个功能之前，我们需要先明确两种事件。`zrender 事件`和`echarts 事件`。
+
+```js
+myChart.getZr().on('click', function (event) {
+    // 该监听器正在监听一个`zrender 事件`。
+});
+myChart.on('click', function (event) {
+    // 该监听器正在监听一个`echarts 事件`。
+});
+```
+`zrender 事件`与`echarts 事件`不同。前者是当鼠标在任何地方都会被触发，而后者是只有当鼠标在图形元素上时才能被触发。事实上，`echarts 事件` 是在 `zrender 事件` 的基础上实现的，也就是说，当一个 `zrender 事件` 在图形元素上被触发时，`echarts` 将触发一个 `echarts 事件` 给开发者。
+
+有了 `zrender事件`，我们就可以实现 “监听空白处的事件”，具体如下：
+```js
+myChart.getZr().on('click', function (event) {
+    // 没有 target 意味着鼠标/指针不在任何一个图形元素上，它是从“空白处”触发的。
+    if (!event.target) {
+        // 点击在了空白处，做些什么。
+    }
+});
+```

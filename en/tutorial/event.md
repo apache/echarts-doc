@@ -238,6 +238,7 @@ myChart.on('legendselectchanged', function (params) {
 });
 ```
 
+
 ## Triggering Component Actions through Code in ECharts
 
 Actions like `'legendselectchanged'` mentioned above will be triggered by component interaction. Besides that, sometimes we need to trigger certain actions in our program, such as showing tooltip, or selecting legend.
@@ -249,3 +250,30 @@ Frequently used actions and the parameters are listed in [action](api.html#actio
 Below displays how to highlight each sector of pie chart in turn through `dispatchAction`.
 
 ~[600x400](${galleryViewPath}doc-example/pie-highlight&edit=1&reset=1)
+
+
+## Listen to events from the blank
+
+Sometimes developers need to listen to the events that are triggered from the blank of the canvas. For example, need to reset the chart when users click on the blank.
+
+Before we talk about this feature, we need to clarify two kinds of events: `zrender events` and `echarts events`.
+```js
+myChart.getZr().on('click', function (event) {
+    // This listener is listening to a `zrender event`.
+});
+myChart.on('click', function (event) {
+    // This listener is listening to a `echarts event`.
+});
+```
+`zrender events` are different from `echarts events`. The former one are triggered when mouse/pointer is at everywhere, while the latter one can only be triggered when mouse/pointer is at the graphic elements. In fact, `echarts events` are implemented based on `zrender events`, that is, when a `zrender events` is triggered at a graphic element, `echarts` will trigger a `echarts event`.
+
+Having `zrender events`, we can implement "listen to events from the blank" as follows:
+```js
+myChart.getZr().on('click', function (event) {
+    // No "target" means that mouse/pointer is not on
+    // any of the graphic elements, which is "blank".
+    if (!event.target) {
+        // Click on blank. Do something.
+    }
+});
+```
