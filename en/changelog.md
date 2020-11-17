@@ -79,12 +79,13 @@
     + [Fix] Hide tooltip when mouse leaves the chart [#13382](https://github.com/apache/incubator-echarts/pull/13382).
     + [Fix] Fix bmap personalization style does not work. [#13214](https://github.com/apache/incubator-echarts/pull/13214).
     + [Fix] Fix the bug of overriding title when click the stack button. [#13372](https://github.com/apache/incubator-echarts/pull/13372).
-    + [Fix] Fix Echarts keeps rendering white blanks with large datasets on single canvas mode [#13283](https://github.com/apache/incubator-echarts/pull/13283).
+    + [Fix] Fix ECharts keeps rendering white blanks with large datasets on single canvas mode [#13283](https://github.com/apache/incubator-echarts/pull/13283).
     + [Fix] Make `contentToOption` totally optional. [#13139](https://github.com/apache/incubator-echarts/pull/13139).
     + [Fix] Keep axis tooltip open on refresh. [#13100](https://github.com/apache/incubator-echarts/pull/13100).
     + [Fix] Skip rendering for data out of axis content in heatmap. [#12991](https://github.com/apache/incubator-echarts/pull/12991).
-+ [Break] remove built-in map geoJSON.
-    + [#13565](https://github.com/apache/incubator-echarts/pull/13565).
++ [Break] Breaking changes against v4.9
+    + Remove built-in map geoJSON. [#13565](https://github.com/apache/incubator-echarts/pull/13565).
+    + Drop the support of the legacy IE8. The previous VML renderer (necessary in IE8) will not be updated to work in v5.0 util someone proposed with their real scenario.
 
 
 
