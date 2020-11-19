@@ -2,7 +2,7 @@
 ## v5.0.0
 <div class="time">2020-11-10</div>
 
-+ Migrate code base to TypeScript:
++ Migrate codebase to TypeScript:
     + The entire code base have been migrated to TypeScript.
     + Provide `types/dist/echarts.d.ts` for the upper TS based applications, where the TS version supported is down to 3.4.
     + See more details in [#13563](https://github.com/apache/incubator-echarts/pull/13563)
