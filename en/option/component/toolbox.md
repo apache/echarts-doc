@@ -166,7 +166,7 @@ Save as image.
 
 File suffix of the image saved.
 
-+ If the `renderer` is set to be `'canvas'` when chart [initialized](api.html#echarts.init) (default), then `'png'` (default) and `'jpeg'` are supported.
++ If the `renderer` is set to be `'canvas'` when chart [initialized](api.html#echarts.init) (default), then `'png'` (default) and `'jpg'` are supported.
 + If the `renderer` is set to be `'svg'` when when chart [initialized](api.html#echarts.init), then only `'svg'` is supported for `type` (`'svg'` type is supported since `v4.8.0`).
 
 #### name(string)
