@@ -240,7 +240,7 @@ option = {
 
 保存的图片格式。
 
-+ 如果 `renderer` 的类型在 [初始化图表](api.html#echarts.init) 时被设为 `'canvas'`（默认），则支持 `'png'`（默认）和 `'jpeg'`；
++ 如果 `renderer` 的类型在 [初始化图表](api.html#echarts.init) 时被设为 `'canvas'`（默认），则支持 `'png'`（默认）和 `'jpg'`；
 + 如果 `renderer` 的类型在 [初始化图表](api.html#echarts.init) 时被设为 `'svg'`，则 `type` 只支持 `'svg'`（`'svg'` 格式的图片从 `v4.8.0` 开始支持）。
 
 #### name(string)
