@@ -86,6 +86,7 @@
     + [Fix] Keep axis tooltip open on refresh. [#13100](https://github.com/apache/incubator-echarts/pull/13100).
     + [Fix] Skip rendering for data out of axis content in heatmap. [#12991](https://github.com/apache/incubator-echarts/pull/12991).
 + [Break] Breaking changes against v4.9:
+    + The default theme colors has been changed. If intending to use the theme of 4.9-, please set `option.color = ['#c23531', '#2f4554', '#61a0a8', '#d48265', '#91c7ae', '#749f83', '#ca8622', '#bda29a', '#6e7074', '#546570', '#c4ccd3'];`.
     + Remove built-in map geoJSON. [#13565](https://github.com/apache/incubator-echarts/pull/13565).
     + If the upper application previously imported `src/echarts.js`, `src/chart/*.js` and `src/component/*.js`, it can not work any more because all of the files in `/src` folder are migrated to `*.ts`. Instead, the upper application can import `esm/echarts.js`, `esm/chart/*.js` and `esm/component/*.js`.
     + Drop the support of the legacy IE8. The previous VML renderer (necessary in IE8) will not be updated to work in v5.0 util someone proposed with their real scenario.
