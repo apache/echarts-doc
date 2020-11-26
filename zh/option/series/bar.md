@@ -337,6 +337,8 @@ option = {
 ##${prefix} valueAnimation(boolean)
 
 是否开启标签的数字动画。
+
+参考这个 [示例](${galleryEditorPath}doc-example/value-animation-simple&edit=1&reset=1)。
 {{/if}}
 
 #${prefix} labelLine(Object)

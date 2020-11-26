@@ -258,6 +258,8 @@ Label style configurations of single data.
 ##${prefix} valueAnimation(boolean)
 
 Whether to enable text animation of value change.
+
+See this [example](${galleryEditorPath}doc-example/value-animation-simple&edit=1&reset=1).
 {{ /if }}
 
 #${prefix} labelLine(Object)
