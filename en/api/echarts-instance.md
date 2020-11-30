@@ -8,10 +8,14 @@ Instance created through [echarts.init](~echarts.init).
 Group name to be used in chart [connection](~echarts.connect).
 
 ## setOption(Function)
-```js
+```ts
 (option: Object, notMerge?: boolean, lazyUpdate?: boolean)
 or
-(option: Object, opts?: Object)
+(option: Object, opts?: {
+    notMerge?: boolean;
+    replaceMerge?: string | string[];
+    lazyUpdate?: boolean;
+})
 ```
 
 Configuration item, data, universal interface, all parameters and data can all be modified through `setOption`. ECharts will merge new parameters and data, and then refresh chart. If [animation](option.html#animation) is enabled, ECharts will find the difference between two groups of data and present data changes through proper animation.
@@ -24,7 +28,7 @@ Configuration item, data, universal interface, all parameters and data can all b
 
 **Parameters**
 
-Invoke approaches:
+Usage:
 ```js
 chart.setOption(option, notMerge, lazyUpdate);
 ```
@@ -36,22 +40,140 @@ chart.setOption(option, {
     silent: ...
 });
 ```
+or
+```js
+chart.setOption(option, {
+    replaceMerge: ['xAxis', 'yAxis', 'series']
+});
+```
 
-+ `option`
+
++ `option`: `ECOption`
 
     Configuration item and data. Please refer to [configuration item manual](option.html) for more information.
 
-+ `notMerge`
++ opts
 
-    Optional; states whether not to merge with previous `option`; `false` by default, stating merging.
+    + `notMerge`: `boolean`
 
-+ `lazyUpdate`
+        Optional; states whether not to merge with previous `option`; `false` by default, means merge, see more details in **Component Merging Modes**. If `true`, all of the current components will be removed and new components will be created according to the new `option`.
 
-    Optional; states whether not to update chart immediately; `false` by default, stating update immediately.
+    + `replaceMerge`: `string` | `string[]`
 
-+ `silent`
+        Optional; users can specify "component main types" here, which are the properties under the root of the option tree in [configuration item manual](option.html) (e.g., `xAxis`, `series`). The specified types of component will be merged in the mode "replaceMerge". If users intending to remove some part of components, `replaceMerge` can be used. See more details in **Component Merging Modes**.
 
-    Optional; states whether not to prevent triggering events when calling `setOption`; `false` by default, stating trigger events.
+    + `lazyUpdate`: `boolean`
+
+        Optional; states whether not to update chart immediately; `false` by default, stating update chart synchronously. If `true`, the chart will be updated in the next animation frame.
+
+    + `silent`: `boolean`
+
+        Optional; states whether not to prevent triggering events when calling `setOption`; `false` by default, stating trigger events.
+
+**Component Merging Modes**
+
+Within a specific type of components (more accurately, "component main type". e.g., `xAxis`, `series`):
++ If `opts.notMerge` is set as `true`, the old components will be totally removed and the new component will be created by the incoming `option`.
++ If `opts.notMerge` is set as `false` or not specified:
+    + If this component main type is included in `opts.replaceMerge`, these components will be merged in mode `REPLACE_MERGE`.
+    + Otherwise, these components will be merged in mode `NORMAL_MERGE`.
+
+What is `NORMAL_MERGE` and `REPLACE_MERGE`?
+
++ `NORMAL_MERGE`
+    + Within a specific component main type (e.g., `xAxis`, `series`), each single "component description" (i.e., like `{type: 'xAxis', id: 'xx', name: 'kk', ...}`) in the incoming `option` will be mapped and merged into the existing components one by one if possible. Otherwise create new component on the tail of the list. The detailed rule is as follows:
+        + For each single "component description" that has `id` or `name` specified in `option`, firstly find and merge to existing components that has the same `id` or `name` if possible.
+        + Then for each remaining single "component description", find and merge to remaining existing components if possible.
+        + Create new components for the remaining "component descriptions" at the tail.
+    + Features:
+        + No existing component will be removed. Only add and update are supported in this mode.
+        + The "component index" will never be changed.
+        + If no `id` and `name` specified in `option` (this is a common case), components can be simply merged intuitively according to where they appear in `option`.
+    + Example:
+        ```js
+        // Existing components:
+        {
+            xAxis: [
+                { id: 'm', interval: 5 },
+                { id: 'n', name: 'nnn', interval: 6 }
+                { id: 'q', interval: 7 }
+            ]
+        }
+        // Incoming option:
+        chart.setOption({
+            xAxis: [
+                // No id given. Will be merged to the first unmatched existing component `id: 'q'`
+                { interval: 77 },
+                // No id given. Will create new component
+                { interval: 88 },
+                // No id given but name given. Will be merged to `name: 'nnn'`
+                { name: 'nnn', interval: 66 },
+                // id given. Will be merged to `id: 'm'`.
+                { id: 'm', interval: 55 }
+            ]
+        });
+        // Result components:
+        {
+            xAxis: [
+                { id: 'm', interval: 55 },
+                { id: 'n', name: 'nnn', interval: 66 },
+                { id: 'q', interval: 77 },
+                { interval: 88 }
+            ]
+        }
+        ```
++ `REPLACE_MERGE`
+    + Within a specific component main type (e.g., `xAxis`, `series`), only the existing components that has its `id` declared in the incoming `option` will be kept, other existing components will be removed or replaced with new created component. the detailed rule is as follows:
+        + Firstly Find and merge to existing components that has the same `id` in `option` if possible.
+        + Remove the remaining unmatched existing components. (In fact, set to `null` in the component list to make sure there is no change of the indices of the components that not be removed).
+        + Create new components for the remaining "component descriptions", and put them on the places that have been free or appended to the tail.
+    + Features:
+        + Enable to remove some of the components, which is not supported in `NORMAL_MERGE`.
+        + The indices of the existing components will never be modified. This is to ensure that the existing references by index still works (e.g., `xAxisIndex: 2`).
+        + After replace merged, there might be some "hole", that is, there is no component at some index (because the original component is removed). But this is expectable and controllable by users.
+    + Example:
+        ```js
+        // Existing components:
+        {
+            xAxis: [
+                { id: 'm', interval: 5, min: 1000 },
+                { id: 'n', name: 'nnn', interval: 6, min: 1000 }
+                { id: 'q', interval: 7, min: 1000 }
+            ]
+        }
+        // Incoming option:
+        chart.setOption({
+            xAxis: [
+                { interval: 111 },
+                // id given. Will be merged to the existing `id: 'q'`.
+                { id: 'q', interval: 77 },
+                // id given, but can not find in the existing components.
+                { id: 't', interval: 222 },
+                { interval: 333 }
+            ]
+        }, { replaceMerge: 'xAxis' });
+        // Result components:
+        {
+            xAxis: [
+                // The original component { id: 'm' } has been removed
+                // and replaced to this new component. So `min: 1000` is discarded.
+                { interval: 111 },
+                // The original component { id: 'n' } has been removed
+                // and replaced to this new component. So `min: 1000` is discarded.
+                { id: 't', interval: 222 },
+                // The original component has been merged with this new component.
+                // So `min: 1000` is kept.
+                { id: 'q', interval: 77, min: 1000 },
+                { interval: 333 }
+            ]
+        }
+        ```
+
+**Remove Component**
+
+There are two ways to remove components:
++ Totally removal: use `notMerge: true`, all of the components will be removed.
++ Partially removal: use `replaceMerge: [...]`, the specified types of components will be removed if no id matched. This mode is useful to keep the state (e.g., highlight / animation / selected area) of the other components while make removal.
 
 
 ## getWidth(Function)

@@ -11,7 +11,11 @@
 ```js
 (option: Object, notMerge?: boolean, lazyUpdate?: boolean)
 or
-(option: Object, opts?: Object)
+(option: Object, opts?: {
+    notMerge?: boolean;
+    replaceMerge?: string | string[];
+    lazyUpdate?: boolean;
+})
 ```
 
 设置图表实例的配置项以及数据，万能接口，所有参数和数据的修改都可以通过 `setOption` 完成，ECharts 会合并新的参数和数据，然后刷新图表。如果开启[动画](option.html#option.animation)的话，ECharts 找到两组数据之间的差异然后通过合适的动画去表现数据的变化。
@@ -24,7 +28,7 @@ or
 
 **参数：**
 
-调用方式：
+调用方式举例：
 ```js
 chart.setOption(option, notMerge, lazyUpdate);
 ```
@@ -36,22 +40,145 @@ chart.setOption(option, {
     silent: ...
 });
 ```
+或者
+```js
+chart.setOption(option, {
+    replaceMerge: ['xAxis', 'yAxis', 'series']
+});
+```
 
-+ `option`
+
++ `option`: `ECOption`
 
     图表的配置项和数据，具体见[配置项手册](option.html)。
 
-+ `notMerge`
++ opts
 
-    可选，是否不跟之前设置的 `option` 进行合并，默认为 `false`，即合并。
+    + `notMerge`: `boolean`
 
-+ `lazyUpdate`
+        可选。是否不跟之前设置的 `option` 进行合并。默认为 `false`。即表示合并。合并的规则，详见 **组件合并模式**。如果为 `true`，表示所有组件都会被删除，然后根据新 `option` 创建所有新组件。
 
-    可选，在设置完 `option` 后是否不立即更新图表，默认为 `false`，即立即更新。
+    + `replaceMerge`: `string` | `string[]`
 
-+ `silent`
+        可选。用户可以在这里指定一个或多个 "component main type"。"component main type" 就是 [配置项手册](option.html) 中 `option` 树的第一级子节点（如：`xAxis`, `series`）。这些指定的组件会进行 "replaceMerge"。如果用户想删除部分组件，也可使用 "replaceMerge"。详见 **组件合并模式**。
 
-    可选，阻止调用 `setOption` 时抛出事件，默认为 `false`，即抛出事件。
+    + `lazyUpdate`: `boolean`
+
+        可选。在设置完 `option` 后是否不立即更新图表，默认为 `false`，即同步立即更新。如果为 `true`，则会在下一个 animation frame 中，才更新图表。
+
+    + `silent`: `boolean`
+
+        可选。阻止调用 `setOption` 时抛出事件，默认为 `false`，即抛出事件。
+
+
+**组件合并模式**
+
+对于一种类型的组件（类型指，"component main type"，如：`xAxis`, `series`）：
++ 如果设置 `opts.notMerge` 为 `true`，那么旧的组件会被完全移除，新的组件会根据 `option` 创建。
++ 如果设置 `opts.notMerge` 为 `false`，或者没有设置 `opts.notMerge`：
+    + 如果在 `opts.replaceMerge` 里指定里本 "component main type" ，这类组件会进行 `REPLACE_MERGE`。
+    + 否则，会进行 `NORMAL_MERGE`。
+
+什么是 `NORMAL_MERGE` 和 `REPLACE_MERGE`？
+
++ `NORMAL_MERGE`
+    + 对于一种类型的组件（类型指，"component main type"，如：`xAxis`, `series`），新来的 `option` 中的每个“组件描述”（如：`{type: 'xAxis', id: 'xx', name: 'kk', ...}`）会被尽量合并到已存在的组件中。剩余的情况，会在组件列表尾部创建新的组件。整体规则细节如下：
+        + 先依次对 `option` 中每个有声明 `id` 或者 `name` 的“组件描述”，寻找能匹配其 `id` 或者 `name` 的已有的组件，找到的话则合并。
+        + 再依次对 `option` 中剩余的“组件描述”，寻找还未执行过前一条的已有组件，找到的话则合并。
+        + 其他 `option` 中剩余的“组件描述”，用于在组件列表尾部创建新组件。
+    + 特点：
+        + 永远不会删除已存在的组件。也就是说，只支持增加，或者更新组件。
+        + "component index" 永远不会改变。
+        + 如果 `id` 和 `name` 没有在 `option` 中被指定（这是经常出现的情况），组件会按照它在 `option` 中的顺序一一合并到已有组件中。这种设定比较符合直觉。
+    + 例子：
+        ```js
+        // 已有组件：
+        {
+            xAxis: [
+                { id: 'm', interval: 5 },
+                { id: 'n', name: 'nnn', interval: 6 }
+                { id: 'q', interval: 7 }
+            ]
+        }
+        // 新来的 option ：
+        chart.setOption({
+            xAxis: [
+                // id 没有指定。会寻找到第一个没有进行过合并的已有组件，进行合并。
+                // 即合并到 `id: 'q'`。
+                { interval: 77 },
+                // id 没有指定。最终会创建新组件。
+                { interval: 88 },
+                // id 没有指定，但是 name 指定了。会被合并到已有的 `name: 'nnn'` 组件。
+                { name: 'nnn', interval: 66 },
+                // id 指定了，会被合并到已有的 `id: 'm'` 组件。
+                { id: 'm', interval: 55 }
+            ]
+        });
+        // 结果组件：
+        {
+            xAxis: [
+                { id: 'm', interval: 55 },
+                { id: 'n', name: 'nnn', interval: 66 },
+                { id: 'q', interval: 77 },
+                { interval: 88 }
+            ]
+        }
+        ```
++ `REPLACE_MERGE`
+    + 对于一种类型的组件（类型指，"component main type"，如：`xAxis`, `series`），只有 `option` 中指定了 `id` 并且已有组件中有此 `id` 时，已有组件会和 `option` 相应组件描述进行合并。否则，已有组件都会删除，新组件会被根据 `option` 创建。细节规则如下：
+        + 先依次对 `option` 中每个有声明 `id` 的“组件描述”，寻找能匹配其 `id` 或者 `name` 的已有的组件，找到的话则合并。
+        + 删除其他没匹配到的已有组件。（实际上是，在组件列表中设置为 `null`，以保证没有被删除的组件的 "component index" 不改变）。
+        + 依次对 `option` 中剩余的“组件描述”，创建新组件，填入刚因删除而空出来的位置上，或者增加到末尾。
+    + 特点：
+        + 与 `NORMAL_MERGE` 相比，支持了组件删除。
+        + 已有组件的 "component index" 永远不会变。这是为了保证，`option` 或者 API 中的 index 引用（例如：`xAxisIndex: 2`）仍能正常一致得使用。
+        + 整个处理过程结束后，可能存在一些“洞”，也就是说，在组件列表中的某些 index 上，并没有组件存在（被删除了）。但是这是可以被开发者预期和控制的。
+    + 例子：
+        ```js
+        // 已有组件：
+        {
+            xAxis: [
+                { id: 'm', interval: 5, min: 1000 },
+                { id: 'n', name: 'nnn', interval: 6, min: 1000 }
+                { id: 'q', interval: 7, min: 1000 }
+            ]
+        }
+        // 新来的 option :
+        chart.setOption({
+            xAxis: [
+                { interval: 111 },
+                // id 已经指定了。因此会被合并进已有的组件 `id: 'q'`。
+                { id: 'q', interval: 77 },
+                // id 已经指定了。但是已有组件没有此 id 。
+                { id: 't', interval: 222 },
+                { interval: 333 }
+            ]
+        }, { replaceMerge: 'xAxis' });
+        // 结果组件：
+        {
+            xAxis: [
+                // 原来的 id 为 'm' 的组件，被移除。
+                // 替换为新的组件。新组件中，并没有原来的 `min: 1000` 了。
+                { interval: 111 },
+                // 原来的 id 为 'n' 的组件，被移除。
+                // 替换为新的组件。新组件中，并没有原来的 `min: 1000` 了。
+                { id: 't', interval: 222 },
+                // 原来的组件没有被移除，而是和 option 中的组件描述进行了合并。
+                // 所以 `min: 1000` 被保留了。
+                { id: 'q', interval: 77, min: 1000 },
+                // 新添加的组件。
+                { interval: 333 }
+            ]
+        }
+        ```
+
+**删除组件**
+
+有两种方法能删除组件：
++ 删除所有：使用 `notMerge: true`，则所有组件都被删除。
++ 删除部分：使用 `replaceMerge: [...]`，被指定的组件类型，会根据 replaceMerge 的规则：如果 id 匹配就合并（ merge ），否则旧组件被删除，新组件被创建。“部分删除” 有助于，在删除该删除的组件时，保留其他组件的状态（如高亮、动画、选中状态）。
+
+
 
 ## getWidth(Function)
 ```js
