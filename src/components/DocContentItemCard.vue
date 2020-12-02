@@ -24,7 +24,7 @@
         <span class="path-base">
             <a :href="'#' + baseName.link">{{baseName.text}}</a>
         </span>
-        <span class="current-flag" v-if="shared.currentPath === nodeData.path"><i class="el-icon-s-flag"></i></span>
+        <span class="current-flag" v-if="shared.currentPath === nodeData.path"><i class="el-icon-caret-left"></i></span>
 
         <span class="default-value" v-if="nodeData.default && nodeData.default !== '*'"> = {{nodeData.default}}</span>
 
@@ -56,9 +56,8 @@
         v-highlight
     ></div>
 
-    <div class="children" v-if="supportsExpandable">
+    <div class="children" v-if="supportsExpandable && expanded">
         <DocContentItemCard
-            v-if="expanded"
             v-for="child in nodeData.children"
             :key="child.path"
             :node-data="child"
@@ -321,7 +320,7 @@ $hierarchy-guider-color: #E0E6F1;
 
         .current-flag {
             color: #434343;
-            font-size: 16px;
+            font-size: 20px;
         }
 
         .default-value {
@@ -380,6 +379,9 @@ $hierarchy-guider-color: #E0E6F1;
             .path-base {
                 font-size: 16px;
             }
+            .current-flag {
+                font-size: 16px;
+            }
         }
     }
     &.level-3 {
@@ -391,6 +393,9 @@ $hierarchy-guider-color: #E0E6F1;
                 font-size: 13px;
             }
             .path-base {
+                font-size: 16px;
+            }
+            .current-flag {
                 font-size: 16px;
             }
         }
