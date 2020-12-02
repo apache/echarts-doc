@@ -930,6 +930,7 @@ setOption 时指定本次对该图形元素的操作行为。
 
 {{ use: partial-graphic-transform(
     prefix = ${prefix},
+    type = ${type},
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
@@ -943,6 +944,7 @@ setOption 时指定本次对该图形元素的操作行为。
 {{ use: partial-graphic-cpt-location-prop-desc-common(
     hv = 'h',
     prefix = ${prefix},
+    type = ${type},
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
@@ -955,6 +957,7 @@ setOption 时指定本次对该图形元素的操作行为。
 {{ use: partial-graphic-cpt-location-prop-desc-common(
     hv = 'h',
     prefix = ${prefix},
+    type = ${type},
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
@@ -967,6 +970,7 @@ setOption 时指定本次对该图形元素的操作行为。
 {{ use: partial-graphic-cpt-location-prop-desc-common(
     hv = 'v',
     prefix = ${prefix},
+    type = ${type},
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
@@ -979,6 +983,7 @@ setOption 时指定本次对该图形元素的操作行为。
 {{ use: partial-graphic-cpt-location-prop-desc-common(
     hv = 'v',
     prefix = ${prefix},
+    type = ${type},
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
@@ -1019,7 +1024,7 @@ z 方向的高度，决定层叠关系。
 
 ##${prefix} name(string) = undefined
 
-参见 [diffChildrenByName](~${optionPath}.${hostName}${symbolVisit}polygon.diffChildrenByName)。
+参见 [diffChildrenByName](~${optionPath}.${hostName}${symbolVisit}${type}.diffChildrenByName)。
 {{ /if }}
 
 ##${prefix} info(*)
@@ -1134,13 +1139,13 @@ chart.on('click', function (params) {
 + {{ if: ${hv} === 'h' }}`'center'`{{ else }}`'middle'`{{ /if }}：表示自动居中。
 
 {{ if: ${hv} === 'h' }}
-[left](~${optionPath}.${hostName}${symbolVisit}polygon.left) 和 [right](~${optionPath}.${hostName}${symbolVisit}polygon.right) 只有一个可以生效。
+[left](~${optionPath}.${hostName}${symbolVisit}${type}.left) 和 [right](~${optionPath}.${hostName}${symbolVisit}${type}.right) 只有一个可以生效。
 
-如果指定 [left](~${optionPath}.${hostName}${symbolVisit}polygon.left) 或 [right](~${optionPath}.${hostName}${symbolVisit}polygon.right)，则 [shape](~${optionPath}.${hostName}${symbolVisit}polygon.shape) 里的 `x`、`cx` 等定位属性不再生效。
+如果指定 [left](~${optionPath}.${hostName}${symbolVisit}${type}.left) 或 [right](~${optionPath}.${hostName}${symbolVisit}${type}.right)，则 [shape](~${optionPath}.${hostName}${symbolVisit}${type}.shape) 里的 `x`、`cx` 等定位属性不再生效。
 {{ else }}
-[top](~${optionPath}.${hostName}${symbolVisit}polygon.top) 和 [bottom](~${optionPath}.${hostName}${symbolVisit}polygon.bottom) 只有一个可以生效。
+[top](~${optionPath}.${hostName}${symbolVisit}${type}.top) 和 [bottom](~${optionPath}.${hostName}${symbolVisit}${type}.bottom) 只有一个可以生效。
 
-如果指定 [top](~${optionPath}.${hostName}${symbolVisit}polygon.top) 或 [bottom](~${optionPath}.${hostName}${symbolVisit}polygon.bottom)，则 [shape](~${optionPath}.${hostName}${symbolVisit}polygon.shape) 里的 `y`、`cy` 等定位属性不再生效。
+如果指定 [top](~${optionPath}.${hostName}${symbolVisit}${type}.top) 或 [bottom](~${optionPath}.${hostName}${symbolVisit}${type}.bottom)，则 [shape](~${optionPath}.${hostName}${symbolVisit}${type}.shape) 里的 `y`、`cy` 等定位属性不再生效。
 {{ /if }}
 
 
@@ -1278,9 +1283,21 @@ chart.on('click', function (params) {
 
 {{ target: partial-graphic-transform }}
 
-##${prefix} position(Array) = [0, 0]
+##${prefix} x(number) = 0
 
 {{ use: partial-graphic-transform-common-desc(
+    type = ${type},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
+##${prefix} y(number) = 0
+
+{{ use: partial-graphic-transform-common-desc(
+    type = ${type},
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
@@ -1291,6 +1308,7 @@ chart.on('click', function (params) {
 ##${prefix} rotation(number) = 0
 
 {{ use: partial-graphic-transform-common-desc(
+    type = ${type},
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
@@ -1298,9 +1316,10 @@ chart.on('click', function (params) {
     symbolDeclare = ${symbolDeclare}
 ) }}
 
-##${prefix} scale(Array) = [1, 1]
+##${prefix} scaleX(number) = 1
 
 {{ use: partial-graphic-transform-common-desc(
+    type = ${type},
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
@@ -1308,9 +1327,32 @@ chart.on('click', function (params) {
     symbolDeclare = ${symbolDeclare}
 ) }}
 
-##${prefix} origin(number) = [0, 0]
+##${prefix} scaleY(number) = 1
 
 {{ use: partial-graphic-transform-common-desc(
+    type = ${type},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
+##${prefix} originX(number) = 0
+
+{{ use: partial-graphic-transform-common-desc(
+    type = ${type},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
+##${prefix} originY(number) = 0
+
+{{ use: partial-graphic-transform-common-desc(
+    type = ${type},
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
@@ -1323,15 +1365,15 @@ chart.on('click', function (params) {
 {{ target: partial-graphic-transform-common-desc }}
 
 图形元素可以进行标准的 `2D transform`，其中包含：
-+ [平移（position）](~${optionPath}.${hostName}${symbolVisit}polygon.position)：默认值是 `[0, 0]`。表示 `[横向平移的距离, 纵向平移的距离]`。右和下为正值。
-+ [旋转（rotation）](~${optionPath}.${hostName}${symbolVisit}polygon.rotation)：默认值是 0。表示旋转的弧度值。正值表示逆时针旋转。
-+ [缩放（scale）](~${optionPath}.${hostName}${symbolVisit}polygon.scale)：默认值是 `[1, 1]`。表示 `[横向缩放的倍数, 纵向缩放的倍数]`。
++ 平移（依照 [x](~${optionPath}.${hostName}${symbolVisit}${type}.x) 和 [y](~${optionPath}.${hostName}${symbolVisit}${type}.y)）：默认值都是 `0`。右和下为正值。
++ 旋转（依照 [rotation](~${optionPath}.${hostName}${symbolVisit}${type}.rotation)）：默认值是 `0`。表示旋转的弧度值。正值表示逆时针旋转。
++ 缩放（依照 [scaleX](~${optionPath}.${hostName}${symbolVisit}${type}.scaleX) 和 [scaleY](~${optionPath}.${hostName}${symbolVisit}${type}.scaleY)）：默认值都是 `1`。这个值表示缩放的倍数。
 
-其中，[origin](~${optionPath}.${hostName}${symbolVisit}polygon.origin) 指定了旋转和缩放的中心点，默认值是 `[0, 0]`。
+另外，[originX](~${optionPath}.${hostName}${symbolVisit}${type}.originX) 和 [originY](~${optionPath}.${hostName}${symbolVisit}${type}.originY) 指定了旋转和缩放的中心点，默认值都是 `0`。
 
 注意：
 + transform 中设定的坐标，都是相对于图形元素的父元素的（即 [group](~${optionPath}.${hostName}${symbolVisit}group) 元素或者顶层画布）的 `[0, 0]` 点。也就是说，我们可以使用 [group](~${optionPath}.${hostName}${symbolVisit}group) 来组织多个图形元素，并且 [group](~${optionPath}.${hostName}${symbolVisit}group) 可以嵌套。
-+ 对于一个图形元素，`transform` 执行的顺序是：先缩放（scale），再旋转（rotation），再平移（position）。
++ 对于一个图形元素，`transform` 执行的顺序是：先缩放（依照 `scaleX`，`scaleY`），再旋转（依照 `rotation`），再平移（依照 `x`，`y`）。
 
 
 
