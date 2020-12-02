@@ -70,6 +70,38 @@ chart.setOption(option, {
 
         Optional; states whether not to prevent triggering events when calling `setOption`; `false` by default, stating trigger events.
 
+    + `transition`: `SetOptionTransitionOptItem | SetOptionTransitionOptItem[]`
+
+        Optional; specify how to perform combining/separating transition animation when `setOption` called. Currently only [custom series](option.html#series-custom) supports this feature. The content of the parameter `transition` is as follows.
+        ```js
+        type SetOptionTransitionOptItem = {
+            from?: SetOptionTransitionOptFinder;
+            to?: SetOptionTransitionOptFinder;
+            dividingMethod?: 'split' | 'duplicate';
+        };
+        type SetOptionTransitionOptFinder = {
+            seriesIndex?: number;
+            seriesId?: string | number;
+            seriesName?: string | number;
+            dimension: string | number; // Dimension name or dimension index.
+        };
+        ```
+        For example:
+        ```js
+        chart.setOption(option, {
+            transition: {
+                // It means that dimension 3 of the old series 0 can be mapped to
+                // dimension "Population" of the new series 0. The data diff will be
+                // made based on the values in the two dimensions.
+                from: { seriesIndex: 0, dimension: 3 },
+                to: { seriesIndex: 0, dimension: 'Population' },
+                dividingMethod: 'split'
+            }
+        });
+        ```
+        The property `from` and `to` indicate that which dimension of which old series will be mapped to which dimension of which new series. Having the pair of dimensions provided, the data diff will be performed based on the values in that two dimensions. That is, if some values in `from.dimension` is the same as some values in `to.dimension` (e.g., all of them are `"France"`), their corresponding graphic elements will perform transition animation (morphing) if possible. In this case echarts supports three types of transition animation: one-to-one, one-to-many (separating), many-to-one (combining). The property `dividingMethod` specifies that when combining or separating, the effect should be like "split" or "duplicate". Check this examples please: [custom-combine-separate-morph](${galleryEditorPath}custom-combine-separate-morph&edit=1&reset=1), [custom-story-transition](${galleryEditorPath}custom-story-transition&edit=1&reset=1).
+
+
 **Component Merging Modes**
 
 Within a specific type of components (more accurately, "component main type". e.g., `xAxis`, `series`):
