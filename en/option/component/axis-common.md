@@ -748,8 +748,6 @@ Next, we are going to introduce these three forms one by one.
 
 Using string templates is an easy way to format date/time with frequently used formats. If it can be used to make what you want, you are advised to do so. If not, you could then consider the others. Supported formats are:
 
-使用字符串模板是一种方便实现常用日期时间格式化方式的形式。如果字符串模板可以实现你的效果，那我们优先推荐使用此方式；如果无法实现，再考虑其他两种更复杂的方式。支持的模板如下：
-
 | Group        | Template | Value (EN)                                                    | Value (ZH)                                                               |
 |--------------|----------|----------------------------------------------------------------|----------------------------------------------------------------------------|
 | Year         | {yyyy}     | e.g., 2020, 2021, ...                                          | 例：2020, 2021, ...                                                        |
