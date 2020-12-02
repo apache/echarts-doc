@@ -57,6 +57,11 @@ A `~` can be used to refer to a option item in the same doc. For example:
 [xAxis.name](~xAxis.name)
 ```
 
+If intending to reference an anchor in different doc, it can be:
+```md
+[itemStyle](option.html#series.itemStyle)
+```
+
 #### Notes:
 
 1. Formatter will treat {{use}} as a block. So don't use it **inline**.
