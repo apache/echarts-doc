@@ -729,7 +729,59 @@ ${name}的显示间隔，在类目轴中有效。{{ if: !${isAxisLabel} }}默认
 ```js
 // 使用字符串模板，模板变量为刻度默认标签 {value}
 formatter: '{value} kg'
+```
 
+对于时间轴（[type](~${componentType}.type): `'time'`），`formatter` 的字符串模板支持多种形式：
+
+- **字符串模板**：简单快速实现常用日期时间模板，`string` 类型
+- **回调函数**：自定义 formatter，可以用来实现复杂高级的格式，`Function` 类型
+- **分级模板**：为不同时间粒度的标签使用不同的 formatter，`object` 类型
+
+下面我们分别介绍这三种形式。
+
+** 字符串模板 **
+
+使用字符串模板是一种方便实现常用日期时间格式化方式的形式。如果字符串模板可以实现你的效果，那我们优先推荐使用此方式；如果无法实现，再考虑其他两种更复杂的方式。支持的模板如下：
+
+| 分类        | 模板 | 取值（英文）                                                    | 取值（中文）                                                                |
+|--------------|----------|----------------------------------------------------------------|----------------------------------------------------------------------------|
+| Year         | {yyyy}     | e.g., 2020, 2021, ...                                          | 例：2020, 2021, ...                                                        |
+|              | {yy}       | 00-99                                                          | 00-99                                                                      |
+| Quarter      | {Q}        | 1, 2, 3, 4                                                     | 1, 2, 3, 4                                                                 |
+| Month        | {MMMM}     | e.g., January, February, ...                                   | 一月、二月、…… |
+|              | {MMM}      | e.g., Jan, Feb, ...                                            | 1月、2月、……              |
+|              | {MM}       | 01-12                                                          | 01-12                                                                      |
+|              | {M}        | 1-12                                                           | 1-12                                                                       |
+| Day of Month | {dd}       | 01-31                                                          | 01-31                                                                      |
+|              | {d}        | 1-31                                                           | 1-31                                                                       |
+| Day of Week  | {eeee}     | Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday | 星期日、星期一、星期二、星期三、星期四、星期五、星期六                     |
+|              | {ee}       | Sun, Mon, Tues, Wed, Thu, Fri, Sat                             | 日、一、二、三、四、五、六                                                 |
+|              | {e}        | 1-54                                                           | 1-54                                                                       |
+| Hour         | {HH}       | 00-23                                                          | 00-23                                                                      |
+|              | {H}        | 0-23                                                           | 0-23                                                                       |
+|              | {hh}       | 01-12                                                          | 01-12                                                                      |
+|              | {h}        | 1-12                                                           | 1-12                                                                       |
+| Minute       | {mm}       | 00-59                                                          | 00-59                                                                      |
+|              | {m}        | 0-59                                                           | 0-59                                                                       |
+| Second       | {ss}       | 00-59                                                          | 00-59                                                                      |
+|              | {s}        | 0-59                                                           | 0-59                                                                       |
+| Millisecond  | {SSS}      | 000-999                                                        | 000-999                                                                    |
+|              | {S}        | 0-999                                                          | 0-999                                                                      |
+
+> 其他语言请参考相应[语言包](https://github.com/apache/incubator-echarts/tree/master/src/i18n)中的定义，语言包可以通过 [echarts.registerLocale](api.html#echarts.registerLocale) 注册。
+
+示例:
+```js
+formatter: '{yyyy}-{MM}-{dd}' // 得到的 label 形如：'2020-12-02'
+formatter: '{d}日' // 得到的 label 形如：'2日'
+```
+
+** 回调函数 **
+
+回调函数可以根据刻度值返回不同的格式，如果有复杂的时间格式化需求，也可以引用第三方的日期时间相关的库（如 [Moment.js](https://momentjs.com/)、[date-fns](https://date-fns.org/) 等），返回显示的文本。
+
+示例：
+```js
 // 使用函数模板，函数参数分别为刻度数值（类目），刻度的索引
 formatter: function (value, index) {
     // 格式化成月/日，只在第一个刻度显示年份
@@ -741,4 +793,100 @@ formatter: function (value, index) {
     return texts.join('/');
 }
 ```
+
+** 分级模板 **
+
+有时候，我们希望对不同的时间粒度采用不同的格式化策略。例如，在季度图表中，我们可能希望对每个月的第一天显示月份，而其他日期显示日期。我们可以使用以下方式实现该效果：
+
+示例：
+```js
+formatter: {
+    month: '{MMMM}', // 一月、二月、……
+    day: '{d}日' // 1日、2日、……
+}
+```
+
+支持的分级以及各自默认的取值为：
+```js
+{
+    year: '{yyyy}',
+    month: '{MMM}',
+    day: '{d}',
+    hour: '{HH}:{mm}',
+    minute: '{HH}:{mm}',
+    second: '{HH}:{mm}:{ss}',
+    millisecond: '{hh}:{mm}:{ss} {SSS}',
+    none: '{yyyy}-{MM}-{dd} {hh}:{mm}:{ss} {SSS}'
+}
+```
+
+以 `day` 为例，当一个刻度点的值的小时、分钟、秒、毫秒都为 `0` 时，将采用 `day` 的分级值作为模板。`none` 表示当其他规则都不适用时采用的模板，也就是带有毫秒值的刻度点的模板。
+
+
+** 富文本 **
+
+以上这三种形式的 formatter 都支持富文本，所以可以做成一些复杂的效果。
+
+示例：
+```js
+xAxis: {
+    type: 'time',
+    axisLabel: {
+        formatter: {
+            // 一年的第一个月显示年度信息和月份信息
+            year: '{yearStyle|{yyyy}}\n{monthStyle|{MMM}}',
+            month: '{monthStyle|{MMM}}'
+        },
+        rich: {
+            yearStyle: {
+                // 让年度信息更醒目
+                color: '#000',
+                fontWeight: 'bold'
+            },
+            monthStyle: {
+                color: '#999'
+            }
+        }
+    }
+},
+```
+
+使用回调函数形式实现上面例子同样的效果：
+
+示例：
+```js
+xAxis: {
+    type: 'time',
+    axisLabel: {
+        formatter: function (value) {
+            const date = new Date(value);
+            const yearStart = new Date(value);
+            yearStart.setMonth(0);
+            yearStart.setDate(1);
+            yearStart.setHours(0);
+            yearStart.setMinutes(0);
+            yearStart.setSeconds(0);
+            yearStart.setMilliseconds(0);
+            // 判断一个刻度值知否为一年的开始
+            if (date.getTime() === yearStart.getTime()) {
+                return '{year|' + date.getFullYear() + '}\n'
+                    + '{month|' + (date.getMonth() + 1) + '月}';
+            }
+            else {
+                return '{month|' + (date.getMonth() + 1) + '月}'
+            }
+        },
+        rich: {
+            year: {
+                color: '#000',
+                fontWeight: 'bold'
+            },
+            month: {
+                color: '#999'
+            }
+        }
+    }
+},
+```
+
 

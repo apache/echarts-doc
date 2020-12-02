@@ -381,6 +381,16 @@ export default {
         @include description-html-formatter;
     }
 
+    table {
+        border: 1px solid #ddd;
+        border-collapse: collapse;
+    }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #eee;
+        }
+
 }
 
 .ec-doc-tutorial {
