@@ -734,7 +734,61 @@ Example:
 ```js
 // Use string template; template variable is the default label of axis {value}
 formatter: '{value} kg'
+```
 
+For axes of time [type](~${componentType}.type): `'time'`, `formatter` supports the following forms:
+
+- **String Templates**: an easy and fast way to make frequently used date/time template, formed in `string`
+- **Callback Functions**: customized formatter to make complex format, formed in `Function`
+- **Cascading Templates**: to adopt different formatters for different time granularity, formed in `object`
+
+Next, we are going to introduce these three forms one by one.
+
+** String Templates **
+
+Using string templates is an easy way to format date/time with frequently used formats. If it can be used to make what you want, you are advised to do so. If not, you could then consider the others. Supported formats are:
+
+使用字符串模板是一种方便实现常用日期时间格式化方式的形式。如果字符串模板可以实现你的效果，那我们优先推荐使用此方式；如果无法实现，再考虑其他两种更复杂的方式。支持的模板如下：
+
+| Group        | Template | Value (EN)                                                    | Value (ZH)                                                               |
+|--------------|----------|----------------------------------------------------------------|----------------------------------------------------------------------------|
+| Year         | {yyyy}     | e.g., 2020, 2021, ...                                          | 例：2020, 2021, ...                                                        |
+|              | {yy}       | 00-99                                                          | 00-99                                                                      |
+| Quarter      | {Q}        | 1, 2, 3, 4                                                     | 1, 2, 3, 4                                                                 |
+| Month        | {MMMM}     | e.g., January, February, ...                                   | 一月、二月、…… |
+|              | {MMM}      | e.g., Jan, Feb, ...                                            | 1月、2月、……              |
+|              | {MM}       | 01-12                                                          | 01-12                                                                      |
+|              | {M}        | 1-12                                                           | 1-12                                                                       |
+| Day of Month | {dd}       | 01-31                                                          | 01-31                                                                      |
+|              | {d}        | 1-31                                                           | 1-31                                                                       |
+| Day of Week  | {eeee}     | Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday | 星期日、星期一、星期二、星期三、星期四、星期五、星期六                     |
+|              | {ee}       | Sun, Mon, Tues, Wed, Thu, Fri, Sat                             | 日、一、二、三、四、五、六                                                 |
+|              | {e}        | 1-54                                                           | 1-54                                                                       |
+| Hour         | {HH}       | 00-23                                                          | 00-23                                                                      |
+|              | {H}        | 0-23                                                           | 0-23                                                                       |
+|              | {hh}       | 01-12                                                          | 01-12                                                                      |
+|              | {h}        | 1-12                                                           | 1-12                                                                       |
+| Minute       | {mm}       | 00-59                                                          | 00-59                                                                      |
+|              | {m}        | 0-59                                                           | 0-59                                                                       |
+| Second       | {ss}       | 00-59                                                          | 00-59                                                                      |
+|              | {s}        | 0-59                                                           | 0-59                                                                       |
+| Millisecond  | {SSS}      | 000-999                                                        | 000-999                                                                    |
+|              | {S}        | 0-999                                                          | 0-999                                                                      |
+
+> Templates of other languages can be found in [the language package](https://github.com/apache/incubator-echarts/tree/master/src/i18n). Please refer to [echarts.registerLocale](api.html#echarts.registerLocale) to register a language.
+
+Example:
+```js
+formatter: '{yyyy}-{MM}-{dd}' // gets labels like '2020-12-02'
+formatter: 'Day {d}' // gets labels like 'Day 2'
+```
+
+** Callback Functions **
+
+Callback functions can be used to get different formats for different axis tick values. Sometimes, if you have complex date/time formatting requirement, third-party libraries like [Moment.js](https://momentjs.com/) or [date-fns](https://date-fns.org/) can be used to return formatted labels.
+
+Example:
+```js
 // Use callback function; function parameters are axis index
 formatter: function (value, index) {
     // Formatted to be month/day; display year only in the first label
@@ -747,3 +801,96 @@ formatter: function (value, index) {
 }
 ```
 
+** Cascading Templates **
+
+Sometimes, we wish to use different formats for different time granularity. For example, in a quarter-year chart, we may wish to see the month name with the first date of the month, while see the date name with others. This can be made with:
+
+Example:
+```js
+formatter: {
+    month: '{MMMM}', // Jan, Feb, ...
+    day: '{d}' // 1, 2, ...
+}
+```
+
+Supported levels and their default formatters are:
+```js
+{
+    year: '{yyyy}',
+    month: '{MMM}',
+    day: '{d}',
+    hour: '{HH}:{mm}',
+    minute: '{HH}:{mm}',
+    second: '{HH}:{mm}:{ss}',
+    millisecond: '{hh}:{mm}:{ss} {SSS}',
+    none: '{yyyy}-{MM}-{dd} {hh}:{mm}:{ss} {SSS}'
+}
+```
+
+Let's take `day` for example. When a tick value is `0` for its hour, minute, second, and millisecond, `day` level will be used to make formatter. `none` is used when no other level fulfills, which is for tick values with millisecond values other than `0`.
+
+** Rich Text **
+
+The above three forms all support rich text, so it can be used to make some complex effects.
+
+Example:
+```js
+xAxis: {
+    type: 'time',
+    axisLabel: {
+        formatter: {
+            // Display year and month information on the first data of a year
+            year: '{yearStyle|{yyyy}}\n{monthStyle|{MMM}}',
+            month: '{monthStyle|{MMM}}'
+        },
+        rich: {
+            yearStyle: {
+                // Make yearly text more standing out
+                color: '#000',
+                fontWeight: 'bold'
+            },
+            monthStyle: {
+                color: '#999'
+            }
+        }
+    }
+},
+```
+
+The above example can also be made with a callback function:
+
+Example:
+```js
+xAxis: {
+    type: 'time',
+    axisLabel: {
+        formatter: function (value) {
+            const date = new Date(value);
+            const yearStart = new Date(value);
+            yearStart.setMonth(0);
+            yearStart.setDate(1);
+            yearStart.setHours(0);
+            yearStart.setMinutes(0);
+            yearStart.setSeconds(0);
+            yearStart.setMilliseconds(0);
+            // Whether a tick value is the start of a year
+            if (date.getTime() === yearStart.getTime()) {
+                return '{year|' + date.getFullYear() + '}\n'
+                    + '{month|' + (date.getMonth() + 1) + '月}';
+            }
+            else {
+                return '{month|' + (date.getMonth() + 1) + '月}'
+            }
+        },
+        rich: {
+            year: {
+                color: '#000',
+                fontWeight: 'bold'
+            },
+            month: {
+                color: '#999'
+            }
+        }
+    }
+},
+```
