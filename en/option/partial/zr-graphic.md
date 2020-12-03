@@ -1,6 +1,9 @@
 
 {{ target: partial-zr-graphic-elements }}
 
+
+
+
 #${prefix} ${hostName}${symbolDeclare}group(Object)
 
 `group` is the only type that can contain children, so that a group of elements can be positioned and transformed together.
@@ -59,6 +62,11 @@ A list of children, each item is a declaration of an element.
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
+
+
+
+
+
 
 {{ if: ${usageType} === 'customSeries' }}
 #${prefix} ${hostName}${symbolDeclare}path(Object)
@@ -128,6 +136,17 @@ Optional value:
     symbolDeclare = ${symbolDeclare}
 ) }}
 
+{{ use: partial-graphic-cpt-sub-prop-transition(
+    prefix = ${prefix},
+    hostProp = 'shape',
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
+
 ##${prefix} style(Object)
 
 {{ use: partial-graphic-cpt-style-prop-common(
@@ -156,7 +175,12 @@ Optional value:
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
+
 {{ /if }}
+
+
+
+
 
 #${prefix} ${hostName}${symbolDeclare}image(Object)
 
@@ -174,7 +198,7 @@ Optional value:
 
 ###${prefix} image(string)
 
-Specify contant of the image, can be a URL, or [dataURI](https://tools.ietf.org/html/rfc2397).
+Specify content of the image, can be a URL, or [dataURI](https://tools.ietf.org/html/rfc2397).
 
 {{ use: partial-graphic-cpt-sub-prop-xy(
     prefix = ${prefix},
@@ -220,6 +244,10 @@ Specify contant of the image, can be a URL, or [dataURI](https://tools.ietf.org/
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
+
+
+
+
 
 #${prefix} ${hostName}${symbolDeclare}text(Object)
 
@@ -303,6 +331,10 @@ Text vertical alignment. Optional values: `'top'`, `'middle'`, `'bottom'`.
     symbolDeclare = ${symbolDeclare}
 ) }}
 
+
+
+
+
 #${prefix} ${hostName}${symbolDeclare}rect(Object)
 
 Rectangle element.
@@ -347,6 +379,17 @@ Abbreviation is enabled, for example:
 + `r`: `[1, 2]`    means `[1, 2, 1, 2]`
 + `r`: `[1, 2, 3]` means `[1, 2, 3, 2]`
 
+{{ use: partial-graphic-cpt-sub-prop-transition(
+    prefix = ${prefix},
+    hostProp = 'shape',
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
+
 ##${prefix} style(Object)
 
 {{ use: partial-graphic-cpt-style-prop-common(
@@ -375,6 +418,10 @@ Abbreviation is enabled, for example:
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
+
+
+
+
 
 #${prefix} ${hostName}${symbolDeclare}circle(Object)
 
@@ -410,6 +457,16 @@ Circle element.
     symbolDeclare = ${symbolDeclare}
 ) }}
 
+{{ use: partial-graphic-cpt-sub-prop-transition(
+    prefix = ${prefix},
+    hostProp = 'shape',
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
 ##${prefix} style(Object)
 
 {{ use: partial-graphic-cpt-style-prop-common(
@@ -438,6 +495,10 @@ Circle element.
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
+
+
+
+
 
 #${prefix} ${hostName}${symbolDeclare}ring(Object)
 
@@ -473,6 +534,16 @@ Ring element.
     symbolDeclare = ${symbolDeclare}
 ) }}
 
+{{ use: partial-graphic-cpt-sub-prop-transition(
+    prefix = ${prefix},
+    hostProp = 'shape',
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
 ##${prefix} style(Object)
 
 {{ use: partial-graphic-cpt-style-prop-common(
@@ -501,6 +572,10 @@ Ring element.
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
+
+
+
+
 
 #${prefix} ${hostName}${symbolDeclare}sector(Object)
 
@@ -545,6 +620,16 @@ Sector element.
     symbolDeclare = ${symbolDeclare}
 ) }}
 
+{{ use: partial-graphic-cpt-sub-prop-transition(
+    prefix = ${prefix},
+    hostProp = 'shape',
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
 ##${prefix} style(Object)
 
 {{ use: partial-graphic-cpt-style-prop-common(
@@ -573,6 +658,10 @@ Sector element.
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
+
+
+
+
 
 #${prefix} ${hostName}${symbolDeclare}arc(Object)
 
@@ -617,6 +706,16 @@ Arc element.
     symbolDeclare = ${symbolDeclare}
 ) }}
 
+{{ use: partial-graphic-cpt-sub-prop-transition(
+    prefix = ${prefix},
+    hostProp = 'shape',
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
 ##${prefix} style(Object)
 
 {{ use: partial-graphic-cpt-style-prop-common(
@@ -649,6 +748,10 @@ Arc element.
     symbolDeclare = ${symbolDeclare}
 ) }}
 
+
+
+
+
 #${prefix} ${hostName}${symbolDeclare}polygon(Object)
 
 Polygon element.
@@ -667,6 +770,16 @@ Polygon element.
 
 {{ use: partial-graphic-cpt-path-common(
     prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
+{{ use: partial-graphic-cpt-sub-prop-transition(
+    prefix = ${prefix},
+    hostProp = 'shape',
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
@@ -703,6 +816,10 @@ Polygon element.
     symbolDeclare = ${symbolDeclare}
 ) }}
 
+
+
+
+
 #${prefix} ${hostName}${symbolDeclare}polyline(Object)
 
 Polyline element.
@@ -721,6 +838,16 @@ Polyline element.
 
 {{ use: partial-graphic-cpt-path-common(
     prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
+{{ use: partial-graphic-cpt-sub-prop-transition(
+    prefix = ${prefix},
+    hostProp = 'shape',
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
@@ -759,6 +886,10 @@ Polyline element.
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
+
+
+
+
 
 #${prefix} ${hostName}${symbolDeclare}line(Object)
 
@@ -791,6 +922,16 @@ Specify the percentage of drawing, useful in animation.
 
 Value range: [0, 1].
 
+{{ use: partial-graphic-cpt-sub-prop-transition(
+    prefix = ${prefix},
+    hostProp = 'shape',
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
 ##${prefix} style(Object)
 
 {{ use: partial-graphic-cpt-style-prop-common(
@@ -822,6 +963,10 @@ Value range: [0, 1].
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
+
+
+
+
 
 #${prefix} ${hostName}${symbolDeclare}bezierCurve(Object)
 
@@ -874,6 +1019,16 @@ Specify the percentage of drawing, useful in animation.
 
 Value range: [0, 1].
 
+{{ use: partial-graphic-cpt-sub-prop-transition(
+    prefix = ${prefix},
+    hostProp = 'shape',
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
 ##${prefix} style(Object)
 
 {{ use: partial-graphic-cpt-style-prop-common(
@@ -902,6 +1057,11 @@ Value range: [0, 1].
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
+
+
+
+
+
 
 
 
@@ -948,6 +1108,77 @@ Optional values:
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
+
+
+{{ if: ${usageType} === 'customSeries' }}
+
+##${prefix} transition(string|Array) = ['x', 'y']
+
+Can be a single property name or an array of property names.
+Enable transition animation when the specified properties changed.
+
+The properties can only be:
++ Transform related properties: [`'x'`](~${optionPath}.${hostName}${symbolVisit}${type}.x), [`'y'`](~${optionPath}.${hostName}${symbolVisit}${type}.y), [`'scaleX'`](~${optionPath}.${hostName}${symbolVisit}${type}.scaleX), [`'scaleY'`](~${optionPath}.${hostName}${symbolVisit}${type}.scaleY), [`'rotation'`](~${optionPath}.${hostName}${symbolVisit}${type}.rotation), [`'originX'`](~${optionPath}.${hostName}${symbolVisit}${type}.originX), [`'originY'`](~${optionPath}.${hostName}${symbolVisit}${type}.originY)'. For example:
+    ```js
+    renderItem: function (params, api) {
+        var coord = api.coord([api.value(0), api.value[1]);
+        return {
+            type: 'rect',
+            x: coord[0],
+            y: coord[1],
+            shape: {
+                x: 0,
+                y: 0,
+                width: api.value(2),
+                height: 100
+            },
+            transition: ['x', 'y', 'width']
+        }
+    }
+    ```
++ Shortcut to transition all of the properties in [`'shape'`](~${optionPath}.${hostName}${symbolVisit}${type}.shape), ['`style'`](~${optionPath}.${hostName}${symbolVisit}${type}.style), [`'extra'`](~${optionPath}.${hostName}${symbolVisit}${type}.extra). For example:
+    ```js
+    renderItem: function (params, api) {
+        return {
+            type: 'rect',
+            shape: {
+                x: api.value(0),
+                y: api.value(1),
+                width: api.value(2),
+                height: api.value(3)
+            },
+            // Indicate that all props in `shape` will
+            // have transition animation.
+            transition: 'shape',
+        };
+    }
+    ```
+    It is equivalent to:
+    ```js
+    renderItem: function (params, api) {
+        return {
+            type: 'rect',
+            shape: {
+                x: api.value(0),
+                y: api.value(1),
+                width: api.value(2),
+                height: api.value(3),
+                // This usage can only enable part of the
+                // properties transition.
+                transition: ['x', 'y', 'width', 'height']
+            }
+        };
+    }
+    ```
+
+By default, [`'x'`](~${optionPath}.${hostName}${symbolVisit}${type}.x) and [`'y'`](~${optionPath}.${hostName}${symbolVisit}${type}.y) are transitioned. If you want to disable the default transition, just set it as:
+```js
+transition: [] // Am empty array.
+```
+
+See this [example](${galleryEditorPath}doc-example/custom-transition-simple&edit=1&reset=1) please.
+
+{{ /if }}
 
 {{ if: ${usageType} === 'graphicComponent' }}
 ##${prefix} left(number|string) = undefined
@@ -1116,6 +1347,17 @@ Y offset of shadow.
 
 color of shadow.
 
+{{ use: partial-graphic-cpt-sub-prop-transition(
+    prefix = ${prefix},
+    hostProp = 'style',
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
+
 
 
 {{ target: partial-graphic-cpt-path-common }}
@@ -1164,13 +1406,61 @@ If [top](~${optionPath}.${hostName}${symbolVisit}${type}.top) or [bottom](~${opt
 
 
 
+{{ target: partial-graphic-cpt-sub-prop-transition }}
+
+{{ if: ${usageType} === 'customSeries' }}
+
+###${prefix} transition(string|Array) = undefined
+
+Can be a single property name or an array of property names.
+Enable transition animation when the specified properties changed.
+Can only specify properties that are under this `${hostProp}`.
+
+For example:
+```js
+renderItem: function (params, api) {
+    return {
+        type: 'xxx',
+        ${hostProp}: {
+            mmm: ...,
+            nnn: ...,
+            ppp: ...,
+            qqq: ...,
+            // This two props will perform transition animation.
+            transition: ['mmm', 'ppp']
+        }
+    };
+}
+```
+We can also specify all of the properties like this:
+```js
+renderItem: function (params, api) {
+    return {
+        type: 'xxx',
+        ${hostProp}: {
+            mmm: ...,
+            nnn: ...,
+            ppp: ...,
+            qqq: ...,
+        },
+        // Indicate that all props in `${hostProp}` will
+        // have transition animation.
+        transition: '${hostProp}',
+    };
+}
+```
+
+{{ /if }}
+
+
+
 {{ target: partial-graphic-cpt-sub-prop-xy }}
 
 ###${prefix} x(number) = 0
 
 The x value of the left-top corner of the element in the coordinate system of its parent.
 
-###${prefix} y(numbr) = 0
+###${prefix} y(number) = 0
 
 The y value of the left-top corner of the element in the coordinate system of its parent.
 
@@ -1253,7 +1543,7 @@ start angle, in radian.
 
 ###${prefix} endAngle(number) = Math.PI * 2
 
-end anble, in radian.
+end angle, in radian.
 
 ###${prefix} clockwise(boolean) = true
 
