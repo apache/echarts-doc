@@ -70,6 +70,36 @@ chart.setOption(option, {
 
         可选。阻止调用 `setOption` 时抛出事件，默认为 `false`，即抛出事件。
 
+    + `transition`: `SetOptionTransitionOptItem | SetOptionTransitionOptItem[]`
+
+        可选。指定如何进行“合并”/“分裂”过渡动画。当前只有 [自定义系列（ custom series ）](option.html#series-custom) 支持这种过渡动画。`transition` 参数的内容如下：
+        ```js
+        type SetOptionTransitionOptItem = {
+            from?: SetOptionTransitionOptFinder;
+            to?: SetOptionTransitionOptFinder;
+            dividingMethod?: 'split' | 'duplicate';
+        };
+        type SetOptionTransitionOptFinder = {
+            seriesIndex?: number;
+            seriesId?: string | number;
+            seriesName?: string | number;
+            dimension: string | number; // Dimension name or dimension index.
+        };
+        ```
+        例如：
+        ```js
+        chart.setOption(option, {
+            transition: {
+                // 这指定了，我们要从旧的系列 0 的维度 3 映射到新的系列 0 的维度 'Population'。
+                // 接下来，数据项的映射，会在这两个维度上进行。
+                from: { seriesIndex: 0, dimension: 3 },
+                to: { seriesIndex: 0, dimension: 'Population' },
+                dividingMethod: 'split'
+            }
+        });
+        ```
+        `from` 和 `to` 属性指定了：从旧的哪个系列的哪个维度，映射到新的哪个系列的哪个维度。有了这个指定后，新旧数据的数据项，就可以进行匹配。匹配规则是，假如 `from.dimension` 上的某几个数值，和 `to.dimension` 上的某几个数值相同（例如，他们的值都是 `"法国"`），它们对应的图形元素将会进行过渡动画（尤其是形变动画）。在这种场景中，echarts 支持了三种过渡动画：一对一、一对多（one-to-many，即合并 combining）、多对一（many-to-one，即分裂，separating）。`dividingMethod` 属性指定了，“合并”/“分裂”动画的效果是什么样的，是 split （劈开成多份），还是 duplicate （复制成多份）。详情可看这些例子：[custom-combine-separate-morph](${galleryEditorPath}custom-combine-separate-morph&edit=1&reset=1), [custom-story-transition](${galleryEditorPath}custom-story-transition&edit=1&reset=1)。
+
 
 **组件合并模式**
 

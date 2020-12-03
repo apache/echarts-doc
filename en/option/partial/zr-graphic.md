@@ -941,6 +941,7 @@ Optional values:
 
 {{ use: partial-graphic-transform(
     prefix = ${prefix},
+    type = ${type},
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
@@ -954,6 +955,7 @@ Optional values:
 {{ use: partial-graphic-cpt-location-prop-desc-common(
     hv = 'h',
     prefix = ${prefix},
+    type = ${type},
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
@@ -966,6 +968,7 @@ Optional values:
 {{ use: partial-graphic-cpt-location-prop-desc-common(
     hv = 'h',
     prefix = ${prefix},
+    type = ${type},
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
@@ -978,6 +981,7 @@ Optional values:
 {{ use: partial-graphic-cpt-location-prop-desc-common(
     hv = 'v',
     prefix = ${prefix},
+    type = ${type},
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
@@ -990,6 +994,7 @@ Optional values:
 {{ use: partial-graphic-cpt-location-prop-desc-common(
     hv = 'v',
     prefix = ${prefix},
+    type = ${type},
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
@@ -1030,7 +1035,7 @@ Define the overlap relationship between graphic elements.
 
 ##${prefix} name(string) = undefined
 
-See [diffChildrenByName](~${optionPath}.${hostName}${symbolVisit}polygon.diffChildrenByName).
+See [diffChildrenByName](~${optionPath}.${hostName}${symbolVisit}${type}.diffChildrenByName).
 {{ /if }}
 
 ##${prefix} info(*)
@@ -1148,13 +1153,13 @@ Optional values:
 + {{ if: ${hv} === 'h' }}`'center'`{{ else }}`'middle'`{{ /if }}: means position the element in the middle of according to its parent.
 
 {{ if: ${hv} === 'h' }}
-Only one between [left](~${optionPath}.${hostName}${symbolVisit}polygon.left) and [right](~${optionPath}.${hostName}${symbolVisit}polygon.right) can work.
+Only one between [left](~${optionPath}.${hostName}${symbolVisit}${type}.left) and [right](~${optionPath}.${hostName}${symbolVisit}${type}.right) can work.
 
-If [left](~${optionPath}.${hostName}${symbolVisit}polygon.left) or [right](~${optionPath}.${hostName}${symbolVisit}polygon.right) is specified, positioning attributes in [shape](~${optionPath}.${hostName}${symbolVisit}polygon.shape) (like `x`, `cx`) will not work.
+If [left](~${optionPath}.${hostName}${symbolVisit}${type}.left) or [right](~${optionPath}.${hostName}${symbolVisit}${type}.right) is specified, positioning attributes in [shape](~${optionPath}.${hostName}${symbolVisit}${type}.shape) (like `x`, `cx`) will not work.
 {{ else }}
-Only one between [top](~${optionPath}.${hostName}${symbolVisit}polygon.top) and [bottom](~${optionPath}.${hostName}${symbolVisit}polygon.bottom) can work.
+Only one between [top](~${optionPath}.${hostName}${symbolVisit}${type}.top) and [bottom](~${optionPath}.${hostName}${symbolVisit}${type}.bottom) can work.
 
-If [top](~${optionPath}.${hostName}${symbolVisit}polygon.top) or [bottom](~${optionPath}.${hostName}${symbolVisit}polygon.bottom) is specified, positioning attributes in [shape](~${optionPath}.${hostName}${symbolVisit}polygon.shape) (like `y`, `cy`) will not work.
+If [top](~${optionPath}.${hostName}${symbolVisit}${type}.top) or [bottom](~${optionPath}.${hostName}${symbolVisit}${type}.bottom) is specified, positioning attributes in [shape](~${optionPath}.${hostName}${symbolVisit}${type}.shape) (like `y`, `cy`) will not work.
 {{ /if }}
 
 
@@ -1292,9 +1297,21 @@ Whether draw clockwise.
 
 {{ target: partial-graphic-transform }}
 
-##${prefix} position(Array) = [0, 0]
+##${prefix} x(number) = 0
 
 {{ use: partial-graphic-transform-common-desc(
+    type = ${type},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
+##${prefix} y(number) = 0
+
+{{ use: partial-graphic-transform-common-desc(
+    type = ${type},
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
@@ -1305,6 +1322,7 @@ Whether draw clockwise.
 ##${prefix} rotation(number) = 0
 
 {{ use: partial-graphic-transform-common-desc(
+    type = ${type},
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
@@ -1312,9 +1330,10 @@ Whether draw clockwise.
     symbolDeclare = ${symbolDeclare}
 ) }}
 
-##${prefix} scale(Array) = [1, 1]
+##${prefix} scaleX(number) = 1
 
 {{ use: partial-graphic-transform-common-desc(
+    type = ${type},
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
@@ -1322,9 +1341,32 @@ Whether draw clockwise.
     symbolDeclare = ${symbolDeclare}
 ) }}
 
-##${prefix} origin(number) = [0, 0]
+##${prefix} scaleY(number) = 1
 
 {{ use: partial-graphic-transform-common-desc(
+    type = ${type},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
+##${prefix} originX(number) = 0
+
+{{ use: partial-graphic-transform-common-desc(
+    type = ${type},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
+##${prefix} originY(number) = 0
+
+{{ use: partial-graphic-transform-common-desc(
+    type = ${type},
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
@@ -1337,15 +1379,15 @@ Whether draw clockwise.
 {{ target: partial-graphic-transform-common-desc }}
 
 `2D transform` can be applied to graphic elements, including:
-+ [position](~${optionPath}.${hostName}${symbolVisit}polygon.position): `[horizontal translate offset, vertical translate offset]`, `[0, 0]` by default. Positive value means translate towards right or bottom.
-+ [rotation](~${optionPath}.${hostName}${symbolVisit}polygon.rotation): Rotation in radian, `0` by default. Positive when anticlockwise.
-+ [scale](~${optionPath}.${hostName}${symbolVisit}polygon.scale): `[horizontal scale factor, vertical scale factor]`, `[1, 1]` by default.
++ Translate by [x](~${optionPath}.${hostName}${symbolVisit}${type}.x) and [y](~${optionPath}.${hostName}${symbolVisit}${type}.y): `0` by default. Positive value means translate towards right or bottom.
++ Rotate by [rotation](~${optionPath}.${hostName}${symbolVisit}${type}.rotation): in radian, `0` by default. Positive when anticlockwise.
++ Scale by [scaleX](~${optionPath}.${hostName}${symbolVisit}${type}.scaleX) and [scaleY](~${optionPath}.${hostName}${symbolVisit}${type}.scaleY): `1` by default. The value means the ratio of scale.
 
-[origin](~${optionPath}.${hostName}${symbolVisit}polygon.origin) specifies the origin point of rotation and scaling, `[0, 0]` by default.
+[originX](~${optionPath}.${hostName}${symbolVisit}${type}.originX) and [originY](~${optionPath}.${hostName}${symbolVisit}${type}.originY) specifies the origin point of rotation and scaling, `0`, `0` by default.
 
 Notice:
 + The coordinates specified in the transform attribute above are relative to the `[0, 0]` of the parent element (that is, [group](~${optionPath}.${hostName}${symbolVisit}group) or the root canvas). Thus we are able to [group](~${optionPath}.${hostName}${symbolVisit}group) multiple elements, and [groups](~${optionPath}.${hostName}${symbolVisit}group) can be nested.
-+ The order that the transform attributes are applied to a single graphic element is: Firstly, `rotation`, then, `scale`, finally, `position`.
++ The order that the transform attributes are applied to a single graphic element is: firstly, rotate (by `rotation`); then, scale (by `scaleX`, `scaleY`); finally, translate (by `x`, `y`).
 
 
 
