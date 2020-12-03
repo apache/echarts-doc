@@ -1,9 +1,6 @@
 
 {{ target: partial-parallel-introduce }}
 
-<br>
-
----
 
 **Introduction about Parallel coordinates**
 
@@ -15,7 +12,6 @@ Parallel coordinates are often used to visualize multi-dimension data shown abov
 
 ~[600x400](${galleryViewPath}doc-example/parallel-all&edit=1&reset=1)
 
----
 
 **Brief about Configuration**
 
@@ -101,10 +97,6 @@ Three components are involved here: [parallel](~parallel), [parallelAxis](~paral
 
     [parallelAxis.parallelIndex](~parallelAxis.parallelIndex) is used to specify which coordinate system this axis belongs to. The first coordinate system is used by default.
 
-<br>
-
----
-
 **Notes and Best Practices**
 
 {{ use: partial-parallel-axis-default() }}
@@ -112,10 +104,6 @@ Three components are involved here: [parallel](~parallel), [parallelAxis](~paral
 **If data is too large and cause bad performance**
 
 It is suggested to set [series-parallel.lineStyle.width](~series-parallel.lineStyle.width) to be `0.5` (or less), which may improve performance significantly.
-
-<br>
-
----
 
 **Display High-Dimension Data**
 
