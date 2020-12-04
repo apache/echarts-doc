@@ -363,7 +363,7 @@ Shadow Y offset of the text itself.
 
 {{ target: partial-text-style-auto-color-desc }}
 
-If set as `'auto'`, the color will assigned as visual color, such as series color.
+If set as `'inherit'`, the color will assigned as visual color, such as series color.
 
 
 
