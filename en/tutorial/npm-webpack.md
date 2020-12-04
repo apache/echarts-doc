@@ -75,6 +75,6 @@ myChart.setOption({
 });
 ```
 
-Available modules see [https://github.com/apache/incubator-echarts/blob/master/index.js](https://github.com/apache/incubator-echarts/blob/master/index.js)
+Available modules see [https://github.com/apache/incubator-echarts/blob/master/src/echarts.all.ts](https://github.com/apache/incubator-echarts/blob/master/src/echarts.all.ts)
 
 The same goes for another popular packaging tools [browserify](http://browserify.org/), which will not be introduced again here. Using [rollup](https://rollupjs.org/) to make a custom build of echarts is introduced in [Create Custom Build of ECharts](tutorial.html#Create%20Custom%20Build%20of%20ECharts)
