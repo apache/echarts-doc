@@ -75,7 +75,7 @@ myChart.setOption({
 });
 ```
 
-可以按需引入的模块列表见 [https://github.com/apache/incubator-echarts/blob/master/index.js](https://github.com/apache/incubator-echarts/blob/master/index.js)
+可以按需引入的模块列表见 [https://github.com/apache/incubator-echarts/blob/master/src/echarts.all.ts](https://github.com/apache/incubator-echarts/blob/master/src/echarts.all.ts)
 
 
 对于流行的模块打包工具 [browserify](http://browserify.org/) 也是同样的用法，这里就不赘述了。而对于使用 [rollup](https://rollupjs.org/) 的自定义构建，参见 [自定义构建 ECharts](${websitePath}/zh/tutorial.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%9E%84%E5%BB%BA%20ECharts)。
