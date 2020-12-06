@@ -19,13 +19,13 @@ $.get('data.json').done(function (data) {
             data:['Sales']
         },
         xAxis: {
-            data: ["shirts","cardigan","chiffon shirt","pants","heels","sockes"]
+            data: data.categories
         },
         yAxis: {},
         series: [{
             name: 'Sales',
             type: 'bar',
-            data: [5, 20, 36, 10, 10, 20]
+            data: data.data
         }]
     });
 });
