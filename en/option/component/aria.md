@@ -201,13 +201,7 @@ Note that usually the last series is followed by the series `separator.end`, so 
 
 ## decal(Object)
 
-Decal patterns are added to series data as an additional hint other than colors to help differentiate the data. The following are some examples of decal options.
-
-~[700x300](${galleryViewPath}doc-example/aria-decal&edit=1&reset=1)
-
-### show(boolean) = false
-
-Whether or not to display the decal pattern is not shown by default. If you want to display the applique, you need to make sure [aria.enabled](~aria.enabled) and `aria.decal.show` are both `true`.
+Decal patterns are added to series data as an additional hint other than colors to help differentiate the data. It is easy to enabled the default decal patterns by enabling it:
 
 ```
 aria: {
@@ -217,6 +211,12 @@ aria: {
     }
 }
 ```
+
+~[700x300](${galleryViewPath}doc-example/aria-decal-simple&edit=1&reset=1)
+
+### show(boolean) = false
+
+Whether or not to display the decal pattern is not shown by default. If you want to display the applique, you need to make sure [aria.enabled](~aria.enabled) and `aria.decal.show` are both `true`.
 
 ### decals(Object|Array)
 

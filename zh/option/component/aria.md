@@ -201,13 +201,7 @@ option = {
 
 ## decal(Object)
 
-为系列数据增加贴花纹理，作为颜色的辅助，帮助区分数据。下面是一些贴花图案的配置样例：
-
-~[700x300](${galleryViewPath}doc-example/aria-decal&edit=1&reset=1)
-
-### show(boolean) = false
-
-是否显示贴花图案，默认不显示。如果要显示贴花，需要保证 [aria.enabled](~aria.enabled) 与 `aria.decal.show` 都是 `true`。
+为系列数据增加贴花纹理，作为颜色的辅助，帮助区分数据。使用默认贴花图案的方式非常简单，只需要开启即可：
 
 ```
 aria: {
@@ -217,6 +211,12 @@ aria: {
     }
 }
 ```
+
+~[700x300](${galleryViewPath}doc-example/aria-decal-simple&edit=1&reset=1)
+
+### show(boolean) = false
+
+是否显示贴花图案，默认不显示。如果要显示贴花，需要保证 [aria.enabled](~aria.enabled) 与 `aria.decal.show` 都是 `true`。
 
 ### decals(Object|Array)
 
