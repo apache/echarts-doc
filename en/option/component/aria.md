@@ -3,33 +3,43 @@
 
 # aria(*)
 
-W3C defined the Accessible Rich Internet Applications Suite ([WAI-ARIA](https://www.w3.org/WAI/intro/aria)) to make Web content and Web applications more accessible to the disabled. From ECharts 4.0, we support ARIA by generating description for charts automatically.
+The W3C has developed the [WAI-ARIA](https://www.w3.org/WAI/intro/aria), the Accessible Rich Internet Applications Suite, which is dedicated to making web content and web applications accessible. Apache ECharts 4 complies with this specification by supporting the automatic generation of intelligent descriptions based on chart configuration items, allowing blind people to understand the chart content with the help of a reading device, making the chart accessible to a wider audience. In addition, Apache ECharts 5 adds support for applique textures as an auxiliary expression of color to further differentiate the data.
 
-By default, ARIA is disabled. To enable it, you should set [aria.show](~aria.show) to be `true`. After enabling, it will generate descriptions based on charts, series, data, and so on. Users may change the generated description.
+It is turned off by default and needs to be turned on by setting [aria.enabled](~aria.enabled) to `true`.
 
-**For example:**
+## enabled(boolean) = false
 
-For config:
+Whether or not aria is turned on. If not, the `label` or `decal` effect is not applied.
+
+## label(Object)
+
+If [aria.enabled](~aria.enabled) is set to `true`, `label` is enabled by default. When enabled, the description of the chart will be automatically and intelligently generated based on the chart, data, title, etc. Users can also modify the description through the configuration item.
+
+**Example:**
 
 ```js
 option = {
     aria: {
-        show: true
+        // The following lines can be omitted because label.enabled defaults to true.
+        // label: {
+        // enabled: true
+        // },
+        enabled: true
     },
     title: {
-        text: 'Source of user access to a site',
+        text: 'User access sources for a site',
         x: 'center'
     },
     series: [
         {
-             Name: 'access source',
+            name: 'access source',
             type: 'pie',
             data: [
-                { value: 335, name: 'direct access' },
-                { value: 310, name: 'mail marketing' },
-                { value: 234, name: 'union ad' },
-                { value: 135, name: 'video ad' },
-                { value: 1548, name: 'search engine' }
+                { value: 335, name: 'Direct Access' },
+                { value: 310, name: 'Email Marketing' },
+                { value: 234, name: 'Affiliate Ads' },
+                { value: 135, name: 'Video Ads' },
+                { value: 1548, name: 'Search Engine' }
             ]
         }
     ]
@@ -38,146 +48,240 @@ option = {
 
 ~[700x300](${galleryViewPath}doc-example/aria-pie&edit=1&reset=1)
 
-There should be an `aria-label` attribute on the chart DOM, which can help the disabled understand the content of charts with the help of certain devices. The value of the label is:
+On the generated chart DOM, there is an `aria-label` attribute that allows the blind to understand the chart with the help of a reading device. Its value is.
 
-```
-This is a chart of "Source of user access to a site." The chart type is a pie chart that indicates the source of the visit. The data is - direct access data is 335, mail marketing data is 310, union ad data is 234, video ad data is 135, search engine data is 1548.
-```
+> This is a chart of "Source of user access to a site." The chart type is a pie chart that indicates the source of the visit. The data is - direct access data is 335, mail marketing data is 310, union ad data is 234, video ad data is 135, search engine data is 1548.
 
-The default language is in Chinese, but you can configure it with templates. The following document shows how to do it.
+The basic process for generating the description is that if [aria.enabled](~aria.enabled) is set to `true` (not the default) and [aria.label.enabled](~aria.label.enabled) is set to `true` (the default), then the accessibility description is generated. Otherwise it is not generated. If [aria.label.description](~aria.description) is defined, it is used as the full description of the chart, otherwise the description is generated according to the template stitching. We provide a default algorithm for generating descriptions, and only if the generated descriptions are not quite right, you need to modify these templates, or even override them completely with `aria.label.description`.
 
-## show(boolean) = false
+When using template stitching, the decision to use [aria.label.general.withTitle](~aria.general.withTitle) or [aria.label.general. withoutTitle](~aria.label.general. withoutTitle) is based on the existence of [title.text](~title.text) or [aria.label.general. withoutTitle](~aria.general. withoutTitle). withoutTitle](~aria.general.withoutTitle) as a global description. The `aria.label.general.withTitle` configuration item includes the template variable `'{title}'`, which will be replaced with the chart title. That is, if `aria.label.general.withTitle` is set to ``The title of the chart is: {title}.'' `, then if the title ``Price Distribution''` is included, this section is described as ``The title of the chart is: Price Distribution Chart.'' ``.
 
-Whether to enable ARIA. When enabled, there should be an `aria-label` label.
+After piecing the title, the description of the series ([aria.series](~aria.series)), and the description of the data for each series ([aria.data](~aria.data)) are pieced in turn. Again, each template may include template variables to replace the actual values.
 
-## description(string) = null
+The complete description generation process is.
 
-By default, the description is generated by our algorithm based on charts. If user wants to set their own description, `description` should be set to the whole description.
+![800xauto](~echarts-aria.jpg)
 
-This is useful when single data values cannot represent what the chart means. For example, if the chart is a map containing many scatter points. Default description can only show the data, but the users may find it hard to interpret. In this case, `description` should be set to describe the meaning of chart.
+### enabled(boolean) = true
 
-## general(Object)
+Whether or not to enable label generation for accessibility. When enabled, the attribute `aria-label` will be generated.
 
-General description of chart.
+### description(string) = null
 
-### withTitle(string) = 'This is a chart about "{title}".'
+By default, an algorithm is used to automatically generate a chart description, but if you want to fully customize it, you can set this value to a description. If it is set to ``This is a chart showing price movements''`, then the value of the `aria-label` attribute is the string.
 
-If [title.text](~title.text) exists, then this is used. Template variable:
+This configuration item is often used to display text that specifies a general description of the chart, when displaying individual data does not show the contents of the chart. For example, if the chart is a map with a large number of scattered points, the default algorithm can only show the locations of the data points and cannot convey the author's intent as a whole. In this case, you can specify `description` as what the author wants to say.
 
-- `{title}`: will be replaced by [title.text](~title.text).
+### general(Object)
 
-### withoutTitle(string) = 'This is a chart'
+For the overall description of the chart.
 
-If [title.text](~title.text) does not exist, then this is used.
+#### withTitle(string) = 'This is a chart about "{title}".'
 
-## series(Object)
+If the chart exists [title.text](~title.text), then `withTitle` is used. This includes the template variable.
 
-Series-related configures.
+- `{title}`: will be replaced with [title.text](~title.text) of the chart.
 
-### maxCount(number) = 10
+#### withoutTitle(string) = 'This is a chart,'
 
-Maximum series number.
+If the chart does not have [title.text](~title.text), then `withoutTitle` is used.
 
-### single(Object)
+### series(Object)
 
-Description used when there is only one chart.
+series-related configuration items.
 
-#### prefix(string) = ''
+#### maxCount(number) = 10
 
-General description for all series. This displays before all series descriptions. Template variable:
+The maximum number of series in the description.
 
-- `{seriesCount}`: will be replaced by series count, which is 1.
+#### single(Object)
 
-#### withName(string) = 'The chart type is {seriesType}, which means {seriesName}. '
+The description used when the chart contains only one series.
 
-If chart contains `name` attribute, then this is used. Template variable:
+##### prefix(string) = ''
 
-- `{seriesName}`: will be replaced by the series `name`;
-- `{seriesType}`: will be replaced by the series type name.
+Holistic descriptions for all series are shown before each series description. This includes template variables.
 
-#### withoutName(string) = 'The chart type is {seriesType}.'
+- `{seriesCount}`: will be replaced with the number of series, where it is always 1.
 
-If chart doesn't contain `name` attribute, then this is used. Template variable:
+##### withName(string) = 'The chart type is {seriesType}, which means {seriesName}.'
 
-- `{seriesType}`: will be replaced by series type name.
+This description is used if the series has the `name` attribute. This includes the template variable.
 
-### multiple(Object)
+- `{seriesName}`: will be replaced with `name` of the series.
+- `{seriesType}`: the name of the type that will be replaced with the series, e.g. ``Histogram''`, ``Line Chart''`, etc.''.
 
-Description used when there are more than one chart.
+##### withoutName(string) = 'The chart type is {seriesType}.'
 
-#### prefix(string) = 'It consists of {seriesCount} chart series. '
+This description is used if the series has no `name` attribute. This includes the template variable.
 
-General description for all series. This displays before all series descriptions. Template variable:
+- `{seriesType}`: the name of the type that will be replaced with the series, e.g. ``Histogram''`, ``Line Chart''` and so on.
 
-- `{seriesCount}`: will be replaced by series count.
+#### multiple(Object)
 
-#### withName(string) = 'The chart type is {seriesType}, which means {seriesName}. '
+Description to use when the chart contains only multiple series.
 
-If series contains `name` attribute, then this is used. Template variable:
+##### prefix(string) = 'It consists of {seriesCount} of chart series.'
 
-- `{seriesName}`: will be replaced by series `name`;
-- `{seriesType}`: will be replaced by series type name.
+A holistic description for all series is displayed before each series description. This includes the template variable.
 
-#### withoutName(string) = 'The chart type is {seriesType}.'
+- `{seriesCount}`: will be replaced with the number of series.
 
-If series doesn't contain `name` attribute, then this is used. Template variable:
+##### withName(string) = 'The chart type is {seriesType}, which means {seriesName}.'
 
-- `{seriesType}`: will be replaced by series type name.
+This description is used if the series has the `name` attribute. This includes the template variable.
+
+- `{seriesName}`: will be replaced with `name` of the series.
+- `{seriesType}`: the name of the type that will be replaced with the series, e.g. ``Histogram''`, ``Line Chart''`, etc.''.
+
+##### withoutName(string) = 'The chart type is {seriesType}.'
+
+This description is used if the series has no `name` attribute. This includes the template variable.
+
+- `{seriesType}`: the name of the type that will be replaced with the name of the series, e.g. ``Histogram'`, ``Line Chart'` and so on.
+
+##### separator(Object)
+
+The separator between the series and the description of the series.
+
+###### middle(string) = ';'
+
+Except for the separator after the last series.
+
+###### end(string) = '.'
+
+Delimiter after the last series.
+
+### data(Object)
+
+Data-related configuration items.
+
+#### maxCount(number) = 10
+
+The maximum number of data occurrences per series in the description.
+
+#### allData(string) = 'whose data is --'
+
+Description to be used when all data is displayed. This item **doesn't** make all the data displayed. It can be achieved by setting [aria.data.maxCount](~aria.data.maxCount) to `Number.MAX_VALUE`.
+
+#### partialData(string) = 'where the first {displayCnt} term is --'
+
+Descriptions used when only partial data is displayed. This includes template variables.
+
+- `{displayCnt}`: the number of data that will be replaced with the number of displays.
+
+#### withName(string) = 'The data for {name} is {value}'
+
+This description is used if the data has the `name` attribute. This includes the template variable.
+
+- `{name}`: `name` that will be replaced with the data.
+- `{value}`: the value that will be replaced with the data.
+
+#### withoutName(string) = '{value}'
+
+This description is used if the data does not have the `name` attribute. This includes the template variable.
+
+- `{value}`: the value that will be replaced with the data.
 
 #### separator(Object)
 
-Separators between series and series.
+The separator between data and data description.
 
-##### middle(string) = '；'
+##### middle(string) = ','
 
-Separators other than the last one.
+The delimiter of the data except the last one.
 
-##### end(string) = '.'
+##### end(string) = ''
 
-The last series seperator.
+The delimiter after the last data.
 
-## data(Object)
+Note that usually the last series is followed by the series `separator.end`, so `data.separator.end` is an empty string in most cases.
 
-Data-related configures.
 
-### maxCount(number) = 10
 
-Maximum data number.
+## decal(Object)
 
-### allData(string) = 'Its data is --'
+Decal patterns are added to series data as an additional hint other than colors to help differentiate the data. The following are some examples of decal options.
 
-Description used when all data is displayed. Note that this option will **not** set to display all data. If all data should be displayed, [aria.data.maxCount](~aria.data.maxCount) should be set to be `Number.MAX_VALUE`.
+~[700x300](${galleryViewPath}doc-example/aria-decal&edit=1&reset=1)
 
-### partialData(string) = ''Where the first {displayCnt} entry is -''
+### show(boolean) = false
 
-Description used when only part of data is displayed. Template variable:
+Whether or not to display the decal pattern is not shown by default. If you want to display the applique, you need to make sure [aria.enabled](~aria.enabled) and `aria.decal.show` are both `true`.
 
-- `{displayCnt}`: number of data displayed.
+```
+aria: {
+    enabled: true,
+    decal: {
+        show: true
+    }
+}
+```
 
-### withName(string) = '{name}'s data is {value}'
+### decals(Object|Array)
 
-If data contains `name` attribute, then this is used. Template variable:
+The style of the decal pattern. If it is an `Object` type, it means all data will have the same style, if it is an array, then each item in the array will have one style and the data will be looped through the array in order.
 
-- `{name}`: will be replaced by data `name`;
-- `{value}`: will be replaced by data value.
+#### symbol(string|string[]) = 'rect'
 
-### withoutName(string) = '{value}'
+The symbol type of the decal. If it is in the type of `string[]`, it means the symbols are used one by one.
 
-If data doesn't contain `name` attribute, then this is used. Template variable:
+{{ use: partial-icon() }}
 
-- `{value}`: will be replaced by data value.
+#### symbolSize(number) = 1
 
-### separator(Object)
+Range of values: `0` to `1`, representing the size of symbol relative to decal.
 
-Separators between data and data.
+#### symbolKeepAspect(boolean) = true
 
-#### middle(string) = '，'
+Whether or not to keep the aspect ratio of the pattern.
 
-Separators other than the last one.
+#### color(string) = 'rgba(0, 0, 0, 0.2)'
 
-#### end(string) = ''
+For the color of the decal pattern, it is recommended to use a translucent color, which can be superimposed on the color of the series itself.
 
-The last data separator.
+#### backgroundColor(string) = null
 
-Note that since series `separator.end` is used after the last data, `data.separator.end` is not needed in most cases.
+The background color of the decal will be over the color of the series itself, under the decal pattern.
 
+#### dashArrayX(number | number[] | (number | number[])[]) = 5
+
+The basic pattern of the decal pattern is an infinite loop in the form of `Pattern - Blank - Pattern - Blank - Pattern - Blank` both horizontally and vertically, respectively. By setting the length of each pattern and blank, complex pattern effects can be achieved.
+
+`dashArrayX` controls the horizontal pattern pattern. When its value is of type `number` or `number[]`, it is similar to [SVG stroke-dasharray](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-dasharray).
+
+- If it is of type `number`, it means that the pattern and the blank space are of this value respectively. For example, `5` means the pattern with width 5 is displayed first, then 5 pixels empty, then the pattern with width 5 is displayed...
+
+- In the case of `number[]` type, it means that the pattern and empty space are loops of an array of values. For example: `[5, 10, 2, 6]` means the pattern is 5 pixels wide, then 10 pixels empty, then the pattern is 2 pixels wide, then 6 pixels empty, then the pattern is 5 pixels wide...
+
+- If of type `(number | number[])[]`, it means that each row is a loop with an array of values for the pattern and blank space. For example: `[10, [2, 5]]` means that the first line will be 10 pixels by 10 pixels and empty space, the second line will be 2 pixels by 2 pixels and empty space, and the third line will be 10 pixels by 10 pixels and empty space...
+
+This interface can be better understood with the following examples.
+
+~[700x300](${galleryViewPath}doc-example/aria-decal&edit=1&reset=1)
+
+#### dashArrayY(number | number[]) = 5
+
+The basic pattern of the decal pattern is an infinite loop in the form of `Pattern - Blank - Pattern - Blank - Pattern - Blank` both horizontally and vertically, respectively. By setting the length of each pattern and blank, complex pattern effects can be achieved.
+
+`dashArrayY` controls the horizontal pattern pattern. Similar to [SVG stroke-dasharray](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-dasharray).
+
+- If it is a `number` type, it means the pattern and the blank are each of this value. For example, `5` means that the pattern with a height of 5 is displayed first, then 5 pixels empty, then the pattern with a height of 5 is displayed...
+
+- In the case of `number[]` type, it means that the pattern and empty space are loops of sequential array values. For example: `[5, 10, 2, 6]` means the pattern is 5 pixels high, then 10 pixels empty, then the pattern is 2 pixels high, then 6 pixels empty, then the pattern is 5 pixels high...
+
+This interface can be better understood with the following examples.
+
+~[700x300](${galleryViewPath}doc-example/aria-decal&edit=1&reset=1)
+
+#### rotation(number) = 0
+
+The overall rotation angle (in radians) of the pattern, in the range from `-Math.
+
+#### maxTileWidth(number) = 512
+
+The upper limit of the width of the generated pattern before it is duplicated. Usually this value is not necessary, but you can try to increase it if you notice discontinuous seams in the pattern when it repeats.
+
+#### maxTileHeight(number) = 512
+
+The upper limit of the height of the generated pattern before it repeats. This value is usually not necessary to set, but you can try to increase it if you find that the pattern has discontinuous seams when it is repeated.
