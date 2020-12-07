@@ -1,6 +1,5 @@
-
 ## v5.0.0
-<div class="time">2020-11-10</div>
+<div class="time">2020-12-03</div>
 
 + Migrate codebase to TypeScript:
     + The entire code base have been migrated to TypeScript.
@@ -22,12 +21,10 @@
         + Make special label alignment, and adjust label position, etc.. See the examples [pie-alignTo](https://echarts.apache.org/next/examples/en/editor.html?c=pie-alignTo), [pie-labelLine-adjust](https://echarts.apache.org/next/examples/en/editor.html?c=pie-labelLine-adjust), [pie-label-distanceToLabelLine](https://echarts.apache.org/next/examples/en/editor.html?c=doc-example/pie-label-distanceToLabelLine), [pie-label-bleedMargin](https://echarts.apache.org/next/examples/en/editor.html?c=doc-example/pie-label-bleedMargin).
         + Make label draggable.
     + Support `labelLine` for all series, which is very useful for guiding element to related labels when labels have to be far away from the elements. See examples [scatter-label-align-right](https://echarts.apache.org/next/examples/en/editor.html?c=scatter-label-align-right), [scatter-label-align-top](https://echarts.apache.org/next/examples/en/editor.html?c=scatter-label-align-top). Related issues: [#11534](https://github.com/apache/incubator-echarts/issues/11534), [#12971](https://github.com/apache/incubator-echarts/issues/12971).
-    + See more details in [#12911](https://github.com/apache/incubator-echarts/pull/12911).
-+ [Feature] Chart racing, bar realtime sorting and label animation:
-    + Bar race and line race is a popular way to show time series data, and visualize the change in trends over time.
-        + We provide this capability by bar sorting (`series.sort` and `series.realtimeSort`) and end label animation (`series.label.valueAnimation`, `series.endLabel`). And this individual options can be used in other related scenarios.
-        + See examples [bar-race](https://echarts.apache.org/next/examples/en/editor.html?c=bar-race), and see more details in the original pull request [#12484](https://github.com/apache/incubator-echarts/pull/12484), [#13246](https://github.com/apache/incubator-echarts/pull/13246) and [#13045](https://github.com/apache/incubator-echarts/pull/13045).
-    + Other the racing of some special customized chart can be implemented by custom series and the callback of renderItem `during`. See the example [custom-spiral-race](https://echarts.apache.org/next/examples/en/editor.html?c=custom-spiral-race), and see more details in [#12775](https://github.com/apache/incubator-echarts/pull/12775).
+    + Support `series.endLabel` in line series. Label can be displayed at the end of a line.
+    + Support label text animation, that is, the transition animation on text when the number text changed. Can be enabled by `series.label.valueAnimation`, `series.endLabel.valueAnimation`. See more details in [#13246](https://github.com/apache/incubator-echarts/pull/13246) and [#13045](https://github.com/apache/incubator-echarts/pull/13045).
+    + See other details in [#12911](https://github.com/apache/incubator-echarts/pull/12911).
++ [Feature] Support bar realtime sorting by `series.realtimeSort`. See examples [bar-race](https://echarts.apache.org/next/examples/en/editor.html?c=bar-race), and see more details in the original pull request [#12484](https://github.com/apache/incubator-echarts/pull/12484).
 + [Feature] Support data transform plug-in:
     + Data transform is a new set of configurations and APIs to enable data transformation based on `dataset` in declarative way. Built-in or third-party data transformer can be made as plug-ins to provide various transform algorithms. ECharts users can use those transformers in ECharts option.
     + See examples [data-transform-filter](https://echarts.apache.org/next/examples/en/editor.html?c=data-transform-filter), [data-transform-sort-bar](https://echarts.apache.org/next/examples/en/editor.html?c=data-transform-sort-bar), [data-transform-multiple-pie](https://echarts.apache.org/next/examples/en/editor.html?c=data-transform-multiple-pie), [doc-example/data-transform-multiple-sort-bar](https://echarts.apache.org/next/examples/en/editor.html?c=doc-example/data-transform-multiple-sort-bar), [boxplot-light-velocity](https://echarts.apache.org/next/examples/en/editor.html?c=boxplot-light-velocity), [bar-histogram](https://echarts.apache.org/next/examples/en/editor.html?c=bar-histogram), [scatter-clustering](https://echarts.apache.org/next/examples/en/editor.html?c=scatter-clustering), [scatter-exponential-regression](https://echarts.apache.org/next/examples/en/editor.html?c=scatter-exponential-regression), [scatter-linear-regression](https://echarts.apache.org/next/examples/en/editor.html?c=scatter-linear-regression), [scatter-logarithmic-regression](https://echarts.apache.org/next/examples/en/editor.html?c=scatter-logarithmic-regression), [scatter-polynomial-regression](https://echarts.apache.org/next/examples/en/editor.html?c=scatter-polynomial-regression). See more details in [#13065](https://github.com/apache/incubator-echarts/pull/13065), #13127](https://github.com/apache/incubator-echarts/pull/13127).
@@ -36,8 +33,10 @@
 + [Feature] Support `decal`:
     + Decal provides a new visual type that does not only augment aria scenarios but also enrich visual effects.
     + See more details in [#13304](https://github.com/apache/incubator-echarts/pull/13304).
-+ [Feature] Provide custom series animation configuration in transform, style, shape morphing/combining/separating.
-    + See examples [custom-combine-separate-morph](https://echarts.apache.org/next/examples/en/editor.html?c=custom-combine-separate-morph), [custom-one-to-one-morph](https://echarts.apache.org/next/examples/en/editor.html?c=custom-one-to-one-morph), [custom-story-transition](https://echarts.apache.org/next/examples/en/editor.html?c=custom-story-transition), [custom-spiral-race](https://echarts.apache.org/next/examples/en/editor.html?c=custom-spiral-race), [custom-gauge](https://echarts.apache.org/next/examples/en/editor.html?c=custom-gauge).
++ [Feature] Support transition animation in custom series.
+    + Transition animation can be auto performed by setting property `transition` for transform related properties, style properties and shape properties. See [custom-gauge](https://echarts.apache.org/next/examples/en/editor.html?c=custom-gauge).
+    + Support morphing/combining/separating by setting property `morph` on elements definitions. See examples [custom-combine-separate-morph](https://echarts.apache.org/next/examples/en/editor.html?c=custom-combine-separate-morph), [custom-one-to-one-morph](https://echarts.apache.org/next/examples/en/editor.html?c=custom-one-to-one-morph), [custom-story-transition](https://echarts.apache.org/next/examples/en/editor.html?c=custom-story-transition), [custom-spiral-race](https://echarts.apache.org/next/examples/en/editor.html?c=custom-spiral-race).
+    + Support customized transition animation by callback `during`. See the example [custom-spiral-race](https://echarts.apache.org/next/examples/en/editor.html?c=custom-spiral-race), and see more details in [#12775](https://github.com/apache/incubator-echarts/pull/12775).
     + See more details in [#12775](https://github.com/apache/incubator-echarts/pull/12775), [#13468](https://github.com/apache/incubator-echarts/pull/13468), [#13271](https://github.com/apache/incubator-echarts/pull/13271).
 + [Feature] Provide a more powerful gauge:
     + See examples [gauge-barometer](https://echarts.apache.org/next/examples/en/editor.html?c=gauge-barometer), [gauge-clock](https://echarts.apache.org/next/examples/en/editor.html?c=gauge-clock), [gauge-multi-title](https://echarts.apache.org/next/examples/en/editor.html?c=gauge-multi-title), [gauge-progress](https://echarts.apache.org/next/examples/en/editor.html?c=gauge-progress), [gauge-ring](https://echarts.apache.org/next/examples/en/editor.html?c=gauge-ring), [gauge-grade](https://echarts.apache.org/next/examples/en/editor.html?c=gauge-grade), [gauge-simple](https://echarts.apache.org/next/examples/en/editor.html?c=gauge-simple), [gauge-temperature](https://echarts.apache.org/next/examples/en/editor.html?c=gauge-temperature).
@@ -63,7 +62,7 @@
 + [Feature] Make tooltip more configurable:
     + Support to add CSS class to tooltip. [#13383](https://github.com/apache/incubator-echarts/pull/13383).
     + Support to return DOM in tooltip formatter. [#13469](https://github.com/apache/incubator-echarts/pull/13469).
-+ [Feature] Support to partially remove components or replace components:
++ [Feature] Support to partially remove components or replace components (`replaceMerge`):
     + See details in [#12987](https://github.com/apache/incubator-echarts/pull/12987).
 + [Enhancement] Enhance performance in some scenarios:
     + Improve large line performance, and support data sampling in largest-triangle-three-buckets algorithm.
@@ -77,6 +76,7 @@
     + [Feature] Sankey supports `lineStyle: {color: 'gradient'}`.
     + [Feature] `markPoint.data.type` and `markArea.data.type` support the value `'median'`.
     + [Feature] Support axis filter in specific cases. [#12832](https://github.com/apache/incubator-echarts/pull/12832).
+    + [Enhancement] Pause `requestAnimationFrame` when rendering finished.
     + [Fix] Fix bmap first layout may be incorrect if container's layout is flex or grid. [#13432](https://github.com/apache/incubator-echarts/pull/13432).
     + [Fix] Hide tooltip when mouse leaves the chart [#13382](https://github.com/apache/incubator-echarts/pull/13382).
     + [Fix] Fix bmap personalization style does not work. [#13214](https://github.com/apache/incubator-echarts/pull/13214).
@@ -86,13 +86,13 @@
     + [Fix] Keep axis tooltip open on refresh. [#13100](https://github.com/apache/incubator-echarts/pull/13100).
     + [Fix] Skip rendering for data out of axis content in heatmap. [#12991](https://github.com/apache/incubator-echarts/pull/12991).
 + [Break] Breaking changes against v4.9:
-    + The default theme colors has been changed. If intending to use the theme of 4.9-, please set `option.color = ['#c23531', '#2f4554', '#61a0a8', '#d48265', '#91c7ae', '#749f83', '#ca8622', '#bda29a', '#6e7074', '#546570', '#c4ccd3'];`.
+    + The default theme colors has been changed. If intending to use the theme of v4.9-, please set `option.color = ['#c23531', '#2f4554', '#61a0a8', '#d48265', '#91c7ae', '#749f83', '#ca8622', '#bda29a', '#6e7074', '#546570', '#c4ccd3'];`.
     + Remove built-in map geoJSON. [#13565](https://github.com/apache/incubator-echarts/pull/13565).
+    + Drop the support of the legacy IE8. The previous VML renderer (necessary in IE8) will not be updated to work in v5.0 until someone strongly proposed.
     + The exported modules from `'echarts/lib/export.js'` is not mounted to `'echarts/lib/echarts.js'` by default. If the upper application previously used `import echarts from 'echarts/lib/echarts'` and used any of the exported modules in `'echarts/lib/export.js'`, please change the import code to `import echarts from 'echarts/index.blank'`, where the modules from `'echarts/lib/export.js'` are mounted by default.
     + If the upper application previously imported `src/echarts.js`, `src/chart/*.js` and `src/component/*.js`, it can not work any more because all of the files in `/src` folder are migrated to `*.ts`. Instead, the upper application can import `esm/echarts.js`, `esm/chart/*.js` and `esm/component/*.js`.
-    + Drop the support of the legacy IE8. The previous VML renderer (necessary in IE8) will not be updated to work in v5.0 util someone proposed with their real scenario.
     + The priority of the visuals between `visualMap` and `itemStyle`|`lineStyle`|`areaStyle` are reversed. That is, previously, the visuals (i.e., color, symbol, symbolSize, ...) that generated by the component `visualMap` has highest priority, which will overwrite the same visuals specified in `itemStyle`|`lineStyle`|`areaStyle`. That brought trouble to specify specific style to some certain data items. Since v5.0, the visuals specified in `itemStyle`|`lineStyle`|`areaStyle` has highest priority.
-    + The behavior of `rich.?.padding` are changed. Previously `rich.?.padding: [11, 22, 33, 44]` indicates that the top padding is `33` and the bottom padding is `11`, which is a buggy implementation because it is different from what CSS did. Since v5.0, we fix it: `rich.?.padding: [11, 22, 33, 44]` indicates the top padding is `11` and the bottom padding is `33`.
+    + The behavior of `rich.?.padding` are changed. Previously `rich.?.padding: [11, 22, 33, 44]` indicates that padding-top is `33` and padding-bottom is `11`, which is a buggy implementation because it is different from what CSS did. Since v5.0, we fix it: `rich.?.padding: [11, 22, 33, 44]` indicates padding-top is `11` and padding-bottom is `33`.
     + `aria` is not included in `dist/echarts.simple(.min).js` since v5.0. But it is still included in `dist/echarts.common(.min).js` and `dist/echarts(.min).js`.
 + [Deprecated] Deprecated usages since v5.0:
     + Transform related props of a graphic element are changed:
@@ -110,10 +110,10 @@
             + The declaration of attached text (or say, rect text) are changed.
                 + Prop `style.text` are deprecated in elements except `Text`. Instead, Prop set `textContent` and `textConfig` are provided to support more powerful capabilities.
                 + These related props at the left part below are deprecated. Use the right part below instead.
-                + textPosition => textConfig.position
-                + textOffset => textConfig.offset
-                + textRotation => textConfig.rotation
-                + textDistance => textConfig.distance
+                    + textPosition => textConfig.position
+                    + textOffset => textConfig.offset
+                    + textRotation => textConfig.rotation
+                    + textDistance => textConfig.distance
             + The props at the left part below are deprecated in `style` and `style.rich.?`. Use the props at the right part below instead.
                 + textFill => fill
                 + textStroke => stroke
@@ -141,8 +141,8 @@
         + It effects these places:
             + In the `graphic` components: the declarations of each element. [compat, but not accurately the same in some complicated cases.]
             + In `custom series`: the declarations of each element in the return of `renderItem`. [compat, but not accurately the same in some complicated cases].
-            + Directly use zrender graphic elements. [No compat, breaking change].
-    + Chart instance
+            + Directly use zrender API to create graphic elements. [No compat, breaking change].
+    + API on chart instance:
         + `chart.one(...)` is deprecated.
     + `label`:
         + In props `color`, `textBorderColor`, `backgroundColor` and `borderColor`, the value `'auto'` is deprecated. Use the value `'inherit'` instead.
@@ -194,6 +194,7 @@
         + `echarts.format.formatTime` is deprecated. Use `echarts.time.format` instead.
         + `echarts.number.parseDate` is deprecated. Use `echarts.time.parse` instead.
         + `echarts.format.getTextRect` is deprecated.
+
 
 
 ## v4.9.0

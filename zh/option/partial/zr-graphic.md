@@ -60,6 +60,11 @@ group 是唯一的可以有子节点的容器。group 可以用来整体定位�
     symbolDeclare = ${symbolDeclare}
 ) }}
 
+
+
+
+
+
 {{ if: ${usageType} === 'customSeries' }}
 #${prefix} ${hostName}${symbolDeclare}path(Object)
 
@@ -128,6 +133,18 @@ group 是唯一的可以有子节点的容器。group 可以用来整体定位�
     symbolDeclare = ${symbolDeclare}
 ) }}
 
+{{ use: partial-graphic-cpt-sub-prop-transition(
+    prefix = ${prefix},
+    hostProp = 'shape',
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
+
+
 ##${prefix} style(Object)
 
 {{ use: partial-graphic-cpt-style-prop-common(
@@ -156,7 +173,12 @@ group 是唯一的可以有子节点的容器。group 可以用来整体定位�
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
+
 {{ /if }}
+
+
+
+
 
 #${prefix} ${hostName}${symbolDeclare}image(Object)
 
@@ -220,6 +242,10 @@ group 是唯一的可以有子节点的容器。group 可以用来整体定位�
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
+
+
+
+
 
 #${prefix} ${hostName}${symbolDeclare}text(Object)
 
@@ -303,6 +329,10 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     symbolDeclare = ${symbolDeclare}
 ) }}
 
+
+
+
+
 #${prefix} ${hostName}${symbolDeclare}rect(Object)
 
 矩形。
@@ -348,6 +378,17 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
 + `r` 缩写为 `[1, 2]`    相当于 `[1, 2, 1, 2]`
 + `r` 缩写为 `[1, 2, 3]1 相当于 `[1, 2, 3, 2]`
 
+{{ use: partial-graphic-cpt-sub-prop-transition(
+    prefix = ${prefix},
+    hostProp = 'shape',
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
+
 ##${prefix} style(Object)
 
 {{ use: partial-graphic-cpt-style-prop-common(
@@ -376,6 +417,10 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
+
+
+
+
 
 #${prefix} ${hostName}${symbolDeclare}circle(Object)
 
@@ -411,6 +456,16 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     symbolDeclare = ${symbolDeclare}
 ) }}
 
+{{ use: partial-graphic-cpt-sub-prop-transition(
+    prefix = ${prefix},
+    hostProp = 'shape',
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
 ##${prefix} style(Object)
 
 {{ use: partial-graphic-cpt-style-prop-common(
@@ -439,6 +494,10 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
+
+
+
+
 
 #${prefix} ${hostName}${symbolDeclare}ring(Object)
 
@@ -474,6 +533,16 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     symbolDeclare = ${symbolDeclare}
 ) }}
 
+{{ use: partial-graphic-cpt-sub-prop-transition(
+    prefix = ${prefix},
+    hostProp = 'shape',
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
 ##${prefix} style(Object)
 
 {{ use: partial-graphic-cpt-style-prop-common(
@@ -502,6 +571,10 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
+
+
+
+
 
 #${prefix} ${hostName}${symbolDeclare}sector(Object)
 
@@ -546,6 +619,16 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     symbolDeclare = ${symbolDeclare}
 ) }}
 
+{{ use: partial-graphic-cpt-sub-prop-transition(
+    prefix = ${prefix},
+    hostProp = 'shape',
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
 ##${prefix} style(Object)
 
 {{ use: partial-graphic-cpt-style-prop-common(
@@ -574,6 +657,10 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
+
+
+
+
 
 #${prefix} ${hostName}${symbolDeclare}arc(Object)
 
@@ -618,6 +705,16 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     symbolDeclare = ${symbolDeclare}
 ) }}
 
+{{ use: partial-graphic-cpt-sub-prop-transition(
+    prefix = ${prefix},
+    hostProp = 'shape',
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
 ##${prefix} style(Object)
 
 {{ use: partial-graphic-cpt-style-prop-common(
@@ -650,6 +747,10 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     symbolDeclare = ${symbolDeclare}
 ) }}
 
+
+
+
+
 #${prefix} ${hostName}${symbolDeclare}polygon(Object)
 
 多边形。
@@ -668,6 +769,16 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
 
 {{ use: partial-graphic-cpt-path-common(
     prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
+{{ use: partial-graphic-cpt-sub-prop-transition(
+    prefix = ${prefix},
+    hostProp = 'shape',
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
@@ -704,6 +815,10 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     symbolDeclare = ${symbolDeclare}
 ) }}
 
+
+
+
+
 #${prefix} ${hostName}${symbolDeclare}polyline(Object)
 
 折线。
@@ -722,6 +837,16 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
 
 {{ use: partial-graphic-cpt-path-common(
     prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
+{{ use: partial-graphic-cpt-sub-prop-transition(
+    prefix = ${prefix},
+    hostProp = 'shape',
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
@@ -760,6 +885,10 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
+
+
+
+
 
 #${prefix} ${hostName}${symbolDeclare}line(Object)
 
@@ -790,6 +919,16 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
 
 线画到百分之多少就不画了。值的范围：[0, 1]。
 
+{{ use: partial-graphic-cpt-sub-prop-transition(
+    prefix = ${prefix},
+    hostProp = 'shape',
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
 ##${prefix} style(Object)
 
 {{ use: partial-graphic-cpt-style-prop-common(
@@ -821,6 +960,10 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
+
+
+
+
 
 #${prefix} ${hostName}${symbolDeclare}bezierCurve(Object)
 
@@ -867,6 +1010,16 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
 
 画到百分之多少就不画了。值的范围：[0, 1]。
 
+{{ use: partial-graphic-cpt-sub-prop-transition(
+    prefix = ${prefix},
+    hostProp = 'shape',
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
 ##${prefix} style(Object)
 
 {{ use: partial-graphic-cpt-style-prop-common(
@@ -898,6 +1051,11 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
 
 
 
+
+
+
+
+
 {{ target: partial-graphic-cpt-common-props }}
 
 ##${prefix} type(string) = ${type}
@@ -917,7 +1075,9 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
 
 id 用于在更新或删除图形元素时指定更新哪个图形元素，如果不需要用可以忽略。
 
+
 {{ if: ${usageType} === 'graphicComponent' }}
+
 ##${prefix} $action(string) = 'merge'
 
 setOption 时指定本次对该图形元素的操作行为。
@@ -937,6 +1097,72 @@ setOption 时指定本次对该图形元素的操作行为。
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
+
+{{ if: ${usageType} === 'customSeries' }}
+##${prefix} transition(string|Array) = ['x', 'y']
+
+可以指定一个属性名，或者一组属性名。被指定的属性值变化时，会开启过渡动画。
+
+属性只可以是：
++ Transform 相关的属性：[`'x'`](~${optionPath}.${hostName}${symbolVisit}${type}.x), [`'y'`](~${optionPath}.${hostName}${symbolVisit}${type}.y)、[`'scaleX'`](~${optionPath}.${hostName}${symbolVisit}${type}.scaleX)、[`'scaleY'`](~${optionPath}.${hostName}${symbolVisit}${type}.scaleY)、[`'rotation'`](~${optionPath}.${hostName}${symbolVisit}${type}.rotation)、[`'originX'`](~${optionPath}.${hostName}${symbolVisit}${type}.originX)、[`'originY'`](~${optionPath}.${hostName}${symbolVisit}${type}.originY)'。例如：
+    ```js
+    renderItem: function (params, api) {
+        var coord = api.coord([api.value(0), api.value[1]);
+        return {
+            type: 'rect',
+            x: coord[0],
+            y: coord[1],
+            shape: {
+                x: 0,
+                y: 0,
+                width: api.value(2),
+                height: 100
+            },
+            transition: ['x', 'y', 'width']
+        }
+    }
+    ```
++ 还可以是这三个属性 [`'shape'`](~${optionPath}.${hostName}${symbolVisit}${type}.shape)、['`style'`](~${optionPath}.${hostName}${symbolVisit}${type}.style)、[`'extra'`](~${optionPath}.${hostName}${symbolVisit}${type}.extra)。表示这三个属性中所有的子属性都开启过渡动画。例如：
+    ```js
+    renderItem: function (params, api) {
+        return {
+            type: 'rect',
+            shape: {
+                x: api.value(0),
+                y: api.value(1),
+                width: api.value(2),
+                height: api.value(3)
+            },
+            // 表示 shape 中所有属性都开启过渡动画。
+            transition: 'shape',
+        };
+    }
+    ```
+    这等价于：
+    ```js
+    renderItem: function (params, api) {
+        return {
+            type: 'rect',
+            shape: {
+                x: api.value(0),
+                y: api.value(1),
+                width: api.value(2),
+                height: api.value(3),
+                // transition 放在 shape 中，能只指定部分属性开启过渡动画。
+                transition: ['x', 'y', 'width', 'height']
+            }
+        };
+    }
+    ```
+
+当 transition 没有指定时，[`'x'`](~${optionPath}.${hostName}${symbolVisit}${type}.x) 和 [`'y'`](~${optionPath}.${hostName}${symbolVisit}${type}.y) 会默认开启过渡动画。如果想禁用这种默认，可设定：
+```js
+transition: [] // 一个空数组
+```
+
+看这个 [例子](${galleryEditorPath}doc-example/custom-transition-simple&edit=1&reset=1)。
+
+{{ /if }}
 
 {{ if: ${usageType} === 'graphicComponent' }}
 ##${prefix} left(number|string) = undefined
@@ -1105,6 +1331,17 @@ chart.on('click', function (params) {
 
 阴影颜色。
 
+{{ use: partial-graphic-cpt-sub-prop-transition(
+    prefix = ${prefix},
+    hostProp = 'style',
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
+
 
 
 {{ target: partial-graphic-cpt-path-common }}
@@ -1150,13 +1387,60 @@ chart.on('click', function (params) {
 
 
 
+{{ target: partial-graphic-cpt-sub-prop-transition }}
+
+{{ if: ${usageType} === 'customSeries' }}
+
+###${prefix} transition(string|Array) = undefined
+
+可以是一个属性名，或者一组属性名。
+被指定的属性，在其指发生变化时，会开启过渡动画。
+只可以指定本 `${hostProp}` 下的属性。
+
+例如：
+```js
+renderItem: function (params, api) {
+    return {
+        type: 'xxx',
+        ${hostProp}: {
+            mmm: ...,
+            nnn: ...,
+            ppp: ...,
+            qqq: ...,
+            // 这两个属性会开启过渡动画。
+            transition: ['mmm', 'ppp']
+        }
+    };
+}
+```
+我们这样可以指定 `${hostProp}` 下所有属性开启过渡动画：
+```js
+renderItem: function (params, api) {
+    return {
+        type: 'xxx',
+        ${hostProp}: {
+            mmm: ...,
+            nnn: ...,
+            ppp: ...,
+            qqq: ...,
+        },
+        // `${hostProp}` 下所有属性开启过渡动画。
+        transition: '${hostProp}',
+    };
+}
+```
+
+{{ /if }}
+
+
+
 {{ target: partial-graphic-cpt-sub-prop-xy }}
 
 ###${prefix} x(number) = 0
 
 图形元素的左上角在父节点坐标系（以父节点左上角为原点）中的横坐标值。
 
-###${prefix} y(numbr) = 0
+###${prefix} y(number) = 0
 
 图形元素的左上角在父节点坐标系（以父节点左上角为原点）中的纵坐标值。
 
