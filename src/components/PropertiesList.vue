@@ -45,7 +45,7 @@ export default {
 
     methods: {
         getDesc(path) {
-            return this.descMap[path];
+            return this.descMap[path] && this.descMap[path].desc;
         },
 
         getName(path) {
