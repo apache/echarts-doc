@@ -54,7 +54,8 @@ Item style of the inflection point of the lines.
 {{ use: partial-item-style(
     prefix = "##",
     useColorPalatte = true,
-    hasCallback = true
+    hasCallback = true,
+    useDecal = true
 ) }}
 
 ## lineStyle(Object)

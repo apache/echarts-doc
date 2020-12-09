@@ -177,7 +177,8 @@ Can be 0 - 180 degree.
 {{ use: partial-item-style(
     prefix = "##",
     useColorPalatte = true,
-    hasCallback = true
+    hasCallback = true,
+    useDecal = true
 ) }}
 
 ## emphasis(Object)
@@ -285,7 +286,8 @@ The label configuration of a single sector.
 {{ use: partial-item-style-desc() }}
 
 {{ use: partial-item-style(
-    prefix = "###"
+    prefix = "###",
+    useDecal = true
 ) }}
 
 ### emphasis(Object)

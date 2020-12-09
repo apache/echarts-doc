@@ -386,7 +386,8 @@ For example:
 {{ use: partial-item-style(
     prefix = "##",
     useColorPalatte = true,
-    hasCallback = false
+    hasCallback = false,
+    useDecal = true
 ) }}
 
 ## labelLine(Object)
@@ -438,7 +439,8 @@ Value of data item.
 ### itemStyle(Object)
 
 {{ use: partial-item-style(
-    prefix = "###"
+    prefix = "###",
+    useDecal = true
 ) }}
 
 ### emphasis(Object)

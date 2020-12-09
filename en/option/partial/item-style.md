@@ -50,3 +50,16 @@ Border type, which can be `'solid'`, `'dashed'`, or `'dotted'`. `'solid'` by def
     defaultShadowOffsetY = ${defaultShadowOffsetY}
 ) }}
 
+{{ if: ${useDecal} }}
+
+#${prefix} decal(Object | 'none')
+
+{{ use: partial-decal-desc(
+    onlyWithAreaStyle = ${decalOnlyWithAreaStyle}
+) }}
+
+{{ use: partial-decal(
+    prefix = '#' + ${prefix}
+) }}
+
+{{ /if }}

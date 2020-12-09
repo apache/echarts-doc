@@ -722,6 +722,15 @@ In this way, a effect can be implemented: different sections have different hue 
 {{ use: partial-style-shadow-opacity(
     prefix = ${prefix}
 ) }}
+
+#${prefix} decal(Object | 'none')
+
+{{ use: partial-decal-desc() }}
+
+{{ use: partial-decal(
+    prefix = '#' + ${prefix}
+) }}
+
 {{ /if }}
 
 

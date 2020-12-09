@@ -93,7 +93,8 @@ If angle of data piece is smaller than this value (in degrees), then text is not
     useColorPalatte = true,
     defaultBorderWidth = 1,
     defaultBorderColor = "'white'",
-    defaultOpacity = 1
+    defaultOpacity = 1,
+    useDecal = ${isNormal}
 ) }}
 
 
@@ -200,7 +201,7 @@ See [series-sunburst.data.target](~series-sunburst.data.target).
 
 Like `target` attribute of HTML `<a>`, which can either be `'blank'` or `'self'`. See [series-sunburst.data.link](~series-sunburst.data.link).
 
-{{ use: partial-sunburst-label-props(
+{{ use: partial-sunburst-state(
     prefix = "##",
     isNormal = true
 ) }}
@@ -208,11 +209,8 @@ Like `target` attribute of HTML `<a>`, which can either be `'blank'` or `'self'`
 ## labelLayout(Object|Function)
 
 {{ use: partial-label-layout(
-    prefix = "##"
-) }}
-
-{{ use: partial-sunburst-itemStyle-props(
-    prefix = "##"
+    prefix = "##",
+    isNormal = true
 ) }}
 
 ### emphasis
@@ -289,7 +287,8 @@ Configurations of emphasis state.
 ) }}
 
 {{ use: partial-sunburst-state(
-    prefix = "##"
+    prefix = "##",
+    isNormal = true
 ) }}
 
 ## blur
