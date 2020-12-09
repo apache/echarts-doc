@@ -79,13 +79,10 @@ option = {
 };
 ```
 
-<br>
 [visualMapContinuous](option.html#visualMap-continuous)：
 
 [visualMapPiecewise](option.html#visualMap-piecewise)：
-~[600x400](${galleryViewPath}doc-example/scatter-visualMap-piecewise&edit=1&reset=1)
 
-<br>
 
 Piecewise visual map component（visualMapPiecewise）has three types:
 
