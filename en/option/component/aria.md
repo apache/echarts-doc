@@ -52,13 +52,13 @@ On the generated chart DOM, there is an `aria-label` attribute that allows the b
 
 > This is a chart of "Source of user access to a site." The chart type is a pie chart that indicates the source of the visit. The data is - direct access data is 335, mail marketing data is 310, union ad data is 234, video ad data is 135, search engine data is 1548.
 
-The basic process for generating the description is that if [aria.enabled](~aria.enabled) is set to `true` (not the default) and [aria.label.enabled](~aria.label.enabled) is set to `true` (the default), then the accessibility description is generated. Otherwise it is not generated. If [aria.label.description](~aria.description) is defined, it is used as the full description of the chart, otherwise the description is generated according to the template stitching. We provide a default algorithm for generating descriptions, and only if the generated descriptions are not quite right, you need to modify these templates, or even override them completely with `aria.label.description`.
+The basic process for generating the description is that if [aria.enabled](~aria.enabled) is set to `true` (not the default) and [aria.label.enabled](~aria.label.enabled) is set to `true` (the default), then the accessibility description is generated. Otherwise it is not generated. If [aria.label.description](~aria.label.description) is defined, it is used as the full description of the chart, otherwise the description is generated according to the template stitching. We provide a default algorithm for generating descriptions, and only if the generated descriptions are not quite right, you need to modify these templates, or even override them completely with `aria.label.description`.
 
-When using template stitching, the decision to use [aria.label.general.withTitle](~aria.general.withTitle) or [aria.label.general. withoutTitle](~aria.label.general. withoutTitle) is based on the existence of [title.text](~title.text) or [aria.label.general. withoutTitle](~aria.general. withoutTitle). withoutTitle](~aria.general.withoutTitle) as a global description. The `aria.label.general.withTitle` configuration item includes the template variable `'{title}'`, which will be replaced with the chart title. That is, if `aria.label.general.withTitle` is set to ``The title of the chart is: {title}.'' `, then if the title ``Price Distribution''` is included, this section is described as ``The title of the chart is: Price Distribution Chart.'' ``.
+When using the template, whether [title.text](~title.text) is used along with [aria.label.general.withTitle](option.html#aria.label.general.withTitle) while [aria.label.general.withoutTitle](option.html#aria.label.general.withoutTitle) is used if there is no title text. `aria.general.withTitle` supports a template `'{title}'`, which will be replaced with chart title. This means, if `aria.general.withTitle` is set to be `'The chart title is {title}.'` and the chart title is `Price Distribution`, it will be interpreted into `'The chart title is Price Distribution.'`
 
-After piecing the title, the description of the series ([aria.series](~aria.series)), and the description of the data for each series ([aria.data](~aria.data)) are pieced in turn. Again, each template may include template variables to replace the actual values.
+After generating the title, the description of the series ([aria.label.series](option.html#aria.label.series)) and the description of the data for each series ([aria.label.data](option.html#aria.label.data)) are generated in turn. The following is an example of a template. Likewise, each template may include template variables to replace actual values.
 
-The complete description generation process is.
+The complete description generation process is:
 
 ![800xauto](~echarts-aria.jpg)
 
@@ -68,7 +68,7 @@ Whether or not to enable label generation for accessibility. When enabled, the a
 
 ### description(string) = null
 
-By default, an algorithm is used to automatically generate a chart description, but if you want to fully customize it, you can set this value to a description. If it is set to ``This is a chart showing price movements''`, then the value of the `aria-label` attribute is the string.
+By default, an algorithm is used to automatically generate a chart description, but if you want to fully customize it, you can set this value to a description. If it is set to `'This is a chart showing price changes'`, then the value of the `aria-label` attribute of the chart DOM is this string.
 
 This configuration item is often used to display text that specifies a general description of the chart, when displaying individual data does not show the contents of the chart. For example, if the chart is a map with a large number of scattered points, the default algorithm can only show the locations of the data points and cannot convey the author's intent as a whole. In this case, you can specify `description` as what the author wants to say.
 
@@ -104,41 +104,41 @@ Holistic descriptions for all series are shown before each series description. T
 
 - `{seriesCount}`: will be replaced with the number of series, where it is always 1.
 
-##### withName(string) = 'The chart type is {seriesType}, which means {seriesName}.'
+##### withName(string) = ' with type {seriesType} named {seriesName}.'
 
 This description is used if the series has the `name` attribute. This includes the template variable.
 
 - `{seriesName}`: will be replaced with `name` of the series.
-- `{seriesType}`: the name of the type that will be replaced with the series, e.g. ``Histogram''`, ``Line Chart''`, etc.''.
+- `{seriesType}`: the name of the type that will be replaced with the series, e.g. `'Bar chart'`, `'Line chart'`, etc.
 
-##### withoutName(string) = 'The chart type is {seriesType}.'
+##### withoutName(string) = ' with type {seriesType}.'
 
 This description is used if the series has no `name` attribute. This includes the template variable.
 
-- `{seriesType}`: the name of the type that will be replaced with the series, e.g. ``Histogram''`, ``Line Chart''` and so on.
+- `{seriesType}`: the name of the type that will be replaced with the series, e.g. `'Bar chart'`, `'Line chart'`, etc.
 
 #### multiple(Object)
 
 Description to use when the chart contains only multiple series.
 
-##### prefix(string) = 'It consists of {seriesCount} of chart series.'
+##### prefix(string) = '. It consists of {seriesCount} series count.'
 
 A holistic description for all series is displayed before each series description. This includes the template variable.
 
 - `{seriesCount}`: will be replaced with the number of series.
 
-##### withName(string) = 'The chart type is {seriesType}, which means {seriesName}.'
+##### withName(string) = ' The {seriesId} series is a {seriesType} representing {seriesName}.
 
 This description is used if the series has the `name` attribute. This includes the template variable.
 
 - `{seriesName}`: will be replaced with `name` of the series.
-- `{seriesType}`: the name of the type that will be replaced with the series, e.g. ``Histogram''`, ``Line Chart''`, etc.''.
+- `{seriesType}`: the name of the type that will be replaced with the series, e.g. `'Bar chart'`, `'Line chart'`, etc.
 
-##### withoutName(string) = 'The chart type is {seriesType}.'
+##### withoutName(string) = ' The {seriesId} series is a {seriesType}.'
 
 This description is used if the series has no `name` attribute. This includes the template variable.
 
-- `{seriesType}`: the name of the type that will be replaced with the name of the series, e.g. ``Histogram'`, ``Line Chart'` and so on.
+- `{seriesType}`: the name of the type that will be replaced with the name of the series, e.g. `'Bar chart'`, `'Line chart'`, etc.
 
 ##### separator(Object)
 

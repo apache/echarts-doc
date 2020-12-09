@@ -103,7 +103,8 @@ box 的宽度的上下限。数组的意思是：`[min, max]`。
     useColorPalatte = true,
     name = "boxplot",
     defaultColor = "#fff",
-    defaultBorderWidth = 1
+    defaultBorderWidth = 1,
+    useDecal = true
 ) }}
 
 ## emphasis(Object)
@@ -215,7 +216,9 @@ ECharts 并不内置对原始数据的处理，输入给 `boxplot` 的数据须�
 
 {{ use: partial-item-style(
     prefix = "###",
-    name = "boxplot"
+    name = "boxplot",
+    useDecal = true,
+    decalOnlyWithAreaStyle = true
 ) }}
 
 ### emphasis(Object)

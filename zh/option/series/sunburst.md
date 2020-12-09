@@ -91,7 +91,8 @@
     useColorPalatte = true,
     defaultBorderWidth = 1,
     defaultBorderColor = "'white'",
-    defaultOpacity = 1
+    defaultOpacity = 1,
+    useDecal = ${isNormal}
 ) }}
 
 
@@ -349,19 +350,16 @@ const option = {
 
 意义同 HTML `<a>` 标签中的 `target`，参见 [series-sunburst.data.link](~series-sunburst.data.link)。可选值为：`'blank'` 或 `'self'`。
 
-{{ use: partial-sunburst-label-props(
+{{ use: partial-sunburst-state(
     prefix = "##",
     isNormal = true
 ) }}
 
 ## labelLayout(Object|Function)
 
-{{ use: partial-label-layout(
-    prefix = "##"
-) }}
-
-{{ use: partial-sunburst-itemStyle-props(
-    prefix = "##"
+{{ use: partial-sunburst-state(
+    prefix = "#",
+    isNormal = true
 ) }}
 
 ### emphasis
@@ -426,7 +424,8 @@ function(nodeA, nodeB) {
 ) }}
 
 {{ use: partial-sunburst-itemStyle-props(
-    prefix = "#"
+    prefix = "#",
+    isNormal = true
 ) }}
 
 ## emphasis
