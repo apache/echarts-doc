@@ -85,6 +85,7 @@ About width/height, cover/contain, see
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
+    enableMorph = true,
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
@@ -345,6 +346,7 @@ Rectangle element.
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
+    enableMorph = true,
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
@@ -433,6 +435,7 @@ Circle element.
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
+    enableMorph = true,
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
@@ -510,6 +513,7 @@ Ring element.
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
+    enableMorph = true,
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
@@ -587,6 +591,7 @@ Sector element.
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
+    enableMorph = true,
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
@@ -673,6 +678,7 @@ Arc element.
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
+    enableMorph = true,
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
@@ -762,6 +768,7 @@ Polygon element.
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
+    enableMorph = true,
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
@@ -830,6 +837,7 @@ Polyline element.
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
+    enableMorph = true,
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
@@ -901,6 +909,7 @@ Line element.
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
+    enableMorph = true,
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
@@ -978,6 +987,7 @@ Quadratic bezier curve or cubic bezier curve.
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
+    enableMorph = true,
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
@@ -1118,7 +1128,7 @@ Can be a single property name or an array of property names.
 Enable transition animation when the specified properties changed.
 
 The properties can only be:
-+ Transform related properties: [`'x'`](~${optionPath}.${hostName}${symbolVisit}${type}.x), [`'y'`](~${optionPath}.${hostName}${symbolVisit}${type}.y), [`'scaleX'`](~${optionPath}.${hostName}${symbolVisit}${type}.scaleX), [`'scaleY'`](~${optionPath}.${hostName}${symbolVisit}${type}.scaleY), [`'rotation'`](~${optionPath}.${hostName}${symbolVisit}${type}.rotation), [`'originX'`](~${optionPath}.${hostName}${symbolVisit}${type}.originX), [`'originY'`](~${optionPath}.${hostName}${symbolVisit}${type}.originY)'. For example:
++ Transform related properties: [`'x'`](~${optionPath}.${hostName}${symbolVisit}${type}.x), [`'y'`](~${optionPath}.${hostName}${symbolVisit}${type}.y), [`'scaleX'`](~${optionPath}.${hostName}${symbolVisit}${type}.scaleX), [`'scaleY'`](~${optionPath}.${hostName}${symbolVisit}${type}.scaleY), [`'rotation'`](~${optionPath}.${hostName}${symbolVisit}${type}.rotation), [`'originX'`](~${optionPath}.${hostName}${symbolVisit}${type}.originX), [`'originY'`](~${optionPath}.${hostName}${symbolVisit}${type}.originY). For example:
     ```js
     renderItem: function (params, api) {
         var coord = api.coord([api.value(0), api.value[1]);
@@ -1180,6 +1190,35 @@ See this [example](${galleryEditorPath}doc-example/custom-transition-simple&edit
 
 {{ /if }}
 
+
+
+{{ if: ${usageType} === 'customSeries' && ${enableMorph} }}
+##${prefix} morph(boolean) = false
+
+Whether to enable morphing animation.
+
+**When morphing animation happen?**
+
+If `morph` is set as `true`, the morphing animation will happen according to the following rule:
+
+Each time the render process happen, custom series will diff the old data and the new data. If a set of old data items (say, "old set") are value-equal to a set of new data items (say, "new set") in name or the specified dimensions (see parameter [transition](api.html#echartsInstance.setOption) in `setOption`), we found a pair of sets as transition candidates.
+
+Three type of transition animation can be performed between the two sets:
++ one-to-one: if both the two sets has only one data item.
++ one-to-many(separate): if the "old set" has only one data item, and the "new set" has more than one data items.
++ many-to-one(combine): if the "old set" has more than one data items, and the "new set" has only one data item.
+
+Note: we do not support transition animation for the case many-to-many.
+
+Then custom series find graphic elements that has `morph: true` declared in these two sets, and map them for one to one morphing or combining or separating.
+
+See examples: [custom-one-to-one-morph](${galleryEditorPath}custom-one-to-one-morph&edit=1&reset=1) and
+[custom-combine-separate-morph](${galleryEditorPath}custom-combine-separate-morph&edit=1&reset=1).
+
+{{ /if }}
+
+
+
 {{ if: ${usageType} === 'graphicComponent' }}
 ##${prefix} left(number|string) = undefined
 
@@ -1233,7 +1272,7 @@ See this [example](${galleryEditorPath}doc-example/custom-transition-simple&edit
     symbolDeclare = ${symbolDeclare}
 ) }}
 
-##${prefix} bounding(strin) = 'all'
+##${prefix} bounding(string) = 'all'
 
 Used to specify whether the entire transformed element (containing children if is group) is confined in its container.
 

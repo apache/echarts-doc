@@ -82,6 +82,7 @@ group 是唯一的可以有子节点的容器。group 可以用来整体定位�
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
+    enableMorph = true,
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
@@ -343,6 +344,7 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
+    enableMorph = true,
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
@@ -432,6 +434,7 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
+    enableMorph = true,
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
@@ -509,6 +512,7 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
+    enableMorph = true,
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
@@ -586,6 +590,7 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
+    enableMorph = true,
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
@@ -672,6 +677,7 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
+    enableMorph = true,
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
@@ -761,6 +767,7 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
+    enableMorph = true,
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
@@ -829,6 +836,7 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
+    enableMorph = true,
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
@@ -900,6 +908,7 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
+    enableMorph = true,
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
@@ -975,6 +984,7 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     optionPath = ${optionPath},
     usageType = ${usageType},
     hostName = ${hostName},
+    enableMorph = true,
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
@@ -1104,7 +1114,7 @@ setOption 时指定本次对该图形元素的操作行为。
 可以指定一个属性名，或者一组属性名。被指定的属性值变化时，会开启过渡动画。
 
 属性只可以是：
-+ Transform 相关的属性：[`'x'`](~${optionPath}.${hostName}${symbolVisit}${type}.x), [`'y'`](~${optionPath}.${hostName}${symbolVisit}${type}.y)、[`'scaleX'`](~${optionPath}.${hostName}${symbolVisit}${type}.scaleX)、[`'scaleY'`](~${optionPath}.${hostName}${symbolVisit}${type}.scaleY)、[`'rotation'`](~${optionPath}.${hostName}${symbolVisit}${type}.rotation)、[`'originX'`](~${optionPath}.${hostName}${symbolVisit}${type}.originX)、[`'originY'`](~${optionPath}.${hostName}${symbolVisit}${type}.originY)'。例如：
++ Transform 相关的属性：[`'x'`](~${optionPath}.${hostName}${symbolVisit}${type}.x), [`'y'`](~${optionPath}.${hostName}${symbolVisit}${type}.y)、[`'scaleX'`](~${optionPath}.${hostName}${symbolVisit}${type}.scaleX)、[`'scaleY'`](~${optionPath}.${hostName}${symbolVisit}${type}.scaleY)、[`'rotation'`](~${optionPath}.${hostName}${symbolVisit}${type}.rotation)、[`'originX'`](~${optionPath}.${hostName}${symbolVisit}${type}.originX)、[`'originY'`](~${optionPath}.${hostName}${symbolVisit}${type}.originY)。例如：
     ```js
     renderItem: function (params, api) {
         var coord = api.coord([api.value(0), api.value[1]);
@@ -1164,6 +1174,36 @@ transition: [] // 一个空数组
 
 {{ /if }}
 
+
+
+{{ if: ${usageType} === 'customSeries' && ${enableMorph} }}
+##${prefix} morph(boolean) = false
+
+是否开启形变动画。
+
+**什么情况下会展示出形变动画？**
+
+`morph` 设置为 `true` 后，还需按照如下规则，来形成形变动画：
+
+每次走渲染流程是，自定义系列会自动比较（diff）新旧数据。在这个 diff 过程中，如果发现，一组旧数据项和一组新数据项的值相等（相等的规则是，name 相同，或者 [transition](api.html#echartsInstance.setOption) 所指定的维度上的值相同），那么我们就找到了能形成形变动画的一对候选集。
+
+在这组旧数据和这组新数据间，可能产生三种形变动画：
++ 一对一（one-to-one）：如果新数据组和旧数据组都各自只有一个数据项。
++ 一对多（one-to-many）：如果新数据组中有多个数据项，旧数据组中只有一个数据项。
++ 多对一（many-to-one）：如果新数据组中只有一个数据项，旧数据组中有多个数据项。
+
+注：我们并不支持多对多（many-to-many）的情况。
+
+然后，自定义系列，会在新旧组中，寻找声明为 `morph: true` 的图形元素，并分配他们形成真正的一一映射的形变，或者分裂（separating），或者合并（combining）。
+
+参见示例：[custom-one-to-one-morph](${galleryEditorPath}custom-one-to-one-morph&edit=1&reset=1) 和
+[custom-combine-separate-morph](${galleryEditorPath}custom-combine-separate-morph&edit=1&reset=1)。
+
+
+{{ /if }}
+
+
+
 {{ if: ${usageType} === 'graphicComponent' }}
 ##${prefix} left(number|string) = undefined
 
@@ -1217,7 +1257,7 @@ transition: [] // 一个空数组
     symbolDeclare = ${symbolDeclare}
 ) }}
 
-##${prefix} bounding(strin) = 'all'
+##${prefix} bounding(string) = 'all'
 
 决定此图形元素在定位时，对自身的包围盒计算方式。
 
