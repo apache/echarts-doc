@@ -395,7 +395,7 @@ In the sample above, `dataZoomX` is set as `filterMode: 'filter'`. When use drag
 ]
 ```
 
-Before filtering, the second column, which corresponds to yAxis, has values `24`, `80`, `9`, `11`. After filtering, only `24` and `9` are left. Then the extent of `yAxis` is adjusted to adapt the two values (if `yAxis.min` and `yAxis.man` are not set).
+Before filtering, the second column, which corresponds to yAxis, has values `24`, `80`, `9`, `11`. After filtering, only `24` and `9` are left. Then the extent of `yAxis` is adjusted to adapt the two values (if `yAxis.min` and `yAxis.max` are not set).
 
 So `filterMode: 'filter'` can be used to enable the other axis to auto adapt the filtered data.
 
