@@ -187,7 +187,8 @@ levels: [{
     prefix = "##",
     useColorPalatte = true,
     defaultBorderWidth = 1,
-    defaultBorderColor = "'#aaa'"
+    defaultBorderColor = "'#aaa'",
+    useDecal = true
 ) }}
 
 ## lineStyle(Object)
@@ -275,7 +276,8 @@ data: [{
 
 {{ use: partial-item-style(
     prefix = "###",
-    useColorPalatte = true
+    useColorPalatte = true,
+    useDecal = true
 ) }}
 
 ### label(Object)
@@ -435,7 +437,8 @@ links: [{
 #${prefix} itemStyle(Object)
 
 {{ use: partial-item-style(
-    prefix = "#" + ${prefix}
+    prefix = "#" + ${prefix},
+    useDecal = true
 ) }}
 
 

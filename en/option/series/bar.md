@@ -285,6 +285,7 @@ Rectangle style configurations of single data.
 {{ use: partial-bar-item-style(
     prefix = "#" + ${prefix},
     useColorPalatte = ${topLevel && isNormal},
+    useDecal = ${isNormal},
     hasCallback = ${topLevel && isNormal}
 ) }}
 
@@ -324,3 +325,14 @@ Border type. Can be `'dashed'`, `'dotted'`.
     prefix = ${prefix}
 ) }}
 
+{{ if: ${useDecal} }}
+
+#${prefix} decal(Object | 'none')
+
+{{ use: partial-decal-desc() }}
+
+{{ use: partial-decal(
+    prefix = '#' + ${prefix}
+) }}
+
+{{ /if }}

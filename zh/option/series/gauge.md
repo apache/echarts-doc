@@ -77,6 +77,15 @@ const option = {
 
 数据值。
 
+### itemStyle(Object)
+
+数据项的指针样式。
+
+{{ use: partial-item-style(
+    prefix = "###",
+    useDecal = true
+) }}
+
 ## min(number) = 0
 
 <ExampleUIControlNumber default="0" step="1" />
@@ -411,14 +420,15 @@ formatter: function (value) {
 仪表盘指针样式。
 
 {{ use: partial-item-style(
-    prefix = "##"
+    prefix = "##",
+    useDecal = true
 ) }}
 
 <!-- overwrite color -->
 
 ### color(Color) = 'auto'
 
-指针颜色，默认取数值所在的[区间的颜色](~series-gauge.axisLine.lineStyle.color)
+指针颜色，默认取数值所在的[区间的颜色](~series-gauge.axisLine.lineStyle.color)。
 
 ## emphasis(Object)
 
@@ -529,7 +539,7 @@ formatter: function (value) {
 
 <ExampleUIControlColor />
 
-文本颜色，默认取数值所在的[区间的颜色](~series-gauge.axisLine.lineStyle.color)
+文本颜色，默认取数值所在的[区间的颜色](~series-gauge.axisLine.lineStyle.color)。
 
 ##${prefix} backgroundColor(Color) = 'transparent'
 

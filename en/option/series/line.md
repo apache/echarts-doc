@@ -132,7 +132,9 @@ The style of the symbol point of broken line.
 {{ use: partial-item-style(
     prefix = "##",
     useColorPalatte = true,
-    hasCallback = true
+    hasCallback = true,
+    useDecal = true,
+    decalOnlyWithAreaStyle = true
 ) }}
 
 ## lineStyle(Object)

@@ -154,7 +154,8 @@ option = {
 {{ use: partial-item-style(
     prefix = "##",
     useColorPalatte = true,
-    hasCallback = false
+    hasCallback = false,
+    useDecal = true
 ) }}
 
 ## emphasis(Object)
@@ -253,7 +254,8 @@ option = {
 ### itemStyle(Object)
 
 {{ use: partial-item-style(
-    prefix = "###"
+    prefix = "###",
+    useDecal = true
 ) }}
 
 ### emphasis(Object)

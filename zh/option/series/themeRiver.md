@@ -163,7 +163,8 @@ const option = {
 主题河流中每个带状河流分支的样式。
 
 {{ use: partial-item-style(
-    prefix = "##"
+    prefix = "##",
+    useDecal = true
 ) }}
 
 ## emphasis(Object)

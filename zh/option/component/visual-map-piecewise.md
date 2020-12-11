@@ -7,9 +7,6 @@
 
 （参考[视觉映射组件（visualMap）的介绍](~visualMap)）
 
-展现形式如下图：
-~[600x400](${galleryViewPath}doc-example/scatter-visualMap-piecewise&edit=1&reset=1)
-
 
 分段型视觉映射组件，有三种模式：
 

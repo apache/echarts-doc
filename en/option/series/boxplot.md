@@ -67,7 +67,8 @@ Style of boxplot.
     useColorPalatte = true,
     name = "boxplot",
     defaultColor = "#fff",
-    defaultBorderWidth = 1
+    defaultBorderWidth = 1,
+    useDecal = true
 ) }}
 
 ## emphasis(Object)
@@ -220,7 +221,9 @@ Select state of single data.
 
 {{ use: partial-item-style(
     prefix = "####",
-    name = "boxplot"
+    name = "boxplot",
+    useDecal = true,
+    decalOnlyWithAreaStyle = true
 ) }}
 
 {{ use: partial-tooltip-in-series-data() }}

@@ -102,7 +102,8 @@ The visual guide line style of label. When [label position](~series-funnel.label
 {{ use: partial-item-style(
     prefix = "##",
     useColorPalatte = true,
-    hasCallback = true
+    hasCallback = true,
+    useDecal = true
 ) }}
 
 ## labelLayout(Object|Function)
@@ -183,15 +184,16 @@ data value.
 
 ### itemStyle(Object)
 
-{{ use: partial-item-style-desc() }}
-
-{{ use: partial-item-style(
-    prefix = "###"
-) }}
-
 #### height(string|number)
 
 Height of this data item. By default, the height is evenly divided for all data items. The height can be set to percentage (e.g.: '10%') or pixel value (e.g.: 20). Please make sure that the total height of all data items is 100%.
+
+{{ use: partial-item-style-desc() }}
+
+{{ use: partial-item-style(
+    prefix = "###",
+    useDecal = true
+) }}
 
 ### label(Object)
 
@@ -208,14 +210,6 @@ The label configuration of a single data item.
 {{ use: partial-funnel-label-line(
     prefix = '###',
     length = true
-) }}
-
-### itemStyle(Object)
-
-{{ use: partial-item-style-desc() }}
-
-{{ use: partial-item-style(
-    prefix = "###"
 ) }}
 
 ### emphasis(Object)

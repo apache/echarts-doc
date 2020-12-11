@@ -90,7 +90,9 @@ const option = {
 {{ use: partial-item-style(
     prefix = "##",
     useColorPalatte = true,
-    hasCallback = true
+    hasCallback = true,
+    useDecal = true,
+    decalOnlyWithAreaStyle = true
 ) }}
 
 ## lineStyle(Object)

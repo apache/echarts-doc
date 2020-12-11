@@ -364,6 +364,7 @@ option = {
 {{ use: partial-bar-item-style(
     prefix = "#" + ${prefix},
     useColorPalatte = ${topLevel && isNormal},
+    useDecal = ${isNormal},
     hasCallback = ${topLevel && isNormal}
 ) }}
 
@@ -403,3 +404,15 @@ option = {
     prefix = ${prefix}
 ) }}
 
+
+{{ if: ${useDecal} }}
+
+#${prefix} decal(Object | 'none')
+
+{{ use: partial-decal-desc() }}
+
+{{ use: partial-decal(
+    prefix = '#' + ${prefix}
+) }}
+
+{{ /if }}

@@ -124,7 +124,8 @@ option = {
 {{ use: partial-item-style(
     prefix = "##",
     useColorPalatte = true,
-    hasCallback = true
+    hasCallback = true,
+    useDecal = true
 ) }}
 
 ## labelLayout(Object|Function)
@@ -207,13 +208,14 @@ option = {
 
 {{ use: partial-item-style-desc() }}
 
-{{ use: partial-item-style(
-    prefix = "###"
-) }}
-
 #### height(string|number)
 
 该数据项的高度。默认平均分配高度，如果需要修改，可以将其设为百分比（如：`'10%'`）或像素值（如：`20px`）。需要注意总和应为 100%。
+
+{{ use: partial-item-style(
+    prefix = "###",
+    useDecal = true
+) }}
 
 ### label(Object)
 
@@ -230,14 +232,6 @@ option = {
 {{ use: partial-funnel-label-line(
     prefix = '###',
     length = true
-) }}
-
-### itemStyle(Object)
-
-{{ use: partial-item-style-desc() }}
-
-{{ use: partial-item-style(
-    prefix = "###"
 ) }}
 
 ### emphasis(Object)

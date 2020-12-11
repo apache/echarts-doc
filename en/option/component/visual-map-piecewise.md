@@ -64,8 +64,6 @@ These visual channel can be customized in each piece:
 
 {{ use: partial-visual-map-visual-type() }}
 
-[Sample](${galleryEditorPath}doc-example/map-visualMap-pieces&edit=1&reset=1)
-
  (Notes: In ECharts2, `pieces` is called `splitList`, which is retained in ECharts3 for compatibility. But `pieces` is recommended.)
 
 You would realize the sequence in `pieces` by a simple trial. See more detailed rules in [visualMap.inverse](~visualMap.inverse).

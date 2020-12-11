@@ -90,7 +90,8 @@ The index of single time axis, which defaults to be 0 because it contains only o
 style of each ribbon-shape river branch in theme river.
 
 {{ use: partial-item-style(
-    prefix = "##"
+    prefix = "##",
+    isNormal = true
 ) }}
 
 ## emphasis(Object)

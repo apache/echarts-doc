@@ -184,7 +184,8 @@ The style of node rectangle in Sankey diagram.
     prefix = "##",
     useColorPalatte = true,
     defaultBorderWidth = 1,
-    defaultBorderColor = "'#aaa'"
+    defaultBorderColor = "'#aaa'",
+    useDecal = true
 ) }}
 
 ## lineStyle(Object)
@@ -270,7 +271,8 @@ The style of this node.
 
 {{ use: partial-item-style(
     prefix = "###",
-    useColorPalatte = true
+    useColorPalatte = true,
+    useDecal = true
 ) }}
 
 ### label(Object)
@@ -447,7 +449,8 @@ The curveness of the edge in Sankey diagram.
 #${prefix} itemStyle(Object)
 
 {{ use: partial-item-style(
-    prefix = "#" + ${prefix}
+    prefix = "#" + ${prefix},
+    useDecal = true
 ) }}
 
 #${prefix} lineStyle(Object)

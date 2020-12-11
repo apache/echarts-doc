@@ -50,3 +50,16 @@ ${name}描边线宽。为 0 时无描边。
     defaultShadowOffsetY = ${defaultShadowOffsetY}
 ) }}
 
+{{ if: ${useDecal} }}
+
+#${prefix} decal(Object | 'none')
+
+{{ use: partial-decal-desc(
+    onlyWithAreaStyle = ${decalOnlyWithAreaStyle}
+) }}
+
+{{ use: partial-decal(
+    prefix = '#' + ${prefix}
+) }}
+
+{{ /if }}

@@ -81,13 +81,10 @@ option = {
 };
 ```
 
-<br>
 [连续型（visualMapContinuous）](option.html#visualMap-continuous)
 
 [分段型（visualMapPiecewise）](option.html#visualMap-piecewise)：
-~[600x400](${galleryViewPath}doc-example/scatter-visualMap-piecewise&edit=1&reset=1)
 
-<br>
 分段型视觉映射组件（visualMapPiecewise），有三种模式：
 
 + 连续型数据平均分段: 依据 [visualMap-piecewise.splitNumber](option.html#visualMap-piecewise.splitNumber) 来自动平均分割成若干块。

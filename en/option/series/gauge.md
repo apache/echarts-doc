@@ -64,6 +64,15 @@ Data name.
 
 Data value.
 
+### itemStyle(Object)
+
+The style of data pointer.
+
+{{ use: partial-item-style(
+    prefix = "###",
+    useDecal = true
+) }}
+
 ## min(number) = 0
 
 <ExampleUIControlNumber default="0" step="1" />
@@ -398,7 +407,8 @@ The border color of anchor.
 The style of gauge chart.
 
 {{ use: partial-item-style(
-    prefix = "##"
+    prefix = "##",
+    useDecal = true
 ) }}
 
 <!-- overwrite color -->
