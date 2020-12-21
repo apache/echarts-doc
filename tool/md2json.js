@@ -273,7 +273,7 @@ function mdToJsonSchema(mdStr, maxDepth, imagePath, entry) {
                     currentExampleCode = null;
                 }
                 else if (!tagName.startsWith('exampleuicontrol')) {
-                    out += `<${tagName} />`;
+                    out += `</${tagName}>`;
                 }
             }
         });
