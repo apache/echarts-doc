@@ -71,7 +71,7 @@ import 'codemirror/theme/dracula.css';
 // import 'codemirror/mode/javascript/javascript.js'
 import beautifier from 'js-beautify';
 import throttle from 'lodash.throttle';
-import arrayDiff from 'zrender/src/core/arrayDiff';
+import arrayDiff from 'zrender/esm/core/arrayDiff';
 import scrollIntoView from 'scroll-into-view';
 import {ECHARTS_LIB} from '../config';
 

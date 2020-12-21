@@ -63,6 +63,7 @@
     "vue-custom-scrollbar": "^1.2.0",
     "vue-i18n": "^8.18.2",
     "vue-text-highlight": "^2.0.10",
-    "whatwg-fetch": "^3.0.0"
+    "whatwg-fetch": "^3.0.0",
+    "zrender": "^5.0.1"
   }
 }
