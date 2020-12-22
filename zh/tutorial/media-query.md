@@ -90,12 +90,11 @@ ECharts2 中的 `x/x2/y/y2` 的命名方式仍被兼容，对应于 `left/right/
 
 ```javascript
 option = {
-    baseOption: { // 这里是基本的『原子option』。
-        title: {...},
-        legend: {...},
-        series: [{...}, {...}, ...],
-        ...
-    },
+    // 这里是基本的『原子option』。
+    title: {...},
+    legend: {...},
+    series: [{...}, {...}, ...],
+    ...,
     media: [ // 这里定义了 media query 的逐条规则。
         {
             query: {...},   // 这里写规则。
@@ -214,7 +213,7 @@ media: [
 
 **『复合 option』 中的 `media` 不支持 merge**
 
-也就是说，当第二（或三、四、五 ...）次 `chart.setOption(rawOption)` 时，如果 `rawOption` 是 `复合option`（即包含 `media` 列表），那么新的 `rawOption.media` 列表不会和老的 `media` 列表进行 merge，而是简单替代。当然，`rawOption.baseOption` 仍然会正常和老的 option 进行merge。
+也就是说，当第二（或三、四、五 ...）次 `chart.setOption(rawOption)` 时，如果 `rawOption` 是 `复合option`（即包含 `media` 列表），那么新的 `rawOption.media` 列表不会和老的 `media` 列表进行 merge，而是简单替代。当然，`baseOption` 仍然会正常和老的 option 进行merge。
 
 其实，很少有场景需要使用『复合 option』来多次 `setOption`，而我们推荐的做法是，使用 mediaQuery 时，第一次setOption使用『复合 option』，后面 `setOption` 时仅使用 『原子 option』，也就是仅仅用 setOption 来改变 `baseOption`。
 

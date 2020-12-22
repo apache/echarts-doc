@@ -110,4 +110,25 @@ For how time value (like `1491339540396`, `'2013-01-04'`, ...) is parsed in echa
 
 # options(Array) = undefined
 
-Option array used in [timeline](option.html#timeline) or [media query](option.html#media). Each item of this array is an echarts option (`ECUnitOption`).
+Option array used in [timeline](option.html#timeline). Each item of this array is an echarts option (`ECUnitOption`).
+
+
+# media(Array)
+
+See [Responsive Mobile-End](tutorial.html#Responsive%20Mobile-End) for details.
+
+## query(Object)
+
+If more than one properties used, it means "and".
+
+### minWidth(number) = undefined
+
+### maxHeight(number) = undefined
+
+### minAspectRatio(number) = undefined
+
+That is the radio of `width / height`. The value can be like `1.3`.
+
+## option(Object)
+
+Each item of this array is an echarts option (`ECUnitOption`). It will be applied when this query is matched.

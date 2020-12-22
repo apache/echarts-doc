@@ -125,5 +125,29 @@ ECharts 2 里是底层强制使用单独的层绘制高亮图形，但是会带�
 
 # options(Array)
 
-用于 [timeline](option.html#timeline) 或者 [media query](option.html#media) 的 option 数组。数组的每一项是一个 echarts option (`ECUnitOption`)。
+用于 [timeline](option.html#timeline) 的 option 数组。数组的每一项是一个 echarts option (`ECUnitOption`)。
 
+
+# media(Array)
+
+请参见 [移动端自适应](tutorial.html#%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%87%AA%E9%80%82%E5%BA%94)。
+
+## query(Object)
+
+同时写两个属性，表示 “且”。
+
+### minWidth(number) = undefined
+
+`minWidth: 200` 表示『大于等于 200px 宽度』。
+
+### maxHeight(number) = undefined
+
+`minHeight: 200` 表示『大于等于 200px 高度』。
+
+### minAspectRatio(number) = undefined
+
+长宽比。值如 `1.3`。
+
+## option(Object)
+
+数组的每一项是一个 echarts option (`ECUnitOption`)，当此 query 被匹配时，会使用这个 option 。

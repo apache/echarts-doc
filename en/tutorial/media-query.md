@@ -87,12 +87,11 @@ The following format should be followed if you need to set Media Query in option
 
 ```javascript
 option = {
-    baseOption: { // here defines base option
-        title: {...},
-        legend: {...},
-        series: [{...}, {...}, ...],
-        ...
-    },
+    // here defines baseOption
+    title: {...},
+    legend: {...},
+    series: [{...}, {...}, ...],
+    ...,
     media: [ // each rule of media query is defined here
         {
             query: {...},   // write rule here
@@ -211,7 +210,7 @@ But if the container DOM node needs to change size with dragging, you need to pa
 
 **`media` in *composite option* does not support merge**
 
-When `chart.setOption(rawOption)` for the second, third, fourth, fifth, and etc. times, if `rawOption` is `composite option` (which means it contains `media` list), then, the new `rawOption.media` list will not merge with the old `media`. instead, it will simply replace the option. Of course, `rawOption.baseOption` will still merge with the old option normally.
+When `chart.setOption(rawOption)` for the second, third, fourth, fifth, and etc. times, if `rawOption` is `composite option` (which means it contains `media` list), then, the new `rawOption.media` list will not merge with the old `media`. instead, it will simply replace the option. Of course, `baseOption` will still merge with the old option normally.
 
 <br>
 Finally, let's see an example combining with timeline:
