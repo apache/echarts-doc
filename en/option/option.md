@@ -106,3 +106,8 @@ The default value of `useUTC` is false, for sake of considering:
 
 Notice: the setting only affects "display time", not "parse time".
 For how time value (like `1491339540396`, `'2013-01-04'`, ...) is parsed in echarts, see [the time part in date](~series-line.data).
+
+
+# options(Array) = undefined
+
+Option array used in [timeline](option.html#timeline) or [media query](option.html#media). Each item of this array is an echarts option (`ECUnitOption`).

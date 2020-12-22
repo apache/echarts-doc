@@ -9,93 +9,100 @@
 
 ~[600x400](${galleryViewPath}doc-example/mix-timeline-all&edit=1&reset=1)
 
-`timeline` 和其他组件有些不同，它需要操作『多个option』。
-假设，我们把 ECharts 的传统的 option 称为*原子option*，那么使用 `timeline` 时，传入 ECharts 的 option 就成为了一个集合多个原子option的*复合option*。如下示例：
+`timeline` 和其他场景有些不同，它需要操作『多个option』。我们把传入 `setOption` 第一个参数的东西，称为 `ECOption`，然后称传统的 ECharts 单个 option 为 `ECUnitOption`。
+
++ 当 `timeline` 和 `media query` 没有被设置时，一个 `ECUnitOption` 就是一个 `ECOption`。
++ 当 `timeline` 或 `media query` 被使用设置时，一个 `ECOption` 由几个 `ECUnitOption` 组成。
+    + `ECOption` 的各个根属性，形成一个 `ECUnitOption`，叫做 `baseOption`，它代表了各种默认设置。
+    + `options` 数组每项，形成一个 `ECUnitOption`，我们为了方便也叫做 `switchableOption`，它代表了每个时间粒度对应的 option。
++ `baseOption` 和一个 `switchableOption` 会用来计算最终的 `finalOption`，图表就是根据这个最终结果绘制的。
+
+例如：
 
 ```javascript
-// 如下，baseOption 是一个 『原子option』，options 数组中的每一项也是一个 『原子option』。
+// 如下，baseOption 是一个 『原子option』，options 数组
+// 中的每一项也是一个 『原子option』。
 // 每个『原子option』中就是本文档中描述的各种配置项。
-myChart.setOption(
-    {
-        baseOption: {
-            timeline: {
-                ...,
-                data: ['2002-01-01', '2003-01-01', '2004-01-01']
-            },
-            grid: {...},
-            xAxis: [...],
-            yAxis: [...],
-            series: [
-                { // 系列一的一些其他配置
-                    type: 'bar',
-                    ...
-                },
-                { // 系列二的一些其他配置
-                    type: 'line',
-                    ...
-                },
-                { // 系列三的一些其他配置
-                    type: 'pie',
-                    ...
-                }
-            ]
+myChart.setOption({
+    // `baseOption` 的属性.
+    timeline: {
+        ...,
+        // `timeline.data` 中的每一项，对应于 `options`
+        // 数组中的每个 `option`
+        data: ['2002-01-01', '2003-01-01', '2004-01-01']
+    },
+    grid: { ... },
+    xAxis: [ ... ],
+    yAxis: [ ... ],
+    series: [{
+        // 系列一的一些其他配置
+        type: 'bar',
+        ...
+    }, {
+        // 系列二的一些其他配置
+        type: 'line',
+        ...
+    }, {
+        // 系列三的一些其他配置
+        type: 'pie',
+        ...
+    }],
+    // `switchableOption`s:
+    options: [{
+        // 这是'2002-01-01' 对应的 option
+        title: {
+            text: '2002年统计值'
         },
-        options: [
-            { // 这是'2002-01-01' 对应的 option
-                title: {
-                    text: '2002年统计值'
-                },
-                series: [
-                    {data: []}, // 系列一的数据
-                    {data: []}, // 系列二的数据
-                    {data: []}  // 系列三的数据
-                ]
-            },
-            { // 这是'2003-01-01' 对应的 option
-                title: {
-                    text: '2003年统计值'
-                },
-                series: [
-                    {data: []},
-                    {data: []},
-                    {data: []}
-                ]
-            },
-            { // 这是'2004-01-01' 对应的 option
-                title: {
-                    text: '2004年统计值'
-                },
-                series: [
-                    {data: []},
-                    {data: []},
-                    {data: []}
-                ]
-            }
+        series: [
+            { data: [] }, // 系列一的数据
+            { data: [] }, // 系列二的数据
+            { data: [] }  // 系列三的数据
         ]
-    }
-);
+    }, {
+        // 这是'2003-01-01' 对应的 option
+        title: {
+            text: '2003年统计值'
+        },
+        series: [
+            { data: [] },
+            { data: [] },
+            { data: [] }
+        ]
+    }, {
+        // 这是'2004-01-01' 对应的 option
+        title: {
+            text: '2004年统计值'
+        },
+        series: [
+            { data: [] },
+            { data: [] },
+            { data: [] }
+        ]
+    }]
+});
 ```
 
-在上例中，`timeline.data` 中的每一项，对应于 `options` 数组中的每个 `option`。
-
 <br>
-**使用注意与最佳实践：**
+**`finalOption` 是怎么计算出来的?**
 
-+ 公有的配置项，推荐配置在 `baseOption` 中。`timeline` 播放切换时，会把 `options` 数组中的对应的 `option`，与 `baseOption` 进行 merge 形成最终的 `option`。
-
-+ `options` 数组中，如果某一数组项中配置了某个属性，那么其他数组项中也必须配置某个属性，而不能缺省。否则这个属性的执行效果会遗留。
-
-+ *复合 option* 中的 `options` 不支持 merge。
-
-    也就是说，当第二（或三、四、五 ...）次 `chart.setOption(rawOption)` 时，如果 `rawOption` 是*复合 option*（即包含 `options` 列表），那么新的 `rawOption.options` 列表不会和老的 `options` 列表进行 merge，而是简单替代。当然，`rawOption.baseOption` 仍然会正常和老的 option 进行merge。
+{{ use: partial-timeline-merge-strategy }}
 
 
 <br>
-**与 ECharts 2 的兼容性：**
+**兼容 ECharts4**
 
-+ ECharts 3 中不再支持 timeline.notMerge 参数，也就是不支持 notMerge 模式。如果遇到这种场景需要使用，可在外部进行option管理，并用 setOption(option, true) 这样的notMerge方式设置。
+如下这种设置方式，也支持：
+```js
+option = {
+    baseOption: {
+        timeline: {},
+        series: [],
+        // ... other properties of baseOption.
+    },
+    options: []
+};
+```
 
-+ ECharts 3 和 ECharts 2 相比，timeline 属性的定义位置有所不同，移到了 `baseOption` 中，统一作为一个普通的组件看待。但是，仍然兼容 ECharts2 的 timeline 定义位置，只是不再推荐这样写。
 
 
 <ExampleBaseOption name="timeline" title="时间轴" title-en="Timeline">
@@ -515,6 +522,19 @@ const option = {
 
 拖动圆点的时候，是否实时更新视图。
 
+## replaceMerge(Array|string) = undefined
+
+{{ use: partial-timeline-merge-strategy }}
+
+<br>
+
+`replaceMerge` 的值可以是一个组件的 `mainType`，例如 `replaceMerge: 'xAxis'`。也可以是 `mainType` 数组，例如 `replaceMerge: ['xAxis', 'series']`。
+
+常见需要使用 `replaceMerge` 的地方是，如果需要下一个时间刻度的 series 完全替换上一个时间刻度的 series 而不进行任何 merge ，可以设置 `replaceMerge: 'series'`，并且两个时间刻度的 series id 不相同或者没有 id 。
+
+参见这个 [示例](${galleryEditorPath}doc-example/timeline-dynamic-series&edit=1&reset=1)。
+
+
 ## controlPosition(string) = 'left'
 
 <ExampleUIControlEnum options="left,right" />
@@ -876,4 +896,15 @@ const option = {
     defaultColor = ${textStyleDefaultColor}
 ) }}
 {{ /if }}
+
+
+
+{{ target: partial-timeline-merge-strategy }}
+
+初始化的时候，对应于当前时间的那个 `switchableOption` 会被合并（merge）到 `baseOption`，形成 `finalOption`。而每当时间变化时，对应于新时间的 `switchableOption` 会被合并（merge）到`finalOption`。
+
+有两种合并（merge）策略：
++ 默认使用 `NORMAL_MERGE`。
++ 如果 [timeline.replaceMerge](~option.html#timeline.replaceMerge) 被指定了，则使用 `REPLACE_MERGE`。如果要知道 `REPLACE_MERGE` 更多信息，可以参见 [setOption](~api.html#echartsInstance.setOption) 中 `REPLACE_MERGE` 一节。
+。
 

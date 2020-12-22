@@ -121,3 +121,9 @@ ECharts 2 里是底层强制使用单独的层绘制高亮图形，但是会带�
 
 注意，这个参数实际影响的是『展示』，而非用户输入的时间值的解析。
 关于用户输入的时间值（例如 `1491339540396`, `'2013-01-04'` 等）的解析，参见 [date 中时间相关部分](~series-line.data)。
+
+
+# options(Array)
+
+用于 [timeline](option.html#timeline) 或者 [media query](option.html#media) 的 option 数组。数组的每一项是一个 echarts option (`ECUnitOption`)。
+

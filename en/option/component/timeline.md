@@ -9,95 +9,99 @@ Here is an example:
 
 ~[600x400](${galleryViewPath}doc-example/mix-timeline-all&edit=1&reset=1)
 
-Different from other components, `timeline` component requires multiple options. If the traditional way of ECharts option is called *atomic option*, then, the option used along with timeline should be call a *compound option* composed with multiple atomic options. For example:
+Different from other cases, `timeline` component requires multiple options. We call first the parameter of `setOption` as `ECOption`, and call the traditional single ECharts option as `ECUnitOption`.
+
++ In the case that `timeline` and `media query` are not set, an `ECUnitOption` is an `ECOption`.
++ In the case that `timeline` or `media query` are set, an `ECOption` is made up with several `ECUnitOption`s.
+    + The properties at the root of `ECOption` form an `ECUnitOption`, which is also called `baseOption`, representing the default settings.
+    + Each item of the array `options` form an `ECUnitOption`, which can be also called `switchableOption`, representing options for each time tick.
++ `baseOption` and one `switchableOption` are used to calculate the `finalOption`, based on which the chart will be final rendered.
+
+For example:
 
 ```javascript
-// In the following example, baseOption is an *atomic option*, so as each item in options array.
-// Each of the atomic option follows configuration introduced in this document.
-myChart.setOption(
-    {
-        baseOption: {
-            timeline: {
-                ...,
-                data: ['2002-01-01', '2003-01-01', '2004-01-01']
-            },
-            title: {
-                subtext: ' Data is from National Bureau of Statistics '
-            },
-            grid: {...},
-            xAxis: [...],
-            yAxis: [...],
-            series: [
-                { // other configurations of series 1
-                    type: 'bar',
-                    ...
-                },
-                { // other configurations of series 2
-                    type: 'line',
-                    ...
-                },
-                { // other configurations of series 3
-                    type: 'pie',
-                    ...
-                }
-            ]
+myChart.setOption({
+    // This is the properties of `baseOption`.
+    timeline: {
+        ...,
+        // each item in `timeline.data` corresponds to each
+        // `option` in `options` array.
+        data: ['2002-01-01', '2003-01-01', '2004-01-01']
+    },
+    title: {
+        subtext: ' Data is from National Bureau of Statistics '
+    },
+    grid: { ... },
+    xAxis: [ ... ],
+    yAxis: [ ... ],
+    series: [{
+        // other configurations of series 1
+        type: 'bar',
+        ...
+    }, {
+        // other configurations of series 2
+        type: 'line',
+        ...
+    }, {
+        // other configurations of series 3
+        type: 'pie',
+        ...
+    }],
+    // `switchableOption`s:
+    options: [{
+        // it is an option corresponding to '2002-01-01'
+        title: {
+        text: 'the statistics of the year 2002'
         },
-        options: [
-            { // it is an option corresponding to '2002-01-01'
-                title: {
-                text: 'the statistics of the year 2002'
-                },
-                series: [
-                    {data: []}, // the data of series 1
-                    {data: []}, // the data of series 2
-                    {data: []}  // the data of series 3
-                ]
-            },
-            { // it is an option corresponding to '2003-01-01'
-                title: {
-                    text: 'the statistics of the year 2003'
-                },
-                series: [
-                    {data: []},
-                    {data: []},
-                    {data: []}
-                ]
-            },
-            { // it is an option corresponding to '2004-01-01'
-                title: {
-                    text: 'the statistics of the year 2004'
-                },
-                series: [
-                    {data: []},
-                    {data: []},
-                    {data: []}
-                ]
-            }
+        series: [
+            { data: [] }, // the data of series 1
+            { data: [] }, // the data of series 2
+            { data: [] }  // the data of series 3
         ]
-    }
-);
+    }, {
+        // it is an option corresponding to '2003-01-01'
+        title: {
+            text: 'the statistics of the year 2003'
+        },
+        series: [
+            { data: [] },
+            { data: [] },
+            { data: [] }
+        ]
+    }, {
+        // it is an option corresponding to '2004-01-01'
+        title: {
+            text: 'the statistics of the year 2004'
+        },
+        series: [
+            { data: [] },
+            { data: [] },
+            { data: [] }
+        ]
+    }]
+});
 ```
 
-In the above example, each item in `timeline.data` corresponds to each `option` of `options` array.
+<br>
+**How the `finalOption` calculated?**
+
+{{ use: partial-timeline-merge-strategy }}
 
 <br>
-**Attention and Best Practice: **
+**Compatibility with ECharts 4:**
 
-+ Shared configuration items are recommended to be set in `baseOption`. When switching in `timeline`, `option` in corresponding `options` array will be merged with `baseOption` to form the final `option`.
+We also support these equivalent setting styles:
+```js
+option = {
+    baseOption: {
+        timeline: {},
+        series: [],
+        // ... other properties of baseOption.
+    },
+    options: []
+};
+```
 
-+ In `options` array, if an attribute is configured in one of the options, then, it should also be configured in other options. Otherwise, this attribute will be ignored.
-
-+ `options` in *compound option* doesn't support merge.
-
-    That is to say, when calling `chart.setOption(rawOption)` after the first time, if `rawOption` is a *compound option* (meaning that it contains an array of `options`), then the new `rawOption.options` will replace the old one, instead of merging with it. Of course, `rawOption.baseOption` will be merged with that of old option normally.
-
-
-<br>
-**Compatibility with ECharts 2: **
-
-+ ECharts3 doesn't support `timeline.notMerge` parameter any more, which implies *notMerge mode* is no longer supported. If you need this function, you may manage the option in your own program before passing to `setOption(option, true)`.
-
-+ Comparing ECharts 3 with ECharts 2, the definition location of timeline attributes are different. The one in ECharts 3 is moved to  `baseOption` and is regarded as a seperate component, which is also compatible with the timeline definition location of ECharts 2. But it is not recommended to do so.
 
 ## show(boolean) = true
 
@@ -155,6 +159,19 @@ Indicates play speed (gap time between two state), whose unit is millisecond.
 <ExampleUIControlBoolean default="true" />
 
 Whether the view updates in real time during dragging the control dot.
+
+## replaceMerge(Array|string) = undefined
+
+{{ use: partial-timeline-merge-strategy }}
+
+<br>
+
+The value of `replaceMerge` can be a `mainType` of a component, like `replaceMerge: 'xAxis'`, or an array of `mainType`s, like `replaceMerge: ['xAxis', 'series']`.
+
+`replaceMerge` is usually used in this scenario: if users intending to replace all of the current series with the new series corresponding to the next time tick without any merging, users can set: `replaceMerge: 'series'`, and make sure that the series are in different id or no id.
+
+See this [example](${galleryEditorPath}doc-example/timeline-dynamic-series&edit=1&reset=1).
+
 
 ## controlPosition(string) = 'left'
 
@@ -519,3 +536,12 @@ Rotation angle of `label`, in which positive values refer to counter clockwise r
 ) }}
 {{ /if }}
 
+
+
+{{ target: partial-timeline-merge-strategy }}
+
+When initializing, a `switchableOption` corresponding to the current time tick are merged into `baseOption` to form the `finalOption`. Each time the current tick changed, the new `switchableOption` corresponding to the new time tick are merged into the `finalOption`.
+
+There are two merging strategy.
++ By default, use `NORMAL_MERGE`.
++ If [timeline.replaceMerge](~option.html#timeline.replaceMerge) is set, use `REPLACE_MERGE`. See [setOption](~api.html#echartsInstance.setOption) for more details of `REPLACE_MERGE`.
