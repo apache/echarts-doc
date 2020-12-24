@@ -170,6 +170,10 @@ option = {
 ## stack(string) = null
 数据堆叠，同个类目轴上系列配置相同的`stack`值可以堆叠放置。
 
+## groupOrder(string) = null
+{{ use: partial-version(version = "5.1.0") }}
+同个类目轴上配置多个series时，支持簇状、堆叠组内排序，可选参数为'asc'(升序)、'desc'(降序)。
+
 {{ use: partial-cursor }}
 
 {{use: partial-barGrid(
