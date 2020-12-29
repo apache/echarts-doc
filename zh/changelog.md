@@ -3,18 +3,18 @@
 
 + 代码库迁移为 TypeScript：
     + 全体代码迁移为 TypeScript。
-    + 对于使用 TS 的上层应用，提供了 `types/dist/echarts.d.ts` 作为类型声明。最低支持到 TS 3.4。
+    + 对于使用 TS 的上层应用, 提供类型声明文件。最低支持到 TS 3.5。
     + 更多的信息参见 [#13563](https://github.com/apache/incubator-echarts/pull/13563)。
 + [Feature] 状态增强：
     + 支持了状态切换时的过渡动画。这能提供更好的视觉效果，尤其比如当常见的部分图形元素因为被“高亮/淡出”时。
     + 对于所有系列，新增了状态 `select` 和 `blur`。它们的配置，同我们已有的 `emphasis` 状态一样。`blur` 状态一般可以用于这样的场景：当部分图形元素被关注时，其他图形元素的淡出样式设置。`select` 状态一般可用于鼠标、触摸或 API 选中图形元素而导致样式改变的场景。
-    + 广泛支持了淡出效果，即，当某一部分图形元素被关注时（通过鼠标、触摸或 API），其他图形元素淡出，以突出被关注的图形元素。可看这些例子： [bar-label-rotation](https://echarts.apache.org/next/examples/en/editor.html?c=bar-label-rotation)、[bar-polar-stack](https://echarts.apache.org/next/examples/en/editor.html?c=bar-polar-stack)、[bar-stack](https://echarts.apache.org/next/examples/en/editor.html?c=bar-stack)、[area-stack](https://echarts.apache.org/next/examples/en/editor.html?c=area-stack)、[dataset-link](https://echarts.apache.org/next/examples/en/editor.html?c=dataset-link)、[scatter-weight](https://echarts.apache.org/next/examples/en/editor.html?c=scatter-weight)、[tree-basic](https://echarts.apache.org/next/examples/en/editor.html?c=tree-basic)。
+    + 全系列支持了淡出效果，当某一部分图形元素被聚焦时（通过鼠标、触摸或 API），其他图形元素淡出，以突出被关注的图形元素。可看这些例子： [bar-label-rotation](https://echarts.apache.org/next/examples/en/editor.html?c=bar-label-rotation)、[bar-polar-stack](https://echarts.apache.org/next/examples/en/editor.html?c=bar-polar-stack)、[bar-stack](https://echarts.apache.org/next/examples/en/editor.html?c=bar-stack)、[area-stack](https://echarts.apache.org/next/examples/en/editor.html?c=area-stack)、[dataset-link](https://echarts.apache.org/next/examples/en/editor.html?c=dataset-link)、[scatter-weight](https://echarts.apache.org/next/examples/en/editor.html?c=scatter-weight)、[tree-basic](https://echarts.apache.org/next/examples/en/editor.html?c=tree-basic)。
     + 原先在不同系列中，形式不一样但是功能类似的配置项：`highlightPolicy`、`focusNodeAdjacency`、`hoverOffset`，被统一为：`focus`、`blurScope` 和 `scale`。参见示例 [sankey-energy](https://echarts.apache.org/next/examples/en/editor.html?c=sankey-energy)、[graph](https://echarts.apache.org/next/examples/en/editor.html?c=graph)、[sunburst-drink](https://echarts.apache.org/next/examples/en/editor.html?c=sunburst-drink)。
     + 更多细节可见 [#12925](https://github.com/apache/incubator-echarts/pull/12925) 和 [#12911](https://github.com/apache/incubator-echarts/pull/12911)。
 + [Feature] 标签增强：
     + 采用一些策略优化了标签显示效果：
         + 根据背景颜色，智能计算标签文本的颜色，从而使他们更有区分度。
-        + 在饼图（pie chart）上，优化了标签的排布算法，尤其针对标签非常多的时候，避免咋算。详情见 [#6050](https://github.com/apache/incubator-echarts/issues/6050)。
+        + 在饼图（pie chart）上，优化了标签的排布算法，尤其针对标签非常多的时候，避免重叠。详情见 [#6050](https://github.com/apache/incubator-echarts/issues/6050)。
         + 针对文本超出（overflow）区域的场景，提供了多种配置策略。
     + 提供一组配置项 `labelLayout`，能够在标签由图表初始定位后，调整其布局。通过 `labelLayout` 中的选项，开发者可以：
         + 避免标签重叠（参见[scatter-label-align-right](https://echarts.apache.org/next/examples/en/editor.html?c=graph-label-overlap)）。
@@ -85,12 +85,12 @@
     + [Fix] 使 `contentToOption` 完全可选。参见 [#13139](https://github.com/apache/incubator-echarts/pull/13139)。
     + [Fix] 当刷新时，保持 tooltip 。参见 [#13100](https://github.com/apache/incubator-echarts/pull/13100)。
     + [Fix] 当 heatmap 超出坐标系区域时，不渲染。参见 [#12991](https://github.com/apache/incubator-echarts/pull/12991)。
-+ [Break] 相比于 v4.9 的 Breaking changes：
++ [Break] 相对于 v4.9 的 Breaking changes：
     + 默认的主题颜色被修改了。如果仍打算使用 v4.9 之前版本的主题，请设置 `option.color = ['#c23531', '#2f4554', '#61a0a8', '#d48265', '#91c7ae', '#749f83', '#ca8622', '#bda29a', '#6e7074', '#546570', '#c4ccd3'];`。
     + 移除了内置地图 geoJSON。参见 [#13565](https://github.com/apache/incubator-echarts/pull/13565)。
-    + 放弃了对 IE8 的支持。以前的 `VML` 渲染器（IE8 所须）没有针对 v5.0 进行更新。除非后续有人提出了强需求。
-    + `'echarts/lib/export.js'` 中声明的模块，不再默认挂载到 `'echarts/lib/echarts.js'` 中。如果上层应用之前使用了 `import echarts from 'echarts/lib/echarts'` 并使用了 `'echarts/lib/export.js'` 中的任何一个模块，请将代码改为 `import echarts from 'echarts/index.blank'`，在这里，`'echarts/lib/export.js'` 中的模块，才被默认挂载。
-    + 如果上层应用之前引用了 `src/echarts.js`、`src/chart/*.js`、`src/component/*.js`，则不再能这么引用了。因为 `/src` 文件夹中的所有文件都被迁移为 `*.ts`。上层应用程序可以改为引用 `esm/echarts.js`、`esm/chart/*.js`、`esm/component/*.js`。
+    + 放弃了对 IE8 的支持。以前的 `VML` 渲染器（IE8 所须）没有针对 v5.0 进行更新。
+    + `'echarts/lib/export.js'` 中声明的模块，不再默认挂载到 `'echarts/lib/echarts.js'` 中。如果上层应用之前使用了 `import * as echarts from 'echarts/lib/echarts'` 并使用了 `'echarts/lib/export.js'` 中的任何一个模块，请将代码改为 `import echarts from 'echarts/index.blank'`，在这里，`'echarts/lib/export.js'` 中的模块，才被默认挂载。
+    + 如果上层应用之前引用了 `src/echarts.js`、`src/chart/*.js`、`src/component/*.js`，则不再能这么引用了。因为 `/src` 文件夹中的所有文件都被迁移为 `*.ts`。
     + 颠倒了 `visualMap` 和 `itemStyle`|`lineStyle`|`areaStyle` 的优先级。也就是说，以前，由`visualMap` 组件生成的视觉效果（即颜色、符号、符号大小等）具有最高优先级，将覆盖 `itemStyle`|`lineStyle`|`areaStyle` 中指定的相同视觉效果。这种设定带来了一些麻烦，比如给一些特定的数据项指定特定的样式时。从 v5.0 开始，`itemStyle`|`lineStyle`|`areaStyle` 中指定的视觉效果具有了最高优先级。
     + 改变了 `rich.?.padding` 的行为。以前的 `rich.?.padding: [11, 22, 33, 44]` 表示 padding-top 是 `33`，padding-bottom 是 `11`，这是一个有问题的实现，因为它与 CSS 的做法不同。从 v5.0 开始，我们对它进行了修复。`rich.?.padding: [11, 22, 33, 44]` 表示 padding-top `11`，padding-bottom 是`33`。
     + `aria` 从 v5.0 开始不再包含在 `dist/echarts.simple(.min).js` 中。但它仍然包含在 `dist/echarts.common(.min).js` 和 `dist/echarts(.min).js` 中。
