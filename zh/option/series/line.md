@@ -129,7 +129,8 @@ const option = {
 
 {{ use: partial-label(
     prefix = "##",
-    formatter = true
+    formatter = true,
+    noPosition = true
 ) }}
 
 ### valueAnimation(boolean)
@@ -206,7 +207,9 @@ const option = {
 
 {{ use: partial-label(
     prefix = "###",
-    formatter = true
+    formatter = true,
+    noPosition = true,
+    noDistance = true
 ) }}
 
 ## blur(Object)
@@ -223,7 +226,9 @@ const option = {
 
 {{ use: partial-label(
     prefix = "###",
-    formatter = true
+    formatter = true,
+    noPosition = true,
+    noDistance = true
 ) }}
 
 ## select(Object)
@@ -240,7 +245,9 @@ const option = {
 
 {{ use: partial-label(
     prefix = "###",
-    formatter = true
+    formatter = true,
+    noPosition = true,
+    noDistance = true
 ) }}
 
 {{ use: partial-selected-mode(

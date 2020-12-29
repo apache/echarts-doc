@@ -21,13 +21,19 @@ ${name}图形上的文本标签，可用于说明图形的一些数据信息，�
 {{ use: partial-label-position() }}
 {{ /if }}
 
+{{ if: !${noDistance} }}
 #${prefix} distance(number) = 5
 
 <ExampleUIControlNumber default="5" min="0" step="0.5" />
 
-距离图形元素的距离。当 position 为字符描述值（如 `'top'`、`'insideRight'`）时候有效。
+距离图形元素的距离。
+
+{{ if: !${noPosition} }}
+当 position 为字符描述值（如 `'top'`、`'insideRight'`）时候有效。
 
 参见：[label position](${galleryEditorPath}doc-example/label-position)。
+{{ /if }}
+{{ /if }}
 
 {{ if: !${noRotate} }}
 #${prefix} rotate(number) = ${defaultRotate}

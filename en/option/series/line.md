@@ -100,7 +100,8 @@ Label on the end of line.
 
 {{ use: partial-label(
     prefix = "##",
-    formatter = true
+    formatter = true,
+    noPosition = true
 ) }}
 
 ### valueAnimation(boolean)
@@ -175,7 +176,9 @@ Whether to scale to highlight the data in emphasis state.
 
 {{ use: partial-label(
     prefix = "###",
-    formatter = true
+    formatter = true,
+    noPosition = true,
+    noDistance = true
 ) }}
 
 ## blur(Object)
@@ -192,7 +195,9 @@ Configurations of blur state. Available when [emphasis.focus](~series-line.empha
 
 {{ use: partial-label(
     prefix = "###",
-    formatter = true
+    formatter = true,
+    noPosition = true,
+    noDistance = true
 ) }}
 
 ## select(Object)
@@ -209,7 +214,9 @@ Configurations of select state. Available when [selectedMode](~series-line.selec
 
 {{ use: partial-label(
     prefix = "###",
-    formatter = true
+    formatter = true,
+    noPosition = true,
+    noDistance = true
 ) }}
 
 {{ use: partial-selected-mode(

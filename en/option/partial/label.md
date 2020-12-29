@@ -21,13 +21,19 @@ Whether to show label.
 {{ use: partial-label-position() }}
 {{ /if }}
 
+{{ if: !${noDistance} }}
 #${prefix} distance(number) = 5
 
 <ExampleUIControlNumber default="5" min="0" step="0.5" />
 
-Distance to the host graphic element. Works when position is string value (like `'top'`、`'insideRight'`).
+Distance to the host graphic element.
+
+{{ if: !${noPosition} }}
+It is valid only when `position` is string value (like `'top'`、`'insideRight'`).
 
 See: [label position](${galleryEditorPath}doc-example/label-position).
+{{ /if }}
+{{ /if }}
 
 {{ if: !${noRotate} }}
 #${prefix} rotate(number) = ${defaultRotate}
