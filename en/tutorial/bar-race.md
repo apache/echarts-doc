@@ -19,6 +19,6 @@ Bar race is a chart that shows changes in the ranking of data over time and it i
 
 A full example is:
 
-~[700x300](${galleryViewPath}doc-example/bar-race&edit=1&reset=1)
+~[700x300](${galleryViewPath}bar-race&edit=1&reset=1)
 
 As you see, there are many options to be set to enable bar race effect. We are going to provide a tool that doesn't require any coding to help you make bar race charts more easily.

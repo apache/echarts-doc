@@ -19,6 +19,6 @@
 
 完整的例子如下：
 
-~[700x300](${galleryViewPath}doc-example/bar-race&edit=1&reset=1)
+~[700x300](${galleryViewPath}bar-race&edit=1&reset=1)
 
 以上的设置项比较多，如果手动设置比较繁琐，之后我们也会推出不用写代码就能实现动态排序柱状图的工具，敬请期待！
