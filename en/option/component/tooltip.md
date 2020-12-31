@@ -207,6 +207,21 @@ Here we provide `appendToBody: true` to auto append the tooltip element to `<bod
 
 Note that it also works when CSS transform used.
 
+## className(string)
+
+<ExampleUIControlText />
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+Specify the classes for the tooltip root DOM. (Only works in [`html`](~tooltip.renderMode) render mode).
+
+Example:
+```js
+className: 'echarts-tooltip echarts-tooltip-dark'
+```
+
 ## transitionDuration(number) = 0.4
 
 <ExampleUIControlNumber min="0" step="0.1" default="0.4" />

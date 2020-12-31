@@ -207,6 +207,21 @@ const option = {
 
 注：CSS transform 的场景，这也可以使用。
 
+## className(string)
+
+<ExampleUIControlText />
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+指定 tooltip 的 DOM 节点的 CSS 类。（只在 [`html`](~tooltip.renderMode) 模式下生效）。
+
+Example:
+```js
+className: 'echarts-tooltip echarts-tooltip-dark'
+```
+
 ## transitionDuration(number) = 0.4
 
 <ExampleUIControlNumber min="0" step="0.1" default="0.4" />
