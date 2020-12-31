@@ -6,7 +6,8 @@ const htmlparser2 = require('htmlparser2');
 const chalk = require('chalk');
 
 async function convert(opts) {
-    const mdPath = opts.path;
+    // globby does not support '\' yet
+    const mdPath = opts.path.replace(/\\/g, '/');
     const sectionsAnyOf = opts.sectionsAnyOf;
     const entry = opts.entry;
     const tplEnv = opts.tplEnv;
