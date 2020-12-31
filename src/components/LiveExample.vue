@@ -71,7 +71,7 @@ import 'codemirror/theme/dracula.css';
 // import 'codemirror/mode/javascript/javascript.js'
 import beautifier from 'js-beautify';
 import throttle from 'lodash.throttle';
-import arrayDiff from 'zrender/esm/core/arrayDiff';
+import arrayDiff from 'zrender/lib/core/arrayDiff';
 import scrollIntoView from 'scroll-into-view';
 import {ECHARTS_LIB} from '../config';
 
@@ -93,27 +93,32 @@ function fetchECharts() {
 function diffUpdateCode(oldCode, newCode, cmInstance) {
     const oldLines = oldCode.split(/\n/);
     const newLines = newCode.split(/\n/);
-    const result = arrayDiff(oldLines, newLines);
+    const diff = arrayDiff(oldLines, newLines);
 
     const changedLines = [];
-    const len = result.length;
 
-    for (let i = len - 1; i >= 0; i--) {
-        const item = result[i];
-        if (item.cmd === '-') {
-            cmInstance.replaceRange(
-                '', {line: item.idx, ch: 0}, {line: item.idx + 1, ch: 0}
-            );
+    // Remove lines from bottom to top so the line number won't be changed.
+    for (let i = diff.length - 1; i >= 0; i--) {
+        const item = diff[i];
+        if (item.removed) {
+            for (let k = item.count - 1; k >= 0; k--) {
+                const idx = item.indices[k];
+                cmInstance.replaceRange(
+                    '', {line: idx, ch: 0}, {line: idx + 1, ch: 0}
+                );
+            }
         }
     }
-
-    for (let i = 0; i < len; i++) {
-        const item = result[i];
-        if (item.cmd === '+') {
-            cmInstance.replaceRange(
-                newLines[item.idx] + '\n', {line: item.idx, ch: 0}
-            );
-            changedLines.push(item.idx);
+    for (let i = 0; i < diff.length; i++) {
+        const item = diff[i];
+        if (item.added) {
+            for (let k = 0; k < item.count; k++) {
+                const idx = item.indices[k];
+                cmInstance.replaceRange(
+                    newLines[idx] + '\n', {line: idx, ch: 0}
+                );
+                changedLines.push(idx);
+            }
         }
     }
 
@@ -121,7 +126,7 @@ function diffUpdateCode(oldCode, newCode, cmInstance) {
         cmInstance.addLineClass(idx, 'wrap', 'option-changed');
     });
 
-    if (len) {
+    if (diff.length) {
         setTimeout(() => {
             cmInstance.scrollIntoView({
                 line: changedLines[0],
