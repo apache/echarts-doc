@@ -233,3 +233,31 @@ The transition duration of tooltip's animation, in seconds. When it is set to be
     prefix = '#'
 ) }}
 
+## order(string) = 'seriesAsc'
+
+<ExampleUIControlEnum options="seriesAsc,seriesDesc,valueAsc,valueDesc" default="seriesAsc" />
+
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+Tooltip order for multiple series. Defaults is `'seriesAsc'`.
+
+Conditions to order tooltip. Options:
+
++ `'seriesAsc'`
+
+    Base on series declaration, ascending order tooltip.
+
++ `'seriesDesc'`
+
+    Base on series declaration, descending order tooltip.
+
++ `'valueAsc'`
+
+    Base on value, ascending order tooltip, only for numberic value.
+
++ `'valueDesc'`
+
+    Base on value, descending order tooltip, only for numberic value.
