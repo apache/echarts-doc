@@ -536,7 +536,7 @@ ECharts 4 之前一直以来的数据声明方式仍然被正常支持，如果�
 
 ## 数据转换器（ data transform ）
 
-参见 [datat transform](~%E4%BD%BF%E7%94%A8%20transform%20%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E8%BD%AC%E6%8D%A2)。
+参见 [data transform](~%E4%BD%BF%E7%94%A8%20transform%20%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E8%BD%AC%E6%8D%A2)。
 
 ## 其他
 
