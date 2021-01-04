@@ -1,7 +1,7 @@
 
 {{ target: partial-data-transform-tutorial-ref }}
 
-See the tutorial of [datat transform](tutorial.html#Data%20Transform).
+See the tutorial of [data transform](tutorial.html#Data%20Transform).
 
 
 
