@@ -551,7 +551,7 @@ In fact, setting data via [series.data](option.html#series.data) is not deprecat
 
 ## Data transform
 
-See [datat transform](~Data%20Transform).
+See [data transform](~Data%20Transform).
 
 
 ## Others
