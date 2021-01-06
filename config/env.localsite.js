@@ -1,8 +1,8 @@
 const path = require('path');
 
 module.exports = {
-    galleryViewPath: 'http://localhost/incubator-echarts-website/next/examples/${lang}/view.html?c=',
-    galleryEditorPath: 'http://localhost/incubator-echarts-website/next/examples/${lang}/editor.html?c=',
+    galleryViewPath: 'http://localhost/incubator-echarts-website/examples/${lang}/view.html?c=',
+    galleryEditorPath: 'http://localhost/incubator-echarts-website/examples/${lang}/editor.html?c=',
     websitePath: './',
 
     imagePath: 'asset/img/',
@@ -10,6 +10,6 @@ module.exports = {
         imagePath: 'asset/gl/img/'
     },
 
-    releaseDestDir: path.resolve(__dirname, '../../incubator-echarts-website/next'),
-    ecWWWGeneratedDir: path.resolve(__dirname, '../../echarts-www/_generated/next')
+    releaseDestDir: path.resolve(__dirname, '../../incubator-echarts-website'),
+    ecWWWGeneratedDir: path.resolve(__dirname, '../../echarts-www/_generated')
 };
