@@ -674,7 +674,13 @@ default: {
     // 旋转动画（spinner）的半径。从 `v4.8.0` 开始支持。
     spinnerRadius: 10,
     // 旋转动画（spinner）的线宽。从 `v4.8.0` 开始支持。
-    lineWidth: 5
+    lineWidth: 5,
+    // 字体粗细。从 `v5.0.1` 开始支持。
+    fontWeight: 'normal',
+    // 字体风格。从 `v5.0.1` 开始支持。
+    fontStyle: 'normal',
+    // 字体系列。从 `v5.0.1` 开始支持。
+    fontFamily: 'sans-serif'
 }
     ```
 
