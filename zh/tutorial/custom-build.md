@@ -66,7 +66,7 @@ node node_modules/echarts/build/build.js --help
 + `--min`：是否压缩文件（默认不压缩），并且去多余的打印错误信息的代码，形成生产环境可用的文件。
 + `--lang <language shortcut or file path>`：是否使用其他语言版本，默认是中文。例如：`--lang en` 表示使用英文，`--lang my/langXX.js` 表示构建时使用 `<cwd>/my/langXX.js` 替代 `echarts/lib/lang.js` 文件。
 + `--sourcemap`：是否输出 source map，以便于调试。
-+ `--format`：输出的格式，可选 `'umb'`（默认）、`'amd'`、`'iife'`、`'cjs'`、`'es'`。
++ `--format`：输出的格式，可选 `'umd'`（默认）、`'amd'`、`'iife'`、`'cjs'`、`'es'`。
 
 既然我们想自定义构建一个只含有饼图的 echarts 文件，我们需要创建一个入口文件，可以命名为 `myProject/echarts.custom.js`，文件里会引用所需要的 echarts 模块：
 
