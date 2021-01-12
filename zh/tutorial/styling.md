@@ -1,7 +1,7 @@
 {{ target: styling }}
 # 个性化图表的样式
 
-Apache ECharts (incubating)<sup>TM</sup> 提供了丰富的自定义配置选项，并且能够从全局、系列、数据三个层级去设置数据图形的样式。下面我们来看如何使用 ECharts 实现下面这个南丁格尔图：
+Apache ECharts<sup>TM</sup> 提供了丰富的自定义配置选项，并且能够从全局、系列、数据三个层级去设置数据图形的样式。下面我们来看如何使用 ECharts 实现下面这个南丁格尔图：
 
 ~[500x400](${galleryViewPath}doc-example/tutorial-styling-step5&edit=1&reset=1)
 

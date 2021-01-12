@@ -4,7 +4,7 @@
 
 ## Asynchronous Loading
 
-Data in [Get started](~getting-started) is directly filled in `setOption` after initialization, but in some cases, data may be filled after asynchronous loading. Data updating asynchronously in Apache ECharts (incubating)<sup>TM</sup> is very easy. After initialization, you can pass in data and configuration item through `setOption` after data obtained through  jQuery and other tools at any time.
+Data in [Get started](~getting-started) is directly filled in `setOption` after initialization, but in some cases, data may be filled after asynchronous loading. Data updating asynchronously in Apache ECharts<sup>TM</sup> is very easy. After initialization, you can pass in data and configuration item through `setOption` after data obtained through  jQuery and other tools at any time.
 
 ```js
 var myChart = echarts.init(document.getElementById('main'));

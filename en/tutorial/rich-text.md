@@ -3,7 +3,7 @@
 
 # Rich Text
 
-Rich text can be used in Apache ECharts (incubating)<sup>TM</sup> labels of series, axis or other components. For example:
+Rich text can be used in Apache ECharts<sup>TM</sup> labels of series, axis or other components. For example:
 
 ~[800x400](${galleryViewPath}pie-rich-text&edit=1&reset=1)
 

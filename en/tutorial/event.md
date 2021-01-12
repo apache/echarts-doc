@@ -2,7 +2,7 @@
 
 # Events and Actions in ECharts
 
-User interactions trigger corresponding events in Apache ECharts (incubating)<sup>TM</sup>. Developers can listen to these events and handle accordingly through callback functions, e.g., redirecting to an address, popping out a dialog box, or drilling down data and so on.
+User interactions trigger corresponding events in Apache ECharts<sup>TM</sup>. Developers can listen to these events and handle accordingly through callback functions, e.g., redirecting to an address, popping out a dialog box, or drilling down data and so on.
 
 Binding events in ECharts 3 is though [on](api.html#EChartsInstance.on) method, same as in ECharts 2. But event names are much simpler than it is in 2. Event names in ECharts 3 are the same as DOM event names, in lowercases. Below is an example of binding clicking operation.
 

@@ -3,9 +3,9 @@
 
 ## 获取 ECharts
 
-你可以通过以下几种方式获取 Apache ECharts (incubating)<sup>TM</sup>。
+你可以通过以下几种方式获取 Apache ECharts<sup>TM</sup>。
 
-* 从 [Apache ECharts (incubating) 官网下载界面](${websitePath}/zh/download.html) 获取官方源码包后构建。
+* 从 [Apache ECharts 官网下载界面](${websitePath}/zh/download.html) 获取官方源码包后构建。
 
 * 在 ECharts 的 [GitHub](https://github.com/apache/incubator-echarts/releases) 获取。
 

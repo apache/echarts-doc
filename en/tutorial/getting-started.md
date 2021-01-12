@@ -3,9 +3,9 @@
 
 ## Installing ECharts
 
-First, install Apache ECharts (incubating)<sup>TM</sup> using one of the following methods:
+First, install Apache ECharts<sup>TM</sup> using one of the following methods:
 
-* Download official source release from [Apache ECharts (incubating) website](${websitePath}/en/download.html). Then [build](https://github.com/apache/incubator-echarts#build) from the source release.
+* Download official source release from [Apache ECharts website](${websitePath}/en/download.html). Then [build](https://github.com/apache/incubator-echarts#build) from the source release.
 
 * Download from [GitHub](https://github.com/apache/incubator-echarts/releases)
 

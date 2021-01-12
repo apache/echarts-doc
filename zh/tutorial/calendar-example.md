@@ -2,7 +2,7 @@
 
 # 小例子：实现日历图
 
-在 Apache ECharts (incubating)<sup>TM</sup> 中，我们新增了日历坐标系，如何快速写出一个日历图呢？
+在 Apache ECharts<sup>TM</sup> 中，我们新增了日历坐标系，如何快速写出一个日历图呢？
 ~[800x300](${galleryViewPath}calendar-simple&edit=1&reset=1)
 
 通过以下三个步骤即可实现上述效果：

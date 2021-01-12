@@ -2,7 +2,7 @@
 
 # 使用 transform 进行数据转换
 
-Apache ECharts (incubating)<sup>TM</sup> 5 开始支持了“数据转换”（ data transform ）功能。在 echarts 中，“数据转换” 这个词指的是，给定一个已有的“数据集”（[dataset](option.html#dataset)）和一个“转换方法”（[transform](option.html#dataset.transform)），echarts 能生成一个新的“数据集”，然后可以使用这个新的“数据集”绘制图表。这些工作都可以声明式地完成。
+Apache ECharts<sup>TM</sup> 5 开始支持了“数据转换”（ data transform ）功能。在 echarts 中，“数据转换” 这个词指的是，给定一个已有的“数据集”（[dataset](option.html#dataset)）和一个“转换方法”（[transform](option.html#dataset.transform)），echarts 能生成一个新的“数据集”，然后可以使用这个新的“数据集”绘制图表。这些工作都可以声明式地完成。
 
 抽象地来说，数据转换是这样一种公式：`outData = f(inputData)`。`f` 是转换方法，例如：`filter`、`sort`、`regression`、`boxplot`、`cluster`、`aggregate`(todo) 等等。有了数据转换能力后，我们就至少可以做到这些事情：
 + 把数据分成多份用不同的饼图展现。

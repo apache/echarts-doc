@@ -2,7 +2,7 @@
 
 # Overview of Style Customization
 
-This article provides an overview of the different approaches about Apache ECharts (incubating)<sup>TM</sup> style customization. For example, how to config the color, size, shadow of the graphic elements and labels.
+This article provides an overview of the different approaches about Apache ECharts<sup>TM</sup> style customization. For example, how to config the color, size, shadow of the graphic elements and labels.
 
 > The term "style" may not follow the convention of data visualization, but we use it in this article because it is popular and easy to understand.
 

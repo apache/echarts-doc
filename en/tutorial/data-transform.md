@@ -2,7 +2,7 @@
 
 # Data Transform
 
-`Data transform` has been supported since Apache ECharts (incubating)<sup>TM</sup> 5. In echarts, the term `data transform` means that generate new data from user provided source data and transform functions. both This feature is enable users to process data in declarative way, and provides users some common "transform functions" to make that kind of tasks "out-of-the-box". (For consistency in the context, the noun form of the word we keep using the "transform" rather than "transformation").
+`Data transform` has been supported since Apache ECharts<sup>TM</sup> 5. In echarts, the term `data transform` means that generate new data from user provided source data and transform functions. both This feature is enable users to process data in declarative way, and provides users some common "transform functions" to make that kind of tasks "out-of-the-box". (For consistency in the context, the noun form of the word we keep using the "transform" rather than "transformation").
 
 The abstract formula of data transform is: `outData = f(inputData)`, where the transform function `f` can be like `filter`, `sort`, `regression`, `boxplot`, `cluster`, `aggregate`(todo) ...
 With the help of those transform methods, users can be implements the features like:

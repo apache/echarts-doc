@@ -2,7 +2,7 @@
 
 # ECharts 基础概念概览
 
-本文介绍 Apache ECharts (incubating)<sup>TM</sup> 最基本的名词和概念。
+本文介绍 Apache ECharts<sup>TM</sup> 最基本的名词和概念。
 
 ## echarts 实例
 

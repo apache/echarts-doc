@@ -4,7 +4,7 @@
 
 [custom series](option.html#series-custom) is a type of series, which enable develpers to customize graphic elements rendering and generate new types of chart.
 
-Why does Apache ECharts (incubating)<sup>TM</sup> supports `custom series`?
+Why does Apache ECharts<sup>TM</sup> supports `custom series`?
 
 There are endless chart types in the world of data visualization, which are not enumerable. Thus only most common used chart types are built-in supported in echarts. For other chart types, it is necessary to provide an approach to make new types of chart for developers. This approach should be as simple as possible, which had better not to bothered developers with some details of implementation, such as creating and deleting graphic elements, transition animation, tooltip supporting, working with [dataZoom](option.html#dataZoom) or [visualMap](option.html#visualMap). Having considered the factors above, a solution [custom series](option.html#series-custom) is published.
 

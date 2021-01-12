@@ -3,7 +3,7 @@
 
 # Dataset
 
-`dataset` component is published since Apache ECharts (incubating)<sup>TM</sup> 4. `dataset` brings convenience in data management separated with styles and enables data reuse by different series. More importantly, it enables data encoding from data to visual, which brings convenience in some scenarios.
+`dataset` component is published since Apache ECharts<sup>TM</sup> 4. `dataset` brings convenience in data management separated with styles and enables data reuse by different series. More importantly, it enables data encoding from data to visual, which brings convenience in some scenarios.
 
 Before ECharts 4, data was only able to declared in each series, for example:
 
@@ -513,7 +513,7 @@ var option = {
 
 ## Data transform
 
-`Data transform` has been supported since Apache ECharts (incubating)<sup>TM</sup> 5. In echarts, the term `data transform` means that generate new data from user provided source data and transform functions. This feature is enable users to process data in declarative way, and provides users some common "transform functions" to make that kind of tasks "out-of-the-box".
+`Data transform` has been supported since Apache ECharts<sup>TM</sup> 5. In echarts, the term `data transform` means that generate new data from user provided source data and transform functions. This feature is enable users to process data in declarative way, and provides users some common "transform functions" to make that kind of tasks "out-of-the-box".
 
 See the details of data transform in this [doc](~data-transform).
 

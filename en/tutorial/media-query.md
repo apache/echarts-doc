@@ -3,7 +3,7 @@
 
 # Responsive Mobile-End
 
-Apache ECharts (incubating)<sup>TM</sup> works in DOM nodes with user defined width and height. ECharts *component* and *series* are both in this DOM node, whose location can be assigned by user seperately. Inner components of charts are not suitable for implementing DOM flow layout. Instead, we use a simpler and more understandable layout similar to absolute layout. But sometimes when container is of extreme size, this method cannot avoid component overlapping automatically, especially on small screens on mobile-end.
+Apache ECharts<sup>TM</sup> works in DOM nodes with user defined width and height. ECharts *component* and *series* are both in this DOM node, whose location can be assigned by user seperately. Inner components of charts are not suitable for implementing DOM flow layout. Instead, we use a simpler and more understandable layout similar to absolute layout. But sometimes when container is of extreme size, this method cannot avoid component overlapping automatically, especially on small screens on mobile-end.
 
 Besides, sometimes one chart may need to be displayed on both PC and mobile-end, which involves the ability of ECharts inner components to be responsive with different container sizes.
 

@@ -3,7 +3,7 @@
 
 # 服务端渲染
 
-Apache ECharts (incubating)<sup>TM</sup> 可以在服务端进行渲染。例如 [官方示例](https://echarts.apache.org/examples/zh/index.html) 里的一个个小截图，就是在服务端预生成出来的。
+Apache ECharts<sup>TM</sup> 可以在服务端进行渲染。例如 [官方示例](https://echarts.apache.org/examples/zh/index.html) 里的一个个小截图，就是在服务端预生成出来的。
 
 服务端渲染可以使用流行的 headless 环境，例如 [puppeteer](https://github.com/GoogleChrome/puppeteer)、[headless chrome](https://chromium.googlesource.com/chromium/src/+/lkgr/headless/README.md)、[node-canvas](https://github.com/Automattic/node-canvas)、[jsdom](https://github.com/jsdom/jsdom)、[PhantomJS](http://phantomjs.org/) 等。
 

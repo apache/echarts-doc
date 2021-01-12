@@ -2,7 +2,7 @@
 
 # An Example: Implement Dragging
 
-This is a tiny example, introducing how to implement dragging of graphic elements in Apache ECharts (incubating)<sup>TM</sup>. From this example, we will see how to make an application with rich intractivity based on echarts API.
+This is a tiny example, introducing how to implement dragging of graphic elements in Apache ECharts<sup>TM</sup>. From this example, we will see how to make an application with rich intractivity based on echarts API.
 
 ~[600x400](${galleryViewPath}line-draggable&edit=1&reset=1)
 

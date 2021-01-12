@@ -2,7 +2,7 @@
 
 # ECharts Basic Concepts Overview
 
-This chapter describes some of the common concepts and terms of Apache ECharts (incubating)<sup>TM</sup>.
+This chapter describes some of the common concepts and terms of Apache ECharts<sup>TM</sup>.
 
 
 ## ECharts instance

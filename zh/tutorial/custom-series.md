@@ -4,7 +4,7 @@
 
 [自定义系列（custom series）](option.html#series-custom)，是一种系列的类型。它把绘制图形元素这一步留给开发者去做，从而开发者能在坐标系中自由绘制出自己需要的图表。
 
-Apache ECharts (incubating)<sup>TM</sup> 为什么会要支持 `自定义系列` 呢？
+Apache ECharts<sup>TM</sup> 为什么会要支持 `自定义系列` 呢？
 
 ECharts 内置支持的图表类型是最常见的图表类型，但是图表类型是难于穷举的，有很多小众的需求 echarts 并不能内置的支持。那么就需要提供一种方式来让开发者自己扩展。另一方面，所提供的扩展方式要尽可能得简单，例如图形元素创建和释放、过渡动画、tooltip、[数据区域缩放（dataZoom）](option.html#dataZoom)、[视觉映射（visualMap）](option.html#visualMap)等功能，尽量在 ECharts 中内置得处理，使开发者不必纠结于这些细节。综上考虑形成了 [自定义系列（custom series）](option.html#series-custom)。
 
