@@ -1,3 +1,20 @@
+## v5.0.1
+<div class="time">2021-01-11</div>
+
++ [Feature] 全新的最小引入接口，优化导出的 TypeScript 类型。 [#13890](https://github.com/apache/incubator-echarts/issues/13890) ([pissang](https://github.com/pissang))
++ [Fix] [tooltip] 修复 markPoint 上 tooltip 显示错误的 bug [#13992](https://github.com/apache/incubator-echarts/issues/13992) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [loading] 修复加载动画的居中对齐，修复 `fontSize` 无法生效。 添加 `fontFamily`, `fontWeight`, `fontStyle` 等字体配置 [#13972](https://github.com/apache/incubator-echarts/issues/13972) ([yufeng04](https://github.com/yufeng04))
++ [Fix] [gauge] 修复仪表盘指针在未设置 icon 的时候 `pointer.offsetCenter` 无法工作的 bug。 [#13966](https://github.com/apache/incubator-echarts/issues/13966) ([yufeng04](https://github.com/yufeng04))
++ [Fix] [dataset] 修复从 dataset 自动生成图例有误的 bug。 [#13930](https://github.com/apache/incubator-echarts/issues/13930) ([100pah](https://github.com/100pah))
++ [Fix] [handler] 修复偶现的移出画布后 tooltip 无法消失的 bug。  [#693](https://github.com/ecomfe/zrender/issues/693) ([pissang](https://github.com/pissang))
++ [Fix] [tooltip] 修复 tooltip 中文本颜色无法被修改的 bug。 [#13848](https://github.com/apache/incubator-echarts/issues/13848) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [tooltip] 修复 tooltip 边框颜色无法被修改的 bug。 [#13771](https://github.com/apache/incubator-echarts/issues/13771) ([susiwen8](https://github.com/susiwen8))
++ [fix] [axis] 修复类目轴 `max` 设置得比数据长度要大的时候会产生错误的 bug。 [#13733](https://github.com/apache/incubator-echarts/issues/13733) ([Ovilia](https://github.com/Ovilia))
++ [fix] [svg] 修复 IE 下可能无法导出 SVG 图形的 bug. [#13732](https://github.com/apache/incubator-echarts/issues/13732) ([plainheart](https://github.com/plainheart))
++ [Fix] [bar] 优化动态排序柱状图的效果。 [#13994](https://github.com/apache/incubator-echarts/issues/13994) ([100pah](https://github.com/100pah))
++ [Fix] 修复某些非浏览器环境下可能会报错的 bug。 [#13984](https://github.com/apache/incubator-echarts/issues/13984) ([pissang](https://github.com/pissang))
+
+
 ## v5.0.0
 <div class="time">2020-12-03</div>
 

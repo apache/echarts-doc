@@ -4,7 +4,7 @@
 + [Feature] New minimal import API. Improved exported option types. [#13890](https://github.com/apache/incubator-echarts/issues/13890) ([pissang](https://github.com/pissang))
 + [Fix] [tooltip] Fix tooltip of markPoint is wrong [#13992](https://github.com/apache/incubator-echarts/issues/13992) ([susiwen8](https://github.com/susiwen8))
 + [Fix] [loading] Fix `showLoading` center align and `fontSize` not work. Add `fontFamily`, `fontWeight`, `fontStyle` [#13972](https://github.com/apache/incubator-echarts/issues/13972) ([yufeng04](https://github.com/yufeng04))
-+ [Fix] [gauge] pointer.offsetCenter doesn't work without icon #13962 [#13966](https://github.com/apache/incubator-echarts/issues/13966) ([yufeng04](https://github.com/yufeng04))
++ [Fix] [gauge] `pointer.offsetCenter` doesn't work without icon [#13966](https://github.com/apache/incubator-echarts/issues/13966) ([yufeng04](https://github.com/yufeng04))
 + [Fix] [dataset] Fix automatic legend from dataset is wrong. [#13930](https://github.com/apache/incubator-echarts/issues/13930) ([100pah](https://github.com/100pah))
 + [Fix] [handler] Fix tooltip can't be hidden when moving out of the viewport occasionally.  [#693](https://github.com/ecomfe/zrender/issues/693) ([pissang](https://github.com/pissang))
 + [Fix] [tooltip] Fix text color can't be changed in tooltip. [#13848](https://github.com/apache/incubator-echarts/issues/13848) ([susiwen8](https://github.com/susiwen8))
