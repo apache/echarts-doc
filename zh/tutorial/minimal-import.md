@@ -1,7 +1,7 @@
 
-{{target: npm-webpack}}
+{{target: minimal-import}}
 
-# 在打包环境中使用 Apache ECharts<sup>TM</sup>
+# 在打包环境中使用 ECharts
 
 假如你的开发环境使用了`npm`或者`yarn`等包管理工具，并且使用 Webpack 等打包工具进行构建，本文将会介绍如何引入 Apache ECharts<sup>TM</sup> 并通过 treeshaking 只打包需要的模块。
 

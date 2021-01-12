@@ -1,7 +1,7 @@
 
-{{target: npm-webpack}}
+{{target: minimal-import}}
 
-# Use Apache ECharts<sup>TM</sup> with bundler and NPM
+# Use ECharts with bundler and NPM
 
 If your development environment uses a package management tool like `npm` or `yarn` and builds with a packaging tool like Webpack, this article will describe how to get a minimal bundle of Apache ECharts<sup>TM</sup> via treeshaking.
 

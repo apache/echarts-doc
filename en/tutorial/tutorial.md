@@ -1,8 +1,7 @@
 {{ target: tutorial }}
 
 {{ import: getting-started }}
-{{ import: custom-build }}
-{{ import: npm-webpack }}
+{{ import: minimal-import }}
 {{ import: basic-concepts-overview }}
 {{ import: styling }}
 {{ import: style-overview }}
