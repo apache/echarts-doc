@@ -319,7 +319,7 @@ backgroundColor: {
 
 注意，如果不定义 `rich` 属性，则不能指定 `width` 和 `height`。
 
-#${prefix} textBorderColor(Color) = 'transparent'
+#${prefix} textBorderColor(Color)
 
 <ExampleUIControlColor />
 
@@ -329,7 +329,7 @@ backgroundColor: {
 {{ use: partial-text-style-auto-color-desc() }}
 {{ /if }}
 
-#${prefix} textBorderWidth(number) = 0
+#${prefix} textBorderWidth(number)
 
 <ExampleUIControlNumber min="0" step="0.5" />
 

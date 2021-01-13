@@ -319,7 +319,7 @@ Notice, `width` and `height` specifies the width and height of the content, with
 
 Notice, `width` and `height` only work when `rich` specified.
 
-#${prefix} textBorderColor(Color) = 'transparent'
+#${prefix} textBorderColor(Color)
 
 <ExampleUIControlColor />
 
@@ -329,7 +329,7 @@ Storke color of the text.
 {{ use: partial-text-style-auto-color-desc() }}
 {{ /if }}
 
-#${prefix} textBorderWidth(number) = 0
+#${prefix} textBorderWidth(number)
 
 <ExampleUIControlNumber min="0" step="0.5" />
 
