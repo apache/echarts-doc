@@ -36,12 +36,10 @@ const option = {
             show: false
         }
     },
-    dataZoom: [{
+    dataZoom: {
         start: 80,
         type: 'inside'
-    }, {
-        start: 80
-    }],
+    },
     series: {
         name: 'Beijing AQI',
         type: 'bar',
