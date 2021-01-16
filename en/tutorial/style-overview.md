@@ -38,7 +38,7 @@ or
 var chart = echarts.init(dom, 'dark');
 ```
 
-Other themes are not included in ECharts package by default, and need to load them ourselves if we want to use them. Themes can be visited and downloaded in [Theme Builder](https://www.echartsjs.com/theme-builder/). Theme can also be created or edited in it. The downloaded theme can be used as follows:
+Other themes are not included in ECharts package by default, and need to load them ourselves if we want to use them. Themes can be visited and downloaded in [Theme Builder](https://echarts.apache.org/en/theme-builder.html). Theme can also be created or edited in it. The downloaded theme can be used as follows:
 
 If a theme is downloaded as a JSON file, we should register it by ourselves, for example:
 ```js

@@ -1,3 +1,20 @@
+## v5.0.1
+<div class="time">2021-01-11</div>
+
++ [Feature] New minimal import API. Improved exported option types. [#13890](https://github.com/apache/incubator-echarts/issues/13890) ([pissang](https://github.com/pissang))
++ [Fix] [tooltip] Fix tooltip of markPoint is wrong [#13992](https://github.com/apache/incubator-echarts/issues/13992) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [loading] Fix `showLoading` center align and `fontSize` not work. Add `fontFamily`, `fontWeight`, `fontStyle` [#13972](https://github.com/apache/incubator-echarts/issues/13972) ([yufeng04](https://github.com/yufeng04))
++ [Fix] [gauge] `pointer.offsetCenter` doesn't work without icon [#13966](https://github.com/apache/incubator-echarts/issues/13966) ([yufeng04](https://github.com/yufeng04))
++ [Fix] [dataset] Fix automatic legend from dataset is wrong. [#13930](https://github.com/apache/incubator-echarts/issues/13930) ([100pah](https://github.com/100pah))
++ [Fix] [handler] Fix tooltip can't be hidden when moving out of the viewport occasionally.  [#693](https://github.com/ecomfe/zrender/issues/693) ([pissang](https://github.com/pissang))
++ [Fix] [tooltip] Fix text color can't be changed in tooltip. [#13848](https://github.com/apache/incubator-echarts/issues/13848) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [tooltip] Fix borderColor can't be changed in tooltip. [#13771](https://github.com/apache/incubator-echarts/issues/13771) ([susiwen8](https://github.com/susiwen8))
++ [fix] [axis] Fix error when category axis max is greater than data length [#13733](https://github.com/apache/incubator-echarts/issues/13733) ([Ovilia](https://github.com/Ovilia))
++ [fix] [svg] Fix chart cannot be exported with SVG renderer in IE. [#13732](https://github.com/apache/incubator-echarts/issues/13732) ([plainheart](https://github.com/plainheart))
++ [Fix] [bar] Improvement and some fixes of bar race chart [#13994](https://github.com/apache/incubator-echarts/issues/13994) ([100pah](https://github.com/100pah))
++ [Fix] Fix unexpected global name usage, which may have error in other environments. [#13984](https://github.com/apache/incubator-echarts/issues/13984) ([pissang](https://github.com/pissang))
+
+
 ## v5.0.0
 <div class="time">2020-12-03</div>
 

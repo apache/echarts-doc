@@ -1,4 +1,6 @@
-# ECharts Documentation
+# About
+
+This project is part of the source of [The Apache ECharts (incubating) Official Website](https://echarts.apache.org/). See [incubator-echarts-website](https://github.com/apache/incubator-echarts-website) for more details of the building process.
 
 ## Online Docs
 

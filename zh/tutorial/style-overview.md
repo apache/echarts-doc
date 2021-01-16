@@ -33,7 +33,7 @@ var chart = echarts.init(dom, 'light');
 var chart = echarts.init(dom, 'dark');
 ```
 
-其他的主题，没有内置在 ECharts 中，需要自己加载。这些主题可以在 [主题编辑器](https://www.echartsjs.com/theme-builder/) 里访问到。也可以使用这个主题编辑器，自己编辑主题。下载下来的主题可以这样使用：
+其他的主题，没有内置在 ECharts 中，需要自己加载。这些主题可以在 [主题编辑器](https://echarts.apache.org/zh/theme-builder.html) 里访问到。也可以使用这个主题编辑器，自己编辑主题。下载下来的主题可以这样使用：
 
 如果主题保存为 JSON 文件，那么可以自行加载和注册，例如：
 ```js

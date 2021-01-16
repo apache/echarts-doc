@@ -1,3 +1,20 @@
+## v5.0.1
+<div class="time">2021-01-11</div>
+
++ [Feature] 全新的最小引入接口，优化导出的 TypeScript 类型。 [#13890](https://github.com/apache/incubator-echarts/issues/13890) ([pissang](https://github.com/pissang))
++ [Fix] [tooltip] 修复 markPoint 上 tooltip 显示错误的 bug [#13992](https://github.com/apache/incubator-echarts/issues/13992) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [loading] 修复加载动画的居中对齐，修复 `fontSize` 无法生效。 添加 `fontFamily`, `fontWeight`, `fontStyle` 等字体配置 [#13972](https://github.com/apache/incubator-echarts/issues/13972) ([yufeng04](https://github.com/yufeng04))
++ [Fix] [gauge] 修复仪表盘指针在未设置 icon 的时候 `pointer.offsetCenter` 无法工作的 bug。 [#13966](https://github.com/apache/incubator-echarts/issues/13966) ([yufeng04](https://github.com/yufeng04))
++ [Fix] [dataset] 修复从 dataset 自动生成图例有误的 bug。 [#13930](https://github.com/apache/incubator-echarts/issues/13930) ([100pah](https://github.com/100pah))
++ [Fix] [handler] 修复偶现的移出画布后 tooltip 无法消失的 bug。  [#693](https://github.com/ecomfe/zrender/issues/693) ([pissang](https://github.com/pissang))
++ [Fix] [tooltip] 修复 tooltip 中文本颜色无法被修改的 bug。 [#13848](https://github.com/apache/incubator-echarts/issues/13848) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [tooltip] 修复 tooltip 边框颜色无法被修改的 bug。 [#13771](https://github.com/apache/incubator-echarts/issues/13771) ([susiwen8](https://github.com/susiwen8))
++ [fix] [axis] 修复类目轴 `max` 设置得比数据长度要大的时候会产生错误的 bug。 [#13733](https://github.com/apache/incubator-echarts/issues/13733) ([Ovilia](https://github.com/Ovilia))
++ [fix] [svg] 修复 IE 下可能无法导出 SVG 图形的 bug. [#13732](https://github.com/apache/incubator-echarts/issues/13732) ([plainheart](https://github.com/plainheart))
++ [Fix] [bar] 优化动态排序柱状图的效果。 [#13994](https://github.com/apache/incubator-echarts/issues/13994) ([100pah](https://github.com/100pah))
++ [Fix] 修复某些非浏览器环境下可能会报错的 bug。 [#13984](https://github.com/apache/incubator-echarts/issues/13984) ([pissang](https://github.com/pissang))
+
+
 ## v5.0.0
 <div class="time">2020-12-03</div>
 
@@ -8,8 +25,8 @@
 + [Feature] 状态增强：
     + 支持了状态切换时的过渡动画。这能提供更好的视觉效果，尤其比如当常见的部分图形元素因为被“高亮/淡出”时。
     + 对于所有系列，新增了状态 `select` 和 `blur`。它们的配置，同我们已有的 `emphasis` 状态一样。`blur` 状态一般可以用于这样的场景：当部分图形元素被关注时，其他图形元素的淡出样式设置。`select` 状态一般可用于鼠标、触摸或 API 选中图形元素而导致样式改变的场景。
-    + 全系列支持了淡出效果，当某一部分图形元素被聚焦时（通过鼠标、触摸或 API），其他图形元素淡出，以突出被关注的图形元素。可看这些例子： [bar-label-rotation](https://echarts.apache.org/next/examples/en/editor.html?c=bar-label-rotation)、[bar-polar-stack](https://echarts.apache.org/next/examples/en/editor.html?c=bar-polar-stack)、[bar-stack](https://echarts.apache.org/next/examples/en/editor.html?c=bar-stack)、[area-stack](https://echarts.apache.org/next/examples/en/editor.html?c=area-stack)、[dataset-link](https://echarts.apache.org/next/examples/en/editor.html?c=dataset-link)、[scatter-weight](https://echarts.apache.org/next/examples/en/editor.html?c=scatter-weight)、[tree-basic](https://echarts.apache.org/next/examples/en/editor.html?c=tree-basic)。
-    + 原先在不同系列中，形式不一样但是功能类似的配置项：`highlightPolicy`、`focusNodeAdjacency`、`hoverOffset`，被统一为：`focus`、`blurScope` 和 `scale`。参见示例 [sankey-energy](https://echarts.apache.org/next/examples/en/editor.html?c=sankey-energy)、[graph](https://echarts.apache.org/next/examples/en/editor.html?c=graph)、[sunburst-drink](https://echarts.apache.org/next/examples/en/editor.html?c=sunburst-drink)。
+    + 全系列支持了淡出效果，当某一部分图形元素被聚焦时（通过鼠标、触摸或 API），其他图形元素淡出，以突出被关注的图形元素。可看这些例子： [bar-label-rotation](https://echarts.apache.org/next/examples/zh/editor.html?c=bar-label-rotation)、[bar-polar-stack](https://echarts.apache.org/next/examples/zh/editor.html?c=bar-polar-stack)、[bar-stack](https://echarts.apache.org/next/examples/zh/editor.html?c=bar-stack)、[area-stack](https://echarts.apache.org/next/examples/zh/editor.html?c=area-stack)、[dataset-link](https://echarts.apache.org/next/examples/zh/editor.html?c=dataset-link)、[scatter-weight](https://echarts.apache.org/next/examples/zh/editor.html?c=scatter-weight)、[tree-basic](https://echarts.apache.org/next/examples/zh/editor.html?c=tree-basic)。
+    + 原先在不同系列中，形式不一样但是功能类似的配置项：`highlightPolicy`、`focusNodeAdjacency`、`hoverOffset`，被统一为：`focus`、`blurScope` 和 `scale`。参见示例 [sankey-energy](https://echarts.apache.org/next/examples/zh/editor.html?c=sankey-energy)、[graph](https://echarts.apache.org/next/examples/zh/editor.html?c=graph)、[sunburst-drink](https://echarts.apache.org/next/examples/zh/editor.html?c=sunburst-drink)。
     + 更多细节可见 [#12925](https://github.com/apache/incubator-echarts/pull/12925) 和 [#12911](https://github.com/apache/incubator-echarts/pull/12911)。
 + [Feature] 标签增强：
     + 采用一些策略优化了标签显示效果：
@@ -17,33 +34,33 @@
         + 在饼图（pie chart）上，优化了标签的排布算法，尤其针对标签非常多的时候，避免重叠。详情见 [#6050](https://github.com/apache/incubator-echarts/issues/6050)。
         + 针对文本超出（overflow）区域的场景，提供了多种配置策略。
     + 提供一组配置项 `labelLayout`，能够在标签由图表初始定位后，调整其布局。通过 `labelLayout` 中的选项，开发者可以：
-        + 避免标签重叠（参见[scatter-label-align-right](https://echarts.apache.org/next/examples/en/editor.html?c=graph-label-overlap)）。
-        + 实现特殊的标签对齐方式，以及调整标签位置等。参见示例 [pie-alignTo](https://echarts.apache.org/next/examples/en/editor.html?c=pie-alignTo)、[pie-label-line-adjust](https://echarts.apache.org/next/examples/en/editor.html?c=pie-labelLine-adjust)、[pie-label-distanceToLabelLine](https://echarts.apache.org/next/examples/en/editor.html?c=doc-example/pie-label-distanceToLabelLine)、[pie-label-bleedMargin](https://echarts.apache.org/next/examples/en/editor.html?c=doc-example/pie-label-bleedMargin)。
+        + 避免标签重叠（参见 [scatter-label-align-right](https://echarts.apache.org/next/examples/zh/editor.html?c=graph-label-overlap)）。
+        + 实现特殊的标签对齐方式，以及调整标签位置等。参见示例 [pie-alignTo](https://echarts.apache.org/next/examples/zh/editor.html?c=pie-alignTo)、[pie-label-line-adjust](https://echarts.apache.org/next/examples/zh/editor.html?c=pie-labelLine-adjust)、[pie-label-distanceToLabelLine](https://echarts.apache.org/next/examples/zh/editor.html?c=doc-example/pie-label-distanceToLabelLine)、[pie-label-bleedMargin](https://echarts.apache.org/next/examples/zh/editor.html?c=doc-example/pie-label-bleedMargin)。
         + 支持标签拖动。
-    + 在所有系列中都支持 `labelLine` 配置。当标签不得不离图形元素比较远时，`labelLine` 能够视觉关联图形元素和其标签。参见示例 [scatter-label-align-right](https://echarts.apache.org/next/examples/en/editor.html?c=scatter-label-align-right)、[scatter-label-align-top](https://echarts.apache.org/next/examples/en/editor.html?c=scatter-label-align-top)。更多详情请见 [#11534](https://github.com/apache/incubator-echarts/issues/11534)、[#12971](https://github.com/apache/incubator-echarts/issues/12971)。
+    + 在所有系列中都支持 `labelLine` 配置。当标签不得不离图形元素比较远时，`labelLine` 能够视觉关联图形元素和其标签。参见示例 [scatter-label-align-right](https://echarts.apache.org/next/examples/zh/editor.html?c=scatter-label-align-right)、[scatter-label-align-top](https://echarts.apache.org/next/examples/zh/editor.html?c=scatter-label-align-top)。更多详情请见 [#11534](https://github.com/apache/incubator-echarts/issues/11534)、[#12971](https://github.com/apache/incubator-echarts/issues/12971)。
     + 在折线图中支持 `series.endLabel`。这样标签可以显示在折线的一端。比较清晰得指示这条折线的含义。
     + 支持标签文本动画，也就是，标签文本数字变化时的过渡动画。通过 `series.label.valueAnimation`, `series.endLabel.valueAnimation` 可以开关它。其他细节参见 [#13246](https://github.com/apache/incubator-echarts/pull/13246) 和 [#13045](https://github.com/apache/incubator-echarts/pull/13045)。
     + 更多详情请参见 [#12911](https://github.com/apache/incubator-echarts/pull/12911)。
-+ [Feature] 支持柱状图的动态排序。其开关是 `series.realtimeSort`。参见示例 [bar-race](https://echarts.apache.org/next/examples/en/editor.html?c=bar-race)，以及原始的 PR [#12484](https://github.com/apache/incubator-echarts/pull/12484)。
++ [Feature] 支持柱状图的动态排序。其开关是 `series.realtimeSort`。参见示例 [bar-race](https://echarts.apache.org/next/examples/zh/editor.html?c=bar-race)，以及原始的 PR [#12484](https://github.com/apache/incubator-echarts/pull/12484)。
 + [Feature] 支持数据转换插件。
     + 数据转换是一套新的配置和API，以声明的方式，实现基于 `dataset` 的数据转换。内置或第三方的数据变换器可以作为插件来提供各种转换算法。开发者可以在 `option` 中配置这些转换器。
-    + 参见示例 [data-transform-filter](https://echarts.apache.org/next/examples/en/editor.html?c=data-transform-filter)、[data-transform-sort-bar](https://echarts.apache.org/next/examples/en/editor.html?c=data-transform-sort-bar)、[data-transform-multiple-pie](https://echarts.apache.org/next/examples/en/editor.html?c=data-transform-multiple-pie)、[doc-example/data-transform-multiple-sort-bar](https://echarts.apache.org/next/examples/en/editor.html?c=doc-example/data-transform-multiple-sort-bar)、[boxplot-light-velocity](https://echarts.apache.org/next/examples/en/editor.html?c=boxplot-light-velocity)、[bar-histogram](https://echarts.apache.org/next/examples/en/editor.html?c=bar-histogram)、[scatter-clustering](https://echarts.apache.org/next/examples/en/editor.html?c=scatter-clustering)、[scatter-exponential-regression](https://echarts.apache.org/next/examples/en/editor.html?c=scatter-exponential-regression)、[scatter-linear-regression](https://echarts.apache.org/next/examples/en/editor.html?c=scatter-linear-regression)、[scatter-logarithmic-regression](https://echarts.apache.org/next/examples/en/editor.html?c=scatter-logarithmic-regression)、[scatter-polynomial-regression](https://echarts.apache.org/next/examples/en/editor.html?c=scatter-polynomial-regression)。其他细节见 [#13065](https://github.com/apache/incubator-echarts/pull/13065)、[#13127](https://github.com/apache/incubator-echarts/pull/13127)。
+    + 参见示例 [data-transform-filter](https://echarts.apache.org/next/examples/zh/editor.html?c=data-transform-filter)、[data-transform-sort-bar](https://echarts.apache.org/next/examples/zh/editor.html?c=data-transform-sort-bar)、[data-transform-multiple-pie](https://echarts.apache.org/next/examples/zh/editor.html?c=data-transform-multiple-pie)、[doc-example/data-transform-multiple-sort-bar](https://echarts.apache.org/next/examples/zh/editor.html?c=doc-example/data-transform-multiple-sort-bar)、[boxplot-light-velocity](https://echarts.apache.org/next/examples/zh/editor.html?c=boxplot-light-velocity)、[bar-histogram](https://echarts.apache.org/next/examples/zh/editor.html?c=bar-histogram)、[scatter-clustering](https://echarts.apache.org/next/examples/zh/editor.html?c=scatter-clustering)、[scatter-exponential-regression](https://echarts.apache.org/next/examples/zh/editor.html?c=scatter-exponential-regression)、[scatter-linear-regression](https://echarts.apache.org/next/examples/zh/editor.html?c=scatter-linear-regression)、[scatter-logarithmic-regression](https://echarts.apache.org/next/examples/zh/editor.html?c=scatter-logarithmic-regression)、[scatter-polynomial-regression](https://echarts.apache.org/next/examples/zh/editor.html?c=scatter-polynomial-regression)。其他细节见 [#13065](https://github.com/apache/incubator-echarts/pull/13065)、[#13127](https://github.com/apache/incubator-echarts/pull/13127)。
 + [Feature] 时间轴标签和刻度排列优化。
     + 查看更多细节在 [#12859](https://github.com/apache/incubator-echarts/pull/12859)。
 + [Feature] 支持贴画纹理（decal）。
-    + 贴画纹理提供了一种新的视觉类型，它不仅增强了无障碍访问（aria)场景，还提供了颜色以外的视觉编码方式，来区分数据。
+    + 贴画纹理提供了一种新的视觉类型，它不仅增强了无障碍访问（aria）场景，还提供了颜色以外的视觉编码方式，来区分数据。
     + 更多细节见 [#13304](https://github.com/apache/incubator-echarts/pull/13304)。
 + [Feature] 支持自定义系列的过渡动画。
-    + 通过设置变换相关属性、样式属性和形状属性的 `transition` 属性，可以自动执行过渡动画。参见 [custom-gauge](https://echarts.apache.org/next/examples/en/editor.html?c=custom-gauge)。
-    + 通过对元素定义设置属性`morph`，支持变形/合并/分离。参见示例 [custom-combine-separate-morph](https://echarts.apache.org/next/examples/en/editor.html?c=custom-combine-separate-morph)、[custom-one-to-one-morph](https://echarts.apache.org/next/examples/en/editor.html?c=custom-one-to-one-morph)、[custom-story-transition](https://echarts.apache.org/next/examples/en/editor.html?c=custom-story-transition)、[custom-spiral-race](https://echarts.apache.org/next/examples/en/editor.html?c=custom-spiral-race)。
-    + 通过回调 `during` 支持自定义过渡动画。参见示例 [custom-spiral-race](https://echarts.apache.org/next/examples/en/editor.html?c=custom-spiral-race)，并参见 [#12775](https://github.com/apache/incubator-echarts/pull/12775) 中的更多细节。
+    + 通过设置变换相关属性、样式属性和形状属性的 `transition` 属性，可以自动执行过渡动画。参见 [custom-gauge](https://echarts.apache.org/next/examples/zh/editor.html?c=custom-gauge)。
+    + 通过对元素定义设置属性`morph`，支持变形/合并/分离。参见示例 [custom-combine-separate-morph](https://echarts.apache.org/next/examples/zh/editor.html?c=custom-combine-separate-morph)、[custom-one-to-one-morph](https://echarts.apache.org/next/examples/zh/editor.html?c=custom-one-to-one-morph)、[custom-story-transition](https://echarts.apache.org/next/examples/zh/editor.html?c=custom-story-transition)、[custom-spiral-race](https://echarts.apache.org/next/examples/zh/editor.html?c=custom-spiral-race)。
+    + 通过回调 `during` 支持自定义过渡动画。参见示例 [custom-spiral-race](https://echarts.apache.org/next/examples/zh/editor.html?c=custom-spiral-race)，并参见 [#12775](https://github.com/apache/incubator-echarts/pull/12775) 中的更多细节。
     + 详见 [#12775](https://github.com/apache/incubator-echarts/pull/12775)、[#13468](https://github.com/apache/incubator-echarts/pull/13468)、[#13271](https://github.com/apache/incubator-echarts/pull/13271)。
 + [Feature] 提供了更强大的仪表。
-    + 请参见示例 [gauge-barometer](https://echarts.apache.org/next/examples/en/editor.html?c=gauge-barometer)、[gauge-clock](https://echarts.apache.org/next/examples/en/editor.html?c=gauge-clock)、[gauge-multi-title](https://echarts.apache.org/next/examples/en/editor.html?c=gauge-multi-title)、[gauge-progress](https://echarts.apache.org/next/examples/en/editor.html?c=gauge-progress)、[gauge-ring](https://echarts.apache.org/next/examples/en/editor.html?c=gauge-ring)、[gauge-grade](https://echarts.apache.org/next/examples/en/editor.html?c=gauge-grade)、[gauge-simple](https://echarts.apache.org/next/examples/en/editor.html?c=gauge-simple)、[gauge-temperature](https://echarts.apache.org/next/examples/en/editor.html?c=gauge-temperature)。
+    + 请参见示例 [gauge-barometer](https://echarts.apache.org/next/examples/zh/editor.html?c=gauge-barometer)、[gauge-clock](https://echarts.apache.org/next/examples/zh/editor.html?c=gauge-clock)、[gauge-multi-title](https://echarts.apache.org/next/examples/zh/editor.html?c=gauge-multi-title)、[gauge-progress](https://echarts.apache.org/next/examples/zh/editor.html?c=gauge-progress)、[gauge-ring](https://echarts.apache.org/next/examples/zh/editor.html?c=gauge-ring)、[gauge-grade](https://echarts.apache.org/next/examples/zh/editor.html?c=gauge-grade)、[gauge-simple](https://echarts.apache.org/next/examples/zh/editor.html?c=gauge-simple)、[gauge-temperature](https://echarts.apache.org/next/examples/zh/editor.html?c=gauge-temperature)。
     + 更多细节见 [#13416](https://github.com/apache/incubator-echarts/pull/13416)。
 + [Feature] 改进了默认的主题和交互方式。其中，为样式和交互，提供了一些新的设定选项。
     + tooltip 样式增强。参见 [#12947](https://github.com/apache/incubator-echarts/pull/12947)、[#13398](https://github.com/apache/incubator-echarts/pull/13398)、[#13242](https://github.com/apache/incubator-echarts/pull/13242)。
-    + 提供可配置的仪表盘样式。参见 [#12961](https://github.com/apache/incubator-echarts/pull/12961)。
+    + 为线和边框提供可配置的虚线样式。参见 [#12961](https://github.com/apache/incubator-echarts/pull/12961)。
     + 指针的样式增强。参见 [#13046](https://github.com/apache/incubator-echarts/pull/13046)。
     + DataZoom 同时支持刷选和拖拽。参见 [#13025](https://github.com/apache/incubator-echarts/pull/13025)。
     + 支持了 `darkMode`。参见 [12911](https://github.com/apache/incubator-echarts/pull/12911)。
@@ -55,12 +72,12 @@
     + 构建方式改进。参见 [#13038](https://github.com/apache/incubator-echarts/pull/13038)。
     + Japanese：[#13470](https://github.com/apache/incubator-echarts/pull/13470)。
     + German：[#13315](https://github.com/apache/incubator-echarts/pull/13315)。
-    + French：[#13056](): [#13056](https://github.com/apache/incubator-echarts/pull/13056)。
+    + French：[#13056](https://github.com/apache/incubator-echarts/pull/13056)。
     + FI/ES/TH：[#13055](https://github.com/apache/incubator-echarts/pull/13055)。
 + [Feature] 在饼图和旭日图上，支持圆角。
     + 参见 [#13390](https://github.com/apache/incubator-echarts/pull/13390) 和 [#13378](https://github.com/apache/incubator-echarts/pull/13378)。
 + [Feature] 增强 tooltip 的配置能力。
-    + 支持为 tooltip 添加 CSS 类。参见 [#13383](https://github.com/apache/incubator-echarts/pull/13383).支持在tooltip中添加CSS类。
+    + 支持为 tooltip 添加 CSS 类。参见 [#13383](https://github.com/apache/incubator-echarts/pull/13383)。
     + 支持在 tooltip formatter 中返回 DOM。参见 [#13469](https://github.com/apache/incubator-echarts/pull/13469)。
 + [Feature] 支持部分删除组件或替换组件（ replaceMerge ）。
     + 详情见 [#12987](https://github.com/apache/incubator-echarts/pull/12987)。
@@ -72,7 +89,7 @@
     + 其他：[#13339](https://github.com/apache/incubator-echarts/pull/13339)。
 + 其他功能、改进和问题修复。
     + [Feature] 改进了 `parseDate`。参见 [#13044](https://github.com/apache/incubator-echarts/pull/13044)。
-    + [Feature] 当线处于 emphasis 状态时，加租。参见 [#13013](https://github.com/apache/incubator-echarts/pull/13013)。
+    + [Feature] 当线处于 `emphasis` 状态时，加粗。参见 [#13013](https://github.com/apache/incubator-echarts/pull/13013)。
     + [Feature] 桑吉图 （`sankey`）支持了 `lineStyle: {color: 'gradient'}`。
     + [Feature] `markPoint.data.type` 和 `markArea.data.type` 支持了值 `'median'`。
     + [Feature] 在一些特定情况下，坐标轴支持了过滤数据。参见 [#12832](https://github.com/apache/incubator-echarts/pull/12832)。
@@ -92,14 +109,14 @@
     + `'echarts/lib/export.js'` 中声明的模块，不再默认挂载到 `'echarts/lib/echarts.js'` 中。如果上层应用之前使用了 `import * as echarts from 'echarts/lib/echarts'` 并使用了 `'echarts/lib/export.js'` 中的任何一个模块，请将代码改为 `import echarts from 'echarts/index.blank'`，在这里，`'echarts/lib/export.js'` 中的模块，才被默认挂载。
     + 如果上层应用之前引用了 `src/echarts.js`、`src/chart/*.js`、`src/component/*.js`，则不再能这么引用了。因为 `/src` 文件夹中的所有文件都被迁移为 `*.ts`。
     + 颠倒了 `visualMap` 和 `itemStyle`|`lineStyle`|`areaStyle` 的优先级。也就是说，以前，由`visualMap` 组件生成的视觉效果（即颜色、符号、符号大小等）具有最高优先级，将覆盖 `itemStyle`|`lineStyle`|`areaStyle` 中指定的相同视觉效果。这种设定带来了一些麻烦，比如给一些特定的数据项指定特定的样式时。从 v5.0 开始，`itemStyle`|`lineStyle`|`areaStyle` 中指定的视觉效果具有了最高优先级。
-    + 改变了 `rich.?.padding` 的行为。以前的 `rich.?.padding: [11, 22, 33, 44]` 表示 padding-top 是 `33`，padding-bottom 是 `11`，这是一个有问题的实现，因为它与 CSS 的做法不同。从 v5.0 开始，我们对它进行了修复。`rich.?.padding: [11, 22, 33, 44]` 表示 padding-top `11`，padding-bottom 是`33`。
+    + 改变了 `rich.?.padding` 的行为。以前的 `rich.?.padding: [11, 22, 33, 44]` 表示 padding-top 是 `33`，padding-bottom 是 `11`，这是一个有问题的实现，因为它与 CSS 的做法不同。从 v5.0 开始，我们对它进行了修复。`rich.?.padding: [11, 22, 33, 44]` 表示 padding-top 是 `11`，padding-bottom 是 `33`。
     + `aria` 从 v5.0 开始不再包含在 `dist/echarts.simple(.min).js` 中。但它仍然包含在 `dist/echarts.common(.min).js` 和 `dist/echarts(.min).js` 中。
 + [Deprecated] 从 v5.0 开始已不推荐使用做法：
     + 图形元素 transform 相关的属性被改变了：
         + 变更点：
-            + `position: [number, number]` 改为 `x: number`/`y: number`。
-            + `scale: [number, number]` 改为 `scaleX: number`/`scaleY: number`。
-            + `origin: [number, number]` 改为 `originX: number`/`originY: number`。
+            + `position: [number, number]` 改为 `x: number` / `y: number`。
+            + `scale: [number, number]` 改为 `scaleX: number` / `scaleY: number`。
+            + `origin: [number, number]` 改为 `originX: number` / `originY: number`。
         + `position`、`scale` 和 `origin` 仍然支持，但已不推荐使用。
         + 它影响到这些地方：
             + 在`graphic`组件中：每个元素的声明。
@@ -147,16 +164,16 @@
     + `label`。
         + 属性 `color`、`textBorderColor`、`backgroundColor`、`borderColor` 中，值 `auto` 已不推荐使用，而推荐使用 `'inherit'` 代替。
     + `hoverAnimation`:
-        + 选项 `series.hoverAnimation` 已不推荐使用，使用 `series.phasis.scale` 代替之。
+        + 选项 `series.hoverAnimation` 已不推荐使用，使用 `series.emphasis.scale` 代替之。
     + 折线图（`line series`）：
         + 选项 `series.clipOverflow` 已不推荐使用，使用 `series.clip` 代替之。
     + 自定义系列（`custom series`）。
         + 在 `renderItem` 中，`api.style(...)` 和 `api.styleEmphasis(...)` 已不推荐使用。因为这两个接口其实并不真正必要，也很难保证向后兼容。用户可以通过 `api.visual(...)` 获取系统自动分配的视觉信息。
     + 旭日图（`sunburst`）：
-        +动作类型`highlight`已被废弃，使用`sunburstHigh`。使用`sunburstHighlight`代替。
-        + 动作类型 "downplay "已被弃用，请使用 "sunburstUniversity "代替。使用`sunburstUnhighlight`代替。
-        +选项`series.downplay`已被弃用，请使用`series.blush`代替。使用`series.blur`代替。
-        +选项`series.highlightPolicy`已不适用。使用`series.emphasis.focus`代替。
+        + 动作类型 `highlight` 已被弃用，请使用 `sunburstHighlight` 代替。
+        + 动作类型 `downplay` 已被弃用，请使用 `sunburstUnhighlight` 代替。
+        + 选项 `series.downplay` 已被弃用，请使用 `series.blur` 代替。
+        + 选项 `series.highlightPolicy` 已不适用，请使用 `series.emphasis.focus` 代替。
     + 饼图（`pie`）：
         + 下面左边部分的 action 名已经不推荐使用。请使用右边的 action 名。
             + `pieToggleSelect` => `toggleSelect`。
@@ -168,7 +185,7 @@
             + `pieunselected` => `unselected`。
         + 选项 `series.label.margin` 已经不推荐使用。使用 `series.label.edgeDistance` 代替。
         + 选项 `series.clockWise` 已经不推荐使用。使用 `series.clockwise` 代替。
-        + 选项 `series.hoverOffset` 已经不推荐使用。使用 `series.phasis.scaleSize` 代替。
+        + 选项 `series.hoverOffset` 已经不推荐使用。使用 `series.emphasis.scaleSize` 代替。
     + 地图（`map series`）：
         + 下文左边部分的 action 名已经不推荐使用。请使用右边的 action 名。
             + `mapToggleSelect` => `toggleSelect`。
@@ -184,7 +201,7 @@
         + 选项 `series.focusNodeAdjacency` 已经不推荐使用。使用 `series.emphasis: { focus: 'adjacency'}` 代替。
     + 仪表盘（`gauge series`）：
         + 选项 `series.clockWise` 已经不推荐使用。使用 `series.clockwise` 代替。
-        + 选项 `series.hoverOffset` 已经不推荐使用。使用 `series.phasis.scaleSize` 代替。
+        + 选项 `series.hoverOffset` 已经不推荐使用。使用 `series.emphasis.scaleSize` 代替。
     + `dataZoom` 组件：
         + 选项 `dataZoom.handleIcon` 如果使用 `SVGPath`，需要前缀 `path://`。
     + 雷达图（`radar`）：
