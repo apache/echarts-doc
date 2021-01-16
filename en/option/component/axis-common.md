@@ -734,7 +734,13 @@ Example:
 ```js
 // Use string template; template variable is the default label of axis {value}
 formatter: '{value} kg'
+// Use callback.
+formatter: function (value, index) {
+    return value + 'kg';
+}
 ```
+
+---
 
 For axes of time [type](~${componentType}.type): `'time'`, `formatter` supports the following forms:
 

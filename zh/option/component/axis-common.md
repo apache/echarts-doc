@@ -729,7 +729,13 @@ ${name}的显示间隔，在类目轴中有效。{{ if: !${isAxisLabel} }}默认
 ```js
 // 使用字符串模板，模板变量为刻度默认标签 {value}
 formatter: '{value} kg'
+// 使用函数模板，函数参数分别为刻度数值（类目），刻度的索引
+formatter: function (value, index) {
+    return value + 'kg';
+}
 ```
+
+---
 
 对于时间轴（[type](~${componentType}.type): `'time'`），`formatter` 的字符串模板支持多种形式：
 
