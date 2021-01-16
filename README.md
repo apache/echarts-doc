@@ -1,6 +1,6 @@
 # About
 
-This project is part of the source of [The Apache ECharts (incubating) Official Website](https://echarts.apache.org/). See [incubator-echarts-website](https://github.com/apache/incubator-echarts-website) for more details of the building process.
+This project is part of the source of [The Apache ECharts Official Website](https://echarts.apache.org/). See [incubator-echarts-website](https://github.com/apache/incubator-echarts-website) for more details of the building process.
 
 ## Online Docs
 
@@ -48,7 +48,7 @@ Provide a example link in doc:
 ```
 Provide a website link in doc:
 ```md
-[Apache ECharts (incubating) website](${websitePath}/en/download.html)
+[Apache ECharts website](${websitePath}/en/download.html)
 ```
 
 #### Reference of option
