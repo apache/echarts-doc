@@ -209,6 +209,14 @@ data: [
 
 {{ use: partial-1d-data-label-formatter() }}
 
+{{ use: partial-text-style(
+    prefix = ${prefix},
+    noAlign = true,
+    noVerticalAlign = true,
+    defaultColor = '',
+    defaultFontSize = '',
+    enableAutoColor = true
+) }}
 
 
 {{ target: mark-line-data-item-item }}

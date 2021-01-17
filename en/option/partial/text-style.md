@@ -241,7 +241,7 @@ auto adapted by default.
 {{ use: partial-text-style-auto-color-desc() }}
 {{ /if }}
 
-#${prefix} borderColor(Color) = 'transparent'
+#${prefix} borderColor(Color)
 
 <ExampleUIControlColor default="#fff" />
 
