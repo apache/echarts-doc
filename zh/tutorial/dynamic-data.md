@@ -4,7 +4,7 @@
 
 ## 异步加载
 
-[入门示例](~getting-started)中的数据是在初始化后 `setOption` 中直接填入的，但是很多时候可能数据需要异步加载后再填入。Apache ECharts (incubating)<sup>TM</sup> 中实现异步数据的更新非常简单，在图表初始化后不管任何时候只要通过 jQuery 等工具异步获取数据后通过 `setOption` 填入数据和配置项就行。
+[入门示例](~getting-started)中的数据是在初始化后 `setOption` 中直接填入的，但是很多时候可能数据需要异步加载后再填入。Apache ECharts<sup>TM</sup> 中实现异步数据的更新非常简单，在图表初始化后不管任何时候只要通过 jQuery 等工具异步获取数据后通过 `setOption` 填入数据和配置项就行。
 
 ```js
 var myChart = echarts.init(document.getElementById('main'));

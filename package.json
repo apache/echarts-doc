@@ -4,7 +4,7 @@
   "description": "Documentation of ECharts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/apache/incubator-echarts-doc"
+    "url": "https://github.com/apache/echarts-doc"
   },
   "scripts": {
     "build": "node build.js --env asf",

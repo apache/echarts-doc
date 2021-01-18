@@ -1,7 +1,7 @@
 {{ target: echarts-feature }}
 # Introduction of ECharts features
 
-Apache ECharts (incubating)<sup>TM</sup>, a pure Javascript chart library, can run smoothly on PC and mobile devices, being compatible with most of current Web browsers (IE8/9/10/11, Chrome, Firefox, Safari and so on), it relies on a lightweight Canvas library [ZRender](https://github.com/ecomfe/zrender), and provides intuitive, vivid, interactive, and highly customizable data visualization charts.
+Apache ECharts<sup>TM</sup>, a pure Javascript chart library, can run smoothly on PC and mobile devices, being compatible with most of current Web browsers (IE8/9/10/11, Chrome, Firefox, Safari and so on), it relies on a lightweight Canvas library [ZRender](https://github.com/ecomfe/zrender), and provides intuitive, vivid, interactive, and highly customizable data visualization charts.
 
 More over, ECharts 3 adds richer interactive functions and more visualization effects, and optimizes more deeply on mobile end.
 

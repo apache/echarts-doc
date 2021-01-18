@@ -3,7 +3,7 @@
 
 # Use ECharts with webpack
 
-[Webpack](https://webpack.js.org/) is a popular module packaging tool, which can be used easily to import and packaging Apache ECharts (incubating)<sup>TM</sup>. Here we assume you already have certain understanding about webpack and used it in your project.
+[Webpack](https://webpack.js.org/) is a popular module packaging tool, which can be used easily to import and packaging Apache ECharts<sup>TM</sup>. Here we assume you already have certain understanding about webpack and used it in your project.
 
 ## Use npm to install ECharts
 
@@ -75,6 +75,6 @@ myChart.setOption({
 });
 ```
 
-Available modules see [https://github.com/apache/incubator-echarts/blob/master/src/echarts.all.ts](https://github.com/apache/incubator-echarts/blob/master/src/echarts.all.ts)
+Available modules see [https://github.com/apache/echarts/blob/master/src/echarts.all.ts](https://github.com/apache/echarts/blob/master/src/echarts.all.ts)
 
 The same goes for another popular packaging tools [browserify](http://browserify.org/), which will not be introduced again here. Using [rollup](https://rollupjs.org/) to make a custom build of echarts is introduced in [Create Custom Build of ECharts](tutorial.html#Create%20Custom%20Build%20of%20ECharts)

@@ -3,7 +3,7 @@
 
 # Create Custom Build of ECharts
 
-In most cases, Apache ECharts (incubating)<sup>TM</sup> builds can be get from  [CDN](https://www.jsdelivr.com/package/npm/echarts) or from the `echarts/dist` directory in our [GitHub project](https://github.com/apache/incubator-echarts/releases), where
+In most cases, Apache ECharts<sup>TM</sup> builds can be get from  [CDN](https://www.jsdelivr.com/package/npm/echarts) or from the `echarts/dist` directory in our [GitHub project](https://github.com/apache/echarts/releases), where
 these pre-builds are provided:
 
 + Complete verion: `echarts/dist/echarts.js`, including all charts and components (see `echarts/echarts.all.js` for detail), but has maximum file size.
@@ -124,7 +124,7 @@ Open `myProject/pie.html` in a browser, we can see the pie chart:
 
 ## Modules that are permitted to be imported
 
-All of the permitted modules are declared in [`myProject/node_module/echarts/echarts.all.js`](https://github.com/apache/incubator-echarts/blob/master/echarts.all.js) and [`myProject/node_module/echarts/src/export.js`](https://github.com/apache/incubator-echarts/blob/master/src/export.js). Other modules in the source code of echarts and zrender **SHOULD NOT BE IMPORTED**, because they are inner modules, whose interfaces and functionalities may be modified in the subsequent upgrades of echarts.
+All of the permitted modules are declared in [`myProject/node_module/echarts/echarts.all.js`](https://github.com/apache/echarts/blob/master/echarts.all.js) and [`myProject/node_module/echarts/src/export.js`](https://github.com/apache/echarts/blob/master/src/export.js). Other modules in the source code of echarts and zrender **SHOULD NOT BE IMPORTED**, because they are inner modules, whose interfaces and functionalities may be modified in the subsequent upgrades of echarts.
 
 
 ## Use `echarts/lib/**` or `echarts/src/**`?

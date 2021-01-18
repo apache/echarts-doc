@@ -4,7 +4,7 @@
 
 浏览器端图表库大多会选择 SVG 或者 Canvas 进行渲染。对于绘制图表来说，这两种技术往往是可替换的，效果相近。但是在一些场景中，他们的表现和能力又有一定差异。于是，对它们的选择取舍，就成为了一个一直存在的不易有标准答案的话题。
 
-Apache ECharts (incubating)<sup>TM</sup> 从初始一直使用 Canvas 绘制图表（除了对 IE8- 使用 VML）。而 [ECharts v4.0](https://github.com/apache/incubator-echarts/releases) 发布了 SVG 渲染器，从而提供了一种新的选择。只须在初始化一个图表实例时，设置 [renderer 参数](api.html#echarts.init) 为 `'canvas'` 或 `'svg'` 即可指定渲染器，比较方便。
+Apache ECharts<sup>TM</sup> 从初始一直使用 Canvas 绘制图表（除了对 IE8- 使用 VML）。而 [ECharts v4.0](https://github.com/apache/echarts/releases) 发布了 SVG 渲染器，从而提供了一种新的选择。只须在初始化一个图表实例时，设置 [renderer 参数](api.html#echarts.init) 为 `'canvas'` 或 `'svg'` 即可指定渲染器，比较方便。
 
 > SVG 和 Canvas 这两种使用方式差异很大的技术，能够做到同时被透明支持，主要归功于 ECharts 底层库 [ZRender](https://github.com/ecomfe/zrender) 的抽象和实现，形成可互换的 SVG 渲染器和 Canvas 渲染器。
 
@@ -22,7 +22,7 @@ Apache ECharts (incubating)<sup>TM</sup> 从初始一直使用 Canvas 绘制图�
     + 在须要创建很多 ECharts 实例且浏览器易崩溃的情况下（可能是因为 Canvas 数量多导致内存占用超出手机承受能力），可以使用 SVG 渲染器来进行改善。大略得说，如果图表运行在低端安卓机，或者我们在使用一些特定图表如 [水球图](https://ecomfe.github.io/echarts-liquidfill/example/) 等，SVG 渲染器可能效果更好。
     + 数据量很大、较多交互时，可以选用 Canvas 渲染器。
 
-我们强烈欢迎开发者们 [反馈](https://github.com/apache/incubator-echarts/issues/new) 给我们使用的体验和场景，帮助我们更好的做优化。
+我们强烈欢迎开发者们 [反馈](https://github.com/apache/echarts/issues/new) 给我们使用的体验和场景，帮助我们更好的做优化。
 
 
 注：除了某些特殊的渲染可能依赖 Canvas：如[炫光尾迹特效](option.html#series-lines.effect)、[带有混合效果的热力图](${galleryEditorPath}heatmap-bmap)等，绝大部分功能 SVG 都是支持的。此外，目前的 SVG 版中，富文本、材质功能尚未实现。

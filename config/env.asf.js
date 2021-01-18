@@ -10,6 +10,6 @@ module.exports = {
         imagePath: 'asset/gl/img/',
     },
 
-    releaseDestDir: path.resolve(__dirname, '../../incubator-echarts-website'),
+    releaseDestDir: path.resolve(__dirname, '../../echarts-website'),
     ecWWWGeneratedDir: path.resolve(__dirname, '../../echarts-www/_generated')
 };

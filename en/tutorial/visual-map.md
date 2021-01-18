@@ -5,7 +5,7 @@
 
 Data visualization is a procedure of mapping data into visual elements. This procedure can also be called visual coding, and visual elements can also be called visual tunnels.
 
-Every type of charts in Apache ECharts (incubating)<sup>TM</sup> has this built-in mapping procedure. For example, line charts map data into *lines*, bar charts map data into *length*. Some more complicated charts, like `graph`, `themeRiver`, and `treemap` have their own built-in mapping.
+Every type of charts in Apache ECharts<sup>TM</sup> has this built-in mapping procedure. For example, line charts map data into *lines*, bar charts map data into *length*. Some more complicated charts, like `graph`, `themeRiver`, and `treemap` have their own built-in mapping.
 
 Besides, ECharts provides [visualMap component](option.html#visualMap) for general visual mapping. Visual elements allowed in `visualMap` component are:<br>
 `symbol`, `symbolSize`<br>

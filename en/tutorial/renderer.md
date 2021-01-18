@@ -2,9 +2,9 @@
 
 # Render by Canvas or SVG
 
-Most browser-side charting libraries use SVG or Canvas as their underlying renderer. In the scope of Apache ECharts (incubating)<sup>TM</sup>, they are usually interchangeable, without critical differences. However, in some cases, they show notable differences in performance or functionality.
+Most browser-side charting libraries use SVG or Canvas as their underlying renderer. In the scope of Apache ECharts<sup>TM</sup>, they are usually interchangeable, without critical differences. However, in some cases, they show notable differences in performance or functionality.
 
-ECharts has been using Canvas as its renderer (use VML for IE8-) from the beginning. As of [ECharts v3.8](https://github.com/apache/incubator-echarts/releases) we provide an SVG renderer (beta version) as another option. Either of them can be used by specifing parameter [renderer](api.html#echarts.init) as `'canvas'` or `'svg'` when initailizing a chart instance.
+ECharts has been using Canvas as its renderer (use VML for IE8-) from the beginning. As of [ECharts v3.8](https://github.com/apache/echarts/releases) we provide an SVG renderer (beta version) as another option. Either of them can be used by specifing parameter [renderer](api.html#echarts.init) as `'canvas'` or `'svg'` when initailizing a chart instance.
 
 > Both SVG and Canvas, which are very different rendering implementations, are supported in ECharts by leveraging the Canvas and SVG renderers offered by the [zender](https://github.com/ecomfe/zrender) library.
 
@@ -25,7 +25,7 @@ How to make a choice? These factors, hardware and software environment, data amo
     + If lots of ECharts instances have to be created, and it causes the browser crash (probably caused by that the large memory consumption) we can try the SVG renderer. Or, generally, when running on some old Android devices, or if we are using some kind of charts like [liquidfill](https://ecomfe.github.io/echarts-liquidfill/example/), the SVG renderer probably gives a better performance.
     + If visualizing a large amount of data, or complicated human interactions with data is required, the Canvas renderer works better currently.
 
-Therefore [feedback](https://github.com/apache/incubator-echarts/issues/new) of experiences and usage scenarios are strongly welcomed, which will help improve the these renderers.
+Therefore [feedback](https://github.com/apache/echarts/issues/new) of experiences and usage scenarios are strongly welcomed, which will help improve the these renderers.
 
 Notice: The features of rich text, shadow and texture have not been supported yet in the current beta version of the SVG renderer.
 

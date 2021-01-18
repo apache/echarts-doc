@@ -2,7 +2,7 @@
 
 # 在微信小程序中使用 ECharts
 
-我们接到了很多微信小程序开发者的反馈，表示他们强烈需要像 Apache ECharts (incubating)<sup>TM</sup> 这样的可视化工具。但是微信小程序是不支持 DOM 操作的，Canvas 接口也和浏览器不尽相同。
+我们接到了很多微信小程序开发者的反馈，表示他们强烈需要像 Apache ECharts<sup>TM</sup> 这样的可视化工具。但是微信小程序是不支持 DOM 操作的，Canvas 接口也和浏览器不尽相同。
 
 因此，我们和微信小程序官方团队合作，提供了 ECharts 的微信小程序版本。开发者可以通过熟悉的 ECharts 配置方式，快速开发图表，满足各种可视化需求。
 
@@ -20,7 +20,7 @@
 
 其中，`ec-canvas` 是我们提供的组件，其他文件是如何使用该组件的示例。
 
-`ec-canvas` 目录下有一个 `echarts.js`，默认我们会在每次 `echarts-for-weixin` 项目发版的时候替换成最新版的 ECharts。如有必要，可以自行从 ECharts 项目中下载[最新发布版](https://github.com/apache/incubator-echarts/releases)，或者从[官网自定义构建](${websitePath}/builder.html)以减小文件大小。
+`ec-canvas` 目录下有一个 `echarts.js`，默认我们会在每次 `echarts-for-weixin` 项目发版的时候替换成最新版的 ECharts。如有必要，可以自行从 ECharts 项目中下载[最新发布版](https://github.com/apache/echarts/releases)，或者从[官网自定义构建](${websitePath}/builder.html)以减小文件大小。
 
 ## 引入组件
 

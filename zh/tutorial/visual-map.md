@@ -5,7 +5,7 @@
 
 数据可视化是 **数据** 到 **视觉元素** 的映射过程（这个过程也可称为视觉编码，视觉元素也可称为视觉通道）。
 
-Apache ECharts (incubating)<sup>TM</sup> 的每种图表本身就内置了这种映射过程，比如折线图把数据映射到『线』，柱状图把数据映射到『长度』。一些更复杂的图表，如 `graph`、`事件河流图`、`treemap` 也都会做出他们内置的映射。
+Apache ECharts<sup>TM</sup> 的每种图表本身就内置了这种映射过程，比如折线图把数据映射到『线』，柱状图把数据映射到『长度』。一些更复杂的图表，如 `graph`、`事件河流图`、`treemap` 也都会做出他们内置的映射。
 
 此外，ECharts 还提供了 [visualMap 组件](option.html#visualMap) 来提供通用的视觉映射。`visualMap` 组件中可以使用的视觉元素有：<br>
 `图形类别（symbol）`、`图形大小（symbolSize）`<br>

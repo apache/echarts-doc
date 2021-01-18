@@ -130,7 +130,7 @@ edgeLength: [10, 50]
 {{ use: partial-version(version = "4.5.0") }}
 这个参数能减缓节点的移动速度。取值范围 0 到 1。
 
-但是仍然是个试验性的参数，参见 [#11024](https://github.com/apache/incubator-echarts/issues/11024)。
+但是仍然是个试验性的参数，参见 [#11024](https://github.com/apache/echarts/issues/11024)。
 
 ## roam(boolean|string) = false
 {{ use: partial-roam }}
