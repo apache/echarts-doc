@@ -11,7 +11,7 @@
 
 ~[900x250](${galleryViewPath}pie-alignTo&reset=1&edit=1)
 
-对于一个图表中有多个饼图的场景，可以使用 [left](~series-pie.left)、[right](~series-pie.right)、[top](~series-pie.top)、[bottom](~series-pie.bottom)、[width](~series-pie.width)、[height](~series-pie.height) 配置每个饼图系列的位置和视口大小。[radius](~series-pie.radius)、[label.margin](~series-pie.label.margin) 等支持百分比的配置项，是相对于该配置项决定的矩形的大小而言的。
+对于一个图表中有多个饼图的场景，可以使用 [left](~series-pie.left)、[right](~series-pie.right)、[top](~series-pie.top)、[bottom](~series-pie.bottom)、[width](~series-pie.width)、[height](~series-pie.height) 配置每个饼图系列的位置和视口大小。[radius](~series-pie.radius)、[label.edgeDistance](~series-pie.label.edgeDistance) 等支持百分比的配置项，是相对于该配置项决定的矩形的大小而言的。
 
 **Tip:** 饼图更适合表现数据相对于总数的百分比等关系。如果只是表示不同类目数据间的大小，建议使用 [柱状图](bar)，人们对于微小的弧度差别相比于微小的长度差别更不敏感，或者也可以通过配置 [roseType](~series-pie.roseType) 显示成南丁格尔图，通过半径大小区分数据的大小。
 
@@ -138,11 +138,11 @@ const option = {
 
 + `'none'`（默认值）：label line 的长度为固定值，分别为 [labelLine.length](~series-pie.labelLine.length) 及 [labelLine.length2](~series-pie.labelLine.length2)。
 + `'labelLine'`：label line 的末端对齐，其中最短的长度由 [labelLine.length2](~series-pie.labelLine.length2) 决定。
-+ `'edge'`：文字对齐，文字的边距由 [label.margin](~series-pie.label.margin) 决定。
++ `'edge'`：文字对齐，文字的边距由 [label.edgeDistance](~series-pie.label.edgeDistance) 决定。
 
 ~[900x250](${galleryViewPath}pie-alignTo&reset=1&edit=1)
 
-### margin(string|number) = '25%'
+### edgeDistance(string|number) = '25%'
 
 <ExampleUIControlPercent default="20%" />
 
@@ -150,7 +150,7 @@ const option = {
 
 ~[900x250](${galleryViewPath}doc-example/pie-label-margin&edit=1&reset=1)
 
-通常来说，对于移动端等分辨率较小的情况，`margin` 值设为比较小的值（比如 `10`）能在有限的空间内显示更多文字，而不是被裁剪为 `...`。但是对于分辨率更大的场景，百分比的值可以避免 label line 过长。如果你需要在不同分辨率下使用，建议使用[响应式图表设计](tutorial.html#移动端自适应)为不同的分辨率设置不同的 `margin` 值。
+通常来说，对于移动端等分辨率较小的情况，`edgeDistance` 值设为比较小的值（比如 `10`）能在有限的空间内显示更多文字，而不是被裁剪为 `...`。但是对于分辨率更大的场景，百分比的值可以避免 label line 过长。如果你需要在不同分辨率下使用，建议使用[响应式图表设计](tutorial.html#移动端自适应)为不同的分辨率设置不同的 `edgeDistance` 值。
 
 ### bleedMargin(number) = 10
 
