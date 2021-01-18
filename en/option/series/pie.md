@@ -14,7 +14,7 @@ Since ECharts v4.6.0, we provide `'labelLine'` and `'edge'` two extra layouts. C
 
 ~[900x250](${galleryViewPath}pie-alignTo&reset=1&edit=1)
 
-For multiple pie series in a single chart, you may use [left](~series-pie.left), [right](~series-pie.right), [top](~series-pie.top), [bottom](~series-pie.bottom), [width](~series-pie.width), and [height](~series-pie.height) to locate the pies. Percetage values like [radius](~series-pie.radius) or [label.margin](~series-pie.label.margin) are relative to the viewport defined by this setting.
+For multiple pie series in a single chart, you may use [left](~series-pie.left), [right](~series-pie.right), [top](~series-pie.top), [bottom](~series-pie.bottom), [width](~series-pie.width), and [height](~series-pie.height) to locate the pies. Percetage values like [radius](~series-pie.radius) or [label.edgeDistance](~series-pie.label.edgeDistance) are relative to the viewport defined by this setting.
 
 ** The below example shows a customized Nightingale chart: **
 ~[500x400](${galleryViewPath}pie-custom&edit=1&reset=1)
@@ -114,11 +114,11 @@ Since ECharts v4.6.0, we provide `'labelLine'` and `'edge'` two extra valid `ali
 
 + `'none'` (default): label lines have fixed length as [labelLine.length](~series-pie.labelLine.length) and [labelLine.length2](~series-pie.labelLine.length2).
 + `'labelLine'`: aligning to the end of label lines and the length of the shortest horizontal label lines is configured by [labelLine.length2](~series-pie.labelLine.length2).
-+ `'edge'`: aligning to text and the distance between the edges of text and the viewport is configured by [label.margin](~series-pie.label.margin).
++ `'edge'`: aligning to text and the distance between the edges of text and the viewport is configured by [label.edgeDistance](~series-pie.label.edgeDistance).
 
 ~[900x250](${galleryViewPath}pie-alignTo&reset=1&edit=1)
 
-### margin(string|number) = '25%'
+### edgeDistance(string|number) = '25%'
 
 <ExampleUIControlPercent default="20%" />
 
@@ -126,7 +126,7 @@ The horizontal distance between text edges and viewport when [label.position](~s
 
 ~[900x250](${galleryViewPath}doc-example/pie-label-margin&edit=1&reset=1)
 
-In most cases, you need a small `margin` value like `10` for mobile devices to make sure more text can be shown instead of being `...`. But on larger resolutions, a percentage value should be applied so that the label lines won't be too long. If your chart is used in varied resolutions, it is advised to set [responsive design](tutorial.html#Responsive%20Mobile-End) for different resolutions.
+In most cases, you need a small `edgeDistance` value like `10` for mobile devices to make sure more text can be shown instead of being `...`. But on larger resolutions, a percentage value should be applied so that the label lines won't be too long. If your chart is used in varied resolutions, it is advised to set [responsive design](tutorial.html#Responsive%20Mobile-End) for different resolutions.
 
 ### bleedMargin(number) = 10
 
