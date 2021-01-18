@@ -123,7 +123,7 @@ Because the force-directed layout will be steady after several iterations, this 
 
 It will slow down the nodes' movement. The value range is from 0 to 1.
 
-But it is still an experimental option, see [#11024](https://github.com/apache/incubator-echarts/issues/11024).
+But it is still an experimental option, see [#11024](https://github.com/apache/echarts/issues/11024).
 
 ## roam(boolean|string) = false
 

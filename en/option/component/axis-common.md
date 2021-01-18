@@ -779,7 +779,7 @@ Using string templates is an easy way to format date/time with frequently used f
 | Millisecond  | {SSS}      | 000-999                                                        | 000-999                                                                    |
 |              | {S}        | 0-999                                                          | 0-999                                                                      |
 
-> Templates of other languages can be found in [the language package](https://github.com/apache/incubator-echarts/tree/master/src/i18n). Please refer to [echarts.registerLocale](api.html#echarts.registerLocale) to register a language.
+> Templates of other languages can be found in [the language package](https://github.com/apache/echarts/tree/master/src/i18n). Please refer to [echarts.registerLocale](api.html#echarts.registerLocale) to register a language.
 
 Example:
 ```js

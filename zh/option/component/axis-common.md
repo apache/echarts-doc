@@ -774,7 +774,7 @@ formatter: function (value, index) {
 | Millisecond  | {SSS}      | 000-999                                                        | 000-999                                                                    |
 |              | {S}        | 0-999                                                          | 0-999                                                                      |
 
-> 其他语言请参考相应[语言包](https://github.com/apache/incubator-echarts/tree/master/src/i18n)中的定义，语言包可以通过 [echarts.registerLocale](api.html#echarts.registerLocale) 注册。
+> 其他语言请参考相应[语言包](https://github.com/apache/echarts/tree/master/src/i18n)中的定义，语言包可以通过 [echarts.registerLocale](api.html#echarts.registerLocale) 注册。
 
 示例:
 ```js

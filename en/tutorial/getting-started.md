@@ -5,9 +5,9 @@
 
 First, install Apache ECharts<sup>TM</sup> using one of the following methods:
 
-* Download official source release from [Apache ECharts website](${websitePath}/en/download.html). Then [build](https://github.com/apache/incubator-echarts#build) from the source release.
+* Download official source release from [Apache ECharts website](${websitePath}/en/download.html). Then [build](https://github.com/apache/echarts#build) from the source release.
 
-* Download from [GitHub](https://github.com/apache/incubator-echarts/releases)
+* Download from [GitHub](https://github.com/apache/echarts/releases)
 
 * Using npm: `npm install echarts --save`. [Using ECharts with webpack](tutorial.html#Use%20ECharts%20with%20webpack)
 

@@ -1,9 +1,9 @@
 const path = require('path');
 
 module.exports = {
-    galleryViewPath: 'http://localhost/incubator-echarts-website/examples/${lang}/view.html?c=',
-    galleryEditorPath: 'http://localhost/incubator-echarts-website/examples/${lang}/editor.html?c=',
-    websitePath: 'http://localhost/incubator-echarts-website',
+    galleryViewPath: 'http://localhost/echarts-website/examples/${lang}/view.html?c=',
+    galleryEditorPath: 'http://localhost/echarts-website/examples/${lang}/editor.html?c=',
+    websitePath: 'http://localhost/echarts-website',
 
 
     imagePath: 'asset/img/',

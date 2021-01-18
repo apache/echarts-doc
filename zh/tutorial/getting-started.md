@@ -7,7 +7,7 @@
 
 * 从 [Apache ECharts 官网下载界面](${websitePath}/zh/download.html) 获取官方源码包后构建。
 
-* 在 ECharts 的 [GitHub](https://github.com/apache/incubator-echarts/releases) 获取。
+* 在 ECharts 的 [GitHub](https://github.com/apache/echarts/releases) 获取。
 
 *  通过 npm 获取 echarts，`npm install echarts --save`，详见“[在 webpack 中使用 echarts](tutorial.html#%E5%9C%A8%20webpack%20%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts)”
 

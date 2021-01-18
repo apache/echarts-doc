@@ -36,7 +36,7 @@
     + `renderer` 渲染器，支持 `'canvas'` 或者 `'svg'`。参见 [使用 Canvas 或者 SVG 渲染](tutorial.html#%E4%BD%BF%E7%94%A8%20Canvas%20%E6%88%96%E8%80%85%20SVG%20%E6%B8%B2%E6%9F%93)。
     + `width` 可显式指定实例宽度，单位为像素。如果传入值为 `null`/`undefined`/`'auto'`，则表示自动取 `dom`（实例容器）的宽度。
     + `height` 可显式指定实例高度，单位为像素。如果传入值为 `null`/`undefined`/`'auto'`，则表示自动取 `dom`（实例容器）的高度。
-    + `locale` 使用的语言，内置 `'ZH'` 和 `'EN'` 两个语言，也可以使用 [echarts.registerLocale](~echarts.registerLocale) 方法注册新的语言包。目前支持的语言见 [src/i18n](https://github.com/apache/incubator-echarts/tree/release/src/i18n)
+    + `locale` 使用的语言，内置 `'ZH'` 和 `'EN'` 两个语言，也可以使用 [echarts.registerLocale](~echarts.registerLocale) 方法注册新的语言包。目前支持的语言见 [src/i18n](https://github.com/apache/echarts/tree/release/src/i18n)
 
 
 ## connect(Function)
@@ -160,7 +160,7 @@ echarts.registerMap('USA', usaJson, {
 (locale: string, localeCfg: Object)
 ```
 
-注册语言包，用于[初始化实例](~echarts.init)的时候指定。语言包格式见 [src/i18n/langEN.ts](https://github.com/apache/incubator-echarts/blob/release/src/i18n/langEN.ts)
+注册语言包，用于[初始化实例](~echarts.init)的时候指定。语言包格式见 [src/i18n/langEN.ts](https://github.com/apache/echarts/blob/release/src/i18n/langEN.ts)
 
 {{ use: echarts-graphic }}
 
