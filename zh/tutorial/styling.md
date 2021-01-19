@@ -149,7 +149,7 @@ data: [{
 }, ...]
 ```
 
-但是这次因为只有明暗度的变化，所以有一种更快捷的方式是通过 [visualMap](~option.html#visualMap) 组件将数值的大小映射到明暗度。
+但是这次因为只有明暗度的变化，所以有一种更快捷的方式是通过 [visualMap](option.html#visualMap) 组件将数值的大小映射到明暗度。
 
 ```js
 visualMap: {

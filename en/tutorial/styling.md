@@ -154,7 +154,7 @@ data: [{
 }, ...]
 ```
 
-But since we only need the variation of color in this example, there's a simpler way to map data value to lightness through [visualMap](~option.html#visualMap).
+But since we only need the variation of color in this example, there's a simpler way to map data value to lightness through [visualMap](option.html#visualMap).
 
 ```js
 visualMap: {
