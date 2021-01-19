@@ -80,6 +80,10 @@ Background style of each bar if [showBackground](~series-bar.showBackground) is 
 ## stack(string) = null
 Name of stack. On the same category axis, the series with the same `stack` name would be put on top of each other.
 
+## groupOrder(string) = null
+{{ use: partial-version(version = "5.1.0") }}
+When multiple series are configured on the same category axis, cluster and stacked intra group sorting are supported. The optional parameters are 'ASC' (ascending) and 'desc' (descending).
+
 {{ use: partial-cursor }}
 
 {{use: partial-barGrid(
