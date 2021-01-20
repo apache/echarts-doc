@@ -3,9 +3,9 @@
 # ECharst 5 Upgrade Guide
 
 
-This guide is primarily for users who wish to upgrade their echarts 4.x to echarts 5.x. The notable new features of echarts 5 can be checked in this [docucment](xxx). In most cases we do not have to do anything for this migration because echarts has always tried to keep the API as stable and backward compatible as possible. But there are still some changes that breaks from echarts 4, as well as some cases that echarts 5 provides better API and deprecated the previous one. We attempt to explain them as thorough as possible in this document.
+This guide is primarily for users who wish to upgrade their echarts 4.x (say, `v4`) to echarts 5.x (say, `v5`). The notable new features of echarts 5 can be checked in this [docucment](xxx). In most cases we do not have to do anything for this migration because echarts has always tried to keep the API as stable and backward compatible as possible. But there are still some changes that breaks from `v4` needed to be noticed, as well as some cases that echarts 5 provides better API and deprecated the previous one. We attempt to explain them as thorough as possible in this document.
 
-Because `v5.0.1` provides a significant new feature of [module registry](tutorial.html#Use%20ECharts%20with%20bundler%20and%20NPM). This document is based on `v5.0.1` or higher versions.
+Because `v5.0.1` provides a significant new feature of [explicitly module registry](tutorial.html#Use%20ECharts%20with%20bundler%20and%20NPM). This document is based on `v5.0.1` or higher versions.
 
 
 ## Breaking Changes
