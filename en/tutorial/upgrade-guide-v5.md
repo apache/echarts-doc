@@ -9,7 +9,7 @@ Since we added the new [tree-shaking API](tutorial.html#%E5%9C%A8%E6%89%93%E5%8C
 
 ## Breaking Changes
 
-#### Default theme (theme)
+#### Default theme
 
 First of all, the default theme has been changed. `v5` has made a lot of changes and optimizations on the theme design. If you still want to keep the colors of the old version, you can manually declare the colors as follows.
 ```js
@@ -34,7 +34,7 @@ chart.setOption(/* ... */);
 ```
 
 
-#### References ECharts
+#### Importing ECharts
 
 ##### Removing support for default exports
 
