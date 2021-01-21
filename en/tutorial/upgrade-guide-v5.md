@@ -42,21 +42,17 @@ Since `v5`, echarts only provides `named exports`.
 
 So if you are importing `echarts` like this:
 ```js
-import echarts from 'echarts/lib/echarts';
-```
-or
-```js
 import echarts from 'echarts';
+// Or import core module
+import echarts from 'echarts/lib/echarts';
 ```
 
 It will throw error in `v5`. You need to change the code as follows to import the entire module.
 
 ```js
-import * as echarts from 'echarts/lib/echarts';
-```
-or
-```js
 import * as echarts from 'echarts';
+// Or
+import * as echarts from 'echarts/lib/echarts';
 ```
 
 

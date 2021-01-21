@@ -42,22 +42,18 @@ chart.setOption(/* ... */);
 
 如果使用者在 `v4` 中这样引用了 echarts：
 ```js
-import echarts from 'echarts/lib/echarts';
-```
-或者
-```js
 import echarts from 'echarts';
+// 或者按需引入
+import echarts from 'echarts/lib/echarts';
 ```
 
 这两种方式，`v5` 中不再支持了。
 
 使用者需要如下更改代码解决这个问题：
 ```js
-import * as echarts from 'echarts/lib/echarts';
-```
-或者
-```js
 import * as echarts from 'echarts';
+// 按需引入
+import * as echarts from 'echarts/lib/echarts';
 ```
 
 
