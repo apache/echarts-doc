@@ -107,7 +107,6 @@ require('echarts/lib/component/grid');
 Reference issues: [#14080](https://github.com/apache/echarts/issues/14080), [#13764](https://github.com/apache/echarts/issues/13764)
 
 + `aria` components are no longer imported by default. You need import it manually if necessary.
-
 ```js
 import { AriaComponent } from 'echarts/components';
 echarts.use(AriaComponent);

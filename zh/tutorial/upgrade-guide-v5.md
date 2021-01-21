@@ -108,7 +108,6 @@ require('echarts/lib/component/grid');
 参考 issue：[#14080](https://github.com/apache/echarts/issues/14080), [#13764](https://github.com/apache/echarts/issues/13764)
 
 + 默认不再引入`aria`组件，如果需要的话可以手动引入。
-
 ```js
 import { AriaComponent } from 'echarts/components';
 echarts.use(AriaComponent);
