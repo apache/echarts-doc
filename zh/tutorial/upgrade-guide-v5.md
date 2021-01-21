@@ -11,7 +11,7 @@
 ## 非兼容性改变
 
 
-### 默认主题（theme）
+#### 默认主题（theme）
 
 首先是默认主题的改动，`v5` 在配色等主题设计上做了很多的优化来达到更好的视觉效果。如果大家依旧想保留旧版本的颜色，可以手动声明颜色，如下：
 ```js
@@ -36,10 +36,10 @@ chart.setOption(/* ... */);
 ```
 
 
-### 引用 ECharts
+#### 引用 ECharts
 
 
-#### 去除 default exports 的支持
+##### 去除 default exports 的支持
 
 如果使用者在 `v4` 中这样引用了 echarts：
 ```js
@@ -62,7 +62,7 @@ import * as echarts from 'echarts';
 ```
 
 
-#### 按需引入
+##### 按需引入
 
 在 5.0.1 中，我们引入了新的[按需引入接口](tutorial.html#%E5%9C%A8%E6%89%93%E5%8C%85%E7%8E%AF%E5%A2%83%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts)
 
@@ -89,7 +89,7 @@ require('echarts/lib/component/grid');
 其次，因为我们的源代码已使用 TypeScript 重写，`v5` 将不再支持从 `echarts/src` 引用文件。
 
 
-#### 依赖调整
+##### 依赖调整
 
 > 注意：该部分只针对为了保证较小的打包体积而是用按需引入接口的开发者，如果是全量引入的不需要关注
 
@@ -110,17 +110,17 @@ require('echarts/lib/component/grid');
 
 + 默认不再引入`aria`组件，在打包文件 [echarts/dist/echarts.simple(.min).js](https://cdn.jsdelivr.net/npm/echarts@5.0.1/dist/echarts.simple.js) 也不再默认包含`aria`组件。
 
-### 去除内置的 geoJSON
+#### 去除内置的 geoJSON
 
 `v5` 移除了内置的 geoJSON（原先在 `echarts/map` 文件夹下）。这些 geoJSON 文件本就一直来源于第三方。如果使用者仍然需要他们，可以去从老版本中得到，或者自己寻找更合适的数据然后通过 registerMap 接口注册到 ECharts 中。
 
-### 浏览器兼容性
+#### 浏览器兼容性
 
 `v5` 不再支持 IE8 浏览器。我们不再继续维护和升级之前的 [VML 渲染器](https://github.com/ecomfe/zrender/tree/4.3.2/src/vml) 来着实现 IE8 的兼容。如果使用者确实有很强的需求，那么欢迎提 pull request 来升级 VML 渲染器，或者单独维护一个第三方 VML 渲染器，我们从 `v5.0.1` 开始支持注册独立的渲染器了。
 
-### ECharts 配置项调整
+#### ECharts 配置项调整
 
-#### 视觉样式设置的优先级改变
+##### 视觉样式设置的优先级改变
 
 `v5` 对调了 [visualMap 组件](option.html#visualMap) 和 [itemStyle](option.html#series-scatter.itemStyle) | [lineStyle](option.html#series-scatter.lineStyle) | [areaStyle](option.html#series-scatter.areaStyle) 的视觉样式优先级。
 
@@ -129,7 +129,7 @@ require('echarts/lib/component/grid');
 在绝大多处情况下，这个变化并不会带来什么影响。但是为保险起见，使用者在升级 `v4` 到 `v5` 时，还是可以检查下，是否有同时使用 [visualMap](option.html#visualMap) 和 [itemStyle](option.html#series-scatter.itemStyle) | [lineStyle](option.html#series-scatter.lineStyle) | [areaStyle](option.html#series-scatter.areaStyle) 的情况。
 
 
-#### 富文本的 `padding`
+##### 富文本的 `padding`
 
 `v5` 调整了 [rich.?.padding](option.html#series-scatter.label.rich.<style_name>.padding) 的格式使其更符合 CSS 的规范。`v4` 里，例如 `rich.?.padding: [11, 22, 33, 44]` 表示 `padding-top` 是 `33` 且 `padding-bottom` 是 `11`。在 `v5` 中调整了上下的位置，`rich.?.padding: [11, 22, 33, 44]` 表示  `padding-top` 是 `11` 且 `padding-bottom` 是 `33`。
 
@@ -137,19 +137,17 @@ require('echarts/lib/component/grid');
 
 ## ECharts 的相关扩展
 
-[这个列表](https://echarts.apache.org/en/download-extension.html) 有 ECharts 的诸多扩展，但也不限于这个列表。如果想要升级到 `v5` ，有些扩展需要使用者升级扩展本身的版本，有些不用。已知需要使用者升级版本的扩展，见下表：
+如果想要升级到 `v5` ，下面这些扩展需要升级到最新的版本实现兼容。
 
 + [echarts-gl](https://github.com/ecomfe/echarts-gl)
 + [echarts-wordcloud](https://github.com/ecomfe/echarts-wordcloud)
 + [echarts-liquidfill](https://github.com/ecomfe/echarts-liquidfill)
 
-这个列表会持续更新。
-
 
 
 ## 不再推荐使用的 API
 
-一些 API（包括函数接口和 echarts option）在 `v5` 中不再推荐使用。当然，使用者**仍然可以用他们**，只会在 dev 模式下，在 console 中打印一些 warning，并不会有什么影响。但是从长远维护考虑，我们还是推荐升级成新的 API。
+一些 API（包括接口调用，事件监听和配置项）在 `v5` 中不再推荐使用。当然，使用者仍然可以用他们，只是会在 dev 模式下，在 console 中打印一些 warning，并不会影响功能。但是从长远维护考虑，我们还是推荐升级成新的 API。
 
 下面是不再推荐使用的 API 以及推荐的新 API：
 
