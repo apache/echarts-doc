@@ -1330,6 +1330,20 @@ Whether the element is visible.
 
 Whether the element is totally ignored (neither render nor listen events).
 
+{{ if: ${usageType} === 'customSeries' }}
+{{ use: partial-custom-series-during(
+    prefix = ${prefix}
+) }}
+{{ use: partial-custom-series-extra(
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+{{ /if }}
+
 {{ if: ${usageType} === 'graphicComponent' }}
 {{ use: partial-cursor(
     prefix = "##"
@@ -1797,3 +1811,105 @@ Same to [style](~${optionPath}.${hostName}${symbolVisit}polygon.style).
 [arc](~${optionPath}.${hostName}${symbolVisit}arc),
 [group](~${optionPath}.${hostName}${symbolVisit}group),
 
+
+
+{{ target: partial-custom-series-extra }}
+
+##${prefix} extra(Object)
+
+Users can define their own props in this `extra` field. See [during](option.html#series-custom.renderItem.return_rect.during) for the major usage of `extra`.
+
+{{ use: partial-graphic-cpt-sub-prop-transition(
+    prefix = ${prefix},
+    hostProp = 'extra',
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
+
+
+{{ target: partial-custom-series-during }}
+
+##${prefix} during(Function)
+
+`during` callback enable users to set props to an element in each animation frame.
+
+```js
+(duringAPI: CustomDuringAPI) => void
+
+interface CustomDuringAPI {
+    // Set transform prop value.
+    // Transform prop see `TransformProp`.
+    setTransform(key: TransformProp, val: unknown): void;
+    // Get transform prop value of the current animation frame.
+    getTransform(key: TransformProp): unknown;
+    // Set shape prop value.
+    // Shape prop is like `{ type: 'rect', shape: { xxxProp: xxxValue } }`.
+    setShape(key: string, val: unknown): void;
+    // Get shape prop value of the current animation frame.
+    getShape(key: string): unknown;
+    // Set style prop value.
+    // Style prop is like `{ type: 'rect', style: { xxxProp: xxxValue } }`.
+    setStyle(key: string, val: unknown): void;
+    // Get style prop value of the current animation frame.
+    getStyle(key: string): unknown;
+    // Set extra prop value.
+    // Extra prop is like `{ type: 'rect', extra: { xxxProp: xxxValue } }`.
+    setExtra(key: string, val: unknown): void;
+    // Get extra prop value of the current animation frame.
+    getExtra(key: string): unknown;
+}
+
+type TransformProp =
+    'x' | 'y' | 'scaleX' | 'scaleY' | 'originX' | 'originY' | 'rotation';
+```
+
+In most cases users do not need this `during` callback. For example, if some props are specified in [transition](option.html#series-custom.renderItem.return_rect.transition), echarts will make interpolation for these props internally and therefore have animation based on these props automatically. But if this kind of internal interpolation does not match the user requirements of animation, users can use this `during` callback to customize them.
+
+For example, if users are using [polygon](option.html#series-custom.renderItem.return_polygon) shape. The shape is described by [shape.points](option.html#series-custom.renderItem.return_polygon.shape.points), which is an points array like:
+```js
+{
+    type: 'polygon',
+    shape: {
+        points: [[12, 33], [15, 36], [19, 39], ...]
+    },
+    // ...
+}
+```
+If users specify them into [transition](option.html#series-custom.renderItem.return_polygon.transition) like:
+```js
+{
+    type: 'polygon',
+    shape: {
+        points: [[12, 33], [15, 36], [19, 39], ...],
+    },
+    transition: 'shape'
+    // ...
+}
+```
+Although the points will be interpolated, the consequent animation will be like that each point runs straight to the target position, which might do not match the user requirement if some kind of track like spiral is actually needed. In this case, users can use the `during` callback like that:
+```js
+{
+    type: 'polygon',
+    shape: {
+        points: calculatePoints(initialDegree),
+        transition: 'points'
+    },
+    extra: {
+        degree: nextDegree
+    },
+    // Make echarts interpolate `extra.degree` internally, based on which
+    // we calculate the `points` in each animation frame.
+    transition: 'extra',
+    during: function (duringAPI) {
+        var currentDegree = duringAPI.getExtra('degree');
+        duringAPI.setShape(calculatePoints(currentDegree));
+    }
+    // ...
+}
+```
+
+See this example [example](${galleryEditorPath}custom-spiral-race&edit=1&reset=1).

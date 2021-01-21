@@ -1315,6 +1315,20 @@ chart.on('click', function (params) {
 
 节点是否完全被忽略（既不渲染，也不响应事件）。
 
+{{ if: ${usageType} === 'customSeries' }}
+{{ use: partial-custom-series-during(
+    prefix = ${prefix}
+) }}
+{{ use: partial-custom-series-extra(
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+{{ /if }}
+
 {{ if: ${usageType} === 'graphicComponent' }}
 {{ use: partial-cursor(
     prefix = "##"
@@ -1778,3 +1792,105 @@ renderItem: function (params, api) {
 [arc](~${optionPath}.${hostName}${symbolVisit}arc),
 [group](~${optionPath}.${hostName}${symbolVisit}group),
 
+
+
+{{ target: partial-custom-series-extra }}
+
+##${prefix} extra(Object)
+
+用户可以在 `extra` 字段中定义自己的属性。`extra` 的往往会结合 [during](option.html#series-custom.renderItem.return_rect.during) 一起使用。
+
+{{ use: partial-graphic-cpt-sub-prop-transition(
+    prefix = ${prefix},
+    hostProp = 'extra',
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
+
+
+{{ target: partial-custom-series-during }}
+
+##${prefix} during(Function)
+
+在动画的每一帧里，用户可以使用 `during` 回调来设定节点的各种属性。
+
+```js
+(duringAPI: CustomDuringAPI) => void
+
+interface CustomDuringAPI {
+    // 设置 transform 属性值。
+    // transform 属性参见 `TransformProp`。
+    setTransform(key: TransformProp, val: unknown): void;
+    // 获得当前动画帧的 transform 属性值。
+    getTransform(key: TransformProp): unknown;
+    // 设置 shape 属性值。
+    // shape 属性形如：`{ type: 'rect', shape: { xxxProp: xxxValue } }`。
+    setShape(key: string, val: unknown): void;
+    // 获得当前动画帧的 shape 属性值。
+    getShape(key: string): unknown;
+    // 设置 style 属性值。
+    // style 属性形如：`{ type: 'rect', style: { xxxProp: xxxValue } }`。
+    setStyle(key: string, val: unknown): void;
+    // 获得当前动画帧的 style 属性值。
+    getStyle(key: string): unknown;
+    // 设置 extra 属性值。
+    // extra 属性形如：`{ type: 'rect', extra: { xxxProp: xxxValue } }`。
+    setExtra(key: string, val: unknown): void;
+    // 获得当前动画帧的 extra 属性值。
+    getExtra(key: string): unknown;
+}
+
+type TransformProp =
+    'x' | 'y' | 'scaleX' | 'scaleY' | 'originX' | 'originY' | 'rotation';
+```
+
+在绝大多数场景下，用户不需要这个 `during` 回调。因为，假如属性被设定到 [transition](option.html#series-custom.renderItem.return_rect.transition) 中后，echarts 会自动对它进行插值，并且基于这些插值形成动画。但是，如果这些插值形成的动画不满足用户需求，那么用户可以使用 `during` 回调来定制他们。
+
+例如，如果用户使用 [polygon](option.html#series-custom.renderItem.return_polygon) 画图形，图形的形状会由 [shape.points](option.html#series-custom.renderItem.return_polygon.shape.points) 来定义，形如：
+```js
+{
+    type: 'polygon',
+    shape: {
+        points: [[12, 33], [15, 36], [19, 39], ...]
+    },
+    // ...
+}
+```
+如果用户指定了 [transition](option.html#series-custom.renderItem.return_polygon.transition) 如：
+```js
+{
+    type: 'polygon',
+    shape: {
+        points: [[12, 33], [15, 36], [19, 39], ...],
+    },
+    transition: 'shape'
+    // ...
+}
+```
+尽管这些 `points` 会被 echarts 自动插值，但是这样形成的动画里，这些点会直线走向目标位置。假如用户需求是，这些点要按照某种特定的路径（如弧线、螺旋）来移动，则这就不满足了。所以在这种情况下，可以使用 `during` 回调如下：
+```js
+{
+    type: 'polygon',
+    shape: {
+        points: calculatePoints(initialDegree),
+        transition: 'points'
+    },
+    extra: {
+        degree: nextDegree
+    },
+    // 让 echarts 对 `extra.degree` 进行插值，然后基于
+    // `extra.degree` 来计算动画中每一帧时的 polygon 形状。
+    transition: 'extra',
+    during: function (duringAPI) {
+        var currentDegree = duringAPI.getExtra('degree');
+        duringAPI.setShape(calculatePoints(currentDegree));
+    }
+    // ...
+}
+```
+
+也参见这个 [例子](${galleryEditorPath}custom-spiral-race&edit=1&reset=1)。
