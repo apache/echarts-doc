@@ -1,19 +1,17 @@
 {{ target: upgrade-guide-v5 }}
 
-# ECharst 5 Upgrade Guide
+# ECharts 5 Upgrade Guide
 
+This guide is for those who want to upgrade from echarts 4.x (hereafter `v4`) to echarts 5.x (hereafter `v5`). You can find out what new features `v5` brings that are worth upgrading in [What's New in ECharts 5](xxx). In most cases, developers won't need to do anything extra for this upgrade, as echarts has always tried to keep the API as stable and backward-compatible as possible. However, `v5` still brings some breaking changes that require special attention. In addition, in some cases, `v5` provides a better API to replace the previous one, and these superseded APIs will no longer be recommended (though we have tried to be as compatible as possible with these changes). We'll try to explain these changes in detail in this document.
 
-This guide is primarily for users who wish to upgrade their echarts 4.x (say, `v4`) to echarts 5.x (say, `v5`). The notable new features of echarts 5 can be checked in this [docucment](xxx). In most cases we do not have to do anything for this migration because echarts has always tried to keep the API as stable and backward compatible as possible. But there are still some changes that breaks from `v4` needed to be noticed, as well as some cases that echarts 5 provides better API and deprecated the previous one. We attempt to explain them as thorough as possible in this document.
-
-Because `v5.0.1` provides a significant new feature of [explicitly module registry](tutorial.html#Use%20ECharts%20with%20bundler%20and%20NPM). This document is based on `v5.0.1` or higher versions.
+Since we added the new [tree-shaking API](tutorial.html#%E5%9C%A8%E6%89%93%E5%8C%85%E7%8E%AF%E5%A2%83%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts) in `v5.0.1`, this documentation is based on `v5.0.1` or higher.
 
 
 ## Breaking Changes
 
+#### Default theme (theme)
 
-### Default theme
-
-The color in the default theme has been changed in `v5`. If users intend to roll back to the color theme of `v4`, please manually declare the color palette of `v4`, for example:
+First of all, the default theme has been changed. `v5` has made a lot of changes and optimizations on the theme design. If you still want to keep the colors of the old version, you can manually declare the colors as follows.
 ```js
 chart.setOption({
     color: [
@@ -23,7 +21,7 @@ chart.setOption({
     // ...
 });
 ```
-or make a theme:
+Or, to make a simple `v4` theme.
 ```js
 var themeEC4 = {
     color: [
@@ -36,12 +34,13 @@ chart.setOption(/* ... */);
 ```
 
 
-### ECharts Import
+#### References ECharts
 
+##### Removing support for default exports
 
-#### Import from `lib`
+Since `v5`, echarts only provides `named exports`.
 
-If the users previously import echarts in `v4` like this:
+So if you are importing `echarts` like this:
 ```js
 import echarts from 'echarts/lib/echarts';
 ```
@@ -50,9 +49,8 @@ or
 import echarts from 'echarts';
 ```
 
-They do not work in `v5` any more.
+It will throw error in `v5`. You need to change the code as follows to import the entire module.
 
-Users should modify it to:
 ```js
 import * as echarts from 'echarts/lib/echarts';
 ```
@@ -62,69 +60,74 @@ import * as echarts from 'echarts';
 ```
 
 
-#### Import from `src`
+##### tree-shaking API
 
-If the upper JavaScript application previously imported `src/echarts.js`, `src/chart/*.js` or `src/component/*.js` in `v4`, for example:
-```js
-import * as echarts from 'echarts/src/echarts';
-import 'echarts/src/chart/bar';
-import 'echarts/src/component/grid';
-```
-It can not work any more in `v5` because all of the files in `echarts/src` folder are migrated to `*.ts`.
+In 5.0.1, we introduced the new [tree-shaking API](tutorial.html#%E5%9C%A8%E6%89%93%E5%8C%85%E7%8E%AF%E5%A2%83%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts)
 
-In fact, importing code form `echarts/src` fold is not recommended in `v5`. User can modify it to:
 ```js
-import * as echarts from 'echarts/index.blank';
+import * as echarts from 'echarts/core';
 import { BarChart } from 'echarts/charts';
 import { GridComponent } from 'echarts/components';
+// Note that the Canvas renderer is no longer included by default and needs to be imported explictly, or import the SVGRenderer if you need to use the SVG rendering mode
+import { CanvasRenderer } from 'echarts/renderers';
 
-echarts.use([BarChart, GridComponent]);
+echarts.use([BarChart, GridComponent, CanvasRenderer]);
 ```
 
-The full list of charts and components exported can be check in [charts@5.0.1](https://cdn.jsdelivr.net/npm/echarts@5.0.1/lib/export/charts.js), [components@5.0.1](https://cdn.jsdelivr.net/npm/echarts@5.0.1/lib/export/components.js).
+To make it easier for you to know which modules you need to import based on your option, our new example page adds a new feature to generate the three-shakable code, you can check the ``Full Code`` tab on the example page to see the modules you need to introduce and the related code.
 
+In most cases, we recommend using the new tree-shaking interface whenever possible, as it maximizes the power of the packaging tool tree-shaking and effectively resolves namespace conflicts and prevents the exposure of internal structures. If you are still using the CommonJS method of writing modules, the previous approach is still supported:
 
-
-#### Import of `aria`
-
-[aria](option.html#aria) is not included any more in [echarts/dist/echarts.simple(.min).js](https://cdn.jsdelivr.net/npm/echarts@5.0.1/dist/echarts.simple.js) and [echarts/index.simple.js](https://cdn.jsdelivr.net/npm/echarts@5.0.1/index.simple.js) since `v5`. Previously in `v4` it is included by them.
-
-If users are using [echarts/dist/echarts(.min).js](https://cdn.jsdelivr.net/npm/echarts@5.0.1/dist/echarts.js) or [echarts/dist/echarts.common(.min).js](https://cdn.jsdelivr.net/npm/echarts@5.0.1/dist/echarts.common.js) or
 ```js
-import * as echarts from 'echarts';
+const echarts = require('echarts/lib/echarts');
+require('echarts/lib/chart/bar');
+require('echarts/lib/component/grid');
 ```
-or
-```js
-import * as echarts from 'echarts/index.common';
-```
-there is nothing need to do when migrate about [aria](option.html#aria) from `v4` to `v5`. Because those source are still include [aria](option.html#aria) in `v5`.
 
-But if users are using [echarts/dist/echarts.simple(.min).js](https://cdn.jsdelivr.net/npm/echarts@5.0.1/dist/echarts.simple.js) or
+Second, because our source code has been rewritten using TypeScript, `v5` will no longer support importing files from `echarts/src`. You need to change it to import from `echarts/lib`.
+
+
+##### dependency adjustment
+
+> Note: This section is only for developers who use tree-shaking interfaces to ensure a minimal bundle size, not for those who imports the whole package.
+
+In order to keep the size of the bundle small enough, we remove some dependencies that would have been imported by default. For example, as mentioned above, when using the new on-demand interface, `CanvasRenderer` is no longer introduced by default, which ensures that unneeded Canvas rendering code is not imported when only SVG rendering mode is used, and in addition, the following dependencies are adjusted.
+
++ The right-angle coordinate system component is no longer introduced by default when using line charts and bar charts, so the following introduction method was used before
 ```js
-import * as echarts from 'echarts/index.simple';
+const echarts = require('echarts/lib/echarts');
+require('echarts/lib/chart/bar');
+require('echarts/lib/chart/line');
 ```
-they need to manually import [aria](option.html#aria), for example:
+Need to introduce the `grid` component separately again
 ```js
-import * as echarts from 'echarts/index.simple';
+require('echarts/lib/component/grid');
+```
+
+Reference issues: [#14080](https://github.com/apache/echarts/issues/14080), [#13764](https://github.com/apache/echarts/issues/13764)
+
++ `aria` components are no longer imported by default. You need import it manually if necessary.
+
+```js
 import { AriaComponent } from 'echarts/components';
-
-echarts.use([AriaComponent]);
+echarts.use(AriaComponent);
+```
+Or
+```js
+require('echarts/lib/component/aria');
 ```
 
+#### removes built-in geoJSON
 
-### Built-in geoJSON
+`v5` removes the built-in geoJSON (previously in the `echarts/map` folder). These geoJSON files were always sourced from third parties. If users still need them, they can go get them from the old version, or find more appropriate data and register it with ECharts via the registerMap interface.
 
-The built-in geoJSON has been removed (previously in `echarts/map` folder) since `v5`. Those geoJSON have been coming from third-parties. If users still need those geoJSON, please find them in the old version or prepare them yourself.
+#### Browser Compatibility
 
+IE8 is no longer supported by `v5`. We no longer maintain and upgrade the previous [VML renderer](https://github.com/ecomfe/zrender/tree/4.3.2/src/vml) for IE8 compatibility. If developers have a strong need for a VML renderer, they are welcome to submit a pull request to upgrade the VML renderer or maintain a separate third-party VML renderer, as we support registration of standalone renderers starting with `v5.0.1`.
 
-### Legacy IE8
+#### ECharts configuration item adjustment
 
-The support of the legacy IE8 has been dropped. In terms of details, the previous [VML renderer](https://github.com/ecomfe/zrender/tree/4.3.2/src/vml) (necessary in IE8) will not be updated to work in `v5`. If there are strong requirements of the legacy IE8 support while `v5` features needed, welcome the pull request to upgrade that VML renderer, or make a third-party VML renderer, since renderers can be registered separately since `v5.0.1`.
-
-
-### ECharts Option
-
-#### Priority of Visuals Setting
+##### Visual style settings priority change
 
 The priority of the visuals between [visualMap component](option.html#visualMap) and [itemStyle](option.html#series-scatter.itemStyle) | [lineStyle](option.html#series-scatter.lineStyle) | [areaStyle](option.html#series-scatter.areaStyle) are reversed since `v5`.
 
@@ -132,28 +135,19 @@ That is, previously in `v4`, the visuals (i.e., color, symbol, symbolSize, ...) 
 
 In most cases, users will probably not notice this change when migrating from `v4` to `v5`. But users can still check that if [visualMap component](option.html#visualMap) and [itemStyle](option.html#series-scatter.itemStyle) | [lineStyle](option.html#series-scatter.lineStyle) | [areaStyle](option.html#series-scatter.areaStyle) are both specified.
 
+##### `padding` for rich text
 
-#### `padding` in Rich Text
+`v5` adjusts the [rich.?.padding](option.html#series-scatter.label.rich.<style_name>.padding) to make it more compliant with CSS specifications. In `v4`, for example `rich. .padding: [11, 22, 33, 44]` means that `padding-top` is `33` and `padding-bottom` is `11`. The position of the top and bottom is adjusted in `v5`, `rich. .padding: [11, 22, 33, 44]` means that `padding-top` is `11` and `padding-bottom` is `33`.
 
-The behavior of [rich.?.padding](option.html#series-scatter.label.rich.<style_name>.padding) are changed. Previously in `v4`, `rich.?.padding: [11, 22, 33, 44]` indicates that `padding-top` is `33` and `padding-bottom` is `11`, which is a buggy implementation because it is different from what CSS did. Since `v5`, we fixed it that `rich.?.padding: [11, 22, 33, 44]` indicates `padding-top` is `11` and `padding-bottom` is `33`.
-
-If users are using [rich.?.padding](option.html#series-scatter.label.rich.<style_name>.padding) in their `option`, please consider to switch them.
-
-
-
+If the user is using [rich.?.padding](option.html#series-scatter.label.rich.<style_name>.padding), this order needs to be adjusted.
 
 ## ECharts Related Extensions
 
-ECharts extensions can be found but not limit to [this list](https://echarts.apache.org/en/download-extension.html). Some of the extensions do not need users to upgrade its version if upgrading echarts to `v5`, but some others need. At least this extension need to be upgraded to new version to support echarts `v5`:
+These extensions need to be upgraded to new version to support echarts `v5`:
 
 + [echarts-gl](https://github.com/ecomfe/echarts-gl)
 + [echarts-wordcloud](https://github.com/ecomfe/echarts-wordcloud)
 + [echarts-liquidfill](https://github.com/ecomfe/echarts-liquidfill)
-
-This list will be kept up to date.
-
-
-
 
 ## Deprecated API
 

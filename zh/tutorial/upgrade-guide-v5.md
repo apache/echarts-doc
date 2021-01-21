@@ -38,7 +38,6 @@ chart.setOption(/* ... */);
 
 #### 引用 ECharts
 
-
 ##### 去除 default exports 的支持
 
 如果使用者在 `v4` 中这样引用了 echarts：
@@ -86,14 +85,14 @@ require('echarts/lib/chart/bar');
 require('echarts/lib/component/grid');
 ```
 
-其次，因为我们的源代码已使用 TypeScript 重写，`v5` 将不再支持从 `echarts/src` 引用文件。
+其次，因为我们的源代码已使用 TypeScript 重写，`v5` 将不再支持从 `echarts/src` 引用文件，需要改为从`echarts/lib`引入。
 
 
 ##### 依赖调整
 
 > 注意：该部分只针对为了保证较小的打包体积而是用按需引入接口的开发者，如果是全量引入的不需要关注
 
-为了保证 tree-shaking 后的体积足够小，我们去除了一些之前会默认被打包进来的依赖。比如前面提到的在使用新的按需引入接口的时候，`CanvasRenderer`讲不再被默认引入，这样可以保证只需要使用 SVG 渲染模式的时候不会把不需要的 Canvas 渲染代码也一起打包进来，除此之外，还有下面这些依赖的调整：
+为了保证 tree-shaking 后的体积足够小，我们去除了一些之前会默认被打包进来的依赖。比如前面提到的在使用新的按需引入接口的时候，`CanvasRenderer`将不再被默认引入，这样可以保证只需要使用 SVG 渲染模式的时候不会把不需要的 Canvas 渲染代码也一起打包进来，除此之外，还有下面这些依赖的改动：
 
 + 在使用折线图，柱状图中不再默认引入直角坐标系组件，因此之前使用下面的引入方式
 ```js
@@ -108,7 +107,16 @@ require('echarts/lib/component/grid');
 
 参考 issue：[#14080](https://github.com/apache/echarts/issues/14080), [#13764](https://github.com/apache/echarts/issues/13764)
 
-+ 默认不再引入`aria`组件，在打包文件 [echarts/dist/echarts.simple(.min).js](https://cdn.jsdelivr.net/npm/echarts@5.0.1/dist/echarts.simple.js) 也不再默认包含`aria`组件。
++ 默认不再引入`aria`组件，如果需要的话可以手动引入。
+
+```js
+import { AriaComponent } from 'echarts/components';
+echarts.use(AriaComponent);
+```
+或者：
+```js
+require('echarts/lib/component/aria');
+```
 
 #### 去除内置的 geoJSON
 

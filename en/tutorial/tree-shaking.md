@@ -1,5 +1,5 @@
 
-{{target: minimal-import}}
+{{target: tree-shaking}}
 
 # Use ECharts with bundler and NPM
 

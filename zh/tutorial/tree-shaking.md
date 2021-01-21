@@ -1,5 +1,5 @@
 
-{{target: minimal-import}}
+{{target: tree-shaking}}
 
 # 在打包环境中使用 ECharts
 

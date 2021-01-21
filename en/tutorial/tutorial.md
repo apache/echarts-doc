@@ -1,7 +1,7 @@
 {{ target: tutorial }}
 
 {{ import: getting-started }}
-{{ import: minimal-import }}
+{{ import: tree-shaking }}
 {{ import: basic-concepts-overview }}
 {{ import: styling }}
 {{ import: style-overview }}
