@@ -19,3 +19,4 @@
 {{ import: headless }}
 {{ import: renderer }}
 {{ import: aria }}
+{{ import: upgrade-guide-v5 }}

@@ -23,3 +23,4 @@
 {{ import: aria }}
 {{ import: echarts-gl }}
 {{ import: weixin-application }}
+{{ import: upgrade-guide-v5 }}
