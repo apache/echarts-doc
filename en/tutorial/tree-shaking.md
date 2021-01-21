@@ -49,7 +49,7 @@ import * as echarts from 'echarts/core';
 import {
     BarChart
 } from 'echarts/charts';
-// import the prompt box, title, and rectangular coordinate system components, all suffixed with Component
+// import the tooltip, title, and rectangular coordinate system components, all suffixed with Component
 import {
     TitleComponent,
     TooltipComponent,

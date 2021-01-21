@@ -83,6 +83,35 @@ echarts.connect([chart1, chart2]);
 ```
 获取 dom 容器上的实例。
 
+## use(Function)
+
+> `5.0.1` 开始支持
+
+使用组件，配合新的按需引入的接口使用。
+
+```js
+// 引入 echarts 核心模块，核心模块提供了 echarts 使用必须要的接口。
+import * as echarts from 'echarts/core';
+// 引入柱状图图表，图表后缀都为 Chart
+import {
+    BarChart
+} from 'echarts/charts';
+// 引入直角坐标系组件，组件后缀都为 Component
+import {
+    GridComponent
+} from 'echarts/components';
+// 引入 Canvas 渲染器，注意引入 CanvasRenderer 或者 SVGRenderer 是必须的一步
+import {
+    CanvasRenderer
+} from 'echarts/renderers';
+
+// 注册必须的组件
+echarts.use(
+    [GridComponent, BarChart, CanvasRenderer]
+);
+```
+更详细的使用方式见 [在打包环境中使用 ECharts](tutorial.html#在打包环境中使用%20ECharts) 一文
+
 ## registerMap(Function)
 ```js
 (mapName: string, geoJson: Object, specialAreas?: Object)
@@ -155,6 +184,8 @@ echarts.registerMap('USA', usaJson, {
 注册主题，用于[初始化实例](~echarts.init)的时候指定。
 
 ## registerLocale(Function)
+
+> 从 `5.0.0` 开始支持
 
 ```js
 (locale: string, localeCfg: Object)

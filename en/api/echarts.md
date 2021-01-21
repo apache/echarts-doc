@@ -83,6 +83,36 @@ Destroys chart instance, after which the instance cannot be used any more.
 ```
 Returns chart instance of dom container.
 
+## use(Function)
+
+> Since `5.0.1`
+
+Use components. Used with the new tree-shaking API.
+
+```js
+// Import the echarts core module, which provides the necessary interfaces for using echarts.
+import * as echarts from 'echarts/core';
+// Import bar charts, all with Chart suffix
+import {
+    BarChart
+} from 'echarts/charts';
+// import rectangular coordinate system component, all suffixed with Component
+import {
+    GridComponent
+} from 'echarts/components';
+// Import the Canvas renderer, note that introducing the CanvasRenderer or SVGRenderer is a required step
+import {
+    CanvasRenderer
+} from 'echarts/renderers';
+
+// Register the required components
+echarts.use(
+    [GridComponent, BarChart, CanvasRenderer]
+);
+```
+
+See [Use ECharts with bundler and NPM](tutorial.html#Use%20ECharts%20with%20bundler%20and%20NPM) for more detailed explaination.
+
 ## registerMap(Function)
 ```js
 (mapName: string, geoJson: Object, specialAreas?: Object)
@@ -156,6 +186,8 @@ Registers a theme, should be specified when [initialize the chart instance](~ech
 
 
 ## registerLocale(Function)
+
+> Since `5.0.0`
 
 ```js
 (locale: string, localeCfg: Object)
