@@ -3,7 +3,6 @@ const marked = require('marked');
 const etpl = require('../dep/etpl');
 const globby = require('globby');
 const htmlparser2 = require('htmlparser2');
-const chalk = require('chalk');
 
 async function convert(opts) {
     const mdPath = opts.path;

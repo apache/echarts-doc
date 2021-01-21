@@ -3,9 +3,9 @@
 # ECharst 5 升级指南
 
 
-本指南面向那些希望将 echarts 4.x（以下简称 `v4`）升级到 echarts 5.x（以下简称 `v5`）的用户。`v5` 的新功能可以在这个 [文档](xxx) 中查看。绝大多数情况下，我们用不着为这个升级做什么额外的事，因为 echarts 一直尽可能地保持 API 的稳定和向后兼容。但是，`v5` 仍然带来了一些非兼容改动，需要使用者关注。此外，在一些情况下，`v5` 提供了一些更好的 API，并不再推荐使用一些以前的 API（当然，仍保持兼容他们）。这篇文档，会尽力详尽得解释它们。
+本指南面向那些希望将 echarts 4.x（以下简称 `v4`）升级到 echarts 5.x（以下简称 `v5`）的用户。大家可以在 [ECharts 5 新特性](xxx) 中了解这次`v5`带来了哪些值得升级的新特性。在绝大多数情况下，开发者用不着为这个升级做什么额外的事，因为 echarts 一直尽可能地保持 API 的稳定和向后兼容。但是，`v5` 仍然带来了一些非兼容改动，需要特别关注。此外，在一些情况下，`v5` 提供了更好的 API 用来取代之前的 API，这些被取代的 API 将不再被推荐使用（当然，我们尽量兼容了这些改动）。我们会在这篇文档里尽量详尽得解释这些改动。
 
-因为 `v5.0.1` 带来了一个重要功能，[显式模块注册](tutorial.html#%E5%9C%A8%E6%89%93%E5%8C%85%E7%8E%AF%E5%A2%83%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts)。所以本文档基于 `v5.0.1` 或者更高的版本。
+因为我们在 `v5.0.1` 增加了新的[按需引入接口](tutorial.html#%E5%9C%A8%E6%89%93%E5%8C%85%E7%8E%AF%E5%A2%83%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts)，所以本文档基于 `v5.0.1` 或者更高的版本。
 
 
 ## 非兼容性改变
@@ -13,7 +13,7 @@
 
 ### 默认主题（theme）
 
-`v5` 改变了默认主题中的颜色。如果使用者想改回 `v4` 的颜色，可以手动声明颜色，如下：
+首先是默认主题的改动，`v5` 在配色等主题设计上做了很多的优化来达到更好的视觉效果。如果大家依旧想保留旧版本的颜色，可以手动声明颜色，如下：
 ```js
 chart.setOption({
     color: [
@@ -39,7 +39,7 @@ chart.setOption(/* ... */);
 ### 引用 ECharts
 
 
-#### 从 `lib` 中引用
+#### 去除 default exports 的支持
 
 如果使用者在 `v4` 中这样引用了 echarts：
 ```js
@@ -62,67 +62,63 @@ import * as echarts from 'echarts';
 ```
 
 
-#### 从 `src` 中引用
+#### 按需引入
 
-如果一个使用 echarts 的 JavaScript 工程，在 `v4` 中引用了 `src/echarts.js`，`src/chart/*.js` 或 `src/component/*.js`，例如：
-```js
-import * as echarts from 'echarts/src/echarts';
-import 'echarts/src/chart/bar';
-import 'echarts/src/component/grid';
-```
-`v5` 不再支持这种做法，因为所有 `echarts/src` 中的文件，都已经变为了 `*.ts`，不再是 `js` 文件。
+在 5.0.1 中，我们引入了新的[按需引入接口](tutorial.html#%E5%9C%A8%E6%89%93%E5%8C%85%E7%8E%AF%E5%A2%83%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts)
 
-其实 `v5` 不再推荐从 `echarts/src` 引用文件。使用者可以这样更改代码：
 ```js
-import * as echarts from 'echarts/index.blank';
+import * as echarts from 'echarts/core';
 import { BarChart } from 'echarts/charts';
 import { GridComponent } from 'echarts/components';
+// 注意，新的接口中默认不再包含 Canvas 渲染器，需要显示引入，如果需要使用 SVG 渲染模式则使用 SVGRenderer
+import { CanvasRenderer } from 'echarts/renderers';
 
-echarts.use([BarChart, GridComponent]);
+echarts.use([BarChart, GridComponent, CanvasRenderer]);
 ```
 
-charts 和 components 的完整列表，见 [charts@5.0.1](https://cdn.jsdelivr.net/npm/echarts@5.0.1/lib/export/charts.js)，[components@5.0.1](https://cdn.jsdelivr.net/npm/echarts@5.0.1/lib/export/components.js)。
+为了方便大家了解自己的配置项需要引入哪些模块，我们新的示例编辑页面添加了生成按需引入代码的功能，大家可以在示例编辑页的`完整代码`标签下选中按需引入后查看需要引入的模块以及相关代码。
 
+在大部分情况下，我们都推荐大家尽可能用这套新的按需引入接口，它可以最大程度的利用打包工具 tree-shaking 的能力，并且可以有效解决命名空间冲突的问题而且防止了内部结构的暴露。如果你依旧在使用 CommonJS 的模块写法，之前的方式我们也依旧是支持的：
 
-
-#### 无障碍访问（`aria`）的引用
-
-`v5` 里 [echarts/dist/echarts.simple(.min).js](https://cdn.jsdelivr.net/npm/echarts@5.0.1/dist/echarts.simple.js) 和 [echarts/index.simple.js](https://cdn.jsdelivr.net/npm/echarts@5.0.1/index.simple.js) 不再默认引用 [无障碍访问（aria）](option.html#aria) 了。
-
-如果使用者在用 [echarts/dist/echarts(.min).js](https://cdn.jsdelivr.net/npm/echarts@5.0.1/dist/echarts.js) 或者 [echarts/dist/echarts.common(.min).js](https://cdn.jsdelivr.net/npm/echarts@5.0.1/dist/echarts.common.js) 或者
 ```js
-import * as echarts from 'echarts';
+const echarts = require('echarts/lib/echarts');
+require('echarts/lib/chart/bar');
+require('echarts/lib/component/grid');
 ```
-或者
+
+其次，因为我们的源代码已使用 TypeScript 重写，`v5` 将不再支持从 `echarts/src` 引用文件。
+
+
+#### 依赖调整
+
+> 注意：该部分只针对为了保证较小的打包体积而是用按需引入接口的开发者，如果是全量引入的不需要关注
+
+为了保证 tree-shaking 后的体积足够小，我们去除了一些之前会默认被打包进来的依赖。比如前面提到的在使用新的按需引入接口的时候，`CanvasRenderer`讲不再被默认引入，这样可以保证只需要使用 SVG 渲染模式的时候不会把不需要的 Canvas 渲染代码也一起打包进来，除此之外，还有下面这些依赖的调整：
+
++ 在使用折线图，柱状图中不再默认引入直角坐标系组件，因此之前使用下面的引入方式
 ```js
-import * as echarts from 'echarts/index.common';
+const echarts = require('echarts/lib/echarts');
+require('echarts/lib/chart/bar');
+require('echarts/lib/chart/line');
 ```
-那么，关于 [无障碍访问（aria）](option.html#aria)，开发者不用改任何东西。因为上述文件和模块仍然对其有默认引用。
-
-但是，如果使用者在用 [echarts/dist/echarts.simple(.min).js](https://cdn.jsdelivr.net/npm/echarts@5.0.1/dist/echarts.simple.js) 或者
+需要再单独引入`grid`组件
 ```js
-import * as echarts from 'echarts/index.simple';
-```
-那么需要更改代码，手动引用一下 [无障碍访问（aria）](option.html#aria) 模块，例如：
-```js
-import * as echarts from 'echarts/index.simple';
-import { AriaComponent } from 'echarts/components';
-
-echarts.use([AriaComponent]);
+require('echarts/lib/component/grid');
 ```
 
+参考 issue：[#14080](https://github.com/apache/echarts/issues/14080), [#13764](https://github.com/apache/echarts/issues/13764)
 
-### 内置的 geoJSON
++ 默认不再引入`aria`组件，在打包文件 [echarts/dist/echarts.simple(.min).js](https://cdn.jsdelivr.net/npm/echarts@5.0.1/dist/echarts.simple.js) 也不再默认包含`aria`组件。
 
-`v5` 移除了内置的 geoJSON（原先在 `echarts/map` 文件夹下）。这些 geoJSON 文件本就一直来源于第三方。如果使用者仍然需要他们，可以去从老版本中得到，或者自己准备它们。
+### 去除内置的 geoJSON
 
+`v5` 移除了内置的 geoJSON（原先在 `echarts/map` 文件夹下）。这些 geoJSON 文件本就一直来源于第三方。如果使用者仍然需要他们，可以去从老版本中得到，或者自己寻找更合适的数据然后通过 registerMap 接口注册到 ECharts 中。
 
-### 老 IE8
+### 浏览器兼容性
 
-`v5` 不再支持老 IE8 。具体来说，之前的 [VML 渲染器](https://github.com/ecomfe/zrender/tree/4.3.2/src/vml)（IE8 渲染所须）没有再取升级使它能运行在 `v5` 里。如果使用者确实有很强的需求，那么欢迎提 pull request 来升级 VML 渲染器，或者做个第三方 VML 渲染器，以为 `v5.0.1` 开始已经可以注册独立的渲染器了。
+`v5` 不再支持 IE8 浏览器。我们不再继续维护和升级之前的 [VML 渲染器](https://github.com/ecomfe/zrender/tree/4.3.2/src/vml) 来着实现 IE8 的兼容。如果使用者确实有很强的需求，那么欢迎提 pull request 来升级 VML 渲染器，或者单独维护一个第三方 VML 渲染器，我们从 `v5.0.1` 开始支持注册独立的渲染器了。
 
-
-### ECharts Option
+### ECharts 配置项调整
 
 #### 视觉样式设置的优先级改变
 
@@ -135,10 +131,9 @@ echarts.use([AriaComponent]);
 
 #### 富文本的 `padding`
 
-`v5` 修正了 `v4` 里 [rich.?.padding](option.html#series-scatter.label.rich.<style_name>.padding) 的含义问题。`v4` 里，例如 `rich.?.padding: [11, 22, 33, 44]` 表示 `padding-top` 是 `33` 且 `padding-bottom` 是 `11`。这是个有问题的实现，因为它和 CSS 的习惯做法不符合。`v5` 改为了符合习惯的解释方式，`rich.?.padding: [11, 22, 33, 44]` 表示  `padding-top` 是 `11` 且 `padding-bottom` 是 `33`。
+`v5` 调整了 [rich.?.padding](option.html#series-scatter.label.rich.<style_name>.padding) 的格式使其更符合 CSS 的规范。`v4` 里，例如 `rich.?.padding: [11, 22, 33, 44]` 表示 `padding-top` 是 `33` 且 `padding-bottom` 是 `11`。在 `v5` 中调整了上下的位置，`rich.?.padding: [11, 22, 33, 44]` 表示  `padding-top` 是 `11` 且 `padding-bottom` 是 `33`。
 
-如果使用者有在使用 [rich.?.padding](option.html#series-scatter.label.rich.<style_name>.padding)，需要修改他们。
-
+如果使用者有在使用 [rich.?.padding](option.html#series-scatter.label.rich.<style_name>.padding)，需要注意调整下这个顺序。
 
 ## ECharts 的相关扩展
 
@@ -154,9 +149,9 @@ echarts.use([AriaComponent]);
 
 ## 不再推荐使用的 API
 
-一些 API（包括函数接口和 echarts option）在 `v5` 中不再推荐使用。当然，使用者**仍然可以用他们**，只会在 dev 模式下，在 console 中打印一些 warning，其他并不会有什么影响。但是从长远维护考虑，如果使用者有时间的话，还是推荐升级成新的替代 API。
+一些 API（包括函数接口和 echarts option）在 `v5` 中不再推荐使用。当然，使用者**仍然可以用他们**，只会在 dev 模式下，在 console 中打印一些 warning，并不会有什么影响。但是从长远维护考虑，我们还是推荐升级成新的 API。
 
-这些不再推荐使用的 API 和他们的替代品，列表如下：
+下面是不再推荐使用的 API 以及推荐的新 API：
 
 + 图形元素 transform 相关的属性被改变了：
     + 变更点：
