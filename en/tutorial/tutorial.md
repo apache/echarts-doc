@@ -1,6 +1,8 @@
 {{ target: tutorial }}
 
 {{ import: getting-started }}
+{{ import: whats-new-in-echarts-v5 }}
+{{ import: upgrade-guide-v5 }}
 {{ import: tree-shaking }}
 {{ import: basic-concepts-overview }}
 {{ import: styling }}
@@ -19,4 +21,3 @@
 {{ import: headless }}
 {{ import: renderer }}
 {{ import: aria }}
-{{ import: upgrade-guide-v5 }}

@@ -1,6 +1,8 @@
 {{ target: tutorial }}
 
 {{ import: getting-started }}
+{{ import: whats-new-in-echarts-v5 }}
+{{ import: upgrade-guide-v5 }}
 {{ import: tree-shaking }}
 {{ import: basic-concept-overview }}
 {{ import: styling }}
@@ -23,4 +25,3 @@
 {{ import: aria }}
 {{ import: echarts-gl }}
 {{ import: weixin-application }}
-{{ import: upgrade-guide-v5 }}
