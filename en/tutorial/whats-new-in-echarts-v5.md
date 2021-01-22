@@ -1,6 +1,6 @@
 {{target: whats-new-in-echarts-v5}}
 
-# New features in ECharts 5
+# New Features in ECharts 5
 
 Data visualization has come a long way in the last few years. Developers no longer expect visualization products to be simple chart creation tools, but have more advanced needs in terms of interaction, performance, data processing, and more.
 
@@ -50,8 +50,6 @@ Labels are one of the core elements of a chart, and clear and unambiguous labels
 
 By default, Apache ECharts 5 will automatically hide overlapping labels. Labels that are outside the display area are automatically truncated or line wrapped. Dense pie chart labels now have a more aesthetically pleasing automatic layout.
 
-(Example)
-
 These features can help avoid too dense text affecting readability. Also, no additional code needs to be written by the developer for this to take effect by default, greatly simplifying development costs for developers.
 
 We also provide several configuration options to allow developers to actively control the layout strategy of tabs, such as tab dragging, displaying them as a whole at the edge of the canvas, connecting them with guide lines and graphic elements, and still linking to highlight to express the association.
@@ -66,13 +64,14 @@ First of all, the timeline is no longer split absolutely evenly as before, but i
 
 Tooltip is one of the most commonly used visualization components to help users interactively understand the details of data. In Apache ECharts 5, we have optimized the style of the tooltip box to provide a visualization-compliant design for different chart families. And the rendering logic of rich text has been improved to ensure that the display is consistent with the HTML way, allowing users to choose different technical solutions to achieve the same effect in different scenarios.
 
-#### dashboard
+#### Gauge
 
-We have seen many cool dashboard charts created by community users, but the way they are configured is often complex and tricky. Therefore, we have upgraded the dashboard to support image or vector path drawing pointers, anchor configurations, progress bars, rounded corner effects, and more.
+We have seen many cool gauge charts created by community users, but the way they are configured is often complex and tricky. Therefore, we have upgraded the gauge to support image or vector path drawing pointers, anchor configurations, progress bars, rounded corner effects, and more.
 
 These upgrades not only allow developers to achieve cool effects with simpler configuration items, but also bring richer customization capabilities.
 
-~[400x400](${galleryViewPath}line-race&edit=1&reset=1)
+~[600x600](${galleryViewPath}gauge-clock&edit=1&reset=1)
+
 
 #### Scalloped rounded corners
 
