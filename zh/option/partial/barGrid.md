@@ -41,6 +41,12 @@
 
 柱条最小高度，可用于防止某数据项的值过小而影响交互。
 
+## barMinAngle(number) = 0
+
+柱条最小角度，可用于防止某数据项的值过小而影响交互。
+
+仅对极坐标系柱状图有效。
+
 <ExampleUIControlNumber min="0" />
 
 ## barGap(string) = ${barGapDefault|default('30%')}
