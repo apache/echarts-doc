@@ -41,6 +41,10 @@ Has higer priority than [barWidth](~series-bar.barWidth).
 
 The minimum width of bar. It could be used to avoid the following situation: the interaction would be affected when the value of some data item is too small.
 
+## barMinAngle(number) = 0
+
+The minimum angle of bar. It could be used to avoid the following situation: the interaction would be affected when the value of some data item is too small. Valid only for bar series on polar coordinates.
+
 <ExampleUIControlNumber min="0" />
 
 ## barGap(string) = ${barGapDefault|default('30%')}
