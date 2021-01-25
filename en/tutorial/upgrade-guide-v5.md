@@ -4,7 +4,7 @@
 
 This guide is for those who want to upgrade from echarts 4.x (hereafter `v4`) to echarts 5.x (hereafter `v5`). You can find out what new features `v5` brings that are worth upgrading in [New Features in ECharts 5](tutorial.html#ECharts%205%20Upgrade%20Guide). In most cases, developers won't need to do anything extra for this upgrade, as echarts has always tried to keep the API as stable and backward-compatible as possible. However, `v5` still brings some breaking changes that require special attention. In addition, in some cases, `v5` provides a better API to replace the previous one, and these superseded APIs will no longer be recommended (though we have tried to be as compatible as possible with these changes). We'll try to explain these changes in detail in this document.
 
-Since we added the new [tree-shaking API](tutorial.html#%E5%9C%A8%E6%89%93%E5%8C%85%E7%8E%AF%E5%A2%83%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts) in `v5.0.1`, this documentation is based on `v5.0.1` or higher.
+Since we added the new [tree-shaking API](tutorial.html#Use%20ECharts%20with%20bundler%20and%20NPM) in `v5.0.1`, this documentation is based on `v5.0.1` or higher.
 
 
 ## Breaking Changes
@@ -58,7 +58,7 @@ import * as echarts from 'echarts/lib/echarts';
 
 ##### tree-shaking API
 
-In 5.0.1, we introduced the new [tree-shaking API](tutorial.html#%E5%9C%A8%E6%89%93%E5%8C%85%E7%8E%AF%E5%A2%83%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts)
+In 5.0.1, we introduced the new [tree-shaking API](tutorial.html#Use%20ECharts%20with%20bundler%20and%20NPM)
 
 ```js
 import * as echarts from 'echarts/core';
