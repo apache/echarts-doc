@@ -1,6 +1,15 @@
 {{target: whats-new-in-echarts-v5}}
 
+
 # ECharts 5 新特性
+
+<a href="https://echarts-5-live.bj.bcebos.com/echarts-5-event.html?ref=ec-tutorial" target="_blank">
+   <picture>
+      <source type="image/webp" srcset="https://cdn.jsdelivr.net/gh/apache/echarts-website@asf-site/zh/images/event/20200128-apache-echarts-5.webp" />
+      <source type="image/png" srcset="https://cdn.jsdelivr.net/gh/apache/echarts-website@asf-site/zh/images/event/20200128-apache-echarts-5.png" />
+      <img width="700px" src="https://cdn.jsdelivr.net/gh/apache/echarts-website@asf-site/zh/images/event/20200128-apache-echarts-5.png" />
+   </picture>
+</a>
 
 数据可视化在过去的几年中得到了长足的发展。开发者对于可视化产品的期待不再是简单的图表创建工具，而在交互、性能、数据处理等方面有了更高级的需求。
 
