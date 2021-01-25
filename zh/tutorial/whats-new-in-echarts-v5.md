@@ -43,7 +43,16 @@ Apache ECharts 5 新增支持动态排序柱状图（bar-racing）以及动态�
 
 <img src="documents/asset/img/feature-v5/theme-color.png" width="400px" />
 
-对于有进一步需要高对比度的场景，我们额外提供了高对比度主题样式，开发者可以方便地为需要特殊帮助的人群提供特殊的样式。
+我们以最常用的柱状图为例，来看看新版本浅色主题和深色主题的样式：
+
+<img src="documents/asset/img/feature-v5/new-theme-light.png" width="500px" />
+<img src="documents/asset/img/feature-v5/new-theme-dark.png" width="500px" />
+
+对于 dataZoom，时间轴等交互组件，我们也设计了全新的样式并且提供了更好的交互体验：
+
+<img src="documents/asset/img/feature-v5/dataZoom.png" width="500px" />
+
+<img src="documents/asset/img/feature-v5/timeline.png" width="500px" />
 
 #### 标签
 
