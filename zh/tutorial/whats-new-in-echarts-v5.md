@@ -20,7 +20,7 @@ Apache ECharts 始终致力于让开发者以更方便的方式创造灵活丰�
 
 Apache ECharts 5 新增支持动态排序柱状图（bar-racing）以及动态排序折线图（line-racing），帮助开发者方便地创建带有时序性的图表，展现数据随着时间维度上的变化，讲述数据的演变过程。
 
-~[700x300](${galleryViewPath}bar-race&edit=1&reset=1)
+~[700x400](${galleryViewPath}bar-race-country&edit=1&reset=1)
 
 ~[700x400](${galleryViewPath}line-race&edit=1&reset=1)
 
