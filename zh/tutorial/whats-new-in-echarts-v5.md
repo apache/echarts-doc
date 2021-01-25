@@ -48,7 +48,7 @@ Apache ECharts 5 新增支持动态排序柱状图（bar-racing）以及动态�
 <img src="documents/asset/img/feature-v5/new-theme-light.png" width="500px" />
 <img src="documents/asset/img/feature-v5/new-theme-dark.png" width="500px" />
 
-对于 dataZoom，时间轴等交互组件，我们也设计了全新的样式并且提供了更好的交互体验：
+对于数据区域缩放，时间轴等交互组件，我们也设计了全新的样式并且提供了更好的交互体验：
 
 <img src="documents/asset/img/feature-v5/dataZoom.png" width="500px" />
 
