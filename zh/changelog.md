@@ -90,7 +90,7 @@
 + 其他功能、改进和问题修复。
     + [Feature] 改进了 `parseDate`。参见 [#13044](https://github.com/apache/incubator-echarts/pull/13044)。
     + [Feature] 当线处于 `emphasis` 状态时，加粗。参见 [#13013](https://github.com/apache/incubator-echarts/pull/13013)。
-    + [Feature] 桑吉图 （`sankey`）支持了 `lineStyle: {color: 'gradient'}`。
+    + [Feature] 桑基图 （`sankey`）支持了 `lineStyle: {color: 'gradient'}`。
     + [Feature] `markPoint.data.type` 和 `markArea.data.type` 支持了值 `'median'`。
     + [Feature] 在一些特定情况下，坐标轴支持了过滤数据。参见 [#12832](https://github.com/apache/incubator-echarts/pull/12832)。
     + [Enhancement] 当不再进行绘制时，暂停 `requestAnimationFrame` 的循环。
