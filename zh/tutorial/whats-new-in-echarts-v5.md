@@ -1,6 +1,15 @@
 {{target: whats-new-in-echarts-v5}}
 
+
 # ECharts 5 新特性
+
+<a href="https://echarts-5-live.bj.bcebos.com/echarts-5-event.html?ref=ec-tutorial" target="_blank">
+   <picture>
+      <source type="image/webp" srcset="https://cdn.jsdelivr.net/gh/apache/echarts-website@asf-site/zh/images/event/20200128-apache-echarts-5.webp" />
+      <source type="image/png" srcset="https://cdn.jsdelivr.net/gh/apache/echarts-website@asf-site/zh/images/event/20200128-apache-echarts-5.png" />
+      <img width="700px" src="https://cdn.jsdelivr.net/gh/apache/echarts-website@asf-site/zh/images/event/20200128-apache-echarts-5.png" />
+   </picture>
+</a>
 
 数据可视化在过去的几年中得到了长足的发展。开发者对于可视化产品的期待不再是简单的图表创建工具，而在交互、性能、数据处理等方面有了更高级的需求。
 
@@ -20,7 +29,7 @@ Apache ECharts 始终致力于让开发者以更方便的方式创造灵活丰�
 
 Apache ECharts 5 新增支持动态排序柱状图（bar-racing）以及动态排序折线图（line-racing），帮助开发者方便地创建带有时序性的图表，展现数据随着时间维度上的变化，讲述数据的演变过程。
 
-~[700x300](${galleryViewPath}bar-race&edit=1&reset=1)
+~[700x400](${galleryViewPath}bar-race-country&edit=1&reset=1)
 
 ~[700x400](${galleryViewPath}line-race&edit=1&reset=1)
 
@@ -28,7 +37,7 @@ Apache ECharts 5 新增支持动态排序柱状图（bar-racing）以及动态�
 
 #### 自定义系列动画
 
-除了动态排序图，Apache ECharts 5 在自定义系列中提供了更加丰富强大的动画效果，支持标签数值文本的插值动画，图形的形变（morph）、分裂（combine）、合并（separate）等效果的过渡动画。
+除了动态排序图，Apache ECharts 5 在自定义系列中提供了更加丰富强大的动画效果，支持标签数值文本的插值动画，图形的形变（morph）、分裂（separate）、合并（combine）等效果的过渡动画。
 
 想象一下，用这些动态效果，你可以创造出多么令人称奇的可视化作品！
 
@@ -43,7 +52,16 @@ Apache ECharts 5 新增支持动态排序柱状图（bar-racing）以及动态�
 
 <img src="documents/asset/img/feature-v5/theme-color.png" width="400px" />
 
-对于有进一步需要高对比度的场景，我们额外提供了高对比度主题样式，开发者可以方便地为需要特殊帮助的人群提供特殊的样式。
+我们以最常用的柱状图为例，来看看新版本浅色主题和深色主题的样式：
+
+<img src="documents/asset/img/feature-v5/new-theme-light.png" width="500px" />
+<img src="documents/asset/img/feature-v5/new-theme-dark.png" width="500px" />
+
+对于数据区域缩放，时间轴等交互组件，我们也设计了全新的样式并且提供了更好的交互体验：
+
+<img src="documents/asset/img/feature-v5/dataZoom.png" width="500px" />
+
+<img src="documents/asset/img/feature-v5/timeline.png" width="500px" />
 
 #### 标签
 
