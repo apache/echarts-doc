@@ -3,7 +3,7 @@
 
 # Server-side Rendering
 
-Apache ECharts<sup>TM</sup> can be rendered at server-side. For example, the thumbnails in the [official examples page](https://echarts.apache.org/examples/en/index.html/) are generated at a server.
+Apache ECharts<sup>TM</sup> can be rendered at server-side. For example, the thumbnails in the [official examples page](https://echarts.apache.org/examples/en/index.html) are generated at a server.
 
 Commonly used headless tool is required, for example, [puppeteer](https://github.com/GoogleChrome/puppeteer), [headless chrome](https://chromium.googlesource.com/chromium/src/+/lkgr/headless/README.md), [node-canvas](https://github.com/Automattic/node-canvas), [jsdom](https://github.com/jsdom/jsdom), [PhantomJS](http://phantomjs.org/), etc.
 
