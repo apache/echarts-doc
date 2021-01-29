@@ -1330,6 +1330,133 @@ Whether the element is visible.
 
 Whether the element is totally ignored (neither render nor listen events).
 
+##${prefix} textContent(Object)
+
+Text block attached to an element and layout based on the element by `textConfig`.
+{{ if: ${usageType} === 'customSeries' }}
+The props the the same as [text](option.html#series-custom.renderItem.return_text).
+{{ else }}
+The props the the same as [text](option.html#graphic.elements-text).
+{{ /if }}
+
+##${prefix} textConfig(Object)
+
+###${prefix} position() = 'inside'
+
+Position of `textContent`.
+
++ 'left'
++ 'right'
++ 'top'
++ 'bottom'
++ 'inside'
++ 'insideLeft'
++ 'insideRight'
++ 'insideTop'
++ 'insideBottom'
++ 'insideTopLeft'
++ 'insideTopRight'
++ 'insideBottomLeft'
++ 'insideBottomRight'
++ or like `[12, 33]`
++ or like `['50%', '50%']`
+
+###${prefix} rotation(number)
+
+Rotation of `textContent`. In radian.
+
+###${prefix} layoutRect(Object)
+
+Rect that `textContent` will be positioned.
+Default to be the bounding box of host element.
+
+```js
+{
+    x: number
+    y: number
+    width: number
+    height: number
+}
+```
+
+###${prefix} offset(number[])
+
+Offset of the `textContent`.
+
+The difference of `offset` and `position` is that `offset` will be applied in the rotation.
+
+###${prefix} origin
+
+`origin` is relative to the bounding box of the host element.
+Can be percent value. Relative to the bounding box.
+If `'center'` specified, it will be center of the bounding box.
+
+Only available when position and rotation are both set.
+
++ like `[12, 33]`
++ or like `['50%', '50%']`
++ 'center'
+
+###${prefix} distance(number) = 5
+
+Distance to the `layoutRect`。
+
+###${prefix} local(boolean) = false
+
+If `true`, it will apply host's transform.
+
+###${prefix} insideFill(string)
+
+`insideFill` is a color string or left empty.
+
+If a `textContent` is `"inside"`, its final `fill` will be picked by this priority:
+`textContent.style.fill` > `textConfig.insideFill` > "auto-calculated-fill"
+In most cases, "auto-calculated-fill" is white.
+
+###${prefix} insideStroke(string)
+
+`insideStroke` is a color string or left empty.
+
+If a `textContent` is `"inside"`, its final `stroke` will be picked by this priority:
+`textContent.style.stroke` > `textConfig.insideStroke` > "auto-calculated-stroke"
+
+The rule of getting "auto-calculated-stroke":
+
++ If
+    + (A) the `fill` is specified in style (either in `textContent.style` or `textContent.style.rich`)
+    + or (B) needed to draw text background (either defined in `textContent.style` or `textContent.style.rich`)
+    + "auto-calculated-stroke" will be null.
++ Otherwise
+    + "auto-calculated-stroke" will be the same as `fill` of this element if possible, or null.
+
+###${prefix} outsideFill(string)
+
+`outsideFill` is a color string or left empty.
+
+If a `textContent` is "inside", its final `fill` will be picked by this priority:
+`textContent.style.fill` > `textConfig.outsideFill` > #000
+
+###${prefix} outsideStroke(string)
+
+`outsideStroke` is a color string or left empty.
+
+If a `textContent` is not "inside", its final `stroke` will be picked by this priority:
+`textContent.style.stroke` > `textConfig.outsideStroke` > "auto-calculated-stroke"
+
+The rule of getting "auto-calculated-stroke":
+
++ If
+    + (A) the `fill` is specified in style (either in `textContent.style` or `textContent.style.rich`)
+    + or (B) needed to draw text background (either defined in `textContent.style` or `textContent.style.rich`)
+    + "auto-calculated-stroke" will be null.
++ Otherwise
+    + "auto-calculated-stroke" will be a near white color to distinguish "front end" label with messy background (like other text label, line or other graphic).
+
+###${prefix} inside(boolean)
+
+Tell echarts that I can make sure this text is inside or not.
+
+
 {{ if: ${usageType} === 'customSeries' }}
 {{ use: partial-custom-series-during(
     prefix = ${prefix}
