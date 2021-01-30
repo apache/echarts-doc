@@ -89,6 +89,8 @@ Returns chart instance of dom container.
 
 Use components. Used with the new tree-shaking API.
 
+NOTE: `echarts.use` must be used before `eharts.init`
+
 ```js
 // Import the echarts core module, which provides the necessary interfaces for using echarts.
 import * as echarts from 'echarts/core';

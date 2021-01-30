@@ -89,6 +89,8 @@ echarts.connect([chart1, chart2]);
 
 使用组件，配合新的按需引入的接口使用。
 
+注意：该方法必须在`echarts.init`之前使用。
+
 ```js
 // 引入 echarts 核心模块，核心模块提供了 echarts 使用必须要的接口。
 import * as echarts from 'echarts/core';

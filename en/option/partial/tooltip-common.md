@@ -274,7 +274,7 @@ formatter: '{b0}: {c0}<br />{b1}: {c1}'
 The format of callback function:
 
 ```js
-(params: Object|Array, ticket: string, callback: (ticket: string, html: string)) => string
+(params: Object|Array, ticket: string, callback: (ticket: string, html: string)) => string | HTMLElement | HTMLElement[]
 ```
 
 The first parameter `params` is the data that the formatter needs. Its format is shown as follows:

@@ -253,7 +253,7 @@
 
 提示框浮层内容格式器，支持字符串模板和回调函数两种形式。
 
-**1, 字符串模板**
+**1. 字符串模板**
 
 模板变量有 `{a}`, `{b}`，`{c}`，`{d}`，`{e}`，分别表示系列名，数据名，数据值等。
 在 [trigger](~tooltip.trigger) 为 `'axis'` 的时候，会有多个系列的数据，此时可以通过 `{a0}`, `{a1}`, `{a2}` 这种后面加索引的方式表示系列的索引。
@@ -276,13 +276,15 @@ formatter: '{b0}: {c0}<br />{b1}: {c1}'
 ```
 
 
-**2, 回调函数**
+**2. 回调函数**
 
 回调函数格式：
 
 ```js
-(params: Object|Array, ticket: string, callback: (ticket: string, html: string)) => string
+(params: Object|Array, ticket: string, callback: (ticket: string, html: string)) => string | HTMLElement | HTMLElement[]
 ```
+
+支持返回 HTML 字符串或者创建的 DOM 实例。
 
 第一个参数 `params` 是 formatter 需要的数据集。格式如下：
 
