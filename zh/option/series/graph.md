@@ -315,13 +315,15 @@ edgeSymbol: ['circle', 'arrow']
 
 {{ use: graph-node-state() }}
 
-## autoCurveness(number|Array) = 20
+## autoCurveness(boolean|number|Array) = false
 
-针对节点之间存在多边的情况，自动计算各边曲率。
+针对节点之间存在多边的情况，自动计算各边曲率，默认不开启。
+
+设置为 `true` 时，开启自动曲率计算，默认边曲率数组长度为 `20`，如果两点间边数大于 `20`，请使用 `number` 或 `Array` 设置边曲率数组。
 
 设置为 `number` 时，表示两点间边曲率数组的长度，由内部算法给出计算结果。
 
-设置为 `Array` 时，表示直接指定曲率数组，多边曲率会从数组中直接按顺序选取。
+设置为 `Array` 时，表示直接指定边曲率数组，多边曲率会从数组中直接按顺序选取。
 
 **注意：** 如果设置 [lineStyle.curveness](~series-graph.lineStyle.curveness) 则此属性失效。
 

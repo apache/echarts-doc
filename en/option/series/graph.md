@@ -309,9 +309,11 @@ Select state of nodes in this category.
 
 {{ use: graph-node-state() }}
 
-## autoCurveness(number|Array) = 20
+## autoCurveness(boolean|number|Array) = false
 
-For the situation where there are multiple links between nodes, the curveness of each link is automatically calculated.
+For the situation where there are multiple links between nodes, the curveness of each link is automatically calculated, not enabled by default.
+
+When set `true` to enable automatic curvature calculation, the default edge curvenness array length is `20`, if the number of edges between two nodes is more than `20`, please use `number` or `Array` to set the edge curvenness array.
 
 When set to `number`, it indicates the length of the edge curvenness array between two nodes, and the calculation result is given by the internal algorithm.
 
