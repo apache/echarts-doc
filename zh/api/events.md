@@ -297,18 +297,6 @@ chart.on('axisareaselected', function () {
 });
 ```
 
-## focusnodeadjacency(Event)
-[graph](option.html#graph)的邻接节点高亮事件。
-
-参见[focusNodeAdjacency](~action.graph.focusNodeAdjacency)。
-
-
-## unfocusnodeadjacency(Event)
-[graph](option.html#graph)的邻接节点取消高亮事件。
-
-参见[unfocusNodeAdjacency](~action.graph.unfocusNodeAdjacency)。
-
-
 ## brush(Event)
 
 “选框正在添加”事件。即发出 [brush action](~action.brush.brush) 得到的事件。

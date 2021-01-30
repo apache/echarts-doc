@@ -299,20 +299,6 @@ chart.on('axisareaselected', function () {
     console.log(indices2);
 });
 ```
-
-
-## focusnodeadjacency(Event)
-Adjacent nodes highlight event in [graph](option.html#graph).
-
-See [focusNodeAdjacency](~action.graph.focusNodeAdjacency).
-
-
-## unfocusnodeadjacency(Event)
-Adjacent nodes reverse-highlight event in [graph](option.html#graph).
-
-See [unfocusNodeAdjacency](~action.graph.unfocusNodeAdjacency).
-
-
 ## brush(Event)
 
 Event triggered after action [brush](~action.brush.brush) dispatched.

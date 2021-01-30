@@ -347,52 +347,6 @@ Actions related to [geo](option.html#geo) component, [geo](option.html#geo) shou
 ) }}
 
 
-## graph
-Actions related to [graph](option.html#series-graph), [graph](option.html#series-graph) should be imported before use.
-
-### focusNodeAdjacency(Action)
-
-Highlight the specified node and all of its adjacent nodes.
-
-```js
-dispatchAction({
-    type: 'focusNodeAdjacency',
-
-    // Use seriesId or seriesIndex or seriesName to specify
-    // the target series.
-    seriesId: 'xxx',
-    seriesIndex: 0,
-    seriesName: 'nnn',
-
-    // Use either `dataIndex` or `edgeDataIndex` to specify
-    // the target node or target edge.
-    dataIndex: 12
-    edgeDataIndex: 5
-})
-```
-
-Event [focusNodeAdjacency](~event.focusNodeAdjacency) will be thrown finally.
-
-### unfocusNodeAdjacency(Action)
-
-Reverse highlight the specified node and all of its adjacent nodes.
-
-```js
-dispatchAction({
-    type: 'unfocusNodeAdjacency',
-
-    // Use seriesId or seriesIndex or seriesName to location the series.
-    seriesId: 'xxx',
-    seriesIndex: 0,
-    seriesName: 'nnn'
-})
-```
-
-Event [unfocusNodeAdjacency](~event.unfocusNodeAdjacency) will be thrown finally.
-
-
-
-
 ## brush
 [brush](option.html#brush) related actions.
 
