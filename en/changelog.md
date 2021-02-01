@@ -1,3 +1,17 @@
+## v5.0.2
+<div class="time">2021-02-01</div>
+
++ [Fix] [dataZoom] Fix icon with 'image://' won't display [#14056](https://github.com/apache/echarts/issues/14056) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [pie] [gauge] Fix `zero` value sector may be incorrectly drawn as a circle. [#699](https://github.com/ecomfe/zrender/issues/699) ([plainheart](https://github.com/plainheart))
++ [Fix] [pie] Fix hiding wrong labels in pie. [#14108](https://github.com/apache/echarts/issues/14108) ([Nick22nd](https://github.com/Nick22nd))
++ [Fix] [toolbox] Fix `yAxisIndex: false` in toolbox dataZoom may have error. [#14175](https://github.com/apache/echarts/issues/14175) ([100pah](https://github.com/100pah))
++ [Fix] [map] Add `geo` as dependency in map. [#14124](https://github.com/apache/echarts/issues/14124) ([pissang](https://github.com/pissang))
++ [Fix] [labelLine] Fix `labelLine` will not been hidden when `label` is switched from outside to inside [#14017](https://github.com/apache/echarts/issues/14017) ([susiwen8](https://github.com/susiwen8))
++ [Fix] Fix image download may have error when not using default `pixelRatio`. [#706](https://github.com/ecomfe/zrender/issues/706) ([plainheart](https://github.com/plainheart))
++ [Fix] [toolbox] Use current `devicePixelRatio` by default for exporting crisp and clear images by default. [#14002](https://github.com/apache/echarts/issues/14002) ([plainheart](https://github.com/plainheart))
++ [Fix] [line] endLabel color support 'auto' 'inherit' [#14000](https://github.com/apache/echarts/issues/14000) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [svg] fix `opacity` may not work in SVG renderer. [#675](https://github.com/ecomfe/zrender/issues/675) ([plainheart](https://github.com/plainheart))
++ [Fix] [type] Optimize event param types [#14155](https://github.com/apache/echarts/issues/14155) ([pissang](https://github.com/pissang))
 ## v5.0.1
 <div class="time">2021-01-11</div>
 
