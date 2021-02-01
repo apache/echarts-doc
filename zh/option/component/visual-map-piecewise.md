@@ -56,7 +56,7 @@ pieces: [
 ]
 ```
 
-或者，更精确得，可以使用 `lt`（小于，little than），`gt`（大于，greater than），`lte`（小于等于 lettle than or equals），`gte`（大于等于，greater than or equals）来表达边界：
+或者，更精确得，可以使用 `lt`（小于，less than），`gt`（大于，greater than），`lte`（小于等于 less than or equals），`gte`（大于等于，greater than or equals）来表达边界：
 
 ```javascript
 pieces: [
