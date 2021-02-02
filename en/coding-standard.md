@@ -49,7 +49,7 @@ default:
 **[MUST]** Set off binary operator with spaces. But place no space between unary operator and its operand.
 
 ```js
-var a = !arr.length;
+let a = !arr.length;
 a++;
 a = b + c;
 ```
@@ -119,14 +119,14 @@ while(condition) {
 
 ```js
 // good
-var obj = {
+const obj = {
     a: 1,
     b: 2,
     c: 3
 };
 
 // bad
-var obj = {
+const obj = {
     a : 1,
     b:2,
     c :3
@@ -142,7 +142,7 @@ var obj = {
 function funcName() {
 }
 
-var funcName = function funcName() {
+const funcName = function funcName() {
 };
 
 funcName();
@@ -153,7 +153,7 @@ funcName();
 function funcName () {
 }
 
-var funcName = function funcName () {
+const funcName = function funcName () {
 };
 
 funcName ();
@@ -205,22 +205,22 @@ while ( len-- ) {
 
 
 // good
-var arr1 = [];
-var arr2 = [1, 2, 3];
-var obj1 = {};
-var obj2 = {name: 'obj'};
-var obj3 = {
+const arr1 = [];
+const arr2 = [1, 2, 3];
+const obj1 = {};
+const obj2 = {name: 'obj'};
+const obj3 = {
     name: 'obj',
     age: 20,
     sex: 1
 };
 
 // bad
-var arr1 = [ ];
-var arr2 = [ 1, 2, 3 ];
-var obj1 = { };
-var obj2 = { name: 'obj' };
-var obj3 = {name: 'obj', age: 20, sex: 1};
+const arr1 = [ ];
+const arr2 = [ 1, 2, 3 ];
+const obj1 = { };
+const obj2 = { name: 'obj' };
+const obj3 = {name: 'obj', age: 20, sex: 1};
 ```
 
 
@@ -250,7 +250,7 @@ if (user.isAuthenticated()
     // Code
 }
 
-var result = number1 + number2 + number3
+const result = number1 + number2 + number3
     + number4 + number5;
 
 
@@ -262,7 +262,7 @@ if (user.isAuthenticated() &&
     // Code
 }
 
-var result = number1 + number2 + number3 +
+const result = number1 + number2 + number3 +
     number4 + number5;
 ```
 
@@ -281,7 +281,7 @@ if (product) {
         sendProduct(user, product);
     }
 }
-var arr = [
+const arr = [
     'candy', 'sugar'
 ];
 
@@ -294,7 +294,7 @@ if (product) {
         sendProduct(user, product);
     }
 }
-var arr = [
+const arr = [
         'candy', 'sugar'
     ];
 ```
@@ -304,7 +304,7 @@ var arr = [
 
 ```js
 // good
-var obj = {
+const obj = {
     a: 1,
     b: 2,
     c: 3
@@ -318,7 +318,7 @@ foo(
 
 
 // bad
-var obj = {
+const obj = {
     a: 1
     , b: 2
     , c: 3
@@ -358,10 +358,10 @@ $('#items')
     .highlight()
     .end();
 
-var result = thisIsAVeryVeryLongCondition
+const result = thisIsAVeryVeryLongCondition
     ? resultA : resultB;
 
-var result = condition
+const res = condition
     ? thisIsAVeryVeryLongResult
     : resultB;
 ```
@@ -436,7 +436,7 @@ function funcName() {
 };
 
 // For function expression, the semicolon must not be ignored.
-var funcName = function () {
+const funcName = function () {
 };
 ```
 
@@ -447,12 +447,12 @@ var funcName = function () {
 ```js
 // good
 
-var obj = {
+const obj = {
     attr1: 'xxx',
     attr2: 'yyy'
 };
 
-var arr = [
+const arr = [
     'xxx',
     'yyy'
 ];
@@ -460,12 +460,12 @@ var arr = [
 
 // bad
 
-var obj = {
+const obj = {
     attr1: 'xxx',
     attr2: 'yyy',
 };
 
-var arr = [
+const arr = [
     'xxx',
     'yyy',
 ];
@@ -478,7 +478,7 @@ var arr = [
 **[MUST]** Use lowerCamelCase for variables, properties and function names.
 
 ```js
-var loadingModules = {};
+const loadingModules = {};
 function loadProduct() {
 }
 ```
@@ -497,7 +497,7 @@ function Element(options) {
 ```js
 function parseSVG() {
 }
-var svgParser;
+const svgParser;
 ```
 
 
@@ -509,10 +509,6 @@ var svgParser;
 
 
 ### Compatibility
-
-**[MUST]** The JavaScript code of ECharts should be based on `ECMAScript Language Specification Edition 3 (ES3)`. The language features that not supported by ES3 (namely, features that are only supported by ES5, ES6 or upper versions) must not be used.
-
-But there is an exception that ES Module can be used.
 
 Language features can be polyfilled by some utilities, but must not by modifying the prototype of the built-in JS objects.
 
@@ -526,13 +522,13 @@ zrUtil.each(array, function (val, index) {
     sum += val;
 });
 
-var result = zrUtil.map(array, function (val) {
+const result = zrUtil.map(array, function (val) {
     return parse(val);
 });
 
-var pos = zrUtil.indexOf(array, val);
+const pos = zrUtil.indexOf(array, val);
 
-var obj2 = zrUtil.extend({}, obj1);
+const obj2 = zrUtil.extend({}, obj1);
 
 function Element() {
     // ...
@@ -551,7 +547,7 @@ let result = array.map(function (val) {
 
 const pos = array.indexOf(val);
 
-var obj2 = Object.assign({}, obj1);
+const obj2 = Object.assign({}, obj1);
 
 class Element {
     // ...
@@ -564,18 +560,18 @@ String.prototype.trim = function () {
 
 ### Variable
 
-**[MUST]** Variables must be declared by `var`. And a `var` can not declares more than one variable.
+**[MUST]** Prefer using `const` to declare variable. And one line can not declares more than one variable.
 
 ```js
 // good
-var name = 'MyName';
-var hangModules = [];
-var missModules = [];
-var visited = {};
+const name = 'MyName';
+const hangModules = [];
+const missModules = [];
+const visited = {};
 
 // bad
 name = 'MyName';
-var hangModules = [],
+const hangModules = [],
     missModules = [],
     visited = {};
 ```
@@ -615,15 +611,15 @@ function clicker() {
     // ......
 }
 
-for (var i = 0, len = elements.length; i < len; i++) {
-    var element = elements[i];
+for (let i = 0, len = elements.length; i < len; i++) {
+    const element = elements[i];
     addListener(element, 'click', clicker);
 }
 
 
 // bad
-for (var i = 0, len = elements.length; i < len; i++) {
-    var element = elements[i];
+for (let i = 0, len = elements.length; i < len; i++) {
+    const element = elements[i];
     addListener(element, 'click', function () {});
 }
 ```
@@ -677,10 +673,10 @@ parseInt(str);
 
 ```js
 // good
-var obj = {};
+const obj = {};
 
 // bad
-var obj = new Object();
+const obj = new Object();
 ```
 
 
@@ -688,17 +684,17 @@ var obj = new Object();
 
 ```js
 // good
-var info = {
+const info = {
     name: 'someone',
     age: 28
 };
 
 // bad
-var info = {
+const info = {
     'name': 'someone',
     'age': 28
 };
-var info2 = {
+const info2 = {
     "age": 40
 };
 ```
@@ -719,8 +715,8 @@ String.prototype.trim = function () {
 **[SUGGEST]** `hasOwnProperty` should be used to when using `for ... in ...`, in case that some extra properties is added on the prototype of `Object` in some runtime environment.
 
 ```js
-var newInfo = {};
-for (var key in info) {
+const newInfo = {};
+for (const key in info) {
     if (info.hasOwnProperty(key)) {
         newInfo[key] = info[key];
     }
@@ -732,11 +728,11 @@ for (var key in info) {
 
 ```js
 // good
-var arr = [];
-var arr2 = new Array(1e4);
+const arr = [];
+const arr2 = new Array(1e4);
 
 // bad
-var arr = new Array();
+const arr = new Array();
 ```
 
 
