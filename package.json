@@ -14,7 +14,7 @@
     "watch:site": "npx webpack --config build/webpack.config.js --mode development --devtool sourcemap --watch",
     "server": "node server.js",
     "format": "node tool/format.js",
-    "dev": "npx concurrently --kill-others \"npm run watch\" \"npm run watch:site\" \"npm run server\""
+    "dev": "npx concurrently --kill-others \"npm:watch\" \"npm:watch:site\" \"npm:server\""
   },
   "license": "Apache License 2.0",
   "devDependencies": {
