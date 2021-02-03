@@ -449,7 +449,7 @@ Label rotation.
 
 #${prefix} borderRadius(number|string|Array)
 
-<ExampleUIControlPercentVector min="0" dims="Inner,Outer" default="'0','0'" />
+<ExampleUIControlPercentVector min="0" dims="Inner,Outer" default="0,0" />
 
 {{ use: partial-version(
     version = "5.0.0"
