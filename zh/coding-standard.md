@@ -49,7 +49,7 @@ default:
 **[强制]** 二元运算符两个操作数之间必须使用空格，但一元运算符与其操作数间不能有空格。 
 
 ```js
-var a = !arr.length;
+let a = !arr.length;
 a++;
 a = b + c;
 ```
@@ -119,14 +119,14 @@ while(condition) {
 
 ```js
 // 正例
-var obj = {
+const obj = {
     a: 1,
     b: 2,
     c: 3
 };
 
 // 反例
-var obj = {
+const obj = {
     a : 1,
     b:2,
     c :3
@@ -142,7 +142,7 @@ var obj = {
 function funcName() {
 }
 
-var funcName = function funcName() {
+const funcName = function funcName() {
 };
 
 funcName();
@@ -153,7 +153,7 @@ funcName();
 function funcName () {
 }
 
-var funcName = function funcName () {
+const funcName = function funcName () {
 };
 
 funcName ();
@@ -205,22 +205,22 @@ while ( len-- ) {
 
 
 // 正例
-var arr1 = [];
-var arr2 = [1, 2, 3];
-var obj1 = {};
-var obj2 = {name: 'obj'};
-var obj3 = {
+const arr1 = [];
+const arr2 = [1, 2, 3];
+const obj1 = {};
+const obj2 = {name: 'obj'};
+const obj3 = {
     name: 'obj',
     age: 20,
     sex: 1
 };
 
 // 反例
-var arr1 = [ ];
-var arr2 = [ 1, 2, 3 ];
-var obj1 = { };
-var obj2 = { name: 'obj' };
-var obj3 = {name: 'obj', age: 20, sex: 1};
+const arr1 = [ ];
+const arr2 = [ 1, 2, 3 ];
+const obj1 = { };
+const obj2 = { name: 'obj' };
+const obj3 = {name: 'obj', age: 20, sex: 1};
 ```
 
 
@@ -250,7 +250,7 @@ if (user.isAuthenticated()
     // Code
 }
 
-var result = number1 + number2 + number3
+const result = number1 + number2 + number3
     + number4 + number5;
 
 
@@ -262,7 +262,7 @@ if (user.isAuthenticated() &&
     // Code
 }
 
-var result = number1 + number2 + number3 +
+const result = number1 + number2 + number3 +
     number4 + number5;
 ```
 
@@ -280,7 +280,7 @@ if (product) {
         sendProduct(user, product);
     }
 }
-var arr = [
+const arr = [
     'candy', 'sugar'
 ];
 
@@ -293,7 +293,7 @@ if (product) {
         sendProduct(user, product);
     }
 }
-var arr = [
+const arr = [
         'candy', 'sugar'
     ];
 ```
@@ -303,7 +303,7 @@ var arr = [
 
 ```js
 // 正例
-var obj = {
+const obj = {
     a: 1,
     b: 2,
     c: 3
@@ -317,7 +317,7 @@ foo(
 
 
 // 反例
-var obj = {
+const obj = {
     a: 1
     , b: 2
     , c: 3
@@ -357,10 +357,10 @@ $('#items')
     .highlight()
     .end();
 
-var result = thisIsAVeryVeryLongCondition
+const result = thisIsAVeryVeryLongCondition
     ? resultA : resultB;
 
-var result = condition
+const res = condition
     ? thisIsAVeryVeryLongResult
     : resultB;
 ```
@@ -435,7 +435,7 @@ function funcName() {
 };
 
 // 对于函数表达式，不能忽略分号
-var funcName = function () {
+const funcName = function () {
 };
 ```
 
@@ -446,12 +446,12 @@ var funcName = function () {
 ```js
 // 正例
 
-var obj = {
+const obj = {
     attr1: 'xxx',
     attr2: 'yyy'
 };
 
-var arr = [
+const arr = [
     'xxx',
     'yyy'
 ];
@@ -459,12 +459,12 @@ var arr = [
 
 // 反例
 
-var obj = {
+const obj = {
     attr1: 'xxx',
     attr2: 'yyy',
 };
 
-var arr = [
+const arr = [
     'xxx',
     'yyy',
 ];
@@ -477,7 +477,7 @@ var arr = [
 **[强制]** 变量名、属性名及函数名的命名必须遵循 lowerCamelCase（小骆驼拼写法）。
 
 ```js
-var loadingModules = {};
+const loadingModules = {};
 function loadProduct() {
 }
 ```
@@ -496,7 +496,7 @@ function Element(options) {
 ```js
 function parseSVG() {
 }
-var svgParser;
+const svgParser;
 ```
 
 
@@ -508,10 +508,6 @@ var svgParser;
 
 
 ### 兼容性
-
-**[强制]** ECharts的JavaScript源代码应基于 `ECMAScript Language Specification Edition 3 (ES3)`，不能使用ES3不支持的语法特性（即不能使用ES5、ES6或更高版本的语法特性）。
-
-但允许使用ES Module。
 
 语法特性可以通过一些工具方法进行弥补，但不能通过修改内置JavaScript对象的原型来实现。
 
@@ -525,13 +521,13 @@ zrUtil.each(array, function (val, index) {
     sum += val;
 });
 
-var result = zrUtil.map(array, function (val) {
+const result = zrUtil.map(array, function (val) {
     return parse(val);
 });
 
-var pos = zrUtil.indexOf(array, val);
+const pos = zrUtil.indexOf(array, val);
 
-var obj2 = zrUtil.extend({}, obj1);
+const obj2 = zrUtil.extend({}, obj1);
 
 function Element() {
     // ...
@@ -550,7 +546,7 @@ let result = array.map(function (val) {
 
 const pos = array.indexOf(val);
 
-var obj2 = Object.assign({}, obj1);
+const obj2 = Object.assign({}, obj1);
 
 class Element {
     // ...
@@ -563,18 +559,18 @@ String.prototype.trim = function () {
 
 ### 变量
 
-**[强制]** 变量必须用 `var` 声明，且一个 `var` 不能同时声明多个变量。
+**[强制]** 优先使用`const`声明变量，且一行不能同时声明多个变量。
 
 ```js
 // 正例
-var name = 'MyName';
-var hangModules = [];
-var missModules = [];
-var visited = {};
+const name = 'MyName';
+const hangModules = [];
+const missModules = [];
+const visited = {};
 
 // 反例
 name = 'MyName';
-var hangModules = [],
+const hangModules = [],
     missModules = [],
     visited = {};
 ```
@@ -614,15 +610,15 @@ function clicker() {
     // ......
 }
 
-for (var i = 0, len = elements.length; i < len; i++) {
-    var element = elements[i];
+for (let i = 0, len = elements.length; i < len; i++) {
+    const element = elements[i];
     addListener(element, 'click', clicker);
 }
 
 
 // 反例
-for (var i = 0, len = elements.length; i < len; i++) {
-    var element = elements[i];
+for (let i = 0, len = elements.length; i < len; i++) {
+    const element = elements[i];
     addListener(element, 'click', function () {});
 }
 ```
@@ -676,10 +672,10 @@ parseInt(str);
 
 ```js
 // 正例
-var obj = {};
+const obj = {};
 
 // 反例
-var obj = new Object();
+const obj = new Object();
 ```
 
 
@@ -687,17 +683,17 @@ var obj = new Object();
 
 ```js
 // 正例
-var info = {
+const info = {
     name: 'someone',
     age: 28
 };
 
 // 反例
-var info = {
+const info = {
     'name': 'someone',
     'age': 28
 };
-var info2 = {
+const info2 = {
     "age": 40
 };
 ```
@@ -718,8 +714,8 @@ String.prototype.trim = function () {
 **[推荐]** 使用 `for ... in ...` 时，应当注意使用 `hasOwnProperty` 以防 `Object` 的原型在某些运行时环境中被添加一些额外属性的情况。
 
 ```js
-var newInfo = {};
-for (var key in info) {
+const newInfo = {};
+for (const key in info) {
     if (info.hasOwnProperty(key)) {
         newInfo[key] = info[key];
     }
@@ -731,11 +727,11 @@ for (var key in info) {
 
 ```js
 // 正例
-var arr = [];
-var arr2 = new Array(1e4);
+const arr = [];
+const arr2 = new Array(1e4);
 
 // 反例
-var arr = new Array();
+const arr = new Array();
 ```
 
 
