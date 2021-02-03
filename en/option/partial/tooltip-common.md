@@ -364,6 +364,8 @@ The text syle of tooltip's floating layer.
 
 #${prefix} extraCssText(string)
 
+<ExampleUIControlText />
+
 {{ use: partial-tooltip-scope-tip(
     scope = ${scope}
 ) }}

@@ -372,6 +372,8 @@ formatter: function (params, ticket, callback) {
 
 #${prefix} extraCssText(string)
 
+<ExampleUIControlText />
+
 {{ use: partial-tooltip-scope-tip(
     scope = ${scope}
 ) }}
