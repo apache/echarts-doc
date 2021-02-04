@@ -71,6 +71,8 @@ import { CanvasRenderer } from 'echarts/renderers';
 echarts.use([BarChart, GridComponent, CanvasRenderer]);
 ```
 
+如果之前是使用`import 'echarts/lib/chart/bar'`引入，新的接口对应的是`import {BarChart} from 'echarts/charts'`;
+
 为了方便大家了解自己的配置项需要引入哪些模块，我们新的示例编辑页面添加了生成按需引入代码的功能，大家可以在示例编辑页的`完整代码`标签下选中按需引入后查看需要引入的模块以及相关代码。
 
 在大部分情况下，我们都推荐大家尽可能用这套新的按需引入接口，它可以最大程度的利用打包工具 tree-shaking 的能力，并且可以有效解决命名空间冲突的问题而且防止了内部结构的暴露。如果你依旧在使用 CommonJS 的模块写法，之前的方式我们也依旧是支持的：
