@@ -101,9 +101,14 @@ import {
 } from 'echarts/renderers';
 
 // Combine an Option type with only required components and charts via ComposeOption
-type ECOption = echarts.
+type ECOption = echarts.ComposeOption<
   BarSeriesOption | LineSeriesOption | TitleComponentOption | GridComponentOption
 >;
+
+// Register the required components
+echarts.use(
+    [TitleComponent, TooltipComponent, GridComponent, BarChart, CanvasRenderer]
+);
 
 var option: ECOption = {
     ...
