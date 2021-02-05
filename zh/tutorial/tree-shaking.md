@@ -105,6 +105,11 @@ type ECOption = echarts.ComposeOption<
   BarSeriesOption | LineSeriesOption | TitleComponentOption | GridComponentOption
 >;
 
+// 注册必须的组件
+echarts.use(
+    [TitleComponent, TooltipComponent, GridComponent, BarChart, CanvasRenderer]
+);
+
 var option: ECOption = {
     ...
 }
