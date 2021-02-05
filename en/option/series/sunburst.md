@@ -208,8 +208,8 @@ Like `target` attribute of HTML `<a>`, which can either be `'blank'` or `'self'`
 
 ## labelLayout(Object|Function)
 
-{{ use: partial-label-layout(
-    prefix = "##",
+{{ use: partial-sunburst-state(
+    prefix = "#",
     isNormal = true
 ) }}
 
@@ -275,7 +275,8 @@ If there is no `name`, whether need to render it.
 ) }}
 
 {{ use: partial-sunburst-itemStyle-props(
-    prefix = "#"
+    prefix = "#",
+    isNormal = true
 ) }}
 
 ## emphasis
@@ -287,8 +288,7 @@ Configurations of emphasis state.
 ) }}
 
 {{ use: partial-sunburst-state(
-    prefix = "##",
-    isNormal = true
+    prefix = "##"
 ) }}
 
 ## blur

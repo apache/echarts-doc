@@ -730,7 +730,6 @@ In this way, a effect can be implemented: different sections have different hue 
 {{ use: partial-decal(
     prefix = '#' + ${prefix}
 ) }}
-
 {{ /if }}
 
 

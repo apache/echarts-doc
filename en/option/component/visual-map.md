@@ -341,6 +341,11 @@ Define visual channels that will mapped from dataValues that are **out of select
 
 See available configurations in [${visualMapName}.inRange](~${visualMapName}.inRange)
 
+{{ use: partial-visual-map-inRange-outOfRange(
+    prefix = "",
+    visualMapName = ${visualMapName}
+) }}
+
 ## controller(Object)
 
 Property `inRange` and `outOfRange` can be set within property `controller`, which means those `inRange` and `outOfRange` are only used on the controller (`visualMap` component itself), but are not used on chart (series). This property is useful in some scenarios when the view of controller needs to be customized in detail.
@@ -356,6 +361,11 @@ See available configurations in [${visualMapName}.inRange](~${visualMapName}.inR
 Define visual channels that will mapped from dataValues that are **out of selected range**. User can interact with visualMap component and make a seleced range by mouse or touch.
 
 See available configurations in [${visualMapName}.inRange](~${visualMapName}.inRange)
+
+{{ use: partial-visual-map-inRange-outOfRange(
+    prefix = "",
+    visualMapName = ${visualMapName}
+) }}
 
 {{ use: partial-rect-layout(
     componentName = "visualMap ",

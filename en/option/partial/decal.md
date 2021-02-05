@@ -1,3 +1,4 @@
+
 {{ target: partial-decal-desc }}
 
 The style of the decal pattern. It works only if [aria.enabled](~aria.enabled) and [aria.decal.show](~aria.decal.show) are both set to be `true`.
@@ -5,9 +6,7 @@ The style of the decal pattern. It works only if [aria.enabled](~aria.enabled) a
 If it is set to be `'none'`, no decal will be used.
 
 {{ if: ${onlyWithAreaStyle} }}
-
 It works only if `areaStyle` is set.
-
 {{ /if }}
 
 
@@ -77,3 +76,4 @@ The upper limit of the width of the generated pattern before it is duplicated. U
 #${prefix|default('#')} maxTileHeight(number) = 512
 
 The upper limit of the height of the generated pattern before it repeats. This value is usually not necessary to set, but you can try to increase it if you find that the pattern has discontinuous seams when it is repeated.
+

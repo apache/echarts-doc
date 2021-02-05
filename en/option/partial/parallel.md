@@ -1,7 +1,6 @@
 
 {{ target: partial-parallel-introduce }}
 
-
 **Introduction about Parallel coordinates**
 
 [Parallel Coordinates](https://en.wikipedia.org/wiki/Parallel_coordinates) is a common way of visualizing high-dimensional geometry and analyzing multivariate data.

@@ -326,7 +326,6 @@ Border type. Can be `'dashed'`, `'dotted'`.
 ) }}
 
 {{ if: ${useDecal} }}
-
 #${prefix} decal(Object | 'none')
 
 {{ use: partial-decal-desc() }}
@@ -334,5 +333,5 @@ Border type. Can be `'dashed'`, `'dotted'`.
 {{ use: partial-decal(
     prefix = '#' + ${prefix}
 ) }}
-
 {{ /if }}
+

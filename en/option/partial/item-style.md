@@ -51,7 +51,6 @@ Border type, which can be `'solid'`, `'dashed'`, or `'dotted'`. `'solid'` by def
 ) }}
 
 {{ if: ${useDecal} }}
-
 #${prefix} decal(Object | 'none')
 
 {{ use: partial-decal-desc(
@@ -61,5 +60,5 @@ Border type, which can be `'solid'`, `'dashed'`, or `'dotted'`. `'solid'` by def
 {{ use: partial-decal(
     prefix = '#' + ${prefix}
 ) }}
-
 {{ /if }}
+

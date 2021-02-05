@@ -184,11 +184,11 @@ data value.
 
 ### itemStyle(Object)
 
+{{ use: partial-item-style-desc() }}
+
 #### height(string|number)
 
 Height of this data item. By default, the height is evenly divided for all data items. The height can be set to percentage (e.g.: '10%') or pixel value (e.g.: 20). Please make sure that the total height of all data items is 100%.
-
-{{ use: partial-item-style-desc() }}
 
 {{ use: partial-item-style(
     prefix = "###",

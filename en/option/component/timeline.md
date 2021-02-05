@@ -85,7 +85,7 @@ myChart.setOption({
 <br>
 **How the `finalOption` calculated?**
 
-{{ use: partial-timeline-merge-strategy }}
+{{ use: partial-timeline-merge-strategy() }}
 
 <br>
 **Compatibility with ECharts 4:**
@@ -101,7 +101,6 @@ option = {
     options: []
 };
 ```
-
 
 ## show(boolean) = true
 
@@ -162,7 +161,7 @@ Whether the view updates in real time during dragging the control dot.
 
 ## replaceMerge(Array|string) = undefined
 
-{{ use: partial-timeline-merge-strategy }}
+{{ use: partial-timeline-merge-strategy() }}
 
 <br>
 
@@ -171,7 +170,6 @@ The value of `replaceMerge` can be a `mainType` of a component, like `replaceMer
 `replaceMerge` is usually used in this scenario: if users intending to replace all of the current series with the new series corresponding to the next time tick without any merging, users can set: `replaceMerge: 'series'`, and make sure that the series are in different id or no id.
 
 See this [example](${galleryEditorPath}doc-example/timeline-dynamic-series&edit=1&reset=1).
-
 
 ## controlPosition(string) = 'left'
 
@@ -545,3 +543,4 @@ When initializing, a `switchableOption` corresponding to the current time tick a
 There are two merging strategy.
 + By default, use `NORMAL_MERGE`.
 + If [timeline.replaceMerge](~option.html#timeline.replaceMerge) is set, use `REPLACE_MERGE`. See [setOption](~api.html#echartsInstance.setOption) for more details of `REPLACE_MERGE`.
+

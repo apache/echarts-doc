@@ -444,7 +444,6 @@ Label rotation.
 
 
 
-
 {{ target: partial-pie-border-radius }}
 
 #${prefix} borderRadius(number|string|Array)
@@ -461,3 +460,4 @@ To specify the roundness for corners of the sectors of the pie chart. It can be 
 + `borderRadius: '20%'`: means that both inner corner radius is `20%` of the inner radius of the pie and outer corner radius is `20%` of the outer radius of the pie.
 + `borderRadius: [10, 20]`: means that the inner corner radius is `10px` and the outer corner radius is `20px`.
 + `borderRadius: ['20%', '50%']`: means that the inner corner radius is `20%` of the inner radius of the pie and the outer corner radius is `50%` of the outer radius of the pie.
+

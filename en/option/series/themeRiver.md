@@ -91,7 +91,7 @@ style of each ribbon-shape river branch in theme river.
 
 {{ use: partial-item-style(
     prefix = "##",
-    isNormal = true
+    useDecal = true
 ) }}
 
 ## emphasis(Object)

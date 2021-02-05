@@ -197,8 +197,6 @@ The delimiter after the last data.
 
 Note that usually the last series is followed by the series `separator.end`, so `data.separator.end` is an empty string in most cases.
 
-
-
 ## decal(Object)
 
 Decal patterns are added to series data as an additional hint other than colors to help differentiate the data. It is easy to enabled the default decal patterns by enabling it:
@@ -227,3 +225,4 @@ The style of the decal pattern. If it is an `Object` type, it means all data wil
 {{ use: partial-decal(
     prefix = "###"
 ) }}
+

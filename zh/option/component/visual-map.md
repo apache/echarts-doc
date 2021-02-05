@@ -316,11 +316,6 @@ chart.setOption(option); // option设置回 ${componentMainType}
 
 配置参考 [${visualMapName}.inRange](~${visualMapName}.inRange)
 
-{{ use: partial-visual-map-inRange-outOfRange(
-    prefix = "",
-    visualMapName = ${visualMapName}
-) }}
-
 ## controller(Object)
 
 visualMap 组件中，`控制器` 的 `inRange` `outOfRange` 设置。如果没有这个 `controller` 设置，`控制器` 会使用外层的 `inRange` `outOfRange` 设置；如果有这个 `controller` 设置，则会采用这个设置。适用于一些控制器视觉效果需要特殊定制或调整的场景。
@@ -337,10 +332,6 @@ visualMap 组件中，`控制器` 的 `inRange` `outOfRange` 设置。如果没�
 
 配置参考 [${visualMapName}.inRange](~${visualMapName}.inRange)
 
-{{ use: partial-visual-map-inRange-outOfRange(
-    prefix = "",
-    visualMapName = ${visualMapName}
-) }}
 
 {{ use: partial-rect-layout(
     componentName = "visualMap ",

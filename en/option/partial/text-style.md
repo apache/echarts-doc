@@ -35,13 +35,13 @@
 
 #${prefix} width(number)
 
-<ExampleUIControlNumber default="50" min="1" max="200" step="1" />
+<ExampleUIControlNumber default="100" min="1" max="500" step="1" />
 
 Width of text block.
 
 #${prefix} height(number)
 
-<ExampleUIControlNumber default="50" min="1" max="200" step="1" />
+<ExampleUIControlNumber default="50" min="1" max="500" step="1" />
 
 Height of text block.
 

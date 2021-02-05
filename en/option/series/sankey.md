@@ -432,7 +432,8 @@ The curveness of the edge in Sankey diagram.
 #${prefix} itemStyle(Object)
 
 {{ use: partial-item-style(
-    prefix = "#" + ${prefix}
+    prefix = "#" + ${prefix},
+    useDecal = true
 ) }}
 
 
@@ -449,8 +450,7 @@ The curveness of the edge in Sankey diagram.
 #${prefix} itemStyle(Object)
 
 {{ use: partial-item-style(
-    prefix = "#" + ${prefix},
-    useDecal = true
+    prefix = "#" + ${prefix}
 ) }}
 
 #${prefix} lineStyle(Object)

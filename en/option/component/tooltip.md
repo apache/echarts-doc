@@ -237,7 +237,6 @@ The transition duration of tooltip's animation, in seconds. When it is set to be
 
 <ExampleUIControlEnum options="seriesAsc,seriesDesc,valueAsc,valueDesc" default="seriesAsc" />
 
-
 {{ use: partial-version(
     version = "5.0.0"
 ) }}
@@ -261,3 +260,4 @@ Conditions to order tooltip. Options:
 + `'valueDesc'`
 
     Base on value, descending order tooltip, only for numberic value.
+

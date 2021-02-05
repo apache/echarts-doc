@@ -180,7 +180,9 @@ Style of a single data.
 
 {{ use: partial-item-style(
     prefix = "###",
-    name = "boxplot"
+    name = "boxplot",
+    useDecal = true,
+    decalOnlyWithAreaStyle = true
 ) }}
 
 ### emphasis(Object)
@@ -221,9 +223,7 @@ Select state of single data.
 
 {{ use: partial-item-style(
     prefix = "####",
-    name = "boxplot",
-    useDecal = true,
-    decalOnlyWithAreaStyle = true
+    name = "boxplot"
 ) }}
 
 {{ use: partial-tooltip-in-series-data() }}

@@ -55,7 +55,8 @@ Item style of the inflection point of the lines.
     prefix = "##",
     useColorPalatte = true,
     hasCallback = true,
-    useDecal = true
+    useDecal = true,
+    decalOnlyWithAreaStyle = true
 ) }}
 
 ## lineStyle(Object)

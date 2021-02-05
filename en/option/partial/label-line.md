@@ -4,6 +4,7 @@
 Configuration of label guide line.
 
 
+
 {{ target: partial-label-line }}
 
 #${prefix} show(boolean)
@@ -48,7 +49,6 @@ Whether to smooth the guide line. It defaults to be `false` and can be set as `t
 Minimum turn angle between two segments of guide line to prevent unaesthetic display when angle is too small.
 
 Can be 0 - 180 degree.
-
 {{ /if }}
 
 #${prefix} lineStyle(Object)
