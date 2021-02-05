@@ -1,9 +1,6 @@
 
 {{ target: partial-zr-graphic-elements }}
 
-
-
-
 #${prefix} ${hostName}${symbolDeclare}group(Object)
 
 `group` is the only type that can contain children, so that a group of elements can be positioned and transformed together.
@@ -62,11 +59,6 @@ A list of children, each item is a declaration of an element.
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
-
-
-
-
-
 
 {{ if: ${usageType} === 'customSeries' }}
 #${prefix} ${hostName}${symbolDeclare}path(Object)
@@ -147,7 +139,6 @@ Optional value:
     symbolDeclare = ${symbolDeclare}
 ) }}
 
-
 ##${prefix} style(Object)
 
 {{ use: partial-graphic-cpt-style-prop-common(
@@ -157,6 +148,10 @@ Optional value:
     hostName = ${hostName},
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
+) }}
+
+{{ use: partial-graphic-cpt-focus-blur(
+    prefix = ${prefix}
 ) }}
 
 {{ use: partial-graphic-cpt-style-emphasis(
@@ -176,12 +171,7 @@ Optional value:
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
-
 {{ /if }}
-
-
-
-
 
 #${prefix} ${hostName}${symbolDeclare}image(Object)
 
@@ -228,6 +218,10 @@ Specify content of the image, can be a URL, or [dataURI](https://tools.ietf.org/
     symbolDeclare = ${symbolDeclare}
 ) }}
 
+{{ use: partial-graphic-cpt-focus-blur(
+    prefix = ${prefix}
+) }}
+
 {{ use: partial-graphic-cpt-style-emphasis(
     prefix = ${prefix},
     optionPath = ${optionPath},
@@ -245,10 +239,6 @@ Specify content of the image, can be a URL, or [dataURI](https://tools.ietf.org/
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
-
-
-
-
 
 #${prefix} ${hostName}${symbolDeclare}text(Object)
 
@@ -314,6 +304,10 @@ Text vertical alignment. Optional values: `'top'`, `'middle'`, `'bottom'`.
     symbolDeclare = ${symbolDeclare}
 ) }}
 
+{{ use: partial-graphic-cpt-focus-blur(
+    prefix = ${prefix}
+) }}
+
 {{ use: partial-graphic-cpt-style-emphasis(
     prefix = ${prefix},
     optionPath = ${optionPath},
@@ -331,10 +325,6 @@ Text vertical alignment. Optional values: `'top'`, `'middle'`, `'bottom'`.
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
-
-
-
-
 
 #${prefix} ${hostName}${symbolDeclare}rect(Object)
 
@@ -391,7 +381,6 @@ Abbreviation is enabled, for example:
     symbolDeclare = ${symbolDeclare}
 ) }}
 
-
 ##${prefix} style(Object)
 
 {{ use: partial-graphic-cpt-style-prop-common(
@@ -401,6 +390,10 @@ Abbreviation is enabled, for example:
     hostName = ${hostName},
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
+) }}
+
+{{ use: partial-graphic-cpt-focus-blur(
+    prefix = ${prefix}
 ) }}
 
 {{ use: partial-graphic-cpt-style-emphasis(
@@ -420,10 +413,6 @@ Abbreviation is enabled, for example:
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
-
-
-
-
 
 #${prefix} ${hostName}${symbolDeclare}circle(Object)
 
@@ -481,6 +470,10 @@ Circle element.
     symbolDeclare = ${symbolDeclare}
 ) }}
 
+{{ use: partial-graphic-cpt-focus-blur(
+    prefix = ${prefix}
+) }}
+
 {{ use: partial-graphic-cpt-style-emphasis(
     prefix = ${prefix},
     optionPath = ${optionPath},
@@ -498,10 +491,6 @@ Circle element.
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
-
-
-
-
 
 #${prefix} ${hostName}${symbolDeclare}ring(Object)
 
@@ -559,6 +548,10 @@ Ring element.
     symbolDeclare = ${symbolDeclare}
 ) }}
 
+{{ use: partial-graphic-cpt-focus-blur(
+    prefix = ${prefix}
+) }}
+
 {{ use: partial-graphic-cpt-style-emphasis(
     prefix = ${prefix},
     optionPath = ${optionPath},
@@ -576,10 +569,6 @@ Ring element.
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
-
-
-
-
 
 #${prefix} ${hostName}${symbolDeclare}sector(Object)
 
@@ -646,6 +635,10 @@ Sector element.
     symbolDeclare = ${symbolDeclare}
 ) }}
 
+{{ use: partial-graphic-cpt-focus-blur(
+    prefix = ${prefix}
+) }}
+
 {{ use: partial-graphic-cpt-style-emphasis(
     prefix = ${prefix},
     optionPath = ${optionPath},
@@ -663,10 +656,6 @@ Sector element.
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
-
-
-
-
 
 #${prefix} ${hostName}${symbolDeclare}arc(Object)
 
@@ -736,6 +725,10 @@ Arc element.
     symbolDeclare = ${symbolDeclare}
 ) }}
 
+{{ use: partial-graphic-cpt-focus-blur(
+    prefix = ${prefix}
+) }}
+
 {{ use: partial-graphic-cpt-style-emphasis(
     prefix = ${prefix},
     optionPath = ${optionPath},
@@ -753,10 +746,6 @@ Arc element.
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
-
-
-
-
 
 #${prefix} ${hostName}${symbolDeclare}polygon(Object)
 
@@ -805,6 +794,10 @@ Polygon element.
     symbolDeclare = ${symbolDeclare}
 ) }}
 
+{{ use: partial-graphic-cpt-focus-blur(
+    prefix = ${prefix}
+) }}
+
 {{ use: partial-graphic-cpt-style-emphasis(
     prefix = ${prefix},
     optionPath = ${optionPath},
@@ -822,10 +815,6 @@ Polygon element.
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
-
-
-
-
 
 #${prefix} ${hostName}${symbolDeclare}polyline(Object)
 
@@ -877,6 +866,10 @@ Polyline element.
     symbolDeclare = ${symbolDeclare}
 ) }}
 
+{{ use: partial-graphic-cpt-focus-blur(
+    prefix = ${prefix}
+) }}
+
 {{ use: partial-graphic-cpt-style-emphasis(
     prefix = ${prefix},
     optionPath = ${optionPath},
@@ -894,10 +887,6 @@ Polyline element.
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
-
-
-
-
 
 #${prefix} ${hostName}${symbolDeclare}line(Object)
 
@@ -955,6 +944,10 @@ Value range: [0, 1].
     symbolDeclare = ${symbolDeclare}
 ) }}
 
+{{ use: partial-graphic-cpt-focus-blur(
+    prefix = ${prefix}
+) }}
+
 {{ use: partial-graphic-cpt-style-emphasis(
     prefix = ${prefix},
     optionPath = ${optionPath},
@@ -972,10 +965,6 @@ Value range: [0, 1].
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
-
-
-
-
 
 #${prefix} ${hostName}${symbolDeclare}bezierCurve(Object)
 
@@ -1050,6 +1039,10 @@ Value range: [0, 1].
     symbolDeclare = ${symbolDeclare}
 ) }}
 
+{{ use: partial-graphic-cpt-focus-blur(
+    prefix = ${prefix}
+) }}
+
 {{ use: partial-graphic-cpt-style-emphasis(
     prefix = ${prefix},
     optionPath = ${optionPath},
@@ -1067,11 +1060,6 @@ Value range: [0, 1].
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
-
-
-
-
-
 
 
 
@@ -1119,9 +1107,7 @@ Optional values:
     symbolDeclare = ${symbolDeclare}
 ) }}
 
-
 {{ if: ${usageType} === 'customSeries' }}
-
 ##${prefix} transition(string|Array) = ['x', 'y']
 
 Can be a single property name or an array of property names.
@@ -1187,10 +1173,7 @@ transition: [] // Am empty array.
 ```
 
 See this [example](${galleryEditorPath}doc-example/custom-transition-simple&edit=1&reset=1) please.
-
 {{ /if }}
-
-
 
 {{ if: ${usageType} === 'customSeries' && ${enableMorph} }}
 ##${prefix} morph(boolean) = false
@@ -1214,10 +1197,7 @@ Then custom series find graphic elements that has `morph: true` declared in thes
 
 See examples: [custom-one-to-one-morph](${galleryEditorPath}custom-one-to-one-morph&edit=1&reset=1) and
 [custom-combine-separate-morph](${galleryEditorPath}custom-combine-separate-morph&edit=1&reset=1).
-
 {{ /if }}
-
-
 
 {{ if: ${usageType} === 'graphicComponent' }}
 ##${prefix} left(number|string) = undefined
@@ -1333,6 +1313,7 @@ Whether the element is totally ignored (neither render nor listen events).
 ##${prefix} textContent(Object)
 
 Text block attached to an element and layout based on the element by `textConfig`.
+
 {{ if: ${usageType} === 'customSeries' }}
 The props the the same as [text](option.html#series-custom.renderItem.return_text).
 {{ else }}
@@ -1456,11 +1437,11 @@ The rule of getting "auto-calculated-stroke":
 
 Tell echarts that I can make sure this text is inside or not.
 
-
 {{ if: ${usageType} === 'customSeries' }}
 {{ use: partial-custom-series-during(
     prefix = ${prefix}
 ) }}
+
 {{ use: partial-custom-series-extra(
     prefix = ${prefix},
     optionPath = ${optionPath},
@@ -1539,7 +1520,6 @@ color of shadow.
 
 
 
-
 {{ target: partial-graphic-cpt-path-common }}
 
 ###${prefix} points(Array)
@@ -1589,7 +1569,6 @@ If [top](~${optionPath}.${hostName}${symbolVisit}${type}.top) or [bottom](~${opt
 {{ target: partial-graphic-cpt-sub-prop-transition }}
 
 {{ if: ${usageType} === 'customSeries' }}
-
 ###${prefix} transition(string|Array) = undefined
 
 Can be a single property name or an array of property names.
@@ -1629,7 +1608,6 @@ renderItem: function (params, api) {
     };
 }
 ```
-
 {{ /if }}
 
 
@@ -1861,14 +1839,9 @@ Notice:
 
 
 
-{{ target: partial-graphic-cpt-style-emphasis }}
+{{ target: partial-graphic-cpt-focus-blur }}
 
-{{ if: ${usageType} === 'customSeries' }}
-##${prefix} emphasis(Object)
-
-Emphasis state of the element.
-
-###${prefix} focus(string) = 'none'
+##${prefix} focus(string) = 'none'
 
 {{ use: partial-version(
     version = "5.0.0"
@@ -1880,7 +1853,7 @@ When it's highlighted, whether to fade out of other data to focus the highlighte
 + `'self'` Only focus (not fade out) the element of the currently highlighted data.
 + `'series'` Focus on all elements of the series which the currently highlighted data belongs to.
 
-###${prefix} blurScope(string) = 'coordinateSystem'
+##${prefix} blurScope(string) = 'coordinateSystem'
 
 {{ use: partial-version(
     version = "5.0.0"
@@ -1891,6 +1864,15 @@ The range of fade out when `focus` is enabled. Support the following configurati
 + `'coordinateSystem'`
 + `'series'`
 + `'global'`
+
+
+
+{{ target: partial-graphic-cpt-style-emphasis }}
+
+{{ if: ${usageType} === 'customSeries' }}
+##${prefix} emphasis(Object)
+
+Emphasis state of the element.
 
 ###${prefix} style(Object)
 
@@ -2040,3 +2022,4 @@ Although the points will be interpolated, the consequent animation will be like 
 ```
 
 See this example [example](${galleryEditorPath}custom-spiral-race&edit=1&reset=1).
+

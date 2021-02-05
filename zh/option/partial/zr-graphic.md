@@ -157,6 +157,10 @@ group 是唯一的可以有子节点的容器。group 可以用来整体定位�
     symbolDeclare = ${symbolDeclare}
 ) }}
 
+{{ use: partial-graphic-cpt-focus-blur(
+    prefix = ${prefix}
+) }}
+
 {{ use: partial-graphic-cpt-style-emphasis(
     prefix = ${prefix},
     optionPath = ${optionPath},
@@ -224,6 +228,11 @@ group 是唯一的可以有子节点的容器。group 可以用来整体定位�
     hostName = ${hostName},
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
+) }}
+
+
+{{ use: partial-graphic-cpt-focus-blur(
+    prefix = ${prefix}
 ) }}
 
 {{ use: partial-graphic-cpt-style-emphasis(
@@ -310,6 +319,10 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     hostName = ${hostName},
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
+) }}
+
+{{ use: partial-graphic-cpt-focus-blur(
+    prefix = ${prefix}
 ) }}
 
 {{ use: partial-graphic-cpt-style-emphasis(
@@ -402,6 +415,10 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     symbolDeclare = ${symbolDeclare}
 ) }}
 
+{{ use: partial-graphic-cpt-focus-blur(
+    prefix = ${prefix}
+) }}
+
 {{ use: partial-graphic-cpt-style-emphasis(
     prefix = ${prefix},
     optionPath = ${optionPath},
@@ -480,6 +497,10 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     symbolDeclare = ${symbolDeclare}
 ) }}
 
+{{ use: partial-graphic-cpt-focus-blur(
+    prefix = ${prefix}
+) }}
+
 {{ use: partial-graphic-cpt-style-emphasis(
     prefix = ${prefix},
     optionPath = ${optionPath},
@@ -556,6 +577,10 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     hostName = ${hostName},
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
+) }}
+
+{{ use: partial-graphic-cpt-focus-blur(
+    prefix = ${prefix}
 ) }}
 
 {{ use: partial-graphic-cpt-style-emphasis(
@@ -643,6 +668,10 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     hostName = ${hostName},
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
+) }}
+
+{{ use: partial-graphic-cpt-focus-blur(
+    prefix = ${prefix}
 ) }}
 
 {{ use: partial-graphic-cpt-style-emphasis(
@@ -735,6 +764,10 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     symbolDeclare = ${symbolDeclare}
 ) }}
 
+{{ use: partial-graphic-cpt-focus-blur(
+    prefix = ${prefix}
+) }}
+
 {{ use: partial-graphic-cpt-style-emphasis(
     prefix = ${prefix},
     optionPath = ${optionPath},
@@ -802,6 +835,10 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     hostName = ${hostName},
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
+) }}
+
+{{ use: partial-graphic-cpt-focus-blur(
+    prefix = ${prefix}
 ) }}
 
 {{ use: partial-graphic-cpt-style-emphasis(
@@ -874,6 +911,10 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     hostName = ${hostName},
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
+) }}
+
+{{ use: partial-graphic-cpt-focus-blur(
+    prefix = ${prefix}
 ) }}
 
 {{ use: partial-graphic-cpt-style-emphasis(
@@ -950,6 +991,10 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     hostName = ${hostName},
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
+) }}
+
+{{ use: partial-graphic-cpt-focus-blur(
+    prefix = ${prefix}
 ) }}
 
 {{ use: partial-graphic-cpt-style-emphasis(
@@ -1039,6 +1084,10 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     hostName = ${hostName},
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
+) }}
+
+{{ use: partial-graphic-cpt-focus-blur(
+    prefix = ${prefix}
 ) }}
 
 {{ use: partial-graphic-cpt-style-emphasis(
@@ -1840,16 +1889,9 @@ renderItem: function (params, api) {
 + transform 中设定的坐标，都是相对于图形元素的父元素的（即 [group](~${optionPath}.${hostName}${symbolVisit}group) 元素或者顶层画布）的 `[0, 0]` 点。也就是说，我们可以使用 [group](~${optionPath}.${hostName}${symbolVisit}group) 来组织多个图形元素，并且 [group](~${optionPath}.${hostName}${symbolVisit}group) 可以嵌套。
 + 对于一个图形元素，`transform` 执行的顺序是：先缩放（依照 `scaleX`，`scaleY`），再旋转（依照 `rotation`），再平移（依照 `x`，`y`）。
 
+{{ target: partial-graphic-cpt-focus-blur }}
 
-
-{{ target: partial-graphic-cpt-style-emphasis }}
-
-{{ if: ${usageType} === 'customSeries' }}
-##${prefix} emphasis(Object)
-
-图形元素的高亮状态
-
-###${prefix} focus(string) = 'none'
+##${prefix} focus(string) = 'none'
 
 {{ use: partial-version(
     version = "5.0.0"
@@ -1861,7 +1903,7 @@ renderItem: function (params, api) {
 + `'self'` 只聚焦（不淡出）当前高亮的数据的图形。
 + `'series'` 聚焦当前高亮的数据所在的系列的所有图形。
 
-###${prefix} blurScope(string) = 'coordinateSystem'
+##${prefix} blurScope(string) = 'coordinateSystem'
 
 {{ use: partial-version(
     version = "5.0.0"
@@ -1872,6 +1914,14 @@ renderItem: function (params, api) {
 + `'coordinateSystem'` 淡出范围为坐标系，默认使用该配置。
 + `'series'` 淡出范围为系列。
 + `'global'` 淡出范围为全局。
+
+
+{{ target: partial-graphic-cpt-style-emphasis }}
+
+{{ if: ${usageType} === 'customSeries' }}
+##${prefix} emphasis(Object)
+
+图形元素的高亮状态
 
 ###${prefix} style(Object)
 
