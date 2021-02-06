@@ -1,3 +1,18 @@
+## v5.0.2
+<div class="time">2021-02-01</div>
+
++ [Fix] [dataZoom] 修复手柄图标设置为 `'image://'` 后无法显示的问题。 [#14056](https://github.com/apache/echarts/issues/14056) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [pie] [gauge] 修复零值的扇形可能会显示成圆形的错误。 [#699](https://github.com/ecomfe/zrender/issues/699) ([plainheart](https://github.com/plainheart))
++ [Fix] [pie] 修复饼图标签可能会被隐藏的错误。 [#14108](https://github.com/apache/echarts/issues/14108) ([Nick22nd](https://github.com/Nick22nd))
++ [Fix] [map] 在按需加载的时候地图系列添加地理坐标系为依赖。 [#14124](https://github.com/apache/echarts/issues/14124) ([pissang](https://github.com/pissang))
++ [Fix] [pie] 修复饼图标签从外部位置动态切换为内部位置后标签引导线无法隐藏的问题。 [#14017](https://github.com/apache/echarts/issues/14017) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [toolbox] 修复工具栏的数据区域缩放中设置 `yAxisIndex: false` 后报错的问题。 [#14175](https://github.com/apache/echarts/issues/14175) ([100pah](https://github.com/100pah))
++ [Fix] [toolbox] 修复没使用默认 `pixelRatio` 可能会导致图片下载报错的问题。 [#706](https://github.com/ecomfe/zrender/issues/706) ([plainheart](https://github.com/plainheart))
++ [Fix] [toolbox] 下载图片时默认使用系统的 `devicePixelRatio` 来保证更高清的图片。 [#14002](https://github.com/apache/echarts/issues/14002) ([plainheart](https://github.com/plainheart))
++ [Fix] [line] 端点标签颜色支持设置为 `'inherit'` 继承系列颜色。 [#14000](https://github.com/apache/echarts/issues/14000) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [svg] 修复 SVG 渲染其中不透明度可能失效的错误。 [#675](https://github.com/ecomfe/zrender/issues/675) ([plainheart](https://github.com/plainheart))
++ [Fix] [type] 优化事件参数的类型 [#14155](https://github.com/apache/echarts/issues/14155) ([pissang](https://github.com/pissang))
+
 ## v5.0.1
 <div class="time">2021-01-11</div>
 
