@@ -430,7 +430,7 @@ optionToContent: function(opt) {
 ```js
 feature: {
     magicType: {
-        type: ['line', 'bar', 'stack', 'tiled']
+        type: ['line', 'bar', 'stack']
     }
 }
 ```
@@ -441,7 +441,7 @@ feature: {
 
 #### type(Array)
 
-启用的动态类型，包括`'line'`（切换为折线图）, `'bar'`（切换为柱状图）, `'stack'`（切换为堆叠模式）, `'tiled'`（切换为平铺模式）。
+启用的动态类型，包括`'line'`（切换为折线图）, `'bar'`（切换为柱状图）, `'stack'`（切换为堆叠模式）。
 
 {{ use: feature-common(
     title = "动态类型切换"
@@ -460,10 +460,6 @@ feature: {
 {{ use: partial-icon-image-path() }}
 
 ##### stack(string)
-
-{{ use: partial-icon-image-path() }}
-
-##### tiled(string)
 
 {{ use: partial-icon-image-path() }}
 
@@ -489,8 +485,6 @@ feature: {
 
 ##### stack(Object)
 
-##### tiled(Object)
-
 #### seriesIndex(Object)
 
 各个类型对应的系列的列表。
@@ -498,10 +492,6 @@ feature: {
 ##### line(Array)
 
 ##### bar(Array)
-
-##### stack(Array)
-
-##### tiled(Array)
 
 ### brush(Object)
 

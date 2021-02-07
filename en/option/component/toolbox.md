@@ -356,7 +356,7 @@ Magic type switching.
 ```js
 feature: {
     magicType: {
-        type: ['line', 'bar', 'stack', 'tiled']
+        type: ['line', 'bar', 'stack']
     }
 }
 ```
@@ -367,7 +367,7 @@ Whether to show the magic type switching.
 
 #### type(Array)
 
-Enabled magic types, including `'line'` (for line charts), `'bar'` (for bar charts), `'stack'` (for stacked charts), and `'tiled'` (for tiled charts).
+Enabled magic types, including `'line'` (for line charts), `'bar'` (for bar charts), `'stack'` (for stacked charts).
 
 {{ use: feature-common(
     title = "magic type switching"
@@ -389,21 +389,17 @@ the different types of icon path , which could be configurated individually.
 
 {{ use: partial-icon-image-path() }}
 
-##### tiled(string)
-
-{{ use: partial-icon-image-path() }}
-
 #### title(Object)
 
 Title for different types, can be configured seperately.
 
-##### line(string) = 'for line charts'
+##### line(string) = 'Switch to Line Chart'
 
-##### bar(string) = 'for bar charts'
+##### bar(string) = 'Switch to Bar Chart'
 
-##### stack(string) = 'for stacked charts'
+##### stack(string) = 'Stack'
 
-##### tiled(string) = 'for tiled charts'
+##### tiled(string) = 'Tile'
 
 #### option(Object)
 
@@ -415,8 +411,6 @@ Configuration item for each type, which will be used when switching to certain t
 
 ##### stack(Object)
 
-##### tiled(Object)
-
 #### seriesIndex(Object)
 
 Series list for each type.
@@ -424,10 +418,6 @@ Series list for each type.
 ##### line(Array)
 
 ##### bar(Array)
-
-##### stack(Array)
-
-##### tiled(Array)
 
 ### brush(Object)
 
