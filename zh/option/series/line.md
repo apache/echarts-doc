@@ -125,6 +125,10 @@ const option = {
 
 ## endLabel(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 折线端点的标签。
 
 {{ use: partial-label(

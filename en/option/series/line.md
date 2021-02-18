@@ -96,6 +96,10 @@ See the example using different `step` options:
 
 ## endLabel(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 Label on the end of line.
 
 {{ use: partial-label(
