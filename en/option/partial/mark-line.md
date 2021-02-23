@@ -271,6 +271,46 @@ X position according to container, in pixel.
 
 Y position according to container, in pixel.
 
+#${prefix} xAxis(number|string)
+
+Markline at x at given value, which only works for single data item. Example:
+
+```
+data: [{
+    name: 'A vertical line with X valued 100',
+    xAxis: 100
+}]
+```
+
+or if xAxis is in `'time'` type, it can be set as:
+
+```
+{
+    name: 'A vertical line with X valued "2020-01-01"',
+    xAxis: '2020-01-01'
+}]
+```
+
+#${prefix} yAxis(number|string)
+
+Markline at y at given value, which only works for single data item. Example:
+
+```
+data: [{
+    name: 'A horizontal line with X valued 100',
+    yAxis: 100
+}]
+```
+
+or if yAxis is in `'time'` type, it can be set as:
+
+```
+{
+    name: 'A horizontal line with Y valued "2020-01-01"',
+    yAxis: '2020-01-01'
+}]
+```
+
 #${prefix} value(number)
 
 Label value, which can be ignored.
