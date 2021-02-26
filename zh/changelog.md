@@ -10,7 +10,7 @@
 + [Fix] [toolbox] 修复没使用默认 `pixelRatio` 可能会导致图片下载报错的问题。 [#706](https://github.com/ecomfe/zrender/issues/706) ([plainheart](https://github.com/plainheart))
 + [Fix] [toolbox] 下载图片时默认使用系统的 `devicePixelRatio` 来保证更高清的图片。 [#14002](https://github.com/apache/echarts/issues/14002) ([plainheart](https://github.com/plainheart))
 + [Fix] [line] 端点标签颜色支持设置为 `'inherit'` 继承系列颜色。 [#14000](https://github.com/apache/echarts/issues/14000) ([susiwen8](https://github.com/susiwen8))
-+ [Fix] [svg] 修复 SVG 渲染其中不透明度可能失效的错误。 [#675](https://github.com/ecomfe/zrender/issues/675) ([plainheart](https://github.com/plainheart))
++ [Fix] [svg] 修复 SVG 渲染器中不透明度可能失效的错误。 [#675](https://github.com/ecomfe/zrender/issues/675) ([plainheart](https://github.com/plainheart))
 + [Fix] [type] 优化事件参数的类型 [#14155](https://github.com/apache/echarts/issues/14155) ([pissang](https://github.com/pissang))
 
 ## v5.0.1
