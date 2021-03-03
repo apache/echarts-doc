@@ -428,7 +428,7 @@ See [takeGlobalCursor](~action.brush.takeGlobalCursor).
 
 ## rendered(Event)
 
-Trigger when a frame rendered. Notice that the `rendered` event does not indicate that the animation finished (see [animation](~animation) and relevant options) or progressive rendering finished (see [progressive](~series-scatter.progressive) and relevant options).
+Trigger when a frame rendered. Notice that the `rendered` event does not indicate that the animation finished (see [animation](option.html#animation) and relevant options) or progressive rendering finished (see [progressive](option.html#series-scatter.progressive) and relevant options).
 
 For example:
 ```js
@@ -442,7 +442,7 @@ chart.on('rendered', function () {
 
 ## finished(Event)
 
-Triggered when render finished, that is, when animation finished (see [animation](~animation) and relevant options) and progressive rendering finished (see [progressive](~series-scatter.progressive) and relevant options).
+Triggered when render finished, that is, when animation finished (see [animation](option.html#animation) and relevant options) and progressive rendering finished (see [progressive](option.html#series-scatter.progressive) and relevant options).
 
 
 ```js

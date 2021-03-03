@@ -418,7 +418,7 @@ chart.on('brushSelected', function (params) {
 
 ## rendered(Event)
 
-渲染结束事件。注意 `rendered` 事件并不代表渲染动画（参见 [animation](~animation) 相关配置）或者渐进渲染（参见 [progressive](~series-scatter.progressive) 相关配置）停止，只代表本帧的渲染结束。
+渲染结束事件。注意 `rendered` 事件并不代表渲染动画（参见 [animation](option.html#animation) 相关配置）或者渐进渲染（参见 [progressive](option.html#series-scatter.progressive) 相关配置）停止，只代表本帧的渲染结束。
 
 例如：
 ```js
@@ -432,7 +432,7 @@ chart.on('rendered', function () {
 
 ## finished(Event)
 
-渲染完成事件。当渲染动画（参见 [animation](~animation) 相关配置）或者渐进渲染（参见 [progressive](~series-scatter.progressive) 相关配置）停止时触发。
+渲染完成事件。当渲染动画（参见 [animation](option.html#animation) 相关配置）或者渐进渲染（参见 [progressive](option.html#series-scatter.progressive) 相关配置）停止时触发。
 
 ```js
 var snapshotImage = new Image();
