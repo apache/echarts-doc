@@ -262,7 +262,10 @@ backgroundColor: {
     prefix = ${prefix},
     type = 'border',
     name = '文字块边框',
-    defaultType = ${defaultType}
+    defaultType = ${defaultType},
+    noCap = true,
+    noJoin = true,
+    noMiterLimit = true
 ) }}
 
 #${prefix} borderRadius(number|Array) = 0

@@ -261,7 +261,10 @@ Border width of the text fragment.
     prefix = ${prefix},
     type = 'border',
     name = 'the text fragment',
-    defaultType = ${defaultType}
+    defaultType = ${defaultType},
+    noCap = true,
+    noJoin = true,
+    noMiterLimit = true
 ) }}
 
 #${prefix} borderRadius(number) = 0
