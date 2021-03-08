@@ -23,16 +23,11 @@ ${name}线的颜色。{{ if: ${useColorPalatte} }} 默认从[option.color 调色
 
 ${name}线宽。
 
-#${prefix} type(string) = ${defaultType|default('solid')}
-
-<ExampleUIControlEnum default="solid" options="solid,dashed,dotted" />
-
-${name}线的类型。
-
-可选：
-+ `'solid'`
-+ `'dashed'`
-+ `'dotted'`
+{{ use: partial-line-border-style(
+    prefix = ${prefix},
+    name = ${name},
+    defaultType = ${defaultType}
+) }}
 
 {{ use: partial-style-shadow-opacity(
     prefix = ${prefix},
