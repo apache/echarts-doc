@@ -23,16 +23,11 @@ Input parameters are `seriesIndex`, `dataIndex`, `data`, `value`, and etc. of da
 
 ${name} line width.
 
-#${prefix} type(string) = ${defaultType|default('solid')}
-
-<ExampleUIControlEnum default="solid" options="solid,dashed,dotted" />
-
-${name} line type.
-
-Options are:
-+ `'solid'`
-+ `'dashed'`
-+ `'dotted'`
+{{ use: partial-line-border-style(
+    prefix = ${prefix},
+    name = ${name},
+    defaultType = ${defaultType}
+) }}
 
 {{ use: partial-style-shadow-opacity(
     prefix = ${prefix},
