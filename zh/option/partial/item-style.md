@@ -35,11 +35,12 @@ ${name}图形的描边颜色。支持的颜色格式同 `color`，不支持回�
 
 ${name}描边线宽。为 0 时无描边。
 
-#${prefix} borderType(string) = 'solid'
-
-<ExampleUIControlEnum default="solid" options="solid,dashed,dotted" />
-
-柱条的描边类型，默认为实线，支持 `'solid'`, `'dashed'`, `'dotted'`。
+{{ use: partial-line-border-style(
+    prefix = ${prefix},
+    name = ${name},
+    type = 'border',
+    defaultType = ${defaultType}
+) }}
 
 {{ use: partial-style-shadow-opacity(
     prefix = ${prefix},

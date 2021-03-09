@@ -35,11 +35,12 @@ ${name} border color, whose format is similar to that of `color`.
 
 ${name} border width. No border when it is set to be 0.
 
-#${prefix} borderType(string) = 'solid'
-
-<ExampleUIControlEnum default="solid" options="solid,dashed,dotted" />
-
-Border type, which can be `'solid'`, `'dashed'`, or `'dotted'`. `'solid'` by default.
+{{ use: partial-line-border-style(
+    prefix = ${prefix},
+    name = ${name},
+    type = 'border',
+    defaultType = ${defaultType}
+) }}
 
 {{ use: partial-style-shadow-opacity(
     prefix = ${prefix},

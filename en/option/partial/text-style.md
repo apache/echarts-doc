@@ -257,6 +257,16 @@ Border color of the text fragment.
 
 Border width of the text fragment.
 
+{{ use: partial-line-border-style(
+    prefix = ${prefix},
+    type = 'border',
+    name = 'the text fragment',
+    defaultType = ${defaultType},
+    noCap = true,
+    noJoin = true,
+    noMiterLimit = true
+) }}
+
 #${prefix} borderRadius(number) = 0
 
 <ExampleUIControlVector min="0" dims="LT,RT, RB, LB"  />
@@ -334,6 +344,16 @@ Storke color of the text.
 <ExampleUIControlNumber min="0" step="0.5" />
 
 Storke line width of the text.
+
+{{ use: partial-line-border-style(
+    prefix = ${prefix},
+    name = ${name},
+    type = 'text',
+    defaultType = ${defaultType},
+    noCap = true,
+    noJoin = true,
+    noMiterLimit = true
+) }}
 
 #${prefix} textShadowColor(Color) = 'transparent'
 

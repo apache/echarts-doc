@@ -258,6 +258,16 @@ backgroundColor: {
 
 文字块边框宽度。
 
+{{ use: partial-line-border-style(
+    prefix = ${prefix},
+    type = 'border',
+    name = '文字块边框',
+    defaultType = ${defaultType},
+    noCap = true,
+    noJoin = true,
+    noMiterLimit = true
+) }}
+
 #${prefix} borderRadius(number|Array) = 0
 
 <ExampleUIControlVector min="0" dims="LT,RT, RB, LB"  />
@@ -334,6 +344,16 @@ backgroundColor: {
 <ExampleUIControlNumber min="0" step="0.5" />
 
 文字本身的描边宽度。
+
+{{ use: partial-line-border-style(
+    prefix = ${prefix},
+    name = ${name},
+    type = 'text',
+    defaultType = ${defaultType},
+    noCap = true,
+    noJoin = true,
+    noMiterLimit = true
+) }}
 
 #${prefix} textShadowColor(Color) = 'transparent'
 
