@@ -60,7 +60,7 @@ chart.setOption(option, {
 
     + `replaceMerge`: `string` | `string[]`
 
-        可选。用户可以在这里指定一个或多个 "component main type"。"component main type" 就是 [配置项手册](option.html) 中 `option` 树的第一级子节点（如：`xAxis`, `series`）。这些指定的组件会进行 "replaceMerge"。如果用户想删除部分组件，也可使用 "replaceMerge"。详见 **组件合并模式**。
+        可选。用户可以在这里指定一个或多个组件，如：`xAxis`, `series`，这些指定的组件会进行 "replaceMerge"。如果用户想删除部分组件，也可使用 "replaceMerge"。详见 **组件合并模式**。
 
     + `lazyUpdate`: `boolean`
 
@@ -103,7 +103,7 @@ chart.setOption(option, {
 
 **组件合并模式**
 
-对于一种类型的组件（类型指，"component main type"，如：`xAxis`, `series`）：
+对于一种类型的组件（如：`xAxis`, `series`）：
 + 如果设置 `opts.notMerge` 为 `true`，那么旧的组件会被完全移除，新的组件会根据 `option` 创建。
 + 如果设置 `opts.notMerge` 为 `false`，或者没有设置 `opts.notMerge`：
     + 如果在 `opts.replaceMerge` 里指定里本 "component main type" ，这类组件会进行 `REPLACE_MERGE`。
@@ -112,7 +112,7 @@ chart.setOption(option, {
 什么是 `NORMAL_MERGE` 和 `REPLACE_MERGE`？
 
 + `NORMAL_MERGE`
-    + 对于一种类型的组件（类型指，"component main type"，如：`xAxis`, `series`），新来的 `option` 中的每个“组件描述”（如：`{type: 'xAxis', id: 'xx', name: 'kk', ...}`）会被尽量合并到已存在的组件中。剩余的情况，会在组件列表尾部创建新的组件。整体规则细节如下：
+    + 对于一种类型的组件（如：`xAxis`, `series`），新来的 `option` 中的每个“组件描述”（如：`{type: 'xAxis', id: 'xx', name: 'kk', ...}`）会被尽量合并到已存在的组件中。剩余的情况，会在组件列表尾部创建新的组件。整体规则细节如下：
         + 先依次对 `option` 中每个有声明 `id` 或者 `name` 的“组件描述”，寻找能匹配其 `id` 或者 `name` 的已有的组件，找到的话则合并。
         + 再依次对 `option` 中剩余的“组件描述”，寻找还未执行过前一条的已有组件，找到的话则合并。
         + 其他 `option` 中剩余的“组件描述”，用于在组件列表尾部创建新组件。
@@ -155,7 +155,7 @@ chart.setOption(option, {
         }
         ```
 + `REPLACE_MERGE`
-    + 对于一种类型的组件（类型指，"component main type"，如：`xAxis`, `series`），只有 `option` 中指定了 `id` 并且已有组件中有此 `id` 时，已有组件会和 `option` 相应组件描述进行合并。否则，已有组件都会删除，新组件会被根据 `option` 创建。细节规则如下：
+    + 对于一种类型的组件（如：`xAxis`, `series`），只有 `option` 中指定了 `id` 并且已有组件中有此 `id` 时，已有组件会和 `option` 相应组件描述进行合并。否则，已有组件都会删除，新组件会被根据 `option` 创建。细节规则如下：
         + 先依次对 `option` 中每个有声明 `id` 的“组件描述”，寻找能匹配其 `id` 或者 `name` 的已有的组件，找到的话则合并。
         + 删除其他没匹配到的已有组件。（实际上是，在组件列表中设置为 `null`，以保证没有被删除的组件的 "component index" 不改变）。
         + 依次对 `option` 中剩余的“组件描述”，创建新组件，填入刚因删除而空出来的位置上，或者增加到末尾。
