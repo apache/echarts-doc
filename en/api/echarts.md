@@ -8,6 +8,7 @@ Global echarts object, which can be accessed after including `echarts.js` in scr
 (dom: HTMLDivElement|HTMLCanvasElement, theme?: Object|string, opts?: {
     devicePixelRatio?: number,
     renderer?: string,
+    useDirtyRect?: boolean, // Since `5.0.0`
     width?: number|string,
     height?: number|string,
     locale?: string
@@ -26,7 +27,7 @@ Creates an ECharts instance, and returns an [echartsInstance](~echartsInstance).
 
 + `theme`
 
-    Theme to be applied. This can be a configuring object of a theme, or a theme name registered through [echarts.registerTheme](~echarts.registerTheme).
+    Theme to be applied. This can be a configuring object of a theme, or a theme name registered through [echarts.registerTheme](~echarts.registerTheme). See [Overview of Style Customization](https://echarts.apache.org/en/tutorial.html#Overview%20of%20Style%20Customization).
 
 + `opts`
 
@@ -34,9 +35,15 @@ Creates an ECharts instance, and returns an [echartsInstance](~echartsInstance).
 
     + `devicePixelRatio` Ratio of one physical pixel to the size of one device independent pixels. Browser's `window.devicePixelRatio` is used by default.
     + `renderer`  Supports `'canvas'` or `'svg'`. See [Render by Canvas or SVG](tutorial.html#Render%20by%20Canvas%20or%20SVG).
+    + `useDirtyRect`  Enable dirty rectangle rendering or not, `false` by default. See [New features in ECharts 5](https://echarts.apache.org/en/tutorial.html#New%20features%20in%20ECharts%205).
     + `width`  Specify width explicitly, in pixel. If setting to `null`/`undefined`/`'auto'`, width of `dom` (instance container) will be used.
     + `height`  Specify height explicitly, in pixel. If setting to `null`/`undefined`/`'auto'`, height of `dom` (instance container) will be used.
-    + `locale` Specify the locale. There are two builtins: `'ZH'` and `'EN'`. Or you can use [echarts.registerLocale](~echarts.registerLocale) to register a new locale. Or supported locales can be referenced in [src/i18n](https://github.com/apache/echarts/tree/release/src/i18n)
+    + `locale` Specify the locale. There are two builtins: `'ZH'` and `'EN'`. Or you can use [echarts.registerLocale](~echarts.registerLocale) to register a new locale. Or supported locales can be referenced in [src/i18n](https://github.com/apache/echarts/tree/release/src/i18n).
+
+    If no need to specify a theme, a `null` should be passed before `opts` . Example:
+    ```js
+    const chart = echarts.init(dom, null, {renderer: 'svg'});
+    ```
 
 ## connect(Function)
 ```js
