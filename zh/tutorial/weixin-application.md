@@ -10,7 +10,7 @@
 
 在微信中扫描下面的二维码即可体验 ECharts Demo：
 
-![ECharts Demo](https://github.com/ecomfe/echarts-for-weixin/raw/master/img/weixin-app.jpg)
+![ECharts Demo](https://cdn.jsdelivr.net/gh/ecomfe/echarts-for-weixin/img/weixin-app.jpg)
 
 ## 下载
 
