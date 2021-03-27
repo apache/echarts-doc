@@ -76,6 +76,14 @@ Global font style.
 
 {{import: partial-animation }}
 
+# stateAnimation(Object)
+
+Animation configurations of state switchment. Can be configured in each series individually.
+
+{{use: partial-state-animation(
+    prefix = '#'
+) }}
+
 # blendMode(string) = 'source-over'
 
 Sets the type of compositing operation to apply when drawing a new shape. See the different type: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation.
