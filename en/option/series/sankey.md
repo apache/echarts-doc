@@ -202,7 +202,6 @@ Configurations of emphasis state.
 
 {{ use: partial-focus-blur-scope(
     isTree = true
-    isSankey = true
 ) }}
 
 {{ use: sankey-state(
