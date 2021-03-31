@@ -13,10 +13,11 @@ When the data is highlighted, whether to fade out of other data to focus the hig
 + `'self'` Only focus (not fade out) the element of the currently highlighted data.
 + `'series'` Focus on all elements of the series which the currently highlighted data belongs to.
 
-{{ if: ${isGraph} }}
+{{ if: ${isGraph || isSankey} }}
 + `'adjacency'` Focus on the elements of adjacent nodes and edges in the graph.
+{{ /if }}
 
-{{ elif: ${isTree} }}
+{{ if: ${isTree} }}
 + `'ancestor'` Focus on all ancestor nodes.
 + `'descendant'` Focus on all descendants nodes.
 {{ /if }}
