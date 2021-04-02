@@ -201,7 +201,7 @@ The edge style of Sankey diagram, in which [lineStyle.color](~series-sankey.line
 Configurations of emphasis state.
 
 {{ use: partial-focus-blur-scope(
-    isTree = true
+    isGraph = true
 ) }}
 
 {{ use: sankey-state(

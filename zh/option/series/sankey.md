@@ -206,7 +206,7 @@ levels: [{
 桑基图的高亮状态。
 
 {{ use: partial-focus-blur-scope(
-    isTree = true
+    isGraph = true
 ) }}
 
 {{ use: sankey-state(
