@@ -798,7 +798,7 @@ formatter: function (value, index) {
     // Formatted to be month/day; display year only in the first label
     var date = new Date(value);
     var texts = [(date.getMonth() + 1), date.getDate()];
-    if (idx === 0) {
+    if (index === 0) {
         texts.unshift(date.getYear());
     }
     return texts.join('/');
