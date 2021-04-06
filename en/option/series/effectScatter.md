@@ -252,6 +252,10 @@ Select state of the specified single data.
     hasType = true
 ) }}
 
+{{ use: partial-clip(
+    prefix = "#"
+) }}
+
 {{ use: partial-z-zlevel(
     prefix = "#"
 ) }}

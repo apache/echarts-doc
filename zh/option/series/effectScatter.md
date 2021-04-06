@@ -269,6 +269,10 @@ const option = {
     hasType = true
 ) }}
 
+{{ use: partial-clip(
+    prefix = "#"
+) }}
+
 {{ use: partial-z-zlevel(
     prefix = "#"
 ) }}
