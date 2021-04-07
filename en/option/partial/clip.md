@@ -11,8 +11,7 @@
 
 If clip the overflow on the coordinate system. Clip results varies between series:
 
-+ Scatter：Ignore the symbols exceeds the coordinate system. Not clip the elements.
-+ EffectScatter the symbols exceeds the coordinate system. Not clip the elements.
++ Scatter/EffectScatter：Ignore the symbols exceeds the coordinate system. Not clip the elements.
 + Bar：Clip all the overflowed. With bar width kept.
 + Line：Clip the overflowed line.
 + Lines: Clip all the overflowed.
