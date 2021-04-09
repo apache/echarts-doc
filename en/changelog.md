@@ -1,3 +1,30 @@
+## v5.1.0
++ !![Feature] [geo] [map] geo component and map series support SVG format source. [#14571](https://github.com/apache/echarts/issues/14571) ([100pah](https://github.com/100pah))
++ ![Feature] [legend] Default legend design is more intuitive. [#14497](https://github.com/apache/echarts/issues/14497) ([Ovilia](https://github.com/Ovilia))
++ [Feature] [i18n] Add czech translation [#14468](https://github.com/apache/echarts/issues/14468) ([JiriBalcar](https://github.com/JiriBalcar))
++ [Feature] [animation] Add animaiton configuration in resize [#14553](https://github.com/apache/echarts/issues/14553) ([pissang](https://github.com/pissang))
++ [Feature] [effectScatter] Add clip for effectScatter [#14574](https://github.com/apache/echarts/issues/14574) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [debug] Optimize error log when components or series are missing [#14568](https://github.com/apache/echarts/issues/14568) ([pissang](https://github.com/pissang))
++ [Fix] [tooltip] Improve the performance of tooltip. [#14246](https://github.com/apache/echarts/issues/14246) ([plainheart](https://github.com/plainheart))
++ [Fix] [label] Fix labels may have wrong `z` and not in the front. [#14542](https://github.com/apache/echarts/issues/14542) ([plainheart](https://github.com/plainheart)) [#14417](https://github.com/apache/echarts/issues/14417) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [pattern] Fix `CanvasPatttern#setTransform` may not exists error. [#738](https://github.com/ecomfe/zrender/issues/738) ([pissang](https://github.com/pissang))
++ [Fix] [tooltip] Fix formatter wrong when using time axis [#14471](https://github.com/apache/echarts/issues/14471) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [symbol] Make `symbolOffset` work on all the components using symbols. [#14375](https://github.com/apache/echarts/issues/14375) ([plainheart](https://github.com/plainheart))
++ [Fix] [markArea] Fix markArea background color disappeared bug. Close [#13647](https://github.com/apache/echarts/issues/13647) [#14343](https://github.com/apache/echarts/issues/14343) ([Nick22nd](https://github.com/Nick22nd))
++ [Fix] [markLine] Fix string type data may not work in markLine. Close [#14300](https://github.com/apache/echarts/issues/14300) [#14314](https://github.com/apache/echarts/issues/14314) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [select] Fix null access bug when checking selected status. Close [#14293](https://github.com/apache/echarts/issues/14293) [#14413](https://github.com/apache/echarts/issues/14413) ([leosxie](https://github.com/leosxie))
++ [Fix] [dataZoom]fix dataZoom setting no effect [#14388](https://github.com/apache/echarts/issues/14388) ([wf123537200](https://github.com/wf123537200))
++ [Fix] [animation] Fix animation between NaN value may have problem. [#730](https://github.com/ecomfe/zrender/issues/730) ([Nick22nd](https://github.com/Nick22nd))
++ [Fix] [visualMap] Use itemSymbol as default symbol type. Close [#5719](https://github.com/apache/echarts/issues/5719) [#14243](https://github.com/apache/echarts/issues/14243) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [loading] Fix text of loading is not in the front and covered by others. [#14191](https://github.com/apache/echarts/issues/14191) ([yufeng04](https://github.com/yufeng04))
++ [Fix] [custom] Fix series label on custom series not working properly. Close [#14092](https://github.com/apache/echarts/issues/14092) [#14254](https://github.com/apache/echarts/issues/14254) ([Nick22nd](https://github.com/Nick22nd))
++ [Fix] [map] Fix map labels won't update its position when `labelLayout` is used. [#14578](https://github.com/apache/echarts/issues/14578) ([pissang](https://github.com/pissang))
++ [Fix] [calendar] Fix day label drifting. Close [#11508](https://github.com/apache/echarts/issues/11508) [#13902](https://github.com/apache/echarts/issues/13902) ([Nick22nd](https://github.com/Nick22nd))
++ [Fix] [lines] Fix line animation may have extra points and being messed up. [#13638](https://github.com/apache/echarts/issues/13638) ([vially](https://github.com/vially))
++ [Fix] [type] Exporting more necessary types for generating declarations in the extensions [#14289](https://github.com/apache/echarts/issues/14289) ([pissang](https://github.com/pissang))
++ [Fix] [type] Add `LegendComponentOption.icon` property type [#14263](https://github.com/apache/echarts/issues/14263) ([thesiti92](https://github.com/thesiti92))
++ [Fix] Remove legacy usage of transform [#14357](https://github.com/apache/echarts/issues/14357) ([pissang](https://github.com/pissang))
+
 ## v5.0.2
 <div class="time">2021-02-01</div>
 
