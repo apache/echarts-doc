@@ -3,7 +3,6 @@
 
 # dataZoom.slider(Object)
 
-
 Slider type dataZoom component provides functions like data thumbnail, zoom, brush to select, drag to move, click to locate.
 
 The followling picture shows areas to interact.
@@ -151,7 +150,7 @@ Size of move handle.
     version = "5.0.0"
 ) }}
 
-
+Style of move handle.
 
 {{ use: partial-item-style(
     prefix = "##",

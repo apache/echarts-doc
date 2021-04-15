@@ -1413,7 +1413,7 @@ Position of `textContent`.
 }
 ```
 
-###${prefix} offset(number[])
+###${prefix} offset(Array)
 
 `textContent` 的偏移。
 

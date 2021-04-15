@@ -1360,7 +1360,7 @@ Default to be the bounding box of host element.
 }
 ```
 
-###${prefix} offset(number[])
+###${prefix} offset(Array)
 
 Offset of the `textContent`.
 

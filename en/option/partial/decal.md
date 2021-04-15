@@ -13,7 +13,7 @@ It works only if `areaStyle` is set.
 
 {{ target: partial-decal }}
 
-#${prefix|default('#')} symbol(string|string[]) = 'rect'
+#${prefix|default('#')} symbol(string|Array) = 'rect'
 
 The symbol type of the decal. If it is in the type of `string[]`, it means the symbols are used one by one.
 
@@ -35,7 +35,7 @@ For the color of the decal pattern, it is recommended to use a translucent color
 
 The background color of the decal will be over the color of the series itself, under the decal pattern.
 
-#${prefix|default('#')} dashArrayX(number | number[] | (number | number[])[]) = 5
+#${prefix|default('#')} dashArrayX(number|Array) = 5
 
 The basic pattern of the decal pattern is an infinite loop in the form of `Pattern - Blank - Pattern - Blank - Pattern - Blank` both horizontally and vertically, respectively. By setting the length of each pattern and blank, complex pattern effects can be achieved.
 
@@ -51,7 +51,7 @@ This interface can be better understood with the following examples.
 
 ~[700x300](${galleryViewPath}doc-example/aria-decal&edit=1&reset=1)
 
-#${prefix|default('#')} dashArrayY(number | number[]) = 5
+#${prefix|default('#')} dashArrayY(number|Array) = 5
 
 The basic pattern of the decal pattern is an infinite loop in the form of `Pattern - Blank - Pattern - Blank - Pattern - Blank` both horizontally and vertically, respectively. By setting the length of each pattern and blank, complex pattern effects can be achieved.
 

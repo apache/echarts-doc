@@ -13,7 +13,7 @@
  */
 
 const md2json = require('./tool/md2json');
-const extractDesc = require('./tool/extractDesc');
+const {extractDesc, extractOptionKeys} = require('./tool/schemaHelper');
 const fs = require('fs');
 const fse = require('fs-extra');
 const marked = require('marked');

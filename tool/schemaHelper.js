@@ -37,7 +37,9 @@ function traverse(schema, rootName, cb) {
     }
 
     innerTraverse(schema.option, rootName, false);
-}
+};
+
+module.exports.traverse = traverse;
 
 
 function convertToTree(rootSchema, rootNode) {
@@ -139,6 +141,28 @@ function convertToTree(rootSchema, rootNode) {
     );
 };
 
+module.exports.extractOptionKeys = function (schema) {
+    const keysRepeatCount = {};
+    const keysList = [];
+    traverse(schema, '', (schemaPath, schemaNode) => {
+        if (!schemaPath) {
+            return;
+        }
+        const leafKey = schemaPath.split(/[\.-]/g).pop();
+        if (keysRepeatCount[leafKey] == null) {
+            keysRepeatCount[leafKey] = 0;
+            keysList.push(leafKey);
+        }
+        keysRepeatCount[leafKey]++;
+    });
+    return keysList.map(key => {
+        return {
+            name: key,
+            count: keysRepeatCount[key]
+        };
+    }).sort((a, b) => b.count - a.count);
+};
+
 // Partion the descriptions by the first part of path. For example
 // { "title.label", "series-line.data", "series-bar.data" }
 // Will be
@@ -147,7 +171,7 @@ function convertToTree(rootSchema, rootNode) {
 //   "series-line": {"data"},
 //   "series-bar": {"data"}
 // }
-module.exports = function (schema, docName) {
+module.exports.extractDesc = function (schema, docName) {
     let descriptionsMap = {};
     let propWithUIControlCount = 0;
     let propTotalCount = 0;

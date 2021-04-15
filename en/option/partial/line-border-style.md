@@ -1,8 +1,10 @@
+
 {{ target: partial-line-border-style }}
 
 {{ if: ${type} === 'border' }}
 #${prefix} borderType(string|number|Array) = ${defaultType|default("'solid'")}
-{{ elif: ${type} === 'text'  }}
+
+{{ elif: ${type} === 'text' }}
 #${prefix} textBorderType(string|number|Array) = ${defaultType|default("'solid'")}
 {{ else }}
 #${prefix} type(string|number|Array) = ${defaultType|default("'solid'")}
@@ -12,7 +14,8 @@
 
 {{ if: ${type} === 'border' }}
 ${name} border type.
-{{ elif: ${type} === 'text'  }}
+
+{{ elif: ${type} === 'text' }}
 Stroke line type of the text.
 {{ else }}
 line type.
@@ -25,7 +28,7 @@ Possible values are:
 
 Since `v5.0.0`, it can also be a number or a number array to specify the [dash array](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-dasharray) of the line. With {{ if: ${type} === 'border' }}
 `borderDashOffset`
-{{ elif: ${type} === 'text'  }}
+{{ elif: ${type} === 'text' }}
 `textBorderDashOffset`
 {{ else }}
 `dashOffset`
@@ -34,15 +37,17 @@ Since `v5.0.0`, it can also be a number or a number array to specify the [dash a
 For example：
 ```js
 {
-	{{ if: ${type} === 'border' }}borderType{{ elif: ${type} === 'text'  }}textBorderType{{ else }}type{{ /if }}: [5, 10],
-	{{ if: ${type} === 'border' }}borderDashOffset{{ elif: ${type} === 'text'  }}textBorderDashOffset{{ else }}dashOffset{{ /if }}: 5
+
+{{ if: ${type} === 'border' }}borderType{{ elif: ${type} === 'text' }}textBorderType{{ else }}type{{ /if }}: [5, 10],
+
+{{ if: ${type} === 'border' }}borderDashOffset{{ elif: ${type} === 'text' }}textBorderDashOffset{{ else }}dashOffset{{ /if }}: 5
 }
 ```
 
-
 {{ if: ${type} === 'border' }}
 #${prefix} borderDashOffset(number) = 0
-{{ elif: ${type} === 'text'  }}
+
+{{ elif: ${type} === 'text' }}
 #${prefix} textBorderDashOffset(number) = 0
 {{ else }}
 #${prefix} dashOffset(number) = 0
@@ -56,7 +61,7 @@ For example：
 
 To set the line dash offset. With {{ if: ${type} === 'border' }}
 `borderType`
-{{ elif: ${type} === 'text'  }}
+{{ elif: ${type} === 'text' }}
 `textBorderType`
 {{ else }}
 `type`
@@ -64,9 +69,7 @@ To set the line dash offset. With {{ if: ${type} === 'border' }}
 
 Refer to MDN [lineDashOffset](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineDashOffset) for more details.
 
-
 {{ if: !${noCap} }}
-
 {{ if: ${type} === 'border' }}
 #${prefix} borderCap(string) = 'butt'
 {{ else }}
@@ -86,12 +89,9 @@ Possible values are:
 + `'square'`: The ends of lines are squared off by adding a box with an equal width and half the height of the line's thickness.
 
 Default value is `'butt'`. Refer to MDN [lineCap](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineCap) for more details.
-
 {{ /if }}
 
-
 {{ if: !${noJoin} }}
-
 {{ if: ${type} === 'border' }}
 #${prefix} borderJoin(string) = 'bevel'
 {{ else }}
@@ -116,12 +116,9 @@ Possible values are:
 {{ /if }} property.
 
 Default value is `'bevel'`. Refer to MDN [lineJoin](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineJoin) for more details.
-
 {{ /if }}
 
-
 {{ if: !${noMiterLimit} }}
-
 {{ if: ${type} === 'border' }}
 #${prefix} borderMiterLimit(number) = 10
 {{ else }}
@@ -143,5 +140,5 @@ To set the miter limit ratio. Only works when {{ if: ${type} === 'border' }}
 Default value is `10`. Negative、`0`、`Infinity` and `NaN` values are ignored.
 
 Refer to MDN [miterLimit](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/miterLimit) for more details.
-
 {{ /if }}
+

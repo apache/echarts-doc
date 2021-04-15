@@ -723,7 +723,7 @@ In this way, a effect can be implemented: different sections have different hue 
     prefix = ${prefix}
 ) }}
 
-#${prefix} decal(Object | 'none')
+#${prefix} decal(Object)
 
 {{ use: partial-decal-desc() }}
 

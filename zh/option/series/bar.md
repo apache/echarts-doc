@@ -407,7 +407,7 @@ option = {
 
 {{ if: ${useDecal} }}
 
-#${prefix} decal(Object | 'none')
+#${prefix} decal(Object)
 
 {{ use: partial-decal-desc() }}
 

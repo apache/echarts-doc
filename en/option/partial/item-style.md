@@ -52,7 +52,7 @@ ${name} border width. No border when it is set to be 0.
 ) }}
 
 {{ if: ${useDecal} }}
-#${prefix} decal(Object | 'none')
+#${prefix} decal(Object)
 
 {{ use: partial-decal-desc(
     onlyWithAreaStyle = ${decalOnlyWithAreaStyle}

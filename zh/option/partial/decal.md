@@ -14,7 +14,7 @@
 
 {{ target: partial-decal }}
 
-#${prefix|default('#')} symbol(string|string[]) = 'rect'
+#${prefix|default('#')} symbol(string|Array) = 'rect'
 
 贴花的图案，如果是 `string[]` 表示循环使用数组中的图案。
 
@@ -36,7 +36,7 @@
 
 贴花的背景色，将会覆盖在系列本身颜色之上，贴花图案之下。
 
-#${prefix|default('#')} dashArrayX(number | number[] | (number | number[])[]) = 5
+#${prefix|default('#')} dashArrayX(number|Array) = 5
 
 贴花图案的基本模式是在横向和纵向上分别以`图案 - 空白 - 图案 - 空白 - 图案 - 空白`的形式无限循环。通过设置每个图案和空白的长度，可以实现复杂的图案效果。
 
@@ -52,7 +52,7 @@
 
 ~[700x300](${galleryViewPath}doc-example/aria-decal&edit=1&reset=1)
 
-#${prefix|default('#')} dashArrayY(number | number[]) = 5
+#${prefix|default('#')} dashArrayY(number|Array) = 5
 
 贴花图案的基本模式是在横向和纵向上分别以`图案 - 空白 - 图案 - 空白 - 图案 - 空白`的形式无限循环。通过设置每个图案和空白的长度，可以实现复杂的图案效果。
 

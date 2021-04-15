@@ -53,7 +53,7 @@ ${name}描边线宽。为 0 时无描边。
 
 {{ if: ${useDecal} }}
 
-#${prefix} decal(Object | 'none')
+#${prefix} decal(Object)
 
 {{ use: partial-decal-desc(
     onlyWithAreaStyle = ${decalOnlyWithAreaStyle}

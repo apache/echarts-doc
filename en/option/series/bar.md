@@ -326,7 +326,7 @@ Border type. Can be `'dashed'`, `'dotted'`.
 ) }}
 
 {{ if: ${useDecal} }}
-#${prefix} decal(Object | 'none')
+#${prefix} decal(Object)
 
 {{ use: partial-decal-desc() }}
 
