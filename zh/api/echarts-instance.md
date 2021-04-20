@@ -272,7 +272,11 @@ myChart.setOption({
 (opts?: {
     width?: number|string,
     height?: number|string,
-    silent?: boolean
+    silent?: boolean,
+    animation?: {
+        duration?: number
+        easing?: string
+    }
 }) => ECharts
 ```
 
@@ -294,6 +298,10 @@ myChart.setOption({
     + `silent`
 
         是否禁止抛出事件。默认为 `false`。
+
+    + `animation`
+
+        resize 的时候是否应用过渡动画，包含时长`duration`和缓动`easing`两个配置，默认`duration`为 0，即不应用过渡动画。
 
 **Tip:** 有时候图表会放在多个标签页里，那些初始隐藏的标签在初始化图表的时候因为获取不到容器的实际高宽，可能会绘制失败，因此在切换到该标签页时需要手动调用 `resize` 方法获取正确的高宽并且刷新画布，或者在 `opts` 中显示指定图表高宽。
 
