@@ -270,7 +270,7 @@ const option = {
 ) }}
 
 {{ use: partial-clip(
-    prefix = "#"
+    prefix = "#",
     version = "5.1.0"
 ) }}
 
