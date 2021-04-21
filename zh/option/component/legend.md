@@ -179,6 +179,35 @@ const option = {
 
 图例标记的图形高度。
 
+{{ use: partial-legend-style(
+    name = "图例",
+    prefix = "#"
+) }}
+
+### inactiveColor(Color) = '#ccc'
+
+<ExampleUIControlColor default="#ccc" />
+
+图例关闭时线的颜色。
+
+### inactiveWidth(number) = 2
+
+<ExampleUIControlNumber min="0" default="20" step="1" />
+
+图例关闭时线的宽度，不可取 `'inherit'`。
+
+## symbolSize(number|string) = 'auto'
+
+<ExampleUIControlNumber min="0" default="50" step="5" />
+
+图形大小，类型为 `number | 'auto' | 'inherit'`。
+
+如果为 `'auto'`，不同系列类型可能采用不同的大小逻辑，比如柱状图之类的采用圆角矩形作为图例的，会取 `itemWidth` 和 `itemHeight` 作为大小；而折线图会用 80% 的 `itemHeight` 作为图形高度并叠加一条横线，但如果用户自定义了 `icon`，则以 `itemHeight` 作为图形高度，不绘制横线。具体逻辑取决于系列内部实现。
+
+如果为 `'inherit'` 则表示：始终取系列的图形大小。
+
+无论取何值，最终会保证图形大小不超过 `itemWidth` 和 `itemHeight`。
+
 ## symbolKeepAspect(boolean) = true
 
 <ExampleUIControlBoolean />
@@ -212,6 +241,18 @@ formatter: function (name) {
 <ExampleUIControlColor default="#ccc" />
 
 图例关闭时的颜色。
+
+## inactiveBorderColor(Color) = '#ccc'
+
+<ExampleUIControlColor default="#ccc" />
+
+图例关闭时的描边颜色。
+
+## inactiveBorderWidth(Color) = 'auto'
+
+<ExampleUIControlColor default="#ccc" />
+
+图例关闭时的描边粗细。如果为 `'auto'` 表示：如果系列存在描边，则取 2，如果系列不存在描边，则取 0。如果为 `'inherit'` 则表示：始终取系列的描边粗细。
 
 ## selected(Object)
 
@@ -292,6 +333,11 @@ data: [{
 图例项的 icon。
 
 {{ use: partial-icon() }}
+
+{{ use: partial-legend-style(
+    name = "图例项",
+    prefix = "##"
+) }}
 
 ### textStyle(Object)
 
@@ -536,3 +582,49 @@ selector: ['all', 'inverse']
 
 选择器按钮与图例组件之间的间隔。
 
+
+
+{{ target: partial-legend-style }}
+
+#${prefix} itemStyle(Object)
+
+${name}的图形样式。其属性的取值为 `'inherit'` 时，表示继承系列中的属性值。
+
+{{ use: partial-item-style(
+    prefix = '#' + ${prefix},
+    defaultColor = 'inherit',
+    defaultBorderColor = 'inherit',
+    defaultBorderWidth = 'auto',
+    defaultBorderWidthDesc = '当其值为 `"auto"` 时，如果系列有 `borderWidth` 取 2，如果系列没有 `borderWidth` 则取 0。当其值为 `"inehrit"` 时，始终取系列的 `borderWidth`。',
+    defaultType = 'inherit',
+    defaultOpacity = 'inherit',
+    defaultShadowBlur = 0,
+    defaultShadowColor = 'null',
+    defaultShadowOffsetX = 0,
+    defaultShadowOffsetY = 0,
+    useDecal = true,
+    defaultDecal = 'inherit',
+    defaultDashOffset = 'inherit',
+    defaultCap = 'inherit',
+    defaultJoin = 'inherit',
+    defaultMiterLimit = 'inherit'
+) }}
+
+#${prefix} lineStyle(Object)
+
+${name}图形中线的样式，用于诸如折线图图例横线的样式设置。其属性的取值为 `'inherit'` 时，表示继承系列中的属性值。
+
+{{ use: partial-line-style(
+    prefix = '#' + ${prefix},
+    defaultWidth = 'auto',
+    defaultColor = 'inherit',
+    defaultOpacity = 'inherit',
+    defaultType = 'inherit',
+    defaultCap = 'inherit',
+    defaultJoin = 'inherit',
+    defaultDashOffset = 'inherit',
+    defaultMiterLimit = 'inherit',
+    defaultShadowBlur = 'inherit',
+    defaultShadowOffsetX = 0,
+    defaultShadowOffsetY = 0
+) }}
