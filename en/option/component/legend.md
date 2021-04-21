@@ -96,6 +96,23 @@ Image width of legend symbol.
 
 Image height of legend symbol.
 
+{{ use: partial-legend-style(
+    name = "Legend",
+    prefix = "#"
+) }}
+
+## symbolSize(number|string) = 'auto'
+
+<ExampleUIControlNumber min="0" default="50" step="5" />
+
+Legend item symbol size. Valid values: `number | 'auto' | 'inherit'`.
+
+If it is `'auto'`, different series types may use different logic to decide symbol size. For example, a bar chart with a rounded rectangle as the legend symbol will take `itemWidth` and `itemHeight` as the size, while a line chart will use 80% of `itemHeight` as the graph height and overlay a horizontal line, but if user defined `icon`, then `itemHeight` is used as the height of the graph and no horizontal line is drawn. The exact logic depends on the internal implementation of the series.
+
+If it is `'inherit'`, it always takes the symbol size of the series.
+
+The symbol size is kept within `itemWidth` and `itemHeight` for these all cases.
+
 ## symbolKeepAspect(boolean) = true
 
 <ExampleUIControlBoolean />
@@ -129,6 +146,18 @@ Besides, it can be set to `'single'` or `'multiple'`, for single selection and m
 <ExampleUIControlColor default="#ccc" />
 
 Legend color when not selected.
+
+## inactiveBorderColor(Color) = '#ccc'
+
+<ExampleUIControlColor default="#ccc" />
+
+Legend border color when not selected.
+
+## inactiveBorderWidth(Color) = 'auto'
+
+<ExampleUIControlColor default="#ccc" />
+
+Legend border width when not selected. If it is `'auto'`, the border width is set to be 2 if there is border width in the series, 0 elsewise. If it is `'inherit'`, it always takes the border width of the series.
 
 ## selected(Object)
 
@@ -198,6 +227,11 @@ Name of legend, which should be the `name` value of a certain series. If it is a
 Icon of the legend.
 
 {{ use: partial-icon() }}
+
+{{ use: partial-legend-style(
+    name = "Legend Item",
+    prefix = "##"
+) }}
 
 ### textStyle(Object)
 
@@ -440,3 +474,49 @@ The gap between the selector button.
 
 The gap between selector button and legend component.
 
+
+
+{{ target: partial-legend-style }}
+
+#${prefix} itemStyle(Object)
+
+${name} item style. If its children have values as `'inherit'`, the values are inherited from corresponding series options.
+
+{{ use: partial-item-style(
+    prefix = '#' + ${prefix},
+    defaultColor = 'inherit',
+    defaultBorderColor = 'inherit',
+    defaultBorderWidth = 'auto',
+    defaultBorderWidthDesc = 'When its value is `"auto"`, if there is `borderWidth` in series, then it is set to be 2, otherwise, it is set to be 0. If its value is `"inehrit"`, then the `borderWidth` of the series are always used',
+    defaultType = 'inherit',
+    defaultOpacity = 'inherit',
+    defaultShadowBlur = 0,
+    defaultShadowColor = 'null',
+    defaultShadowOffsetX = 0,
+    defaultShadowOffsetY = 0,
+    useDecal = true,
+    defaultDecal = 'inherit',
+    defaultDashOffset = 'inherit',
+    defaultCap = 'inherit',
+    defaultJoin = 'inherit',
+    defaultMiterLimit = 'inherit'
+) }}
+
+#${prefix} lineStyle(Object)
+
+${name} line style. If its children have values as `'inherit'`, the values are inherited from corresponding series options.
+
+{{ use: partial-line-style(
+    prefix = '#' + ${prefix},
+    defaultWidth = 'auto',
+    defaultColor = 'inherit',
+    defaultOpacity = 'inherit',
+    defaultType = 'inherit',
+    defaultCap = 'inherit',
+    defaultJoin = 'inherit',
+    defaultDashOffset = 'inherit',
+    defaultMiterLimit = 'inherit',
+    defaultShadowBlur = 'inherit',
+    defaultShadowOffsetX = 0,
+    defaultShadowOffsetY = 0
+) }}
