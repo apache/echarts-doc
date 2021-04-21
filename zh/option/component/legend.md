@@ -184,18 +184,6 @@ const option = {
     prefix = "#"
 ) }}
 
-### inactiveColor(Color) = '#ccc'
-
-<ExampleUIControlColor default="#ccc" />
-
-图例关闭时线的颜色。
-
-### inactiveWidth(number) = 2
-
-<ExampleUIControlNumber min="0" default="20" step="1" />
-
-图例关闭时线的宽度，不可取 `'inherit'`。
-
 ## symbolSize(number|string) = 'auto'
 
 <ExampleUIControlNumber min="0" default="50" step="5" />
