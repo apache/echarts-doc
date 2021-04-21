@@ -33,13 +33,17 @@ ${name}图形的描边颜色。支持的颜色格式同 `color`，不支持回�
 
 <ExampleUIControlNumber value="${defaultBorderWidth|default(0)}" min="0" step="0.5" />
 
-${name}描边线宽。为 0 时无描边。
+${defaultBorderWidthDesc|default((${name} ? ${name} : "") + "描边线宽。为 0 时无描边。")}
 
 {{ use: partial-line-border-style(
     prefix = ${prefix},
     name = ${name},
     type = 'border',
-    defaultType = ${defaultType}
+    defaultType = ${defaultType},
+    defaultDashOffset = ${defaultDashOffset},
+    defaultCap = ${defaultCap},
+    defaultJoin = ${defaultJoin},
+    defaultMiterLimit = ${defaultMiterLimit}
 ) }}
 
 {{ use: partial-style-shadow-opacity(
@@ -53,7 +57,7 @@ ${name}描边线宽。为 0 时无描边。
 
 {{ if: ${useDecal} }}
 
-#${prefix} decal(Object)
+#${prefix} decal(Object) = ${defaultDecal}
 
 {{ use: partial-decal-desc(
     onlyWithAreaStyle = ${decalOnlyWithAreaStyle}

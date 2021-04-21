@@ -35,11 +35,17 @@ ${name} border color, whose format is similar to that of `color`.
 
 ${name} border width. No border when it is set to be 0.
 
+${defaultBorderWidthDesc|default((${name} ? ${name} : "") + " border width. No border when it is set to be 0.")}
+
 {{ use: partial-line-border-style(
     prefix = ${prefix},
     name = ${name},
     type = 'border',
-    defaultType = ${defaultType}
+    defaultType = ${defaultType},
+    defaultDashOffset = ${defaultDashOffset},
+    defaultCap = ${defaultCap},
+    defaultJoin = ${defaultJoin},
+    defaultMiterLimit = ${defaultMiterLimit}
 ) }}
 
 {{ use: partial-style-shadow-opacity(
@@ -52,7 +58,7 @@ ${name} border width. No border when it is set to be 0.
 ) }}
 
 {{ if: ${useDecal} }}
-#${prefix} decal(Object)
+#${prefix} decal(Object) = ${defaultDecal}
 
 {{ use: partial-decal-desc(
     onlyWithAreaStyle = ${decalOnlyWithAreaStyle}

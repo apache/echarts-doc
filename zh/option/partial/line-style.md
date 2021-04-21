@@ -26,14 +26,20 @@ ${name}线宽。
 {{ use: partial-line-border-style(
     prefix = ${prefix},
     name = ${name},
-    defaultType = ${defaultType}
+    defaultType = ${defaultType},
+    defaultCap = ${defaultCap},
+    defaultJoin = ${defaultJoin},
+    defaultDashOffset = ${defaultDashOffset},
+    defaultMiterLimit = ${defaultMiterLimit}
 ) }}
 
 {{ use: partial-style-shadow-opacity(
     prefix = ${prefix},
     defaultOpacity = ${defaultOpacity},
     defaultShadowBlur = ${defaultShadowBlur},
-    defaultShadowColor = ${defaultShadowColor}
+    defaultShadowColor = ${defaultShadowColor},
+    defaultShadowOffsetX = ${defaultShadowOffsetX},
+    defaultShadowOffsetY = ${defaultShadowOffsetY}
 ) }}
 
 {{ if: ${hasCurveness} }}

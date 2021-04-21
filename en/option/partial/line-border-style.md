@@ -45,12 +45,11 @@ For example：
 ```
 
 {{ if: ${type} === 'border' }}
-#${prefix} borderDashOffset(number) = 0
-
-{{ elif: ${type} === 'text' }}
-#${prefix} textBorderDashOffset(number) = 0
+#${prefix} borderDashOffset(number) = ${defaultDashOffset|default(0)}
+{{ elif: ${type} === 'text'  }}
+#${prefix} textBorderDashOffset(number) = ${defaultDashOffset|default(0)}
 {{ else }}
-#${prefix} dashOffset(number) = 0
+#${prefix} dashOffset(number) = ${defaultDashOffset|default(0)}
 {{ /if }}
 
 {{ use: partial-version(
@@ -71,9 +70,9 @@ Refer to MDN [lineDashOffset](https://developer.mozilla.org/en-US/docs/Web/API/C
 
 {{ if: !${noCap} }}
 {{ if: ${type} === 'border' }}
-#${prefix} borderCap(string) = 'butt'
+#${prefix} borderCap(string) = ${defaultCap|default('butt')}
 {{ else }}
-#${prefix} cap(string) = 'butt'
+#${prefix} cap(string) = ${defaultCap|default('butt')}
 {{ /if }}
 
 {{ use: partial-version(
@@ -93,9 +92,9 @@ Default value is `'butt'`. Refer to MDN [lineCap](https://developer.mozilla.org/
 
 {{ if: !${noJoin} }}
 {{ if: ${type} === 'border' }}
-#${prefix} borderJoin(string) = 'bevel'
+#${prefix} borderJoin(string) = ${defaultJoin|default('bevel')}
 {{ else }}
-#${prefix} join(string) = 'bevel'
+#${prefix} join(string) = ${defaultJoin|default('bevel')}
 {{ /if }}
 
 {{ use: partial-version(
@@ -120,9 +119,9 @@ Default value is `'bevel'`. Refer to MDN [lineJoin](https://developer.mozilla.or
 
 {{ if: !${noMiterLimit} }}
 {{ if: ${type} === 'border' }}
-#${prefix} borderMiterLimit(number) = 10
+#${prefix} borderMiterLimit(number) = ${defaultMiterLimit|default(10)}
 {{ else }}
-#${prefix} miterLimit(number) = 10
+#${prefix} miterLimit(number) = ${defaultMiterLimit|default(10)}
 {{ /if }}
 
 {{ use: partial-version(
