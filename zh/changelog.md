@@ -1,3 +1,32 @@
+## v5.1.0
+<div class="time">2021-04-15</div>
+
++ !![Feature] [geo] [map] 地理坐标系和地图系列支持使用 SVG 数据作为地图源。 [#14571](https://github.com/apache/echarts/issues/14571) ([100pah](https://github.com/100pah))
++ ![Feature] [legend] 默认使用了更直观的图例设计，图例的样式更符合系列样式。 [#14497](https://github.com/apache/echarts/issues/14497) ([Ovilia](https://github.com/Ovilia))
++ [Feature] [i18n] 新增捷克语翻译。 [#14468](https://github.com/apache/echarts/issues/14468) ([JiriBalcar](https://github.com/JiriBalcar))
++ [Feature] [animation] 为`resize`方法添加`animation`的动画过渡配置。 [#14553](https://github.com/apache/echarts/issues/14553) ([pissang](https://github.com/pissang))
++ [Feature] [effectScatter] `effectScatter`系列添加`clip`配置。 [#14574](https://github.com/apache/echarts/issues/14574) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [debug] 优化组件缺失时候的错误提示。 [#14568](https://github.com/apache/echarts/issues/14568) ([pissang](https://github.com/pissang))
++ [Fix] [tooltip] 优化`tooltip`的性能。 [#14246](https://github.com/apache/echarts/issues/14246) ([plainheart](https://github.com/plainheart))
++ [Fix] [label] 修复标签可能会显示在图形下面的错误。 [#14542](https://github.com/apache/echarts/issues/14542) ([plainheart](https://github.com/plainheart)) [#14417](https://github.com/apache/echarts/issues/14417) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [pattern] 修复`CanvasPatttern#setTransform`方法可能会不存在报错的问题 [#738](https://github.com/ecomfe/zrender/issues/738) ([pissang](https://github.com/pissang))
++ [Fix] [tooltip] 修复`tooltip`中对时间轴的格式化错误 [#14471](https://github.com/apache/echarts/issues/14471) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [symbol] 所有使用`symbol`的组件都添加了`symbolOffset`的支持。 [#14375](https://github.com/apache/echarts/issues/14375) ([plainheart](https://github.com/plainheart))
++ [Fix] [markArea] 修复`markArea`背景色可能不显示的问题。 Close [#13647](https://github.com/apache/echarts/issues/13647) [#14343](https://github.com/apache/echarts/issues/14343) ([Nick22nd](https://github.com/Nick22nd))
++ [Fix] [markLine] 修复`markLine`中字符串格式的数据可能无法使用的问题。 Close [#14300](https://github.com/apache/echarts/issues/14300) [#14314](https://github.com/apache/echarts/issues/14314) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [select] 修复可能存在`null`值访问的问题。 Close [#14293](https://github.com/apache/echarts/issues/14293) [#14413](https://github.com/apache/echarts/issues/14413) ([leosxie](https://github.com/leosxie))
++ [Fix] [dataZoom] 修复`dataZoom`中的标签高宽设置不生效的问题。 [#14388](https://github.com/apache/echarts/issues/14388) ([wf123537200](https://github.com/wf123537200))
++ [Fix] [animation] 修复存在`NaN`值的动画可能会错误的问题。 [#730](https://github.com/ecomfe/zrender/issues/730) ([Nick22nd](https://github.com/Nick22nd))
++ [Fix] [visualMap] 修复`itemSymbol`配置不生效的问题。 Close [#5719](https://github.com/apache/echarts/issues/5719) [#14243](https://github.com/apache/echarts/issues/14243) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [loading] 修复标签被其它图形覆盖的问题。 [#14191](https://github.com/apache/echarts/issues/14191) ([yufeng04](https://github.com/yufeng04))
++ [Fix] [custom] 修复自定义系列标签颜色可能不对的问题。 Close [#14092](https://github.com/apache/echarts/issues/14092) [#14254](https://github.com/apache/echarts/issues/14254) ([Nick22nd](https://github.com/Nick22nd))
++ [Fix] [map] 修复使用`labelLayout`的时候地图标签可能不会随着拖动更新。 [#14578](https://github.com/apache/echarts/issues/14578) ([pissang](https://github.com/pissang))
++ [Fix] [calendar] 修复日标签位置偏移的问题。 Close [#11508](https://github.com/apache/echarts/issues/11508) [#13902](https://github.com/apache/echarts/issues/13902) ([Nick22nd](https://github.com/Nick22nd))
++ [Fix] [lines] 修复折线图动画可能错乱的问题。 [#13638](https://github.com/apache/echarts/issues/13638) ([vially](https://github.com/vially))
++ [Fix] [type] 暴露更多的类型方便插件生成类型文件 [#14289](https://github.com/apache/echarts/issues/14289) ([pissang](https://github.com/pissang))
++ [Fix] [type] 添加`LegendComponentOption.icon`类型 [#14263](https://github.com/apache/echarts/issues/14263) ([thesiti92](https://github.com/thesiti92))
++ [Fix] 去除一些遗留代码的使用 [#14357](https://github.com/apache/echarts/issues/14357) ([pissang](https://github.com/pissang))
+
 ## v5.0.2
 <div class="time">2021-02-01</div>
 

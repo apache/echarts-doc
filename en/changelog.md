@@ -1,4 +1,6 @@
 ## v5.1.0
+<div class="time">2021-04-15</div>
+
 + !![Feature] [geo] [map] geo component and map series support SVG format source. [#14571](https://github.com/apache/echarts/issues/14571) ([100pah](https://github.com/100pah))
 + ![Feature] [legend] Default legend design is more intuitive. [#14497](https://github.com/apache/echarts/issues/14497) ([Ovilia](https://github.com/Ovilia))
 + [Feature] [i18n] Add czech translation [#14468](https://github.com/apache/echarts/issues/14468) ([JiriBalcar](https://github.com/JiriBalcar))
@@ -13,7 +15,7 @@
 + [Fix] [markArea] Fix markArea background color disappeared bug. Close [#13647](https://github.com/apache/echarts/issues/13647) [#14343](https://github.com/apache/echarts/issues/14343) ([Nick22nd](https://github.com/Nick22nd))
 + [Fix] [markLine] Fix string type data may not work in markLine. Close [#14300](https://github.com/apache/echarts/issues/14300) [#14314](https://github.com/apache/echarts/issues/14314) ([Ovilia](https://github.com/Ovilia))
 + [Fix] [select] Fix null access bug when checking selected status. Close [#14293](https://github.com/apache/echarts/issues/14293) [#14413](https://github.com/apache/echarts/issues/14413) ([leosxie](https://github.com/leosxie))
-+ [Fix] [dataZoom]fix dataZoom setting no effect [#14388](https://github.com/apache/echarts/issues/14388) ([wf123537200](https://github.com/wf123537200))
++ [Fix] [dataZoom] Fix width and height not work in dataZoom labels. [#14388](https://github.com/apache/echarts/issues/14388) ([wf123537200](https://github.com/wf123537200))
 + [Fix] [animation] Fix animation between NaN value may have problem. [#730](https://github.com/ecomfe/zrender/issues/730) ([Nick22nd](https://github.com/Nick22nd))
 + [Fix] [visualMap] Use itemSymbol as default symbol type. Close [#5719](https://github.com/apache/echarts/issues/5719) [#14243](https://github.com/apache/echarts/issues/14243) ([Ovilia](https://github.com/Ovilia))
 + [Fix] [loading] Fix text of loading is not in the front and covered by others. [#14191](https://github.com/apache/echarts/issues/14191) ([yufeng04](https://github.com/yufeng04))
