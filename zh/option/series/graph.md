@@ -200,7 +200,7 @@ edgeSymbol: ['circle', 'arrow']
 {{ use: partial-label(
     prefix = "##",
     defaultPosition = "'inside'",
-    formatter2d = true
+    formatter = true
 ) }}
 
 ## edgeLabel(Object)
@@ -286,7 +286,7 @@ edgeSymbol: ['circle', 'arrow']
 {{ use: partial-label(
     prefix = "###",
     defaultPosition = "inside",
-    formatter2d = true
+    formatter = true
 ) }}
 
 ### emphasis(Object)
@@ -589,7 +589,7 @@ links: [{
 {{ use: partial-label(
     prefix = "###",
     defaultShow = true,
-    formatter2d = true
+    formatter = true
 ) }}
 
 ### edgeLabel(Object)
