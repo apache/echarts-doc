@@ -118,7 +118,9 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
     // 切换的图例名称
     name: string
     // 所有图例的选中状态表
-    selected: Object
+    selected: {
+        [name: string]: boolean
+    }
 }
 ```
 ## legendselected(Event)
@@ -131,7 +133,9 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
     // 选中的图例名称
     name: string
     // 所有图例的选中状态表
-    selected: Object
+    selected: {
+        [name: string]: boolean
+    }
 }
 ```
 
@@ -147,7 +151,9 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
     // 取消选中的图例名称
     name: string
     // 所有图例的选中状态表。
-    selected: Object
+    selected: {
+        [name: string]: boolean
+    }
 }
 ```
 
@@ -160,7 +166,9 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
 {
     type: 'legendselectall',
     // 所有图例的选中状态表。
-    selected: Object
+    selected: {
+        [name: string]: boolean
+    }
 }
 ```
 
@@ -173,7 +181,9 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
 {
     type: 'legendinverseselect',
     // 所有图例的选中状态表。
-    selected: Object
+    selected: {
+        [name: string]: boolean
+    }
 }
 ```
 
@@ -460,12 +470,11 @@ chart.on('finished', function () {
     // 数据名称
     name: name,
     // 所有数据的选中状态表。
-    selected: Object
+    selected: {
+        [name: string]: boolean
+    }
 }
 ```
-{{ if: ${componentType} !== 'geo' }}
-**注：** 该事件同 ECharts 2 中的 `${componentType}Selected` 事件相同。
-{{ /if }}
 
 ## ${componentType}selected(Event)
 **ACTION:** [${componentType}Select](~action.${componentType}.${componentType}Select)
@@ -482,13 +491,11 @@ chart.on('finished', function () {
     // 数据名称
     name: name,
     // 所有数据的选中状态表。
-    selected: Object
+    selected: {
+        [name: string]: boolean
+    }
 }
 ```
-
-{{ if: ${componentType} !== 'geo' }}
-**注：** ECharts 2.x 中用户开关图例对应的事件从 `${componentType}selected` 改为 [${componentType}selectchanged](~events.${componentType}selectchanged)。
-{{ /if }}
 
 ## ${componentType}unselected(Event)
 **ACTION:** [${componentType}UnSelect](~action.${componentType}.${componentType}UnSelect)
@@ -505,7 +512,9 @@ chart.on('finished', function () {
     // 数据名称
     name: name,
     // 所有数据的选中状态表。
-    selected: Object
+    selected: {
+        [name: string]: boolean
+    }
 }
 ```
 

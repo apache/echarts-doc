@@ -120,7 +120,9 @@ Event emitted after legend selecting state changes.
     // change legend name
     name: string
     // table of all legend selecting states
-    selected: Object
+    selected: {
+        [name: string]: boolean
+    }
 }
 ```
 ## legendselected(Event)
@@ -133,7 +135,9 @@ Event emitted after legend is selected.
     // name of selected legend
     name: string
     // table of all legend selecting states
-    selected: Object
+    selected: {
+        [name: string]: boolean
+    }
 }
 ```
 
@@ -149,7 +153,9 @@ Event emitted after unselecting legend.
     // name of unselected legend
     name: string
     // table of all legend selecting states
-    selected: Object
+    selected: {
+        [name: string]: boolean
+    }
 }
 ```
 
@@ -161,7 +167,9 @@ Event emitted after all legends are selected.
 {
     type: 'legendselectall',
     // table of all legend selecting states
-    selected: Object
+    selected: {
+        [name: string]: boolean
+    }
 }
 ```
 
@@ -174,7 +182,9 @@ Event emitted after inversing all legends.
 {
     type: 'legendinverseselect',
     // table of all legend selecting states
-    selected: Object
+    selected: {
+        [name: string]: boolean
+    }
 }
 ```
 
@@ -471,7 +481,9 @@ It will be triggered when user clicks to select.
     // data name
     name: name,
     // table of all selected data.
-    selected: Object
+    selected: {
+        [name: string]: boolean
+    }
 }
 ```
 **Attention: ** This event is the same as event `${componentType}Selected` in ECharts 2.
@@ -491,7 +503,9 @@ Use `dispatchAction` can trigger this event, but user clicking this event won't 
     // data name
     name: name,
     // table of all legend selecting states
-    selected: Object
+    selected: {
+        [name: string]: boolean
+    }
 }
 ```
 
@@ -512,7 +526,9 @@ Use `dispatchAction` will trigger this event, but user clicking won't trigger it
     // data name
     name: name,
     // table of all legend selecting states
-    selected: Object
+    selected: {
+        [name: string]: boolean
+    }
 }
 ```
 
