@@ -163,7 +163,7 @@ option = {
     version = '5.0.0'
 ) }}
 
-## strictlyAligned(boolean)
+## strictlyAligned(boolean) = false
 
 {{ use: partial-strictly-aligned }}
 

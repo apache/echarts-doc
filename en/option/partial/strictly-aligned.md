@@ -3,8 +3,10 @@
 
 ## strictlyAligned(boolean) = false
 
-force straight lines to align. It is valid with [coordinateSystem](~series-heatmap.coordinateSystem) of 'cartesian2d' value.
+{{ use: partial-version(
+    version = '5.2.0'
+) }}
 
-**Notice**: When big data and this option are enabled, performance issues may occur.
+force straight lines to align. It is valid with [coordinateSystem](~series-heatmap.coordinateSystem) of 'cartesian2d' value.
 
 <ExampleUIControlEnum options="false,true" />
