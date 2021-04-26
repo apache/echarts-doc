@@ -466,10 +466,18 @@ chart.on('finished', function () {
 {
     type: '${componentType}selectchanged',
     // 系列 ID，可以在 option 中传入
-    seriesId: string
+    seriesId: string,
     // 数据名称
     name: name,
+    // 每个 ${componentType} 组件的选中信息列表。
+    allSelected: ({
+        ${componentType}Index: number
+        // 每个 ${componentType} 组件上选中的名称列表。
+        name: string[]
+    })[],
+    // 不推荐使用此属性。
     // 所有数据的选中状态表。
+    // 不同 ${componentType} 组件的状态会被合并在一起。
     selected: {
         [name: string]: boolean
     }

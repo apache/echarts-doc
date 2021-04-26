@@ -480,7 +480,15 @@ It will be triggered when user clicks to select.
     seriesId: string
     // data name
     name: name,
-    // table of all selected data.
+    // list for each ${componentType} component.
+    allSelected: ({
+        ${componentType}Index: number
+        // selected names of each ${componentType} component.
+        name: string[]
+    })[],
+    // (deprecated).
+    // all selected data.
+    // status of different ${componentType} components will be merged.
     selected: {
         [name: string]: boolean
     }

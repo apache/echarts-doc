@@ -124,7 +124,24 @@ See [Use ECharts with bundler and NPM](tutorial.html#Use%20ECharts%20with%20bund
 
 ## registerMap(Function)
 ```js
-(mapName: string, geoJson: Object, specialAreas?: Object)
+(
+    mapName: string,
+    opt: {
+        geoJSON: Object | string;
+        specialAreas?: Object;
+    }
+)
+| (
+    mapName: string,
+    opt: {
+        svg: Object | string;
+    }
+)
+| (
+    mapName: string,
+    geoJSON: Object | string,
+    specialAreas?: Object
+)
 ```
 Registers available maps. This can only be used after including [geo](option.html#geo) component or chart series of [map](option.html#series-map).
 
@@ -135,40 +152,48 @@ Please refer to [option.geo](option.html#geo.map) for usage.
 
     Map name, referring to `map` value set in [geo](option.html#geo) component or [map](option.html#series-map).
 
-+ `geoJson`
++ `opt`
 
-    Data in GeoJson format. See [https://geojson.org/](https://geojson.org/) for more format information.
+    + `geoJSON`
 
-+ `specialAreas`
+        Optional; Data in GeoJson format. See [https://geojson.org/](https://geojson.org/) for more format information. Can be a JSON string or a parsed object. This key can also be `geoJson`.
 
-    Optional; zoomed part of a specific area in the map for better visual effect.
+    + `svg`
 
-    **For example [USA Population Estimates](${galleryEditorPath}map-usa): **
-    ```js
-echarts.registerMap('USA', usaJson, {
-    // Move Alaska to the bottom left of United States
-    Alaska: {
-        // Upper left longitude
-        left: -131,
-        // Upper left latitude
-        top: 25,
-        // Range of longitude
-        width: 15
-    },
-    // Hawaii
-    Hawaii: {
-        left: -110,
-        top: 28,
-        width: 5
-    },
-    // Puerto Rico
-    'Puerto Rico': {
-        left: -76,
-        top: 26,
-        width: 2
-    }
-});
-    ```
+        Optional; Data in SVG format. Can be a SVG string or a parsed SVG DOM object. See more info in SVG_a_a_a_a_a.
+
+    + `specialAreas`
+
+        Optional; zoomed part of a specific area in the map for better visual effect.
+
+        Only work for `geoJSON`, not work for `svg`.
+
+        **For example [USA Population Estimates](${galleryEditorPath}map-usa): **
+        ```js
+        echarts.registerMap('USA', usaJson, {
+            // Move Alaska to the bottom left of United States
+            Alaska: {
+                // Upper left longitude
+                left: -131,
+                // Upper left latitude
+                top: 25,
+                // Range of longitude
+                width: 15
+            },
+            // Hawaii
+            Hawaii: {
+                left: -110,
+                top: 28,
+                width: 5
+            },
+            // Puerto Rico
+            'Puerto Rico': {
+                left: -76,
+                top: 26,
+                width: 2
+            }
+        });
+        ```
 
 ## getMap(Function)
 ```js
@@ -179,12 +204,17 @@ Get a registered map in the following format:
 
 ```js
 {
-    // geoJson data of the map
-    geoJson: Object,
+    // geoJSON data of the map
+    geoJSON: Object,
     // special area, see registerMap() for more information
     specialAreas: Object
 }
 ```
+
+Note:
++ `geoJSON` can also be `geoJson`, they have the same reference.
++ SVG registered by `registerMap` can not be obtained by this method yet.
+
 
 ## registerTheme(Function)
 ```js
