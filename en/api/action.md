@@ -50,7 +50,7 @@ dispatchAction({
     {{ use: action-data-query-multiple }}
 });
 
-// If highlight geo component:
+// If highlight geo component (since v5.1.0):
 dispatchAction({
     type: 'highlight',
 
@@ -75,7 +75,7 @@ dispatchAction({
     {{ use: action-data-query-multiple }}
 });
 
-// If downplay geo component:
+// If downplay geo component (since v5.1.0):
 dispatchAction({
     type: 'downplay',
 
@@ -223,7 +223,7 @@ dispatchAction({
     y: number,
     // Position of tooltip. Only works in this action.
     // Use tooltip.position in option by default.
-    position: Array.<number>|string|Function
+    position: number[] | string | Function,
 })
 ```
 
@@ -236,11 +236,12 @@ dispatchAction({
     {{ use: action-data-query-single }},
     // Position of tooltip. Only works in this action.
     // Use tooltip.position in option by default.
-    position: Array.<number>|string|Function
+    position: number[] | string | Function,
 })
 ```
 
 3 Specify graphic element in geo component, and display tooltip according to the tooltip configuration.
+{{ use: partial-version(version: '5.1.0') }}
 ```js
 dispatchAction({
     type: 'showTip',

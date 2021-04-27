@@ -481,6 +481,7 @@ It will be triggered when user clicks to select.
     // data name
     name: name,
     // list for each ${componentType} component.
+    // allSelected is supported since v5.1.0
     allSelected: ({
         ${componentType}Index: number
         // selected names of each ${componentType} component.

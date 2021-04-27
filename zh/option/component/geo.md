@@ -96,7 +96,8 @@ geo 区域的颜色也可以被 map series 所控制，参见 [series-map.geoInd
 
 {{ use: partial-tooltip-in-coords-item(
     componentItemDesc: 'region',
-    noAxis: true
+    noAxis: true,
+    version = '5.1.0'
 ) }}
 
 
@@ -107,7 +108,8 @@ geo 区域的颜色也可以被 map series 所控制，参见 [series-map.geoInd
 ) }}
 
 {{ use: partial-tooltip-in-coords(
-    noAxis = true
+    noAxis = true,
+    version = '5.1.0'
 ) }}
 
 

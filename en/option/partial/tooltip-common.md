@@ -22,6 +22,10 @@ tooltip can be configured on different places:
 
 ## tooltip(Object)
 
+{{ if: ${version} }}
+{{ use: partial-version(version: '5.1.0') }}
+{{ /if }}
+
 tooltip settings in the coordinate system component.
 
 ---
@@ -40,9 +44,13 @@ tooltip settings in the coordinate system component.
 
 
 
-{{ target: partial-tooltip-in-component-item }}
+{{ target: partial-tooltip-in-coords-item }}
 
 ### tooltip(*)
+
+{{ if: ${version} }}
+{{ use: partial-version(version: '5.1.0') }}
+{{ /if }}
 
 tooltip settings in this ${componentItemDesc}.
 

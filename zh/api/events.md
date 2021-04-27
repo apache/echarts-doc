@@ -470,6 +470,7 @@ chart.on('finished', function () {
     // 数据名称
     name: name,
     // 每个 ${componentType} 组件的选中信息列表。
+    // allSelected 从 `v5.1.0` 开始支持
     allSelected: ({
         ${componentType}Index: number
         // 每个 ${componentType} 组件上选中的名称列表。

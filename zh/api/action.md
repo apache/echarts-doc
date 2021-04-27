@@ -49,7 +49,7 @@ dispatchAction({
     {{ use: action-data-query-multiple }}
 });
 
-// 如果要高亮 geo 组件：
+// 如果要高亮 geo 组件（从 `v5.1.0` 开始支持）：
 dispatchAction({
     type: 'highlight',
 
@@ -73,7 +73,7 @@ dispatchAction({
     {{ use: action-data-query-multiple }}
 })
 
-// 如果要取消高亮 geo 组件：
+// 如果要取消高亮 geo 组件（从 `v5.1.0` 开始支持）：
 dispatchAction({
     type: 'downplay',
 
@@ -220,7 +220,7 @@ dispatchAction({
     y: number,
     // 本次显示 tooltip 的位置。只在本次 action 中生效。
     // 缺省则使用 option 中定义的 tooltip 位置。
-    position: Array.<number>|string|Function
+    position: number[] | string | Function,
 })
 ```
 
@@ -233,11 +233,12 @@ dispatchAction({
     {{ use: action-data-query-single }},
     // 本次显示 tooltip 的位置。只在本次 action 中生效。
     // 缺省则使用 option 中定义的 tooltip 位置。
-    position: Array.<number>|string|Function,
+    position: number[] | string | Function,
 })
 ```
 
 3 指定 geo 组件中的 region 名，根据 tooltip 的配置项显示提示框。
+{{ use: partial-version(version: '5.1.0') }}
 ```js
 dispatchAction({
     type: 'showTip',

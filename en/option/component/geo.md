@@ -98,7 +98,8 @@ Style of selected region.
 
 {{ use: partial-tooltip-in-coords-item(
     componentItemDesc: 'region',
-    noAxis: true
+    noAxis: true,
+    version = '5.1.0'
 ) }}
 
 
@@ -109,7 +110,8 @@ Style of selected region.
 ) }}
 
 {{ use: partial-tooltip-in-coords(
-    noAxis = true
+    noAxis = true,
+    version = '5.1.0'
 ) }}
 
 

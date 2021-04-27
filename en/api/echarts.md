@@ -160,6 +160,8 @@ Please refer to [option.geo](option.html#geo.map) for usage.
 
     + `svg`
 
+        > Since `v5.1.0`
+
         Optional; Data in SVG format. Can be a SVG string or a parsed SVG DOM object. See more info in SVG_a_a_a_a_a.
 
     + `specialAreas`

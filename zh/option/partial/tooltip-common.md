@@ -22,6 +22,10 @@
 
 ## tooltip(Object)
 
+{{ if: ${version} }}
+{{ use: partial-version(version: '5.1.0') }}
+{{ /if }}
+
 本坐标系特定的 tooltip 设定。
 
 ---
@@ -43,6 +47,10 @@
 {{ target: partial-tooltip-in-coords-item }}
 
 ### tooltip(*)
+
+{{ if: ${version} }}
+{{ use: partial-version(version: '5.1.0') }}
+{{ /if }}
 
 本 ${componentItemDesc} 中特定的 tooltip 设定。
 
