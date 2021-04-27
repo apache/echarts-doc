@@ -94,12 +94,18 @@ geo 区域的颜色也可以被 map series 所控制，参见 [series-map.geoInd
 
 {{ use: geo-region-state() }}
 
+### blur(Object)
+{{ use: partial-version(version: '5.1.0') }}
+淡出状态的设置。
+
+{{ use: geo-region-state() }}
+
+
 {{ use: partial-tooltip-in-coords-item(
     componentItemDesc: 'region',
     noAxis: true,
     version = '5.1.0'
 ) }}
-
 
 
 

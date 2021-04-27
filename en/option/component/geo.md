@@ -96,6 +96,14 @@ Style of selected region.
 
 {{ use: geo-region-state() }}
 
+### blur(Object)
+{{ use: partial-version(version: '5.1.0') }}
+Style of blurred region.
+
+{{ use: geo-region-state() }}
+
+
+
 {{ use: partial-tooltip-in-coords-item(
     componentItemDesc: 'region',
     noAxis: true,

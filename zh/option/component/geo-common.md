@@ -148,6 +148,10 @@ boundingCoords: [
 
 高亮状态下的多边形和标签样式。
 
+{{ if: !${inMap} }}
+{{ use: partial-focus-blur-scope(isGeoCoordSys: true) }}
+{{ /if }}
+
 {{ use: partial-geo-common-state(
     prefix = '#' + ${prefix}
 ) }}
@@ -159,6 +163,17 @@ boundingCoords: [
 {{ use: partial-geo-common-state(
     prefix = '#' + ${prefix}
 ) }}
+
+{{ if: !${inMap} }}
+#${prefix} blur(Object)
+{{ use: partial-version(version: '5.1.0') }}
+淡出状态下的多边形和标签样式。
+
+{{ use: partial-geo-common-state(
+    prefix = '#' + ${prefix}
+) }}
+{{ /if }}
+
 
 {{ use: partial-rect-layout(
     prefix = ${prefix}

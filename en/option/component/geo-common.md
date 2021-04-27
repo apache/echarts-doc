@@ -149,6 +149,9 @@ Area filling color.
 #${prefix} emphasis(Object)
 
 Map area style in highlighted state.
+{{ if: !${inMap} }}
+{{ use: partial-focus-blur-scope(isGeoCoordSys: true) }}
+{{ /if }}
 
 {{ use: partial-geo-common-state(
     prefix = '#' + ${prefix}
@@ -161,6 +164,16 @@ Map area style in selected state.
 {{ use: partial-geo-common-state(
     prefix = '#' + ${prefix}
 ) }}
+
+{{ if: !${inMap} }}
+#${prefix} blur(Object)
+{{ use: partial-version(version: '5.1.0') }}
+Map area style in blurred state.
+
+{{ use: partial-geo-common-state(
+    prefix = '#' + ${prefix}
+) }}
+{{ /if }}
 
 {{ use: partial-rect-layout(
     prefix = ${prefix}
