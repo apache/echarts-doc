@@ -4,10 +4,15 @@
     seriesId?: string | string[],
     seriesName?: string | string[],{{/target}}
 
-{{ target: action-data-query }}// 数据项的 index，如果不指定也可以通过 name 属性根据名称指定数据项
+{{ target: action-data-query-multiple }}// 数据项的 index，如果不指定也可以通过 name 属性根据名称指定数据项
     dataIndex?: number | number[],
     // 可选，数据项名称，在有 dataIndex 的时候忽略
     name?: string | string[],{{/target}}
+
+{{ target: action-data-query-single }}// 数据项的 index，如果不指定也可以通过 name 属性根据名称指定数据项
+    dataIndex?: number,
+    // 可选，数据项名称，在有 dataIndex 的时候忽略
+    name?: string,{{/target}}
 
 {{ target: action-component-query }}// 用 index 或 id 或 name 来指定 ${componentType} 组件。
     // 可以用数组指定多个 ${componentType} 组件。
@@ -15,8 +20,12 @@
     ${componentType}Id?: string | string[],
     ${componentType}Name?: string | string[],{{/target}}
 
-{{ target: action-component-item-query }}// ${componentType} 组件中 ${componentItemDesc} 名称。可以是一个数组指定多个名称。
+{{ target: action-component-item-query-multiple }}// ${componentType} 组件中 ${componentItemDesc} 名称。
+    // 可以是一个数组指定多个名称。
     name?: string | string[],{{/target}}
+
+{{ target: action-component-item-query-single }}// ${componentType} 组件中 ${componentItemDesc} 名称。
+    name?: string,{{/target}}
 
 
 {{ target: action }}
@@ -37,7 +46,7 @@ dispatchAction({
 
     {{ use: action-series-query }}
 
-    {{ use: action-data-query }}
+    {{ use: action-data-query-multiple }}
 });
 
 // 如果要高亮 geo 组件：
@@ -46,7 +55,7 @@ dispatchAction({
 
     {{ use: action-component-query(componentType = 'geo') }}
 
-    {{ use: action-component-item-query(componentType = 'geo', componentItemDesc = 'region') }}
+    {{ use: action-component-item-query-multiple(componentType = 'geo', componentItemDesc = 'region') }}
 });
 ```
 
@@ -61,7 +70,7 @@ dispatchAction({
 
     {{ use: action-series-query }}
 
-    {{ use: action-data-query }}
+    {{ use: action-data-query-multiple }}
 })
 
 // 如果要取消高亮 geo 组件：
@@ -70,7 +79,7 @@ dispatchAction({
 
     {{ use: action-component-query(componentType = 'geo') }}
 
-    {{ use: action-component-item-query(componentType = 'geo', componentItemDesc = 'region') }}
+    {{ use: action-component-item-query-multiple(componentType = 'geo', componentItemDesc = 'region') }}
 });
 ```
 
@@ -84,7 +93,7 @@ dispatchAction({
 
     {{ use: action-series-query }}
 
-    {{ use: action-data-query }}
+    {{ use: action-data-query-multiple }}
 })
 ```
 
@@ -98,7 +107,7 @@ dispatchAction({
 
     {{ use: action-series-query }}
 
-    {{ use: action-data-query }}
+    {{ use: action-data-query-multiple }}
 })
 ```
 
@@ -112,7 +121,7 @@ dispatchAction({
 
     {{ use: action-series-query }}
 
-    {{ use: action-data-query }}
+    {{ use: action-data-query-multiple }}
 })
 ```
 
@@ -199,7 +208,7 @@ dispatchAction({
 
 显示提示框。
 
-有下面两种使用方式。
+有下面几种使用方式。
 
 1 指定在相对容器的位置处显示提示框，如果指定的位置无法显示则无效。
 ```js
@@ -215,16 +224,28 @@ dispatchAction({
 })
 ```
 
-2 指定数据图形，根据 tooltip 的配置项显示提示框。
+2 指定系列中的数据图形，根据 tooltip 的配置项显示提示框。
 ```js
 dispatchAction({
     type: 'showTip',
     // 系列的 index，在 tooltip 的 trigger 为 axis 的时候可选。
     seriesIndex?: number,
-    {{ use: action-data-query }},
+    {{ use: action-data-query-single }},
     // 本次显示 tooltip 的位置。只在本次 action 中生效。
     // 缺省则使用 option 中定义的 tooltip 位置。
     position: Array.<number>|string|Function,
+})
+```
+
+3 指定 geo 组件中的 region 名，根据 tooltip 的配置项显示提示框。
+```js
+dispatchAction({
+    type: 'showTip',
+    {{ use: action-component-query(componentType = 'geo') }}
+    {{ use: action-component-item-query-single(componentType = 'geo', componentItemDesc = 'region') }}
+    // 本次显示 tooltip 的位置。只在本次 action 中生效。
+    // 缺省则使用 option 中定义的 tooltip 位置。
+    position: number[] | string | Function,
 })
 ```
 
@@ -466,7 +487,7 @@ dispatchAction({
 
     {{ use: action-component-query(componentType = 'geo') }}
 
-    {{ use: action-component-item-query(componentType = 'geo', componentItemDesc = 'region') }}
+    {{ use: action-component-item-query-multiple(componentType = 'geo', componentItemDesc = 'region') }}
 })
 ```
 
@@ -481,7 +502,7 @@ dispatchAction({
 
     {{ use: action-component-query(componentType = 'geo') }}
 
-    {{ use: action-component-item-query(componentType = 'geo', componentItemDesc = 'region') }}
+    {{ use: action-component-item-query-multiple(componentType = 'geo', componentItemDesc = 'region') }}
 })
 ```
 **EVENT:** [${componentType}unselected](~events.${componentType}unselected)
@@ -495,7 +516,7 @@ dispatchAction({
 
     {{ use: action-component-query(componentType = 'geo') }}
 
-    {{ use: action-component-item-query(componentType = 'geo', componentItemDesc = 'region') }}
+    {{ use: action-component-item-query-multiple(componentType = 'geo', componentItemDesc = 'region') }}
 })
 ```
 **EVENT:** [${componentType}selectchanged](~events.${componentType}selectchanged)

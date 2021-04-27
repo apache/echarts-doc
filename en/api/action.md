@@ -4,10 +4,15 @@
     seriesId?: string | string[],
     seriesName?: string | string[],{{/target}}
 
-{{ target: action-data-query }}// data index; could assign by name attribute when not defined
+{{ target: action-data-query-multiple }}// data index; could assign by name attribute when not defined
     dataIndex?: number | number[],
     // optional; data name; ignored when dataIndex is defined
     name?: string | string[],{{/target}}
+
+{{ target: action-data-query-single }}// data index; could assign by name attribute when not defined
+    dataIndex?: number,
+    // optional; data name; ignored when dataIndex is defined
+    name?: string,{{/target}}
 
 {{ target: action-component-query }}// Find ${componentType} by index or id or name.
     // Can be an array to find multiple components.
@@ -15,9 +20,12 @@
     ${componentType}Id?: string | string[],
     ${componentType}Name?: string | string[],{{/target}}
 
-{{ target: action-component-item-query }}// ${componentItemDesc} in ${componentType} component.
+{{ target: action-component-item-query-multiple }}// ${componentItemDesc} in ${componentType} component.
     // Can be an array to specify multiple names.
     name?: string | string[],{{/target}}
+
+{{ target: action-component-item-query-single }}// ${componentItemDesc} name in ${componentType} component.
+    name?: string,{{/target}}
 
 
 
@@ -39,7 +47,7 @@ dispatchAction({
 
     {{ use: action-series-query }}
 
-    {{ use: action-data-query }}
+    {{ use: action-data-query-multiple }}
 });
 
 // If highlight geo component:
@@ -48,7 +56,7 @@ dispatchAction({
 
     {{ use: action-component-query(componentType = 'geo') }}
 
-    {{ use: action-component-item-query(componentType = 'geo', componentItemDesc = 'region') }}
+    {{ use: action-component-item-query-multiple(componentType = 'geo', componentItemDesc = 'region') }}
 });
 ```
 
@@ -64,7 +72,7 @@ dispatchAction({
 
     {{ use: action-series-query }}
 
-    {{ use: action-data-query }}
+    {{ use: action-data-query-multiple }}
 });
 
 // If downplay geo component:
@@ -73,7 +81,7 @@ dispatchAction({
 
     {{ use: action-component-query(componentType = 'geo') }}
 
-    {{ use: action-component-item-query(componentType = 'geo', componentItemDesc = 'region') }}
+    {{ use: action-component-item-query-multiple(componentType = 'geo', componentItemDesc = 'region') }}
 });
 ```
 
@@ -87,7 +95,7 @@ dispatchAction({
 
     {{ use: action-series-query }}
 
-    {{ use: action-data-query }}
+    {{ use: action-data-query-multiple }}
 })
 ```
 
@@ -101,7 +109,7 @@ dispatchAction({
 
     {{ use: action-series-query }}
 
-    {{ use: action-data-query }}
+    {{ use: action-data-query-multiple }}
 })
 ```
 
@@ -115,7 +123,7 @@ dispatchAction({
 
     {{ use: action-series-query }}
 
-    {{ use: action-data-query }}
+    {{ use: action-data-query-multiple }}
 })
 ```
 
@@ -203,7 +211,7 @@ Actions related to [tooltip component](option.html#tooltip), [tooltip component]
 
 Shows tooltip.
 
-There are two usages as followed.
+There are several usages as followed.
 
 1 Display tooltip at certain position relative to container. If it cannot be displayed at the specified location, then it is invalid.
 ```js
@@ -219,16 +227,28 @@ dispatchAction({
 })
 ```
 
-2 Specify graphic element, and display tooltip according to the tooltip configuration item.
+2 Specify graphic element in series, and display tooltip according to the tooltip configuration.
 ```js
 dispatchAction({
     type: 'showTip',
     // index of series, which is optional when trigger of tooltip is axis
     seriesIndex?: number,
-    {{ use: action-data-query }},
+    {{ use: action-data-query-single }},
     // Position of tooltip. Only works in this action.
     // Use tooltip.position in option by default.
     position: Array.<number>|string|Function
+})
+```
+
+3 Specify graphic element in geo component, and display tooltip according to the tooltip configuration.
+```js
+dispatchAction({
+    type: 'showTip',
+    {{ use: action-component-query(componentType = 'geo') }}
+    {{ use: action-component-item-query-single(componentType = 'geo', componentItemDesc = 'region') }}
+    // Position of tooltip. Only works in this action.
+    // Use tooltip.position in option by default.
+    position: number[] | string | Function
 })
 ```
 
@@ -484,7 +504,7 @@ dispatchAction({
 
     {{ use: action-component-query(componentType = 'geo') }}
 
-    {{ use: action-component-item-query(componentType = 'geo', componentItemDesc = 'region') }}
+    {{ use: action-component-item-query-multiple(componentType = 'geo', componentItemDesc = 'region') }}
 })
 ```
 
@@ -499,7 +519,7 @@ dispatchAction({
 
     {{ use: action-component-query(componentType = 'geo') }}
 
-    {{ use: action-component-item-query(componentType = 'geo', componentItemDesc = 'region') }}
+    {{ use: action-component-item-query-multiple(componentType = 'geo', componentItemDesc = 'region') }}
 })
 ```
 **EVENT:** [${componentType}unselected](~events.${componentType}unselected)
@@ -513,7 +533,7 @@ dispatchAction({
 
     {{ use: action-component-query(componentType = 'geo') }}
 
-    {{ use: action-component-item-query(componentType = 'geo', componentItemDesc = 'region') }}
+    {{ use: action-component-item-query-multiple(componentType = 'geo', componentItemDesc = 'region') }}
 })
 ```
 **EVENT:** [${componentType}selectchanged](~events.${componentType}selectchanged)
