@@ -1,3 +1,12 @@
+## v5.1.1
+<div class="time">2021-04-27</div>
++ [Fix] [geo] 修复 5.1.0 引入的`geo`组件上`tooltip`无法显示的问题。 [#14767](https://github.com/apache/echarts/issues/14767) ([pissang](https://github.com/pissang))
++ [Fix] [tooltip] 修复 5.1.0 引入的 tooltip 在开启 `appendToBody` 后位置不对的问题。 [#14713](https://github.com/apache/echarts/issues/14713) ([plainheart](https://github.com/plainheart))
++ [Fix] [map] 修复 5.1.0 引入的地图上的`tooltip`可能会报错的问题。 [#14704](https://github.com/apache/echarts/issues/14704) ([plainheart](https://github.com/plainheart))
++ [Fix] [pie] 修复饼图上标签引导线`labelLine`从`outside`修改为`inside`之后高亮依然可能显示的问题。 [#14702](https://github.com/apache/echarts/issues/14702) ([villebro](https://github.com/villebro))
++ [Fix] [type] 修复 5.1.0 引入的老版本 TypeScript 可能出现类型错误的问题。 Close [#14716](https://github.com/apache/echarts/issues/14716) [#14739](https://github.com/apache/echarts/issues/14739)
++ [Fix] [type] 修复 `symbolOffset` 非可选的类型错误。 [#14693](https://github.com/apache/echarts/pull/14693) ([villebro](https://github.com/villebro))
+
 ## v5.1.0
 <div class="time">2021-04-15</div>
 
