@@ -29,12 +29,31 @@ tooltip settings in the coordinate system component.
 {{ use: partial-tooltip-introduction() }}
 
 {{ use: partial-tooltip-coords-common(
-    prefix = '##'
+    prefix = '##',
+    noAxis = ${noAxis}
 ) }}
 
 {{ use: partial-tooltip-common(
     scope = 'coordSys',
     prefix = '##'
+) }}
+
+
+
+{{ target: partial-tooltip-in-component-item }}
+
+### tooltip(*)
+
+tooltip settings in this ${componentItemDesc}.
+
+{{ use: partial-tooltip-coords-common(
+    prefix = '###',
+    noAxis = ${noAxis}
+) }}
+
+{{ use: partial-tooltip-common(
+    scope = 'coordSysItem',
+    prefix = '###'
 ) }}
 
 
@@ -49,7 +68,6 @@ tooltip settings in this series.
     scope = 'series',
     prefix = '##'
 ) }}
-
 
 
 {{ target: partial-tooltip-in-series-data }}
@@ -83,8 +101,14 @@ tooltip settings in this series data.
 
 <ExampleUIControlBoolean default="true" />
 
-Whether to show the tooltip component, including tooltip floating layer and [axisPointer](~tooltip.axisPointer).
+Whether to show the tooltip component.
 
+{{ if: !${noAxis} }}
+including tooltip floating layer and [axisPointer](~tooltip.axisPointer).
+{{ /if }}
+
+
+{{ if: !${noAxis} }}
 #${prefix} trigger(string) = 'item'
 
 <ExampleUIControlEnum options="item,axis,none" default="item" />
@@ -105,6 +129,7 @@ Options:
 + `'none'`
 
     Trigger nothing.
+
 
 #${prefix} axisPointer(Object)
 
@@ -158,6 +183,7 @@ It is valid when [axisPointer.type](~tooltip.axisPointer.type) is `'cross'`.
     defaultAnimationDurationUpdate = 200
 ) }}
 
+{{ /if }}
 
 
 {{ target: partial-tooltip-common }}

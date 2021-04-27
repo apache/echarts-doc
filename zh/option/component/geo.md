@@ -94,10 +94,21 @@ geo 区域的颜色也可以被 map series 所控制，参见 [series-map.geoInd
 
 {{ use: geo-region-state() }}
 
+{{ use: partial-tooltip-in-coords-item(
+    componentItemDesc: 'region',
+    noAxis: true
+) }}
+
+
+
+
 {{ use: partial-silent(
     prefix = "#"
 ) }}
 
+{{ use: partial-tooltip-in-coords(
+    noAxis = true
+) }}
 
 
 {{ target: geo-region-state }}

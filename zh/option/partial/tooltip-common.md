@@ -29,12 +29,31 @@
 {{ use: partial-tooltip-introduction() }}
 
 {{ use: partial-tooltip-coords-common(
-    prefix = '##'
+    prefix = '##',
+    noAxis = ${noAxis}
 ) }}
 
 {{ use: partial-tooltip-common(
     scope = 'coordSys',
     prefix = '##'
+) }}
+
+
+
+{{ target: partial-tooltip-in-coords-item }}
+
+### tooltip(*)
+
+本 ${componentItemDesc} 中特定的 tooltip 设定。
+
+{{ use: partial-tooltip-coords-common(
+    prefix = '###',
+    noAxis = ${noAxis}
+) }}
+
+{{ use: partial-tooltip-common(
+    scope = 'coordSysItem',
+    prefix = '###'
 ) }}
 
 
@@ -51,7 +70,6 @@
 ) }}
 
 
-
 {{ target: partial-tooltip-in-series-data }}
 
 ### tooltip(*)
@@ -62,6 +80,7 @@
     scope = 'seriesData',
     prefix = '###'
 ) }}
+
 
 
 
@@ -83,8 +102,13 @@
 
 <ExampleUIControlBoolean default="true" />
 
-是否显示提示框组件，包括提示框浮层和 [axisPointer](~tooltip.axisPointer)。
+是否显示提示框组件。
 
+{{ if: !${noAxis} }}
+包括提示框浮层和 [axisPointer](~tooltip.axisPointer)。
+{{ /if }}
+
+{{ if: !${noAxis} }}
 #${prefix} trigger(string) = 'item'
 
 <ExampleUIControlEnum options="item,axis,none" default="item" />
@@ -105,6 +129,8 @@
 + `'none'`
 
     什么都不触发。
+
+
 
 #${prefix} axisPointer(Object)
 
@@ -162,6 +188,7 @@
     defaultAnimationDurationUpdate = 200
 ) }}
 
+{{ /if }}
 
 
 {{ target: partial-tooltip-common }}
