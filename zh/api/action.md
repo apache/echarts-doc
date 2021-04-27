@@ -1,12 +1,22 @@
-{{ target: action-series-query }}// 可选，系列 index，可以是一个数组指定多个系列
-    seriesIndex?: number|Array,
-    // 可选，系列名称，可以是一个数组指定多个系列
-    seriesName?: string|Array,{{/target}}
+{{ target: action-series-query }}// 用 index 或 id 或 name 来指定系列。
+    // 可以使用数组指定多个系列。
+    seriesIndex?: number | number[],
+    seriesId?: string | string[],
+    seriesName?: string | string[],{{/target}}
 
-{{ target: action-data-query }}// 数据的 index，如果不指定也可以通过 name 属性根据名称指定数据
-    dataIndex?: number,
-    // 可选，数据名称，在有 dataIndex 的时候忽略
-    name?: string{{/target}}
+{{ target: action-data-query }}// 数据项的 index，如果不指定也可以通过 name 属性根据名称指定数据项
+    dataIndex?: number | number[],
+    // 可选，数据项名称，在有 dataIndex 的时候忽略
+    name?: string | string[],{{/target}}
+
+{{ target: action-component-query }}// 用 index 或 id 或 name 来指定 ${componentType} 组件。
+    // 可以用数组指定多个 ${componentType} 组件。
+    ${componentType}Index?: number | number[],
+    ${componentType}Id?: string | string[],
+    ${componentType}Name?: string | string[],{{/target}}
+
+{{ target: action-component-item-query }}// ${componentType} 组件中 ${componentItemDesc} 名称。可以是一个数组指定多个名称。
+    name?: string | string[],{{/target}}
 
 
 {{ target: action }}
@@ -20,32 +30,48 @@ ECharts 中支持的图表行为，通过 [dispatchAction](~echartsInstance.disp
 
 高亮指定的数据图形。
 
-通过`seriesName`或者`seriesIndex`指定系列。如果要再指定某个数据可以再指定`dataIndex`或者`name`。
 ```js
+// 如果要高亮系列：
 dispatchAction({
     type: 'highlight',
+
     {{ use: action-series-query }}
-    // 可选，数据的 index
-    dataIndex?: number,
-    // 可选，数据的 名称
-    name?: string
-})
+
+    {{ use: action-data-query }}
+});
+
+// 如果要高亮 geo 组件：
+dispatchAction({
+    type: 'highlight',
+
+    {{ use: action-component-query(componentType = 'geo') }}
+
+    {{ use: action-component-item-query(componentType = 'geo', componentItemDesc = 'region') }}
+});
 ```
 
 ## downplay(Action)
 
 取消高亮指定的数据图形。
 
-通过`seriesName`或者`seriesIndex`指定系列。如果要指定某个数据可以再指定`dataIndex`或者`name`。
 ```js
+// 如果要取消高亮系列：
 dispatchAction({
     type: 'downplay',
+
     {{ use: action-series-query }}
-    // 可选，数据的 index
-    dataIndex?: number,
-    // 可选，数据的 名称
-    name?: string
+
+    {{ use: action-data-query }}
 })
+
+// 如果要取消高亮 geo 组件：
+dispatchAction({
+    type: 'downplay',
+
+    {{ use: action-component-query(componentType = 'geo') }}
+
+    {{ use: action-component-item-query(componentType = 'geo', componentItemDesc = 'region') }}
+});
 ```
 
 ## select(Action)
@@ -55,8 +81,9 @@ dispatchAction({
 ```js
 dispatchAction({
     type: 'select',
-    // 图例名称
+
     {{ use: action-series-query }}
+
     {{ use: action-data-query }}
 })
 ```
@@ -68,8 +95,9 @@ dispatchAction({
 ```js
 dispatchAction({
     type: 'unselect',
-    // 图例名称
+
     {{ use: action-series-query }}
+
     {{ use: action-data-query }}
 })
 ```
@@ -81,8 +109,9 @@ dispatchAction({
 ```js
 dispatchAction({
     type: 'toggleSelected',
-    // 图例名称
+
     {{ use: action-series-query }}
+
     {{ use: action-data-query }}
 })
 ```
@@ -434,8 +463,10 @@ api.dispatchAction({
 ```js
 dispatchAction({
     type: '${componentType}Select',
-    {{ use: action-series-query }}
-    {{ use: action-data-query }}
+
+    {{ use: action-component-query(componentType = 'geo') }}
+
+    {{ use: action-component-item-query(componentType = 'geo', componentItemDesc = 'region') }}
 })
 ```
 
@@ -447,8 +478,10 @@ dispatchAction({
 ```js
 dispatchAction({
     type: '${componentType}UnSelect',
-    {{ use: action-series-query }}
-    {{ use: action-data-query }}
+
+    {{ use: action-component-query(componentType = 'geo') }}
+
+    {{ use: action-component-item-query(componentType = 'geo', componentItemDesc = 'region') }}
 })
 ```
 **EVENT:** [${componentType}unselected](~events.${componentType}unselected)
@@ -459,8 +492,10 @@ dispatchAction({
 ```js
 dispatchAction({
     type: '${componentType}ToggleSelect',
-    {{ use: action-series-query }}
-    {{ use: action-data-query }}
+
+    {{ use: action-component-query(componentType = 'geo') }}
+
+    {{ use: action-component-item-query(componentType = 'geo', componentItemDesc = 'region') }}
 })
 ```
 **EVENT:** [${componentType}selectchanged](~events.${componentType}selectchanged)

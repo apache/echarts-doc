@@ -1,12 +1,24 @@
-{{ target: action-series-query }}// optional; series index; could be an array of multiple series
-    seriesIndex?: number|Array,
-    // optional; series name; could be an array of multiple series
-    seriesName?: string|Array,{{/target}}
+{{ target: action-series-query }}// Find ${componentType} by index or id or name.
+    // Can be an array to find multiple components.
+    seriesIndex?: number | number[],
+    seriesId?: string | string[],
+    seriesName?: string | string[],{{/target}}
 
 {{ target: action-data-query }}// data index; could assign by name attribute when not defined
-    dataIndex?: number,
+    dataIndex?: number | number[],
     // optional; data name; ignored when dataIndex is defined
-    name?: string{{/target}}
+    name?: string | string[],{{/target}}
+
+{{ target: action-component-query }}// Find ${componentType} by index or id or name.
+    // Can be an array to find multiple components.
+    ${componentType}Index?: number | number[],
+    ${componentType}Id?: string | string[],
+    ${componentType}Name?: string | string[],{{/target}}
+
+{{ target: action-component-item-query }}// ${componentItemDesc} in ${componentType} component.
+    // Can be an array to specify multiple names.
+    name?: string | string[],{{/target}}
+
 
 
 {{ target: action }}
@@ -18,34 +30,51 @@ Chart actions supported by ECharts are triggered through [dispatchAction](~echar
 
 ## highlight(Action)
 
-Highlights specified data.
+Highlights specified data graphics.
 
-Series is specified through `seriesName` or `seriesIndex`. If another data needs to be specified, then use `dataIndex` or `name`.
 ```js
+// If highlight series:
 dispatchAction({
     type: 'highlight',
+
     {{ use: action-series-query }}
-    // options are index of data
-    dataIndex?: number,
-    // options are data name
-    name?: string
-})
+
+    {{ use: action-data-query }}
+});
+
+// If highlight geo component:
+dispatchAction({
+    type: 'highlight',
+
+    {{ use: action-component-query(componentType = 'geo') }}
+
+    {{ use: action-component-item-query(componentType = 'geo', componentItemDesc = 'region') }}
+});
 ```
+
 
 ## downplay(Action)
 
-Downplay specified data.
+Downplay specified data graphics.
 
-Series is specified through `seriesName` or `seriesIndex`. If another data needs to be specified, then use `dataIndex` or `name`.
 ```js
+// If downplay series:
 dispatchAction({
     type: 'downplay',
+
     {{ use: action-series-query }}
-    // options are index of data
-    dataIndex?: number,
-    // options are data name
-    name?: string
-})
+
+    {{ use: action-data-query }}
+});
+
+// If downplay geo component:
+dispatchAction({
+    type: 'downplay',
+
+    {{ use: action-component-query(componentType = 'geo') }}
+
+    {{ use: action-component-item-query(componentType = 'geo', componentItemDesc = 'region') }}
+});
 ```
 
 ## select(Action)
@@ -55,8 +84,9 @@ Select specified data. Selected data will apply the style of [select](option.htm
 ```js
 dispatchAction({
     type: 'select',
-    // 图例名称
+
     {{ use: action-series-query }}
+
     {{ use: action-data-query }}
 })
 ```
@@ -68,8 +98,9 @@ Unselect specified data.
 ```js
 dispatchAction({
     type: 'unselect',
-    // 图例名称
+
     {{ use: action-series-query }}
+
     {{ use: action-data-query }}
 })
 ```
@@ -81,8 +112,9 @@ Toggle selected status of specified data.
 ```js
 dispatchAction({
     type: 'toggleSelected',
-    // 图例名称
+
     {{ use: action-series-query }}
+
     {{ use: action-data-query }}
 })
 ```
@@ -449,8 +481,10 @@ Selects the specified ${name}.
 ```js
 dispatchAction({
     type: '${componentType}Select',
-    {{ use: action-series-query }}
-    {{ use: action-data-query }}
+
+    {{ use: action-component-query(componentType = 'geo') }}
+
+    {{ use: action-component-item-query(componentType = 'geo', componentItemDesc = 'region') }}
 })
 ```
 
@@ -462,8 +496,10 @@ Cancels selecting specified ${name}.
 ```js
 dispatchAction({
     type: '${componentType}UnSelect',
-    {{ use: action-series-query }}
-    {{ use: action-data-query }}
+
+    {{ use: action-component-query(componentType = 'geo') }}
+
+    {{ use: action-component-item-query(componentType = 'geo', componentItemDesc = 'region') }}
 })
 ```
 **EVENT:** [${componentType}unselected](~events.${componentType}unselected)
@@ -474,8 +510,10 @@ Toggles selecting status of specified ${name}.
 ```js
 dispatchAction({
     type: '${componentType}ToggleSelect',
-    {{ use: action-series-query }}
-    {{ use: action-data-query }}
+
+    {{ use: action-component-query(componentType = 'geo') }}
+
+    {{ use: action-component-item-query(componentType = 'geo', componentItemDesc = 'region') }}
 })
 ```
 **EVENT:** [${componentType}selectchanged](~events.${componentType}selectchanged)
