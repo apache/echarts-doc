@@ -256,33 +256,33 @@ myChart.on('click', { geoIndex: 0, name: 'name1' }, function (params) {
 
 ~[700x550](${galleryViewPath}doc-example/geo-svg-layout-basic&edit=1&reset=1)
 
-上面的例子只有一个 ECharts 画布，而三个 SVG 展示在六个 [地理坐标系（geo）](option.html#geo) 中。同一列中的两个 [地理坐标系（geo）](option.html#geo) 使用相同的 SVG。
+上面的例子只有一个 ECharts 画布，其中三个 SVG 展示在六个 [地理坐标系（geo）](option.html#geo) 中。同一列中的两个 [地理坐标系（geo）](option.html#geo) 使用相同的 SVG。
 
 首先，形状的外观是由 SVG 文件本身决定的。也就是说，在上例中，由 `<circle>` 和 `viewBox` 属性决定（`viewBox` 会切割圆形）。可以注意，每一列的形状轮廓都一样（不管它们的位置、大小是否不同和是否被拉伸），因为它们使用的是同一个 SVG。
 
-其次，用户可以用下面任一组选项，指定 [地理坐标系（geo）](option.html#geo) 的视口（`view port`）的位置和大小。
-+ [layoutCenter](option.html#geo.layoutCenter)、[layoutSize](option.html#geo.layoutSize)（推荐）。
-+ [top](option.html#geo.top)、[right](option.html#geo.right)、[bottom](option.html#geo.bottom)、[left](option.html#geo.left)（在上例中使用的就是这组）。
+其次，用户可以用下面任一组选项，指定 [地理坐标系（geo）](option.html#geo) 的视口（`view port`）的位置和大小（它们的单位都是 echarts 画布的像素，或者百分比值）：
++ [layoutCenter](option.html#geo.layoutCenter)、[layoutSize](option.html#geo.layoutSize)（最常用）。
++ [top](option.html#geo.top)、[right](option.html#geo.right)、[bottom](option.html#geo.bottom)、[left](option.html#geo.left)（在上例中使用的是这组）。
 
-在上例中，六个 `geo view port` 用六个黑色方块表示。`geo view port` 的单位是 echarts 画布的像素。
+在上例中，六个 `geo view port` 用六个黑色方块表示。
 
-第三，确定 SVG 的 `bounding rect`，并放置到相应的 `geo view port` 里：
-+ 如果用的是 [layoutCenter](option.html#geo.layoutCenter)、[layoutSize](option.html#geo.layoutSize)，`bounding rect` 会置于 `geo view port` 的中心，并尽量填满 `geo view port`（保持长宽比）。
-+ 如果用的是 [top](option.html#geo.top)、[right](option.html#geo.right)、[bottom](option.html#geo.bottom)、[left](option.html#geo.left)，`bounding rect` 会被拉伸，完全填充 `geo view port`。
-
-`bounding rect` 的单位即 SVG 内部元素的度量单位。`bounding rect` 由以下方法决定：
+第三，确定 SVG 的 `bounding rect`。`bounding rect` 由以下方法决定（它们的单位都是 SVG 内部元素的度量单位）：
 1. 如果设定了 [geo.boundingCoords](option.html#geo.boundingCoords)，则用它作 `bounding rect`。
 2. 否则，如果设定了 `<svg width="..." height="...">`，则用 `[0, 0, width, height]` 作为 `bounding rect`。（如果只设定了 `width` 或 `height`，则只使用 `[0, width]` 或 `[0, height]`）。
 3. 否则，如果设定了 `<svg viewBox="...">`，则用 `viewBox` 作 `bounding rect`。
 4. 否则，由整个 SVG 所有元素 `bounding rect` 的并集得到最终 `bounding rect`。
 5. 如果设定了 [geo.center](option.html#geo.center) 或 [geo.zoom](option.html#geo.zoom)，则把上述 `1~4` 得到的 `bounding rect` 进行相应的 `transform`。
 
+`bounding rect` 确定后，会放置到相应的 `geo view port` 里：
++ 如果用的是 [layoutCenter](option.html#geo.layoutCenter)、[layoutSize](option.html#geo.layoutSize)，`bounding rect` 会置于 `geo view port` 的中心，并尽量填满 `geo view port`（保持长宽比）。
++ 如果用的是 [top](option.html#geo.top)、[right](option.html#geo.right)、[bottom](option.html#geo.bottom)、[left](option.html#geo.left)，`bounding rect` 会被拉伸，完全填充 `geo view port`。
+
 
 ## 在 SVG 底图上绘制系列
 
 [scatter](option.html#series-scatter)、[effectScatter](option.html#series-effectScatter)、[lines](option.html#series-lines)、[custom](option.html#series-custom) 这些在 [地理坐标系（geo）](option.html#geo) 中可用的系列都可以在 SVG 底图上定位和显示。
 
-注意，在这种用法中，`series.data` 的值的单位即为是 SVG 内部元素的度量单位。比如说：
+在这种用法中，`series.data` 的值的单位即为是 SVG 内部元素的度量单位。比如说：
 ```js
 option = {
     geo: {

@@ -267,22 +267,22 @@ The demo above shows six [geo coordinate system](option.html#geo) with three SVG
 
 Firstly, what shapes looks like is determined by SVG file itself. That is, in the demo above, determined by the `<circle>` and `viewBox` attribute (`viewBox` cut (clips) the circle). We can noticed that the final shape outlines in each column are the same (despite the difference in position, size and scratch), since they use the same SVG file.
 
-Secondly, users can use either of the two option groups below to determine the location and the size of the `geo view port` of [geo coordinate system](option.html#geo) according to the entire chart canvas.
+Secondly, users can use either of the two option groups below to determine the location and the size of the `geo view port` of [geo coordinate system](option.html#geo) according to the entire chart canvas (all of these options are measured in echarts canvas pixel, or percentage value):
 + [layoutCenter](option.html#geo.layoutCenter), [layoutSize](option.html#geo.layoutSize) (recommended).
 + [top](option.html#geo.top), [right](option.html#geo.right), [bottom](option.html#geo.bottom), [left](option.html#geo.left) (which is used in the demo above).
 
-In the demo above, the six geo `geo view ports` are displayed as six black squares. `geo view port` is measured in echarts canvas pixel.
+In the demo above, the six geo `geo view ports` are displayed as six black squares.
 
-Thirdly, a `bounding rect` of the SVG is determined and will be placed into its corresponding `geo view port`:
-+ If [layoutCenter](option.html#geo.layoutCenter), [layoutSize](option.html#geo.layoutSize) is used, the `bounding rect` will be placed at the center and as big as possible into the `geo view port` (keep aspect ratio).
-+ If [top](option.html#geo.top), [right](option.html#geo.right), [bottom](option.html#geo.bottom), [left](option.html#geo.left) is used, the view rect will be stretched to fill the `geo view port` entirely.
-
-`bounding rect` is measured in SVG file local unit. A `bounding rect` is determined by methods below:
+Thirdly, a `bounding rect` of the SVG is determined, which is determined by methods below (all of them are measured in SVG local unit):
 1. If [geo.boundingCoords](option.html#geo.boundingCoords) is specified, use it as `bounding rect`.
 2. Else if `<svg width="..." height="...">` is specified, use `[0, 0, width, height]` as `bounding rect`. (If only `width` or only `height` is specified, only use `[0, width]` or `[0, height]`).
 3. Else if `svg viewBox="...">` is specified, use `viewBox` as `bounding rect`.
 4. Else use the union bounding rect of all of the SVG elements as the `bounding rect`.
 5. If [geo.center](option.html#geo.center) or [geo.zoom](option.html#geo.zoom) is specified, transform the `bounding rect` determined by `1~4` above.
+
+Having `bounding rect` determined, it will be placed into its corresponding `geo view port`:
++ If [layoutCenter](option.html#geo.layoutCenter), [layoutSize](option.html#geo.layoutSize) is used, the `bounding rect` will be placed at the center and as big as possible into the `geo view port` (keep aspect ratio).
++ If [top](option.html#geo.top), [right](option.html#geo.right), [bottom](option.html#geo.bottom), [left](option.html#geo.left) is used, the view rect will be stretched to fill the `geo view port` entirely.
 
 
 ## Place Series on SVG Base Map
