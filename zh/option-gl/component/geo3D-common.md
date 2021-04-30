@@ -42,7 +42,7 @@ $.get('map/json/china.json', function (chinaJson) {
 });
 ```
 
-ECharts 使用 [geoJSON](http://geojson.org/) 格式的数据作为地图的轮廓。除此之外，你也可以通过其它手段获取地图的 [geoJSON](http://geojson.org/) 格式的数据注册到 ECharts 中。
+ECharts 使用 [GeoJSON](http://geojson.org/) 格式的数据作为地图的轮廓。除此之外，你也可以通过其它手段获取地图的 [GeoJSON](http://geojson.org/) 格式的数据注册到 ECharts 中。
 
 {{ use: partial-box-size-geo3D(
     componentType=${componentType},

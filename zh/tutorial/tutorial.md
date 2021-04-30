@@ -22,6 +22,7 @@
 {{ import: rich-text }}
 {{ import: headless }}
 {{ import: renderer }}
+{{ import: geo-svg }}
 {{ import: aria }}
 {{ import: echarts-gl }}
 {{ import: weixin-application }}

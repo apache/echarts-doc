@@ -161,7 +161,7 @@ echarts.use(
 
         > 从 `v5.1.0` 开始支持
 
-        可选。SVG 格式的数据。可以是字符串，也可以是解析得到的 SVG DOM 对象。更多信息参见 SVG_a_a_a_a_a 。
+        可选。SVG 格式的数据。可以是字符串，也可以是解析得到的 SVG DOM 对象。更多信息参见 [SVG 底图](tutorial.html#SVG%20%E5%BA%95%E5%9B%BE)。
 
     + `specialAreas`
 

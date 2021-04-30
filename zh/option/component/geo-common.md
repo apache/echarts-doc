@@ -3,46 +3,79 @@
 
 #${prefix} map(string) = ''
 
-地图类型。
+使用 [registerMap](api.html#echarts.registerMap) 注册的地图名称。
 
-ECharts 3 中因为地图精度的提高，不再内置地图数据增大代码体积，你可以在[地图下载界面](http://ecomfe.github.io/echarts-builder-web/map3.html)下载到需要的地图文件引入并注册到 ECharts 中。
-
-ECharts 中提供了两种格式的地图数据，一种是可以直接 script 标签引入的 js 文件，引入后会自动注册地图名字和数据。还有一种是 JSON 文件，需要通过 AJAX 异步加载后手动注册。
-
-下面是两种类型的使用示例：
-
-** JavaScript 引入示例 **
-
-```html
-<script src="echarts.js"></script>
-<script src="map/js/china.js"></script>
-<script>
-var chart = echarts.init(document.getElementById('main'));
-chart.setOption({
-    series: [{
-        type: 'map',
-        map: 'china'
-    }]
-});
-</script>
-```
-
-** JSON 引入示例 **
-
+{{ if: ${inMap} }}
+**geoJSON 引入示例**
 ```js
-$.get('map/json/china.json', function (chinaJson) {
-    echarts.registerMap('china', chinaJson);
+$.get('map/china_geo.json', function (geoJson) {
+    echarts.registerMap('china', {geoJSON: geoJson});
     var chart = echarts.init(document.getElementById('main'));
     chart.setOption({
         series: [{
             type: 'map',
-            map: 'china'
+            map: 'china',
+            ...
         }]
     });
 });
 ```
+也参见示例 [USA Population Estimates](${galleryEditorPath}map-usa)。
+{{ else }}
+**geoJSON 引入示例**
+```js
+$.get('map/china_geo.json', function (chinaJson) {
+    echarts.registerMap('china', {geoJSON: geoJson});
+    var chart = echarts.init(document.getElementById('main'));
+    chart.setOption({
+        geo: [{
+            map: 'china',
+            ...
+        }]
+    });
+});
+```
+也参见示例 [geoJSON hexbin](${galleryEditorPath}custom-hexbin)。
+{{ /if }}
 
-ECharts 使用 [geoJSON](http://geojson.org/) 格式的数据作为地图的轮廓，除了上述数据，你也可以通过其它手段获取地图的 [geoJSON](http://geojson.org/) 数据注册到 ECharts 中。参见示例 [USA Population Estimates](${galleryEditorPath}map-usa)
+如上所示，ECharts 可以使用 [GeoJSON](http://geojson.org/) 格式的数据作为地图的轮廓，你可以获取第三方的 [GeoJSON](http://geojson.org/) 数据注册到 ECharts 中。例如第三方资源 [maps](https://github.com/echarts-maps)。
+
+
+{{ if: ${inMap} }}
+**SVG 引入示例**
+```js
+$.get('map/topographic_map.svg', function (svg) {
+    echarts.registerMap('topo', {svg: svg});
+    var chart = echarts.init(document.getElementById('main'));
+    chart.setOption({
+        series: [{
+            type: 'map',
+            map: 'topo',
+            ...
+        }]
+    });
+});
+```
+也参见示例 [Beef Cuts](${galleryEditorPath}geo-beef-cuts)。
+{{ else }}
+**SVG 引入示例**
+```js
+$.get('map/topographic_map.svg', function (svg) {
+    echarts.registerMap('topo', {svg: svg});
+    var chart = echarts.init(document.getElementById('main'));
+    chart.setOption({
+        geo: [{
+            map: 'topo',
+            ...
+        }]
+    });
+});
+```
+也参见示例 [Flight Seatmap](${galleryEditorPath}geo-seatmap-flight)。
+{{ /if }}
+
+如上所示，ECharts 也可以使用 SVG 格式的地图。详情参见：[SVG 底图](tutorial.html#SVG%20%E5%BA%95%E5%9B%BE)。
+
 
 #${prefix} roam(boolean|string) = false
 

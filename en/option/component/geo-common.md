@@ -3,47 +3,81 @@
 
 #${prefix} map(string) = ''
 
-Map charts.
-
-Due to the increase of fineness of map, ECharts 3 doesn't include map data by default for package size consideration. You may find map files you need on [map download page](http://ecomfe.github.io/echarts-builder-web/map3.html) and then include and register them in ECharts.
-
-Two formats of map data are provided in ECharts, one of which can be included in `<script>` tag as JavaScript file, and the other of is in JSON format and should be loaded using AJAX. Map name and data will be loaded automatically once the JavaScript file is loaded, while in the JSON form, you have to assign name explicitly.
+Map name registered in [registerMap](api.html#echarts.registerMap).
 
 
-Here are examples of these two types:
-
-** JavaScript importing example **
-
-```html
-<script src="echarts.js"></script>
-<script src="map/js/china.js"></script>
-<script>
-var chart = echarts.init(document.getElmentById('main'));
-chart.setOption({
-    series: [{
-        type: 'map',
-        map: 'china'
-    }]
-});
-</script>
-```
-
-** JSON importing example **
-
+{{ if: ${inMap} }}
+**Use geoJSON**
 ```js
-$.get('map/json/china.json', function (chinaJson) {
-    echarts.registerMap('china', chinaJson);
-    var chart = echarts.init(document.getElmentById('main'));
+$.get('map/china_geo.json', function (geoJson) {
+    echarts.registerMap('china', {geoJSON: geoJson});
+    var chart = echarts.init(document.getElementById('main'));
     chart.setOption({
         series: [{
             type: 'map',
-            map: 'china'
+            map: 'china',
+            ...
         }]
     });
 });
 ```
+See also [USA Population Estimates](${galleryEditorPath}map-usa).
+{{ else }}
+**Use geoJSON**
+```js
+$.get('map/china_geo.json', function (chinaJson) {
+    echarts.registerMap('china', {geoJSON: geoJson});
+    var chart = echarts.init(document.getElementById('main'));
+    chart.setOption({
+        geo: [{
+            map: 'china',
+            ...
+        }]
+    });
+});
+```
+See also [geoJSON hexbin](${galleryEditorPath}custom-hexbin).
+{{ /if }}
 
-ECharts uses [geoJSON](http://geojson.org/) format as map outline. Besides the methods introduced above, you can also get [geoJSON](http://geojson.org/) data through in other methods if you like and register it in ECharts. Reference to [USA Population Estimates](${galleryEditorPath}map-usa) for more information.
+The demo above shows that ECharts can uses [geoJSON](http://geojson.org/) format as map outline. You can use third-party [geoJSON](http://geojson.org/) data (like [maps](https://github.com/echarts-maps)) and register them into ECharts.
+
+
+{{ if: ${inMap} }}
+**Use SVG**
+```js
+$.get('map/topographic_map.svg', function (svg) {
+    echarts.registerMap('topo', {svg: svg});
+    var chart = echarts.init(document.getElementById('main'));
+    chart.setOption({
+        series: [{
+            type: 'map',
+            map: 'topo',
+            ...
+        }]
+    });
+});
+```
+See also [Beef Cuts](${galleryEditorPath}geo-beef-cuts).
+{{ else }}
+**Use SVG**
+```js
+$.get('map/topographic_map.svg', function (svg) {
+    echarts.registerMap('topo', {svg: svg});
+    var chart = echarts.init(document.getElementById('main'));
+    chart.setOption({
+        geo: [{
+            map: 'topo',
+            ...
+        }]
+    });
+});
+```
+See also [Flight Seatmap](${galleryEditorPath}geo-seatmap-flight).
+{{ /if }}
+
+The demo above shows that SVG format can be used in ECharts. See more info in [SVG Base Map](tutorial.html#SVG%20Base%20Map).
+
+
 
 #${prefix} roam(boolean|string) = false
 
