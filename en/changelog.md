@@ -1,11 +1,12 @@
 ## v5.1.1
 <div class="time">2021-04-27</div>
+
 + [Fix] [geo] Fix tooltip don't show on `geo` component. [#14767](https://github.com/apache/echarts/issues/14767) ([pissang](https://github.com/pissang))
 + [Fix] [tooltip] Fix the position of tooltip may be incorrect when `appendToBody`. [#14713](https://github.com/apache/echarts/issues/14713) ([plainheart](https://github.com/plainheart))
 + [Fix] [map] Fix tooltip may have error on map series. [#14704](https://github.com/apache/echarts/issues/14704) ([plainheart](https://github.com/plainheart))
 + [Fix] [pie] Fix labelLine may still appear on emphasis when changed from outside to inside. [#14702](https://github.com/apache/echarts/issues/14702) ([villebro](https://github.com/villebro))
 + [Fix] [type] Fix type error on earlier TypeScript versions. Close [#14716](https://github.com/apache/echarts/issues/14716) [#14739](https://github.com/apache/echarts/issues/14739)
-+ [Fix] [type] `symbolOffset` incorrectly marked as optional. [#14693](https://github.com/apache/echarts/pull/14693) ([villebro](https://github.com/villebro))
++ [Fix] [type] `symbolOffset` incorrectly marked as mandatory. [#14693](https://github.com/apache/echarts/pull/14693) ([villebro](https://github.com/villebro))
 
 ## v5.1.0
 <div class="time">2021-04-15</div>

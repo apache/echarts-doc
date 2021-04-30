@@ -1,5 +1,6 @@
 ## v5.1.1
 <div class="time">2021-04-27</div>
+
 + [Fix] [geo] 修复 5.1.0 引入的`geo`组件上`tooltip`无法显示的问题。 [#14767](https://github.com/apache/echarts/issues/14767) ([pissang](https://github.com/pissang))
 + [Fix] [tooltip] 修复 5.1.0 引入的 tooltip 在开启 `appendToBody` 后位置不对的问题。 [#14713](https://github.com/apache/echarts/issues/14713) ([plainheart](https://github.com/plainheart))
 + [Fix] [map] 修复 5.1.0 引入的地图上的`tooltip`可能会报错的问题。 [#14704](https://github.com/apache/echarts/issues/14704) ([plainheart](https://github.com/plainheart))
