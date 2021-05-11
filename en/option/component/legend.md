@@ -101,24 +101,6 @@ Image height of legend symbol.
     prefix = "#"
 ) }}
 
-## symbolSize(number|string) = 'auto'
-
-<ExampleUIControlNumber min="0" default="50" step="5" />
-
-Legend item symbol size. Valid values: `number | 'auto' | 'inherit'`.
-
-If it is `'auto'`, different series types may use different logic to decide symbol size. For example, a bar chart with a rounded rectangle as the legend symbol will take `itemWidth` and `itemHeight` as the size, while a line chart will use 80% of `itemHeight` as the graph height and overlay a horizontal line, but if user defined `icon`, then `itemHeight` is used as the height of the graph and no horizontal line is drawn. The exact logic depends on the internal implementation of the series.
-
-If it is `'inherit'`, it always takes the symbol size of the series.
-
-The symbol size is kept within `itemWidth` and `itemHeight` for these all cases.
-
-## symbolKeepAspect(boolean) = true
-
-<ExampleUIControlBoolean />
-
-Whether to keep aspect for icons (from `series.symbol` or user-defined `legend.data.icon`) in the form of `path://`.
-
 ## formatter(string|Function) = null
 
 Formatter is used to format label of legend, which supports string template and callback function.

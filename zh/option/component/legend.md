@@ -184,24 +184,6 @@ const option = {
     prefix = "#"
 ) }}
 
-## symbolSize(number|string) = 'auto'
-
-<ExampleUIControlNumber min="0" default="50" step="5" />
-
-图形大小，类型为 `number | 'auto' | 'inherit'`。
-
-如果为 `'auto'`，不同系列类型可能采用不同的大小逻辑，比如柱状图之类的采用圆角矩形作为图例的，会取 `itemWidth` 和 `itemHeight` 作为大小；而折线图会用 80% 的 `itemHeight` 作为图形高度并叠加一条横线，但如果用户自定义了 `icon`，则以 `itemHeight` 作为图形高度，不绘制横线。具体逻辑取决于系列内部实现。
-
-如果为 `'inherit'` 则表示：始终取系列的图形大小。
-
-无论取何值，最终会保证图形大小不超过 `itemWidth` 和 `itemHeight`。
-
-## symbolKeepAspect(boolean) = true
-
-<ExampleUIControlBoolean />
-
-如果图标（可能来自系列的 `symbol` 或用户自定义的 `legend.data.icon`）是 `path://` 的形式，是否在缩放时保持该图形的长宽比。
-
 ## formatter(string|Function) = null
 
 用来格式化图例文本，支持字符串模板和回调函数两种形式。
