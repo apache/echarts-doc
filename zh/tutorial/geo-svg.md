@@ -1,6 +1,6 @@
 {{target: geo-svg}}
 
-# SVG 底图
+# 地理坐标系和地图系列的 SVG 底图
 
 从 `v5.1.0` 开始，ECharts 支持在 [地理坐标系（geo）](option.html#geo) 和 [地图系列（map series）](option.html#series-map) 中使用 SVG 作为底图。之前只支持 [GeoJSON](http://geojson.org/) 格式的底图。
 

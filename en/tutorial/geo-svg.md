@@ -1,6 +1,6 @@
 {{target: geo-svg}}
 
-# SVG Base Map
+# SVG Base Map in Geo Coords and Map Series
 
 Since `v5.1.0`, ECharts support to use SVG as the base map in [geo coordinate system](option.html#geo) and [map series](option.html#series-map), where previously only [GeoJSON](http://geojson.org/) is supported.
 

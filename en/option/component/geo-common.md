@@ -75,7 +75,7 @@ $.get('map/topographic_map.svg', function (svg) {
 See also [Flight Seatmap](${galleryEditorPath}geo-seatmap-flight).
 {{ /if }}
 
-The demo above shows that SVG format can be used in ECharts. See more info in [SVG Base Map](tutorial.html#SVG%20Base%20Map).
+The demo above shows that SVG format can be used in ECharts. See more info in [SVG Base Map](tutorial.html#SVG%20Base%20Map%20in%20Geo%20Coords%20and%20Map%20Series).
 
 
 

@@ -162,7 +162,7 @@ Please refer to [option.geo](option.html#geo.map) for usage.
 
         > Since `v5.1.0`
 
-        Optional; Data in SVG format. Can be a SVG string or a parsed SVG DOM object. See more info in [SVG Base Map](tutorial.html#SVG%20Base%20Map).
+        Optional; Data in SVG format. Can be a SVG string or a parsed SVG DOM object. See more info in [SVG Base Map](tutorial.html#SVG%20Base%20Map%20in%20Geo%20Coords%20and%20Map%20SeriesSVG%20Base%20Map).
 
     + `specialAreas`
 
