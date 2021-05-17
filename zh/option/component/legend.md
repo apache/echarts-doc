@@ -184,6 +184,10 @@ const option = {
     prefix = "#"
 ) }}
 
+## symbolRotate(number|string) = 'inherit'
+
+图形旋转角度，类型为 `number | 'inherit'`。如果为 `'inherit'`，表示取系列的 `symbolRotate`。
+
 ## formatter(string|Function) = null
 
 用来格式化图例文本，支持字符串模板和回调函数两种形式。
@@ -308,6 +312,10 @@ data: [{
     name = "图例项",
     prefix = "##"
 ) }}
+
+### symbolRotate(number|string) = 'inherit'
+
+图形旋转角度，类型为 `number | 'inherit'`。如果为 `'inherit'`，表示取系列的 `symbolRotate`。
 
 ### textStyle(Object)
 
