@@ -1,3 +1,38 @@
+## v5.1.2
+<div class="time">2021-06-04</div>
+
++ [Feature] [geo/map] 在 transform 和 svg解析器中支持 skew。[#755](https://github.com/ecomfe/zrender/issues/755) ([pissang](https://github.com/pissang))
++ [Feature] [tree] 在工具提示中添加树的路径信息。[#14957](https://github.com/apache/echarts/issues/14957) ([stephenLYZ](https://github.com/stephenLYZ))
++ [Feature] [i18n] 增加斯洛文尼亚语翻译。[#14758](https://github.com/apache/echarts/issues/14758) ([dkrat7](https://github.com/dkrat7))
++ [Fix] [tooltip] 修正位置回调的返回类型。修复 [#15030](https://github.com/apache/echarts/issues/15030)。[#15031](https://github.com/apache/echarts/issues/15031) ([congjiujiu](https://github.com/congjiujiu))
++ [Fix] [canvas] 修复 dirty rect 中引起的额外 save。[#765](https://github.com/ecomfe/zrender/issues/765) ([pissang](https://github.com/pissang))
++ [Fix] [pattern] 从 PatternObject 中删除非必须的属性，并修复一些类型问题。[#759](https://github.com/ecomfe/zrender/issues/759) ([Plainheart](https://github.com/plainheart))
++ [Fix] [path] 优化小线段时，小的子路径可能被忽略。[#760](https://github.com/ecomfe/zrender/issues/760) ([pissang](https://github.com/pissang))
++ [Fix] [tooltip] 当没指定组件 `tooltip.formatter` 时，用一个特定的默认 `formatter`，而不再用全局的 `tooltip.formatter` 作为默认。修复 [#14939](https://github.com/apache/echarts/issues/14939)。[#14972](https://github.com/apache/echarts/issues/14972) ([100pah](https://github.com/100pah))
++ [Fix] [resize] 以 `lazyUpdate: true` 模式调用 `setOption` 后，调用 `resize`，会产生错误。修复 [#14846](https://github.com/apache/echarts/issues/14846)，修复 [#11395](https://github.com/apache/echarts/issues/11395)。[#14934](https://github.com/apache/echarts/issues/14934) ([100pah](https://github.com/100pah))
++ [Fix] [treemap] 用不同数据运行 `setOption` 第二次时出现错误。[#14930](https://github.com/apache/echarts/issues/14930) ([Map1en](https://github.com/Map1en))
++ [Fix] [tree] 用不同数据运行 `setOption` 第二次时出现错误。[#14905](https://github.com/apache/echarts/issues/14905) ([Map1en](https://github.com/Map1en))
++ [Fix] [types] 导出 cbs 及其参数类型。[#14871](https://github.com/apache/echarts/issues/14871) ([dougalg](https://github.com/dougalg))
++ [Fix] [option] 在合并主题前检查缺少的组件。[#14966](https://github.com/apache/echarts/issues/14966) ([pissang](https://github.com/pissang))
++ [Fix] [text] 修复 gradient text background 导致的渲染错误。[#756](https://github.com/ecomfe/zrender/issues/756) ([pissang](https://github.com/pissang))
++ [Fix] [clip] 修复了，当 `clip:false` 时，line 系列会报错。[#14813](https://github.com/apache/echarts/issues/14813) ([Plainheart](https://github.com/plainheart))
++ [Fix] [legend] 修改兼容性不好的 JS API 使用。[#14810](https://github.com/apache/echarts/issues/14810) ([plainheart](https://github.com/plainheart))
++ [Fix] [label] 把 `LineEndLabelOption.valueAnimation` 改为可选。[#14806](https://github.com/apache/echarts/issues/14806) ([Bilge](https://github.com/Bilge))
++ [Fix] [dataZoom] startValue 和 endValue 的类型修复。修复 [#14412](https://github.com/apache/echarts/issues/14412)。[#14775](https://github.com/apache/echarts/issues/14775) ([dileepyelleti](https://github.com/dileepyelleti))
++ [Fix] [label] 保证临时 symbol 的标签在线和区域多边形的前面。[#14993](https://github.com/apache/echarts/issues/14993) ([Plainheart](https://github.com/plainheart))
++ [Fix] [stack] 修复数字 `getPrecisionSafe` 在科学符号如 `3.45e-1` 上执行不正确。消除 stack 功能中浮点数计算精度问题。[#15015](https://github.com/apache/echarts/issues/15015) ([100pah](https://github.com/100pah))
++ [Fix] [dataZoom] 当 `toolbox.feature.dataZoom` 没有声明时，不应该有数据过滤。[#15015](https://github.com/apache/echarts/issues/15015) ([100pah](https://github.com/100pah))
++ [Fix] [linear-gradient] 避免在 `linearMap` 利用中出现无限值。[#14602](https://github.com/apache/echarts/issues/14602) ([Plainheart](https://github.com/plainheart))
++ [Fix] [timeline] 当播放到最后时才触发 `timelineplaychange` 事件。[#14620](https://github.com/apache/echarts/issues/14620) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [custom] 修复自定义系列中的渐进式渲染。[#14920](https://github.com/apache/echarts/issues/14920) ([pissang](https://github.com/pissang))
++ [Fix] [brush] 修改 brush 的 clip 范围。[#14569](https://github.com/apache/echarts/issues/14569) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [label] 修复标签不在最上的错误。[#14542](https://github.com/apache/echarts/issues/14542) ([素心](https://github.com/plainheart))
++ [Fix] [toolbox] 修复自定义工具箱按钮的 `show` 选项不起作用。[#14408](https://github.com/apache/echarts/issues/14408) ([plainheart](https://github.com/plainheart))
+
+
+通过www.DeepL.com/Translator（免费版）翻译
+
+
 ## v5.1.1
 <div class="time">2021-04-27</div>
 

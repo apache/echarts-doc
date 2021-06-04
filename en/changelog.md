@@ -1,3 +1,35 @@
+## v5.1.2
+<div class="time">2021-06-04</div>
+
++ [Feature] [geo/map] Support skew in transform and svg parser. [#755](https://github.com/ecomfe/zrender/issues/755) ([pissang](https://github.com/pissang))
++ [Feature] [tree] Add tree path info to tooltip. [#14957](https://github.com/apache/echarts/issues/14957) ([stephenLYZ](https://github.com/stephenLYZ))
++ [Feature] [i18n] Add Slovenian translation. [#14758](https://github.com/apache/echarts/issues/14758) ([dkrat7](https://github.com/dkrat7))
++ [Fix] [tooltip] Fix position callback return type. Fix [#15031](https://github.com/apache/echarts/issues/15031). ([congjiujiu](https://github.com/congjiujiu))
++ [Fix] [canvas] Fix extra save caused in dirty rect. [#765](https://github.com/ecomfe/zrender/issues/765) ([pissang](https://github.com/pissang))
++ [Fix] [pattern] Remove non-required properties from PatternObject and fix some type issues. [#759](https://github.com/ecomfe/zrender/issues/759). ([plainheart](https://github.com/plainheart))
++ [Fix] [path] Small subpath may be ignored when optimizing small line segments. [#760](https://github.com/ecomfe/zrender/issues/760) ([pissang](https://github.com/pissang))
++ [Fix] [tooltip] When component `tooltip.formatter` is not specified, use a specific default formatter, rather than use global `tooltip.formatter` as default. Fix [#14939](https://github.com/apache/echarts/issues/14939). [#14972](https://github.com/apache/echarts/issues/14972) ([100pah](https://github.com/100pah))
++ [Fix] [resize] Error thrown when resize is called after setOption called with lazyUpdate: true. Fix [#14846](https://github.com/apache/echarts/issues/14846), Fix [#11395](https://github.com/apache/echarts/issues/11395). [#14934](https://github.com/apache/echarts/issues/14934) ([100pah](https://github.com/100pah))
++ [Fix] [treemap] Error when running setOption twice with diff data. [#14930](https://github.com/apache/echarts/issues/14930) ([Map1en](https://github.com/Map1en))
++ [Fix] [tree] Error when running setOption twice with diff data. [#14905](https://github.com/apache/echarts/issues/14905) ([Map1en](https://github.com/Map1en))
++ [Fix] [types] Export cbs and their parameter types. [#14871](https://github.com/apache/echarts/issues/14871) ([dougalg](https://github.com/dougalg))
++ [Fix] [option] Check the missing component before merge theme. [#14966](https://github.com/apache/echarts/issues/14966) ([pissang](https://github.com/pissang))
++ [Fix] [text] Fix gradient text background cause rendering error. [#756](https://github.com/ecomfe/zrender/issues/756) ([pissang](https://github.com/pissang))
++ [Fix] [clip] Line chart will throw an error when `clip` is set as `false`. [#14813](https://github.com/apache/echarts/issues/14813) ([plainheart](https://github.com/plainheart))
++ [Fix] [legend] Remove unexpected syntax to ensure better compatibility. [#14810](https://github.com/apache/echarts/issues/14810) ([plainheart](https://github.com/plainheart))
++ [Fix] [label] Changed `LineEndLabelOption.valueAnimation` to be optional. [#14806](https://github.com/apache/echarts/issues/14806) ([Bilge](https://github.com/Bilge))
++ [Fix] [dataZoom] Type fix for startValue and endValue. Close [#14412](https://github.com/apache/echarts/issues/14412) [#14775](https://github.com/apache/echarts/issues/14775) ([dileepyelleti](https://github.com/dileepyelleti))
++ [Fix] [label] Ensure the label of the temporary symbol is in front of line and area polygon. [#14993](https://github.com/apache/echarts/issues/14993) ([plainheart](https://github.com/plainheart))
++ [Fix] [stack] Fix number getPrecisionSafe incorrect on scientific notation like 3.45e-1. Stack sum eliminate floating arithmetic problem. [#15015](https://github.com/apache/echarts/issues/15015) ([100pah](https://github.com/100pah))
++ [Fix] [dataZoom] Should no dataZoom filtering when `toolbox.feature.dataZoom` not declared. [#15015](https://github.com/apache/echarts/issues/15015) ([100pah](https://github.com/100pah))
++ [Fix] [linear-gradient] Avoid the infinite value in `linearMap` util. [#14602](https://github.com/apache/echarts/issues/14602) ([plainheart](https://github.com/plainheart))
++ [Fix] [timeline] Trigger `timelineplaychange` event when play to the end. [#14620](https://github.com/apache/echarts/issues/14620) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [custom] Fix progressive rendering in custom series. [#14920](https://github.com/apache/echarts/issues/14920) ([pissang](https://github.com/pissang))
++ [Fix] [brush] Clamp range when brush. [#14569](https://github.com/apache/echarts/issues/14569) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [label] Fix labels are not on the top bug. [#14542](https://github.com/apache/echarts/issues/14542) ([plainheart](https://github.com/plainheart))
++ [Fix] [toolbox] The `show` option of customized toolbox button does not work. [#14408](https://github.com/apache/echarts/issues/14408) ([plainheart](https://github.com/plainheart))
+
+
 ## v5.1.1
 <div class="time">2021-04-27</div>
 
