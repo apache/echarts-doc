@@ -1,10 +1,10 @@
 ## v5.1.2
-<div class="time">2021-06-04</div>
+<div class="time">2021-06-09</div>
 
 + [Feature] [geo/map] Support skew in transform and svg parser. [#755](https://github.com/ecomfe/zrender/issues/755) ([pissang](https://github.com/pissang))
 + [Feature] [tree] Add `treeAncestors` property in the params of tooltip callback . [#14957](https://github.com/apache/echarts/issues/14957) ([stephenLYZ](https://github.com/stephenLYZ))
 + [Feature] [i18n] Add Slovenian translation. [#14758](https://github.com/apache/echarts/issues/14758) ([dkrat7](https://github.com/dkrat7))
-+ [Fix] [canvas] Fix extra `ctx.save` call when dirty rect is enabled. [#765](https://github.com/ecomfe/zrender/issues/765) ([pissang](https://github.com/pissang))
++ [Fix] [canvas] Fix extra `ctx.save` call. [#765](https://github.com/ecomfe/zrender/issues/765) ([pissang](https://github.com/pissang))
 + [Fix] [path] Fix small subpath may be ignored when optimizing small line segments. [#760](https://github.com/ecomfe/zrender/issues/760) ([pissang](https://github.com/pissang))
 + [Fix] [tooltip] When component `tooltip.formatter` is not specified, use a specific default formatter, rather than use global `tooltip.formatter` as default. Fix [#14939](https://github.com/apache/echarts/issues/14939). [#14972](https://github.com/apache/echarts/issues/14972) ([100pah](https://github.com/100pah))
 + [Fix] [resize] Error thrown when resize is called after setOption called with lazyUpdate: true. Fix [#14846](https://github.com/apache/echarts/issues/14846), Fix [#11395](https://github.com/apache/echarts/issues/11395). [#14934](https://github.com/apache/echarts/issues/14934) ([100pah](https://github.com/100pah))
