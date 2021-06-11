@@ -104,7 +104,7 @@ const option = {
 
 <ExampleUIControlBoolean default="true" />
 
-是否在数据和为`0`（一般情况下所有数据为`0`） 的时候不显示扇区。
+是否在数据和为`0`（一般情况下所有数据为`0`） 的时候仍显示扇区。
 
 {{ use: partial-cursor() }}
 
