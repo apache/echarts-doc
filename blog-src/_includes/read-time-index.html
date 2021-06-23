@@ -1,6 +1,0 @@
-{% assign readtime = post.content | strip_html | number_of_words | divided_by:site.words_per_minute %}
-{% if post.category == 'en' %}
-Reading time: ~{% if readtime <= 1 %}1 minute{% else %}{{ readtime }} minutes{% endif %}
-{% else %}
-预计阅读时间：{% if readtime <= 1 %}1 分钟{% else %}{{ readtime }} 分钟{% endif %}
-{% endif %}
