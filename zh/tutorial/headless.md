@@ -13,3 +13,6 @@ Apache ECharts<sup>TM</sup> 可以在服务端进行渲染。例如 [官方示�
 + https://github.com/chfw/echarts-scrappeteer
 + https://github.com/chfw/pyecharts-snapshot/blob/master/pyecharts_snapshot/phantomjs/snapshot.js
 + https://gist.github.com/pissang/4c32ee30e35c91336af72b129a1a4a73
+
+
+注意：如果发现 server 端渲染结果和浏览器渲染结果不一致，请将 [animation](option.html#animation) 设置为 `false` 再尝试一下。
