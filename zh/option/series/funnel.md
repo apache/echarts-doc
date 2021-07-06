@@ -192,7 +192,6 @@ option = {
     prefix = "#"
 ) }}
 
-
 {{ use: partial-series-group-id() }}
 
 ## data(Array)

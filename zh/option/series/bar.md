@@ -209,7 +209,6 @@ option = {
 + `'min'` 取过滤点的最小值
 + `'sum'` 取过滤点的和
 
-
 {{ use: partial-cursor() }}
 
 {{ use: partial-barGrid(
@@ -349,7 +348,7 @@ option = {
 是否开启标签的数字动画。
 
 参考这个 [示例](${galleryEditorPath}doc-example/value-animation-simple&edit=1&reset=1)。
-{{/if}}
+{{ /if }}
 
 #${prefix} labelLine(Object)
 
@@ -414,9 +413,7 @@ option = {
     prefix = ${prefix}
 ) }}
 
-
 {{ if: ${useDecal} }}
-
 #${prefix} decal(Object)
 
 {{ use: partial-decal-desc() }}
@@ -424,5 +421,5 @@ option = {
 {{ use: partial-decal(
     prefix = '#' + ${prefix}
 ) }}
-
 {{ /if }}
+

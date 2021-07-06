@@ -292,11 +292,9 @@ ECharts 并不内置对原始数据的处理，输入给 `boxplot` 的数据须�
     defaultAnimationDuration = 800
 ) }}
 
-
 {{ use: partial-universal-transition(
     prefix = "#"
 ) }}
-
 
 {{ use: partial-tooltip-in-series() }}
 

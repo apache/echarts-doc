@@ -1,3 +1,4 @@
+
 {{ target: partial-universal-transition }}
 
 #${prefix} universalTransition(object)
@@ -13,7 +14,6 @@
 ##${prefix} enabled(boolean) = false
 
 是否开启全局过渡动画。
-
 
 ##${prefix} seriesKey(string | Array)
 

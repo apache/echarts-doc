@@ -389,7 +389,6 @@ const option = {
     prefix = "#"
 ) }}
 
-
 {{ use: partial-universal-transition(
     prefix = "#"
 ) }}
@@ -448,8 +447,6 @@ const option = {
 
 
 
-
-
 {{ target: pie-state }}
 
 #${prefix} label(Object)
@@ -481,7 +478,6 @@ const option = {
 
 
 
-
 {{ target: partial-pie-border-radius }}
 
 #${prefix} borderRadius(number|string|Array)
@@ -498,3 +494,4 @@ const option = {
 + `borderRadius: '20%'`：表示内圆角半径和外圆角半径都是饼图扇形区块半径的 `20%`。
 + `borderRadius: [10, 20]`：表示当饼图为环形图时，表示内圆角半径是 `10px`、外圆角半径是 `20px`。
 + `borderRadius: ['20%', '50%']`：表示当饼图为环形图时，内圆角半径是内圆半径的 `20%`、外圆角半径是外圆半径的 `50%`。
+

@@ -346,6 +346,7 @@ K 线图的选中状态。开启 [selectedMode](~series-candlestick.selectedMode
 ) }}
 
 {{ use: partial-series-group-id() }}
+
 ## data(Array)
 
 数据格式是如下的二维数组。

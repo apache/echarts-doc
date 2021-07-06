@@ -60,11 +60,6 @@ group 是唯一的可以有子节点的容器。group 可以用来整体定位�
     symbolDeclare = ${symbolDeclare}
 ) }}
 
-
-
-
-
-
 {{ if: ${usageType} === 'customSeries' }}
 #${prefix} ${hostName}${symbolDeclare}path(Object)
 
@@ -144,8 +139,6 @@ group 是唯一的可以有子节点的容器。group 可以用来整体定位�
     symbolDeclare = ${symbolDeclare}
 ) }}
 
-
-
 ##${prefix} style(Object)
 
 {{ use: partial-graphic-cpt-style-prop-common(
@@ -178,12 +171,7 @@ group 是唯一的可以有子节点的容器。group 可以用来整体定位�
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
-
 {{ /if }}
-
-
-
-
 
 #${prefix} ${hostName}${symbolDeclare}image(Object)
 
@@ -230,7 +218,6 @@ group 是唯一的可以有子节点的容器。group 可以用来整体定位�
     symbolDeclare = ${symbolDeclare}
 ) }}
 
-
 {{ use: partial-graphic-cpt-focus-blur(
     prefix = ${prefix}
 ) }}
@@ -252,10 +239,6 @@ group 是唯一的可以有子节点的容器。group 可以用来整体定位�
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
-
-
-
-
 
 #${prefix} ${hostName}${symbolDeclare}text(Object)
 
@@ -343,10 +326,6 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     symbolDeclare = ${symbolDeclare}
 ) }}
 
-
-
-
-
 #${prefix} ${hostName}${symbolDeclare}rect(Object)
 
 矩形。
@@ -403,7 +382,6 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     symbolDeclare = ${symbolDeclare}
 ) }}
 
-
 ##${prefix} style(Object)
 
 {{ use: partial-graphic-cpt-style-prop-common(
@@ -436,10 +414,6 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
-
-
-
-
 
 #${prefix} ${hostName}${symbolDeclare}circle(Object)
 
@@ -519,10 +493,6 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     symbolDeclare = ${symbolDeclare}
 ) }}
 
-
-
-
-
 #${prefix} ${hostName}${symbolDeclare}ring(Object)
 
 圆环。
@@ -600,10 +570,6 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
-
-
-
-
 
 #${prefix} ${hostName}${symbolDeclare}sector(Object)
 
@@ -691,10 +657,6 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
-
-
-
-
 
 #${prefix} ${hostName}${symbolDeclare}arc(Object)
 
@@ -786,10 +748,6 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     symbolDeclare = ${symbolDeclare}
 ) }}
 
-
-
-
-
 #${prefix} ${hostName}${symbolDeclare}polygon(Object)
 
 多边形。
@@ -858,10 +816,6 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
-
-
-
-
 
 #${prefix} ${hostName}${symbolDeclare}polyline(Object)
 
@@ -934,10 +888,6 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
-
-
-
-
 
 #${prefix} ${hostName}${symbolDeclare}line(Object)
 
@@ -1014,10 +964,6 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     symbolVisit = ${symbolVisit},
     symbolDeclare = ${symbolDeclare}
 ) }}
-
-
-
-
 
 #${prefix} ${hostName}${symbolDeclare}bezierCurve(Object)
 
@@ -1110,11 +1056,6 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
 
 
 
-
-
-
-
-
 {{ target: partial-graphic-cpt-common-props }}
 
 ##${prefix} type(string) = ${type}
@@ -1134,9 +1075,7 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
 
 id 用于在更新或删除图形元素时指定更新哪个图形元素，如果不需要用可以忽略。
 
-
 {{ if: ${usageType} === 'graphicComponent' }}
-
 ##${prefix} $action(string) = 'merge'
 
 setOption 时指定本次对该图形元素的操作行为。
@@ -1220,10 +1159,7 @@ transition: [] // 一个空数组
 ```
 
 看这个 [例子](${galleryEditorPath}doc-example/custom-transition-simple&edit=1&reset=1)。
-
 {{ /if }}
-
-
 
 {{ if: ${usageType} === 'customSeries' && ${enableMorph} }}
 ##${prefix} morph(boolean) = false
@@ -1247,11 +1183,7 @@ transition: [] // 一个空数组
 
 参见示例：[custom-one-to-one-morph](${galleryEditorPath}custom-one-to-one-morph&edit=1&reset=1) 和
 [custom-combine-separate-morph](${galleryEditorPath}custom-combine-separate-morph&edit=1&reset=1)。
-
-
 {{ /if }}
-
-
 
 {{ if: ${usageType} === 'graphicComponent' }}
 ##${prefix} left(number|string) = undefined
@@ -1367,6 +1299,7 @@ chart.on('click', function (params) {
 ##${prefix} textContent(Object)
 
 这是一个文本定义，附着在一个节点上，会依据 `textConfig` 配置，相对于节点布局。
+
 {{ if: ${usageType} === 'customSeries' }}
 里面的属性同于 [text](option.html#series-custom.renderItem.return_text)。
 {{ else }}
@@ -1490,11 +1423,11 @@ Position of `textContent`.
 
 如果确定文本是在节点中的话，则此可设置为 `true`，避免 echarts 额外猜测。
 
-
 {{ if: ${usageType} === 'customSeries' }}
 {{ use: partial-custom-series-during(
     prefix = ${prefix}
 ) }}
+
 {{ use: partial-custom-series-extra(
     prefix = ${prefix},
     optionPath = ${optionPath},
@@ -1573,7 +1506,6 @@ Position of `textContent`.
 
 
 
-
 {{ target: partial-graphic-cpt-path-common }}
 
 ###${prefix} points(Array)
@@ -1620,7 +1552,6 @@ Position of `textContent`.
 {{ target: partial-graphic-cpt-sub-prop-transition }}
 
 {{ if: ${usageType} === 'customSeries' }}
-
 ###${prefix} transition(string|Array) = undefined
 
 可以是一个属性名，或者一组属性名。
@@ -1659,7 +1590,6 @@ renderItem: function (params, api) {
     };
 }
 ```
-
 {{ /if }}
 
 
@@ -1889,6 +1819,8 @@ renderItem: function (params, api) {
 + transform 中设定的坐标，都是相对于图形元素的父元素的（即 [group](~${optionPath}.${hostName}${symbolVisit}group) 元素或者顶层画布）的 `[0, 0]` 点。也就是说，我们可以使用 [group](~${optionPath}.${hostName}${symbolVisit}group) 来组织多个图形元素，并且 [group](~${optionPath}.${hostName}${symbolVisit}group) 可以嵌套。
 + 对于一个图形元素，`transform` 执行的顺序是：先缩放（依照 `scaleX`，`scaleY`），再旋转（依照 `rotation`），再平移（依照 `x`，`y`）。
 
+
+
 {{ target: partial-graphic-cpt-focus-blur }}
 
 ##${prefix} focus(string) = 'none'
@@ -1914,6 +1846,7 @@ renderItem: function (params, api) {
 + `'coordinateSystem'` 淡出范围为坐标系，默认使用该配置。
 + `'series'` 淡出范围为系列。
 + `'global'` 淡出范围为全局。
+
 
 
 {{ target: partial-graphic-cpt-style-emphasis }}
@@ -2071,3 +2004,4 @@ type TransformProp =
 ```
 
 也参见这个 [例子](${galleryEditorPath}custom-spiral-race&edit=1&reset=1)。
+

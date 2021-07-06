@@ -679,7 +679,6 @@ series: [{
     formatter = ${prefix} === '##'
 ) }}
 
-
 #${prefix} labelLine(Object)
 
 {{ use: partial-label-line-desc() }}

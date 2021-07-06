@@ -56,7 +56,6 @@ ${defaultBorderWidthDesc|default((${name} ? ${name} : "") + "描边线宽。为 
 ) }}
 
 {{ if: ${useDecal} }}
-
 #${prefix} decal(Object) = ${defaultDecal}
 
 {{ use: partial-decal-desc(
@@ -66,5 +65,5 @@ ${defaultBorderWidthDesc|default((${name} ? ${name} : "") + "描边线宽。为 
 {{ use: partial-decal(
     prefix = '#' + ${prefix}
 ) }}
-
 {{ /if }}
+

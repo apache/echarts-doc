@@ -171,7 +171,6 @@ option = {
 
 {{ use: partial-datasetIndex() }}
 
-
 {{ use: partial-series-group-id() }}
 
 ## data(Array)
@@ -239,6 +238,7 @@ option = {
 {{ use: partial-tooltip-in-series() }}
 
 
+
 {{ target: heatmap-state }}
 
 #${prefix} itemStyle(Object)
@@ -254,7 +254,7 @@ option = {
     defaultPosition = "inside"
 ) }}
 
-
 {{ use: partial-universal-transition(
     prefix = "#"
 ) }}
+

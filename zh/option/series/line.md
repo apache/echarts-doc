@@ -400,7 +400,6 @@ const option = {
     defaultAnimationEasing = 'linear'
 ) }}
 
-
 {{ use: partial-universal-transition(
     prefix = "#"
 ) }}
@@ -425,7 +424,6 @@ const option = {
 {{ use: partial-label-line(
     prefix = '###'
 ) }}
-
 
 ### itemStyle(Object)
 
