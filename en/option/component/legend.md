@@ -502,3 +502,4 @@ ${name} line style. If its children have values as `'inherit'`, the values are i
     defaultShadowOffsetX = 0,
     defaultShadowOffsetY = 0
 ) }}
+

@@ -170,6 +170,8 @@ Configurations of select state. Available when [selectedMode](~series-funnel.sel
     prefix = "#"
 ) }}
 
+{{ use: partial-series-group-id() }}
+
 ## data(Array)
 
 {{ use: partial-1d-data-desc() }}
@@ -250,6 +252,10 @@ The label configuration of a single data item.
 ) }}
 
 {{ use: partial-animation(
+    prefix = "#"
+) }}
+
+{{ use: partial-universal-transition(
     prefix = "#"
 ) }}
 

@@ -250,6 +250,8 @@ Donut chart can be achieved by setting a inner radius.
     prefix = "#"
 ) }}
 
+{{ use: partial-series-group-id() }}
+
 ## data(Array)
 
 {{ use: partial-1d-data-desc() }}
@@ -261,6 +263,10 @@ The name of data item.
 ### value(number)
 
 Data value.
+
+{{ use: partial-data-group-id(
+    prefix = '##'
+) }}
 
 ### selected(boolean) = false
 
@@ -278,7 +284,7 @@ The label configuration of a single sector.
 
 ### labelLine(Object)
 
-{{ use: partial-pie-label-line(
+{{ use: partial-label-line(
     prefix = '###',
     length = true,
     length2 = true,
@@ -359,6 +365,10 @@ Animation type when data updates.
     prefix = "#"
 ) }}
 
+{{ use: partial-universal-transition(
+    prefix = "#"
+) }}
+
 {{ use: partial-tooltip-in-series() }}
 
 
@@ -425,7 +435,7 @@ Label rotation.
 
 #${prefix} labelLine(Object)
 
-{{ use: partial-pie-label-line(
+{{ use: partial-label-line(
     prefix = "#" + ${prefix},
     length = false,
     length2 = false,

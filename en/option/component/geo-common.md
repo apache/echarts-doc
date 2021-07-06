@@ -5,7 +5,6 @@
 
 Map name registered in [registerMap](api.html#echarts.registerMap).
 
-
 {{ if: ${inMap} }}
 **Use geoJSON**
 ```js
@@ -41,7 +40,6 @@ See also [geoJSON hexbin](${galleryEditorPath}custom-hexbin).
 
 The demo above shows that ECharts can uses [geoJSON](http://geojson.org/) format as map outline. You can use third-party [geoJSON](http://geojson.org/) data (like [maps](https://github.com/echarts-maps)) and register them into ECharts.
 
-
 {{ if: ${inMap} }}
 **Use SVG**
 ```js
@@ -76,8 +74,6 @@ See also [Flight Seatmap](${galleryEditorPath}geo-seatmap-flight).
 {{ /if }}
 
 The demo above shows that SVG format can be used in ECharts. See more info in [SVG Base Map](tutorial.html#SVG%20Base%20Map%20in%20Geo%20Coords%20and%20Map%20Series).
-
-
 
 #${prefix} roam(boolean|string) = false
 
@@ -183,8 +179,11 @@ Area filling color.
 #${prefix} emphasis(Object)
 
 Map area style in highlighted state.
+
 {{ if: !${inMap} }}
-{{ use: partial-focus-blur-scope(isGeoCoordSys: true) }}
+{{ use: partial-focus-blur-scope(
+    isGeoCoordSys = true
+) }}
 {{ /if }}
 
 {{ use: partial-geo-common-state(
@@ -201,7 +200,11 @@ Map area style in selected state.
 
 {{ if: !${inMap} }}
 #${prefix} blur(Object)
-{{ use: partial-version(version: '5.1.0') }}
+
+{{ use: partial-version(
+    version = '5.1.0'
+) }}
+
 Map area style in blurred state.
 
 {{ use: partial-geo-common-state(

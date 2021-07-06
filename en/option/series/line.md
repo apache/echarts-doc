@@ -274,6 +274,8 @@ Options:
 
 {{ use: partial-datasetIndex() }}
 
+{{ use: partial-series-group-id() }}
+
 ## data(Array)
 
 {{ use: partial-2d-data-desc() }}
@@ -285,6 +287,10 @@ The name of data item.
 ### value(number)
 
 The value of a single data item.
+
+{{ use: partial-data-group-id(
+    prefix = '##'
+) }}
 
 {{ use: partial-symbol(
     defaultSymbol = "'circle'",
@@ -361,6 +367,10 @@ Select state of specified single data.
 {{ use: partial-animation(
     prefix = "#",
     defaultAnimationEasing = 'linear'
+) }}
+
+{{ use: partial-universal-transition(
+    prefix = "#"
 ) }}
 
 {{ use: partial-tooltip-in-series() }}

@@ -164,6 +164,8 @@ Configurations of select state. Available when [selectedMode](~series-pictoialBa
     prefix = "#"
 ) }}
 
+{{ use: partial-series-group-id() }}
+
 ## data(Array)
 
 {{ use: partial-2d-data-desc() }}
@@ -175,6 +177,10 @@ The name of data item.
 ### value(number)
 
 The value of a single data item.
+
+{{ use: partial-data-group-id(
+    prefix = '##'
+) }}
 
 {{ use: pictorialBar-symbol-attrs(
     prefix = "##",
@@ -262,6 +268,10 @@ Select state of the specified single data.
 {{ use: partial-animation(
     prefix = "#",
     noAnimationDelay = true
+) }}
+
+{{ use: partial-universal-transition(
+    prefix = "#"
 ) }}
 
 {{ use: pictorialBar-animation-delay(

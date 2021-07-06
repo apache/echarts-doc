@@ -23,7 +23,9 @@ tooltip can be configured on different places:
 ## tooltip(Object)
 
 {{ if: ${version} }}
-{{ use: partial-version(version: '5.1.0') }}
+{{ use: partial-version(
+    version = '5.1.0'
+) }}
 {{ /if }}
 
 tooltip settings in the coordinate system component.
@@ -49,7 +51,9 @@ tooltip settings in the coordinate system component.
 ### tooltip(*)
 
 {{ if: ${version} }}
-{{ use: partial-version(version: '5.1.0') }}
+{{ use: partial-version(
+    version = '5.1.0'
+) }}
 {{ /if }}
 
 tooltip settings in this ${componentItemDesc}.
@@ -76,6 +80,7 @@ tooltip settings in this series.
     scope = 'series',
     prefix = '##'
 ) }}
+
 
 
 {{ target: partial-tooltip-in-series-data }}
@@ -115,7 +120,6 @@ Whether to show the tooltip component.
 including tooltip floating layer and [axisPointer](~tooltip.axisPointer).
 {{ /if }}
 
-
 {{ if: !${noAxis} }}
 #${prefix} trigger(string) = 'item'
 
@@ -137,7 +141,6 @@ Options:
 + `'none'`
 
     Trigger nothing.
-
 
 #${prefix} axisPointer(Object)
 
@@ -190,8 +193,8 @@ It is valid when [axisPointer.type](~tooltip.axisPointer.type) is `'cross'`.
     defaultAnimationEasingUpdate = 'exponentialOut',
     defaultAnimationDurationUpdate = 200
 ) }}
-
 {{ /if }}
+
 
 
 {{ target: partial-tooltip-common }}

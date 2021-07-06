@@ -1,3 +1,4 @@
+
 {{ target: partial-series-group-id }}
 
 ## dataGroupId(string)
@@ -6,9 +7,11 @@ A groupID common to all data in the series. the groupID will be used to classify
 
 If you are using the [dataset](~dataset) component to represent the data, it is recommended to use `encode.itemGroupID` to specify which dimension is encoded as the groupID.
 
-{{ target: partial-data-group-id }}
 
+
+{{ target: partial-data-group-id }}
 
 #${prefix} groupId(string)
 
 The groupID of this data item. groupID will be used to classify the data.
+

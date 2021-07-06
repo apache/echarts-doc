@@ -1,3 +1,4 @@
+
 {{ target: partial-universal-transition }}
 
 #${prefix} universalTransition(object)
@@ -13,7 +14,6 @@ This can be enabled directly by configuring `universalTransition: true` in the s
 ##${prefix} enabled(boolean) = false
 
 Wheather to enable the universal transition animation.
-
 
 ##${prefix} seriesKey(string | Array)
 
@@ -49,3 +49,4 @@ delay: function (index, count) {
     return Math.random() * 1000;
 }
 ```
+

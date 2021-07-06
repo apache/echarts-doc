@@ -308,7 +308,7 @@ const option = {
 
 ### labelLine(Object)
 
-{{ use: partial-pie-label-line(
+{{ use: partial-label-line(
     prefix = '###',
     length = true,
     length2 = true,
@@ -462,7 +462,7 @@ const option = {
 
 #${prefix} labelLine(Object)
 
-{{ use: partial-pie-label-line(
+{{ use: partial-label-line(
     prefix = "#" + ${prefix},
     length = false,
     length2 = false,
