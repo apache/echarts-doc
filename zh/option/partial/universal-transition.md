@@ -15,7 +15,7 @@
 
 是否开启全局过渡动画。
 
-##${prefix} seriesKey(string | Array)
+##${prefix} seriesKey(string|Array)
 
 `seriesKey`决定了如何关联需要动画的系列，未配置时会默认取系列的`id`。
 

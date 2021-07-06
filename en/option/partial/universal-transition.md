@@ -15,7 +15,7 @@ This can be enabled directly by configuring `universalTransition: true` in the s
 
 Wheather to enable the universal transition animation.
 
-##${prefix} seriesKey(string | Array)
+##${prefix} seriesKey(string|Array)
 
 The `seriesKey` determines how the series to be animated is associated, it defaults to the `id` of the series when not configured.
 
