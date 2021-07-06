@@ -172,6 +172,8 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
     prefix = '#'
 ) }}
 
+{{ use: partial-series-group-id() }}
+
 ## data(Array)
 
 线数据集。
@@ -204,6 +206,10 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 ### name(string)
 
 数据名称
+
+{{ use: partial-data-group-id(
+    prefix = '##'
+) }}
 
 ### coords(Array)
 
@@ -274,6 +280,9 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
     prefix = "#"
 ) }}
 
+{{ use: partial-universal-transition(
+    prefix = "#"
+) }}
 
 
 {{ target: lines-label }}

@@ -345,6 +345,7 @@ K 线图的选中状态。开启 [selectedMode](~series-candlestick.selectedMode
     prefix = "#"
 ) }}
 
+{{ use: partial-series-group-id() }}
 ## data(Array)
 
 数据格式是如下的二维数组。
@@ -379,6 +380,10 @@ K 线图的选中状态。开启 [selectedMode](~series-candlestick.selectedMode
 ```javascript
 [open, close, lowest, highest] （即：[开盘值, 收盘值, 最低值, 最高值]）
 ```
+
+{{ use: partial-data-group-id(
+    prefix = '##'
+) }}
 
 ### itemStyle(Object)
 
@@ -453,6 +458,10 @@ K 线图的选中状态。开启 [selectedMode](~series-candlestick.selectedMode
     prefix = "#",
     defaultAnimationEasing = 'linear',
     defaultAnimationDuration = 300
+) }}
+
+{{ use: partial-universal-transition(
+    prefix = "#"
 ) }}
 
 {{ use: partial-tooltip-in-series() }}

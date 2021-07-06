@@ -240,6 +240,8 @@ option = {
 
 {{ use: partial-datasetIndex() }}
 
+{{ use: partial-series-group-id() }}
+
 ## data(Array)
 
 {{ use: partial-2d-data-desc() }}
@@ -251,6 +253,10 @@ option = {
 ### value(number)
 
 单个数据项的数值。
+
+{{ use: partial-data-group-id(
+    prefix = '##'
+) }}
 
 {{ use: partial-bar-state(
     prefix = "##",
@@ -310,6 +316,10 @@ option = {
 ) }}
 
 {{ use: partial-animation(
+    prefix = "#"
+) }}
+
+{{ use: partial-universal-transition(
     prefix = "#"
 ) }}
 

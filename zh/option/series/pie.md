@@ -274,6 +274,8 @@ const option = {
     prefix = "#"
 ) }}
 
+{{ use: partial-series-group-id() }}
+
 ## data(Array)
 
 {{ use: partial-1d-data-desc() }}
@@ -285,6 +287,10 @@ const option = {
 ### value(number)
 
 数据值。
+
+{{ use: partial-data-group-id(
+    prefix = '##'
+) }}
 
 ### selected(boolean) = false
 
@@ -380,6 +386,11 @@ const option = {
 + `'expansion'` 数据将整体重新沿圆弧展开。
 
 {{ use: partial-animation(
+    prefix = "#"
+) }}
+
+
+{{ use: partial-universal-transition(
     prefix = "#"
 ) }}
 

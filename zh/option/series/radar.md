@@ -149,6 +149,8 @@ const option = {
     version = '5.0.0'
 ) }}
 
+{{ use: partial-series-group-id() }}
+
 ## data(Array)
 
 雷达图的数据是多变量（维度）的，如下示例：
@@ -175,6 +177,10 @@ data : [
 ### value(number)
 
 单个数据项的数值。
+
+{{ use: partial-data-group-id(
+    prefix = '##'
+) }}
 
 {{ use: partial-symbol(
     defaultSymbol = "'circle'",
@@ -260,6 +266,10 @@ data : [
 ) }}
 
 {{ use: partial-animation(
+    prefix = "#"
+) }}
+
+{{ use: partial-universal-transition(
     prefix = "#"
 ) }}
 

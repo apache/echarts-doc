@@ -59,7 +59,10 @@ encode: {
     itemId: 2,
     // Using dimensions[3] as the name of each data item. This is useful in charts like
     // 'pie', 'funnel', where data item name can be displayed in legend.
-    itemName: 3
+    itemName: 3,
+    // Using dimensions[4] as the groupId of each data item. groupId will be used to categorize the data. And to determine
+    // How the merge and split animation are performed in the universal transition. See universalTransition option for detail.
+    itemGroupId: 4
 }
 
 // These properties only work in cartesian(grid) coordinate system:

@@ -51,6 +51,8 @@
 
 {{ use: partial-datasetIndex() }}
 
+{{ use: partial-series-group-id() }}
+
 ## labelLayout(Object|Function)
 
 {{ use: partial-label-layout(
@@ -82,6 +84,10 @@
 ### value(number)
 
 该区域的数据值。
+
+{{ use: partial-data-group-id(
+    prefix = '##'
+) }}
 
 ### selected(boolean) = false
 
@@ -146,6 +152,11 @@
 ) }}
 
 {{ use: partial-silent(
+    prefix = "#"
+) }}
+
+
+{{ use: partial-universal-transition(
     prefix = "#"
 ) }}
 

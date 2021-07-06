@@ -54,7 +54,9 @@ encode: {
     // 表示使用第二个维度中的值作为 id。这在使用 setOption 动态更新数据时有用处，可以使新老数据用 id 对应起来，从而能够产生合适的数据更新动画。
     itemId: 2,
     // 指定数据项的名称使用第三个维度在饼图等图表中有用，可以使这个名字显示在图例（legend）中。
-    itemName: 3
+    itemName: 3,
+    // 指定数据项的组 ID (groupID)，组 ID 会被用于分类数据，并在全局过渡动画中决定如何进行合并和分裂动画，具体见 universalTransition
+    itemGroupId: 4
 }
 
 // 直角坐标系（grid/cartesian）特有的属性：

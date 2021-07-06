@@ -213,6 +213,8 @@ option = {
     prefix = "#"
 ) }}
 
+{{ use: partial-series-group-id() }}
+
 ## data(Array)
 
 {{ use: partial-2d-data-desc() }}
@@ -224,6 +226,10 @@ option = {
 ### value(number)
 
 单个数据项的数值。
+
+{{ use: partial-data-group-id(
+    prefix = '##'
+) }}
 
 {{ use: pictorialBar-symbol-attrs(
     prefix = "##",
@@ -311,6 +317,10 @@ option = {
 {{ use: partial-animation(
     prefix = "#",
     noAnimationDelay = true
+) }}
+
+{{ use: partial-universal-transition(
+    prefix = "#"
 ) }}
 
 {{ use: pictorialBar-animation-delay(

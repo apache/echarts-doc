@@ -163,6 +163,17 @@ option = {
     version = '5.0.0'
 ) }}
 
+{{ use: partial-series-encode(
+    prefix = "#"
+) }}
+
+{{ use: partial-seriesLayoutBy() }}
+
+{{ use: partial-datasetIndex() }}
+
+
+{{ use: partial-series-group-id() }}
+
 ## data(Array)
 
 {{ use: partial-2d-data-desc() }}
@@ -174,6 +185,10 @@ option = {
 ### value(Array)
 
 数据项值。
+
+{{ use: partial-data-group-id(
+    prefix = '##'
+) }}
 
 ### label(Object)
 
@@ -224,7 +239,6 @@ option = {
 {{ use: partial-tooltip-in-series() }}
 
 
-
 {{ target: heatmap-state }}
 
 #${prefix} itemStyle(Object)
@@ -240,3 +254,7 @@ option = {
     defaultPosition = "inside"
 ) }}
 
+
+{{ use: partial-universal-transition(
+    prefix = "#"
+) }}
