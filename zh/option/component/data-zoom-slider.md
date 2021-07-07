@@ -132,7 +132,6 @@ const option = {
 
 {{ use: partial-icon-image-path() }}
 
-
 ## handleSize(number|string) = '100%'
 
 <ExampleUIControlPercent min="0" step="1" default="100%" />
@@ -248,7 +247,6 @@ labelFormatter: function (value) {
     componentName = 'dataZoom-slider'
 ) }}
 
-
 ## brushSelect(boolean) = true
 
 {{ use: partial-version(
@@ -291,3 +289,4 @@ labelFormatter: function (value) {
 {{ use: partial-item-style(
     prefix = "###"
 ) }}
+

@@ -70,55 +70,25 @@ chart.setOption(option, {
 
         可选。阻止调用 `setOption` 时抛出事件，默认为 `false`，即抛出事件。
 
-    + `transition`: `SetOptionTransitionOptItem | SetOptionTransitionOptItem[]`
-
-        可选。指定如何进行“合并”/“分裂”过渡动画。当前只有 [自定义系列（ custom series ）](option.html#series-custom) 支持这种过渡动画。`transition` 参数的内容如下：
-        ```js
-        type SetOptionTransitionOptItem = {
-            from?: SetOptionTransitionOptFinder;
-            to?: SetOptionTransitionOptFinder;
-            dividingMethod?: 'split' | 'duplicate';
-        };
-        type SetOptionTransitionOptFinder = {
-            seriesIndex?: number;
-            seriesId?: string | number;
-            seriesName?: string | number;
-            dimension: string | number; // Dimension name or dimension index.
-        };
-        ```
-        例如：
-        ```js
-        chart.setOption(option, {
-            transition: {
-                // 这指定了，我们要从旧的系列 0 的维度 3 映射到新的系列 0 的维度 'Population'。
-                // 接下来，数据项的映射，会在这两个维度上进行。
-                from: { seriesIndex: 0, dimension: 3 },
-                to: { seriesIndex: 0, dimension: 'Population' },
-                dividingMethod: 'split'
-            }
-        });
-        ```
-        `from` 和 `to` 属性指定了：从旧的哪个系列的哪个维度，映射到新的哪个系列的哪个维度。有了这个指定后，新旧数据的数据项，就可以进行匹配。匹配规则是，假如 `from.dimension` 上的某几个数值，和 `to.dimension` 上的某几个数值相同（例如，他们的值都是 `"法国"`），它们对应的图形元素将会进行过渡动画（尤其是形变动画）。在这种场景中，echarts 支持了三种过渡动画：一对一、一对多（one-to-many，即合并 combining）、多对一（many-to-one，即分裂，separating）。`dividingMethod` 属性指定了，“合并”/“分裂”动画的效果是什么样的，是 split （劈开成多份），还是 duplicate （复制成多份）。详情可看这些例子：[custom-combine-separate-morph](${galleryEditorPath}custom-combine-separate-morph&edit=1&reset=1), [custom-story-transition](${galleryEditorPath}custom-story-transition&edit=1&reset=1)。
-
-
 **组件合并模式**
 
 对于一种类型的组件（如：`xAxis`, `series`）：
-+ 如果设置 `opts.notMerge` 为 `true`，那么旧的组件会被完全移除，新的组件会根据 `option` 创建。
-+ 如果设置 `opts.notMerge` 为 `false`，或者没有设置 `opts.notMerge`：
-    + 如果在 `opts.replaceMerge` 里指定里本 "component main type" ，这类组件会进行 `REPLACE_MERGE`。
-    + 否则，会进行 `NORMAL_MERGE`。
++ 如果设置`opts.notMerge`为`true`，那么旧的组件会被完全移除，新的组件会根据`option`创建。
++ 如果设置`opts.notMerge`为`false`，或者没有设置 `opts.notMerge`：
+    + 如果在`opts.replaceMerge`里指定组件类型，这类组件会进行`替换合并`。
+    + 否则，会进行`普通合并`。
 
-什么是 `NORMAL_MERGE` 和 `REPLACE_MERGE`？
+什么是`普通合并`和`替换合并`？
 
-+ `NORMAL_MERGE`
++ `普通合并`
+
     + 对于一种类型的组件（如：`xAxis`, `series`），新来的 `option` 中的每个“组件描述”（如：`{type: 'xAxis', id: 'xx', name: 'kk', ...}`）会被尽量合并到已存在的组件中。剩余的情况，会在组件列表尾部创建新的组件。整体规则细节如下：
         + 先依次对 `option` 中每个有声明 `id` 或者 `name` 的“组件描述”，寻找能匹配其 `id` 或者 `name` 的已有的组件，找到的话则合并。
         + 再依次对 `option` 中剩余的“组件描述”，寻找还未执行过前一条的已有组件，找到的话则合并。
         + 其他 `option` 中剩余的“组件描述”，用于在组件列表尾部创建新组件。
     + 特点：
         + 永远不会删除已存在的组件。也就是说，只支持增加，或者更新组件。
-        + "component index" 永远不会改变。
+        + 组件的索引（componentIndex）永远不会改变。
         + 如果 `id` 和 `name` 没有在 `option` 中被指定（这是经常出现的情况），组件会按照它在 `option` 中的顺序一一合并到已有组件中。这种设定比较符合直觉。
     + 例子：
         ```js
@@ -154,14 +124,14 @@ chart.setOption(option, {
             ]
         }
         ```
-+ `REPLACE_MERGE`
++ `替换合并`
     + 对于一种类型的组件（如：`xAxis`, `series`），只有 `option` 中指定了 `id` 并且已有组件中有此 `id` 时，已有组件会和 `option` 相应组件描述进行合并。否则，已有组件都会删除，新组件会被根据 `option` 创建。细节规则如下：
         + 先依次对 `option` 中每个有声明 `id` 的“组件描述”，寻找能匹配其 `id` 或者 `name` 的已有的组件，找到的话则合并。
-        + 删除其他没匹配到的已有组件。（实际上是，在组件列表中设置为 `null`，以保证没有被删除的组件的 "component index" 不改变）。
+        + 删除其他没匹配到的已有组件。
         + 依次对 `option` 中剩余的“组件描述”，创建新组件，填入刚因删除而空出来的位置上，或者增加到末尾。
     + 特点：
-        + 与 `NORMAL_MERGE` 相比，支持了组件删除。
-        + 已有组件的 "component index" 永远不会变。这是为了保证，`option` 或者 API 中的 index 引用（例如：`xAxisIndex: 2`）仍能正常一致得使用。
+        + 与 `普通合并` 相比，支持了组件删除。
+        + 已有组件的索引永远不会变。这是为了保证，`option` 或者 API 中的 index 引用（例如：`xAxisIndex: 2`）仍能正常一致得使用。
         + 整个处理过程结束后，可能存在一些“洞”，也就是说，在组件列表中的某些 index 上，并没有组件存在（被删除了）。但是这是可以被开发者预期和控制的。
     + 例子：
         ```js

@@ -46,7 +46,8 @@ For example：
 
 {{ if: ${type} === 'border' }}
 #${prefix} borderDashOffset(number) = ${defaultDashOffset|default(0)}
-{{ elif: ${type} === 'text'  }}
+
+{{ elif: ${type} === 'text' }}
 #${prefix} textBorderDashOffset(number) = ${defaultDashOffset|default(0)}
 {{ else }}
 #${prefix} dashOffset(number) = ${defaultDashOffset|default(0)}

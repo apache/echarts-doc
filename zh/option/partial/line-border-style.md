@@ -1,8 +1,10 @@
+
 {{ target: partial-line-border-style }}
 
 {{ if: ${type} === 'border' }}
 #${prefix} borderType(string|number|Array) = ${defaultType|default("'solid'")}
-{{ elif: ${type} === 'text'  }}
+
+{{ elif: ${type} === 'text' }}
 #${prefix} textBorderType(string|number|Array) = ${defaultType|default("'solid'")}
 {{ else }}
 #${prefix} type(string|number|Array) = ${defaultType|default("'solid'")}
@@ -12,7 +14,8 @@
 
 {{ if: ${type} === 'border' }}
 ${name}描边类型。
-{{ elif: ${type} === 'text'  }}
+
+{{ elif: ${type} === 'text' }}
 文字本身的描边类型。
 {{ else }}
 线的类型。
@@ -25,7 +28,7 @@ ${name}描边类型。
 
 自 `v5.0.0` 开始，也可以是 `number` 或者 `number` 数组，用以指定线条的 [dash array](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Attribute/stroke-dasharray)，配合 {{ if: ${type} === 'border' }}
 `borderDashOffset`
-{{ elif: ${type} === 'text'  }}
+{{ elif: ${type} === 'text' }}
 `textBorderDashOffset`
 {{ else }}
 `dashOffset`
@@ -34,15 +37,17 @@ ${name}描边类型。
 例如：
 ```js
 {
-	{{ if: ${type} === 'border' }}borderType{{ elif: ${type} === 'text'  }}textBorderType{{ else }}type{{ /if }}: [5, 10],
-	{{ if: ${type} === 'border' }}borderDashOffset{{ elif: ${type} === 'text'  }}textBorderDashOffset{{ else }}dashOffset{{ /if }}: 5
+
+{{ if: ${type} === 'border' }}borderType{{ elif: ${type} === 'text' }}textBorderType{{ else }}type{{ /if }}: [5, 10],
+
+{{ if: ${type} === 'border' }}borderDashOffset{{ elif: ${type} === 'text' }}textBorderDashOffset{{ else }}dashOffset{{ /if }}: 5
 }
 ```
 
-
 {{ if: ${type} === 'border' }}
 #${prefix} borderDashOffset(number) = ${defaultDashOffset|default(0)}
-{{ elif: ${type} === 'text'  }}
+
+{{ elif: ${type} === 'text' }}
 #${prefix} textBorderDashOffset(number) = ${defaultDashOffset|default(0)}
 {{ else }}
 #${prefix} dashOffset(number) = ${defaultDashOffset|default(0)}
@@ -56,7 +61,7 @@ ${name}描边类型。
 
 用于设置虚线的偏移量，可搭配 {{ if: ${type} === 'border' }}
 `borderType`
-{{ elif: ${type} === 'text'  }}
+{{ elif: ${type} === 'text' }}
 `textBorderType`
 {{ else }}
 `type`
@@ -64,9 +69,7 @@ ${name}描边类型。
 
 更多详情可以参考 MDN [lineDashOffset](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/lineDashOffset)。
 
-
 {{ if: !${noCap} }}
-
 {{ if: ${type} === 'border' }}
 #${prefix} borderCap(string) = ${defaultCap|default('butt')}
 {{ else }}
@@ -85,12 +88,9 @@ ${name}描边类型。
 + `'square'`: 线段末端以方形结束，但是增加了一个宽度和线段相同，高度是线段厚度一半的矩形区域。
 
 默认值为 `'butt'`。 更多详情可以参考 MDN [lineCap](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/lineCap)。
-
 {{ /if }}
 
-
 {{ if: !${noJoin} }}
-
 {{ if: ${type} === 'border' }}
 #${prefix} borderJoin(string) = ${defaultJoin|default('bevel')}
 {{ else }}
@@ -115,12 +115,9 @@ ${name}描边类型。
 {{ /if }} 属性看到效果。
 
 默认值为 `'bevel'`。 更多详情可以参考 MDN [lineJoin](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/lineJoin)。
-
 {{ /if }}
 
-
 {{ if: !${noMiterLimit} }}
-
 {{ if: ${type} === 'border' }}
 #${prefix} borderMiterLimit(number) = ${defaultMiterLimit|default(10)}
 {{ else }}
@@ -146,5 +143,5 @@ ${name}描边类型。
 默认值为 `10`。负数、`0`、`Infinity` 和 `NaN` 均会被忽略。
 
 更多详情可以参考 MDN [miterLimit](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/miterLimit)。
-
 {{ /if }}
+

@@ -1,3 +1,4 @@
+
 {{ target: partial-decal-desc }}
 
 图形的贴花图案，在 [aria.enabled](~aria.enabled) 与 [aria.decal.show](~aria.decal.show) 都是 `true` 的情况下才生效。
@@ -5,9 +6,7 @@
 如果为 `'none'` 表示不使用贴花图案。
 
 {{ if: ${onlyWithAreaStyle} }}
-
 需要在设置了填充样式 `areaStyle` 的情况下才生效。
-
 {{ /if }}
 
 
@@ -77,3 +76,4 @@
 #${prefix|default('#')} maxTileHeight(number) = 512
 
 生成的图案在未重复之前的高度上限。通常不需要设置该值，当你发现图案在重复的时候出现不连续的接缝时，可以尝试提高该值。
+

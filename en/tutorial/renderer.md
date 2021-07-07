@@ -12,12 +12,6 @@ ECharts has been using Canvas as its renderer (use VML for IE8-) from the beginn
 
 Generally speaking, Canvas is suitable for cases where there is a large amount of graphical elements (usually due to a large amount of data points), like heatmap and lines or scatter plot with large data in geo or parallel coordinates. In addition, it supports some [special visual effect](${websitePath}/examples/en/editor.html?c=lines-bmap-effect) not supported by SVG. However, in some other scenarios SVG has some critical advantages: it consumes less memory than Canvas (especially in mobile devices), and gives better performance in rendering. Moreover, it never blurs when zooming the viewport of the browser whereas Canvas may blur.
 
-Below is a comparison of frame rate during the initial animation stage when rendering line, bar, pie charts with the Canvas renderer and the SVG renderer:
-
-~[90%x400](${galleryViewPath}doc-example/canvas-vs-svg-en&reset=1)
-
-In the example above, the SVG renderer provides better FPS performance in mobile devices. In some other scenarios with large amounts of data or with certain kinds of user interaction, the SVG renderer is still not as good as the Canvas renderer in performance, but two options provide the ability to optimize the performance according to the requirements of each developer.
-
 How to make a choice? These factors, hardware and software environment, data amount and functional requirements, should be considered.
 
 + When not constrained by hardware/software, and the data amount is not large, both should provide equally satisfactory results.
@@ -26,8 +20,6 @@ How to make a choice? These factors, hardware and software environment, data amo
     + If visualizing a large amount of data, or complicated human interactions with data is required, the Canvas renderer works better currently.
 
 Therefore [feedback](https://github.com/apache/echarts/issues/new) of experiences and usage scenarios are strongly welcomed, which will help improve the these renderers.
-
-Notice: The features of rich text, shadow and texture have not been supported yet in the current beta version of the SVG renderer.
 
 ## How to use specify a renderer?
 

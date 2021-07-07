@@ -42,7 +42,6 @@
 import {
     getPageTotalDescAsync,
     getPageOutlineAsync,
-    getOutlineAsync,
     convertPathToId,
     getOutlineNode,
     getDefaultPage

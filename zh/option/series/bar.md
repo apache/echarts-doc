@@ -97,7 +97,7 @@ option = {
     seriesType = "bar",
     coordSysDefault = "'cartesian2d'",
     cartesian2d = true,
-    polar = false,
+    polar = true,
     geo = false
 ) }}
 
@@ -209,7 +209,6 @@ option = {
 + `'min'` 取过滤点的最小值
 + `'sum'` 取过滤点的和
 
-
 {{ use: partial-cursor() }}
 
 {{ use: partial-barGrid(
@@ -240,6 +239,8 @@ option = {
 
 {{ use: partial-datasetIndex() }}
 
+{{ use: partial-series-group-id() }}
+
 ## data(Array)
 
 {{ use: partial-2d-data-desc() }}
@@ -251,6 +252,10 @@ option = {
 ### value(number)
 
 单个数据项的数值。
+
+{{ use: partial-data-group-id(
+    prefix = '##'
+) }}
 
 {{ use: partial-bar-state(
     prefix = "##",
@@ -313,6 +318,10 @@ option = {
     prefix = "#"
 ) }}
 
+{{ use: partial-universal-transition(
+    prefix = "#"
+) }}
+
 {{ use: partial-tooltip-in-series() }}
 
 
@@ -339,7 +348,7 @@ option = {
 是否开启标签的数字动画。
 
 参考这个 [示例](${galleryEditorPath}doc-example/value-animation-simple&edit=1&reset=1)。
-{{/if}}
+{{ /if }}
 
 #${prefix} labelLine(Object)
 
@@ -404,9 +413,7 @@ option = {
     prefix = ${prefix}
 ) }}
 
-
 {{ if: ${useDecal} }}
-
 #${prefix} decal(Object)
 
 {{ use: partial-decal-desc() }}
@@ -414,5 +421,5 @@ option = {
 {{ use: partial-decal(
     prefix = '#' + ${prefix}
 ) }}
-
 {{ /if }}
+

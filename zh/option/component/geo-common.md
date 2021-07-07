@@ -40,7 +40,6 @@ $.get('map/china_geo.json', function (chinaJson) {
 
 如上所示，ECharts 可以使用 [GeoJSON](http://geojson.org/) 格式的数据作为地图的轮廓，你可以获取第三方的 [GeoJSON](http://geojson.org/) 数据注册到 ECharts 中。例如第三方资源 [maps](https://github.com/echarts-maps)。
 
-
 {{ if: ${inMap} }}
 **SVG 引入示例**
 ```js
@@ -75,7 +74,6 @@ $.get('map/topographic_map.svg', function (svg) {
 {{ /if }}
 
 如上所示，ECharts 也可以使用 SVG 格式的地图。详情参见：[SVG 底图](tutorial.html#%E5%9C%B0%E7%90%86%E5%9D%90%E6%A0%87%E7%B3%BB%E5%92%8C%E5%9C%B0%E5%9B%BE%E7%B3%BB%E5%88%97%E7%9A%84%20SVG%20%E5%BA%95%E5%9B%BE)。
-
 
 #${prefix} roam(boolean|string) = false
 
@@ -182,7 +180,9 @@ boundingCoords: [
 高亮状态下的多边形和标签样式。
 
 {{ if: !${inMap} }}
-{{ use: partial-focus-blur-scope(isGeoCoordSys: true) }}
+{{ use: partial-focus-blur-scope(
+    isGeoCoordSys = true
+) }}
 {{ /if }}
 
 {{ use: partial-geo-common-state(
@@ -199,14 +199,17 @@ boundingCoords: [
 
 {{ if: !${inMap} }}
 #${prefix} blur(Object)
-{{ use: partial-version(version: '5.1.0') }}
+
+{{ use: partial-version(
+    version = '5.1.0'
+) }}
+
 淡出状态下的多边形和标签样式。
 
 {{ use: partial-geo-common-state(
     prefix = '#' + ${prefix}
 ) }}
 {{ /if }}
-
 
 {{ use: partial-rect-layout(
     prefix = ${prefix}

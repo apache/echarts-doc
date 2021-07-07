@@ -424,6 +424,8 @@ For example:
 
 {{ use: partial-datasetIndex() }}
 
+{{ use: partial-series-group-id() }}
+
 ## data(Array)
 
 {{ use: partial-2d-data-desc() }}
@@ -435,6 +437,10 @@ Name of data item.
 ### value(number)
 
 Value of data item.
+
+{{ use: partial-data-group-id(
+    prefix = '##'
+) }}
 
 ### itemStyle(Object)
 
@@ -468,6 +474,10 @@ Value of data item.
 ) }}
 
 {{ use: partial-animation(
+    prefix = "#"
+) }}
+
+{{ use: partial-universal-transition(
     prefix = "#"
 ) }}
 

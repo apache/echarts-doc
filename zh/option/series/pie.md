@@ -104,7 +104,7 @@ const option = {
 
 <ExampleUIControlBoolean default="true" />
 
-是否在数据和为`0`（一般情况下所有数据为`0`） 的时候不显示扇区。
+是否在数据和为`0`（一般情况下所有数据为`0`） 的时候仍显示扇区。
 
 {{ use: partial-cursor() }}
 
@@ -274,6 +274,8 @@ const option = {
     prefix = "#"
 ) }}
 
+{{ use: partial-series-group-id() }}
+
 ## data(Array)
 
 {{ use: partial-1d-data-desc() }}
@@ -285,6 +287,10 @@ const option = {
 ### value(number)
 
 数据值。
+
+{{ use: partial-data-group-id(
+    prefix = '##'
+) }}
 
 ### selected(boolean) = false
 
@@ -302,7 +308,7 @@ const option = {
 
 ### labelLine(Object)
 
-{{ use: partial-pie-label-line(
+{{ use: partial-label-line(
     prefix = '###',
     length = true,
     length2 = true,
@@ -383,6 +389,10 @@ const option = {
     prefix = "#"
 ) }}
 
+{{ use: partial-universal-transition(
+    prefix = "#"
+) }}
+
 {{ use: partial-tooltip-in-series() }}
 
 
@@ -437,8 +447,6 @@ const option = {
 
 
 
-
-
 {{ target: pie-state }}
 
 #${prefix} label(Object)
@@ -451,7 +459,7 @@ const option = {
 
 #${prefix} labelLine(Object)
 
-{{ use: partial-pie-label-line(
+{{ use: partial-label-line(
     prefix = "#" + ${prefix},
     length = false,
     length2 = false,
@@ -467,7 +475,6 @@ const option = {
 {{ use: partial-pie-border-radius(
     prefix = "#" + ${prefix}
 ) }}
-
 
 
 
@@ -487,3 +494,4 @@ const option = {
 + `borderRadius: '20%'`：表示内圆角半径和外圆角半径都是饼图扇形区块半径的 `20%`。
 + `borderRadius: [10, 20]`：表示当饼图为环形图时，表示内圆角半径是 `10px`、外圆角半径是 `20px`。
 + `borderRadius: ['20%', '50%']`：表示当饼图为环形图时，内圆角半径是内圆半径的 `20%`、外圆角半径是外圆半径的 `50%`。
+

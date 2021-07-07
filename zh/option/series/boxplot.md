@@ -168,6 +168,8 @@ box 的宽度的上下限。数组的意思是：`[min, max]`。
     prefix = "#"
 ) }}
 
+{{ use: partial-series-group-id() }}
+
 ## data(Array)
 
 数据格式是如下的二维数组。
@@ -209,6 +211,10 @@ ECharts 并不内置对原始数据的处理，输入给 `boxplot` 的数据须�
 ```javascript
 [min,  Q1,  median (or Q2),  Q3,  max]
 ```
+
+{{ use: partial-data-group-id(
+    prefix = '##'
+) }}
 
 ### itemStyle(Object)
 
@@ -284,6 +290,10 @@ ECharts 并不内置对原始数据的处理，输入给 `boxplot` 的数据须�
     prefix = "#",
     defaultAnimationEasing = 'elasticOut',
     defaultAnimationDuration = 800
+) }}
+
+{{ use: partial-universal-transition(
+    prefix = "#"
 ) }}
 
 {{ use: partial-tooltip-in-series() }}

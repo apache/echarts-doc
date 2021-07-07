@@ -159,6 +159,8 @@ Configurations of select state. Available when [selectedMode](~series-candlestic
     prefix = "#"
 ) }}
 
+{{ use: partial-series-group-id() }}
+
 ## data(Array)
 
 Data should be the two-dimensional array shown as follows.
@@ -192,6 +194,10 @@ Value of data item.
 ```javascript
 [open, close, lowest, highest]  (namely: [opening value, closing value, lowest value, highest value])
 ```
+
+{{ use: partial-data-group-id(
+    prefix = '##'
+) }}
 
 ### itemStyle(Object)
 
@@ -266,6 +272,10 @@ Select state of single data.
     prefix = "#",
     defaultAnimationEasing = 'linear',
     defaultAnimationDuration = 300
+) }}
+
+{{ use: partial-universal-transition(
+    prefix = "#"
 ) }}
 
 {{ use: partial-tooltip-in-series() }}

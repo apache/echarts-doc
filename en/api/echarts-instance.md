@@ -70,56 +70,25 @@ chart.setOption(option, {
 
         Optional; states whether not to prevent triggering events when calling `setOption`; `false` by default, stating trigger events.
 
-    + `transition`: `SetOptionTransitionOptItem | SetOptionTransitionOptItem[]`
-
-        Optional; specify how to perform combining/separating transition animation when `setOption` called. Currently only [custom series](option.html#series-custom) supports this feature. The content of the parameter `transition` is as follows.
-        ```js
-        type SetOptionTransitionOptItem = {
-            from?: SetOptionTransitionOptFinder;
-            to?: SetOptionTransitionOptFinder;
-            dividingMethod?: 'split' | 'duplicate';
-        };
-        type SetOptionTransitionOptFinder = {
-            seriesIndex?: number;
-            seriesId?: string | number;
-            seriesName?: string | number;
-            dimension: string | number; // Dimension name or dimension index.
-        };
-        ```
-        For example:
-        ```js
-        chart.setOption(option, {
-            transition: {
-                // It means that dimension 3 of the old series 0 can be mapped to
-                // dimension "Population" of the new series 0. The data diff will be
-                // made based on the values in the two dimensions.
-                from: { seriesIndex: 0, dimension: 3 },
-                to: { seriesIndex: 0, dimension: 'Population' },
-                dividingMethod: 'split'
-            }
-        });
-        ```
-        The property `from` and `to` indicate that which dimension of which old series will be mapped to which dimension of which new series. Having the pair of dimensions provided, the data diff will be performed based on the values in that two dimensions. That is, if some values in `from.dimension` is the same as some values in `to.dimension` (e.g., all of them are `"France"`), their corresponding graphic elements will perform transition animation (morphing) if possible. In this case echarts supports three types of transition animation: one-to-one, one-to-many (separating), many-to-one (combining). The property `dividingMethod` specifies that when combining or separating, the effect should be like "split" or "duplicate". Check this examples please: [custom-combine-separate-morph](${galleryEditorPath}custom-combine-separate-morph&edit=1&reset=1), [custom-story-transition](${galleryEditorPath}custom-story-transition&edit=1&reset=1).
-
 
 **Component Merging Modes**
 
 Within a specific type of components (more accurately, "component main type". e.g., `xAxis`, `series`):
 + If `opts.notMerge` is set as `true`, the old components will be totally removed and the new component will be created by the incoming `option`.
 + If `opts.notMerge` is set as `false` or not specified:
-    + If this component main type is included in `opts.replaceMerge`, these components will be merged in mode `REPLACE_MERGE`.
-    + Otherwise, these components will be merged in mode `NORMAL_MERGE`.
+    + If this component main type is included in `opts.replaceMerge`, these components will be merged in mode `Replace Merge`.
+    + Otherwise, these components will be merged in mode `Normal Merge`.
 
-What is `NORMAL_MERGE` and `REPLACE_MERGE`?
+What is `Normal Merge` and `Replace Merge`?
 
-+ `NORMAL_MERGE`
++ `Normal Merge`
     + Within a specific component main type (e.g., `xAxis`, `series`), each single "component description" (i.e., like `{type: 'xAxis', id: 'xx', name: 'kk', ...}`) in the incoming `option` will be mapped and merged into the existing components one by one if possible. Otherwise create new component on the tail of the list. The detailed rule is as follows:
         + For each single "component description" that has `id` or `name` specified in `option`, firstly find and merge to existing components that has the same `id` or `name` if possible.
         + Then for each remaining single "component description", find and merge to remaining existing components if possible.
         + Create new components for the remaining "component descriptions" at the tail.
     + Features:
         + No existing component will be removed. Only add and update are supported in this mode.
-        + The "component index" will never be changed.
+        + The index of component(componentIndex) will never be changed.
         + If no `id` and `name` specified in `option` (this is a common case), components can be simply merged intuitively according to where they appear in `option`.
     + Example:
         ```js
@@ -154,13 +123,13 @@ What is `NORMAL_MERGE` and `REPLACE_MERGE`?
             ]
         }
         ```
-+ `REPLACE_MERGE`
++ `Replace Merge`
     + Within a specific component main type (e.g., `xAxis`, `series`), only the existing components that has its `id` declared in the incoming `option` will be kept, other existing components will be removed or replaced with new created component. the detailed rule is as follows:
         + Firstly Find and merge to existing components that has the same `id` in `option` if possible.
         + Remove the remaining unmatched existing components. (In fact, set to `null` in the component list to make sure there is no change of the indices of the components that not be removed).
         + Create new components for the remaining "component descriptions", and put them on the places that have been free or appended to the tail.
     + Features:
-        + Enable to remove some of the components, which is not supported in `NORMAL_MERGE`.
+        + Enable to remove some of the components, which is not supported in `Normal Merge`.
         + The indices of the existing components will never be modified. This is to ensure that the existing references by index still works (e.g., `xAxisIndex: 2`).
         + After replace merged, there might be some "hole", that is, there is no component at some index (because the original component is removed). But this is expectable and controllable by users.
     + Example:
