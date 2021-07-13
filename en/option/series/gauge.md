@@ -295,6 +295,12 @@ Gauge chart pointer.
 
 Whether to show the pointer.
 
+### showAbove(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
+
+Whether to show the pointer above detail and title.
+
 ### icon(string) = null
 
 {{ use: partial-version(
