@@ -310,6 +310,10 @@ formatter: function (value) {
 
 ### showAbove(boolean) = true
 
+{{ use: partial-version(
+    version = "5.2.0"
+) }}
+
 <ExampleUIControlBoolean default="true" />
 
 指针是否显示在标题和仪表盘详情上方。

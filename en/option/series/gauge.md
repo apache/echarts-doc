@@ -297,6 +297,10 @@ Whether to show the pointer.
 
 ### showAbove(boolean) = true
 
+{{ use: partial-version(
+    version = "5.2.0"
+) }}
+
 <ExampleUIControlBoolean default="true" />
 
 Whether to show the pointer above detail and title.
