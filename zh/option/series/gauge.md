@@ -308,6 +308,16 @@ formatter: function (value) {
 
 是否显示指针。
 
+### showAbove(boolean) = true
+
+{{ use: partial-version(
+    version = "5.2.0"
+) }}
+
+<ExampleUIControlBoolean default="true" />
+
+指针是否显示在标题和仪表盘详情上方。
+
 ### icon(string) = null
 
 {{ use: partial-version(
