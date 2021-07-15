@@ -64,6 +64,16 @@ const option = {
 
 涟漪的颜色，默认为散点的颜色。
 
+### number(number) = 3
+
+{{ use: partial-version(
+    version = "5.2.0"
+) }}
+
+<ExampleUIControlNumber min="0" default="3" step="1" />
+
+波纹的数量。
+
 ### period(number) = 4
 
 <ExampleUIControlNumber min="0" default="4" step="0.1" />
