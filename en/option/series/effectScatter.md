@@ -47,6 +47,16 @@ Related configurations about ripple effect.
 
 Color of the ripple rings. The default value is the color of scatter.
 
+### number(number) = 3
+
+{{ use: partial-version(
+    version = "5.2.0"
+) }}
+
+<ExampleUIControlNumber min="0" default="3" step="1" />
+
+The number of ripples.
+
 ### period(number) = 4
 
 <ExampleUIControlNumber min="0" default="4" step="0.1" />
