@@ -193,9 +193,7 @@ levels: [{
 
 ## lineStyle(Object)
 
-桑基图边的样式，其中 [lineStyle.color](~series-sankey.lineStyle.color) 支持设置为`'source'`或者`'target'`特殊值，此时边会自动取源节点或目标节点的颜色作为自己的颜色。
-
-从 5.0 开始, [lineStyle.color](~series-sankey.lineStyle.color) 还可以设置为`'gradient'`，取从源节点到目标节点的渐变色。
+桑基图边的样式
 
 {{ use: partial-sankey-line-style(
     prefix = "##"
@@ -409,6 +407,10 @@ links: [{
 #${prefix} color(Color) = '#314656'
 
 桑基图边的颜色。
+
++ `'source'`: 使用源节点颜色。
++ `'target'`: 使用目标节点颜色。
++ `'gradient'`: 以源节点和目标节点的颜色做一个渐变过度色。(5.0开始支持)
 
 #${prefix} opacity(number) = 0.2
 
