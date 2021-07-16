@@ -190,7 +190,7 @@ The style of node rectangle in Sankey diagram.
 
 ## lineStyle(Object)
 
-The edge style of Sankey diagram, in which [lineStyle.color](~series-sankey.lineStyle.color) can be assigned to the value of `'source'` of `'target'`, then the edge will automatically take the source node or target node color as its own color.
+The edge style of Sankey diagram
 
 {{ use: partial-sankey-line-style(
     prefix = "##"
@@ -404,6 +404,10 @@ Equals to [links](~series-sankey.links)
 #${prefix} color(Color) = "'#314656'"
 
 The color of the edge in Sankey diagram.
+
++ `'source'`: use source node color.
++ `'target'`: use target node color.
++ `'gradient'`: gradient color between source node and target node (supported in 5.0).
 
 #${prefix} opacity(number) = 0.2
 
