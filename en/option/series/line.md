@@ -7,7 +7,7 @@
 
 Broken line chart relates all the data points [symbol](~series-line.symbol) by broken lines, which is used to show the trend of data changing. It could be used in both [rectangular coordinate](~grid) and[polar coordinate](~polar).
 
-**Tip:** When [areaStyle](~series-line.areaStyle) is set, area chart will be drew.
+**Tip:** When [areaStyle](~series-line.areaStyle) is set, area chart will be drawn.
 
 **Tip:** With [visualMap](~visualMap-piecewise) component, Broken line / area chart can have different colors on different sections, as below:
 
