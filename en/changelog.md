@@ -1,3 +1,60 @@
+## v5.2.0
+
+#### Break Changes
+
++ [Fix] [pie] Negative value will be filtered [#15095](https://github.com/apache/echarts/issues/15095) ([ssthouse](https://github.com/ssthouse))
+
+#### All Changes
+
++ **[Feature] Introduce universal transition to all series. [#15208](https://github.com/apache/echarts/issues/15208) ([pissang](https://github.com/pissang))**
++ [Feature] [color] Add `series.colorBy` [#13788](https://github.com/apache/echarts/issues/13788) ([Ovilia](https://github.com/Ovilia))
++ [Feature] [label] Support sector label positions for polar bars [#774](https://github.com/ecomfe/zrender/issues/774) ([Ovilia](https://github.com/Ovilia))
++ [Feature] [effectScatter] Add `rippleEffect.number` [#15335](https://github.com/apache/echarts/issues/15335) ([plainheart](https://github.com/plainheart))
++ [Feature] [gauge] Add `pointer.showAbove` to allow pointer show above the title and details. [#15337](https://github.com/apache/echarts/issues/15337) ([AmosChenYQ](https://github.com/AmosChenYQ)) [#15326](https://github.com/apache/echarts/issues/15326) ([susiwen8](https://github.com/susiwen8))
++ [Feature] [gauge] Add `pointer.showAbove` to allow pointer show above the title and details. [#15337](https://github.com/apache/echarts/issues/15337) ([AmosChenYQ](https://github.com/AmosChenYQ)) [#15326](https://github.com/apache/echarts/issues/15326) ([susiwen8](https://github.com/susiwen8))
++ [Feature] [emphasis] `emphasis.color` can use `'inherit'` to be not higlighted. [#15172](https://github.com/apache/echarts/issues/15172) ([Foreverwzh](https://github.com/Foreverwzh))
++ [Feature] [pie] Display an empty cicle when pie don't have value. [#15095](https://github.com/apache/echarts/issues/15095) ([ssthouse](https://github.com/ssthouse))
++ [Fix] [dataset] Fix dataset performance drops signifcantly on high dimensions data. [#15355](https://github.com/apache/echarts/issues/15355) ([pissang](https://github.com/pissang))
++ [Fix] [axis] Optimize format in time axis [#15465](https://github.com/apache/echarts/issues/15465) ([leavest](https://github.com/leavest))  [#15434](https://github.com/apache/echarts/issues/15434) ([zhiyuc123](https://github.com/zhiyuc123))
++ [Fix] [custom] Optimize text font compatibility with older versions [#15454](https://github.com/apache/echarts/issues/15454) ([AmosChenYQ](https://github.com/AmosChenYQ))
++ [Fix] [memory] Optimize memory when chart instance is still hold after dispose [#15417](https://github.com/apache/echarts/issues/15417) ([pissang](https://github.com/pissang))
++ [Fix] [line] Optimize color gradient when having infinite value. [#15416](https://github.com/apache/echarts/issues/15416) ([plainheart](https://github.com/plainheart))
++ [Fix] [date] Optimize date parsing [#15410](https://github.com/apache/echarts/issues/15410) ([quillblue](https://github.com/quillblue))
++ [Fix] [line] Fix render bug. [#788](https://github.com/ecomfe/zrender/issues/788) ([pissang](https://github.com/pissang))
++ [Fix] [candlestick] Fix style lost after update [#15368](https://github.com/apache/echarts/issues/15368) ([pissang](https://github.com/pissang))
++ [Fix] [sankey] Gradient should follow orient. [#15363](https://github.com/apache/echarts/issues/15363) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [tooltip] Fix tooltip formatter doesn't renders HTMLElement if tooltip position is specified. [#15313](https://github.com/apache/echarts/issues/15313) ([plainheart](https://github.com/plainheart))
++ [Fix] [tooltip] Tooltip should clear content when formatter returns null. [#15313](https://github.com/apache/echarts/issues/15313) ([plainheart](https://github.com/plainheart))
++ [Fix] [bar] Set label to be inside when position is `'middle'` [#15309](https://github.com/apache/echarts/issues/15309) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [marker] Fix 'clampData' undefined error in 'getMarkerPosition'  [#15297](https://github.com/apache/echarts/issues/15297) ([AmosChenYQ](https://github.com/AmosChenYQ))
++ [Fix] [treemap] Fix old nodes not removed when disabled animation [#15283](https://github.com/apache/echarts/issues/15283) ([villebro](https://github.com/villebro))
++ [Fix] [tree] Fix edge may not removed when update data [#15251](https://github.com/apache/echarts/issues/15251) ([ssthouse](https://github.com/ssthouse))
++ [Fix] [pie/sunburst] Fix `borderRadius` can't be reset in pie series and sunburst series when setting it to `null` or `undefined` [#15243](https://github.com/apache/echarts/issues/15243) ([plainheart](https://github.com/plainheart))
++ [Fix] [canvas] Fix unexpected `none` or `null` fillStyle may be warned in firefox [#784](https://github.com/ecomfe/zrender/issues/784) ([plainheart](https://github.com/plainheart))
++ [Fix] [highlight] Hightlight multiple series through `chart.dispatchAction` not work as expected [#15207](https://github.com/apache/echarts/issues/15207) ([ssthouse](https://github.com/ssthouse))
++ [Fix] [sankey] Fix drag bug when using `series.nodes` to represent data. [#15199](https://github.com/apache/echarts/issues/15199) ([DuLinRain](https://github.com/DuLinRain))
++ [Fix] [svg] Optimize exported SVG compatibility for Powerpoint. [#767](https://github.com/ecomfe/zrender/pull/767) ([plainheart](https://github.com/plainheart))
++ [Fix] [legend] Fix `text.lineHeight` not work [#773](https://github.com/ecomfe/zrender/issues/773) ([ssthouse](https://github.com/ssthouse))
++ [Fix] [pie] Change the default `borderJoin` to `round`. [#15145](https://github.com/apache/echarts/issues/15145) ([plainheart](https://github.com/plainheart))
++ [Fix] [radar] Change the default `borderJoin` to `round`. [#15381](https://github.com/apache/echarts/issues/15381) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [treemap]: Fix `label.show` set to `false` will throw error [#15141](https://github.com/apache/echarts/issues/15141) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [pictorialBar] Fix pictorialBar zero value label display. [#15132](https://github.com/apache/echarts/issues/15132) ([ssthouse](https://github.com/ssthouse))
++ [Fix] [lines] Fix lines can't be cleared by chart.clear() [#15088](https://github.com/apache/echarts/issues/15088) ([plainheart](https://github.com/plainheart))
++ [Fix] [endLabel] Fix endLabel not display when only set `emphasis.show` to `true`.  [#15072](https://github.com/apache/echarts/issues/15072) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [svg] Fix rect path not closed. [#767](https://github.com/ecomfe/zrender/issues/767) ([plainheart](https://github.com/plainheart))
++ [Fix] [treemap] Add `treeAncestors` in callback params [#14976](https://github.com/apache/echarts/issues/14976) ([pissang](https://github.com/pissang))
++ [Fix] [tree] Fix error when running setOption twice with different data [#14930](https://github.com/apache/echarts/issues/14930) ([Map1en](https://github.com/Map1en))
++ [Fix] [radar] Fix radar symbol border is scaled [#15396](https://github.com/apache/echarts/issues/15396) ([pissang](https://github.com/pissang))
++ [Fix] [marker] Fix symbolOffset and symbolKeepAspect doesn't work in markPoint. [#14737](https://github.com/apache/echarts/issues/14737) ([plainheart](https://github.com/plainheart))
++ [Fix] [gauge] Fix data index and series index is missing. [#14688](https://github.com/apache/echarts/issues/14688) ([yufeng04](https://github.com/yufeng04))
++ [Fix] [tooltip] Tooltip arrow will follow borderWidth. [#14393](https://github.com/apache/echarts/issues/14393) ([g7i](https://github.com/g7i))
++ [Fix] [geo] Fix geo switch from hidden to show fail. [#15361](https://github.com/apache/echarts/issues/15361) ([pissang](https://github.com/pissang))
++ [Fix] [type] Optimize type of `renderItem` in custom series.
++ [Fix] [type] Optimize option type of `echarts.init` #15486 [#15487](https://github.com/apache/echarts/issues/15487) ([John60676](https://github.com/John60676))
++ [Fix] [type] There is no `polarIndex` when coordinate of series is polar [#15281](https://github.com/apache/echarts/issues/15281) ([Map1en](https://github.com/Map1en))
++ [Fix] [type] Optimize type when using SVG source in geo component. [#15263](https://github.com/apache/echarts/issues/15263) ([leosxie](https://github.com/leosxie))
++ [Fix] [type] fix wrong type for PieSeries data and MapSeries data. [#15144](https://github.com/apache/echarts/issues/15144) ([plainheart](https://github.com/plainheart))
+
 ## v5.1.2
 <div class="time">2021-06-09</div>
 
