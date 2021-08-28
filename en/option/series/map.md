@@ -54,6 +54,8 @@ Show the symbol in related area (dot of series symbol). Available when [legend](
 
 {{ use: partial-datasetIndex() }}
 
+{{ use: partial-series-group-id() }}
+
 ## labelLayout(Object|Function)
 
 {{ use: partial-label-layout(
@@ -85,6 +87,10 @@ The name of the map area where the data belongs to, such as `'China'` or `'Unite
 ### value(number)
 
 The numerical value of this area.
+
+{{ use: partial-data-group-id(
+    prefix = '##'
+) }}
 
 ### selected(boolean) = false
 
@@ -149,6 +155,10 @@ Select state of polygon.
 ) }}
 
 {{ use: partial-silent(
+    prefix = "#"
+) }}
+
+{{ use: partial-universal-transition(
     prefix = "#"
 ) }}
 

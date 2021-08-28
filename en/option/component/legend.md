@@ -101,6 +101,10 @@ Image height of legend symbol.
     prefix = "#"
 ) }}
 
+## symbolRotate(number|string) = 'inherit'
+
+Rotation of the symbol, which can be `number | 'inherit'`. If it's `'inherit'`, `symbolRotate` of the series will be used.
+
 ## formatter(string|Function) = null
 
 Formatter is used to format label of legend, which supports string template and callback function.
@@ -214,6 +218,10 @@ Icon of the legend.
     name = "Legend Item",
     prefix = "##"
 ) }}
+
+### symbolRotate(number|string) = 'inherit'
+
+Rotation of the symbol, which can be `number | 'inherit'`. If it's `'inherit'`, `symbolRotate` of the series will be used.
 
 ### textStyle(Object)
 
@@ -502,3 +510,4 @@ ${name} line style. If its children have values as `'inherit'`, the values are i
     defaultShadowOffsetX = 0,
     defaultShadowOffsetY = 0
 ) }}
+

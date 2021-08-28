@@ -141,6 +141,8 @@ Configurations of select state. Available when [selectedMode](~series-scatter.se
 
 {{ use: partial-datasetIndex() }}
 
+{{ use: partial-series-group-id() }}
+
 ## data(Array)
 
 {{ use: partial-2d-data-desc() }}
@@ -152,6 +154,10 @@ the name of data item.
 ### value(Array)
 
 the value of data item.
+
+{{ use: partial-data-group-id(
+    prefix = '##'
+) }}
 
 {{ use: partial-symbol(
     prefix = "##",
@@ -240,6 +246,10 @@ Select state of single data.
 ) }}
 
 {{ use: partial-animation(
+    prefix = "#"
+) }}
+
+{{ use: partial-universal-transition(
     prefix = "#"
 ) }}
 

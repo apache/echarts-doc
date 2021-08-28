@@ -257,7 +257,6 @@ data: [
     defaultFontSize = 11
 ) }}
 
-
 #${prefix} labelLine(Object)
 
 {{ use: partial-label-line-desc() }}

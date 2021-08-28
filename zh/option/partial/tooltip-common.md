@@ -23,7 +23,9 @@
 ## tooltip(Object)
 
 {{ if: ${version} }}
-{{ use: partial-version(version: '5.1.0') }}
+{{ use: partial-version(
+    version = '5.1.0'
+) }}
 {{ /if }}
 
 本坐标系特定的 tooltip 设定。
@@ -49,7 +51,9 @@
 ### tooltip(*)
 
 {{ if: ${version} }}
-{{ use: partial-version(version: '5.1.0') }}
+{{ use: partial-version(
+    version = '5.1.0'
+) }}
 {{ /if }}
 
 本 ${componentItemDesc} 中特定的 tooltip 设定。
@@ -78,6 +82,7 @@
 ) }}
 
 
+
 {{ target: partial-tooltip-in-series-data }}
 
 ### tooltip(*)
@@ -88,7 +93,6 @@
     scope = 'seriesData',
     prefix = '###'
 ) }}
-
 
 
 
@@ -137,8 +141,6 @@
 + `'none'`
 
     什么都不触发。
-
-
 
 #${prefix} axisPointer(Object)
 
@@ -195,8 +197,8 @@
     defaultAnimationEasingUpdate = 'exponentialOut',
     defaultAnimationDurationUpdate = 200
 ) }}
-
 {{ /if }}
+
 
 
 {{ target: partial-tooltip-common }}

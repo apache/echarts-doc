@@ -17,6 +17,7 @@ When the data is highlighted, whether to fade out of other data to focus the hig
 
 + `'none'` Do not fade out other data, it's by default.
 + `'self'` Only focus (not fade out) the element of the currently highlighted data.
+
 {{ if: !${isGeoCoordSys} }}
 + `'series'` Focus on all elements of the series which the currently highlighted data belongs to.
 {{ /if }}
@@ -63,3 +64,4 @@ The range of fade out when `focus` is enabled. Support the following configurati
 + `'series'`
 + `'global'`
 {{ /if }}
+

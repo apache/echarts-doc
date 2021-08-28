@@ -197,8 +197,6 @@ option = {
 
 需要注意的是，通常最后一个数据后是系列的 `separator.end`，所以 `data.separator.end` 在大多数情况下为空字符串。
 
-
-
 ## decal(Object)
 
 为系列数据增加贴花纹理，作为颜色的辅助，帮助区分数据。使用默认贴花图案的方式非常简单，只需要开启即可：
@@ -227,3 +225,4 @@ aria: {
 {{ use: partial-decal(
     prefix = "###"
 ) }}
+

@@ -299,6 +299,7 @@ const option = {
 {{ use: partial-tooltip-in-series() }}
 
 
+
 {{ target: effectScatter-state }}
 
 #${prefix} label(Object)

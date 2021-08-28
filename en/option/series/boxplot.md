@@ -132,6 +132,8 @@ Configurations of select state. Available when [selectedMode](~series-boxplot.se
     prefix = "#"
 ) }}
 
+{{ use: partial-series-group-id() }}
+
 ## data(Array)
 
 Data should be the two-dimensional array shown as follow.
@@ -173,6 +175,10 @@ Value of data item.
 ```javascript
 [min,  Q1,  median (or Q2),  Q3,  max]
 ```
+
+{{ use: partial-data-group-id(
+    prefix = '##'
+) }}
 
 ### itemStyle(Object)
 
@@ -248,6 +254,10 @@ Select state of single data.
     prefix = "#",
     defaultAnimationEasing = 'elasticOut',
     defaultAnimationDuration = 800
+) }}
+
+{{ use: partial-universal-transition(
+    prefix = "#"
 ) }}
 
 {{ use: partial-tooltip-in-series() }}

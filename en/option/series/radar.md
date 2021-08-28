@@ -113,6 +113,8 @@ Configurations of select state. Available when [selectedMode](~series-radar.sele
     version = '5.0.0'
 ) }}
 
+{{ use: partial-series-group-id() }}
+
 ## data(Array)
 
 The data in radar chart is multi-variable (dimension). Here is an example:
@@ -139,6 +141,10 @@ Data item name
 ### value(number)
 
 Numerical value of a single data item.
+
+{{ use: partial-data-group-id(
+    prefix = '##'
+) }}
 
 {{ use: partial-symbol(
     defaultSymbol = "'circle'",
@@ -224,6 +230,10 @@ Configurations of selected state.
 ) }}
 
 {{ use: partial-animation(
+    prefix = "#"
+) }}
+
+{{ use: partial-universal-transition(
     prefix = "#"
 ) }}
 

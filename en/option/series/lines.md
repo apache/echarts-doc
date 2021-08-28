@@ -173,6 +173,8 @@ Configurations of select state. Available when [selectedMode](~series-lines.sele
     prefix = '#'
 ) }}
 
+{{ use: partial-series-group-id() }}
+
 ## data(Array)
 
 The data set of lines.
@@ -180,6 +182,10 @@ The data set of lines.
 ### name(string)
 
 the name of data.
+
+{{ use: partial-data-group-id(
+    prefix = '##'
+) }}
 
 ### coords(Array)
 
@@ -247,6 +253,10 @@ Label of a single line. Available when [polyline](~series-lines.polyline) is not
 ) }}
 
 {{ use: partial-animation(
+    prefix = "#"
+) }}
+
+{{ use: partial-universal-transition(
     prefix = "#"
 ) }}
 

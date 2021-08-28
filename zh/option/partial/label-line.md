@@ -1,6 +1,9 @@
+
 {{ target: partial-label-line-desc }}
 
 标签的视觉引导线配置。
+
+
 
 {{ target: partial-label-line }}
 
@@ -53,3 +56,4 @@
 {{ use: partial-line-style(
     prefix = "#" + ${prefix}
 ) }}
+

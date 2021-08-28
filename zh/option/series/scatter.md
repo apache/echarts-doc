@@ -210,6 +210,8 @@ const option = {
 
 {{ use: partial-datasetIndex() }}
 
+{{ use: partial-series-group-id() }}
+
 ## data(Array)
 
 {{ use: partial-2d-data-desc() }}
@@ -221,6 +223,10 @@ const option = {
 ### value(Array)
 
 数据项值。
+
+{{ use: partial-data-group-id(
+    prefix = '##'
+) }}
 
 {{ use: partial-symbol(
     prefix = "##",
@@ -309,6 +315,10 @@ const option = {
 ) }}
 
 {{ use: partial-animation(
+    prefix = "#"
+) }}
+
+{{ use: partial-universal-transition(
     prefix = "#"
 ) }}
 

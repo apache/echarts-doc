@@ -85,8 +85,7 @@ myChart.setOption({
 <br>
 **`finalOption` 是怎么计算出来的?**
 
-{{ use: partial-timeline-merge-strategy }}
-
+{{ use: partial-timeline-merge-strategy() }}
 
 <br>
 **兼容 ECharts4**
@@ -524,7 +523,7 @@ const option = {
 
 ## replaceMerge(Array|string) = undefined
 
-{{ use: partial-timeline-merge-strategy }}
+{{ use: partial-timeline-merge-strategy() }}
 
 <br>
 
@@ -533,7 +532,6 @@ const option = {
 常见需要使用 `replaceMerge` 的地方是，如果需要下一个时间刻度的 series 完全替换上一个时间刻度的 series 而不进行任何 merge ，可以设置 `replaceMerge: 'series'`，并且两个时间刻度的 series id 不相同或者没有 id 。
 
 参见这个 [示例](${galleryEditorPath}doc-example/timeline-dynamic-series&edit=1&reset=1)。
-
 
 ## controlPosition(string) = 'left'
 
@@ -794,7 +792,6 @@ const option = {
     prefix = "###",
     textStyleDefaultColor = "'#6f778d'"
 ) }}
-
 
 ## emphasis(Object)
 

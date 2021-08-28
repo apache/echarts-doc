@@ -208,7 +208,6 @@ formatter: function (value) {
     defaultBorderWidth = 1
 ) }}
 
-
 ## indicatorIcon(string) = 'circle'
 
 指示器的形状，默认为圆形。指示器在鼠标移到组件上，或者在移到系列图形上联动高亮的时候出现。
@@ -218,7 +217,6 @@ formatter: function (value) {
 ) }}
 
 <ExampleUIControlIcon />
-
 
 ## indicatorSize(number|string) = '50%'
 
@@ -241,3 +239,4 @@ formatter: function (value) {
     defaultShadowOffsetY = 1,
     defaultShadowColor = 'rgba(0,0,0,0.2)'
 ) }}
+

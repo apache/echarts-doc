@@ -305,6 +305,8 @@ const option = {
 
 {{ use: partial-datasetIndex() }}
 
+{{ use: partial-series-group-id() }}
+
 ## data(Array)
 
 {{ use: partial-2d-data-desc() }}
@@ -316,6 +318,10 @@ const option = {
 ### value(number)
 
 单个数据项的数值。
+
+{{ use: partial-data-group-id(
+    prefix = '##'
+) }}
 
 {{ use: partial-symbol(
     defaultSymbol = "'circle'",
@@ -394,6 +400,10 @@ const option = {
     defaultAnimationEasing = 'linear'
 ) }}
 
+{{ use: partial-universal-transition(
+    prefix = "#"
+) }}
+
 {{ use: partial-tooltip-in-series() }}
 
 
@@ -414,7 +424,6 @@ const option = {
 {{ use: partial-label-line(
     prefix = '###'
 ) }}
-
 
 ### itemStyle(Object)
 

@@ -192,6 +192,8 @@ option = {
     prefix = "#"
 ) }}
 
+{{ use: partial-series-group-id() }}
+
 ## data(Array)
 
 {{ use: partial-1d-data-desc() }}
@@ -272,6 +274,10 @@ option = {
 ) }}
 
 {{ use: partial-animation(
+    prefix = "#"
+) }}
+
+{{ use: partial-universal-transition(
     prefix = "#"
 ) }}
 

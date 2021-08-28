@@ -416,6 +416,8 @@ renderItem 函数的第二个参数。
 
 {{ use: partial-datasetIndex() }}
 
+{{ use: partial-series-group-id() }}
+
 ## data(Array)
 
 {{ use: partial-2d-data-desc() }}
@@ -427,6 +429,10 @@ renderItem 函数的第二个参数。
 ### value(number)
 
 单个数据项的数值。
+
+{{ use: partial-data-group-id(
+    prefix = '##'
+) }}
 
 ### itemStyle(Object)
 
@@ -460,6 +466,10 @@ renderItem 函数的第二个参数。
 ) }}
 
 {{ use: partial-animation(
+    prefix = "#"
+) }}
+
+{{ use: partial-universal-transition(
     prefix = "#"
 ) }}
 
