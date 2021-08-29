@@ -11,12 +11,11 @@
 + [Feature] [label] Support sector label positions for polar bars [#774](https://github.com/ecomfe/zrender/issues/774) ([Ovilia](https://github.com/Ovilia))
 + [Feature] [effectScatter] Add `rippleEffect.number` [#15335](https://github.com/apache/echarts/issues/15335) ([plainheart](https://github.com/plainheart))
 + [Feature] [gauge] Add `pointer.showAbove` to allow pointer show above the title and details. [#15337](https://github.com/apache/echarts/issues/15337) ([AmosChenYQ](https://github.com/AmosChenYQ)) [#15326](https://github.com/apache/echarts/issues/15326) ([susiwen8](https://github.com/susiwen8))
-+ [Feature] [gauge] Add `pointer.showAbove` to allow pointer show above the title and details. [#15337](https://github.com/apache/echarts/issues/15337) ([AmosChenYQ](https://github.com/AmosChenYQ)) [#15326](https://github.com/apache/echarts/issues/15326) ([susiwen8](https://github.com/susiwen8))
 + [Feature] [emphasis] `emphasis.color` can use `'inherit'` to be not higlighted. [#15172](https://github.com/apache/echarts/issues/15172) ([Foreverwzh](https://github.com/Foreverwzh))
 + [Feature] [pie] Display an empty cicle when pie don't have value. [#15095](https://github.com/apache/echarts/issues/15095) ([ssthouse](https://github.com/ssthouse))
 + [Fix] [dataset] Fix dataset performance drops signifcantly on high dimensions data. [#15355](https://github.com/apache/echarts/issues/15355) ([pissang](https://github.com/pissang))
 + [Fix] [axis] Optimize format in time axis [#15465](https://github.com/apache/echarts/issues/15465) ([leavest](https://github.com/leavest))  [#15434](https://github.com/apache/echarts/issues/15434) ([zhiyuc123](https://github.com/zhiyuc123))
-+ [Fix] [custom] Optimize text font compatibility with older versions [#15454](https://github.com/apache/echarts/issues/15454) ([AmosChenYQ](https://github.com/AmosChenYQ))
++ [Fix] [custom] Optimize text font compatibility with legacy code. [#15454](https://github.com/apache/echarts/issues/15454) ([AmosChenYQ](https://github.com/AmosChenYQ))
 + [Fix] [memory] Optimize memory when chart instance is still hold after dispose [#15417](https://github.com/apache/echarts/issues/15417) ([pissang](https://github.com/pissang))
 + [Fix] [line] Optimize color gradient when having infinite value. [#15416](https://github.com/apache/echarts/issues/15416) ([plainheart](https://github.com/plainheart))
 + [Fix] [date] Optimize date parsing [#15410](https://github.com/apache/echarts/issues/15410) ([quillblue](https://github.com/quillblue))
@@ -37,7 +36,7 @@
 + [Fix] [legend] Fix `text.lineHeight` not work [#773](https://github.com/ecomfe/zrender/issues/773) ([ssthouse](https://github.com/ssthouse))
 + [Fix] [pie] Change the default `borderJoin` to `round`. [#15145](https://github.com/apache/echarts/issues/15145) ([plainheart](https://github.com/plainheart))
 + [Fix] [radar] Change the default `borderJoin` to `round`. [#15381](https://github.com/apache/echarts/issues/15381) ([Ovilia](https://github.com/Ovilia))
-+ [Fix] [treemap]: Fix `label.show` set to `false` will throw error [#15141](https://github.com/apache/echarts/issues/15141) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [treemap] Fix `label.show` set to `false` will throw error [#15141](https://github.com/apache/echarts/issues/15141) ([susiwen8](https://github.com/susiwen8))
 + [Fix] [pictorialBar] Fix pictorialBar zero value label display. [#15132](https://github.com/apache/echarts/issues/15132) ([ssthouse](https://github.com/ssthouse))
 + [Fix] [lines] Fix lines can't be cleared by chart.clear() [#15088](https://github.com/apache/echarts/issues/15088) ([plainheart](https://github.com/plainheart))
 + [Fix] [endLabel] Fix endLabel not display when only set `emphasis.show` to `true`.  [#15072](https://github.com/apache/echarts/issues/15072) ([Ovilia](https://github.com/Ovilia))
@@ -50,10 +49,10 @@
 + [Fix] [tooltip] Tooltip arrow will follow borderWidth. [#14393](https://github.com/apache/echarts/issues/14393) ([g7i](https://github.com/g7i))
 + [Fix] [geo] Fix geo switch from hidden to show fail. [#15361](https://github.com/apache/echarts/issues/15361) ([pissang](https://github.com/pissang))
 + [Fix] [type] Optimize type of `renderItem` in custom series.
-+ [Fix] [type] Optimize option type of `echarts.init` #15486 [#15487](https://github.com/apache/echarts/issues/15487) ([John60676](https://github.com/John60676))
++ [Fix] [type] Optimize option type of `echarts.init`. [#15487](https://github.com/apache/echarts/issues/15487) ([John60676](https://github.com/John60676))
 + [Fix] [type] There is no `polarIndex` when coordinate of series is polar [#15281](https://github.com/apache/echarts/issues/15281) ([Map1en](https://github.com/Map1en))
 + [Fix] [type] Optimize type when using SVG source in geo component. [#15263](https://github.com/apache/echarts/issues/15263) ([leosxie](https://github.com/leosxie))
-+ [Fix] [type] fix wrong type for PieSeries data and MapSeries data. [#15144](https://github.com/apache/echarts/issues/15144) ([plainheart](https://github.com/plainheart))
++ [Fix] [type] Fix wrong type for `pie` data and `map` data. [#15144](https://github.com/apache/echarts/issues/15144) ([plainheart](https://github.com/plainheart))
 
 ## v5.1.2
 <div class="time">2021-06-09</div>

@@ -1,3 +1,59 @@
+## v5.2.0
+
+#### 非兼容改动
+
++ [Fix] [pie] 负值会被作为非法值过滤。[#15095](https://github.com/apache/echarts/issues/15095) ([ssthouse](https://github.com/ssthouse))
+
+#### 所有改动
+
++ **[Feature] 新增全局过渡动画。[#15208](https://github.com/apache/echarts/issues/15208) ([pissang](https://github.com/pissang))**
++ [Feature] [color] 新增`series.colorBy`配置不同粒度的取色。[#13788](https://github.com/apache/echarts/issues/13788) ([Ovilia](https://github.com/Ovilia))
++ [Feature] [label] 极坐标系柱状图支持标签显示。[#774](https://github.com/ecomfe/zrender/issues/774) ([Ovilia](https://github.com/Ovilia))
++ [Feature] [effectScatter] 新增`rippleEffect.number`配置涟漪数目。[#15335](https://github.com/apache/echarts/issues/15335) ([plainheart](https://github.com/plainheart))
++ [Feature] [gauge] 新增`pointer.showAbove`配置指针和标签的显示层级。[#15337](https://github.com/apache/echarts/issues/15337) ([AmosChenYQ](https://github.com/AmosChenYQ)) [#15326](https://github.com/apache/echarts/issues/15326) ([susiwen8](https://github.com/susiwen8))
++ [Feature] [emphasis] `emphasis.color`支持设置为`'inherit'`关闭高亮。[#15172](https://github.com/apache/echarts/issues/15172) ([Foreverwzh](https://github.com/Foreverwzh))
++ [Feature] [pie] 无数据的时候默认显示灰色的占位圆。[#15095](https://github.com/apache/echarts/issues/15095) ([ssthouse](https://github.com/ssthouse))
++ [Fix] [dataset] 优化高维数据`dataset`的性能。[#15355](https://github.com/apache/echarts/issues/15355) ([pissang](https://github.com/pissang))
++ [Fix] [axis] 优化时间轴刻度标签的格式化显示。[#15465](https://github.com/apache/echarts/issues/15465) ([leavest](https://github.com/leavest))  [#15434](https://github.com/apache/echarts/issues/15434) ([zhiyuc123](https://github.com/zhiyuc123))
++ [Fix] [custom] 优化旧代码对于`font`的兼容性。[#15454](https://github.com/apache/echarts/issues/15454) ([AmosChenYQ](https://github.com/AmosChenYQ))
++ [Fix] [memory] 优化实例销毁后依旧持有实例时的内存占用。[#15417](https://github.com/apache/echarts/issues/15417) ([pissang](https://github.com/pissang))
++ [Fix] [line] 优化有无穷大数据时的渐变色显示。 [#15416](https://github.com/apache/echarts/issues/15416) ([plainheart](https://github.com/plainheart))
++ [Fix] [date] 优化`date`数据的解析。[#15410](https://github.com/apache/echarts/issues/15410) ([quillblue](https://github.com/quillblue))
++ [Fix] [line] 修复渲染出错。[#788](https://github.com/ecomfe/zrender/issues/788) ([pissang](https://github.com/pissang))
++ [Fix] [candlestick] 修复样式可能在`setOption`后丢失的问题。[#15368](https://github.com/apache/echarts/issues/15368) ([pissang](https://github.com/pissang))
++ [Fix] [sankey] 修复垂直布局时的渐变色边。[#15363](https://github.com/apache/echarts/issues/15363) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [tooltip] 修复在设置`tooltip.position`后`formatter`返回 DOM 对象会被解析成字符串的问题。[#15313](https://github.com/apache/echarts/issues/15313) ([plainheart](https://github.com/plainheart))
++ [Fix] [tooltip] `formatter`返回`null`时清空内容。[#15313](https://github.com/apache/echarts/issues/15313) ([plainheart](https://github.com/plainheart))
++ [Fix] [bar] 标签位置设置为`'middle'`时应该显示在图形中间。[#15309](https://github.com/apache/echarts/issues/15309) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [marker] 修复可能会在极坐标柱状图报`'clampData' is undefined`的错误。[#15297](https://github.com/apache/echarts/issues/15297) ([AmosChenYQ](https://github.com/AmosChenYQ))
++ [Fix] [treemap] 修复关闭动画后更新可能旧节点不会被移除的问题。[#15283](https://github.com/apache/echarts/issues/15283) ([villebro](https://github.com/villebro))
++ [Fix] [tree] 修复更新数据时边可能会不被移除的问题。[#15251](https://github.com/apache/echarts/issues/15251) ([ssthouse](https://github.com/ssthouse))
++ [Fix] [pie/sunburst] 修复`borderRadius`被设置为`null`或者`undefined`时无法重置的问题。[#15243](https://github.com/apache/echarts/issues/15243) ([plainheart](https://github.com/plainheart))
++ [Fix] [canvas] 修复`fillStyle`被设置为`'none'`或者`null`时 FireFox 浏览器下会报警告的问题。 [#784](https://github.com/ecomfe/zrender/issues/784) ([plainheart](https://github.com/plainheart))
++ [Fix] [highlight] 修复`chart.dispatchAction`高亮多个系列可能会不正确的问题。[#15207](https://github.com/apache/echarts/issues/15207) ([ssthouse](https://github.com/ssthouse))
++ [Fix] [sankey] 修复使用`series.nodes`作为数据时拖拽功能失效的问题。[#15199](https://github.com/apache/echarts/issues/15199) ([DuLinRain](https://github.com/DuLinRain))
++ [Fix] [svg] 优化导出的 SVG 文件在 Powerpoint 中的兼容性。[#767](https://github.com/ecomfe/zrender/pull/767) ([plainheart](https://github.com/plainheart))
++ [Fix] [legend] 修复`text.lineHeight`不生效。[#773](https://github.com/ecomfe/zrender/issues/773) ([ssthouse](https://github.com/ssthouse))
++ [Fix] [pie] 将默认的`borderJoin`设置为`round`。[#15145](https://github.com/apache/echarts/issues/15145) ([plainheart](https://github.com/plainheart))
++ [Fix] [radar] 将默认的`borderJoin`设置为`round`。[#15381](https://github.com/apache/echarts/issues/15381) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [treemap] 修复设置`label.show`为`false`会报错。[#15141](https://github.com/apache/echarts/issues/15141) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [pictorialBar] 修复零数据标签的显示问题。[#15132](https://github.com/apache/echarts/issues/15132) ([ssthouse](https://github.com/ssthouse))
++ [Fix] [lines] 修复调用`chart.clear()`可能会无法清除线条的问题。[#15088](https://github.com/apache/echarts/issues/15088) ([plainheart](https://github.com/plainheart))
++ [Fix] [endLabel] 修复端点标签只设置`emphasis.show`为`true`时可能无法显示的问题。[#15072](https://github.com/apache/echarts/issues/15072) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [svg] 修复矩形路径没有合并的问题。[#767](https://github.com/ecomfe/zrender/issues/767) ([plainheart](https://github.com/plainheart))
++ [Fix] [treemap] 在回调函数参数中添加`treeAncestors`属性。[#14976](https://github.com/apache/echarts/issues/14976) ([pissang](https://github.com/pissang))
++ [Fix] [tree] 修复调用`setOption`两次更新数据时可能报错的问题。[#14930](https://github.com/apache/echarts/issues/14930) ([Map1en](https://github.com/Map1en))
++ [Fix] [radar] 修复图形边框被缩放的问题。[#15396](https://github.com/apache/echarts/issues/15396) ([pissang](https://github.com/pissang))
++ [Fix] [marker] 修复`symbolOffset`和`symbolKeepAspect`配置项不生效的问题。[#14737](https://github.com/apache/echarts/issues/14737) ([plainheart](https://github.com/plainheart))
++ [Fix] [gauge] 支持进度条和指针的点击事件。[#14688](https://github.com/apache/echarts/issues/14688) ([yufeng04](https://github.com/yufeng04))
++ [Fix] [tooltip] 优化箭头的边框宽度，跟配置同步。[#14393](https://github.com/apache/echarts/issues/14393) ([g7i](https://github.com/g7i))
++ [Fix] [geo] 修复地理坐标组件从`show: false`配置为`show: true`后依旧不显示的问题。[#15361](https://github.com/apache/echarts/issues/15361) ([pissang](https://github.com/pissang))
++ [Fix] [type] 优化自定义系列`renderItem`的类型推断。
++ [Fix] [type] 优化`echarts.init`的配置项类型。[#15487](https://github.com/apache/echarts/issues/15487) ([John60676](https://github.com/John60676))
++ [Fix] [type] 修复类型中`polarIndex`配置项丢失的问题。[#15281](https://github.com/apache/echarts/issues/15281) ([Map1en](https://github.com/Map1en))
++ [Fix] [type] 优化 SVG 数据源的类型。[#15263](https://github.com/apache/echarts/issues/15263) ([leosxie](https://github.com/leosxie))
++ [Fix] [type] 优化饼图和地图系列中的数据类型。[#15144](https://github.com/apache/echarts/issues/15144) ([plainheart](https://github.com/plainheart))
+
 ## v5.1.2
 <div class="time">2021-06-09</div>
 
@@ -32,7 +88,7 @@
 ## v5.1.1
 <div class="time">2021-04-27</div>
 
-+ [Fix] [geo] 修复 5.1.0 引入的`geo`组件上`tooltip`无法显示的问题。 [#14767](https://github.com/apache/echarts/issues/14767) ([pissang](https://github.com/pissang))
++ [Fix] [geo] 修复 5.1.0 引入的`geo`组件上`tooltip`无法显示的问题。[#14767](https://github.com/apache/echarts/issues/14767) ([pissang](https://github.com/pissang))
 + [Fix] [tooltip] 修复 5.1.0 引入的 tooltip 在开启 `appendToBody` 后位置不对的问题。 [#14713](https://github.com/apache/echarts/issues/14713) ([plainheart](https://github.com/plainheart))
 + [Fix] [map] 修复 5.1.0 引入的地图上的`tooltip`可能会报错的问题。 [#14704](https://github.com/apache/echarts/issues/14704) ([plainheart](https://github.com/plainheart))
 + [Fix] [pie] 修复饼图上标签引导线`labelLine`从`outside`修改为`inside`之后高亮依然可能显示的问题。 [#14702](https://github.com/apache/echarts/issues/14702) ([villebro](https://github.com/villebro))
