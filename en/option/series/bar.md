@@ -261,8 +261,49 @@ Label style configurations of single data.
 {{ use: partial-label(
     prefix = "#" + ${prefix},
     defaultPosition = "'inside'",
+    noPosition = true,
     formatter = ${topLevel}
 ) }}
+
+##${prefix} position(string|Array) = 'inside'
+
+<ExampleUIControlEnum options="top,left,right,bottom,inside,insideLeft,insideRight,insideTop,insideBottom,insideTopLeft,insideBottomLeft,insideTopRight,insideBottomRight,outside" />
+Label position.
+
+**Followings are the options: **
+
++ [x, y]
+
+    Use relative percentage, or absolute pixel values to represent position of label relative to top-left corner of bounding box.
+    For example:
+    ```js
+    // Absolute pixel values
+    position: [10, 10],
+    // Relative percentage
+    position: ['50%', '50%']
+    ```
+
++ 'top'
++ 'left'
++ 'right'
++ 'bottom'
++ 'inside'
++ 'insideLeft'
++ 'insideRight'
++ 'insideTop'
++ 'insideBottom'
++ 'insideTopLeft'
++ 'insideBottomLeft'
++ 'insideTopRight'
++ 'insideBottomRight'
+
+See: [label position](${galleryViewPath}doc-example/label-position).
+
++ Additional positions are supported for bar series under polar coordinates: `start` / `insideStart` / `middle` / `insideEnd` / `end`.
+
+~[800x500](${galleryViewPath}doc-example/bar-polar-label-radial-multiple&reset=1&edit=1)
+
+~[800x500](${galleryViewPath}doc-example/bar-polar-label-tangential-multiple&reset=1&edit=1)
 
 {{ if: ${topLevel && isNormal} }}
 ##${prefix} valueAnimation(boolean)
