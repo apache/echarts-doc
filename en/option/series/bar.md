@@ -303,6 +303,8 @@ See: [label position](${galleryViewPath}doc-example/label-position).
 
 + Additional positions are supported for bar series under polar coordinates: `start` / `insideStart` / `middle` / `insideEnd` / `end`.
 
+{{ use: partial-version(version: '5.2.0') }}
+
 ~[800x500](${galleryViewPath}doc-example/bar-polar-label-radial-multiple&reset=1&edit=1)
 
 ~[800x500](${galleryViewPath}doc-example/bar-polar-label-tangential-multiple&reset=1&edit=1)

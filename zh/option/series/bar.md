@@ -374,6 +374,8 @@ option = {
 
 + 极坐标系柱状图除了上述取值之外，还支持：`start` / `insideStart` / `middle` / `insideEnd` / `end`。
 
+{{ use: partial-version(version: '5.2.0') }}
+
 ~[800x500](${galleryViewPath}doc-example/bar-polar-label-radial-multiple&reset=1&edit=1)
 
 ~[800x500](${galleryViewPath}doc-example/bar-polar-label-tangential-multiple&reset=1&edit=1)
