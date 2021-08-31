@@ -29,6 +29,8 @@ const option = {
 
 {{ use: partial-series-name() }}
 
+{{ use: partial-colorby(defaultColorBy="'data'") }}
+
 {{ use: component-circular-layout() }}
 
 <!-- overwrite radius -->

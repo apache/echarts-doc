@@ -16,6 +16,8 @@ It could be used with [rectangular coordinate](~grid) and [polar coordinate](~po
 
 {{ use: partial-series-name() }}
 
+{{ use: partial-colorby() }}
+
 {{ use: partial-coord-sys(
     seriesType = "bar",
     coordSysDefault = "'cartesian2d'",

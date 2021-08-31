@@ -49,6 +49,8 @@ const option = {
 
 {{ use: partial-series-name() }}
 
+{{ use: partial-colorby(defaultColorBy="'data'") }}
+
 {{ use: partial-legend-hover-link() }}
 
 {{ use: partial-selected-mode() }}

@@ -55,6 +55,8 @@ const option = {
 
 {{ use: partial-series-name() }}
 
+{{ use: partial-colorby(defaultColorBy="'data'") }}
+
 ## radarIndex(number)
 
 雷达图所使用的 [radar](~radar) 组件的 index。

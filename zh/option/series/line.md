@@ -49,6 +49,8 @@ const option = {
 
 {{ use: partial-series-name() }}
 
+{{ use: partial-colorby() }}
+
 {{ use: partial-coord-sys(
     seriesType = "bar",
     coordSysDefault = "'cartesian2d'",

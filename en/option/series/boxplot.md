@@ -29,6 +29,8 @@ Multiple `series` can be displayed in the same coordinate system. Please refer t
 
 {{ use: partial-series-name() }}
 
+{{ use: partial-colorby() }}
+
 {{ use: partial-legend-hover-link() }}
 
 ## hoverAnimation(boolean) = true

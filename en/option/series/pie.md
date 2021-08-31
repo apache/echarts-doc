@@ -27,6 +27,8 @@ For multiple pie series in a single chart, you may use [left](~series-pie.left),
 
 {{ use: partial-series-name() }}
 
+{{ use: partial-colorby(defaultColorBy="'data'") }}
+
 {{ use: partial-legend-hover-link() }}
 
 {{ use: partial-selected-mode() }}

@@ -42,6 +42,8 @@ We use red to represent increasing and blue decreasing by default. If you want t
 
 {{ use: partial-series-name() }}
 
+{{ use: partial-colorby() }}
+
 {{ use: partial-legend-hover-link() }}
 
 ## hoverAnimation(boolean) = true

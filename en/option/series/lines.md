@@ -17,6 +17,8 @@ ECharts 2.x uses the `markLine` to draw the migrating effect, while in ECharts 3
 
 {{ use: partial-series-name() }}
 
+{{ use: partial-colorby() }}
+
 {{ use: partial-coord-sys(
     seriesType = "lines",
     coordSysDefault = "'geo'",

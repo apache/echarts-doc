@@ -231,6 +231,8 @@ const option = {
 
 {{ use: partial-series-name() }}
 
+{{ use: partial-colorby() }}
+
 {{ use: partial-legend-hover-link() }}
 
 ## hoverAnimation(boolean) = true

@@ -93,6 +93,8 @@ chart.on('click', {element: 'aaa'}, function (params) {
 
 {{ use: partial-series-name() }}
 
+{{ use: partial-colorby() }}
+
 {{ use: partial-legend-hover-link() }}
 
 {{ use: partial-coord-sys(

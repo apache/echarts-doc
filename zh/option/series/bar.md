@@ -91,6 +91,8 @@ option = {
 
 {{ use: partial-series-name() }}
 
+{{ use: partial-colorby() }}
+
 {{ use: partial-legend-hover-link() }}
 
 {{ use: partial-coord-sys(

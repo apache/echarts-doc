@@ -685,6 +685,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -1059,7 +1060,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var js_beautify__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(js_beautify__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var lodash_throttle__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lodash.throttle */ "./node_modules/lodash.throttle/index.js");
 /* harmony import */ var lodash_throttle__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(lodash_throttle__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var zrender_src_core_arrayDiff__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! zrender/src/core/arrayDiff */ "./node_modules/zrender/src/core/arrayDiff.js");
+/* harmony import */ var zrender_lib_core_arrayDiff__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! zrender/lib/core/arrayDiff */ "./node_modules/zrender/lib/core/arrayDiff.js");
+/* harmony import */ var zrender_lib_core_arrayDiff__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(zrender_lib_core_arrayDiff__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var scroll_into_view__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! scroll-into-view */ "./node_modules/scroll-into-view/scrollIntoView.js");
 /* harmony import */ var scroll_into_view__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(scroll_into_view__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../config */ "./src/config.js");
@@ -1156,33 +1158,38 @@ function fetchECharts() {
 function diffUpdateCode(oldCode, newCode, cmInstance) {
   var oldLines = oldCode.split(/\n/);
   var newLines = newCode.split(/\n/);
-  var result = Object(zrender_src_core_arrayDiff__WEBPACK_IMPORTED_MODULE_6__["default"])(oldLines, newLines);
-  var changedLines = [];
-  var len = result.length;
+  var diff = zrender_lib_core_arrayDiff__WEBPACK_IMPORTED_MODULE_6___default()(oldLines, newLines);
+  var changedLines = []; // Remove lines from bottom to top so the line number won't be changed.
 
-  for (var i = len - 1; i >= 0; i--) {
-    var item = result[i];
+  for (var i = diff.length - 1; i >= 0; i--) {
+    var item = diff[i];
 
-    if (item.cmd === '-') {
-      cmInstance.replaceRange('', {
-        line: item.idx,
-        ch: 0
-      }, {
-        line: item.idx + 1,
-        ch: 0
-      });
+    if (item.removed) {
+      for (var k = item.count - 1; k >= 0; k--) {
+        var idx = item.indices[k];
+        cmInstance.replaceRange('', {
+          line: idx,
+          ch: 0
+        }, {
+          line: idx + 1,
+          ch: 0
+        });
+      }
     }
   }
 
-  for (var _i = 0; _i < len; _i++) {
-    var _item = result[_i];
+  for (var _i = 0; _i < diff.length; _i++) {
+    var _item = diff[_i];
 
-    if (_item.cmd === '+') {
-      cmInstance.replaceRange(newLines[_item.idx] + '\n', {
-        line: _item.idx,
-        ch: 0
-      });
-      changedLines.push(_item.idx);
+    if (_item.added) {
+      for (var _k = 0; _k < _item.count; _k++) {
+        var _idx = _item.indices[_k];
+        cmInstance.replaceRange(newLines[_idx] + '\n', {
+          line: _idx,
+          ch: 0
+        });
+        changedLines.push(_idx);
+      }
     }
   }
 
@@ -1190,7 +1197,7 @@ function diffUpdateCode(oldCode, newCode, cmInstance) {
     cmInstance.addLineClass(idx, 'wrap', 'option-changed');
   });
 
-  if (len) {
+  if (diff.length) {
     setTimeout(function () {
       cmInstance.scrollIntoView({
         line: changedLines[0],
@@ -1615,7 +1622,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     getDesc: function getDesc(path) {
-      return this.descMap[path];
+      return this.descMap[path] && this.descMap[path].desc;
     },
     getName: function getName(path) {
       return path.split('.').pop();
@@ -9008,71 +9015,68 @@ var render = function() {
     [
       _vm.expanded ? _c("div", { staticClass: "hierarchy-line" }) : _vm._e(),
       _vm._v(" "),
-      _c(
-        "h4",
-        [
-          _vm.depth > 1 ? _c("span", { staticClass: "guider" }) : _vm._e(),
-          _vm._v(" "),
-          _vm.supportsExpandable
-            ? _c("el-button", {
-                attrs: {
-                  plain: "",
-                  circle: "",
-                  size: "mini",
-                  icon: _vm.expanded ? "el-icon-minus" : "el-icon-plus"
-                },
-                on: { click: _vm.toggleExpanded }
-              })
-            : _vm._e(),
-          _vm._v(" "),
-          !_vm.shared.isMobile
-            ? _c(
-                "span",
-                { staticClass: "path-parent" },
-                _vm._l(_vm.parentPath, function(item) {
-                  return _c(
-                    "a",
-                    { key: item.link, attrs: { href: "#" + item.link } },
-                    [_vm._v(_vm._s(item.text) + ".")]
-                  )
-                }),
-                0
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _c("span", { staticClass: "path-base" }, [
-            _c("a", { attrs: { href: "#" + _vm.baseName.link } }, [
-              _vm._v(_vm._s(_vm.baseName.text))
+      _c("h4", [
+        _vm.depth > 1 ? _c("span", { staticClass: "guider" }) : _vm._e(),
+        _vm._v(" "),
+        _vm.supportsExpandable
+          ? _c("i", {
+              staticClass: "expand-toggle",
+              class: _vm.expanded
+                ? "el-icon-remove-outline"
+                : "el-icon-circle-plus-outline",
+              on: { click: _vm.toggleExpanded }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        !_vm.shared.isMobile
+          ? _c(
+              "span",
+              { staticClass: "path-parent" },
+              _vm._l(_vm.parentPath, function(item) {
+                return _c(
+                  "a",
+                  { key: item.link, attrs: { href: "#" + item.link } },
+                  [_vm._v(_vm._s(item.text) + ".")]
+                )
+              }),
+              0
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _c("span", { staticClass: "path-base" }, [
+          _c("a", { attrs: { href: "#" + _vm.baseName.link } }, [
+            _vm._v(_vm._s(_vm.baseName.text))
+          ])
+        ]),
+        _vm._v(" "),
+        _vm.shared.currentPath === _vm.nodeData.path
+          ? _c("span", { staticClass: "current-flag" }, [
+              _c("i", { staticClass: "el-icon-caret-left" })
             ])
-          ]),
-          _vm._v(" "),
-          _vm.nodeData.default && _vm.nodeData.default !== "*"
-            ? _c("span", { staticClass: "default-value" }, [
-                _vm._v(" = " + _vm._s(_vm.nodeData.default))
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.uiControl && _vm.shared.allOptionExamples && !_vm.shared.isMobile
-            ? _c(
-                "span",
-                {
-                  class: [
-                    "control-toggle",
-                    _vm.enableUIControl ? "active" : ""
-                  ],
-                  on: { click: _vm.toggleUIControl }
-                },
-                [
-                  _c("i", [_vm._v("")]),
-                  _vm._v(
-                    " " + _vm._s(_vm.$t("example.tryDesc")) + "\n            "
-                  )
-                ]
-              )
-            : _vm._e()
-        ],
-        1
-      ),
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.nodeData.default && _vm.nodeData.default !== "*"
+          ? _c("span", { staticClass: "default-value" }, [
+              _vm._v(" = " + _vm._s(_vm.nodeData.default))
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.uiControl && _vm.shared.allOptionExamples && !_vm.shared.isMobile
+          ? _c(
+              "span",
+              {
+                class: ["control-toggle", _vm.enableUIControl ? "active" : ""],
+                on: { click: _vm.toggleUIControl }
+              },
+              [
+                _c("i", [_vm._v("")]),
+                _vm._v(
+                  " " + _vm._s(_vm.$t("example.tryDesc")) + "\n            "
+                )
+              ]
+            )
+          : _vm._e()
+      ]),
       _vm._v(" "),
       _c(
         "div",
@@ -9105,26 +9109,24 @@ var render = function() {
         domProps: { innerHTML: _vm._s(_vm.desc) }
       }),
       _vm._v(" "),
-      _vm.supportsExpandable
+      _vm.supportsExpandable && _vm.expanded
         ? _c(
             "div",
             { staticClass: "children" },
             _vm._l(_vm.nodeData.children, function(child) {
-              return _vm.expanded
-                ? _c("DocContentItemCard", {
-                    key: child.path,
-                    attrs: {
-                      "node-data": child,
-                      "desc-map": _vm.descMap,
-                      depth: _vm.depth + 1,
-                      "max-depth": _vm.maxDepth
-                    },
-                    on: {
-                      "toggle-expanded": _vm.bubbleEventToggleExapndedEvent,
-                      "scroll-to-self": _vm.bubbleScrollToSelfEvent
-                    }
-                  })
-                : _vm._e()
+              return _c("DocContentItemCard", {
+                key: child.path,
+                attrs: {
+                  "node-data": child,
+                  "desc-map": _vm.descMap,
+                  depth: _vm.depth + 1,
+                  "max-depth": _vm.maxDepth
+                },
+                on: {
+                  "toggle-expanded": _vm.bubbleEventToggleExapndedEvent,
+                  "scroll-to-self": _vm.bubbleScrollToSelfEvent
+                }
+              })
             }),
             1
           )
@@ -10571,223 +10573,159 @@ module.exports = g;
 
 /***/ }),
 
-/***/ "./node_modules/zrender/src/core/arrayDiff.js":
+/***/ "./node_modules/zrender/lib/core/arrayDiff.js":
 /*!****************************************************!*\
-  !*** ./node_modules/zrender/src/core/arrayDiff.js ***!
+  !*** ./node_modules/zrender/lib/core/arrayDiff.js ***!
   \****************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-// Hirschberg's algorithm
-// http://en.wikipedia.org/wiki/Hirschberg%27s_algorithm
 
-/**
- * @module zrender/core/arrayDiff
- * @author Yi Shen
- */
-
-function defaultCompareFunc(a, b) {
-    return a === b;
-}
-
-function createItem(cmd, idx, idx1) {
-    var res = {
-        // cmd explanation
-        // '=': not change
-        // '^': replace with a new item in second array. Unused temporary
-        // '+': add a new item of second array
-        // '-': del item in first array
-        cmd: cmd,
-        // Value index, use index in the first array
-        // Except '+'. Adding a new item needs value in the second array
-        idx: idx
-    };
-    // Replace need to know both two indices
-    // if (cmd === '^') {
-    //     res.idx1 = idx1;
-    // }
-
-    if (cmd === '=') {
-        res.idx1 = idx1;
+exports.__esModule = true;
+function diff(oldArr, newArr, equals) {
+    if (!equals) {
+        equals = function (a, b) {
+            return a === b;
+        };
     }
-    return res;
-}
-
-function append(out, cmd, idx, idx1) {
-    out.push(createItem(cmd, idx, idx1));
-}
-
-var abs = Math.abs;
-// Needleman-Wunsch score
-function score(arr0, arr1, i0, i1, j0, j1, equal, memo) {
-    var last;
-    var invM = i0 > i1;
-    var invN = j0 > j1;
-    var m = abs(i1 - i0);
-    var n = abs(j1 - j0);
-    var i;
-    var j;
-    for (i = 0; i <= m; i++) {
-        for (j = 0; j <= n; j++) {
-            if (i === 0) {
-                memo[j] = j;
+    oldArr = oldArr.slice();
+    newArr = newArr.slice();
+    var newLen = newArr.length;
+    var oldLen = oldArr.length;
+    var editLength = 1;
+    var maxEditLength = newLen + oldLen;
+    var bestPath = [{ newPos: -1, components: [] }];
+    var oldPos = extractCommon(bestPath[0], newArr, oldArr, 0, equals);
+    if (bestPath[0].newPos + 1 >= newLen && oldPos + 1 >= oldLen) {
+        var indices = [];
+        for (var i = 0; i < newArr.length; i++) {
+            indices.push(i);
+        }
+        return [{
+                indices: indices,
+                count: newArr.length,
+                added: false,
+                removed: false
+            }];
+    }
+    function execEditLength() {
+        for (var diagonalPath = -1 * editLength; diagonalPath <= editLength; diagonalPath += 2) {
+            var basePath;
+            var addPath = bestPath[diagonalPath - 1];
+            var removePath = bestPath[diagonalPath + 1];
+            var oldPos = (removePath ? removePath.newPos : 0) - diagonalPath;
+            if (addPath) {
+                bestPath[diagonalPath - 1] = undefined;
             }
-            else if (j === 0) {
-                last = memo[j];
-                memo[j] = i;
+            var canAdd = addPath && addPath.newPos + 1 < newLen;
+            var canRemove = removePath && 0 <= oldPos && oldPos < oldLen;
+            if (!canAdd && !canRemove) {
+                bestPath[diagonalPath] = undefined;
+                continue;
+            }
+            if (!canAdd || (canRemove && addPath.newPos < removePath.newPos)) {
+                basePath = clonePath(removePath);
+                pushComponent(basePath.components, false, true);
             }
             else {
-                // memo[i-1][j-1] + same(arr0[i-1], arr1[j-1]) ? 0 : 1
-                // Retained or replace
-                var val0 = arr0[invM ? (i0 - i) : (i - 1 + i0)];
-                var val1 = arr1[invN ? (j0 - j) : (j - 1 + j0)];
-                // Because replace is add after remove actually
-                // It has a higher score than removing or adding
-                // TODO custom score function
-                var score0 = last + (equal(val0, val1) ? 0 : 2);
-                // memo[i-1][j] + 1
-                // Remove arr0[i-1]
-                var score1 = memo[j] + 1;
-                // memo[i][j-1] + 1
-                // Add arr1[j-1]
-                var score2 = memo[j - 1] + 1;
-
-                last = memo[j];
-                memo[j] = score0 < score1 ? score0 : score1;
-                score2 < memo[j] && (memo[j] = score2);
-                // Math min of three parameters seems slow
-                // memo[j] = Math.min(score0, score1, score2);
+                basePath = addPath;
+                basePath.newPos++;
+                pushComponent(basePath.components, true, false);
+            }
+            oldPos = extractCommon(basePath, newArr, oldArr, diagonalPath, equals);
+            if (basePath.newPos + 1 >= newLen && oldPos + 1 >= oldLen) {
+                return buildValues(basePath.components);
+            }
+            else {
+                bestPath[diagonalPath] = basePath;
             }
         }
+        editLength++;
     }
-
-    return memo;
+    while (editLength <= maxEditLength) {
+        var ret = execEditLength();
+        if (ret) {
+            return ret;
+        }
+    }
 }
-
-function hirschberg(arr0, arr1, i0, i1, j0, j1, equal, score0, score1) {
-    var out = [];
-    var len0 = i1 - i0;
-    var len1 = j1 - j0;
-    var i;
-    var j;
-    if (!len0) {
-        for (j = 0; j < len1; j++) {
-            append(out, '+', j + j0);
-        }
+function extractCommon(basePath, newArr, oldArr, diagonalPath, equals) {
+    var newLen = newArr.length;
+    var oldLen = oldArr.length;
+    var newPos = basePath.newPos;
+    var oldPos = newPos - diagonalPath;
+    var commonCount = 0;
+    while (newPos + 1 < newLen && oldPos + 1 < oldLen && equals(newArr[newPos + 1], oldArr[oldPos + 1])) {
+        newPos++;
+        oldPos++;
+        commonCount++;
     }
-    else if (!len1) {
-        for (i = 0; i < len0; i++) {
-            append(out, '-', i + i0);
-        }
+    if (commonCount) {
+        basePath.components.push({
+            count: commonCount,
+            added: false,
+            removed: false,
+            indices: []
+        });
     }
-    else if (len0 === 1) {
-        var a = arr0[i0];
-        var matched = false;
-        for (j = 0; j < len1; j++) {
-            if (equal(a, arr1[j + j0]) && !matched) {
-                matched = true;
-                // Equal and update use the index in first array
-                append(out, '=', i0, j + j0);
-            }
-            else {
-                // if (j === len1 - 1 && ! matched) {
-                //     append(out, '^', i0, j + j0);
-                // }
-                // else {
-                append(out, '+', j + j0);
-                // }
-            }
-        }
-        if (!matched) {
-            append(out, '-', i0);
-        }
-    }
-    else if (len1 === 1) {
-        var b = arr1[j0];
-        var matched = false;
-        for (i = 0; i < len0; i++) {
-            if (equal(b, arr0[i + i0]) && !matched) {
-                matched = true;
-                append(out, '=', i + i0, j0);
-            }
-            else {
-                // if (i === len0 - 1 && ! matched) {
-                //     append(out, '^', i + i0, j0);
-                // }
-                // else {
-                append(out, '-', i + i0);
-                // }
-            }
-        }
-        if (!matched) {
-            append(out, '+', j0);
-        }
+    basePath.newPos = newPos;
+    return oldPos;
+}
+function pushComponent(components, added, removed) {
+    var last = components[components.length - 1];
+    if (last && last.added === added && last.removed === removed) {
+        components[components.length - 1] = {
+            count: last.count + 1,
+            added: added,
+            removed: removed,
+            indices: []
+        };
     }
     else {
-        var imid = ((len0 / 2) | 0) + i0;
-
-        score(arr0, arr1, i0, imid, j0, j1, equal, score0);
-        score(arr0, arr1, i1, imid + 1, j1, j0, equal, score1);
-
-        var min = Infinity;
-        var jmid = 0;
-        var sum;
-        for (j = 0; j <= len1; j++) {
-            sum = score0[j] + score1[len1 - j];
-            if (sum < min) {
-                min = sum;
-                jmid = j;
+        components.push({
+            count: 1,
+            added: added,
+            removed: removed,
+            indices: []
+        });
+    }
+}
+function buildValues(components) {
+    var componentPos = 0;
+    var componentLen = components.length;
+    var newPos = 0;
+    var oldPos = 0;
+    for (; componentPos < componentLen; componentPos++) {
+        var component = components[componentPos];
+        if (!component.removed) {
+            var indices = [];
+            for (var i = newPos; i < newPos + component.count; i++) {
+                indices.push(i);
+            }
+            component.indices = indices;
+            newPos += component.count;
+            if (!component.added) {
+                oldPos += component.count;
             }
         }
-        jmid += j0;
-
-        out = hirschberg(arr0, arr1, i0, imid, j0, jmid, equal, score0, score1);
-        var out1 = hirschberg(arr0, arr1, imid, i1, jmid, j1, equal, score0, score1);
-        // Concat
-        for (i = 0; i < out1.length; i++) {
-            out.push(out1[i]);
+        else {
+            for (var i = oldPos; i < oldPos + component.count; i++) {
+                component.indices.push(i);
+            }
+            oldPos += component.count;
         }
     }
-    return out;
+    return components;
 }
-
-function arrayDiff(arr0, arr1, equal) {
-    equal = equal || defaultCompareFunc;
-    // Remove the common head and tail
-    var i;
-    var j;
-    var len0 = arr0.length;
-    var len1 = arr1.length;
-    var lenMin = Math.min(len0, len1);
-    var head = [];
-    for (i = 0; i < lenMin; i++) {
-        if (!equal(arr0[i], arr1[i])) {
-            break;
-        }
-        append(head, '=', i, i);
-    }
-
-    for (j = 0; j < lenMin; j++) {
-        if (!equal(arr0[len0 - j - 1], arr1[len1 - j - 1])) {
-            break;
-        }
-    }
-
-    if (len0 - j >= i || len1 - j >= i) {
-        var middle = hirschberg(arr0, arr1, i, len0 - j, i, len1 - j, equal, [], []);
-        for (i = 0; i < middle.length; i++) {
-            head.push(middle[i]);
-        }
-        for (i = 0; i < j; i++) {
-            append(head, '=', len0 - j + i, len1 - j + i);
-        }
-    }
-    return head;
+function clonePath(path) {
+    return { newPos: path.newPos, components: path.components.slice(0) };
 }
+function arrayDiff(oldArr, newArr, equal) {
+    return diff(oldArr, newArr, equal);
+}
+exports["default"] = arrayDiff;
 
-/* harmony default export */ __webpack_exports__["default"] = (arrayDiff);
 
 /***/ }),
 
@@ -11832,7 +11770,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ECHARTS_LIB", function() { return ECHARTS_LIB; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PROPERTIES_NOT_EXPAND", function() { return PROPERTIES_NOT_EXPAND; });
-var ECHARTS_LIB = 'https://cdn.jsdelivr.net/npm/echarts@5.0.0-alpha.2/dist/echarts.min.js'; // Properties that will not be expanded by default.
+var ECHARTS_LIB = 'https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js'; // Properties that will not be expanded by default.
 // To reduce the display of unnecessary info.
 
 var PROPERTIES_NOT_EXPAND = ['data', 'markPoint', 'markLine', 'markArea', 'tooltip'];

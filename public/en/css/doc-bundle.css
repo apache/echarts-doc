@@ -248,17 +248,14 @@
   position: relative;
   padding: 15px 0;
 }
-.doc-content-item-card.current {
-    border-top: 1px solid #b03a5b;
-}
 .doc-content-item-card .hierarchy-line {
     position: absolute;
     top: 35px;
     bottom: 0px;
     left: -14px;
     width: 10px;
-    border-left: 1px solid #C592A0;
-    border-bottom: 1px solid #C592A0;
+    border-left: 1px solid #E0E6F1;
+    border-bottom: 1px solid #E0E6F1;
 }
 .doc-content-item-card h4 {
     margin: 0;
@@ -269,15 +266,13 @@
       vertical-align: bottom;
       display: inline-block;
 }
-.doc-content-item-card h4 .el-button {
-      padding: 2px;
-      font-size: 12px;
+.doc-content-item-card h4 .expand-toggle {
+      font-size: 18px;
       margin-left: -23px;
-      color: #C592A0;
-      border-color: #C592A0;
-      border-radius: 4px;
-      background: #fff;
+      color: #9aadd1;
+      cursor: pointer;
       position: relative;
+      background-color: #fff;
 }
 .doc-content-item-card h4 .anchor {
       color: #C592A0;
@@ -315,6 +310,10 @@
 }
 .doc-content-item-card h4 .path-parent a:hover, .doc-content-item-card h4 .path-base a:hover {
         text-decoration: underline;
+}
+.doc-content-item-card h4 .current-flag {
+      color: #434343;
+      font-size: 20px;
 }
 .doc-content-item-card h4 .default-value {
       color: #434343;
@@ -358,6 +357,9 @@
 .doc-content-item-card.level-2 > h4 .path-base {
     font-size: 16px;
 }
+.doc-content-item-card.level-2 > h4 .current-flag {
+    font-size: 16px;
+}
 .doc-content-item-card.level-3 > h4 .anchor {
     font-size: 16px;
 }
@@ -365,6 +367,9 @@
     font-size: 13px;
 }
 .doc-content-item-card.level-3 > h4 .path-base {
+    font-size: 16px;
+}
+.doc-content-item-card.level-3 > h4 .current-flag {
     font-size: 16px;
 }
 .doc-content-item-card.level-2 {
@@ -376,7 +381,7 @@
       width: 28px;
       margin-left: -39px;
       margin-right: 2px;
-      border-top: 1px solid #C592A0;
+      border-top: 1px solid #E0E6F1;
       position: relative;
 }
 .doc-content-item-card.level-3 {
@@ -388,7 +393,7 @@
       width: 28px;
       margin-left: -39px;
       margin-right: 2px;
-      border-top: 1px solid #C592A0;
+      border-top: 1px solid #E0E6F1;
       position: relative;
 }
 .doc-content-item-card.level-4 {
@@ -400,7 +405,7 @@
       width: 28px;
       margin-left: -39px;
       margin-right: 2px;
-      border-top: 1px solid #C592A0;
+      border-top: 1px solid #E0E6F1;
       position: relative;
 }
 .doc-content-item-card.level-5 {
@@ -412,7 +417,7 @@
       width: 28px;
       margin-left: -39px;
       margin-right: 2px;
-      border-top: 1px solid #C592A0;
+      border-top: 1px solid #E0E6F1;
       position: relative;
 }
 .doc-content-item-card.level-6 {
@@ -424,7 +429,7 @@
       width: 28px;
       margin-left: -39px;
       margin-right: 2px;
-      border-top: 1px solid #C592A0;
+      border-top: 1px solid #E0E6F1;
       position: relative;
 }
 .doc-content-item-card.level-7 {
@@ -436,7 +441,7 @@
       width: 28px;
       margin-left: -39px;
       margin-right: 2px;
-      border-top: 1px solid #C592A0;
+      border-top: 1px solid #E0E6F1;
       position: relative;
 }
 .doc-content-item-card.level-8 {
@@ -448,7 +453,7 @@
       width: 28px;
       margin-left: -39px;
       margin-right: 2px;
-      border-top: 1px solid #C592A0;
+      border-top: 1px solid #E0E6F1;
       position: relative;
 }
 .doc-content-item-card.level-9 {
@@ -460,7 +465,7 @@
       width: 28px;
       margin-left: -39px;
       margin-right: 2px;
-      border-top: 1px solid #C592A0;
+      border-top: 1px solid #E0E6F1;
       position: relative;
 }
 .doc-content-item-card.level-10 {
@@ -472,7 +477,7 @@
       width: 28px;
       margin-left: -39px;
       margin-right: 2px;
-      border-top: 1px solid #C592A0;
+      border-top: 1px solid #E0E6F1;
       position: relative;
 }
 .doc-content-item-card.level-11 {
@@ -484,7 +489,7 @@
       width: 28px;
       margin-left: -39px;
       margin-right: 2px;
-      border-top: 1px solid #C592A0;
+      border-top: 1px solid #E0E6F1;
       position: relative;
 }
 .doc-content-item-card .prop-types {
@@ -962,6 +967,7 @@ span.CodeMirror-selectedtext { background: none; }
     top: 0;
 }
 #example-panel .preview-main {
+    position: relative;
     padding: 0 10px;
     background: #fefefe;
     box-sizing: border-box;
@@ -1255,6 +1261,14 @@ span.CodeMirror-selectedtext { background: none; }
 .doc-content .item-description a {
       font-family: 'Source Code Pro', STHeiti, "Microsoft Yahei", "WenQuanYi Micro Hei", sans-serif;
 }
+.doc-content table {
+    border: 1px solid #ddd;
+    border-collapse: collapse;
+}
+.doc-content th, .doc-content td {
+    padding: 10px;
+    border: 1px solid #eee;
+}
 .ec-doc-tutorial .page-description h2 {
   font-weight: normal;
   font-size: 22px;
@@ -1290,7 +1304,8 @@ span.CodeMirror-selectedtext { background: none; }
     width: 100%;
 }
 .el-autocomplete-suggestion.search-input-popper {
-  width: 300px !important;
+  width: auto !important;
+  min-width: 300px;
 }
 .el-autocomplete-suggestion.search-input-popper li {
     line-height: 28px;

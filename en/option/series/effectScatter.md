@@ -15,6 +15,8 @@ The scatter (bubble) graph with ripple animation. The special animation effect c
 
 {{ use: partial-series-name() }}
 
+{{ use: partial-colorby() }}
+
 {{ use: partial-legend-hover-link() }}
 
 ## effectType(string) = 'ripple'

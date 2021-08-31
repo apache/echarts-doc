@@ -21,6 +21,8 @@ Broken line chart relates all the data points [symbol](~series-line.symbol) by b
 
 {{ use: partial-series-name() }}
 
+{{ use: partial-colorby() }}
+
 {{ use: partial-coord-sys(
     seriesType = "bar",
     coordSysDefault = "'cartesian2d'",

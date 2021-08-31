@@ -15,6 +15,8 @@ Bar chart shows different data through the height of a bar, which is used in [re
 
 {{ use: partial-series-name() }}
 
+{{ use: partial-colorby() }}
+
 {{ use: partial-legend-hover-link() }}
 
 {{ use: partial-coord-sys(

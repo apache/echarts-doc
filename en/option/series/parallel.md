@@ -190,6 +190,8 @@ const option = {
 
 {{ use: partial-series-name() }}
 
+{{ use: partial-colorby() }}
+
 {{ use: partial-parallel-line-style(
     prefix = "#"
 ) }}

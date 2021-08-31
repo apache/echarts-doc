@@ -19,6 +19,8 @@ Here is the example of AQI data which is presented in radar chart.
 
 {{ use: partial-series-name() }}
 
+{{ use: partial-colorby(defaultColorBy="'data'") }}
+
 ## radarIndex(number)
 
 Index of [radar](~radar) component that radar chart uses.

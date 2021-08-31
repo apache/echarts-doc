@@ -19,6 +19,8 @@
 
 {{ use: partial-series-name() }}
 
+{{ use: partial-colorby() }}
+
 {{ use: geo-common(
     prefix = '#',
     inMap = true

@@ -27,6 +27,8 @@ What's more, the time attribute of the orinigal dataset would map to a single ti
 
 {{ use: partial-series-name() }}
 
+{{ use: partial-colorby(defaultColorBy="'data'") }}
+
 {{ use: partial-rect-layout-width-height(
     componentName = 'thmemRiver',
     defaultLeft = '5%',

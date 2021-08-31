@@ -17,6 +17,8 @@ Series of same [map type](~series-map.map) will show in one map. At this point, 
 
 {{ use: partial-series-name() }}
 
+{{ use: partial-colorby() }}
+
 {{ use: geo-common(
     prefix = '#',
     inMap = true

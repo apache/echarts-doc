@@ -16,6 +16,8 @@
 
 {{ use: partial-series-name() }}
 
+{{ use: partial-colorby(defaultColorBy="'data'") }}
+
 ## min(number) = 0
 
 <ExampleUIControlNumber default="0" step="1" />
