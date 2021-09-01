@@ -102,7 +102,8 @@ const option = {
 线条样式。
 
 {{ use: partial-line-style(
-    prefix = "##"
+    prefix = "##",
+    defaultJoin = "'round'"
 ) }}
 
 ## areaStyle(Object)
@@ -213,7 +214,8 @@ data : [
 单项线条样式。
 
 {{ use: partial-line-style(
-    prefix = "###"
+    prefix = "###",
+    defaultJoin = "'round'"
 ) }}
 
 ### areaStyle(Object)
@@ -297,7 +299,8 @@ data : [
 #${prefix} lineStyle(Object)
 
 {{ use: partial-line-style(
-    prefix = "#" + ${prefix}
+    prefix = "#" + ${prefix},
+    defaultJoin = "'round'"
 ) }}
 
 #${prefix} areaStyle(Object)

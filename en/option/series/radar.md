@@ -66,7 +66,8 @@ Item style of the inflection point of the lines.
 Line style.
 
 {{ use: partial-line-style(
-    prefix = "##"
+    prefix = "##",
+    defaultJoin = "'round'"
 ) }}
 
 ## areaStyle(Object)
@@ -177,7 +178,8 @@ Style setting of the symbol on single inflection point.
 Line style of a single item.
 
 {{ use: partial-line-style(
-    prefix = "###"
+    prefix = "###",
+    defaultJoin = "'round'"
 ) }}
 
 ### areaStyle(Object)
@@ -261,7 +263,8 @@ Configurations of selected state.
 #${prefix} lineStyle(Object)
 
 {{ use: partial-line-style(
-    prefix = "#" + ${prefix}
+    prefix = "#" + ${prefix},
+    defaultJoin = "'round'"
 ) }}
 
 #${prefix} areaStyle(Object)
