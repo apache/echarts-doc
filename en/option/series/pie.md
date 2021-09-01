@@ -3,8 +3,6 @@
 
 # series.pie(Object)
 
-**pie chart**
-
 The pie chart is mainly used for showing proportion of different categories. Each arc length represents the proportion of data quantity.
 
 
@@ -94,6 +92,23 @@ Whether to show sector when all data are zero.
     defaultTop = 0,
     defaultRight = 0,
     defaultBottom = 0
+) }}
+
+## showEmptyCircle(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
+
+If display an placeholder circle when there is no data.
+
+## emptyCircleStyle(Object)
+
+Style of circle placeholder.
+
+<ExampleUIControlBoolean default="true" />
+
+{{ use: partial-item-style(
+    prefix = "##",
+    defaultColor = 'lightgray'
 ) }}
 
 ## label(Object)

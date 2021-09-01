@@ -118,6 +118,24 @@ const option = {
     defaultBottom = 0
 ) }}
 
+## showEmptyCircle(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
+
+是否在无数据的时候显示一个占位圆。
+
+## emptyCircleStyle(Object)
+
+占位圆样式。
+
+<ExampleUIControlBoolean default="true" />
+
+{{ use: partial-item-style(
+    prefix = "##",
+    defaultColor = 'lightgray'
+) }}
+
+
 ## label(Object)
 
 {{ use: partial-label-desc(
