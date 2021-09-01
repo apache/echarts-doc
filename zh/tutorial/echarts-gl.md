@@ -135,7 +135,7 @@ option = {
 ]
 ```
 
-在 ECharts 4 中我们可以使用 dataset 组件非常方便地引入这份数据。如果对 dataset 还不熟悉的话可以看[dataset使用教程](tutorial.html#%E4%BD%BF%E7%94%A8%20dataset%20%E7%AE%A1%E7%90%86%E6%95%B0%E6%8D%AE)
+在 ECharts 4 中我们可以使用 dataset 组件非常方便地引入这份数据。如果对 dataset 还不熟悉的话可以看[dataset使用教程](${handbookPath}concepts/dataset)
 
 ```js
 $.get('data/asset/data/life-expectancy-table.json', function (data) {

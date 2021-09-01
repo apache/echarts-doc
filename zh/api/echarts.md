@@ -27,15 +27,15 @@
 
 + `theme`
 
-    应用的主题。可以是一个主题的配置对象，也可以是使用已经通过 [echarts.registerTheme](~echarts.registerTheme) 注册的主题名称。参见 [ECharts 中的样式简介](https://echarts.apache.org/zh/tutorial.html#ECharts%20%E4%B8%AD%E7%9A%84%E6%A0%B7%E5%BC%8F%E7%AE%80%E4%BB%8B)。
+    应用的主题。可以是一个主题的配置对象，也可以是使用已经通过 [echarts.registerTheme](~echarts.registerTheme) 注册的主题名称。参见 [ECharts 中的样式简介](${handbookPath}concepts/style)。
 
 + `opts`
 
     附加参数。有下面几个可选项：
 
     + `devicePixelRatio` 设备像素比，默认取浏览器的值`window.devicePixelRatio`。
-    + `renderer` 渲染器，支持 `'canvas'` 或者 `'svg'`。参见 [使用 Canvas 或者 SVG 渲染](tutorial.html#%E4%BD%BF%E7%94%A8%20Canvas%20%E6%88%96%E8%80%85%20SVG%20%E6%B8%B2%E6%9F%93)。
-    + `useDirtyRect` 是否开启脏矩形渲染，默认为`false`。参见 [ECharts 5 新特性](https://echarts.apache.org/zh/tutorial.html#ECharts%205%20%E6%96%B0%E7%89%B9%E6%80%A7)。
+    + `renderer` 渲染器，支持 `'canvas'` 或者 `'svg'`。参见 [使用 Canvas 或者 SVG 渲染](${handbookPath}best-practice/canvas-vs-svg)。
+    + `useDirtyRect` 是否开启脏矩形渲染，默认为`false`。参见 [ECharts 5 新特性](${handbookPath}basics/release-note/v5-feature)。
     + `width` 可显式指定实例宽度，单位为像素。如果传入值为 `null`/`undefined`/`'auto'`，则表示自动取 `dom`（实例容器）的宽度。
     + `height` 可显式指定实例高度，单位为像素。如果传入值为 `null`/`undefined`/`'auto'`，则表示自动取 `dom`（实例容器）的高度。
     + `locale` 使用的语言，内置 `'ZH'` 和 `'EN'` 两个语言，也可以使用 [echarts.registerLocale](~echarts.registerLocale) 方法注册新的语言包。目前支持的语言见 [src/i18n](https://github.com/apache/echarts/tree/release/src/i18n)。
@@ -119,7 +119,7 @@ echarts.use(
     [GridComponent, BarChart, CanvasRenderer]
 );
 ```
-更详细的使用方式见 [在打包环境中使用 ECharts](tutorial.html#在打包环境中使用%20ECharts) 一文
+更详细的使用方式见 [在项目中引入 Apache ECharts](${handbookPath}basics/import) 一文
 
 ## registerMap(Function)
 ```js

@@ -27,7 +27,7 @@ Creates an ECharts instance, and returns an [echartsInstance](~echartsInstance).
 
 + `theme`
 
-    Theme to be applied. This can be a configuring object of a theme, or a theme name registered through [echarts.registerTheme](~echarts.registerTheme). See [Overview of Style Customization](https://echarts.apache.org/en/tutorial.html#Overview%20of%20Style%20Customization).
+    Theme to be applied. This can be a configuring object of a theme, or a theme name registered through [echarts.registerTheme](~echarts.registerTheme). See [Overview of Style Customization](${handbookPath}concepts/style).
 
 + `opts`
 

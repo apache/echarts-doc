@@ -16,12 +16,10 @@
 
 **[这里是个教程](tutorial.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B3%BB%E5%88%97)**
 
-<br>
 **开发者自定义渲染逻辑（renderItem 函数）**
 
 {{ use: partial-custom-renderItem-common() }}
 
-<br>
 **维度的映射（encode 和 dimensions 属性）**
 
 `custom` 系列往往需要定义 [series.encode](~series-custom.encode)，主要用于指明 `data` 的哪些维度映射到哪些数轴上。从而，echarts 能根据这些维度的值的范围，画出合适的数轴刻度。
@@ -43,17 +41,14 @@ series: {
 }
 ```
 
-<br>
 **与 dataZoom 组件的结合**
 
 与 [dataZoom](~dataZoom) 结合使用的时候，常常使用会设置 [dataZoom.filterMode](~dataZoom.filterMode) 为 'weakFilter'，从而让 `dataItem` 部分超出坐标系边界的时候，不会整体被过滤掉。
 
-<br>
 **关于 `dataIndex` 和 `dataIndexInside` 的区别**
 
 {{ use: partial-custom-dataIndex-dataIndexInside() }}
 
-<br>
 **Event listener**
 
 ```js

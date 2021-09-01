@@ -5,7 +5,7 @@
 
 `dataset` component is published since ECharts 4. `dataset` brings convenience in data management separated with styles and enables data reuse by different series. More importantly, it enables data encoding from data to visual, which brings convenience in some scenarios.
 
-More details about `dataset` can be checked in the [tutorial](tutorial.html#Dataset).
+More details about `dataset` can be checked in the [tutorial](${handbookPath}concepts/dataset/).
 
 {{ use: partial-component-id(
     prefix = "#"
@@ -48,7 +48,7 @@ Column based key-value format, where each value represents a column of a table.
 }
 ```
 
-More details about `dataset` can be checked in the [tutorial](tutorial.html#dataset).
+More details about `dataset` can be checked in the [tutorial](${handbookPath}concepts/dataset/).
 
 {{ use: partial-series-dimensions(
     prefix = "#"

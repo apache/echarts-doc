@@ -64,7 +64,7 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
 鼠标事件包括 `'click'`、`'dblclick'`、`'mousedown'`、`'mousemove'`、`'mouseup'`、`'mouseover'`、`'mouseout'`、`'globalout'`、`'contextmenu'`。
 
 
-参见 [ECharts 中的事件和行为](tutorial.html#ECharts%20%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%92%8C%E8%A1%8C%E4%B8%BA)
+参见 [ECharts 中的事件和行为](${handbookPath}concepts/event)
 
 
 ### click(Event)

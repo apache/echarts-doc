@@ -70,7 +70,8 @@ async function md2jsonAsync(opt) {
         path: path.join(opt.language, opt.entry, '**/*.md'),
         tplEnv: Object.assign({}, config, {
             galleryViewPath: config.galleryViewPath.replace('${lang}', opt.language),
-            galleryEditorPath: config.galleryEditorPath.replace('${lang}', opt.language)
+            galleryEditorPath: config.galleryEditorPath.replace('${lang}', opt.language),
+            handbookPath: config.handbookPath.replace('${lang}', opt.language)
         }),
         imageRoot: config.imagePath
     }, opt);

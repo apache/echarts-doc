@@ -1,7 +1,7 @@
 
 {{ target: partial-data-transform-tutorial-ref }}
 
-参见这个教程： [data transform](tutorial.html#%E4%BD%BF%E7%94%A8%20transform%20%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E8%BD%AC%E6%8D%A2).
+参见 [数据变换教程](${handbookPath}concepts/data-transform)
 
 
 

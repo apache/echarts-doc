@@ -3,6 +3,7 @@ const path = require('path');
 module.exports = {
     galleryViewPath: 'http://localhost/echarts-website/examples/${lang}/view.html?c=',
     galleryEditorPath: 'http://localhost/echarts-website/examples/${lang}/editor.html?c=',
+    handbookPath: 'http://localhost/echarts-website/handbook/${lang}/',
     websitePath: 'http://localhost/echarts-website',
 
 
