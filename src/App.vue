@@ -17,7 +17,7 @@
                 <!-- TODO Not use handbook link here?-->
                 <a
                     :href="`https://echarts.apache.org/handbook/${shared.locale}/get-started`"
-                    :class="{'selected': shared.docType === 'tutorial', 'handbook-link': true}"
+                    class="handbook-link"
                     target="blank"
                 >{{$t('nav.tutorial')}}</a>
             </div>
