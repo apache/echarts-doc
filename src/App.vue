@@ -11,13 +11,15 @@
                     :class="{'selected': shared.docType === 'api'}"
                 >{{$t('nav.API')}}</a>
                 <a
-                    :href="'tutorial.html'"
-                    :class="{'selected': shared.docType === 'tutorial'}"
-                >{{$t('nav.tutorial')}}</a>
-                <a
                     :href="'option-gl.html'"
                     :class="{'selected': shared.docType === 'option-gl'}"
                 >{{$t('nav.optionGL')}}</a>
+                <!-- TODO Not use handbook link here?-->
+                <a
+                    :href="`https://echarts.apache.org/handbook/${shared.locale}/get-started`"
+                    :class="{'selected': shared.docType === 'tutorial', 'handbook-link': true}"
+                    target="blank"
+                >{{$t('nav.tutorial')}}</a>
             </div>
             <Search></Search>
             <DocNav></DocNav>
@@ -138,6 +140,14 @@ export default {
 
                 &.selected {
                     border-top: 3px solid #B03A5B;
+                }
+
+                &.handbook-link {
+                    color: #337ab7;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
                 }
             }
         }
