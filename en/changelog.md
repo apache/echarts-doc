@@ -1,5 +1,6 @@
 ## v5.2.0
 <div class="time">2021-09-01</div>
+
 #### Break Changes
 
 + [Fix] [pie] Negative value will be filtered [#15095](https://github.com/apache/echarts/issues/15095) ([ssthouse](https://github.com/ssthouse))
