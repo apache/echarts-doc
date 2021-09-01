@@ -175,6 +175,7 @@ When is no content in breadcrumb, this minimal width need to be set up.
 {{ use: partial-item-style(
     prefix = "####",
     name = "boxplot",
+    hasInherit = true,
     defaultColor = "rgba(0,0,0,0.7)",
     defaultBorderColor = "rgba(255,255,255,0.7)",
     defaultBorderWidth = 1,

@@ -172,7 +172,9 @@ Whether to scale to highlight the data in emphasis state.
 
 {{ use: partial-focus-blur-scope() }}
 
-{{ use: line-state() }}
+{{ use: line-state(
+    state = 'emphasis'
+) }}
 
 ### endLabel(Object)
 
@@ -195,7 +197,9 @@ Whether to scale to highlight the data in emphasis state.
 
 Configurations of blur state. Available when [emphasis.focus](~series-line.emphasis.focus) is set.
 
-{{ use: line-state() }}
+{{ use: line-state(
+    state = 'blur'
+) }}
 
 ### endLabel(Object)
 
@@ -214,7 +218,9 @@ Configurations of blur state. Available when [emphasis.focus](~series-line.empha
 
 Configurations of select state. Available when [selectedMode](~series-line.selectedMode) is set.
 
-{{ use: line-state() }}
+{{ use: line-state(
+    state = 'select'
+) }}
 
 ### endLabel(Object)
 
@@ -334,19 +340,25 @@ The style of the symbol of single data point.
 
 Emphasis state of specified single data.
 
-{{ use: line-item-state() }}
+{{ use: line-item-state(
+    state = 'emphasis'
+) }}
 
 ### blur(Object)
 
 Blur state of specified single data.
 
-{{ use: line-item-state() }}
+{{ use: line-item-state(
+    state = 'blur'
+) }}
 
 ### select(Object)
 
 Select state of specified single data.
 
-{{ use: line-item-state() }}
+{{ use: line-item-state(
+    state = 'select'
+) }}
 
 {{ use: partial-tooltip-in-series-data() }}
 
@@ -399,14 +411,16 @@ Select state of specified single data.
 ### itemStyle(Object)
 
 {{ use: partial-item-style(
-    prefix = "###"
+    prefix = "###",
+    hasInherit = ${state} === 'emphasis'
 ) }}
 
 ### lineStyle(Object)
 
 {{ use: partial-line-style(
     prefix = "###",
-    defaultWidth = 2
+    defaultWidth = 2,
+    hasInherit = ${state} === 'emphasis'
 ) }}
 
 ### areaStyle(Object)
@@ -428,6 +442,7 @@ Select state of specified single data.
 #### itemStyle(Object)
 
 {{ use: partial-item-style(
-    prefix = "####"
+    prefix = "####",
+    hasInherit = ${state} === 'emphasis'
 ) }}
 

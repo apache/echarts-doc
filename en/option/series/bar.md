@@ -73,7 +73,7 @@ Background style of each bar if [showBackground](~series-bar.showBackground) is 
 {{ use: partial-bar-state(
     prefix = "#",
     topLevel = true,
-    isNormal = true
+    state = 'normal'
 ) }}
 
 ## labelLayout(Object|Function)
@@ -91,7 +91,7 @@ Configurations of emphasis state.
 {{ use: partial-bar-state(
     prefix = "##",
     topLevel = true,
-    isNormal = false
+    state = 'emphasis'
 ) }}
 
 ## blur(Object)
@@ -101,7 +101,7 @@ Configurations of blur state. Available when [emphasis.focus](~series-bar.emphas
 {{ use: partial-bar-state(
     prefix = "##",
     topLevel = true,
-    isNormal = false
+    state = 'blur'
 ) }}
 
 ## select(Object)
@@ -111,7 +111,7 @@ Configurations of select state. Available when [selectedMode](~series-bar.select
 {{ use: partial-bar-state(
     prefix = "##",
     topLevel = true,
-    isNormal = false
+    state = 'select'
 ) }}
 
 {{ use: partial-selected-mode(
@@ -184,7 +184,7 @@ The value of a single data item.
 {{ use: partial-bar-state(
     prefix = "##",
     topLevel = false,
-    isNormal = true
+    state = 'normal'
 ) }}
 
 ### emphasis(Object)
@@ -194,7 +194,7 @@ Emphasis state of single data.
 {{ use: partial-bar-state(
     prefix = "###",
     topLevel = false,
-    isNormal = false
+    state = 'emphasis'
 ) }}
 
 ### blur(Object)
@@ -208,7 +208,7 @@ Blur state of single data.
 {{ use: partial-bar-state(
     prefix = "###",
     topLevel = false,
-    isNormal = false
+    state = 'blur'
 ) }}
 
 ### select(Object)
@@ -222,7 +222,7 @@ Select state of single data.
 {{ use: partial-bar-state(
     prefix = "###",
     topLevel = false,
-    isNormal = false
+    state = 'select'
 ) }}
 
 {{ use: partial-clip(
@@ -270,6 +270,7 @@ Label style configurations of single data.
 ##${prefix} position(string|Array) = 'inside'
 
 <ExampleUIControlEnum options="top,left,right,bottom,inside,insideLeft,insideRight,insideTop,insideBottom,insideTopLeft,insideBottomLeft,insideTopRight,insideBottomRight,outside" />
+
 Label position.
 
 **Followings are the options: **
@@ -303,7 +304,9 @@ See: [label position](${galleryViewPath}doc-example/label-position).
 
 + Additional positions are supported for bar series under polar coordinates: `start` / `insideStart` / `middle` / `insideEnd` / `end`.
 
-{{ use: partial-version(version = '5.2.0') }}
+{{ use: partial-version(
+    version = '5.2.0'
+) }}
 
 ~[800x500](${galleryViewPath}doc-example/bar-polar-label-radial-multiple&reset=1&edit=1)
 
@@ -339,9 +342,10 @@ Rectangle style configurations of single data.
 
 {{ use: partial-bar-item-style(
     prefix = "#" + ${prefix},
-    useColorPalatte = ${topLevel && isNormal},
-    useDecal = ${isNormal},
-    hasCallback = ${topLevel && isNormal}
+    useColorPalatte = ${topLevel} && ${state} === 'normal',
+    useDecal = ${state} === 'normal',
+    hasCallback = ${topLevel} && ${state} === 'normal',
+    hasInherit = ${state} === 'emphasis'
 ) }}
 
 
@@ -352,7 +356,9 @@ Rectangle style configurations of single data.
 
 <ExampleUIControlColor />
 
-Bar color. {{ if: ${useColorPalatte} }} By default, colors from global palette [option.color](~color) is used. {{ /if }}
+Bar color. {{ if: ${useColorPalatte} }}By default, colors from global palette [option.color](~color) is used.{{ /if }}{{ if: ${hasInherit} }}Can set to `'inherit'` in the `emphasis` state to disable color highlight.{{ /if }}
+
+{{ use: partial-color-desc() }}
 
 #${prefix} borderColor(Color) = '#000'
 

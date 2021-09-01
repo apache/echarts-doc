@@ -96,7 +96,7 @@ Whether to scale to highlight the data in emphasis state.
 
 {{ use: scatter-state(
     prefix = "##",
-    isNormal = true
+    state = 'emphasis'
 ) }}
 
 ## blur(Object)
@@ -108,7 +108,8 @@ Whether to scale to highlight the data in emphasis state.
 Configurations of blur state. Available when [emphasis.focus](~series-scatter.emphasis.focus) is set.
 
 {{ use: scatter-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'blur'
 ) }}
 
 ## select(Object)
@@ -120,7 +121,8 @@ Configurations of blur state. Available when [emphasis.focus](~series-scatter.em
 Configurations of select state. Available when [selectedMode](~series-scatter.selectedMode) is set.
 
 {{ use: scatter-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'select'
 ) }}
 
 {{ use: partial-selected-mode(
@@ -198,7 +200,8 @@ the style setting about single data point(bubble).
 Emphasis state of single data.
 
 {{ use: scatter-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'emphasis'
 ) }}
 
 ### blur(Object)
@@ -210,7 +213,8 @@ Emphasis state of single data.
 Blur state of single data.
 
 {{ use: scatter-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'blur'
 ) }}
 
 ### select(Object)
@@ -222,7 +226,8 @@ Blur state of single data.
 Select state of single data.
 
 {{ use: scatter-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'select'
 ) }}
 
 {{ use: partial-tooltip-in-series-data() }}
@@ -279,6 +284,7 @@ Select state of single data.
 #${prefix} itemStyle(Object)
 
 {{ use: partial-item-style(
-    prefix = "#" + ${prefix}
+    prefix = "#" + ${prefix},
+    hasInherit = ${state} === 'emphasis'
 ) }}
 

@@ -19,7 +19,9 @@ Here is the example of AQI data which is presented in radar chart.
 
 {{ use: partial-series-name() }}
 
-{{ use: partial-colorby(defaultColorBy="'data'") }}
+{{ use: partial-colorby(
+    defaultColorBy = "'data'"
+) }}
 
 ## radarIndex(number)
 
@@ -85,7 +87,8 @@ Configurations of emphasis state.
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: radar-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'emphasis'
 ) }}
 
 ## blur(Object)
@@ -97,7 +100,8 @@ Configurations of emphasis state.
 Configurations of blur state. Available when [emphasis.focus](~series-radar.emphasis.focus) is set.
 
 {{ use: radar-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'blur'
 ) }}
 
 ## select(Object)
@@ -109,7 +113,8 @@ Configurations of blur state. Available when [emphasis.focus](~series-radar.emph
 Configurations of select state. Available when [selectedMode](~series-radar.selectedMode) is set.
 
 {{ use: radar-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'select'
 ) }}
 
 {{ use: partial-selected-mode(
@@ -195,7 +200,8 @@ Area filling style of a single item.
 Configurations of emphasis state.
 
 {{ use: radar-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'emphasis'
 ) }}
 
 ### blur(Object)
@@ -207,7 +213,8 @@ Configurations of emphasis state.
 Configurations of blur state.
 
 {{ use: radar-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'blur'
 ) }}
 
 ### select(Object)
@@ -219,7 +226,8 @@ Configurations of blur state.
 Configurations of selected state.
 
 {{ use: radar-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'select'
 ) }}
 
 {{ use: partial-tooltip-in-series-data() }}
@@ -250,7 +258,8 @@ Configurations of selected state.
 #${prefix} itemStyle(Object)
 
 {{ use: partial-item-style(
-    prefix = "#" + ${prefix}
+    prefix = "#" + ${prefix},
+    hasInherit = ${state} === 'emphasis'
 ) }}
 
 #${prefix} label(Object)
@@ -264,7 +273,8 @@ Configurations of selected state.
 
 {{ use: partial-line-style(
     prefix = "#" + ${prefix},
-    defaultJoin = "'round'"
+    defaultJoin = "'round'",
+    hasInherit = ${state} === 'emphasis'
 ) }}
 
 #${prefix} areaStyle(Object)

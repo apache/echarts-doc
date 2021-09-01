@@ -16,7 +16,9 @@
 
 {{ use: partial-series-name() }}
 
-{{ use: partial-colorby(defaultColorBy="'data'") }}
+{{ use: partial-colorby(
+    defaultColorBy = "'data'"
+) }}
 
 {{ use: component-circular-layout() }}
 
@@ -436,7 +438,8 @@ Configurations of emphasis state.
 ### itemStyle(*)
 
 {{ use: partial-item-style(
-    prefix = "###"
+    prefix = "###",
+    hasInherit = true
 ) }}
 
 {{ use: partial-gauge-title-detail(

@@ -5,7 +5,7 @@
 
 <ExampleUIControlColor />
 
-Fill color. {{ if: ${useColorPalatte} }} Color is taken from [option.color Palette](~color) by default. {{ /if }}
+Fill color. {{ if: ${useColorPalatte} }}Color is taken from [option.color Palette](~color) by default. {{ /if }}{{ if: ${hasInherit} }}Can set to `'inherit'` in the `emphasis` state to disable color highlight.{{ /if }}
 
 {{ use: partial-color-desc() }}
 

@@ -27,7 +27,9 @@ What's more, the time attribute of the orinigal dataset would map to a single ti
 
 {{ use: partial-series-name() }}
 
-{{ use: partial-colorby(defaultColorBy="'data'") }}
+{{ use: partial-colorby(
+    defaultColorBy = "'data'"
+) }}
 
 {{ use: partial-rect-layout-width-height(
     componentName = 'thmemRiver',
@@ -103,7 +105,8 @@ Configurations of emphasis state.
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: themeRiver-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'emphasis'
 ) }}
 
 ## blur(Object)
@@ -115,7 +118,8 @@ Configurations of emphasis state.
 Configurations of blur state.
 
 {{ use: themeRiver-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'blur'
 ) }}
 
 ## select(Object)
@@ -127,7 +131,8 @@ Configurations of blur state.
 Configurations of select state.
 
 {{ use: themeRiver-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'select'
 ) }}
 
 {{ use: partial-selected-mode(
@@ -197,6 +202,7 @@ the name of an event or theme.
 #${prefix} itemStyle(Object)
 
 {{ use: partial-item-style(
-    prefix = "#" + ${prefix}
+    prefix = "#" + ${prefix},
+    hasInherit = ${state} === 'emphasis'
 ) }}
 

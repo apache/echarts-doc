@@ -140,7 +140,8 @@ Emphasis state.
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: lines-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'emphasis'
 ) }}
 
 ## blur(Object)
@@ -152,7 +153,8 @@ Emphasis state.
 Configurations of blur state. Available when [emphasis.focus](~series-lines.emphasis.focus) is set.
 
 {{ use: lines-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'blur'
 ) }}
 
 ## select(Object)
@@ -164,7 +166,8 @@ Configurations of blur state. Available when [emphasis.focus](~series-lines.emph
 Configurations of select state. Available when [selectedMode](~series-lines.selectedMode) is set.
 
 {{ use: lines-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'select'
 ) }}
 
 {{ use: partial-selected-mode(
@@ -213,7 +216,8 @@ Label of a single line. Available when [polyline](~series-lines.polyline) is not
 ### emphasis(Object)
 
 {{ use: lines-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'emphasis'
 ) }}
 
 ### blur(Object)
@@ -223,7 +227,8 @@ Label of a single line. Available when [polyline](~series-lines.polyline) is not
 ) }}
 
 {{ use: lines-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'blur'
 ) }}
 
 ### select(Object)
@@ -233,7 +238,8 @@ Label of a single line. Available when [polyline](~series-lines.polyline) is not
 ) }}
 
 {{ use: lines-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'select'
 ) }}
 
 {{ use: partial-marker(
@@ -292,7 +298,8 @@ the position of label, options:
 #${prefix} lineStyle(Object)
 
 {{ use: partial-line-style(
-    prefix = '#' + ${prefix}
+    prefix = '#' + ${prefix},
+    hasInherit = ${state} === 'emphasis'
 ) }}
 
 #${prefix} label(Object)

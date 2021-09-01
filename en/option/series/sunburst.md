@@ -70,10 +70,10 @@ If angle of data piece is smaller than this value (in degrees), then text is not
 
 {{ use: partial-label-line(
     prefix = '#' + ${prefix},
-    length2 = ${isNormal},
-    minTurnAngle = ${isNormal},
-    showAbove = ${isNormal},
-    smooth = ${isNormal}
+    length2 = ${state} === 'normal',
+    minTurnAngle = ${state} === 'normal',
+    showAbove = ${state} === 'normal',
+    smooth = ${state} === 'normal'
 ) }}
 
 
@@ -94,7 +94,8 @@ If angle of data piece is smaller than this value (in degrees), then text is not
     defaultBorderWidth = 1,
     defaultBorderColor = "'white'",
     defaultOpacity = 1,
-    useDecal = ${isNormal}
+    hasInherit = ${state} === 'emphasis',
+    useDecal = ${state} === 'normal'
 ) }}
 
 
@@ -103,12 +104,12 @@ If angle of data piece is smaller than this value (in degrees), then text is not
 
 {{ use: partial-sunburst-label-props(
     prefix = ${prefix},
-    isNormal = ${isNormal}
+    state = ${state}
 ) }}
 
 {{ use: partial-sunburst-itemStyle-props(
     prefix = ${prefix},
-    isNormal = ${isNormal}
+    state = ${state}
 ) }}
 
 
@@ -203,14 +204,14 @@ Like `target` attribute of HTML `<a>`, which can either be `'blank'` or `'self'`
 
 {{ use: partial-sunburst-state(
     prefix = "##",
-    isNormal = true
+    state = 'normal'
 ) }}
 
 ## labelLayout(Object|Function)
 
 {{ use: partial-sunburst-state(
     prefix = "#",
-    isNormal = true
+    state = 'normal'
 ) }}
 
 ### emphasis
@@ -218,7 +219,8 @@ Like `target` attribute of HTML `<a>`, which can either be `'blank'` or `'self'`
 Emphasis state.
 
 {{ use: partial-sunburst-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'emphasis'
 ) }}
 
 ### blur
@@ -226,7 +228,8 @@ Emphasis state.
 Blur state.
 
 {{ use: partial-sunburst-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'blur'
 ) }}
 
 ### select
@@ -234,7 +237,8 @@ Blur state.
 Select state.
 
 {{ use: partial-sunburst-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'select'
 ) }}
 
 ### children(Array)
@@ -271,12 +275,12 @@ If there is no `name`, whether need to render it.
 
 {{ use: partial-sunburst-label-props(
     prefix = "#",
-    isNormal = true
+    state = 'normal'
 ) }}
 
 {{ use: partial-sunburst-itemStyle-props(
     prefix = "#",
-    isNormal = true
+    state = 'normal'
 ) }}
 
 ## emphasis
@@ -288,7 +292,8 @@ Configurations of emphasis state.
 ) }}
 
 {{ use: partial-sunburst-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'emphasis'
 ) }}
 
 ## blur
@@ -296,7 +301,8 @@ Configurations of emphasis state.
 Configurations of blur state. Available when [emphasis.focus](~series-sunburst.emphasis.focus) is set.
 
 {{ use: partial-sunburst-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'blur'
 ) }}
 
 ## select
@@ -304,7 +310,8 @@ Configurations of blur state. Available when [emphasis.focus](~series-sunburst.e
 Configurations of select state. Available when [selectedMode](~series-sunburst.selectedMode) is set.
 
 {{ use: partial-sunburst-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'select'
 ) }}
 
 {{ use: partial-selected-mode(
@@ -355,7 +362,8 @@ series: {
 Emphasis state.
 
 {{ use: partial-sunburst-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'emphasis'
 ) }}
 
 ### blur
@@ -363,7 +371,8 @@ Emphasis state.
 Blur state.
 
 {{ use: partial-sunburst-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'blur'
 ) }}
 
 ### select
@@ -371,7 +380,8 @@ Blur state.
 Select state.
 
 {{ use: partial-sunburst-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'select'
 ) }}
 
 {{ use: partial-animation(

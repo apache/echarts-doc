@@ -84,6 +84,7 @@ Configurations of emphasis state.
 {{ use: partial-item-style(
     prefix = "###",
     name = "boxplot",
+    hasInherit = true,
     defaultColor = "#fff",
     defaultBorderWidth = 2,
     defaultShadowBlur = 5,
@@ -201,7 +202,8 @@ Emphasis state of a single data.
 
 {{ use: partial-item-style(
     prefix = "####",
-    name = "boxplot"
+    name = "boxplot",
+    hasInherit = true
 ) }}
 
 ### blur(Object)

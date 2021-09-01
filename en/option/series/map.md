@@ -140,13 +140,17 @@ Color of the area.
 
 Emphasis state of specified region.
 
-{{ use: map-region-state() }}
+{{ use: map-region-state(
+    state = 'emphasis'
+) }}
 
 ### select(Object)
 
 Select state of polygon.
 
-{{ use: map-region-state() }}
+{{ use: map-region-state(
+    state = 'select'
+) }}
 
 {{ use: partial-tooltip-in-series-data() }}
 
@@ -179,7 +183,8 @@ The color of the map area.
 {{ use: partial-color-desc() }}
 
 {{ use: partial-item-style(
-    prefix = '####'
+    prefix = '####',
+    hasInherit = ${state} === 'emphasis'
 ) }}
 
 #### label(Object)

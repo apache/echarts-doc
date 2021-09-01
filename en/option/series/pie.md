@@ -27,7 +27,9 @@ For multiple pie series in a single chart, you may use [left](~series-pie.left),
 
 {{ use: partial-series-name() }}
 
-{{ use: partial-colorby(defaultColorBy="'data'") }}
+{{ use: partial-colorby(
+    defaultColorBy = "'data'"
+) }}
 
 {{ use: partial-legend-hover-link() }}
 
@@ -206,7 +208,8 @@ Size of scale. Available when [emphasis.scale](~series-pie.emphasis.scale) is se
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: pie-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'emphasis'
 ) }}
 
 ## blur(Object)
@@ -218,7 +221,8 @@ Size of scale. Available when [emphasis.scale](~series-pie.emphasis.scale) is se
 Configurations of blur state. Available when [emphasis.focus](~series-pie.emphasis.focus) is set.
 
 {{ use: pie-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'blur'
 ) }}
 
 ## select(Object)
@@ -230,7 +234,8 @@ Configurations of blur state. Available when [emphasis.focus](~series-pie.emphas
 Configurations of select state. Available when [selectedMode](~series-pie.selectedMode) is set.
 
 {{ use: pie-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'select'
 ) }}
 
 {{ use: component-circular-layout(
@@ -309,7 +314,8 @@ The label configuration of a single sector.
 ### emphasis(Object)
 
 {{ use: pie-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'emphasis'
 ) }}
 
 ### blur(Object)
@@ -319,7 +325,8 @@ The label configuration of a single sector.
 ) }}
 
 {{ use: pie-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'blur'
 ) }}
 
 ### select(Object)
@@ -329,7 +336,8 @@ The label configuration of a single sector.
 ) }}
 
 {{ use: pie-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'select'
 ) }}
 
 {{ use: partial-tooltip-in-series-data() }}
@@ -447,7 +455,8 @@ Label rotation.
 #${prefix} itemStyle(Object)
 
 {{ use: partial-item-style(
-    prefix = "#" + ${prefix}
+    prefix = "#" + ${prefix},
+    hasInherit = ${state} === 'emphasis'
 ) }}
 
 {{ use: partial-pie-border-radius(

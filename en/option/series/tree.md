@@ -147,7 +147,8 @@ Configurations of emphasis state.
 ) }}
 
 {{ use: tree-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'emphasis'
 ) }}
 
 ## blur(Object)
@@ -159,7 +160,8 @@ Configurations of emphasis state.
 Configurations of blur state. Available when [emphasis.focus](~series-tree.emphasis.focus) is set.
 
 {{ use: tree-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'blur'
 ) }}
 
 ## select(Object)
@@ -171,7 +173,8 @@ Configurations of blur state. Available when [emphasis.focus](~series-tree.empha
 Configurations of select state. Available when [selectedMode](~series-tree.selectedMode) is set.
 
 {{ use: tree-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'select'
 ) }}
 
 {{ use: partial-selected-mode(
@@ -206,7 +209,8 @@ The style of the leaf node in the tree.
 Emphasis state of leaves nodes.
 
 {{ use: tree-node-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'emphasis'
 ) }}
 
 ### blur(Object)
@@ -218,7 +222,8 @@ Emphasis state of leaves nodes.
 Blur state of leaves nodes.
 
 {{ use: tree-node-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'blur'
 ) }}
 
 ### select(Object)
@@ -230,7 +235,8 @@ Blur state of leaves nodes.
 Select state of leaves nodes.
 
 {{ use: tree-node-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'select'
 ) }}
 
 ## data(Object)
@@ -302,7 +308,8 @@ The label of the node.
 Emphasis state of a single node.
 
 {{ use: tree-node-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'emphasis'
 ) }}
 
 ### blur(Object)
@@ -314,7 +321,8 @@ Emphasis state of a single node.
 Blur state of a single node.
 
 {{ use: tree-node-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'blur'
 ) }}
 
 ### select(Object)
@@ -326,7 +334,8 @@ Blur state of a single node.
 Select state of a single node.
 
 {{ use: tree-node-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'select'
 ) }}
 
 {{ use: partial-tooltip-in-series-data() }}
@@ -374,7 +383,8 @@ The curvature of the tree edge.
 该节点的样式。
 
 {{ use: partial-item-style(
-    prefix = "#" + ${prefix}
+    prefix = "#" + ${prefix},
+    hasInherit = ${state} === 'emphasis'
 ) }}
 
 #${prefix} lineStyle(Object)
@@ -401,7 +411,8 @@ Defines the style of the tree edge.
 Defines the style of the tree edge.
 
 {{ use: partial-tree-line-style(
-    prefix = "#" + ${prefix}
+    prefix = "#" + ${prefix},
+    hasInherit = ${state} === 'emphasis'
 ) }}
 
 
@@ -409,10 +420,12 @@ Defines the style of the tree edge.
 {{ target: tree-state }}
 
 {{ use: tree-node-state(
-    prefix = ${prefix}
+    prefix = ${prefix},
+    state = ${state}
 ) }}
 
 {{ use: tree-edge-state(
-    prefix = ${prefix}
+    prefix = ${prefix},
+    state = ${state}
 ) }}
 

@@ -16,7 +16,9 @@
 
 {{ use: partial-series-name() }}
 
-{{ use: partial-colorby(defaultColorBy="'data'") }}
+{{ use: partial-colorby(
+    defaultColorBy = "'data'"
+) }}
 
 ## min(number) = 0
 
@@ -121,7 +123,8 @@ Configurations of emphasis state.
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: partial-funnel-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'emphasis'
 ) }}
 
 ## blur(Object)
@@ -133,7 +136,8 @@ Configurations of emphasis state.
 Configurations of blur state. Available when [emphasis.focus](~series-funnel.emphasis.focus) is set.
 
 {{ use: partial-funnel-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'blur'
 ) }}
 
 ## select(Object)
@@ -145,7 +149,8 @@ Configurations of blur state. Available when [emphasis.focus](~series-funnel.emp
 Configurations of select state. Available when [selectedMode](~series-funnel.selectedMode) is set.
 
 {{ use: partial-funnel-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'select'
 ) }}
 
 {{ use: partial-selected-mode(
@@ -219,7 +224,8 @@ The label configuration of a single data item.
 ### emphasis(Object)
 
 {{ use: partial-funnel-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'emphasis'
 ) }}
 
 ### blur(Object)
@@ -229,7 +235,8 @@ The label configuration of a single data item.
 ) }}
 
 {{ use: partial-funnel-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'blur'
 ) }}
 
 ### select(Object)
@@ -239,7 +246,8 @@ The label configuration of a single data item.
 ) }}
 
 {{ use: partial-funnel-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'select'
 ) }}
 
 {{ use: partial-tooltip-in-series-data() }}
@@ -285,7 +293,8 @@ The label configuration of a single data item.
 #${prefix} itemStyle(Object)
 
 {{ use: partial-item-style(
-    prefix = "#" + ${prefix}
+    prefix = "#" + ${prefix},
+    hasInherit = ${state} === 'emphasis'
 ) }}
 
 

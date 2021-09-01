@@ -81,7 +81,8 @@ Configurations of emphasis state.
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: heatmap-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'emphasis'
 ) }}
 
 ## blur(Object)
@@ -93,7 +94,8 @@ Configurations of emphasis state.
 Configurations of blur state. Available when [emphasis.focus](~series-heatmap.emphasis.focus) is set.
 
 {{ use: heatmap-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'blur'
 ) }}
 
 ## select(Object)
@@ -105,7 +107,8 @@ Configurations of blur state. Available when [emphasis.focus](~series-heatmap.em
 Configurations of select state. Available when [selectedMode](~series-heatmap.selectedMode) is set.
 
 {{ use: heatmap-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'select'
 ) }}
 
 {{ use: partial-selected-mode(
@@ -160,7 +163,8 @@ Style of a single data point. It is valid with [coordinateSystem](~series-heatma
 #### itemStyle(Object)
 
 {{ use: partial-item-style(
-    prefix = "####"
+    prefix = "####",
+    hasInherit = true
 ) }}
 
 #### label(Object)
@@ -193,7 +197,8 @@ Style of a single data point. It is valid with [coordinateSystem](~series-heatma
 #${prefix} itemStyle(Object)
 
 {{ use: partial-item-style(
-    prefix = "#" + ${prefix}
+    prefix = "#" + ${prefix},
+    hasInherit = ${state} === 'emphasis'
 ) }}
 
 #${prefix} label(Object)

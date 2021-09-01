@@ -136,7 +136,8 @@ Specify which layer is set, value starts from 0.
 ### emphasis(Object)
 
 {{ use: sankey-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'emphasis'
 ) }}
 
 ### blur(Object)
@@ -146,7 +147,8 @@ Specify which layer is set, value starts from 0.
 ) }}
 
 {{ use: sankey-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'blur'
 ) }}
 
 ### select(Object)
@@ -156,7 +158,8 @@ Specify which layer is set, value starts from 0.
 ) }}
 
 {{ use: sankey-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'select'
 ) }}
 
 ## label(Object)
@@ -205,7 +208,8 @@ Configurations of emphasis state.
 ) }}
 
 {{ use: sankey-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'emphasis'
 ) }}
 
 ## blur(Object)
@@ -217,7 +221,8 @@ Configurations of emphasis state.
 Configurations of blur state. Available when [emphasis.focus](~series-sankey.emphasis.focus) is set.
 
 {{ use: sankey-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'blur'
 ) }}
 
 ## select(Object)
@@ -229,7 +234,8 @@ Configurations of blur state. Available when [emphasis.focus](~series-sankey.emp
 Configurations of selected state. Available when [selectedMode](~series-sankey.selectedMode) is set.
 
 {{ use: sankey-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'select'
 ) }}
 
 {{ use: partial-selected-mode(
@@ -286,7 +292,8 @@ The lable style of this node.
 ### emphasis(Object)
 
 {{ use: sankey-node-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'emphasis'
 ) }}
 
 ### blur(Object)
@@ -296,7 +303,8 @@ The lable style of this node.
 ) }}
 
 {{ use: sankey-node-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'blur'
 ) }}
 
 ### select(Object)
@@ -306,7 +314,8 @@ The lable style of this node.
 ) }}
 
 {{ use: sankey-node-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'select'
 ) }}
 
 {{ use: partial-tooltip-in-series-data() }}
@@ -354,7 +363,8 @@ The line stlye of edge.
 #### lineStyle(Object)
 
 {{ use: partial-sankey-line-style(
-    prefix = "####"
+    prefix = "####",
+    hasInherit = true
 ) }}
 
 ### blur(Object)
@@ -437,7 +447,8 @@ The curveness of the edge in Sankey diagram.
 
 {{ use: partial-item-style(
     prefix = "#" + ${prefix},
-    useDecal = true
+    useDecal = true,
+    hasInherit = ${state} === 'emphasis'
 ) }}
 
 
@@ -454,12 +465,14 @@ The curveness of the edge in Sankey diagram.
 #${prefix} itemStyle(Object)
 
 {{ use: partial-item-style(
-    prefix = "#" + ${prefix}
+    prefix = "#" + ${prefix},
+    hasInherit = ${state} === 'emphasis'
 ) }}
 
 #${prefix} lineStyle(Object)
 
 {{ use: partial-sankey-line-style(
-    prefix = "#" + ${prefix}
+    prefix = "#" + ${prefix},
+    hasInherit = ${state} === 'emphasis'
 ) }}
 

@@ -11,7 +11,7 @@ Graphic style of ${name}, `emphasis` is the style when it is highlighted, like b
 
 <ExampleUIControlColor />
 
-${name} color. {{ if: ${useColorPalatte} }} Color is taken from [option.color Palette](~color) by default. {{ /if }}
+${name} color. {{ if: ${useColorPalatte} }}Color is taken from [option.color Palette](~color) by default. {{ /if }}{{ if: ${hasInherit} }}Can set to `'inherit'` in the `emphasis` state to disable color highlight.{{ /if }}
 
 {{ use: partial-color-desc() }}
 

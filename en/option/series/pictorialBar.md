@@ -118,7 +118,8 @@ Configurations of emphasis state.
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: pictoialBar-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'emphasis'
 ) }}
 
 ## blur(Object)
@@ -130,7 +131,8 @@ Configurations of emphasis state.
 Configurations of blur state. Available when [emphasis.focus](~series-pictoialBar.emphasis.focus) is set.
 
 {{ use: pictoialBar-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'blur'
 ) }}
 
 ## select(Object)
@@ -146,7 +148,8 @@ Configurations of select state. Available when [selectedMode](~series-pictoialBa
 ) }}
 
 {{ use: pictoialBar-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'select'
 ) }}
 
 {{ use: partial-barGrid(
@@ -222,7 +225,8 @@ The style setting of the text label in a single bar.
 Emphasis state of the specified single data.
 
 {{ use: partial-bar-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'emphasis'
 ) }}
 
 ### blur(Object)
@@ -234,7 +238,8 @@ Emphasis state of the specified single data.
 Blur state of the specified single data.
 
 {{ use: partial-bar-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'blur'
 ) }}
 
 ### select(Object)
@@ -246,7 +251,8 @@ Blur state of the specified single data.
 Select state of the specified single data.
 
 {{ use: partial-bar-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'select'
 ) }}
 
 {{ use: partial-tooltip-in-series-data() }}
@@ -641,6 +647,7 @@ series: [{
 #${prefix} itemStyle(Object)
 
 {{ use: partial-item-style(
-    prefix = "#" + ${prefix}
+    prefix = "#" + ${prefix},
+    hasInherit = ${state} === 'emphasis'
 ) }}
 

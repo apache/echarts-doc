@@ -224,7 +224,9 @@ Whether to scale to highlight the node in emphasis state.
     isGraph = true
 ) }}
 
-{{ use: graph-state() }}
+{{ use: graph-state(
+    state = 'emphasis'
+) }}
 
 ## blur(Object)
 
@@ -234,7 +236,9 @@ Whether to scale to highlight the node in emphasis state.
 
 Configurations of blur state. Available when [emphasis.focus](~series-graph.emphasis.focus) is set.
 
-{{ use: graph-state() }}
+{{ use: graph-state(
+    state = 'blur'
+) }}
 
 ## select(Object)
 
@@ -244,7 +248,9 @@ Configurations of blur state. Available when [emphasis.focus](~series-graph.emph
 
 Configurations of select state. Available when [selectedMode](~series-graph.selectedMode) is set.
 
-{{ use: graph-state() }}
+{{ use: graph-state(
+    state = 'select'
+) }}
 
 {{ use: partial-selected-mode(
     version = '5.0.0'
@@ -287,7 +293,9 @@ The label style of node in this category.
 
 Emphasis state of nodes in this category.
 
-{{ use: graph-node-state() }}
+{{ use: graph-node-state(
+    state = 'emphasis'
+) }}
 
 ### blur(Object)
 
@@ -297,7 +305,9 @@ Emphasis state of nodes in this category.
 
 Blur state of nodes in this category.
 
-{{ use: graph-node-state() }}
+{{ use: graph-node-state(
+    state = 'blur'
+) }}
 
 ### select(Object)
 
@@ -307,7 +317,9 @@ Blur state of nodes in this category.
 
 Select state of nodes in this category.
 
-{{ use: graph-node-state() }}
+{{ use: graph-node-state(
+    state = 'select'
+) }}
 
 ## autoCurveness(boolean|number|Array) = false
 
@@ -393,7 +405,9 @@ The label style of this node.
 
 Emphasis state of specified node.
 
-{{ use: graph-node-state() }}
+{{ use: graph-node-state(
+    state = 'emphasis'
+) }}
 
 ### blur(Object)
 
@@ -403,7 +417,9 @@ Emphasis state of specified node.
 
 Blur state of specified node.
 
-{{ use: graph-node-state() }}
+{{ use: graph-node-state(
+    state = 'blur'
+) }}
 
 ### select(Object)
 
@@ -413,7 +429,9 @@ Blur state of specified node.
 
 Select state of specified node.
 
-{{ use: graph-node-state() }}
+{{ use: graph-node-state(
+    state = 'select'
+) }}
 
 {{ use: partial-tooltip-in-series-data() }}
 
@@ -470,7 +488,9 @@ The curveness of edge, supporting values from 0 to 1. The curveness will be larg
 
 Emphasis state of specified edge.
 
-{{ use: graph-edge-state() }}
+{{ use: graph-edge-state(
+    state = 'emphasis'
+) }}
 
 ### blur(Object)
 
@@ -480,7 +500,9 @@ Emphasis state of specified edge.
 
 Blur state of specified edge.
 
-{{ use: graph-edge-state() }}
+{{ use: graph-edge-state(
+    state = 'blur'
+) }}
 
 ### select(Object)
 
@@ -490,7 +512,9 @@ Blur state of specified edge.
 
 Select state of specified edge.
 
-{{ use: graph-edge-state() }}
+{{ use: graph-edge-state(
+    state = 'select'
+) }}
 
 ### symbol(Array|string)
 
@@ -566,7 +590,8 @@ Label position, options：
 ### itemStyle(Object)
 
 {{ use: partial-item-style(
-    prefix = "###"
+    prefix = "###",
+    hasInherit = ${state} === 'emphasis'
 ) }}
 
 ### lineStyle(Object)
@@ -597,7 +622,8 @@ Label position, options：
 #### itemStyle(Object)
 
 {{ use: partial-item-style(
-    prefix = "####"
+    prefix = "####",
+    hasInherit = ${state} === 'emphasis'
 ) }}
 
 #### label(Object)
@@ -615,7 +641,8 @@ Label position, options：
 
 {{ use: partial-line-style(
     prefix = "####",
-    hasCurveness = true
+    hasCurveness = true,
+    hasInherit = ${state} === 'emphasis'
 ) }}
 
 #### label(Object)
