@@ -132,7 +132,8 @@ option = {
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: heatmap-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'emphasis'
 ) }}
 
 ## blur(Object)
@@ -144,7 +145,8 @@ option = {
 淡出状态的图形样式。开启 [emphasis.focus](~series-heatmap.emphasis.focus) 后有效。
 
 {{ use: heatmap-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'blur'
 ) }}
 
 ## select(Object)
@@ -156,7 +158,8 @@ option = {
 选中状态的图形样式。开启 [selectedMode](~series-heatmap.selectedMode) 后有效。
 
 {{ use: heatmap-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'select'
 ) }}
 
 {{ use: partial-selected-mode(
@@ -211,7 +214,8 @@ option = {
 #### itemStyle(Object)
 
 {{ use: partial-item-style(
-    prefix = "####"
+    prefix = "####",
+    hasInherit = true
 ) }}
 
 #### label(Object)
@@ -244,7 +248,8 @@ option = {
 #${prefix} itemStyle(Object)
 
 {{ use: partial-item-style(
-    prefix = "#" + ${prefix}
+    prefix = "#" + ${prefix},
+    hasInherit = ${state} === 'emphasis'
 ) }}
 
 #${prefix} label(Object)

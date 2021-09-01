@@ -137,13 +137,17 @@
 
 该数据所在区域的多边形高亮状态
 
-{{ use: map-region-state() }}
+{{ use: map-region-state(
+    state = 'emphasis'
+) }}
 
 ### select(Object)
 
 该数据所在区域的多边形选中状态
 
-{{ use: map-region-state() }}
+{{ use: map-region-state(
+    state = 'select'
+) }}
 
 {{ use: partial-tooltip-in-series-data() }}
 
@@ -176,7 +180,8 @@
 {{ use: partial-color-desc() }}
 
 {{ use: partial-item-style(
-    prefix = '####'
+    prefix = '####',
+    hasInherit = ${state} === 'emphasis'
 ) }}
 
 #### label(Object)

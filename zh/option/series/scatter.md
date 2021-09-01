@@ -165,7 +165,7 @@ const option = {
 
 {{ use: scatter-state(
     prefix = "##",
-    isNormal = true
+    state = 'emphasis'
 ) }}
 
 ## blur(Object)
@@ -177,7 +177,8 @@ const option = {
 淡出状态的配置。开启 [emphasis.focus](~series-scatter.emphasis.focus) 后有效。
 
 {{ use: scatter-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'blur'
 ) }}
 
 ## select(Object)
@@ -189,7 +190,8 @@ const option = {
 选中状态的配置。开启 [selectedMode](~series-scatter.selectedMode) 后有效。
 
 {{ use: scatter-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'select'
 ) }}
 
 {{ use: partial-selected-mode(
@@ -267,7 +269,8 @@ const option = {
 单个数据的高亮图形和标签样式。
 
 {{ use: scatter-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'emphasis'
 ) }}
 
 ### blur(Object)
@@ -279,7 +282,8 @@ const option = {
 单个数据的淡出图形和标签样式。
 
 {{ use: scatter-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'blur'
 ) }}
 
 ### select(Object)
@@ -291,7 +295,8 @@ const option = {
 单个数据的选中图形和标签样式。
 
 {{ use: scatter-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'select'
 ) }}
 
 {{ use: partial-tooltip-in-series-data() }}
@@ -348,6 +353,7 @@ const option = {
 #${prefix} itemStyle(Object)
 
 {{ use: partial-item-style(
-    prefix = "#" + ${prefix}
+    prefix = "#" + ${prefix},
+    hasInherit = ${state} === 'emphasis'
 ) }}
 

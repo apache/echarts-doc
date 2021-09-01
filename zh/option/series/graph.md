@@ -229,7 +229,9 @@ edgeSymbol: ['circle', 'arrow']
     isGraph = true
 ) }}
 
-{{ use: graph-state() }}
+{{ use: graph-state(
+    state = 'emphasis'
+) }}
 
 ## blur(Object)
 
@@ -239,7 +241,9 @@ edgeSymbol: ['circle', 'arrow']
 
 淡出状态的图形样式。开启 [emphasis.focus](~series-graph.emphasis.focus) 后有效。
 
-{{ use: graph-state() }}
+{{ use: graph-state(
+    state = 'blur'
+) }}
 
 ## select(Object)
 
@@ -249,7 +253,9 @@ edgeSymbol: ['circle', 'arrow']
 
 选中状态的图形样式。开启 [selectedMode](~series-graph.selectedMode) 后有效。
 
-{{ use: graph-state() }}
+{{ use: graph-state(
+    state = 'select'
+) }}
 
 {{ use: partial-selected-mode(
     version = '5.0.0'
@@ -293,7 +299,9 @@ edgeSymbol: ['circle', 'arrow']
 
 该类目节点的高亮状态。
 
-{{ use: graph-node-state() }}
+{{ use: graph-node-state(
+    state = 'emphasis'
+) }}
 
 ### blur(Object)
 
@@ -303,7 +311,9 @@ edgeSymbol: ['circle', 'arrow']
 
 该类目节点的淡出状态。
 
-{{ use: graph-node-state() }}
+{{ use: graph-node-state(
+    state = 'blur'
+) }}
 
 ### select(Object)
 
@@ -313,7 +323,9 @@ edgeSymbol: ['circle', 'arrow']
 
 该类目节点的选中状态。
 
-{{ use: graph-node-state() }}
+{{ use: graph-node-state(
+    state = 'select'
+) }}
 
 ## autoCurveness(boolean|number|Array) = false
 
@@ -401,7 +413,9 @@ data: [{
 
 该节点的高亮状态。
 
-{{ use: graph-node-state() }}
+{{ use: graph-node-state(
+    state = 'emphasis'
+) }}
 
 ### blur(Object)
 
@@ -411,7 +425,9 @@ data: [{
 
 该节点的淡出状态。
 
-{{ use: graph-node-state() }}
+{{ use: graph-node-state(
+    state = 'blur'
+) }}
 
 ### select(Object)
 
@@ -421,7 +437,9 @@ data: [{
 
 该节点的选中状态。
 
-{{ use: graph-node-state() }}
+{{ use: graph-node-state(
+    state = 'select'
+) }}
 
 {{ use: partial-tooltip-in-series-data() }}
 
@@ -478,7 +496,9 @@ links: [{
 
 该关系边的高亮状态。
 
-{{ use: graph-edge-state() }}
+{{ use: graph-edge-state(
+    state = 'emphasis'
+) }}
 
 ### blur(Object)
 
@@ -488,7 +508,9 @@ links: [{
 
 该关系边的淡出状态。
 
-{{ use: graph-edge-state() }}
+{{ use: graph-edge-state(
+    state = 'blur'
+) }}
 
 ### select(Object)
 
@@ -498,7 +520,9 @@ links: [{
 
 该关系边的选中状态。
 
-{{ use: graph-edge-state() }}
+{{ use: graph-edge-state(
+    state = 'select'
+) }}
 
 ### symbol(Array|string)
 
@@ -574,7 +598,8 @@ links: [{
 ### itemStyle(Object)
 
 {{ use: partial-item-style(
-    prefix = "###"
+    prefix = "###",
+    hasInherit = ${state} === 'emphasis'
 ) }}
 
 ### lineStyle(Object)
@@ -605,7 +630,8 @@ links: [{
 #### itemStyle(Object)
 
 {{ use: partial-item-style(
-    prefix = "####"
+    prefix = "####",
+    hasInherit = ${state} === 'emphasis'
 ) }}
 
 #### label(Object)
@@ -623,7 +649,8 @@ links: [{
 
 {{ use: partial-line-style(
     prefix = "####",
-    hasCurveness = true
+    hasCurveness = true,
+    hasInherit = ${state} === 'emphasis'
 ) }}
 
 #### label(Object)

@@ -139,7 +139,8 @@ levels: [{
 ### emphasis(Object)
 
 {{ use: sankey-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'emphasis'
 ) }}
 
 ### blur(Object)
@@ -149,7 +150,8 @@ levels: [{
 ) }}
 
 {{ use: sankey-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'blur'
 ) }}
 
 ### select(Object)
@@ -159,7 +161,8 @@ levels: [{
 ) }}
 
 {{ use: sankey-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'select'
 ) }}
 
 ## label(Object)
@@ -208,7 +211,8 @@ levels: [{
 ) }}
 
 {{ use: sankey-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'emphasis'
 ) }}
 
 ## blur(Object)
@@ -220,7 +224,8 @@ levels: [{
 桑基图的淡出状态。开启 [emphasis.focus](~series-sankey.emphasis.focus) 后有效。
 
 {{ use: sankey-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'blur'
 ) }}
 
 ## select(Object)
@@ -232,7 +237,8 @@ levels: [{
 桑基图的选中状态。开启 [selectedMode](~series-sankey.selectedMode) 后有效。
 
 {{ use: sankey-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'select'
 ) }}
 
 {{ use: partial-selected-mode(
@@ -289,7 +295,8 @@ data: [{
 ### emphasis(Object)
 
 {{ use: sankey-node-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'emphasis'
 ) }}
 
 ### blur(Object)
@@ -299,7 +306,8 @@ data: [{
 ) }}
 
 {{ use: sankey-node-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'blur'
 ) }}
 
 ### select(Object)
@@ -309,7 +317,8 @@ data: [{
 ) }}
 
 {{ use: sankey-node-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'select'
 ) }}
 
 {{ use: partial-tooltip-in-series-data() }}
@@ -357,7 +366,8 @@ links: [{
 #### lineStyle(Object)
 
 {{ use: partial-sankey-line-style(
-    prefix = "####"
+    prefix = "####",
+    hasInherit = true
 ) }}
 
 ### blur(Object)
@@ -440,7 +450,8 @@ links: [{
 
 {{ use: partial-item-style(
     prefix = "#" + ${prefix},
-    useDecal = true
+    useDecal = true,
+    hasInherit = ${state} === 'emphasis'
 ) }}
 
 
@@ -457,12 +468,14 @@ links: [{
 #${prefix} itemStyle(Object)
 
 {{ use: partial-item-style(
-    prefix = "#" + ${prefix}
+    prefix = "#" + ${prefix},
+    hasInherit = ${state} === 'emphasis'
 ) }}
 
 #${prefix} lineStyle(Object)
 
 {{ use: partial-sankey-line-style(
-    prefix = "#" + ${prefix}
+    prefix = "#" + ${prefix},
+    hasInherit = ${state} === 'emphasis'
 ) }}
 

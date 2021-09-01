@@ -121,7 +121,8 @@ const option = {
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: radar-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'emphasis'
 ) }}
 
 ## blur(Object)
@@ -133,7 +134,8 @@ const option = {
 淡出状态的配置。开启 [emphasis.focus](~series-radar.emphasis.focus) 后有效。
 
 {{ use: radar-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'blur'
 ) }}
 
 ## select(Object)
@@ -145,7 +147,8 @@ const option = {
 选中状态的配置。开启 [selectedMode](~series-radar.selectedMode) 后有效。
 
 {{ use: radar-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'select'
 ) }}
 
 {{ use: partial-selected-mode(
@@ -231,7 +234,8 @@ data : [
 单个数据项样式的高亮状态。
 
 {{ use: radar-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'emphasis'
 ) }}
 
 ### blur(Object)
@@ -243,7 +247,8 @@ data : [
 单个数据项样式的淡出状态。
 
 {{ use: radar-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'blur'
 ) }}
 
 ### select(Object)
@@ -255,7 +260,8 @@ data : [
 单个数据项样式的选中状态。
 
 {{ use: radar-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'select'
 ) }}
 
 {{ use: partial-tooltip-in-series-data() }}
@@ -286,7 +292,8 @@ data : [
 #${prefix} itemStyle(Object)
 
 {{ use: partial-item-style(
-    prefix = "#" + ${prefix}
+    prefix = "#" + ${prefix},
+    hasInherit = ${state} === 'emphasis'
 ) }}
 
 #${prefix} label(Object)
@@ -300,7 +307,8 @@ data : [
 
 {{ use: partial-line-style(
     prefix = "#" + ${prefix},
-    defaultJoin = "'round'"
+    defaultJoin = "'round'",
+    hasInherit = ${state} === 'emphasis'
 ) }}
 
 #${prefix} areaStyle(Object)

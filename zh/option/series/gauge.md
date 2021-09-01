@@ -449,7 +449,8 @@ formatter: function (value) {
 ### itemStyle(*)
 
 {{ use: partial-item-style(
-    prefix = "###"
+    prefix = "###",
+    hasInherit = true
 ) }}
 
 {{ use: partial-gauge-title-detail(

@@ -238,7 +238,9 @@ dispatchAction({
 ```
 
 3 指定 geo 组件中的 region 名，根据 tooltip 的配置项显示提示框。
-{{ use: partial-version(version: '5.1.0') }}
+
+{{ use: partial-version(version = '5.1.0') }}
+
 ```js
 dispatchAction({
     type: 'showTip',

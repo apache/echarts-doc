@@ -203,7 +203,9 @@ const option = {
 
 {{ use: partial-focus-blur-scope() }}
 
-{{ use: line-state() }}
+{{ use: line-state(
+    state = 'emphasis'
+) }}
 
 ### endLabel(Object)
 
@@ -226,7 +228,9 @@ const option = {
 
 折线图的淡出状态。开启 [emphasis.focus](~series-line.emphasis.focus) 后有效。
 
-{{ use: line-state() }}
+{{ use: line-state(
+    state = 'blur'
+) }}
 
 ### endLabel(Object)
 
@@ -245,7 +249,9 @@ const option = {
 
 折线图的选中状态。开启 [selectedMode](~series-line.selectedMode) 后有效。
 
-{{ use: line-state() }}
+{{ use: line-state(
+    state = 'select'
+) }}
 
 ### endLabel(Object)
 
@@ -365,19 +371,25 @@ const option = {
 
 单个拐点的高亮样式和标签设置。
 
-{{ use: line-item-state() }}
+{{ use: line-item-state(
+    state = 'emphasis'
+) }}
 
 ### blur(Object)
 
 单个拐点的淡出样式和标签设置。
 
-{{ use: line-item-state() }}
+{{ use: line-item-state(
+    state = 'blur'
+) }}
 
 ### select(Object)
 
 单个拐点的选中样式和标签设置。
 
-{{ use: line-item-state() }}
+{{ use: line-item-state(
+    state = 'select'
+) }}
 
 {{ use: partial-tooltip-in-series-data() }}
 
@@ -430,14 +442,16 @@ const option = {
 ### itemStyle(Object)
 
 {{ use: partial-item-style(
-    prefix = "###"
+    prefix = "###",
+    hasInherit = ${state} === 'emphasis'
 ) }}
 
 ### lineStyle(Object)
 
 {{ use: partial-line-style(
     prefix = "###",
-    defaultWidth = 2
+    defaultWidth = 2,
+    hasInherit = ${state} === 'emphasis'
 ) }}
 
 ### areaStyle(Object)
@@ -459,6 +473,7 @@ const option = {
 #### itemStyle(Object)
 
 {{ use: partial-item-style(
-    prefix = "####"
+    prefix = "####",
+    hasInherit = ${state} === 'emphasis'
 ) }}
 

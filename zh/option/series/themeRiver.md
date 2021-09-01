@@ -176,7 +176,8 @@ const option = {
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: themeRiver-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'emphasis'
 ) }}
 
 ## blur(Object)
@@ -188,7 +189,8 @@ const option = {
 淡出状态的配置。
 
 {{ use: themeRiver-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'blur'
 ) }}
 
 ## select(Object)
@@ -200,7 +202,8 @@ const option = {
 选中状态的配置。
 
 {{ use: themeRiver-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'select'
 ) }}
 
 {{ use: partial-selected-mode(
@@ -270,6 +273,7 @@ data: [
 #${prefix} itemStyle(Object)
 
 {{ use: partial-item-style(
-    prefix = "#" + ${prefix}
+    prefix = "#" + ${prefix},
+    hasInherit = ${state} === 'emphasis'
 ) }}
 

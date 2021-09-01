@@ -2,7 +2,7 @@
 
 ## colorBy(string) = ${defaultColorBy|default("'series'")}
 
-{{ use: partial-version(version: '5.2.0') }}
+{{ use: partial-version(version = '5.2.0') }}
 
 从调色盘 [option.color](~color) 中取色的策略，可取值为：
 

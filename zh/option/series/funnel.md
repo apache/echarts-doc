@@ -143,7 +143,8 @@ option = {
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: partial-funnel-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'emphasis'
 ) }}
 
 ## blur(Object)
@@ -155,7 +156,8 @@ option = {
 淡出时的图形样式和标签样式。开启 [emphasis.focus](~series-funnel.emphasis.focus) 后有效
 
 {{ use: partial-funnel-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'blur'
 ) }}
 
 ## select(Object)
@@ -167,7 +169,8 @@ option = {
 数据选中时的图形样式和标签样式。开启 [selectedMode](~series-funnel.selectedMode) 后有效。
 
 {{ use: partial-funnel-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'select'
 ) }}
 
 {{ use: partial-selected-mode(
@@ -241,7 +244,8 @@ option = {
 ### emphasis(Object)
 
 {{ use: partial-funnel-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'emphasis'
 ) }}
 
 ### blur(Object)
@@ -251,7 +255,8 @@ option = {
 ) }}
 
 {{ use: partial-funnel-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'blur'
 ) }}
 
 ### select(Object)
@@ -261,7 +266,8 @@ option = {
 ) }}
 
 {{ use: partial-funnel-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'select'
 ) }}
 
 {{ use: partial-tooltip-in-series-data() }}
@@ -307,7 +313,8 @@ option = {
 #${prefix} itemStyle(Object)
 
 {{ use: partial-item-style(
-    prefix = "#" + ${prefix}
+    prefix = "#" + ${prefix},
+    hasInherit = ${state} === 'emphasis'
 ) }}
 
 

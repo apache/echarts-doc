@@ -151,7 +151,7 @@ option = {
 {{ use: partial-bar-state(
     prefix = "#",
     topLevel = true,
-    isNormal = true
+    state = 'normal'
 ) }}
 
 ## labelLayout(Object|Function)
@@ -169,7 +169,7 @@ option = {
 {{ use: partial-bar-state(
     prefix = "##",
     topLevel = true,
-    isNormal = false
+    state = 'emphasis'
 ) }}
 
 ## blur(Object)
@@ -179,7 +179,7 @@ option = {
 {{ use: partial-bar-state(
     prefix = "##",
     topLevel = true,
-    isNormal = false
+    state = 'blur'
 ) }}
 
 ## select(Object)
@@ -189,7 +189,7 @@ option = {
 {{ use: partial-bar-state(
     prefix = "##",
     topLevel = true,
-    isNormal = false
+    state = 'select'
 ) }}
 
 {{ use: partial-selected-mode(
@@ -262,7 +262,7 @@ option = {
 {{ use: partial-bar-state(
     prefix = "##",
     topLevel = false,
-    isNormal = true
+    state = 'normal'
 ) }}
 
 ### emphasis(Object)
@@ -272,7 +272,7 @@ option = {
 {{ use: partial-bar-state(
     prefix = "###",
     topLevel = false,
-    isNormal = false
+    state = 'emphasis'
 ) }}
 
 ### blur(Object)
@@ -286,7 +286,7 @@ option = {
 {{ use: partial-bar-state(
     prefix = "###",
     topLevel = false,
-    isNormal = false
+    state = 'blur'
 ) }}
 
 ### select(Object)
@@ -300,7 +300,7 @@ option = {
 {{ use: partial-bar-state(
     prefix = "###",
     topLevel = false,
-    isNormal = false
+    state = 'select'
 ) }}
 
 {{ use: partial-clip(
@@ -374,7 +374,7 @@ option = {
 
 + 极坐标系柱状图除了上述取值之外，还支持：`start` / `insideStart` / `middle` / `insideEnd` / `end`。
 
-{{ use: partial-version(version: '5.2.0') }}
+{{ use: partial-version(version = '5.2.0') }}
 
 ~[800x500](${galleryViewPath}doc-example/bar-polar-label-radial-multiple&reset=1&edit=1)
 
@@ -410,9 +410,10 @@ option = {
 
 {{ use: partial-bar-item-style(
     prefix = "#" + ${prefix},
-    useColorPalatte = ${topLevel && isNormal},
-    useDecal = ${isNormal},
-    hasCallback = ${topLevel && isNormal}
+    useColorPalatte = ${topLevel} && ${state} === 'normal',
+    useDecal = ${state} === 'normal',
+    hasCallback = ${topLevel} && ${state} === 'normal',
+    hasInherit = ${state} === 'emphasis'
 ) }}
 
 
@@ -423,7 +424,9 @@ option = {
 
 <ExampleUIControlColor />
 
-柱条的颜色。{{ if: ${useColorPalatte} }} 默认从全局调色盘 [option.color](~color) 获取颜色 {{ /if }}
+柱条的颜色。{{ if: ${useColorPalatte} }} 默认从全局调色盘 [option.color](~color) 获取颜色。 {{ /if }} {{ if: ${hasInherit} }} 在`emphasis`状态中支持设置为`'inherit'`取消高亮。 {{ /if }}
+
+{{ use: partial-color-desc() }}
 
 #${prefix} borderColor(Color) = '#000'
 

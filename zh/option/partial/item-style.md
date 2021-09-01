@@ -11,7 +11,7 @@ ${name} 图形样式。
 
 <ExampleUIControlColor />
 
-${name}图形的颜色。{{ if: ${useColorPalatte} }} 默认从全局调色盘 [option.color](~color) 获取颜色 {{ /if }}
+${name}图形的颜色。{{ if: ${useColorPalatte} }} 默认从全局调色盘 [option.color](~color) 获取颜色。{{ /if }}{{ if: ${hasInherit} }}在`emphasis`状态中支持设置为`'inherit'`取消高亮颜色。{{ /if }}
 
 {{ use: partial-color-desc() }}
 

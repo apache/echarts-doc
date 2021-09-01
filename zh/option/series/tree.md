@@ -189,7 +189,8 @@ const option = {
 ) }}
 
 {{ use: tree-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'emphasis'
 ) }}
 
 ## blur(Object)
@@ -201,7 +202,8 @@ const option = {
 淡出状态的相关配置。开启 [emphasis.focus](~series-tree.emphasis.focus) 后有效。
 
 {{ use: tree-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'blur'
 ) }}
 
 ## select(Object)
@@ -213,7 +215,8 @@ const option = {
 选中状态的相关配置。开启 [selectedMode](~series-tree.selectedMode) 后有效。
 
 {{ use: tree-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'select'
 ) }}
 
 {{ use: partial-selected-mode(
@@ -248,7 +251,8 @@ const option = {
 叶子节点高亮状态的配置。
 
 {{ use: tree-node-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'emphasis'
 ) }}
 
 ### blur(Object)
@@ -260,7 +264,8 @@ const option = {
 叶子节点淡出状态的配置。
 
 {{ use: tree-node-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'blur'
 ) }}
 
 ### select(Object)
@@ -272,7 +277,8 @@ const option = {
 叶子节点选中状态的配置。
 
 {{ use: tree-node-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'select'
 ) }}
 
 ## data(Object)
@@ -344,7 +350,8 @@ const option = {
 节点高亮状态的配置。
 
 {{ use: tree-node-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'emphasis'
 ) }}
 
 ### blur(Object)
@@ -356,7 +363,8 @@ const option = {
 节点淡出状态的配置。
 
 {{ use: tree-node-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'blur'
 ) }}
 
 ### select(Object)
@@ -368,7 +376,8 @@ const option = {
 节点选中状态的配置。
 
 {{ use: tree-node-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'select'
 ) }}
 
 {{ use: partial-tooltip-in-series-data() }}
@@ -416,7 +425,8 @@ const option = {
 该节点的样式。
 
 {{ use: partial-item-style(
-    prefix = "#" + ${prefix}
+    prefix = "#" + ${prefix},
+    hasInherit = ${state} === 'emphasis'
 ) }}
 
 #${prefix} lineStyle(Object)
@@ -443,7 +453,8 @@ const option = {
 定义树图边的样式。
 
 {{ use: partial-tree-line-style(
-    prefix = "#" + ${prefix}
+    prefix = "#" + ${prefix},
+    hasInherit = ${state} === 'emphasis'
 ) }}
 
 
@@ -451,10 +462,12 @@ const option = {
 {{ target: tree-state }}
 
 {{ use: tree-node-state(
-    prefix = ${prefix}
+    prefix = ${prefix},
+    state = ${state}
 ) }}
 
 {{ use: tree-edge-state(
-    prefix = ${prefix}
+    prefix = ${prefix},
+    state = ${state}
 ) }}
 

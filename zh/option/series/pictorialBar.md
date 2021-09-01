@@ -167,7 +167,8 @@ option = {
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: pictoialBar-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'emphasis'
 ) }}
 
 ## blur(Object)
@@ -179,7 +180,8 @@ option = {
 淡出状态配置。开启 [emphasis.focus](~series-pictoialBar.emphasis.focus) 后有效。
 
 {{ use: pictoialBar-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'blur'
 ) }}
 
 ## select(Object)
@@ -195,7 +197,8 @@ option = {
 ) }}
 
 {{ use: pictoialBar-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'select'
 ) }}
 
 {{ use: partial-barGrid(
@@ -271,7 +274,8 @@ option = {
 单个数据的高亮状态配置。
 
 {{ use: partial-bar-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'emphasis'
 ) }}
 
 ### blur(Object)
@@ -283,7 +287,8 @@ option = {
 单个数据的淡出状态配置。
 
 {{ use: partial-bar-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'blur'
 ) }}
 
 ### select(Object)
@@ -295,7 +300,8 @@ option = {
 单个数据的选中状态配置。
 
 {{ use: partial-bar-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'select'
 ) }}
 
 {{ use: partial-tooltip-in-series-data() }}
@@ -692,6 +698,7 @@ series: [{
 #${prefix} itemStyle(Object)
 
 {{ use: partial-item-style(
-    prefix = "#" + ${prefix}
+    prefix = "#" + ${prefix},
+    hasInherit = ${state} === 'emphasis'
 ) }}
 

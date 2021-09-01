@@ -11,26 +11,25 @@ async function convert(opts) {
     const entry = opts.entry;
     const tplEnv = opts.tplEnv;
     const maxDepth = opts.maxDepth || 10;
-    const etplEngine = new etpl.Engine({
+    const engineConfig = {
         commandOpen: '{{',
         commandClose: '}}',
         missTarget: 'error'
-    });
+    };
+    const etplEngine = new etpl.Engine(engineConfig);
     etplEngine.addFilter('default', function (source, defaultVal) {
         return (source === '' || source == null) ? defaultVal : source;
     });
 
-    const files = await globby([mdPath]);
-
-    const mdTpl = files.filter(function (fileName) {
+    const files = (await globby([mdPath])).filter(function (fileName) {
         return fileName.indexOf('__') !== 0;
-    }).map(function (fileName) {
+    });
+
+    const mdTpls = files.map(function (fileName) {
         return fs.readFileSync(fileName, 'utf-8');
     });
 
-    // Render tpl
-    etplEngine.compile(mdTpl.join('\n'));
-
+    let mdStr;
     // ETPL do not support global variables, without which we have to pass
     // parameters like `galleryViewPath` each time `{{use: ...}}` used, which
     // is easy to forget. So we mount global variables on Object prototype when
@@ -52,12 +51,25 @@ async function convert(opts) {
         });
     }
 
-    let mdStr;
     try {
+        // Render tpl
+        etplEngine.compile(mdTpls.join('\n'));
         mdStr = etplEngine.getRenderer(entry)({});
         clearEnvVariables();
     }
     catch (e) {
+        // Fild wichi file has error.
+        mdTpls.forEach((tpl, idx) => {
+            try {
+                const debugEngine = new etpl.Engine(engineConfig);
+                const renderer = debugEngine.compile(tpl);
+                renderer({});
+            }
+            catch (e) {
+                console.error(`Has syntax error in ${files[idx]}`)
+            }
+        });
+
         clearEnvVariables();
         throw e;
     }

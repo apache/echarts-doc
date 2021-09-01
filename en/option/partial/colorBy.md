@@ -2,7 +2,7 @@
 
 ## colorBy(string) = ${defaultColorBy|default("'series'")}
 
-{{ use: partial-version(version: '5.2.0') }}
+{{ use: partial-version(version = '5.2.0') }}
 
 The policy to take color from [option.color](~color). Valid values:
 

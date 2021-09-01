@@ -68,10 +68,10 @@
 
 {{ use: partial-label-line(
     prefix = '#' + ${prefix},
-    length2 = ${isNormal},
-    minTurnAngle = ${isNormal},
-    showAbove = ${isNormal},
-    smooth = ${isNormal}
+    length2 = ${state} === 'normal',
+    minTurnAngle = ${state} === 'normal',
+    showAbove = ${state} === 'normal',
+    smooth = ${state} === 'normal'
 ) }}
 
 
@@ -92,7 +92,8 @@
     defaultBorderWidth = 1,
     defaultBorderColor = "'white'",
     defaultOpacity = 1,
-    useDecal = ${isNormal}
+    hasInherit = ${state} === 'emphasis',
+    useDecal = ${state} === 'normal'
 ) }}
 
 
@@ -101,12 +102,12 @@
 
 {{ use: partial-sunburst-label-props(
     prefix = ${prefix},
-    isNormal = ${isNormal}
+    state = ${state}
 ) }}
 
 {{ use: partial-sunburst-itemStyle-props(
     prefix = ${prefix},
-    isNormal = ${isNormal}
+    state = ${state}
 ) }}
 
 
@@ -352,14 +353,14 @@ const option = {
 
 {{ use: partial-sunburst-state(
     prefix = "##",
-    isNormal = true
+    state = 'normal'
 ) }}
 
 ## labelLayout(Object|Function)
 
 {{ use: partial-sunburst-state(
     prefix = "#",
-    isNormal = true
+    state = 'normal'
 ) }}
 
 ### emphasis
@@ -367,7 +368,8 @@ const option = {
 高亮状态配置。
 
 {{ use: partial-sunburst-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'emphasis'
 ) }}
 
 ### blur
@@ -375,7 +377,8 @@ const option = {
 淡出状态配置。
 
 {{ use: partial-sunburst-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'blur'
 ) }}
 
 ### select
@@ -383,7 +386,8 @@ const option = {
 选中状态配置。
 
 {{ use: partial-sunburst-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'select'
 ) }}
 
 ### children(Array)
@@ -420,12 +424,12 @@ function(nodeA, nodeB) {
 
 {{ use: partial-sunburst-label-props(
     prefix = "#",
-    isNormal = true
+    state = 'normal'
 ) }}
 
 {{ use: partial-sunburst-itemStyle-props(
     prefix = "#",
-    isNormal = true
+    state = 'normal'
 ) }}
 
 ## emphasis
@@ -437,7 +441,8 @@ function(nodeA, nodeB) {
 ) }}
 
 {{ use: partial-sunburst-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'emphasis'
 ) }}
 
 ## blur
@@ -445,7 +450,8 @@ function(nodeA, nodeB) {
 淡出状态配置。开启 [emphasis.focus](~series-sunburst.emphasis.focus) 后有效。
 
 {{ use: partial-sunburst-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'blur'
 ) }}
 
 ## select
@@ -453,7 +459,8 @@ function(nodeA, nodeB) {
 选中状态配置。开启 [selectedMode](~series-sunburst.selectedMode) 后有效。
 
 {{ use: partial-sunburst-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'select'
 ) }}
 
 {{ use: partial-selected-mode(
@@ -504,7 +511,8 @@ series: {
 高亮状态配置。
 
 {{ use: partial-sunburst-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'emphasis'
 ) }}
 
 ### blur
@@ -512,7 +520,8 @@ series: {
 淡出状态配置。
 
 {{ use: partial-sunburst-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'blur'
 ) }}
 
 ### select
@@ -520,7 +529,8 @@ series: {
 选中状态配置。
 
 {{ use: partial-sunburst-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'select'
 ) }}
 
 {{ use: partial-animation(

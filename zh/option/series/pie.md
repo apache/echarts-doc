@@ -230,7 +230,8 @@ const option = {
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: pie-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'emphasis'
 ) }}
 
 ## blur(Object)
@@ -242,7 +243,8 @@ const option = {
 淡出状态的扇区和标签样式。开启 [emphasis.focus](~series-pie.emphasis.focus) 后有效。
 
 {{ use: pie-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'blur'
 ) }}
 
 ## select(Object)
@@ -254,7 +256,8 @@ const option = {
 选中状态的扇区和标签样式。开启 [selectedMode](~series-pie.selectedMode) 后有效。
 
 {{ use: pie-state(
-    prefix = "##"
+    prefix = "##",
+    state = 'select'
 ) }}
 
 {{ use: component-circular-layout(
@@ -333,7 +336,8 @@ const option = {
 ### emphasis(Object)
 
 {{ use: pie-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'emphasis'
 ) }}
 
 ### blur(Object)
@@ -343,7 +347,8 @@ const option = {
 ) }}
 
 {{ use: pie-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'blur'
 ) }}
 
 ### select(Object)
@@ -353,7 +358,8 @@ const option = {
 ) }}
 
 {{ use: pie-state(
-    prefix = "###"
+    prefix = "###",
+    state = 'select'
 ) }}
 
 {{ use: partial-tooltip-in-series-data() }}
@@ -471,7 +477,8 @@ const option = {
 #${prefix} itemStyle(Object)
 
 {{ use: partial-item-style(
-    prefix = "#" + ${prefix}
+    prefix = "#" + ${prefix},
+    hasInherit = ${state} === 'emphasis'
 ) }}
 
 {{ use: partial-pie-border-radius(

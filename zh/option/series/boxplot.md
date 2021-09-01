@@ -120,6 +120,7 @@ box 的宽度的上下限。数组的意思是：`[min, max]`。
 {{ use: partial-item-style(
     prefix = "###",
     name = "boxplot",
+    hasInherit=true,
     defaultColor = "#fff",
     defaultBorderWidth = 2,
     defaultShadowBlur = 5,
@@ -237,7 +238,8 @@ ECharts 并不内置对原始数据的处理，输入给 `boxplot` 的数据须�
 
 {{ use: partial-item-style(
     prefix = "####",
-    name = "boxplot"
+    name = "boxplot",
+    hasInherit = true
 ) }}
 
 ### blur(Object)
