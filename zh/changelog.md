@@ -1,5 +1,5 @@
 ## v5.2.0
-
+<div class="time">2021-09-01</div>
 #### 非兼容改动
 
 + [Fix] [pie] 负值会被作为非法值过滤。[#15095](https://github.com/apache/echarts/issues/15095) ([ssthouse](https://github.com/ssthouse))
