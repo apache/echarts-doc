@@ -13,7 +13,7 @@
 + [Fix] [geo]  Fix `href` attribute not work in SVG source. [#803](https://github.com/ecomfe/zrender/issues/803) ([plainheart](https://github.com/plainheart))
 + [Fix] [polar] Fix wrong sector clockwise when previous data is 0. [#15589](https://github.com/apache/echarts/issues/15589) ([Ovilia](https://github.com/Ovilia))
 + [Fix] [type] Improve option types. [#15696](https://github.com/apache/echarts/issues/15696) ([pissang](https://github.com/pissang))
-+ [Fix] Fix prototype pollution. https://github.com/ecomfe/zrender/security/advisories/GHSA-fhv8-fx5f-7fxf
++ [Fix] Fix prototype pollution. [GHSA-fhv8-fx5f-7fxf](https://github.com/ecomfe/zrender/security/advisories/GHSA-fhv8-fx5f-7fxf)
 
 
 ## v5.2.0
