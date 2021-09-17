@@ -1,3 +1,21 @@
+## v5.2.1
+
++ [Feature] [i18n] Adding pt-BR (Portuguese, Brazil) lang. [#15722](https://github.com/apache/echarts/issues/15722) ([williamorim](https://github.com/williamorim))
++ [Feature] [axis] add `axisLabel.hideOverlap`. [#15583](https://github.com/apache/echarts/issues/15583) ([svedova](https://github.com/svedova)) [#15712](https://github.com/apache/echarts/issues/15712) ([pissang](https://github.com/pissang))
++ [Feature] [sunburst] Add `radius` in levels [#15706](https://github.com/apache/echarts/issues/15706) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [line] Fix animation may be wrong when data changes lot. [#15731](https://github.com/apache/echarts/issues/15731) ([pissang](https://github.com/pissang))
++ [Fix] [legend] Fix `icon` not keep aspect. [#15720](https://github.com/apache/echarts/issues/15720) ([pissang](https://github.com/pissang))
++ [Fix] [line] Optimize line gradient leaks on the edge when the range is large. [#15711](https://github.com/apache/echarts/issues/15711) ([pissang](https://github.com/pissang))
++ [Fix] [marker] Fix `markLine`, `markPoin` and `markArea` may not work on time axis if use string time data [#15686](https://github.com/apache/echarts/issues/15686) ([100pah](https://github.com/100pah))
++ [Fix] [tooltip] Fix tooltip may be lagging and shaking in Chrome(with the devtools open) and Firefox. [#15683](https://github.com/apache/echarts/issues/15683) ([plainheart](https://github.com/plainheart))
++ [Fix] [svg] Fix svg mouse event doesn't work normally in Firefox when using shadow. [#812](https://github.com/ecomfe/zrender/issues/812) ([plainheart](https://github.com/plainheart))
++ [Fix] [line] Not stop existing expand animation when update. [#15599](https://github.com/apache/echarts/issues/15599) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [geo]  Fix `href` attribute not work in SVG source. [#803](https://github.com/ecomfe/zrender/issues/803) ([plainheart](https://github.com/plainheart))
++ [Fix] [polar] Fix wrong sector clockwise when previous data is 0. [#15589](https://github.com/apache/echarts/issues/15589) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [type] Improve option types. [#15696](https://github.com/apache/echarts/issues/15696) ([pissang](https://github.com/pissang))
++ [Fix] Fix prototype pollution. https://github.com/ecomfe/zrender/security/advisories/GHSA-fhv8-fx5f-7fxf
+
+
 ## v5.2.0
 <div class="time">2021-09-01</div>
 
