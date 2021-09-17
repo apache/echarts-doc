@@ -6,7 +6,7 @@
 + [Fix] [line] Fix animation may be wrong when data changes lot. [#15731](https://github.com/apache/echarts/issues/15731) ([pissang](https://github.com/pissang))
 + [Fix] [legend] Fix `icon` not keep aspect. [#15720](https://github.com/apache/echarts/issues/15720) ([pissang](https://github.com/pissang))
 + [Fix] [line] Optimize line gradient leaks on the edge when the range is large. [#15711](https://github.com/apache/echarts/issues/15711) ([pissang](https://github.com/pissang))
-+ [Fix] [marker] Fix `markLine`, `markPoin` and `markArea` may not work on time axis if use string time data [#15686](https://github.com/apache/echarts/issues/15686) ([100pah](https://github.com/100pah))
++ [Fix] [marker] Fix `markLine`, `markPoint` and `markArea` may not work on time axis if use string time data [#15686](https://github.com/apache/echarts/issues/15686) ([100pah](https://github.com/100pah))
 + [Fix] [tooltip] Fix tooltip may be lagging and shaking in Chrome(with the devtools open) and Firefox. [#15683](https://github.com/apache/echarts/issues/15683) ([plainheart](https://github.com/plainheart))
 + [Fix] [svg] Fix svg mouse event doesn't work normally in Firefox when using shadow. [#812](https://github.com/ecomfe/zrender/issues/812) ([plainheart](https://github.com/plainheart))
 + [Fix] [line] Not stop existing expand animation when update. [#15599](https://github.com/apache/echarts/issues/15599) ([Ovilia](https://github.com/Ovilia))
