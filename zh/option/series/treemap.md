@@ -308,7 +308,7 @@ const option = {
 
 {{ use: partial-item-style(
     prefix = "###",
-    name = "boxplot",
+    name = "面包屑",
     defaultColor = "rgba(0,0,0,0.7)",
     defaultBorderColor = "rgba(255,255,255,0.7)",
     defaultBorderWidth = 1,
@@ -331,7 +331,7 @@ const option = {
 
 {{ use: partial-item-style(
     prefix = "####",
-    name = "boxplot",
+    name = "面包屑",
     hasInherit = true,
     defaultColor = "rgba(0,0,0,0.7)",
     defaultBorderColor = "rgba(255,255,255,0.7)",
