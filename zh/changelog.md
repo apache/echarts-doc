@@ -2,21 +2,20 @@
 
 <div class="time">2021-09-21</div>
 
-+ [Feature] [i18n] Adding pt-BR(Portuguese, Brazil) lang. [#15722](https://github.com/apache/echarts/issues/15722) ([williamorim](https://github.com/williamorim))
-+ [Feature] [axis] add `axisLabel.hideOverlap`. [#15583](https://github.com/apache/echarts/issues/15583) ([svedova](https://github.com/svedova)) [#15712](https://github.com/apache/echarts/issues/15712) ([pissang](https://github.com/pissang))
-+ [Feature] [sunburst] Add `radius` in levels [#15706](https://github.com/apache/echarts/issues/15706) ([Ovilia](https://github.com/Ovilia))
-+ [Fix] [line] Fix animation may be wrong when data changes lot. [#15731](https://github.com/apache/echarts/issues/15731) ([pissang](https://github.com/pissang))
-+ [Fix] [legend] Fix `icon` not keep aspect. [#15720](https://github.com/apache/echarts/issues/15720) ([pissang](https://github.com/pissang))
-+ [Fix] [line] Optimize line gradient leaks on the edge when the range is large. [#15711](https://github.com/apache/echarts/issues/15711) ([pissang](https://github.com/pissang))
-+ [Fix] [marker] Fix `markLine`, `markPoint` and `markArea` may not work on time axis if use string time data [#15686](https://github.com/apache/echarts/issues/15686) ([100pah](https://github.com/100pah))
-+ [Fix] [tooltip] Fix tooltip may be lagging and shaking in Chrome(with the devtools open) and Firefox. [#15683](https://github.com/apache/echarts/issues/15683) ([plainheart](https://github.com/plainheart))
-+ [Fix] [svg] Fix svg mouse event doesn't work normally in Firefox when using shadow. [#812](https://github.com/ecomfe/zrender/issues/812) ([plainheart](https://github.com/plainheart))
-+ [Fix] [line] Not stop existing expand animation when update. [#15599](https://github.com/apache/echarts/issues/15599) ([Ovilia](https://github.com/Ovilia))
-+ [Fix] [geo]  Fix `href` attribute not work in SVG source. [#803](https://github.com/ecomfe/zrender/issues/803) ([plainheart](https://github.com/plainheart))
-+ [Fix] [polar] Fix wrong sector clockwise when previous data is 0. [#15589](https://github.com/apache/echarts/issues/15589) ([Ovilia](https://github.com/Ovilia))
-+ [Fix] [type] Improve option types. [#15696](https://github.com/apache/echarts/issues/15696) ([pissang](https://github.com/pissang))
-+ [Fix] Fix prototype pollution. [GHSA-fhv8-fx5f-7fxf](https://github.com/ecomfe/zrender/security/advisories/GHSA-fhv8-fx5f-7fxf)
-
++ [Feature] [i18n] 添加 pt-BR(Portuguese, Brazil) 语言. [#15722](https://github.com/apache/echarts/issues/15722) ([williamorim](https://github.com/williamorim))
++ [Feature] [axis] 添加配置`axisLabel.hideOverlap`用来隐藏坐标轴上重叠的标签。 [#15583](https://github.com/apache/echarts/issues/15583) ([svedova](https://github.com/svedova)) [#15712](https://github.com/apache/echarts/issues/15712) ([pissang](https://github.com/pissang))
++ [Feature] [sunburst] 添加`levels.radius`配置项控制每一层的半径。[#15706](https://github.com/apache/echarts/issues/15706) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [line] 修复数据大量变动时候可能会有的动画问题 [#15731](https://github.com/apache/echarts/issues/15731) ([pissang](https://github.com/pissang))
++ [Fix] [legend] 修复设置`icon`时高宽比没有保持的问题。[#15720](https://github.com/apache/echarts/issues/15720) ([pissang](https://github.com/pissang))
++ [Fix] [line] 优化分段`visualMap`组件所使用的渐变色可能会不准确的问题。 [#15711](https://github.com/apache/echarts/issues/15711) ([pissang](https://github.com/pissang))
++ [Fix] [marker] 修复`markLine`, `markPoint`和`markArea` 可能在字符串格式的时序数据上无法显示的问题。[#15686](https://github.com/apache/echarts/issues/15686) ([100pah](https://github.com/100pah))
++ [Fix] [tooltip] 修复提示框在开启开发者工具的 Chrome 和 Firefox 上可能会有延时和抖动的问题。[#15683](https://github.com/apache/echarts/issues/15683) ([plainheart](https://github.com/plainheart))
++ [Fix] [svg] 修复 Firefox 上使用阴影的时候 SVG 的鼠标事件可能不生效的问题。[#812](https://github.com/ecomfe/zrender/issues/812) ([plainheart](https://github.com/plainheart))
++ [Fix] [line] 优化在折线图连续更新两次后动画不保持的问题。[#15599](https://github.com/apache/echarts/issues/15599) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [geo] 修复 SVG 数据源中`href`属性不生效的问题。[#803](https://github.com/ecomfe/zrender/issues/803) ([plainheart](https://github.com/plainheart))
++ [Fix] [polar] 修复从 0 开始的数据可能会顺时针方向错误的问题。[#15589](https://github.com/apache/echarts/issues/15589) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [type] 优化配置项类型。[#15696](https://github.com/apache/echarts/issues/15696) ([pissang](https://github.com/pissang))
++ [Fix] 修复原型泄漏的问题。[GHSA-fhv8-fx5f-7fxf](https://github.com/ecomfe/zrender/security/advisories/GHSA-fhv8-fx5f-7fxf)
 
 ## v5.2.0
 <div class="time">2021-09-01</div>
