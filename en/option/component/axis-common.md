@@ -143,6 +143,16 @@ Whether to show the label of the min tick. Optional values: `true`, `false`, `nu
 
 Whether to show the label of the max tick. Optional values: `true`, `false`, `null`. It is auto determined by default, that is, if labels are overlapped, the label of the max tick will not be displayed.
 
+##${prefix} hideOverlap(boolean)
+
+<ExampleUIControlBoolean />
+
+{{ use: partial-version(
+    version = "5.2.0"
+) }}
+
+Whether to hide overlapped labels.
+
 {{ use: partial-text-style(
     prefix = '#' + ${prefix},
     defaultColor = "'#333'"

@@ -125,26 +125,37 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 
 刻度标签与轴线之间的距离。
 
-##${prefix} formatter(string|Function) = null
+##${prefix} formatter(string|Function)
 
 {{ use: axis-common-formatter-desc() }}
 
-##${prefix} showMinLabel(boolean) = null
+##${prefix} showMinLabel(boolean)
 
 <ExampleUIControlBoolean />
 
 是否显示最小 tick 的 label。可取值 `true`, `false`, `null`。默认自动判定（即如果标签重叠，不会显示最小 tick 的 label）。
 
-##${prefix} showMaxLabel(boolean) = null
+##${prefix} showMaxLabel(boolean)
 
 <ExampleUIControlBoolean />
 
 是否显示最大 tick 的 label。可取值 `true`, `false`, `null`。默认自动判定（即如果标签重叠，不会显示最大 tick 的 label）。
 
+##${prefix} hideOverlap(boolean)
+
+<ExampleUIControlBoolean />
+
+{{ use: partial-version(
+    version = "5.2.0"
+) }}
+
+是否隐藏重叠的标签。
+
 {{ use: partial-text-style(
     prefix = '#' + ${prefix},
     defaultColor = "'#333'"
 ) }}
+
 
 <!-- Overwrite color -->
 
