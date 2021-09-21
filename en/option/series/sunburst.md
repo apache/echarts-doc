@@ -348,6 +348,13 @@ series: {
     ]
 }
 ```
+### radius(Array)
+
+{{ use: partial-version(
+    version = "5.2.0"
+) }}
+
+The inner and outer radius of the current layer, noting that the radius of other layers will not be adaptive.
 
 {{ use: partial-sunburst-label-props(
     prefix = "##"
