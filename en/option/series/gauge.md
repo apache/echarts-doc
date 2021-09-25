@@ -198,7 +198,7 @@ The length of split line, can be a pecentage value relative to radius.
     version = "5.0"
 ) }}
 
-<ExampleUIControlNumber default="10" min="0" step="0.5" />
+<ExampleUIControlNumber default="10"  step="0.5" />
 
 The distance between the split line and axis line.
 
@@ -239,7 +239,7 @@ The length of tick line, can be a pecentage value relative to radius.
     version = "5.0"
 ) }}
 
-<ExampleUIControlNumber default="10" min="0" step="0.5" />
+<ExampleUIControlNumber default="10" step="0.5" />
 
 The distance between the tick line and axis line.
 
@@ -264,7 +264,7 @@ Whether to show the label.
 
 ### distance(number) = 15
 
-<ExampleUIControlNumber default="15" min="0" step="0.5" />
+<ExampleUIControlNumber default="15" step="0.5" />
 
 The distance between the label and tick line.
 

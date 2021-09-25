@@ -209,7 +209,7 @@ const option = {
     version = "5.0"
 ) }}
 
-<ExampleUIControlNumber default="10" min="0" step="0.5" />
+<ExampleUIControlNumber default="10"  step="0.5" />
 
 分隔线与轴线的距离。
 
@@ -250,7 +250,7 @@ const option = {
     version = "5.0"
 ) }}
 
-<ExampleUIControlNumber default="10" min="0" step="0.5" />
+<ExampleUIControlNumber default="10" step="0.5" />
 
 刻度线与轴线的距离。
 
@@ -275,7 +275,7 @@ const option = {
 
 ### distance(number) = 15
 
-<ExampleUIControlNumber default="15" min="0" step="0.5" />
+<ExampleUIControlNumber default="15" step="0.5" />
 
 标签与刻度线的距离。
 
