@@ -153,7 +153,7 @@ edgeLength: [10, 50]
 
 <ExampleUIControlBoolean default="false" />
 
-节点是否可拖拽，只在使用力引导布局的时候有用。
+节点是否可拖拽。
 
 ## edgeSymbol(Array|string) = ['none', 'none']
 
