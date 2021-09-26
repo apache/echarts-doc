@@ -139,7 +139,7 @@ Related zooming ratio of nodes when mouse zooming in or out. When it is set as 0
 
 <ExampleUIControlBoolean default="false" />
 
-If node is draggable. Only available when using force-directed layout.
+If node is draggable.
 
 ## edgeSymbol(Array|string) = ['none', 'none']
 
