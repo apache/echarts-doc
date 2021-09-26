@@ -213,6 +213,18 @@ Whether to update view while dragging. If it is set as `false`, the view will be
     dataZoomName = 'dataZoom-slider'
 ) }}
 
+## width(string|number) = 30
+
+<ExampleUIControlNumber default="30"/>
+
+Width of dataZoom-slider component. Default to 30 when vertical, adaptive when horizontal.
+
+## height(string|number) = 30
+
+<ExampleUIControlNumber default="30"/>
+
+Height of dataZoom-slider component. Default to 30 when horizontal, adaptive when vertical.
+
 {{ use: partial-rect-layout(
     componentName = 'dataZoom-slider'
 ) }}

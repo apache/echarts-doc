@@ -243,6 +243,18 @@ labelFormatter: function (value) {
     dataZoomName = 'dataZoom-slider'
 ) }}
 
+## width(string|number) = 30
+
+<ExampleUIControlNumber default="30"/>
+
+dataZoom-slider 组件的宽度。竖直布局默认 30，水平布局默认自适应。
+
+## height(string|number) = 30
+
+<ExampleUIControlNumber default="30"/>
+
+dataZoom-slider 组件的高度。水平布局默认 30，竖直布局默认自适应。
+
 {{ use: partial-rect-layout(
     componentName = 'dataZoom-slider'
 ) }}
