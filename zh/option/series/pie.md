@@ -468,7 +468,9 @@ const option = {
 + 如果为 `number` ，旋转指定角度，从 -90 度到 90 度。正值是逆时针。
 
 {{ use: partial-text-style(
-    prefix = ${prefix}
+    prefix = ${prefix},
+    noAlign = true,
+    noVerticalAlign = true
 ) }}
 
 
