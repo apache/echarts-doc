@@ -14,7 +14,7 @@ Sankey diagram is a specific type of streamgraph (can also be seen as a directed
 <br>
 **Visual Encoding: **
 
-The Sankey diagram encodes each `node` of the raw data into a small rectangle. Different nodes are presented in different colors as far as possible. The `label` next to the small rectangul encodes the name of the node.
+The Sankey diagram encodes each `node` of the raw data into a small rectangle. Different nodes are presented in different colors as far as possible. The `label` next to the small rectangle encodes the name of the node.
 
 In addition, the edge between two small rectangles in the diagram encodes the `link` of the raw data. The width of edge is shown proportionally to the `value` of `link`.
 
