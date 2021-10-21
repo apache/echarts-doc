@@ -82,7 +82,7 @@ Whether to connect the line across null points.
     version = "5.2.2"
 ) }}
 
-Weather `line` and `area` can trigger the event.
+Whether `line` and `area` can trigger the event.
 
 ## step(string|boolean) = false
 
