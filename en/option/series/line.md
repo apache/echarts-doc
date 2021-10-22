@@ -76,6 +76,14 @@ Whether to connect the line across null points.
     prefix = "#"
 ) }}
 
+## triggerLineEvent(boolean) = false
+
+{{ use: partial-version(
+    version = "5.2.2"
+) }}
+
+Whether `line` and `area` can trigger the event.
+
 ## step(string|boolean) = false
 
 <ExampleUIControlEnum options='start,middle,end' />

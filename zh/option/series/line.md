@@ -105,6 +105,14 @@ const option = {
     prefix = "#"
 ) }}
 
+## triggerLineEvent(boolean) = false
+
+{{ use: partial-version(
+    version = "5.2.2"
+) }}
+
+线条和区域面积是否触发事件
+
 ## step(string|boolean) = false
 
 <ExampleUIControlEnum options='start,middle,end' />
