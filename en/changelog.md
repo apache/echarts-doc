@@ -1,15 +1,15 @@
 ## v5.2.2
 <div class="time"></div>
 
-+ [Feature] [line] Add `triggerLineEvent`. Support trigger mouse event on polyline and polygon area. [#15847](https://github.com/apache/echarts/issues/15847) ([susiwen8](https://github.com/susiwen8)
++ [Feature] [line] Add `triggerLineEvent`. Support trigger mouse event on polyline and polygon area. [#15847](https://github.com/apache/echarts/issues/15847) ([susiwen8](https://github.com/susiwen8))
 + [Feature] [i18n] Add Russian translation. [#15867](https://github.com/apache/echarts/issues/15867) ([finkrer](https://github.com/finkrer))
 + [Feature] [i18n] Add Polish translation. [#15891](https://github.com/apache/echarts/issues/15891) ([CaelumNigre](https://github.com/CaelumNigre))
 + [Fix] [line] fix smoothed line with duplicate points failed to draw [#15942](https://github.com/apache/echarts/issues/15942) ([pissang](https://github.com/pissang))
 + [Fix] [line] Fix visual gradient is wrong when coords are between two stops. [#15938](https://github.com/apache/echarts/issues/15938) ([pissang](https://github.com/pissang))
-+ [Fix] [calendar] Fix i18n isn' working in the calendar coordinate system [#15935](https://github.com/apache/echarts/issues/15935) ([plainheart](https://github.com/plainheart))
++ [Fix] [calendar] Fix i18n doesn't work in the calendar coordinate system [#15935](https://github.com/apache/echarts/issues/15935) ([plainheart](https://github.com/plainheart))
 + [Fix] [bar] Fix label value animation is not accurate in the bar racing case. [#15916](https://github.com/apache/echarts/issues/15916) ([Ovilia](https://github.com/Ovilia))
 + [Fix] [axis] fix charts render abnormally when `yAxis.max` is set to be a value less than the min value of the series data. [#15878](https://github.com/apache/echarts/issues/15878) ([plainheart](https://github.com/plainheart))
-+ [Fix] [tooltip] Fix boolean value display. [#15869](https://github.com/apache/echarts/issues/15869) ([Ovilia](https://github.com/Ovilia)))
++ [Fix] [tooltip] Fix boolean value display. [#15869](https://github.com/apache/echarts/issues/15869) ([Ovilia](https://github.com/Ovilia))
 + [Fix] [types] Add `undefined` to the return type of `getInstanceByDom` and `getInstanceById` [#15913](https://github.com/apache/echarts/issues/15913) ([plainheart](https://github.com/plainheart))
 
 ## v5.2.1
