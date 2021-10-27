@@ -1,3 +1,18 @@
+## v5.2.2
+<div class="time"></div>
+
++ [Feature] [line] 添加`triggerLineEvent`配置项，支持在折线图区域触发鼠标事件。 [#15847](https://github.com/apache/echarts/issues/15847) ([susiwen8](https://github.com/susiwen8))
++ [Feature] [i18n] 添加 Russian 翻译. [#15867](https://github.com/apache/echarts/issues/15867) ([finkrer](https://github.com/finkrer))
++ [Feature] [i18n] 添加 Polish 翻译. [#15891](https://github.com/apache/echarts/issues/15891) ([CaelumNigre](https://github.com/CaelumNigre))
++ [Fix] [line] 修复折线图中如果存在重复点且开启平滑选项的时候可能会不显示的问题。 [#15942](https://github.com/apache/echarts/issues/15942) ([pissang](https://github.com/pissang))
++ [Fix] [line] 修复折线图中可能会显示错误的颜色映射渐变的问题。[#15938](https://github.com/apache/echarts/issues/15938) ([pissang](https://github.com/pissang))
++ [Fix] [calendar] 修复日历坐标系中`i18n`可能不生效的问题。[#15935](https://github.com/apache/echarts/issues/15935) ([plainheart](https://github.com/plainheart))
++ [Fix] [bar] 优化动态排序柱状图中的标签动画。[#15916](https://github.com/apache/echarts/issues/15916) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [axis] 优化坐标轴`max`设置的比`min`小时的展示。[#15878](https://github.com/apache/echarts/issues/15878) ([plainheart](https://github.com/plainheart))
++ [Fix] [tooltip] 优化`boolean`类型数据的展现。 [#15869](https://github.com/apache/echarts/issues/15869) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [types] `getInstanceByDom`和`getInstanceById`方法可返回为空。[#15913](https://github.com/apache/echarts/issues/15913) ([plainheart](https://github.com/plainheart))
+
+
 ## v5.2.1
 
 <div class="time">2021-09-21</div>
