@@ -11,6 +11,7 @@
 + [Fix] [axis] fix charts render abnormally when `yAxis.max` is set to be a value less than the min value of the series data. [#15878](https://github.com/apache/echarts/issues/15878) ([plainheart](https://github.com/plainheart))
 + [Fix] [tooltip] Fix boolean value display. [#15869](https://github.com/apache/echarts/issues/15869) ([Ovilia](https://github.com/Ovilia)))
 + [Fix] [types] Add `undefined` to the return type of `getInstanceByDom` and `getInstanceById` [#15913](https://github.com/apache/echarts/issues/15913) ([plainheart](https://github.com/plainheart))
+
 ## v5.2.1
 <div class="time">2021-09-21</div>
 
