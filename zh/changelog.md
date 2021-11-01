@@ -1,5 +1,5 @@
 ## v5.2.2
-<div class="time"></div>
+<div class="time">2021-11-01</div>
 
 + [Feature] [line] 添加`triggerLineEvent`配置项，支持在折线图区域触发鼠标事件。 [#15847](https://github.com/apache/echarts/issues/15847) ([susiwen8](https://github.com/susiwen8))
 + [Feature] [i18n] 添加 Russian 翻译. [#15867](https://github.com/apache/echarts/issues/15867) ([finkrer](https://github.com/finkrer))
