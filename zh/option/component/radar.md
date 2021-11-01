@@ -60,7 +60,7 @@ const option = {
 
 坐标系起始角度，也就是第一个指示器轴的角度。
 
-## name(Object)
+## axisName(Object)
 
 雷达图每个指示器名称的配置项。
 
