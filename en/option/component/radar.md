@@ -26,7 +26,7 @@ The start angle of coordinate, which is the angle of the first indicator axis.
 
 ## axisName(Object)
 
-Name of radar chart.
+Name options for radar indicators.
 
 ### show(boolean) = true
 
