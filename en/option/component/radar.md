@@ -24,7 +24,7 @@ Here is a custom example of radar component.
 
 The start angle of coordinate, which is the angle of the first indicator axis.
 
-## name(Object)
+## axisName(Object)
 
 Name of radar chart.
 
