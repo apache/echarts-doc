@@ -228,29 +228,40 @@ Options:
 + 'start'
 + 'end'
 
-### nameMap(string|Array) = 'en'
+### nameMap(string|Array)
 
-<ExampleUIControlEnum options="en,cn" default="en" />
+<ExampleUIControlEnum options="EN,ZH" default="EN" />
 
-Week text content, defaults to 'en';
-It supports Chinese, English, and custom;
-index 0 always means Sunday;
+Week text content, defaults to 'en'. Since `v5.2.2`, it defaults to the specified `locale` name when [initializing charts](api.html#echarts.init). If not specified, it defaults to the auto-detected locale by the browser language.
+
+It supports Chinese(`cn`), English(`en`), and customized array. Since `v5.2.2`, it also supports any built-in(`EN`/`ZH`) or other registered locale names (case-sensitive).
+
+The index `0` always means `Sunday`.
 
 Examples:
 ```js
 
+// Before v5.2.2
+
 // shortcut to English  ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-nameMap: 'en'
-
+nameMap: 'en',
 // shortcut to Chinese ['日', '一', '二', '三', '四', '五', '六']
-nameMap: 'cn'
+nameMap: 'cn',
 
-// Custom settings: mixed in English and Chinese or not displayed
+// Since v5.2.2
+
+// shortcut to English  ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+nameMap: 'EN',
+// shortcut to Chinese ['日', '一', '二', '三', '四', '五', '六']
+nameMap: 'ZH',
+
+// Customized: mixed in English and Chinese or not displayed
 nameMap: ['S', '一', 'T', '三', '', '五', 'S'],
 
 calendar: [{
     dayLabel: {
-        nameMap: 'en'
+        // nameMap: 'en' // Before v5.2.2
+        nameMap: 'EN'    // Since v5.2.2
     }
 }]
 ```
@@ -296,45 +307,49 @@ Options:
 + 'start'
 + 'end'
 
-### nameMap(string|Array) = 'en'
+### nameMap(string|Array)
 
-<ExampleUIControlEnum options="en,cn" default="en" />
+<ExampleUIControlEnum options="EN,ZH" default="EN" />
 
-Month text content, defaults to 'en';
-It supports Chinese, English, and custom;
-Index 0 always means Jan;
+Month text content, defaults to 'en'. Since `v5.2.2`, it defaults to the specified `locale` name when [initializing charts](api.html#echarts.init). If not specified, it defaults to the auto-detected locale by the browser language.
 
+It supports Chinese(`cn`), English(`en`), and customized array. Since `v5.2.2`, it also supports any built-in(`EN`/`ZH`) or other registered locale names (case-sensitive).
+
+The index `0` always means `Jan`.
 
 Examples:
 ```js
-// Shortcut to English [
-                'Jan', 'Feb', 'Mar',
-                'Apr', 'May', 'Jun',
-                'Jul', 'Aug', 'Sep',
-                'Oct', 'Nov', 'Dec'
-            ],
-nameMap: 'en'
 
-// Shortcut to Chinese [
-                '一月', '二月', '三月',
-                '四月', '五月', '六月',
-                '七月', '八月', '九月',
-                '十月', '十一月', '十二月'
-            ]
-nameMap: 'cn'
+// Before v5.2.2
 
-// Custom settings: mixed in English and Chinese or not displayed
+// Shortcut to English
+// ['Jan', 'Feb', 'Mar','Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+nameMap: 'en',
+// Shortcut to Chinese
+// ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
+nameMap: 'cn',
+
+// Since v5.2.2
+
+// Shortcut to English
+// ['Jan', 'Feb', 'Mar','Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+nameMap: 'EN',
+// Shortcut to Chinese
+// ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+nameMap: 'ZH',
+
+// Customized settings: mixed in English, Chinese, Russian or not displayed
 nameMap: [
-            '一月', 'Feb', '三月',
-            '四月', 'May', '六月',
-            '七月', '八月', '',
-            '十月', 'Nov', '十二月'
-        ],
-
+    '一月', 'Feb', '三月',
+    '四月', 'May', '六月',
+    'Июль', '八月', '',
+    '十月', 'Nov', '十二月'
+],
 
 calendar: [{
     monthLabel: {
-        nameMap: 'en'
+        // nameMap: 'en' // Before v5.2.2
+        nameMap: 'EN'    // Since v5.2.2
     }
 }]
 ```

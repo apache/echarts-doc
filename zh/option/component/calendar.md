@@ -278,26 +278,40 @@ calendar: [{
 + 'start'
 + 'end'
 
-### nameMap(string|Array) = 'en'
+### nameMap(string|Array)
 
-<ExampleUIControlEnum options="en,cn" default="en" />
+<ExampleUIControlEnum options="EN,ZH" default="EN" />
 
-星期显示的效果，默认为'en'
-可设置中英文以及自定义
-下标0为对应星期天的文字显示
+星期显示的效果，默认为'en'。从 `v5.2.2` 起，默认为[初始化图表](api.html#echarts.init) 时指定的语言 `locale`，如未指定则根据浏览器语言自动侦测。
+
+可设置中英文以及自定义。从 `v5.2.2` 起，还可以是任意内置(`ZH` / `EN`)或其他[已注册的语言包](api.html#echarts.registerLocale)名称（区分大小写）。
+
+下标 `0` 为对应 `星期日` 的文字显示
 
 使用示例：
 ```js
-// 快捷设置英文 ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-nameMap: 'en'
+
+// v5.2.2 以前版本
+
+// 快捷设置英文 ['S', 'M', 'T', 'W', 'T', 'F', 'S']
+nameMap: 'en',
 // 快捷设置中文 ['日', '一', '二', '三', '四', '五', '六']
-nameMap: 'cn'
+nameMap: 'cn',
+
+// v5.2.2 及以后版本
+
+// 快捷设置英文 ['S', 'M', 'T', 'W', 'T', 'F', 'S']
+nameMap: 'EN',
+// 快捷设置中文 ['日', '一', '二', '三', '四', '五', '六']
+nameMap: 'ZH',
+
 // 自定义设置： 中英文混杂 或者不显示
 nameMap: ['S', '一', 'T', '三', '', '五', 'S'],
 
 calendar: [{
     dayLabel: {
-        nameMap: 'en'
+        // nameMap: 'en' // v5.2.2 以前版本
+        nameMap: 'EN'    // v5.2.2 及以后版本
     }
 }]
 ```
@@ -343,41 +357,49 @@ calendar: [{
 + 'start'
 + 'end'
 
-### nameMap(string|Array) = 'en'
+### nameMap(string|Array)
 
-<ExampleUIControlEnum options="en,cn" default="en" />
+<ExampleUIControlEnum options="EN,ZH" default="EN" />
 
-月份显示的效果，默认为'en'
-可设置中英文以及自定义
-下标0为对应一月的文字显示
+月份显示的效果，默认为'en'。从 `v5.2.2` 起，默认为[初始化图表](api.html#echarts.init) 时指定的语言 `locale`，如未指定则根据浏览器语言自动侦测。
+
+可设置中英文以及自定义。从 `v5.2.2` 起，还可以是任意内置(`ZH` / `EN`)或其他[已注册的语言包](api.html#echarts.registerLocale)名称（区分大小写）。
+
+下标 `0` 为对应 `1月` 的文字显示。
 
 使用示例：
 ```js
-// 快捷设置英文 [
-                'Jan', 'Feb', 'Mar',
-                'Apr', 'May', 'Jun',
-                'Jul', 'Aug', 'Sep',
-                'Oct', 'Nov', 'Dec'
-            ],
-nameMap: 'en'
-// 快捷设置中文 [
-                '一月', '二月', '三月',
-                '四月', '五月', '六月',
-                '七月', '八月', '九月',
-                '十月', '十一月', '十二月'
-            ]
-nameMap: 'cn'
-// 自定义设置： 中英文混杂 或者不显示
+
+// v5.2.2 以前版本
+
+// 快捷设置英文
+// ['Jan', 'Feb', 'Mar','Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+nameMap: 'en',
+// 快捷设置中文
+// ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
+nameMap: 'cn',
+
+// v5.2.2 及以后版本
+
+// 快捷设置英文
+// ['Jan', 'Feb', 'Mar','Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+nameMap: 'EN',
+// 快捷设置中文
+// ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+nameMap: 'ZH',
+
+// 自定义设置：中英俄混杂 或者不显示
 nameMap: [
-            '一月', 'Feb', '三月',
-            '四月', 'May', '六月',
-            '七月', '八月', '',
-            '十月', 'Nov', '十二月'
-        ],
+    '一月', 'Feb', '三月',
+    '四月', 'May', '六月',
+    'Июль', '八月', '',
+    '十月', 'Nov', '十二月'
+],
 
 calendar: [{
     monthLabel: {
-        nameMap: 'en'
+        // nameMap: 'en' // v5.2.2 以前版本
+        nameMap: 'EN'    // v5.2.2 及以后版本
     }
 }]
 ```
