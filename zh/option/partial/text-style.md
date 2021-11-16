@@ -22,6 +22,7 @@
     prefix = ${prefix},
     name = ${name},
     defaultColor = ${defaultColor},
+    defaultPadding = ${defaultPadding},
     defaultFontSize = ${defaultFontSize},
     defaultFontWeight = ${defaultFontWeight},
     defaultLineHeight = ${defaultLineHeight},
@@ -274,7 +275,7 @@ backgroundColor: {
 
 文字块的圆角。
 
-#${prefix} padding(number|Array) = 0
+#${prefix} padding(number|Array) = ${defaultPadding|default(0)}
 
 <ExampleUIControlVector min="0" dims="T,R,B,L"  />
 

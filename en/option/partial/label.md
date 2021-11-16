@@ -69,6 +69,7 @@ Whether to move text slightly. For example: `[30, 40]` means move `30` horizonta
     noVerticalAlign = ${noVerticalAlign},
     name = ${name},
     defaultColor = ${defaultColor},
+    defaultPadding = ${defaultPadding},
     defaultFontSize = ${defaultFontSize},
     noRich = ${noRich},
     noBox = ${noBox},

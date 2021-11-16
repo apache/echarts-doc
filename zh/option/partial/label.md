@@ -69,6 +69,7 @@ ${name}图形上的文本标签，可用于说明图形的一些数据信息，�
     noVerticalAlign = ${noVerticalAlign},
     name = ${name},
     defaultColor = ${defaultColor},
+    defaultPadding = ${defaultPadding},
     defaultFontSize = ${defaultFontSize},
     noRich = ${noRich},
     noBox = ${noBox},

@@ -558,6 +558,7 @@ This can hide the details of nodes when the rectangular area is not large enough
 
 {{ use: partial-label(
     prefix = ${prefix} + "#",
+    defaultPadding = 5,
     defaultPosition = "'inside'",
     formatter = true
 ) }}
