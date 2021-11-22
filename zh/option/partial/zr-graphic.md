@@ -1756,22 +1756,6 @@ renderItem: function (params, api) {
 元素旋转和缩放原点的 y 像素位置。
 
 
-
-{{ target: partial-graphic-transform-common-desc }}
-
-图形元素可以进行标准的 `2D transform`，其中包含：
-+ 平移（依照 [x](~${optionPath}.${hostName}${symbolVisit}${type}.x) 和 [y](~${optionPath}.${hostName}${symbolVisit}${type}.y)）：默认值都是 `0`。右和下为正值。
-+ 旋转（依照 [rotation](~${optionPath}.${hostName}${symbolVisit}${type}.rotation)）：默认值是 `0`。表示旋转的弧度值。正值表示逆时针旋转。
-+ 缩放（依照 [scaleX](~${optionPath}.${hostName}${symbolVisit}${type}.scaleX) 和 [scaleY](~${optionPath}.${hostName}${symbolVisit}${type}.scaleY)）：默认值都是 `1`。这个值表示缩放的倍数。
-
-另外，[originX](~${optionPath}.${hostName}${symbolVisit}${type}.originX) 和 [originY](~${optionPath}.${hostName}${symbolVisit}${type}.originY) 指定了旋转和缩放的中心点，默认值都是 `0`。
-
-注意：
-+ transform 中设定的坐标，都是相对于图形元素的父元素的（即 [group](~${optionPath}.${hostName}${symbolVisit}group) 元素或者顶层画布）的 `[0, 0]` 点。也就是说，我们可以使用 [group](~${optionPath}.${hostName}${symbolVisit}group) 来组织多个图形元素，并且 [group](~${optionPath}.${hostName}${symbolVisit}group) 可以嵌套。
-+ 对于一个图形元素，`transform` 执行的顺序是：先缩放（依照 `scaleX`，`scaleY`），再旋转（依照 `rotation`），再平移（依照 `x`，`y`）。
-
-
-
 {{ target: partial-graphic-cpt-focus-blur }}
 
 ##${prefix} focus(string) = 'none'

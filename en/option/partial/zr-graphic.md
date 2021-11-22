@@ -1771,24 +1771,7 @@ x value of element scale and rotation origin. In pixels
 
 ##${prefix} originY(number) = 0
 
-
 y value of element scale and rotation origin. In pixels.
-
-
-{{ target: partial-graphic-transform-common-desc }}
-
-`2D transform` can be applied to graphic elements, including:
-+ Translate by [x](~${optionPath}.${hostName}${symbolVisit}${type}.x) and [y](~${optionPath}.${hostName}${symbolVisit}${type}.y): `0` by default. Positive value means translate towards right or bottom.
-+ Rotate by [rotation](~${optionPath}.${hostName}${symbolVisit}${type}.rotation): in radian, `0` by default. Positive when anticlockwise.
-+ Scale by [scaleX](~${optionPath}.${hostName}${symbolVisit}${type}.scaleX) and [scaleY](~${optionPath}.${hostName}${symbolVisit}${type}.scaleY): `1` by default. The value means the ratio of scale.
-
-[originX](~${optionPath}.${hostName}${symbolVisit}${type}.originX) and [originY](~${optionPath}.${hostName}${symbolVisit}${type}.originY) specifies the origin point of rotation and scaling, `0`, `0` by default.
-
-Notice:
-+ The coordinates specified in the transform attribute above are relative to the `[0, 0]` of the parent element (that is, [group](~${optionPath}.${hostName}${symbolVisit}group) or the root canvas). Thus we are able to [group](~${optionPath}.${hostName}${symbolVisit}group) multiple elements, and [groups](~${optionPath}.${hostName}${symbolVisit}group) can be nested.
-+ The order that the transform attributes are applied to a single graphic element is: firstly, rotate (by `rotation`); then, scale (by `scaleX`, `scaleY`); finally, translate (by `x`, `y`).
-
-
 
 {{ target: partial-graphic-cpt-focus-blur }}
 
