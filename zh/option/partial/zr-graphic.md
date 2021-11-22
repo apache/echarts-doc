@@ -1729,80 +1729,31 @@ renderItem: function (params, api) {
 
 ##${prefix} x(number) = 0
 
-{{ use: partial-graphic-transform-common-desc(
-    type = ${type},
-    optionPath = ${optionPath},
-    usageType = ${usageType},
-    hostName = ${hostName},
-    symbolVisit = ${symbolVisit},
-    symbolDeclare = ${symbolDeclare}
-) }}
+元素的 x 像素位置。
 
 ##${prefix} y(number) = 0
 
-{{ use: partial-graphic-transform-common-desc(
-    type = ${type},
-    optionPath = ${optionPath},
-    usageType = ${usageType},
-    hostName = ${hostName},
-    symbolVisit = ${symbolVisit},
-    symbolDeclare = ${symbolDeclare}
-) }}
+元素的 y 像素位置。
 
 ##${prefix} rotation(number) = 0
 
-{{ use: partial-graphic-transform-common-desc(
-    type = ${type},
-    optionPath = ${optionPath},
-    usageType = ${usageType},
-    hostName = ${hostName},
-    symbolVisit = ${symbolVisit},
-    symbolDeclare = ${symbolDeclare}
-) }}
+元素的旋转
 
 ##${prefix} scaleX(number) = 1
 
-{{ use: partial-graphic-transform-common-desc(
-    type = ${type},
-    optionPath = ${optionPath},
-    usageType = ${usageType},
-    hostName = ${hostName},
-    symbolVisit = ${symbolVisit},
-    symbolDeclare = ${symbolDeclare}
-) }}
+元素在 x 方向上的缩放。
 
 ##${prefix} scaleY(number) = 1
 
-{{ use: partial-graphic-transform-common-desc(
-    type = ${type},
-    optionPath = ${optionPath},
-    usageType = ${usageType},
-    hostName = ${hostName},
-    symbolVisit = ${symbolVisit},
-    symbolDeclare = ${symbolDeclare}
-) }}
+元素在 y 方向上的缩放。
 
 ##${prefix} originX(number) = 0
 
-{{ use: partial-graphic-transform-common-desc(
-    type = ${type},
-    optionPath = ${optionPath},
-    usageType = ${usageType},
-    hostName = ${hostName},
-    symbolVisit = ${symbolVisit},
-    symbolDeclare = ${symbolDeclare}
-) }}
+元素旋转和缩放原点的 x 像素位置。
 
 ##${prefix} originY(number) = 0
 
-{{ use: partial-graphic-transform-common-desc(
-    type = ${type},
-    optionPath = ${optionPath},
-    usageType = ${usageType},
-    hostName = ${hostName},
-    symbolVisit = ${symbolVisit},
-    symbolDeclare = ${symbolDeclare}
-) }}
+元素旋转和缩放原点的 y 像素位置。
 
 
 

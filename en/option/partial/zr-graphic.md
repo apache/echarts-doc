@@ -1747,81 +1747,32 @@ Whether draw clockwise.
 
 ##${prefix} x(number) = 0
 
-{{ use: partial-graphic-transform-common-desc(
-    type = ${type},
-    optionPath = ${optionPath},
-    usageType = ${usageType},
-    hostName = ${hostName},
-    symbolVisit = ${symbolVisit},
-    symbolDeclare = ${symbolDeclare}
-) }}
+x position of element. In pixels.
 
 ##${prefix} y(number) = 0
 
-{{ use: partial-graphic-transform-common-desc(
-    type = ${type},
-    optionPath = ${optionPath},
-    usageType = ${usageType},
-    hostName = ${hostName},
-    symbolVisit = ${symbolVisit},
-    symbolDeclare = ${symbolDeclare}
-) }}
+y position of element. In pixels.
 
 ##${prefix} rotation(number) = 0
 
-{{ use: partial-graphic-transform-common-desc(
-    type = ${type},
-    optionPath = ${optionPath},
-    usageType = ${usageType},
-    hostName = ${hostName},
-    symbolVisit = ${symbolVisit},
-    symbolDeclare = ${symbolDeclare}
-) }}
+Degree value of rotation.
 
 ##${prefix} scaleX(number) = 1
 
-{{ use: partial-graphic-transform-common-desc(
-    type = ${type},
-    optionPath = ${optionPath},
-    usageType = ${usageType},
-    hostName = ${hostName},
-    symbolVisit = ${symbolVisit},
-    symbolDeclare = ${symbolDeclare}
-) }}
+Scale on x.
 
 ##${prefix} scaleY(number) = 1
 
-{{ use: partial-graphic-transform-common-desc(
-    type = ${type},
-    optionPath = ${optionPath},
-    usageType = ${usageType},
-    hostName = ${hostName},
-    symbolVisit = ${symbolVisit},
-    symbolDeclare = ${symbolDeclare}
-) }}
+Scale on y.
 
 ##${prefix} originX(number) = 0
 
-{{ use: partial-graphic-transform-common-desc(
-    type = ${type},
-    optionPath = ${optionPath},
-    usageType = ${usageType},
-    hostName = ${hostName},
-    symbolVisit = ${symbolVisit},
-    symbolDeclare = ${symbolDeclare}
-) }}
+x value of element scale and rotation origin. In pixels
 
 ##${prefix} originY(number) = 0
 
-{{ use: partial-graphic-transform-common-desc(
-    type = ${type},
-    optionPath = ${optionPath},
-    usageType = ${usageType},
-    hostName = ${hostName},
-    symbolVisit = ${symbolVisit},
-    symbolDeclare = ${symbolDeclare}
-) }}
 
+y value of element scale and rotation origin. In pixels.
 
 
 {{ target: partial-graphic-transform-common-desc }}

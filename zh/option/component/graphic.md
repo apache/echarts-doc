@@ -20,11 +20,6 @@
 ~[600x400](${galleryViewPath}line-draggable&edit=1&reset=1)
 
 
-
-<br>
-
----
-
 **graphic 设置介绍**
 
 只配一个图形元素时的简写方法：
@@ -98,12 +93,6 @@ myChart.setOption({
 
 
 
-<br>
-
----
-
-
-
 **图形元素设置介绍**
 
 介绍每个图形元素的配置。不同类型的图形元素的设置有这些共性：
@@ -152,20 +141,12 @@ myChart.setOption({
 ```
 
 
-<br>
-
----
-
 **图形元素的事件**
 
 支持这些事件配置：
 `onclick`, `onmouseover`, `onmouseout`, `onmousemove`, `onmousewheel`, `onmousedown`, `onmouseup`, `ondrag`, `ondragstart`, `ondragend`, `ondragenter`, `ondragleave`, `ondragover`, `ondrop`。
 
 
-
-<br>
-
----
 
 **图形元素的层级关系**
 
@@ -174,10 +155,6 @@ myChart.setOption({
 
 
 
-
-<br>
-
----
 
 **图形元素的基本形状设置**
 
@@ -225,10 +202,6 @@ myChart.setOption({
 
 
 
-<br>
-
----
-
 **图形元素的定位和 transfrom**
 
 
@@ -248,22 +221,20 @@ myChart.setOption({
 }
 ```
 
-+ 每个图形元素在父节点的坐标系中进行 transform，也就是说父子节点的 transform 能『叠加』。
-+ 每个图形元素进行 transform 顺序是：
-    1. 平移 [-el.origin[0], -el.origin[1]]。
-    2. 根据 el.scale 缩放。
-    3. 根据 el.rotation 旋转。
-    4. 根据 el.origin 平移。
-    5. 根据 el.position 平移。
-+ 也就是说先缩放旋转后平移，这样平移不会影响缩放旋转的 origin。
+每个图形元素在父节点的坐标系中进行 transform，也就是说父子节点的 transform 能『叠加』。
+
+每个图形元素进行 transform 顺序是：
+1. 平移 [-el.origin[0], -el.origin[1]]。
+2. 根据 el.scale 缩放。
+3. 根据 el.rotation 旋转。
+4. 根据 el.origin 平移。
+5. 根据 el.position 平移。
+
+也就是说先缩放旋转后平移，这样平移不会影响缩放旋转的 origin。
 
 
 
 
-
-<br>
-
----
 
 **图形元素相对定位**
 

@@ -21,12 +21,6 @@ This example shows how to make a watermark and text block:
 This example use hidden graphic elements to implement dragging:
 ~[600x400](${galleryViewPath}line-draggable&edit=1&reset=1)
 
-
-
-<br>
-
----
-
 **Graphic Component Configuration**
 
 A simple way to define a graphic element:
@@ -102,12 +96,6 @@ Notice, when using `setOption` to modify existing elements, if id is not specifi
 
 
 
-<br>
-
----
-
-
-
 **Graphic Element Configuration**
 
 Different types of graphic elements has their own configuration respectively, but they have these common configuration below:
@@ -164,12 +152,6 @@ Different types of graphic elements has their own configuration respectively, bu
 
 
 
-
-
-<br>
-
----
-
 **Event Handlers of Graphic Element**
 
 These events are supported:
@@ -177,24 +159,12 @@ These events are supported:
 
 
 
-
-
-<br>
-
----
-
 **Hierarchy of Graphic Elements**
 
 Only `group` element has children, which enable a group of elements to be positioned and transformed together.
 
 
 
-
-
-
-<br>
-
----
 
 **Shape Configuration of Graphic Element**
 
@@ -240,12 +210,6 @@ Elements with different types have different shape setting repectively. For exam
 ```
 
 
-
-
-<br>
-
----
-
 **Transforming and Absolutely Positioning of Graphic Element**
 
 Element can be transformed (translation, rotation, scale). See [position](~graphic.elements.position), [rotation](~graphic.elements.rotation), [scale](~graphic.elements.scale), [origin](~graphic.elements.origin)
@@ -274,23 +238,19 @@ For example:
 }
 ```
 
-+ Each element is transformed in the coordinate system of its parent, namely, transform of a element and its parent can be "stacked".
+Each element is transformed in the coordinate system of its parent, namely, transform of a element and its parent can be "stacked".
 
-+ Transformation is performed by this order:
-    1. Translate [-el.origin[0], -el.origin[1]].
-    2. Scale according to el.scale.
-    3. Rotate according to el.rotation.
-    4. Translate back according to el.origin.
-    5. Translate according to el.position.
-+ Namely, scaling and rotating firstly, and then translate. By this mechanism, translation does not affect origin of scale and rotation.
+Transformation is performed by this order:
+
+1. Translate [-el.origin[0], -el.origin[1]].
+2. Scale according to el.scale.
+3. Rotate according to el.rotation.
+4. Translate back according to el.origin.
+5. Translate according to el.position.
+
+Namely, scaling and rotating firstly, and then translate. By this mechanism, translation does not affect origin of scale and rotation.
 
 
-
-
-
-<br>
-
----
 
 **Relatively Positioning**
 
