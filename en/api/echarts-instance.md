@@ -677,7 +677,8 @@ Hides animation loading effect.
 ## getDataURL(Function)
 ```js
 (opts: {
-    // Exporting format, can be either png, or jpeg
+    // Exporting format, can be png, jpg, svg.
+    // NOTE: png, jpg is only available for canvas renderer. svg is only available for svg renderer.
     type?: string,
     // Resolution ratio of exporting image, 1 by default.
     pixelRatio?: number,

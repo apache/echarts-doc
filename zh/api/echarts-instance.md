@@ -669,7 +669,8 @@ default: {
 ## getDataURL(Function)
 ```js
 (opts: {
-    // 导出的格式，可选 png, jpeg
+    // 导出的格式，可选 png, jpg, svg
+    // 注意：png, jpg 只有在 canvas 渲染器的时候可使用，svg 只有在使用 svg 渲染器的时候可用
     type?: string,
     // 导出的图片分辨率比例，默认为 1。
     pixelRatio?: number,
