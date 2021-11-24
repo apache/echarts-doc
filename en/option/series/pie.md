@@ -8,15 +8,14 @@ The pie chart is mainly used for showing proportion of different categories. Eac
 
 **Tip:** The pie chart is more suitable for illustrating the numerical proportion. If you just to present the numerical differences of various categories, the [bar graph](bar) chart is more suggested. Because compared to tiny length difference,  people is less sensitive to the minor radian difference. Otherwise, it can also be shown as Nightingale chart by using the [roseType](~series-pie.roseType) to distinguish different data through radius.
 
-Since ECharts v4.6.0, we provide `'labelLine'` and `'edge'` two extra layouts. Check [label.alignTo](~series-pie.label.alignTo) for more information.
 
-~[900x250](${galleryViewPath}pie-alignTo&reset=1&edit=1)
 
 For multiple pie series in a single chart, you may use [left](~series-pie.left), [right](~series-pie.right), [top](~series-pie.top), [bottom](~series-pie.bottom), [width](~series-pie.width), and [height](~series-pie.height) to locate the pies. Percetage values like [radius](~series-pie.radius) or [label.edgeDistance](~series-pie.label.edgeDistance) are relative to the viewport defined by this setting.
 
 ** The below example shows a customized Nightingale chart: **
 ~[500x400](${galleryViewPath}pie-custom&edit=1&reset=1)
 
+Since ECharts v4.6.0, we provide `'labelLine'` and `'edge'` two extra layouts. Check [label.alignTo](~series-pie.label.alignTo) for more information.
 ## type(string) = 'pie'
 
 {{ use: partial-component-id(
