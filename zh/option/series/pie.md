@@ -34,11 +34,9 @@ const option = {
         }
     ]
 };
+</ExampleBaseOption>
 
 从 ECharts v4.6.0 版本起，我们提供了 `'labelLine'` 与 `'edge'` 两种新的布局方式。详情参见 [label.alignTo](~series-pie.label.alignTo)。
-
-
-</ExampleBaseOption>
 
 ## type(string) = 'pie'
 
