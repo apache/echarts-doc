@@ -141,13 +141,10 @@ Related zooming ratio of nodes when mouse zooming in or out. When it is set as 0
 
 If node is draggable. Only available when using force-directed layout.
 
-## symbol(string) = 'circle'
-
-Symbol of nodes.
-
-## symbolSize(Array|number) = 10
-
-Symbol size of node. Can be an array with two item to specify height and width.
+{{ use: partial-symbol(
+    prefix = '#',
+    name = 'node'
+) }}
 
 ## edgeSymbol(Array|string) = ['none', 'none']
 

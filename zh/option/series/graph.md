@@ -155,13 +155,10 @@ edgeLength: [10, 50]
 
 节点是否可拖拽，只在使用力引导布局的时候有用。
 
-## symbol(string) = 'circle'
-
-节点标记的图形
-
-## symbolSize(Array|number) = 10
-
-节点标记的大小，可以设置成诸如 10 这样单一的数字，也可以用数组分开表示宽和高，例如 [20, 10] 表示标记宽为20，高为10
+{{ use: partial-symbol(
+    prefix = '#',
+    name = '节点'
+) }}
 
 ## edgeSymbol(Array|string) = ['none', 'none']
 
