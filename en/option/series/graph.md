@@ -141,6 +141,14 @@ Related zooming ratio of nodes when mouse zooming in or out. When it is set as 0
 
 If node is draggable. Only available when using force-directed layout.
 
+## symbol(string) = 'circle'
+
+Symbol of nodes.
+
+## symbolSize(Array|number) = 10
+
+Symbol size of node. Can be an array with two item to specify height and width.
+
 ## edgeSymbol(Array|string) = ['none', 'none']
 
 Symbol of two ends of edge line.
@@ -159,9 +167,9 @@ Size of symbol of two ends of edge line. Can be an array or a single number.
 For example:
 ```js
 // Start symbol has size 5 and end symbol has size 10
-symbolSize: [5, 10],
+edgeSymbolSize: [5, 10],
 // All has size 10
-symbolSize: 10
+edgeSymbolSize: 10
 ```
 
 {{ use: partial-cursor() }}
