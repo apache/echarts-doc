@@ -31,7 +31,7 @@ animationDurationUpdate: function (idx) {
 }
 ```
 
-#${prefix} animationEasingUpdate(string) = ${defaultAnimationEasingUpdate|default('cubicOut')}
+#${prefix} animationEasingUpdate(string) = ${defaultAnimationEasingUpdate|default("'cubicOut'")}
 
 <ExampleUIControlEnum options="linear,quadraticIn,quadraticOut,quadraticInOut,cubicIn,cubicOut,cubicInOut,quarticIn,quarticOut,quarticInOut,quinticIn,quinticOut,quinticInOut,sinusoidalIn,sinusoidalOut,sinusoidalInOut,exponentialIn,exponentialOut,exponentialInOut,circularIn,circularOut,circularInOut,elasticIn,elasticOut,elasticInOut,backIn,backOut,backInOut,bounceIn,bounceOut,bounceInOut" />
 
@@ -70,7 +70,7 @@ animationDuration: function (idx) {
 }
 ```
 
-#${prefix} animationEasing(string) = ${defaultAnimationEasing|default('cubicOut')}
+#${prefix} animationEasing(string) = ${defaultAnimationEasing|default("'cubicOut'")}
 
 <ExampleUIControlEnum options="linear,quadraticIn,quadraticOut,quadraticInOut,cubicIn,cubicOut,cubicInOut,quarticIn,quarticOut,quarticInOut,quinticIn,quinticOut,quinticInOut,sinusoidalIn,sinusoidalOut,sinusoidalInOut,exponentialIn,exponentialOut,exponentialInOut,circularIn,circularOut,circularInOut,elasticIn,elasticOut,elasticInOut,backIn,backOut,backInOut,bounceIn,bounceOut,bounceInOut" clean="true" />
 

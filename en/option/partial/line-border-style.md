@@ -71,9 +71,9 @@ Refer to MDN [lineDashOffset](https://developer.mozilla.org/en-US/docs/Web/API/C
 
 {{ if: !${noCap} }}
 {{ if: ${type} === 'border' }}
-#${prefix} borderCap(string) = ${defaultCap|default('butt')}
+#${prefix} borderCap(string) = ${defaultCap|default("'butt'")}
 {{ else }}
-#${prefix} cap(string) = ${defaultCap|default('butt')}
+#${prefix} cap(string) = ${defaultCap|default("'butt'")}
 {{ /if }}
 
 {{ use: partial-version(
@@ -93,9 +93,9 @@ Default value is `'butt'`. Refer to MDN [lineCap](https://developer.mozilla.org/
 
 {{ if: !${noJoin} }}
 {{ if: ${type} === 'border' }}
-#${prefix} borderJoin(string) = ${defaultJoin|default('bevel')}
+#${prefix} borderJoin(string) = ${defaultJoin|default("'bevel'")}
 {{ else }}
-#${prefix} join(string) = ${defaultJoin|default('bevel')}
+#${prefix} join(string) = ${defaultJoin|default("'bevel'")}
 {{ /if }}
 
 {{ use: partial-version(

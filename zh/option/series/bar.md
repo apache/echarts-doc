@@ -420,7 +420,7 @@ option = {
 
 {{ target: partial-bar-item-style }}
 
-#${prefix} color(Color) = ${defaultColor|default('自适应')}
+#${prefix} color(Color) = ${defaultColor|default("'auto'")}
 
 <ExampleUIControlColor />
 

@@ -119,7 +119,7 @@ For more details, see [Rich Text](tutorial.html#Rich%20Text) please.
 
 {{ target: partial-text-style-base-item }}
 
-#${prefix} color(Color) = ${defaultColor|default('"#fff"')}
+#${prefix} color(Color) = ${defaultColor|default("'#fff'")}
 
 <ExampleUIControlColor default="${defaultColor|default(null)}" />
 
@@ -140,7 +140,7 @@ Options are:
 + `'italic'`
 + `'oblique'`
 
-#${prefix} fontWeight(string|number) = ${defaultFontWeight|default('normal')}
+#${prefix} fontWeight(string|number) = ${defaultFontWeight|default("'normal'")}
 
 <ExampleUIControlEnum default="normal" options="normal,bold,bolder,lighter" />
 
