@@ -121,7 +121,7 @@ label: {
 
 {{ target: partial-text-style-base-item }}
 
-#${prefix} color(Color) = ${defaultColor|default('"#fff"')}
+#${prefix} color(Color) = ${defaultColor|default("'#fff'")}
 
 <ExampleUIControlColor default="${defaultColor|default(null)}" />
 
@@ -142,7 +142,7 @@ ${name}文字字体的风格。
 + `'italic'`
 + `'oblique'`
 
-#${prefix} fontWeight(string|number) = ${defaultFontWeight|default('normal')}
+#${prefix} fontWeight(string|number) = ${defaultFontWeight|default("'normal'")}
 
 <ExampleUIControlEnum default="normal" options="normal,bold,bolder,lighter" />
 

@@ -15,7 +15,7 @@
 启用渐进式渲染的图形数量阈值，在单个系列的图形数量超过该阈值时启用渐进式渲染。
 
 {{ if: ${supportProgressiveChunkMode} }}
-#${prefix} progressiveChunkMode(string) = ${defaultProgressiveChunkMode|default('sequential')}
+#${prefix} progressiveChunkMode(string) = ${defaultProgressiveChunkMode|default("'sequential'")}
 
 分片的方式。可选值：
 + `'sequential'`: 按照数据的顺序分片。缺点是渲染过程不自然。

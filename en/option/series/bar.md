@@ -352,7 +352,7 @@ Rectangle style configurations of single data.
 
 {{ target: partial-bar-item-style }}
 
-#${prefix} color(Color) = ${defaultColor|default('auto')}
+#${prefix} color(Color) = ${defaultColor|default("'auto'")}
 
 <ExampleUIControlColor />
 
