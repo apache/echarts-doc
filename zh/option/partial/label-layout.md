@@ -106,7 +106,7 @@ labelLayout(params) {
 
 #${prefix} height(number)
 
-标签显示的高度。可以配合`lineOverflow`使用控制标签显示在固定高度内
+标签显示的高度。
 
 #${prefix} align(string)
 

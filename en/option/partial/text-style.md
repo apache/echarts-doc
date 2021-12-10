@@ -60,10 +60,6 @@ Determine how to display the text when it's overflow. Available when `width` is 
 
 Ellipsis to be displayed when `overflow` is set to `truncate`.
 
-#${prefix} lineOverflow(string) = 'none'
-
-Determine how to display the text when it's overflow on height.
-
 + `'truncate'` Truncate the overflow lines.
 
 {{ if: !${noRich} }}
