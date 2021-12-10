@@ -1,7 +1,8 @@
 name: Node CI
 
 on:
-  pull_request:
+  - push
+  - pull_request:
     types: [opened, synchronize]
 
 jobs:
