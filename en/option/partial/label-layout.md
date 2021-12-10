@@ -102,11 +102,11 @@ Label rotation angle.
 
 #${prefix} width(number)
 
-The width of displayed label. Can be used with `overflow` to constraint the label in a fixed width
+The width of displayed label. It can be used with `overflow` to constraint the label in a fixed width.
 
 #${prefix} height(number)
 
-The height of displayed label. Can be used with `lineOverflow` to constraint the label in a fixed height.
+The height of displayed label.
 
 #${prefix} align(string)
 

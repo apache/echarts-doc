@@ -60,12 +60,6 @@
 
 在`overflow`配置为`'truncate'`的时候，可以通过该属性配置末尾显示的文本。
 
-#${prefix} lineOverflow(string) = 'none'
-
-文本超出高度部分是否截断，配置`height`时有效。
-
-+ `'truncate'` 在文本行数超出高度部分截断。
-
 {{ if: !${noRich} }}
 #${prefix} rich(Object)
 
