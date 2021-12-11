@@ -1,7 +1,7 @@
 
 {{ target: series-pictorialBar }}
 
-# series.pictoialBar(Object)
+# series.pictorialBar(Object)
 
 **pictorial bar chart**
 
@@ -16,7 +16,7 @@ Pictorial bar chart can only be used in [rectangular coordinate](~grid) with at 
 
 **Layout**
 
-Basically `pictoialBar` is a type of bar chart, which follows the bar chart layout. In `pictorialBar`, each bar is named as `reference bar`, which does not be shown, but only be used as a reference for layout of pictorial graphic elements. Each pictorial graphic element is positioned with respect to its `reference bar` according to the setting of [symbolPosition](~series-pictorialBar.symbolPosition)、[symbolOffset](~series-pictorialBar.symbolOffset).
+Basically `pictorialBar` is a type of bar chart, which follows the bar chart layout. In `pictorialBar`, each bar is named as `reference bar`, which does not be shown, but only be used as a reference for layout of pictorial graphic elements. Each pictorial graphic element is positioned with respect to its `reference bar` according to the setting of [symbolPosition](~series-pictorialBar.symbolPosition)、[symbolOffset](~series-pictorialBar.symbolOffset).
 
 See the example below:
 ~[800x600](${galleryViewPath}doc-example/pictorialBar-position&reset=1&edit=1)
@@ -117,7 +117,7 @@ Configurations of emphasis state.
 
 {{ use: partial-focus-blur-scope() }}
 
-{{ use: pictoialBar-state(
+{{ use: pictorialBar-state(
     prefix = "##",
     state = 'emphasis'
 ) }}
@@ -128,9 +128,9 @@ Configurations of emphasis state.
     version = "5.0.0"
 ) }}
 
-Configurations of blur state. Available when [emphasis.focus](~series-pictoialBar.emphasis.focus) is set.
+Configurations of blur state. Available when [emphasis.focus](~series-pictorialBar.emphasis.focus) is set.
 
-{{ use: pictoialBar-state(
+{{ use: pictorialBar-state(
     prefix = "##",
     state = 'blur'
 ) }}
@@ -141,13 +141,13 @@ Configurations of blur state. Available when [emphasis.focus](~series-pictoialBa
     version = "5.0.0"
 ) }}
 
-Configurations of select state. Available when [selectedMode](~series-pictoialBar.selectedMode) is set.
+Configurations of select state. Available when [selectedMode](~series-pictorialBar.selectedMode) is set.
 
 {{ use: partial-selected-mode(
     version = '5.0.0'
 ) }}
 
-{{ use: pictoialBar-state(
+{{ use: pictorialBar-state(
     prefix = "##",
     state = 'select'
 ) }}
@@ -627,7 +627,7 @@ series: [{
 
 
 
-{{ target: pictoialBar-state }}
+{{ target: pictorialBar-state }}
 
 #${prefix} label(Object)
 

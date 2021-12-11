@@ -1,7 +1,7 @@
 
 {{ target: series-pictorialBar }}
 
-# series.pictoialBar(Object)
+# series.pictorialBar(Object)
 
 **象形柱图**
 
@@ -166,7 +166,7 @@ option = {
 
 {{ use: partial-focus-blur-scope() }}
 
-{{ use: pictoialBar-state(
+{{ use: pictorialBar-state(
     prefix = "##",
     state = 'emphasis'
 ) }}
@@ -177,9 +177,9 @@ option = {
     version = "5.0.0"
 ) }}
 
-淡出状态配置。开启 [emphasis.focus](~series-pictoialBar.emphasis.focus) 后有效。
+淡出状态配置。开启 [emphasis.focus](~series-pictorialBar.emphasis.focus) 后有效。
 
-{{ use: pictoialBar-state(
+{{ use: pictorialBar-state(
     prefix = "##",
     state = 'blur'
 ) }}
@@ -196,7 +196,7 @@ option = {
     version = '5.0.0'
 ) }}
 
-{{ use: pictoialBar-state(
+{{ use: pictorialBar-state(
     prefix = "##",
     state = 'select'
 ) }}
@@ -678,7 +678,7 @@ series: [{
 
 
 
-{{ target: pictoialBar-state }}
+{{ target: pictorialBar-state }}
 
 #${prefix} label(Object)
 
