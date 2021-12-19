@@ -229,7 +229,7 @@ formatter: function (params) {
 }
 ```
 
-##${prefix} margin(boolean) = 3
+##${prefix} margin(number) = 3
 
 Distance between label and axis.
 

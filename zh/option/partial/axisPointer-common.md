@@ -226,7 +226,7 @@ formatter: function (params) {
 }
 ```
 
-##${prefix} margin(boolean) = 3
+##${prefix} margin(number) = 3
 
 label 距离轴的距离。
 
