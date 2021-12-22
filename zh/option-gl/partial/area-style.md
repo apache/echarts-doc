@@ -2,7 +2,7 @@
 
 #${prefix|default('##')} ${colorName|default('color')}(string{{if: ${hasCallback} }}|Function{{/if}})=${defaultColor|default('自适应')}
 
-图形区域的颜色。{{ if: ${useColorPalette} }} 默认从全局调色盘 [option.color](http://echarts.baidu.com/option.html#color) 获取颜色 {{/if}}
+图形区域的颜色。{{ if: ${useColorPalette} }} 默认从全局调色盘 [option.color](https://echarts.apache.org/zh/option.html#color) 获取颜色 {{/if}}
 
 除了颜色字符串外，支持使用数组表示的 RGBA 值，例如：
 

@@ -116,7 +116,7 @@ The style setting of the relationship line.
 
 The data set of the node.
 
-The data format is the same as [graph.data](http://echarts.baidu.com/option.html#series-graph.data)
+The data format is the same as [graph.data](https://echarts.apache.org/en/option.html#series-graph.data)
 
 ### name(string)
 
@@ -143,7 +143,7 @@ Same as [graphGL.data](~series-graphGL.data).
 ## links(Array)
 
 Relational data between nodes.
-The data format is the same as [graph.links](http://echarts.baidu.com/option.html#series-graph.links)
+The data format is the same as [graph.links](https://echarts.apache.org/en/option.html#series-graph.links)
 
 ### source(string)
 
