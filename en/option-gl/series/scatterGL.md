@@ -4,7 +4,7 @@
 
 A 2D scatter/bubble plot drawn using WebGL.
 
-It is used in the same way as [scatter](http://echarts.baidu.com/option.html#series-scatter).
+It is used in the same way as [scatter](https://echarts.apache.org/en/option.html#series-scatter).
 
 ## type(string) = 'scatterGL'
 
@@ -14,7 +14,7 @@ It is used in the same way as [scatter](http://echarts.baidu.com/option.html#ser
 
 The coordinate system used.
 
-Same as [scatter.coordinateSystem](http://echarts.baidu.com/option.html#series-scatter.coordinateSystem)
+Same as [scatter.coordinateSystem](https://echarts.apache.org/en/option.html#series-scatter.coordinateSystem)
 
 {{ use: partial-symbol() }}
 
@@ -33,7 +33,7 @@ Sets the style of scatter
 
 The data array of scatter.
 
-The data format is the same as [scatter.data](http://echarts.baidu.com/option.html#series-scatter.data)
+The data format is the same as [scatter.data](https://echarts.apache.org/en/option.html#series-scatter.data)
 
 ### name(string)
 

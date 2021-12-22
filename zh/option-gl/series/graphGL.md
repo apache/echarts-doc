@@ -116,7 +116,7 @@ CPU 实现的优势是兼容性好，而 GPU 实现在高端显卡中有着数�
 
 节点的数据集。
 
-数据格式同 [graph.data](http://echarts.baidu.com/option.html#series-graph.data)
+数据格式同 [graph.data](https://echarts.apache.org/zh/option.html#series-graph.data)
 
 ### name(string)
 
@@ -143,7 +143,7 @@ CPU 实现的优势是兼容性好，而 GPU 实现在高端显卡中有着数�
 ## links(Array)
 
 节点间的关系数据。
-数据格式同 [graph.links](http://echarts.baidu.com/option.html#series-graph.links)
+数据格式同 [graph.links](https://echarts.apache.org/zh/option.html#series-graph.links)
 
 ### source(string)
 

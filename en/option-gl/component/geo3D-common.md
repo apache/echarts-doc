@@ -2,9 +2,7 @@
 {{ target: component-geo3D-common }}
 
 ## map(string)
-The map type. The map type used in ECharts-gl is the same as the [geo](http://echarts.baidu.com/option.html#geo.map) component.
-
-You can download the required map file in the [Map Download Interface](http://ecomfe.github.io/echarts-builder-web/map3.html), then to import and register it into ECharts.
+The map type. The map type used in ECharts-gl is the same as the [geo](https://echarts.apache.org/en/option.html#geo.map) component.
  
 EChart provides map data in two formats. One is the JS file that can be imported directly through the script tag. After it is introduced, the map name and data will be automatically registered. Another is the JSON file that needs to be registered manually after loaded asynchronously by AJAX.
 

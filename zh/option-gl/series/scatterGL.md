@@ -4,7 +4,7 @@
 
 使用 WebGL 绘制的二维散点/气泡图。
 
-使用方式同 [scatter](http://echarts.baidu.com/option.html#series-scatter)。
+使用方式同 [scatter](https://echarts.apache.org/zh/option.html#series-scatter)。
 
 ## type(string) = 'scatterGL'
 
@@ -14,7 +14,7 @@
 
 使用的坐标系。
 
-同 [scatter.coordinateSystem](http://echarts.baidu.com/option.html#series-scatter.coordinateSystem)
+同 [scatter.coordinateSystem](https://echarts.apache.org/zh/option.html#series-scatter.coordinateSystem)
 
 {{ use: partial-symbol() }}
 
@@ -33,7 +33,7 @@
 
 散点图的数据集。
 
-数据格式同 [scatter.data](http://echarts.baidu.com/option.html#series-scatter.data)
+数据格式同 [scatter.data](https://echarts.apache.org/zh/option.html#series-scatter.data)
 
 ### name(string)
 
