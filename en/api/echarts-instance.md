@@ -343,7 +343,6 @@ If event is triggered externally by [dispatchAction](~echartsInstance.dispatchAc
     ```js
     chart.on('click', 'series', function () {...});
     chart.on('click', 'series.line', function () {...});
-    chart.on('click', 'dataZoom', function () {...});
     chart.on('click', 'xAxis.category', function () {...});
     ```
 

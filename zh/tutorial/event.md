@@ -105,7 +105,6 @@ chart.on(eventName, query, handler);
 ```js
 chart.on('click', 'series', function () {...});
 chart.on('click', 'series.line', function () {...});
-chart.on('click', 'dataZoom', function () {...});
 chart.on('click', 'xAxis.category', function () {...});
 ```
 

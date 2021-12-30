@@ -344,7 +344,6 @@ ECharts 中的事件有两种，一种是鼠标事件，在鼠标点击某个图
     ```js
     chart.on('click', 'series', function () {...});
     chart.on('click', 'series.line', function () {...});
-    chart.on('click', 'dataZoom', function () {...});
     chart.on('click', 'xAxis.category', function () {...});
     ```
 
