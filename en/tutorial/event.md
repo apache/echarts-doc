@@ -107,7 +107,6 @@ If `string`, the formatter can be 'mainType' or 'mainType.subType'. For example:
 ```js
 chart.on('click', 'series', function () {...});
 chart.on('click', 'series.line', function () {...});
-chart.on('click', 'dataZoom', function () {...});
 chart.on('click', 'xAxis.category', function () {...});
 ```
 
