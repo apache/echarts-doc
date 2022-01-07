@@ -34,7 +34,7 @@
     附加参数。有下面几个可选项：
 
     + `devicePixelRatio` 设备像素比，默认取浏览器的值`window.devicePixelRatio`。
-    + `renderer` 渲染器，支持 `'canvas'` 或者 `'svg'`。参见 [使用 Canvas 或者 SVG 渲染](${handbookPath}best-practice/canvas-vs-svg)。
+    + `renderer` 渲染器，支持 `'canvas'` 或者 `'svg'`。参见 [使用 Canvas 或者 SVG 渲染](${handbookPath}best-practices/canvas-vs-svg)。
     + `useDirtyRect` 是否开启脏矩形渲染，默认为`false`。参见 [ECharts 5 新特性](${handbookPath}basics/release-note/v5-feature)。
     + `width` 可显式指定实例宽度，单位为像素。如果传入值为 `null`/`undefined`/`'auto'`，则表示自动取 `dom`（实例容器）的宽度。
     + `height` 可显式指定实例高度，单位为像素。如果传入值为 `null`/`undefined`/`'auto'`，则表示自动取 `dom`（实例容器）的高度。

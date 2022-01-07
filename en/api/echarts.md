@@ -34,8 +34,8 @@ Creates an ECharts instance, and returns an [echartsInstance](~echartsInstance).
     Optional chart configurations; which may contain:
 
     + `devicePixelRatio` Ratio of one physical pixel to the size of one device independent pixels. Browser's `window.devicePixelRatio` is used by default.
-    + `renderer`  Supports `'canvas'` or `'svg'`. See [Render by Canvas or SVG](tutorial.html#Render%20by%20Canvas%20or%20SVG).
-    + `useDirtyRect`  Enable dirty rectangle rendering or not, `false` by default. See [New features in ECharts 5](https://echarts.apache.org/en/tutorial.html#New%20features%20in%20ECharts%205).
+    + `renderer`  Supports `'canvas'` or `'svg'`. See [Render by Canvas or SVG](${handbookPath}best-practices/canvas-vs-svg).
+    + `useDirtyRect`  Enable dirty rectangle rendering or not, `false` by default. See [New features in ECharts 5](${handbookPath}basics/release-note/v5-feature).
     + `width`  Specify width explicitly, in pixel. If setting to `null`/`undefined`/`'auto'`, width of `dom` (instance container) will be used.
     + `height`  Specify height explicitly, in pixel. If setting to `null`/`undefined`/`'auto'`, height of `dom` (instance container) will be used.
     + `locale` Specify the locale. There are two builtins: `'ZH'` and `'EN'`. Or you can use [echarts.registerLocale](~echarts.registerLocale) to register a new locale. Or supported locales can be referenced in [src/i18n](https://github.com/apache/echarts/tree/release/src/i18n).
@@ -120,7 +120,7 @@ echarts.use(
 );
 ```
 
-See [Use ECharts with bundler and NPM](tutorial.html#Use%20ECharts%20with%20bundler%20and%20NPM) for more detailed explaination.
+See [Use ECharts with bundler and NPM](${handbookPath}basics/import) for more detailed explaination.
 
 ## registerMap(Function)
 ```js
