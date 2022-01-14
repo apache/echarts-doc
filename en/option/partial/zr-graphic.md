@@ -1568,7 +1568,6 @@ If [top](~${optionPath}.${hostName}${symbolVisit}${type}.top) or [bottom](~${opt
 
 {{ target: partial-graphic-cpt-sub-prop-transition }}
 
-{{ if: ${usageType} === 'customSeries' }}
 ###${prefix} transition(string|Array) = undefined
 
 Can be a single property name or an array of property names.
@@ -1577,38 +1576,27 @@ Can only specify properties that are under this `${hostProp}`.
 
 For example:
 ```js
-renderItem: function (params, api) {
-    return {
-        type: 'xxx',
-        ${hostProp}: {
-            mmm: ...,
-            nnn: ...,
-            ppp: ...,
-            qqq: ...,
-            // This two props will perform transition animation.
-            transition: ['mmm', 'ppp']
-        }
-    };
+{
+    type: 'path',
+    ${hostProp}: {
+        ...
+        // This two props will perform transition animation.
+        transition: ['mmm', 'ppp']
+    }
 }
 ```
 We can also specify all of the properties like this:
 ```js
-renderItem: function (params, api) {
-    return {
-        type: 'xxx',
-        ${hostProp}: {
-            mmm: ...,
-            nnn: ...,
-            ppp: ...,
-            qqq: ...,
-        },
-        // Indicate that all props in `${hostProp}` will
-        // have transition animation.
-        transition: '${hostProp}',
-    };
-}
+{
+    type: 'path',
+    ${hostProp}: {
+        ...
+    },
+    // Indicate that all props in `${hostProp}` will
+    // have transition animation.
+    transition: '${hostProp}',
+};
 ```
-{{ /if }}
 
 
 
@@ -1806,7 +1794,7 @@ The range of fade out when `focus` is enabled. Support the following configurati
 {{ target: partial-graphic-cpt-style-emphasis }}
 
 {{ if: ${usageType} === 'customSeries' }}
-##${prefix} emphasisEnabled(boolean)
+##${prefix} emphasisDisabled(boolean)
 
 Whether to disable the emphasis state.
 

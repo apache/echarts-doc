@@ -1788,7 +1788,7 @@ renderItem: function (params, api) {
 {{ target: partial-graphic-cpt-style-emphasis }}
 
 {{ if: ${usageType} === 'customSeries' }}
-##${prefix} emphasisEnabled(boolean)
+##${prefix} emphasisDisabled(boolean)
 
 是否关闭高亮状态。
 
