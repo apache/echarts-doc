@@ -129,6 +129,10 @@ option = {
 
 高亮状态的图形样式。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: heatmap-state(
@@ -156,6 +160,10 @@ option = {
 ) }}
 
 选中状态的图形样式。开启 [selectedMode](~series-heatmap.selectedMode) 后有效。
+
+{{ use: partial-select-disabled(
+    prefix = "##"
+) }}
 
 {{ use: heatmap-state(
     prefix = "##",
@@ -210,6 +218,10 @@ option = {
 ) }}
 
 ### emphasis(Object)
+
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
 
 #### itemStyle(Object)
 

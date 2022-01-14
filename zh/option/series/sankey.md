@@ -138,6 +138,10 @@ levels: [{
 
 ### emphasis(Object)
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: sankey-state(
     prefix = "###",
     state = 'emphasis'
@@ -158,6 +162,10 @@ levels: [{
 
 {{ use: partial-version(
     version = "5.0.0"
+) }}
+
+{{ use: partial-select-disabled(
+    prefix = "###"
 ) }}
 
 {{ use: sankey-state(
@@ -206,6 +214,10 @@ levels: [{
 
 桑基图的高亮状态。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 {{ use: partial-focus-blur-scope(
     isGraph = true
 ) }}
@@ -235,6 +247,10 @@ levels: [{
 ) }}
 
 桑基图的选中状态。开启 [selectedMode](~series-sankey.selectedMode) 后有效。
+
+{{ use: partial-select-disabled(
+    prefix = "##"
+) }}
 
 {{ use: sankey-state(
     prefix = "##",
@@ -294,6 +310,10 @@ data: [{
 
 ### emphasis(Object)
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: sankey-node-state(
     prefix = "###",
     state = 'emphasis'
@@ -314,6 +334,10 @@ data: [{
 
 {{ use: partial-version(
     version = "5.0.0"
+) }}
+
+{{ use: partial-select-disabled(
+    prefix = "###"
 ) }}
 
 {{ use: sankey-node-state(
@@ -363,6 +387,10 @@ links: [{
 
 ### emphasis(Object)
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 #### lineStyle(Object)
 
 {{ use: partial-sankey-line-style(
@@ -386,6 +414,10 @@ links: [{
 
 {{ use: partial-version(
     version = "5.0.0"
+) }}
+
+{{ use: partial-select-disabled(
+    prefix = "###"
 ) }}
 
 #### lineStyle(Object)

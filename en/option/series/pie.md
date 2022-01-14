@@ -16,6 +16,7 @@ For multiple pie series in a single chart, you may use [left](~series-pie.left),
 ~[500x400](${galleryViewPath}pie-custom&edit=1&reset=1)
 
 Since ECharts v4.6.0, we provide `'labelLine'` and `'edge'` two extra layouts. Check [label.alignTo](~series-pie.label.alignTo) for more information.
+
 ## type(string) = 'pie'
 
 {{ use: partial-component-id(
@@ -207,6 +208,10 @@ Can be 0 - 180 degree.
 
 Configurations of emphasis state.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 ### scale(boolean) = true
 
 <ExampleUIControlBoolean default="true" />
@@ -246,6 +251,10 @@ Configurations of blur state. Available when [emphasis.focus](~series-pie.emphas
 ) }}
 
 Configurations of select state. Available when [selectedMode](~series-pie.selectedMode) is set.
+
+{{ use: partial-select-disabled(
+    prefix = "##"
+) }}
 
 {{ use: pie-state(
     prefix = "##",
@@ -327,6 +336,10 @@ The label configuration of a single sector.
 
 ### emphasis(Object)
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: pie-state(
     prefix = "###",
     state = 'emphasis'
@@ -347,6 +360,10 @@ The label configuration of a single sector.
 
 {{ use: partial-version(
     version = "5.0.0"
+) }}
+
+{{ use: partial-select-disabled(
+    prefix = "###"
 ) }}
 
 {{ use: pie-state(

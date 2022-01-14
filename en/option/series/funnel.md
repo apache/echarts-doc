@@ -120,6 +120,10 @@ The visual guide line style of label. When [label position](~series-funnel.label
 
 Configurations of emphasis state.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: partial-funnel-state(
@@ -147,6 +151,10 @@ Configurations of blur state. Available when [emphasis.focus](~series-funnel.emp
 ) }}
 
 Configurations of select state. Available when [selectedMode](~series-funnel.selectedMode) is set.
+
+{{ use: partial-select-disabled(
+    prefix = "##"
+) }}
 
 {{ use: partial-funnel-state(
     prefix = "##",
@@ -223,6 +231,10 @@ The label configuration of a single data item.
 
 ### emphasis(Object)
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: partial-funnel-state(
     prefix = "###",
     state = 'emphasis'
@@ -243,6 +255,10 @@ The label configuration of a single data item.
 
 {{ use: partial-version(
     version = "5.0.0"
+) }}
+
+{{ use: partial-select-disabled(
+    prefix = "###"
 ) }}
 
 {{ use: partial-funnel-state(

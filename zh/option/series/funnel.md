@@ -38,7 +38,9 @@ option = {
 
 {{ use: partial-series-name() }}
 
-{{ use: partial-colorby(defaultColorBy="'data'") }}
+{{ use: partial-colorby(
+    defaultColorBy = "'data'"
+) }}
 
 ## min(number) = 0
 
@@ -140,6 +142,10 @@ option = {
 
 高亮的标签和图形样式。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: partial-funnel-state(
@@ -167,6 +173,10 @@ option = {
 ) }}
 
 数据选中时的图形样式和标签样式。开启 [selectedMode](~series-funnel.selectedMode) 后有效。
+
+{{ use: partial-select-disabled(
+    prefix = "##"
+) }}
 
 {{ use: partial-funnel-state(
     prefix = "##",
@@ -243,6 +253,10 @@ option = {
 
 ### emphasis(Object)
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: partial-funnel-state(
     prefix = "###",
     state = 'emphasis'
@@ -263,6 +277,10 @@ option = {
 
 {{ use: partial-version(
     version = "5.0.0"
+) }}
+
+{{ use: partial-select-disabled(
+    prefix = "###"
 ) }}
 
 {{ use: partial-funnel-state(

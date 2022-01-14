@@ -46,7 +46,9 @@ const option = {
 
 {{ use: partial-series-name() }}
 
-{{ use: partial-colorby(defaultColorBy="'data'") }}
+{{ use: partial-colorby(
+    defaultColorBy = "'data'"
+) }}
 
 {{ use: partial-legend-hover-link() }}
 
@@ -131,7 +133,6 @@ const option = {
     prefix = "##",
     defaultColor = 'lightgray'
 ) }}
-
 
 ## label(Object)
 
@@ -230,6 +231,10 @@ const option = {
 
 高亮状态的扇区和标签样式。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 ### scale(boolean) = true
 
 <ExampleUIControlBoolean default="true" />
@@ -269,6 +274,10 @@ const option = {
 ) }}
 
 选中状态的扇区和标签样式。开启 [selectedMode](~series-pie.selectedMode) 后有效。
+
+{{ use: partial-select-disabled(
+    prefix = "##"
+) }}
 
 {{ use: pie-state(
     prefix = "##",
@@ -350,6 +359,10 @@ const option = {
 
 ### emphasis(Object)
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: pie-state(
     prefix = "###",
     state = 'emphasis'
@@ -370,6 +383,10 @@ const option = {
 
 {{ use: partial-version(
     version = "5.0.0"
+) }}
+
+{{ use: partial-select-disabled(
+    prefix = "###"
 ) }}
 
 {{ use: pie-state(

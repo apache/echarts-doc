@@ -164,6 +164,10 @@ option = {
 
 高亮状态配置。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: pictorialBar-state(
@@ -191,6 +195,10 @@ option = {
 ) }}
 
 选中状态配置。开启 [selectedMode](~series-bar.selectedMode) 后有效。
+
+{{ use: partial-select-disabled(
+    prefix = "##"
+) }}
 
 {{ use: partial-selected-mode(
     version = '5.0.0'
@@ -273,6 +281,10 @@ option = {
 
 单个数据的高亮状态配置。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: partial-bar-state(
     prefix = "###",
     state = 'emphasis'
@@ -298,6 +310,10 @@ option = {
 ) }}
 
 单个数据的选中状态配置。
+
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
 
 {{ use: partial-bar-state(
     prefix = "###",

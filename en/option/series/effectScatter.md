@@ -138,6 +138,10 @@ The brush type for ripples. options: `'stroke'` and `'fill'`.
 
 Configurations of emphasis state.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 ### scale(boolean) = true
 
 <ExampleUIControlBoolean default="true" />
@@ -169,6 +173,10 @@ Configurations of blur state. Available when [emphasis.focus](~series-effectScat
 ) }}
 
 Configurations of select state. Available when [selectedMode](~series-effectScatter.selectedMode) is set.
+
+{{ use: partial-select-disabled(
+    prefix = "##"
+) }}
 
 {{ use: effectScatter-state(
     prefix = "##"
@@ -231,6 +239,10 @@ Configurations of select state. Available when [selectedMode](~series-effectScat
 
 Emphasis state of the specified single data.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: effectScatter-state(
     prefix = "###"
 ) }}
@@ -250,6 +262,10 @@ Blur state of the specified single data.
 ### select(Object)
 
 Select state of the specified single data.
+
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
 
 {{ use: effectScatter-state(
     prefix = "###"

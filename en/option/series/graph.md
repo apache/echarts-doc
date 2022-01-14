@@ -219,6 +219,10 @@ The style of edge line. [lineStyle.color](~series-graph.lineStyle.color) can be 
 
 Configurations of emphasis state.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 ### scale(boolean) = true
 
 <ExampleUIControlBoolean default="true" />
@@ -252,6 +256,10 @@ Configurations of blur state. Available when [emphasis.focus](~series-graph.emph
 ) }}
 
 Configurations of select state. Available when [selectedMode](~series-graph.selectedMode) is set.
+
+{{ use: partial-select-disabled(
+    prefix = "##"
+) }}
 
 {{ use: graph-state(
     state = 'select'
@@ -298,6 +306,10 @@ The label style of node in this category.
 
 Emphasis state of nodes in this category.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: graph-node-state(
     state = 'emphasis'
 ) }}
@@ -321,6 +333,10 @@ Blur state of nodes in this category.
 ) }}
 
 Select state of nodes in this category.
+
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
 
 {{ use: graph-node-state(
     state = 'select'
@@ -410,6 +426,10 @@ The label style of this node.
 
 Emphasis state of specified node.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: graph-node-state(
     state = 'emphasis'
 ) }}
@@ -433,6 +453,10 @@ Blur state of specified node.
 ) }}
 
 Select state of specified node.
+
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
 
 {{ use: graph-node-state(
     state = 'select'
@@ -493,6 +517,10 @@ The curveness of edge, supporting values from 0 to 1. The curveness will be larg
 
 Emphasis state of specified edge.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: graph-edge-state(
     state = 'emphasis'
 ) }}
@@ -516,6 +544,10 @@ Blur state of specified edge.
 ) }}
 
 Select state of specified edge.
+
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
 
 {{ use: graph-edge-state(
     state = 'select'

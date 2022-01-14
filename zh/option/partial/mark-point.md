@@ -41,6 +41,10 @@
 
 标注的高亮样式。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##" + ${prefix}
+) }}
+
 ###${prefix} label(Object)
 
 {{ use: partial-label(
@@ -183,6 +187,10 @@ data: [{{ if: ${hasType} }}
 ) }}
 
 ###${prefix} emphasis(Object)
+
+{{ use: partial-emphasis-disabled(
+    prefix = "###" + ${prefix}
+) }}
 
 ####${prefix} label(Object)
 

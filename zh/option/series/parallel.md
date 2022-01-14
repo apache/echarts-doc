@@ -272,6 +272,10 @@ const option = {
 
 #${prefix} emphasis(Object)
 
+{{ use: partial-emphasis-disabled(
+    prefix = "#" + ${prefix}
+) }}
+
 ##${prefix} lineStyle(Object)
 
 {{ use: partial-line-style(

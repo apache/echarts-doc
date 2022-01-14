@@ -282,6 +282,10 @@ K 线图的图形样式。
 
 K 线图的高亮状态。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 {{ use: partial-focus-blur-scope() }}
 
 ### itemStyle(Object)
@@ -313,6 +317,10 @@ K 线图的淡出状态。开启 [emphasis.focus](~series-candlestick.emphasis.f
 ) }}
 
 K 线图的选中状态。开启 [selectedMode](~series-candlestick.selectedMode) 后有效。
+
+{{ use: partial-select-disabled(
+    prefix = "##"
+) }}
 
 ### itemStyle(Object)
 
@@ -400,6 +408,10 @@ K 线图的选中状态。开启 [selectedMode](~series-candlestick.selectedMode
 
 单个 K 线图数据的高亮状态配置。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 #### itemStyle(Object)
 
 {{ use: partial-candlestick-item-style-detail(
@@ -427,6 +439,10 @@ K 线图的选中状态。开启 [selectedMode](~series-candlestick.selectedMode
 ) }}
 
 单个 K 线图数据的选中状态配置。
+
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
 
 #### itemStyle(Object)
 

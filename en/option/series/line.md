@@ -174,6 +174,10 @@ The style of area.
 
 Highlight style of the graphic.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 ### scale(boolean) = true
 
 Whether to scale to highlight the data in emphasis state.
@@ -225,6 +229,10 @@ Configurations of blur state. Available when [emphasis.focus](~series-line.empha
 ) }}
 
 Configurations of select state. Available when [selectedMode](~series-line.selectedMode) is set.
+
+{{ use: partial-select-disabled(
+    prefix = "##"
+) }}
 
 {{ use: line-state(
     state = 'select'
@@ -348,6 +356,10 @@ The style of the symbol of single data point.
 
 Emphasis state of specified single data.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: line-item-state(
     state = 'emphasis'
 ) }}
@@ -363,6 +375,10 @@ Blur state of specified single data.
 ### select(Object)
 
 Select state of specified single data.
+
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
 
 {{ use: line-item-state(
     state = 'select'

@@ -86,6 +86,10 @@ It could be used with [rectangular coordinate](~grid) and [polar coordinate](~po
 
 Configurations of emphasis state.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 ### scale(boolean) = true
 
 <ExampleUIControlBoolean default="true" />
@@ -119,6 +123,10 @@ Configurations of blur state. Available when [emphasis.focus](~series-scatter.em
 ) }}
 
 Configurations of select state. Available when [selectedMode](~series-scatter.selectedMode) is set.
+
+{{ use: partial-select-disabled(
+    prefix = "##"
+) }}
 
 {{ use: scatter-state(
     prefix = "##",
@@ -199,6 +207,10 @@ the style setting about single data point(bubble).
 
 Emphasis state of single data.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: scatter-state(
     prefix = "###",
     state = 'emphasis'
@@ -224,6 +236,10 @@ Blur state of single data.
 ) }}
 
 Select state of single data.
+
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
 
 {{ use: scatter-state(
     prefix = "###",

@@ -29,7 +29,9 @@ const option = {
 
 {{ use: partial-series-name() }}
 
-{{ use: partial-colorby(defaultColorBy="'data'") }}
+{{ use: partial-colorby(
+    defaultColorBy = "'data'"
+) }}
 
 {{ use: component-circular-layout() }}
 
@@ -445,6 +447,10 @@ formatter: function (value) {
 ## emphasis(Object)
 
 高亮的仪表盘指针样式
+
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
 
 ### itemStyle(*)
 

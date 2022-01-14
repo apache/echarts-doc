@@ -41,6 +41,10 @@ Mark point style.
 
 Emphasis status of mark point.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##" + ${prefix}
+) }}
+
 ###${prefix} label(Object)
 
 {{ use: partial-label(
@@ -183,6 +187,10 @@ Mark point style.
 ) }}
 
 ###${prefix} emphasis(Object)
+
+{{ use: partial-emphasis-disabled(
+    prefix = "###" + ${prefix}
+) }}
 
 ####${prefix} label(Object)
 

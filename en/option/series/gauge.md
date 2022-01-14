@@ -435,6 +435,10 @@ The color of pointer. Defaults to use [the color of section](~series-gauge.axisL
 
 Configurations of emphasis state.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 ### itemStyle(*)
 
 {{ use: partial-item-style(

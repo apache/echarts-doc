@@ -184,6 +184,10 @@ const option = {
 
 树图中个图形和标签高亮的样式。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 {{ use: partial-focus-blur-scope(
     isTree = true
 ) }}
@@ -213,6 +217,10 @@ const option = {
 ) }}
 
 选中状态的相关配置。开启 [selectedMode](~series-tree.selectedMode) 后有效。
+
+{{ use: partial-select-disabled(
+    prefix = "##"
+) }}
 
 {{ use: tree-state(
     prefix = "##",
@@ -250,6 +258,10 @@ const option = {
 
 叶子节点高亮状态的配置。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: tree-node-state(
     prefix = "###",
     state = 'emphasis'
@@ -275,6 +287,10 @@ const option = {
 ) }}
 
 叶子节点选中状态的配置。
+
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
 
 {{ use: tree-node-state(
     prefix = "###",
@@ -349,6 +365,10 @@ const option = {
 
 节点高亮状态的配置。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: tree-node-state(
     prefix = "###",
     state = 'emphasis'
@@ -374,6 +394,10 @@ const option = {
 ) }}
 
 节点选中状态的配置。
+
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
 
 {{ use: tree-node-state(
     prefix = "###",

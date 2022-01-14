@@ -179,6 +179,10 @@ boundingCoords: [
 
 高亮状态下的多边形和标签样式。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "#" + ${prefix}
+) }}
+
 {{ if: !${inMap} }}
 {{ use: partial-focus-blur-scope(
     isGeoCoordSys = true
@@ -192,6 +196,10 @@ boundingCoords: [
 #${prefix} select(Object)
 
 选中状态下的多边形和标签样式。
+
+{{ use: partial-select-disabled(
+    prefix = "#" + ${prefix}
+) }}
 
 {{ use: partial-geo-common-state(
     prefix = '#' + ${prefix}

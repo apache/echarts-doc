@@ -205,6 +205,10 @@ const option = {
 
 折线图的高亮状态。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 ### scale(boolean) = true
 
 是否开启 hover 在拐点标志上的放大效果。
@@ -256,6 +260,10 @@ const option = {
 ) }}
 
 折线图的选中状态。开启 [selectedMode](~series-line.selectedMode) 后有效。
+
+{{ use: partial-select-disabled(
+    prefix = "##"
+) }}
 
 {{ use: line-state(
     state = 'select'
@@ -379,6 +387,10 @@ const option = {
 
 单个拐点的高亮样式和标签设置。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: line-item-state(
     state = 'emphasis'
 ) }}
@@ -394,6 +406,10 @@ const option = {
 ### select(Object)
 
 单个拐点的选中样式和标签设置。
+
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
 
 {{ use: line-item-state(
     state = 'select'

@@ -180,6 +180,10 @@ Area filling color.
 
 Map area style in highlighted state.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "#" + ${prefix}
+) }}
+
 {{ if: !${inMap} }}
 {{ use: partial-focus-blur-scope(
     isGeoCoordSys = true
@@ -193,6 +197,10 @@ Map area style in highlighted state.
 #${prefix} select(Object)
 
 Map area style in selected state.
+
+{{ use: partial-select-disabled(
+    prefix = "#" + ${prefix}
+) }}
 
 {{ use: partial-geo-common-state(
     prefix = '#' + ${prefix}

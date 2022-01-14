@@ -1756,6 +1756,7 @@ renderItem: function (params, api) {
 元素旋转和缩放原点的 y 像素位置。
 
 
+
 {{ target: partial-graphic-cpt-focus-blur }}
 
 ##${prefix} focus(string) = 'none'
@@ -1787,6 +1788,10 @@ renderItem: function (params, api) {
 {{ target: partial-graphic-cpt-style-emphasis }}
 
 {{ if: ${usageType} === 'customSeries' }}
+##${prefix} emphasisEnabled(boolean)
+
+是否关闭高亮状态。
+
 ##${prefix} emphasis(Object)
 
 图形元素的高亮状态

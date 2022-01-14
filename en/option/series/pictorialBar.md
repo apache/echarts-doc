@@ -115,6 +115,10 @@ See the example below:
 
 Configurations of emphasis state.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: pictorialBar-state(
@@ -142,6 +146,10 @@ Configurations of blur state. Available when [emphasis.focus](~series-pictorialB
 ) }}
 
 Configurations of select state. Available when [selectedMode](~series-pictorialBar.selectedMode) is set.
+
+{{ use: partial-select-disabled(
+    prefix = "##"
+) }}
 
 {{ use: partial-selected-mode(
     version = '5.0.0'
@@ -224,6 +232,10 @@ The style setting of the text label in a single bar.
 
 Emphasis state of the specified single data.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: partial-bar-state(
     prefix = "###",
     state = 'emphasis'
@@ -249,6 +261,10 @@ Blur state of the specified single data.
 ) }}
 
 Select state of the specified single data.
+
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
 
 {{ use: partial-bar-state(
     prefix = "###",

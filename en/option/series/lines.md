@@ -137,6 +137,10 @@ Label settings. Does not work when [polyline](~series-lines.polyline) is `true`.
 
 Emphasis state.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: lines-state(
@@ -164,6 +168,10 @@ Configurations of blur state. Available when [emphasis.focus](~series-lines.emph
 ) }}
 
 Configurations of select state. Available when [selectedMode](~series-lines.selectedMode) is set.
+
+{{ use: partial-select-disabled(
+    prefix = "##"
+) }}
 
 {{ use: lines-state(
     prefix = "##",
@@ -215,6 +223,10 @@ Label of a single line. Available when [polyline](~series-lines.polyline) is not
 
 ### emphasis(Object)
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: lines-state(
     prefix = "###",
     state = 'emphasis'
@@ -235,6 +247,10 @@ Label of a single line. Available when [polyline](~series-lines.polyline) is not
 
 {{ use: partial-version(
     version = "5.0.0"
+) }}
+
+{{ use: partial-select-disabled(
+    prefix = "###"
 ) }}
 
 {{ use: lines-state(

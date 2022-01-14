@@ -96,6 +96,10 @@ Item style of candlestick.
 
 Emphasis style of candlestick.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 {{ use: partial-focus-blur-scope() }}
 
 ### itemStyle(Object)
@@ -127,6 +131,10 @@ Configurations of blur state. Available when [emphasis.focus](~series-candlestic
 ) }}
 
 Configurations of select state. Available when [selectedMode](~series-candlestick.selectedMode) is set.
+
+{{ use: partial-select-disabled(
+    prefix = "##"
+) }}
 
 ### itemStyle(Object)
 
@@ -213,6 +221,10 @@ Style of a candle box.
 
 Emphasis style of a candle box.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 #### itemStyle(Object)
 
 {{ use: partial-candlestick-item-style-detail(
@@ -240,6 +252,10 @@ Blur state of single data.
 ) }}
 
 Select state of single data.
+
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
 
 #### itemStyle(Object)
 

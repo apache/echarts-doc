@@ -46,6 +46,10 @@
 
 标线的高亮样式。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##" + ${prefix}
+) }}
+
 ###${prefix} label(Object)
 
 {{ use: mark-line-label(
@@ -337,6 +341,10 @@ data: [{
 ) }}
 
 #${prefix} emphasis(Object)
+
+{{ use: partial-emphasis-disabled(
+    prefix = "#" + ${prefix}
+) }}
 
 ##${prefix} lineStyle(Object)
 

@@ -84,6 +84,10 @@ Area filling style.
 
 Configurations of emphasis state.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: radar-state(
@@ -111,6 +115,10 @@ Configurations of blur state. Available when [emphasis.focus](~series-radar.emph
 ) }}
 
 Configurations of select state. Available when [selectedMode](~series-radar.selectedMode) is set.
+
+{{ use: partial-select-disabled(
+    prefix = "##"
+) }}
 
 {{ use: radar-state(
     prefix = "##",
@@ -224,6 +232,10 @@ Configurations of blur state.
 ) }}
 
 Configurations of selected state.
+
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
 
 {{ use: radar-state(
     prefix = "###",

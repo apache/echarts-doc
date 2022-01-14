@@ -224,6 +224,10 @@ edgeSymbol: ['circle', 'arrow']
 
 高亮状态的图形样式。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 ### scale(boolean) = true
 
 <ExampleUIControlBoolean default="true" />
@@ -257,6 +261,10 @@ edgeSymbol: ['circle', 'arrow']
 ) }}
 
 选中状态的图形样式。开启 [selectedMode](~series-graph.selectedMode) 后有效。
+
+{{ use: partial-select-disabled(
+    prefix = "##"
+) }}
 
 {{ use: graph-state(
     state = 'select'
@@ -304,6 +312,10 @@ edgeSymbol: ['circle', 'arrow']
 
 该类目节点的高亮状态。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: graph-node-state(
     state = 'emphasis'
 ) }}
@@ -327,6 +339,10 @@ edgeSymbol: ['circle', 'arrow']
 ) }}
 
 该类目节点的选中状态。
+
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
 
 {{ use: graph-node-state(
     state = 'select'
@@ -418,6 +434,10 @@ data: [{
 
 该节点的高亮状态。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: graph-node-state(
     state = 'emphasis'
 ) }}
@@ -441,6 +461,10 @@ data: [{
 ) }}
 
 该节点的选中状态。
+
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
 
 {{ use: graph-node-state(
     state = 'select'
@@ -501,6 +525,10 @@ links: [{
 
 该关系边的高亮状态。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: graph-edge-state(
     state = 'emphasis'
 ) }}
@@ -524,6 +552,10 @@ links: [{
 ) }}
 
 该关系边的选中状态。
+
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
 
 {{ use: graph-edge-state(
     state = 'select'

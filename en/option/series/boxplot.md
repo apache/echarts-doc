@@ -77,6 +77,10 @@ Style of boxplot.
 
 Configurations of emphasis state.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 {{ use: partial-focus-blur-scope() }}
 
 ### itemStyle(Object)
@@ -115,6 +119,10 @@ Configurations of blur state. Available when [emphasis.focus](~series-boxplot.em
 ) }}
 
 Configurations of select state. Available when [selectedMode](~series-boxplot.selectedMode) is set.
+
+{{ use: partial-select-disabled(
+    prefix = "##"
+) }}
 
 ### itemStyle(Object)
 
@@ -198,6 +206,10 @@ Style of a single data.
 
 Emphasis state of a single data.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 #### itemStyle(Object)
 
 {{ use: partial-item-style(
@@ -228,6 +240,10 @@ Blur state of single data.
 ) }}
 
 Select state of single data.
+
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
 
 #### itemStyle(Object)
 

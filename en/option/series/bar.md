@@ -86,6 +86,10 @@ Background style of each bar if [showBackground](~series-bar.showBackground) is 
 
 Configurations of emphasis state.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: partial-bar-state(
@@ -106,7 +110,15 @@ Configurations of blur state. Available when [emphasis.focus](~series-bar.emphas
 
 ## select(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 Configurations of select state. Available when [selectedMode](~series-bar.selectedMode) is set.
+
+{{ use: partial-select-disabled(
+    prefix = "##"
+) }}
 
 {{ use: partial-bar-state(
     prefix = "##",
@@ -191,6 +203,10 @@ The value of a single data item.
 
 Emphasis state of single data.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: partial-bar-state(
     prefix = "###",
     topLevel = false,
@@ -218,6 +234,10 @@ Blur state of single data.
 ) }}
 
 Select state of single data.
+
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
 
 {{ use: partial-bar-state(
     prefix = "###",

@@ -29,6 +29,10 @@
 
 高亮的标域样式
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##" + ${prefix}
+) }}
+
 ###${prefix} label(Object)
 
 {{ use: partial-label(
@@ -233,6 +237,10 @@ data: [
 ) }}
 
 #${prefix} emphasis(Object)
+
+{{ use: partial-emphasis-disabled(
+    prefix = "#" + ${prefix}
+) }}
 
 ##${prefix} itemStyle(Object)
 

@@ -506,7 +506,6 @@ series: {
 
 当前层的内半径和外半径，注意其它层的内外半径不会因为该层的改变自适应。
 
-
 {{ use: partial-sunburst-label-props(
     prefix = "##"
 ) }}

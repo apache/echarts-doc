@@ -748,6 +748,10 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 高亮状态配置。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "#" + ${prefix}
+) }}
+
 {{ if: ${prefix} === '#' }}
 {{ use: partial-focus-blur-scope(
     isTree = true
@@ -777,6 +781,10 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 ) }}
 
 选中状态配置。
+
+{{ use: partial-select-disabled(
+    prefix = "#" + ${prefix}
+) }}
 
 {{ use: treemap-state(
     prefix = "#" + ${prefix}

@@ -1773,6 +1773,8 @@ x value of element scale and rotation origin. In pixels
 
 y value of element scale and rotation origin. In pixels.
 
+
+
 {{ target: partial-graphic-cpt-focus-blur }}
 
 ##${prefix} focus(string) = 'none'
@@ -1804,6 +1806,10 @@ The range of fade out when `focus` is enabled. Support the following configurati
 {{ target: partial-graphic-cpt-style-emphasis }}
 
 {{ if: ${usageType} === 'customSeries' }}
+##${prefix} emphasisEnabled(boolean)
+
+Whether to disable the emphasis state.
+
 ##${prefix} emphasis(Object)
 
 Emphasis state of the element.
