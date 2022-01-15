@@ -39,7 +39,7 @@
 
 `index.json` 配置如下：
 
-```json
+```tson
 {
   "usingComponents": {
     "ec-canvas": "../../ec-canvas/ec-canvas"
@@ -59,7 +59,7 @@
 
 其中 `ec` 是一个我们在 `index.js` 中定义的对象，它使得图表能够在页面加载后被初始化并设置。`index.js` 的结构如下：
 
-```js
+```ts
 function initChart(canvas, width, height) {
   const chart = echarts.init(canvas, null, {
     width: width,

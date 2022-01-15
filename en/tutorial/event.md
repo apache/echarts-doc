@@ -6,7 +6,7 @@ User interactions trigger corresponding events in Apache ECharts<sup>TM</sup>. D
 
 Binding events in ECharts 3 is though [on](api.html#EChartsInstance.on) method, same as in ECharts 2. But event names are much simpler than it is in 2. Event names in ECharts 3 are the same as DOM event names, in lowercases. Below is an example of binding clicking operation.
 
-```js
+```ts
 myChart.on('click', function (params) {
     // printing data name in console
     console.log(params.name);
@@ -19,7 +19,7 @@ Event in ECharts can be divided in two kinds. One is mouse event, which is trigg
 
 ECharts support regular mouse events, which includes `'click'`, `'dblclick'`, `'mousedown'`, `'mousemove'`, `'mouseup'`, `'mouseover'`, `'mouseout'`, `'globalout'`, `'contextmenu'`. Next let's see an example of opening Baidu search page when clicks a bar chart.
 
-```js
+```ts
 // initialize ECharts instance based on prepared dom
 var myChart = echarts.init(document.getElementById('main'));
 
@@ -44,7 +44,7 @@ myChart.on('click', function (params) {
 ```
 
 All types of mouse events have a common parameter called `params`, which is an object that contains data information of the clicked chart, whose format is as followed:
-```js
+```ts
 {
     // component name of clicked component
     // e.g., 'series', 'markLine', 'markPoint', 'timeLine'
@@ -75,7 +75,7 @@ All types of mouse events have a common parameter called `params`, which is an o
 ```
 
 How to know where the mouse clicked:
-```js
+```ts
 myChart.on('click', function (params) {
     if (params.componentType === 'markPoint') {
         // clicked on markPoint
@@ -97,21 +97,21 @@ myChart.on('click', function (params) {
 ```
 
 Use `query` to call handler only on the graphic elements of the specified components:
-```js
+```ts
 chart.on(eventName, query, handler);
 ```
 
 `query` can be `string` or `Object`.
 
 If `string`, the formatter can be 'mainType' or 'mainType.subType'. For example:
-```js
+```ts
 chart.on('click', 'series', function () {...});
 chart.on('click', 'series.line', function () {...});
 chart.on('click', 'xAxis.category', function () {...});
 ```
 
 If `Object`, one or more properties below can be included, and any of them is optional.
-```js
+```ts
 {
     <mainType>Index: number // component index
     <mainType>Name: string // component name
@@ -125,7 +125,7 @@ If `Object`, one or more properties below can be included, and any of them is op
 ```
 
 For example:
-```js
+```ts
 chart.setOption({
     // ...
     series: [{
@@ -139,7 +139,7 @@ chart.on('mouseover', {seriesName: 'uuu'}, function () {
 ```
 
 For example:
-```js
+```ts
 chart.setOption({
     // ...
     series: [{
@@ -158,7 +158,7 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function () {
 ```
 
 For example:
-```js
+```ts
 chart.setOption({
     // ...
     series: [{
@@ -176,7 +176,7 @@ chart.on('click', {dataType: 'edge'}, function () {
 ```
 
 For example:
-```js
+```ts
 chart.setOption({
     // ...
     series: {
@@ -205,7 +205,7 @@ chart.on('click', {element: 'my_el'}, function () {
 
 You may update chart or show customized layer with information got from your own data warehouse, indexed from data name or series name of an object received from a callback function. Sample code is shown as followed:
 
-```js
+```ts
 myChart.on('click', function (parmas) {
     $.get('detail?q=' + params.name, function (detail) {
         myChart.setOption({
@@ -225,7 +225,7 @@ Basically all component interactions in ECharts trigger corresponding events. Fr
 
 Below is example that listens to a legend toggling:
 
-```js
+```ts
 // legend toggling triggers legendselectchanged event only
 myChart.on('legendselectchanged', function (params) {
     // obtain selecting status of clicked legend
@@ -256,7 +256,7 @@ Below displays how to highlight each sector of pie chart in turn through `dispat
 Sometimes developers need to listen to the events that are triggered from the blank of the canvas. For example, need to reset the chart when users click on the blank.
 
 Before we talk about this feature, we need to clarify two kinds of events: `zrender events` and `echarts events`.
-```js
+```ts
 myChart.getZr().on('click', function (event) {
     // This listener is listening to a `zrender event`.
 });
@@ -267,7 +267,7 @@ myChart.on('click', function (event) {
 `zrender events` are different from `echarts events`. The former one are triggered when mouse/pointer is at everywhere, while the latter one can only be triggered when mouse/pointer is at the graphic elements. In fact, `echarts events` are implemented based on `zrender events`, that is, when a `zrender events` is triggered at a graphic element, `echarts` will trigger a `echarts event`.
 
 Having `zrender events`, we can implement "listen to events from the blank" as follows:
-```js
+```ts
 myChart.getZr().on('click', function (event) {
     // No "target" means that mouse/pointer is not on
     // any of the graphic elements, which is "blank".

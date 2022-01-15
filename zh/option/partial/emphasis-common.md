@@ -47,7 +47,7 @@
 {{ if: !${isGeoCoordSys} }}
 下面代码配置了柱状图在高亮一个图形的时候，淡出当前直角坐标系所有其它的系列。
 
-```js
+```ts
 emphasis: {
     focus: 'series',
     blurScope: 'coordinateSystem'
@@ -58,7 +58,7 @@ emphasis: {
 {{ else }}
 下面代码配置了 geo 在高亮一个图形的时候，淡出所有其它的图形。
 
-```js
+```ts
 emphasis: {
     focus: 'self'
 }

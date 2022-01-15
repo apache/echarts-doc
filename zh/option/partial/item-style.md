@@ -17,7 +17,7 @@ ${name}图形的颜色。{{ if: ${useColorPalatte} }} 默认从全局调色盘 [
 
 {{ if: ${hasCallback} }}
 支持使用回调函数。回调函数格式如下：
-```js
+```ts
 (params: Object) => Color
 ```
 传入的是数据项 `seriesIndex`, `dataIndex`, `data`, `value` 等各个参数。

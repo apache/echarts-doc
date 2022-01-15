@@ -17,7 +17,7 @@ Apache ECharts<sup>TM</sup> 5 开始支持了“数据转换”（ data transfor
 
 在 echarts 中，数据转换是依托于数据集（[dataset](~dataset)）来实现的. 我们可以设置 [dataset.transform](option.html#dataset.transform) 来表示，此 dataset 的数据，来自于此 transform 的结果。例如。
 
-```js
+```ts
 var option = {
     dataset: [{
         // 这个 dataset 的 index 是 `0`。
@@ -106,7 +106,7 @@ var option = {
 #### 链式声明 transform
 
 `transform` 可以被链式声明，这是一个语法糖。
-```js
+```ts
 option: {
     dataset: [{
         source: [ ... ] // 原始数据
@@ -141,7 +141,7 @@ option: {
 
 我们提供配置 [dataset.fromTransformResult](option.html#dataset.fromTransformResult) 来满足这种情况，例如：
 
-```js
+```ts
 option = {
     dataset: [{
         // 这个 dataset 的 index 为 `0`。
@@ -187,7 +187,7 @@ option = {
 
 另外，[dataset.fromTransformResult](option.html#dataset.fromTransformResult) 和 [dataset.transform](option.html#dataset.transform) 能同时出现在一个 dataset 中，这表示，这个 transform 的输入，是上游的结果中以 `fromTransformResult` 获取的结果。例如：
 
-```js
+```ts
 {
     fromDatasetIndex: 1,
     fromTransformResult: 1,
@@ -203,7 +203,7 @@ option = {
 
 使用 transform 时，有时候我们会配不对，显示不出来结果，并且不知道哪里错了。所以，这里提供了一个配置项 `transform.print` 方便 debug 。这个配置项只在开发环境中生效。如下例：
 
-```js
+```ts
 option = {
     dataset: [{
         source: [ ... ]
@@ -225,7 +225,7 @@ option = {
 
 echarts 内置提供了能起过滤作用的数据转换器。我们只需声明 `transform.type: "filter"`，以及给出数据筛选条件。如下例：
 
-```js
+```ts
 option = {
     dataset: [{
         source: [
@@ -293,7 +293,7 @@ option = {
 **关于逻辑比较：**
 
 我们也支持了逻辑比较操作符 **与或非**（ `and` | `or` | `not` ）：
-```js
+```ts
 option = {
     dataset: [{
         source: [...]
@@ -319,7 +319,7 @@ option = {
 };
 ```
 `and`/`or`/`not` 自然可以被嵌套，例如：
-```js
+```ts
 transform: {
     type: 'filter',
     config: {
@@ -352,7 +352,7 @@ transform: {
 + `parser: 'number'`：强制把原始数据转成数值。如果不能转成有意义的数值，那么转成 `NaN`。在大多数场景下，我们并不需要这个解析器，因为按默认策略，“像数值的字符串”就会被转成数值。但是默认策略比较严格，这个解析器比较宽松，如果我们遇到含有尾缀的字符串（例如 `'33%'`, `12px`），我们需要手动指定 `parser: 'number'`，从而去掉尾缀转为数值才能比较。
 
 这个例子显示了如何使用 `parser: 'time'`：
-```js
+```ts
 option = {
     dataset: [{
         source: [
@@ -421,7 +421,7 @@ type DimensionIndex = number;
 
 "sort" 是另一个内置的数据转换器，用于排序数据。目前主要能用于在类目轴（ `axis.type: 'category'` ）中显示排过序的数据。例如：
 
-```js
+```ts
 option = {
     dataset: [{
         dimensions: ['name', 'age', 'profession', 'score', 'date'],
@@ -466,7 +466,7 @@ option = {
 
 
 这是一个“多维度排序”的例子。
-```js
+```ts
 option = {
     dataset: [{
         dimensions: ['name', 'age', 'profession', 'score', 'date'],
@@ -523,11 +523,11 @@ type DimensionIndex = number;
 除了上述的内置的数据转换器外，我们也可以使用外部的数据转换器。外部数据转换器能提供或自己定制更丰富的功能。下面的例子中，我们使用第三方库 [ecStat](https://github.com/ecomfe/echarts-stat) 提供的数据转换器。
 
 生成数据的回归线：
-```js
+```ts
 // 首先要注册外部数据转换器。
 echarts.registerTransform(ecStatTransform(ecStat).regression);
 ```
-```js
+```ts
 option = {
     dataset: [{
         source: rawData

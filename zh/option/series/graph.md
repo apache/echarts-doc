@@ -47,7 +47,7 @@ option.series[0].data.forEach(function (item) {
 当前视角的中心点
 
 例如：
-```js
+```ts
 center: [115.97, 29.71]
 ```
 
@@ -116,7 +116,7 @@ center: [115.97, 29.71]
 
 支持设置成数组表达边长的范围，此时不同大小的值会线性映射到不同的长度。值越小则长度越长。如下示例
 
-```js
+```ts
 // 值最大的边长度会趋向于 10，值最小的边长度会趋向于 50
 edgeLength: [10, 50]
 ```
@@ -164,7 +164,7 @@ edgeLength: [10, 50]
 
 边两端的标记类型，可以是一个数组分别指定两端，也可以是单个统一指定。默认不显示标记，常见的可以设置为箭头，如下：
 
-```js
+```ts
 edgeSymbol: ['circle', 'arrow']
 ```
 
@@ -364,7 +364,7 @@ edgeSymbol: ['circle', 'arrow']
 
 关系图的节点数据列表。
 
-```js
+```ts
 data: [{
     name: '1',
     x: 10,
@@ -479,7 +479,7 @@ data: [{
 ## links(Array)
 
 节点间的关系数据。示例：
-```js
+```ts
 links: [{
     source: 'n1',
     target: 'n2'

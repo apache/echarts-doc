@@ -35,8 +35,8 @@ The texture of the globe. Support for the string of image paths, images object o
 
 It also supports to use an echarts example as a texture directly, in which case mouse actions on Earth will be linked to the echarts instance used on the texture.
 
-Example: 
-```js
+Example:
+```ts
 // Use the globe's texture image
 baseTexture: 'asset/earth.jpg'
 
@@ -90,7 +90,7 @@ The following two images show the effects of setting different `displacementScal
 
 ## displacementQuality(string) = 'medium'
 
-The quality of the globe's vertex displacement. Support for `'low'`, `'medium'`, `'high'`, `'ultra'` settings.Higher quality can show more ground height detail. 
+The quality of the globe's vertex displacement. Support for `'low'`, `'medium'`, `'high'`, `'ultra'` settings.Higher quality can show more ground height detail.
 The following two images show the effects of different `displacementQuality`.
 
 <div class="twentytwenty-container" style="width: 700px;">
@@ -131,7 +131,7 @@ Position the longitudes and latitudes.
 Ignore [alpha](~globe.viewControl.alpha) 和 [beta](~globe.viewControl.beta) after the setting.
 
 
-```js
+```ts
 viewControl: {
     // locate in BeiJing
     targetCoord: [116.46, 39.92]
@@ -164,7 +164,7 @@ Mix with [baseTexture](~globe.baseTexture).
 
 The name of the layer. When setting the properties of the layer with setOption, you can use the name to identify the layer that needs to be updated.
 
-```js
+```ts
 chart.setOption({
     globe: {
         layer: [{

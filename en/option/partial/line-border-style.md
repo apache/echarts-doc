@@ -35,7 +35,7 @@ Since `v5.0.0`, it can also be a number or a number array to specify the [dash a
 {{ /if }}, we can make the line style more flexible.
 
 For example：
-```js
+```ts
 {
 
 {{ if: ${type} === 'border' }}borderType{{ elif: ${type} === 'text' }}textBorderType{{ else }}type{{ /if }}: [5, 10],

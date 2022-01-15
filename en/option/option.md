@@ -55,7 +55,7 @@
 The color list of palette. If no color is set in series, the colors would be adopted sequentially and circularly from this list as the colors of series.
 
 Defaults:
-```js
+```ts
 ['#5470c6', '#91cc75', '#fac858', '#ee6666', '#73c0de', '#3ba272', '#fc8452', '#9a60b4', '#ea7ccc']
 ```
 
@@ -143,7 +143,7 @@ Each item of this array is an echarts option (`ECUnitOption`). It will be applie
 
 Color can be represented in RGB, for example `'rgb(128, 128, 128)'`. RGBA can be used when you need alpha channel, for example `'rgba(128, 128, 128, 0.5)'`. You may also use hexadecimal format, for example `'#ccc'`. Gradient color and texture are also supported besides single colors.
 
-```js
+```ts
 // Linear gradient. First four parameters are x0, y0, x2, and y2, each ranged from 0 to 1, standing for percentage in the bounding box. If global is `true`, then the first four parameters are in absolute pixel positions.
 color: {
     type: 'linear',

@@ -63,7 +63,7 @@ The location of the label.
 
 The formatter of the label content, which supports the string template and the callback function. In either form, `\n` is supported to represent a new line.
 
-**String template:** 
+**String template:**
 
 The model variation includes:
 + `{a}`: series name.
@@ -71,13 +71,13 @@ The model variation includes:
 + `{c}`: the value of a data item.
 
 **Example:**
-```js
+```ts
 formatter: '{b}: {c}'
 ```
 
 **Callback function:**
  Callback function is in form of:
-```js
+```ts
 (params: Object|Array) => string
 ```
 The `params` is the single data set needed by formatter, which is formed as:

@@ -218,7 +218,7 @@ Note that it also works when CSS transform used.
 Specify the classes for the tooltip root DOM. (Only works in [`html`](~tooltip.renderMode) render mode).
 
 Example:
-```js
+```ts
 className: 'echarts-tooltip echarts-tooltip-dark'
 ```
 

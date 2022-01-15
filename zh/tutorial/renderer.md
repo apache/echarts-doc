@@ -32,13 +32,13 @@ ECharts 默认使用 Canvas 渲染。如果想使用 SVG 渲染，ECharts 代码
 + 如果 [在线自定义构建 ECharts](${websitePath}/zh/builder.html)，则需要勾上页面下方的 “SVG 渲染”。
 + 如果 [线下自定义构建 ECharts](tutorial.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%9E%84%E5%BB%BA%20ECharts)，则须引入 SVG 渲染器模块，即：
 
-```js
+```ts
 import 'zrender/lib/svg/svg';
 ```
 
 然后，我们就可以在代码中，初始化图表实例时，[传入参数](api.html#echarts.init) 选择渲染器类型：
 
-```js
+```ts
 // 使用 Canvas 渲染器（默认）
 var chart = echarts.init(containerDom, null, {renderer: 'canvas'});
 // 等价于：

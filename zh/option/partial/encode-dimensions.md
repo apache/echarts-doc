@@ -5,7 +5,7 @@
 
 可以定义 `data` 的哪个维度被编码成什么。比如：
 
-```js
+```ts
 option = {
     dataset: {
         source: [
@@ -29,7 +29,7 @@ option = {
 
 当使用 [dimensions](~series.dimensions) 给维度定义名称后，`encode` 中可直接引用名称，例如：
 
-```js
+```ts
 series: {
     type: 'xxx',
     dimensions: ['date', 'open', 'close', 'highest', 'lowest'],
@@ -44,7 +44,7 @@ series: {
 
 下面是 encode 支持的属性：
 
-```js
+```ts
 // 在任何坐标系和系列中，都支持：
 encode: {
     // 使用 “名为 product 的维度” 和 “名为 score 的维度” 的值在 tooltip 中显示
@@ -96,7 +96,7 @@ encode: {
 
 特殊地，在 [自定义系列（custom series）](~series-custom) 中，`encode` 中轴可以不指定或设置为 `null/undefined`，从而使系列免于受这个轴控制，也就是说，轴的范围（extent）不会受此系列数值的影响，轴被 [dataZoom](~dataZoom) 控制时也不会过滤掉这个系列：
 
-```js
+```ts
 var option = {
     xAxis: {},
     yAxis: {},
@@ -143,7 +143,7 @@ var option = {
 
 例如：
 
-```js
+```ts
 option = {
     dataset: {
         source: [
@@ -162,7 +162,7 @@ option = {
 }
 ```
 
-```js
+```ts
 series: {
     type: 'xxx',
     dimensions: [

@@ -27,7 +27,7 @@ chart.setOption({
 
 ** JSON 引入示例 **
 
-```js
+```ts
 $.get('map/json/china.json', function (chinaJson) {
     echarts.registerMap('china', chinaJson);
     var chart = echarts.init(document.getElementById('main'));

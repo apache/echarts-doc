@@ -2,7 +2,7 @@
 
 More likely, we need to assign name to each data item, in which case each item should be an object:
 
-```js
+```ts
 [{
     // name of date item
     name: 'data1',
@@ -15,7 +15,7 @@ More likely, we need to assign name to each data item, in which case each item s
 ```
 Each data item can be further customized:
 
-```js
+```ts
 [{
     name: 'data1',
     value: [12, 14, 10]

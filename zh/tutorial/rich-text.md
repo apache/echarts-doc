@@ -59,7 +59,7 @@ echarts 提供了丰富的文本标签配置项，包括：
 
 例如：
 
-```js
+```ts
 label: {
     // 在文本中，可以对部分文本采用 rich 中定义样式。
     // 这里需要在文本中使用标记符号：
@@ -180,7 +180,7 @@ label: {
 
 文本片段的 `backgroundColor` 可以指定为图片后，就可以在文本中使用图标了：
 
-```js
+```ts
 rich: {
     Sunny: {
         // 这样设定 backgroundColor 就可以是图片了。
@@ -195,7 +195,7 @@ rich: {
 
 分割线实际是用 border 实现的：
 
-```js
+```ts
 rich: {
     hr: {
         borderColor: '#777',
@@ -211,7 +211,7 @@ rich: {
 
 标题块是使用 `backgroundColor` 实现的：
 
-```js
+```ts
 // 标题文字居左
 formatter: '{titleBg|Left Title}',
 rich: {

@@ -135,7 +135,7 @@ Configurations of select state. Available when [selectedMode](~series-radar.sele
 
 The data in radar chart is multi-variable (dimension). Here is an example:
 
-```js
+```ts
 data : [
     {
         value : [4300, 10000, 28000, 35000, 50000, 19000],

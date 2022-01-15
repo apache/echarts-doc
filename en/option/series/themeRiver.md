@@ -149,7 +149,7 @@ Configurations of select state.
 
 ## data(Array)
 
-```js
+```ts
 data: [
     ["2015/11/09",10,"DQ"],
     ["2015/11/10",10,"DQ"],

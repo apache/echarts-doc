@@ -14,9 +14,6 @@
 + 可以设置在系列的每个数据项中，即 [series.data.tooltip](~series.data.tooltip)
 
 
----
-
-
 
 {{ target: partial-tooltip-in-coords }}
 
@@ -219,7 +216,7 @@
 
     示例:
 
-    ```js
+    ```ts
     // 绝对位置，相对于容器左侧 10px, 上侧 10 px
     position: [10, 10]
     // 相对位置，放置在容器正中间
@@ -229,7 +226,7 @@
 + `Function`
 
     回调函数，格式如下：
-    ```js
+    ```ts
     (point: Array, params: Object|Array.<Object>, dom: HTMLDomElement, rect: Object, size: Object) => Array
     ```
 
@@ -245,14 +242,14 @@
     也可以是一个对象，如：`{left: 10, top: 30}`，或者 `{right: '20%', bottom: 40}`。<br>
 
     如下示例：
-    ```js
+    ```ts
     position: function (point, params, dom, rect, size) {
         // 固定在顶部
         return [point[0], '10%'];
     }
     ```
     或者：
-    ```js
+    ```ts
     position: function (pos, params, dom, rect, size) {
         // 鼠标在左侧时 tooltip 显示到右侧，鼠标在右侧时 tooltip 显示到左侧。
         var obj = {top: 60};
@@ -308,7 +305,7 @@
 更多其它图表模板变量的含义可以见相应的图表的 label.formatter 配置项。
 
 **示例：**
-```js
+```ts
 formatter: '{b0}: {c0}<br />{b1}: {c1}'
 ```
 
@@ -317,7 +314,7 @@ formatter: '{b0}: {c0}<br />{b1}: {c1}'
 
 回调函数格式：
 
-```js
+```ts
 (params: Object|Array, ticket: string, callback: (ticket: string, html: string)) => string | HTMLElement | HTMLElement[]
 ```
 
@@ -338,13 +335,11 @@ formatter: '{b0}: {c0}<br />{b1}: {c1}'
 
 {{ use: partial-formatter-params-structure() }}
 
-**注：** ECharts 2.x 使用数组表示各参数的方式不再支持。
-
 第二个参数 `ticket` 是异步回调标识，配合第三个参数 `callback` 使用。
 第三个参数 `callback` 是异步回调，在提示框浮层内容是异步获取的时候，可以通过 callback 传入上述的 `ticket` 和 `html` 更新提示框浮层内容。
 
 示例：
-```js
+```ts
 formatter: function (params, ticket, callback) {
     $.get('detail?name=' + params.name, function (content) {
         callback(ticket, toHTML(content));
@@ -352,6 +347,7 @@ formatter: function (params, ticket, callback) {
     return 'Loading';
 }
 ```
+
 
 #${prefix} backgroundColor(Color) = 'rgba(50,50,50,0.7)'
 
@@ -417,7 +413,7 @@ formatter: function (params, ticket, callback) {
 
 额外附加到浮层的 css 样式。如下为浮层添加阴影的示例：
 
-```js
+```ts
 extraCssText: 'box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);'
 ```
 

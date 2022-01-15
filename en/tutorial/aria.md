@@ -10,7 +10,7 @@ By default, ARIA is disabled. To enable it, you should set [aria.enabled](~aria.
 
 For config:
 
-```js
+```ts
 option = {
     aria: {
         show: true

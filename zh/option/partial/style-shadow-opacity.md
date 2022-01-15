@@ -8,7 +8,7 @@
 图形阴影的模糊大小。该属性配合 `shadowColor`,`shadowOffsetX`, `shadowOffsetY` 一起设置图形的阴影效果。
 
 示例：
-```js
+```ts
 {
     shadowColor: 'rgba(0, 0, 0, 0.5)',
     shadowBlur: 10

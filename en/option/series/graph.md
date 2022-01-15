@@ -38,7 +38,7 @@ Graph is a diagram to represent [nodes](~series-graph.nodes) and the [links](~se
 Center of current view-port.
 
 Example:
-```js
+```ts
 center: [115.97, 29.71]
 ```
 
@@ -151,7 +151,7 @@ If node is draggable. Only available when using force-directed layout.
 Symbol of two ends of edge line.
 
 For example:
-```js
+```ts
 edgeSymbol: ['circle', 'arrow']
 ```
 
@@ -162,7 +162,7 @@ edgeSymbol: ['circle', 'arrow']
 Size of symbol of two ends of edge line. Can be an array or a single number.
 
 For example:
-```js
+```ts
 // Start symbol has size 5 and end symbol has size 10
 edgeSymbolSize: [5, 10],
 // All has size 10
@@ -358,7 +358,7 @@ When set to `Array`, it means that the curveness array is directly specified, an
 
 Nodes list of graph.
 
-```js
+```ts
 data: [{
     name: '1',
     x: 10,
@@ -471,7 +471,7 @@ Alias of [data](~series-graph.data)
 ## links(Array)
 
 Relational data between nodes. Example:
-```js
+```ts
 links: [{
     source: 'n1',
     target: 'n2'

@@ -3,7 +3,7 @@
 
 ## map(string)
 The map type. The map type used in ECharts-gl is the same as the [geo](https://echarts.apache.org/en/option.html#geo.map) component.
- 
+
 EChart provides map data in two formats. One is the JS file that can be imported directly through the script tag. After it is introduced, the map name and data will be automatically registered. Another is the JSON file that needs to be registered manually after loaded asynchronously by AJAX.
 
 Here are two types of use examples:
@@ -26,7 +26,7 @@ chart.setOption({
 
 ** JSON Introduction Example **
 
-```js
+```ts
 $.get('map/json/china.json', function (chinaJson) {
     echarts.registerMap('china', chinaJson);
     var chart = echarts.init(document.getElementById('main'));

@@ -1114,7 +1114,7 @@ You can specify that all properties have transition animations turned on with `'
 
 The properties can only be:
 + Transform related properties:`'x'`, `'y'`, `'scaleX'`, `'scaleY'`, `'rotation'`, `'originX'`, `'originY'`. For example:
-    ```js
+    ```ts
 {
     type: 'rect',
     x: coord[0],
@@ -1124,7 +1124,7 @@ The properties can only be:
 }
     ```
 + Shortcut to transition all of the properties in [`'shape'`](~${optionPath}.${hostName}${symbolVisit}${type}.shape), ['`style'`](~${optionPath}.${hostName}${symbolVisit}${type}.style), [`'extra'`](~${optionPath}.${hostName}${symbolVisit}${type}.extra). For example:
-    ```js
+    ```ts
 
 {
     type: 'rect',
@@ -1244,7 +1244,7 @@ See [diffChildrenByName](~${optionPath}.${hostName}${symbolVisit}${type}.diffChi
 
 User defined data, can be visited in event listeners.
 
-```js
+```ts
 chart.on('click', function (params) {
     console.log(params.info);
 });
@@ -1303,7 +1303,7 @@ Rotation of `textContent`. In radian.
 Rect that `textContent` will be positioned.
 Default to be the bounding box of host element.
 
-```js
+```ts
 {
     x: number
     y: number
@@ -1527,7 +1527,7 @@ Enable transition animation when the specified properties changed.
 Can only specify properties that are under this `${hostProp}`.
 
 For example:
-```js
+```ts
 {
     type: 'rect',
     ${hostProp}: {
@@ -1538,7 +1538,7 @@ For example:
 }
 ```
 We can also specify all of the properties like this:
-```js
+```ts
 {
     type: 'rect',
     ${hostProp}: {
@@ -1826,7 +1826,7 @@ Users can define their own props in this `extra` field. See [during](option.html
 
 `during` callback enable users to set props to an element in each animation frame.
 
-```js
+```ts
 (duringAPI: CustomDuringAPI) => void
 
 interface CustomDuringAPI {
@@ -1859,7 +1859,7 @@ type TransformProp =
 In most cases users do not need this `during` callback. For example, if some props are specified in [transition](option.html#series-custom.renderItem.return_rect.transition), echarts will make interpolation for these props internally and therefore have animation based on these props automatically. But if this kind of internal interpolation does not match the user requirements of animation, users can use this `during` callback to customize them.
 
 For example, if users are using [polygon](option.html#series-custom.renderItem.return_polygon) shape. The shape is described by [shape.points](option.html#series-custom.renderItem.return_polygon.shape.points), which is an points array like:
-```js
+```ts
 {
     type: 'polygon',
     shape: {
@@ -1869,7 +1869,7 @@ For example, if users are using [polygon](option.html#series-custom.renderItem.r
 }
 ```
 If users specify them into [transition](option.html#series-custom.renderItem.return_polygon.transition) like:
-```js
+```ts
 {
     type: 'polygon',
     shape: {
@@ -1880,7 +1880,7 @@ If users specify them into [transition](option.html#series-custom.renderItem.ret
 }
 ```
 Although the points will be interpolated, the consequent animation will be like that each point runs straight to the target position, which might do not match the user requirement if some kind of track like spiral is actually needed. In this case, users can use the `during` callback like that:
-```js
+```ts
 {
     type: 'polygon',
     shape: {

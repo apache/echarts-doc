@@ -6,7 +6,7 @@
 
 Data in [Get started](~getting-started) is directly filled in `setOption` after initialization, but in some cases, data may be filled after asynchronous loading. Data updating asynchronously in Apache ECharts<sup>TM</sup> is very easy. After initialization, you can pass in data and configuration item through `setOption` after data obtained through  jQuery and other tools at any time.
 
-```js
+```ts
 var myChart = echarts.init(document.getElementById('main'));
 
 $.get('data.json').done(function (data) {
@@ -33,7 +33,7 @@ $.get('data.json').done(function (data) {
 
 Or, you may set other styles, displaying an empty rectangular axis, and then fill in data when ready.
 
-```js
+```ts
 var myChart = echarts.init(document.getElementById('main'));
 // show title. legend and empty axis
 myChart.setOption({
@@ -82,7 +82,7 @@ In ECharts, updating data need to find the corresponding series through `name`. 
 If data loading time is too long, an empty axis on the canvas may confuse users. In this case, a loading animation is needed to tell the user that it's still loading.
 
 ECharts provides a simple loading animation by default. You only need [showLoading](api.html#echartsInstance.showLoading) to show, and then use [hideLoading](api.html#echartsInstance.hideLoading) to hide loading animation after data loading.
-```js
+```ts
 myChart.showLoading();
 $.get('data.json').done(function (data) {
     myChart.hideLoading();

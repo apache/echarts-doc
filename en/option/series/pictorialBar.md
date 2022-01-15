@@ -529,7 +529,7 @@ Check this example:
 
 Image can be used as the pattern of graphic elements.
 
-```js
+```ts
 var textureImg = new Image();
 textureImg.src = 'data:image/jpeg;base64,...'; // dataURI
 // Or
@@ -586,7 +586,7 @@ Whether to enable hover animation.
 Specify the delay time before animation start. Callback function can be used, where different delay time can be used on different element.
 
 For example:
-```js
+```ts
 animationDelay: function (dataIndex, params) {
     return params.index * 30;
 }
@@ -604,7 +604,7 @@ For example:
 Specify the delay time before update animation. Callback function can be used, where different delay time can be used on different element.
 
 For example:
-```js
+```ts
 animationDelay: function (dataIndex, params) {
     return params.index * 30;
 }
@@ -624,7 +624,7 @@ For example:
 This attribute can be set at the [root level of a series](~series-pictorialBar.${attrName}), where all data items in the series will be affected by this attribute. And this attribute can also be set at [each data item](~series-pictorialBar.data.${attrName}) in [series-pictorialBar.data](series-pictorialBar.data), where only the data item is affected by this attribute.
 
 For example:
-```js
+```ts
 series: [{
     ${attrName}: ... // Affect all data items.
     data: [23, 56]

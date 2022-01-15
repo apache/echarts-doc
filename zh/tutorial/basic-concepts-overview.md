@@ -54,7 +54,7 @@ echarts 里系列类型（`series.type`）就是图表类型。系列类型（`s
 
 上面已经出现了 `option` 这个概念。echarts 的使用者，使用 `option` 来描述其对图表的各种需求，包括：有什么数据、要画什么图表、图表长什么样子、含有什么组件、组件能操作什么事情等等。简而言之，`option` 表述了：`数据`、`数据如何映射成图形`、`交互行为`。
 
-```js
+```ts
 // 创建 echarts 实例。
 var dom = document.getElementById('dom-id');
 var chart = echarts.init(dom);
@@ -92,7 +92,7 @@ chart.setOption(option);
 
 系列里的 [series.data](option.html#series.data) 是本系列的数据。而另一种描述方式，系列数据从 [dataset](option.html#dataset) 中取：
 
-```js
+```ts
 var option = {
     dataset: {
         source: [

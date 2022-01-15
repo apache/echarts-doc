@@ -17,7 +17,7 @@ Source data. Generally speaking, a source data describe a table, where these for
 
 2d array, where [dimension names](~dataset.dimensions) can be provided in the first row/column, or do not provide, only data.
 
-```js
+```ts
 [
     ['product', '2015', '2016', '2017'],
     ['Matcha Latte', 43.3, 85.8, 93.7],
@@ -29,7 +29,7 @@ Source data. Generally speaking, a source data describe a table, where these for
 
 Row based key-value format (object array), where the keys indicate [dimension names](~dataset.dimensions).
 
-```js
+```ts
 [
     {product: 'Matcha Latte', count: 823, score: 95.8},
     {product: 'Milk Tea', count: 235, score: 81.4},
@@ -40,7 +40,7 @@ Row based key-value format (object array), where the keys indicate [dimension na
 
 Column based key-value format, where each value represents a column of a table.
 
-```js
+```ts
 {
     'product': ['Matcha Latte', 'Milk Tea', 'Cheese Cocoa', 'Walnut Brownie'],
     'count': [823, 235, 1042, 988],

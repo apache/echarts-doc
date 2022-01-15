@@ -9,7 +9,7 @@ If the value is `1`, it means "displays a label every other label". If the value
 
 The interval data can be represented by a numerical value or by a callback function. The format of the callback function is as follows:
 
-```js
+```ts
 (index:number, value: string) => boolean
 ```
 
@@ -19,8 +19,8 @@ The first parameter is the index of the class, the second value is the name of t
 
 The content formatter for tick labels. Supports both string templates and callback functions.
 
-Example: 
-```js
+Example:
+```ts
 // Use string template; template variable is the default label of axis {value}
 formatter: '{value} kg'
 
@@ -95,12 +95,12 @@ The margin between the axis label and the axis line.
 
 Color of axis label is set to be [axisLine.lineStyle.color](~${componentType}.axisLine.lineStyle.color) by default. Callback function is supported, in the following format:
 
-```js
+```ts
 (val: string) => Color
 ```
 Parameter is the text of label, and return value is the color. See the following example:
 
-```js
+```ts
 textStyle: {
     color: function (value, index) {
         return value >= 0 ? 'green' : 'red';
@@ -208,7 +208,7 @@ Whether to display the label of axisPointer. Value axes are displayed by default
 ###${prefix|default('#')} formatter(Function)
 The formatter of the label. . The first parameter to the function is the value of the current axis. The second parameter to the function is an array of values for all axes.
 
-```js
+```ts
 (value: number, valueAll: Array) => string
 ```
 

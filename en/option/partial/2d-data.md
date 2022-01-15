@@ -14,14 +14,14 @@ Model variation includes:
 + `{@[n]}`: the value of a dimension at the index of `n`, for example, `{@[3]}` refers the value at dimensions[3].
 
 **example: **
-```js
+```ts
 formatter: '{b}: {@score}'
 ```
 
 **Callback function**
 
 Callback function is in form of:
-```js
+```ts
 (params: Object|Array) => string
 ```
 where `params` is the single dataset needed by formatter, which is formed as:
@@ -63,7 +63,7 @@ Notice, if no `data` specified in series, and there is [dataset](~dataset) in op
 
 
 Basically, data is represented by a two-dimension array, like the example below, where each column is named as a "dimension".
-```js
+```ts
 series: [{
     data: [
         // dimX   dimY   other dimensions ...
@@ -83,7 +83,7 @@ series: [{
     + Values in other dimensions can be shown by [tooltip.formatter](~tooltip.formatter) or [series.label.formatter](~series.label.formatter).
 
 Especially, when there is one and only one category axis (axis.type is `'category'`), data can be simply be represented by a one-dimension array, like:
-```js
+```ts
 xAxis: {
     data: ['a', 'b', 'm', 'n']
 },
@@ -105,7 +105,7 @@ series: [{
 + When a dimension corresponds to a category axis (axis.type is `'category'`):
 
     The value should be the ordinal of the axis.data (based on `0`), the string value of the axis.data. For example:
-    ```js
+    ```ts
     xAxis: {
         type: 'category',
         data: ['Monday', 'Tuesday', 'Wednesday', 'Thursday']
@@ -147,7 +147,7 @@ series: [{
 **Customize a data item:**
 
 When needing to customize a data item, it can be set as an object, where property `value` reprensent real value. For example:
-```js
+```ts
 [
     12,
     24,

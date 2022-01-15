@@ -9,7 +9,7 @@ Util methods about graphics.
 
 Create a new shape class.
 
-```js
+```ts
 (
     opts: Object
 ) => zrender.graphic.Path
@@ -22,7 +22,7 @@ The details of the parameter `opts` can be checked in [zrender.graphic.Path](htt
 
 Register a user defined shape.
 
-```js
+```ts
 (
     name: string,
     ShapeClass: zrender.graphic.Path
@@ -36,7 +36,7 @@ The registered shapes can be used in [custom series](option.html#series-custom) 
 [graphic component](option.html#graphic) by declaring `{type: name}`.
 
 For example:
-```js
+```ts
 var MyShape = echarts.graphic.extendShape({
     shape: {
         x: 0,
@@ -82,7 +82,7 @@ var option = {
 
 Get the [registered](~echarts.graphic.registerShape) shape class.
 
-```js
+```ts
 (
     name: String
 ) => zrender.graphic.Path
@@ -96,7 +96,7 @@ Some built-in shapes are registered by default:
 
 Clip the given points by the given rectangular.
 
-```js
+```ts
 (
     // The points to be clipped, like [[23, 44], [12, 15], ...].
     points: Array.<Array.<number>>,
@@ -114,7 +114,7 @@ Clip the given points by the given rectangular.
 
 Clip the first input rectangular by the second input rectangular.
 
-```js
+```ts
 (
     // The rectangular to be clipped.
     targetRect: {

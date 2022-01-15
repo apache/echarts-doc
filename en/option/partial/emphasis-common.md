@@ -45,7 +45,7 @@ When the data is highlighted, whether to fade out of other data to focus the hig
 **Example: **
 
 {{ if: !${isGeoCoordSys} }}
-```js
+```ts
 emphasis: {
     focus: 'series',
     blurScope: 'coordinateSystem'
@@ -54,7 +54,7 @@ emphasis: {
 
 ~[600x400](${galleryViewPath}bar-y-category-stack&reset=1&edit=1)
 {{ else }}
-```js
+```ts
 emphasis: {
     focus: 'self'
 }

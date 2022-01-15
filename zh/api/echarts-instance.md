@@ -8,7 +8,7 @@
 图表的分组，用于[联动](~echarts.connect)
 
 ## setOption(Function)
-```js
+```ts
 (option: Object, notMerge?: boolean, lazyUpdate?: boolean)
 or
 (option: Object, opts?: {
@@ -29,11 +29,11 @@ or
 **参数：**
 
 调用方式举例：
-```js
+```ts
 chart.setOption(option, notMerge, lazyUpdate);
 ```
 或者
-```js
+```ts
 chart.setOption(option, {
     notMerge: ...,
     lazyUpdate: ...,
@@ -41,7 +41,7 @@ chart.setOption(option, {
 });
 ```
 或者
-```js
+```ts
 chart.setOption(option, {
     replaceMerge: ['xAxis', 'yAxis', 'series']
 });
@@ -91,7 +91,7 @@ chart.setOption(option, {
         + 组件的索引（componentIndex）永远不会改变。
         + 如果 `id` 和 `name` 没有在 `option` 中被指定（这是经常出现的情况），组件会按照它在 `option` 中的顺序一一合并到已有组件中。这种设定比较符合直觉。
     + 例子：
-        ```js
+        ```ts
         // 已有组件：
         {
             xAxis: [
@@ -134,7 +134,7 @@ chart.setOption(option, {
         + 已有组件的索引永远不会变。这是为了保证，`option` 或者 API 中的 index 引用（例如：`xAxisIndex: 2`）仍能正常一致得使用。
         + 整个处理过程结束后，可能存在一些“洞”，也就是说，在组件列表中的某些 index 上，并没有组件存在（被删除了）。但是这是可以被开发者预期和控制的。
     + 例子：
-        ```js
+        ```ts
         // 已有组件：
         {
             xAxis: [
@@ -181,35 +181,35 @@ chart.setOption(option, {
 
 
 ## getWidth(Function)
-```js
+```ts
 () => number
 ```
 
 获取 ECharts 实例容器的宽度。
 
 ## getHeight(Function)
-```js
+```ts
 () => number
 ```
 
 获取 ECharts 实例容器的高度。
 
 ## getDom(Function)
-```js
+```ts
 () => HTMLCanvasElement|HTMLDivElement
 ```
 
 获取 ECharts 实例容器的 dom 节点。
 
 ## getOption(Function)
-```js
+```ts
 () => Object
 ```
 
 获取当前实例中维护的 `option` 对象，返回的 `option` 对象中包含了用户多次 `setOption` 合并得到的配置项和数据，也记录了用户交互的状态，例如图例的开关，数据区域缩放选择的范围等等。所以从这份 `option` 可以恢复或者得到一个新的一模一样的实例。
 
 **注意：**返回的 option 每个组件的属性值都统一是一个数组，不管 `setOption` 传进来的时候是单个组件的对象还是多个组件的数组。如下形式：
-```js
+```ts
 {
     title: [{...}],
     legend: [{...}],
@@ -218,7 +218,7 @@ chart.setOption(option, {
 ```
 
 另外**不推荐**下面这种写法：
-```js
+```ts
 var option = myChart.getOption();
 option.visualMap[0].inRange.color = ...;
 myChart.setOption(option);
@@ -227,7 +227,7 @@ myChart.setOption(option);
 因为 `getOption` 获取的是已经合并过默认值了的，所以在修改了某些配置项后会导致原本是根据这些配置项值去设置的默认值失效。
 
 因此我们更**推荐**通过`setOption`去修改部分配置。
-```js
+```ts
 myChart.setOption({
     visualMap: {
         inRange: {
@@ -238,7 +238,7 @@ myChart.setOption({
 ```
 
 ## resize(Function)
-```js
+```ts
 (opts?: {
     width?: number|string,
     height?: number|string,
@@ -276,7 +276,7 @@ myChart.setOption({
 **Tip:** 有时候图表会放在多个标签页里，那些初始隐藏的标签在初始化图表的时候因为获取不到容器的实际高宽，可能会绘制失败，因此在切换到该标签页时需要手动调用 `resize` 方法获取正确的高宽并且刷新画布，或者在 `opts` 中显示指定图表高宽。
 
 ## dispatchAction(Function)
-```js
+```ts
 (payload: Object)
 ```
 触发图表行为，例如图例开关`legendToggleSelect`, 数据区域缩放`dataZoom`，显示提示框`showTip`等等，更多见 [action](~action) 和 [events](~events) 的文档。
@@ -286,7 +286,7 @@ myChart.setOption({
 **注：**在 ECharts 2.x 是通过 `myChart.component.tooltip.showTip` 这种形式调用相应的接口触发图表行为，入口很深，而且涉及到内部组件的组织。因此在 ECharts 3 里统一改为 `dispatchAction` 的形式。
 
 **示例**
-```js
+```ts
 myChart.dispatchAction({
     type: 'dataZoom',
     start: 20,
@@ -309,7 +309,7 @@ myChart.dispatchAction({
 ```
 
 ## on(Function)
-```js
+```ts
 (
     eventName: string,
     handler: Function,
@@ -341,14 +341,14 @@ ECharts 中的事件有两种，一种是鼠标事件，在鼠标点击某个图
     可选的过滤条件，能够只在指定的组件或者元素上进行响应。可为 `string` 或者 `Object`。
 
     如果为 `string` 表示组件类型。格式可以是 'mainType' 或者 'mainType.subType'。例如：
-    ```js
+    ```ts
     chart.on('click', 'series', function () {...});
     chart.on('click', 'series.line', function () {...});
     chart.on('click', 'xAxis.category', function () {...});
     ```
 
     如果为 `Object`，可以包含以下一个或多个属性，每个属性都是可选的：
-    ```js
+    ```ts
     {
         <mainType>Index: number // 组件 index
         <mainType>Name: string // 组件 name
@@ -361,7 +361,7 @@ ECharts 中的事件有两种，一种是鼠标事件，在鼠标点击某个图
     ```
 
     例如：
-    ```js
+    ```ts
     chart.setOption({
         // ...
         series: [{
@@ -375,7 +375,7 @@ ECharts 中的事件有两种，一种是鼠标事件，在鼠标点击某个图
     ```
 
     例如：
-    ```js
+    ```ts
     chart.setOption({
         // ...
         series: [{
@@ -394,7 +394,7 @@ ECharts 中的事件有两种，一种是鼠标事件，在鼠标点击某个图
     ```
 
     例如：
-    ```js
+    ```ts
     chart.setOption({
         // ...
         series: [{
@@ -412,7 +412,7 @@ ECharts 中的事件有两种，一种是鼠标事件，在鼠标点击某个图
     ```
 
     例如：
-    ```js
+    ```ts
     chart.setOption({
         // ...
         series: {
@@ -442,7 +442,7 @@ ECharts 中的事件有两种，一种是鼠标事件，在鼠标点击某个图
 
     事件处理函数。格式为:
 
-    ```js
+    ```ts
     (event: Object)
     ```
 
@@ -452,7 +452,7 @@ ECharts 中的事件有两种，一种是鼠标事件，在鼠标点击某个图
 
 
 ## off(Function)
-```js
+```ts
 (eventName: string, handler?: Function)
 ```
 
@@ -469,7 +469,7 @@ ECharts 中的事件有两种，一种是鼠标事件，在鼠标点击某个图
 
 
 ## convertToPixel(Function)
-```js
+```ts
 (
     // finder 用于指示『使用哪个坐标系进行转换』。
     // 通常地，可以使用 index 或者 id 或者 name 来定位。
@@ -502,7 +502,7 @@ ECharts 中的事件有两种，一种是鼠标事件，在鼠标点击某个图
 例：
 
 在地理坐标系（[geo](option.html#geo)）上，把某个点的经纬度坐标转换成为像素坐标：
-```js
+```ts
 // [128.3324, 89.5344] 表示 [经度，纬度]。
 // 使用第一个 geo 坐标系进行转换：
 chart.convertToPixel('geo', [128.3324, 89.5344]); // 参数 'geo' 等同于 {geoIndex: 0}
@@ -513,7 +513,7 @@ chart.convertToPixel({geoId: 'bb'}, [128.3324, 89.5344]);
 ```
 
 在直角坐标系（cartesian，[grid](option.html#grid)）上，把某个点的坐标转换成为像素坐标：
-```js
+```ts
 // [300, 900] 表示该点 x 轴上对应刻度值 300，y 轴上对应刻度值 900。
 // 注意，一个 grid 可能含有多个 xAxis 和多个 yAxis，任何一对 xAxis-yAxis 形成一个 cartesian。
 // 使用第三个 xAxis 和 id 为 'y1' 的 yAxis 形成的 cartesian 进行转换：
@@ -523,7 +523,7 @@ chart.convertToPixel({gridId: 'g1'}, [300, 900]);
 ```
 
 把某个坐标轴的点转换成像素坐标：
-```js
+```ts
 // id 为 'x0' 的 xAxis 的刻度 3000 位置所对应的横向像素位置：
 chart.convertToPixel({xAxisId: 'x0'}, 3000); // 返回一个 number。
 // 第二个 yAxis 的刻度 600 位置所对应的纵向像素位置：
@@ -531,14 +531,14 @@ chart.convertToPixel({yAxisIndex: 1}, 600); // 返回一个 number。
 ```
 
 把关系图（[graph](option.html#series-graph)）的点转换成像素坐标：
-```js
+```ts
 // 因为每个 graph series 自己持有一个坐标系，所以我们直接在 finder 中指定 series：
 chart.convertToPixel({seriesIndex: 0}, [2000, 3500]);
 chart.convertToPixel({seriesId: 'k2'}, [100, 500]);
 ```
 
 在某个系列所在的坐标系（无论是 cartesian、geo、graph 等）中，转换某点成像素坐标：
-```js
+```ts
 // 使用第一个系列对应的坐标系：
 chart.convertToPixel({seriesIndex: 0}, [128.3324, 89.5344]);
 // 使用 id 为 'k2' 的系列所对应的坐标系：
@@ -546,7 +546,7 @@ chart.convertToPixel({seriesId: 'k2'}, [128.3324, 89.5344]);
 ```
 
 ## convertFromPixel(Function)
-```js
+```ts
 (
     // finder 用于指示『使用哪个坐标系进行转换』。
     // 通常地，可以使用 index 或者 id 或者 name 来定位。
@@ -578,7 +578,7 @@ chart.convertToPixel({seriesId: 'k2'}, [128.3324, 89.5344]);
 
 
 ## containPixel(Function)
-```js
+```ts
 (
     // finder 用于指示『在哪个坐标系或者系列上判断』。
     // 通常地，可以使用 index 或者 id 或者 name 来定位。
@@ -610,7 +610,7 @@ chart.convertToPixel({seriesId: 'k2'}, [128.3324, 89.5344]);
 
 例：
 
-```js
+```ts
 // 判断 [23, 44] 点是否在 geoIndex 为 0 的 geo 坐标系上。
 chart.containPixel('geo', [23, 44]); // 'geo' 等同于 {geoIndex: 0}
 // 判断 [23, 44] 点是否在 gridId 为 'z' 的 grid 上。
@@ -622,7 +622,7 @@ chart.containPixel({seriesIndex: [1, 4, 5], gridName: 'a'}, [23, 44]);
 ```
 
 ## showLoading(Function)
-```js
+```ts
 (type?: string, opts?: Object)
 ```
 显示加载动画效果。可以在加载数据前手动调用该接口显示加载动画，在数据加载完成后调用 [hideLoading](~echartsInstance.hideLoading) 隐藏加载动画。
@@ -636,7 +636,7 @@ chart.containPixel({seriesIndex: [1, 4, 5], gridName: 'a'}, [23, 44]);
 
     可选，加载动画配置项，跟`type`有关，下面是默认配置项：
 
-    ```js
+    ```ts
 default: {
     text: 'loading',
     color: '#c23531',
@@ -666,7 +666,7 @@ default: {
 隐藏动画加载效果。
 
 ## getDataURL(Function)
-```js
+```ts
 (opts: {
     // 导出的格式，可选 png, jpg, svg
     // 注意：png, jpg 只有在 canvas 渲染器的时候可使用，svg 只有在使用 svg 渲染器的时候可用
@@ -683,7 +683,7 @@ default: {
 导出图表图片，返回一个 base64 的 URL，可以设置为`Image`的`src`。
 
 **示例：**
-```js
+```ts
 var img = new Image();
 img.src = myChart.getDataURL({
     pixelRatio: 2,
@@ -692,7 +692,7 @@ img.src = myChart.getDataURL({
 ```
 
 ## getConnectedDataURL
-```js
+```ts
 (opts: {
     // 导出的格式，可选 png, jpeg
     type?: string,
@@ -709,7 +709,7 @@ img.src = myChart.getDataURL({
 
 
 ## appendData
-```js
+```ts
 (opts: {
     // 要增加数据的系列序号。
     seriesIndex?: string,
@@ -731,7 +731,7 @@ img.src = myChart.getDataURL({
 清空当前实例，会移除实例中所有的组件和图表。
 
 ## isDisposed
-```js
+```ts
 () => boolean
 ```
 当前实例是否已经被释放。

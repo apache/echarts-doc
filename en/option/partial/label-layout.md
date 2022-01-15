@@ -11,7 +11,7 @@ It provide a chance to adjust the labels' `(x, y)` position, alignment based on 
 
 This option can be a callback with following parameters.
 
-```js
+```ts
 // corresponding index of data
 dataIndex: number
 // corresponding type of data. Only available in graph, in which it can be 'node' or 'edge'
@@ -37,7 +37,7 @@ labelLinePoints?: number[][]
 
 Align the labels on the right. Left 10px margin to the edge.
 
-```js
+```ts
 labelLayout(params) {
     return {
         x: params.rect.x + 10,
@@ -50,7 +50,7 @@ labelLayout(params) {
 
 Set the text size based on the size of element bounding rectangle.
 
-```js
+```ts
 
 labelLayout(params) {
     return {
@@ -128,7 +128,7 @@ Whether to allow the user to adjust the position by dragging.
 
 The array of the three points of the label guide line. The format is:
 
-```js
+```ts
 [[x, y], [x, y], [x, y]]
 ```
 

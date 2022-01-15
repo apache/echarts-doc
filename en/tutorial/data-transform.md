@@ -18,7 +18,7 @@ With the help of those transform methods, users can be implements the features l
 
 In echarts, data transform is implemented based on the concept of [dataset](~dataset). A [dataset.transform](option.html#dataset.transform) can be configured in a dataset instance to indicate that this dataset is to be generated from this `transform`. For example:
 
-```js
+```ts
 var option = {
     dataset: [{
         // This dataset is on `datasetIndex: 0`.
@@ -114,7 +114,7 @@ Let's summarize the key points of using data transform:
 #### Piped transform
 
 There is a syntactic sugar that pipe transforms like:
-```js
+```ts
 option: {
     dataset: [{
         source: [ ... ] // The original data
@@ -150,7 +150,7 @@ For example, in the built-in boxplot transform, besides boxplot data produced, t
 
 We use prop [dataset.fromTransformResult](option.html#dataset.fromTransformResult) to satisfy this requirement. For example:
 
-```js
+```ts
 option = {
     dataset: [{
         // Original source data.
@@ -194,7 +194,7 @@ option = {
 
 What more, [dataset.fromTransformResult](option.html#dataset.fromTransformResult) and [dataset.transform](option.html#dataset.transform) can both appear in one dataset, which means that the input of the transform is from retrieved from the upstream result specified by `fromTransformResult`. For example:
 
-```js
+```ts
 {
     fromDatasetIndex: 1,
     fromTransformResult: 1,
@@ -210,7 +210,7 @@ What more, [dataset.fromTransformResult](option.html#dataset.fromTransformResult
 
 When using data transform, we might run into the trouble that the final chart do not display correctly but we do not know where the config is wrong. There is a property `transform.print` might help in such case. (`transform.print` is only available in dev environment).
 
-```js
+```ts
 option = {
     dataset: [{
         source: [ ... ]
@@ -232,7 +232,7 @@ option = {
 
 Transform type "filter" is a built-in transform that provide data filter according to specified conditions. The basic option is like:
 
-```js
+```ts
 option = {
     dataset: [{
         source: [
@@ -301,7 +301,7 @@ Besides the common number comparison, there is some extra features:
 **About logical relationship:**
 
 Sometimes we also need to express logical relationship ( `and` / `or` / `not` ):
-```js
+```ts
 option = {
     dataset: [{
         source: [...]
@@ -328,7 +328,7 @@ option = {
 };
 ```
 `and`/`or`/`not` can be nested like:
-```js
+```ts
 transform: {
     type: 'filter',
     config: {
@@ -361,7 +361,7 @@ Some "parser" can be specified when make value comparison. At present only suppo
 + `parser: 'number'`: Force to convert the value to number before making comparison. If not possible to be converted to a meaningful number, converted to `NaN`. In most cases it is not necessary, because by default the value will be auto converted to number if possible before making comparison. But the default conversion is strict while this parser provide a loose strategy. If we meet the case that number string with unit suffix (like `'33%'`, `12px`), we should use `parser: 'number'` to convert them to number before making comparison.
 
 This is an example to show the `parser: 'time'`:
-```js
+```ts
 option = {
     dataset: [{
         source: [
@@ -430,7 +430,7 @@ type DimensionIndex = number;
 
 Another built-in transform is "sort".
 
-```js
+```ts
 option = {
     dataset: [{
         dimensions: ['name', 'age', 'profession', 'score', 'date'],
@@ -476,7 +476,7 @@ Some extra features about "sort transform":
 
 
 See an example of multiple order:
-```js
+```ts
 option = {
     dataset: [{
         dimensions: ['name', 'age', 'profession', 'score', 'date'],
@@ -533,11 +533,11 @@ type DimensionIndex = number;
 Besides built-in transforms (like 'filter', 'sort'), we can also use external transforms to provide more powerful functionalities. Here we use a third-party library [ecStat](https://github.com/ecomfe/echarts-stat) as an example:
 
 This case show how to make a regression line via ecStat:
-```js
+```ts
 // Register the external transform at first.
 echarts.registerTransform(ecStatTransform(ecStat).regression);
 ```
-```js
+```ts
 option = {
     dataset: [{
         source: rawData

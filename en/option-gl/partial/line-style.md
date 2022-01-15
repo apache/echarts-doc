@@ -7,7 +7,7 @@ The color of the line. {{ if: ${useColorPalatte} }} Color is taken from [option.
 In addition to color strings, RGBA values represented by arrays are supported, for example:
 
 
-```js
+```ts
 // pure white
 [1, 1, 1, 1]
 ```

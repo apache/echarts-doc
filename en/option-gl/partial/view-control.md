@@ -44,7 +44,7 @@ The default is `${defaultRotateSensitivity | default(1)}`.
 
 Cannot be rotated after setting to `0`.
 
-```js
+```ts
 // can't rotate
 rotateSensitivity: 0
 // can only be rotated horizontally

@@ -40,7 +40,7 @@ Whether the moving animation of the trail of special effect has a constant speed
 
 ### trailWidth(number) = 4
 
-The width of the trail of special effects. 
+The width of the trail of special effects.
 
 ### trailLength(number) = 0.1
 
@@ -74,7 +74,7 @@ Usually, each item of data can be a set of coordinates containing the start poin
 More than two coordinates can be supported when [polyline](~series-lines3D.polyline) is set to `true`.
 as follows:
 
-```js
+```ts
 data: [
     [
         [120, 66, 1], // latitude, longitude and altitude coordinates of the start point
@@ -84,7 +84,7 @@ data: [
 ```
 Sometimes you need to configure the name of the data item or a separate style. You need to write the latitude and longitude coordinates to the coords property, as follows:
 
-```js
+```ts
 data: [
     {
         coords: [ [120, 66], [122, 67] ],

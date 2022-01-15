@@ -14,7 +14,7 @@
 
 创建旭日图需要在 `series` 配置项中声明类型为 `'sunburst'` 的系列，并且以树形结构声明其 `data`：
 
-```js
+```ts
 var option = {
     series: {
         type: 'sunburst',
@@ -61,7 +61,7 @@ var option = {
 
 下面，我们将整体的颜色设为灰色 `'#aaa'`，将最内层的颜色设为蓝色 `'blue'`，将 `Aa`、`B` 这两块设为红色 `'red'`。
 
-```js
+```ts
 var option = {
     series: {
         type: 'sunburst',
@@ -119,7 +119,7 @@ var option = {
 
 例如，假设我们没有数据下钻功能，并且希望将最内层的扇形块的颜色设为红色，文字设为蓝色，可以这样设置：
 
-```js
+```ts
 series: {
     // ...
     levels: [
@@ -169,7 +169,7 @@ series: {
 
 具体来说，对于配置项：
 
-```js
+```ts
 itemStyle: {
     color: 'yellow',
     borderWidth: 2,

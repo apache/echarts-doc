@@ -5,7 +5,7 @@
 
 Define what is encoded to for each dimension of `data`. For example:
 
-```js
+```ts
 option = {
     dataset: {
         source: [
@@ -29,7 +29,7 @@ option = {
 
 When [dimensions](~series.dimensions) is used to defined name for a certain dimension, `encode` can refer the name directly. For example:
 
-```js
+```ts
 series: {
     type: 'xxx',
     dimensions: ['date', 'open', 'close', 'highest', 'lowest'],
@@ -44,7 +44,7 @@ The basic structure of [encode](option.html#series.encode) is illustrated as fol
 
 The properties available in `encode` listed as follows:
 
-```js
+```ts
 // In any of the series and coordinate systems,
 // these properties are available:
 encode: {
@@ -99,7 +99,7 @@ This is an [example](${galleryViewPath}dataset-encode1&edit=1&reset=1) for `enco
 Specially, in [custom series(~series-custom), some property in `encode`, corresponding to axis, can be set as null to make the series not controlled by the axis, that is, the series data will not be count in the extent of the axis, and the [dataZoom](~dataZoom) on the axis will not filter the series.
 
 
-```js
+```ts
 var option = {
     xAxis: {},
     yAxis: {},
@@ -147,7 +147,7 @@ Notice: if [dataset](~dataset) is used, we can definite dimensions in [dataset.d
 
 For example:
 
-```js
+```ts
 option = {
     dataset: {
         source: [
@@ -165,7 +165,7 @@ option = {
 }
 ```
 
-```js
+```ts
 series: {
     type: 'xxx',
     dimensions: [

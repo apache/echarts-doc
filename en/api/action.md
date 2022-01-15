@@ -40,7 +40,7 @@ Chart actions supported by ECharts are triggered through [dispatchAction](~echar
 
 Highlights specified data graphics.
 
-```js
+```ts
 // If highlight series:
 dispatchAction({
     type: 'highlight',
@@ -65,7 +65,7 @@ dispatchAction({
 
 Downplay specified data graphics.
 
-```js
+```ts
 // If downplay series:
 dispatchAction({
     type: 'downplay',
@@ -89,7 +89,7 @@ dispatchAction({
 
 Select specified data. Selected data will apply the style of [select](option.html#series-bar.select).
 
-```js
+```ts
 dispatchAction({
     type: 'select',
 
@@ -103,7 +103,7 @@ dispatchAction({
 
 Unselect specified data.
 
-```js
+```ts
 dispatchAction({
     type: 'unselect',
 
@@ -117,7 +117,7 @@ dispatchAction({
 
 Toggle selected status of specified data.
 
-```js
+```ts
 dispatchAction({
     type: 'toggleSelected',
 
@@ -134,7 +134,7 @@ Actions related to [legend component](option.html#legend), [legend component](op
 ### legendSelect(Action)
 Selects legend.
 
-```js
+```ts
 dispatchAction({
     type: 'legendSelect',
     // legend name
@@ -147,7 +147,7 @@ dispatchAction({
 ### legendUnSelect(Action)
 Unselects the legend.
 
-```js
+```ts
 dispatchAction({
     type: 'legendUnSelect',
     // legend name
@@ -159,7 +159,7 @@ dispatchAction({
 
 ### legendToggleSelect(Action)
 Toggles legend selecting state.
-```js
+```ts
 dispatchAction({
     type: 'legendToggleSelect',
     // legend name
@@ -172,7 +172,7 @@ dispatchAction({
 ### legendAllSelect(Action)
 Selects all legends.
 
-```js
+```ts
 dispatchAction({
     type: 'legendAllSelect'
 })
@@ -183,7 +183,7 @@ dispatchAction({
 ### legendInverseSelect(Action)
 Inverses all legends.
 
-```js
+```ts
 dispatchAction({
     type: 'legendInverseSelect'
 })
@@ -193,7 +193,7 @@ dispatchAction({
 
 ### legendScroll(Action)
 Control the scrolling of legend. It works when [legend.type](option.html#legend.type) is `'scroll'`.
-```js
+```ts
 dispatchAction({
     type: 'legendScroll',
     scrollDataIndex: number,
@@ -214,7 +214,7 @@ Shows tooltip.
 There are several usages as followed.
 
 1 Display tooltip at certain position relative to container. If it cannot be displayed at the specified location, then it is invalid.
-```js
+```ts
 dispatchAction({
     type: 'showTip',
     // x coordinate on screen
@@ -228,7 +228,7 @@ dispatchAction({
 ```
 
 2 Specify graphic element in series, and display tooltip according to the tooltip configuration.
-```js
+```ts
 dispatchAction({
     type: 'showTip',
     // index of series, which is optional when trigger of tooltip is axis
@@ -242,7 +242,7 @@ dispatchAction({
 
 3 Specify graphic element in geo component, and display tooltip according to the tooltip configuration.
 {{ use: partial-version(version: '5.1.0') }}
-```js
+```ts
 dispatchAction({
     type: 'showTip',
     {{ use: action-component-query(componentType = 'geo') }}
@@ -260,7 +260,7 @@ Parameter `position` is the same as [tooltip.position](option.html#tooltip.posit
 
 Hides tooltip.
 
-```js
+```ts
 dispatchAction({
     type: 'hideTip'
 })
@@ -274,7 +274,7 @@ Actions related to [data region zoom component](option.html#dataZoom), [data reg
 
 Zoom data region.
 
-```js
+```ts
 dispatchAction({
     type: 'dataZoom',
     // optional; index of dataZoom component; useful for are multiple dataZoom components; 0 by default
@@ -296,7 +296,7 @@ dispatchAction({
 
 Activate or inactivate `dataZoom` buttom in `toolbox`.
 
-```js
+```ts
 myChart.dispatchAction({
     type: 'takeGlobalCursor',
     key: 'dataZoomSelect',
@@ -315,7 +315,7 @@ Actions related to [visual mapping component](option.html#visualMap), [visual ma
 
 Selects data range of visual mapping.
 
-```js
+```ts
 dispatchAction({
     type: 'selectDataRange',
     // optional; index of visualMap component; useful for are multiple visualMap components; 0 by default
@@ -328,7 +328,7 @@ dispatchAction({
 ```
 ?
 **For example: **
-```js
+```ts
 myChart.dispatchAction({
     type: 'selectDataRange',
     // select a value range between 20 and 40
@@ -351,7 +351,7 @@ Actions related to [timeline component](option.html#timeline), [timeline compone
 
 Sets the current time point.
 
-```js
+```ts
 dispatchAction({
     type: 'timelineChange',
     // index of time point
@@ -365,7 +365,7 @@ dispatchAction({
 
 Toggles playing status of timeline.
 
-```js
+```ts
 dispatchAction({
     type: 'timelinePlayChange',
     // laying status; true for auto-play
@@ -382,7 +382,7 @@ Actions related to [toolbox component](option.html#toolbox), [toolbox component]
 ### restore(Action)
 Resets option.
 
-```js
+```ts
 dispatchAction({
     type: 'restore'
 })
@@ -477,7 +477,7 @@ In fact, the brush buttons in [toolbox](option.html#toolbox.feature.brush) just 
 
 This event corresponding to this action is [globalCursorTaken](~events.globalCursorTaken).
 
-```js
+```ts
 api.dispatchAction({
     type: 'takeGlobalCursor',
     // If intending to enable brush, must set. Otherwise, the mouse will be disabled to brush.
@@ -499,7 +499,7 @@ api.dispatchAction({
 ### ${componentType}Select(Action)
 Selects the specified ${name}.
 
-```js
+```ts
 dispatchAction({
     type: '${componentType}Select',
 
@@ -514,7 +514,7 @@ dispatchAction({
 ### ${componentType}UnSelect(Action)
 Cancels selecting specified ${name}.
 
-```js
+```ts
 dispatchAction({
     type: '${componentType}UnSelect',
 
@@ -528,7 +528,7 @@ dispatchAction({
 ### ${componentType}ToggleSelect(Action)
 Toggles selecting status of specified ${name}.
 
-```js
+```ts
 dispatchAction({
     type: '${componentType}ToggleSelect',
 

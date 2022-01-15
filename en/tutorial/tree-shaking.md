@@ -15,7 +15,7 @@ npm install echarts --save
 
 ## Introduce ECharts
 
-```js
+```ts
 import * as echarts from 'echarts';
 
 // initialize the echarts instance
@@ -42,7 +42,7 @@ myChart.setOption({
 
 The above code will import all the charts and components in ECharts, but if you don't want to bring in all the components, you can use the tree-shakeable interface provided by ECharts to bundle the required components and get a minimal bundle.
 
-```js
+```ts
 // Import the echarts core module, which provides the necessary interfaces for using echarts.
 import * as echarts from 'echarts/core';
 // Import bar charts, all with Chart suffix

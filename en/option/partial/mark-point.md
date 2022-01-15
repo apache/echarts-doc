@@ -93,7 +93,7 @@ Data array for mark points, each of which is an object. Here are some ways to as
 When multiple attributes exist, priority is as the above order.
 
 **For example: **
-```js
+```ts
 data: [{{ if: ${hasType} }}
     {
         name: 'maximum',

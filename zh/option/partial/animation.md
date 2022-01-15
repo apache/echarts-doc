@@ -26,7 +26,7 @@
 
 支持回调函数，可以通过每个数据返回不同的时长实现更戏剧的更新动画效果：
 
-```js
+```ts
 animationDurationUpdate: function (idx) {
     // 越往后的数据时长越大
     return idx * 100;
@@ -45,7 +45,7 @@ animationDurationUpdate: function (idx) {
 数据更新动画的延迟，支持回调函数，可以通过每个数据返回不同的 delay 时间实现更戏剧的更新动画效果。
 
 如下示例：
-```js
+```ts
 animationDelayUpdate: function (idx) {
     // 越往后的数据延迟越大
     return idx * 100;
@@ -65,7 +65,7 @@ animationDelayUpdate: function (idx) {
 
 初始动画的时长，支持回调函数，可以通过每个数据返回不同的时长实现更戏剧的初始动画效果：
 
-```js
+```ts
 animationDuration: function (idx) {
     // 越往后的数据时长越大
     return idx * 100;
@@ -84,7 +84,7 @@ animationDuration: function (idx) {
 初始动画的延迟，支持回调函数，可以通过每个数据返回不同的 delay 时间实现更戏剧的初始动画效果。
 
 如下示例：
-```js
+```ts
 animationDelay: function (idx) {
     // 越往后的数据延迟越大
     return idx * 100;

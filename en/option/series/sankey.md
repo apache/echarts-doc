@@ -86,7 +86,7 @@ The drag-and-drop interaction of the node, which is enabled by default. After op
 
 The setting of each layer of Sankey diagram. Can be set layer by layer, as follows:
 
-```js
+```ts
 levels: [{
     depth: 0,
     itemStyle: {
@@ -110,7 +110,7 @@ levels: [{
 
 You can also only set a certain layer:
 
-```js
+```ts
 levels: [{
     depth: 3,
     itemStyle: {
@@ -262,7 +262,7 @@ Configurations of selected state. Available when [selectedMode](~series-sankey.s
 
 The nodes list of the sankey diagram.
 
-```js
+```ts
 data: [{
     name: 'node1',
     // This attribute decides the layer of the current node.
@@ -352,7 +352,7 @@ Equals to [data](~series-sankey.data)
 
 The links between nodes. **Notes: The Sankey diagram theoretically only supports Directed Acyclic Graph(DAG), so please make sure that there is no cycle in the links.** For instance:
 
-```js
+```ts
 links: [{
     source: 'n1',
     target: 'n2'

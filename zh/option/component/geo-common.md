@@ -7,7 +7,7 @@
 
 {{ if: ${inMap} }}
 **geoJSON 引入示例**
-```js
+```ts
 $.get('map/china_geo.json', function (geoJson) {
     echarts.registerMap('china', {geoJSON: geoJson});
     var chart = echarts.init(document.getElementById('main'));
@@ -23,7 +23,7 @@ $.get('map/china_geo.json', function (geoJson) {
 也参见示例 [USA Population Estimates](${galleryEditorPath}map-usa)。
 {{ else }}
 **geoJSON 引入示例**
-```js
+```ts
 $.get('map/china_geo.json', function (chinaJson) {
     echarts.registerMap('china', {geoJSON: geoJson});
     var chart = echarts.init(document.getElementById('main'));
@@ -42,7 +42,7 @@ $.get('map/china_geo.json', function (chinaJson) {
 
 {{ if: ${inMap} }}
 **SVG 引入示例**
-```js
+```ts
 $.get('map/topographic_map.svg', function (svg) {
     echarts.registerMap('topo', {svg: svg});
     var chart = echarts.init(document.getElementById('main'));
@@ -58,7 +58,7 @@ $.get('map/topographic_map.svg', function (svg) {
 也参见示例 [Beef Cuts](${galleryEditorPath}geo-beef-cuts)。
 {{ else }}
 **SVG 引入示例**
-```js
+```ts
 $.get('map/topographic_map.svg', function (svg) {
     echarts.registerMap('topo', {svg: svg});
     var chart = echarts.init(document.getElementById('main'));
@@ -84,7 +84,7 @@ $.get('map/topographic_map.svg', function (svg) {
 当前视角的中心点，用经纬度表示
 
 例如：
-```js
+```ts
 center: [115.97, 29.71]
 ```
 
@@ -97,7 +97,7 @@ center: [115.97, 29.71]
 #${prefix} boundingCoords(Array) = null
 
 二维数组，定义定位的左上角以及右下角分别所对应的经纬度。例如
-```js
+```ts
 // 设置为一张完整经纬度的世界地图
 map: 'world',
 left: 0, top: 0, right: 0, bottom: 0,
@@ -122,7 +122,7 @@ boundingCoords: [
 #${prefix} nameMap(Object)
 
 自定义地区的名称映射，如：
-```js
+```ts
 {
     'China' : '中国'
 }
@@ -136,7 +136,7 @@ boundingCoords: [
 
 默认是 `'name'`，针对 GeoJSON 要素的自定义属性名称，作为主键用于关联数据点和 GeoJSON 地理要素。
 例如：
-```js
+```ts
 {
     nameProperty: 'NAME', // 数据点中的 name：Alabama 会关联到 GeoJSON 中 NAME 属性值为 Alabama 的地理要素{"type":"Feature","id":"01","properties":{"NAME":"Alabama"}, "geometry": { ... }}
     data:[
@@ -229,7 +229,7 @@ boundingCoords: [
 
 在使用 `left/right/top/bottom/width/height` 的时候，可能很难在保持地图高宽比的情况下把地图放在某个盒形区域的正中间，并且保证不超出盒形的范围。此时可以通过 `layoutCenter` 属性定义地图中心在屏幕中的位置，`layoutSize` 定义地图的大小。如下示例
 
-```js
+```ts
 layoutCenter: ['30%', '30%'],
 // 如果宽高比大于 1 则宽度为 100，如果小于 1 则高度为 100，保证了不超过 100x100 的区域
 layoutSize: 100

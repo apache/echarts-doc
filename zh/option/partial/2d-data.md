@@ -12,14 +12,14 @@
 + `{@[n]}`：数据中维度 `n` 的值，如 `{@[3]}` 表示维度 3 的值，从 0 开始计数。
 
 **示例：**
-```js
+```ts
 formatter: '{b}: {@score}'
 ```
 
 **回调函数**
 
 回调函数格式：
-```js
+```ts
 (params: Object|Array) => string
 ```
 参数 `params` 是 formatter 需要的单个数据集。格式如下：
@@ -60,7 +60,7 @@ formatter: '{b}: {@score}'
 可以使用 `series.datasetIndex` 指定其他的 [dataset](~dataset)。
 
 通常来说，数据用一个二维数组表示。如下，每一列被称为一个『维度』。
-```js
+```ts
 series: [{
     data: [
         // 维度X   维度Y   其他维度 ...
@@ -80,7 +80,7 @@ series: [{
     + 使用 [tooltip.formatter](~tooltip.formatter) 或 [series.label.formatter](~series.label.formatter) 可以把其他维度的值展示出来。
 
 特别地，当只有一个轴为类目轴（axis.type 为 `'category'`）的时候，数据可以简化用一个一维数组表示。例如：
-```js
+```ts
 xAxis: {
     data: ['a', 'b', 'm', 'n']
 },
@@ -101,7 +101,7 @@ series: [{
 + 当某维度对应于类目轴（axis.type 为 `'category'`）的时候：
 
     其值须为类目的『序数』（从 `0` 开始）或者类目的『字符串值』。例如：
-    ```js
+    ```ts
     xAxis: {
         type: 'category',
         data: ['星期一', '星期二', '星期三', '星期四']
@@ -140,7 +140,7 @@ series: [{
 **当需要对个别数据进行个性化定义时：**
 
 数组项可用对象，其中的 `value` 像表示具体的数值，如：
-```js
+```ts
 [
     12,
     34,

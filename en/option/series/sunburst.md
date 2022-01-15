@@ -147,7 +147,7 @@ Sunburst charts support data mining by default. That means, when a user clicks a
 
 The data structure of [series-sunburst.data](~series-sunburst.data) is like tree. For example:
 
-```js
+```ts
 [{
     name: 'parent1',
     value: 10,          // value of parent node can be left unset, and sum of
@@ -261,7 +261,7 @@ The action of clicking a sector, which can be:
 
 Sorting method that sectors use based on [`value`](~series-sunburst.data.value), which is the sum of children when not set. The default value `'desc'` states for descending order, while it can also be set to be `'asc'` for ascending order, or `null` for not sorting, or callback function like:
 
-```js
+```ts
 function(nodeA, nodeB) {
     return nodeA.getValue() - nodeB.getValue();
 }
@@ -326,7 +326,7 @@ Sunburst chart has a leveled structure. To make it convenient, we provide a `lev
 
 For example, if we don't want the data mining, and want to set the most inside sector to be red, and text to be blue, we can set the option like:
 
-```js
+```ts
 series: {
     // ...
     levels: [

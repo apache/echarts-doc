@@ -15,7 +15,7 @@ echarts 本身没有提供封装好的『拖拽改变图表』功能，因为现
 
 在这个例子中，基础的图表是一个 [折线图 (series-line)](option.html#series-line)。参见如下配置：
 
-```js
+```ts
 var symbolSize = 20;
 
 // 这个 data 变量在这里单独声明，在后面也会用到。
@@ -48,7 +48,7 @@ myChart.setOption({
 
 既然折线中原生的点没有拖拽功能，我们就为它加上拖拽功能：用 [graphic](option.html#graphic) 组件，在每个点上面，覆盖一个隐藏的可拖拽的圆点。
 
-```js
+```ts
 myChart.setOption({
     // 声明一个 graphic component，里面有若干个 type 为 'circle' 的 graphic elements。
     // 这里使用了 echarts.util.map 这个帮助方法，其行为和 Array.prototype.map 一样，但是兼容 es5 以下的环境。
@@ -87,7 +87,7 @@ myChart.setOption({
 
 有了这段代码后，就有了诸个能拖拽的点。接下来要为每个点，加上拖拽响应的事件：
 
-```js
+```ts
 // 拖拽某个圆点的过程中会不断调用此函数。
 // 此函数中会根据拖拽后的新位置，改变 data 中的值，并用新的 data 值，重绘折线图，从而使折线图同步于被拖拽的隐藏圆点。
 function onPointDragging(dataIndex) {
@@ -108,7 +108,7 @@ function onPointDragging(dataIndex) {
 
 最后，为了使 dom 尺寸改变时，图中的元素能自适应得变化，加上这些代码：
 
-```js
+```ts
 window.addEventListener('resize', function () {
     // 对每个拖拽圆点重新计算位置，并用 setOption 更新。
     myChart.setOption({
@@ -132,7 +132,7 @@ window.addEventListener('resize', function () {
 
 在上述代码中分别添加如下定义：
 
-```js
+```ts
 myChart.setOption({
     ...,
     tooltip: {
@@ -145,7 +145,7 @@ myChart.setOption({
 });
 ```
 
-```js
+```ts
 myChart.setOption({
     graphic: echarts.util.map(data, function (item, dataIndex) {
         return {

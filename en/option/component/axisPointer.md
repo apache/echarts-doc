@@ -28,7 +28,7 @@ See [sampleA](${galleryViewPath}candlestick-brush&edit=1&reset=1) and [sampleB](
 
 link is an array, where each item represents a "link group". Axes will be linked when they are refered in the same link group. For example:
 
-```js
+```ts
 link: [
     {
         // All axes with xAxisIndex 0, 3, 4 and yAxisName 'sameName' will be linked.
@@ -46,7 +46,7 @@ link: [
 
 As illustrated above, axes can be refered in these approaches in a link group:
 
-```js
+```ts
 {
     // 'some' represent the dimension name of a axis, namely, 'x', 'y', 'radius', 'angle', 'single'
     someAxisIndex: [...], // can be an array or a value or 'all'
@@ -64,7 +64,7 @@ As illustrated above, axes can be refered in these approaches in a link group:
 
 For example, the type of axisA is 'category', and the type of axisB type is 'time', we can write conversion function (mapper) in link group to convert values from an axis to another axis. For example:
 
-```js
+```ts
 link: [{
     xAxisIndex: [0, 1],
     yAxisName: ['yy'],

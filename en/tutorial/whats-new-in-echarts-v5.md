@@ -156,7 +156,7 @@ The original internationalization implementation of ECharts takes the form of di
 
 Therefore, starting with Apache ECharts 5, the dynamic language is separated from the main code. To switch languages, you only need to load the corresponding language, use the `registerLocale` function to mount the language object in a similar way to mount the theme, and then reinitialize it to complete the language switch.
 
-```js
+```ts
 // import the lang object and set when init
 echarts.registerLocale('DE', lang).
 echarts.init(DomElement, null, {

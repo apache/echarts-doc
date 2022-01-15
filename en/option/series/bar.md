@@ -299,7 +299,7 @@ Label position.
 
     Use relative percentage, or absolute pixel values to represent position of label relative to top-left corner of bounding box.
     For example:
-    ```js
+    ```ts
     // Absolute pixel values
     position: [10, 10],
     // Relative percentage

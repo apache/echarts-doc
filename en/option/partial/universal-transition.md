@@ -21,7 +21,7 @@ The `seriesKey` determines how the series to be animated is associated, it defau
 
 Usually this is configured as a string, and transitions between series with the same `seriesKey` will be applied. It can also be configured as an array like the following.
 
-```js
+```ts
 seriesKey: ['male', 'female']
 ```
 
@@ -44,7 +44,7 @@ For better results, different series will have different configurations by defau
 
 Configure the animation delay for each shape in a one-to-many or many-to-one animation. Setting different animation delays can bring a more instereting animation. For example, the following code creates a staggered effect with a random delay for each shape.
 
-```js
+```ts
 delay: function (index, count) {
     return Math.random() * 1000;
 }

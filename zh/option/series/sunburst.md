@@ -299,7 +299,7 @@ const option = {
 
 [series-sunburst.data](~series-sunburst.data) 的数据格式是树状的，例如：
 
-```js
+```ts
 [{
     name: 'parent1',
     value: 10,          // 可以不写父元素的 value，则为子元素之和；
@@ -410,7 +410,7 @@ const option = {
 
 扇形块根据数据 [`value`](~series-sunburst.data.value) 的排序方式，如果未指定 `value`，则其值为子元素 `value` 之和。默认值 `'desc'` 表示降序排序；还可以设置为 `'asc'` 表示升序排序；`null` 表示不排序，使用原始数据的顺序；或者用回调函数进行排列：
 
-```js
+```ts
 function(nodeA, nodeB) {
     return nodeA.getValue() - nodeB.getValue();
 }
@@ -475,7 +475,7 @@ function(nodeA, nodeB) {
 
 例如，假设我们没有数据下钻功能，并且希望将最内层的扇形块的颜色设为红色，文字设为蓝色，可以这样设置：
 
-```js
+```ts
 series: {
     // ...
     levels: [

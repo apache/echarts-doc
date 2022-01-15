@@ -26,7 +26,7 @@
 同时，encode.tooltip 和 encode.label 也可以被指定，指明默认的 tooltip 和 label 显示什么内容。[series.dimensions](~series-custom.dimensions) 也可以被指定，指明显示在 tooltip 中的维度名称，或者维度的类型。
 
 例如：
-```js
+```ts
 series: {
     type: 'custom',
     renderItem: function () {
@@ -51,7 +51,7 @@ series: {
 
 **Event listener**
 
-```js
+```ts
 chart.setOption({
     // ...
     series: {
@@ -114,7 +114,7 @@ renderItem 函数的参数。
 
 renderItem 函数的第一个参数，含有：
 
-```js
+```ts
 {
     context: // {Object} 一个可供开发者暂存东西的对象。生命周期只为：当前次的渲染。
     seriesId: // {string} 本系列 id。
@@ -325,7 +325,7 @@ renderItem 函数的第二个参数。
 如果什么都不渲染，可以不返回任何东西。
 
 例如：
-```js
+```ts
 // 单独一个矩形
 {
     type: 'rect',
@@ -336,7 +336,7 @@ renderItem 函数的第二个参数。
 }
 ```
 
-```js
+```ts
 // 一组图形元素
 {
     type: 'group',
@@ -478,7 +478,7 @@ renderItem 函数的第二个参数。
 
 custom 系列需要开发者自己提供图形渲染的逻辑。这个渲染逻辑一般命名为 [renderItem](~series-custom.renderItem)。例如：
 
-```js
+```ts
 var option = {
     ...,
     series: [{

@@ -54,7 +54,7 @@ Calendar coordinate system can be configured to adapt to container size, which i
 Required, range of Calendar coordinates, support multiple formats.
 
 Examples:
-```js
+```ts
 
 // one year
 range: 2017
@@ -80,7 +80,7 @@ Support setting self-adaptation: `auto`, the default width and height to be 20.
 
 
 Examples:
-```js
+```ts
 
 // Set the width and height to be 20
 cellSize: 20
@@ -148,7 +148,7 @@ Set this to `false` to prevent the splitLine from showing
 ) }}
 
 Examples:
-```js
+```ts
 calendar: [{
     splitLine: {
         show: true,
@@ -174,7 +174,7 @@ Every rect style in calendar coordinates.
 ) }}
 
 Examples:
-```js
+```ts
 calendar: [{
     itemStyle: {
         color: '#fff',
@@ -202,7 +202,7 @@ A week from the beginning of the week, the default starting on Sunday.
 
 Examples:
 
-```js
+```ts
 
 calendar: [{
     dayLabel: {
@@ -239,7 +239,7 @@ It supports Chinese(`cn`), English(`en`), and customized array. Since `v5.2.2`, 
 The index `0` always means `Sunday`.
 
 Examples:
-```js
+```ts
 
 // Before v5.2.2
 
@@ -318,7 +318,7 @@ It supports Chinese(`cn`), English(`en`), and customized array. Since `v5.2.2`, 
 The index `0` always means `Jan`.
 
 Examples:
-```js
+```ts
 
 // Before v5.2.2
 
@@ -360,7 +360,7 @@ Formatter of month text label, which supports string template and callback funct
 
 
 Examples:
-```js
+```ts
 // Use string template; eg: 2017-02
 /*
     template variables:
@@ -431,7 +431,7 @@ Formatter of year text label, which supports string template and callback functi
 By default, the current range of the year, if the interval across the year, showing the first year and the last year
 
 Examples:
-```js
+```ts
 // Use string template; eg: ['2017-10-11', '2018-01-21']
 /*
     template variables:

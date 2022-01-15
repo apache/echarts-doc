@@ -24,7 +24,7 @@ Whether to set graphic number threshold to animation. Animation will be disabled
 
 Time for animation to complete, which supports callback function for different data to have different animation effect:
 
-```js
+```ts
 animationDurationUpdate: function (idx) {
     // delay for later data is larger
     return idx * 100;
@@ -43,7 +43,7 @@ Easing method used for animation.
 Delay before updating animation, which supports callback function for different data to have different animation effects.
 
 For example:
-```js
+```ts
 animationDelayUpdate: function (idx) {
     // delay for later data is larger
     return idx * 100;
@@ -63,7 +63,7 @@ See [this example](${galleryEditorPath}bar-animation-delay) for more information
 
 Duration of the first animation, which supports callback function for different data to have different animation effect:
 
-```js
+```ts
 animationDuration: function (idx) {
     // delay for later data is larger
     return idx * 100;
@@ -82,7 +82,7 @@ Easing method used for the first animation. Varied easing effects can be found a
 Delay before updating the first animation, which supports callback function for different data to have different animation effect.
 
 For example:
-```js
+```ts
 animationDelay: function (idx) {
     // delay for later data is larger
     return idx * 100;

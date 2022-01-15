@@ -91,7 +91,7 @@ myChart.setOption({
 **Compatibility with ECharts 4:**
 
 We also support these equivalent setting styles:
-```js
+```ts
 option = {
     baseOption: {
         timeline: {},

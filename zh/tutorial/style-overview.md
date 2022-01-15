@@ -23,20 +23,20 @@
 
 ECharts4 开始，除了一贯的默认主题外，新内置了两套主题，分别为 `'light'` 和 `'dark'`。可以这么来使用它们：
 
-```js
+```ts
 var chart = echarts.init(dom, 'light');
 ```
 
 或者
 
-```js
+```ts
 var chart = echarts.init(dom, 'dark');
 ```
 
 其他的主题，没有内置在 ECharts 中，需要自己加载。这些主题可以在 [主题编辑器](https://echarts.apache.org/zh/theme-builder.html) 里访问到。也可以使用这个主题编辑器，自己编辑主题。下载下来的主题可以这样使用：
 
 如果主题保存为 JSON 文件，那么可以自行加载和注册，例如：
-```js
+```ts
 // 假设主题名称是 "vintage"
 $.getJSON('xxx/xxx/vintage.json', function (themeJSON) {
     echarts.registerTheme('vintage', JSON.parse(themeJSON))
@@ -45,7 +45,7 @@ $.getJSON('xxx/xxx/vintage.json', function (themeJSON) {
 ```
 
 如果保存为 UMD 格式的 JS 文件，那么支持了自注册，直接引入 JS 文件即可：
-```js
+```ts
 // HTML 引入 vintage.js 文件后（假设主题名称是 "vintage"）
 var chart = echarts.init(dom, 'vintage');
 // ...
@@ -57,7 +57,7 @@ var chart = echarts.init(dom, 'vintage');
 调色盘，可以在 option 中设置。它给定了一组颜色，图形、系列会自动从其中选择颜色。
 可以设置全局的调色盘，也可以设置系列自己专属的调色盘。
 
-```js
+```ts
 option = {
     // 全局调色盘。
     color: ['#c23531','#2f4554', '#61a0a8', '#d48265', '#91c7ae','#749f83',  '#ca8622', '#bda29a','#6e7074', '#546570', '#c4ccd3'],
@@ -93,7 +93,7 @@ option = {
 
 在鼠标悬浮到图形元素上时，一般会出现高亮的样式。默认情况下，高亮的样式是根据普通样式自动生成的。但是高亮的样式也可以自己定义，主要是通过 [emphasis](option.html#series-scatter.emphasis) 属性来定制。[emphsis](option.html#series-scatter.emphasis) 中的结构，和普通样式的结构相同，例如：
 
-```js
+```ts
 option = {
     series: {
         type: 'scatter',
@@ -127,7 +127,7 @@ option = {
 
 注意：在 ECharts4 以前，高亮和普通样式的写法，是这样的：
 
-```js
+```ts
 option = {
     series: {
         type: 'scatter',

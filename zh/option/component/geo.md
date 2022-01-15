@@ -8,7 +8,7 @@
 地理坐标系组件用于地图的绘制，支持在地理坐标系上绘制[散点图](~series-scatter)，[线集](~series-lines)。
 
 `3.1.10` 开始 geo 组件也支持鼠标事件。事件参数为
-```js
+```ts
 {
     componentType: 'geo',
     // Geo 组件在 option 中的 index
@@ -40,7 +40,7 @@ geo 区域的颜色也可以被 map series 所控制，参见 [series-map.geoInd
 在地图中对特定的区域配置样式。
 
 例如：
-```js
+```ts
 regions: [{
     name: '广东',
     itemStyle: {

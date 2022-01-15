@@ -1,6 +1,6 @@
 {{ target: partial-formatter-params-structure }}
 
-```js
+```ts
 {
     componentType: 'series',
     // 系列类型
@@ -43,7 +43,7 @@
 注：encode 和 dimensionNames 的使用方式，例如：
 
 如果数据为：
-```js
+```ts
 dataset: {
     source: [
         ['Matcha Latte', 43.3, 85.8, 93.7],
@@ -54,12 +54,12 @@ dataset: {
 }
 ```
 则可这样得到 y 轴对应的 value：
-```js
+```ts
 params.value[params.encode.y[0]]
 ```
 
 如果数据为：
-```js
+```ts
 dataset: {
     dimensions: ['product', '2015', '2016', '2017'],
     source: [
@@ -71,7 +71,7 @@ dataset: {
 }
 ```
 则可这样得到 y 轴对应的 value：
-```js
+```ts
 params.value[params.dimensionNames[params.encode.y[0]]]
 ```
 

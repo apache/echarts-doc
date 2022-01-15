@@ -1101,7 +1101,7 @@ setOption 时指定本次对该图形元素的操作行为。
 可以通过`'all'`指定所有属性都开启过渡动画，也可以指定单个或一组属性。
 
 + Transform 相关的属性：`'x'`、 `'y'`、`'scaleX'`、`'scaleY'`、`'rotation'`、`'originX'`、`'originY'`。例如：
-    ```js
+    ```ts
 {
     type: 'rect',
     x: coord[0],
@@ -1111,7 +1111,7 @@ setOption 时指定本次对该图形元素的操作行为。
 }
     ```
 + 还可以是这三个属性 `'shape'`、`'style'`、`'extra'`。表示这三个属性中所有的子属性都开启过渡动画。例如：
-    ```js
+    ```ts
 {
     type: 'rect',
     shape: {
@@ -1228,7 +1228,7 @@ z 方向的高度，决定层叠关系。
 
 用户定义的任意数据，可以在 event listener 中访问，如：
 
-```js
+```ts
 chart.on('click', function (params) {
     console.log(params.info);
 });
@@ -1287,7 +1287,7 @@ Position of `textContent`.
 `textContent` 根据此矩形来布局位置。
 默认是节点的包围盒。
 
-```js
+```ts
 {
     x: number
     y: number
@@ -1509,7 +1509,7 @@ Position of `textContent`.
 只可以指定本 `${hostProp}` 下的属性。
 
 例如：
-```js
+```ts
 {
     type: 'rect',
     ${hostProp}: {
@@ -1520,7 +1520,7 @@ Position of `textContent`.
 }
 ```
 我们这样可以指定 `${hostProp}` 下所有属性开启过渡动画：
-```js
+```ts
 {
     type: 'rect',
     ${hostProp}: {
@@ -1808,7 +1808,7 @@ Position of `textContent`.
 
 在动画的每一帧里，用户可以使用 `during` 回调来设定节点的各种属性。
 
-```js
+```ts
 (duringAPI: CustomDuringAPI) => void
 
 interface CustomDuringAPI {
@@ -1841,7 +1841,7 @@ type TransformProp =
 在绝大多数场景下，用户不需要这个 `during` 回调。因为，假如属性被设定到 [transition](option.html#series-custom.renderItem.return_rect.transition) 中后，echarts 会自动对它进行插值，并且基于这些插值形成动画。但是，如果这些插值形成的动画不满足用户需求，那么用户可以使用 `during` 回调来定制他们。
 
 例如，如果用户使用 [polygon](option.html#series-custom.renderItem.return_polygon) 画图形，图形的形状会由 [shape.points](option.html#series-custom.renderItem.return_polygon.shape.points) 来定义，形如：
-```js
+```ts
 {
     type: 'polygon',
     shape: {
@@ -1851,7 +1851,7 @@ type TransformProp =
 }
 ```
 如果用户指定了 [transition](option.html#series-custom.renderItem.return_polygon.transition) 如：
-```js
+```ts
 {
     type: 'polygon',
     shape: {
@@ -1862,7 +1862,7 @@ type TransformProp =
 }
 ```
 尽管这些 `points` 会被 echarts 自动插值，但是这样形成的动画里，这些点会直线走向目标位置。假如用户需求是，这些点要按照某种特定的路径（如弧线、螺旋）来移动，则这就不满足了。所以在这种情况下，可以使用 `during` 回调如下：
-```js
+```ts
 {
     type: 'polygon',
     shape: {

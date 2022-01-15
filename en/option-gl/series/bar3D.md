@@ -85,7 +85,7 @@ Configure labels and styles for bar highlighting.
 
 A data array of 3D bar. Each item of the array is a piece of data. Usually this data is an array to store each attribute/dimension of the data. For example below:
 
-```js
+```ts
 data: [
     [[12, 14, 10], [34, 50, 15], [56, 30, 20], [10, 15, 12], [23, 10, 14]]
 ]

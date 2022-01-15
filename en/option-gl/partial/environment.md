@@ -4,8 +4,8 @@
 
 Environment map. Support for solid colors, gradual colors, URL of panoramic texture. The default is `'auto'`, which is used as the environment texture when [light.ambientCubemap.texture](~${componentType}.light.ambientCubemap.texture) is configured. Otherwise, the environment texture is not displayed.
 
-Example: 
-```js
+Example:
+```ts
 // Configure as a panoramic texture
 environment: 'asset/starfield.jpg'
 // Configured as a solid black background

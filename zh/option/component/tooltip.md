@@ -218,7 +218,7 @@ const option = {
 指定 tooltip 的 DOM 节点的 CSS 类。（只在 [`html`](~tooltip.renderMode) 模式下生效）。
 
 Example:
-```js
+```ts
 className: 'echarts-tooltip echarts-tooltip-dark'
 ```
 

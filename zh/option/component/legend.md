@@ -193,7 +193,7 @@ const option = {
 用来格式化图例文本，支持字符串模板和回调函数两种形式。
 
 示例：
-```js
+```ts
 // 使用字符串模板，模板变量为图例名称 {name}
 formatter: 'Legend {name}'
 // 使用回调函数
@@ -258,7 +258,7 @@ selected: {
 
 图例的 tooltip 配置，配置项同 [tooltip](~tooltip)。默认不显示，可以在 legend 文字很多的时候对文字做裁剪并且开启 tooltip，如下示例：
 
-```js
+```ts
 legend: {
     formatter: function (name) {
         return echarts.format.truncateText(name, 40, '14px Microsoft Yahei', '…');
@@ -374,7 +374,7 @@ data: [{
 图例控制块中，页信息的显示格式。默认为 `'{current}/{total}'`，其中 `{current}` 是当前页号（从 1 开始计数），`{total}` 是总页数。
 
 如果 `pageFormatter` 使用函数，须返回字符串，参数为：
-```js
+```ts
 {
     current: number
     total: number
@@ -494,7 +494,7 @@ data: [{
 
 使用方式如下：
 
-```js
+```ts
 selector: [
     {
         type: 'all or inverse',

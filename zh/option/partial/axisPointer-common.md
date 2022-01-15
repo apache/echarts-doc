@@ -219,7 +219,7 @@ axisPointer 的 label 默认不显示（也就是默认只显示指示线），�
 显示的 string。
 
 例如：
-```js
+```ts
 formatter: function (params) {
     // 假设此轴的 type 为 'time'。
     return 'some text' + echarts.format.formatTime(params.value);
@@ -285,7 +285,7 @@ label 距离轴的距离。
 
 每项内容还包括轴的信息：
 
-```js
+```ts
 {
     axisDim: 'x', // 'x', 'y', 'angle', 'radius', 'single'
     axisId: 'xxx',

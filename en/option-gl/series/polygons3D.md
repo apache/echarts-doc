@@ -36,7 +36,7 @@ Mouse hover Highlights the style of graphics and labels.
 A list of data for the polygon.
 
 
-```js
+```ts
 data: [{
     // A square
     coords: [[0, 0], [100, 0], [100, 100], [0, 100]],

@@ -7,7 +7,7 @@ Map name registered in [registerMap](api.html#echarts.registerMap).
 
 {{ if: ${inMap} }}
 **Use geoJSON**
-```js
+```ts
 $.get('map/china_geo.json', function (geoJson) {
     echarts.registerMap('china', {geoJSON: geoJson});
     var chart = echarts.init(document.getElementById('main'));
@@ -23,7 +23,7 @@ $.get('map/china_geo.json', function (geoJson) {
 See also [USA Population Estimates](${galleryEditorPath}map-usa).
 {{ else }}
 **Use geoJSON**
-```js
+```ts
 $.get('map/china_geo.json', function (chinaJson) {
     echarts.registerMap('china', {geoJSON: geoJson});
     var chart = echarts.init(document.getElementById('main'));
@@ -42,7 +42,7 @@ The demo above shows that ECharts can uses [geoJSON](http://geojson.org/) format
 
 {{ if: ${inMap} }}
 **Use SVG**
-```js
+```ts
 $.get('map/topographic_map.svg', function (svg) {
     echarts.registerMap('topo', {svg: svg});
     var chart = echarts.init(document.getElementById('main'));
@@ -58,7 +58,7 @@ $.get('map/topographic_map.svg', function (svg) {
 See also [Beef Cuts](${galleryEditorPath}geo-beef-cuts).
 {{ else }}
 **Use SVG**
-```js
+```ts
 $.get('map/topographic_map.svg', function (svg) {
     echarts.registerMap('topo', {svg: svg});
     var chart = echarts.init(document.getElementById('main'));
@@ -84,7 +84,7 @@ The demo above shows that SVG format can be used in ECharts. See more info in [S
 Center of current view-port, in longitude and latitude.
 
 Example:
-```js
+```ts
 center: [115.97, 29.71]
 ```
 
@@ -98,7 +98,7 @@ The final aspect is calculated by: `geoBoundingRect.width / geoBoundingRect.heig
 
 Two dimension array. Define coord of left-top, right-bottom in layout box.
 
-```js
+```ts
 // A complete world map
 map: 'world',
 left: 0, top: 0, right: 0, bottom: 0,
@@ -123,7 +123,7 @@ Zoom rate of current view-port.
 #${prefix} nameMap(Object)
 
 Name mapping for customized areas. For example:
-```js
+```ts
 {
     'China' : '中国'
 }
@@ -137,7 +137,7 @@ Name mapping for customized areas. For example:
 
 customized property key for GeoJSON feature. By default, 'name' is used as primary key to identify GeoJSON feature.
 For example:
-```js
+```ts
 {
     nameProperty: 'NAME', // key to connect following data point to GeoJSON region {"type":"Feature","id":"01","properties":{"NAME":"Alabama"}, "geometry": { ... }}
     data:[
@@ -230,7 +230,7 @@ Map area style in blurred state.
 
 When using `left/right/top/bottom/width/height`, it is hard to put the map inside a box area with a fixed width-height ratio. In this case, `layoutCenter` attribute can be used to define the center position of map, and `layoutSize` can be used to define the size of map. For example:
 
-```js
+```ts
 layoutCenter: ['30%', '30%'],
 // If width-height ratio is larger than 1, then width is set to be 100.
 // Otherwise, height is set to be 100.

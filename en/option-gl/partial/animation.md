@@ -18,7 +18,7 @@ The easing effect for update transition animation.
 The delayed to update the transition animation, which supports callback function for different data to have different animation effects.
 
 Example：
-```js
+```ts
 animationDelayUpdate: function (idx) {
     // The more backward the data, the greater the delay of the animation
     return idx * 100;

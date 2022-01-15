@@ -11,7 +11,7 @@
 
 事件参数如下：
 
-```js
+```ts
 {
     // 组件类型，xAxis, yAxis, radiusAxis, angleAxis
     // 对应组件类型都会有一个属性表示组件的 index，例如 xAxis 就是 xAxisIndex
@@ -164,13 +164,13 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 
 刻度标签文字的颜色，默认取 [axisLine.lineStyle.color](~${componentType}.axisLine.lineStyle.color)。支持回调函数，格式如下
 
-```js
+```ts
 (val: string) => Color
 ```
 
 参数是标签的文本，返回颜色值，如下示例：
 
-```js
+```ts
 textStyle: {
     color: function (value, index) {
         return value >= 0 ? 'green' : 'red';
@@ -514,7 +514,7 @@ splitLine: {
 
 非类目轴，包括时间，数值，对数轴，`boundaryGap`是一个两个值的数组，分别表示数据最小值和最大值的延伸范围，可以直接设置数值或者相对的百分比，在设置 [min](~${componentType}.min) 和 [max](~${componentType}.max) 后无效。
 **示例：**
-```js
+```ts
 boundaryGap: ['20%', '20%']
 ```
 
@@ -532,7 +532,7 @@ boundaryGap: ['20%', '20%']
 
 当设置成 `function` 形式时，可以根据计算得出的数据最大最小值设定坐标轴的最小值。如：
 
-```js
+```ts
 min: function (value) {
     return value.min - 20;
 }
@@ -554,7 +554,7 @@ min: function (value) {
 
 当设置成 `function` 形式时，可以根据计算得出的数据最大最小值设定坐标轴的最小值。如：
 
-```js
+```ts
 max: function (value) {
     return value.max - 20;
 }
@@ -588,7 +588,7 @@ max: function (value) {
 
 例如可以设置成`1`保证坐标轴分割刻度显示成整数。
 
-```js
+```ts
 {
     minInterval: 1
 }
@@ -604,7 +604,7 @@ max: function (value) {
 
 例如，在时间轴（（[type](~${componentType}.type): 'time'））可以设置成 `3600 * 24 * 1000` 保证坐标轴分割刻度最大为一天。
 
-```js
+```ts
 {
     maxInterval: 3600 * 24 * 1000
 }
@@ -675,7 +675,7 @@ max: function (value) {
 
 示例：
 
-```js
+```ts
 // 所有类目名称列表
 data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
 // 每一项也可以是具体的配置项，此时取配置项中的 `value` 为类目名
@@ -724,7 +724,7 @@ ${name}的显示间隔，在类目轴中有效。{{ if: !${isAxisLabel} }}默认
 如果设置为 `1`，表示『隔一个标签显示一个标签』，如果值为 `2`，表示隔两个标签显示一个标签，以此类推。
 
 可以用数值表示间隔的数据，也可以通过回调函数控制。回调函数格式如下：
-```js
+```ts
 (index:number, value: string) => boolean
 ```
 第一个参数是类目的 index，第二个值是类目名称，如果跳过则返回 `false`。
@@ -736,7 +736,7 @@ ${name}的显示间隔，在类目轴中有效。{{ if: !${isAxisLabel} }}默认
 刻度标签的内容格式器，支持字符串模板和回调函数两种形式。
 
 示例:
-```js
+```ts
 // 使用字符串模板，模板变量为刻度默认标签 {value}
 formatter: '{value} kg'
 // 使用函数模板，函数参数分别为刻度数值（类目），刻度的索引
@@ -787,7 +787,7 @@ formatter: function (value, index) {
 > 其他语言请参考相应[语言包](https://github.com/apache/echarts/tree/master/src/i18n)中的定义，语言包可以通过 [echarts.registerLocale](api.html#echarts.registerLocale) 注册。
 
 示例:
-```js
+```ts
 formatter: '{yyyy}-{MM}-{dd}' // 得到的 label 形如：'2020-12-02'
 formatter: '{d}日' // 得到的 label 形如：'2日'
 ```
@@ -797,7 +797,7 @@ formatter: '{d}日' // 得到的 label 形如：'2日'
 回调函数可以根据刻度值返回不同的格式，如果有复杂的时间格式化需求，也可以引用第三方的日期时间相关的库（如 [Moment.js](https://momentjs.com/)、[date-fns](https://date-fns.org/) 等），返回显示的文本。
 
 示例：
-```js
+```ts
 // 使用函数模板，函数参数分别为刻度数值（类目），刻度的索引
 formatter: function (value, index) {
     // 格式化成月/日，只在第一个刻度显示年份
@@ -815,7 +815,7 @@ formatter: function (value, index) {
 有时候，我们希望对不同的时间粒度采用不同的格式化策略。例如，在季度图表中，我们可能希望对每个月的第一天显示月份，而其他日期显示日期。我们可以使用以下方式实现该效果：
 
 示例：
-```js
+```ts
 formatter: {
     month: '{MMMM}', // 一月、二月、……
     day: '{d}日' // 1日、2日、……
@@ -823,7 +823,7 @@ formatter: {
 ```
 
 支持的分级以及各自默认的取值为：
-```js
+```ts
 {
     year: '{yyyy}',
     month: '{MMM}',
@@ -844,7 +844,7 @@ formatter: {
 以上这三种形式的 formatter 都支持富文本，所以可以做成一些复杂的效果。
 
 示例：
-```js
+```ts
 xAxis: {
     type: 'time',
     axisLabel: {
@@ -870,7 +870,7 @@ xAxis: {
 使用回调函数形式实现上面例子同样的效果：
 
 示例：
-```js
+```ts
 xAxis: {
     type: 'time',
     axisLabel: {

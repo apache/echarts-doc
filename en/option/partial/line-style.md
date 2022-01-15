@@ -9,7 +9,7 @@ ${name}Line color. {{ if: ${useColorPalatte} }}Color is taken from [option.color
 
 {{ if: ${hasCallback} }}
 Supports callback functions, in the form of:
-```js
+```ts
 (params: Object) => Color
 ```
 Input parameters are `seriesIndex`, `dataIndex`, `data`, `value`, and etc. of data item.
