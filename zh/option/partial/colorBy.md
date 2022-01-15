@@ -3,6 +3,8 @@
 
 ## colorBy(string) = ${defaultColorBy|default("'series'")}
 
+<ExampleUIControlEnum options="series,data" />
+
 {{ use: partial-version(
     version = '5.2.0'
 ) }}

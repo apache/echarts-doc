@@ -1096,93 +1096,43 @@ setOption 时指定本次对该图形元素的操作行为。
     symbolDeclare = ${symbolDeclare}
 ) }}
 
-{{ if: ${usageType} === 'customSeries' }}
 ##${prefix} transition(string|Array) = ['x', 'y']
 
-可以指定一个属性名，或者一组属性名。被指定的属性值变化时，会开启过渡动画。
+可以通过`'all'`指定所有属性都开启过渡动画，也可以指定单个或一组属性。
 
-属性只可以是：
-+ Transform 相关的属性：[`'x'`](~${optionPath}.${hostName}${symbolVisit}${type}.x), [`'y'`](~${optionPath}.${hostName}${symbolVisit}${type}.y)、[`'scaleX'`](~${optionPath}.${hostName}${symbolVisit}${type}.scaleX)、[`'scaleY'`](~${optionPath}.${hostName}${symbolVisit}${type}.scaleY)、[`'rotation'`](~${optionPath}.${hostName}${symbolVisit}${type}.rotation)、[`'originX'`](~${optionPath}.${hostName}${symbolVisit}${type}.originX)、[`'originY'`](~${optionPath}.${hostName}${symbolVisit}${type}.originY)。例如：
++ Transform 相关的属性：`'x'`、 `'y'`、`'scaleX'`、`'scaleY'`、`'rotation'`、`'originX'`、`'originY'`。例如：
     ```js
-    renderItem: function (params, api) {
-        var coord = api.coord([api.value(0), api.value[1]);
-        return {
-            type: 'rect',
-            x: coord[0],
-            y: coord[1],
-            shape: {
-                x: 0,
-                y: 0,
-                width: api.value(2),
-                height: 100
-            },
-            transition: ['x', 'y', 'width']
-        }
-    }
+{
+    type: 'rect',
+    x: coord[0],
+    y: coord[1],
+    transition: ['x', 'y']
+    ...
+}
     ```
-+ 还可以是这三个属性 [`'shape'`](~${optionPath}.${hostName}${symbolVisit}${type}.shape)、['`style'`](~${optionPath}.${hostName}${symbolVisit}${type}.style)、[`'extra'`](~${optionPath}.${hostName}${symbolVisit}${type}.extra)。表示这三个属性中所有的子属性都开启过渡动画。例如：
++ 还可以是这三个属性 `'shape'`、`'style'`、`'extra'`。表示这三个属性中所有的子属性都开启过渡动画。例如：
     ```js
-    renderItem: function (params, api) {
-        return {
-            type: 'rect',
-            shape: {
-                x: api.value(0),
-                y: api.value(1),
-                width: api.value(2),
-                height: api.value(3)
-            },
-            // 表示 shape 中所有属性都开启过渡动画。
-            transition: 'shape',
-        };
-    }
-    ```
-    这等价于：
-    ```js
-    renderItem: function (params, api) {
-        return {
-            type: 'rect',
-            shape: {
-                x: api.value(0),
-                y: api.value(1),
-                width: api.value(2),
-                height: api.value(3),
-                // transition 放在 shape 中，能只指定部分属性开启过渡动画。
-                transition: ['x', 'y', 'width', 'height']
-            }
-        };
-    }
+{
+    type: 'rect',
+    shape: {
+        ...
+    },
+    // 表示 shape 中所有属性都开启过渡动画。
+    transition: 'shape',
+}
     ```
 
-当 transition 没有指定时，[`'x'`](~${optionPath}.${hostName}${symbolVisit}${type}.x) 和 [`'y'`](~${optionPath}.${hostName}${symbolVisit}${type}.y) 会默认开启过渡动画。如果想禁用这种默认，可设定：
-```js
-transition: [] // 一个空数组
-```
+当 transition 没有指定时，`'x'` 和 `'y'` 会默认开启过渡动画。如果想禁用这种默认，可设定为空数组：`transition: []`
 
-看这个 [例子](${galleryEditorPath}doc-example/custom-transition-simple&edit=1&reset=1)。
-{{ /if }}
+`transition` 效果参考 [例子](${galleryEditorPath}doc-example/custom-transition-simple&edit=1&reset=1)。
 
 {{ if: ${usageType} === 'customSeries' && ${enableMorph} }}
-##${prefix} morph(boolean) = false
+##${prefix} morph(boolean)
 
 是否开启形变动画。
 
-**什么情况下会展示出形变动画？**
+开启 [universalTransition](~series-custom.universalTransition) 后如果前后两次更新图形类型不一样，比如从`rect`变为了`circle`，会通过形变动画过渡。如果想要关闭可以设置该属性为`false`。
 
-`morph` 设置为 `true` 后，还需按照如下规则，来形成形变动画：
-
-每次走渲染流程是，自定义系列会自动比较（diff）新旧数据。在这个 diff 过程中，如果发现，一组旧数据项和一组新数据项的值相等（相等的规则是，name 相同，或者 [transition](api.html#echartsInstance.setOption) 所指定的维度上的值相同），那么我们就找到了能形成形变动画的一对候选集。
-
-在这组旧数据和这组新数据间，可能产生三种形变动画：
-+ 一对一（one-to-one）：如果新数据组和旧数据组都各自只有一个数据项。
-+ 一对多（one-to-many）：如果新数据组中有多个数据项，旧数据组中只有一个数据项。
-+ 多对一（many-to-one）：如果新数据组中只有一个数据项，旧数据组中有多个数据项。
-
-注：我们并不支持多对多（many-to-many）的情况。
-
-然后，自定义系列，会在新旧组中，寻找声明为 `morph: true` 的图形元素，并分配他们形成真正的一一映射的形变，或者分裂（separating），或者合并（combining）。
-
-参见示例：[custom-one-to-one-morph](${galleryEditorPath}custom-one-to-one-morph&edit=1&reset=1) 和
-[custom-combine-separate-morph](${galleryEditorPath}custom-combine-separate-morph&edit=1&reset=1)。
 {{ /if }}
 
 {{ if: ${usageType} === 'graphicComponent' }}
@@ -1560,34 +1510,24 @@ Position of `textContent`.
 
 例如：
 ```js
-renderItem: function (params, api) {
-    return {
-        type: 'xxx',
-        ${hostProp}: {
-            mmm: ...,
-            nnn: ...,
-            ppp: ...,
-            qqq: ...,
-            // 这两个属性会开启过渡动画。
-            transition: ['mmm', 'ppp']
-        }
-    };
+{
+    type: 'rect',
+    ${hostProp}: {
+        ...
+        // 这两个属性会开启过渡动画。
+        transition: ['mmm', 'ppp']
+    }
 }
 ```
 我们这样可以指定 `${hostProp}` 下所有属性开启过渡动画：
 ```js
-renderItem: function (params, api) {
-    return {
-        type: 'xxx',
-        ${hostProp}: {
-            mmm: ...,
-            nnn: ...,
-            ppp: ...,
-            qqq: ...,
-        },
-        // `${hostProp}` 下所有属性开启过渡动画。
-        transition: '${hostProp}',
-    };
+{
+    type: 'rect',
+    ${hostProp}: {
+        ...
+    },
+    // `${hostProp}` 下所有属性开启过渡动画。
+    transition: '${hostProp}',
 }
 ```
 {{ /if }}

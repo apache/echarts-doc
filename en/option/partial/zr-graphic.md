@@ -1110,67 +1110,34 @@ Optional values:
 {{ if: ${usageType} === 'customSeries' }}
 ##${prefix} transition(string|Array) = ['x', 'y']
 
-Can be a single property name or an array of property names.
-Enable transition animation when the specified properties changed.
+You can specify that all properties have transition animations turned on with `'all'', or you can specify a single property or an array of properties.
 
 The properties can only be:
-+ Transform related properties: [`'x'`](~${optionPath}.${hostName}${symbolVisit}${type}.x), [`'y'`](~${optionPath}.${hostName}${symbolVisit}${type}.y), [`'scaleX'`](~${optionPath}.${hostName}${symbolVisit}${type}.scaleX), [`'scaleY'`](~${optionPath}.${hostName}${symbolVisit}${type}.scaleY), [`'rotation'`](~${optionPath}.${hostName}${symbolVisit}${type}.rotation), [`'originX'`](~${optionPath}.${hostName}${symbolVisit}${type}.originX), [`'originY'`](~${optionPath}.${hostName}${symbolVisit}${type}.originY). For example:
++ Transform related properties:`'x'`, `'y'`, `'scaleX'`, `'scaleY'`, `'rotation'`, `'originX'`, `'originY'`. For example:
     ```js
-    renderItem: function (params, api) {
-        var coord = api.coord([api.value(0), api.value[1]);
-        return {
-            type: 'rect',
-            x: coord[0],
-            y: coord[1],
-            shape: {
-                x: 0,
-                y: 0,
-                width: api.value(2),
-                height: 100
-            },
-            transition: ['x', 'y', 'width']
-        }
-    }
+{
+    type: 'rect',
+    x: coord[0],
+    y: coord[1],
+    transition: ['x', 'y']
+    ...
+}
     ```
 + Shortcut to transition all of the properties in [`'shape'`](~${optionPath}.${hostName}${symbolVisit}${type}.shape), ['`style'`](~${optionPath}.${hostName}${symbolVisit}${type}.style), [`'extra'`](~${optionPath}.${hostName}${symbolVisit}${type}.extra). For example:
     ```js
-    renderItem: function (params, api) {
-        return {
-            type: 'rect',
-            shape: {
-                x: api.value(0),
-                y: api.value(1),
-                width: api.value(2),
-                height: api.value(3)
-            },
-            // Indicate that all props in `shape` will
-            // have transition animation.
-            transition: 'shape',
-        };
-    }
-    ```
-    It is equivalent to:
-    ```js
-    renderItem: function (params, api) {
-        return {
-            type: 'rect',
-            shape: {
-                x: api.value(0),
-                y: api.value(1),
-                width: api.value(2),
-                height: api.value(3),
-                // This usage can only enable part of the
-                // properties transition.
-                transition: ['x', 'y', 'width', 'height']
-            }
-        };
-    }
+
+{
+    type: 'rect',
+    shape: {
+        ...
+    },
+    // Indicate that all props in `shape` will
+    // have transition animation.
+    transition: 'shape',
+}
     ```
 
-By default, [`'x'`](~${optionPath}.${hostName}${symbolVisit}${type}.x) and [`'y'`](~${optionPath}.${hostName}${symbolVisit}${type}.y) are transitioned. If you want to disable the default transition, just set it as:
-```js
-transition: [] // Am empty array.
-```
+By default, `'x'` and `'y'` are transitioned. If you want to disable the default transition, just set it as: `transition: []`.
 
 See this [example](${galleryEditorPath}doc-example/custom-transition-simple&edit=1&reset=1) please.
 {{ /if }}
@@ -1180,23 +1147,8 @@ See this [example](${galleryEditorPath}doc-example/custom-transition-simple&edit
 
 Whether to enable morphing animation.
 
-**When morphing animation happen?**
+If you enabled [universalTransition](~series-custom.universalTransition) and then the update has different types of shape, for example from `rect` to `circle`, it will apply the morph animation. Set this property to `false` to turn it off.
 
-If `morph` is set as `true`, the morphing animation will happen according to the following rule:
-
-Each time the render process happen, custom series will diff the old data and the new data. If a set of old data items (say, "old set") are value-equal to a set of new data items (say, "new set") in name or the specified dimensions (see parameter [transition](api.html#echartsInstance.setOption) in `setOption`), we found a pair of sets as transition candidates.
-
-Three type of transition animation can be performed between the two sets:
-+ one-to-one: if both the two sets has only one data item.
-+ one-to-many(separate): if the "old set" has only one data item, and the "new set" has more than one data items.
-+ many-to-one(combine): if the "old set" has more than one data items, and the "new set" has only one data item.
-
-Note: we do not support transition animation for the case many-to-many.
-
-Then custom series find graphic elements that has `morph: true` declared in these two sets, and map them for one to one morphing or combining or separating.
-
-See examples: [custom-one-to-one-morph](${galleryEditorPath}custom-one-to-one-morph&edit=1&reset=1) and
-[custom-combine-separate-morph](${galleryEditorPath}custom-combine-separate-morph&edit=1&reset=1).
 {{ /if }}
 
 {{ if: ${usageType} === 'graphicComponent' }}
@@ -1577,7 +1529,7 @@ Can only specify properties that are under this `${hostProp}`.
 For example:
 ```js
 {
-    type: 'path',
+    type: 'rect',
     ${hostProp}: {
         ...
         // This two props will perform transition animation.
@@ -1588,7 +1540,7 @@ For example:
 We can also specify all of the properties like this:
 ```js
 {
-    type: 'path',
+    type: 'rect',
     ${hostProp}: {
         ...
     },
