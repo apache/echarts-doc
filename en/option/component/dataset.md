@@ -56,9 +56,9 @@ More details about `dataset` can be checked in the [tutorial](${handbookPath}con
 
 ## sourceHeader(boolean)
 
-Whether the first row/column of `dataset.source` represents [dimension names](dataset.dimensions). Optional values:
+Whether the first row/column of `dataset.source` represents [dimension names](~dataset.dimensions). Optional values:
 
-+ `null/undefine`: means auto detect whether the first row/column is dimension names or data.
++ `null/undefine/auto`: means auto detect whether the first row/column is dimension names or data.
 + `true`: the first row/column is dimension names.
 + `false`: data start from the first row/column.
 
