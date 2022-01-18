@@ -59,6 +59,45 @@ Defaults:
 ['#5470c6', '#91cc75', '#fac858', '#ee6666', '#73c0de', '#3ba272', '#fc8452', '#9a60b4', '#ea7ccc']
 ```
 
+Supported color formats.
+
++ Use RGB for colors, like `'rgb(128, 128, 128)'`, or RGBA if you want to add an alpha channel for opacity, like `'rgba(128, 128, 128, 0.5)`, or use hex string, like `'#ccc'`.
+
++ Gradient Color or Texture
+```js
+// Linear gradient with first four parameters x0, y0, x2, y2, ranging from 0 - 1, corresponding to the percentage in the graphical wraparound box, if globalCoord is ``true``, then the four values are absolute pixel positions
+{
+    type: 'linear',
+    x: 0,
+    y: 0,
+    x2: 0,
+    y2: 1,
+    colorStops: [{
+        offset: 0, color: 'red' // color at 0%
+    }, {
+        offset: 1, color: 'blue' // color at 100%
+    }],
+    global: false // default is false
+}
+// Radial gradient, the first three parameters are the center x, y and radius, the values are the same as the linear gradient
+{
+    type: 'radial',
+    x: 0.5,
+    y: 0.5,
+    r: 0.5,
+    colorStops: [{
+        offset: 0, color: 'red' // color at 0%
+    }, {
+        offset: 1, color: 'blue' // color at 100%
+    }],
+    global: false // default is false
+}
+// Texture fill
+{
+    image: imageDom, // supported as HTMLImageElement, HTMLCanvasElement, path string not supported
+    repeat: 'repeat' // whether to tile, can be 'repeat-x', 'repeat-y', 'no-repeat'
+}
+```
 
 # backgroundColor(Color)
 Background color. Defaults to have no background.
@@ -177,4 +216,3 @@ color: {
     repeat: 'repeat' // whether to repeat texture, whose value can be repeat-x, repeat-y, or no-repeat
 }
 ```
-
