@@ -63,7 +63,7 @@ Supported color formats.
 
 + Use RGB for colors, like `'rgb(128, 128, 128)'`, or RGBA if you want to add an alpha channel for opacity, like `'rgba(128, 128, 128, 0.5)`, or use hex string, like `'#ccc'`.
 
-+ Gradient Color or Texture
++ Gradient Color or Pattern
 ```js
 // Linear gradient with first four parameters x0, y0, x2, y2, ranging from 0 - 1, corresponding to the percentage in the graphical wraparound box, if globalCoord is ``true``, then the four values are absolute pixel positions
 {
@@ -92,9 +92,9 @@ Supported color formats.
     }],
     global: false // default is false
 }
-// Texture fill
+// Pattern
 {
-    image: imageDom, // supported as HTMLImageElement, HTMLCanvasElement, path string not supported
+    image: imageDom, // supported as HTMLImageElement, HTMLCanvasElement, but not path string of SVG
     repeat: 'repeat' // whether to tile, can be 'repeat-x', 'repeat-y', 'no-repeat'
 }
 ```
