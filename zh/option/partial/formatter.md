@@ -33,10 +33,9 @@
     // 仅在雷达图中使用。
     dimensionIndex: number,
     // 数据图形的颜色
-    color: string,
-{{ for: ${extra} as ${obj}, ${name} }}{{ if: ${extra}.hasOwnProperty(${name}) }}
+    color: string{{ for: ${extra} as ${obj}, ${name} }}{{ if: ${extra}.hasOwnProperty(${name}) }},
     // ${obj.desc}
-    ${name}: ${obj.type},{{ /if }}{{ /for }}
+    ${name}: ${obj.type}{{ /if }}{{ /for }}
 }
 ```
 

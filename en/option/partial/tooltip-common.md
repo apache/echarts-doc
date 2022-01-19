@@ -14,10 +14,6 @@ tooltip can be configured on different places:
 + Configured in each item of `series.data`: [series.data.tooltip](~series.data.tooltip)
 
 
----
-
-
-
 {{ target: partial-tooltip-in-coords }}
 
 ## tooltip(Object)
@@ -29,8 +25,6 @@ tooltip can be configured on different places:
 {{ /if }}
 
 tooltip settings in the coordinate system component.
-
----
 
 {{ use: partial-tooltip-introduction() }}
 
@@ -48,7 +42,7 @@ tooltip settings in the coordinate system component.
 
 {{ target: partial-tooltip-in-coords-item }}
 
-### tooltip(*)
+### tooltip(Object)
 
 {{ if: ${version} }}
 {{ use: partial-version(
@@ -72,7 +66,7 @@ tooltip settings in this ${componentItemDesc}.
 
 {{ target: partial-tooltip-in-series }}
 
-## tooltip(*)
+## tooltip(Object)
 
 tooltip settings in this series.
 
@@ -85,7 +79,7 @@ tooltip settings in this series.
 
 {{ target: partial-tooltip-in-series-data }}
 
-### tooltip(*)
+### tooltip(Object)
 
 tooltip settings in this series data.
 
@@ -99,9 +93,7 @@ tooltip settings in this series data.
 {{ target: partial-tooltip-scope-tip }}
 
 {{ if: ${scope} === 'series' }}
-<br>
 > **Notice：**series.tooltip only works when [tooltip.trigger](~tooltip.trigger) is `'item'`.<br>
-
 {{ elif: ${scope} === 'seriesData' }}
 > **Notice：**series.data.tooltip only works when [tooltip.trigger](~tooltip.trigger) is `'item'`.<br>
 {{ /if }}
@@ -343,6 +335,21 @@ formatter: function (params, ticket, callback) {
     });
     return 'Loading';
 }
+```
+
+#${prefix} valueFormatter(string)
+
+Callback function for formatting the value section in tooltip.
+
+Interface:
+```ts
+(value: number | string) => string
+```
+
+Example:
+```ts
+// Add $ prefix
+valueFormatter: (value) => '$' + value.toFixed(2)
 ```
 
 #${prefix} backgroundColor(Color) = 'rgba(50,50,50,0.7)'

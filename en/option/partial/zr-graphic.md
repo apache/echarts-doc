@@ -1107,7 +1107,6 @@ Optional values:
     symbolDeclare = ${symbolDeclare}
 ) }}
 
-{{ if: ${usageType} === 'customSeries' }}
 ##${prefix} transition(string|Array) = ['x', 'y']
 
 You can specify that all properties have transition animations turned on with `'all'', or you can specify a single property or an array of properties.
@@ -1140,7 +1139,6 @@ The properties can only be:
 By default, `'x'` and `'y'` are transitioned. If you want to disable the default transition, just set it as: `transition: []`.
 
 See this [example](${galleryEditorPath}doc-example/custom-transition-simple&edit=1&reset=1) please.
-{{ /if }}
 
 {{ if: ${usageType} === 'customSeries' && ${enableMorph} }}
 ##${prefix} morph(boolean) = false
@@ -1148,7 +1146,6 @@ See this [example](${galleryEditorPath}doc-example/custom-transition-simple&edit
 Whether to enable morphing animation.
 
 If you enabled [universalTransition](~series-custom.universalTransition) and then the update has different types of shape, for example from `rect` to `circle`, it will apply the morph animation. Set this property to `false` to turn it off.
-
 {{ /if }}
 
 {{ if: ${usageType} === 'graphicComponent' }}
@@ -1520,6 +1517,7 @@ If [top](~${optionPath}.${hostName}${symbolVisit}${type}.top) or [bottom](~${opt
 
 {{ target: partial-graphic-cpt-sub-prop-transition }}
 
+{{ if: ${usageType} === 'customSeries' }}
 ###${prefix} transition(string|Array) = undefined
 
 Can be a single property name or an array of property names.
@@ -1549,6 +1547,7 @@ We can also specify all of the properties like this:
     transition: '${hostProp}',
 };
 ```
+{{ /if }}
 
 
 

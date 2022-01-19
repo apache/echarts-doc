@@ -27,8 +27,6 @@
 
 本坐标系特定的 tooltip 设定。
 
----
-
 {{ use: partial-tooltip-introduction() }}
 
 {{ use: partial-tooltip-coords-common(
@@ -45,7 +43,7 @@
 
 {{ target: partial-tooltip-in-coords-item }}
 
-### tooltip(*)
+### tooltip(Object)
 
 {{ if: ${version} }}
 {{ use: partial-version(
@@ -82,7 +80,7 @@
 
 {{ target: partial-tooltip-in-series-data }}
 
-### tooltip(*)
+### tooltip(Object)
 
 本系列每个数据项中特定的 tooltip 设定。
 
@@ -146,8 +144,6 @@
 `tooltip.axisPointer` 是配置坐标轴指示器的快捷方式。实际上坐标轴指示器的全部功能，都可以通过轴上的 axisPointer 配置项完成（例如 [xAxis.axisPointer](~xAxis.axisPointer) 或 [angleAxis.axisPointer](~angleAxis.axisPointer)）。但是使用 `tooltip.axisPointer` 在简单场景下会更方便一些。
 
 > **注意：** `tooltip.axisPointer` 中诸配置项的优先级低于轴上的 axisPointer 的配置项。
-
----
 
 {{ use: partial-axisPointer-introduction() }}
 
@@ -324,11 +320,11 @@ formatter: '{b0}: {c0}<br />{b1}: {c1}'
 
 {{ use: partial-formatter-params-structure(
     extra = {
-    percent: {
-        desc: '饼图的百分比',
-    type = 'number'
+        percent: {
+            desc: '饼图，漏斗图的百分比',
+            type = 'number'
+        }
     }
-}
 ) }}
 
 在 [trigger](~tooltip.trigger) 为 `'axis'` 的时候，或者 tooltip 被 [axisPointer](~xAxis.axisPointer) 触发的时候，`params` 是多个系列的数据数组。其中每项内容格式同上，并且，
@@ -348,6 +344,22 @@ formatter: function (params, ticket, callback) {
 }
 ```
 
+#${prefix} valueFormatter(string)
+
+tooltip 中数值显示部分的格式化回调函数。
+
+回调函数格式：
+
+```ts
+(value: number | string) => string
+```
+
+示例：
+
+```ts
+// 添加 $ 前缀
+valueFormatter: (value) => '$' + value.toFixed(2)
+```
 
 #${prefix} backgroundColor(Color) = 'rgba(50,50,50,0.7)'
 
