@@ -100,6 +100,10 @@ option = {
 
 y 轴所在的 grid 的索引，默认位于第一个 grid。
 
+## alignTicks(boolean) = false
+
+在多个 y 轴为数值轴的时候，可以开启该配置项自动对齐刻度。只对`'value'`和`'log'`类型的轴有效。
+
 ## position(string)
 
 <ExampleUIControlEnum options="left,right" default="left" />

@@ -14,6 +14,7 @@ tooltip can be configured on different places:
 + Configured in each item of `series.data`: [series.data.tooltip](~series.data.tooltip)
 
 
+
 {{ target: partial-tooltip-in-coords }}
 
 ## tooltip(Object)
@@ -94,6 +95,7 @@ tooltip settings in this series data.
 
 {{ if: ${scope} === 'series' }}
 > **Notice：**series.tooltip only works when [tooltip.trigger](~tooltip.trigger) is `'item'`.<br>
+
 {{ elif: ${scope} === 'seriesData' }}
 > **Notice：**series.data.tooltip only works when [tooltip.trigger](~tooltip.trigger) is `'item'`.<br>
 {{ /if }}
