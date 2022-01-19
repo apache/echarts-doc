@@ -126,6 +126,16 @@ Default value:
 [[1, '#E6EBF8']]
 ```
 
+Note: The value of `color[i][0]` means the percentage of the axis line of gauge chart's segments.
+
+```js
+color: [
+    [0.1, 'red'], // 10% red segments
+    [2, 'green'], // rest percent green segments
+    [10, 'blue'], // not work
+]
+```
+
 #### width(number) = 10
 
 The width of axis line.
