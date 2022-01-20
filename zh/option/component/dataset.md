@@ -60,7 +60,7 @@ ECharts 4 开始支持了 `数据集`（`dataset`）组件用于单独的数据�
 + `null/undefined/'auto'`：默认，自动探测。
 + `true`：第一行/列是维度名信息。
 + `false`：第一行/列直接开始是数据。
-+ `number`: 维度名行数，也就是数据行/列的开始索引。例如：`sourceHeader: 2` 意味着前两行/列为维度名，从第三行/列开始为数据。 
++ `number`: 维度名行/列数，也就是数据行/列的开始索引。例如：`sourceHeader: 2` 意味着前两行/列为维度名，从第三行/列开始为数据。 
 
 注意：“第一行/列” 的意思是，如果 [series.seriesLayoutBy](~series.seriesLayoutBy) 设置为 `'column'`（默认值），则取第一行，如果 `series.seriesLayoutBy` 设置为 `'row'`，则取第一列。
 
