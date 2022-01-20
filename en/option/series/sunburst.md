@@ -98,6 +98,10 @@ If angle of data piece is smaller than this value (in degrees), then text is not
     useDecal = ${state} === 'normal'
 ) }}
 
+{{ use: partial-sector-border-radius(
+    prefix = "#" + ${prefix},
+    type = "sunburst"
+) }}
 
 
 {{ target: partial-sunburst-state }}
@@ -110,6 +114,11 @@ If angle of data piece is smaller than this value (in degrees), then text is not
 {{ use: partial-sunburst-itemStyle-props(
     prefix = ${prefix},
     state = ${state}
+) }}
+
+{{ use: partial-sector-border-radius(
+    prefix = "#" + ${prefix},
+    type = "sunburst"
 ) }}
 
 
