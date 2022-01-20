@@ -54,15 +54,16 @@ More details about `dataset` can be checked in the [tutorial](${handbookPath}con
     prefix = "#"
 ) }}
 
-## sourceHeader(boolean)
+## sourceHeader(boolean|number)
 
 Whether the first row/column of `dataset.source` represents [dimension names](~dataset.dimensions). Optional values:
 
-+ `null/undefine/auto`: means auto detect whether the first row/column is dimension names or data.
++ `null/undefined/'auto'`: means auto detect whether the first row/column is dimension names or data.
 + `true`: the first row/column is dimension names.
 + `false`: data start from the first row/column.
++ `number`: means the row/column count of the dimension names, that is, the start index of data row/column. e.g. `sourceHeader: 2` means the front two rows/columns are dimension names, the back ones are data.
 
-Note: "the first row/column" means that if [series.seriesLayoutBy](~series.seriesLayoutBy) is set as `'column'`, pick the first row, otherwise, if it is set as `'row'`, pick the first column.
+Note: **_the first row/column_** means that if [series.seriesLayoutBy](~series.seriesLayoutBy) is set as `'column'`, pick the first row, otherwise, if it is set as `'row'`, pick the first column.
 
 ## transform(Object)
 
