@@ -126,13 +126,13 @@ Default value:
 [[1, '#E6EBF8']]
 ```
 
-Note: The value of `color[i][0]` means the percentage of the axis line of gauge chart's segments. Recommend value between 0 then 1, The value in `(0, 1]` will be valuable.
+Note: The value of `color[i][0]` means the percentage of the axis line of the gauge chart's segments, which should be between 0 and 1, and `color[i][1]` is the corresponding color.
 
 ```js
 color: [
-    [0.1, 'red'], // 10% red segments
-    [0.2, 'green'], // 20% green segments
-    [0.3, 'blue'], // 30% blue segments
+    [0.1, 'red'], // 0~10% is red
+    [0.2, 'green'], // 10~20% is green
+    [0.3, 'blue'], // 20~30% is blue
     // ...
 ]
 ```
@@ -587,4 +587,3 @@ formatter: function (value) {
     return value.toFixed(0);
 }
 ```
-
