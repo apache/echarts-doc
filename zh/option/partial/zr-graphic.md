@@ -1096,35 +1096,154 @@ setOption 时指定本次对该图形元素的操作行为。
     symbolDeclare = ${symbolDeclare}
 ) }}
 
-##${prefix} transition(string|Array) = ['x', 'y']
+##${prefix} transition(string|Array)
 
 可以通过`'all'`指定所有属性都开启过渡动画，也可以指定单个或一组属性。
 
-+ Transform 相关的属性：`'x'`、 `'y'`、`'scaleX'`、`'scaleY'`、`'rotation'`、`'originX'`、`'originY'`。例如：
-    ```ts
+Transform 相关的属性：`'x'`、 `'y'`、`'scaleX'`、`'scaleY'`、`'rotation'`、`'originX'`、`'originY'`。例如：
+```ts
 {
     type: 'rect',
-    x: coord[0],
-    y: coord[1],
+    x: 100,
+    y: 200,
     transition: ['x', 'y']
-    ...
 }
-    ```
-+ 还可以是这三个属性 `'shape'`、`'style'`、`'extra'`。表示这三个属性中所有的子属性都开启过渡动画。例如：
-    ```ts
+```
+还可以是这三个属性 `'shape'`、`'style'`、`'extra'`。表示这三个属性中所有的子属性都开启过渡动画。例如：
+```ts
 {
     type: 'rect',
-    shape: {
-        ...
-    },
+    shape: { // ... },
     // 表示 shape 中所有属性都开启过渡动画。
     transition: 'shape',
 }
-    ```
+```
 
-当 transition 没有指定时，`'x'` 和 `'y'` 会默认开启过渡动画。如果想禁用这种默认，可设定为空数组：`transition: []`
+在自定义系列中，当 transition 没有指定时，`'x'` 和 `'y'` 会默认开启过渡动画。如果想禁用这种默认，可设定为空数组：`transition: []`
 
 `transition` 效果参考 [例子](${galleryEditorPath}doc-example/custom-transition-simple&edit=1&reset=1)。
+
+##${prefix} enterFrom(Object)
+
+配置图形的入场属性用于入场动画。例如：
+
+```ts
+{
+    type: 'circle',
+    x: 100,
+    enterFrom: {
+        // 淡入
+        style: { opacity: 0 },
+        // 从左飞入
+        x: 0
+    }
+}
+```
+
+##${prefix} leaveTo(Object)
+
+配置图形的退场属性用于退场动画。例如：
+
+```ts
+{
+    type: 'circle',
+    x: 100,
+    leaveTo: {
+        // 淡出
+        style: { opacity: 0 },
+        // 向右飞出
+        x: 200
+    }
+}
+```
+
+##${prefix} enterAnimation(Object)
+
+入场动画配置。
+
+{{ use: partial-graphic-cpt-animation(
+    prefix = ${prefix}
+) }}
+
+
+##${prefix} updateAnimation(Object)
+
+更新属性的动画配置。
+
+{{ use: partial-graphic-cpt-animation(
+    prefix = ${prefix}
+) }}
+
+##${prefix} leaveAnimation(Object)
+
+退场动画配置。
+
+{{ use: partial-graphic-cpt-animation(
+    prefix = ${prefix}
+) }}
+
+##${prefix} keyframeAnimation(Object|Array)
+
+关键帧动画配置。支持配置为数组同时使用多个关键帧动画。
+
+示例：
+
+```ts
+keyframeAnimation: [{
+    // 呼吸效果的缩放动画
+    duration: 1000,
+    loop: true,
+    keyframes: [{
+        percent: 0.5,
+        easing: 'sinusoidalInOut',
+        scaleX: 0.1,
+        scaleY: 0.1
+    }, {
+        percent: 1,
+        easing: 'sinusoidalInOut',
+        scaleX: 1,
+        scaleY: 1
+    }]
+}, {
+    // 平移动画
+    duration: 2000,
+    loop: true,
+    keyframes: [{
+        percent: 0,
+        x: 10
+    }, {
+        percent: 1,
+        x: 100
+    }]
+}]
+
+```
+
+假如一个属性同时被应用了关键帧动画和过渡动画，过渡动画会被忽略。
+
+{{ use: partial-graphic-cpt-animation(
+    prefix = ${prefix}
+) }}
+
+###${prefix} loop(boolean)
+
+是否循环播放动画。
+
+###${prefix} keyframes(Array)
+
+动画的关键帧。数组中每一项为一个关键帧，格式如下：
+
+```ts
+interface Keyframe {
+    // 关键帧位置。0 为第一帧，1 为最后一帧
+    // 关键帧时间为 percent * duration + delay
+    percent: number
+    // 上一个关键帧到这个关键帧运行时的缓动函数。可选
+    easing?: number
+
+    // 其它属性为图形在这个关键帧的属性，例如 x, y, style, shape 等
+}
+```
 
 {{ if: ${usageType} === 'customSeries' && ${enableMorph} }}
 ##${prefix} morph(boolean)
@@ -1373,11 +1492,11 @@ Position of `textContent`.
 
 如果确定文本是在节点中的话，则此可设置为 `true`，避免 echarts 额外猜测。
 
-{{ if: ${usageType} === 'customSeries' }}
 {{ use: partial-custom-series-during(
     prefix = ${prefix}
 ) }}
 
+{{ if: ${usageType} === 'customSeries' }}
 {{ use: partial-custom-series-extra(
     prefix = ${prefix},
     optionPath = ${optionPath},
@@ -1501,7 +1620,6 @@ Position of `textContent`.
 
 {{ target: partial-graphic-cpt-sub-prop-transition }}
 
-{{ if: ${usageType} === 'customSeries' }}
 ###${prefix} transition(string|Array) = undefined
 
 可以是一个属性名，或者一组属性名。
@@ -1513,7 +1631,7 @@ Position of `textContent`.
 {
     type: 'rect',
     ${hostProp}: {
-        ...
+        // ...
         // 这两个属性会开启过渡动画。
         transition: ['mmm', 'ppp']
     }
@@ -1523,16 +1641,25 @@ Position of `textContent`.
 ```ts
 {
     type: 'rect',
-    ${hostProp}: {
-        ...
-    },
+    ${hostProp}: { ... },
     // `${hostProp}` 下所有属性开启过渡动画。
     transition: '${hostProp}',
 }
 ```
-{{ /if }}
 
+{{ target: partial-graphic-cpt-animation }}
 
+###${prefix} duration(number)
+
+动画时长，单位 ms
+
+###${prefix} easing(string)
+
+动画缓动。不同的缓动效果可以参考 [缓动示例](${galleryEditorPath}line-easing)。
+
+###${prefix} delay(number)
+
+动画延迟时长，单位 ms
 
 {{ target: partial-graphic-cpt-sub-prop-xy }}
 
@@ -1694,7 +1821,6 @@ Position of `textContent`.
 ##${prefix} originY(number) = 0
 
 元素旋转和缩放原点的 y 像素位置。
-
 
 
 {{ target: partial-graphic-cpt-focus-blur }}

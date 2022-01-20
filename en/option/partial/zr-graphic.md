@@ -1111,34 +1111,158 @@ Optional values:
 
 You can specify that all properties have transition animations turned on with `'all'', or you can specify a single property or an array of properties.
 
-The properties can only be:
-+ Transform related properties:`'x'`, `'y'`, `'scaleX'`, `'scaleY'`, `'rotation'`, `'originX'`, `'originY'`. For example:
-    ```ts
-{
-    type: 'rect',
-    x: coord[0],
-    y: coord[1],
-    transition: ['x', 'y']
-    ...
-}
-    ```
-+ Shortcut to transition all of the properties in [`'shape'`](~${optionPath}.${hostName}${symbolVisit}${type}.shape), ['`style'`](~${optionPath}.${hostName}${symbolVisit}${type}.style), [`'extra'`](~${optionPath}.${hostName}${symbolVisit}${type}.extra). For example:
-    ```ts
+The properties can be:
 
+Transform related properties:`'x'`, `'y'`, `'scaleX'`, `'scaleY'`, `'rotation'`, `'originX'`, `'originY'`. For example:
+```ts
 {
     type: 'rect',
-    shape: {
-        ...
-    },
+    x: 100,
+    y: 200,
+    transition: ['x', 'y']
+}
+```
+
+Shortcut to transition all of the properties in [`'shape'`](~${optionPath}.${hostName}${symbolVisit}${type}.shape), ['`style'`](~${optionPath}.${hostName}${symbolVisit}${type}.style), [`'extra'`](~${optionPath}.${hostName}${symbolVisit}${type}.extra). For example:
+
+```ts
+{
+    type: 'rect',
+    shape: { // ... },
     // Indicate that all props in `shape` will
     // have transition animation.
     transition: 'shape',
 }
-    ```
+```
 
-By default, `'x'` and `'y'` are transitioned. If you want to disable the default transition, just set it as: `transition: []`.
+In the custom series. `'x'` and `'y'` are transitioned by default. If you want to disable the default transition, just set it as: `transition: []`.
 
 See this [example](${galleryEditorPath}doc-example/custom-transition-simple&edit=1&reset=1) please.
+
+##${prefix} enterFrom(Object)
+
+Initial properties for enter animation.
+
+Example:
+```ts
+{
+    type: 'circle',
+    x: 100,
+    enterFrom: {
+        // Fade in
+        style: { opacity: 0 },
+        // Slide in from left
+        x: 0
+    }
+}
+```
+
+##${prefix} leaveTo(Object)
+
+End properties for leave animation.
+
+
+Example:
+
+```ts
+{
+    type: 'circle',
+    x: 100,
+    leaveTo: {
+        // Fade out
+        style: { opacity: 0 },
+        // Slide out to right
+        x: 200
+    }
+}
+```
+
+##${prefix} enterAnimation(Object)
+
+Configurations of enter animation.
+
+{{ use: partial-graphic-cpt-animation(
+    prefix = ${prefix}
+) }}
+
+##${prefix} updateAnimation(Object)
+
+Configurations of update animation.
+
+{{ use: partial-graphic-cpt-animation(
+    prefix = ${prefix}
+) }}
+
+##${prefix} leaveAnimation(Object)
+
+Configurations of leave animation.
+
+{{ use: partial-graphic-cpt-animation(
+    prefix = ${prefix}
+) }}
+
+##${prefix} keyframeAnimation(Object|Array)
+
+Configurations of keyframe based animation. Support for configuring an array to use multiple keyframe animations at the same time.
+
+Example:
+
+```ts
+keyframeAnimation: [{
+    // Using scale for breath animation.
+    duration: 1000,
+    loop: true,
+    keyframes: [{
+        percent: 0.5,
+        easing: 'sinusoidalInOut',
+        scaleX: 0.1,
+        scaleY: 0.1
+    }, {
+        percent: 1,
+        easing: 'sinusoidalInOut',
+        scaleX: 1,
+        scaleY: 1
+    }]
+}, {
+    // Translate animation.
+    duration: 2000,
+    loop: true,
+    keyframes: [{
+        percent: 0,
+        x: 10
+    }, {
+        percent: 1,
+        x: 100
+    }]
+}]
+
+```
+
+If both keyframe animation and transition animation are applied to a property, the transition animation is ignored.
+
+{{ use: partial-graphic-cpt-animation(
+    prefix = ${prefix}
+) }}
+
+###${prefix} loop(boolean)
+
+If loop the keyframe animation.
+
+###${prefix} keyframes(Array)
+
+The keyframes of the animation. Each item in the array is a keyframe in the following format.
+
+```ts
+interface Keyframe {
+    // Keyframe position. 0 is the first frame, 1 is the last frame
+    // The time of keyframe is percent * duration + delay
+    percent: number
+    // Easing function from the last keyframe to this keyframe. Optional
+    easing?: number
+
+    // Other properties are for configuring the state of target at this keyframe, such as x, y, style, shape, etc.
+}
+```
 
 {{ if: ${usageType} === 'customSeries' && ${enableMorph} }}
 ##${prefix} morph(boolean) = false
@@ -1386,11 +1510,11 @@ The rule of getting "auto-calculated-stroke":
 
 Tell echarts that I can make sure this text is inside or not.
 
-{{ if: ${usageType} === 'customSeries' }}
 {{ use: partial-custom-series-during(
     prefix = ${prefix}
 ) }}
 
+{{ if: ${usageType} === 'customSeries' }}
 {{ use: partial-custom-series-extra(
     prefix = ${prefix},
     optionPath = ${optionPath},
@@ -1517,7 +1641,6 @@ If [top](~${optionPath}.${hostName}${symbolVisit}${type}.top) or [bottom](~${opt
 
 {{ target: partial-graphic-cpt-sub-prop-transition }}
 
-{{ if: ${usageType} === 'customSeries' }}
 ###${prefix} transition(string|Array) = undefined
 
 Can be a single property name or an array of property names.
@@ -1547,7 +1670,22 @@ We can also specify all of the properties like this:
     transition: '${hostProp}',
 };
 ```
-{{ /if }}
+
+
+
+{{ target: partial-graphic-cpt-animation }}
+
+###${prefix} duration(number)
+
+动画时长，单位 ms
+
+###${prefix} easing(string)
+
+动画缓动。不同的缓动效果可以参考 [缓动示例](${galleryEditorPath}line-easing)。
+
+###${prefix} delay(number)
+
+动画延迟时长，单位 ms
 
 
 
