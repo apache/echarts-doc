@@ -11,7 +11,7 @@ Set this to `true` to enable triggering events.
 
 Parameters of the event include:
 
-```js
+```ts
 {
     // Component type: xAxis, yAxis, radiusAxis, angleAxis
     // Each of which has an attribute for index, e.g., xAxisIndex for xAxis
@@ -166,13 +166,13 @@ Whether to hide overlapped labels.
 
 Color of axis label is set to be [axisLine.lineStyle.color](~${componentType}.axisLine.lineStyle.color) by default. Callback function is supported, in the following format:
 
-```js
+```ts
 (val: string) => Color
 ```
 
 Parameter is the text of label, and return value is the color. See the following example:
 
-```js
+```ts
 textStyle: {
     color: function (value, index) {
         return value >= 0 ? 'green' : 'red';
@@ -519,7 +519,7 @@ The `boundaryGap` of category axis can be set to either `true` or `false`. Defau
 
 For non-category axis, including time, numerical value, and log axes, `boundaryGap` is an array of two values, representing the spanning range between minimum and maximum value. The value can be set in numeric value or relative percentage, which becomes invalid after setting [min](~${componentType}.min) and [max](~${componentType}.max).
 **Example: **
-```js
+```ts
 boundaryGap: ['20%', '20%']
 ```
 
@@ -536,7 +536,7 @@ It will be automatically computed to make sure axis tick is equally distributed 
 In category axis, it can also be set as the ordinal number. For example, if a catergory axis has `data: ['categoryA', 'categoryB', 'categoryC']`, and the ordinal `2` represents `'categoryC'`. Moreover, it can be set as negative number, like `-3`.
 
 If `min` is specified as a function, it should return a min value, like:
-```js
+```ts
 min: function (value) {
     return value.min - 20;
 }
@@ -557,7 +557,7 @@ It will be automatically computed to make sure axis tick is equally distributed 
 In category axis, it can also be set as the ordinal number. For example, if a catergory axis has `data: ['categoryA', 'categoryB', 'categoryC']`, and the ordinal `2` represents `'categoryC'`. Moreover, it can be set as negative number, like `-3`.
 
 If `max` is specified as a function, it should return a max value, like:
-```js
+```ts
 max: function (value) {
     return value.max - 20;
 }
@@ -591,7 +591,7 @@ Minimum gap between split lines.
 
 For example, it can be set to be `1` to make sure axis label is show as integer.
 
-```js
+```ts
 {
     minInterval: 1
 }
@@ -607,7 +607,7 @@ Maximum gap between split lines.
 
 For example, in time axis ([type](~${componentType}.type) is 'time'), it can be set to be `3600 * 24 * 1000` to make sure that the gap between axis labels is less than or equal to one day.
 
-```js
+```ts
 {
     maxInterval: 3600 * 1000 * 24
 }
@@ -679,7 +679,7 @@ If [type](~${componentType}.type) is specified as `'category'`, but `axis.data` 
 
 Example:
 
-```js
+```ts
 // Name list of all categories
 data: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 // Each item could also be a specific configuration item.
@@ -729,7 +729,7 @@ You may set it to be 0 to display all labels compulsively.
 If it is set to be 1, it means that labels are shown once after one label. And if it is set to be 2, it means labels are shown once after two labels, and so on.
 
 On the other hand, you can control by callback function, whose format is shown below:
-```js
+```ts
 (index:number, value: string) => boolean
 ```
 The first parameter is index of category, and the second parameter is the name of category. The return values decides whether to display label.
@@ -741,7 +741,7 @@ The first parameter is index of category, and the second parameter is the name o
 Formatter of axis label, which supports string template and callback function.
 
 Example:
-```js
+```ts
 // Use string template; template variable is the default label of axis {value}
 formatter: '{value} kg'
 // Use callback.
@@ -792,7 +792,7 @@ Using string templates is an easy way to format date/time with frequently used f
 > Templates of other languages can be found in [the language package](https://github.com/apache/echarts/tree/master/src/i18n). Please refer to [echarts.registerLocale](api.html#echarts.registerLocale) to register a language.
 
 Example:
-```js
+```ts
 formatter: '{yyyy}-{MM}-{dd}' // gets labels like '2020-12-02'
 formatter: 'Day {d}' // gets labels like 'Day 2'
 ```
@@ -802,7 +802,7 @@ formatter: 'Day {d}' // gets labels like 'Day 2'
 Callback functions can be used to get different formats for different axis tick values. Sometimes, if you have complex date/time formatting requirement, third-party libraries like [Moment.js](https://momentjs.com/) or [date-fns](https://date-fns.org/) can be used to return formatted labels.
 
 Example:
-```js
+```ts
 // Use callback function; function parameters are axis index
 formatter: function (value, index) {
     // Formatted to be month/day; display year only in the first label
@@ -820,7 +820,7 @@ formatter: function (value, index) {
 Sometimes, we wish to use different formats for different time granularity. For example, in a quarter-year chart, we may wish to see the month name with the first date of the month, while see the date name with others. This can be made with:
 
 Example:
-```js
+```ts
 formatter: {
     month: '{MMMM}', // Jan, Feb, ...
     day: '{d}' // 1, 2, ...
@@ -828,7 +828,7 @@ formatter: {
 ```
 
 Supported levels and their default formatters are:
-```js
+```ts
 {
     year: '{yyyy}',
     month: '{MMM}',
@@ -848,7 +848,7 @@ Let's take `day` for example. When a tick value is `0` for its hour, minute, sec
 The above three forms all support rich text, so it can be used to make some complex effects.
 
 Example:
-```js
+```ts
 xAxis: {
     type: 'time',
     axisLabel: {
@@ -874,7 +874,7 @@ xAxis: {
 The above example can also be made with a callback function:
 
 Example:
-```js
+```ts
 xAxis: {
     type: 'time',
     axisLabel: {

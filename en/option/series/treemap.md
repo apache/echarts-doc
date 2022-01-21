@@ -606,6 +606,10 @@ Height of label area.
 
 Emphasis state.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "#" + ${prefix}
+) }}
+
 {{ if: ${prefix} === '#' }}
 {{ use: partial-focus-blur-scope(
     isTree = true
@@ -635,6 +639,10 @@ Blur state.
 ) }}
 
 Select state.
+
+{{ use: partial-select-disabled(
+    prefix = "#" + ${prefix}
+) }}
 
 {{ use: treemap-state(
     prefix = "#" + ${prefix}

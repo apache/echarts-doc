@@ -6,7 +6,7 @@ Event-handling functions are mainly added through [on](~echartsInstance.on) in E
 Event in ECharts can be divided in two kinds. One is mouse event, which is triggered when mouse clicks on certain component, the other is triggered after dispatches [dispatchAction](~echartsInstance.dispatchAction).
 
 **For example:**
-```js
+```ts
 myChart.on('click', function (params) {
     console.log(params);
 });
@@ -30,7 +30,7 @@ See [on](~echartsInstance.on) for more detailed info.
 
 Event parameters of mouse events are attributes of event object. The following shows basic parameters for chart click events. Other charts, like pie charts, may have additional parameters like `percent`. Please refer to callback `params` of each chart's label formatter.
 
-```js
+```ts
 {
     // type of the component to which the clicked glyph belongs
     // i.e., 'series', 'markLine', 'markPoint', 'timeLine'
@@ -98,7 +98,7 @@ Event of data downplay.
 
 Event emitted when data selection is changed.
 
-```js
+```ts
 {
     type: 'selectchanged',
     fromAction: 'select' | 'toggleSelected' | 'unselect',
@@ -114,7 +114,7 @@ Event emitted when data selection is changed.
 Event emitted after legend selecting state changes.
 
 **Attention: ** This event will be emitted when users toggle legend button in legend component.
-```js
+```ts
 {
     type: 'legendselectchanged',
     // change legend name
@@ -129,7 +129,7 @@ Event emitted after legend selecting state changes.
 **ACTION:** [legendSelect](~action.legend.legendSelect)
 Event emitted after legend is selected.
 
-```js
+```ts
 {
     type: 'legendselected',
     // name of selected legend
@@ -147,7 +147,7 @@ Event emitted after legend is selected.
 **ACTION:** [legendUnSelect](~action.legend.legendUnSelect)
 Event emitted after unselecting legend.
 
-```js
+```ts
 {
     type: 'legendunselected',
     // name of unselected legend
@@ -163,7 +163,7 @@ Event emitted after unselecting legend.
 **ACTION:** [legendAllSelect](~action.legend.legendAllSelect)
 Event emitted after all legends are selected.
 
-```js
+```ts
 {
     type: 'legendselectall',
     // table of all legend selecting states
@@ -178,7 +178,7 @@ Event emitted after all legends are selected.
 **ACTION:** [legendInverseSelect](~action.legend.legendInverseSelect)
 Event emitted after inversing all legends.
 
-```js
+```ts
 {
     type: 'legendinverseselect',
     // table of all legend selecting states
@@ -193,7 +193,7 @@ Event emitted after inversing all legends.
 **ACTION:** [legendscroll](~action.legend.legendScroll)
 Event when trigger legend scroll.
 
-```js
+```ts
 {
     type: 'legendscroll',
     scrollDataIndex: number
@@ -208,7 +208,7 @@ Event when trigger legend scroll.
 
 Event emitted after zooming data area.
 
-```js
+```ts
 {
     type: 'datazoom',
     // percentage of zoom start position, 0 - 100
@@ -225,7 +225,7 @@ Event emitted after zooming data area.
 **ACTION:** [selectDataRange](~action.dataRange.selectDataRange)
 Event emitted after range is changed in visualMap.
 
-```js
+```ts
 {
     type: 'datarangeselected',
     // continuous visualMap is different from discrete one
@@ -239,7 +239,7 @@ Event emitted after range is changed in visualMap.
 **ACTION:** [timelineChange](~action.timeline.timelineChange)
 Event emitted after time point in timeline is changed.
 
-```js
+```ts
 {
     type: 'timelinechanged',
     // index of time point
@@ -251,7 +251,7 @@ Event emitted after time point in timeline is changed.
 **ACTION:** [timelinePlayChange](~action.timeline.timelinePlayChange)
 Switching event of play state in timeline.
 
-```js
+```ts
 {
     type: 'timelineplaychanged',
     // play state, true for auto play
@@ -262,7 +262,7 @@ Switching event of play state in timeline.
 ## restore(Event)
 **ACTION:** [restore](~action.toolbox.restore)
 Resets option event.
-```js
+```ts
 {
     type: 'restore'
 }
@@ -270,7 +270,7 @@ Resets option event.
 
 ## dataviewchanged(Event)
 Changing event of [data view tool in toolbox](option.html#toolbox.feature.dataView).
-```js
+```ts
 {
     type: 'dataviewchanged'
 }
@@ -278,7 +278,7 @@ Changing event of [data view tool in toolbox](option.html#toolbox.feature.dataVi
 
 ## magictypechanged(Event)
 Switching event of [magic type tool in toolbox](option.html#toolbox.feature.magicType).
-```js
+```ts
 {
     type: 'magictypechanged',
     // click to change current type; same as type attribute in echarts 2.x
@@ -441,7 +441,7 @@ See [takeGlobalCursor](~action.brush.takeGlobalCursor).
 Trigger when a frame rendered. Notice that the `rendered` event does not indicate that the animation finished (see [animation](option.html#animation) and relevant options) or progressive rendering finished (see [progressive](option.html#series-scatter.progressive) and relevant options).
 
 For example:
-```js
+```ts
 var snapshotImage = new Image();
 document.body.append(snapshotImage);
 chart.on('rendered', function () {
@@ -455,7 +455,7 @@ chart.on('rendered', function () {
 Triggered when render finished, that is, when animation finished (see [animation](option.html#animation) and relevant options) and progressive rendering finished (see [progressive](option.html#series-scatter.progressive) and relevant options).
 
 
-```js
+```ts
 var snapshotImage = new Image();
 document.body.append(snapshotImage);
 chart.on('finished', function () {
@@ -473,7 +473,7 @@ Event emitted after ${name} selecting state changes.
 
 It will be triggered when user clicks to select.
 
-```js
+```ts
 {
     type: '${componentType}selectchanged',
     // series ID, can be passed in option
@@ -504,7 +504,7 @@ ${name}Event after selecting.
 
 Use `dispatchAction` can trigger this event, but user clicking this event won't trigger this (User clicking event please use [${componentType}selectchanged](~events.${componentType}selectchanged)).
 
-```js
+```ts
 {
     type: '${componentType}selected',
     // series ID, can incoming in option
@@ -527,7 +527,7 @@ ${name} cancels selected event.
 
 Use `dispatchAction` will trigger this event, but user clicking won't trigger it. (For user clicking event, please refer to [${componentType}selectchanged](~events.${componentType}selectchanged)).
 
-```js
+```ts
 {
     type: '${componentType}unselected',
     // series ID, can incoming in option

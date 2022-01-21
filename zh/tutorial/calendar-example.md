@@ -23,14 +23,14 @@
 <div id="main" style="width=100%; height = 400px"></div>
 ```
 使用ECharts进行初始化
-```js
+```ts
 var myChart = echarts.init(document.getElementById('main'));
 ```
 
 ## 第三步：配置参数
 以常见的日历图为例: calendar坐标 + heatmap图
 
-```js
+```ts
 var option = {
     visualMap: {
         show: false

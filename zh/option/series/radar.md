@@ -55,7 +55,9 @@ const option = {
 
 {{ use: partial-series-name() }}
 
-{{ use: partial-colorby(defaultColorBy="'data'") }}
+{{ use: partial-colorby(
+    defaultColorBy = "'data'"
+) }}
 
 ## radarIndex(number)
 
@@ -118,6 +120,10 @@ const option = {
 
 高亮状态的配置。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: radar-state(
@@ -146,6 +152,10 @@ const option = {
 
 选中状态的配置。开启 [selectedMode](~series-radar.selectedMode) 后有效。
 
+{{ use: partial-select-disabled(
+    prefix = "##"
+) }}
+
 {{ use: radar-state(
     prefix = "##",
     state = 'select'
@@ -161,7 +171,7 @@ const option = {
 
 雷达图的数据是多变量（维度）的，如下示例：
 
-```js
+```ts
 data : [
     {
         value : [4300, 10000, 28000, 35000, 50000, 19000],
@@ -258,6 +268,10 @@ data : [
 ) }}
 
 单个数据项样式的选中状态。
+
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
 
 {{ use: radar-state(
     prefix = "###",

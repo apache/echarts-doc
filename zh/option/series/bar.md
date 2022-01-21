@@ -164,6 +164,10 @@ option = {
 
 高亮的图形样式和标签样式。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: partial-bar-state(
@@ -184,7 +188,15 @@ option = {
 
 ## select(Object)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 数据选中时的图形样式和标签样式。开启 [selectedMode](~series-bar.selectedMode) 后有效。
+
+{{ use: partial-select-disabled(
+    prefix = "##"
+) }}
 
 {{ use: partial-bar-state(
     prefix = "##",
@@ -269,6 +281,10 @@ option = {
 
 单个数据的高亮状态配置。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: partial-bar-state(
     prefix = "###",
     topLevel = false,
@@ -296,6 +312,10 @@ option = {
 ) }}
 
 单个数据的选中状态配置。
+
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
 
 {{ use: partial-bar-state(
     prefix = "###",
@@ -354,7 +374,7 @@ option = {
 + 可以通过内置的语义声明位置：
 
     示例：
-    ```js
+    ```ts
     position: 'top'
     ```
 
@@ -363,7 +383,7 @@ option = {
 + 也可以用一个数组表示相对的百分比或者绝对像素值表示标签相对于图形包围盒左上角的位置。
 
     示例：
-    ```js
+    ```ts
     // 绝对的像素值
     position: [10, 10],
     // 相对的百分比
@@ -374,7 +394,9 @@ option = {
 
 + 极坐标系柱状图除了上述取值之外，还支持：`start` / `insideStart` / `middle` / `insideEnd` / `end`。
 
-{{ use: partial-version(version = '5.2.0') }}
+{{ use: partial-version(
+    version = '5.2.0'
+) }}
 
 ~[800x500](${galleryViewPath}doc-example/bar-polar-label-radial-multiple&reset=1&edit=1)
 

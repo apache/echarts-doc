@@ -29,13 +29,13 @@ ECharts uses Canvas by default. If a user intends to use the SVG renderer, the m
 + When [building ECharts online](${websitePath}/en/builder.html), the checkbox "SVG Renderer" should be checked.
 + When [building ECharts offline](tutorial.html#Use%20ECharts%20with%20bundler%20and%20NPM), the SVG renderer module should be imported:
 
-```js
+```ts
 import 'zrender/lib/svg/svg';
 ```
 
 Then we can specify renderer by [parameter](api.html#echarts.init):
 
-```js
+```ts
 // Use the Canvas renderer (default).
 var chart = echarts.init(containerDom, null, {renderer: 'canvas'});
 // which is equal to:

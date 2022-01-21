@@ -62,7 +62,7 @@ The data of the vector field, including the position of the vector and the direc
 
 Example:
 
-```js
+```ts
 data: [
     // Each data item contains four values representing the lng, lat of the position and the speed sLng, sLat on the corresponding dimension.
     // If it is in a Cartesian coordinate system, it is the position x, y and the speed in the corresponding dimension sx, sy

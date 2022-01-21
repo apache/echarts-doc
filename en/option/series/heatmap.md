@@ -78,6 +78,10 @@ Work for [coordinateSystem](~series-heatmap.coordinateSystem): 'cartesian2d'.
 
 Configurations of emphasis state.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: heatmap-state(
@@ -105,6 +109,10 @@ Configurations of blur state. Available when [emphasis.focus](~series-heatmap.em
 ) }}
 
 Configurations of select state. Available when [selectedMode](~series-heatmap.selectedMode) is set.
+
+{{ use: partial-select-disabled(
+    prefix = "##"
+) }}
 
 {{ use: heatmap-state(
     prefix = "##",
@@ -159,6 +167,10 @@ Style of a single data point. It is valid with [coordinateSystem](~series-heatma
 ) }}
 
 ### emphasis(Object)
+
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
 
 #### itemStyle(Object)
 

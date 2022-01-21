@@ -8,7 +8,7 @@
 Size of shadow blur. This attribute should be used along with `shadowColor`,`shadowOffsetX`, `shadowOffsetY` to set shadow to component.
 
 For example:
-```js
+```ts
 {
     shadowColor: 'rgba(0, 0, 0, 0.5)',
     shadowBlur: 10

@@ -29,11 +29,11 @@ Configuration item, data, universal interface, all parameters and data can all b
 **Parameters**
 
 Usage:
-```js
+```ts
 chart.setOption(option, notMerge, lazyUpdate);
 ```
 or
-```js
+```ts
 chart.setOption(option, {
     notMerge: ...,
     lazyUpdate: ...,
@@ -41,7 +41,7 @@ chart.setOption(option, {
 });
 ```
 or
-```js
+```ts
 chart.setOption(option, {
     replaceMerge: ['xAxis', 'yAxis', 'series']
 });
@@ -91,7 +91,7 @@ What is `Normal Merge` and `Replace Merge`?
         + The index of component(componentIndex) will never be changed.
         + If no `id` and `name` specified in `option` (this is a common case), components can be simply merged intuitively according to where they appear in `option`.
     + Example:
-        ```js
+        ```ts
         // Existing components:
         {
             xAxis: [
@@ -133,7 +133,7 @@ What is `Normal Merge` and `Replace Merge`?
         + The indices of the existing components will never be modified. This is to ensure that the existing references by index still works (e.g., `xAxisIndex: 2`).
         + After replace merged, there might be some "hole", that is, there is no component at some index (because the original component is removed). But this is expectable and controllable by users.
     + Example:
-        ```js
+        ```ts
         // Existing components:
         {
             xAxis: [
@@ -178,14 +178,14 @@ There are two ways to remove components:
 
 
 ## getWidth(Function)
-```js
+```ts
 () => number
 ```
 
 Gets width of ECharts instance container.
 
 ## getHeight(Function)
-```js
+```ts
 () => number
 ```
 
@@ -193,7 +193,7 @@ Gets height of ECharts instance container.
 
 
 ## getDom(Function)
-```js
+```ts
 () => HTMLCanvasElement|HTMLDivElement
 ```
 
@@ -201,7 +201,7 @@ Gets DOM element of ECharts instance container.
 
 
 ## getOption(Function)
-```js
+```ts
 () => Object
 ```
 
@@ -209,7 +209,7 @@ Gets `option` object maintained in current instance, which contains configuratio
 
 **Attention: **Attribute values in each component of the returned option are all in the form of an array, no matter it's single object or array of object when passed by `setOption`.
 For example:
-```js
+```ts
 {
     title: [{...}],
     legend: [{...}],
@@ -218,14 +218,14 @@ For example:
 ```
 
 Besides, the following style is **not recommended**:
-```js
+```ts
 var option = myChart.getOption();
 option.visualMap[0].inRange.color = ...;
 myChart.setOption(option);
 ```
 
 This is because `getOption` contains merged values which could be default values, and may overlaps future values. So, we **recommend** the following style when update part of configuration.
-```js
+```ts
 myChart.setOption({
     visualMap: {
         inRange: {
@@ -237,7 +237,7 @@ myChart.setOption({
 
 
 ## resize(Function)
-```js
+```ts
 (opts?: {
     width?: number|string,
     height?: number|string,
@@ -275,7 +275,7 @@ Resizes chart, which should be called manually when container size changes.
 **Tip:** Sometimes charts may be placed in multiple tabs. Those in hidden labels may fail to initialize due to the ignorance of container width and height. So `resize` should be called manually to get the correct width and height when switching to the corresponding tabs, or specify width/heigth in `opts` explicitly.
 
 ## dispatchAction(Function)
-```js
+```ts
 (payload: Object)
 ```
 Triggers chart action, like chart switch `legendToggleSelect`,zoom data area `dataZoom`, show tooltip `showTip` and so on. See [action](~action) and [events](~events) for more information.
@@ -285,7 +285,7 @@ Triggers chart action, like chart switch `legendToggleSelect`,zoom data area `da
 **Attention: **In ECharts 2.x, triggering chart actions has a long operation path like `myChart.component.tooltip.showTip`, which may also involve with internal component organization. So, `dispatchAction` is used in this case in ECharts 3.
 
 **For example**
-```js
+```ts
 myChart.dispatchAction({
     type: 'dataZoom',
     start: 20,
@@ -308,7 +308,7 @@ myChart.dispatchAction({
 ```
 
 ## on(Function)
-```js
+```ts
 (
     eventName: string,
     handler: Function,
@@ -340,14 +340,14 @@ If event is triggered externally by [dispatchAction](~echartsInstance.dispatchAc
     Condition for filtering, optional. `query` enables only call handlers on graphic elements of specified components. Can be `string` or `Object`.
 
     If `string`, the formatter can be 'mainType' or 'mainType.subType'. For example:
-    ```js
+    ```ts
     chart.on('click', 'series', function () {...});
     chart.on('click', 'series.line', function () {...});
     chart.on('click', 'xAxis.category', function () {...});
     ```
 
     If `Object`, one or more properties below can be included, and any of them is optional.
-    ```js
+    ```ts
     {
         <mainType>Index: number // component index
         <mainType>Name: string // component name
@@ -361,7 +361,7 @@ If event is triggered externally by [dispatchAction](~echartsInstance.dispatchAc
     ```
 
     For example:
-    ```js
+    ```ts
     chart.setOption({
         // ...
         series: [{
@@ -375,7 +375,7 @@ If event is triggered externally by [dispatchAction](~echartsInstance.dispatchAc
     ```
 
     For example:
-    ```js
+    ```ts
     chart.setOption({
         // ...
         series: [{
@@ -394,7 +394,7 @@ If event is triggered externally by [dispatchAction](~echartsInstance.dispatchAc
     ```
 
     For example:
-    ```js
+    ```ts
     chart.setOption({
         // ...
         series: [{
@@ -412,7 +412,7 @@ If event is triggered externally by [dispatchAction](~echartsInstance.dispatchAc
     ```
 
     For example:
-    ```js
+    ```ts
     chart.setOption({
         // ...
         series: {
@@ -441,7 +441,7 @@ If event is triggered externally by [dispatchAction](~echartsInstance.dispatchAc
 + `handler`
 
     Event-handling function, whose format is as following:
-```js
+```ts
 (event: Object)
 ```
 
@@ -451,7 +451,7 @@ If event is triggered externally by [dispatchAction](~echartsInstance.dispatchAc
 
 
 ## off(Function)
-```js
+```ts
 (eventName: string, handler?: Function)
 ```
 
@@ -469,7 +469,7 @@ Unbind event-handler function.
 
 
 ## convertToPixel(Function)
-```js
+```ts
 (
     // finder is used to indicate in which coordinate system conversion is performed.
     // Generally, index or id or name can be used to specify coordinate system.
@@ -503,7 +503,7 @@ Convert a point from logical coordinate (e.g., in geo, cartesian, graph, ...) to
 For example:
 
 In [geo](option.html#geo) coordinate system, convert a point from latlong to pixel coordinate:
-```js
+```ts
 // [128.3324, 89.5344] represents [longitude, latitude].
 // Perform conversion in the first geo coordinate system:
 chart.convertToPixel('geo', [128.3324, 89.5344]); // The parameter 'geo' means {geoIndex: 0}.
@@ -514,7 +514,7 @@ chart.convertToPixel({geoId: 'bb'}, [128.3324, 89.5344]);
 ```
 
 In cartesian (see [grid](option.html#grid)), convert a point to pixel coordinate:
-```js
+```ts
 // [300, 900] means [value on xAxis, value on yAxis].
 // Notice, there might be more than one xAxis or yAxis in a grid, and each a pair of
 // xAxis-yAxis constitudes a cartesian.
@@ -526,7 +526,7 @@ chart.convertToPixel({gridId: 'g1'}, [300, 900]);
 ```
 
 Convert a axis value to pixel value:
-```js
+```ts
 // In the xAxis with id 'x0', convert value 3000 to the horizontal pixel coordinate:
 chart.convertToPixel({xAxisId: 'x0'}, 3000); // A number will be returned.
 // In the second yAxis, convert value 600 to the vertical pixel coordinate:
@@ -534,7 +534,7 @@ chart.convertToPixel({yAxisIndex: 1}, 600); // A number will be returned.
 ```
 
 In [graph](option.html#series-graph), convert a point to pixel coordinate:
-```js
+```ts
 // Since every graph series maintains a coordinate system for itself, we
 // specify the graph series in finder.
 chart.convertToPixel({seriesIndex: 0}, [2000, 3500]);
@@ -542,7 +542,7 @@ chart.convertToPixel({seriesId: 'k2'}, [100, 500]);
 ```
 
 In a cooridinate system (cartesian, geo, graph, ...) that contains the given series, convert a point to pixel coordinate:
-```js
+```ts
 // Perform convert in the coordinate system that contains the first series.
 chart.convertToPixel({seriesIndex: 0}, [128.3324, 89.5344]);
 // Perform convert in the coordinate system that contains the series with id 'k2'.
@@ -551,7 +551,7 @@ chart.convertToPixel({seriesId: 'k2'}, [128.3324, 89.5344]);
 
 
 ## convertFromPixel(Function)
-```js
+```ts
 (
     // finder is used to indicate in which coordinate system conversion is performed.
     // Generally, index or id or name can be used to specify coordinate system.
@@ -583,7 +583,7 @@ Convert a point from pixel coordinate to logical coordinate (e.g., in geo, carte
 
 
 ## containPixel(Function)
-```js
+```ts
 (
     // finder is used to specify coordinate systems or series on which the judgement performed.
     // Generally, index or id or name can be used to specify coordinate system.
@@ -616,7 +616,7 @@ These coordinate systems or series are supported currently: [grid](option.html#g
 
 For example:
 
-```js
+```ts
 // Determine whether point [23, 44] is in the geo whose geoIndex 0.
 chart.containPixel('geo', [23, 44]); // Parameter 'geo' means {geoIndex: 0}
 // Determine whether point [23, 44] is in the grid whose gridId is 'z'.
@@ -630,7 +630,7 @@ chart.containPixel({seriesIndex: [1, 4, 5], gridName: 'a'}, [23, 44]);
 
 
 ## showLoading(Function)
-```js
+```ts
 (type?: string, opts?: Object)
 ```
 Shows loading animation. You can call this interface manually before data is loaded, and call [hideLoading](~echartsInstance.hideLoading) to hide loading animation after data is loaded.
@@ -644,7 +644,7 @@ Shows loading animation. You can call this interface manually before data is loa
 
     Optional; configuration item of loading animation, which is related to `type`. Following shows the available configuration items and their default values:
 
-    ```js
+    ```ts
 default: {
     text: 'loading',
     color: '#c23531',
@@ -674,7 +674,7 @@ default: {
 Hides animation loading effect.
 
 ## getDataURL(Function)
-```js
+```ts
 (opts: {
     // Exporting format, can be png, jpg, svg.
     // NOTE: png, jpg is only available for canvas renderer. svg is only available for svg renderer.
@@ -691,7 +691,7 @@ Hides animation loading effect.
 Exports chart image; returns a base64 URL; can be set to `src` of `Image`.
 
 **For example: **
-```js
+```ts
 var img = new Image();
 img.src = myChart.getDataURL({
     pixelRatio: 2,
@@ -700,7 +700,7 @@ img.src = myChart.getDataURL({
 ```
 
 ## getConnectedDataURL
-```js
+```ts
 (opts: {
     // Exporting format, can be either png, or jpeg
     type?: string,
@@ -716,7 +716,7 @@ img.src = myChart.getDataURL({
 Exports connected chart image; returns a base64 url; can be set to `src` of `Image`. Position of charts in exported image are related to that of the container.
 
 ## appendData
-```js
+```ts
 (opts: {
     // Specify which series the data will be appended to.
     seriesIndex?: string,
@@ -738,7 +738,7 @@ Notice:
 Clears current instance; removes all components and series in current instance.
 
 ## isDisposed
-```js
+```ts
 () => boolean
 ```
 Returns whether current instance has been disposed.

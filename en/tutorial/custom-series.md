@@ -20,7 +20,7 @@ Let's begin the tutorial.
 
 The snippet of graphic elements rendering should be written in `renderItem` method my developers. For example:
 
-```js
+```ts
 var option = {
     ...,
     series: [{
@@ -35,7 +35,7 @@ var option = {
 
 In the rendering phase of echarts workflow, [renderItem](option.html#series-custom.renderItem) is called respectively for each `dataItem` in [series.data](option.html#series-custom.data). `renderItem` is responsible for build a group of definitions of graphic elements, including graphic type, size, location, style, etc. echarts will then build graphic elements according to those definitions. For example:
 
-```js
+```ts
 var option = {
     ...,
     series: [{
@@ -122,7 +122,7 @@ Having `renderItem` provided, 90% of the work of creating custom series has been
 
 There is axes in some coordinate systems, such as [cartesian2d (grid)](option.html#grid)and [polar](option.html#polar). The extent of an axis should fit the data automatically, otherwise the graphic elements would be overflow the bounding box of the coordinate system. So, for example, in [cartesian2d (grid)](option.html#grid), developers should specify that which dimensions correspond to `x` axis and which to `y` axis use the property [encode](option.html#series-custom.encode):
 
-```js
+```ts
 option = {
     series: [{
         type: 'custom',
@@ -152,7 +152,7 @@ option = {
 
 Of course [tooltip.formatter](option.html#tooltip.formatter) can be used to define the content in tooltip. But it is easier to do that by setting [encode](option.html#series-custom.encode) and [dimensions](option.html#series-custom.dimensions):
 
-```js
+```ts
 option = {
     series: [{
         type: 'custom',
@@ -193,7 +193,7 @@ Several other issues about `custom series` are introduced below.
 When use `custom series` with [dataZoom](option.html#dataZoom), [dataZoom.filterMode](option.html#dataZoom.filterMode) usually be set as `'weakFilter'`, which prevent `dataItem` from being filtered when only part of its dimensions are out of the current data window. For example:
 
 
-```js
+```ts
 option = {
     dataZoom: {
         xAxisIndex: 0,
@@ -239,7 +239,7 @@ Developers had better notice that in [renderItem.arguments.params](option.html#s
 ## (VI) Event listener
 
 
-```js
+```ts
 chart.setOption({
     // ...
     series: {

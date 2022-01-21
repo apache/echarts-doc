@@ -11,7 +11,7 @@ ${name} symbol size. It can be set to single numbers like `10`, or use an array 
 
 If size of symbols needs to be different, you can set with callback function in the following format:
 
-```js
+```ts
 (value: Array|number, params: Object) => number|Array
 ```
 The first parameter `value` is the value in [data](~series-${seriesType}.data), and the second parameter `params` is the rest parameters of data item.

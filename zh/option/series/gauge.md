@@ -29,7 +29,9 @@ const option = {
 
 {{ use: partial-series-name() }}
 
-{{ use: partial-colorby(defaultColorBy="'data'") }}
+{{ use: partial-colorby(
+    defaultColorBy = "'data'"
+) }}
 
 {{ use: component-circular-layout() }}
 
@@ -133,7 +135,7 @@ const option = {
 仪表盘的轴线可以被分成不同颜色的多段。每段的结束位置和颜色可以通过一个数组来表示。
 
 默认取值：
-```js
+```ts
 [[1, '#E6EBF8']]
 ```
 
@@ -294,7 +296,7 @@ color: [
 
 刻度标签的内容格式器，支持字符串模板和回调函数两种形式。
 示例:
-```js
+```ts
 // 使用字符串模板，模板变量为刻度默认标签 {value}
 formatter: '{value} kg'
 
@@ -457,6 +459,10 @@ formatter: function (value) {
 
 高亮的仪表盘指针样式
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 ### itemStyle(*)
 
 {{ use: partial-item-style(
@@ -593,7 +599,7 @@ formatter: function (value) {
 
 格式化函数或者字符串
 
-```js
+```ts
 formatter: function (value) {
     return value.toFixed(0);
 }

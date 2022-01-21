@@ -137,6 +137,10 @@
 
 该数据所在区域的多边形高亮状态
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: map-region-state(
     state = 'emphasis'
 ) }}
@@ -144,6 +148,10 @@
 ### select(Object)
 
 该数据所在区域的多边形选中状态
+
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
 
 {{ use: map-region-state(
     state = 'select'

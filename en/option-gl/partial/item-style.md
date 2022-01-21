@@ -5,7 +5,7 @@
 The color of the graphic. {{ if: ${useColorPalatte} }} Color is taken from [option.color Palette](~color) by default. {{/if}}
 
 
-```js
+```ts
 // pure white
 [1, 1, 1, 1]
 ```

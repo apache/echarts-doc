@@ -19,7 +19,7 @@
 过渡动画的延迟，支持回调函数，可以通过每个数据返回不同的 delay 时间实现更戏剧的更新动画效果。
 
 如下示例：
-```js
+```ts
 animationDelayUpdate: function (idx) {
     // 越往后的数据,动画的延迟越大
     return idx * 100;

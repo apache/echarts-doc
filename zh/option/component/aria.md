@@ -17,7 +17,7 @@ W3C 制定了无障碍富互联网应用规范集（[WAI-ARIA](https://www.w3.or
 
 **例子：**
 
-```js
+```ts
 option = {
     aria: {
         // 下面几行可以不写，因为 label.enabled 默认 true

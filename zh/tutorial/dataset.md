@@ -7,7 +7,7 @@ Apache ECharts<sup>TM</sup> 4 开始支持了 `dataset` 组件用于单独的数
 
 ECharts 4 以前，数据只能声明在各个“系列（series）”中，例如：
 
-```js
+```ts
 option = {
     xAxis: {
         type: 'category',
@@ -48,7 +48,7 @@ option = {
 
 下面是一个最简单的 `dataset` 的例子：
 
-```js
+```ts
 option = {
     legend: {},
     tooltip: {},
@@ -80,7 +80,7 @@ option = {
 ~[500x300](${galleryViewPath}dataset-simple0&edit=1&reset=1)
 
 或者也可以使用常见的对象数组的格式：
-```js
+```ts
 option = {
     legend: {},
     tooltip: {},
@@ -133,7 +133,7 @@ option = {
 
 看这个例子：
 
-```js
+```ts
 option = {
     legend: {},
     tooltip: {},
@@ -186,7 +186,7 @@ option = {
 
 维度的定义，也可以使用单独的 `dataset.dimensions` 或者 `series.dimensions` 来定义，这样可以同时指定维度名，和维度的类型（dimension type）：
 
-```js
+```ts
 var option1 = {
     dataset: {
         dimensions: [
@@ -232,7 +232,7 @@ var option2 = {
 
 了解了维度的概念后，我们就可以使用 [encode](option.html#series.encode) 来做映射。总体是这样的感觉：
 
-```js
+```ts
 var option = {
     dataset: {
         source: [
@@ -273,7 +273,7 @@ var option = {
 
 下面是 `series.encode` 支持的属性：
 
-```js
+```ts
 // 在任何坐标系和系列中，都支持：
 encode: {
     // 使用 “名为 product 的维度” 和 “名为 score 的维度” 的值在 tooltip 中显示
@@ -348,7 +348,7 @@ encode: {
 问：如何把第三列设置为 X 轴，第五列设置为 Y 轴？
 
 答：
-```js
+```ts
 series: {
     // 注意维度序号（dimensionIndex）从 0 开始计数，第三列是 dimensions[2]。
     encode: {x: 2, y: 4},
@@ -359,7 +359,7 @@ series: {
 问：如何把第三行设置为 X 轴，第五行设置为 Y 轴？
 
 答：
-```js
+```ts
 series: {
     encode: {x: 2, y: 4},
     seriesLayoutBy: 'row',
@@ -372,7 +372,7 @@ series: {
 答：
 关于标签的显示 [label.formatter](option.html#series.label.formatter)，现在支持引用特定维度的值，例如：
 
-```js
+```ts
 series: {
     label: {
         // `'{@score}'` 表示 “名为 score” 的维度里的值。
@@ -385,7 +385,7 @@ series: {
 问：如何让第 2 列和第 3 列显示在提示框（tooltip）中？
 
 答：
-```js
+```ts
 series: {
     encode: {
         tooltip: [1, 2]
@@ -398,7 +398,7 @@ series: {
 问：数据里没有维度名，那么怎么给出维度名？
 
 答：
-```js
+```ts
 dataset: {
     dimensions: ['score', 'amount'],
     source: [
@@ -413,7 +413,7 @@ dataset: {
 问：如何把第三列映射为气泡图的点的大小？
 
 答：
-```js
+```ts
 var option = {
     dataset: {
         source: [
@@ -457,7 +457,7 @@ var option = {
 
 除了二维数组以外，dataset 也支持例如下面 key-value 方式的数据格式，这类格式也非常常见。但是这类格式中，目前并不支持 [seriesLayoutBy](option.html#series.seriesLayoutBy) 参数。
 
-```js
+```ts
 dataset: [{
     // 按行的 key-value 形式（对象数组），这是个比较常见的格式。
     source: [
@@ -481,7 +481,7 @@ dataset: [{
 
 可以同时定义多个 dataset。系列可以通过 [series.datasetIndex](option.html#series.datasetIndex) 来指定引用哪个 dataset。例如：
 
-```js
+```ts
 var option = {
     dataset: [{
         // 序号为 0 的 dataset。
@@ -508,7 +508,7 @@ var option = {
 
 ECharts 4 之前一直以来的数据声明方式仍然被正常支持，如果系列已经声明了 [series.data](option.html#series.data)， 那么就会使用 [series.data](option.html#series.data) 而非 `dataset`。
 
-```js
+```ts
 {
     xAxis: {
         type: 'category'

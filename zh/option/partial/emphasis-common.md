@@ -1,4 +1,16 @@
 
+{{ target: partial-emphasis-disabled }}
+
+#${prefix} disabled(boolean)
+
+<ExampleUIControlBoolean default="false" />
+
+是否关闭高亮状态。
+
+关闭高亮状态可以在鼠标移到图形上，tooltip 触发，或者图例联动的时候不再触发高亮效果。在图形非常多的时候可以关闭以提升交互流畅性。
+
+
+
 {{ target: partial-focus-blur-scope }}
 
 ### focus(string) = 'none'
@@ -35,7 +47,7 @@
 {{ if: !${isGeoCoordSys} }}
 下面代码配置了柱状图在高亮一个图形的时候，淡出当前直角坐标系所有其它的系列。
 
-```js
+```ts
 emphasis: {
     focus: 'series',
     blurScope: 'coordinateSystem'
@@ -46,7 +58,7 @@ emphasis: {
 {{ else }}
 下面代码配置了 geo 在高亮一个图形的时候，淡出所有其它的图形。
 
-```js
+```ts
 emphasis: {
     focus: 'self'
 }

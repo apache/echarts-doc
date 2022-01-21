@@ -15,7 +15,7 @@
 
 **[MUST]** `case` and `default` in `switch` must be indented.
 
-```js
+```ts
 // good
 switch (variable) {
     case '1':
@@ -48,7 +48,7 @@ default:
 
 **[MUST]** Set off binary operator with spaces. But place no space between unary operator and its operand.
 
-```js
+```ts
 let a = !arr.length;
 a++;
 a = b + c;
@@ -57,7 +57,7 @@ a = b + c;
 
 **[MUST]** Place 1 space before the leading brace.
 
-```js
+```ts
 // good
 
 if (condition) {
@@ -89,7 +89,7 @@ function funcName(){
 
 **[MUST]** Place 1 space after `if` / `else` / `for` / `while` / `function` / `switch` / `do` / `try` / `catch` / `finally`.
 
-```js
+```ts
 // good
 
 if (condition) {
@@ -117,7 +117,7 @@ while(condition) {
 
 **[MUST]** In the object creating statement, place 1 space after `:`, but no space before it.
 
-```js
+```ts
 // good
 const obj = {
     a: 1,
@@ -136,7 +136,7 @@ const obj = {
 
 **[MUST]** Place no space between the function name and `(` in function declaration, expression of named function and function call.
 
-```js
+```ts
 // good
 
 function funcName() {
@@ -162,7 +162,7 @@ funcName ();
 
 **[MUST]** Place no space between `,` and `;`.
 
-```js
+```ts
 // good
 callFunc(a, b);
 
@@ -173,7 +173,7 @@ callFunc(a , b) ;
 
 **[MUST]** Place no space after `(` and `[` and before `)` and `]`.
 
-```js
+```ts
 // good
 
 callFunc(param1, param2, param3);
@@ -240,7 +240,7 @@ const obj3 = {name: 'obj', age: 20, sex: 1};
 
 **[MUST]** Place operator at the beginning of a line if it break lines.
 
-```js
+```ts
 // good
 if (user.isAuthenticated()
     && user.isInRole('admin')
@@ -270,7 +270,7 @@ const result = number1 + number2 + number3 +
 **[MUST]** Start a new line for `)`, `]`, `}` if the content inside the brackets occupies multiple lines.
 Make the same indent as the line where the corresponding `(`, `[`, `{` placed.
 
-```js
+```ts
 // good
 if (product) {
     product.load();
@@ -302,7 +302,7 @@ const arr = [
 
 **[MUST]** Must not break lines before `,` or `;`.
 
-```js
+```ts
 // good
 const obj = {
     a: 1,
@@ -334,7 +334,7 @@ foo(
 
 **[SUGGEST]** Suggestion about line break and indent:
 
-```js
+```ts
 if (user.isAuthenticated()
     && user.isInRole('admin')
     && user.hasAuthority('add-admin')
@@ -369,7 +369,7 @@ const res = condition
 
 **[MUST]** Start a new line for `else` and `catch` if using multi-line blocks.
 
-```js
+```ts
 // good
 
 if (condition) {
@@ -411,7 +411,7 @@ try {
 
 **[MUST]** The `{}` must not be ignored even if there is only one line.
 
-```js
+```ts
 // good
 if (condition) {
     callFunc();
@@ -426,7 +426,7 @@ if (condition)
 
 **[MUST]** Place no semicolon at the end of a function definition.
 
-```js
+```ts
 // good
 function funcName() {
 }
@@ -444,7 +444,7 @@ const funcName = function () {
 **[MUST]** No trailing comma in object and array declarations.
 
 
-```js
+```ts
 // good
 
 const obj = {
@@ -477,7 +477,7 @@ const arr = [
 
 **[MUST]** Use lowerCamelCase for variables, properties and function names.
 
-```js
+```ts
 const loadingModules = {};
 function loadProduct() {
 }
@@ -486,7 +486,7 @@ function loadProduct() {
 
 **[MUST]** Use UpperCamelCase (Pascal) for class names.
 
-```js
+```ts
 function Element(options) {
 }
 ```
@@ -494,7 +494,7 @@ function Element(options) {
 
 **[SUGGEST]** All of the letters of a abbreviation should be both upper cases or both lower cases.
 
-```js
+```ts
 function parseSVG() {
 }
 const svgParser;
@@ -513,7 +513,7 @@ const svgParser;
 Language features can be polyfilled by some utilities, but must not by modifying the prototype of the built-in JS objects.
 
 
-```js
+```ts
 // good
 
 import * as zrUtil from 'zrender/src/core/util';
@@ -562,7 +562,7 @@ String.prototype.trim = function () {
 
 **[MUST]** Prefer using `const` to declare variable. And one line can not declares more than one variable.
 
-```js
+```ts
 // good
 const name = 'MyName';
 const hangModules = [];
@@ -581,7 +581,7 @@ const hangModules = [],
 
 **[MUST]** In equality expression, `==` can only be used on `null` or `undefined` detection. `===` should be used in the rest of cases .
 
-```js
+```ts
 // good
 if (age === 30) {
     // ...
@@ -605,7 +605,7 @@ if (age == 30) {
 
 **[SUGGEST]** The function expression or function declaration should not be placed inside a loop body.
 
-```js
+```ts
 // good
 function clicker() {
     // ......
@@ -631,7 +631,7 @@ for (let i = 0, len = elements.length; i < len; i++) {
 
 **[SUGGEST]** Use `+ ''` to convert a value to string.
 
-```js
+```ts
 // good
 num + '';
 
@@ -644,7 +644,7 @@ String(num);
 
 **[SUGGEST]** Use `+` to convert a value to number.
 
-```js
+```ts
 // good
 +str;
 
@@ -655,7 +655,7 @@ Number(str);
 
 **[MUST]** The second parameter must not be ignored when using `parseInt`.
 
-```js
+```ts
 // good
 parseInt(str, 10);
 
@@ -671,7 +671,7 @@ parseInt(str);
 
 **[MUST]** Use object literal `{}` to create a plain object.
 
-```js
+```ts
 // good
 const obj = {};
 
@@ -682,7 +682,7 @@ const obj = new Object();
 
 **[MUST]** If all of the properties of an object literal do not need quotation marks, they should ignore them. If quotation marks is necessary, use `'` but not `"`.
 
-```js
+```ts
 // good
 const info = {
     name: 'someone',
@@ -702,7 +702,7 @@ const info2 = {
 
 **[MUST]** The prototype of built-in objects must not be modified.
 
-```js
+```ts
 // Forbidden
 String.prototype.trim = function () {
 };
@@ -714,7 +714,7 @@ String.prototype.trim = function () {
 
 **[SUGGEST]** `hasOwnProperty` should be used to when using `for ... in ...`, in case that some extra properties is added on the prototype of `Object` in some runtime environment.
 
-```js
+```ts
 const newInfo = {};
 for (const key in info) {
     if (info.hasOwnProperty(key)) {
@@ -726,7 +726,7 @@ for (const key in info) {
 
 **[MUST]** Use array literal `[]` to create an array, except intending to create an array with a given length.
 
-```js
+```ts
 // good
 const arr = [];
 const arr2 = new Array(1e4);

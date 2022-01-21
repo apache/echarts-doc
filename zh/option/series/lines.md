@@ -136,6 +136,10 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 
 高亮的线条和标签样式。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: lines-state(
@@ -164,6 +168,10 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 
 选中的线条和标签样式。开启 [selectedMode](~series-lines.selectedMode) 后有效。
 
+{{ use: partial-select-disabled(
+    prefix = "##"
+) }}
+
 {{ use: lines-state(
     prefix = "##",
     state = 'select'
@@ -184,7 +192,7 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 线数据集。
 
 **注：** 为了更好点支持多段线的配置，线数据的格式在 3.2.0 做了一定调整，如下：
-```js
+```ts
 // 3.2.0 之前
 // [{
 //    // 起点坐标
@@ -239,6 +247,10 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 
 ### emphasis(Object)
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: lines-state(
     prefix = "###",
     state = 'emphasis'
@@ -259,6 +271,10 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 
 {{ use: partial-version(
     version = "5.0.0"
+) }}
+
+{{ use: partial-select-disabled(
+    prefix = "###"
 ) }}
 
 {{ use: lines-state(

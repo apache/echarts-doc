@@ -20,7 +20,7 @@ ECharts 内置支持的图表类型是最常见的图表类型，但是图表类
 
 开发者自定义的图形元素渲染逻辑，是通过书写 `renderItem` 函数实现的，例如：
 
-```js
+```ts
 var option = {
     ...,
     series: [{
@@ -36,7 +36,7 @@ var option = {
 在渲染阶段，对于 [series.data](option.html#series-custom.data) 中的每个数据项（为方便描述，这里称为 `dataItem`)，会调用此 [renderItem](option.html#series-custom.renderItem) 函数。这个 `renderItem` 函数的职责，就是返回一个（或者一组）`图形元素定义`，`图形元素定义` 中包括图形元素的类型、位置、尺寸、样式等。echarts 会根据这些 `图形元素定义` 来渲染出图形元素。如下的示意：
 
 
-```js
+```ts
 var option = {
     ...,
     series: [{
@@ -116,7 +116,7 @@ var option = {
 
 在 [直角坐标系（grid）](option.html#grid)、[极坐标系（polar）](option.html#polar) 中都有坐标轴。坐标轴的刻度范围需要自适应当前显示出的数据的范围，否则绘制出的图形会超出去。所以，例如，在 [直角坐标系（grid）](option.html#grid) 中，使用自定义系列的开发者，需要设定，`data` 中的哪些维度会对应到 `x` 轴上，哪些维度会对应到 `y` 轴上。这件事通过 [encode](option.html#series-custom.encode) 来设定。例如：
 
-```js
+```ts
 option = {
     series: [{
         type: 'custom',
@@ -146,7 +146,7 @@ option = {
 
 当然，使用 [tooltip.formatter](option.html#tooltip.formatter) 可以任意定制 tooltip 中的内容。但是还有更简单的方法，通过[encode](option.html#series-custom.encode) 和 [dimensions](option.html#series-custom.dimensions) 来设定：
 
-```js
+```ts
 option = {
     series: [{
         type: 'custom',
@@ -188,7 +188,7 @@ option = {
 
 与 [dataZoom](option.html#dataZoom) 结合使用的时候，常常使用会设置 [dataZoom.filterMode](option.html#dataZoom.filterMode) 为 'weakFilter'。这个设置的意思是：当 `dataItem` 部分超出坐标系边界的时候，`dataItem` 不会整体被过滤掉。例如：
 
-```js
+```ts
 option = {
     dataZoom: {
         xAxisIndex: 0,
@@ -233,7 +233,7 @@ option = {
 ## （六）事件监听
 
 
-```js
+```ts
 chart.setOption({
     // ...
     series: {

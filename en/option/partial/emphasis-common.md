@@ -1,4 +1,16 @@
 
+{{ target: partial-emphasis-disabled }}
+
+#${prefix} disabled(boolean)
+
+<ExampleUIControlBoolean default="false" />
+
+Whether to disable the emphasis state.
+
+When emphasis state is disabled. There will be no highlight effect when the mouse hovered the element, tooltip is triggered, or the legend is hovered. It can be used to improve interaction fluency when there are massive graphic elements.
+
+
+
 {{ target: partial-focus-blur-scope }}
 
 ### focus(string) = 'none'
@@ -33,7 +45,7 @@ When the data is highlighted, whether to fade out of other data to focus the hig
 **Example: **
 
 {{ if: !${isGeoCoordSys} }}
-```js
+```ts
 emphasis: {
     focus: 'series',
     blurScope: 'coordinateSystem'
@@ -42,7 +54,7 @@ emphasis: {
 
 ~[600x400](${galleryViewPath}bar-y-category-stack&reset=1&edit=1)
 {{ else }}
-```js
+```ts
 emphasis: {
     focus: 'self'
 }

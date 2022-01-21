@@ -122,7 +122,7 @@ The style of the axis line of gauge chart.
 The axis line of gauge chart can be divided to several segments in different colors. The end position and color of each segment can be expressed by an array.
 
 Default value:
-```js
+```ts
 [[1, '#E6EBF8']]
 ```
 
@@ -283,7 +283,7 @@ The distance between the label and tick line.
 
 The content formatter of scale label, which supports both string template and callback function.
 Example:
-```js
+```ts
 // use string template. the template variable {value} represent the default label text
 formatter: '{value} kg'
 
@@ -446,6 +446,10 @@ The color of pointer. Defaults to use [the color of section](~series-gauge.axisL
 
 Configurations of emphasis state.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 ### itemStyle(*)
 
 {{ use: partial-item-style(
@@ -582,7 +586,7 @@ The offset position relative to the center of gauge chart. The first item of arr
 
 Formatter is used to format detail, which supports string template and callback function.
 
-```js
+```ts
 formatter: function (value) {
     return value.toFixed(0);
 }

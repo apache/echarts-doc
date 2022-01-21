@@ -142,6 +142,10 @@ Defines the style of the tree edge.
 
 Configurations of emphasis state.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 {{ use: partial-focus-blur-scope(
     isTree = true
 ) }}
@@ -171,6 +175,10 @@ Configurations of blur state. Available when [emphasis.focus](~series-tree.empha
 ) }}
 
 Configurations of select state. Available when [selectedMode](~series-tree.selectedMode) is set.
+
+{{ use: partial-select-disabled(
+    prefix = "##"
+) }}
 
 {{ use: tree-state(
     prefix = "##",
@@ -208,6 +216,10 @@ The style of the leaf node in the tree.
 
 Emphasis state of leaves nodes.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: tree-node-state(
     prefix = "###",
     state = 'emphasis'
@@ -233,6 +245,10 @@ Blur state of leaves nodes.
 ) }}
 
 Select state of leaves nodes.
+
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
 
 {{ use: tree-node-state(
     prefix = "###",
@@ -307,6 +323,10 @@ The label of the node.
 
 Emphasis state of a single node.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: tree-node-state(
     prefix = "###",
     state = 'emphasis'
@@ -332,6 +352,10 @@ Blur state of a single node.
 ) }}
 
 Select state of a single node.
+
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
 
 {{ use: tree-node-state(
     prefix = "###",

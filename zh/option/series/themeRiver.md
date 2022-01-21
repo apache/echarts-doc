@@ -100,7 +100,9 @@ const option = {
 
 {{ use: partial-series-name() }}
 
-{{ use: partial-colorby(defaultColorBy="'data'") }}
+{{ use: partial-colorby(
+    defaultColorBy = "'data'"
+) }}
 
 {{ use: partial-rect-layout-width-height(
     componentName = 'thmemRiver',
@@ -173,6 +175,10 @@ const option = {
 
 高亮状态的配置。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: themeRiver-state(
@@ -201,6 +207,10 @@ const option = {
 
 选中状态的配置。
 
+{{ use: partial-select-disabled(
+    prefix = "##"
+) }}
+
 {{ use: themeRiver-state(
     prefix = "##",
     state = 'select'
@@ -212,7 +222,7 @@ const option = {
 
 ## data(Array)
 
-```js
+```ts
 data: [
     ["2015/11/09",10,"DQ"],
     ["2015/11/10",10,"DQ"],

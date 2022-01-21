@@ -39,7 +39,7 @@ ECharts 中支持的图表行为，通过 [dispatchAction](~echartsInstance.disp
 
 高亮指定的数据图形。
 
-```js
+```ts
 // 如果要高亮系列：
 dispatchAction({
     type: 'highlight',
@@ -63,7 +63,7 @@ dispatchAction({
 
 取消高亮指定的数据图形。
 
-```js
+```ts
 // 如果要取消高亮系列：
 dispatchAction({
     type: 'downplay',
@@ -87,7 +87,7 @@ dispatchAction({
 
 选中指定的数据。选中数据会使用 [select](option.html#series-bar.select) 配置的样式。
 
-```js
+```ts
 dispatchAction({
     type: 'select',
 
@@ -101,7 +101,7 @@ dispatchAction({
 
 取消选中指定的数据。
 
-```js
+```ts
 dispatchAction({
     type: 'unselect',
 
@@ -115,7 +115,7 @@ dispatchAction({
 
 切换选中状态
 
-```js
+```ts
 dispatchAction({
     type: 'toggleSelected',
 
@@ -133,7 +133,7 @@ dispatchAction({
 ### legendSelect(Action)
 选中图例。
 
-```js
+```ts
 dispatchAction({
     type: 'legendSelect',
     // 图例名称
@@ -146,7 +146,7 @@ dispatchAction({
 ### legendUnSelect(Action)
 取消选中图例。
 
-```js
+```ts
 dispatchAction({
     type: 'legendUnSelect',
     // 图例名称
@@ -158,7 +158,7 @@ dispatchAction({
 
 ### legendToggleSelect(Action)
 切换图例的选中状态。
-```js
+```ts
 dispatchAction({
     type: 'legendToggleSelect',
     // 图例名称
@@ -170,7 +170,7 @@ dispatchAction({
 
 ### legendAllSelect(Action)
 将图例全选。
-```js
+```ts
 dispatchAction({
     type: 'legendAllSelect'
 })
@@ -180,7 +180,7 @@ dispatchAction({
 
 ### legendInverseSelect(Action)
 将图例反选。
-```js
+```ts
 dispatchAction({
     type: 'legendInverseSelect'
 })
@@ -190,7 +190,7 @@ dispatchAction({
 
 ### legendScroll(Action)
 控制图例的滚动。当 [legend.type](option.html#legend.type) 为 `'scroll'` 时有效。
-```js
+```ts
 dispatchAction({
     type: 'legendScroll',
     scrollDataIndex: number,
@@ -211,7 +211,7 @@ dispatchAction({
 有下面几种使用方式。
 
 1 指定在相对容器的位置处显示提示框，如果指定的位置无法显示则无效。
-```js
+```ts
 dispatchAction({
     type: 'showTip',
     // 屏幕上的 x 坐标
@@ -225,7 +225,7 @@ dispatchAction({
 ```
 
 2 指定系列中的数据图形，根据 tooltip 的配置项显示提示框。
-```js
+```ts
 dispatchAction({
     type: 'showTip',
     // 系列的 index，在 tooltip 的 trigger 为 axis 的时候可选。
@@ -241,7 +241,7 @@ dispatchAction({
 
 {{ use: partial-version(version = '5.1.0') }}
 
-```js
+```ts
 dispatchAction({
     type: 'showTip',
     {{ use: action-component-query(componentType = 'geo') }}
@@ -260,7 +260,7 @@ dispatchAction({
 
 隐藏提示框。
 
-```js
+```ts
 dispatchAction({
     type: 'hideTip'
 })
@@ -274,7 +274,7 @@ dispatchAction({
 
 数据区域缩放。
 
-```js
+```ts
 dispatchAction({
     type: 'dataZoom',
     // 可选，dataZoom 组件的 index，多个 dataZoom 组件时有用，默认为 0
@@ -296,7 +296,7 @@ dispatchAction({
 
 启动或关闭 `toolbox` 中 `dataZoom` 的刷选状态。
 
-```js
+```ts
 myChart.dispatchAction({
     type: 'takeGlobalCursor',
     key: 'dataZoomSelect',
@@ -314,7 +314,7 @@ myChart.dispatchAction({
 
 选取映射的数值范围。
 
-```js
+```ts
 dispatchAction({
     type: 'selectDataRange',
     // 可选，visualMap 组件的 index，多个 visualMap 组件时有用，默认为 0
@@ -327,7 +327,7 @@ dispatchAction({
 ```
 å
 **示例：**
-```js
+```ts
 myChart.dispatchAction({
     type: 'selectDataRange',
     // 选取 20 到 40 的值范围
@@ -350,7 +350,7 @@ myChart.dispatchAction({
 
 设置当前的时间点。
 
-```js
+```ts
 dispatchAction({
     type: 'timelineChange',
     // 时间点的 index
@@ -364,7 +364,7 @@ dispatchAction({
 
 切换时间轴的播放状态。
 
-```js
+```ts
 dispatchAction({
     type: 'timelinePlayChange',
     // 播放状态，true 为自动播放
@@ -381,7 +381,7 @@ dispatchAction({
 ### restore(Action)
 重置 option。
 
-```js
+```ts
 dispatchAction({
     type: 'restore'
 })
@@ -465,7 +465,7 @@ myChart.dispatchAction({
 
 此 action 对应的事件为 [globalCursorTaken](~events.globalCursorTaken)。
 
-```js
+```ts
 api.dispatchAction({
     type: 'takeGlobalCursor',
     // 如果想变为“可刷选状态”，必须设置。不设置则会关闭“可刷选状态”。
@@ -484,7 +484,7 @@ api.dispatchAction({
 ### ${componentType}Select(Action)
 选中指定的${name}。
 
-```js
+```ts
 dispatchAction({
     type: '${componentType}Select',
 
@@ -499,7 +499,7 @@ dispatchAction({
 ### ${componentType}UnSelect(Action)
 取消选中指定的${name}。
 
-```js
+```ts
 dispatchAction({
     type: '${componentType}UnSelect',
 
@@ -513,7 +513,7 @@ dispatchAction({
 ### ${componentType}ToggleSelect(Action)
 切换指定的${name}选中状态。
 
-```js
+```ts
 dispatchAction({
     type: '${componentType}ToggleSelect',
 

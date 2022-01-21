@@ -14,7 +14,7 @@ This example mainly implements that dragging points of a curve and by which the 
 
 First of all, we create a basic [line chart (line series)](option.html#series-line):
 
-```js
+```ts
 var symbolSize = 20;
 var data = [[15, 0], [-50, 10], [-56.5, 20], [-46.5, 30], [-22.1, 40]];
 
@@ -46,7 +46,7 @@ myChart.setOption({
 
 Since the symbols in line is not draggable, we make them draggable by using [graphic component](option.html#graphic) to add draggable circular elements to symbols respectively.
 
-```js
+```ts
 myChart.setOption({
     // Declare a graphic component, which contains some graphic elements
     // with the type of 'circle'.
@@ -91,7 +91,7 @@ In the code above, API [convertToPixel](api.html#echartsInstance.convertToPixel)
 
 Now points have been made draggable. Then we will bind event listeners on dragging to those points.
 
-```js
+```ts
 // This function will be called repeatly while dragging.
 // The mission of this function is to update `series.data` based on
 // the new points updated by dragging, and to re-render the line
@@ -116,7 +116,7 @@ In the code above, API [convertFromPixel](api.html#echartsInstance.convertFromPi
 
 Finally, add those code to make graphic elements responsive to change of canvas size.
 
-```js
+```ts
 window.addEventListener('resize', function () {
     // Re-calculate the position of each circle and update chart using `setOption`.
     myChart.setOption({
@@ -139,7 +139,7 @@ Now basic functionality have been implemented by parte 1. If we need the data ca
 
 Add these snippets to the code block above:
 
-```js
+```ts
 myChart.setOption({
     ...,
     tooltip: {
@@ -152,7 +152,7 @@ myChart.setOption({
 });
 ```
 
-```js
+```ts
 myChart.setOption({
     graphic: echarts.util.map(data, function (item, dataIndex) {
         return {

@@ -86,7 +86,7 @@ The drag-and-drop interaction of the node, which is enabled by default. After op
 
 The setting of each layer of Sankey diagram. Can be set layer by layer, as follows:
 
-```js
+```ts
 levels: [{
     depth: 0,
     itemStyle: {
@@ -110,7 +110,7 @@ levels: [{
 
 You can also only set a certain layer:
 
-```js
+```ts
 levels: [{
     depth: 3,
     itemStyle: {
@@ -135,6 +135,10 @@ Specify which layer is set, value starts from 0.
 
 ### emphasis(Object)
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: sankey-state(
     prefix = "###",
     state = 'emphasis'
@@ -155,6 +159,10 @@ Specify which layer is set, value starts from 0.
 
 {{ use: partial-version(
     version = "5.0.0"
+) }}
+
+{{ use: partial-select-disabled(
+    prefix = "###"
 ) }}
 
 {{ use: sankey-state(
@@ -203,6 +211,10 @@ The edge style of Sankey diagram
 
 Configurations of emphasis state.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 {{ use: partial-focus-blur-scope(
     isGraph = true
 ) }}
@@ -233,6 +245,10 @@ Configurations of blur state. Available when [emphasis.focus](~series-sankey.emp
 
 Configurations of selected state. Available when [selectedMode](~series-sankey.selectedMode) is set.
 
+{{ use: partial-select-disabled(
+    prefix = "##"
+) }}
+
 {{ use: sankey-state(
     prefix = "##",
     state = 'select'
@@ -246,7 +262,7 @@ Configurations of selected state. Available when [selectedMode](~series-sankey.s
 
 The nodes list of the sankey diagram.
 
-```js
+```ts
 data: [{
     name: 'node1',
     // This attribute decides the layer of the current node.
@@ -291,6 +307,10 @@ The lable style of this node.
 
 ### emphasis(Object)
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: sankey-node-state(
     prefix = "###",
     state = 'emphasis'
@@ -313,6 +333,10 @@ The lable style of this node.
     version = "5.0.0"
 ) }}
 
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
+
 {{ use: sankey-node-state(
     prefix = "###",
     state = 'select'
@@ -328,7 +352,7 @@ Equals to [data](~series-sankey.data)
 
 The links between nodes. **Notes: The Sankey diagram theoretically only supports Directed Acyclic Graph(DAG), so please make sure that there is no cycle in the links.** For instance:
 
-```js
+```ts
 links: [{
     source: 'n1',
     target: 'n2'
@@ -360,6 +384,10 @@ The line stlye of edge.
 
 ### emphasis(Object)
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 #### lineStyle(Object)
 
 {{ use: partial-sankey-line-style(
@@ -383,6 +411,10 @@ The line stlye of edge.
 
 {{ use: partial-version(
     version = "5.0.0"
+) }}
+
+{{ use: partial-select-disabled(
+    prefix = "###"
 ) }}
 
 #### lineStyle(Object)

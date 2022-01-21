@@ -19,6 +19,10 @@ Set this to `false` to prevent the axis from showing.
 
 The index of grid which the y axis belongs to. Defaults to be in the first grid.
 
+## alignTicks(boolean) = false
+
+`alignTicks` turned on to automatically align ticks when multiple numeric y axes. Only available for axes of type `'value'` and `'log'`.
+
 ## position(string)
 
 <ExampleUIControlEnum options="left,right" default="left" />

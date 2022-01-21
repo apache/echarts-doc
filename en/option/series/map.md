@@ -140,6 +140,10 @@ Color of the area.
 
 Emphasis state of specified region.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: map-region-state(
     state = 'emphasis'
 ) }}
@@ -147,6 +151,10 @@ Emphasis state of specified region.
 ### select(Object)
 
 Select state of polygon.
+
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
 
 {{ use: map-region-state(
     state = 'select'

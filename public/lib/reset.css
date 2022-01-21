@@ -4,9 +4,11 @@ body {
 }
 
 #header {
-    background: #162436;
-    color: #fff;
-    height: 40px;
+    background-color: #fff;
+    box-shadow: 0 0  20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 20;
+    height: 50px;
     padding-left: 20px;
 
     box-sizing: border-box;
@@ -15,12 +17,11 @@ body {
 }
 
 #header h1 {
-    font-weight: 200;
-    font-size: 20px;
-    line-height: 40px;
+    color: #222;
+    line-height: 50px;
     margin: 0;
+    font-size: 20px;
     display: inline-block;
-    vertical-align: middle;
 }
 
 #header .lang {
@@ -28,7 +29,7 @@ body {
     position: absolute;
     display: inline-block;
     vertical-align: middle;
-    line-height: 40px;
+    line-height: 50px;
     margin-left: 50px;
 }
 
@@ -36,7 +37,7 @@ body {
     position: absolute;
     left: 0;
     right: 0;
-    top: 40px;
+    top: 50px;
     bottom: 0;
 
     /* width: 1600px;

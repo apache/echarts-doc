@@ -11,7 +11,7 @@
 
 该配置项也可以是一个有如下参数的回调函数
 
-```js
+```ts
 // 标签对应数据的 dataIndex
 dataIndex: number
 // 标签对应的数据类型，只在关系图中会有 node 和 edge 数据类型的区分
@@ -37,7 +37,7 @@ labelLinePoints?: number[][]
 
 将标签显示在图形右侧 10px 的位置，并且垂直居中：
 
-```js
+```ts
 labelLayout(params) {
     return {
         x: params.rect.x + 10,
@@ -50,7 +50,7 @@ labelLayout(params) {
 
 根据图形的包围盒尺寸决定文本尺寸
 
-```js
+```ts
 
 labelLayout(params) {
     return {
@@ -128,7 +128,7 @@ The text size of the label.
 
 标签引导线三个点的位置。格式为：
 
-```js
+```ts
 [[x, y], [x, y], [x, y]]
 ```
 

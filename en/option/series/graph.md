@@ -38,7 +38,7 @@ Graph is a diagram to represent [nodes](~series-graph.nodes) and the [links](~se
 Center of current view-port.
 
 Example:
-```js
+```ts
 center: [115.97, 29.71]
 ```
 
@@ -151,7 +151,7 @@ If node is draggable. Only available when using force-directed layout.
 Symbol of two ends of edge line.
 
 For example:
-```js
+```ts
 edgeSymbol: ['circle', 'arrow']
 ```
 
@@ -162,7 +162,7 @@ edgeSymbol: ['circle', 'arrow']
 Size of symbol of two ends of edge line. Can be an array or a single number.
 
 For example:
-```js
+```ts
 // Start symbol has size 5 and end symbol has size 10
 edgeSymbolSize: [5, 10],
 // All has size 10
@@ -219,6 +219,10 @@ The style of edge line. [lineStyle.color](~series-graph.lineStyle.color) can be 
 
 Configurations of emphasis state.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 ### scale(boolean) = true
 
 <ExampleUIControlBoolean default="true" />
@@ -252,6 +256,10 @@ Configurations of blur state. Available when [emphasis.focus](~series-graph.emph
 ) }}
 
 Configurations of select state. Available when [selectedMode](~series-graph.selectedMode) is set.
+
+{{ use: partial-select-disabled(
+    prefix = "##"
+) }}
 
 {{ use: graph-state(
     state = 'select'
@@ -298,6 +306,10 @@ The label style of node in this category.
 
 Emphasis state of nodes in this category.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: graph-node-state(
     state = 'emphasis'
 ) }}
@@ -322,6 +334,10 @@ Blur state of nodes in this category.
 
 Select state of nodes in this category.
 
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
+
 {{ use: graph-node-state(
     state = 'select'
 ) }}
@@ -342,7 +358,7 @@ When set to `Array`, it means that the curveness array is directly specified, an
 
 Nodes list of graph.
 
-```js
+```ts
 data: [{
     name: '1',
     x: 10,
@@ -410,6 +426,10 @@ The label style of this node.
 
 Emphasis state of specified node.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: graph-node-state(
     state = 'emphasis'
 ) }}
@@ -434,6 +454,10 @@ Blur state of specified node.
 
 Select state of specified node.
 
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
+
 {{ use: graph-node-state(
     state = 'select'
 ) }}
@@ -447,7 +471,7 @@ Alias of [data](~series-graph.data)
 ## links(Array)
 
 Relational data between nodes. Example:
-```js
+```ts
 links: [{
     source: 'n1',
     target: 'n2'
@@ -493,6 +517,10 @@ The curveness of edge, supporting values from 0 to 1. The curveness will be larg
 
 Emphasis state of specified edge.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: graph-edge-state(
     state = 'emphasis'
 ) }}
@@ -516,6 +544,10 @@ Blur state of specified edge.
 ) }}
 
 Select state of specified edge.
+
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
 
 {{ use: graph-edge-state(
     state = 'select'

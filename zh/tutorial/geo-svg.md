@@ -22,7 +22,7 @@
 SVG 底图的用法与 [GeoJSON](http://geojson.org/) 底图的用法相同。
 
 如果在 [地理坐标系（geo）](option.html#geo) 中使用：
-```js
+```ts
 $.get('map/organ.svg', function (svg) {
     // 首先向 echarts 注册 SVG 字符串或解析过的 SVG DOM
     echarts.registerMap('organ_diagram', {svg: svg});
@@ -39,7 +39,7 @@ $.get('map/organ.svg', function (svg) {
 ```
 
 如果在 [地图系列（map series）](option.html#series-map) 中使用：
-```js
+```ts
 $.get('map/beef_cuts.svg', function (svg) {
     // 首先向 echarts 注册 SVG 字符串或解析过的 SVG DOM
     echarts.registerMap('beef_cuts_diagram', {svg: svg})。
@@ -60,7 +60,7 @@ $.get('map/beef_cuts.svg', function (svg) {
 ## 缩放和平移
 
 [地理坐标系（geo）](option.html#geo)
-```js
+```ts
 option = {
     geo: {
         // 启用缩放和平移。
@@ -70,7 +70,7 @@ option = {
 };
 ```
 [地图系列（map series）](option.html#series-map)
-```js
+```ts
 option = {
     series: {
         type: 'map',
@@ -101,7 +101,7 @@ option = {
 ~[500x200](${galleryViewPath}doc-example/geo-svg-named-basic&edit=1&reset=1)
 
 我们还可以在 [geo.regions](option.html#geo.regions) 中为具名元素指定一些专属配置项：
-```js
+```ts
 option = {
     geo: {
         map: 'some_svg',
@@ -140,7 +140,7 @@ option = {
 如果想使具名元素能被“选中”，把 [geo.selectedMode](option.html#geo.selectedMode) 或 [series-map.selectedMode](option.html#series-map.selectedMode) 设置为 `'single'` 或者 `'multiple'` 即可。元素被选中时的样式可以在 [geo.select](option.html#geo.select) 或 [series-map.select](option.html#series-map.select) 中设定。
 
 可以通过 [geoselectchanged](api.html#event.geoselectchanged) 事件获得所有被选中者的名称，例如：
-```js
+```ts
 myChart.on('geoselectchanged', function (params) {
     var selectedNames = params.allSelected[0].name;
     console.log('selected', selectedNames);
@@ -162,7 +162,7 @@ myChart.on('geoselectchanged', function (params) {
 ## 提示框（tooltip）
 
 可以在具名元素上启用或禁用提示框（tooltip）功能。
-```js
+```ts
 option = {
     // 在 option 根部声明 tooltip 以整体开启 tooltip 功能。
     tooltip: {},
@@ -189,7 +189,7 @@ option = {
 ```
 
 如果想单独禁用 geo 上的 tooltip，只需：
-```js
+```ts
 option = {
     tooltip: {},
     geo: {
@@ -209,7 +209,7 @@ option = {
 虽然可以直接在 SVG 中定义 `<text>`/`<tspan>` 来显示文本标签，但 ECharts 也支持用 [geo.label](option.html#geo.label) 或 [series-map.label](option.html#series-map.label) 来设置底图上的标签。
 
 标签功能默认在鼠标 hover 时是启用的。如果想禁用标签，只需：
-```js
+```ts
 option = {
     geo: {
         map: 'some_svg',
@@ -238,7 +238,7 @@ option = {
 ## 事件
 
 可以用如下方式监听具名元素的鼠标事件或者触摸事件：
-```js
+```ts
 // 'name1' 是一个 SVG 元素的名字。
 myChart.on('click', { geoIndex: 0, name: 'name1' }, function (params) {
     console.log(params);
@@ -283,7 +283,7 @@ myChart.on('click', { geoIndex: 0, name: 'name1' }, function (params) {
 [scatter](option.html#series-scatter)、[effectScatter](option.html#series-effectScatter)、[lines](option.html#series-lines)、[custom](option.html#series-custom) 这些在 [地理坐标系（geo）](option.html#geo) 中可用的系列都可以在 SVG 底图上定位和显示。
 
 在这种用法中，`series.data` 的值的单位即为是 SVG 内部元素的度量单位。比如说：
-```js
+```ts
 option = {
     geo: {
         map: 'some_svg'
@@ -303,7 +303,7 @@ option = {
 ```
 
 另外，有种简便方法可以获得 SVG 的坐标。
-```js
+```ts
 myChart.setOption({
     geo: {
         map: 'some_svg'

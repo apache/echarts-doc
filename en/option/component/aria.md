@@ -17,7 +17,7 @@ If [aria.enabled](~aria.enabled) is set to `true`, `label` is enabled by default
 
 **Example:**
 
-```js
+```ts
 option = {
     aria: {
         // The following lines can be omitted because label.enabled defaults to true.

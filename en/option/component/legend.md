@@ -110,7 +110,7 @@ Rotation of the symbol, which can be `number | 'inherit'`. If it's `'inherit'`, 
 Formatter is used to format label of legend, which supports string template and callback function.
 
 Example:
-```js
+```ts
 // using string template, the template variable is legend name {name}
 formatter: 'Legend {name}'
 // using callback function
@@ -278,7 +278,7 @@ It works when [legend.type](~legend.type) is `'scroll'`.
 Page info formatter. It is `'{current}/{total}'` by default, where `{current}` is current page number (start from 1), and `{total}` is the total page number.
 
 If `pageFormatter` is a function, it should return a string. The parameters is:
-```js
+```ts
 {
     current: number
     total: number
@@ -398,7 +398,7 @@ The selector button in the legend component. Currently includes both a full sele
 
 Usage:
 
-```js
+```ts
 selector: [
     {
         type: 'all or inverse',

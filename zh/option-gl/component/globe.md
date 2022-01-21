@@ -27,7 +27,7 @@
 也支持直接使用 echarts 的实例作为纹理，此时在地球上的鼠标动作会跟纹理上使用的 echarts 实例有联动。
 
 示例：
-```js
+```ts
 // 使用地球的纹理图片
 baseTexture: 'asset/earth.jpg'
 
@@ -118,7 +118,7 @@ baseTexture: mapChart
 定位目标的经纬度坐标。设置后会忽略 [alpha](~globe.viewControl.alpha) 和 [beta](~globe.viewControl.beta)。
 
 
-```js
+```ts
 viewControl: {
     // 定位到北京
     targetCoord: [116.46, 39.92]
@@ -150,7 +150,7 @@ viewControl: {
 
 层的名字，在用 setOption 设置层属性的时候可以用 name 来标识需要更新的层。
 
-```js
+```ts
 chart.setOption({
     globe: {
         layer: [{

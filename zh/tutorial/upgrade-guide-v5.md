@@ -14,7 +14,7 @@
 #### 默认主题（theme）
 
 首先是默认主题的改动，`v5` 在配色等主题设计上做了很多的优化来达到更好的视觉效果。如果大家依旧想保留旧版本的颜色，可以手动声明颜色，如下：
-```js
+```ts
 chart.setOption({
     color: [
         '#c23531', '#2f4554', '#61a0a8', '#d48265', '#91c7ae', '#749f83',
@@ -24,7 +24,7 @@ chart.setOption({
 });
 ```
 或者，做一个简单的 `v4` 主题：
-```js
+```ts
 var themeEC4 = {
     color: [
         '#c23531', '#2f4554', '#61a0a8', '#d48265', '#91c7ae', '#749f83',
@@ -41,7 +41,7 @@ chart.setOption(/* ... */);
 ##### 去除 default exports 的支持
 
 如果使用者在 `v4` 中这样引用了 echarts：
-```js
+```ts
 import echarts from 'echarts';
 // 或者按需引入
 import echarts from 'echarts/lib/echarts';
@@ -50,7 +50,7 @@ import echarts from 'echarts/lib/echarts';
 这两种方式，`v5` 中不再支持了。
 
 使用者需要如下更改代码解决这个问题：
-```js
+```ts
 import * as echarts from 'echarts';
 // 按需引入
 import * as echarts from 'echarts/lib/echarts';
@@ -61,7 +61,7 @@ import * as echarts from 'echarts/lib/echarts';
 
 在 5.0.1 中，我们引入了新的[按需引入接口](tutorial.html#%E5%9C%A8%E6%89%93%E5%8C%85%E7%8E%AF%E5%A2%83%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts)
 
-```js
+```ts
 import * as echarts from 'echarts/core';
 import { BarChart } from 'echarts/charts';
 import { GridComponent } from 'echarts/components';
@@ -77,7 +77,7 @@ echarts.use([BarChart, GridComponent, CanvasRenderer]);
 
 在大部分情况下，我们都推荐大家尽可能用这套新的按需引入接口，它可以最大程度的利用打包工具 tree-shaking 的能力，并且可以有效解决命名空间冲突的问题而且防止了内部结构的暴露。如果你依旧在使用 CommonJS 的模块写法，之前的方式我们也依旧是支持的：
 
-```js
+```ts
 const echarts = require('echarts/lib/echarts');
 require('echarts/lib/chart/bar');
 require('echarts/lib/component/grid');
@@ -93,25 +93,25 @@ require('echarts/lib/component/grid');
 为了保证 tree-shaking 后的体积足够小，我们去除了一些之前会默认被打包进来的依赖。比如前面提到的在使用新的按需引入接口的时候，`CanvasRenderer`将不再被默认引入，这样可以保证只需要使用 SVG 渲染模式的时候不会把不需要的 Canvas 渲染代码也一起打包进来，除此之外，还有下面这些依赖的改动：
 
 + 在使用折线图，柱状图中不再默认引入直角坐标系组件，因此之前使用下面的引入方式
-```js
+```ts
 const echarts = require('echarts/lib/echarts');
 require('echarts/lib/chart/bar');
 require('echarts/lib/chart/line');
 ```
 需要再单独引入`grid`组件
-```js
+```ts
 require('echarts/lib/component/grid');
 ```
 
 参考 issue：[#14080](https://github.com/apache/echarts/issues/14080), [#13764](https://github.com/apache/echarts/issues/13764)
 
 + 默认不再引入`aria`组件，如果需要的话可以手动引入。
-```js
+```ts
 import { AriaComponent } from 'echarts/components';
 echarts.use(AriaComponent);
 ```
 或者：
-```js
+```ts
 require('echarts/lib/component/aria');
 ```
 

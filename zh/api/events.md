@@ -6,7 +6,7 @@
 ECharts 中的事件分为两种，一种是鼠标事件，在鼠标点击某个图形上会触发，还有一种是 调用 [dispatchAction](~echartsInstance.dispatchAction) 后触发的事件。
 
 **示例：**
-```js
+```ts
 myChart.on('click', function (params) {
     console.log(params);
 });
@@ -30,7 +30,7 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
 
 鼠标事件的事件参数是事件对象的数据的各个属性，对于图表的点击事件，基本参数如下，其它图表诸如饼图可能会有部分附加参数。例如饼图会有`percent`属性表示百分比，具体见各个图表类型的 label formatter 回调函数的 `params`。
 
-```js
+```ts
 {
     // 当前点击的图形元素所属的组件名称，
     // 其值如 'series'、'markLine'、'markPoint'、'timeLine' 等。
@@ -95,7 +95,7 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
 
 在数据选中状态发生变化时触发的事件
 
-```js
+```ts
 {
     type: 'selectchanged',
     fromAction: 'select' | 'toggleSelected' | 'unselect',
@@ -112,7 +112,7 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
 
 **注：**图例组件用户切换图例开关会触发该事件。
 
-```js
+```ts
 {
     type: 'legendselectchanged',
     // 切换的图例名称
@@ -127,7 +127,7 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
 **ACTION:** [legendSelect](~action.legend.legendSelect)
 图例选中后的事件。
 
-```js
+```ts
 {
     type: 'legendselected',
     // 选中的图例名称
@@ -145,7 +145,7 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
 **ACTION:** [legendUnSelect](~action.legend.legendUnSelect)
 图例取消选中后的事件。
 
-```js
+```ts
 {
     type: 'legendunselected',
     // 取消选中的图例名称
@@ -162,7 +162,7 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
 **ACTION:** [legendAllSelect](~action.legend.legendAllSelect)
 图例全选后的事件。
 
-```js
+```ts
 {
     type: 'legendselectall',
     // 所有图例的选中状态表。
@@ -177,7 +177,7 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
 **ACTION:** [legendInverseSelect](~action.legend.legendInverseSelect)
 图例反选后的事件。
 
-```js
+```ts
 {
     type: 'legendinverseselect',
     // 所有图例的选中状态表。
@@ -192,7 +192,7 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
 **ACTION:** [legendscroll](~action.legend.legendScroll)
 图例滚动事件。
 
-```js
+```ts
 {
     type: 'legendscroll',
     scrollDataIndex: number
@@ -206,7 +206,7 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
 
 数据区域缩放后的事件。
 
-```js
+```ts
 {
     type: 'datazoom',
     // 缩放的开始位置的百分比，0 - 100
@@ -223,7 +223,7 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
 **ACTION:** [selectDataRange](~action.dataRange.selectDataRange)
 视觉映射组件中，`range` 值改变后触发的事件。
 
-```js
+```ts
 {
     type: 'datarangeselected',
     // 连续型 visualMap 和 离散型 visualMap 不一样
@@ -237,7 +237,7 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
 **ACTION:** [timelineChange](~action.timeline.timelineChange)
 时间轴中的时间点改变后的事件。
 
-```js
+```ts
 {
     type: 'timelinechanged',
     // 时间点的 index
@@ -249,7 +249,7 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
 **ACTION:** [timelinePlayChange](~action.timeline.timelinePlayChange)
 时间轴中播放状态的切换事件。
 
-```js
+```ts
 {
     type: 'timelineplaychanged',
     // 播放状态，true 为自动播放
@@ -260,7 +260,7 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
 ## restore(Event)
 **ACTION:** [restore](~action.toolbox.restore)
 重置 option 事件。
-```js
+```ts
 {
     type: 'restore'
 }
@@ -268,7 +268,7 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
 
 ## dataviewchanged(Event)
 [工具栏中数据视图](option.html#toolbox.feature.dataView)的修改事件。
-```js
+```ts
 {
     type: 'dataviewchanged'
 }
@@ -276,7 +276,7 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
 
 ## magictypechanged(Event)
 [工具栏中动态类型切换](option.html#toolbox.feature.magicType)的切换事件。
-```js
+```ts
 {
     type: 'magictypechanged',
     // 点击切换的当前类型，同 echarts 2.x 中的 type 属性
@@ -431,7 +431,7 @@ chart.on('brushSelected', function (params) {
 渲染结束事件。注意 `rendered` 事件并不代表渲染动画（参见 [animation](option.html#animation) 相关配置）或者渐进渲染（参见 [progressive](option.html#series-scatter.progressive) 相关配置）停止，只代表本帧的渲染结束。
 
 例如：
-```js
+```ts
 var snapshotImage = new Image();
 document.body.append(snapshotImage);
 chart.on('rendered', function () {
@@ -444,7 +444,7 @@ chart.on('rendered', function () {
 
 渲染完成事件。当渲染动画（参见 [animation](option.html#animation) 相关配置）或者渐进渲染（参见 [progressive](option.html#series-scatter.progressive) 相关配置）停止时触发。
 
-```js
+```ts
 var snapshotImage = new Image();
 document.body.append(snapshotImage);
 chart.on('finished', function () {
@@ -462,7 +462,7 @@ chart.on('finished', function () {
 
 用户点击选中会触发该事件。
 
-```js
+```ts
 {
     type: '${componentType}selectchanged',
     // 系列 ID，可以在 option 中传入
@@ -492,7 +492,7 @@ chart.on('finished', function () {
 
 使用`dispatchAction`可触发此事件，用户点击不会触发此事件（用户点击事件请使用 [${componentType}selectchanged](~events.${componentType}selectchanged)）。
 
-```js
+```ts
 {
     type: '${componentType}selected',
     // 系列 ID，可以在 option 中传入
@@ -513,7 +513,7 @@ chart.on('finished', function () {
 
 使用`dispatchAction`可触发此事件，用户点击不会触发此事件（用户点击事件请使用 [${componentType}selectchanged](~events.${componentType}selectchanged)）。
 
-```js
+```ts
 {
     type: '${componentType}unselected',
     // 系列 ID，可以在 option 中传入

@@ -4,7 +4,7 @@
 Global echarts object, which can be accessed after including `echarts.js` in script tag or through `require('echarts')` in AMD environment.
 
 ## init(Function)
-```js
+```ts
 (dom: HTMLDivElement|HTMLCanvasElement, theme?: Object|string, opts?: {
     devicePixelRatio?: number,
     renderer?: string,
@@ -41,12 +41,12 @@ Creates an ECharts instance, and returns an [echartsInstance](~echartsInstance).
     + `locale` Specify the locale. There are two builtins: `'ZH'` and `'EN'`. Or you can use [echarts.registerLocale](~echarts.registerLocale) to register a new locale. Or supported locales can be referenced in [src/i18n](https://github.com/apache/echarts/tree/release/src/i18n).
 
     If no need to specify a theme, a `null` should be passed before `opts` . Example:
-    ```js
+    ```ts
     const chart = echarts.init(dom, null, {renderer: 'svg'});
     ```
 
 ## connect(Function)
-```js
+```ts
 (group:string|Array)
 ```
 
@@ -57,7 +57,7 @@ Connects interaction of multiple chart series.
     Group id, or array of chart instance.
 
 **For example: **
-```js
+```ts
 // set group id of each instance respectively.
 chart1.group = 'group1';
 chart2.group = 'group1';
@@ -68,7 +68,7 @@ echarts.connect([chart1, chart2]);
 
 
 ## disconnect(Function)
-```js
+```ts
 (group:string)
 ```
 Disconnects interaction of multiple chart series. To have one single instance to be removed, you can set `group` of chart instance to be null.
@@ -79,13 +79,13 @@ Disconnects interaction of multiple chart series. To have one single instance to
     group id.
 
 ## dispose(Function)
-```js
+```ts
 (target: ECharts|HTMLDivElement|HTMLCanvasElement)
 ```
 Destroys chart instance, after which the instance cannot be used any more.
 
 ## getInstanceByDom(Function)
-```js
+```ts
 (target: HTMLDivElement|HTMLCanvasElement) => ECharts
 ```
 Returns chart instance of dom container.
@@ -98,7 +98,7 @@ Use components. Used with the new tree-shaking API.
 
 NOTE: `echarts.use` must be used before `eharts.init`
 
-```js
+```ts
 // Import the echarts core module, which provides the necessary interfaces for using echarts.
 import * as echarts from 'echarts/core';
 // Import bar charts, all with Chart suffix
@@ -123,7 +123,7 @@ echarts.use(
 See [Use ECharts with bundler and NPM](${handbookPath}basics/import) for more detailed explaination.
 
 ## registerMap(Function)
-```js
+```ts
 (
     mapName: string,
     opt: {
@@ -171,7 +171,7 @@ Please refer to [option.geo](option.html#geo.map) for usage.
         Only work for `geoJSON`, not work for `svg`.
 
         **For example [USA Population Estimates](${galleryEditorPath}map-usa): **
-        ```js
+        ```ts
         echarts.registerMap('USA', usaJson, {
             // Move Alaska to the bottom left of United States
             Alaska: {
@@ -198,13 +198,13 @@ Please refer to [option.geo](option.html#geo.map) for usage.
         ```
 
 ## getMap(Function)
-```js
+```ts
 (mapName: string)
 ```
 
 Get a registered map in the following format:
 
-```js
+```ts
 {
     // geoJSON data of the map
     geoJSON: Object,
@@ -219,7 +219,7 @@ Note:
 
 
 ## registerTheme(Function)
-```js
+```ts
 (themeName: string, theme: Object)
 ```
 
@@ -230,7 +230,7 @@ Registers a theme, should be specified when [initialize the chart instance](~ech
 
 > Since `5.0.0`
 
-```js
+```ts
 (locale: string, localeCfg: Object)
 ```
 

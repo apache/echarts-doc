@@ -66,7 +66,7 @@ The size of the in-focus area. The objects in this range are completely clear an
 
 Blur radius outside the focus.
 
-The difference blur effect between the different radius. 
+The difference blur effect between the different radius.
 
 <div class="twentytwenty-container" style="width: 700px;">
     <img src="documents/asset/gl/img/geo-dof-small.png" width="100%" title="blurSize: 3">
@@ -98,9 +98,9 @@ Whether to enable SSAO (screen space ambient occlusion). Not enabled by default.
 
 The quality of SSAO (screen space ambient occlusion). Supporting`'low'`, `'medium'`, `'high'`, `'ultra'`
 
-###${prefix|default('#')} radius(number) = 2 
+###${prefix|default('#')} radius(number) = 2
 
-The radius of the SSAO (screen space ambient occlusion). The larger the radius, the more natural the effect, but you need to set a higher `'quality'`. 
+The radius of the SSAO (screen space ambient occlusion). The larger the radius, the more natural the effect, but you need to set a higher `'quality'`.
 
 The following example is the difference between a smaller and larger radius:
 
@@ -171,7 +171,7 @@ The saturation of the image.
 
 After opening [postEffect](~${componentType}.postEffect), WebGL's default MSAA (Multi Sampling Anti Aliasing) will not work. At this time, FXAA (Fast Approximate Anti-Aliasing) can solve the anti-aliasing problem quickly and easily. FXAA blurs the edge of the scene to solve the problem of aliasing. It works well on some scenes, but in echarts-gl, you need to ensure that the edges of many texts and lines are sharp and clear, so FXAA is not suitable. At this point we can use supersampling by setting a higher `devicePixelRatio` as follows:
 
-```js
+```ts
 var chart = echarts.init(dom, null, {
     devicePixelRatio: 2
 })

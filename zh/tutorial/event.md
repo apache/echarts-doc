@@ -6,7 +6,7 @@
 
 在 ECharts 3 中绑定事件跟 2 一样都是通过 [on](api.html#EChartsInstance.on) 方法，但是事件名称比 2 更加简单了。ECharts 3 中，事件名称对应 DOM 事件名称，均为小写的字符串，如下是一个绑定点击操作的示例。
 
-```js
+```ts
 myChart.on('click', function (params) {
     // 控制台打印数据的名称
     console.log(params.name);
@@ -19,7 +19,7 @@ myChart.on('click', function (params) {
 
 ECharts 支持常规的鼠标事件类型，包括 `'click'`、`'dblclick'`、`'mousedown'`、`'mousemove'`、`'mouseup'`、`'mouseover'`、`'mouseout'`、`'globalout'`、`'contextmenu'` 事件。下面先来看一个简单的点击柱状图后打开相应的百度搜索页面的示例。
 
-```js
+```ts
 // 基于准备好的dom，初始化ECharts实例
 var myChart = echarts.init(document.getElementById('main'));
 
@@ -44,7 +44,7 @@ myChart.on('click', function (params) {
 ```
 
 所有的鼠标事件包含参数 `params`，这是一个包含点击图形的数据信息的对象，如下格式：
-```js
+```ts
 {
     // 当前点击的图形元素所属的组件名称，
     // 其值如 'series'、'markLine'、'markPoint'、'timeLine' 等。
@@ -73,7 +73,7 @@ myChart.on('click', function (params) {
 ```
 
 如何区分鼠标点击到了哪里：
-```js
+```ts
 myChart.on('click', function (params) {
     if (params.componentType === 'markPoint') {
         // 点击到了 markPoint 上
@@ -95,21 +95,21 @@ myChart.on('click', function (params) {
 ```
 
 使用 `query` 只对指定的组件的图形元素的触发回调：
-```js
+```ts
 chart.on(eventName, query, handler);
 ```
 
 `query` 可为 `string` 或者 `Object`。
 
 如果为 `string` 表示组件类型。格式可以是 'mainType' 或者 'mainType.subType'。例如：
-```js
+```ts
 chart.on('click', 'series', function () {...});
 chart.on('click', 'series.line', function () {...});
 chart.on('click', 'xAxis.category', function () {...});
 ```
 
 如果为 `Object`，可以包含以下一个或多个属性，每个属性都是可选的：
-```js
+```ts
 {
     <mainType>Index: number // 组件 index
     <mainType>Name: string // 组件 name
@@ -122,7 +122,7 @@ chart.on('click', 'xAxis.category', function () {...});
 ```
 
 例如：
-```js
+```ts
 chart.setOption({
     // ...
     series: [{
@@ -136,7 +136,7 @@ chart.on('mouseover', {seriesName: 'uuu'}, function () {
 ```
 
 例如：
-```js
+```ts
 chart.setOption({
     // ...
     series: [{
@@ -155,7 +155,7 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function () {
 ```
 
 例如：
-```js
+```ts
 chart.setOption({
     // ...
     series: [{
@@ -173,7 +173,7 @@ chart.on('click', {dataType: 'edge'}, function () {
 ```
 
 例如：
-```js
+```ts
 chart.setOption({
     // ...
     series: {
@@ -202,7 +202,7 @@ chart.on('mouseup', {element: 'my_el'}, function () {
 
 你可以在回调函数中获得这个对象中的数据名、系列名称后在自己的数据仓库中索引得到其它的信息候更新图表，显示浮层等等，如下示例代码：
 
-```js
+```ts
 myChart.on('click', function (parmas) {
     $.get('detail?q=' + params.name, function (detail) {
         myChart.setOption({
@@ -222,7 +222,7 @@ myChart.on('click', function (parmas) {
 
 下面是监听一个图例开关的示例：
 
-```js
+```ts
 // 图例开关的行为只会触发 legendselectchanged 事件
 myChart.on('legendselectchanged', function (params) {
     // 获取点击图例的选中状态
@@ -253,7 +253,7 @@ myChart.on('legendselectchanged', function (params) {
 
 在讨论这个功能之前，我们需要先明确两种事件。`zrender 事件`和`echarts 事件`。
 
-```js
+```ts
 myChart.getZr().on('click', function (event) {
     // 该监听器正在监听一个`zrender 事件`。
 });
@@ -264,7 +264,7 @@ myChart.on('click', function (event) {
 `zrender 事件`与`echarts 事件`不同。前者是当鼠标在任何地方都会被触发，而后者是只有当鼠标在图形元素上时才能被触发。事实上，`echarts 事件` 是在 `zrender 事件` 的基础上实现的，也就是说，当一个 `zrender 事件` 在图形元素上被触发时，`echarts` 将触发一个 `echarts 事件` 给开发者。
 
 有了 `zrender事件`，我们就可以实现 “监听空白处的事件”，具体如下：
-```js
+```ts
 myChart.getZr().on('click', function (event) {
     // 没有 target 意味着鼠标/指针不在任何一个图形元素上，它是从“空白处”触发的。
     if (!event.target) {

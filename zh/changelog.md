@@ -1651,7 +1651,7 @@ Recovery Build
 
 + [^] 数据项支持 tooltip 配置为字符串。如下示例
 
-    ```js
+    ```ts
     data: [{
         name: 'First',
         tooltip: 'First tooltip',
@@ -1807,7 +1807,7 @@ Recovery Build
 
 + [^] markLine 优化，支持在直角坐标系中如下设置成水平线或者垂直线。
 
-    ```js
+    ```ts
     data: [{
         // Y 轴值为 100 的水平线
         yAxis: 100

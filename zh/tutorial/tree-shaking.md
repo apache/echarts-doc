@@ -15,7 +15,7 @@ npm install echarts --save
 
 ## 引入 ECharts
 
-```js
+```ts
 import * as echarts from 'echarts';
 
 // 基于准备好的dom，初始化echarts实例
@@ -42,7 +42,7 @@ myChart.setOption({
 
 上面的代码会引入所有 ECharts 中所有的图表和组件，但是假如你不想引入所有组件，也可以使用 ECharts 提供的按需引入的接口来打包必须的组件。
 
-```js
+```ts
 // 引入 echarts 核心模块，核心模块提供了 echarts 使用必须要的接口。
 import * as echarts from 'echarts/core';
 // 引入柱状图图表，图表后缀都为 Chart

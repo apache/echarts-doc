@@ -7,7 +7,7 @@
 
 Before ECharts 4, data was only able to declared in each series, for example:
 
-```js
+```ts
 option = {
     xAxis: {
         type: 'category',
@@ -48,7 +48,7 @@ ECharts4 starts to provide `dataset` component, which brings benefits below:
 
 This is a simplest example of `dataset`:
 
-```js
+```ts
 option = {
     legend: {},
     tooltip: {},
@@ -83,7 +83,7 @@ This is the result:
 
 Or the common format object-array is also supported:
 
-```js
+```ts
 option = {
     legend: {},
     tooltip: {},
@@ -132,7 +132,7 @@ Giving dataset, users can configure whether columns or rows of a dataset will be
 
 See the example below:
 
-```js
+```ts
 option = {
     legend: {},
     tooltip: {},
@@ -187,7 +187,7 @@ Dimension can have its name to displayed on charts. Dimension name can be define
 
 The definitions of the dimensions can also be provided separately in `dataset.dimensions` or `series.dimensions`, where not only dimension name, but also dimension type can be specified:
 
-```js
+```ts
 var option1 = {
     dataset: {
         dimensions: [
@@ -235,7 +235,7 @@ The optional values of dimension types can be:
 
 Having the concept of dimension clarified, we can use [encode](option.html#series.encode) to map data to graphic:
 
-```js
+```ts
 var option = {
     dataset: {
         source: [
@@ -276,7 +276,7 @@ The basic structure of [encode](option.html#series.encode) is illustrated as fol
 
 The properties available in `encode` listed as follows:
 
-```js
+```ts
 // In any of the series and coordinate systems,
 // these properties are available:
 encode: {
@@ -357,7 +357,7 @@ If the default rule does not meet the requirements, configure the `encode` yours
 Q: How to map the third column to X axis, and map the fifth column to Y axis?
 
 A:
-```js
+```ts
 series: {
     // Notice that the dimension index is based on 0,
     // thus the third column is dimensions[2].
@@ -369,7 +369,7 @@ series: {
 Q: How to map the third row th X axis, and map the fifth row to Y axis?
 
 A:
-```js
+```ts
 series: {
     encode: {x: 2, y: 4},
     seriesLayoutBy: 'row',
@@ -382,7 +382,7 @@ Q: How to use the values in the second column in label.
 A:
 The [label.formatter](option.html#series.label.formatter) supports refer value in a certain dimension. For example:
 
-```js
+```ts
 series: {
     label: {
         // `'{@score}'` means use the value in the "score" dimension.
@@ -395,7 +395,7 @@ series: {
 Q: How to display the second column and the third column in tooltip?
 
 A:
-```js
+```ts
 series: {
     encode: {
         tooltip: [1, 2]
@@ -408,7 +408,7 @@ series: {
 Q: If there is no dimension name in dataset.source, how to give dimension name?
 
 A:
-```js
+```ts
 dataset: {
     dimensions: ['score', 'amount'],
     source: [
@@ -423,7 +423,7 @@ dataset: {
 Q: How to encode the third column in bubble size in bubble plot?
 
 A:
-```js
+```ts
 var option = {
     dataset: {
         source: [
@@ -468,7 +468,7 @@ In common used data transfer formats in JavaScript, 2d-array is a good choice to
 
 Besides, 2d-array, `dataset` also support key-value format as follows, which is also commonly used. But notice, the option [seriesLayoutBy](option.html#series.seriesLayoutBy) is not supported in this format.
 
-```js
+```ts
 dataset: [{
     // Row based key-value format, namely, object array, is a commonly used format.
     source: [
@@ -492,7 +492,7 @@ dataset: [{
 
 Multiple datasets can be defined, and series can refer them by [series.datasetIndex](option.html#series.datasetIndex).
 
-```js
+```ts
 var option = {
     dataset: [{
         source: [...],
@@ -523,7 +523,7 @@ See the details of data transform in this [doc](~data-transform).
 
 The data setting approach before ECharts4 can still be used normally. If a series has declared [series.data](option.html#series.data), it will be used but not `dataset`.
 
-```js
+```ts
 {
     xAxis: {
         type: 'category'

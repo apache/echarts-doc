@@ -14,9 +14,6 @@
 + 可以设置在系列的每个数据项中，即 [series.data.tooltip](~series.data.tooltip)
 
 
----
-
-
 
 {{ target: partial-tooltip-in-coords }}
 
@@ -29,8 +26,6 @@
 {{ /if }}
 
 本坐标系特定的 tooltip 设定。
-
----
 
 {{ use: partial-tooltip-introduction() }}
 
@@ -48,7 +43,7 @@
 
 {{ target: partial-tooltip-in-coords-item }}
 
-### tooltip(*)
+### tooltip(Object)
 
 {{ if: ${version} }}
 {{ use: partial-version(
@@ -85,7 +80,7 @@
 
 {{ target: partial-tooltip-in-series-data }}
 
-### tooltip(*)
+### tooltip(Object)
 
 本系列每个数据项中特定的 tooltip 设定。
 
@@ -149,8 +144,6 @@
 `tooltip.axisPointer` 是配置坐标轴指示器的快捷方式。实际上坐标轴指示器的全部功能，都可以通过轴上的 axisPointer 配置项完成（例如 [xAxis.axisPointer](~xAxis.axisPointer) 或 [angleAxis.axisPointer](~angleAxis.axisPointer)）。但是使用 `tooltip.axisPointer` 在简单场景下会更方便一些。
 
 > **注意：** `tooltip.axisPointer` 中诸配置项的优先级低于轴上的 axisPointer 的配置项。
-
----
 
 {{ use: partial-axisPointer-introduction() }}
 
@@ -219,7 +212,7 @@
 
     示例:
 
-    ```js
+    ```ts
     // 绝对位置，相对于容器左侧 10px, 上侧 10 px
     position: [10, 10]
     // 相对位置，放置在容器正中间
@@ -229,7 +222,7 @@
 + `Function`
 
     回调函数，格式如下：
-    ```js
+    ```ts
     (point: Array, params: Object|Array.<Object>, dom: HTMLDomElement, rect: Object, size: Object) => Array
     ```
 
@@ -245,14 +238,14 @@
     也可以是一个对象，如：`{left: 10, top: 30}`，或者 `{right: '20%', bottom: 40}`。<br>
 
     如下示例：
-    ```js
+    ```ts
     position: function (point, params, dom, rect, size) {
         // 固定在顶部
         return [point[0], '10%'];
     }
     ```
     或者：
-    ```js
+    ```ts
     position: function (pos, params, dom, rect, size) {
         // 鼠标在左侧时 tooltip 显示到右侧，鼠标在右侧时 tooltip 显示到左侧。
         var obj = {top: 60};
@@ -308,7 +301,7 @@
 更多其它图表模板变量的含义可以见相应的图表的 label.formatter 配置项。
 
 **示例：**
-```js
+```ts
 formatter: '{b0}: {c0}<br />{b1}: {c1}'
 ```
 
@@ -317,7 +310,7 @@ formatter: '{b0}: {c0}<br />{b1}: {c1}'
 
 回调函数格式：
 
-```js
+```ts
 (params: Object|Array, ticket: string, callback: (ticket: string, html: string)) => string | HTMLElement | HTMLElement[]
 ```
 
@@ -327,30 +320,45 @@ formatter: '{b0}: {c0}<br />{b1}: {c1}'
 
 {{ use: partial-formatter-params-structure(
     extra = {
-    percent: {
-        desc: '饼图的百分比',
-    type = 'number'
+        percent: {
+            desc: '饼图，漏斗图的百分比',
+            type = 'number'
+        }
     }
-}
 ) }}
 
 在 [trigger](~tooltip.trigger) 为 `'axis'` 的时候，或者 tooltip 被 [axisPointer](~xAxis.axisPointer) 触发的时候，`params` 是多个系列的数据数组。其中每项内容格式同上，并且，
 
 {{ use: partial-formatter-params-structure() }}
 
-**注：** ECharts 2.x 使用数组表示各参数的方式不再支持。
-
 第二个参数 `ticket` 是异步回调标识，配合第三个参数 `callback` 使用。
 第三个参数 `callback` 是异步回调，在提示框浮层内容是异步获取的时候，可以通过 callback 传入上述的 `ticket` 和 `html` 更新提示框浮层内容。
 
 示例：
-```js
+```ts
 formatter: function (params, ticket, callback) {
     $.get('detail?name=' + params.name, function (content) {
         callback(ticket, toHTML(content));
     });
     return 'Loading';
 }
+```
+
+#${prefix} valueFormatter(string)
+
+tooltip 中数值显示部分的格式化回调函数。
+
+回调函数格式：
+
+```ts
+(value: number | string) => string
+```
+
+示例：
+
+```ts
+// 添加 $ 前缀
+valueFormatter: (value) => '$' + value.toFixed(2)
 ```
 
 #${prefix} backgroundColor(Color) = 'rgba(50,50,50,0.7)'
@@ -417,7 +425,7 @@ formatter: function (params, ticket, callback) {
 
 额外附加到浮层的 css 样式。如下为浮层添加阴影的示例：
 
-```js
+```ts
 extraCssText: 'box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);'
 ```
 

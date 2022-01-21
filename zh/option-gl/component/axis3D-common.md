@@ -8,7 +8,7 @@ ${name}的显示间隔，在类目轴中有效。{{ if: !${isAxisLabel} }}默认
 如果设置为 `1`，表示『隔一个标签显示一个标签』，如果值为 `2`，表示『隔两个标签显示一个标签』，以此类推。
 
 可以用数值表示间隔的数据，也可以通过回调函数控制。回调函数格式如下：
-```js
+```ts
 (index:number, value: string) => boolean
 ```
 第一个参数是类目的 index，第二个值是类目名称，如果跳过则返回 `false`。
@@ -20,7 +20,7 @@ ${name}的显示间隔，在类目轴中有效。{{ if: !${isAxisLabel} }}默认
 刻度标签的内容格式器。支持字符串模板和回调函数两种形式。
 
 示例:
-```js
+```ts
 // 使用字符串模板，模板变量为刻度默认标签 {value}
 formatter: '{value} kg'
 
@@ -95,13 +95,13 @@ formatter: function (value, index) {
 
 刻度标签文字的颜色，默认取 [axisLine.lineStyle.color](~${componentType}.axisLine.lineStyle.color)。支持回调函数，格式如下
 
-```js
+```ts
 (val: string) => Color
 ```
 
 参数是标签的文本，返回颜色值，如下示例：
 
-```js
+```ts
 textStyle: {
     color: function (value, index) {
         return value >= 0 ? 'green' : 'red';
@@ -208,7 +208,7 @@ textStyle: {
 
 标签格式器，函数第一个参数是当前坐标轴的数值，第二个参数是所有坐标轴的数值数组。
 
-```js
+```ts
 (value: number, valueAll: Array) => string
 ```
 

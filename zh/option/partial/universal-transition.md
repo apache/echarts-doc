@@ -21,7 +21,7 @@
 
 通常该配置为一个字符串，配置为相同`seriesKey`的系列之间会进行动画的过渡。也可以像下面配置为一个数组：
 
-```js
+```ts
 seriesKey: ['male', 'female']
 ```
 
@@ -44,7 +44,7 @@ seriesKey: ['male', 'female']
 
 配置一对多或者多对一的动画中每个图形的动画延时，设置不同的动画延时可以给动画带来一定的趣味性。比如下面代码每个图形通过一个随机的延时造成一种错落的效果：
 
-```js
+```ts
 delay: function (index, count) {
     return Math.random() * 1000;
 }

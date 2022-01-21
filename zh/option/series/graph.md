@@ -47,7 +47,7 @@ option.series[0].data.forEach(function (item) {
 当前视角的中心点
 
 例如：
-```js
+```ts
 center: [115.97, 29.71]
 ```
 
@@ -116,7 +116,7 @@ center: [115.97, 29.71]
 
 支持设置成数组表达边长的范围，此时不同大小的值会线性映射到不同的长度。值越小则长度越长。如下示例
 
-```js
+```ts
 // 值最大的边长度会趋向于 10，值最小的边长度会趋向于 50
 edgeLength: [10, 50]
 ```
@@ -164,7 +164,7 @@ edgeLength: [10, 50]
 
 边两端的标记类型，可以是一个数组分别指定两端，也可以是单个统一指定。默认不显示标记，常见的可以设置为箭头，如下：
 
-```js
+```ts
 edgeSymbol: ['circle', 'arrow']
 ```
 
@@ -224,6 +224,10 @@ edgeSymbol: ['circle', 'arrow']
 
 高亮状态的图形样式。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 ### scale(boolean) = true
 
 <ExampleUIControlBoolean default="true" />
@@ -257,6 +261,10 @@ edgeSymbol: ['circle', 'arrow']
 ) }}
 
 选中状态的图形样式。开启 [selectedMode](~series-graph.selectedMode) 后有效。
+
+{{ use: partial-select-disabled(
+    prefix = "##"
+) }}
 
 {{ use: graph-state(
     state = 'select'
@@ -304,6 +312,10 @@ edgeSymbol: ['circle', 'arrow']
 
 该类目节点的高亮状态。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: graph-node-state(
     state = 'emphasis'
 ) }}
@@ -328,6 +340,10 @@ edgeSymbol: ['circle', 'arrow']
 
 该类目节点的选中状态。
 
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
+
 {{ use: graph-node-state(
     state = 'select'
 ) }}
@@ -348,7 +364,7 @@ edgeSymbol: ['circle', 'arrow']
 
 关系图的节点数据列表。
 
-```js
+```ts
 data: [{
     name: '1',
     x: 10,
@@ -418,6 +434,10 @@ data: [{
 
 该节点的高亮状态。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: graph-node-state(
     state = 'emphasis'
 ) }}
@@ -442,6 +462,10 @@ data: [{
 
 该节点的选中状态。
 
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
+
 {{ use: graph-node-state(
     state = 'select'
 ) }}
@@ -455,7 +479,7 @@ data: [{
 ## links(Array)
 
 节点间的关系数据。示例：
-```js
+```ts
 links: [{
     source: 'n1',
     target: 'n2'
@@ -501,6 +525,10 @@ links: [{
 
 该关系边的高亮状态。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: graph-edge-state(
     state = 'emphasis'
 ) }}
@@ -524,6 +552,10 @@ links: [{
 ) }}
 
 该关系边的选中状态。
+
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
 
 {{ use: graph-edge-state(
     state = 'select'

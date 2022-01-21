@@ -164,6 +164,10 @@ option = {
 
 高亮状态配置。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: pictorialBar-state(
@@ -191,6 +195,10 @@ option = {
 ) }}
 
 选中状态配置。开启 [selectedMode](~series-bar.selectedMode) 后有效。
+
+{{ use: partial-select-disabled(
+    prefix = "##"
+) }}
 
 {{ use: partial-selected-mode(
     version = '5.0.0'
@@ -273,6 +281,10 @@ option = {
 
 单个数据的高亮状态配置。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: partial-bar-state(
     prefix = "###",
     state = 'emphasis'
@@ -298,6 +310,10 @@ option = {
 ) }}
 
 单个数据的选中状态配置。
+
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
 
 {{ use: partial-bar-state(
     prefix = "###",
@@ -564,7 +580,7 @@ option = {
 
 可以使用图片作为图形的 pattern。
 
-```js
+```ts
 var textureImg = new Image();
 textureImg.src = 'data:image/jpeg;base64,...'; // dataURI
 // 或者
@@ -621,7 +637,7 @@ itemStyle: {
 动画开始之前的延迟，支持回调函数，可以通过每个数据返回不同的 delay 时间实现更戏剧的更新动画效果。
 
 如下示例：
-```js
+```ts
 animationDelay: function (dataIndex, params) {
     return params.index * 30;
 }
@@ -639,7 +655,7 @@ animationDelay: function (dataIndex, params) {
 数据更新动画的延迟，支持回调函数，可以通过每个数据返回不同的 delay 时间实现更戏剧的更新动画效果。
 
 如下示例：
-```js
+```ts
 animationDelay: function (dataIndex, params) {
     return params.index * 30;
 }
@@ -659,7 +675,7 @@ animationDelay: function (dataIndex, params) {
 此属性可以被设置在系列的 [根部](~series-pictorialBar.${attrName})，表示对此系列中所有数据都生效；也可以被设置在 [data](series-pictorialBar.data) 中的 [每个数据项中](~series-pictorialBar.data.${attrName})，表示只对此数据项生效。
 
 例如：
-```js
+```ts
 series: [{
     ${attrName}: ... // 对 data 中所有数据项生效。
     data: [23, 56]

@@ -299,14 +299,14 @@ option = {
 
 #### optionToContent(Function)
 
-```js
+```ts
 (option:Object) => HTMLDomElement|string
 ```
 
 自定义 dataView 展现函数，用以取代默认的 textarea 使用更丰富的数据编辑。可以返回 dom 对象或者 html 字符串。
 
 如下示例使用表格展现数据值：
-```js
+```ts
 optionToContent: function(opt) {
     var axisData = opt.xAxis[0].data;
     var series = opt.series;
@@ -329,7 +329,7 @@ optionToContent: function(opt) {
 
 #### contentToOption(Function)
 
-```js
+```ts
 (container:HTMLDomElement, option:Object) => Object
 ```
 
@@ -427,7 +427,7 @@ optionToContent: function(opt) {
 
 动态类型切换
 **示例：**
-```js
+```ts
 feature: {
     magicType: {
         type: ['line', 'bar', 'stack']
@@ -567,7 +567,7 @@ feature: {
 
 工具箱的 tooltip 配置，配置项同 [tooltip](~tooltip)。默认不显示，可以在需要特殊定制文字样式（尤其是想用自定义 CSS 控制文字样式）的时候开启 tooltip，如下示例：
 
-```js
+```ts
 option = {
     tooltip: {
         show: true // 必须引入 tooltip 组件

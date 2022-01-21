@@ -58,7 +58,7 @@ User can defined styles for text fragment in `rich` property. For example, [seri
 
 For example:
 
-```js
+```ts
 label: {
     // Styles defined in 'rich' can be applied to some fragments
     // of text by adding some markers to those fragment, like
@@ -181,7 +181,7 @@ See example:
 
 Icon is implemented by using image in `backgroundColor`.
 
-```js
+```ts
 rich: {
     Sunny: {
         backgroundColor: {
@@ -196,7 +196,7 @@ rich: {
 
 Horizontal rule (like HTML &lt;hr&gt; tag) can be implemented by border:
 
-```js
+```ts
 rich: {
     hr: {
         borderColor: '#777',
@@ -213,7 +213,7 @@ rich: {
 
 Title block can be implemented by `backgroundColor`:
 
-```js
+```ts
 // Title is at left.
 formatter: '{titleBg|Left Title}',
 rich: {

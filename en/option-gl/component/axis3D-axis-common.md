@@ -78,7 +78,7 @@ Minimum gap between split lines.
 
 For example, it can be set to be `1` to make sure the axis label is shown as an integer.
 
-```js
+```ts
 {
     minInterval: 1
 }
@@ -106,7 +106,7 @@ If [type](~${componentType}.type) is specified as `'category'`, but `axis.data` 
 
 Example:
 
-```js
+```ts
 // Name list of all categories
 data: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 // Each item could also be a specific configuration item.

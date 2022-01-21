@@ -22,7 +22,7 @@ There are several examples where SVG base map is used:
 The usage of SVG base map is the same as the usage of [GeoJSON](http://geojson.org/).
 
 If used in [geo coordinate system](option.html#geo):
-```js
+```ts
 $.get('map/organ.svg', function (svg) {
     // Firstly we need to register SVG raw string or parsed SVG DOM
     // to echarts with a name:
@@ -40,7 +40,7 @@ $.get('map/organ.svg', function (svg) {
 ```
 
 If used in [map series](option.html#series-map):
-```js
+```ts
 $.get('map/beef_cuts.svg', function (svg) {
     // Firstly we need to register SVG raw string or parsed SVG DOM
     // to echarts with a name:
@@ -62,7 +62,7 @@ $.get('map/beef_cuts.svg', function (svg) {
 ## Zoom and Pan
 
 For [Geo coordinate system](option.html#geo)
-```js
+```ts
 option = {
     geo: {
         // Enable zoom and pan.
@@ -72,7 +72,7 @@ option = {
 };
 ```
 For [map series](option.html#series-map)
-```js
+```ts
 option = {
     series: {
         type: 'map',
@@ -104,7 +104,7 @@ Then hover on the left rect, it can be highlighted, whereas the right one can no
 ~[500x200](${galleryViewPath}doc-example/geo-svg-named-basic&edit=1&reset=1)
 
 Option for some certain named elements can be specified in [geo.regions](option.html#geo.regions), like:
-```js
+```ts
 option = {
     geo: {
         map: 'some_svg',
@@ -145,7 +145,7 @@ Only these named elements can be styled in `itemStyle`:
 Named elements can adopt "select" feature by setting [geo.selectedMode](option.html#geo.selectedMode) or [series-map.selectedMode](option.html#series-map.selectedMode) as `'single'` or `'multiple'`. The style of element when selected can be specified in [geo.select](option.html#geo.select) or [series-map.select](option.html#series-map.select).
 
 The selected names can be obtained by [geoselectchanged](api.html#event.geoselectchanged) event, like:
-```js
+```ts
 myChart.on('geoselectchanged', function (params) {
     var selectedNames = params.allSelected[0].name;
     console.log('selected', selectedNames);
@@ -167,7 +167,7 @@ See [Organ Visualization](${galleryEditorPath}geo-organ) for more details.
 ## Tooltip
 
 Tooltip can be enabled or disabled on named elements.
-```js
+```ts
 option = {
     // Need to declare the root tooltip to
     // enable tooltip feature on ECharts.
@@ -196,7 +196,7 @@ option = {
 ```
 
 If intending to disable the geo tooltip when hovering a on named elements, just:
-```js
+```ts
 option = {
     tooltip: {},
     geo: {
@@ -216,7 +216,7 @@ See [SVG Map](${galleryEditorPath}geo-svg-map) for more details.
 Although text label can be declared in SVG file directly via `<text>`/`<tspan>`, we can also use ECharts built-in label feature on named elements by specifying [geo.label](option.html#geo.label) or [series-map.label](option.html#series-map.label).
 
 By default the label feature is enabled when hovering on a named element. If intending to disable it, just:
-```js
+```ts
 option = {
     geo: {
         map: 'some_svg',
@@ -245,7 +245,7 @@ Also see [Organ Visualization](${galleryEditorPath}geo-organ) for the usage of l
 ## Events
 
 Mouse events or touch events of named elements can be listened simply by:
-```js
+```ts
 // 'name1' is a name of a SVG element.
 myChart.on('click', { geoIndex: 0, name: 'name1' }, function (params) {
     console.log(params);
@@ -290,7 +290,7 @@ Having `bounding rect` determined, it will be placed into its corresponding `geo
 Series like [scatter](option.html#series-scatter), [effectScatter](option.html#series-effectScatter), [lines](option.html#series-lines), [custom](option.html#series-custom) that are available on [geo coordinate system](option.html#geo) can also be positioned and displayed on SVG base map.
 
 Note that in this kind of usage the unit of series data value is the SVG file local coords. For example:
-```js
+```ts
 option = {
     geo: {
         map: 'some_svg'
@@ -310,7 +310,7 @@ option = {
 ```
 
 By the way, there is a simple approach to get SVG local coord:
-```js
+```ts
 myChart.setOption({
     geo: {
         map: 'some_svg'

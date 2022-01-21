@@ -10,7 +10,7 @@
 
 创建一个新的 shape class。
 
-```js
+```ts
 (
     opts: Object
 ) => zrender.graphic.Path
@@ -23,7 +23,7 @@
 
 注册一个开发者定义的 shape class。
 
-```js
+```ts
 (
     name: string,
     ShapeClass: zrender.graphic.Path
@@ -37,7 +37,7 @@
 [图形组件（graphic component）](option.html#graphic)，声明 `{type: name}` 即可。
 
 例如：
-```js
+```ts
 var MyShape = echarts.graphic.extendShape({
     shape: {
         x: 0,
@@ -83,7 +83,7 @@ var option = {
 
 得到一个 [注册](~echarts.graphic.registerShape) 好的 class。
 
-```js
+```ts
 (
     name: String
 ) => zrender.graphic.Path
@@ -97,7 +97,7 @@ var option = {
 
 输入一组点，和一个矩形，返回被矩形截取过的点。
 
-```js
+```ts
 (
     // 要被截取的点列表，如 [[23, 44], [12, 15], ...]。
     points: Array.<Array.<number>>,
@@ -115,7 +115,7 @@ var option = {
 
 输入两个矩形，返回第二个矩形截取第一个矩形的结果。
 
-```js
+```ts
 (
     // 要被截取的矩形。
     targetRect: {

@@ -14,13 +14,13 @@ You need to introduce the official sdk of mapbox before using the mapbox compone
 Then get the token provided by mapbox and set it to `mapbox.accessToken`.
 
 
-```js
+```ts
 mapboxgl.accessToken = 'your token';
 ```
 
 Then you can use the mapbox component just like any other component.
 
-```js
+```ts
 chart.setOption({
     mapbox: {
         style: 'mapbox://styles/mapbox/dark-v9'
@@ -38,7 +38,7 @@ Sets the style of the Mapbox map. Same as [https://www.mapbox.com/mapbox-gl-js/s
 
 Sets the longitude and latitude of the center of the map. Longitude and latitude are represented by arrays, for example:
 
-```js
+```ts
 mapbox3D: {
     center: [104.114129, 37.550339],
     zoom: 3

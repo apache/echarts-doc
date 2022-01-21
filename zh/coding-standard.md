@@ -15,7 +15,7 @@
 
 **[强制]** `switch` 中的 `case` 和 `default` 必须保持缩进。
 
-```js
+```ts
 // 正例
 switch (variable) {
     case '1':
@@ -46,9 +46,9 @@ default:
 ### 空格
 
 
-**[强制]** 二元运算符两个操作数之间必须使用空格，但一元运算符与其操作数间不能有空格。 
+**[强制]** 二元运算符两个操作数之间必须使用空格，但一元运算符与其操作数间不能有空格。
 
-```js
+```ts
 let a = !arr.length;
 a++;
 a = b + c;
@@ -57,7 +57,7 @@ a = b + c;
 
 **[强制]** 在 `{` 前必须有1个空格。
 
-```js
+```ts
 // 正例
 
 if (condition) {
@@ -89,7 +89,7 @@ function funcName(){
 
 **[强制]** `if` / `else` / `for` / `while` / `function` / `switch` / `do` / `try` / `catch` / `finally` 等关键字与括号之间都必须加一个空格。
 
-```js
+```ts
 // 正例
 
 if (condition) {
@@ -117,7 +117,7 @@ while(condition) {
 
 **[强制]** 在创建对象的语句中，`:` 后必须加一个空格，`:` 前不能有空格。
 
-```js
+```ts
 // 正例
 const obj = {
     a: 1,
@@ -136,7 +136,7 @@ const obj = {
 
 **[强制]** 在函数声明、命名函数表达式和函数调用时，函数名称和 `(` 间不能有空格。
 
-```js
+```ts
 // 正例
 
 function funcName() {
@@ -162,7 +162,7 @@ funcName ();
 
 **[强制]** `,` 和 `;` 前不能有空格。
 
-```js
+```ts
 // 正例
 callFunc(a, b);
 
@@ -173,7 +173,7 @@ callFunc(a , b) ;
 
 **[强制]** `(` 和 `[` 之后、 `)` 和 `]` 之前不能有空格。
 
-```js
+```ts
 // 正例
 
 callFunc(param1, param2, param3);
@@ -240,7 +240,7 @@ const obj3 = {name: 'obj', age: 20, sex: 1};
 
 **[强制]** 如果需要换行，运算符必须放在新行的开头。
 
-```js
+```ts
 // 正例
 if (user.isAuthenticated()
     && user.isInRole('admin')
@@ -269,7 +269,7 @@ const result = number1 + number2 + number3 +
 
 **[强制]** 如果括号中的内容有多行，必须为 `)`、 `]`、 `}` 另开一个新行，并使新行与 `(`、 `[`、 `{` 所在行的缩进相对应。
 
-```js
+```ts
 // 正例
 if (product) {
     product.load();
@@ -299,9 +299,9 @@ const arr = [
 ```
 
 
-**[强制]** `,` 或 `;` 前不能有换行。 
+**[强制]** `,` 或 `;` 前不能有换行。
 
-```js
+```ts
 // 正例
 const obj = {
     a: 1,
@@ -333,7 +333,7 @@ foo(
 
 **[推荐]** 建议换行和缩进遵循如下风格：
 
-```js
+```ts
 if (user.isAuthenticated()
     && user.isInRole('admin')
     && user.hasAuthority('add-admin')
@@ -368,7 +368,7 @@ const res = condition
 
 **[强制]** 如果使用多行代码块，`else` 和 `catch` 必须另开一个新行。
 
-```js
+```ts
 // 正例
 
 if (condition) {
@@ -410,7 +410,7 @@ try {
 
 **[强制]** 如果只有一行，`{}` 不能被省略。
 
-```js
+```ts
 // 正例
 if (condition) {
     callFunc();
@@ -425,7 +425,7 @@ if (condition)
 
 **[强制]** 函数定义的末尾不能有分号 `;`。
 
-```js
+```ts
 // 正例
 function funcName() {
 }
@@ -443,7 +443,7 @@ const funcName = function () {
 **[强制]** 对象和数组的声明中不能有尾随逗号。
 
 
-```js
+```ts
 // 正例
 
 const obj = {
@@ -476,7 +476,7 @@ const arr = [
 
 **[强制]** 变量名、属性名及函数名的命名必须遵循 lowerCamelCase（小骆驼拼写法）。
 
-```js
+```ts
 const loadingModules = {};
 function loadProduct() {
 }
@@ -485,7 +485,7 @@ function loadProduct() {
 
 **[强制]** class类的命名必须遵循 UpperCamelCase (Pascal)，即大骆驼拼写法（帕斯卡拼写法）。
 
-```js
+```ts
 function Element(options) {
 }
 ```
@@ -493,7 +493,7 @@ function Element(options) {
 
 **[推荐]** 缩略词的所有字符应当一并大写或一并小写。
 
-```js
+```ts
 function parseSVG() {
 }
 const svgParser;
@@ -512,7 +512,7 @@ const svgParser;
 语法特性可以通过一些工具方法进行弥补，但不能通过修改内置JavaScript对象的原型来实现。
 
 
-```js
+```ts
 // 正例
 
 import * as zrUtil from 'zrender/src/core/util';
@@ -561,7 +561,7 @@ String.prototype.trim = function () {
 
 **[强制]** 优先使用`const`声明变量，且一行不能同时声明多个变量。
 
-```js
+```ts
 // 正例
 const name = 'MyName';
 const hangModules = [];
@@ -580,7 +580,7 @@ const hangModules = [],
 
 **[强制]** 对于相等运算符，`==` 只能用于检查是否为 `null` 或者 `undefined`，其余情况必须使用 `===`。
 
-```js
+```ts
 // 正例
 if (age === 30) {
     // ...
@@ -604,7 +604,7 @@ if (age == 30) {
 
 **[推荐]** 函数表达式或者函数声明不应该放在循环体中。
 
-```js
+```ts
 // 正例
 function clicker() {
     // ......
@@ -630,7 +630,7 @@ for (let i = 0, len = elements.length; i < len; i++) {
 
 **[推荐]** 建议使用 `+ ''` 将值转为字符串。
 
-```js
+```ts
 // 正例
 num + '';
 
@@ -643,7 +643,7 @@ String(num);
 
 **[推荐]** 建议使用 `+` 将值转为数值。
 
-```js
+```ts
 // 正例
 +str;
 
@@ -654,7 +654,7 @@ Number(str);
 
 **[强制]** 在使用 `parseInt` 时，必须传入第二个参数。
 
-```js
+```ts
 // 正例
 parseInt(str, 10);
 
@@ -670,7 +670,7 @@ parseInt(str);
 
 **[强制]** 必须使用对象字面量 `{}` 来创建简单对象。
 
-```js
+```ts
 // 正例
 const obj = {};
 
@@ -681,7 +681,7 @@ const obj = new Object();
 
 **[强制]** 如果一个对象字面量的所有属性都不需要引号，引号必须省略。如果需要加引号，须使用 `'` 而不是 `"`。
 
-```js
+```ts
 // 正例
 const info = {
     name: 'someone',
@@ -701,7 +701,7 @@ const info2 = {
 
 **[强制]** 禁止修改内置对象的原型。
 
-```js
+```ts
 // 禁止
 String.prototype.trim = function () {
 };
@@ -713,7 +713,7 @@ String.prototype.trim = function () {
 
 **[推荐]** 使用 `for ... in ...` 时，应当注意使用 `hasOwnProperty` 以防 `Object` 的原型在某些运行时环境中被添加一些额外属性的情况。
 
-```js
+```ts
 const newInfo = {};
 for (const key in info) {
     if (info.hasOwnProperty(key)) {
@@ -725,7 +725,7 @@ for (const key in info) {
 
 **[强制]** 除非需要创建指定长度的数组，否则必须使用数组字面量 `[]` 创建数组。
 
-```js
+```ts
 // 正例
 const arr = [];
 const arr2 = new Array(1e4);

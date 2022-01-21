@@ -6,7 +6,7 @@
 
 [入门示例](~getting-started)中的数据是在初始化后 `setOption` 中直接填入的，但是很多时候可能数据需要异步加载后再填入。Apache ECharts<sup>TM</sup> 中实现异步数据的更新非常简单，在图表初始化后不管任何时候只要通过 jQuery 等工具异步获取数据后通过 `setOption` 填入数据和配置项就行。
 
-```js
+```ts
 var myChart = echarts.init(document.getElementById('main'));
 
 $.get('data.json').done(function (data) {
@@ -33,7 +33,7 @@ $.get('data.json').done(function (data) {
 
 或者先设置完其它的样式，显示一个空的直角坐标轴，然后获取数据后填入数据。
 
-```js
+```ts
 var myChart = echarts.init(document.getElementById('main'));
 // 显示标题，图例和空的坐标轴
 myChart.setOption({
@@ -83,7 +83,7 @@ ECharts 中在更新数据的时候需要通过`name`属性对应到相应的系
 
 ECharts 默认有提供了一个简单的加载动画。只需要调用 [showLoading](api.html#echartsInstance.showLoading) 方法显示。数据加载完成后再调用 [hideLoading](api.html#echartsInstance.hideLoading) 方法隐藏加载动画。
 
-```js
+```ts
 myChart.showLoading();
 $.get('data.json').done(function (data) {
     myChart.hideLoading();

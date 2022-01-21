@@ -158,7 +158,7 @@ ECharts 原有的国际化方案，采用的是根据不同的语言参数打包
 
 因此，从 Apache ECharts 5 开始，动态的语言包和静态的代码包分离开。切换语言的时候，只需要加载相应语言包​，通过类似挂载主题的方式，使用 `registerLocale` 函数挂载语言包对象​，重新初始化后就完成了语言的切换​。
 
-```js
+```ts
 // import the lang object and set when init​
 echarts.registerLocale('DE', lang);​
 echarts.init(DomElement, null, {​

@@ -1107,96 +1107,169 @@ Optional values:
     symbolDeclare = ${symbolDeclare}
 ) }}
 
-{{ if: ${usageType} === 'customSeries' }}
 ##${prefix} transition(string|Array) = ['x', 'y']
 
-Can be a single property name or an array of property names.
-Enable transition animation when the specified properties changed.
+You can specify that all properties have transition animations turned on with `'all'', or you can specify a single property or an array of properties.
 
-The properties can only be:
-+ Transform related properties: [`'x'`](~${optionPath}.${hostName}${symbolVisit}${type}.x), [`'y'`](~${optionPath}.${hostName}${symbolVisit}${type}.y), [`'scaleX'`](~${optionPath}.${hostName}${symbolVisit}${type}.scaleX), [`'scaleY'`](~${optionPath}.${hostName}${symbolVisit}${type}.scaleY), [`'rotation'`](~${optionPath}.${hostName}${symbolVisit}${type}.rotation), [`'originX'`](~${optionPath}.${hostName}${symbolVisit}${type}.originX), [`'originY'`](~${optionPath}.${hostName}${symbolVisit}${type}.originY). For example:
-    ```js
-    renderItem: function (params, api) {
-        var coord = api.coord([api.value(0), api.value[1]);
-        return {
-            type: 'rect',
-            x: coord[0],
-            y: coord[1],
-            shape: {
-                x: 0,
-                y: 0,
-                width: api.value(2),
-                height: 100
-            },
-            transition: ['x', 'y', 'width']
-        }
-    }
-    ```
-+ Shortcut to transition all of the properties in [`'shape'`](~${optionPath}.${hostName}${symbolVisit}${type}.shape), ['`style'`](~${optionPath}.${hostName}${symbolVisit}${type}.style), [`'extra'`](~${optionPath}.${hostName}${symbolVisit}${type}.extra). For example:
-    ```js
-    renderItem: function (params, api) {
-        return {
-            type: 'rect',
-            shape: {
-                x: api.value(0),
-                y: api.value(1),
-                width: api.value(2),
-                height: api.value(3)
-            },
-            // Indicate that all props in `shape` will
-            // have transition animation.
-            transition: 'shape',
-        };
-    }
-    ```
-    It is equivalent to:
-    ```js
-    renderItem: function (params, api) {
-        return {
-            type: 'rect',
-            shape: {
-                x: api.value(0),
-                y: api.value(1),
-                width: api.value(2),
-                height: api.value(3),
-                // This usage can only enable part of the
-                // properties transition.
-                transition: ['x', 'y', 'width', 'height']
-            }
-        };
-    }
-    ```
+The properties can be:
 
-By default, [`'x'`](~${optionPath}.${hostName}${symbolVisit}${type}.x) and [`'y'`](~${optionPath}.${hostName}${symbolVisit}${type}.y) are transitioned. If you want to disable the default transition, just set it as:
-```js
-transition: [] // Am empty array.
+Transform related properties:`'x'`, `'y'`, `'scaleX'`, `'scaleY'`, `'rotation'`, `'originX'`, `'originY'`. For example:
+```ts
+{
+    type: 'rect',
+    x: 100,
+    y: 200,
+    transition: ['x', 'y']
+}
 ```
 
+Shortcut to transition all of the properties in [`'shape'`](~${optionPath}.${hostName}${symbolVisit}${type}.shape), ['`style'`](~${optionPath}.${hostName}${symbolVisit}${type}.style), [`'extra'`](~${optionPath}.${hostName}${symbolVisit}${type}.extra). For example:
+
+```ts
+{
+    type: 'rect',
+    shape: { // ... },
+    // Indicate that all props in `shape` will
+    // have transition animation.
+    transition: 'shape',
+}
+```
+
+In the custom series. `'x'` and `'y'` are transitioned by default. If you want to disable the default transition, just set it as: `transition: []`.
+
 See this [example](${galleryEditorPath}doc-example/custom-transition-simple&edit=1&reset=1) please.
-{{ /if }}
+
+##${prefix} enterFrom(Object)
+
+Initial properties for enter animation.
+
+Example:
+```ts
+{
+    type: 'circle',
+    x: 100,
+    enterFrom: {
+        // Fade in
+        style: { opacity: 0 },
+        // Slide in from left
+        x: 0
+    }
+}
+```
+
+##${prefix} leaveTo(Object)
+
+End properties for leave animation.
+
+
+Example:
+
+```ts
+{
+    type: 'circle',
+    x: 100,
+    leaveTo: {
+        // Fade out
+        style: { opacity: 0 },
+        // Slide out to right
+        x: 200
+    }
+}
+```
+
+##${prefix} enterAnimation(Object)
+
+Configurations of enter animation.
+
+{{ use: partial-graphic-cpt-animation(
+    prefix = ${prefix}
+) }}
+
+##${prefix} updateAnimation(Object)
+
+Configurations of update animation.
+
+{{ use: partial-graphic-cpt-animation(
+    prefix = ${prefix}
+) }}
+
+##${prefix} leaveAnimation(Object)
+
+Configurations of leave animation.
+
+{{ use: partial-graphic-cpt-animation(
+    prefix = ${prefix}
+) }}
+
+##${prefix} keyframeAnimation(Object|Array)
+
+Configurations of keyframe based animation. Support for configuring an array to use multiple keyframe animations at the same time.
+
+Example:
+
+```ts
+keyframeAnimation: [{
+    // Using scale for breath animation.
+    duration: 1000,
+    loop: true,
+    keyframes: [{
+        percent: 0.5,
+        easing: 'sinusoidalInOut',
+        scaleX: 0.1,
+        scaleY: 0.1
+    }, {
+        percent: 1,
+        easing: 'sinusoidalInOut',
+        scaleX: 1,
+        scaleY: 1
+    }]
+}, {
+    // Translate animation.
+    duration: 2000,
+    loop: true,
+    keyframes: [{
+        percent: 0,
+        x: 10
+    }, {
+        percent: 1,
+        x: 100
+    }]
+}]
+
+```
+
+If both keyframe animation and transition animation are applied to a property, the transition animation is ignored.
+
+{{ use: partial-graphic-cpt-animation(
+    prefix = ${prefix}
+) }}
+
+###${prefix} loop(boolean)
+
+If loop the keyframe animation.
+
+###${prefix} keyframes(Array)
+
+The keyframes of the animation. Each item in the array is a keyframe in the following format.
+
+```ts
+interface Keyframe {
+    // Keyframe position. 0 is the first frame, 1 is the last frame
+    // The time of keyframe is percent * duration + delay
+    percent: number
+    // Easing function from the last keyframe to this keyframe. Optional
+    easing?: number
+
+    // Other properties are for configuring the state of target at this keyframe, such as x, y, style, shape, etc.
+}
+```
 
 {{ if: ${usageType} === 'customSeries' && ${enableMorph} }}
 ##${prefix} morph(boolean) = false
 
 Whether to enable morphing animation.
 
-**When morphing animation happen?**
-
-If `morph` is set as `true`, the morphing animation will happen according to the following rule:
-
-Each time the render process happen, custom series will diff the old data and the new data. If a set of old data items (say, "old set") are value-equal to a set of new data items (say, "new set") in name or the specified dimensions (see parameter [transition](api.html#echartsInstance.setOption) in `setOption`), we found a pair of sets as transition candidates.
-
-Three type of transition animation can be performed between the two sets:
-+ one-to-one: if both the two sets has only one data item.
-+ one-to-many(separate): if the "old set" has only one data item, and the "new set" has more than one data items.
-+ many-to-one(combine): if the "old set" has more than one data items, and the "new set" has only one data item.
-
-Note: we do not support transition animation for the case many-to-many.
-
-Then custom series find graphic elements that has `morph: true` declared in these two sets, and map them for one to one morphing or combining or separating.
-
-See examples: [custom-one-to-one-morph](${galleryEditorPath}custom-one-to-one-morph&edit=1&reset=1) and
-[custom-combine-separate-morph](${galleryEditorPath}custom-combine-separate-morph&edit=1&reset=1).
+If you enabled [universalTransition](~series-custom.universalTransition) and then the update has different types of shape, for example from `rect` to `circle`, it will apply the morph animation. Set this property to `false` to turn it off.
 {{ /if }}
 
 {{ if: ${usageType} === 'graphicComponent' }}
@@ -1292,7 +1365,7 @@ See [diffChildrenByName](~${optionPath}.${hostName}${symbolVisit}${type}.diffChi
 
 User defined data, can be visited in event listeners.
 
-```js
+```ts
 chart.on('click', function (params) {
     console.log(params.info);
 });
@@ -1351,7 +1424,7 @@ Rotation of `textContent`. In radian.
 Rect that `textContent` will be positioned.
 Default to be the bounding box of host element.
 
-```js
+```ts
 {
     x: number
     y: number
@@ -1437,11 +1510,11 @@ The rule of getting "auto-calculated-stroke":
 
 Tell echarts that I can make sure this text is inside or not.
 
-{{ if: ${usageType} === 'customSeries' }}
 {{ use: partial-custom-series-during(
     prefix = ${prefix}
 ) }}
 
+{{ if: ${usageType} === 'customSeries' }}
 {{ use: partial-custom-series-extra(
     prefix = ${prefix},
     optionPath = ${optionPath},
@@ -1568,7 +1641,6 @@ If [top](~${optionPath}.${hostName}${symbolVisit}${type}.top) or [bottom](~${opt
 
 {{ target: partial-graphic-cpt-sub-prop-transition }}
 
-{{ if: ${usageType} === 'customSeries' }}
 ###${prefix} transition(string|Array) = undefined
 
 Can be a single property name or an array of property names.
@@ -1576,39 +1648,44 @@ Enable transition animation when the specified properties changed.
 Can only specify properties that are under this `${hostProp}`.
 
 For example:
-```js
-renderItem: function (params, api) {
-    return {
-        type: 'xxx',
-        ${hostProp}: {
-            mmm: ...,
-            nnn: ...,
-            ppp: ...,
-            qqq: ...,
-            // This two props will perform transition animation.
-            transition: ['mmm', 'ppp']
-        }
-    };
+```ts
+{
+    type: 'rect',
+    ${hostProp}: {
+        ...
+        // This two props will perform transition animation.
+        transition: ['mmm', 'ppp']
+    }
 }
 ```
 We can also specify all of the properties like this:
-```js
-renderItem: function (params, api) {
-    return {
-        type: 'xxx',
-        ${hostProp}: {
-            mmm: ...,
-            nnn: ...,
-            ppp: ...,
-            qqq: ...,
-        },
-        // Indicate that all props in `${hostProp}` will
-        // have transition animation.
-        transition: '${hostProp}',
-    };
-}
+```ts
+{
+    type: 'rect',
+    ${hostProp}: {
+        ...
+    },
+    // Indicate that all props in `${hostProp}` will
+    // have transition animation.
+    transition: '${hostProp}',
+};
 ```
-{{ /if }}
+
+
+
+{{ target: partial-graphic-cpt-animation }}
+
+###${prefix} duration(number)
+
+动画时长，单位 ms
+
+###${prefix} easing(string)
+
+动画缓动。不同的缓动效果可以参考 [缓动示例](${galleryEditorPath}line-easing)。
+
+###${prefix} delay(number)
+
+动画延迟时长，单位 ms
 
 
 
@@ -1773,6 +1850,8 @@ x value of element scale and rotation origin. In pixels
 
 y value of element scale and rotation origin. In pixels.
 
+
+
 {{ target: partial-graphic-cpt-focus-blur }}
 
 ##${prefix} focus(string) = 'none'
@@ -1804,6 +1883,10 @@ The range of fade out when `focus` is enabled. Support the following configurati
 {{ target: partial-graphic-cpt-style-emphasis }}
 
 {{ if: ${usageType} === 'customSeries' }}
+##${prefix} emphasisDisabled(boolean)
+
+Whether to disable the emphasis state.
+
 ##${prefix} emphasis(Object)
 
 Emphasis state of the element.
@@ -1880,7 +1963,7 @@ Users can define their own props in this `extra` field. See [during](option.html
 
 `during` callback enable users to set props to an element in each animation frame.
 
-```js
+```ts
 (duringAPI: CustomDuringAPI) => void
 
 interface CustomDuringAPI {
@@ -1913,7 +1996,7 @@ type TransformProp =
 In most cases users do not need this `during` callback. For example, if some props are specified in [transition](option.html#series-custom.renderItem.return_rect.transition), echarts will make interpolation for these props internally and therefore have animation based on these props automatically. But if this kind of internal interpolation does not match the user requirements of animation, users can use this `during` callback to customize them.
 
 For example, if users are using [polygon](option.html#series-custom.renderItem.return_polygon) shape. The shape is described by [shape.points](option.html#series-custom.renderItem.return_polygon.shape.points), which is an points array like:
-```js
+```ts
 {
     type: 'polygon',
     shape: {
@@ -1923,7 +2006,7 @@ For example, if users are using [polygon](option.html#series-custom.renderItem.r
 }
 ```
 If users specify them into [transition](option.html#series-custom.renderItem.return_polygon.transition) like:
-```js
+```ts
 {
     type: 'polygon',
     shape: {
@@ -1934,7 +2017,7 @@ If users specify them into [transition](option.html#series-custom.renderItem.ret
 }
 ```
 Although the points will be interpolated, the consequent animation will be like that each point runs straight to the target position, which might do not match the user requirement if some kind of track like spiral is actually needed. In this case, users can use the `during` callback like that:
-```js
+```ts
 {
     type: 'polygon',
     shape: {

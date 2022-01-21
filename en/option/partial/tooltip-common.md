@@ -14,9 +14,6 @@ tooltip can be configured on different places:
 + Configured in each item of `series.data`: [series.data.tooltip](~series.data.tooltip)
 
 
----
-
-
 
 {{ target: partial-tooltip-in-coords }}
 
@@ -29,8 +26,6 @@ tooltip can be configured on different places:
 {{ /if }}
 
 tooltip settings in the coordinate system component.
-
----
 
 {{ use: partial-tooltip-introduction() }}
 
@@ -48,7 +43,7 @@ tooltip settings in the coordinate system component.
 
 {{ target: partial-tooltip-in-coords-item }}
 
-### tooltip(*)
+### tooltip(Object)
 
 {{ if: ${version} }}
 {{ use: partial-version(
@@ -72,7 +67,7 @@ tooltip settings in this ${componentItemDesc}.
 
 {{ target: partial-tooltip-in-series }}
 
-## tooltip(*)
+## tooltip(Object)
 
 tooltip settings in this series.
 
@@ -85,7 +80,7 @@ tooltip settings in this series.
 
 {{ target: partial-tooltip-in-series-data }}
 
-### tooltip(*)
+### tooltip(Object)
 
 tooltip settings in this series data.
 
@@ -99,7 +94,6 @@ tooltip settings in this series data.
 {{ target: partial-tooltip-scope-tip }}
 
 {{ if: ${scope} === 'series' }}
-<br>
 > **Notice：**series.tooltip only works when [tooltip.trigger](~tooltip.trigger) is `'item'`.<br>
 
 {{ elif: ${scope} === 'seriesData' }}
@@ -215,7 +209,7 @@ Options:
 
     Example:
 
-    ```js
+    ```ts
     // absolute position, which is 10px to the left side and 10px to the top side of the container
     position: [10, 10]
     // relative position, in the exact center of the container
@@ -225,7 +219,7 @@ Options:
 + `Function`
 
     Callback function in the following form:
-    ```js
+    ```ts
     (point: Array, params: Object|Array.<Object>, dom: HTMLDomElement, rect: Object, size: Object) => Array
     ```
 
@@ -241,14 +235,14 @@ Options:
     Or can be an object, like `{left: 10, top: 30}`, or `{right: '20%', bottom: 40}`.<br>
 
     For example:
-    ```js
+    ```ts
     position: function (point, params, dom, rect, size) {
         // fixed at top
         return [point[0], '10%'];
     }
     ```
     Or:
-    ```js
+    ```ts
     position: function (pos, params, dom, rect, size) {
         // tooltip will be fixed on the right if mouse hovering on the left,
         // and on the left if hovering on the right.
@@ -301,7 +295,7 @@ The template variables are `{a}`, `{b}`, `{c}`, `{d}` and `{e}`, which stands fo
 + Pie charts, gauge charts, funnel charts: `{a}` for series name, `{b}` for data item name, `{c}` for data value, `{d}` for percentage.
 
 **Example: **
-```js
+```ts
 formatter: '{b0}: {c0}<br />{b1}: {c1}'
 ```
 
@@ -310,7 +304,7 @@ formatter: '{b0}: {c0}<br />{b1}: {c1}'
 
 The format of callback function:
 
-```js
+```ts
 (params: Object|Array, ticket: string, callback: (ticket: string, html: string)) => string | HTMLElement | HTMLElement[]
 ```
 
@@ -336,13 +330,28 @@ The second parameter `ticket` is the asynchronous callback flag which should be 
 The third parameter `callback` is asynchronous callback. When the content of tooltip is acquired asynchronously, `ticket` and `htm` as introduced above can be used to update tooltip with callback.
 
 Example:
-```js
+```ts
 formatter: function (params, ticket, callback) {
     $.get('detail?name=' + params.name, function (content) {
         callback(ticket, toHTML(content));
     });
     return 'Loading';
 }
+```
+
+#${prefix} valueFormatter(string)
+
+Callback function for formatting the value section in tooltip.
+
+Interface:
+```ts
+(value: number | string) => string
+```
+
+Example:
+```ts
+// Add $ prefix
+valueFormatter: (value) => '$' + value.toFixed(2)
 ```
 
 #${prefix} backgroundColor(Color) = 'rgba(50,50,50,0.7)'
@@ -409,7 +418,7 @@ The text syle of tooltip's floating layer.
 
 Extra CSS style for floating layer. The following is an example for adding shadow.
 
-```js
+```ts
 extraCssText: 'box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);'
 ```
 

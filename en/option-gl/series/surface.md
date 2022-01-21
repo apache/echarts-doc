@@ -44,7 +44,7 @@ The style of the wireframe.
 
 The function expression of the surface. If you need to display a function surface, you can set the function expression by [equation](~series-surface.equation) without setting [data](~series-surface.data). For example, the ripple effect can be simulated by the following function.
 
-```js
+```ts
 equation: {
     x: {
         step: 0.1,
@@ -91,7 +91,7 @@ The dependent variable z.
 
 z is a function for [x](~series-surface.equation.x), [y](~series-surface.equation.y).
 
-```js
+```ts
 (x: number, y: number) => number
 ```
 
@@ -103,7 +103,7 @@ The parametric equations is [x](~series-surface.parametricEquation.x), [y](~seri
 
 The following parametric equation is to plot the parametric surface of a similar metal part in the previous figure:
 
-```js
+```ts
 var aa = 0.4;
 var r = 1 - aa * aa;
 var w = sqrt(r);
@@ -162,7 +162,7 @@ The maximum value of v.
 
 x is a function for [u](~series-surface.equation.u), [v](~series-surface.equation.v).
 
-```js
+```ts
 (u: number, v: number) => number
 ```
 
@@ -170,7 +170,7 @@ x is a function for [u](~series-surface.equation.u), [v](~series-surface.equatio
 
 y is a function for [u](~series-surface.equation.u), [v](~series-surface.equation.v).
 
-```js
+```ts
 (u: number, v: number) => number
 ```
 
@@ -178,7 +178,7 @@ y is a function for [u](~series-surface.equation.u), [v](~series-surface.equatio
 
 z is a function for [u](~series-surface.equation.u), [v](~series-surface.equation.v).
 
-```js
+```ts
 (u: number, v: number) => number
 ```
 
@@ -202,7 +202,7 @@ The data is an array of linear stores containing multiply `X vertices ` by `Y ve
 
 The data used in the above figure:
 
-```js
+```ts
 data: [
     [-1,-1,0],[-0.5,-1,0],[0,-1,0],[0.5,-1,0],[1,-1,0],
     [-1,-0.5,0],[-0.5,-0.5,1],[0,-0.5,0],[0.5,-0.5,-1],[1,-0.5,0],
@@ -216,7 +216,7 @@ Each item is `x`, `y`, `z`.
 
 For the parametric equation, each item needs to store five data, namely `x`, `y`, `z` and the parameters `u`, `v`. The index of the data is in the order of `u`, `v`. For example the following data:
 
-```js
+```ts
 data: [
     // v is 0, u is from -3.14 to 3.13
     [0,0,1,-3.14,0],[0,0,1,-1.57,0],[0,0,1,0,0],[0,0,1,1.57,0],[0,0,1,3.14,0],

@@ -36,7 +36,7 @@ Whether to display the indicator's name.
 
 The formatter of indicator's name, in which the string and callback function are supported. See the following example:
 
-```js
+```ts
 // using string template, the template variable should be the indicator's name {value}
 formatter: '【{value}】'
 // using callback function, the first parameter is the indicator's name, and the second parameter id the indicator's cinfiguration item
@@ -108,7 +108,7 @@ Whether to prevent calculating the scaling relative to zero. If it is set to be 
 
 Indicator of radar chart, which is used to assign multiple variables(dimensions) in radar chart. Here is the example.
 
-```js
+```ts
 indicator: [
    { name: 'Sales (sales) ', max: 6500},
    { name: 'Administration (Administration) ', max: 16000, color: 'red'}, // Set the indicator as 'red'

@@ -136,7 +136,7 @@ option = {
 
 link 是一个数组，其中每一项表示一个 link group，一个 group 中的坐标轴互相联动。例如：
 
-```js
+```ts
 link: [
     {
         // 表示所有 xAxisIndex 为 0、3、4 和 yAxisName 为 'someName' 的坐标轴联动。
@@ -154,7 +154,7 @@ link: [
 
 如上所示，每个 link group 中可以用这些方式引用坐标轴：
 
-```js
+```ts
 {
     // 以下的 'some' 均表示轴的维度，也就是表示 'x', 'y', 'radius', 'angle', 'single'
     someAxisIndex: [...], // 可以是一个数组或单值或 'all'
@@ -169,7 +169,7 @@ link: [
 
 如果 axis 的类型不同，比如 axisA type 为 'category'，axisB type 为 'time'，可以在每个 link group 中写转换函数（mapper）来进行值的转换，例如：
 
-```js
+```ts
 link: [{
     xAxisIndex: [0, 1],
     yAxisName: ['yy'],

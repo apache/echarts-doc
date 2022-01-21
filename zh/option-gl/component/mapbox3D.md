@@ -14,13 +14,13 @@
 
 然后获取到 mapbox 提供的 token 后设置到 `mapbox.accessToken` 上。
 
-```js
+```ts
 mapboxgl.accessToken = '你的 token';
 ```
 
 接下来你就可以像使用其它组件一样使用 mapbox 组件了。
 
-```js
+```ts
 chart.setOption({
     mapbox: {
         style: 'mapbox://styles/mapbox/dark-v9'
@@ -38,7 +38,7 @@ Mapbox 地图样式。同 [https://www.mapbox.com/mapbox-gl-js/style-spec/](http
 
 Mapbox 地图中心经纬度。经纬度用数组表示，例如：
 
-```js
+```ts
 mapbox3D: {
     center: [104.114129, 37.550339],
     zoom: 3

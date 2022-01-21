@@ -180,7 +180,7 @@ formatter: function (value) {
 <ExampleUIControlIcon />
 
 Icon of drag handle.
-```js
+```ts
 'M-11.39,9.77h0a3.5,3.5,0,0,1-3.5,3.5h-22a3.5,3.5,0,0,1-3.5-3.5h0a3.5,3.5,0,0,1,3.5-3.5h22A3.5,3.5,0,0,1-11.39,9.77Z'
 ```
 

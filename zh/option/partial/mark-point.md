@@ -41,6 +41,10 @@
 
 标注的高亮样式。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##" + ${prefix}
+) }}
+
 ###${prefix} label(Object)
 
 {{ use: partial-label(
@@ -89,7 +93,7 @@
 当多个属性同时存在时，优先级按上述的顺序。
 
 **示例：**
-```js
+```ts
 data: [{{ if: ${hasType} }}
     {
         name: '最大值',
@@ -183,6 +187,10 @@ data: [{{ if: ${hasType} }}
 ) }}
 
 ###${prefix} emphasis(Object)
+
+{{ use: partial-emphasis-disabled(
+    prefix = "###" + ${prefix}
+) }}
 
 ####${prefix} label(Object)
 

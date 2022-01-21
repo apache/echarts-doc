@@ -8,7 +8,7 @@ W3C 制定了无障碍富互联网应用规范集（[WAI-ARIA](https://www.w3.or
 
 对于配置项：
 
-```js
+```ts
 option = {
     aria: {
         enabled: true

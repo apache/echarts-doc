@@ -5,7 +5,7 @@
 环境贴图。支持纯色、渐变色、全景贴图的 url。默认为 `'auto'`，在配置有 [light.ambientCubemap.texture](~${componentType}.light.ambientCubemap.texture) 的时候会使用该纹理作为环境贴图。否则则不显示环境贴图。
 
 示例：
-```js
+```ts
 // 配置为全景贴图
 environment: 'asset/starfield.jpg'
 // 配置为纯黑色的背景

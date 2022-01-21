@@ -86,7 +86,7 @@ The URL of the ambient cubemap supports HDR images in the `.hdr` format. You can
 
 Example：
 
-```js
+```ts
 ambientCubemap: {
     texture: 'pisa.hdr',
     // The exposure value used when analytic hdr

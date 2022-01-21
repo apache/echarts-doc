@@ -89,7 +89,7 @@ const option = {"tooltip":{"trigger":"item","triggerOn":"mousemove"},"series":[{
 
 桑基图每一层的设置。可以逐层设置，如下：
 
-```js
+```ts
 levels: [{
     depth: 0,
     itemStyle: {
@@ -113,7 +113,7 @@ levels: [{
 
 也可以只设置某一层：
 
-```js
+```ts
 levels: [{
     depth: 3,
     itemStyle: {
@@ -138,6 +138,10 @@ levels: [{
 
 ### emphasis(Object)
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: sankey-state(
     prefix = "###",
     state = 'emphasis'
@@ -158,6 +162,10 @@ levels: [{
 
 {{ use: partial-version(
     version = "5.0.0"
+) }}
+
+{{ use: partial-select-disabled(
+    prefix = "###"
 ) }}
 
 {{ use: sankey-state(
@@ -206,6 +214,10 @@ levels: [{
 
 桑基图的高亮状态。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 {{ use: partial-focus-blur-scope(
     isGraph = true
 ) }}
@@ -236,6 +248,10 @@ levels: [{
 
 桑基图的选中状态。开启 [selectedMode](~series-sankey.selectedMode) 后有效。
 
+{{ use: partial-select-disabled(
+    prefix = "##"
+) }}
+
 {{ use: sankey-state(
     prefix = "##",
     state = 'select'
@@ -249,7 +265,7 @@ levels: [{
 
 桑基图节点数据列表。
 
-```js
+```ts
 data: [{
     name: 'node1',
     // This attribute decides the layer of the current node.
@@ -294,6 +310,10 @@ data: [{
 
 ### emphasis(Object)
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: sankey-node-state(
     prefix = "###",
     state = 'emphasis'
@@ -316,6 +336,10 @@ data: [{
     version = "5.0.0"
 ) }}
 
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
+
 {{ use: sankey-node-state(
     prefix = "###",
     state = 'select'
@@ -331,7 +355,7 @@ data: [{
 
 节点间的边。**注意: 桑基图理论上只支持有向无环图（DAG, Directed Acyclic Graph），所以请确保输入的边是无环的.** 示例：
 
-```js
+```ts
 links: [{
     source: 'n1',
     target: 'n2'
@@ -363,6 +387,10 @@ links: [{
 
 ### emphasis(Object)
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 #### lineStyle(Object)
 
 {{ use: partial-sankey-line-style(
@@ -386,6 +414,10 @@ links: [{
 
 {{ use: partial-version(
     version = "5.0.0"
+) }}
+
+{{ use: partial-select-disabled(
+    prefix = "###"
 ) }}
 
 #### lineStyle(Object)

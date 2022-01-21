@@ -35,7 +35,7 @@ ${name}描边类型。
 {{ /if }} 可实现更灵活的虚线效果。
 
 例如：
-```js
+```ts
 {
 
 {{ if: ${type} === 'border' }}borderType{{ elif: ${type} === 'text' }}textBorderType{{ else }}type{{ /if }}: [5, 10],

@@ -41,6 +41,10 @@ Mark point style.
 
 Emphasis status of mark point.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##" + ${prefix}
+) }}
+
 ###${prefix} label(Object)
 
 {{ use: partial-label(
@@ -89,7 +93,7 @@ Data array for mark points, each of which is an object. Here are some ways to as
 When multiple attributes exist, priority is as the above order.
 
 **For example: **
-```js
+```ts
 data: [{{ if: ${hasType} }}
     {
         name: 'maximum',
@@ -183,6 +187,10 @@ Mark point style.
 ) }}
 
 ###${prefix} emphasis(Object)
+
+{{ use: partial-emphasis-disabled(
+    prefix = "###" + ${prefix}
+) }}
 
 ####${prefix} label(Object)
 

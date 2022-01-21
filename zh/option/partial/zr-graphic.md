@@ -1096,93 +1096,162 @@ setOption 时指定本次对该图形元素的操作行为。
     symbolDeclare = ${symbolDeclare}
 ) }}
 
-{{ if: ${usageType} === 'customSeries' }}
-##${prefix} transition(string|Array) = ['x', 'y']
+##${prefix} transition(string|Array)
 
-可以指定一个属性名，或者一组属性名。被指定的属性值变化时，会开启过渡动画。
+可以通过`'all'`指定所有属性都开启过渡动画，也可以指定单个或一组属性。
 
-属性只可以是：
-+ Transform 相关的属性：[`'x'`](~${optionPath}.${hostName}${symbolVisit}${type}.x), [`'y'`](~${optionPath}.${hostName}${symbolVisit}${type}.y)、[`'scaleX'`](~${optionPath}.${hostName}${symbolVisit}${type}.scaleX)、[`'scaleY'`](~${optionPath}.${hostName}${symbolVisit}${type}.scaleY)、[`'rotation'`](~${optionPath}.${hostName}${symbolVisit}${type}.rotation)、[`'originX'`](~${optionPath}.${hostName}${symbolVisit}${type}.originX)、[`'originY'`](~${optionPath}.${hostName}${symbolVisit}${type}.originY)。例如：
-    ```js
-    renderItem: function (params, api) {
-        var coord = api.coord([api.value(0), api.value[1]);
-        return {
-            type: 'rect',
-            x: coord[0],
-            y: coord[1],
-            shape: {
-                x: 0,
-                y: 0,
-                width: api.value(2),
-                height: 100
-            },
-            transition: ['x', 'y', 'width']
-        }
-    }
-    ```
-+ 还可以是这三个属性 [`'shape'`](~${optionPath}.${hostName}${symbolVisit}${type}.shape)、['`style'`](~${optionPath}.${hostName}${symbolVisit}${type}.style)、[`'extra'`](~${optionPath}.${hostName}${symbolVisit}${type}.extra)。表示这三个属性中所有的子属性都开启过渡动画。例如：
-    ```js
-    renderItem: function (params, api) {
-        return {
-            type: 'rect',
-            shape: {
-                x: api.value(0),
-                y: api.value(1),
-                width: api.value(2),
-                height: api.value(3)
-            },
-            // 表示 shape 中所有属性都开启过渡动画。
-            transition: 'shape',
-        };
-    }
-    ```
-    这等价于：
-    ```js
-    renderItem: function (params, api) {
-        return {
-            type: 'rect',
-            shape: {
-                x: api.value(0),
-                y: api.value(1),
-                width: api.value(2),
-                height: api.value(3),
-                // transition 放在 shape 中，能只指定部分属性开启过渡动画。
-                transition: ['x', 'y', 'width', 'height']
-            }
-        };
-    }
-    ```
-
-当 transition 没有指定时，[`'x'`](~${optionPath}.${hostName}${symbolVisit}${type}.x) 和 [`'y'`](~${optionPath}.${hostName}${symbolVisit}${type}.y) 会默认开启过渡动画。如果想禁用这种默认，可设定：
-```js
-transition: [] // 一个空数组
+Transform 相关的属性：`'x'`、 `'y'`、`'scaleX'`、`'scaleY'`、`'rotation'`、`'originX'`、`'originY'`。例如：
+```ts
+{
+    type: 'rect',
+    x: 100,
+    y: 200,
+    transition: ['x', 'y']
+}
+```
+还可以是这三个属性 `'shape'`、`'style'`、`'extra'`。表示这三个属性中所有的子属性都开启过渡动画。例如：
+```ts
+{
+    type: 'rect',
+    shape: { // ... },
+    // 表示 shape 中所有属性都开启过渡动画。
+    transition: 'shape',
+}
 ```
 
-看这个 [例子](${galleryEditorPath}doc-example/custom-transition-simple&edit=1&reset=1)。
-{{ /if }}
+在自定义系列中，当 transition 没有指定时，`'x'` 和 `'y'` 会默认开启过渡动画。如果想禁用这种默认，可设定为空数组：`transition: []`
+
+`transition` 效果参考 [例子](${galleryEditorPath}doc-example/custom-transition-simple&edit=1&reset=1)。
+
+##${prefix} enterFrom(Object)
+
+配置图形的入场属性用于入场动画。例如：
+
+```ts
+{
+    type: 'circle',
+    x: 100,
+    enterFrom: {
+        // 淡入
+        style: { opacity: 0 },
+        // 从左飞入
+        x: 0
+    }
+}
+```
+
+##${prefix} leaveTo(Object)
+
+配置图形的退场属性用于退场动画。例如：
+
+```ts
+{
+    type: 'circle',
+    x: 100,
+    leaveTo: {
+        // 淡出
+        style: { opacity: 0 },
+        // 向右飞出
+        x: 200
+    }
+}
+```
+
+##${prefix} enterAnimation(Object)
+
+入场动画配置。
+
+{{ use: partial-graphic-cpt-animation(
+    prefix = ${prefix}
+) }}
+
+
+##${prefix} updateAnimation(Object)
+
+更新属性的动画配置。
+
+{{ use: partial-graphic-cpt-animation(
+    prefix = ${prefix}
+) }}
+
+##${prefix} leaveAnimation(Object)
+
+退场动画配置。
+
+{{ use: partial-graphic-cpt-animation(
+    prefix = ${prefix}
+) }}
+
+##${prefix} keyframeAnimation(Object|Array)
+
+关键帧动画配置。支持配置为数组同时使用多个关键帧动画。
+
+示例：
+
+```ts
+keyframeAnimation: [{
+    // 呼吸效果的缩放动画
+    duration: 1000,
+    loop: true,
+    keyframes: [{
+        percent: 0.5,
+        easing: 'sinusoidalInOut',
+        scaleX: 0.1,
+        scaleY: 0.1
+    }, {
+        percent: 1,
+        easing: 'sinusoidalInOut',
+        scaleX: 1,
+        scaleY: 1
+    }]
+}, {
+    // 平移动画
+    duration: 2000,
+    loop: true,
+    keyframes: [{
+        percent: 0,
+        x: 10
+    }, {
+        percent: 1,
+        x: 100
+    }]
+}]
+
+```
+
+假如一个属性同时被应用了关键帧动画和过渡动画，过渡动画会被忽略。
+
+{{ use: partial-graphic-cpt-animation(
+    prefix = ${prefix}
+) }}
+
+###${prefix} loop(boolean)
+
+是否循环播放动画。
+
+###${prefix} keyframes(Array)
+
+动画的关键帧。数组中每一项为一个关键帧，格式如下：
+
+```ts
+interface Keyframe {
+    // 关键帧位置。0 为第一帧，1 为最后一帧
+    // 关键帧时间为 percent * duration + delay
+    percent: number
+    // 上一个关键帧到这个关键帧运行时的缓动函数。可选
+    easing?: number
+
+    // 其它属性为图形在这个关键帧的属性，例如 x, y, style, shape 等
+}
+```
 
 {{ if: ${usageType} === 'customSeries' && ${enableMorph} }}
-##${prefix} morph(boolean) = false
+##${prefix} morph(boolean)
 
 是否开启形变动画。
 
-**什么情况下会展示出形变动画？**
+开启 [universalTransition](~series-custom.universalTransition) 后如果前后两次更新图形类型不一样，比如从`rect`变为了`circle`，会通过形变动画过渡。如果想要关闭可以设置该属性为`false`。
 
-`morph` 设置为 `true` 后，还需按照如下规则，来形成形变动画：
-
-每次走渲染流程是，自定义系列会自动比较（diff）新旧数据。在这个 diff 过程中，如果发现，一组旧数据项和一组新数据项的值相等（相等的规则是，name 相同，或者 [transition](api.html#echartsInstance.setOption) 所指定的维度上的值相同），那么我们就找到了能形成形变动画的一对候选集。
-
-在这组旧数据和这组新数据间，可能产生三种形变动画：
-+ 一对一（one-to-one）：如果新数据组和旧数据组都各自只有一个数据项。
-+ 一对多（one-to-many）：如果新数据组中有多个数据项，旧数据组中只有一个数据项。
-+ 多对一（many-to-one）：如果新数据组中只有一个数据项，旧数据组中有多个数据项。
-
-注：我们并不支持多对多（many-to-many）的情况。
-
-然后，自定义系列，会在新旧组中，寻找声明为 `morph: true` 的图形元素，并分配他们形成真正的一一映射的形变，或者分裂（separating），或者合并（combining）。
-
-参见示例：[custom-one-to-one-morph](${galleryEditorPath}custom-one-to-one-morph&edit=1&reset=1) 和
-[custom-combine-separate-morph](${galleryEditorPath}custom-combine-separate-morph&edit=1&reset=1)。
 {{ /if }}
 
 {{ if: ${usageType} === 'graphicComponent' }}
@@ -1278,7 +1347,7 @@ z 方向的高度，决定层叠关系。
 
 用户定义的任意数据，可以在 event listener 中访问，如：
 
-```js
+```ts
 chart.on('click', function (params) {
     console.log(params.info);
 });
@@ -1337,7 +1406,7 @@ Position of `textContent`.
 `textContent` 根据此矩形来布局位置。
 默认是节点的包围盒。
 
-```js
+```ts
 {
     x: number
     y: number
@@ -1423,11 +1492,11 @@ Position of `textContent`.
 
 如果确定文本是在节点中的话，则此可设置为 `true`，避免 echarts 额外猜测。
 
-{{ if: ${usageType} === 'customSeries' }}
 {{ use: partial-custom-series-during(
     prefix = ${prefix}
 ) }}
 
+{{ if: ${usageType} === 'customSeries' }}
 {{ use: partial-custom-series-extra(
     prefix = ${prefix},
     optionPath = ${optionPath},
@@ -1551,7 +1620,6 @@ Position of `textContent`.
 
 {{ target: partial-graphic-cpt-sub-prop-transition }}
 
-{{ if: ${usageType} === 'customSeries' }}
 ###${prefix} transition(string|Array) = undefined
 
 可以是一个属性名，或者一组属性名。
@@ -1559,40 +1627,39 @@ Position of `textContent`.
 只可以指定本 `${hostProp}` 下的属性。
 
 例如：
-```js
-renderItem: function (params, api) {
-    return {
-        type: 'xxx',
-        ${hostProp}: {
-            mmm: ...,
-            nnn: ...,
-            ppp: ...,
-            qqq: ...,
-            // 这两个属性会开启过渡动画。
-            transition: ['mmm', 'ppp']
-        }
-    };
+```ts
+{
+    type: 'rect',
+    ${hostProp}: {
+        // ...
+        // 这两个属性会开启过渡动画。
+        transition: ['mmm', 'ppp']
+    }
 }
 ```
 我们这样可以指定 `${hostProp}` 下所有属性开启过渡动画：
-```js
-renderItem: function (params, api) {
-    return {
-        type: 'xxx',
-        ${hostProp}: {
-            mmm: ...,
-            nnn: ...,
-            ppp: ...,
-            qqq: ...,
-        },
-        // `${hostProp}` 下所有属性开启过渡动画。
-        transition: '${hostProp}',
-    };
+```ts
+{
+    type: 'rect',
+    ${hostProp}: { ... },
+    // `${hostProp}` 下所有属性开启过渡动画。
+    transition: '${hostProp}',
 }
 ```
-{{ /if }}
 
+{{ target: partial-graphic-cpt-animation }}
 
+###${prefix} duration(number)
+
+动画时长，单位 ms
+
+###${prefix} easing(string)
+
+动画缓动。不同的缓动效果可以参考 [缓动示例](${galleryEditorPath}line-easing)。
+
+###${prefix} delay(number)
+
+动画延迟时长，单位 ms
 
 {{ target: partial-graphic-cpt-sub-prop-xy }}
 
@@ -1787,6 +1854,10 @@ renderItem: function (params, api) {
 {{ target: partial-graphic-cpt-style-emphasis }}
 
 {{ if: ${usageType} === 'customSeries' }}
+##${prefix} emphasisDisabled(boolean)
+
+是否关闭高亮状态。
+
 ##${prefix} emphasis(Object)
 
 图形元素的高亮状态
@@ -1863,7 +1934,7 @@ renderItem: function (params, api) {
 
 在动画的每一帧里，用户可以使用 `during` 回调来设定节点的各种属性。
 
-```js
+```ts
 (duringAPI: CustomDuringAPI) => void
 
 interface CustomDuringAPI {
@@ -1896,7 +1967,7 @@ type TransformProp =
 在绝大多数场景下，用户不需要这个 `during` 回调。因为，假如属性被设定到 [transition](option.html#series-custom.renderItem.return_rect.transition) 中后，echarts 会自动对它进行插值，并且基于这些插值形成动画。但是，如果这些插值形成的动画不满足用户需求，那么用户可以使用 `during` 回调来定制他们。
 
 例如，如果用户使用 [polygon](option.html#series-custom.renderItem.return_polygon) 画图形，图形的形状会由 [shape.points](option.html#series-custom.renderItem.return_polygon.shape.points) 来定义，形如：
-```js
+```ts
 {
     type: 'polygon',
     shape: {
@@ -1906,7 +1977,7 @@ type TransformProp =
 }
 ```
 如果用户指定了 [transition](option.html#series-custom.renderItem.return_polygon.transition) 如：
-```js
+```ts
 {
     type: 'polygon',
     shape: {
@@ -1917,7 +1988,7 @@ type TransformProp =
 }
 ```
 尽管这些 `points` 会被 echarts 自动插值，但是这样形成的动画里，这些点会直线走向目标位置。假如用户需求是，这些点要按照某种特定的路径（如弧线、螺旋）来移动，则这就不满足了。所以在这种情况下，可以使用 `during` 回调如下：
-```js
+```ts
 {
     type: 'polygon',
     shape: {

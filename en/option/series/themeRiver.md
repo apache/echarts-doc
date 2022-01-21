@@ -102,6 +102,10 @@ style of each ribbon-shape river branch in theme river.
 
 Configurations of emphasis state.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: themeRiver-state(
@@ -130,6 +134,10 @@ Configurations of blur state.
 
 Configurations of select state.
 
+{{ use: partial-select-disabled(
+    prefix = "##"
+) }}
+
 {{ use: themeRiver-state(
     prefix = "##",
     state = 'select'
@@ -141,7 +149,7 @@ Configurations of select state.
 
 ## data(Array)
 
-```js
+```ts
 data: [
     ["2015/11/09",10,"DQ"],
     ["2015/11/10",10,"DQ"],

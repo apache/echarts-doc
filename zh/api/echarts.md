@@ -4,7 +4,7 @@
 全局 echarts 对象，在 script 标签引入 `echarts.js` 文件后获得，或者在 AMD 环境中通过 `require('echarts')` 获得。
 
 ## init(Function)
-```js
+```ts
 (dom: HTMLDivElement|HTMLCanvasElement, theme?: Object|string, opts?: {
     devicePixelRatio?: number,
     renderer?: string,
@@ -41,13 +41,13 @@
     + `locale` 使用的语言，内置 `'ZH'` 和 `'EN'` 两个语言，也可以使用 [echarts.registerLocale](~echarts.registerLocale) 方法注册新的语言包。目前支持的语言见 [src/i18n](https://github.com/apache/echarts/tree/release/src/i18n)。
 
     如果不指定主题，也需在传入`opts`前先传入`null`，如：
-    ```js
+    ```ts
     const chart = echarts.init(dom, null, {renderer: 'svg'});
     ```
 
 
 ## connect(Function)
-```js
+```ts
 (group:string|Array)
 ```
 
@@ -58,7 +58,7 @@
     group 的 id，或者图表实例的数组。
 
 **示例：**
-```js
+```ts
 // 分别设置每个实例的 group id
 chart1.group = 'group1';
 chart2.group = 'group1';
@@ -68,7 +68,7 @@ echarts.connect([chart1, chart2]);
 ```
 
 ## disconnect(Function)
-```js
+```ts
 (group:string)
 ```
 解除图表实例的联动，如果只需要移除单个实例，可以将通过将该图表实例 `group` 设为空。
@@ -79,13 +79,13 @@ echarts.connect([chart1, chart2]);
     group 的 id。
 
 ## dispose(Function)
-```js
+```ts
 (target: ECharts|HTMLDivElement|HTMLCanvasElement)
 ```
 销毁实例，实例销毁后无法再被使用。
 
 ## getInstanceByDom(Function)
-```js
+```ts
 (target: HTMLDivElement|HTMLCanvasElement) => ECharts
 ```
 获取 dom 容器上的实例。
@@ -98,7 +98,7 @@ echarts.connect([chart1, chart2]);
 
 注意：该方法必须在`echarts.init`之前使用。
 
-```js
+```ts
 // 引入 echarts 核心模块，核心模块提供了 echarts 使用必须要的接口。
 import * as echarts from 'echarts/core';
 // 引入柱状图图表，图表后缀都为 Chart
@@ -122,7 +122,7 @@ echarts.use(
 更详细的使用方式见 [在项目中引入 Apache ECharts](${handbookPath}basics/import) 一文
 
 ## registerMap(Function)
-```js
+```ts
 (
     mapName: string,
     opt: {
@@ -170,7 +170,7 @@ echarts.use(
         只在 `geoJSON` 中生效，`svg` 中不生效。
 
         **示例 [USA Population Estimates](${galleryEditorPath}map-usa)：**
-        ```js
+        ```ts
         echarts.registerMap('USA', usaJson, {
             // 把阿拉斯加移到美国主大陆左下方
             Alaska: {
@@ -198,12 +198,12 @@ echarts.use(
 
 
 ## getMap(Function)
-```js
+```ts
 (mapName: string) => Object
 ```
 获取已注册的地图，返回的对象类型如下
 
-```js
+```ts
 {
     // 地图的 geoJSON 数据
     geoJSON: Object,
@@ -218,7 +218,7 @@ echarts.use(
 
 
 ## registerTheme(Function)
-```js
+```ts
 (themeName: string, theme: Object)
 ```
 
@@ -228,7 +228,7 @@ echarts.use(
 
 > 从 `5.0.0` 开始支持
 
-```js
+```ts
 (locale: string, localeCfg: Object)
 ```
 

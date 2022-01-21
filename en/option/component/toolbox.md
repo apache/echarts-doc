@@ -225,14 +225,14 @@ Whether it is read-only.
 
 #### optionToContent(Function)
 
-```js
+```ts
 (option:Object) => HTMLDomElement|string
 ```
 
 Define a function to present dataView. It is used to replace default textarea for richer data editing. It can return a DOM object, or an HTML string.
 
 For example:
-```js
+```ts
 optionToContent: function(opt) {
     var axisData = opt.xAxis[0].data;
     var series = opt.series;
@@ -255,7 +255,7 @@ optionToContent: function(opt) {
 
 #### contentToOption(Function)
 
-```js
+```ts
 (container:HTMLDomElement, option:Object) => Object
 ```
 
@@ -353,7 +353,7 @@ Style of brush rectangle.
 
 Magic type switching.
 **示例: **
-```js
+```ts
 feature: {
     magicType: {
         type: ['line', 'bar', 'stack']
@@ -494,7 +494,7 @@ Title.
 Tooltip configuration for toolbox tooltip, which is similar to [tooltip](~tooltip). It is not shown by default. If you wish to set special style for toolbox icon label (especially when using CSS to control text style), you may set as the following example:
 
 
-```js
+```ts
 option = {
     tooltip: {
         show: true // include tooltip component for the feature

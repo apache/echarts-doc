@@ -46,6 +46,10 @@ Mark line style.
 
 Emphasis status of mark line.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##" + ${prefix}
+) }}
+
 ###${prefix} label(Object)
 
 {{ use: mark-line-label(
@@ -338,6 +342,10 @@ Label of this data item, which will be merged with `label` of starting point and
 ) }}
 
 #${prefix} emphasis(Object)
+
+{{ use: partial-emphasis-disabled(
+    prefix = "#" + ${prefix}
+) }}
 
 ##${prefix} lineStyle(Object)
 

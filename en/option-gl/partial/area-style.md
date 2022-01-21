@@ -6,7 +6,7 @@ The color of the graphics area. {{ if: ${useColorPalatte} }} Color is taken from
 
 In addition to color strings, RGBA values represented by arrays are supported, for example:
 
-```js
+```ts
 // pure white
 [1, 1, 1, 1]
 ```

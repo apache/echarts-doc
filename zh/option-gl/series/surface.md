@@ -43,7 +43,7 @@
 
 曲面的函数表达式。如果需要展示的是函数曲面，可以不设置 [data](~series-surface.data)，通过 [equation](~series-surface.equation) 去声明函数表达式。例如通过下面这个函数可以模拟波纹效果。
 
-```js
+```ts
 equation: {
     x: {
         step: 0.1,
@@ -90,7 +90,7 @@ y 的最大值。
 
 z 为关于 [x](~series-surface.equation.x), [y](~series-surface.equation.y) 的函数。
 
-```js
+```ts
 (x: number, y: number) => number
 ```
 
@@ -102,7 +102,7 @@ z 为关于 [x](~series-surface.equation.x), [y](~series-surface.equation.y) 的
 
 下面的参数方程就是绘制前面图中类似一个金属零件的参数曲面的：
 
-```js
+```ts
 var aa = 0.4;
 var r = 1 - aa * aa;
 var w = sqrt(r);
@@ -161,7 +161,7 @@ v 的最大值。
 
 x 为关于 [u](~series-surface.equation.u), [v](~series-surface.equation.v) 的函数。
 
-```js
+```ts
 (u: number, v: number) => number
 ```
 
@@ -169,7 +169,7 @@ x 为关于 [u](~series-surface.equation.u), [v](~series-surface.equation.v) 的
 
 x 为关于 [u](~series-surface.equation.u), [v](~series-surface.equation.v) 的函数。
 
-```js
+```ts
 (u: number, v: number) => number
 ```
 
@@ -177,7 +177,7 @@ x 为关于 [u](~series-surface.equation.u), [v](~series-surface.equation.v) 的
 
 x 为关于 [u](~series-surface.equation.u), [v](~series-surface.equation.v) 的函数。
 
-```js
+```ts
 (u: number, v: number) => number
 ```
 
@@ -201,7 +201,7 @@ x 为关于 [u](~series-surface.equation.u), [v](~series-surface.equation.v) 的
 
 上图使用的数据：
 
-```js
+```ts
 data: [
     [-1,-1,0],[-0.5,-1,0],[0,-1,0],[0.5,-1,0],[1,-1,0],
     [-1,-0.5,0],[-0.5,-0.5,1],[0,-0.5,0],[0.5,-0.5,-1],[1,-0.5,0],
@@ -215,7 +215,7 @@ data: [
 
 对于参数方程来说，每一项需要存储五个数据，分别是 `x`, `y`, `z` 和参数 `u`, `v`。而数据的索引按照`u`, `v` 的顺序。例如下面的数据：
 
-```js
+```ts
 data: [
     // v 为 0，u 从 -3.14 到 3.13
     [0,0,1,-3.14,0],[0,0,1,-1.57,0],[0,0,1,0,0],[0,0,1,1.57,0],[0,0,1,3.14,0],

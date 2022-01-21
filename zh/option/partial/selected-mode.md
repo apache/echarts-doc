@@ -9,7 +9,7 @@
 ) }}
 {{ /if }}
 
-<ExampleUIControlEnum options="false,true,single,multiple" />
+<ExampleUIControlEnum options="false,true,single,multiple,series" />
 
-选中模式的配置，表示是否支持多个选中，默认关闭，支持布尔值和字符串，字符串取值可选`'single'`，`'multiple'`，分别表示单选还是多选。
+选中模式的配置，表示是否支持多个选中，默认关闭，支持布尔值和字符串，字符串取值可选`'single'`，`'multiple'`，`'series'` 分别表示单选，多选以及选择整个系列。
 

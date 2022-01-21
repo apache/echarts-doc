@@ -113,6 +113,10 @@ box 的宽度的上下限。数组的意思是：`[min, max]`。
 
 盒须图高亮样式
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 {{ use: partial-focus-blur-scope() }}
 
 ### itemStyle(Object)
@@ -120,7 +124,7 @@ box 的宽度的上下限。数组的意思是：`[min, max]`。
 {{ use: partial-item-style(
     prefix = "###",
     name = "boxplot",
-    hasInherit=true,
+    hasInherit = true,
     defaultColor = "#fff",
     defaultBorderWidth = 2,
     defaultShadowBlur = 5,
@@ -151,6 +155,10 @@ box 的宽度的上下限。数组的意思是：`[min, max]`。
 ) }}
 
 数据选中时的图形样式和标签样式。开启 [selectedMode](~series-funnel.selectedMode) 后有效。
+
+{{ use: partial-select-disabled(
+    prefix = "##"
+) }}
 
 ### itemStyle(Object)
 
@@ -234,6 +242,10 @@ ECharts 并不内置对原始数据的处理，输入给 `boxplot` 的数据须�
 
 盒须图单个数据高亮状态配置。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 #### itemStyle(Object)
 
 {{ use: partial-item-style(
@@ -264,6 +276,10 @@ ECharts 并不内置对原始数据的处理，输入给 `boxplot` 的数据须�
 ) }}
 
 盒须图单个数据选中状态配置。
+
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
 
 #### itemStyle(Object)
 

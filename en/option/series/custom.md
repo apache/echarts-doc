@@ -30,7 +30,7 @@ In most cases, [series.encode](~series-custom.encode) needs to be specified when
 [series.dimensions](~series-custom.dimensions) can also be specified to defined names of each dimensions, which will be displayed in tooltip.
 
 For example:
-```js
+```ts
 series: {
     type: 'custom',
     renderItem: function () {
@@ -60,7 +60,7 @@ When use `custom series` with [dataZoom](~dataZoom), [dataZoom.filterMode](~data
 <br>
 **Event listener**
 
-```js
+```ts
 chart.setOption({
     // ...
     series: {
@@ -125,7 +125,7 @@ Parameters of `renderItem`.
 
 The first parameter of `renderItem`, including:
 
-```js
+```ts
 {
     context: // {string} An object that developers can store something temporarily here. Life cycle: current round of rendering.
     seriesId: // {string} The id of this series.
@@ -337,7 +337,7 @@ Obtain font string, which can be used on style setting directly.
 If nothing should be rendered in this data item, just returns nothing.
 
 For example:
-```js
+```ts
 // Returns a rectangular.
 {
     type: 'rect',
@@ -348,7 +348,7 @@ For example:
 }
 ```
 
-```js
+```ts
 // Returns a group of elements.
 {
     type: 'group',
@@ -493,7 +493,7 @@ Value of data item.
 
 For example:
 
-```js
+```ts
 var option = {
     ...,
     series: [{

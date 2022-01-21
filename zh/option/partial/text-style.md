@@ -67,7 +67,7 @@
 
 例如：
 
-```js
+```ts
 label: {
     // 在文本中，可以对部分文本采用 rich 中定义样式。
     // 这里需要在文本中使用标记符号：
@@ -221,7 +221,7 @@ ${name}文字的字体大小。
 
 也可以直接使用图片，例如：
 
-```js
+```ts
 backgroundColor: {
     image: 'xxx/xxx.png'
     // 这里可以是图片的 URL，
@@ -386,7 +386,7 @@ backgroundColor: {
 
 `rich` 中如果没有设置 `${name}`，则会取父层级的 `${name}`。例如：
 
-```js
+```ts
 {
     ${name}: ${value},
     rich: {

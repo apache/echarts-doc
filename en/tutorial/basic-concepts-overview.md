@@ -56,7 +56,7 @@ Notice: although [series](option.html#series) is a kind of component, sometimes 
 
 We have met the term `option` above. Users should use `option` to describe all of their requirements and input it to echarts. The requirements includes: "what does the data like", "what the diagram we need", "what components we need", "what the user interactions we need", etc. In short, `option` defines: `data`, `visual mapping`, `interaction`.
 
-```js
+```ts
 // Create an echarts instance.
 var dom = document.getElementById('dom-id');
 var chart = echarts.init(dom);
@@ -98,7 +98,7 @@ chart.setOption(option);
 
 Data is put in [series.data](option.html#series.data) in the above example. And we give another example showing another way, where each series retrieves data from [dataset](option.html#dataset):
 
-```js
+```ts
 var option = {
     dataset: {
         source: [

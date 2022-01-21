@@ -12,7 +12,7 @@ Since we added the new [tree-shaking API](tutorial.html#Use%20ECharts%20with%20b
 #### Default theme
 
 First of all, the default theme has been changed. `v5` has made a lot of changes and optimizations on the theme design. If you still want to keep the colors of the old version, you can manually declare the colors as follows.
-```js
+```ts
 chart.setOption({
     color: [
         '#c23531', '#2f4554', '#61a0a8', '#d48265', '#91c7ae', '#749f83',
@@ -22,7 +22,7 @@ chart.setOption({
 });
 ```
 Or, to make a simple `v4` theme.
-```js
+```ts
 var themeEC4 = {
     color: [
         '#c23531', '#2f4554', '#61a0a8', '#d48265', '#91c7ae', '#749f83',
@@ -41,7 +41,7 @@ chart.setOption(/* ... */);
 Since `v5`, echarts only provides `named exports`.
 
 So if you are importing `echarts` like this:
-```js
+```ts
 import echarts from 'echarts';
 // Or import core module
 import echarts from 'echarts/lib/echarts';
@@ -49,7 +49,7 @@ import echarts from 'echarts/lib/echarts';
 
 It will throw error in `v5`. You need to change the code as follows to import the entire module.
 
-```js
+```ts
 import * as echarts from 'echarts';
 // Or
 import * as echarts from 'echarts/lib/echarts';
@@ -60,7 +60,7 @@ import * as echarts from 'echarts/lib/echarts';
 
 In 5.0.1, we introduced the new [tree-shaking API](tutorial.html#Use%20ECharts%20with%20bundler%20and%20NPM)
 
-```js
+```ts
 import * as echarts from 'echarts/core';
 import { BarChart } from 'echarts/charts';
 import { GridComponent } from 'echarts/components';
@@ -74,7 +74,7 @@ To make it easier for you to know which modules you need to import based on your
 
 In most cases, we recommend using the new tree-shaking interface whenever possible, as it maximizes the power of the packaging tool tree-shaking and effectively resolves namespace conflicts and prevents the exposure of internal structures. If you are still using the CommonJS method of writing modules, the previous approach is still supported:
 
-```js
+```ts
 const echarts = require('echarts/lib/echarts');
 require('echarts/lib/chart/bar');
 require('echarts/lib/component/grid');
@@ -90,25 +90,25 @@ Second, because our source code has been rewritten using TypeScript, `v5` will n
 In order to keep the size of the bundle small enough, we remove some dependencies that would have been imported by default. For example, as mentioned above, when using the new on-demand interface, `CanvasRenderer` is no longer introduced by default, which ensures that unneeded Canvas rendering code is not imported when only SVG rendering mode is used, and in addition, the following dependencies are adjusted.
 
 + The right-angle coordinate system component is no longer introduced by default when using line charts and bar charts, so the following introduction method was used before
-```js
+```ts
 const echarts = require('echarts/lib/echarts');
 require('echarts/lib/chart/bar');
 require('echarts/lib/chart/line');
 ```
 Need to introduce the `grid` component separately again
-```js
+```ts
 require('echarts/lib/component/grid');
 ```
 
 Reference issues: [#14080](https://github.com/apache/echarts/issues/14080), [#13764](https://github.com/apache/echarts/issues/13764)
 
 + `aria` components are no longer imported by default. You need import it manually if necessary.
-```js
+```ts
 import { AriaComponent } from 'echarts/components';
 echarts.use(AriaComponent);
 ```
 Or
-```js
+```ts
 require('echarts/lib/component/aria');
 ```
 

@@ -155,6 +155,10 @@ const option = {
 
 高亮的图形和标签样式。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##"
+) }}
+
 ### scale(boolean) = true
 
 <ExampleUIControlBoolean default="true" />
@@ -188,6 +192,10 @@ const option = {
 ) }}
 
 选中状态的配置。开启 [selectedMode](~series-scatter.selectedMode) 后有效。
+
+{{ use: partial-select-disabled(
+    prefix = "##"
+) }}
 
 {{ use: scatter-state(
     prefix = "##",
@@ -268,6 +276,10 @@ const option = {
 
 单个数据的高亮图形和标签样式。
 
+{{ use: partial-emphasis-disabled(
+    prefix = "###"
+) }}
+
 {{ use: scatter-state(
     prefix = "###",
     state = 'emphasis'
@@ -293,6 +305,10 @@ const option = {
 ) }}
 
 单个数据的选中图形和标签样式。
+
+{{ use: partial-select-disabled(
+    prefix = "###"
+) }}
 
 {{ use: scatter-state(
     prefix = "###",

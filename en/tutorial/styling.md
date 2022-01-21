@@ -9,7 +9,7 @@ Apache ECharts<sup>TM</sup> provides a rich amount of configurable items, which 
 
 [Getting started tutorial](~Get%20Started%20with%20ECharts%20in%205%20minutes) introduced how to make a simple bar chart. This time, we are going to make a pie chart. Pie charts use arc length of fans to represent ratio of a certain series in total share. It's data format is simpler than bar chart, because it only contains one dimension without category. Besides, since it's not in rectangular system, it doesn't need `xAxis`、`yAxis` either.
 
-```js
+```ts
 myChart.setOption({
     series : [
         {
@@ -36,7 +36,7 @@ Here, the value of `data` is not a single value, as that of the example in get s
 
 [Pie charts](option.html#series-pie) of EChart can be made into Nightingale rose charts with [roseType](option.html#series-pie.roseType) field.
 
-```js
+```ts
 roseType: 'angle'
 ```
 
@@ -48,7 +48,7 @@ Nightingale rose charts use radius to represent data value.
 
 Commonly used styles of ECharts, like shadow, opacity, color, border-color, border-width, and etc., are set by [itemStyle](~series-pie.itemStyle) in series.
 
-```js
+```ts
 itemStyle: {
     // shadow size
     shadowBlur: 200,
@@ -67,7 +67,7 @@ The effect after added shadow is:
 
 Each `itemStyle` has `emphasis` as the highlighted style when mouse hovered. The last example shows the effect of adding shadow by default. But in most situations, we may probably need to add shadow to emphasis when mouse is hovered.
 
-```js
+```ts
 itemStyle: {
     emphasis: {
         shadowBlur: 200,
@@ -82,7 +82,7 @@ Now, we need to change the whole theme as that shown in the example at the begin
 
 Background is a global configurable object, so we can set it directly with [backgroundColor](option.html#backgroundColor) of option.
 
-```js
+```ts
 setOption({
     backgroundColor: '#2c343c'
 })
@@ -90,7 +90,7 @@ setOption({
 
 Text style can also be set globally in [textStyle](option.html#textStyle).
 
-```js
+```ts
 setOption({
     textStyle: {
         color: 'rgba(255, 255, 255, 0.3)'
@@ -100,7 +100,7 @@ setOption({
 
 On the other hand, we can also set them in [label.textStyle](option.html#series-pie.label.textStyle) of each series.
 
-```js
+```ts
 label: {
     textStyle: {
         color: 'rgba(255, 255, 255, 0.3)'
@@ -110,7 +110,7 @@ label: {
 
 We also need to set line color of pie chart to be lighter.
 
-```js
+```ts
 labelLine: {
     lineStyle: {
         color: 'rgba(255, 255, 255, 0.3)'
@@ -129,7 +129,7 @@ Similar to `itemStyle`, `label` and `labelLine` also have `emphasis` children.
 
 Fan colors can be set in `itemStyle`:
 
-```js
+```ts
 itemStyle: {
     // 设置扇形的颜色
     color: '#c23531',
@@ -144,7 +144,7 @@ This is quite similar to our expect effect, except that fan colors should be mad
 
 Each fan's color can be set under `data`:
 
-```js
+```ts
 data: [{
     value:400,
     name:'搜索引擎',
@@ -156,7 +156,7 @@ data: [{
 
 But since we only need the variation of color in this example, there's a simpler way to map data value to lightness through [visualMap](option.html#visualMap).
 
-```js
+```ts
 visualMap: {
     // hide visualMap component; use lightness mapping only
     show: false,

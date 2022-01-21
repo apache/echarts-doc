@@ -222,7 +222,7 @@ If set as `function`:
 The string to be displayed.
 
 For example:
-```js
+```ts
 formatter: function (params) {
     // If axis.type is 'time'
     return 'some text' + echarts.format.formatTime(params.value);
@@ -288,7 +288,7 @@ It is valid when [axisPointer.type](~tooltip.axisPointer.type) is `'shadow'`.
 
 Each item also includes axis infomation:
 
-```js
+```ts
 {
     axisDim: 'x', // 'x', 'y', 'angle', 'radius', 'single'
     axisId: 'xxx',

@@ -29,6 +29,10 @@ Style of the mark area.
 
 Emphasis status of mark area.
 
+{{ use: partial-emphasis-disabled(
+    prefix = "##" + ${prefix}
+) }}
+
 ###${prefix} label(Object)
 
 {{ use: partial-label(
@@ -240,6 +244,10 @@ Label style of start point and end point will be merged together.
 ) }}
 
 #${prefix} emphasis(Object)
+
+{{ use: partial-emphasis-disabled(
+    prefix = "#" + ${prefix}
+) }}
 
 ##${prefix} itemStyle(Object)
 

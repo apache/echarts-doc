@@ -67,7 +67,7 @@ Ellipsis to be displayed when `overflow` is set to `truncate`.
 
 "Rich text styles" can be defined in this `rich` property. For example:
 
-```js
+```ts
 label: {
     // Styles defined in 'rich' can be applied to some fragments
     // of text by adding some markers to those fragment, like
@@ -221,7 +221,7 @@ Can be color string, like `'#123234'`, `'red'`, `'rgba(0,23,11,0.3)'`.
 
 Or image can be used, for example:
 
-```js
+```ts
 backgroundColor: {
     image: 'xxx/xxx.png'
     // It can be URL of a image,
@@ -388,7 +388,7 @@ If set as `'inherit'`, the color will assigned as visual color, such as series c
 
 If `${name}` is not set in `rich`, `${name}` in parent level will be used. For example:
 
-```js
+```ts
 {
     ${name}: ${value},
     rich: {

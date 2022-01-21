@@ -10,7 +10,7 @@ Geographic coorinate system component is used to draw maps, which also supports 
 
 From `3.1.10`, geo component also supports mouse events, whose parameters are:
 
-```js
+```ts
 {
     componentType: 'geo',
     // geo component's index in option
@@ -41,7 +41,7 @@ Whether to show the geo component.
 
 Configure style for specified regions.
 For example:
-```js
+```ts
 regions: [{
     name: 'Guangdong',
     itemStyle: {

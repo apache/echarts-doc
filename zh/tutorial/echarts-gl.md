@@ -22,7 +22,7 @@ npm install echarts
 npm install echarts-gl
 ```
 
-```js
+```ts
 // 通过 ES6 的 import 语法引入 ECharts 和 ECharts GL
 import echarts from 'echarts';
 import 'echarts-gl';
@@ -38,7 +38,7 @@ import 'echarts-gl';
 
 下面这段代码就声明了一个最简单的三维笛卡尔坐标系
 
-```js
+```ts
 var option = {
     // 需要注意的是我们不能跟 grid 一样省略 grid3D
     grid3D: {},
@@ -62,7 +62,7 @@ var option = {
 
 下面这段是生成正态分布数据的代码，你可以先不用关心这段代码是怎么工作的，只需要知道它生成了一份三维的正态分布数据放在`data`数组中。
 
-```js
+```ts
 function makeGaussian(amplitude, x0, y0, sigmaX, sigmaY) {
     return function (amplitude, x0, y0, sigmaX, sigmaY, x, y) {
         var exponent = -(
@@ -87,7 +87,7 @@ for (var i = 0; i < 1000; i++) {
 
 生成的正态分布的数据大概长这样：
 
-```js
+```ts
 [
   [46.74395071259907, -33.88391024738553, 0.7754030099768191],
   [-18.45302873809771, 16.88114775416834, 22.87772504105404],
@@ -100,7 +100,7 @@ for (var i = 0; i < 1000; i++) {
 
 然后我们可以使用 GL 提供的 [scatter3D](option-gl.html#series-scatter3D) 系列类型把这些数据画成三维空间中正态分布的点。
 
-```js
+```ts
 option = {
     grid3D: {},
     xAxis3D: {},
@@ -123,7 +123,7 @@ option = {
 
 格式化一下可以看到这份数据是很传统转成 JSON 后的表格格式。第一行是每一列数据的属性名，可以从这个属性名看出来每一列数据的含义，分别是人均收入，人均寿命，人口数量，国家和年份。
 
-```js
+```ts
 [
     ["Income", "Life Expectancy", "Population", "Country", "Year"],
     [815, 34.05, 351014, "Australia", 1800],
@@ -137,7 +137,7 @@ option = {
 
 在 ECharts 4 中我们可以使用 dataset 组件非常方便地引入这份数据。如果对 dataset 还不熟悉的话可以看[dataset使用教程](${handbookPath}concepts/dataset)
 
-```js
+```ts
 $.get('data/asset/data/life-expectancy-table.json', function (data) {
     myChart.setOption({
         grid3D: {},
@@ -163,7 +163,7 @@ $.get('data/asset/data/life-expectancy-table.json', function (data) {
 
 使用 encode 属性我们还可以将指定列的数据映射到指定的坐标轴上，从而省去很多繁琐的数据转换代码。例如我们将 x 轴换成是国家（Country），y 轴换成年份（Year），z 轴换成收入（Income），可以看到不同国家不同年份的人均收入分布。
 
-```js
+```ts
 myChart.setOption({
     grid3D: {},
     xAxis3D: {
@@ -197,7 +197,7 @@ myChart.setOption({
 
 刚才多维数据的例子中，我们还有几个维度（列）没能表达出来，利用 ECharts 内置的 [visualMap](option.html#visualMap) 组件我们可以继续将第四个维度编码成颜色。
 
-```js
+```ts
 myChart.setOption({
     grid3D: {
         viewControl: {
@@ -260,7 +260,7 @@ myChart.setOption({
 
 还有机器学习中会用到的三维曲面图 [surface](option-gl.html#series-surface)，三维曲面图常用来表达平面上的数据走势，刚才的正态分布数据我们也可以像下面这样画成曲面图。
 
-```js
+```ts
 var data = [];
 // 曲面图要求给入的数据是网格形式按顺序分布。
 for (var y = -50; y <= 50; y++) {
