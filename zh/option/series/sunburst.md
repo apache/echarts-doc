@@ -96,6 +96,10 @@
     useDecal = ${state} === 'normal'
 ) }}
 
+{{ use: partial-sector-border-radius(
+    prefix = "#" + ${prefix},
+    type = "旭日图"
+) }}
 
 
 {{ target: partial-sunburst-state }}
@@ -108,6 +112,11 @@
 {{ use: partial-sunburst-itemStyle-props(
     prefix = ${prefix},
     state = ${state}
+) }}
+
+{{ use: partial-sector-border-radius(
+    prefix = "#" + ${prefix},
+    type = "旭日图"
 ) }}
 
 

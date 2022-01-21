@@ -200,8 +200,9 @@ Can be 0 - 180 degree.
     useDecal = true
 ) }}
 
-{{ use: partial-pie-border-radius(
-    prefix = '##'
+{{ use: partial-sector-border-radius(
+    prefix = '##',
+    type = "pie"
 ) }}
 
 ## emphasis(Object)
@@ -330,8 +331,9 @@ The label configuration of a single sector.
     useDecal = true
 ) }}
 
-{{ use: partial-pie-border-radius(
-    prefix = "###"
+{{ use: partial-sector-border-radius(
+    prefix = "###",
+    type = "pie"
 ) }}
 
 ### emphasis(Object)
@@ -492,26 +494,8 @@ Label rotation.
     hasInherit = ${state} === 'emphasis'
 ) }}
 
-{{ use: partial-pie-border-radius(
-    prefix = "#" + ${prefix}
+{{ use: partial-sector-border-radius(
+    prefix = "#" + ${prefix},
+    type = "pie"
 ) }}
-
-
-
-{{ target: partial-pie-border-radius }}
-
-#${prefix} borderRadius(number|string|Array)
-
-<ExampleUIControlPercentVector min="0" dims="Inner,Outer" default="0,0" />
-
-{{ use: partial-version(
-    version = "5.0.0"
-) }}
-
-To specify the roundness for corners of the sectors of the pie chart. It can be either a specific pixel value or a percentage value relative to the radius of the sector.
-
-+ `borderRadius: 10`: means that both inner corner radius and outer corner radius are `10px`.
-+ `borderRadius: '20%'`: means that both inner corner radius is `20%` of the inner radius of the pie and outer corner radius is `20%` of the outer radius of the pie.
-+ `borderRadius: [10, 20]`: means that the inner corner radius is `10px` and the outer corner radius is `20px`.
-+ `borderRadius: ['20%', '50%']`: means that the inner corner radius is `20%` of the inner radius of the pie and the outer corner radius is `50%` of the outer radius of the pie.
 
