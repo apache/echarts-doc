@@ -11,7 +11,7 @@
 + [Feature] [map] Introduce projection to map series and geo component. [#16364](https://github.com/apache/echarts/issues/16364) ([pissang](https://github.com/pissang))
 + [Feature] [geo] Support `LineString` and `MultiLineString` in GeoJSON source. [#16364](https://github.com/apache/echarts/issues/16364) ([pissang](https://github.com/pissang))
 + [Feature] [tooltip] Add `valueFormatter` in the tooltip. [#16332](https://github.com/apache/echarts/issues/16332) ([pissang](https://github.com/pissang))
-+ [Feature] [pie/sunburst] Supports configuring radius on the four corners of sector. [#16298](https://github.com/apache/echarts/issues/16298) ([plainheart](https://github.com/plainheart))
++ [Feature] [pie] [sunburst] Supports configuring radius on the four corners of sector. [#16298](https://github.com/apache/echarts/issues/16298) ([plainheart](https://github.com/plainheart))
 + [Feature] [line] Add `triggerLineEvent` to support triggering mouse event on the line area. [#15847](https://github.com/apache/echarts/issues/15847) ([susiwen8](https://github.com/susiwen8))
 + [Feature] [i18n] Add Italian translation. [#16211](https://github.com/apache/echarts/issues/16211) ([andrearoota](https://github.com/andrearoota))
 + [Feature] [i18n] Add Romanian translation. [#15990](https://github.com/apache/echarts/issues/15990) ([szilard-dobai](https://github.com/szilard-dobai))
@@ -24,8 +24,6 @@
 + [Fix] [polar] fix edge symbols are clipped unexpectedly for the tiny offset. [#16329](https://github.com/apache/echarts/issues/16329) ([plainheart](https://github.com/plainheart))
 + [Fix] [map] Some labels won't be shown when legend is enabled and no label formatter specified. [#16322](https://github.com/apache/echarts/issues/16322) ([plainheart](https://github.com/plainheart))
 + [Fix] [pie] Fix tangential rotation with startAngle. [#16307](https://github.com/apache/echarts/issues/16307) ([Ovilia](https://github.com/Ovilia))
-+ [Fix] [animation] Fix opacity may be wrong when set `divideShape: 'clone'` in the universal transition [#16250](https://github.com/apache/echarts/issues/16250) ([pissang](https://github.com/pissang))
-+ [Fix] [bar] Optimize morphing on the bar with rounded cap. [#16246](https://github.com/apache/echarts/issues/16246) ([pissang](https://github.com/pissang))
 + [Fix] [graph] Support using `dataType` param to specify edge highlighting [#16243](https://github.com/apache/echarts/issues/16243) ([Dingzhaocheng](https://github.com/Dingzhaocheng))
 + [Fix] [pie] Fix label of first sector may not shown. [#16229](https://github.com/apache/echarts/issues/16229) ([116050423](https://github.com/116050423))
 + [Fix] [tooltip] Fix tooltip lagging when transition is disabled. (#16101) [#16212](https://github.com/apache/echarts/issues/16212) ([plainheart](https://github.com/plainheart))
@@ -42,7 +40,9 @@
 + [Fix] [svg] Normalize color when using SVG renderer to support more cases. [#767](https://github.com/ecomfe/zrender/issues/767) ([plainheart](https://github.com/plainheart))
 + [Fix] [pictorialBar] Fixed incorrectly display when data is 0 and `borderWidth` is set to a non-0 value [#12793](https://github.com/apache/echarts/issues/12793) ([yanheSu](https://github.com/yanheSu))
 + [Fix] [map] Optimize default label position calculation. [#16364](https://github.com/apache/echarts/issues/16364) ([pissang](https://github.com/pissang))
-+ add .js extension in the import statement [#16276](https://github.com/apache/echarts/issues/16276) ([pissang](https://github.com/pissang))
++ [Fix] [animation] Fix opacity may be wrong when set `divideShape: 'clone'` in the universal transition [#16250](https://github.com/apache/echarts/issues/16250) ([pissang](https://github.com/pissang))
++ [Fix] [bar] Optimize morphing on the bar with rounded cap. [#16246](https://github.com/apache/echarts/issues/16246) ([pissang](https://github.com/pissang))
++ Add .js extension in the import statement [#16276](https://github.com/apache/echarts/issues/16276) ([pissang](https://github.com/pissang))
 
 ## v5.2.2
 <div class="time">2021-11-01</div>
@@ -108,7 +108,7 @@
 + [Fix] [marker] Fix 'clampData' undefined error in 'getMarkerPosition'  [#15297](https://github.com/apache/echarts/issues/15297) ([AmosChenYQ](https://github.com/AmosChenYQ))
 + [Fix] [treemap] Fix old nodes not removed when disabled animation [#15283](https://github.com/apache/echarts/issues/15283) ([villebro](https://github.com/villebro))
 + [Fix] [tree] Fix edge may not removed when update data [#15251](https://github.com/apache/echarts/issues/15251) ([ssthouse](https://github.com/ssthouse))
-+ [Fix] [pie/sunburst] Fix `borderRadius` can't be reset in pie series and sunburst series when setting it to `null` or `undefined` [#15243](https://github.com/apache/echarts/issues/15243) ([plainheart](https://github.com/plainheart))
++ [Fix] [pie] [sunburst] Fix `borderRadius` can't be reset in pie series and sunburst series when setting it to `null` or `undefined` [#15243](https://github.com/apache/echarts/issues/15243) ([plainheart](https://github.com/plainheart))
 + [Fix] [canvas] Fix unexpected `none` or `null` fillStyle may be warned in firefox [#784](https://github.com/ecomfe/zrender/issues/784) ([plainheart](https://github.com/plainheart))
 + [Fix] [highlight] Hightlight multiple series through `chart.dispatchAction` not work as expected [#15207](https://github.com/apache/echarts/issues/15207) ([ssthouse](https://github.com/ssthouse))
 + [Fix] [sankey] Fix drag bug when using `series.nodes` to represent data. [#15199](https://github.com/apache/echarts/issues/15199) ([DuLinRain](https://github.com/DuLinRain))
