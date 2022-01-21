@@ -133,8 +133,8 @@
 ## v5.1.0
 <div class="time">2021-04-15</div>
 
-+ !![Feature] [geo] [map] 地理坐标系和地图系列支持使用 SVG 数据作为地图源。 [#14571](https://github.com/apache/echarts/issues/14571) ([100pah](https://github.com/100pah))
-+ ![Feature] [legend] 默认使用了更直观的图例设计，图例的样式更符合系列样式。 [#14497](https://github.com/apache/echarts/issues/14497) ([Ovilia](https://github.com/Ovilia))
++ [Feature] [geo] [map] 地理坐标系和地图系列支持使用 SVG 数据作为地图源。 [#14571](https://github.com/apache/echarts/issues/14571) ([100pah](https://github.com/100pah))
++ [Feature] [legend] 默认使用了更直观的图例设计，图例的样式更符合系列样式。 [#14497](https://github.com/apache/echarts/issues/14497) ([Ovilia](https://github.com/Ovilia))
 + [Feature] [i18n] 新增捷克语翻译。 [#14468](https://github.com/apache/echarts/issues/14468) ([JiriBalcar](https://github.com/JiriBalcar))
 + [Feature] [animation] 为`resize`方法添加`animation`的动画过渡配置。 [#14553](https://github.com/apache/echarts/issues/14553) ([pissang](https://github.com/pissang))
 + [Feature] [effectScatter] `effectScatter`系列添加`clip`配置。 [#14574](https://github.com/apache/echarts/issues/14574) ([susiwen8](https://github.com/susiwen8))

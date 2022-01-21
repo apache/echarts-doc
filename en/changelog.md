@@ -12,7 +12,6 @@
 + [Feature] [geo] Support `LineString` and `MultiLineString` in GeoJSON source. [#16364](https://github.com/apache/echarts/issues/16364) ([pissang](https://github.com/pissang))
 + [Feature] [tooltip] Add `valueFormatter` in the tooltip. [#16332](https://github.com/apache/echarts/issues/16332) ([pissang](https://github.com/pissang))
 + [Feature] [pie] [sunburst] Supports configuring radius on the four corners of sector. [#16298](https://github.com/apache/echarts/issues/16298) ([plainheart](https://github.com/plainheart))
-+ [Feature] [line] Add `triggerLineEvent` to support triggering mouse event on the line area. [#15847](https://github.com/apache/echarts/issues/15847) ([susiwen8](https://github.com/susiwen8))
 + [Feature] [i18n] Add Italian translation. [#16211](https://github.com/apache/echarts/issues/16211) ([andrearoota](https://github.com/andrearoota))
 + [Feature] [i18n] Add Romanian translation. [#15990](https://github.com/apache/echarts/issues/15990) ([szilard-dobai](https://github.com/szilard-dobai))
 + [Feature] [graph] fix error when symbol is none. [#16394](https://github.com/apache/echarts/issues/16394) ([pissang](https://github.com/pissang))
@@ -179,8 +178,8 @@
 ## v5.1.0
 <div class="time">2021-04-15</div>
 
-+ !![Feature] [geo] [map] geo component and map series support SVG format source. [#14571](https://github.com/apache/echarts/issues/14571) ([100pah](https://github.com/100pah))
-+ ![Feature] [legend] Default legend design is more intuitive. [#14497](https://github.com/apache/echarts/issues/14497) ([Ovilia](https://github.com/Ovilia))
++ [Feature] [geo] [map] geo component and map series support SVG format source. [#14571](https://github.com/apache/echarts/issues/14571) ([100pah](https://github.com/100pah))
++ [Feature] [legend] Default legend design is more intuitive. [#14497](https://github.com/apache/echarts/issues/14497) ([Ovilia](https://github.com/Ovilia))
 + [Feature] [i18n] Add czech translation [#14468](https://github.com/apache/echarts/issues/14468) ([JiriBalcar](https://github.com/JiriBalcar))
 + [Feature] [animation] Add animaiton configuration in resize [#14553](https://github.com/apache/echarts/issues/14553) ([pissang](https://github.com/pissang))
 + [Feature] [effectScatter] Add clip for effectScatter [#14574](https://github.com/apache/echarts/issues/14574) ([susiwen8](https://github.com/susiwen8))
