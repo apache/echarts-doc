@@ -327,6 +327,11 @@ option = {
     prefix = "#"
 ) }}
 
+{{ use: partial-marker(
+    prefix = "#",
+    seriesType = "bar"
+) }}
+
 {{ use: partial-z-zlevel(
     prefix = "#",
     componentName = "柱状图"
