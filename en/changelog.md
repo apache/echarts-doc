@@ -6,7 +6,7 @@
 + [Feature] [svg] Add SVG server-side rendering with zero dependencies. [#15880](https://github.com/apache/echarts/issues/15880) ([pissang](https://github.com/pissang))
 + [Feature] [axis] Add `alignTicks` for mutliple axis alignment. [#16300](https://github.com/apache/echarts/issues/16300) ([pissang](https://github.com/pissang))
 + [Feature] [state] Add `select.disabled` to disable select state. [#15534](https://github.com/apache/echarts/issues/15534) ([susiwen8](https://github.com/susiwen8))
-+ [Feature] [state] Add `selectedMode: 'series'` to selected the whole series. [#15534](https://github.com/apache/echarts/issues/15534) ([susiwen8](https://github.com/susiwen8))
++ [Feature] [state] Add `selectedMode: 'series'` to select the whole series. [#15534](https://github.com/apache/echarts/issues/15534) ([susiwen8](https://github.com/susiwen8))
 + [Feature] [state] Add `emphasis.disabled` to disable emphasis state. [#16368](https://github.com/apache/echarts/issues/16368) ([pissang](https://github.com/pissang))
 + [Feature] [map] Introduce projection to map series and geo component. [#16364](https://github.com/apache/echarts/issues/16364) ([pissang](https://github.com/pissang))
 + [Feature] [geo] Support `LineString` and `MultiLineString` in GeoJSON source. [#16364](https://github.com/apache/echarts/issues/16364) ([pissang](https://github.com/pissang))
