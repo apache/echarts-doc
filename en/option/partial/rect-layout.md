@@ -23,7 +23,7 @@ Distance between ${componentName} component and the top side of the container.
 
 `top` value can be instant pixel value like `20`; it can also be a percentage value relative to container width like `'20%'`; and it can also be `'top'`, `'middle'`, or `'bottom'`.
 
-If the `left` value is set to be `'top'`, `'middle'`, or `'bottom'`, then the component will be aligned automatically based on position.
+If the `top` value is set to be `'top'`, `'middle'`, or `'bottom'`, then the component will be aligned automatically based on position.
 
 #${prefix|default("#")} right(string|number) = ${defaultRight|default("'auto'")}
 
