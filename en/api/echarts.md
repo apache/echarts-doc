@@ -19,11 +19,9 @@ Creates an ECharts instance, and returns an [echartsInstance](~echartsInstance).
 **Parameters**
 + `dom`
 
-    Instance container, usually is a `div` element with height and width defined.
+    Instance container, usually is a DIV element with height and width defined. It's only optional when `opts.ssr` is enabled for server-side rendering.
 
-    **Attention: **If `div` is hidden, ECharts initialization tends to fail due to the lack of width and height information. In this case, you can explicitly specify `style.width` and `style.height` of `div`, or manually call [echartsInstance.resize](~echartsInstance.resize) after showing `div`.
-
-    ECharts 3 supports using `canvas` element as container directly, thus the canvas can be used somewhere else as image directly after rendering the chart. For example, canvas can be used as a texture in WebGL, which enables updating charts in real-time, as compared to using images generated with [echartsInstance.getDataURL](~echartsInstance.getDataURL).
+    It can also be a `canvas` element. thus the canvas can be used somewhere else as image directly after rendering the chart. For example, canvas can be used as a texture in WebGL, which enables updating charts in real-time, as compared to using images generated with [echartsInstance.getDataURL](~echartsInstance.getDataURL).
 
 + `theme`
 
@@ -35,6 +33,7 @@ Creates an ECharts instance, and returns an [echartsInstance](~echartsInstance).
 
     + `devicePixelRatio` Ratio of one physical pixel to the size of one device independent pixels. Browser's `window.devicePixelRatio` is used by default.
     + `renderer`  Supports `'canvas'` or `'svg'`. See [Render by Canvas or SVG](${handbookPath}best-practices/canvas-vs-svg).
+    + `ssr` Whether to use server-side rendering. Only available in SVG rendering mode. When enabled, it will no longer render automatically every frame, you have to use the [renderToSVGString]((~echartsInstance.renderToSVGString) method to get the rendered SVG string.
     + `useDirtyRect`  Enable dirty rectangle rendering or not, `false` by default. See [New features in ECharts 5](${handbookPath}basics/release-note/v5-feature).
     + `width`  Specify width explicitly, in pixel. If setting to `null`/`undefined`/`'auto'`, width of `dom` (instance container) will be used.
     + `height`  Specify height explicitly, in pixel. If setting to `null`/`undefined`/`'auto'`, height of `dom` (instance container) will be used.
@@ -44,6 +43,13 @@ Creates an ECharts instance, and returns an [echartsInstance](~echartsInstance).
     ```ts
     const chart = echarts.init(dom, null, {renderer: 'svg'});
     ```
+
+**Note**
+
+If DIV is hidden, ECharts initialization tends to fail due to the lack of width and height information. In this case, you can explicitly specify `style.width` and `style.height` of DIV, or manually call [echartsInstance.resize](~echartsInstance.resize) after showing DIV.
+
+The height and width must be set via `opts.width` and `opts.height` in the server side rendering.
+
 
 ## connect(Function)
 ```ts
@@ -123,6 +129,7 @@ echarts.use(
 See [Use ECharts with bundler and NPM](${handbookPath}basics/import) for more detailed explaination.
 
 ## registerMap(Function)
+
 ```ts
 (
     mapName: string,
@@ -154,48 +161,42 @@ Please refer to [option.geo](option.html#geo.map) for usage.
 
 + `opt`
 
-    + `geoJSON`
+    + `geoJSON` Optional. Data in GeoJson format. See [https://geojson.org/](https://geojson.org/) for more format information. Can be a JSON string or a parsed object. This key can also be `geoJson`.
 
-        Optional; Data in GeoJson format. See [https://geojson.org/](https://geojson.org/) for more format information. Can be a JSON string or a parsed object. This key can also be `geoJson`.
+    + `svg` Optional. Data in SVG format. Can be a SVG string or a parsed SVG DOM object. See more info in [SVG Base Map](tutorial.html#SVG%20Base%20Map%20in%20Geo%20Coords%20and%20Map%20SeriesSVG%20Base%20Map). Introduced in v5.1.0
 
-    + `svg`
+    + `specialAreas` Optional. zoomed part of a specific area in the map for better visual effect. Only work for `geoJSON`.
 
-        > Since `v5.1.0`
+**For example [USA Population Estimates](${galleryEditorPath}map-usa): **
+```ts
+echarts.registerMap('USA', usaJson, {
+    // Move Alaska to the bottom left of United States
+    Alaska: {
+        // Upper left longitude
+        left: -131,
+        // Upper left latitude
+        top: 25,
+        // Range of longitude
+        width: 15
+    },
+    // Hawaii
+    Hawaii: {
+        left: -110,
+        top: 28,
+        width: 5
+    },
+    // Puerto Rico
+    'Puerto Rico': {
+        left: -76,
+        top: 26,
+        width: 2
+    }
+});
+```
 
-        Optional; Data in SVG format. Can be a SVG string or a parsed SVG DOM object. See more info in [SVG Base Map](tutorial.html#SVG%20Base%20Map%20in%20Geo%20Coords%20and%20Map%20SeriesSVG%20Base%20Map).
+Note:
 
-    + `specialAreas`
-
-        Optional; zoomed part of a specific area in the map for better visual effect.
-
-        Only work for `geoJSON`, not work for `svg`.
-
-        **For example [USA Population Estimates](${galleryEditorPath}map-usa): **
-        ```ts
-        echarts.registerMap('USA', usaJson, {
-            // Move Alaska to the bottom left of United States
-            Alaska: {
-                // Upper left longitude
-                left: -131,
-                // Upper left latitude
-                top: 25,
-                // Range of longitude
-                width: 15
-            },
-            // Hawaii
-            Hawaii: {
-                left: -110,
-                top: 28,
-                width: 5
-            },
-            // Puerto Rico
-            'Puerto Rico': {
-                left: -76,
-                top: 26,
-                width: 2
-            }
-        });
-        ```
+If you only import the required components in your project, starting from v5.3.0 `registerMap` has to be used after the `MapChart` or `GeoComponent` is imported.
 
 ## getMap(Function)
 ```ts
@@ -216,6 +217,7 @@ Get a registered map in the following format:
 Note:
 + `geoJSON` can also be `geoJson`, they have the same reference.
 + SVG registered by `registerMap` can not be obtained by this method yet.
++ If you only import the required components in your project, starting from v5.3.0 `getMap` has to be used after the `MapChart` or `GeoComponent` is imported.
 
 
 ## registerTheme(Function)

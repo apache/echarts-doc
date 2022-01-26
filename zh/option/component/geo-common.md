@@ -107,7 +107,6 @@ series: {
         unproject: (point) => projection.invert(point)
     }
 }
-
 ```
 
 注：自定义投影只有在使用`GeoJSON`作为数据源的时候有用。

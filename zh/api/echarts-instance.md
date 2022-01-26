@@ -24,7 +24,6 @@ or
 
 ~[500x400](${galleryViewPath}dynamic-data&reset=1&edit=1)
 
-**注：** ECharts 2.x 中的通过 `addData` , `setSeries` 方法设置配置项的方式将不再支持，在 ECharts 3 中统一使用 `setOption`，可以参考上面示例。
 
 **参数：**
 
@@ -54,25 +53,15 @@ chart.setOption(option, {
 
 + opts
 
-    + `notMerge`: `boolean`
+    + `notMerge` 可选。是否不跟之前设置的 `option` 进行合并。默认为 `false`。即表示合并。合并的规则，详见 **组件合并模式**。如果为 `true`，表示所有组件都会被删除，然后根据新 `option` 创建所有新组件。
+    + `replaceMerge` 可选。用户可以在这里指定一个或多个组件，如：`xAxis`, `series`，这些指定的组件会进行 "replaceMerge"。如果用户想删除部分组件，也可使用 "replaceMerge"。详见 **组件合并模式**。
+    + `lazyUpdate` 可选。在设置完 `option` 后是否不立即更新图表，默认为 `false`，即同步立即更新。如果为 `true`，则会在下一个 animation frame 中，才更新图表。
+    + `silent` 可选。阻止调用 `setOption` 时抛出事件，默认为 `false`，即抛出事件。
 
-        可选。是否不跟之前设置的 `option` 进行合并。默认为 `false`。即表示合并。合并的规则，详见 **组件合并模式**。如果为 `true`，表示所有组件都会被删除，然后根据新 `option` 创建所有新组件。
-
-    + `replaceMerge`: `string` | `string[]`
-
-        可选。用户可以在这里指定一个或多个组件，如：`xAxis`, `series`，这些指定的组件会进行 "replaceMerge"。如果用户想删除部分组件，也可使用 "replaceMerge"。详见 **组件合并模式**。
-
-    + `lazyUpdate`: `boolean`
-
-        可选。在设置完 `option` 后是否不立即更新图表，默认为 `false`，即同步立即更新。如果为 `true`，则会在下一个 animation frame 中，才更新图表。
-
-    + `silent`: `boolean`
-
-        可选。阻止调用 `setOption` 时抛出事件，默认为 `false`，即抛出事件。
-
-**组件合并模式**
+<h4>组件合并模式</h4>
 
 对于一种类型的组件（如：`xAxis`, `series`）：
+
 + 如果设置`opts.notMerge`为`true`，那么旧的组件会被完全移除，新的组件会根据`option`创建。
 + 如果设置`opts.notMerge`为`false`，或者没有设置 `opts.notMerge`：
     + 如果在`opts.replaceMerge`里指定组件类型，这类组件会进行`替换合并`。
@@ -80,99 +69,109 @@ chart.setOption(option, {
 
 什么是`普通合并`和`替换合并`？
 
-+ `普通合并`
+<h5>普通合并</h5>
 
-    + 对于一种类型的组件（如：`xAxis`, `series`），新来的 `option` 中的每个“组件描述”（如：`{type: 'xAxis', id: 'xx', name: 'kk', ...}`）会被尽量合并到已存在的组件中。剩余的情况，会在组件列表尾部创建新的组件。整体规则细节如下：
-        + 先依次对 `option` 中每个有声明 `id` 或者 `name` 的“组件描述”，寻找能匹配其 `id` 或者 `name` 的已有的组件，找到的话则合并。
-        + 再依次对 `option` 中剩余的“组件描述”，寻找还未执行过前一条的已有组件，找到的话则合并。
-        + 其他 `option` 中剩余的“组件描述”，用于在组件列表尾部创建新组件。
-    + 特点：
-        + 永远不会删除已存在的组件。也就是说，只支持增加，或者更新组件。
-        + 组件的索引（componentIndex）永远不会改变。
-        + 如果 `id` 和 `name` 没有在 `option` 中被指定（这是经常出现的情况），组件会按照它在 `option` 中的顺序一一合并到已有组件中。这种设定比较符合直觉。
-    + 例子：
-        ```ts
-        // 已有组件：
-        {
-            xAxis: [
-                { id: 'm', interval: 5 },
-                { id: 'n', name: 'nnn', interval: 6 }
-                { id: 'q', interval: 7 }
-            ]
-        }
-        // 新来的 option ：
-        chart.setOption({
-            xAxis: [
-                // id 没有指定。会寻找到第一个没有进行过合并的已有组件，进行合并。
-                // 即合并到 `id: 'q'`。
-                { interval: 77 },
-                // id 没有指定。最终会创建新组件。
-                { interval: 88 },
-                // id 没有指定，但是 name 指定了。会被合并到已有的 `name: 'nnn'` 组件。
-                { name: 'nnn', interval: 66 },
-                // id 指定了，会被合并到已有的 `id: 'm'` 组件。
-                { id: 'm', interval: 55 }
-            ]
-        });
-        // 结果组件：
-        {
-            xAxis: [
-                { id: 'm', interval: 55 },
-                { id: 'n', name: 'nnn', interval: 66 },
-                { id: 'q', interval: 77 },
-                { interval: 88 }
-            ]
-        }
-        ```
-+ `替换合并`
-    + 对于一种类型的组件（如：`xAxis`, `series`），只有 `option` 中指定了 `id` 并且已有组件中有此 `id` 时，已有组件会和 `option` 相应组件描述进行合并。否则，已有组件都会删除，新组件会被根据 `option` 创建。细节规则如下：
-        + 先依次对 `option` 中每个有声明 `id` 的“组件描述”，寻找能匹配其 `id` 或者 `name` 的已有的组件，找到的话则合并。
-        + 删除其他没匹配到的已有组件。
-        + 依次对 `option` 中剩余的“组件描述”，创建新组件，填入刚因删除而空出来的位置上，或者增加到末尾。
-    + 特点：
-        + 与 `普通合并` 相比，支持了组件删除。
-        + 已有组件的索引永远不会变。这是为了保证，`option` 或者 API 中的 index 引用（例如：`xAxisIndex: 2`）仍能正常一致得使用。
-        + 整个处理过程结束后，可能存在一些“洞”，也就是说，在组件列表中的某些 index 上，并没有组件存在（被删除了）。但是这是可以被开发者预期和控制的。
-    + 例子：
-        ```ts
-        // 已有组件：
-        {
-            xAxis: [
-                { id: 'm', interval: 5, min: 1000 },
-                { id: 'n', name: 'nnn', interval: 6, min: 1000 }
-                { id: 'q', interval: 7, min: 1000 }
-            ]
-        }
-        // 新来的 option :
-        chart.setOption({
-            xAxis: [
-                { interval: 111 },
-                // id 已经指定了。因此会被合并进已有的组件 `id: 'q'`。
-                { id: 'q', interval: 77 },
-                // id 已经指定了。但是已有组件没有此 id 。
-                { id: 't', interval: 222 },
-                { interval: 333 }
-            ]
-        }, { replaceMerge: 'xAxis' });
-        // 结果组件：
-        {
-            xAxis: [
-                // 原来的 id 为 'm' 的组件，被移除。
-                // 替换为新的组件。新组件中，并没有原来的 `min: 1000` 了。
-                { interval: 111 },
-                // 原来的 id 为 'n' 的组件，被移除。
-                // 替换为新的组件。新组件中，并没有原来的 `min: 1000` 了。
-                { id: 't', interval: 222 },
-                // 原来的组件没有被移除，而是和 option 中的组件描述进行了合并。
-                // 所以 `min: 1000` 被保留了。
-                { id: 'q', interval: 77, min: 1000 },
-                // 新添加的组件。
-                { interval: 333 }
-            ]
-        }
-        ```
+对于一种类型的组件（如：`xAxis`, `series`），新来的 `option` 中的每个“组件描述”（如：`{type: 'xAxis', id: 'xx', name: 'kk', ...}`）会被尽量合并到已存在的组件中。剩余的情况，会在组件列表尾部创建新的组件。整体规则细节如下：
 
-**删除组件**
++ 先依次对 `option` 中每个有声明 `id` 或者 `name` 的“组件描述”，寻找能匹配其 `id` 或者 `name` 的已有的组件，找到的话则合并。
++ 再依次对 `option` 中剩余的“组件描述”，寻找还未执行过前一条的已有组件，找到的话则合并。
++ 其他 `option` 中剩余的“组件描述”，用于在组件列表尾部创建新组件。
+
+特点：
+
++ 永远不会删除已存在的组件。也就是说，只支持增加，或者更新组件。
++ 组件的索引（componentIndex）永远不会改变。
++ 如果 `id` 和 `name` 没有在 `option` 中被指定（这是经常出现的情况），组件会按照它在 `option` 中的顺序一一合并到已有组件中。这种设定比较符合直觉。
+
+例子：
+```ts
+// 已有组件：
+{
+    xAxis: [
+        { id: 'm', interval: 5 },
+        { id: 'n', name: 'nnn', interval: 6 }
+        { id: 'q', interval: 7 }
+    ]
+}
+// 新来的 option ：
+chart.setOption({
+    xAxis: [
+        // id 没有指定。会寻找到第一个没有进行过合并的已有组件，进行合并。
+        // 即合并到 `id: 'q'`。
+        { interval: 77 },
+        // id 没有指定。最终会创建新组件。
+        { interval: 88 },
+        // id 没有指定，但是 name 指定了。会被合并到已有的 `name: 'nnn'` 组件。
+        { name: 'nnn', interval: 66 },
+        // id 指定了，会被合并到已有的 `id: 'm'` 组件。
+        { id: 'm', interval: 55 }
+    ]
+});
+// 结果组件：
+{
+    xAxis: [
+        { id: 'm', interval: 55 },
+        { id: 'n', name: 'nnn', interval: 66 },
+        { id: 'q', interval: 77 },
+        { interval: 88 }
+    ]
+}
+```
+
+<h5>替换合并</h5>
+
+对于一种类型的组件（如：`xAxis`, `series`），只有 `option` 中指定了 `id` 并且已有组件中有此 `id` 时，已有组件会和 `option` 相应组件描述进行合并。否则，已有组件都会删除，新组件会被根据 `option` 创建。细节规则如下：
+
++ 先依次对 `option` 中每个有声明 `id` 的“组件描述”，寻找能匹配其 `id` 或者 `name` 的已有的组件，找到的话则合并。
++ 删除其他没匹配到的已有组件。
++ 依次对 `option` 中剩余的“组件描述”，创建新组件，填入刚因删除而空出来的位置上，或者增加到末尾。
+
+特点：
+
++ 与 `普通合并` 相比，支持了组件删除。
++ 已有组件的索引永远不会变。这是为了保证，`option` 或者 API 中的 index 引用（例如：`xAxisIndex: 2`）仍能正常一致得使用。
++ 整个处理过程结束后，可能存在一些“洞”，也就是说，在组件列表中的某些 index 上，并没有组件存在（被删除了）。但是这是可以被开发者预期和控制的。
+
+例子：
+```ts
+// 已有组件：
+{
+    xAxis: [
+        { id: 'm', interval: 5, min: 1000 },
+        { id: 'n', name: 'nnn', interval: 6, min: 1000 }
+        { id: 'q', interval: 7, min: 1000 }
+    ]
+}
+// 新来的 option :
+chart.setOption({
+    xAxis: [
+        { interval: 111 },
+        // id 已经指定了。因此会被合并进已有的组件 `id: 'q'`。
+        { id: 'q', interval: 77 },
+        // id 已经指定了。但是已有组件没有此 id 。
+        { id: 't', interval: 222 },
+        { interval: 333 }
+    ]
+}, { replaceMerge: 'xAxis' });
+// 结果组件：
+{
+    xAxis: [
+        // 原来的 id 为 'm' 的组件，被移除。
+        // 替换为新的组件。新组件中，并没有原来的 `min: 1000` 了。
+        { interval: 111 },
+        // 原来的 id 为 'n' 的组件，被移除。
+        // 替换为新的组件。新组件中，并没有原来的 `min: 1000` 了。
+        { id: 't', interval: 222 },
+        // 原来的组件没有被移除，而是和 option 中的组件描述进行了合并。
+        // 所以 `min: 1000` 被保留了。
+        { id: 'q', interval: 77, min: 1000 },
+        // 新添加的组件。
+        { interval: 333 }
+    ]
+}
+```
+
+<h5>删除组件</h5>
 
 有两种方法能删除组件：
 + 删除所有：使用 `notMerge: true`，则所有组件都被删除。
@@ -252,28 +251,39 @@ myChart.setOption({
 
 改变图表尺寸，在容器大小发生改变时需要手动调用。
 
-**参数**
+**参数解释**
 + `opts`
 
-    opts 可缺省。有下面几个可选项：
+    opts 可缺省。有下面几个属性：
 
-    + `width`
-
-        可显式指定实例宽度，单位为像素。如果传入值为 `null`/`undefined`/`'auto'`，则表示自动取 `dom`（实例容器）的宽度。
-
-    + `height`
-
-        可显式指定实例高度，单位为像素。如果传入值为 `null`/`undefined`/`'auto'`，则表示自动取 `dom`（实例容器）的高度。
-
-    + `silent`
-
-        是否禁止抛出事件。默认为 `false`。
-
-    + `animation`
-
-        resize 的时候是否应用过渡动画，包含时长`duration`和缓动`easing`两个配置，默认`duration`为 0，即不应用过渡动画。
+    + `width` 可显式指定实例宽度，单位为像素。如果传入值为 `null`/`undefined`/`'auto'`，则表示自动取 `dom`（实例容器）的宽度。
+    + `height` 可显式指定实例高度，单位为像素。如果传入值为 `null`/`undefined`/`'auto'`，则表示自动取 `dom`（实例容器）的高度。
+    + `silent` 是否禁止抛出事件。默认为 `false`。
+    + `animation` resize 的时候是否应用过渡动画，包含时长`duration`和缓动`easing`两个配置，默认`duration`为 0，即不应用过渡动画。
 
 **Tip:** 有时候图表会放在多个标签页里，那些初始隐藏的标签在初始化图表的时候因为获取不到容器的实际高宽，可能会绘制失败，因此在切换到该标签页时需要手动调用 `resize` 方法获取正确的高宽并且刷新画布，或者在 `opts` 中显示指定图表高宽。
+
+## renderToSVGString(Function)
+
+```ts
+(opts?: {
+    useViewBox?: boolean
+}) => string
+```
+
+渲染得到 SVG 字符串。在设置`renderer: 'svg'`使用 SVG 渲染模式有效。
+
+如果在`echarts.init`的时候通过`ssr`参数开启了服务端渲染模式
+
+
+**参数解释**
+
++ `opts`
+
+    opts 可缺省。有下面几个属性：
+
+    + `useViewBox` 是否在生成的 SVG 字符串中带入 [viewBox](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Attribute/viewBox)
+
 
 ## dispatchAction(Function)
 ```ts

@@ -5,10 +5,11 @@
 
 ## init(Function)
 ```ts
-(dom: HTMLDivElement|HTMLCanvasElement, theme?: Object|string, opts?: {
+(dom?: HTMLDivElement|HTMLCanvasElement, theme?: Object|string, opts?: {
     devicePixelRatio?: number,
     renderer?: string,
     useDirtyRect?: boolean, // 从 `v5.0.0` 开始支持
+    ssr?: boolean,
     width?: number|string,
     height?: number|string,
     locale?: string
@@ -16,14 +17,13 @@
 ```
 创建一个 ECharts 实例，返回 [echartsInstance](~echartsInstance)，不能在单个容器上初始化多个 ECharts 实例。
 
-**参数**
+**参数解释**
+
 + `dom`
 
-    实例容器，一般是一个具有高宽的`div`元素。
+    实例容器，一般是一个具有高宽的 DIV 元素。只有在设置`opts.ssr`开启了服务端渲染后该参数才是可选。
 
-    **注：**如果`div`是隐藏的，ECharts 可能会获取不到`div`的高宽导致初始化失败，这时候可以明确指定`div`的`style.width`和`style.height`，或者在`div`显示后手动调用 [echartsInstance.resize](~echartsInstance.resize) 调整尺寸。
-
-    ECharts 3 中支持直接使用`canvas`元素作为容器，这样绘制完图表可以直接将 canvas 作为图片应用到其它地方，例如在 WebGL 中作为贴图，这跟使用 [echartsInstance.getDataURL](~echartsInstance.getDataURL) 生成图片链接相比可以支持图表的实时刷新。
+    也支持直接使用`canvas`元素作为容器，这样绘制完图表可以直接将 canvas 作为图片应用到其它地方，例如在 WebGL 中作为贴图，这跟使用 [getDataURL](~echartsInstance.getDataURL) 生成图片链接相比可以支持图表的实时刷新。
 
 + `theme`
 
@@ -33,17 +33,23 @@
 
     附加参数。有下面几个可选项：
 
-    + `devicePixelRatio` 设备像素比，默认取浏览器的值`window.devicePixelRatio`。
-    + `renderer` 渲染器，支持 `'canvas'` 或者 `'svg'`。参见 [使用 Canvas 或者 SVG 渲染](${handbookPath}best-practices/canvas-vs-svg)。
-    + `useDirtyRect` 是否开启脏矩形渲染，默认为`false`。参见 [ECharts 5 新特性](${handbookPath}basics/release-note/v5-feature)。
-    + `width` 可显式指定实例宽度，单位为像素。如果传入值为 `null`/`undefined`/`'auto'`，则表示自动取 `dom`（实例容器）的宽度。
-    + `height` 可显式指定实例高度，单位为像素。如果传入值为 `null`/`undefined`/`'auto'`，则表示自动取 `dom`（实例容器）的高度。
+    + `devicePixelRatio`设备像素比，默认取浏览器的值`window.devicePixelRatio`。
+    + `renderer` 渲染模式，支持`'canvas'`或者`'svg'`。参见 [使用 Canvas 或者 SVG 渲染](${handbookPath}best-practices/canvas-vs-svg)。
+    + `ssr` 是否使用服务端渲染，只有在 SVG 渲染模式有效。开启后不再会每帧自动渲染，必须要调用 [renderToSVGString]((~echartsInstance.renderToSVGString) 方法才能得到渲染后 SVG 字符串。
+    + `useDirtyRect`是否开启脏矩形渲染，只有在 Canvas 渲染模式有效，默认为`false`。参见 [ECharts 5 新特性](${handbookPath}basics/release-note/v5-feature)。
+    + `width` 可显式指定实例宽度，单位为像素。如果传入值为`null`/`undefined`/`'auto'`，则表示自动取 `dom`（实例容器）的宽度。
+    + `height` 可显式指定实例高度，单位为像素。如果传入值为`null`/`undefined`/`'auto'`，则表示自动取 `dom`（实例容器）的高度。
     + `locale` 使用的语言，内置 `'ZH'` 和 `'EN'` 两个语言，也可以使用 [echarts.registerLocale](~echarts.registerLocale) 方法注册新的语言包。目前支持的语言见 [src/i18n](https://github.com/apache/echarts/tree/release/src/i18n)。
 
     如果不指定主题，也需在传入`opts`前先传入`null`，如：
     ```ts
     const chart = echarts.init(dom, null, {renderer: 'svg'});
     ```
+
+**注：**
+如果容器是隐藏的，ECharts 可能会获取不到 DIV 的高宽导致初始化失败，这时候可以明确指定 DIV 的`style.width`和`style.height`，或者在`div`显示后手动调用 [resize](~echartsInstance.resize) 调整尺寸。
+
+在使用服务端渲染的模式下，必须通过`opts.width`和`opts.height`设置高和宽。
 
 
 ## connect(Function)
@@ -122,6 +128,7 @@ echarts.use(
 更详细的使用方式见 [在项目中引入 Apache ECharts](${handbookPath}basics/import) 一文
 
 ## registerMap(Function)
+
 ```ts
 (
     mapName: string,
@@ -153,49 +160,41 @@ echarts.use(
 
 + `opt`
 
-    + `geoJSON`
+    + `geoJSON` 可选。GeoJson 格式的数据，具体格式见 [https://geojson.org/](https://geojson.org/)。可以是 JSON 字符串，也可以是解析得到的对象。这个参数也可以写为 `geoJson`，效果相同。
 
-        可选。GeoJson 格式的数据，具体格式见 [https://geojson.org/](https://geojson.org/)。可以是 JSON 字符串，也可以是解析得到的对象。这个参数也可以写为 `geoJson`，效果相同。
+    + `svg` 可选。从 `v5.1.0` 开始支持SVG 格式的数据。可以是字符串，也可以是解析得到的 SVG DOM 对象。更多信息参见 [SVG 底图](tutorial.html#%E5%9C%B0%E7%90%86%E5%9D%90%E6%A0%87%E7%B3%BB%E5%92%8C%E5%9C%B0%E5%9B%BE%E7%B3%BB%E5%88%97%E7%9A%84%20SVG%20%E5%BA%95%E5%9B%BE)。
 
-    + `svg`
+    + `specialAreas` 可选。将地图中的部分区域缩放到合适的位置，可以使得整个地图的显示更加好看。只在 `geoJSON` 中生效，`svg` 中不生效。
 
-        > 从 `v5.1.0` 开始支持
+示例 [USA Population Estimates](${galleryEditorPath}map-usa)：
 
-        可选。SVG 格式的数据。可以是字符串，也可以是解析得到的 SVG DOM 对象。更多信息参见 [SVG 底图](tutorial.html#%E5%9C%B0%E7%90%86%E5%9D%90%E6%A0%87%E7%B3%BB%E5%92%8C%E5%9C%B0%E5%9B%BE%E7%B3%BB%E5%88%97%E7%9A%84%20SVG%20%E5%BA%95%E5%9B%BE)。
+```ts
+echarts.registerMap('USA', usaJson, {
+    // 把阿拉斯加移到美国主大陆左下方
+    Alaska: {
+        // 左上角经度
+        left: -131,
+        // 左上角纬度
+        top: 25,
+        // 经度横跨的范围
+        width: 15
+    },
+    // 夏威夷
+    Hawaii: {
+        left: -110,
+        top: 28,
+        width: 5
+    },
+    // 波多黎各
+    'Puerto Rico': {
+        left: -76,
+        top: 26,
+        width: 2
+    }
+});
+```
 
-    + `specialAreas`
-
-        可选。将地图中的部分区域缩放到合适的位置，可以使得整个地图的显示更加好看。
-
-        只在 `geoJSON` 中生效，`svg` 中不生效。
-
-        **示例 [USA Population Estimates](${galleryEditorPath}map-usa)：**
-        ```ts
-        echarts.registerMap('USA', usaJson, {
-            // 把阿拉斯加移到美国主大陆左下方
-            Alaska: {
-                // 左上角经度
-                left: -131,
-                // 左上角纬度
-                top: 25,
-                // 经度横跨的范围
-                width: 15
-            },
-            // 夏威夷
-            Hawaii: {
-                left: -110,
-                top: 28,
-                width: 5
-            },
-            // 波多黎各
-            'Puerto Rico': {
-                left: -76,
-                top: 26,
-                width: 2
-            }
-        });
-        ```
-
+注：如果你在项目中使用了按需引入，从 v5.3.0 开始`registerMap`必须要在引入地图组件后才能使用。
 
 ## getMap(Function)
 ```ts
@@ -215,6 +214,7 @@ echarts.use(
 注：
 + `geoJSON` 也可写为 `geoJson`，二者引用的是相同的内容。
 + 对于 `registerMap` 所注册的 SVG ，暂并不支持从此方法中返回。
++ 如果你在项目中使用了按需引入，从 v5.3.0 开始`getMap`必须要在引入地图组件后才能使用。
 
 
 ## registerTheme(Function)
