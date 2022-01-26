@@ -1,4 +1,5 @@
 ## v5.3.0
+<div class="time">2022-01-27</div>
 
 + [Feature] Introduce new keyframe based animation to graphic component and custom series. [#16225](https://github.com/apache/echarts/issues/16225) ([pissang](https://github.com/pissang))
 + [Feature] Support transition animation in the graphic component. [#16225](https://github.com/apache/echarts/issues/16225) ([pissang](https://github.com/pissang))

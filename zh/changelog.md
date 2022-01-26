@@ -1,4 +1,5 @@
 ## v5.3.0
+<div class="time">2022-01-27</div>
 
 + [Feature] 在图形组件和自定义系列中新增基于关键帧的动画。 [#16225](https://github.com/apache/echarts/issues/16225) ([pissang](https://github.com/pissang))
 + [Feature] 图形组件新增`transition`过渡动画 [#16225](https://github.com/apache/echarts/issues/16225) ([pissang](https://github.com/pissang))
