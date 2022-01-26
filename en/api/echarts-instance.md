@@ -273,6 +273,14 @@ Sometimes charts may be placed in multiple tabs. Those in hidden labels may fail
 
 ## renderToSVGString(Function)
 
+> Since `5.3.0`
+
+```ts
+(opts?: {
+    useViewBox?: boolean
+}) => string
+```
+
 Render to a SVG string. Available when setting `renderer: 'svg'` to use SVG rendering mode.
 
 Must use this method to render if server-side rendering is enabled with the `ssr` parameter in `echarts.init`

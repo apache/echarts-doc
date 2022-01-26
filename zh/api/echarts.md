@@ -234,6 +234,28 @@ echarts.registerMap('USA', usaJson, {
 
 注册语言包，用于[初始化实例](~echarts.init)的时候指定。语言包格式见 [src/i18n/langEN.ts](https://github.com/apache/echarts/blob/release/src/i18n/langEN.ts)
 
+## setPlatformAPI(Function)
+
+> Since `5.3.0`
+
+```ts
+(platformAPI?: {
+    createCanvas(): HTMLCanvasElement
+    measureText(text: string, font?: string): { width: number }
+    loadImage(
+        src: string,
+        onload: () => void,
+        onerror: () => void
+    ): HTMLImageElement
+}) => void
+```
+
+设置平台相关的 API，在 NodeJS 等非浏览器平台的时候可能需要提供。
+
++ `createCanvas` 创建 Canvas 元素，主要用于测量文本宽度，在没提供`measureText`的时候需要提供。
++ `measureText` 测量文本宽度，默认会通过`createCanvas`得到 Canvas 元素提供的接口来测量文本宽度，也可以替换成更轻量的实现。
++ `loadImage` 加载图片，在使用 Canvas 渲染模式的时候并且使用 URL 作为图片的时候需要提供。
+
 {{ use: echarts-graphic }}
 
 

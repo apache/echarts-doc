@@ -238,6 +238,28 @@ Registers a theme, should be specified when [initialize the chart instance](~ech
 
 Registers a locale, should be specified when [initialize the chart instance](~echarts.init). See the format in [src/i18n/langEN.ts](https://github.com/apache/echarts/blob/release/src/i18n/langEN.ts)
 
+## setPlatformAPI(Function)
+
+> Since `5.3.0`
+
+```ts
+(platformAPI?: {
+    createCanvas(): HTMLCanvasElement
+    measureText(text: string, font?: string): { width: number }
+    loadImage(
+        src: string,
+        onload: () => void,
+        onerror: () => void
+    ): HTMLImageElement
+}) => void
+```
+
+Sets the platform-related API, which may need to be provided when non-browser platforms such as NodeJS.
+
++ `createCanvas` Creates a Canvas element, mainly used for measuring text width, which is required when `measureText` is not provided.
++ `measureText` measures the width of the text. By default will use the interface provided by the Canvas element to measure the width of the text. It can be replaced with a lighter implementation.
++ `loadImage` Load image, required when using Canvas rendering mode and using URLs as images.
+
 
 {{ use: echarts-graphic }}
 

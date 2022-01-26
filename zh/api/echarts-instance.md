@@ -265,6 +265,8 @@ myChart.setOption({
 
 ## renderToSVGString(Function)
 
+> Since `5.3.0`
+
 ```ts
 (opts?: {
     useViewBox?: boolean
