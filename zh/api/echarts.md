@@ -8,11 +8,11 @@
 (dom?: HTMLDivElement|HTMLCanvasElement, theme?: Object|string, opts?: {
     devicePixelRatio?: number,
     renderer?: string,
-    useDirtyRect?: boolean, // 从 `v5.0.0` 开始支持
-    ssr?: boolean,
+    useDirtyRect?: boolean, // 从 `5.0.0` 开始支持
+    ssr?: boolean,          // 从 `5.3.0` 开始支持
     width?: number|string,
     height?: number|string,
-    locale?: string
+    locale?: string         // 从 `5.0.0` 开始支持
 }) => ECharts
 ```
 创建一个 ECharts 实例，返回 [echartsInstance](~echartsInstance)，不能在单个容器上初始化多个 ECharts 实例。
@@ -98,7 +98,7 @@ echarts.connect([chart1, chart2]);
 
 ## use(Function)
 
-> `5.0.1` 开始支持
+> 从 `5.0.1` 开始支持
 
 使用组件，配合新的按需引入的接口使用。
 
@@ -236,7 +236,7 @@ echarts.registerMap('USA', usaJson, {
 
 ## setPlatformAPI(Function)
 
-> Since `5.3.0`
+> 从 `5.3.0` 开始支持
 
 ```ts
 (platformAPI?: {

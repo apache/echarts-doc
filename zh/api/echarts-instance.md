@@ -265,7 +265,7 @@ myChart.setOption({
 
 ## renderToSVGString(Function)
 
-> Since `5.3.0`
+> 从 `5.3.0` 开始支持
 
 ```ts
 (opts?: {

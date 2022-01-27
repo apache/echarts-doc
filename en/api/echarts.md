@@ -9,9 +9,10 @@ Global echarts object, which can be accessed after including `echarts.js` in scr
     devicePixelRatio?: number,
     renderer?: string,
     useDirtyRect?: boolean, // Since `5.0.0`
+    ssr?: boolean,          // Since `5.3.0`
     width?: number|string,
     height?: number|string,
-    locale?: string
+    locale?: string         // Since `5.0.0`
 }) => ECharts
 ```
 Creates an ECharts instance, and returns an [echartsInstance](~echartsInstance). You shall not initialize multiple ECharts instances on a single container.
