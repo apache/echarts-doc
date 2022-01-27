@@ -503,9 +503,9 @@ ECharts 中的事件有两种，一种是鼠标事件，在鼠标点击某个图
         gridName?: string
     },
     // 要被转换的值。
-    value: Array|string
+    value: Array|number
     // 转换的结果为像素坐标值，以 echarts 实例的 dom 节点的左上角为坐标 [0, 0] 点。
-) => Array|string
+) => Array|number
 ```
 
 转换坐标系上的点到像素坐标值。
@@ -580,9 +580,9 @@ chart.convertToPixel({seriesId: 'k2'}, [128.3324, 89.5344]);
         gridName?: string
     },
     // 要被转换的值，为像素坐标值，以 echarts 实例的 dom 节点的左上角为坐标 [0, 0] 点。
-    value: Array|string
+    value: Array|number
     // 转换的结果，为逻辑坐标值。
-) => Array|string
+) => Array|number
 ```
 
 转换像素坐标值到逻辑坐标系上的点。是 [convertToPixel](~echartsInstance.convertToPixel) 的逆运算。
