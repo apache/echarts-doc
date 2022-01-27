@@ -5,6 +5,10 @@
 
 <ExampleUIControlBoolean default="false" />
 
+{{ use: partial-version(
+    version = "5.3.0"
+) }}
+
 Whether to disable the emphasis state.
 
 When emphasis state is disabled. There will be no highlight effect when the mouse hovered the element, tooltip is triggered, or the legend is hovered. It can be used to improve interaction fluency when there are massive graphic elements.

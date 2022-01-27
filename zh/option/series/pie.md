@@ -121,9 +121,17 @@ const option = {
 
 <ExampleUIControlBoolean default="true" />
 
+{{ use: partial-version(
+    version = "5.2.0"
+) }}
+
 是否在无数据的时候显示一个占位圆。
 
 ## emptyCircleStyle(Object)
+
+{{ use: partial-version(
+    version = "5.2.0"
+) }}
 
 占位圆样式。
 

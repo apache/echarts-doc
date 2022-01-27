@@ -98,9 +98,17 @@ Whether to show sector when all data are zero.
 
 <ExampleUIControlBoolean default="true" />
 
+{{ use: partial-version(
+    version = "5.2.0"
+) }}
+
 If display an placeholder circle when there is no data.
 
 ## emptyCircleStyle(Object)
+
+{{ use: partial-version(
+    version = "5.2.0"
+) }}
 
 Style of circle placeholder.
 
