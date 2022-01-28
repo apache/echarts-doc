@@ -346,6 +346,10 @@ formatter: function (params, ticket, callback) {
 
 #${prefix} valueFormatter(string)
 
+{{ use: partial-version(
+    version = '5.3.0'
+) }}
+
 tooltip 中数值显示部分的格式化回调函数。
 
 回调函数格式：

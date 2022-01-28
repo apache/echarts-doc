@@ -341,6 +341,10 @@ formatter: function (params, ticket, callback) {
 
 #${prefix} valueFormatter(string)
 
+{{ use: partial-version(
+    version = '5.3.0'
+) }}
+
 Callback function for formatting the value section in tooltip.
 
 Interface:
