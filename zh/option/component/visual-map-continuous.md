@@ -95,7 +95,7 @@ chart.setOption({visualMap: {range: null}}); // 再把 range 设为 null。
 
 拖拽时，是否实时更新。
 
-+ 如果为`ture`则拖拽手柄过程中实时更新图表视图。
++ 如果为`true`则拖拽手柄过程中实时更新图表视图。
 
 + 如果为`false`则拖拽结束时，才更新视图。
 
