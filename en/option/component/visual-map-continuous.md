@@ -94,7 +94,7 @@ Notes: In order to be compatible with ECharts2, the rule, which seems to be a li
 
 Whether to update view in real time when dragging a handle.
 
-+ If `ture`, the chart view will be updated in real time when dragging.
++ If `true`, the chart view will be updated in real time when dragging.
 
 + If `false`, the chart view will be updated at the end of the handle dragging.
 
