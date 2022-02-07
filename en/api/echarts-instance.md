@@ -289,7 +289,7 @@ Must use this method to render if server-side rendering is enabled with the `ssr
 
 + `opts`
 
-    + `useViewBox` Whether to add [viewBox](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Attribute/viewBox) in the generated SVG string
+    + `useViewBox` Whether to add [viewBox](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox) in the generated SVG string
 
 
 ## dispatchAction(Function)
