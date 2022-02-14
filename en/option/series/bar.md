@@ -251,7 +251,9 @@ Select state of single data.
 
 {{ use: partial-marker(
     prefix = "#",
-    seriesType = "bar"
+    seriesType = "bar",
+    hasCoord = true,
+    hasType = true
 ) }}
 
 {{ use: partial-z-zlevel(
