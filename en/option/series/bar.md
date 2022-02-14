@@ -249,6 +249,13 @@ Select state of single data.
     prefix = "#"
 ) }}
 
+{{ use: partial-marker(
+    prefix = "#",
+    seriesType = "bar",
+    hasCoord = true,
+    hasType = true
+) }}
+
 {{ use: partial-z-zlevel(
     prefix = "#",
     componentName = "Bar chart "
