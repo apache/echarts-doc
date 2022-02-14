@@ -203,7 +203,7 @@ data: [
 
 文字与线的间距可以通过 [label.distance](~series-${seriesType}.markLine.label.distance) 调整。
 
-~[800x500](${galleryViewPath}bar-markline&reset=1&edit=1)
+~[800x500](${galleryViewPath}line-markline&reset=1&edit=1)
 
 #${prefix} distance(number|Array)
 

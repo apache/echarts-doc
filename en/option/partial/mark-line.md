@@ -198,13 +198,13 @@ Positions of labels can be:
 + `'middle'` middle point of the line.
 + `'end'` ending point of the line.
 
-Since version 4.7.0, more label positions are supported: `'start'`, `'middle'`, `'end'`, `'insideStartTop'`, `'insideStartBottom'`, `'insideMiddleTop'`, `'insideMiddleBottom'`, `'insideEndTop'`, `'insideEndBottom'`.
+Since v4.7.0, more label positions are supported: `'start'`, `'middle'`, `'end'`, `'insideStartTop'`, `'insideStartBottom'`, `'insideMiddleTop'`, `'insideMiddleBottom'`, `'insideEndTop'`, `'insideEndBottom'`.
 
 `'insideMiddleBottom'` is the same as `'middle'`. Position is as the following chart.
 
 The distance between labels and mark lines can be set with [label.distance](~series-${seriesType}.markLine.label.distance).
 
-~[800x500](${galleryViewPath}bar-markline&reset=1&edit=1)
+~[800x500](${galleryViewPath}line-markline&reset=1&edit=1)
 
 #${prefix} distance(number|Array)
 
