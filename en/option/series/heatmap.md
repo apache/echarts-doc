@@ -70,11 +70,11 @@ Work for [coordinateSystem](~series-heatmap.coordinateSystem): 'cartesian2d'.
 
 Work for [coordinateSystem](~series-heatmap.coordinateSystem): 'cartesian2d'.
 
-{{ use: partial-border-radius(
+{{ use: partial-item-style(
     prefix = "##"
 ) }}
 
-{{ use: partial-item-style(
+{{ use: partial-border-radius(
     prefix = "##"
 ) }}
 
@@ -158,12 +158,12 @@ It is valid with [coordinateSystem](~series-heatmap.coordinateSystem) of 'cartes
 
 Style of a single data point. It is valid with [coordinateSystem](~series-heatmap.coordinateSystem) of 'cartesian2d' value.
 
-{{ use: partial-border-radius(
-    prefix = '###'
-) }}
-
 {{ use: partial-item-style(
     prefix = "###"
+) }}
+
+{{ use: partial-border-radius(
+    prefix = '###'
 ) }}
 
 ### emphasis(Object)
