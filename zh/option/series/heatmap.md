@@ -121,6 +121,10 @@ option = {
 
 样式设置，在直角坐标系([coordinateSystem](~series-heatmap.coordinateSystem): 'cartesian2d')上有效。
 
+{{ use: partial-border-radius(
+    prefix = "##"
+) }}
+
 {{ use: partial-item-style(
     prefix = "##"
 ) }}
@@ -204,6 +208,10 @@ option = {
 ### itemStyle(Object)
 
 单个数据点的样式设置，在直角坐标系([coordinateSystem](~series-heatmap.coordinateSystem): 'cartesian2d')上有效。
+
+{{ use: partial-border-radius(
+    prefix = '###'
+) }}
 
 {{ use: partial-item-style(
     prefix = "###"
