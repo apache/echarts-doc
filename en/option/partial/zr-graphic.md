@@ -1375,9 +1375,11 @@ chart.on('click', function (params) {
 
 Whether response to mouse events / touch events.
 
+{{ if: ${type} !== 'group' }}
 ##${prefix} invisible(boolean) = false
 
 Whether the element is visible.
+{{ /if }}
 
 ##${prefix} ignore(boolean) = false
 
@@ -1526,19 +1528,22 @@ Tell echarts that I can make sure this text is inside or not.
 {{ /if }}
 
 {{ if: ${usageType} === 'graphicComponent' }}
+{{ if: ${type} !== 'group' }}
 {{ use: partial-cursor(
     prefix = "##"
 ) }}
+{{ /if }}
 
 ##${prefix} draggable(boolean) = false
 
 Can be dragged or not.
 
+{{ if: ${type} !== 'group' }}
 ##${prefix} progressive(boolean) = false
 
 Whether use progressive render to improve performance. Usually used when number of element is too large.
 {{ /if }}
-
+{{ /if }}
 
 
 {{ target: partial-graphic-cpt-style-prop-common }}

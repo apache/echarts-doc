@@ -1357,9 +1357,11 @@ chart.on('click', function (params) {
 
 是否不响应鼠标以及触摸事件。
 
+{{ if: ${type} !== 'group' }}
 ##${prefix} invisible(boolean) = false
 
 节点是否可见。
+{{ /if }}
 
 ##${prefix} ignore(boolean) = false
 
@@ -1508,19 +1510,22 @@ Position of `textContent`.
 {{ /if }}
 
 {{ if: ${usageType} === 'graphicComponent' }}
+{{ if: ${type} !== 'group' }}
 {{ use: partial-cursor(
     prefix = "##"
 ) }}
+{{ /if }}
 
 ##${prefix} draggable(boolean) = false
 
 图形元素是否可以被拖拽。
 
+{{ if: ${type} !== 'group' }}
 ##${prefix} progressive(boolean) = false
 
 是否渐进式渲染。当图形元素过多时才使用。
 {{ /if }}
-
+{{ /if }}
 
 
 {{ target: partial-graphic-cpt-style-prop-common }}
