@@ -125,6 +125,10 @@ option = {
     prefix = "##"
 ) }}
 
+{{ use: partial-border-radius(
+    prefix = "##"
+) }}
+
 ## emphasis(Object)
 
 高亮状态的图形样式。
@@ -215,6 +219,10 @@ option = {
 
 {{ use: partial-item-style(
     prefix = "###"
+) }}
+
+{{ use: partial-border-radius(
+    prefix = '###'
 ) }}
 
 ### emphasis(Object)

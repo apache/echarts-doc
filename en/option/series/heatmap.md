@@ -74,6 +74,10 @@ Work for [coordinateSystem](~series-heatmap.coordinateSystem): 'cartesian2d'.
     prefix = "##"
 ) }}
 
+{{ use: partial-border-radius(
+    prefix = "##"
+) }}
+
 ## emphasis(Object)
 
 Configurations of emphasis state.
@@ -164,6 +168,10 @@ Style of a single data point. It is valid with [coordinateSystem](~series-heatma
 
 {{ use: partial-item-style(
     prefix = "###"
+) }}
+
+{{ use: partial-border-radius(
+    prefix = '###'
 ) }}
 
 ### emphasis(Object)
