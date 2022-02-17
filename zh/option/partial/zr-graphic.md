@@ -1516,9 +1516,11 @@ Position of `textContent`.
 ) }}
 {{ /if }}
 
-##${prefix} draggable(boolean) = false
+##${prefix} draggable(boolean|string) = false
 
 图形元素是否可以被拖拽。
+
+设置为 `true/false` 以启用/禁用拖拽，也可以设置为 `'horizontal'/'vertical'` 限制只允许水平或垂直方向拖拽。
 
 {{ if: ${type} !== 'group' }}
 ##${prefix} progressive(boolean) = false
