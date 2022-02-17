@@ -1534,9 +1534,11 @@ Tell echarts that I can make sure this text is inside or not.
 ) }}
 {{ /if }}
 
-##${prefix} draggable(boolean) = false
+##${prefix} draggable(boolean|string) = false
 
-Can be dragged or not.
+Whether the element is draggable.
+
+You may set it to be `true/false` to enable/disable dragging, or set it to be `'horizontal'/'vertical'` to make the element only horizontally/vertically draggable.
 
 {{ if: ${type} !== 'group' }}
 ##${prefix} progressive(boolean) = false
