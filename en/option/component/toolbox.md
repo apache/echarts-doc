@@ -146,7 +146,7 @@ Notes: User-defined tool name could only start with `my`, like `myTool1` and `my
             myTool2: {
                 show: true,
                 title: 'custom extension method',
-                icon: 'image://http://echarts.baidu.com/images/favicon.png',
+                icon: 'image://https://echarts.apache.org/en/images/favicon.png',
                 onclick: function (){
                     alert('myToolHandler2')
                 }
