@@ -220,7 +220,7 @@ option = {
             myTool2: {
                 show: true,
                 title: '自定义扩展方法',
-                icon: 'image://http://echarts.baidu.com/images/favicon.png',
+                icon: 'image://https://echarts.apache.org/zh/images/favicon.png',
                 onclick: function (){
                     alert('myToolHandler2')
                 }
