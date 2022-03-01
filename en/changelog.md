@@ -2,14 +2,14 @@
 <div class="time">2022-03-01</div>
 
 + [Feature] [i18n] Add korean translation [#16582](https://github.com/apache/echarts/issues/16582) ([hijae](https://github.com/hijae))
-+ [Feature] [heatMap] Add `borderRadius` option to heatmap. [#16493](https://github.com/apache/echarts/issues/16493) ([Rain120](https://github.com/Rain120))
++ [Feature] [heatmap] Add `borderRadius` option to heatmap. [#16493](https://github.com/apache/echarts/issues/16493) ([Rain120](https://github.com/Rain120))
 + [Fix] [lines] Fix potential memory leak in the effect line when `setOption` with `notMerge`. [#16525](https://github.com/apache/echarts/issues/16525) ([pissang](https://github.com/pissang))
 + [Fix] [line] Fix stepped line charts with empty data. [#16435](https://github.com/apache/echarts/issues/16435) ([Gyyi](https://github.com/Gyyi))
 + [Fix] [line] Fix empty data in lttb sampling. [#16431](https://github.com/apache/echarts/issues/16431) ([fuchunhui](https://github.com/fuchunhui))
 + [Fix] [tooltip] Changing default time formatter to be in 24-hour format. [#16421](https://github.com/apache/echarts/issues/16421) ([Comee](https://github.com/Comee))
 + [Fix] [graphic] Fix `cursor` doesn't work in `graphic` component. [#16513](https://github.com/apache/echarts/issues/16513) ([plainheart](https://github.com/plainheart))
 + [Fix] [pictorialBar] Fix pictorialBar data with value of 0. [#16469](https://github.com/apache/echarts/issues/16469) ([fuchunhui](https://github.com/fuchunhui))
-+ [Fix] [svg] Fix shared vnode in pattern brings render issue. [#889](https://github.com/ecomfe/zrender/issues/889) ([pissang](https://github.com/pissang))
++ [Fix] [svg] Fix render bug when using decal. [#889](https://github.com/ecomfe/zrender/issues/889) ([pissang](https://github.com/pissang))
 + [Fix] [tooltip] Fix `legend.tooltip.enterable` and `tooltip.enterable`. [#16463](https://github.com/apache/echarts/issues/16463) ([fuchunhui](https://github.com/fuchunhui))
 + [Feature] [event] Provide label index in axis events [#16187](https://github.com/apache/echarts/issues/16187) ([Ovilia](https://github.com/Ovilia))
 + [Fix] [sunburst] Centering labels of sunburst at the first level. [#16425](https://github.com/apache/echarts/issues/16425) ([FrankChencc](https://github.com/FrankChencc))
