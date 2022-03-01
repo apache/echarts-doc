@@ -129,6 +129,12 @@ But it is still an experimental option, see [#11024](https://github.com/apache/e
 
 {{ use: partial-roam() }}
 
+## scaleLimit(Object)
+
+{{ use: partial-scale-limit(
+    prefix = "##"
+) }}
+
 ## nodeScaleRatio(number) = 0.6
 
 <ExampleUIControlNumber min="0" max="1" step="0.01" default="0.6" />
