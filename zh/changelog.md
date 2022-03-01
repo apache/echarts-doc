@@ -1,4 +1,22 @@
 ## v5.3.0
+<div class="time">2022-03-01</div>
+
++ [Feature] [i18n] 新增韩语翻译。 [#16582](https://github.com/apache/echarts/issues/16582) ([hijae](https://github.com/hijae))
++ [Feature] [heatmap] 热力图支持 `borderRadius` 配置项。 [#16493](https://github.com/apache/echarts/issues/16493) ([Rain120](https://github.com/Rain120))
++ [Fix] [lines] 修复 `setOption` 且 `notMerge` 时 effectLine 的潜在内存泄漏。 [#16525](https://github.com/apache/echarts/issues/16525) ([pissang](https://github.com/pissang))
++ [Fix] [line] 修复阶梯折线图空数据引起的斜线。 [#16435](https://github.com/apache/echarts/issues/16435) ([Gyyi](https://github.com/Gyyi))
++ [Fix] [line] 修复 lttb 采样中空数据的问题。 [#16431](https://github.com/apache/echarts/issues/16431) ([fuchunhui](https://github.com/fuchunhui))
++ [Fix] [tooltip] 时间 formatter 默认采用 24 小时制。 [#16421](https://github.com/apache/echarts/issues/16421) ([Comee](https://github.com/Comee))
++ [Fix] [graphic] 修复 `graphic` 组件中 `cursor` 无效的问题。 [#16513](https://github.com/apache/echarts/issues/16513) ([plainheart](https://github.com/plainheart))
++ [Fix] [pictorialBar] 修复象形柱图数据为 0 时的问题。 [#16469](https://github.com/apache/echarts/issues/16469) ([fuchunhui](https://github.com/fuchunhui))
++ [Fix] [svg] 修复开启`decal`后可能会存在渲染错误的问题。 [#889](https://github.com/ecomfe/zrender/issues/889) ([pissang](https://github.com/pissang))
++ [Fix] [tooltip] 修复 `legend.tooltip.enterable` 和 `tooltip.enterable` 无效的问题。 [#16463](https://github.com/apache/echarts/issues/16463) ([fuchunhui](https://github.com/fuchunhui))
++ [Feature] [event] 在坐标轴事件中提供标签 index 信息。 [#16187](https://github.com/apache/echarts/issues/16187) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [sunburst] 修复旭日图首层数据文本居中的问题。 [#16425](https://github.com/apache/echarts/issues/16425) ([FrankChencc](https://github.com/FrankChencc))
++ [Fix] [tooltip] 当数据视图打开时隐藏 tooltip。 [#16321](https://github.com/apache/echarts/issues/16321) ([plainheart](https://github.com/plainheart))
++ [Fix] 修复宽度为 0 的图表的采样问题。 [#16372](https://github.com/apache/echarts/issues/16372) ([Cuiyansong](https://github.com/Cuiyansong))
+
+## v5.3.0
 <div class="time">2022-01-27</div>
 
 + [Feature] 在图形组件和自定义系列中新增基于关键帧的动画。 [#16225](https://github.com/apache/echarts/issues/16225) ([pissang](https://github.com/pissang))
