@@ -1,5 +1,5 @@
-## v5.3.0
-<div class="time">2022-03-01</div>
+## v5.3.1
+<div class="time">2022-03-07</div>
 
 + [Feature] [i18n] Add korean translation [#16582](https://github.com/apache/echarts/issues/16582) ([hijae](https://github.com/hijae))
 + [Feature] [heatmap] Add `borderRadius` option to heatmap. [#16493](https://github.com/apache/echarts/issues/16493) ([Rain120](https://github.com/Rain120))
