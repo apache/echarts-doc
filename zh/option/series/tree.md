@@ -336,6 +336,10 @@ const option = {
 
 节点的值，在 tooltip 中显示。
 
+### collapsed(boolean)
+
+节点初始化是否折叠。
+
 ### itemStyle(Object)
 
 该节点的样式。

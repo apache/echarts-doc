@@ -294,6 +294,10 @@ The name of the tree node, used to identify each node.
 
 The value of the node, displayed in the tooltip.
 
+### collapsed(boolean)
+
+Whether collpase node at initialization。
+
 ### itemStyle(Object)
 
 The style of the node.
