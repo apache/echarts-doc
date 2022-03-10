@@ -202,6 +202,7 @@ Describes the style of the text label corresponding to the leaf node.
     defaultShowLabel = true,
     formatter1d = true
 ) }}
+
 ### itemStyle(Object)
 
 The style of the leaf node in the tree.
@@ -277,7 +278,7 @@ Select state of leaves nodes.
             itemStyle: {
                 ...
             },
-            collapsed: null, // If set as `true`, the node is collpased in the initialization.
+            collapsed: null, // If set as `true`, the node is collapsed in the initialization.
             children: [...]  // leaf nodes do not have children, can not write.
         },
         ...
@@ -295,7 +296,7 @@ The value of the node, displayed in the tooltip.
 
 ### collapsed(boolean)
 
-Whether to collpase node at initialization.
+Whether to collapse node at initialization.
 
 ### itemStyle(Object)
 
