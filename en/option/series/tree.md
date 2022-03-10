@@ -278,7 +278,7 @@ Select state of leaves nodes.
             itemStyle: {
                 ...
             },
-            collapsed: null, // If set as `true`, the node is collpased in the initialization.
+            collapsed: null, // If set as `true`, the node is collapsed in the initialization.
             children: [...]  // leaf nodes do not have children, can not write.
         },
         ...
@@ -293,6 +293,10 @@ The name of the tree node, used to identify each node.
 ### value(number)
 
 The value of the node, displayed in the tooltip.
+
+### collapsed(boolean)
+
+Whether to collapse node at initialization.
 
 ### itemStyle(Object)
 
