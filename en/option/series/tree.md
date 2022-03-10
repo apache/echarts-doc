@@ -202,7 +202,6 @@ Describes the style of the text label corresponding to the leaf node.
     defaultShowLabel = true,
     formatter1d = true
 ) }}
-
 ### itemStyle(Object)
 
 The style of the leaf node in the tree.
@@ -296,7 +295,7 @@ The value of the node, displayed in the tooltip.
 
 ### collapsed(boolean)
 
-Whether collpase node at initialization。
+Whether to collpase node at initialization.
 
 ### itemStyle(Object)
 
