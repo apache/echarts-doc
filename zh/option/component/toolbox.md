@@ -185,9 +185,9 @@ option = {
 
 工具栏 icon 的大小。
 
-## itemGap(number) = 10
+## itemGap(number) = 8
 
-<ExampleUIControlNumber min="0" default="10" />
+<ExampleUIControlNumber min="0" default="8" />
 
 工具栏 icon 每项之间的间隔。横向布局时为水平间隔，纵向布局时为纵向间隔。
 
