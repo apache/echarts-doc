@@ -204,7 +204,7 @@ series.data 的 `dataMin` 和 `dataMax`）。
 
 <ExampleUIControlNumber default="10" />
 
-两端文字主体之间的距离，单位为px。参见 [visualMap-piecewise.text](~visualMap-piecewise.text)
+每项的色块与文本标签之间的距离，单位为px。参见 [visualMap-piecewise.showLabel](~visualMap-piecewise.showLabel)
 
 ## showLabel(boolean)
 
