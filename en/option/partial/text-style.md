@@ -330,7 +330,7 @@ Notice, `width` and `height` only work when `rich` specified.
 
 <ExampleUIControlColor />
 
-Storke color of the text.
+Stroke color of the text.
 
 {{ if: ${enableAutoColor} }}
 {{ use: partial-text-style-auto-color-desc() }}
@@ -340,7 +340,7 @@ Storke color of the text.
 
 <ExampleUIControlNumber min="0" step="0.5" />
 
-Storke line width of the text.
+Stroke line width of the text.
 
 {{ use: partial-line-border-style(
     prefix = ${prefix},
