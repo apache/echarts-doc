@@ -24,12 +24,12 @@ Origin position of area.
 
 By default, the area between axis line and data will be the area to be filled. This config enables you to fill the area from data to the max or min of the axis data or a specified value.
 
-Valid values include: `'auto'` (default), `'start'`, `'end'`.
+Valid values include: `'auto'` (default), `'start'`, `'end'`, `number`.
 
 - `'auto'` to fill between axis line and data;
 - `'start'` to fill between min axis value (when not `inverse`) and data;
 - `'end'` to fill between max axis value (when not `inverse`) and data;
-- `number` to fill between specified value and data
+- `number` to fill between specified value and data.
 {{ /if }}
 
 {{ use: partial-style-shadow-opacity(
