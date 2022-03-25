@@ -159,7 +159,7 @@ const option = {
     prefix = "##"
 ) }}
 
-### scale(boolean | number) = true
+### scale(boolean|number) = true
 
 <ExampleUIControlBoolean default="true" />
 

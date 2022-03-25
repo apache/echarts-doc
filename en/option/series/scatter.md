@@ -90,7 +90,7 @@ Configurations of emphasis state.
     prefix = "##"
 ) }}
 
-### scale(boolean | number) = true
+### scale(boolean|number) = true
 
 <ExampleUIControlBoolean default="true" />
 
