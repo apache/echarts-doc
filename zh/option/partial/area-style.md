@@ -29,8 +29,8 @@
 可选值包括：
 
 - `'auto'` 填充坐标轴轴线到数据间的区域（**默认值**）
-- `'start'` 填充坐标轴底部（非 [`inverse`](~xAxis.inverse) 情况是最小值）到数据间的区域
-- `'end'` 填充坐标轴顶部（非 [`inverse`](~xAxis.inverse) 情况是最大值）到数据间的区域
+- `'start'` 填充坐标轴底部（非 [`inverse`](~yAxis.inverse) 情况是最小值）到数据间的区域
+- `'end'` 填充坐标轴顶部（非 [`inverse`](~yAxis.inverse) 情况是最大值）到数据间的区域
 - `number` 填充指定数值到数据间的区域（从 `v5.3.2` 开始支持）
 {{ /if }}
 

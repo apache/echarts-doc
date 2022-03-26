@@ -29,8 +29,8 @@ By default, the area between axis line and data will be filled. This config enab
 Valid values:
 
 - `'auto'` to fill between axis line and data (**Default**)
-- `'start'` to fill between min axis value (when not [`inverse`](~xAxis.inverse)) and data
-- `'end'` to fill between max axis value (when not [`inverse`](~xAxis.inverse)) and data
+- `'start'` to fill between min axis value (when not [`inverse`](~yAxis.inverse)) and data
+- `'end'` to fill between max axis value (when not [`inverse`](~yAxis.inverse)) and data
 - `number` to fill between specified value and data (Since `v5.3.2`)
 {{ /if }}
 
