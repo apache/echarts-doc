@@ -1,3 +1,22 @@
+## v5.3.2
+
++ [Feature] [line]: `areaStyle.origin` 支持数值类型作为参数。[#16719](https://github.com/apache/echarts/issues/16719) ([jiawulin001](https://github.com/jiawulin001))
++ [Feature] [scatter]: `scale` 支持数值类型作为参数。[#16688](https://github.com/apache/echarts/issues/16688) ([susiwen8](https://github.com/susiwen8))
++ [Feature] [tree]: 树图点击事件增加 `collapsed` 参数用于判断节点是否折叠。[#16660](https://github.com/apache/echarts/issues/16660) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [marker]: 修复 `marker` 在失焦后状态没有还原的问题。[#16670](https://github.com/apache/echarts/issues/16670) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [gauge]: 修复仪表盘在设置了进度条圆角 `progress.roundCap` 且值为 `0` 时渲染异常的问题。[#16653](https://github.com/apache/echarts/issues/16653) ([plainheart](https://github.com/plainheart))
++ [Fix] [splitLine]: 修复极坐标系径向轴启用 `splitLine` 后导致图表无法显示的问题。[#16736](https://github.com/apache/echarts/issues/16736) ([plainheart](https://github.com/plainheart))
++ [Fix] [labelLine]: 修复 `labelLine` 可能无法被隐藏的问题。[#16542](https://github.com/apache/echarts/issues/16542) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [dataZoom]: 修复当数据包含空值时 `dataZoom` 渲染异常的问题。[#16730](https://github.com/apache/echarts/issues/16730) ([yuanjiangxia](https://github.com/yuanjiangxia))
++ [Fix] [heatmap]: 修复热力图在部分 DPR 下显示有明显间隙的问题。[#16714](https://github.com/apache/echarts/issues/16714) ([plainheart](https://github.com/plainheart))
++ [Fix] [toolbox]: 修复 `toolbox` 标题可能超出图表区域的问题。[#16704](https://github.com/apache/echarts/issues/16704) ([plainheart](https://github.com/plainheart))
++ [Fix] [toolbox]: 修复当鼠标悬浮时 `toolbox` 图标没有高亮的问题。[#16702](https://github.com/apache/echarts/issues/16702) ([plainheart](https://github.com/plainheart))
++ [Fix] [toolbox] [dataview]: 优化 `dataview` 使用默认文本框时的样式。[#16691](https://github.com/apache/echarts/issues/16691) ([plainheart](https://github.com/plainheart))
++ [Fix] [visualMap]: 修复 `visualMap` 部分文本样式不生效的问题。[#16679](https://github.com/apache/echarts/issues/16679) ([fuchunhui](https://github.com/fuchunhui))
++ [Fix] [line]: 修复折线图没有正确渲染空值的问题。[#16672](https://github.com/apache/echarts/issues/16672) ([WindyZ99](https://github.com/WindyZ99))
++ [Fix] [sanky]: 当桑基图颜色值非法时，默认使用黑色。[#16614](https://github.com/apache/echarts/issues/16614) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [types]: 修正不规范的 `jpg` 图片导出类型为 `jpeg`。[#16747](https://github.com/apache/echarts/issues/16747) ([yassilah](https://github.com/yassilah))
+
 ## v5.3.1
 <div class="time">2022-03-07</div>
 
