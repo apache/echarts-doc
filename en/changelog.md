@@ -5,7 +5,7 @@
 + [Feature] [tree] add `collapsed` to `tree` click event parameters. [#16660](https://github.com/apache/echarts/issues/16660) ([susiwen8](https://github.com/susiwen8))
 + [Fix] [marker] fix marker state doesn't restore after blurring. [#16670](https://github.com/apache/echarts/issues/16670) ([susiwen8](https://github.com/susiwen8))
 + [Fix] [gauge] fix progress bar may become unexpectedly circle when value is `0` and `progress.roundCap` is enabled. [#16653](https://github.com/apache/echarts/issues/16653) ([plainheart](https://github.com/plainheart))
-+ [Fix] [splitLine] fix chart throws errors when `splitLine` is enabled in radius axis. [#16736](https://github.com/apache/echarts/issues/16736) ([plainheart](https://github.com/plainheart))
++ [Fix] [polar] fix chart throws errors when `splitLine` is enabled in radius axis. [#16736](https://github.com/apache/echarts/issues/16736) ([plainheart](https://github.com/plainheart))
 + [Fix] [labelLine] fix `labelLine` can't be hidden. [#16542](https://github.com/apache/echarts/issues/16542) ([susiwen8](https://github.com/susiwen8))
 + [Fix] [dataZoom] fix `dataZoom` was unexpectedly displayed at the top when data contains null values. [#16730](https://github.com/apache/echarts/issues/16730) ([yuanjiangxia](https://github.com/yuanjiangxia))
 + [Fix] [heatmap] fix unexpected gaps in heatmap charts. [#16714](https://github.com/apache/echarts/issues/16714) ([plainheart](https://github.com/plainheart))

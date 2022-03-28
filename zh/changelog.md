@@ -5,7 +5,7 @@
 + [Feature] [tree] 树图点击事件增加 `collapsed` 参数用于判断节点是否折叠。[#16660](https://github.com/apache/echarts/issues/16660) ([susiwen8](https://github.com/susiwen8))
 + [Fix] [marker] 修复 `marker` 在失焦后状态没有还原的问题。[#16670](https://github.com/apache/echarts/issues/16670) ([susiwen8](https://github.com/susiwen8))
 + [Fix] [gauge] 修复仪表盘在设置了进度条圆角 `progress.roundCap` 且值为 `0` 时渲染异常的问题。[#16653](https://github.com/apache/echarts/issues/16653) ([plainheart](https://github.com/plainheart))
-+ [Fix] [splitLine] 修复极坐标系径向轴启用 `splitLine` 后导致图表无法显示的问题。[#16736](https://github.com/apache/echarts/issues/16736) ([plainheart](https://github.com/plainheart))
++ [Fix] [polar] 修复极坐标系径向轴启用 `splitLine` 后导致图表无法显示的问题。[#16736](https://github.com/apache/echarts/issues/16736) ([plainheart](https://github.com/plainheart))
 + [Fix] [labelLine] 修复 `labelLine` 可能无法被隐藏的问题。[#16542](https://github.com/apache/echarts/issues/16542) ([susiwen8](https://github.com/susiwen8))
 + [Fix] [dataZoom] 修复当数据包含空值时 `dataZoom` 渲染异常的问题。[#16730](https://github.com/apache/echarts/issues/16730) ([yuanjiangxia](https://github.com/yuanjiangxia))
 + [Fix] [heatmap] 修复热力图在部分 DPR 下显示有明显间隙的问题。[#16714](https://github.com/apache/echarts/issues/16714) ([plainheart](https://github.com/plainheart))
