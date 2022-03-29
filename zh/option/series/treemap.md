@@ -596,24 +596,6 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 ) }}
 {{ /if }}
 
-#${prefix} colorAlpha(Array) = null
-
-{{ if: ${prefix} !== '#' }}
-表示同一层级的节点的颜色透明度选取范围。
-{{ else }}
-本系列默认的颜色透明度选取范围。
-{{ /if }}
-
-数值范围 0 ~ 1
-
-例如, `colorAlpha` 可以是 `[0.3, 1]`.
-
-{{ use: partial-treemap-visual-detial() }}
-
-{{ use: partial-treemap-prop-location-desc(
-    name = "colorAlpha"
-) }}
-
 #${prefix} colorSaturation(number) = null
 
 {{ if: ${prefix} !== '#' }}
@@ -818,12 +800,6 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 矩形的颜色。默认从全局调色盘 [option.color](~color) 获取颜色。
 
 {{ if: ${itemStyleType} === 'normal' }}
-#${prefix} colorAlpha(number) = null
-
-<ExampleUIControlNumber step="0.01" min="0" max="1" default="1" />
-
-矩形颜色的透明度。取值范围是 0 ~ 1 之间的浮点数。
-
 #${prefix} colorSaturation(number) = null
 
 <ExampleUIControlNumber step="0.01" min="0" max="1" default="0.5" />
