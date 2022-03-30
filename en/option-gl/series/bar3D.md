@@ -40,6 +40,8 @@ The smoothness of the bevel, the larger the value, the smoother.
 
 Stacking of bar chart. On the same category axis, the series with the same `stack` name would be put on top of each other. Note that the data items that need to be stack in different series must have the same index in the array.
 
+Notice: `stack` only supports stacking on `value` and `log` axis for now. `time` and `category` axis are not supported.
+
 
 ## minHeight(number) = 0
 

@@ -89,6 +89,8 @@ const option = {
 
 数据堆叠，同个类目轴上系列配置相同的`stack`值后，后一个系列的值会在前一个系列的值上相加。
 
+注：目前`stack`只支持堆叠于 `value` 和 `log` 类型的类目轴上，不支持 `time` 和 `category` 类型的类目轴。
+
 下面示例可以通过右上角 [toolbox](~toolbox) 中的堆叠切换看效果：
 
 ~[600x400](${galleryViewPath}doc-example/line-stack-tiled&edit=1&reset=1)
