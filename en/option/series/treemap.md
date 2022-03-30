@@ -450,6 +450,25 @@ A color list for a level. Each node in the level will obtain a color from the co
 ) }}
 {{ /if }}
 
+#${prefix} colorAlpha(Array) = null
+
+{{ if: ${prefix} !== '#' }}
+It indicates the range of tranparent rate (color alpha) for nodes in a level
+{{ else }}
+It indicates the range of tranparent rate (color alpha) for nodes of the series
+{{ /if }}
+
+.
+The range of values is 0 ~ 1.
+
+For example, `colorAlpha` can be `[0.3, 1]`.
+
+{{ use: partial-treemap-visual-detial() }}
+
+{{ use: partial-treemap-prop-location-desc(
+    name = "colorAlpha"
+) }}
+
 #${prefix} colorSaturation(number) = null
 
 {{ if: ${prefix} !== '#' }}
@@ -658,12 +677,6 @@ About visual encoding, see details in [series-treemap.levels](~series-treemap.le
 The color of a node. It use global palette [option.color](~color) by default.
 
 {{ if: ${itemStyleType} === 'normal' }}
-#${prefix} colorSaturation(number) = null
-
-<ExampleUIControlNumber step="0.01" min="0" max="1" default="0.5" />
-
-The color saturation of a node. The range is between 0 ~ 1.
-
 #${prefix} borderRadius(number|Array) = 0
 
 <ExampleUIControlVector min="0" dims="LT,RT, RB, LB" clean="true"  />
