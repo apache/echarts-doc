@@ -677,18 +677,6 @@ About visual encoding, see details in [series-treemap.levels](~series-treemap.le
 The color of a node. It use global palette [option.color](~color) by default.
 
 {{ if: ${itemStyleType} === 'normal' }}
-#${prefix} colorAlpha(number) = null
-
-<ExampleUIControlNumber step="0.01" min="0" max="1" default="1" />
-
-The tranparent rate of a node, the range is between 0 ~ 1.
-
-#${prefix} colorSaturation(number) = null
-
-<ExampleUIControlNumber step="0.01" min="0" max="1" default="0.5" />
-
-The color saturation of a node. The range is between 0 ~ 1.
-
 #${prefix} borderRadius(number|Array) = 0
 
 <ExampleUIControlVector min="0" dims="LT,RT, RB, LB" clean="true"  />

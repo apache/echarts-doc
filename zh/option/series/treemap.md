@@ -818,18 +818,6 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 矩形的颜色。默认从全局调色盘 [option.color](~color) 获取颜色。
 
 {{ if: ${itemStyleType} === 'normal' }}
-#${prefix} colorAlpha(number) = null
-
-<ExampleUIControlNumber step="0.01" min="0" max="1" default="1" />
-
-矩形颜色的透明度。取值范围是 0 ~ 1 之间的浮点数。
-
-#${prefix} colorSaturation(number) = null
-
-<ExampleUIControlNumber step="0.01" min="0" max="1" default="0.5" />
-
-矩形颜色的饱和度。取值范围是 0 ~ 1 之间的浮点数。
-
 #${prefix} borderRadius(number|Array) = 0
 
 <ExampleUIControlVector min="0" dims="LT,RT, RB, LB" clean="true"  />
