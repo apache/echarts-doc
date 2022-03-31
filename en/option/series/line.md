@@ -169,7 +169,8 @@ The style of area.
 
 {{ use: partial-area-style(
     prefix = "##",
-    hasOrigin = true
+    hasOrigin = true,
+    defaultOpacity = 0.7
 ) }}
 
 ## emphasis(Object)
