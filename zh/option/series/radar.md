@@ -113,7 +113,8 @@ const option = {
 区域填充样式。
 
 {{ use: partial-area-style(
-    prefix = "##"
+    prefix = "##",
+    defaultOpacity = 0.7
 ) }}
 
 ## emphasis(Object)
@@ -236,7 +237,8 @@ data : [
 单项区域填充样式。
 
 {{ use: partial-area-style(
-    prefix = "###"
+    prefix = "###",
+    defaultOpacity = 0.7
 ) }}
 
 ### emphasis(Object)
