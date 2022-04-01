@@ -1,4 +1,5 @@
 ## v5.3.2
+<div class="time">2022-04-01</div>
 
 + [Feature] [line] allow `areaStyle.origin` to take number as input. [#16719](https://github.com/apache/echarts/issues/16719) ([jiawulin001](https://github.com/jiawulin001))
 + [Feature] [scatter] `scale` support number. [#16688](https://github.com/apache/echarts/issues/16688) ([susiwen8](https://github.com/susiwen8))
