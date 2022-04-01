@@ -70,13 +70,15 @@ x 轴的位置。
 + `'top'`
 + `'bottom'`
 
-默认 grid 中的第一个 x 轴在 grid 的下方（`'bottom'`），第二个 x 轴视第一个 x 轴的位置放在另一侧。
+默认 grid 中的第一个 x 轴在 grid 的下方（`'bottom'`），第二个 x 轴视第一个 x 轴的位置放在另一侧。  
+注：若未将 `xAxis.axisLine.onZero` 设为 `false` , 则该项无法生效
 
 ## offset(number) = 0
 
 <ExampleUIControlNumber step="0.5" />
 
-X 轴相对于默认位置的偏移，在相同的 `position` 上有多个 X 轴的时候有用。
+X 轴相对于默认位置的偏移，在相同的 `position` 上有多个 X 轴的时候有用。  
+注：若未将 `xAxis.axisLine.onZero` 设为 `false` , 则该项无法生效
 
 {{ use: axis-common(
     prefix = '#',

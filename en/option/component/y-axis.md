@@ -33,13 +33,15 @@ options:
 + `'left'`
 + `'right'`
 
-The first y axis in grid defaults to be the left (`'left'`)  of the grid, and the second y axis is on the other side against the first y axis.
+The first y axis in grid defaults to be the left (`'left'`)  of the grid, and the second y axis is on the other side against the first y axis.  
+Notice: Changes of `position` cannot be applied unless setting `yAxis.axisLine.onZero` to `false`.
 
 ## offset(number) = 0
 
 <ExampleUIControlNumber step="0.5" />
 
 Offset of y axis relative to default position. Useful when multiple y axis has same [position](~yAxis.position) value.
+Notice: Changes of `offset` cannot be applied unless setting `yAxis.axisLine.onZero` to `false`.
 
 {{ use: axis-common(
     prefix = '#',
