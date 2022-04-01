@@ -14,7 +14,7 @@
 + [Fix] [toolbox] [dataview] fix unexpected scrollbar and outline when using default textview. [#16691](https://github.com/apache/echarts/issues/16691) ([plainheart](https://github.com/plainheart))
 + [Fix] [visualMap] fix some text style can't work on `visualMap`. [#16679](https://github.com/apache/echarts/issues/16679) ([fuchunhui](https://github.com/fuchunhui))
 + [Fix] [line] fix line graph renders null value incorrectly. [#16672](https://github.com/apache/echarts/issues/16672) ([WindyZ99](https://github.com/WindyZ99))
-+ [Fix] [sanky] fallback to black if color is illegal. [#16614](https://github.com/apache/echarts/issues/16614) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [sankey] fallback to black if color is illegal. [#16614](https://github.com/apache/echarts/issues/16614) ([susiwen8](https://github.com/susiwen8))
 + [Fix] [types] fix wrong jpg instead of jpeg image export types. [#16747](https://github.com/apache/echarts/issues/16747) ([yassilah](https://github.com/yassilah))
 
 ## v5.3.1

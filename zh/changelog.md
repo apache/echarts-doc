@@ -14,7 +14,7 @@
 + [Fix] [toolbox] [dataview] 优化 `dataview` 使用默认文本框时的样式。[#16691](https://github.com/apache/echarts/issues/16691) ([plainheart](https://github.com/plainheart))
 + [Fix] [visualMap] 修复 `visualMap` 部分文本样式不生效的问题。[#16679](https://github.com/apache/echarts/issues/16679) ([fuchunhui](https://github.com/fuchunhui))
 + [Fix] [line] 修复折线图没有正确渲染空值的问题。[#16672](https://github.com/apache/echarts/issues/16672) ([WindyZ99](https://github.com/WindyZ99))
-+ [Fix] [sanky] 当桑基图颜色值非法时，默认使用黑色。[#16614](https://github.com/apache/echarts/issues/16614) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [sankey] 当桑基图颜色值非法时，默认使用黑色。[#16614](https://github.com/apache/echarts/issues/16614) ([susiwen8](https://github.com/susiwen8))
 + [Fix] [types] 修正不规范的 `jpg` 图片导出类型为 `jpeg`。[#16747](https://github.com/apache/echarts/issues/16747) ([yassilah](https://github.com/yassilah))
 
 ## v5.3.1
