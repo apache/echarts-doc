@@ -3,6 +3,10 @@
 
 #${prefix} universalTransition(object)
 
+{{ use: partial-version(
+    version = "5.2.0"
+) }}
+
 Configuration related to universal transition animation.
 
 Universal Transition provides the ability to morph between any series. With this feature enabled, each time `setOption`, transitions between series with the same `id` will be automatically associated with each other.

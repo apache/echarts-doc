@@ -3,6 +3,10 @@
 
 #${prefix} universalTransition(object)
 
+{{ use: partial-version(
+    version = "5.2.0"
+) }}
+
 全局过渡动画相关的配置。
 
 全局过渡动画（Universal Transition）提供了任意系列之间进行变形动画的功能。开启该功能后，每次`setOption`，相同`id`的系列之间会自动关联进行动画的过渡，更细粒度的关联配置见`universalTransition.seriesKey`配置。

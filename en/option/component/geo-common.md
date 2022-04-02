@@ -81,6 +81,10 @@ The demo above shows that SVG format can be used in ECharts. See more info in [S
 
 #${prefix} projection(Object)
 
+{{ use: partial-version(
+    version = "5.3.0"
+) }}
+
 For custom map projection, at least two methods `project`, `unproject` should be provided to calculate the coordinates after projection and before projection respectively.
 
 For example, for the Mercator projection.
