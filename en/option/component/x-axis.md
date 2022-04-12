@@ -34,14 +34,14 @@ options:
 + `'bottom'`
 
 The first x axis in grid defaults to be on the bottom of the grid, and the second x axis is on the other side against the first x axis.  
-Notice: Changes of `position` cannot be applied unless setting `xAxis.axisLine.onZero` to `false`.
+Notice: Set `xAxis.axisLine.onZero` to `false` to activate this option.
 
 ## offset(number) = 0
 
 <ExampleUIControlNumber step="0.5" />
 
 Offset of x axis relative to default position. Useful when multiple x axis has same [position](~xAxis.position) value.  
-Notice: Changes of `offset` cannot be applied unless setting `xAxis.axisLine.onZero` to `false`.
+Notice: Set `xAxis.axisLine.onZero` to `false` to activate this option.
 
 {{ use: axis-common(
     prefix = '#',
