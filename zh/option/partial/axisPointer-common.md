@@ -67,8 +67,6 @@ axisPointer 的 label 默认不显示（也就是默认只显示指示线），�
 对于数值轴、时间轴，如果开启了 [snap](~xAxis.axisPointer.snap)，则 axisPointer 会自动吸附到最近的点上。
 
 
----
-
 
 
 {{ target: partial-axisPointer-common }}

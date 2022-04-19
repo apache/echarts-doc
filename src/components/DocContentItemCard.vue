@@ -219,7 +219,7 @@ export default {
 
 <style lang="scss">
 
-$card-margin: 15px;
+$card-margin: 10px;
 $children-padding: 10px;
 
 $hierarchy-guider-color: #E0E6F1;
@@ -416,10 +416,14 @@ $hierarchy-guider-color: #E0E6F1;
                 vertical-align: middle;
                 width: $children-padding + $card-margin + 3;
                 margin-left: -$children-padding - $card-margin - 14;
-                margin-right: 2px;
+                margin-right: 0px;
                 // width: $i * ($children-padding + $card-padding);
                 // margin-left: -$i * ($children-padding + $card-padding);
-                border-top: 1px solid $hierarchy-guider-color;
+                border-bottom: 1px solid $hierarchy-guider-color;
+                border-left: 1px solid $hierarchy-guider-color;
+                height: 15px;
+                margin-top: -15px;
+                border-bottom-left-radius: 10px;
 
                 position: relative;
 
