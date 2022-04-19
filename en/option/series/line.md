@@ -58,7 +58,7 @@ Only work when main axis is `'category'` axis (`axis.type` is `'category'`). Opt
 
 ## stack(string) = null
 
-If stack the value. On the same category axis, the series with the same `stack` name would be put on top of each other.
+If stack the value. On the same category axis, the series with the same `stack` name would be put on top of each other. Recommend to use with `stackDim`.
 
 Notice: `stack` only supports stacking on `value` and `log` axis for now. `time` and `category` axis are not supported.
 
@@ -67,6 +67,10 @@ The effect of the below example could be seen through stack switching of [toolbo
 ~[600x400](${galleryViewPath}doc-example/line-stack-tiled&edit=1&reset=1)
 
 {{ use: partial-cursor() }}
+
+## stackDim(string) = null
+Dimension of stack. Usually chooses the axis that represents the value of data. Only used with `stack`.  
+Optional values: `'x'` and `'y'`.
 
 ## connectNulls(boolean) = false
 

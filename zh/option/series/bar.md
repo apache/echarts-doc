@@ -210,9 +210,13 @@ option = {
 
 ## stack(string) = null
 
-数据堆叠，同个类目轴上系列配置相同的`stack`值可以堆叠放置。
+数据堆叠，同个类目轴上系列配置相同的`stack`值可以堆叠放置。推荐与`stackDim`一起使用。
 
 注：目前`stack`只支持堆叠于 `value` 和 `log` 类型的类目轴上，不支持 `time` 和 `category` 类型的类目轴。
+
+## stackDim(string) = null
+数据堆叠的方向，一般选择表示数据值的轴。只用于与`stack`一起使用。  
+可选值：`'x'`和`'y'`
 
 ## sampling(string)
 
