@@ -35,6 +35,19 @@ The tree diagram is mainly used to visualize the tree data structure, which is a
     defaultHeight = 'null'
 ) }}
 
+## center(Array)
+
+Center of current view-port.
+
+Example:
+```ts
+center: [115.97, 29.71]
+```
+
+## zoom(number) = 1
+
+Zoom rate of current view-port.
+
 ## layout(string) = 'orthogonal'
 
 <ExampleUIControlEnum options="orthogonal,radial" default="orthogonal" />
