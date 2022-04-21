@@ -34,4 +34,5 @@
     dimensionIndex: number,
     // Color of data
     color: string,
-
+}
+```
