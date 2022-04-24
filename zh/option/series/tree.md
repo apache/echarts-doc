@@ -78,6 +78,20 @@ const option = {
     defaultHeight = 'null'
 ) }}
 
+## center(Array)
+
+当前视角的中心点
+
+例如：
+```ts
+center: [115.97, 29.71]
+```
+
+## zoom(number) = 1
+
+当前视角的缩放比例。
+
+
 ## layout(string) = 'orthogonal'
 
 <ExampleUIControlEnum options="orthogonal,radial" default="orthogonal" />
