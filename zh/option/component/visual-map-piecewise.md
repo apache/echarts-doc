@@ -131,14 +131,16 @@ series.data 的 `dataMin` 和 `dataMax`）。
 
 当 `type` 为 `piecewise` 且使用 `min`/`max`/`splitNumber` 时，此参数有效。当值为 `true` 时，界面上会额外多出一个『> max』的选块。
 
-## selectedMode(string) = 'multiple'
+## selectedMode(string|boolean) = 'multiple'
 
-<ExampleUIControlEnum options="single,multiple" />
+<ExampleUIControlEnum options="single,multiple,true,false" />
 
 选择模式，可以是：
 
 + `'multiple'`（多选）。
 + `'single'`（单选）。
++ `true`（单选）。
++ `false`（禁止选择）。
 
 ## inverse(boolean) = false
 
