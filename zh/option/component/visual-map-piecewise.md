@@ -139,8 +139,8 @@ series.data 的 `dataMin` 和 `dataMax`）。
 
 + `'multiple'`（多选）。
 + `'single'`（单选）。
-+ `true`（单选）。
-+ `false`（禁止选择）。
++ `true`（单选）从`5.3.3`版本支持。
++ `false`（禁止选择）从`5.3.3`版本支持。
 
 ## inverse(boolean) = false
 
