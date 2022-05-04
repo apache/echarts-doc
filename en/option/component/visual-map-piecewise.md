@@ -118,14 +118,16 @@ This option works when `type` is `piecewise` and `min`/`max`/`splitNumber` are s
 
 If it is set as `true`, an extra piece labeled with "> max" will show.
 
-## selectedMode(string) = 'multiple'
+## selectedMode(string|boolean) = 'multiple'
 
-<ExampleUIControlEnum options="single,multiple" />
+<ExampleUIControlEnum options="single,multiple,true,false" />
 
 Selected Mode could be:
 
 + `'multiple'` (multiple selection).
 + `'single'` (single selection).
++ `true` (single selection) since version `5.3.3`.
++ `false` (no selection) since version `5.3.3`.
 
 ## inverse(boolean) = false
 
