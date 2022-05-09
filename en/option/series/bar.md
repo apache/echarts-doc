@@ -41,6 +41,12 @@ Whether to add round caps at the end of the bar sectors. Valid only for bar seri
 
 ~[800x500](${galleryViewPath}polar-roundCap&reset=1&edit=1)
 
+## realtimeSort(boolean) = false
+
+Whether to enable realtime sorting, which is used for bar-racing effect. Please refer to the tutorial [Dynamic Sorting Bar Chart](${handbookPath}how-to/chart-types/bar/bar-race/) in the Handbook.
+
+~[800x500](${galleryViewPath}bar-race-country&reset=1&edit=1)
+
 ## showBackground(boolean) = false
 
 {{ use: partial-version(
@@ -424,4 +430,3 @@ Border type. Can be `'dashed'`, `'dotted'`.
     prefix = '#' + ${prefix}
 ) }}
 {{ /if }}
-
