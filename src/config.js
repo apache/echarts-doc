@@ -1,5 +1,5 @@
 
-export const ECHARTS_LIB = 'https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js';
+export const ECHARTS_LIB = 'https://fastly.jsdelivr.net/npm/echarts@5/dist/echarts.min.js';
 
 // Properties that will not be expanded by default.
 // To reduce the display of unnecessary info.
