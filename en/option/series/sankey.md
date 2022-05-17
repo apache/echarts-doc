@@ -277,7 +277,11 @@ data: [{
 
 ### name(string)
 
-The name of the node.
+The name of the node. The name can be displayed and can be used as id if id is not provided
+
+### id(string)
+
+The unique id of the node.
 
 ### value(number)
 
