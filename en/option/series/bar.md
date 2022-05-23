@@ -142,6 +142,14 @@ Name of stack. On the same category axis, the series with the same `stack` name 
 
 Notice: `stack` only supports stacking on `value` and `log` axis for now. `time` and `category` axis are not supported.
 
+## stackStrategy(string) = 'samesign'
+
+How to stack values if a the `stack` property has been defined. Options:
++ `'samesign'`: only stack values if the value to be stacked has the same sign as the currently cumulated stacked value.
++ `'all'`: stack all values, irrespective of the signs of the current or cumulative stacked value.
++ `'positive'`: only stack positive values.
++ `'negatve'`: only stack negative values.
+
 ## sampling(string)
 
 The dowmsampling strategy used when the data size is much larger than pixel size. It will improve the performance when turned on. Defaults to be turned off, indicating that all the data points will be drawn.

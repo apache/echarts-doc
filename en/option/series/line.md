@@ -68,6 +68,14 @@ The effect of the below example could be seen through stack switching of [toolbo
 
 {{ use: partial-cursor() }}
 
+## stackStrategy(string) = 'samesign'
+
+How to stack values if a the `stack` property has been defined. Options:
++ `'samesign'`: only stack values if the value to be stacked has the same sign as the currently cumulated stacked value.
++ `'all'`: stack all values, irrespective of the signs of the current or cumulative stacked value.
++ `'positive'`: only stack positive values.
++ `'negatve'`: only stack negative values.
+
 ## connectNulls(boolean) = false
 
 <ExampleUIControlBoolean />
