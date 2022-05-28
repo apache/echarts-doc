@@ -144,6 +144,10 @@ Notice: `stack` only supports stacking on `value` and `log` axis for now. `time`
 
 ## stackStrategy(string) = 'samesign'
 
+{{ use: partial-version(
+version = '5.3.3'
+) }}
+
 How to stack values if a the `stack` property has been defined. Options:
 + `'samesign'`: only stack values if the value to be stacked has the same sign as the currently cumulated stacked value.
 + `'all'`: stack all values, irrespective of the signs of the current or cumulative stacked value.
