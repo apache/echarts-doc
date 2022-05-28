@@ -75,7 +75,8 @@ Work for [coordinateSystem](~series-heatmap.coordinateSystem): 'cartesian2d'.
 ) }}
 
 {{ use: partial-border-radius(
-    prefix = "##"
+    prefix = "##",
+    version = "5.3.1"
 ) }}
 
 ## emphasis(Object)

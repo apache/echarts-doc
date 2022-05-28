@@ -126,7 +126,8 @@ option = {
 ) }}
 
 {{ use: partial-border-radius(
-    prefix = "##"
+    prefix = "##",
+    version = "5.3.1"
 ) }}
 
 ## emphasis(Object)
@@ -222,7 +223,8 @@ option = {
 ) }}
 
 {{ use: partial-border-radius(
-    prefix = '###'
+    prefix = "###",
+    version = "5.3.1"
 ) }}
 
 ### emphasis(Object)
