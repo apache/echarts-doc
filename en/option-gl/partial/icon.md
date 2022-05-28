@@ -6,7 +6,7 @@ Icon types provided by ECharts includes {{ import: partial-icon-buildin}}
 
 
 {{ target: partial-icon-buildin}}
-`'circle'`, `'rect'`, `'roundRect'`, `'triangle'`, `'diamond'`, `'pin'`, `'arrow'`, `'none'`
+`'circle'`, `'square'`, `'rect'`, `'roundRect'`, `'triangle'`, `'diamond'`, `'pin'`, `'arrow'`, `'none'`
 
 
 {{ target: partial-icon-path }}
