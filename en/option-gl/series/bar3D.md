@@ -40,6 +40,8 @@ The smoothness of the bevel, the larger the value, the smoother.
 
 Stacking of bar chart. On the same category axis, the series with the same `stack` name would be put on top of each other. Note that the data items that need to be stack in different series must have the same index in the array.
 
+See also [stackStrategy](~series-bar3D.stackStrategy) on how to customize how values are stacked.
+
 Notice: `stack` only supports stacking on `value` and `log` axis for now. `time` and `category` axis are not supported.
 
 ## stackStrategy(string) = 'samesign'
@@ -48,7 +50,7 @@ Notice: `stack` only supports stacking on `value` and `log` axis for now. `time`
 version = '5.3.3'
 ) }}
 
-How to stack values if a the `stack` property has been defined. Options:
+How to stack values if the [stack](~series-bar3D.stack) property has been set. Options:
 + `'samesign'`: only stack values if the value to be stacked has the same sign as the currently cumulated stacked value.
 + `'all'`: stack all values, irrespective of the signs of the current or cumulative stacked value.
 + `'positive'`: only stack positive values.
