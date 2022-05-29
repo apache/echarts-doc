@@ -114,23 +114,15 @@ y 轴的位置。
 + `'left'`
 + `'right'`
 
-默认 grid 中的第一个 y 轴在 grid 的左侧（`'left'`），第二个 y 轴视第一个 y 轴的位置放在另一侧。
+默认 grid 中的第一个 y 轴在 grid 的左侧（`'left'`），第二个 y 轴视第一个 y 轴的位置放在另一侧。  
+注：若未将 `yAxis.axisLine.onZero` 设为 `false` , 则该项无法生效
 
 ## offset(number) = 0
 
 <ExampleUIControlNumber step="0.5" />
 
-Y 轴相对于默认位置的偏移，在相同的 `position` 上有多个 Y 轴的时候有用。
-
-## realtimeSort(boolean) = false
-
-用于制作动态排序柱状图。设为 `true` 时，表示 Y 轴开启实时排序效果，仅当 X 轴的 [type](~yAxis.type) 是 `'value'` 时有效。
-
-需要配合其他配置项共同实现动态排序柱状图效果，具体参见[动态排序柱状图](${handbookPath}how-to/chart-types/bar/bar-race)教程。
-
-## sortSeriesIndex(number) = 0
-
-动态排序柱状图用于排序的系列 id。目前只支持一个系列的柱状图排序效果，所以这个值只能取 0。仅当 Y 轴 [realtimeSort](~yAxis.realtimeSort) 为 `true` 并且 [type](~yAxis.type) 是 `'value'` 时有效。
+Y 轴相对于默认位置的偏移，在相同的 `position` 上有多个 Y 轴的时候有用。  
+注：若未将 `yAxis.axisLine.onZero` 设为 `false` , 则该项无法生效
 
 需要配合其他配置项共同实现动态排序柱状图效果，具体参见[动态排序柱状图](${handbookPath}how-to/chart-types/bar/bar-race)教程。
 
@@ -146,4 +138,3 @@ Y 轴相对于默认位置的偏移，在相同的 `position` 上有多个 Y 轴
     componentName = "Y 轴",
     defaultZ = 0
 ) }}
-

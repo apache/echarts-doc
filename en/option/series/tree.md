@@ -35,6 +35,19 @@ The tree diagram is mainly used to visualize the tree data structure, which is a
     defaultHeight = 'null'
 ) }}
 
+## center(Array)
+
+Center of current view-port.
+
+Example:
+```ts
+center: [115.97, 29.71]
+```
+
+## zoom(number) = 1
+
+Zoom rate of current view-port.
+
 ## layout(string) = 'orthogonal'
 
 <ExampleUIControlEnum options="orthogonal,radial" default="orthogonal" />
@@ -278,7 +291,7 @@ Select state of leaves nodes.
             itemStyle: {
                 ...
             },
-            collapsed: null, // If set as `true`, the node is collpased in the initialization.
+            collapsed: null, // If set as `true`, the node is collapsed in the initialization.
             children: [...]  // leaf nodes do not have children, can not write.
         },
         ...
@@ -293,6 +306,10 @@ The name of the tree node, used to identify each node.
 ### value(number)
 
 The value of the node, displayed in the tooltip.
+
+### collapsed(boolean)
+
+Whether to collapse node at initialization.
 
 ### itemStyle(Object)
 

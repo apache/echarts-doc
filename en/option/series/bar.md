@@ -134,6 +134,8 @@ Configurations of select state. Available when [selectedMode](~series-bar.select
 
 Name of stack. On the same category axis, the series with the same `stack` name would be put on top of each other.
 
+Notice: `stack` only supports stacking on `value` and `log` axis for now. `time` and `category` axis are not supported.
+
 ## sampling(string)
 
 The dowmsampling strategy used when the data size is much larger than pixel size. It will improve the performance when turned on. Defaults to be turned off, indicating that all the data points will be drawn.

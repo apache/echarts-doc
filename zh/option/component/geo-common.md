@@ -81,6 +81,10 @@ $.get('map/topographic_map.svg', function (svg) {
 
 #${prefix} projection(Object)
 
+{{ use: partial-version(
+    version = "5.3.0"
+) }}
+
 自定义地图投影，至少需要提供`project`, `unproject`两个方法分别用来计算投影后的坐标以及计算投影前的坐标。
 
 比如墨卡托投影：

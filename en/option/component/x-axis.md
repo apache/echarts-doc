@@ -33,25 +33,15 @@ options:
 + `'top'`
 + `'bottom'`
 
-The first x axis in grid defaults to be on the bottom of the grid, and the second x axis is on the other side against the first x axis.
+The first x axis in grid defaults to be on the bottom of the grid, and the second x axis is on the other side against the first x axis.  
+Notice: Set `xAxis.axisLine.onZero` to `false` to activate this option.
 
 ## offset(number) = 0
 
 <ExampleUIControlNumber step="0.5" />
 
-Offset of x axis relative to default position. Useful when multiple x axis has same [position](~xAxis.position) value.
-
-## realtimeSort(*) = false
-
-`realtimeSort` is used to enable bar race if set to be `true`. It is only valid if the [type](~xAxis.type) of xAxis is `'value'`.
-
-It should be used along with other options to enable bar race. Please refer to [bar race](${handbookPath}how-to/chart-types/bar/bar-race) tutorial for more details.
-
-## sortSeriesIndex(*) = 0
-
-The index of series used to sort in bar race. Since only one series is supported in bar race, `sortSeriesIndex` should always be `0`. It is only valid if [realtimeSort](~xAxis.realtimeSort) is `true` and [type](~xAxis.type) is `'value'`.
-
-It should be used along with other options to enable bar race. Please refer to [bar race](${handbookPath}how-to/chart-types/bar/bar-race) tutorial for more details.
+Offset of x axis relative to default position. Useful when multiple x axis has same [position](~xAxis.position) value.  
+Notice: Set `xAxis.axisLine.onZero` to `false` to activate this option.
 
 {{ use: axis-common(
     prefix = '#',
@@ -65,4 +55,3 @@ It should be used along with other options to enable bar race. Please refer to [
     componentName = "x axis",
     defaultZ = 0
 ) }}
-

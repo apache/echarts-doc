@@ -70,25 +70,15 @@ x 轴的位置。
 + `'top'`
 + `'bottom'`
 
-默认 grid 中的第一个 x 轴在 grid 的下方（`'bottom'`），第二个 x 轴视第一个 x 轴的位置放在另一侧。
+默认 grid 中的第一个 x 轴在 grid 的下方（`'bottom'`），第二个 x 轴视第一个 x 轴的位置放在另一侧。  
+注：若未将 `xAxis.axisLine.onZero` 设为 `false` , 则该项无法生效
 
 ## offset(number) = 0
 
 <ExampleUIControlNumber step="0.5" />
 
-X 轴相对于默认位置的偏移，在相同的 `position` 上有多个 X 轴的时候有用。
-
-## realtimeSort(boolean) = false
-
-用于制作动态排序柱状图。设为 `true` 时，表示 X 轴开启实时排序效果，仅当 X 轴的 [type](~xAxis.type) 是 `'value'` 时有效。
-
-需要配合其他配置项共同实现动态排序柱状图效果，具体参见[动态排序柱状图](${handbookPath}how-to/chart-types/bar/bar-race)教程。
-
-## sortSeriesIndex(number) = 0
-
-动态排序柱状图用于排序的系列 id。目前只支持一个系列的柱状图排序效果，所以这个值只能取 0。仅当 X 轴 [realtimeSort](~xAxis.realtimeSort) 为 `true` 并且 [type](~xAxis.type) 是 `'value'` 时有效。
-
-需要配合其他配置项共同实现动态排序柱状图效果，具体参见[动态排序柱状图](${handbookPath}how-to/chart-types/bar/bar-race)教程。
+X 轴相对于默认位置的偏移，在相同的 `position` 上有多个 X 轴的时候有用。  
+注：若未将 `xAxis.axisLine.onZero` 设为 `false` , 则该项无法生效
 
 {{ use: axis-common(
     prefix = '#',
@@ -102,4 +92,3 @@ X 轴相对于默认位置的偏移，在相同的 `position` 上有多个 X 轴
     componentName = "X 轴",
     defaultZ = 0
 ) }}
-

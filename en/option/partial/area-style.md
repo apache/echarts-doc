@@ -18,17 +18,20 @@ Input parameters are `seriesIndex`, `dataIndex`, `data`, `value`, and etc. of da
 {{ /if }}
 
 {{ if: ${hasOrigin} }}
-#${prefix|default('##')} origin(string) = 'auto'
+#${prefix|default('##')} origin(string|number) = 'auto'
+
+<ExampleUIControlEnum options="auto,start,end" />
 
 Origin position of area.
 
-By default, the area between axis line and data will be the area to be filled. This config enables you to fill data to the max or min of the axis data.
+By default, the area between axis line and data will be filled. This config enables you to fill the area from data to the max or min of the axis data or a specified value.
 
-Valid values include: `'auto'` (default), `'start'`, `'end'`.
+Valid values:
 
-- `'auto'` to fill between axis line to data;
-- `'start'` to fill between min axis value (when not `inverse`) to data;
-- `'end'` to fill between max axis value (when not `inverse`) to data;
+- `'auto'` to fill between axis line and data (**Default**)
+- `'start'` to fill between min axis value (when not [`inverse`](~yAxis.inverse)) and data
+- `'end'` to fill between max axis value (when not [`inverse`](~yAxis.inverse)) and data
+- `number` to fill between specified value and data (Since `v5.3.2`)
 {{ /if }}
 
 {{ use: partial-style-shadow-opacity(

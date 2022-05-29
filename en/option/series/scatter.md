@@ -90,11 +90,11 @@ Configurations of emphasis state.
     prefix = "##"
 ) }}
 
-### scale(boolean) = true
+### scale(boolean|number) = true
 
 <ExampleUIControlBoolean default="true" />
 
-Whether to scale to highlight the data in emphasis state.
+Whether to scale to highlight the data in emphasis state. Since version `5.3.2`, scale supports `number`, default number is 1.1.
 
 {{ use: partial-focus-blur-scope() }}
 

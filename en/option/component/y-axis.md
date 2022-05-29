@@ -33,25 +33,15 @@ options:
 + `'left'`
 + `'right'`
 
-The first y axis in grid defaults to be the left (`'left'`)  of the grid, and the second y axis is on the other side against the first y axis.
+The first y axis in grid defaults to be the left (`'left'`)  of the grid, and the second y axis is on the other side against the first y axis.  
+Notice: Set `yAxis.axisLine.onZero` to `false` to activate this option.
 
 ## offset(number) = 0
 
 <ExampleUIControlNumber step="0.5" />
 
 Offset of y axis relative to default position. Useful when multiple y axis has same [position](~yAxis.position) value.
-
-## realtimeSort(*) = false
-
-`realtimeSort` is used to enable bar race if set to be `true`. It is only valid if the [type](~yAxis.type) of yAxis is `'value'`.
-
-It should be used along with other options to enable bar race. Please refer to [bar race](${handbookPath}how-to/chart-types/bar/bar-race) tutorial for more details.
-
-## sortSeriesIndex(*) = 0
-
-The index of series used to sort in bar race. Since only one series is supported in bar race, `sortSeriesIndex` should always be `0`. It is only valid if [realtimeSort](~yAxis.realtimeSort) is `true` and [type](~yAxis.type) is `'value'`.
-
-It should be used along with other options to enable bar race. Please refer to [bar race](${handbookPath}how-to/chart-types/bar/bar-race) tutorial for more details.
+Notice: Set `yAxis.axisLine.onZero` to `false` to activate this option.
 
 {{ use: axis-common(
     prefix = '#',
@@ -65,4 +55,3 @@ It should be used along with other options to enable bar race. Please refer to [
     componentName = "y axis",
     defaultZ = 0
 ) }}
-

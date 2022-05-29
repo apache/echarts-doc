@@ -77,7 +77,8 @@ Line style.
 Area filling style.
 
 {{ use: partial-area-style(
-    prefix = "##"
+    prefix = "##",
+    defaultOpacity = 0.7
 ) }}
 
 ## emphasis(Object)
@@ -200,7 +201,8 @@ Line style of a single item.
 Area filling style of a single item.
 
 {{ use: partial-area-style(
-    prefix = "###"
+    prefix = "###",
+    defaultOpacity = 0.7
 ) }}
 
 ### emphasis(Object)

@@ -111,9 +111,9 @@ Options:
 
 The size of toolbox's icon.
 
-## itemGap(number) = 10
+## itemGap(number) = 8
 
-<ExampleUIControlNumber min="0" default="10" />
+<ExampleUIControlNumber min="0" default="8" />
 
 The gap between each icon of toolbox. It is horizontal gap in horizontal layout, while vertical gap in vertical layout.
 
