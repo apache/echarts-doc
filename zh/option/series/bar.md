@@ -119,6 +119,12 @@ option = {
 
 ~[800x500](${galleryViewPath}polar-roundCap&reset=1&edit=1)
 
+## realtimeSort(boolean) = false
+
+是否开启实时排序，用来实现动态排序图效果，具体参见手册中[动态排序柱状图](${handbookPath}how-to/chart-types/bar/bar-race/)的教程。
+
+~[800x500](${galleryViewPath}bar-race-country&reset=1&edit=1)
+
 ## showBackground(boolean) = false
 
 {{ use: partial-version(
@@ -494,4 +500,3 @@ option = {
     prefix = '#' + ${prefix}
 ) }}
 {{ /if }}
-

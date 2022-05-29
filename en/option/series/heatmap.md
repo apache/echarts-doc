@@ -75,7 +75,8 @@ Work for [coordinateSystem](~series-heatmap.coordinateSystem): 'cartesian2d'.
 ) }}
 
 {{ use: partial-border-radius(
-    prefix = "##"
+    prefix = "##",
+    version = "5.3.1"
 ) }}
 
 ## emphasis(Object)
@@ -171,7 +172,8 @@ Style of a single data point. It is valid with [coordinateSystem](~series-heatma
 ) }}
 
 {{ use: partial-border-radius(
-    prefix = '###'
+    prefix = "###",
+    version = "5.3.1"
 ) }}
 
 ### emphasis(Object)

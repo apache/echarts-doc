@@ -50,6 +50,12 @@ Border width of ${componentName}.
 
 #${prefix} ${propName|default('borderRadius')}(number|Array) = 0
 
+{{ if: ${version} }}
+{{ use: partial-version(
+    version = ${version}
+) }}
+{{ /if }}
+
 <ExampleUIControlVector min="0" dims="LT,RT,RB,LB"  />
 
 The radius of rounded corner. Its unit is px. And it supports use array to respectively specify the 4 corner radiuses.
