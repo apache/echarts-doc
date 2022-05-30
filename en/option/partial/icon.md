@@ -32,7 +32,7 @@ A `dataURI` example:
 
 {{ target: partial-icon-buildin }}
 
-`'circle'`, `'square'`, `'rect'`, `'roundRect'`, `'triangle'`, `'diamond'`, `'pin'`, `'arrow'`, `'none'`
+`'circle'`, `'rect'`, `'roundRect'`, `'triangle'`, `'diamond'`, `'pin'`, `'arrow'`, `'none'`
 
 
 

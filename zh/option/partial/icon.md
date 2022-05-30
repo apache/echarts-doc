@@ -29,7 +29,7 @@ URL 为 `dataURI` 例如：
 
 {{ target: partial-icon-buildin }}
 
-`'circle'`, `'square'`, `'rect'`, `'roundRect'`, `'triangle'`, `'diamond'`, `'pin'`, `'arrow'`, `'none'`
+`'circle'`, `'rect'`, `'roundRect'`, `'triangle'`, `'diamond'`, `'pin'`, `'arrow'`, `'none'`
 
 
 
