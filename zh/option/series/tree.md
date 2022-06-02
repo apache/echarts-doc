@@ -204,6 +204,8 @@ center: [115.97, 29.71]
 
 {{ use: partial-focus-blur-scope(
     isTree = true
+    hasRelative = true
+    version = "5.3.3"
 ) }}
 
 {{ use: tree-state(
