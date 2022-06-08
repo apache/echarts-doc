@@ -210,6 +210,10 @@ const option = {
 
 ### maxSurfaceAngle(number)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 通过调整第二段线的长度，限制引导线与扇区法线的最大夹角。设置为小于 90 度的值保证引导线不会和扇区交叉。
 
 可以设置为 0 - 180 度。
@@ -246,15 +250,23 @@ const option = {
 
 ### scale(boolean) = true
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 <ExampleUIControlBoolean default="true" />
 
 是否开启高亮后扇区的放大效果。
 
 ### scaleSize(number) = 10
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 <ExampleUIControlNumber min="0" default="10" />
 
-高亮后扇区的放大尺寸, 在开启 [emphasis.scale](~series-pie.emphasis.scale) 后有效。
+高亮后扇区的放大尺寸，在开启 [emphasis.scale](~series-pie.emphasis.scale) 后有效。
 
 {{ use: partial-focus-blur-scope() }}
 

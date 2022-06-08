@@ -187,6 +187,10 @@ The style of visual guide line. Will show when [label position](~series-pie.labe
 
 ### maxSurfaceAngle(number)
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 Max angle between guide line and surface normal. To prevent guide line overlapping with sector.
 
 Can be 0 - 180 degree.
@@ -223,15 +227,23 @@ Configurations of emphasis state.
 
 ### scale(boolean) = true
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 <ExampleUIControlBoolean default="true" />
 
 Whether to scale to highlight the data in emphasis state.
 
 ### scaleSize(number) = 10
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 <ExampleUIControlNumber min="0" default="10" />
 
-Size of scale. Available when [emphasis.scale](~series-pie.emphasis.scale) is set `true`.
+Size of scale. Available when [emphasis.scale](~series-pie.emphasis.scale) is set as `true`.
 
 {{ use: partial-focus-blur-scope() }}
 

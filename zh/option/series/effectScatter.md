@@ -159,11 +159,15 @@ const option = {
     prefix = "##"
 ) }}
 
-### scale(boolean) = true
+### scale(boolean|number) = true
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 <ExampleUIControlBoolean default="true" />
 
-是否开启高亮后的放大效果。
+是否开启高亮后的放大效果。从 `5.3.2` 版本开始支持 `number`，用以设置高亮放大倍数，默认放大 1.1 倍。
 
 {{ use: partial-focus-blur-scope() }}
 

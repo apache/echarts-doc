@@ -229,11 +229,15 @@ Configurations of emphasis state.
     prefix = "##"
 ) }}
 
-### scale(boolean) = true
+### scale(boolean|number) = true
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 <ExampleUIControlBoolean default="true" />
 
-Whether to scale to highlight the node in emphasis state.
+Whether to scale to highlight the node in emphasis state. `number` has been supported since `v5.3.2`, the default scale value is 1.1.
 
 {{ use: partial-focus-blur-scope(
     isGraph = true

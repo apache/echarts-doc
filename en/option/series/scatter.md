@@ -92,9 +92,13 @@ Configurations of emphasis state.
 
 ### scale(boolean|number) = true
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 <ExampleUIControlBoolean default="true" />
 
-Whether to scale to highlight the data in emphasis state. Since version `5.3.2`, scale supports `number`, default number is 1.1.
+Whether to scale to highlight the data in emphasis state. `number` has been supported since `v5.3.2`, the default scale value is 1.1.
 
 {{ use: partial-focus-blur-scope() }}
 
