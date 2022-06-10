@@ -1,3 +1,32 @@
+## v5.3.3
+
+<div class="time">2022-06-10</div>
+
++ [Feature] [bar]: add new stacking strategies [#17086](https://github.com/apache/echarts/issues/17086) ([villebro](https://github.com/villebro))
++ [Feature] [tree]: `tree` focus supports `relative` [#17009](https://github.com/apache/echarts/issues/17009) ([susiwen8](https://github.com/susiwen8))
++ [Feature] [visualMap]: `selectedMode` supports `boolean` [#16972](https://github.com/apache/echarts/issues/16972) ([susiwen8](https://github.com/susiwen8))
++ [Feature]: series `center` of view supports `string` [#16904](https://github.com/apache/echarts/issues/16904) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [line]: areaStyle with polygons when `notMerge` is `true` [#16772](https://github.com/apache/echarts/issues/16772) ([jiawulin001](https://github.com/jiawulin001))
++ [Fix] [tree]: radial tree with single root doesn't work [#16950](https://github.com/apache/echarts/issues/16950) ([fuchunhui](https://github.com/fuchunhui))
++ [Fix] [tree]: unexpected expand [#16548](https://github.com/apache/echarts/issues/16548) ([linghaoSu](https://github.com/linghaoSu))
++ [Fix] [graph]: user cursor has higher priority [#16867](https://github.com/apache/echarts/issues/16867) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [graph]: `autoCurveness` type [#16897](https://github.com/apache/echarts/issues/16897) ([kongmoumou](https://github.com/kongmoumou))
++ [Fix] [radar]: names being `-` in tooltip when `name.show` is `false` [#15985](https://github.com/apache/echarts/issues/15985) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [radar]: regression bug brought by branch merging. [#16764](https://github.com/apache/echarts/issues/16764) ([plainheart](https://github.com/plainheart))
++ [Fix] [geo]: `dataToPoint` may not be working in lineGL series. [#17150](https://github.com/apache/echarts/issues/17150) ([plainheart](https://github.com/plainheart))
++ [Fix] [pictorialBar]: improve PictorialBarSeriesOption type definition [#17155](https://github.com/apache/echarts/issues/17155) ([dmzc](https://github.com/dmzc))
++ [Fix] [tooltip]: content changes with axis extent when 'triggerOn' set to 'click' [#16939](https://github.com/apache/echarts/issues/16939) ([jiawulin001](https://github.com/jiawulin001))
++ [Fix] [dataZoom]: `borderColor` may not work in some bundle environments [#16854](https://github.com/apache/echarts/issues/16854) ([Ling310](https://github.com/Ling310))
++ [Fix] [markLine]: markLine label shows wrong tooltip content [#16971](https://github.com/apache/echarts/issues/16971) ([plainheart](https://github.com/plainheart))
++ [Fix] [markArea]: markArea display filter correction [#16861](https://github.com/apache/echarts/issues/16861) ([jiawulin001](https://github.com/jiawulin001))
++ [Fix] [timeAxis]: `{yy}` should be padded to 2 digits [#17064](https://github.com/apache/echarts/issues/17064) ([Fritzbox2000](https://github.com/Fritzbox2000))
++ [Fix] [timeAxis]: quarters split the year into 4 quarters not 3. [#17073](https://github.com/apache/echarts/issues/17073) ([Fritzbox2000](https://github.com/Fritzbox2000))
++ [Fix] [singleAxis]: `prepareCustoms` key for single axes. [#16850](https://github.com/apache/echarts/issues/16850) ([benlongo](https://github.com/benlongo))
++ [Fix] [graphic]: some options may be unexpectedly reset on update [#17007](https://github.com/apache/echarts/issues/17007) ([plainheart](https://github.com/plainheart))
++ [Fix] [decal]: pattern not change after set `legend.itemStyle.decal` to be `'none'` [#16922](https://github.com/apache/echarts/issues/16922) ([jiawulin001](https://github.com/jiawulin001))
++ [Fix] [radialGradient]: safe guarding for radial gradient [#898](https://github.com/ecomfe/zrender/issues/898) [#919](https://github.com/ecomfe/zrender/issues/919)  ([lefex](https://github.com/lefex))  ([Ovilia](https://github.com/Ovilia))
++ [Fix]: typo in `DataStore`. [#16824](https://github.com/apache/echarts/issues/16824) ([XXXMrG](https://github.com/XXXMrG))
+
 ## v5.3.2
 <div class="time">2022-04-01</div>
 
