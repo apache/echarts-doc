@@ -37,7 +37,7 @@ option = {"tooltip":{},"xAxis":{"type":"category","data":[0,1,2,3,4,5,6,7,8,9,10
 
 ## range(Array)
 
-<ExampleUIControVector dims="min,max" />
+<ExampleUIControlVector dims="min,max" />
 
 指定手柄对应数值的位置。`range` 应在 `min` `max` 范围内。例如：
 

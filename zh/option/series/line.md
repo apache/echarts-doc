@@ -226,9 +226,13 @@ const option = {
     prefix = "##"
 ) }}
 
-### scale(boolean) = true
+### scale(boolean|number) = true
 
-是否开启 hover 在拐点标志上的放大效果。
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+是否开启 hover 在拐点标志上的放大效果。从 `5.3.2` 版本开始支持 `number`，用以设置高亮放大倍数，默认放大 1.1 倍。
 
 {{ use: partial-focus-blur-scope() }}
 

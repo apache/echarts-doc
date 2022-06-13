@@ -1,6 +1,10 @@
 
 {{ target: partial-label-line-desc }}
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 Configuration of label guide line.
 
 
@@ -15,6 +19,10 @@ Whether to show the label guide line.
 
 {{ if: ${showAbove} }}
 #${prefix} showAbove(boolean)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 Whether to show the label guide line above the corresponding element.
 {{ /if }}
@@ -45,6 +53,10 @@ Whether to smooth the guide line. It defaults to be `false` and can be set as `t
 
 {{ if: ${minTurnAngle} }}
 #${prefix} minTurnAngle(number) = ${defaultMinTurnAngle|default(null)}
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 Minimum turn angle between two segments of guide line to prevent unaesthetic display when angle is too small.
 

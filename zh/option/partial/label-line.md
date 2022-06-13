@@ -1,6 +1,10 @@
 
 {{ target: partial-label-line-desc }}
 
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
 标签的视觉引导线配置。
 
 
@@ -15,6 +19,10 @@
 
 {{ if: ${showAbove} }}
 #${prefix} showAbove(boolean)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 是否显示在图形上方。
 {{ /if }}
@@ -45,6 +53,10 @@
 
 {{ if: ${minTurnAngle} }}
 #${prefix} minTurnAngle(number) = ${defaultMinTurnAngle|default(null)}
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
 
 通过调整第二段线的长度，限制引导线两端之间最小的夹角，以防止过小的夹角导致显示不美观。
 
