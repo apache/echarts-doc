@@ -151,6 +151,7 @@ version = '5.3.3'
 ) }}
 
 How to stack values if the [stack](~series-bar.stack) property has been set. Options:
+
 + `'samesign'`: only stack values if the value to be stacked has the same sign as the currently cumulated stacked value.
 + `'all'`: stack all values, irrespective of the signs of the current or cumulative stacked value.
 + `'positive'`: only stack positive values.

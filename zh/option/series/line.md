@@ -87,11 +87,9 @@ const option = {
 
 ## stack(string) = null
 
-数据堆叠，同个类目轴上系列配置相同的`stack`值后，后一个系列的值会在前一个系列的值上相加。
+数据堆叠，同个类目轴上系列配置相同的 `stack` 值可以堆叠放置。关于如何定制数值的堆叠方式，参见 [stackStrategy](~series-line.stackStrategy)。
 
-参见[stackStrategy](~series-line.stackStrategy)关于如何定制数值的堆叠方式。
-
-注：目前`stack`只支持堆叠于 `value` 和 `log` 类型的类目轴上，不支持 `time` 和 `category` 类型的类目轴。
+注：目前 `stack` 只支持堆叠于 `'value'` 和 `'log'` 类型的类目轴上，不支持 `'time'` 和 `'category'` 类型的类目轴。
 
 下面示例可以通过右上角 [toolbox](~toolbox) 中的堆叠切换看效果：
 
@@ -103,11 +101,12 @@ const option = {
     version = '5.3.3'
 ) }}
 
-如果[stack](~series-bar.stack)属性已被设置，如何堆积数值。选项。
-+ `'samesign'` 只在要堆叠的值与当前累积的堆叠值具有相同的符号时才堆叠。
-+ `'all' 堆叠所有的值，不管当前或累积的堆叠值的符号是什么。
-+ `'positive' 只堆积正值。
-+ `'negatve' 只堆叠负值。
+堆积数值的策略，前提是[stack](~series-line.stack)属性已被设置。其值可以是：
+
++ `'samesign'` 只在要堆叠的值与当前累积的堆叠值具有相同的正负符号时才堆叠。
++ `'all' 堆叠所有的值，不管当前或累积的堆叠值的正负符号是什么。
++ `'positive'` 只堆积正值。
++ `'negatve'` 只堆叠负值。
 
 {{ use: partial-cursor() }}
 
@@ -521,4 +520,3 @@ const option = {
     prefix = "####",
     hasInherit = ${state} === 'emphasis'
 ) }}
-
