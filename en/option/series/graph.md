@@ -31,15 +31,15 @@ Graph is a diagram to represent [nodes](~series-graph.nodes) and the [links](~se
     calendar = true
 ) }}
 
-## center(Array)
+## center(Array.<number|string>)
 
 <ExampleUIControlVector default="0,0" dims="x,y" />
 
-Center of current view-port.
+Center of current view-port. It can be an arrary containing two `number`s in pixels or `string`s in percentage relative to the container width/height.
 
 Example:
 ```ts
-center: [115.97, 29.71]
+center: [115.97, '30%']
 ```
 
 ## zoom(number) = 1
@@ -698,4 +698,3 @@ Label position, options：
     prefix = "####",
     defaultShow = true
 ) }}
-

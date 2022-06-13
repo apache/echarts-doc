@@ -24,6 +24,15 @@ Series of same [map type](~series-map.map) will show in one map. At this point, 
     inMap = true
 ) }}
 
+## center(Array.<number|string>)
+
+Center of current view-port. It can be an arrary containing two `number`s in pixels or `string`s in percentage relative to the container width/height.
+
+Example:
+```ts
+center: [115.97, '30%']
+```
+
 ## geoIndex(number) = null
 
 In default case, map series create exclusive `geo` component for themselves. But `geoIndex` can be used to specify an outer [geo component](~geo), which can be shared with other series like [pie](~series-pie). Moreover, the region color of the outer [geo component](~geo) can be controlled by the map series (via [visualMap](~visualMap)).
@@ -211,4 +220,3 @@ The color of the map area.
 {{ use: partial-label-line(
     prefix = '####'
 ) }}
-

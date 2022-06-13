@@ -26,6 +26,15 @@
     inMap = true
 ) }}
 
+## center(Array.<number|string>)
+
+当前视角的中心点。可以是包含两个 `number` 类型（表示像素值）或 `string` 类型（表示相对容器的百分比）的数组。
+
+例如：
+```ts
+center: [115.97, '30%']
+```
+
 ## geoIndex(number) = null
 
 默认情况下，map series 会自己生成内部专用的 `geo` 组件。但是也可以用这个 `geoIndex` 指定一个 [geo](~geo) 组件。这样的话，map 和 其他 series（例如散点图）就可以共享一个 [geo](~geo) 组件了。并且，[geo](~geo) 组件的颜色也可以被这个 map series 控制，从而用 [visualMap](~visualMap) 来更改。
@@ -208,4 +217,3 @@
 {{ use: partial-label-line(
     prefix = '####'
 ) }}
-

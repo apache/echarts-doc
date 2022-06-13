@@ -35,13 +35,13 @@ The tree diagram is mainly used to visualize the tree data structure, which is a
     defaultHeight = 'null'
 ) }}
 
-## center(Array)
+## center(Array.<number|string>)
 
-Center of current view-port.
+Center of current view-port. It can be an arrary containing two `number`s in pixels or `string`s in percentage relative to the container width/height.
 
 Example:
 ```ts
-center: [115.97, 29.71]
+center: [115.97, '30%']
 ```
 
 ## zoom(number) = 1
@@ -471,4 +471,3 @@ Defines the style of the tree edge.
     prefix = ${prefix},
     state = ${state}
 ) }}
-
