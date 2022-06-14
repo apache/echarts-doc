@@ -47,6 +47,7 @@ Notice: `stack` only supports stacking on `value` and `log` axis for now. `time`
 ## stackStrategy(string) = 'samesign'
 
 {{ use: partial-version(
+    isECharts = true,
     version = '5.3.3'
 ) }}
 
@@ -54,7 +55,7 @@ How to stack values if the [stack](~series-bar3D.stack) property has been set. O
 + `'samesign'`: only stack values if the value to be stacked has the same sign as the currently cumulated stacked value.
 + `'all'`: stack all values, irrespective of the signs of the current or cumulative stacked value.
 + `'positive'`: only stack positive values.
-+ `'negatve'`: only stack negative values.
++ `'negative'`: only stack negative values.
 
 ## minHeight(number) = 0
 

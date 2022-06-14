@@ -104,9 +104,9 @@ const option = {
 堆积数值的策略，前提是[stack](~series-line.stack)属性已被设置。其值可以是：
 
 + `'samesign'` 只在要堆叠的值与当前累积的堆叠值具有相同的正负符号时才堆叠。
-+ `'all' 堆叠所有的值，不管当前或累积的堆叠值的正负符号是什么。
++ `'all'` 堆叠所有的值，不管当前或累积的堆叠值的正负符号是什么。
 + `'positive'` 只堆积正值。
-+ `'negatve'` 只堆叠负值。
++ `'negative'` 只堆叠负值。
 
 {{ use: partial-cursor() }}
 
