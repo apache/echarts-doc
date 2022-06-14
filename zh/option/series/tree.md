@@ -81,7 +81,7 @@ const option = {
 ## center(Array.<number|string>)
 
 当前视角的中心点。可以是包含两个 `number` 类型（表示像素值）或 `string` 类型（表示相对容器的百分比）的数组。
-从 `5.3.3` 版本开始支持 `string` 类型.
+从 `5.3.3` 版本开始支持 `string` 类型。
 
 例如：
 ```ts
