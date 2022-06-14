@@ -203,8 +203,8 @@ center: [115.97, '30%']
 ) }}
 
 {{ use: partial-focus-blur-scope(
-    isTree = true
-    hasRelative = true
+    isTree = true,
+    hasRelative = true,
     version = "5.3.3"
 ) }}
 
