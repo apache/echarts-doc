@@ -36,7 +36,7 @@ Graph is a diagram to represent [nodes](~series-graph.nodes) and the [links](~se
 <ExampleUIControlVector default="0,0" dims="x,y" />
 
 Center of current view-port. It can be an arrary containing two `number`s in pixels or `string`s in percentage relative to the container width/height.
-`string` support from version `5.3.3`.
+`string` was supported from version `5.3.3`.
 
 Example:
 ```ts
