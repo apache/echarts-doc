@@ -47,7 +47,7 @@ Notice: `stack` only supports stacking on `value` and `log` axis for now. `time`
 ## stackStrategy(string) = 'samesign'
 
 {{ use: partial-version(
-version = '5.3.3'
+    version = '5.3.3'
 ) }}
 
 How to stack values if the [stack](~series-bar3D.stack) property has been set. Options:

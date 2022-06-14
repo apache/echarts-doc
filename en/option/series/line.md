@@ -71,7 +71,7 @@ The effect of the below example could be seen through stack switching of [toolbo
 ## stackStrategy(string) = 'samesign'
 
 {{ use: partial-version(
-version = '5.3.3'
+    version = '5.3.3'
 ) }}
 
 How to stack values if the [stack](~series-line.stack) property has been set. Options:
