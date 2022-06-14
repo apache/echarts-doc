@@ -325,30 +325,6 @@ const option = {
     defaultColor = "#fff"
 ) }}
 
-### emphasis(Object)
-
-#### itemStyle(Object)
-
-{{ use: partial-item-style(
-    prefix = "####",
-    name = "面包屑",
-    hasInherit = true,
-    defaultColor = "rgba(0,0,0,0.7)",
-    defaultBorderColor = "rgba(255,255,255,0.7)",
-    defaultBorderWidth = 1,
-    defaultShadowColor = 'rgba(150,150,150,1)',
-    defaultShadowBlur = 3,
-    defaultShadowOffsetX = 0,
-    defaultShadowOffsetY = 0
-) }}
-
-##### textStyle(Object)
-
-{{ use: partial-text-style(
-    prefix = "#####",
-    defaultColor = "#fff"
-) }}
-
 ## labelLine(Object)
 
 {{ use: partial-label-line-desc() }}
