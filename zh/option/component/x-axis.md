@@ -58,6 +58,10 @@ x 轴所在的 grid 的索引，默认位于第一个 grid。
 
 ## alignTicks(boolean) = false
 
+{{ use: partial-version(
+    version = "5.3.0"
+) }}
+
 在多个 x 轴为数值轴的时候，可以开启该配置项自动对齐刻度。只对`'value'`和`'log'`类型的轴有效。
 
 ## position(string)

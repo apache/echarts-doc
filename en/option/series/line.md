@@ -60,11 +60,26 @@ Only work when main axis is `'category'` axis (`axis.type` is `'category'`). Opt
 
 If stack the value. On the same category axis, the series with the same `stack` name would be put on top of each other.
 
+See also [stackStrategy](~series-line.stackStrategy) on how to customize how values are stacked.
+
 Notice: `stack` only supports stacking on `value` and `log` axis for now. `time` and `category` axis are not supported.
 
 The effect of the below example could be seen through stack switching of [toolbox](~toolbox) on the top right corner:
 
 ~[600x400](${galleryViewPath}doc-example/line-stack-tiled&edit=1&reset=1)
+
+## stackStrategy(string) = 'samesign'
+
+{{ use: partial-version(
+    version = '5.3.3'
+) }}
+
+How to stack values if the [stack](~series-line.stack) property has been set. Options:
+
++ `'samesign'`: only stack values if the value to be stacked has the same sign as the currently cumulated stacked value.
++ `'all'`: stack all values, irrespective of the signs of the current or cumulative stacked value.
++ `'positive'`: only stack positive values.
++ `'negative'`: only stack negative values.
 
 {{ use: partial-cursor() }}
 
@@ -476,4 +491,3 @@ Select state of specified single data.
     prefix = "####",
     hasInherit = ${state} === 'emphasis'
 ) }}
-

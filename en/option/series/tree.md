@@ -37,11 +37,12 @@ The tree diagram is mainly used to visualize the tree data structure, which is a
 
 ## center(Array)
 
-Center of current view-port.
+Center of current view-port. It can be an arrary containing two `number`s in pixels or `string`s in percentage relative to the container width/height.
+`string` is supported from version `5.3.3`.
 
 Example:
 ```ts
-center: [115.97, 29.71]
+center: [115.97, '30%']
 ```
 
 ## zoom(number) = 1
@@ -160,7 +161,9 @@ Configurations of emphasis state.
 ) }}
 
 {{ use: partial-focus-blur-scope(
-    isTree = true
+    isTree = true,
+    hasRelative = true,
+    version = "5.3.3"
 ) }}
 
 {{ use: tree-state(
@@ -469,4 +472,3 @@ Defines the style of the tree edge.
     prefix = ${prefix},
     state = ${state}
 ) }}
-

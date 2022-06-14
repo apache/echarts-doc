@@ -21,6 +21,10 @@ The index of grid which the x axis belongs to. Defaults to be in the first grid.
 
 ## alignTicks(boolean) = false
 
+{{ use: partial-version(
+    version = "5.3.0"
+) }}
+
 `alignTicks` turned on to automatically align ticks when multiple numeric x axes. Only available for axes of type `'value'` and `'log'`.
 
 ## position(string)

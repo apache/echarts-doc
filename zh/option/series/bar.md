@@ -216,9 +216,22 @@ option = {
 
 ## stack(string) = null
 
-数据堆叠，同个类目轴上系列配置相同的`stack`值可以堆叠放置。
+数据堆叠，同个类目轴上系列配置相同的 `stack` 值可以堆叠放置。关于如何定制数值的堆叠方式，参见 [stackStrategy](~series-bar.stackStrategy)。
 
-注：目前`stack`只支持堆叠于 `value` 和 `log` 类型的类目轴上，不支持 `time` 和 `category` 类型的类目轴。
+注：目前 `stack` 只支持堆叠于 `'value'` 和 `'log'` 类型的类目轴上，不支持 `'time'` 和 `'category'` 类型的类目轴。
+
+## stackStrategy(string) = 'samesign'
+
+{{ use: partial-version(
+    version = '5.3.3'
+) }}
+
+堆积数值的策略，前提是[stack](~series-bar.stack)属性已被设置。其值可以是：
+
++ `'samesign'` 只在要堆叠的值与当前累积的堆叠值具有相同的正负符号时才堆叠。
++ `'all'` 堆叠所有的值，不管当前或累积的堆叠值的正负符号是什么。
++ `'positive'` 只堆积正值。
++ `'negative'` 只堆叠负值。
 
 ## sampling(string)
 

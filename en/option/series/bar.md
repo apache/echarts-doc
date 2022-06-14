@@ -140,7 +140,22 @@ Configurations of select state. Available when [selectedMode](~series-bar.select
 
 Name of stack. On the same category axis, the series with the same `stack` name would be put on top of each other.
 
+See also [stackStrategy](~series-bar.stackStrategy) on how to customize how values are stacked.
+
 Notice: `stack` only supports stacking on `value` and `log` axis for now. `time` and `category` axis are not supported.
+
+## stackStrategy(string) = 'samesign'
+
+{{ use: partial-version(
+    version = '5.3.3'
+) }}
+
+How to stack values if the [stack](~series-bar.stack) property has been set. Options:
+
++ `'samesign'`: only stack values if the value to be stacked has the same sign as the currently cumulated stacked value.
++ `'all'`: stack all values, irrespective of the signs of the current or cumulative stacked value.
++ `'positive'`: only stack positive values.
++ `'negative'`: only stack negative values.
 
 ## sampling(string)
 
