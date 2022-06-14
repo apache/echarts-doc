@@ -40,7 +40,7 @@ option.series[0].data.forEach(function (item) {
     calendar = true
 ) }}
 
-## center(Array.<number|string>)
+## center(Array)
 
 <ExampleUIControlVector default="0,0" dims="x,y" />
 

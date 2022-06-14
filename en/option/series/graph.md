@@ -31,7 +31,7 @@ Graph is a diagram to represent [nodes](~series-graph.nodes) and the [links](~se
     calendar = true
 ) }}
 
-## center(Array.<number|string>)
+## center(Array)
 
 <ExampleUIControlVector default="0,0" dims="x,y" />
 

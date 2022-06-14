@@ -24,7 +24,7 @@ Series of same [map type](~series-map.map) will show in one map. At this point, 
     inMap = true
 ) }}
 
-## center(Array.<number|string>)
+## center(Array)
 
 Center of current view-port. It can be an arrary containing two `number`s in pixels or `string`s in percentage relative to the container width/height.
 
