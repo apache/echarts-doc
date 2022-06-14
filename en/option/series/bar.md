@@ -138,9 +138,13 @@ Configurations of select state. Available when [selectedMode](~series-bar.select
 
 ## stack(string) = null
 
-Name of stack. On the same category axis, the series with the same `stack` name would be put on top of each other.
+Name of stack. On the same category axis, the series with the same `stack` name would be put on top of each other. Recommend to use with `stackDim`.
 
 Notice: `stack` only supports stacking on `value` and `log` axis for now. `time` and `category` axis are not supported.
+
+## stackDim(string) = null
+Dimension of stack. Usually chooses the axis that represents the value of data. Only used with `stack`.  
+Optional values: `'x'` and `'y'`.
 
 ## sampling(string)
 

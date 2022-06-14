@@ -87,7 +87,7 @@ const option = {
 
 ## stack(string) = null
 
-数据堆叠，同个类目轴上系列配置相同的`stack`值后，后一个系列的值会在前一个系列的值上相加。
+数据堆叠，同个类目轴上系列配置相同的`stack`值后，后一个系列的值会在前一个系列的值上相加。推荐与`stackDim`一起使用。
 
 注：目前`stack`只支持堆叠于 `value` 和 `log` 类型的类目轴上，不支持 `time` 和 `category` 类型的类目轴。
 
@@ -96,6 +96,10 @@ const option = {
 ~[600x400](${galleryViewPath}doc-example/line-stack-tiled&edit=1&reset=1)
 
 {{ use: partial-cursor() }}
+
+## stackDim(string) = null
+数据堆叠的方向，一般选择表示数据值的轴。只用于与`stack`一起使用。  
+可选值：`'x'`和`'y'`
 
 ## connectNulls(boolean) = false
 
