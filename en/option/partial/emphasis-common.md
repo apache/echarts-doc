@@ -46,7 +46,7 @@ When the data is highlighted, whether to fade out of other data to focus the hig
 + `'descendant'` Focus on all descendants nodes.
 {{ /if }}
 {{ if: ${hasRelative} }}
-+ `'relative'` Focus on all ancestor and descendants nodes.(since `v${version}`)
++ `'relative'` Focus on all ancestor and descendants nodes. (Since `v${version}`)
 {{ /if }}
 
 **Example: **
