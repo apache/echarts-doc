@@ -1,3 +1,31 @@
+## v5.3.3
+<div class="time">2022-06-14</div>
+
++ [Feature] [bar] 新增新的堆积策略。[#17086](https://github.com/apache/echarts/issues/17086) ([villebro](https://github.com/villebro))
++ [Feature] [tree] `tree` focus 支持 `relative`。[#17009](https://github.com/apache/echarts/issues/17009) ([susiwen8](https://github.com/susiwen8))
++ [Feature] [visualMap] `selectedMode` 支持 `boolean`。[#16972](https://github.com/apache/echarts/issues/16972) ([susiwen8](https://github.com/susiwen8))
++ [Feature] [graph] [tree] [map] 系列视图的 `center` 支持 `string`。[#16904](https://github.com/apache/echarts/issues/16904) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [line] 修复折线图以 `notMerge: true` 方式设置为阶梯折线图时，多边形没有更新的问题。[#16772](https://github.com/apache/echarts/issues/16772) ([jiawulin001](https://github.com/jiawulin001))
++ [Fix] [tree] 修复单一根节点的径向树图的问题。[#16950](https://github.com/apache/echarts/issues/16950) ([fuchunhui](https://github.com/fuchunhui))
++ [Fix] [tree] 修复 `edgeShape` 是多边形的情况下，子节点非预期的展开问题。[#16548](https://github.com/apache/echarts/issues/16548) ([linghaoSu](https://github.com/linghaoSu))
++ [Fix] [graph] 修复用户鼠标设置没有生效的问题。[#16867](https://github.com/apache/echarts/issues/16867) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [graph] 修复 `autoCurveness` 的类型。[#16897](https://github.com/apache/echarts/issues/16897) ([kongmoumou](https://github.com/kongmoumou))
++ [Fix] [radar] 修复 `name.show` 是 `false` 的情况下，tooltip 中的名称显示为 `-` 的问题。[#15985](https://github.com/apache/echarts/issues/15985) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [radar] 修复分支合并引入的回归问题。[#16764](https://github.com/apache/echarts/issues/16764) ([plainheart](https://github.com/plainheart))
++ [Fix] [geo] 修复 linesGL 系列没有被渲染的问题。[#17150](https://github.com/apache/echarts/issues/17150) ([plainheart](https://github.com/plainheart))
++ [Fix] [pictorialBar] 优化 PictorialBarSeriesOption 类型定义。[#17155](https://github.com/apache/echarts/issues/17155) ([dmzc](https://github.com/dmzc))
++ [Fix] [tooltip] 修复 `triggerOn` 设置为 `'click'` 时，内容随坐标轴范围变化的问题。[#16939](https://github.com/apache/echarts/issues/16939) ([jiawulin001](https://github.com/jiawulin001))
++ [Fix] [dataZoom] 修复 `borderColor` 在某些打包环境中的问题。[#16854](https://github.com/apache/echarts/issues/16854) ([Ling310](https://github.com/Ling310))
++ [Fix] [markLine] 修复 markLine 标签显示了错误的 tooltip 内容。[#16971](https://github.com/apache/echarts/issues/16971) ([plainheart](https://github.com/plainheart))
++ [Fix] [markArea] 修复 markArea 错误地被过滤的情况。[#16861](https://github.com/apache/echarts/issues/16861) ([jiawulin001](https://github.com/jiawulin001))
++ [Fix] [axis] 修复 `{yy}` 没有显示为两位数。[#17064](https://github.com/apache/echarts/issues/17064) ([Fritzbox2000](https://github.com/Fritzbox2000))
++ [Fix] [axis] 修复一年被分为三个季度而不是四个季度的问题。[#17073](https://github.com/apache/echarts/issues/17073) ([Fritzbox2000](https://github.com/Fritzbox2000))
++ [Fix] [axis] 修复单轴自定义系列不工作的问题。[#16850](https://github.com/apache/echarts/issues/16850) ([benlongo](https://github.com/benlongo))
++ [Fix] [graphic] 修复更新时，某些配置项可能非预期地被重设的问题。[#17007](https://github.com/apache/echarts/issues/17007) ([plainheart](https://github.com/plainheart))
++ [Fix] [decal] 修复图案在 `legend.itemStyle.decal` 设置为 `'none'` 后没有更新的问题。[#16922](https://github.com/apache/echarts/issues/16922) ([jiawulin001](https://github.com/jiawulin001))
++ [Fix] [radialGradient] 为径向渐变色增加安全防御。[#898](https://github.com/ecomfe/zrender/issues/898) [#919](https://github.com/ecomfe/zrender/issues/919) ([lefex](https://github.com/lefex)) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [types] 修复 `DataStore`的类型。[#16824](https://github.com/apache/echarts/issues/16824) ([XXXMrG](https://github.com/XXXMrG))
+
 ## v5.3.2
 <div class="time">2022-04-01</div>
 

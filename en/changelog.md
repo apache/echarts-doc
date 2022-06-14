@@ -1,4 +1,5 @@
 ## v5.3.3
+<div class="time">2022-06-14</div>
 
 + [Feature] [bar] add new stacking strategies. [#17086](https://github.com/apache/echarts/issues/17086) ([villebro](https://github.com/villebro))
 + [Feature] [tree] `tree` focus supports `relative`. [#17009](https://github.com/apache/echarts/issues/17009) ([susiwen8](https://github.com/susiwen8))
