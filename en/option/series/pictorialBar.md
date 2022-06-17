@@ -533,7 +533,7 @@ Image can be used as the pattern of graphic elements.
 var textureImg = new Image();
 textureImg.src = 'data:image/jpeg;base64,...'; // dataURI
 // Or
-// textureImg.src = 'http://xxx.xxx.xxx/xx.png'; // URL
+// textureImg.src = 'http://example.website/xx.png'; // URL
 ...
 itemStyle: {
     color: {

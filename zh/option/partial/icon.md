@@ -15,7 +15,7 @@ ECharts 提供的标记类型包括
 
 URL 为图片链接例如：
 ```
-'image://http://xxx.xxx.xxx/a/b.png'
+'image://http://example.website/a/b.png'
 ```
 
 URL 为 `dataURI` 例如：
