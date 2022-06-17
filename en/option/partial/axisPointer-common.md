@@ -108,7 +108,7 @@ Whether to trigger tooltip.
 
 #${prefix} value(number) = null
 
-current value. When using [axisPointer.handle](xAxisPointer.handle), `value` can be set to define the initail position of axisPointer.
+current value. When using [axisPointer.handle](xAxisPointer.handle), `value` can be set to define the initial position of axisPointer.
 
 #${prefix} status(boolean)
 
