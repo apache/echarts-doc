@@ -84,6 +84,12 @@ Whether to enable the strategy to avoid labels overlap. Defaults to be enabled, 
 
 Whether to show sector when all data are zero.
 
+## percentPrecision(number) = 2
+
+<ExampleUIControlNumber min="0" default="2" />
+
+The precision of the percentage value. The default value is `2`.
+
 {{ use: partial-cursor() }}
 
 {{ use: partial-rect-layout-width-height(

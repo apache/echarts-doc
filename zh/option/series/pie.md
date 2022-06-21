@@ -107,6 +107,12 @@ const option = {
 
 是否在数据和为`0`（一般情况下所有数据为`0`） 的时候仍显示扇区。
 
+## percentPrecision(number) = 2
+
+<ExampleUIControlNumber min="0" default="2" />
+
+饼图百分比数值的精度，默认保留小数点后两位。
+
 {{ use: partial-cursor() }}
 
 {{ use: partial-rect-layout-width-height(
