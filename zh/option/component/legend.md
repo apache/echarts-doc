@@ -573,7 +573,7 @@ ${name}的图形样式。其属性的取值为 `'inherit'` 时，表示继承系
     defaultColor = 'inherit',
     defaultBorderColor = 'inherit',
     defaultBorderWidth = 'auto',
-    defaultBorderWidthDesc = '当其值为 `"auto"` 时，如果系列有 `borderWidth` 取 2，如果系列没有 `borderWidth` 则取 0。当其值为 `"inehrit"` 时，始终取系列的 `borderWidth`。',
+    defaultBorderWidthDesc = '当其值为 `"auto"` 时，如果系列有 `borderWidth` 取 2，如果系列没有 `borderWidth` 则取 0。当其值为 `"inherit"` 时，始终取系列的 `borderWidth`。',
     defaultType = 'inherit',
     defaultOpacity = 'inherit',
     defaultShadowBlur = 0,

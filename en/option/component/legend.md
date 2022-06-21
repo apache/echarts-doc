@@ -477,7 +477,7 @@ ${name} item style. If its children have values as `'inherit'`, the values are i
     defaultColor = 'inherit',
     defaultBorderColor = 'inherit',
     defaultBorderWidth = 'auto',
-    defaultBorderWidthDesc = 'When its value is `"auto"`, if there is `borderWidth` in series, then it is set to be 2, otherwise, it is set to be 0. If its value is `"inehrit"`, then the `borderWidth` of the series are always used',
+    defaultBorderWidthDesc = 'When its value is `"auto"`, if there is `borderWidth` in series, then it is set to be 2, otherwise, it is set to be 0. If its value is `"inherit"`, then the `borderWidth` of the series are always used',
     defaultType = 'inherit',
     defaultOpacity = 'inherit',
     defaultShadowBlur = 0,
