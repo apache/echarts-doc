@@ -203,7 +203,7 @@ Name displayed in each sector.
 
 ### link(string)
 
-Link address that redirects to when this sector is clicked. Only useful when [series-sunburst.nodeClick](~series-treemap.nodeClick) is set to be `'link'`.
+Link address that redirects to when this sector is clicked. Only useful when [series-sunburst.nodeClick](~series-sunburst.nodeClick) is set to be `'link'`.
 
 See [series-sunburst.data.target](~series-sunburst.data.target).
 
