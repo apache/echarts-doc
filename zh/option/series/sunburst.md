@@ -365,13 +365,6 @@ const option = {
     state = 'normal'
 ) }}
 
-## labelLayout(Object|Function)
-
-{{ use: partial-sunburst-state(
-    prefix = "#",
-    state = 'normal'
-) }}
-
 ### emphasis
 
 高亮状态配置。
@@ -402,6 +395,11 @@ const option = {
 ### children(Array)
 
 子节点，递归定义，格式同 [series-sunburst.data](~series-sunburst.data)。
+
+{{ use: partial-sunburst-state(
+    prefix = "##",
+    state = 'normal'
+) }}
 
 ## nodeClick(boolean|string) = 'rootToNode'
 
@@ -434,6 +432,12 @@ function(nodeA, nodeB) {
 {{ use: partial-sunburst-label-props(
     prefix = "#",
     state = 'normal'
+) }}
+
+## labelLayout(Object|Function)
+
+{{ use: partial-label-layout(
+    prefix = "##"
 ) }}
 
 {{ use: partial-sunburst-itemStyle-props(

@@ -218,13 +218,6 @@ Like `target` attribute of HTML `<a>`, which can either be `'blank'` or `'self'`
     state = 'normal'
 ) }}
 
-## labelLayout(Object|Function)
-
-{{ use: partial-sunburst-state(
-    prefix = "#",
-    state = 'normal'
-) }}
-
 ### emphasis
 
 Emphasis state.
@@ -255,6 +248,11 @@ Select state.
 ### children(Array)
 
 The children nodes defined recursively. The structure is the same as [series-sunburst.data](~series-sunburst.data).
+
+{{ use: partial-sunburst-state(
+    prefix = "##",
+    state = 'normal'
+) }}
 
 ## nodeClick(boolean|string) = 'rootToNode'
 
@@ -287,6 +285,12 @@ If there is no `name`, whether need to render it.
 {{ use: partial-sunburst-label-props(
     prefix = "#",
     state = 'normal'
+) }}
+
+## labelLayout(Object|Function)
+
+{{ use: partial-label-layout(
+    prefix = "##"
 ) }}
 
 {{ use: partial-sunburst-itemStyle-props(
