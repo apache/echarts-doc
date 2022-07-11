@@ -125,7 +125,7 @@
 
 # series.sunburst(Object)
 
-[旭日图（Sunburst）](https://en.wikipedia.org/wiki/Pie_chart#Ring_chart_/_Sunburst_chart_/_Multilevel_pie_chart)由多层的环形图组成，在数据结构上，内圈是外圈的父节点。因此，它既能像[饼图](~series-pie)一样表现局部和整体的占比，又能像[矩形树图](~series-treemap)一样表现层级关系。
+[旭日图（Sunburst）](https://en.wikipedia.org/wiki/Pie_chart#Ring_chart,_sunburst_chart,_and_multilevel_pie_chart)由多层的环形图组成，在数据结构上，内圈是外圈的父节点。因此，它既能像[饼图](~series-pie)一样表现局部和整体的占比，又能像[矩形树图](~series-treemap)一样表现层级关系。
 
 **示例：**
 
