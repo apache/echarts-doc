@@ -18,7 +18,7 @@ The following example shows different `rotate` settings:
 
 Same to [label.rotate](~sunburst.label.rotate)
 {{ else }}
-同 [label.rotate](~sunburst.label.rotate)
+Same to [label.rotate](~sunburst.label.rotate)
 {{ /if }}
 
 #${prefix} align(string) = 'center'
@@ -56,7 +56,7 @@ If angle of data piece is smaller than this value (in degrees), then text is not
 
 `label` 描述了每个扇形块中，文本标签的样式。
 
-**优先级：[series.data.label](~series-sunburst.data.label) > [series.levels.label](~series-sunburst.levels.label) > [series.label](~series-sunburst.label)。**
+**Priority：[series.data.label](~series-sunburst.data.label) > [series.levels.label](~series-sunburst.levels.label) > [series.label](~series-sunburst.label)。**
 
 {{ use: partial-label-desc() }}
 
@@ -86,7 +86,7 @@ If angle of data piece is smaller than this value (in degrees), then text is not
 
 可以在 [series.itemStyle](~series-sunburst.itemStyle) 定义所有扇形块的样式，也可以在 [series.levels.itemStyle](~series-sunburst.levels.itemStyle) 定义每一层扇形块的样式，还可以在 [series.data.itemStyle](~series-sunburst.data.itemStyle) 定义每个扇形块单独的样式，这三者的优先级从低到高。也就是说，如果定义了 [series.data.itemStyle](~series-sunburst.data.itemStyle)，将会覆盖 [series.itemStyle](~series-sunburst.itemStyle) 和 [series.levels.itemStyle](~series-sunburst.levels.itemStyle)。
 
-**优先级：[series.data.itemStyle](~series-sunburst.data.itemStyle) > [series.levels.itemStyle](~series-sunburst.levels.itemStyle) > [series.itemStyle](~series-sunburst.itemStyle)。**
+**Priority：[series.data.itemStyle](~series-sunburst.data.itemStyle) > [series.levels.itemStyle](~series-sunburst.levels.itemStyle) > [series.itemStyle](~series-sunburst.itemStyle)。**
 
 {{ use: partial-item-style(
     prefix = ${prefix} + '#',
@@ -137,7 +137,7 @@ If angle of data piece is smaller than this value (in degrees), then text is not
 
 **Data mining**
 
-Sunburst charts support data mining by default. That means, when a user clicks a sector, it will be used as root node, and there will be a circle in the center for return to parent node. If data mining is not needed, it can be disabled by [series-sunburst.nodeClick](~series-treemap.nodeClick).
+Sunburst charts support data mining by default. That means, when a user clicks a sector, it will be used as root node, and there will be a circle in the center for return to parent node. If data mining is not needed, it can be disabled by [series-sunburst.nodeClick](~series-sunburst.nodeClick).
 
 ## type(string) = 'sunburst'
 
