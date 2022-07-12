@@ -125,7 +125,7 @@
 
 # series.sunburst(Object)
 
-[旭日图（Sunburst）](https://en.wikipedia.org/wiki/Pie_chart#Ring_chart_/_Sunburst_chart_/_Multilevel_pie_chart)由多层的环形图组成，在数据结构上，内圈是外圈的父节点。因此，它既能像[饼图](~series-pie)一样表现局部和整体的占比，又能像[矩形树图](~series-treemap)一样表现层级关系。
+[旭日图（Sunburst）](https://en.wikipedia.org/wiki/Pie_chart#Ring_chart,_sunburst_chart,_and_multilevel_pie_chart)由多层的环形图组成，在数据结构上，内圈是外圈的父节点。因此，它既能像[饼图](~series-pie)一样表现局部和整体的占比，又能像[矩形树图](~series-treemap)一样表现层级关系。
 
 **示例：**
 
@@ -135,7 +135,7 @@
 
 **数据下钻**
 
-旭日图默认支持数据下钻，也就是说，当用户点击了某个扇形块之后，将会以该节点作为根结点显示，并且在中间出现一个返回上层节点的圆。如果不希望有数据下钻功能，可以通过将 [series-sunburst.nodeClick](~series-treemap.nodeClick) 设置为 `false` 实现。
+旭日图默认支持数据下钻，也就是说，当用户点击了某个扇形块之后，将会以该节点作为根结点显示，并且在中间出现一个返回上层节点的圆。如果不希望有数据下钻功能，可以通过将 [series-sunburst.nodeClick](~series-sunburst.nodeClick) 设置为 `false` 实现。
 
 <ExampleBaseOption name="sunburst" title="基础旭日图" title-en="Basic Sunburst">
 const data = [{
@@ -365,13 +365,6 @@ const option = {
     state = 'normal'
 ) }}
 
-## labelLayout(Object|Function)
-
-{{ use: partial-sunburst-state(
-    prefix = "#",
-    state = 'normal'
-) }}
-
 ### emphasis
 
 高亮状态配置。
@@ -402,6 +395,11 @@ const option = {
 ### children(Array)
 
 子节点，递归定义，格式同 [series-sunburst.data](~series-sunburst.data)。
+
+{{ use: partial-sunburst-state(
+    prefix = "##",
+    state = 'normal'
+) }}
 
 ## nodeClick(boolean|string) = 'rootToNode'
 
@@ -434,6 +432,12 @@ function(nodeA, nodeB) {
 {{ use: partial-sunburst-label-props(
     prefix = "#",
     state = 'normal'
+) }}
+
+## labelLayout(Object|Function)
+
+{{ use: partial-label-layout(
+    prefix = "##"
 ) }}
 
 {{ use: partial-sunburst-itemStyle-props(

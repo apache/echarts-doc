@@ -181,7 +181,7 @@ myChart.setOption({
 {
     type: 'image',
     style: {
-        image: 'http://xxx.xxx.xxx/a.png',
+        image: 'http://example.website/a.png',
         x: 100,
         y: 200,
         width: 230,
@@ -249,7 +249,7 @@ myChart.setOption({
     left: 'center', // 水平定位到中间
     bottom: '10%',  // 定位到距离下边界 10% 处
     style: {
-        image: 'http://xxx.xxx.xxx/a.png',
+        image: 'http://example.website/a.png',
         width: 45,
         height: 45
     }

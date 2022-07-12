@@ -17,7 +17,7 @@ It can be set to an image with `'image://url'` , in which URL is the link to an 
 An image URL example:
 
 ```
-'image://http://xxx.xxx.xxx/a/b.png'
+'image://http://example.website/a/b.png'
 ```
 
 A `dataURI` example:

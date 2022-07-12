@@ -191,7 +191,7 @@ Elements with different types have different shape setting repectively. For exam
 {
     type: 'image',
     style: {
-        image: 'http://xxx.xxx.xxx/a.png',
+        image: 'http://example.website/a.png',
         x: 100,
         y: 200,
         width: 230,
@@ -263,7 +263,7 @@ For example:
     left: 'center', // Position at the center horizontally.
     bottom: '10%',  // Position beyond the bottom boundary 10%.
     style: {
-        image: 'http://xxx.xxx.xxx/a.png',
+        image: 'http://example.website/a.png',
         width: 45,
         height: 45
     }
