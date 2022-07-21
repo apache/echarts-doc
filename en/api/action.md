@@ -36,6 +36,54 @@ Chart actions supported by ECharts are triggered through [dispatchAction](~echar
 
 **Attention: ** The `?:` note in the code shows that this attribute is optional. *EVENT:* stands for the event that triggers action.
 
+## highlight(Action)
+
+Highlights specified data graphics.
+
+```ts
+// If highlight series:
+dispatchAction({
+    type: 'highlight',
+
+    {{ use: action-series-query }}
+
+    {{ use: action-data-query-multiple }}
+});
+
+// If highlight geo component (since v5.1.0):
+dispatchAction({
+    type: 'highlight',
+
+    {{ use: action-component-query(componentType = 'geo') }}
+
+    {{ use: action-component-item-query-multiple(componentType = 'geo', componentItemDesc = 'region') }}
+});
+```
+
+
+## downplay(Action)
+
+Downplay specified data graphics.
+
+```ts
+// If downplay series:
+dispatchAction({
+    type: 'downplay',
+
+    {{ use: action-series-query }}
+
+    {{ use: action-data-query-multiple }}
+});
+
+// If downplay geo component (since v5.1.0):
+dispatchAction({
+    type: 'downplay',
+
+    {{ use: action-component-query(componentType = 'geo') }}
+
+    {{ use: action-component-item-query-multiple(componentType = 'geo', componentItemDesc = 'region') }}
+});
+```
 
 ## select(Action)
 
