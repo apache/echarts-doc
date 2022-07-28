@@ -233,6 +233,59 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
 }
 ```
 
+## graphroam(Event)
+关系图 [series-graph](option.html#series-graph) 的缩放和平移漫游事件。
+
+```ts
+{
+    type: 'graphroam',
+    seriesId: string,
+    zoom: number, // 单次缩放倍数
+    originX: number,
+    originY: number
+}
+```
+
+## georoam(Event)
+地理坐标系 [geo](option.html#geo) 的缩放和平移漫游事件。
+
+```ts
+{
+    type: 'georoam',
+    componentType: 'geo' | 'series',
+    seriesId: string,
+    zoom: number, // 单次缩放倍数
+    originX: number,
+    originY: number
+}
+```
+
+## treeroam(Event)
+树图 [series-tree](option.html#series-tree) 的缩放和平移漫游事件。
+
+`treeroam` 事件包括两种，其中一种是平移，事件参数为：
+
+```ts
+{
+    type: 'treeroam',
+    seriesId: string,
+    dx: number,
+    dy: number
+}
+```
+
+另一种是缩放，参数为：
+
+```ts
+{
+    type: 'treeroam',
+    seriesId: string,
+    zoom: number, // 单次缩放倍数
+    originX: number,
+    originY: number
+}
+```
+
 ## timelinechanged(Event)
 **ACTION:** [timelineChange](~action.timeline.timelineChange)
 时间轴中的时间点改变后的事件。
@@ -526,4 +579,3 @@ chart.on('finished', function () {
     }
 }
 ```
-
