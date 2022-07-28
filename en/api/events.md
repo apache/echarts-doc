@@ -235,6 +235,59 @@ Event emitted after range is changed in visualMap.
 }
 ```
 
+## graphroam(Event)
+Event emitted after [series-graph](option.html#series-graph) is roamed.
+
+```ts
+{
+    type: 'graphroam',
+    seriesId: string,
+    zoom: number, // zoom ratio of roaming once
+    originX: number,
+    originY: number
+}
+```
+
+## georoam(Event)
+Event emitted after [geo](option.html#geo) is roamed.
+
+```ts
+{
+    type: 'georoam',
+    componentType: 'geo' | 'series',
+    seriesId: string,
+    zoom: number, // zoom ratio of roaming once
+    originX: number,
+    originY: number
+}
+```
+
+## treeroam(Event)
+Event emitted after [series-tree](option.html#series-tree) is roamed.
+
+`treeroam` events include two types. One is triggered by panning and the parameters are:
+
+```ts
+{
+    type: 'treeroam',
+    seriesId: string,
+    dx: number,
+    dy: number
+}
+```
+
+The other type is triggered by zooming and the parameters are:
+
+```ts
+{
+    type: 'treeroam',
+    seriesId: string,
+    zoom: number, // zoom ratio of roaming once
+    originX: number,
+    originY: number
+}
+```
+
 ## timelinechanged(Event)
 **ACTION:** [timelineChange](~action.timeline.timelineChange)
 Event emitted after time point in timeline is changed.
@@ -540,4 +593,3 @@ Use `dispatchAction` will trigger this event, but user clicking won't trigger it
     }
 }
 ```
-
