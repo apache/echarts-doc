@@ -5,6 +5,11 @@
 
 group 是唯一的可以有子节点的容器。group 可以用来整体定位一组图形元素。
 
+{{ if: ${usageType} === 'customSeries' }}
+注意，如果其任意子节点是 `null`，这表示该子节点不再存在。所以，如果再次调用 `setOption` 时，一个子节点被设为 `null`，这意味着它之前对应序号的元素会被删除。如果希望一个子节点保持不变，应在新的配置项中使用 `{}` 表示。并且，仅当 group 的子节点在之前的 `setOption` 中存在时，才可以使用 `null/undefined/{}` 作为子节点。
+
+{{ /if }}
+
 {{ use: partial-graphic-cpt-common-props(
     type = 'group',
     prefix = ${prefix},
@@ -2017,4 +2022,3 @@ type TransformProp =
 ```
 
 也参见这个 [例子](${galleryEditorPath}custom-spiral-race&edit=1&reset=1)。
-
