@@ -6,7 +6,8 @@
 `group` is the only type that can contain children, so that a group of elements can be positioned and transformed together.
 
 {{ if: ${usageType} === 'customSeries' }}
-Note that if any of its child is `null`, it means the child no longer exists. So if a group contains an element that is set to be `null` in a future `setOption` call, it should remove the previous element at the same index. If a child should not change, it should be `{}` in the new option.
+Note that if any of its child is `null`, it means the child no longer exists. So if a group contains an element that is set to be `null/undefined` in a future `setOption` call, it should remove the previous element at the same index. If a child should not change, it should be `{}` in the new option. And a group can only contain children as `null/undefined/{}` if they exist in the previous `setOption`.
+
 {{ /if }}
 
 {{ use: partial-graphic-cpt-common-props(
