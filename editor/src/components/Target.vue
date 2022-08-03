@@ -90,7 +90,7 @@
 <script>
 
 import Block from './Block.vue';
-import { cloneDeep } from 'lodash-es';
+import _ from 'lodash';
 import { store } from '../store/store';
 import { setCORS } from 'google-translate-api-browser';
 import { Notify } from 'quasar';
@@ -191,11 +191,11 @@ export default {
             if (copySelected) {
                 store.blocksToCopy = [];
                 for (let i = 0; i < this.selected.length; i++) {
-                    store.blocksToCopy.push(Object.freeze(cloneDeep(this.selected[i])));
+                    store.blocksToCopy.push(Object.freeze(_.cloneDeep(this.selected[i])));
                 }
             }
             else {
-                store.blocksToCopy = [Object.freeze(cloneDeep(block))];
+                store.blocksToCopy = [Object.freeze(_.cloneDeep(block))];
             }
         },
 
@@ -205,7 +205,7 @@ export default {
                 for (let i = 0; i < store.blocksToCopy.length; i++) {
                     const blockToCopy = store.blocksToCopy[i];
                     if (idx >= 0) {
-                        const newBlock = cloneDeep(blockToCopy);
+                        const newBlock = _.cloneDeep(blockToCopy);
                         // Avoid duplicate key
                         newBlock.key = null;
                         this.target.blocks.splice(++idx, 0, newBlock);
