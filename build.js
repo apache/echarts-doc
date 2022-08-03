@@ -300,14 +300,11 @@ function writeSingleSchemaPartioned(schema, language, docName, format) {
         const descBasename = `${partKey}.json`;
         const descDestPath = path.resolve(config.releaseDestDir, `${language}/documents/${docName}-parts/${descBasename}`);
         fse.ensureDirSync(path.dirname(descDestPath));
-        const content = JSON.stringify(json, null, 2);
         fse.outputFileSync(
             descDestPath,
-            // format ? JSON.stringify(partDescriptions, null, 2) : JSON.stringify(partDescriptions),
-            content,
+            format ? JSON.stringify(json, null, 2) : JSON.stringify(json),
             'utf-8'
         );
-        // Convnert to JS
         convertToJS(descBasename, descDestPath);
     }
 
