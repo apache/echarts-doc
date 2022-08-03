@@ -47,6 +47,7 @@
     "codemirror": "^5.54.0",
     "highlight.js": "^9.18.1",
     "lodash-es": "^4.17.21",
+    "lz-string": "^1.4.4",
     "mark.js": "^8.11.1",
     "scroll-into-view": "^1.16.2",
     "string-similarity-js": "^2.1.4",

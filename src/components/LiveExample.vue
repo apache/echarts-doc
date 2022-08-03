@@ -5,7 +5,14 @@
     <div class="preview-and-code" v-if="shared.currentExampleOption">
         <div class="preview-main"></div>
         <div class="example-code">
-            <div class="codemirror-main"></div>
+            <div class="codemirror-main">
+                <el-link
+                    icon="el-icon-edit-outline"
+                    class="btn-to-editor"
+                    :title="$t('example.toEditor')"
+                    @click="toEditor"
+                />
+            </div>
         </div>
         <el-alert
             :title="$t('example.setOptionError')"
@@ -73,6 +80,7 @@ import beautifier from 'js-beautify';
 import {throttle} from 'lodash-es';
 import arrayDiff from 'zrender/lib/core/arrayDiff';
 import {ECHARTS_LIB} from '../config';
+import { compressToBase64 } from 'lz-string';
 
 let echartsLoadPromise;
 
@@ -288,7 +296,6 @@ export default {
 
         resize() {
             const examplePanel = this.$el;
-            const previewMain = examplePanel.querySelector('.preview-main');
             if (this.shared.computedOptionExampleLayout !== 'right') {
                 examplePanel.style.height = (window.innerHeight * 0.5 - 60) + 'px';
                 examplePanel.style.width = 'auto';
@@ -342,6 +349,14 @@ export default {
             this.$nextTick(() => {
                 this.resize();
             });
+        },
+
+        toEditor() {
+            const code = compressToBase64(this.formattedOptionCodeStr)
+                .replace(/\+/g, '-')
+                .replace(/\//g, '_')
+                .replace(/=+$/, '');
+            window.open(`https://echarts.apache.org/examples/editor.html?code=${code}&_source=echarts-doc-preview`, '_blank');
         }
     },
 
@@ -462,6 +477,17 @@ export default {
                 }
             }
         }
+
+        .btn-to-editor {
+            position: absolute;
+            right: 5px;
+            top: 8px;
+            z-index: 10;
+
+            &:not(:hover) {
+                color: #fff;
+            }
+         }
     }
 
     .toolbar {
