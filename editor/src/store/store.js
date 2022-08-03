@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { cloneDeep, debounce, isEqual }  from 'lodash-es';
 import { socket, socketRequest } from './socket';
 import { Notify } from 'quasar';
 
@@ -36,7 +36,7 @@ export function fetchFromServer(lang, extraProcess) {
         lang
     }).then((blocks) => {
         store.blocks = blocks;
-        store.originalBlocks = Object.freeze(_.cloneDeep(blocks));
+        store.originalBlocks = Object.freeze(cloneDeep(blocks));
 
         extraProcess && extraProcess(blocks);
 
@@ -50,14 +50,14 @@ export function saveToServer(lang) {
         lang
     }).then(() => {
         // Reset the base
-        store.originalBlocks = Object.freeze(_.cloneDeep(store.blocks));
+        store.originalBlocks = Object.freeze(cloneDeep(store.blocks));
         clearLocalStorage();
     });
 }
 
 export function restore() {
     if (store.originalBlocks) {
-        store.blocks = _.cloneDeep(store.originalBlocks);
+        store.blocks = cloneDeep(store.originalBlocks);
         updateTargets();
     }
 }
@@ -86,8 +86,8 @@ export function saveLocalStorage() {
     console.log('Saved to local');
 };
 
-export const detectChangeAndSaveToLocal = _.debounce((changed, unchanged) => {
-    if (!_.isEqual(store.blocks, store.originalBlocks)) {
+export const detectChangeAndSaveToLocal = debounce((changed, unchanged) => {
+    if (!isEqual(store.blocks, store.originalBlocks)) {
         saveLocalStorage();
         changed();
     }

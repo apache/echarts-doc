@@ -13,7 +13,7 @@
  */
 
 const md2json = require('./tool/md2json');
-const {extractDesc, extractOptionKeys} = require('./tool/schemaHelper');
+const {extractDesc} = require('./tool/schemaHelper');
 const fs = require('fs');
 const fse = require('fs-extra');
 const marked = require('marked');
@@ -24,7 +24,7 @@ const argv = require('yargs').argv;
 const path = require('path');
 const assert = require('assert');
 const chokidar = require('chokidar');
-const debounce = require('lodash.debounce');
+const {debounce} = require('lodash');
 const {getDocJSONPVarNname} = require('./src/shared');
 
 const projectDir = __dirname;

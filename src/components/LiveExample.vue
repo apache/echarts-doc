@@ -63,16 +63,15 @@
 // Remarks:
 // 代码不能编辑，可以跳转到 examples 带上 base64，在 examples 页面编辑
 
-import {store, getPagePath, updateOptionExampleLayout, optionExampleLayouts} from '../store';
+import {store, updateOptionExampleLayout, optionExampleLayouts} from '../store';
 import CodeMirror from 'codemirror';
 import 'codemirror/lib/codemirror.css';
 // import 'codemirror/theme/paraiso-dark.css';
 import 'codemirror/theme/dracula.css';
 // import 'codemirror/mode/javascript/javascript.js'
 import beautifier from 'js-beautify';
-import throttle from 'lodash.throttle';
+import {throttle} from 'lodash-es';
 import arrayDiff from 'zrender/lib/core/arrayDiff';
-import scrollIntoView from 'scroll-into-view';
 import {ECHARTS_LIB} from '../config';
 
 let echartsLoadPromise;
