@@ -32,7 +32,7 @@
     "globby": "^11.0.1",
     "htmlparser2": "^4.1.0",
     "install": "^0.13.0",
-    "jsdom": "^9.8.3",
+    "jsdom": "^16.5.0",
     "marked": "^0.3.19",
     "mini-css-extract-plugin": "^0.8.2",
     "node-static": "^0.7.11",
