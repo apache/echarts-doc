@@ -86,6 +86,12 @@ option = {
 
 数据排序， 可以取 `'ascending'`，`'descending'`，`'none'`（表示按 data 顺序），或者一个函数（即 `Array.prototype.sort(function (a, b) { ... })`）。
 
+## exitShape(string) = 'none'
+
+<ExampleUIControlEnum options="none,rect" default="none" />
+
+漏斗出口形状, 设为 `'rect'` 来展平顶部。
+
 ## gap(number) = 0
 
 <ExampleUIControlNumber default="0" min="0" step="0.5" />
