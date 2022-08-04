@@ -163,6 +163,7 @@ export default {
     }
 
     &>.el-main {
+        position: relative;
         text-align: center;
 
         &>div {
