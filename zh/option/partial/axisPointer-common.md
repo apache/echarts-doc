@@ -68,7 +68,6 @@ axisPointer 的 label 默认不显示（也就是默认只显示指示线），�
 
 
 
-
 {{ target: partial-axisPointer-common }}
 
 #${prefix} show(boolean) = false

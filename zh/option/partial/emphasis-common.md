@@ -45,6 +45,7 @@
 + `'ancestor'` 聚焦所有祖先节点
 + `'descendant'` 聚焦所有子孙节点
 {{ /if }}
+
 {{ if: ${hasRelative} }}
 + `'relative'` 聚焦所有子孙和祖先节点（从 `v${version}`开始支持）
 {{ /if }}

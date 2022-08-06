@@ -1,3 +1,4 @@
+
 {{ target: partial-sector-border-radius }}
 
 #${prefix} borderRadius(number|string|Array)
@@ -28,3 +29,4 @@ Since `v5.3.0`:
 + `borderRadius: [10, 20]`: means that the inner corner radius is `10px` and the outer corner radius is `20px`.
 + `borderRadius: ['20%', '50%']`: means that the inner corner radius is `20%` of the difference between the inner sector and the outer sector, and the outer corner radius is `50%` of the difference.
 + `borderRadius: [5, 10, 15, 20]`: means the two inner corner radii are `5px` and `10px`, and the two outer corner radii are `15px` and `20px`.
+

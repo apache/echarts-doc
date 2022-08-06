@@ -1165,7 +1165,6 @@ Transform 相关的属性：`'x'`、 `'y'`、`'scaleX'`、`'scaleY'`、`'rotatio
     prefix = ${prefix}
 ) }}
 
-
 ##${prefix} updateAnimation(Object)
 
 更新属性的动画配置。
@@ -1251,7 +1250,6 @@ interface Keyframe {
 是否开启形变动画。
 
 开启 [universalTransition](~series-custom.universalTransition) 后如果前后两次更新图形类型不一样，比如从`rect`变为了`circle`，会通过形变动画过渡。如果想要关闭可以设置该属性为`false`。
-
 {{ /if }}
 
 {{ if: ${usageType} === 'graphicComponent' }}
@@ -1530,6 +1528,7 @@ Position of `textContent`.
 {{ /if }}
 
 
+
 {{ target: partial-graphic-cpt-style-prop-common }}
 
 注：关于图形元素中更多的样式设置（例如 [富文本标签](tutorial.html#%E5%AF%8C%E6%96%87%E6%9C%AC%E6%A0%87%E7%AD%BE)），参见 [zrender/graphic/Displayable](https://ecomfe.github.io/zrender-doc/public/api.html#zrenderdisplayable) 中的 style 相关属性。
@@ -1654,6 +1653,8 @@ Position of `textContent`.
 }
 ```
 
+
+
 {{ target: partial-graphic-cpt-animation }}
 
 ###${prefix} duration(number)
@@ -1667,6 +1668,8 @@ Position of `textContent`.
 ###${prefix} delay(number)
 
 动画延迟时长，单位 ms
+
+
 
 {{ target: partial-graphic-cpt-sub-prop-xy }}
 
@@ -1828,6 +1831,7 @@ Position of `textContent`.
 ##${prefix} originY(number) = 0
 
 元素旋转和缩放原点的 y 像素位置。
+
 
 
 {{ target: partial-graphic-cpt-focus-blur }}

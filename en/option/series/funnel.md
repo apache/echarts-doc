@@ -24,19 +24,19 @@
 
 <ExampleUIControlNumber default="0" step="1" />
 
-The specified minimum value.
+The specified minimum value. Invalid if dynamicHeight is `true`.
 
 ## max(number) = 100
 
 <ExampleUIControlNumber default="100" step="1" />
 
-The specified maximum value.
+The specified maximum value. Invalid if dynamicHeight is `true`.
 
 ## minSize(number|string) = '0%'
 
 <ExampleUIControlPercent default="0%" />
 
-The mapped width from minimum data value [min](~series-funnel.min).
+The mapped width from minimum data value [min](~series-funnel.min). Invalid if dynamicHeight is `true`.
 
 It can be absolute pixel and also the percentage of [layout width](~series-funnel.width). If you don't want the graph of minimum value to be a triangle, you can set up this property larger than 0.
 
@@ -44,7 +44,7 @@ It can be absolute pixel and also the percentage of [layout width](~series-funne
 
 <ExampleUIControlPercent default="100%" />
 
-The mapped width from maximum data value [max](~series-funnel.max).
+The mapped width from maximum data value [max](~series-funnel.max). Invalid if dynamicHeight is `true`.
 
 It can be absolute pixel and also the percentage of [layout width](~series-funnel.width).
 
@@ -69,6 +69,12 @@ Data sorting, which can be whether `'ascending'`, `'descending'`, `'none'`(in da
 <ExampleUIControlEnum options="none,rect" default="none" />
 
 Funnel exit shape, set it `'rect'` to flatten the top.
+
+## dynamicHeight(boolean) = 'false'
+
+<ExampleUIControlEnum options="true,false" default="false" />
+
+Set to `true` so that the height of each funnel block in the funnel plot is proportional to the corresponding value in the dataset.
 
 ## gap(number) = 0
 

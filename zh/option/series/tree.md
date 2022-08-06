@@ -92,7 +92,6 @@ center: [115.97, '30%']
 
 当前视角的缩放比例。
 
-
 ## layout(string) = 'orthogonal'
 
 <ExampleUIControlEnum options="orthogonal,radial" default="orthogonal" />
@@ -515,3 +514,4 @@ center: [115.97, '30%']
     prefix = ${prefix},
     state = ${state}
 ) }}
+
