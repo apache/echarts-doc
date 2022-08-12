@@ -516,6 +516,20 @@ chart.on('finished', function () {
 });
 ```
 
+Note that it's recommended to register the callbacks for such an event before `setOption` in case the callbacks may not be called as expected due to the timing issue when the animation is disabled.
+
+```ts
+var option = {
+    // ...
+    animation: false
+    // ...
+};
+chart.on('finished', function () {
+    // ...  
+});
+chart.setOption(option);
+```
+
 
 
 {{ target: event-select }}
