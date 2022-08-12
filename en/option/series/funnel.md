@@ -76,6 +76,13 @@ Funnel exit shape, set it `'rect'` to flatten the top.
 
 Set to `true` so that the height of each funnel block in the funnel plot is proportional to the corresponding value in the dataset.
 
+## exitWidth(string)
+
+<ExampleUIControlPercent default="0%" />
+
+When dynamicHeight is true, this prop control outlet width is a fraction of the inlet width, and set exitWidth to make the figure more like a funnel shape than a pyramid shape with a sharp bottom.
+ExitWidht must be a string in percentage format and cannot exceed 99%.
+
 ## gap(number) = 0
 
 <ExampleUIControlNumber default="0" min="0" step="0.5" />

@@ -98,6 +98,13 @@ option = {
 
 设置为`true`使得漏斗图每个漏斗块的高度和数据集对应数值成正比。
 
+## exitWidth(string)
+
+<ExampleUIControlPercent default="0%" />
+
+当dynamicHeight为true时，控制出口宽度占入口宽度多少，设置exitWidth可以使图形更接近漏斗形状，而非尖底的金字塔形状。
+exitWidht必须是百分比格式的字符串，而且不能超过99%。
+
 ## gap(number) = 0
 
 <ExampleUIControlNumber default="0" min="0" step="0.5" />
