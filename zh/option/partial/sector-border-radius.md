@@ -1,3 +1,4 @@
+
 {{ target: partial-sector-border-radius }}
 
 #${prefix} borderRadius(number|string|Array)

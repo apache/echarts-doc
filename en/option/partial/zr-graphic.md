@@ -1548,6 +1548,7 @@ Whether use progressive render to improve performance. Usually used when number 
 {{ /if }}
 
 
+
 {{ target: partial-graphic-cpt-style-prop-common }}
 
 More attributes in `style` (for example, [rich text](tutorial.html#Rich%20Text)), see the `style` related attributes in [zrender/graphic/Displayable](https://ecomfe.github.io/zrender-doc/public/api.html#zrenderdisplayable).

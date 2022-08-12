@@ -46,19 +46,19 @@ option = {
 
 <ExampleUIControlNumber default="0" step="1" />
 
-指定的数据最小值。
+指定的数据最小值。dynamicHeight为`true`时无效。
 
 ## max(number) = 100
 
 <ExampleUIControlNumber default="100" step="1" />
 
-指定的数据最大值。
+指定的数据最大值。dynamicHeight为`true`时无效。
 
 ## minSize(number|string) = '0%'
 
 <ExampleUIControlPercent default="0%" />
 
-数据最小值 [min](~series-funnel.min) 映射的宽度。
+数据最小值 [min](~series-funnel.min) 映射的宽度。dynamicHeight为`true`时无效。
 
 可以是绝对的像素大小，也可以是相对[布局宽度](~series-funnel.width)的百分比，如果需要最小值的图形并不是尖端三角，可通过设置该属性实现。
 
@@ -66,7 +66,7 @@ option = {
 
 <ExampleUIControlPercent default="100%" />
 
-数据最大值 [max](~series-funnel.max) 映射的宽度。
+数据最大值 [max](~series-funnel.max) 映射的宽度。dynamicHeight为`true`时无效。
 
 可以是绝对的像素大小，也可以是相对[布局宽度](~series-funnel.width)的百分比。
 
@@ -91,6 +91,12 @@ option = {
 <ExampleUIControlEnum options="none,rect" default="none" />
 
 漏斗出口形状, 设为 `'rect'` 来展平顶部。
+
+## dynamicHeight(boolean) = 'false'
+
+<ExampleUIControlEnum options="true,false" default="false" />
+
+设置为`true`使得漏斗图每个漏斗块的高度和数据集对应数值成正比。
 
 ## gap(number) = 0
 

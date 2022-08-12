@@ -520,3 +520,4 @@ const option = {
     prefix = "####",
     hasInherit = ${state} === 'emphasis'
 ) }}
+
