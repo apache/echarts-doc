@@ -64,6 +64,12 @@ Orient of funnel，Can be `'vertical'` or `'horizontal'`.
 
 Data sorting, which can be whether `'ascending'`, `'descending'`, `'none'`(in data order) or a function, which is the same as `Array.prototype.sort(function (a, b) { ... })`;
 
+## exitShape(string) = 'none'
+
+<ExampleUIControlEnum options="none,rect" default="none" />
+
+Funnel exit shape, set it `'rect'` to flatten the top.
+
 ## gap(number) = 0
 
 <ExampleUIControlNumber default="0" min="0" step="0.5" />
