@@ -92,7 +92,7 @@ option = {
 
 漏斗出口形状, 设为 `'rect'` 来展平顶部。
 
-## dynamicHeight(boolean) = 'false'
+## dynamicHeight(boolean)
 
 <ExampleUIControlEnum options="true,false" default="false" />
 
@@ -102,8 +102,15 @@ option = {
 
 <ExampleUIControlPercent default="0%" />
 
-当dynamicHeight为true时，控制出口宽度占入口宽度多少，设置exitWidth可以使图形更接近漏斗形状，而非尖底的金字塔形状。
+当dynamicHeight为`true`时，控制出口宽度占入口宽度多少，设置exitWidth可以使图形更接近漏斗形状，而非尖底的金字塔形状。<br/>
+当dynamicHeight为不为true并且showRate为`true`时，控制出口为一个梯形，即出口块上底边是下底边多少。<br/>
 exitWidht必须是百分比格式的字符串，而且不能超过99%。
+
+## showRate(boolean)
+
+<ExampleUIControlEnum options="true,false" default="false" />
+
+在dynamicHeight为`false`时，设置为`true`使得漏斗图展示每个相邻数据的转化率和总体转化率。
 
 ## gap(number) = 0
 
