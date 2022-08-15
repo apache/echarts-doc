@@ -109,6 +109,11 @@ The following two images show the effects of different `displacementQuality`.
     componentName="地球"
 ) }}
 
+{{ use: partial-atmosphere(
+    componentType="globe",
+    componentName="地球"
+) }}
+
 {{ use: partial-post-effect(
     componentType="globe",
     componentName="地球"

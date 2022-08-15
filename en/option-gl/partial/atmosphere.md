@@ -2,27 +2,27 @@
 
 #${prefix|default('#')} atmosphere(Object)
 
-`atmosphere`用于地球外部大气层相关设置。
+`atmosphere`is used for settings related to the outer atmosphere of the earth。
 
 
 ##${prefix|default('#')} show(boolean) = ${defaultShow|default(false)}
 
-是否显示外部大气层，默认不显示。
+Whether to display the outer atmosphere, not displayed by default.
 
 
 ##${prefix|default('#')} offset(number) = ${defaultOffset}
 
-外部大气层相对于默认位置的偏移。
+The offset of the outer atmosphere from the default position.
 
 
 ##${prefix|default("#")} color(string) = ${defaultColor|default('#fff')}
 
-外部大气层的颜色。
+The color of the outer atmosphere.
 
 ##${prefix|default('#')} glowPower(number) = ${defaultGlowPower|default(6.0)}
 
-外部大气层发光功率。
+The outer atmosphere luminous power.
 
 ##${prefix|default('#')} innerGlowPower(number) = ${defaultInnerGlowPower|default(2.0)}
 
-外部大气层内发光功率。
+Luminous power in the outer atmosphere.
