@@ -35,7 +35,53 @@ ECharts 中支持的图表行为，通过 [dispatchAction](~echartsInstance.disp
 
 **注：** 代码中的 `?:` 表示该属性是可选的。*EVENT:* 是 action 对应触发的事件。
 
+## highlight(Action)
 
+高亮指定的数据图形。
+
+```ts
+// 如果要高亮系列：
+dispatchAction({
+    type: 'highlight',
+
+    {{ use: action-series-query }}
+
+    {{ use: action-data-query-multiple }}
+});
+
+// 如果要高亮 geo 组件（从 `v5.1.0` 开始支持）：
+dispatchAction({
+    type: 'highlight',
+
+    {{ use: action-component-query(componentType = 'geo') }}
+
+    {{ use: action-component-item-query-multiple(componentType = 'geo', componentItemDesc = 'region') }}
+});
+```
+
+## downplay(Action)
+
+取消高亮指定的数据图形。
+
+```ts
+// 如果要取消高亮系列：
+dispatchAction({
+    type: 'downplay',
+
+    {{ use: action-series-query }}
+
+    {{ use: action-data-query-multiple }}
+})
+
+// 如果要取消高亮 geo 组件（从 `v5.1.0` 开始支持）：
+dispatchAction({
+    type: 'downplay',
+
+    {{ use: action-component-query(componentType = 'geo') }}
+
+    {{ use: action-component-item-query-multiple(componentType = 'geo', componentItemDesc = 'region') }}
+});
+```
 
 ## select(Action)
 

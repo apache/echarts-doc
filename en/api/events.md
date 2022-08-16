@@ -80,7 +80,17 @@ See [Events and actions in ECharts](tutorial.html#Events%20and%20actions%20in%20
 ### globalout(Event)
 ### contextmenu(Event)
 
+## highlight(Event)
 
+**ACTION:** [highlight](~action.highlight)
+
+Event of data highlight.
+
+## downplay(Event)
+
+**ACTION:** [downplay](~action.downplay)
+
+Event of data downplay.
 
 ## selectchanged(Event)
 

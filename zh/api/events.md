@@ -77,7 +77,17 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
 ### globalout(Event)
 ### contextmenu(Event)
 
+## highlight(Event)
 
+**ACTION:** [highlight](~action.highlight)
+
+高亮事件。
+
+## downplay(Event)
+
+**ACTION:** [downplay](~action.downplay)
+
+取消高亮事件。
 
 ## selectchanged(Event)
 
