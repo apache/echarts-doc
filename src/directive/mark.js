@@ -1,6 +1,6 @@
 import Mark from 'mark.js';
 import Vue from 'vue';
-import debounce from 'lodash.debounce';
+import {debounce} from 'lodash-es';
 
 function doMark(el, keywords) {
     let instance = el.__markInstance;

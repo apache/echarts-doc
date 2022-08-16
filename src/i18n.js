@@ -49,7 +49,9 @@ export default {
                 right: 'Right',
                 top: 'Top',
                 bottom: 'Bottom'
-            }
+            },
+
+            toEditor: 'To Editor'
         }
     },
     zh: {
@@ -102,7 +104,9 @@ export default {
                 right: '右侧',
                 top: '顶部',
                 bottom: '底部'
-            }
+            },
+
+            toEditor: '前往编辑器'
         }
     }
 };

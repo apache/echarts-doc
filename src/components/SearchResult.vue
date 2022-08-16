@@ -33,7 +33,7 @@ import {store} from '../store';
 import {directTo} from '../route';
 import SearchResultItemCard from './SearchResultItemCard.vue';
 
-import throttle from 'lodash.throttle';
+import {throttle} from 'lodash-es';
 
 function updateSearchResultsImmediate(searchQuery) {
 

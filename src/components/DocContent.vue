@@ -289,6 +289,9 @@ export default {
             Vue.nextTick(() => {
                 this.updateDocContentMargin(!newVal);
             });
+        },
+        loading(val) {
+            this.$el.parentElement.style.overflow = val ? 'hidden' : '';
         }
     }
 }
@@ -300,6 +303,7 @@ export default {
 @import "../style/mixin.scss";
 
 .doc-main {
+    position: static!important;
     margin-left: 10px;
 
     .open-option-example {

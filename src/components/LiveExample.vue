@@ -3,9 +3,16 @@
     <h2>{{$t('example.title')}}</h2>
     <p class="intro">{{ shared.allOptionExamples ? $t('example.intro') : $t('example.noExample')}}</p>
     <div class="preview-and-code" v-if="shared.currentExampleOption">
-        <div class="preview-main"></div>
+        <div class="preview-main" v-loading="isLoading"></div>
         <div class="example-code">
-            <div class="codemirror-main"></div>
+            <div class="codemirror-main">
+                <el-link
+                    icon="el-icon-edit-outline"
+                    class="btn-to-editor"
+                    :title="$t('example.toEditor')"
+                    @click="toEditor"
+                />
+            </div>
         </div>
         <el-alert
             :title="$t('example.setOptionError')"
@@ -63,28 +70,32 @@
 // Remarks:
 // 代码不能编辑，可以跳转到 examples 带上 base64，在 examples 页面编辑
 
-import {store, getPagePath, updateOptionExampleLayout, optionExampleLayouts} from '../store';
+import {store, updateOptionExampleLayout, optionExampleLayouts} from '../store';
 import CodeMirror from 'codemirror';
 import 'codemirror/lib/codemirror.css';
 // import 'codemirror/theme/paraiso-dark.css';
 import 'codemirror/theme/dracula.css';
 // import 'codemirror/mode/javascript/javascript.js'
 import beautifier from 'js-beautify';
-import throttle from 'lodash.throttle';
+import {throttle} from 'lodash-es';
 import arrayDiff from 'zrender/lib/core/arrayDiff';
-import scrollIntoView from 'scroll-into-view';
 import {ECHARTS_LIB} from '../config';
+import { compressToBase64 } from 'lz-string';
 
 let echartsLoadPromise;
 
 function fetchECharts() {
-    return echartsLoadPromise || (echartsLoadPromise = new Promise(function (resolve) {
+    return echartsLoadPromise || (echartsLoadPromise = new Promise(function (resolve, reject) {
         const script = document.createElement('script');
         script.src = ECHARTS_LIB;
         script.async = true;
         script.onload = function () {
-            resolve();
             echartsLoadPromise = null;
+            resolve();
+        }
+        script.onerror = function () {
+            echartsLoadPromise = null;
+            reject('Failed to load echarts');
         }
         document.body.appendChild(script);
     }));
@@ -155,6 +166,7 @@ function updateOption(option, isRefreshForce) {
     this.hasError = false;
     if (typeof echarts === 'undefined') {
         // TODO Put fetch charts when component is initialized.
+        this.isLoading = true;
         fetchECharts().then(() => {
             if (!this.echartsInstance) {
                 this.chartInstance = echarts.init(viewport);
@@ -163,7 +175,9 @@ function updateOption(option, isRefreshForce) {
                 this.chartInstance.clear();
             }
             this.chartInstance.setOption(option, true);
-        })
+        }).finally(() => {
+            this.isLoading = false;
+        });
     }
     else {
         if (!this.echartsInstance) {
@@ -229,7 +243,9 @@ export default {
 
             showChangeLayoutPopover: false,
 
-            optionExampleLayouts
+            optionExampleLayouts,
+
+            isLoading: true
         };
     },
 
@@ -289,7 +305,6 @@ export default {
 
         resize() {
             const examplePanel = this.$el;
-            const previewMain = examplePanel.querySelector('.preview-main');
             if (this.shared.computedOptionExampleLayout !== 'right') {
                 examplePanel.style.height = (window.innerHeight * 0.5 - 60) + 'px';
                 examplePanel.style.width = 'auto';
@@ -343,6 +358,15 @@ export default {
             this.$nextTick(() => {
                 this.resize();
             });
+        },
+
+        toEditor() {
+            // PENDING: use pure base64 rather than lz-string to encode the code?
+            const code = compressToBase64(this.formattedOptionCodeStr)
+                .replace(/\+/g, '-')
+                .replace(/\//g, '_')
+                .replace(/=+$/, '');
+            window.open(`https://echarts.apache.org/examples/editor.html?code=${code}&_source=echarts-doc-preview`, '_blank');
         }
     },
 
@@ -463,6 +487,18 @@ export default {
                 }
             }
         }
+
+        .btn-to-editor {
+            position: absolute;
+            right: 5px;
+            top: 8px;
+            z-index: 10;
+            font-size: 16px;
+
+            &:not(:hover) {
+                color: #fff;
+            }
+         }
     }
 
     .toolbar {

@@ -495,6 +495,20 @@ chart.on('finished', function () {
 });
 ```
 
+注意：建议在调用 `setOption` 前注册相关事件，否则在动画被禁用时，注册的事件回调可能因时序问题而不被执行。
+
+```ts
+var option = {
+    // ...
+    animation: false
+    // ...
+};
+chart.on('finished', function () {
+    // ...  
+});
+chart.setOption(option);
+```
+
 
 
 {{ target: event-select }}
