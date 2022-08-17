@@ -76,7 +76,7 @@ series: [{
 ```
 
 + In [cartesian (grid)](~grid), "dimX" and "dimY" correspond to [xAxis](~xAxis) and [yAxis](~yAxis) respectively.
-+ In [polar](~polar) "dimX" and "dimY" correspond to [radiusAxis](~radiusAxis) 和 [angleAxis](~anbleAxis) respectively.
++ In [polar](~polar) "dimX" and "dimY" correspond to [radiusAxis](~radiusAxis) and [angleAxis](~anbleAxis) respectively.
 + Other dimensions are optional, which can be used in other places. For example:
     + [visualMap](~visualMap) can map one or more dimensions to visual (color, symbol size ...).
     + [series.symbolSize](~series.symbolSize) can be set as a callback function, where symbol size can be calculated by values of a certain dimension.
