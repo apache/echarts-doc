@@ -3,6 +3,12 @@
 
 ## coordinateSystem(string) = ${coordSysDefault}
 
+{{ if: ${version} }}
+{{ use: partial-version(
+    version = ${version}
+) }}
+{{ /if }}
+
 该系列使用的坐标系，可选：
 
 {{ if: ${none} }}
@@ -44,9 +50,21 @@
 {{ if: ${cartesian2d} }}
 ## xAxisIndex(number) = 0
 
+{{ if: ${version} }}
+{{ use: partial-version(
+    version = ${version}
+) }}
+{{ /if }}
+
 使用的 [x 轴](~xAxis)的 index，在单个图表实例中存在多个 x 轴的时候有用。
 
 ## yAxisIndex(number) = 0
+
+{{ if: ${version} }}
+{{ use: partial-version(
+    version = ${version}
+) }}
+{{ /if }}
 
 使用的 [y 轴](~yAxis)的 index，在单个图表实例中存在多个 y轴的时候有用。
 {{ /if }}
@@ -54,11 +72,23 @@
 {{ if: ${polar} }}
 ## polarIndex(number) = 0
 
+{{ if: ${version} }}
+{{ use: partial-version(
+    version = ${version}
+) }}
+{{ /if }}
+
 使用的[极坐标系](~polar)的 index，在单个图表实例中存在多个极坐标系的时候有用。
 {{ /if }}
 
 {{ if: ${geo} }}
 ## geoIndex(number) = 0
+
+{{ if: ${version} }}
+{{ use: partial-version(
+    version = ${version}
+) }}
+{{ /if }}
 
 使用的[地理坐标系](~geo)的 index，在单个图表实例中存在多个地理坐标系的时候有用。
 {{ /if }}
@@ -66,11 +96,23 @@
 {{ if: ${parallel} }}
 ## parallelIndex(number) = 0
 
+{{ if: ${version} }}
+{{ use: partial-version(
+    version = ${version}
+) }}
+{{ /if }}
+
 使用的[平行坐标系](~parallel)的 index，在单个图表实例中存在多个平行坐标系的时候有用。
 {{ /if }}
 
 {{ if: ${calendar} }}
 ## calendarIndex(number) = 0
+
+{{ if: ${version} }}
+{{ use: partial-version(
+    version = ${version}
+) }}
+{{ /if }}
 
 使用的[日历坐标系](~calendar)的 index，在单个图表实例中存在多个日历坐标系的时候有用。
 {{ /if }}

@@ -3,6 +3,12 @@
 
 ## coordinateSystem(string) = ${coordSysDefault}
 
+{{ if: ${version} }}
+{{ use: partial-version(
+    version = ${version}
+) }}
+{{ /if }}
+
 The coordinate used in the series, whose options are:
 
 {{ if: ${none} }}
@@ -44,9 +50,21 @@ The coordinate used in the series, whose options are:
 {{ if: ${cartesian2d} }}
 ## xAxisIndex(number) = 0
 
+{{ if: ${version} }}
+{{ use: partial-version(
+    version = ${version}
+) }}
+{{ /if }}
+
 Index of [x axis](~xAxis) to combine with, which is  useful for multiple x axes in one chart.
 
 ## yAxisIndex(number) = 0
+
+{{ if: ${version} }}
+{{ use: partial-version(
+    version = ${version}
+) }}
+{{ /if }}
 
 Index of [y axis](~yAxis) to combine with, which is  useful for multiple y axes in one chart.
 {{ /if }}
@@ -54,11 +72,23 @@ Index of [y axis](~yAxis) to combine with, which is  useful for multiple y axes 
 {{ if: ${polar} }}
 ## polarIndex(number) = 0
 
+{{ if: ${version} }}
+{{ use: partial-version(
+    version = ${version}
+) }}
+{{ /if }}
+
 Index of [polar coordinate](~polar) to combine with, which is useful for multiple polar axes in one chart.
 {{ /if }}
 
 {{ if: ${geo} }}
 ## geoIndex(number) = 0
+
+{{ if: ${version} }}
+{{ use: partial-version(
+    version = ${version}
+) }}
+{{ /if }}
 
 Index of [geographic coordinate](~geo) to combine with, which is useful for multiple geographic axes in one chart.
 {{ /if }}
@@ -66,11 +96,23 @@ Index of [geographic coordinate](~geo) to combine with, which is useful for mult
 {{ if: ${parallel} }}
 ## parallelIndex(number) = 0
 
+{{ if: ${version} }}
+{{ use: partial-version(
+    version = ${version}
+) }}
+{{ /if }}
+
 Index of [parallel coordinates](~parallel) to combine with, which is useful for multiple parallel axes in one chart.
 {{ /if }}
 
 {{ if: ${calendar} }}
 ## calendarIndex(number) = 0
+
+{{ if: ${version} }}
+{{ use: partial-version(
+    version = ${version}
+) }}
+{{ /if }}
 
 Index of [calendar coordinates](~calendar) to combine with, which is useful for multiple calendar coordinates in one chart.
 {{ /if }}
