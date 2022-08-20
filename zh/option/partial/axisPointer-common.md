@@ -265,7 +265,7 @@ label 距离轴的距离。
     prefix = "#" + ${prefix},
     defaultColor = "#555",
     defaultWidth = 1,
-    defaultType = 'solid'
+    defaultType = 'dashed'
 ) }}
 
 #${prefix} shadowStyle(Object)
