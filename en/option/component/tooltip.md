@@ -181,7 +181,7 @@ Whether mouse is allowed to enter the floating layer of tooltip, whose default v
 
 <ExampleUIControlEnum options="html,richText" default="html" />
 
-Render mode for tooltip. By default, it is set to be `'html'` so that extra DOM element is used for tooltip. It can also set to be `'richText'` so that the tooltip will be rendered inside Canvas (SVG rich text is not implemented yet). This is very useful for environments that don't have DOM, such as Wechat applications.
+Render mode for tooltip. By default, it is set to be `'html'` so that extra DOM element is used for tooltip. It can also set to be `'richText'` so that the tooltip will be rendered inside Canvas. This is very useful for environments that don't have DOM, such as Wechat applications.
 
 ## confine(boolean) = false
 
@@ -260,4 +260,3 @@ Conditions to order tooltip. Options:
 + `'valueDesc'`
 
     Base on value, descending order tooltip, only for numberic value.
-

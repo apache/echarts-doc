@@ -181,7 +181,7 @@ const option = {
 
 <ExampleUIControlEnum options="html,richText" default="html" />
 
-浮层的渲染模式，默认以 `'html` 即额外的 DOM 节点展示 tooltip；此外还可以设置为 `'richText'` 表示以富文本的形式渲染，渲染的结果在图表对应的 Canvas 中（目前 SVG 尚未支持富文本），这对于一些没有 DOM 的环境（如微信小程序）有更好的支持。
+浮层的渲染模式，默认以 `'html` 即额外的 DOM 节点展示 tooltip；此外还可以设置为 `'richText'` 表示以富文本的形式渲染，渲染的结果在图表对应的 Canvas 中，这对于一些没有 DOM 的环境（如微信小程序）有更好的支持。
 
 ## confine(boolean) = false
 
@@ -260,4 +260,3 @@ className: 'echarts-tooltip echarts-tooltip-dark'
 + `'valueDesc'`
 
     根据数据值, 降序排列。
-
