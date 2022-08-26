@@ -162,7 +162,7 @@ function mdToJsonSchema(mdStr, maxDepth, imagePath, entry) {
 
     let currentLevel = 0;
     const result = {
-        '$schema': 'https://echarts.apache.org/doc/json-schem',
+        '$schema': 'https://echarts.apache.org/doc/json-schema',
         'option': {
             'type': 'Object',
             'properties': {},

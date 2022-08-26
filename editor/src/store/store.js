@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { cloneDeep, debounce, isEqual }  from 'lodash-es';
 import { socket, socketRequest } from './socket';
 import { Notify } from 'quasar';
 
