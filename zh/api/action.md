@@ -40,7 +40,7 @@ ECharts 中支持的图表行为，通过 [dispatchAction](~echartsInstance.disp
 高亮指定的数据图形。
 
 ```ts
-// 如果要高亮系列：
+// 如果要高亮系列（从 `v5.0.0` 开始`highlight` 已被弃用，请使用 `sunburstHighlight` 代替）：
 dispatchAction({
     type: 'highlight',
 
@@ -64,7 +64,7 @@ dispatchAction({
 取消高亮指定的数据图形。
 
 ```ts
-// 如果要取消高亮系列：
+// 如果要取消高亮系列（从 `v5.0.0` 开始`downplay` 已被弃用，请使用 `sunburstUnhighlight` 代替）：
 dispatchAction({
     type: 'downplay',
 
