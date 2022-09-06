@@ -86,31 +86,35 @@ option = {
 
 数据排序， 可以取 `'ascending'`，`'descending'`，`'none'`（表示按 data 顺序），或者一个函数（即 `Array.prototype.sort(function (a, b) { ... })`）。
 
-## exitShape(string) = 'none'
+## exitWidth(string)
 
-<ExampleUIControlEnum options="none,rect" default="none" />
+<ExampleUIControlPercent />
 
-漏斗出口形状, 设为 `'rect'` 来展平顶部。
+该属性是设置顶部漏斗块的顶部宽度，以块的底部宽度为底。当 dynamicArea 有效时无效。您可以通过将其设置为 100% 来使顶部变平，当 showRate 为 true 时，您可以通过将其设置在 0% 和 99% 之间来使顶部为梯形。
 
 ## dynamicHeight(boolean)
 
 <ExampleUIControlEnum options="true,false" default="false" />
 
-设置为`true`使得漏斗图每个漏斗块的高度和数据集对应数值成正比。
+设置为true使每个数据采用漏斗高度作为映射模式基准。
 
-## exitWidth(string)
+## thickDegree(string)
 
 <ExampleUIControlPercent default="0%" />
 
-当dynamicHeight为`true`时，控制出口宽度占入口宽度多少，设置exitWidth可以使图形更接近漏斗形状，而非尖底的金字塔形状。<br/>
-当dynamicHeight为不为true并且showRate为`true`时，控制出口为一个梯形，即出口块上底边是下底边多少。<br/>
-exitWidht必须是百分比格式的字符串，而且不能超过99%。
+这个属性是控制动态高度漏斗的粗细度，如果你设置这个属性大于0%，漏斗会比默认的更粗。
 
 ## showRate(boolean)
 
 <ExampleUIControlEnum options="true,false" default="false" />
 
-在dynamicHeight为`false`时，设置为`true`使得漏斗图展示每个相邻数据的转化率和总体转化率。
+此属性将显示每个数据之间的转化率片段，当 dynamicHeight 或 dynamicArea 为 true 时无效。
+
+## dynamicArea(boolean)
+
+<ExampleUIControlEnum options="true,false" default="false" />
+
+这个属性会让每个数据以漏斗的区域作为映射基准，优先级低于 dynamciHeight。
 
 ## gap(number) = 0
 

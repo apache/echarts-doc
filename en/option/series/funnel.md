@@ -64,31 +64,36 @@ Orient of funnel，Can be `'vertical'` or `'horizontal'`.
 
 Data sorting, which can be whether `'ascending'`, `'descending'`, `'none'`(in data order) or a function, which is the same as `Array.prototype.sort(function (a, b) { ... })`;
 
-## exitShape(string) = 'none'
+## exitWidth(string)
 
-<ExampleUIControlEnum options="none,rect" default="none" />
+<ExampleUIControlPercent />
 
-Funnel exit shape, set it `'rect'` to flatten the top.
+This property is to set the top width of the top funnel block, taking the bottom width of the piece as the base. Invalid when dynamicArea is valid. You can flatten the top by setting it as 100% and you can make top trapezoidal by settting it between 0% 
+and 99% when showRate is true.
 
 ## dynamicHeight(boolean) = 'false'
 
 <ExampleUIControlEnum options="true,false" default="false" />
 
-Set to `true` so that the height of each funnel block in the funnel plot is proportional to the corresponding value in the dataset.
+Set to `true` so that each data take funnel height as mapping mode base.
 
-## exitWidth(string)
+## thickDegree(string)
 
 <ExampleUIControlPercent default="0%" />
 
-When dynamicHeight is `true`, this prop control outlet width is a fraction of the inlet width, and set exitWidth to make the figure more like a funnel shape than a pyramid shape with a sharp bottom.<br/>
-When dynamicHeight is not `true` and showRate is `true`, the outlet is controlled as a trapezoid, that is, the top edge of the outlet block is a fraction of the bottom edge.<br/>
-ExitWidht must be a string in percentage format and cannot exceed 99%.
+This property is control then thick degree of then dynamic height funnel, if you set this prop greater than 0% ,the funnel will thicker than default.
 
 ## showRate(boolean)
 
 <ExampleUIControlEnum options="true,false" default="false" />
 
-When dynamicHeight is `false`, set to `true` to make the funnel plot show the conversion rate of each adjacent data and the overall conversion rate.
+This property will show rate pieces between each data as mapping mode base, invalid when dynamicHeight or dynamicArea is true.
+
+## dynamicArea(boolean)
+
+<ExampleUIControlEnum options="true,false" default="false" />
+
+This property will let each data take funnel's area, priority lower than dynamciHeight.
 
 ## gap(number) = 0
 
