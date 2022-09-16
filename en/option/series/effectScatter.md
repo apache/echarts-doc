@@ -78,7 +78,7 @@ The maximum zooming scale of ripples in animation.
 The brush type for ripples. options: `'stroke'` and `'fill'`.
 
 {{ use: partial-coord-sys(
-    seriesType = "bar",
+    seriesType = "effectScatter",
     coordSysDefault = "'cartesian2d'",
     cartesian2d = true,
     polar = true,
