@@ -41,6 +41,12 @@ The coordinate used in the series, whose options are:
     Use parallel coordinates, with [parallelIndex](~series-${seriesType}.parallelIndex) to assign the corresponding parallel coordinate components.
 {{ /if }}
 
+{{ if: ${calendar} }}
++ `'calendar'`
+
+    Use calendar coordinates, with [calendarIndex](~series-${seriesType}.calendarIndex) to assign the corresponding calendar coordinate components.
+{{ /if }}
+
 {{ if: ${none} }}
 + `'none'`
 

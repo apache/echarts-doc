@@ -41,6 +41,12 @@
     使用平行坐标系，通过 [parallelIndex](~series-${seriesType}.parallelIndex) 指定相应的平行坐标系组件。
 {{ /if }}
 
+{{ if: ${calendar} }}
++ `'calendar'`
+
+    使用日历坐标系，通过 [calendarIndex](~series-${seriesType}.calendarIndex) 指定相应的日历坐标系组件。
+{{ /if }}
+
 {{ if: ${none} }}
 + `'none'`
 
