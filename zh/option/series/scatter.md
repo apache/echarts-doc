@@ -88,7 +88,7 @@ const option = {
 {{ use: partial-colorby() }}
 
 {{ use: partial-coord-sys(
-    seriesType = "bar",
+    seriesType = "scatter",
     coordSysDefault = "'cartesian2d'",
     cartesian2d = true,
     polar = true,

@@ -35,7 +35,7 @@ We use red to represent increasing and blue decreasing by default. If you want t
 ) }}
 
 {{ use: partial-coord-sys(
-    seriesType = "cartesian2d",
+    seriesType = "candlestick",
     coordSysDefault = "'cartesian2d'",
     cartesian2d = true
 ) }}

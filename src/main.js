@@ -40,11 +40,11 @@ export function init(el, option) {
             throw new Error('Can\'t find el.');
         }
 
-        let container = document.createElement('div');
+        const container = document.createElement('div');
 
         el.appendChild(container);
 
-        let i18n = new VueI18n({
+        const i18n = new VueI18n({
             locale: option.locale,
             fallbackLocale: 'en',
             messages
@@ -54,7 +54,6 @@ export function init(el, option) {
             i18n,
             el: container,
             render: h => {
-                console.log('iMobile: ', store.isMobile);
                 return store.isMobile ? h(AppMobile) : h(App);
             }
         });
