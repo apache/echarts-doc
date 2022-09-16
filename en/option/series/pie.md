@@ -31,6 +31,15 @@ Since ECharts v4.6.0, we provide `'labelLine'` and `'edge'` two extra layouts. C
 
 {{ use: partial-legend-hover-link() }}
 
+{{ use: partial-coord-sys(
+    seriesType = "pie",
+    coordSysDefault = "null",
+    none = true,
+    geo = true,
+    calendar = true,
+    version = "5.4.0"
+) }}
+
 {{ use: partial-selected-mode() }}
 
 ## selectedOffset(number) = 10

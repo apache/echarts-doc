@@ -224,7 +224,7 @@ const option = {
 ) }}
 
 {{ use: partial-coord-sys(
-    seriesType = "cartesian2d",
+    seriesType = "candlestick",
     coordSysDefault = "'cartesian2d'",
     cartesian2d = true
 ) }}

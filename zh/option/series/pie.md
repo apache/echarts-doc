@@ -52,6 +52,15 @@ const option = {
 
 {{ use: partial-legend-hover-link() }}
 
+{{ use: partial-coord-sys(
+    seriesType = "pie",
+    coordSysDefault = "null",
+    none = true,
+    geo = true,
+    calendar = true,
+    version = "5.4.0"
+) }}
+
 {{ use: partial-selected-mode() }}
 
 ## selectedOffset(number) = 10
