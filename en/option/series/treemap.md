@@ -169,6 +169,9 @@ When is no content in breadcrumb, this minimal width need to be set up.
 ) }}
 
 ### emphasis(*)
+{{ use: partial-version(
+    version = "5.4.0"
+) }}
 
 #### itemStyle(Object)
 
