@@ -17,17 +17,16 @@ This project is part of the source of [The Apache ECharts Official Website](http
 
 ### Document content development
 
-Do not need other project.
+1. Fork and clone this repository
+2. `npm install`
+3. `npm run dev` (will watch changes and rebuild files, also start a static server to serve the content)
+4. refresh page to see changes after modifying files
+5. welcome to create a PR to the `dev` branch
 
-```shell
-npm run dev
-```
-It will:
+Notes:
 
-+ Start a static server
-+ Watch doc site src change and rebuild.
-+ Watch doc markdown change and rebuild.
-
+- If you are using a higher `Node` version and meet trouble, you can change to `Node v14`, which works well for this project.
+- You may need to force refresh the page to see changes after modifying files. To save your time, if you are using Chrome, you can visit "Devtools -> Settings -> Preferences -> Network -> Diable cache (while DevTools is open)" to disable cache.
 
 ## Tips about writing doc
 
