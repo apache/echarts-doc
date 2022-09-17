@@ -260,3 +260,4 @@ Conditions to order tooltip. Options:
 + `'valueDesc'`
 
     Base on value, descending order tooltip, only for numberic value.
+

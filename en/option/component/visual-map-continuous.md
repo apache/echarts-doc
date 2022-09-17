@@ -38,6 +38,8 @@ Notice that `min` and `max` should be specified explicitly, and be `[0, 200]` by
 
 ## range(Array)
 
+<ExampleUIControlVector dims="min,max" />
+
 Specify selected range, that is, the dataValue corresponding to the two handles. For example:
 
 ```javascript

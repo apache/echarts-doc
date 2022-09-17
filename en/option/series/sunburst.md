@@ -58,9 +58,7 @@ To specify the style of the label of the sector.
 
 **Priority：[series.data.label](~series-sunburst.data.label) > [series.levels.label](~series-sunburst.levels.label) > [series.label](~series-sunburst.label)。**
 
-{{ use: partial-label-desc(
-    name = 'sunburst chart'
-) }}
+{{ use: partial-label-desc() }}
 
 {{ use: partial-sunburst-label-helper(
     prefix = ${prefix} + '#'
@@ -104,6 +102,7 @@ You can specify the style of all sectors with [series.itemStyle](~series-sunburs
     prefix = "#" + ${prefix},
     type = "sunburst"
 ) }}
+
 
 
 {{ target: partial-sunburst-state }}
