@@ -707,3 +707,56 @@ links: [{
     prefix = "####",
     defaultShow = true
 ) }}
+
+## thumbnail(Object)
+缩略图，能够展示可见数据和整体数据的关系。
+
+### show(boolean) = false
+
+<ExampleUIControlBoolean default="false" />
+
+是否显示缩略图。
+
+### height(number)
+
+<ExampleUIControlNumber min="0" step="1" />
+
+缩略图的高度
+
+### width(number)
+
+<ExampleUIControlNumber min="0" step="1" />
+
+缩略图的宽度
+
+### left(number|string)
+
+缩略图离容器左侧的距离。
+
+### right(number|string)
+
+缩略图离容器右侧的距离。
+
+### top(number|string)
+
+缩略图离容器上侧的距离。
+
+### bottom(number|string)
+
+缩略图离容器底侧的距离。
+
+### borderColor(Object)
+
+缩略图边框颜色
+
+### backgroundColor(Object)
+
+缩略图背景颜色
+
+### overlayBackgroundColor(Object)
+
+覆盖图背景颜色
+
+### selectedDataBackground(Object)
+
+选择框样式

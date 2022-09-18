@@ -699,3 +699,57 @@ Label position, options：
     prefix = "####",
     defaultShow = true
 ) }}
+
+## thumbnail(Object)
+
+Thumbnails that show the relationship between visible data and overall data.
+
+### show(boolean) = false
+
+<ExampleUIControlBoolean default="false" />
+
+Whether to display thumbnails.
+
+### height(number)
+
+<ExampleUIControlNumber min="0" step="1" />
+
+The height of the thumbnail
+
+### width(number)
+
+<ExampleUIControlNumber min="0" step="1" />
+
+The width of the thumbnail
+
+### left(number|string)
+
+The distance of the thumbnail from the left side of the container.
+
+### right(number|string)
+
+The distance of the thumbnail from the right side of the container.
+
+### top(number|string)
+
+The distance of the thumbnail from the top side of the container.
+
+### bottom(number|string)
+
+The distance of the thumbnail from the bottom side of the container.
+
+### borderColor(Object)
+
+Thumbnail border color.
+
+### backgroundColor(Object)
+
+Thumbnail background color.
+
+### overlayBackgroundColor(Object)
+
+Overlay background color
+
+### selectedDataBackground(Object)
+
+select box style.
