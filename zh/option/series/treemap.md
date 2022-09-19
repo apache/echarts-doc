@@ -326,6 +326,9 @@ const option = {
 ) }}
 
 ### emphasis(Object)
+{{ use: partial-version(
+    version = "5.4.0"
+) }}
 
 #### itemStyle(Object)
 
