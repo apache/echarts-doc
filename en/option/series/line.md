@@ -338,6 +338,10 @@ The value of a single data item.
     prefix = '##'
 ) }}
 
+{{ use: partial-data-child-group-id(
+    prefix = '##'
+) }}
+
 {{ use: partial-symbol(
     defaultSymbol = "'circle'",
     defaultSymbolSize = 4,
@@ -491,3 +495,4 @@ Select state of specified single data.
     prefix = "####",
     hasInherit = ${state} === 'emphasis'
 ) }}
+

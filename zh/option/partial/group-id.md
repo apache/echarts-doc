@@ -15,3 +15,10 @@
 
 该数据项的组 ID。组 ID 会被用于分类数据，并在全局过渡动画中决定如何进行合并和分裂动画。
 
+
+
+{{ target: partial-data-child-group-id }}
+
+#${prefix} childGroupId(string)
+
+xxxx

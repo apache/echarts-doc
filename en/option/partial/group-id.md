@@ -15,3 +15,11 @@ If you are using the [dataset](~dataset) component to represent the data, it is 
 
 The groupID of this data item. groupID will be used to classify the data.
 
+
+
+{{ target: partial-data-child-group-id }}
+
+#${prefix} childGroupId(string)
+
+xxxx
+

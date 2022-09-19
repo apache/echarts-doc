@@ -244,6 +244,10 @@ const option = {
     prefix = '##'
 ) }}
 
+{{ use: partial-data-child-group-id(
+    prefix = '##'
+) }}
+
 {{ use: partial-symbol(
     prefix = "##",
     name = "单个数据"

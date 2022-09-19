@@ -224,6 +224,10 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
     prefix = '##'
 ) }}
 
+{{ use: partial-data-child-group-id(
+    prefix = '##'
+) }}
+
 ### coords(Array)
 
 一个包含两个到多个二维坐标的数组。在 [polyline](~series-lines.polyline) 设置为 `true` 时支持多于两个的坐标。

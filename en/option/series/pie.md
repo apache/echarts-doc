@@ -334,6 +334,10 @@ Data value.
     prefix = '##'
 ) }}
 
+{{ use: partial-data-child-group-id(
+    prefix = '##'
+) }}
+
 ### selected(boolean) = false
 
 Whether the data item is selected.

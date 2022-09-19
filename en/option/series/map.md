@@ -104,6 +104,10 @@ The numerical value of this area.
     prefix = '##'
 ) }}
 
+{{ use: partial-data-child-group-id(
+    prefix = '##'
+) }}
+
 ### selected(boolean) = false
 
 Whether the are selected.

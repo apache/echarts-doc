@@ -13,6 +13,8 @@
 
 通过配置`encode.itemGroupId`或者`dataGroupId`等指定数据的分组，还可以实现诸如下钻，聚合等一对多或者多对一的动画。
 
+xxxxx childGroupId xxxxxx
+
 可以直接在系列中配置 `universalTransition: true` 开启该功能。也可以提供一个对象进行更多属性的配置。
 
 ##${prefix} enabled(boolean) = false

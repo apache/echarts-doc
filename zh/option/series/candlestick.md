@@ -396,6 +396,10 @@ K 线图的选中状态。开启 [selectedMode](~series-candlestick.selectedMode
     prefix = '##'
 ) }}
 
+{{ use: partial-data-child-group-id(
+    prefix = '##'
+) }}
+
 ### itemStyle(Object)
 
 单个 K 线图数据的图形样式。
