@@ -24,19 +24,19 @@
 
 <ExampleUIControlNumber default="0" step="1" />
 
-The specified minimum value. Invalid if dynamicHeight is `true`.
+The specified minimum value. Invalid if `dynamicHeight` is `true`.
 
 ## max(number) = 100
 
 <ExampleUIControlNumber default="100" step="1" />
 
-The specified maximum value. Invalid if dynamicHeight is `true`.
+The specified maximum value. Invalid if `dynamicHeight` is `true`.
 
 ## minSize(number|string) = '0%'
 
 <ExampleUIControlPercent default="0%" />
 
-The mapped width from minimum data value [min](~series-funnel.min). Invalid if dynamicHeight is `true`.
+The mapped width from minimum data value [min](~series-funnel.min). Invalid if `dynamicHeight` is `true`.
 
 It can be absolute pixel and also the percentage of [layout width](~series-funnel.width). If you don't want the graph of minimum value to be a triangle, you can set up this property larger than 0.
 
@@ -44,7 +44,7 @@ It can be absolute pixel and also the percentage of [layout width](~series-funne
 
 <ExampleUIControlPercent default="100%" />
 
-The mapped width from maximum data value [max](~series-funnel.max). Invalid if dynamicHeight is `true`.
+The mapped width from maximum data value [max](~series-funnel.max). Invalid if `dynamicHeight` is `true`.
 
 It can be absolute pixel and also the percentage of [layout width](~series-funnel.width).
 
@@ -81,13 +81,13 @@ Set to `true` so that each data take funnel height as mapping mode base.
 
 <ExampleUIControlPercent default="0%" />
 
-This property is control then thick degree of then dynamic height funnel, if you set this prop greater than 0% ,the funnel will thicker than default.
+This property is control the thick degree of then dynamic height funnel, if you set this prop greater than 0% ,the funnel will thicker than default.
 
 ## showRate(boolean)
 
 <ExampleUIControlEnum options="true,false" default="false" />
 
-This property will show rate pieces between each data as mapping mode base, invalid when dynamicHeight or dynamicArea is true.
+In the default mapping mode, this property will show rate pieces between each data as mapping mode base. invalid when dynamicHeight or dynamicArea is true.（The other two modes are not currently supported due to Label limitations.）
 
 ## dynamicArea(boolean)
 

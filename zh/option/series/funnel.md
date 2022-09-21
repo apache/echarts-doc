@@ -90,7 +90,7 @@ option = {
 
 <ExampleUIControlPercent />
 
-该属性是设置顶部漏斗块的顶部宽度，以块的底部宽度为底。当 dynamicArea 有效时无效。您可以通过将其设置为 100% 来使顶部变平，当 showRate 为 true 时，您可以通过将其设置在 0% 和 99% 之间来使顶部为梯形。
+该属性是设置顶部漏斗的出口宽度，也就是最后一个漏斗块的上底边长度，其以自身的下底边为基准取百分比。当 dynamicArea 有效时无效。您可以通过将其设置为 100% 来展平出口。当 showRate 为 true 时，您可以通过将其设置在 0% 和 99% 之间来使顶部为梯形。
 
 ## dynamicHeight(boolean)
 
@@ -102,19 +102,19 @@ option = {
 
 <ExampleUIControlPercent default="0%" />
 
-这个属性是控制动态高度漏斗的粗细度，如果你设置这个属性大于0%，漏斗会比默认的更粗。
+这个属性是控制动态高度下漏斗的粗细度，如果你设置这个属性大于0%，漏斗会比默认的更粗（钝），或者说没原来的那么尖。
 
 ## showRate(boolean)
 
 <ExampleUIControlEnum options="true,false" default="false" />
 
-此属性将显示每个数据之间的转化率片段，当 dynamicHeight 或 dynamicArea 为 true 时无效。
+在默认的映射模式下，此属性将显示每个数据之间的转化率块，当 dynamicHeight 或 dynamicArea 为 true 时无效。(由于label限制，其他两种模式暂时不支持)
 
 ## dynamicArea(boolean)
 
 <ExampleUIControlEnum options="true,false" default="false" />
 
-这个属性会让每个数据以漏斗的区域作为映射基准，优先级低于 dynamciHeight。
+这个属性会让每个数据以漏斗的面积作为映射基准，优先级低于 dynamciHeight。
 
 ## gap(number) = 0
 
