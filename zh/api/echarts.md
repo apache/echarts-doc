@@ -8,11 +8,13 @@
 (dom?: HTMLDivElement|HTMLCanvasElement, theme?: Object|string, opts?: {
     devicePixelRatio?: number,
     renderer?: string,
-    useDirtyRect?: boolean, // 从 `5.0.0` 开始支持
-    ssr?: boolean,          // 从 `5.3.0` 开始支持
+    useDirtyRect?: boolean,     // 从 `5.0.0` 开始支持
+    useCoarsePointer?: boolean, // 从 `5.4.0` 开始支持
+    pointerSize?: number,       // 从 `5.4.0` 开始支持
+    ssr?: boolean,              // 从 `5.3.0` 开始支持
     width?: number|string,
     height?: number|string,
-    locale?: string         // 从 `5.0.0` 开始支持
+    locale?: string             // 从 `5.0.0` 开始支持
 }) => ECharts
 ```
 创建一个 ECharts 实例，返回 [echartsInstance](~echartsInstance)，不能在单个容器上初始化多个 ECharts 实例。
@@ -37,6 +39,8 @@
     + `renderer` 渲染模式，支持`'canvas'`或者`'svg'`。参见 [使用 Canvas 或者 SVG 渲染](${handbookPath}best-practices/canvas-vs-svg)。
     + `ssr` 是否使用服务端渲染，只有在 SVG 渲染模式有效。开启后不再会每帧自动渲染，必须要调用 [renderToSVGString](~echartsInstance.renderToSVGString) 方法才能得到渲染后 SVG 字符串。
     + `useDirtyRect`是否开启脏矩形渲染，只有在 Canvas 渲染模式有效，默认为`false`。参见 [ECharts 5 新特性](${handbookPath}basics/release-note/v5-feature)。
+    + `useCoarsePointer` 是否扩大可点击元素的响应范围。`null` 表示对移动设备开启；`true` 表示总是开启；`false` 表示总是不开启。参见[增加交互响应范围](${handbookPath}how-to/interaction/coarse-pointer)。
+    + `pointerSize` 扩大元素响应范围的像素大小，配合 `opts.useCoarsePointer`使用。
     + `width` 可显式指定实例宽度，单位为像素。如果传入值为`null`/`undefined`/`'auto'`，则表示自动取 `dom`（实例容器）的宽度。
     + `height` 可显式指定实例高度，单位为像素。如果传入值为`null`/`undefined`/`'auto'`，则表示自动取 `dom`（实例容器）的高度。
     + `locale` 使用的语言，内置 `'ZH'` 和 `'EN'` 两个语言，也可以使用 [echarts.registerLocale](~echarts.registerLocale) 方法注册新的语言包。目前支持的语言见 [src/i18n](https://github.com/apache/echarts/tree/release/src/i18n)。
@@ -257,6 +261,3 @@ echarts.registerMap('USA', usaJson, {
 + `loadImage` 加载图片，在使用 Canvas 渲染模式的时候并且使用 URL 作为图片的时候需要提供。
 
 {{ use: echarts-graphic }}
-
-
-

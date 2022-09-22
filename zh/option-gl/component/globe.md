@@ -97,6 +97,11 @@ baseTexture: mapChart
     componentName="地球"
 ) }}
 
+{{ use: partial-atmosphere(
+    componentType="globe",
+    componentName="地球"
+) }}
+
 {{ use: partial-post-effect(
     componentType="globe",
     componentName="地球"
