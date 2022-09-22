@@ -23,7 +23,7 @@
 
 该数据项对应的子数据组 ID，用于实现多层下钻和聚合。
 
-~[700x300](${galleryViewPath}doc-example/bar-multiple-level-drilldown&edit=1&reset=1)
+~[700x300](${galleryViewPath}doc-example/bar-drilldown&edit=1&reset=1)
 
 通过`groupId`已经可以达到数据下钻和聚合的效果，但只支持一层的下钻和聚合。为了实现多层下钻和聚合，我们又引入了`childGroupId`。
 
@@ -33,19 +33,19 @@
 data: [                        data: [                        data: [
   {                              {                              {
     name: 'Animals',               name: 'Dogs',                  name: 'Corgi',
-    value: 5,                      value: 3,                      value: 2,
+    value: 3,                      value: 3,                      value: 5,
     groupId: 'things',             groupId: 'animals',            groupId: 'dogs'
     childGroupId: 'animals'        childGroupId: 'dogs'         },
   },                             },                             {
   {                              {                                name: 'Bulldog',
-    name: 'Fruits',                name: 'Cats',                  value: 7,
-    value: 2,                      value: 3,                      groupId: 'dogs'
+    name: 'Fruits',                name: 'Cats',                  value: 6,
+    value: 3,                      value: 4,                      groupId: 'dogs'
     groupId: 'things',             groupId: 'animals',          },
     childGroupId: 'fruits'         childGroupId: 'cats',        {
   },                             },                               name: 'Shiba Inu',
-  {                              {                                value: 4,
+  {                              {                                value: 7,
     name: 'Cars',                  name: 'Birds',                 groupId: 'dogs'
-    value: 4,                      value: 2,                    }
+    value: 2,                      value: 3,                    }
     groupId: 'things',             groupId: 'animals',        ]
     childGroupId: 'cars'           childGroupId: 'birds'
   }                              }
