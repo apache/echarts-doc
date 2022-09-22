@@ -3,16 +3,16 @@
 
 ## dataGroupId(string)
 
-该系列所有数据项的组 ID，优先级低于`groupId`。
-
-若一个数据项指定了`groupId`，则优先使用它自己的`groupId`；若一个数据项没有指定`groupId`且配置了该选项，那么`series.dataGroupId`会作为该数据项的`groupId`。
+该系列所有数据项的组 ID，优先级低于`groupId`。详见`series.data.groupId`。
 
 
 {{ target: partial-data-group-id }}
 
 #${prefix} groupId(string)
 
-该数据项的组 ID。当全局过渡动画功能开启时，`setOption` 前后拥有相同 `groupId` 的数据项会进行动画过渡。`groupId` 未指定时，会使用数据项的 ID 作为组 ID。
+该数据项的组 ID。当全局过渡动画功能开启时，`setOption` 前后拥有相同组 ID 的数据项会进行动画过渡。
+
+若没有指定`groupId` ，会尝试用`series.dataGroupId`作为该数据项的组 ID；若`series.dataGroupId`也没有指定，则会使用数据项的 ID 作为组 ID。
 
 如果你使用了[dataset](~dataset)组件来表达数据，推荐使用`encode.itemGroupId`来指定哪个维度被编码为组 ID。
 
