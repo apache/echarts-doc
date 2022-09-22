@@ -13,7 +13,7 @@
 
 #${prefix} groupId(string)
 
-该数据项的组 ID。当全局过渡动画功能开启时，`setOption` 前后拥有相同 `groupId` 的数据项会进行动画过渡。`groupId` 未指定时，会使用数据项的内部 ID 作为组 ID。
+该数据项的组 ID。当全局过渡动画功能开启时，`setOption` 前后拥有相同 `groupId` 的数据项会进行动画过渡。`groupId` 未指定时，会使用数据项的 ID 作为组 ID。
 
 
 
