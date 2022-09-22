@@ -11,9 +11,7 @@
 
 全局过渡动画（Universal Transition）提供了任意系列之间进行变形动画的功能。开启该功能后，每次`setOption`，相同`id`的系列之间会自动关联进行动画的过渡，更细粒度的关联配置见`universalTransition.seriesKey`配置。
 
-通过配置`encode.itemGroupId`或者`dataGroupId`等指定数据的分组，还可以实现诸如下钻，聚合等一对多或者多对一的动画。
-
-xxxxx childGroupId xxxxxx
+通过配置数据项的`groupId`和`childGroupId`，还可以实现诸如下钻，聚合等一对多或者多对一的动画。
 
 可以直接在系列中配置 `universalTransition: true` 开启该功能。也可以提供一个对象进行更多属性的配置。
 
