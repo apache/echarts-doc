@@ -32,16 +32,19 @@
 ```text
 data: [                        data: [                        data: [
   {                              {                              {
+    name: 'Animals',               name: 'Dogs',                  name: 'Corgi',
     value: 5,                      value: 3,                      value: 2,
     groupId: 'things',             groupId: 'animals',            groupId: 'dogs'
     childGroupId: 'animals'        childGroupId: 'dogs'         },
   },                             },                             {
-  {                              {                                value: 7,
+  {                              {                                name: 'Bulldog',
+    name: 'Fruits',                name: 'Cats',                  value: 7,
     value: 2,                      value: 3,                      groupId: 'dogs'
     groupId: 'things',             groupId: 'animals',          },
     childGroupId: 'fruits'         childGroupId: 'cats',        {
-  },                             },                               value: 4,
-  {                              {                                groupId: 'dogs'
+  },                             },                               name: 'Shiba Inu',
+  {                              {                                value: 4,
+    name: 'Cars',                  name: 'Birds',                 groupId: 'dogs'
     value: 4,                      value: 2,                    }
     groupId: 'things',             groupId: 'animals',        ]
     childGroupId: 'cars'           childGroupId: 'birds'
