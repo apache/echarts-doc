@@ -1,23 +1,13 @@
 
 {{ target: partial-sunburst-label-helper }}
 
-#${prefix} rotate(string|number) = 'radial'
-
-<ExampleUIControlEnum options="radial,tangential" default="radial" />
-
-{{ if: ${prefix} === '##' }}
-如果是 `number` 类型，则表示标签的旋转角，从 -90 度到 90 度，正值是逆时针。
-
-除此之外，还可以是字符串 `'radial'` 表示径向旋转、`'tangential'` 表示切向旋转。
-
-默认径向旋转，如果不需要文字旋转，可以将其设为 `0`。
+{{ use: partial-label-rotate-tangential(
+    prefix = ${prefix}
+) }}
 
 下面的例子展示了不同的 `rotate` 设置方法：
 
 ~[700x400](${galleryViewPath}sunburst-label-rotate&edit=1&reset=1)
-{{ else }}
-同 [label.rotate](~sunburst.label.rotate)
-{{ /if }}
 
 #${prefix} align(string) = 'center'
 
@@ -560,4 +550,3 @@ series: {
     defaultAnimationDuration = 1000,
     defaultAnimationDurationUpdate = 500
 ) }}
-

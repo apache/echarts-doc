@@ -279,6 +279,10 @@ Whether to show the label.
 
 The distance between the label and tick line.
 
+{{ use: partial-label-rotate-tangential(
+    prefix = '##'
+) }}
+
 ### formatter(string|Function)
 
 The content formatter of scale label, which supports both string template and callback function.
