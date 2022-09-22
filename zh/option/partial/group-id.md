@@ -3,10 +3,9 @@
 
 ## dataGroupId(string)
 
-该系列所有数据共有的组 ID。组 ID 会被用于分类数据，并在全局过渡动画中决定如何进行合并和分裂动画。
+该系列所有数据项的组 ID，优先级低于`groupId`。
 
-如果你使用了[dataset](~dataset)组件来表达数据，推荐使用`encode.itemGroupID`来指定哪个维度被编码为组 ID。
-
+若一个数据项指定了`groupId`，则优先使用它自己的`groupId`；若一个数据项没有指定`groupId`且配置了该选项，那么`series.dataGroupId`会作为该数据项的`groupId`。
 
 
 {{ target: partial-data-group-id }}
@@ -15,6 +14,7 @@
 
 该数据项的组 ID。当全局过渡动画功能开启时，`setOption` 前后拥有相同 `groupId` 的数据项会进行动画过渡。`groupId` 未指定时，会使用数据项的 ID 作为组 ID。
 
+如果你使用了[dataset](~dataset)组件来表达数据，推荐使用`encode.itemGroupId`来指定哪个维度被编码为组 ID。
 
 
 {{ target: partial-data-child-group-id }}
@@ -55,3 +55,5 @@ data: [                        data: [                        data: [
 上面 3 组 data 分别来自 3 个 option ，通过`groupId`和`childGroupId`，它们之间存在了“父-子-孙”的关系。在`setOption`时，Echarts 会尝试寻找前后`option`数据项间的父子关系，若存在父子关系，则会对相关数据项进行下钻或聚合动画的过渡。
 
 没有对应子数据组的数据项不需要指定`childGroupId`。
+
+如果你使用了[dataset](~dataset)组件来表达数据，推荐使用`encode.itemChildGroupId`来指定哪个维度被编码为子数据组 ID。
