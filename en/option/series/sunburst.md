@@ -1,25 +1,13 @@
 
 {{ target: partial-sunburst-label-helper }}
 
-#${prefix} rotate(string|number) = 'radial'
-
-<ExampleUIControlEnum options="radial,tangential" default="radial" />
-
-{{ if: ${prefix} === '##' }}
-If it is `number` type, then is stands for rotation, from -90 degrees to 90 degrees, and positive values stand for counterclockwise.
-
-Besides, it can be string `'radial'`, standing for radial rotation; or `'tangential'`, standing for tangential rotation.
-
-By default, it is `'radial'`. If no rotation is wanted, it can be set to `0`.
+{{ use: partial-label-rotate-tangential(
+    prefix = ${prefix}
+) }}
 
 The following example shows different `rotate` settings:
 
 ~[700x400](${galleryViewPath}sunburst-label-rotate&edit=1&reset=1)
-
-Same to [label.rotate](~sunburst.label.rotate)
-{{ else }}
-Same to [label.rotate](~sunburst.label.rotate)
-{{ /if }}
 
 #${prefix} align(string) = 'center'
 
@@ -413,4 +401,3 @@ Select state.
     defaultAnimationDuration = 1000,
     defaultAnimationDurationUpdate = 500
 ) }}
-
