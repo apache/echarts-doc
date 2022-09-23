@@ -280,7 +280,8 @@ Whether to show the label.
 The distance between the label and tick line.
 
 {{ use: partial-label-rotate-tangential(
-    prefix = '##'
+    prefix = '##',
+    version = '5.4.0'
 ) }}
 
 ### formatter(string|Function)

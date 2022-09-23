@@ -293,7 +293,8 @@ color: [
 标签与刻度线的距离。
 
 {{ use: partial-label-rotate-tangential(
-    prefix = '##'
+    prefix = '##',
+    version = '5.4.0'
 ) }}
 
 ### formatter(string|Function)

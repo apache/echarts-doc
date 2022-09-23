@@ -2,7 +2,8 @@
 {{ target: partial-sunburst-label-helper }}
 
 {{ use: partial-label-rotate-tangential(
-    prefix = ${prefix}
+    prefix = ${prefix},
+    defaultRotate = "'radial'"
 ) }}
 
 下面的例子展示了不同的 `rotate` 设置方法：
