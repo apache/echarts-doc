@@ -17,7 +17,7 @@
 
 github:
   description: Official repository of Apache ECharts documentation
-  homepage: https://echarts.apache.org/api.html
+  homepage: https://echarts.apache.org/option.html
   labels:
     - echarts
     - apache
