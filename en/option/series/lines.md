@@ -84,6 +84,10 @@ The length of trail of special effect.  The values from 0 to 1 could be set. Tra
 
 Whether to loop the special effect animation.
 
+### roundTrip(boolean) = false
+
+Whether to go back when the animation reach the end.
+
 ## large(boolean) = true
 
 Whether to enable the optimization of large-scale lines graph. It could be enabled when there is a particularly large number of data(>=5k) .
