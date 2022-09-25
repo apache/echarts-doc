@@ -86,6 +86,10 @@ Whether to loop the special effect animation.
 
 ### roundTrip(boolean) = false
 
+{{ use: partial-version(
+    version = "5.4.0"
+) }}
+
 Whether to go back when the animation reach the end.
 
 ## large(boolean) = true

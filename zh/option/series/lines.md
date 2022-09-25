@@ -85,6 +85,10 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 
 ### roundTrip(boolean) = false
 
+{{ use: partial-version(
+    version = "5.4.0"
+) }}
+
 当动画到达终点时，是否原路返回。
 
 ## large(boolean) = false
