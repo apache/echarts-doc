@@ -3,7 +3,7 @@
 
 + [Feature] Coarse pointer tolerance. [#17102](https://github.com/apache/echarts/issues/17102) ([Ovilia](https://github.com/Ovilia))
 + [Feature] [pie]: Support specifying coordinate system for pie series. [#17132](https://github.com/apache/echarts/issues/17132) ([plainheart](https://github.com/plainheart))
-+ [Feature] [gauge]: Support angle rotating in axisLabel. Close [#15944](https://github.com/apache/echarts/issues/15944). [#16985](https://github.com/apache/echarts/issues/16985) ([MeetzhDing](https://github.com/MeetzhDing))
++ [Feature] [gauge]: Support angle rotating in `axisLabel`. Close [#15944](https://github.com/apache/echarts/issues/15944). [#16985](https://github.com/apache/echarts/issues/16985) ([MeetzhDing](https://github.com/MeetzhDing))
 + [Feature] [lines] Support the effect animation go back. [#16943](https://github.com/apache/echarts/issues/16943) ([wangguisong](https://github.com/wangguisong))
 + [Feature] [treemap.breadcrumb]: Add `emphasis` state. [#17242](https://github.com/apache/echarts/issues/17242) ([susiwen8](https://github.com/susiwen8))
 + [Feature] [i18n]: Add Ukrainian translation. Close [#17243](https://github.com/apache/echarts/issues/17243). [#17244](https://github.com/apache/echarts/issues/17244) ([Amice13](https://github.com/Amice13))

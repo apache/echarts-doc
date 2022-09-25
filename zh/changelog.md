@@ -3,7 +3,7 @@
 
 + [Feature] 扩大可点击元素的响应范围。[#17102](https://github.com/apache/echarts/issues/17102) ([Ovilia](https://github.com/Ovilia))
 + [Feature] [pie]: 支持让饼图定位在某个坐标系上。[#17132](https://github.com/apache/echarts/issues/17132) ([plainheart](https://github.com/plainheart))
-+ [Feature] [gauge]: 支持了 axisLabel 的旋转。关闭 [#15944](https://github.com/apache/echarts/issues/15944)。[#16985](https://github.com/apache/echarts/issues/16985) ([MeetzhDing](https://github.com/MeetzhDing))
++ [Feature] [gauge]: 支持了 `axisLabel` 的旋转。关闭 [#15944](https://github.com/apache/echarts/issues/15944)。[#16985](https://github.com/apache/echarts/issues/16985) ([MeetzhDing](https://github.com/MeetzhDing))
 + [Feature] [lines] 支持动画原路返回。[#16943](https://github.com/apache/echarts/issues/16943) ([wangguisong](https://github.com/wangguisong))
 + [Feature] [treemap.breadcrumb]: 支持了 `emphasis` 状态。[#17242](https://github.com/apache/echarts/issues/17242) ([susiwen8](https://github.com/susiwen8))
 + [Feature] [i18n]: 支持了乌克兰语。关闭 [#17243](https://github.com/apache/echarts/issues/17243)。[#17244](https://github.com/apache/echarts/issues/17244) ([Amice13](https://github.com/Amice13))
