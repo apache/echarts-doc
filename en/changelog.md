@@ -1,3 +1,36 @@
+## v5.4.0
+<div class="time">2022-09-25</div>
+
++ [Feature] Coarse pointer tolerance. [#17102](https://github.com/apache/echarts/issues/17102) ([Ovilia](https://github.com/Ovilia))
++ [Feature] [pie]: Support specifying coordinate system for pie series. [#17132](https://github.com/apache/echarts/issues/17132) ([plainheart](https://github.com/plainheart))
++ [Feature] [gauge]: Support angle rotating in axisLabel. Close [#15944](https://github.com/apache/echarts/issues/15944). [#16985](https://github.com/apache/echarts/issues/16985) ([MeetzhDing](https://github.com/MeetzhDing))
++ [Feature] [lines] Support the effect animation go back. [#16943](https://github.com/apache/echarts/issues/16943) ([wangguisong](https://github.com/wangguisong))
++ [Feature] [treemap.breadcrumb]: Add `emphasis` state. [#17242](https://github.com/apache/echarts/issues/17242) ([susiwen8](https://github.com/susiwen8))
++ [Feature] [i18n]: Add Ukrainian translation. Close [#17243](https://github.com/apache/echarts/issues/17243). [#17244](https://github.com/apache/echarts/issues/17244) ([Amice13](https://github.com/Amice13))
++ [Fix] [pie]: Fix that `labelLine` may not be hidden when `minShowLabelRadian` is specified. [#17412](https://github.com/apache/echarts/issues/17412) ([plainheart](https://github.com/plainheart))
++ [Fix] [pie(perf)]: Optimize performance of pie series. [#17275](https://github.com/apache/echarts/issues/17275) ([wind108369](https://github.com/wind108369))
++ [Fix] [line]: Set default z/zlevel for temporary symbol to avoid warnings. [#17247](https://github.com/apache/echarts/issues/17247) ([plainheart](https://github.com/plainheart))
++ [Fix] [bar-race]: Fix lines glitch with sub-pixel optimization in animations. Solve [#14679](https://github.com/apache/echarts/issues/14679). [#17426](https://github.com/apache/echarts/issues/17426) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [axis]: Fix that `inverse` option does not work for `singleAxis`. [#17411](https://github.com/apache/echarts/issues/17411) ([wind108369](https://github.com/wind108369))
++ [Fix] [axis]: Fix that axis symbol is not reversed when axis is reversed. [#17329](https://github.com/apache/echarts/issues/17329) ([plainheart](https://github.com/plainheart))
++ [Fix] [emphasis.scale]: Fix that `emphasis.scale` can't be reset and specified values may not be respected. [#17442](https://github.com/apache/echarts/issues/17442) ([plainheart](https://github.com/plainheart))
++ [Fix] [emphasis.scale]: add missing type `number` to `emphasis.scale` for scatter/line/graph series [#17390](https://github.com/apache/echarts/issues/17390) ([plainheart](https://github.com/plainheart))
++ [Fix]: Ensure compatibility with typescript@4.8 [#17582](https://github.com/apache/echarts/issues/17582) ([AviVahl](https://github.com/AviVahl))
++ [Fix] [svg]: Encode HTML special characters when generating SVG string. [#17406](https://github.com/apache/echarts/issues/17406) ([plainheart](https://github.com/plainheart))
++ [Fix] [visualMap]: Fix that the indicator doesn't show when hovering on map label. [#17346](https://github.com/apache/echarts/issues/17346) ([plainheart](https://github.com/plainheart))
++ [Fix] [custom]: Fix that elements may not be removed after updates. Close [#17333](https://github.com/apache/echarts/issues/17333) [#17349](https://github.com/apache/echarts/issues/17349). ([Ovilia](https://github.com/Ovilia))
++ [Fix] [custom]: Fix that custom elements probably can't be removed due to NPE when applying leave transition. [#17308](https://github.com/apache/echarts/issues/17308) ([plainheart](https://github.com/plainheart))
++ [Fix] [theme]: Fix tooltips text style of the theme macarons [#17551](https://github.com/apache/echarts/issues/17551) ([mousne](https://github.com/mousne))
++ [Fix] [theme]: Fix the abandoned normal level in the theme file [#17482](https://github.com/apache/echarts/issues/17482) ([Liangism](https://github.com/Liangism))
++ [Fix] [log]: Fix that log axis breaks a single data whose log value is negative. [#17322](https://github.com/apache/echarts/issues/17322) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [dataZoom]: Fix sliderZoom in candlestick dataset error [#17237](https://github.com/apache/echarts/issues/17237) ([jiawulin001](https://github.com/jiawulin001))
++ [Fix] [log]: Fix the wrong code of `deprecateReplaceLog` in `sunburstAction.ts`. [#17587](https://github.com/apache/echarts/issues/17587) ([gitforhlp](https://github.com/gitforhlp))
++ [Fix] [ts]: fix `SunburstSeriesOption` and `TreemapSeriesOption` types. [#17218](https://github.com/apache/echarts/issues/17218) ([dmzc](https://github.com/dmzc))
++ [Fix] [ts]: Export type `ElementEvent`. [#15291](https://github.com/apache/echarts/issues/15291) ([Map1en](https://github.com/Map1en))
++ [Fix] [typo]: Fix file typo. [#17193](https://github.com/apache/echarts/issues/17193) ([kxxoling](https://github.com/kxxoling))
+
+
+
 ## v5.3.3
 <div class="time">2022-06-14</div>
 

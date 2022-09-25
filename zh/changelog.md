@@ -1,3 +1,36 @@
+## v5.4.0
+<div class="time">2022-09-25</div>
+
++ [Feature] 扩大可点击元素的响应范围。[#17102](https://github.com/apache/echarts/issues/17102) ([Ovilia](https://github.com/Ovilia))
++ [Feature] [pie]: 支持让饼图定位在某个坐标系上。[#17132](https://github.com/apache/echarts/issues/17132) ([plainheart](https://github.com/plainheart))
++ [Feature] [gauge]: 支持了 axisLabel 的旋转。关闭 [#15944](https://github.com/apache/echarts/issues/15944)。[#16985](https://github.com/apache/echarts/issues/16985) ([MeetzhDing](https://github.com/MeetzhDing))
++ [Feature] [lines] 支持动画原路返回。[#16943](https://github.com/apache/echarts/issues/16943) ([wangguisong](https://github.com/wangguisong))
++ [Feature] [treemap.breadcrumb]: 支持了 `emphasis` 状态。[#17242](https://github.com/apache/echarts/issues/17242) ([susiwen8](https://github.com/susiwen8))
++ [Feature] [i18n]: 支持了乌克兰语。关闭 [#17243](https://github.com/apache/echarts/issues/17243)。[#17244](https://github.com/apache/echarts/issues/17244) ([Amice13](https://github.com/Amice13))
++ [Fix] [pie]: 修复了 `minShowLabelRadian` 被指定时 `labelLine` 可能不隐藏的问题。[#17412](https://github.com/apache/echarts/issues/17412) ([plainheart](https://github.com/plainheart))
++ [Fix] [pie(perf)]: 提高了饼图的性能。[#17275](https://github.com/apache/echarts/issues/17275) ([wind108369](https://github.com/wind108369))
++ [Fix] [line]: 为临时 `symbol` 设置 `z`/`zlevel` 以避免警告日志。[#17247](https://github.com/apache/echarts/issues/17247) ([plainheart](https://github.com/plainheart))
++ [Fix] [bar-race]: 修复了有动画时 sub-pixel 优化导致的问题。关闭 [#14679](https://github.com/apache/echarts/issues/14679)。[#17426](https://github.com/apache/echarts/issues/17426) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [axis]: 修复 `singleAxis` 中 `inverse` 不能用的问题。[#17411](https://github.com/apache/echarts/issues/17411) ([wind108369](https://github.com/wind108369))
++ [Fix] [axis]: 修复坐标轴反转时，坐标轴 symbol 不反转的问题。[#17329](https://github.com/apache/echarts/issues/17329) ([plainheart](https://github.com/plainheart))
++ [Fix] [emphasis.scale]: 修复 `emphasis.scale` 不能被重置等问题。[#17442](https://github.com/apache/echarts/issues/17442) ([plainheart](https://github.com/plainheart))
++ [Fix] [emphasis.scale]: 为 `scatter`/`line`/`graph` 系列的 `emphasis.scale` 增加本该有的 `number` 类型。[#17390](https://github.com/apache/echarts/issues/17390) ([plainheart](https://github.com/plainheart))
++ [Fix]: 确保 `typescript@4.8` 兼容。[#17582](https://github.com/apache/echarts/issues/17582) ([AviVahl](https://github.com/AviVahl))
++ [Fix] [svg]: 生成 `SVG` 字符串时 encode HTML 。[#17406](https://github.com/apache/echarts/issues/17406) ([plainheart](https://github.com/plainheart))
++ [Fix] [visualMap]: 修复鼠标悬浮在地图标签时候指示器不显示的问题。[#17346](https://github.com/apache/echarts/issues/17346) ([plainheart](https://github.com/plainheart))
++ [Fix] [custom]: 修正自定义组件中元素可能不能删除的问题。关闭 [#17333](https://github.com/apache/echarts/issues/17333) [#17349](https://github.com/apache/echarts/issues/17349). ([Ovilia](https://github.com/Ovilia))
++ [Fix] [custom]: 修复 leave transition 时可能 NPE 导致元素不能删除的问题。[#17308](https://github.com/apache/echarts/issues/17308) ([plainheart](https://github.com/plainheart))
++ [Fix] [theme]: 修复 theme macarons 中 tooltip 的文字样式。[#17551](https://github.com/apache/echarts/issues/17551) ([mousne](https://github.com/mousne))
++ [Fix] [theme]: 修复 theme 文件中已经废弃的格式。[#17482](https://github.com/apache/echarts/issues/17482) ([Liangism](https://github.com/Liangism))
++ [Fix] [log]: 修复 log 轴中值为负数时候的问题。[#17322](https://github.com/apache/echarts/issues/17322) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [dataZoom]: 修复 K 线图使用 dataset 时 dataZoom 的错误。[#17237](https://github.com/apache/echarts/issues/17237) ([jiawulin001](https://github.com/jiawulin001))
++ [Fix] [log]: 修复 `sunburstAction.ts` 里 `deprecateReplaceLog` 错误代码。[#17587](https://github.com/apache/echarts/issues/17587) ([gitforhlp](https://github.com/gitforhlp))
++ [Fix] [ts]: 修复 `SunburstSeriesOption` 和 `TreemapSeriesOption` 类型。[#17218](https://github.com/apache/echarts/issues/17218) ([dmzc](https://github.com/dmzc))
++ [Fix] [ts]: 导出类型 `ElementEvent`。[#15291](https://github.com/apache/echarts/issues/15291) ([Map1en](https://github.com/Map1en))
++ [Fix] [typo]: 修复文件名等拼写错误。[#17193](https://github.com/apache/echarts/issues/17193) ([kxxoling](https://github.com/kxxoling))
+
+
+
 ## v5.3.3
 <div class="time">2022-06-14</div>
 
