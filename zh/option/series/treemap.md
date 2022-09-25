@@ -310,12 +310,8 @@ const option = {
     prefix = "###",
     name = "面包屑",
     defaultColor = "rgba(0,0,0,0.7)",
-    defaultBorderColor = "rgba(255,255,255,0.7)",
-    defaultBorderWidth = 1,
-    defaultShadowColor = 'rgba(150,150,150,1)',
-    defaultShadowBlur = 3,
-    defaultShadowOffsetX = 0,
-    defaultShadowOffsetY = 0
+    defaultBorderColor = "''",
+    defaultBorderWidth = 1
 ) }}
 
 #### textStyle(Object)
@@ -336,13 +332,9 @@ const option = {
     prefix = "####",
     name = "面包屑",
     hasInherit = true,
-    defaultColor = "rgba(0,0,0,0.7)",
-    defaultBorderColor = "rgba(255,255,255,0.7)",
-    defaultBorderWidth = 1,
-    defaultShadowColor = 'rgba(150,150,150,1)',
-    defaultShadowBlur = 3,
-    defaultShadowOffsetX = 0,
-    defaultShadowOffsetY = 0
+    defaultColor = "rgba(0,0,0,0.9)",
+    defaultBorderColor = "''",
+    defaultBorderWidth = 1
 ) }}
 
 ##### textStyle(Object)

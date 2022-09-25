@@ -153,12 +153,8 @@ When is no content in breadcrumb, this minimal width need to be set up.
     prefix = "###",
     name = "breadcrumb",
     defaultColor = "rgba(0,0,0,0.7)",
-    defaultBorderColor = "rgba(255,255,255,0.7)",
-    defaultBorderWidth = 1,
-    defaultShadowColor = 'rgba(150,150,150,1)',
-    defaultShadowBlur = 3,
-    defaultShadowOffsetX = 0,
-    defaultShadowOffsetY = 0
+    defaultBorderColor = "''",
+    defaultBorderWidth = 1
 ) }}
 
 #### textStyle(Object)
@@ -168,7 +164,7 @@ When is no content in breadcrumb, this minimal width need to be set up.
     defaultColor = "#fff"
 ) }}
 
-### emphasis(*)
+### emphasis(Object)
 {{ use: partial-version(
     version = "5.4.0"
 ) }}
@@ -179,13 +175,9 @@ When is no content in breadcrumb, this minimal width need to be set up.
     prefix = "####",
     name = "breadcrumb",
     hasInherit = true,
-    defaultColor = "rgba(0,0,0,0.7)",
-    defaultBorderColor = "rgba(255,255,255,0.7)",
-    defaultBorderWidth = 1,
-    defaultShadowColor = 'rgba(150,150,150,1)',
-    defaultShadowBlur = 3,
-    defaultShadowOffsetX = 0,
-    defaultShadowOffsetY = 0
+    defaultColor = "rgba(0,0,0,0.9)",
+    defaultBorderColor = "''",
+    defaultBorderWidth = 1
 ) }}
 
 ##### textStyle(Object)
