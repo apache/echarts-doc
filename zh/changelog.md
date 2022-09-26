@@ -1,7 +1,7 @@
 ## v5.4.0
 <div class="time">2022-09-25</div>
 
-+ [Feature] 新增[智能指针吸附](https://echarts.apache.org/handbook/zh/how-to/interaction/coarse-pointer). [#17102](https://github.com/apache/echarts/issues/17102) ([Ovilia](https://github.com/Ovilia))
++ [Feature] 新增[智能指针吸附](https://echarts.apache.org/handbook/zh/how-to/interaction/coarse-pointer)。 [#17102](https://github.com/apache/echarts/issues/17102) ([Ovilia](https://github.com/Ovilia))
 + [Feature] [pie] 饼图新增 `coordinateSystem` 配置项以支持定位在某个坐标系上。 [#17132](https://github.com/apache/echarts/issues/17132) ([plainheart](https://github.com/plainheart))
 + [Feature] [gauge] 仪表盘轴标签支持旋转。 [#16985](https://github.com/apache/echarts/issues/16985) ([MeetzhDing](https://github.com/MeetzhDing))
 + [Feature] [lines] 线系列动画特效支持原路返回。 [#16943](https://github.com/apache/echarts/issues/16943) ([wangguisong](https://github.com/wangguisong))
