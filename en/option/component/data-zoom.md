@@ -348,7 +348,7 @@ How to set `filterMode` is up to users, depending on the requirments and scenari
 
     + If `xAxis` and `yAxis` should not effect mutually (e.g. a scatter chart with both axes on the type of `'value'`), they should be set to be `filterMode: 'empty'`.
 
-    + If `xAxis` is the main axis and `yAxis` is the auxiliary axis (or vise versa) (e.g., in a bar chart, when dragging `dataZoomX` to change the window of xAxis, we need the yAxis to adapt to the clipped data, but when dragging `dataZoomY` to change the window of yAxis, we need the xAxis not to be changed), in this case, `xAxis` should be set to be `fiterMode: 'filter'`, while `yAxis` should be set to be `fiterMode: 'empty'`.
+    + If `xAxis` is the main axis and `yAxis` is the auxiliary axis (or vise versa) (e.g., in a bar chart, when dragging `dataZoomX` to change the window of xAxis, we need the yAxis to adapt to the clipped data, but when dragging `dataZoomY` to change the window of yAxis, we need the xAxis not to be changed), in this case, `xAxis` should be set to be `filterMode: 'filter'`, while `yAxis` should be set to be `filterMode: 'empty'`.
 
 It can be demonstrated by the sample:
 
