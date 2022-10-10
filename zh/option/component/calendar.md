@@ -46,10 +46,10 @@
 ---
 
 <ExampleBaseOption name="calendar" title="日历图" title-en="Calendar">
-function getVirtulData(year) {
+function getVirtualData(year) {
     year = year || '2017';
-    var date = +new Date(year + '-01-01');
-    var end = +new Date((+year + 1) + '-01-01');
+    var date = +new Date(year + '/01/01');
+    var end = +new Date((+year + 1) + '/01/01');
     var dayTime = 3600 * 24 * 1000;
     var data = [];
     for (var time = date; time < end; time += dayTime) {
@@ -88,7 +88,7 @@ const option = {
     series: {
         type: 'heatmap',
         coordinateSystem: 'calendar',
-        data: getVirtulData(2016)
+        data: getVirtualData(2016)
     }
 };
 </ExampleBaseOption>

@@ -176,11 +176,11 @@ link: [{
     mapper: function (sourceVal, sourceAxisInfo, targetAxisInfo) {
         if (sourceAxisInfo.axisName === 'yy') {
             // from timestamp to '2012-02-05'
-            return echarts.format.formatTime('yyyy-MM-dd', sourceVal);
+            return echarts.time.format('yyyy-MM-dd', sourceVal);
         }
         else if (targetAxisInfo.axisName === 'yy') {
             // from '2012-02-05' to date
-            return echarts.number.parseDate(dates[sourceVal]);
+            return echarts.time.parse(dates[sourceVal]);
         }
         else {
             return sourceVal;
