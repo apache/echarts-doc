@@ -393,7 +393,8 @@ dispatchAction({
 
 {{ use: action-select(
     componentType='geo',
-    name='地图区域'
+    name='地图区域',
+    single=true
 ) }}
 
 ## brush
@@ -490,7 +491,11 @@ dispatchAction({
 
     {{ use: action-component-query(componentType = 'geo') }}
 
+    {{ if: ${single} }}
+    {{ use: action-component-item-query-single(componentType = 'geo', componentItemDesc = 'region') }}
+    {{ else }}
     {{ use: action-component-item-query-multiple(componentType = 'geo', componentItemDesc = 'region') }}
+    {{ /if }}
 })
 ```
 
@@ -505,7 +510,11 @@ dispatchAction({
 
     {{ use: action-component-query(componentType = 'geo') }}
 
+    {{ if: ${single} }}
+    {{ use: action-component-item-query-single(componentType = 'geo', componentItemDesc = 'region') }}
+    {{ else }}
     {{ use: action-component-item-query-multiple(componentType = 'geo', componentItemDesc = 'region') }}
+    {{ /if }}
 })
 ```
 **EVENT:** [${componentType}unselected](~events.${componentType}unselected)
@@ -519,7 +528,11 @@ dispatchAction({
 
     {{ use: action-component-query(componentType = 'geo') }}
 
+    {{ if: ${single} }}
+    {{ use: action-component-item-query-single(componentType = 'geo', componentItemDesc = 'region') }}
+    {{ else }}
     {{ use: action-component-item-query-multiple(componentType = 'geo', componentItemDesc = 'region') }}
+    {{ /if }}
 })
 ```
 **EVENT:** [${componentType}selectchanged](~events.${componentType}selectchanged)
