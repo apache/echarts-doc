@@ -85,6 +85,20 @@ const option = {"tooltip":{"trigger":"item","triggerOn":"mousemove"},"series":[{
 
 控制节点拖拽的交互，默认开启。开启后，用户可以将图中任意节点拖拽到任意位置。若想关闭此交互，只需将值设为 `false` 就行了。
 
+## edgeLabel(Object)
+
+{{ use: partial-version(
+    version = "5.4.1"
+) }}
+
+`edgeLabel` 描述了每个边中文本标签的样式。
+
+{{ use: partial-label(
+    prefix = "##",
+    noPosition = true,
+    formatter1d = true
+) }}
+
 ## levels(Array)
 
 桑基图每一层的设置。可以逐层设置，如下：
