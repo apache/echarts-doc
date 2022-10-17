@@ -74,10 +74,10 @@ myChart.setOption(option);
         var myChart = echarts.init(document.getElementById('main'));
 
         // 模拟数据
-        function getVirtulData(year) {
+        function getVirtualData(year) {
             year = year || '2017';
-            var date = +echarts.number.parseDate(year + '-01-01');
-            var end = +echarts.number.parseDate(year + '-12-31');
+            var date = +echarts.time.parse(year + '-01-01');
+            var end = +echarts.time.parse(year + '-12-31');
             var dayTime = 3600 * 24 * 1000;
             var data = [];
             for (var time = date; time <= end; time += dayTime) {
@@ -100,7 +100,7 @@ myChart.setOption(option);
             series: {
                 type: 'heatmap',
                 coordinateSystem: 'calendar',
-                data: getVirtulData(2017)
+                data: getVirtualData(2017)
             }
         };
         myChart.setOption(option);
