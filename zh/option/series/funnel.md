@@ -52,13 +52,13 @@ option = {
 
 <ExampleUIControlNumber default="100" step="1" />
 
-指定的数据最大值。dynamicHeight为`true`时无效。
+指定的数据最大值。
 
 ## minSize(number|string) = '0%'
 
 <ExampleUIControlPercent default="0%" />
 
-数据最小值 [min](~series-funnel.min) 映射的宽度。dynamicHeight为`true`时无效。
+数据最小值 [min](~series-funnel.min) 映射的宽度。
 
 可以是绝对的像素大小，也可以是相对[布局宽度](~series-funnel.width)的百分比，如果需要最小值的图形并不是尖端三角，可通过设置该属性实现。
 
@@ -98,12 +98,6 @@ option = {
 
 设置为true使每个数据采用漏斗高度作为映射模式基准。
 
-## thickDegree(string)
-
-<ExampleUIControlPercent default="0%" />
-
-这个属性是控制动态高度下漏斗的粗细度，如果你设置这个属性大于0%，漏斗会比默认的更粗（钝），或者说没原来的那么尖。
-
 ## showRate(boolean)
 
 <ExampleUIControlEnum options="true,false" default="false" />
@@ -140,6 +134,47 @@ option = {
     prefix = "##",
     position = true,
     formatter = true
+) }}
+
+## rateLabel(Object)
+
+{{ use: partial-label-desc(
+    name = "funnel rate"
+) }}
+
+### formatter(string|function)
+
+漏斗数据转化率标签, 支持 ```label.formatter``` 所支持的一切，并且添加了如下特性.
+
+_String template_
+
+新添加的模版都有:
+
+- ```{e}```: 当前转化率前一个数据的名称.
+- ```{f}```: 当前转化率后一个数据的名称.
+- ```{g}```: 当前转化率.
+
+_Callback function_
+
+转化率回到和 ```label.formatter``` 的形式一样.
+
+并且params在```label.formatter```的基础上添加了如下属性.
+
+```ts
+    preName: string,
+    // 当前转化率前一个数据的名称
+    nextName: string,
+    // 当前转化率后一个数据的名称
+    rate: string,
+    // 当前转化率
+    isLastPiece: boolean
+    // 当前数据是否是最后一个数据，如果是最后一个，转化率为整体转化率
+```
+
+{{ use: partial-funnel-label(
+    prefix = "##",
+    position = false,
+    formatter = false
 ) }}
 
 ## labelLine(Object)

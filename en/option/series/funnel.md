@@ -36,7 +36,7 @@ The specified maximum value. Invalid if `dynamicHeight` is `true`.
 
 <ExampleUIControlPercent default="0%" />
 
-The mapped width from minimum data value [min](~series-funnel.min). Invalid if `dynamicHeight` is `true`.
+The mapped width from minimum data value [min](~series-funnel.min).
 
 It can be absolute pixel and also the percentage of [layout width](~series-funnel.width). If you don't want the graph of minimum value to be a triangle, you can set up this property larger than 0.
 
@@ -44,7 +44,7 @@ It can be absolute pixel and also the percentage of [layout width](~series-funne
 
 <ExampleUIControlPercent default="100%" />
 
-The mapped width from maximum data value [max](~series-funnel.max). Invalid if `dynamicHeight` is `true`.
+The mapped width from maximum data value [max](~series-funnel.max).
 
 It can be absolute pixel and also the percentage of [layout width](~series-funnel.width).
 
@@ -76,12 +76,6 @@ and 99% when showRate is true.
 <ExampleUIControlEnum options="true,false" default="false" />
 
 Set to `true` so that each data take funnel height as mapping mode base.
-
-## thickDegree(string)
-
-<ExampleUIControlPercent default="0%" />
-
-This property is control the thick degree of then dynamic height funnel, if you set this prop greater than 0% ,the funnel will thicker than default.
 
 ## showRate(boolean)
 
@@ -119,6 +113,47 @@ Horizontal align. Defaults to align center. Can be 'left', 'right', 'center'.
     prefix = "##",
     position = true,
     formatter = true
+) }}
+
+## rateLabel(Object)
+
+{{ use: partial-label-desc(
+    name = "funnel rate"
+) }}
+
+### formatter(string|function)
+
+Data rate label formatter, which supports what the ```label.formatter``` supported too.
+
+_String template_
+
+Append model variation includes:
+
+- ```{e}```: the name of previous data for conversion rate.
+- ```{f}```: the name of next data for conversion rate.
+- ```{g}```: the value of a conversion rate.
+
+_Callback function_
+
+Callback function is in form of ```label.formatter``` too.
+
+And params append following properties.
+
+```ts
+    preName: string,
+    // the name of previous data for conversion rate
+    nextName: string,
+    // the name of next data for conversion rate
+    rate: string,
+    // percentage of converison rate between each data
+    isLastPiece: boolean
+    // is current data the last one, if last one, rate will be the overall rate.
+```
+
+{{ use: partial-funnel-label(
+    prefix = "##",
+    position = false,
+    formatter = false
 ) }}
 
 ## labelLine(Object)
