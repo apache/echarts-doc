@@ -14,7 +14,7 @@ This option has a lower priority than `groupId`, which means when `groupId` is s
 
 The group ID of a data item. When `universalTransition` is enabled, the data items from the old option and those from the new one, if sharing a same group ID, will then be matched and applied to a proper animation after `setOption` is called.
 
-If a data item is not specified with a `groupId`, Echarts will try to use `series.dataGroupId` as the group ID for the data item. If `series.dataGroupId` is not specified either, Echarts will fall back to using the data item's ID as its group ID.
+If a data item is not specified with a `groupId`, Apache ECharts will try to use `series.dataGroupId` as the group ID for the data item. If `series.dataGroupId` is not specified either, Apache ECharts will fall back to using the data item's ID as its group ID.
 
 If you are using the [dataset](~dataset) component to represent data, you are recommended to use `encode.itemGroupId` to specify the dimension that is to be encoded as the group ID.
 
@@ -29,7 +29,7 @@ The group ID of the child data of a data item. This option is introduced to make
 
 Before `childGroupId` is introduced, developers actually can use `groupId` to make drilldown and aggregation animation already, but with the limit on the times that a continious drilldown or aggregation can happen, which is only one time.
 
-`childGroupId`, together with `groupId`, help to form "father-child" relationships between data items of different options, such as:
+`childGroupId`, together with `groupId`, help to form "parent-child" relationships between data items of different options, such as:
 
 ```text
 data: [                        data: [                        data: [
@@ -54,7 +54,7 @@ data: [                        data: [                        data: [
 ]                              ]
 ```
 
-The 3 groups of data above come from 3 options, and by specifying `groupId` and `childGroupId` for the data items a relationship of "father-child-grandChild" is formed in the 3 options. In this way,  after `setOption` is called, Echarts will try to find the "father-child" or "child-father" relationship of the old option and the new one. If the relationship exists, the matching data items will be applied to a drilldown animation or an aggregation one.
+The 3 groups of data above come from 3 options, and by specifying `groupId` and `childGroupId` for the data items a relationship of "parent-child-grandChild" is formed in the 3 options. In this way,  after `setOption` is called, Apache ECharts will try to find the "parent-child" or "child-parent" relationship of the old option and the new one. If the relationship exists, the matching data items will be applied to a drilldown animation or an aggregation one.
 
 If a data item has no child data then there is no need to specify a `childGroupId` at all.
 
