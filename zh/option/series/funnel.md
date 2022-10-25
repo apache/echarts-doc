@@ -144,31 +144,39 @@ option = {
 
 ### formatter(string|function)
 
-漏斗数据转化率标签, 支持 ```label.formatter``` 所支持的一切，并且添加了如下特性.
-
-_String template_
+_字符串模版_
 
 新添加的模版都有:
 
-- ```{e}```: 当前转化率前一个数据的名称.
-- ```{f}```: 当前转化率后一个数据的名称.
-- ```{g}```: 当前转化率.
+- ```{a}```: 当前转化率.
+- ```{b}```: 当前转化率前一个数据的名称.
+- ```{c}```: 当前转化率后一个数据的名称.
+- ```{d}```: 当前转化率前一个数据的索引.
+- ```{e}```: 当前转化率后一个数据的索引.
 
-_Callback function_
+_回调函数_
 
-转化率回到和 ```label.formatter``` 的形式一样.
+回调函数格式：
 
-并且params在```label.formatter```的基础上添加了如下属性.
+(params: Object|Array) => string
+
+参数 params 是 formatter 需要的单个数据集。格式如下：
 
 ```ts
+{
+    rate: string,
+    // 当前转化率
     preName: string,
     // 当前转化率前一个数据的名称
     nextName: string,
     // 当前转化率后一个数据的名称
-    rate: string,
-    // 当前转化率
+    preIndex: number,
+    // 当前转化率前一个数据的索引
+    nextIndex: number,
+    // 当前转化率后一个数据的索引
     isLastPiece: boolean
     // 当前数据是否是最后一个数据，如果是最后一个，转化率为整体转化率
+}
 ```
 
 {{ use: partial-funnel-label(
@@ -176,6 +184,11 @@ _Callback function_
     position = false,
     formatter = false
 ) }}
+
+
+## overallRateLabel(Object) 
+
+这个属性的配置和rateLabel的配置一致, 这个属性的功能是设置整体转化率。 
 
 ## labelLine(Object)
 

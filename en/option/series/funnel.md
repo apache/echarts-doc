@@ -129,9 +129,11 @@ _String template_
 
 Append model variation includes:
 
-- ```{e}```: the name of previous data for conversion rate.
-- ```{f}```: the name of next data for conversion rate.
-- ```{g}```: the value of a conversion rate.
+- ```{a}```: the value of a conversion rate.
+- ```{b}```: the name of previous data for conversion rate.
+- ```{c}```: the name of next data for conversion rate.
+- ```{e}```: the index of previous data for conversion rate.
+- ```{f}```: the index of previous data for conversion rate.
 
 _Callback function_
 
@@ -144,6 +146,10 @@ And params append following properties.
     // the name of previous data for conversion rate
     nextName: string,
     // the name of next data for conversion rate
+    preIndex: number,
+    // the index of previous data for conversion rate
+    nextName: number,
+    // the index of next data for conversion rate
     rate: string,
     // percentage of converison rate between each data
     isLastPiece: boolean
@@ -155,6 +161,10 @@ And params append following properties.
     position = false,
     formatter = false
 ) }}
+
+## overallRateLabel(Object) 
+
+the config of overallRateLabel is same as rateLabel, the function of this property is to set the overall conversion rate display. 
 
 ## labelLine(Object)
 
