@@ -87,16 +87,8 @@ const option = {"tooltip":{"trigger":"item","triggerOn":"mousemove"},"series":[{
 
 ## edgeLabel(Object)
 
-{{ use: partial-version(
-    version = "5.4.1"
-) }}
-
-`edgeLabel` 描述了每个边中文本标签的样式。
-
-{{ use: partial-label(
-    prefix = "##",
-    noPosition = true,
-    formatter1d = true
+{{ use: sankey-edge-label(
+    prefix = "##"
 ) }}
 
 ## levels(Array)
@@ -391,12 +383,8 @@ links: [{
 
 边的数值，决定边的宽度。
 
-### lineStyle(Object)
-
-关系边的线条样式。
-
-{{ use: partial-sankey-line-style(
-    prefix = "###"
+{{ use: sankey-edge-state(
+    prefix = "##"
 ) }}
 
 ### emphasis(Object)
@@ -405,11 +393,9 @@ links: [{
     prefix = "###"
 ) }}
 
-#### lineStyle(Object)
-
-{{ use: partial-sankey-line-style(
-    prefix = "####",
-    hasInherit = true
+{{ use: sankey-edge-state(
+    prefix = "###",
+    state = "emphasis"
 ) }}
 
 ### blur(Object)
@@ -418,10 +404,9 @@ links: [{
     version = "5.0.0"
 ) }}
 
-#### lineStyle(Object)
-
-{{ use: partial-sankey-line-style(
-    prefix = "####"
+{{ use: sankey-edge-state(
+    prefix = "###",
+    state = "blur"
 ) }}
 
 ### select(Object)
@@ -434,10 +419,9 @@ links: [{
     prefix = "###"
 ) }}
 
-#### lineStyle(Object)
-
-{{ use: partial-sankey-line-style(
-    prefix = "####"
+{{ use: sankey-edge-state(
+    prefix = "###",
+    state = "select"
 ) }}
 
 ## edges(Array)
@@ -511,6 +495,12 @@ links: [{
     formatter1d = ${prefix} === '##'
 ) }}
 
+#${prefix} edgeLabel(Object)
+
+{{ use: sankey-edge-label(
+    prefix = "#" + ${prefix}
+) }}
+
 #${prefix} itemStyle(Object)
 
 {{ use: partial-item-style(
@@ -525,3 +515,37 @@ links: [{
     hasInherit = ${state} === 'emphasis'
 ) }}
 
+
+
+{{ target: sankey-edge-state }}
+
+#${prefix} edgeLabel(Object)
+
+{{ use: sankey-edge-label(
+    prefix = "#" + ${prefix}
+) }}
+
+#${prefix} lineStyle(Object)
+
+关系边的线条样式。
+
+{{ use: partial-sankey-line-style(
+    prefix = "#" + ${prefix},
+    hasInherit = ${state} === 'emphasis'
+) }}
+
+
+
+{{ target: sankey-edge-label }}
+
+{{ use: partial-version(
+    version = "5.4.1"
+) }}
+
+关系边文本标签的样式。
+
+{{ use: partial-label(
+    prefix = ${prefix},
+    noPosition = true,
+    formatter1d = true
+) }}

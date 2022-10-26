@@ -84,16 +84,8 @@ The drag-and-drop interaction of the node, which is enabled by default. After op
 
 ## edgeLabel(Object)
 
-{{ use: partial-version(
-    version = "5.4.1"
-) }}
-
-`edgeLabel` describes the text label style in each link.
-
-{{ use: partial-label(
-    prefix = "##",
-    noPosition = true,
-    formatter1d = true
+{{ use: sankey-edge-label(
+    prefix = "##"
 ) }}
 
 ## levels(Array)
@@ -388,12 +380,8 @@ The [name of target node](~series-sankey.data.name) of edge
 
 The value of edge, which decides the width of edge.
 
-### lineStyle(Object)
-
-The line stlye of edge.
-
-{{ use: partial-sankey-line-style(
-    prefix = "###"
+{{ use: sankey-edge-state(
+    prefix = "##"
 ) }}
 
 ### emphasis(Object)
@@ -402,11 +390,9 @@ The line stlye of edge.
     prefix = "###"
 ) }}
 
-#### lineStyle(Object)
-
-{{ use: partial-sankey-line-style(
-    prefix = "####",
-    hasInherit = true
+{{ use: sankey-edge-state(
+    prefix = "###",
+    state = "emphasis"
 ) }}
 
 ### blur(Object)
@@ -415,10 +401,9 @@ The line stlye of edge.
     version = "5.0.0"
 ) }}
 
-#### lineStyle(Object)
-
-{{ use: partial-sankey-line-style(
-    prefix = "####"
+{{ use: sankey-edge-state(
+    prefix = "###",
+    state = "blur"
 ) }}
 
 ### select(Object)
@@ -431,10 +416,9 @@ The line stlye of edge.
     prefix = "###"
 ) }}
 
-#### lineStyle(Object)
-
-{{ use: partial-sankey-line-style(
-    prefix = "####"
+{{ use: sankey-edge-state(
+    prefix = "###",
+    state = "select"
 ) }}
 
 ## edges(Array)
@@ -508,6 +492,12 @@ The curveness of the edge in Sankey diagram.
     formatter1d = ${prefix} === '##'
 ) }}
 
+#${prefix} edgeLabel(Object)
+
+{{ use: sankey-edge-label(
+    prefix = "#" + ${prefix}
+) }}
+
 #${prefix} itemStyle(Object)
 
 {{ use: partial-item-style(
@@ -522,3 +512,37 @@ The curveness of the edge in Sankey diagram.
     hasInherit = ${state} === 'emphasis'
 ) }}
 
+
+
+{{ target: sankey-edge-state }}
+
+#${prefix} edgeLabel(Object)
+
+{{ use: sankey-edge-label(
+    prefix = "#" + ${prefix}
+) }}
+
+#${prefix} lineStyle(Object)
+
+The line style of edge.
+
+{{ use: partial-sankey-line-style(
+    prefix = "#" + ${prefix},
+    hasInherit = ${state} === 'emphasis'
+) }}
+
+
+
+{{ target: sankey-edge-label }}
+
+{{ use: partial-version(
+    version = "5.4.1"
+) }}
+
+The label style of each edge/link. 
+
+{{ use: partial-label(
+    prefix = ${prefix},
+    noPosition = true,
+    formatter1d = true
+) }}
