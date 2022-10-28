@@ -121,19 +121,7 @@ Horizontal align. Defaults to align center. Can be 'left', 'right', 'center'.
     name = "funnel rate"
 ) }}
 
-### formatter(string|function)
-
-Data rate label formatter, which supports what the ```label.formatter``` supported too.
-
-_String template_
-
-Append model variation includes:
-
-- ```{a}```: the value of a conversion rate.
-- ```{b}```: the name of previous data for conversion rate.
-- ```{c}```: the name of next data for conversion rate.
-- ```{e}```: the index of previous data for conversion rate.
-- ```{f}```: the index of previous data for conversion rate.
+### formatter(function)
 
 _Callback function_
 
