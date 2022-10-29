@@ -216,6 +216,10 @@ The value of a single data item.
     prefix = '##'
 ) }}
 
+{{ use: partial-data-child-group-id(
+    prefix = '##'
+) }}
+
 {{ use: partial-bar-state(
     prefix = "##",
     topLevel = false,

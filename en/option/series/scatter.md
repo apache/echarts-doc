@@ -175,6 +175,10 @@ the value of data item.
     prefix = '##'
 ) }}
 
+{{ use: partial-data-child-group-id(
+    prefix = '##'
+) }}
+
 {{ use: partial-symbol(
     prefix = "##",
     name = "single data"

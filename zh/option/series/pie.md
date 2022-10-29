@@ -357,6 +357,10 @@ const option = {
     prefix = '##'
 ) }}
 
+{{ use: partial-data-child-group-id(
+    prefix = '##'
+) }}
+
 ### selected(boolean) = false
 
 该数据项是否被选中。

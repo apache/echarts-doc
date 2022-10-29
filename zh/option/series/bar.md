@@ -292,6 +292,10 @@ option = {
     prefix = '##'
 ) }}
 
+{{ use: partial-data-child-group-id(
+    prefix = '##'
+) }}
+
 {{ use: partial-bar-state(
     prefix = "##",
     topLevel = false,

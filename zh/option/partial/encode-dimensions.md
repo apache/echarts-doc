@@ -55,8 +55,10 @@ encode: {
     itemId: 2,
     // 指定数据项的名称使用第三个维度在饼图等图表中有用，可以使这个名字显示在图例（legend）中。
     itemName: 3,
-    // 指定数据项的组 ID (groupID)，组 ID 会被用于分类数据，并在全局过渡动画中决定如何进行合并和分裂动画，具体见 universalTransition
-    itemGroupId: 4
+    // 指定数据项的组 ID (groupId)。当全局过渡动画功能开启时，setOption 前后拥有相同 groupId 的数据项会进行动画过渡。
+    itemGroupId: 4,
+    // 指定数据项对应的子数据组 ID (childGroupId)，用于实现多层下钻和聚合。详见 childGroupId。
+    itemChildGroupId: 5
 }
 
 // 直角坐标系（grid/cartesian）特有的属性：

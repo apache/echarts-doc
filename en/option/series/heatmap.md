@@ -154,6 +154,10 @@ Value of data item.
     prefix = '##'
 ) }}
 
+{{ use: partial-data-child-group-id(
+    prefix = '##'
+) }}
+
 ### label(Object)
 
 It is valid with [coordinateSystem](~series-heatmap.coordinateSystem) of 'cartesian2d' value.

@@ -367,6 +367,10 @@ const option = {
     prefix = '##'
 ) }}
 
+{{ use: partial-data-child-group-id(
+    prefix = '##'
+) }}
+
 {{ use: partial-symbol(
     defaultSymbol = "'circle'",
     defaultSymbolSize = 4,
