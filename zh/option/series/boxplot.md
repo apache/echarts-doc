@@ -61,7 +61,7 @@ const option = {
 ) }}
 
 {{ use: partial-coord-sys(
-    seriesType = "cartesian2d",
+    seriesType = "boxplot",
     coordSysDefault = "'cartesian2d'",
     cartesian2d = true
 ) }}

@@ -214,7 +214,7 @@ brush: {
 
 ## z(number) = 10000
 
-z-index of brush cover box. It can be adjust when incorrect overlap occurs.
+z-index of brush cover box. It can be adjusted when incorrect overlap occurs.
 
 
 

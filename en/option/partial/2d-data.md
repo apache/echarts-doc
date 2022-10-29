@@ -76,7 +76,7 @@ series: [{
 ```
 
 + In [cartesian (grid)](~grid), "dimX" and "dimY" correspond to [xAxis](~xAxis) and [yAxis](~yAxis) respectively.
-+ In [polar](~polar) "dimX" and "dimY" correspond to [radiusAxis](~radiusAxis) 和 [angleAxis](~anbleAxis) respectively.
++ In [polar](~polar) "dimX" and "dimY" correspond to [radiusAxis](~radiusAxis) and [angleAxis](~angleAxis) respectively.
 + Other dimensions are optional, which can be used in other places. For example:
     + [visualMap](~visualMap) can map one or more dimensions to visual (color, symbol size ...).
     + [series.symbolSize](~series.symbolSize) can be set as a callback function, where symbol size can be calculated by values of a certain dimension.
@@ -129,7 +129,7 @@ series: [{
 + When a dimension corresponds to a time axis (type is `'time'`), the value can be:
     + a timestamp, like `1484141700832`, which represents a UTC time.
     + a date string, in one of the formats below:
-        + a subset of [ISO 8601](http://www.ecma-international.org/ecma-262/5.1/#sec-15.9.1.15), only including (all of these are treated as local time unless timezone is specified, which is consistent with [moment](https://momentjs.com/)):
+        + a subset of [ISO 8601](https://www.ecma-international.org/ecma-262/5.1/#sec-15.9.1.15), only including (all of these are treated as local time unless timezone is specified, which is consistent with [moment](https://momentjs.com/)):
             + only part of year/month/date/time are specified: `'2012-03'`, `'2012-03-01'`, `'2012-03-01 05'`, `'2012-03-01 05:06'`.
             + separated by `"T"` or a space: `'2012-03-01T12:22:33.123'`, `'2012-03-01 12:22:33.123'`.
             + timezone specified: `'2012-03-01T12:22:33Z'`, `'2012-03-01T12:22:33+8000'`, `'2012-03-01T12:22:33-05:00'`.
@@ -137,9 +137,9 @@ series: [{
           `'2012'`, `'2012-3-1'`, `'2012/3/1'`, `'2012/03/01'`,
           `'2009/6/12 2:00'`, `'2009/6/12 2:05:08'`, `'2009/6/12 2:05:08.123'`.
     + a JavaScript Date instance created by user:
-        + Caution, when using a data string to create a Date instance, [browser differences and inconsistencies](http://dygraphs.com/date-formats.html) should be considered.
+        + Caution, when using a data string to create a Date instance, [browser differences and inconsistencies](https://dygraphs.com/date-formats.html) should be considered.
         + For example: In chrome, `new Date('2012-01-01')` is treated as a Jan 1st 2012 in UTC, while `new Date('2012-1-1')` and `new Date('2012/01/01')` are treated as Jan 1st 2012 in local timezone. In safari `new Date('2012-1-1')` is not supported.
-        + So if you intent to perform `new Date(dateString)`, it is strongly recommended to use a time parse library (e.g., [moment](https://momentjs.com/)), or use `echarts.number.parseDate`, or check [this](http://dygraphs.com/date-formats.html).
+        + So if you intent to perform `new Date(dateString)`, it is strongly recommended to use a time parse library (e.g., [moment](https://momentjs.com/)), or use `echarts.time.parse`, or check [this](https://dygraphs.com/date-formats.html).
 
 
 

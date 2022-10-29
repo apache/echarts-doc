@@ -292,6 +292,11 @@ color: [
 
 标签与刻度线的距离。
 
+{{ use: partial-label-rotate-tangential(
+    prefix = '##',
+    version = '5.4.0'
+) }}
+
 ### formatter(string|Function)
 
 刻度标签的内容格式器，支持字符串模板和回调函数两种形式。

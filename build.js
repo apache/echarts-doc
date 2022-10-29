@@ -13,7 +13,7 @@
  */
 
 const md2json = require('./tool/md2json');
-const {extractDesc, extractOptionKeys} = require('./tool/schemaHelper');
+const {extractDesc} = require('./tool/schemaHelper');
 const fs = require('fs');
 const fse = require('fs-extra');
 const marked = require('marked');
@@ -24,7 +24,7 @@ const argv = require('yargs').argv;
 const path = require('path');
 const assert = require('assert');
 const chokidar = require('chokidar');
-const debounce = require('lodash.debounce');
+const {debounce} = require('lodash');
 const {getDocJSONPVarNname} = require('./src/shared');
 
 const projectDir = __dirname;
@@ -300,14 +300,11 @@ function writeSingleSchemaPartioned(schema, language, docName, format) {
         const descBasename = `${partKey}.json`;
         const descDestPath = path.resolve(config.releaseDestDir, `${language}/documents/${docName}-parts/${descBasename}`);
         fse.ensureDirSync(path.dirname(descDestPath));
-        const content = JSON.stringify(json, null, 2);
         fse.outputFileSync(
             descDestPath,
-            // format ? JSON.stringify(partDescriptions, null, 2) : JSON.stringify(partDescriptions),
-            content,
+            format ? JSON.stringify(json, null, 2) : JSON.stringify(json),
             'utf-8'
         );
-        // Convnert to JS
         convertToJS(descBasename, descDestPath);
     }
 

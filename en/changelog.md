@@ -1,3 +1,37 @@
+## v5.4.0
+<div class="time">2022-09-25</div>
+
++ [Feature] Support [intelligent pointer snapping](https://echarts.apache.org/handbook/en/how-to/interaction/coarse-pointer). [#17102](https://github.com/apache/echarts/issues/17102) ([Ovilia](https://github.com/Ovilia))
++ [Feature] [pie] Support specifying coordinate system for pie series. [#17132](https://github.com/apache/echarts/issues/17132) ([plainheart](https://github.com/plainheart))
++ [Feature] [gauge] Support rotation for `axisLabel`. [#16985](https://github.com/apache/echarts/issues/16985) ([MeetzhDing](https://github.com/MeetzhDing))
++ [Feature] [lines] Support going back for effect animation. [#16943](https://github.com/apache/echarts/issues/16943) ([wangguisong](https://github.com/wangguisong))
++ [Feature] [treemap] Support `emphasis` state for `breadcrumb`. [#17242](https://github.com/apache/echarts/issues/17242) ([susiwen8](https://github.com/susiwen8))
++ [Feature] [i18n] Add Ukrainian(uk-UA) translation. [#17244](https://github.com/apache/echarts/issues/17244) ([Amice13](https://github.com/Amice13))
++ [Feature] [type] Export type `ElementEvent`. [#15291](https://github.com/apache/echarts/issues/15291) ([Map1en](https://github.com/Map1en))
++ [Fix] [pie] Fix `labelLine` may not be hidden when `minShowLabelRadian` is specified. [#17412](https://github.com/apache/echarts/issues/17412) ([plainheart](https://github.com/plainheart))
++ [Fix] [pie] Optimize performance of pie series. [#17275](https://github.com/apache/echarts/issues/17275) ([wind108369](https://github.com/wind108369))
++ [Fix] [line] Set default `z/zlevel` for temporary symbol to avoid warnings. [#17247](https://github.com/apache/echarts/issues/17247) ([plainheart](https://github.com/plainheart))
++ [Fix] [bar-race] Fix lines glitch with sub-pixel optimization in animations. [#17426](https://github.com/apache/echarts/issues/17426) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [axis] Fix `inverse` option does not work for `singleAxis`. [#17411](https://github.com/apache/echarts/issues/17411) ([wind108369](https://github.com/wind108369))
++ [Fix] [axis] Fix axis symbol is not reversed when axis is reversed. [#17329](https://github.com/apache/echarts/issues/17329) ([plainheart](https://github.com/plainheart))
++ [Fix] [state] [emphasis] Fix `emphasis.scale` can't be reset and specified values may not be respected. [#17442](https://github.com/apache/echarts/issues/17442) ([plainheart](https://github.com/plainheart))
++ [Fix] [state] [emphasis] Add missing type `number` to `emphasis.scale` for `scatter/line/graph` series. [#17390](https://github.com/apache/echarts/issues/17390) ([plainheart](https://github.com/plainheart))
++ [Fix] [svg] Encode HTML special characters when generating SVG string. [#17406](https://github.com/apache/echarts/issues/17406) ([plainheart](https://github.com/plainheart))
++ [Fix] [visualMap] Fix the indicator doesn't show when hovering on map label. [#17346](https://github.com/apache/echarts/issues/17346) ([plainheart](https://github.com/plainheart))
++ [Fix] [custom] Fix elements may not be removed after updates. [#17349](https://github.com/apache/echarts/issues/17349). ([Ovilia](https://github.com/Ovilia))
++ [Fix] [custom] Fix custom elements probably can't be removed when applying leave transition. [#17308](https://github.com/apache/echarts/issues/17308) ([plainheart](https://github.com/plainheart))
++ [Fix] [theme] Fix text style of `tooltip` in `macarons` theme. [#17551](https://github.com/apache/echarts/issues/17551) ([mousne](https://github.com/mousne))
++ [Fix] [theme] Fix abandoned `normal` level in theme files. [#17482](https://github.com/apache/echarts/issues/17482) ([Liangism](https://github.com/Liangism))
++ [Fix] [axis] [log] Fix log axis breaks a single data whose log value is negative. [#17322](https://github.com/apache/echarts/issues/17322) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [dataZoom] Fix errors when using `sliderZoom` in candlestick series with dataset. [#17237](https://github.com/apache/echarts/issues/17237) ([jiawulin001](https://github.com/jiawulin001))
++ [Fix] [sunburst] Fix wrong log for deprecated action. [#17587](https://github.com/apache/echarts/issues/17587) ([gitforhlp](https://github.com/gitforhlp))
++ [Fix] [type] Ensure compatibility with TypeScript 4.8. [#17582](https://github.com/apache/echarts/issues/17582) ([AviVahl](https://github.com/AviVahl))
++ [Fix] [type] Add missing value type `false` for `nodeClick` option for `SunburstSeriesOption` and `TreemapSeriesOption`. [#17218](https://github.com/apache/echarts/issues/17218) ([dmzc](https://github.com/dmzc))
++ [Fix] [typo] Fix a file name typo. `src/animation/basicTrasition.ts` → `src/animation/basicTransition.ts`
+ [#17193](https://github.com/apache/echarts/issues/17193) ([kxxoling](https://github.com/kxxoling))
+
+
+
 ## v5.3.3
 <div class="time">2022-06-14</div>
 
@@ -740,22 +774,22 @@ The registered shape classes can be used in `custom series` and `graphic compone
 
 + [Feature] Support using BaiduMap API version 3.0 in bmap by option `bmap.mapStyleV2`.
 
-+ [Fix] Fix that the stacked bar exceed zoom limit.
++ [Fix] Fix the stacked bar exceed zoom limit.
 Fix #7534, #7672, #7732, #7872, #8069, #8520, #8935, #8955, #9200, #9237, #9847, #10359, #10518, #10972.
 
-+ [Fix] Fix that sometimes when using "toolbox dataZoom" it can not return to the original state. Fix #11055.
++ [Fix] Fix sometimes when using "toolbox dataZoom" it can not return to the original state. Fix #11055.
 
-+ [Fix] Fix the texture pattern rendering in `map` and `geo`. And Fix that the the shadow of them are different between canvas renderer and SVG renderer. Fix #11055, #5429.
++ [Fix] Fix the texture pattern rendering in `map` and `geo`. And Fix the the shadow of them are different between canvas renderer and SVG renderer. Fix #11055, #5429.
 
-+ [Fix] Fix that data does not rendered after a `NaN` value in candlestick. Fix #11101.
++ [Fix] Fix data does not rendered after a `NaN` value in candlestick. Fix #11101.
 
 + [Fix] Fix `geo.label.formatter` does not work. Fix #8489.
 
 + [Fix] Fix the hover style incorrect in `custom series`. Fix #11103.
 
-+ [Fix] Fix that tree root node disappears after roaming. Fix #10291, #10986, #10164, #9580, #9256, #9216.
++ [Fix] Fix tree root node disappears after roaming. Fix #10291, #10986, #10164, #9580, #9256, #9216.
 
-+ [Fix] Fix that SVG renderer should render normally despite hover layer set. Fix #11054.
++ [Fix] Fix SVG renderer should render normally despite hover layer set. Fix #11054.
 
 + [Fix] Add dispose checking for chart instance.
 
@@ -795,7 +829,7 @@ Normalize illegal range setting and get accurate `start`/`end`/`startValue`/`end
 
 + [Fix] Use a clearer warning message when initing dom without size. Fix #10478.
 
-+ [Fix] Fix that the rgba opacity does not work in SVG renderer. Fix #9014
++ [Fix] Fix the rgba opacity does not work in SVG renderer. Fix #9014
 
 + [Fix] Enhance funnel chart label display policy PR #8759
 
@@ -803,9 +837,9 @@ Normalize illegal range setting and get accurate `start`/`end`/`startValue`/`end
 
 + [Fix] Fix the mouse pointer in force graph. Fix #7764, contributed by PR #9134.
 
-+ [Fix] Fix that `symbol` and `symbolSize` and `opacity` does not work in `series[i]-graph.categories[i]`. Fix #8009 and #5969, contributed by PR #9171.
++ [Fix] Fix `symbol` and `symbolSize` and `opacity` does not work in `series[i]-graph.categories[i]`. Fix #8009 and #5969, contributed by PR #9171.
 
-+ [Fix] Fix that `axisLine.show` does not work in the gauge. Fix #9194, contributed by PR #9195.
++ [Fix] Fix `axisLine.show` does not work in the gauge. Fix #9194, contributed by PR #9195.
 
 + [Fix] Fix a display error when the first data item is '-' in radar. Fix 8962.
 
@@ -813,25 +847,25 @@ Normalize illegal range setting and get accurate `start`/`end`/`startValue`/`end
 
 + [Fix] Fix text truncate bug in treemap when using SVG renderer.
 
-+ [Fix] Fix that `label.rotate` does not work in graph. Fix #9182, contributed by PR #9210.
++ [Fix] Fix `label.rotate` does not work in graph. Fix #9182, contributed by PR #9210.
 
 + [Fix] Fix the rich content hiding bug and confine bug in tooltip. Fix ecomfe/echarts-for-weixin#360, ecomfe/echarts-for-weixin#347.
 
-+ [Fix] Fix that callback function params.color is incorrect in sunburst area. Fix #8952, contributed by PR #9238.
++ [Fix] Fix callback function params.color is incorrect in sunburst area. Fix #8952, contributed by PR #9238.
 
-+ [Fix] Fix that when `axisLabel.interval` of a category axis is set as `0`, all labels are displayed regardless of overlap. Fix #9589.
++ [Fix] Fix when `axisLabel.interval` of a category axis is set as `0`, all labels are displayed regardless of overlap. Fix #9589.
 
 + [Fix] Fix sub-pixel in markLine. Move subPixelOptimize to zrender. Fix #9598.
 
-+ [Fix] Fix that when doing clear on click handler error is thrown. Fix #9649.
++ [Fix] Fix when doing clear on click handler error is thrown. Fix #9649.
 
-+ [Fix] Fix that `false` value in data items effect subsequent items in `visualMap`. Fix #8799.
++ [Fix] Fix `false` value in data items effect subsequent items in `visualMap`. Fix #8799.
 
 + [Fix] Enhance `hoverStyle` and `highlight`/`downplay` API. Support keep highlighted when changing style (e.g., `setOption` or `hoverLink`). Fix the highlight conflict.
 
 + [Fix] Fix radar line disappear on hover when there is empty value in data.
 
-+ [Fix] Fix that geo map panning not working on Edge browser. Fix #9479.
++ [Fix] Fix geo map panning not working on Edge browser. Fix #9479.
 
 + [Fix] Fix map label bugs:
 Fix map rich label missing when missing data.
@@ -840,13 +874,13 @@ Fix #9682.
 
 + [Fix] Enable `triggerEvent` for label of `angleAxis`. Fix #9765.
 
-+ [Fix] Fix that the hover style bugs of graph:
-Fix that the hover style is disabled by `focusNodeAdjacency` in graph.
-Fix that the line label can not be returned to its original opacity after `"focusNodeAdjacency"`.
++ [Fix] Fix the hover style bugs of graph:
+Fix the hover style is disabled by `focusNodeAdjacency` in graph.
+Fix the line label can not be returned to its original opacity after `"focusNodeAdjacency"`.
 
 + [Fix] Lift the axis line arrow over splitLine and tick.
 
-+ [Fix] Fix that the scrollable legend pager does not work when the target index is illegal. Fix #7568.
++ [Fix] Fix the scrollable legend pager does not work when the target index is illegal. Fix #7568.
 
 + [Fix] Exclude padding from tooltip position, since it's included in clientWidth. Contributed by PR #9750.
 
@@ -862,31 +896,31 @@ Fix that the line label can not be returned to its original opacity after `"focu
 
 + [Fix] Add `seriesId` in `pieselectchanged`. Fix #9830.
 
-+ [Fix] Fix that axis name align does not work. Fix #9901.
++ [Fix] Fix axis name align does not work. Fix #9901.
 
 + [Fix] Fix taht the strange label position when the pie chart series data value is `null`. Fix #10088.
 
 + [Fix] Do not create an anchor element if you don't need to in `SaveAsImage`. Contributed by PR #10132.
 
-+ [Fix] Fix that `axisLabel` dost not display correctly in radar. Fix #9282, contributed by PR #10036.
++ [Fix] Fix `axisLabel` dost not display correctly in radar. Fix #9282, contributed by PR #10036.
 
-+ [Fix] Fix that bar chart is abnormal when `filterMode` of `dataZoom` is 'empty'. Fix #9882.
++ [Fix] Fix bar chart is abnormal when `filterMode` of `dataZoom` is 'empty'. Fix #9882.
 
 + [Fix] Fix `series.label.formatter` callback bug. Fix #10248, contributed by PR #10250.
 
-+ [Fix] Fix that the last axis labels are duplicated. Fix #10304.
++ [Fix] Fix the last axis labels are duplicated. Fix #10304.
 
-+ [Fix] Fix that setting `emphasis.lineStyle.type` as `solid` dose not work. Fix #9704, close #10129.
++ [Fix] Fix setting `emphasis.lineStyle.type` as `solid` dose not work. Fix #9704, close #10129.
 
-+ [Fix] Fix that if some negetive numbers or strings existing in the dimensions array, the corresponding line will not show. Fix #10343.
++ [Fix] Fix if some negetive numbers or strings existing in the dimensions array, the corresponding line will not show. Fix #10343.
 
-+ [Fix] Fix that when `'0'` existing in dimentions the chart do not work. Make backward compat when dimention is a number-like string. Fix #9363, contributed by PR #9388.
++ [Fix] Fix when `'0'` existing in dimentions the chart do not work. Make backward compat when dimention is a number-like string. Fix #9363, contributed by PR #9388.
 
 + [Fix] Fix hover style on `textStroke` bug in custom series.
 
 + [Fix] Fix graph bug when data is number typed. Fix #10485.
 
-+ [Fix] Fix that `axisPointer` label padding does not work. Fix #10569.
++ [Fix] Fix `axisPointer` label padding does not work. Fix #10569.
 
 + [Fix] Add `dimIndex` for callback formatter in radar. Close #10403, #10180, contributed PR #10437.
 
@@ -908,21 +942,21 @@ Fix that the line label can not be returned to its original opacity after `"focu
 
 + [Fix] Fix text cache problem. See [#9190](https://github.com/apache/incubator-echarts/issues/9190), [#9597](https://github.com/apache/incubator-echarts/issues/9597), [#9762](https://github.com/apache/incubator-echarts/issues/9762).
 
-+ [Fix] Fix that in some case re-`setOption` in event handler throws error. See [#9649](https://github.com/apache/incubator-echarts/issues/9649).
++ [Fix] Fix in some case re-`setOption` in event handler throws error. See [#9649](https://github.com/apache/incubator-echarts/issues/9649).
 
-+ [Fix] Fix that geo region problem causes `showTip` abnormal. See [#9156](https://github.com/apache/incubator-echarts/issues/9156).
++ [Fix] Fix geo region problem causes `showTip` abnormal. See [#9156](https://github.com/apache/incubator-echarts/issues/9156).
 
-+ [Fix] Fix that stacked bars are over cartesian in some cases. See [#9346](https://github.com/apache/incubator-echarts/issues/9346).
++ [Fix] Fix stacked bars are over cartesian in some cases. See [#9346](https://github.com/apache/incubator-echarts/issues/9346).
 
-+ [Fix] Fix that legend is not able to scroll when the space is not enough to contain one item. See [#6743](https://github.com/apache/incubator-echarts/issues/6743), [#8971](https://github.com/apache/incubator-echarts/issues/8971), [#9471](https://github.com/apache/incubator-echarts/issues/9471).
++ [Fix] Fix legend is not able to scroll when the space is not enough to contain one item. See [#6743](https://github.com/apache/incubator-echarts/issues/6743), [#8971](https://github.com/apache/incubator-echarts/issues/8971), [#9471](https://github.com/apache/incubator-echarts/issues/9471).
 
-+ [Fix] Fix that the centered pie label might has some bias on some angles. See [#9657](https://github.com/apache/incubator-echarts/issues/9657).
++ [Fix] Fix the centered pie label might has some bias on some angles. See [#9657](https://github.com/apache/incubator-echarts/issues/9657).
 
-+ [Fix] Fix that Geo map panning is not working on MS Edge browser See [#9479](https://github.com/apache/incubator-echarts/issues/9479).
++ [Fix] Fix Geo map panning is not working on MS Edge browser See [#9479](https://github.com/apache/incubator-echarts/issues/9479).
 
-+ [Fix] Fix that label dispaly problem in map series. See [#9682](https://github.com/apache/incubator-echarts/issues/9682).
++ [Fix] Fix label dispaly problem in map series. See [#9682](https://github.com/apache/incubator-echarts/issues/9682).
 
-+ [Fix] Fix that `visualMap: false` set on data items makes subsequent items abnormal. See [#8799](https://github.com/apache/incubator-echarts/issues/8799).
++ [Fix] Fix `visualMap: false` set on data items makes subsequent items abnormal. See [#8799](https://github.com/apache/incubator-echarts/issues/8799).
 
 + [Fix] When `axisLabel.interval` of a category axis is set as `0`, all labels show regardless of overlap. See [#9589](https://github.com/apache/incubator-echarts/issues/9589).
 
@@ -1579,7 +1613,7 @@ Recovery Build
 
 + [+] Add [tooltip.confine](https://ecomfe.github.io/echarts-doc/public/en/option.html#tooltip.confine), which can confine tooltip within contianer of echarts instance. It helps a lot in small screen, or in the situation that outer dom is set to be `overflow:hidden`.
 
-+ [^] Fix that erroneously forbiden default pan behavior in touch device. See [#4393](https://github.com/apache/incubator-echarts/issues/4393).
++ [^] Fix erroneously forbiden default pan behavior in touch device. See [#4393](https://github.com/apache/incubator-echarts/issues/4393).
 
 + [^] Enhance user experience for [geo](https://ecomfe.github.io/echarts-doc/public/en/option.html#geo) / [map](https://ecomfe.github.io/echarts-doc/public/en/option.html#series-map) in touche device.
 
@@ -1593,7 +1627,7 @@ Recovery Build
 
 + [^] Fix highlight error in [dataZoom](https://ecomfe.github.io/echarts-doc/public/en/option.html#dataZoom). See [#4475](https://github.com/apache/incubator-echarts/issues/4475).
 
-+ [^] Fix that can not save as image in MS Edge browser. See [#2451](https://github.com/apache/incubator-echarts/issues/2451) and [#3586](https://github.com/apache/incubator-echarts/issues/3586).
++ [^] Fix can not save as image in MS Edge browser. See [#2451](https://github.com/apache/incubator-echarts/issues/2451) and [#3586](https://github.com/apache/incubator-echarts/issues/3586).
 
 + [^] Fix format problem for `'time'` axis in [tooltip](https://ecomfe.github.io/echarts-doc/public/en/option.html#tooltip). See [#4398](https://github.com/apache/incubator-echarts/issues/4398).
 

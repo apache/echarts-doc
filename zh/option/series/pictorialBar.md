@@ -584,7 +584,7 @@ option = {
 var textureImg = new Image();
 textureImg.src = 'data:image/jpeg;base64,...'; // dataURI
 // 或者
-// textureImg.src = 'http://xxx.xxx.xxx/xx.png'; // URL
+// textureImg.src = 'http://example.website/xx.png'; // URL
 ...
 itemStyle: {
     color: {

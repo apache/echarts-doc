@@ -396,7 +396,8 @@ Actions related to [geo](option.html#geo) component, [geo](option.html#geo) shou
 
 {{ use: action-select(
     componentType='geo',
-    name='geo region'
+    name='geo region',
+    single=true
 ) }}
 
 
@@ -505,7 +506,11 @@ dispatchAction({
 
     {{ use: action-component-query(componentType = 'geo') }}
 
+    {{ if: ${single} }}
+    {{ use: action-component-item-query-single(componentType = 'geo', componentItemDesc = 'region') }}
+    {{ else }}
     {{ use: action-component-item-query-multiple(componentType = 'geo', componentItemDesc = 'region') }}
+    {{ /if }}
 })
 ```
 
@@ -520,7 +525,11 @@ dispatchAction({
 
     {{ use: action-component-query(componentType = 'geo') }}
 
+    {{ if: ${single} }}
+    {{ use: action-component-item-query-single(componentType = 'geo', componentItemDesc = 'region') }}
+    {{ else }}
     {{ use: action-component-item-query-multiple(componentType = 'geo', componentItemDesc = 'region') }}
+    {{ /if }}
 })
 ```
 **EVENT:** [${componentType}unselected](~events.${componentType}unselected)
@@ -534,7 +543,11 @@ dispatchAction({
 
     {{ use: action-component-query(componentType = 'geo') }}
 
+    {{ if: ${single} }}
+    {{ use: action-component-item-query-single(componentType = 'geo', componentItemDesc = 'region') }}
+    {{ else }}
     {{ use: action-component-item-query-multiple(componentType = 'geo', componentItemDesc = 'region') }}
+    {{ /if }}
 })
 ```
 **EVENT:** [${componentType}selectchanged](~events.${componentType}selectchanged)

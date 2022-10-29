@@ -22,7 +22,7 @@ Multiple `series` can be displayed in the same coordinate system. Please refer t
 ) }}
 
 {{ use: partial-coord-sys(
-    seriesType = "cartesian2d",
+    seriesType = "boxplot",
     coordSysDefault = "'cartesian2d'",
     cartesian2d = true
 ) }}

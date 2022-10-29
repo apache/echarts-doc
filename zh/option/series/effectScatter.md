@@ -95,7 +95,7 @@ const option = {
 波纹的绘制方式，可选 `'stroke'` 和 `'fill'`。
 
 {{ use: partial-coord-sys(
-    seriesType = "bar",
+    seriesType = "effectScatter",
     coordSysDefault = "'cartesian2d'",
     cartesian2d = true,
     polar = true,

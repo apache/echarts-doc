@@ -19,7 +19,7 @@ It could be used with [rectangular coordinate](~grid) and [polar coordinate](~po
 {{ use: partial-colorby() }}
 
 {{ use: partial-coord-sys(
-    seriesType = "bar",
+    seriesType = "scatter",
     coordSysDefault = "'cartesian2d'",
     cartesian2d = true,
     polar = true,

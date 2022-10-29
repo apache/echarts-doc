@@ -4,7 +4,7 @@
 
 Most of browser-side charting libraries use SVG or Canvas as their underlying renderer. In the scope of Apache ECharts<sup>TM</sup>, they are usually alternative, without critical differences. But in some environment and scenarios, they show notable differences in performance or functionality.
 
-ECharts has been using Canvas as its renderer (use VML for IE8-) from the beginning. As of [ECharts v3.8](https://github.com/apache/echarts/releases) we provide an SVG renderer (beta version) as another option. Either of them can be used by specifing parameter [renderer](api.html#echarts.init) as `'canvas'` or `'svg'` when initailizing a chart instance.
+ECharts has been using Canvas as its renderer (use VML for IE8-) from the beginning. As of [ECharts v3.8](https://github.com/apache/echarts/releases) we provide an SVG renderer (beta version) as another option. Either of them can be used by specifing parameter [renderer](api.html#echarts.init) as `'canvas'` or `'svg'` when initializing a chart instance.
 
 > Both SVG and Canvas, which are very different rendering implementations, are supported in ECharts by leveraging the Canvas and SVG renderers offered by the [zrender](https://github.com/ecomfe/zrender) library.
 
