@@ -121,27 +121,33 @@ Horizontal align. Defaults to align center. Can be 'left', 'right', 'center'.
     name = "funnel rate"
 ) }}
 
+### precision
+
+The precision of the conversion rate. The default value is 2.
+
 ### formatter(function)
 
 _Callback function_
 
-Callback function is in form of ```label.formatter``` too.
+Callback function is in form of:
 
-And params append following properties.
+```js
+(params: Object|Array) => string
+```
+
+where params is the single dataset needed by formatter, which is formed as:
 
 ```ts
     preName: string,
     // the name of previous data for conversion rate
     nextName: string,
     // the name of next data for conversion rate
-    preIndex: number,
+    preDataIndex: number,
     // the index of previous data for conversion rate
-    nextName: number,
+    nextDataIndex: number,
     // the index of next data for conversion rate
     rate: string,
     // percentage of converison rate between each data
-    isLastPiece: boolean
-    // is current data the last one, if last one, rate will be the overall rate.
 ```
 
 {{ use: partial-funnel-label(
@@ -152,7 +158,7 @@ And params append following properties.
 
 ## overallRateLabel(Object) 
 
-the config of overallRateLabel is same as rateLabel, the function of this property is to set the overall conversion rate display. 
+The config of overallRateLabel is same as rateLabel, the function of this property is to set the overall conversion rate display. 
 
 ## labelLine(Object)
 

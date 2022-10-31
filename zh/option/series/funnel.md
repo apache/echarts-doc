@@ -142,13 +142,19 @@ option = {
     name = "funnel rate"
 ) }}
 
+### precision
+
+漏斗数据转化率的精度.默认值是2.
+
 ### formatter(string|function)
 
 _回调函数_
 
 回调函数格式：
 
+```js
 (params: Object|Array) => string
+```
 
 参数 params 是 formatter 需要的单个数据集。格式如下：
 
@@ -160,12 +166,10 @@ _回调函数_
     // 当前转化率前一个数据的名称
     nextName: string,
     // 当前转化率后一个数据的名称
-    preIndex: number,
+    preDataIndex: number,
     // 当前转化率前一个数据的索引
-    nextIndex: number,
+    nextDataIndex: number,
     // 当前转化率后一个数据的索引
-    isLastPiece: boolean
-    // 当前数据是否是最后一个数据，如果是最后一个，转化率为整体转化率
 }
 ```
 
