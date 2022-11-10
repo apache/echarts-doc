@@ -3,9 +3,9 @@
 
 # geo(Object)
 
-Geographic coorinate system component.
+Geographic coordinate system component.
 
-Geographic coorinate system component is used to draw maps, which also supports [scatter series](~series-scatter), and [line series](~series-lines).
+Geographic coordinate system component is used to draw maps, which also supports [scatter series](~series-scatter), and [line series](~series-lines).
 
 
 From `3.1.10`, geo component also supports mouse events, whose parameters are:
