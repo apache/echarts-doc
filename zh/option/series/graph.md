@@ -162,7 +162,7 @@ edgeLength: [10, 50]
 
 节点是否可拖拽。
 
-注意：`v5.3.3` 之前的版本只在使用[力引导布局](~series-graph.force)的时候才有用。
+注意：`v5.4.1` 之前的版本只在使用[力引导布局](~series-graph.force)的时候才有用。
 
 {{ use: partial-symbol(
     prefix = '#',
