@@ -1575,6 +1575,10 @@ Position of `textContent`.
 
 阴影颜色。
 
+###${prefix} opacity(number) = 1
+
+不透明度。
+
 {{ use: partial-graphic-cpt-sub-prop-transition(
     prefix = ${prefix},
     hostProp = 'style',
