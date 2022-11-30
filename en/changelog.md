@@ -24,7 +24,6 @@
 + [Fix] [platformApi]: fix wrong expression for extracting the font size [#968](https://github.com/ecomfe/zrender/issues/968) ([plainheart](https://github.com/plainheart))
 + [Fix] [marker]: fix `markArea` doesn't show when using `x/y` pixel but `coord` is not defined [#17217](https://github.com/apache/echarts/issues/17217) ([jiawulin001](https://github.com/jiawulin001))
 + [Fix] [markArea]: markArea of bar series now covers whole categories specified [#17098](https://github.com/apache/echarts/issues/17098) ([jiawulin001](https://github.com/jiawulin001))
-+ [Style] [lint]: fix spacing issues and remove unused imports and functions [#17695](https://github.com/apache/echarts/issues/17695) ([plainheart](https://github.com/plainheart))
 
 ## v5.4.0
 <div class="time">2022-09-25</div>
