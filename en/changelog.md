@@ -1,3 +1,31 @@
+## 5.4.1
+
++ feat(i18n): add Hungarian(hu_HU) translation [#17978](https://github.com/apache/echarts/issues/17978) ([ifjkovacsik](https://github.com/ifjkovacsik))
++ fix(dataZoom): fallback to extent start/end when value or percent is invalid [#17934](https://github.com/apache/echarts/issues/17934) ([plainheart](https://github.com/plainheart))
++ fix(pie): fix `center` may not be converted to correct point when coordinate system is specified [#17920](https://github.com/apache/echarts/issues/17920) ([plainheart](https://github.com/plainheart))
++ fix(type): add `string` & `number` type into the `center` option of pie series [#17917](https://github.com/apache/echarts/issues/17917) ([plainheart](https://github.com/plainheart))
++ feat(type): export `ECElementEvent` for TypeScript [#17892](https://github.com/apache/echarts/issues/17892) ([keita-determined](https://github.com/keita-determined))
++ fix(heatmap): fix heatmap label may overlap when `dataZoom` is enabled [#17876](https://github.com/apache/echarts/issues/17876) ([plainheart](https://github.com/plainheart))
++ fix(tooltip): fix tooltip arrow may cover the content when border is wide [#17875](https://github.com/apache/echarts/issues/17875) ([plainheart](https://github.com/plainheart))
++ fix(i18n): language code for Ukrainian is UK, not UA (follow-up) [#17812](https://github.com/apache/echarts/issues/17812) ([striezel](https://github.com/striezel))
++ fix(type): add overflow property to AxisLabelBaseOption interface. close #17363 [#17808](https://github.com/apache/echarts/issues/17808) ([breizh24](https://github.com/breizh24))
++ fix(lines): add missing `function` callback into `lineStyle.color` for lines series. [#17780](https://github.com/apache/echarts/issues/17780) ([plainheart](https://github.com/plainheart))
++ feat(svg): support gradients and patterns for background color in SVG renderer [#959](https://github.com/ecomfe/zrender/issues/959) ([plainheart](https://github.com/plainheart))
++ fix(pie): fix percent isn't updated after the legend is changed [#17734](https://github.com/apache/echarts/issues/17734) ([plainheart](https://github.com/plainheart))
++ fix: EChartsInitOpts type error about height and width. close #17667 [#17727](https://github.com/apache/echarts/issues/17727) ([MainHou](https://github.com/MainHou))
++ feat(candlestick): provide borderColorDoji option for custom doji color [#17717](https://github.com/apache/echarts/issues/17717) ([Ovilia](https://github.com/Ovilia))
++ fix(pie): fix `labelLine` NPE when `minShowLabelRadian` is set [#17715](https://github.com/apache/echarts/issues/17715) ([plainheart](https://github.com/plainheart))
++ style(lint): fix spacing issues and remove unused imports and functions [#17695](https://github.com/apache/echarts/issues/17695) ([plainheart](https://github.com/plainheart))
++ fix #17633: add gauge sectors in the order of the "clockwise" option [#17691](https://github.com/apache/echarts/issues/17691) ([ZeekoZhu](https://github.com/ZeekoZhu))
++ fix(timeline): fix chart can't work when axis line is not shown [#17647](https://github.com/apache/echarts/issues/17647) ([plainheart](https://github.com/plainheart))
++ fix: incorrect dataGroupId for old data items in universalTransition [#17559](https://github.com/apache/echarts/issues/17559) ([tyn1998](https://github.com/tyn1998))
++ fix: legend inverse doesn't work if series/data have the same name [#17510](https://github.com/apache/echarts/issues/17510) ([caiwukun](https://github.com/caiwukun))
++ fix(platformApi): fix wrong expression for extracting the font size [#968](https://github.com/ecomfe/zrender/issues/968) ([plainheart](https://github.com/plainheart))
++ fix(marker): fix `markArea` doesn't show when using `x/y` pixel but `coord` is not defined [#17217](https://github.com/apache/echarts/issues/17217) ([jiawulin001](https://github.com/jiawulin001))
++ fix: markArea of bar series now covers whole categories specified [#17098](https://github.com/apache/echarts/issues/17098) ([jiawulin001](https://github.com/jiawulin001))
++ feat(sankey): `sankey` support `edgeLabel` [#16767](https://github.com/apache/echarts/issues/16767) ([susiwen8](https://github.com/susiwen8))
++ feat(graph): make graph node draggable in `none` and `circular` layout [#15428](https://github.com/apache/echarts/issues/15428) ([kongmoumou](https://github.com/kongmoumou))
+
 ## v5.4.0
 <div class="time">2022-09-25</div>
 
