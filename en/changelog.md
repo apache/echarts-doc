@@ -11,7 +11,6 @@
 + [Fix] [heatmap] Fix heatmap label may overlap when `dataZoom` is enabled [#17876](https://github.com/apache/echarts/issues/17876) ([plainheart](https://github.com/plainheart))
 + [Fix] [tooltip] Fix tooltip arrow may cover the content when border is wide [#17875](https://github.com/apache/echarts/issues/17875) ([plainheart](https://github.com/plainheart))
 + [Fix] [i18n] Rename language code of Ukrainian to `UK` [#17812](https://github.com/apache/echarts/issues/17812) ([striezel](https://github.com/striezel))
-+ [Fix] [lines] Add missing `function` callback into `lineStyle.color` for lines series. [#17780](https://github.com/apache/echarts/issues/17780) ([plainheart](https://github.com/plainheart))
 + [Fix] [pie] Fix percent isn't updated after the legend is changed [#17734](https://github.com/apache/echarts/issues/17734) ([plainheart](https://github.com/plainheart))
 + [Fix] [pie] Fix `labelLine` NPE when `minShowLabelRadian` is set [#17715](https://github.com/apache/echarts/issues/17715) ([plainheart](https://github.com/plainheart))
 + [Fix] [gauge] Render gauge sectors in the order of the "clockwise" option [#17691](https://github.com/apache/echarts/issues/17691) ([ZeekoZhu](https://github.com/ZeekoZhu))
@@ -24,6 +23,7 @@
 + [Fix] [type] EChartsInitOpts type error about height and width. close #17667 [#17727](https://github.com/apache/echarts/issues/17727) ([MainHou](https://github.com/MainHou))
 + [Fix] [type] Add overflow property to AxisLabelBaseOption interface. close #17363 [#17808](https://github.com/apache/echarts/issues/17808) ([breizh24](https://github.com/breizh24))
 + [Fix] [type] Add `string` & `number` type into the `center` option of pie series [#17917](https://github.com/apache/echarts/issues/17917) ([plainheart](https://github.com/plainheart))
++ [Fix] [type] Add missing `function` callback into `lineStyle.color` for lines series. [#17780](https://github.com/apache/echarts/issues/17780) ([plainheart](https://github.com/plainheart))
 
 ## v5.4.0
 <div class="time">2022-09-25</div>
