@@ -21,7 +21,7 @@
 + [Fix] [marker] Fix `markArea` doesn't show when using `x/y` pixel but `coord` is not defined [#17217](https://github.com/apache/echarts/issues/17217) ([jiawulin001](https://github.com/jiawulin001))
 + [Fix] [markArea] `MarkArea` of bar series now covers whole specified categories [#17098](https://github.com/apache/echarts/issues/17098) ([jiawulin001](https://github.com/jiawulin001))
 + [Fix] [type] EChartsInitOpts type error about height and width. close #17667 [#17727](https://github.com/apache/echarts/issues/17727) ([MainHou](https://github.com/MainHou))
-+ [Fix] [type] Add overflow property to AxisLabelBaseOption interface. close #17363 [#17808](https://github.com/apache/echarts/issues/17808) ([breizh24](https://github.com/breizh24))
++ [Fix] [type] Add `overflow` property to `AxisLabelBaseOption` interface. close #17363 [#17808](https://github.com/apache/echarts/issues/17808) ([breizh24](https://github.com/breizh24))
 + [Fix] [type] Add `string` & `number` type into the `center` option of pie series [#17917](https://github.com/apache/echarts/issues/17917) ([plainheart](https://github.com/plainheart))
 + [Fix] [type] Add missing `function` callback into `lineStyle.color` for lines series. [#17780](https://github.com/apache/echarts/issues/17780) ([plainheart](https://github.com/plainheart))
 
