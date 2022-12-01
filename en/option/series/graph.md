@@ -146,7 +146,9 @@ Related zooming ratio of nodes when mouse zooming in or out. When it is set as 0
 
 <ExampleUIControlBoolean default="false" />
 
-If node is draggable. Only available when using force-directed layout.
+If node is draggable.
+
+Note that this option is only available when using [force-directed layout](~series-graph.force) before `v5.4.1`.
 
 {{ use: partial-symbol(
     prefix = '#',
