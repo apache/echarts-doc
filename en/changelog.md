@@ -1,7 +1,7 @@
 ## v5.4.1
 
 + [Feature] [i18n] Add Hungarian(hu_HU) translation. [#17978](https://github.com/apache/echarts/issues/17978) ([ifjkovacsik](https://github.com/ifjkovacsik))
-+ [Feature] [svg] Support gradients and patterns for background color in SVG renderer. [#959](https://github.com/ecomfe/zrender/issues/959) ([plainheart](https://github.com/plainheart)
++ [Feature] [svg] Support gradients and patterns for background color in SVG renderer. [#959](https://github.com/ecomfe/zrender/issues/959) ([plainheart](https://github.com/plainheart))
 + [Feature] [candlestick] Provide `borderColorDoji` option for custom doji color. [#17717](https://github.com/apache/echarts/issues/17717) ([Ovilia](https://github.com/Ovilia))
 + [Feature] [sankey] `Sankey` support `edgeLabel`. [#16767](https://github.com/apache/echarts/issues/16767) ([susiwen8](https://github.com/susiwen8))
 + [Feature] [graph] Make graph node draggable in `none` and `circular` layout. [#15428](https://github.com/apache/echarts/issues/15428) ([kongmoumou](https://github.com/kongmoumou))
@@ -22,7 +22,7 @@
 + [Fix] [marker] Fix `markArea` doesn't show when using `x/y` pixel but `coord` is not defined. [#17217](https://github.com/apache/echarts/issues/17217) ([jiawulin001](https://github.com/jiawulin001))
 + [Fix] [marker] `MarkArea` of bar series now covers whole specified categories. [#17098](https://github.com/apache/echarts/issues/17098) ([jiawulin001](https://github.com/jiawulin001))
 + [Fix] [svg]: Fix shape may disappear after morphing animation is finished in SVG renderer. ([plainheart](https://github.com/plainheart))
-+ [Fix] [type] EChartsInitOpts type error about height and width. [#17727](https://github.com/apache/echarts/issues/17727) ([MainHou](https://github.com/MainHou))
++ [Fix] [type] `EChartsInitOpts` type error about height and width. [#17727](https://github.com/apache/echarts/issues/17727) ([MainHou](https://github.com/MainHou))
 + [Fix] [type] Add `overflow` property to `AxisLabelBaseOption` interface. [#17808](https://github.com/apache/echarts/issues/17808) ([breizh24](https://github.com/breizh24))
 + [Fix] [type] Add `string` & `number` type into the `center` option of pie series. [#17917](https://github.com/apache/echarts/issues/17917) ([plainheart](https://github.com/plainheart))
 + [Fix] [type] Add missing `function` callback into `lineStyle.color` for lines series. [#17780](https://github.com/apache/echarts/issues/17780) ([plainheart](https://github.com/plainheart))
