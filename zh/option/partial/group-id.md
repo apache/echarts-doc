@@ -27,7 +27,7 @@
 
 该数据项对应的子数据组 ID，用于实现多层下钻和聚合。
 
-~[700x300](${galleryViewPath}doc-example/bar-drilldown&edit=1&reset=1)
+~[700x300](${galleryViewPath}doc-example/bar-multi-drilldown&edit=1&reset=1)
 
 通过`groupId`已经可以达到数据下钻和聚合的效果，但只支持一层的下钻和聚合。为了实现多层下钻和聚合，我们又引入了`childGroupId`。
 
