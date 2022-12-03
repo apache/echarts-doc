@@ -21,6 +21,10 @@
 
 #${prefix} childGroupId(string)
 
+{{ use: partial-version(
+    version = "5.5.0"
+) }}
+
 该数据项对应的子数据组 ID，用于实现多层下钻和聚合。
 
 ~[700x300](${galleryViewPath}doc-example/bar-drilldown&edit=1&reset=1)

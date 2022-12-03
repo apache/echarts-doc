@@ -66,6 +66,7 @@ encode: {
     itemGroupId: 4,
     // Using dimension[5] as the child group ID for each data item. This option is introduced to
     // make multiple levels drilldown and aggregation animation come true. See childGroupId for more.
+    // Since v5.5.0
     itemChildGroupId: 5
 }
 

@@ -23,6 +23,10 @@ If you are using the [dataset](~dataset) component to represent data, you are re
 
 #${prefix} childGroupId(string)
 
+{{ use: partial-version(
+    version = "5.5.0"
+) }}
+
 The group ID of the child data of a data item. This option is introduced to make multiple levels drilldown and aggregation animation possilbe.
 
 ~[700x300](${galleryViewPath}doc-example/bar-drilldown&edit=1&reset=1)

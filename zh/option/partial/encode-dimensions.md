@@ -58,6 +58,7 @@ encode: {
     // 指定数据项的组 ID (groupId)。当全局过渡动画功能开启时，setOption 前后拥有相同 groupId 的数据项会进行动画过渡。
     itemGroupId: 4,
     // 指定数据项对应的子数据组 ID (childGroupId)，用于实现多层下钻和聚合。详见 childGroupId。
+    // 从 v5.5.0 开始支持
     itemChildGroupId: 5
 }
 
