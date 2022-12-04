@@ -48,7 +48,7 @@ Area style of data shadow
 {{ use: partial-area-style(
     prefix = "###",
     defaultOpacity = 0.2,
-    defaultColor = 'd2dbee'
+    defaultColor = '#d2dbee'
 ) }}
 
 ## selectedDataBackground(Object)

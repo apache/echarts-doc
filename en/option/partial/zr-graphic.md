@@ -1591,7 +1591,11 @@ Y offset of shadow.
 
 ###${prefix} shadowColor(number) = undefined
 
-color of shadow.
+Color of shadow.
+
+###${prefix} opacity(number) = 1
+
+Opacity of this element.
 
 {{ use: partial-graphic-cpt-sub-prop-transition(
     prefix = ${prefix},

@@ -22,7 +22,8 @@
 + [series-candlestick.itemStyle.color](~series-candlestick.itemStyle.color)：阳线填充色（即『涨』）
 + [series-candlestick.itemStyle.color0](~series-candlestick.itemStyle.color0)：阴线填充色（即『跌』）
 + [series-candlestick.itemStyle.borderColor](~series-candlestick.itemStyle.borderColor)：阳线边框色（即『涨』）
-+ [series-candlestick.itemStyle.borderColor0](series-candlestick.itemStyle.borderColor0)：阴线边框色（即『跌』）
++ [series-candlestick.itemStyle.borderColor0](~series-candlestick.itemStyle.borderColor0)：阴线边框色（即『跌』）
++ [series-candlestick.itemStyle.borderColorDoji](~series-candlestick.itemStyle.borderColorDoji)：十字星边框色（即开盘价等于收盘价时候的边框色）
 
 
 <br>
@@ -525,6 +526,18 @@ K 线图的选中状态。开启 [selectedMode](~series-candlestick.selectedMode
 
 {{ use: partial-color-desc() }}
 
+#${prefix} borderColorDoji(Color) = null
+
+<ExampleUIControlColor />
+
+{{ use: partial-version(
+    version = "5.4.1"
+) }}
+
+十字星（开盘价等于收盘价）的描边颜色。
+
+{{ use: partial-color-desc() }}
+
 #${prefix} borderWidth(number) = ${defaultBorderWidth}
 
 <ExampleUIControlNumber min="0" step="0.5" default="${defaultBorderWidth}" />
@@ -539,4 +552,3 @@ candlestick 描边线宽。为 0 时无描边。
     defaultShadowOffsetX = ${defaultShadowOffsetX},
     defaultShadowOffsetY = ${defaultShadowOffsetY}
 ) }}
-
