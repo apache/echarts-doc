@@ -2,7 +2,7 @@
 
 + [Feature] [i18n] 新增匈牙利语翻译。[#17978](https://github.com/apache/echarts/issues/17978) ([ifjkovacsik](https://github.com/ifjkovacsik))
 + [Feature] [svg] SVG 渲染器支持设置渐变色 (gradient) 和图案 (pattern) 作为背景。[#959](https://github.com/ecomfe/zrender/issues/959) ([plainheart](https://github.com/plainheart))
-+ [Feature] [candlestick] 新增 `borderColorDoji` 配置项用以自定义十字星边框色。[#17717](https://github.com/apache/echarts/issues/17717) ([Ovilia](https://github.com/Ovilia))
++ [Feature] [candlestick] K 线图新增 `borderColorDoji` 配置项用以自定义十字星边框色。[#17717](https://github.com/apache/echarts/issues/17717) ([Ovilia](https://github.com/Ovilia))
 + [Feature] [sankey] 桑基图新增 `edgeLabel` 配置项用以自定义关系边的文本样式。[#16767](https://github.com/apache/echarts/issues/16767) ([susiwen8](https://github.com/susiwen8))
 + [Feature] [graph] 关系图节点支持在 `none` 和 `circular` 布局中拖拽。[#15428](https://github.com/apache/echarts/issues/15428) ([kongmoumou](https://github.com/kongmoumou))
 + [Feature] [util] `HashMap` 现在优先采用浏览器原生内置 `Map` 实现。[#965](https://github.com/ecomfe/zrender/issues/965) ([JonasBa](https://github.com/JonasBa))
