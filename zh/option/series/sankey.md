@@ -85,6 +85,12 @@ const option = {"tooltip":{"trigger":"item","triggerOn":"mousemove"},"series":[{
 
 控制节点拖拽的交互，默认开启。开启后，用户可以将图中任意节点拖拽到任意位置。若想关闭此交互，只需将值设为 `false` 就行了。
 
+## edgeLabel(Object)
+
+{{ use: sankey-edge-label(
+    prefix = "##"
+) }}
+
 ## levels(Array)
 
 桑基图每一层的设置。可以逐层设置，如下：
@@ -377,12 +383,8 @@ links: [{
 
 边的数值，决定边的宽度。
 
-### lineStyle(Object)
-
-关系边的线条样式。
-
-{{ use: partial-sankey-line-style(
-    prefix = "###"
+{{ use: sankey-edge-state(
+    prefix = "##"
 ) }}
 
 ### emphasis(Object)
@@ -391,11 +393,9 @@ links: [{
     prefix = "###"
 ) }}
 
-#### lineStyle(Object)
-
-{{ use: partial-sankey-line-style(
-    prefix = "####",
-    hasInherit = true
+{{ use: sankey-edge-state(
+    prefix = "###",
+    state = "emphasis"
 ) }}
 
 ### blur(Object)
@@ -404,10 +404,9 @@ links: [{
     version = "5.0.0"
 ) }}
 
-#### lineStyle(Object)
-
-{{ use: partial-sankey-line-style(
-    prefix = "####"
+{{ use: sankey-edge-state(
+    prefix = "###",
+    state = "blur"
 ) }}
 
 ### select(Object)
@@ -420,10 +419,9 @@ links: [{
     prefix = "###"
 ) }}
 
-#### lineStyle(Object)
-
-{{ use: partial-sankey-line-style(
-    prefix = "####"
+{{ use: sankey-edge-state(
+    prefix = "###",
+    state = "select"
 ) }}
 
 ## edges(Array)
@@ -497,6 +495,12 @@ links: [{
     formatter1d = ${prefix} === '##'
 ) }}
 
+#${prefix} edgeLabel(Object)
+
+{{ use: sankey-edge-label(
+    prefix = "#" + ${prefix}
+) }}
+
 #${prefix} itemStyle(Object)
 
 {{ use: partial-item-style(
@@ -511,3 +515,37 @@ links: [{
     hasInherit = ${state} === 'emphasis'
 ) }}
 
+
+
+{{ target: sankey-edge-state }}
+
+#${prefix} edgeLabel(Object)
+
+{{ use: sankey-edge-label(
+    prefix = "#" + ${prefix}
+) }}
+
+#${prefix} lineStyle(Object)
+
+关系边的线条样式。
+
+{{ use: partial-sankey-line-style(
+    prefix = "#" + ${prefix},
+    hasInherit = ${state} === 'emphasis'
+) }}
+
+
+
+{{ target: sankey-edge-label }}
+
+{{ use: partial-version(
+    version = "5.4.1"
+) }}
+
+关系边文本标签的样式。
+
+{{ use: partial-label(
+    prefix = ${prefix},
+    noPosition = true,
+    formatter1d = true
+) }}
