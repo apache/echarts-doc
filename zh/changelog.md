@@ -1,4 +1,5 @@
 ## v5.4.1
+<div class="time">2022-12-09</div>
 
 + [Feature] [i18n] 新增匈牙利语翻译。[#17978](https://github.com/apache/echarts/issues/17978) ([ifjkovacsik](https://github.com/ifjkovacsik))
 + [Feature] [svg] SVG 渲染器支持设置渐变色 (gradient) 和图案 (pattern) 作为背景。[#959](https://github.com/ecomfe/zrender/issues/959) ([plainheart](https://github.com/plainheart))
