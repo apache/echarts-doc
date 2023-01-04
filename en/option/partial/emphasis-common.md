@@ -40,7 +40,7 @@ When the data is highlighted, whether to fade out of other data to focus the hig
 
 {{ if: ${isGraph} }}
 + `'adjacency'` Focus on the elements of adjacent nodes and edges in the graph.
-+ `'fullPath'` Focus on all the elements connected to the node or edge in the graph. 
++ `'trajectory'` Focus on all the elements connected to the node or edge in the graph. 
 
 {{ elif: ${isTree} }}
 + `'ancestor'` Focus on all ancestor nodes.
