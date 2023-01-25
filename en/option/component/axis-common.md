@@ -749,7 +749,7 @@ Example:
 // Use string template; template variable is the default label of axis {value}
 formatter: '{value} kg'
 // Use callback.
-formatter: function (value, index) {
+formatter: function (value, index, tick) {
     return value + 'kg';
 }
 ```
@@ -803,19 +803,35 @@ formatter: 'Day {d}' // gets labels like 'Day 2'
 
 ** Callback Functions **
 
-Callback functions can be used to get different formats for different axis tick values. Sometimes, if you have complex date/time formatting requirement, third-party libraries like [Moment.js](https://momentjs.com/) or [date-fns](https://date-fns.org/) can be used to return formatted labels.
+Callback functions can be used to get different formats for different axis tick values. Sometimes, if you have complex date/time formatting requirement, third-party libraries like [Moment.js](https://momentjs.com/) (deprecated), [Luxon](https://moment.github.io/luxon/), or [date-fns](https://date-fns.org/) can be used to return formatted labels.
+
+The callback function gets three arguments passed:
+
+1. `value: number` - date as milliseconds
+2. `index: number` - the index of the label, starting with `0` (and for compatibility reasons with older version the `1` is missing sometimes)
+3. `tick: TimeScaleTick` - additional information about the tick. For time axis it contains a level.
+
+NOTE: Level information is used for label formatting.
+   For example, a time axis may contain labels like: Jan, 8th, 16th, 23th,
+   Feb, and etc. In this case, month labels like Jan and Feb should be
+   displayed in a more significant way than days.
+   `level` is set to be 1 when it's the most significant level, like month
+   labels in the above case.
 
 Example:
+
 ```ts
 // Use callback function; function parameters are axis index
-formatter: function (value, index) {
+formatter: function (value, index, tick) {
     // Formatted to be month/day; display year only in the first label
     var date = new Date(value);
     var texts = [(date.getMonth() + 1), date.getDate()];
     if (index === 0) {
         texts.unshift(date.getYear());
     }
-    return texts.join('/');
+    let label = texts.join('/');
+    // apply bold style via rich text for significant levels, i.e. `level > 0`
+    return tick.level ? `{bold|${label}}` : label;
 }
 ```
 
