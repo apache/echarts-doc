@@ -271,6 +271,12 @@ function(nodeA, nodeB) {
 
 If there is no `name`, whether need to render it.
 
+## startAngle(number) = 90
+
+<ExampleUIControlAngle step="1" min="0" max="360" default="90" />
+
+The start angle, which range is [0, 360].
+
 {{ use: partial-sunburst-label-props(
     prefix = "#",
     state = 'normal'

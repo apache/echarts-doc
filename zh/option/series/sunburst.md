@@ -420,6 +420,12 @@ function(nodeA, nodeB) {
 
 如果数据没有 `name`，是否需要渲染文字。
 
+## startAngle(number) = 90
+
+<ExampleUIControlAngle step="1" min="0" max="360" default="90" />
+
+起始角度，支持范围[0, 360]。
+
 {{ use: partial-sunburst-label-props(
     prefix = "#",
     state = 'normal'
