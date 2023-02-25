@@ -271,6 +271,12 @@ function(nodeA, nodeB) {
 
 If there is no `name`, whether need to render it.
 
+## clockwise(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
+
+Whether the layout of sectors of sunburst chart is clockwise.
+
 ## startAngle(number) = 90
 
 <ExampleUIControlAngle step="1" min="0" max="360" default="90" />

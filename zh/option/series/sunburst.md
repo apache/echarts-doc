@@ -420,6 +420,12 @@ function(nodeA, nodeB) {
 
 如果数据没有 `name`，是否需要渲染文字。
 
+## clockwise(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
+
+旭日图的扇区是否是顺时针排布。
+
 ## startAngle(number) = 90
 
 <ExampleUIControlAngle step="1" min="0" max="360" default="90" />
