@@ -312,11 +312,19 @@ The first parameter `params` is the data that the formatter needs. Its format is
 
 {{ use: partial-formatter-params-structure(
     extra = {
-    percent: {
-        desc: 'the percentage of pie chart',
-    type = 'number'
+        percent: {
+            desc: 'The percentage of current data item in the pie/funnel series',
+            type: 'number'
+        },
+        treePathInfo: {
+            desc: 'The ancestors of current node in the sunburst series (including self)',
+            type: 'Array'
+        },
+        treeAncestors: {
+            desc: 'The ancestors of current node in the tree/treemap series (including self)',
+            type: 'Array'
+        }
     }
-}
 ) }}
 
 When [trigger](~tooltip.trigger) is `'axis'`, or when tooltip is triggered by [axisPointer](~xAxis.axisPointer), `params` is the data array of multiple series. The content of each item of the array is the same as above. Besides,

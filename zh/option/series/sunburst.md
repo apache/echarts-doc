@@ -32,6 +32,12 @@
     prefix = ${prefix},
     defaultPosition = "'inside'",
     formatter = true,
+    formatterExtra = {
+        treePathInfo: {
+            desc: '当前节点的祖先节点（包括自身）',
+            type: 'Array'
+        }
+    },
     defaultShowLabel = "true",
     noRotate = true,
     noAlign = true
@@ -392,6 +398,8 @@ const option = {
     state = 'normal'
 ) }}
 
+{{ use: partial-tooltip-in-series-data() }}
+
 ## nodeClick(boolean|string) = 'rootToNode'
 
 <ExampleUIControlEnum default="rootToNode" options="rootToNode,link" />
@@ -556,6 +564,8 @@ series: {
     prefix = "###",
     state = 'select'
 ) }}
+
+{{ use: partial-tooltip-in-series() }}
 
 {{ use: partial-animation(
     prefix = "#",

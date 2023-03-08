@@ -321,8 +321,16 @@ formatter: '{b0}: {c0}<br />{b1}: {c1}'
 {{ use: partial-formatter-params-structure(
     extra = {
         percent: {
-            desc: '饼图，漏斗图的百分比',
-            type = 'number'
+            desc: '饼图/漏斗图的百分比',
+            type: 'number'
+        },
+        treePathInfo: {
+            desc: '旭日图中当前节点的祖先节点（包括自身）',
+            type: 'Array'
+        },
+        treeAncestors: {
+            desc: '树图/矩形树图中当前节点的祖先节点（包括自身）',
+            type: 'Array'
         }
     }
 ) }}
