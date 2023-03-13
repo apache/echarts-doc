@@ -49,6 +49,11 @@ When the data is highlighted, whether to fade out of other data to focus the hig
 + `'relative'` Focus on all ancestor and descendants nodes. (Since `v${version}`)
 {{ /if }}
 
+
+{{ if: ${isSankey} }}
++ `'trajectory'` Focus on all the elements connected to the node or edge in the graph.
+{{ /if }}
+
 **Example: **
 
 {{ if: !${isGeoCoordSys} }}
