@@ -216,7 +216,8 @@ Configurations of emphasis state.
 ) }}
 
 {{ use: partial-focus-blur-scope(
-    isGraph = true
+    isGraph = true,
+    isSankey = true
 ) }}
 
 {{ use: sankey-state(

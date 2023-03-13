@@ -40,7 +40,6 @@ When the data is highlighted, whether to fade out of other data to focus the hig
 
 {{ if: ${isGraph} }}
 + `'adjacency'` Focus on the elements of adjacent nodes and edges in the graph.
-+ `'trajectory'` Focus on all the elements connected to the node or edge in the graph. 
 
 {{ elif: ${isTree} }}
 + `'ancestor'` Focus on all ancestor nodes.
@@ -48,6 +47,11 @@ When the data is highlighted, whether to fade out of other data to focus the hig
 {{ /if }}
 {{ if: ${hasRelative} }}
 + `'relative'` Focus on all ancestor and descendants nodes. (Since `v${version}`)
+{{ /if }}
+
+
+{{ if: ${isSankey} }}
++ `'trajectory'` Focus on all the elements connected to the node or edge in the graph.
 {{ /if }}
 
 **Example: **
