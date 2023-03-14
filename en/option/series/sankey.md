@@ -223,7 +223,8 @@ Configurations of emphasis state.
 
 {{ use: partial-focus-blur-scope(
     isGraph = true,
-    isSankey = true
+    hasTrajectory = true,
+    trajectoryVersion = "5.5.0"
 ) }}
 
 {{ use: sankey-state(

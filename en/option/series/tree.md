@@ -163,7 +163,7 @@ Configurations of emphasis state.
 {{ use: partial-focus-blur-scope(
     isTree = true,
     hasRelative = true,
-    version = "5.3.3"
+    relativeVersion = "5.3.3"
 ) }}
 
 {{ use: tree-state(

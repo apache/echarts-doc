@@ -46,12 +46,10 @@ When the data is highlighted, whether to fade out of other data to focus the hig
 + `'descendant'` Focus on all descendants nodes.
 {{ /if }}
 {{ if: ${hasRelative} }}
-+ `'relative'` Focus on all ancestor and descendants nodes. (Since `v${version}`)
++ `'relative'` Focus on all ancestor and descendants nodes. (Since `v${relativeVersion}`)
 {{ /if }}
-
-
-{{ if: ${isSankey} }}
-+ `'trajectory'` Focus on all the elements connected to the node or edge in the graph.
+{{ if: ${hasTrajectory} }}
++ `'trajectory'` Focus on all the elements connected to the node or edge in the graph. (Since `v${trajectoryVersion}`)
 {{ /if }}
 
 **Example: **
