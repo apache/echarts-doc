@@ -1,3 +1,20 @@
+## v5.4.2
+<div class="time"></div>
+
++ [Feature] [bar] 极坐标系柱状图柱条及其背景支持设置圆角。[#17995](https://github.com/apache/echarts/issues/17995) ([Ovilia](https://github.com/Ovilia))
++ [Feature] [i18n] 新增土耳其语翻译。[#18012](https://github.com/apache/echarts/issues/18012) ([partitect](https://github.com/partitect))
++ [Feature] [i18n] 新增越南语翻译。[#18279](https://github.com/apache/echarts/issues/18279) ([nghiepdev](https://github.com/nghiepdev))
++ [Fix] [bar] 极坐标系柱状图动画现在从 `r0` 开始，不再是从 `0` 开始。[#17997](https://github.com/apache/echarts/issues/17997) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [marker] 修复柱状图 `markArea` 范围展示异常的问题。[#18229](https://github.com/apache/echarts/issues/18229) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [line] 修复当启用服务端渲染时，折线图标签不显示的问题。[#18032](https://github.com/apache/echarts/issues/18032) ([plainheart](https://github.com/plainheart))
++ [Fix] [svg] 修复因 SVG 渲染器对 `style` 标签内容的错误编码导致定义的 CSS 样式不生效的问题。[#982](https://github.com/ecomfe/zrender/pull/982) ([plainheart](https://github.com/plainheart))
++ [Fix] [sunburst] 修复旭日图标签径向旋转时上下颠倒影响阅读的问题。[#18240](https://github.com/apache/echarts/issues/18240) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [dataset] 修复数据集使用对象数组时，若数据对象含有 `length` 属性导致图表不能渲染的问题。[#18276](https://github.com/apache/echarts/issues/18276) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [tooltip] 修复 `tooltip` 设置了 `alwaysShowContent` 鼠标移出后仍然消失的问题。[#18221](https://github.com/apache/echarts/issues/18221) ([jianghaoran116](https://github.com/jianghaoran116))
++ [Fix] [text] 修复部分西里尔文字符没有像拉丁文一样断词的问题。[#973](https://github.com/ecomfe/zrender/issues/973) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [type] 旭日图 formatter 回调函数参数添加缺失的 `treePathInfo` 属性，`SunburstSeriesOption` 添加缺失的 `data` 配置项。[#18310](https://github.com/apache/echarts/issues/18310) ([plainheart](https://github.com/plainheart))
++ [Fix] [type] 树图 `symbol` 配置项添加缺失的回调函数类型。[#18070](https://github.com/apache/echarts/issues/18070) ([ChepteaCatalin](https://github.com/ChepteaCatalin))
+
 ## v5.4.1
 <div class="time">2022-12-09</div>
 
