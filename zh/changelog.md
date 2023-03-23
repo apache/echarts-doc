@@ -1,5 +1,5 @@
 ## v5.4.2
-<div class="time"></div>
+<div class="time">2023-03-23</div>
 
 + [Feature] [bar] 极坐标系柱状图柱条及其背景支持设置圆角。[#17995](https://github.com/apache/echarts/issues/17995) ([Ovilia](https://github.com/Ovilia))
 + [Feature] [i18n] 新增土耳其语翻译。[#18012](https://github.com/apache/echarts/issues/18012) ([partitect](https://github.com/partitect))

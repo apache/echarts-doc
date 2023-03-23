@@ -1,5 +1,5 @@
 ## v5.4.2
-<div class="time"></div>
+<div class="time">2023-03-23</div>
 
 + [Feature] [bar] Support `borderRadius` for polar bar and its background. [#17995](https://github.com/apache/echarts/issues/17995) ([Ovilia](https://github.com/Ovilia))
 + [Feature] [i18n] Add Turkish(tr_TR) translation. [#18012](https://github.com/apache/echarts/issues/18012) ([partitect](https://github.com/partitect))
