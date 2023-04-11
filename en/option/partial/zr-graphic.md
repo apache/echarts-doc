@@ -7,7 +7,6 @@
 
 {{ if: ${usageType} === 'customSeries' }}
 Note that if any of its child is `null`, it means the child no longer exists. So if a group contains an element that is set to be `null/undefined` in a future `setOption` call, it should remove the previous element at the same index. If a child should not change, it should be `{}` in the new option. And a group can only contain children as `null/undefined/{}` if they exist in the previous `setOption`.
-
 {{ /if }}
 
 {{ use: partial-graphic-cpt-common-props(
@@ -295,6 +294,23 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
 Text horizontal alignment. Optional values: `'left'`, `'center'`, `'right'`.
 
 `'left'` means the left side of the text block is specified by the [style.x](~${optionPath}.${hostName}${symbolVisit}text.style.x), while `'right'` means the right side of the text block is specified by [style.y](~${optionPath}.${hostName}${symbolVisit}text.style.y).
+
+###${prefix} width(number)
+
+Text block width. Used for [overflow](~${optionPath}.${hostName}${symbolVisit}text.style.overflow) calculation.
+
+###${prefix} overflow(string)
+
+When the text content exceeds the [width](~${optionPath}.${hostName}${symbolVisit}text.style.width), the text display strategy is: `'break'`, `'breakAll'`, `'truncate'`, `'none'`.
+
+- `'break'` is to try to ensure that the complete word is not truncated (similar to `CSS` `word-break: break-word;`)
+- `'breakAll'`: can break at any character
+- `'truncate'`: truncate the text to display '...'，you can use [ellipsis](~${optionPath}.${hostName}${symbolVisit}text.style.ellipsis) to customize the display of the ellipsis
+- `'none'`: no line break
+
+###${prefix} ellipsis(string)
+
+When [overflow](~${optionPath}.${hostName}${symbolVisit}text.style.overflow) is set to `'truncate'`, the default is `...`.
 
 ###${prefix} textVerticalAlign(string)
 
@@ -1553,6 +1569,7 @@ Whether use progressive render to improve performance. Usually used when number 
 {{ /if }}
 
 
+
 {{ target: partial-graphic-cpt-style-prop-common }}
 
 More attributes in `style` (for example, [rich text](tutorial.html#Rich%20Text)), see the `style` related attributes in [zrender/graphic/Displayable](https://ecomfe.github.io/zrender-doc/public/api.html#zrenderdisplayable).
@@ -2055,3 +2072,4 @@ Although the points will be interpolated, the consequent animation will be like 
 ```
 
 See this example [example](${galleryEditorPath}custom-spiral-race&edit=1&reset=1).
+
