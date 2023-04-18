@@ -1576,8 +1576,8 @@ More attributes in `style` (for example, [rich text](tutorial.html#Rich%20Text))
 
 Notice, the attribute names of the `style` of graphic elements is derived from `zrender`, which may be different from the attribute names in `echarts label`, `echarts itemStyle`, etc., although they have the same meaning. For example:
 
-+ [itemStyle.color](~series-scatter.label.color) => `style.fill`
-+ [itemStyle.borderColor](~series-scatter.label.color) => `style.stroke`
++ [itemStyle.color](~series-scatter.itemStyle.color) => `style.fill`
++ [itemStyle.borderColor](~series-scatter.itemStyle.borderColor) => `style.stroke`
 + [label.color](~series-scatter.label.color) => `style.textFill`
 + [label.textBorderColor](~series-scatter.label.textBorderColor) => `style.textStroke`
 + ...

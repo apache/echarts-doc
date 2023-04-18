@@ -1556,8 +1556,8 @@ Position of `textContent`.
 
 注意，这里图形元素的样式属性名称直接源于 zrender，和 `echarts label`、`echarts itemStyle` 等处同样含义的样式属性名称或有不同。例如，有如下对应：
 
-+ [itemStyle.color](~series-scatter.label.color) => `style.fill`
-+ [itemStyle.borderColor](~series-scatter.label.color) => `style.stroke`
++ [itemStyle.color](~series-scatter.itemStyle.color) => `style.fill`
++ [itemStyle.borderColor](~series-scatter.itemStyle.borderColor) => `style.stroke`
 + [label.color](~series-scatter.label.color) => `style.textFill`
 + [label.textBorderColor](~series-scatter.label.textBorderColor) => `style.textStroke`
 + ...
