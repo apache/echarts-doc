@@ -100,6 +100,12 @@ Options:
     prefix = ${prefix}
 ) }}
 
+#${prefix} triggerEmphasis(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
+
+Whether to trigger emphasis of series.
+
 #${prefix} triggerTooltip(boolean) = true
 
 <ExampleUIControlBoolean default="true" />
