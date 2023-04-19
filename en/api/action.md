@@ -113,13 +113,13 @@ dispatchAction({
 })
 ```
 
-## toggleSelected(Action)
+## toggleSelect(Action)
 
 Toggle selected status of specified data.
 
 ```ts
 dispatchAction({
-    type: 'toggleSelected',
+    type: 'toggleSelect',
 
     {{ use: action-series-query }}
 

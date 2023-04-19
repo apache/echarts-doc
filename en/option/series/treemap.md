@@ -555,7 +555,13 @@ This can hide the details of nodes when the rectangular area is not large enough
     prefix = ${prefix} + "#",
     defaultPadding = 5,
     defaultPosition = "'inside'",
-    formatter = true
+    formatter = true,
+    formatterExtra = {
+        treeAncestors: {
+            desc: 'The ancestors of current node (including self)',
+            type: 'Array'
+        }
+    }
 ) }}
 
 #${prefix} upperLabel(Object)
@@ -577,7 +583,13 @@ See:
 {{ use: partial-label(
     prefix = ${prefix} + "#",
     defaultPosition = "'inside'",
-    formatter = true
+    formatter = true,
+    formatterExtra = {
+        treeAncestors: {
+            desc: 'The ancestors of current node (including self)',
+            type: 'Array'
+        }
+    }
 ) }}
 
 ##${prefix} height(number) = 20
@@ -744,7 +756,13 @@ See the [example](${galleryEditorPath}doc-example/treemap-borderColor&edit=1&res
 {{ use: partial-label(
     prefix = ${prefix} + "#",
     defaultPosition = "'inside'",
-    formatter = true
+    formatter = true,
+    formatterExtra = {
+        treeAncestors: {
+            desc: 'The ancestors of current node (including self)',
+            type: 'Array'
+        }
+    }
 ) }}
 
 #${prefix} labelLine(Object)
@@ -760,7 +778,13 @@ See the [example](${galleryEditorPath}doc-example/treemap-borderColor&edit=1&res
 {{ use: partial-label(
     prefix = ${prefix} + "#",
     defaultPosition = "'inside'",
-    formatter = true
+    formatter = true,
+    formatterExtra = {
+        treeAncestors: {
+            desc: 'The ancestors of current node (including self)',
+            type: 'Array'
+        }
+    }
 ) }}
 
 #${prefix} itemStyle(Object)

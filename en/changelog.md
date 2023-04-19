@@ -1,3 +1,50 @@
+## v5.4.2
+<div class="time">2023-03-23</div>
+
++ [Feature] [bar] Support `borderRadius` for polar bar and its background. [#17995](https://github.com/apache/echarts/issues/17995) ([Ovilia](https://github.com/Ovilia))
++ [Feature] [i18n] Add Turkish(tr_TR) translation. [#18012](https://github.com/apache/echarts/issues/18012) ([partitect](https://github.com/partitect))
++ [Feature] [i18n] Add Vietnamese(vi_VN) translation. [#18279](https://github.com/apache/echarts/issues/18279) ([nghiepdev](https://github.com/nghiepdev))
++ [Fix] [bar] Polar bar animation should start from `r0` rather than `0`. [#17997](https://github.com/apache/echarts/issues/17997) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [marker] Fix abnormal range of `markArea` in bar series. [#18229](https://github.com/apache/echarts/issues/18229) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [line] Fix labels don't show in line series when `ssr` is enabled. [#18032](https://github.com/apache/echarts/issues/18032) ([plainheart](https://github.com/plainheart))
++ [Fix] [svg] Fix defined CSS doesn't work due to unexpected encoding for style tag. [#982](https://github.com/ecomfe/zrender/pull/982) ([plainheart](https://github.com/plainheart))
++ [Fix] [sunburst] Fix labels might upside down in `radial` layout. [#18240](https://github.com/apache/echarts/issues/18240) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [dataset] Fix chart can't render when using object array and object item contains a property named `length`. [#18276](https://github.com/apache/echarts/issues/18276) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [tooltip] Fix tooltip still disappears after leaving the tooltip even if `alwaysShowContent` was enabled. [#18221](https://github.com/apache/echarts/issues/18221) ([jianghaoran116](https://github.com/jianghaoran116))
++ [Fix] [text] Charsets like Cyrillic should break word the same as Latin. [#973](https://github.com/ecomfe/zrender/issues/973) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [type] Add missing `treePathInfo` property into sunburst formatter callback and add missing `data` option into `SunburstSeriesOption`. [#18310](https://github.com/apache/echarts/issues/18310) ([plainheart](https://github.com/plainheart))
++ [Fix] [type] Add missing callback function type for the `symbol` option of tree series. [#18070](https://github.com/apache/echarts/issues/18070) ([ChepteaCatalin](https://github.com/ChepteaCatalin))
+
+## v5.4.1
+<div class="time">2022-12-09</div>
+
++ [Feature] [i18n] Add Hungarian(hu_HU) translation. [#17978](https://github.com/apache/echarts/issues/17978) ([ifjkovacsik](https://github.com/ifjkovacsik))
++ [Feature] [svg] Support gradients and patterns for background color in SVG renderer. [#959](https://github.com/ecomfe/zrender/issues/959) ([plainheart](https://github.com/plainheart))
++ [Feature] [candlestick] Provide `borderColorDoji` option for custom doji color. [#17717](https://github.com/apache/echarts/issues/17717) ([Ovilia](https://github.com/Ovilia))
++ [Feature] [sankey] Support `edgeLabel`. [#16767](https://github.com/apache/echarts/issues/16767) ([susiwen8](https://github.com/susiwen8))
++ [Feature] [graph] Make graph node draggable in `none` and `circular` layout. [#15428](https://github.com/apache/echarts/issues/15428) ([kongmoumou](https://github.com/kongmoumou))
++ [Feature] [util] Use native `Map` if available. [#965](https://github.com/ecomfe/zrender/issues/965) ([JonasBa](https://github.com/JonasBa))
++ [Feature] [type] Export `ECElementEvent` for TypeScript. [#17892](https://github.com/apache/echarts/issues/17892) ([keita-determined](https://github.com/keita-determined))
++ [Fix] [i18n] Rename language code of Ukrainian to `UK`. [#17812](https://github.com/apache/echarts/issues/17812) ([striezel](https://github.com/striezel))
++ [Fix] [pie] Fix percent isn't updated after the legend is changed. [#17734](https://github.com/apache/echarts/issues/17734) ([plainheart](https://github.com/plainheart))
++ [Fix] [pie] Fix potential null access to `labelLine` when `minShowLabelRadian` is set. [#17715](https://github.com/apache/echarts/issues/17715) ([plainheart](https://github.com/plainheart))
++ [Fix] [pie] Fix `center` may not be converted to correct point when coordinate system is specified. [#17920](https://github.com/apache/echarts/issues/17920) ([plainheart](https://github.com/plainheart))
++ [Fix] [heatmap] Fix heatmap label may overlap when `dataZoom` is enabled. [#17876](https://github.com/apache/echarts/issues/17876) ([plainheart](https://github.com/plainheart))
++ [Fix] [animation] Fix incorrect `dataGroupId` for old data items in universalTransition. [#17559](https://github.com/apache/echarts/issues/17559) ([tyn1998](https://github.com/tyn1998))
++ [Fix] [dataZoom] Fallback to extent start/end when value or percent is invalid. [#17934](https://github.com/apache/echarts/issues/17934) ([plainheart](https://github.com/plainheart))
++ [Fix] [timeline] Fix chart can't work when axis line is not shown. [#17647](https://github.com/apache/echarts/issues/17647) ([plainheart](https://github.com/plainheart))
++ [Fix] [tooltip] Fix tooltip arrow may cover the content when border is wide. [#17875](https://github.com/apache/echarts/issues/17875) ([plainheart](https://github.com/plainheart))
++ [Fix] [marker] Fix `markArea` doesn't show when using `x/y` pixel but `coord` is not defined. [#17217](https://github.com/apache/echarts/issues/17217) ([jiawulin001](https://github.com/jiawulin001))
++ [Fix] [marker] `markArea` of bar series now covers whole specified categories. [#17098](https://github.com/apache/echarts/issues/17098) ([jiawulin001](https://github.com/jiawulin001))
++ [Fix] [legend] Fix legend `inverse` doesn't work if series data have the same name. [#17510](https://github.com/apache/echarts/issues/17510) ([caiwukun](https://github.com/caiwukun))
++ [Fix] [gauge] Render gauge sectors in the order of the "clockwise" option. [#17691](https://github.com/apache/echarts/issues/17691) ([ZeekoZhu](https://github.com/ZeekoZhu))
++ [Fix] [ssr] Fix wrong expression for extracting the font size. [#968](https://github.com/ecomfe/zrender/issues/968) ([plainheart](https://github.com/plainheart))
++ [Fix] [svg] Fix shape may disappear after morphing animation is finished in SVG renderer. ([plainheart](https://github.com/plainheart))
++ [Fix] [type] Fix `EChartsInitOpts` type error about height and width. [#17727](https://github.com/apache/echarts/issues/17727) ([MainHou](https://github.com/MainHou))
++ [Fix] [type] Add `overflow` property to `AxisLabelBaseOption` interface. [#17808](https://github.com/apache/echarts/issues/17808) ([breizh24](https://github.com/breizh24))
++ [Fix] [type] Add `string` & `number` type into the `center` option of pie series. [#17917](https://github.com/apache/echarts/issues/17917) ([plainheart](https://github.com/plainheart))
++ [Fix] [type] Add missing `function` callback into `lineStyle.color` for lines series. [#17780](https://github.com/apache/echarts/issues/17780) ([plainheart](https://github.com/plainheart))
+
 ## v5.4.0
 <div class="time">2022-09-25</div>
 

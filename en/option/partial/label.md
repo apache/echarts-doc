@@ -54,12 +54,16 @@ Whether to move text slightly. For example: `[30, 40]` means move `30` horizonta
 {{ if: ${formatter} }}
 #${prefix} formatter(string|Function)
 
-{{ use: partial-2d-data-label-formatter() }}
+{{ use: partial-2d-data-label-formatter(
+    extra = ${formatterExtra}
+) }}
 
 {{ elif: ${formatter1d} }}
 #${prefix} formatter(string|Function)
 
-{{ use: partial-1d-data-label-formatter() }}
+{{ use: partial-1d-data-label-formatter(
+    extra = ${formatterExtra}
+) }}
 {{ /if }}
 
 {{ if: !${noTextStyle} }}

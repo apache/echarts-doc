@@ -266,6 +266,8 @@ Label of a single line. Available when [polyline](~series-lines.polyline) is not
     state = 'select'
 ) }}
 
+{{ use: partial-tooltip-in-series-data() }}
+
 {{ use: partial-marker(
     prefix = "#",
     seriesType = "lines"
@@ -291,6 +293,8 @@ Label of a single line. Available when [polyline](~series-lines.polyline) is not
 {{ use: partial-universal-transition(
     prefix = "#"
 ) }}
+
+{{ use: partial-tooltip-in-series() }}
 
 
 

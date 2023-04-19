@@ -32,6 +32,12 @@
     prefix = ${prefix},
     defaultPosition = "'inside'",
     formatter = true,
+    formatterExtra = {
+        treePathInfo: {
+            desc: '当前节点的祖先节点（包括自身）',
+            type: 'Array'
+        }
+    },
     defaultShowLabel = "true",
     noRotate = true,
     noAlign = true
@@ -392,6 +398,8 @@ const option = {
     state = 'normal'
 ) }}
 
+{{ use: partial-tooltip-in-series-data() }}
+
 ## nodeClick(boolean|string) = 'rootToNode'
 
 <ExampleUIControlEnum default="rootToNode" options="rootToNode,link" />
@@ -419,6 +427,18 @@ function(nodeA, nodeB) {
 <ExampleUIControlBoolean />
 
 如果数据没有 `name`，是否需要渲染文字。
+
+## clockwise(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
+
+旭日图的扇区是否是顺时针排布。
+
+## startAngle(number) = 90
+
+<ExampleUIControlAngle step="1" min="0" max="360" default="90" />
+
+起始角度，支持范围[0, 360]。
 
 {{ use: partial-sunburst-label-props(
     prefix = "#",
@@ -544,6 +564,8 @@ series: {
     prefix = "###",
     state = 'select'
 ) }}
+
+{{ use: partial-tooltip-in-series() }}
 
 {{ use: partial-animation(
     prefix = "#",
