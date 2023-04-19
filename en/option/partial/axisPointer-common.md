@@ -104,6 +104,10 @@ Options:
 
 <ExampleUIControlBoolean default="true" />
 
+{{ use: partial-version(
+    version = "5.5.0"
+) }}
+
 Whether to trigger emphasis of series.
 
 #${prefix} triggerTooltip(boolean) = true

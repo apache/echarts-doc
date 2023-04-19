@@ -99,6 +99,10 @@ axisPointer 的 label 默认不显示（也就是默认只显示指示线），�
 
 <ExampleUIControlBoolean default="true" />
 
+{{ use: partial-version(
+    version = "5.5.0"
+) }}
+
 是否触发系列强调功能。
 
 #${prefix} triggerTooltip(boolean) = true
