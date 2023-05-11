@@ -997,7 +997,7 @@ Fix the line label can not be returned to its original opacity after `"focusNode
 
 + [Fix] Fix legend is not able to scroll when the space is not enough to contain one item. See [#6743](https://github.com/apache/incubator-echarts/issues/6743), [#8971](https://github.com/apache/incubator-echarts/issues/8971), [#9471](https://github.com/apache/incubator-echarts/issues/9471).
 
-+ [Fix] Fix the centered pie label might has some bias on some angles. See [#9657](https://github.com/apache/incubator-echarts/issues/9657).
++ [Fix] Fix the centered pie label might have offset on some angles. See [#9657](https://github.com/apache/incubator-echarts/issues/9657).
 
 + [Fix] Fix Geo map panning is not working on MS Edge browser See [#9479](https://github.com/apache/incubator-echarts/issues/9479).
 

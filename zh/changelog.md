@@ -995,7 +995,7 @@ Fix that the line label can not be returned to its original opacity after `"focu
 
 + [Fix] 修复了图例组件（legend）当空间只够显示一项时不能翻页的问题。参见 [#6743](https://github.com/apache/incubator-echarts/issues/6743)，[#8971](https://github.com/apache/incubator-echarts/issues/8971)，[#9471](https://github.com/apache/incubator-echarts/issues/9471)。
 
-+ [Fix] 修复了饼图标签（label）定位在中心时，在一些角度下有便宜的问题。参见 [#9657](https://github.com/apache/incubator-echarts/issues/9657)。
++ [Fix] 修复了饼图标签（label）定位在中心时，在一些角度下有偏移的问题。参见 [#9657](https://github.com/apache/incubator-echarts/issues/9657)。
 
 + [Fix] 修复了地图坐标系（geo）在 MS Edge 下不能拖动的问题。参见 [#9479](https://github.com/apache/incubator-echarts/issues/9479)。
 
@@ -1028,7 +1028,7 @@ Fix that the line label can not be returned to its original opacity after `"focu
 
 + [Fix] 修复了图例组件（legend）当空间只够显示一项时不能翻页的问题。参见 [#6743](https://github.com/apache/incubator-echarts/issues/6743)，[#8971](https://github.com/apache/incubator-echarts/issues/8971)，[#9471](https://github.com/apache/incubator-echarts/issues/9471)。
 
-+ [Fix] 修复了饼图标签（label）定位在中心时，在一些角度下有便宜的问题。参见 [#9657](https://github.com/apache/incubator-echarts/issues/9657)。
++ [Fix] 修复了饼图标签（label）定位在中心时，在一些角度下有偏移的问题。参见 [#9657](https://github.com/apache/incubator-echarts/issues/9657)。
 
 + [Fix] 修复了地图坐标系（geo）在 MS Edge 下不能拖动的问题。参见 [#9479](https://github.com/apache/incubator-echarts/issues/9479)。
 
