@@ -737,7 +737,7 @@ Exports connected chart image; returns a base64 url; can be set to `src` of `Ima
 ```ts
 (opts: {
     // Specify which series the data will be appended to.
-    seriesIndex?: string,
+    seriesIndex?: number,
     // The data to be appended.
     data?: Array|TypedArray
 }) => string
