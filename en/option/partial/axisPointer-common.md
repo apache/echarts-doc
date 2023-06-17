@@ -106,6 +106,14 @@ Options:
 
 Whether to trigger tooltip.
 
+#${prefix} triggerOnNull(boolean) = false
+
+<ExampleUIControlBoolean default="false" />
+
+Whether to trigger the axisPointer on `null` or `undefined` values. This is useful when used with the `echarts.connect()` API to trigger the axisPointer on connected charts if the value on those charts is `null`, `undefined`, or nonexistent.
+
+The `snap` attribute takes precedence over this.
+
 #${prefix} value(number) = null
 
 current value. When using [axisPointer.handle](xAxisPointer.handle), `value` can be set to define the initial position of axisPointer.
