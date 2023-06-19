@@ -274,3 +274,6 @@ Style when highlighted.
     prefix = "###"
 ) }}
 
+{{ use: partial-series-sampling }}
+
++ `'none'` Use simple sampling strategy (default)
