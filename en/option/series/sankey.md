@@ -447,7 +447,7 @@ The color of the edge in Sankey diagram.
 
 + `'source'`: use source node color.
 + `'target'`: use target node color.
-+ `'gradient'`: gradient color between source node and target node (supported in 5.0).
++ `'gradient'`: gradient color between source node and target node. (Since v5.0.0)
 
 #${prefix} opacity(number) = 0.2
 
