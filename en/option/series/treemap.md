@@ -117,7 +117,7 @@ The treemap will be auto zoomed to a appropriate ratio when a node is clicked (w
 
 ## breadcrumb(Object)
 
-breadcrumb, showing the path of the current node.
+To show the path of the current node.
 
 ### show(boolean) = true
 
@@ -126,11 +126,11 @@ breadcrumb, showing the path of the current node.
 Whether to show the breadcrumb.
 
 {{ use: partial-rect-layout(
-    componentName = "asdf ",
+    componentName = "breadcrumb ",
     prefix = "##",
     noZ = true,
     defaultLeft = "'center'",
-    defaultBottom = 0
+    defaultTop = "'bottom'"
 ) }}
 
 ### height(number) = 22
