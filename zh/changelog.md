@@ -1,3 +1,24 @@
+## v5.4.3
+<div class="time">2023-07-18</div>
+
++ [Feature] [axisPointer] 添加`triggerEmphasis`选项来禁用强调。 [#18524](https://github.com/apache/echarts/issues/18524) ([juliepagano](https://github.com/juliepagano))
++ [Feature] [sankey] 支持用于强调状态的`trajectory`。[#17451](https://github.com/apache/echarts/issues/17451) ([ElayGelbart](https://github.com/ElayGelbart))
++ [Fix] [sankey] 修复sankey线条颜色的`'target'/'source'/'gradient'`属性在异常状态下不起作用。[#18834](https://github.com/apache/echarts/issues/18834) ([linghaoSu](https://github.com/linghaoSu))
++ [Fix] [sankey] 修复标签/边缘标签格式中`value`未定义的问题。[#18733](https://github.com/apache/echarts/issues/18733) ([plainheart](https://github.com/plainheart))
++ [Fix] [sunburst] 修复启用`labelLayout.hideOverlap`时，旭日标签可能会旋转的问题。[#18808](https://github.com/apache/echarts/issues/18808) ([linghaoSu](https://github.com/linghaoSu))
++ [Fix] [graph] 修复由于edgeLabel NPE导致图例无法覆盖图表的问题。[#18624](https://github.com/apache/echarts/issues/18624) ([plainheart](https://github.com/plainheart))
++ [Fix] [label] 修复`ellipsis`不起作用的问题。[#18525](https://github.com/apache/echarts/issues/18525) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [state] 修复当项目被其他组件emphasize时，focus自身无效。Fix focus self doesn't work when item emphasis by other component. [#18511](https://github.com/apache/echarts/issues/18511) ([linghaoSu](https://github.com/linghaoSu))
++ [Fix] [axis] 修复单个数据最后一个刻度不显示的问题。[#18469](https://github.com/apache/echarts/issues/18469) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [pie] 修正当`selectedOffset`启用且`animation`禁用时，饼图响应区域不正确的问题。[#1011](https://github.com/ecomfe/zrender/pull/1011) ([plainheart](https://github.com/plainheart))
++ [Fix] [custom] 修复用户自定义`info`属性在eventHandler中不可用的问题。[#18400](https://github.com/apache/echarts/issues/18400) ([sobolewsk](https://github.com/sobolewsk))
++ [Fix] [legend] 从图例选项继承图例富文本颜色。[#18260](https://github.com/apache/echarts/issues/18260) ([ChepteaCatalin](https://github.com/ChepteaCatalin))
++ [Fix] [util] 修复时间格式util中`{yy}`日期格式没有填充零的问题。[#18535](https://github.com/apache/echarts/issues/18535) ([linghaoSu](https://github.com/linghaoSu))
++ [Fix] [api] 只废弃`disConnect`而不废弃`disconnect`。[#18758](https://github.com/apache/echarts/issues/18758) ([Justineo](https://github.com/Justineo))
++ [Fix] [i18n] 修复德语中 "March "的短语（"Mar" -> "Mrz"）。 [#18387](https://github.com/apache/echarts/issues/18387) ([Stebeber](https://github.com/Stebeber))
++ [Fix] [type] 修复`parallel`场景中数据item值的错误类型。[#18425](https://github.com/apache/echarts/issues/18425) ([ManishDait](https://github.com/ManishDait))
++ [Fix] [type] 允许把`null`值传给init函数作为参数。[#18575](https://github.com/apache/echarts/issues/18575) ([zhuscat](https://github.com/zhuscat))
+
 ## v5.4.2
 <div class="time">2023-03-23</div>
 
