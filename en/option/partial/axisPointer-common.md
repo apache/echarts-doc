@@ -105,7 +105,7 @@ Options:
 <ExampleUIControlBoolean default="true" />
 
 {{ use: partial-version(
-    version = "5.5.0"
+    version = "5.4.3"
 ) }}
 
 Whether to trigger emphasis of series.
