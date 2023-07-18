@@ -32,6 +32,12 @@ If angle of data piece is smaller than this value (in degrees), then text is not
     prefix = ${prefix},
     defaultPosition = "'inside'",
     formatter = true,
+    formatterExtra = {
+        treePathInfo: {
+            desc: 'The ancestors of current node (including self)',
+            type: 'Array'
+        }
+    },
     defaultShowLabel = "true",
     noRotate = true,
     noAlign = true
@@ -243,6 +249,8 @@ The children nodes defined recursively. The structure is the same as [series-sun
     state = 'normal'
 ) }}
 
+{{ use: partial-tooltip-in-series-data() }}
+
 ## nodeClick(boolean|string) = 'rootToNode'
 
 <ExampleUIControlEnum default="rootToNode" options="rootToNode,link" />
@@ -270,6 +278,18 @@ function(nodeA, nodeB) {
 <ExampleUIControlBoolean />
 
 If there is no `name`, whether need to render it.
+
+## clockwise(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
+
+Whether the layout of sectors of sunburst chart is clockwise.
+
+## startAngle(number) = 90
+
+<ExampleUIControlAngle step="1" min="0" max="360" default="90" />
+
+The start angle, which range is [0, 360].
 
 {{ use: partial-sunburst-label-props(
     prefix = "#",
@@ -395,6 +415,8 @@ Select state.
     prefix = "###",
     state = 'select'
 ) }}
+
+{{ use: partial-tooltip-in-series() }}
 
 {{ use: partial-animation(
     prefix = "#",

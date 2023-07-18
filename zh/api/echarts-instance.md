@@ -724,7 +724,7 @@ img.src = myChart.getDataURL({
 ```ts
 (opts: {
     // 要增加数据的系列序号。
-    seriesIndex?: string,
+    seriesIndex?: number,
     // 增加的数据。
     data?: Array|TypedArray
 }) => string

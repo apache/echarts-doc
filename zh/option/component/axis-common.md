@@ -711,6 +711,10 @@ data: [{
 ) }}
 {{ /if }}
 
+{{ use: partial-animation(
+    prefix = ${prefix}
+) }}
+
 
 
 {{ target: partial-axis-interval }}
@@ -904,4 +908,3 @@ xAxis: {
     }
 },
 ```
-

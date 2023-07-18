@@ -91,14 +91,14 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
 
 ## selectchanged(Event)
 
-**ACTION:** [toggleSelected](~action.toggleSelected), [select](~action.select), [unselect](~action.unselect)
+**ACTION:** [toggleSelect](~action.toggleSelect), [select](~action.select), [unselect](~action.unselect)
 
 在数据选中状态发生变化时触发的事件
 
 ```ts
 {
     type: 'selectchanged',
-    fromAction: 'select' | 'toggleSelected' | 'unselect',
+    fromAction: 'select' | 'toggleSelect' | 'unselect',
     // 按系列分组的选中项列表
     selected: ({
         dataIndex: number[], seriesIndex: number

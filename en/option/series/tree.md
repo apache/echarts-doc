@@ -135,7 +135,13 @@ The style of each node in the tree, where [itemStyle.color](~series-tree.itemSty
 {{ use: partial-label(
     prefix = "##",
     defaultShowLabel = true,
-    formatter1d = true
+    formatter1d = true,
+    formatterExtra = {
+        treeAncestors: {
+            desc: 'The ancestors of current node (including self)',
+            type: 'Array'
+        }
+    }
 ) }}
 
 ## labelLayout(Object|Function)
@@ -163,7 +169,7 @@ Configurations of emphasis state.
 {{ use: partial-focus-blur-scope(
     isTree = true,
     hasRelative = true,
-    version = "5.3.3"
+    relativeVersion = "5.3.3"
 ) }}
 
 {{ use: tree-state(
@@ -216,7 +222,13 @@ Describes the style of the text label corresponding to the leaf node.
 {{ use: partial-label(
     prefix = "###",
     defaultShowLabel = true,
-    formatter1d = true
+    formatter1d = true,
+    formatterExtra = {
+        treeAncestors: {
+            desc: 'The ancestors of current node (including self)',
+            type: 'Array'
+        }
+    }
 ) }}
 
 ### itemStyle(Object)
@@ -443,7 +455,13 @@ Defines the style of the tree edge.
 
 {{ use: partial-label(
     prefix = "#" + ${prefix},
-    formatter1d = ${prefix} === '##'
+    formatter1d = ${prefix} === '##',
+    formatterExtra = {
+        treeAncestors: {
+            desc: 'The ancestors of current node (including self)',
+            type: 'Array'
+        }
+    }
 ) }}
 
 

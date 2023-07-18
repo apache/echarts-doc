@@ -394,19 +394,23 @@ Duration of the page scroll animation.
     version = "4.4.0"
 ) }}
 
-The selector button in the legend component. Currently includes both a full selection and an inverse selection. The selector button doesn't display by default, the user can manually configure it.
+The selector button in the legend component. Currently, there are two types of button:
 
-Usage:
+- `all`: Select All
+- `inverse`: Inverse Selection
+
+The selector button doesn't display by default, you need to enable it manually as follows.
 
 ```ts
 selector: [
     {
-        type: 'all or inverse',
+        type: 'all',
         // can be any title you like
         title: 'All'
     },
     {
         type: 'inverse',
+        // can be any title you like
         title: 'Inv'
     }
 ]

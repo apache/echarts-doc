@@ -111,13 +111,13 @@ dispatchAction({
 })
 ```
 
-## toggleSelected(Action)
+## toggleSelect(Action)
 
 切换选中状态
 
 ```ts
 dispatchAction({
-    type: 'toggleSelected',
+    type: 'toggleSelect',
 
     {{ use: action-series-query }}
 
