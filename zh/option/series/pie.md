@@ -521,7 +521,8 @@ const option = {
 {{ use: partial-text-style(
     prefix = ${prefix},
     noAlign = true,
-    noVerticalAlign = true
+    noVerticalAlign = true,
+    enableAutoColor = true
 ) }}
 
 

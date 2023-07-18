@@ -283,11 +283,11 @@ const option = {
 是否显示面包屑。
 
 {{ use: partial-rect-layout(
-    componentName = "asdf ",
+    componentName = "面包屑",
     prefix = "##",
     noZ = true,
     defaultLeft = "'center'",
-    defaultBottom = 0
+    defaultTop = "'bottom'"
 ) }}
 
 ### height(number) = 22
@@ -697,7 +697,13 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
     prefix = ${prefix} + "#",
     defaultPadding = 5,
     defaultPosition = "'inside'",
-    formatter = true
+    formatter = true,
+    formatterExtra = {
+        treeAncestors: {
+            desc: '当前节点的祖先节点（包括自身）',
+            type: 'Array'
+        }
+    }
 ) }}
 
 #${prefix} upperLabel(Object)
@@ -719,7 +725,13 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 {{ use: partial-label(
     prefix = ${prefix} + "#",
     defaultPosition = "'inside'",
-    formatter = true
+    formatter = true,
+    formatterExtra = {
+        treeAncestors: {
+            desc: '当前节点的祖先节点（包括自身）',
+            type: 'Array'
+        }
+    }
 ) }}
 
 ##${prefix} height(number) = 20
@@ -883,7 +895,13 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 {{ use: partial-label(
     prefix = ${prefix} + "#",
     defaultPosition = "'inside'",
-    formatter = true
+    formatter = true,
+    formatterExtra = {
+        treeAncestors: {
+            desc: '当前节点的祖先节点（包括自身）',
+            type: 'Array'
+        }
+    }
 ) }}
 
 #${prefix} labelLine(Object)
@@ -899,7 +917,13 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 {{ use: partial-label(
     prefix = ${prefix} + "#",
     defaultPosition = "'inside'",
-    formatter = true
+    formatter = true,
+    formatterExtra = {
+        treeAncestors: {
+            desc: '当前节点的祖先节点（包括自身）',
+            type: 'Array'
+        }
+    }
 ) }}
 
 #${prefix} itemStyle(Object)

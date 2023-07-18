@@ -117,7 +117,7 @@ The treemap will be auto zoomed to a appropriate ratio when a node is clicked (w
 
 ## breadcrumb(Object)
 
-breadcrumb, showing the path of the current node.
+To show the path of the current node.
 
 ### show(boolean) = true
 
@@ -126,11 +126,11 @@ breadcrumb, showing the path of the current node.
 Whether to show the breadcrumb.
 
 {{ use: partial-rect-layout(
-    componentName = "asdf ",
+    componentName = "breadcrumb ",
     prefix = "##",
     noZ = true,
     defaultLeft = "'center'",
-    defaultBottom = 0
+    defaultTop = "'bottom'"
 ) }}
 
 ### height(number) = 22
@@ -555,7 +555,13 @@ This can hide the details of nodes when the rectangular area is not large enough
     prefix = ${prefix} + "#",
     defaultPadding = 5,
     defaultPosition = "'inside'",
-    formatter = true
+    formatter = true,
+    formatterExtra = {
+        treeAncestors: {
+            desc: 'The ancestors of current node (including self)',
+            type: 'Array'
+        }
+    }
 ) }}
 
 #${prefix} upperLabel(Object)
@@ -577,7 +583,13 @@ See:
 {{ use: partial-label(
     prefix = ${prefix} + "#",
     defaultPosition = "'inside'",
-    formatter = true
+    formatter = true,
+    formatterExtra = {
+        treeAncestors: {
+            desc: 'The ancestors of current node (including self)',
+            type: 'Array'
+        }
+    }
 ) }}
 
 ##${prefix} height(number) = 20
@@ -744,7 +756,13 @@ See the [example](${galleryEditorPath}doc-example/treemap-borderColor&edit=1&res
 {{ use: partial-label(
     prefix = ${prefix} + "#",
     defaultPosition = "'inside'",
-    formatter = true
+    formatter = true,
+    formatterExtra = {
+        treeAncestors: {
+            desc: 'The ancestors of current node (including self)',
+            type: 'Array'
+        }
+    }
 ) }}
 
 #${prefix} labelLine(Object)
@@ -760,7 +778,13 @@ See the [example](${galleryEditorPath}doc-example/treemap-borderColor&edit=1&res
 {{ use: partial-label(
     prefix = ${prefix} + "#",
     defaultPosition = "'inside'",
-    formatter = true
+    formatter = true,
+    formatterExtra = {
+        treeAncestors: {
+            desc: 'The ancestors of current node (including self)',
+            type: 'Array'
+        }
+    }
 ) }}
 
 #${prefix} itemStyle(Object)

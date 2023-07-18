@@ -94,14 +94,14 @@ Event of data downplay.
 
 ## selectchanged(Event)
 
-**ACTION:** [toggleSelected](~action.toggleSelected), [select](~action.select), [unselect](~action.unselect)
+**ACTION:** [toggleSelect](~action.toggleSelect), [select](~action.select), [unselect](~action.unselect)
 
 Event emitted when data selection is changed.
 
 ```ts
 {
     type: 'selectchanged',
-    fromAction: 'select' | 'toggleSelected' | 'unselect',
+    fromAction: 'select' | 'toggleSelect' | 'unselect',
     // Grouped by series.
     selected: ({
         dataIndex: number[], seriesIndex: number

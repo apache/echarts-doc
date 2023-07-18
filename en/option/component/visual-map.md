@@ -7,7 +7,7 @@
 
 {{ use: partial-visual-map-visual-type() }}
 
-Myltiple `visualMap` component could be defined in a chart instance, which enable that different dimensions of a series data are mapped to different visual channels.
+Multiple `visualMap` component could be defined in a chart instance, which enable that different dimensions of a series data are mapped to different visual channels.
 
 `visualMap` could be defined as [Piecewise (visualMapPiecewise)](~visualMap-piecewise) or [Continuous (visualMapContinuous)](~visualMap-continuous), which is distinguished by the property `type`. For instance:
 

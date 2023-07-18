@@ -54,12 +54,16 @@ ${name}图形上的文本标签，可用于说明图形的一些数据信息，�
 {{ if: ${formatter} }}
 #${prefix} formatter(string|Function)
 
-{{ use: partial-2d-data-label-formatter() }}
+{{ use: partial-2d-data-label-formatter(
+    extra = ${formatterExtra}
+) }}
 
 {{ elif: ${formatter1d} }}
 #${prefix} formatter(string|Function)
 
-{{ use: partial-1d-data-label-formatter() }}
+{{ use: partial-1d-data-label-formatter(
+    extra = ${formatterExtra}
+) }}
 {{ /if }}
 
 {{ if: !${noTextStyle} }}
