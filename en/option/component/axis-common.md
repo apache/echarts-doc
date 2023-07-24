@@ -633,12 +633,14 @@ Base of logarithm, which is valid only for numeric axes with [type](~${component
 
 {{ use: partial-axis-common-axis-line(
     prefix = ${prefix},
-    componentType = ${componentType}
+    componentType = ${componentType},
+    defaultShow = ${defaultShowAxisLine}
 ) }}
 
 {{ use: partial-axis-common-axis-tick(
     prefix = ${prefix},
-    componentType = ${componentType}
+    componentType = ${componentType},
+    defaultShow = ${defaultShowAxisTick}
 ) }}
 
 {{ use: partial-axis-common-minor-tick(

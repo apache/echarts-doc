@@ -630,12 +630,14 @@ max: function (value) {
 
 {{ use: partial-axis-common-axis-line(
     prefix = ${prefix},
-    componentType = ${componentType}
+    componentType = ${componentType},
+    defaultShow = ${defaultShowAxisLine}
 ) }}
 
 {{ use: partial-axis-common-axis-tick(
     prefix = ${prefix},
-    componentType = ${componentType}
+    componentType = ${componentType},
+    defaultShow = ${defaultShowAxisTick}
 ) }}
 
 {{ use: partial-axis-common-minor-tick(

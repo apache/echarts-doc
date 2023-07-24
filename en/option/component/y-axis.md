@@ -51,7 +51,9 @@ Notice: Set `yAxis.axisLine.onZero` to `false` to activate this option.
     prefix = '#',
     componentType = 'yAxis',
     axisTypeDefault = "'value'",
-    hasSplitLineAndArea = true
+    hasSplitLineAndArea = true,
+    defaultShowAxisLine = false,
+    defaultShowAxisTick = false
 ) }}
 
 {{ use: partial-z-zlevel(
