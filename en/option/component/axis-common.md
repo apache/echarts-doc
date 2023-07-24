@@ -36,6 +36,10 @@ Settings related to axis line.
 Set this to `false` to prevent the axis line from showing.
 
 {{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
+> The **value** axis doesn't show the axis line by default since `v5.0.0`, you need to explicitly set `axisLine.show` as `true` to enable it.
+{{ /if }}
+
+{{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
 ##${prefix} onZero(boolean) = true
 
 <ExampleUIControlBoolean default="true" />
@@ -193,6 +197,10 @@ Settings related to axis tick.
 <ExampleUIControlBoolean default="${defaultShow|default(true)}" />
 
 Set this to `false` to prevent the axis tick from showing.
+
+{{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
+> The **value** axis doesn't show the axis ticks by default since `v5.0.0`, you need to explicitly set `axisTick.show` as `true` to enable it.
+{{ /if }}
 
 {{ if: ${hasAlignWithLabel|default(true)} }}
 ##${prefix} alignWithLabel(boolean) = false
@@ -633,14 +641,12 @@ Base of logarithm, which is valid only for numeric axes with [type](~${component
 
 {{ use: partial-axis-common-axis-line(
     prefix = ${prefix},
-    componentType = ${componentType},
-    defaultShow = ${defaultShowAxisLine}
+    componentType = ${componentType}
 ) }}
 
 {{ use: partial-axis-common-axis-tick(
     prefix = ${prefix},
-    componentType = ${componentType},
-    defaultShow = ${defaultShowAxisTick}
+    componentType = ${componentType}
 ) }}
 
 {{ use: partial-axis-common-minor-tick(

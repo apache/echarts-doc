@@ -34,6 +34,10 @@
 是否显示坐标轴轴线。
 
 {{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
+> 从 `v5.0.0` 开始，数值轴 (`type: 'value'`) 默认不显示轴线，需要显式配置。
+{{ /if }}
+
+{{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
 ##${prefix} onZero(boolean) = true
 
 <ExampleUIControlBoolean default="true" />
@@ -191,6 +195,10 @@ textStyle: {
 <ExampleUIControlBoolean default="${defaultShow|default(true)}" />
 
 是否显示坐标轴刻度。
+
+{{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
+> 从 `v5.0.0` 开始，数值轴 (`type: 'value'`) 默认不显示轴刻度，需要显式配置。
+{{ /if }}
 
 {{ if: ${hasAlignWithLabel|default(true)} }}
 ##${prefix} alignWithLabel(boolean) = false
@@ -630,14 +638,12 @@ max: function (value) {
 
 {{ use: partial-axis-common-axis-line(
     prefix = ${prefix},
-    componentType = ${componentType},
-    defaultShow = ${defaultShowAxisLine}
+    componentType = ${componentType}
 ) }}
 
 {{ use: partial-axis-common-axis-tick(
     prefix = ${prefix},
-    componentType = ${componentType},
-    defaultShow = ${defaultShowAxisTick}
+    componentType = ${componentType}
 ) }}
 
 {{ use: partial-axis-common-minor-tick(
