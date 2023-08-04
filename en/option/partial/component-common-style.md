@@ -48,7 +48,7 @@ Border width of ${componentName}.
 
 {{ target: partial-border-radius }}
 
-#${prefix} ${propName|default('borderRadius')}(number|Array) = 0
+#${prefix} ${propName|default('borderRadius')}(number|Array) = ${defaultBorderRadius|default(0)}
 
 {{ if: ${version} }}
 {{ use: partial-version(

@@ -85,11 +85,16 @@ Area style of selected data shadow.
 
 The color to fill selected area.
 
-## borderColor(Color) = '#ddd'
+## borderColor(Color) = '#d2dbee'
 
-<ExampleUIControlColor default="#ddd" />
+<ExampleUIControlColor default="#d2dbee" />
 
 The color of border.
+
+{{ use: partial-border-radius(
+    prefix = "#",
+    defaultBorderRadius = 3
+) }}
 
 ## handleIcon(string)
 
@@ -154,7 +159,8 @@ Style of move handle.
 
 {{ use: partial-item-style(
     prefix = "##",
-    defaultColor = "#D2DBEE"
+    defaultColor = "#D2DBEE",
+    defaultOpacity = 0.7
 ) }}
 
 ## labelPrecision(number|string) = 'auto'
