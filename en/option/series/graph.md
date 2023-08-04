@@ -35,7 +35,7 @@ Graph is a diagram to represent [nodes](~series-graph.nodes) and the [links](~se
 
 <ExampleUIControlVector default="0,0" dims="x,y" />
 
-Center of current view-port. It can be an arrary containing two `number`s in pixels or `string`s in percentage relative to the container width/height.
+Center of current view-port. It can be an array containing two `number`s in pixels or `string`s in percentage relative to the container width/height.
 `string` is supported from version `5.3.3`.
 
 Example:
@@ -60,7 +60,7 @@ Graph layout.
 
 + `'circular'` Adopt circular layout, see the example [Les Miserables](${galleryEditorPath}graph-circular-layout).
 
-+ `'force'` Adopt force-directed layout, see the example [Force](${galleryEditorPath}graph-force), the detail about configrations of layout are in [graph.force](~series-graph.force)
++ `'force'` Adopt force-directed layout, see the example [Force](${galleryEditorPath}graph-force), the detail about configurations of layout are in [graph.force](~series-graph.force)
 
 ## circular(Object)
 

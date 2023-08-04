@@ -146,7 +146,7 @@ series: [{
 <br>
 **Customize a data item:**
 
-When needing to customize a data item, it can be set as an object, where property `value` reprensent real value. For example:
+When needing to customize a data item, it can be set as an object, where property `value` represent real value. For example:
 ```ts
 [
     12,

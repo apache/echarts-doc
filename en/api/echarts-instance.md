@@ -269,7 +269,7 @@ Resizes chart, which should be called manually when container size changes.
 
 **Tip:**
 
-Sometimes charts may be placed in multiple tabs. Those in hidden labels may fail to initialize due to the ignorance of container width and height. So `resize` should be called manually to get the correct width and height when switching to the corresponding tabs, or specify width/heigth in `opts` explicitly.
+Sometimes charts may be placed in multiple tabs. Those in hidden labels may fail to initialize due to the ignorance of container width and height. So `resize` should be called manually to get the correct width and height when switching to the corresponding tabs, or specify width/height in `opts` explicitly.
 
 ## renderToSVGString(Function)
 

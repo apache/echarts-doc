@@ -48,7 +48,7 @@ Specifies whether X or Y axis lies on the other's origin position, where value i
 
 ##${prefix} onZeroAxisIndex(number)
 
-When mutiple axes exists, this option can be used to specify which axis can be "onZero" to.
+When multiple axes exists, this option can be used to specify which axis can be "onZero" to.
 {{ /if }}
 
 ##${prefix} symbol(string|Array) = 'none'
@@ -535,7 +535,7 @@ boundaryGap: ['20%', '20%']
 
 <ExampleUIControlNumber />
 
-The minimun value of axis.
+The minimum value of axis.
 
 It can be set to a special value `'dataMin'` so that the minimum value on this axis is set to be the minimum label.
 

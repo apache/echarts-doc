@@ -37,7 +37,7 @@ The tree diagram is mainly used to visualize the tree data structure, which is a
 
 ## center(Array)
 
-Center of current view-port. It can be an arrary containing two `number`s in pixels or `string`s in percentage relative to the container width/height.
+Center of current view-port. It can be an array containing two `number`s in pixels or `string`s in percentage relative to the container width/height.
 `string` is supported from version `5.3.3`.
 
 Example:

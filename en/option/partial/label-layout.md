@@ -74,7 +74,7 @@ If move the overlapped labels to avoid overlapping.
 Currently supported configurations:
 
 + `'shiftX'` Place the labels on horizontal direction sequencely, used when aligned horizontally.
-+ `'shiftY'` Place the labels on vertial direction sequencely, used when aligned vertically.
++ `'shiftY'` Place the labels on vertical direction sequencely, used when aligned vertically.
 
 The following example shows how to use `moverOverlap: 'shiftY'` to place the labels aligned vertically.
 

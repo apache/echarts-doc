@@ -229,7 +229,7 @@ Whether to update view while dragging. If it is set as `false`, the view will be
 
 Width of dataZoom-slider component. Default to 30 when vertical, adaptive when horizontal.
 
-Has higer priority than `left` and `right`.
+Has higher priority than `left` and `right`.
 
 ## height(string|number)
 
@@ -237,7 +237,7 @@ Has higer priority than `left` and `right`.
 
 Height of dataZoom-slider component. Default to 30 when horizontal, adaptive when vertical.
 
-Has higer priority than `top` and `bottom`.
+Has higher priority than `top` and `bottom`.
 
 ## brushSelect(boolean) = true
 

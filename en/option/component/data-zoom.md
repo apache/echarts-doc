@@ -7,7 +7,7 @@
 
 These types of `dataZoom` component are supported:
 
-+ [dataZoomInside](~dataZoom-inside): Data zoom functionalities is embeded inside coordinate systems, enable user to zoom or roam coordinate system by mouse dragging, mouse move or finger touch (in touch screen).
++ [dataZoomInside](~dataZoom-inside): Data zoom functionalities is embedded inside coordinate systems, enable user to zoom or roam coordinate system by mouse dragging, mouse move or finger touch (in touch screen).
 
 + [dataZoomSlider](~dataZoom-slider): A special slider bar is provided, on which coordinate systems can be zoomed or roamed by mouse dragging or finger touch (in touch screen).
 
@@ -35,7 +35,7 @@ A single chart instance can contain several `dataZoom` components, each of which
 ---
 
 
-**✦ How dataZoom componets operates axes and data ✦**
+**✦ How dataZoom components operates axes and data ✦**
 
 {{ use: partial-data-zoom-filterMode() }}
 
@@ -64,7 +64,7 @@ option = {
             type: 'slider',
             xAxisIndex: [0],
             filterMode: 'filter',   // Set as 'filter' so that the modification
-                                    // of window of xAxis willl effect the
+                                    // of window of xAxis will effect the
                                     // window of yAxis.
             start: 30,
             end: 70
@@ -292,7 +292,7 @@ Valid values:
 
 Specify whether to lock the size of window (selected area).
 
-When set as `true`, the size of window is locked, that is, only the translation (by mouse drag or touch drag) is avialable but zoom is not.
+When set as `true`, the size of window is locked, that is, only the translation (by mouse drag or touch drag) is available but zoom is not.
 
 ## throttle(number) = 100
 
@@ -340,7 +340,7 @@ Possible values:
 
 + 'none': Do not filter data.
 
-How to set `filterMode` is up to users, depending on the requirments and scenarios. Expirically:
+How to set `filterMode` is up to users, depending on the requirements and scenarios. Expirically:
 
 + If only `xAxis` or only `yAxis` is controlled by `dataZoom`, `filterMode: 'filter'` is typically used, which enable the other axis auto adapte its window to the extent of the filtered data.
 
@@ -374,7 +374,7 @@ option = {
         type: 'bar',
         data: [
             // The first column corresponds to xAxis,
-            // and the second coloum corresponds to yAxis.
+            // and the second column corresponds to yAxis.
             [12, 24, 36],
             [90, 80, 70],
             [3, 9, 27],
