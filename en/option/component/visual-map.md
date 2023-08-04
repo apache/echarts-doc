@@ -245,7 +245,7 @@ visualMap: {
 
 {{ target: partial-visual-map-merge }}
 
-**✦ How to modity configurations of vsiual encoding? ✦**
+**✦ How to modify configurations of visual encoding? ✦**
 
 If you want to modify the configurations of visual encoding after chart been rendered (by invoke `setOption` to set the initial `option`), `setOption` can be used again to modify configurations of visual encoding. For instance:
 
