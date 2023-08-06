@@ -47,7 +47,7 @@ The following types of brushes are supported: `rect`, `polygon`, `lineX`, `lineY
 
 **Control select-box with API**
 
-`dispatchAction` can be used to render select-box programatically. For example:
+`dispatchAction` can be used to render select-box programmatically. For example:
 
 ```javascript
 myChart.dispatchAction({
@@ -282,7 +282,7 @@ Links interaction between selected items in different series.
 
 Following is an example of enabling selected effect for `scatter` and `parallel` charts once a scatter chart is selected.
 
-`brushLink` is an array of `seriesIndex`es, which assignes the series that can be interacted. For example, it can be:
+`brushLink` is an array of `seriesIndex`es, which assigns the series that can be interacted. For example, it can be:
 
 + `[3, 4, 5]` for interacting series with seriesIndex as `3`, `4`, or `5`;
 + `'all'` for interacting all series;

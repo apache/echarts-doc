@@ -25,7 +25,7 @@ Data overview by default, and detail by requirement is a basic interaction need 
 
 > Use [dataZoom.xAxisIndex](option.html#dataZoom.xAxisIndex), [dataZoom.yAxisIndex](option.html#dataZoom.yAxisIndex) to specify which axis `dataZoom` controls.
 
-+ Multiple `dataZoom` components can exist at the same time to control function together. Components controling the same axis will be connected automatically. The example below explains in detail.
++ Multiple `dataZoom` components can exist at the same time to control function together. Components controlling the same axis will be connected automatically. The example below explains in detail.
 
 + Operation principle of `dataZoom` achieves *data window zooming* through *data filtering*.
 
@@ -43,7 +43,7 @@ Data overview by default, and detail by requirement is a basic interaction need 
 
 + [Inside data zoom component (dataZoomInside)](option.html#dataZoom-inside): inside coordinates.
 
-+ [Slider data zoom component (dataZoomSlider)](option.html#dataZoom-slider): has seperate slide option.
++ [Slider data zoom component (dataZoomSlider)](option.html#dataZoom-slider): has separate slide option.
 
 + [Select data zoom component (dataZoomSelect)](option.html#toolbox.feature.dataZoom): full-screen box for zoom data area. Entrance and configuration item are both in `toolbox`.
 
@@ -63,7 +63,7 @@ option = {
         type: 'value'
     },
     dataZoom: [
-        {   // This dataZoom component controls x-axis by dafault
+        {   // This dataZoom component controls x-axis by default
             type: 'slider', // this dataZoom component is dataZoom component of slider
             start: 10,      // the left is located at 10%
             end: 60         // the right is located at 60%
@@ -95,12 +95,12 @@ The chart above can only change window by dragging dataZoom component. If you wa
 option = {
     ...,
     dataZoom: [
-        {   // this dataZoom component controls x-axis by dafault
+        {   // this dataZoom component controls x-axis by default
             type: 'slider', // this dataZoom component is dataZoom component of slider
             start: 10,      // the left is located at 10%
             end: 60         // the right is located at 60%
         },
-        {   // This dataZoom component controls x-axis by dafault
+        {   // This dataZoom component controls x-axis by default
             type: 'inside', // this dataZoom component is dataZoom component of inside
             start: 10,      // the left is located at 10%
             end: 60         // the right is located at 60%
@@ -116,7 +116,7 @@ Following results can be seen (you can now slide or use mouse wheel to zoom in c
 
 <br>
 
-If you want to enable zooming on y-axis, then you need to add dataZoom componet on y-axis:
+If you want to enable zooming on y-axis, then you need to add dataZoom component on y-axis:
 
 ```javascript
 option = {

@@ -26,7 +26,7 @@ Before v3.7, the style options was only able to applied to the whole label text 
 Since v3.7, rich text has been supported:
 
 + Box styles (background, border, shadow, etc.), rotation, position of a text block can be specified.
-+ Styles (color, font, width/height, background, shadow, etc.) and alignment can be customzied on fragments of text.
++ Styles (color, font, width/height, background, shadow, etc.) and alignment can be customized on fragments of text.
 + Image can be used in text as icon or background.
 + Combine these configurations, some special effects can be made, such as simple table, horizontal rule (hr).
 
@@ -200,10 +200,10 @@ Horizontal rule (like HTML &lt;hr&gt; tag) can be implemented by border:
 rich: {
     hr: {
         borderColor: '#777',
-        // width is set as '100%' to fullfill the text block.
+        // width is set as '100%' to fulfill the text block.
         // Notice, the percentage is based on the content box, without
         // padding. Although it is a little different from CSS rule,
-        // it is convinent in most cases.
+        // it is convenient in most cases.
         width: '100%',
         borderWidth: 0.5,
         height: 0

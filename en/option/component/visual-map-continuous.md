@@ -161,7 +161,7 @@ The distance between the ends of the main bar and the label, with unit px. See [
 
 the formatter tool for label.
 
-+ If it was set as a `string`, it refers to a template, for instance: `aaaa{value}bbbb`, where `{value}` represents the value of the edge of the seleted range.
++ If it was set as a `string`, it refers to a template, for instance: `aaaa{value}bbbb`, where `{value}` represents the value of the edge of the selected range.
 
 + If it was set as a `Function`, it refers to a callback function, for instance:
 

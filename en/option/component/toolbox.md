@@ -391,7 +391,7 @@ the different types of icon path , which could be configurated individually.
 
 #### title(Object)
 
-Title for different types, can be configured seperately.
+Title for different types, can be configured separately.
 
 ##### line(string) = 'Switch to Line Chart'
 

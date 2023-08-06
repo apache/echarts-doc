@@ -140,7 +140,7 @@ The label setting of a single data item.
 ) }}
 
 ### emphasis(Object)
-Configure labels and styles for a sigle data item highlighting.
+Configure labels and styles for a single data item highlighting.
 
 #### itemStyle(Object)
 {{ use: partial-item-style(

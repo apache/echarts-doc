@@ -255,8 +255,8 @@ Conditions to order tooltip. Options:
 
 + `'valueAsc'`
 
-    Base on value, ascending order tooltip, only for numberic value.
+    Base on value, ascending order tooltip, only for numeric value.
 
 + `'valueDesc'`
 
-    Base on value, descending order tooltip, only for numberic value.
+    Base on value, descending order tooltip, only for numeric value.

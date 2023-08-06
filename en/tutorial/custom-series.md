@@ -41,7 +41,7 @@ var option = {
     series: [{
         type: 'custom',
         renderItem: function (params, api) {
-            // This method will be called for each dataItem repectively.
+            // This method will be called for each dataItem respectively.
             // Notice: it does not ensure that called according to the order
             // of `dataItem`.
 
@@ -57,7 +57,7 @@ var option = {
             // the a value range that the length is 1 on Y axis.
             var height = api.size([0, 1])[1] * 0.6;
 
-            // The property `shape` incicates the location and size of thsi
+            // The property `shape` incicates the location and size of this
             // element.
             // `echarts.graphic.clipRectByRect` is used for clipping the
             // rectangular when it overflow the bounding box of the current

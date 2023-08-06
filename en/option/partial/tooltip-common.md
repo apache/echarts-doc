@@ -282,7 +282,7 @@ The content formatter of tooltip's floating layer which supports string template
 
 **1. String template**
 
-The template variables are `{a}`, `{b}`, `{c}`, `{d}` and `{e}`, which stands for series name, data name and data value and ect. When [trigger](~tooltip.trigger) is set to be `'axis'`, there may be data from multiple series. In this time, series index can be refered as `{a0}`, `{a1}`, or `{a2}`.
+The template variables are `{a}`, `{b}`, `{c}`, `{d}` and `{e}`, which stands for series name, data name and data value and ect. When [trigger](~tooltip.trigger) is set to be `'axis'`, there may be data from multiple series. In this time, series index can be referred as `{a0}`, `{a1}`, or `{a2}`.
 
 `{a}`, `{b}`, `{c}`, `{d}` have different meanings for different series types:
 
@@ -412,7 +412,7 @@ The border width of tooltip's floating layer.
     scope = ${scope}
 ) }}
 
-The text syle of tooltip's floating layer.
+The text style of tooltip's floating layer.
 
 {{ use: partial-simple-text-style(
     prefix = "#" + ${prefix},
