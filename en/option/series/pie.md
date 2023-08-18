@@ -488,12 +488,13 @@ The position of label.
 ) }}
 {{ /if }}
 
-#${prefix} rotate(boolean|number) = null
+#${prefix} rotate(boolean|number|string) = null
 
 Label rotation.
 
-+ If `true`, layout label radically.
-+ If `number`, means degree that labels are rotated. From -90 degree to 90 degree. The negative value represents clockwise.
++ If `true` or `'radial'`, the labels are rotated radially. (The `'radial'` literal is supported since `v5.2.0`)
++ If `'tangential'`, the labels are rotated tangentially. (Since `v5.2.0`)
++ If `number`, the labels are rotated in degrees (-90° - 90°). The negative value represents clockwise.
 
 {{ use: partial-text-style(
     prefix = ${prefix},

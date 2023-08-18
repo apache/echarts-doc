@@ -511,11 +511,12 @@ const option = {
 ) }}
 {{ /if }}
 
-#${prefix} rotate(boolean|number) = null
+#${prefix} rotate(boolean|number|string) = null
 
 标签旋转：
 
-+ 如果为 `true`，则为径向排布。
++ 如果为 `true` 或 `'radial'`，则为径向排布。（`'radial'` 字面量从 `v5.2.0` 开始支持）
++ 如果为 `'tangential'`，则为切向排布。（从 `v5.2.0` 开始支持）
 + 如果为 `number` ，旋转指定角度，从 -90 度到 90 度。正值是逆时针。
 
 {{ use: partial-text-style(
