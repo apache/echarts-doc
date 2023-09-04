@@ -87,6 +87,12 @@ const option = {
 
 最小的扇区角度（0 ~ 360），用于防止某个值过小导致扇区太小影响交互。
 
+## padAngle(number) = 0
+
+<ExampleUIControlAngle step="1" min="0" max="360" default="0" />
+
+饼图扇区之间的间隔（0 ~ 360）。
+
 ## minShowLabelAngle(number) = 0
 
 <ExampleUIControlAngle step="1" min="0" max="360" default="0" />

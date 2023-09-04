@@ -66,6 +66,12 @@ The start angle, which range is [0, 360].
 
 The minimum angle of sector (0 ~ 360). It prevents some sector from being too small when value is small, which will affect user interaction.
 
+## padAngle(number) = 0
+
+<ExampleUIControlAngle step="1" min="0" max="360" default="0" />
+
+The interval between pie chart sectors (0 ~ 360).
+
 ## minShowLabelAngle(number) = 0
 
 <ExampleUIControlAngle step="1" min="0" max="360" default="0" />
