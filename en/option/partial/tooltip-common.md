@@ -357,7 +357,7 @@ Callback function for formatting the value section in tooltip.
 
 Interface:
 ```ts
-(value: number | string) => string
+(value: number | string, dataIndex: number) => string
 ```
 
 Example:
