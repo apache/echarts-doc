@@ -82,7 +82,11 @@ The minimum angle of sector (0 ~ 360). It prevents some sector from being too sm
 
 <ExampleUIControlAngle step="1" min="0" max="360" default="0" />
 
-The interval between pie chart sectors (0 ~ 360).
+{{ use: partial-version(
+    version = "5.5.0"
+) }}
+
+The interval angle between the sectors (0 ~ 360).
 
 ## minShowLabelAngle(number) = 0
 

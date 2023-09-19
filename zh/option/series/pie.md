@@ -103,7 +103,11 @@ const option = {
 
 <ExampleUIControlAngle step="1" min="0" max="360" default="0" />
 
-饼图扇区之间的间隔（0 ~ 360）。
+{{ use: partial-version(
+    version = "5.5.0"
+) }}
+
+饼图扇区之间的间隔角度（0 ~ 360）。
 
 ## minShowLabelAngle(number) = 0
 
