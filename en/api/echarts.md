@@ -131,7 +131,7 @@ echarts.use(
 );
 ```
 
-See [Use ECharts with bundler and NPM](${handbookPath}basics/import) for more detailed explaination.
+See [Use ECharts with bundler and NPM](${handbookPath}basics/import) for more detailed explanation.
 
 ## registerMap(Function)
 

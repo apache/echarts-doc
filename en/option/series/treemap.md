@@ -35,7 +35,7 @@ Notice: There are some difference in treemap configuration between ECharts3 and 
 
 + The configuration item `breadcrumb` is moved outside `itemStyle/itemStyle.emphasis`, and it is in the same level with `itemStyle` now.
 
-+ The configuration item `root` is not avaliable temporarily.User can zoom treemap to see some tiny or deep descendants, or using [leafDepth](~series-treemap.leafDepth) to enable the feature of "drill down".
++ The configuration item `root` is not available temporarily.User can zoom treemap to see some tiny or deep descendants, or using [leafDepth](~series-treemap.leafDepth) to enable the feature of "drill down".
 
 + The configuration item `label` is moved outside the `itemStyle/itemStyle.emphasis`, and it is in the same level with `itemStyle` now.
 
@@ -91,7 +91,7 @@ Whether to enable dragging roam (move and zoom). Optional values are:
 + `false`: roam is disabled.
 + `'scale'` or `'zoom'`: zoom only.
 + `'move'` or `'pan'`: move (translation) only.
-+ `true`: both zoom and move (translation) are avaliable.
++ `true`: both zoom and move (translation) are available.
 
 ## nodeClick(boolean|string) = 'zoomToNode'
 
@@ -117,7 +117,7 @@ The treemap will be auto zoomed to a appropriate ratio when a node is clicked (w
 
 ## breadcrumb(Object)
 
-breadcrumb, showing the path of the current node.
+To show the path of the current node.
 
 ### show(boolean) = true
 
@@ -126,11 +126,11 @@ breadcrumb, showing the path of the current node.
 Whether to show the breadcrumb.
 
 {{ use: partial-rect-layout(
-    componentName = "asdf ",
+    componentName = "breadcrumb ",
     prefix = "##",
     noZ = true,
     defaultLeft = "'center'",
-    defaultBottom = 0
+    defaultTop = "'bottom'"
 ) }}
 
 ### height(number) = 22
@@ -375,7 +375,7 @@ Show the description text in rectangle.
 
 ### link(string)
 
-Enable hyperlink jump when clicking on node. It is avaliable when [series-treemap.nodeClick](~series-treemap.nodeClick) is `'link'`.
+Enable hyperlink jump when clicking on node. It is available when [series-treemap.nodeClick](~series-treemap.nodeClick) is `'link'`.
 
 See [series-treemap.data.target](~series-treemap.data.target).
 
@@ -448,9 +448,9 @@ A color list for a level. Each node in the level will obtain a color from the co
 #${prefix} colorAlpha(Array) = null
 
 {{ if: ${prefix} !== '#' }}
-It indicates the range of tranparent rate (color alpha) for nodes in a level
+It indicates the range of transparent rate (color alpha) for nodes in a level
 {{ else }}
-It indicates the range of tranparent rate (color alpha) for nodes of the series
+It indicates the range of transparent rate (color alpha) for nodes of the series
 {{ /if }}
 
 .
@@ -545,7 +545,7 @@ This can hide the details of nodes when the rectangular area is not large enough
 
 #${prefix} label(Object)
 
-`label` decribes the style of the label in each node.
+`label` describes the style of the label in each node.
 
 {{ use: partial-treemap-prop-location-desc(
     name = "label"
@@ -718,9 +718,9 @@ The color saturation of a border or gap. The value range is between 0 ~ 1.
 
 Tips:
 
-When `borderColorSaturation` is set, the `borderColor` is disabled, and, instead, the final border color is calculated based on the color of this node (this color could be sepcified explicitly or inherited from its parent node) and mixing with `borderColorSaturation`.
+When `borderColorSaturation` is set, the `borderColor` is disabled, and, instead, the final border color is calculated based on the color of this node (this color could be specified explicitly or inherited from its parent node) and mixing with `borderColorSaturation`.
 
-In this way, a effect can be implemented: different sections have different hue of gap color repectively, which makes users easy to distinguish both sections and levels.
+In this way, a effect can be implemented: different sections have different hue of gap color respectively, which makes users easy to distinguish both sections and levels.
 
 {{ use: partial-treemap-borderColor-setting() }}
 

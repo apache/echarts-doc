@@ -105,7 +105,7 @@ Options:
 <ExampleUIControlBoolean default="true" />
 
 {{ use: partial-version(
-    version = "5.5.0"
+    version = "5.4.3"
 ) }}
 
 Whether to trigger emphasis of series.
@@ -296,7 +296,7 @@ It is valid when [axisPointer.type](~tooltip.axisPointer.type) is `'shadow'`.
 
 {{ target: partial-formatter-params-axisPointer }}
 
-Each item also includes axis infomation:
+Each item also includes axis information:
 
 ```ts
 {

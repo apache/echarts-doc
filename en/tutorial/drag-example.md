@@ -75,7 +75,7 @@ myChart.setOption({
             // in line series.
             z: 100,
             // This is the event handler of dragging, which will be triggered
-            // repeatly while dragging. See more details below.
+            // repeatedly while dragging. See more details below.
             // A util method `echarts.util.curry` is used here to generate a
             // new function the same as `onPointDragging`, except that the
             // first parameter is fixed to be the `dataIndex` here.
@@ -85,14 +85,14 @@ myChart.setOption({
 });
 ```
 
-In the code above, API [convertToPixel](api.html#echartsInstance.convertToPixel) is used to convert data to its "pixel coodinate", based on which each graphic elements can be rendered on canvas. The term "pixel coodinate" means the coordinate is in canvas pixel, whose origin is the top-left of the canvas. In the sentence `myChart.convertToPixel('grid', dataItem)`, the first parameter `'grid'` indicates that `dataItem` should be converted in the first [grid component (cartesian)](option.html#grid).
+In the code above, API [convertToPixel](api.html#echartsInstance.convertToPixel) is used to convert data to its "pixel coordinate", based on which each graphic elements can be rendered on canvas. The term "pixel coordinate" means the coordinate is in canvas pixel, whose origin is the top-left of the canvas. In the sentence `myChart.convertToPixel('grid', dataItem)`, the first parameter `'grid'` indicates that `dataItem` should be converted in the first [grid component (cartesian)](option.html#grid).
 
 **Notice:** `convertToPixel` should not be called before the first time that `setOption` called. Namely, it can only be used after coordinate systems (grid/polar/...) initialized.
 
 Now points have been made draggable. Then we will bind event listeners on dragging to those points.
 
 ```ts
-// This function will be called repeatly while dragging.
+// This function will be called repeatedly while dragging.
 // The mission of this function is to update `series.data` based on
 // the new points updated by dragging, and to re-render the line
 // series based on the new data, by which the graphic elements of the

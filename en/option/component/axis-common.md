@@ -36,6 +36,10 @@ Settings related to axis line.
 Set this to `false` to prevent the axis line from showing.
 
 {{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
+> The **value** axis doesn't show the axis line by default since `v5.0.0`, you need to explicitly set `axisLine.show` as `true` to enable it.
+{{ /if }}
+
+{{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
 ##${prefix} onZero(boolean) = true
 
 <ExampleUIControlBoolean default="true" />
@@ -44,7 +48,7 @@ Specifies whether X or Y axis lies on the other's origin position, where value i
 
 ##${prefix} onZeroAxisIndex(number)
 
-When mutiple axes exists, this option can be used to specify which axis can be "onZero" to.
+When multiple axes exists, this option can be used to specify which axis can be "onZero" to.
 {{ /if }}
 
 ##${prefix} symbol(string|Array) = 'none'
@@ -193,6 +197,10 @@ Settings related to axis tick.
 <ExampleUIControlBoolean default="${defaultShow|default(true)}" />
 
 Set this to `false` to prevent the axis tick from showing.
+
+{{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
+> The **value** axis doesn't show the axis ticks by default since `v5.0.0`, you need to explicitly set `axisTick.show` as `true` to enable it.
+{{ /if }}
 
 {{ if: ${hasAlignWithLabel|default(true)} }}
 ##${prefix} alignWithLabel(boolean) = false
@@ -527,7 +535,7 @@ boundaryGap: ['20%', '20%']
 
 <ExampleUIControlNumber />
 
-The minimun value of axis.
+The minimum value of axis.
 
 It can be set to a special value `'dataMin'` so that the minimum value on this axis is set to be the minimum label.
 
@@ -813,7 +821,7 @@ formatter: function (value, index) {
     var date = new Date(value);
     var texts = [(date.getMonth() + 1), date.getDate()];
     if (index === 0) {
-        texts.unshift(date.getYear());
+        texts.unshift(date.getFullYear());
     }
     return texts.join('/');
 }

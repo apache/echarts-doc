@@ -150,7 +150,7 @@ option = {
 {{ use: partial-bar-item-style(
     prefix = "##",
     useColorPalatte = false,
-    hasCallback = true,
+    hasCallback = false,
     defaultColor = "'rgba(180, 180, 180, 0.2)'"
 ) }}
 
@@ -470,13 +470,21 @@ option = {
 
 {{ target: partial-bar-item-style }}
 
-#${prefix} color(Color) = ${defaultColor|default("'auto'")}
+#${prefix} color(Color{{ if: ${hasCallback} }}|Function{{ /if }}) = ${defaultColor|default("'auto'")}
 
 <ExampleUIControlColor />
 
-柱条的颜色。{{ if: ${useColorPalatte} }} 默认从全局调色盘 [option.color](~color) 获取颜色。 {{ /if }} {{ if: ${hasInherit} }} 在`emphasis`状态中支持设置为`'inherit'`取消高亮。 {{ /if }}
+柱条的颜色。{{ if: ${useColorPalatte} }} 默认从全局调色盘 [option.color](~color) 获取颜色。 {{ /if }} {{ if: ${hasInherit} }} 在`emphasis`状态中支持设置为 `'inherit'` 取消高亮。 {{ /if }}
 
 {{ use: partial-color-desc() }}
+
+{{ if: ${hasCallback} }}
+支持使用回调函数。回调函数格式如下：
+```ts
+(params: Object) => Color
+```
+传入的是数据项 `seriesIndex`, `dataIndex`, `data`, `value` 等各个参数。
+{{ /if }}
 
 #${prefix} borderColor(Color) = '#000'
 

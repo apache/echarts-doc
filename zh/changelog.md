@@ -1,3 +1,25 @@
+## v5.4.3
+<div class="time">2023-07-18</div>
+
++ [Feature] [axisPointer] 坐标轴指示器新增 `triggerEmphasis` 配置项，支持禁止触发系列高亮。[#18524](https://github.com/apache/echarts/issues/18524) ([juliepagano](https://github.com/juliepagano))
++ [Feature] [sankey] 桑基图 `emphasis.focus` 新增 `trajectory` 可选项，支持聚焦所有连接到当前高亮数据的节点和边。[#17451](https://github.com/apache/echarts/issues/17451) ([ElayGelbart](https://github.com/ElayGelbart))
++ [Fix] [sankey] 修复桑基图边的颜色值 `'target'/'source'/'gradient'` 在非 normal 状态下不生效的问题。[#18834](https://github.com/apache/echarts/issues/18834) ([linghaoSu](https://github.com/linghaoSu))
++ [Fix] [sankey] 修复桑基图 `label` 和 `edgeLabel` formatter 中不能正常获取 `value` 的问题。[#18733](https://github.com/apache/echarts/issues/18733) ([plainheart](https://github.com/plainheart))
++ [Fix] [sunburst] 修复旭日图标签启用 `labelLayout.hideOverlap` 后可能旋转的问题。[#18808](https://github.com/apache/echarts/issues/18808) ([linghaoSu](https://github.com/linghaoSu))
++ [Fix] [graph] 修复关系图可能无法通过图例隐藏的问题。[#18624](https://github.com/apache/echarts/issues/18624) ([plainheart](https://github.com/plainheart))
++ [Fix] [state] 修复 `emphasis.focus: self` 在启用了坐标轴指示器后聚焦元素可能不对的问题。[#18511](https://github.com/apache/echarts/issues/18511) ([linghaoSu](https://github.com/linghaoSu))
++ [Fix] [axis] 修复只有单个数据时最后一个轴刻度不显示的问题。[#18469](https://github.com/apache/echarts/issues/18469) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [pie] 修复饼图在启用了 `selectedOffset` 并禁用 `animation` 时响应区域不正确的问题。[#1011](https://github.com/ecomfe/zrender/pull/1011) ([plainheart](https://github.com/plainheart))
++ [Fix] [custom] 修复自定义系列无法在事件监听回调函数中获取在元素中定义的 `info` 数据的问题。[#18400](https://github.com/apache/echarts/issues/18400) ([sobolewsk](https://github.com/sobolewsk))
++ [Fix] [legend] 修复图例富文本颜色没有继承图例配置颜色的问题。[#18260](https://github.com/apache/echarts/issues/18260) ([ChepteaCatalin](https://github.com/ChepteaCatalin))
++ [Fix] [label] 修复标签的 `ellipsis` 配置项不生效的问题。[#18525](https://github.com/apache/echarts/issues/18525) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [label] 修复当数据为空时 `endLabel` 报错的问题。[#18841](https://github.com/apache/echarts/issues/18841) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [util] 修复时间格式化工具函数中没有对 `{yy}` 进行补零的问题。[#18535](https://github.com/apache/echarts/issues/18535) ([linghaoSu](https://github.com/linghaoSu))
++ [Fix] [api] 修复 `disconnect` API 被意外标记为过时的问题。[#18758](https://github.com/apache/echarts/issues/18758) ([Justineo](https://github.com/Justineo))
++ [Fix] [i18n] 修正德语翻译中 `"March"` 的缩写为 `"Mrz"`。[#18387](https://github.com/apache/echarts/issues/18387) ([Stebeber](https://github.com/Stebeber))
++ [Fix] [type] 修复平行坐标系系列 `parallel` 数据项 `value` 类型错误的问题。[#18425](https://github.com/apache/echarts/issues/18425) ([ManishDait](https://github.com/ManishDait))
++ [Fix] [type] TypeScript 中 `echarts.init` API 允许传入 `null` 作为参数。[#18575](https://github.com/apache/echarts/issues/18575) ([zhuscat](https://github.com/zhuscat))
+
 ## v5.4.2
 <div class="time">2023-03-23</div>
 

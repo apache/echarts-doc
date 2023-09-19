@@ -17,7 +17,7 @@ The width of the bar. Adaptive when not specified.
 
 The maximum width of the bar.
 
-Has higer priority than [barWidth](~series-bar.barWidth).
+Has higher priority than [barWidth](~series-bar.barWidth).
 
 {{ use: partial-barGrid-value-absolute-or-percent() }}
 
@@ -29,7 +29,7 @@ Has higer priority than [barWidth](~series-bar.barWidth).
 
 The minimum width of the bar. In cartesian the default value is `1`, otherwise the default value if `null`.
 
-Has higer priority than [barWidth](~series-bar.barWidth).
+Has higher priority than [barWidth](~series-bar.barWidth).
 
 {{ use: partial-barGrid-value-absolute-or-percent() }}
 
@@ -72,7 +72,7 @@ The bar gap of a single series, defaults to be `20%` of the category gap, can be
 
 {{ target: partial-barGrid-share-desc }}
 
-In a single coodinate system, this attribute is shared by multiple `'${seriesType}'` series. This attribute should be set on the last `'${seriesType}'` series in the coodinate system, then it will be adopted by all `'${seriesType}'` series in the coordinate system.
+In a single coordinate system, this attribute is shared by multiple `'${seriesType}'` series. This attribute should be set on the last `'${seriesType}'` series in the coordinate system, then it will be adopted by all `'${seriesType}'` series in the coordinate system.
 
 
 

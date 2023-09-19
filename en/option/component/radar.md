@@ -39,7 +39,7 @@ The formatter of indicator's name, in which the string and callback function are
 ```ts
 // using string template, the template variable should be the indicator's name {value}
 formatter: '【{value}】'
-// using callback function, the first parameter is the indicator's name, and the second parameter id the indicator's cinfiguration item
+// using callback function, the first parameter is the indicator's name, and the second parameter id the indicator's configuration item
 formatter: function (value, indicator) {
     return '【' + value + '】';
 }
@@ -139,5 +139,5 @@ The minimum value of indicator. It it an optional configuration, with default va
 
 <ExampleUIControlColor />
 
-Specfy a color of the indicator.
+Specify a color of the indicator.
 

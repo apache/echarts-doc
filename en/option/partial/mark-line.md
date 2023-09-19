@@ -11,13 +11,13 @@ Use a line in the chart to illustrate.
 
 ##${prefix} symbol(string|Array)
 
-Symbol type at the two ends of the mark line. It can be an array for two ends, or assigned seperately. See [data.symbol](~series-${seriesType}.markLine.data.0.symbol) for more format information.
+Symbol type at the two ends of the mark line. It can be an array for two ends, or assigned separately. See [data.symbol](~series-${seriesType}.markLine.data.0.symbol) for more format information.
 
 ##${prefix} symbolSize(number|Array)
 
-Symbol size at the two ends of the mark line. It can be an array for two ends, or assigned seperately.
+Symbol size at the two ends of the mark line. It can be an array for two ends, or assigned separately.
 
-**Attention: ** You cannot assgin width and height seperately as normal `symbolSize`.
+**Attention: ** You cannot assign width and height separately as normal `symbolSize`.
 
 ##${prefix} precision(number) = 2
 

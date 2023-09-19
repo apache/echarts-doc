@@ -283,11 +283,11 @@ const option = {
 是否显示面包屑。
 
 {{ use: partial-rect-layout(
-    componentName = "asdf ",
+    componentName = "面包屑",
     prefix = "##",
     noZ = true,
     defaultLeft = "'center'",
-    defaultBottom = 0
+    defaultTop = "'bottom'"
 ) }}
 
 ### height(number) = 22

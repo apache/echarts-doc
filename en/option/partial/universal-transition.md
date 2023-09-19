@@ -17,7 +17,7 @@ This can be enabled directly by configuring `universalTransition: true` in the s
 
 ##${prefix} enabled(boolean) = false
 
-Wheather to enable the universal transition animation.
+Whether to enable the universal transition animation.
 
 ##${prefix} seriesKey(string|Array)
 

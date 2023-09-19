@@ -227,7 +227,7 @@ levels: [{
 {{ use: partial-focus-blur-scope(
     isGraph = true,
     hasTrajectory = true,
-    trajectoryVersion = "5.5.0"
+    trajectoryVersion = "5.4.3"
 ) }}
 
 {{ use: sankey-state(

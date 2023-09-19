@@ -5,7 +5,7 @@
 
 <ExampleUIControlColor />
 
-填充的颜色。{{ if: ${useColorPalatte} }}。默认从[option.color 调色盘](~color)获取颜色。{{ /if }}{{ if: ${hasInherit} }}在`emphasis`状态中支持设置为`'inherit'`取消高亮颜色。{{ /if }}
+填充的颜色。{{ if: ${useColorPalatte} }}。默认从[option.color 调色盘](~color)获取颜色。{{ /if }}{{ if: ${hasInherit} }}在`emphasis`状态中支持设置为 `'inherit'` 取消高亮颜色。{{ /if }}
 
 {{ use: partial-color-desc() }}
 

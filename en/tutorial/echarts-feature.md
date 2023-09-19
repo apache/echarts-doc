@@ -13,7 +13,7 @@ You can download a whole package of all chart components, or you may select the 
 
 ## Support of multiple coordinate
 
-ECharts started to seperate the concept of "coordinate" from 3.0, supporting rectangular coordinate (containing catesian, as well as grid), polar coordinate (polar), geographic coordinate (geo). Charts can cross coordinate. For example, line chart, bar chart and scatter chart can be placed in the same rectangular coordinate or polar  coordinate or even geographic coordinate.
+ECharts started to separate the concept of "coordinate" from 3.0, supporting rectangular coordinate (containing catesian, as well as grid), polar coordinate (polar), geographic coordinate (geo). Charts can cross coordinate. For example, line chart, bar chart and scatter chart can be placed in the same rectangular coordinate or polar  coordinate or even geographic coordinate.
 
 Below is an example that a line chart is in polar coordinate:
 

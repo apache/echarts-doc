@@ -115,11 +115,16 @@ const option = {
 
 选中范围的填充颜色。
 
-## borderColor(Color) = '#ddd'
+## borderColor(Color) = '#d2dbee'
 
-<ExampleUIControlColor default="#ddd" />
+<ExampleUIControlColor default="#d2dbee" />
 
 边框颜色。
+
+{{ use: partial-border-radius(
+    prefix = "#",
+    defaultBorderRadius = 3
+) }}
 
 ## handleIcon(string)
 
@@ -184,7 +189,8 @@ const option = {
 
 {{ use: partial-item-style(
     prefix = "##",
-    defaultColor = "#D2DBEE"
+    defaultColor = "#D2DBEE",
+    defaultOpacity = 0.7
 ) }}
 
 ## labelPrecision(number|string) = 'auto'

@@ -11,7 +11,7 @@ Examples:
 padding: 5
 // Set the top and bottom paddings to be 5, and left and right paddings to be 10
 padding: [5, 10]
-// Set each of the four paddings seperately
+// Set each of the four paddings separately
 padding: [
     5,  // up
     10, // right

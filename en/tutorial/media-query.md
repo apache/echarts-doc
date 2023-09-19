@@ -3,7 +3,7 @@
 
 # Responsive Mobile-End
 
-Apache ECharts<sup>TM</sup> works in DOM nodes with user defined width and height. ECharts *component* and *series* are both in this DOM node, whose location can be assigned by user seperately. Inner components of charts are not suitable for implementing DOM flow layout. Instead, we use a simpler and more understandable layout similar to absolute layout. But sometimes when container is of extreme size, this method cannot avoid component overlapping automatically, especially on small screens on mobile-end.
+Apache ECharts<sup>TM</sup> works in DOM nodes with user defined width and height. ECharts *component* and *series* are both in this DOM node, whose location can be assigned by user separately. Inner components of charts are not suitable for implementing DOM flow layout. Instead, we use a simpler and more understandable layout similar to absolute layout. But sometimes when container is of extreme size, this method cannot avoid component overlapping automatically, especially on small screens on mobile-end.
 
 Besides, sometimes one chart may need to be displayed on both PC and mobile-end, which involves the ability of ECharts inner components to be responsive with different container sizes.
 
@@ -44,7 +44,7 @@ The concept of these six parameters is similar to that in CSS:
 + height: height.
 
 Two out of the three horizontal parameters, `left`, `right`, `width`, are enough to determine the component location. For example, `left` and `right`, or `right` and `width` can both determine component location and size.
-The same goes for vertical paramters `top`, `bottom` and `height`.
+The same goes for vertical parameters `top`, `bottom` and `height`.
 
 <br>
 **Locating method of `center` / `radius`: **

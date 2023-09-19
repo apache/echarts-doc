@@ -9,7 +9,7 @@ This article provides an overview of the different approaches about Apache EChar
 These approaches below will be introduced. The functionalities of them might be overlapped, but they are suitable for different scenarios.
 
 + Theme
-+ Pallette
++ Palette
 + Customize style explicitly (itemStyle, lineStyle, areaStyle, label, ...)
 + Visual encoding (visualMap component)
 
@@ -69,7 +69,7 @@ var chart = echarts.init(dom, 'vintage');
 
 **Palette**
 
-Pallettes can be given in option. They provide a group of colors, which will be auto picked by series and data. We can give a global palette, or exclusive pallette for certain series.
+Pallettes can be given in option. They provide a group of colors, which will be auto picked by series and data. We can give a global palette, or exclusive palette for certain series.
 
 ```ts
 option = {
