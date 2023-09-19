@@ -81,6 +81,14 @@ const option = {
 
 起始角度，支持范围[0, 360]。
 
+## endAngle(number|string) = 'auto'
+
+<ExampleUIControlAngle min="-360" max="360" default="270" step="1" />
+
+结束角度，默认值是 `'auto'`。
+
+当值为 `'auto'` 时，根据 [startAngle](~series-pie.startAngle) 自动计算结束角度，以确保是一个完整的圆。
+
 ## minAngle(number) = 0
 
 <ExampleUIControlAngle step="1" min="0" max="360" default="0" />
@@ -521,7 +529,8 @@ const option = {
 {{ use: partial-text-style(
     prefix = ${prefix},
     noAlign = true,
-    noVerticalAlign = true
+    noVerticalAlign = true,
+    enableAutoColor = true
 ) }}
 
 
