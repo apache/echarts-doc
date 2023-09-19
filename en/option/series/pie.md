@@ -62,11 +62,16 @@ The start angle, which range is [0, 360].
 
 ## endAngle(number|string) = 'auto'
 
-<ExampleUIControlAngle min="-360" max="360" default="270" step="1" />
+<ExampleUIControlAngle step="1" min="0" max="360" default="270" />
+
+{{ use: partial-version(
+    version = "5.5.0"
+) }}
 
 The end angle, the default value is `'auto'`.
 
 When the value is `'auto'`, the end angle is calculated automatically based on [startAngle](~series-pie.startAngle) to ensure it is a complete circle.
+
 ## minAngle(number) = 0
 
 <ExampleUIControlAngle step="1" min="0" max="360" default="0" />

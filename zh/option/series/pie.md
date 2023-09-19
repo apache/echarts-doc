@@ -83,7 +83,11 @@ const option = {
 
 ## endAngle(number|string) = 'auto'
 
-<ExampleUIControlAngle min="-360" max="360" default="270" step="1" />
+<ExampleUIControlAngle step="1" min="0" max="360" default="270" />
+
+{{ use: partial-version(
+    version = "5.5.0"
+) }}
 
 结束角度，默认值是 `'auto'`。
 
