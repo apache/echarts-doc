@@ -19,7 +19,7 @@
     "core-js": "^3.6.5",
     "google-translate-api-browser": "^1.1.71",
     "quasar": "^1.0.0",
-    "socket.io": "^2.5.0"
+    "socket.io": "^4.7.2"
   },
   "devDependencies": {
     "@quasar/app": "^2.0.0",
