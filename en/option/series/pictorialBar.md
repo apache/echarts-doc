@@ -280,6 +280,11 @@ Select state of the specified single data.
     hasType = true
 ) }}
 
+{{ use: partial-clip(
+    prefix = "#",
+    defaultClip = false
+) }}
+
 {{ use: partial-z-zlevel(
     prefix = "#",
     componentName = "Pictorial bar chart "
