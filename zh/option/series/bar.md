@@ -214,6 +214,27 @@ option = {
     version = '5.0.0'
 ) }}
 
+## selectedMap(Object) = {}
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+默认选中的数据类目名字。开启 [selectedMode](~series-bar.selectedMode) 后有效。
+类型为`object | 'all'`。
+如果为 'all'，则表示全部选中。
+
+示例：
+```
+// 选中全部数据
+selectedMap: 'all'
+// 选中指定数据
+selectedMap: {
+  // 选中'类目1'
+  '类目1': true
+}
+```
+
 ## stack(string) = null
 
 数据堆叠，同个类目轴上系列配置相同的 `stack` 值可以堆叠放置。关于如何定制数值的堆叠方式，参见 [stackStrategy](~series-bar.stackStrategy)。
