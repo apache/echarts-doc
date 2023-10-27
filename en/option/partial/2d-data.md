@@ -45,11 +45,11 @@ Check this [example](${galleryEditorPath}dataset-series-layout-by).
 
 
 
-{{ target: partial-datasetIndex }}
+{{ target: partial-datasetId }}
 
-## datasetIndex(number) = 0
+## datasetId(number) = 0
 
-If [series.data](~series.data) is not specified, and [dataset](~dataset) exists, the series will use `dataset`. `datasetIndex` specifies which dataset will be used.
+If [series.data](~series.data) is not specified, and [dataset](~dataset) exists, the series will use `dataset`. `datasetId` specifies which dataset will be used.
 
 
 

@@ -175,7 +175,7 @@ Configurations of select state. Available when [selectedMode](~series-funnel.sel
 
 {{ use: partial-seriesLayoutBy() }}
 
-{{ use: partial-datasetIndex() }}
+{{ use: partial-datasetId() }}
 
 {{ use: partial-series-dimensions(
     prefix = "#"

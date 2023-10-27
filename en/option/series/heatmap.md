@@ -134,7 +134,7 @@ Configurations of select state. Available when [selectedMode](~series-heatmap.se
 
 {{ use: partial-seriesLayoutBy() }}
 
-{{ use: partial-datasetIndex() }}
+{{ use: partial-datasetId() }}
 
 {{ use: partial-series-group-id() }}
 

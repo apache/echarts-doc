@@ -192,7 +192,7 @@ Configurations of select state. Available when [selectedMode](~series-effectScat
 
 {{ use: partial-seriesLayoutBy() }}
 
-{{ use: partial-datasetIndex() }}
+{{ use: partial-datasetId() }}
 
 {{ use: partial-series-dimensions(
     prefix = "#"

@@ -306,7 +306,7 @@ Donut chart can be achieved by setting a inner radius.
 
 {{ use: partial-seriesLayoutBy() }}
 
-{{ use: partial-datasetIndex() }}
+{{ use: partial-datasetId() }}
 
 {{ use: partial-series-dimensions(
     prefix = "#"

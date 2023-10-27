@@ -411,7 +411,7 @@ renderItem 函数的第二个参数。
 
 {{ use: partial-seriesLayoutBy() }}
 
-{{ use: partial-datasetIndex() }}
+{{ use: partial-datasetId() }}
 
 {{ use: partial-series-group-id() }}
 

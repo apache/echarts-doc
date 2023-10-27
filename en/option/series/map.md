@@ -64,7 +64,7 @@ Show the symbol in related area (dot of series symbol). Available when [legend](
 
 {{ use: partial-seriesLayoutBy() }}
 
-{{ use: partial-datasetIndex() }}
+{{ use: partial-datasetId() }}
 
 {{ use: partial-series-group-id() }}
 

@@ -61,7 +61,7 @@ center: [115.97, '30%']
 
 {{ use: partial-seriesLayoutBy() }}
 
-{{ use: partial-datasetIndex() }}
+{{ use: partial-datasetId() }}
 
 {{ use: partial-series-group-id() }}
 

@@ -155,7 +155,7 @@ Configurations of select state. Available when [selectedMode](~series-scatter.se
 
 {{ use: partial-seriesLayoutBy() }}
 
-{{ use: partial-datasetIndex() }}
+{{ use: partial-datasetId() }}
 
 {{ use: partial-series-group-id() }}
 
