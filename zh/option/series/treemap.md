@@ -467,7 +467,7 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
             {
                 value: 2323,    // value字段的值，对应到面积大小。
                                 // 也可以是数组，如 [2323, 43, 55]，则数组第一项对应到面积大小。
-                                // 数组其他项可以用于额外的视觉映射，详情参见 series-treemp.levels。
+                                // 数组其他项可以用于额外的视觉映射，详情参见 series-treemap.levels。
                 id: 'someid-1', // id 不是必须设置的。
                                 // 但是如果想使用 API 来改变某个节点，需要用 id 来定位。
                 name: 'description of this node', // 显示在矩形中的描述文字。

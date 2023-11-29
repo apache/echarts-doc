@@ -316,7 +316,7 @@ the the data format of [series-treemap.data](~series-treemap.data) is a forest. 
             {
                 value: 2323,    // The value of this node, indicating the area size.
                                 // it could also be an array, such as [2323, 43, 55], in which the first item of array indicates the area size.
-                                // The other items of the array can be used for extra visual mapping. See details in series-treemp.levels.
+                                // The other items of the array can be used for extra visual mapping. See details in series-treemap.levels.
                 id: 'someid-1', // id is not mandatory.
                                 // But if using API, id is used to locate node.
                 name: 'description of this node', // show the description text in rectangle.
@@ -358,7 +358,7 @@ The value of this node, indicating the area size.
 
 It could also be an array, such as [2323, 43, 55], in which the first item of array indicates the area size.
 
-The other items of the array can be used for extra visual mapping. See details in series-treemp.levels.
+The other items of the array can be used for extra visual mapping. See details in series-treemap.levels.
 
 ### id(string)
 
