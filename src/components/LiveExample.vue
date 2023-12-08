@@ -79,7 +79,6 @@ import 'codemirror/theme/dracula.css';
 import beautifier from 'js-beautify';
 import {throttle} from 'lodash-es';
 import arrayDiff from 'zrender/lib/core/arrayDiff';
-import {ECHARTS_LIB} from '../config';
 import { compressToBase64 } from 'lz-string';
 
 let echartsLoadPromise;
@@ -87,7 +86,9 @@ let echartsLoadPromise;
 function fetchECharts() {
     return echartsLoadPromise || (echartsLoadPromise = new Promise(function (resolve, reject) {
         const script = document.createElement('script');
-        script.src = ECHARTS_LIB;
+        script.src = store.locale === 'zh'
+            ? 'https://lib.baomitu.com/echarts/latest/echarts.min.js'
+            : 'https://fastly.jsdelivr.net/npm/echarts@latest/dist/echarts.min.js';
         script.async = true;
         script.onload = function () {
             echartsLoadPromise = null;
