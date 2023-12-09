@@ -213,9 +213,9 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
     start: number
     // 缩放的结束位置的百分比，0 - 100
     end: number
-    // 缩放的开始位置的数值，只有在工具栏的缩放行为的事件中存在。
+    // 缩放的开始位置的数值
     startValue?: number
-    // 缩放的结束位置的数值，只有在工具栏的缩放行为的事件中存在。
+    // 缩放的结束位置的数值
     endValue?: number
 }
 ```

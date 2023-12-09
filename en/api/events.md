@@ -215,9 +215,9 @@ Event emitted after zooming data area.
     start: number
     // percentage of zoom finish position, 0 - 100
     end: number
-    // data value of zoom start position; only exists in zoom event of triggered by toolbar
+    // data value of zoom start position;
     startValue?: number
-    // data value of zoom finish position; only exists in zoom event of triggered by toolbar
+    // data value of zoom finish position;
     endValue?: number
 }
 ```
