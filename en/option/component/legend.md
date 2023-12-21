@@ -135,9 +135,13 @@ Legend color when not selected.
 
 Legend border color when not selected.
 
-## inactiveBorderWidth(number|'auto'|'inherit') = 'auto'
+## inactiveBorderWidth(number|string) = 'auto'
 
-Legend border width when not selected. If it is `'auto'`, the border width is set to be 2 if there is border width in the series, 0 elsewise. If it is `'inherit'`, it always takes the border width of the series.
+Legend border width when not selected.
+
+If it is `'auto'`, the border width is set to be 2 if there is border width in the series, 0 elsewise.
+
+If it is `'inherit'`, it always takes the border width of the series.
 
 ## selected(Object)
 
@@ -221,9 +225,13 @@ Legend color when not selected.
 
 Legend border color when not selected.
 
-### inactiveBorderWidth(number|'auto'|'inherit') = 'auto'
+### inactiveBorderWidth(number|string) = 'auto'
 
-Legend border width when not selected. If it is `'auto'`, the border width is set to be 2 if there is border width in the series, 0 elsewise. If it is `'inherit'`, it always takes the border width of the series.
+Legend border width when not selected.
+
+If it is `'auto'`, the border width is set to be 2 if there is border width in the series, 0 elsewise.
+
+If it is `'inherit'`, it always takes the border width of the series.
 
 ### symbolRotate(number|string) = 'inherit'
 

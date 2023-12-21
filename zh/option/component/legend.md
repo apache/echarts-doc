@@ -218,9 +218,13 @@ formatter: function (name) {
 
 图例关闭时的描边颜色。
 
-## inactiveBorderWidth(number|'auto'|'inherit') = 'auto'
+## inactiveBorderWidth(number|string) = 'auto'
 
-图例关闭时的描边粗细。如果为 `'auto'` 表示：如果系列存在描边，则取 2，如果系列不存在描边，则取 0。如果为 `'inherit'` 则表示：始终取系列的描边粗细。
+图例关闭时的描边粗细。
+
+如果为 `'auto'` 表示：如果系列存在描边，则取 2，如果系列不存在描边，则取 0。
+
+如果为 `'inherit'` 表示：始终取系列的描边粗细。
 
 ## selected(Object)
 
@@ -319,9 +323,13 @@ data: [{
 
 图例关闭时的描边颜色。
 
-### inactiveBorderWidth(number|'auto'|'inherit') = 'auto'
+### inactiveBorderWidth(number|string) = 'auto'
 
-图例关闭时的描边粗细。如果为 `'auto'` 表示：如果系列存在描边，则取 2，如果系列不存在描边，则取 0。如果为 `'inherit'` 则表示：始终取系列的描边粗细。
+图例关闭时的描边粗细。
+
+如果为 `'auto'` 表示：如果系列存在描边，则取 2，如果系列不存在描边，则取 0。
+
+如果为 `'inherit'` 表示：始终取系列的描边粗细。
 
 ### textStyle(Object)
 
