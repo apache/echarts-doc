@@ -509,6 +509,18 @@ Gap between axis name and axis line.
 
 Rotation of axis name.
 
+#${prefix} nameTruncate(Object)
+
+Truncation of the axis name.
+
+##${prefix} maxWidth(number)
+
+The maximum length for the truncated text. Any text exceeding this length will be truncated.
+
+##${prefix} ellipsis(string) = '...'
+
+The content displayed at the end of the text after truncation.
+
 #${prefix} inverse(boolean) = false
 
 <ExampleUIControlBoolean />

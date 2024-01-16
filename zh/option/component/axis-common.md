@@ -505,6 +505,18 @@ splitLine: {
 
 坐标轴名字旋转，角度值。
 
+#${prefix} nameTruncate(Object)
+
+坐标轴名字的截断。
+
+##${prefix} maxWidth(number)
+
+截断文本的最大长度，超过此长度会被截断。
+
+##${prefix} ellipsis(string) = '...'
+
+截断后文字末尾显示的内容。
+
 #${prefix} inverse(boolean) = false
 
 <ExampleUIControlBoolean />
