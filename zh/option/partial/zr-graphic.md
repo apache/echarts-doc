@@ -275,7 +275,7 @@ group 是唯一的可以有子节点的容器。group 可以用来整体定位�
 
 ###${prefix} font(string)
 
-字体大小、字体类型、粗细、字体样式。格式参见 [css font](https://developer.mozilla.org/en-US/docs/Web/CSS/font)。
+字体大小、字体类型、粗细、字体样式。格式参见 [css font](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font)。
 
 例如：
 ```
@@ -1568,11 +1568,31 @@ Position of `textContent`.
 
 ###${prefix} stroke(string) = ${stroke|default("null")}
 
-笔画颜色。
+线条颜色。
 
 ###${prefix} lineWidth(number) = ${lineWidth|default("0")}
 
-笔画宽度。
+线条宽度。
+
+###${prefix} lineDash(null | false | number[] | 'solid' | 'dashed' | 'dotted') = null
+
+在填充线时使用虚线模式。详见 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/setLineDash)。
+
+###${prefix} lineDashOffset(number) = 0
+
+在填充线时使用虚线的偏移量。详细见 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/lineDashOffset)。
+
+###${prefix} lineCap('butt' | 'round' | 'square') = 'butt'
+
+如何绘制每一条线段末端的属性。详见 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/lineCap)。
+
+###${prefix} lineJoin('bevel' | 'round' | 'miter') = 'miter'
+
+设置线条转折点的样式。详见 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/lineJoin)。
+
+###${prefix} miterLimit(number) = 10
+
+设置斜接面限制比例的属性。详见 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/miterLimit)。
 
 ###${prefix} shadowBlur(number) = undefined
 

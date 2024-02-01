@@ -1594,6 +1594,26 @@ Color of stroke.
 
 Width of stroke.
 
+###${prefix} lineDash(null | false | number[] | 'solid' | 'dashed' | 'dotted') = null
+
+Sets the line dash pattern used when stroking lines. See [MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/setLineDash) for more information.
+
+###${prefix} lineDashOffset(number) = 0
+
+Sets the line dash offset used when stroking lines. See [MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineDashOffset) for more information.
+
+###${prefix} lineCap('butt' | 'round' | 'square') = 'butt'
+
+Line cap style. See [MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineCap) for more information.
+
+###${prefix} lineJoin('bevel' | 'round' | 'miter') = 'miter'
+
+Line join style. See [MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineJoin) for more information.
+
+###${prefix} miterLimit(number) = 10
+
+Sets the miter limit ratio. See [MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/miterLimit) for more information.
+
 ###${prefix} shadowBlur(number) = undefined
 
 Width of shadow.
