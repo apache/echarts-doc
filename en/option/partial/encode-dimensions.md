@@ -164,7 +164,7 @@ option = {
     },
     series: {
         type: 'xxx',
-        // Specify name for each dimesions, which will be displayed in tooltip.
+        // Specify name for each dimensions, which will be displayed in tooltip.
         dimensions: ['date', 'open', 'close', 'highest', 'lowest']
     }
 }
@@ -196,5 +196,5 @@ Each data item of `dimensions` can be:
         + `time`, time value, see [data](~series.data) to check the format of time value.
     + displayName: `string`, generally used in tooltip for dimension display. If not specified, use `name` by default.
 
-When `dimensions` is specified, the default `tooltip` will be displayed vertically, which is better to show diemsion names. Otherwise, `tooltip` will displayed only value horizontally.
+When `dimensions` is specified, the default `tooltip` will be displayed vertically, which is better to show dimension names. Otherwise, `tooltip` will displayed only value horizontally.
 

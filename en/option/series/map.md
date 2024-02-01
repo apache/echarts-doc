@@ -5,7 +5,7 @@
 
 **Map.**
 
-Map is mainly used in the visualization of geographic area data, which can be used with [visualMap](~visualMap) component to visualize the datas such as population distribution density in diffrent areas.
+Map is mainly used in the visualization of geographic area data, which can be used with [visualMap](~visualMap) component to visualize the data such as population distribution density in different areas.
 
 Series of same [map type](~series-map.map) will show in one map. At this point, the configuration of the first series will be used for the map configuration.
 
@@ -26,7 +26,7 @@ Series of same [map type](~series-map.map) will show in one map. At this point, 
 
 ## center(Array)
 
-Center of current view-port. It can be an arrary containing two `number`s in pixels or `string`s in percentage relative to the container width/height.
+Center of current view-port. It can be an array containing two `number`s in pixels or `string`s in percentage relative to the container width/height.
 `string` is supported from version `5.3.3`.
 
 Example:

@@ -212,21 +212,19 @@ formatter: function (name) {
 
 ## inactiveColor(Color) = '#ccc'
 
-<ExampleUIControlColor default="#ccc" />
-
 图例关闭时的颜色。
 
 ## inactiveBorderColor(Color) = '#ccc'
 
-<ExampleUIControlColor default="#ccc" />
-
 图例关闭时的描边颜色。
 
-## inactiveBorderWidth(Color) = 'auto'
+## inactiveBorderWidth(number|string) = 'auto'
 
-<ExampleUIControlColor default="#ccc" />
+图例关闭时的描边粗细。
 
-图例关闭时的描边粗细。如果为 `'auto'` 表示：如果系列存在描边，则取 2，如果系列不存在描边，则取 0。如果为 `'inherit'` 则表示：始终取系列的描边粗细。
+如果为 `'auto'` 表示：如果系列存在描边，则取 2，如果系列不存在描边，则取 0。
+
+如果为 `'inherit'` 表示：始终取系列的描边粗细。
 
 ## selected(Object)
 
@@ -317,9 +315,29 @@ data: [{
 
 图形旋转角度，类型为 `number | 'inherit'`。如果为 `'inherit'`，表示取系列的 `symbolRotate`。
 
+### inactiveColor(Color) = '#ccc'
+
+图例关闭时的颜色。
+
+### inactiveBorderColor(Color) = '#ccc'
+
+图例关闭时的描边颜色。
+
+### inactiveBorderWidth(number|string) = 'auto'
+
+图例关闭时的描边粗细。
+
+如果为 `'auto'` 表示：如果系列存在描边，则取 2，如果系列不存在描边，则取 0。
+
+如果为 `'inherit'` 表示：始终取系列的描边粗细。
+
 ### textStyle(Object)
 
 图例项的文本样式。
+
+{{ use: partial-simple-text-style(
+    prefix: '###'
+) }}
 
 {{ use: partial-component-common-style(
     componentName = '图例',
@@ -490,19 +508,22 @@ data: [{
     version = "4.4.0"
 ) }}
 
-图例组件中的选择器按钮，目前包括全选和反选两种功能。默认不显示，用户可手动开启，也可以手动配置每个按钮的标题。
+图例组件中的选择器按钮，目前包括“全选”和“反选”两种功能。默认不显示，用户可手动开启，也可以手动配置每个按钮的标题。
 
 使用方式如下：
 
 ```ts
 selector: [
     {
-        type: 'all or inverse',
-        // 可以是任意你喜欢的 title
+        // 全选
+        type: 'all',
+        // 可以是任意你喜欢的标题
         title: '全选'
     },
     {
+        // 反选
         type: 'inverse',
+        // 可以是任意你喜欢的标题
         title: '反选'
     }
 ]
@@ -606,4 +627,12 @@ ${name}图形中线的样式，用于诸如折线图图例横线的样式设置�
     defaultShadowOffsetX = 0,
     defaultShadowOffsetY = 0
 ) }}
+
+##${prefix} inactiveColor(Color) = '#ccc'
+
+图例关闭时的线条描边颜色。
+
+##${prefix} inactiveWidth(number) = 2
+
+图例关闭时的线条宽度。
 

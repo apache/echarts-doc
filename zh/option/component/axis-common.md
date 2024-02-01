@@ -34,6 +34,10 @@
 是否显示坐标轴轴线。
 
 {{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
+> 从 `v5.0.0` 开始，数值轴 (`type: 'value'`) 默认不显示轴线，需要显式配置。
+{{ /if }}
+
+{{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
 ##${prefix} onZero(boolean) = true
 
 <ExampleUIControlBoolean default="true" />
@@ -191,6 +195,10 @@ textStyle: {
 <ExampleUIControlBoolean default="${defaultShow|default(true)}" />
 
 是否显示坐标轴刻度。
+
+{{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
+> 从 `v5.0.0` 开始，数值轴 (`type: 'value'`) 默认不显示轴刻度，需要显式配置。
+{{ /if }}
 
 {{ if: ${hasAlignWithLabel|default(true)} }}
 ##${prefix} alignWithLabel(boolean) = false
@@ -438,8 +446,7 @@ splitLine: {
     时间轴，适用于连续的时序数据，与数值轴相比时间轴带有时间的格式化，在刻度计算上也有所不同，例如会根据跨度的范围来决定使用月，星期，日还是小时范围的刻度。
 
 + `'log'`
-    对数轴。适用于对数数据。
-
+    对数轴。适用于对数数据。对数轴下的堆积柱状图或堆积折线图可能带来很大的视觉误差，并且在一定情况下可能存在非预期效果，应避免使用。
 
 
 {{ target: axis-common }}
@@ -496,6 +503,18 @@ splitLine: {
 <ExampleUIControlAngle min="-360" max="360" step="1" />
 
 坐标轴名字旋转，角度值。
+
+#${prefix} nameTruncate(Object)
+
+坐标轴名字的截断。
+
+##${prefix} maxWidth(number)
+
+截断文本的最大长度，超过此长度会被截断。
+
+##${prefix} ellipsis(string) = '...'
+
+截断后文字末尾显示的内容。
 
 #${prefix} inverse(boolean) = false
 
@@ -711,6 +730,10 @@ data: [{
 ) }}
 {{ /if }}
 
+{{ use: partial-animation(
+    prefix = ${prefix}
+) }}
+
 
 
 {{ target: partial-axis-interval }}
@@ -804,7 +827,7 @@ formatter: function (value, index) {
     var date = new Date(value);
     var texts = [(date.getMonth() + 1), date.getDate()];
     if (index === 0) {
-        texts.unshift(date.getYear());
+        texts.unshift(date.getFullYear());
     }
     return texts.join('/');
 }
@@ -904,4 +927,3 @@ xAxis: {
     }
 },
 ```
-

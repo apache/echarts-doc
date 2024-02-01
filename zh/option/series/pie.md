@@ -81,11 +81,33 @@ const option = {
 
 起始角度，支持范围[0, 360]。
 
+## endAngle(number|string) = 'auto'
+
+<ExampleUIControlAngle step="1" min="0" max="360" default="270" />
+
+{{ use: partial-version(
+    version = "5.5.0"
+) }}
+
+结束角度，默认值是 `'auto'`。
+
+当值为 `'auto'` 时，根据 [startAngle](~series-pie.startAngle) 自动计算结束角度，以确保是一个完整的圆。
+
 ## minAngle(number) = 0
 
 <ExampleUIControlAngle step="1" min="0" max="360" default="0" />
 
 最小的扇区角度（0 ~ 360），用于防止某个值过小导致扇区太小影响交互。
+
+## padAngle(number) = 0
+
+<ExampleUIControlAngle step="1" min="0" max="360" default="0" />
+
+{{ use: partial-version(
+    version = "5.5.0"
+) }}
+
+饼图扇区之间的间隔角度（0 ~ 360）。
 
 ## minShowLabelAngle(number) = 0
 
@@ -515,17 +537,19 @@ const option = {
 ) }}
 {{ /if }}
 
-#${prefix} rotate(boolean|number) = null
+#${prefix} rotate(boolean|number|string) = null
 
 标签旋转：
 
-+ 如果为 `true`，则为径向排布。
++ 如果为 `true` 或 `'radial'`，则为径向排布。（`'radial'` 字面量从 `v5.2.0` 开始支持）
++ 如果为 `'tangential'`，则为切向排布。（从 `v5.2.0` 开始支持）
 + 如果为 `number` ，旋转指定角度，从 -90 度到 90 度。正值是逆时针。
 
 {{ use: partial-text-style(
     prefix = ${prefix},
     noAlign = true,
-    noVerticalAlign = true
+    noVerticalAlign = true,
+    enableAutoColor = true
 ) }}
 
 

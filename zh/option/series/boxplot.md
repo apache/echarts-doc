@@ -154,7 +154,7 @@ box 的宽度的上下限。数组的意思是：`[min, max]`。
     version = "5.0.0"
 ) }}
 
-数据选中时的图形样式和标签样式。开启 [selectedMode](~series-funnel.selectedMode) 后有效。
+数据选中时的图形样式和标签样式。开启 [selectedMode](~series-boxplot.selectedMode) 后有效。
 
 {{ use: partial-select-disabled(
     prefix = "##"

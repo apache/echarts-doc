@@ -282,7 +282,7 @@ The content formatter of tooltip's floating layer which supports string template
 
 **1. String template**
 
-The template variables are `{a}`, `{b}`, `{c}`, `{d}` and `{e}`, which stands for series name, data name and data value and ect. When [trigger](~tooltip.trigger) is set to be `'axis'`, there may be data from multiple series. In this time, series index can be refered as `{a0}`, `{a1}`, or `{a2}`.
+The template variables are `{a}`, `{b}`, `{c}`, `{d}` and `{e}`, which stands for series name, data name and data value and ect. When [trigger](~tooltip.trigger) is set to be `'axis'`, there may be data from multiple series. In this time, series index can be referred as `{a0}`, `{a1}`, or `{a2}`.
 
 `{a}`, `{b}`, `{c}`, `{d}` have different meanings for different series types:
 
@@ -312,11 +312,19 @@ The first parameter `params` is the data that the formatter needs. Its format is
 
 {{ use: partial-formatter-params-structure(
     extra = {
-    percent: {
-        desc: 'the percentage of pie chart',
-    type = 'number'
+        percent: {
+            desc: 'The percentage of current data item in the pie/funnel series',
+            type: 'number'
+        },
+        treePathInfo: {
+            desc: 'The ancestors of current node in the sunburst series (including self)',
+            type: 'Array'
+        },
+        treeAncestors: {
+            desc: 'The ancestors of current node in the tree/treemap series (including self)',
+            type: 'Array'
+        }
     }
-}
 ) }}
 
 When [trigger](~tooltip.trigger) is `'axis'`, or when tooltip is triggered by [axisPointer](~xAxis.axisPointer), `params` is the data array of multiple series. The content of each item of the array is the same as above. Besides,
@@ -349,7 +357,7 @@ Callback function for formatting the value section in tooltip.
 
 Interface:
 ```ts
-(value: number | string) => string
+(value: number | string, dataIndex: number) => string
 ```
 
 Example:
@@ -404,7 +412,7 @@ The border width of tooltip's floating layer.
     scope = ${scope}
 ) }}
 
-The text syle of tooltip's floating layer.
+The text style of tooltip's floating layer.
 
 {{ use: partial-simple-text-style(
     prefix = "#" + ${prefix},

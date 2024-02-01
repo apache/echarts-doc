@@ -16,7 +16,8 @@ If clip the overflow on the coordinate system. Clip results varies between serie
 + Line：Clip the overflowed line.
 + Lines: Clip all the overflowed.
 + Candlestick: Ignore the elements exceeds the coordinate system.
++ PictorialBar: Clip all the overflowed. (Supported since v5.5.0)
 + Custom: Clip all the olverflowed.
 
-All these series have default value `true` except custom series. Set it to `false` if you don't want to clip.
+All these series have default value `true` except pictorialBar and custom series. Set it to `false` if you don't want to clip.
 

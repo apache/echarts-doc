@@ -284,6 +284,11 @@ Select state of the specified single data.
     hasType = true
 ) }}
 
+{{ use: partial-clip(
+    prefix = "#",
+    defaultClip = false
+) }}
+
 {{ use: partial-z-zlevel(
     prefix = "#",
     componentName = "Pictorial bar chart "
@@ -487,15 +492,15 @@ Notice, in the example above,
 
 #${prefix} symbolBoundingData(number)
 
-Defines a bounding area availble for the graphic elements. This setting gives a data, which will then be translated to a coordinate on the coordinate system. The coordinate specifies the bounding. Namely, if `symbolBoundingData` is set, the final size (or layout) of the graphic elements depend on the `symbolBoundingData`.
+Defines a bounding area available for the graphic elements. This setting gives a data, which will then be translated to a coordinate on the coordinate system. The coordinate specifies the bounding. Namely, if `symbolBoundingData` is set, the final size (or layout) of the graphic elements depend on the `symbolBoundingData`.
 
-When reference bar is horizontal, `symbolBoundingData` is coresponding to x axis, while reference bar is vertical, `symbolBoundingData` is coresponding to y axis.
+When reference bar is horizontal, `symbolBoundingData` is corresponding to x axis, while reference bar is vertical, `symbolBoundingData` is corresponding to y axis.
 
 Rule:
 
 + If [symbolRepeat](~series-pictorialBar.symbolRepeat) is not used:
 
-    `symbolBoundingData` is the same as the size of reference bar by default. The size of the graphic element is detemined by `symbolBoundingData`. For example, if reference bar is vertical, its data is `24`, `symbolSize` is set as `[30, '50%']`, `symbolBoundingData` is set as `124`, the final size of the graphic element will be `124 * 50% = 62`. If `symbolBoundingData` is not set, the final size will be `24 * 50% = 12`.
+    `symbolBoundingData` is the same as the size of reference bar by default. The size of the graphic element is determined by `symbolBoundingData`. For example, if reference bar is vertical, its data is `24`, `symbolSize` is set as `[30, '50%']`, `symbolBoundingData` is set as `124`, the final size of the graphic element will be `124 * 50% = 62`. If `symbolBoundingData` is not set, the final size will be `24 * 50% = 12`.
 
 + If [symbolRepeat](~series-pictorialBar.symbolRepeat) is used:
 

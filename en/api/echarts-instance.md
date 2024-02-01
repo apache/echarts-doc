@@ -269,7 +269,7 @@ Resizes chart, which should be called manually when container size changes.
 
 **Tip:**
 
-Sometimes charts may be placed in multiple tabs. Those in hidden labels may fail to initialize due to the ignorance of container width and height. So `resize` should be called manually to get the correct width and height when switching to the corresponding tabs, or specify width/heigth in `opts` explicitly.
+Sometimes charts may be placed in multiple tabs. Those in hidden labels may fail to initialize due to the ignorance of container width and height. So `resize` should be called manually to get the correct width and height when switching to the corresponding tabs, or specify width/height in `opts` explicitly.
 
 ## renderToSVGString(Function)
 
@@ -737,7 +737,7 @@ Exports connected chart image; returns a base64 url; can be set to `src` of `Ima
 ```ts
 (opts: {
     // Specify which series the data will be appended to.
-    seriesIndex?: string,
+    seriesIndex?: number,
     // The data to be appended.
     data?: Array|TypedArray
 }) => string

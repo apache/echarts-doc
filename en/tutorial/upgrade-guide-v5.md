@@ -64,7 +64,7 @@ In 5.0.1, we introduced the new [tree-shaking API](tutorial.html#Use%20ECharts%2
 import * as echarts from 'echarts/core';
 import { BarChart } from 'echarts/charts';
 import { GridComponent } from 'echarts/components';
-// Note that the Canvas renderer is no longer included by default and needs to be imported explictly, or import the SVGRenderer if you need to use the SVG rendering mode
+// Note that the Canvas renderer is no longer included by default and needs to be imported explicitly, or import the SVGRenderer if you need to use the SVG rendering mode
 import { CanvasRenderer } from 'echarts/renderers';
 
 echarts.use([BarChart, GridComponent, CanvasRenderer]);

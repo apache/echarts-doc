@@ -5,7 +5,7 @@
 
 **Lines graph**
 
-It is used to draw the line data with the information about "from" and "to"; and it is applied fot drawing the air routes on map, which visualizes these routes.
+It is used to draw the line data with the information about "from" and "to"; and it is applied for drawing the air routes on map, which visualizes these routes.
 
 ECharts 2.x uses the `markLine` to draw the migrating effect, while in ECharts 3, the `lines` graph is recommended to be used.
 
@@ -70,7 +70,7 @@ The above example uses a custom path of plane shape.
 
 ### symbolSize(Array|number) = 3
 
-The symbol size of special effect, which could be set as single number such as `10`. What's more, arrays could be used to decribe the width and height respectively. For instance, `[20, 10]` indicates `20` for width and  `10` for height.
+The symbol size of special effect, which could be set as single number such as `10`. What's more, arrays could be used to describe the width and height respectively. For instance, `[20, 10]` indicates `20` for width and  `10` for height.
 
 ### color(Color)
 
@@ -106,13 +106,13 @@ The threshold enabling the drawing optimization.
 
 ## symbol(string|Array) = 'none'
 
-Symbol type at the two ends of the line. It can be an array for two ends, or assigned seperately. See [data.symbol](~series-line.markLine.data.0.symbol) for more format information.
+Symbol type at the two ends of the line. It can be an array for two ends, or assigned separately. See [data.symbol](~series-line.markLine.data.0.symbol) for more format information.
 
 ## symbolSize(number|Array) = 10
 
-Symbol size at the two ends of the line. It can be an array for two ends, or assigned seperately.
+Symbol size at the two ends of the line. It can be an array for two ends, or assigned separately.
 
-**Attention: ** You cannot assgin width and height seperately as normal `symbolSize`.
+**Attention: ** You cannot assign width and height separately as normal `symbolSize`.
 
 ## lineStyle(Object)
 
@@ -270,6 +270,8 @@ Label of a single line. Available when [polyline](~series-lines.polyline) is not
     state = 'select'
 ) }}
 
+{{ use: partial-tooltip-in-series-data() }}
+
 {{ use: partial-marker(
     prefix = "#",
     seriesType = "lines"
@@ -295,6 +297,8 @@ Label of a single line. Available when [polyline](~series-lines.polyline) is not
 {{ use: partial-universal-transition(
     prefix = "#"
 ) }}
+
+{{ use: partial-tooltip-in-series() }}
 
 
 

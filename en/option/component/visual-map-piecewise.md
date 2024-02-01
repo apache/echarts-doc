@@ -155,9 +155,9 @@ If you just have a try, you'll know it is not so complicated.
 
 The decimal precision of label, defaults to be 0 (no decimals).
 
-+ In **CONTINUOUS-AVERAGE** mode (i.e., [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber) is used), the rule of data layout is the same as [visualMap-continuous.inverse](~visualMap-continuous.inverse), decimal percision auto adapts to series.data.
++ In **CONTINUOUS-AVERAGE** mode (i.e., [visualMap-piecewise.splitNumber](~visualMap-piecewise.splitNumber) is used), the rule of data layout is the same as [visualMap-continuous.inverse](~visualMap-continuous.inverse), decimal precision auto adapts to series.data.
 
-+ In **CONTINUOUS-CUSTOMIZED** mode (i.e., [visualMap-piecewise.pieces](~visualMap-piecewise.pieces) is used) or **CATEGORY** mode (i.e., [visualMap-piecewise.categories](~visualMap-piecewise.categories) is used), decimal percision defaults to be 0 (no decimals):
++ In **CONTINUOUS-CUSTOMIZED** mode (i.e., [visualMap-piecewise.pieces](~visualMap-piecewise.pieces) is used) or **CATEGORY** mode (i.e., [visualMap-piecewise.categories](~visualMap-piecewise.categories) is used), decimal precision defaults to be 0 (no decimals):
 
 ## itemWidth(number) = 20
 

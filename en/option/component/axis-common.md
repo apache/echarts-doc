@@ -36,6 +36,10 @@ Settings related to axis line.
 Set this to `false` to prevent the axis line from showing.
 
 {{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
+> The **value** axis doesn't show the axis line by default since `v5.0.0`, you need to explicitly set `axisLine.show` as `true` to enable it.
+{{ /if }}
+
+{{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
 ##${prefix} onZero(boolean) = true
 
 <ExampleUIControlBoolean default="true" />
@@ -44,7 +48,7 @@ Specifies whether X or Y axis lies on the other's origin position, where value i
 
 ##${prefix} onZeroAxisIndex(number)
 
-When mutiple axes exists, this option can be used to specify which axis can be "onZero" to.
+When multiple axes exists, this option can be used to specify which axis can be "onZero" to.
 {{ /if }}
 
 ##${prefix} symbol(string|Array) = 'none'
@@ -193,6 +197,10 @@ Settings related to axis tick.
 <ExampleUIControlBoolean default="${defaultShow|default(true)}" />
 
 Set this to `false` to prevent the axis tick from showing.
+
+{{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
+> The **value** axis doesn't show the axis ticks by default since `v5.0.0`, you need to explicitly set `axisTick.show` as `true` to enable it.
+{{ /if }}
 
 {{ if: ${hasAlignWithLabel|default(true)} }}
 ##${prefix} alignWithLabel(boolean) = false
@@ -442,8 +450,7 @@ Option:
     Time axis, suitable for continuous time series data. As compared to value axis, it has a better formatting for time and a different tick calculation method. For example, it decides to use month, week, day or hour for tick based on the range of span.
 
 + `'log'`
-    Log axis, suitable for log data.
-
+    Log axis, suitable for log data. Stacked bar or line series with `type: 'log'` axes may lead to significant visual errors and may have unintended effects in certain circumstances. Their use should be avoided.
 
 
 {{ target: axis-common }}
@@ -501,6 +508,18 @@ Gap between axis name and axis line.
 
 Rotation of axis name.
 
+#${prefix} nameTruncate(Object)
+
+Truncation of the axis name.
+
+##${prefix} maxWidth(number)
+
+The maximum length for the truncated text. Any text exceeding this length will be truncated.
+
+##${prefix} ellipsis(string) = '...'
+
+The content displayed at the end of the text after truncation.
+
 #${prefix} inverse(boolean) = false
 
 <ExampleUIControlBoolean />
@@ -527,7 +546,7 @@ boundaryGap: ['20%', '20%']
 
 <ExampleUIControlNumber />
 
-The minimun value of axis.
+The minimum value of axis.
 
 It can be set to a special value `'dataMin'` so that the minimum value on this axis is set to be the minimum label.
 
@@ -716,6 +735,10 @@ axisPointer settings on the axis.
 ) }}
 {{ /if }}
 
+{{ use: partial-animation(
+    prefix = ${prefix}
+) }}
+
 
 
 {{ target: partial-axis-interval }}
@@ -809,7 +832,7 @@ formatter: function (value, index) {
     var date = new Date(value);
     var texts = [(date.getMonth() + 1), date.getDate()];
     if (index === 0) {
-        texts.unshift(date.getYear());
+        texts.unshift(date.getFullYear());
     }
     return texts.join('/');
 }
@@ -908,4 +931,3 @@ xAxis: {
     }
 },
 ```
-

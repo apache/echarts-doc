@@ -116,7 +116,7 @@ Different types of graphic elements has their own configuration respectively, bu
     $action: 'replace',
 
     // These four properties is used to locating the element. Each property can be absolute
-    // value (like 10, means 10 pixel) or precent (like '12%') or 'center'/'middle'.
+    // value (like 10, means 10 pixel) or percent (like '12%') or 'center'/'middle'.
     left: 10,
     // right: 10,
     top: 'center',
@@ -168,7 +168,7 @@ Only `group` element has children, which enable a group of elements to be positi
 
 **Shape Configuration of Graphic Element**
 
-Elements with different types have different shape setting repectively. For example:
+Elements with different types have different shape setting respectively. For example:
 
 ```javascript
 {

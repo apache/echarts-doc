@@ -7,7 +7,7 @@
 
 {{ use: partial-visual-map-visual-type() }}
 
-Myltiple `visualMap` component could be defined in a chart instance, which enable that different dimensions of a series data are mapped to different visual channels.
+Multiple `visualMap` component could be defined in a chart instance, which enable that different dimensions of a series data are mapped to different visual channels.
 
 `visualMap` could be defined as [Piecewise (visualMapPiecewise)](~visualMap-piecewise) or [Continuous (visualMapContinuous)](~visualMap-continuous), which is distinguished by the property `type`. For instance:
 
@@ -151,7 +151,7 @@ visualMap: [
 
 `Linear Mapping` means that linear calculation will be performed on each dataValue (value of series.data), mapping them from the domain of `[visaulMap.min, visualMap.max]` to a given range of `[visual value 1, visual value 2]` and obtaining a final value (say visual value) for visual channel rendering.
 
-For instance, `[visualMap.min, visualMap.max]` is set to be `[0, 100]`, and there is series.data: `[50, 10, 100]`. We intend to map them to an `opacity` range `[0.4, 1]`, by which the size of value can be demostrated by the transparency of graphical elements. visualMap component will then linear calculate them and get opacity values `[0.7, 0.44, 1]`, cooresponding to each dataValue.
+For instance, `[visualMap.min, visualMap.max]` is set to be `[0, 100]`, and there is series.data: `[50, 10, 100]`. We intend to map them to an `opacity` range `[0.4, 1]`, by which the size of value can be demonstrated by the transparency of graphical elements. visualMap component will then linear calculate them and get opacity values `[0.7, 0.44, 1]`, cooresponding to each dataValue.
 
 We can also set the visual range inversely, such as `opacity: [1, 0.4]`, and the final mapping result for the given series.data above will be `[0.7, 0.96, 0.4]`.
 
@@ -175,7 +175,7 @@ About the value of visual channel (visual value):
 
 + For visual channel `color`, array is used, like: `['#333', '#78ab23', 'blue']`, which means a color ribbon is formed based on the three color stops, and dataValues will be mapped to the ribbon. Specifically, the dataValue that equals to `visualMap.min` will be mapped onto `'#333'`, the dataValue that equals to `visualMap.max` will be mapped onto `'blue'`, and other dataValues will be piecewisely interpolated to get the final color.
 
-+ For visual channel `symbol`, array is used, like: `['circle', 'rect', 'diamond']`, where the dataValue that equals to `visualMap.min` will be mapped onto `'circle'`, the dataValue that equals to `visualMap.max` will be mapped onto `'diamond'`, and other dataValues will be caculated based on the numerical distance to `visualMax.min` and to `visualMap.max`, and mapped onto one of `'circle'`, `'rect'`, `'diamond'`.
++ For visual channel `symbol`, array is used, like: `['circle', 'rect', 'diamond']`, where the dataValue that equals to `visualMap.min` will be mapped onto `'circle'`, the dataValue that equals to `visualMap.max` will be mapped onto `'diamond'`, and other dataValues will be calculated based on the numerical distance to `visualMax.min` and to `visualMap.max`, and mapped onto one of `'circle'`, `'rect'`, `'diamond'`.
 
 
 About the possible value range of visual value:
@@ -245,7 +245,7 @@ visualMap: {
 
 {{ target: partial-visual-map-merge }}
 
-**✦ How to modity configurations of vsiual encoding? ✦**
+**✦ How to modify configurations of visual encoding? ✦**
 
 If you want to modify the configurations of visual encoding after chart been rendered (by invoke `setOption` to set the initial `option`), `setOption` can be used again to modify configurations of visual encoding. For instance:
 
@@ -275,7 +275,7 @@ option.${componentMainType}.controller.inRange.color = ['red', 'blue'];
 
 chart.setOption(option); // set the modified option back.
 // You should not use this approach, but use the
-// approach demostrated before this example.
+// approach demonstrated before this example.
 ```
 
 
@@ -314,13 +314,13 @@ All series are used by default.
 
 ## hoverLink(boolean) = true
 
-`hoverLink` enable highlight certain graphical elements of chart when mouse hovers on some place of `visualMap` component that is coresponding to those graphical elements by visual mapping.
+`hoverLink` enable highlight certain graphical elements of chart when mouse hovers on some place of `visualMap` component that is corresponding to those graphical elements by visual mapping.
 
 Inversely, when mouse hovers a graphical element of chart, its value label will be displayed on its corresponding position in `visualMap`.
 
 ## inRange(Object)
 
-Define visual channels that will mapped from dataValues that are **in selected range**. User can interact with visualMap component and make a seleced range by mouse or touch.
+Define visual channels that will mapped from dataValues that are **in selected range**. User can interact with visualMap component and make a selected range by mouse or touch.
 
 {{ use: partial-visual-map-visual-type() }}
 
@@ -333,11 +333,11 @@ Define visual channels that will mapped from dataValues that are **in selected r
     componentMainType = 'visualMap'
 ) }}
 
-**Notice:** There is default color `['#f6efa6', '#d88273', '#bf444c']` in `inRange` if you not set `inRange`. If you dont want it, set `inRange: {color: null}` to disable it.
+**Notice:** There is default color `['#f6efa6', '#d88273', '#bf444c']` in `inRange` if you not set `inRange`. If you don't want it, set `inRange: {color: null}` to disable it.
 
 ## outOfRange(Object)
 
-Define visual channels that will mapped from dataValues that are **out of selected range**. User can interact with visualMap component and make a seleced range by mouse or touch.
+Define visual channels that will mapped from dataValues that are **out of selected range**. User can interact with visualMap component and make a selected range by mouse or touch.
 
 See available configurations in [${visualMapName}.inRange](~${visualMapName}.inRange)
 
@@ -347,13 +347,13 @@ Property `inRange` and `outOfRange` can be set within property `controller`, whi
 
 ### inRange(Object)
 
-Define visual channels that will mapped from dataValues that are **in selected range**. User can interact with visualMap component and make a seleced range by mouse or touch.
+Define visual channels that will mapped from dataValues that are **in selected range**. User can interact with visualMap component and make a selected range by mouse or touch.
 
 See available configurations in [${visualMapName}.inRange](~${visualMapName}.inRange)
 
 ### outOfRange(Object)
 
-Define visual channels that will mapped from dataValues that are **out of selected range**. User can interact with visualMap component and make a seleced range by mouse or touch.
+Define visual channels that will mapped from dataValues that are **out of selected range**. User can interact with visualMap component and make a selected range by mouse or touch.
 
 See available configurations in [${visualMapName}.inRange](~${visualMapName}.inRange)
 

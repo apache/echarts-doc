@@ -60,11 +60,33 @@ Whether the layout of sectors of pie chart is clockwise.
 
 The start angle, which range is [0, 360].
 
+## endAngle(number|string) = 'auto'
+
+<ExampleUIControlAngle step="1" min="0" max="360" default="270" />
+
+{{ use: partial-version(
+    version = "5.5.0"
+) }}
+
+The end angle, the default value is `'auto'`.
+
+When the value is `'auto'`, the end angle is calculated automatically based on [startAngle](~series-pie.startAngle) to ensure it is a complete circle.
+
 ## minAngle(number) = 0
 
 <ExampleUIControlAngle step="1" min="0" max="360" default="0" />
 
 The minimum angle of sector (0 ~ 360). It prevents some sector from being too small when value is small, which will affect user interaction.
+
+## padAngle(number) = 0
+
+<ExampleUIControlAngle step="1" min="0" max="360" default="0" />
+
+{{ use: partial-version(
+    version = "5.5.0"
+) }}
+
+The interval angle between the sectors (0 ~ 360).
 
 ## minShowLabelAngle(number) = 0
 
@@ -492,17 +514,19 @@ The position of label.
 ) }}
 {{ /if }}
 
-#${prefix} rotate(boolean|number) = null
+#${prefix} rotate(boolean|number|string) = null
 
 Label rotation.
 
-+ If `true`, layout label radically.
-+ If `number`, means degree that labels are rotated. From -90 degree to 90 degree. The negative value represents clockwise.
++ If `true` or `'radial'`, the labels are rotated radially. (The `'radial'` literal is supported since `v5.2.0`)
++ If `'tangential'`, the labels are rotated tangentially. (Since `v5.2.0`)
++ If `number`, the labels are rotated in degrees (-90° - 90°). The negative value represents clockwise.
 
 {{ use: partial-text-style(
     prefix = ${prefix},
     noAlign = true,
-    noVerticalAlign = true
+    noVerticalAlign = true,
+    enableAutoColor = true
 ) }}
 
 

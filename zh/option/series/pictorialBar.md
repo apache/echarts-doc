@@ -333,6 +333,11 @@ option = {
     hasType = true
 ) }}
 
+{{ use: partial-clip(
+    prefix = "#",
+    defaultClip = false
+) }}
+
 {{ use: partial-z-zlevel(
     prefix = "#",
     componentName = "象形柱图"

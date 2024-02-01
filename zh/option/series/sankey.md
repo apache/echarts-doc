@@ -225,7 +225,9 @@ levels: [{
 ) }}
 
 {{ use: partial-focus-blur-scope(
-    isGraph = true
+    isGraph = true,
+    hasTrajectory = true,
+    trajectoryVersion = "5.4.3"
 ) }}
 
 {{ use: sankey-state(
@@ -450,7 +452,7 @@ links: [{
 
 + `'source'`: 使用源节点颜色。
 + `'target'`: 使用目标节点颜色。
-+ `'gradient'`: 以源节点和目标节点的颜色做一个渐变过度色。(5.0开始支持)
++ `'gradient'`: 以源节点和目标节点的颜色做一个渐变过渡色。(从 v5.0.0 开始支持)
 
 #${prefix} opacity(number) = 0.2
 
