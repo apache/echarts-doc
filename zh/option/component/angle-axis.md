@@ -90,6 +90,14 @@ const option = {
 
 ~[400x400](${galleryViewPath}doc-example/polar-start-angle&edit=1&reset=1)
 
+<ExampleUIControlAngle default="null" min="-360" max="360" step="1" />
+
+结束刻度的角度，默认为 `null`，表示一整个圆。
+
+如下示例是 endAngle 为 -180 的效果：
+
+~[400x400](${galleryViewPath}doc-example/polar-end-angle&edit=1&reset=1)
+
 ## clockwise(boolean) = true
 
 <ExampleUIControlBoolean default="true" />
