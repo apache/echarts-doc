@@ -199,11 +199,27 @@ Useful when tooltip is cut because of `'overflow: hidden'` set on outer dom of c
     version = "4.7.0"
 ) }}
 
+(DEPRECATED, use [appendTo](~tooltip.appendTo) instead.)
+
 Whether to append the tooltip DOM element as a child of the `<body>` of the HTML page, when using [renderMode](~tooltip.renderMode) `'html'`.
 
 By default `false`, means that the tooltip DOM element will be one of a descendant of its echarts DOM container. But that means that the tooltip might be cut when overflow the container if some of the ancestors DOM element of the echarts container are styled with `overflow: hidden`. This case could also be resolved by setting [tooltip.confine](~tooltip.confine), but it might not suitable for all scenarios.
 
 Here we provide `appendToBody: true` to auto append the tooltip element to `<body>`, which is a common way to resolve this kind of issue. But `true` is not set as a default value because to void to bring break change for some cases where tooltip is deeply customized and to void some unexpected bad cases.
+
+Note that it also works when CSS transform used.
+
+## appendTo() = Function | HTMLElement | string | null
+
+{{ use: partial-version(
+    version = "5.5.0"
+) }}
+
+Which DOM element to append the tooltip to. Only avaiable when using [renderMode](~tooltip.renderMode) `'html'`.
+
+The default value is `null``, which means that the tooltip's DOM node will be added as a descendant node of the chart’s DOM container. However, this approach can cause the tooltip to be truncated if it extends beyond the container, due to ancestors of the chart's DOM container having overflow: hidden set. This issue can be partially addressed using tooltip.confine, but it may not cover all scenarios.
+
+For such scenarios, `appendTo` can be specified. When it is a function, the interface is in the form of `(chartContainer: HTMLElement) => HTMLElement | undefined | null`, which means it returns the node that the tooltip's DOM node should be added to. Returning `undefined` or `null` indicates that the default logic described above should be used. Returning an HTMLElement means that it should be added under that node.
 
 Note that it also works when CSS transform used.
 
