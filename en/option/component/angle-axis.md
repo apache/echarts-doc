@@ -23,6 +23,10 @@ The following shows an example with startAngle of 45 deg.
 
 ~[400x400](${galleryViewPath}doc-example/polar-start-angle&edit=1&reset=1)
 
+## endAngle(number) = 450
+
+Ending angle of axis. By default, the value is automatically calculated as `startAngle + 360°` (or `startAngle - 360°` if `axis.inverse = true`).
+
 ## clockwise(boolean) = true
 
 <ExampleUIControlBoolean default="true" />
