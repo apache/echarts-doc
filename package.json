@@ -10,8 +10,8 @@
     "build": "node build.js --env asf",
     "watch": "node build.js --env dev --watch",
     "localsite": "node build.js --env localsite",
-    "build:site": "npx webpack --config build/webpack.config.js --mode production",
-    "watch:site": "npx webpack --config build/webpack.config.js --mode development --devtool sourcemap --watch",
+    "build:site": "cross-env NODE_OPTIONS=--openssl-legacy-provider webpack --config build/webpack.config.js --mode production",
+    "watch:site": "cross-env NODE_OPTIONS=--openssl-legacy-provider webpack --config build/webpack.config.js --mode development --devtool sourcemap --watch",
     "server": "node server.js",
     "format": "node tool/format.js",
     "dev": "npx concurrently --kill-others \"npm:watch\" \"npm:watch:site\" \"npm:server\""
@@ -24,6 +24,7 @@
     "chalk": "^3.0.0",
     "concurrently": "^7.4.0",
     "copy-dir": "^0.3.0",
+    "cross-env": "^7.0.3",
     "css-loader": "^3.5.3",
     "file-loader": "^4.3.0",
     "fs-extra": "^8.1.0",
