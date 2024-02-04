@@ -145,6 +145,54 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 
 是否显示最大 tick 的 label。可取值 `true`, `false`, `null`。默认自动判定（即如果标签重叠，不会显示最大 tick 的 label）。
 
+{{ if: ${componentType} === 'xAxis' }}
+
+##${prefix} alignMinLabel(string) = null
+
+最小的坐标刻度标签的对齐方式。如果设置为 `null`，则和其他标签一致。参见 [align](~${componentType}.axisLabel.align)。
+
+可选：
++ `'left'`
++ `'center'`
++ `'right'`
++ `null` (default)
+
+##${prefix} alignMaxLabel(string) = null
+
+最大的坐标刻度标签的对齐方式。如果设置为 `null`，则和其他标签一致。参见 [align](~${componentType}.axisLabel.align)。
+
+可选：
++ `'left'`
++ `'center'`
++ `'right'`
++ `null` (default)
+
+{{ /if }}
+
+{{ if: ${componentType} === 'yAxis' }}
+
+##${prefix} verticalAlignMinLabel(string) = null
+
+最小的坐标刻度标签的对齐方式。如果设置为 `null`，则和其他标签一致。参见 [align](~${componentType}.axisLabel.verticalAlign)。
+
+可选：
++ `'top'`
++ `'middle'`
++ `'bottom'`
++ `null` (default)
+
+##${prefix} verticalAlignMaxLabel(string) = null
+
+最大的坐标刻度标签的对齐方式。如果设置为 `null`，则和其他标签一致。参见 [align](~${componentType}.axisLabel.verticalAlign)。
+
+可选：
++ `'top'`
++ `'middle'`
++ `'bottom'`
++ `null` (default)
+
+{{ /if }}
+
 ##${prefix} hideOverlap(boolean)
 
 <ExampleUIControlBoolean />

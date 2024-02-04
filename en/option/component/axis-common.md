@@ -147,6 +147,54 @@ Whether to show the label of the min tick. Optional values: `true`, `false`, `nu
 
 Whether to show the label of the max tick. Optional values: `true`, `false`, `null`. It is auto determined by default, that is, if labels are overlapped, the label of the max tick will not be displayed.
 
+{{ if: ${componentType} === 'xAxis' }}
+
+##${prefix} alignMinLabel(string) = null
+
+Alignment of the label of the min tick. If set to be `null`, it's the same with other labels .
+
+Options are:
++ `'left'`
++ `'center'`
++ `'right'`
++ `null` (default)
+
+##${prefix} alignMaxLabel(string) = null
+
+Alignment of the label of the max tick. If set to be `null`, it's the same with other labels. See [align](~${componentType}.axisLabel.align).
+
+Options are:
++ `'left'`
++ `'center'`
++ `'right'`
++ `null` (default)
+
+{{ /if }}
+
+{{ if: ${componentType} === 'yAxis' }}
+
+##${prefix} verticalAlignMinLabel(string) = null
+
+Vertical alignment of the label of the min tick. If set to be `null`, it's the same with other labels. See [verticalAlign](~${componentType}.axisLabel.verticalAlign).
+
+Options are:
++ `'top'`
++ `'middle'`
++ `'bottom'`
++ `null` (default)
+
+##${prefix} verticalAlignMaxLabel(string) = null
+
+Vertical alignment of the label of the max tick. If set to be `null`, it's the same with other labels. See [verticalAlign](~${componentType}.axisLabel.verticalAlign).
+
+Options are:
++ `'top'`
++ `'middle'`
++ `'bottom'`
++ `null` (default)
+
+{{ /if }}
+
 ##${prefix} hideOverlap(boolean)
 
 <ExampleUIControlBoolean />
