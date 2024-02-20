@@ -151,6 +151,8 @@ Whether to show the label of the max tick. Optional values: `true`, `false`, `nu
 
 ##${prefix} alignMinLabel(string) = null
 
+{{ use: partial-version(version = '5.5.0') }}
+
 Alignment of the label of the min tick. If set to be `null`, it's the same with other labels .
 
 Options are:
@@ -160,6 +162,8 @@ Options are:
 + `null` (default)
 
 ##${prefix} alignMaxLabel(string) = null
+
+{{ use: partial-version(version = '5.5.0') }}
 
 Alignment of the label of the max tick. If set to be `null`, it's the same with other labels. See [align](~${componentType}.axisLabel.align).
 
@@ -175,6 +179,8 @@ Options are:
 
 ##${prefix} verticalAlignMinLabel(string) = null
 
+{{ use: partial-version(version = '5.5.0') }}
+
 Vertical alignment of the label of the min tick. If set to be `null`, it's the same with other labels. See [verticalAlign](~${componentType}.axisLabel.verticalAlign).
 
 Options are:
@@ -184,6 +190,8 @@ Options are:
 + `null` (default)
 
 ##${prefix} verticalAlignMaxLabel(string) = null
+
+{{ use: partial-version(version = '5.5.0') }}
 
 Vertical alignment of the label of the max tick. If set to be `null`, it's the same with other labels. See [verticalAlign](~${componentType}.axisLabel.verticalAlign).
 

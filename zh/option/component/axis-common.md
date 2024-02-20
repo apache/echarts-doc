@@ -149,6 +149,8 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 
 ##${prefix} alignMinLabel(string) = null
 
+{{ use: partial-version(version = '5.5.0') }}
+
 最小的坐标刻度标签的对齐方式。如果设置为 `null`，则和其他标签一致。参见 [align](~${componentType}.axisLabel.align)。
 
 可选：
@@ -158,6 +160,8 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 + `null` (default)
 
 ##${prefix} alignMaxLabel(string) = null
+
+{{ use: partial-version(version = '5.5.0') }}
 
 最大的坐标刻度标签的对齐方式。如果设置为 `null`，则和其他标签一致。参见 [align](~${componentType}.axisLabel.align)。
 
@@ -173,6 +177,8 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 
 ##${prefix} verticalAlignMinLabel(string) = null
 
+{{ use: partial-version(version = '5.5.0') }}
+
 最小的坐标刻度标签的对齐方式。如果设置为 `null`，则和其他标签一致。参见 [align](~${componentType}.axisLabel.verticalAlign)。
 
 可选：
@@ -182,6 +188,8 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 + `null` (default)
 
 ##${prefix} verticalAlignMaxLabel(string) = null
+
+{{ use: partial-version(version = '5.5.0') }}
 
 最大的坐标刻度标签的对齐方式。如果设置为 `null`，则和其他标签一致。参见 [align](~${componentType}.axisLabel.verticalAlign)。
 

@@ -23,7 +23,11 @@ The following shows an example with `startAngle` of 45 deg.
 
 ~[400x400](${galleryViewPath}doc-example/polar-start-angle&edit=1&reset=1)
 
+## endAngle(number) = null
+
 <ExampleUIControlAngle default="null" min="-360" max="360" step="1" />
+
+{{ use: partial-version(version = '5.5.0') }}
 
 Ending angle of axis. `null` by default, standing for a whole circle.
 
