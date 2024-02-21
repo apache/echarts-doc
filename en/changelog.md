@@ -1,4 +1,5 @@
 ## v5.5.0
+<div class="time">2024-02-18</div>
 
 + [Break Change] [Feature] [core] change to default ESM package. [#19513](https://github.com/apache/echarts/issues/19513) ([100pah](https://github.com/100pah))
 + [Feature] [ssr] server-side rendering and client hydration. [#18381](https://github.com/apache/echarts/issues/18381) ([Ovilia](https://github.com/Ovilia))
