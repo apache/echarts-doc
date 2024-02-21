@@ -244,6 +244,10 @@ option = {
     prefix = '##'
 ) }}
 
+{{ use: partial-data-child-group-id(
+    prefix = '##'
+) }}
+
 {{ use: pictorialBar-symbol-attrs(
     prefix = "##",
     useZ2 = true
@@ -327,6 +331,11 @@ option = {
     seriesType = "pictorialBar",
     hasCoord = true,
     hasType = true
+) }}
+
+{{ use: partial-clip(
+    prefix = "#",
+    defaultClip = false
 ) }}
 
 {{ use: partial-z-zlevel(

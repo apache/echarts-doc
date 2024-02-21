@@ -37,7 +37,7 @@
 
     + `devicePixelRatio`设备像素比，默认取浏览器的值`window.devicePixelRatio`。
     + `renderer` 渲染模式，支持`'canvas'`或者`'svg'`。参见 [使用 Canvas 或者 SVG 渲染](${handbookPath}best-practices/canvas-vs-svg)。
-    + `ssr` 是否使用服务端渲染，只有在 SVG 渲染模式有效。开启后不再会每帧自动渲染，必须要调用 [renderToSVGString](~echartsInstance.renderToSVGString) 方法才能得到渲染后 SVG 字符串。
+    + `ssr` 是否使用服务端渲染，只有在 SVG 渲染模式有效。开启后不再会每帧自动渲染，必须要调用 [renderToSVGString](~echartsInstance.renderToSVGString) 方法才能得到渲染后 SVG 字符串。参见[服务端渲染 ECharts 图表](${handbookPath}how-to/cross-platform/server)。
     + `useDirtyRect`是否开启脏矩形渲染，只有在 Canvas 渲染模式有效，默认为`false`。参见 [ECharts 5 新特性](${handbookPath}basics/release-note/v5-feature)。
     + `useCoarsePointer` 是否扩大可点击元素的响应范围。`null` 表示对移动设备开启；`true` 表示总是开启；`false` 表示总是不开启。参见[增加交互响应范围](${handbookPath}how-to/interaction/coarse-pointer)。
     + `pointerSize` 扩大元素响应范围的像素大小，配合 `opts.useCoarsePointer`使用。

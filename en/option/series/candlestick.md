@@ -210,6 +210,10 @@ Value of data item.
     prefix = '##'
 ) }}
 
+{{ use: partial-data-child-group-id(
+    prefix = '##'
+) }}
+
 ### itemStyle(Object)
 
 Style of a candle box.

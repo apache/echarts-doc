@@ -60,11 +60,33 @@ Whether the layout of sectors of pie chart is clockwise.
 
 The start angle, which range is [0, 360].
 
+## endAngle(number|string) = 'auto'
+
+<ExampleUIControlAngle step="1" min="0" max="360" default="270" />
+
+{{ use: partial-version(
+    version = "5.5.0"
+) }}
+
+The end angle, the default value is `'auto'`.
+
+When the value is `'auto'`, the end angle is calculated automatically based on [startAngle](~series-pie.startAngle) to ensure it is a complete circle.
+
 ## minAngle(number) = 0
 
 <ExampleUIControlAngle step="1" min="0" max="360" default="0" />
 
 The minimum angle of sector (0 ~ 360). It prevents some sector from being too small when value is small, which will affect user interaction.
+
+## padAngle(number) = 0
+
+<ExampleUIControlAngle step="1" min="0" max="360" default="0" />
+
+{{ use: partial-version(
+    version = "5.5.0"
+) }}
+
+The interval angle between the sectors (0 ~ 360).
 
 ## minShowLabelAngle(number) = 0
 
@@ -331,6 +353,10 @@ The name of data item.
 Data value.
 
 {{ use: partial-data-group-id(
+    prefix = '##'
+) }}
+
+{{ use: partial-data-child-group-id(
     prefix = '##'
 ) }}
 

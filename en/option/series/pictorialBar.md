@@ -195,6 +195,10 @@ The value of a single data item.
     prefix = '##'
 ) }}
 
+{{ use: partial-data-child-group-id(
+    prefix = '##'
+) }}
+
 {{ use: pictorialBar-symbol-attrs(
     prefix = "##",
     useZ2 = true
@@ -278,6 +282,11 @@ Select state of the specified single data.
     seriesType = "pictorialBar",
     hasCoord = true,
     hasType = true
+) }}
+
+{{ use: partial-clip(
+    prefix = "#",
+    defaultClip = false
 ) }}
 
 {{ use: partial-z-zlevel(

@@ -81,11 +81,33 @@ const option = {
 
 起始角度，支持范围[0, 360]。
 
+## endAngle(number|string) = 'auto'
+
+<ExampleUIControlAngle step="1" min="0" max="360" default="270" />
+
+{{ use: partial-version(
+    version = "5.5.0"
+) }}
+
+结束角度，默认值是 `'auto'`。
+
+当值为 `'auto'` 时，根据 [startAngle](~series-pie.startAngle) 自动计算结束角度，以确保是一个完整的圆。
+
 ## minAngle(number) = 0
 
 <ExampleUIControlAngle step="1" min="0" max="360" default="0" />
 
 最小的扇区角度（0 ~ 360），用于防止某个值过小导致扇区太小影响交互。
+
+## padAngle(number) = 0
+
+<ExampleUIControlAngle step="1" min="0" max="360" default="0" />
+
+{{ use: partial-version(
+    version = "5.5.0"
+) }}
+
+饼图扇区之间的间隔角度（0 ~ 360）。
 
 ## minShowLabelAngle(number) = 0
 
@@ -354,6 +376,10 @@ const option = {
 数据值。
 
 {{ use: partial-data-group-id(
+    prefix = '##'
+) }}
+
+{{ use: partial-data-child-group-id(
     prefix = '##'
 ) }}
 

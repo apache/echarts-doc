@@ -208,6 +208,10 @@ the name of data.
     prefix = '##'
 ) }}
 
+{{ use: partial-data-child-group-id(
+    prefix = '##'
+) }}
+
 ### coords(Array)
 
 An array includes two ore more than two coordinates. Each coordinate could be `[x, y]` in [rectangular coordinate](~grid) and `[lng, lat]` in [geographic coordinate](~geo).

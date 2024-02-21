@@ -101,6 +101,10 @@ center: [115.97, '30%']
     prefix = '##'
 ) }}
 
+{{ use: partial-data-child-group-id(
+    prefix = '##'
+) }}
+
 ### selected(boolean) = false
 
 该区域是否选中。

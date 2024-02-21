@@ -444,6 +444,10 @@ Value of data item.
     prefix = '##'
 ) }}
 
+{{ use: partial-data-child-group-id(
+    prefix = '##'
+) }}
+
 ### itemStyle(Object)
 
 {{ use: partial-item-style(

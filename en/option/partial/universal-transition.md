@@ -11,7 +11,7 @@ Configuration related to universal transition animation.
 
 Universal Transition provides the ability to morph between any series. With this feature enabled, each time `setOption`, transitions between series with the same `id` will be automatically associated with each other.
 
-One-to-many or many-to-one animations such as drill-down, aggregation, etc. can also be achieved by specifying groups of data such as `encode.itemGroupId` or `dataGroupId`.
+One-to-many or many-to-one animations such as drill-down, aggregation, etc. can also be achieved by specifying data items' `groupId` and `childGroupId`.
 
 This can be enabled directly by configuring `universalTransition: true` in the series. It is also possible to provide an object for more detailed configuration.
 

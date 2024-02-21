@@ -227,6 +227,10 @@ ECharts 并不内置对原始数据的处理，输入给 `boxplot` 的数据须�
     prefix = '##'
 ) }}
 
+{{ use: partial-data-child-group-id(
+    prefix = '##'
+) }}
+
 ### itemStyle(Object)
 
 盒须图单个数据样式。

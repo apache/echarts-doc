@@ -36,7 +36,7 @@ Creates an ECharts instance, and returns an [echartsInstance](~echartsInstance).
 
     + `devicePixelRatio` Ratio of one physical pixel to the size of one device independent pixels. Browser's `window.devicePixelRatio` is used by default.
     + `renderer`  Supports `'canvas'` or `'svg'`. See [Render by Canvas or SVG](${handbookPath}best-practices/canvas-vs-svg).
-    + `ssr` Whether to use server-side rendering. Only available in SVG rendering mode. When enabled, it will no longer render automatically every frame, you have to use the [renderToSVGString](~echartsInstance.renderToSVGString) method to get the rendered SVG string.
+    + `ssr` Whether to use server-side rendering. Only available in SVG rendering mode. When enabled, it will no longer render automatically every frame, you have to use the [renderToSVGString](~echartsInstance.renderToSVGString) method to get the rendered SVG string. See [Server Side Rendering](${handbookPath}how-to/cross-platform/server).
     + `useDirtyRect` Enable dirty rectangle rendering or not, `false` by default. See [New features in ECharts 5](${handbookPath}basics/release-note/v5-feature).
     + `useCoarsePointer` Whether to expand the response area when interacting with elements. `null` means enabling for mobile devices; `true` means always enabling; `false` means always disabling. See [Coarse Pointer](${handbookPath}how-to/interaction/coarse-pointer) for more information.
     + `pointerSize` Size of expanded interaction size in pixels. It should be used along with `opts.useCoarsePointer`.

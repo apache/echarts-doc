@@ -333,8 +333,9 @@ const option = {
 可选：
 + `'lttb'` 采用 Largest-Triangle-Three-Bucket 算法，可以最大程度保证采样后线条的趋势，形状和极值。
 + `'average'` 取过滤点的平均值
-+ `'max'` 取过滤点的最大值
 + `'min'` 取过滤点的最小值
++ `'max'` 取过滤点的最大值
++ `'minmax'` 取过滤点绝对值的最大极值 (从 `v5.5.0` 开始支持)
 + `'sum'` 取过滤点的和
 
 {{ use: partial-series-dimensions(
@@ -364,6 +365,10 @@ const option = {
 单个数据项的数值。
 
 {{ use: partial-data-group-id(
+    prefix = '##'
+) }}
+
+{{ use: partial-data-child-group-id(
     prefix = '##'
 ) }}
 
