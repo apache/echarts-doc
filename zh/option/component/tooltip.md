@@ -199,7 +199,7 @@ const option = {
     version = "4.7.0"
 ) }}
 
-（已废弃，请使用 [appendTo](~tooltip.appendTo)。）
+（自 `v5.5.0` 已废弃，请使用 [appendTo](~tooltip.appendTo)。）
 
 是否将 tooltip 的 DOM 节点添加为 HTML 的 `<body>` 的子节点。只有当 [renderMode](~tooltip.renderMode) 为 `'html'` 是有意义的。
 
@@ -209,7 +209,7 @@ const option = {
 
 注：CSS transform 的场景，这也可以使用。
 
-## appendTo() = Function | HTMLElement | string | null
+## appendTo(string|HTMLElement|Function)
 
 {{ use: partial-version(
     version = "5.5.0"
@@ -219,7 +219,13 @@ const option = {
 
 默认值是 `null`，表示 tooltip 的 DOM 节点会被添加为本图表的 DOM container 的一个子孙节点。但是这种方式导致，如果本图表的 DOM container 的祖先节点有设置 `overflow: hidden`，那么当 tooltip 超出 container 范围使可能被截断。这个问题一定程度上可以用 [tooltip.confine](~tooltip.confine) 来解决，但是不一定能解决所有场景。
 
-对于这样的场景，可以指定 `appendTo`。当其为 `Function` 形式时，接口形如 `(chartContainer: HTMLElement) => HTMLElement | undefined | null`，即返回 tooltip 的 DOM 节点应该添加到哪个节点下。返回 `undefined` 或 `null` 表示采用上述的默认逻辑。返回 `HTMLElement` 表示添加到该节点下。
+对于这样的场景，可以指定 `appendTo`。当其为 `Function` 形式时，接口形如
+
+```ts
+(chartContainer: HTMLElement) => HTMLElement | undefined | null
+```
+
+即返回 tooltip 的 DOM 节点应该添加到哪个节点下。返回 `undefined` 或 `null` 表示采用上述的默认逻辑。返回 `HTMLElement` 表示添加到该节点下。
 
 注：CSS transform 的场景，这也可以使用。
 
