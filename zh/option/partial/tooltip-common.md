@@ -363,8 +363,10 @@ tooltip 中数值显示部分的格式化回调函数。
 回调函数格式：
 
 ```ts
-(value: number | string) => string
+(value: number | string, dataIndex: number) => string
 ```
+
+> 自 `v5.5.0` 版本起提供 `dataIndex`。
 
 示例：
 

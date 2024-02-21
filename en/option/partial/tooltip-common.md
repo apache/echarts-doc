@@ -360,6 +360,8 @@ Interface:
 (value: number | string, dataIndex: number) => string
 ```
 
+> `dataIndex` is provided since `v5.5.0`.
+
 Example:
 ```ts
 // Add $ prefix
