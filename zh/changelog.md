@@ -15,7 +15,7 @@
 + [Feature] [pictorialBar] 象形柱图系列新增 `clip` 选项以支持裁剪。[#19197](https://github.com/apache/echarts/issues/19197) ([Ovilia](https://github.com/Ovilia))
 + [Feature] [tooltip] tooltip 的 `valueFormatter` 回调新增 `dataIndex` 参数。[#19123](https://github.com/apache/echarts/issues/19123) ([ChepteaCatalin](https://github.com/ChepteaCatalin))
 + [Fix] [toolbox] 修复 toolbox 文本没有应用指定或全局字体样式的问题。[#19170](https://github.com/apache/echarts/issues/19170) ([plainheart](https://github.com/plainheart))
-+ [Fix] [label] 修复 labelLine 在 normal 状态下隐藏而在其他状态显示时，其颜色没有继承系列颜色的问题。[#18800](https://github.com/apache/echarts/issues/18800) ([linghaoSu](https://github.com/linghaoSu))
++ [Fix] [labelLine] 修复 labelLine 在 normal 状态下隐藏而在其他状态显示时，其颜色没有继承系列颜色的问题。[#18800](https://github.com/apache/echarts/issues/18800) ([linghaoSu](https://github.com/linghaoSu))
 + [Fix] [labelLine] 修复饼图 `emphasis.labelLine` 配置不生效的问题。[#19180](https://github.com/apache/echarts/issues/19180) ([shiersansi](https://github.com/shiersansi))
 + [Fix] [marker] 修复当轴刻度 `axisTick` 启用了 `alignWithLabel` 时 markArea 范围错误的问题。[#19516](https://github.com/apache/echarts/issues/19516) ([Ovilia](https://github.com/Ovilia))
 + [Fix] [line] 修复时间轴上的折线在启用动画时可能交叉的问题。[#18960](https://github.com/apache/echarts/issues/18960) ([plainheart](https://github.com/plainheart))

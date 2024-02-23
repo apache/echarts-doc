@@ -15,7 +15,7 @@
 + [Feature] [pictorialBar] support clip for pictorialBar series. [#19197](https://github.com/apache/echarts/issues/19197) ([Ovilia](https://github.com/Ovilia))
 + [Feature] [tooltip] add `dataIndex` to `valueFormatter` callback. [#19123](https://github.com/apache/echarts/issues/19123) ([ChepteaCatalin](https://github.com/ChepteaCatalin))
 + [Fix] [toolbox] fix toolbox text can't apply the specified or global font style. [#19170](https://github.com/apache/echarts/issues/19170) ([plainheart](https://github.com/plainheart))
-+ [Fix] [label] fix labelLine default style when normal state not show but other state show. [#18800](https://github.com/apache/echarts/issues/18800) ([linghaoSu](https://github.com/linghaoSu))
++ [Fix] [labelLine] fix labelLine default style when normal state not show but other state show. [#18800](https://github.com/apache/echarts/issues/18800) ([linghaoSu](https://github.com/linghaoSu))
 + [Fix] [labelLine] fix `emphasis.labelLine` is not working in pie chart. [#19180](https://github.com/apache/echarts/issues/19180) ([shiersansi](https://github.com/shiersansi))
 + [Fix] [marker] fix markArea position when axis is with `alignWithLabel`. [#19516](https://github.com/apache/echarts/issues/19516) ([Ovilia](https://github.com/Ovilia))
 + [Fix] [line] fix line may cross in time axis when animation is enabled. [#18960](https://github.com/apache/echarts/issues/18960) ([plainheart](https://github.com/plainheart))
