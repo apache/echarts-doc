@@ -827,7 +827,7 @@ formatter: function (value, index, tick) {
     var date = new Date(value);
     var texts = [(date.getMonth() + 1), date.getDate()];
     if (index === 0) {
-        texts.unshift(date.getYear());
+        texts.unshift(date.getFullYear());
     }
     let label = texts.join('/');
     // apply bold style via rich text for significant levels, i.e. `level > 0`
