@@ -62,7 +62,7 @@ ${name} icon 样式设置。由于 icon 的文本信息只在 icon hover 时候�
 
 是否显示该工具。
 
-#### title(boolean) = '${title}'
+#### title(string) = '${title}'
 
 #### icon(string)
 

@@ -64,7 +64,7 @@ Whether to show the tool.
 
 #### title(string) = '${title}'
 
-#### icon(*)
+#### icon(string)
 
 {{ use: partial-icon-image-path() }}
 
