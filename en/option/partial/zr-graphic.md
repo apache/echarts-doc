@@ -1594,19 +1594,24 @@ Color of stroke.
 
 Width of stroke.
 
-###${prefix} lineDash(null | false | number[] | 'solid' | 'dashed' | 'dotted') = null
+###${prefix} lineDash(string|number|Array) = 'solid'
 
-Sets the line dash pattern used when stroking lines. See [MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/setLineDash) for more information.
+Sets the line dash pattern used when stroking lines. Possible values are:
+
++ `'solid'`
++ `'dashed'`
++ `'dotted'`
++ `number` / `number` array. See [MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/setLineDash) for more information.
 
 ###${prefix} lineDashOffset(number) = 0
 
 Sets the line dash offset used when stroking lines. See [MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineDashOffset) for more information.
 
-###${prefix} lineCap('butt' | 'round' | 'square') = 'butt'
+###${prefix} lineCap(string) = 'butt'
 
 Line cap style. See [MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineCap) for more information.
 
-###${prefix} lineJoin('bevel' | 'round' | 'miter') = 'miter'
+###${prefix} lineJoin(string) = 'miter'
 
 Line join style. See [MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineJoin) for more information.
 

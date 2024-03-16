@@ -1574,19 +1574,24 @@ Position of `textContent`.
 
 线条宽度。
 
-###${prefix} lineDash(null | false | number[] | 'solid' | 'dashed' | 'dotted') = null
+###${prefix} lineDash(string|number|Array) = 'solid'
 
-在填充线时使用虚线模式。详见 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/setLineDash)。
+线条样式。可选：
+
++ `'solid'`
++ `'dashed'`
++ `'dotted'`
++ `number` 或 `number` 数组。详见 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/setLineDash)。
 
 ###${prefix} lineDashOffset(number) = 0
 
-在填充线时使用虚线的偏移量。详细见 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/lineDashOffset)。
+用于设置虚线的偏移量。详见 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/lineDashOffset)。
 
-###${prefix} lineCap('butt' | 'round' | 'square') = 'butt'
+###${prefix} lineCap(string) = 'butt'
 
-如何绘制每一条线段末端的属性。详见 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/lineCap)。
+用于指定线段末端的绘制方式。详见 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/lineCap)。
 
-###${prefix} lineJoin('bevel' | 'round' | 'miter') = 'miter'
+###${prefix} lineJoin(string) = 'miter'
 
 设置线条转折点的样式。详见 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/lineJoin)。
 
