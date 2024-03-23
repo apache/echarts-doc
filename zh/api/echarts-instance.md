@@ -200,6 +200,14 @@ chart.setOption({
 
 获取 ECharts 实例容器的 dom 节点。
 
+## getZr(Function)
+```ts
+() => zrender.ZRenderType
+```
+
+获取ZRender实例
+
+
 ## getOption(Function)
 ```ts
 () => Object

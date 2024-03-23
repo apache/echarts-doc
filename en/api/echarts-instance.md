@@ -203,6 +203,14 @@ Gets height of ECharts instance container.
 Gets DOM element of ECharts instance container.
 
 
+## getZr(Function)
+```ts
+() => zrender.ZRenderType
+```
+
+Gets ZRender instance of ECharts instance.
+
+
 ## getOption(Function)
 ```ts
 () => Object
