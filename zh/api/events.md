@@ -255,6 +255,7 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
     componentType: 'geo' | 'series',
     seriesId: string,
     zoom: number, // 单次缩放倍数
+    totalZoom: number, //累计缩放倍数
     originX: number,
     originY: number
 }
@@ -514,7 +515,7 @@ var option = {
     // ...
 };
 chart.on('finished', function () {
-    // ...  
+    // ...
 });
 chart.setOption(option);
 ```

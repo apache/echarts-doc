@@ -257,6 +257,7 @@ Event emitted after [geo](option.html#geo) is roamed.
     componentType: 'geo' | 'series',
     seriesId: string,
     zoom: number, // zoom ratio of roaming once
+    totalZoom: number, // accumulated zoom ratio
     originX: number,
     originY: number
 }
@@ -525,7 +526,7 @@ var option = {
     // ...
 };
 chart.on('finished', function () {
-    // ...  
+    // ...
 });
 chart.setOption(option);
 ```
