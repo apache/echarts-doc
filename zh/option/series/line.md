@@ -145,7 +145,8 @@ const option = {
 {{ use: partial-label(
     prefix = "##",
     defaultPosition = "'top'",
-    formatter = true
+    formatter = true,
+    minMargin = true
 ) }}
 
 ## endLabel(Object)
@@ -159,7 +160,8 @@ const option = {
 {{ use: partial-label(
     prefix = "##",
     formatter = true,
-    noPosition = true
+    noPosition = true,
+    minMargin = true
 ) }}
 
 ### valueAnimation(boolean)
@@ -385,7 +387,8 @@ const option = {
 
 {{ use: partial-label(
     prefix = "###",
-    defaultPosition = "top"
+    defaultPosition = "top",
+    minMargin = true
 ) }}
 
 ### labelLine(Object)

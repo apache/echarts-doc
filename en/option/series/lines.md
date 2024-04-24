@@ -132,7 +132,8 @@ The curveness of edge. The values from 0 to 1 could be set. The curveness would 
 Label settings. Does not work when [polyline](~series-lines.polyline) is `true`.
 
 {{ use: lines-label(
-    prefix = "##"
+    prefix = "##",
+    minMargin = true
 ) }}
 
 ## labelLayout(Object|Function)
@@ -230,7 +231,8 @@ The line style of this data item.
 Label of a single line. Available when [polyline](~series-lines.polyline) is not `true`.
 
 {{ use: lines-label(
-    prefix = "###"
+    prefix = "###",
+    minMargin = true
 ) }}
 
 ### emphasis(Object)
@@ -314,6 +316,16 @@ the position of label, options:
 + `'start'`
 + `'middle'`
 + `'end'`
+
+{{ if: ${minMargin} }}
+#${prefix} minMargin(number)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+Minimal margin between labels. Used when label has [layout](~series-lines.labelLayout).
+{{ /if }}
 
 #${prefix} formatter(string|Function)
 

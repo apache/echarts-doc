@@ -141,7 +141,8 @@ The style of each node in the tree, where [itemStyle.color](~series-tree.itemSty
             desc: 'The ancestors of current node (including self)',
             type: 'Array'
         }
-    }
+    },
+    minMargin = true
 ) }}
 
 ## labelLayout(Object|Function)
@@ -348,7 +349,8 @@ Defines the style of the tree edge.
 The label of the node.
 
 {{ use: partial-label(
-    prefix = "###"
+    prefix = "###",
+    minMargin = true
 ) }}
 
 ### emphasis(Object)

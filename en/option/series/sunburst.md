@@ -40,7 +40,8 @@ If angle of data piece is smaller than this value (in degrees), then text is not
     },
     defaultShowLabel = "true",
     noRotate = true,
-    noAlign = true
+    noAlign = true,
+    minMargin = ${minMargin}
 ) }}
 
 
@@ -58,7 +59,8 @@ To specify the style of the label of the sector.
 ) }}
 
 {{ use: partial-sunburst-label-helper(
-    prefix = ${prefix} + '#'
+    prefix = ${prefix} + '#',
+    minMargin = ${state} === 'normal'
 ) }}
 
 #${prefix} labelLine(Object)

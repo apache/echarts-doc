@@ -21,7 +21,8 @@ Series of same [map type](~series-map.map) will show in one map. At this point, 
 
 {{ use: geo-common(
     prefix = '#',
-    inMap = true
+    inMap = true,
+    labelMinMargin = true
 ) }}
 
 ## center(Array)
@@ -135,7 +136,8 @@ Color of the area.
     defaultPosition = "'bottom'",
     formatter = true,
     noAlign = true,
-    noVerticalAlign = true
+    noVerticalAlign = true,
+    minMargin = true
 ) }}
 
 ### labelLine(Object)

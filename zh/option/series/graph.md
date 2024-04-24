@@ -214,7 +214,8 @@ edgeSymbol: ['circle', 'arrow']
 {{ use: partial-label(
     prefix = "##",
     defaultPosition = "'inside'",
-    formatter = true
+    formatter = true,
+    minMargin = true
 ) }}
 
 ## edgeLabel(Object)
@@ -440,7 +441,8 @@ data: [{
 该节点标签的样式。
 
 {{ use: partial-label(
-    prefix = "###"
+    prefix = "###",
+    minMargin = true
 ) }}
 
 ### emphasis(Object)

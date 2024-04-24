@@ -165,7 +165,8 @@ Style of circle placeholder.
 {{ use: partial-pie-label(
     prefix = "##",
     position = true,
-    formatter = true
+    formatter = true,
+    minMargin = true
 ) }}
 
 ### alignTo(string) = 'none'
@@ -371,7 +372,8 @@ The label configuration of a single sector.
 {{ use: partial-pie-label(
     prefix = "###",
     position = true,
-    formatter = false
+    formatter = false,
+    minMargin = true
 ) }}
 
 ### labelLine(Object)
@@ -499,6 +501,16 @@ The position of label.
 + `'center'`
 
     In the center of pie chart. See [pie-doughnut example](${galleryEditorPath}pie-doughnut)
+{{ /if }}
+
+{{ if: ${minMargin} }}
+#${prefix} minMargin(number)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+Minimal margin between labels. Used when label has [layout](~series-pie.labelLayout).
 {{ /if }}
 
 {{ if: ${formatter} }}

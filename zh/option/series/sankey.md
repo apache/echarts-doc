@@ -187,7 +187,8 @@ levels: [{
     prefix = "##",
     defaultShowLabel = true,
     defaultPosition = "'right'",
-    formatter1d = true
+    formatter1d = true,
+    minMargin = true
 ) }}
 
 ## labelLayout(Object|Function)
@@ -313,7 +314,8 @@ data: [{
 该节点标签的样式。
 
 {{ use: partial-label(
-    prefix = "###"
+    prefix = "###",
+    minMargin = true
 ) }}
 
 ### emphasis(Object)

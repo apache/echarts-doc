@@ -57,7 +57,8 @@ Work for [coordinateSystem](~series-heatmap.coordinateSystem): 'cartesian2d'.
 
 {{ use: partial-label(
     prefix = "##",
-    defaultPosition = "inside"
+    defaultPosition = "inside",
+    minMargin = true
 ) }}
 
 ## labelLayout(Object|Function)
@@ -164,7 +165,8 @@ It is valid with [coordinateSystem](~series-heatmap.coordinateSystem) of 'cartes
 
 {{ use: partial-label(
     prefix = "###",
-    defaultPosition = "inside"
+    defaultPosition = "inside",
+    minMargin = true
 ) }}
 
 ### itemStyle(Object)

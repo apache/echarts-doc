@@ -184,7 +184,8 @@ center: [115.97, '30%']
             desc: '当前节点的祖先节点（包括自身）',
             type: 'Array'
         }
-    }
+    },
+    minMargin = true
 ) }}
 
 ## labelLayout(Object|Function)
@@ -391,7 +392,8 @@ center: [115.97, '30%']
 该节点的标签。
 
 {{ use: partial-label(
-    prefix = "###"
+    prefix = "###",
+    minMargin = true
 ) }}
 
 ### emphasis(Object)

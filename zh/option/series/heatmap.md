@@ -108,7 +108,8 @@ option = {
 
 {{ use: partial-label(
     prefix = "##",
-    defaultPosition = "inside"
+    defaultPosition = "inside",
+    minMargin = true
 ) }}
 
 ## labelLayout(Object|Function)
@@ -215,7 +216,8 @@ option = {
 
 {{ use: partial-label(
     prefix = "###",
-    defaultPosition = "inside"
+    defaultPosition = "inside",
+    minMargin = true
 ) }}
 
 ### itemStyle(Object)

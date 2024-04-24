@@ -78,7 +78,8 @@ const option = {
 {{ use: partial-label(
     prefix = "##",
     defaultPosition = "'top'",
-    formatter = true
+    formatter = true,
+    minMargin = true
 ) }}
 
 ## labelLayout(Object|Function)
@@ -216,7 +217,8 @@ data : [
 
 {{ use: partial-label(
     prefix = "###",
-    defaultPosition = "top"
+    defaultPosition = "top",
+    minMargin = true
 ) }}
 
 ### itemStyle(Object)

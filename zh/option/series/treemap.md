@@ -703,7 +703,8 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
             desc: '当前节点的祖先节点（包括自身）',
             type: 'Array'
         }
-    }
+    },
+    minMargin = true
 ) }}
 
 #${prefix} upperLabel(Object)

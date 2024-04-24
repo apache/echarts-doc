@@ -23,7 +23,8 @@
 
 {{ use: geo-common(
     prefix = '#',
-    inMap = true
+    inMap = true,
+    labelMinMargin = true
 ) }}
 
 ## center(Array)
@@ -132,7 +133,8 @@ center: [115.97, '30%']
     defaultPosition = "'bottom'",
     formatter = true,
     noAlign = true,
-    noVerticalAlign = true
+    noVerticalAlign = true,
+    minMargin = true
 ) }}
 
 ### labelLine(Object)

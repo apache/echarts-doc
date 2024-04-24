@@ -184,7 +184,8 @@ Specify which layer is set, value starts from 0.
     prefix = "##",
     defaultShowLabel = true,
     defaultPosition = "'right'",
-    formatter1d = true
+    formatter1d = true,
+    minMargin = true
 ) }}
 
 ## labelLayout(Object|Function)
@@ -310,7 +311,8 @@ The style of this node.
 The lable style of this node.
 
 {{ use: partial-label(
-    prefix = "###"
+    prefix = "###",
+    minMargin = true
 ) }}
 
 ### emphasis(Object)

@@ -109,7 +109,8 @@ option = {
 {{ use: partial-funnel-label(
     prefix = "##",
     position = true,
-    formatter = true
+    formatter = true,
+    minMargin = true
 ) }}
 
 ## labelLine(Object)
@@ -241,7 +242,8 @@ option = {
 {{ use: partial-funnel-label(
     prefix = "###",
     position = true,
-    formatter = false
+    formatter = false,
+    minMargin = true
 ) }}
 
 ### labelLine(Object)
@@ -363,6 +365,16 @@ option = {
 
 在不是配置为内部的时候标签可以通过[视觉引导线](~series-funnel.labelLine)连到相应的梯形。
 通过[视觉引导线](~series-funnel.labelLine)连到相应的梯形。
+{{ /if }}
+
+{{ if: ${minMargin} }}
+#${prefix} minMargin(number)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+用于控制标签之间的最小距离，当启用 [labelLayout](~series-funnel.labelLayout) 时可能会用到。
 {{ /if }}
 
 {{ if: ${formatter} }}

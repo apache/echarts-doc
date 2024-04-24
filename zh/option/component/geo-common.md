@@ -237,7 +237,8 @@ boundingCoords: [
 
 {{ use: partial-label(
     prefix = "#" + ${prefix},
-    formatter = true
+    formatter = true,
+    minMargin = ${labelMinMargin}
 ) }}
 
 #${prefix} itemStyle(Object)
