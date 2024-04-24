@@ -51,6 +51,14 @@ See: [label rotation](${galleryEditorPath}bar-label-rotation).
 
 Whether to move text slightly. For example: `[30, 40]` means move `30` horizontally and move `40` vertically.
 
+#${prefix} minMargin(number)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+Minimal margin between labels. Used when label has [layout](~series.labelLayout).
+
 {{ if: ${formatter} }}
 #${prefix} formatter(string|Function)
 
