@@ -203,7 +203,8 @@ The style of node rectangle in Sankey diagram.
     useColorPalatte = true,
     defaultBorderWidth = 1,
     defaultBorderColor = "'#aaa'",
-    useDecal = true
+    useDecal = true,
+    hasBorderRadius = true,
 ) }}
 
 ## lineStyle(Object)
@@ -543,7 +544,7 @@ The line style of edge.
     version = "5.4.1"
 ) }}
 
-The label style of each edge/link. 
+The label style of each edge/link.
 
 {{ use: partial-label(
     prefix = ${prefix},

@@ -206,7 +206,8 @@ levels: [{
     useColorPalatte = true,
     defaultBorderWidth = 1,
     defaultBorderColor = "'#aaa'",
-    useDecal = true
+    useDecal = true,
+    hasBorderRadius = true
 ) }}
 
 ## lineStyle(Object)
