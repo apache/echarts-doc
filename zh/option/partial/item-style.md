@@ -46,6 +46,14 @@ ${defaultBorderWidthDesc|default((${name} ? ${name} : "") + "描边线宽。为 
     defaultMiterLimit = ${defaultMiterLimit}
 ) }}
 
+{{ if: ${hasBorderRadius} }}
+
+{{ use: partial-border-radius(
+    prefix = "##"
+) }}
+
+{{ /if }}
+
 {{ use: partial-style-shadow-opacity(
     prefix = ${prefix},
     defaultOpacity = ${defaultOpacity},
@@ -66,4 +74,3 @@ ${defaultBorderWidthDesc|default((${name} ? ${name} : "") + "描边线宽。为 
     prefix = '#' + ${prefix}
 ) }}
 {{ /if }}
-
