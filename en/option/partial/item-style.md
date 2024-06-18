@@ -68,4 +68,3 @@ ${defaultBorderWidthDesc|default((${name} ? ${name} : "") + " border width. No b
     prefix = '#' + ${prefix}
 ) }}
 {{ /if }}
-

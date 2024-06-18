@@ -201,8 +201,13 @@ The style of node rectangle in Sankey diagram.
     prefix = "##",
     useColorPalatte = true,
     defaultBorderWidth = 1,
-    defaultBorderColor = "'#aaa'",
+    defaultBorderColor = "'none'",
     useDecal = true
+) }}
+
+{{ use: partial-border-radius(
+    prefix = "##",
+    version = "5.5.1"
 ) }}
 
 ## lineStyle(Object)
@@ -302,7 +307,14 @@ The style of this node.
 {{ use: partial-item-style(
     prefix = "###",
     useColorPalatte = true,
-    useDecal = true
+    useDecal = true,
+    defaultBorderWidth = 1,
+    defaultBorderColor = "'none'"
+) }}
+
+{{ use: partial-border-radius(
+    prefix = "###",
+    version = "5.5.1"
 ) }}
 
 ### label(Object)
@@ -443,7 +455,7 @@ Equals to [links](~series-sankey.links)
 
 {{ target: partial-sankey-line-style }}
 
-#${prefix} color(Color) = "'#314656'"
+#${prefix} color(Color) = '#314656'
 
 The color of the edge in Sankey diagram.
 
@@ -480,7 +492,9 @@ The curveness of the edge in Sankey diagram.
 {{ use: partial-item-style(
     prefix = "#" + ${prefix},
     useDecal = true,
-    hasInherit = ${state} === 'emphasis'
+    hasInherit = ${state} === 'emphasis',
+    defaultBorderColor = ${state} === 'select' ? "'#212121'" : "'none'",
+    defaultBorderWidth = 1
 ) }}
 
 
@@ -504,14 +518,17 @@ The curveness of the edge in Sankey diagram.
 
 {{ use: partial-item-style(
     prefix = "#" + ${prefix},
-    hasInherit = ${state} === 'emphasis'
+    hasInherit = ${state} === 'emphasis',
+    defaultBorderColor = ${state} === 'select' ? "'#212121'" : "'none'",
+    defaultBorderWidth = 1
 ) }}
 
 #${prefix} lineStyle(Object)
 
 {{ use: partial-sankey-line-style(
     prefix = "#" + ${prefix},
-    hasInherit = ${state} === 'emphasis'
+    hasInherit = ${state} === 'emphasis',
+    defaultOpacity = ${state} === 'emphasis' ? 0.5 : null
 ) }}
 
 
@@ -530,7 +547,8 @@ The line style of edge.
 
 {{ use: partial-sankey-line-style(
     prefix = "#" + ${prefix},
-    hasInherit = ${state} === 'emphasis'
+    hasInherit = ${state} === 'emphasis',
+    defaultOpacity = ${state} === 'emphasis' ? 0.5 : null
 ) }}
 
 
@@ -541,7 +559,7 @@ The line style of edge.
     version = "5.4.1"
 ) }}
 
-The label style of each edge/link. 
+The label style of each edge/link.
 
 {{ use: partial-label(
     prefix = ${prefix},

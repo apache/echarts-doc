@@ -204,8 +204,13 @@ levels: [{
     prefix = "##",
     useColorPalatte = true,
     defaultBorderWidth = 1,
-    defaultBorderColor = "'#aaa'",
+    defaultBorderColor = "'none'",
     useDecal = true
+) }}
+
+{{ use: partial-border-radius(
+    prefix = "##",
+    version = "5.5.1"
 ) }}
 
 ## lineStyle(Object)
@@ -305,7 +310,14 @@ data: [{
 {{ use: partial-item-style(
     prefix = "###",
     useColorPalatte = true,
-    useDecal = true
+    useDecal = true,
+    defaultBorderWidth = 1,
+    defaultBorderColor = "'none'"
+) }}
+
+{{ use: partial-border-radius(
+    prefix = "###",
+    version = "5.5.1"
 ) }}
 
 ### label(Object)
@@ -454,7 +466,7 @@ links: [{
 + `'target'`: 使用目标节点颜色。
 + `'gradient'`: 以源节点和目标节点的颜色做一个渐变过渡色。(从 v5.0.0 开始支持)
 
-#${prefix} opacity(number) = 0.2
+#${prefix} opacity(number) = ${defaultOpacity|default(0.2)}
 
 桑基图边的透明度。
 
@@ -483,7 +495,9 @@ links: [{
 {{ use: partial-item-style(
     prefix = "#" + ${prefix},
     useDecal = true,
-    hasInherit = ${state} === 'emphasis'
+    hasInherit = ${state} === 'emphasis',
+    defaultBorderColor = ${state} === 'select' ? "'#212121'" : "'none'",
+    defaultBorderWidth = 1
 ) }}
 
 
@@ -507,14 +521,17 @@ links: [{
 
 {{ use: partial-item-style(
     prefix = "#" + ${prefix},
-    hasInherit = ${state} === 'emphasis'
+    hasInherit = ${state} === 'emphasis',
+    defaultBorderColor = ${state} === 'select' ? "'#212121'" : "'none'",
+    defaultBorderWidth = 1
 ) }}
 
 #${prefix} lineStyle(Object)
 
 {{ use: partial-sankey-line-style(
     prefix = "#" + ${prefix},
-    hasInherit = ${state} === 'emphasis'
+    hasInherit = ${state} === 'emphasis',
+    defaultOpacity = ${state} === 'emphasis' ? 0.5 : null
 ) }}
 
 
@@ -533,7 +550,8 @@ links: [{
 
 {{ use: partial-sankey-line-style(
     prefix = "#" + ${prefix},
-    hasInherit = ${state} === 'emphasis'
+    hasInherit = ${state} === 'emphasis',
+    defaultOpacity = ${state} === 'emphasis' ? 0.5 : null
 ) }}
 
 
