@@ -1,14 +1,13 @@
 ## v5.5.1
 <div class="time"></div>
 
-+ [Feature] [axis] Support custom axis tick/label positions. [#19919](https://github.com/apache/echarts/issues/19919) ([Ovilia](https://github.com/Ovilia))
++ [Feature] [axis] Support custom axis tick/label positions. [#19919](https://github.com/apache/echarts/issues/19919) ([Ovilia](https://github.com/Ovilia)) ([
+dvdkon](https://github.com/dvdkon))
 + [Feature] [bar] Add `startValue` option. [#17078](https://github.com/apache/echarts/issues/17078) ([jiawulin001](https://github.com/jiawulin001))
 + [Feature] [sankey] Add `itemStyle.borderRadius` option. [#19763](https://github.com/apache/echarts/issues/19763) ([deftliang](https://github.com/deftliang))
 + [Feature] [time] Add meridian template `{a}/{A}`. [#19888](https://github.com/apache/echarts/issues/19888) ([maurodesouza](https://github.com/maurodesouza))
 + [Feature] [geo] Add `totalZoom` parameter for the `georoam` event. [#19837](https://github.com/apache/echarts/issues/19837) ([zhaoxinggang](https://github.com/zhaoxinggang))
 + [Feature] [treemap] Add `scaleLimit` option to limit the zooming. [#18304](https://github.com/apache/echarts/issues/18304) ([liuyizhou](https://github.com/liuyizhou))
-+ [Feature] [dataZoom] Add `valueRange` parameter for `dataZoom` event. [#17278](https://github.com/apache/echarts/issues/17278) ([susiwen8](https://github.com/susiwen8))
-+ [Fix] [markLine] markLine shouldn't be filtered if one point is out side of the grid. [#16026](https://github.com/apache/echarts/issues/16026) ([susiwen8](https://github.com/susiwen8))
 + [Fix] [series] Avoid error caused by `seriesData.getLinkedData`. [#19901](https://github.com/apache/echarts/issues/19901) ([plainheart](https://github.com/plainheart))
 + [Fix] [marker] Fix marker label formatter can't get series information. [#19898](https://github.com/apache/echarts/issues/19898) ([plainheart](https://github.com/plainheart))
 + [Fix] [aria] Avoid error in SSR mode. [#19892](https://github.com/apache/echarts/issues/19892) ([OverflowCat](https://github.com/OverflowCat))
