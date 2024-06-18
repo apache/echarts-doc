@@ -48,14 +48,6 @@ ${defaultBorderWidthDesc|default((${name} ? ${name} : "") + " border width. No b
     defaultMiterLimit = ${defaultMiterLimit}
 ) }}
 
-{{ if: ${hasBorderRadius} }}
-
-{{ use: partial-border-radius(
-    prefix = "##"
-) }}
-
-{{ /if }}
-
 {{ use: partial-style-shadow-opacity(
     prefix = ${prefix},
     defaultOpacity = ${defaultOpacity},
