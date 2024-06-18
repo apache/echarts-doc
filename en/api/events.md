@@ -257,7 +257,7 @@ Event emitted after [geo](option.html#geo) is roamed.
     componentType: 'geo' | 'series',
     seriesId: string,
     zoom: number, // zoom ratio of roaming once
-    totalZoom: number, // accumulated zoom ratio
+    totalZoom: number, // accumulated zoom ratio (since v5.5.1)
     originX: number,
     originY: number
 }
