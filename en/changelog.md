@@ -14,6 +14,7 @@ dvdkon](https://github.com/dvdkon))
 + [Fix] [data] Avoid error when using BigInt values. [#19847](https://github.com/apache/echarts/issues/19847) ([zettca](https://github.com/zettca))
 + [Fix] [pie] Fix `endAngle` is not applied on the empty circle. [#19642](https://github.com/apache/echarts/issues/19642) ([plainheart](https://github.com/plainheart))
 + [Fix] [toolbox] Fix uncaught reference error in the environment that `MouseEvent` doesn't exist. [#19620](https://github.com/apache/echarts/issues/19620) ([plainheart](https://github.com/plainheart))
++ [Fix] [tooltip] Fix tooltip XSS issue when legend name is HTML string. [#20045](https://github.com/apache/echarts/issues/20045) ([plainheart](https://github.com/plainheart))
 + [Fix] [type] Fix that in users' .d.ts `import('echarts/types/dist/shared')` can not visit `'echarts/types/dist/shared.d.ts'` since v5.5.0. [#20030](https://github.com/apache/echarts/issues/20030) ([100pah](https://github.com/100pah))
 
 ## v5.5.0
