@@ -1,7 +1,7 @@
 ## v5.5.1
 <div class="time"></div>
 
-+ [Feature] [axis] Support custom axis tick/label positions. [#19919](https://github.com/apache/echarts/issues/19919) ([Ovilia](https://github.com/Ovilia)) ([dvdkon](https://github.com/dvdkon))
++ [Feature] [axis] Support custom axis tick/label positions. [#19919](https://github.com/apache/echarts/issues/19919) ([dvdkon](https://github.com/dvdkon)) ([Ovilia](https://github.com/Ovilia))
 + [Feature] [bar] Add `startValue` option. [#17078](https://github.com/apache/echarts/issues/17078) ([jiawulin001](https://github.com/jiawulin001))
 + [Feature] [sankey] Add `itemStyle.borderRadius` option. [#19763](https://github.com/apache/echarts/issues/19763) ([deftliang](https://github.com/deftliang))
 + [Feature] [time] Add meridian template `{a}/{A}`. [#19888](https://github.com/apache/echarts/issues/19888) ([maurodesouza](https://github.com/maurodesouza))
