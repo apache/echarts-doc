@@ -250,6 +250,13 @@ const option = {
 + `'move'` 或 `'pan'`：只能够平移。
 + `true`：缩放和平移均可。
 
+## scaleLimit(Object)
+
+{{ use: partial-scale-limit(
+    prefix = "##",
+    version = "5.5.1"
+) }}
+
 ## nodeClick(boolean|string) = 'zoomToNode'
 
 点击节点后的行为。可取值为：

@@ -9,7 +9,13 @@
 
 {{ target: partial-scale-limit }}
 
-滚轮缩放的极限控制，通过`min`, `max`最小和最大的缩放值，默认的缩放为`1`。
+滚轮缩放的极限控制，通过 `min` 和 `max` 限制最小和最大的缩放值。
+
+{{ if: ${version} }}
+{{ use: partial-version(
+    version = ${version}
+) }}
+{{ /if }}
 
 #${prefix} min(number)
 
