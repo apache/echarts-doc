@@ -843,30 +843,32 @@ Next, we are going to introduce these three forms one by one.
 
 Using string templates is an easy way to format date/time with frequently used formats. If it can be used to make what you want, you are advised to do so. If not, you could then consider the others. Supported formats are:
 
-| Group        | Template | Value (EN)                                                    | Value (ZH)                                                               |
-|--------------|----------|----------------------------------------------------------------|----------------------------------------------------------------------------|
-| Year         | {yyyy}     | e.g., 2020, 2021, ...                                          | 例：2020, 2021, ...                                                        |
-|              | {yy}       | 00-99                                                          | 00-99                                                                      |
-| Quarter      | {Q}        | 1, 2, 3, 4                                                     | 1, 2, 3, 4                                                                 |
-| Month        | {MMMM}     | e.g., January, February, ...                                   | 一月、二月、…… |
-|              | {MMM}      | e.g., Jan, Feb, ...                                            | 1月、2月、……              |
-|              | {MM}       | 01-12                                                          | 01-12                                                                      |
-|              | {M}        | 1-12                                                           | 1-12                                                                       |
-| Day of Month | {dd}       | 01-31                                                          | 01-31                                                                      |
-|              | {d}        | 1-31                                                           | 1-31                                                                       |
-| Day of Week  | {eeee}     | Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday | 星期日、星期一、星期二、星期三、星期四、星期五、星期六                     |
-|              | {ee}       | Sun, Mon, Tues, Wed, Thu, Fri, Sat                             | 日、一、二、三、四、五、六                                                 |
-|              | {e}        | 1-54                                                           | 1-54                                                                       |
-| Hour         | {HH}       | 00-23                                                          | 00-23                                                                      |
-|              | {H}        | 0-23                                                           | 0-23                                                                       |
-|              | {hh}       | 01-12                                                          | 01-12                                                                      |
-|              | {h}        | 1-12                                                           | 1-12                                                                       |
-| Minute       | {mm}       | 00-59                                                          | 00-59                                                                      |
-|              | {m}        | 0-59                                                           | 0-59                                                                       |
-| Second       | {ss}       | 00-59                                                          | 00-59                                                                      |
-|              | {s}        | 0-59                                                           | 0-59                                                                       |
-| Millisecond  | {SSS}      | 000-999                                                        | 000-999                                                                    |
-|              | {S}        | 0-999                                                          | 0-999                                                                      |
+| Group        | Template   | Value (EN)                                                                     | Value (ZH)                                                                  |
+|--------------|------------|--------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
+| Year         | {yyyy}     | e.g. 2020, 2021, ...                                                           | 例：2020, 2021, ...                                                         |
+|              | {yy}       | 00-99                                                                          | 00-99                                                                       |
+| Quarter      | {Q}        | 1, 2, 3, 4                                                                     | 1, 2, 3, 4                                                                  |
+| Month        | {MMMM}     | e.g. January, February, ...                                                    | 一月、二月、……                                                              |
+|              | {MMM}      | e.g. Jan, Feb, ...                                                             | 1月、2月、……                                                                |
+|              | {MM}       | 01-12                                                                          | 01-12                                                                       |
+|              | {M}        | 1-12                                                                           | 1-12                                                                        |
+| Day of Month | {dd}       | 01-31                                                                          | 01-31                                                                       |
+|              | {d}        | 1-31                                                                           | 1-31                                                                        |
+| Day of Week  | {eeee}     | Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday                 | 星期日、星期一、星期二、星期三、星期四、星期五、星期六                      |
+|              | {ee}       | Sun, Mon, Tues, Wed, Thu, Fri, Sat                                             | 日、一、二、三、四、五、六                                                  |
+|              | {e}        | 1-54                                                                           | 1-54                                                                        |
+| Hour         | {HH}       | 00-23                                                                          | 00-23                                                                       |
+|              | {H}        | 0-23                                                                           | 0-23                                                                        |
+|              | {hh}       | 01-12                                                                          | 01-12                                                                       |
+|              | {h}        | 1-12                                                                           | 1-12                                                                        |
+| Minute       | {mm}       | 00-59                                                                          | 00-59                                                                       |
+|              | {m}        | 0-59                                                                           | 0-59                                                                        |
+| Second       | {ss}       | 00-59                                                                          | 00-59                                                                       |
+|              | {s}        | 0-59                                                                           | 0-59                                                                        |
+| Millisecond  | {SSS}      | 000-999                                                                        | 000-999                                                                     |
+|              | {S}        | 0-999                                                                          | 0-999                                                                       |
+| Meridian     | {A}        | AM, PM (Since `v5.5.1`, i18n will be finished in the next version)             | 上午、下午 (`v5.5.1` 仅支持英文，将在下个版本支持中文及其他语言)            |
+|              | {a}        | am, pm                                                                         | 上午、下午                                                                  |
 
 > Templates of other languages can be found in [the language package](https://github.com/apache/echarts/tree/master/src/i18n). Please refer to [echarts.registerLocale](api.html#echarts.registerLocale) to register a language.
 
