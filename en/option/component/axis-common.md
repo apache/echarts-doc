@@ -213,6 +213,23 @@ Options are:
 
 Whether to hide overlapped labels.
 
+##${prefix} customValues(Array)
+
+{{ use: partial-version(
+    version = "5.5.1"
+) }}
+
+To customize label positions. For example,
+
+```ts
+axisLabel: {
+	customValues: [0, 4, 7, 8, 9]
+}
+```
+
+![600xauto](~axis-tick-label-custom-values.png)
+
+
 {{ use: partial-text-style(
     prefix = '#' + ${prefix},
     defaultColor = "'#333'"
@@ -310,6 +327,22 @@ Line style of axis ticks.
 
 Color of axis label is set to be [axisLine.lineStyle.color](~${componentType}.axisLine.lineStyle.color) by default.
 
+##${prefix} customValues(Array)
+
+{{ use: partial-version(
+    version = "5.5.1"
+) }}
+
+To customize tick positions. For example,
+
+```ts
+axisTick: {
+    alignWithLabel: true,
+	customValues: [0, 0.5, 1, 1.5, 2, 8, 9]
+}
+```
+
+![600xauto](~axis-tick-label-custom-values.png)
 
 
 {{ target: partial-axis-common-minor-tick }}

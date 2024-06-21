@@ -211,6 +211,23 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 
 是否隐藏重叠的标签。
 
+##${prefix} customValues(Array)
+
+{{ use: partial-version(
+    version = "5.5.1"
+) }}
+
+自定义要显示的标签位置。例如：
+
+```ts
+axisLabel: {
+	customValues: [0, 4, 7, 8, 9]
+}
+```
+
+![600xauto](~axis-tick-label-custom-values.png)
+
+
 {{ use: partial-text-style(
     prefix = '#' + ${prefix},
     defaultColor = "'#333'"
@@ -308,6 +325,22 @@ textStyle: {
 
 刻度线的颜色，默认取 [axisTick.lineStyle.color](~${componentType}.axisTick.lineStyle.color)。
 
+##${prefix} customValues(Array)
+
+{{ use: partial-version(
+    version = "5.5.1"
+) }}
+
+自定义要显示的坐标轴刻度位置。例如：
+
+```ts
+axisTick: {
+    alignWithLabel: true,
+	customValues: [0, 0.5, 1, 1.5, 2, 8, 9]
+}
+```
+
+![600xauto](~axis-tick-label-custom-values.png)
 
 
 {{ target: partial-axis-common-minor-tick }}
