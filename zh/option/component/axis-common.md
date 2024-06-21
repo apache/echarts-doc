@@ -740,7 +740,7 @@ max: function (value) {
 
 <ExampleUIControlNumber />
 
-用于指定轴的起始值。只对[数值轴](~${componentType}.type)和[对数轴](~${componentType}.type)上的 [bar](~series-bar) 系列有效。
+用于指定轴的起始值。
 
 {{ use: partial-version(
     version = '5.5.1'
