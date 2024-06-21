@@ -221,7 +221,7 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 
 ```ts
 axisLabel: {
-	customValues: [0, 4, 7, 8, 9]
+    customValues: [0, 4, 7, 8, 9]
 }
 ```
 
@@ -336,7 +336,7 @@ textStyle: {
 ```ts
 axisTick: {
     alignWithLabel: true,
-	customValues: [0, 0.5, 1, 1.5, 2, 8, 9]
+    customValues: [0, 0.5, 1, 1.5, 2, 8, 9]
 }
 ```
 

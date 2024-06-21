@@ -223,7 +223,7 @@ To customize label positions. For example,
 
 ```ts
 axisLabel: {
-	customValues: [0, 4, 7, 8, 9]
+    customValues: [0, 4, 7, 8, 9]
 }
 ```
 
@@ -338,7 +338,7 @@ To customize tick positions. For example,
 ```ts
 axisTick: {
     alignWithLabel: true,
-	customValues: [0, 0.5, 1, 1.5, 2, 8, 9]
+    customValues: [0, 0.5, 1, 1.5, 2, 8, 9]
 }
 ```
 
