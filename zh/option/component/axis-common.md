@@ -703,6 +703,17 @@ max: function (value) {
 
 对数轴的底数，只在对数轴中（[type](~${componentType}.type): 'log'）有效。
 
+#${prefix} startValue(number)
+
+<ExampleUIControlNumber />
+
+用于指定轴的起始值。只对[数值轴](~${componentType}.type)和[对数轴](~${componentType}.type)上的 [bar](~series-bar) 系列有效。
+
+{{ use: partial-version(
+    version = '5.5.1'
+) }}
+
+
 {{ use: partial-axis-common-axis-line(
     prefix = ${prefix},
     componentType = ${componentType}

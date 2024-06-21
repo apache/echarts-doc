@@ -706,6 +706,17 @@ This is unavailable for category axis. Timestamp should be passed for [type](~${
 
 Base of logarithm, which is valid only for numeric axes with [type](~${componentType}.type): 'log'.
 
+#${prefix} startValue(number)
+
+<ExampleUIControlNumber />
+
+Specify the start value of the axis. Only works for the [bar](~series-bar) series with [value axis](~${componentType}.type) or [log axis](~${componentType}.type).
+
+{{ use: partial-version(
+    version = '5.5.1'
+) }}
+
+
 {{ use: partial-axis-common-axis-line(
     prefix = ${prefix},
     componentType = ${componentType}
