@@ -740,12 +740,11 @@ max: function (value) {
 
 <ExampleUIControlNumber />
 
-用于指定轴的起始值。
-
 {{ use: partial-version(
     version = '5.5.1'
 ) }}
 
+用于指定轴的起始值。
 
 {{ use: partial-axis-common-axis-line(
     prefix = ${prefix},

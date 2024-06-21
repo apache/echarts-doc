@@ -743,12 +743,11 @@ Base of logarithm, which is valid only for numeric axes with [type](~${component
 
 <ExampleUIControlNumber />
 
-To specify the start value of the axis.
-
 {{ use: partial-version(
     version = '5.5.1'
 ) }}
 
+To specify the start value of the axis.
 
 {{ use: partial-axis-common-axis-line(
     prefix = ${prefix},
