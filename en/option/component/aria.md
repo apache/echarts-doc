@@ -48,7 +48,7 @@ option = {
 
 ~[700x300](${galleryViewPath}doc-example/aria-pie&edit=1&reset=1)
 
-On the generated chart DOM, there is an `aria-label` attribute that allows the blind to understand the chart with the help of a reading device. Its value is.
+On the generated chart DOM, there is an `aria-label` attribute that allows the blind to understand the chart with the help of a reading device. Its value is:
 
 > This is a chart of "Source of user access to a site." The chart type is a pie chart that indicates the source of the visit. The data is - direct access data is 335, mail marketing data is 310, union ad data is 234, video ad data is 135, search engine data is 1548.
 
