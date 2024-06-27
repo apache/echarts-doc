@@ -195,19 +195,19 @@ option = {
     version = "5.0.0"
 ) }}
 
-选中状态配置。开启 [selectedMode](~series-bar.selectedMode) 后有效。
+选中状态配置。开启 [selectedMode](~series-pictorialBar.selectedMode) 后有效。
 
 {{ use: partial-select-disabled(
     prefix = "##"
 ) }}
 
-{{ use: partial-selected-mode(
-    version = '5.0.0'
-) }}
-
 {{ use: pictorialBar-state(
     prefix = "##",
     state = 'select'
+) }}
+
+{{ use: partial-selected-mode(
+    version = '5.0.0'
 ) }}
 
 {{ use: partial-barGrid(

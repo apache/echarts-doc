@@ -152,13 +152,13 @@ Configurations of select state. Available when [selectedMode](~series-pictorialB
     prefix = "##"
 ) }}
 
-{{ use: partial-selected-mode(
-    version = '5.0.0'
-) }}
-
 {{ use: pictorialBar-state(
     prefix = "##",
     state = 'select'
+) }}
+
+{{ use: partial-selected-mode(
+    version = '5.0.0'
 ) }}
 
 {{ use: partial-barGrid(
