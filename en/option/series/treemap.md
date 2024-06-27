@@ -93,6 +93,13 @@ Whether to enable dragging roam (move and zoom). Optional values are:
 + `'move'` or `'pan'`: move (translation) only.
 + `true`: both zoom and move (translation) are available.
 
+## scaleLimit(Object)
+
+{{ use: partial-scale-limit(
+    prefix = "##",
+    version = "5.5.1"
+) }}
+
 ## nodeClick(boolean|string) = 'zoomToNode'
 
 The behaviour when clicking a node. Optional values are:
