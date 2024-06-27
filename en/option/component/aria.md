@@ -56,7 +56,7 @@ The basic process for generating the description is that if [aria.enabled](~aria
 
 When using the template, if [title.text](~title.text)is set, it is used in [aria.label.general.withTitle](option.html#aria.label.general.withTitle). If [title.text](~title.text) has no value, [aria.label.general.withoutTitle](option.html#aria.label.general.withoutTitle) is used instead. `aria.general.withTitle` supports a template `'{title}'`, which will be replaced with the chart title. This means, if `aria.general.withTitle` is set to be `'The chart title is {title}.'` and the chart title is `Price Distribution`, it will be interpreted into `'The chart title is Price Distribution.'`
 
-After generating the title, the description of the series ([aria.label.series](option.html#aria.label.series)) and the description of the data for each series ([aria.label.data](option.html#aria.label.data)) are generated in turn. The following is an example of a template. Likewise, each template may include template variables to replace actual values.
+After generating the title, the description of the series ([aria.label.series](option.html#aria.label.series)) and the description of the data for each series ([aria.label.data](option.html#aria.label.data)) are generated in turn.
 
 The complete description generation process is:
 
