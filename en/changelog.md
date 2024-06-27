@@ -1,5 +1,5 @@
 ## v5.5.1
-<div class="time"></div>
+<div class="time">2024-06-27</div>
 
 + [Feature] [axis] Support custom axis tick/label positions. [#19919](https://github.com/apache/echarts/issues/19919) ([dvdkon](https://github.com/dvdkon)) ([Ovilia](https://github.com/Ovilia))
 + [Feature] [bar] Add `startValue` option. [#17078](https://github.com/apache/echarts/issues/17078) ([jiawulin001](https://github.com/jiawulin001))

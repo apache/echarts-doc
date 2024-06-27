@@ -1,3 +1,21 @@
+## v5.5.1
+<div class="time">2024-06-27</div>
+
++ [Feature] [axis] 支持自定义坐标轴刻度/标签位置。 [#19919](https://github.com/apache/echarts/issues/19919) ([dvdkon](https://github.com/dvdkon)) ([Ovilia](https://github.com/Ovilia))
++ [Feature] [bar] 添加`startValue`配置项。 [#17078](https://github.com/apache/echarts/issues/17078) ([jiawulin001](https://github.com/jiawulin001))
++ [Feature] [sankey] 添加`itemStyle.borderRadius`配置项. [#19763](https://github.com/apache/echarts/issues/19763) ([deftliang](https://github.com/deftliang))
++ [Feature] [time] 新增 12 小时制的时间模板 `{a}/{A}`. [#19888](https://github.com/apache/echarts/issues/19888) ([maurodesouza](https://github.com/maurodesouza))
++ [Feature] [geo] `georoam`事件添加`totalZoom`参数. [#19837](https://github.com/apache/echarts/issues/19837) ([zhaoxinggang](https://github.com/zhaoxinggang))
++ [Feature] [treemap] 新增`scaleLimit`配置项用于缩放的限制。 [#18304](https://github.com/apache/echarts/issues/18304) ([liuyizhou](https://github.com/liuyizhou))
++ [Fix] [series] 修复`seriesData.getLinkedData`触发的错误。 [#19901](https://github.com/apache/echarts/issues/19901) ([plainheart](https://github.com/plainheart))
++ [Fix] [marker] 修复标记标签格式化器无法获取系列信息的问题。 [#19898](https://github.com/apache/echarts/issues/19898) ([plainheart](https://github.com/plainheart))
++ [Fix] [aria] 修复 SSR 模式下的错误. [#19892](https://github.com/apache/echarts/issues/19892) ([OverflowCat](https://github.com/OverflowCat))
++ [Fix] [data] 修复使用 BigInt 值时产生的错误。 [#19847](https://github.com/apache/echarts/issues/19847) ([zettca](https://github.com/zettca))
++ [Fix] [pie] 修复 `endAngle` 在空数据的圆环下不生效的问题。 [#19642](https://github.com/apache/echarts/issues/19642) ([plainheart](https://github.com/plainheart))
++ [Fix] [toolbox] 修复在不存在`MouseEvent`的环境中未捕获的引用错误。[#19620](https://github.com/apache/echarts/issues/19620) ([plainheart](https://github.com/plainheart))
++ [Fix] [tooltip] 修复当图例名称为 HTML 字符串时的提示框 XSS 问题。[#20045](https://github.com/apache/echarts/issues/20045) ([plainheart](https://github.com/plainheart))
++ [Fix] [type] 修复自 v5.5.0 版本起，用户的 .d.ts 中`import('echarts/types/dist/shared')`无法访问 `echarts/types/dist/shared.d.ts`的问题。[#20030](https://github.com/apache/echarts/issues/20030) ([100pah](https://github.com/100pah))
+
 ## v5.5.0
 <div class="time">2024-02-18</div>
 
