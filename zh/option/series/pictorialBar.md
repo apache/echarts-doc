@@ -171,6 +171,8 @@ option = {
 
 ### scale(boolean) = false
 
+<ExampleUIControlBoolean />
+
 {{ use: partial-version(
     version = "5.0.0"
 ) }}
