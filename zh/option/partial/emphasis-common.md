@@ -17,7 +17,7 @@
 
 {{ target: partial-focus-blur-scope }}
 
-### focus(string) = 'none'
+###${prefix} focus(string) = 'none'
 
 {{ if: ${isGeoCoordSys} }}
 {{ use: partial-version(
@@ -78,7 +78,7 @@ emphasis: {
 {{ /if }}
 
 {{ if: !${isGeoCoordSys} }}
-### blurScope(string) = 'coordinateSystem'
+###${prefix} blurScope(string) = 'coordinateSystem'
 
 {{ use: partial-version(
     version = "5.0.0"

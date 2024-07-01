@@ -169,6 +169,14 @@ option = {
     prefix = "##"
 ) }}
 
+### scale(boolean) = false
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+是否开启 hover 在图形上的提示动画效果。
+
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: pictorialBar-state(
@@ -291,6 +299,18 @@ option = {
     prefix = "###"
 ) }}
 
+#### scale(boolean) = false
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+是否开启 hover 在图形上的提示动画效果。
+
+{{ use: partial-focus-blur-scope(
+    prefix = "#"
+) }}
+
 {{ use: partial-bar-state(
     prefix = "###",
     state = 'emphasis'
@@ -354,12 +374,12 @@ option = {
     noAnimationDelay = true
 ) }}
 
-{{ use: partial-universal-transition(
-    prefix = "#"
-) }}
-
 {{ use: pictorialBar-animation-delay(
     prefix = "##"
+) }}
+
+{{ use: partial-universal-transition(
+    prefix = "#"
 ) }}
 
 {{ use: partial-tooltip-in-series() }}
@@ -620,23 +640,13 @@ itemStyle: {
 指定图形元素间的覆盖关系。数值越大，越在层叠的上方。
 {{ /if }}
 
-#${prefix} hoverAnimation(boolean) = false
-
-<ExampleUIControlBoolean />
-
-是否开启 hover 在图形上的提示动画效果。
-
-{{ use: pictorialBar-symbol-attrs-cascade(
-    attrName = 'hoverAnimation'
-) }}
-
 {{ use: partial-animation(
-    prefix = "##",
+    prefix = ${prefix},
     noAnimationDelay = true
 ) }}
 
 {{ use: pictorialBar-animation-delay(
-    prefix = "##"
+    prefix = ${prefix}
 ) }}
 
 

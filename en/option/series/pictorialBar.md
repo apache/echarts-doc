@@ -120,6 +120,14 @@ Configurations of emphasis state.
     prefix = "##"
 ) }}
 
+### scale(boolean) = false
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+Whether to enable hover animation.
+
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: pictorialBar-state(
@@ -242,6 +250,18 @@ Emphasis state of the specified single data.
     prefix = "###"
 ) }}
 
+#### scale(boolean) = false
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+Whether to enable hover animation.
+
+{{ use: partial-focus-blur-scope(
+    prefix = "#"
+) }}
+
 {{ use: partial-bar-state(
     prefix = "###",
     state = 'emphasis'
@@ -305,12 +325,12 @@ Select state of the specified single data.
     noAnimationDelay = true
 ) }}
 
-{{ use: partial-universal-transition(
-    prefix = "#"
-) }}
-
 {{ use: pictorialBar-animation-delay(
     prefix = "##"
+) }}
+
+{{ use: partial-universal-transition(
+    prefix = "#"
 ) }}
 
 {{ use: partial-tooltip-in-series() }}
@@ -569,23 +589,13 @@ For example:
 Specify the relationship of overlap between graphic elements. A bigger value means higher.
 {{ /if }}
 
-#${prefix} hoverAnimation(boolean) = false
-
-<ExampleUIControlBoolean />
-
-Whether to enable hover animation.
-
-{{ use: pictorialBar-symbol-attrs-cascade(
-    attrName = 'hoverAnimation'
-) }}
-
 {{ use: partial-animation(
-    prefix = "##",
+    prefix = ${prefix},
     noAnimationDelay = true
 ) }}
 
 {{ use: pictorialBar-animation-delay(
-    prefix = "##"
+    prefix = ${prefix}
 ) }}
 
 
