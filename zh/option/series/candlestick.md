@@ -236,10 +236,6 @@ const option = {
 
 {{ use: partial-legend-hover-link() }}
 
-## hoverAnimation(boolean) = true
-
-是否开启 hover 在 box 上的动画效果。
-
 ## layout(string) = null
 
 <ExampleUIControlEnum options="horizontal,vertical">

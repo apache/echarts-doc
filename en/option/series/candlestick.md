@@ -47,10 +47,6 @@ We use red to represent increasing and blue decreasing by default. If you want t
 
 {{ use: partial-legend-hover-link() }}
 
-## hoverAnimation(boolean) = true
-
-Whether to enable animation when hovering on box.
-
 ## layout(string) = null
 
 Layout method, whose values may be:
