@@ -91,11 +91,25 @@ Item style of candlestick.
 
 ## emphasis(Object)
 
+{{ use: partial-version(
+    version = "5.5.2"
+) }}
+
 Emphasis style of candlestick.
 
 {{ use: partial-emphasis-disabled(
-    prefix = "##"
+    prefix = "##",
+    defaultValue = true
 ) }}
+
+**Note:** The emphasis state is disabled in the candlestick series by default for historical reasons and needs to be explicitly enabled as follows.
+
+```js
+emphasis: {
+    // enable the emphasis state
+    disabled: false
+}
+```
 
 {{ use: partial-focus-blur-scope() }}
 
@@ -109,7 +123,7 @@ Emphasis style of candlestick.
 ## blur(Object)
 
 {{ use: partial-version(
-    version = "5.0.0"
+    version = "5.5.2"
 ) }}
 
 Configurations of blur state. Available when [emphasis.focus](~series-candlestick.emphasis.focus) is set.
@@ -137,7 +151,8 @@ Configurations of select state. Available when [selectedMode](~series-candlestic
 
 {{ use: partial-candlestick-item-style-detail(
     prefix = "###",
-    defaultBorderWidth = 2
+    defaultBorderWidth = 2,
+    option0Version = "5.5.2"
 ) }}
 
 {{ use: partial-selected-mode(
@@ -315,6 +330,12 @@ Fill color of bullish candle stick.
 
 <ExampleUIControlColor />
 
+{{ if: ${option0Version} }}
+{{ use: partial-version(
+    version = ${option0Version}
+) }}
+{{ /if }}
+
 Fill color of bearish candle stick.
 
 {{ use: partial-color-desc() }}
@@ -331,6 +352,12 @@ Border color of bullish candle stick.
 
 <ExampleUIControlColor />
 
+{{ if: ${option0Version} }}
+{{ use: partial-version(
+    version = ${option0Version}
+) }}
+{{ /if }}
+
 Border color of bearish candle stick.
 
 {{ use: partial-color-desc() }}
@@ -340,7 +367,7 @@ Border color of bearish candle stick.
 <ExampleUIControlColor />
 
 {{ use: partial-version(
-    version = "5.4.1"
+    version = ${option0Version|default("5.4.1")}
 ) }}
 
 Border color of doji (when the open price is the same as the close price).
