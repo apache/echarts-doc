@@ -49,11 +49,11 @@
 
 <ExampleUIControlNumber min="0" />
 
-## barGap(string) = ${barGapDefault|default('30%')}
+## barGap(string) = ${barGapDefault|default('20%')}
 
-<ExampleUIControlPercent default="30%"/>
+<ExampleUIControlPercent default="20%"/>
 
-不同系列的柱间距离，为百分比（如 `'30%'`，表示柱子宽度的 `30%`）。
+不同系列的柱间距离，为百分比（如 `'20%'`，表示柱子宽度的 `20%`）。
 
 如果想要两个系列的柱子重叠，可以设置 barGap 为 `'-100%'`。这在用柱子做背景的时候有用。
 
@@ -64,11 +64,11 @@
 例子：
 ~[600x400](${galleryViewPath}doc-example/barGrid-barGap&reset=1&edit=1)
 
-## barCategoryGap(string) = '20%'
+## barCategoryGap(number|string)
 
-<ExampleUIControlPercent default="20%"/>
+<ExampleUIControlPercent />
 
-同一系列的柱间距离，默认为类目间距的20%，可设固定值
+同一系列的柱间距离，默认情况下根据柱状图的系列数量计算得到合适的间距，系列较多时间距会适当调小，可设固定值
 
 {{ use: partial-barGrid-share-desc(
     seriesType = ${seriesType}
