@@ -284,18 +284,8 @@ K 线图的图形样式。
 K 线图的高亮状态。
 
 {{ use: partial-emphasis-disabled(
-    prefix = "##",
-    defaultValue = true
+    prefix = "##"
 ) }}
-
-**注意：** K 线图由于历史遗留原因，默认关闭，需要如下显式启用。
-
-```js
-emphasis: {
-    // 启用高亮状态
-    disabled: false
-}
-```
 
 {{ use: partial-focus-blur-scope() }}
 

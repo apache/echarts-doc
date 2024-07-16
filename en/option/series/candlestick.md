@@ -98,18 +98,8 @@ Item style of candlestick.
 Emphasis style of candlestick.
 
 {{ use: partial-emphasis-disabled(
-    prefix = "##",
-    defaultValue = true
+    prefix = "##"
 ) }}
-
-**Note:** The emphasis state is disabled in the candlestick series by default for historical reasons and needs to be explicitly enabled as follows.
-
-```js
-emphasis: {
-    // enable the emphasis state
-    disabled: false
-}
-```
 
 {{ use: partial-focus-blur-scope() }}
 
