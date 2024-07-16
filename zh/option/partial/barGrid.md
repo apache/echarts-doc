@@ -51,7 +51,7 @@
 
 ## barGap(string) = ${barGapDefault|default('20%')}
 
-<ExampleUIControlPercent default="20%"/>
+<ExampleUIControlPercent default="${barGapDefault|default('20%')}"/>
 
 不同系列的柱间距离，为百分比（如 `'20%'`，表示柱子宽度的 `20%`）。
 
