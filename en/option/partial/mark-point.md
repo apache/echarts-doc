@@ -49,6 +49,8 @@ Emphasis status of mark point.
 
 {{ use: partial-label(
     prefix = "###" + ${prefix},
+    defaultShowLabel = true,
+    defaultPosition = "'inside'",
     formatter = true
 ) }}
 
@@ -70,6 +72,8 @@ Configurations of blur state. Whether to blur follows the series.
 
 {{ use: partial-label(
     prefix = "###" + ${prefix},
+    defaultShowLabel = true,
+    defaultPosition = "'inside'",
     formatter = true
 ) }}
 
@@ -116,9 +120,9 @@ data: [{{ if: ${hasType} }}
 ]
 ```
 
-###${prefix} name(string) = ''
+###${prefix} name(string)
 
-Mark point name.
+Mark point name. Can be used as a template variable **data name** `{b}` in [label formatter](~series-${seriesType}.markPoint.data.label.formatter).
 
 {{ if: ${hasType} }}
 ###${prefix} type(string)
@@ -183,7 +187,10 @@ Mark point style.
 ###${prefix} label(Object)
 
 {{ use: partial-label(
-    prefix = ${prefix} + '###'
+    prefix = ${prefix} + '###',
+    defaultShowLabel = true,
+    defaultPosition = "'inside'",
+    formatter = true
 ) }}
 
 ###${prefix} emphasis(Object)
@@ -195,7 +202,10 @@ Mark point style.
 ####${prefix} label(Object)
 
 {{ use: partial-label(
-    prefix = ${prefix} + '####'
+    prefix = ${prefix} + '####',
+    defaultShowLabel = true,
+    defaultPosition = "'inside'",
+    formatter = true
 ) }}
 
 ####${prefix} itemStyle(Object)
@@ -213,7 +223,10 @@ Mark point style.
 ####${prefix} label(Object)
 
 {{ use: partial-label(
-    prefix = ${prefix} + '####'
+    prefix = ${prefix} + '####',
+    defaultShowLabel = true,
+    defaultPosition = "'inside'",
+    formatter = true
 ) }}
 
 ####${prefix} itemStyle(Object)

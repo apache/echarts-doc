@@ -157,8 +157,7 @@ data: [
 起点的数据。
 
 {{ use: mark-line-data-item-item(
-    name = "起点",
-    prefix = "###"+${prefix},
+    prefix = "###" + ${prefix},
     seriesType = ${seriesType},
     hasCoord = ${hasCoord},
     hasType = ${hasType},
@@ -170,8 +169,7 @@ data: [
 终点的数据。
 
 {{ use: mark-line-data-item-item(
-    name = "终点",
-    prefix = "###"+${prefix},
+    prefix = "###" + ${prefix},
     seriesType = ${seriesType},
     hasCoord = ${hasCoord},
     hasType = ${hasType},
@@ -260,7 +258,7 @@ data: [
 
 #${prefix} name(string) = '${name}'
 
-标注名称，将会作为文字显示。
+标注名称。定义后可在 [label formatter](~series-${seriesType}.markLine.data.label.formatter) 中作为**数据名** `{b}` 模板变量使用。
 
 #${prefix} x(number)
 

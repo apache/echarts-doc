@@ -14,7 +14,10 @@
 标域文本配置。
 
 {{ use: partial-label(
-    prefix = ${prefix} + '##'
+    prefix = ${prefix} + '##',
+    defaultShowLabel = true,
+    defaultPosition = "'top'",
+    formatter = true
 ) }}
 
 ##${prefix} itemStyle(Object)
@@ -36,7 +39,10 @@
 ###${prefix} label(Object)
 
 {{ use: partial-label(
-    prefix = ${prefix} + '###'
+    prefix = ${prefix} + '###',
+    defaultShowLabel = true,
+    defaultPosition = "'top'",
+    formatter = true
 ) }}
 
 ###${prefix} itemStyle(*)
@@ -56,7 +62,10 @@
 ###${prefix} label(Object)
 
 {{ use: partial-label(
-    prefix = ${prefix} + '###'
+    prefix = ${prefix} + '###',
+    defaultShowLabel = true,
+    defaultPosition = "'top'",
+    formatter = true
 ) }}
 
 ###${prefix} itemStyle(*)
@@ -141,7 +150,6 @@ data: [
 标域左上角的数据
 
 {{ use: mark-area-data-item-item(
-    name = "起点",
     prefix = "###"+${prefix},
     seriesType = ${seriesType},
     hasCoord = ${hasCoord},
@@ -154,7 +162,6 @@ data: [
 标域右下角的数据
 
 {{ use: mark-area-data-item-item(
-    name = "终点",
     prefix = "###"+${prefix},
     seriesType = ${seriesType},
     hasCoord = ${hasCoord},
@@ -202,7 +209,7 @@ data: [
 
 #${prefix} name(string) = '${name}'
 
-标注名称，将会作为文字显示。
+标注名称，将会作为文字显示。定义后可在 [label formatter](~series-${seriesType}.markArea.data.label.formatter) 中作为**数据名** `{b}` 模板变量使用。
 
 #${prefix} x(number)
 
@@ -222,7 +229,7 @@ data: [
 
 #${prefix} itemStyle(Object)
 
-该数据项区域的样式，起点和终点项的`itemStyle`会合并到一起。
+该数据项区域的样式，起点和终点项的 `itemStyle` 会合并到一起。
 
 {{ use: partial-item-style(
     prefix = "#"+${prefix}
@@ -230,10 +237,13 @@ data: [
 
 #${prefix} label(Object)
 
-该数据项标签的样式，起点和终点项的`label`会合并到一起。
+该数据项标签的样式，起点和终点项的 `label` 会合并到一起。
 
 {{ use: partial-label(
-    prefix = '#'+${prefix}
+    prefix = '#'+${prefix},
+    defaultShowLabel = true,
+    defaultPosition = "'top'",
+    formatter = true
 ) }}
 
 #${prefix} emphasis(Object)
@@ -251,7 +261,10 @@ data: [
 ##${prefix} label(Object)
 
 {{ use: partial-label(
-    prefix = '##'+${prefix}
+    prefix = '##'+${prefix},
+    defaultShowLabel = true,
+    defaultPosition = "'top'",
+    formatter = true
 ) }}
 
 #${prefix} blur(Object)
@@ -269,6 +282,9 @@ data: [
 ##${prefix} label(Object)
 
 {{ use: partial-label(
-    prefix = '##'+${prefix}
+    prefix = '##'+${prefix},
+    defaultShowLabel = true,
+    defaultPosition = "'top'",
+    formatter = true
 ) }}
 
