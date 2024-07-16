@@ -49,6 +49,8 @@ The minimum angle of bar. It could be used to avoid the following situation: the
 
 ## barGap(string) = ${barGapDefault|default('20%')}
 
+<ExampleUIControlPercent default="${barGapDefault|default('20%')}"/>
+
 The gap between bars between different series, is a percent value like `'20%'`, which means `20%` of the bar width.
 
 Set barGap as `'-100%'` can overlap bars that belong to different series, which is useful when making a series of bar be background.
