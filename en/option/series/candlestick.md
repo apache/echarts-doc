@@ -47,10 +47,6 @@ We use red to represent increasing and blue decreasing by default. If you want t
 
 {{ use: partial-legend-hover-link() }}
 
-## hoverAnimation(boolean) = true
-
-Whether to enable animation when hovering on box.
-
 ## layout(string) = null
 
 Layout method, whose values may be:
@@ -86,10 +82,10 @@ Item style of candlestick.
 
 {{ use: partial-candlestick-item-style-detail(
     prefix = "##",
-    defaultColor = "#c23531",
-    defaultColor0 = "#314656",
-    defaultBorderColor = "#c23531",
-    defaultBorderColor0 = "#314656",
+    defaultColor = "#eb5454",
+    defaultColor0 = "#47b262",
+    defaultBorderColor = "#eb5454",
+    defaultBorderColor0 = "#47b262",
     defaultBorderWidth = 1
 ) }}
 

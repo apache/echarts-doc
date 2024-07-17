@@ -33,10 +33,6 @@ Multiple `series` can be displayed in the same coordinate system. Please refer t
 
 {{ use: partial-legend-hover-link() }}
 
-## hoverAnimation(boolean) = true
-
-Whether to enable the animation when hovering on box.
-
 ## layout(string) = null
 
 Layout methods, whose optional values are:

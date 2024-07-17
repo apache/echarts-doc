@@ -236,10 +236,6 @@ const option = {
 
 {{ use: partial-legend-hover-link() }}
 
-## hoverAnimation(boolean) = true
-
-是否开启 hover 在 box 上的动画效果。
-
 ## layout(string) = null
 
 <ExampleUIControlEnum options="horizontal,vertical">
@@ -272,10 +268,10 @@ K 线图的图形样式。
 
 {{ use: partial-candlestick-item-style-detail(
     prefix = "##",
-    defaultColor = "#c23531",
-    defaultColor0 = "#314656",
-    defaultBorderColor = "#c23531",
-    defaultBorderColor0 = "#314656",
+    defaultColor = "#eb5454",
+    defaultColor0 = "#47b262",
+    defaultBorderColor = "#eb5454",
+    defaultBorderColor0 = "#47b262",
     defaultBorderWidth = 1
 ) }}
 

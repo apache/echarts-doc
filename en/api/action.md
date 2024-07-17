@@ -494,6 +494,38 @@ api.dispatchAction({
 });
 ```
 
+## treemap
+
+Actions related to [treemap series](option.html#series-treemap).
+
+### treemapZoomToNode(Action)
+Zoom to the target node.
+
+```ts
+dispatchAction({
+    type: 'treemapZoomToNode',
+
+    {{ use: action-series-query }}
+
+    // target node id or name (`name` is invalid if the target node has `id`)
+    targetNodeId: string
+})
+```
+
+### treemapRootToNode(Action)
+Zoom to and enter the target node.
+
+```ts
+dispatchAction({
+    type: 'treemapRootToNode',
+
+    {{ use: action-series-query }}
+
+    // target node `id` or `name` (`name` is invalid if the target node has `id`)
+    targetNodeId: string
+})
+```
+
 
 
 {{ target: action-select }}

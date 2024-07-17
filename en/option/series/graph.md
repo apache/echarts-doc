@@ -360,9 +360,9 @@ Select state of nodes in this category.
 
 For the situation where there are multiple links between nodes, the curveness of each link is automatically calculated, not enabled by default.
 
-When set `true` to enable automatic curvature calculation, the default edge curvenness array length is `20`, if the number of edges between two nodes is more than `20`, please use `number` or `Array` to set the edge curvenness array.
+When set to `true`, it enables automatic curvature calculation. The default edge curveness array length is `20`, if the number of edges between two nodes is more than `20`, please use `number` or `Array` to set the edge curveness array.
 
-When set to `number`, it indicates the length of the edge curvenness array between two nodes, and the calculation result is given by the internal algorithm.
+When set to `number`, it indicates the length of the edge curveness array between two nodes, and the calculation result is given by the internal algorithm.
 
 When set to `Array`, it means that the curveness array is directly specified, and the multilateral curveness is directly selected from the array.
 

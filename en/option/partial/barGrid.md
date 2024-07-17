@@ -47,9 +47,11 @@ The minimum angle of bar. It could be used to avoid the following situation: the
 
 <ExampleUIControlNumber min="0" />
 
-## barGap(string) = ${barGapDefault|default('30%')}
+## barGap(string) = ${barGapDefault|default('20%')}
 
-The gap between bars between different series, is a percent value like `'30%'`, which means `30%` of the bar width.
+<ExampleUIControlPercent default="${barGapDefault|default('20%')}"/>
+
+The gap between bars between different series, is a percent value like `'20%'`, which means `20%` of the bar width.
 
 Set barGap as `'-100%'` can overlap bars that belong to different series, which is useful when making a series of bar be background.
 
@@ -60,9 +62,9 @@ Set barGap as `'-100%'` can overlap bars that belong to different series, which 
 For example:
 ~[600x400](${galleryViewPath}doc-example/barGrid-barGap&reset=1&edit=1)
 
-## barCategoryGap(string) = '20%'
+## barCategoryGap(number|string)
 
-The bar gap of a single series, defaults to be `20%` of the category gap, can be set as a fixed value.
+The bar gap of a single series, by default, a suitable spacing is calculated based on the number of series in the bar chart. When there are more series, the spacing will be appropriately reduced, can be set as a fixed value.
 
 {{ use: partial-barGrid-share-desc(
     seriesType = ${seriesType}

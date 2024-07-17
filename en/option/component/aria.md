@@ -48,15 +48,15 @@ option = {
 
 ~[700x300](${galleryViewPath}doc-example/aria-pie&edit=1&reset=1)
 
-On the generated chart DOM, there is an `aria-label` attribute that allows the blind to understand the chart with the help of a reading device. Its value is.
+On the generated chart DOM, there is an `aria-label` attribute that allows the blind to understand the chart with the help of a reading device. Its value is:
 
 > This is a chart of "Source of user access to a site." The chart type is a pie chart that indicates the source of the visit. The data is - direct access data is 335, mail marketing data is 310, union ad data is 234, video ad data is 135, search engine data is 1548.
 
 The basic process for generating the description is that if [aria.enabled](~aria.enabled) is set to `true` (not the default) and [aria.label.enabled](~aria.label.enabled) is set to `true` (the default), then the accessibility description is generated. Otherwise it is not generated. If [aria.label.description](~aria.label.description) is defined, it is used as the full description of the chart, otherwise the description is generated according to the template stitching. We provide a default algorithm for generating descriptions, and only if the generated descriptions are not quite right, you need to modify these templates, or even override them completely with `aria.label.description`.
 
-When using the template, whether [title.text](~title.text) is used along with [aria.label.general.withTitle](option.html#aria.label.general.withTitle) while [aria.label.general.withoutTitle](option.html#aria.label.general.withoutTitle) is used if there is no title text. `aria.general.withTitle` supports a template `'{title}'`, which will be replaced with chart title. This means, if `aria.general.withTitle` is set to be `'The chart title is {title}.'` and the chart title is `Price Distribution`, it will be interpreted into `'The chart title is Price Distribution.'`
+When using the template, if [title.text](~title.text)is set, it is used in [aria.label.general.withTitle](option.html#aria.label.general.withTitle). If [title.text](~title.text) has no value, [aria.label.general.withoutTitle](option.html#aria.label.general.withoutTitle) is used instead. `aria.general.withTitle` supports a template `'{title}'`, which will be replaced with the chart title. This means, if `aria.general.withTitle` is set to be `'The chart title is {title}.'` and the chart title is `Price Distribution`, it will be interpreted into `'The chart title is Price Distribution.'`
 
-After generating the title, the description of the series ([aria.label.series](option.html#aria.label.series)) and the description of the data for each series ([aria.label.data](option.html#aria.label.data)) are generated in turn. The following is an example of a template. Likewise, each template may include template variables to replace actual values.
+After generating the title, the description of the series ([aria.label.series](option.html#aria.label.series)) and the description of the data for each series ([aria.label.data](option.html#aria.label.data)) are generated in turn.
 
 The complete description generation process is:
 
