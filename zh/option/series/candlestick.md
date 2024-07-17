@@ -277,6 +277,10 @@ K 线图的图形样式。
 
 ## emphasis(Object)
 
+{{ use: partial-version(
+    version = "5.5.2"
+) }}
+
 K 线图的高亮状态。
 
 {{ use: partial-emphasis-disabled(
@@ -295,7 +299,7 @@ K 线图的高亮状态。
 ## blur(Object)
 
 {{ use: partial-version(
-    version = "5.0.0"
+    version = "5.5.2"
 ) }}
 
 K 线图的淡出状态。开启 [emphasis.focus](~series-candlestick.emphasis.focus) 后有效
@@ -323,7 +327,8 @@ K 线图的选中状态。开启 [selectedMode](~series-candlestick.selectedMode
 
 {{ use: partial-candlestick-item-style-detail(
     prefix = "###",
-    defaultBorderWidth = 2
+    defaultBorderWidth = 2,
+    option0Version = "5.5.2"
 ) }}
 
 {{ use: partial-selected-mode(
@@ -502,6 +507,12 @@ K 线图的选中状态。开启 [selectedMode](~series-candlestick.selectedMode
 
 <ExampleUIControlColor />
 
+{{ if: ${option0Version} }}
+{{ use: partial-version(
+    version = ${option0Version}
+) }}
+{{ /if }}
+
 `阴线` 图形的颜色。
 
 {{ use: partial-color-desc() }}
@@ -520,6 +531,12 @@ K 线图的选中状态。开启 [selectedMode](~series-candlestick.selectedMode
 
 `阴线` 图形的描边颜色。
 
+{{ if: ${option0Version} }}
+{{ use: partial-version(
+    version = ${option0Version}
+) }}
+{{ /if }}
+
 {{ use: partial-color-desc() }}
 
 #${prefix} borderColorDoji(Color) = null
@@ -527,7 +544,7 @@ K 线图的选中状态。开启 [selectedMode](~series-candlestick.selectedMode
 <ExampleUIControlColor />
 
 {{ use: partial-version(
-    version = "5.4.1"
+    version = ${option0Version|default("5.4.1")}
 ) }}
 
 十字星（开盘价等于收盘价）的描边颜色。
