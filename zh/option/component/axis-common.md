@@ -412,6 +412,18 @@ axisTick: {
 
 是否显示分隔线。默认数值轴显示，类目轴不显示。
 
+##${prefix} showMinLine(boolean)
+
+<ExampleUIControlBoolean />
+
+是否显示最小 tick 的 分隔线。可取值 `true`, `false`。默认为 true。
+
+##${prefix} showMaxLine(boolean)
+
+<ExampleUIControlBoolean />
+
+是否显示最大 tick 的 分隔线。可取值 `true`, `false`。默认为 true。
+
 {{ if: ${hasLabelInterval|default(true)} }}
 ##${prefix} interval(number|Function) = 'auto'
 
