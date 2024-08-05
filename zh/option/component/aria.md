@@ -183,6 +183,10 @@ option = {
 
 - `{value}`：将被替换为数据的值。
 
+#### excludeDimensionId(Array)
+
+The specified column indexes are excluded in the data in [aria.label](~aria.label)
+
 #### separator(Object)
 
 数据与数据之间描述的分隔符。
