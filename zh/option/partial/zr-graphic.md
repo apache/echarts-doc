@@ -303,7 +303,7 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
 
 当文本内容超出 [width](~${optionPath}.${hostName}${symbolVisit}text.style.width) 时的文本显示策略，取值：`'break'`, `'breakAll'`, `'truncate'`, `'none'`。
 
-- `'break'`: 尽可能保证完整的单词不被截断(类似 `CSS` 重的 `word-break: break-word;`)
+- `'break'`: 尽可能保证完整的单词不被截断(类似 `CSS` 中的 `word-break: break-word;`)
 - `'breakAll'`: 可在任意字符间断行
 - `'truncate'`: 截断文本屏显示 '...'，可以使用 [ellipsis](~${optionPath}.${hostName}${symbolVisit}text.style.ellipsis) 来自定义省略号的显示
 - `'none'`: 不换行
