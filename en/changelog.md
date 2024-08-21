@@ -1044,7 +1044,7 @@ Fix the line label can not be returned to its original opacity after `"focusNode
 
 + [Fix] Fix if some negetive numbers or strings existing in the dimensions array, the corresponding line will not show. Fix #10343.
 
-+ [Fix] Fix when `'0'` existing in dimentions the chart do not work. Make backward compat when dimention is a number-like string. Fix #9363, contributed by PR #9388.
++ [Fix] Fix when `'0'` existing in dimensions the chart do not work. Make backward compat when dimension is a number-like string. Fix #9363, contributed by PR #9388.
 
 + [Fix] Fix hover style on `textStroke` bug in custom series.
 
