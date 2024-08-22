@@ -201,7 +201,7 @@ Whether to show the split line.
 
 <ExampleUIControlPercent default="10" min="0" step="0.5" />
 
-The length of split line, can be a pecentage value relative to radius.
+The length of split line, can be a percentage value relative to radius.
 
 ### distance(number) = 10
 
@@ -242,7 +242,7 @@ The split scale number between split line.
 
 <ExampleUIControlPercent default="6" min="0" step="0.5" />
 
-The length of tick line, can be a pecentage value relative to radius.
+The length of tick line, can be a percentage value relative to radius.
 
 ### distance(number) = 10
 
@@ -278,6 +278,11 @@ Whether to show the label.
 <ExampleUIControlNumber default="15" step="0.5" />
 
 The distance between the label and tick line.
+
+{{ use: partial-label-rotate-tangential(
+    prefix = '##',
+    version = '5.4.0'
+) }}
 
 ### formatter(string|Function)
 

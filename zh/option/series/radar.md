@@ -78,7 +78,8 @@ const option = {
 {{ use: partial-label(
     prefix = "##",
     defaultPosition = "'top'",
-    formatter = true
+    formatter = true,
+    minMargin = true
 ) }}
 
 ## labelLayout(Object|Function)
@@ -199,6 +200,10 @@ data : [
     prefix = '##'
 ) }}
 
+{{ use: partial-data-child-group-id(
+    prefix = '##'
+) }}
+
 {{ use: partial-symbol(
     defaultSymbol = "'circle'",
     defaultSymbolSize = 4,
@@ -212,7 +217,8 @@ data : [
 
 {{ use: partial-label(
     prefix = "###",
-    defaultPosition = "top"
+    defaultPosition = "top",
+    minMargin = true
 ) }}
 
 ### itemStyle(Object)

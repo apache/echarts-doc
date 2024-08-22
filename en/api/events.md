@@ -94,14 +94,14 @@ Event of data downplay.
 
 ## selectchanged(Event)
 
-**ACTION:** [toggleSelected](~action.toggleSelected), [select](~action.select), [unselect](~action.unselect)
+**ACTION:** [toggleSelect](~action.toggleSelect), [select](~action.select), [unselect](~action.unselect)
 
 Event emitted when data selection is changed.
 
 ```ts
 {
     type: 'selectchanged',
-    fromAction: 'select' | 'toggleSelected' | 'unselect',
+    fromAction: 'select' | 'toggleSelect' | 'unselect',
     // Grouped by series.
     selected: ({
         dataIndex: number[], seriesIndex: number
@@ -257,6 +257,7 @@ Event emitted after [geo](option.html#geo) is roamed.
     componentType: 'geo' | 'series',
     seriesId: string,
     zoom: number, // zoom ratio of roaming once
+    totalZoom: number, // accumulated zoom ratio (since v5.5.1)
     originX: number,
     originY: number
 }
@@ -525,7 +526,7 @@ var option = {
     // ...
 };
 chart.on('finished', function () {
-    // ...  
+    // ...
 });
 chart.setOption(option);
 ```

@@ -91,14 +91,14 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
 
 ## selectchanged(Event)
 
-**ACTION:** [toggleSelected](~action.toggleSelected), [select](~action.select), [unselect](~action.unselect)
+**ACTION:** [toggleSelect](~action.toggleSelect), [select](~action.select), [unselect](~action.unselect)
 
 在数据选中状态发生变化时触发的事件
 
 ```ts
 {
     type: 'selectchanged',
-    fromAction: 'select' | 'toggleSelected' | 'unselect',
+    fromAction: 'select' | 'toggleSelect' | 'unselect',
     // 按系列分组的选中项列表
     selected: ({
         dataIndex: number[], seriesIndex: number
@@ -255,6 +255,7 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
     componentType: 'geo' | 'series',
     seriesId: string,
     zoom: number, // 单次缩放倍数
+    totalZoom: number, // 累计缩放倍数 (从 v5.5.1 版本提供该参数)
     originX: number,
     originY: number
 }
@@ -514,7 +515,7 @@ var option = {
     // ...
 };
 chart.on('finished', function () {
-    // ...  
+    // ...
 });
 chart.setOption(option);
 ```

@@ -17,7 +17,7 @@ When emphasis state is disabled. There will be no highlight effect when the mous
 
 {{ target: partial-focus-blur-scope }}
 
-### focus(string) = 'none'
+###${prefix} focus(string) = 'none'
 
 {{ if: ${isGeoCoordSys} }}
 {{ use: partial-version(
@@ -46,7 +46,10 @@ When the data is highlighted, whether to fade out of other data to focus the hig
 + `'descendant'` Focus on all descendants nodes.
 {{ /if }}
 {{ if: ${hasRelative} }}
-+ `'relative'` Focus on all ancestor and descendants nodes. (Since `v${version}`)
++ `'relative'` Focus on all ancestor and descendants nodes. (Since `v${relativeVersion}`)
+{{ /if }}
+{{ if: ${hasTrajectory} }}
++ `'trajectory'` Focus on all the elements connected to the node or edge in the graph. (Since `v${trajectoryVersion}`)
 {{ /if }}
 
 **Example: **
@@ -71,7 +74,7 @@ emphasis: {
 {{ /if }}
 
 {{ if: !${isGeoCoordSys} }}
-### blurScope(string) = 'coordinateSystem'
+###${prefix} blurScope(string) = 'coordinateSystem'
 
 {{ use: partial-version(
     version = "5.0.0"

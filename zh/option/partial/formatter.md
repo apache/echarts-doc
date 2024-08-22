@@ -20,7 +20,7 @@
     value: number|Array|Object,
     // 坐标轴 encode 映射信息，
     // key 为坐标轴（如 'x' 'y' 'radius' 'angle' 等）
-    // value 必然为数组，不会为 null/undefied，表示 dimension index 。
+    // value 必然为数组，不会为 null/undefined，表示 dimension index 。
     // 其内容如：
     // {
     //     x: [2] // dimension index 为 2 的数据映射到 x 轴

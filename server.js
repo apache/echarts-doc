@@ -1,7 +1,13 @@
 const nStatic = require('node-static');
 const open = require('open');
 
-const fileServer = new nStatic.Server('./public');
+const fileServer = new nStatic.Server('./public', {
+    cache: {
+        '**/*.{css,js,json,html}*': 0,
+        '**/*.*': 3600
+    },
+    gzip: true
+});
 require('http').createServer(function (request, response) {
     request.addListener('end', function () {
         fileServer.serve(request, response);

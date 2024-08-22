@@ -7,7 +7,7 @@
 
 Heat map mainly use colors to represent values, which must be used along with [visualMap](~visualMap) component.
 
-It can be used in either [rectangular coordinate](~grid) or [geographic coordinate](~geo). But the behaviour on them are quite different. Rectangular coordinate must have two catagories to use it.
+It can be used in either [rectangular coordinate](~grid) or [geographic coordinate](~geo). But the behaviour on them are quite different. Rectangular coordinate must have two categories to use it.
 
 Here are the examples using it in rectangular coordinate and geographic coordinate:
 
@@ -57,7 +57,8 @@ Work for [coordinateSystem](~series-heatmap.coordinateSystem): 'cartesian2d'.
 
 {{ use: partial-label(
     prefix = "##",
-    defaultPosition = "inside"
+    defaultPosition = "inside",
+    minMargin = true
 ) }}
 
 ## labelLayout(Object|Function)
@@ -154,13 +155,18 @@ Value of data item.
     prefix = '##'
 ) }}
 
+{{ use: partial-data-child-group-id(
+    prefix = '##'
+) }}
+
 ### label(Object)
 
 It is valid with [coordinateSystem](~series-heatmap.coordinateSystem) of 'cartesian2d' value.
 
 {{ use: partial-label(
     prefix = "###",
-    defaultPosition = "inside"
+    defaultPosition = "inside",
+    minMargin = true
 ) }}
 
 ### itemStyle(Object)

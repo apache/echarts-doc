@@ -36,6 +36,10 @@ Settings related to axis line.
 Set this to `false` to prevent the axis line from showing.
 
 {{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
+> The **value** axis doesn't show the axis line by default since `v5.0.0`, you need to explicitly set `axisLine.show` as `true` to enable it.
+{{ /if }}
+
+{{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
 ##${prefix} onZero(boolean) = true
 
 <ExampleUIControlBoolean default="true" />
@@ -44,7 +48,7 @@ Specifies whether X or Y axis lies on the other's origin position, where value i
 
 ##${prefix} onZeroAxisIndex(number)
 
-When mutiple axes exists, this option can be used to specify which axis can be "onZero" to.
+When multiple axes exists, this option can be used to specify which axis can be "onZero" to.
 {{ /if }}
 
 ##${prefix} symbol(string|Array) = 'none'
@@ -143,6 +147,62 @@ Whether to show the label of the min tick. Optional values: `true`, `false`, `nu
 
 Whether to show the label of the max tick. Optional values: `true`, `false`, `null`. It is auto determined by default, that is, if labels are overlapped, the label of the max tick will not be displayed.
 
+{{ if: ${componentType} === 'xAxis' }}
+
+##${prefix} alignMinLabel(string) = null
+
+{{ use: partial-version(version = '5.5.0') }}
+
+Alignment of the label of the min tick. If set to be `null`, it's the same with other labels .
+
+Options are:
++ `'left'`
++ `'center'`
++ `'right'`
++ `null` (default)
+
+##${prefix} alignMaxLabel(string) = null
+
+{{ use: partial-version(version = '5.5.0') }}
+
+Alignment of the label of the max tick. If set to be `null`, it's the same with other labels. See [align](~${componentType}.axisLabel.align).
+
+Options are:
++ `'left'`
++ `'center'`
++ `'right'`
++ `null` (default)
+
+{{ /if }}
+
+{{ if: ${componentType} === 'yAxis' }}
+
+##${prefix} verticalAlignMinLabel(string) = null
+
+{{ use: partial-version(version = '5.5.0') }}
+
+Vertical alignment of the label of the min tick. If set to be `null`, it's the same with other labels. See [verticalAlign](~${componentType}.axisLabel.verticalAlign).
+
+Options are:
++ `'top'`
++ `'middle'`
++ `'bottom'`
++ `null` (default)
+
+##${prefix} verticalAlignMaxLabel(string) = null
+
+{{ use: partial-version(version = '5.5.0') }}
+
+Vertical alignment of the label of the max tick. If set to be `null`, it's the same with other labels. See [verticalAlign](~${componentType}.axisLabel.verticalAlign).
+
+Options are:
++ `'top'`
++ `'middle'`
++ `'bottom'`
++ `null` (default)
+
+{{ /if }}
+
 ##${prefix} hideOverlap(boolean)
 
 <ExampleUIControlBoolean />
@@ -152,6 +212,23 @@ Whether to show the label of the max tick. Optional values: `true`, `false`, `nu
 ) }}
 
 Whether to hide overlapped labels.
+
+##${prefix} customValues(Array)
+
+{{ use: partial-version(
+    version = "5.5.1"
+) }}
+
+To customize label positions. For example,
+
+```ts
+axisLabel: {
+    customValues: [0, 4, 7, 8, 9]
+}
+```
+
+![600xauto](~axis-tick-label-custom-values.png)
+
 
 {{ use: partial-text-style(
     prefix = '#' + ${prefix},
@@ -193,6 +270,10 @@ Settings related to axis tick.
 <ExampleUIControlBoolean default="${defaultShow|default(true)}" />
 
 Set this to `false` to prevent the axis tick from showing.
+
+{{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
+> The **value** axis doesn't show the axis ticks by default since `v5.0.0`, you need to explicitly set `axisTick.show` as `true` to enable it.
+{{ /if }}
 
 {{ if: ${hasAlignWithLabel|default(true)} }}
 ##${prefix} alignWithLabel(boolean) = false
@@ -246,6 +327,22 @@ Line style of axis ticks.
 
 Color of axis label is set to be [axisLine.lineStyle.color](~${componentType}.axisLine.lineStyle.color) by default.
 
+##${prefix} customValues(Array)
+
+{{ use: partial-version(
+    version = "5.5.1"
+) }}
+
+To customize tick positions. For example,
+
+```ts
+axisTick: {
+    alignWithLabel: true,
+    customValues: [0, 0.5, 1, 1.5, 2, 8, 9]
+}
+```
+
+![600xauto](~axis-tick-label-custom-values.png)
 
 
 {{ target: partial-axis-common-minor-tick }}
@@ -442,8 +539,7 @@ Option:
     Time axis, suitable for continuous time series data. As compared to value axis, it has a better formatting for time and a different tick calculation method. For example, it decides to use month, week, day or hour for tick based on the range of span.
 
 + `'log'`
-    Log axis, suitable for log data.
-
+    Log axis, suitable for log data. Stacked bar or line series with `type: 'log'` axes may lead to significant visual errors and may have unintended effects in certain circumstances. Their use should be avoided.
 
 
 {{ target: axis-common }}
@@ -501,6 +597,18 @@ Gap between axis name and axis line.
 
 Rotation of axis name.
 
+#${prefix} nameTruncate(Object)
+
+Truncation of the axis name.
+
+##${prefix} maxWidth(number)
+
+The maximum length for the truncated text. Any text exceeding this length will be truncated.
+
+##${prefix} ellipsis(string) = '...'
+
+The content displayed at the end of the text after truncation.
+
 #${prefix} inverse(boolean) = false
 
 <ExampleUIControlBoolean />
@@ -527,7 +635,7 @@ boundaryGap: ['20%', '20%']
 
 <ExampleUIControlNumber />
 
-The minimun value of axis.
+The minimum value of axis.
 
 It can be set to a special value `'dataMin'` so that the minimum value on this axis is set to be the minimum label.
 
@@ -631,6 +739,16 @@ This is unavailable for category axis. Timestamp should be passed for [type](~${
 
 Base of logarithm, which is valid only for numeric axes with [type](~${componentType}.type): 'log'.
 
+#${prefix} startValue(number)
+
+<ExampleUIControlNumber />
+
+{{ use: partial-version(
+    version = '5.5.1'
+) }}
+
+To specify the start value of the axis.
+
 {{ use: partial-axis-common-axis-line(
     prefix = ${prefix},
     componentType = ${componentType}
@@ -716,6 +834,10 @@ axisPointer settings on the axis.
 ) }}
 {{ /if }}
 
+{{ use: partial-animation(
+    prefix = ${prefix}
+) }}
+
 
 
 {{ target: partial-axis-interval }}
@@ -764,30 +886,32 @@ Next, we are going to introduce these three forms one by one.
 
 Using string templates is an easy way to format date/time with frequently used formats. If it can be used to make what you want, you are advised to do so. If not, you could then consider the others. Supported formats are:
 
-| Group        | Template | Value (EN)                                                    | Value (ZH)                                                               |
-|--------------|----------|----------------------------------------------------------------|----------------------------------------------------------------------------|
-| Year         | {yyyy}     | e.g., 2020, 2021, ...                                          | 例：2020, 2021, ...                                                        |
-|              | {yy}       | 00-99                                                          | 00-99                                                                      |
-| Quarter      | {Q}        | 1, 2, 3, 4                                                     | 1, 2, 3, 4                                                                 |
-| Month        | {MMMM}     | e.g., January, February, ...                                   | 一月、二月、…… |
-|              | {MMM}      | e.g., Jan, Feb, ...                                            | 1月、2月、……              |
-|              | {MM}       | 01-12                                                          | 01-12                                                                      |
-|              | {M}        | 1-12                                                           | 1-12                                                                       |
-| Day of Month | {dd}       | 01-31                                                          | 01-31                                                                      |
-|              | {d}        | 1-31                                                           | 1-31                                                                       |
-| Day of Week  | {eeee}     | Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday | 星期日、星期一、星期二、星期三、星期四、星期五、星期六                     |
-|              | {ee}       | Sun, Mon, Tues, Wed, Thu, Fri, Sat                             | 日、一、二、三、四、五、六                                                 |
-|              | {e}        | 1-54                                                           | 1-54                                                                       |
-| Hour         | {HH}       | 00-23                                                          | 00-23                                                                      |
-|              | {H}        | 0-23                                                           | 0-23                                                                       |
-|              | {hh}       | 01-12                                                          | 01-12                                                                      |
-|              | {h}        | 1-12                                                           | 1-12                                                                       |
-| Minute       | {mm}       | 00-59                                                          | 00-59                                                                      |
-|              | {m}        | 0-59                                                           | 0-59                                                                       |
-| Second       | {ss}       | 00-59                                                          | 00-59                                                                      |
-|              | {s}        | 0-59                                                           | 0-59                                                                       |
-| Millisecond  | {SSS}      | 000-999                                                        | 000-999                                                                    |
-|              | {S}        | 0-999                                                          | 0-999                                                                      |
+| Group        | Template   | Value (EN)                                                                     | Value (ZH)                                                                  |
+|--------------|------------|--------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
+| Year         | {yyyy}     | e.g. 2020, 2021, ...                                                           | 例：2020, 2021, ...                                                         |
+|              | {yy}       | 00-99                                                                          | 00-99                                                                       |
+| Quarter      | {Q}        | 1, 2, 3, 4                                                                     | 1, 2, 3, 4                                                                  |
+| Month        | {MMMM}     | e.g. January, February, ...                                                    | 一月、二月、……                                                              |
+|              | {MMM}      | e.g. Jan, Feb, ...                                                             | 1月、2月、……                                                                |
+|              | {MM}       | 01-12                                                                          | 01-12                                                                       |
+|              | {M}        | 1-12                                                                           | 1-12                                                                        |
+| Day of Month | {dd}       | 01-31                                                                          | 01-31                                                                       |
+|              | {d}        | 1-31                                                                           | 1-31                                                                        |
+| Day of Week  | {eeee}     | Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday                 | 星期日、星期一、星期二、星期三、星期四、星期五、星期六                      |
+|              | {ee}       | Sun, Mon, Tues, Wed, Thu, Fri, Sat                                             | 日、一、二、三、四、五、六                                                  |
+|              | {e}        | 1-54                                                                           | 1-54                                                                        |
+| Hour         | {HH}       | 00-23                                                                          | 00-23                                                                       |
+|              | {H}        | 0-23                                                                           | 0-23                                                                        |
+|              | {hh}       | 01-12                                                                          | 01-12                                                                       |
+|              | {h}        | 1-12                                                                           | 1-12                                                                        |
+| Minute       | {mm}       | 00-59                                                                          | 00-59                                                                       |
+|              | {m}        | 0-59                                                                           | 0-59                                                                        |
+| Second       | {ss}       | 00-59                                                                          | 00-59                                                                       |
+|              | {s}        | 0-59                                                                           | 0-59                                                                        |
+| Millisecond  | {SSS}      | 000-999                                                                        | 000-999                                                                     |
+|              | {S}        | 0-999                                                                          | 0-999                                                                       |
+| Meridian     | {A}        | AM, PM (Since `v5.5.1`, i18n will be finished in the next version)             | 上午、下午 (`v5.5.1` 仅支持英文，将在下个版本支持中文及其他语言)            |
+|              | {a}        | am, pm                                                                         | 上午、下午                                                                  |
 
 > Templates of other languages can be found in [the language package](https://github.com/apache/echarts/tree/master/src/i18n). Please refer to [echarts.registerLocale](api.html#echarts.registerLocale) to register a language.
 
@@ -809,7 +933,7 @@ formatter: function (value, index) {
     var date = new Date(value);
     var texts = [(date.getMonth() + 1), date.getDate()];
     if (index === 0) {
-        texts.unshift(date.getYear());
+        texts.unshift(date.getFullYear());
     }
     return texts.join('/');
 }
@@ -908,4 +1032,3 @@ xAxis: {
     }
 },
 ```
-

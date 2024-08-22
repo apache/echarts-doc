@@ -26,7 +26,7 @@ axisPointers can be linked to each other. The term "link" represents that axes a
 
 See [sampleA](${galleryViewPath}candlestick-brush&edit=1&reset=1) and [sampleB](${galleryViewPath}scatter-nutrients-matrix&edit=1&reset=1).
 
-link is an array, where each item represents a "link group". Axes will be linked when they are refered in the same link group. For example:
+link is an array, where each item represents a "link group". Axes will be linked when they are referred in the same link group. For example:
 
 ```ts
 link: [
@@ -44,7 +44,7 @@ link: [
 ]
 ```
 
-As illustrated above, axes can be refered in these approaches in a link group:
+As illustrated above, axes can be referred in these approaches in a link group:
 
 ```ts
 {
@@ -71,11 +71,11 @@ link: [{
     mapper: function (sourceVal, sourceAxisInfo, targetAxisInfo) {
         if (sourceAxisInfo.axisName === 'yy') {
             // from timestamp to '2012-02-05'
-            return echarts.format.formatTime('yyyy-MM-dd', sourceVal);
+            return echarts.time.format('yyyy-MM-dd', sourceVal);
         }
         else if (targetAxisInfo.axisName === 'yy') {
             // from '2012-02-05' to date
-            return echarts.number.parseDate(dates[sourceVal]);
+            return echarts.time.parse(dates[sourceVal]);
         }
         else {
             return sourceVal;

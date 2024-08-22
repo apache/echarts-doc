@@ -72,7 +72,7 @@ Background style of each bar if [showBackground](~series-bar.showBackground) is 
 {{ use: partial-bar-item-style(
     prefix = "##",
     useColorPalatte = false,
-    hasCallback = true,
+    hasCallback = false,
     defaultColor = "'rgba(180, 180, 180, 0.2)'"
 ) }}
 
@@ -159,13 +159,14 @@ How to stack values if the [stack](~series-bar.stack) property has been set. Opt
 
 ## sampling(string)
 
-The dowmsampling strategy used when the data size is much larger than pixel size. It will improve the performance when turned on. Defaults to be turned off, indicating that all the data points will be drawn.
+The downsampling strategy used when the data size is much larger than pixel size. It will improve the performance when turned on. Defaults to be turned off, indicating that all the data points will be drawn.
 
 Options:
 + `'lttb'` Use Largest-Triangle-Three-Bucket algorithm to filter points. It will keep the trends and extremas.
 + `'average'` Use average value of filter points
-+ `'max'` Use maximum value of filter points
 + `'min'` Use minimum value of filter points
++ `'max'` Use maximum value of filter points
++ `'minmax'` Use maximum extremum absolute value of filter points (Since `v5.5.0`)
 + `'sum'` Use sum of filter points
 
 {{ use: partial-cursor() }}
@@ -213,6 +214,10 @@ The name of data item.
 The value of a single data item.
 
 {{ use: partial-data-group-id(
+    prefix = '##'
+) }}
+
+{{ use: partial-data-child-group-id(
     prefix = '##'
 ) }}
 
@@ -314,7 +319,8 @@ Label style configurations of single data.
     prefix = "#" + ${prefix},
     defaultPosition = "'inside'",
     noPosition = true,
-    formatter = ${topLevel}
+    formatter = ${topLevel},
+    minMargin = ${state} === 'normal'
 ) }}
 
 ##${prefix} position(string|Array) = 'inside'
@@ -402,13 +408,21 @@ Rectangle style configurations of single data.
 
 {{ target: partial-bar-item-style }}
 
-#${prefix} color(Color) = ${defaultColor|default("'auto'")}
+#${prefix} color(Color{{ if: ${hasCallback} }}|Function{{ /if }}) = ${defaultColor|default("'auto'")}
 
 <ExampleUIControlColor />
 
 Bar color. {{ if: ${useColorPalatte} }}By default, colors from global palette [option.color](~color) is used.{{ /if }}{{ if: ${hasInherit} }}Can set to `'inherit'` in the `emphasis` state to disable color highlight.{{ /if }}
 
 {{ use: partial-color-desc() }}
+
+{{ if: ${hasCallback} }}
+Supports callback functions, in the form of:
+```ts
+(params: Object) => Color
+```
+Input parameters are `seriesIndex`, `dataIndex`, `data`, `value`, and etc. of data item.
+{{ /if }}
 
 #${prefix} borderColor(Color) = '#000'
 

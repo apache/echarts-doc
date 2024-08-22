@@ -5,7 +5,7 @@
 
 **Map.**
 
-Map is mainly used in the visualization of geographic area data, which can be used with [visualMap](~visualMap) component to visualize the datas such as population distribution density in diffrent areas.
+Map is mainly used in the visualization of geographic area data, which can be used with [visualMap](~visualMap) component to visualize the data such as population distribution density in different areas.
 
 Series of same [map type](~series-map.map) will show in one map. At this point, the configuration of the first series will be used for the map configuration.
 
@@ -21,12 +21,13 @@ Series of same [map type](~series-map.map) will show in one map. At this point, 
 
 {{ use: geo-common(
     prefix = '#',
-    inMap = true
+    inMap = true,
+    labelMinMargin = true
 ) }}
 
 ## center(Array)
 
-Center of current view-port. It can be an arrary containing two `number`s in pixels or `string`s in percentage relative to the container width/height.
+Center of current view-port. It can be an array containing two `number`s in pixels or `string`s in percentage relative to the container width/height.
 `string` is supported from version `5.3.3`.
 
 Example:
@@ -104,6 +105,10 @@ The numerical value of this area.
     prefix = '##'
 ) }}
 
+{{ use: partial-data-child-group-id(
+    prefix = '##'
+) }}
+
 ### selected(boolean) = false
 
 Whether the are selected.
@@ -131,7 +136,8 @@ Color of the area.
     defaultPosition = "'bottom'",
     formatter = true,
     noAlign = true,
-    noVerticalAlign = true
+    noVerticalAlign = true,
+    minMargin = true
 ) }}
 
 ### labelLine(Object)

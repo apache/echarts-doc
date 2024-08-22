@@ -42,7 +42,8 @@ Index of [radar](~radar) component that radar chart uses.
 {{ use: partial-label(
     prefix = "##",
     defaultPosition = "'top'",
-    formatter = true
+    formatter = true,
+    minMargin = true
 ) }}
 
 ## labelLayout(Object|Function)
@@ -163,6 +164,10 @@ Numerical value of a single data item.
     prefix = '##'
 ) }}
 
+{{ use: partial-data-child-group-id(
+    prefix = '##'
+) }}
+
 {{ use: partial-symbol(
     defaultSymbol = "'circle'",
     defaultSymbolSize = 4,
@@ -176,7 +181,8 @@ Style setting of the text on single inflection point.
 
 {{ use: partial-label(
     prefix = "###",
-    defaultPosition = "top"
+    defaultPosition = "top",
+    minMargin = true
 ) }}
 
 ### itemStyle(Object)

@@ -51,15 +51,29 @@ ${name}图形上的文本标签，可用于说明图形的一些数据信息，�
 
 是否对文字进行偏移。默认不偏移。例如：`[30, 40]` 表示文字在横向上偏移 `30`，纵向上偏移 `40`。
 
+{{ if: ${minMargin} }}
+#${prefix} minMargin(number)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+用于控制标签之间的最小距离，当启用 [labelLayout](~series.labelLayout) 时可能会用到。
+{{ /if }}
+
 {{ if: ${formatter} }}
 #${prefix} formatter(string|Function)
 
-{{ use: partial-2d-data-label-formatter() }}
+{{ use: partial-2d-data-label-formatter(
+    extra = ${formatterExtra}
+) }}
 
 {{ elif: ${formatter1d} }}
 #${prefix} formatter(string|Function)
 
-{{ use: partial-1d-data-label-formatter() }}
+{{ use: partial-1d-data-label-formatter(
+    extra = ${formatterExtra}
+) }}
 {{ /if }}
 
 {{ if: !${noTextStyle} }}

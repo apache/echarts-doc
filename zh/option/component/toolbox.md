@@ -62,7 +62,7 @@ ${name} icon 样式设置。由于 icon 的文本信息只在 icon hover 时候�
 
 是否显示该工具。
 
-#### title(boolean) = '${title}'
+#### title(string) = '${title}'
 
 #### icon(string)
 
@@ -588,7 +588,7 @@ option = {
         tooltip: { // 和 option.tooltip 的配置项相同
             show: true,
             formatter: function (param) {
-                return return '<div>' + param.title + '</div>'; // 自定义的 DOM 结构
+                return '<div>' + param.title + '</div>'; // 自定义的 DOM 结构
             },
             backgroundColor: '#222',
             textStyle: {

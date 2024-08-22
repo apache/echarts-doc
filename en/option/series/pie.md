@@ -31,6 +31,15 @@ Since ECharts v4.6.0, we provide `'labelLine'` and `'edge'` two extra layouts. C
 
 {{ use: partial-legend-hover-link() }}
 
+{{ use: partial-coord-sys(
+    seriesType = "pie",
+    coordSysDefault = "null",
+    none = true,
+    geo = true,
+    calendar = true,
+    version = "5.4.0"
+) }}
+
 {{ use: partial-selected-mode() }}
 
 ## selectedOffset(number) = 10
@@ -51,11 +60,33 @@ Whether the layout of sectors of pie chart is clockwise.
 
 The start angle, which range is [0, 360].
 
+## endAngle(number|string) = 'auto'
+
+<ExampleUIControlAngle step="1" min="0" max="360" default="270" />
+
+{{ use: partial-version(
+    version = "5.5.0"
+) }}
+
+The end angle, the default value is `'auto'`.
+
+When the value is `'auto'`, the end angle is calculated automatically based on [startAngle](~series-pie.startAngle) to ensure it is a complete circle.
+
 ## minAngle(number) = 0
 
 <ExampleUIControlAngle step="1" min="0" max="360" default="0" />
 
 The minimum angle of sector (0 ~ 360). It prevents some sector from being too small when value is small, which will affect user interaction.
+
+## padAngle(number) = 0
+
+<ExampleUIControlAngle step="1" min="0" max="360" default="0" />
+
+{{ use: partial-version(
+    version = "5.5.0"
+) }}
+
+The interval angle between the sectors (0 ~ 360).
 
 ## minShowLabelAngle(number) = 0
 
@@ -134,7 +165,8 @@ Style of circle placeholder.
 {{ use: partial-pie-label(
     prefix = "##",
     position = true,
-    formatter = true
+    formatter = true,
+    minMargin = true
 ) }}
 
 ### alignTo(string) = 'none'
@@ -325,6 +357,10 @@ Data value.
     prefix = '##'
 ) }}
 
+{{ use: partial-data-child-group-id(
+    prefix = '##'
+) }}
+
 ### selected(boolean) = false
 
 Whether the data item is selected.
@@ -336,7 +372,8 @@ The label configuration of a single sector.
 {{ use: partial-pie-label(
     prefix = "###",
     position = true,
-    formatter = false
+    formatter = false,
+    minMargin = true
 ) }}
 
 ### labelLine(Object)
@@ -466,6 +503,16 @@ The position of label.
     In the center of pie chart. See [pie-doughnut example](${galleryEditorPath}pie-doughnut)
 {{ /if }}
 
+{{ if: ${minMargin} }}
+#${prefix} minMargin(number)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+Minimal margin between labels. Used when label has [layout](~series-pie.labelLayout).
+{{ /if }}
+
 {{ if: ${formatter} }}
 #${prefix} formatter(string|Function)
 
@@ -479,17 +526,19 @@ The position of label.
 ) }}
 {{ /if }}
 
-#${prefix} rotate(boolean|number) = null
+#${prefix} rotate(boolean|number|string) = null
 
 Label rotation.
 
-+ If `true`, layout label radically.
-+ If `number`, means degree that labels are rotated. From -90 degree to 90 degree. The negative value represents clockwise.
++ If `true` or `'radial'`, the labels are rotated radially. (The `'radial'` literal is supported since `v5.2.0`)
++ If `'tangential'`, the labels are rotated tangentially. (Since `v5.2.0`)
++ If `number`, the labels are rotated in degrees (-90° - 90°). The negative value represents clockwise.
 
 {{ use: partial-text-style(
     prefix = ${prefix},
     noAlign = true,
-    noVerticalAlign = true
+    noVerticalAlign = true,
+    enableAutoColor = true
 ) }}
 
 

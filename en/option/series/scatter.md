@@ -19,7 +19,7 @@ It could be used with [rectangular coordinate](~grid) and [polar coordinate](~po
 {{ use: partial-colorby() }}
 
 {{ use: partial-coord-sys(
-    seriesType = "bar",
+    seriesType = "scatter",
     coordSysDefault = "'cartesian2d'",
     cartesian2d = true,
     polar = true,
@@ -50,7 +50,8 @@ It could be used with [rectangular coordinate](~grid) and [polar coordinate](~po
 {{ use: partial-label(
     prefix = "##",
     defaultPosition = "'inside'",
-    formatter = true
+    formatter = true,
+    minMargin = true
 ) }}
 
 ## labelLine(Object)
@@ -175,6 +176,10 @@ the value of data item.
     prefix = '##'
 ) }}
 
+{{ use: partial-data-child-group-id(
+    prefix = '##'
+) }}
+
 {{ use: partial-symbol(
     prefix = "##",
     name = "single data"
@@ -184,7 +189,8 @@ the value of data item.
 
 {{ use: partial-label(
     prefix = "###",
-    defaultPosition = "inside"
+    defaultPosition = "inside",
+    minMargin = true
 ) }}
 
 ### labelLine(Object)

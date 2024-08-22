@@ -60,9 +60,14 @@ encode: {
     // Using dimensions[3] as the name of each data item. This is useful in charts like
     // 'pie', 'funnel', where data item name can be displayed in legend.
     itemName: 3,
-    // Using dimensions[4] as the groupId of each data item. groupId will be used to categorize the data. And to determine
-    // How the merge and split animation are performed in the universal transition. See universalTransition option for detail.
-    itemGroupId: 4
+    // Using dimensions[4] as the group ID for each data item. With universalTransition enabled,
+    // the data items from the old option and those from the new one, if sharing a same group ID,
+    // will then be matched and applied to a proper animation after `setOption` is called.
+    itemGroupId: 4,
+    // Using dimension[5] as the child group ID for each data item. This option is introduced to
+    // make multiple levels drilldown and aggregation animation come true. See childGroupId for more.
+    // Since v5.5.0
+    itemChildGroupId: 5
 }
 
 // These properties only work in cartesian(grid) coordinate system:
@@ -159,7 +164,7 @@ option = {
     },
     series: {
         type: 'xxx',
-        // Specify name for each dimesions, which will be displayed in tooltip.
+        // Specify name for each dimensions, which will be displayed in tooltip.
         dimensions: ['date', 'open', 'close', 'highest', 'lowest']
     }
 }
@@ -191,5 +196,5 @@ Each data item of `dimensions` can be:
         + `time`, time value, see [data](~series.data) to check the format of time value.
     + displayName: `string`, generally used in tooltip for dimension display. If not specified, use `name` by default.
 
-When `dimensions` is specified, the default `tooltip` will be displayed vertically, which is better to show diemsion names. Otherwise, `tooltip` will displayed only value horizontally.
+When `dimensions` is specified, the default `tooltip` will be displayed vertically, which is better to show dimension names. Otherwise, `tooltip` will displayed only value horizontally.
 

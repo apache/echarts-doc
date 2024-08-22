@@ -1,3 +1,167 @@
+## v5.5.1
+<div class="time">2024-06-27</div>
+
++ [Feature] [axis] 添加 `customValues` 配置项，支持自定义坐标轴刻度/标签位置。 [#19919](https://github.com/apache/echarts/issues/19919) ([dvdkon](https://github.com/dvdkon)) ([Ovilia](https://github.com/Ovilia))
++ [Feature] [bar] 添加 `startValue` 配置项。 [#17078](https://github.com/apache/echarts/issues/17078) ([jiawulin001](https://github.com/jiawulin001))
++ [Feature] [sankey] 添加 `itemStyle.borderRadius` 配置项。 [#19763](https://github.com/apache/echarts/issues/19763) ([deftliang](https://github.com/deftliang))
++ [Feature] [time] 新增 12 小时制的时间模板 `{a}/{A}`。 [#19888](https://github.com/apache/echarts/issues/19888) ([maurodesouza](https://github.com/maurodesouza))
++ [Feature] [geo] `georoam` 事件添加 `totalZoom` 参数。 [#19837](https://github.com/apache/echarts/issues/19837) ([zhaoxinggang](https://github.com/zhaoxinggang))
++ [Feature] [treemap] 新增 `scaleLimit` 配置项用于限制缩放级别。 [#18304](https://github.com/apache/echarts/issues/18304) ([liuyizhou](https://github.com/liuyizhou))
++ [Fix] [series] 修复 `seriesData.getLinkedData` 触发的错误。 [#19901](https://github.com/apache/echarts/issues/19901) ([plainheart](https://github.com/plainheart))
++ [Fix] [marker] 修复 marker label 无法获取对应系列信息的问题。 [#19898](https://github.com/apache/echarts/issues/19898) ([plainheart](https://github.com/plainheart))
++ [Fix] [aria] 修复 SSR 模式下的错误。 [#19892](https://github.com/apache/echarts/issues/19892) ([OverflowCat](https://github.com/OverflowCat))
++ [Fix] [data] 修复使用 BigInt 值时产生的错误。 [#19847](https://github.com/apache/echarts/issues/19847) ([zettca](https://github.com/zettca))
++ [Fix] [pie] 修复 v5.5.0 版本新增的 `endAngle` 选项在空数据的圆环下不生效的问题。 [#19642](https://github.com/apache/echarts/issues/19642) ([plainheart](https://github.com/plainheart))
++ [Fix] [toolbox] 修复在不存在 `MouseEvent` 的环境中未捕获的引用错误。[#19620](https://github.com/apache/echarts/issues/19620) ([plainheart](https://github.com/plainheart))
++ [Fix] [tooltip] 修复当图例名称为 HTML 字符串时的提示框 XSS 问题。[#20045](https://github.com/apache/echarts/issues/20045) ([plainheart](https://github.com/plainheart))
++ [Fix] [type] 修复自 v5.5.0 版本起，用户的 .d.ts 中 `import('echarts/types/dist/shared')` 无法访问 `echarts/types/dist/shared.d.ts` 的问题。[#20030](https://github.com/apache/echarts/issues/20030) ([100pah](https://github.com/100pah))
+
+## v5.5.0
+<div class="time">2024-02-18</div>
+
++ [Break Change] [Feature] [core] 默认解析为 ESM 包。[#19513](https://github.com/apache/echarts/issues/19513) ([100pah](https://github.com/100pah))
++ [Feature] [ssr] 服务器端渲染和客户端轻量运行时。[#18381](https://github.com/apache/echarts/issues/18381) ([Ovilia](https://github.com/Ovilia))
++ [Feature] [animation] 支持多级下钻全局过渡动画。[#17611](https://github.com/apache/echarts/issues/17611) ([tyn1998](https://github.com/tyn1998))
++ [Feature] [pie] 新增 `padAngle` 选项以支持设置饼图扇区间隔。[#19076](https://github.com/apache/echarts/issues/19076) ([linghaoSu](https://github.com/linghaoSu))
++ [Feature] [pie] 新增 `endAngle` 选项以支持控制饼图渲染范围。[#18820](https://github.com/apache/echarts/issues/18820) ([linghaoSu](https://github.com/linghaoSu))
++ [Feature] [polar] 极坐标系角度轴 `angleAxis` 新增 `endAngle` 选项以支持设置结束角度。[#19099](https://github.com/apache/echarts/issues/19099) ([yassilah](https://github.com/yassilah))
++ [Feature] [sampler] 新增 `min-max` 数据采样策略。[#19279](https://github.com/apache/echarts/issues/19279) ([snukhulov](https://github.com/snukhulov))
++ [Feature] [i18n] 新增阿拉伯语翻译。[#19214](https://github.com/apache/echarts/issues/19214) ([OthmanAliModaes](https://github.com/OthmanAliModaes))
++ [Feature] [i18n] 新增荷兰语翻译。[#19252](https://github.com/apache/echarts/issues/19252) ([tijmenamsing](https://github.com/tijmenamsing))
++ [Feature] [tooltip] 新增 `appendTo` 选项以允许自定义 tooltip 的容器。[#18436](https://github.com/apache/echarts/issues/18436) ([viking7982](https://github.com/viking7982))
++ [Feature] [label] 轴标签 `minLabel` 和 `maxLabel` 支持设置对齐方式。[#19228](https://github.com/apache/echarts/issues/19228) ([Ovilia](https://github.com/Ovilia))
++ [Feature] [pictorialBar] 象形柱图系列新增 `clip` 选项以支持裁剪。[#19197](https://github.com/apache/echarts/issues/19197) ([Ovilia](https://github.com/Ovilia))
++ [Feature] [tooltip] tooltip 的 `valueFormatter` 回调新增 `dataIndex` 参数。[#19123](https://github.com/apache/echarts/issues/19123) ([ChepteaCatalin](https://github.com/ChepteaCatalin))
++ [Fix] [toolbox] 修复 toolbox 文本没有应用指定或全局字体样式的问题。[#19170](https://github.com/apache/echarts/issues/19170) ([plainheart](https://github.com/plainheart))
++ [Fix] [labelLine] 修复 labelLine 在 normal 状态下隐藏而在其他状态显示时，其颜色没有继承系列颜色的问题。[#18800](https://github.com/apache/echarts/issues/18800) ([linghaoSu](https://github.com/linghaoSu))
++ [Fix] [labelLine] 修复饼图 `emphasis.labelLine` 配置不生效的问题。[#19180](https://github.com/apache/echarts/issues/19180) ([shiersansi](https://github.com/shiersansi))
++ [Fix] [marker] 修复当轴刻度 `axisTick` 启用了 `alignWithLabel` 时 markArea 范围错误的问题。[#19516](https://github.com/apache/echarts/issues/19516) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [line] 修复时间轴上的折线在启用动画时可能交叉的问题。[#18960](https://github.com/apache/echarts/issues/18960) ([plainheart](https://github.com/plainheart))
++ [Fix] [scatter] 修复边缘处的散点可能被意外裁剪的问题。[#18867](https://github.com/apache/echarts/issues/18867) ([plainheart](https://github.com/plainheart))
++ [Fix] [sunburst] 修复旭日图标签可能异常翻转的问题。[#19176](https://github.com/apache/echarts/issues/19176) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [aria] 修复部分系列类型名称的翻译。[#19239](https://github.com/apache/echarts/issues/19239) ([Ovilia](https://github.com/Ovilia))
++ [Feature] [matrix] 支持相对于原点以外的点进行旋转。[#1034](https://github.com/ecomfe/zrender/issues/1034) ([ChepteaCatalin](https://github.com/ChepteaCatalin))
++ [Fix] [graph] 修复图表销毁后力引导布局迭代计时器没有停止的问题。[#19514](https://github.com/apache/echarts/issues/19514) ([plainheart](https://github.com/plainheart))
++ [Fix] [tooltip] 修复当 tooltip 元素的父节点不存在时可能报错的问题。[#19265](https://github.com/apache/echarts/issues/19265) ([plainheart](https://github.com/plainheart))
++ [Fix] [visualMap] 修复在配置了多个连续型 `visualMap` 组件时只有第一个生效的问题。[#19097](https://github.com/apache/echarts/issues/19097) ([linghaoSu](https://github.com/linghaoSu))
++ [Fix] [clip] 修复直角坐标系下图表裁剪范围可能溢出的问题。[#19056](https://github.com/apache/echarts/issues/19056) ([RexSkz](https://github.com/RexSkz))
++ [Fix] [dataset] 修复数据集对多维 `TypedArray` 数据源类型的检测逻辑缺陷。[#19035](https://github.com/apache/echarts/issues/19035) ([linghaoSu](https://github.com/linghaoSu))
++ [Fix] [core] 修复开发环境下读取初始化选项时可能报错的问题。[#19217](https://github.com/apache/echarts/issues/19217) ([sunpm](https://github.com/sunpm))
++ [Fix] [i18n] 增强默认语言兜底逻辑。[#19107](https://github.com/apache/echarts/issues/19107) ([ultravires](https://github.com/ultravires))
++ [Fix] [svg] 修复 `CSP` 策略开启时，SVG 元素样式无法应用的问题。[ecomfe/zrender#1030](https://github.com/ecomfe/zrender/issues/1030) ([alxnddr](https://github.com/alxnddr))
++ [Fix] [svg] 移除无用的 SVG 背景矩形的 id 属性。[ecomfe/zrender#1002](https://github.com/ecomfe/zrender/issues/1002) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [env] 修复对 Node.js >= v21.1.0 环境检测逻辑缺陷。[ecomfe/zrender#1036](https://github.com/ecomfe/zrender/pull/1036) ([Uzlopak](https://github.com/Uzlopak))
++ [Fix] [type] 允许 `truncateText` 工具的 `ellipsis` 和 `options` 参数为空。[ecomfe/zrender#1047](https://github.com/ecomfe/zrender/issues/1047) ([plainheart](https://github.com/plainheart))
++ [Fix] [type] 柱状图系列的 `barMinWidth` 和 `barMaxWidth` 选项添加缺失的 `string` 类型定义。[#19424](https://github.com/apache/echarts/issues/19424) ([zhaxnb](https://github.com/zhaxnb))
++ [Feature] [type] `echarts/core` 导出 `EChartsInitOpts` 和一些 `Payload` 类型。[#19103](https://github.com/apache/echarts/issues/19103) ([dalenguyen](https://github.com/dalenguyen))
++ [Fix] [type] `OptionDataValue` 添加缺失的 `null` 和 `undefined` 类型。[#19111](https://github.com/apache/echarts/issues/19111) ([avin-kavish](https://github.com/avin-kavish))
++ [Fix] [type] 修复 `graphic.clipRectByRect` 的返回类型定义，添加缺失的 `undefined` 类型。[#18950](https://github.com/apache/echarts/issues/18950) ([benlongo](https://github.com/benlongo))
++ [Fix] [type] 修复 graph 系列中 `GraphNodeItemOption` 类型重复继承 `GraphNodeStateOption` 的问题。[#18901](https://github.com/apache/echarts/issues/18901) ([nenoNaninu](https://github.com/nenoNaninu))
++ [Refactor] [util] 将 `liftColor` 函数移至 zrender 并引用。[#19526](https://github.com/apache/echarts/issues/19526) ([plainheart](https://github.com/plainheart))
+
+## v5.4.3
+<div class="time">2023-07-18</div>
+
++ [Feature] [axisPointer] 坐标轴指示器新增 `triggerEmphasis` 配置项，支持禁止触发系列高亮。[#18524](https://github.com/apache/echarts/issues/18524) ([juliepagano](https://github.com/juliepagano))
++ [Feature] [sankey] 桑基图 `emphasis.focus` 新增 `trajectory` 可选项，支持聚焦所有连接到当前高亮数据的节点和边。[#17451](https://github.com/apache/echarts/issues/17451) ([ElayGelbart](https://github.com/ElayGelbart))
++ [Fix] [sankey] 修复桑基图边的颜色值 `'target'/'source'/'gradient'` 在非 normal 状态下不生效的问题。[#18834](https://github.com/apache/echarts/issues/18834) ([linghaoSu](https://github.com/linghaoSu))
++ [Fix] [sankey] 修复桑基图 `label` 和 `edgeLabel` formatter 中不能正常获取 `value` 的问题。[#18733](https://github.com/apache/echarts/issues/18733) ([plainheart](https://github.com/plainheart))
++ [Fix] [sunburst] 修复旭日图标签启用 `labelLayout.hideOverlap` 后可能旋转的问题。[#18808](https://github.com/apache/echarts/issues/18808) ([linghaoSu](https://github.com/linghaoSu))
++ [Fix] [graph] 修复关系图可能无法通过图例隐藏的问题。[#18624](https://github.com/apache/echarts/issues/18624) ([plainheart](https://github.com/plainheart))
++ [Fix] [state] 修复 `emphasis.focus: self` 在启用了坐标轴指示器后聚焦元素可能不对的问题。[#18511](https://github.com/apache/echarts/issues/18511) ([linghaoSu](https://github.com/linghaoSu))
++ [Fix] [axis] 修复只有单个数据时最后一个轴刻度不显示的问题。[#18469](https://github.com/apache/echarts/issues/18469) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [pie] 修复饼图在启用了 `selectedOffset` 并禁用 `animation` 时响应区域不正确的问题。[#1011](https://github.com/ecomfe/zrender/pull/1011) ([plainheart](https://github.com/plainheart))
++ [Fix] [custom] 修复自定义系列无法在事件监听回调函数中获取在元素中定义的 `info` 数据的问题。[#18400](https://github.com/apache/echarts/issues/18400) ([sobolewsk](https://github.com/sobolewsk))
++ [Fix] [legend] 修复图例富文本颜色没有继承图例配置颜色的问题。[#18260](https://github.com/apache/echarts/issues/18260) ([ChepteaCatalin](https://github.com/ChepteaCatalin))
++ [Fix] [label] 修复标签的 `ellipsis` 配置项不生效的问题。[#18525](https://github.com/apache/echarts/issues/18525) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [label] 修复当数据为空时 `endLabel` 报错的问题。[#18841](https://github.com/apache/echarts/issues/18841) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [util] 修复时间格式化工具函数中没有对 `{yy}` 进行补零的问题。[#18535](https://github.com/apache/echarts/issues/18535) ([linghaoSu](https://github.com/linghaoSu))
++ [Fix] [api] 修复 `disconnect` API 被意外标记为过时的问题。[#18758](https://github.com/apache/echarts/issues/18758) ([Justineo](https://github.com/Justineo))
++ [Fix] [i18n] 修正德语翻译中 `"March"` 的缩写为 `"Mrz"`。[#18387](https://github.com/apache/echarts/issues/18387) ([Stebeber](https://github.com/Stebeber))
++ [Fix] [type] 修复平行坐标系系列 `parallel` 数据项 `value` 类型错误的问题。[#18425](https://github.com/apache/echarts/issues/18425) ([ManishDait](https://github.com/ManishDait))
++ [Fix] [type] TypeScript 中 `echarts.init` API 允许传入 `null` 作为参数。[#18575](https://github.com/apache/echarts/issues/18575) ([zhuscat](https://github.com/zhuscat))
+
+## v5.4.2
+<div class="time">2023-03-23</div>
+
++ [Feature] [bar] 极坐标系柱状图柱条及其背景支持设置圆角。[#17995](https://github.com/apache/echarts/issues/17995) ([Ovilia](https://github.com/Ovilia))
++ [Feature] [i18n] 新增土耳其语翻译。[#18012](https://github.com/apache/echarts/issues/18012) ([partitect](https://github.com/partitect))
++ [Feature] [i18n] 新增越南语翻译。[#18279](https://github.com/apache/echarts/issues/18279) ([nghiepdev](https://github.com/nghiepdev))
++ [Fix] [bar] 极坐标系柱状图动画现在从 `r0` 开始，不再是从 `0` 开始。[#17997](https://github.com/apache/echarts/issues/17997) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [marker] 修复柱状图 `markArea` 范围展示异常的问题。[#18229](https://github.com/apache/echarts/issues/18229) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [line] 修复当启用服务端渲染时，折线图标签不显示的问题。[#18032](https://github.com/apache/echarts/issues/18032) ([plainheart](https://github.com/plainheart))
++ [Fix] [svg] 修复因 SVG 渲染器对 `style` 标签内容的错误编码导致定义的 CSS 样式不生效的问题。[#982](https://github.com/ecomfe/zrender/pull/982) ([plainheart](https://github.com/plainheart))
++ [Fix] [sunburst] 修复旭日图标签径向旋转时上下颠倒影响阅读的问题。[#18240](https://github.com/apache/echarts/issues/18240) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [dataset] 修复数据集使用对象数组时，若数据对象含有 `length` 属性导致图表不能渲染的问题。[#18276](https://github.com/apache/echarts/issues/18276) ([susiwen8](https://github.com/susiwen8))
++ [Fix] [tooltip] 修复 `tooltip` 设置了 `alwaysShowContent` 鼠标移出后仍然消失的问题。[#18221](https://github.com/apache/echarts/issues/18221) ([jianghaoran116](https://github.com/jianghaoran116))
++ [Fix] [text] 修复部分西里尔文字符没有像拉丁文一样断词的问题。[#973](https://github.com/ecomfe/zrender/issues/973) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [type] 旭日图 formatter 回调函数参数添加缺失的 `treePathInfo` 属性，`SunburstSeriesOption` 添加缺失的 `data` 配置项。[#18310](https://github.com/apache/echarts/issues/18310) ([plainheart](https://github.com/plainheart))
++ [Fix] [type] 树图 `symbol` 配置项添加缺失的回调函数类型。[#18070](https://github.com/apache/echarts/issues/18070) ([ChepteaCatalin](https://github.com/ChepteaCatalin))
+
+## v5.4.1
+<div class="time">2022-12-09</div>
+
++ [Feature] [i18n] 新增匈牙利语翻译。[#17978](https://github.com/apache/echarts/issues/17978) ([ifjkovacsik](https://github.com/ifjkovacsik))
++ [Feature] [svg] SVG 渲染器支持设置渐变色 (gradient) 和图案 (pattern) 作为背景。[#959](https://github.com/ecomfe/zrender/issues/959) ([plainheart](https://github.com/plainheart))
++ [Feature] [candlestick] K 线图新增 `borderColorDoji` 配置项用以自定义十字星边框色。[#17717](https://github.com/apache/echarts/issues/17717) ([Ovilia](https://github.com/Ovilia))
++ [Feature] [sankey] 桑基图新增 `edgeLabel` 配置项用以自定义关系边的文本样式。[#16767](https://github.com/apache/echarts/issues/16767) ([susiwen8](https://github.com/susiwen8))
++ [Feature] [graph] 关系图节点支持在 `none` 和 `circular` 布局中拖拽。[#15428](https://github.com/apache/echarts/issues/15428) ([kongmoumou](https://github.com/kongmoumou))
++ [Feature] [util] `HashMap` 现在优先采用浏览器原生内置 `Map` 实现。[#965](https://github.com/ecomfe/zrender/issues/965) ([JonasBa](https://github.com/JonasBa))
++ [Feature] [type] 导出 `ECElementEvent` 类型。[#17892](https://github.com/apache/echarts/issues/17892) ([keita-determined](https://github.com/keita-determined))
++ [Fix] [i18n] 修正 v5.4.0 新增的乌克兰语的语言代码为 `UK`。[#17812](https://github.com/apache/echarts/issues/17812) ([striezel](https://github.com/striezel))
++ [Fix] [pie] 修复饼图切换图例后百分比显示错误的问题。[#17734](https://github.com/apache/echarts/issues/17734) ([plainheart](https://github.com/plainheart))
++ [Fix] [pie] 修复饼图设置了 `minShowLabelRadian` 后 `labelLine` 可能报错导致 `label` 显示异常的问题。[#17715](https://github.com/apache/echarts/issues/17715) ([plainheart](https://github.com/plainheart))
++ [Fix] [pie] 修复 v5.4.0 中指定了饼图坐标系后，部分坐标系下 `center` 可能无法正确转换的问题。[#17920](https://github.com/apache/echarts/issues/17920) ([plainheart](https://github.com/plainheart))
++ [Fix] [heatmap] 修复热力图在启用 `dataZoom` 后标签显示重叠的问题。[#17876](https://github.com/apache/echarts/issues/17876) ([plainheart](https://github.com/plainheart))
++ [Fix] [animation] 修复由于 `dataGroupId` 设置错误导致钻取后返回没有正确过渡的问题。[#17559](https://github.com/apache/echarts/issues/17559) ([tyn1998](https://github.com/tyn1998))
++ [Fix] [dataZoom] 当 `dataZoom` 起始值无效的时候默认回退到数据范围起始。[#17934](https://github.com/apache/echarts/issues/17934) ([plainheart](https://github.com/plainheart))
++ [Fix] [timeline] 修复 `timeline` 不显示轴线时图表无法正确渲染的问题。[#17647](https://github.com/apache/echarts/issues/17647) ([plainheart](https://github.com/plainheart))
++ [Fix] [tooltip] 修复 `tooltip` 当边框较宽时箭头可能覆盖内容的问题。[#17875](https://github.com/apache/echarts/issues/17875) ([plainheart](https://github.com/plainheart))
++ [Fix] [marker] 修复 `markArea` 在使用屏幕坐标 `x/y` 但未指定 `coord` 时不显示的问题。[#17217](https://github.com/apache/echarts/issues/17217) ([jiawulin001](https://github.com/jiawulin001))
++ [Fix] [marker] 修复柱状图 `markArea` 没有完全覆盖类目轴指定标记范围的问题。[#17098](https://github.com/apache/echarts/issues/17098) ([jiawulin001](https://github.com/jiawulin001))
++ [Fix] [legend] 修复当系列数据有相同名字时，图例反转 `inverse` 无效的问题。[#17510](https://github.com/apache/echarts/issues/17510) ([caiwukun](https://github.com/caiwukun))
++ [Fix] [gauge] 修复仪表盘系列 `axisLine` 没有按顺时针方向渲染的问题。[#17691](https://github.com/apache/echarts/issues/17691) ([ZeekoZhu](https://github.com/ZeekoZhu))
++ [Fix] [ssr] 修复 SSR 渲染时字体大小设置无效的问题。[#968](https://github.com/ecomfe/zrender/issues/968) ([plainheart](https://github.com/plainheart))
++ [Fix] [svg] 修复 SVG 渲染器中，图形在形变动画后可能消失的问题。([plainheart](https://github.com/plainheart))
++ [Fix] [type] 修复 `EChartsInitOpts` 中 `width` 和 `height` 的类型问题。[#17727](https://github.com/apache/echarts/issues/17727) ([MainHou](https://github.com/MainHou))
++ [Fix] [type] 添加缺失的 `overflow` 配置项到 `AxisLabelBaseOption`。[#17808](https://github.com/apache/echarts/issues/17808) ([breizh24](https://github.com/breizh24))
++ [Fix] [type] 添加缺失的 `string` 和 `number` 类型到饼图系列的 `center` 配置项。[#17917](https://github.com/apache/echarts/issues/17917) ([plainheart](https://github.com/plainheart))
++ [Fix] [type] 添加缺失的 `function` 类型到 `lines` 系列的 `lineStyle.color` 配置项。[#17780](https://github.com/apache/echarts/issues/17780) ([plainheart](https://github.com/plainheart))
+
+## v5.4.0
+<div class="time">2022-09-25</div>
+
++ [Feature] 新增[智能指针吸附](https://echarts.apache.org/handbook/zh/how-to/interaction/coarse-pointer)。[#17102](https://github.com/apache/echarts/issues/17102) ([Ovilia](https://github.com/Ovilia))
++ [Feature] [pie] 饼图新增 `coordinateSystem` 配置项以支持定位在某个坐标系上。[#17132](https://github.com/apache/echarts/issues/17132) ([plainheart](https://github.com/plainheart))
++ [Feature] [gauge] 仪表盘轴标签支持旋转。[#16985](https://github.com/apache/echarts/issues/16985) ([MeetzhDing](https://github.com/MeetzhDing))
++ [Feature] [lines] 线系列动画特效支持原路返回。[#16943](https://github.com/apache/echarts/issues/16943) ([wangguisong](https://github.com/wangguisong))
++ [Feature] [treemap] 矩形树图面包屑新增 `emphasis` 状态。[#17242](https://github.com/apache/echarts/issues/17242) ([susiwen8](https://github.com/susiwen8))
++ [Feature] [i18n] 新增乌克兰语翻译。[#17244](https://github.com/apache/echarts/issues/17244) ([Amice13](https://github.com/Amice13))
++ [Feature] [type] 导出类型 `ElementEvent`。[#15291](https://github.com/apache/echarts/issues/15291) ([Map1en](https://github.com/Map1en))
++ [Fix] [pie] 修复指定 `minShowLabelRadian` 时 `labelLine` 可能无法被隐藏的问题。[#17412](https://github.com/apache/echarts/issues/17412) ([plainheart](https://github.com/plainheart))
++ [Fix] [pie] 优化饼图的渲染性能。[#17275](https://github.com/apache/echarts/issues/17275) ([wind108369](https://github.com/wind108369))
++ [Fix] [line] 为 `symbol` 设置默认的 `z/zlevel` 避免警告日志。[#17247](https://github.com/apache/echarts/issues/17247) ([plainheart](https://github.com/plainheart))
++ [Fix] [bar-race] 修复子像素优化导致线条在动画过程中抖动的问题。[#17426](https://github.com/apache/echarts/issues/17426) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [axis] 修复单轴 `singleAxis` 中 `inverse` 配置项不生效的问题。[#17411](https://github.com/apache/echarts/issues/17411) ([wind108369](https://github.com/wind108369))
++ [Fix] [axis] 修复坐标轴反转时，坐标轴 symbol 没有反转的问题。[#17329](https://github.com/apache/echarts/issues/17329) ([plainheart](https://github.com/plainheart))
++ [Fix] [state] [emphasis] 修复 `emphasis.scale` 无法被重置及指定值可能不生效的问题。[#17442](https://github.com/apache/echarts/issues/17442) ([plainheart](https://github.com/plainheart))
++ [Fix] [state] [emphasis] 为 `scatter/line/graph` 系列的 `emphasis.scale` 添加缺失的 `number` 值类型。[#17390](https://github.com/apache/echarts/issues/17390) ([plainheart](https://github.com/plainheart))
++ [Fix] [svg] 生成 SVG 字符串时编码 HTML 字符。[#17406](https://github.com/apache/echarts/issues/17406) ([plainheart](https://github.com/plainheart))
++ [Fix] [visualMap] 修复鼠标悬浮在地图标签时 `visualMap` 指示器不显示的问题。[#17346](https://github.com/apache/echarts/issues/17346) ([plainheart](https://github.com/plainheart))
++ [Fix] [custom] 修复自定义组件中元素更新后可能不能被删除的问题。[#17349](https://github.com/apache/echarts/issues/17349) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [custom] 修复由于离开动画导致自定义元素可能无法被删除的问题。[#17308](https://github.com/apache/echarts/issues/17308) ([plainheart](https://github.com/plainheart))
++ [Fix] [theme] 修复 `macarons` 主题中 `tooltip` 的文本样式。[#17551](https://github.com/apache/echarts/issues/17551) ([mousne](https://github.com/mousne))
++ [Fix] [theme] 移除主题中已被废弃的 `normal` 层级。[#17482](https://github.com/apache/echarts/issues/17482) ([Liangism](https://github.com/Liangism))
++ [Fix] [axis] [log] 修复当对数轴只包含单个数据且值小于 1 时图表无法渲染的问题。[#17322](https://github.com/apache/echarts/issues/17322) ([Ovilia](https://github.com/Ovilia))
++ [Fix] [dataZoom] 修复 K 线图使用 `dataset` 时 `sliderZoom` 可能会抛错的问题。[#17237](https://github.com/apache/echarts/issues/17237) ([jiawulin001](https://github.com/jiawulin001))
++ [Fix] [sunburst] 修复日志输出错误。[#17587](https://github.com/apache/echarts/issues/17587) ([gitforhlp](https://github.com/gitforhlp))
++ [Fix] [type] 兼容 TypeScript 4.8。[#17582](https://github.com/apache/echarts/issues/17582) ([AviVahl](https://github.com/AviVahl))
++ [Fix] [type] 为 `SunburstSeriesOption` 和 `TreemapSeriesOption` 的 `nodeClick` 配置项添加缺失的 `false` 类型。[#17218](https://github.com/apache/echarts/issues/17218) ([dmzc](https://github.com/dmzc))
++ [Fix] [typo] 修复一个文件名的语法错误。`src/animation/basicTrasition.ts` → `src/animation/basicTransition.ts`
+ [#17193](https://github.com/apache/echarts/issues/17193) ([kxxoling](https://github.com/kxxoling))
+
+
+
 ## v5.3.3
 <div class="time">2022-06-14</div>
 
@@ -49,7 +213,7 @@
 ## v5.3.1
 <div class="time">2022-03-07</div>
 
-+ [Feature] [i18n] 新增韩语翻译。 [#16582](https://github.com/apache/echarts/issues/16582) ([hijae](https://github.com/hijae))
++ [Feature] [i18n] 新增韩语翻译。[#16582](https://github.com/apache/echarts/issues/16582) ([hijae](https://github.com/hijae))
 + [Feature] [heatmap] 热力图支持 `borderRadius` 配置项。 [#16493](https://github.com/apache/echarts/issues/16493) ([Rain120](https://github.com/Rain120))
 + [Fix] [lines] 修复 `setOption` 且 `notMerge` 时 effectLine 的潜在内存泄漏。 [#16525](https://github.com/apache/echarts/issues/16525) ([pissang](https://github.com/pissang))
 + [Fix] [line] 修复阶梯折线图空数据引起的斜线。 [#16435](https://github.com/apache/echarts/issues/16435) ([Gyyi](https://github.com/Gyyi))
@@ -914,7 +1078,7 @@ Fix that the line label can not be returned to its original opacity after `"focu
 
 + [Fix] 修复了图例组件（legend）当空间只够显示一项时不能翻页的问题。参见 [#6743](https://github.com/apache/incubator-echarts/issues/6743)，[#8971](https://github.com/apache/incubator-echarts/issues/8971)，[#9471](https://github.com/apache/incubator-echarts/issues/9471)。
 
-+ [Fix] 修复了饼图标签（label）定位在中心时，在一些角度下有便宜的问题。参见 [#9657](https://github.com/apache/incubator-echarts/issues/9657)。
++ [Fix] 修复了饼图标签（label）定位在中心时，在一些角度下有偏移的问题。参见 [#9657](https://github.com/apache/incubator-echarts/issues/9657)。
 
 + [Fix] 修复了地图坐标系（geo）在 MS Edge 下不能拖动的问题。参见 [#9479](https://github.com/apache/incubator-echarts/issues/9479)。
 
@@ -947,7 +1111,7 @@ Fix that the line label can not be returned to its original opacity after `"focu
 
 + [Fix] 修复了图例组件（legend）当空间只够显示一项时不能翻页的问题。参见 [#6743](https://github.com/apache/incubator-echarts/issues/6743)，[#8971](https://github.com/apache/incubator-echarts/issues/8971)，[#9471](https://github.com/apache/incubator-echarts/issues/9471)。
 
-+ [Fix] 修复了饼图标签（label）定位在中心时，在一些角度下有便宜的问题。参见 [#9657](https://github.com/apache/incubator-echarts/issues/9657)。
++ [Fix] 修复了饼图标签（label）定位在中心时，在一些角度下有偏移的问题。参见 [#9657](https://github.com/apache/incubator-echarts/issues/9657)。
 
 + [Fix] 修复了地图坐标系（geo）在 MS Edge 下不能拖动的问题。参见 [#9479](https://github.com/apache/incubator-echarts/issues/9479)。
 

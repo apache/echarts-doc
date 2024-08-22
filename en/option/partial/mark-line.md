@@ -11,13 +11,13 @@ Use a line in the chart to illustrate.
 
 ##${prefix} symbol(string|Array)
 
-Symbol type at the two ends of the mark line. It can be an array for two ends, or assigned seperately. See [data.symbol](~series-${seriesType}.markLine.data.0.symbol) for more format information.
+Symbol type at the two ends of the mark line. It can be an array for two ends, or assigned separately. See [data.symbol](~series-${seriesType}.markLine.data.0.symbol) for more format information.
 
 ##${prefix} symbolSize(number|Array)
 
-Symbol size at the two ends of the mark line. It can be an array for two ends, or assigned seperately.
+Symbol size at the two ends of the mark line. It can be an array for two ends, or assigned separately.
 
-**Attention: ** You cannot assgin width and height seperately as normal `symbolSize`.
+**Attention: ** You cannot assign width and height separately as normal `symbolSize`.
 
 ##${prefix} precision(number) = 2
 
@@ -158,8 +158,7 @@ data: [
 Data of the starting point.
 
 {{ use: mark-line-data-item-item(
-    name = "starting point",
-    prefix = "###"+${prefix},
+    prefix = "###" + ${prefix},
     seriesType = ${seriesType},
     hasCoord = ${hasCoord},
     hasType = ${hasType},
@@ -171,8 +170,7 @@ Data of the starting point.
 Data of the ending point.
 
 {{ use: mark-line-data-item-item(
-    name = "ending point",
-    prefix = "###"+${prefix},
+    prefix = "###" + ${prefix},
     seriesType = ${seriesType},
     hasCoord = ${hasCoord},
     hasType = ${hasType},
@@ -261,7 +259,7 @@ Coordinates of the starting point or ending point, whose format depends on the c
 
 #${prefix} name(string) = '${name}'
 
-Name of the marker, which will display as a label.
+Name of the marker. Can be used as a template variable **data name** `{b}` in [label formatter](~series-${seriesType}.markLine.data.label.formatter).
 
 #${prefix} x(number)
 

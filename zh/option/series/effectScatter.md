@@ -95,7 +95,7 @@ const option = {
 波纹的绘制方式，可选 `'stroke'` 和 `'fill'`。
 
 {{ use: partial-coord-sys(
-    seriesType = "bar",
+    seriesType = "effectScatter",
     coordSysDefault = "'cartesian2d'",
     cartesian2d = true,
     polar = true,
@@ -120,7 +120,8 @@ const option = {
 {{ use: partial-label(
     prefix = "##",
     defaultPosition = "'inside'",
-    formatter = true
+    formatter = true,
+    minMargin = true
 ) }}
 
 ## labelLine(Object)
@@ -235,7 +236,8 @@ const option = {
 
 {{ use: partial-label(
     prefix = "###",
-    defaultPosition = "inside"
+    defaultPosition = "inside",
+    minMargin = true
 ) }}
 
 ### labelLine(Object)

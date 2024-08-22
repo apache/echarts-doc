@@ -22,7 +22,8 @@
 + [series-candlestick.itemStyle.color](~series-candlestick.itemStyle.color)：阳线填充色（即『涨』）
 + [series-candlestick.itemStyle.color0](~series-candlestick.itemStyle.color0)：阴线填充色（即『跌』）
 + [series-candlestick.itemStyle.borderColor](~series-candlestick.itemStyle.borderColor)：阳线边框色（即『涨』）
-+ [series-candlestick.itemStyle.borderColor0](series-candlestick.itemStyle.borderColor0)：阴线边框色（即『跌』）
++ [series-candlestick.itemStyle.borderColor0](~series-candlestick.itemStyle.borderColor0)：阴线边框色（即『跌』）
++ [series-candlestick.itemStyle.borderColorDoji](~series-candlestick.itemStyle.borderColorDoji)：十字星边框色（即开盘价等于收盘价时候的边框色）
 
 
 <br>
@@ -224,7 +225,7 @@ const option = {
 ) }}
 
 {{ use: partial-coord-sys(
-    seriesType = "cartesian2d",
+    seriesType = "candlestick",
     coordSysDefault = "'cartesian2d'",
     cartesian2d = true
 ) }}
@@ -234,10 +235,6 @@ const option = {
 {{ use: partial-colorby() }}
 
 {{ use: partial-legend-hover-link() }}
-
-## hoverAnimation(boolean) = true
-
-是否开启 hover 在 box 上的动画效果。
 
 ## layout(string) = null
 
@@ -271,10 +268,10 @@ K 线图的图形样式。
 
 {{ use: partial-candlestick-item-style-detail(
     prefix = "##",
-    defaultColor = "#c23531",
-    defaultColor0 = "#314656",
-    defaultBorderColor = "#c23531",
-    defaultBorderColor0 = "#314656",
+    defaultColor = "#eb5454",
+    defaultColor0 = "#47b262",
+    defaultBorderColor = "#eb5454",
+    defaultBorderColor0 = "#47b262",
     defaultBorderWidth = 1
 ) }}
 
@@ -393,6 +390,10 @@ K 线图的选中状态。开启 [selectedMode](~series-candlestick.selectedMode
 ```
 
 {{ use: partial-data-group-id(
+    prefix = '##'
+) }}
+
+{{ use: partial-data-child-group-id(
     prefix = '##'
 ) }}
 
@@ -521,6 +522,18 @@ K 线图的选中状态。开启 [selectedMode](~series-candlestick.selectedMode
 
 {{ use: partial-color-desc() }}
 
+#${prefix} borderColorDoji(Color) = null
+
+<ExampleUIControlColor />
+
+{{ use: partial-version(
+    version = "5.4.1"
+) }}
+
+十字星（开盘价等于收盘价）的描边颜色。
+
+{{ use: partial-color-desc() }}
+
 #${prefix} borderWidth(number) = ${defaultBorderWidth}
 
 <ExampleUIControlNumber min="0" step="0.5" default="${defaultBorderWidth}" />
@@ -535,4 +548,3 @@ candlestick 描边线宽。为 0 时无描边。
     defaultShadowOffsetX = ${defaultShadowOffsetX},
     defaultShadowOffsetY = ${defaultShadowOffsetY}
 ) }}
-

@@ -22,7 +22,7 @@ Multiple `series` can be displayed in the same coordinate system. Please refer t
 ) }}
 
 {{ use: partial-coord-sys(
-    seriesType = "cartesian2d",
+    seriesType = "boxplot",
     coordSysDefault = "'cartesian2d'",
     cartesian2d = true
 ) }}
@@ -32,10 +32,6 @@ Multiple `series` can be displayed in the same coordinate system. Please refer t
 {{ use: partial-colorby() }}
 
 {{ use: partial-legend-hover-link() }}
-
-## hoverAnimation(boolean) = true
-
-Whether to enable the animation when hovering on box.
 
 ## layout(string) = null
 
@@ -188,6 +184,10 @@ Value of data item.
 ```
 
 {{ use: partial-data-group-id(
+    prefix = '##'
+) }}
+
+{{ use: partial-data-child-group-id(
     prefix = '##'
 ) }}
 

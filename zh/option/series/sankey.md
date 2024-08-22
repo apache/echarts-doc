@@ -85,6 +85,12 @@ const option = {"tooltip":{"trigger":"item","triggerOn":"mousemove"},"series":[{
 
 控制节点拖拽的交互，默认开启。开启后，用户可以将图中任意节点拖拽到任意位置。若想关闭此交互，只需将值设为 `false` 就行了。
 
+## edgeLabel(Object)
+
+{{ use: sankey-edge-label(
+    prefix = "##"
+) }}
+
 ## levels(Array)
 
 桑基图每一层的设置。可以逐层设置，如下：
@@ -181,7 +187,8 @@ levels: [{
     prefix = "##",
     defaultShowLabel = true,
     defaultPosition = "'right'",
-    formatter1d = true
+    formatter1d = true,
+    minMargin = true
 ) }}
 
 ## labelLayout(Object|Function)
@@ -198,8 +205,13 @@ levels: [{
     prefix = "##",
     useColorPalatte = true,
     defaultBorderWidth = 1,
-    defaultBorderColor = "'#aaa'",
+    defaultBorderColor = "'none'",
     useDecal = true
+) }}
+
+{{ use: partial-border-radius(
+    prefix = "##",
+    version = "5.5.1"
 ) }}
 
 ## lineStyle(Object)
@@ -219,7 +231,9 @@ levels: [{
 ) }}
 
 {{ use: partial-focus-blur-scope(
-    isGraph = true
+    isGraph = true,
+    hasTrajectory = true,
+    trajectoryVersion = "5.4.3"
 ) }}
 
 {{ use: sankey-state(
@@ -297,7 +311,14 @@ data: [{
 {{ use: partial-item-style(
     prefix = "###",
     useColorPalatte = true,
-    useDecal = true
+    useDecal = true,
+    defaultBorderWidth = 1,
+    defaultBorderColor = "'none'"
+) }}
+
+{{ use: partial-border-radius(
+    prefix = "###",
+    version = "5.5.1"
 ) }}
 
 ### label(Object)
@@ -305,7 +326,8 @@ data: [{
 该节点标签的样式。
 
 {{ use: partial-label(
-    prefix = "###"
+    prefix = "###",
+    minMargin = true
 ) }}
 
 ### emphasis(Object)
@@ -377,12 +399,8 @@ links: [{
 
 边的数值，决定边的宽度。
 
-### lineStyle(Object)
-
-关系边的线条样式。
-
-{{ use: partial-sankey-line-style(
-    prefix = "###"
+{{ use: sankey-edge-state(
+    prefix = "##"
 ) }}
 
 ### emphasis(Object)
@@ -391,11 +409,9 @@ links: [{
     prefix = "###"
 ) }}
 
-#### lineStyle(Object)
-
-{{ use: partial-sankey-line-style(
-    prefix = "####",
-    hasInherit = true
+{{ use: sankey-edge-state(
+    prefix = "###",
+    state = "emphasis"
 ) }}
 
 ### blur(Object)
@@ -404,10 +420,9 @@ links: [{
     version = "5.0.0"
 ) }}
 
-#### lineStyle(Object)
-
-{{ use: partial-sankey-line-style(
-    prefix = "####"
+{{ use: sankey-edge-state(
+    prefix = "###",
+    state = "blur"
 ) }}
 
 ### select(Object)
@@ -420,10 +435,9 @@ links: [{
     prefix = "###"
 ) }}
 
-#### lineStyle(Object)
-
-{{ use: partial-sankey-line-style(
-    prefix = "####"
+{{ use: sankey-edge-state(
+    prefix = "###",
+    state = "select"
 ) }}
 
 ## edges(Array)
@@ -452,9 +466,9 @@ links: [{
 
 + `'source'`: 使用源节点颜色。
 + `'target'`: 使用目标节点颜色。
-+ `'gradient'`: 以源节点和目标节点的颜色做一个渐变过度色。(5.0开始支持)
++ `'gradient'`: 以源节点和目标节点的颜色做一个渐变过渡色。(从 v5.0.0 开始支持)
 
-#${prefix} opacity(number) = 0.2
+#${prefix} opacity(number) = ${defaultOpacity|default(0.2)}
 
 桑基图边的透明度。
 
@@ -483,7 +497,9 @@ links: [{
 {{ use: partial-item-style(
     prefix = "#" + ${prefix},
     useDecal = true,
-    hasInherit = ${state} === 'emphasis'
+    hasInherit = ${state} === 'emphasis',
+    defaultBorderColor = ${state} === 'select' ? "'#212121'" : "'none'",
+    defaultBorderWidth = 1
 ) }}
 
 
@@ -497,17 +513,61 @@ links: [{
     formatter1d = ${prefix} === '##'
 ) }}
 
+#${prefix} edgeLabel(Object)
+
+{{ use: sankey-edge-label(
+    prefix = "#" + ${prefix}
+) }}
+
 #${prefix} itemStyle(Object)
 
 {{ use: partial-item-style(
     prefix = "#" + ${prefix},
-    hasInherit = ${state} === 'emphasis'
+    hasInherit = ${state} === 'emphasis',
+    defaultBorderColor = ${state} === 'select' ? "'#212121'" : "'none'",
+    defaultBorderWidth = 1
 ) }}
 
 #${prefix} lineStyle(Object)
 
 {{ use: partial-sankey-line-style(
     prefix = "#" + ${prefix},
-    hasInherit = ${state} === 'emphasis'
+    hasInherit = ${state} === 'emphasis',
+    defaultOpacity = ${state} === 'emphasis' ? 0.5 : null
 ) }}
 
+
+
+{{ target: sankey-edge-state }}
+
+#${prefix} edgeLabel(Object)
+
+{{ use: sankey-edge-label(
+    prefix = "#" + ${prefix}
+) }}
+
+#${prefix} lineStyle(Object)
+
+关系边的线条样式。
+
+{{ use: partial-sankey-line-style(
+    prefix = "#" + ${prefix},
+    hasInherit = ${state} === 'emphasis',
+    defaultOpacity = ${state} === 'emphasis' ? 0.5 : null
+) }}
+
+
+
+{{ target: sankey-edge-label }}
+
+{{ use: partial-version(
+    version = "5.4.1"
+) }}
+
+关系边文本标签的样式。
+
+{{ use: partial-label(
+    prefix = ${prefix},
+    noPosition = true,
+    formatter1d = true
+) }}

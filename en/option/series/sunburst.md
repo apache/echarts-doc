@@ -1,25 +1,14 @@
 
 {{ target: partial-sunburst-label-helper }}
 
-#${prefix} rotate(string|number) = 'radial'
-
-<ExampleUIControlEnum options="radial,tangential" default="radial" />
-
-{{ if: ${prefix} === '##' }}
-If it is `number` type, then is stands for rotation, from -90 degrees to 90 degrees, and positive values stand for counterclockwise.
-
-Besides, it can be string `'radial'`, standing for radial rotation; or `'tangential'`, standing for tangential rotation.
-
-By default, it is `'radial'`. If no rotation is wanted, it can be set to `0`.
+{{ use: partial-label-rotate-tangential(
+    prefix = ${prefix},
+    defaultRotate = "'radial'"
+) }}
 
 The following example shows different `rotate` settings:
 
 ~[700x400](${galleryViewPath}sunburst-label-rotate&edit=1&reset=1)
-
-Same to [label.rotate](~sunburst.label.rotate)
-{{ else }}
-Same to [label.rotate](~sunburst.label.rotate)
-{{ /if }}
 
 #${prefix} align(string) = 'center'
 
@@ -43,9 +32,16 @@ If angle of data piece is smaller than this value (in degrees), then text is not
     prefix = ${prefix},
     defaultPosition = "'inside'",
     formatter = true,
+    formatterExtra = {
+        treePathInfo: {
+            desc: 'The ancestors of current node (including self)',
+            type: 'Array'
+        }
+    },
     defaultShowLabel = "true",
     noRotate = true,
-    noAlign = true
+    noAlign = true,
+    minMargin = ${minMargin}
 ) }}
 
 
@@ -63,7 +59,8 @@ To specify the style of the label of the sector.
 ) }}
 
 {{ use: partial-sunburst-label-helper(
-    prefix = ${prefix} + '#'
+    prefix = ${prefix} + '#',
+    minMargin = ${state} === 'normal'
 ) }}
 
 #${prefix} labelLine(Object)
@@ -254,6 +251,8 @@ The children nodes defined recursively. The structure is the same as [series-sun
     state = 'normal'
 ) }}
 
+{{ use: partial-tooltip-in-series-data() }}
+
 ## nodeClick(boolean|string) = 'rootToNode'
 
 <ExampleUIControlEnum default="rootToNode" options="rootToNode,link" />
@@ -281,6 +280,18 @@ function(nodeA, nodeB) {
 <ExampleUIControlBoolean />
 
 If there is no `name`, whether need to render it.
+
+## clockwise(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
+
+Whether the layout of sectors of sunburst chart is clockwise.
+
+## startAngle(number) = 90
+
+<ExampleUIControlAngle step="1" min="0" max="360" default="90" />
+
+The start angle, which range is [0, 360].
 
 {{ use: partial-sunburst-label-props(
     prefix = "#",
@@ -407,10 +418,11 @@ Select state.
     state = 'select'
 ) }}
 
+{{ use: partial-tooltip-in-series() }}
+
 {{ use: partial-animation(
     prefix = "#",
     defaultAnimationEasing = "'cubicOut'",
     defaultAnimationDuration = 1000,
     defaultAnimationDurationUpdate = 500
 ) }}
-

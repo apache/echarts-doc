@@ -139,14 +139,14 @@ series: [{
     + a JavaScript Date instance created by user:
         + Caution, when using a data string to create a Date instance, [browser differences and inconsistencies](https://dygraphs.com/date-formats.html) should be considered.
         + For example: In chrome, `new Date('2012-01-01')` is treated as a Jan 1st 2012 in UTC, while `new Date('2012-1-1')` and `new Date('2012/01/01')` are treated as Jan 1st 2012 in local timezone. In safari `new Date('2012-1-1')` is not supported.
-        + So if you intent to perform `new Date(dateString)`, it is strongly recommended to use a time parse library (e.g., [moment](https://momentjs.com/)), or use `echarts.number.parseDate`, or check [this](https://dygraphs.com/date-formats.html).
+        + So if you intent to perform `new Date(dateString)`, it is strongly recommended to use a time parse library (e.g., [moment](https://momentjs.com/)), or use `echarts.time.parse`, or check [this](https://dygraphs.com/date-formats.html).
 
 
 
 <br>
 **Customize a data item:**
 
-When needing to customize a data item, it can be set as an object, where property `value` reprensent real value. For example:
+When needing to customize a data item, it can be set as an object, where property `value` represent real value. For example:
 ```ts
 [
     12,

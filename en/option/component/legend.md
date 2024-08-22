@@ -129,21 +129,19 @@ Besides, it can be set to `'single'` or `'multiple'`, for single selection and m
 
 ## inactiveColor(Color) = '#ccc'
 
-<ExampleUIControlColor default="#ccc" />
-
 Legend color when not selected.
 
 ## inactiveBorderColor(Color) = '#ccc'
 
-<ExampleUIControlColor default="#ccc" />
-
 Legend border color when not selected.
 
-## inactiveBorderWidth(Color) = 'auto'
+## inactiveBorderWidth(number|string) = 'auto'
 
-<ExampleUIControlColor default="#ccc" />
+Legend border width when not selected.
 
-Legend border width when not selected. If it is `'auto'`, the border width is set to be 2 if there is border width in the series, 0 elsewise. If it is `'inherit'`, it always takes the border width of the series.
+If it is `'auto'`, the border width is set to be 2 if there is border width in the series, 0 elsewise.
+
+If it is `'inherit'`, it always takes the border width of the series.
 
 ## selected(Object)
 
@@ -219,6 +217,22 @@ Icon of the legend.
     prefix = "##"
 ) }}
 
+### inactiveColor(Color) = '#ccc'
+
+Legend color when not selected.
+
+### inactiveBorderColor(Color) = '#ccc'
+
+Legend border color when not selected.
+
+### inactiveBorderWidth(number|string) = 'auto'
+
+Legend border width when not selected.
+
+If it is `'auto'`, the border width is set to be 2 if there is border width in the series, 0 elsewise.
+
+If it is `'inherit'`, it always takes the border width of the series.
+
 ### symbolRotate(number|string) = 'inherit'
 
 Rotation of the symbol, which can be `number | 'inherit'`. If it's `'inherit'`, `symbolRotate` of the series will be used.
@@ -226,6 +240,10 @@ Rotation of the symbol, which can be `number | 'inherit'`. If it's `'inherit'`, 
 ### textStyle(Object)
 
 Text style of legend.
+
+{{ use: partial-simple-text-style(
+    prefix: '###'
+) }}
 
 {{ use: partial-component-common-style(
     componentName = 'legend',
@@ -394,19 +412,23 @@ Duration of the page scroll animation.
     version = "4.4.0"
 ) }}
 
-The selector button in the legend component. Currently includes both a full selection and an inverse selection. The selector button doesn't display by default, the user can manually configure it.
+The selector button in the legend component. Currently, there are two types of button:
 
-Usage:
+- `all`: Select All
+- `inverse`: Inverse Selection
+
+The selector button doesn't display by default, you need to enable it manually as follows.
 
 ```ts
 selector: [
     {
-        type: 'all or inverse',
+        type: 'all',
         // can be any title you like
         title: 'All'
     },
     {
         type: 'inverse',
+        // can be any title you like
         title: 'Inv'
     }
 ]
@@ -511,3 +533,10 @@ ${name} line style. If its children have values as `'inherit'`, the values are i
     defaultShadowOffsetY = 0
 ) }}
 
+##${prefix} inactiveColor(Color) = '#ccc'
+
+Legend line stroke color when not selected.
+
+##${prefix} inactiveWidth(number) = 2
+
+Legend line stroke width when not selected.

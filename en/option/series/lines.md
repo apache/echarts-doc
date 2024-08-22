@@ -5,7 +5,7 @@
 
 **Lines graph**
 
-It is used to draw the line data with the information about "from" and "to"; and it is applied fot drawing the air routes on map, which visualizes these routes.
+It is used to draw the line data with the information about "from" and "to"; and it is applied for drawing the air routes on map, which visualizes these routes.
 
 ECharts 2.x uses the `markLine` to draw the migrating effect, while in ECharts 3, the `lines` graph is recommended to be used.
 
@@ -70,7 +70,7 @@ The above example uses a custom path of plane shape.
 
 ### symbolSize(Array|number) = 3
 
-The symbol size of special effect, which could be set as single number such as `10`. What's more, arrays could be used to decribe the width and height respectively. For instance, `[20, 10]` indicates `20` for width and  `10` for height.
+The symbol size of special effect, which could be set as single number such as `10`. What's more, arrays could be used to describe the width and height respectively. For instance, `[20, 10]` indicates `20` for width and  `10` for height.
 
 ### color(Color)
 
@@ -83,6 +83,14 @@ The length of trail of special effect.  The values from 0 to 1 could be set. Tra
 ### loop(boolean) = true
 
 Whether to loop the special effect animation.
+
+### roundTrip(boolean) = false
+
+{{ use: partial-version(
+    version = "5.4.0"
+) }}
+
+Whether to go back when the animation reach the end.
 
 ## large(boolean) = true
 
@@ -98,13 +106,13 @@ The threshold enabling the drawing optimization.
 
 ## symbol(string|Array) = 'none'
 
-Symbol type at the two ends of the line. It can be an array for two ends, or assigned seperately. See [data.symbol](~series-line.markLine.data.0.symbol) for more format information.
+Symbol type at the two ends of the line. It can be an array for two ends, or assigned separately. See [data.symbol](~series-line.markLine.data.0.symbol) for more format information.
 
 ## symbolSize(number|Array) = 10
 
-Symbol size at the two ends of the line. It can be an array for two ends, or assigned seperately.
+Symbol size at the two ends of the line. It can be an array for two ends, or assigned separately.
 
-**Attention: ** You cannot assgin width and height seperately as normal `symbolSize`.
+**Attention: ** You cannot assign width and height separately as normal `symbolSize`.
 
 ## lineStyle(Object)
 
@@ -124,7 +132,8 @@ The curveness of edge. The values from 0 to 1 could be set. The curveness would 
 Label settings. Does not work when [polyline](~series-lines.polyline) is `true`.
 
 {{ use: lines-label(
-    prefix = "##"
+    prefix = "##",
+    minMargin = true
 ) }}
 
 ## labelLayout(Object|Function)
@@ -200,6 +209,10 @@ the name of data.
     prefix = '##'
 ) }}
 
+{{ use: partial-data-child-group-id(
+    prefix = '##'
+) }}
+
 ### coords(Array)
 
 An array includes two ore more than two coordinates. Each coordinate could be `[x, y]` in [rectangular coordinate](~grid) and `[lng, lat]` in [geographic coordinate](~geo).
@@ -218,7 +231,8 @@ The line style of this data item.
 Label of a single line. Available when [polyline](~series-lines.polyline) is not `true`.
 
 {{ use: lines-label(
-    prefix = "###"
+    prefix = "###",
+    minMargin = true
 ) }}
 
 ### emphasis(Object)
@@ -258,6 +272,8 @@ Label of a single line. Available when [polyline](~series-lines.polyline) is not
     state = 'select'
 ) }}
 
+{{ use: partial-tooltip-in-series-data() }}
+
 {{ use: partial-marker(
     prefix = "#",
     seriesType = "lines"
@@ -284,6 +300,8 @@ Label of a single line. Available when [polyline](~series-lines.polyline) is not
     prefix = "#"
 ) }}
 
+{{ use: partial-tooltip-in-series() }}
+
 
 
 {{ target: lines-label }}
@@ -298,6 +316,16 @@ the position of label, options:
 + `'start'`
 + `'middle'`
 + `'end'`
+
+{{ if: ${minMargin} }}
+#${prefix} minMargin(number)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+Minimal margin between labels. Used when label has [layout](~series-lines.labelLayout).
+{{ /if }}
 
 #${prefix} formatter(string|Function)
 

@@ -8,11 +8,13 @@ Global echarts object, which can be accessed after including `echarts.js` in scr
 (dom: HTMLDivElement|HTMLCanvasElement, theme?: Object|string, opts?: {
     devicePixelRatio?: number,
     renderer?: string,
-    useDirtyRect?: boolean, // Since `5.0.0`
-    ssr?: boolean,          // Since `5.3.0`
+    useDirtyRect?: boolean,     // Since `5.0.0`
+    useCoarsePointer?: boolean, // Since `5.4.0`
+    pointerSize?: number,       // Since `5.4.0`
+    ssr?: boolean,              // Since `5.3.0`
     width?: number|string,
     height?: number|string,
-    locale?: string         // Since `5.0.0`
+    locale?: string             // Since `5.0.0`
 }) => ECharts
 ```
 Creates an ECharts instance, and returns an [echartsInstance](~echartsInstance). You shall not initialize multiple ECharts instances on a single container.
@@ -34,8 +36,10 @@ Creates an ECharts instance, and returns an [echartsInstance](~echartsInstance).
 
     + `devicePixelRatio` Ratio of one physical pixel to the size of one device independent pixels. Browser's `window.devicePixelRatio` is used by default.
     + `renderer`  Supports `'canvas'` or `'svg'`. See [Render by Canvas or SVG](${handbookPath}best-practices/canvas-vs-svg).
-    + `ssr` Whether to use server-side rendering. Only available in SVG rendering mode. When enabled, it will no longer render automatically every frame, you have to use the [renderToSVGString](~echartsInstance.renderToSVGString) method to get the rendered SVG string.
-    + `useDirtyRect`  Enable dirty rectangle rendering or not, `false` by default. See [New features in ECharts 5](${handbookPath}basics/release-note/v5-feature).
+    + `ssr` Whether to use server-side rendering. Only available in SVG rendering mode. When enabled, it will no longer render automatically every frame, you have to use the [renderToSVGString](~echartsInstance.renderToSVGString) method to get the rendered SVG string. See [Server Side Rendering](${handbookPath}how-to/cross-platform/server).
+    + `useDirtyRect` Enable dirty rectangle rendering or not, `false` by default. See [New features in ECharts 5](${handbookPath}basics/release-note/v5-feature).
+    + `useCoarsePointer` Whether to expand the response area when interacting with elements. `null` means enabling for mobile devices; `true` means always enabling; `false` means always disabling. See [Coarse Pointer](${handbookPath}how-to/interaction/coarse-pointer) for more information.
+    + `pointerSize` Size of expanded interaction size in pixels. It should be used along with `opts.useCoarsePointer`.
     + `width`  Specify width explicitly, in pixel. If setting to `null`/`undefined`/`'auto'`, width of `dom` (instance container) will be used.
     + `height`  Specify height explicitly, in pixel. If setting to `null`/`undefined`/`'auto'`, height of `dom` (instance container) will be used.
     + `locale` Specify the locale. There are two builtins: `'ZH'` and `'EN'`. Or you can use [echarts.registerLocale](~echarts.registerLocale) to register a new locale. Or supported locales can be referenced in [src/i18n](https://github.com/apache/echarts/tree/release/src/i18n).
@@ -127,7 +131,7 @@ echarts.use(
 );
 ```
 
-See [Use ECharts with bundler and NPM](${handbookPath}basics/import) for more detailed explaination.
+See [Use ECharts with bundler and NPM](${handbookPath}basics/import) for more detailed explanation.
 
 ## registerMap(Function)
 
@@ -263,6 +267,3 @@ Sets the platform-related API, which may need to be provided when non-browser pl
 
 
 {{ use: echarts-graphic }}
-
-
-

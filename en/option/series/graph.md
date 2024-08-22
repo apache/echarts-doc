@@ -35,7 +35,7 @@ Graph is a diagram to represent [nodes](~series-graph.nodes) and the [links](~se
 
 <ExampleUIControlVector default="0,0" dims="x,y" />
 
-Center of current view-port. It can be an arrary containing two `number`s in pixels or `string`s in percentage relative to the container width/height.
+Center of current view-port. It can be an array containing two `number`s in pixels or `string`s in percentage relative to the container width/height.
 `string` is supported from version `5.3.3`.
 
 Example:
@@ -60,7 +60,7 @@ Graph layout.
 
 + `'circular'` Adopt circular layout, see the example [Les Miserables](${galleryEditorPath}graph-circular-layout).
 
-+ `'force'` Adopt force-directed layout, see the example [Force](${galleryEditorPath}graph-force), the detail about configrations of layout are in [graph.force](~series-graph.force)
++ `'force'` Adopt force-directed layout, see the example [Force](${galleryEditorPath}graph-force), the detail about configurations of layout are in [graph.force](~series-graph.force)
 
 ## circular(Object)
 
@@ -146,7 +146,9 @@ Related zooming ratio of nodes when mouse zooming in or out. When it is set as 0
 
 <ExampleUIControlBoolean default="false" />
 
-If node is draggable. Only available when using force-directed layout.
+If node is draggable.
+
+Note that this option is only available when using [force-directed layout](~series-graph.force) before `v5.4.1`.
 
 {{ use: partial-symbol(
     prefix = '#',
@@ -207,7 +209,8 @@ The style of edge line. [lineStyle.color](~series-graph.lineStyle.color) can be 
 {{ use: partial-label(
     prefix = "##",
     defaultPosition = "'inside'",
-    formatter = true
+    formatter = true,
+    minMargin = true
 ) }}
 
 ## edgeLabel(Object)
@@ -357,9 +360,9 @@ Select state of nodes in this category.
 
 For the situation where there are multiple links between nodes, the curveness of each link is automatically calculated, not enabled by default.
 
-When set `true` to enable automatic curvature calculation, the default edge curvenness array length is `20`, if the number of edges between two nodes is more than `20`, please use `number` or `Array` to set the edge curvenness array.
+When set to `true`, it enables automatic curvature calculation. The default edge curveness array length is `20`, if the number of edges between two nodes is more than `20`, please use `number` or `Array` to set the edge curveness array.
 
-When set to `number`, it indicates the length of the edge curvenness array between two nodes, and the calculation result is given by the internal algorithm.
+When set to `number`, it indicates the length of the edge curveness array between two nodes, and the calculation result is given by the internal algorithm.
 
 When set to `Array`, it means that the curveness array is directly specified, and the multilateral curveness is directly selected from the array.
 
@@ -430,7 +433,8 @@ The style of this node.
 The label style of this node.
 
 {{ use: partial-label(
-    prefix = "###"
+    prefix = "###",
+    minMargin = true
 ) }}
 
 ### emphasis(Object)

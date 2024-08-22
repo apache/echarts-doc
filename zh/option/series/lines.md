@@ -83,6 +83,14 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 
 是否循环显示特效。
 
+### roundTrip(boolean) = false
+
+{{ use: partial-version(
+    version = "5.4.0"
+) }}
+
+当动画到达终点时，是否原路返回。
+
 ## large(boolean) = false
 
 是否启用大规模路径图的优化，在数据图形特别多的时候（>=5k）可以开启。
@@ -123,7 +131,8 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 标签相关配置。在 [polyline](~series-lines.polyline) 设置为 `true` 时无效。
 
 {{ use: lines-label(
-    prefix = "##"
+    prefix = "##",
+    minMargin = true
 ) }}
 
 ## labelLayout(Object|Function)
@@ -224,6 +233,10 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
     prefix = '##'
 ) }}
 
+{{ use: partial-data-child-group-id(
+    prefix = '##'
+) }}
+
 ### coords(Array)
 
 一个包含两个到多个二维坐标的数组。在 [polyline](~series-lines.polyline) 设置为 `true` 时支持多于两个的坐标。
@@ -242,7 +255,8 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 单个数据（单条线）的标签设置。在 [polyline](~series-lines.polyline) 设置为 `true` 时无效。
 
 {{ use: lines-label(
-    prefix = "###"
+    prefix = "###",
+    minMargin = true
 ) }}
 
 ### emphasis(Object)
@@ -282,6 +296,8 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
     state = 'select'
 ) }}
 
+{{ use: partial-tooltip-in-series-data() }}
+
 {{ use: partial-marker(
     prefix = "#",
     seriesType = "lines"
@@ -308,6 +324,8 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
     prefix = "#"
 ) }}
 
+{{ use: partial-tooltip-in-series() }}
+
 
 
 {{ target: lines-label }}
@@ -322,6 +340,16 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 + `'start'` 线的起始点。
 + `'middle'` 线的中点。
 + `'end'`   线的结束点。
+
+{{ if: ${minMargin} }}
+#${prefix} minMargin(number)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+用于控制标签之间的最小距离，当启用 [labelLayout](~series-lines.labelLayout) 时可能会用到。
+{{ /if }}
 
 #${prefix} formatter(string|Function)
 

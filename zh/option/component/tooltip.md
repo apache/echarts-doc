@@ -181,7 +181,7 @@ const option = {
 
 <ExampleUIControlEnum options="html,richText" default="html" />
 
-浮层的渲染模式，默认以 `'html` 即额外的 DOM 节点展示 tooltip；此外还可以设置为 `'richText'` 表示以富文本的形式渲染，渲染的结果在图表对应的 Canvas 中（目前 SVG 尚未支持富文本），这对于一些没有 DOM 的环境（如微信小程序）有更好的支持。
+浮层的渲染模式，默认以 `'html` 即额外的 DOM 节点展示 tooltip；此外还可以设置为 `'richText'` 表示以富文本的形式渲染，渲染的结果在图表对应的 Canvas 中，这对于一些没有 DOM 的环境（如微信小程序）有更好的支持。
 
 ## confine(boolean) = false
 
@@ -199,11 +199,33 @@ const option = {
     version = "4.7.0"
 ) }}
 
+（自 `v5.5.0` 已废弃，请使用 [appendTo](~tooltip.appendTo)。）
+
 是否将 tooltip 的 DOM 节点添加为 HTML 的 `<body>` 的子节点。只有当 [renderMode](~tooltip.renderMode) 为 `'html'` 是有意义的。
 
 默认值是 `false`。`false` 表示，tooltip 的 DOM 节点会被添加为本图表的 DOM container 的一个子孙节点。但是这种方式导致，如果本图表的 DOM container 的祖先节点有设置 `overflow: hidden`，那么当 tooltip 超出 container 范围使可能被截断。这个问题一定程度上可以用 [tooltip.confine](~tooltip.confine) 来解决，但是不一定能解决所有场景。
 
 所以这里我们提供了 `appendToBody: true` 来解决这件事。这也是常见的解决此类问题的一种方式。但是 `true` 并不定为默认值，因为要避免 break change，尤其是一些对于 tooltip 深入定制的使用。并且也避免一些未知的 bad case。
+
+注：CSS transform 的场景，这也可以使用。
+
+## appendTo(string|HTMLElement|Function)
+
+{{ use: partial-version(
+    version = "5.5.0"
+) }}
+
+将 tooltip 的 DOM 节点添加到哪个节点下。只有当 [renderMode](~tooltip.renderMode) 为 `'html'` 是有意义的。
+
+默认值是 `null`，表示 tooltip 的 DOM 节点会被添加为本图表的 DOM container 的一个子孙节点。但是这种方式导致，如果本图表的 DOM container 的祖先节点有设置 `overflow: hidden`，那么当 tooltip 超出 container 范围使可能被截断。这个问题一定程度上可以用 [tooltip.confine](~tooltip.confine) 来解决，但是不一定能解决所有场景。
+
+对于这样的场景，可以指定 `appendTo`。当其为 `Function` 形式时，接口形如
+
+```ts
+(chartContainer: HTMLElement) => HTMLElement | undefined | null
+```
+
+即返回 tooltip 的 DOM 节点应该添加到哪个节点下。返回 `undefined` 或 `null` 表示采用上述的默认逻辑。返回 `HTMLElement` 表示添加到该节点下。
 
 注：CSS transform 的场景，这也可以使用。
 
@@ -260,4 +282,3 @@ className: 'echarts-tooltip echarts-tooltip-dark'
 + `'valueDesc'`
 
     根据数据值, 降序排列。
-

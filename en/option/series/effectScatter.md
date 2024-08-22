@@ -78,7 +78,7 @@ The maximum zooming scale of ripples in animation.
 The brush type for ripples. options: `'stroke'` and `'fill'`.
 
 {{ use: partial-coord-sys(
-    seriesType = "bar",
+    seriesType = "effectScatter",
     coordSysDefault = "'cartesian2d'",
     cartesian2d = true,
     polar = true,
@@ -103,7 +103,8 @@ The brush type for ripples. options: `'stroke'` and `'fill'`.
 {{ use: partial-label(
     prefix = "##",
     defaultPosition = "'inside'",
-    formatter = true
+    formatter = true,
+    minMargin = true
 ) }}
 
 ## labelLine(Object)
@@ -218,7 +219,8 @@ Configurations of select state. Available when [selectedMode](~series-effectScat
 
 {{ use: partial-label(
     prefix = "###",
-    defaultPosition = "inside"
+    defaultPosition = "inside",
+    minMargin = true
 ) }}
 
 ### labelLine(Object)

@@ -1,23 +1,14 @@
 
 {{ target: partial-sunburst-label-helper }}
 
-#${prefix} rotate(string|number) = 'radial'
-
-<ExampleUIControlEnum options="radial,tangential" default="radial" />
-
-{{ if: ${prefix} === '##' }}
-如果是 `number` 类型，则表示标签的旋转角，从 -90 度到 90 度，正值是逆时针。
-
-除此之外，还可以是字符串 `'radial'` 表示径向旋转、`'tangential'` 表示切向旋转。
-
-默认径向旋转，如果不需要文字旋转，可以将其设为 `0`。
+{{ use: partial-label-rotate-tangential(
+    prefix = ${prefix},
+    defaultRotate = "'radial'"
+) }}
 
 下面的例子展示了不同的 `rotate` 设置方法：
 
 ~[700x400](${galleryViewPath}sunburst-label-rotate&edit=1&reset=1)
-{{ else }}
-同 [label.rotate](~sunburst.label.rotate)
-{{ /if }}
 
 #${prefix} align(string) = 'center'
 
@@ -41,9 +32,16 @@
     prefix = ${prefix},
     defaultPosition = "'inside'",
     formatter = true,
+    formatterExtra = {
+        treePathInfo: {
+            desc: '当前节点的祖先节点（包括自身）',
+            type: 'Array'
+        }
+    },
     defaultShowLabel = "true",
     noRotate = true,
-    noAlign = true
+    noAlign = true,
+    minMargin = ${minMargin}
 ) }}
 
 
@@ -59,7 +57,8 @@
 {{ use: partial-label-desc() }}
 
 {{ use: partial-sunburst-label-helper(
-    prefix = ${prefix} + '#'
+    prefix = ${prefix} + '#',
+    minMargin = ${state} === 'normal'
 ) }}
 
 #${prefix} labelLine(Object)
@@ -401,6 +400,8 @@ const option = {
     state = 'normal'
 ) }}
 
+{{ use: partial-tooltip-in-series-data() }}
+
 ## nodeClick(boolean|string) = 'rootToNode'
 
 <ExampleUIControlEnum default="rootToNode" options="rootToNode,link" />
@@ -428,6 +429,18 @@ function(nodeA, nodeB) {
 <ExampleUIControlBoolean />
 
 如果数据没有 `name`，是否需要渲染文字。
+
+## clockwise(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
+
+旭日图的扇区是否是顺时针排布。
+
+## startAngle(number) = 90
+
+<ExampleUIControlAngle step="1" min="0" max="360" default="90" />
+
+起始角度，支持范围[0, 360]。
 
 {{ use: partial-sunburst-label-props(
     prefix = "#",
@@ -554,10 +567,11 @@ series: {
     state = 'select'
 ) }}
 
+{{ use: partial-tooltip-in-series() }}
+
 {{ use: partial-animation(
     prefix = "#",
     defaultAnimationEasing = "'cubicOut'",
     defaultAnimationDuration = 1000,
     defaultAnimationDurationUpdate = 500
 ) }}
-

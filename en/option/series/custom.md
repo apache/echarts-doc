@@ -271,11 +271,11 @@ See a [sample](${galleryEditorPath}custom-bar-trend).
 @param {number|string} [opt.barMaxWidth] Max width of a bar.
         Can be an absolute value like `40` or a percent value like `'60%'`.
         The percent is based on the calculated category width.
-        Has higer priority than `opt.barWidth`.
+        Has higher priority than `opt.barWidth`.
 @param {number|string} [opt.barMinWidth] Min width of a bar.
         Can be an absolute value like `40` or a percent value like `'60%'`.
         The percent is based on the calculated category width.
-        Has higer priority than `opt.barWidth`.
+        Has higher priority than `opt.barWidth`.
 @param {number} [opt.barGap] Gap of bars in a group.
 @param {number} [opt.barCategoryGap] Gap of groups.
 @return {Array.<Object>} [{
@@ -309,7 +309,7 @@ Obtain font string, which can be used on style setting directly.
 ##### getWidth(Function)
 
 ```
-@return {number} Width of echarts containter.
+@return {number} Width of echarts container.
 ```
 
 ##### getHeight(Function)
@@ -441,6 +441,10 @@ Name of data item.
 Value of data item.
 
 {{ use: partial-data-group-id(
+    prefix = '##'
+) }}
+
+{{ use: partial-data-child-group-id(
     prefix = '##'
 ) }}
 

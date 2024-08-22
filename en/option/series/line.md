@@ -24,7 +24,7 @@ Broken line chart relates all the data points [symbol](~series-line.symbol) by b
 {{ use: partial-colorby() }}
 
 {{ use: partial-coord-sys(
-    seriesType = "bar",
+    seriesType = "line",
     coordSysDefault = "'cartesian2d'",
     cartesian2d = true,
     polar = true,
@@ -118,7 +118,8 @@ See the example using different `step` options:
 {{ use: partial-label(
     prefix = "##",
     defaultPosition = "'top'",
-    formatter = true
+    formatter = true,
+    minMargin = true
 ) }}
 
 ## endLabel(Object)
@@ -132,7 +133,8 @@ Label on the end of line.
 {{ use: partial-label(
     prefix = "##",
     formatter = true,
-    noPosition = true
+    noPosition = true,
+    minMargin = true
 ) }}
 
 ### valueAnimation(boolean)
@@ -299,13 +301,14 @@ Here are 2 examples of broken line chart with dual value axis, showing the diffe
 
 ## sampling(string)
 
-The dowmsampling strategy used when the data size is much larger than pixel size. It will improve the performance when turned on. Defaults to be turned off, indicating that all the data points will be drawn.
+The downsampling strategy used when the data size is much larger than pixel size. It will improve the performance when turned on. Defaults to be turned off, indicating that all the data points will be drawn.
 
 Options:
 + `'lttb'` Use Largest-Triangle-Three-Bucket algorithm to filter points. It will keep the trends and extremas.
 + `'average'` Use average value of filter points
-+ `'max'` Use maximum value of filter points
 + `'min'` Use minimum value of filter points
++ `'max'` Use maximum value of filter points
++ `'minmax'` Use maximum extremum absolute value of filter points (Since `v5.5.0`)
 + `'sum'` Use sum of filter points
 
 {{ use: partial-series-dimensions(
@@ -338,6 +341,10 @@ The value of a single data item.
     prefix = '##'
 ) }}
 
+{{ use: partial-data-child-group-id(
+    prefix = '##'
+) }}
+
 {{ use: partial-symbol(
     defaultSymbol = "'circle'",
     defaultSymbolSize = 4,
@@ -351,7 +358,8 @@ The style of the text of single data point.
 
 {{ use: partial-label(
     prefix = "###",
-    defaultPosition = "top"
+    defaultPosition = "top",
+    minMargin = true
 ) }}
 
 ### labelLine(Object)
@@ -491,3 +499,4 @@ Select state of specified single data.
     prefix = "####",
     hasInherit = ${state} === 'emphasis'
 ) }}
+

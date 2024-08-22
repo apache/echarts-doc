@@ -265,8 +265,8 @@ The value of a data item.
 Line style.
 
 {{ use: partial-line-style(
-    prefix = "##",
-    defaultWidth = 2,
+    prefix = "#" + ${prefix},
+    defaultWidth = 1,
     defaultOpacity = 0.45
 ) }}
 
@@ -278,9 +278,11 @@ Line style.
 
 ##${prefix} lineStyle(Object)
 
+Line style in emphasis state.
+
 {{ use: partial-line-style(
     prefix = "##" + ${prefix},
-    defaultWidth = 2,
+    defaultWidth = 1,
     defaultOpacity = 0.45
 ) }}
 

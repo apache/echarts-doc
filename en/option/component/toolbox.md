@@ -64,7 +64,7 @@ Whether to show the tool.
 
 #### title(string) = '${title}'
 
-#### icon(*)
+#### icon(string)
 
 {{ use: partial-icon-image-path() }}
 
@@ -391,7 +391,7 @@ the different types of icon path , which could be configurated individually.
 
 #### title(Object)
 
-Title for different types, can be configured seperately.
+Title for different types, can be configured separately.
 
 ##### line(string) = 'Switch to Line Chart'
 
@@ -515,7 +515,7 @@ option = {
         tooltip: { // same as option.tooltip
             show: true,
             formatter: function (param) {
-                return return '<div>' + param.title + '</div>'; // user-defined DOM structure
+                return '<div>' + param.title + '</div>'; // user-defined DOM structure
             },
             backgroundColor: '#222',
             textStyle: {

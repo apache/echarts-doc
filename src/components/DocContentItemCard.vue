@@ -335,7 +335,7 @@ $hierarchy-guider-color: #E0E6F1;
             float: right;
             font-size: 14px;
             cursor: pointer;
-
+            user-select: none;
             color: #555;
 
             i {

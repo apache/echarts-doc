@@ -250,6 +250,13 @@ const option = {
 + `'move'` 或 `'pan'`：只能够平移。
 + `true`：缩放和平移均可。
 
+## scaleLimit(Object)
+
+{{ use: partial-scale-limit(
+    prefix = "##",
+    version = "5.5.1"
+) }}
+
 ## nodeClick(boolean|string) = 'zoomToNode'
 
 点击节点后的行为。可取值为：
@@ -283,11 +290,11 @@ const option = {
 是否显示面包屑。
 
 {{ use: partial-rect-layout(
-    componentName = "asdf ",
+    componentName = "面包屑",
     prefix = "##",
     noZ = true,
     defaultLeft = "'center'",
-    defaultBottom = 0
+    defaultTop = "'bottom'"
 ) }}
 
 ### height(number) = 22
@@ -310,12 +317,8 @@ const option = {
     prefix = "###",
     name = "面包屑",
     defaultColor = "rgba(0,0,0,0.7)",
-    defaultBorderColor = "rgba(255,255,255,0.7)",
-    defaultBorderWidth = 1,
-    defaultShadowColor = 'rgba(150,150,150,1)',
-    defaultShadowBlur = 3,
-    defaultShadowOffsetX = 0,
-    defaultShadowOffsetY = 0
+    defaultBorderColor = "''",
+    defaultBorderWidth = 1
 ) }}
 
 #### textStyle(Object)
@@ -326,6 +329,9 @@ const option = {
 ) }}
 
 ### emphasis(Object)
+{{ use: partial-version(
+    version = "5.4.0"
+) }}
 
 #### itemStyle(Object)
 
@@ -333,13 +339,9 @@ const option = {
     prefix = "####",
     name = "面包屑",
     hasInherit = true,
-    defaultColor = "rgba(0,0,0,0.7)",
-    defaultBorderColor = "rgba(255,255,255,0.7)",
-    defaultBorderWidth = 1,
-    defaultShadowColor = 'rgba(150,150,150,1)',
-    defaultShadowBlur = 3,
-    defaultShadowOffsetX = 0,
-    defaultShadowOffsetY = 0
+    defaultColor = "rgba(0,0,0,0.9)",
+    defaultBorderColor = "''",
+    defaultBorderWidth = 1
 ) }}
 
 ##### textStyle(Object)
@@ -472,7 +474,7 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
             {
                 value: 2323,    // value字段的值，对应到面积大小。
                                 // 也可以是数组，如 [2323, 43, 55]，则数组第一项对应到面积大小。
-                                // 数组其他项可以用于额外的视觉映射，详情参见 series-treemp.levels。
+                                // 数组其他项可以用于额外的视觉映射，详情参见 series-treemap.levels。
                 id: 'someid-1', // id 不是必须设置的。
                                 // 但是如果想使用 API 来改变某个节点，需要用 id 来定位。
                 name: 'description of this node', // 显示在矩形中的描述文字。
@@ -702,7 +704,14 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
     prefix = ${prefix} + "#",
     defaultPadding = 5,
     defaultPosition = "'inside'",
-    formatter = true
+    formatter = true,
+    formatterExtra = {
+        treeAncestors: {
+            desc: '当前节点的祖先节点（包括自身）',
+            type: 'Array'
+        }
+    },
+    minMargin = true
 ) }}
 
 #${prefix} upperLabel(Object)
@@ -724,7 +733,13 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 {{ use: partial-label(
     prefix = ${prefix} + "#",
     defaultPosition = "'inside'",
-    formatter = true
+    formatter = true,
+    formatterExtra = {
+        treeAncestors: {
+            desc: '当前节点的祖先节点（包括自身）',
+            type: 'Array'
+        }
+    }
 ) }}
 
 ##${prefix} height(number) = 20
@@ -888,7 +903,13 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 {{ use: partial-label(
     prefix = ${prefix} + "#",
     defaultPosition = "'inside'",
-    formatter = true
+    formatter = true,
+    formatterExtra = {
+        treeAncestors: {
+            desc: '当前节点的祖先节点（包括自身）',
+            type: 'Array'
+        }
+    }
 ) }}
 
 #${prefix} labelLine(Object)
@@ -904,7 +925,13 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 {{ use: partial-label(
     prefix = ${prefix} + "#",
     defaultPosition = "'inside'",
-    formatter = true
+    formatter = true,
+    formatterExtra = {
+        treeAncestors: {
+            desc: '当前节点的祖先节点（包括自身）',
+            type: 'Array'
+        }
+    }
 ) }}
 
 #${prefix} itemStyle(Object)

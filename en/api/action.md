@@ -113,13 +113,13 @@ dispatchAction({
 })
 ```
 
-## toggleSelected(Action)
+## toggleSelect(Action)
 
 Toggle selected status of specified data.
 
 ```ts
 dispatchAction({
-    type: 'toggleSelected',
+    type: 'toggleSelect',
 
     {{ use: action-series-query }}
 
@@ -396,7 +396,8 @@ Actions related to [geo](option.html#geo) component, [geo](option.html#geo) shou
 
 {{ use: action-select(
     componentType='geo',
-    name='geo region'
+    name='geo region',
+    single=true
 ) }}
 
 
@@ -415,10 +416,10 @@ myChart.dispatchAction({
              // If "areas" is empty, all of the select-boxes will be deleted.
         { // The first area.
 
-            // Indicate that this area is a "coodinate system area", belonging
+            // Indicate that this area is a "coordinate system area", belonging
             // to a geo coordinate system with getIndex: 0.
             // We can also use xAxisIndex or yAxisIndex to indicate that
-            // this area belongs to a catesian coodinate system.
+            // this area belongs to a catesian coordinate system.
             // If no coordinate system is specified, this area is a
             // "global area", which does not belong to any coordinate system.
             // If an area belongs to a coordinate system, this area moves
@@ -493,6 +494,38 @@ api.dispatchAction({
 });
 ```
 
+## treemap
+
+Actions related to [treemap series](option.html#series-treemap).
+
+### treemapZoomToNode(Action)
+Zoom to the target node.
+
+```ts
+dispatchAction({
+    type: 'treemapZoomToNode',
+
+    {{ use: action-series-query }}
+
+    // target node id or name (`name` is invalid if the target node has `id`)
+    targetNodeId: string
+})
+```
+
+### treemapRootToNode(Action)
+Zoom to and enter the target node.
+
+```ts
+dispatchAction({
+    type: 'treemapRootToNode',
+
+    {{ use: action-series-query }}
+
+    // target node `id` or `name` (`name` is invalid if the target node has `id`)
+    targetNodeId: string
+})
+```
+
 
 
 {{ target: action-select }}
@@ -505,7 +538,11 @@ dispatchAction({
 
     {{ use: action-component-query(componentType = 'geo') }}
 
+    {{ if: ${single} }}
+    {{ use: action-component-item-query-single(componentType = 'geo', componentItemDesc = 'region') }}
+    {{ else }}
     {{ use: action-component-item-query-multiple(componentType = 'geo', componentItemDesc = 'region') }}
+    {{ /if }}
 })
 ```
 
@@ -520,7 +557,11 @@ dispatchAction({
 
     {{ use: action-component-query(componentType = 'geo') }}
 
+    {{ if: ${single} }}
+    {{ use: action-component-item-query-single(componentType = 'geo', componentItemDesc = 'region') }}
+    {{ else }}
     {{ use: action-component-item-query-multiple(componentType = 'geo', componentItemDesc = 'region') }}
+    {{ /if }}
 })
 ```
 **EVENT:** [${componentType}unselected](~events.${componentType}unselected)
@@ -534,7 +575,11 @@ dispatchAction({
 
     {{ use: action-component-query(componentType = 'geo') }}
 
+    {{ if: ${single} }}
+    {{ use: action-component-item-query-single(componentType = 'geo', componentItemDesc = 'region') }}
+    {{ else }}
     {{ use: action-component-item-query-multiple(componentType = 'geo', componentItemDesc = 'region') }}
+    {{ /if }}
 })
 ```
 **EVENT:** [${componentType}selectchanged](~events.${componentType}selectchanged)

@@ -178,7 +178,14 @@ center: [115.97, '30%']
 {{ use: partial-label(
     prefix = "##",
     defaultShowLabel = true,
-    formatter1d = true
+    formatter1d = true,
+    formatterExtra = {
+        treeAncestors: {
+            desc: '当前节点的祖先节点（包括自身）',
+            type: 'Array'
+        }
+    },
+    minMargin = true
 ) }}
 
 ## labelLayout(Object|Function)
@@ -206,7 +213,7 @@ center: [115.97, '30%']
 {{ use: partial-focus-blur-scope(
     isTree = true,
     hasRelative = true,
-    version = "5.3.3"
+    relativeVersion = "5.3.3"
 ) }}
 
 {{ use: tree-state(
@@ -259,7 +266,13 @@ center: [115.97, '30%']
 {{ use: partial-label(
     prefix = "###",
     defaultShowLabel = true,
-    formatter1d = true
+    formatter1d = true,
+    formatterExtra = {
+        treeAncestors: {
+            desc: '当前节点的祖先节点（包括自身）',
+            type: 'Array'
+        }
+    }
 ) }}
 
 ### itemStyle(Object)
@@ -379,7 +392,8 @@ center: [115.97, '30%']
 该节点的标签。
 
 {{ use: partial-label(
-    prefix = "###"
+    prefix = "###",
+    minMargin = true
 ) }}
 
 ### emphasis(Object)
@@ -486,7 +500,13 @@ center: [115.97, '30%']
 
 {{ use: partial-label(
     prefix = "#" + ${prefix},
-    formatter1d = ${prefix} === '##'
+    formatter1d = ${prefix} === '##',
+    formatterExtra = {
+        treeAncestors: {
+            desc: '当前节点的祖先节点（包括自身）',
+            type: 'Array'
+        }
+    }
 ) }}
 
 

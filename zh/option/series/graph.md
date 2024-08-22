@@ -160,7 +160,9 @@ edgeLength: [10, 50]
 
 <ExampleUIControlBoolean default="false" />
 
-节点是否可拖拽，只在使用力引导布局的时候有用。
+节点是否可拖拽。
+
+注意：`v5.4.1` 之前的版本只在使用[力引导布局](~series-graph.force)的时候才有用。
 
 {{ use: partial-symbol(
     prefix = '#',
@@ -212,7 +214,8 @@ edgeSymbol: ['circle', 'arrow']
 {{ use: partial-label(
     prefix = "##",
     defaultPosition = "'inside'",
-    formatter = true
+    formatter = true,
+    minMargin = true
 ) }}
 
 ## edgeLabel(Object)
@@ -438,7 +441,8 @@ data: [{
 该节点标签的样式。
 
 {{ use: partial-label(
-    prefix = "###"
+    prefix = "###",
+    minMargin = true
 ) }}
 
 ### emphasis(Object)

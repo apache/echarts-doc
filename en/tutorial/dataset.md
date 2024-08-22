@@ -211,7 +211,7 @@ var option2 = {
         type: 'line',
         // Dimensions declared in series will be adapted with higher priority.
         dimensions: [
-            null, // Set as null means we dont want to set dimension name.
+            null, // Set as null means we don't want to set dimension name.
             'amount',
             {name: 'product', type: 'ordinal'}
         ]

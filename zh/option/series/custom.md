@@ -431,6 +431,10 @@ renderItem 函数的第二个参数。
     prefix = '##'
 ) }}
 
+{{ use: partial-data-child-group-id(
+    prefix = '##'
+) }}
+
 ### itemStyle(Object)
 
 {{ use: partial-item-style(

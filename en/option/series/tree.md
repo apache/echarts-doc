@@ -37,7 +37,7 @@ The tree diagram is mainly used to visualize the tree data structure, which is a
 
 ## center(Array)
 
-Center of current view-port. It can be an arrary containing two `number`s in pixels or `string`s in percentage relative to the container width/height.
+Center of current view-port. It can be an array containing two `number`s in pixels or `string`s in percentage relative to the container width/height.
 `string` is supported from version `5.3.3`.
 
 Example:
@@ -135,7 +135,14 @@ The style of each node in the tree, where [itemStyle.color](~series-tree.itemSty
 {{ use: partial-label(
     prefix = "##",
     defaultShowLabel = true,
-    formatter1d = true
+    formatter1d = true,
+    formatterExtra = {
+        treeAncestors: {
+            desc: 'The ancestors of current node (including self)',
+            type: 'Array'
+        }
+    },
+    minMargin = true
 ) }}
 
 ## labelLayout(Object|Function)
@@ -163,7 +170,7 @@ Configurations of emphasis state.
 {{ use: partial-focus-blur-scope(
     isTree = true,
     hasRelative = true,
-    version = "5.3.3"
+    relativeVersion = "5.3.3"
 ) }}
 
 {{ use: tree-state(
@@ -216,7 +223,13 @@ Describes the style of the text label corresponding to the leaf node.
 {{ use: partial-label(
     prefix = "###",
     defaultShowLabel = true,
-    formatter1d = true
+    formatter1d = true,
+    formatterExtra = {
+        treeAncestors: {
+            desc: 'The ancestors of current node (including self)',
+            type: 'Array'
+        }
+    }
 ) }}
 
 ### itemStyle(Object)
@@ -336,7 +349,8 @@ Defines the style of the tree edge.
 The label of the node.
 
 {{ use: partial-label(
-    prefix = "###"
+    prefix = "###",
+    minMargin = true
 ) }}
 
 ### emphasis(Object)
@@ -443,7 +457,13 @@ Defines the style of the tree edge.
 
 {{ use: partial-label(
     prefix = "#" + ${prefix},
-    formatter1d = ${prefix} === '##'
+    formatter1d = ${prefix} === '##',
+    formatterExtra = {
+        treeAncestors: {
+            desc: 'The ancestors of current node (including self)',
+            type: 'Array'
+        }
+    }
 ) }}
 
 

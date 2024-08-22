@@ -5,6 +5,10 @@
 
 group 是唯一的可以有子节点的容器。group 可以用来整体定位一组图形元素。
 
+{{ if: ${usageType} === 'customSeries' }}
+注意，如果其任意子节点是 `null`，这表示该子节点不再存在。所以，如果再次调用 `setOption` 时，一个子节点被设为 `null`，这意味着它之前对应序号的元素会被删除。如果希望一个子节点保持不变，应在新的配置项中使用 `{}` 表示。并且，仅当 group 的子节点在之前的 `setOption` 中存在时，才可以使用 `null/undefined/{}` 作为子节点。
+{{ /if }}
+
 {{ use: partial-graphic-cpt-common-props(
     type = 'group',
     prefix = ${prefix},
@@ -271,7 +275,7 @@ group 是唯一的可以有子节点的容器。group 可以用来整体定位�
 
 ###${prefix} font(string)
 
-字体大小、字体类型、粗细、字体样式。格式参见 [css font](https://developer.mozilla.org/en-US/docs/Web/CSS/font)。
+字体大小、字体类型、粗细、字体样式。格式参见 [css font](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font)。
 
 例如：
 ```
@@ -290,6 +294,23 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
 水平对齐方式，取值：`'left'`, `'center'`, `'right'`。
 
 如果为 `'left'`，表示文本最左端在 `x` 值上。如果为 `'right'`，表示文本最右端在 `x` 值上。
+
+###${prefix} width(number)
+
+文本限制宽度，用于提供 [overflow](~${optionPath}.${hostName}${symbolVisit}text.style.overflow) 的参考。
+
+###${prefix} overflow(string)
+
+当文本内容超出 [width](~${optionPath}.${hostName}${symbolVisit}text.style.width) 时的文本显示策略，取值：`'break'`, `'breakAll'`, `'truncate'`, `'none'`。
+
+- `'break'`: 尽可能保证完整的单词不被截断(类似 `CSS` 中的 `word-break: break-word;`)
+- `'breakAll'`: 可在任意字符间断行
+- `'truncate'`: 截断文本屏显示 '...'，可以使用 [ellipsis](~${optionPath}.${hostName}${symbolVisit}text.style.ellipsis) 来自定义省略号的显示
+- `'none'`: 不换行
+
+###${prefix} ellipsis(string)
+
+当 [overflow](~${optionPath}.${hostName}${symbolVisit}text.style.overflow) 设置为 `'truncate'` 时生效，默认为 `...`。
 
 ###${prefix} textVerticalAlign(string)
 
@@ -1165,7 +1186,6 @@ Transform 相关的属性：`'x'`、 `'y'`、`'scaleX'`、`'scaleY'`、`'rotatio
     prefix = ${prefix}
 ) }}
 
-
 ##${prefix} updateAnimation(Object)
 
 更新属性的动画配置。
@@ -1251,7 +1271,6 @@ interface Keyframe {
 是否开启形变动画。
 
 开启 [universalTransition](~series-custom.universalTransition) 后如果前后两次更新图形类型不一样，比如从`rect`变为了`circle`，会通过形变动画过渡。如果想要关闭可以设置该属性为`false`。
-
 {{ /if }}
 
 {{ if: ${usageType} === 'graphicComponent' }}
@@ -1321,7 +1340,7 @@ interface Keyframe {
     这种方式易于使整体都限制在父元素范围中。
 
 + `'raw'`：
-    表示仅仅用自身（不包括子节点）的没经过 tranform 的包围盒进行定位。
+    表示仅仅用自身（不包括子节点）的没经过 transform 的包围盒进行定位。
     这种方式易于内容超出父元素范围的定位方式。
 
 ##${prefix} z(number) = 0
@@ -1530,14 +1549,15 @@ Position of `textContent`.
 {{ /if }}
 
 
+
 {{ target: partial-graphic-cpt-style-prop-common }}
 
 注：关于图形元素中更多的样式设置（例如 [富文本标签](tutorial.html#%E5%AF%8C%E6%96%87%E6%9C%AC%E6%A0%87%E7%AD%BE)），参见 [zrender/graphic/Displayable](https://ecomfe.github.io/zrender-doc/public/api.html#zrenderdisplayable) 中的 style 相关属性。
 
 注意，这里图形元素的样式属性名称直接源于 zrender，和 `echarts label`、`echarts itemStyle` 等处同样含义的样式属性名称或有不同。例如，有如下对应：
 
-+ [itemStyle.color](~series-scatter.label.color) => `style.fill`
-+ [itemStyle.borderColor](~series-scatter.label.color) => `style.stroke`
++ [itemStyle.color](~series-scatter.itemStyle.color) => `style.fill`
++ [itemStyle.borderColor](~series-scatter.itemStyle.borderColor) => `style.stroke`
 + [label.color](~series-scatter.label.color) => `style.textFill`
 + [label.textBorderColor](~series-scatter.label.textBorderColor) => `style.textStroke`
 + ...
@@ -1548,11 +1568,36 @@ Position of `textContent`.
 
 ###${prefix} stroke(string) = ${stroke|default("null")}
 
-笔画颜色。
+线条颜色。
 
 ###${prefix} lineWidth(number) = ${lineWidth|default("0")}
 
-笔画宽度。
+线条宽度。
+
+###${prefix} lineDash(string|number|Array) = 'solid'
+
+线条样式。可选：
+
++ `'solid'`
++ `'dashed'`
++ `'dotted'`
++ `number` 或 `number` 数组。详见 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/setLineDash)。
+
+###${prefix} lineDashOffset(number) = 0
+
+用于设置虚线的偏移量。详见 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/lineDashOffset)。
+
+###${prefix} lineCap(string) = 'butt'
+
+用于指定线段末端的绘制方式。详见 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/lineCap)。
+
+###${prefix} lineJoin(string) = 'miter'
+
+设置线条转折点的样式。详见 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/lineJoin)。
+
+###${prefix} miterLimit(number) = 10
+
+设置斜接面限制比例的属性。详见 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/miterLimit)。
 
 ###${prefix} shadowBlur(number) = undefined
 
@@ -1569,6 +1614,10 @@ Position of `textContent`.
 ###${prefix} shadowColor(number) = undefined
 
 阴影颜色。
+
+###${prefix} opacity(number) = 1
+
+不透明度。
 
 {{ use: partial-graphic-cpt-sub-prop-transition(
     prefix = ${prefix},
@@ -1654,6 +1703,8 @@ Position of `textContent`.
 }
 ```
 
+
+
 {{ target: partial-graphic-cpt-animation }}
 
 ###${prefix} duration(number)
@@ -1667,6 +1718,8 @@ Position of `textContent`.
 ###${prefix} delay(number)
 
 动画延迟时长，单位 ms
+
+
 
 {{ target: partial-graphic-cpt-sub-prop-xy }}
 
@@ -1828,6 +1881,7 @@ Position of `textContent`.
 ##${prefix} originY(number) = 0
 
 元素旋转和缩放原点的 y 像素位置。
+
 
 
 {{ target: partial-graphic-cpt-focus-blur }}

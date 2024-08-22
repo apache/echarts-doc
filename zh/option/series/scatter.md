@@ -88,7 +88,7 @@ const option = {
 {{ use: partial-colorby() }}
 
 {{ use: partial-coord-sys(
-    seriesType = "bar",
+    seriesType = "scatter",
     coordSysDefault = "'cartesian2d'",
     cartesian2d = true,
     polar = true,
@@ -119,7 +119,8 @@ const option = {
 {{ use: partial-label(
     prefix = "##",
     defaultPosition = "'inside'",
-    formatter = true
+    formatter = true,
+    minMargin = true
 ) }}
 
 ## labelLine(Object)
@@ -244,6 +245,10 @@ const option = {
     prefix = '##'
 ) }}
 
+{{ use: partial-data-child-group-id(
+    prefix = '##'
+) }}
+
 {{ use: partial-symbol(
     prefix = "##",
     name = "单个数据"
@@ -253,7 +258,8 @@ const option = {
 
 {{ use: partial-label(
     prefix = "###",
-    defaultPosition = "inside"
+    defaultPosition = "inside",
+    minMargin = true
 ) }}
 
 ### labelLine(Object)

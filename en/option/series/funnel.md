@@ -87,7 +87,8 @@ Horizontal align. Defaults to align center. Can be 'left', 'right', 'center'.
 {{ use: partial-funnel-label(
     prefix = "##",
     position = true,
-    formatter = true
+    formatter = true,
+    minMargin = true
 ) }}
 
 ## labelLine(Object)
@@ -219,7 +220,8 @@ The label configuration of a single data item.
 {{ use: partial-funnel-label(
     prefix = "###",
     position = true,
-    formatter = false
+    formatter = false,
+    minMargin = true
 ) }}
 
 ### labelLine(Object)
@@ -340,6 +342,16 @@ Label position.
 + `'center'` equals to `'inside'`.
 
 [labelLine](~series-funnel.labelLine) can be used to guide to the corresponding trapezoid when label is not inside.
+{{ /if }}
+
+{{ if: ${minMargin} }}
+#${prefix} minMargin(number)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+Minimal margin between labels. Used when label has [layout](~series-funnel.labelLayout).
 {{ /if }}
 
 {{ if: ${formatter} }}

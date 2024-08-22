@@ -111,13 +111,13 @@ dispatchAction({
 })
 ```
 
-## toggleSelected(Action)
+## toggleSelect(Action)
 
 切换选中状态
 
 ```ts
 dispatchAction({
-    type: 'toggleSelected',
+    type: 'toggleSelect',
 
     {{ use: action-series-query }}
 
@@ -388,12 +388,14 @@ dispatchAction({
 ```
 
 **EVENT:** [restore](~events.restore)
+
 ## geo
-[地图组件](option.html#series-geo)相关的行为，必须引入[地图组件](option.html#geo)后才能使用。
+[地图组件](option.html#geo)相关的行为，必须引入[地图组件](option.html#geo)后才能使用。
 
 {{ use: action-select(
     componentType='geo',
-    name='地图区域'
+    name='地图区域',
+    single=true
 ) }}
 
 ## brush
@@ -479,6 +481,39 @@ api.dispatchAction({
 });
 ```
 
+## treemap
+
+[矩形树图](option.html#series-treemap)相关的行为。
+
+### treemapZoomToNode(Action)
+缩放到指定节点。
+
+```ts
+dispatchAction({
+    type: 'treemapZoomToNode',
+
+    {{ use: action-series-query }}
+
+    // 目标节点 id 或 name （如果节点指定了 id，则不能使用 name）
+    targetNodeId: string
+})
+```
+
+### treemapRootToNode(Action)
+缩放并进入到指定节点。
+
+```ts
+dispatchAction({
+    type: 'treemapRootToNode',
+
+    {{ use: action-series-query }}
+
+    // 目标节点 id 或 name （如果节点指定了 id，则不能使用 name）
+    targetNodeId: string
+})
+```
+
+
 
 {{ target: action-select }}
 ### ${componentType}Select(Action)
@@ -490,7 +525,11 @@ dispatchAction({
 
     {{ use: action-component-query(componentType = 'geo') }}
 
+    {{ if: ${single} }}
+    {{ use: action-component-item-query-single(componentType = 'geo', componentItemDesc = 'region') }}
+    {{ else }}
     {{ use: action-component-item-query-multiple(componentType = 'geo', componentItemDesc = 'region') }}
+    {{ /if }}
 })
 ```
 
@@ -505,7 +544,11 @@ dispatchAction({
 
     {{ use: action-component-query(componentType = 'geo') }}
 
+    {{ if: ${single} }}
+    {{ use: action-component-item-query-single(componentType = 'geo', componentItemDesc = 'region') }}
+    {{ else }}
     {{ use: action-component-item-query-multiple(componentType = 'geo', componentItemDesc = 'region') }}
+    {{ /if }}
 })
 ```
 **EVENT:** [${componentType}unselected](~events.${componentType}unselected)
@@ -519,7 +562,11 @@ dispatchAction({
 
     {{ use: action-component-query(componentType = 'geo') }}
 
+    {{ if: ${single} }}
+    {{ use: action-component-item-query-single(componentType = 'geo', componentItemDesc = 'region') }}
+    {{ else }}
     {{ use: action-component-item-query-multiple(componentType = 'geo', componentItemDesc = 'region') }}
+    {{ /if }}
 })
 ```
 **EVENT:** [${componentType}selectchanged](~events.${componentType}selectchanged)

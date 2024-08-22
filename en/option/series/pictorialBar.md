@@ -79,7 +79,8 @@ See the example below:
 {{ use: partial-label(
     prefix = "##",
     defaultPosition = "'inside'",
-    formatter = true
+    formatter = true,
+    minMargin = true
 ) }}
 
 ## labelLine(Object)
@@ -119,6 +120,16 @@ Configurations of emphasis state.
     prefix = "##"
 ) }}
 
+### scale(boolean) = false
+
+<ExampleUIControlBoolean />
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+Whether to enable hover animation.
+
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: pictorialBar-state(
@@ -151,13 +162,13 @@ Configurations of select state. Available when [selectedMode](~series-pictorialB
     prefix = "##"
 ) }}
 
-{{ use: partial-selected-mode(
-    version = '5.0.0'
-) }}
-
 {{ use: pictorialBar-state(
     prefix = "##",
     state = 'select'
+) }}
+
+{{ use: partial-selected-mode(
+    version = '5.0.0'
 ) }}
 
 {{ use: partial-barGrid(
@@ -195,6 +206,10 @@ The value of a single data item.
     prefix = '##'
 ) }}
 
+{{ use: partial-data-child-group-id(
+    prefix = '##'
+) }}
+
 {{ use: pictorialBar-symbol-attrs(
     prefix = "##",
     useZ2 = true
@@ -206,7 +221,8 @@ The style setting of the text label in a single bar.
 
 {{ use: partial-label(
     prefix = "###",
-    defaultPosition = "inside"
+    defaultPosition = "inside",
+    minMargin = true
 ) }}
 
 ### labelLine(Object)
@@ -234,6 +250,18 @@ Emphasis state of the specified single data.
 
 {{ use: partial-emphasis-disabled(
     prefix = "###"
+) }}
+
+#### scale(boolean) = false
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+Whether to enable hover animation.
+
+{{ use: partial-focus-blur-scope(
+    prefix = "#"
 ) }}
 
 {{ use: partial-bar-state(
@@ -280,6 +308,11 @@ Select state of the specified single data.
     hasType = true
 ) }}
 
+{{ use: partial-clip(
+    prefix = "#",
+    defaultClip = false
+) }}
+
 {{ use: partial-z-zlevel(
     prefix = "#",
     componentName = "Pictorial bar chart "
@@ -294,12 +327,12 @@ Select state of the specified single data.
     noAnimationDelay = true
 ) }}
 
-{{ use: partial-universal-transition(
-    prefix = "#"
-) }}
-
 {{ use: pictorialBar-animation-delay(
     prefix = "##"
+) }}
+
+{{ use: partial-universal-transition(
+    prefix = "#"
 ) }}
 
 {{ use: partial-tooltip-in-series() }}
@@ -483,15 +516,15 @@ Notice, in the example above,
 
 #${prefix} symbolBoundingData(number)
 
-Defines a bounding area availble for the graphic elements. This setting gives a data, which will then be translated to a coordinate on the coordinate system. The coordinate specifies the bounding. Namely, if `symbolBoundingData` is set, the final size (or layout) of the graphic elements depend on the `symbolBoundingData`.
+Defines a bounding area available for the graphic elements. This setting gives a data, which will then be translated to a coordinate on the coordinate system. The coordinate specifies the bounding. Namely, if `symbolBoundingData` is set, the final size (or layout) of the graphic elements depend on the `symbolBoundingData`.
 
-When reference bar is horizontal, `symbolBoundingData` is coresponding to x axis, while reference bar is vertical, `symbolBoundingData` is coresponding to y axis.
+When reference bar is horizontal, `symbolBoundingData` is corresponding to x axis, while reference bar is vertical, `symbolBoundingData` is corresponding to y axis.
 
 Rule:
 
 + If [symbolRepeat](~series-pictorialBar.symbolRepeat) is not used:
 
-    `symbolBoundingData` is the same as the size of reference bar by default. The size of the graphic element is detemined by `symbolBoundingData`. For example, if reference bar is vertical, its data is `24`, `symbolSize` is set as `[30, '50%']`, `symbolBoundingData` is set as `124`, the final size of the graphic element will be `124 * 50% = 62`. If `symbolBoundingData` is not set, the final size will be `24 * 50% = 12`.
+    `symbolBoundingData` is the same as the size of reference bar by default. The size of the graphic element is determined by `symbolBoundingData`. For example, if reference bar is vertical, its data is `24`, `symbolSize` is set as `[30, '50%']`, `symbolBoundingData` is set as `124`, the final size of the graphic element will be `124 * 50% = 62`. If `symbolBoundingData` is not set, the final size will be `24 * 50% = 12`.
 
 + If [symbolRepeat](~series-pictorialBar.symbolRepeat) is used:
 
@@ -558,23 +591,13 @@ For example:
 Specify the relationship of overlap between graphic elements. A bigger value means higher.
 {{ /if }}
 
-#${prefix} hoverAnimation(boolean) = false
-
-<ExampleUIControlBoolean />
-
-Whether to enable hover animation.
-
-{{ use: pictorialBar-symbol-attrs-cascade(
-    attrName = 'hoverAnimation'
-) }}
-
 {{ use: partial-animation(
-    prefix = "##",
+    prefix = ${prefix},
     noAnimationDelay = true
 ) }}
 
 {{ use: pictorialBar-animation-delay(
-    prefix = "##"
+    prefix = ${prefix}
 ) }}
 
 

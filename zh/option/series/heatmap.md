@@ -108,7 +108,8 @@ option = {
 
 {{ use: partial-label(
     prefix = "##",
-    defaultPosition = "inside"
+    defaultPosition = "inside",
+    minMargin = true
 ) }}
 
 ## labelLayout(Object|Function)
@@ -205,13 +206,18 @@ option = {
     prefix = '##'
 ) }}
 
+{{ use: partial-data-child-group-id(
+    prefix = '##'
+) }}
+
 ### label(Object)
 
 在直角坐标系([coordinateSystem](~series-heatmap.coordinateSystem): 'cartesian2d')上有效。
 
 {{ use: partial-label(
     prefix = "###",
-    defaultPosition = "inside"
+    defaultPosition = "inside",
+    minMargin = true
 ) }}
 
 ### itemStyle(Object)

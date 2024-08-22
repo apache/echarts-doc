@@ -22,7 +22,8 @@ We use red to represent increasing and blue decreasing by default. If you want t
 + [series-candlestick.itemStyle.color](~series-candlestick.itemStyle.color): fill color for bullish candle stick (namely, increase)
 + [series-candlestick.itemStyle.color0](~series-candlestick.itemStyle.color0): fill color for bearish candle stick (namely, decrease)
 + [series-candlestick.itemStyle.borderColor](~series-candlestick.itemStyle.borderColor): border color for bullish candle stick (namely, increase)
-+ [series-candlestick.itemStyle.borderColor0](series-candlestick.itemStyle.borderColor0): border color for bearish candle stick (namely, decrease)
++ [series-candlestick.itemStyle.borderColor0](~series-candlestick.itemStyle.borderColor0): border color for bearish candle stick (namely, decrease)
++ [series-candlestick.itemStyle.borderColorDoji](~series-candlestick.itemStyle.borderColorDoji): border color for doji (when the open price is the same as the close price)
 
 
 <br>
@@ -35,7 +36,7 @@ We use red to represent increasing and blue decreasing by default. If you want t
 ) }}
 
 {{ use: partial-coord-sys(
-    seriesType = "cartesian2d",
+    seriesType = "candlestick",
     coordSysDefault = "'cartesian2d'",
     cartesian2d = true
 ) }}
@@ -45,10 +46,6 @@ We use red to represent increasing and blue decreasing by default. If you want t
 {{ use: partial-colorby() }}
 
 {{ use: partial-legend-hover-link() }}
-
-## hoverAnimation(boolean) = true
-
-Whether to enable animation when hovering on box.
 
 ## layout(string) = null
 
@@ -85,10 +82,10 @@ Item style of candlestick.
 
 {{ use: partial-candlestick-item-style-detail(
     prefix = "##",
-    defaultColor = "#c23531",
-    defaultColor0 = "#314656",
-    defaultBorderColor = "#c23531",
-    defaultBorderColor0 = "#314656",
+    defaultColor = "#eb5454",
+    defaultColor0 = "#47b262",
+    defaultBorderColor = "#eb5454",
+    defaultBorderColor0 = "#47b262",
     defaultBorderWidth = 1
 ) }}
 
@@ -206,6 +203,10 @@ Value of data item.
 ```
 
 {{ use: partial-data-group-id(
+    prefix = '##'
+) }}
+
+{{ use: partial-data-child-group-id(
     prefix = '##'
 ) }}
 
@@ -334,6 +335,18 @@ Border color of bearish candle stick.
 
 {{ use: partial-color-desc() }}
 
+#${prefix} borderColorDoji(Color) = null
+
+<ExampleUIControlColor />
+
+{{ use: partial-version(
+    version = "5.4.1"
+) }}
+
+Border color of doji (when the open price is the same as the close price).
+
+{{ use: partial-color-desc() }}
+
 #${prefix} borderWidth(number) = ${defaultBorderWidth}
 
 <ExampleUIControlNumber min="0" step="0.5" default="${defaultBorderWidth}" />
@@ -348,4 +361,3 @@ Border width of candlestick. There is no border when it is `0`.
     defaultShadowOffsetX = ${defaultShadowOffsetX},
     defaultShadowOffsetY = ${defaultShadowOffsetY}
 ) }}
-

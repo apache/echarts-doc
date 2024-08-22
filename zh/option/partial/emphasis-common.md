@@ -17,7 +17,7 @@
 
 {{ target: partial-focus-blur-scope }}
 
-### focus(string) = 'none'
+###${prefix} focus(string) = 'none'
 
 {{ if: ${isGeoCoordSys} }}
 {{ use: partial-version(
@@ -39,14 +39,17 @@
 {{ /if }}
 
 {{ if: ${isGraph} }}
-+ `'adjacency'` 聚焦关系图中的邻接点和边的图形
++ `'adjacency'` 聚焦关系图中的邻接点和边的图形。
 
 {{ elif: ${isTree} }}
-+ `'ancestor'` 聚焦所有祖先节点
-+ `'descendant'` 聚焦所有子孙节点
++ `'ancestor'` 聚焦所有祖先节点。
++ `'descendant'` 聚焦所有子孙节点。
 {{ /if }}
 {{ if: ${hasRelative} }}
-+ `'relative'` 聚焦所有子孙和祖先节点（从 `v${version}`开始支持）
++ `'relative'` 聚焦所有子孙和祖先节点。（从 `v${relativeVersion}` 开始支持）
+{{ /if }}
+{{ if: ${hasTrajectory} }}
++ `'trajectory'` 聚焦所有连接到当前高亮的数据的节点和边。（从 `v${trajectoryVersion}` 开始支持）
 {{ /if }}
 
 **示例：**
@@ -75,7 +78,7 @@ emphasis: {
 {{ /if }}
 
 {{ if: !${isGeoCoordSys} }}
-### blurScope(string) = 'coordinateSystem'
+###${prefix} blurScope(string) = 'coordinateSystem'
 
 {{ use: partial-version(
     version = "5.0.0"

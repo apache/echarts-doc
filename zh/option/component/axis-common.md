@@ -34,6 +34,10 @@
 是否显示坐标轴轴线。
 
 {{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
+> 从 `v5.0.0` 开始，数值轴 (`type: 'value'`) 默认不显示轴线，需要显式配置。
+{{ /if }}
+
+{{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
 ##${prefix} onZero(boolean) = true
 
 <ExampleUIControlBoolean default="true" />
@@ -141,6 +145,62 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 
 是否显示最大 tick 的 label。可取值 `true`, `false`, `null`。默认自动判定（即如果标签重叠，不会显示最大 tick 的 label）。
 
+{{ if: ${componentType} === 'xAxis' }}
+
+##${prefix} alignMinLabel(string) = null
+
+{{ use: partial-version(version = '5.5.0') }}
+
+最小的坐标刻度标签的对齐方式。如果设置为 `null`，则和其他标签一致。参见 [align](~${componentType}.axisLabel.align)。
+
+可选：
++ `'left'`
++ `'center'`
++ `'right'`
++ `null` (default)
+
+##${prefix} alignMaxLabel(string) = null
+
+{{ use: partial-version(version = '5.5.0') }}
+
+最大的坐标刻度标签的对齐方式。如果设置为 `null`，则和其他标签一致。参见 [align](~${componentType}.axisLabel.align)。
+
+可选：
++ `'left'`
++ `'center'`
++ `'right'`
++ `null` (default)
+
+{{ /if }}
+
+{{ if: ${componentType} === 'yAxis' }}
+
+##${prefix} verticalAlignMinLabel(string) = null
+
+{{ use: partial-version(version = '5.5.0') }}
+
+最小的坐标刻度标签的对齐方式。如果设置为 `null`，则和其他标签一致。参见 [align](~${componentType}.axisLabel.verticalAlign)。
+
+可选：
++ `'top'`
++ `'middle'`
++ `'bottom'`
++ `null` (default)
+
+##${prefix} verticalAlignMaxLabel(string) = null
+
+{{ use: partial-version(version = '5.5.0') }}
+
+最大的坐标刻度标签的对齐方式。如果设置为 `null`，则和其他标签一致。参见 [align](~${componentType}.axisLabel.verticalAlign)。
+
+可选：
++ `'top'`
++ `'middle'`
++ `'bottom'`
++ `null` (default)
+
+{{ /if }}
+
 ##${prefix} hideOverlap(boolean)
 
 <ExampleUIControlBoolean />
@@ -150,6 +210,23 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 ) }}
 
 是否隐藏重叠的标签。
+
+##${prefix} customValues(Array)
+
+{{ use: partial-version(
+    version = "5.5.1"
+) }}
+
+自定义要显示的标签位置。例如：
+
+```ts
+axisLabel: {
+    customValues: [0, 4, 7, 8, 9]
+}
+```
+
+![600xauto](~axis-tick-label-custom-values.png)
+
 
 {{ use: partial-text-style(
     prefix = '#' + ${prefix},
@@ -191,6 +268,10 @@ textStyle: {
 <ExampleUIControlBoolean default="${defaultShow|default(true)}" />
 
 是否显示坐标轴刻度。
+
+{{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
+> 从 `v5.0.0` 开始，数值轴 (`type: 'value'`) 默认不显示轴刻度，需要显式配置。
+{{ /if }}
 
 {{ if: ${hasAlignWithLabel|default(true)} }}
 ##${prefix} alignWithLabel(boolean) = false
@@ -244,6 +325,22 @@ textStyle: {
 
 刻度线的颜色，默认取 [axisTick.lineStyle.color](~${componentType}.axisTick.lineStyle.color)。
 
+##${prefix} customValues(Array)
+
+{{ use: partial-version(
+    version = "5.5.1"
+) }}
+
+自定义要显示的坐标轴刻度位置。例如：
+
+```ts
+axisTick: {
+    alignWithLabel: true,
+    customValues: [0, 0.5, 1, 1.5, 2, 8, 9]
+}
+```
+
+![600xauto](~axis-tick-label-custom-values.png)
 
 
 {{ target: partial-axis-common-minor-tick }}
@@ -438,8 +535,7 @@ splitLine: {
     时间轴，适用于连续的时序数据，与数值轴相比时间轴带有时间的格式化，在刻度计算上也有所不同，例如会根据跨度的范围来决定使用月，星期，日还是小时范围的刻度。
 
 + `'log'`
-    对数轴。适用于对数数据。
-
+    对数轴。适用于对数数据。对数轴下的堆积柱状图或堆积折线图可能带来很大的视觉误差，并且在一定情况下可能存在非预期效果，应避免使用。
 
 
 {{ target: axis-common }}
@@ -496,6 +592,18 @@ splitLine: {
 <ExampleUIControlAngle min="-360" max="360" step="1" />
 
 坐标轴名字旋转，角度值。
+
+#${prefix} nameTruncate(Object)
+
+坐标轴名字的截断。
+
+##${prefix} maxWidth(number)
+
+截断文本的最大长度，超过此长度会被截断。
+
+##${prefix} ellipsis(string) = '...'
+
+截断后文字末尾显示的内容。
 
 #${prefix} inverse(boolean) = false
 
@@ -628,6 +736,16 @@ max: function (value) {
 
 对数轴的底数，只在对数轴中（[type](~${componentType}.type): 'log'）有效。
 
+#${prefix} startValue(number)
+
+<ExampleUIControlNumber />
+
+{{ use: partial-version(
+    version = '5.5.1'
+) }}
+
+用于指定轴的起始值。
+
 {{ use: partial-axis-common-axis-line(
     prefix = ${prefix},
     componentType = ${componentType}
@@ -710,6 +828,10 @@ data: [{
     prefix = "#" + ${prefix}
 ) }}
 {{ /if }}
+
+{{ use: partial-animation(
+    prefix = ${prefix}
+) }}
 
 
 
@@ -804,7 +926,7 @@ formatter: function (value, index) {
     var date = new Date(value);
     var texts = [(date.getMonth() + 1), date.getDate()];
     if (index === 0) {
-        texts.unshift(date.getYear());
+        texts.unshift(date.getFullYear());
     }
     return texts.join('/');
 }
@@ -904,4 +1026,3 @@ xAxis: {
     }
 },
 ```
-
