@@ -41,7 +41,7 @@ Chart actions supported by ECharts are triggered through [dispatchAction](~echar
 Highlights specified data graphics.
 
 ```ts
-// If highlight series（in the `sunburst` series,`highlight` has been deprecated since `v5.0.0`, please use `sunburstHighlight` instead）：
+// If highlight series（in the `sunburst` series,`sunburstHighlight` has been deprecated since `v5.0.0`, please use `highlight` instead）：
 dispatchAction({
     type: 'highlight',
 
