@@ -40,7 +40,7 @@ ECharts 中支持的图表行为，通过 [dispatchAction](~echartsInstance.disp
 高亮指定的数据图形。
 
 ```ts
-// 如果要高亮系列
+// 如果要高亮系列：
 dispatchAction({
     type: 'highlight',
 
