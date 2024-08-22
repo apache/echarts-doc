@@ -294,7 +294,7 @@ dispatchAction({
 
 ### takeGlobalCursor(Action)
 
-Activate or inactivate `dataZoom` bottom in `toolbox`.
+Activate or inactivate `dataZoom` button in `toolbox`.
 
 ```ts
 myChart.dispatchAction({
