@@ -294,7 +294,7 @@ dispatchAction({
 
 ### takeGlobalCursor(Action)
 
-Activate or inactivate `dataZoom` buttom in `toolbox`.
+Activate or inactivate `dataZoom` bottom in `toolbox`.
 
 ```ts
 myChart.dispatchAction({
@@ -474,7 +474,7 @@ The parameters are the same as [action brush](~action.brush.brush).
 ### takeGlobalCursor
 
 The switch of the brush. This action can make the mouse enabled/disabled to brush.
-In fact, the brush buttons in [toolbox](option.html#toolbox.feature.brush) just use this aciton.
+In fact, the brush buttons in [toolbox](option.html#toolbox.feature.brush) just use this action.
 
 This event corresponding to this action is [globalCursorTaken](~events.globalCursorTaken).
 

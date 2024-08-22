@@ -16,7 +16,7 @@
 ```
 
 {{ if: ${needShow} }}
-**注意**：此配置项生效的前提是，设置了 `show: true` 以及值不为 `tranparent` 的背景色 `backgroundColor`。
+**注意**：此配置项生效的前提是，设置了 `show: true` 以及值不为 `transparent` 的背景色 `backgroundColor`。
 {{ /if }}
 
 #${prefix} shadowColor(Color) = ${defaultShadowColor}
