@@ -66,7 +66,7 @@ dispatchAction({
 Downplay specified data graphics.
 
 ```ts
-// If downplay series（in the `sunburst` series,`downplay` has been deprecated since `v5.0.0`, please use `sunburstUnhighlight` instead）：
+// If downplay series:
 dispatchAction({
     type: 'downplay',
 
