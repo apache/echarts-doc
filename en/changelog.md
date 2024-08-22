@@ -1859,7 +1859,7 @@ Recovery Build
 
 + [^] fix `the bug that update data can not be shown in `setOption` after emptying line chart data in v3.1.1.
 
-+ [^] fix possiblity of reporting `id duplicates` error in `setOption(chart.getOption())` . Fix [#2635](https://github.com/apache/incubator-echarts/issues/2635)
++ [^] fix possibility of reporting `id duplicates` error in `setOption(chart.getOption())` . Fix [#2635](https://github.com/apache/incubator-echarts/issues/2635)
 
 + [^] allow to customize toolbox toobar. See details in [toolbox.feature](https://ecomfe.github.io/echarts-doc/public/en/option.html#toolbox.feature)
 
