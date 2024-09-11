@@ -9,7 +9,7 @@ More over, ECharts 3 adds richer interactive functions and more visualization ef
 
 ECharts provides [line charts](option.html#series-line), [bar charts](option.html#series-line), [scatter charts](option.html#series-scatter), [pie charts](option.html#series-pie), [K line charts](option.html#series-candlestick) and [box charts](option.html#series-boxplot), as well as [maps](option.html#series-map) used for geodata visualization, [heatmaps](option.html#series-heatmap), [treemaps](option.html#series-treemap), [parallel charts](option.html#series-parallel) for multi-dimensional data visualization, [funnel maps](option.html#series-funnel) for BI, [gauge charts](option.html#series-gauge). Additionally, it supports connecting and animating between different graphic types.
 
-You can either download the entire package of chart components or instead select the ones you need with the [online package builder](builder.html) to reduce file sizes.
+You can either download the entire package of chart components or instead select the ones you need with the [online package builder](builder.html) to reduce the library's footprint.
 
 ## Support for Multiple Coordinate Types
 
@@ -22,7 +22,7 @@ Below is an example that a line chart is in polar coordinate:
 
 ## Mobile Optimization
 
-Bandwidth is precious on mobile devices and so ECharts has been optimized to use a small file size. ECharts many components (with the total ever increasing) and so we provide mobile-optimised small packages.
+Bandwidth is precious on mobile devices and so ECharts has been optimized to use a small file size. ECharts has many components (with more being added) and so we provide mobile-optimised, smaller packages.
 
 Interaction on mobile is also optimized: zooming and panning is natively supported on both mobile and desktop. See the example below:
 
