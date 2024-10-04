@@ -111,6 +111,14 @@ axisPointer 的 label 默认不显示（也就是默认只显示指示线），�
 
 是否触发 tooltip。如果不想触发 tooltip 可以关掉。
 
+#${prefix} triggerOnNull(boolean) = false
+
+<ExampleUIControlBoolean default="false" />
+
+是否在`'null'`或`'undefined'`值上触发 axisPointer。如果这些图表上的值为`'null'`、`'undefined'`或不存在，这在与`'echarts.connect()'`API 一起使用以触发连接图表上的 axisPointer 时非常有用。
+
+`snap` 属性优先于此。
+
 #${prefix} value(number) = null
 
 当前的 value。在使用 [axisPointer.handle](xAxisPointer.handle) 时，可以设置此值进行初始值设定，从而决定 axisPointer 的初始位置。
