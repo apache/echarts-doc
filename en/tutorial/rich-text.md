@@ -101,7 +101,7 @@ label: {
 }
 ```
 
-> Notice: `width` 和 `height` only work when `rich` specified.
+> Notice: `width` and `height` only work when `rich` specified.
 
 
 ## Basic Styles of Text, Text Block and Text Fragment

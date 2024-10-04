@@ -285,7 +285,7 @@ Label of a single line. Available when [polyline](~series-lines.polyline) is not
 
 {{ use: partial-z-zlevel(
     prefix = "#",
-    componentName = "路径图"
+    componentName = "lines graph"
 ) }}
 
 {{ use: partial-silent(

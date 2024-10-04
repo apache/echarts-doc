@@ -6,7 +6,7 @@ This is a tiny example, introducing how to implement dragging of graphic element
 
 ~[600x400](${galleryViewPath}line-draggable&edit=1&reset=1)
 
-This example mainly implements that dragging points of a curve and by which the curve is modified. Although it is simple example, but we can do more based on that, like edit charts viually. So let's get started from this simple example.
+This example mainly implements that dragging points of a curve and by which the curve is modified. Although it is a simple example, we can do more based on that, like editing charts visually. So let's get started.
 
 
 

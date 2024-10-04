@@ -124,7 +124,7 @@ current value. When using [axisPointer.handle](xAxisPointer.handle), `value` can
 
 <ExampleUIControlEnum options="show,hide" />
 
-Current status, can be `'show'` 和 `'hide'`.
+Current status, can be `'show'` or `'hide'`.
 
 #${prefix} handle(Object)
 

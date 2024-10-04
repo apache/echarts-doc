@@ -1735,15 +1735,15 @@ We can also specify all of the properties like this:
 
 ###${prefix} duration(number)
 
-动画时长，单位 ms
+Duration of animation, unit: ms
 
 ###${prefix} easing(string)
 
-动画缓动。不同的缓动效果可以参考 [缓动示例](${galleryEditorPath}line-easing)。
+Easing effect. Refer to the following for different effects: [examples](${galleryEditorPath}line-easing)
 
 ###${prefix} delay(number)
 
-动画延迟时长，单位 ms
+Delay of animation, unit: ms
 
 
 

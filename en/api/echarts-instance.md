@@ -538,7 +538,6 @@ In cartesian (see [grid](option.html#grid)), convert a point to pixel coordinate
 // xAxis-yAxis constitudes a cartesian.
 // Perform conversion in the cartesian consist of the third xAxis and the yAxis with id 'y1'.
 chart.convertToPixel({xAxisIndex: 2, yAxisId: 'y1'}, [300, 900]);
-// 使用 id 为 'g1' 的 grid 的第一个 cartesian 进行转换：
 // Perform conversion in the first cartesian of the grid with id 'g1'.
 chart.convertToPixel({gridId: 'g1'}, [300, 900]);
 ```
