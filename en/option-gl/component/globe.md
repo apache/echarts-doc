@@ -24,7 +24,7 @@ The outer radius of the globe. This area between `globeRadius` and `globeOuterRa
 
 {{ use: partial-environment(
     componentType="globe",
-    componentName="地球"
+    componentName="globe"
 ) }}
 
 {{ use: partial-environment }}
@@ -101,39 +101,39 @@ The following two images show the effects of different `displacementQuality`.
 
 {{ use: partial-shading-globe(
     componentType="globe",
-    componentName="地球"
+    componentName="globe"
 ) }}
 
 {{ use: partial-light-globe(
     componentType="globe",
-    componentName="地球"
+    componentName="globe"
 ) }}
 
 {{ use: partial-atmosphere(
     componentType="globe",
-    componentName="地球"
+    componentName="globe"
 ) }}
 
 {{ use: partial-post-effect(
     componentType="globe",
-    componentName="地球"
+    componentName="globe"
 ) }}
 
 {{ use: partial-temporal-super-sampling(
     componentType="globe",
-    componentName="地球"
+    componentName="globe"
 ) }}
 
 {{ use: partial-view-control(
     componentType="globe",
-    componentName="地球",
+    componentName="globe",
     defaultPanSensitivity=0
 ) }}
 
 ### targetCoord(Array)
 
 Position the longitudes and latitudes.
-Ignore [alpha](~globe.viewControl.alpha) 和 [beta](~globe.viewControl.beta) after the setting.
+Ignore [alpha](~globe.viewControl.alpha) and [beta](~globe.viewControl.beta) after the setting.
 
 
 ```ts

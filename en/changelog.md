@@ -1044,7 +1044,7 @@ Fix the line label can not be returned to its original opacity after `"focusNode
 
 + [Fix] Fix if some negetive numbers or strings existing in the dimensions array, the corresponding line will not show. Fix #10343.
 
-+ [Fix] Fix when `'0'` existing in dimentions the chart do not work. Make backward compat when dimention is a number-like string. Fix #9363, contributed by PR #9388.
++ [Fix] Fix when `'0'` existing in dimensions the chart do not work. Make backward compat when dimension is a number-like string. Fix #9363, contributed by PR #9388.
 
 + [Fix] Fix hover style on `textStroke` bug in custom series.
 
@@ -1859,7 +1859,7 @@ Recovery Build
 
 + [^] fix `the bug that update data can not be shown in `setOption` after emptying line chart data in v3.1.1.
 
-+ [^] fix possiblity of reporting `id duplicates` error in `setOption(chart.getOption())` . Fix [#2635](https://github.com/apache/incubator-echarts/issues/2635)
++ [^] fix possibility of reporting `id duplicates` error in `setOption(chart.getOption())` . Fix [#2635](https://github.com/apache/incubator-echarts/issues/2635)
 
 + [^] allow to customize toolbox toobar. See details in [toolbox.feature](https://ecomfe.github.io/echarts-doc/public/en/option.html#toolbox.feature)
 
