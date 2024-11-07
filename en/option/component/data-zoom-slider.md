@@ -123,6 +123,22 @@ Style of handle. Please refer to [area-simple example](${galleryEditorPath}area-
     defaultBorderColor = "#ACB8D1"
 ) }}
 
+## handleLabel(Object)
+
+{{ use: partial-version(
+    version = "5.5.2"
+) }}
+
+Style settings for the text near the handle.
+
+### show(boolean) = false
+
+{{ use: partial-version(
+    version = "5.5.2"
+) }}
+
+Whether to show the label.
+
 ## moveHandleIcon(string)
 
 <ExampleUIControlIcon />
@@ -273,6 +289,22 @@ Style when highlighted.
 {{ use: partial-item-style(
     prefix = "###"
 ) }}
+
+### handleLabel(Object)
+
+{{ use: partial-version(
+    version = "5.5.2"
+) }}
+
+Style settings for the text near the handle.
+
+#### show(boolean) = false
+
+{{ use: partial-version(
+    version = "5.5.2"
+) }}
+
+Whether to show the label.
 
 ### moveHandleStyle(Object)
 
