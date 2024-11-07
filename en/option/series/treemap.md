@@ -67,6 +67,10 @@ The expected square ratio. Layout would approach the ratio as close as possible.
 
 It defaults to be the golden ratio: `0.5 * (1 + Math.sqrt(5))`.
 
+{{ use: partial-cursor(
+    version = "5.5.2"
+) }}
+
 ## leafDepth(number) = null
 
 <ExampleUIControlNumber min="1" step="1" />
