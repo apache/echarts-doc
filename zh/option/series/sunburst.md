@@ -463,7 +463,9 @@ function(nodeA, nodeB) {
 高亮状态配置。
 
 {{ use: partial-focus-blur-scope(
-    isTree = true
+    isTree = true,
+    hasRelative = true,
+    relativeVersion = '5.5.2'
 ) }}
 
 {{ use: partial-sunburst-state(
