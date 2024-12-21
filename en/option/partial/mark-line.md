@@ -19,6 +19,21 @@ Symbol size at the two ends of the mark line. It can be an array for two ends, o
 
 **Attention: ** You cannot assign width and height separately as normal `symbolSize`.
 
+##${prefix} symbolOffset(number|string|Array)
+
+Offset of symbol relative to original position. It can be an array for two ends, or assigned separately. If you want to set specific horizontal/vertical offset for single end, you can set it as a 2d array. For example,
+
+```js
+symbolOffset: [
+    [-10, 20],    // offset of starting symbol
+    ['50%', 100]  // offset of ending symbol
+]
+```
+
+{{ use: partial-version(
+    version = "5.1.0"
+) }}
+
 ##${prefix} precision(number) = 2
 
 Precision of marking line value, which is useful when displaying average value mark line.
