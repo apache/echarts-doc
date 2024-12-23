@@ -182,6 +182,53 @@ const option = {
 <ExampleUIControlEnum options="html,richText" default="html" />
 
 浮层的渲染模式，默认以 `'html` 即额外的 DOM 节点展示 tooltip；此外还可以设置为 `'richText'` 表示以富文本的形式渲染，渲染的结果在图表对应的 Canvas 中，这对于一些没有 DOM 的环境（如微信小程序）有更好的支持。
+	
+## renderMode（string） = 'richText'
+工具提示的渲染模式。默认情况下，它被设置为 ''html'' ，以便额外的 DOM 元素用于工具提示。它也可以设置为 ''richText'' ，这样工具提示就会在 Canvas 中渲染。这对于没有 DOM 的环境（例如微信应用程序）非常有用。
+```ts
+{
+    title: {
+        text: 'ECharts tooltip richText 示例'
+    },
+    tooltip: {
+        trigger: 'axis',
+        formatter: (e) => {
+            return `{d|● }{a|富文本测试}\n{b|富文本测试2}\n{c|富文本测试3\n富文本测试3\n富文本测试3}`;
+        },
+        renderMode: 'richText',
+        backgroundColor: "#fff",
+        textStyle: {
+            rich: {
+                a: {
+                    fill: 'red',
+                },
+                b: {
+                    fill: 'orange',
+                    width: 300,
+                }, c: {
+                    fill: 'yellow',
+                    backgroundColor: 'green'
+                },
+                d: {
+                    fill: 'orange',
+                    fontSize:30
+                },
+            },
+        }
+    },
+    xAxis: {
+        data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+    },
+    yAxis: {},
+    series: [
+        {
+            name: '销量',
+            type: 'line',
+            data: [5, 20, 36, 10, 10, 20]
+        }
+    ],
+}
+```
 
 ## confine(boolean) = false
 
