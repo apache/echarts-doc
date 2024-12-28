@@ -1,5 +1,5 @@
 ## v5.6.0
-<div class="time"></div>
+<div class="time">2024-12-28</div>
 
 + [Feature] [geo] [map] 支持在原始 GeoJSON 数据中定义区域样式。[#20564](https://github.com/apache/echarts/issues/20564) ([plainheart](https://github.com/plainheart))
 + [Feature] [geo] [map] 新增 `regions[].silent` 选项以支持禁用部分区域的交互。[#20566](https://github.com/apache/echarts/issues/20566) ([Ovilia](https://github.com/Ovilia))

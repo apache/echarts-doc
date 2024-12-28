@@ -1,5 +1,5 @@
 ## v5.6.0
-<div class="time"></div>
+<div class="time">2024-12-28</div>
 
 + [Feature] [geo] [map] Support styling region in original GeoJSON data. [#20564](https://github.com/apache/echarts/issues/20564) ([plainheart](https://github.com/plainheart))
 + [Feature] [geo] [map] Support `regions[].silent` option. [#20566](https://github.com/apache/echarts/issues/20566) ([Ovilia](https://github.com/Ovilia))
