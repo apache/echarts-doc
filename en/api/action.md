@@ -138,7 +138,12 @@ Selects legend.
 dispatchAction({
     type: 'legendSelect',
     // legend name
-    name: string
+    name: string,
+
+    // The following parameters are supported since v5.6.0
+    legendId: string,
+    legendIndex: number,
+    legendName: string
 })
 ```
 
@@ -151,7 +156,12 @@ Unselects the legend.
 dispatchAction({
     type: 'legendUnSelect',
     // legend name
-    name: string
+    name: string,
+
+    // The following parameters are supported since v5.6.0
+    legendId: string,
+    legendIndex: number,
+    legendName: string
 })
 ```
 
@@ -163,7 +173,12 @@ Toggles legend selecting state.
 dispatchAction({
     type: 'legendToggleSelect',
     // legend name
-    name: string
+    name: string,
+
+    // The following parameters are supported since v5.6.0
+    legendId: string,
+    legendIndex: number,
+    legendName: string
 })
 ```
 
@@ -174,7 +189,12 @@ Selects all legends.
 
 ```ts
 dispatchAction({
-    type: 'legendAllSelect'
+    type: 'legendAllSelect',
+
+    // The following parameters are supported since v5.6.0
+    legendId: string,
+    legendIndex: number,
+    legendName: string
 })
 ```
 
@@ -185,7 +205,12 @@ Inverses all legends.
 
 ```ts
 dispatchAction({
-    type: 'legendInverseSelect'
+    type: 'legendInverseSelect',
+
+    // The following parameters are supported since v5.6.0
+    legendId: string,
+    legendIndex: number,
+    legendName: string
 })
 ```
 
