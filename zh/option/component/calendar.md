@@ -321,6 +321,11 @@ calendar: [{
     defaultColor = "#000"
 ) }}
 
+{{ use: partial-silent(
+    prefix = "##",
+    version = "5.6.0"
+) }}
+
 ## monthLabel(Object)
 
 设置日历坐标中 月份轴的样式
@@ -438,6 +443,11 @@ formatter: function (param) {
     defaultColor = "#000"
 ) }}
 
+{{ use: partial-silent(
+    prefix = "##",
+    version = "5.6.0"
+) }}
+
 ## yearLabel(Object)
 
 设置日历坐标中 年的样式
@@ -499,8 +509,11 @@ formatter: function (param) {
 ) }}
 
 {{ use: partial-silent(
-    prefix = "#",
-    defaultFontWeight = "bolder",
-    defaultFontSize = "20"
+    prefix = "##",
+    version = "5.6.0"
+) }}
+
+{{ use: partial-silent(
+    prefix = "#"
 ) }}
 
