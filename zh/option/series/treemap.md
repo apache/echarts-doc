@@ -220,6 +220,10 @@ const option = {
 
 默认为黄金比：`0.5 * (1 + Math.sqrt(5))`。
 
+{{ use: partial-cursor(
+    version = "5.5.2"
+) }}
+
 ## leafDepth(number) = null
 
 <ExampleUIControlNumber min="1" step="1" />

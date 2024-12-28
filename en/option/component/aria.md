@@ -183,6 +183,14 @@ This description is used if the data does not have the `name` attribute. This in
 
 - `{value}`: the value that will be replaced with the data.
 
+#### excludeDimensionId(Array)
+
+{{ use: partial-version(
+    version = "5.5.2"
+) }}
+
+The specified column indexes are excluded in the data in [aria.label](~aria.label).
+
 #### separator(Object)
 
 The separator between data and data description.

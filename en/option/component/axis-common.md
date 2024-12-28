@@ -415,6 +415,26 @@ Split line of axis in [grid](~grid) area.
 Set this to `false` to prevent the splitLine from showing.
 `value` type axes are shown by default, while `category` type axes are hidden.
 
+##${prefix} showMinLine(boolean) = true
+
+<ExampleUIControlBoolean />
+
+{{ use: partial-version(
+    version = "5.5.2"
+) }}
+
+Whether to show the splitLine of the min tick. Defaults to `true`.
+
+##${prefix} showMaxLabel(boolean) = true
+
+<ExampleUIControlBoolean />
+
+{{ use: partial-version(
+    version = "5.5.2"
+) }}
+
+Whether to show the splitLine of the max tick. Defaults to `true`.
+
 {{ if: ${hasLabelInterval|default(true)} }}
 ##${prefix} interval(number|Function) = 'auto'
 

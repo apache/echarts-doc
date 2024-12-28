@@ -1,12 +1,12 @@
 
 {{ target: partial-emphasis-disabled }}
 
-#${prefix} disabled(boolean)
+#${prefix} disabled(boolean) = ${defaultValue|default(false)}
 
-<ExampleUIControlBoolean default="false" />
+<ExampleUIControlBoolean default="${defaultValue|default(false)}" />
 
 {{ use: partial-version(
-    version = "5.3.0"
+    version = ${version|default('5.3.0')}
 ) }}
 
 是否关闭高亮状态。
