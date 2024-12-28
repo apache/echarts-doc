@@ -67,10 +67,6 @@ The expected square ratio. Layout would approach the ratio as close as possible.
 
 It defaults to be the golden ratio: `0.5 * (1 + Math.sqrt(5))`.
 
-{{ use: partial-cursor(
-    version = "5.6.0"
-) }}
-
 ## leafDepth(number) = null
 
 <ExampleUIControlNumber min="1" step="1" />
@@ -400,6 +396,11 @@ child nodes, recursive definition, configurations are the same as [series-treema
 
 {{ use: partial-tooltip-in-series-data() }}
 
+{{ use: partial-cursor(
+    prefix = "##",
+    version = "5.6.0"
+) }}
+
 {{ use: partial-silent(
     prefix = "#"
 ) }}
@@ -412,6 +413,10 @@ child nodes, recursive definition, configurations are the same as [series-treema
 
 {{ use: partial-tooltip-in-series() }}
 
+{{ use: partial-cursor(
+    prefix = "#",
+    version = "5.6.0"
+) }}
 
 
 {{ target: partial-treemap-level-props }}
