@@ -186,7 +186,7 @@ This description is used if the data does not have the `name` attribute. This in
 #### excludeDimensionId(Array)
 
 {{ use: partial-version(
-    version = "5.5.2"
+    version = "5.6.0"
 ) }}
 
 The specified column indexes are excluded in the data in [aria.label](~aria.label).

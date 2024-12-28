@@ -278,7 +278,7 @@ K 线图的图形样式。
 ## emphasis(Object)
 
 {{ use: partial-version(
-    version = "5.5.2"
+    version = "5.6.0"
 ) }}
 
 K 线图的高亮状态。
@@ -299,7 +299,7 @@ K 线图的高亮状态。
 ## blur(Object)
 
 {{ use: partial-version(
-    version = "5.5.2"
+    version = "5.6.0"
 ) }}
 
 K 线图的淡出状态。开启 [emphasis.focus](~series-candlestick.emphasis.focus) 后有效
@@ -328,7 +328,7 @@ K 线图的选中状态。开启 [selectedMode](~series-candlestick.selectedMode
 {{ use: partial-candlestick-item-style-detail(
     prefix = "###",
     defaultBorderWidth = 2,
-    option0Version = "5.5.2"
+    option0Version = "5.6.0"
 ) }}
 
 {{ use: partial-selected-mode(

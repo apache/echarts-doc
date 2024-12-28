@@ -420,7 +420,7 @@ Set this to `false` to prevent the splitLine from showing.
 <ExampleUIControlBoolean />
 
 {{ use: partial-version(
-    version = "5.5.2"
+    version = "5.6.0"
 ) }}
 
 Whether to show the splitLine of the min tick. Defaults to `true`.
@@ -430,7 +430,7 @@ Whether to show the splitLine of the min tick. Defaults to `true`.
 <ExampleUIControlBoolean />
 
 {{ use: partial-version(
-    version = "5.5.2"
+    version = "5.6.0"
 ) }}
 
 Whether to show the splitLine of the max tick. Defaults to `true`.

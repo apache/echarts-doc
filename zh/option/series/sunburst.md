@@ -465,7 +465,7 @@ function(nodeA, nodeB) {
 {{ use: partial-focus-blur-scope(
     isTree = true,
     hasRelative = true,
-    relativeVersion = '5.5.2'
+    relativeVersion = '5.6.0'
 ) }}
 
 {{ use: partial-sunburst-state(

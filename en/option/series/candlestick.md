@@ -92,7 +92,7 @@ Item style of candlestick.
 ## emphasis(Object)
 
 {{ use: partial-version(
-    version = "5.5.2"
+    version = "5.6.0"
 ) }}
 
 Emphasis style of candlestick.
@@ -113,7 +113,7 @@ Emphasis style of candlestick.
 ## blur(Object)
 
 {{ use: partial-version(
-    version = "5.5.2"
+    version = "5.6.0"
 ) }}
 
 Configurations of blur state. Available when [emphasis.focus](~series-candlestick.emphasis.focus) is set.
@@ -142,7 +142,7 @@ Configurations of select state. Available when [selectedMode](~series-candlestic
 {{ use: partial-candlestick-item-style-detail(
     prefix = "###",
     defaultBorderWidth = 2,
-    option0Version = "5.5.2"
+    option0Version = "5.6.0"
 ) }}
 
 {{ use: partial-selected-mode(

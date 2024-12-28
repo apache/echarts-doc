@@ -126,7 +126,7 @@ Style of handle. Please refer to [area-simple example](${galleryEditorPath}area-
 ## handleLabel(Object)
 
 {{ use: partial-version(
-    version = "5.5.2"
+    version = "5.6.0"
 ) }}
 
 Style settings for the text near the handle.
@@ -134,7 +134,7 @@ Style settings for the text near the handle.
 ### show(boolean) = false
 
 {{ use: partial-version(
-    version = "5.5.2"
+    version = "5.6.0"
 ) }}
 
 Whether to show the label.
@@ -293,7 +293,7 @@ Style when highlighted.
 ### handleLabel(Object)
 
 {{ use: partial-version(
-    version = "5.5.2"
+    version = "5.6.0"
 ) }}
 
 Style settings for the text near the handle.
@@ -301,7 +301,7 @@ Style settings for the text near the handle.
 #### show(boolean) = false
 
 {{ use: partial-version(
-    version = "5.5.2"
+    version = "5.6.0"
 ) }}
 
 Whether to show the label.

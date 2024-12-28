@@ -156,7 +156,7 @@ const option = {
 ## handleLabel(Object)
 
 {{ use: partial-version(
-    version = "5.5.2"
+    version = "5.6.0"
 ) }}
 
 手柄附近文字的样式设置。
@@ -164,7 +164,7 @@ const option = {
 ### show(boolean) = false
 
 {{ use: partial-version(
-    version = "5.5.2"
+    version = "5.6.0"
 ) }}
 
 是否显示文字。
@@ -325,7 +325,7 @@ dataZoom-slider 组件的高度。水平布局默认 30，竖直布局默认自�
 ### handleLabel(Object)
 
 {{ use: partial-version(
-    version = "5.5.2"
+    version = "5.6.0"
 ) }}
 
 手柄附近文字的样式设置。
@@ -333,7 +333,7 @@ dataZoom-slider 组件的高度。水平布局默认 30，竖直布局默认自�
 #### show(boolean) = false
 
 {{ use: partial-version(
-    version = "5.5.2"
+    version = "5.6.0"
 ) }}
 
 是否显示文字。

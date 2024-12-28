@@ -186,7 +186,7 @@ option = {
 #### excludeDimensionId(Array)
 
 {{ use: partial-version(
-    version = "5.5.2"
+    version = "5.6.0"
 ) }}
 
 忽略 [aria.label](~aria.label) 下数据相应的维度。

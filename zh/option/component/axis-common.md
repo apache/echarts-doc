@@ -417,7 +417,7 @@ axisTick: {
 <ExampleUIControlBoolean />
 
 {{ use: partial-version(
-    version = "5.5.2"
+    version = "5.6.0"
 ) }}
 
 是否显示最小 tick 的分隔线。默认为 `true`。
@@ -427,7 +427,7 @@ axisTick: {
 <ExampleUIControlBoolean />
 
 {{ use: partial-version(
-    version = "5.5.2"
+    version = "5.6.0"
 ) }}
 
 是否显示最大 tick 的分隔线。默认为 `true`。
