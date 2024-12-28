@@ -220,10 +220,6 @@ const option = {
 
 默认为黄金比：`0.5 * (1 + Math.sqrt(5))`。
 
-{{ use: partial-cursor(
-    version = "5.6.0"
-) }}
-
 ## leafDepth(number) = null
 
 <ExampleUIControlNumber min="1" step="1" />
@@ -546,6 +542,11 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 {{ use: partial-tooltip-in-series-data() }}
 
+{{ use: partial-cursor(
+    prefix = "##",
+    version = "5.6.0"
+) }}
+
 {{ use: partial-silent(
     prefix = "#"
 ) }}
@@ -558,6 +559,10 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 {{ use: partial-tooltip-in-series() }}
 
+{{ use: partial-cursor(
+    prefix = "#",
+    version = "5.6.0"
+) }}
 
 
 {{ target: partial-treemap-level-props }}
