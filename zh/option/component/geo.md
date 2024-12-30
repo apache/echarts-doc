@@ -111,6 +111,11 @@ geo 区域的颜色也可以被 map series 所控制，参见 [series-map.geoInd
 ) }}
 
 {{ use: partial-silent(
+    prefix = "##",
+    version = "5.6.0"
+) }}
+
+{{ use: partial-silent(
     prefix = "#"
 ) }}
 

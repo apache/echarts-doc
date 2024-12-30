@@ -113,6 +113,11 @@ The numerical value of this area.
 
 Whether the are selected.
 
+{{ use: partial-silent(
+    prefix = "##",
+    version = "5.6.0"
+) }}
+
 ### itemStyle(Object)
 
 Style of item polygon
