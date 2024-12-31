@@ -854,6 +854,11 @@ axisPointer settings on the axis.
 ) }}
 {{ /if }}
 
+{{ use: partial-axis-tooltip(
+    prefix = ${prefix},
+    componentType = ${componentType}
+) }}
+
 {{ use: partial-animation(
     prefix = ${prefix}
 ) }}
@@ -1052,3 +1057,25 @@ xAxis: {
     }
 },
 ```
+
+
+{{ target: partial-axis-tooltip }}
+
+#${prefix} tooltip(Object)
+
+{{ use: partial-version(version = '5.6.0') }}
+
+The tooltip configuration for ${componentType}, must set [triggerEvent](~${componentType}.triggerEvent) as `true` and enable global [option.tooltip](~tooltip) component.
+
+##${prefix} show(boolean) = false
+
+<ExampleUIControlBoolean default="false" />
+
+Whether to show the tooltip. Defaults to `false`.
+
+{{ use: partial-tooltip-common(
+    prefix = '#' + ${prefix},
+    noValueFormatter = true
+) }}
+
+

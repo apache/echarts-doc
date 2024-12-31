@@ -849,6 +849,11 @@ data: [{
 ) }}
 {{ /if }}
 
+{{ use: partial-axis-tooltip(
+    prefix = ${prefix},
+    componentType = ${componentType}
+) }}
+
 {{ use: partial-animation(
     prefix = ${prefix}
 ) }}
@@ -1046,3 +1051,25 @@ xAxis: {
     }
 },
 ```
+
+
+{{ target: partial-axis-tooltip }}
+
+#${prefix} tooltip(Object)
+
+{{ use: partial-version(version = '5.6.0') }}
+
+坐标轴 tooltip 设置，注意需设置 [triggerEvent](~${componentType}.triggerEvent) 为 `true` 并启用全局 [option.tooltip](~tooltip) 组件。
+
+##${prefix} show(boolean) = false
+
+<ExampleUIControlBoolean default="false" />
+
+是否显示提示框组件，默认不启用。
+
+{{ use: partial-tooltip-common(
+    prefix = '#' + ${prefix},
+    noValueFormatter = true
+) }}
+
+

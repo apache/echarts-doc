@@ -331,6 +331,14 @@ formatter: '{b0}: {c0}<br />{b1}: {c1}'
         treeAncestors: {
             desc: '树图/矩形树图中当前节点的祖先节点（包括自身）',
             type: 'Array'
+        },
+        isTruncated: {
+            desc: '坐标轴标签文本是否溢出隐藏，可以使用此函数判断是否需要弹出提示框',
+            type: 'Function'
+        },
+        tickIndex: {
+            desc: '当前坐标轴标签刻度索引',
+            type: 'number'
         }
     }
 ) }}
@@ -352,6 +360,7 @@ formatter: function (params, ticket, callback) {
 }
 ```
 
+{{ if: !${noValueFormatter} }}
 #${prefix} valueFormatter(string)
 
 {{ use: partial-version(
@@ -374,6 +383,7 @@ tooltip 中数值显示部分的格式化回调函数。
 // 添加 $ 前缀
 valueFormatter: (value) => '$' + value.toFixed(2)
 ```
+{{ /if }}
 
 #${prefix} backgroundColor(Color) = 'rgba(50,50,50,0.7)'
 
