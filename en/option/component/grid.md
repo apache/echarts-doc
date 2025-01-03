@@ -33,14 +33,14 @@ Whether to show the grid in rectangular coordinate.
 
 <ExampleUIControlBoolean default="false" />
 
-Whether the grid region contains [axis tick label](~yAxis.axisLabel) of axis.
+Whether the grid region contains [axis tick label](~yAxis.axisLabel) and [axis name](~yAxis.name) of axis.
 
 + When containLabel is `false`:
     + `grid.left` `grid.right` `grid.top` `grid.bottom` `grid.width` `grid.height` decide the location and size of the rectangle that is made of by xAxis and yAxis.
     + Setting to `false` will help when multiple grids need to be aligned at their axes.
 + When containLabel is `true`:
-    + `grid.left` `grid.right` `grid.top` `grid.bottom` `grid.width` `grid.height` decide the location and size of the rectangle that contains the axes and the labels of the axes.
-    + Setting to `true` will help when the length of axis labels is dynamic and is hard to approximate. This will avoid labels from overflowing the container or overlapping other components.
+    + `grid.left` `grid.right` `grid.top` `grid.bottom` `grid.width` `grid.height` decide the location and size of the rectangle that contains the axes, and the labels and the names of the axes.
+    + Setting to `true` will help when the length of axis labels is dynamic and is hard to approximate. This will avoid labels and names from overflowing the container or overlapping other components.
 
 {{ use: partial-component-common-style(
     componentName = "grid",
