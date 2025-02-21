@@ -1739,7 +1739,7 @@ Position of `textContent`.
 
 图形元素的中心在父节点坐标系（以父节点左上角为原点）中的横坐标值。
 
-###${prefix} cy(numbr) = 0
+###${prefix} cy(number) = 0
 
 图形元素的中心在父节点坐标系（以父节点左上角为原点）中的纵坐标值。
 
@@ -1751,7 +1751,7 @@ Position of `textContent`.
 
 图形元素的宽度。
 
-###${prefix} height(numbr) = 0
+###${prefix} height(number) = 0
 
 图形元素的高度。
 
