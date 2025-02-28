@@ -228,6 +228,10 @@ x value on screen coordinate system, can be pixel number (like `5`), or percent 
 
 y value on screen coordinate system, can be pixel number (like `5`), or percent value (like `'20%'`).
 
+#${prefix} z2(number)
+
+Define the overlap relationship between graphic elements(Since `6.0.0`)。
+
 #${prefix} value(number)
 
 value of the item, not necessary.
