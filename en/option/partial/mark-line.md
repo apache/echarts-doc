@@ -288,6 +288,10 @@ X position according to container, in pixel.
 
 Y position according to container, in pixel.
 
+#${prefix} z2(number)
+
+Define the overlap relationship between graphic elements(Since `6.0.0`)。
+
 #${prefix} xAxis(number|string)
 
 Markline at x at given value, which only works for single data item. Example:
