@@ -425,7 +425,7 @@ Set this to `false` to prevent the splitLine from showing.
 
 Whether to show the splitLine of the min tick. Defaults to `true`.
 
-##${prefix} showMaxLabel(boolean) = true
+##${prefix} showMaxLine(boolean) = true
 
 <ExampleUIControlBoolean />
 
