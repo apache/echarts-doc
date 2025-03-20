@@ -1,7 +1,7 @@
 
 {{ target: partial-universal-transition }}
 
-#${prefix} universalTransition(object)
+#${prefix} universalTransition(Object)
 
 {{ use: partial-version(
     version = "5.2.0"
