@@ -465,7 +465,7 @@ ECharts 中的事件有两种，一种是鼠标事件，在鼠标点击某个图
 
 ## off(Function)
 ```ts
-(eventName: string, handler?: Function)
+(eventName?: string, handler?: Function)
 ```
 
 解绑事件处理函数。
@@ -473,7 +473,7 @@ ECharts 中的事件有两种，一种是鼠标事件，在鼠标点击某个图
 **参数：**
 + `eventName`
 
-    事件名称。
+    事件名称。可选，不传的话解绑所有事件。
 
 + `handler`
 

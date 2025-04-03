@@ -470,7 +470,7 @@ If event is triggered externally by [dispatchAction](~echartsInstance.dispatchAc
 
 ## off(Function)
 ```ts
-(eventName: string, handler?: Function)
+(eventName?: string, handler?: Function)
 ```
 
 Unbind event-handler function.
@@ -478,7 +478,7 @@ Unbind event-handler function.
 **parameter: **
 + `eventName`
 
-    Event name.
+    Event name. Optional. If not specified, all listeners will be unbound.
 
 + `handler`
 
