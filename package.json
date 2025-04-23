@@ -39,7 +39,7 @@
     "sassjs-loader": "^2.0.0",
     "vue-loader": "^15.9.2",
     "vue-template-compiler": "^2.6.11",
-    "webpack": "^4.43.0",
+    "webpack": "^5.97.1",
     "webpack-cli": "^4.10.0",
     "yargs": "^14.2.3"
   },
