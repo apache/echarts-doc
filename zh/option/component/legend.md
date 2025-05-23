@@ -581,7 +581,13 @@ selector: ['all', 'inverse']
 
 选择器按钮与图例组件之间的间隔。
 
+## triggerEvent(boolean) = false
 
+{{ use: partial-version(
+    version = "6.0.0"
+) }}
+
+是否触发事件。
 
 {{ target: partial-legend-style }}
 
