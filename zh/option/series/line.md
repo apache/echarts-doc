@@ -110,6 +110,12 @@ const option = {
 
 {{ use: partial-cursor() }}
 
+## stackPercent(boolean) = false
+
+启用此选项并使用 `stack` 后，堆叠值将被标准化为每个类别总计的百分比。每个堆叠值的总和将达到 100%。
+
+原始值和标准化百分比都将显示在工具提示中。使用 `params.percent` 可在工具提示和标签格式化程序中访问标准化值。
+
 ## connectNulls(boolean) = false
 
 <ExampleUIControlBoolean />
