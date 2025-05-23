@@ -83,6 +83,12 @@ How to stack values if the [stack](~series-line.stack) property has been set. Op
 
 {{ use: partial-cursor() }}
 
+## stackPercent(boolean) = false
+
+When enabled and `stack` is used, stacked values will be normalized as percentages of the total at each category. Each stack will add up to 100%.
+
+Both the raw value and the normalized percentage will be displayed in the tooltip. Use `params.percent` to access the normalized value in tooltip and label formatters.
+
 ## connectNulls(boolean) = false
 
 <ExampleUIControlBoolean />

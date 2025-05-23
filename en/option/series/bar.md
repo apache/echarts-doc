@@ -157,6 +157,12 @@ How to stack values if the [stack](~series-bar.stack) property has been set. Opt
 + `'positive'`: only stack positive values.
 + `'negative'`: only stack negative values.
 
+## stackPercent(boolean) = false
+
+When enabled and `stack` is used, stacked values will be normalized as percentages of the total at each category. Each stack will add up to 100%.
+
+Both the raw value and the normalized percentage will be displayed in the tooltip. Use `params.percent` to access the normalized value in tooltip and label formatters.
+
 ## sampling(string)
 
 The downsampling strategy used when the data size is much larger than pixel size. It will improve the performance when turned on. Defaults to be turned off, indicating that all the data points will be drawn.
