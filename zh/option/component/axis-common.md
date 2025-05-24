@@ -1059,7 +1059,7 @@ xAxis: {
 
 {{ use: partial-version(version = '5.6.0') }}
 
-坐标轴 tooltip 设置，注意需启用全局 [option.tooltip](~tooltip) 组件。
+坐标轴 tooltip 设置，注意需设置 [triggerEvent](~${componentType}.triggerEvent) 为 `true` 并启用全局 [option.tooltip](~tooltip) 组件。
 
 ##${prefix} show(boolean) = false
 

@@ -1065,7 +1065,7 @@ xAxis: {
 
 {{ use: partial-version(version = '5.6.0') }}
 
-The tooltip configuration for ${componentType}, must enable global [option.tooltip](~tooltip) component.
+The tooltip configuration for ${componentType}, must set [triggerEvent](~${componentType}.triggerEvent) as `true` and enable global [option.tooltip](~tooltip) component.
 
 ##${prefix} show(boolean) = false
 
