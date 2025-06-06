@@ -47,7 +47,7 @@ formatter: '{b}: {@score}'
 
 ## datasetIndex(number) = 0
 
-如果 [series.data](~series.data) 没有指定，并且 [dataset](~dataset) 存在，那么就会使用 [dataset](~dataset)。`datasetIndex` 指定本系列使用那个 [dataset](~dataset)。
+如果 [series.data](~series.data) 没有指定，并且 [dataset](~dataset) 存在，那么就会使用 [dataset](~dataset)。`datasetIndex` 指定本系列使用哪个 [dataset](~dataset)。
 
 
 

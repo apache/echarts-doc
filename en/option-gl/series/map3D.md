@@ -17,5 +17,5 @@ Compared to 2D maps, 3D maps can set different heights for each area. This heigh
 {{ use: component-geo3D-common(
     componentType="series-map3D",
     inMap=true,
-    componentName="三维地图"
+    componentName="3D map"
 )  }}

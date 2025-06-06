@@ -438,7 +438,7 @@ The curvature of the tree edge.
 
 #${prefix} itemStyle(Object)
 
-该节点的样式。
+The style of this node.
 
 {{ use: partial-item-style(
     prefix = "#" + ${prefix},

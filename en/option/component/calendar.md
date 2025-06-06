@@ -271,6 +271,11 @@ calendar: [{
     defaultColor = "#000"
 ) }}
 
+{{ use: partial-silent(
+    prefix = "##",
+    version = "5.6.0"
+) }}
+
 ## monthLabel(Object)
 
 Month label in calendar coordinates.
@@ -392,6 +397,11 @@ formatter: function (param) {
     defaultColor = "#000"
 ) }}
 
+{{ use: partial-silent(
+    prefix = "##",
+    version = "5.6.0"
+) }}
+
 ## yearLabel(Object)
 
 Year label in calendar coordinates.
@@ -460,8 +470,11 @@ formatter: function (param) {
 ) }}
 
 {{ use: partial-silent(
-    prefix = "#",
-    defaultFontWeight = "bolder",
-    defaultFontSize = "20"
+    prefix = "##",
+    version = "5.6.0"
+) }}
+
+{{ use: partial-silent(
+    prefix = "#"
 ) }}
 

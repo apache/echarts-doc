@@ -49,6 +49,8 @@
 
 {{ use: partial-label(
     prefix = "###" + ${prefix},
+    defaultShowLabel = true,
+    defaultPosition = "'inside'",
     formatter = true
 ) }}
 
@@ -70,6 +72,8 @@
 
 {{ use: partial-label(
     prefix = "###" + ${prefix},
+    defaultShowLabel = true,
+    defaultPosition = "'inside'",
     formatter = true
 ) }}
 
@@ -116,9 +120,9 @@ data: [{{ if: ${hasType} }}
 ]
 ```
 
-###${prefix} name(string) = ''
+###${prefix} name(string)
 
-标注名称。
+标注名称。定义后可在 [label formatter](~series-${seriesType}.markPoint.data.label.formatter) 中作为**数据名** `{b}` 模板变量使用。
 
 {{ if: ${hasType} }}
 ###${prefix} type(string)
@@ -183,7 +187,10 @@ data: [{{ if: ${hasType} }}
 ###${prefix} label(Object)
 
 {{ use: partial-label(
-    prefix = ${prefix} + '###'
+    prefix = ${prefix} + '###',
+    defaultShowLabel = true,
+    defaultPosition = "'inside'",
+    formatter = true
 ) }}
 
 ###${prefix} emphasis(Object)
@@ -195,7 +202,10 @@ data: [{{ if: ${hasType} }}
 ####${prefix} label(Object)
 
 {{ use: partial-label(
-    prefix = ${prefix} + '####'
+    prefix = ${prefix} + '####',
+    defaultShowLabel = true,
+    defaultPosition = "'inside'",
+    formatter = true
 ) }}
 
 ####${prefix} itemStyle(Object)
@@ -213,7 +223,10 @@ data: [{{ if: ${hasType} }}
 ####${prefix} label(Object)
 
 {{ use: partial-label(
-    prefix = ${prefix} + '####'
+    prefix = ${prefix} + '####',
+    defaultShowLabel = true,
+    defaultPosition = "'inside'",
+    formatter = true
 ) }}
 
 ####${prefix} itemStyle(Object)

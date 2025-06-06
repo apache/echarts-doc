@@ -323,6 +323,14 @@ The first parameter `params` is the data that the formatter needs. Its format is
         treeAncestors: {
             desc: 'The ancestors of current node in the tree/treemap series (including self)',
             type: 'Array'
+        },
+        isTruncated: {
+            desc: 'A function that returns a boolean value to flag if the axis label is truncated',
+            type: 'Function'
+        },
+        tickIndex: {
+            desc: 'Current index of the axis label tick',
+            type: 'number'
         }
     }
 ) }}
@@ -347,6 +355,7 @@ formatter: function (params, ticket, callback) {
 }
 ```
 
+{{ if: !${noValueFormatter} }}
 #${prefix} valueFormatter(string)
 
 {{ use: partial-version(
@@ -367,6 +376,7 @@ Example:
 // Add $ prefix
 valueFormatter: (value) => '$' + value.toFixed(2)
 ```
+{{ /if }}
 
 #${prefix} backgroundColor(Color) = 'rgba(50,50,50,0.7)'
 

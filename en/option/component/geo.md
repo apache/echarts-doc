@@ -113,6 +113,11 @@ Style of blurred region.
 ) }}
 
 {{ use: partial-silent(
+    prefix = "##",
+    version = "5.6.0"
+) }}
+
+{{ use: partial-silent(
     prefix = "#"
 ) }}
 

@@ -217,6 +217,23 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 
 是否隐藏重叠的标签。
 
+##${prefix} customValues(Array)
+
+{{ use: partial-version(
+    version = "5.5.1"
+) }}
+
+自定义要显示的标签位置。例如：
+
+```ts
+axisLabel: {
+    customValues: [0, 4, 7, 8, 9]
+}
+```
+
+![600xauto](~axis-tick-label-custom-values.png)
+
+
 {{ use: partial-text-style(
     prefix = '#' + ${prefix},
     defaultColor = "'#333'"
@@ -314,6 +331,22 @@ textStyle: {
 
 刻度线的颜色，默认取 [axisTick.lineStyle.color](~${componentType}.axisTick.lineStyle.color)。
 
+##${prefix} customValues(Array)
+
+{{ use: partial-version(
+    version = "5.5.1"
+) }}
+
+自定义要显示的坐标轴刻度位置。例如：
+
+```ts
+axisTick: {
+    alignWithLabel: true,
+    customValues: [0, 0.5, 1, 1.5, 2, 8, 9]
+}
+```
+
+![600xauto](~axis-tick-label-custom-values.png)
 
 
 {{ target: partial-axis-common-minor-tick }}
@@ -384,6 +417,26 @@ textStyle: {
 <ExampleUIControlBoolean default="${defaultShow|default(true)}" />
 
 是否显示分隔线。默认数值轴显示，类目轴不显示。
+
+##${prefix} showMinLine(boolean) = true
+
+<ExampleUIControlBoolean />
+
+{{ use: partial-version(
+    version = "5.6.0"
+) }}
+
+是否显示最小 tick 的分隔线。默认为 `true`。
+
+##${prefix} showMaxLine(boolean) = true
+
+<ExampleUIControlBoolean />
+
+{{ use: partial-version(
+    version = "5.6.0"
+) }}
+
+是否显示最大 tick 的分隔线。默认为 `true`。
 
 {{ if: ${hasLabelInterval|default(true)} }}
 ##${prefix} interval(number|Function) = 'auto'
@@ -709,6 +762,16 @@ max: function (value) {
 
 对数轴的底数，只在对数轴中（[type](~${componentType}.type): 'log'）有效。
 
+#${prefix} startValue(number)
+
+<ExampleUIControlNumber />
+
+{{ use: partial-version(
+    version = '5.5.1'
+) }}
+
+用于指定轴的起始值。
+
 {{ use: partial-axis-common-axis-line(
     prefix = ${prefix},
     componentType = ${componentType}
@@ -791,6 +854,11 @@ data: [{
     prefix = "#" + ${prefix}
 ) }}
 {{ /if }}
+
+{{ use: partial-axis-tooltip(
+    prefix = ${prefix},
+    componentType = ${componentType}
+) }}
 
 {{ use: partial-animation(
     prefix = ${prefix}
@@ -989,3 +1057,25 @@ xAxis: {
     }
 },
 ```
+
+
+{{ target: partial-axis-tooltip }}
+
+#${prefix} tooltip(Object)
+
+{{ use: partial-version(version = '5.6.0') }}
+
+坐标轴 tooltip 设置，注意需设置 [triggerEvent](~${componentType}.triggerEvent) 为 `true` 并启用全局 [option.tooltip](~tooltip) 组件。
+
+##${prefix} show(boolean) = false
+
+<ExampleUIControlBoolean default="false" />
+
+是否显示提示框组件，默认不启用。
+
+{{ use: partial-tooltip-common(
+    prefix = '#' + ${prefix},
+    noValueFormatter = true
+) }}
+
+

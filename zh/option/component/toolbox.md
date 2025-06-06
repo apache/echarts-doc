@@ -588,7 +588,7 @@ option = {
         tooltip: { // 和 option.tooltip 的配置项相同
             show: true,
             formatter: function (param) {
-                return return '<div>' + param.title + '</div>'; // 自定义的 DOM 结构
+                return '<div>' + param.title + '</div>'; // 自定义的 DOM 结构
             },
             backgroundColor: '#222',
             textStyle: {

@@ -1735,15 +1735,15 @@ We can also specify all of the properties like this:
 
 ###${prefix} duration(number)
 
-动画时长，单位 ms
+Duration of animation, unit: ms
 
 ###${prefix} easing(string)
 
-动画缓动。不同的缓动效果可以参考 [缓动示例](${galleryEditorPath}line-easing)。
+Easing effect. Refer to the following for different effects: [examples](${galleryEditorPath}line-easing)
 
 ###${prefix} delay(number)
 
-动画延迟时长，单位 ms
+Delay of animation, unit: ms
 
 
 
@@ -1765,7 +1765,7 @@ The y value of the left-top corner of the element in the coordinate system of it
 
 The x value of the center of the element in the coordinate system of its parent.
 
-###${prefix} cy(numbr) = 0
+###${prefix} cy(number) = 0
 
 The y value of the center of the element in the coordinate system of its parent.
 
@@ -1777,7 +1777,7 @@ The y value of the center of the element in the coordinate system of its parent.
 
 The width of the shape of the element.
 
-###${prefix} height(numbr) = 0
+###${prefix} height(number) = 0
 
 The height of the shape of the element.
 

@@ -19,6 +19,21 @@
 
 **注意：** 这里无法像一般的 `symbolSize` 那样通过数组分别指定高宽。
 
+##${prefix} symbolOffset(number|string|Array)
+
+标线两端的标记相对于原本位置的偏移，可以是一个数组分别指定两端，也可以是单个统一指定。如果希望单独指定两端标记的水平/垂直偏移，也可以是一个二维数组，每个元素为单个标记的偏移量，例：
+
+```js
+symbolOffset: [
+    [-10, 20],    // 起始标记偏移
+    ['50%', 100]  // 结束标记偏移
+]
+```
+
+{{ use: partial-version(
+    version = "5.1.0"
+) }}
+
 ##${prefix} precision(number) = 2
 
 标线数值的精度，在显示平均值线的时候有用。
@@ -157,8 +172,7 @@ data: [
 起点的数据。
 
 {{ use: mark-line-data-item-item(
-    name = "起点",
-    prefix = "###"+${prefix},
+    prefix = "###" + ${prefix},
     seriesType = ${seriesType},
     hasCoord = ${hasCoord},
     hasType = ${hasType},
@@ -170,8 +184,7 @@ data: [
 终点的数据。
 
 {{ use: mark-line-data-item-item(
-    name = "终点",
-    prefix = "###"+${prefix},
+    prefix = "###" + ${prefix},
     seriesType = ${seriesType},
     hasCoord = ${hasCoord},
     hasType = ${hasType},
@@ -260,7 +273,7 @@ data: [
 
 #${prefix} name(string) = '${name}'
 
-标注名称，将会作为文字显示。
+标注名称。定义后可在 [label formatter](~series-${seriesType}.markLine.data.label.formatter) 中作为**数据名** `{b}` 模板变量使用。
 
 #${prefix} x(number)
 

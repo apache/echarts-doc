@@ -236,10 +236,6 @@ const option = {
 
 {{ use: partial-legend-hover-link() }}
 
-## hoverAnimation(boolean) = true
-
-是否开启 hover 在 box 上的动画效果。
-
 ## layout(string) = null
 
 <ExampleUIControlEnum options="horizontal,vertical">
@@ -272,14 +268,18 @@ K 线图的图形样式。
 
 {{ use: partial-candlestick-item-style-detail(
     prefix = "##",
-    defaultColor = "#c23531",
-    defaultColor0 = "#314656",
-    defaultBorderColor = "#c23531",
-    defaultBorderColor0 = "#314656",
+    defaultColor = "#eb5454",
+    defaultColor0 = "#47b262",
+    defaultBorderColor = "#eb5454",
+    defaultBorderColor0 = "#47b262",
     defaultBorderWidth = 1
 ) }}
 
 ## emphasis(Object)
+
+{{ use: partial-version(
+    version = "5.6.0"
+) }}
 
 K 线图的高亮状态。
 
@@ -299,7 +299,7 @@ K 线图的高亮状态。
 ## blur(Object)
 
 {{ use: partial-version(
-    version = "5.0.0"
+    version = "5.6.0"
 ) }}
 
 K 线图的淡出状态。开启 [emphasis.focus](~series-candlestick.emphasis.focus) 后有效
@@ -327,7 +327,8 @@ K 线图的选中状态。开启 [selectedMode](~series-candlestick.selectedMode
 
 {{ use: partial-candlestick-item-style-detail(
     prefix = "###",
-    defaultBorderWidth = 2
+    defaultBorderWidth = 2,
+    option0Version = "5.6.0"
 ) }}
 
 {{ use: partial-selected-mode(
@@ -506,6 +507,12 @@ K 线图的选中状态。开启 [selectedMode](~series-candlestick.selectedMode
 
 <ExampleUIControlColor />
 
+{{ if: ${option0Version} }}
+{{ use: partial-version(
+    version = ${option0Version}
+) }}
+{{ /if }}
+
 `阴线` 图形的颜色。
 
 {{ use: partial-color-desc() }}
@@ -524,6 +531,12 @@ K 线图的选中状态。开启 [selectedMode](~series-candlestick.selectedMode
 
 `阴线` 图形的描边颜色。
 
+{{ if: ${option0Version} }}
+{{ use: partial-version(
+    version = ${option0Version}
+) }}
+{{ /if }}
+
 {{ use: partial-color-desc() }}
 
 #${prefix} borderColorDoji(Color) = null
@@ -531,7 +544,7 @@ K 线图的选中状态。开启 [selectedMode](~series-candlestick.selectedMode
 <ExampleUIControlColor />
 
 {{ use: partial-version(
-    version = "5.4.1"
+    version = ${option0Version|default("5.4.1")}
 ) }}
 
 十字星（开盘价等于收盘价）的描边颜色。

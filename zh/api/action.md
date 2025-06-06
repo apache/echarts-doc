@@ -137,7 +137,15 @@ dispatchAction({
 dispatchAction({
     type: 'legendSelect',
     // 图例名称
-    name: string
+    name: string,
+
+    // 下列参数自 v5.6.0 起开始支持
+    // 图例组件ID
+    legendId: string,
+    // 图例组件索引
+    legendIndex: number,
+    // 图例组件名称
+    legendName: string
 })
 ```
 
@@ -150,7 +158,15 @@ dispatchAction({
 dispatchAction({
     type: 'legendUnSelect',
     // 图例名称
-    name: string
+    name: string,
+
+    // 下列参数自 v5.6.0 起开始支持
+    // 图例组件ID
+    legendId: string,
+    // 图例组件索引
+    legendIndex: number,
+    // 图例组件名称
+    legendName: string
 })
 ```
 
@@ -162,7 +178,15 @@ dispatchAction({
 dispatchAction({
     type: 'legendToggleSelect',
     // 图例名称
-    name: string
+    name: string,
+
+    // 下列参数自 v5.6.0 起开始支持
+    // 图例组件ID
+    legendId: string,
+    // 图例组件索引
+    legendIndex: number,
+    // 图例组件名称
+    legendName: string
 })
 ```
 
@@ -172,7 +196,15 @@ dispatchAction({
 将图例全选。
 ```ts
 dispatchAction({
-    type: 'legendAllSelect'
+    type: 'legendAllSelect',
+
+    // 下列参数自 v5.6.0 起开始支持
+    // 图例组件ID
+    legendId: string,
+    // 图例组件索引
+    legendIndex: number,
+    // 图例组件名称
+    legendName: string
 })
 ```
 
@@ -182,7 +214,15 @@ dispatchAction({
 将图例反选。
 ```ts
 dispatchAction({
-    type: 'legendInverseSelect'
+    type: 'legendInverseSelect',
+
+    // 下列参数自 v5.6.0 起开始支持
+    // 图例组件ID
+    legendId: string,
+    // 图例组件索引
+    legendIndex: number,
+    // 图例组件名称
+    legendName: string
 })
 ```
 
@@ -388,8 +428,9 @@ dispatchAction({
 ```
 
 **EVENT:** [restore](~events.restore)
+
 ## geo
-[地图组件](option.html#series-geo)相关的行为，必须引入[地图组件](option.html#geo)后才能使用。
+[地图组件](option.html#geo)相关的行为，必须引入[地图组件](option.html#geo)后才能使用。
 
 {{ use: action-select(
     componentType='geo',
@@ -479,6 +520,39 @@ api.dispatchAction({
     }
 });
 ```
+
+## treemap
+
+[矩形树图](option.html#series-treemap)相关的行为。
+
+### treemapZoomToNode(Action)
+缩放到指定节点。
+
+```ts
+dispatchAction({
+    type: 'treemapZoomToNode',
+
+    {{ use: action-series-query }}
+
+    // 目标节点 id 或 name （如果节点指定了 id，则不能使用 name）
+    targetNodeId: string
+})
+```
+
+### treemapRootToNode(Action)
+缩放并进入到指定节点。
+
+```ts
+dispatchAction({
+    type: 'treemapRootToNode',
+
+    {{ use: action-series-query }}
+
+    // 目标节点 id 或 name （如果节点指定了 id，则不能使用 name）
+    targetNodeId: string
+})
+```
+
 
 
 {{ target: action-select }}

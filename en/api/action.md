@@ -138,7 +138,12 @@ Selects legend.
 dispatchAction({
     type: 'legendSelect',
     // legend name
-    name: string
+    name: string,
+
+    // The following parameters are supported since v5.6.0
+    legendId: string,
+    legendIndex: number,
+    legendName: string
 })
 ```
 
@@ -151,7 +156,12 @@ Unselects the legend.
 dispatchAction({
     type: 'legendUnSelect',
     // legend name
-    name: string
+    name: string,
+
+    // The following parameters are supported since v5.6.0
+    legendId: string,
+    legendIndex: number,
+    legendName: string
 })
 ```
 
@@ -163,7 +173,12 @@ Toggles legend selecting state.
 dispatchAction({
     type: 'legendToggleSelect',
     // legend name
-    name: string
+    name: string,
+
+    // The following parameters are supported since v5.6.0
+    legendId: string,
+    legendIndex: number,
+    legendName: string
 })
 ```
 
@@ -174,7 +189,12 @@ Selects all legends.
 
 ```ts
 dispatchAction({
-    type: 'legendAllSelect'
+    type: 'legendAllSelect',
+
+    // The following parameters are supported since v5.6.0
+    legendId: string,
+    legendIndex: number,
+    legendName: string
 })
 ```
 
@@ -185,7 +205,12 @@ Inverses all legends.
 
 ```ts
 dispatchAction({
-    type: 'legendInverseSelect'
+    type: 'legendInverseSelect',
+
+    // The following parameters are supported since v5.6.0
+    legendId: string,
+    legendIndex: number,
+    legendName: string
 })
 ```
 
@@ -294,7 +319,7 @@ dispatchAction({
 
 ### takeGlobalCursor(Action)
 
-Activate or inactivate `dataZoom` buttom in `toolbox`.
+Activate or inactivate `dataZoom` button in `toolbox`.
 
 ```ts
 myChart.dispatchAction({
@@ -474,7 +499,7 @@ The parameters are the same as [action brush](~action.brush.brush).
 ### takeGlobalCursor
 
 The switch of the brush. This action can make the mouse enabled/disabled to brush.
-In fact, the brush buttons in [toolbox](option.html#toolbox.feature.brush) just use this aciton.
+In fact, the brush buttons in [toolbox](option.html#toolbox.feature.brush) just use this action.
 
 This event corresponding to this action is [globalCursorTaken](~events.globalCursorTaken).
 
@@ -492,6 +517,38 @@ api.dispatchAction({
         brushMode: string
     }
 });
+```
+
+## treemap
+
+Actions related to [treemap series](option.html#series-treemap).
+
+### treemapZoomToNode(Action)
+Zoom to the target node.
+
+```ts
+dispatchAction({
+    type: 'treemapZoomToNode',
+
+    {{ use: action-series-query }}
+
+    // target node id or name (`name` is invalid if the target node has `id`)
+    targetNodeId: string
+})
+```
+
+### treemapRootToNode(Action)
+Zoom to and enter the target node.
+
+```ts
+dispatchAction({
+    type: 'treemapRootToNode',
+
+    {{ use: action-series-query }}
+
+    // target node `id` or `name` (`name` is invalid if the target node has `id`)
+    targetNodeId: string
+})
 ```
 
 

@@ -131,7 +131,7 @@ Fan colors can be set in `itemStyle`:
 
 ```ts
 itemStyle: {
-    // 设置扇形的颜色
+    // set fan color
     color: '#c23531',
     shadowBlur: 200,
     shadowColor: 'rgba(0, 0, 0, 0.5)'
@@ -147,7 +147,7 @@ Each fan's color can be set under `data`:
 ```ts
 data: [{
     value:400,
-    name:'搜索引擎',
+    name:'Search Engine',
     itemStyle: {
         color: '#c23531'
     }

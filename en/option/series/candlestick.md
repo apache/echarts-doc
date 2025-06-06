@@ -47,10 +47,6 @@ We use red to represent increasing and blue decreasing by default. If you want t
 
 {{ use: partial-legend-hover-link() }}
 
-## hoverAnimation(boolean) = true
-
-Whether to enable animation when hovering on box.
-
 ## layout(string) = null
 
 Layout method, whose values may be:
@@ -86,14 +82,18 @@ Item style of candlestick.
 
 {{ use: partial-candlestick-item-style-detail(
     prefix = "##",
-    defaultColor = "#c23531",
-    defaultColor0 = "#314656",
-    defaultBorderColor = "#c23531",
-    defaultBorderColor0 = "#314656",
+    defaultColor = "#eb5454",
+    defaultColor0 = "#47b262",
+    defaultBorderColor = "#eb5454",
+    defaultBorderColor0 = "#47b262",
     defaultBorderWidth = 1
 ) }}
 
 ## emphasis(Object)
+
+{{ use: partial-version(
+    version = "5.6.0"
+) }}
 
 Emphasis style of candlestick.
 
@@ -113,7 +113,7 @@ Emphasis style of candlestick.
 ## blur(Object)
 
 {{ use: partial-version(
-    version = "5.0.0"
+    version = "5.6.0"
 ) }}
 
 Configurations of blur state. Available when [emphasis.focus](~series-candlestick.emphasis.focus) is set.
@@ -141,7 +141,8 @@ Configurations of select state. Available when [selectedMode](~series-candlestic
 
 {{ use: partial-candlestick-item-style-detail(
     prefix = "###",
-    defaultBorderWidth = 2
+    defaultBorderWidth = 2,
+    option0Version = "5.6.0"
 ) }}
 
 {{ use: partial-selected-mode(
@@ -319,6 +320,12 @@ Fill color of bullish candle stick.
 
 <ExampleUIControlColor />
 
+{{ if: ${option0Version} }}
+{{ use: partial-version(
+    version = ${option0Version}
+) }}
+{{ /if }}
+
 Fill color of bearish candle stick.
 
 {{ use: partial-color-desc() }}
@@ -335,6 +342,12 @@ Border color of bullish candle stick.
 
 <ExampleUIControlColor />
 
+{{ if: ${option0Version} }}
+{{ use: partial-version(
+    version = ${option0Version}
+) }}
+{{ /if }}
+
 Border color of bearish candle stick.
 
 {{ use: partial-color-desc() }}
@@ -344,7 +357,7 @@ Border color of bearish candle stick.
 <ExampleUIControlColor />
 
 {{ use: partial-version(
-    version = "5.4.1"
+    version = ${option0Version|default("5.4.1")}
 ) }}
 
 Border color of doji (when the open price is the same as the close price).

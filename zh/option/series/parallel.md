@@ -265,8 +265,8 @@ const option = {
 线条样式。
 
 {{ use: partial-line-style(
-    prefix = "##",
-    defaultWidth = 2,
+    prefix = "#" + ${prefix},
+    defaultWidth = 1,
     defaultOpacity = 0.45
 ) }}
 
@@ -278,9 +278,11 @@ const option = {
 
 ##${prefix} lineStyle(Object)
 
+高亮状态下的线条样式。
+
 {{ use: partial-line-style(
     prefix = "##" + ${prefix},
-    defaultWidth = 2,
+    defaultWidth = 1,
     defaultOpacity = 0.45
 ) }}
 

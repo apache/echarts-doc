@@ -169,6 +169,16 @@ option = {
     prefix = "##"
 ) }}
 
+### scale(boolean) = false
+
+<ExampleUIControlBoolean />
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+是否开启 hover 在图形上的提示动画效果。
+
 {{ use: partial-focus-blur-scope() }}
 
 {{ use: pictorialBar-state(
@@ -195,19 +205,19 @@ option = {
     version = "5.0.0"
 ) }}
 
-选中状态配置。开启 [selectedMode](~series-bar.selectedMode) 后有效。
+选中状态配置。开启 [selectedMode](~series-pictorialBar.selectedMode) 后有效。
 
 {{ use: partial-select-disabled(
     prefix = "##"
 ) }}
 
-{{ use: partial-selected-mode(
-    version = '5.0.0'
-) }}
-
 {{ use: pictorialBar-state(
     prefix = "##",
     state = 'select'
+) }}
+
+{{ use: partial-selected-mode(
+    version = '5.0.0'
 ) }}
 
 {{ use: partial-barGrid(
@@ -291,6 +301,18 @@ option = {
     prefix = "###"
 ) }}
 
+#### scale(boolean) = false
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+是否开启 hover 在图形上的提示动画效果。
+
+{{ use: partial-focus-blur-scope(
+    prefix = "#"
+) }}
+
 {{ use: partial-bar-state(
     prefix = "###",
     state = 'emphasis'
@@ -354,12 +376,12 @@ option = {
     noAnimationDelay = true
 ) }}
 
-{{ use: partial-universal-transition(
-    prefix = "#"
-) }}
-
 {{ use: pictorialBar-animation-delay(
     prefix = "##"
+) }}
+
+{{ use: partial-universal-transition(
+    prefix = "#"
 ) }}
 
 {{ use: partial-tooltip-in-series() }}
@@ -620,23 +642,13 @@ itemStyle: {
 指定图形元素间的覆盖关系。数值越大，越在层叠的上方。
 {{ /if }}
 
-#${prefix} hoverAnimation(boolean) = false
-
-<ExampleUIControlBoolean />
-
-是否开启 hover 在图形上的提示动画效果。
-
-{{ use: pictorialBar-symbol-attrs-cascade(
-    attrName = 'hoverAnimation'
-) }}
-
 {{ use: partial-animation(
-    prefix = "##",
+    prefix = ${prefix},
     noAnimationDelay = true
 ) }}
 
 {{ use: pictorialBar-animation-delay(
-    prefix = "##"
+    prefix = ${prefix}
 ) }}
 
 

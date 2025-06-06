@@ -153,6 +153,22 @@ const option = {
     defaultBorderColor = "#ACB8D1"
 ) }}
 
+## handleLabel(Object)
+
+{{ use: partial-version(
+    version = "5.6.0"
+) }}
+
+手柄附近文字的样式设置。
+
+### show(boolean) = false
+
+{{ use: partial-version(
+    version = "5.6.0"
+) }}
+
+是否显示文字。
+
 ## moveHandleIcon(string)
 
 <ExampleUIControlIcon />
@@ -305,6 +321,22 @@ dataZoom-slider 组件的高度。水平布局默认 30，竖直布局默认自�
 {{ use: partial-item-style(
     prefix = "###"
 ) }}
+
+### handleLabel(Object)
+
+{{ use: partial-version(
+    version = "5.6.0"
+) }}
+
+手柄附近文字的样式设置。
+
+#### show(boolean) = false
+
+{{ use: partial-version(
+    version = "5.6.0"
+) }}
+
+是否显示文字。
 
 ### moveHandleStyle(Object)
 

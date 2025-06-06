@@ -303,7 +303,7 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
 
 当文本内容超出 [width](~${optionPath}.${hostName}${symbolVisit}text.style.width) 时的文本显示策略，取值：`'break'`, `'breakAll'`, `'truncate'`, `'none'`。
 
-- `'break'`: 尽可能保证完整的单词不被截断(类似 `CSS` 重的 `word-break: break-word;`)
+- `'break'`: 尽可能保证完整的单词不被截断(类似 `CSS` 中的 `word-break: break-word;`)
 - `'breakAll'`: 可在任意字符间断行
 - `'truncate'`: 截断文本屏显示 '...'，可以使用 [ellipsis](~${optionPath}.${hostName}${symbolVisit}text.style.ellipsis) 来自定义省略号的显示
 - `'none'`: 不换行
@@ -1739,7 +1739,7 @@ Position of `textContent`.
 
 图形元素的中心在父节点坐标系（以父节点左上角为原点）中的横坐标值。
 
-###${prefix} cy(numbr) = 0
+###${prefix} cy(number) = 0
 
 图形元素的中心在父节点坐标系（以父节点左上角为原点）中的纵坐标值。
 
@@ -1751,7 +1751,7 @@ Position of `textContent`.
 
 图形元素的宽度。
 
-###${prefix} height(numbr) = 0
+###${prefix} height(number) = 0
 
 图形元素的高度。
 

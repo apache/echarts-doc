@@ -515,7 +515,7 @@ option = {
         tooltip: { // same as option.tooltip
             show: true,
             formatter: function (param) {
-                return return '<div>' + param.title + '</div>'; // user-defined DOM structure
+                return '<div>' + param.title + '</div>'; // user-defined DOM structure
             },
             backgroundColor: '#222',
             textStyle: {

@@ -183,6 +183,14 @@ option = {
 
 - `{value}`：将被替换为数据的值。
 
+#### excludeDimensionId(Array)
+
+{{ use: partial-version(
+    version = "5.6.0"
+) }}
+
+忽略 [aria.label](~aria.label) 下数据相应的维度。
+
 #### separator(Object)
 
 数据与数据之间描述的分隔符。

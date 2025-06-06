@@ -14,7 +14,10 @@ Used to mark an area in chart. For example, mark a time interval.
 Label in mark area.
 
 {{ use: partial-label(
-    prefix = ${prefix} + '##'
+    prefix = ${prefix} + '##',
+    defaultShowLabel = true,
+    defaultPosition = "'top'",
+    formatter = true
 ) }}
 
 ##${prefix} itemStyle(Object)
@@ -36,7 +39,10 @@ Emphasis status of mark area.
 ###${prefix} label(Object)
 
 {{ use: partial-label(
-    prefix = ${prefix} + '###'
+    prefix = ${prefix} + '###',
+    defaultShowLabel = true,
+    defaultPosition = "'top'",
+    formatter = true
 ) }}
 
 ###${prefix} itemStyle(*)
@@ -56,7 +62,10 @@ Configurations of blur state. Whether to blur follows the series.
 ###${prefix} label(Object)
 
 {{ use: partial-label(
-    prefix = ${prefix} + '###'
+    prefix = ${prefix} + '###',
+    defaultShowLabel = true,
+    defaultPosition = "'top'",
+    formatter = true
 ) }}
 
 ###${prefix} itemStyle(*)
@@ -141,8 +150,7 @@ data: [
 Specify the left-top point.
 
 {{ use: mark-area-data-item-item(
-    name = "start",
-    prefix = "###"+${prefix},
+    prefix = "###" + ${prefix},
     seriesType = ${seriesType},
     hasCoord = ${hasCoord},
     hasType = ${hasType},
@@ -154,8 +162,7 @@ Specify the left-top point.
 Specify the right-bottom point.
 
 {{ use: mark-area-data-item-item(
-    name = "end",
-    prefix = "###"+${prefix},
+    prefix = "###" + ${prefix},
     seriesType = ${seriesType},
     hasCoord = ${hasCoord},
     hasType = ${hasType},
@@ -207,7 +214,7 @@ The format is [start coordinate, end coordinate], where the coordinate system ca
 
 #${prefix} name(string) = '${name}'
 
-Name of the marker, which will display as a label.
+Name of the marker, which will display as a label. Can be used as a template variable **data name** `{b}` in [label formatter](~series-${seriesType}.markArea.data.label.formatter).
 
 #${prefix} x(number)
 
@@ -240,7 +247,10 @@ Label style of the item.
 Label style of start point and end point will be merged together.
 
 {{ use: partial-label(
-    prefix = '#'+${prefix}
+    prefix = '#'+${prefix},
+    defaultShowLabel = true,
+    defaultPosition = "'top'",
+    formatter = true
 ) }}
 
 #${prefix} emphasis(Object)
@@ -258,7 +268,10 @@ Label style of start point and end point will be merged together.
 ##${prefix} label(Object)
 
 {{ use: partial-label(
-    prefix = '##'+${prefix}
+    prefix = '##'+${prefix},
+    defaultShowLabel = true,
+    defaultPosition = "'top'",
+    formatter = true
 ) }}
 
 #${prefix} blur(Object)
@@ -276,6 +289,9 @@ Label style of start point and end point will be merged together.
 ##${prefix} label(Object)
 
 {{ use: partial-label(
-    prefix = '##'+${prefix}
+    prefix = '##'+${prefix},
+    defaultShowLabel = true,
+    defaultPosition = "'top'",
+    formatter = true
 ) }}
 

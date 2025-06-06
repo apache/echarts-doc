@@ -110,6 +110,11 @@ center: [115.97, '30%']
 
 该区域是否选中。
 
+{{ use: partial-silent(
+    prefix = "##",
+    version = "5.6.0"
+) }}
+
 ### itemStyle(Object)
 
 该数据所在区域的多边形样式设置

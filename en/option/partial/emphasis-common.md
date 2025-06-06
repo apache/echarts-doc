@@ -1,12 +1,12 @@
 
 {{ target: partial-emphasis-disabled }}
 
-#${prefix} disabled(boolean)
+#${prefix} disabled(boolean) = ${defaultValue|default(false)}
 
-<ExampleUIControlBoolean default="false" />
+<ExampleUIControlBoolean default="${defaultValue|default(false)}" />
 
 {{ use: partial-version(
-    version = "5.3.0"
+    version = ${version|default('5.3.0')}
 ) }}
 
 Whether to disable the emphasis state.
@@ -17,7 +17,7 @@ When emphasis state is disabled. There will be no highlight effect when the mous
 
 {{ target: partial-focus-blur-scope }}
 
-### focus(string) = 'none'
+###${prefix} focus(string) = 'none'
 
 {{ if: ${isGeoCoordSys} }}
 {{ use: partial-version(
@@ -74,7 +74,7 @@ emphasis: {
 {{ /if }}
 
 {{ if: !${isGeoCoordSys} }}
-### blurScope(string) = 'coordinateSystem'
+###${prefix} blurScope(string) = 'coordinateSystem'
 
 {{ use: partial-version(
     version = "5.0.0"

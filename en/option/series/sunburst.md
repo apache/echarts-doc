@@ -314,7 +314,9 @@ The start angle, which range is [0, 360].
 Configurations of emphasis state.
 
 {{ use: partial-focus-blur-scope(
-    isTree = true
+    isTree = true,
+    hasRelative = true,
+    relativeVersion = '5.6.0'
 ) }}
 
 {{ use: partial-sunburst-state(

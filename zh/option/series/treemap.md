@@ -250,6 +250,13 @@ const option = {
 + `'move'` 或 `'pan'`：只能够平移。
 + `true`：缩放和平移均可。
 
+## scaleLimit(Object)
+
+{{ use: partial-scale-limit(
+    prefix = "##",
+    version = "5.5.1"
+) }}
+
 ## nodeClick(boolean|string) = 'zoomToNode'
 
 点击节点后的行为。可取值为：
@@ -535,6 +542,11 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 {{ use: partial-tooltip-in-series-data() }}
 
+{{ use: partial-cursor(
+    prefix = "##",
+    version = "5.6.0"
+) }}
+
 {{ use: partial-silent(
     prefix = "#"
 ) }}
@@ -547,6 +559,10 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 {{ use: partial-tooltip-in-series() }}
 
+{{ use: partial-cursor(
+    prefix = "#",
+    version = "5.6.0"
+) }}
 
 
 {{ target: partial-treemap-level-props }}
