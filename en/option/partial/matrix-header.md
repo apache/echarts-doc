@@ -1,61 +1,57 @@
 {{ target: partial-matrix-header }}
 
-Configuration for the ${name} Axis
+### show(boolean) = true
 
-#${prefix|default('##')} show(boolean) = true
+Determines whether to display the title row of the ${name}.
 
-Determines whether to display the title row of the ${name} axis.
+{{ use: partial-matrix-region(
+    prefix = '##',
+    name: ${name}
+) }}
 
-#${prefix|default('##')} data(Array)
+### levelSize(number|string)
 
-Specifies the data for the title row of the ${name} axis.
+The size of all cells in the title row/column. For the x title row, it refers to the cell height; for the y title column, it refers to the cell width.
+
+The value type can be:
+
++ `number`: Represents pixel value.
++ `string`: Percentage value (e.g., `'33%'`), representing the percentage relative to the width or height of the entire chart container.
++ Unspecified: Represents the minimum value that adapts to the content.
+
+For example:
 
 ```js
-// Data for a single row
-data: ['A', 'B', 'C', 'D', 'E']
-
-// Data in a tree structure
-data: [{
-    value: 'A',
-    children: [
-        {
-            value: 'A1',
-            children: [
-                {value: 'A1-1'},
-                {value: 'A1-2'}
-            ]
-        },
-        {value: 'A2'}
-    ]
-}, {
-    value: 'B',
-    children: [
-        {value: 'B1'},
-        {value: 'B2'}
-    ]
-}]
+{
+    x: {
+        levelSize: undefined,
+        levels: [undefined, {levelSize: '10%'}]
+    }
+}
 ```
 
-#${prefix|default('##')} label(Object)
+In the above example, the width of the second column title is 10% of the entire chart width, and other title columns use the maximum value of each column title content as the width.
 
-{{ use: partial-label-desc() }}
+### levels(Array)
 
-{{ use: partial-label(
-    prefix=${prefix|default('##')} + '#',
-    formatter = true,
-    defaultColor = "#333"
-) }}
+Settings for each row/column of the title row/column. The first element represents the first row/column, and so on. If an item in the array is empty, it means using the default value.
 
-#${prefix|default('##')} itemStyle(Object)
+#### levelSize(number|string)
 
-{{ use: partial-item-style-desc(
-    name = 'Header row'
-) }}
+The size of cells in a specific row/column of the title row. For the x title row, it refers to the cell height; for the y title column, it refers to the cell width.
 
-{{ use: partial-item-style(
-    prefix=${prefix|default('##')} + '#',
-    name = "Header row",
-    defaultColor = "none",
-    defaultBorderColor = "'#ccc'",
-    defaultBorderWidth = 1
+The value type can be:
+
++ `number`: Represents pixel value.
++ `string`: Percentage value (e.g., `'33%'`), representing the percentage relative to the width or height of the entire chart container.
++ Unspecified: Represents the minimum value that adapts to the content.
+
+### dividerLineStyle(Object)
+
+{{ use: partial-line-style(
+    prefix = '###',
+    defaultColor = "'#aaa'",
+    defaultWidth = 1,
+    defaultType = "'solid'",
+    name = "title column divider line"
 ) }}

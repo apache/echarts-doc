@@ -37,16 +37,38 @@ By flexibly using the combination of chart series, coordinate systems, and APIs,
 
 ## x(Object)
 
+X-axis header region.
+
 {{ use: partial-matrix-header(
-    name = 'x',
+    name = 'x-axis cells',
     prefix = '##'
 ) }}
 
 ## y(Object)
 
+Y-axis header region.
+
 {{ use: partial-matrix-header(
-    name = 'y',
+    name = 'y-axis cells',
     prefix = '##'
+) }}
+
+## body(Object)
+
+Body cells, which are the ones except header cells.
+
+{{ use: partial-matrix-region(
+    prefix = '##',
+    name: 'Body cells'
+) }}
+
+## corner(Object)
+
+Corner cells, which are the one at the intersection of x and y-axis.
+
+{{ use: partial-matrix-region(
+    prefix = '##',
+    name: 'Corner cells'
 ) }}
 
 ## backgroundStyle(Object)
@@ -56,18 +78,6 @@ The style of the entire matrix area.
 {{ use: partial-item-style(
     prefix = "##",
     name = "Entire matrix area ",
-    defaultColor = "none",
-    defaultBorderColor = "'#ccc'",
-    defaultBorderWidth = 1
-) }}
-
-## innerBackgroundStyle(Object)
-
-The style of the inner cells.
-
-{{ use: partial-item-style(
-    prefix = "##",
-    name = "Inner cells ",
     defaultColor = "none",
     defaultBorderColor = "'#ccc'",
     defaultBorderWidth = 1

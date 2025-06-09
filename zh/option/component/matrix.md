@@ -38,16 +38,34 @@
 
 ## x(Object)
 
+x 轴标题区。
+
 {{ use: partial-matrix-header(
-    name = 'x',
-    prefix = '##'
+    name: 'x 轴标题区单元格'
 ) }}
 
 ## y(Object)
 
+y 轴标题区。
+
 {{ use: partial-matrix-header(
-    name = 'y',
-    prefix = '##'
+    name: 'y 轴标题区单元格'
+) }}
+
+## body(Object)
+
+内容区单元格，即表单除了标题区外的区域。
+
+{{ use: partial-matrix-region(
+    name: '内容区单元格'
+) }}
+
+## corner(Object)
+
+角区单元格，即表单行列标题区的交集区域。
+
+{{ use: partial-matrix-region(
+    name: '角区单元格'
 ) }}
 
 ## backgroundStyle(Object)
@@ -55,21 +73,8 @@
 整个矩形视图区的样式。
 
 {{ use: partial-item-style(
-    prefix = "##",
     name = "整个矩形视图区",
     defaultColor = "none",
     defaultBorderColor = "'#aaa'",
-    defaultBorderWidth = 1
-) }}
-
-## innerBackgroundStyle(Object)
-
-内部单元格的样式。
-
-{{ use: partial-item-style(
-    prefix = "##",
-    name = "内部单元格",
-    defaultColor = "none",
-    defaultBorderColor = "'#ccc'",
     defaultBorderWidth = 1
 ) }}
