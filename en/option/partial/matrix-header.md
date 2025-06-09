@@ -16,8 +16,8 @@ The size of all cells in the title row/column. For the x title row, it refers to
 The value type can be:
 
 + `number`: Represents pixel value.
-+ `string`: Percentage value (e.g., `'33%'`), representing the percentage relative to the width or height of the entire chart container.
-+ Unspecified: Represents the minimum value that adapts to the content.
++ `string`: Percentage value (e.g., `'33%'`), representing the percentage relative to the width or height of the matrix.
++ Unspecified: The width or height is evenly distributed.
 
 For example:
 
