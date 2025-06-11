@@ -141,8 +141,11 @@ dispatchAction({
     name: string,
 
     // The following parameters are supported since v5.6.0
+    // the id of target legend component
     legendId: string,
+    // the index of target legend component
     legendIndex: number,
+    // the name of target legend component
     legendName: string
 })
 ```
@@ -159,8 +162,11 @@ dispatchAction({
     name: string,
 
     // The following parameters are supported since v5.6.0
+    // the id of target legend component
     legendId: string,
+    // the index of target legend component
     legendIndex: number,
+    // the name of target legend component
     legendName: string
 })
 ```
@@ -176,8 +182,11 @@ dispatchAction({
     name: string,
 
     // The following parameters are supported since v5.6.0
+    // the id of target legend component
     legendId: string,
+    // the index of target legend component
     legendIndex: number,
+    // the name of target legend component
     legendName: string
 })
 ```
@@ -192,8 +201,11 @@ dispatchAction({
     type: 'legendAllSelect',
 
     // The following parameters are supported since v5.6.0
+    // the id of target legend component
     legendId: string,
+    // the index of target legend component
     legendIndex: number,
+    // the name of target legend component
     legendName: string
 })
 ```
@@ -208,8 +220,11 @@ dispatchAction({
     type: 'legendInverseSelect',
 
     // The following parameters are supported since v5.6.0
+    // the id of target legend component
     legendId: string,
+    // the index of target legend component
     legendIndex: number,
+    // the name of target legend component
     legendName: string
 })
 ```
