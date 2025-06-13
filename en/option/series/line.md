@@ -101,6 +101,10 @@ Whether to connect the line across null points.
 
 Whether `line` and `area` can trigger the event.
 
+## triggerLineOnlyEvent(boolean) = false
+
+Whether only `line` can trigger the event.
+
 ## step(string|boolean) = false
 
 <ExampleUIControlEnum options='start,middle,end' />
