@@ -138,15 +138,7 @@ Selects legend.
 dispatchAction({
     type: 'legendSelect',
     // legend name
-    name: string,
-
-    // The following parameters are supported since v5.6.0
-    // the id of target legend component
-    legendId: string,
-    // the index of target legend component
-    legendIndex: number,
-    // the name of target legend component
-    legendName: string
+    name: string
 })
 ```
 
@@ -159,15 +151,7 @@ Unselects the legend.
 dispatchAction({
     type: 'legendUnSelect',
     // legend name
-    name: string,
-
-    // The following parameters are supported since v5.6.0
-    // the id of target legend component
-    legendId: string,
-    // the index of target legend component
-    legendIndex: number,
-    // the name of target legend component
-    legendName: string
+    name: string
 })
 ```
 
@@ -179,15 +163,7 @@ Toggles legend selecting state.
 dispatchAction({
     type: 'legendToggleSelect',
     // legend name
-    name: string,
-
-    // The following parameters are supported since v5.6.0
-    // the id of target legend component
-    legendId: string,
-    // the index of target legend component
-    legendIndex: number,
-    // the name of target legend component
-    legendName: string
+    name: string
 })
 ```
 
