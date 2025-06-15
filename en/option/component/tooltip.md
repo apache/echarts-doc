@@ -183,6 +183,53 @@ Whether mouse is allowed to enter the floating layer of tooltip, whose default v
 
 Render mode for tooltip. By default, it is set to be `'html'` so that extra DOM element is used for tooltip. It can also set to be `'richText'` so that the tooltip will be rendered inside Canvas. This is very useful for environments that don't have DOM, such as Wechat applications.
 
+## renderMode(string) = 'richText'
+Render mode for tooltip. By default, it is set to be `'html'` so that extra DOM element is used for tooltip. It can also set to be `'richText'` so that the tooltip will be rendered inside Canvas. This is very useful for environments that don't have DOM, such as Wechat applications.
+```ts
+{
+    title: {
+        text: 'ECharts 入门示例'
+    },
+    tooltip: {
+        trigger: 'axis',
+        formatter: (e) => {
+            return `{d|● }{a|富文本测试}\n{b|富文本测试2}\n{c|富文本测试3\n富文本测试3\n富文本测试3}`;
+        },
+        renderMode: 'richText',
+        backgroundColor: "#fff",
+        textStyle: {
+            rich: {
+                a: {
+                    fill: 'red',
+                },
+                b: {
+                    fill: 'orange',
+                    width: 300,
+                }, c: {
+                    fill: 'yellow',
+                    backgroundColor: 'green'
+                },
+                d: {
+                    fill: 'orange',
+                    fontSize:30
+                },
+            },
+        }
+    },
+    xAxis: {
+        data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+    },
+    yAxis: {},
+    series: [
+        {
+            name: '销量',
+            type: 'line',
+            data: [5, 20, 36, 10, 10, 20]
+        }
+    ],
+}
+```
+
 ## confine(boolean) = false
 
 <ExampleUIControlBoolean default="false" />
