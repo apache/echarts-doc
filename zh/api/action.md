@@ -178,11 +178,9 @@ dispatchAction({
 
     // 下列参数自 v5.6.0 起开始支持
     // 图例组件ID
-    legendId: string,
+    legendId?: string | string[],
     // 图例组件索引
-    legendIndex: number,
-    // 图例组件名称
-    legendName: string
+    legendIndex?: number | number[]
 })
 ```
 
@@ -197,11 +195,9 @@ dispatchAction({
 
     // 下列参数自 v5.6.0 起开始支持
     // 图例组件ID
-    legendId: string,
+    legendId?: string | string[],
     // 图例组件索引
-    legendIndex: number,
-    // 图例组件名称
-    legendName: string
+    legendIndex?: number | number[]
 })
 ```
 
@@ -209,11 +205,17 @@ dispatchAction({
 
 ### legendScroll(Action)
 控制图例的滚动。当 [legend.type](option.html#legend.type) 为 `'scroll'` 时有效。
+
 ```ts
 dispatchAction({
     type: 'legendScroll',
+    // 要滚动到的目标图例项索引
     scrollDataIndex: number,
-    legendId: string
+
+    // 图例组件ID
+    legendId?: string | string[],
+    // 图例组件索引
+    legendIndex?: number | number[]
 })
 ```
 

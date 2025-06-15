@@ -178,11 +178,9 @@ dispatchAction({
 
     // The following parameters are supported since v5.6.0
     // the id of target legend component
-    legendId: string,
+    legendId?: string | string[],
     // the index of target legend component
-    legendIndex: number,
-    // the name of target legend component
-    legendName: string
+    legendIndex?: number | number[]
 })
 ```
 
@@ -197,11 +195,9 @@ dispatchAction({
 
     // The following parameters are supported since v5.6.0
     // the id of target legend component
-    legendId: string,
+    legendId?: string | string[],
     // the index of target legend component
-    legendIndex: number,
-    // the name of target legend component
-    legendName: string
+    legendIndex?: number | number[]
 })
 ```
 
@@ -209,11 +205,17 @@ dispatchAction({
 
 ### legendScroll(Action)
 Control the scrolling of legend. It works when [legend.type](option.html#legend.type) is `'scroll'`.
+
 ```ts
 dispatchAction({
     type: 'legendScroll',
+    // the index of the legend item to scroll to
     scrollDataIndex: number,
-    legendId: string
+
+    // the id of target legend component
+    legendId?: string | string[],
+    // the index of target legend component
+    legendIndex?: number | number[]
 })
 ```
 
