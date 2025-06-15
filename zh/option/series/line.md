@@ -128,6 +128,10 @@ const option = {
 
 线条和区域面积是否触发事件
 
+## triggerLineOnlyEvent(boolean) = false
+
+是否只有线路可以触发事件
+
 ## step(string|boolean) = false
 
 <ExampleUIControlEnum options='start,middle,end' />
