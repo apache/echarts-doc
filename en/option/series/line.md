@@ -81,6 +81,18 @@ How to stack values if the [stack](~series-line.stack) property has been set. Op
 + `'positive'`: only stack positive values.
 + `'negative'`: only stack negative values.
 
+## stackOrder(string) = 'seriesAsc'
+
+{{ use: partial-version(
+    version = '6.0.0'
+) }}
+
+Stack order. Optional values:
++ `'seriesAsc'` (default, stack in series order)
++ `'seriesDesc'` (reverse stack order)
+
+Not supported in polar coordinate system.
+
 {{ use: partial-cursor() }}
 
 ## connectNulls(boolean) = false
