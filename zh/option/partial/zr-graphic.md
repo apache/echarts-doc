@@ -1376,6 +1376,12 @@ chart.on('click', function (params) {
 
 是否不响应鼠标以及触摸事件。
 
+{{ if: ${usageType} === 'customSeries' }}
+{{ use: partial-custom-series-tooltipDisabled(
+    prefix = ${prefix}
+) }}
+{{ /if }}
+
 {{ if: ${type} !== 'group' }}
 ##${prefix} invisible(boolean) = false
 
@@ -1968,6 +1974,18 @@ Position of `textContent`.
 [bezierCurve](~${optionPath}.${hostName}${symbolVisit}bezierCurve),
 [arc](~${optionPath}.${hostName}${symbolVisit}arc),
 [group](~${optionPath}.${hostName}${symbolVisit}group),
+
+
+
+{{ target: partial-custom-series-tooltipDisabled }}
+
+##${prefix} tooltipDisabled(boolean) = false
+
+是否不响应 tooltip。
+
+{{ use: partial-version(
+    version = '6.0.0'
+) }}
 
 
 
