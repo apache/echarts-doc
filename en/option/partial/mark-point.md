@@ -167,6 +167,10 @@ X position according to container, in pixel.
 
 Y position according to container, in pixel.
 
+###${prefix} z2(number)
+
+Define the overlap relationship between graphic elements(Since `6.0.0`)。
+
 ###${prefix} value(number)
 
 Label value, which can be ignored.

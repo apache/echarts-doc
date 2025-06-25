@@ -167,6 +167,9 @@ data: [{{ if: ${hasType} }}
 
 相对容器的屏幕 y 坐标，单位像素。
 
+###${prefix} z2(number)
+用于决定图形元素的覆盖关系（从 `6.0.0` 开始支持）。
+
 ###${prefix} value(number)
 
 标注值，可以不设。
