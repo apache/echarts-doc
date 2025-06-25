@@ -88,7 +88,7 @@ formatter: function (value, indicator) {
     noVerticalAlign = true
 ) }}
 
-## nameGap(number) = 15
+## axisNameGap(number) = 15
 
 <ExampleUIControlNumber default="15" step="1" />
 
