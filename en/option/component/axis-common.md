@@ -25,6 +25,12 @@ Parameters of the event include:
 }
 ```
 
+#${prefix} jitter(number) = 0
+
+To prevent data points from overlapping in scatter plots, a small amount of random noise is added to the positions of the data points. This helps to visualize the distribution of the data more clearly. It is only applicable to scatter plots and is effective only in single-axis or category axes in Cartesian coordinate systems. The unit is in pixels.
+
+~[600x400](${galleryViewPath}scatter-jitter&edit=1&reset=1)
+
 #${prefix} axisLine(Object)
 
 Settings related to axis line.

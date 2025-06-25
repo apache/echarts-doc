@@ -46,7 +46,7 @@ option = {
 
 <ExampleUIControlNumber default="0" step="1" />
 
-指定的数据最小值。
+指定的数据最小值。dynamicHeight为`true`时无效。
 
 ## max(number) = 100
 
@@ -66,7 +66,7 @@ option = {
 
 <ExampleUIControlPercent default="100%" />
 
-数据最大值 [max](~series-funnel.max) 映射的宽度。
+数据最大值 [max](~series-funnel.max) 映射的宽度。dynamicHeight为`true`时无效。
 
 可以是绝对的像素大小，也可以是相对[布局宽度](~series-funnel.width)的百分比。
 
@@ -85,6 +85,30 @@ option = {
 <ExampleUIControlEnum options="none,descending,ascending" default="descending" />
 
 数据排序， 可以取 `'ascending'`，`'descending'`，`'none'`（表示按 data 顺序），或者一个函数（即 `Array.prototype.sort(function (a, b) { ... })`）。
+
+## exitWidth(string)
+
+<ExampleUIControlPercent />
+
+该属性是设置顶部漏斗的出口宽度，也就是最后一个漏斗块的上底边长度，其以自身的下底边为基准取百分比。当 dynamicArea 有效时无效。您可以通过将其设置为 100% 来展平出口。当 showRate 为 true 时，您可以通过将其设置在 0% 和 99% 之间来使顶部为梯形。
+
+## dynamicHeight(boolean)
+
+<ExampleUIControlEnum options="true,false" default="false" />
+
+设置为true使每个数据采用漏斗高度作为映射模式基准。
+
+## showRate(boolean)
+
+<ExampleUIControlEnum options="true,false" default="false" />
+
+在默认的映射模式下，此属性将显示每个数据之间的转化率块，当 dynamicHeight 或 dynamicArea 为 true 时无效。(由于label限制，其他两种模式暂时不支持)
+
+## dynamicArea(boolean)
+
+<ExampleUIControlEnum options="true,false" default="false" />
+
+这个属性会让每个数据以漏斗的面积作为映射基准，优先级低于 dynamciHeight。
 
 ## gap(number) = 0
 
@@ -112,6 +136,54 @@ option = {
     formatter = true,
     minMargin = true
 ) }}
+
+## rateLabel(Object)
+
+{{ use: partial-label-desc(
+    name = "funnel rate"
+) }}
+
+### precision
+
+漏斗数据转化率的精度.默认值是2.
+
+### formatter(string|function)
+
+_回调函数_
+
+回调函数格式：
+
+```js
+(params: Object|Array) => string
+```
+
+参数 params 是 formatter 需要的单个数据集。格式如下：
+
+```ts
+{
+    rate: string,
+    // 当前转化率
+    preName: string,
+    // 当前转化率前一个数据的名称
+    nextName: string,
+    // 当前转化率后一个数据的名称
+    preDataIndex: number,
+    // 当前转化率前一个数据的索引
+    nextDataIndex: number,
+    // 当前转化率后一个数据的索引
+}
+```
+
+{{ use: partial-funnel-label(
+    prefix = "##",
+    position = false,
+    formatter = false
+) }}
+
+
+## overallRateLabel(Object) 
+
+这个属性的配置和rateLabel的配置一致, 这个属性的功能是设置整体转化率。 
 
 ## labelLine(Object)
 
