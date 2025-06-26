@@ -1396,6 +1396,12 @@ chart.on('click', function (params) {
 
 Whether response to mouse events / touch events.
 
+{{ if: ${usageType} === 'customSeries' }}
+{{ use: partial-custom-series-tooltipDisabled(
+    prefix = ${prefix}
+) }}
+{{ /if }}
+
 {{ if: ${type} !== 'group' }}
 ##${prefix} invisible(boolean) = false
 
@@ -1994,6 +2000,18 @@ Same to [style](~${optionPath}.${hostName}${symbolVisit}polygon.style).
 [bezierCurve](~${optionPath}.${hostName}${symbolVisit}bezierCurve),
 [arc](~${optionPath}.${hostName}${symbolVisit}arc),
 [group](~${optionPath}.${hostName}${symbolVisit}group),
+
+
+
+{{ target: partial-custom-series-tooltipDisabled }}
+
+##${prefix} tooltipDisabled(boolean) = false
+
+Whether disable triggering tooltip.
+
+{{ use: partial-version(
+    version = '6.0.0'
+) }}
 
 
 
