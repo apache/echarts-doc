@@ -157,6 +157,18 @@ How to stack values if the [stack](~series-bar.stack) property has been set. Opt
 + `'positive'`: only stack positive values.
 + `'negative'`: only stack negative values.
 
+## stackOrder(string) = 'seriesAsc'
+
+{{ use: partial-version(
+    version = '6.0.0'
+) }}
+
+Stack order. Optional values:
++ `'seriesAsc'` (default, stack in series order)
++ `'seriesDesc'` (reverse stack order)
+
+Not supported in polar coordinate system.
+
 ## sampling(string)
 
 The downsampling strategy used when the data size is much larger than pixel size. It will improve the performance when turned on. Defaults to be turned off, indicating that all the data points will be drawn.

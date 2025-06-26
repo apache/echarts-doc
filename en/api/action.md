@@ -138,12 +138,7 @@ Selects legend.
 dispatchAction({
     type: 'legendSelect',
     // legend name
-    name: string,
-
-    // The following parameters are supported since v5.6.0
-    legendId: string,
-    legendIndex: number,
-    legendName: string
+    name: string
 })
 ```
 
@@ -156,12 +151,7 @@ Unselects the legend.
 dispatchAction({
     type: 'legendUnSelect',
     // legend name
-    name: string,
-
-    // The following parameters are supported since v5.6.0
-    legendId: string,
-    legendIndex: number,
-    legendName: string
+    name: string
 })
 ```
 
@@ -173,12 +163,7 @@ Toggles legend selecting state.
 dispatchAction({
     type: 'legendToggleSelect',
     // legend name
-    name: string,
-
-    // The following parameters are supported since v5.6.0
-    legendId: string,
-    legendIndex: number,
-    legendName: string
+    name: string
 })
 ```
 
@@ -192,9 +177,10 @@ dispatchAction({
     type: 'legendAllSelect',
 
     // The following parameters are supported since v5.6.0
-    legendId: string,
-    legendIndex: number,
-    legendName: string
+    // the id of target legend component
+    legendId?: string | string[],
+    // the index of target legend component
+    legendIndex?: number | number[]
 })
 ```
 
@@ -208,9 +194,10 @@ dispatchAction({
     type: 'legendInverseSelect',
 
     // The following parameters are supported since v5.6.0
-    legendId: string,
-    legendIndex: number,
-    legendName: string
+    // the id of target legend component
+    legendId?: string | string[],
+    // the index of target legend component
+    legendIndex?: number | number[]
 })
 ```
 
@@ -218,11 +205,17 @@ dispatchAction({
 
 ### legendScroll(Action)
 Control the scrolling of legend. It works when [legend.type](option.html#legend.type) is `'scroll'`.
+
 ```ts
 dispatchAction({
     type: 'legendScroll',
+    // the index of the legend item to scroll to
     scrollDataIndex: number,
-    legendId: string
+
+    // the id of target legend component
+    legendId?: string | string[],
+    // the index of target legend component
+    legendIndex?: number | number[]
 })
 ```
 

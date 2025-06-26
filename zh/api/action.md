@@ -137,15 +137,7 @@ dispatchAction({
 dispatchAction({
     type: 'legendSelect',
     // 图例名称
-    name: string,
-
-    // 下列参数自 v5.6.0 起开始支持
-    // 图例组件ID
-    legendId: string,
-    // 图例组件索引
-    legendIndex: number,
-    // 图例组件名称
-    legendName: string
+    name: string
 })
 ```
 
@@ -158,15 +150,7 @@ dispatchAction({
 dispatchAction({
     type: 'legendUnSelect',
     // 图例名称
-    name: string,
-
-    // 下列参数自 v5.6.0 起开始支持
-    // 图例组件ID
-    legendId: string,
-    // 图例组件索引
-    legendIndex: number,
-    // 图例组件名称
-    legendName: string
+    name: string
 })
 ```
 
@@ -174,19 +158,12 @@ dispatchAction({
 
 ### legendToggleSelect(Action)
 切换图例的选中状态。
+
 ```ts
 dispatchAction({
     type: 'legendToggleSelect',
     // 图例名称
-    name: string,
-
-    // 下列参数自 v5.6.0 起开始支持
-    // 图例组件ID
-    legendId: string,
-    // 图例组件索引
-    legendIndex: number,
-    // 图例组件名称
-    legendName: string
+    name: string
 })
 ```
 
@@ -194,17 +171,16 @@ dispatchAction({
 
 ### legendAllSelect(Action)
 将图例全选。
+
 ```ts
 dispatchAction({
     type: 'legendAllSelect',
 
     // 下列参数自 v5.6.0 起开始支持
     // 图例组件ID
-    legendId: string,
+    legendId?: string | string[],
     // 图例组件索引
-    legendIndex: number,
-    // 图例组件名称
-    legendName: string
+    legendIndex?: number | number[]
 })
 ```
 
@@ -212,17 +188,16 @@ dispatchAction({
 
 ### legendInverseSelect(Action)
 将图例反选。
+
 ```ts
 dispatchAction({
     type: 'legendInverseSelect',
 
     // 下列参数自 v5.6.0 起开始支持
     // 图例组件ID
-    legendId: string,
+    legendId?: string | string[],
     // 图例组件索引
-    legendIndex: number,
-    // 图例组件名称
-    legendName: string
+    legendIndex?: number | number[]
 })
 ```
 
@@ -230,11 +205,17 @@ dispatchAction({
 
 ### legendScroll(Action)
 控制图例的滚动。当 [legend.type](option.html#legend.type) 为 `'scroll'` 时有效。
+
 ```ts
 dispatchAction({
     type: 'legendScroll',
+    // 要滚动到的目标图例项索引
     scrollDataIndex: number,
-    legendId: string
+
+    // 图例组件ID
+    legendId?: string | string[],
+    // 图例组件索引
+    legendIndex?: number | number[]
 })
 ```
 

@@ -233,6 +233,18 @@ option = {
 + `'positive'` 只堆积正值。
 + `'negative'` 只堆叠负值。
 
+## stackOrder(string) = 'seriesAsc'
+
+{{ use: partial-version(
+    version = '6.0.0'
+) }}
+
+堆叠顺序。可选值：
++ `'seriesAsc'`（默认，系列顺序堆叠）
++ `'seriesDesc'`（反向堆叠）
+
+当前不支持极坐标系。
+
 ## sampling(string)
 
 柱状图在数据量远大于像素点时候的降采样策略，开启后可以有效的优化图表的绘制效率，默认关闭，也就是全部绘制不过滤数据点。

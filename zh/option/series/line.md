@@ -108,6 +108,18 @@ const option = {
 + `'positive'` 只堆积正值。
 + `'negative'` 只堆叠负值。
 
+## stackOrder(string) = 'seriesAsc'
+
+{{ use: partial-version(
+    version = '6.0.0'
+) }}
+
+堆叠顺序。可选值：
++ `'seriesAsc'`（默认，系列顺序堆叠）
++ `'seriesDesc'`（反向堆叠）
+
+当前不支持极坐标系。
+
 {{ use: partial-cursor() }}
 
 ## connectNulls(boolean) = false
