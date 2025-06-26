@@ -8,7 +8,6 @@
 + [Feature] [axis] Support break on the axis. [#19459](https://github.com/apache/echarts/issues/19459) ([Ovilia](https://github.com/Ovilia)) [#20857](https://github.com/apache/echarts/issues/20857) ([100pah](https://github.com/100pah))
 + [Feature] [theme] Support dynamically registering and switching themes. [#20705](https://github.com/apache/echarts/issues/20705) ([Ovilia](https://github.com/Ovilia))
 + [Feature] [graph] Support thumbnail for the graph series. [#17471](https://github.com/apache/echarts/issues/17471) ([Lruler](https://github.com/Lruler))
-+ [Feature] [funnel] Add new styles for funnel. [#17461](https://github.com/apache/echarts/issues/17461) ([pe-3](https://github.com/pe-3))
 + [Feature] [marker] Support `z2` option for markPoint/markLine/markArea. [#20782](https://github.com/apache/echarts/issues/20782) ([sz-p](https://github.com/sz-p))
 + [Feature] [stack] Support reversing the stack order. [#20998](https://github.com/apache/echarts/issues/20998) ([Justin-ZS](https://github.com/Justin-ZS))
 + [Feature] [sankey] Support roaming for sankey series. [#20321](https://github.com/apache/echarts/issues/20321) ([Ovilia](https://github.com/Ovilia))
