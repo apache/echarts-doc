@@ -40,7 +40,7 @@
 + [Break] 相对于 v5.6.0 的 Breaking changes:
     + 默认主题已发生变化，包括视觉样式以及组件 (component) 和系列 (series) 的默认位置设置。例如，默认图例 (legend) 的位置现在改为在画布底部。新的默认设置更加合理，但如果影响了现有用法，可以使用 `echarts/theme/v5.js` 恢复旧的视觉样式和位置设置。参见 [#20865](https://github.com/apache/echarts/issues/20865)。
     + v5 版本中的 `echarts/src/theme/light.ts` 已迁移至 `echarts/theme/rainbow.js`。
-    + 在直角坐标系中 (`grid` 组件)，如果之前坐标轴名称 (`axisName`) 或标签 (`axisLabel`) 溢出画布或发生重叠，现在坐标轴的位置可能会相对之前而言略微偏移，因为默认启用了防止溢出和防止 坐标轴名称与标签重叠的机制。在大多数情况下，这些变化肉眼难以察觉。但如果出现不合理的变化，可以通过设置 `grid.outerBounds: 'none'` 选项关闭防溢出机制，或设置 `xAxis/yAxis.axisLabel.nameMoveOverlap: false` 选项关闭防重叠机制。参见 [#21059](https://github.com/apache/echarts/pull/21059)。
+    + 在直角坐标系中 (`grid` 组件)，如果之前坐标轴名称 (`axisName`) 或标签 (`axisLabel`) 溢出画布或发生重叠，现在坐标轴的位置可能会相对之前而言略微偏移，因为默认启用了防止溢出和防止 坐标轴名称与标签重叠的机制。在大多数情况下，这些变化肉眼难以察觉。但如果出现不合理的变化，可以通过设置 `grid.outerBoundsMode: 'none'` 选项关闭防溢出机制，或设置 `xAxis/yAxis.axisLabel.nameMoveOverlap: false` 选项关闭防重叠机制。参见 [#21059](https://github.com/apache/echarts/pull/21059)。
     + 在 `geo`、`series.map`、`series.graph` 和 `series.tree` 中，`center` 选项中百分比 (如 `'33%'`) 的基准发生了变化。之前的百分比基准是错误的。如需恢复旧行为，可在 ECharts option 的根级别设置 `legacyViewCoordSysCenterBase: true`。参见 [#19807#issuecomment-2974437299](https://github.com/apache/echarts/pull/19807#issuecomment-2974437299)。
     + 现在标签 (label) 的 rich 样式 (`fontStyle`、`fontWeight`、`fontSize`、`fontFamily`、`textShadowColor`、`textShadowBlur`、`textShadowOffsetX`、`textShadowOffsetY`) 会继承普通标签样式。如需恢复旧行为，可以在 ECharts 配置的根级别或标签样式选项同级处设置 `richInheritPlainLabel: false`。参见 [#20977](https://github.com/apache/echarts/issues/20977)。
 
