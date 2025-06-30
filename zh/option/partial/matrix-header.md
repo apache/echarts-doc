@@ -2,56 +2,96 @@
 
 ### show(boolean) = true
 
-是否显示 ${name}。
+{{ use: partial-version(version = "6.0.0") }}
 
-{{ use: partial-matrix-region(
-    prefix = '###',
-    name: ${name}
-) }}
+是否显示表头 行(如果是 `matrix.x`) 或 列(如果是 `matrix.y`)。
 
-### levelSize(number|string)
 
-标题行列所有单元格的大小。对于 x 的标题行来说指单元格高度，对于 y 的标题列来说指单元格宽度。
+### data(Array)
 
-值的类型可以是：
+{{ use: partial-version(version = "6.0.0") }}
 
-+ `number`：表示像素值。
-+ `string`：百分比值（例如 `'33%'），表示相对整个图表容器的宽度或高度的百分比。
-+ 未指定：表示根据内容自适应的最小值。
-
-例如：
+指定 ${name} 的数据，即定义列/行。
 
 ```js
-{
-    x: {
-        levelSize: undefined,
-        levels: [undefined, {levelSize: '10%'}]
-    }
-}
+// 一行的数据
+data: ['A', 'B', 'C', 'D', 'E']
+
+// 或者如果不关心列/行名称，可以直接
+data: Array(5).fill(null) // 五列或五行
+
+// 树状结构的数据
+data: [{
+    value: 'A',
+    children: [
+        {
+            value: 'A1',
+            children: [
+                {value: 'A1-1'},
+                {value: 'A1-2'}
+            ]
+        },
+        {value: 'A2'}
+    ]
+}, {
+    value: 'B',
+    children: [
+        {value: 'B1'},
+        {value: 'B2'}
+    ]
+}]
 ```
 
-在上面的例子中，表示第二列标题的宽度为整个图表宽度的 10%，其他标题列的单元格使用每列标题内容的最大值作为宽度。
+{{ use: partial-matrix-cell-style-option(
+    prefix='##',
+    name=${name}
+) }}
+
+{{ use: partial-matrix-dimension-level-option(
+    prefix='##',
+    name=${name}
+) }}
+
 
 ### levels(Array)
 
-标题行列每一行列的设置。其中第一个元素表示第一行/列，以此类推。如果数组中的某项为空，表示采用默认值。
+{{ use: partial-version(version = "6.0.0") }}
 
-#### levelSize(number|string)
+Settings for each column(in `matrix.x`) or row(in `matrix.y`). The first element represents the first column/row, and so on.
 
-标题行某一行/列单元格的大小。对于 x 的标题行来说指单元格高度，对于 y 的标题列来说指单元格宽度。
+- If any item in the array is `null`/`undefined`, it means using the default value.
+- Otherwise any item in the array should be an object, such as `{levelSize: number}`.
 
-值的类型可以是：
+For example
+```js
+matrix: {
+    x: {
+        level: [null, {levelSize: '20%'}]
+        // The second column width should be 20% of
+        // the matrix width.
+        // The first column has no specific setting.
+    },
+    // ...
+},
+```
 
-+ `number`：表示像素值。
-+ `string`：百分比值（例如 `'33%'），表示相对本矩形坐标系的宽度或高度的百分比。
-+ 未指定：平均分配得到高度或宽度。
+{{ use: partial-matrix-dimension-level-option(
+    prefix = '###',
+    name = ${name}
+) }}
+
 
 ### dividerLineStyle(Object)
+
+{{ use: partial-version(version = "6.0.0") }}
+
+表头分割线样式
 
 {{ use: partial-line-style(
     prefix = '###',
     defaultColor = "'#aaa'",
     defaultWidth = 1,
     defaultType = "'solid'",
-    name = "标题列分割线"
+    name = "表头分割"
 ) }}
+
