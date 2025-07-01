@@ -228,6 +228,25 @@ echarts.registerMap('USA', usaJson, {
 
 注册主题，用于[初始化实例](~echarts.init)的时候指定。
 
+
+## registerCustomSeries(Function)
+
+> 从 `6.0.0` 开始支持
+
+```ts
+(type: string, renderItem: Function) => void
+```
+
+注册自定义系列。注册后可以通过 [setOption](~api.html#echartsInstance.setOption) 中使用：
+
+```ts
+(type: string, renderItem: Function) => void
+```
+
++ `type` 注册的图表类型，也就是之后在 `setOption` 中写的 `series.type`。
++ `renderItem` 自定义系列的图形渲染逻辑，详见 [series-custom.renderItem](option.html#series-custom.renderItem)。
+
+
 ## registerLocale(Function)
 
 > 从 `5.0.0` 开始支持

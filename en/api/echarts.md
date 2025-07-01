@@ -233,6 +233,19 @@ Note:
 Registers a theme, should be specified when [initialize the chart instance](~echarts.init).
 
 
+## registerCustomSeries(Function)
+
+> Since `6.0.0`
+
+Register a custom series. After registration, it can be used as [series-custom.type](option.html#series-custom.type) in [setOption](~api.html#echartsInstance.setOption).
+
+```ts
+(type: string, renderItem: Function) => void
+```
+
++ `type` is the type of the chart to be registered, that is, the `series.type` written later in `setOption`.
++ `renderItem` is the graphic rendering logic of the custom series. For details, see [series-custom.renderItem](option.html#series-custom.renderItem).
+
 ## registerLocale(Function)
 
 > Since `5.0.0`
