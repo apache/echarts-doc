@@ -235,7 +235,7 @@ Registers a theme, should be specified when [initialize the chart instance](~ech
 
 ## registerCustomSeries(Function)
 
-> Since `6.0.0`
+{{ use: partial-version(version: '6.0.0') }}
 
 Register a custom series. After registration, it can be used as [series-custom.type](option.html#series-custom.type) in [setOption](~api.html#echartsInstance.setOption).
 

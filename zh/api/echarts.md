@@ -231,7 +231,7 @@ echarts.registerMap('USA', usaJson, {
 
 ## registerCustomSeries(Function)
 
-> 从 `6.0.0` 开始支持
+{{ use: partial-version(version: '6.0.0') }}
 
 ```ts
 (type: string, renderItem: Function) => void

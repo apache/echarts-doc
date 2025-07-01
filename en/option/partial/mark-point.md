@@ -167,6 +167,12 @@ X position according to container, in pixel.
 
 Y position according to container, in pixel.
 
+###${prefix} relativeTo('container' | 'coordinate')
+
+{{ use: partial-version(version: '6.0.0') }}
+
+Specify whether the positions of [x](~series-${seriesType}.markPoint.data.x) and [y](~series-${seriesType}.markPoint.data.y) are relative to the entire chart container (`'container'`, default) or the grid coordinate system (`'coordinate'`).
+
 ###${prefix} value(number)
 
 Label value, which can be ignored.

@@ -167,6 +167,12 @@ data: [{{ if: ${hasType} }}
 
 相对容器的屏幕 y 坐标，单位像素。
 
+###${prefix} relativeTo('container' | 'coordinate')
+
+{{ use: partial-version(version: '6.0.0') }}
+
+指定 [x](~series-${seriesType}.markPoint.data.x) 和 [y](~series-${seriesType}.markPoint.data.y) 是相对于整个图表容器（`'container'`，默认值）还是直角坐标系（`'coordinate'`）而言的位置。
+
 ###${prefix} value(number)
 
 标注值，可以不设。
