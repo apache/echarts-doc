@@ -111,7 +111,9 @@ For more details, see [Rich Text](tutorial.html#Rich%20Text) please.
 ) }}
 {{ /if }}
 
+#${prefix} richInheritPlainLabel(boolean) = true
 
+Whether rich text inherits plain text style.
 
 {{ target: partial-text-style-base-item }}
 

@@ -111,7 +111,9 @@ label: {
 ) }}
 {{ /if }}
 
+#${prefix} richInheritPlainLabel(boolean) = true
 
+富文本样式是否继承普通文本样式。
 
 {{ target: partial-text-style-base-item }}
 
