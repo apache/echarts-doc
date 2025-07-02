@@ -42,6 +42,19 @@ data: [{
 }]
 ```
 
+#### value(string|number)
+{{ use: partial-version(version = "6.0.0") }}
+The text in the header cell. Can also be used as a index of this column or row. Optional. If not specified, auto generate a text.
+
+#### children(Array)
+{{ use: partial-version(version = "6.0.0") }}
+See [matrix.x/y.data](~matrix.x.data).
+
+#### size(number)
+{{ use: partial-version(version = "6.0.0") }}
+{{ use: partial-matrix-dimension-size-desc }}
+
+
 {{ use: partial-matrix-cell-style-option(
     prefix='##',
     name=${name}
@@ -54,7 +67,6 @@ data: [{
 
 
 ### levels(Array)
-
 {{ use: partial-version(version = "6.0.0") }}
 
 Settings for each column(in `matrix.x`) or row(in `matrix.y`). The first element represents the first column/row, and so on.

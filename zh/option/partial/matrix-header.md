@@ -42,6 +42,22 @@ data: [{
 }]
 ```
 
+#### value(string|number)
+{{ use: partial-version(version = "6.0.0") }}
+
+每个表头单元格中的文字，也可用于索引这行或列。如果不指定，自动生成一个。
+
+#### children(Array)
+{{ use: partial-version(version = "6.0.0") }}
+
+见 [matrix.x/y.data](~matrix.x.data).
+
+#### size(number)
+{{ use: partial-version(version = "6.0.0") }}
+{{ use: partial-matrix-dimension-size-desc }}
+
+
+
 {{ use: partial-matrix-cell-style-option(
     prefix='##',
     name=${name}
@@ -54,22 +70,20 @@ data: [{
 
 
 ### levels(Array)
-
 {{ use: partial-version(version = "6.0.0") }}
 
-Settings for each column(in `matrix.x`) or row(in `matrix.y`). The first element represents the first column/row, and so on.
+每一列（对于 `matrix.x`）或每一行（对于 `matrix.y`）的设置。第一个元素表示第一列/行，依此类推。
 
-- If any item in the array is `null`/`undefined`, it means using the default value.
-- Otherwise any item in the array should be an object, such as `{levelSize: number}`.
+- 如果数组中的某一项为 `null`/`undefined`，表示使用默认值。
+- 否则每一项应为一个对象，例如 `{levelSize: number}`。
 
-For example
+例如
 ```js
 matrix: {
     x: {
         level: [null, {levelSize: '20%'}]
-        // The second column width should be 20% of
-        // the matrix width.
-        // The first column has no specific setting.
+        // 第二列宽度应为矩阵宽度的 20%。
+        // 第一列没有特殊设置。
     },
     // ...
 },
