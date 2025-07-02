@@ -1085,6 +1085,8 @@ Value range: [0, 1].
 
 #${prefix} ${hostName}${symbolDeclare}compoundPath(Object)
 
+{{ use: partial-version(version: '6.0.0') }}
+
 The union of multiple elements.
 
 {{ use: partial-graphic-cpt-common-props(

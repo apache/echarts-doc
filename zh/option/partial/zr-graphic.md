@@ -987,6 +987,8 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
 
 #${prefix} ${hostName}${symbolDeclare}compoundPath(Object)
 
+{{ use: partial-version(version: '6.0.0') }}
+
 The union of multiple elements.
 
 {{ use: partial-graphic-cpt-common-props(
