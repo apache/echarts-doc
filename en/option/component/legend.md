@@ -487,6 +487,14 @@ The gap between the selector button.
 The gap between selector button and legend component.
 
 
+## triggerEvent(boolean) = false
+
+{{ use: partial-version(
+    version = "6.0.0"
+) }}
+
+Set this to `true` to enable triggering events.
+
 
 {{ target: partial-legend-style }}
 
