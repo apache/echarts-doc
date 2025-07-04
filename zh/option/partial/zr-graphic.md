@@ -989,7 +989,7 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
 
 {{ use: partial-version(version: '6.0.0') }}
 
-The union of multiple elements.
+多个图形元素并集组成的复合元素。
 
 {{ use: partial-graphic-cpt-common-props(
     type = 'compoundPath',
