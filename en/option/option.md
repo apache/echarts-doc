@@ -122,6 +122,8 @@ Global font style.
     defaultFontSize: 12
 ) }}
 
+{{import: partial-rich-inherit-plain-label}}
+
 {{import: partial-animation }}
 
 # stateAnimation(Object)

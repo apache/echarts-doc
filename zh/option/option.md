@@ -114,10 +114,13 @@
 
 # textStyle(Object)
 全局的字体样式。
+
 {{ use: partial-simple-text-style(
     prefix='#',
     defaultFontSize=12
 ) }}
+
+{{import: partial-rich-inherit-plain-label }}
 
 {{import: partial-animation }}
 

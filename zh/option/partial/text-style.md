@@ -109,13 +109,11 @@ label: {
     prefix = ${prefix} + '##',
     enableAutoColor = ${enableAutoColor}
 ) }}
+
+{{ use: partial-rich-inherit-plain-label(
+    prefix= ${prefix}
+) }}
 {{ /if }}
-
-#${prefix} richInheritPlainLabel(boolean) = true
-
-{{ use: partial-version(version: '6.0.0') }}
-
-富文本样式是否继承普通文本样式。
 
 {{ target: partial-text-style-base-item }}
 
