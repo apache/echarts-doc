@@ -69,12 +69,12 @@ matrix: {
     - Cross cells: multiple cells can be located. e.g., if using `[['Xb0', 'Xb1'], ['Yb0']]`, or using a non-leaf dimension cell to locate, such as `['Xa0', 'Yb0']`, it returns only according to the center of the dimension cells, regardless of the body span. (therefore, the result can be on the boundary of two body cells.) And the ordinal number assigned to 'Xa0' is 3, thus input `[3, 'Yb0']` get the some result.
 - In a nutshell, **The formatter of `matrix.data.coord`** is as follows:
     - `[2, 8]` indicates a cell.
-    - `[2, null/undefined/NaN]` means y is the entire column.
-    - `[null/undefined/NaN, 8]` is the opposite.
     - `[[2, 5], 8]` indicates a rect of cells in x range of `2~5` and y `8`.
-    - `[[2, 5], null/undefined/NaN]` indicates a x range of `2~5` and y is the entire column.
     - `[[2, 5], [7, 8]]` indicates a rect of cells in x range of `2~5` and y range of `7~8`.
     - `['aNonLeaf', 8]` indicates a rect of cells in x range of `aNonLeaf` and y `8`.
+    - `[2, null/undefined/NaN]` means y is the entire column (only work on `coordClamp: true`).
+    - `[null/undefined/NaN, 8]` is the opposite (only work on `coordClamp: true`).
+    - `[[2, 5], null/undefined/NaN]` indicates a x range of `2~5` and y is the entire column (only work on `coordClamp: true`)..
 - **NOTICE**
     - `bodyR` above is `[0, 0]`**.
     - The formatter of `matrix.data.coord` is `MatrixCoordRangeOption[]` as follows.
@@ -83,6 +83,9 @@ matrix: {
     - Input `['Xa1', 'Yb1']` to `dataToPoint` will get a point in the center of "bodyT".
     - Input `['Xa1', 'Yb1']` to `dataToLayout` will get a rect of the "bodyT".
 
+##${prefix|default('##')} coordClamp(boolean)
++ `true`: `matrix.body/corner.data[i].coord` can use `[null/undefined/NaN/invalid_values, xxx]` or `[xxx, null/undefined/NaN/invalid_values]` to refer to a entire row/column.
++ `false`: Disallow that. And an error message will be printed in dev mode when such values are used.
 
 ##${prefix|default('##')} mergeCells(boolean)
 

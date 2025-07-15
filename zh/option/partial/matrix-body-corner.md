@@ -69,18 +69,22 @@ matrix: {
     - 跨单元格定位：如 `[['Xb0', 'Xb1'], ['Yb0']]`，或用非叶子维度单元格如 `['Xa0', 'Yb0']`，此时仅返回维度单元格中心（结果可能在两个 body 单元格边界上）。'Xa0' 的序数为 3，因此 `[3, 'Yb0']` 也可定位到同一位置。
 - 简而言之，`matrix.data.coord` 的格式如下：
     - `[2, 8]` 表示单个单元格。
-    - `[2, null/undefined/NaN]` 表示 y 方向整列。
-    - `[null/undefined/NaN, 8]` 表示 x 方向整行。
     - `[[2, 5], 8]` 表示 x 方向 2~5，y 方向 8 的矩形区域。
-    - `[[2, 5], null/undefined/NaN]` 表示 x 方向 2~5，y 方向整列。
     - `[[2, 5], [7, 8]]` 表示 x 方向 2~5，y 方向 7~8 的矩形区域。
     - `['aNonLeaf', 8]` 表示 x 方向为非叶子节点，y 方向为 8 的区域。
+    - `[2, null/undefined/NaN]` 表示 y 方向整列（仅在 `coordClamp: true` 时生效）。
+    - `[null/undefined/NaN, 8]` 表示 x 方向整行（仅在 `coordClamp: true` 时生效）。
+    - `[[2, 5], null/undefined/NaN]` 表示 x 方向 2~5，y 方向整列（仅在 `coordClamp: true` 时生效）。
 - **注意**
     - 上表中的 bodyR 对应 `[0, 0]`。
     - `matrix.data.coord` 的格式为 `MatrixCoordRangeOption[]`。
 - `dataToPoint` 和 `dataToLayout` API 也遵循此定位规则：
     - 输入 `['Xa1', 'Yb1']` 到 `dataToPoint` 得到 bodyT 的中心点。
     - 输入 `['Xa1', 'Yb1']` 到 `dataToLayout` 得到 bodyT 的矩形区域。
+
+##${prefix|default('##')} coordClamp(boolean)
++ `true`: `matrix.body/corner.data[i].coord` 中 `[null/undefined/NaN/invalid_values, xxx]` 或 `[xxx, null/undefined/NaN/invalid_values]` 能指代一整行/列.
++ `false`: 不支持上述设定，且使用这些值时会打印错误提示（仅在 dev 模式下打印）。
 
 ##${prefix|default('##')} mergeCells(boolean)
 
