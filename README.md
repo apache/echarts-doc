@@ -31,7 +31,14 @@ It will:
 
 ## Tips about writing doc
 
-#### Global variables can be used in doc:
+### "Since version" is necessary in doc
+Marking "since version" indicates when a new feature was introduced.
+For example,
+```
+{{ use: partial-version(version = "6.0.0") }}
+```
+
+### Global variables can be used in doc
 
 + galleryViewPath
 + galleryEditorPath
@@ -51,7 +58,7 @@ Provide a website link in doc:
 [Apache ECharts website](${websitePath}/en/download.html)
 ```
 
-#### Reference of option
+### Reference of option
 
 A `~` can be used to refer to a option item in the same doc. For example:
 
@@ -64,7 +71,7 @@ If intending to reference an anchor in different doc, it can be:
 [itemStyle](option.html#series.itemStyle)
 ```
 
-#### Notes:
+### Notes
 
 1. Formatter will treat {{use}} as a block. So don't use it **inline**.
 
@@ -103,6 +110,36 @@ The range of values is 0 ~ 1.
 It indicates the range of saturation (color alpha) {{ if: ${prefix} !== '#' }}for nodes in a level {{ else }} of the series{{ /if }}. The range of values is 0 ~ 1.
 
 ```
+
+
+### Document Embedded Examples
+
+Declare the base echarts options (`ExampleBaseOption`), whose scope is each echarts component or series. A `ExampleBaseOption` can be shared by multiple options. e.g.,
+```md
+<ExampleBaseOption name="cartesian-bar" title="直角坐标系上的柱状图" title-en="Bar on Cartesian">
+const option = {
+    ...
+}
+</ExampleBaseOption>
+```
+
+Declare example UI control in each option, who uses the currently opened example. Supported UI controls:
++ `<ExampleUIControlBoolean default="true" />`
++ `<ExampleUIControlNumber default="8" step="0.5" />`
++ `<ExampleUIControlColor default="#d2dbee" />`
++ `<ExampleUIControlEnum options="horizontal,vertical" default="horizontal" />`
++ `<ExampleUIControlIcon default="none" />`
++ `<ExampleUIControlVector default="0,0" />`
++ `<ExampleUIControlAngle min="-90" max="90" step="1" />`
++ `<ExampleUIControlPercent default="0" />`
++ `<ExampleUIControlPercentVector min="0" dims="InnerStart,InnerEnd,OuterStart,OuterEnd" default="0,0,0,0" />`
++ `<ExampleUIControlText />`
+
+The detailed API and implementation of the UI controls can be checked in `echarts-doc/src/controls/*.vue` and `echarts-doc/src/components/OptionControl.vue`.
+
+Note: currently `ExampleBaseOption` and `ExampleUIControlXxx` will be copied (by `echarts-doc/build.js`) from `echarts-doc/zh/**/*.md` to `echarts-doc/en/**/*.md` if they are not declared in `echarts-doc/en/**/*.md`.
+
+
 ## Format Option Docs
 
 Option docs needs to be formatted before commit.
