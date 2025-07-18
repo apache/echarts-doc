@@ -20,7 +20,7 @@ Parameters of the event include:
     // Click on value label to trigger event.
     value: '',
     // Name of axis.
-    // Click on laben name to trigger event.
+    // Click on label name to trigger event.
     name: ''
 }
 ```
