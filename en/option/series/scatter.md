@@ -51,7 +51,7 @@ It could be used with [rectangular coordinate](~grid) and [polar coordinate](~po
     prefix = "##",
     defaultPosition = "'inside'",
     formatter = true,
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ## labelLine(Object)
@@ -190,7 +190,7 @@ the value of data item.
 {{ use: partial-label(
     prefix = "###",
     defaultPosition = "inside",
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ### labelLine(Object)

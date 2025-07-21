@@ -185,7 +185,7 @@ center: [115.97, '30%']
             type: 'Array'
         }
     },
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ## labelLayout(Object|Function)
@@ -393,7 +393,7 @@ center: [115.97, '30%']
 
 {{ use: partial-label(
     prefix = "###",
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ### emphasis(Object)

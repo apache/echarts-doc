@@ -69,7 +69,7 @@ The index of single time axis, which defaults to be 0 because it contains only o
     noVerticalAlign = true,
     defaultColor = "'#000'",
     defaultFontSize = 11,
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ## labelLine(Object)

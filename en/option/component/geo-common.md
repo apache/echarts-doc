@@ -241,7 +241,7 @@ Selected mode decides whether multiple selecting is supported. By default, `fals
 {{ use: partial-label(
     prefix = "#" + ${prefix},
     formatter = true,
-    minMargin = ${labelMinMargin}
+    labelMargin = ${labelMargin}
 ) }}
 
 #${prefix} itemStyle(Object)

@@ -43,7 +43,7 @@ Index of [radar](~radar) component that radar chart uses.
     prefix = "##",
     defaultPosition = "'top'",
     formatter = true,
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ## labelLayout(Object|Function)
@@ -182,7 +182,7 @@ Style setting of the text on single inflection point.
 {{ use: partial-label(
     prefix = "###",
     defaultPosition = "top",
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ### itemStyle(Object)

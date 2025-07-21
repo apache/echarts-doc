@@ -41,7 +41,7 @@
     defaultShowLabel = "true",
     noRotate = true,
     noAlign = true,
-    minMargin = ${minMargin}
+    labelMargin = ${labelMargin}
 ) }}
 
 
@@ -58,7 +58,7 @@
 
 {{ use: partial-sunburst-label-helper(
     prefix = ${prefix} + '#',
-    minMargin = ${state} === 'normal'
+    labelMargin = ${state} === 'normal'
 ) }}
 
 #${prefix} labelLine(Object)

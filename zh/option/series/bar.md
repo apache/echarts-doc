@@ -408,7 +408,7 @@ option = {
     defaultPosition = "'inside'",
     noPosition = true,
     formatter = ${topLevel},
-    minMargin = ${state} === 'normal'
+    labelMargin = ${state} === 'normal'
 ) }}
 
 ##${prefix} position(string|Array) = 'inside'
