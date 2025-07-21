@@ -142,7 +142,7 @@ const option = {
     noVerticalAlign = true,
     defaultColor = "'#000'",
     defaultFontSize = 11,
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ## labelLine(Object)

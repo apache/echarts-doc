@@ -188,7 +188,7 @@ levels: [{
     defaultShowLabel = true,
     defaultPosition = "'right'",
     formatter1d = true,
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ## labelLayout(Object|Function)
@@ -327,7 +327,7 @@ data: [{
 
 {{ use: partial-label(
     prefix = "###",
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ### emphasis(Object)

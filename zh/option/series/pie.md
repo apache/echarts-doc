@@ -189,7 +189,7 @@ const option = {
     prefix = "##",
     position = true,
     formatter = true,
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ### alignTo(string) = 'none'
@@ -396,7 +396,7 @@ const option = {
     prefix = "###",
     position = true,
     formatter = false,
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ### labelLine(Object)
@@ -547,15 +547,12 @@ const option = {
 + 如果为 `'tangential'`，则为切向排布。（从 `v5.2.0` 开始支持）
 + 如果为 `number` ，旋转指定角度，从 -90 度到 90 度。正值是逆时针。
 
-{{ if: ${minMargin} }}
-#${prefix} minMargin(number)
 
-{{ use: partial-version(
-    version = "5.0.0"
+{{ use: partial-label-margin(
+    prefix = ${prefix},
+    labelMargin = ${labelMargin}
 ) }}
 
-用于控制标签之间的最小距离，当启用 [labelLayout](~series-pie.labelLayout) 时可能会用到。
-{{ /if }}
 
 {{ use: partial-text-style(
     prefix = ${prefix},

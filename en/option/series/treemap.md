@@ -578,7 +578,7 @@ This can hide the details of nodes when the rectangular area is not large enough
             type: 'Array'
         }
     },
-    minMargin = true
+    labelMargin = true
 ) }}
 
 #${prefix} upperLabel(Object)

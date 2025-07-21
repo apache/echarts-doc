@@ -215,7 +215,7 @@ edgeSymbol: ['circle', 'arrow']
     prefix = "##",
     defaultPosition = "'inside'",
     formatter = true,
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ## edgeLabel(Object)
@@ -442,7 +442,7 @@ data: [{
 
 {{ use: partial-label(
     prefix = "###",
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ### emphasis(Object)

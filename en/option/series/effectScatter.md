@@ -104,7 +104,7 @@ The brush type for ripples. options: `'stroke'` and `'fill'`.
     prefix = "##",
     defaultPosition = "'inside'",
     formatter = true,
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ## labelLine(Object)
@@ -220,7 +220,7 @@ Configurations of select state. Available when [selectedMode](~series-effectScat
 {{ use: partial-label(
     prefix = "###",
     defaultPosition = "inside",
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ### labelLine(Object)
