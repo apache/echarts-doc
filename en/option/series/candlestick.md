@@ -47,21 +47,6 @@ We use red to represent increasing and blue decreasing by default. If you want t
 
 {{ use: partial-legend-hover-link() }}
 
-## layout(string) = null
-
-Layout method, whose values may be:
-
-+ `'horizontal'`: horizontally layout all boxs.
-
-+ `'vertical'`: vertically layout all boxs.
-
-The default value is decided by:
-
-+ if there is a `category` axis:
-    + if it is horizontal, use `'horizontal'`;
-    + otherwise use `'vertical'`;
-+ otherwise use `'horizontal'`.
-
 ## barWidth(number)
 
 <ExampleUIControlPercent default="70%" min="0" />

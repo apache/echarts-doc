@@ -236,18 +236,6 @@ const option = {
 
 {{ use: partial-legend-hover-link() }}
 
-## layout(string) = null
-
-<ExampleUIControlEnum options="horizontal,vertical">
-
-布局方式，可选值：
-
-+ `'horizontal'`：水平排布各个 box。
-
-+ `'vertical'`：竖直排布各个 box。
-
-默认值根据当前坐标系状况决定：如果 `category` 轴为横轴，则水平排布；否则竖直排布；如果没有 `category` 轴则水平排布。
-
 ## barWidth(number)
 
 <ExampleUIControlPercent default="70%" min="0" />
