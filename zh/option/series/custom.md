@@ -102,7 +102,7 @@ chart.on('click', {element: 'aaa'}, function (params) {
     none = true
 ) }}
 
-## renderItem(Function)
+## renderItem(Function|string)
 
 {{ use: partial-custom-renderItem-common() }}
 
@@ -480,7 +480,7 @@ renderItem 函数的第二个参数。
 
 {{ target: partial-custom-renderItem-common }}
 
-custom 系列需要开发者自己提供图形渲染的逻辑。这个渲染逻辑一般命名为 [renderItem](~series-custom.renderItem)。例如：
+custom 系列需要开发者以 `Function` 形式提供图形渲染的逻辑或者以 `string` 形式使用预先注册的图形渲染逻辑（从 `v6.0.0` 开始支持，详见 [echarts.registerCustomSeries](api.html#echarts.registerCustomSeries)）。这个渲染逻辑一般命名为 [renderItem](~series-custom.renderItem)。例如：
 
 ```ts
 var option = {
