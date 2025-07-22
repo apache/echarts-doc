@@ -234,6 +234,14 @@ x value on screen coordinate system, can be pixel number (like `5`), or percent 
 
 y value on screen coordinate system, can be pixel number (like `5`), or percent value (like `'20%'`).
 
+#${prefix} z2(number)
+
+{{ use: partial-version(
+    version = "6.0.0"
+) }}
+
+Specify the relationship of overlap between graphic elements. A bigger value means higher.
+
 #${prefix} value(number)
 
 value of the item, not necessary.

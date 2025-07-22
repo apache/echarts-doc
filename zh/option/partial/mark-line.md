@@ -293,6 +293,14 @@ data: [
 
 相对容器的屏幕 y 坐标，单位像素。
 
+#${prefix} z2(number)
+
+{{ use: partial-version(
+    version = "6.0.0"
+) }}
+
+指定图形元素间的覆盖关系。数值越大，越在层叠的上方。
+
 #${prefix} xAxis(number|string)
 
 x 值为给定值的标记线，仅对数据值是一项的设置有效。例如：

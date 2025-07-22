@@ -229,6 +229,14 @@ data: [
 
 相对容器的屏幕 y 坐标，单位像素，支持百分比形式，例如 `'20%'`。
 
+#${prefix} z2(number)
+
+{{ use: partial-version(
+    version = "6.0.0"
+) }}
+
+指定图形元素间的覆盖关系。数值越大，越在层叠的上方。
+
 #${prefix} value(number)
 
 标域值，可以不设。

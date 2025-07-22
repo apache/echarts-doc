@@ -167,6 +167,14 @@ data: [{{ if: ${hasType} }}
 
 相对容器的屏幕 y 坐标，单位像素。
 
+###${prefix} z2(number)
+
+{{ use: partial-version(
+    version = "6.0.0"
+) }}
+
+指定图形元素间的覆盖关系。数值越大，越在层叠的上方。
+
 ###${prefix} relativeTo('container' | 'coordinate')
 
 {{ use: partial-version(version: '6.0.0') }}
