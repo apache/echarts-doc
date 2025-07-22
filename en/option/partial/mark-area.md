@@ -169,6 +169,12 @@ Specify the right-bottom point.
     index = 1
 ) }}
 
+{{ use: partial-z(
+    prefix = "#" + ${prefix},
+    defaultZ = "1",
+    version = "6.0.0"
+) }}
+
 {{ use: partial-animation(
     prefix = "#" + ${prefix},
     defaultAnimation = 'false'

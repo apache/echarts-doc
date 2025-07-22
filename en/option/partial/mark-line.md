@@ -192,6 +192,12 @@ Data of the ending point.
     index = 1
 ) }}
 
+{{ use: partial-z(
+    prefix = "#" + ${prefix},
+    defaultZ = "5",
+    version = "6.0.0"
+) }}
+
 {{ use: partial-animation(
     prefix = "#" + ${prefix}
 ) }}

@@ -220,6 +220,12 @@ Mark point style.
     prefix = "####" + ${prefix}
 ) }}
 
+{{ use: partial-z(
+    prefix = "#" + ${prefix},
+    defaultZ = "5",
+    version = "6.0.0"
+) }}
+
 {{ use: partial-animation(
     prefix = "#" + ${prefix}
 ) }}
