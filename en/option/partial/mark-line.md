@@ -294,6 +294,14 @@ X position according to container, in pixel.
 
 Y position according to container, in pixel.
 
+#${prefix} z2(number)
+
+{{ use: partial-version(
+    version = "6.0.0"
+) }}
+
+Specify the relationship of overlap between graphic elements. A bigger value means higher.
+
 #${prefix} xAxis(number|string)
 
 Markline at x at given value, which only works for single data item. Example:

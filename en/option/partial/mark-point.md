@@ -167,11 +167,20 @@ X position according to container, in pixel.
 
 Y position according to container, in pixel.
 
+###${prefix} z2(number)
+
+{{ use: partial-version(
+    version = "6.0.0"
+) }}
+
+
 ###${prefix} relativeTo('container' | 'coordinate')
 
 {{ use: partial-version(version: '6.0.0') }}
 
 Specify whether the positions of [x](~series-${seriesType}.markPoint.data.x) and [y](~series-${seriesType}.markPoint.data.y) are relative to the entire chart container (`'container'`, default) or the grid coordinate system (`'coordinate'`).
+
+Specify the relationship of overlap between graphic elements. A bigger value means higher.
 
 ###${prefix} value(number)
 
