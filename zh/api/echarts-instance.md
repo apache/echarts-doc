@@ -465,19 +465,19 @@ ECharts 中的事件有两种，一种是鼠标事件，在鼠标点击某个图
 
 ## off(Function)
 ```ts
-(eventName: string, handler?: Function)
+(eventName?: string, handler?: Function)
 ```
 
 解绑事件处理函数。
 
 **参数：**
-+ `eventName`
++ `eventName` 事件名称
 
-    事件名称。
+    可选，不提供 `eventName` 的情况下，取消监听所有事件。
 
-+ `handler`
++ `handler` 需要解绑的事件处理函数
 
-    可选，可以传入需要解绑的处理函数，不传的话解绑所有该类型的事件函数。
+    可选，不提供 `handler` 的情况下，取消监听该 `eventName` 下的所有事件。
 
 
 ## convertToPixel(Function)
