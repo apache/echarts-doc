@@ -203,7 +203,7 @@ const option = {
 {{ use: partial-series-name() }}
 
 {{ use: partial-rect-layout-width-height(
-    componentName = 'treemap ',
+    hostName = '矩形树图系列（treemap series）',
     defaultLeft = 'center',
     defaultRight = null,
     defaultTop = 'middle',
@@ -290,7 +290,7 @@ const option = {
 是否显示面包屑。
 
 {{ use: partial-rect-layout(
-    componentName = "面包屑",
+    hostName = "面包屑（breadcrumb）",
     prefix = "##",
     noZ = true,
     defaultLeft = "'center'",

@@ -13,7 +13,7 @@
 ) }}
 
 {{ use: partial-rect-layout-width-height(
-    componentName = 'parallel ',
+    componentName = 'parallel',
     defaultLeft = 80,
     defaultRight = 80,
     defaultTop = 60,

@@ -167,7 +167,7 @@ Configurations of select state. Available when [selectedMode](~series-funnel.sel
 ) }}
 
 {{ use: partial-rect-layout-width-height(
-    componentName = "Funnel",
+    componentName = "funnel",
     defaultLeft = 80,
     defaultTop = 60,
     defaultRight = 80,

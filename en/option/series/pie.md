@@ -124,7 +124,7 @@ The precision of the percentage value. The default value is `2`.
 {{ use: partial-cursor() }}
 
 {{ use: partial-rect-layout-width-height(
-    componentName = "pie chart",
+    hostName = "pie series",
     defaultLeft = 0,
     defaultTop = 0,
     defaultRight = 0,

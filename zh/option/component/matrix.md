@@ -36,7 +36,7 @@
 ) }}
 
 {{ use: partial-rect-layout-width-height(
-    componentName = "matrix",
+    componentName = "矩阵坐标系（matrix）",
     defaultLeft = "10%",
     defaultTop = "10%"
 ) }}

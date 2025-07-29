@@ -113,7 +113,7 @@ Set this to `true` to enable triggering events
 The gap between the main title and subtitle.
 
 {{ use: partial-rect-layout(
-    componentName = "title "
+    componentName = "title"
 ) }}
 
 {{ use: partial-component-common-style(

@@ -27,7 +27,7 @@ In addition, the edge between two small rectangles in the diagram encodes the `l
 {{ use: partial-series-name() }}
 
 {{ use: partial-rect-layout-width-height(
-    componentName = 'sankey',
+    hostName = 'sankey series',
     defaultLeft = '5%',
     defaultRight = '20%',
     defaultTop = '5%',

@@ -596,6 +596,7 @@ Alias of [links](~series-graph.links)
 ) }}
 
 {{ use: partial-rect-layout-width-height(
+    hostName = "graph series",
     defaultLeft = "'center'",
     defaultTop = "'middle'",
     defaultWidth = 'auto',
