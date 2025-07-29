@@ -28,6 +28,10 @@ It will:
 + Watch doc site src change and rebuild.
 + Watch doc markdown change and rebuild.
 
+### Local Config
+
+To customize the links of `echarts-examples` and other configurations, you can create a local config file `echarts-doc/config/env.dev-local.js`, which is not tracked by git. The content can be copied from `echarts-doc/config/env.dev.js`, and then modify it as needed. `npm run dev` will use this local config file, if it exists, to replace `echarts-doc/config/env.dev.js`.
+
 
 ## Tips About Writing Doc
 
@@ -42,34 +46,41 @@ For example,
 ### Global Variables
 
 These global variables can be used in doc:
-+ galleryViewPath
-+ galleryEditorPath
-+ websitePath
++ `${galleryViewPath}`
++ `${galleryEditorPath}`
++ `${websitePath}`
 
-For example:
-Embed a example in doc:
+See samples in "Reference of echarts-examples or other links"
+
+### Reference of echarts-examples or Other Links
+
+Embed an example in doc:
 ```md
+~[700X300](${galleryEditorPath}pie-legend&edit=1&reset=1)
 ~[700x300](${galleryViewPath}doc-example/aria-pie&edit=1&reset=1)
 ```
-Provide a example link in doc:
+
+Provide an example link in doc:
 ```md
 [vertically scrollable legend](${galleryEditorPath}pie-legend&edit=1&reset=1)
+[aria pie](${galleryViewPath}doc-example/aria-pie&edit=1&reset=1)
 ```
+
 Provide a website link in doc:
 ```md
 [Apache ECharts website](${websitePath}/en/download.html)
 ```
 
-### Reference of Option
+### Reference of Other ECharts Option
 
 A `~` can be used to refer to a option item in the same doc. For example:
-
 ```md
 [xAxis.name](~xAxis.name)
 ```
 
 If intending to reference an anchor in different doc, it can be:
 ```md
+In api.html, reference
 [itemStyle](option.html#series.itemStyle)
 ```
 
@@ -232,6 +243,8 @@ Concatenation operator `+` can be used in that string.
 
 
 ### Document Embedded Examples
+
+This is the embedded example that can be opened by clicking "try it" and then appears on the right side of the doc page.
 
 Declare the base echarts options (`ExampleBaseOption`), whose scope is each echarts component or series. A `ExampleBaseOption` can be shared by multiple options. e.g.,
 ```md

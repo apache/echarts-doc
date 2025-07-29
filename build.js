@@ -46,6 +46,11 @@ function initEnv() {
 
     let config = require('./config/env.' + envType);
 
+    const localOverridePath = './config/env.' + envType + '-local.js';
+    if (fs.existsSync(path.join(__dirname, localOverridePath))) {
+        config = require(localOverridePath);
+    }
+
     assert(path.isAbsolute(config.releaseDestDir) && path.isAbsolute(config.ecWWWGeneratedDir));
 
     config.envType = envType;
