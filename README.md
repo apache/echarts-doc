@@ -131,38 +131,41 @@ It indicates the range of saturation (color alpha) {{ if: ${prefix} !== '#' }}fo
         some desc xxx
         ## propB(number|string) = null
         some desc yyy
+        ## propC(string) = ${defaultPropC|default("'auto'")}
 
         #${prefix} someOtherProp(Object)
         some desc zzz
         ```
-    + The data type in that subtitle:
+    + `(xxx|yyy)` is the data type in that subtitle:
         + Can only be `number`, `string`, `boolean`, `Object`, `Array`, `Function`
         + Can be an union, such as `number|string`.
-    + The default value in that subtitle:
+    + `= xxx` is the default value in that subtitle:
         + Can be omitted.
         + Typically be `null`, `undefined`, `true`, `false`, `90` (a literal number), `some literal string`, `[0, 90]` (an literal array).
+        + The default value can be specified by a template variable, such as, `= ${someVar}`, `= ${someVar|default(123)}`, `= ${someVar|default("'auto'")}`.
     + The top level subtitles:
         + For example, `# series.bar(Object)`, the dot symbol represents a special meaning: the component main type is `'series'` and the component sub-type is `'bar'`.
     + The variable `${prefix}`
         + It is commonly used in "target: partial-xxx", which serves different subtitle levels. The value of `${prefix}` is like `'#'`, `'##'`, `'###'`, ...
-        + For example,
+        + Typical usage:
             ```tpl
             When we define a "target"
-            {{ target: partial-target-1 }}
-            ##${prefix} propLayout(Object)
+            {{ target: partial-abc-1 }}
+            #${prefix} propLayout(Object)
             All of the subtitles should uses that prefix variable.
-            ###${prefix} x(number)
+            ##${prefix} x(number)
             some desc
-            ###${prefix} y(number)
+            ##${prefix} y(number)
             some desc
             {{ /target }}
-
-            When we use that "target"
-            {{ use: partial-target-1(
-                prefix: '#'
-            ) }}
-            {{ use: partial-target-1(
-                prefix: ${prefix} + '##'
+            {{ target: partial-target-2 }}
+            ```
+            ```tpl
+            When we use that "partial-abc-1"
+            {{ target: partial-def-2 }}
+            #${prefix|default('#')} somePropA(Object)
+            {{ use: partial-abc-1(
+                prefix: ${prefix} + '#'
             ) }}
             ```
 
@@ -173,12 +176,22 @@ The template syntax follows [etpl](https://github.com/ecomfe/etpl/blob/master/do
 
 Summary of the commonly used syntax:
 ```template
-VARIABLE:
-some text ${someVariable} some text
-The scope of the variable is "target" (see below).
+--- TEMPLATE VARIABLE ---
+Use a variable:
+    some text ${someVariable} some text
+Variable scope:
+    The scope of any variable is "target" (see below).
+Variable filter:
+    Some predefined filters can be used in the template variable, e.g.,
+    ${someVariable|default("'auto'")} means using the string "'auto'"
+    as the default if ${someVariable} is '' or null or undefined.
+Declaration or assignment of a target-local variable:
+    {{ var: myVar = 'some' }}
+    {{ var: myVar = 123 }}
+    {{ var: myVar = ${someOtherStr} + 'some_str' }}
 
 
-IF ELSE:
+--- IF ELSE ---
 {{ if: ${number1} > 0 }}
 some text xxx
 {{ elif: ${string1} === 'abc' }}
@@ -188,13 +201,13 @@ some text zzz
 {{ /if }}
 
 
-FOR LOOP:
+--- FOR LOOP ---
 {{ for: ${persons} as ${person}, ${index} }}
 some text ${index}: ${person.name}
 {{ /for }}
 
 
-TARGET (DEFINE A TEXT BLOCK):
+--- TARGET (DEFINE A TEXT BLOCK) ---
 {{ target: a_predefined_block_name_1 }}
 The input varA is ${varA}
 The input varB is ${varB}
@@ -206,7 +219,7 @@ Notice:
 {{ /target }}
 
 
-USE (USE A PREDEFINED TEXT BLOCK):
+--- USE (USE A PREDEFINED TEXT BLOCK) ---
 {{ use: a_predefined_block_name_1 }}
 {{ use: a_predefined_block_name_2(
     varA = ${myVarX},
