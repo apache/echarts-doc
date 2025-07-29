@@ -15,7 +15,7 @@ This project is part of the source of [The Apache ECharts Official Website](http
 
 ## Development
 
-### Document content development
+### Document Content Development
 
 Do not need other project.
 
@@ -29,17 +29,19 @@ It will:
 + Watch doc markdown change and rebuild.
 
 
-## Tips about writing doc
+## Tips About Writing Doc
 
-### "Since version" is necessary in doc
+### "Since Version"
+"Since Version" is necessary in doc.
 Marking "since version" indicates when a new feature was introduced.
 For example,
 ```
 {{ use: partial-version(version = "6.0.0") }}
 ```
 
-### Global variables can be used in doc
+### Global Variables
 
+These global variables can be used in doc:
 + galleryViewPath
 + galleryEditorPath
 + websitePath
@@ -58,7 +60,7 @@ Provide a website link in doc:
 [Apache ECharts website](${websitePath}/en/download.html)
 ```
 
-### Reference of option
+### Reference of Option
 
 A `~` can be used to refer to a option item in the same doc. For example:
 
@@ -112,6 +114,57 @@ It indicates the range of saturation (color alpha) {{ if: ${prefix} !== '#' }}fo
 
 ```
 
+### Doc Structure
+
++ Entries:
+    + the entry in source code is like `en/api/api.md`, `en/api/option.md`, they will be compiled to webpage like `api.html`, `option.html`
+
++ Shared targets (text blocks):
+    + All of the shared targets should be put into the `partial` folder, such as, `en/api/partial/xxx`, `en/optino/partial/xxx`, and named with a prefix `partial-`.
+
++ Subtitles:
+    + The doc is structured by subtitles.
+    + For example:
+        ```
+        # series.bar(Object)
+        ## propA(number|string) = null
+        some desc xxx
+        ## propB(number|string) = null
+        some desc yyy
+
+        #${prefix} someOtherProp(Object)
+        some desc zzz
+        ```
+    + The data type in that subtitle:
+        + Can only be `number`, `string`, `boolean`, `Object`, `Array`, `Function`
+        + Can be an union, such as `number|string`.
+    + The default value in that subtitle:
+        + Can be omitted.
+        + Typically be `null`, `undefined`, `true`, `false`, `90` (a literal number), `some literal string`, `[0, 90]` (an literal array).
+    + The top level subtitles:
+        + For example, `# series.bar(Object)`, the dot symbol represents a special meaning: the component main type is `'series'` and the component sub-type is `'bar'`.
+    + The variable `${prefix}`
+        + It is commonly used in "target: partial-xxx", which serves different subtitle levels. The value of `${prefix}` is like `'#'`, `'##'`, `'###'`, ...
+        + For example,
+            ```tpl
+            When we define a "target"
+            {{ target: partial-target-1 }}
+            ##${prefix} propLayout(Object)
+            All of the subtitles should uses that prefix variable.
+            ###${prefix} x(number)
+            some desc
+            ###${prefix} y(number)
+            some desc
+            {{ /target }}
+
+            When we use that "target"
+            {{ use: partial-target-1(
+                prefix: '#'
+            ) }}
+            {{ use: partial-target-1(
+                prefix: ${prefix} + '##'
+            ) }}
+            ```
 
 ### Template Syntax
 
@@ -122,6 +175,7 @@ Summary of the commonly used syntax:
 ```template
 VARIABLE:
 some text ${someVariable} some text
+The scope of the variable is "target" (see below).
 
 
 IF ELSE:
@@ -140,23 +194,27 @@ some text ${index}: ${person.name}
 {{ /for }}
 
 
-TARGET (DEFINE A BLOCK):
+TARGET (DEFINE A TEXT BLOCK):
 {{ target: a_predefined_block_name_1 }}
 The input varA is ${varA}
 The input varB is ${varB}
 The input varC is ${varC}
-some other text xxx
-(The close target can be omitted, but not recommended.)
+Notice:
+- The scope of the "target name" is the entire webpage (such as, `option.html`, `api.html`), so name conflicts should be avoided.
+- "target" is not shared across webpage (such as, `option.html`, `api.html`).
+- The close tag of "target" can be omitted, but not recommended.
 {{ /target }}
 
 
-USE (USE A BLOCK):
-{{ use: a_predefined_block_name_1(
+USE (USE A PREDEFINED TEXT BLOCK):
+{{ use: a_predefined_block_name_1 }}
+{{ use: a_predefined_block_name_2(
     varA = ${myVarX},
     varB = 123,
-    varC = 'some string'
-)}}
-{{ use: a_predefined_block_name_2 }}
+    varC = 'some string',
+    prefix: ${prefix} + '##'
+) }}
+Concatenation operator `+` can be used in that string.
 ```
 
 
@@ -199,7 +257,7 @@ npm run format
 
 Make sure have a double review on the git diff after formatted.
 
-## Sync docs between different languages.
+## Sync Docs Between Different Languages
 
 After you finished editing doc of one language. You can use following script to sync it to another language.
 
