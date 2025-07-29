@@ -47,7 +47,9 @@ module.exports = {
         'js-beautify': 'beautifier'
     },
     plugins: [
-        new webpack.IgnorePlugin(/^fs$/),
+        new webpack.IgnorePlugin({
+            resourceRegExp: /^fs$/
+        }),
         new VueLoaderPlugin(),
         new MiniCssExtractPlugin({
             filename: '../css/doc-bundle.css'
