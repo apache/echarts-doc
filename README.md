@@ -71,7 +71,8 @@ If intending to reference an anchor in different doc, it can be:
 [itemStyle](option.html#series.itemStyle)
 ```
 
-### Notes
+
+### Notice
 
 1. Formatter will treat {{use}} as a block. So don't use it **inline**.
 
@@ -84,10 +85,10 @@ Some other description
 Some description about {{ use: partial-inline-xxx }}
 ```
 
-2. Don't use to complex **inline** {{if}} {{else}} structure. It will make reading and patching between different languages harder.
+2. Don't use complex **inline** {{if}} {{else}} structure. It will make reading and patching between different languages harder.
 
-```js
-// Good
+```template
+Good:
 {{ if: ${prefix} !== '#' }}
 表示同一层级的节点的颜色饱和度 选取范围。
 {{ else }}
@@ -95,10 +96,10 @@ Some description about {{ use: partial-inline-xxx }}
 {{ /if }}
 数值范围 0 ~ 1。
 
-// Bad
+Bad:
 {{ if: ${prefix} !== '#' }}表示同一层级的节点的{{ else }}本系列默认的{{ /if }} 颜色饱和度 选取范围。数值范围 0 ~ 1。
 
-// Good
+Good:
 {{ if: ${prefix} !== '#' }}
 It indicates the range of saturation (color alpha) for nodes in a level.
 {{ else }}
@@ -106,9 +107,56 @@ It indicates the range of saturation (color alpha) for nodes  of the series.
 {{ /if }}
 The range of values is 0 ~ 1.
 
-// Bad
+Bad:
 It indicates the range of saturation (color alpha) {{ if: ${prefix} !== '#' }}for nodes in a level {{ else }} of the series{{ /if }}. The range of values is 0 ~ 1.
 
+```
+
+
+### Template Syntax
+
+The template syntax follows [etpl](https://github.com/ecomfe/etpl/blob/master/doc/syntax.md) (but use `{{ }}` rather than `<!-- -->` as the interpolate tags).
+> A syntax highlight tool: [etpl-vscode](https://marketplace.visualstudio.com/items?itemName=yibuyisheng.etpl-vscode)
+
+Summary of the commonly used syntax:
+```template
+VARIABLE:
+some text ${someVariable} some text
+
+
+IF ELSE:
+{{ if: ${number1} > 0 }}
+some text xxx
+{{ elif: ${string1} === 'abc' }}
+some text yyy
+{{ else }}
+some text zzz
+{{ /if }}
+
+
+FOR LOOP:
+{{ for: ${persons} as ${person}, ${index} }}
+some text ${index}: ${person.name}
+{{ /for }}
+
+
+TARGET (DEFINE A BLOCK):
+{{ target: a_predefined_block_name_1 }}
+The input varA is ${varA}
+The input varB is ${varB}
+The input varC is ${varC}
+some other text xxx
+(The close target can be omitted, but not recommended.)
+{{ /target }}
+
+
+USE (USE A BLOCK):
+{{ use: a_predefined_block_name_1(
+    varA = ${myVarX},
+    varB = 123,
+    varC = 'some string'
+)}}
+{{ use: a_predefined_block_name_2 }}
 ```
 
 
