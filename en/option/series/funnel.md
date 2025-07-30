@@ -30,7 +30,7 @@ The specified minimum value.
 
 <ExampleUIControlNumber default="100" step="1" />
 
-he specified maximum value.
+The specified maximum value.
 
 ## minSize(number|string) = '0%'
 
