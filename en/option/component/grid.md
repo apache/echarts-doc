@@ -82,6 +82,7 @@ See also [outerBounds example](${galleryEditorPath}doc-example/grid-outerBounds&
 
 {{ use: partial-rect-layout-width-height(
     hostName = "`outerBounds`",
+    version = "6.0.0",
     noZ = true,
     prefix = '##',
     defaultLeft = 0,

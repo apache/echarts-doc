@@ -120,6 +120,7 @@ grid 区域是否包含坐标轴的[刻度标签](~yAxis.axisLabel)。
 
 {{ use: partial-rect-layout-width-height(
     hostName = "外边界（`outerBounds`）",
+    version = "6.0.0",
     noZ = true,
     prefix = '##',
     defaultLeft = 0,
