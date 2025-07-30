@@ -30,7 +30,17 @@ It will:
 
 ### Local Config
 
-To customize the links of `echarts-examples` and other configurations, you can create a local config file `echarts-doc/config/env.dev-local.js`, which is not tracked by git. The content can be copied from `echarts-doc/config/env.dev.js`, and then modify it as needed. `npm run dev` will use this local config file, if it exists, to replace `echarts-doc/config/env.dev.js`.
+To customize the links of `echarts-examples` and other configurations, you can create a local config file `echarts-doc/config/env.dev-local.js`, which is not tracked by git, and its top-level properties will be used to override the corresponding properties of `echarts-doc/config/env.dev.js` when `npm run dev`.
+
+For example, create a `echarts-doc/config/env.dev-local.js`:
+```js
+module.exports = {
+    // These props will override the same props in `echarts-doc/config/env.dev-local.js`
+    galleryViewPath: 'http://127.0.0.1:3002/en/view.html?local=1&c=',
+    galleryEditorPath: 'http://127.0.0.1:3002/en/editor.html?local=1&c=',
+    EMBEDDED_ECHARTS_SCRIPT_URL: 'http://localhost:8001/echarts/echarts/dist/echarts.js',
+};
+```
 
 
 ## Tips About Writing Doc
