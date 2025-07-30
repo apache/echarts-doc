@@ -58,6 +58,7 @@ const option = {
     none = true,
     geo = true,
     calendar = true,
+    matrix = true,
     version = "5.4.0"
 ) }}
 

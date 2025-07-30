@@ -79,7 +79,8 @@ option = {
     cartesian2d = true,
     polar = false,
     geo = true,
-    calendar = true
+    calendar = true,
+    matrix = true
 ) }}
 
 ## pointSize(number) = 20

@@ -37,6 +37,7 @@ Since ECharts v4.6.0, we provide `'labelLine'` and `'edge'` two extra layouts. C
     none = true,
     geo = true,
     calendar = true,
+    matrix = true,
     version = "5.4.0"
 ) }}
 

@@ -9,7 +9,7 @@
 ) }}
 {{ /if }}
 
-The coordinate used in the series, whose options are:
+The coordinate used in the series or component, whose options are:
 
 {{ if: ${none} }}
 + `null` or `'none'`
@@ -20,31 +20,43 @@ The coordinate used in the series, whose options are:
 {{ if: ${cartesian2d} }}
 + `'cartesian2d'`
 
-    Use a two-dimensional rectangular coordinate (also known as Cartesian coordinate), with [xAxisIndex](~series-${seriesType}.xAxisIndex) and [yAxisIndex](~series-${seriesType}.yAxisIndex) to assign the corresponding axis component.
+    Use a two-dimensional rectangular coordinate (also known as Cartesian coordinate), with [xAxisIndex](~series-${seriesType}.xAxisIndex) and [yAxisIndex](~series-${seriesType}.yAxisIndex) or [xAxisId](~series-${seriesType}.xAxisId) and [yAxisId](~series-${seriesType}.yAxisId) to assign the corresponding axis component.
 {{ /if }}
 
 {{ if: ${polar} }}
 + `'polar'`
 
-    Use polar coordinates, with [polarIndex](~series-${seriesType}.polarIndex) to assign the corresponding polar coordinate component.
+    Use polar coordinates, with [polarIndex](~series-${seriesType}.polarIndex) or [polarId](~series-${seriesType}.polarId) to assign the corresponding polar coordinate component.
+{{ /if }}
+
+{{ if: ${singleAxis} }}
++ `'singleAxis'`
+
+    Use `singleAxis` coordinates, with [singleAxisIndex](~series-${seriesType}.polarIndex) or [singleAxisId](~series-${seriesType}.polarId) to assign the corresponding `singleAxis` coordinate component.
 {{ /if }}
 
 {{ if: ${geo} }}
 + `'geo'`
 
-    Use geographic coordinate, with [geoIndex](~series-${seriesType}.geoIndex) to assign the corresponding geographic coordinate components.
+    Use geographic coordinate, with [geoIndex](~series-${seriesType}.geoIndex) or [geoId](~series-${seriesType}.geoId) to assign the corresponding geographic coordinate components.
 {{ /if }}
 
 {{ if: ${parallel} }}
 + `'parallel'`
 
-    Use parallel coordinates, with [parallelIndex](~series-${seriesType}.parallelIndex) to assign the corresponding parallel coordinate components.
+    Use parallel coordinates, with [parallelIndex](~series-${seriesType}.parallelIndex) or [parallelId](~series-${seriesType}.parallelId) to assign the corresponding parallel coordinate components.
 {{ /if }}
 
 {{ if: ${calendar} }}
 + `'calendar'`
 
-    Use calendar coordinates, with [calendarIndex](~series-${seriesType}.calendarIndex) to assign the corresponding calendar coordinate components.
+    Use calendar coordinates, with [calendarIndex](~series-${seriesType}.calendarIndex) or [calendarId](~series-${seriesType}.calendarId) to assign the corresponding calendar coordinate components.
+{{ /if }}
+
+{{ if: ${matrix} }}
++ `'matrix'`
+
+    Use matrix coordinates, with [matrixIndex](~series-${seriesType}.matrixIndex) or [matrixId](~series-${seriesType}.matrixId) to assign the corresponding matrix coordinate components.
 {{ /if }}
 
 {{ if: ${none} }}
@@ -87,6 +99,18 @@ Index of [y axis](~yAxis) to combine with, which is  useful for multiple y axes 
 Index of [polar coordinate](~polar) to combine with, which is useful for multiple polar axes in one chart.
 {{ /if }}
 
+{{ if: ${singleAxis} }}
+## singleAxisIndex(number) = 0
+
+{{ if: ${version} }}
+{{ use: partial-version(
+    version = ${version}
+) }}
+{{ /if }}
+
+Index of [singleAxis coordinate](~singleAxis) to combine with, which is useful for multiple singleAxis in one chart.
+{{ /if }}
+
 {{ if: ${geo} }}
 ## geoIndex(number) = 0
 
@@ -121,5 +145,17 @@ Index of [parallel coordinates](~parallel) to combine with, which is useful for 
 {{ /if }}
 
 Index of [calendar coordinates](~calendar) to combine with, which is useful for multiple calendar coordinates in one chart.
+{{ /if }}
+
+{{ if: ${matrix} }}
+## matrixIndex(number) = 0
+
+{{ if: ${version} }}
+{{ use: partial-version(
+    version = ${version}
+) }}
+{{ /if }}
+
+Index of [matrix coordinates](~matrix) to combine with, which is useful for multiple matrix coordinates in one chart.
 {{ /if }}
 

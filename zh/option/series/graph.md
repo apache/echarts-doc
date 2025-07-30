@@ -36,8 +36,10 @@ option.series[0].data.forEach(function (item) {
     none = true,
     cartesian2d = true,
     polar = true,
+    singleAxis = true,
     geo = true,
-    calendar = true
+    calendar = true,
+    matrix = true
 ) }}
 
 ## center(Array)

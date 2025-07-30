@@ -24,6 +24,7 @@ ECharts 2.x uses the `markLine` to draw the migrating effect, while in ECharts 3
     coordSysDefault = "'geo'",
     cartesian2d = true,
     polar = false,
+    singleAxis = true,
     geo = true
 ) }}
 
