@@ -105,7 +105,7 @@ const option = {
 ) }}
 
 {{ use: partial-rect-layout-width-height(
-    componentName = 'thmemRiver',
+    hostName = '主题河流图系列（themeRiver series）',
     defaultLeft = '5%',
     defaultRight = '5%',
     defaultTop = '5%',

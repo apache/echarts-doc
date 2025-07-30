@@ -1,6 +1,12 @@
 
 {{ target: partial-rect-layout }}
 
+{{ if: ${hostName} }}
+{{ var: hostNameStr = ${hostName} }}
+{{ else }}
+{{ var: hostNameStr = ${componentName} + '组件' }}
+{{ /if }}
+
 {{ if: !${noZ} }}
 {{ use: partial-z-zlevel(
     prefix = ${prefix},
@@ -13,7 +19,7 @@
 
 <ExampleUIControlPercent default="0%"/>
 
-${componentName}组件离容器左侧的距离。
+${hostNameStr}离容器左侧的距离。
 
 `left` 的值可以是像 `20` 这样的具体像素值，可以是像 `'20%'` 这样相对于容器高宽的百分比，也可以是 `'left'`, `'center'`, `'right'`。
 
@@ -23,7 +29,7 @@ ${componentName}组件离容器左侧的距离。
 
 <ExampleUIControlPercent default="0%"/>
 
-${componentName}组件离容器上侧的距离。
+${hostNameStr}离容器上侧的距离。
 
 `top` 的值可以是像 `20` 这样的具体像素值，可以是像 `'20%'` 这样相对于容器高宽的百分比，也可以是 `'top'`, `'middle'`, `'bottom'`。
 
@@ -33,7 +39,7 @@ ${componentName}组件离容器上侧的距离。
 
 <ExampleUIControlPercent default="0%"/>
 
-${componentName}组件离容器右侧的距离。
+${hostNameStr}离容器右侧的距离。
 
 `right` 的值可以是像 `20` 这样的具体像素值，可以是像 `'20%'` 这样相对于容器高宽的百分比。
 
@@ -43,7 +49,7 @@ ${componentName}组件离容器右侧的距离。
 
 <ExampleUIControlPercent default="0%"/>
 
-${componentName}组件离容器下侧的距离。
+${hostNameStr}离容器下侧的距离。
 
 bottom 的值可以是像 `20` 这样的具体像素值，可以是像 `'20%'` 这样相对于容器高宽的百分比。
 

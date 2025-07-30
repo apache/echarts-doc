@@ -129,7 +129,7 @@ const option = {
 <ExampleUIControlBoolean default="true" />
 
 {{ use: partial-rect-layout-width-height(
-    componentName = "图例"
+    componentName = "图例（legend）"
 ) }}
 
 ## orient(string) = 'horizontal'

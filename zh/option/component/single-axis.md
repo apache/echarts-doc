@@ -12,7 +12,7 @@
 ) }}
 
 {{ use: partial-rect-layout-width-height(
-    componentName = "single",
+    componentName = "单轴（singleAxis）",
     defaultLeft = "'5%'",
     defaultTop = "'5%'",
     defaultRight = "'5%'",

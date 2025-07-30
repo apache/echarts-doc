@@ -69,7 +69,7 @@ const option = {
 {{ use: partial-series-name() }}
 
 {{ use: partial-rect-layout-width-height(
-    componentName = 'tree',
+    hostName = '树图系列（tree series）',
     defaultLeft = '12%',
     defaultRight = '12%',
     defaultTop = '12%',

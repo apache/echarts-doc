@@ -130,7 +130,7 @@ const option = {
 主副标题之间的间距。
 
 {{ use: partial-rect-layout(
-    componentName = "title "
+    componentName = "标题（title）"
 ) }}
 
 {{ use: partial-component-common-style(

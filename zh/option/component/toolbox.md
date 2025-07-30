@@ -560,7 +560,7 @@ feature: {
 ) }}
 
 {{ use: partial-rect-layout-width-height(
-    componentName = "工具栏"
+    componentName = "工具栏（toolbox）"
 ) }}
 
 ## tooltip(Object)

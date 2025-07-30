@@ -98,7 +98,7 @@ const option = {
 ) }}
 
 {{ use: partial-rect-layout-width-height(
-    componentName = "calendar",
+    componentName = "日历（calendar）",
     defaultLeft = "80",
     defaultTop = "60"
 ) }}

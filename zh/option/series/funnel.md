@@ -189,7 +189,7 @@ option = {
 ) }}
 
 {{ use: partial-rect-layout-width-height(
-    componentName = "漏斗图",
+    hostName = "漏斗图系列（funnel series）",
     defaultLeft = 80,
     defaultTop = 60,
     defaultRight = 80,

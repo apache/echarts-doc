@@ -189,3 +189,5 @@ slides/webgl
 
 /zh-src
 /en-src
+
+/config/env.*-local.js
