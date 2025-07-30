@@ -7,9 +7,9 @@
     "url": "https://github.com/apache/echarts-doc"
   },
   "scripts": {
-    "build": "node build.js --env asf",
-    "watch": "node build.js --env dev --watch",
-    "localsite": "node build.js --env localsite",
+    "build": "node build/build-doc.js --env asf",
+    "watch": "node build/build-doc.js --env dev --watch",
+    "localsite": "node build/build-doc.js --env localsite",
     "build:site": "webpack --config build/webpack.config.js --mode production",
     "watch:site": "webpack --config build/webpack.config.js --mode development --devtool inline-source-map --watch",
     "server": "node server.js",

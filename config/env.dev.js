@@ -13,5 +13,7 @@ module.exports = {
     },
 
     releaseDestDir: path.resolve(__dirname, '../public'),
-    ecWWWGeneratedDir: path.resolve(__dirname, '../../echarts-www/_generated')
+    ecWWWGeneratedDir: path.resolve(__dirname, '../../echarts-www/_generated'),
+
+    EMBEDDED_ECHARTS_SCRIPT_URL: null,
 };

@@ -86,7 +86,9 @@ let echartsLoadPromise;
 function fetchECharts() {
     return echartsLoadPromise || (echartsLoadPromise = new Promise(function (resolve, reject) {
         const script = document.createElement('script');
-        script.src = (window.ECHARTS_WWW_VENDORS_CDN_ROOT || 'https://fastly.jsdelivr.net/npm/') + 'echarts/dist/echarts.min.js';
+        script.src = INJECTED_CONFIG.EMBEDDED_ECHARTS_SCRIPT_URL
+            ? INJECTED_CONFIG.EMBEDDED_ECHARTS_SCRIPT_URL
+            : (window.ECHARTS_WWW_VENDORS_CDN_ROOT || 'https://fastly.jsdelivr.net/npm/') + 'echarts/dist/echarts.min.js';
         script.async = true;
         script.onload = function () {
             echartsLoadPromise = null;
