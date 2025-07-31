@@ -192,6 +192,12 @@ Data of the ending point.
     index = 1
 ) }}
 
+{{ use: partial-z(
+    prefix = "#" + ${prefix},
+    defaultZ = "5",
+    version = "6.0.0"
+) }}
+
 {{ use: partial-animation(
     prefix = "#" + ${prefix}
 ) }}
@@ -287,6 +293,14 @@ X position according to container, in pixel.
 <ExampleUIControlPercent default="0" />
 
 Y position according to container, in pixel.
+
+#${prefix} z2(number)
+
+{{ use: partial-version(
+    version = "6.0.0"
+) }}
+
+Specify the relationship of overlap between graphic elements. A bigger value means higher.
 
 #${prefix} xAxis(number|string)
 

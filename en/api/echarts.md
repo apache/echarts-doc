@@ -233,6 +233,54 @@ Note:
 Registers a theme, should be specified when [initialize the chart instance](~echarts.init).
 
 
+## registerCustomSeries(Function)
+
+{{ use: partial-version(version: '6.0.0') }}
+
+```ts
+(type: string, renderItem: Function)
+```
+
+Register a custom series. After registration, it can be used in [setOption](~api.html#echartsInstance.setOption).
+
++ `type` is the type of the chart to be registered, that is, the `series.renderItem` written later in `setOption`.
++ `renderItem` is the graphic rendering logic of the custom series. For details, see [series-custom.renderItem](option.html#series-custom.renderItem).
+
+Example:
+
+```ts
+const renderItem = (params, api) => {
+    return {
+        type: 'circle',
+        shape: {
+            cx: api.coord([api.value(0), api.value(1)])[0],
+            cy: api.coord([api.value(0), api.value(1)])[1],
+            r: api.value(2) * (params.itemPayload.scale || 1)
+        },
+        style: {
+            fill: api.visual('color'),
+            opacity: params.itemPayload.opacity() || 1,
+        }
+    }
+};
+echarts.registerCustomSeries('bubble', renderItem);
+
+const option = {
+    xAxis: {},
+    yAxis: {},
+    series: {
+        type: 'custom',
+        renderItem: 'bubble',
+        itemPayload: {
+            scale: 2,
+            opacity: () => Math.random() * 0.5 + 0.5
+        },
+        data: [[11, 22, 20], [33, 44, 40], [18, 24, 10]]
+    }
+};
+chart.setOption(option);
+```
+
 ## registerLocale(Function)
 
 > Since `5.0.0`

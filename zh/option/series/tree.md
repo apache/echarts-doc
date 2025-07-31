@@ -69,7 +69,7 @@ const option = {
 {{ use: partial-series-name() }}
 
 {{ use: partial-rect-layout-width-height(
-    componentName = 'tree',
+    hostName = '树图系列（tree series）',
     defaultLeft = '12%',
     defaultRight = '12%',
     defaultTop = '12%',
@@ -185,7 +185,7 @@ center: [115.97, '30%']
             type: 'Array'
         }
     },
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ## labelLayout(Object|Function)
@@ -393,7 +393,7 @@ center: [115.97, '30%']
 
 {{ use: partial-label(
     prefix = "###",
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ### emphasis(Object)

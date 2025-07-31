@@ -1,19 +1,27 @@
 
 {{ target: partial-rect-layout-width-height }}
 
+{{ if: ${hostName} }}
+{{ var: hostNameStr = ${hostName} }}
+{{ else }}
+{{ var: hostNameStr = ${componentName} + ' component' }}
+{{ /if }}
+
 {{ use: partial-rect-layout(
-    componentName = ${componentName},
+    hostName = ${hostName},
+    noZ = ${noZ},
+    prefix = ${prefix},
     defaultLeft = ${defaultLeft},
     defaultTop = ${defaultTop},
     defaultRight = ${defaultRight},
     defaultBottom = ${defaultBottom}
 ) }}
 
-## width(string|number) = ${defaultWidth|default("'auto'")}
+#${prefix|default("#")} width(string|number) = ${defaultWidth|default("'auto'")}
 
-Width of ${componentName} component. {{ if: !${defaultWidth} }}Adaptive by default.{{ /if }}
+Width of ${hostNameStr}. {{ if: !${defaultWidth} }}Adaptive by default.{{ /if }}
 
-## height(string|number) = ${defaultHeight|default("'auto'")}
+#${prefix|default("#")} height(string|number) = ${defaultHeight|default("'auto'")}
 
-Height of ${componentName} component. {{ if: !${defaultHeight} }}Adaptive by default.{{ /if }}
+Height of ${hostNameStr}. {{ if: !${defaultHeight} }}Adaptive by default.{{ /if }}
 

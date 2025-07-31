@@ -940,6 +940,74 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
 
 线画到百分之多少就不画了。值的范围：[0, 1]。
 
+
+{{ use: partial-graphic-cpt-sub-prop-transition(
+    prefix = ${prefix},
+    hostProp = 'shape',
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
+##${prefix} style(Object)
+
+{{ use: partial-graphic-cpt-style-prop-common(
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
+{{ use: partial-graphic-cpt-focus-blur(
+    prefix = ${prefix}
+) }}
+
+{{ use: partial-graphic-cpt-style-emphasis(
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
+{{ use: partial-graphic-cpt-event-handlers(
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
+
+#${prefix} ${hostName}${symbolDeclare}compoundPath(Object)
+
+{{ use: partial-version(version: '6.0.0') }}
+
+多个图形元素并集组成的复合元素。
+
+{{ use: partial-graphic-cpt-common-props(
+    type = 'compoundPath',
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    enableMorph = true,
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
+##${prefix} shape(Object)
+
+###${prefix} paths(Array)
+
+图形元素的数组，元素可以是 path/rect/circle/……
+
 {{ use: partial-graphic-cpt-sub-prop-transition(
     prefix = ${prefix},
     hostProp = 'shape',
@@ -1375,6 +1443,12 @@ chart.on('click', function (params) {
 ##${prefix} silent(boolean) = false
 
 是否不响应鼠标以及触摸事件。
+
+{{ if: ${usageType} === 'customSeries' }}
+{{ use: partial-custom-series-tooltipDisabled(
+    prefix = ${prefix}
+) }}
+{{ /if }}
 
 {{ if: ${type} !== 'group' }}
 ##${prefix} invisible(boolean) = false
@@ -1968,6 +2042,18 @@ Position of `textContent`.
 [bezierCurve](~${optionPath}.${hostName}${symbolVisit}bezierCurve),
 [arc](~${optionPath}.${hostName}${symbolVisit}arc),
 [group](~${optionPath}.${hostName}${symbolVisit}group),
+
+
+
+{{ target: partial-custom-series-tooltipDisabled }}
+
+##${prefix} tooltipDisabled(boolean) = false
+
+是否不响应 tooltip。
+
+{{ use: partial-version(
+    version = '6.0.0'
+) }}
 
 
 

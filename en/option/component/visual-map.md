@@ -358,7 +358,7 @@ Define visual channels that will mapped from dataValues that are **out of select
 See available configurations in [${visualMapName}.inRange](~${visualMapName}.inRange)
 
 {{ use: partial-rect-layout(
-    componentName = "visualMap ",
+    componentName = "visualMap",
     defaultZ = "4",
     defaultLeft = "0",
     defaultRight = "auto",

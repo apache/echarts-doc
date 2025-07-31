@@ -210,7 +210,7 @@ The style of edge line. [lineStyle.color](~series-graph.lineStyle.color) can be 
     prefix = "##",
     defaultPosition = "'inside'",
     formatter = true,
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ## edgeLabel(Object)
@@ -434,7 +434,7 @@ The label style of this node.
 
 {{ use: partial-label(
     prefix = "###",
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ### emphasis(Object)
@@ -596,6 +596,7 @@ Alias of [links](~series-graph.links)
 ) }}
 
 {{ use: partial-rect-layout-width-height(
+    hostName = "graph series",
     defaultLeft = "'center'",
     defaultTop = "'middle'",
     defaultWidth = 'auto',

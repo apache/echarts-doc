@@ -36,7 +36,7 @@ const option = {"tooltip":{"trigger":"item","triggerOn":"mousemove"},"series":[{
 {{ use: partial-series-name() }}
 
 {{ use: partial-rect-layout-width-height(
-    componentName = 'sankey',
+    hostName = '桑基图系列（sankey series）',
     defaultLeft = '5%',
     defaultRight = '20%',
     defaultTop = '5%',
@@ -188,7 +188,7 @@ levels: [{
     defaultShowLabel = true,
     defaultPosition = "'right'",
     formatter1d = true,
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ## labelLayout(Object|Function)
@@ -327,7 +327,7 @@ data: [{
 
 {{ use: partial-label(
     prefix = "###",
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ### emphasis(Object)

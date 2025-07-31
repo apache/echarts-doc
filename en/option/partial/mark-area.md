@@ -169,6 +169,12 @@ Specify the right-bottom point.
     index = 1
 ) }}
 
+{{ use: partial-z(
+    prefix = "#" + ${prefix},
+    defaultZ = "1",
+    version = "6.0.0"
+) }}
+
 {{ use: partial-animation(
     prefix = "#" + ${prefix},
     defaultAnimation = 'false'
@@ -227,6 +233,14 @@ x value on screen coordinate system, can be pixel number (like `5`), or percent 
 <ExampleUIControlPercent default="0" />
 
 y value on screen coordinate system, can be pixel number (like `5`), or percent value (like `'20%'`).
+
+#${prefix} z2(number)
+
+{{ use: partial-version(
+    version = "6.0.0"
+) }}
+
+Specify the relationship of overlap between graphic elements. A bigger value means higher.
 
 #${prefix} value(number)
 

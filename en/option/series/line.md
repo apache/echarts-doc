@@ -131,7 +131,7 @@ See the example using different `step` options:
     prefix = "##",
     defaultPosition = "'top'",
     formatter = true,
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ## endLabel(Object)
@@ -146,7 +146,7 @@ Label on the end of line.
     prefix = "##",
     formatter = true,
     noPosition = true,
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ### valueAnimation(boolean)
@@ -371,7 +371,7 @@ The style of the text of single data point.
 {{ use: partial-label(
     prefix = "###",
     defaultPosition = "top",
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ### labelLine(Object)

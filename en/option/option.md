@@ -22,6 +22,7 @@
 {{import: component-timeline}}
 {{import: component-graphic}}
 {{import: component-calendar}}
+{{import: component-matrix}}
 {{import: component-dataset}}
 {{import: component-aria}}
 
@@ -120,6 +121,8 @@ Global font style.
     prefix: '#',
     defaultFontSize: 12
 ) }}
+
+{{import: partial-rich-inherit-plain-label}}
 
 {{import: partial-animation }}
 

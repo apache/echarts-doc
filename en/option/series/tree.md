@@ -26,7 +26,7 @@ The tree diagram is mainly used to visualize the tree data structure, which is a
 {{ use: partial-series-name() }}
 
 {{ use: partial-rect-layout-width-height(
-    componentName = 'tree',
+    hostName = 'tree series',
     defaultLeft = '12%',
     defaultRight = '12%',
     defaultTop = '12%',
@@ -142,7 +142,7 @@ The style of each node in the tree, where [itemStyle.color](~series-tree.itemSty
             type: 'Array'
         }
     },
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ## labelLayout(Object|Function)
@@ -350,7 +350,7 @@ The label of the node.
 
 {{ use: partial-label(
     prefix = "###",
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ### emphasis(Object)

@@ -228,6 +228,57 @@ echarts.registerMap('USA', usaJson, {
 
 注册主题，用于[初始化实例](~echarts.init)的时候指定。
 
+
+## registerCustomSeries(Function)
+
+{{ use: partial-version(version: '6.0.0') }}
+
+```ts
+(type: string, renderItem: Function)
+```
+
+注册自定义系列。注册后可以通过 [setOption](~api.html#echartsInstance.setOption) 中使用。
+
++ `type` 注册的图表类型，也就是之后在 `setOption` 中写的 `series.renderItem`。
++ `renderItem` 自定义系列的图形渲染逻辑，详见 [series-custom.renderItem](option.html#series-custom.renderItem)。
+
+示例：
+
+```ts
+const renderItem = (params, api) => {
+    return {
+        type: 'circle',
+        shape: {
+            cx: api.coord([api.value(0), api.value(1)])[0],
+            cy: api.coord([api.value(0), api.value(1)])[1],
+            r: api.value(2) * (params.itemPayload.scale || 1)
+        },
+        style: {
+            fill: api.visual('color'),
+            opacity: params.itemPayload.opacity() || 1,
+        }
+    }
+};
+echarts.registerCustomSeries('bubble', renderItem);
+
+const option = {
+    xAxis: {},
+    yAxis: {},
+    series: {
+        type: 'custom',
+        renderItem: 'bubble',
+        itemPayload: {
+            scale: 2,
+            opacity: () => Math.random() * 0.5 + 0.5
+        },
+        data: [[11, 22, 20], [33, 44, 40], [18, 24, 10]]
+    }
+};
+chart.setOption(option);
+```
+
+[apache/echarts-custom-series](https://github.com/apache/echarts-custom-series) 项目提供了多种可以直接使用的自定义系列。
+
 ## registerLocale(Function)
 
 > 从 `5.0.0` 开始支持

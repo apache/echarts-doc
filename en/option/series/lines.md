@@ -133,7 +133,7 @@ Label settings. Does not work when [polyline](~series-lines.polyline) is `true`.
 
 {{ use: lines-label(
     prefix = "##",
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ## labelLayout(Object|Function)
@@ -232,7 +232,7 @@ Label of a single line. Available when [polyline](~series-lines.polyline) is not
 
 {{ use: lines-label(
     prefix = "###",
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ### emphasis(Object)
@@ -317,15 +317,12 @@ the position of label, options:
 + `'middle'`
 + `'end'`
 
-{{ if: ${minMargin} }}
-#${prefix} minMargin(number)
 
-{{ use: partial-version(
-    version = "5.0.0"
+{{ use: partial-label-margin(
+    prefix = ${prefix},
+    labelMargin = ${labelMargin}
 ) }}
 
-Minimal margin between labels. Used when label has [layout](~series-lines.labelLayout).
-{{ /if }}
 
 #${prefix} formatter(string|Function)
 

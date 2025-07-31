@@ -80,7 +80,7 @@ See the example below:
     prefix = "##",
     defaultPosition = "'inside'",
     formatter = true,
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ## labelLine(Object)
@@ -222,7 +222,7 @@ The style setting of the text label in a single bar.
 {{ use: partial-label(
     prefix = "###",
     defaultPosition = "inside",
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ### labelLine(Object)

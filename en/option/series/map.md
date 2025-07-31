@@ -22,7 +22,7 @@ Series of same [map type](~series-map.map) will show in one map. At this point, 
 {{ use: geo-common(
     prefix = '#',
     inMap = true,
-    labelMinMargin = true
+    labelMargin = true
 ) }}
 
 ## center(Array)
@@ -142,7 +142,7 @@ Color of the area.
     formatter = true,
     noAlign = true,
     noVerticalAlign = true,
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ### labelLine(Object)

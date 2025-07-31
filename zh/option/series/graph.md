@@ -215,7 +215,7 @@ edgeSymbol: ['circle', 'arrow']
     prefix = "##",
     defaultPosition = "'inside'",
     formatter = true,
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ## edgeLabel(Object)
@@ -442,7 +442,7 @@ data: [{
 
 {{ use: partial-label(
     prefix = "###",
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ### emphasis(Object)
@@ -604,6 +604,7 @@ links: [{
 ) }}
 
 {{ use: partial-rect-layout-width-height(
+    hostName = "关系图系列（graph series）",
     defaultLeft = "'center'",
     defaultTop = "'middle'",
     defaultWidth = '自适应',

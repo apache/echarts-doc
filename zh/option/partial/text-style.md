@@ -109,9 +109,11 @@ label: {
     prefix = ${prefix} + '##',
     enableAutoColor = ${enableAutoColor}
 ) }}
+
+{{ use: partial-rich-inherit-plain-label(
+    prefix= ${prefix}
+) }}
 {{ /if }}
-
-
 
 {{ target: partial-text-style-base-item }}
 

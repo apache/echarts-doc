@@ -110,7 +110,7 @@ option = {
     prefix = "##",
     position = true,
     formatter = true,
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ## labelLine(Object)
@@ -189,7 +189,7 @@ option = {
 ) }}
 
 {{ use: partial-rect-layout-width-height(
-    componentName = "漏斗图",
+    hostName = "漏斗图系列（funnel series）",
     defaultLeft = 80,
     defaultTop = 60,
     defaultRight = 80,
@@ -243,7 +243,7 @@ option = {
     prefix = "###",
     position = true,
     formatter = false,
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ### labelLine(Object)
@@ -367,15 +367,12 @@ option = {
 通过[视觉引导线](~series-funnel.labelLine)连到相应的梯形。
 {{ /if }}
 
-{{ if: ${minMargin} }}
-#${prefix} minMargin(number)
 
-{{ use: partial-version(
-    version = "5.0.0"
+{{ use: partial-label-margin(
+    prefix = ${prefix},
+    labelMargin = ${labelMargin}
 ) }}
 
-用于控制标签之间的最小距离，当启用 [labelLayout](~series-funnel.labelLayout) 时可能会用到。
-{{ /if }}
 
 {{ if: ${formatter} }}
 #${prefix} formatter(string|Function)

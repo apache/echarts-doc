@@ -64,6 +64,8 @@ chart.setOption({visualMap: {min: 0, max: 400}}); // Modify min and max using se
 // Then range will be auto-modified to the new [min, max], that is, [0, 400].
 ```
 
+**Notice**: see [unboundedRange](~unboundedRange) for the special case when `range[0]` or `range[1]` touch `min` or `max`.
+
 + If `range` is set explicitly, such as [10, 300]
 
 ```javascript
@@ -79,6 +81,20 @@ chart.setOption({visualMap: {range: null}}); // Set range to null then.
 ```
 
 `range` gotten by `getOption` is always an `Array`, but not `null` or `undefined`.
+
+
+## unboundedRange(boolean) = true
+{{ use: partial-version(version = "6.0.0") }}
+
+Whether to treat the range as unbounded when `range` touches `min` or `max`.
+- `true`: when `range[0]` <= `min`, the actual range becomes `[-Infinity, range[1]]`; when `range[1]` >= `max`, the actual range becomes `[range[0], Infinity]`.
+    > NOTE:
+    >    - This provides a way to ensure all data can be considered in-range when `min`/`max` are not precisely known.
+    >    - Default is `true` for backward compatibility.
+    >    - Piecewise VisualMap does not need it, since it can define unbounded range in each piece, such as "< 12", ">= 300".
+- `false`: Disable the unbounded range behavior.
+    - Use case: e.g., `min`/`max` reflect the normal data range, and some outlier data should always be treated as out of range.
+
 
 ## calculable(boolean) = false
 

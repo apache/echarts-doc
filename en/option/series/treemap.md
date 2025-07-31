@@ -50,7 +50,7 @@ Notice: There are some difference in treemap configuration between ECharts3 and 
 {{ use: partial-series-name() }}
 
 {{ use: partial-rect-layout-width-height(
-    componentName = 'treemap ',
+    hostName = 'treemap series',
     defaultLeft = 'center',
     defaultRight = null,
     defaultTop = 'middle',
@@ -133,7 +133,7 @@ To show the path of the current node.
 Whether to show the breadcrumb.
 
 {{ use: partial-rect-layout(
-    componentName = "breadcrumb ",
+    hostName = "breadcrumb",
     prefix = "##",
     noZ = true,
     defaultLeft = "'center'",
@@ -578,7 +578,7 @@ This can hide the details of nodes when the rectangular area is not large enough
             type: 'Array'
         }
     },
-    minMargin = true
+    labelMargin = true
 ) }}
 
 #${prefix} upperLabel(Object)

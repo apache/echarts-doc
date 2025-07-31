@@ -332,7 +332,7 @@ visualMap 组件中，`控制器` 的 `inRange` `outOfRange` 设置。如果没�
 配置参考 [${visualMapName}.inRange](~${visualMapName}.inRange)
 
 {{ use: partial-rect-layout(
-    componentName = "visualMap ",
+    componentName = "视觉映射（visualMap）",
     defaultZ = "4",
     defaultLeft = "0",
     defaultRight = "auto",

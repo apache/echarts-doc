@@ -332,7 +332,7 @@ Label style configurations of single data.
     defaultPosition = "'inside'",
     noPosition = true,
     formatter = ${topLevel},
-    minMargin = ${state} === 'normal'
+    labelMargin = ${state} === 'normal'
 ) }}
 
 ##${prefix} position(string|Array) = 'inside'

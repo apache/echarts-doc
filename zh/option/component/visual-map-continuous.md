@@ -53,6 +53,9 @@ chart.setOption({
 });
 ```
 
+**注意**: 当 `range` 等于或超出 `min` 或 `max` 时，存在特殊处理，见 [unboundedRange](~unboundedRange)。
+
+
 **setOption 改变 min、max 时 range 的自适应**
 
 + 如果 `range` 不设置（或设置为 null）
@@ -80,6 +83,20 @@ chart.setOption({visualMap: {range: null}}); // 再把 range 设为 null。
 ```
 
 `getOption` 得到的 `range` 总是 `Array`，不会为 `null` 或 `undefined`。
+
+## unboundedRange(boolean) = true
+{{ use: partial-version(version = "6.0.0") }}
+
+当 `range` 等于或超出 `min` 或 `max` 时，是否视为范围无限。
+
++ `true`: 当 `range[0] ≤ min` 时，实际范围变为 `[-Infinity, range[1]]`；当 `range[1] ≥ max` 时，实际范围变为 `[range[0], Infinity]`。
+    > 注意：
+    >    - 这种策略是为了，当无法精确确定 `min` / `max` 时，可以有方式能使所有数据都在 `inRange` 内。
+    >    - 为了历史兼容，默认值为 `true`。
+    >    - 分段型 piecewise visualMap 不需要该配置项，因为每一段可以自行定义不设限范围，例如 `"< 12"`、`">= 300"`。
++ `false`: 禁用无限范围。
+    + 使用场景：例如当 `min` / `max` 是已知的正常数据范围时，某些异常值应始终被视为 `outOfRange`。
+
 
 ## calculable(boolean) = false
 

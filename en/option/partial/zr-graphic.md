@@ -1083,6 +1083,73 @@ Value range: [0, 1].
 ) }}
 
 
+#${prefix} ${hostName}${symbolDeclare}compoundPath(Object)
+
+{{ use: partial-version(version: '6.0.0') }}
+
+The union of multiple elements.
+
+{{ use: partial-graphic-cpt-common-props(
+    type = 'compoundPath',
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    enableMorph = true,
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
+##${prefix} shape(Object)
+
+###${prefix} paths(Array)
+
+Array of elements, each of which can be a path/rect/circle/...
+
+{{ use: partial-graphic-cpt-sub-prop-transition(
+    prefix = ${prefix},
+    hostProp = 'shape',
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
+##${prefix} style(Object)
+
+{{ use: partial-graphic-cpt-style-prop-common(
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
+{{ use: partial-graphic-cpt-focus-blur(
+    prefix = ${prefix}
+) }}
+
+{{ use: partial-graphic-cpt-style-emphasis(
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
+{{ use: partial-graphic-cpt-event-handlers(
+    prefix = ${prefix},
+    optionPath = ${optionPath},
+    usageType = ${usageType},
+    hostName = ${hostName},
+    symbolVisit = ${symbolVisit},
+    symbolDeclare = ${symbolDeclare}
+) }}
+
+
 
 {{ target: partial-graphic-cpt-common-props }}
 
@@ -1395,6 +1462,12 @@ chart.on('click', function (params) {
 ##${prefix} silent(boolean) = false
 
 Whether response to mouse events / touch events.
+
+{{ if: ${usageType} === 'customSeries' }}
+{{ use: partial-custom-series-tooltipDisabled(
+    prefix = ${prefix}
+) }}
+{{ /if }}
 
 {{ if: ${type} !== 'group' }}
 ##${prefix} invisible(boolean) = false
@@ -1993,7 +2066,20 @@ Same to [style](~${optionPath}.${hostName}${symbolVisit}polygon.style).
 [line](~${optionPath}.${hostName}${symbolVisit}line),
 [bezierCurve](~${optionPath}.${hostName}${symbolVisit}bezierCurve),
 [arc](~${optionPath}.${hostName}${symbolVisit}arc),
+[compoundPath](~${optionPath}.${hostName}${symbolVisit}compoundPath),
 [group](~${optionPath}.${hostName}${symbolVisit}group),
+
+
+
+{{ target: partial-custom-series-tooltipDisabled }}
+
+##${prefix} tooltipDisabled(boolean) = false
+
+Whether disable triggering tooltip.
+
+{{ use: partial-version(
+    version = '6.0.0'
+) }}
 
 
 

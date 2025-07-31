@@ -113,7 +113,7 @@ chart.on('click', {element: 'aaa'}, function (params) {
     none = true
 ) }}
 
-## renderItem(Function)
+## renderItem(Function|string)
 
 {{ use: partial-custom-renderItem-common() }}
 
@@ -493,7 +493,7 @@ Value of data item.
 
 {{ target: partial-custom-renderItem-common }}
 
-`custom series` requires developers to write a render logic by themselves. This render logic is called [renderItem](~series-custom.renderItem).
+`custom series` requires developers to write a rendering logic by themselves in the form of `Function`, or use a registered rendering logic in the form of `string` (since `v6.0.0`; See [echarts.registerCustomSeries](api.html#echarts.registerCustomSeries) for more information). This render logic is called [renderItem](~series-custom.renderItem).
 
 For example:
 

@@ -124,7 +124,7 @@ The precision of the percentage value. The default value is `2`.
 {{ use: partial-cursor() }}
 
 {{ use: partial-rect-layout-width-height(
-    componentName = "pie chart",
+    hostName = "pie series",
     defaultLeft = 0,
     defaultTop = 0,
     defaultRight = 0,
@@ -166,7 +166,7 @@ Style of circle placeholder.
     prefix = "##",
     position = true,
     formatter = true,
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ### alignTo(string) = 'none'
@@ -373,7 +373,7 @@ The label configuration of a single sector.
     prefix = "###",
     position = true,
     formatter = false,
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ### labelLine(Object)
@@ -503,15 +503,12 @@ The position of label.
     In the center of pie chart. See [pie-doughnut example](${galleryEditorPath}pie-doughnut)
 {{ /if }}
 
-{{ if: ${minMargin} }}
-#${prefix} minMargin(number)
 
-{{ use: partial-version(
-    version = "5.0.0"
+{{ use: partial-label-margin(
+    prefix = ${prefix},
+    labelMargin = ${labelMargin}
 ) }}
 
-Minimal margin between labels. Used when label has [layout](~series-pie.labelLayout).
-{{ /if }}
 
 {{ if: ${formatter} }}
 #${prefix} formatter(string|Function)

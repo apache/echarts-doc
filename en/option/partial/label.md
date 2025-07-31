@@ -51,15 +51,10 @@ See: [label rotation](${galleryEditorPath}bar-label-rotation).
 
 Whether to move text slightly. For example: `[30, 40]` means move `30` horizontally and move `40` vertically.
 
-{{ if: ${minMargin} }}
-#${prefix} minMargin(number)
-
-{{ use: partial-version(
-    version = "5.0.0"
+{{ use: partial-label-margin(
+    prefix = ${prefix},
+    labelMargin = ${labelMargin}
 ) }}
-
-Minimal margin between labels. Used when label has [layout](~series.labelLayout).
-{{ /if }}
 
 {{ if: ${formatter} }}
 #${prefix} formatter(string|Function)
@@ -90,6 +85,59 @@ Minimal margin between labels. Used when label has [layout](~series.labelLayout)
     enableAutoColor = true
 ) }}
 {{ /if }}
+
+
+
+
+{{ target: partial-label-margin }}
+{{ if: ${labelMargin} }}
+#${prefix} textMargin(number|Array)
+
+{{ use: partial-version(
+    version = "6.0.0"
+) }}
+
+The space around the label to escape from overlapping. The unit is px.
+
+Notice: `textMargin` is applied on the label's local bounding rect, that is, if there is a `rotate` specified on the label, apply `textMargin` on the non-rotated label first, and then apply the rotation.
+
+> The name is `textMargin` because historically the name `margin` has been used for a different purpose.
+
+
+Examples:
+```ts
+// Set margin to be 5, means [5, 5, 5, 5]
+textMargin: 5
+// Set the top and bottom margin to be 5, and left and right margin to be 10
+textMargin: [5, 10]
+// Set each of the four margin separately
+textMargin: [
+    5,  // up
+    10, // right
+    5,  // down
+    10, // left
+]
+```
+
+#${prefix} minMargin(number)
+
+{{ use: partial-version(
+    version = "5.0.0"
+) }}
+
+Minimal margin between labels. Used when label has [layout](~series.labelLayout).
+
+`minMargin` conveys a similar meaning to `textMargin`, but with a different nuance. If unsure, just use `textMargin`; it basically covers `minMargin` and can provide a more compact layout for rotated labels in some scenarios.
+
+> TL;DR: The difference:
+> + The minimal gap (if applicable) between two labels is `label1.minMargin/2 + label2.minMargin/2`, or `label1.textMargin[number] + label2.textMargin[number]`.
+> + If `rotate` is specified on a label,
+>     + `minMargin`: first rotate the label, forming a new rect by the min/max of x/y from the four corner points (that is a expanded bounding rect), and finally `minMargin` is applied on the new rect.
+>     + `textMargin`: first applied on the label's local bounding rect, and then rotate.
+> + Data type: `minMargin` should be only `number`, `textMargin` can be `number | number[]` (follow CSS margin).
+{{ /if }}
+
+
 
 
 

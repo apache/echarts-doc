@@ -132,7 +132,7 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 
 {{ use: lines-label(
     prefix = "##",
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ## labelLayout(Object|Function)
@@ -256,7 +256,7 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 
 {{ use: lines-label(
     prefix = "###",
-    minMargin = true
+    labelMargin = true
 ) }}
 
 ### emphasis(Object)
@@ -341,15 +341,12 @@ ECharts 2.x 里会用地图上的 `markLine` 去绘制迁徙效果，在 ECharts
 + `'middle'` 线的中点。
 + `'end'`   线的结束点。
 
-{{ if: ${minMargin} }}
-#${prefix} minMargin(number)
 
-{{ use: partial-version(
-    version = "5.0.0"
+{{ use: partial-label-margin(
+    prefix = ${prefix},
+    labelMargin = ${labelMargin}
 ) }}
 
-用于控制标签之间的最小距离，当启用 [labelLayout](~series-lines.labelLayout) 时可能会用到。
-{{ /if }}
 
 #${prefix} formatter(string|Function)
 

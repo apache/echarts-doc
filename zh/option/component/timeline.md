@@ -540,7 +540,7 @@ const option = {
 表示『播放』按钮的位置。可选值：`'left'`、`'right'`。
 
 {{ use: partial-rect-layout(
-    componentName = 'timeline'
+    componentName = '时间轴（timeline）'
 ) }}
 
 ## padding(number|Array) = 5

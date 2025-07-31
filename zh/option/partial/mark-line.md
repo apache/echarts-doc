@@ -191,6 +191,12 @@ data: [
     index = 1
 ) }}
 
+{{ use: partial-z(
+    prefix = "#" + ${prefix},
+    defaultZ = "5",
+    version = "6.0.0"
+) }}
+
 {{ use: partial-animation(
     prefix = "#" + ${prefix}
 ) }}
@@ -286,6 +292,14 @@ data: [
 <ExampleUIControlPercent default="0" />
 
 相对容器的屏幕 y 坐标，单位像素。
+
+#${prefix} z2(number)
+
+{{ use: partial-version(
+    version = "6.0.0"
+) }}
+
+指定图形元素间的覆盖关系。数值越大，越在层叠的上方。
 
 #${prefix} xAxis(number|string)
 
