@@ -31,7 +31,21 @@ Parameters of the event include:
 
 To prevent data points from overlapping in scatter plots, a small amount of random noise is added to the positions of the data points. This helps to visualize the distribution of the data more clearly. It is only applicable to scatter plots and is effective only in single-axis or category axes in Cartesian coordinate systems. The unit is in pixels.
 
-~[600x400](${galleryViewPath}scatter-jitter&edit=1&reset=1)
+~[800x500](${galleryViewPath}scatter-jitter&edit=1&reset=1)
+
+#${prefix} jitterOverlap(boolean) = true
+
+{{ use: partial-version(version = "6.0.0") }}
+
+Whether allow overlaping with [jitter](~${componentType}.jitter). If `false`, it will try to avoid overlap. But in extreme cases, some scatters may also overlap if there is no way to avoid. The following is the effect of seeting it to be `false`:
+
+~[800x500](${galleryViewPath}doc-example/scatter-jitter-avoidOverlap&edit=1&reset=1)
+
+#${prefix} jitterMargin(number) = 2
+
+{{ use: partial-version(version = "6.0.0") }}
+
+When setting [jitter](~${componentType}.jitter) and [jitterOverlap](~${componentType}.jitterOverlap) is `false`, the minimum distance between two scatters.
 
 #${prefix} axisLine(Object)
 

@@ -29,7 +29,21 @@
 
 用于在散点图中防止数据点重叠，通过在数据点的位置上添加少量随机噪音来实现，可以帮助更清晰地可视化数据的分布。仅适用于散点图，且仅在单轴或笛卡尔坐标系下的类目轴中有效。单位是像素。
 
-~[600x400](${galleryViewPath}scatter-jitter&edit=1&reset=1)
+~[800x500](${galleryViewPath}scatter-jitter&edit=1&reset=1)
+
+#${prefix} jitterOverlap(boolean) = true
+
+{{ use: partial-version(version = "6.0.0") }}
+
+是否允许 [jitter](~${componentType}.jitter) 重叠。如果设为 `false`，将尽可能避免重叠，极端情况下如果重叠是无法避免的，则也可能出现重叠。以下是设为 `false` 的效果：
+
+~[800x500](${galleryViewPath}doc-example/scatter-jitter-avoidOverlap&edit=1&reset=1)
+
+#${prefix} jitterMargin(number) = 2
+
+{{ use: partial-version(version = "6.0.0") }}
+
+在设置了 [jitter](~${componentType}.jitter) 且 [jitterOverlap](~${componentType}.jitterOverlap) 为 `false` 的情况下，两个数据点之间的最小距离。
 
 #${prefix} axisLine(Object)
 
