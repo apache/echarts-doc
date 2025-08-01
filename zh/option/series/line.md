@@ -118,6 +118,8 @@ const option = {
 + `'seriesAsc'`（默认，系列顺序堆叠）
 + `'seriesDesc'`（反向堆叠）
 
+**注意：** `stackOrder` 应该为所有具有相同 `stack` 名称的系列定义。如果只为部分系列定义 `stackOrder`，当某些系列被隐藏（如通过图例切换）时，可能会导致堆叠顺序发生意外变化。
+
 当前不支持极坐标系。
 
 {{ use: partial-cursor() }}
