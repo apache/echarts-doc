@@ -1,6 +1,12 @@
 
 {{ target: geo-common }}
 
+{{ if: ${inMap} }}
+{{ var: componentNameInLink = 'series-map' }}
+{{ else }}
+{{ var: componentNameInLink = 'geo' }}
+{{ /if }}
+
 #${prefix} map(string) = ''
 
 Map name registered in [registerMap](api.html#echarts.registerMap).
@@ -173,9 +179,13 @@ center: project([115.97, 29.71])
 
 #${prefix} aspectScale(number) = 0.75
 
-Used to scale aspect of geo. Will be ignored if `projection` is set.
+Used to scale aspect of geo. It will be ignored if [proejction](~${componentNameInLink}.projection) is set.
 
-The final aspect is calculated by: `geoBoundingRect.width / geoBoundingRect.height * aspectScale`.
+The final calculated `pixelWidth` and `pixelHeight` of the map will satisfy `pixelWidth / pixelHeight = lngSpan / latSpan * aspectScale` (assume [proejction](~${componentNameInLink}.projection) is not specified, and [preserveAspect](~${componentNameInLink}.preserveAspect) is truthy).
+
+If no [proejction](~${componentNameInLink}.projection) is applied, the latitudes and longitudes in GeoJSON are linearly mapped to pixel coordinates diarectly. `aspectScale` offers a simple way to visually compensates for the distortion caused by the fact that the longitudinal spacing shrinks as latitude increases. For example, an `aspectScale` can be roughly calculated as `aspectScale = Math.cos(center_latitude * Maht.PI / 180)`, which is similar to a sinusoidal projection.
+
+See [example](${galleryEditorPath}geo-graph&edit=1&reset=1).
 
 #${prefix} boundingCoords(Array) = null
 

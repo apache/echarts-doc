@@ -220,6 +220,11 @@ some text yyy
 {{ else }}
 some text zzz
 {{ /if }}
+Logical operators can be used in the conditional expression:
+{{ if: ${componentNameInLink} == null && ${seriesType} }}
+This componentNameInLink is null or undefined
+{{ var: componentNameInLink = 'series-' + ${seriesType} }}
+{{ /if }}
 
 
 --- FOR LOOP ---
