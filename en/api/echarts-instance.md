@@ -58,7 +58,7 @@ chart.setOption(option, {
 
     + `replaceMerge` Optional. Users can specify "component main types" here, which are the properties under the root of the option tree in [configuration item manual](option.html) (e.g., `xAxis`, `series`). The specified types of component will be merged in the mode "replaceMerge". If users intending to remove some part of components, `replaceMerge` can be used. See more details in **Component Merging Modes**.
 
-    + `lazyUpdate` Opional. Whether not to update chart immediately. `false` by default, stating update chart synchronously. If `true`, the chart will be updated in the next animation frame.
+    + `lazyUpdate` Optional. Whether not to update chart immediately. `false` by default, stating update chart synchronously. If `true`, the chart will be updated in the next animation frame.
 
     + `silent` Optional. Whether not to prevent triggering events when calling `setOption`. `false` by default, stating trigger events.
 
