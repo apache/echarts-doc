@@ -51,6 +51,10 @@ Marking "since version" indicates when a new feature was introduced.
 For example,
 ```
 {{ use: partial-version(version = "6.0.0") }}
+
+{{ use: partial-version(version = ${version|minVersion('6.0.0')}) }}
+    That is, if the ${version} is empty or smaller than '6.0.0', use '6.0.0'.
+    Follow the version comparison rules in Semver 2.0 .
 ```
 
 ### Global Variables
@@ -197,6 +201,15 @@ The template syntax follows [etpl](https://github.com/ecomfe/etpl/blob/master/do
 
 Summary of the commonly used syntax:
 ```template
+--- TEMPLATE EXPRESSION ---
+The template syntax and expressions are encolsed by delimiters `{{` and `}}`.
+For example,
+{{ if: condition_expression }} xxx {{ /if }}
+The expressoin within `{{` and `}}` can be considered a (restricted) JS expression.
+For example,
+{{ if: ${someVar1} + 'abc' === '123abc' }} ... {{ /if }}
+{{ if: !${someVar2} }} ... {{ /if }}
+
 --- TEMPLATE VARIABLE ---
 Use a variable:
     some text ${someVariable} some text
