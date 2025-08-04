@@ -173,14 +173,13 @@ Y position according to container, in pixel.
     version = "6.0.0"
 ) }}
 
+Specify the relationship of overlap between graphic elements. A bigger value means higher.
 
-###${prefix} relativeTo('container' | 'coordinate')
+###${prefix} relativeTo(string)
 
 {{ use: partial-version(version: '6.0.0') }}
 
-Specify whether the positions of [x](~series-${seriesType}.markPoint.data.x) and [y](~series-${seriesType}.markPoint.data.y) are relative to the entire chart container (`'container'`, default) or the grid coordinate system (`'coordinate'`).
-
-Specify the relationship of overlap between graphic elements. A bigger value means higher.
+Options: `'container'` or `'coordinate'`. Specify whether the positions of [x](~series-${seriesType}.markPoint.data.x) and [y](~series-${seriesType}.markPoint.data.y) are relative to the entire chart container (`'container'`, default) or the grid coordinate system (`'coordinate'`).
 
 ###${prefix} value(number)
 
