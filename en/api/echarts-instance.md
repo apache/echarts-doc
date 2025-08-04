@@ -238,6 +238,35 @@ myChart.setOption({
 })
 ```
 
+## setTheme(Function)
+
+```ts
+(
+theme: string | Object
+opts?: {
+    silent? boolean
+}
+) => void
+```
+
+Sets the theme for the chart instance.
+
++ `theme`: When `string`: Represents the `themeName` registered via [echarts.registerTheme](~echarts.registerTheme). When `Object`: An anonymous theme object that will be directly applied.
++ `opts.silent` Specify whether or not to prevent triggering events.
+
+Here is a demo of dynamically setting a theme after initialization:
+
+```js
+const chart = echarts.init(...);
+chart.setOption(...);
+// Method 1: Register and apply a named theme
+echarts.registerTheme('myTheme', {backgroundColor: 'red'});
+chart.setTheme('myTheme');
+// Method 2: Apply an anonymous theme directly
+chart.setTheme({backgroundColor: 'red'});
+```
+
+If there are no other charts using this theme, the above two methods are the same. If not, you should use the former one, so that `setTheme('myTheme')` can be used in other charts.
 
 ## resize(Function)
 ```ts

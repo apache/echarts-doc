@@ -236,6 +236,36 @@ myChart.setOption({
 })
 ```
 
+## setTheme(Function)
+
+```ts
+(
+theme: string | Object
+opts?: {
+    silent? boolean
+}
+) => void
+```
+
+设置图表实例的主题。
+
++ `theme` 为 `string` 时，表示的是使用在图表实例初始化前调用 [echarts.registerTheme](~echarts.registerTheme) 注册主题时使用的 `themeName`；当其为 `Object` 时，表示一个匿名的主题对象，并且直接使用该主题。
++ `opts.silent` 表示是否禁止抛出事件。默认为 `false`。
+
+以下是一个动态设置主题的例子：
+
+```js
+const chart = echarts.init(...);
+chart.setOption(...);
+// 图表已经初始化了，也可以调用 registerTheme 和 setTheme
+echarts.registerTheme('myTheme', {backgroundColor: 'red'});
+chart.setTheme('myTheme');
+// 或者直接
+chart.setTheme({backgroundColor: 'red'});
+```
+
+如果这个主题不在其他图表中使用，那么这两种方式是等价的，否则应使用前一种，这样在其他图表中也可以使用 `setTheme('myTheme')` 使用该主题。
+
 ## resize(Function)
 ```ts
 (opts?: {
