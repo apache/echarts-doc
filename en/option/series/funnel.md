@@ -20,6 +20,17 @@
     defaultColorBy = "'data'"
 ) }}
 
+{{ use: partial-coord-sys(
+    version = '6.0.0',
+    seriesType = "funnel",
+    coordSysDefault = "'none'",
+    coordSysUsageDefault = "'box'",
+    none = true,
+    calendar = true,
+    matrix = true,
+    version = "6.0.0"
+) }}
+
 ## min(number) = 0
 
 <ExampleUIControlNumber default="0" step="1" />

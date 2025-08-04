@@ -156,3 +156,11 @@ grid 区域是否包含坐标轴的[刻度标签](~yAxis.axisLabel)。
 
 {{ use: partial-tooltip-in-coords() }}
 
+{{ use: partial-coord-sys(
+    version = '6.0.0',
+    nonSeriesComponentMainType = "grid",
+    coordSysDefault = "'none'",
+    matrix = true,
+    calendar = true,
+    none = true
+) }}

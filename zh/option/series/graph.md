@@ -32,7 +32,7 @@ option.series[0].data.forEach(function (item) {
 
 {{ use: partial-coord-sys(
     seriesType = "graph",
-    coordSysDefault = "null",
+    coordSysDefault = "'none'",
     none = true,
     cartesian2d = true,
     polar = true,

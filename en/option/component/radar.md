@@ -20,6 +20,15 @@ Here is a custom example of radar component.
     defaultRadius = "75%"
 ) }}
 
+{{ use: partial-coord-sys(
+    version = '6.0.0',
+    nonSeriesComponentMainType = "radar",
+    coordSysDefault = "'none'",
+    matrix = true,
+    calendar = true,
+    none = true
+) }}
+
 ## startAngle(number) = 90
 
 The start angle of coordinate, which is the angle of the first indicator axis.

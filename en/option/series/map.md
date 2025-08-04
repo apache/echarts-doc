@@ -25,6 +25,12 @@ Series of same [map type](~series-map.map) will show in one map. At this point, 
     labelMargin = true
 ) }}
 
+{{ use: partial-coord-sys(
+    seriesType = "map",
+    coordSysDefault = "'geo'",
+    geo = true
+) }}
+
 ## center(Array)
 
 Center of current view-port. It can be an array containing two `number`s in pixels or `string`s in percentage relative to the container width/height.

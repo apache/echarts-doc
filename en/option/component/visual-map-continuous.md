@@ -170,7 +170,8 @@ You can understand the order of items in `text` array just by a simple trial. Se
 The distance between the ends of the main bar and the label, with unit px. See [visualMap-continuous.text](~visualMap-continuous.text)
 
 {{ use: partial-visual-map-common(
-    visualMapName = 'visualMap-continuous'
+    visualMapName = 'visualMap-continuous',
+    visualMapSubType = 'continuous'
 ) }}
 
 ## formatter(string|Function)

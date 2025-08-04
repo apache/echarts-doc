@@ -120,3 +120,11 @@ See also [outerBounds example](${galleryEditorPath}doc-example/grid-outerBounds&
 
 {{ use: partial-tooltip-in-coords() }}
 
+{{ use: partial-coord-sys(
+    version = '6.0.0',
+    nonSeriesComponentMainType = "grid",
+    coordSysDefault = "'none'",
+    matrix = true,
+    calendar = true,
+    none = true
+) }}

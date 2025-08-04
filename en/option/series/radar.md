@@ -25,7 +25,7 @@ Here is the example of AQI data which is presented in radar chart.
 
 ## radarIndex(number)
 
-Index of [radar](~radar) component that radar chart uses.
+Index of [radar](~radar) (coordinate system) component that radar chart uses.
 
 {{ use: partial-symbol(
     seriesType = "radar",

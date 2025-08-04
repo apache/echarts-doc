@@ -22,6 +22,17 @@
 
 {{ use: component-circular-layout() }}
 
+{{ use: partial-coord-sys(
+    version = '6.0.0',
+    seriesType = "gauge",
+    coordSysDefault = "'none'",
+    coordSysUsageDefault = "'box'",
+    none = true,
+    calendar = true,
+    matrix = true,
+    version = "6.0.0"
+) }}
+
 <!-- overwrite radius -->
 
 ## radius(number|string) = '75%'

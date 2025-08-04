@@ -133,6 +133,15 @@ const option = {
     componentName = "标题（title）"
 ) }}
 
+{{ use: partial-coord-sys(
+    version = '6.0.0',
+    nonSeriesComponentMainType = "title",
+    coordSysDefault = "'none'",
+    matrix = true,
+    calendar = true,
+    none = true
+) }}
+
 {{ use: partial-component-common-style(
     componentName = "标题",
     prefix = '#',

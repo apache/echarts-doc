@@ -18,5 +18,14 @@ Polar coordinate can be used in scatter and line chart. Every polar coordinate h
     disableArray = false
 ) }}
 
+{{ use: partial-coord-sys(
+    version = '6.0.0',
+    nonSeriesComponentMainType = "polar",
+    coordSysDefault = "'none'",
+    matrix = true,
+    calendar = true,
+    none = true
+) }}
+
 {{ use: partial-tooltip-in-coords() }}
 

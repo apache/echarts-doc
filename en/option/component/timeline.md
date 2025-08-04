@@ -181,6 +181,15 @@ Position of the play button, whose valid values are `'left'` and `'right'`.
     componentName = 'timeline'
 ) }}
 
+{{ use: partial-coord-sys(
+    version = '6.0.0',
+    nonSeriesComponentMainType = "timeline",
+    coordSysDefault = "'none'",
+    matrix = true,
+    calendar = true,
+    none = true
+) }}
+
 ## padding(number|Array) = 5
 
 <ExampleUIControlVector default="5,5,5,5" dims="T,R,B,L" />

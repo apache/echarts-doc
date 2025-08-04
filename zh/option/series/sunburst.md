@@ -303,6 +303,15 @@ const option = {
     defaultRadius = "[0, '75%']"
 ) }}
 
+{{ use: partial-coord-sys(
+    version = '6.0.0',
+    seriesType = "sunburst",
+    coordSysDefault = "'none'",
+    calendar = true,
+    matrix = true,
+    none = true
+) }}
+
 ## data(Array)
 
 [series-sunburst.data](~series-sunburst.data) 的数据格式是树状的，例如：

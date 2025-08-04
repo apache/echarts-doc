@@ -56,6 +56,15 @@ const option = {
     defaultRadius = "75%"
 ) }}
 
+{{ use: partial-coord-sys(
+    version = '6.0.0',
+    nonSeriesComponentMainType = "radar",
+    coordSysDefault = "'none'",
+    matrix = true,
+    calendar = true,
+    none = true
+) }}
+
 ## startAngle(number) = 90
 
 坐标系起始角度，也就是第一个指示器轴的角度。

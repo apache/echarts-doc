@@ -33,7 +33,8 @@ Since ECharts v4.6.0, we provide `'labelLine'` and `'edge'` two extra layouts. C
 
 {{ use: partial-coord-sys(
     seriesType = "pie",
-    coordSysDefault = "null",
+    coordSysDefault = "'none'",
+    coordSysUsageDefault = "'box'",
     none = true,
     geo = true,
     calendar = true,

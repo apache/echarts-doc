@@ -340,6 +340,16 @@ visualMap 组件中，`控制器` 的 `inRange` `outOfRange` 设置。如果没�
     defaultBottom = "0"
 ) }}
 
+{{ use: partial-coord-sys(
+    version = '6.0.0',
+    nonSeriesComponentMainType = "visualMap",
+    nonSeriesComponentSubType = ${visualMapSubType},
+    coordSysDefault = "'none'",
+    matrix = true,
+    calendar = true,
+    none = true
+) }}
+
 ## orient(string) = 'vertical'
 
 如何放置 visualMap 组件，水平（`'horizontal'`）或者竖直（`'vertical'`）。

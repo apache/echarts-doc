@@ -543,6 +543,15 @@ const option = {
     componentName = '时间轴（timeline）'
 ) }}
 
+{{ use: partial-coord-sys(
+    version = '6.0.0',
+    nonSeriesComponentMainType = "timeline",
+    coordSysDefault = "'none'",
+    matrix = true,
+    calendar = true,
+    none = true
+) }}
+
 ## padding(number|Array) = 5
 
 <ExampleUIControlVector default="5,5,5,5" dims="T,R,B,L" />
