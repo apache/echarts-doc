@@ -192,4 +192,4 @@ slides/webgl
 /zh-src
 /en-src
 
-/config/env.*-local.js
+/config/env.*-override.js

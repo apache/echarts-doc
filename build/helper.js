@@ -11,14 +11,14 @@ exports.readConfigEnvFile = function (envType) {
     assert(ENV_TYPE.indexOf(envType) >= 0, 'envType must be one of ' + ENV_TYPE.join(', '));
 
     const configEnvRelativePath = '../config/env.' + envType + '.js';
-    const configEnvLocalRelativePath = '../config/env.' + envType + '-local.js';
+    const configEnvOverrideRelativePath = '../config/env.' + envType + '-override.js';
 
     const config = require(configEnvRelativePath);
-    if (fs.existsSync(path.resolve(__dirname, configEnvLocalRelativePath))) {
-        const configLocal = require(configEnvLocalRelativePath);
+    if (fs.existsSync(path.resolve(__dirname, configEnvOverrideRelativePath))) {
+        const configLocal = require(configEnvOverrideRelativePath);
         assert(
             typeof configLocal === 'object' && !Array.isArray(configLocal),
-            configEnvLocalRelativePath + ' must be an object.'
+            configEnvOverrideRelativePath + ' must be an object.'
         );
         Object.assign(config, configLocal);
     }

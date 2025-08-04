@@ -30,12 +30,12 @@ It will:
 
 ### Local Config
 
-To customize the links of `echarts-examples` and other configurations, you can create a local config file `echarts-doc/config/env.dev-local.js`, which is not tracked by git, and its top-level properties will be used to override the corresponding properties of `echarts-doc/config/env.dev.js` when `npm run dev`.
+To customize the links of `echarts-examples` and other configurations, you can create a local config file `echarts-doc/config/env.dev-override.js`, which is not tracked by git, and its top-level properties will be used to override the corresponding properties of `echarts-doc/config/env.dev.js` when `npm run dev`.
 
-For example, create a `echarts-doc/config/env.dev-local.js`:
+For example, create a `echarts-doc/config/env.dev-override.js`:
 ```js
 module.exports = {
-    // These props will override the same props in `echarts-doc/config/env.dev-local.js`
+    // These props will override the same props in `echarts-doc/config/env.dev.js`
     galleryViewPath: 'http://127.0.0.1:3002/en/view.html?local=1&c=',
     galleryEditorPath: 'http://127.0.0.1:3002/en/editor.html?local=1&c=',
     EMBEDDED_ECHARTS_SCRIPT_URL: 'http://localhost:8001/echarts/echarts/dist/echarts.js',
