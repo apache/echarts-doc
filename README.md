@@ -223,7 +223,8 @@ Declaration or assignment of a target-local variable:
     {{ var: myVar = 'some' }}
     {{ var: myVar = 123 }}
     {{ var: myVar = ${someOtherStr} + 'some_str' }}
-
+NOTICE:
+    Within a `{{` `}}` pair, DO NOT write {{ if: '${some}_abc' }}{{ /if }}. It should be {{ if: ${some} + '_abc' }}{{ /if }}, as the sentence within `{{` `}}` pair is treated like a normal JS expression.
 
 --- IF ELSE ---
 {{ if: ${number1} > 0 }}
