@@ -381,6 +381,15 @@ export default {
         margin: 0;
         padding: 5px 0;
 
+        thead th {
+            position: sticky;
+            top: 0;
+            background: #fffbea;
+        }
+        th, td {
+            font-size: 14px;
+        }
+
         @include description-html-formatter;
     }
 

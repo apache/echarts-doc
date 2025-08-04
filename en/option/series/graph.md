@@ -23,12 +23,14 @@ Graph is a diagram to represent [nodes](~series-graph.nodes) and the [links](~se
 
 {{ use: partial-coord-sys(
     seriesType = "graph",
-    coordSysDefault = "null",
+    coordSysDefault = "'none'",
     none = true,
     cartesian2d = true,
     polar = true,
+    singleAxis = true,
     geo = true,
-    calendar = true
+    calendar = true,
+    matrix = true,
 ) }}
 
 ## center(Array)

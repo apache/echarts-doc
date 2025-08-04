@@ -1,6 +1,12 @@
 
 {{ target: geo-common }}
 
+{{ if: ${inMap} }}
+{{ var: componentNameInLink = 'series-map' }}
+{{ else }}
+{{ var: componentNameInLink = 'geo' }}
+{{ /if }}
+
 #${prefix} map(string) = ''
 
 使用 [registerMap](api.html#echarts.registerMap) 注册的地图名称。
@@ -171,9 +177,13 @@ center: project([115.97, 29.71])
 
 #${prefix} aspectScale(number) = 0.75
 
-这个参数用于 scale 地图的长宽比，如果设置了`projection`则无效。
+这个参数用于 scale 地图的长宽比。如果设置了 [proejction](~${componentNameInLink}.projection) 则无效。
 
-最终的 `aspect` 的计算方式是：`geoBoundingRect.width / geoBoundingRect.height * aspectScale`。
+地图最终计算得到的 `pixelWidth` 和 `pixelHeight` 将满足以下关系：`pixelWidth / pixelHeight = lngSpan / latSpan * aspectScale`（假设未指定 [proejction](~${componentNameInLink}.projection)，且 [preserveAspect](~${componentNameInLink}.preserveAspect) 设为保持长宽比）。
+
+当不使用真正的投影公式（[proejction](~${componentNameInLink}.projection)）时，GeoJSON 里的经纬度会被线性映射到像素坐标。`aspectScale` 提供了一种简单方式，用于视觉上补偿这种映射所造成的形变（由于地球是球形，经度对应的物理尺寸在高纬度地区会收缩）。例如，`aspectScale` 可以通过以下公式粗略计算：`aspectScale = Math.cos(center_latitude * Math.PI / 180)`，这与正弦投影（sinusoidal projection）相似。
+
+参见 [示例](${galleryEditorPath}geo-graph&edit=1&reset=1)。
 
 #${prefix} boundingCoords(Array) = null
 

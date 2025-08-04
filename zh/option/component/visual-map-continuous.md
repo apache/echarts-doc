@@ -172,7 +172,8 @@ chart.setOption({visualMap: {range: null}}); // 再把 range 设为 null。
 两端文字主体之间的距离，单位为px。参见 [visualMap-continuous.text](~visualMap-continuous.text)
 
 {{ use: partial-visual-map-common(
-    visualMapName = 'visualMap-continuous'
+    visualMapName = 'visualMap-continuous',
+    visualMapSubType = 'continuous'
 ) }}
 
 ## formatter(string|Function)

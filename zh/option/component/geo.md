@@ -35,6 +35,15 @@ geo 区域的颜色也可以被 map series 所控制，参见 [series-map.geoInd
     prefix = '#'
 ) }}
 
+{{ use: partial-coord-sys(
+    version = '6.0.0',
+    nonSeriesComponentMainType = "geo",
+    coordSysDefault = "'none'",
+    calendar = true,
+    matrix = true,
+    none = true
+) }}
+
 ## regions(Array)
 
 在地图中对特定的区域配置样式。

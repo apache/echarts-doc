@@ -36,6 +36,15 @@ In addition, the edge between two small rectangles in the diagram encodes the `l
     defaultHeight = 'null'
 ) }}
 
+{{ use: partial-coord-sys(
+    version = '6.0.0',
+    seriesType = "sankey",
+    coordSysDefault = "'none'",
+    calendar = true,
+    matrix = true,
+    none = true
+) }}
+
 ## nodeWidth(number) = 20
 
 <ExampleUIControlNumber default="20" min="0" step="0.5" />

@@ -44,9 +44,11 @@ What's more, the time attribute of the orinigal dataset would map to a single ti
 ** Notes: **
 The positional information of the whole theme river view reuses the positional information of a single time axis, which are left, top, right and bottom.
 
-## coordinateSystem(string) = "single"
-
-coordinate. The theme river adopts single time axis.
+{{ use: partial-coord-sys(
+    seriesType = "themeRiver",
+    coordSysDefault = "'singleAxis'",
+    singleAxis = true,
+) }}
 
 ## boundaryGap(Array) = ["10%", "10%"]
 

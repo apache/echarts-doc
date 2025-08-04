@@ -3,9 +3,13 @@
 
 # grid(Object)
 
-直角坐标系内绘图网格，单个 grid 内最多可以放置上下两个 X 轴，左右两个 Y 轴。可以在网格上绘制[折线图](~series-line)，[柱状图](~series-bar)，[散点图（气泡图）](~series-scatter)。
+`grid 组件` 是一个矩形容器，用于绘制二维直角坐标系（`cartesian2d`）。一个 `cartesian2d` 坐标系由一个 [xAxis](~xAixs) 和一个 [yAxis](~yAxis) 构成。一个 `grid 组件` 中可以存在多个 `cartesian2d` 坐标系。即，一个 `grid 组件` 可以配置多个 [xAxis](~xAixs) 和多个 [yAxis](~yAxis)。
 
-在 ECharts 2.x 里单个 echarts 实例中最多只能存在一个 grid 组件，在 ECharts 3 中可以存在任意个 grid 组件。
+[xAxis](~xAixs) 和 [yAxis](~yAxis) 可以被多个 `cartesian2d` 坐标系共享。例如，一个 [xAxis](~xAixs) 和两个 [yAxis](~yAxis) 构成两个 `cartesian2d` 坐标系。
+
+可以在 `grid 组件` 中绘制例如 [折线图](~series-line)，[柱状图](~series-bar)，[散点图（气泡图）](~series-scatter) 等等。
+
+> 在 ECharts 2.x 里单个 echarts 实例中最多只能存在一个 grid 组件，自从 ECharts 3 开始可以存在任意多个 `grid 组件`。
 
 **例如下面这个 Anscombe Quartet 的示例：**
 
@@ -120,6 +124,7 @@ grid 区域是否包含坐标轴的[刻度标签](~yAxis.axisLabel)。
 
 {{ use: partial-rect-layout-width-height(
     hostName = "外边界（`outerBounds`）",
+    version = "6.0.0",
     noZ = true,
     prefix = '##',
     defaultLeft = 0,
@@ -151,3 +156,11 @@ grid 区域是否包含坐标轴的[刻度标签](~yAxis.axisLabel)。
 
 {{ use: partial-tooltip-in-coords() }}
 
+{{ use: partial-coord-sys(
+    version = '6.0.0',
+    nonSeriesComponentMainType = "grid",
+    coordSysDefault = "'none'",
+    matrix = true,
+    calendar = true,
+    none = true
+) }}

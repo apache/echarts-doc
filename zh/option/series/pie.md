@@ -54,10 +54,12 @@ const option = {
 
 {{ use: partial-coord-sys(
     seriesType = "pie",
-    coordSysDefault = "null",
+    coordSysDefault = "'none'",
+    coordSysUsageDefault = "'box'",
     none = true,
     geo = true,
     calendar = true,
+    matrix = true,
     version = "5.4.0"
 ) }}
 

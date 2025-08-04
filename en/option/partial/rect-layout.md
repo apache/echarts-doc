@@ -17,6 +17,10 @@
 
 #${prefix|default("#")} left(string|number) = ${defaultLeft|default("'auto'")}
 
+{{ if: ${version} }}
+{{ use: partial-version(version = ${version}) }}
+{{ /if }}
+
 Distance between ${hostNameStr} and the left side of the container.
 
 `left` can be a pixel value like `20`; it can also be a percentage value relative to container width like `'20%'`; and it can also be `'left'`, `'center'`, or `'right'`.
@@ -24,6 +28,10 @@ Distance between ${hostNameStr} and the left side of the container.
 If the `left` value is set to be `'left'`, `'center'`, or `'right'`, then the component will be aligned automatically based on position.
 
 #${prefix|default("#")} top(string|number) = ${defaultTop|default("'auto'")}
+
+{{ if: ${version} }}
+{{ use: partial-version(version = ${version}) }}
+{{ /if }}
 
 Distance between ${hostNameStr} and the top side of the container.
 
@@ -33,6 +41,10 @@ If the `top` value is set to be `'top'`, `'middle'`, or `'bottom'`, then the com
 
 #${prefix|default("#")} right(string|number) = ${defaultRight|default("'auto'")}
 
+{{ if: ${version} }}
+{{ use: partial-version(version = ${version}) }}
+{{ /if }}
+
 Distance between ${hostNameStr} and the right side of the container.
 
 `right` can be a pixel value like `20`; it can also be a percentage value relative to container width like `'20%'`.
@@ -40,6 +52,10 @@ Distance between ${hostNameStr} and the right side of the container.
 {{ if: !${defaultRight} }}Adaptive by default.{{ /if }}
 
 #${prefix|default("#")} bottom(string|number) = ${defaultBottom|default("'auto'")}
+
+{{ if: ${version} }}
+{{ use: partial-version(version = ${version}) }}
+{{ /if }}
 
 Distance between ${hostNameStr} and the bottom side of the container.
 

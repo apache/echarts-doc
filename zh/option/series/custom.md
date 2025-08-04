@@ -97,8 +97,10 @@ chart.on('click', {element: 'aaa'}, function (params) {
     coordSysDefault = "'cartesian2d'",
     cartesian2d = true,
     polar = true,
+    singleAxis = true,
     geo = true,
     calendar = true,
+    matrix = true,
     none = true
 ) }}
 

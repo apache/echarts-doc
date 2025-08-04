@@ -20,6 +20,16 @@
     defaultBottom = 60
 ) }}
 
+{{ use: partial-coord-sys(
+    version = '6.0.0',
+    nonSeriesComponentMainType = "parallel",
+    coordSysDefault = "'none'",
+    matrix = true,
+    calendar = true,
+    none = true
+) }}
+
+
 ## layout(string) = 'horizontal'
 
 <ExampleUIControlEnum options="horizontal,vertical" default="horizontal" />

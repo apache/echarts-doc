@@ -56,6 +56,7 @@ const option = {
     coordSysDefault = "'cartesian2d'",
     cartesian2d = true,
     polar = true,
+    singleAxis = true,
     geo = false
 ) }}
 

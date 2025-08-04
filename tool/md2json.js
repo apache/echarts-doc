@@ -3,6 +3,7 @@ const marked = require('marked');
 const etpl = require('../dep/etpl');
 const globby = require('globby');
 const htmlparser2 = require('htmlparser2');
+const {compareVersions} = require('./helper/compareVersions');
 
 async function convert(opts) {
     // globby does not support '\' yet
@@ -19,6 +20,10 @@ async function convert(opts) {
     const etplEngine = new etpl.Engine(engineConfig);
     etplEngine.addFilter('default', function (source, defaultVal) {
         return (source === '' || source == null) ? defaultVal : source;
+    });
+    etplEngine.addFilter('minVersion', function (source, minVersionValue) {
+        const result = compareVersions(source, minVersionValue);
+        return (result == null || result < 0) ? minVersionValue : source;
     });
 
     const files = (await globby([mdPath])).filter(function (fileName) {

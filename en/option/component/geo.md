@@ -37,6 +37,15 @@ Whether to show the geo component.
     prefix = '#'
 ) }}
 
+{{ use: partial-coord-sys(
+    version = '6.0.0',
+    nonSeriesComponentMainType = "geo",
+    coordSysDefault = "'none'",
+    calendar = true,
+    matrix = true,
+    none = true
+) }}
+
 ## regions(Array)
 
 Configure style for specified regions.

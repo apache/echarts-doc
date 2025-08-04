@@ -239,6 +239,16 @@ Whether to update view while dragging. If it is set as `false`, the view will be
     componentName = 'dataZoom-slider'
 ) }}
 
+{{ use: partial-coord-sys(
+    version = '6.0.0',
+    nonSeriesComponentMainType = "dataZoom",
+    nonSeriesComponentSubType = "slider",
+    coordSysDefault = "'none'",
+    calendar = true,
+    matrix = true,
+    none = true
+) }}
+
 ## width(string|number)
 
 <ExampleUIControlNumber default="30"/>

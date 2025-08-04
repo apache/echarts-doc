@@ -23,8 +23,7 @@ Bar chart shows different data through the height of a bar, which is used in [re
     seriesType = "bar",
     coordSysDefault = "'cartesian2d'",
     cartesian2d = true,
-    polar = true,
-    geo = false
+    polar = true
 ) }}
 
 ## roundCap(boolean) = false

@@ -9,6 +9,7 @@
 
 {{ use: partial-rect-layout(
     hostName = ${hostName},
+    version = ${version},
     noZ = ${noZ},
     prefix = ${prefix},
     defaultLeft = ${defaultLeft},
@@ -21,11 +22,19 @@
 
 <ExampleUIControlPercent default="50%"/>
 
+{{ if: ${version} }}
+{{ use: partial-version(version = ${version}) }}
+{{ /if }}
+
 ${hostNameStr}的宽度。{{ if: !${defaultWidth} }}默认自适应。{{ /if }}
 
 #${prefix|default("#")} height(string|number) = ${defaultHeight|default("'auto'")}
 
 <ExampleUIControlPercent default="50%"/>
+
+{{ if: ${version} }}
+{{ use: partial-version(version = ${version}) }}
+{{ /if }}
 
 ${hostNameStr}的高度。{{ if: !${defaultHeight} }}默认自适应。{{ /if }}
 

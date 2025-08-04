@@ -218,7 +218,8 @@ The setting of visual channel `symbol` can refer to [visualMap-piecewise.inRange
 When they are not specified, `itemSymbol` is adopted as the default value (but just used in visualMap component itself, not in chart).
 
 {{ use: partial-visual-map-common(
-    visualMapName = 'visualMap-piecewise'
+    visualMapName = 'visualMap-piecewise',
+    visualMapSubType = 'piecewise'
 ) }}
 
 ## formatter(string|Function)

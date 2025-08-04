@@ -35,6 +35,15 @@ The tree diagram is mainly used to visualize the tree data structure, which is a
     defaultHeight = 'null'
 ) }}
 
+{{ use: partial-coord-sys(
+    version = '6.0.0',
+    seriesType = "tree",
+    coordSysDefault = "'none'",
+    calendar = true,
+    matrix = true,
+    none = true
+) }}
+
 ## center(Array)
 
 Center of current view-port. It can be an array containing two `number`s in pixels or `string`s in percentage relative to the container width/height.

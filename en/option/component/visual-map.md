@@ -366,6 +366,16 @@ See available configurations in [${visualMapName}.inRange](~${visualMapName}.inR
     defaultBottom = "0"
 ) }}
 
+{{ use: partial-coord-sys(
+    version = '6.0.0',
+    nonSeriesComponentMainType = "visualMap",
+    nonSeriesComponentSubType = ${visualMapSubType},
+    coordSysDefault = "'none'",
+    matrix = true,
+    calendar = true,
+    none = true
+) }}
+
 ## orient(string) = 'vertical'
 
 How to layout the visualMap component, `'horizontal'` or `'vertical'`.

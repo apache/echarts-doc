@@ -233,7 +233,8 @@ symbol的设置参见 [visualMap-piecewise.inRange](~visualMap-piecewise.inRange
 当他们没有进行指定时，取此 `itemSymbol` 为默认值（但是只在 visualMap 组件上使用，不在 chart 中使用）。
 
 {{ use: partial-visual-map-common(
-    visualMapName = 'visualMap-piecewise'
+    visualMapName = 'visualMap-piecewise',
+    visualMapSubType = 'piecewise'
 ) }}
 
 ## formatter(string|Function)

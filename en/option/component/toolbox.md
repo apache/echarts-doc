@@ -489,6 +489,15 @@ Title.
     componentName = "toolbox"
 ) }}
 
+{{ use: partial-coord-sys(
+    version = '6.0.0',
+    nonSeriesComponentMainType = "toolbox",
+    coordSysDefault = "'none'",
+    matrix = true,
+    calendar = true,
+    none = true
+) }}
+
 ## tooltip(Object)
 
 Tooltip configuration for toolbox tooltip, which is similar to [tooltip](~tooltip). It is not shown by default. If you wish to set special style for toolbox icon label (especially when using CSS to control text style), you may set as the following example:
