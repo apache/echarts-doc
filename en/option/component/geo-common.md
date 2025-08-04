@@ -3,8 +3,12 @@
 
 {{ if: ${inMap} }}
 {{ var: componentNameInLink = 'series-map' }}
+{{ var: componentMainType = 'series' }}
+{{ var: componentSubType = 'map' }}
 {{ else }}
 {{ var: componentNameInLink = 'geo' }}
+{{ var: componentMainType = 'geo' }}
+{{ var: componentSubType = null }}
 {{ /if }}
 
 #${prefix} map(string) = ''
@@ -81,9 +85,6 @@ See also [Flight Seatmap](${galleryEditorPath}geo-seatmap-flight).
 
 The demo above shows that SVG format can be used in ECharts. See more info in [SVG Base Map](tutorial.html#SVG%20Base%20Map%20in%20Geo%20Coords%20and%20Map%20Series).
 
-#${prefix} roam(boolean|string) = false
-
-{{ use: partial-roam() }}
 
 #${prefix} projection(Object)
 
@@ -160,22 +161,13 @@ series: {
 
 Note: `stream` is not required in the `projection`.
 
-#${prefix} center(Array)
 
-Center of current view-port, in longitude and latitude by default. Use the projected coordinates if `projection` is set.
+{{ use: partial-view-coord-sys-common(
+    prefix = ${prefix},
+    componentMainType = ${componentMainType},
+    componentSubType = ${componentSubType}
+) }}
 
-Example:
-
-```ts
-center: [115.97, 29.71]
-```
-
-```ts
-projection: {
-    projection: (pt) => project(pt)
-},
-center: project([115.97, 29.71])
-```
 
 #${prefix} aspectScale(number) = 0.75
 
@@ -203,15 +195,6 @@ boundingCoords: [
 ],
 ```
 
-#${prefix} zoom(number) = 1
-
-Zoom rate of current view-port.
-
-#${prefix} scaleLimit(Object)
-
-{{ use: partial-scale-limit(
-    prefix = "#" + ${prefix}
-) }}
 
 #${prefix} nameMap(Object)
 

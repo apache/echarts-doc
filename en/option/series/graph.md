@@ -33,24 +33,6 @@ Graph is a diagram to represent [nodes](~series-graph.nodes) and the [links](~se
     matrix = true,
 ) }}
 
-## center(Array)
-
-<ExampleUIControlVector default="0,0" dims="x,y" />
-
-Center of current view-port. It can be an array containing two `number`s in pixels or `string`s in percentage relative to the container width/height.
-`string` is supported from version `5.3.3`.
-
-Example:
-```ts
-center: [115.97, '30%']
-```
-
-## zoom(number) = 1
-
-<ExampleUIControlNumber default="1" min="0" step="0.1" />
-
-Zoom rate of current view-port.
-
 ## layout(string) = 'none'
 
 <ExampleUIControlEnum options="none,force,circular" />
@@ -128,15 +110,13 @@ It will slow down the nodes' movement. The value range is from 0 to 1.
 
 But it is still an experimental option, see [#11024](https://github.com/apache/echarts/issues/11024).
 
-## roam(boolean|string) = false
 
-{{ use: partial-roam() }}
-
-## scaleLimit(Object)
-
-{{ use: partial-scale-limit(
-    prefix = "##"
+{{ use: partial-view-coord-sys-common(
+    prefix = '#',
+    componentMainType = 'series',
+    componentSubType = 'graph'
 ) }}
+
 
 ## nodeScaleRatio(number) = 0.6
 

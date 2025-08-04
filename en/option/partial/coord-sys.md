@@ -265,6 +265,14 @@ The id of the [singleAxis coordinate system](~singleAxis) to base on. When mutip
 
 The index of the [geographic coordinate system](~geo) to base on. When mutiple `geographic` exist within an ECharts instance, use this to specify the corresponding `geographic`.
 
+{{ if: ${seriesType} === 'map' }}
+When `geoIndex` and `geoId` is not specified, map series creates an exclusive `geo` component for itself. `geoIndex` or `geoId` can be used to specify an outer [geo component](~geo), which can be shared with other series like [pie](~series-pie). Moreover, the region color of the outer [geo component](~geo) can be controlled by the map series (via [visualMap](~visualMap)).
+
+When `geoIndex` or `geoId` is specified, [series-map.map](~series-map.map) other style configurations like [series-map.itemStyle](~series-map.itemStyle) will not work, but corresponding configurations in [geo component](~geo) will be used.
+{{ /if }}
+
+**See example**: [geo-choropleth-scatter](${galleryEditorPath}geo-choropleth-scatter&reset=1&edit=1)
+
 ## geoId(number) = undefined
 
 {{ if: ${version} }}
@@ -272,6 +280,14 @@ The index of the [geographic coordinate system](~geo) to base on. When mutiple `
 {{ /if }}
 
 The id of the [geographic coordinate system](~geo) to base on. When mutiple `geographic` exist within an ECharts instance, use this to specify the corresponding `geographic`.
+
+{{ if: ${seriesType} === 'map' }}
+When `geoIndex` and `geoId` is not specified, map series creates an exclusive `geo` component for itself. `geoIndex` or `geoId` can be used to specify an outer [geo component](~geo), which can be shared with other series like [pie](~series-pie). Moreover, the region color of the outer [geo component](~geo) can be controlled by the map series (via [visualMap](~visualMap)).
+
+When `geoIndex` or `geoId` specified, [series-map.map](~series-map.map) other style configurations like [series-map.itemStyle](~series-map.itemStyle) will not work, but corresponding configurations in [geo component](~geo) will be used.
+{{ /if }}
+
+**See example**: [geo-choropleth-scatter](${galleryEditorPath}geo-choropleth-scatter&reset=1&edit=1)
 {{ /if }}
 
 {{ if: ${parallel} }}
