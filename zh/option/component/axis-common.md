@@ -647,6 +647,14 @@ splitLine: {
 
 截断后文字末尾显示的内容。
 
+{{ if: ${componentType} === 'xAxis' || ${componentType} === 'yAxis' }}
+#${prefix} nameMoveOverlap(boolean) = true
+
+{{ use: partial-version(version = "6.0.0") }}
+
+当 axis name 和 axis label 重叠时，是否自动移动 axis name 来避免重叠。
+{{ /if }}
+
 #${prefix} inverse(boolean) = false
 
 <ExampleUIControlBoolean />
