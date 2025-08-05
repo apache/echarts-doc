@@ -115,3 +115,46 @@ When [roaming](~${componentNameInLink}.roam), the values in [center](~${componen
 {{ use: partial-roam-desc() }}
 
 When roaming, the values in [center](~${componentNameInLink}.center) and [zoom](~${componentNameInLink}.zoom) will be modified correspondingly.
+
+
+
+{{ target: partial-preserve-aspect }}
+
+#${prefix} preserveAspect(boolean|string) = ${preserveAspectDefault|default(false)}
+
+<ExampleUIControlBoolean default="false" />
+
+{{ use: partial-version(version = "6.0.0") }}
+
+`aspect ratio` here refers to `width / height` of the original bounding rect of the content to be rendered.
+
+Suppose a `rectangular area` allocated to `${componentNameReadable}` is defined by [${componentNameInLink}.left](~${componentNameInLink}.left) / [.right](~${componentNameInLink}.right) / [.top](~${componentNameInLink}.top) / [.bottom](~${componentNameInLink}.bottom) / [.width](~${componentNameInLink}.width) / [.height](~${componentNameInLink}.height).
+
+Options of `preserveAspect`:
+- `null`/`undefined`/`false` (default): `aspect ratio` will not be preserved, but stretched to fill the `${componentNameReadable} rectangular area`, which may cause distortion.
+- `'contain'`/`true`: The `aspect ratio` is preserved; the bounding rect of the content are fully contained by the `${componentNameReadable} rectangular area`, and scaled up as much as possible to meet the `${componentNameReadable} rectangular area`. [preserveAspectAlign](~${componentNameInLink}.preserveAspectAlign) and [preserveAspectVerticalAlign](~${componentNameInLink}.preserveAspectVerticalAlign) can be used to adjust the position in this case.
+- `'cover'`: The `aspect ratio` is preserved; the bounding rect of the content covers the `${componentNameReadable} rectangular area`, and scaled down as much as possible to meet the `${componentNameReadable} rectangular area`. [preserveAspectAlign](~${componentNameInLink}.preserveAspectAlign) and [preserveAspectVerticalAlign](~${componentNameInLink}.preserveAspectVerticalAlign) can be used to adjust the position in this case.
+
+{{ if: (${componentNameInLink} === 'geo' || ${componentNameInLink} === 'series-map') }}
+Notice: When using [layoutCenter](~${componentNameInLink}.layoutCenter) and [layoutSize](~${componentNameInLink}.layoutSize), the `aspect radio` is always preserved, regardless of this `preserveAspect`.
+{{ /if }}
+
+#${prefix} preserveAspectAlign(string) = 'center'
+
+<ExampleUIControlEnum options="left,right,center" default="center" />
+
+{{ use: partial-version(version = "6.0.0") }}
+
+Options: `'left'` | `'right'` | `'center'`.
+
+See [preserveAspect](~${componentNameInLink}.preserveAspect).
+
+#${prefix} preserveAspectVerticalAlign(string) = 'middle'
+
+<ExampleUIControlEnum options="top,bottom,middle" default="middle" />
+
+{{ use: partial-version(version = "6.0.0") }}
+
+Options: `'top'` | `'bottom'` | `'middle'`.
+
+See [preserveAspect](~${componentNameInLink}.preserveAspect).

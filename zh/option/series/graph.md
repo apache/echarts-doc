@@ -619,7 +619,15 @@ links: [{
     defaultLeft = "'center'",
     defaultTop = "'middle'",
     defaultWidth = '自适应',
-    defaultHeight = '自适应'
+    defaultHeight = '自适应',
+    hintPreserveAspect = true,
+    componentNameInLink = 'series-graph'
+) }}
+
+{{ use: partial-preserve-aspect(
+    prefix = '#',
+    componentNameReadable = 'graph 系列',
+    componentNameInLink = 'series-graph'
 ) }}
 
 {{ use: partial-silent(

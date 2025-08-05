@@ -3,10 +3,12 @@
 
 {{ if: ${inMap} }}
 {{ var: componentNameInLink = 'series-map' }}
+{{ var: componentNameReadable = 'map series' }}
 {{ var: componentMainType = 'series' }}
 {{ var: componentSubType = 'map' }}
 {{ else }}
 {{ var: componentNameInLink = 'geo' }}
+{{ var: componentNameReadable = 'geo component' }}
 {{ var: componentMainType = 'geo' }}
 {{ var: componentSubType = null }}
 {{ /if }}
@@ -297,15 +299,17 @@ Map area style in blurred state.
 ) }}
 {{ /if }}
 
-{{ use: partial-rect-layout(
-    prefix = ${prefix}
+{{ use: partial-rect-layout-width-height(
+    prefix = ${prefix},
+    hostName = ${componentNameReadable},
+    hintPreserveAspect = true,
+    hintGeoRectLayoutApproaches = true,
+    componentNameInLink = ${componentNameInLink}
 ) }}
 
 #${prefix} layoutCenter(Array) = null
 
-`layoutCenter` and `layoutSize` provides layout strategy other than `left/right/top/bottom/width/height`.
-
-When using `left/right/top/bottom/width/height`, it is hard to put the map inside a box area with a fixed width-height ratio. In this case, `layoutCenter` attribute can be used to define the center position of map, and `layoutSize` can be used to define the size of map. For example:
+`layoutCenter` and `layoutSize` can specify the rectangular area allocated to ${componentNameReadable}, where `layoutCenter` defines the center position of the area, and `layoutSize` defines the size of the area. For example:
 
 ```ts
 layoutCenter: ['30%', '30%'],
@@ -317,10 +321,26 @@ layoutSize: 100
 
 After setting these two values, `left/right/top/bottom/width/height` becomes invalid.
 
+{{ use: partial-geo-rect-layout-approaches-hint(
+    hintGeoRectLayoutApproaches = true,
+    componentNameInLink = ${componentNameInLink}
+) }}
+
+
 #${prefix} layoutSize(number|string)
 
-Size of map, see `layoutCenter` for more information. Percentage relative to screen width, and absolute pixel values are supported.
+Size of map, see [layoutCenter](${componentNameInLink}.layoutCenter) for more information. Percentage relative to container width/height, and absolute pixel values are supported.
 
+{{ use: partial-geo-rect-layout-approaches-hint(
+    hintGeoRectLayoutApproaches = true,
+    componentNameInLink = ${componentNameInLink}
+) }}
+
+{{ use: partial-preserve-aspect(
+    prefix = ${prefix},
+    componentNameReadable = ${componentNameReadable},
+    componentNameInLink = ${componentNameInLink}
+) }}
 
 
 {{ target: partial-geo-common-state }}

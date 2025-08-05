@@ -114,3 +114,49 @@ center: ['50%', '50%']
 {{ use: partial-roam-desc() }}
 
 当缩放和平移时，[center](~${componentNameInLink}.center) 和 [zoom](~${componentNameInLink}.zoom) 的值会被相应改变。
+
+
+
+{{ target: partial-geo-preserve-aspect }}
+
+{{ target: partial-preserve-aspect }}
+
+#${prefix} preserveAspect(boolean|string) = ${preserveAspectDefault|default(false)}
+
+<ExampleUIControlBoolean default="false" />
+
+{{ use: partial-version(version = "6.0.0") }}
+
+`aspect ratio`（宽高比）在此处指的是要渲染的内容的原始包围盒的 `width / height`。
+
+假设为 ${componentNameReadable} 分配的 `矩形区域` 是通过以下配置定义的：
+[${componentNameInLink}.left](~${componentNameInLink}.left) / [.right](~${componentNameInLink}.right) / [.top](~${componentNameInLink}.top) / [.bottom](~${componentNameInLink}.bottom) / [.width](~${componentNameInLink}.width) / [.height](~${componentNameInLink}.height)。
+
+`preserveAspect` 的不同选项有如下效果：
+- `null` / `undefined` / `false`（默认）：不会保留宽高比，而是拉伸内容以填满 `${componentNameReadable}矩形区域`。拉伸有可能导致图形失真。
+- `'contain'` / `true`：保留宽高比。内容的包围盒被完整地包含在 `${componentNameReadable}矩形区域` 中，并尽可能放大以触达边界。此时可使用 [preserveAspectAlign](~${componentNameInLink}.preserveAspectAlign) 和 [preserveAspectVerticalAlign](~${componentNameInLink}.preserveAspectVerticalAlign) 调整位置。
+- `'cover'`：保留宽高比。内容的包围盒会覆盖整个 `${componentNameReadable}矩形区域`，并尽可能缩小以触达边界。此时可使用 [preserveAspectAlign](~${componentNameInLink}.preserveAspectAlign) 和 [preserveAspectVerticalAlign](~${componentNameInLink}.preserveAspectVerticalAlign) 调整位置。
+
+{{ if: (${componentNameInLink} === 'geo' || ${componentNameInLink} === 'series-map') }}
+注意：当使用 [layoutCenter](~${componentNameInLink}.layoutCenter) 和 [layoutSize](~${componentNameInLink}.layoutSize) 时，始终会保留宽高比，无论 `preserveAspect` 配置为何值。
+{{ /if }}
+
+#${prefix} preserveAspectAlign(string) = 'center'
+
+<ExampleUIControlEnum options="left,right,center" default="center" />
+
+{{ use: partial-version(version = "6.0.0") }}
+
+可选项：`'left'` | `'right'` | `'center'`。
+
+参见 [preserveAspect](~${componentNameInLink}.preserveAspect)。
+
+#${prefix} preserveAspectVerticalAlign(string) = 'middle'
+
+<ExampleUIControlEnum options="top,bottom,middle" default="middle" />
+
+{{ use: partial-version(version = "6.0.0") }}
+
+Options: `'top'` | `'bottom'` | `'middle'`。
+
+参见 [preserveAspect](~${componentNameInLink}.preserveAspect)。
