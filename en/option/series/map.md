@@ -31,25 +31,6 @@ Series of same [map type](~series-map.map) will show in one map. At this point, 
     geo = true
 ) }}
 
-## center(Array)
-
-Center of current view-port. It can be an array containing two `number`s in pixels or `string`s in percentage relative to the container width/height.
-`string` is supported from version `5.3.3`.
-
-Example:
-```ts
-center: [115.97, '30%']
-```
-
-## geoIndex(number) = null
-
-In default case, map series create exclusive `geo` component for themselves. But `geoIndex` can be used to specify an outer [geo component](~geo), which can be shared with other series like [pie](~series-pie). Moreover, the region color of the outer [geo component](~geo) can be controlled by the map series (via [visualMap](~visualMap)).
-
-When `geoIndex` specified, [series-map.map](~series-map.map) other style configurations like [series-map.itemStyle](~series-map.itemStyle) will not work, but corresponding configurations in [geo component](~geo) will be used.
-
-For example:
-~[600x400](${galleryViewPath}geo-map-scatter&reset=1&edit=1)
-
 ## mapValueCalculation(string) = 'sum'
 
 Value of multiple series with the same [map type](~series-map.map) can use this option to get a statistical value.

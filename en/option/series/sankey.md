@@ -91,6 +91,14 @@ The layout direction of the nodes in the Sankey diagram, which can be horizontal
 
 The drag-and-drop interaction of the node, which is enabled by default. After opening, the user can drag any node in the Sankey diagram to any position. To turn this interaction off, simply set the value to `false`.
 
+
+{{ use: partial-view-coord-sys-common(
+    prefix = '#',
+    componentMainType = 'series',
+    componentSubType = 'sankey'
+) }}
+
+
 ## edgeLabel(Object)
 
 {{ use: sankey-edge-label(

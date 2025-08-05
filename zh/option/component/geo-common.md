@@ -3,8 +3,12 @@
 
 {{ if: ${inMap} }}
 {{ var: componentNameInLink = 'series-map' }}
+{{ var: componentMainType = 'series' }}
+{{ var: componentSubType = 'map' }}
 {{ else }}
 {{ var: componentNameInLink = 'geo' }}
+{{ var: componentMainType = 'geo' }}
+{{ var: componentSubType = null }}
 {{ /if }}
 
 #${prefix} map(string) = ''
@@ -81,9 +85,6 @@ $.get('map/topographic_map.svg', function (svg) {
 
 如上所示，ECharts 也可以使用 SVG 格式的地图。详情参见：[SVG 底图](tutorial.html#%E5%9C%B0%E7%90%86%E5%9D%90%E6%A0%87%E7%B3%BB%E5%92%8C%E5%9C%B0%E5%9B%BE%E7%B3%BB%E5%88%97%E7%9A%84%20SVG%20%E5%BA%95%E5%9B%BE)。
 
-#${prefix} roam(boolean|string) = false
-
-{{ use: partial-roam() }}
 
 #${prefix} projection(Object)
 
@@ -159,21 +160,12 @@ series: {
 
 该配置并非是必要的。
 
-#${prefix} center(Array)
+{{ use: partial-view-coord-sys-common(
+    prefix = ${prefix},
+    componentMainType = ${componentMainType},
+    componentSubType = ${componentSubType}
+) }}
 
-当前视角的中心点，默认使用原始坐标（经纬度）。如果设置了`projection`则用投影后的坐标表示。
-
-示例：
-```ts
-center: [115.97, 29.71]
-```
-
-```ts
-projection: {
-    projection: (pt) => project(pt)
-},
-center: project([115.97, 29.71])
-```
 
 #${prefix} aspectScale(number) = 0.75
 
@@ -199,16 +191,6 @@ boundingCoords: [
     [180, -90]
 ],
 ```
-
-#${prefix} zoom(number) = 1
-
-当前视角的缩放比例。
-
-#${prefix} scaleLimit(Object)
-
-{{ use: partial-scale-limit(
-    prefix = "#" + ${prefix}
-) }}
 
 #${prefix} nameMap(Object)
 

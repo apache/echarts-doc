@@ -268,6 +268,14 @@
 
 布局时所基于的 [地理坐标系](~geo) 的 index。当一个 ECharts 实例中存在多个地理坐标系时，用其指定所使用的坐标系。
 
+{{ if: ${seriesType} === 'map' }}
+当没有指定 `geoIndex` 和 `geoId` 时，map 系列会为自身创建一个独享的 `geo` 组件。但也可以通过 `geoIndex` 或 `geoId` 指定一个外部的 [geo 组件](~geo)，从而与其他系列（如 [pie](~series-pie)）共享该坐标系。此外，外部 [geo 组件](~geo) 的区域颜色也可以由 map 系列通过 [visualMap](~visualMap) 控制。
+
+当指定了 `geoIndex` 或 `geoId` 时，[series-map.map](~series-map.map) 以及诸如 [series-map.itemStyle](~series-map.itemStyle) 等样式配置将不再生效，而会采用 [geo 组件](~geo) 中对应的配置。
+{{ /if }}
+
+**参见示例**: [geo-choropleth-scatter](${galleryEditorPath}geo-choropleth-scatter&reset=1&edit=1)
+
 ## geoId(number) = undefined
 
 {{ if: ${version} }}
@@ -275,6 +283,14 @@
 {{ /if }}
 
 布局时所基于的 [地理坐标系](~geo) 的 id。当一个 ECharts 实例中存在多个地理坐标系时，用其指定所使用的坐标系。
+
+{{ if: ${seriesType} === 'map' }}
+当没有指定 `geoIndex` 和 `geoId` 时，map 系列会为自身创建一个独享的 `geo` 组件。但也可以通过 `geoIndex` 或 `geoId` 指定一个外部的 [geo 组件](~geo)，从而与其他系列（如 [pie](~series-pie)）共享该坐标系。此外，外部 [geo 组件](~geo) 的区域颜色也可以由 map 系列通过 [visualMap](~visualMap) 控制。
+
+当指定了 `geoIndex` 或 `geoId` 时，[series-map.map](~series-map.map) 以及诸如 [series-map.itemStyle](~series-map.itemStyle) 等样式配置将不再生效，而会采用 [geo 组件](~geo) 中对应的配置。
+{{ /if }}
+
+**参见示例**: [geo-choropleth-scatter](${galleryEditorPath}geo-choropleth-scatter&reset=1&edit=1)
 {{ /if }}
 
 {{ if: ${parallel} }}

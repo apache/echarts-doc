@@ -277,10 +277,22 @@ chart.setOption(option); // option设置回 ${componentMainType}
 
 默认取 `data` 中最后一个维度。
 
-## seriesIndex(number|Array)
+## seriesIndex(number|string|Array)
 
 指定取哪个系列的数据，即哪个系列的 [series.data](~series.data)。
 
+可取值：
+- 一个系列的 index
+- 系列的 index 的数组
+- `'all'`/`null`/`undefined` (default)：取所有系列。
+
+## seriesId(number|string|Array)
+
+{{ use: partial-version(version = "6.0.0") }}
+
+指定取哪个系列的数据，即哪个系列的 [series.data](~series.data)。
+
+可以是一个 id 或者一个 id 数组。
 默认取所有系列。
 
 ## hoverLink(boolean) = true

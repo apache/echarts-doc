@@ -6,4 +6,24 @@
 
 Whether rich text inherits plain text style.
 
-Since v6, the rich text styles (`fontStyle`, `fontWeight`, `fontSize`, `fontFamily`, `textShadowColor`, `textShadowBlur`, `textShadowOffsetX`, `textShadowOffsetY`) inherit the plain text style. To disable this behavior, you can set `richInheritPlainLabel: false` at the root level of an echarts option or the same level of the label style options. See also [#20977](https://github.com/apache/echarts/pull/20977).
+This option is just for backward compatibility.
+
+> The [label.rich / textStyle.rich](~series-scatter.label.rich) `fontStyle`, `fontWeight`, `fontSize`, `fontFamily`, `textShadowColor`, `textShadowBlur`, `textShadowOffsetX`, `textShadowOffsetY` are changed to inherit the corresponding [plain label styles](~series-scatter.label) since echarts v6. You can use `richInheritPlainLabel: false` to restore it. For example,
+> ```js
+> option = {
+>     richInheritPlainLabel: false, // In most cases, this is enough.
+>     xxx1: {
+>         // Can also set it here to only control this label.
+>         label: {
+>             richInheritPlainLabel: false,
+>             rich: {/* ... */},
+>         }
+>     },
+>     xxx2: {
+>         textStyle: {
+>             richInheritPlainLabel: false,
+>             rich: {/* ... */},
+>         }
+>     }
+> }
+> ```

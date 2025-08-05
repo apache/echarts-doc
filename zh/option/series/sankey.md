@@ -94,6 +94,14 @@ const option = {"tooltip":{"trigger":"item","triggerOn":"mousemove"},"series":[{
 
 控制节点拖拽的交互，默认开启。开启后，用户可以将图中任意节点拖拽到任意位置。若想关闭此交互，只需将值设为 `false` 就行了。
 
+
+{{ use: partial-view-coord-sys-common(
+    prefix = '#',
+    componentMainType = 'series',
+    componentSubType = 'sankey'
+) }}
+
+
 ## edgeLabel(Object)
 
 {{ use: sankey-edge-label(
