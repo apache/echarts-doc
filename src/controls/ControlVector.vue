@@ -48,7 +48,7 @@ export default {
         }
     },
 
-    watch:  {
+    watch: {
         value(newVal) {
             this.innerValueArr = this.value.split(',').map(val => +val.trim());
         }

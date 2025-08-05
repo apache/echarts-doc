@@ -95,18 +95,14 @@ Marker when the node is able to be drilled down.
 
 ## roam(boolean|string) = true
 
-Whether to enable dragging roam (move and zoom). Optional values are:
-
-+ `false`: roam is disabled.
-+ `'scale'` or `'zoom'`: zoom only.
-+ `'move'` or `'pan'`: move (translation) only.
-+ `true`: both zoom and move (translation) are available.
+{{ use: partial-roam-desc() }}
 
 ## scaleLimit(Object)
 
-{{ use: partial-scale-limit(
+{{ use: partial-scale-limit-desc(
     prefix = "##",
-    version = "5.5.1"
+    version = "5.5.1",
+    componentNameInLink = 'series-treemap'
 ) }}
 
 ## nodeClick(boolean|string) = 'zoomToNode'

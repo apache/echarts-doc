@@ -43,7 +43,7 @@ module.exports = {
 ```
 
 
-## Tips About Writing Doc
+## Tips for Writing Doc
 
 ### "Since Version"
 "Since Version" is necessary in doc.

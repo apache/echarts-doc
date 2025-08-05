@@ -1,13 +1,17 @@
 
-{{ target: partial-roam }}
+{{ target: partial-roam-desc }}
 
 <ExampleUIControlEnum options="true,false,scale,move" />
 
-Whether to enable mouse zooming and translating. `false` by default. If either zooming or translating is wanted, it can be set to `'scale'` or `'move'`. Otherwise, set it to be `true` to enable both.
+Whether to enable mouse or touch roam (move and zoom). Optional values are:
+
++ `false`: roam is disabled.
++ `'scale'` or `'zoom'`: zoom only.
++ `'move'` or `'pan'`: move (translation) only.
++ `true`: both zoom and move (translation) are available.
 
 
-
-{{ target: partial-scale-limit }}
+{{ target: partial-scale-limit-desc }}
 
 {{ if: ${version} }}
 {{ use: partial-version(
@@ -15,13 +19,20 @@ Whether to enable mouse zooming and translating. `false` by default. If either z
 ) }}
 {{ /if }}
 
-Limit of scaling, with `min` and `max`.
+Limit of [zooming](~${componentNameInLink}.roam), with `min` and `max`.
+
+{{ use: partial-zoom-value-desc }}
 
 #${prefix} min(number)
 
-Minimum scaling
+Minimum zoom
 
 #${prefix} max(number)
 
-Maximum scaling
+Maximum zoom
+
+
+{{ target: partial-zoom-value-desc }}
+
+The value less than `1` indicates zooming out, while the value greater than `1` indicates zooming in.
 
