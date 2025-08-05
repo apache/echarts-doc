@@ -1,4 +1,5 @@
 ## v6.0.0
+<div class="time">2025-07-30</div>
 
 + [Feature] [theme] New theme for ECharts 6.0. [#20865](https://github.com/apache/echarts/issues/20865) [#21097](https://github.com/apache/echarts/issues/21097) [#21114](https://github.com/apache/echarts/issues/21114) ([Ovilia](https://github.com/Ovilia))
 + [Feature] [chord] New chord series. [#20522](https://github.com/apache/echarts/issues/20522) ([Ovilia](https://github.com/Ovilia))
