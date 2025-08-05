@@ -35,7 +35,9 @@ export default {
 
     computed: {
         dimsArr() {
-            return this.dims.split(',').map(dim => dim.trim());
+            return this.dims
+                ? this.dims.split(',').map(dim => dim.trim())
+                : this.value.split(',').map(_ => '');
         }
     },
 
