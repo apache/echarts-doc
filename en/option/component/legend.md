@@ -49,6 +49,15 @@ When `'scroll'` used, these options below can be used for detailed configuration
     componentName = "legend"
 ) }}
 
+{{ use: partial-coord-sys(
+    version = '6.0.0',
+    nonSeriesComponentMainType = "legend",
+    coordSysDefault = "'none'",
+    matrix = true,
+    calendar = true,
+    none = true
+) }}
+
 ## orient(string) = 'horizontal'
 
 <ExampleUIControlEnum options="vertical,horizontal" default="horizontal" />

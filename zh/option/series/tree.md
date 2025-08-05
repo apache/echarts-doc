@@ -78,19 +78,21 @@ const option = {
     defaultHeight = 'null'
 ) }}
 
-## center(Array)
+{{ use: partial-coord-sys(
+    version = '6.0.0',
+    seriesType = "tree",
+    coordSysDefault = "'none'",
+    calendar = true,
+    matrix = true,
+    none = true
+) }}
 
-当前视角的中心点。可以是包含两个 `number` 类型（表示像素值）或 `string` 类型（表示相对容器的百分比）的数组。
-从 `5.3.3` 版本开始支持 `string` 类型。
 
-例如：
-```ts
-center: [115.97, '30%']
-```
-
-## zoom(number) = 1
-
-当前视角的缩放比例。
+{{ use: partial-view-coord-sys-common(
+    prefix = '#',
+    componentMainType = 'series',
+    componentSubType = 'tree'
+) }}
 
 
 ## layout(string) = 'orthogonal'
@@ -141,10 +143,6 @@ center: [115.97, '30%']
 正交布局下当边的形状是折线时，子树中折线段分叉的位置。这里的位置指的是分叉点与子树父节点的距离占整个子树高度的百分比。默认取值是 `'50%'`，可以是 ['0', '100%'] 之间。
 
 **注意：该配置项只有在 `edgeShape = 'polyline'` 时才有效。**
-
-## roam(boolean|string) = false
-
-{{ use: partial-roam() }}
 
 ## expandAndCollapse(boolean) = true
 

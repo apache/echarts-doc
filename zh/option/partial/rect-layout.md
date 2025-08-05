@@ -19,6 +19,10 @@
 
 <ExampleUIControlPercent default="0%"/>
 
+{{ if: ${version} }}
+{{ use: partial-version(version = ${version}) }}
+{{ /if }}
+
 ${hostNameStr}离容器左侧的距离。
 
 `left` 的值可以是像 `20` 这样的具体像素值，可以是像 `'20%'` 这样相对于容器高宽的百分比，也可以是 `'left'`, `'center'`, `'right'`。
@@ -28,6 +32,10 @@ ${hostNameStr}离容器左侧的距离。
 #${prefix|default("#")} top(string|number) = ${defaultTop|default("'auto'")}
 
 <ExampleUIControlPercent default="0%"/>
+
+{{ if: ${version} }}
+{{ use: partial-version(version = ${version}) }}
+{{ /if }}
 
 ${hostNameStr}离容器上侧的距离。
 
@@ -39,6 +47,10 @@ ${hostNameStr}离容器上侧的距离。
 
 <ExampleUIControlPercent default="0%"/>
 
+{{ if: ${version} }}
+{{ use: partial-version(version = ${version}) }}
+{{ /if }}
+
 ${hostNameStr}离容器右侧的距离。
 
 `right` 的值可以是像 `20` 这样的具体像素值，可以是像 `'20%'` 这样相对于容器高宽的百分比。
@@ -48,6 +60,10 @@ ${hostNameStr}离容器右侧的距离。
 #${prefix|default("#")} bottom(string|number) = ${defaultBottom|default("'auto'")}
 
 <ExampleUIControlPercent default="0%"/>
+
+{{ if: ${version} }}
+{{ use: partial-version(version = ${version}) }}
+{{ /if }}
 
 ${hostNameStr}离容器下侧的距离。
 

@@ -35,19 +35,22 @@ The tree diagram is mainly used to visualize the tree data structure, which is a
     defaultHeight = 'null'
 ) }}
 
-## center(Array)
+{{ use: partial-coord-sys(
+    version = '6.0.0',
+    seriesType = "tree",
+    coordSysDefault = "'none'",
+    calendar = true,
+    matrix = true,
+    none = true
+) }}
 
-Center of current view-port. It can be an array containing two `number`s in pixels or `string`s in percentage relative to the container width/height.
-`string` is supported from version `5.3.3`.
 
-Example:
-```ts
-center: [115.97, '30%']
-```
+{{ use: partial-view-coord-sys-common(
+    prefix = '#',
+    componentMainType = 'series',
+    componentSubType = 'tree'
+) }}
 
-## zoom(number) = 1
-
-Zoom rate of current view-port.
 
 ## layout(string) = 'orthogonal'
 
@@ -98,10 +101,6 @@ The shape of the edge which is under the tree `orthogonal layout`. There are two
 This is the position where the polyline branches in the subtree when the shape of the edge is a polyline in the `orthogonal layout`. The position here refers to the percentage of the distance between the bifurcation point and the parent node of the subtree to the height of the entire subtree. The default value is `'50%'`, which can be between ['0', '100%'].
 
 ** Note: This configuration item is only valid when `edgeShape = 'polyline'`. **
-
-## roam(boolean|string) = false
-
-{{ use: partial-roam() }}
 
 ## expandAndCollapse(boolean) = true
 

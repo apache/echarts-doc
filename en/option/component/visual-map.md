@@ -305,11 +305,24 @@ Each column of the above array is regarded as a `dimension`. For example, when p
 
 Use the last dimension of `data` by default.
 
-## seriesIndex(number|Array)
+## seriesIndex(number|string|Array)
 
 Specify visual mapping should be performed on which series, from which
 [series.data](~series.data) is fetched.
 
+Options:
+- A index number
+- An array of index numbers
+- `'all'`/`null`/`undefined` (default): means all of the series.
+
+## seriesId(number|string|Array)
+
+{{ use: partial-version(version = "6.0.0") }}
+
+Specify visual mapping should be performed on which series, from which
+[series.data](~series.data) is fetched.
+
+Can be a id or a list of ids.
 All series are used by default.
 
 ## hoverLink(boolean) = true
@@ -364,6 +377,16 @@ See available configurations in [${visualMapName}.inRange](~${visualMapName}.inR
     defaultRight = "auto",
     defaultTop = "auto",
     defaultBottom = "0"
+) }}
+
+{{ use: partial-coord-sys(
+    version = '6.0.0',
+    nonSeriesComponentMainType = "visualMap",
+    nonSeriesComponentSubType = ${visualMapSubType},
+    coordSysDefault = "'none'",
+    matrix = true,
+    calendar = true,
+    none = true
 ) }}
 
 ## orient(string) = 'vertical'

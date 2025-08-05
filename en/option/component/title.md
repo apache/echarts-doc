@@ -116,6 +116,15 @@ The gap between the main title and subtitle.
     componentName = "title"
 ) }}
 
+{{ use: partial-coord-sys(
+    version = '6.0.0',
+    nonSeriesComponentMainType = "title",
+    coordSysDefault = "'none'",
+    matrix = true,
+    calendar = true,
+    none = true
+) }}
+
 {{ use: partial-component-common-style(
     componentName = "title",
     prefix = '#',

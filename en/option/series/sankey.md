@@ -36,6 +36,15 @@ In addition, the edge between two small rectangles in the diagram encodes the `l
     defaultHeight = 'null'
 ) }}
 
+{{ use: partial-coord-sys(
+    version = '6.0.0',
+    seriesType = "sankey",
+    coordSysDefault = "'none'",
+    calendar = true,
+    matrix = true,
+    none = true
+) }}
+
 ## nodeWidth(number) = 20
 
 <ExampleUIControlNumber default="20" min="0" step="0.5" />
@@ -81,6 +90,14 @@ The layout direction of the nodes in the Sankey diagram, which can be horizontal
 <ExampleUIControlBoolean default="true" />
 
 The drag-and-drop interaction of the node, which is enabled by default. After opening, the user can drag any node in the Sankey diagram to any position. To turn this interaction off, simply set the value to `false`.
+
+
+{{ use: partial-view-coord-sys-common(
+    prefix = '#',
+    componentMainType = 'series',
+    componentSubType = 'sankey'
+) }}
+
 
 ## edgeLabel(Object)
 

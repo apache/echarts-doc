@@ -132,6 +132,15 @@ const option = {
     componentName = "图例（legend）"
 ) }}
 
+{{ use: partial-coord-sys(
+    version = '6.0.0',
+    nonSeriesComponentMainType = "legend",
+    coordSysDefault = "'none'",
+    matrix = true,
+    calendar = true,
+    none = true
+) }}
+
 ## orient(string) = 'horizontal'
 
 <ExampleUIControlEnum options="vertical,horizontal" default="horizontal" />

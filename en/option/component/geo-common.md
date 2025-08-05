@@ -1,6 +1,16 @@
 
 {{ target: geo-common }}
 
+{{ if: ${inMap} }}
+{{ var: componentNameInLink = 'series-map' }}
+{{ var: componentMainType = 'series' }}
+{{ var: componentSubType = 'map' }}
+{{ else }}
+{{ var: componentNameInLink = 'geo' }}
+{{ var: componentMainType = 'geo' }}
+{{ var: componentSubType = null }}
+{{ /if }}
+
 #${prefix} map(string) = ''
 
 Map name registered in [registerMap](api.html#echarts.registerMap).
@@ -75,9 +85,6 @@ See also [Flight Seatmap](${galleryEditorPath}geo-seatmap-flight).
 
 The demo above shows that SVG format can be used in ECharts. See more info in [SVG Base Map](tutorial.html#SVG%20Base%20Map%20in%20Geo%20Coords%20and%20Map%20Series).
 
-#${prefix} roam(boolean|string) = false
-
-{{ use: partial-roam() }}
 
 #${prefix} projection(Object)
 
@@ -154,28 +161,23 @@ series: {
 
 Note: `stream` is not required in the `projection`.
 
-#${prefix} center(Array)
 
-Center of current view-port, in longitude and latitude by default. Use the projected coordinates if `projection` is set.
+{{ use: partial-view-coord-sys-common(
+    prefix = ${prefix},
+    componentMainType = ${componentMainType},
+    componentSubType = ${componentSubType}
+) }}
 
-Example:
-
-```ts
-center: [115.97, 29.71]
-```
-
-```ts
-projection: {
-    projection: (pt) => project(pt)
-},
-center: project([115.97, 29.71])
-```
 
 #${prefix} aspectScale(number) = 0.75
 
-Used to scale aspect of geo. Will be ignored if `projection` is set.
+Used to scale aspect of geo. It will be ignored if [proejction](~${componentNameInLink}.projection) is set.
 
-The final aspect is calculated by: `geoBoundingRect.width / geoBoundingRect.height * aspectScale`.
+The final calculated `pixelWidth` and `pixelHeight` of the map will satisfy `pixelWidth / pixelHeight = lngSpan / latSpan * aspectScale` (assume [proejction](~${componentNameInLink}.projection) is not specified, and [preserveAspect](~${componentNameInLink}.preserveAspect) is truthy).
+
+If no [proejction](~${componentNameInLink}.projection) is applied, the latitudes and longitudes in GeoJSON are linearly mapped to pixel coordinates diarectly. `aspectScale` offers a simple way to visually compensates for the distortion caused by the fact that the longitudinal spacing shrinks as latitude increases. For example, an `aspectScale` can be roughly calculated as `aspectScale = Math.cos(center_latitude * Maht.PI / 180)`, which is similar to a sinusoidal projection.
+
+See [example](${galleryEditorPath}geo-graph&edit=1&reset=1).
 
 #${prefix} boundingCoords(Array) = null
 
@@ -193,15 +195,6 @@ boundingCoords: [
 ],
 ```
 
-#${prefix} zoom(number) = 1
-
-Zoom rate of current view-port.
-
-#${prefix} scaleLimit(Object)
-
-{{ use: partial-scale-limit(
-    prefix = "#" + ${prefix}
-) }}
 
 #${prefix} nameMap(Object)
 

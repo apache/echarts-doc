@@ -45,6 +45,15 @@ const option = {"tooltip":{"trigger":"item","triggerOn":"mousemove"},"series":[{
     defaultHeight = 'null'
 ) }}
 
+{{ use: partial-coord-sys(
+    version = '6.0.0',
+    seriesType = "sankey",
+    coordSysDefault = "'none'",
+    calendar = true,
+    matrix = true,
+    none = true
+) }}
+
 ## nodeWidth(number) = 20
 
 <ExampleUIControlNumber default="20" min="0" step="0.5" />
@@ -84,6 +93,14 @@ const option = {"tooltip":{"trigger":"item","triggerOn":"mousemove"},"series":[{
 <ExampleUIControlBoolean default="true" />
 
 控制节点拖拽的交互，默认开启。开启后，用户可以将图中任意节点拖拽到任意位置。若想关闭此交互，只需将值设为 `false` 就行了。
+
+
+{{ use: partial-view-coord-sys-common(
+    prefix = '#',
+    componentMainType = 'series',
+    componentSubType = 'sankey'
+) }}
+
 
 ## edgeLabel(Object)
 

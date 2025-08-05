@@ -30,12 +30,12 @@ It will:
 
 ### Local Config
 
-To customize the links of `echarts-examples` and other configurations, you can create a local config file `echarts-doc/config/env.dev-local.js`, which is not tracked by git, and its top-level properties will be used to override the corresponding properties of `echarts-doc/config/env.dev.js` when `npm run dev`.
+To customize the links of `echarts-examples` and other configurations, you can create a local config file `echarts-doc/config/env.dev-override.js`, which is not tracked by git, and its top-level properties will be used to override the corresponding properties of `echarts-doc/config/env.dev.js` when `npm run dev`.
 
-For example, create a `echarts-doc/config/env.dev-local.js`:
+For example, create a `echarts-doc/config/env.dev-override.js`:
 ```js
 module.exports = {
-    // These props will override the same props in `echarts-doc/config/env.dev-local.js`
+    // These props will override the same props in `echarts-doc/config/env.dev.js`
     galleryViewPath: 'http://127.0.0.1:3002/en/view.html?local=1&c=',
     galleryEditorPath: 'http://127.0.0.1:3002/en/editor.html?local=1&c=',
     EMBEDDED_ECHARTS_SCRIPT_URL: 'http://localhost:8001/echarts/echarts/dist/echarts.js',
@@ -51,6 +51,10 @@ Marking "since version" indicates when a new feature was introduced.
 For example,
 ```
 {{ use: partial-version(version = "6.0.0") }}
+
+{{ use: partial-version(version = ${version|minVersion('6.0.0')}) }}
+    That is, if the ${version} is empty or smaller than '6.0.0', use '6.0.0'.
+    Follow the version comparison rules in Semver 2.0 .
 ```
 
 ### Global Variables
@@ -197,6 +201,15 @@ The template syntax follows [etpl](https://github.com/ecomfe/etpl/blob/master/do
 
 Summary of the commonly used syntax:
 ```template
+--- TEMPLATE EXPRESSION ---
+The template syntax and expressions are encolsed by delimiters `{{` and `}}`.
+For example,
+{{ if: condition_expression }} xxx {{ /if }}
+The expressoin within `{{` and `}}` can be considered a (restricted) JS expression.
+For example,
+{{ if: ${someVar1} + 'abc' === '123abc' }} ... {{ /if }}
+{{ if: !${someVar2} }} ... {{ /if }}
+
 --- TEMPLATE VARIABLE ---
 Use a variable:
     some text ${someVariable} some text
@@ -210,7 +223,8 @@ Declaration or assignment of a target-local variable:
     {{ var: myVar = 'some' }}
     {{ var: myVar = 123 }}
     {{ var: myVar = ${someOtherStr} + 'some_str' }}
-
+NOTICE:
+    Within a `{{` `}}` pair, DO NOT write {{ if: '${some}_abc' }}{{ /if }}. It should be {{ if: ${some} + '_abc' }}{{ /if }}, as the sentence within `{{` `}}` pair is treated like a normal JS expression.
 
 --- IF ELSE ---
 {{ if: ${number1} > 0 }}
@@ -219,6 +233,11 @@ some text xxx
 some text yyy
 {{ else }}
 some text zzz
+{{ /if }}
+Logical operators can be used in the conditional expression:
+{{ if: ${componentNameInLink} == null && ${seriesType} }}
+This componentNameInLink is null or undefined
+{{ var: componentNameInLink = 'series-' + ${seriesType} }}
 {{ /if }}
 
 

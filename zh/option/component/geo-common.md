@@ -1,6 +1,16 @@
 
 {{ target: geo-common }}
 
+{{ if: ${inMap} }}
+{{ var: componentNameInLink = 'series-map' }}
+{{ var: componentMainType = 'series' }}
+{{ var: componentSubType = 'map' }}
+{{ else }}
+{{ var: componentNameInLink = 'geo' }}
+{{ var: componentMainType = 'geo' }}
+{{ var: componentSubType = null }}
+{{ /if }}
+
 #${prefix} map(string) = ''
 
 使用 [registerMap](api.html#echarts.registerMap) 注册的地图名称。
@@ -75,9 +85,6 @@ $.get('map/topographic_map.svg', function (svg) {
 
 如上所示，ECharts 也可以使用 SVG 格式的地图。详情参见：[SVG 底图](tutorial.html#%E5%9C%B0%E7%90%86%E5%9D%90%E6%A0%87%E7%B3%BB%E5%92%8C%E5%9C%B0%E5%9B%BE%E7%B3%BB%E5%88%97%E7%9A%84%20SVG%20%E5%BA%95%E5%9B%BE)。
 
-#${prefix} roam(boolean|string) = false
-
-{{ use: partial-roam() }}
 
 #${prefix} projection(Object)
 
@@ -153,27 +160,22 @@ series: {
 
 该配置并非是必要的。
 
-#${prefix} center(Array)
+{{ use: partial-view-coord-sys-common(
+    prefix = ${prefix},
+    componentMainType = ${componentMainType},
+    componentSubType = ${componentSubType}
+) }}
 
-当前视角的中心点，默认使用原始坐标（经纬度）。如果设置了`projection`则用投影后的坐标表示。
-
-示例：
-```ts
-center: [115.97, 29.71]
-```
-
-```ts
-projection: {
-    projection: (pt) => project(pt)
-},
-center: project([115.97, 29.71])
-```
 
 #${prefix} aspectScale(number) = 0.75
 
-这个参数用于 scale 地图的长宽比，如果设置了`projection`则无效。
+这个参数用于 scale 地图的长宽比。如果设置了 [proejction](~${componentNameInLink}.projection) 则无效。
 
-最终的 `aspect` 的计算方式是：`geoBoundingRect.width / geoBoundingRect.height * aspectScale`。
+地图最终计算得到的 `pixelWidth` 和 `pixelHeight` 将满足以下关系：`pixelWidth / pixelHeight = lngSpan / latSpan * aspectScale`（假设未指定 [proejction](~${componentNameInLink}.projection)，且 [preserveAspect](~${componentNameInLink}.preserveAspect) 设为保持长宽比）。
+
+当不使用真正的投影公式（[proejction](~${componentNameInLink}.projection)）时，GeoJSON 里的经纬度会被线性映射到像素坐标。`aspectScale` 提供了一种简单方式，用于视觉上补偿这种映射所造成的形变（由于地球是球形，经度对应的物理尺寸在高纬度地区会收缩）。例如，`aspectScale` 可以通过以下公式粗略计算：`aspectScale = Math.cos(center_latitude * Math.PI / 180)`，这与正弦投影（sinusoidal projection）相似。
+
+参见 [示例](${galleryEditorPath}geo-graph&edit=1&reset=1)。
 
 #${prefix} boundingCoords(Array) = null
 
@@ -189,16 +191,6 @@ boundingCoords: [
     [180, -90]
 ],
 ```
-
-#${prefix} zoom(number) = 1
-
-当前视角的缩放比例。
-
-#${prefix} scaleLimit(Object)
-
-{{ use: partial-scale-limit(
-    prefix = "#" + ${prefix}
-) }}
 
 #${prefix} nameMap(Object)
 

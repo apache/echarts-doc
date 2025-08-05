@@ -212,6 +212,15 @@ const option = {
     defaultHeight = '80%'
 ) }}
 
+{{ use: partial-coord-sys(
+    version = '6.0.0',
+    seriesType = "treemap",
+    coordSysDefault = "'none'",
+    calendar = true,
+    matrix = true,
+    none = true
+) }}
+
 ## squareRatio(number)
 
 <ExampleUIControlNumber min="0.1" default="0.75" step="0.1" />

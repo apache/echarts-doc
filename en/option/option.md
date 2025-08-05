@@ -122,8 +122,6 @@ Global font style.
     defaultFontSize: 12
 ) }}
 
-{{import: partial-rich-inherit-plain-label}}
-
 {{import: partial-animation }}
 
 # stateAnimation(Object)
@@ -165,6 +163,8 @@ The default value of `useUTC` is false, for sake of considering:
 Notice: the setting only affects "display time", not "parse time".
 For how time value (like `1491339540396`, `'2013-01-04'`, ...) is parsed in echarts, see [the time part in date](~series-line.data).
 
+
+{{import: partial-rich-inherit-plain-label}}
 
 # options(Array)
 

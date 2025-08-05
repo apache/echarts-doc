@@ -3,9 +3,15 @@
 
 # grid(Object)
 
-Drawing grid in rectangular coordinate. In a single grid, at most two X and Y axes each is allowed. [Line chart](~series-line), [bar chart](~series-bar), and [scatter chart (bubble chart)](~series-scatter) can be drawn in grid.
+The `grid component` is a rectangular container, used to lay out two-dimensional rectangular coordinate system (also known as `cartesian2d` coordinate system).
 
-In ECharts 2.x, there could only be one single grid component at most in a single echarts instance. But in ECharts 3, there is no limitation.
+A `cartesian2d` coordinate system is composed fo an [xAxis](~xAixs) and a [yAxis](~yAxis). Multiple `cartesian2d` coordinate systems can be arranged within a single `grid component` - that is, multiple [xAxis](~xAixs) and multiple [yAxis](~yAxis) instances can be configured within one `grid component`.
+
+An [xAxis](~xAixs) or a [yAxis](~yAxis) can be shared by multiple `cartesian2d` coordinate systems. For example, one [xAxis](~xAixs) and two [yAxis](~yAxis) form two `cartesian2d` coordinate systems.
+
+[Line chart](~series-line), [bar chart](~series-bar), and [scatter chart (bubble chart)](~series-scatter), etc., can be drawn in `grid component`.
+
+> In ECharts 2.x, there could only be one single grid component at most in a single echarts instance. But since ECharts 3, there is no limitation.
 
 **Following is an example of Anscombe Quartet:**
 
@@ -82,6 +88,7 @@ See also [outerBounds example](${galleryEditorPath}doc-example/grid-outerBounds&
 
 {{ use: partial-rect-layout-width-height(
     hostName = "`outerBounds`",
+    version = "6.0.0",
     noZ = true,
     prefix = '##',
     defaultLeft = 0,
@@ -113,3 +120,11 @@ See also [outerBounds example](${galleryEditorPath}doc-example/grid-outerBounds&
 
 {{ use: partial-tooltip-in-coords() }}
 
+{{ use: partial-coord-sys(
+    version = '6.0.0',
+    nonSeriesComponentMainType = "grid",
+    coordSysDefault = "'none'",
+    matrix = true,
+    calendar = true,
+    none = true
+) }}

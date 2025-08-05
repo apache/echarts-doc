@@ -151,6 +151,15 @@ The sunburst chart supports data drilling by default, which means when a user cl
     defaultRadius = "[0, '75%']"
 ) }}
 
+{{ use: partial-coord-sys(
+    version = '6.0.0',
+    seriesType = "sunburst",
+    coordSysDefault = "'none'",
+    calendar = true,
+    matrix = true,
+    none = true
+) }}
+
 ## data(Array)
 
 The data structure of [series-sunburst.data](~series-sunburst.data) is like tree. For example:

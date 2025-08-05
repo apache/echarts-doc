@@ -563,6 +563,15 @@ feature: {
     componentName = "工具栏（toolbox）"
 ) }}
 
+{{ use: partial-coord-sys(
+    version = '6.0.0',
+    nonSeriesComponentMainType = "toolbox",
+    coordSysDefault = "'none'",
+    matrix = true,
+    calendar = true,
+    none = true
+) }}
+
 ## tooltip(Object)
 
 工具箱的 tooltip 配置，配置项同 [tooltip](~tooltip)。默认不显示，可以在需要特殊定制文字样式（尤其是想用自定义 CSS 控制文字样式）的时候开启 tooltip，如下示例：

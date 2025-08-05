@@ -117,9 +117,11 @@ const option = {
 ** 注意：**
 整个主题河流view的位置信息复用了单个时间轴的位置信息，即left，top，right，bottom。
 
-## coordinateSystem(string) = "single"
-
-坐标系统，主题河流用的是单个的时间轴。
+{{ use: partial-coord-sys(
+    seriesType = "themeRiver",
+    coordSysDefault = "'singleAxis'",
+    singleAxis = true,
+) }}
 
 ## boundaryGap(Array) = ["10%", "10%"]
 

@@ -23,7 +23,9 @@ It could be used with [rectangular coordinate](~grid) and [polar coordinate](~po
     coordSysDefault = "'cartesian2d'",
     cartesian2d = true,
     polar = true,
+    singleAxis = true,
     geo = true,
+    matrix = true,
     calendar = true
 ) }}
 

@@ -32,31 +32,15 @@ option.series[0].data.forEach(function (item) {
 
 {{ use: partial-coord-sys(
     seriesType = "graph",
-    coordSysDefault = "null",
+    coordSysDefault = "'none'",
     none = true,
     cartesian2d = true,
     polar = true,
+    singleAxis = true,
     geo = true,
-    calendar = true
+    calendar = true,
+    matrix = true
 ) }}
-
-## center(Array)
-
-<ExampleUIControlVector default="0,0" dims="x,y" />
-
-当前视角的中心点。可以是包含两个 `number` 类型（表示像素值）或 `string` 类型（表示相对容器的百分比）的数组。
-从 `5.3.3` 版本开始支持 `string` 类型。
-
-例如：
-```ts
-center: [115.97, '30%']
-```
-
-## zoom(number) = 1
-
-<ExampleUIControlNumber default="1" min="0" step="0.1" />
-
-当前视角的缩放比例。
 
 ## layout(string) = 'none'
 
@@ -140,15 +124,13 @@ edgeLength: [10, 50]
 
 但是仍然是个试验性的参数，参见 [#11024](https://github.com/apache/echarts/issues/11024)。
 
-## roam(boolean|string) = false
 
-{{ use: partial-roam() }}
-
-## scaleLimit(Object)
-
-{{ use: partial-scale-limit(
-    prefix = "##"
+{{ use: partial-view-coord-sys-common(
+    prefix = '#',
+    componentMainType = 'series',
+    componentSubType = 'graph'
 ) }}
+
 
 ## nodeScaleRatio(number) = 0.6
 

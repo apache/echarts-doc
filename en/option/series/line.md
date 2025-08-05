@@ -28,6 +28,7 @@ Broken line chart relates all the data points [symbol](~series-line.symbol) by b
     coordSysDefault = "'cartesian2d'",
     cartesian2d = true,
     polar = true,
+    singleAxis = true,
     geo = false
 ) }}
 
