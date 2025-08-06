@@ -276,7 +276,7 @@ When `geoIndex` or `geoId` is specified, [series-map.map](~series-map.map) other
 ## geoId(number) = undefined
 
 {{ if: ${version} }}
-{{ use: partial-version(version = ${version}) }}
+{{ use: partial-version(version = ${version|minVersion('6.0.0')}) }}
 {{ /if }}
 
 The id of the [geographic coordinate system](~geo) to base on. When mutiple `geographic` exist within an ECharts instance, use this to specify the corresponding `geographic`.

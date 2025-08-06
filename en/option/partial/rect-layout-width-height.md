@@ -15,7 +15,10 @@
     defaultLeft = ${defaultLeft},
     defaultTop = ${defaultTop},
     defaultRight = ${defaultRight},
-    defaultBottom = ${defaultBottom}
+    defaultBottom = ${defaultBottom},
+    hintPreserveAspect = ${hintPreserveAspect},
+    hintGeoRectLayoutApproaches = ${hintGeoRectLayoutApproaches},
+    componentNameInLink = ${componentNameInLink}
 ) }}
 
 #${prefix|default("#")} width(string|number) = ${defaultWidth|default("'auto'")}
@@ -26,6 +29,14 @@
 
 Width of ${hostNameStr}. {{ if: !${defaultWidth} }}Adaptive by default.{{ /if }}
 
+`width` can be a pixel value like `20`; it can also be a percentage value relative to the container width like `'20%'`.
+
+{{ use: partial-preserve-aspect-hint(
+    hintPreserveAspect = ${hintPreserveAspect},
+    hintGeoRectLayoutApproaches = ${hintGeoRectLayoutApproaches},
+    componentNameInLink = ${componentNameInLink}
+) }}
+
 #${prefix|default("#")} height(string|number) = ${defaultHeight|default("'auto'")}
 
 {{ if: ${version} }}
@@ -34,3 +45,10 @@ Width of ${hostNameStr}. {{ if: !${defaultWidth} }}Adaptive by default.{{ /if }}
 
 Height of ${hostNameStr}. {{ if: !${defaultHeight} }}Adaptive by default.{{ /if }}
 
+`height` can be a pixel value like `20`; it can also be a percentage value relative to the container height like `'20%'`.
+
+{{ use: partial-preserve-aspect-hint(
+    hintPreserveAspect = ${hintPreserveAspect},
+    hintGeoRectLayoutApproaches = ${hintGeoRectLayoutApproaches},
+    componentNameInLink = ${componentNameInLink}
+) }}

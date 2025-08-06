@@ -582,7 +582,15 @@ Alias of [links](~series-graph.links)
     defaultLeft = "'center'",
     defaultTop = "'middle'",
     defaultWidth = 'auto',
-    defaultHeight = 'auto'
+    defaultHeight = 'auto',
+    hintPreserveAspect = true,
+    componentNameInLink = 'series-graph'
+) }}
+
+{{ use: partial-preserve-aspect(
+    prefix = '#',
+    componentNameReadable = 'graph series',
+    componentNameInLink = 'series-graph'
 ) }}
 
 {{ use: partial-silent(

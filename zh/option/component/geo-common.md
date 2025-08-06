@@ -3,10 +3,12 @@
 
 {{ if: ${inMap} }}
 {{ var: componentNameInLink = 'series-map' }}
+{{ var: componentNameReadable = '地图系列' }}
 {{ var: componentMainType = 'series' }}
 {{ var: componentSubType = 'map' }}
 {{ else }}
 {{ var: componentNameInLink = 'geo' }}
+{{ var: componentNameReadable = 'geo 组件' }}
 {{ var: componentMainType = 'geo' }}
 {{ var: componentSubType = null }}
 {{ /if }}
@@ -163,7 +165,8 @@ series: {
 {{ use: partial-view-coord-sys-common(
     prefix = ${prefix},
     componentMainType = ${componentMainType},
-    componentSubType = ${componentSubType}
+    componentSubType = ${componentSubType},
+    supportClip = true
 ) }}
 
 
@@ -293,15 +296,17 @@ boundingCoords: [
 ) }}
 {{ /if }}
 
-{{ use: partial-rect-layout(
-    prefix = ${prefix}
+{{ use: partial-rect-layout-width-height(
+    prefix = ${prefix},
+    hostName = ${componentNameReadable},
+    hintPreserveAspect = true,
+    hintGeoRectLayoutApproaches = true,
+    componentNameInLink = ${componentNameInLink}
 ) }}
 
 #${prefix} layoutCenter(Array) = null
 
-`layoutCenter` 和 `layoutSize` 提供了除了 `left/right/top/bottom/width/height` 之外的布局手段。
-
-在使用 `left/right/top/bottom/width/height` 的时候，可能很难在保持地图高宽比的情况下把地图放在某个盒形区域的正中间，并且保证不超出盒形的范围。此时可以通过 `layoutCenter` 属性定义地图中心在屏幕中的位置，`layoutSize` 定义地图的大小。如下示例
+`layoutCenter` 和 `layoutSize` 用于定义 ${componentNameReadable} 所拥有的矩形区域，其中`layoutCenter` 定义了区域中心在容器中的位置，`layoutSize` 定义了区域的大小。如下示例：
 
 ```ts
 layoutCenter: ['30%', '30%'],
@@ -311,10 +316,40 @@ layoutSize: 100
 
 设置这两个值后 `left/right/top/bottom/width/height` 无效。
 
+{{ use: partial-geo-rect-layout-approaches-hint(
+    hintGeoRectLayoutApproaches = true,
+    componentNameInLink = ${componentNameInLink}
+) }}
+
+
 #${prefix} layoutSize(number|string)
 
-地图的大小，见 `layoutCenter`。支持相对于屏幕宽高的百分比或者绝对的像素大小。
+地图的大小，见 [layoutCenter](${componentNameInLink}.layoutCenter)。支持相对于容器宽高的百分比或者绝对的像素大小。
 
+{{ use: partial-geo-rect-layout-approaches-hint(
+    hintGeoRectLayoutApproaches = true,
+    componentNameInLink = ${componentNameInLink}
+) }}
+
+{{ use: partial-preserve-aspect(
+    prefix = ${prefix},
+    componentNameReadable = ${componentNameReadable},
+    componentNameInLink = ${componentNameInLink}
+) }}
+
+#${prefix} clip(boolean) = false
+
+{{ use: partial-version(version = "6.0.0") }}
+
+{{ use: partial-view-coord-sys-allocated-rect-desc(
+    componentNameReadable = ${componentNameReadable},
+    componentNameInLink = ${componentNameInLink},
+    isGeoOrMap = true
+) }}
+
+当地图超出这个分配的矩形区域时，`clip` 决定了是否剪裁超出部分。
+
+**参见示例：** [geo roam indicator](${galleryEditorPath}doc-example/geo-roam-indicator&edit=1&reset=1).
 
 
 {{ target: partial-geo-common-state }}

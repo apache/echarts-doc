@@ -654,6 +654,8 @@ The content displayed at the end of the text after truncation.
 {{ if: ${componentType} === 'xAxis' || ${componentType} === 'yAxis' }}
 #${prefix} nameMoveOverlap(boolean) = true
 
+<ExampleUIControlBoolean default="true"/>
+
 {{ use: partial-version(version = "6.0.0") }}
 
 Whether to move axis name to avoid overlap with axis labels.

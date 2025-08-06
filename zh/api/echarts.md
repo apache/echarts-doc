@@ -158,47 +158,87 @@ echarts.use(
 使用方法见 [option.geo](option.html#geo.map)。
 
 **参数：**
-+ `mapName`
++ **@param `mapName`:**
 
     地图名称，在 [geo](option.html#geo) 组件或者 [map](option.html#series-map) 图表类型中设置的 `map` 对应的就是该值。
 
-+ `opt`
 
-    + `geoJSON` 可选。GeoJson 格式的数据，具体格式见 [https://geojson.org/](https://geojson.org/)。可以是 JSON 字符串，也可以是解析得到的对象。这个参数也可以写为 `geoJson`，效果相同。
++ **@param `opt.geoJSON`:**
 
-    + `svg` 可选。从 `v5.1.0` 开始支持SVG 格式的数据。可以是字符串，也可以是解析得到的 SVG DOM 对象。更多信息参见 [SVG 底图](tutorial.html#%E5%9C%B0%E7%90%86%E5%9D%90%E6%A0%87%E7%B3%BB%E5%92%8C%E5%9C%B0%E5%9B%BE%E7%B3%BB%E5%88%97%E7%9A%84%20SVG%20%E5%BA%95%E5%9B%BE)。
+    可选。GeoJSON 格式的数据，具体格式见 [https://geojson.org/](https://geojson.org/)。可以是 JSON 字符串，也可以是解析得到的对象。这个参数也可以写为 `geoJson`，效果相同。
 
-    + `specialAreas` 可选。将地图中的部分区域缩放到合适的位置，可以使得整个地图的显示更加好看。只在 `geoJSON` 中生效，`svg` 中不生效。
+    例如，一个极小的 GeoJSON：
+    ```ts
+    const geoJSONSample = {
+        "type": "FeatureCollection",
+        "features": [
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Polygon",
+                    "coordinates": [
+                        [[2000, 2000], [5000, 2000], [5000, 5000], [2000, 5000]]
+                    ]
+                },
+                "properties": {
+                    "name": "Some Place",
+                    "cp": [220, 2100]
+                }
+            }
+        ]
+    };
+    echarts.registerMap('my_geo_sample', geoJSONSample);
+    ```
+    注：
+    + GeoJSON 中的 `features[i].properties.name` 被 ECharts 默认使用来索引这个区域，或者显示图标文字。也可以使用其他属性名，参见 [geo.nameProperty](option.html#geo.nameProperty)。
+    Note:
+    + GeoJSON 中的 `features[i].properties.cp` 是个 ECharts 可识别的可选属性。它提供了标签的位置坐标。如果没有提供，标签自动放置在相应区域的中心。
 
-示例 [USA Population Estimates](${galleryEditorPath}map-usa)：
++ **@param `opt.svg`:**
 
-```ts
-echarts.registerMap('USA', usaJson, {
-    // 把阿拉斯加移到美国主大陆左下方
-    Alaska: {
-        // 左上角经度
-        left: -131,
-        // 左上角纬度
-        top: 25,
-        // 经度横跨的范围
-        width: 15
-    },
-    // 夏威夷
-    Hawaii: {
-        left: -110,
-        top: 28,
-        width: 5
-    },
-    // 波多黎各
-    'Puerto Rico': {
-        left: -76,
-        top: 26,
-        width: 2
-    }
-});
-```
+    可选。从 `v5.1.0` 开始支持SVG 格式的数据。可以是字符串，也可以是解析得到的 SVG DOM 对象。更多信息参见 [SVG 底图](tutorial.html#%E5%9C%B0%E7%90%86%E5%9D%90%E6%A0%87%E7%B3%BB%E5%92%8C%E5%9C%B0%E5%9B%BE%E7%B3%BB%E5%88%97%E7%9A%84%20SVG%20%E5%BA%95%E5%9B%BE)。
 
-注：如果你在项目中使用了按需引入，从 v5.3.0 开始`registerMap`必须要在引入地图组件后才能使用。
+    例如，一个极小的 SVG：
+    ```ts
+    const mySVG = `<?xml version="1.0" encoding="utf-8"?>
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:ooo="http://xml.openoffice.org/svg/export" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.2" fill-rule="evenodd" xml:space="preserve">
+    <path name="left_rect" d="M 0,0 L 0,100 100,100 100,0 Z" fill="#765" stroke="rgb(56,93,138)" stroke-width="0" stroke-linecap="square" stroke-linejoin="miter"/>
+    </svg>`;
+    echarts.registerMap('my_geo_sample', {svg: mySVG});
+    ```
+
++ **@param `opt.specialAreas`:**
+
+    可选。将地图中的部分区域缩放到合适的位置，可以使得整个地图的显示更加好看。只在 `geoJSON` 中生效，`svg` 中不生效。
+
+    [specialAreas 示例](${galleryEditorPath}map-usa)：
+    ```ts
+    echarts.registerMap('USA', usaJson, {
+        // 把阿拉斯加移到美国主大陆左下方
+        Alaska: {
+            // 左上角经度
+            left: -131,
+            // 左上角纬度
+            top: 25,
+            // 经度横跨的范围
+            width: 15
+        },
+        // 夏威夷
+        Hawaii: {
+            left: -110,
+            top: 28,
+            width: 5
+        },
+        // 波多黎各
+        'Puerto Rico': {
+            left: -76,
+            top: 26,
+            width: 2
+        }
+    });
+    ```
+
+注：如果你在项目中使用了按需引入，从 v5.3.0 开始 `registerMap` 必须要在`MapChart` 或 `GeoComponent` 被 `import`（ES module import）后才能使用。
 
 ## getMap(Function)
 ```ts

@@ -159,49 +159,86 @@ Registers available maps. This can only be used after including [geo](option.htm
 
 Please refer to [option.geo](option.html#geo.map) for usage.
 
-**Parameters**
-+ `mapName`
+**Parameters:**
++ **@param `mapName`:**
 
     Map name, referring to `map` value set in [geo](option.html#geo) component or [map](option.html#series-map).
 
-+ `opt`
++ **@param `opt.geoJSON`:**
 
-    + `geoJSON` Optional. Data in GeoJson format. See [https://geojson.org/](https://geojson.org/) for more format information. Can be a JSON string or a parsed object. This key can also be `geoJson`.
+    Optional. Data in GeoJSON format. See [https://geojson.org/](https://geojson.org/) for more format information. Can be a JSON string or a parsed object. This key can also be `geoJson`.
 
-    + `svg` Optional. Data in SVG format. Can be a SVG string or a parsed SVG DOM object. See more info in [SVG Base Map](tutorial.html#SVG%20Base%20Map%20in%20Geo%20Coords%20and%20Map%20SeriesSVG%20Base%20Map). Introduced in v5.1.0
+    For example, A minimal geoJSON:
+    ```ts
+    const geoJSONSample = {
+        "type": "FeatureCollection",
+        "features": [
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Polygon",
+                    "coordinates": [
+                        [[200, 3000], [500, 3000], [500, 5000], [200, 5000]]
+                    ]
+                },
+                "properties": {
+                    "name": "Some Place",
+                    "cp": [220, 2100]
+                }
+            }
+        ]
+    };
+    echarts.registerMap('my_geo_sample', {geoJSON: geoJSONSample});
+    ```
+    Note:
+    + `features[i].properties.name` in GeoJSON is required by ECharts to query the corresponding region, or display the label. Property `name` is used by default, but can also be other properties, see [geo.nameProperty](option.html#geo.nameProperty).
+    + `features[i].properties.cp` is an optional property that ECharts can recoganize. It provides coordinates on which the label can be displayed. If not provided, the label will be displayed at the center of the region.
 
-    + `specialAreas` Optional. zoomed part of a specific area in the map for better visual effect. Only work for `geoJSON`.
++ **@param `opt.svg`:**
 
-**For example [USA Population Estimates](${galleryEditorPath}map-usa): **
-```ts
-echarts.registerMap('USA', usaJson, {
-    // Move Alaska to the bottom left of United States
-    Alaska: {
-        // Upper left longitude
-        left: -131,
-        // Upper left latitude
-        top: 25,
-        // Range of longitude
-        width: 15
-    },
-    // Hawaii
-    Hawaii: {
-        left: -110,
-        top: 28,
-        width: 5
-    },
-    // Puerto Rico
-    'Puerto Rico': {
-        left: -76,
-        top: 26,
-        width: 2
-    }
-});
-```
+    Optional. Data in SVG format. Can be a SVG string or a parsed SVG DOM object. See more info in [SVG Base Map](tutorial.html#SVG%20Base%20Map%20in%20Geo%20Coords%20and%20Map%20SeriesSVG%20Base%20Map). Introduced in `v5.1.0`.
 
-Note:
+    For example, A minimal SVG:
+    ```ts
+    const mySVG = `<?xml version="1.0" encoding="utf-8"?>
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:ooo="http://xml.openoffice.org/svg/export" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.2" fill-rule="evenodd" xml:space="preserve">
+    <path name="left_rect" d="M 0,0 L 0,100 100,100 100,0 Z" fill="#765" stroke="rgb(56,93,138)" stroke-width="0" stroke-linecap="square" stroke-linejoin="miter"/>
+    </svg>`;
+    echarts.registerMap('my_geo_sample', {svg: mySVG});
+    ```
 
-If you only import the required components in your project, starting from v5.3.0 `registerMap` has to be used after the `MapChart` or `GeoComponent` is imported.
++ **@param `opt.specialAreas`:**
+
+    Optional. zoomed part of a specific area in the map for better visual effect. Only work for `geoJSON`.
+
+    **[An example of specialAreas](${galleryEditorPath}map-usa): **
+    ```ts
+    echarts.registerMap('USA', usaJson, {
+        // Move Alaska to the bottom left of United States
+        Alaska: {
+            // Upper left longitude
+            left: -131,
+            // Upper left latitude
+            top: 25,
+            // Range of longitude
+            width: 15
+        },
+        // Hawaii
+        Hawaii: {
+            left: -110,
+            top: 28,
+            width: 5
+        },
+        // Puerto Rico
+        'Puerto Rico': {
+            left: -76,
+            top: 26,
+            width: 2
+        }
+    });
+    ```
+
+Note: If you only import the required components in your project, starting from v5.3.0 `registerMap` cannot be called unless `MapChart` or `GeoComponent` is imported (ES module import).
 
 ## getMap(Function)
 ```ts

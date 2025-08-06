@@ -95,7 +95,8 @@ The drag-and-drop interaction of the node, which is enabled by default. After op
 {{ use: partial-view-coord-sys-common(
     prefix = '#',
     componentMainType = 'series',
-    componentSubType = 'sankey'
+    componentSubType = 'sankey',
+    roamTriggerDefault = "'global'",
 ) }}
 
 

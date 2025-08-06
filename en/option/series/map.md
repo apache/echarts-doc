@@ -46,9 +46,6 @@ Supported statistical methods:
 
 Show the symbol in related area (dot of series symbol). Available when [legend](~legend) component exists.
 
-## roam(boolean|string) = false
-
-{{ use: partial-roam() }}
 
 {{ use: partial-seriesLayoutBy() }}
 

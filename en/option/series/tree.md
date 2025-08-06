@@ -48,7 +48,8 @@ The tree diagram is mainly used to visualize the tree data structure, which is a
 {{ use: partial-view-coord-sys-common(
     prefix = '#',
     componentMainType = 'series',
-    componentSubType = 'tree'
+    componentSubType = 'tree',
+    roamTriggerDefault = "'global'"
 ) }}
 
 

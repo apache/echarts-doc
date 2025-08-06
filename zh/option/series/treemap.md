@@ -250,20 +250,14 @@ const option = {
 
 ## roam(boolean|string) = true
 
-<ExampleUIControlEnum options="true,false,scale,move">
-
-是否开启拖拽漫游（移动和缩放）。可取值有：
-
-+ `false`：关闭。
-+ `'scale'` 或 `'zoom'`：只能够缩放。
-+ `'move'` 或 `'pan'`：只能够平移。
-+ `true`：缩放和平移均可。
+{{ use: partial-roam-desc() }}
 
 ## scaleLimit(Object)
 
-{{ use: partial-scale-limit(
+{{ use: partial-scale-limit-desc(
     prefix = "##",
-    version = "5.5.1"
+    version = "5.5.1",
+    componentNameInLink = 'series-treemap'
 ) }}
 
 ## nodeClick(boolean|string) = 'zoomToNode'
