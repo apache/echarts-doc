@@ -165,7 +165,8 @@ series: {
 {{ use: partial-view-coord-sys-common(
     prefix = ${prefix},
     componentMainType = ${componentMainType},
-    componentSubType = ${componentSubType}
+    componentSubType = ${componentSubType},
+    supportClip = true
 ) }}
 
 
@@ -336,6 +337,19 @@ layoutSize: 100
     componentNameInLink = ${componentNameInLink}
 ) }}
 
+#${prefix} clip(boolean) = false
+
+{{ use: partial-version(version = "6.0.0") }}
+
+{{ use: partial-view-coord-sys-allocated-rect-desc(
+    componentNameReadable = ${componentNameReadable},
+    componentNameInLink = ${componentNameInLink},
+    isGeoOrMap = true
+) }}
+
+当地图超出这个分配的矩形区域时，`clip` 决定了是否剪裁超出部分。
+
+**参见示例：** [geo roam indicator](${galleryEditorPath}doc-example/geo-roam-indicator&edit=1&reset=1).
 
 
 {{ target: partial-geo-common-state }}

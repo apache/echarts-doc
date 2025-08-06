@@ -98,7 +98,8 @@ const option = {"tooltip":{"trigger":"item","triggerOn":"mousemove"},"series":[{
 {{ use: partial-view-coord-sys-common(
     prefix = '#',
     componentMainType = 'series',
-    componentSubType = 'sankey'
+    componentSubType = 'sankey',
+    roamTriggerDefault = "'global'"
 ) }}
 
 

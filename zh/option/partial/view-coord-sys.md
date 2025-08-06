@@ -115,6 +115,24 @@ center: ['50%', '50%']
 
 当缩放和平移时，[center](~${componentNameInLink}.center) 和 [zoom](~${componentNameInLink}.zoom) 的值会被相应改变。
 
+#${prefix} roamTrigger(string) = ${roamTriggerDefault|default("'selfRect'")}
+
+{{ use: partial-version(version = "6.0.0") }}
+
+[缩放和平移（roam）](~${componentNameInLink}.roam) 可被鼠标触发。
+
+Options:
+- `'selfRect'`:
+
+    缩放和平移的触发点只能是图形元素形成的包围盒中。
+
+- `'global'`:
+
+    {{ if: ${supportClip} }}如果 `clip: true`，缩放和平移的触发点是剪裁矩形中的任何地方；否则，触发点是画布中的任何地方。{{ else }}缩放和平移的触发点是画布中的任何地方。{{ /if }}
+
+{{ if: ${isGeoOrMap} }}
+参见示例 [geo roam indicator](${galleryEditorPath}doc-example/geo-roam-indicator&edit=1&reset=1).
+{{ /if }}
 
 
 {{ target: partial-geo-preserve-aspect }}
@@ -123,22 +141,35 @@ center: ['50%', '50%']
 
 #${prefix} preserveAspect(boolean|string) = ${preserveAspectDefault|default(false)}
 
+{{ if: ${componentNameInLink} === 'geo' || ${componentNameInLink} === 'series-map' }}
+{{ var: isGeoOrMap = true }}
+{{ /if }}
+
 <ExampleUIControlBoolean default="false" />
 
 {{ use: partial-version(version = "6.0.0") }}
 
-`aspect ratio`（宽高比）在此处指的是要渲染的内容的原始包围盒的 `width / height`。
+`aspect ratio` 指 `width / height`。
 
-假设为 ${componentNameReadable} 分配的 `矩形区域` 是通过以下配置定义的：
-[${componentNameInLink}.left](~${componentNameInLink}.left) / [.right](~${componentNameInLink}.right) / [.top](~${componentNameInLink}.top) / [.bottom](~${componentNameInLink}.bottom) / [.width](~${componentNameInLink}.width) / [.height](~${componentNameInLink}.height)。
+"preserve aspect" 指是否要保持被渲染的内容的原始包围盒的 `aspect ratio`。
+
+{{ use: partial-view-coord-sys-allocated-rect-desc(
+    componentNameReadable = ${componentNameReadable},
+    componentNameInLink = ${componentNameInLink},
+    isGeoOrMap = ${isGeoOrMap}
+) }}
+
+但是这个矩形的 `aspect ratio` 不一定和内容的原始 `aspect ratio` 一致，从而可能导致内容被拉伸而失真。
 
 `preserveAspect` 的不同选项有如下效果：
-- `null` / `undefined` / `false`（默认）：不会保留宽高比，而是拉伸内容以填满 `${componentNameReadable}矩形区域`。拉伸有可能导致图形失真。
-- `'contain'` / `true`：保留宽高比。内容的包围盒被完整地包含在 `${componentNameReadable}矩形区域` 中，并尽可能放大以触达边界。此时可使用 [preserveAspectAlign](~${componentNameInLink}.preserveAspectAlign) 和 [preserveAspectVerticalAlign](~${componentNameInLink}.preserveAspectVerticalAlign) 调整位置。
-- `'cover'`：保留宽高比。内容的包围盒会覆盖整个 `${componentNameReadable}矩形区域`，并尽可能缩小以触达边界。此时可使用 [preserveAspectAlign](~${componentNameInLink}.preserveAspectAlign) 和 [preserveAspectVerticalAlign](~${componentNameInLink}.preserveAspectVerticalAlign) 调整位置。
+- `null` / `undefined` / `false`（默认）：不会保持内容的原始 `aspect ratio`，而是拉伸内容以填满 `${componentNameReadable}矩形区域`。拉伸有可能导致图形失真。
+- `'contain'` / `true`：保持内容的 `aspect ratio`。内容的包围盒被完整地包含在 `${componentNameReadable}矩形区域` 中，并尽可能放大以触达边界。此时可使用 [preserveAspectAlign](~${componentNameInLink}.preserveAspectAlign) 和 [preserveAspectVerticalAlign](~${componentNameInLink}.preserveAspectVerticalAlign) 调整位置。
+- `'cover'`：保持内容的原始 `aspect ratio`。内容的包围盒会覆盖整个 `${componentNameReadable}矩形区域`，并尽可能缩小以触达边界。此时可使用 [preserveAspectAlign](~${componentNameInLink}.preserveAspectAlign) 和 [preserveAspectVerticalAlign](~${componentNameInLink}.preserveAspectVerticalAlign) 调整位置。
 
-{{ if: (${componentNameInLink} === 'geo' || ${componentNameInLink} === 'series-map') }}
+{{ if: ${isGeoOrMap} }}
 注意：当使用 [layoutCenter](~${componentNameInLink}.layoutCenter) 和 [layoutSize](~${componentNameInLink}.layoutSize) 时，始终会保留宽高比，无论 `preserveAspect` 配置为何值。
+
+**参见示例：** [geo roam indicator](${galleryEditorPath}doc-example/geo-roam-indicator&edit=1&reset=1).
 {{ /if }}
 
 #${prefix} preserveAspectAlign(string) = 'center'
@@ -151,6 +182,8 @@ center: ['50%', '50%']
 
 参见 [preserveAspect](~${componentNameInLink}.preserveAspect)。
 
+参见示例 [geo roam indicator](${galleryEditorPath}doc-example/geo-roam-indicator&edit=1&reset=1).
+
 #${prefix} preserveAspectVerticalAlign(string) = 'middle'
 
 <ExampleUIControlEnum options="top,bottom,middle" default="middle" />
@@ -160,3 +193,12 @@ center: ['50%', '50%']
 Options: `'top'` | `'bottom'` | `'middle'`。
 
 参见 [preserveAspect](~${componentNameInLink}.preserveAspect)。
+
+参见示例 [geo roam indicator](${galleryEditorPath}doc-example/geo-roam-indicator&edit=1&reset=1).
+
+
+
+{{ target: partial-view-coord-sys-allocated-rect-desc }}
+
+为 ${componentNameReadable} 分配的 `矩形区域` 是通过以下配置决定的：
+[${componentNameInLink}.left](~${componentNameInLink}.left) / [.right](~${componentNameInLink}.right) / [.top](~${componentNameInLink}.top) / [.bottom](~${componentNameInLink}.bottom) / [.width](~${componentNameInLink}.width) / [.height](~${componentNameInLink}.height){{ if: ${isGeoOrMap} }} / [.aspectScale](~${componentNameInLink}.aspectScale){{ /if }}。

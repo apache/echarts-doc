@@ -167,7 +167,8 @@ Note: `stream` is not required in the `projection`.
 {{ use: partial-view-coord-sys-common(
     prefix = ${prefix},
     componentMainType = ${componentMainType},
-    componentSubType = ${componentSubType}
+    componentSubType = ${componentSubType},
+    supportClip = true
 ) }}
 
 
@@ -341,6 +342,20 @@ Size of map, see [layoutCenter](${componentNameInLink}.layoutCenter) for more in
     componentNameReadable = ${componentNameReadable},
     componentNameInLink = ${componentNameInLink}
 ) }}
+
+#${prefix} clip(boolean) = false
+
+{{ use: partial-version(version = "6.0.0") }}
+
+{{ use: partial-view-coord-sys-allocated-rect-desc(
+    componentNameReadable = ${componentNameReadable},
+    componentNameInLink = ${componentNameInLink},
+    isGeoOrMap = true
+) }}
+
+`clip` specifies whether to hide the outside part of the map with respect to the allocated rect.
+
+**See example:** [geo roam indicator](${galleryEditorPath}doc-example/geo-roam-indicator&edit=1&reset=1).
 
 
 {{ target: partial-geo-common-state }}

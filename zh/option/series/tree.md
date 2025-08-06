@@ -91,7 +91,8 @@ const option = {
 {{ use: partial-view-coord-sys-common(
     prefix = '#',
     componentMainType = 'series',
-    componentSubType = 'tree'
+    componentSubType = 'tree',
+    roamTriggerDefault = "'global'"
 ) }}
 
 

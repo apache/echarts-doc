@@ -116,27 +116,58 @@ When [roaming](~${componentNameInLink}.roam), the values in [center](~${componen
 
 When roaming, the values in [center](~${componentNameInLink}.center) and [zoom](~${componentNameInLink}.zoom) will be modified correspondingly.
 
+#${prefix} roamTrigger(string) = ${roamTriggerDefault|default("'selfRect'")}
 
+{{ use: partial-version(version = "6.0.0") }}
+
+[Roaming](~${componentNameInLink}.roam) can be triggered by mouse dragging or mouse wheel.
+
+Options:
+- `'selfRect'`:
+
+    The roaming can only be triggered on the bounding rect of the graphic elements.
+
+- `'global'`:
+
+    {{ if: ${supportClip} }}If `clip: true`, the roaming can only be triggered at any position within the clipped area. Otherwise it can be triggered in canvas globally.{{ else }}The roaming can be triggered in canvas globally.{{ /if }}
+
+{{ if: ${isGeoOrMap} }}
+**See example:** [geo roam indicator](${galleryEditorPath}doc-example/geo-roam-indicator&edit=1&reset=1).
+{{ /if }}
 
 {{ target: partial-preserve-aspect }}
 
 #${prefix} preserveAspect(boolean|string) = ${preserveAspectDefault|default(false)}
 
+{{ if: ${componentNameInLink} === 'geo' || ${componentNameInLink} === 'series-map' }}
+{{ var: isGeoOrMap = true }}
+{{ /if }}
+
 <ExampleUIControlBoolean default="false" />
 
 {{ use: partial-version(version = "6.0.0") }}
 
-`aspect ratio` here refers to `width / height` of the original bounding rect of the content to be rendered.
+`aspect ratio` here refers to `width / height`.
 
-Suppose a `rectangular area` allocated to `${componentNameReadable}` is defined by [${componentNameInLink}.left](~${componentNameInLink}.left) / [.right](~${componentNameInLink}.right) / [.top](~${componentNameInLink}.top) / [.bottom](~${componentNameInLink}.bottom) / [.width](~${componentNameInLink}.width) / [.height](~${componentNameInLink}.height).
+"preserve aspect" refers whether to preserve the `aspect ratio` of the original bounding rect of the content to be rendered.
+
+{{ use: partial-view-coord-sys-allocated-rect-desc(
+    componentNameReadable = ${componentNameReadable},
+    componentNameInLink = ${componentNameInLink},
+    isGeoOrMap = ${isGeoOrMap}
+) }}
+
+But the `aspect ratio` of this rectangle may not match that of the content's original bounding rect, which may cause distortion.
 
 Options of `preserveAspect`:
-- `null`/`undefined`/`false` (default): `aspect ratio` will not be preserved, but stretched to fill the `${componentNameReadable} rectangular area`, which may cause distortion.
-- `'contain'`/`true`: The `aspect ratio` is preserved; the bounding rect of the content are fully contained by the `${componentNameReadable} rectangular area`, and scaled up as much as possible to meet the `${componentNameReadable} rectangular area`. [preserveAspectAlign](~${componentNameInLink}.preserveAspectAlign) and [preserveAspectVerticalAlign](~${componentNameInLink}.preserveAspectVerticalAlign) can be used to adjust the position in this case.
-- `'cover'`: The `aspect ratio` is preserved; the bounding rect of the content covers the `${componentNameReadable} rectangular area`, and scaled down as much as possible to meet the `${componentNameReadable} rectangular area`. [preserveAspectAlign](~${componentNameInLink}.preserveAspectAlign) and [preserveAspectVerticalAlign](~${componentNameInLink}.preserveAspectVerticalAlign) can be used to adjust the position in this case.
+- `null`/`undefined`/`false` (default): The original `aspect ratio` of the content will not be preserved, but stretched to fill the `${componentNameReadable} rectangular area`, which may cause distortion.
+- `'contain'`/`true`: The original `aspect ratio` of the content is preserved; the bounding rect of the content are fully contained by the `${componentNameReadable} rectangular area`, and scaled up as much as possible to meet the `${componentNameReadable} rectangular area`. [preserveAspectAlign](~${componentNameInLink}.preserveAspectAlign) and [preserveAspectVerticalAlign](~${componentNameInLink}.preserveAspectVerticalAlign) can be used to adjust the position in this case.
+- `'cover'`: The original `aspect ratio` of the content is preserved; the bounding rect of the content covers the `${componentNameReadable} rectangular area`, and scaled down as much as possible to meet the `${componentNameReadable} rectangular area`. [preserveAspectAlign](~${componentNameInLink}.preserveAspectAlign) and [preserveAspectVerticalAlign](~${componentNameInLink}.preserveAspectVerticalAlign) can be used to adjust the position in this case.
 
-{{ if: (${componentNameInLink} === 'geo' || ${componentNameInLink} === 'series-map') }}
+{{ if: ${isGeoOrMap} }}
 Notice: When using [layoutCenter](~${componentNameInLink}.layoutCenter) and [layoutSize](~${componentNameInLink}.layoutSize), the `aspect radio` is always preserved, regardless of this `preserveAspect`.
+
+**See example:** [geo roam indicator](${galleryEditorPath}doc-example/geo-roam-indicator&edit=1&reset=1).
 {{ /if }}
 
 #${prefix} preserveAspectAlign(string) = 'center'
@@ -149,6 +180,8 @@ Options: `'left'` | `'right'` | `'center'`.
 
 See [preserveAspect](~${componentNameInLink}.preserveAspect).
 
+See example [geo roam indicator](${galleryEditorPath}doc-example/geo-roam-indicator&edit=1&reset=1).
+
 #${prefix} preserveAspectVerticalAlign(string) = 'middle'
 
 <ExampleUIControlEnum options="top,bottom,middle" default="middle" />
@@ -158,3 +191,11 @@ See [preserveAspect](~${componentNameInLink}.preserveAspect).
 Options: `'top'` | `'bottom'` | `'middle'`.
 
 See [preserveAspect](~${componentNameInLink}.preserveAspect).
+
+See example [geo roam indicator](${galleryEditorPath}doc-example/geo-roam-indicator&edit=1&reset=1).
+
+
+
+{{ target: partial-view-coord-sys-allocated-rect-desc }}
+
+A `rectangular area` allocated to `${componentNameReadable}` is determined by [${componentNameInLink}.left](~${componentNameInLink}.left) / [.right](~${componentNameInLink}.right) / [.top](~${componentNameInLink}.top) / [.bottom](~${componentNameInLink}.bottom) / [.width](~${componentNameInLink}.width) / [.height](~${componentNameInLink}.height){{ if: ${isGeoOrMap} }} / [.aspectScale](~${componentNameInLink}.aspectScale){{ /if }}.

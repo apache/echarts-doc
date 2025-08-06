@@ -279,7 +279,7 @@
 ## geoId(number) = undefined
 
 {{ if: ${version} }}
-{{ use: partial-version(version = ${version}) }}
+{{ use: partial-version(version = ${version|minVersion('6.0.0')}) }}
 {{ /if }}
 
 布局时所基于的 [地理坐标系](~geo) 的 id。当一个 ECharts 实例中存在多个地理坐标系时，用其指定所使用的坐标系。
