@@ -91,7 +91,7 @@ Options:
 
     Lay out based on a [matrix coordinate system](~matrix). When multiple matrix coordinate systems exist within an ECharts instance, the corresponding system should be specified using [matrixIndex](~${componentNameInLink}.matrixIndex) or [matrixId](~${componentNameInLink}.matrixId).{{if: ${nonSeriesComponentMainType} === 'grid' }}
 
-    See example [tiny Cartesians in matrix](${galleryEditorPath}matrix-cartesian-tiny&edit=1&reset=1).
+    See example [sparkline in matrix](${galleryEditorPath}matrix-sparkline&edit=1&reset=1).
     {{ /if }}
 {{ /if }}
 
@@ -158,7 +158,7 @@ Options:
 
     The entire series or component is laid out as a whole based on the specified coordinate system - that is, the overall bounding rect or basic anchor point is calculated relative to the system.
 
-    - For example, a [grid component](~grid) can be laid out in a [matrix coordinate system](~matrix) or a [calendar coordinate system](~calendar), where its layout rectangle is calculated by the specified [${componentNameInLink}.coords](~${componentNameInLink}.coords) in that system. See example [tiny Cartesians in matrix](${galleryEditorPath}matrix-cartesian-tiny&edit=1&reset=1).
+    - For example, a [grid component](~grid) can be laid out in a [matrix coordinate system](~matrix) or a [calendar coordinate system](~calendar), where its layout rectangle is calculated by the specified [${componentNameInLink}.coords](~${componentNameInLink}.coords) in that system. See example [sparkline in matrix](${galleryEditorPath}matrix-sparkline&edit=1&reset=1).
     - For example, a [pie series](~series-pie) or a [chord series](~series-chord) can be laid out in a [geo coordinate system](~geo) or a [cartesian2d coordinate system](~grid), where the center is calculated by the specified [series-pie.coords](~series-pie.coords) or [series-pie.center](~series-pie.center) in that system. See example [pie in geo](${galleryEditorPath}map-iceland-pie&edit=1&reset=1).
 
 {{ if: ${seriesType} }}
@@ -175,7 +175,7 @@ See also [${componentNameInLink}.coordinateSystem](~${componentNameInLink}.coord
 
 When [coordinateSystemUsage](~${componentNameInLink}.coordinateSystemUsage) is `'box'`, `coord` is used as the input to the coordinate system and calculate the layout rectangle or anchor point.
 
-Examples: [tiny Cartesians in matrix](${galleryEditorPath}matrix-cartesian-tiny&edit=1&reset=1), [grpah in matrix](${galleryEditorPath}doc-example/matrix-graph-box&edit=1&reset=1).
+Examples: [sparkline in matrix](${galleryEditorPath}matrix-sparkline&edit=1&reset=1), [grpah in matrix](${galleryEditorPath}doc-example/matrix-graph-box&edit=1&reset=1).
 
 {{ if: ${seriesType} === 'pie' }}
 [series-pie.center](~series-pie.center) and [series-pie.coord](~series-pie.coord) can be used interchangably in this case.

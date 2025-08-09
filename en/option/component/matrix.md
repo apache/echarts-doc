@@ -8,7 +8,7 @@ Matrix coordinate system component.
 
 The `matrix` coordinate system, like a table, can serve as the layout system of data items in a series, mainly used to display the relationship and interaction of multi-dimensional data. It presents data in the form of a rectangular grid, where each grid unit (or "cell") represents the value of a specific data point in series like `series.heatmap`, `series.scatter`, `series.custom`, etc. The entire layout is displayed in rows and columns to express the relationship of two-dimensional or higher-dimensional data.
 
-The `matrix` coordinate system can also serve as the layout system of the box of series like `series.pie`, `series.tree`, etc., or another coordinate systems like `grid` (i.e., Cartesian coordinate system), `geo`, `polar`, etc., or plain components like `legend`, `dataZoom`, etc. This character enables tiny charts to be laid out in a table, or enables the layout approach like [CSS grid layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout). Currently all the series and components can be laid out within a matrix. `matrix` can also be used purely as table for data texts.
+The `matrix` coordinate system can also serve as the layout system of the box of series like `series.pie`, `series.tree`, etc., or another coordinate systems like `grid` (i.e., Cartesian coordinate system), `geo`, `polar`, etc., or plain components like `legend`, `dataZoom`, etc. This character enables [mini charts](${galleryEditorPath}matrix-sparkline&edit=1&reset=1) to be laid out in a table, or enables the layout approach like [CSS grid layout](${galleryEditorPath}matrix-grid-layout&edit=1&reset=1). Currently all the series and components can be laid out within a matrix. `matrix` can also be used purely as table for data texts.
 
 Correlation heat map using heat map in matrix coordinate system:
 ~[800x400](${galleryViewPath}matrix-correlation-heatmap&edit=1&reset=1)
@@ -25,8 +25,12 @@ Correlation pie chart using pie chart in matrix coordinate system. The example b
 Confusion matrix using custom series in matrix coordinate system:
 ~[800x400](${galleryViewPath}matrix-confusion&edit=1&reset=1)
 
-Tiny line charts are laid out in a table:
-~[800x600](${galleryViewPath}matrix-cartesian-tiny&edit=1&reset=1)
+Mini charts are laid out in a table:
+~[800x600](${galleryViewPath}matrix-sparkline&edit=1&reset=1)
+~[800x600](${galleryViewPath}matrix-mini-bar-geo&edit=1&reset=1)
+
+And other **mini charts** examples: [matrix mini bar example](${galleryEditorPath}matrix-mini-bar-data-collection&edit=1&reset=1).
+
 
 By flexibly using the combination of chart series, coordinate systems, and APIs, richer effects can be achieved.
 
@@ -52,7 +56,7 @@ X-axis header region.
 
 {{ use: partial-matrix-header(
     name = 'x-axis cells',
-    prefix = '##'
+    matrixDim = 'x',
 ) }}
 
 ## y(Object)
@@ -63,7 +67,7 @@ Y-axis header region.
 
 {{ use: partial-matrix-header(
     name = 'y-axis cells',
-    prefix = '##'
+    matrixDim = 'y',
 ) }}
 
 ## body(Object)

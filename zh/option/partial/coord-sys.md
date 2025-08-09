@@ -91,7 +91,7 @@
 
     布局在一个 [矩阵坐标系](~matrix)中。当一个 ECharts 实例中存在多个矩阵坐标系时，须通过 [matrixIndex](~${componentNameInLink}.matrixIndex) 或 [matrixId](~${componentNameInLink}.matrixId) 指定所使用的矩阵坐标系。{{if: ${nonSeriesComponentMainType} === 'grid' }}
 
-    参见示例 [矩阵坐标系中直角坐标系](${galleryEditorPath}matrix-cartesian-tiny&edit=1&reset=1)。
+    参见示例 [矩阵坐标系中的微型折线图](${galleryEditorPath}matrix-sparkline&edit=1&reset=1)。
     {{ /if }}
 {{ /if }}
 
@@ -159,7 +159,7 @@
 
     此系列或组件作为一个整体，在指定的坐标系中进行布局——即根据坐标系计算整体的包围盒或基础锚点。
 
-    - 例如，[grid 组件](~grid) 可以布局在 [matrix 坐标系](~matrix) 或 [calendar 坐标系](~calendar) 中，这时其布局矩形是由 [${componentNameInLink}.coords](~${componentNameInLink}.coords) 在坐标系中计算出来的。参见示例：[矩阵中的小型直角坐标系](${galleryEditorPath}matrix-cartesian-tiny&edit=1&reset=1)。
+    - 例如，[grid 组件](~grid) 可以布局在 [matrix 坐标系](~matrix) 或 [calendar 坐标系](~calendar) 中，这时其布局矩形是由 [${componentNameInLink}.coords](~${componentNameInLink}.coords) 在坐标系中计算出来的。参见示例：[矩阵中的微型折线图](${galleryEditorPath}matrix-sparkline&edit=1&reset=1)。
     - 又如，[饼图系列](~series-pie) 或 [和弦图系列](~series-chord) 可以布局在 [geo 坐标系](~geo) 或 [cartesian2d 坐标系](~grid) 中，这时其中心点是由 [series-pie.coords](~series-pie.coords) 或 [series-pie.center](~series-pie.center) 在坐标系中计算出来的。参见示例：[地理坐标系中的饼图](${galleryEditorPath}map-iceland-pie&edit=1&reset=1)。
 
 {{ if: ${seriesType} }}
@@ -178,7 +178,7 @@
 
 当 [coordinateSystemUsage](~${componentNameInLink}.coordinateSystemUsage) 为 `'box'` 时, `coord` 被输入给坐标系，计算得到布局位置（布局盒或者中心点）。
 
-例子：[微型直角坐标系矩阵](${galleryEditorPath}matrix-cartesian-tiny&edit=1&reset=1), [矩阵中的关系图](${galleryEditorPath}doc-example/matrix-graph-box&edit=1&reset=1).
+例子：[矩阵中的微型折线图](${galleryEditorPath}matrix-sparkline&edit=1&reset=1), [矩阵中的关系图](${galleryEditorPath}doc-example/matrix-graph-box&edit=1&reset=1).
 
 {{ if: ${seriesType} === 'pie' }}
 在此场景下，[series-pie.center](~series-pie.center) 和 [series-pie.coord](~series-pie.coord) 起同样作用。
