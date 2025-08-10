@@ -513,124 +513,299 @@ ECharts 中的事件有两种，一种是鼠标事件，在鼠标点击某个图
 ## convertToPixel(Function)
 ```ts
 (
-    // finder 用于指示『使用哪个坐标系进行转换』。
-    // 通常地，可以使用 index 或者 id 或者 name 来定位。
+    // `finder` 用于指示『使用哪个坐标系或数轴或系列进行转换』。
+    // 通常使用 xxxIndex 或者 xxxId 或者 xxxName 来定位。
     finder: {
-        seriesIndex?: number,
-        seriesId?: string,
-        seriesName?: string,
-        geoIndex?: number,
-        geoId?: string,
-        geoName?: string,
         xAxisIndex?: number,
-        xAxisId?: string,
+        xAxisId?: string | number,
         xAxisName?: string,
         yAxisIndex?: number,
-        yAxisId?: string,
+        yAxisId?: string | number,
         yAxisName?: string,
         gridIndex?: number,
-        gridId?: string,
-        gridName?: string
+        gridId?: string | number,
+        gridName?: string,
+
+        polarIndex?: number,
+        polarId?: string | number,
+        polarName?: string,
+
+        geoIndex?: number,
+        geoId?: string | number,
+        geoName?: string,
+
+        singleAxisIndex?: number,
+        singleAxisId?: string | number,
+        singleAxisName?: string,
+
+        calendarIndex?: number,
+        calendarId?: string | number,
+        calendarName?: string,
+
+        matrixIndex?: number,
+        matrixId?: string | number,
+        matrixName?: string,
+
+        seriesIndex?: number,
+        seriesId?: string | number,
+        seriesName?: string,
     },
-    // 要被转换的值。
-    value: Array|number
-    // 转换的结果为像素坐标值，以 echarts 实例的 dom 节点的左上角为坐标 [0, 0] 点。
-) => Array|number
+    // 要被转换的坐标（基于指定的坐标系或数轴或系列）。
+    coord:
+          [(number | string), (number | string)]
+        | [
+            [(number | string), (number | string)],
+            [(number | string), (number | string)]
+          ]
+        | (number | string),
+    // 额外的可选参数，由每个坐标系自己定义。
+    opt?: unknown
+) =>
+    // 转换的结果为像素值，以 echarts 实例的 dom 节点的左上角为
+    // 坐标 [0, 0] 点。
+    [number, number] | number
 ```
 
-转换坐标系上的点到像素坐标值。
+转换坐标系或数轴或系列（即，[cartesian2d (grid)](option.html#grid), [only xAxis](option.html#xAxis), [only yAxis](option.html#yAxis), [polar](option.html#polar), [geo](option.html#geo), [series.map](option.html#series-map), [singleAxis](option.html#singleAxis), [calender](option.html#calendar), [matrix](option.html#matrix)）上的坐标到画布上的像素值。
+
+输入的 `coord` 以及返回值的格式由各个坐标系或坐标轴或系列定义：
++ [cartesian2d（grid）](option.html#grid)：
+
+    输入的 `coord` 是一个两项数组，其中 `value[0]` 和 `value[1]` 分别对应 [xAxis](option.html#xAxis) 和 [yAxis](option.html#yAxis)。数据类型根据 [axis.type](option.html#~xAxis.type) 的不同而不同：
+
+    - 如果 [axis.type](option.html#~xAxis.type) 为 `'value'`、`'log'`，则输入的 `coord` 应为 `[number, number]`。
+    - 如果 [axis.type](option.html#~xAxis.type) 为 `'category'`，则输入的 `coord` 可以是 `[(number | string), (number | string)]`，其中 `string` 表示 `series.data` 中的原始字符串，`number` 表示由原始字符串转换而来的序号（为非负整数，从 `0` 开始递增）。
+    - 如果 [axis.type](option.html#~xAxis.type) 为 `'time'`，则输入的 `coord` 可以是 `[(number | string | Date), (number | string | Date)]`，其中 `number` 表示时间戳，`string | Date` 表示可被 [`echarts/src/util/number.ts` 中的 `parseDate` 方法](https://github.com/apache/echarts/blob/master/src/util/number.ts) 解析的任意时间格式。
+
+    例如：
+    ```ts
+    // [300, 900] 表示该点 x 轴上对应刻度值 300，y 轴上对应刻度值 900。
+    // 注意，一个 grid 可能含有多个 xAxis 和多个 yAxis，任何一对 xAxis-yAxis 形成一个 cartesian。
+    // 使用第三个 xAxis 和 id 为 'y1' 的 yAxis 形成的 cartesian 进行转换：
+    result = chart.convertToPixel({xAxisIndex: 2, yAxisId: 'y1'}, [300, 900]);
+    // 使用 id 为 'g1' 的 grid 的第一个 cartesian 进行转换：
+    result = chart.convertToPixel({gridId: 'g1'}, [300, 900]);
+    ```
+
++ [只转化 yAxis](option.html#xAxis) 或 [只转换 yAxis](option.html#yAxis)：
+
+    例如，把某个坐标轴的点转换成像素坐标：
+    ```ts
+    // id 为 'x0' 的 xAxis (type: number) 的刻度 3000 位置所对应的横向像素位置：
+    result = chart.convertToPixel({xAxisId: 'x0'}, 3000); // 返回一个 number。
+    // 第二个 yAxis (type: category) 的刻度 'my category' 位置所对应的纵向像素位置：
+    result = chart.convertToPixel({yAxisIndex: 1}, 'my category'); // 返回一个 number。
+    ```
+
++ [polar](option.html#polar)：
+
+    可类比于 `cartesian2d（grid）`。但仅支持通过 `polarIndex` / `polarId` / `polarName` 查询，不支持通过 `angleAxis` 和 `radiusAxis` 查询。
+
++ [geo](option.html#geo)：
+
+    输入的 `coord` 可以是 `[number, number]`，当 [map](option.html#geo.map) 为 `GeoJSON` 时表示 `[longitude, latitude]`，当 [map](option.html#geo.map) 为 `SVG` 时表示 `[x_on_SVG, y_on_SVG]`。
+
+    它也可以是一个 `string`，表示 `GeoJSON` 中的 `name`（即 `features[i].properties.name`，详见 [registerMap](~echarts.registerMap)）或 `SVG` 中的名称（即参见 [SVG Base Map](tutorial.html#SVG%20Base%20Map%20in%20Geo%20Coords%20and%20Map%20Series) 中的 “Named Element”），并返回该区域中心的像素点。
+
+    例如，
+    ```ts
+    // [128.3324, 89.5344] represents [longitude, latitude].
+    // Perform conversion in the first geo coordinate system:
+    result = chart.convertToPixel('geo', [128.3324, 89.5344]); // The parameter 'geo' means {geoIndex: 0}.
+    // Perform conversion in the second geo coordinate system:
+    result = chart.convertToPixel({geoIndex: 1}, [128.3324, 89.5344]);
+    // Perform conversion in the geo coordinate system with id 'bb':
+    result = chart.convertToPixel({geoId: 'bb'}, [128.3324, 89.5344]);
+    // Input a name in `features[i].properties.name` in `GeoJSON`
+    // or a shape with `name="Bern"` in SVG:
+    result = chart.convertToPixel({geoId: 'bb'}, 'Bern');
+    ```
+
+    在地理坐标系（[geo](option.html#geo)）上，把某个点的经纬度坐标转换成为像素坐标：
+    ```ts
+    // [128.3324, 89.5344] 表示 [经度，纬度]。
+    // 使用第一个 geo 坐标系进行转换：
+    result = chart.convertToPixel('geo', [128.3324, 89.5344]); // 参数 'geo' 等同于 {geoIndex: 0}
+    // 使用第二个 geo 坐标系进行转换：
+    result = chart.convertToPixel({geoIndex: 1}, [128.3324, 89.5344]);
+    // 使用 id 为 'bb' 的 geo 坐标系进行转换：
+    result = chart.convertToPixel({geoId: 'bb'}, [128.3324, 89.5344]);
+    // 输入一个名字，名字定义为 `GeoJSON` 中的 `features[i].properties.name:"Bern"`，
+    // 或者定义为 SVG 中的 `name="Bern"`：
+    result = chart.convertToPixel({geoId: 'bb'}, 'Bern');
+    ```
+
++ [series.map](option.html#series-map)：
+
+    可类比于 `geo`。例如：
+    ```ts
+    result = chart.convertToPixel({seriesId: 'my_map'}, [128.3324, 89.5344]);
+    ```
+
++ [singleAxis](option.html#singleAxis)：
+
+    可类比于 `only xAxis` 或 `only yAxis`。例如：
+    ```ts
+    result = chart.convertToPixel({singleAxisIndex: 0}, 333); // `axis.type` is `'value'`.
+    result = chart.convertToPixel({singleAxisIndex: 1}, 'my category'); // `axis.type` is `'category'`.
+    ```
+
++ [calendar](option.html#calendar)：
+    {{ use: partial-api-converter-calendar-coord-desc }}
+
++ In [matrix](option.html#matrix)：
+    {{ use: partial-api-converter-matrix-coord-desc }}
+
++ [series.graph](option.html#series-graph)：
+
+    例如，
+    ```ts
+    // 因为每个 graph series 自己持有一个坐标系，所以我们直接在 `finder` 中指定 series：
+    // 输入的 `coord`（例如 [2000, 3500]）基于 graph 的原始坐标系，
+    // 即，与 `series.data[i].x` 和 `series.data[i].y` 所使用的坐标系相同。
+    result = chart.convertToPixel({seriesIndex: 0}, [2000, 3500]);
+    result = chart.convertToPixel({seriesId: 'k2'}, [100, 500]);
+    ```
+
++ 其他情况：
+
+    在某个系列所在的坐标系（无论是 cartesian、geo、graph 等）中，转换某点成像素坐标：
+    ```ts
+    // 使用第一个系列对应的坐标系：
+    result = chart.convertToPixel({seriesIndex: 0}, [128.3324, 89.5344]);
+    // 使用 id 为 'k2' 的系列所对应的坐标系：
+    result = chart.convertToPixel({seriesId: 'k2'}, [128.3324, 89.5344]);
+    ```
 
 
-例：
+## convertToLayout(Function)
 
-在地理坐标系（[geo](option.html#geo)）上，把某个点的经纬度坐标转换成为像素坐标：
+{{ use: partial-version(version = "6.0.0") }}
+
 ```ts
-// [128.3324, 89.5344] 表示 [经度，纬度]。
-// 使用第一个 geo 坐标系进行转换：
-chart.convertToPixel('geo', [128.3324, 89.5344]); // 参数 'geo' 等同于 {geoIndex: 0}
-// 使用第二个 geo 坐标系进行转换：
-chart.convertToPixel({geoIndex: 1}, [128.3324, 89.5344]);
-// 使用 id 为 'bb' 的 geo 坐标系进行转换：
-chart.convertToPixel({geoId: 'bb'}, [128.3324, 89.5344]);
+(
+    // `finder` 用于指示『使用哪个坐标系或数轴或系列进行转换』。
+    // 通常使用 xxxIndex 或者 xxxId 或者 xxxName 来定位。
+    finder: {
+        calendarIndex?: number,
+        calendarId?: string | number,
+        calendarName?: string,
+
+        matrixIndex?: number,
+        matrixId?: string | number,
+        matrixName?: string,
+    },
+    // 要被转换的坐标（基于指定的坐标系或数轴或系列）。
+    coord:
+          [(number | string), (number | string)]
+        | [
+            [(number | string), (number | string)],
+            [(number | string), (number | string)]
+          ]
+        | (number | string),
+    // 额外的可选参数，由每个坐标系自己定义。
+    opt?: unknown
+) =>
+    {
+        rect?: {x: number; y: number; width: number; height: number};
+        contentRect?: {x: number; y: number; width: number; height: number};
+        matrixXYLocatorRange?: [[number, number], [number, number]];
+    }
 ```
 
-在直角坐标系（cartesian，[grid](option.html#grid)）上，把某个点的坐标转换成为像素坐标：
-```ts
-// [300, 900] 表示该点 x 轴上对应刻度值 300，y 轴上对应刻度值 900。
-// 注意，一个 grid 可能含有多个 xAxis 和多个 yAxis，任何一对 xAxis-yAxis 形成一个 cartesian。
-// 使用第三个 xAxis 和 id 为 'y1' 的 yAxis 形成的 cartesian 进行转换：
-chart.convertToPixel({xAxisIndex: 2, yAxisId: 'y1'}, [300, 900]);
-// 使用 id 为 'g1' 的 grid 的第一个 cartesian 进行转换：
-chart.convertToPixel({gridId: 'g1'}, [300, 900]);
-```
+将坐标系上的 `coord`（即，[calendar](option.html#calendar)、[matrix](option.html#matrix)）转换为布局信息。
 
-把某个坐标轴的点转换成像素坐标：
-```ts
-// id 为 'x0' 的 xAxis 的刻度 3000 位置所对应的横向像素位置：
-chart.convertToPixel({xAxisId: 'x0'}, 3000); // 返回一个 number。
-// 第二个 yAxis 的刻度 600 位置所对应的纵向像素位置：
-chart.convertToPixel({yAxisIndex: 1}, 600); // 返回一个 number。
-```
+输入的 `coord` 的格式和返回类型由各个坐标系定义：
++ [calendar](option.html#calendar):
+    {{ use: partial-api-converter-calendar-coord-desc }}
+    返回值为:
+    ```ts
+    interface CoordinateSystemDataLayout {
+        // 每个单元格的矩形，不考虑单元格是否有边框，即，相邻单元格会贴着。
+        rect: {x: number, y: number, width: number, height: number};
+        // `rect` 减去边框得到的矩形。
+        contentRect: {x: number, y: number, width: number, height: number};
+    }
+    ```
 
-把关系图（[graph](option.html#series-graph)）的点转换成像素坐标：
-```ts
-// 因为每个 graph series 自己持有一个坐标系，所以我们直接在 finder 中指定 series：
-chart.convertToPixel({seriesIndex: 0}, [2000, 3500]);
-chart.convertToPixel({seriesId: 'k2'}, [100, 500]);
-```
++ In [matrix](option.html#matrix):
+    {{ use: partial-api-converter-matrix-coord-desc }}
+    返回值为：
+    ```ts
+    interface CoordinateSystemDataLayout {
+        // 每个单元格的矩形，不考虑单元格是否有边框，即，相邻单元格会贴着。
+        rect: {x: number, y: number, width: number, height: number};
+        // 注：去除 border 和 padding 的 `contentRect` 并不提供，因为 matrix 坐标系支持结果跨越多个单元格。
 
-在某个系列所在的坐标系（无论是 cartesian、geo、graph 等）中，转换某点成像素坐标：
-```ts
-// 使用第一个系列对应的坐标系：
-chart.convertToPixel({seriesIndex: 0}, [128.3324, 89.5344]);
-// 使用 id 为 'k2' 的系列所对应的坐标系：
-chart.convertToPixel({seriesId: 'k2'}, [128.3324, 89.5344]);
-```
+        // 序数（ordinal numbers）的范围。意为：
+        // `[[minXOrdinal, maxXOrdinal], [minYOrdinal, maxYOrdinal]]`
+        matrixXYLocatorRange: [[number, number], [number, number]];
+    }
+    ```
+
 
 ## convertFromPixel(Function)
 ```ts
 (
-    // finder 用于指示『使用哪个坐标系进行转换』。
-    // 通常地，可以使用 index 或者 id 或者 name 来定位。
+    // `finder` 用于指示『使用哪个坐标系或数轴或系列进行转换』。
+    // 通常使用 xxxIndex 或者 xxxId 或者 xxxName 来定位。
     finder: {
-        seriesIndex?: number,
-        seriesId?: string,
-        seriesName?: string,
-        geoIndex?: number,
-        geoId?: string,
-        geoName?: string,
         xAxisIndex?: number,
-        xAxisId?: string,
+        xAxisId?: string | number,
         xAxisName?: string,
         yAxisIndex?: number,
-        yAxisId?: string,
+        yAxisId?: string | number,
         yAxisName?: string,
         gridIndex?: number,
-        gridId?: string,
-        gridName?: string
+        gridId?: string | number,
+        gridName?: string,
+
+        polarIndex?: number,
+        polarId?: string | number,
+        polarName?: string,
+
+        geoIndex?: number,
+        geoId?: string | number,
+        geoName?: string,
+
+        singleAxisIndex?: number,
+        singleAxisId?: string | number,
+        singleAxisName?: string,
+
+        calendarIndex?: number,
+        calendarId?: string | number,
+        calendarName?: string,
+
+        matrixIndex?: number,
+        matrixId?: string | number,
+        matrixName?: string,
+
+        seriesIndex?: number,
+        seriesId?: string | number,
+        seriesName?: string,
     },
-    // 要被转换的值，为像素坐标值，以 echarts 实例的 dom 节点的左上角为坐标 [0, 0] 点。
-    value: Array|number
-    // 转换的结果，为逻辑坐标值。
-) => Array|number
+    // 要被转换的值，为像素值，以 echarts 实例的 dom 节点的左上角为坐标 [0, 0] 点。
+    value: [number, number] | number,
+    // 额外的可选参数，由每个坐标系自己定义。
+    opt?: unknown
+) =>
+    // 转换的结果坐标（基于指定的坐标系或数轴或系列）。
+      [number, number]
+    | [[number, number], [number, number]]
+    | number
 ```
 
-转换像素坐标值到逻辑坐标系上的点。是 [convertToPixel](~echartsInstance.convertToPixel) 的逆运算。
+转换像素值到逻辑坐标系上的点。是 [convertToPixel](~echartsInstance.convertToPixel) 的逆运算。
+
 具体实例可参考 [convertToPixel](~echartsInstance.convertToPixel)。
 
 
 ## containPixel(Function)
 ```ts
 (
-    // finder 用于指示『在哪个坐标系或者系列上判断』。
-    // 通常地，可以使用 index 或者 id 或者 name 来定位。
+    // `finder` 用于指示『使用哪个坐标系或数轴或系列进行转换』。
+    // 通常使用 xxxIndex 或者 xxxId 或者 xxxName 来定位。
     finder: {
-        seriesIndex?: number,
-        seriesId?: string,
-        seriesName?: string,
-        geoIndex?: number,
-        geoId?: string,
-        geoName?: string,
         xAxisIndex?: number,
         xAxisId?: string,
         xAxisName?: string,
@@ -640,6 +815,18 @@ chart.convertToPixel({seriesId: 'k2'}, [128.3324, 89.5344]);
         gridIndex?: number,
         gridId?: string,
         gridName?: string
+
+        geoIndex?: number,
+        geoId?: string,
+        geoName?: string,
+
+        matrixIndex?: number,
+        matrixId?: string,
+        matrixName?: string
+
+        seriesIndex?: number,
+        seriesId?: string,
+        seriesName?: string,
     },
     // 要被判断的点，为像素坐标值，以 echarts 实例的 dom 节点的左上角为坐标 [0, 0] 点。
     value: Array
@@ -648,20 +835,21 @@ chart.convertToPixel({seriesId: 'k2'}, [128.3324, 89.5344]);
 
 判断给定的点是否在指定的坐标系或者系列上。
 
-目前支持在这些坐标系和系列上进行判断：[grid](option.html#grid), [polar](option.html#polar), [geo](option.html#geo), [series-map](option.html#series-map), [series-graph](option.html#series-graph), [series-pie](option.html#series-pie)。
+目前支持在这些坐标系和系列上进行判断：[grid](option.html#grid), [polar](option.html#polar), [geo](option.html#geo), [matrix](option.html#matrix), [series-map](option.html#series-map), [series-graph](option.html#series-graph), [series-pie](option.html#series-pie)。
 
 例：
 
 ```ts
 // 判断 [23, 44] 点是否在 geoIndex 为 0 的 geo 坐标系上。
-chart.containPixel('geo', [23, 44]); // 'geo' 等同于 {geoIndex: 0}
+result = chart.containPixel('geo', [23, 44]); // 'geo' 等同于 {geoIndex: 0}
 // 判断 [23, 44] 点是否在 gridId 为 'z' 的 grid 上。
-chart.containPixel({gridId: 'z'}, [23, 44]);
+result = chart.containPixel({gridId: 'z'}, [23, 44]);
 // 判断 [23, 44] 点是否在 index 为 1，4，5 的系列上。
-chart.containPixel({seriesIndex: [1, 4, 5]}, [23, 44]);
+result = chart.containPixel({seriesIndex: [1, 4, 5]}, [23, 44]);
 // 判断 [23, 44] 点是否在 index 为 1，4，5 的系列或者 gridName 为 'a' 的 grid 上。
-chart.containPixel({seriesIndex: [1, 4, 5], gridName: 'a'}, [23, 44]);
+result = chart.containPixel({seriesIndex: [1, 4, 5], gridName: 'a'}, [23, 44]);
 ```
+
 
 ## showLoading(Function)
 ```ts
@@ -781,3 +969,77 @@ img.src = myChart.getDataURL({
 ## dispose
 
 销毁实例，销毁后实例无法再被使用。
+
+
+
+{{ target: partial-api-converter-calendar-coord-desc }}
+    输入的 `coord` 可以是 `number | string | Date`，其中 `number` 表示时间戳，`string | Date` 表示可被 [`echarts/src/util/number.ts` 中的 `parseDate` 方法](https://github.com/apache/echarts/blob/master/src/util/number.ts) 解析的任意时间格式。例如，
+    ```ts
+    result = chart.convertToPixel({calendarIndex: 0}, '2021-01-01');
+    result = chart.convertToPixel({calendarIndex: 0}, new Date(1609459200000));
+    result = chart.convertToPixel({calendarIndex: 0}, 1609459200000);
+    ```
+{{ /target }}
+
+
+{{ target: partial-api-converter-matrix-coord-desc }}
+    输入的 `coord` 用于定位一个矩形，然后返回该矩形的中心点。更多详情参见 [matrix.body.data.coord](option.html#matrix.body.data.coord)。例如：
+    ```ts
+    chart.setOption({
+        matrix: {
+            x: {data: ['AA', 'BB', 'CC', 'DD']},
+            y: {data: ['MM', 'NN']}
+        }
+    });
+    result = chart.convertToPixel({matrixIndex: 0}, ['AA', 'NN']);
+    result = chart.convertToLayout({matrixIndex: 0}, ['AA', 'NN']);
+    // 这个矩形可以跨越多个单元格：
+    result = chart.convertToPixel({matrixIndex: 0}, [['AA', 'CC'], 'MM']);
+    result = chart.convertToLayout({matrixIndex: 0}, [['AA', 'CC'], 'MM']);
+    // 这些数值是序数（非负整数，从 0 自增），对应于上述字符串名字。
+    result = chart.convertToPixel({matrixIndex: 0}, [1, 2]);
+    result = chart.convertToLayout({matrixIndex: 0}, [1, 2]);
+    result = chart.convertToPixel({matrixIndex: 0}, [[1, 3], [0, 1]]);
+    result = chart.convertToLayout({matrixIndex: 0}, [[1, 3], [0, 1]]);
+    ```
+
+    输入的 `opt` 是可选的:
+    ```ts
+    opt?: {
+        // 可选值：
+        //  - `0`/`null`/`undefined`（默认），不把结果限制到边界内，即，如果输入的
+        //    `coord[0]` 或 `coord[1]` 是 `null`/`undefined`/`NaN`/"超出边界"，
+        //    则相应的结果值是 `NaN`，而非使用一个边界值。
+        //  - 否则，限制到边界内。其中：
+        //    - `1`: 限制在整个矩形坐标系的范围中。
+        //    - `2`: 限制在矩形坐标系的 body 范围中。
+        //    - `3`: 限制在矩形坐标系的 corner 范围中。
+        // 注：
+        //  - 此参数在 `convertToPixel`、`convertToLayout` 和 `convertFromPixel` 都支持。
+        //  - X 和 Y 分别计算，即，如果只有 X 超出边界，结果可能为
+        //    `rect: {x: NaN, width: NaN, y: 123, width: 456}`
+        clamp?: null | undefined | 0 | 1 | 2 | 3;
+
+        // 如果“结果矩形区域”和“合并的单元格”相交（即，
+        // `matrix['body'/'corner'].data.mergeCells: true`）
+        // 是否扩展“结果矩形区域”以完全覆盖“合并的单元格”。默认为 `false`。
+        ignoreMergeCells?: boolean;
+    }
+
+    // 例如：
+    const {rect, matrixXYLocatorRange} = chart.convertToLayout(
+        {matrixIndex: 0},
+        [10000, 2],
+        {clamp: 0}
+    );
+    // `rect` 为 `{x: NaN, y: 10, width: NaN, height: 100}`。
+    // `matrixXYLocatorRange` 为 `[[NaN, NaN], [2, 2]]`。
+    const {rect, matrixXYLocatorRange} = chart.convertToLayout(
+        {matrixIndex: 0},
+        [10000, 2],
+        {clamp: 1}
+    );
+    // `rect` 为 `{x: 20, y: 10, width: 200, height: 100}`.
+    // `matrixXYLocatorRange` 为 `[[0, 3], [2, 2]]`.
+    ```
+{{ /target }}

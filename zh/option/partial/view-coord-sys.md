@@ -89,6 +89,9 @@ center: ['50%', '50%']
 
 > 百分比字符串从 `v5.3.3` 开始引入。最初是分母是画布的宽高，但这种方式并不合理，因此从 `v6.0.0` 起改为基于包围盒。
 
+{{ use: partial-view-coord-sys-indicator-example-link(
+    componentNameInLink = ${componentNameInLink}
+) }}
 
 #${prefix} zoom(number) = 1
 
@@ -101,6 +104,10 @@ center: ['50%', '50%']
 {{ use: partial-zoom-value-desc() }}
 
 当 [平移缩放（roam）](~${componentNameInLink}.roam) 时，[center](~${componentNameInLink}.center) 和 `zoom` 的值会被相应改变。
+
+{{ use: partial-view-coord-sys-indicator-example-link(
+    componentNameInLink = ${componentNameInLink}
+) }}
 
 #${prefix} scaleLimit(Object)
 
@@ -130,12 +137,11 @@ Options:
 
     {{ if: ${supportClip} }}如果 `clip: true`，缩放和平移的触发点是剪裁矩形中的任何地方；否则，触发点是画布中的任何地方。{{ else }}缩放和平移的触发点是画布中的任何地方。{{ /if }}
 
-{{ if: ${isGeoOrMap} }}
-参见示例 [geo roam indicator](${galleryEditorPath}doc-example/geo-roam-indicator&edit=1&reset=1).
-{{ /if }}
+{{ use: partial-view-coord-sys-indicator-example-link(
+    componentNameInLink = ${componentNameInLink}
+) }}
 
 
-{{ target: partial-geo-preserve-aspect }}
 
 {{ target: partial-preserve-aspect }}
 
@@ -168,9 +174,11 @@ Options:
 
 {{ if: ${isGeoOrMap} }}
 注意：当使用 [layoutCenter](~${componentNameInLink}.layoutCenter) 和 [layoutSize](~${componentNameInLink}.layoutSize) 时，始终会保留宽高比，无论 `preserveAspect` 配置为何值。
-
-**参见示例：** [geo roam indicator](${galleryEditorPath}doc-example/geo-roam-indicator&edit=1&reset=1).
 {{ /if }}
+
+{{ use: partial-view-coord-sys-indicator-example-link(
+    componentNameInLink = ${componentNameInLink}
+) }}
 
 #${prefix} preserveAspectAlign(string) = 'center'
 
@@ -182,7 +190,9 @@ Options:
 
 参见 [preserveAspect](~${componentNameInLink}.preserveAspect)。
 
-参见示例 [geo roam indicator](${galleryEditorPath}doc-example/geo-roam-indicator&edit=1&reset=1).
+{{ use: partial-view-coord-sys-indicator-example-link(
+    componentNameInLink = ${componentNameInLink}
+) }}
 
 #${prefix} preserveAspectVerticalAlign(string) = 'middle'
 
@@ -194,7 +204,20 @@ Options: `'top'` | `'bottom'` | `'middle'`。
 
 参见 [preserveAspect](~${componentNameInLink}.preserveAspect)。
 
-参见示例 [geo roam indicator](${galleryEditorPath}doc-example/geo-roam-indicator&edit=1&reset=1).
+{{ use: partial-view-coord-sys-indicator-example-link(
+    componentNameInLink = ${componentNameInLink}
+) }}
+
+
+
+{{ target: partial-view-coord-sys-indicator-example-link }}
+
+{{ if: ${componentNameInLink} === 'geo' || ${componentNameInLink} === 'series-map' }}
+**参考示例**来理解此概念：[geo roam indicator](${galleryEditorPath}doc-example/geo-roam-indicator&edit=1&reset=1).
+{{ elif: ${componentNameInLink} === 'series-graph' }}
+**参考示例**来理解此概念：[graph roam indicator](${galleryEditorPath}doc-example/graph-roam-indicator&edit=1&reset=1).
+{{ /if }}
+
 
 
 

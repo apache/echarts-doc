@@ -8,7 +8,7 @@
 
 矩阵坐标系（`matrix`）类似表格，可作为系列（`series`）中数据项的布局系统，主要用于展示多维数据的关系与交互。它以矩形网格形式呈现数据，每个网格单元（或"单元格"）代表 `series.heatmap`、`series.scatter`、`series.custom` 等系列中某个数据点的值。整体布局以行列形式展示，用于表达二维或高维数据之间的关系。
 
-矩阵坐标系（`matrix`）还可作为盒布局系统，布局各个系列、其他坐标系（如 `grid`（即笛卡尔坐标系）、`geo`、`polar` 等）和普通组件（如 `legend`、`dataZoom` 等）。该特性支持在表格中布局微型图表，或使用类似 [CSS grid layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout) 的布局方式进行排版。目前，所有系列和组件均可在 `matrix` 中布局。`matrix` 也可纯用作文字数据表。
+矩阵坐标系（`matrix`）还可作为盒布局系统，布局各个系列、其他坐标系（如 `grid`（即笛卡尔坐标系）、`geo`、`polar` 等）和普通组件（如 `legend`、`dataZoom` 等）。该特性支持在表格中布局 [微型图表](${galleryEditorPath}matrix-sparkline&edit=1&reset=1)，或使用类似 [CSS grid layout](${galleryEditorPath}matrix-grid-layout&edit=1&reset=1) 的布局方式进行排版。目前，所有系列和组件均可在 `matrix` 中布局。`matrix` 也可纯用作文字数据表。
 
 在矩阵坐标系中使用热力图的相关矩阵图：
 ~[800x400](${galleryViewPath}matrix-correlation-heatmap&edit=1&reset=1)
@@ -24,6 +24,13 @@
 
 在矩阵坐标系中使用自定义系列的混淆矩阵图：
 ~[800x400](${galleryViewPath}matrix-confusion&edit=1&reset=1)
+
+矩阵中的微型图表：
+~[800x600](${galleryViewPath}matrix-sparkline&edit=1&reset=1)
+~[800x600](${galleryViewPath}matrix-mini-bar-geo&edit=1&reset=1)
+
+以及其他 **微型图** 的例子：[矩阵中的微型柱状图和地图](${galleryEditorPath}matrix-mini-bar-data-collection&edit=1&reset=1)。
+
 
 灵活利用图表系列、坐标系、API 的组合，可以实现更丰富的效果。
 
@@ -48,7 +55,8 @@
 x 轴表头区。
 
 {{ use: partial-matrix-header(
-    name: 'x 轴表头区单元格'
+    name: 'x 轴表头区单元格',
+    matrixDim = 'x',
 ) }}
 
 ## y(Object)
@@ -58,7 +66,8 @@ x 轴表头区。
 y 轴表头区。
 
 {{ use: partial-matrix-header(
-    name: 'y 轴表头区单元格'
+    name: 'y 轴表头区单元格',
+    matrixDim = 'y',
 ) }}
 
 ## body(Object)

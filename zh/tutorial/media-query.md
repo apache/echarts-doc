@@ -219,7 +219,10 @@ media: [
 
 
 
-<br>
-最后看一个和时间轴结合的例子：
+## 一些示例
 
-~[750x700](${galleryViewPath}doc-example/bar-media-timeline&edit=1&reset=1)
+使用 [矩阵坐标系进行 grid layout](option.html#matrix) 和 media query:
+
+~[750x500](${galleryViewPath}matrix-grid-layout&edit=1&reset=1)
+
+This is another [media query example](${galleryEditorPath}doc-example/bar-media-timeline&edit=1&reset=1).

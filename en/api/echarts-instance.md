@@ -58,7 +58,7 @@ chart.setOption(option, {
 
     + `replaceMerge` Optional. Users can specify "component main types" here, which are the properties under the root of the option tree in [configuration item manual](option.html) (e.g., `xAxis`, `series`). The specified types of component will be merged in the mode "replaceMerge". If users intending to remove some part of components, `replaceMerge` can be used. See more details in **Component Merging Modes**.
 
-    + `lazyUpdate` Opional. Whether not to update chart immediately. `false` by default, stating update chart synchronously. If `true`, the chart will be updated in the next animation frame.
+    + `lazyUpdate` Optional. Whether not to update chart immediately. `false` by default, stating update chart synchronously. If `true`, the chart will be updated in the next animation frame.
 
     + `silent` Optional. Whether not to prevent triggering events when calling `setOption`. `false` by default, stating trigger events.
 
@@ -518,128 +518,298 @@ Unbind event-handler function.
 ## convertToPixel(Function)
 ```ts
 (
-    // finder is used to indicate in which coordinate system conversion is performed.
-    // Generally, index or id or name can be used to specify coordinate system.
+    // `finder` is used to indicate in which coordinate system or axis or series
+    // conversion is performed.
+    // Generally, it is identified by xxxIndex or xxxId or xxxName.
     finder: {
-        seriesIndex?: number,
-        seriesId?: string,
-        seriesName?: string,
-        geoIndex?: number,
-        geoId?: string,
-        geoName?: string,
         xAxisIndex?: number,
-        xAxisId?: string,
+        xAxisId?: string | number,
         xAxisName?: string,
         yAxisIndex?: number,
-        yAxisId?: string,
+        yAxisId?: string | number,
         yAxisName?: string,
         gridIndex?: number,
-        gridId?: string,
-        gridName?: string
+        gridId?: string | number,
+        gridName?: string,
+
+        polarIndex?: number,
+        polarId?: string | number,
+        polarName?: string,
+
+        geoIndex?: number,
+        geoId?: string | number,
+        geoName?: string,
+
+        singleAxisIndex?: number,
+        singleAxisId?: string | number,
+        singleAxisName?: string,
+
+        calendarIndex?: number,
+        calendarId?: string | number,
+        calendarName?: string,
+
+        matrixIndex?: number,
+        matrixId?: string | number,
+        matrixName?: string,
+
+        seriesIndex?: number,
+        seriesId?: string | number,
+        seriesName?: string,
     },
-    // The value to be converted.
-    value: Array|string
-    // Conversion result, in pixel coordinate system, where the origin ([0, 0])
-    // is on the left-top of the main dom of echarts instance.
-) => Array|string
+    // The coord (on the specified coordinate system or axis or series) to be converted.
+    coord:
+          [(number | string), (number | string)]
+        | [
+            [(number | string), (number | string)],
+            [(number | string), (number | string)]
+          ]
+        | (number | string),
+    // Extra opt, defined by each coordinate systems.
+    opt?: unknown
+) =>
+    // The result pixel values on canvas, where [0, 0] is on the left-top of
+    // the main dom of echarts instance.
+    [number, number] | number
 ```
 
-Convert a point from logical coordinate (e.g., in geo, cartesian, graph, ...) to pixel coordinate.
+Convert the `coord` on coordinate system or axis or series (i.e., [cartesian2d (grid)](option.html#grid), [only xAxis](option.html#xAxis), [only yAxis](option.html#yAxis), [polar](option.html#polar), [geo](option.html#geo), [series.map](option.html#series-map), [singleAxis](option.html#singleAxis), [calender](option.html#calendar), [matrix](option.html#matrix)) to pixel on canvas.
+
+The format of the input `coord` and return type are defined by each coordinate system or axis or series:
++ In [cartesian2d (grid)](option.html#grid):
+
+    The input `coord` is an two-item array, where `value[0]` and `value[1]` correspond to [xAxis](option.html#xAxis) and [yAxis](option.html#yAxis). The data types varies in terms of [axis.type](option.html#~xAxis.type):
+
+    - If [axis.type](option.html#~xAxis.type) is `'value'`, `'log'`, the input `coord` should be `[number, number]`.
+    - If [axis.type](option.html#~xAxis.type) is `'category'`, the input `coord` can be `[(number | string), (number | string)]`, where `string` represents the original string in `series.data`, and `number` represents an ordinal number converted from the original string (be a non-negative integer that increases starting from `0`).
+    - If [axis.type](option.html#~xAxis.type) is `'time'`, the input `coord` can be `[(number | string | Date), (number | string | Date)]`, where `number` represents a timestamp, and `string | Date` represents any time format that can be parsed by [method `parseDate` in `echarts/src/util/number.ts`](https://github.com/apache/echarts/blob/master/src/util/number.ts).
+
+    For example,
+    ```ts
+    // [300, 900] means [coord on xAxis, coord on yAxis].
+    // Notice, there might be more than one xAxis or yAxis in a grid, and each a pair of
+    // xAxis-yAxis constitutes a cartesian.
+    // Perform conversion in the cartesian consist of the third xAxis and the yAxis with id 'y1'.
+    chart.convertToPixel({xAxisIndex: 2, yAxisId: 'y1'}, [300, 900]);
+    // Perform conversion in the first cartesian of the grid with id 'g1'.
+    chart.convertToPixel({gridId: 'g1'}, [300, 900]);
+    ```
+
++ [only yAxis](option.html#xAxis) or [only yAxis](option.html#yAxis):
+
+    For example, convert a axis coord to pixel value:
+    ```ts
+    // In the xAxis with id 'x0' (type: number),
+    // convert coord 3000 to the horizontal pixel coordinate:
+    result = chart.convertToPixel({xAxisId: 'x0'}, 3000); // A pixel number will be returned.
+    // In the second yAxis (type: category),
+    // convert 'my category' to the vertical pixel coordinate:
+    result = chart.convertToPixel({yAxisIndex: 1}, 'my category'); // A pixel number will be returned.
+    ```
+
++ In [polar](option.html#polar):
+
+    It can be analogous to the `cartesian2d (grid)` case. But only support querying by `polarIndex`/`polarId`/`polarName`, but not support querying by `angleAxis` and `radiusAxis`.
+
++ In [geo](option.html#geo):
+
+    The input `coord` can be `[number, number]`, indicating `[longitude, latitude]` if the [map](option.html#geo.map) is `GeoJSON`, or `[x_on_SVG, y_on_SVG]` if the [map](option.html#geo.map) is `SVG`.
+
+    It can also be a `string`, indicating a `name` in `GeoJSON` (i.e., `features[i].properties.name`, see details in [registerMap](~echarts.registerMap)) or `SVG` (i.e., see "Named Element" in [SVG Base Map](tutorial.html#SVG%20Base%20Map%20in%20Geo%20Coords%20and%20Map%20Series)), and return the pixel point of the center of that area.
+
+    For example,
+    ```ts
+    // [128.3324, 89.5344] represents [longitude, latitude].
+    // Perform conversion in the first geo coordinate system:
+    result = chart.convertToPixel('geo', [128.3324, 89.5344]); // The parameter 'geo' means {geoIndex: 0}.
+    // Perform conversion in the second geo coordinate system:
+    result = chart.convertToPixel({geoIndex: 1}, [128.3324, 89.5344]);
+    // Perform conversion in the geo coordinate system with id 'bb':
+    result = chart.convertToPixel({geoId: 'bb'}, [128.3324, 89.5344]);
+    // Input a name in `features[i].properties.name:"Bern"` in `GeoJSON`
+    // or a shape with `name="Bern"` in SVG:
+    result = chart.convertToPixel({geoId: 'bb'}, 'Bern');
+    ```
+
++ In [series.map](option.html#series-map):
+
+    It can be analogous to the `geo` case. For example,
+    ```ts
+    result = chart.convertToPixel({seriesId: 'my_map'}, [128.3324, 89.5344]);
+    ```
+
++ In [singleAxis](option.html#singleAxis):
+
+    It can be analogous to the `only xAxis` or `only yAxis` cases. For example,
+    ```ts
+    result = chart.convertToPixel({singleAxisIndex: 0}, 333); // `axis.type` is `'value'`.
+    result = chart.convertToPixel({singleAxisIndex: 1}, 'my category'); // `axis.type` is `'category'`.
+    ```
+
++ In [calendar](option.html#calendar):
+    {{ use: partial-api-converter-calendar-coord-desc }}
+
++ In [matrix](option.html#matrix):
+    {{ use: partial-api-converter-matrix-coord-desc }}
+
++ In [series.graph](option.html#series-graph):
+
+    For example,
+    ```ts
+    // Since every graph series maintains a coordinate system for itself, we
+    // specify the graph series in `finder`.
+    // The input `coord` (e.g., [2000, 3500]) is in the graph original coordinates,
+    // that is in the same coord space as we used in `series.data[i].x` and
+    // `series.data[i].y`.
+    result = chart.convertToPixel({seriesIndex: 0}, [2000, 3500]);
+    result = chart.convertToPixel({seriesId: 'k2'}, [100, 500]);
+    ```
+
++ Other cases:
+
+    In a coordinate system (cartesian, geo, graph, ...) that contains the given series, convert a point to pixel coordinate:
+    ```ts
+    // Perform convert in the coordinate system that contains the first series.
+    result = chart.convertToPixel({seriesIndex: 0}, [128.3324, 89.5344]);
+    // Perform convert in the coordinate system that contains the series with id 'k2'.
+    result = chart.convertToPixel({seriesId: 'k2'}, [128.3324, 89.5344]);
+    ```
 
 
-For example:
+## convertToLayout(Function)
 
-In [geo](option.html#geo) coordinate system, convert a point from latlong to pixel coordinate:
+{{ use: partial-version(version = "6.0.0") }}
+
 ```ts
-// [128.3324, 89.5344] represents [longitude, latitude].
-// Perform conversion in the first geo coordinate system:
-chart.convertToPixel('geo', [128.3324, 89.5344]); // The parameter 'geo' means {geoIndex: 0}.
-// Perform conversion in the second geo coordinate system:
-chart.convertToPixel({geoIndex: 1}, [128.3324, 89.5344]);
-// Perform conversion in the geo coordinate system with id 'bb':
-chart.convertToPixel({geoId: 'bb'}, [128.3324, 89.5344]);
+(
+    // `finder` is used to indicate in which coordinate system
+    // conversion is performed.
+    // Generally, it is identified by xxxIndex or xxxId or xxxName.
+    finder: {
+        calendarIndex?: number,
+        calendarId?: string | number,
+        calendarName?: string,
+
+        matrixIndex?: number,
+        matrixId?: string | number,
+        matrixName?: string,
+    },
+    // The coord (on the specified coordinate system or axis or series) to be converted.
+    coord:
+          [(number | string), (number | string)]
+        | [
+            [(number | string), (number | string)],
+            [(number | string), (number | string)]
+          ]
+        | (number | string),
+    // Extra opt, defined by each coordinate systems.
+    opt?: unknown
+) =>
+    {
+        rect?: {x: number; y: number; width: number; height: number};
+        contentRect?: {x: number; y: number; width: number; height: number};
+        matrixXYLocatorRange?: [[number, number], [number, number]];
+    }
 ```
 
-In cartesian (see [grid](option.html#grid)), convert a point to pixel coordinate:
-```ts
-// [300, 900] means [value on xAxis, value on yAxis].
-// Notice, there might be more than one xAxis or yAxis in a grid, and each a pair of
-// xAxis-yAxis constitudes a cartesian.
-// Perform conversion in the cartesian consist of the third xAxis and the yAxis with id 'y1'.
-chart.convertToPixel({xAxisIndex: 2, yAxisId: 'y1'}, [300, 900]);
-// Perform conversion in the first cartesian of the grid with id 'g1'.
-chart.convertToPixel({gridId: 'g1'}, [300, 900]);
-```
+Convert the `coord` on coordinate system (i.e., [calender](option.html#calendar), [matrix](option.html#matrix)) to layout info.
 
-Convert a axis value to pixel value:
-```ts
-// In the xAxis with id 'x0', convert value 3000 to the horizontal pixel coordinate:
-chart.convertToPixel({xAxisId: 'x0'}, 3000); // A number will be returned.
-// In the second yAxis, convert value 600 to the vertical pixel coordinate:
-chart.convertToPixel({yAxisIndex: 1}, 600); // A number will be returned.
-```
+The format of the input `coord` and return type are defined by each coordinate system:
++ In [calendar](option.html#calendar):
+    {{ use: partial-api-converter-calendar-coord-desc }}
+    The return type is:
+    ```ts
+    interface CoordinateSystemDataLayout {
+        // The cell rect for a data item. Whether cell border exists is
+        // not considered, that is, the adjacent cell rectangles touch.
+        rect: {x: number, y: number, width: number, height: number};
+        // Shinked from `rect` to exclude border width.
+        contentRect: {x: number, y: number, width: number, height: number};
+    }
+    ```
 
-In [graph](option.html#series-graph), convert a point to pixel coordinate:
-```ts
-// Since every graph series maintains a coordinate system for itself, we
-// specify the graph series in finder.
-chart.convertToPixel({seriesIndex: 0}, [2000, 3500]);
-chart.convertToPixel({seriesId: 'k2'}, [100, 500]);
-```
++ In [matrix](option.html#matrix):
+    {{ use: partial-api-converter-matrix-coord-desc }}
+    The return type is:
+    ```ts
+    interface CoordinateSystemDataLayout {
+        // The cell rect for a data item. Whether cell border exists is
+        // not considered, that is, the adjacent cell rectangles touch.
+        rect: {x: number, y: number, width: number, height: number};
+        // Note: The `contentRect` that exclude border width and padding is
+        // not provided, as matrix coordinate system support that the
+        // result crosses multiple cells.
 
-In a cooridinate system (cartesian, geo, graph, ...) that contains the given series, convert a point to pixel coordinate:
-```ts
-// Perform convert in the coordinate system that contains the first series.
-chart.convertToPixel({seriesIndex: 0}, [128.3324, 89.5344]);
-// Perform convert in the coordinate system that contains the series with id 'k2'.
-chart.convertToPixel({seriesId: 'k2'}, [128.3324, 89.5344]);
-```
-
+        // The range of ordinal numbers of X(col) and Y(row) of `rect`.
+        // It means `[[minXOrdinal, maxXOrdinal], [minYOrdinal, maxYOrdinal]]`
+        matrixXYLocatorRange: [[number, number], [number, number]];
+    }
+    ```
 
 ## convertFromPixel(Function)
 ```ts
 (
-    // finder is used to indicate in which coordinate system conversion is performed.
-    // Generally, index or id or name can be used to specify coordinate system.
+    // `finder` is used to indicate in which coordinate system or axis or series
+    // conversion is performed.
+    // Generally, it is identified by xxxIndex or xxxId or xxxName.
     finder: {
-        seriesIndex?: number,
-        seriesId?: string,
-        seriesName?: string,
-        geoIndex?: number,
-        geoId?: string,
-        geoName?: string,
         xAxisIndex?: number,
-        xAxisId?: string,
+        xAxisId?: string | number,
         xAxisName?: string,
         yAxisIndex?: number,
-        yAxisId?: string,
+        yAxisId?: string | number,
         yAxisName?: string,
         gridIndex?: number,
-        gridId?: string,
-        gridName?: string
+        gridId?: string | number,
+        gridName?: string,
+
+        polarIndex?: number,
+        polarId?: string | number,
+        polarName?: string,
+
+        geoIndex?: number,
+        geoId?: string | number,
+        geoName?: string,
+
+        singleAxisIndex?: number,
+        singleAxisId?: string | number,
+        singleAxisName?: string,
+
+        calendarIndex?: number,
+        calendarId?: string | number,
+        calendarName?: string,
+
+        matrixIndex?: number,
+        matrixId?: string | number,
+        matrixName?: string,
+
+        seriesIndex?: number,
+        seriesId?: string | number,
+        seriesName?: string,
     },
-    // The value to be converted, in pixel coordinate system, where the origin ([0, 0])
-    // is on the left-top of the main dom of echarts instance.
-    value: Array|string
-    // Conversion result
-) => Array|string
+    // The pixel values on canvas to be converted, where [0, 0] is on the left-top of
+    // the main dom of echarts instance.
+    value: [number, number] | number,
+    // Extra opt, defined by each coordinate systems.
+    opt?: unknown
+) =>
+    // The result coord
+      [number, number]
+    | [[number, number], [number, number]]
+    | number
 ```
 
-Convert a point from pixel coordinate to logical coordinate (e.g., in geo, cartesian, graph, ...). This method is the inverse operation of [convertToPixel](~echartsInstance.convertToPixel), where the examples can be referred.
+Convert a point from pixel coordinate to logical coordinate (e.g., in geo, cartesian, graph, ...).
+
+This method is the inverse operation of [convertToPixel](~echartsInstance.convertToPixel), where the examples can be referred.
 
 
 ## containPixel(Function)
 ```ts
 (
-    // finder is used to specify coordinate systems or series on which the judgement performed.
-    // Generally, index or id or name can be used to specify coordinate system.
+    // `finder` is used to indicate in which coordinate system or axis or series
+    // conversion is performed.
+    // Generally, it is identified by xxxIndex or xxxId or xxxName.
     finder: {
-        seriesIndex?: number,
-        seriesId?: string,
-        seriesName?: string,
-        geoIndex?: number,
-        geoId?: string,
-        geoName?: string,
         xAxisIndex?: number,
         xAxisId?: string,
         xAxisName?: string,
@@ -649,6 +819,18 @@ Convert a point from pixel coordinate to logical coordinate (e.g., in geo, carte
         gridIndex?: number,
         gridId?: string,
         gridName?: string
+
+        geoIndex?: number,
+        geoId?: string,
+        geoName?: string,
+
+        matrixIndex?: number,
+        matrixId?: string,
+        matrixName?: string
+
+        seriesIndex?: number,
+        seriesId?: string,
+        seriesName?: string,
     },
     // The value to be judged, in pixel coordinate system, where the origin ([0, 0])
     // is on the left-top of the main dom of echarts instance.
@@ -658,20 +840,20 @@ Convert a point from pixel coordinate to logical coordinate (e.g., in geo, carte
 
 Determine whether the given point is in the given coordinate systems or series.
 
-These coordinate systems or series are supported currently: [grid](option.html#grid), [polar](option.html#polar), [geo](option.html#geo), [series-map](option.html#series-map), [series-graph](option.html#series-graph), [series-pie](option.html#series-pie).
+These coordinate systems or series are supported currently: [grid](option.html#grid), [polar](option.html#polar), [geo](option.html#geo), [matrix](option.html#matrix), [series-map](option.html#series-map), [series-graph](option.html#series-graph), [series-pie](option.html#series-pie).
 
 For example:
 
 ```ts
 // Determine whether point [23, 44] is in the geo whose geoIndex 0.
-chart.containPixel('geo', [23, 44]); // Parameter 'geo' means {geoIndex: 0}
+result = chart.containPixel('geo', [23, 44]); // Parameter 'geo' means {geoIndex: 0}
 // Determine whether point [23, 44] is in the grid whose gridId is 'z'.
-chart.containPixel({gridId: 'z'}, [23, 44]);
+result = chart.containPixel({gridId: 'z'}, [23, 44]);
 // Determine whether point [23, 44] is in series whose index are 1, 4 or 5.
-chart.containPixel({seriesIndex: [1, 4, 5]}, [23, 44]);
+result = chart.containPixel({seriesIndex: [1, 4, 5]}, [23, 44]);
 // Determine whether point [23, 44] is in series whose index are 1, 4 or 5,
 // or is in grid whose name is 'a'.
-chart.containPixel({seriesIndex: [1, 4, 5], gridName: 'a'}, [23, 44]);
+result = chart.containPixel({seriesIndex: [1, 4, 5], gridName: 'a'}, [23, 44]);
 ```
 
 
@@ -792,3 +974,80 @@ Returns whether current instance has been disposed.
 ## dispose
 
 Disposes instance. Once disposed, the instance can not be used again.
+
+
+
+{{ target: partial-api-converter-calendar-coord-desc }}
+    The input `coord` can be `number | string | Date`, where `number` represents a timestamp, and `string | Date` represents any time format that can be parsed by [method `parseDate` in `echarts/src/util/number.ts`](https://github.com/apache/echarts/blob/master/src/util/number.ts). For example,
+    ```ts
+    result = chart.convertToLayout({calendarIndex: 0}, '2021-01-01');
+    result = chart.convertToLayout({calendarIndex: 0}, new Date(1609459200000));
+    result = chart.convertToLayout({calendarIndex: 0}, 1609459200000);
+    ```
+{{ /target }}
+
+
+{{ target: partial-api-converter-matrix-coord-desc }}
+    The input `coord` identifies a rectangle, whose the center point is return. See more details in [matrix.body.data.coord](option.html#matrix.body.data.coord). For example,
+    ```ts
+    chart.setOption({
+        matrix: {
+            x: {data: ['AA', 'BB', 'CC', 'DD']},
+            y: {data: ['MM', 'NN']}
+        }
+    });
+    result = chart.convertToPixel({matrixIndex: 0}, ['AA', 'NN']);
+    result = chart.convertToLayout({matrixIndex: 0}, ['AA', 'NN']);
+    // The rectangle can cross multiple cells:
+    result = chart.convertToPixel({matrixIndex: 0}, [['AA', 'CC'], 'MM']);
+    result = chart.convertToLayout({matrixIndex: 0}, [['AA', 'CC'], 'MM']);
+    // This is the ordinal number (non-negative, starting from 0) corresponding to
+    // the string name above.
+    result = chart.convertToPixel({matrixIndex: 0}, [1, 2]);
+    result = chart.convertToLayout({matrixIndex: 0}, [1, 2]);
+    result = chart.convertToPixel({matrixIndex: 0}, [[1, 3], [0, 1]]);
+    result = chart.convertToLayout({matrixIndex: 0}, [[1, 3], [0, 1]]);
+    ```
+
+    The input `opt` is optional:
+    ```ts
+    opt?: {
+        // Options:
+        //  - `0`/`null`/`undefined` (default) means no clamp, that is, if the input
+        //    `coord[0]` or `coord[1]` is `null`/`undefined`/`NaN`/"out of boundary",
+        //    the corresponding result part is `NaN`, rather than clamp to the boundary
+        //    of the matrix.
+        //  - Otherwise, clamp, that is, clamp to the boundary of the matrix, where
+        //    - `1`: Clampping in the area of the entire matrix.
+        //    - `2`: Clampping in the area of matrix body.
+        //    - `3`: Clampping in the area of matrix corner.
+        // Note:
+        //  - this argument is supported in both
+        //    `convertToPixel`, `convertToLayout` and `convertFromPixel`
+        //  - X and Y is considered separately, that is, the result can be
+        //    `rect: {x: NaN, width: NaN, y: 123, width: 456}` if only x is out of range.
+        clamp?: null | undefined | 0 | 1 | 2 | 3;
+
+        // If the result rectangular intersects with merged cells
+        // (i.e., `matrix['body'/'corner'].data.mergeCells: true`), whether to expand it
+        // to cover all of the merge cells. Be `false` by default.
+        ignoreMergeCells?: boolean;
+    }
+
+    // For example:
+    const {rect, matrixXYLocatorRange} = chart.convertToLayout(
+        {matrixIndex: 0},
+        [10000, 2],
+        {clamp: 0}
+    );
+    // `rect` is `{x: NaN, y: 10, width: NaN, height: 100}`.
+    // `matrixXYLocatorRange` is `[[NaN, NaN], [2, 2]]`.
+    const {rect, matrixXYLocatorRange} = chart.convertToLayout(
+        {matrixIndex: 0},
+        [10000, 2],
+        {clamp: 1}
+    );
+    // `rect` is `{x: 20, y: 10, width: 200, height: 100}`.
+    // `matrixXYLocatorRange` is `[[0, 3], [2, 2]]`.
+    ```
+{{ /target }}
