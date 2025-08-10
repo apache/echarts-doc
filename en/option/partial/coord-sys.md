@@ -169,7 +169,7 @@ Most series only support `coordinateSystemUsage: 'data'` - such as [series-line]
 
 See also [${componentNameInLink}.coordinateSystem](~${componentNameInLink}.coordinateSystem).
 
-## coord(Array|string)
+## coord(Array|number|string)
 
 {{ use: partial-version(version = ${version|minVersion('6.0.0')}) }}
 
@@ -184,6 +184,8 @@ Examples: [sparkline in matrix](${galleryEditorPath}matrix-sparkline&edit=1&rese
 {{ /if }}
 
 > Note: when [coordinateSystemUsage](~${componentNameInLink}.coordinateSystemUsage) is `'data'`, the input of coordinate system is `series.data[i]` rather than this `coord`.
+
+The format this `coord` is defined by each coordinate system, and it's the same as the second parameter of [chart.convertToPixel](api.html#echartsInstance.convertToPixel).
 
 
 {{ if: ${cartesian2d} }}

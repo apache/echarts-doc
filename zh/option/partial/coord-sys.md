@@ -172,7 +172,7 @@
 
 另参考：[${componentNameInLink}.coordinateSystem](~${componentNameInLink}.coordinateSystem)。
 
-## coord(Array|string)
+## coord(Array|number|string)
 
 {{ use: partial-version(version = ${version|minVersion('6.0.0')}) }}
 
@@ -187,6 +187,8 @@
 {{ /if }}
 
 > 注：当 [coordinateSystemUsage](~${componentNameInLink}.coordinateSystemUsage) 为 `'data'` 时，输入给坐标系的是 `series.data[i]` 而非此 `coord`。
+
+`coord` 的具体格式定义，取决于每个坐标系，并且，和 [chart.convertToPixel](api.html#echartsInstance.convertToPixel) 的第二个参数相同。
 
 
 {{ if: ${cartesian2d} }}

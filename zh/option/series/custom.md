@@ -136,10 +136,10 @@ renderItem 函数的第一个参数，含有：
     },
     coordSys: {
         type: 'calendar',
-        x: // {number} calendar rect 的 x
-        y: // {number} calendar rect 的 y
-        width: // {number} calendar rect 的 width
-        height: // {number} calendar rect 的 height
+        x: // {number} calendar 组件 rect 的 x
+        y: // {number} calendar 组件 rect 的 y
+        width: // {number} calendar 组件 rect 的 width
+        height: // {number} calendar 组件 rect 的 height
         cellWidth: // {number} calendar cellWidth
         cellHeight: // {number} calendar cellHeight
         rangeInfo: {
@@ -148,6 +148,13 @@ renderItem 函数的第一个参数，含有：
             weeks: // calendar 周数
             dayCount: // calendar 日数
         }
+    },
+    coordSys: {
+        type: 'matrix',
+        x: // {number} matrix 组件 rect 的 x
+        y: // {number} matrix 组件 rect 的 y
+        width: // {number} matrix 组件 rect 的 width
+        height: // {number} matrix 组件 rect 的 height
     },
     coordSys: {
         type: 'geo',
@@ -194,14 +201,15 @@ renderItem 函数的第二个参数。
 
 ##### coord(Function)
 
-将数据值映射到坐标系上。
+将数据值转换成坐标系的坐标。
 
-```
-@param {Array.<number>} data 数据值。
-@return {Array.<number>} 画布上的点的坐标，至少包含：[x, y]
-        对于polar坐标系，还会包含其他信息：
-        polar: [x, y, radius, angle]
-```
+其行为、输入参数和返回值和 [chart.convertToPixel](api.html#echartsInstance.convertToPixel) 相同（只是去除它的第一个参数 `finder`）。
+
+##### layout(Function)
+
+将数据值转换成坐标系上的布局信息。
+
+其行为、输入参数和返回值和 [chart.convertToLayout](api.html#echartsInstance.convertToLayout) 相同（只是去除它的第一个参数 `finder`）。
 
 ##### size(Function)
 

@@ -10,7 +10,7 @@ Besides, sometimes one chart may need to be displayed on both PC and mobile-end,
 To solve this problem, ECharts improved component location algorithm, and implemented responsive ability similar to [CSS Media Query](https://www.w3.org/TR/css3-mediaqueries/).
 
 
-## Location and layout of ECharts components
+## Location and Layout of ECharts Components
 
 
 Most *component* and *series* follow two locating methods:
@@ -212,7 +212,11 @@ But if the container DOM node needs to change size with dragging, you need to pa
 
 When `chart.setOption(rawOption)` for the second, third, fourth, fifth, and etc. times, if `rawOption` is `composite option` (which means it contains `media` list), then, the new `rawOption.media` list will not merge with the old `media`. instead, it will simply replace the option. Of course, `baseOption` will still merge with the old option normally.
 
-<br>
-Finally, let's see an example combining with timeline:
 
-~[750x700](${galleryViewPath}doc-example/bar-media-timeline&edit=1&reset=1)
+## Some Examples
+
+Use [matrix coordinate system (grid layout)](option.html#matrix) and media query:
+
+~[750x500](${galleryViewPath}matrix-grid-layout&edit=1&reset=1)
+
+This is another [media query example](${galleryEditorPath}doc-example/bar-media-timeline&edit=1&reset=1).

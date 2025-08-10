@@ -147,10 +147,10 @@ The first parameter of `renderItem`, including:
     },
     coordSys: {
         type: 'calendar',
-        x: // {number} x of calendar rect
-        y: // {number} y of calendar rect
-        width: // {number} width of calendar rect
-        height: // {number} height of calendar rect
+        x: // {number} x of the calendar component rect
+        y: // {number} y of the calendar component rect
+        width: // {number} width of the calendar component rect
+        height: // {number} height of the calendar component rect
         cellWidth: // {number} calendar cellWidth
         cellHeight: // {number} calendar cellHeight
         rangeInfo: {
@@ -159,6 +159,13 @@ The first parameter of `renderItem`, including:
             weeks: // number of weeks in calendar.
             dayCount: // day count in calendar.
         }
+    },
+    coordSys: {
+        type: 'matrix',
+        x: // {number} x of the matrix component rect
+        y: // {number} y of the matrix component rect
+        width: // {number} width of the matrix component rect
+        height: // {number} height of the matrix component rect
     },
     coordSys: {
         type: 'geo',
@@ -207,12 +214,15 @@ Get value on the given dimension.
 
 Convert data to coordinate.
 
-```
-@param {Array.<number>} data.
-@return {Array.<number>} Point on canvas, at least includes [x, y].
-        In polar, it also contains:
-        polar: [x, y, radius, angle]
-```
+The behavior, parameters and returns are the same as [chart.convertToPixel](api.html#echartsInstance.convertToPixel) (only exclude its first parameter `finder`).
+
+##### layout(Function)
+
+Convert data to the corresponding layout info based on the current coordinate system.
+
+The behavior, parameters and returns are the same as [chart.convertToLayout](api.html#echartsInstance.convertToLayout) (only exclude its first parameter `finder`).
+
+See [matrix api.layout example](${galleryEditorPath}matrix-mini-bar-data-collection).
 
 ##### size(Function)
 
