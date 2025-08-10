@@ -207,6 +207,8 @@ renderItem 函数的第二个参数。
 
 ##### layout(Function)
 
+{{ use: partial-version(version = "6.0.0") }}
+
 将数据值转换成坐标系上的布局信息。
 
 其行为、输入参数和返回值和 [chart.convertToLayout](api.html#echartsInstance.convertToLayout) 相同（只是去除它的第一个参数 `finder`）。

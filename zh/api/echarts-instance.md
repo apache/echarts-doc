@@ -679,6 +679,9 @@ ECharts 中的事件有两种，一种是鼠标事件，在鼠标点击某个图
 
 
 ## convertToLayout(Function)
+
+{{ use: partial-version(version = "6.0.0") }}
+
 ```ts
 (
     // `finder` 用于指示『使用哪个坐标系或数轴或系列进行转换』。

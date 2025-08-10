@@ -676,6 +676,9 @@ The format of the input `coord` and return type are defined by each coordinate s
 
 
 ## convertToLayout(Function)
+
+{{ use: partial-version(version = "6.0.0") }}
+
 ```ts
 (
     // `finder` is used to indicate in which coordinate system

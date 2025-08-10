@@ -218,6 +218,8 @@ The behavior, parameters and returns are the same as [chart.convertToPixel](api.
 
 ##### layout(Function)
 
+{{ use: partial-version(version = "6.0.0") }}
+
 Convert data to the corresponding layout info based on the current coordinate system.
 
 The behavior, parameters and returns are the same as [chart.convertToLayout](api.html#echartsInstance.convertToLayout) (only exclude its first parameter `finder`).

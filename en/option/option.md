@@ -23,6 +23,7 @@
 {{import: component-graphic}}
 {{import: component-calendar}}
 {{import: component-matrix}}
+{{import: component-thumbnail}}
 {{import: component-dataset}}
 {{import: component-aria}}
 
