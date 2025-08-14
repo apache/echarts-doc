@@ -29,6 +29,14 @@ Here is a custom example of radar component.
     none = true
 ) }}
 
+## clockwise(boolean) = false
+
+{{ use: partial-version(version = "6.0.1") }}
+
+<ExampleUIControlBoolean default="false" />
+
+Whether to clockwise layout indicator axis.
+
 ## startAngle(number) = 90
 
 The start angle of coordinate, which is the angle of the first indicator axis.

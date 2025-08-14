@@ -65,6 +65,14 @@ const option = {
     none = true
 ) }}
 
+## clockwise(boolean) = false
+
+{{ use: partial-version(version = "6.0.1") }}
+
+<ExampleUIControlBoolean default="false" />
+
+是否以顺时针排布指示器轴。
+
 ## startAngle(number) = 90
 
 坐标系起始角度，也就是第一个指示器轴的角度。
