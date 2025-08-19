@@ -49,6 +49,113 @@ Whether allow overlaping with [jitter](~${componentType}.jitter). If `false`, it
 When setting [jitter](~${componentType}.jitter) and [jitterOverlap](~${componentType}.jitterOverlap) is `false`, the minimum distance between two scatters.
 {{ /if }}
 
+
+
+{{ if: ${hasBreakAxis|default(false)} }}
+#${prefix} breaks(Array)
+
+Break axis data, where each sub-element represents a segment of truncated space.
+
+~[800x400](${galleryViewPath}intraday-breaks-2&edit=1&reset=1)
+
+> Break axis is a technique that truncates portions of the coordinate axis to compress the display space of non-critical data segments in charts. Its core purposes are:
+>
+> + **Highlight differences**: When there are extreme differences between data values (such as one value being much larger than others), it prevents large value bars from overwhelmingly occupying space, making small value differences difficult to distinguish.
+> + **Save space**: Reduces blank areas caused by extreme values, making charts more compact.
+>
+> Please note that break axis should only be used when necessary to avoid misleading users. When using break axis, the truncated parts and corresponding values should usually be clearly indicated.
+>
+> Break axis cannot be used in category axes ([type](~${componentType}.type): `'category'`).
+
+##${prefix} start(string|number|Date)
+
+The start value for truncation.
+
++ For coordinate axes with [type](~${componentType}.type) as `'value'` or `'log'`, use `number` type values
++ For coordinate axes with [type](~${componentType}.type) as `'time'`:
+  + `string` type time values (e.g., `'2024-04-09 13:00:00'`)
+  + `number` type timestamps (e.g., `(new Date('2024-04-09 13:00:00')).getTime()`)
+  + `Date` type time objects (e.g., `new Date('2024-04-09 13:00:00')`).
+
+##${prefix} end(string|number|Date)
+
+The end value for truncation.
+
++ For coordinate axes with [type](~${componentType}.type) as `'value'` or `'log'`, use `number` type values
++ For coordinate axes with [type](~${componentType}.type) as `'time'`:
+  + `string` type time values (e.g., `'2024-04-09 13:00:00'`)
+  + `number` type timestamps (e.g., `(new Date('2024-04-09 13:00:00')).getTime()`)
+  + `Date` type time objects (e.g., `new Date('2024-04-09 13:00:00')`).
+
+##${prefix} gap(number|string)
+
+The display size of the break axis truncated area.
+
++ `number`: Same unit as `start` and `end`, not representing pixel size
++ `string`:
+  + Supports percentage forms like `'35%'`, representing relative proportion to the coordinate axis data area size
+  + Supports strings like `'123'`, equivalent to `number` type `123`, note that it does not represent pixel size
+
+##${prefix} isExpanded(boolean) = false
+
+Whether this truncated area is expanded, default is `false`.
+
+#${prefix} breakArea
+
+Style of the break axis truncated area.
+
+##${prefix} show(boolean) = true
+
+Whether to show the truncated area.
+
+##${prefix} itemStyle
+
+Style of the truncated area.
+
+{{ use: partial-item-style(
+    prefix = '###',
+    defaultColor = "#fff",
+    defaultBorderColor = "'#b7b9be'",
+    defaultBorderWidth = 1,
+    defaultType = "[3, 3]",
+    defaultOpacity = 0.6
+) }}
+
+##${prefix} zigzagAmplitude(number) = 4
+
+The amplitude (in the direction perpendicular to the coordinate axis) of the truncated zigzag. The size of the truncated zigzag in the direction perpendicular to the coordinate axis is always the same across different zigzags.
+
+##${prefix} zigzagMinSpan(number) = 4
+
+The minimum size of the truncated zigzag in the coordinate axis direction.
+
+> The size of the truncated zigzag in the coordinate axis direction is a random number between `zigzagMinSpan` and `zigzagMaxSpan`. Randomness is used to simulate the effect of torn paper.
+
+##${prefix} zigzagMaxSpan(number) = 20
+
+The maximum size of the truncated zigzag in the coordinate axis direction.
+
+> The size of the truncated zigzag in the coordinate axis direction is a random number between `zigzagMinSpan` and `zigzagMaxSpan`. Randomness is used to simulate the effect of torn paper.
+
+##${prefix} zigzagZ(number) = 100
+
+The `z` value of the truncated zigzag. Controls the front-to-back order of graphics. Graphics with smaller `z` values will be covered by graphics with larger `z` values.
+
+##${prefix} expandOnClick(boolean) = true
+
+Whether to expand the truncated area when clicking on the break axis truncated area.
+
+#${prefix} breakLabelLayout(Object)
+
+Break axis label layout.
+
+##${prefix} moveOverlap(string|boolean) = 'auto'
+
+When break axis labels overlap, whether to move labels to avoid overlap.
+
+`'auto'` or `true` means moving labels to avoid overlap when overlapping occurs; `false` means not moving.
+{{ /if }}
+
 #${prefix} axisLine(Object)
 
 Settings related to axis line.
@@ -806,7 +913,8 @@ To specify the start value of the axis.
 {{ use: partial-axis-common-axis-line(
     prefix = ${prefix},
     componentType = ${componentType},
-    hasJitter = ${hasJitter}
+    hasJitter = ${hasJitter},
+    hasBreakAxis = ${hasBreakAxis}
 ) }}
 
 {{ use: partial-axis-common-axis-tick(

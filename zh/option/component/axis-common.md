@@ -47,6 +47,115 @@
 在设置了 [jitter](~${componentType}.jitter) 且 [jitterOverlap](~${componentType}.jitterOverlap) 为 `false` 的情况下，两个数据点之间的最小距离。
 {{ /if }}
 
+
+
+{{ if: ${hasBreakAxis|default(false)} }}
+#${prefix} breaks(Array)
+
+断轴的截断数据，每一个子元素表示一段截断的空间。
+
+~[800x400](${galleryViewPath}intraday-breaks-2&edit=1&reset=1)
+
+> 断轴是一种通过在坐标轴上截断部分区域，从而压缩图表中非关键数据段的展示空间的技术。其核心目的是：
+>
+> + ​**​突出差异**​​：当数据间存在极端差异时（如一个值远大于其他值），避免大数值柱子压倒性占据空间，导致小数值差异难以辨认。
+> + **​​节省空间​**​：减少因极值导致的空白区域，使图表更紧凑。
+>
+> 请注意仅在必要的时候使用断轴，以免给用户带来理解上的误导。当使用断轴时，通常应当明确示意截断部分和对应的数值。
+>
+> 断轴无法在类目轴（[type](~${componentType}.type): `'category'`）中使用。
+
+##${prefix} start(string|number|Date)
+
+开始截断的值。
+
++ 对于 [type](~${componentType}.type) 是 `'value'` 或 `'log'` 类型的坐标轴，使用 `number` 类型的值
++ 对于 [type](~${componentType}.type) 是 `'time'` 类型的坐标轴
+  + `string` 类型的时间值（例如 `'2024-04-09 13:00:00'`）
+  + `number` 类型的时间戳（例如 `(new Date('2024-04-09 13:00:00')).getTime()`）
+  + `Date` 类型的时间对象（例如 `new Date('2024-04-09 13:00:00')`）。
+
+##${prefix} end(string|number|Date)
+
+结束截断的值。
+
++ 对于 [type](~${componentType}.type) 是 `'value'` 或 `'log'` 类型的坐标轴，使用 `number` 类型的值
++ 对于 [type](~${componentType}.type) 是 `'time'` 类型的坐标轴
+  + `string` 类型的时间值（例如 `'2024-04-09 13:00:00'`）
+  + `number` 类型的时间戳（例如 `(new Date('2024-04-09 13:00:00')).getTime()`）
+  + `Date` 类型的时间对象（例如 `new Date('2024-04-09 13:00:00')`）。
+
+##${prefix} gap(number|string)
+
+断轴截断区域展示的大小。
+
++ `number`：单位和 `start` 与 `end` 相同，而不表示像素大小
++ `string`：
+  + 支持例如 `'35%'` 的百分比形式，表示相对于坐标轴数据区域大小的相对比例
+  + 支持例如 `'123'` 的字符串，等同于 `number` 类型的 `123，注意不表示像素大小
+
+##${prefix} isExpanded(boolean) = false
+
+该截断区域是否已展开，默认为 `false`。
+
+#${prefix} breakArea
+
+断轴截断区域的样式。
+
+##${prefix} show(boolean) = true
+
+是否显示截断区域。
+
+##${prefix} itemStyle
+
+截断区域样式。
+
+{{ use: partial-item-style(
+    prefix = '###',
+    defaultColor = "#fff",
+    defaultBorderColor = "'#b7b9be'",
+    defaultBorderWidth = 1,
+    defaultType = "[3, 3]",
+    defaultOpacity = 0.6
+) }}
+
+##${prefix} zigzagAmplitude(number) = 4
+
+截断锯齿的振幅（垂直坐标轴方向上）大小。截断锯齿在垂直坐标轴的方向上的大小在不同锯齿上总是相同的。
+
+##${prefix} zigzagMinSpan(number) = 4
+
+截断锯齿在坐标轴方向上最小的大小。
+
+> 截断锯齿在坐标轴方向上的大小是 `zigzagMinSpan` 和 `zigzagMaxSpan` 之间的随机数。通过随机来模拟纸片撕开的效果。
+
+##${prefix} zigzagMaxSpan(number) = 20
+
+截断锯齿在坐标轴方向上最大的大小。
+
+> 截断锯齿在坐标轴方向上的大小是 `zigzagMinSpan` 和 `zigzagMaxSpan` 之间的随机数。通过随机来模拟纸片撕开的效果。
+
+##${prefix} zigzagZ(number) = 100
+
+截断锯齿的 `z` 值。控制图形的前后顺序。`z` 值小的图形会被 `z` 值大的图形覆盖。
+
+##${prefix} expandOnClick(boolean) = true
+
+点击断轴截断区域是否展开截断区域。
+
+#${prefix} breakLabelLayout(Object)
+
+断轴文字布局。
+
+##${prefix} moveOverlap(string|boolean) = 'auto'
+
+当断轴文字重叠时，是否移动文字来避免重叠。
+
+`'auto'` 或 `true` 表示重叠时移动文字来避免重叠；`false` 表示不移动。
+{{ /if }}
+
+
+
 #${prefix} axisLine(Object)
 
 坐标轴轴线相关设置。
@@ -803,7 +912,8 @@ max: function (value) {
 {{ use: partial-axis-common-axis-line(
     prefix = ${prefix},
     componentType = ${componentType},
-    hasJitter = ${hasJitter}
+    hasJitter = ${hasJitter},
+    hasBreakAxis = ${hasBreakAxis}
 ) }}
 
 {{ use: partial-axis-common-axis-tick(

@@ -52,7 +52,8 @@ Notice: Set `yAxis.axisLine.onZero` to `false` to activate this option.
     componentType = 'yAxis',
     axisTypeDefault = "'value'",
     hasSplitLineAndArea = true,
-    hasJitter = true
+    hasJitter = true,
+    hasBreakAxis = true
 ) }}
 
 {{ use: partial-z-zlevel(
