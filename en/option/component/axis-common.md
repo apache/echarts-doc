@@ -25,6 +25,7 @@ Parameters of the event include:
 }
 ```
 
+{{ if: ${hasJitter|default(false)} }}
 #${prefix} jitter(number) = 0
 
 {{ use: partial-version(version = "6.0.0") }}
@@ -46,6 +47,7 @@ Whether allow overlaping with [jitter](~${componentType}.jitter). If `false`, it
 {{ use: partial-version(version = "6.0.0") }}
 
 When setting [jitter](~${componentType}.jitter) and [jitterOverlap](~${componentType}.jitterOverlap) is `false`, the minimum distance between two scatters.
+{{ /if }}
 
 #${prefix} axisLine(Object)
 
@@ -803,7 +805,8 @@ To specify the start value of the axis.
 
 {{ use: partial-axis-common-axis-line(
     prefix = ${prefix},
-    componentType = ${componentType}
+    componentType = ${componentType},
+    hasJitter = ${hasJitter}
 ) }}
 
 {{ use: partial-axis-common-axis-tick(

@@ -23,6 +23,7 @@
 }
 ```
 
+{{ if: ${hasJitter|default(false)} }}
 #${prefix} jitter(number) = 0
 
 {{ use: partial-version(version = "6.0.0") }}
@@ -44,6 +45,7 @@
 {{ use: partial-version(version = "6.0.0") }}
 
 在设置了 [jitter](~${componentType}.jitter) 且 [jitterOverlap](~${componentType}.jitterOverlap) 为 `false` 的情况下，两个数据点之间的最小距离。
+{{ /if }}
 
 #${prefix} axisLine(Object)
 
@@ -800,7 +802,8 @@ max: function (value) {
 
 {{ use: partial-axis-common-axis-line(
     prefix = ${prefix},
-    componentType = ${componentType}
+    componentType = ${componentType},
+    hasJitter = ${hasJitter}
 ) }}
 
 {{ use: partial-axis-common-axis-tick(

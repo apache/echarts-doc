@@ -37,21 +37,22 @@ options:
 + `'top'`
 + `'bottom'`
 
-The first x axis in grid defaults to be on the bottom of the grid, and the second x axis is on the other side against the first x axis.  
+The first x axis in grid defaults to be on the bottom of the grid, and the second x axis is on the other side against the first x axis.
 Notice: Set `xAxis.axisLine.onZero` to `false` to activate this option.
 
 ## offset(number) = 0
 
 <ExampleUIControlNumber step="0.5" />
 
-Offset of x axis relative to default position. Useful when multiple x axis has same [position](~xAxis.position) value.  
+Offset of x axis relative to default position. Useful when multiple x axis has same [position](~xAxis.position) value.
 Notice: Set `xAxis.axisLine.onZero` to `false` to activate this option.
 
 {{ use: axis-common(
     prefix = '#',
     componentType = 'xAxis',
     axisTypeDefault = "'category'",
-    hasSplitLineAndArea = true
+    hasSplitLineAndArea = true,
+    hasJitter = true
 ) }}
 
 {{ use: partial-z-zlevel(

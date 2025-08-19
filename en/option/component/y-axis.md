@@ -37,7 +37,7 @@ options:
 + `'left'`
 + `'right'`
 
-The first y axis in grid defaults to be the left (`'left'`)  of the grid, and the second y axis is on the other side against the first y axis.  
+The first y axis in grid defaults to be the left (`'left'`)  of the grid, and the second y axis is on the other side against the first y axis.
 Notice: Set `yAxis.axisLine.onZero` to `false` to activate this option.
 
 ## offset(number) = 0
@@ -51,7 +51,8 @@ Notice: Set `yAxis.axisLine.onZero` to `false` to activate this option.
     prefix = '#',
     componentType = 'yAxis',
     axisTypeDefault = "'value'",
-    hasSplitLineAndArea = true
+    hasSplitLineAndArea = true,
+    hasJitter = true
 ) }}
 
 {{ use: partial-z-zlevel(
