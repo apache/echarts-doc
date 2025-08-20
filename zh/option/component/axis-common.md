@@ -52,6 +52,8 @@
 {{ if: ${hasBreakAxis|default(false)} }}
 #${prefix} breaks(Array)
 
+{{ use: partial-version(version = "6.0.0") }}
+
 断轴的截断数据，每一个子元素表示一段截断的空间。
 
 ~[800x400](${galleryViewPath}intraday-breaks-2&edit=1&reset=1)
@@ -100,6 +102,8 @@
 
 #${prefix} breakArea
 
+{{ use: partial-version(version = "6.0.0") }}
+
 断轴截断区域的样式。
 
 ##${prefix} show(boolean) = true
@@ -144,6 +148,8 @@
 点击断轴截断区域是否展开截断区域。
 
 #${prefix} breakLabelLayout(Object)
+
+{{ use: partial-version(version = "6.0.0") }}
 
 断轴文字布局。
 

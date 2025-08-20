@@ -54,6 +54,8 @@ When setting [jitter](~${componentType}.jitter) and [jitterOverlap](~${component
 {{ if: ${hasBreakAxis|default(false)} }}
 #${prefix} breaks(Array)
 
+{{ use: partial-version(version = "6.0.0") }}
+
 Break axis data, where each sub-element represents a segment of truncated space.
 
 ~[800x400](${galleryViewPath}intraday-breaks-2&edit=1&reset=1)
@@ -102,6 +104,8 @@ Whether this truncated area is expanded, default is `false`.
 
 #${prefix} breakArea
 
+{{ use: partial-version(version = "6.0.0") }}
+
 Style of the break axis truncated area.
 
 ##${prefix} show(boolean) = true
@@ -146,6 +150,8 @@ The `z` value of the truncated zigzag. Controls the front-to-back order of graph
 Whether to expand the truncated area when clicking on the break axis truncated area.
 
 #${prefix} breakLabelLayout(Object)
+
+{{ use: partial-version(version = "6.0.0") }}
 
 Break axis label layout.
 
