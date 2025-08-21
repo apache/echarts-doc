@@ -1232,6 +1232,16 @@ formatter: function (value, index) {
     }
     return texts.join('/');
 }
+
+// 另外，`echarts.time.format` 也可以被使用：
+formatter: function (value, index) {
+    // 时间模版的规则如上描述。
+    const timeStrLocal = echarts.time.format(value, '{yyyy}-{MM}-{dd} {hh}:{mm}:{ss}');
+    // 第三个参数表示，基于 UTC 解析时间。
+    const timeStrUTC = echarts.time.format(value, '{yyyy}-{MM}-{dd} {hh}:{mm}:{ss}', true);
+    // 注意：如果使用 UTC，${optionDocPath}#useUTC 也要设置为 `true`，保持一致。
+    return timeStrLocal;
+}
 ```
 
 ** 分级模板 **

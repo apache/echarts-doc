@@ -98,6 +98,11 @@ Embed an example in doc (display the example directly in doc with an iframe. To 
 ~[700x300](${galleryViewPath}doc-example/aria-pie&edit=1&reset=1)
 ```
 
+Insert an image:
+```md
+[600xauto](~axis-align-with-label.png)
+```
+
 Provide an example link in doc:
 ```md
 [vertically scrollable legend](${galleryEditorPath}pie-legend&edit=1&reset=1)

@@ -1240,6 +1240,17 @@ formatter: function (value, index) {
     }
     return texts.join('/');
 }
+
+// Moreover, `echarts.time.format` can be used:
+formatter: function (value, index) {
+    // Follow the template rules above.
+    const timeStrLocal = echarts.time.format(value, '{yyyy}-{MM}-{dd} {hh}:{mm}:{ss}');
+    // The third param `true` indicates that format time based on UTC.
+    const timeStrUTC = echarts.time.format(value, '{yyyy}-{MM}-{dd} {hh}:{mm}:{ss}', true);
+    // Notice, if using UTC, ${optionDocPath}#useUTC need to be also set as `true`
+    // for consistency.
+    return timeStrLocal;
+}
 ```
 
 ** Cascading Templates **
