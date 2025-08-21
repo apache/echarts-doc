@@ -201,6 +201,44 @@ chart.on('mouseover', {seriesIndex: 1, name: 'xx'}, function (params) {
 ```
 
 
+## axisbreakchanged(Event)
+
+{{ use: partial-version(version = "6.0.0") }}
+
+**ACTION:** [expandAxisBreak](~action.axis.expandAxisBreak), [collapseAxisBreak](~action.axis.collapseAxisBreak) and [toggleAxisBreak](~action.axis.toggleAxisBreak) 会派发本事件。
+
+```ts
+{
+    type: 'axisbreakchanged';
+    // 触发本事件的 action 的 type 。
+    fromAction: 'expandAxisBreak' | 'collapseAxisBreak' | 'toggleAxisBreak';
+    // 触发本事件的 action 的 payload 。
+    fromActionPayload: Payload;
+    // 本 breaks 数组里只包含 action 里指定的 break 项，
+    // 而非 axis 里存在的所有 break 项。
+    breaks: {
+        // start/end 也被用于本 break 项的唯一标识。
+        start: number;
+        end: number;
+
+        // 本 break item 所在的 axis 的 index。
+        xAxisIndex?: number;
+        yAxisIndex?: number;
+        singleAxisIndex?: number;
+
+        // 更新后的状态。
+        isExpanded: boolean;
+        old: {
+            // 更新前的状态。
+            isExpanded: boolean;
+        };
+    }[]
+}
+```
+
+**注意：**使用 [chart.setOption](~echartsInstance.setOption) 更新 axis breaks 时，不会触发本事件。只有 action 会触发本事件。
+
+
 ## datazoom(Event)
 **ACTION:** [dataZoom](~action.dataZoom.dataZoom)
 

@@ -527,7 +527,10 @@ Rotation angle of `label`, in which positive values refer to counter clockwise r
 
 #${prefix} formatter(string|Function) = null
 
-{{ use: axis-common-formatter-desc() }}
+{{ use: axis-common-formatter-desc(
+    componentType = ${componentType},
+    axisTypeProp = 'axisType'
+) }}
 
 {{ if: ${state} }}
 {{ use: partial-text-style(

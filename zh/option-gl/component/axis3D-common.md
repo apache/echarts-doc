@@ -82,7 +82,9 @@ formatter: function (value, index) {
 {{ /if }}
 
 ##${prefix|default('#')} formatter(string|Function) = null
-{{use: axis-common-formatter-desc}}
+{{ use: axis-common-formatter-desc(
+    componentType=${componentType}
+) }}
 
 
 ##${prefix|default('#')} textStyle(Object)

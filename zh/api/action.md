@@ -28,6 +28,38 @@
     name?: string,{{/target}}
 
 
+{{ target: action-axis-break-expand-collapse-common }}
+不能用于创建新的 axis break 。
+```ts
+dispatchAction({
+    type: '${actionType}',
+
+    // 坐标轴可以用 index、id 或 name 来检索到。
+    xAxisIndex?: 'all' | number;
+    xAxisId?: string | number;
+    xAxisName?: string;
+    yAxisIndex?: 'all' | number;
+    yAxisId?: string | number;
+    yAxisName?: string;
+    singleAxisIndex?: 'all' | number;
+    singleAxisId?: string | number;
+    singleAxisName?: number;
+
+    breaks: {
+        // 使用 start/end 来定位要更改的 break 项。
+        // 更多信息参见文档：${optionDocPath}#xAxis.breaks.start
+        start: string | number | Date,
+        end: string | number | Date,
+    }
+})
+```
+
+继而事件 [axisbreakchanged](~events.axisbreakchanged) 会被派发。
+
+也参见 [axis break isExpanded](option.html#xAxis.breaks.isExpanded)。
+{{/target}}
+
+
 {{ target: action }}
 # action
 
@@ -124,6 +156,39 @@ dispatchAction({
     {{ use: action-data-query-multiple }}
 })
 ```
+
+
+## axis
+
+### expandAxisBreak
+
+{{ use: partial-version(version = "6.0.0") }}
+
+展开一个或多个已存在的 axis break 项。不能用于创建新的 axis break 。
+
+{{ use: action-axis-break-expand-collapse-common(
+    actionType = "expandAxisBreak"
+) }}
+
+### collapseAxisBreak
+
+{{ use: partial-version(version = "6.0.0") }}
+
+折叠一个或多个已存在的 axis break 项。不能用于创建新的 axis break 。
+
+{{ use: action-axis-break-expand-collapse-common(
+    actionType = "collapseAxisBreak"
+) }}
+
+### toggleAxisBreak
+
+{{ use: partial-version(version = "6.0.0") }}
+
+切换（展开/折叠）一个或多个已存在的 axis break 项。不能用于创建新的 axis break 。
+
+{{ use: action-axis-break-expand-collapse-common(
+    actionType = "toggleAxisBreak"
+) }}
 
 
 ## legend

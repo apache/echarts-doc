@@ -82,7 +82,9 @@ The margin between the axis label and the axis line.
 {{ /if }}
 
 ##${prefix|default('#')} formatter(string|Function) = null
-{{use: axis-common-formatter-desc}}
+{{ use: axis-common-formatter-desc(
+    componentType=${componentType}
+) }}
 
 
 ##${prefix|default('#')} textStyle(Object)
