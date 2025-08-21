@@ -102,7 +102,7 @@ echarts.connect([chart1, chart2]);
 
 ## use(Function)
 
-> 从 `5.0.1` 开始支持
+{{ use: partial-version(version = "5.0.1") }}
 
 使用组件，配合新的按需引入的接口使用。
 
@@ -262,6 +262,9 @@ echarts.use(
 
 
 ## registerTheme(Function)
+
+{{ use: partial-version(version = "6.0.0") }}
+
 ```ts
 (themeName: string, theme: Object)
 ```
@@ -321,7 +324,7 @@ chart.setOption(option);
 
 ## registerLocale(Function)
 
-> 从 `5.0.0` 开始支持
+{{ use: partial-version(version = "5.0.0") }}
 
 ```ts
 (locale: string, localeCfg: Object)
@@ -331,7 +334,7 @@ chart.setOption(option);
 
 ## setPlatformAPI(Function)
 
-> 从 `5.3.0` 开始支持
+{{ use: partial-version(version = "5.3.0") }}
 
 ```ts
 (platformAPI?: {

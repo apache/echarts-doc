@@ -240,12 +240,14 @@ myChart.setOption({
 
 ## setTheme(Function)
 
+{{ use: partial-version(version = "6.0.0") }}
+
 ```ts
 (
-theme: string | Object
-opts?: {
-    silent? boolean
-}
+    theme: string | Object,
+    opts?: {
+        silent?: boolean
+    }
 ) => void
 ```
 
@@ -260,10 +262,10 @@ Here is a demo of dynamically setting a theme after initialization:
 const chart = echarts.init(...);
 chart.setOption(...);
 // Method 1: Register and apply a named theme
-echarts.registerTheme('myTheme', {backgroundColor: 'red'});
+echarts.registerTheme('myTheme', { backgroundColor: 'red' });
 chart.setTheme('myTheme');
 // Method 2: Apply an anonymous theme directly
-chart.setTheme({backgroundColor: 'red'});
+chart.setTheme({ backgroundColor: 'red' });
 ```
 
 If there are no other charts using this theme, the above two methods are the same. If not, you should use the former one, so that `setTheme('myTheme')` can be used in other charts.
@@ -302,7 +304,7 @@ Sometimes charts may be placed in multiple tabs. Those in hidden labels may fail
 
 ## renderToSVGString(Function)
 
-> Since `5.3.0`
+{{ use: partial-version(version = "5.3.0") }}
 
 ```ts
 (opts?: {

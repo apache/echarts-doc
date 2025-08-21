@@ -238,12 +238,14 @@ myChart.setOption({
 
 ## setTheme(Function)
 
+{{ use: partial-version(version = "6.0.0") }}
+
 ```ts
 (
-theme: string | Object
-opts?: {
-    silent? boolean
-}
+    theme: string | Object,
+    opts?: {
+        silent?: boolean
+    }
 ) => void
 ```
 
@@ -258,10 +260,10 @@ opts?: {
 const chart = echarts.init(...);
 chart.setOption(...);
 // 图表已经初始化了，也可以调用 registerTheme 和 setTheme
-echarts.registerTheme('myTheme', {backgroundColor: 'red'});
+echarts.registerTheme('myTheme', { backgroundColor: 'red' });
 chart.setTheme('myTheme');
 // 或者直接
-chart.setTheme({backgroundColor: 'red'});
+chart.setTheme({ backgroundColor: 'red' });
 ```
 
 如果这个主题不在其他图表中使用，那么这两种方式是等价的，否则应使用前一种，这样在其他图表中也可以使用 `setTheme('myTheme')` 使用该主题。
@@ -295,7 +297,7 @@ chart.setTheme({backgroundColor: 'red'});
 
 ## renderToSVGString(Function)
 
-> 从 `5.3.0` 开始支持
+{{ use: partial-version(version = "5.3.0") }}
 
 ```ts
 (opts?: {
