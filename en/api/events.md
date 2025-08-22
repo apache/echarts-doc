@@ -202,6 +202,43 @@ Event when trigger legend scroll.
 ```
 
 
+## axisbreakchanged(Event)
+
+{{ use: partial-version(version = "6.0.0") }}
+
+**ACTION:** [expandAxisBreak](~action.axis.expandAxisBreak), [collapseAxisBreak](~action.axis.collapseAxisBreak) and [toggleAxisBreak](~action.axis.toggleAxisBreak) will trigger this event.
+
+```ts
+{
+    type: 'axisbreakchanged';
+    // The type of the action that triggered this event.
+    fromAction: 'expandAxisBreak' | 'collapseAxisBreak' | 'toggleAxisBreak';
+    // The original input action payload.
+    fromActionPayload: Payload;
+    // This breaks array only includes only break items that is specified
+    // in the action, rather than all break items existing in axes.
+    breaks: {
+        // start/end is also the unique identifier of this break item.
+        start: number;
+        end: number;
+
+        // The index of the axis this break item belongs to.
+        xAxisIndex?: number;
+        yAxisIndex?: number;
+        singleAxisIndex?: number;
+
+        // The state after updating.
+        isExpanded: boolean;
+        old: {
+            // The previous state.
+            isExpanded: boolean;
+        };
+    }[]
+}
+```
+
+**Notice:**When using [chart.setOption](~echartsInstance.setOption) to update axis breaks, this event is not triggered. Only actions trigger this event.
+
 
 ## datazoom(Event)
 **ACTION:** [dataZoom](~action.dataZoom.dataZoom)
@@ -221,6 +258,7 @@ Event emitted after zooming data area.
     endValue?: number
 }
 ```
+
 ## datarangeselected(Event)
 **ACTION:** [selectDataRange](~action.dataRange.selectDataRange)
 Event emitted after range is changed in visualMap.

@@ -60,14 +60,35 @@ For example,
 ### Global Variables
 
 These global variables can be used in doc:
-+ `${galleryViewPath}`
-+ `${galleryEditorPath}`
-+ `${websitePath}`
-+ `${handbookPath}`
-
-Note: All of them are ended with a `/`, therefore, use them like `${galleryEditorPath}pie-legend`.
++ `${galleryViewPath}`: Use it like `${galleryViewPath}pie-legend`.
++ `${galleryEditorPath}`: Use it like `${galleryEditorPath}pie-legend`.
++ `${optionDocPath}`: Use it like `${optionDocPath}#xAxis.type`.
++ `${apiDocPath}`: Use it like `${apiDocPath}#echarts.init`.
++ `${handbookPath}`: Use it like `${handbookPath}basics/import`.
++ `${websitePath}`: Use it like `${websitePath}/examples/en/index.html#chart-type-custom`.
 
 See samples in "Reference of echarts-examples or other links"
+
+### Reference of Other ECharts Option
+
+A `~` can be used to refer to a option item in the same doc. For example:
+```md
+[xAxis.name](~xAxis.name)
+```
+
+To reference an anchor in different doc, it can be:
+```md
+[itemStyle](option.html#series.itemStyle)
+[action.highlight](api.html#action.highlight)
+[Custom Series](tutorial.html#Custom%20Series)
+[Use ECharts with bundler and NPM](${handbookPath}basics/import)
+```
+
+To add references in a code block, we have to:
+```md
+// See doc: ${optionDocPath}#series-bar.select
+// See doc: ${apiDocPath}#echarts.init
+```
 
 ### Reference of echarts-examples or Other Links
 
@@ -75,6 +96,11 @@ Embed an example in doc (display the example directly in doc with an iframe. To 
 ```md
 ~[700X300](${galleryViewPath}pie-legend&edit=1&reset=1)
 ~[700x300](${galleryViewPath}doc-example/aria-pie&edit=1&reset=1)
+```
+
+Insert an image:
+```md
+[600xauto](~axis-align-with-label.png)
 ```
 
 Provide an example link in doc:
@@ -86,21 +112,6 @@ Provide an example link in doc:
 Provide a website link in doc:
 ```md
 [Apache ECharts website](${websitePath}/en/download.html)
-```
-
-### Reference of Other ECharts Option
-
-A `~` can be used to refer to a option item in the same doc. For example:
-```md
-[xAxis.name](~xAxis.name)
-```
-
-If intending to reference an anchor in different doc, it can be:
-```md
-[itemStyle](option.html#series.itemStyle)
-[action.highlight](api.html#action.highlight)
-[Custom Series](tutorial.html#Custom%20Series)
-[Use ECharts with bundler and NPM](${handbookPath}basics/import)
 ```
 
 

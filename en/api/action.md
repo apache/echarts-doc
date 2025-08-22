@@ -28,6 +28,37 @@
     name?: string,{{/target}}
 
 
+{{ target: action-axis-break-expand-collapse-common }}
+Can not be used to create a new axis break.
+```ts
+dispatchAction({
+    type: '${actionType}',
+
+    // The target axis components can be queried by either index, id, or name.
+    xAxisIndex?: 'all' | number;
+    xAxisId?: string | number;
+    xAxisName?: string;
+    yAxisIndex?: 'all' | number;
+    yAxisId?: string | number;
+    yAxisName?: string;
+    singleAxisIndex?: 'all' | number;
+    singleAxisId?: string | number;
+    singleAxisName?: number;
+
+    breaks: {
+        // Use the start/end to identify the target break items.
+        // See more details in doc: ${optionDocPath}#xAxis.breaks.start
+        start: string | number | Date,
+        end: string | number | Date,
+    }
+})
+```
+
+Then event [axisbreakchanged](~events.axisbreakchanged) is triggered.
+
+See also [axis break isExpanded](option.html#xAxis.breaks.isExpanded).
+{{/target}}
+
 
 {{ target: action }}
 # action
@@ -126,6 +157,39 @@ dispatchAction({
     {{ use: action-data-query-multiple }}
 })
 ```
+
+
+## axis
+
+### expandAxisBreak
+
+{{ use: partial-version(version = "6.0.0") }}
+
+Expand one or multiple existing axis break items.
+
+{{ use: action-axis-break-expand-collapse-common(
+    actionType = "expandAxisBreak"
+) }}
+
+### collapseAxisBreak
+
+{{ use: partial-version(version = "6.0.0") }}
+
+Collapse one or multiple existing axis break items.
+
+{{ use: action-axis-break-expand-collapse-common(
+    actionType = "collapseAxisBreak"
+) }}
+
+### toggleAxisBreak
+
+{{ use: partial-version(version = "6.0.0") }}
+
+Toggle (expand/collapse) one or multiple existing axis break items.
+
+{{ use: action-axis-break-expand-collapse-common(
+    actionType = "toggleAxisBreak"
+) }}
 
 ## legend
 

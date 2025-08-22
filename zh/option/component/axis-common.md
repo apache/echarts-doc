@@ -57,6 +57,11 @@
 断轴的截断数据，每一个子元素表示一段截断的空间。
 
 ~[800x400](${galleryViewPath}intraday-breaks-2&edit=1&reset=1)
+~[800x400](${galleryViewPath}intraday-breaks-1&edit=1&reset=1)
+~[800x400](${galleryViewPath}bar-breaks-brush&edit=1&reset=1)
+
+**其他例子：** [bar-breaks-simple](${galleryEditorPath}bar-breaks-simple&edit=1&reset=1), [line-fisheye-lens](${galleryEditorPath}line-fisheye-lens&edit=1&reset=1)
+
 
 > 断轴是一种通过在坐标轴上截断部分区域，从而压缩图表中非关键数据段的展示空间的技术。其核心目的是：
 >
@@ -67,38 +72,99 @@
 >
 > 断轴无法在类目轴（[type](~${componentType}.type): `'category'`）中使用。
 
+如果 ECharts 的 `import` 方式是 [只 `import` 所需要的组件](${handbookPath}basics/import)，断轴功能需要被手动 `import` 和注册。例如，
+```ts
+import * as echarts from 'echarts/core';
+import { BarChart } from 'echarts/charts';
+import {
+  TitleComponent,
+  TooltipComponent,
+  GridComponent,
+  DatasetComponent,
+  TransformComponent
+} from 'echarts/components';
+
+// import 断轴功能
+import { AxisBreak } from 'echarts/features';
+
+import { CanvasRenderer } from 'echarts/renderers';
+
+// 注册
+echarts.use([
+  BarChart,
+  TitleComponent,
+  TooltipComponent,
+  GridComponent,
+  DatasetComponent,
+  TransformComponent,
+  AxisBreak,
+  CanvasRenderer
+]);
+
+var myChart = echarts.init(document.getElementById('main'));
+myChart.setOption({
+  // ...
+});
+```
+
 ##${prefix} start(string|number|Date)
 
-开始截断的值。
+{{ use: partial-version(version = "6.0.0") }}
 
-+ 对于 [type](~${componentType}.type) 是 `'value'` 或 `'log'` 类型的坐标轴，使用 `number` 类型的值
-+ 对于 [type](~${componentType}.type) 是 `'time'` 类型的坐标轴
-  + `string` 类型的时间值（例如 `'2024-04-09 13:00:00'`）
-  + `number` 类型的时间戳（例如 `(new Date('2024-04-09 13:00:00')).getTime()`）
-  + `Date` 类型的时间对象（例如 `new Date('2024-04-09 13:00:00')`）。
+开始截断的值。它是业务数据（`series.data`）所定义的值域中的某个值，而非像素值。
+
+{{ use: partial-scale-data-value-desc(
+    componentType = ${componentType},
+    notSupportCategory = true
+) }}
+
+{{ use: partial-axis-break-identifier-desc(
+    componentType = ${componentType}
+)}}
 
 ##${prefix} end(string|number|Date)
 
-结束截断的值。
+{{ use: partial-version(version = "6.0.0") }}
 
-+ 对于 [type](~${componentType}.type) 是 `'value'` 或 `'log'` 类型的坐标轴，使用 `number` 类型的值
-+ 对于 [type](~${componentType}.type) 是 `'time'` 类型的坐标轴
-  + `string` 类型的时间值（例如 `'2024-04-09 13:00:00'`）
-  + `number` 类型的时间戳（例如 `(new Date('2024-04-09 13:00:00')).getTime()`）
-  + `Date` 类型的时间对象（例如 `new Date('2024-04-09 13:00:00')`）。
+结束截断的值。它是业务数据（`series.data`）所定义的值域中的某个值，而非像素值。
+
+{{ use: partial-scale-data-value-desc(
+    componentType = ${componentType},
+    notSupportCategory = true
+) }}
+
+{{ use: partial-axis-break-identifier-desc(
+    componentType = ${componentType}
+)}}
 
 ##${prefix} gap(number|string)
 
-断轴截断区域展示的大小。
+{{ use: partial-version(version = "6.0.0") }}
 
-+ `number`：单位和 `start` 与 `end` 相同，而不表示像素大小
-+ `string`：
-  + 支持例如 `'35%'` 的百分比形式，表示相对于坐标轴数据区域大小的相对比例
-  + 支持例如 `'123'` 的字符串，等同于 `number` 类型的 `123，注意不表示像素大小
+决定了断轴截断区域最终展示的尺寸（高或者宽）。其值可为：
+
++ 百分比（字符串）：
+
+    表示相对于坐标轴的比例。例如 `'5%'`，表示断轴截断区域最终显示的尺寸总为坐标轴尺寸的 `'5%'`。使用百分比能保证断轴截断区域的像素尺寸稳定，不随着 [${componentType}.min](~${componentType}.min)、[${componentType}.max](~${componentType}.max)、[dataZoom](~dataZoom) 变化而变化，因此目前大多数场景都适合使用百分比。
++ 绝对值：
+
+    其单位和 [start](~${componentType}.breaks.start) 与 [end](~${componentType}.breaks.end) 相同，是业务数据（`series.data`）所定义的值域中的某个值，而非像素值。它表示把 `[start, end]` 这个区间映射（替换）为 `[start, start + gap]`。因此，设为绝对值时，断轴截断区域的像素尺寸会随着 [${componentType}.min](~${componentType}.min)、[${componentType}.max](~${componentType}.max)、[dataZoom](~dataZoom) 变化而变化。
+
+**注意：**在一个 [${componentType}.breaks](~${componentType}.breaks) 数组中，`gap` 只允许全使用百分比，或者全使用绝对值，不允许混合使用，否者效果可能不符合预期。
+
+{{ use: partial-axis-break-identifier-desc(
+    componentType = ${componentType}
+)}}
 
 ##${prefix} isExpanded(boolean) = false
 
+{{ use: partial-version(version = "6.0.0") }}
+
 该截断区域是否已展开，默认为 `false`。
+
+{{ use: partial-axis-break-identifier-desc(
+    componentType = ${componentType}
+)}}
 
 #${prefix} breakArea
 
@@ -106,11 +172,17 @@
 
 断轴截断区域的样式。
 
+断轴的基本介绍参见 [${componentType}.breaks](~${componentType}breaks)。
+
 ##${prefix} show(boolean) = true
+
+{{ use: partial-version(version = "6.0.0") }}
 
 是否显示截断区域。
 
 ##${prefix} itemStyle
+
+{{ use: partial-version(version = "6.0.0") }}
 
 截断区域样式。
 
@@ -125,25 +197,35 @@
 
 ##${prefix} zigzagAmplitude(number) = 4
 
-截断锯齿的振幅（垂直坐标轴方向上）大小。截断锯齿在垂直坐标轴的方向上的大小在不同锯齿上总是相同的。
+{{ use: partial-version(version = "6.0.0") }}
+
+锯齿的振幅（垂直于坐标轴方向上）大小。这个大小在不同锯齿上总是相同的。单位为像素。如果设为 `0` 则锯齿退化成一条直线。
 
 ##${prefix} zigzagMinSpan(number) = 4
 
-截断锯齿在坐标轴方向上最小的大小。
+{{ use: partial-version(version = "6.0.0") }}
 
-> 截断锯齿在坐标轴方向上的大小是 `zigzagMinSpan` 和 `zigzagMaxSpan` 之间的随机数。通过随机来模拟纸片撕开的效果。
+每个锯齿跨度的最小值。单位为像素。
+
+> 每个锯齿跨度大小是 `zigzagMinSpan` 和 `zigzagMaxSpan` 之间的随机数。通过随机来模拟纸片撕开的效果。
 
 ##${prefix} zigzagMaxSpan(number) = 20
 
-截断锯齿在坐标轴方向上最大的大小。
+{{ use: partial-version(version = "6.0.0") }}
 
-> 截断锯齿在坐标轴方向上的大小是 `zigzagMinSpan` 和 `zigzagMaxSpan` 之间的随机数。通过随机来模拟纸片撕开的效果。
+每个锯齿跨度的最大值。单位为像素。
+
+> 每个锯齿跨度大小是 `zigzagMinSpan` 和 `zigzagMaxSpan` 之间的随机数。通过随机来模拟纸片撕开的效果。
 
 ##${prefix} zigzagZ(number) = 100
 
-截断锯齿的 `z` 值。控制图形的前后顺序。`z` 值小的图形会被 `z` 值大的图形覆盖。
+{{ use: partial-version(version = "6.0.0") }}
+
+锯齿的 `z` 值。控制图形的前后顺序。`z` 值小的图形会被 `z` 值大的图形覆盖。
 
 ##${prefix} expandOnClick(boolean) = true
+
+{{ use: partial-version(version = "6.0.0") }}
 
 点击断轴截断区域是否展开截断区域。
 
@@ -153,7 +235,12 @@
 
 断轴文字布局。
 
+断轴的基本介绍参见 [${componentType}.breaks](~${componentType}breaks)。
+
+
 ##${prefix} moveOverlap(string|boolean) = 'auto'
+
+{{ use: partial-version(version = "6.0.0") }}
 
 当断轴文字重叠时，是否移动文字来避免重叠。
 
@@ -270,7 +357,10 @@ X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一
 
 ##${prefix} formatter(string|Function)
 
-{{ use: axis-common-formatter-desc() }}
+{{ use: axis-common-formatter-desc(
+    componentType = ${componentType},
+    supportAxisBreak = true
+) }}
 
 ##${prefix} showMinLabel(boolean)
 
@@ -805,7 +895,7 @@ boundaryGap: ['20%', '20%']
 
 不设置时会自动计算最小值保证坐标轴刻度的均匀分布。
 
-在类目轴中，也可以设置为类目的序数（如类目轴 `data: ['类A', '类B', '类C']` 中，序数 `2` 表示 `'类C'`。也可以设置为负数，如 `-3`）。
+{{ use: partial-scale-data-value-desc() }}
 
 当设置成 `function` 形式时，可以根据计算得出的数据最大最小值设定坐标轴的最小值。如：
 
@@ -827,7 +917,7 @@ min: function (value) {
 
 不设置时会自动计算最大值保证坐标轴刻度的均匀分布。
 
-在类目轴中，也可以设置为类目的序数（如类目轴 `data: ['类A', '类B', '类C']` 中，序数 `2` 表示 `'类C'`。也可以设置为负数，如 `-3`）。
+{{ use: partial-scale-data-value-desc() }}
 
 当设置成 `function` 形式时，可以根据计算得出的数据最大最小值设定坐标轴的最小值。如：
 
@@ -1031,6 +1121,10 @@ ${name}的显示间隔，在类目轴中有效。{{ if: !${isAxisLabel} }}默认
 
 {{ target: axis-common-formatter-desc }}
 
+{{ if: !${axisTypeProp} }}
+{{ var: axisTypeProp = 'type' }}
+{{ /if }}
+
 刻度标签的内容格式器，支持字符串模板和回调函数两种形式。
 
 示例:
@@ -1038,15 +1132,47 @@ ${name}的显示间隔，在类目轴中有效。{{ if: !${isAxisLabel} }}默认
 // 使用字符串模板，模板变量为刻度默认标签 {value}
 formatter: '{value} kg'
 // 使用函数模板，函数参数分别为刻度数值（类目），刻度的索引
-formatter: function (value, index) {
+formatter: function (value, index, extra?) {
     return value + 'kg';
 }
 ```
 
 ---
 
-对于时间轴（[type](~${componentType}.type): `'time'`），`formatter` 的字符串模板支持多种形式：
+<br>
 
+{{ if: ${supportAxisBreak} }}
+**如果使用了 [axis break](${componentType}.breaks)**
+
+break 信息可以在参数 `extra` 里被获取：
+```ts
+type AxisLabelFormatterExtraBreakPart = {
+    // 如果这个 label 是 break 的 start 或者 end
+    break?: {
+        type: 'start' | 'end';
+        // 这是解析过的 `start`/`end` 值，必然为 number，且进行过排序和重叠
+        // 去除，所以不一定和原先输入的 `start`/`end` 的类型和值相同。
+        start: number;
+        end: number;
+    }
+}
+formatter = function (value, index, extra: AxisLabelFormatterExtraBreakPart) {
+    if (extra && extra.break) {
+        console.log(extra.break);
+    }
+    return value + 'kg';
+}
+```
+注意：使用前需要判空。
+{{ /if }}
+
+---
+
+<br>
+
+**对于时间轴（[`${componentType}.${axisTypeProp}: 'time'`](~${componentType}.${axisTypeProp})）**
+
+`formatter` 的字符串模板支持多种形式：
 - **字符串模板**：简单快速实现常用日期时间模板，`string` 类型
 - **回调函数**：自定义 formatter，可以用来实现复杂高级的格式，`Function` 类型
 - **分级模板**：为不同时间粒度的标签使用不同的 formatter，`object` 类型
@@ -1105,6 +1231,16 @@ formatter: function (value, index) {
         texts.unshift(date.getFullYear());
     }
     return texts.join('/');
+}
+
+// 另外，`echarts.time.format` 也可以被使用：
+formatter: function (value, index) {
+    // 时间模版的规则如上描述。
+    const timeStrLocal = echarts.time.format(value, '{yyyy}-{MM}-{dd} {hh}:{mm}:{ss}');
+    // 第三个参数表示，基于 UTC 解析时间。
+    const timeStrUTC = echarts.time.format(value, '{yyyy}-{MM}-{dd} {hh}:{mm}:{ss}', true);
+    // 注意：如果使用 UTC，${optionDocPath}#useUTC 也要设置为 `true`，保持一致。
+    return timeStrLocal;
 }
 ```
 
@@ -1224,3 +1360,24 @@ xAxis: {
 ) }}
 
 
+
+{{ target: partial-scale-data-value-desc }}
+
+- 如果 [axis.type](~${componentType}.type) 是 `'value'` 或 `'log'`，则使用 `number` 类型的值。
+{{ if: ${notSupportCategory} }}
+- 如果 [axis.type](~${componentType}.type) 是 `'category'`：不支持。
+{{ else }}
+- 如果 [axis.type](~${componentType}.type) 是 `'category'`，值可以是：
+    - 原始字符串，例如 `'categoryA'`、`'categoryB'`。
+    - 序号。例如，如果类目轴定义为 `data: ['categoryA', 'categoryB', 'categoryC']`，则序号 `2` 表示 `'categoryC'`（从 `0` 开始计数）。此外，也可以设置为负数，例如 `-3`。
+{{ /if }}
+- 如果 [axis.type](~${componentType}.type) 是 `'time'`，值可以是：
+    - `string` 类型，表示任意能被 [方法 `parseDate` (`echarts/src/util/number.ts`)](https://github.com/apache/echarts/blob/master/src/util/number.ts) 解析的时间格式，例如 `'2024-04-09 13:00:00'`。
+    - `number` 类型，表示时间戳，例如 `1712667600000`。
+    - `Date` 类型的时间对象，例如 `new Date('2024-04-09T13:00:00Z')`。
+
+
+
+{{ target: partial-axis-break-identifier-desc }}
+
+注：[${componentType}.breaks.start](~${componentType}.breaks.start) 和 [${componentType}.breaks.end](~${componentType}.breaks.end) 是每个 break 项的唯一标志。当调用 [chart.setOption](api.html#echartsInstance.setOption) 修改 [${componentType}.breaks.gap](~${componentType}.breaks.gap) 或 [${componentType}.breaks.isExpanded](~${componentType}.breaks.isExpanded) 时，`start` `end` 必须指定，且如果 `start` `end` 不修改才会有更新动画，修改了则无。
