@@ -607,7 +607,7 @@ ECharts 中的事件有两种，一种是鼠标事件，在鼠标点击某个图
 
     输入的 `coord` 可以是 `[number, number]`，当 [map](option.html#geo.map) 为 `GeoJSON` 时表示 `[longitude, latitude]`，当 [map](option.html#geo.map) 为 `SVG` 时表示 `[x_on_SVG, y_on_SVG]`。
 
-    它也可以是一个 `string`，表示 `GeoJSON` 中的 `name`（即 `features[i].properties.name`，详见 [registerMap](~echarts.registerMap)）或 `SVG` 中的名称（即参见 [SVG Base Map](tutorial.html#SVG%20Base%20Map%20in%20Geo%20Coords%20and%20Map%20Series) 中的 “Named Element”），并返回该区域中心的像素点。
+    它也可以是一个 `string`，表示 `GeoJSON` 中的 `name`（即 `features[i].properties.name`，详见 [registerMap](~echarts.registerMap)）或 `SVG` 中的名称（即参见 [SVG Base Map](${handbookPath}how-to/component-types/geo/svg-base-map) 中的 “Named Element”），并返回该区域中心的像素点。
 
     例如，
     ```ts

@@ -616,7 +616,7 @@ The format of the input `coord` and return type are defined by each coordinate s
 
     The input `coord` can be `[number, number]`, indicating `[longitude, latitude]` if the [map](option.html#geo.map) is `GeoJSON`, or `[x_on_SVG, y_on_SVG]` if the [map](option.html#geo.map) is `SVG`.
 
-    It can also be a `string`, indicating a `name` in `GeoJSON` (i.e., `features[i].properties.name`, see details in [registerMap](~echarts.registerMap)) or `SVG` (i.e., see "Named Element" in [SVG Base Map](tutorial.html#SVG%20Base%20Map%20in%20Geo%20Coords%20and%20Map%20Series)), and return the pixel point of the center of that area.
+    It can also be a `string`, indicating a `name` in `GeoJSON` (i.e., `features[i].properties.name`, see details in [registerMap](~echarts.registerMap)) or `SVG` (i.e., see "Named Element" in [SVG Base Map](${handbookPath}how-to/component-types/geo/svg-base-map)), and return the pixel point of the center of that area.
 
     For example,
     ```ts

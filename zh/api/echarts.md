@@ -196,7 +196,7 @@ echarts.use(
 
 + **@param `opt.svg`:**
 
-    可选。从 `v5.1.0` 开始支持SVG 格式的数据。可以是字符串，也可以是解析得到的 SVG DOM 对象。更多信息参见 [SVG 底图](tutorial.html#%E5%9C%B0%E7%90%86%E5%9D%90%E6%A0%87%E7%B3%BB%E5%92%8C%E5%9C%B0%E5%9B%BE%E7%B3%BB%E5%88%97%E7%9A%84%20SVG%20%E5%BA%95%E5%9B%BE)。
+    可选。从 `v5.1.0` 开始支持SVG 格式的数据。可以是字符串，也可以是解析得到的 SVG DOM 对象。更多信息参见 [SVG 底图](${handbookPath}how-to/component-types/geo/svg-base-map)。
 
     例如，一个极小的 SVG：
     ```ts
