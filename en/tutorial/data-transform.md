@@ -16,7 +16,7 @@ With these transform functions, users can:
 
 ## Get started to data transform
 
-In echarts, data transform is implemented based on the concept of [dataset](~dataset). A [dataset.transform](option.html#dataset.transform) can be configured in a dataset instance to indicate that this dataset is to be generated from this `transform`. For example:
+In echarts, data transform is implemented based on the concept of [dataset](option.html#dataset). A [dataset.transform](option.html#dataset.transform) can be configured in a dataset instance to indicate that this dataset is to be generated from this `transform`. For example:
 
 ```ts
 var option = {
