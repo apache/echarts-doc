@@ -4,13 +4,13 @@
 
 `Data transform` has been supported since Apache ECharts<sup>TM</sup> 5. In echarts, the term `data transform` refers to generating new data from user provided source data using transform functions. This feature enables users to process data in declarative way and provides several common "transform functions" to make such tasks work "out-of-the-box". (For consistency, we use the noun form "transform" rather than "transformation.")
 
-The abstract formula of data transform is: `outData = f(inputData)`, where the transform function `f` can be like `filter`, `sort`, `regression`, `boxplot`, `cluster`, `aggregate`(todo) ...
-With the help of those transform methods, users can be implements the features like:
+The abstract formula of a data transform is: `outData = f(inputData)`, where the transform function `f` can be `filter`, `sort`, `regression`, `boxplot`, `cluster`, `aggregate`(planned), and so on.
+With these transform functions, users can:
 + Partition data into multiple series.
-+ Make some statistics and visualize the result.
-+ Adapt some visualization algorithms to data and display the result.
++ Compute statistics and visualize the results.
++ Adapt visualization algorithms to the data and display the results.
 + Sort data.
-+ Remove or choose some kind of empty or special datums.
++ Remove or choose certain kind of empty or special datums.
 + ...
 
 
