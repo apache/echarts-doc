@@ -166,6 +166,8 @@ Stack order. Optional values:
 + `'seriesAsc'` (default, stack in series order)
 + `'seriesDesc'` (reverse stack order)
 
+**Note:** `stackOrder` should be defined for all series with the same `stack` name. If `stackOrder` is defined for only some of the series, the stack order may change unexpectedly when certain series are hidden (e.g., through legend toggle).
+
 Not supported in polar coordinate system.
 
 ## sampling(string)
