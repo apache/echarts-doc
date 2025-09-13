@@ -250,6 +250,18 @@ className: 'echarts-tooltip echarts-tooltip-dark'
 
 The transition duration of tooltip's animation, in seconds. When it is set to be 0, it would move closely with the mouse.
 
+## displayTransition(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
+
+{{ use: partial-version(
+    version = "6.0.0"
+) }}
+
+Whether to enable the display transition.
+
+By default, the tooltip uses the opacity fading to make itself invisible rather than setting the DOM element's `display` property to `'none'`. This might cause the scrollbar to be always visible when the tooltip content size is large, even if the tooltip is already invisible. In this scenario, or if you just want no fading, you can set this option to `false` to disable the display transition.
+
 {{ use: partial-tooltip-common(
     scope = 'global',
     prefix = '#'
