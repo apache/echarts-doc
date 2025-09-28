@@ -258,17 +258,49 @@ Sets the theme for the chart instance.
 
 Here is a demo of dynamically setting a theme after initialization:
 
+Method 1: Register and apply a named theme; the theme can be used in multiple charts.
 ```js
-const chart = echarts.init(...);
-chart.setOption(...);
-// Method 1: Register and apply a named theme
 echarts.registerTheme('myTheme', { backgroundColor: 'red' });
-chart.setTheme('myTheme');
-// Method 2: Apply an anonymous theme directly
-chart.setTheme({ backgroundColor: 'red' });
+const chart1 = echarts.init(mainDOMElement1);
+chart1.setTheme('myTheme');
+chart1.setOption(...);
+const chart2 = echarts.init(mainDOMElement2);
+chart2.setTheme('myTheme');
+chart2.setOption(...);
 ```
 
-If there are no other charts using this theme, the above two methods are the same. If not, you should use the former one, so that `setTheme('myTheme')` can be used in other charts.
+Method 2: Apply an anonymous theme directly, which only serves the current chart.
+```js
+const chart1 = echarts.init(mainDOMElement);
+chart1.setTheme({ backgroundColor: 'red' });
+chart1.setOption(...);
+```
+
+**[CAVEAT]:**
+
+In the current implementation, calling `setOption` multiple times in merge mode is not supported when using `setTheme`. That is,
+```js
+// --- Bad (May be unexpected) ---
+const chart1 = echarts.init(mainDOMElement);
+chart1.setOption(option1);
+chart1.setOption(option2); // call `setOption` in "merge mode"
+chart1.setOption(option3);
+chart1.setTheme('dark');
+// After calling `setTheme`, the previous options (option1 and option2) are discarded.
+// Only the last option (option3) is retained.
+
+// --- Solution ---
+const chart1 = echarts.init(mainDOMElement);
+// Make sure every option contains all the information and using `notMerge mode` in `setOption`.
+chart1.setOption(option1, {notMerge: true});
+chart1.setOption(option2, {notMerge: true});
+chart1.setOption(option3, {notMerge: true});
+chart1.setTheme('dark');
+// The previous options (option1 and option2) are also discarded.
+// But the last option (option3) contains all the information and is retained,
+// so the finall effect is correct.
+```
+
 
 ## resize(Function)
 ```ts

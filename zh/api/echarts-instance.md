@@ -256,17 +256,51 @@ myChart.setOption({
 
 以下是一个动态设置主题的例子：
 
+方式 1：注册一个具名主题，可以被多个 chart 实例使用。
 ```js
-const chart = echarts.init(...);
-chart.setOption(...);
-// 图表已经初始化了，也可以调用 registerTheme 和 setTheme
 echarts.registerTheme('myTheme', { backgroundColor: 'red' });
-chart.setTheme('myTheme');
-// 或者直接
-chart.setTheme({ backgroundColor: 'red' });
+const chart1 = echarts.init(mainDOMElement1);
+chart1.setTheme('myTheme');
+chart1.setOption(...);
+const chart2 = echarts.init(mainDOMElement2);
+chart2.setTheme('myTheme');
+chart2.setOption(...);
 ```
 
-如果这个主题不在其他图表中使用，那么这两种方式是等价的，否则应使用前一种，这样在其他图表中也可以使用 `setTheme('myTheme')` 使用该主题。
+方式 2：注册一个匿名主题，只被当前 chart 实例使用。
+```js
+const chart1 = echarts.init(mainDOMElement);
+chart1.setTheme({ backgroundColor: 'red' });
+chart1.setOption(...);
+```
+
+注意：当前的实现中，如果在 `chart.setOption` 后调用
+
+**[注意]：**
+
+当前的实现中，并不支持使用 "merge 模式" 调用 `chart.setOption` 后调用 `setTheme`。即，
+```js
+// --- 可能不符合预期 ---
+const chart1 = echarts.init(mainDOMElement);
+chart1.setOption(option1);
+chart1.setOption(option2); // 使用 “merge 模式” 调用 `setOption`
+chart1.setOption(option3);
+chart1.setTheme('dark');
+// 调用 `setTheme` 后，之前的 options （option1 and option2）被丢弃了，
+// 只有最后的 option （option3）被留了下来。
+
+// --- 解决方案 ---
+const chart1 = echarts.init(mainDOMElement);
+// 保证每个 option 都含有全量信息，然后使用 “notMerge 模式” 调用 `setOption`
+chart1.setOption(option1, {notMerge: true});
+chart1.setOption(option2, {notMerge: true});
+chart1.setOption(option3, {notMerge: true});
+chart1.setTheme('dark');
+// 调用 `setTheme` 后，之前的 options （option1 and option2）仍然被丢弃了，
+// 但因为最后的 option （option3）中含有全量信息且被留了下来，最终效果是正确的。
+```
+
+
 
 ## resize(Function)
 ```ts
