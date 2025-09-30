@@ -552,7 +552,7 @@ textStyle: {
 
 ###${prefix} color(Color)
 
-刻度线的颜色，默认取 [axisTick.lineStyle.color](~${componentType}.axisTick.lineStyle.color)。
+刻度线的颜色，默认取 [axisLine.lineStyle.color](~${componentType}.axisLine.lineStyle.color)。
 
 ##${prefix} customValues(Array)
 
