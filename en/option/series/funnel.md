@@ -173,6 +173,27 @@ Configurations of select state. Available when [selectedMode](~series-funnel.sel
     state = 'select'
 ) }}
 
+## selectedMap(Object|String) = {}
+
+{{ use: partial-version(
+version = "5.0.0"
+) }}
+
+Default selected data by category name in axis. Available when [selectedMode](~series-funnel.selectedMode) is set.
+
+Type can be `object | 'all'`, in case of 'all', it means that all data will be selected.
+
+example:
+```
+// Select all data
+selectedMap: 'all'
+// Specify selected category name
+selectedMap: {
+  // select 'categoryName1'
+  'categoryName1': true
+}
+```
+
 {{ use: partial-selected-mode(
     version = '5.0.0'
 ) }}
