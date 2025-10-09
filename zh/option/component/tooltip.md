@@ -250,6 +250,18 @@ className: 'echarts-tooltip echarts-tooltip-dark'
 
 提示框浮层的移动动画过渡时间，单位是 s，设置为 0 的时候会紧跟着鼠标移动。
 
+## displayTransition(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
+
+{{ use: partial-version(
+    version = "6.0.0"
+) }}
+
+提示框显示/隐藏时是否启用过渡动画。
+
+默认情况下，提示框通过透明度淡入淡出过渡效果来实现显示/隐藏，而不是直接将 DOM 元素的 `display` 属性设置为 `'none'`。这在提示框内容比较多出现滚动条时，可能导致提示框隐藏后滚动条仍然存在的问题。在这种情况下，或者如果只是不想使用淡入淡出效果，可以将此选项设置为 `false` 以禁用显示/隐藏过渡动画。
+
 {{ use: partial-tooltip-common(
     scope = 'global',
     prefix = '#'

@@ -85,7 +85,7 @@ $.get('map/topographic_map.svg', function (svg) {
 也参见示例 [Flight Seatmap](${galleryEditorPath}geo-seatmap-flight)。
 {{ /if }}
 
-如上所示，ECharts 也可以使用 SVG 格式的地图。详情参见：[SVG 底图](tutorial.html#%E5%9C%B0%E7%90%86%E5%9D%90%E6%A0%87%E7%B3%BB%E5%92%8C%E5%9C%B0%E5%9B%BE%E7%B3%BB%E5%88%97%E7%9A%84%20SVG%20%E5%BA%95%E5%9B%BE)。
+如上所示，ECharts 也可以使用 SVG 格式的地图。详情参见：[SVG 底图](${handbookPath}how-to/component-types/geo/svg-base-map)。
 
 
 #${prefix} projection(Object)

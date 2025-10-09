@@ -25,6 +25,7 @@ Parameters of the event include:
 }
 ```
 
+{{ if: ${hasJitter|default(false)} }}
 #${prefix} jitter(number) = 0
 
 {{ use: partial-version(version = "6.0.0") }}
@@ -46,6 +47,209 @@ Whether allow overlaping with [jitter](~${componentType}.jitter). If `false`, it
 {{ use: partial-version(version = "6.0.0") }}
 
 When setting [jitter](~${componentType}.jitter) and [jitterOverlap](~${componentType}.jitterOverlap) is `false`, the minimum distance between two scatters.
+{{ /if }}
+
+
+
+{{ if: ${hasBreakAxis|default(false)} }}
+#${prefix} breaks(Array)
+
+{{ use: partial-version(version = "6.0.0") }}
+
+Defines axis breaks. Each entry represents a collapsed or skipped range of the axis.
+
+~[800x400](${galleryViewPath}intraday-breaks-2&edit=1&reset=1)
+~[800x400](${galleryViewPath}intraday-breaks-1&edit=1&reset=1)
+~[800x400](${galleryViewPath}bar-breaks-brush&edit=1&reset=1)
+
+**Other examples:** [bar-breaks-simple](${galleryEditorPath}bar-breaks-simple&edit=1&reset=1), [line-fisheye-lens](${galleryEditorPath}line-fisheye-lens&edit=1&reset=1)
+
+
+> An axis break is a technique that collapses portions of the coordinate axis to compress the display space of non-critical data segments in charts. Its core purposes are:
+>
+> + **Highlight differences**: When there are extreme differences between data values (such as one value being much larger than others), it prevents large value bars from overwhelmingly occupying space, making small value differences difficult to distinguish.
+> + **Save space**: Reduces blank areas caused by extreme values, making charts more compact.
+>
+> Please note that axis breaks should only be used when necessary to avoid misleading users. When using axis breaks, the collapsed parts and corresponding values should usually be clearly indicated.
+>
+> Axis breaks cannot be used in category axes ([type](~${componentType}.type): `'category'`).
+
+
+If you import ECharts by [only importing the necessary components](${handbookPath}basics/import), you need to import and register the feature `AxisBreak` explicitly. For example,
+```ts
+import * as echarts from 'echarts/core';
+import { BarChart } from 'echarts/charts';
+import {
+  TitleComponent,
+  TooltipComponent,
+  GridComponent,
+  DatasetComponent,
+  TransformComponent
+} from 'echarts/components';
+
+// Import the feature AxisBreak
+import { AxisBreak } from 'echarts/features';
+
+import { CanvasRenderer } from 'echarts/renderers';
+
+// Register
+echarts.use([
+  BarChart,
+  TitleComponent,
+  TooltipComponent,
+  GridComponent,
+  DatasetComponent,
+  TransformComponent,
+  AxisBreak,
+  CanvasRenderer
+]);
+
+var myChart = echarts.init(document.getElementById('main'));
+myChart.setOption({
+  // ...
+});
+```
+
+
+##${prefix} start(string|number|Date)
+
+{{ use: partial-version(version = "6.0.0") }}
+
+The start value for the axis break area, specified in data domain defined by `series.data`, rather than in pixels.
+
+{{ use: partial-scale-data-value-desc(
+    componentType = ${componentType},
+    notSupportCategory = true
+) }}
+
+{{ use: partial-axis-break-identifier-desc(
+    componentType = ${componentType}
+)}}
+
+##${prefix} end(string|number|Date)
+
+{{ use: partial-version(version = "6.0.0") }}
+
+The end value for the axis break area, specified in data domain defined by `series.data`, rather than in pixels.
+
+{{ use: partial-scale-data-value-desc(
+    componentType = ${componentType},
+    notSupportCategory = true
+) }}
+
+{{ use: partial-axis-break-identifier-desc(
+    componentType = ${componentType}
+)}}
+
+##${prefix} gap(number|string)
+
+{{ use: partial-version(version = "6.0.0") }}
+
+It determines the visual size of the axis break area.
+
++ Percentage (string):
+
+    Specifies the proportion relative to the axis. For example, `'5%'` means that the final size of the axis break area will always be `'5%'` of the axis length. Using a percentage ensures that the pixel size of the axis break area remains stable, and does not change when [${componentType}.min](~${componentType}.min), [${componentType}.max](~${componentType}.max), or [dataZoom](~dataZoom) are modified. For this reason, using a percentage is recommended in most scenarios.
++ Absolute value:
+
+    Its unit is the same as [start](~${componentType}.breaks.start) and [end](~${componentType}.breaks.end), referring to a value in the data domain defined by the business data (`series.data`), rather than pixels. It represents mapping (replacing) the `[start, end]` interval with `[start, start + gap]`. Therefore, if set as an absolute value, the pixel size of the axis break area will change when [${componentType}.min](~${componentType}.min), [${componentType}.max](~${componentType}.max), or [dataZoom](~dataZoom) are modified.
+
+**Notice:** Within a [${componentType}.breaks](~${componentType}.breaks) array, `gap` must be specified either entirely in percentages or entirely in absolute values. Mixing the two is not allowed, as it may lead to unexpected results.
+
+{{ use: partial-axis-break-identifier-desc(
+    componentType = ${componentType}
+)}}
+
+##${prefix} isExpanded(boolean) = false
+
+{{ use: partial-version(version = "6.0.0") }}
+
+Whether this axis break area is expanded, default is `false`.
+
+{{ use: partial-axis-break-identifier-desc(
+    componentType = ${componentType}
+)}}
+
+#${prefix} breakArea
+
+{{ use: partial-version(version = "6.0.0") }}
+
+Style of the axis break area.
+
+See also the introduction to the axis break in [${componentType}.breaks](~${componentType}breaks).
+
+##${prefix} show(boolean) = true
+
+{{ use: partial-version(version = "6.0.0") }}
+
+Whether to show the axis break area.
+
+##${prefix} itemStyle
+
+{{ use: partial-version(version = "6.0.0") }}
+
+Style of the axis break area.
+
+{{ use: partial-item-style(
+    prefix = '###',
+    defaultColor = "#fff",
+    defaultBorderColor = "'#b7b9be'",
+    defaultBorderWidth = 1,
+    defaultType = "[3, 3]",
+    defaultOpacity = 0.6
+) }}
+
+##${prefix} zigzagAmplitude(number) = 4
+
+{{ use: partial-version(version = "6.0.0") }}
+
+The amplitude (in the direction perpendicular to the coordinate axis) of the zigzag. The size of different teeth is always the same. The unit is pixel. If set to `0`, the zigzag degenerates into a straight line.
+
+##${prefix} zigzagMinSpan(number) = 4
+
+{{ use: partial-version(version = "6.0.0") }}
+
+The minimum size of each tooth. The unit is pixel.
+
+> The size of a tooth is a random number between `zigzagMinSpan` and `zigzagMaxSpan`. Randomness is used to simulate the effect of torn paper.
+
+##${prefix} zigzagMaxSpan(number) = 20
+
+{{ use: partial-version(version = "6.0.0") }}
+
+The maximum size of each tooth. The unit is pixel.
+
+> The size of a tooth is a random number between `zigzagMinSpan` and `zigzagMaxSpan`. Randomness is used to simulate the effect of torn paper.
+
+##${prefix} zigzagZ(number) = 100
+
+{{ use: partial-version(version = "6.0.0") }}
+
+The `z` value of the zigzag. Controls the front-to-back order of graphics. Graphics with smaller `z` values will be covered by graphics with larger `z` values.
+
+##${prefix} expandOnClick(boolean) = true
+
+{{ use: partial-version(version = "6.0.0") }}
+
+Whether to expand the axis break area when clicking on it.
+
+#${prefix} breakLabelLayout(Object)
+
+{{ use: partial-version(version = "6.0.0") }}
+
+Axis breaks label layout.
+
+See also the introduction to the axis break in [${componentType}.breaks](~${componentType}breaks).
+
+
+##${prefix} moveOverlap(string|boolean) = 'auto'
+
+{{ use: partial-version(version = "6.0.0") }}
+
+When axis break labels overlap, whether to move labels to avoid overlap.
+
+`'auto'` or `true` means moving labels to avoid overlap when overlapping occurs; `false` means not moving.
+{{ /if }}
 
 #${prefix} axisLine(Object)
 
@@ -155,7 +359,10 @@ The margin between the axis label and the axis line.
 
 ##${prefix} formatter(string|Function) = null
 
-{{ use: axis-common-formatter-desc() }}
+{{ use: axis-common-formatter-desc(
+    componentType = ${componentType},
+    supportAxisBreak = true
+) }}
 
 ##${prefix} showMinLabel(boolean) = null
 
@@ -710,7 +917,7 @@ min: function (value) {
 
 The maximum value of axis.
 
-It can be set to a special value `'dataMax'` so that the minimum value on this axis is set to be the maximum label.
+It can be set to a special value `'dataMax'` so that the maximum value on this axis is set to be the maximum label.
 
 It will be automatically computed to make sure axis tick is equally distributed when not set.
 
@@ -803,7 +1010,9 @@ To specify the start value of the axis.
 
 {{ use: partial-axis-common-axis-line(
     prefix = ${prefix},
-    componentType = ${componentType}
+    componentType = ${componentType},
+    hasJitter = ${hasJitter},
+    hasBreakAxis = ${hasBreakAxis}
 ) }}
 
 {{ use: partial-axis-common-axis-tick(
@@ -917,6 +1126,10 @@ The first parameter is index of category, and the second parameter is the name o
 
 {{ target: axis-common-formatter-desc }}
 
+{{ if: !${axisTypeProp} }}
+{{ var: axisTypeProp = 'type' }}
+{{ /if }}
+
 Formatter of axis label, which supports string template and callback function.
 
 Example:
@@ -924,15 +1137,48 @@ Example:
 // Use string template; template variable is the default label of axis {value}
 formatter: '{value} kg'
 // Use callback.
-formatter: function (value, index) {
+formatter: function (value, index, extra?) {
     return value + 'kg';
 }
 ```
 
 ---
 
-For axes of time [type](~${componentType}.type): `'time'`, `formatter` supports the following forms:
+<br>
 
+{{ if: ${supportAxisBreak} }}
+**When [axis break](${componentType}.breaks) is used**
+
+The break info can be obtained from the `extra` param:
+```ts
+type AxisLabelFormatterExtraBreakPart = {
+    // If this label is a axis break start or end.
+    break?: {
+        type: 'start' | 'end';
+        // The parsed `start`/`end`, always be numbers, and has been
+        // sorted and intersection removed, therefore, they may not
+        // equal to the original input of `start`/`end`.
+        start: number;
+        end: number;
+    }
+}
+formatter = function (value, index, extra: AxisLabelFormatterExtraBreakPart) {
+    if (extra && extra.break) {
+        console.log(extra.break);
+    }
+    return value + 'kg';
+}
+```
+Notice: null checking must be performed.
+{{ /if }}
+
+---
+
+<br>
+
+**For a time axis ([`${componentType}.${axisTypeProp}: 'time'`](~${componentType}.${axisTypeProp}))**
+
+`formatter` supports the following forms:
 - **String Templates**: an easy and fast way to make frequently used date/time template, formed in `string`
 - **Callback Functions**: customized formatter to make complex format, formed in `Function`
 - **Cascading Templates**: to adopt different formatters for different time granularity, formed in `object`
@@ -993,6 +1239,17 @@ formatter: function (value, index) {
         texts.unshift(date.getFullYear());
     }
     return texts.join('/');
+}
+
+// Moreover, `echarts.time.format` can be used:
+formatter: function (value, index) {
+    // Follow the template rules above.
+    const timeStrLocal = echarts.time.format(value, '{yyyy}-{MM}-{dd} {hh}:{mm}:{ss}');
+    // The third param `true` indicates that format time based on UTC.
+    const timeStrUTC = echarts.time.format(value, '{yyyy}-{MM}-{dd} {hh}:{mm}:{ss}', true);
+    // Notice, if using UTC, ${optionDocPath}#useUTC need to be also set as `true`
+    // for consistency.
+    return timeStrLocal;
 }
 ```
 
@@ -1110,4 +1367,26 @@ Whether to show the tooltip. Defaults to `false`.
     noValueFormatter = true
 ) }}
 
+
+
+{{ target: partial-scale-data-value-desc }}
+
+- If [axis.type](~${componentType}.type) is `'value'` or `'log'`, use `number` type values.
+{{ if: ${notSupportCategory} }}
+- If [axis.type](~${componentType}.type) is `'category'`: not supported yet.
+{{ else }}
+- If [axis.type](~${componentType}.type) is `'category'`, the value can be:
+    - The original string, such as `'categoryA'`, `'categoryB'`.
+    - The ordinal number. For example, if a catergory axis is defined as `data: ['categoryA', 'categoryB', 'categoryC']`, and the ordinal `2` represents `'categoryC'` (starting from `0`). Moreover, it can be set as negative number, like `-3`.
+{{ /if }}
+- If [axis.type](~${componentType}.type) is `'time'`, the value can be:
+    - `string` type represents any time format that can be parsed by [method `parseDate` in `echarts/src/util/number.ts`](https://github.com/apache/echarts/blob/master/src/util/number.ts), e.g., `'2024-04-09 13:00:00'`.
+    - `number` type represents a timestamp, e.g., `1712667600000`.
+    - `Date` type time objects, e.g., `new Date('2024-04-09T13:00:00Z')`.
+
+
+
+{{ target: partial-axis-break-identifier-desc }}
+
+Note: [${componentType}.breaks.start](~${componentType}.breaks.start) and [${componentType}.breaks.end](~${componentType}.breaks.end) are the unique identifiers for each break item. When calling [chart.setOption](api.html#echartsInstance.setOption) to modify [${componentType}.breaks.gap](~${componentType}.breaks.gap) or [${componentType}.breaks.isExpanded](~${componentType}.breaks.isExpanded), `start` and `end` must be specified. Update animations will only occur if `start` and `end` are not modified; no animation will occur if they are changed.
 

@@ -23,6 +23,7 @@
 {{import: component-graphic}}
 {{import: component-calendar}}
 {{import: component-matrix}}
+{{import: component-thumbnail}}
 {{import: component-dataset}}
 {{import: component-aria}}
 
@@ -163,6 +164,11 @@ The default value of `useUTC` is false, for sake of considering:
 Notice: the setting only affects "display time", not "parse time".
 For how time value (like `1491339540396`, `'2013-01-04'`, ...) is parsed in echarts, see [the time part in date](~series-line.data).
 
+Notice: if you set `useUTC: true` and use the helper method `echarts.time.format` (or other similar third-party methods), it should also be configured to format in UTC. For example,
+```ts
+// The third param `true` indicates that format time based on UTC.
+const timeStrUTC = echarts.time.format(value, '{yyyy}-{MM}-{dd} {hh}:{mm}:{ss}', true);
+```
 
 {{import: partial-rich-inherit-plain-label}}
 

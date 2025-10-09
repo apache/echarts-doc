@@ -19,6 +19,8 @@ data: ['A', 'B', 'C', 'D', 'E']
 
 // Or if column/row names is not of concern, simply
 data: Array(5).fill(null) // Five columns or rows
+// Note: DO NOT support array with empty slots：
+// data: Array(5) // ❌
 
 // Data in a tree structure
 data: [{
@@ -42,13 +44,37 @@ data: [{
 }]
 ```
 
+If [matrix.${matrixDim}.data](~matrix.${matrixDim}.data) is not provided, it will be collected from `series.data` or `dataset.soruce`.
+
+See [matrix data collection example](${galleryEditorPath}matrix-mini-bar-data-collection&edit=1&reset=1).
+
+And in this case [series.encode](~series-scatter.encode) can be used to specify the dimension from which value is collected. For example,
+```js
+var option = {
+    // no matrix.x/y.data is specified;
+    // so collect from series.data or dataset.source (if any)
+    matrix: {},
+    series: {
+        type: 'scatter',
+        coordinateSystem: 'matrix',
+        // Collect values from dimension index 3 and 2.
+        encode: {x: 3, y: 2},
+        data: [
+            // 0   1    2    3    (dimension index)
+            [100, 111, 122, 133],
+            [200, 211, 222, 233],
+        ]
+    }
+}
+```
+
 #### value(string|number)
 {{ use: partial-version(version = "6.0.0") }}
 The text in the header cell. Can also be used as a index of this column or row. Optional. If not specified, auto generate a text.
 
 #### children(Array)
 {{ use: partial-version(version = "6.0.0") }}
-See [matrix.x/y.data](~matrix.x.data).
+See [matrix.${matrixDim}.data](~matrix.${matrixDim}.data).
 
 #### size(number)
 {{ use: partial-version(version = "6.0.0") }}

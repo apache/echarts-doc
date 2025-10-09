@@ -19,6 +19,8 @@ data: ['A', 'B', 'C', 'D', 'E']
 
 // 或者如果不关心列/行名称，可以直接
 data: Array(5).fill(null) // 五列或五行
+// 注：不支持未初始化数组项的数组：
+// data: Array(5) // ❌
 
 // 树状结构的数据
 data: [{
@@ -42,6 +44,31 @@ data: [{
 }]
 ```
 
+如果 [matrix.${matrixDim}.data](~matrix.${matrixDim}.data) 没有提供，它会从 `series.data` 或者 `dataset.source` 中自动收集。
+
+参见 [示例](${galleryEditorPath}matrix-mini-bar-data-collection&edit=1&reset=1)。
+
+在这种情况下，[series.encode](~series-scatter.encode) 可指定从哪个维度收集数据。例如：
+```js
+var option = {
+    // matrix.x/y.data 没有指定。
+    // 于是从 series.data or dataset.source 收集。
+    matrix: {},
+    series: {
+        type: 'scatter',
+        coordinateSystem: 'matrix',
+        // 指定从 dimension index 为 3 和 2 的列收集数据。
+        encode: {x: 3, y: 2},
+        data: [
+            // 0   1    2    3    (dimension index)
+            [100, 111, 122, 133],
+            [200, 211, 222, 233],
+        ]
+    }
+}
+```
+
+
 #### value(string|number)
 {{ use: partial-version(version = "6.0.0") }}
 
@@ -50,7 +77,7 @@ data: [{
 #### children(Array)
 {{ use: partial-version(version = "6.0.0") }}
 
-见 [matrix.x/y.data](~matrix.x.data).
+见 [matrix.${matrixDim}.data](~matrix.${matrixDim}.data).
 
 #### size(number)
 {{ use: partial-version(version = "6.0.0") }}

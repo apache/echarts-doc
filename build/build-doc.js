@@ -23,7 +23,7 @@ const chalk = require('chalk');
 const argv = require('yargs').argv;
 const path = require('path');
 const chokidar = require('chokidar');
-const {debounce} = require('lodash');
+const {debounce, cloneDeep} = require('lodash');
 const {getDocJSONPVarNname} = require('../src/shared');
 const {readConfigEnvFile} = require('./helper');
 
@@ -63,16 +63,23 @@ for (let key in config) {
 }
 
 async function md2jsonAsync(opt) {
-
     var newOpt = Object.assign({
         path: path.join(opt.language, opt.entry, '**/*.md'),
-        tplEnv: Object.assign({}, config, {
-            galleryViewPath: config.galleryViewPath.replace('${lang}', opt.language),
-            galleryEditorPath: config.galleryEditorPath.replace('${lang}', opt.language),
-            handbookPath: config.handbookPath.replace('${lang}', opt.language)
-        }),
+        tplEnv: replaceLangInConfig(cloneDeep(config)),
         imageRoot: config.imagePath
     }, opt);
+
+    function replaceLangInConfig(config) {
+        for (const [prop, value] of Object.entries(config)) {
+            if (typeof value === 'object' && value) {
+                replaceLangInConfig(value)
+            }
+            else if (typeof value === 'string') {
+                config[prop] = value.replace('${lang}', opt.language)
+            }
+        }
+        return config;
+    }
 
     function run(cb) {
         md2json(newOpt).then(schema => {

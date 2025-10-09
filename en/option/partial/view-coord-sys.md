@@ -90,6 +90,9 @@ center: ['50%', '50%']
 
 > The percentage string is introduced since `v5.3.3`. It is initially based on canvas width/height. But that is not reasonable, and then changed to be based on the bounding rect since `v6.0.0`.
 
+{{ use: partial-view-coord-sys-indicator-example-link(
+    componentNameInLink = ${componentNameInLink}
+) }}
 
 #${prefix} zoom(number) = 1
 
@@ -102,6 +105,10 @@ Zoom rate of current viewport.
 {{ use: partial-zoom-value-desc() }}
 
 When [roaming](~${componentNameInLink}.roam), the values in [center](~${componentNameInLink}.center) and `zoom` will be modified correspondingly.
+
+{{ use: partial-view-coord-sys-indicator-example-link(
+    componentNameInLink = ${componentNameInLink}
+) }}
 
 #${prefix} scaleLimit(Object)
 
@@ -131,9 +138,11 @@ Options:
 
     {{ if: ${supportClip} }}If `clip: true`, the roaming can only be triggered at any position within the clipped area. Otherwise it can be triggered in canvas globally.{{ else }}The roaming can be triggered in canvas globally.{{ /if }}
 
-{{ if: ${isGeoOrMap} }}
-**See example:** [geo roam indicator](${galleryEditorPath}doc-example/geo-roam-indicator&edit=1&reset=1).
-{{ /if }}
+{{ use: partial-view-coord-sys-indicator-example-link(
+    componentNameInLink = ${componentNameInLink}
+) }}
+
+
 
 {{ target: partial-preserve-aspect }}
 
@@ -166,9 +175,11 @@ Options of `preserveAspect`:
 
 {{ if: ${isGeoOrMap} }}
 Notice: When using [layoutCenter](~${componentNameInLink}.layoutCenter) and [layoutSize](~${componentNameInLink}.layoutSize), the `aspect radio` is always preserved, regardless of this `preserveAspect`.
-
-**See example:** [geo roam indicator](${galleryEditorPath}doc-example/geo-roam-indicator&edit=1&reset=1).
 {{ /if }}
+
+{{ use: partial-view-coord-sys-indicator-example-link(
+    componentNameInLink = ${componentNameInLink}
+) }}
 
 #${prefix} preserveAspectAlign(string) = 'center'
 
@@ -180,7 +191,9 @@ Options: `'left'` | `'right'` | `'center'`.
 
 See [preserveAspect](~${componentNameInLink}.preserveAspect).
 
-See example [geo roam indicator](${galleryEditorPath}doc-example/geo-roam-indicator&edit=1&reset=1).
+{{ use: partial-view-coord-sys-indicator-example-link(
+    componentNameInLink = ${componentNameInLink}
+) }}
 
 #${prefix} preserveAspectVerticalAlign(string) = 'middle'
 
@@ -192,7 +205,19 @@ Options: `'top'` | `'bottom'` | `'middle'`.
 
 See [preserveAspect](~${componentNameInLink}.preserveAspect).
 
-See example [geo roam indicator](${galleryEditorPath}doc-example/geo-roam-indicator&edit=1&reset=1).
+{{ use: partial-view-coord-sys-indicator-example-link(
+    componentNameInLink = ${componentNameInLink}
+) }}
+
+
+
+{{ target: partial-view-coord-sys-indicator-example-link }}
+
+{{ if: ${componentNameInLink} === 'geo' || ${componentNameInLink} === 'series-map' }}
+**See [geo roam indicator example](${galleryEditorPath}doc-example/geo-roam-indicator&edit=1&reset=1)** to understand the concept.
+{{ elif: ${componentNameInLink} === 'series-graph' }}
+**See [graph roam indicator example](${galleryEditorPath}doc-example/graph-roam-indicator&edit=1&reset=1)** to understand the concept.
+{{ /if }}
 
 
 
