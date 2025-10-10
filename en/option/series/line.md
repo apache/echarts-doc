@@ -40,6 +40,11 @@ Broken line chart relates all the data points [symbol](~series-line.symbol) by b
     hasCallback = true
 ) }}
 
+## loop(boolean) = false
+Only works when `coordinateSystem` is `polar`.
+
+Whether to close the line path or not.
+
 ## showSymbol(boolean) = true
 
 <ExampleUIControlBoolean default="true" />
