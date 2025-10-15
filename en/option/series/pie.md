@@ -531,7 +531,7 @@ Label rotation.
 
 + If `true` or `'radial'`, the labels are rotated radially. (The `'radial'` literal is supported since `v5.2.0`)
 + If `'tangential'`, the labels are rotated tangentially. (Since `v5.2.0`)
-+ If set to `‘tangential-noflip’`, the arrangement will be tangential and will not flip. (Since `v6.0.0`)
++ If set to `‘tangential-noflip’`, the arrangement will be tangential and will not flip. (Since `v6.0.1`)
 + If `number`, the labels are rotated in degrees (-90° - 90°). The negative value represents clockwise.
 
 {{ use: partial-text-style(
