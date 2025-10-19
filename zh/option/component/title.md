@@ -43,9 +43,15 @@ const option = {
 
 主标题文本，支持使用 `\n` 换行。
 
+{{ use: partial-security-warning(
+    securityRiskExclamation: '如果使用了 [toolbox.feature.saveAsImage](~toolbox.feature.saveAsImage)，并且没有设置 [toolbox.feature.saveAsImage.name](~toolbox.feature.saveAsImage.name)，会用 `title[0].text` 替代。这种用法是历史实现但并不推荐，应该总是显式指定[toolbox.feature.saveAsImage.name](~toolbox.feature.saveAsImage.name)；否则，不得不考虑 `title.text` 是否是个正确的文件名，以及其 **安全性**。'
+)}}
+
 ## link(string) = ''
 
 主标题文本超链接。
+
+{{ use: partial-security-url-common-warning }}
 
 ## target(string) = 'blank'
 
@@ -79,6 +85,8 @@ const option = {
 ## sublink(string) = ''
 
 副标题文本超链接。
+
+{{ use: partial-security-url-common-warning }}
 
 ## subtarget(string) = 'blank'
 

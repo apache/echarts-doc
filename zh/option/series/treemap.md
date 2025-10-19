@@ -535,6 +535,8 @@ treemap 默认把第一个维度（Array 第一项）映射到『面积』上。
 
 参见 [series-treemap.data.target](~series-treemap.data.target)。
 
+{{ use: partial-security-url-common-warning }}
+
 ### target(string) = 'blank'
 
 意义同 `html` `<a>` 标签中的 `target`，参见 [series-treemap.data.link](~series-treemap.data.link)。可选值为：`'blank'` 或 `'self'`。

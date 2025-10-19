@@ -71,10 +71,15 @@ For example,
 Security waning is required for unsafe APIs/options.
 For example,
 ```
-{{ use: security-warning }}
+{{ use: partial-security-warning }}
 Or
-{{ use: security-warning(
+{{ use: partial-security-warning(
     desc: 'Raw HTML is allowed in this option.'
+)}}
+Or
+{{ use: partial-security-warning(
+    desc: 'Raw HTML is allowed in this option.',
+    securityRiskExclamation: '**Security risks** must be considered when xxx.'
 )}}
 ```
 

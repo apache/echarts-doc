@@ -101,5 +101,14 @@
         padding: 10px;
         border-left: 2px solid rgba(248, 113, 113, 1);
         color: rgb(100, 116, 139);
+
+        code {
+            background: rgba(254, 202, 202, 1);
+        }
+
+        .warning-title {
+            font-weight: bold;
+            color: rgba(185, 28, 28, 1);
+        }
     }
 }

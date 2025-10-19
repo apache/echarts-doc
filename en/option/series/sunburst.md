@@ -215,6 +215,8 @@ Link address that redirects to when this sector is clicked. Only useful when [se
 
 See [series-sunburst.data.target](~series-sunburst.data.target).
 
+{{ use: partial-security-url-common-warning }}
+
 ### target(string) = 'blank'
 
 Like `target` attribute of HTML `<a>`, which can either be `'blank'` or `'self'`. See [series-sunburst.data.link](~series-sunburst.data.link).

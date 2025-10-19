@@ -305,8 +305,12 @@ formatter: '{b0}: {c0}<br />{b1}: {c1}'
 The format of callback function:
 
 ```ts
-(params: Object|Array, ticket: string, callback: (ticket: string, html: string)) => string | HTMLElement | HTMLElement[]
+(params: Object|Array, ticket: string, callback: (ticket: string, html: string | HTMLElement | HTMLElement[])) => string | HTMLElement | HTMLElement[]
 ```
+
+{{ use: partial-security-warning(
+    desc: '`tooltip` is implemented in HTML (unless [tooltip.renderMode](~tooltip.renderMode) is set as `richText`), allowing users to customize the HTML in this way. The content in the HTML should be properly escaped before being passed in.'
+)}}
 
 The first parameter `params` is the data that the formatter needs. Its format is shown as follows:
 
@@ -369,13 +373,18 @@ Interface:
 (value: number | string, dataIndex: number) => string
 ```
 
-> `dataIndex` is provided since `v5.5.0`.
+{{ use: partial-version(
+    feature = '`dataIndex` is provided',
+    version = '5.5.0'
+) }}
 
 Example:
 ```ts
 // Add $ prefix
 valueFormatter: (value) => '$' + value.toFixed(2)
 ```
+
+> **[NOTE]:** Different from [tooltip.formater](~tooltip.formatter), raw HTML is NOT accepted in this approach -- the returned content will be escaped internally before rendering.
 {{ /if }}
 
 #${prefix} backgroundColor(Color) = 'rgba(50,50,50,0.7)'
@@ -446,3 +455,7 @@ Extra CSS style for floating layer. The following is an example for adding shado
 extraCssText: 'box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);'
 ```
 
+{{ use: partial-security-warning(
+    desc: '`tooltip` is implemented in HTML (unless [tooltip.renderMode](~tooltip.renderMode) is set as `richText`), allowing users to customize the CSS text of the box in this way.',
+    securityRiskExclamation: '**Security risks** must be considered if the CSS text comes from untrusted sources.'
+)}}
