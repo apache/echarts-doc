@@ -917,7 +917,7 @@ min: function (value) {
 
 The maximum value of axis.
 
-It can be set to a special value `'dataMax'` so that the minimum value on this axis is set to be the maximum label.
+It can be set to a special value `'dataMax'` so that the maximum value on this axis is set to be the maximum label.
 
 It will be automatically computed to make sure axis tick is equally distributed when not set.
 
