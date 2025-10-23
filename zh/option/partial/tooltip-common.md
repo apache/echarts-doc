@@ -320,6 +320,27 @@ formatter: '{b0}: {c0}<br />{b1}: {c1}'
     desc: 'tooltip 是用 HTML 实现的（除非 [tooltip.renderMode](~tooltip.renderMode) 设为 `richText`）。允许用此方式定制 HTML。传入 HTML 前须要对其内容进行正确转义。'
 )}}
 
+组装 HTML 字符串时，**必须进行 HTML 转义（HTML-escaping）**。例如：
+```js
+{
+    tooltip: {
+        formatter: params => {
+            const { name, value } = params;
+            // 必须进行 HTML 转义。
+            // 否则，如果 name 或 value 中含有功能性字符，如 '<' '>' 等，
+            // 则可能渲染不正确。
+            // 同时，如果 name 或 value 的值来自于“非受信任”的来源，则可能被注入恶意代码；
+            // 如果未被转义，则会被运行。
+            return echarts.format.encodeHTML(name)
+                + '<b>' + echarts.format.encodeHTML(value + '') + '</b>';
+            // 注：`echarts.format.encodeHTML` 是个工具函数，把特殊字符
+            //  （'&'、'<'、'>'、'"'、"'"）转换成他们对应的 HTML entities.
+            //  这只是个例子，任何 HTML 转义工具函数都可使用。
+        }
+    }
+}
+```
+
 第一个参数 `params` 是 formatter 需要的数据集。格式如下：
 
 {{ use: partial-formatter-params-structure(

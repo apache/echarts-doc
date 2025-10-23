@@ -309,8 +309,30 @@ The format of callback function:
 ```
 
 {{ use: partial-security-warning(
-    desc: '`tooltip` is implemented in HTML (unless [tooltip.renderMode](~tooltip.renderMode) is set as `richText`), allowing users to customize the HTML in this way. The content in the HTML should be properly escaped before being passed in.'
+    desc: '`tooltip` is implemented in HTML (unless [tooltip.renderMode](~tooltip.renderMode) is set as `richText`), allowing users to customize the HTML in this way. The content in the HTML must be properly escaped before being passed in.'
 )}}
+
+**HTML-escaping must be enforced** before passing the HTML to ECharts. For example,
+```js
+{
+    tooltip: {
+        formatter: params => {
+            const { name, value } = params;
+            // HTML-escaping must be performed.
+            // Otherwise, the rendering may be incorrect if `name` or
+            // `value` contain special charactors like '<', '>', etc.
+            // Additionally, unescaped strings may introduces XSS risks
+            // if `name` or `value` come from untrusted sources, where
+            // malicious code may be injected into that strings.
+            return echarts.format.encodeHTML(name)
+                + '<b>' + echarts.format.encodeHTML(value + '') + '</b>';
+            // NOTE: `echarts.format.encodeHTML` is an utility that converts special
+            //  characters ('&', '<', '>', '"', "'") to their corresponding HTML entities.
+            //  This is just an example -- any HTML-escaping utility can be used.
+        }
+    }
+}
+```
 
 The first parameter `params` is the data that the formatter needs. Its format is shown as follows:
 
