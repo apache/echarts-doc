@@ -1,6 +1,6 @@
 {{ target: partial-security-warning }}
 <div class="doc-partial-security-warning">
-<span class="warning-title">[警告]:</span> ${desc} {{ if: ${securityRiskExclamation} }}${securityRiskExclamation}{{ else }}使用时必须考虑 **安全风险**。{{ /if }}文档 [“安全性”](${handbookPath}best-practices/security) 给出了安全使用建议。
+<span class="warning-title">[警告]:</span> ${desc} {{ if: ${securityRiskExclamation} }}${securityRiskExclamation}{{ else }}使用时必须考虑 **安全风险**。{{ /if }}文档 [“安全指南”](${handbookPath}best-practices/security) 给出了安全使用建议。
 </div>
 {{ /target }}
 

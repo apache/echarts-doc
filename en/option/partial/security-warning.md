@@ -1,6 +1,6 @@
 {{ target: partial-security-warning }}
 <div class="doc-partial-security-warning">
-<span class="warning-title">[WARNING]:</span> ${desc} {{ if: ${securityRiskExclamation} }}${securityRiskExclamation}{{ else }}**Security risks** must be considered when using it.{{ /if }} See document ["Security"](${handbookPath}best-practices/security) for recommendations on safe usage.
+<span class="warning-title">[WARNING]:</span> ${desc} {{ if: ${securityRiskExclamation} }}${securityRiskExclamation}{{ else }}**Security risks** must be considered when using it.{{ /if }} See document ["Security Guidelines"](${handbookPath}best-practices/security) for recommendations on safe usage.
 </div>
 {{ /target }}
 
