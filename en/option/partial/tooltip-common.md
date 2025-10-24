@@ -325,7 +325,7 @@ The format of callback function:
             // if `name` or `value` come from untrusted sources, where
             // malicious code may be injected into that strings.
             return echarts.format.encodeHTML(name)
-                + '<b>' + echarts.format.encodeHTML(value + '') + '</b>';
+                + '<b>' + echarts.format.encodeHTML(value) + '</b>';
             // NOTE: `echarts.format.encodeHTML` is an utility that converts special
             //  characters ('&', '<', '>', '"', "'") to their corresponding HTML entities.
             //  This is just an example -- any HTML-escaping utility can be used.
