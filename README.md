@@ -55,7 +55,35 @@ For example,
 {{ use: partial-version(version = ${version|minVersion('6.0.0')}) }}
     That is, if the ${version} is empty or smaller than '6.0.0', use '6.0.0'.
     Follow the version comparison rules in Semver 2.0 .
+
+{{ use: partial-version(
+    feature = '`dataIndex` is available',
+    version = '5.3.0'
+) }}
+
+{{ use: partial-version(
+    deprecated = 'Use xxx instead',
+    version = '5.1.0'
+) }}
 ```
+
+### Security Warning
+Security waning is required for unsafe APIs/options.
+For example,
+```
+{{ use: partial-security-warning }}
+Or
+{{ use: partial-security-warning(
+    desc: 'Raw HTML is allowed in this option.'
+)}}
+Or
+{{ use: partial-security-warning(
+    desc: 'Raw HTML is allowed in this option.',
+    securityRiskExclamation: '**Security risks** must be considered when xxx.'
+)}}
+```
+
+See ["Security"](https://echarts.apache.org/handbook/en/best-practices/security) for more details.
 
 ### Global Variables
 

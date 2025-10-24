@@ -63,6 +63,11 @@ Padding of text area.
 Whether to show the tool.
 
 #### title(string) = '${title}'
+{{ if: ${warnToolboxDataViewSecurity} }}
+{{ use: partial-security-warning(
+    desc: '`dataView` panel is implemented using HTML, allowing users to customize certain parts for styling and formatting. The `title` is embedded in the HTML without HTML-escaping, so it should be properly escaped before being passed in.'
+)}}
+{{ /if }}
 
 #### icon(string)
 
@@ -169,11 +174,20 @@ File suffix of the image saved.
 + If the `renderer` is set to be `'canvas'` when chart [initialized](api.html#echarts.init) (default), then `'png'` (default) and `'jpg'` are supported.
 + If the `renderer` is set to be `'svg'` when when chart [initialized](api.html#echarts.init), then only `'svg'` is supported for `type` (`'svg'` type is supported since `v4.8.0`).
 
+{{ use: partial-security-warning(
+    securityRiskExclamation: 'This value will be used as the file extension. However, it has not historically been validated internally. So do not input an invalid value; otherwise, **security risks** have to be considered.'
+)}}
+
 #### name(string)
 
 <ExampleUIControlText />
 
-Name to save the image, whose default value is [title.text](~title.text).
+Name (file stem) to save the image. If it is not provided, [title[0].text](~title.text) (if any) has historically been used. The full download filename is `{name}.{type}`
+
+{{ use: partial-security-warning(
+    securityRiskExclamation: 'It is recommended to always specify this `name` explicitly, and do not use text from untrusted sources. Otherwise, **correctness** and **security risks** for a filename have to be considered.'
+)}}
+
 
 #### backgroundColor(Color) = 'auto'
 
@@ -214,7 +228,8 @@ Restore configuration item.
 Data view tool, which could display data in current chart and updates chart after being edited.
 
 {{ use: feature-common(
-    title = "data view"
+    title = "data view",
+    warnToolboxDataViewSecurity = true
 ) }}
 
 #### readOnly(boolean) = false
@@ -230,6 +245,10 @@ Whether it is read-only.
 ```
 
 Define a function to present dataView. It is used to replace default textarea for richer data editing. It can return a DOM object, or an HTML string.
+
+{{ use: partial-security-warning(
+    desc: '`dataView` panel is implemented using HTML, allowing users to customize certain parts for styling and formatting. The HTML provided by `optionToContent` is embedded in the panel HTML without HTML-escaping, so it should be properly escaped before being passed in.'
+)}}
 
 For example:
 ```ts
@@ -264,6 +283,10 @@ When optionToContent is used, if you want to support refreshing chart after data
 #### lang(Array) = ['data view', 'turn off', 'refresh']
 
 There are 3 names in data view, which are `['data view', 'turn off' and 'refresh']`.
+
+{{ use: partial-security-warning(
+    desc: '`dataView` panel is implemented using HTML, allowing users to customize certain parts for styling and formatting. The items in `lang` are embedded in the HTML without HTML-escaping, so it should be properly escaped before being passed in.'
+)}}
 
 #### backgroundColor(string) = '#fff'
 

@@ -391,6 +391,8 @@ Enable hyperlink jump when clicking on node. It is available when [series-treema
 
 See [series-treemap.data.target](~series-treemap.data.target).
 
+{{ use: partial-security-url-common-warning }}
+
 ### target(string) = 'blank'
 
 The same meaning as `target` in `html` `<a>` label, See [series-treemap.data.link](~series-treemap.data.link). Option values are: `'blank'` or `'self'`.

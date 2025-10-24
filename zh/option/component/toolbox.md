@@ -63,6 +63,11 @@ ${name} icon 样式设置。由于 icon 的文本信息只在 icon hover 时候�
 是否显示该工具。
 
 #### title(string) = '${title}'
+{{ if: ${warnToolboxDataViewSecurity} }}
+{{ use: partial-security-warning(
+    desc: '`dataView` 面板是用 HTML 实现的，一些部分允许用户自定义格式和样式。`title` 字段会直接拼接到此 HTML 中，并没有做转义。因此传入前须要正确转义。'
+)}}
+{{ /if }}
 
 #### icon(string)
 
@@ -243,11 +248,19 @@ option = {
 + 如果 `renderer` 的类型在 [初始化图表](api.html#echarts.init) 时被设为 `'canvas'`（默认），则支持 `'png'`（默认）和 `'jpg'`；
 + 如果 `renderer` 的类型在 [初始化图表](api.html#echarts.init) 时被设为 `'svg'`，则 `type` 只支持 `'svg'`（`'svg'` 格式的图片从 `v4.8.0` 开始支持）。
 
+{{ use: partial-security-warning(
+    securityRiskExclamation: '`type` 会被用于文件的扩展名。但是实现中并没有在内部对其进行合法性校验（历史因素）。所以不要传入不合法的值；否则，需要考虑 **安全风险**。'
+)}}
+
 #### name(string)
 
 <ExampleUIControlText />
 
-保存的文件名称，默认使用 [title.text](~title.text) 作为名称。
+保存的文件名称的扩展名之前的部分。如果没有指定，会使用 [title[0].text](~title.text)（如果存在的话）。完整的文件名是 `{name}.{type}`。
+
+{{ use: partial-security-warning(
+    securityRiskExclamation: '建议总是显式指定 `name`，以及不使用“不可信任来源”的字符串。否则，须要考虑作为文件名的 **正确性** 和 **安全性**。'
+)}}
 
 #### backgroundColor(Color) = 'auto'
 
@@ -288,7 +301,8 @@ option = {
 数据视图工具，可以展现当前图表所用的数据，编辑后可以动态更新。
 
 {{ use: feature-common(
-    title = "数据视图"
+    title = "数据视图",
+    warnToolboxDataViewSecurity = true
 ) }}
 
 #### readOnly(boolean) = false
@@ -304,6 +318,10 @@ option = {
 ```
 
 自定义 dataView 展现函数，用以取代默认的 textarea 使用更丰富的数据编辑。可以返回 dom 对象或者 html 字符串。
+
+{{ use: partial-security-warning(
+    desc: '`dataView` 面板是用 HTML 实现的，一些部分允许用户自定义格式和样式。`optionToContent` 给出的 HTML 会直接拼接到面板 HTML 中，并没有做转义。因此传入前须要正确转义。'
+)}}
 
 如下示例使用表格展现数据值：
 ```ts
@@ -338,6 +356,10 @@ optionToContent: function(opt) {
 #### lang(Array) = ['数据视图', '关闭', '刷新']
 
 数据视图上有三个话术，默认是`['数据视图', '关闭', '刷新']`。
+
+{{ use: partial-security-warning(
+    desc: '`dataView` 面板是用 HTML 实现的，一些部分允许用户自定义格式和样式。`lang` 中的内容会直接拼接到此 HTML 中，并没有做转义。因此传入前须要正确转义。'
+)}}
 
 #### backgroundColor(string) = '#fff'
 

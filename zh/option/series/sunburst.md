@@ -364,6 +364,8 @@ const option = {
 
 参见 [series-sunburst.data.target](~series-sunburst.data.target)。
 
+{{ use: partial-security-url-common-warning }}
+
 ### target(string) = 'blank'
 
 意义同 HTML `<a>` 标签中的 `target`，参见 [series-sunburst.data.link](~series-sunburst.data.link)。可选值为：`'blank'` 或 `'self'`。

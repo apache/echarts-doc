@@ -93,4 +93,22 @@
             color: #0086b3;
         }
     }
+
+    .doc-partial-security-warning {
+        font-size: 13px;
+        background: rgba(254, 226, 226, 1);
+        margin: 10px 20px 10px 0;
+        padding: 10px;
+        border-left: 2px solid rgba(248, 113, 113, 1);
+        color: rgb(100, 116, 139);
+
+        code {
+            background: rgba(254, 202, 202, 1);
+        }
+
+        .warning-title {
+            font-weight: bold;
+            color: rgba(185, 28, 28, 1);
+        }
+    }
 }
