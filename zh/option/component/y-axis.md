@@ -128,6 +128,16 @@ Y 轴相对于默认位置的偏移，在相同的 `position` 上有多个 Y 轴
 
 需要配合其他配置项共同实现动态排序柱状图效果，具体参见[动态排序柱状图](${handbookPath}how-to/chart-types/bar/bar-race)教程。
 
+## includeMarkerInExtent(boolean) = true
+
+<ExampleUIControlBoolean />
+
+{{ use: partial-version(version = "6.0.1") }}
+
+是否在坐标轴默认范围计算时包含标记（markPoint、markLine、markArea）。
+
+默认条件下或设置为 `true` 时坐标轴的范围计算会考虑标记的位置，确保标记在坐标轴范围内可见。当设置 `false`时，计算默认轴范围时则不考虑标记的数值。
+
 {{ use: axis-common(
     prefix = '#',
     componentType = 'yAxis',
