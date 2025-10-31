@@ -690,6 +690,64 @@ max: function (value) {
 
 其中 `value` 是一个包含 `min` 和 `max` 的对象，分别表示数据的最大最小值，这个函数可返回坐标轴的最大值，也可返回 `null`/`undefined` 来表示“自动计算最大值”（返回 `null`/`undefined` 从 `v4.8.0` 开始支持）。
 
+#${prefix} dataMin(number) = null
+
+<ExampleUIControlNumber />
+
+{{ use: partial-version(
+    version = '6.0.1'
+) }}
+
+指定数据最小值，用于扩展坐标轴范围同时保持自动刻度优化。
+
+只在数值轴、对数轴、时间轴中（[type](~${componentType}.type): 'value'、'log' 或 'time'）有效。
+
+**工作原理：**
+
+`dataMin` 的效果好似在数据中插入了一个虚拟的数据点，但这个点只参与坐标轴范围的计算，不会实际显示在图表中。
+
+- 当 `dataMin` **小于**实际数据最小值时：坐标轴会扩展以包含这个值，使用一个不大于 `dataMin` 的整齐刻度值作为坐标轴最小值
+- 当 `dataMin` **大于等于**实际数据最小值时：不产生任何影响，按原有逻辑计算
+
+**适用场景：**
+
+- 确保坐标轴包含某个参考值（如及格线、目标值等）
+- 需要为数据留出一定的视觉空间
+
+**与 [min](~${componentType}.min) 的区别：**
+- `min` 会固定坐标轴最小值，禁用自动刻度优化
+- `dataMin` 只影响坐标轴范围，仍保持自动刻度优化
+
+#${prefix} dataMax(number) = null
+
+<ExampleUIControlNumber />
+
+{{ use: partial-version(
+    version = '6.0.1'
+) }}
+
+指定数据最大值，用于扩展坐标轴范围同时保持自动刻度优化。
+
+只在数值轴、对数轴、时间轴中（[type](~${componentType}.type): 'value'、'log' 或 'time'）有效。
+
+**工作原理：**
+
+`dataMax` 的效果好似在数据中插入了一个虚拟的数据点，但这个点只参与坐标轴范围的计算，不会实际显示在图表中。
+
+- 当 `dataMax` **大于**实际数据最大值时：坐标轴会扩展以包含这个值，使用一个不小于 `dataMax` 的整齐刻度值作为坐标轴最大值
+- 当 `dataMax` **小于等于**实际数据最大值时：不产生任何影响，按原有逻辑计算
+
+**适用场景：**
+
+- 确保坐标轴包含目标值或上限值
+- 为数据预留视觉空间，使图表更美观
+- 使多个相似的图表保持一致的坐标轴范围
+
+**与 [max](~${componentType}.max) 的区别：**
+- `max` 会固定坐标轴最大值，禁用自动刻度优化
+- `dataMax` 只影响坐标轴范围，仍保持自动刻度优化
+
+
 #${prefix} scale(boolean) = false
 
 <ExampleUIControlBoolean />
