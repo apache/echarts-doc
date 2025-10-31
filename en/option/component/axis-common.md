@@ -932,6 +932,58 @@ max: function (value) {
 
 `value` is an object, containing the `min` value and `max` value of the data. This function should return the max value of axis, or return `null`/`undefined` to make echarts use the auto calculated max value (`null`/`undefined` return is only supported since `v4.8.0`).
 
+#${prefix} dataMin(number) = null
+
+<ExampleUIControlNumber />
+
+{{ use: partial-version(
+    version = '6.0.1'
+) }}
+
+Specify the data minimum value to extend the axis range while preserving the nice scale algorithm.
+
+It is available only for value, logarithmic, and time axes, i.e., [type](~${componentType}.type): 'value', 'log', or 'time'.
+
+When `dataMin` is less than the actual data minimum, a nice scale value no greater than `dataMin` will be used as the axis minimum.
+
+The difference from [min](~${componentType}.min):
+- `min` fixes the axis minimum value and disables the nice scale algorithm
+- `dataMin` only affects the axis range while preserving the nice scale algorithm
+
+**Example:**
+```ts
+yAxis: {
+    type: 'value',
+    dataMin: 0  // Ensure Y-axis includes 0 while using nice scale
+}
+```
+
+#${prefix} dataMax(number) = null
+
+<ExampleUIControlNumber />
+
+{{ use: partial-version(
+    version = '6.0.1'
+) }}
+
+Specify the data maximum value to extend the axis range while preserving the nice scale algorithm.
+
+It is available only for value, logarithmic, and time axes, i.e., [type](~${componentType}.type): 'value', 'log', or 'time'.
+
+When `dataMax` is greater than the actual data maximum, a nice scale value no less than `dataMax` will be used as the axis maximum.
+
+The difference from [max](~${componentType}.max):
+- `max` fixes the axis maximum value and disables the nice scale algorithm
+- `dataMax` only affects the axis range while preserving the nice scale algorithm
+
+**Example:**
+```ts
+yAxis: {
+    type: 'value',
+    dataMax: 100  // Ensure Y-axis includes 100 while using nice scale
+}
+```
+
 #${prefix} scale(boolean) = false
 
 <ExampleUIControlBoolean />
