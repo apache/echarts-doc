@@ -295,6 +295,47 @@ chart.setOption(option); // option设置回 ${componentMainType}
 可以是一个 id 或者一个 id 数组。
 默认取所有系列。
 
+## seriesTargets(Array)
+
+{{ use: partial-version(version = "6.0.1") }}
+
+指定多个系列及其对应的维度映射关系。当配置了 `seriesTargets` 时，`seriesIndex`、`seriesId` 和 `dimension` 将被忽略。
+
+这个选项允许单个 `visualMap` 组件同时映射多个维度到各自的系列，特别适用于使用 dataset 的场景。
+
+每个目标对象应包含以下属性：
+- `seriesIndex` 或 `seriesId`：指定系列（二者选其一）
+- `dimension`：指定该系列使用的数据维度
+
+示例：
+```javascript
+option = {
+    tooltip: {},
+    dataset: {
+        source: [
+            ['product', '2015', '2016', '2017'],
+            ['Matcha Latte', 43.3, 85.8, 93.7],
+            ['Milk Tea', 83.1, 73.4, 55.1],
+            ['Cheese Cocoa', 86.4, 65.2, 82.5],
+            ['Walnut Brownie', 72.4, 53.9, 39.1]
+        ]
+    },
+    xAxis: { type: 'category' },
+    yAxis: {},
+    series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }],
+    visualMap: {
+        type: 'piecewise',
+        min: 30,
+        max: 100,
+        seriesTargets: [
+            { seriesIndex: 0, dimension: 1 },
+            { seriesIndex: 1, dimension: 2 },
+            { seriesIndex: 2, dimension: 3 }
+        ]
+    }
+};
+```
+
 ## hoverLink(boolean) = true
 
 打开 `hoverLink` 功能时，鼠标悬浮到 `visualMap` 组件上时，鼠标位置对应的数值 在 图表中对应的图形元素，会高亮。
