@@ -932,6 +932,66 @@ max: function (value) {
 
 `value` is an object, containing the `min` value and `max` value of the data. This function should return the max value of axis, or return `null`/`undefined` to make echarts use the auto calculated max value (`null`/`undefined` return is only supported since `v4.8.0`).
 
+#${prefix} dataMin(number) = null
+
+<ExampleUIControlNumber />
+
+{{ use: partial-version(
+    version = '6.0.1'
+) }}
+
+Specify the data minimum value to extend the axis range while preserving the nice scale algorithm.
+
+It is available only for value, logarithmic, and time axes, i.e., [type](~${componentType}.type): 'value', 'log', or 'time'.
+
+**How it works:**
+
+`dataMin` works like inserting a virtual data point into your dataset, but this point only participates in axis range calculation and won't be displayed in the chart.
+
+- When `dataMin` is **less than** the actual data minimum: The axis extends to include this value, using a nice scale value no greater than `dataMin` as the axis minimum
+- When `dataMin` is **greater than or equal to** the actual data minimum: No effect, the axis is calculated using the original logic
+
+**Use cases:**
+
+- Ensure the axis includes a reference value (like passing line, target value, etc.)
+- Reserve visual space for data
+
+**The difference from [min](~${componentType}.min):**
+- `min` fixes the axis minimum value and disables the nice scale algorithm
+- `dataMin` only affects the axis range while preserving the nice scale algorithm
+
+
+
+#${prefix} dataMax(number) = null
+
+<ExampleUIControlNumber />
+
+{{ use: partial-version(
+    version = '6.0.1'
+) }}
+
+Specify the data maximum value to extend the axis range while preserving the nice scale algorithm.
+
+It is available only for value, logarithmic, and time axes, i.e., [type](~${componentType}.type): 'value', 'log', or 'time'.
+
+**How it works:**
+
+`dataMax` works like inserting a virtual data point into your dataset, but this point only participates in axis range calculation and won't be displayed in the chart.
+
+- When `dataMax` is **greater than** the actual data maximum: The axis extends to include this value, using a nice scale value no less than `dataMax` as the axis maximum
+- When `dataMax` is **less than or equal to** the actual data maximum: No effect, the axis is calculated using the original logic
+
+**Use cases:**
+
+- Ensure the Y-axis includes a target value or ceiling
+- Reserve visual space above the data for better presentation
+- Maintain consistent axis ranges across multiple charts
+
+**The difference from [max](~${componentType}.max):**
+- `max` fixes the axis maximum value and disables the nice scale algorithm
+- `dataMax` only affects the axis range while preserving the nice scale algorithm
+
+
 #${prefix} scale(boolean) = false
 
 <ExampleUIControlBoolean />
