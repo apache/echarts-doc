@@ -145,4 +145,46 @@ option = {
 };
 ```
 
+Example C (Using seriesTargets to map different dimensions for different series):
+
+```javascript
+option = {
+    dataset: {
+        source: [
+            ['product', 'sales', 'price', 'year'],
+            ['A', 100, 20, 2020],
+            ['B', 200, 30, 2021],
+            ['C', 150, 25, 2022]
+        ]
+    },
+    visualMap: [
+        {
+            type: 'continuous',
+            min: 0,
+            max: 100,
+            // seriesTargets allows specifying different mapping dimensions for different series
+            // When seriesTargets is configured, dimension, seriesIndex, and seriesId are ignored
+            seriesTargets: [
+                {
+                    seriesIndex: 0,
+                    dimension: 1    // First series maps to 'sales' dimension
+                },
+                {
+                    seriesIndex: 1,
+                    dimension: 2    // Second series maps to 'price' dimension
+                }
+            ],
+            inRange: {
+                color: ['#50a3ba', '#eac736', '#d94e5d']
+            }
+        },
+        ...
+    ],
+    series: [
+        { type: 'bar' },
+        { type: 'line' }
+    ]
+};
+```
+
 For more information, please refer to [visualMap.inRange](option.html#visualMap.inRange) and [visualMap.outOfRange](option.html#visualMap.outOfRange).

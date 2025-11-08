@@ -325,6 +325,55 @@ Specify visual mapping should be performed on which series, from which
 Can be a id or a list of ids.
 All series are used by default.
 
+## seriesTargets(Array)
+
+{{ use: partial-version(version = "6.0.1") }}
+
+Specify multiple series with their corresponding dimension mappings. When `seriesTargets` is configured, `seriesIndex`, `seriesId`, and `dimension` will be ignored.
+
+This option allows a single `visualMap` component to control different dimensions of multiple series simultaneously, which is particularly useful when working with datasets.
+
+Each target object should contain the following properties:
+- `seriesIndex` or `seriesId`: Specify the series (choose one)
+- `dimension`: Specify the data dimension for that series
+
+Example:
+```javascript
+option = {
+    dataset: {
+        source: [
+            ['product', 'sales', 'price', 'year'],
+            ['A', 100, 20, 2020],
+            ['B', 200, 30, 2021],
+            ['C', 150, 25, 2022]
+        ]
+    },
+    visualMap: {
+        type: 'continuous',
+        min: 0,
+        max: 100,
+        // Configure different series to use different dimensions
+        seriesTargets: [
+            {
+                seriesIndex: 0,
+                dimension: 1  // First series uses 'sales' dimension
+            },
+            {
+                seriesIndex: 1,
+                dimension: 2  // Second series uses 'price' dimension
+            }
+        ],
+        inRange: {
+            color: ['#50a3ba', '#eac736', '#d94e5d']
+        }
+    },
+    series: [
+        { type: 'bar' },
+        { type: 'line' }
+    ]
+};
+```
+
 ## hoverLink(boolean) = true
 
 `hoverLink` enable highlight certain graphical elements of chart when mouse hovers on some place of `visualMap` component that is corresponding to those graphical elements by visual mapping.

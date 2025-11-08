@@ -146,4 +146,45 @@ option = {
 };
 ```
 
+例三（使用 seriesTargets 映射不同系列的不同维度）：
+```javascript
+option = {
+    dataset: {
+        source: [
+            ['product', 'sales', 'price', 'year'],
+            ['A', 100, 20, 2020],
+            ['B', 200, 30, 2021],
+            ['C', 150, 25, 2022]
+        ]
+    },
+    visualMap: [
+        {
+            type: 'continuous',
+            min: 0,
+            max: 100,
+            // 使用 seriesTargets 可以为不同系列指定不同的映射维度
+            // 当配置 seriesTargets 后，dimension、seriesIndex、seriesId 将被忽略
+            seriesTargets: [
+                {
+                    seriesIndex: 0,
+                    dimension: 1    // 第一个系列映射 'sales' 维度
+                },
+                {
+                    seriesIndex: 1,
+                    dimension: 2    // 第二个系列映射 'price' 维度
+                }
+            ],
+            inRange: {
+                color: ['#50a3ba', '#eac736', '#d94e5d']
+            }
+        },
+        ...
+    ],
+    series: [
+        { type: 'bar' },
+        { type: 'line' }
+    ]
+};
+```
+
 更多详情，参见 [visualMap.inRange](option.html#visualMap.inRange) 和 [visualMap.outOfRange](option.html#visualMap.outOfRange)。
