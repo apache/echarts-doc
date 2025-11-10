@@ -1,41 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Apache ECharts 文档 - 教程</title>
-    <link rel="stylesheet" href="../lib/reset.css">
+    <link rel="stylesheet" href="../lib/reset.css" />
     <script src="../lib/pace.min.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <div id="header">
-        <h1></h1>
-        <a class="lang" href="../zh/option.html">EN</a>
+      <h1></h1>
+      <a class="lang" href="../zh/option.html">EN</a>
     </div>
     <script>
-        document.querySelector('#header h1').innerHTML = document.title;
-        document.querySelector('#header .lang').addEventListener('click', e => {
-            e.preventDefault();
-            window.location.href = '../en/' + location.pathname.split('/').pop() + location.search + location.hash;
-        });
+      document.querySelector('#header h1').innerHTML = document.title
+      document.querySelector('#header .lang').addEventListener('click', (e) => {
+        e.preventDefault()
+        window.location.href =
+          '../en/' +
+          location.pathname.split('/').pop() +
+          location.search +
+          location.hash
+      })
     </script>
 
     <div id="app"></div>
-    <link rel="stylesheet" href="https://lib.baomitu.com/element-ui/2.15.14/theme-chalk/index.min.css">
-    <link rel="stylesheet" href="../css/doc-bundle.css">
-    <script src="https://lib.baomitu.com/vue/2.6.14/vue.min.js"></script>
-    <script src="https://lib.baomitu.com/element-ui/2.15.14/index.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://lib.baomitu.com/element-plus/2.11.4/index.css"
+    />
+    <link rel="stylesheet" href="../css/doc-bundle.css" />
+    <script src="https://lib.baomitu.com/vue/3.5.22/vue.global.prod.js"></script>
+    <script src="https://lib.baomitu.com/element-plus/2.11.4/index.full.min.js"></script>
     <script src="https://lib.baomitu.com/codemirror/5.56.0/codemirror.min.js"></script>
     <script src="https://lib.baomitu.com/codemirror/5.56.0/mode/javascript/javascript.min.js"></script>
     <script src="https://lib.baomitu.com/js-beautify/1.11.0/beautifier.min.js"></script>
     <script src="../js/doc-bundle.js"></script>
     <script>
-        echartsDoc.init('#app', {
-            baseUrl: 'documents/tutorial-parts/',
-            docType: 'tutorial',
-            locale: 'zh'
-        });
+      echartsDoc.init('#app', {
+        baseUrl: 'documents/tutorial-parts/',
+        docType: 'tutorial',
+        locale: 'zh',
+      })
     </script>
-</body>
+  </body>
 </html>
