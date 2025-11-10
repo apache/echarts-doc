@@ -1,15 +1,15 @@
-import Vue from 'vue';
-import VueI18n from 'vue-i18n';
-import App from './App.vue';
-import AppMobile from './AppMobile.vue';
-import {preload} from './docHelper';
-import './directive/highlight';
-import './directive/mark';
-
-import {initRoute} from './route';
-import {initResponsive} from './responsive';
-import {store} from './store';
-import messages from './i18n';
+import { createApp } from 'vue'
+import { createI18n } from 'vue-i18n'
+import App from './App.vue'
+import AppMobile from './AppMobile.vue'
+import highlight from './directive/highlight'
+import lazyload from './directive/lazyload'
+import mark from './directive/mark'
+import { preload } from './docHelper'
+import messages from './i18n'
+import { initResponsive } from './responsive'
+import { initRoute } from './route'
+import { store } from './store'
 
 /**
  *
@@ -22,40 +22,40 @@ import messages from './i18n';
  * @param {string} option.version
  */
 export function init(el, option) {
+  initResponsive()
 
-    initResponsive();
+  const cdnRoot = option.cdnRoot || option.baseUrl
 
-    const cdnRoot = option.cdnRoot || option.baseUrl;
+  preload(option.baseUrl, cdnRoot, option.docType, option.version).then(() => {
+    initRoute()
 
-    preload(option.baseUrl, cdnRoot, option.docType, option.version).then(() => {
-        initRoute();
+    store.docType = option.docType
+    store.locale = option.locale
 
-        store.docType = option.docType;
-        store.locale = option.locale;
+    if (typeof el === 'string') {
+      el = document.querySelector(el)
+    }
+    if (!el) {
+      throw new Error("Can't find el.")
+    }
 
-        if (typeof el === 'string') {
-            el = document.querySelector(el);
-        }
-        if (!el) {
-            throw new Error('Can\'t find el.');
-        }
+    const i18n = createI18n({
+      legacy: false,
+      locale: option.locale,
+      fallbackLocale: 'en',
+      messages,
+    })
 
-        const container = document.createElement('div');
+    const rootComponent = store.isMobile ? AppMobile : App
+    const app = createApp(rootComponent)
 
-        el.appendChild(container);
+    app.use(i18n)
+    app.use(ElementPlus)
 
-        const i18n = new VueI18n({
-            locale: option.locale,
-            fallbackLocale: 'en',
-            messages
-        });
+    app.directive('highlight', highlight)
+    app.directive('mark', mark)
+    app.directive('lazyload', lazyload)
 
-        new Vue({
-            i18n,
-            el: container,
-            render: h => {
-                return store.isMobile ? h(AppMobile) : h(App);
-            }
-        });
-    });
+    app.mount(el)
+  })
 }
