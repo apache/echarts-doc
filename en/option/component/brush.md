@@ -1,4 +1,3 @@
-
 {{ target: component-brush }}
 
 # brush(Object)
@@ -28,10 +27,8 @@ Button for `brush` can be assigned in [`toolbox`](~toolbox.feature.brush.type) o
 
 The following types of brushes are supported: `rect`, `polygon`, `lineX`, `lineY`. See [brush.toolbox](~brush.toolbox) for more information.
 
-`keep` button can be used to toggle a single or multiple selections.
 
-+ Only one select box is available in single selection mode, and the select-box can be removed by clicking on the blank area.
-+ Multiple select boxes are available in multiple selection mode, and the select-boxes cannot be removed by click on the blank area. Instead, you need to click the *clear* button.
++ Multiple select boxes are available by default in multiple selection mode, and the select-boxes cannot be removed by clicking on the blank area. Instead, you need to click the *clear* button.
 
 <br>
 
@@ -146,12 +143,12 @@ Default type of brush.
 
 {{ use: partial-brush-type() }}
 
-## brushMode(string) = 'single'
+## brushMode(string) = 'multiple'
 
-Default brush mode, whose value can be:
+Default brush mode, whose value is:
 
-+ `'single'`: for single selection;
-+ `'multiple'`: for multiple selection.
++ `'multiple'`: for multiple selection (default);
+
 
 ## transformable(boolean) = true
 
@@ -181,7 +178,12 @@ Default brush style, whose value is:
 
 ## removeOnClick(boolean) = true
 
-Defined whether *clearing all select-boxes on click* is enabled when [brush.brushMode](~brush.brushMode) is `'single'`.
+Defines whether *clearing the select-box on click* is enabled when [brush.brushMode](~brush.brushMode) is `'single'`.
+
+**Note:** 
+- This option only takes effect when `brushMode: 'single'` is explicitly configured
+- Since the default mode is now `'multiple'`, this option is not used in the default configuration
+- When using toolbox brush (which enforces `'multiple'` mode), this option has no effect
 
 ## inBrush(Object)
 
@@ -336,10 +338,12 @@ Buttons in toolbox that is related to brush includes:
 + `'polygon'`: for selection-box in polygon shape;
 + `'lineX'`: for horizontal selection-box;
 + `'lineY'`: for vertical selection-box;
-+ `'keep'`: for setting mode between `single` and `multiple` selection, the former of which supports clearing selection on click, and the latter selecting multiple areas;
++ `'keep'` :button is displayed in the toolbox to indicate multiple selection mode.
+
++ **Multiple selection mode (default and enforced via toolbox)**: Multiple select boxes are available. The select-boxes cannot be removed by clicking on the blank area. The "keep" button is always highlighted. Use the *clear* button to remove all selections.
+
+**Note:** When using the toolbox brush feature, the "keep" button no longer toggles between modes - it always remains in multiple selection mode.
 + `'clear'`: for clearing all selections.
-
-
 
 {{ target: partial-brush-type }}
 
