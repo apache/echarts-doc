@@ -1,4 +1,3 @@
-
 {{ target: series-chord }}
 
 # series.chord(Object)
@@ -7,14 +6,14 @@
     version = "6.0.0"
 ) }}
 
-和弦图是一种用于可视化不同实体之间相互关系和流量的数据图表。它通过优美的弧形和弦连接，展示数据流动的方向和比例。
+A chord diagram is a chart used to visualize relationships and flows between different entities. It displays the direction and proportion of data flows with elegant arcs and chords.
 
-**示例：**
+**Example:**
 
 ~[600x600](${galleryViewPath}chord-style&edit=1&reset=1)
 
 
-<ExampleBaseOption name="chord" title="基础和弦图" title-en="Basic Chord">
+<ExampleBaseOption name="chord" title="Basic Chord" title-en="Basic Chord">
 const option = {
   tooltip: {},
   legend: {},
@@ -44,7 +43,7 @@ const option = {
 {{ use: partial-series-name() }}
 
 {{ use: component-circular-layout(
-    componentName = "和弦图",
+    componentName = "Chord Diagram",
     defaultRadius = "['70%', '80%']"
 ) }}
 
@@ -52,19 +51,19 @@ const option = {
 
 <ExampleUIControlBoolean default="true" />
 
-饼图的扇区是否是顺时针排布。
+Whether the sectors are arranged clockwise.
 
 ## startAngle(number) = 90
 
 <ExampleUIControlAngle step="1" min="0" max="360" default="90" />
 
-起始角度，支持范围[0, 360]。
+Starting angle, supported range [0, 360].
 
 ## minAngle(number) = 0
 
 <ExampleUIControlAngle step="1" min="0" max="360" default="0" />
 
-最小的扇区角度（0 ~ 360），用于防止某个值过小导致扇区太小影响交互。
+Minimum sector angle (0 ~ 360), used to prevent very small values from producing sectors that are too small and affect interaction.
 
 ~[600x600](${galleryViewPath}chord-minAngle&edit=1&reset=1)
 
@@ -72,7 +71,7 @@ const option = {
 
 <ExampleUIControlAngle step="1" min="0" max="360" default="0" />
 
-扇区之间的间隔角度（0 ~ 360）。
+The gap angle between sectors (0 ~ 360).
 
 {{ use: partial-coord-sys(
     version = '6.0.0',
@@ -96,24 +95,24 @@ const option = {
 
 {{ use: partial-sector-border-radius(
     prefix = '##',
-    type = "和弦图"
+    type = "Chord Diagram"
 ) }}
 
 ## lineStyle(Object)
 
 ### color(string) = 'source'
 
-边的颜色。
+The color of the edge in Chord charts.
 
-+ `'source'`: 使用源节点颜色。
-+ `'target'`: 使用目标节点颜色。
-+ `'gradient'`: 以源节点和目标节点的颜色做一个渐变过渡色。
++ `'source'`: use source node color.
++ `'target'`: use target node color.
++ `'gradient'`: gradient color between source node and target node.
 
 ~[900x500](${galleryViewPath}chord-lineStyle-color&edit=1&reset=1)
 
 ### opacity(number) = ${defaultOpacity|default(0.2)}
 
-边的透明度。
+Opacity of the edges.
 
 {{ use: partial-style-shadow(
     prefix = '##'
@@ -121,7 +120,7 @@ const option = {
 
 ## data(Array)
 
-和弦图的节点数据列表。
+List of node data for the chord diagram.
 
 ```ts
 data: [{
@@ -137,19 +136,19 @@ data: [{
 }]
 ```
 
-**注意:** 节点的`name`不能重复。
+Note: The node `name` must be unique.
 
 ### name(string)
 
-数据项名称。
+Name of the data item.
 
 ### value(number|Array)
 
-数据项值。
+Value of the data item.
 
 ### itemStyle(Object)
 
-该节点的样式。
+Style of this node.
 
 {{ use: partial-item-style(
     prefix = "###",
@@ -158,7 +157,7 @@ data: [{
 
 ### label(Object)
 
-该节点标签的样式。
+Label style for this node.
 
 {{ use: partial-label(
     prefix = "###",
@@ -168,11 +167,11 @@ data: [{
 
 #### position(string)
 
-标签的位置。支持 `'inside'` 或 `'outside'`。
+Position of the label. Supports `'inside'` or `'outside'`.
 
 ### emphasis(Object)
 
-该节点的高亮状态。
+Style when the node is emphasized.
 
 {{ use: partial-emphasis-disabled(
     prefix = "###"
@@ -188,7 +187,7 @@ data: [{
     version = "5.0.0"
 ) }}
 
-该节点的淡出状态。
+The blur (faded) state of the node.
 
 {{ use: graph-node-state(
     state = 'blur'
@@ -200,7 +199,7 @@ data: [{
     version = "5.0.0"
 ) }}
 
-该节点的选中状态。
+The selected state of the node.
 
 {{ use: partial-select-disabled(
     prefix = "###"
@@ -214,11 +213,11 @@ data: [{
 
 ## nodes(Array)
 
-别名，同 [data](~series-graph.data)
+Alias, same as [data](~series-graph.data)
 
 ## links(Array)
 
-节点间的关系数据。示例：
+Relationship data between nodes. Example:
 ```ts
 links: [{
     source: 'n1',
@@ -231,19 +230,19 @@ links: [{
 
 ### source(string|number)
 
-边的[源节点名称](~series-graph.data.name)的字符串，也支持使用数字表示源节点的索引。
+The source node name ([data.name](~series-graph.data.name)) as a string, or the index of the source node as a number.
 
 ### target(string|number)
 
-边的[目标节点名称](~series-graph.data.name)的字符串，也支持使用数字表示源节点的索引。
+The target node name ([data.name](~series-graph.data.name)) as a string, or the index of the target node as a number.
 
 ### value(number)
 
-边的数值。
+Value of the edge.
 
 ## emphasis(Object)
 
-高亮状态的扇区和标签样式。
+Styles for emphasized sectors and labels.
 
 {{ use: partial-emphasis-disabled(
     prefix = "##"
