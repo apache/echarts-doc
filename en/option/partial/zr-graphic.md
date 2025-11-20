@@ -626,6 +626,16 @@ Sector element.
     symbolDeclare = ${symbolDeclare}
 ) }}
 
+###${prefix} cornerRadius(number|Array)
+
+{{ use: partial-version(version = "5.3.0") }}
+
+The corner radius of the sector.
+
++ `cornerRadius: 10`: Indicates that both the inner and outer corner radii are 10px.
++ `cornerRadius: [10, 20]`: When applied to a ring chart, the inner corner radius is 10px and the outer corner radius is 20px.
++ `cornerRadius: [5, 10, 15, 20]`: Indicates that the inner corner radii are 5px and 10px, and the outer corner radii are 15px and 20px.
+
 {{ use: partial-graphic-cpt-sub-prop-angle(
     prefix = ${prefix},
     optionPath = ${optionPath},
