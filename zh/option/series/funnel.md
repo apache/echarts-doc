@@ -195,6 +195,27 @@ option = {
     state = 'select'
 ) }}
 
+## selectedMap(Object|String) = {}
+
+{{ use: partial-version(
+version = "5.0.0"
+) }}
+
+默认选中的数据类目名。开启 [selectedMode](~series-funnel.selectedMode) 后有效。
+类型为`object | 'all'`。
+如果为 'all'，则表示全部选中。
+
+示例：
+```
+// 选中全部数据
+selectedMap: 'all'
+// 选中指定数据
+selectedMap: {
+  // 选中'类目1'
+  '类目1': true
+}
+```
+
 {{ use: partial-selected-mode(
     version = '5.0.0'
 ) }}
