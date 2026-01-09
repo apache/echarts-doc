@@ -30,7 +30,7 @@
 
 
 {{ if: ${isGeoOrMap} }}
-`center` 默认使用原始坐标（经纬度）。如果设置了 [proejction](~${componentNameInLink}.projection) 则用投影后的坐标。
+`center` 默认使用原始坐标（经纬度）。如果设置了 [projection](~${componentNameInLink}.projection) 则用投影后的坐标。
 
 示例：
 ```ts
