@@ -31,7 +31,7 @@
     "fs-extra": "^8.1.0",
     "globby": "^11.0.1",
     "htmlparser2": "^4.1.0",
-    "lodash": "^4.17.21",
+    "lodash": "^4.17.23",
     "marked": "^0.3.19",
     "mini-css-extract-plugin": "^2.9.2",
     "node-static": "git+https://github.com/cloudhead/node-static.git",
