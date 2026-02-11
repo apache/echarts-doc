@@ -1482,7 +1482,7 @@ Whether response to mouse events / touch events.
 {{ if: ${type} !== 'group' }}
 ##${prefix} invisible(boolean) = false
 
-Whether the element is visible.
+Whether the element is invisible.
 {{ /if }}
 
 ##${prefix} ignore(boolean) = false
