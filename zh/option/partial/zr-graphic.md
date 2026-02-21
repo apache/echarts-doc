@@ -1463,7 +1463,7 @@ chart.on('click', function (params) {
 {{ if: ${type} !== 'group' }}
 ##${prefix} invisible(boolean) = false
 
-节点是否可见。
+节点是否不可见。
 {{ /if }}
 
 ##${prefix} ignore(boolean) = false
