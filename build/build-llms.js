@@ -69,22 +69,71 @@ function buildTypeMap(schemaJsonPath, docName) {
     return typeMap;
 }
 
+// --- Resolve links in HTML ---
+// Best-effort rewriting of <a href="#path"> and <a href="api.html#path"> in HTML
+// so that turndown produces markdown links pointing to the correct .md files.
+// Some source links have non-standard formats (e.g. missing "#", no dot separator)
+// that cannot be resolved; these are left as-is or linked to the orphan file.
+
+function tryResolveFileKey(linkPath, fileKeys) {
+    const [seg, ...rest] = linkPath.split('.');
+    const frag = rest.length > 0 ? rest.join('.') : null;
+    const segL = seg.toLowerCase();
+    const keysArr = [...fileKeys];
+
+    const key = fileKeys.has(seg)
+        ? seg
+        : keysArr.find(k => k.toLowerCase() === segL)
+            ?? keysArr.find(k => {
+                const kl = k.toLowerCase();
+                return kl === segL + 's' || kl + 's' === segL;
+            })
+            ?? null;
+
+    return key ? {key, frag} : null;
+}
+
+function tryResolveHtmlLinks(html, strippedKeys, docPrefix, hasOrphanFile) {
+    // Same-category links: href="#property.path" -> href="docPrefix.fileKey.md#fragment"
+    const resolved = html.replace(/href="#([^"]+)"/g, (match, lp) => {
+        const r = tryResolveFileKey(lp, strippedKeys);
+        if (!r) {
+            if (hasOrphanFile) return `href="${docPrefix}.md#${lp}"`;
+            return match;
+        }
+        return `href="${docPrefix}.${r.key}.md${r.frag ? '#' + r.frag : ''}"`;
+    });
+
+    // Cross-category links: href="api.html#echarts.init" -> href="../api-parts/api.echarts.md#init"
+    // Tutorial is a single file, so href="tutorial.html#X" -> href="../tutorial-parts/tutorial.md#X"
+    return resolved.replace(
+        /href="(option|api|tutorial)\.html#([^"]+)"/g,
+        (_, docType, fragment) => {
+            if (docType === 'tutorial') {
+                return `href="../tutorial-parts/tutorial.md#${fragment}"`;
+            }
+            const {key, frag} = tryResolveFileKey(fragment, new Set([fragment.split('.')[0]]));
+            return `href="../${docType}-parts/${docType}.${key}.md${frag ? '#' + frag : ''}"`;
+        }
+    );
+}
+
 // --- Convert part JSON to Markdown ---
 
-function formatPropertyEntry(key, val, typeInfo) {
+function formatPropertyEntry(key, val, typeInfo, linkResolver) {
     const heading = '#'.repeat(Math.min(key.split('.').length + 1, MAX_HEADING_DEPTH)) + ' ' + key;
     const meta = [
         typeInfo && typeInfo.type && `- **Type**: \`${typeInfo.type}\``,
         typeInfo && typeInfo.default != null && `- **Default**: \`${typeInfo.default}\``
     ].filter(Boolean);
-    const body = val.desc ? htmlToMd(val.desc) : '';
+    const body = val.desc ? htmlToMd(linkResolver(val.desc)) : '';
     return [heading, ...meta, ...(body ? ['', body] : []), ''];
 }
 
-function jsonToMd(data, typeMap, partKey) {
+function jsonToMd(data, typeMap, partKey, linkResolver) {
     const lines = Object.entries(data).flatMap(([key, val]) => {
         const fullKey = partKey ? `${partKey}.${key}` : key;
-        return formatPropertyEntry(key, val, typeMap[fullKey]);
+        return formatPropertyEntry(key, val, typeMap[fullKey], linkResolver);
     });
     return lines.join('\n').replace(/\n{3,}/g, '\n\n').trimEnd() + '\n';
 }
@@ -102,14 +151,25 @@ function writeFile(dir, name, content, category) {
 
 function processPartsDir(partsDir, outDir, typeMap) {
     const dirName = path.basename(partsDir);
+    const docPrefix = dirName.replace(/-parts$/, '');
 
     const jsonFiles = globby.sync(path.join(partsDir, '*.json'))
         .filter(f => !path.basename(f).includes('-outline'));
 
+    // Collect file keys for link resolution (e.g. "option.title", "option.series-bar")
+    const fileKeys = new Set(jsonFiles.map(f => path.basename(f, '.json')));
+    const strippedKeys = new Set([...fileKeys].map(k =>
+        k.startsWith(docPrefix + '.') ? k.slice(docPrefix.length + 1) : k
+    ));
+    const hasOrphanFile = fileKeys.has(docPrefix);
+
+    // Create a link resolver that rewrites HTML hrefs before turndown
+    const linkResolver = (html) => tryResolveHtmlLinks(html, strippedKeys, docPrefix, hasOrphanFile);
+
     return jsonFiles.map(f => {
         const baseName = path.basename(f, '.json');
         const data = JSON.parse(fs.readFileSync(f, 'utf-8'));
-        const content = `# ${baseName}\n\n` + jsonToMd(data, typeMap, baseName);
+        const content = `# ${baseName}\n\n` + jsonToMd(data, typeMap, baseName, linkResolver);
         return writeFile(outDir, `${dirName}/${baseName}.md`, content, dirName);
     });
 }
@@ -131,7 +191,7 @@ function generateDocsForLang(lang) {
     }, {});
 
     // Step 2: For each *-parts/ directory, read part JSONs (e.g. option.title.json),
-    //         convert each property's HTML desc field to Markdown via turndown,
+    //         resolve internal links in HTML, convert desc to Markdown via turndown,
     //         attach type/default from the type map, and write as .md files.
     const partsDirs = globby.sync(path.join(docsDir, '*-parts'), {onlyDirectories: true});
     const files = partsDirs
