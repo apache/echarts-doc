@@ -15,14 +15,14 @@ ECharts3 supports both `'candlestick'` and `'k'` in [series.type](~(series.type)
 <br>
 **About color of increase and decrease**
 
-Different countries or regions have different implications on the color of candle stick chart. It may use red to imply increasing with red and decreasing with blue (in China mainland, Taiwan, Japan, Koera, and so on), or to imply increasing with green and decreasing with red (in Europe, North America, Hong Kong, Singapore, and so on). Besides color, the increase and decrease of stock may also be represented with candle stick with or without filling colors.
+Different countries or regions have different implications for the colors of candlestick charts. It may use red to indicate an increase and green or blue to indicate a decrease (in Chinese mainland, China's Taiwan region, Japan, South Korea, etc.), or use green to indicate an increase and red to indicate a decrease (in Europe, North America, China Hong Kong, Singapore, etc.). Besides colors, the increase and decrease of stock prices can also be represented by filled or hollow candlesticks.
 
-We use red to represent increasing and blue decreasing by default. If you want to change the configuration, you may change the following parameters.
+By default, we use **red** to represent an increase and **green** to represent a decrease. If you want to change the configuration, you may change the following parameters:
 
-+ [series-candlestick.itemStyle.color](~series-candlestick.itemStyle.color): fill color for bullish candle stick (namely, increase)
-+ [series-candlestick.itemStyle.color0](~series-candlestick.itemStyle.color0): fill color for bearish candle stick (namely, decrease)
-+ [series-candlestick.itemStyle.borderColor](~series-candlestick.itemStyle.borderColor): border color for bullish candle stick (namely, increase)
-+ [series-candlestick.itemStyle.borderColor0](~series-candlestick.itemStyle.borderColor0): border color for bearish candle stick (namely, decrease)
++ [series-candlestick.itemStyle.color](~series-candlestick.itemStyle.color): fill color for bullish candlestick (namely, increase)
++ [series-candlestick.itemStyle.color0](~series-candlestick.itemStyle.color0): fill color for bearish candlestick (namely, decrease)
++ [series-candlestick.itemStyle.borderColor](~series-candlestick.itemStyle.borderColor): border color for bullish candlestick (namely, increase)
++ [series-candlestick.itemStyle.borderColor0](~series-candlestick.itemStyle.borderColor0): border color for bearish candlestick (namely, decrease)
 + [series-candlestick.itemStyle.borderColorDoji](~series-candlestick.itemStyle.borderColorDoji): border color for doji (when the open price is the same as the close price)
 
 
@@ -297,7 +297,7 @@ Select state of single data.
 
 <ExampleUIControlColor />
 
-Fill color of bullish candle stick.
+Fill color of bullish candlestick.
 
 {{ use: partial-color-desc() }}
 
@@ -311,7 +311,7 @@ Fill color of bullish candle stick.
 ) }}
 {{ /if }}
 
-Fill color of bearish candle stick.
+Fill color of bearish candlestick.
 
 {{ use: partial-color-desc() }}
 
@@ -319,7 +319,7 @@ Fill color of bearish candle stick.
 
 <ExampleUIControlColor />
 
-Border color of bullish candle stick.
+Border color of bullish candlestick.
 
 {{ use: partial-color-desc() }}
 
@@ -333,11 +333,11 @@ Border color of bullish candle stick.
 ) }}
 {{ /if }}
 
-Border color of bearish candle stick.
+Border color of bearish candlestick.
 
 {{ use: partial-color-desc() }}
 
-#${prefix} borderColorDoji(Color) = null
+#${prefix} borderColorDoji(Color)
 
 <ExampleUIControlColor />
 

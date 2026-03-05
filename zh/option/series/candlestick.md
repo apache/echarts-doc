@@ -15,9 +15,9 @@
 <br>
 **关于『涨』『跌』的颜色：**
 
-不同国家或地区对于 K线图 的颜色定义不一样，可能是『红涨绿跌』或『红涨蓝跌』（如大陆、台湾、日本、韩国等），可能是『绿涨红跌』（如西方国家、香港、新加坡等）。K线图也不一定要用红蓝、红绿来表示涨跌，也可以是『有色/无色』等表示方法。
+不同国家或地区对于 K线图 的颜色定义不一样，可能是『红涨绿跌』或『红涨蓝跌』（如中国内地、中国台湾地区、日本、韩国等），可能是『绿涨红跌』（如西方国家、中国香港、新加坡等）。K线图也不一定要用红蓝、红绿来表示涨跌，也可以是『有色/无色』等表示方法。
 
-默认配置项，采用的是『红涨蓝跌』。如果想更改这个颜色配置，在这些配置项中更改即可：
+默认配置项，采用的是『红涨绿跌』。如果想更改这个颜色配置，在这些配置项中更改即可：
 
 + [series-candlestick.itemStyle.color](~series-candlestick.itemStyle.color)：阳线填充色（即『涨』）
 + [series-candlestick.itemStyle.color0](~series-candlestick.itemStyle.color0)：阴线填充色（即『跌』）
@@ -527,7 +527,7 @@ K 线图的选中状态。开启 [selectedMode](~series-candlestick.selectedMode
 
 {{ use: partial-color-desc() }}
 
-#${prefix} borderColorDoji(Color) = null
+#${prefix} borderColorDoji(Color)
 
 <ExampleUIControlColor />
 
