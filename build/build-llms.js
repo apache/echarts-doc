@@ -2,7 +2,9 @@
  * Converts built part JSONs (HTML desc) to Markdown using turndown,
  * and generates llms.txt + individual .md files.
  *
- * Mechanically converts documents/*-parts/*.json to llms-documents/*-parts/*.md.
+ * Mechanically converts documents/*-parts/*.json to llms-documents/ (.md files).
+ * Root files (e.g. option.md) are placed at llms-documents/, while part files
+ * (e.g. option.title.md) are placed at llms-documents/*-parts/.
  * Type information is extracted from documents/*.json (full schema) via traverse.
  *
  * Prerequisites: JSON must be built first (node build.js --env dev)
@@ -23,7 +25,7 @@ const LANGUAGES = ['en', 'zh'];
 const OUTPUT_DIR_NAME = 'llms-documents';
 const MAX_HEADING_DEPTH = 6;
 
-const CATEGORY_LABELS = {
+const SECTION_LABELS = {
     en: {'option-parts': 'Option', 'option-gl-parts': 'Option GL', 'api-parts': 'API', 'tutorial-parts': 'Tutorial'},
     zh: {'option-parts': '配置项 (Option)', 'option-gl-parts': 'Option GL', 'api-parts': 'API', 'tutorial-parts': '教程 (Tutorial)'}
 };
@@ -54,6 +56,15 @@ function htmlToMd(html) {
 
 // --- Extract type info from full schema JSON ---
 
+/**
+ * Extract type and default value info from a full schema JSON by traversing
+ * the nested schema tree.
+ *
+ * @param {string} schemaJsonPath - path to schema JSON (e.g. "documents/option.json")
+ * @param {string} docName - e.g. "option", "api"
+ * @returns {Object<string, {type: string|null, default: string|null}>}
+ *   e.g. { "option.title.show": {type: "boolean", default: "true"} }
+ */
 function buildTypeMap(schemaJsonPath, docName) {
     if (!fs.existsSync(schemaJsonPath)) return {};
     const schema = JSON.parse(fs.readFileSync(schemaJsonPath, 'utf-8'));
@@ -73,104 +84,185 @@ function buildTypeMap(schemaJsonPath, docName) {
 // Best-effort rewriting of <a href="#path"> and <a href="api.html#path"> in HTML
 // so that turndown produces markdown links pointing to the correct .md files.
 // Some source links have non-standard formats (e.g. missing "#", no dot separator)
-// that cannot be resolved; these are left as-is or linked to the orphan file.
+// that cannot be resolved; these are left as-is or linked to the root file.
 
-function tryResolveFileKey(linkPath, fileKeys) {
+/**
+ * Split linkPath into a part key (first segment) and fragment (rest), matching
+ * the key against partKeys with case-insensitive and singular/plural fallback.
+ *
+ * @param {string} linkPath - e.g. "title.show", "echarts.init"
+ * @param {Set<string>} partKeys - e.g. Set{'title','series-bar','geo',...}
+ * @returns {{key: string, frag: string|null}|null}
+ *   e.g. "title.show"                    -> {key: "title", frag: "show"}
+ *        "angleAxis.axisLabel.interval"  -> {key: "angleAxis", frag: "axisLabel.interval"}
+ *        "geo"                           -> {key: "geo", frag: null}
+ *        "unknown"                       -> null
+ */
+function tryResolvePartKey(linkPath, partKeys) {
     const [seg, ...rest] = linkPath.split('.');
     const frag = rest.length > 0 ? rest.join('.') : null;
+
+    if (partKeys.has(seg)) return {key: seg, frag};
+
+    // Fallback: case-insensitive and singular/plural matching
     const segL = seg.toLowerCase();
-    const keysArr = [...fileKeys];
-
-    const key = fileKeys.has(seg)
-        ? seg
-        : keysArr.find(k => k.toLowerCase() === segL)
-            ?? keysArr.find(k => {
-                const kl = k.toLowerCase();
-                return kl === segL + 's' || kl + 's' === segL;
-            })
-            ?? null;
-
-    return key ? {key, frag} : null;
+    for (const k of partKeys) {
+        if (k.toLowerCase() === segL) return {key: k, frag};
+    }
+    for (const k of partKeys) {
+        const kl = k.toLowerCase();
+        if (kl === segL + 's' || kl + 's' === segL) return {key: k, frag};
+    }
+    return null;
 }
 
-function tryResolveHtmlLinks(html, strippedKeys, docPrefix, hasOrphanFile) {
-    // Same-category links: href="#property.path" -> href="docPrefix.fileKey.md#fragment"
-    const resolved = html.replace(/href="#([^"]+)"/g, (match, lp) => {
-        const r = tryResolveFileKey(lp, strippedKeys);
-        if (!r) {
-            if (hasOrphanFile) return `href="${docPrefix}.md#${lp}"`;
-            return match;
-        }
-        return `href="${docPrefix}.${r.key}.md${r.frag ? '#' + r.frag : ''}"`;
-    });
+/**
+ * Resolve a link path to an href pointing to the correct .md file.
+ * If partKeys contains a match, link to the individual part file;
+ * otherwise fall back to the root file.
+ *
+ * @param {string} linkPath - e.g. "title.show", "visualMap"
+ * @param {Set<string>} partKeys - keys of individual part files
+ * @param {string} pathPrefix - path prefix for part files
+ *   same-doc: "option"           -> "option.title.md"
+ *   cross-doc: "../api-parts/api" -> "../api-parts/api.echarts.md"
+ * @param {string|null} rootPath - path prefix for root file fallback
+ *   same-doc: "../option"  -> "../option.md#visualMap"
+ *   cross-doc: "../api"     -> "../api.md#events"
+ * @returns {string|null} resolved href attribute string, or null
+ */
+function resolveLink(linkPath, partKeys, pathPrefix, rootPath) {
+    const resolved = tryResolvePartKey(linkPath, partKeys);
+    if (!resolved) {
+        if (rootPath) return `href="${rootPath}.md#${linkPath}"`;
+        return null;
+    }
+    return `href="${pathPrefix}.${resolved.key}.md${resolved.frag ? '#' + resolved.frag : ''}"`;
+}
 
-    // Cross-category links: href="api.html#echarts.init" -> href="../api-parts/api.echarts.md#init"
-    // Tutorial is a single file, so href="tutorial.html#X" -> href="../tutorial-parts/tutorial.md#X"
+/**
+ * Rewrite internal links in HTML so that turndown produces correct .md links.
+ * Handles two patterns:
+ *   1. Same-doc:  href="#title.show"          -> href="option.title.md#show"
+ *   2. Cross-doc: href="api.html#echarts.init" -> href="../api-parts/api.echarts.md#init"
+ * Unresolvable links are left as-is or fall back to the root file.
+ *
+ * @param {string} html - HTML string containing <a href="..."> links
+ * @param {Object<string, Set<string>>} partKeysByDoc - part keys for all docs
+ * @param {string} docName - current doc name (e.g. "option")
+ * @returns {string} HTML with rewritten href attributes
+ */
+function tryResolveHtmlLinks(html, partKeysByDoc, docName) {
+    const partKeys = partKeysByDoc[docName];
+
+    // Same-doc links: href="#title.show" -> href="option.title.md#show"
+    const resolved = html.replace(/href="#([^"]+)"/g, (match, linkPath) =>
+        (partKeys && resolveLink(linkPath, partKeys, docName, `../${docName}`)) || match
+    );
+
+    // Cross-doc links: href="api.html#echarts.init" -> href="../api-parts/api.echarts.md#init"
     return resolved.replace(
-        /href="(option|api|tutorial)\.html#([^"]+)"/g,
-        (_, docType, fragment) => {
-            if (docType === 'tutorial') {
-                return `href="../tutorial-parts/tutorial.md#${fragment}"`;
-            }
-            const {key, frag} = tryResolveFileKey(fragment, new Set([fragment.split('.')[0]]));
-            return `href="../${docType}-parts/${docType}.${key}.md${frag ? '#' + frag : ''}"`;
+        /href="(option-gl|option|api|tutorial)\.html#([^"]+)"/g,
+        (match, targetDoc, fragment) => {
+            const keys = partKeysByDoc[targetDoc];
+            if (!keys) return match;
+            return resolveLink(fragment, keys, `../${targetDoc}-parts/${targetDoc}`, `../${targetDoc}`) || match;
         }
     );
 }
 
 // --- Convert part JSON to Markdown ---
 
-function formatPropertyEntry(key, val, typeInfo, linkResolver) {
+function formatPropertyEntry(key, entry, typeInfo, linkResolver) {
     const heading = '#'.repeat(Math.min(key.split('.').length + 1, MAX_HEADING_DEPTH)) + ' ' + key;
     const meta = [
         typeInfo && typeInfo.type && `- **Type**: \`${typeInfo.type}\``,
         typeInfo && typeInfo.default != null && `- **Default**: \`${typeInfo.default}\``
     ].filter(Boolean);
-    const body = val.desc ? htmlToMd(linkResolver(val.desc)) : '';
+    const body = entry.desc ? htmlToMd(linkResolver(entry.desc)) : '';
     return [heading, ...meta, ...(body ? ['', body] : []), ''];
 }
 
-function jsonToMd(data, typeMap, partKey, linkResolver) {
-    const lines = Object.entries(data).flatMap(([key, val]) => {
-        const fullKey = partKey ? `${partKey}.${key}` : key;
-        return formatPropertyEntry(key, val, typeMap[fullKey], linkResolver);
+function jsonToMd(data, typeMap, baseName, linkResolver) {
+    const lines = Object.entries(data).flatMap(([key, entry]) => {
+        const fullKey = baseName ? `${baseName}.${key}` : key;
+        return formatPropertyEntry(key, entry, typeMap[fullKey], linkResolver);
     });
     return lines.join('\n').replace(/\n{3,}/g, '\n\n').trimEnd() + '\n';
 }
 
-// --- File output ---
+// --- Collect part JSON files ---
 
-function writeFile(dir, name, content, category) {
-    const fullPath = path.resolve(dir, name);
-    fse.ensureDirSync(path.dirname(fullPath));
-    fs.writeFileSync(fullPath, content, 'utf-8');
-    return {name, path: fullPath, category};
+/**
+ * Collect part JSON files for each *-parts/ directory, excluding outline files.
+ *
+ * @param {string[]} partsDirs - paths to *-parts/ directories
+ * @returns {Object<string, string[]>} dir path -> JSON file paths
+ */
+function collectPartJsonFiles(partsDirs) {
+    const jsonFilesByDir = {};
+    for (const dir of partsDirs) {
+        jsonFilesByDir[dir] = globby.sync(path.join(dir, '*.json'))
+            .filter(filePath => !path.basename(filePath).includes('-outline'));
+    }
+    return jsonFilesByDir;
+}
+
+// --- Collect file keys for link resolution across docs ---
+
+/**
+ * Build a map of doc name -> Set of part keys for all *-parts/ directories.
+ * Part keys are file names with the doc name stripped (e.g. "option.title" -> "title").
+ * Root files (e.g. "option.json") are excluded since they are not individual part files.
+ *
+ * @param {string[]} partsDirs - paths to *-parts/ directories
+ * @param {Object<string, string[]>} jsonFilesByDir - pre-collected JSON file paths
+ * @returns {Object<string, Set<string>>} partKeysByDoc - e.g. { option: Set{'title','geo',...}, api: Set{'echarts',...} }
+ */
+function buildPartKeysByDoc(partsDirs, jsonFilesByDir) {
+    const partKeysByDoc = {};
+    for (const dir of partsDirs) {
+        const docName = path.basename(dir).replace(/-parts$/, '');
+        partKeysByDoc[docName] = new Set(
+            jsonFilesByDir[dir].map(filePath => path.basename(filePath, '.json'))
+                .filter(k => k !== docName)
+                .map(k => k.startsWith(docName + '.') ? k.slice(docName.length + 1) : k)
+        );
+    }
+    return partKeysByDoc;
 }
 
 // --- Process a single *-parts/ directory ---
 
-function processPartsDir(partsDir, outDir, typeMap) {
+/**
+ * Convert part JSON files in a single *-parts/ directory to Markdown.
+ * Each JSON file becomes a .md file with resolved links and type info.
+ * Root files (e.g. option.json) are output to the parent directory.
+ *
+ * @param {string} partsDir - path to a *-parts/ directory (e.g. "documents/option-parts")
+ * @param {string} outDir - output base directory (e.g. "llms-documents")
+ * @param {Object} typeMap - property path -> {type, default} map
+ * @param {Object<string, Set<string>>} partKeysByDoc - part keys for all docs
+ * @param {string[]} jsonFiles - pre-collected JSON file paths for this directory
+ * @returns {{name: string, path: string, section: string}[]} output file descriptors
+ */
+function processPartsDir(partsDir, outDir, typeMap, partKeysByDoc, jsonFiles) {
     const dirName = path.basename(partsDir);
-    const docPrefix = dirName.replace(/-parts$/, '');
-
-    const jsonFiles = globby.sync(path.join(partsDir, '*.json'))
-        .filter(f => !path.basename(f).includes('-outline'));
-
-    // Collect file keys for link resolution (e.g. "option.title", "option.series-bar")
-    const fileKeys = new Set(jsonFiles.map(f => path.basename(f, '.json')));
-    const strippedKeys = new Set([...fileKeys].map(k =>
-        k.startsWith(docPrefix + '.') ? k.slice(docPrefix.length + 1) : k
-    ));
-    const hasOrphanFile = fileKeys.has(docPrefix);
+    const docName = dirName.replace(/-parts$/, '');
 
     // Create a link resolver that rewrites HTML hrefs before turndown
-    const linkResolver = (html) => tryResolveHtmlLinks(html, strippedKeys, docPrefix, hasOrphanFile);
+    const linkResolver = (html) => tryResolveHtmlLinks(html, partKeysByDoc, docName);
 
-    return jsonFiles.map(f => {
-        const baseName = path.basename(f, '.json');
-        const data = JSON.parse(fs.readFileSync(f, 'utf-8'));
+    return jsonFiles.map(filePath => {
+        const baseName = path.basename(filePath, '.json');
+        const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
         const content = `# ${baseName}\n\n` + jsonToMd(data, typeMap, baseName, linkResolver);
-        return writeFile(outDir, `${dirName}/${baseName}.md`, content, dirName);
+        const isRoot = baseName === docName;
+        const fileName = isRoot ? `${baseName}.md` : `${dirName}/${baseName}.md`;
+        const fullPath = path.resolve(outDir, fileName);
+        fse.ensureDirSync(path.dirname(fullPath));
+        fs.writeFileSync(fullPath, content, 'utf-8');
+        return {name: fileName, path: fullPath, section: dirName};
     });
 }
 
@@ -185,17 +277,22 @@ function generateDocsForLang(lang) {
     //         by traversing the nested schema tree to collect type/default for each
     //         property path (e.g. "option.title.show" -> {type: "boolean", default: "true"}).
     const schemaFiles = globby.sync(path.join(docsDir, '*.json'));
-    const typeMap = schemaFiles.reduce((map, f) => {
-        const docName = path.basename(f, '.json');
-        return {...map, ...buildTypeMap(f, docName)};
-    }, {});
+    const typeMap = {};
+    for (const filePath of schemaFiles) {
+        Object.assign(typeMap, buildTypeMap(filePath, path.basename(filePath, '.json')));
+    }
 
-    // Step 2: For each *-parts/ directory, read part JSONs (e.g. option.title.json),
+    // Step 2: Collect part JSON files and file keys for all *-parts/ directories upfront,
+    //         so that cross-doc links can be resolved against actual files.
+    const partsDirs = globby.sync(path.join(docsDir, '*-parts'), {onlyDirectories: true});
+    const jsonFilesByDir = collectPartJsonFiles(partsDirs);
+    const partKeysByDoc = buildPartKeysByDoc(partsDirs, jsonFilesByDir);
+
+    // Step 3: For each *-parts/ directory, read part JSONs (e.g. option.title.json),
     //         resolve internal links in HTML, convert desc to Markdown via turndown,
     //         attach type/default from the type map, and write as .md files.
-    const partsDirs = globby.sync(path.join(docsDir, '*-parts'), {onlyDirectories: true});
     const files = partsDirs
-        .flatMap(dir => processPartsDir(dir, outDir, typeMap))
+        .flatMap(dir => processPartsDir(dir, outDir, typeMap, partKeysByDoc, jsonFilesByDir[dir]))
         .sort((a, b) => a.name.localeCompare(b.name));
 
     console.log(`Generated ${files.length} docs for ${lang}`);
@@ -204,26 +301,30 @@ function generateDocsForLang(lang) {
 
 // --- llms.txt ---
 
-function groupByCategory(files) {
-    return files.reduce((groups, f) => ({
-        ...groups,
-        [f.category]: [...(groups[f.category] || []), f]
-    }), {});
-}
-
 function writeLlmsTxt(lang, files) {
     const langDir = path.resolve(config.releaseDestDir, lang);
     fse.ensureDirSync(langDir);
-    const labels = CATEGORY_LABELS[lang] || CATEGORY_LABELS.en;
-    const groups = groupByCategory(files);
+    const labels = SECTION_LABELS[lang] || SECTION_LABELS.en;
+    const groups = {};
+    for (const file of files) {
+        if (!groups[file.section]) groups[file.section] = [];
+        groups[file.section].push(file);
+    }
 
     const sections = Object.keys(groups)
         .sort()
-        .flatMap(cat => [
-            `## ${labels[cat] || cat}`, '',
-            ...groups[cat].map(f =>
-                `- [${path.basename(f.name, '.md')}](${OUTPUT_DIR_NAME}/${f.name})`
-            ),
+        .flatMap(sectionKey => [
+            `## ${labels[sectionKey] || sectionKey}`, '',
+            ...groups[sectionKey]
+                .sort((a, b) => {
+                    const aIsRoot = !a.name.includes('/');
+                    const bIsRoot = !b.name.includes('/');
+                    if (aIsRoot !== bIsRoot) return aIsRoot ? -1 : 1;
+                    return a.name.localeCompare(b.name);
+                })
+                .map(file =>
+                    `- [${path.basename(file.name, '.md')}](${OUTPUT_DIR_NAME}/${file.name})`
+                ),
             ''
         ]);
 
