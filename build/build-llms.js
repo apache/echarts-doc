@@ -73,7 +73,9 @@ function buildTypeMap(schemaJsonPath, docName) {
         if (node.type || node.default != null) {
             typeMap[schemaPath] = {
                 type: node.type ? (Array.isArray(node.type) ? node.type.join('|') : node.type) : null,
-                default: node.default != null ? String(node.default) : null
+                default: node.default != null
+                    ? (typeof node.default === 'object' ? JSON.stringify(node.default) : String(node.default))
+                    : null
             };
         }
     });
@@ -124,50 +126,66 @@ function tryResolvePartKey(linkPath, partKeys) {
  * @param {string} linkPath - e.g. "title.show", "visualMap"
  * @param {Set<string>} partKeys - keys of individual part files
  * @param {string} pathPrefix - path prefix for part files
- *   same-doc: "option"           -> "option.title.md"
- *   cross-doc: "../api-parts/api" -> "../api-parts/api.echarts.md"
- * @param {string|null} rootPath - path prefix for root file fallback
- *   same-doc: "../option"  -> "../option.md#visualMap"
+ *   from part: "option"                -> "option.title.md"
+ *   from root: "option-parts/option"   -> "option-parts/option.title.md"
+ *   cross-doc: "../api-parts/api"      -> "../api-parts/api.echarts.md"
+ * @param {string} rootPath - path prefix for root file fallback
+ *   from part: "../option"  -> "../option.md#visualMap"
+ *   from root: "option"     -> "option.md#visualMap"
  *   cross-doc: "../api"     -> "../api.md#events"
- * @returns {string|null} resolved href attribute string, or null
+ * @returns {string} resolved href attribute string
  */
 function resolveLink(linkPath, partKeys, pathPrefix, rootPath) {
     const resolved = tryResolvePartKey(linkPath, partKeys);
     if (!resolved) {
-        if (rootPath) return `href="${rootPath}.md#${linkPath}"`;
-        return null;
+        return `href="${rootPath}.md#${linkPath}"`;
     }
     return `href="${pathPrefix}.${resolved.key}.md${resolved.frag ? '#' + resolved.frag : ''}"`;
 }
 
 /**
- * Rewrite internal links in HTML so that turndown produces correct .md links.
- * Handles two patterns:
- *   1. Same-doc:  href="#title.show"          -> href="option.title.md#show"
- *   2. Cross-doc: href="api.html#echarts.init" -> href="../api-parts/api.echarts.md#init"
- * Unresolvable links are left as-is or fall back to the root file.
+ * Rewrite internal links and image paths in HTML before turndown conversion.
+ * Handles three patterns:
+ *   1. Same-doc:  href="#title.show"            -> href="option.title.md#show"
+ *   2. Cross-doc: href="api.html#echarts.init"  -> href="../api-parts/api.echarts.md#init"
+ *   3. Images:    src="documents/asset/img/..." -> src="../../documents/asset/img/..."
+ * Unresolvable links fall back to the root file.
  *
  * @param {string} html - HTML string containing <a href="..."> links
  * @param {Object<string, Set<string>>} partKeysByDoc - part keys for all docs
  * @param {string} docName - current doc name (e.g. "option")
- * @returns {string} HTML with rewritten href attributes
+ * @param {boolean} isRoot - whether the current file is a root file
+ * @returns {string} HTML with rewritten href attributes and image paths
  */
-function tryResolveHtmlLinks(html, partKeysByDoc, docName) {
+function tryResolveHtmlLinks(html, partKeysByDoc, docName, isRoot) {
     const partKeys = partKeysByDoc[docName];
+    // Path prefixes differ depending on whether current file is root or part:
+    //   root (llms-documents/option.md)              -> part: "option-parts/option", root: "option"
+    //   part (llms-documents/option-parts/option.*.md) -> part: "option",            root: "../option"
+    const sameDocPartPrefix = isRoot ? `${docName}-parts/${docName}` : docName;
+    const sameDocRootPath = isRoot ? docName : `../${docName}`;
+    const crossDocPrefix = isRoot ? '' : '../';
 
     // Same-doc links: href="#title.show" -> href="option.title.md#show"
     const resolved = html.replace(/href="#([^"]+)"/g, (match, linkPath) =>
-        (partKeys && resolveLink(linkPath, partKeys, docName, `../${docName}`)) || match
+        partKeys ? resolveLink(linkPath, partKeys, sameDocPartPrefix, sameDocRootPath) : match
     );
 
     // Cross-doc links: href="api.html#echarts.init" -> href="../api-parts/api.echarts.md#init"
-    return resolved.replace(
+    const crossResolved = resolved.replace(
         /href="(option-gl|option|api|tutorial)\.html#([^"]+)"/g,
         (match, targetDoc, fragment) => {
             const keys = partKeysByDoc[targetDoc];
             if (!keys) return match;
-            return resolveLink(fragment, keys, `../${targetDoc}-parts/${targetDoc}`, `../${targetDoc}`) || match;
+            return resolveLink(fragment, keys, `${crossDocPrefix}${targetDoc}-parts/${targetDoc}`, `${crossDocPrefix}${targetDoc}`);
         }
+    );
+
+    // Image paths: src="documents/asset/..." -> relative path to public/{lang}/documents/asset/
+    const imgPrefix = isRoot ? '../' : '../../';
+    return crossResolved.replace(
+        /src="(documents\/asset\/[^"]*)"/g,
+        (_, src) => `src="${imgPrefix}${src}"`
     );
 }
 
@@ -250,14 +268,12 @@ function processPartsDir(partsDir, outDir, typeMap, partKeysByDoc, jsonFiles) {
     const dirName = path.basename(partsDir);
     const docName = dirName.replace(/-parts$/, '');
 
-    // Create a link resolver that rewrites HTML hrefs before turndown
-    const linkResolver = (html) => tryResolveHtmlLinks(html, partKeysByDoc, docName);
-
     return jsonFiles.map(filePath => {
         const baseName = path.basename(filePath, '.json');
         const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-        const content = `# ${baseName}\n\n` + jsonToMd(data, typeMap, baseName, linkResolver);
         const isRoot = baseName === docName;
+        const linkResolver = (html) => tryResolveHtmlLinks(html, partKeysByDoc, docName, isRoot);
+        const content = `# ${baseName}\n\n` + jsonToMd(data, typeMap, baseName, linkResolver);
         const fileName = isRoot ? `${baseName}.md` : `${dirName}/${baseName}.md`;
         const fullPath = path.resolve(outDir, fileName);
         fse.ensureDirSync(path.dirname(fullPath));
