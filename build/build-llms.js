@@ -27,7 +27,7 @@ const MAX_HEADING_DEPTH = 6;
 
 const SECTION_LABELS = {
     en: {'option-parts': 'Option', 'option-gl-parts': 'Option GL', 'api-parts': 'API', 'tutorial-parts': 'Tutorial'},
-    zh: {'option-parts': '配置项 (Option)', 'option-gl-parts': 'Option GL', 'api-parts': 'API', 'tutorial-parts': '教程 (Tutorial)'}
+    zh: {'option-parts': '配置项 (Option)', 'option-gl-parts': 'GL配置项 (Option GL)', 'api-parts': 'API', 'tutorial-parts': '教程 (Tutorial)'}
 };
 
 const LLMS_TXT_HEADER = [
@@ -66,7 +66,7 @@ function htmlToMd(html) {
  *   e.g. { "option.title.show": {type: "boolean", default: "true"} }
  */
 function buildTypeMap(schemaJsonPath, docName) {
-    if (!fs.existsSync(schemaJsonPath)) return {};
+    if (docName === 'tutorial' || !fs.existsSync(schemaJsonPath)) return {};
     const schema = JSON.parse(fs.readFileSync(schemaJsonPath, 'utf-8'));
     const typeMap = {};
     traverse(schema, docName, (schemaPath, node) => {
@@ -220,7 +220,7 @@ function jsonToMd(data, typeMap, baseName, linkResolver) {
 function collectPartJsonFiles(partsDirs) {
     const jsonFilesByDir = {};
     for (const dir of partsDirs) {
-        jsonFilesByDir[dir] = globby.sync(path.join(dir, '*.json'))
+        jsonFilesByDir[dir] = globby.sync('*.json', { cwd: dir, absolute: true })
             .filter(filePath => !path.basename(filePath).includes('-outline'));
     }
     return jsonFilesByDir;
@@ -292,7 +292,7 @@ function generateDocsForLang(lang) {
     // Step 1: Build a type map from full schema JSONs (option.json, api.json, etc.)
     //         by traversing the nested schema tree to collect type/default for each
     //         property path (e.g. "option.title.show" -> {type: "boolean", default: "true"}).
-    const schemaFiles = globby.sync(path.join(docsDir, '*.json'));
+    const schemaFiles = globby.sync('*.json', { cwd: docsDir, absolute: true });
     const typeMap = {};
     for (const filePath of schemaFiles) {
         Object.assign(typeMap, buildTypeMap(filePath, path.basename(filePath, '.json')));
@@ -300,7 +300,11 @@ function generateDocsForLang(lang) {
 
     // Step 2: Collect part JSON files and file keys for all *-parts/ directories upfront,
     //         so that cross-doc links can be resolved against actual files.
-    const partsDirs = globby.sync(path.join(docsDir, '*-parts'), {onlyDirectories: true});
+    const partsDirs = globby.sync('*-parts', {
+        cwd: docsDir,
+        absolute: true,
+        onlyDirectories: true
+    });
     const jsonFilesByDir = collectPartJsonFiles(partsDirs);
     const partKeysByDoc = buildPartKeysByDoc(partsDirs, jsonFilesByDir);
 
