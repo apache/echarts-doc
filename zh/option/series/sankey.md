@@ -80,7 +80,19 @@ const option = {"tooltip":{"trigger":"item","triggerOn":"mousemove"},"series":[{
 
 <ExampleUIControlNumber default="32" min="0" max="100" step="1" />
 
-布局的迭代次数，目的是不断迭代优化图中节点和边的位置，以减少节点和边之间的相互遮盖，默认值是 `32`。如果希望图中节点的顺序是按照原始 [data](~series-sankey.data) 中的顺序排列的，可设该值为 `0`。
+布局的迭代次数，目的是不断迭代优化图中节点和边的位置，以减少节点和边之间的相互遮盖，默认值是 `32`。如果希望在保持布局优化的同时，保留每一层节点在 [data](~series-sankey.data) 中的原始顺序，建议使用 [sort](~series-sankey.sort) 并将其设为 `null`，而不是将此值设为 `0`。
+
+## sort(string) = 'desc'
+
+<ExampleUIControlEnum options="desc,null" />
+
+是否在布局碰撞解决过程中对每一层内的节点进行排序。
+
+默认值是 `'desc'`，这会保持之前的行为。当 `sort` 为 `undefined` 时，也会因默认值而按 `'desc'` 处理。
+
+将 `sort` 设为 `null` 可以关闭每一层内的节点排序，并保留 [data](~series-sankey.data) 中定义的原始顺序，同时布局算法仍会执行其他优化。
+
+当前 Sankey 仅支持 `'desc'` 和 `null`。未添加 `asc` 排序或自定义回调排序的支持。
 
 ## orient(string) = 'horizontal'
 

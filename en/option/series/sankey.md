@@ -79,15 +79,19 @@ Note when [orient](~series-sankey.orient) is `vertical`, `nodeAlign` controls ve
 
 The iterations of layout, which is used to iteratively optimize the position of the nodes and edges in the Sankey diagram to reduce the overlapping between nodes and edges. The default value is `32`.
 
-If you want to preserve the original order of nodes within each depth level while still using layout optimization, consider using [sortNodes](~series-sankey.sortNodes) instead of setting this value to `0`.
+If you want to preserve the original order of nodes within each depth level while still using layout optimization, consider using [sort](~series-sankey.sort) and set it to `null` instead of setting this value to `0`.
 
-## sortNodes(boolean) = true
+## sort(string) = 'desc'
 
-<ExampleUIControlBoolean default="true" />
+<ExampleUIControlEnum options="desc,null" />
 
 Whether to sort nodes within each depth level during layout collision resolution.
 
-By default, nodes are automatically sorted based on their computed position to reduce edge crossings and improve layout readability. If set to `false`, the original order of nodes defined in [data](~series-sankey.data) is preserved within each depth level, while the layout algorithm still performs the other layout optimization.
+By default, this option is `'desc'`, which preserves the previous behavior. When `sort` is `undefined`, the default option still makes it behave as `'desc'`.
+
+Set `sort` to `null` to disable per-depth node sorting and preserve the original order of nodes defined in [data](~series-sankey.data) within each depth level, while the layout algorithm still performs the other layout optimization.
+
+Currently, Sankey only supports `'desc'` and `null`. `asc` order and custom sort callbacks are not supported.
 
 ## orient(string) = 'horizontal'
 
