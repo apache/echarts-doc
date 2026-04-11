@@ -26,9 +26,13 @@ const OUTPUT_DIR_NAME = 'llms-documents';
 const MAX_HEADING_DEPTH = 6;
 
 const SECTION_LABELS = {
-    en: {'option-parts': 'Option', 'option-gl-parts': 'Option GL', 'api-parts': 'API', 'tutorial-parts': 'Tutorial'},
-    zh: {'option-parts': '配置项 (Option)', 'option-gl-parts': 'GL配置项 (Option GL)', 'api-parts': 'API', 'tutorial-parts': '教程 (Tutorial)'}
+    en: {'option-parts': 'Option', 'option-gl-parts': 'Option GL', 'api-parts': 'API'},
+    zh: {'option-parts': '配置项 (Option)', 'option-gl-parts': 'GL配置项 (Option GL)', 'api-parts': 'API'}
 };
+
+// Tutorial parts are excluded because they have been replaced by the echarts-handbook.
+// A link to the handbook is included in the llms.txt instead.
+const EXCLUDED_PARTS = new Set(['tutorial-parts']);
 
 const LLMS_TXT_HEADER = [
     '# Apache ECharts Documentation',
@@ -66,7 +70,7 @@ function htmlToMd(html) {
  *   e.g. { "option.title.show": {type: "boolean", default: "true"} }
  */
 function buildTypeMap(schemaJsonPath, docName) {
-    if (docName === 'tutorial' || !fs.existsSync(schemaJsonPath)) return {};
+    if (!fs.existsSync(schemaJsonPath)) return {};
     const schema = JSON.parse(fs.readFileSync(schemaJsonPath, 'utf-8'));
     const typeMap = {};
     traverse(schema, docName, (schemaPath, node) => {
@@ -304,7 +308,7 @@ function generateDocsForLang(lang) {
         cwd: docsDir,
         absolute: true,
         onlyDirectories: true
-    });
+    }).filter(dir => !EXCLUDED_PARTS.has(path.basename(dir)));
     const jsonFilesByDir = collectPartJsonFiles(partsDirs);
     const partKeysByDoc = buildPartKeysByDoc(partsDirs, jsonFilesByDir);
 
@@ -348,7 +352,13 @@ function writeLlmsTxt(lang, files) {
             ''
         ]);
 
-    const content = [LLMS_TXT_HEADER, ...sections].join('\n').trimEnd() + '\n';
+    const handbookSection = [
+        '## Handbook', '',
+        `- [ECharts Handbook](https://echarts.apache.org/handbook/${lang}/get-started)`,
+        ''
+    ];
+
+    const content = [LLMS_TXT_HEADER, ...sections, ...handbookSection].join('\n').trimEnd() + '\n';
     fs.writeFileSync(path.join(langDir, 'llms.txt'), content, 'utf-8');
     console.log(`Generated ${lang}/llms.txt`);
 }
