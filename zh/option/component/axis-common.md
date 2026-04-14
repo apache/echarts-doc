@@ -259,6 +259,28 @@ myChart.setOption({
 
 是否显示坐标轴轴线。
 
+{{ if: ${componentType} == 'angleAxis' }}
+##${prefix} showMinLine(boolean) = true
+
+<ExampleUIControlBoolean />
+
+{{ use: partial-version(
+    version = "6.1.0"
+) }}
+
+是否显示 [angleAxis](~angleAxis) 对应 [radiusAxis](~radiusAxis) 最小 tick 边界的轴线。
+
+##${prefix} showMaxLine(boolean) = true
+
+<ExampleUIControlBoolean />
+
+{{ use: partial-version(
+    version = "6.1.0"
+) }}
+
+是否显示 [angleAxis](~angleAxis) 对应 [radiusAxis](~radiusAxis) 最大 tick 边界的轴线。
+{{ /if }}
+
 {{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
 > 从 `v5.0.0` 开始，数值轴 (`type: 'value'`) 默认不显示轴线，需要显式配置。
 {{ /if }}
