@@ -261,6 +261,28 @@ Settings related to axis line.
 
 Set this to `false` to prevent the axis line from showing.
 
+{{ if: ${componentType} == 'angleAxis' }}
+##${prefix} showMinLine(boolean) = true
+
+<ExampleUIControlBoolean />
+
+{{ use: partial-version(
+    version = "6.1.0"
+) }}
+
+Whether to show the axisLine of the min tick boundary on [radiusAxis](~radiusAxis) for [angleAxis](~angleAxis).
+
+##${prefix} showMaxLine(boolean) = true
+
+<ExampleUIControlBoolean />
+
+{{ use: partial-version(
+    version = "6.1.0"
+) }}
+
+Whether to show the axisLine of the max tick boundary on [radiusAxis](~radiusAxis) for [angleAxis](~angleAxis).
+{{ /if }}
+
 {{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
 > The **value** axis doesn't show the axis line by default since `v5.0.0`, you need to explicitly set `axisLine.show` as `true` to enable it.
 {{ /if }}
@@ -1389,4 +1411,3 @@ Whether to show the tooltip. Defaults to `false`.
 {{ target: partial-axis-break-identifier-desc }}
 
 Note: [${componentType}.breaks.start](~${componentType}.breaks.start) and [${componentType}.breaks.end](~${componentType}.breaks.end) are the unique identifiers for each break item. When calling [chart.setOption](api.html#echartsInstance.setOption) to modify [${componentType}.breaks.gap](~${componentType}.breaks.gap) or [${componentType}.breaks.isExpanded](~${componentType}.breaks.isExpanded), `start` and `end` must be specified. Update animations will only occur if `start` and `end` are not modified; no animation will occur if they are changed.
-
