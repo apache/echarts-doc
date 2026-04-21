@@ -151,7 +151,7 @@ const option = {
 
 子树折叠和展开的交互，`默认打开` 。由于绘图区域是有限的，而通常一个树图的节点可能会比较多，这样就会出现节点之间相互遮盖的问题。为了避免这一问题，可以将暂时无关的子树折叠收起，等到需要时再将其展开。如上面径向布局树图示例，节点中心用蓝色填充的就是折叠收起的子树，可以点击将其展开。
 
-**注意：如果配置自定义的图片作为节点的标记，是无法通过填充色来区分当前节点是否有折叠的子树的。而目前暂不支持，上传两张图片分别表示节点折叠和展开两种状态。所以，如果想明确地显示节点的两种状态，建议使用 `ECharts` 常规的标记类型，如 `'emptyCircle'` 等。**
+**注意：节点默认使用 `'emptyCircle'` 这个空心标记。在这种默认标记下，节点中心的填充色用于表示当前节点是否还有已折叠的子树，而节点外圈颜色由 [itemStyle.color](~series-tree.itemStyle.color) 控制。如果配置自定义图片作为节点标记，ECharts 无法再通过这个中心填充色来切换折叠/展开状态，目前也不支持自动为折叠和展开状态分别指定两张不同图片。所以，如果希望明确显示节点的两种状态，建议使用 `'emptyCircle'` 这类内置标记类型。**
 
 ## initialTreeDepth(number) = 2
 
@@ -161,7 +161,15 @@ const option = {
 
 ## itemStyle(Object)
 
-树图中每个节点的样式，其中 [itemStyle.color](~series-tree.itemStyle.color) 表示节点的填充色，用来区别当前节点所对应的子树折叠或展开的状态。
+树图中每个节点的样式。
+
+默认情况下，`series.tree` 使用的是空心标记 `'emptyCircle'`。在这种标记下：
+
++ [itemStyle.color](~series-tree.itemStyle.color) 控制的是节点外圈颜色。
++ 节点中心的填充色用于表示当前节点是否还有已折叠的子树。
++ [itemStyle.borderColor](~series-tree.itemStyle.borderColor) 和 [itemStyle.borderWidth](~series-tree.itemStyle.borderWidth) 不会像实心标记那样直接控制外圈边框。
+
+如果希望 [itemStyle.color](~series-tree.itemStyle.color) 表现为常规填充色，并使用 [itemStyle.borderColor](~series-tree.itemStyle.borderColor) / [itemStyle.borderWidth](~series-tree.itemStyle.borderWidth) 来控制边框样式，可以将 [symbol](~series-tree.symbol) 设置为 `'circle'` 这类实心标记。
 
 {{ use: partial-item-style(
     prefix = "##",
