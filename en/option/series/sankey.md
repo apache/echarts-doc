@@ -87,7 +87,7 @@ If you want to preserve the original order of nodes within each depth level whil
 
 Whether to sort nodes within each depth level during layout collision resolution.
 
-By default, this option is `'desc'`, which preserves the previous behavior. When `sort` is `undefined`, the default option still makes it behave as `'desc'`.
+By default, this option is `'desc'`. When `sort` is `undefined`, the default option still makes it behave as `'desc'`.
 
 Set `sort` to `null` to disable per-depth node sorting and preserve the original order of nodes defined in [data](~series-sankey.data) within each depth level, while the layout algorithm still performs the other layout optimization.
 

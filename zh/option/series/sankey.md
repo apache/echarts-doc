@@ -88,7 +88,7 @@ const option = {"tooltip":{"trigger":"item","triggerOn":"mousemove"},"series":[{
 
 是否在布局碰撞解决过程中对每一层内的节点进行排序。
 
-默认值是 `'desc'`，这会保持之前的行为。当 `sort` 为 `undefined` 时，也会因默认值而按 `'desc'` 处理。
+默认值是 `'desc'`。当 `sort` 为 `undefined` 时，也会因默认值而按 `'desc'` 处理。
 
 将 `sort` 设为 `null` 可以关闭每一层内的节点排序，并保留 [data](~series-sankey.data) 中定义的原始顺序，同时布局算法仍会执行其他优化。
 
