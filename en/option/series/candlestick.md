@@ -180,17 +180,38 @@ Every data item (each line in the example above) represents a box, which contain
 [open, close, lowest, highest]  (namely: [opening value, closing value, lowest value, highest value])
 ```
 
+That means the default dimension order of `candlestick` is **OCLH**. If your source data is in the **OHLC** order (`[open, highest, lowest, close]`), you can explicitly remap dimensions via [series-candlestick.encode](~series-candlestick.encode). This applies to both [dataset](~dataset) and [series.data](~series-candlestick.data).
+
+For example, if each item in `series.data` is `[open, high, low, close]`, you can configure:
+
+```javascript
+series: [{
+    type: 'candlestick',
+    data: [
+        // [date, open, high, low, close]
+        ['2025-05-01', 2320.26, 2362.94, 2287.3, 2320.26],
+        ['2025-05-02', 2300, 2308.38, 2288.26, 2291.3]
+    ],
+    encode: {
+        x: 0,
+        y: [1, 4, 3, 2] // Remap OHLC to OCLH without reordering the source data array
+    }
+}]
+```
+
 ### name(string)
 
 Name of data item.
 
 ### value(Array)
 
-Value of data item.
+Value of data item. Default dimension order is **OCLH**.
 
 ```javascript
 [open, close, lowest, highest]  (namely: [opening value, closing value, lowest value, highest value])
 ```
+
+To adjust the default dimension order, see [series-candlestick.data](~series-candlestick.data) above.
 
 {{ use: partial-data-group-id(
     prefix = '##'
