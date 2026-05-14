@@ -219,7 +219,7 @@ option = {
 };
 ```
 
-In the example above, `dim` and `dim2` corresponds to `x` axis, and the `dataZoom` component constrols the data window of `x` axis. If part of a `dataItem` is overflow the extent of `x` axis (the value on `dim1` is overflow and the value on `dim2` is not) while zooming, the `dataItem` will not be filtered if `dataZoom.filterMode = 'weakFilter'` set. Thus the `dataItem` can be still rendered (usually be partially rendered by using `echarts.graphic.clipRectByRect` to clip the exceeding part).
+In the example above, `dim` and `dim2` corresponds to `x` axis, and the `dataZoom` component constrols the data window of `x` axis. If part of a `dataItem` is overflow the extent of `x` axis (the value on `dim1` is overflow and the value on `dim2` is not) while zooming, the `dataItem` will not be filtered out if `dataZoom.filterMode = 'weakFilter'` set. Thus the `dataItem` can be still rendered (usually be partially rendered by using `echarts.graphic.clipRectByRect` to clip the exceeding part).
 See the example mentioned above [Profile](${galleryEditorPath}custom-profile).
 
 
