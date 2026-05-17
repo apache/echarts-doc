@@ -5,7 +5,63 @@
 
 堆叠的组名。在**同一个类目轴（category axis）**上，配置了相同 `stack` 组名的系列会互相堆叠。关于数值的堆叠方式，可参见 [stackStrategy](~series-${componentNameInLink}.stackStrategy)。
 
-**注意：**堆叠功能只支持被堆叠轴为 `'value'` 或 `'log'` 类型，不支持被堆叠轴为 `'time'` 或 `'category'` 类型。
+[笛卡尔坐标系](~grid) 或 [极坐标系](~polar) 中，两个坐标轴决定了系列的每个图形的位置。讨论 `stack` 时我们可以这样命名它们：
++ **Stacked Axis**：这个坐标轴上的系列值会被堆叠。这里只有 `axis.type: 'value' | 'log'` 的坐标轴能支持堆叠。
++ **Base Axis**：这个坐标轴上的系列值**不**会被堆叠。但是这个坐标轴影响堆叠的分组策略：
+    + 如果 Base Axis 是 `axis.type: 'category'`: 系列的数据项会根据此坐标轴上的值进行分组。例如，
+        ```js
+        option = {
+            xAxis: {type: 'category'},
+            yAxis: {type: 'value'},
+            series: [{
+                stack: 'ss',
+                data: [['a', 10], ['b', 20], ['c', 30]]
+            }, {
+                stack: 'ss',
+                data: [['b', 900], ['c', 800], ['a', 700]]
+            }, {
+                stack: 'ss',
+                data: [['a', 3000], ['c', 4000]]
+            }]
+        };
+        // "Base Axis" 是 xAxis。系列的诸数据项根据 xAxis 上的值
+        // （即 data[i][0]）进行分组。
+        // 堆叠结果为：
+        stackedResult = [{
+            data: [['a', 10], ['b', 20], ['c', 30]]
+        }, {
+            data: [['a', 10 + 700], ['b', 20 + 900], ['c', 30 + 800]]
+        }, {
+            data: [['a', 10 + 700 + 3000], ['b', 20 + 900 + 0], ['c', 30 + 800 + 4000]]
+        }]
+        ```
+    + 如果 Base Axis 是 `axis.type: 'value' | 'time' | 'log'`: 当前只支持根据 data index 对数据项进行分组（出于性能考虑）。**使用者须保证不同系列的 data index 正确对应**。例如，
+        ```js
+        option = {
+            xAxis: {type: 'value'},
+            yAxis: {type: 'value'},
+            series: [{
+                stack: 'ss',
+                data: [[0.01, 10], [0.05, 20], [0.13, 30]]
+            }, {
+                stack: 'ss',
+                data: [[0.01, 700], [0.05, 900], [0.13, 800]]
+            }, {
+                stack: 'ss',
+                data: [[0.01, 3000], null, [0.13, 4000]]
+            }]
+        };
+        // "Base Axis" 是 xAxis 。系列的诸数据项根据 data index 进行分组。
+        // 堆叠结果为：
+        stackedResult = [{
+            data: [[0.01, 10], [0.05, 20], [0.13, 30]]
+        }, {
+            data: [[0.01, 10 + 700], [0.05, 20 + 900], [0.13, 30 + 800]]
+        }, {
+            data: [[0.01, 10 + 700 + 3000], [0.05, 20 + 900 + 0], [0.13, 30 + 800 + 4000]]
+        }]
+        ```
+
 
 {{ if: ${componentNameInLink} === 'line' }}
 下面示例可以通过右上角 [toolbox](~toolbox) 中的堆叠切换看效果：
