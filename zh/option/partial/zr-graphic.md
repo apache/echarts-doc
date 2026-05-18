@@ -627,6 +627,16 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
     symbolDeclare = ${symbolDeclare}
 ) }}
 
+###${prefix} cornerRadius(number|Array)
+
+{{ use: partial-version(version = "5.3.0") }}
+
+扇形的圆角。
+
++ `cornerRadius: 10`：表示内圆角半径和外圆角半径都是 `10px`。
++ `cornerRadius: [10, 20]`：表示为环形图时，内圆角半径是 `10px`、外圆角半径是 `20px`。
++ `cornerRadius: [5, 10, 15, 20]`：表示内圆角半径分别为 `5px` 和 `10px`，外圆角半径分别为 `15px` 和 `20px`。
+
 {{ use: partial-graphic-cpt-sub-prop-angle(
     prefix = ${prefix},
     optionPath = ${optionPath},
@@ -1453,7 +1463,7 @@ chart.on('click', function (params) {
 {{ if: ${type} !== 'group' }}
 ##${prefix} invisible(boolean) = false
 
-节点是否可见。
+节点是否不可见。
 {{ /if }}
 
 ##${prefix} ignore(boolean) = false

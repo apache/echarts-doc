@@ -184,6 +184,15 @@ async function run() {
             console.log('Error happens when copying to dest folders.');
             console.log(e);
         }
+
+        try {
+            const buildLlms = require('./build-llms');
+            buildLlms();
+        }
+        catch (e) {
+            console.log('Error happens when building llms documents.');
+            console.log(e);
+        }
     }
 
     console.log('All done.');

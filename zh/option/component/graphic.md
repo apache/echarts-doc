@@ -129,7 +129,7 @@ myChart.setOption({
     z: 10,
     // 表示不响应事件。
     silent: true,
-    // 表示节点不显示
+    // 节点是否不显示
     invisible: false,
     // 设置是否整体限制在父节点范围内。可选值：'raw', 'all'。
     bouding: 'raw',

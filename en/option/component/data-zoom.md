@@ -332,9 +332,9 @@ Its behaviours vary according to filtering mode settings ([dataZoom.filterMode](
 
 Possible values:
 
-+ 'filter': data that outside the window will be **filtered**, which may lead to some changes of windows of other axes. For each data item, it will be filtered if one of the relevant dimensions is out of the window.
++ 'filter': data that outside the window will be **filtered out**, which may lead to some changes of windows of other axes. For each data item, it will be filtered out if one of the relevant dimensions is out of the window.
 
-+ 'weakFilter': data that outside the window will be **filtered**, which may lead to some changes of windows of other axes. For each data item, it will be filtered only if all of the relevant dimensions are out of the same side of the window.
++ 'weakFilter': data that outside the window will be **filtered out**, which may lead to some changes of windows of other axes. For each data item, it will be filtered out only if all of the relevant dimensions are out of the same side of the window.
 
 + 'empty': data that outside the window will be **set to NaN**, which will not lead to changes of windows of other axes.
 
@@ -389,9 +389,9 @@ In the sample above, `dataZoomX` is set as `filterMode: 'filter'`. When use drag
 ```javascript
 [
     [12, 24, 36],
-    // [90, 80, 70] This item is filtered, as 90 is out of the window.
+    // [90, 80, 70] This item is filtered out, as 90 is out of the window.
     [3, 9, 27]
-    // [1, 11, 111] This item is filtered, as 1 is out of the window.
+    // [1, 11, 111] This item is filtered out, as 1 is out of the window.
 ]
 ```
 

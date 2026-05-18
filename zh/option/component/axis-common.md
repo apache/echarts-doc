@@ -885,6 +885,24 @@ splitLine: {
 boundaryGap: ['20%', '20%']
 ```
 
+
+#${prefix} containShape(boolean) = true
+
+<ExampleUIControlBoolean default="true"/>
+
+{{ use: partial-version(version = '6.1.0') }}
+
+是否在坐标轴两端增加额外的空间以阻止系列的图形超出坐标系范围。
+
+目前 `containShape` 只支持于 [柱状图（bar）](~series-bar)、[象形柱状图（pictorialBar）](~series-pictorialBar)、[K线图（candlestick）](~series-candlestick) 和 [盒须图（boxplot）](~series-boxplot)，这些图形往往不应超出边界往往。
+
+注：如果 `dataZoom` 被用于数值类的坐标轴（即 `axis.type: 'value' | 'time' | 'log'`），只在 `dataZoom` 完整窗口两端（即 `dataZoom` 断点 `0%` 和端点 `100%`）增加额外空间。如果 `dataZoom` 被用于类目坐标轴（`axis.type: 'category'`），不论什么 `dataZoom` 当前是什么范围总是增加额外的空间。
+
+也参见 [series.clip](~series-bar.clip)，它可剪裁超出坐标系边界的图形。
+
+也参见 [boundaryGap](~${componentType}.boundaryGap)。这两个配置项的功能因为历史原因有所重叠。只有在 `boundaryGap: false, containShape: false` 时，类目坐标轴（`axis.type: 'category'`）中的图形才可能超出坐标轴范围。
+
+
 #${prefix} min(number|string|Function) = null
 
 <ExampleUIControlNumber />

@@ -890,6 +890,23 @@ For non-category axis, including time, numerical value, and log axes, `boundaryG
 boundaryGap: ['20%', '20%']
 ```
 
+#${prefix} containShape(boolean) = true
+
+<ExampleUIControlBoolean default="true"/>
+
+{{ use: partial-version(version = '6.1.0') }}
+
+Whether series shapes should be prevented from overflowing the coordinate system by adding extra margin at the axes edges.
+
+Currently, `containShape` is available only on [bar](~series-bar), [pictorialBar](~series-pictorialBar), [candlestick](~series-candlestick) and [boxplot](~series-boxplot), where shape overflow is typically unexpected.
+
+Note: if a `dataZoom` is applied on a numerical axis (`axis.type: 'value' | 'time' | 'log'`), the extra margin is only added to the edges of a full window (i.e., `dataZoom` end `0%` and end `100%`). For a `dataZoom` is applied on a category axis (`axis.type: 'category'`), the extra margin is always added regardless of `dataZoom` range.
+
+See also [series.clip](~series-bar.clip), which can clip shapes if they overflow the coordinate system.
+
+See also [boundaryGap](~${componentType}.boundaryGap). The functionality of the two options overlaps for historicall reasons. Series shapes may overflow a category axis (`axis.type: 'category'`) only if `boundaryGap: false, containShape: false`.
+
+
 #${prefix} min(number|string|Function) = null
 
 <ExampleUIControlNumber />

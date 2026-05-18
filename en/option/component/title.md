@@ -26,9 +26,15 @@ Set this to `false` to prevent the title from showing
 
 The main title text, supporting for `\n` for newlines.
 
+{{ use: partial-security-warning(
+    securityRiskExclamation: 'When enabling [toolbox.feature.saveAsImage](~toolbox.feature.saveAsImage), and [toolbox.feature.saveAsImage.name](~toolbox.feature.saveAsImage.name) is not provided, it has historically been using `title[0].text` instead. This usage is not recommended -- [toolbox.feature.saveAsImage.name](~toolbox.feature.saveAsImage.name) should always be specified explicitly; otherwise, **correctness** and **security risks** for a filename have to be considered in this `title.text` option.'
+)}}
+
 ## link(string) = ''
 
 The hyper link of main title text.
+
+{{ use: partial-security-url-common-warning }}
 
 ## target(string) = 'blank'
 
@@ -62,6 +68,8 @@ Subtitle text, supporting for `\n` for newlines.
 ## sublink(string) = ''
 
 The hyper link of subtitle text.
+
+{{ use: partial-security-url-common-warning }}
 
 ## subtarget(string) = 'blank'
 

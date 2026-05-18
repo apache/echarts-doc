@@ -50,6 +50,7 @@
 {{import: series-gauge}}
 {{import: series-pictorialBar}}
 {{import: series-themeRiver}}
+{{import: series-chord}}
 {{import: series-custom}}
 
 # darkMode(boolean)

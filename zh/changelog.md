@@ -1,3 +1,76 @@
+## v6.1.0
+<div class="time">2026-05-18</div>
+
++ [Feature] [axis]: 支持 `dataMin` 和 `dataMax` 选项，用于指定坐标轴范围。 [#20838](https://github.com/apache/echarts/pull/20838) ([Justin-ZS](https://github.com/Justin-ZS), [Ovilia](https://github.com/Ovilia))
++ [Feature] [axis]: 支持所有类型的坐标轴（即 `"value"`/`"time"`/`"category"`/`"log"`）渲染系列（通常为 `"bar"`/`"pictorialBar"`/`"candlestick"`/`"boxplot"`）时不溢出（包括 `"category"` 坐标轴且 `boundaryGap: false` 的情况）；提供 `containShape` 选项；提供相应的的 `clip` 选项。 [dbfaf6a73](https://github.com/apache/echarts/commit/dbfaf6a73) [fe932a2aa](https://github.com/apache/echarts/commit/fe932a2aa) [3973b21ee](https://github.com/apache/echarts/commit/3973b21ee) ([100pah](https://github.com/100pah)) [#21511](https://github.com/apache/echarts/pull/21511) ([Akash Sonune](https://github.com/akashsonune))
++ [Feature] [axis]: 自动过滤 `"log"` 坐标轴上的非正值。 [dedc5dc18](https://github.com/apache/echarts/commit/dedc5dc18) ([100pah](https://github.com/100pah))
++ [Feature] [axis]: 使 `axisLabel.formatter` 能够接收 `index`，以配合 `customValues` 使用。 [#21220](https://github.com/apache/echarts/pull/21220) [#21432](https://github.com/apache/echarts/pull/21432) ([Szymon Pachucki](https://github.com/szymonpachucki), [Ovilia](https://github.com/Ovilia), [plainheart](https://github.com/plainheart))
++ [Feature] [line]: 提供 `triggerEvent` 选项以更灵活地控制鼠标事件。 [#21001](https://github.com/apache/echarts/pull/21001) ([Steven Cobb](https://github.com/sjcobb), [plainheart](https://github.com/plainheart))
++ [Feature] [pie]: 提供 `tangential-noflip` 选项，使标签沿切线方向显示而不翻转。 [#21258](https://github.com/apache/echarts/pull/21258) ([春秋半夏](https://github.com/MC-YCY), [Ovilia](https://github.com/Ovilia))
++ [Feature] [gauge]: `progress.color` 支持 `'auto'`。 [#21224](https://github.com/apache/echarts/pull/21224) ([StNimmerlein](https://github.com/StNimmerlein), [Ovilia](https://github.com/Ovilia))
++ [Feature] [radar]: 提供 `clockwise` 选项。 [#21143](https://github.com/apache/echarts/pull/21143) ([Dai Xuezhou](https://github.com/daidr), [Ovilia](https://github.com/Ovilia))
++ [Feature] [candlestick,dataZoom]: 为 `candlestick` 系列提供 `cursor` 选项，为 `'inside'` dataZoom 提供 `cursorGrab` 与 `cursorGrabbing` 选项。 [#21558](https://github.com/apache/echarts/pull/21558) ([zuming](https://github.com/diysimon), [Ovilia](https://github.com/Ovilia), [100pah](https://github.com/100pah), [Ovilia](https://github.com/Ovilia))
++ [Feature] [scatter,effectScatter,map]: 在 `geo` 上的 `"scatter"`/`"effectScatter"` 系列提供 `clip` 选项。 [417592289](https://github.com/apache/echarts/commit/417592289) ([100pah](https://github.com/100pah))
++ [Feature] [visualMap]: 提供 `seriesTargets` 选项，用于多系列维度映射。 [#20703](https://github.com/apache/echarts/pull/20703) ([Justin-ZS](https://github.com/Justin-ZS), [plainheart](https://github.com/plainheart))
++ [Feature] [matrix]: 提供 `matrix.x/y.length` 选项以方便创建无头矩阵。 [#21191](https://github.com/apache/echarts/pull/21191) ([100pah](https://github.com/100pah), [plainheart](https://github.com/plainheart))
++ [Feature] [matrix]: 提供 `triggerEvent` 选项以支持矩阵单元格触发事件。 [#21390](https://github.com/apache/echarts/pull/21390) ([Natsuo Kawai](https://github.com/natsuokawai), [100pah](https://github.com/100pah))
++ [Feature] [i18n]: 提供拉脱维亚语 (LV) 翻译。 [#21546](https://github.com/apache/echarts/pull/21546) ([EPoikans](https://github.com/EPoikans))
++ [Fix] [axis]: 解决小数计算的精度误差，优化自动精度计算的方案。 [479dcd454](https://github.com/apache/echarts/commit/479dcd454) ([100pah](https://github.com/100pah))
++ [Fix] [axis]: 修复时间坐标轴（`axis.type: 'time'`）上使用 `customValues` 与 `formatter` 时图表异常问题。 [#21352](https://github.com/apache/echarts/pull/21352) ([Srajan Sanjay Saxena](https://github.com/Srajan-Sanjay-Saxena), [plainheart](https://github.com/plainheart))
++ [Fix] [axis]: 修复 `alignTick` 的一些不正确表现，并修复 `LogScale` 精度问题。 [a6ab2458f](https://github.com/apache/echarts/commit/a6ab2458f) [ffcc636fb](https://github.com/apache/echarts/commit/ffcc636fb) ([100pah](https://github.com/100pah))
++ [Fix] [axis]: 修复使用时间坐标轴（`axis.type: 'time'`）或使用 `customValues` 时出现的重复刻度，它可能导致如 `splitArea` 抖动问题；修复类目坐标轴（`axis.type: 'category'`）的 `showMin/MaxLabel` 处理；在数值坐标轴（`axis.type: 'value' | 'time' | 'log'`）中实现统一的 `bandWidth` 计算。 [8de2b64fa](https://github.com/apache/echarts/commit/8de2b64fa) [15af0db02](https://github.com/apache/echarts/commit/15af0db02) [8ddaa5c69](https://github.com/apache/echarts/commit/8ddaa5c69) ([100pah](https://github.com/100pah))
++ [Fix] [axis]: 修复时间坐标轴（`axis.type: 'time'`）在值为毫秒时的 bug。 [40b77b464](https://github.com/apache/echarts/commit/40b77b464) ([100pah](https://github.com/100pah))
++ [Fix] [bar]: 修复当柱状图宽/柱高为 0 时标签位置错误。 [#21218](https://github.com/apache/echarts/pull/21218) ([Justin-ZS](https://github.com/Justin-ZS), [Ovilia](https://github.com/Ovilia))
++ [Fix] [scatter]: 修复抖动布局不支持渐进渲染导致图表卡住及潜在空指针异常。 [#21436](https://github.com/apache/echarts/pull/21436) ([plainheart](https://github.com/plainheart))
++ [Fix] [line]: 修复特效散点图未启用 `roundTrip` 时单向循环末端翻转问题。 [#21320](https://github.com/apache/echarts/pull/21320) ([Mayank Mehta](https://github.com/mynk2611), [plainheart](https://github.com/plainheart))
++ [Fix] [candlestick]: 修复水平布局下使用 `series.encode` 的渲染错误。 [#21325](https://github.com/apache/echarts/pull/21325) ([Purbayan Pramanik](https://github.com/PPRAMANIK62), [100pah](https://github.com/100pah))
++ [Fix] [parallel]: 修复当后续系列值大于首个系列值时坐标轴范围错误。 [#21387](https://github.com/apache/echarts/pull/21387) ([jackhickson](https://github.com/jackhickson), [100pah](https://github.com/100pah))
++ [Fix] [pie]: 饼图布局在笛卡尔坐标系（`grid` 组件）时，支持饼图中心点被自动计入坐标轴范围。 [18a23a875](https://github.com/apache/echarts/commit/18a23a875) ([100pah](https://github.com/100pah))
++ [Fix] [treemap]: 修复当指定 `scaleLimit` 时，放大后无法缩小的问题。 [#21427](https://github.com/apache/echarts/pull/21427) ([TateLiu](https://github.com/liuyizhou), [100pah](https://github.com/100pah))
++ [Fix] [line]: 修复路径图（`series.type: 'lines'`）潜在的 `tooltip` XSS 漏洞。 [#21608](https://github.com/apache/echarts/pull/21608) ([plainheart](https://github.com/plainheart))
++ [Fix] [map, geo]: 修复 geo 平移缩放或进行动画时，更新没有同步导致效果异常。 [417592289](https://github.com/apache/echarts/commit/417592289) ([100pah](https://github.com/100pah))
++ [Fix] [tooltip]: 修复当 `tooltip` trigger 从 `'axis'` 改为 `'item'` 时内容不刷新。 [#20710](https://github.com/apache/echarts/pull/20710) ([Justin-ZS](https://github.com/Justin-ZS), [plainheart](https://github.com/plainheart))
++ [Fix] [tooltip]: `valueFormatter` 回调参数 `dataIndex` 改为原始数据索引 `rawDataIndex`，而非 `dataZoom` 过滤后的 `dataIndex`。 [#21479](https://github.com/apache/echarts/pull/21479) ([100pah](https://github.com/100pah), [plainheart](https://github.com/plainheart))
++ [Fix] [axisPointer]: 修复 `axisPointer` 的阴影模式——此前仅适用于 `"category"` 坐标轴，但在其他坐标轴与 `"bar"` 系列组合时存在问题。 [8de2b64fa](https://github.com/apache/echarts/commit/8de2b64fa) ([100pah](https://github.com/100pah))
++ [Fix] [axisPointer]: 修复 `axisPointer` 没有正确消除时导致的绘制异常。 [56a32c0bb](https://github.com/apache/echarts/commit/56a32c0bb) ([100pah](https://github.com/100pah))
++ [Fix] [hoverLayer]: 修复 `hoverLayer` 的绘制异常。 [zrender#1151](https://github.com/ecomfe/zrender/pull/1151) [933585126](https://github.com/apache/echarts/commit/933585126) ([100pah](https://github.com/100pah))
++ [Fix] [marker]: 修复使用 `dataset` 与 `encode` 时 `marker` 不渲染的问题。 [#21439](https://github.com/apache/echarts/pull/21439) ([plainheart](https://github.com/plainheart), [100pah](https://github.com/100pah))
++ [Fix] [dataZoom]: 修复 `series` 仅有一个数据点时 `dataZoom` 位置错误。 [#21196](https://github.com/apache/echarts/pull/21196) ([alesmit](https://github.com/alesmit), [Ovilia](https://github.com/Ovilia))
++ [Fix] [dataZoom]: 修复拖动释放时数据信息消失的问题；修复拖动光标的样式。 [64305a4b8](https://github.com/apache/echarts/commit/64305a4b8) ([100pah](https://github.com/100pah))
++ [Fix] [dataZoom]: 改进自动的小数精度显示；修复在 `alignTicks: true` 时的异常表现。 [d168bf237](https://github.com/apache/echarts/commit/d168bf237) ([100pah](https://github.com/100pah))
++ [Fix] [dataZoom]: 修复更改 `dataZoom` 配置时 `AxisProxy` 无法清理问题；修复相关 `onZero` 行为。 [52ceb924a](https://github.com/apache/echarts/commit/52ceb924a) [2e82d33c3](https://github.com/apache/echarts/commit/2e82d33c3) ([100pah](https://github.com/100pah))
++ [Fix] [areaStyle]: 修复维度名为空字符串时 `areaStyle` 的渲染错误。 [#21219](https://github.com/apache/echarts/pull/21219) ([Justin-ZS](https://github.com/Justin-ZS), [Ovilia](https://github.com/Ovilia))
++ [Fix] [sunburst]: 修复根节点标签可能的未居中。 [#21306](https://github.com/apache/echarts/pull/21306) ([Akash Sonune](https://github.com/akashsonune), [Ovilia](https://github.com/Ovilia))
++ [Fix] [matrix]: 修复矩阵标签 `formatter` 无效的问题。 [#21410](https://github.com/apache/echarts/pull/21410) ([Justin-ZS](https://github.com/Justin-ZS), [Ovilia](https://github.com/Ovilia))
++ [Fix] [toolbox]: 修复 `emphasis` 颜色与默认颜色相同的问题。 [#21384](https://github.com/apache/echarts/pull/21384) ([Ovilia](https://github.com/Ovilia)) [b094f987d](https://github.com/apache/echarts/commit/b094f987d) ([100pah](https://github.com/100pah))
++ [Fix] [toolbox]: 修复 `dataView` 组件在暗色模式下显示不合适的问题。 [#21176](https://github.com/apache/echarts/pull/21176) ([notthistrain](https://github.com/notthistrain), [Ovilia](https://github.com/Ovilia))
++ [Fix] [progressive]: 修复渐进渲染问题。 [91a60fc76](https://github.com/apache/echarts/commit/91a60fc76) ([100pah](https://github.com/100pah))
++ [Fix] [labelLine]: 修复 `labelLine.smooth` 无法重置的问题。 [#21425](https://github.com/apache/echarts/pull/21425) ([fanwww](https://github.com/fanwww), [plainheart](https://github.com/plainheart))
++ [Fix] [graphic]: 修复 `roundRect` 的路径未闭合导致的描边角缝隙。 [zrender#1155](https://github.com/ecomfe/zrender/pull/1155) ([plainheart](https://github.com/plainheart))
++ [Fix] [SVG]: 增强 SVG `encodeBase64` 兼容性，使其可在更多环境（如 Web Worker/NodeJS/Bun）中使用。 [zrender#1145](https://github.com/ecomfe/zrender/pull/1145) ([plainheart](https://github.com/plainheart))
++ [Fix] [core]: 在 `Vue` 中将 `echarts` 实例对象标记为 `raw`。 [#21293](https://github.com/apache/echarts/pull/21293) ([plainheart](https://github.com/plainheart))
++ [Fix] [chord]: 添加缺失的和弦图（`series.type: 'chord'`）入口。 [#21197](https://github.com/apache/echarts/pull/21197) ([plainheart](https://github.com/plainheart), [Ovilia](https://github.com/Ovilia))
++ [Fix] [i18n]: 修复 `langDE` 中自定义系列名翻译错误。 [#21571](https://github.com/apache/echarts/pull/21571) ([A-Loot](https://github.com/A-Loot), [plainheart](https://github.com/plainheart))
++ [Fix] [TypesSript]:
+    - 修复并增强 `TS` `ESM` 与 `CJS` 的兼容性。 [#21411](https://github.com/apache/echarts/pull/21411) ([Akash Sonune](https://github.com/akashsonune), [100pah](https://github.com/100pah))
+    - 修复缺失或不匹配的 `TS` 导出类型。 [#21147](https://github.com/apache/echarts/pull/21147) ([100pah](https://github.com/100pah), [Ovilia](https://github.com/Ovilia))
+    - 修复 `graph` 系列的 `nodeScaleRatio` 选项类型。 [#21229](https://github.com/apache/echarts/pull/21229) ([ocshawn](https://github.com/ocshawn), [plainheart](https://github.com/plainheart))
+    - `slider` `dataZoom` 的 `emphasis.handleLabel` 改为可选类型。 [#21175](https://github.com/apache/echarts/pull/21175) ([Ovilia](https://github.com/Ovilia), [plainheart](https://github.com/plainheart))
+    - 修正拼写错误。 [#21528](https://github.com/apache/echarts/pull/21528) ([Homa Wong](https://github.com/unional), [plainheart](https://github.com/plainheart))
++ [Chore] [refactor]:
+    + 重构坐标轴实现。 [fe932a2aa](https://github.com/apache/echarts/commit/fe932a2aa) [18a23a875](https://github.com/apache/echarts/commit/18a23a875) ([100pah](https://github.com/100pah))
+    + 统一系列数据范围计算的实现。 [fe932a2aa](https://github.com/apache/echarts/commit/fe932a2aa) [0f4561dbe](https://github.com/apache/echarts/commit/0f4561dbe) ([100pah](https://github.com/100pah))
+    + 统一平移缩放交互的实现。 [417592289](https://github.com/apache/echarts/commit/417592289) ([100pah](https://github.com/100pah))
++ [Chore] [security]: 在 PR 模板中添加安全检查提示。 [#21327](https://github.com/apache/echarts/pull/21327) ([100pah](https://github.com/100pah), [plainheart](https://github.com/plainheart))
++ [Chore]: 为 `package.json` 添加 `unpkg` 条目。 [#21177](https://github.com/apache/echarts/pull/21177) ([Yue JIN](https://github.com/kingyue737), [plainheart](https://github.com/plainheart))
++ [Chore]: 修复 `SeriesData.each` 的示例说明。 [#21294](https://github.com/apache/echarts/pull/21294) ([Yurun](https://github.com/Yurunsoft), [plainheart](https://github.com/plainheart))
++ [Chore]: 修复 `test/webkit-dep.htm` 测试用例。 [#21508](https://github.com/apache/echarts/pull/21508) ([zuming](https://github.com/diysimon), [Ovilia](https://github.com/Ovilia))
++ [Break] 相对于 `v6.0.0` 的非兼容变更：
+    + [tooltip.valueFormatter](https://echarts.apache.org/option.html#tooltip.valueFormatter): `tooltip.valueFormatter` 回调的第二个参数从 `dataIndex`（即 `series` 数据经过 `dataZoom` 过滤后的索引）改为 `rawDataIndex`（即输入 `series` 的原始数据的索引）。
+    + [axis.startValue](https://echarts.apache.org/option.html#yAxis.startValue): 之前如果未提供 [axis.min](https://echarts.apache.org/option.html#yAxis.min)，`startValue` 也会作为 `axis.min` 使用。新版本将两者解耦——两者的同时显式设置（例如 `startValue: 111, min: 111`）等同于之前的行为（`startValue: 111` 且未指定 `min`）。
+    + 之前 `"bar"`/`"pictorialBar"`/`"candlestick"`/`"boxplot"` 系列在笛卡尔坐标系（[grid](https://echarts.apache.org/option.html#grid)）边缘时可能会溢出。新版本消除了这种溢出。可以通过 [`axis.containShape: false`](https://echarts.apache.org/option.html#xAxis.containShape) 恢复成之前行为。
+
+
 ## v6.0.0
 <div class="time">2025-07-30</div>
 
@@ -1380,7 +1453,7 @@ Recovery build
 
 + [+] 支持了按值进行 [堆积](option.html#series-bar.stack)，原先是按照数据顺序堆积，在一些场景下不够合理。修复了 [dataset](option.html#dataset) 不能使用堆积的问题。参见 [#7535](https://github.com/apache/incubator-echarts/issues/7535)，[#7560](https://github.com/apache/incubator-echarts/issues/7560)， [#6861](https://github.com/apache/incubator-echarts/issues/6861)。
 
-+ [^] 修正了 [折线图](option.html#series-line) 超出坐标系边界的问题。
++ [^] 修正了 [line](option.html#series-line) 超出坐标系边界的问题。
 
 + [^] 修复了 [splitArea](option.html#xAxis.splitArea) 最后一个区域不显示的问题。参见 [#7118](https://github.com/apache/incubator-echarts/issues/7118)。
 
@@ -1554,7 +1627,7 @@ Recovery build
 
 + [^] 修复了 textStyle 相关兼容性和 emphasis style 问题，参见 [#6491](https://github.com/apache/incubator-echarts/issues/6491)、[#6529](https://github.com/apache/incubator-echarts/issues/6529)、[#6516](https://github.com/apache/incubator-echarts/issues/6516)、[#6532](https://github.com/apache/incubator-echarts/issues/6532)、[#6237](https://github.com/apache/incubator-echarts/issues/6237)。
 
-+ [^] 改善了 [K线图](https://echarts.apache.org/option.html#series-candlestick) 边界模糊的问题。
++ [^] 改善了 [candlestick](https://echarts.apache.org/option.html#series-candlestick) 边界模糊的问题。
 
 + [^] 修复了关系图在 [focusNodeAdjacency](https://echarts.apache.org/option.html#series-graph.focusNodeAdjacency) 状态下不能采用 emphasis style 的问题。
 

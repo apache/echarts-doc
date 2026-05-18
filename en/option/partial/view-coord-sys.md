@@ -29,7 +29,7 @@
 Notice: the values in `center` are based on the original layout coordinates, rather than the viewport (canvas) coordinates. If you intend to adjust the position and size of ${sourceName} by viewport coordinates, use [${componentNameInLink}.left](~${componentNameInLink}.left) / [.right](~${componentNameInLink}.right) / [.top](~${componentNameInLink}.top) / [.bottom](~${componentNameInLink}.bottom) / [.width](~${componentNameInLink}.width) / [.height](~${componentNameInLink}.height) {{ if: ${isGeoOrMap} }} or [${componentNameInLink}.layoutCenter](~${componentNameInLink}.layoutCenter) / [layoutSize](~${componentNameInLink}.layoutSize){{ /if }}.
 
 {{ if: ${isGeoOrMap} }}
-`center` is in longitude and latitude by default. Use the projected coordinates if [proejction](~${componentNameInLink}.projection) is set.
+`center` is in longitude and latitude by default. Use the projected coordinates if [projection](~${componentNameInLink}.projection) is set.
 
 Example:
 
@@ -72,7 +72,7 @@ If using absolute numbers in `center`:
 Using absolute numbers in `center` is unfeasible, as the absolute numbers typically represent the original coordinates, which is calculated by auto-layout strategy and is not user-determinable.
 {{ /if }}
 
-A percentage string can also be used in `center`, like `'30%'`, based on the bounding rect{{ if: ${isGeoOrMap} }}(determined min/max latitude/longitude, or min/max projected coordinates if [proejction](~${componentNameInLink}.projection) is set){{ /if }}. You can use `'0%'` to place the top or left of bounding rect to the center of the viewport (typically, canvas), or use `'100%'` to place the right or bottom to the center of the viewport, or use `'50%'` to place the entire ${sourceName} at the the center of the viewport.
+A percentage string can also be used in `center`, like `'30%'`, based on the bounding rect{{ if: ${isGeoOrMap} }}(determined min/max latitude/longitude, or min/max projected coordinates if [projection](~${componentNameInLink}.projection) is set){{ /if }}. You can use `'0%'` to place the top or left of bounding rect to the center of the viewport (typically, canvas), or use `'100%'` to place the right or bottom to the center of the viewport, or use `'50%'` to place the entire ${sourceName} at the the center of the viewport.
 For example:
 ```ts
 center: [115, '30%']

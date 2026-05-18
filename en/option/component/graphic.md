@@ -138,7 +138,7 @@ Different types of graphic elements has their own configuration respectively, bu
     z: 10,
     // Whether response to mouse events / touch events.
     silent: true,
-    // Whether the element is visible.
+    // Whether the element is invisible.
     invisible: false,
     // Used to specify whether the entire transformed element (containing children if is group)
     // is confined in its container. Optional values: 'raw', 'all'.

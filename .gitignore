@@ -181,6 +181,10 @@ slides/webgl
 /public/zh/coding-standard-content.html
 /public/en/coding-standard-content.html
 /public/*.html
+/public/en/llms.txt
+/public/en/llms-documents
+/public/zh/llms.txt
+/public/zh/llms-documents
 
 
 # Editor temporal files

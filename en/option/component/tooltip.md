@@ -171,11 +171,11 @@ Delay time for showing tooltip, in ms. No delay by default, and it is not recomm
 
 Delay time for hiding tooltip, in ms. It will be invalid when [alwaysShowContent](~tooltip.alwaysShowContent) is `true`.
 
-## enterable(boolean) = true
+## enterable(boolean) = false
 
 <ExampleUIControlBoolean default="false" />
 
-Whether mouse is allowed to enter the floating layer of tooltip, whose default value is false. If you need to interact in the tooltip like with links or buttons, it can be set as `true`.
+Whether the mouse can enter the tooltip floating layer. Defaults to `false`. Set to `true` to support interactions with links, buttons and other elements inside the tooltip.
 
 ## renderMode(string) = 'html'
 
