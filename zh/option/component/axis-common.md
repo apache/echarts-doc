@@ -929,12 +929,12 @@ max: function (value) {
 
 其中 `value` 是一个包含 `min` 和 `max` 的对象，分别表示数据的最大最小值，这个函数可返回坐标轴的最大值，也可返回 `null`/`undefined` 来表示“自动计算最大值”（返回 `null`/`undefined` 从 `v4.8.0` 开始支持）。
 
-#${prefix} dataMin(number) = null
+#${prefix} dataMin(number)
 
 <ExampleUIControlNumber />
 
 {{ use: partial-version(
-    version = '6.0.1'
+    version = '6.1.0'
 ) }}
 
 指定数据最小值，用于扩展坐标轴范围同时保持自动刻度优化。
@@ -962,7 +962,7 @@ max: function (value) {
 <ExampleUIControlNumber />
 
 {{ use: partial-version(
-    version = '6.0.1'
+    version = '6.1.0'
 ) }}
 
 指定数据最大值，用于扩展坐标轴范围同时保持自动刻度优化。

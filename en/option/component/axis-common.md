@@ -932,12 +932,12 @@ max: function (value) {
 
 `value` is an object, containing the `min` value and `max` value of the data. This function should return the max value of axis, or return `null`/`undefined` to make echarts use the auto calculated max value (`null`/`undefined` return is only supported since `v4.8.0`).
 
-#${prefix} dataMin(number) = null
+#${prefix} dataMin(number)
 
 <ExampleUIControlNumber />
 
 {{ use: partial-version(
-    version = '6.0.1'
+    version = '6.1.0'
 ) }}
 
 Specify the data minimum value to extend the axis range while preserving the nice scale algorithm.
@@ -967,7 +967,7 @@ It is available only for value, logarithmic, and time axes, i.e., [type](~${comp
 <ExampleUIControlNumber />
 
 {{ use: partial-version(
-    version = '6.0.1'
+    version = '6.1.0'
 ) }}
 
 Specify the data maximum value to extend the axis range while preserving the nice scale algorithm.

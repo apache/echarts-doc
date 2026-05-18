@@ -297,7 +297,7 @@ chart.setOption(option); // option设置回 ${componentMainType}
 
 ## seriesTargets(Array)
 
-{{ use: partial-version(version = "6.0.1") }}
+{{ use: partial-version(version = "6.1.0") }}
 
 指定多个系列及其对应的维度映射关系。当配置了 `seriesTargets` 时，`seriesIndex`、`seriesId` 和 `dimension` 将被忽略。
 

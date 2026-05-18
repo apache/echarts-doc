@@ -67,7 +67,7 @@ const option = {
 
 ## clockwise(boolean) = false
 
-{{ use: partial-version(version = "6.0.1") }}
+{{ use: partial-version(version = "6.1.0") }}
 
 <ExampleUIControlBoolean default="false" />
 

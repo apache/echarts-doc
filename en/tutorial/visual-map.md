@@ -145,7 +145,7 @@ option = {
 };
 ```
 
-Example C (Using seriesTargets to map different dimensions for different series):
+Example C (Using `seriesTargets` to map different dimensions for different series):
 
 ```javascript
 option = {

@@ -327,7 +327,7 @@ All series are used by default.
 
 ## seriesTargets(Array)
 
-{{ use: partial-version(version = "6.0.1") }}
+{{ use: partial-version(version = "6.1.0") }}
 
 Specify multiple series with their corresponding dimension mappings. When `seriesTargets` is configured, `seriesIndex`, `seriesId`, and `dimension` will be ignored.
 

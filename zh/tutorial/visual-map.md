@@ -146,7 +146,7 @@ option = {
 };
 ```
 
-例三（使用 seriesTargets 映射不同系列的不同维度）：
+例三（使用 `seriesTargets` 映射不同系列的不同维度）：
 ```javascript
 option = {
     dataset: {
