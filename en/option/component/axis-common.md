@@ -962,7 +962,7 @@ It is available only for value, logarithmic, and time axes, i.e., [type](~${comp
 
 
 
-#${prefix} dataMax(number) = null
+#${prefix} dataMax(number)
 
 <ExampleUIControlNumber />
 

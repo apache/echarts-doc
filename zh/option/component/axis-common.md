@@ -957,7 +957,7 @@ max: function (value) {
 - `min` 会固定坐标轴最小值，禁用自动刻度优化
 - `dataMin` 只影响坐标轴范围，仍保持自动刻度优化
 
-#${prefix} dataMax(number) = null
+#${prefix} dataMax(number)
 
 <ExampleUIControlNumber />
 
