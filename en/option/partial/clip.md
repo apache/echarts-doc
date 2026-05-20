@@ -9,15 +9,26 @@
     version = ${version|default("4.4.0")}
 ) }}
 
-If clip the overflow on the coordinate system. Clip results varies between series:
+Whether to clip series shapes overflowing the coordinate system.
 
-+ Scatter/EffectScatter：Ignore the symbols exceeds the coordinate system. Not clip the elements.
-+ Bar：Clip all the overflowed. With bar width kept.
-+ Line：Clip the overflowed line.
-+ Lines: Clip all the overflowed.
-+ Candlestick: Ignore the elements exceeds the coordinate system.
-+ PictorialBar: Clip all the overflowed. (Supported since v5.5.0)
-+ Custom: Clip all the olverflowed.
+The detailed clipping behavior is:
 
-All these series have default value `true` except pictorialBar and custom series. Set it to `false` if you don't want to clip.
-
+{{ if: ${seriesType} === 'scatter' || ${seriesType} === 'effectScatter' }}
+A scatter symbol is removed only if the center is outside the coordinate system. Otherwise, the shape is fully visible, regardless of partial overflow.
+{{ elif: ${seriesType} === 'bar' || ${seriesType} === 'pictorialBar' }}
+Since `v6.1.0`, overflowing parts of a bar is clipped.
+Before `v6.1.0` (exclusive), an element is removed only if it is fully outside the coordinate system. Otherwise, the bar is fully visible, regardless of partial overflow.
+This difference is noticeable when `axis.type: 'category', boundaryGap: false` or `axis.type: 'value' | 'time' | 'log'`.
+{{ elif: ${seriesType} === 'line' }}
+- For the line: Overflowing parts of a line is clipped.
+- For data point symbols: A symbol is removed only if the center is outside the coordinate system, otherwise it is fully visible, regardless of partial overflow.
+{{ elif: ${seriesType} === 'lines' }}
+Overflowing parts of a shape is clipped.
+{{ elif: ${seriesType} === 'candlestick' }}
+Since `v6.1.0`, overflowing parts of a shape is clipped.
+Before `v6.1.0` (exclusive), an element is removed only if the center is outside the coordinate system. Otherwise, the shape is fully visible, regardless of partial overflow.
+{{ elif: ${seriesType} === 'boxplot' }}
+Overflowing parts of a shape is clipped.
+{{ elif: ${seriesType} === 'custom' }}
+Overflowing parts of a shape is clipped.
+{{ /if }}

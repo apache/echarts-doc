@@ -264,11 +264,13 @@ myChart.setOption({
 {{ /if }}
 
 {{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
-##${prefix} onZero(boolean) = true
+##${prefix} onZero(boolean|string) = 'auto'
 
-<ExampleUIControlBoolean default="true" />
+<ExampleUIControlEnum options="auto,true,false" default="auto" />
 
-X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一个轴为数值轴且包含 0 刻度时有效。
+X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上。只有在另一个轴为 [数值轴（'value'）](~xAxis.type) 且包含 0 刻度时有效。
+
+{{ use: partial-version(version = '6.1.0', feature="值 'auto' ") }}
 
 ##${prefix} onZeroAxisIndex(number)
 
@@ -1013,15 +1015,20 @@ max: function (value) {
 
 对数轴的底数，只在对数轴中（[type](~${componentType}.type): 'log'）有效。
 
-#${prefix} startValue(number)
+#${prefix} startValue(number) = 0
 
-<ExampleUIControlNumber />
+<ExampleUIControlNumber default="0"/>
 
 {{ use: partial-version(
     version = '5.5.1'
 ) }}
+<div class="doc-partial-version">
+`v6.1.0`前（不包含），`startValue` 也会被用于 [axis.min](~yAxis.min) 若其未被指定。自从 `v6.1.0`，这两个配置项不再相关。
+</div>
 
-用于指定轴的起始值。
+系列图形的起始值。目前只适用于 [柱状图（bar）](~series-bar) and [象形柱状图（pictorialBar）](~series-pictorialBar)。
+
+注：目前不支持 `startValue` 和 [stack](~series-bar.stack) 同时使用（其效果可能不符合预期）。
 
 {{ use: partial-axis-common-axis-line(
     prefix = ${prefix},

@@ -99,7 +99,8 @@ const option = {
 是否连接空数据。
 
 {{ use: partial-clip(
-    prefix = "#"
+    prefix = "#",
+    seriesType = "line"
 ) }}
 
 ## triggerLineEvent(boolean) = false

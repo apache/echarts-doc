@@ -475,7 +475,8 @@ series: [{
 
 {{ use: partial-clip(
     prefix = "#",
-    version = "4.5.0"
+    version = "4.5.0",
+    seriesType = "candlestick"
 ) }}
 
 {{ use: partial-z-zlevel(

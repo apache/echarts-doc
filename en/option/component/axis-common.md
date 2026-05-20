@@ -266,11 +266,13 @@ Set this to `false` to prevent the axis line from showing.
 {{ /if }}
 
 {{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
-##${prefix} onZero(boolean) = true
+##${prefix} onZero(boolean|string) = 'auto'
 
-<ExampleUIControlBoolean default="true" />
+<ExampleUIControlEnum options="auto,true,false" default="auto" />
 
-Specifies whether X or Y axis lies on the other's origin position, where value is 0 on axis. Valid only if the other axis is of value type, and contains 0 value.
+Specifies whether X or Y axis lies on the origin position (i.e., `0` point) of its orthogonal axis. It works only if the orthogonal axis is ['value' | 'log'](~xAxis.type) axis and contains `0`.
+
+{{ use: partial-version(version = '6.1.0', feature="The value 'auto' is introduced") }}
 
 ##${prefix} onZeroAxisIndex(number)
 
@@ -1015,15 +1017,21 @@ This is unavailable for 'category' and 'time' axes. Logged value should be passe
 
 Base of logarithm, which is valid only for numeric axes with [type](~${componentType}.type): 'log'.
 
-#${prefix} startValue(number)
+#${prefix} startValue(number) = 0
 
-<ExampleUIControlNumber />
+<ExampleUIControlNumber default="0" />
 
 {{ use: partial-version(
     version = '5.5.1'
 ) }}
+<div class="doc-partial-version">
+Before `v6.1.0` (exclusive), `startValue` is also used as [axis.min](~yAxis.min) if it is not provided. Since `v6.1.0`, the two options are no longer associated.
+</div>
 
-To specify the start value of the axis.
+This is the start value of series shapes. Currently, it can be used only for [bar](~series-bar) and [pictorialBar](~series-pictorialBar).
+
+Note: Currently, `startValue` is not supported to be used together with [stack](~series-bar.stack) -- the effect may be unexpected.
+
 
 {{ use: partial-axis-common-axis-line(
     prefix = ${prefix},

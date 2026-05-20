@@ -256,7 +256,8 @@ Select state of single data.
 ) }}
 
 {{ use: partial-clip(
-    prefix = "#"
+    prefix = "#",
+    seriesType = "bar"
 ) }}
 
 {{ use: partial-marker(

@@ -481,7 +481,8 @@ Value of data item.
 
 {{ use: partial-clip(
     prefix = "#",
-    defaultClip = false
+    defaultClip = false,
+    seriesType = "custom"
 ) }}
 
 {{ use: partial-z-zlevel(

@@ -310,7 +310,9 @@ Select state of the specified single data.
 
 {{ use: partial-clip(
     prefix = "#",
-    defaultClip = false
+    defaultClip = false,
+    version = "5.5.0",
+    seriesType = "pictorialBar"
 ) }}
 
 {{ use: partial-z-zlevel(

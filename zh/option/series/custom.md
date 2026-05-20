@@ -466,7 +466,8 @@ renderItem 函数的第二个参数。
 
 {{ use: partial-clip(
     prefix = "#",
-    defaultClip = false
+    defaultClip = false,
+    seriesType = "custom"
 ) }}
 
 {{ use: partial-z-zlevel(

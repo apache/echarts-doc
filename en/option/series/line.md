@@ -70,7 +70,8 @@ Only work when main axis is `'category'` axis (`axis.type` is `'category'`). Opt
 Whether to connect the line across null points.
 
 {{ use: partial-clip(
-    prefix = "#"
+    prefix = "#",
+    seriesType = "line"
 ) }}
 
 ## triggerLineEvent(boolean) = false

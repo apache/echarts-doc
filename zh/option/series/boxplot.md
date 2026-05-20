@@ -297,6 +297,12 @@ ECharts 并不内置对原始数据的处理，输入给 `boxplot` 的数据须�
     hasType = true
 ) }}
 
+{{ use: partial-clip(
+    prefix = "#",
+    version = "6.1.0",
+    seriesType = "boxplot"
+) }}
+
 {{ use: partial-z-zlevel(
     prefix = "#",
     componentName = "盒须图"

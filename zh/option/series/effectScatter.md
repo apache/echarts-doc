@@ -307,7 +307,8 @@ const option = {
 
 {{ use: partial-clip(
     prefix = "#",
-    version = "5.1.0"
+    version = "5.1.0",
+    seriesType = "effectScatter"
 ) }}
 
 {{ use: partial-z-zlevel(

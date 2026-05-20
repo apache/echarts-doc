@@ -335,7 +335,8 @@ option = {
 ) }}
 
 {{ use: partial-clip(
-    prefix = "#"
+    prefix = "#",
+    seriesType = "bar"
 ) }}
 
 {{ use: partial-marker(
