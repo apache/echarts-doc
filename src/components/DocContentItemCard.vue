@@ -26,7 +26,7 @@
         </span>
         <span class="current-flag" v-if="shared.currentPath === nodeData.path"><i class="el-icon-caret-left"></i></span>
 
-        <span class="default-value" v-if="nodeData.default && nodeData.default !== '*'"> = {{nodeData.default}}</span>
+        <span class="default-value" v-if="nodeData.default != null && nodeData.default !== '*'"> = {{nodeData.default}}</span>
 
         <span
             :class="['control-toggle', enableUIControl ? 'active' : '']"
