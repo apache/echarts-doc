@@ -108,3 +108,20 @@ const option = {
 
 是否阻止 mousemove 事件的默认行为。
 
+
+{{ use: partial-cursor(
+    prefix = "#",
+    version = "6.1.0",
+    defaultValue = "grab",
+    prop = "cursorGrab",
+    targetDesc = "鼠标悬浮时在可拖拽的区域上时"
+) }}
+
+{{ use: partial-cursor(
+    prefix = "#",
+    version = "6.1.0",
+    defaultValue = "grabbing",
+    prop = "cursorGrabbing",
+    targetDesc = "鼠标拖拽时"
+) }}
+

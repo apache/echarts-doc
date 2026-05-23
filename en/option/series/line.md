@@ -74,13 +74,49 @@ Whether to connect the line across null points.
     seriesType = "line"
 ) }}
 
+
+## triggerEvent(boolean|string) = false
+
+<ExampleUIControlEnum options="false,true,line,area" default="false" />
+
+{{ use: partial-trigger-event-common-content-1(
+    version = "6.1.0"
+) }}
+{{ use: partial-trigger-event-common-content-2() }}
+- `'line'`: Only the line is the emitter.
+- `'area'`: Only the area (present when using `areaStyle`), is the emitter.
+
+The parameters of the event include:
+```ts
+{
+    componentType: 'series';
+    componentSubType: 'line';
+    seriesType: 'line';
+    // The index with respect to the declaration in echarts option.
+    componentIndex: number;
+    // The same as `componentIndex`.
+    seriesIndex: number;
+    // The declared `series.name`.
+    seriesName: string;
+    // For determining this event is triggered by area or line
+    selfType: 'area' | 'line';
+}
+```
+
+
 ## triggerLineEvent(boolean) = false
 
 {{ use: partial-version(
     version = "5.2.2"
 ) }}
 
-Whether `line` and `area` can trigger the event.
+{{ use: partial-version(
+    deprecated = "Use `triggerEvent` instead.",
+    version = "6.1.0"
+) }}
+
+Whether the line and the area can trigger the event.
+
 
 ## step(string|boolean) = false
 

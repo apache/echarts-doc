@@ -630,7 +630,7 @@ The format of the input `coord` and return type are defined by each coordinate s
 
 + [only yAxis](option.html#xAxis) or [only yAxis](option.html#yAxis):
 
-    For example, convert a axis coord to pixel value:
+    For example, convert an axis coord to pixel value:
     ```ts
     // In the xAxis with id 'x0' (type: number),
     // convert coord 3000 to the horizontal pixel coordinate:

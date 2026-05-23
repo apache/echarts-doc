@@ -7,7 +7,9 @@ Legend component.
 
 Legend component shows symbol, color and name of different series. You can click legends to toggle displaying series in the chart.
 
-In ECharts 3, a single echarts instance may contain multiple legend components, which makes it easier for the layout of multiple legend components.
+See [legend.data](~legend.data) for the matching rules between legend items and series or series data items.
+
+A single echarts instance may contain multiple legend components, which makes it easier for the layout of multiple legend components. (since `v3.0.0`)
 
 If there have to be too many legend items, [vertically scrollable legend](${galleryEditorPath}pie-legend&edit=1&reset=1) or [horizontally scrollable legend](${galleryEditorPath}radar2&edit=1&reset=1) are options to paginate them. Check [legend.type](~legend.type) please.
 
@@ -192,11 +194,107 @@ Icon of the legend items.
 
 ## data(Array)
 
-Data array of legend. An array item is usually a `name` representing string. (If it is a [pie chart](~series-pie), it could also be the `name` of a single data in the pie chart) of a series. Legend component would automatically calculate the color and icon according to series. Special string `''` (null string) or `'\n'` (new line string) can be used for a new line.
+<br>
 
-If `data` is not specified, it will be auto collected from series. For most of series, it will be collected from [series.name](~series.name) or the dimension name specified by `seriesName` of [series.encode](~series.encode). For some types of series like [pie](~series-pie) and [funnel](~series-funnel), it will be collected from the name field of `series.data`.
+**Explicitly Specify `legend.data`:**
 
-If you need to set the style for a single item, you may also set the configuration of it. In this case, `name` attribute is used to represent name of `series`.
+`legend.data` is an array. An array item can be a string (representing `name`) or an object (containing a `name` field).
+
+If the `name` of an array item is a special string `''` or `'\n'`, this array item is only used to create a line break.
+```js
+legend: {
+    data: ['a', 'b', '\n', 'c', 'd']
+    // The final displayed items are (line wrapped):
+    //  'a' 'b'
+    //  'c' 'd'
+}
+```
+
+If the `name` of an array item dose not match any `LEGEND_TARGET`, this legend item is ignored. (See also the description of `LEGEND_TARGET` below.)
+
+<br>
+
+**Automatically Collect `legend.data`:**
+
+If `legend.data` is not explicitly specified, it is automatically collected from `series` or `dataset`.
+- It is basically collected from [series.name](~series.name).
+- It can also collect from `dataset` according to the dimension specified in `seriesName` field in [series.encode](~series.encode).
+- Some series supports `LEGEND_CONTROL_SERIES_DATA_ITEM` (see details below). It is collected from the `name` field (if present) of each `series.data` item. For a single series, if these `name`s from `series.data` are collected, series name is no longer collected.
+
+Some examples:
+```ts
+option = {
+    legend: {/* No `legend.data` field is specified. */},
+    xAxis: {},
+    yAxis: {},
+    series: [{
+        type: 'line', name: 'lineA', data: [11, 22]
+    }, {
+        type: 'line', name: 'lineB', data: [111, 222]
+    }, {
+        type: 'pie', name: 'pieC',
+        data: [
+            {name: 'pieItemA', value: 9},
+            {name: 'pieItemB', value: 8},
+            {name: 'pieItemC', value: 7},
+        ]
+    }],
+}
+// The final displayed legend items are:
+//  'lineA' 'lineB' 'pieItemA' 'pieItemB' 'pieItemC'
+```
+```ts
+option = {
+    legend: {/* No `legend.data` field is specified. */},
+    dataset: {
+        source: [
+            [null, 'nameH', 'nameI', 'nameJ', 'nameK'],
+            ['2012-01', 32, 65, 71, 31],
+            ['2012-02', 41, 67, 89, 23],
+            ['2012-03', 58, 61, 97, 12],
+            ['2012-04', 67, 73, 105, 9],
+            ['2012-05', 72, 67, 122, 18],
+        ]
+    },
+    xAxis: {type: 'category'},
+    yAxis: {},
+    series: [{
+        type: 'bar',
+        // Retrieve `seriesName` from dataset column with index 1; get 'nameH'.
+        encode: {x: 0, y: 1, seriesName: 1}
+    }, {
+        type: 'bar',
+        // Retrieve `seriesName` from dataset column with index 3; get 'nameJ'.
+        encode: { x: 0, y: 3, seriesName: 3 }
+    }, {
+        type: 'bar',
+        // Retrieve `seriesName` from dataset column with index 3; get 'nameI'.
+        encode: { x: 0, y: 2, seriesName: 2 }
+    }]
+};
+// The final displayed legend items are:
+//  'nameH' 'nameJ' 'nameI'
+```
+
+<br>
+
+**LEGEND_TARGET and LEGEND_MATCHING_RULES:**
+
+A legend item can control the visibility of a entire series or a series data item (see `LEGEND_CONTROL_SERIES_DATA_ITEM` below). They can be called as `LEGEND_TARGET`. A `LEGEND_TARGET` is under control if and only if the `name` from `legend.data` (either explicitly specified or automatically collected) matches the name from `LEGEND_TARGET`, i.e., matches series names or series data item names.
+
+This mapping is allowed to be many-to-many. For example, if multiple series share the same series name, they can be controlled by a single legend item.
+
+<br>
+
+**LEGEND_CONTROL_SERIES_DATA_ITEM:**
+
+These series support that legend items control each series data items: [pie](~series-pie), [funnel](~series-funnel), [chord](~series-chord), [graph](~series-graph), [radar](~series-radar) and [themeRiver](~series-themeRiver). They are matched according to `name` fields of legend items and series data items.
+
+<br>
+
+**Legend Item Styles:**
+
+If you need to set the style for a single item, you may also set the configuration of it.
 
 Example:
 ```
@@ -498,11 +596,28 @@ The gap between selector button and legend component.
 
 ## triggerEvent(boolean) = false
 
-{{ use: partial-version(
+{{ use: partial-trigger-event-common-content(
     version = "6.0.0"
 ) }}
 
-Set this to `true` to enable triggering events.
+Parameters of the event include:
+
+```ts
+{
+    componentType: 'legend';
+    // legend component index. (based on echarts option)
+    componentIndex: number;
+    // The `name` of this legend item, which controls the
+    // visibility of LEGEND_TARGET.
+    // See `legend.data` for more details.
+    value: string;
+    // The index of the triggering legend item.
+    dataIndex: number;
+    // The index of the first series that matches
+    // this legend item. (based on echarts option)
+    seriesIndex: number;
+}
+```
 
 
 {{ target: partial-legend-style }}

@@ -106,7 +106,17 @@ Optional values: `'auto'`, `'top'`, `'bottom'`, `'middle'`.
 
 ## triggerEvent(boolean) = false
 
-Set this to `true` to enable triggering events
+{{ use: partial-trigger-event-common-content() }}
+
+The parameters of the event:
+
+```ts
+{
+    componentType: 'title';
+    // The index of the title component (base on echarts option)
+    componentIndex: number;
+}
+```
 
 ## padding(number|Array) = 5
 

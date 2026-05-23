@@ -7,19 +7,39 @@
 
 #${prefix} triggerEvent(boolean) = false
 
-坐标轴的标签是否响应和触发鼠标事件，默认不响应。
+{{ use: partial-trigger-event-common-content() }}
 
 事件参数如下：
 
 ```ts
 {
-    // 组件类型，xAxis, yAxis, radiusAxis, angleAxis
-    // 对应组件类型都会有一个属性表示组件的 index，例如 xAxis 就是 xAxisIndex
-    componentType: string,
-    // 未格式化过的刻度值, 点击刻度标签有效
-    value: '',
-    // 坐标轴名称, 点击坐标轴名称有效
-    name: ''
+    // Component type. 例如：
+    // 'xAxis'、'yAxis'、'radiusAxis'、'angleAxis'、
+    // 'singleAxis'、'parallelAxis'、'radar' 等。
+    componentType: string;
+    componentIndex: number;
+    // 和 `componentIndex` 相同。
+    [componentType]Index?: number;
+
+    // 事件的触发者。
+    targetType: 'axisLabel' | 'axisName';
+
+    // 被内置的 formatter 格式化过的标签字符串。
+    // 但是用户提供的 `axisLabel.formatter` 并不影响这个值。
+    // 仅当 `targetType: 'axisLabel'` 时存在。
+    value?: string;
+
+    // 仅当此标签为断轴（"axis break"）标签时存在。
+    break?: {
+        // 断轴起始值。
+        start?: number;
+        // 断轴终止值。
+        end?: number;
+    };
+
+    // 即 `axis.name`。
+    // 仅当 `targetType: 'axisName'` 时存在。
+    name?: string;
 }
 ```
 

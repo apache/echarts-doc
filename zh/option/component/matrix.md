@@ -122,3 +122,30 @@ matrix: {
     // ...
 }
 ```
+
+## triggerEvent(boolean) = false
+
+{{ use: partial-trigger-event-common-content(
+    version = "6.1.0"
+) }}
+
+事件对象的内容为：
+
+```ts
+{
+    componentType: 'matrix';
+    // 图例组件的 index（基于 echarts option）。
+    componentIndex: number;
+    // 同 `componentIndex`。
+    matrixIndex: number;
+
+    targetType: 'x' | 'y' | 'body' | 'corner';
+
+    // 单元格（cell）的内容字符串。
+    name: string;
+    // 单元格（cell）的值（来自 echarts option）。
+    value: textValue;
+    // 单元格（cell）坐标。它实际是 `MatrixXYLocator[]`。
+    coord: number;
+}
+```

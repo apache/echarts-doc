@@ -103,13 +103,49 @@ const option = {
     seriesType = "line"
 ) }}
 
+
+## triggerEvent(boolean|string) = false
+
+<ExampleUIControlEnum options="false,true,line,area" default="false" />
+
+{{ use: partial-trigger-event-common-content-1(
+    version = "6.1.0"
+) }}
+{{ use: partial-trigger-event-common-content-2() }}
+- `'line'`: 只有在线条上交互时派发事件。 Only the line is the interactive element.
+- `'area'`: 只有在区域（当使用 `areaStyle` 时候存在）上交互时派发事件。
+
+事件的参数包括：
+```ts
+{
+    componentType: 'series';
+    componentSubType: 'line';
+    seriesType: 'line';
+    // 序数（从 0 起），基于 echarts options 的声明。
+    componentIndex: number;
+    // 同 `componentIndex`。
+    seriesIndex: number;
+    // 声明的 `series.name`。
+    seriesName: seriesModel.name;
+    // 为了区分事件触发于 area 还是 line。
+    selfType: 'area' | 'line';
+}
+```
+
+
 ## triggerLineEvent(boolean) = false
 
 {{ use: partial-version(
     version = "5.2.2"
 ) }}
 
-线条和区域面积是否触发事件
+{{ use: partial-version(
+    deprecated = "Use `triggerEvent` instead.",
+    version = "6.1.0"
+) }}
+
+线条和区域面积是否触发事件。
+
 
 ## step(string|boolean) = false
 
