@@ -7,6 +7,8 @@
 
 柱状图（或称条形图）是一种通过柱形的高度（横向的情况下则是宽度）来表现数据大小的一种常用图表类型。
 
+当前只支持用在 [直角坐标系（即 grid 组件）](~grid) 或 [极坐标](~polar) 上。
+
 
 <ExampleBaseOption name="cartesian-bar" title="直角坐标系上的柱状图" title-en="Bar on Cartesian">
 const option = {

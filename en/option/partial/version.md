@@ -5,7 +5,7 @@
 {{ if: ${deprecated} }}
 Deprecated since `v${version}`. ${deprecated}
 {{ elif: ${feature} }}
-${feature} since `v${version}`
+Since `v${version}` ${feature}
 {{ else }}
 Since `v${version}`
 {{ /if }}

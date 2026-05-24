@@ -808,7 +808,7 @@ Option:
     Time axis, suitable for continuous time series data. As compared to value axis, it has a better formatting for time and a different tick calculation method. For example, it decides to use month, week, day or hour for tick based on the range of span.
 
 + `'log'`
-    Log axis, suitable for log data. Stacked bar or line series with `type: 'log'` axes may lead to significant visual errors and may have unintended effects in certain circumstances. Their use should be avoided.
+    Logarithmic axis. It is useful when the data spans a very large range of values or when the important pattern is about multiplicative change rather than additive change.
 
 
 {{ target: axis-common }}
@@ -1241,6 +1241,8 @@ Example:
 formatter: '{value} kg'
 // Use callback.
 formatter: function (value, index, extra?) {
+    // Notice: when using `customValues`, parameter `index` is
+    // provided since `v6.1.0`.
     return value + 'kg';
 }
 ```

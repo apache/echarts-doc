@@ -5,7 +5,7 @@
 
 **bar chart**
 
-Bar chart shows different data through the height of a bar, which is used in [rectangular coordinate](~grid) with at least 1 category axis.
+Bar chart shows different data through the height of a bar. Currently it can only be used in [Cartesian coordinate system (i.e., grid component)](~grid) or [polar coordinate system](~polar).
 
 ## type(string) = 'bar'
 
