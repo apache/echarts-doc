@@ -246,10 +246,10 @@ The template syntax follows [etpl](https://github.com/ecomfe/etpl/blob/master/do
 Summary of the commonly used syntax:
 ```template
 --- TEMPLATE EXPRESSION ---
-The template syntax and expressions are encolsed by delimiters `{{` and `}}`.
+The template syntax and expressions are enclosed by delimiters `{{` and `}}`.
 For example,
 {{ if: condition_expression }} xxx {{ /if }}
-The expressoin within `{{` and `}}` can be considered a (restricted) JS expression.
+The expression within `{{` and `}}` can be considered a (restricted) JS expression.
 For example,
 {{ if: ${someVar1} + 'abc' === '123abc' }} ... {{ /if }}
 {{ if: !${someVar2} }} ... {{ /if }}

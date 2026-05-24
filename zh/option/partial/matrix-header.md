@@ -44,9 +44,9 @@ data: [{
 }]
 ```
 
-如果 [matrix.${matrixDim}.data](~matrix.${matrixDim}.data) 没有提供，它会从 `series.data` 或者 `dataset.source` 中自动收集。
+如果 [matrix.${matrixDim}.data](~matrix.${matrixDim}.data) 没有提供，且 [matrix.${matrixDim}.length](~matrix.${matrixDim}.length) 提供了，[matrix.${matrixDim}.data](~matrix.${matrixDim}.data) 会自动基于 [matrix.${matrixDim}.length](~matrix.${matrixDim}.length) 构造出来。
 
-参见 [示例](${galleryEditorPath}matrix-mini-bar-data-collection&edit=1&reset=1)。
+否则，如果它们都没有提供，则 [matrix.${matrixDim}.data](~matrix.${matrixDim}.data) 会从 `series.data` 或者 `dataset.source` 中自动收集出来。参见 [示例](${galleryEditorPath}matrix-mini-bar-data-collection&edit=1&reset=1)。
 
 在这种情况下，[series.encode](~series-scatter.encode) 可指定从哪个维度收集数据。例如：
 ```js
@@ -83,6 +83,14 @@ var option = {
 {{ use: partial-version(version = "6.0.0") }}
 {{ use: partial-matrix-dimension-size-desc }}
 
+
+### length(number)
+
+{{ use: partial-version(version = "6.1.0") }}
+
+[matrix.${matrixDim}.data](~matrix.${matrixDim}.data) 可不提供，而只提供 [matrix.${matrixDim}.length](~matrix.${matrixDim}.length) 来决定{{ if: ${matrixDim} === 'x' }}列{{ else }}行{{ /if }}数。这种方式方便了无头矩阵（即 [matrix.${matrixDim}.show](~matrix.${matrixDim}.show) 为 `false` 时）的创建，这种情况下只有行列数需要提供。
+
+注：如果提供了 [matrix.${matrixDim}.data](~matrix.${matrixDim}.data)，则 [matrix.${matrixDim}.length](~matrix.${matrixDim}.length)会被忽略。
 
 
 {{ use: partial-matrix-cell-style-option(

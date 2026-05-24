@@ -77,3 +77,20 @@ How to trigger data window move. Optional values:
 
 Whether to prevent default behavior of mouse move event.
 
+
+{{ use: partial-cursor(
+    prefix = "#",
+    version = "6.1.0",
+    defaultValue = "grab",
+    prop = "cursorGrab",
+    targetDesc = "when mouse hovers over the grabbable area"
+) }}
+
+{{ use: partial-cursor(
+    prefix = "#",
+    version = "6.1.0",
+    defaultValue = "grabbing",
+    prop = "cursorGrabbing",
+    targetDesc = "when grabbing"
+) }}
+

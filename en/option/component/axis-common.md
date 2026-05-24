@@ -7,21 +7,39 @@ Set this to `true`, to prevent interaction with the axis.
 
 #${prefix} triggerEvent(boolean) = false
 
-Set this to `true` to enable triggering events.
+{{ use: partial-trigger-event-common-content() }}
 
 Parameters of the event include:
 
 ```ts
 {
-    // Component type: xAxis, yAxis, radiusAxis, angleAxis
-    // Each of which has an attribute for index, e.g., xAxisIndex for xAxis
-    componentType: string,
-    // Value on axis before being formatted.
-    // Click on value label to trigger event.
-    value: '',
-    // Name of axis.
-    // Click on label name to trigger event.
-    name: ''
+    // Component type, e.g.,
+    // 'xAxis', 'yAxis', 'radiusAxis', 'angleAxis',
+    // 'singleAxis', 'parallelAxis', 'radar', etc.
+    componentType: string;
+    componentIndex: number;
+    // The same as `componentIndex`.
+    [componentType]Index?: number;
+
+    // The emitter of this event.
+    targetType: 'axisLabel' | 'axisName';
+
+    // A label string formatted by a built-in formatter;
+    // User-provided `axisLabel.formatter` does not affect this value.
+    // Present when `targetType: 'axisLabel'`.
+    value?: string;
+
+    // Present only if this is an axis label for "axis break".
+    break?: {
+        // Parsed break start.
+        start?: number;
+        // Parsed break start.
+        end?: number;
+    };
+
+    // `axis.name`.
+    // Present when `targetType: 'axisName'`.
+    name?: string;
 }
 ```
 
@@ -790,7 +808,7 @@ Option:
     Time axis, suitable for continuous time series data. As compared to value axis, it has a better formatting for time and a different tick calculation method. For example, it decides to use month, week, day or hour for tick based on the range of span.
 
 + `'log'`
-    Log axis, suitable for log data. Stacked bar or line series with `type: 'log'` axes may lead to significant visual errors and may have unintended effects in certain circumstances. Their use should be avoided.
+    Logarithmic axis. It is useful when the data spans a very large range of values or when the important pattern is about multiplicative change rather than additive change.
 
 
 {{ target: axis-common }}
@@ -1223,6 +1241,8 @@ Example:
 formatter: '{value} kg'
 // Use callback.
 formatter: function (value, index, extra?) {
+    // Notice: when using `customValues`, parameter `index` is
+    // provided since `v6.1.0`.
     return value + 'kg';
 }
 ```
@@ -1237,7 +1257,7 @@ formatter: function (value, index, extra?) {
 The break info can be obtained from the `extra` param:
 ```ts
 type AxisLabelFormatterExtraBreakPart = {
-    // If this label is a axis break start or end.
+    // If this label is an axis break start or end.
     break?: {
         type: 'start' | 'end';
         // The parsed `start`/`end`, always be numbers, and has been

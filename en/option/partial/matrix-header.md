@@ -44,9 +44,9 @@ data: [{
 }]
 ```
 
-If [matrix.${matrixDim}.data](~matrix.${matrixDim}.data) is not provided, it will be collected from `series.data` or `dataset.soruce`.
+If [matrix.${matrixDim}.data](~matrix.${matrixDim}.data) is not provided, and [matrix.${matrixDim}.length](~matrix.${matrixDim}.length) is provided, a [matrix.${matrixDim}.data](~matrix.${matrixDim}.data) is automatically composed according to [matrix.${matrixDim}.length](~matrix.${matrixDim}.length).
 
-See [matrix data collection example](${galleryEditorPath}matrix-mini-bar-data-collection&edit=1&reset=1).
+Otherwise, if either of them are provided, [matrix.${matrixDim}.data](~matrix.${matrixDim}.data) will be automatically collected from `series.data` or `dataset.source`. See [matrix data collection example](${galleryEditorPath}matrix-mini-bar-data-collection&edit=1&reset=1).
 
 And in this case [series.encode](~series-scatter.encode) can be used to specify the dimension from which value is collected. For example,
 ```js
@@ -79,6 +79,15 @@ See [matrix.${matrixDim}.data](~matrix.${matrixDim}.data).
 #### size(number)
 {{ use: partial-version(version = "6.0.0") }}
 {{ use: partial-matrix-dimension-size-desc }}
+
+
+### length(number)
+
+{{ use: partial-version(version = "6.1.0") }}
+
+Users can omit [matrix.${matrixDim}.data](~matrix.${matrixDim}.data) but only provide a [matrix.${matrixDim}.length](~matrix.${matrixDim}.length), which defines the {{ if: ${matrixDim} === 'x' }}column{{ else }}row{{ /if }} number. This is useful for headless matrix (i.e., [matrix.${matrixDim}.show](~matrix.${matrixDim}.show) is `false`), where only column and row number need to be specified.
+
+Note: [matrix.${matrixDim}.length](~matrix.${matrixDim}.length) is ignored if [matrix.${matrixDim}.data](~matrix.${matrixDim}.data) is specified.
 
 
 {{ use: partial-matrix-cell-style-option(

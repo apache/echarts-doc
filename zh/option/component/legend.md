@@ -7,7 +7,9 @@
 
 图例组件展现了不同系列的标记(symbol)，颜色和名字。可以通过点击图例控制哪些系列不显示。
 
-ECharts 3 中单个 echarts 实例中可以存在多个图例组件，会方便多个图例的布局。
+图例项和系列或系列数据项的对应规则，详见 [legend.data](~legend.data)。
+
+单个 echarts 实例中可以存在多个图例组件，会方便多个图例的布局。（从 `v3.0.0` 开始支持）。
 
 当图例数量过多时，可以使用 [滚动图例（垂直）](${galleryEditorPath}pie-legend&edit=1&reset=1) 或 [滚动图例（水平）](${galleryEditorPath}radar2&edit=1&reset=1)，参见：[legend.type](~legend.type)
 
@@ -290,9 +292,108 @@ legend: {
 
 如果 `data` 没有被指定，会自动从当前系列中获取。多数系列会取自 [series.name](~series.name) 或者 [series.encode](~series.encode) 的 `seriesName` 所指定的维度。如 [饼图](~series-pie) and [漏斗图](~series-funnel) 等会取自 series.data 中的 name。
 
-如果要设置单独一项的样式，也可以把该项写成配置项对象。此时必须使用 `name` 属性对应表示系列的 `name`。
 
-示例
+<br>
+
+**显式指定 `legend.data`：**
+
+`legend.data` 是一个数组。每个数组项可以是一个字符串（表示 `name`）或者一个对象（含有 `name` 属性）。
+
+如果数组项的 `name` 是特殊字符串 `''` 或 `'\n'`，这项表示换行。
+```js
+legend: {
+    data: ['a', 'b', '\n', 'c', 'd']
+    // 最终显示的项为（被换行）：
+    //  'a' 'b'
+    //  'c' 'd'
+}
+```
+
+如果数组项的 `name` 不匹配任何的 `LEGEND_TARGET`，这项会被忽略。（`LEGEND_TARGET` 的定义见下文）。
+
+<br>
+
+**自动收集 `legend.data`：**
+
+如果 `legend.data` 没有被给定，会自动从 `series` 或 `dataset` 中收集得来.
+- 一般会收集 [series.name](~series.name)。
+- 如果 [series.encode](~series.encode) 的 `seriesName` 字段被指定，也会根据它从 `dataset` 中的对应的维度进行收集。
+- 一些系列支持 `LEGEND_CONTROL_SERIES_DATA_ITEM` （使用图例控制系列数据项，详见下文）。如果 `series.data` 的数据项中存在 `name` 属性，它们也会被收集。对于任一系列，如果从 `series.data` 中收集 `name`，那么不再从收集系列名。
+
+一些示例：
+```ts
+option = {
+    legend: {/* `legend.data` 没有被指定。 */},
+    xAxis: {},
+    yAxis: {},
+    series: [{
+        type: 'line', name: 'lineA', data: [11, 22]
+    }, {
+        type: 'line', name: 'lineB', data: [111, 222]
+    }, {
+        type: 'pie', name: 'pieC',
+        data: [
+            {name: 'pieItemA', value: 9},
+            {name: 'pieItemB', value: 8},
+            {name: 'pieItemC', value: 7},
+        ]
+    }],
+}
+// 最终显示的图例项为：
+//  'lineA' 'lineB' 'pieItemA' 'pieItemB' 'pieItemC'
+```
+```ts
+option = {
+    legend: {/* `legend.data` 没有被指定。 */},
+    dataset: {
+        source: [
+            [null, 'nameH', 'nameI', 'nameJ', 'nameK'],
+            ['2012-01', 32, 65, 71, 31],
+            ['2012-02', 41, 67, 89, 23],
+            ['2012-03', 58, 61, 97, 12],
+            ['2012-04', 67, 73, 105, 9],
+            ['2012-05', 72, 67, 122, 18],
+        ]
+    },
+    xAxis: {type: 'category'},
+    yAxis: {},
+    series: [{
+        type: 'bar',
+        // 从 dataset 的 index 为 1 的列中收集 `seriesName`，得到 'nameH'.
+        encode: {x: 0, y: 1, seriesName: 1}
+    }, {
+        type: 'bar',
+        // 从 dataset 的 index 为 3 的列中收集 `seriesName`，得到 'nameJ'.
+        encode: { x: 0, y: 3, seriesName: 3 }
+    }, {
+        type: 'bar',
+        // 从 dataset 的 index 为 2 的列中收集 `seriesName`，得到 'nameI'.
+        encode: { x: 0, y: 2, seriesName: 2 }
+    }]
+};
+// 最终显示的图例项为：
+//  'nameH' 'nameJ' 'nameI'
+```
+
+<br>
+
+**图例控制的内容（LEGEND_TARGET）和图例匹配规则（LEGEND_MATCHING_RULES）：**
+
+一个图例项可控制整个系列或者系列中的某个数据项（详见 `LEGEND_CONTROL_SERIES_DATA_ITEM`）的显示。这些被控制的内容可称为 `LEGEND_TARGET`。一个 `LEGEND_TARGET` 被图例项控制当且仅当它的 `name`（即系列名或 `series.data` 每项的 `name`）和图例项的 `name` 匹配（无论 `name` 来自直接给出的 `legend.data` 还是自动收集的）。
+
+这种映射可以是“多对多”的。例如，如果多个系列共享一个系列名，那么这些系列可以同时被一个图例项控制。
+
+<br>
+
+**图例控制系列数据项（LEGEND_CONTROL_SERIES_DATA_ITEM）：**
+
+这列系列支持“图例控制系列中具体的每一个数据项”：[pie](~series-pie)、[funnel](~series-funnel)、[chord](~series-chord)、[graph](~series-graph)、[radar](~series-radar) 和 [themeRiver](~series-themeRiver)。通过图例项和数据项的 `name` 字段来进行匹配。
+
+<br>
+
+**图例项的样式：**
+
+如果要设置单独一项的样式，也可以把该项写成配置项对象，例如：
 ```
 data: [{
     name: '系列1',
@@ -592,11 +693,27 @@ selector: ['all', 'inverse']
 
 ## triggerEvent(boolean) = false
 
-{{ use: partial-version(
+{{ use: partial-trigger-event-common-content(
     version = "6.0.0"
 ) }}
 
-是否触发事件。
+事件对象的内容为：
+
+```ts
+{
+    componentType: 'legend';
+    // 图例组件的 index（基于 echarts option）。
+    componentIndex: number;
+    // 这个图例项的 `name`。它控制了 LEGEND_TARGET 是否显示。
+    // 参见 `legend.data`。
+    value: string;
+    // 图例项的 index 。
+    dataIndex: number;
+    // 匹配这个图例项的第一个系列的 index（基于 echarts option）。
+    seriesIndex: number;
+}
+```
+
 
 {{ target: partial-legend-style }}
 
