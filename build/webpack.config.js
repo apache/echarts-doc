@@ -3,6 +3,7 @@ const { VueLoaderPlugin } = require('vue-loader')
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { readConfigEnvFile } = require('./helper')
+const SvgSpritePlugin = require('./plugin-svg-sprite')
 
 module.exports = (env, argv) => {
   const isDev = argv.mode === 'development'
@@ -61,6 +62,10 @@ module.exports = (env, argv) => {
       'js-beautify': 'beautifier',
     },
     plugins: [
+      new SvgSpritePlugin({
+        spriteFilename: '../assets/sprite-doc.svg',
+        svgPath: path.resolve(__dirname, '../src/asset/icons/ui'),
+      }),
       new webpack.DefinePlugin({
         // It can be used in the code directly.
         INJECTED_CONFIG: JSON.stringify({

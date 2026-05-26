@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2">
+  <!-- Slider 1 -->
+  <line x1="1" y1="4" x2="23" y2="4" stroke="currentColor" />
+  <circle cx="8" cy="4" r="3" fill="currentColor" />
+  <!-- Slider 2 -->
+  <line x1="1" y1="12" x2="23" y2="12" stroke="currentColor" />
+  <circle cx="16" cy="12" r="3" fill="currentColor"/>
+  <!-- Slider 3 -->
+  <line x1="1" y1="20" x2="23" y2="20" stroke="currentColor" />
+  <circle cx="12" cy="20" r="3" fill="currentColor"/>
+</svg>
