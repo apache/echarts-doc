@@ -1,95 +1,88 @@
 <template>
-<div class="doc-search">
+  <div class="doc-search">
     <el-autocomplete
-        class="search-input"
-        popper-class="search-input-popper"
-        v-model="queryString"
-        size="small"
-        :fetch-suggestions="searchOptions"
-        :debounce="200"
-        :placeholder="$t('search.placeholder')"
-        @select="selectPath"
-        @keyup.enter.native="fuzzySearch"
+      class="search-input"
+      popper-class="search-input-popper"
+      v-model="queryString"
+      size="small"
+      :fetch-suggestions="searchOptions"
+      :debounce="200"
+      :placeholder="$t('search.placeholder')"
+      @select="selectPath"
+      @keyup.enter="fuzzySearch"
     >
-        <template slot-scope="{ item }">
-            <div class="doc-path-suggestion-item">{{ item.path }}</div>
-        </template>
-        <el-button
-            slot="append"
-            icon="el-icon-search"
-            type="primary"
-            @click="fuzzySearch"
-        ></el-button>
+      <template #default="{ item }">
+        <div class="doc-path-suggestion-item">{{ item.path }}</div>
+      </template>
+      <template #append>
+        <el-button type="primary" @click="fuzzySearch">
+          <svg role="img" class="icon">
+            <use href="/assets/sprite-doc.svg#search"></use>
+          </svg>
+        </el-button>
+      </template>
     </el-autocomplete>
-</div>
+  </div>
 </template>
 
-<script>
-import {store} from '../store';
-import {searchOutlineAsync} from '../docHelper';
-import {directTo} from '../route';
+<script setup>
+import { reactive, ref } from 'vue'
+import { searchOutlineAsync } from '../docHelper'
+import { directTo } from '../route'
+import { store } from '../store'
 
-const MAX_SUGGESTIONS = 100;
+const MAX_SUGGESTIONS = 100
 
-export default {
+const shared = reactive(store)
 
-    data() {
-        return {
-            queryString: store.searchQuery,
+const queryString = ref('')
 
-            shared: store
-        }
-    },
+function searchOptions(queryString, cb) {
+  if (!queryString) {
+    cb([])
+    return
+  }
 
-    computed: {
+  searchOutlineAsync(queryString, MAX_SUGGESTIONS).then((lists) => {
+    cb(lists)
+  })
+}
 
-    },
+function selectPath(item) {
+  shared.currentPath = item.path
+}
 
-    methods: {
-        searchOptions(queryString, cb) {
-            if (!queryString) {
-                cb([]);
-                return;
-            }
-
-            searchOutlineAsync(queryString, MAX_SUGGESTIONS).then(lists => {
-                cb(lists)
-            });
-        },
-
-        selectPath(item) {
-            this.shared.currentPath = item.path;
-        },
-
-        fuzzySearch() {
-            this.shared.searchQuery = this.queryString;
-            directTo('/search/' + this.shared.searchQuery);
-        }
-    }
-};
-
+function fuzzySearch() {
+  shared.searchQuery = queryString.value
+  directTo('/search/' + shared.searchQuery)
+}
 </script>
 
 <style lang="scss">
 .doc-search {
+  padding: 5px;
 
-    padding: 5px;
-    .search-input {
-        width: 100%;
-    }
+  .search-input {
+    width: 100%;
+  }
 }
 
 .el-autocomplete-suggestion.search-input-popper {
-    width: auto !important;
-    min-width: 300px;
-    li {
-        line-height: 28px;
-        padding: 0 10px;
-    }
+  width: auto !important;
+  min-width: 300px;
+
+  li {
+    line-height: 28px;
+    padding: 0 10px;
+  }
 }
 
 .doc-path-suggestion-item {
-    font-family: Monaco,Consolas,Courier new,monospace;
-    font-size: 12px;
+  font-family:
+    Monaco,
+    Consolas,
+    Courier new,
+    monospace;
+  font-size: 12px;
 }
 </style>

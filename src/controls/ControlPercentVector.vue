@@ -1,81 +1,73 @@
 <template>
-<div class="control-percent-vector">
-    <div v-for="(dim, index) in dimsArr"
-        :key="index">
-        <label>{{dim}}</label>
-        <ControlPercent
-            :value="innerValueArr[index]"
-            controls-position="right"
-            :min="min == null ? -1e4 : +min"
-            :max="max == null ? 1e4 : +max"
-            :step="step == null ? 1 : +step"
-            @change="(value) => onValueChange(index, value)"
-        ></ControlPercent>
+  <div class="control-percent-vector">
+    <div v-for="(dim, index) in dimsArr" :key="index">
+      <label>{{ dim }}</label>
+      <ControlPercent
+        :value="innerValueArr[index]"
+        controls-position="right"
+        :min="min == null ? -1e4 : +min"
+        :max="max == null ? 1e4 : +max"
+        :step="step == null ? 1 : +step"
+        @change="(value) => onValueChange(index, value)"
+      ></ControlPercent>
     </div>
-</div>
+  </div>
 </template>
 
-<script>
+<script setup>
+import { computed, ref, watch } from 'vue'
+import ControlPercent from './ControlPercent.vue'
 
-import ControlPercent from './ControlPercent.vue';
+const props = defineProps({
+  value: String,
+  min: [Number, String],
+  max: [Number, String],
+  step: [Number, String],
+  dims: String,
+})
 
-export default {
+const emit = defineEmits(['change'])
+const innerValueArr = ref(props.value.split(',').map((val) => val.trim()))
 
-    components: {
-        ControlPercent
-    },
+const dimsArr = computed(() =>
+  props.dims
+    ? props.dims.split(',').map((dim) => dim.trim())
+    : props.value.split(',').map((_) => ''),
+)
 
-    props: ['value', 'min', 'max', "step", 'dims'],
+watch(
+  () => props.value,
+  (newVal) => {
+    innerValueArr.value = newVal.split(',').map((val) => val.trim())
+  },
+)
 
-    data() {
-        return {
-            innerValueArr: this.value.split(',').map(val => val.trim())
-        };
-    },
-
-    computed: {
-        dimsArr() {
-            return this.dims
-                ? this.dims.split(',').map(dim => dim.trim())
-                : this.value.split(',').map(_ => '');
-        }
-    },
-
-    watch:  {
-        value(newVal) {
-            this.innerValueArr = this.value.split(',').map(val => val.trim())
-        }
-    },
-
-    methods: {
-        onValueChange(index, value) {
-            this.innerValueArr[index] = value;
-            this.$emit('change', this.innerValueArr.slice());
-        }
-    }
+function onValueChange(index, value) {
+  innerValueArr.value[index] = value
+  emit('change', innerValueArr.value.slice())
 }
 </script>
 
 <style lang="scss">
 .control-percent-vector {
-    &>div {
-        margin-top: 3px;
-        font-size: 12px;
-        font-weight: bold;
+  & > div {
+    margin-top: 3px;
+    font-size: 12px;
+    font-weight: bold;
 
-        &>label {
-            text-transform: uppercase;
-            margin-right: 5px;
-        }
+    & > label {
+      text-transform: uppercase;
+      margin-right: 5px;
     }
+  }
 
-    .control-percent, label {
-        display: inline-block;
-    }
+  .control-percent,
+  label {
+    display: inline-block;
+  }
 
-
-    .control-percent .el-slider {
-        width: 100px;
-    }
+  .control-percent .el-slider {
+    width: 100px;
+  }
 }
 </style>

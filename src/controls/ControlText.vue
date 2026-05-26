@@ -1,32 +1,33 @@
 <template>
-<div class="control-text">
-<el-input v-model="innerValue" size="mini" :placeholder="$t('example.inputPlaceholder')" @change="onValueChange"></el-input>
-</div>
+  <div class="control-text">
+    <el-input
+      v-model="innerValue"
+      size="small"
+      :placeholder="$t('example.inputPlaceholder')"
+      @change="onValueChange"
+    ></el-input>
+  </div>
 </template>
 
-<script>
-export default {
+<script setup>
+import { ref, watch } from 'vue'
 
-    props: ['value'],
-    data() {
-        return {
-            innerValue: this.value
-        }
-    },
+const { value } = defineProps({ value: String })
 
-    watch: {
-        value(val) {
-            this.innerValue = val;
-        }
-    },
+const emit = defineEmits(['change'])
 
-    methods: {
-        onValueChange() {
-            this.$emit('change', this.innerValue);
-        }
-    }
+const innerValue = ref(value)
+
+watch(
+  () => value,
+  (newVal) => {
+    innerValue.value = newVal
+  },
+)
+
+function onValueChange() {
+  emit('change', innerValue.value)
 }
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

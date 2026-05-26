@@ -1,46 +1,47 @@
 <template>
-<div class="control-number">
+  <div class="control-number">
     <el-input-number
-        v-model="innerValue"
-        controls-position="right"
-        :min="min == null ? -1e4 : +min"
-        :max="max == null ? 1e4 : +max"
-        :step="step == null ? 1 : +step"
-        size="mini"
-         @change="onValueChange"
+      v-model="innerValue"
+      controls-position="right"
+      :min="min == null ? -1e4 : +min"
+      :max="max == null ? 1e4 : +max"
+      :step="step == null ? 1 : +step"
+      size="small"
+      @change="onValueChange"
     ></el-input-number>
-</div>
+  </div>
 </template>
 
-<script>
-export default {
+<script setup>
+import { ref, watch } from 'vue'
 
-    props: ['value', 'min', 'max', 'step'],
+const props = defineProps({
+  value: [Number, String],
+  min: [Number, String],
+  max: [Number, String],
+  step: [Number, String],
+})
 
-    data() {
-        return {
-            innerValue: this.value
-        }
-    },
+const emit = defineEmits(['change'])
 
-    watch: {
-        value(val) {
-            this.innerValue = val;
-        }
-    },
+const innerValue = ref(props.value)
 
-    methods: {
-        onValueChange() {
-            this.$emit('change', this.innerValue);
-        }
-    }
+watch(
+  () => props.value,
+  (newVal) => {
+    innerValue.value = newVal
+  },
+)
+
+function onValueChange() {
+  emit('change', innerValue.value)
 }
 </script>
 
 <style lang="scss">
 .control-number {
-    .el-input-number {
-        width: 120px;
-    }
+  .el-input-number {
+    width: 120px;
+  }
 }
 </style>

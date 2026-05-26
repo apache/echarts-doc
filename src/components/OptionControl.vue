@@ -1,123 +1,119 @@
 <template>
-<div class="option-control">
+  <div class="option-control">
     <component
-        :is="uiComponent"
-        v-bind="uiAttrs"
-        :value="defaultValue"
-         @change="onValueChange">
+      :is="uiComponent"
+      v-bind="uiAttrs"
+      :value="defaultValue"
+      @change="onValueChange"
+    >
     </component>
-</div>
+  </div>
 </template>
 
-<script>
-import ControlColor from '../controls/ControlColor.vue';
-import ControlBoolean from '../controls/ControlBoolean.vue';
-import ControlNumber from '../controls/ControlNumber.vue';
-import ControlVector from '../controls/ControlVector.vue';
-import ControlEnum from '../controls/ControlEnum.vue';
-import ControlPercent from '../controls/ControlPercent.vue';
-import {store, changeOption} from '../store';
-import ControlPercentVector from '../controls/ControlPercentVector.vue';
-import ControlText from '../controls/ControlText.vue';
-import ControlIcon from '../controls/ControlIcon.vue';
+<script setup>
+import { computed, reactive } from 'vue'
+import ControlBoolean from '../controls/ControlBoolean.vue'
+import ControlColor from '../controls/ControlColor.vue'
+import ControlEnum from '../controls/ControlEnum.vue'
+import ControlIcon from '../controls/ControlIcon.vue'
+import ControlNumber from '../controls/ControlNumber.vue'
+import ControlPercent from '../controls/ControlPercent.vue'
+import ControlPercentVector from '../controls/ControlPercentVector.vue'
+import ControlText from '../controls/ControlText.vue'
+import ControlVector from '../controls/ControlVector.vue'
+import { changeOption, store } from '../store'
 
+const { controlConfig, optionPath } = defineProps({
+  controlConfig: Object,
+  optionPath: String,
+})
+
+const shared = reactive(store)
 
 const uiComponentMap = {
-    boolean: ControlBoolean,
-    color: ControlColor,
-    number: ControlNumber,
-    vector: ControlVector,
-    enum: ControlEnum,
-    // Use number for angle temporary
-    angle: ControlNumber,
-    percent: ControlPercent,
-    percentvector: ControlPercentVector,
-    text: ControlText,
-    icon: ControlIcon
-};
+  boolean: ControlBoolean,
+  color: ControlColor,
+  number: ControlNumber,
+  vector: ControlVector,
+  enum: ControlEnum,
+  // Use number for angle temporary
+  angle: ControlNumber,
+  percent: ControlPercent,
+  percentvector: ControlPercentVector,
+  text: ControlText,
+  icon: ControlIcon,
+}
 
 const uiComponentDefault = {
-    boolean: () => false,
-    color: () => null,
-    number: () => 0,
-    angle: () => 0,
-    percent: () => '50',
-    enum: (controlConfig) => {
-        return controlConfig.options.split(',')[0].trim();
-    },
-    vector: (conntrolConfig) => {
-        if (!conntrolConfig.dims) {
-            throw new Error('Must specify dims in vector');
-        }
-        return conntrolConfig.dims.split(',')
-            .map(dim => 0).join(',');
-    },
-
-    percentvector: (conntrolConfig) => {
-        if (!conntrolConfig.dims) {
-            throw new Error('Must specify dims in vector');
-        }
-        return conntrolConfig.dims.split(',')
-            .map(dim => '50%').join(',');
+  boolean: () => false,
+  color: () => null,
+  number: () => 0,
+  angle: () => 0,
+  percent: () => '50',
+  enum: (controlConfig) => controlConfig.options.split(',')[0].trim(),
+  vector: (conntrolConfig) => {
+    if (!conntrolConfig.dims) {
+      throw new Error('Must specify dims in vector')
     }
+    return conntrolConfig.dims
+      .split(',')
+      .map((dim) => 0)
+      .join(',')
+  },
+  percentvector: (conntrolConfig) => {
+    if (!conntrolConfig.dims) {
+      throw new Error('Must specify dims in vector')
+    }
+    return conntrolConfig.dims
+      .split(',')
+      .map((dim) => '50%')
+      .join(',')
+  },
 }
 
 function omitTypeAndDefault(obj) {
-    const newObj = {};
-    for (let key in obj) {
-        if (obj.hasOwnProperty(key) && key !== 'type' && key !== 'default') {
-            newObj[key] = obj[key];
-        }
+  const newObj = {}
+  for (let key in obj) {
+    if (
+      Object.prototype.hasOwnProperty.call(obj, key) &&
+      key !== 'type' &&
+      key !== 'default'
+    ) {
+      newObj[key] = obj[key]
     }
-    return newObj;
+  }
+  return newObj
 }
 
+const uiComponent = computed(() => {
+  return uiComponentMap[controlConfig.type]
+})
 
-export default {
-    name: 'OptionControl',
+const uiAttrs = computed(() => {
+  return omitTypeAndDefault(controlConfig)
+})
 
-    props: ['controlConfig', 'optionPath'],
+const defaultValue = computed(() => {
+  return controlConfig.default != null
+    ? controlConfig.default
+    : uiComponentDefault[controlConfig.type] &&
+        uiComponentDefault[controlConfig.type](controlConfig)
+})
 
-    data() {
-        return {
-            shared: store
-        };
-    },
+function onValueChange(value) {
+  // If clean before setOption.
+  shared.cleanMode = controlConfig.clean
 
-    computed: {
-        uiComponent() {
-            return uiComponentMap[this.controlConfig.type];
-        },
-
-        uiAttrs() {
-            return omitTypeAndDefault(this.controlConfig);
-        },
-
-        defaultValue() {
-            const controlConfig = this.controlConfig;
-            return controlConfig.default != null
-                ? controlConfig.default
-                : (uiComponentDefault[controlConfig.type] && uiComponentDefault[controlConfig.type](controlConfig));
-        }
-    },
-
-    methods: {
-        onValueChange(value) {
-            // If clean before setOption.
-            this.shared.cleanMode = this.controlConfig.clean;
-            // console.log(this.optionPath, value);
-            if (this.shared.currentExampleOption) {
-                this.shared.currentExampleOption = Object.freeze(
-                    changeOption(this.shared.currentExampleOption, this.optionPath, value)
-                );
-            }
-        }
-    }
+  if (shared.currentExampleOption) {
+    shared.currentExampleOption = Object.freeze(
+      changeOption(shared.currentExampleOption, optionPath, value),
+    )
+  }
 }
 </script>
 
 <style lang="scss">
 .option-control {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 </style>

@@ -1,58 +1,53 @@
 <template>
-<div class="control-enum">
-<el-select size="mini" v-model="innerValue" @change="onValueChange">
-    <el-option v-for="item in optionsArr"
+  <div class="control-enum">
+    <el-select size="small" v-model="innerValue" @change="onValueChange">
+      <el-option
+        v-for="item in optionsArr"
         :key="item"
         :value="item"
-        :class="{'control-enum-special': specialValues[item] != null}"
-    >{{item}}</el-option>
-</el-select>
-</div>
+        :class="{ 'control-enum-special': specialValues[item] != null }"
+        >{{ item }}</el-option
+      >
+    </el-select>
+  </div>
 </template>
 
-<script>
+<script setup>
+import { computed, ref, watch } from 'vue'
+
+const { value, options } = defineProps({
+  value: [String, Boolean],
+  options: String,
+})
+
+const innerValue = ref(value)
+
+const emit = defineEmits(['change'])
 
 // Convert to special value.
-const specialValues = {
-    'true': true,
-    'false': false
-}
+const specialValues = { true: true, false: false }
 
-export default {
+const optionsArr = computed(() => options.split(',').map((item) => item.trim()))
 
-    props: ['value', 'options'],
+watch(
+  () => value,
+  (newVal) => {
+    innerValue.value = newVal
+  },
+)
 
-    computed: {
-        optionsArr() {
-            return this.options.split(',').map(item => item.trim());
-        },
-        specialValues() {
-            return specialValues;
-        }
-    },
-
-    data() {
-        return {
-            innerValue: this.value
-        }
-    },
-
-    watch: {
-        value(val) {
-            this.innerValue = val;
-        }
-    },
-
-    methods: {
-        onValueChange() {
-            this.$emit('change', specialValues.hasOwnProperty(this.innerValue) ? specialValues[this.innerValue] : this.innerValue);
-        }
-    }
+function onValueChange() {
+  emit(
+    'change',
+    Object.prototype.hasOwnProperty.call(specialValues, innerValue.value)
+      ? specialValues[innerValue.value]
+      : innerValue.value,
+  )
 }
 </script>
 
 <style lang="scss">
 .control-enum-special {
-    font-style: italic;
+  font-style: italic;
 }
 </style>

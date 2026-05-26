@@ -1,31 +1,32 @@
 <template>
-<div class="control-boolean">
-<el-switch v-model="innerValue" :active-text="$t('example.booleanDesc')" @change="onValueChange"></el-switch>
-</div>
+  <div class="control-boolean">
+    <el-switch
+      v-model="innerValue"
+      :active-text="$t('example.booleanDesc')"
+      @change="onValueChange"
+    ></el-switch>
+  </div>
 </template>
 
-<script>
-export default {
-    props: ['value'],
-    data() {
-        return {
-            innerValue: this.value === 'true'
-        }
-    },
+<script setup>
+import { ref, watch } from 'vue'
 
-    watch: {
-        value(val) {
-            this.innerValue = val;
-        }
-    },
+const { value } = defineProps({ value: [Boolean, String] })
 
-    methods: {
-        onValueChange() {
-            this.$emit('change', this.innerValue);
-        }
-    }
+const emit = defineEmits(['change'])
+
+const innerValue = ref(value === 'true')
+
+watch(
+  () => value,
+  (newVal) => {
+    innerValue.value = newVal
+  },
+)
+
+function onValueChange() {
+  emit('change', innerValue.value)
 }
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

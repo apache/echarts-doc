@@ -1,53 +1,51 @@
 <template>
-<div class="control-color">
-<el-color-picker v-model="innerValue" :show-alpha="true"
-    @change="onValueChange"
-    @active-change="onActiveChange"
+  <div class="control-color">
+    <el-color-picker
+      v-model="innerValue"
+      :show-alpha="true"
+      @change="onValueChange"
+      @active-change="onActiveChange"
     ></el-color-picker>
-<span :style="{color: innerValue || '#aaa'}">
-    {{innerValue || $t('example.defaultColor')}}
-</span>
-</div>
+    <span :style="{ color: innerValue || '#aaa' }">
+      {{ innerValue || $t('example.defaultColor') }}
+    </span>
+  </div>
 </template>
 
-<script>
-export default {
+<script setup>
+import { ref, watch } from 'vue'
 
-    props: ['value'],
-    data() {
-        return {
-            innerValue: this.value
-        }
-    },
+const { value } = defineProps({ value: String })
 
-    watch: {
-        value(val) {
-            this.innerValue = val;
-        }
-    },
+const innerValue = ref(value)
 
-    methods: {
-        onValueChange() {
-            this.$emit('change', this.innerValue);
-        },
-        onActiveChange(val) {
-            // this.innerValue = val;
-            // this.$emit('change', val);
-        }
-    }
+const emit = defineEmits(['change'])
+
+watch(
+  () => value,
+  (newVal) => (innerValue.value = newVal),
+)
+
+function onValueChange() {
+  emit('change', innerValue.value)
+}
+
+function onActiveChange(val) {
+  // this.innerValue = val;
+  // this.$emit('change', val);
 }
 </script>
 
 <style lang="scss">
 .control-color {
-    &>* {
-        display: inline-block;
-        vertical-align: middle;
-    }
+  & > * {
+    display: inline-block;
+    vertical-align: middle;
+  }
 
-    span {
-        font-size: 12px;
-        font-weight: bold;
-    }
+  span {
+    font-size: 12px;
+    font-weight: bold;
+  }
 }
 </style>

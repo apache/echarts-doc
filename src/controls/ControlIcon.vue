@@ -1,108 +1,99 @@
 <template>
-<div class="control-icon">
-    <el-select size="mini" v-model="innerValue" @change="onValueChange">
-        <el-option v-for="item in optionsArr"
-            :key="item"
-            :value="item"
-        >{{item}}</el-option>
+  <div class="control-icon">
+    <el-select size="small" v-model="innerValue" @change="onValueChange">
+      <el-option v-for="item in optionsArr" :key="item" :value="item">
+        {{ item }}
+      </el-option>
     </el-select>
-    <el-button size="mini" type="primary" @click="chooseFile">{{$t('example.upload')}}</el-button>
-</div>
+    <el-button size="small" type="primary" @click="chooseFile">
+      {{ $t('example.upload') }}
+    </el-button>
+  </div>
 </template>
 
-<script>
+<script setup>
+import { computed, ref, watch } from 'vue'
+import { flatten } from '../dep/flatten'
 
-import {flatten} from '../dep/flatten';
-
-export function parseXML(svgStr) {
-    const parser = new DOMParser();
-    const svg = parser.parseFromString(svgStr, 'text/xml');
-    let svgNode = svg;
-    // Document node. If using $.get, doc node may be input.
-    if (svgNode.nodeType === 9) {
-        svgNode = svgNode.firstChild;
-    }
-    // nodeName of <!DOCTYPE svg> is also 'svg'.
-    while (svgNode.nodeName.toLowerCase() !== 'svg' || svgNode.nodeType !== 1) {
-        svgNode = svgNode.nextSibling;
-    }
-
-    return svgNode;
+function parseXML(svgStr) {
+  const parser = new DOMParser()
+  const svg = parser.parseFromString(svgStr, 'text/xml')
+  let svgNode = svg
+  // Document node. If using $.get, doc node may be input.
+  if (svgNode.nodeType === 9) {
+    svgNode = svgNode.firstChild
+  }
+  // nodeName of <!DOCTYPE svg> is also 'svg'.
+  while (svgNode.nodeName.toLowerCase() !== 'svg' || svgNode.nodeType !== 1) {
+    svgNode = svgNode.nextSibling
+  }
+  return svgNode
 }
 
-export default {
+const { value } = defineProps({ value: String })
 
-    props: ['value'],
+const innerValue = ref(value)
 
-    computed: {
-        optionsArr() {
-            return ['circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none']
-        },
-    },
+const emit = defineEmits(['change'])
 
-    data() {
-        return {
-            innerValue: this.value
+const optionsArr = computed(() => [
+  'circle',
+  'rect',
+  'roundRect',
+  'triangle',
+  'diamond',
+  'pin',
+  'arrow',
+  'none',
+])
+
+watch(
+  () => value,
+  (newVal) => {
+    innerValue.value = newVal
+  },
+)
+
+function onValueChange() {
+  emit('change', innerValue.value)
+}
+
+function chooseFile() {
+  const input = document.createElement('input')
+  input.type = 'file'
+  input.accept = '.jpg, .jpeg, .png, .svg'
+  input.addEventListener('change', (e) => {
+    const file = e.target.files[0]
+    if (!file) return
+    if (file.name.endsWith('.svg')) {
+      const fileReader = new FileReader()
+      fileReader.addEventListener('load', () => {
+        const svgStr = fileReader.result
+        const svg = parseXML(svgStr)
+        try {
+          flatten(svg)
+        } catch (e) {
+          console.error('Unexpected error happens when handling the SVG.')
+          console.error(e.toString())
         }
-    },
-
-    watch: {
-        value(val) {
-            this.innerValue = val;
+        const paths = svg.querySelectorAll('path')
+        let defs = []
+        for (let i = 0; i < paths.length; i++) {
+          defs.push(paths[i].getAttribute('d'))
         }
-    },
-
-    methods: {
-        onValueChange() {
-            this.$emit('change', this.innerValue);
-        },
-        chooseFile() {
-            const input  = document.createElement('input');
-            input.type = 'file';
-            input.accept= '.jpg, .jpeg, .png, .svg'
-            input.addEventListener('change',  (e) => {
-                const file = e.target.files[0];
-                if (!file) {
-                    return;
-                }
-                if (file.name.endsWith('.svg')) {
-                    // read path
-                    // Use image
-                    const fileReader = new FileReader();
-                    fileReader.addEventListener('load', () => {
-                        const svgStr = fileReader.result;
-                        const svg = parseXML(svgStr);
-                        try {
-                            flatten(svg);
-                        }
-                        catch (e) {
-                            console.error('Unexpected error happens when handling the SVG.');
-                            console.error(e.toString());
-                        }
-
-                        const paths = svg.querySelectorAll('path');
-                        let defs = [];
-                        for (let i = 0; i < paths.length; i++) {
-                            defs.push(paths[i].getAttribute('d'));
-                        }
-                        this.$emit('change', 'path://' + defs.join(' '));
-                    });
-                    fileReader.readAsText(file);
-                }
-                else {
-                    // Use image
-                    const fileReader = new FileReader();
-                    fileReader.addEventListener('load', () => {
-                        this.$emit('change', 'image://' + fileReader.result);
-                    });
-                    fileReader.readAsDataURL(file);
-                }
-            });
-            input.click();
-        }
+        emit('change', 'path://' + defs.join(' '))
+      })
+      fileReader.readAsText(file)
+    } else {
+      const fileReader = new FileReader()
+      fileReader.addEventListener('load', () => {
+        emit('change', 'image://' + fileReader.result)
+      })
+      fileReader.readAsDataURL(file)
     }
+  })
+  input.click()
 }
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>
