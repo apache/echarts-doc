@@ -8,13 +8,13 @@
 (dom?: HTMLDivElement|HTMLCanvasElement, theme?: Object|string, opts?: {
     devicePixelRatio?: number,
     renderer?: string,
-    useDirtyRect?: boolean,     // 从 `5.0.0` 开始支持
-    useCoarsePointer?: boolean, // 从 `5.4.0` 开始支持
-    pointerSize?: number,       // 从 `5.4.0` 开始支持
-    ssr?: boolean,              // 从 `5.3.0` 开始支持
+    useDirtyRect?: boolean,     // 从 `v5.0.0` 开始支持
+    useCoarsePointer?: boolean, // 从 `v5.4.0` 开始支持
+    pointerSize?: number,       // 从 `v5.4.0` 开始支持
+    ssr?: boolean,              // 从 `v5.3.0` 开始支持
     width?: number|string,
     height?: number|string,
-    locale?: string             // 从 `5.0.0` 开始支持
+    locale?: string             // 从 `v5.0.0` 开始支持
 }) => ECharts
 ```
 创建一个 ECharts 实例，返回 [echartsInstance](~echartsInstance)，不能在单个容器上初始化多个 ECharts 实例。
@@ -35,7 +35,7 @@
 
     附加参数。有下面几个可选项：
 
-    + `devicePixelRatio`设备像素比，默认取浏览器的值`window.devicePixelRatio`。
+    + `devicePixelRatio` 设备像素比，默认取浏览器的值 `window.devicePixelRatio`。
     + `renderer` 渲染模式，支持`'canvas'`或者`'svg'`。参见 [使用 Canvas 或者 SVG 渲染](${handbookPath}best-practices/canvas-vs-svg)。
     + `ssr` 是否使用服务端渲染，只有在 SVG 渲染模式有效。开启后不再会每帧自动渲染，必须要调用 [renderToSVGString](~echartsInstance.renderToSVGString) 方法才能得到渲染后 SVG 字符串。参见[服务端渲染 ECharts 图表](${handbookPath}how-to/cross-platform/server)。
     + `useDirtyRect`是否开启脏矩形渲染，只有在 Canvas 渲染模式有效，默认为`false`。参见 [ECharts 5 新特性](${handbookPath}basics/release-note/v5-feature)。

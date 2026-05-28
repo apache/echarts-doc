@@ -307,6 +307,7 @@ chart1.setTheme('dark');
 (opts?: {
     width?: number|string,
     height?: number|string,
+    devicePixelRatio?: number, // 从 `v6.2.0` 开始支持
     silent?: boolean,
     animation?: {
         duration?: number
@@ -324,10 +325,15 @@ chart1.setTheme('dark');
 
     + `width` 可显式指定实例宽度，单位为像素。如果传入值为 `null`/`undefined`/`'auto'`，则表示自动取 `dom`（实例容器）的宽度。
     + `height` 可显式指定实例高度，单位为像素。如果传入值为 `null`/`undefined`/`'auto'`，则表示自动取 `dom`（实例容器）的高度。
+    + `devicePixelRatio` 可显式指定设备像素比。如果未指定，则默认使用浏览器当前的 `window.devicePixelRatio`。（从 `v6.2.0` 开始支持）
     + `silent` 是否禁止抛出事件。默认为 `false`。
     + `animation` resize 的时候是否应用过渡动画，包含时长`duration`和缓动`easing`两个配置，默认`duration`为 0，即不应用过渡动画。
 
-**Tip:** 有时候图表会放在多个标签页里，那些初始隐藏的标签在初始化图表的时候因为获取不到容器的实际高宽，可能会绘制失败，因此在切换到该标签页时需要手动调用 `resize` 方法获取正确的高宽并且刷新画布，或者在 `opts` 中显示指定图表高宽。
+**Tip:**
+
+有时候图表会放在多个标签页里，那些初始隐藏的标签在初始化图表的时候因为获取不到容器的实际高宽，可能会绘制失败，因此在切换到该标签页时需要手动调用 `resize` 方法获取正确的高宽并且刷新画布，或者在 `opts` 中显示指定图表高宽。
+
+自 `v6.2.0` 版本起，浏览器缩放比例发生变化后，调用 `resize` 默认会使用当前的 `window.devicePixelRatio` 更新图表，可避免缩放后图表渲染模糊。
 
 ## renderToSVGString(Function)
 
