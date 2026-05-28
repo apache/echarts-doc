@@ -307,7 +307,7 @@ chart1.setTheme('dark');
 (opts?: {
     width?: number|string,
     height?: number|string,
-    devicePixelRatio?: number,
+    devicePixelRatio?: number, // Since `v6.2.0`
     silent?: boolean,
     animation?: {
         duration?: number
@@ -327,11 +327,7 @@ Resizes chart, which should be called manually when container size changes.
 
     + `height` Specify height explicitly, in pixel. If setting to `null`/`undefined`/`'auto'`, height of `dom` (instance container) will be used.
 
-    + `devicePixelRatio`
-
-        {{ use: partial-version(version = "6.2.0") }}
-
-        Specify device pixel ratio explicitly. If not specified, the current value of browser's `window.devicePixelRatio` will be used.
+    + `devicePixelRatio` Specify device pixel ratio explicitly. If not specified, the current value of browser's `window.devicePixelRatio` will be used. (Since `v6.2.0`)
 
     + `silent` Specify whether or not to prevent triggering events.
 
@@ -341,7 +337,7 @@ Resizes chart, which should be called manually when container size changes.
 
 Sometimes charts may be placed in multiple tabs. Those in hidden labels may fail to initialize due to the ignorance of container width and height. So `resize` should be called manually to get the correct width and height when switching to the corresponding tabs, or specify width/height in `opts` explicitly.
 
-When the browser zoom level changes, calling `resize` will update the chart with the current `window.devicePixelRatio` by default, which helps avoid blurry rendering.
+Since `v6.2.0`, when the browser zoom level changes, calling `resize` will update the chart with the current `window.devicePixelRatio` by default, which helps avoid blurry rendering.
 
 ## renderToSVGString(Function)
 
